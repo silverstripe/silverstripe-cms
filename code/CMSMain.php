@@ -64,8 +64,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// For Gallery
 		Requirements::javascript('gallery/javascript/GalleryPage_CMS.js');
 				
-		Requirements::css(project() . "/css/typography.css");
-
+		Requirements::themedCSS('typography');
+		
 		// HACK ALERT:
 		// We need a better way of including all of the CSS that *might* be used by this application.
 		// Perhaps the ajax responses can include some instructions to go get more CSS / JavaScript?
@@ -76,7 +76,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// We don't want this showing up in every ajax-response, it should always be present in a CMS-environment
 		if(!Director::is_ajax()) {
 			Requirements::javascriptTemplate("cms/javascript/tinymce.template.js", array(
-				"ContentCSS" => project() . "/css/editor.css",
+				"ContentCSS" => (SSViewer::current_theme() ? "themes/" . SSViewer::current_theme() : project()) . "/css/editor.css",
 				"BaseURL" => Director::absoluteBaseURL(),
 			));
 		}
