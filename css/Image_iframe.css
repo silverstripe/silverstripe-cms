@@ -1,0 +1,146 @@
+@import url("typography.css");
+
+html,body {
+	padding: 0;
+	margin: 0;
+	border-style: none;
+	height: 100%;
+	overflow: hidden;
+}
+
+form {
+	margin: 0; padding: 0;
+}
+form fieldset{
+	padding: 0;
+	margin: 0;
+	border-style: none;
+}
+
+h2 {
+	margin: 0;
+	font-size: 1.4em;
+}
+
+/**
+ * Selection Groups
+ */
+.SelectionGroup {
+	padding: 0;
+	margin: 10px 0 0 0;
+}
+.SelectionGroup li {
+	list-style-type: none;
+	margin: 0;
+}
+.SelectionGroup li input.selector {
+	width: 20px;
+}
+
+
+.SelectionGroup li div.field {
+	display: none;
+}
+.SelectionGroup li.selected div.field {
+	margin-left: 30px;
+	display: block;
+	margin-bottom: 1em;
+}
+.SelectionGroup li.selected label.selector {
+	font-weight: bold;
+}
+
+
+
+/**
+ * TreeDropdownField stying
+ */
+div.TreeDropdownField {
+	width: 241px;
+	padding: 0;
+}
+html>body div.TreeDropdownField {
+	position:relative;
+}
+
+div.TreeDropdownField span.items {
+	display: block;
+	height: 100%;
+	border: 1px #7f9db9 solid;
+	cursor: pointer;
+	width: 220px;
+	float: left;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background-color: white;
+}
+
+div.TreeDropdownField div.tree_holder {
+	clear: left;
+	cursor: default;
+	border: 1px black solid;
+	margin: 0;
+	height: 180px;
+	overflow: auto;
+	background-color: white;
+	/**
+	 * HACK IE6, see http://www.hedgerwow.com/360/bugs/css-select-free.html
+	 */
+	position:absolute;
+	z-index:10;
+	width:240px;/*must have for any value*/
+}
+
+html>body div.TreeDropdownField div.tree_holder {
+	top: 20px;
+	left: 0px;
+	z-index: 1000;
+}
+
+/**
+ * HACK IE6, see http://www.hedgerwow.com/360/bugs/css-select-free.html
+ */
+div.TreeDropdownField div.tree_holder iframe {
+	display:none;/* IE5*/
+	display/**/:block;/* IE5*/
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:-1;
+	filter:mask();
+	width:180px; /*must have for any big value*/
+	height:200px/*must have for any big value*/;
+	border: 0;
+}
+
+div.TreeDropdownField a.editLink {
+	border-width: 1px 1px 1px 0;
+	background: url(../../sapphire/images/TreeDropdownField_button.gif) left top no-repeat;
+	width: 19px;
+	height: 21px;
+	margin: 0;
+	padding: 0;
+	float: left;
+	clear: right;
+	z-index: 0;
+	overflow: hidden;
+}
+
+
+
+.Actions {
+	text-align: right;
+	margin: 0;
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+}
+
+.mainblock {
+	float: left; 
+	border: 1px #CCC solid; 
+	padding: 5px; 
+	margin-right: 5px;
+	height: 120px;
+	position: relative;
+}

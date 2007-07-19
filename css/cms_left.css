@@ -1,0 +1,404 @@
+#TreeActions {
+	background-color: #EEE;
+	border-bottom: 1px #CCC solid;
+	padding: 0;
+	margin: 0;
+       /* height: 23px; */
+       float: left;
+       width: 100%;
+}
+#TreeActions li.action {
+	float: left;
+	margin: 0;
+	padding: 0;
+	padding-right: 7px;
+	list-style-type: none;
+}
+#TreeActions li.action a {
+	padding: 0.3em;
+	display: block;
+}
+#TreeActions li.action a:hover {
+	background-color: #CCC;
+}
+#TreeActions li.selected a {
+	background-color: #CCC;
+}
+
+#left form.actionparams {
+	background-color: #CCC;
+	border-bottom: 1px #EEE solid;
+	margin: 0;
+	padding: 0.5em;
+}
+
+#left form.actionparams select {
+	width: 75%;
+	margin: 0;
+}
+#left form.actionparms input.action {
+	width: 5%;
+	margin: 0;
+}
+
+
+
+/**
+ * Selection Groups
+ */
+#left .SelectionGroup {
+	padding: 0;
+	margin: 0;
+	display: block;
+}
+#left .SelectionGroup li {
+	list-style-type: none;
+	clear: left;
+	padding: 0;
+	margin: 0;
+	border: 1px #CCC solid;
+}
+#left .SelectionGroup li input {
+	width: 20px;
+	float: left;
+	margin: 0;
+}
+#left .SelectionGroup li div.field {
+	display: none;
+	font-size: 1em;
+}
+#left .SelectionGroup li label {
+	margin: 0 0 0 2px;
+	padding: 0;
+	display: block;
+	height: 1.2em;
+	width: auto;
+	float: none;
+}	
+#left .SelectionGroup li.selected div.field {
+	margin-left: 23px;
+	display: block;
+	margin-bottom: 1em;
+}	
+#left div.field select {
+	width: 100%;
+}
+
+#left .SelectionGroup li.selected label.selector {
+	font-weight: bold;
+}
+
+
+ul.tree span.a {
+	cursor: pointer;
+}
+ul.tree span.a.over {
+	background-color: #FFFFBB;
+	
+	/* these push the highlight out to the left of the window */
+	margin-left: -100px;
+	padding-left: 100px;
+	background-position: 100px 50%;
+}
+
+ul.tree span.a.current {
+	font-weight: bold;
+	background-color: #EEEEFF;
+	border-top: 1px #CCCCFF solid;
+	border-bottom: 1px #CCCCFF solid;	
+	
+	/* these push the highlight out to the left of the window */
+	margin-left: -100px;
+	padding-left: 100px;
+	background-position: 100px 50%;
+	/*position: relative;*/
+}
+
+
+
+/*
+ul.tree span.a.current span#currentNodeActions {
+	position: absolute;
+	right: 0;
+	top: 0;
+	background-color: white;
+	padding: 0 3px;
+}
+*/
+
+ul.tree span.a.loading span.b span.c a {
+	background-image: url(../images/network-save.gif) !important;
+	margin-left: -3px;
+	padding-left: 21px;
+	background-position : 2px 2px;
+}
+
+ul.tree.multiselect span.a span.b a {
+	background-image: url(../images/tickbox-unticked.gif) !important;
+}
+ul.tree.multiselect span.a.nodelete span.b a {
+	background-image: url(../images/tickbox-canttick.gif) !important;
+}
+
+
+ul.tree.multiselect span.a.selected span.b span.c a {
+	background-image: url(../images/tickbox-ticked.gif) !important;
+}
+
+ul.tree.multiselect li.selected ul span.a a {
+	background-image: url(../images/tickbox-greyticked.gif) !important;
+}
+/*
+ul.tree.multiselect li.selected ul {
+	display: none;
+}
+*/
+
+/* Span-B: Plus/Minus icon */
+ul.tree.multiselect li.selected span.a.children span.b, ul.tree.multiselect li.selected span.a.unexpanded span.b {
+	background-image: none;
+	cursor: default;
+}
+
+ul.tree span.a a.disabled {
+	color: #999;
+	cursor: normal;
+}
+	ul.tree span.a a.disabled * {
+		padding: 0;
+		background: none;
+		color: #999;
+		cursor: normal;
+	}
+	
+
+ul.tree .deleted {
+	color: red;
+	text-decoration: line-through;
+}
+/* Created on stage, never published */
+ul.tree ins,
+#publication_key ins {
+	color: orange;
+	padding-left : 16px;
+	background-image : url(../../sapphire/images/NewOnStage.png);
+	background-position : 0px 1px;
+	background-repeat : no-repeat;
+	text-decoration : none;
+}
+/* Deleated on stage */
+ul.tree del,
+#publication_key del {
+	color: red;
+	padding-left : 16px;
+	background-image : url(../../sapphire/images/TrashedOnStage.png);
+	background-repeat : no-repeat;
+}
+ul.tree span.modified,
+#publication_key span.modified {
+	color: green;
+	padding-left : 16px;
+	background-position : 1px 0px;
+	background-image : url(../../sapphire/images/EditedOnStage.png);
+	background-repeat : no-repeat;
+	text-decoration : none;
+}
+
+/**
+ * Side tabs
+ */
+#SideTabs {
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 18px;
+	height: 80%;
+}
+#SideTabs li {
+	clear: left;
+	width: 16px;
+	text-indent: -100em;
+	height: 70px;
+	overflow: hidden;
+	margin: 5px 0 5px 2px;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+#SideTabs li#sidetab_versions { background-image: url(../images/sidetabs/versions.gif); }
+#SideTabs li#sidetab_sitetree { background-image: url(../images/sidetabs/sitemap.gif); }
+#SideTabs li#sidetab_tasklist { background-image: url(../images/sidetabs/tasklist.gif); }
+#SideTabs li#sidetab_waitingon { background-image: url(../images/sidetabs/waitingon.gif); }
+#SideTabs li#sidetab_comments { background-image: url(../images/sidetabs/comments.gif); }
+#SideTabs li#sidetab_reports { background-image: url(../images/sidetabs/reports.gif); }
+#SideTabs li#sidetab_search { background-image: url(../images/sidetabs/search.gif); }
+#SideTabs li#sidetab_advertisements { background-image: url(../images/sidetabs/advertisements.gif); }
+
+#SideTabs li#sidetab_versions.selected { background-image: url(../images/sidetabs/versions_over.gif); }
+#SideTabs li#sidetab_sitetree.selected { background-image: url(../images/sidetabs/sitemap_over.gif); }
+#SideTabs li#sidetab_tasklist.selected { background-image: url(../images/sidetabs/tasklist_over.gif); }
+#SideTabs li#sidetab_waitingon.selected { background-image: url(../images/sidetabs/waitingon_over.gif); }
+#SideTabs li#sidetab_comments.selected { background-image: url(../images/sidetabs/comments_over.gif); }
+#SideTabs li#sidetab_reports.selected { background-image: url(../images/sidetabs/reports_over.gif); }
+#SideTabs li#sidetab_search.selected { background-image: url(../images/sidetabs/search_over.gif); }
+#SideTabs li#sidetab_advertisements.selected { background-image: url(../images/sidetabs/advertisements_over.gif); }
+
+#left {
+	background-color: #EEE;
+}
+
+#treepanes {
+	background-color: #FFF;
+	border-left: 1px #ccc solid;
+}
+
+.listpane p {
+	margin: 3px 3px 7px 3px;
+	font-size: 10px;
+}
+.listpane ul {
+	margin: 0;
+	padding: 0;
+}
+.listpane ul li {
+	list-style-type: none;
+	padding: 5px 2px 5px 2px;
+	font-size: 10px;
+	border-bottom: 1px #CCC dotted;
+	background-color: #FFF;
+}
+.listpane ul li.odd {
+	background-color: #EEE;
+}
+
+.listpane ul li .extra {
+	font-style: italic;
+	color: #666;
+}
+.listpane div.unitBody {
+	overflow: auto;
+	width: 100%;
+}
+
+
+#CommentList {
+	padding: 0;
+	margin: 0;
+}
+#CommentList li {
+	list-style-type: none;
+	background-color: #EEE;
+	border: 1px #CCC solid;
+	padding: 3px;
+	margin: 7px;
+}
+#CommentList li .extra {
+	margin-top: 3px;
+	font-size: 80%;
+	font-style: italic;
+}
+
+#ReportSelector_holder {
+	background-color: #EEE;
+	border-bottom: 1px #CCC solid;
+	margin: 0;
+	padding: 3px;
+}
+#ReportSelector_holder select {
+	width: 100%;
+}
+
+#treepanes .pane_actions {
+	margin: 7px 4px;
+}
+
+#treepanes .pane_actions a {
+	margin: 4px;
+	padding: 3px;
+	background-color: #EEE;
+	border: 1px #CCC solid;
+}
+#treepanes .pane_actions a.current {
+	background-color: #CCC;
+}
+
+
+#treepanes table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#treepanes table thead td {
+	background-color: #777;
+	color: white;
+	border-bottom: 1px #CCC solid;
+}
+
+#treepanes table tbody tr {
+	cursor: pointer;
+}
+
+#treepanes table tbody tr.odd td {
+	background-color: #EEE;
+}
+#treepanes table tbody tr.over td {
+	background-color: #FFFFBB;
+}
+
+#treepanes table tbody tr.current td {
+	background-color: #BBBBFF;
+}
+
+
+#treepanes #Versions tbody tr.internal {
+	color: #777;
+}
+#treepanes #Versions tbody tr.published {
+	color: black;
+}
+
+/**
+ * Change the styling of the root tree node
+ */
+ul.tree span.a.Root, ul.tree span.a.last.Root, ul.tree span.a.children.Root {
+	background-image: none;
+}
+ul.tree span.a.Root span.c, ul.tree span.a.last.Root span.c, ul.tree span.a.children.Root span.c {
+	margin: 0;
+}
+ul#sitetree.tree ul {
+	margin-left: 0;
+}
+ul#sitetree.tree ul ul {
+	margin-left: 16px;
+}
+
+
+
+ul.tree span.a.MailType, ul.tree span.a.last.MailType, ul.tree span.a.children.MailType {
+	background-image: none;
+}
+ul.tree span.a.MailType span.c, ul.tree span.a.last.MailType span.c, ul.tree span.a.children.MailType span.c {
+	margin: 0;
+}
+
+.contextMenu {
+	padding: 0;
+	margin: 0;
+}
+.contextMenu li {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.contextMenu li a {
+	display: block;
+	font-family: Tahoma, Verdana, Arial, Helvetica;
+	font-size: 11px;
+	padding: 5px 10px 5px 5px;
+	color: black;
+	text-decoration: none;
+}
+.contextMenu li a:hover {
+	background-color: #B6BDD2;
+	text-decoration: none;
+}

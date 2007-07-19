@@ -1,0 +1,433 @@
+/*
+ Tenative color scheme:
+ #0074C6  	#95B2C6 #639DC6 	#162F42 #2C5F84
+ 4A7695	819BAD
+ */
+
+html {
+	margin: 0;
+	height: 100%;
+		overflow:hidden;
+}
+body {
+	height: 100%;
+	margin: 0;
+	font-size: 62.5%;
+	background-color: #d4d0c8;
+}
+
+#top, #left, #bottom, div.title, div.mceToolbarExternal, ul.tabstrip, div.field label, #separator {
+
+/*-moz-user-select: none;*/ /*need to explicitly allow input box selection becuase of this */
+
+}
+
+
+
+
+form fieldset {
+	margin: 0;
+	padding: 0;
+	border-style: none;
+}
+form#Form_EditForm fieldset {
+	height: 100%;
+}
+
+
+body.stillLoading select {
+	display: none;
+}
+
+
+
+/** 3-PANEL LAYOUT **/
+#top {
+	font-size: 1.4em;
+	height: 51px;
+	padding: 3px;
+	background: url(../images/mainmenu/top-bg.gif) top left repeat-x;
+	color: #FFF;
+	border-bottom: 3px solid #d4d0c8;
+	overflow: hidden;
+}
+#left {
+	position: absolute;
+	top: 51px;
+	left: 3px;
+	width: 205px;
+	height: 92%;
+	z-index: 50;
+	border : 1px #808080 solid;
+	background-color:#FFFFFF;
+}
+#right, #rightbottom {
+	position: absolute;
+	left: 208px;
+	top: 51px;
+	height: 92%;
+	width: 600px;
+	overflow: auto;
+	z-index: 50;
+	border: 1px #808080 solid;
+	background-color: white;
+	margin-right : 3px;
+}
+
+#rightbottom {
+	height: 30%;
+}
+
+#separator {
+	position: absolute;
+	top: 51px;
+	left: 205px;
+	height: 92%;
+	width: 3px;
+	cursor: e-resize;
+	border-left : 1px solid #ffffff;
+}
+
+
+/**
+ * Hidden left-hand panel
+ */
+#left.hidden form, #left.hidden .title, #left.hidden #TreeActions {
+	display: none;
+}
+#left.hidden #SideTabs {
+	margin-top: 47px;
+}
+	
+#left.hidden {
+	width: 18px;
+	display: block;
+}
+#separator.hidden {
+	display: none;
+}
+
+
+#left div.title, #right div.title, #rightbottom div.title{
+	border-top: 1px #77BBEE solid;
+	background-image:url(../images/textures/obar.gif);
+	height : 22px !important;
+	background-color : #0075C9;
+	background-repeat : repeat-x !important;
+	background-position: 0px 0px;
+
+
+	
+}
+
+#rightbottom div.light {
+
+	background-image: url(../images/textures/obar-light.png) !important;
+
+}
+
+
+#left div.title div, #right div.title div, #rightbottom div.title div{
+	font-size : 14px;
+	font-weight : bold;
+	color: white;
+	padding: 2px 0 0 4px;
+	background-position: 2px 2px;
+	background-repeat:no-repeat;
+	padding-left : 20px;
+	border-top: 1px #77BBEE solid;
+	
+}
+
+#left h2 {
+	margin: 0;
+	background-image:url(../images/textures/obar-18.gif);
+	height: 18px;
+	color: white;
+	font-size: 12px;
+	padding-left: 3px;
+}
+
+
+
+/** TOP PANEL **/
+#top #MainMenu {
+	margin: 0;
+	padding: 0;
+}
+#top #MainMenu li {
+	margin: 8px 8px 0 8px;
+	padding: 6px 8px 0 28px;
+	list-style-type: none;
+	float: left;
+	height: 32px;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+html>body #top #MainMenu li {
+	height: 28px; /* 32 - 6 from the padding */
+}
+
+#top #MainMenu a {
+	color: white;
+}
+
+#top #MainMenu .current {
+	background-color: #d4d0c8;
+	background-position: 5px 5px;
+	position: relative;
+	top : -7px;
+	height : 31px;
+	padding-top : 12px;
+	padding-left : 30px;
+	-moz-border-radius-topright : 8px;
+	-moz-border-radius-topleft : 8px;
+	border : 1px solid #65686e;
+	border-bottom : none;
+   
+	
+}
+
+#top #MainMenu .current A:link,#top #MainMenu .current A:visited {
+
+	color : black;
+
+}
+
+
+
+#top #MainMenu #Menu-content {	background-image: url(../images/mainmenu/content.gif); }
+#top #MainMenu #Menu-security { background-image: url(../images/mainmenu/members.gif); }
+#top #MainMenu #Menu-report { background-image: url(../images/mainmenu/reports.gif); }
+#top #MainMenu #Menu-newsletter { background-image: url(../images/mainmenu/emails.gif); }
+#top #MainMenu #Menu-files { background-image: url(../images/mainmenu/files.gif); }
+
+#top #MainMenu #Menu-help { background-image: url(../images/mainmenu/help.gif); 
+	float: right;
+	/*padding: 6px 28px 0 8px;
+	background-position: 100% 0;*/
+	margin-right: 60px;
+}
+
+
+#top #Logo {
+	float: right;
+	margin: 0;
+	padding: 16px 60px 16px 0;
+	height: 32px;
+	font-size: 16px;
+	background: url(../images/mainmenu/logo.gif) right top no-repeat;
+}
+html>body #top #Logo {
+	padding-bottom: 0;
+}
+
+#top #Logo a {
+	color: white;
+}
+
+
+
+
+
+#bottom {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	border-top: 3px solid #d4d0c8;
+	background-color:#81858d;
+	height: 18px;
+	overflow:hidden;
+	background-image:url(../images/textures/bottom.png);
+
+}
+
+#bottom .holder {
+
+	text-align: center;
+	padding-top : 3px;
+	padding-left : 3px;
+	padding-right : 6px;
+	font-size: 10px;
+	color: white;
+	border-top: 1px solid #555555;
+
+}
+
+#bottom #logInStatus {
+	float: right;
+}
+#bottom #switchView {
+	float: left;
+
+}
+
+#bottom .bottomTabs a {
+	display: block;
+	float : left;
+	height : 13px;
+	padding-left : 12px;
+	padding-right : 12px;
+	position:relative;
+	top : -3px;
+	border : 1px solid #65686e;
+	border-top : none;
+	cursor:pointer;
+	background-color: #cdc9c1;
+	color : #333333;
+	-moz-border-radius-bottomright : 4px;
+	-moz-border-radius-bottomleft : 4px;
+}
+
+#bottom .bottomTabs div.blank {
+	display: block;
+	float : left;
+	height : 13px;
+	padding-left : 12px;
+	padding-right : 12px;
+	position:relative;
+	top : -3px;
+	border : 1px solid #65686e;
+	border-top : none;
+	cursor:pointer;
+	background-color: #cdc9c1;
+	color : #333333;
+
+	border : none;
+	background-color: transparent;
+	padding-right: 2px;
+	padding-left: 2px;
+	padding-top : 2px;
+	color:#FFFFFF;
+}
+
+
+#bottom .bottomTabs a.current {
+	background-color : #d4d0c8;
+	padding-top : 1px;
+	top : -5px;
+	height : 15px;
+	font-weight:bold;
+	font-size : 11px;
+	border : 1px solid #555555;
+}
+
+
+/** LEFT PANEL **/
+
+#sitetree_holder {
+	height: 80%;
+	width: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+#sitetree {
+	width: 500px; /* IE's chocking right now */
+}
+html> #sitetree {
+	width: auto;
+}
+
+div.spacer, li.spacer {
+	list-style-type: none;
+	float: none;
+	clear: both;
+	background-color: transparent;
+	border-style: none;
+	padding: 0;
+	margin: -1px 0 0 0;
+	height: 1px;
+	font-size: 1px;
+	width: auto;
+}
+/** RIGHT PANEL **/
+
+.mceToolbarExternal {
+	background-color: #EEE;
+	border-bottom: 1px #CCC solid;
+	/*position: absolute;
+	top: 23px;
+	left: 0;*/
+	display: block;
+}
+
+
+#right form#Form_EditorToolbarLinkForm, 
+#right form#Form_EditorToolbarImageForm,
+#right form#Form_EditorToolbarFlashForm {
+	background-color: #EEE;
+	border-bottom: 1px #CCC solid;
+	display: none;
+	margin: 1px 0 0 0;
+	padding: 5px;
+	height: 115px;
+	/* 
+	 * HACK IE (all versions): container needs to be higher stacking order
+	 * than any DOM-elemnt under it. 
+	 * @see http://www.aplus.co.yu/lab/z-pos/
+	 */
+	z-index: 1001; 
+}
+
+#right form#Form_EditorToolbarImageForm {
+	height: 160px;
+}
+#right form#Form_EditorToolbarFlashForm {
+	height: 130px;
+}
+
+
+#right form#Form_EditorToolbarLinkForm ul.optionset {
+	height: 1em;
+	margin: 0;
+}
+#right form#Form_EditorToolbarLinkForm ul.optionset li {
+	float: left;
+}
+
+.thumbnailstrip {
+	height: 58px;
+	overflow: auto;
+	white-space: nowrap;
+	width: 100%;
+	float: left;
+	border : 1px solid #AAAAAA;
+}
+
+.thumbnailstrip ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.thumbnailstrip li {
+	float: left;
+	margin-right: 4px;
+}
+
+.indicator.inline {
+	display: inline;
+	margin-left: 5px;
+	vertical-align: middle;
+}
+
+p.Actions {
+	vertical-align: middle;
+}
+
+.indicator.block {
+	display: inline;
+}
+
+/* CMS specific icons for the tree */
+
+
+ul.tree li.Root span.Root span.c a {
+
+	background-image : url(../../cms/images/treeicons/root.png) !important;
+
+}
+
+
+

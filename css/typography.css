@@ -1,0 +1,49 @@
+body {
+	font-size: 62.5%;
+}
+* {
+	font-family: Arial;
+	font-size: 1em;
+
+}
+p, ul, td, th {
+	font-size: 1.2em;
+}
+	/* overrides (to avoid larger font-sizing) */
+	ul ul,
+	th p,
+	td p,
+	div ul.optionset {
+		font-size: 1em;
+	}
+
+ul ul {
+	font-size: 1em;
+}
+h1 {
+	font-size: 2em;
+	color: #0074C6;
+}
+h2 {
+	font-size: 1.8em;
+	color: #0074C6;
+}
+
+a {
+	color: #162F42;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a img {
+	border-style: none;
+}
+#Header a, #ProductGroups a, #Products a {
+	color: white;
+}
+
+
+#Header h1 {
+	color: white;
+}

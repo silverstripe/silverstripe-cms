@@ -1,0 +1,765 @@
+
+.right form {
+	margin: 1em;
+	position: relative;
+	/*top: 70px;*/
+}
+html>body .right from {
+	/*top: 50px;*/
+}
+
+
+iframe {
+	border : none;
+}
+
+.right form div.field {
+	clear: both;
+	margin-left: 10em;
+	font-size: 1.2em;
+	vertical-align: middle;
+}
+.right form p.field {
+	clear: both;
+	font-size: 1.2em;
+	margin: 0;
+}
+
+.right form div.field.nolabel {
+	margin-left: 0;
+}
+
+.right form label.left {
+	float: left;
+	width: 10em;
+	margin-left: -10em;
+}
+
+.right form input.maxlength {
+	width: auto;
+}
+
+.right form textarea {
+	width: 98%;
+}
+
+.right form textarea.htmleditor {
+	width: 90%;
+	display : none;
+}
+html>body .right form textarea.htmleditor {
+	width: 98%;
+}
+
+.right form span.readonly {
+	border: 1px #CCC dotted;
+	background-color: #F7F7F7;
+	display: block;
+	width: 98%;
+	padding: 3px;
+	margin:5px 0;
+}
+
+.right form .validation,
+.right form .error,
+.right form .required
+{
+	border: 1px solid #f00;
+	background: #fcc;
+	padding: 0.5em;
+	width: 50%;
+}
+
+.right form .TableField .message {
+	width: auto;
+}
+
+.right form .creditCardfield input {
+	width: 4.415em;
+}
+
+.right form  input.checkbox, .right form .optionset input, .right form .htmleditor select, .right form input.action {
+	width: auto;
+}
+.right form ul.optionset {
+	padding: 0;
+}
+.right form .optionset li {
+	list-style: none;
+}
+
+.right form h2 {
+	clear: both;
+}
+
+.right form .fieldgroup input, .right form .fieldgroup select {
+	width: auto;
+}
+
+
+
+/**
+ * TableField (and subclasses)
+ */
+table.TableField, 
+table.TableListField, 
+.TableListField table.data, 
+table.CMSList {
+	border-collapse: collapse;
+	border-spacing: 0;
+	border : 1px solid #aaaaaa;
+	width : 100%;
+}
+
+/* HACK Preventing IE6 from showing double borders */
+body>div table.TableField, 
+body>div table.TableListField, 
+body>div .TableListField table.data, 
+body>div table.CMSList {
+	border-collapse: separate;
+}
+
+table.TableField td, 
+table.TableListField td, 
+.TableListField table.data td, 
+table.CMSList td {
+	border-style:none;
+}
+
+table.TableField th, 
+table.TableListField th, 
+.TableListField table.data th, 
+table.CMSList th {
+	whitespace: no-wrap;
+}
+
+table.TableField thead th, 
+.TableListField table.data thead th, 
+table.CMSList thead th {
+	background-image : url(../../cms/images/tables/thead.png);
+	background-repeat : repeat-x;
+	background-position : left bottom;
+	background-color : #ebeadb;
+	height : 24px;
+	border-right : 1px solid #aca899;
+	border-left : 1px solid #ffffff;
+	padding-left : 5px;
+}
+
+table.TableField thead th span, 
+.TableListField table.data thead th span {
+	display: block;
+	float: left;
+}
+
+table.TableField thead th a, 
+.TableListField table.data thead th a, 
+table.CMSList thead th a {
+	color: #000;
+}
+
+table.TableField thead th span.sortLink, 
+.TableListField table.data thead th span.sortLink, 
+table.CMSList thead th span.sortLink {
+	width: 16px;
+	height: 16px;
+	overflow: hidden;
+}
+
+table.TableField tfoot tr.summary td, 
+.TableListField table.data tfoot tr.summary td, 
+table.CMSList tfoot tr.summary td {
+	background-color : #ebeadb;
+}
+
+table.TableField tbody td, 
+table.TableField tfoot td, 
+.TableListField table.data tbody td, 
+.TableListField table.data tfoot td, 
+table.CMSList tbody td,
+table.CMSList tfoot td {
+	border : 1px solid #f1efe2;
+	padding-left : 5px;
+}
+
+.TableField td input,
+.TableListField td input {
+	width: 98%;
+}
+
+table.data tbody td input {
+	border:0 !important;
+}
+
+table.TableField tbody td.checkbox, 
+.TableListField table.data tbody td.checkbox, 
+table.CMSList tbody td.checkbox {
+	border : 1px solid #f1efe2;
+	padding-left : 5px;
+	background-image : url(../../cms/images/tables/checkbox.png);
+	background-repeat : repeat-x;
+	background-position : left bottom;
+}
+
+table.TableField tbody tr.over td, 
+.TableListField table.data tbody tr.over td, 
+table.CMSList tbody td.over td{
+	background-color: #FFC;
+}
+
+table.TableField tbody tr.current td, 
+.TableListField table.data tbody tr.current td, 
+table.CMSList tbody td.current td {
+	background-color: #316ac5;
+	color : white;
+}
+
+.TableListField table.data tfoot .addlink img {
+	vertical-align: middle;
+	margin: 3px 6px 3px 3px;
+}
+
+.right form .TableField span.readonly {
+	border: 0;
+	background: none;
+	padding: 0;
+	margin-bottom: 0;
+}
+
+.TableListField div.utility {
+	margin-top: 0.5em;
+}
+
+.TableListField div.utility a {
+	font-size: 9px;
+	border: 1px solid #aaa;
+	padding: 2px;
+}
+
+/**
+ * Selection Groups
+ */
+.SelectionGroup {
+	padding: 0px;
+	clear : both;
+}
+.SelectionGroup li {
+	list-style-type: none;
+	float : left;
+	clear : both;
+}
+.SelectionGroup li input {
+	width: 20px;
+	float : left;
+
+}
+
+.SelectionGroup li div.field {
+	display: none;
+	font-size: 1em;
+}
+.SelectionGroup li input, .right .SelectionGroup li label {
+	display: block;
+}	
+.SelectionGroup li.selected div.field {
+	margin-left: 30px;
+	display: block;
+	margin-bottom: 1em;
+}	
+
+.SelectionGroup li.selected label.selector {
+	font-weight: bold;
+}
+
+/**
+ * Composite Fields - raw concatenation of fields for programmatic purposes.
+ */
+
+
+.right form div.field.CompositeField {
+	margin-left: 7.5em;
+}
+.right form div.field.CompositeField div.field {
+	font-size: 1em;
+}
+
+.right form div.field.CompositeField {
+	clear: both;
+}	
+.right form div.field.CompositeField label.left {
+	float: left;
+	width: 10em;
+	margin-left: -10em;
+}
+
+.right form div.column2 {
+	float: left;
+	width: 45%;
+	margin-right: 4%;
+}
+
+.right form div.multicolumn {
+	width: 100%;
+	float: left;
+	clear: left;
+}
+
+/** 
+ * Checkbox set fields
+ */
+#right form .CheckboxSetField ul{
+	margin:0;
+	padding:0;
+}
+#right form .CheckboxSetField ul li{
+	list-style:none !important;
+	margin:0;
+	padding:0;
+}
+#right form .CheckboxSetField input{
+	width:auto;
+}
+
+
+
+.ajaxActions {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 0;
+	margin: 0;
+	text-align: right;
+	background-image:url(../images/textures/ToolBar.png);
+	height : 21px;
+	border-left : 1px solid #808080;
+	border-bottom : 1px solid #808080;
+}
+.ajaxActions input {
+	padding: 0;
+	border-style: none;
+	background-color:transparent;
+	cursor: pointer;
+	float : left;
+	height : 22px;
+	background-image:url(../images/textures/seperator.png);
+	background-repeat:no-repeat;
+	background-position:right;
+	padding-left: 10px;
+	padding-right : 10px;
+	margin : 0px;
+	color : #333333;
+}
+
+.right form div.tab {
+	clear: left;
+	overflow: auto;
+	border: 1px #AAA solid;
+	border-top: none;
+	position: relative;
+	top: -3px;
+	margin: 0;
+	padding: 10px;
+	/*width: 98%;*/
+}
+.right form div.tabset {
+	border: 1px solid #fff; /* Hack for FF1.5/Win Float-Bug */
+	clear: left;
+	margin: 0;
+	/*width: 100%;*/
+}
+
+/**
+ * Bottom-right
+ */
+
+#rightbottom {
+
+
+border : none;
+margin-top : 4px;
+margin-left : 1px;
+border : 1px solid #808080;
+
+}
+
+
+#rightbottom form {
+	margin: 1em;
+	/*position: relative;
+	top: 50px;*/
+}
+
+#rightbottom form div {
+	margin-top : 3px;
+}
+
+
+#rightbottom form div.field {
+	clear: both;
+	margin-left: 10em;
+	font-size: 1.2em;
+
+		border : none;
+}
+#rightbottom form label.left {
+	float: left;
+	width: 10em;
+	margin-left: -10em;
+
+	
+}
+
+#rightbottom form input, #rightbottom form select, #rightbottom form textarea {
+	width: 90%;
+}
+
+#rightbottom form  input.checkbox, #rightbottom form .optionset input, #rightbottom form .htmleditor select, #rightbottom form input.action {
+	width: auto;
+}
+#rightbottom form ul.optionset {
+	padding: 0;
+}
+#rightbottom form .optionset li {
+	list-style: none;
+}
+
+#rightbottom form h2 {
+	clear: both;
+}
+
+#rightbottom form .fieldgroup input, #rightbottom form .fieldgroup select {
+	width: auto;
+}
+
+/**
+ * RHS Action Parameters boxes
+ */
+#right form.actionparams {
+	border-bottom: 1px #777 solid;
+	border-left: 1px #777 solid;
+	background-color: #CCC;
+	position: absolute;
+	top: 23px;
+	right: 0px;
+	width: 300px;
+	
+	z-index: 200;
+	
+	margin: 0;
+	padding: 10px;
+	
+}
+#right form.actionparams div.field {
+	margin-left: 6em;
+}
+
+#right form.actionparams label.left {
+	width: 6em;
+	margin-left: -6em;
+}
+#right form.actionparams input, #right form.actionparams select, #right form.actionparams textarea {
+	width: 100%;
+}
+#right form.actionparams  input.checkbox, #right form.actionparams .optionset input {
+	width: auto;
+}
+
+#right form.actionparams p.label {
+	margin: 10px 0 0 0;
+}
+#right form.actionparams p.actions {
+	margin: 10px 0 0 0;
+	text-align: right;
+}
+#right form.actionparams p.actions input {
+	width: auto;
+}
+#right form.actionparams .sendingText {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	padding: 10% 0 0 0;
+	height: 60%;
+	background-color: #CCC;
+	font-size: 25px;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+}
+
+#right form.actionparams div.TreeDropdownField {
+	width: 230px;
+
+}
+#right form.actionparams div.TreeDropdownField span.items {
+	width: 210px;
+}
+
+#right form.actionparams div.TreeDropdownField div.tree_holder {
+	width: 214px;
+}
+
+div.TreeDropdownField {
+	width: 35em;
+	padding: 0;
+}
+html>body div.TreeDropdownField {
+	position:relative;
+}
+
+div.TreeDropdownField span.items {
+	display: block;
+	height: 100%;
+	border: 1px #7f9db9 solid;
+	cursor: pointer;
+	width: 33em;
+	float: left;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background-color: white;
+}
+
+div.TreeDropdownField div.tree_holder {
+	clear: left;
+	cursor: default;
+	border: 1px black solid;
+	margin: 0;
+	height: 200px;
+	overflow: auto;
+	background-color: white;
+	/**
+	 * HACK IE6, see http://www.hedgerwow.com/360/bugs/css-select-free.html
+	 */
+	position:absolute;
+	z-index:10;
+	width:33em;/*must have for any value*/;
+}
+
+html>body div.TreeDropdownField div.tree_holder {
+	top: 20px;
+	left: 0px;
+	z-index: 1000;
+}
+
+/**
+ * HACK IE6, see http://www.hedgerwow.com/360/bugs/css-select-free.html
+ */
+div.TreeDropdownField div.tree_holder iframe {
+	display:none;/* IE5*/
+	display/**/:block;/* IE5*/
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:-1;
+	filter:mask();
+	width:31em;/*must have for any big value*/
+	height:200px/*must have for any big value*/;
+}
+
+div.TreeDropdownField a.editLink {
+	border-width: 1px 1px 1px 0;
+	background: url(../../sapphire/images/TreeDropdownField_button.gif) left top no-repeat;
+	width: 19px;
+	height: 21px;
+	margin: 0;
+	padding: 0;
+	float: left;
+	clear: right;
+	z-index: 0;
+	overflow: hidden;
+}
+
+
+.autocomplete {
+	background-color: #EEEEEE;
+	margin : 0px;
+	padding : 0px;
+
+
+	
+}
+.autocomplete ul {
+	border: 1px #AAA solid;
+	margin : 0px;
+	padding : 0px;
+
+
+}
+.autocomplete li {
+	list-style-type: none;
+	cursor: pointer;
+	margin: 0px;
+	font-size : 12px;
+	padding : 3px;
+	white-space : nowrap;
+}
+.autocomplete .data {
+	display: none;
+}
+.autocomplete .informal {
+	font-style: italic;
+}
+
+/*
+ * Status
+ */
+
+#statusMessage {
+	position: absolute;
+	z-index: 500;
+	bottom: 15px;
+	right: 30px;
+	text-align: left;
+
+ 	padding: 15px 15px 15px 40px;
+ 	
+ 	font-size: 16px;
+	font-weight: bold; 	
+ 	
+ 	border: 1px solid #cc9;
+	color: #660;
+	background-color: #F9F9E3;
+}
+
+#statusMessage.good {
+	border-color: #9c9;
+	color: #060;
+	background: url(../images/alert-good.gif) #E2F9E3 7px no-repeat;
+}
+#statusMessage.bad {
+	border-color: #c99;
+	color: #fff;
+	background: url(../images/alert-bad.gif) #c00 7px no-repeat;
+	max-height: 600px;
+	overflow: auto;
+}
+.pageStatusMessage {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: #F9F9E3;
+	font-weight: bold;
+	font-size: 1.2em;
+	padding: 5px;
+ 	border: 1px solid #cc9;
+}
+	
+
+
+
+
+#right ins * {
+	background-color: green;
+}
+
+
+
+
+
+#right del *{
+	background-color: red;
+}
+
+
+
+
+
+div#ImportFile iframe {
+	width: 80%;
+	height: auto;
+	border: none;
+}
+
+table.ReportField {
+	position: relative;
+	border: solid 1px #82C0FF;
+	border-collapse: collapse;
+}
+
+	table.ReportField thead th {
+		background-color: #82C0FF;
+	}
+	
+	table.ReportField td, table.ReportField {
+		border: solid 1px #82C0FF;
+	}
+	
+	table.ReportField tr {
+		border-bottom: solid 1px #82C0FF;
+	}
+
+div.ProgressBar {
+	text-align: center;
+	display: none;
+}
+
+	div.ProgressBar p.text {
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	div.ProgressBar div.BarHolder {
+		width: 100%;
+		border: solid 1px #777;
+		background-color: #FFF;
+		padding: 2px;
+		text-align: left;
+	}
+	
+		div.ProgressBar div.BarHolder div.Bar {
+			width: 0%;
+			background-color: #0074C6;
+		}
+
+div.MemberListFilter,
+div.MemberFilter {
+	/*float: right;*/
+	width: 40em;
+	margin: 5px 0;
+	padding: 5px;
+	background-color : #ebeadb;
+	border: 1px solid #aca899;
+}
+
+	.right form div.MemberListFilter label,
+	.right form div.MemberFilter label {
+		display: block;
+		width: 10em;
+		float: left;
+		margin-left: 0em;
+	}
+	
+	div.MemberListFilter div.field,
+	div.MemberFilter div.field {
+		margin-left: 0em;
+	}
+	
+	div.MemberListFilter input,
+	div.MemberListFilter select,
+	div.MemberFilter input,
+	div.MemberFilter select {
+		width: auto;
+	}
+
+#right iframe.AWStatsReport {
+	width: 98%;
+	height: 85%;
+}
+
+#sitetree a.contents {
+	font-style: italic;	
+}
+
+/**
+ * SecurityAdmin
+ */
+#Form_EditForm_Permissions .Arg, 
+#Form_EditForm_Permissions .Enabled {
+	width: 6em;
+}
+
+#Form_EditForm_Permissions .Arg input {
+	text-align: right;
+}

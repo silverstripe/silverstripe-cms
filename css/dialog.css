@@ -1,0 +1,18 @@
+p.message {
+	/*background: url(../cms/images/dialogs/alert.gif) repeat top left;*/
+	padding-left: 60px;
+}
+
+img {
+	float: left;
+	margin-left: -60px;
+}
+
+span {
+	clear: right;
+}	
+
+body {
+	font-family: Arial, sans-serif;
+	font-size: 1em;
+}
