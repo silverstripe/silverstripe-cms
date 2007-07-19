@@ -11,7 +11,7 @@ class Unsubscribe_Controller extends Page_Controller {
     
     function index() {
        	Session::clear("loggedInAs");
-       	Requirements::css(project()."/css/form.css");
+       	Requirements::themedCSS("form");
         // if the email address is given
         $emailAddress = addslashes( $this->urlParams['Email'] );
         $mailingListID = addslashes( $this->urlParams['MailingList'] );
@@ -170,7 +170,7 @@ class Unsubscribe_Successful extends Form {
 		parent::__construct($controller, $name, $fields, $actions);
 	}
 	function setSuccessfulMessage($email, $newsletterTypes) {
-		Requirements::css(project() . "/css/form.css");
+		Requirements::themedCSS("form");
 		$this->setMessage("Thank you. $email will no longer receive the $newsletterTypes.", "good");
 	}
 }
