@@ -11,7 +11,7 @@ class MathSpamProtection {
 		return (self::$mathProtection != null) ? true : false;
 	}
 	
-	static function enabled($math = true) {
+	static function setEnabled($math = true) {
 		MathSpamProtection::$mathProtection = $math;
 	}
 	
