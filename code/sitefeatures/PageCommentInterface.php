@@ -30,12 +30,22 @@ class PageCommentInterface extends ViewableData {
 		Requirements::javascript('jsparty/scriptaculous/effects.js');
 		Requirements::javascript('cms/javascript/PageCommentInterface.js');
 		
-		$form = new PageCommentInterface_Form($this->controller, $this->methodName . ".PostCommentForm", new FieldSet(
-			new HiddenField("ParentID", "ParentID", $this->page->ID),
-			new TextField("Name", "Your name"),
-			new TextareaField("Comment", "Comments")
 		
-		), new FieldSet(
+		$fields = new FieldSet(
+			new HiddenField("ParentID", "ParentID", $this->page->ID),
+			new TextField("Name", "Your name")
+		);	
+		if(MathSpamProtection::isEnabled()){
+			$fields->push(new TextField("Math","Spam protection question: ".MathSpamProtection::getMathQuestion()));
+		}				
+		
+		if(CaptchaSpamProtection::isEnabled()){
+			$fields->push(new TextField("Captcha",CaptchaSpamProtection::getImage()."<br /><br />Please copy down the text from the image above"));
+		}		
+		
+		$fields->push(new TextareaField("Comment", "Comments"));
+		
+		$form = new PageCommentInterface_Form($this->controller, $this->methodName . ".PostCommentForm",$fields, new FieldSet(
 			new FormAction("postcomment", "Post")
 		));
 		
@@ -102,6 +112,20 @@ class PageCommentInterface_Form extends Form {
 			}
 		}
 		
+		//check if spam question was right.
+		if(MathSpamProtection::isEnabled()){		
+			if(!MathSpamProtection::correctAnswer($data['Math'])){
+				echo "<div class='BlogError'><p>You got the spam protection question wrong.</p></div>";
+				return;
+			}
+		}
+		
+		if(CaptchaSpamProtection::isEnabled()){		
+			if(!CaptchaSpamProtection::correctAnswer($data['Captcha'])){
+				echo "<div class='BlogError'><p>You got the captcha protection question wrong.</p></div>";
+				return;
+			}
+		}
 		
 		Cookie::set("PageCommentInterface_Name", $data['Name']);
 		
