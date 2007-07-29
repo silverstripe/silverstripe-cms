@@ -39,9 +39,10 @@ class PageCommentInterface extends ViewableData {
 			$fields->push(new TextField("Math","Spam protection question: ".MathSpamProtection::getMathQuestion()));
 		}				
 		
-		if(CaptchaSpamProtection::isEnabled()){
+		/*//TODO
+		  if(CaptchaSpamProtection::isEnabled()){
 			$fields->push(new TextField("Captcha",CaptchaSpamProtection::getImage()."<br /><br />Please copy down the text from the image above"));
-		}		
+		}	*/	
 		
 		$fields->push(new TextareaField("Comment", "Comments"));
 		
@@ -120,12 +121,13 @@ class PageCommentInterface_Form extends Form {
 			}
 		}
 		
+		/*
 		if(CaptchaSpamProtection::isEnabled()){		
 			if(!CaptchaSpamProtection::correctAnswer($data['Captcha'])){
 				echo "<div class='BlogError'><p>You got the captcha protection question wrong.</p></div>";
 				return;
 			}
-		}
+		}*/
 		
 		Cookie::set("PageCommentInterface_Name", $data['Name']);
 		
