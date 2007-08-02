@@ -9,7 +9,7 @@
 		</div>
 	</div>
 	<div class="usedWidgetsHolder">
-		<h2>Used Widgets</h2>
+		<h2>Widgets currently used</h2>
 		<div class="usedWidgets" id="WidgetAreaEditor_usedWidgets">
 			<% if UsedWidgets %>
 				<% control UsedWidgets %>
