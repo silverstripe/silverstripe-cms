@@ -1,0 +1,52 @@
+div.availableWidgetsHolder,
+div.usedWidgetsHolder {
+	width: 49%;
+}
+
+div.availableWidgetsHolder {
+	float: left;
+}
+
+div.usedWidgetsHolder {
+	float: right;
+}
+
+div.usedWidgets {
+	min-height: 100px;
+}
+
+div.usedWidgets div.Widget,
+div.availableWidgets div.Widget {
+	width: 90%;
+	border: 1px solid #ddd;
+	border-top: none;
+	margin-bottom: 5px;
+}
+div.widgetDescription p,
+div.widgetFields {
+	margin-left: 8px;
+}
+
+p.deleteWidget {
+	margin: 0;
+	height: 2.2em;
+	line-height: 2.2em;
+	font-size: 1.2em;
+}
+span.widgetDelete {
+	padding-left: 20px;
+	margin-right: 8px;
+	float: right;
+	background: url(../images/delete2.png) no-repeat left center;
+	cursor: pointer;
+}
+div.usedWidgets div.Widget h3,
+div.availableWidgets div.Widget h3 {
+	font-size: 1.3em;
+	height: 1.5em;
+	color: #fff;
+	line-height: 1.5em;
+	text-indent: 5px;
+	background: #7ab7ec url(../images/blogTitleBg.gif);
+	margin: 0;
+}

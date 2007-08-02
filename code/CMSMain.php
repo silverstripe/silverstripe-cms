@@ -66,9 +66,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				
 		Requirements::themedCSS('typography');
 		
-		// For Blog
-		Requirements::css("blog/css/WidgetAreaEditor.css");
-		Requirements::javascript("blog/javascript/WidgetAreaEditor.js");
+		// For Widgets
+		Requirements::css("cms/css/WidgetAreaEditor.css");
+		Requirements::javascript("cms/javascript/WidgetAreaEditor.js");
 		
 		// HACK ALERT:
 		// We need a better way of including all of the CSS that *might* be used by this application.
