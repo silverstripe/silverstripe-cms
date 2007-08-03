@@ -37,7 +37,7 @@ span.widgetDelete {
 	padding-left: 20px;
 	margin-right: 8px;
 	float: right;
-	background: url(../images/delete2.png) no-repeat left center;
+	background: url(../images/delete.gif) no-repeat left center;
 	cursor: pointer;
 }
 div.usedWidgets div.Widget h3,
@@ -47,6 +47,6 @@ div.availableWidgets div.Widget h3 {
 	color: #fff;
 	line-height: 1.5em;
 	text-indent: 5px;
-	background: #7ab7ec url(../images/blogTitleBg.gif);
+	background: #7ab7ec url(../images/widget-title-bg.gif);
 	margin: 0;
 }
