@@ -1,4 +1,4 @@
-<p class="comment">$Comment.XML</p>
+<p class="comment" id="PageComment_$ID">$Comment.XML</p>
 <p class="info">
 	<span>Posted by $Name, $Created.Nice ($Created.Ago)</span>
 	<br />

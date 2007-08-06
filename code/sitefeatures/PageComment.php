@@ -23,7 +23,7 @@ class PageComment extends DataObject {
 	 * @return string link to this comment.
 	 */
 	function Link() {
-		return $this->Parent()->Link();
+		return $this->Parent()->Link() . '#PageComment_'. $this->ID;
 	}
 
 
