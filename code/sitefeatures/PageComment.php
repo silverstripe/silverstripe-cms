@@ -132,7 +132,7 @@ class PageComment extends DataObject {
 	}
 	
 	function RSSTitle() {
-		return "Comment by '$this->Name' on " . $this->Parent()->Title;
+		return "Comment by '". Convert::raw2xml($this->Name) . "' on " . $this->Parent()->Title;
 	}
 	function rss() {
 		$rss = new RSSFeed(DataObject::get("PageComment", "ParentID > 0", "Created DESC", "", 10), "home/", "Page comments", "", "RSSTitle", "Comment", "Name");
