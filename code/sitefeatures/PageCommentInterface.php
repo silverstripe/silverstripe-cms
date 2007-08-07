@@ -81,6 +81,10 @@ class PageCommentInterface extends ViewableData {
 		return $comments;
 	}
 	
+	function CommentRssLink() {
+		return Director::absoluteBaseURL() . "PageComment/rss?pageid=" . $this->page->ID;
+	}
+	
 }
 
 class PageCommentInterface_Form extends Form {

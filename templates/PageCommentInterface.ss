@@ -40,6 +40,6 @@
 			<p id="NoComments">No one has commented on this page yet.</p>
 		<% end_if %>
 	</div>
-	
+	<a class="commentrss" href="$CommentRssLink">RSS feed for comments on this page</a>
 </div>
 	
