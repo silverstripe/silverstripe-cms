@@ -151,6 +151,10 @@ class PageComment extends DataObject {
 	static function enableModeration() {
 		self::$moderate = true;
 	}	
+
+	static function moderationEnabled() {
+		return self::moderate;
+	}
 }
 
 ?>

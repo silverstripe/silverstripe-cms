@@ -140,6 +140,8 @@ class PageCommentInterface_Form extends Form {
 		$comment->IsSpam = false;
 		$comment->write();
 		
+		$comment->NeedsModeration = PageComment::moderationEnable();
+		
 		if(Director::is_ajax()) {
 			echo $comment->renderWith('PageCommentInterface_singlecomment');
 		} else {		
