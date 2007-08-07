@@ -1,0 +1,113 @@
+/**
+ * This typography file is included in the WYSIWYG editor
+ */
+.typography * {
+	font-family:Verdana,Arial,sans-serif;
+	font-size:1em;
+}
+.typography blockquote {
+	margin-left:20px;
+}
+.typography hr {
+	padding:5px;
+}
+.typography p,
+.typography ul li,
+.typography ol li,
+.typography a {
+	color:#333;
+	line-height:1.5em;
+	font-size:1.1em;
+}
+.typography p {
+	margin-bottom:20px;
+}
+
+
+/** CMS LIST STYLES **/
+.typography ul,
+.typography ol {
+	margin-left:10px;
+	margin-bottom:20px;
+}
+	.typography ul li,
+	.typography ol li {
+		margin:4px 10px;
+		line-height:1.4em;
+	}
+		.typography ul li {
+		 list-style-type:disc;
+		}
+		.typography ol li {
+			list-style-type:decimal;
+    }
+
+/* HEADER STYLES */
+
+.typography h1,
+.typography h2,
+.typography h3,
+.typography h4 {
+	margin-bottom:14px;
+	color:#0083C8;
+}
+.typography h1,
+.typography h4 {
+	font-weight:bold;
+}
+.typography h2,
+.typography h3 {
+	font-weight:normal;
+}
+	.typography h1 {
+		font-size:2.2em;
+	}
+	.typography h2 {
+		font-size:2.2em;
+	}
+	.typography h3 {
+		font-size:1.6em;
+	}
+	.typography h4 {
+		font-size:1.4em;
+	}
+
+/* LINK STYLES */
+.typography a {
+	color:#0083C8;
+  font-size:1em;
+  text-decoration:none;
+}
+	.typography a:hover {
+		text-decoration:underline;
+	}
+	
+	
+.typography table {
+	font-size:1.1em;
+}
+	.typography table tr td {
+		padding:3px 5px;
+	}
+
+	
+/* WYSIWYG EDITOR ALIGNMENT CLASSES */
+.typography .left {
+	text-align:left;
+}
+.typography .center {
+	text-align:center;
+}
+.typography .right {
+	text-align:right;
+}
+.typography img.right {
+	float:right;
+}
+.typography img.left {
+	float:left;
+}
+
+.typography p.MsoNormal, .typography p.MsoBodyText {
+	margin: 0;
+}
