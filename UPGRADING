@@ -1,0 +1,6 @@
+To upgrade your installation of SilverStripe, simply copy the
+sapphire, cms & jsparty folders overtop of your existing installation.
+Then flush the cache and rebuild the database (db/build?flush=1).
+
+If there are any special notes on upgrading to a particular version,
+these will be documented here.

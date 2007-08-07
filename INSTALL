@@ -1,0 +1,22 @@
+Thanks for downloading SilverStripe CMS.
+
+Simply extract the archive to a folder in a web-accessible location and visit the folder
+in your web browser (which in turn runs index.php). 
+
+This will lead you through a web-based installation process.
+
+
+Server Requirements
+  * PHP 5+
+  * MySQL 4.1+
+  * Apache or Lighttpd webserver (feel free to try with others)
+  * Details at http://doc.silverstripe.com/doku.php?id=server-requirements
+
+
+General documentation, tutorials: 
+  * Wiki: http://doc.silverstripe.com/
+  * Tutorials: http://doc.silverstripe.com/doku.php?id=silverstripe-tutorial
+  
+
+Forum
+  * http://www.silverstripe.com/silverstripe-forum/
