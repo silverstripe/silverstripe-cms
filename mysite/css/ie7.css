@@ -1,0 +1,19 @@
+/**
+ SilverStripe Black Candy Theme
+ http://www.silverstripe.com
+ 
+ IE7 Hacks Stylesheet. 
+ */
+
+
+label {
+	margin-bottom: -10px;
+}
+
+/** The fonts are soo ugly. **/
+#Sidebar li li {
+	font-size: 0.8em;
+}
+#Sidebar li li li a {
+	font-size: 0.8em;
+}

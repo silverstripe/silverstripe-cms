@@ -1,0 +1,64 @@
+/* GENERIC FORM STYLING */
+#Content form {
+	width:378px;
+}
+	#Content form fieldset {
+		border:0;
+		padding:12px;
+	}
+		#Content .message {
+			color:red;
+			background:#ddd;
+			border:1px solid #ccc;
+			padding:5px;
+			margin:5px;
+		}
+		#Content span.message {
+			width: 300px;
+		}
+		#Content form div {
+			margin-top:10px;
+			width:100%;
+		}
+		#Content form label {
+			font-size:1.1em;
+			color:#333;
+		}
+			#Content form label.left {
+				float:left;
+				width:12em;
+			}
+			#Content form label.FormHeading {
+				font-size:1.3em;
+				color:#ff7200;
+				font-weight:bold;
+			}
+		#Content form input.text,
+		#Content form textarea,
+		#Content form select {
+			width:200px;
+			color:#000;
+			background:#f8f8f8;
+			border:1px solid #aaa;
+			padding:3px;
+		}
+		
+		#Content form input.numeric {
+			width:20px;
+			background:#f0f0f0;
+			border:1px solid #aaa;
+			padding:3px;
+			color:#000;
+			margin-right:4px;
+		}
+		#Content form input.year {
+			width:35px;
+		}
+		#Content form p.Actions {
+			text-align:right;
+			padding:0 22px 15px 0;
+		}
+			#Content form p.Actions input {
+				padding:2px;
+			}
+
