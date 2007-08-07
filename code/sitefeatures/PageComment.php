@@ -5,6 +5,7 @@ class PageComment extends DataObject {
 		"Name" => "Varchar",
 		"Comment" => "Text",
 		"IsSpam" => "Boolean",
+		"NeedsModeration" => "Boolean"
 	);
 
 	static $has_one = array(
@@ -17,6 +18,8 @@ class PageComment extends DataObject {
 
 	// Number of comments to show before paginating
 	static $comments_per_page = 10;
+	
+	static $moderate = false;
 	
 	/**
 	 * Return a link to this comment
@@ -135,10 +138,19 @@ class PageComment extends DataObject {
 		return "Comment by '". Convert::raw2xml($this->Name) . "' on " . $this->Parent()->Title;
 	}
 	function rss() {
-		$rss = new RSSFeed(DataObject::get("PageComment", "ParentID > 0", "Created DESC", "", 10), "home/", "Page comments", "", "RSSTitle", "Comment", "Name");
+		$parentcheck = isset($_REQUEST['pageid']) ? "ParentID = {$_REQUEST['pageid']}" : "ParentID > 0";
+		$comments = DataObject::get("PageComment", $parentcheck, "Created DESC", "", 10);
+		if(!isset($comments)) {
+			$comments = new DataObjectSet();
+		}
+		
+		$rss = new RSSFeed($comments, "home/", "Page comments", "", "RSSTitle", "Comment", "Name");
 		$rss->outputToBrowser();
 	}
 
+	static function enableModeration() {
+		self::$moderate = true;
+	}	
 }
 
 ?>
