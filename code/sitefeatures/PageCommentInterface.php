@@ -120,7 +120,11 @@ class PageCommentInterface_Form extends Form {
 		//check if spam question was right.
 		if(MathSpamProtection::isEnabled()){		
 			if(!MathSpamProtection::correctAnswer($data['Math'])){
-				echo "<div class='BlogError'><p>You got the spam protection question wrong.</p></div>";
+						if(Director::is_ajax()) {
+							echo "<div class='BlogError'><p>You got the spam protection question wrong.</p></div>";
+						} else {		
+							Director::redirectBack();
+						}
 				return;
 			}
 		}
