@@ -154,6 +154,7 @@ abstract class LeftAndMain extends Controller {
 			"Newsletters" => array("newsletter", "admin/newsletter/", "NewsletterAdmin"),
 			"Reports" => array("report", "admin/reports/", "ReportAdmin"),
 			"Security" => array("security", "admin/security/", "SecurityAdmin"),
+			"Feedback" => array("feedback", "admin/feedback/", "FeedbackAdmin"),
 			"Help" => array("help", "http://userhelp.silverstripe.com"),
 		);
 
@@ -641,7 +642,7 @@ JS;
 	public function currentPageID() {
 		if(isset($_REQUEST['ID']) && is_numeric($_REQUEST['ID']))	{
 			return $_REQUEST['ID'];
-		} elseif (is_numeric($this->urlParams['ID'])) {
+		} elseif (isset($this->urlParams['ID']) && is_numeric($this->urlParams['ID'])) {
 			return $this->urlParams['ID'];
 		} elseif(Session::get("{$this->class}.currentPage")) {
 			return Session::get("{$this->class}.currentPage");
