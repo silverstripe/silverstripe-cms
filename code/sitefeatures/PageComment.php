@@ -148,6 +148,11 @@ class PageComment extends DataObject {
 		$rss->outputToBrowser();
 	}
 
+	
+	function PageTitle() {
+		return $this->Parent()->Title;
+	}
+	
 	static function enableModeration() {
 		self::$moderate = true;
 	}	

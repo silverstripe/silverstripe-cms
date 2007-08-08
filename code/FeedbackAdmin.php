@@ -26,20 +26,26 @@ class FeedbackAdmin extends LeftAndMain {
 		
 		if($section == 'accepted') {
 			$filter = 'IsSpam=0 AND NeedsModeration=0';
-		} else if($section == 'unmoderation') {
+		} else if($section == 'unmoderated') {
 			$filter = 'NeedsModeration=1';
 		} else {
 			$filter = 'IsSpam=1';
 		}
 		
 		$tableFields = array(
-			"Name" => "Name",
+			"Name" => "Author",
 			"Comment" => "Comment",
 			"PageTitle" => "Page"
 		);
 		
+		$popupFields = new FieldSet(
+			new TextField("Name"),
+			new TextareaField("Comment", "Comment")
+		);
+		
 		$idField = new HiddenField('ID');
-		$table = new ComplexTableField($this, "Comments", "PageComment", $tableFields, new FieldSet(), $filter);
+		$table = new CommentTableField($this, "Comments", "PageComment", $section, $tableFields, $popupFields, $filter);
+		$table->setParentClass(false);
 		
 		$fields = new FieldSet($idField, $table);
 		$actions = new FieldSet();
