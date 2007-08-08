@@ -32,8 +32,14 @@ class FeedbackAdmin extends LeftAndMain {
 			$filter = 'IsSpam=1';
 		}
 		
+		$tableFields = array(
+			"Name" => "Name",
+			"Comment" => "Comment",
+			"PageTitle" => "Page"
+		);
+		
 		$idField = new HiddenField('ID');
-		$table = new ComplexTableField($this, "Comments", "PageComment", array("Name" => "Name", "Comment" => "Comment"), new FieldSet(), $filter);
+		$table = new ComplexTableField($this, "Comments", "PageComment", $tableFields, new FieldSet(), $filter);
 		
 		$fields = new FieldSet($idField, $table);
 		$actions = new FieldSet();
