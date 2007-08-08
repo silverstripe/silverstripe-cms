@@ -1,6 +1,6 @@
 <p class="comment" id="PageComment_$ID">$Comment.XML</p>
 <p class="info">
-	<span>Posted by $Name, $Created.Nice ($Created.Ago)</span>
+	<span>Posted by $Name.XML, $Created.Nice ($Created.Ago)</span>
 	<br />
 	<span>
 		<% if DeleteLink %>
