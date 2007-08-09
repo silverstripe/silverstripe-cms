@@ -4,7 +4,10 @@ Behaviour.register({
 			statusMessage("loading...");
 			
 			var requestURL = 'admin/feedback/showtable/' + id;
-			new Ajax.Request(requestURL, {
+			
+			this.loadURLFromServer(requestURL);
+			
+			/*new Ajax.Request(requestURL, {
 				asynchronous : true,
 				method : 'post', 
 				postBody : 'ajax=1',
@@ -12,7 +15,7 @@ Behaviour.register({
 				onFailure : function(response) { 
 					errorMessage('error loading page',response);
 				}
-			});
+			});*/
 		}
 	}
 });

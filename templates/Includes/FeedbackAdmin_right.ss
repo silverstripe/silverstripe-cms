@@ -1,5 +1,8 @@
 <div class="title"><div>Feedback Management</div></div>
 
+<div id="form_actions_right" class="ajaxActions">
+</div>
+
 <% if EditForm %>
 	$EditForm
 <% else %>
