@@ -1,4 +1,7 @@
 <div id="$id" class="$Classes">
+	<div class="CommentFilter">
+		$SearchForm
+	</div>
 	<% include TableListField_PageControls %>
 	<table class="data">
 		<thead>

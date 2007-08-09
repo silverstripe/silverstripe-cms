@@ -98,6 +98,21 @@ class CommentTableField extends ComplexTableField {
 		return $this->mode == 'spam';
 	}
 
+	function SearchForm() {
+		$searchFields = new FieldGroup(
+			new TextField('MemberSearch', 'Search'),
+			new HiddenField("ctf[mode]",'',$this->mode)
+		);
+		
+		$actionFields = new LiteralField('CommentFilterButton','<input type="submit" name="CommentFilterButton" value="Filter" id="CommentFilterButton"/>');
+		
+		$fieldContainer = new FieldGroup(
+			$searchFields,
+			$actionFields
+		);
+		
+		return $fieldContainer->FieldHolder();
+	}
 }
 
 
