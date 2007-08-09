@@ -46,15 +46,27 @@ class FeedbackAdmin extends LeftAndMain {
 			new TextareaField("Comment", "Comment")
 		);
 		
-		$idField = new HiddenField('ID');
+		$idField = new HiddenField('ID', '', $section);
 		$table = new CommentTableField($this, "Comments", "PageComment", $section, $tableFields, $popupFields, $filter);
 		$table->setParentClass(false);
 		
 		$fields = new FieldSet($idField, $table);
 		
-		$actions = new FieldSet(
-			new FormAction('deletemarked', 'Delete')
-		);
+		$actions = new FieldSet();
+		
+		if($section == 'unmoderated') {
+			$actions->push(new FormAction('acceptmarked', 'Accept'));
+		}
+		
+		if($section == 'accepted' || $section == 'unmoderated') {
+			$actions->push(new FormAction('spammarked', 'Mark as spam'));
+		}
+		
+		if($section == 'spam') {
+			$actions->push(new FormAction('hammarked', 'Mark as not spam'));
+		}
+		
+		$actions->push(new FormAction('deletemarked', 'Delete'));
 		
 		$form = new Form($this, "EditForm", $fields, $actions);
 		
@@ -82,6 +94,84 @@ class FeedbackAdmin extends LeftAndMain {
 				$deleteList
 				$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value);
 				statusMessage("Deleted $numComments comments.");
+JS;
+	}
+	
+	function spammarked() {
+			$numComments = 0;
+			$folderID = 0;
+			$deleteList = '';
+	
+			if($_REQUEST['Comments']) {
+				foreach($_REQUEST['Comments'] as $commentid) {
+					$comment = DataObject::get_one('PageComment', "`PageComment`.ID = $commentid");
+					if($comment) {
+						$comment->IsSpam = true;
+						$comment->NeedsModeration = false;
+						$comment->write();
+						$numComments++;
+					}
+				}
+			} else {
+				user_error("No comments in $commentList could be found!", E_USER_ERROR);
+			}
+		
+			echo <<<JS
+				$deleteList
+				$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value);
+				statusMessage("Marked $numComments comments as spam.");
+JS;
+	}
+	
+	function hammarked() {
+			$numComments = 0;
+			$folderID = 0;
+			$deleteList = '';
+	
+			if($_REQUEST['Comments']) {
+				foreach($_REQUEST['Comments'] as $commentid) {
+					$comment = DataObject::get_one('PageComment', "`PageComment`.ID = $commentid");
+					if($comment) {
+						$comment->IsSpam = false;
+						$comment->NeedsModeration = false;
+						$comment->write();
+						$numComments++;
+					}
+				}
+			} else {
+				user_error("No comments in $commentList could be found!", E_USER_ERROR);
+			}
+		
+			echo <<<JS
+				$deleteList
+				$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value);
+				statusMessage("Marked $numComments comments as not spam.");
+JS;
+	}
+	
+	function acceptmarked() {
+			$numComments = 0;
+			$folderID = 0;
+			$deleteList = '';
+	
+			if($_REQUEST['Comments']) {
+				foreach($_REQUEST['Comments'] as $commentid) {
+					$comment = DataObject::get_one('PageComment', "`PageComment`.ID = $commentid");
+					if($comment) {
+						$comment->IsSpam = false;
+						$comment->NeedsModeration = false;
+						$comment->write();
+						$numComments++;
+					}
+				}
+			} else {
+				user_error("No comments in $commentList could be found!", E_USER_ERROR);
+			}
+		
+			echo <<<JS
+				$deleteList
+				$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value);
+				statusMessage("Accepted $numComments comments.");
 JS;
 	}
 }
