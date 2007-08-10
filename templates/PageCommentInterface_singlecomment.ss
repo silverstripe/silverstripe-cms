@@ -7,18 +7,18 @@
 <p class="info">
 	<span>Posted by $Name.XML, $Created.Nice ($Created.Ago)</span>
 	<br />
-	<span>
+	<ul class="actionLinks">
 		<% if AcceptLink %>
-			<a href="$AcceptLink" class="acceptlink">accept this comment</a>
+			<li><a href="$AcceptLink" class="acceptlink">accept this comment</a></li>
 		<% end_if %>
 		<% if SpamLink %>
-			<a href="$SpamLink" class="spamlink">this comment is spam</a>
+			<li><a href="$SpamLink" class="spamlink">this comment is spam</a></li>
 		<% end_if %>
 		<% if HamLink %>
-			<a href="$HamLink" class="hamlink">this comment is not spam</a>
+			<li><a href="$HamLink" class="hamlink">this comment is not spam</a></li>
 		<% end_if %>
 		<% if DeleteLink %>
-			<a href="$DeleteLink" class="deletelink">remove this comment</a>
+			<li class="last"><a href="$DeleteLink" class="deletelink">remove this comment</a></li>
 		<% end_if %>
-	</span>
+	</ul>
 </p>
