@@ -714,7 +714,8 @@ div.ProgressBar {
 		}
 
 div.MemberListFilter,
-div.MemberFilter {
+div.MemberFilter,
+div.CommentFilter {
 	/*float: right;*/
 	width: 40em;
 	margin: 5px 0;
@@ -724,7 +725,8 @@ div.MemberFilter {
 }
 
 	.right form div.MemberListFilter label,
-	.right form div.MemberFilter label {
+	.right form div.MemberFilter label,
+	.right form div.CommentFilter label {
 		display: block;
 		width: 10em;
 		float: left;
@@ -732,14 +734,17 @@ div.MemberFilter {
 	}
 	
 	div.MemberListFilter div.field,
-	div.MemberFilter div.field {
+	div.MemberFilter div.field,
+	div.CommentFilter div.field {
 		margin-left: 0em;
 	}
 	
 	div.MemberListFilter input,
 	div.MemberListFilter select,
 	div.MemberFilter input,
-	div.MemberFilter select {
+	div.MemberFilter select,
+	div.CommentFilter input,
+	div.CommentFilter select {
 		width: auto;
 	}
 
