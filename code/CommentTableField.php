@@ -4,13 +4,15 @@ class CommentTableField extends ComplexTableField {
 	protected $template = "CommentTableField";
 	protected $mode;
 	
-	function __construct($controller, $name, $sourceClass, $mode, $fieldList, $detailFormFields = null, $sourceFilter = "", $sourceSort = "", $sourceJoin = "") {
+	function __construct($controller, $name, $sourceClass, $mode, $fieldList, $detailFormFields = null, $sourceFilter = "", $sourceSort = "Created DESC", $sourceJoin = "") {
 		$this->mode = $mode;
 		
 		parent::__construct($controller, $name, $sourceClass, $fieldList, $detailFormFields, $sourceFilter, $sourceSort, $sourceJoin);
 		
 		$this->Markable = true;
-			// search
+		$this->setPageSize(15);
+		
+		// search
 		$search = isset($_REQUEST['CommentSearch']) ? Convert::raw2sql($_REQUEST['CommentSearch']) : null;
 		if(!empty($_REQUEST['CommentSearch'])) {
 			$this->sourceFilter[] = "( `Name` LIKE '%$search%' OR `Comment` LIKE '%$search%')";
