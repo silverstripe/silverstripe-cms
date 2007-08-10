@@ -142,9 +142,9 @@ class PageCommentInterface_Form extends Form {
 		$comment = Object::create('PageComment');
 		$this->saveInto($comment);
 		$comment->IsSpam = false;
-		$comment->write();
+		$comment->NeedsModeration = PageComment::moderationEnabled();
 		
-		$comment->NeedsModeration = PageComment::moderationEnable();
+		$comment->write();
 		
 		if(Director::is_ajax()) {
 			echo $comment->renderWith('PageCommentInterface_singlecomment');

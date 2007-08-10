@@ -52,15 +52,20 @@ class PageComment extends DataObject {
 	
 	function SpamLink() {
 		$member = Member::currentUser();
-		if(SSAkismet::isEnabled() && Permission::check('CMS_ACCESS_CMSMain') && !$this->getField('IsSpam')) {
+		if(Permission::check('CMS_ACCESS_CMSMain') && !$this->getField('IsSpam')) {
 			return "PageComment/reportspam/$this->ID";
 		}
 	}
 	
 	function HamLink() {
-		$member = Member::currentUser();
-		if(SSAkismet::isEnabled() && Permission::check('CMS_ACCESS_CMSMain') && $this->getField('IsSpam')) {
+		if(Permission::check('CMS_ACCESS_CMSMain') && $this->getField('IsSpam')) {
 			return "PageComment/reportham/$this->ID";
+		}
+	}
+	
+	function AcceptLink() {
+		if(Permission::check('CMS_ACCESS_CMSMain') && $this->getField('NeedsModeration')) {
+			return "PageComment/accept/$this->ID";
 		}
 	}
 	
@@ -72,65 +77,83 @@ class PageComment extends DataObject {
 		}
 	}
 	
-	function reportspam() {
-		if(SSAkismet::isEnabled() && Permission::check('CMS_ACCESS_CMSMain')) {
+	function accept() {
+		if(Permission::check('CMS_ACCESS_CMSMain')) {
 			$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
+			$comment->NeedsModeration = false;
+			$comment->write();
 			
-			if($comment) {
-				try {
-					$akismet = new SSAkismet();
-					$akismet->setCommentAuthor($comment->getField('Name'));
-					$akismet->setCommentContent($comment->getField('Comment'));
-					
-					$akismet->submitSpam();
-				} catch (Exception $e) {
-					// Akismet didn't work, most likely the service is down.
-				}
-				
-				if(SSAkismet::getSaveSpam()) {
-					$comment->setField('IsSpam', true);
-					$comment->write();
-				} else {
-					$comment->delete();
-				}
-			}
-		}
-		
-		if(Director::is_ajax()) {
-			if(SSAkismet::getSaveSpam()) {
+			if(Director::is_ajax()) {
 				echo $comment->renderWith('PageCommentInterface_singlecomment');
 			} else {
-				echo '';
+				Director::redirectBack();
 			}
-		} else {
-			Director::redirectBack();
+		}
+	}
+	
+	function reportspam() {
+		if(SSAkismet::isEnabled()) {
+			if(Permission::check('CMS_ACCESS_CMSMain')) {
+				$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
+				
+				if($comment) {
+					try {
+						$akismet = new SSAkismet();
+						$akismet->setCommentAuthor($comment->getField('Name'));
+						$akismet->setCommentContent($comment->getField('Comment'));
+						
+						$akismet->submitSpam();
+					} catch (Exception $e) {
+						// Akismet didn't work, most likely the service is down.
+					}
+					
+					if(SSAkismet::getSaveSpam()) {
+						$comment->setField('IsSpam', true);
+						$comment->write();
+					} else {
+						$comment->delete();
+					}
+				}
+			}
+				
+			if(Director::is_ajax()) {
+				if(SSAkismet::getSaveSpam()) {
+					echo $comment->renderWith('PageCommentInterface_singlecomment');
+				} else {
+					echo '';
+				}
+			} else {
+				Director::redirectBack();
+			}
 		}
 	}
 	
 	function reportham() {
-		if(SSAkismet::isEnabled() && Permission::check('CMS_ACCESS_CMSMain')) {
-			$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
-			
-			if($comment) {
-				try {
-					$akismet = new SSAkismet();
-					$akismet->setCommentAuthor($comment->getField('Name'));
-					$akismet->setCommentContent($comment->getField('Comment'));
-					
-					$akismet->submitHam();
-				} catch (Exception $e) {
-					// Akismet didn't work, most likely the service is down.
-				}
+		if(SSAkismet::isEnabled()) {
+			if(Permission::check('CMS_ACCESS_CMSMain')) {
+				$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
 				
-				$comment->setField('IsSpam', false);
-				$comment->write();
+				if($comment) {
+					try {
+						$akismet = new SSAkismet();
+						$akismet->setCommentAuthor($comment->getField('Name'));
+						$akismet->setCommentContent($comment->getField('Comment'));
+						
+						$akismet->submitHam();
+					} catch (Exception $e) {
+						// Akismet didn't work, most likely the service is down.
+					}
+					
+					$comment->setField('IsSpam', false);
+					$comment->write();
+				}
 			}
-		}
 		
-		if(Director::is_ajax()) {
-			echo $comment->renderWith('PageCommentInterface_singlecomment');
-		} else {		
-			Director::redirectBack();
+			if(Director::is_ajax()) {
+				echo $comment->renderWith('PageCommentInterface_singlecomment');
+			} else {		
+				Director::redirectBack();
+			}
 		}
 	}
 	
@@ -158,7 +181,7 @@ class PageComment extends DataObject {
 	}	
 
 	static function moderationEnabled() {
-		return self::moderate;
+		return self::$moderate;
 	}
 }
 

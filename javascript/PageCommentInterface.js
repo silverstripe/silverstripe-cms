@@ -19,6 +19,9 @@ PageCommentInterface.prototype = {
 			},
 			'#PageComments a.hamlink' : {
 				onclick : this.reportHam	
+			},
+			'#PageComments a.acceptlink' : {
+				onclick : this.acceptComment	
 			}
 		});
 	},
@@ -162,6 +165,33 @@ PageCommentInterface.prototype = {
 	 	var __comment = this.parentNode.parentNode.parentNode;
 	 	
 	 	__comment.getElementsByTagName('span')[0].innerHTML = "Reporting as not spam...";
+	 	
+	 	new Ajax.Request(this.href + '?ajax=1', {
+	 		onSuccess : function(response) {
+	 			// Load the response into the <li>
+	 			__comment.innerHTML = response.responseText;
+				Behaviour.apply(__comment);
+				
+				// Flash it using Scriptaculous
+				new Effect.Highlight(__comment, { endcolor: '#e9e9e9' } );
+				__comment.className = 'notspam';
+			},
+			
+			onFailure : function(response) {
+				alert(response.responseText);
+			}
+		});
+		
+		return false;
+	},
+	
+	/**
+	 * Ajax handler of ham reporting
+	 */
+	 acceptComment: function() {
+	 	var __comment = this.parentNode.parentNode.parentNode;
+	 	
+	 	__comment.getElementsByTagName('span')[0].innerHTML = "Marking comment as accepted...";
 	 	
 	 	new Ajax.Request(this.href + '?ajax=1', {
 	 		onSuccess : function(response) {
