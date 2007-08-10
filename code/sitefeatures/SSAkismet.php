@@ -1,7 +1,7 @@
 <?php
 class SSAkismet extends Akismet {
 	private static $apiKey;
-	private static $saveSpam = false;
+	private static $saveSpam = true;
 	
 	static function setAPIKey($key) {
 		self::$apiKey = $key;
