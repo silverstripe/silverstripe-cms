@@ -65,11 +65,9 @@ class PageCommentInterface extends ViewableData {
 			$limit = "0,".PageComment::$comments_per_page;
 		}
 		
-		if(isset($_GET['showspam'])) {
-			$comments = DataObject::get("PageComment", "ParentID = '" . Convert::raw2sql($this->page->ID) . "'", "Created DESC", "", $limit);
-		} else {
-			$comments = DataObject::get("PageComment", "ParentID = '" . Convert::raw2sql($this->page->ID) . "' AND IsSpam = 0", "Created DESC", "", $limit);
-		}
+		$spamfilter = isset($_GET['showspam']) ? '' : 'AND IsSpam=0';
+		$unmoderatedfilter = Permission::check('ADMIN') ? '' : 'AND NeedsModeration = 0';
+		$comments =  DataObject::get("PageComment", "ParentID = '" . Convert::raw2sql($this->page->ID) . "' $spamfilter $unmoderatedfilter", "Created DESC", "", $limit);
 		
 		if(is_null($comments)) {
 			return;
