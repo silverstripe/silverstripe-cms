@@ -19,6 +19,21 @@ CommentTableField.prototype = {
 				onkeypress : this.prepareSearch.bind(this)
 		};
 		
+
+		
+		rules['#Form_EditForm'] = {
+			changeDetection_fieldsToIgnore : {
+				'ctf[start]' : true,
+				'ctf[ID]' : true,
+				'CommentFilterButton' : true,
+				'CommentFieldName' : true,
+				'Name' : true,
+				'Comment' : true,
+				'Page' : true,
+				'CommentSearch' : true
+			}
+		}
+		
 		Behaviour.register(rules);
 	},
 	
