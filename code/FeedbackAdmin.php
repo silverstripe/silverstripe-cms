@@ -16,7 +16,7 @@ class FeedbackAdmin extends LeftAndMain {
 	    return $this->getLastFormIn($this->renderWith('FeedbackAdmin_right'));
 	}
 	
-	public function EditForm() {
+	public function Section() {
 		$url = rtrim($_SERVER['REQUEST_URI'], '/');
 		if(strrpos($url, '&')) {
 			$url = substr($url, 0, strrpos($url, '&'));
@@ -26,6 +26,12 @@ class FeedbackAdmin extends LeftAndMain {
 		if($section != 'accepted' && $section != 'unmoderated' && $section != 'spam') {
 			$section = 'accepted';
 		}
+		
+		return $section;
+	}
+	
+	public function EditForm() {
+		$section = $this->Section();
 		
 		if($section == 'accepted') {
 			$filter = 'IsSpam=0 AND NeedsModeration=0';

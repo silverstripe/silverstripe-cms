@@ -47,13 +47,13 @@
 						<td width="18"><a class="popuplink editlink" href="$EditLink" target="_blank"><img src="cms/images/edit.gif" alt="edit" /></a></td>
 					<% end_if %>
 					<% if HasAcceptButton %>
-						<td width="18"><a class="acceptlink" href="$AcceptLink" title="Accept this comment"><img src="cms/images/accept.gif" alt="accept" /></a></td>
+						<td width="18"><a class="acceptlink" href="$AcceptLink" title="Accept this comment"><img src="cms/images/approvecomment.png" alt="accept" /></a></td>
 					<% end_if %>
 					<% if HasSpamButton %>
-						<td width="18"><a class="spamlink" href="$SpamLink" title="Mark this comment as spam"><img src="cms/images/spam.gif" alt="spam" /></a></td>
+						<td width="18"><a class="spamlink" href="$SpamLink" title="Mark this comment as spam"><img src="cms/images/declinecomment.png" alt="spam" /></a></td>
 					<% end_if %>
 					<% if HasHamButton %>
-						<td width="18"><a class="hamlink" href="$HamLink" title="Mark this comment as not spam"><img src="cms/images/ham.gif" alt="ham" /></a></td>
+						<td width="18"><a class="hamlink" href="$HamLink" title="Mark this comment as not spam"><img src="cms/images/approvecomment.png" alt="ham" /></a></td>
 					<% end_if %>
 					<% if Can(delete) %>
 						<td width="18"><a class="deletelink" href="$DeleteLink" title="Delete this row"><img src="cms/images/delete.gif" alt="delete" /></a></td>
