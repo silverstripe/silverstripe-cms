@@ -29,17 +29,20 @@ class FeedbackAdmin extends LeftAndMain {
 		
 		if($section == 'accepted') {
 			$filter = 'IsSpam=0 AND NeedsModeration=0';
+			$title = "<h2>Accepted Comments</h2>";
 		} else if($section == 'unmoderated') {
 			$filter = 'NeedsModeration=1';
+			$title = "<h2>Comments Awaiting Moderation</h2>";
 		} else {
 			$filter = 'IsSpam=1';
+			$title = "<h2>Spam</h2>";
 		}
 		
 		$tableFields = array(
 			"Name" => "Author",
 			"Comment" => "Comment",
 			"PageTitle" => "Page"
-		);
+		);	
 		
 		$popupFields = new FieldSet(
 			new TextField("Name"),
@@ -47,10 +50,10 @@ class FeedbackAdmin extends LeftAndMain {
 		);
 		
 		$idField = new HiddenField('ID', '', $section);
-		$table = new CommentTableField($this, "Comments", "PageComment", $section, $tableFields, $popupFields, $filter);
+		$table = new CommentTableField($this, "Comments", "PageComment", $section, $tableFields, $popupFields, array($filter));
 		$table->setParentClass(false);
 		
-		$fields = new FieldSet($idField, $table);
+		$fields = new FieldSet(new LiteralField("Title", $title), $idField, $table);
 		
 		$actions = new FieldSet();
 		

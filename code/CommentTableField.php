@@ -6,8 +6,15 @@ class CommentTableField extends ComplexTableField {
 	
 	function __construct($controller, $name, $sourceClass, $mode, $fieldList, $detailFormFields = null, $sourceFilter = "", $sourceSort = "", $sourceJoin = "") {
 		$this->mode = $mode;
-		$this->Markable = true;
+		
 		parent::__construct($controller, $name, $sourceClass, $fieldList, $detailFormFields, $sourceFilter, $sourceSort, $sourceJoin);
+		
+		$this->Markable = true;
+			// search
+		$search = isset($_REQUEST['CommentSearch']) ? Convert::raw2sql($_REQUEST['CommentSearch']) : null;
+		if(!empty($_REQUEST['CommentSearch'])) {
+			$this->sourceFilter[] = "( `Name` LIKE '%$search%' OR `Comment` LIKE '%$search%')";
+		}
 		
 		Requirements::javascript('cms/javascript/CommentTableField.js');
 	}
@@ -100,8 +107,9 @@ class CommentTableField extends ComplexTableField {
 
 	function SearchForm() {
 		$searchFields = new FieldGroup(
-			new TextField('MemberSearch', 'Search'),
-			new HiddenField("ctf[mode]",'',$this->mode)
+			new TextField('CommentSearch', 'Search'),
+			new HiddenField("ctf[ID]",'',$this->mode),
+			new HiddenField('CommentFieldName','',$this->name)
 		);
 		
 		$actionFields = new LiteralField('CommentFilterButton','<input type="submit" name="CommentFilterButton" value="Filter" id="CommentFilterButton"/>');

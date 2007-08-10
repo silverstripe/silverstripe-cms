@@ -15,6 +15,10 @@ CommentTableField.prototype = {
 			onclick: this.removeRowAfterAjax.bind(this)
 		};
 		
+		rules['#Form_EditForm div.CommentFilter input'] = {
+				onkeypress : this.prepareSearch.bind(this)
+		};
+		
 		Behaviour.register(rules);
 	},
 	
@@ -36,7 +40,80 @@ CommentTableField.prototype = {
 			}
 		);
 		Event.stop(e);
+	},
+	
+	// prevent submission of wrong form-button (CommentFilterButton)
+	prepareSearch: function(e) {
+		// IE6 doesnt send an event-object with onkeypress
+		var event = (e) ? e : window.event;
+		var keyCode = (event.keyCode) ? event.keyCode : event.which;
+		
+		if(keyCode == Event.KEY_RETURN) {
+			var el = Event.element(event);
+			$('CommentFilterButton').onclick(event);
+			Event.stop(event);
+			return false;
+		}
 	}
 }
 
 CommentTableField.applyTo('div.CommentTableField');
+
+CommentFilterButton = Class.create();
+CommentFilterButton.applyTo('#Form_EditForm #CommentFilterButton');
+CommentFilterButton.prototype = {
+	initialize: function() {
+		this.inputFields = new Array();
+		
+		var childNodes = this.parentNode.getElementsByTagName('input');
+		
+		for( var index = 0; index < childNodes.length; index++ ) {
+			if( childNodes[index].tagName ) {
+				childNodes[index].resetChanged = function() { return false; }
+				childNodes[index].isChanged = function() { return false; }
+				this.inputFields.push( childNodes[index] );
+			}
+		}
+		
+		childNodes = this.parentNode.getElementsByTagName('select');
+		
+		for( var index = 0; index < childNodes.length; index++ ) {
+			if( childNodes[index].tagName ) {
+				childNodes[index].resetChanged = function() { return false; }
+				childNodes[index].field_changed = function() { return false; }
+				this.inputFields.push( childNodes[index] );
+			}
+		}
+	},
+	
+	isChanged: function() {
+		return false;
+	},
+	
+	onclick: function(e) {
+		//if(!$('ctf-ID') || !$('CommentFieldName')) {
+		//	return false;
+		//}
+		
+		var updateURL = "";
+		updateURL += Event.findElement(e,"form").action;
+		// we can't set "fieldName" as a HiddenField because there might be multiple ComplexTableFields in a single EditForm-container
+		updateURL += "&fieldName="+$('CommentFieldName').value;
+		updateURL += "&action_callfieldmethod&&methodName=ajax_refresh&";
+		for( var index = 0; index < this.inputFields.length; index++ ) {
+			if( this.inputFields[index].tagName ) {
+				updateURL += this.inputFields[index].name + '=' + encodeURIComponent( this.inputFields[index].value ) + '&';
+			}
+		}
+		updateURL += 'ajax=1';
+
+		new Ajax.Request( updateURL, {
+			onSuccess: Ajax.Evaluator,
+			onFailure: function( response ) {
+				errorMessage('Could not filter results: ' + response.responseText );
+			}.bind(this)
+		});
+		
+		return false;	
+	}
+}
