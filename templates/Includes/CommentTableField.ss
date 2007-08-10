@@ -9,23 +9,7 @@
 				<% if Markable %><th width="18">&nbsp;</th><% end_if %>
 				<% control Headings %>
 				<th class="$Name">
-					<% if IsSortable %>
-						<span class="sortTitle">
-							<a href="$SortLink">$Title</a>
-						</span>
-						<span class="sortLink <% if SortBy %><% else %>sortLinkHidden<% end_if %>">
-							<a href="$SortLink"">
-								<% if SortDirection = desc %>
-								<img src="cms/images/bullet_arrow_up.png" alt="Sort ascending" />
-								<% else %>
-								<img src="cms/images/bullet_arrow_down.png" alt="Sort descending" />
-								<% end_if %>
-							</a>
-							&nbsp;
-						</span>
-					<% else %>
-						$Title
-					<% end_if %>
+					$Title
 				</th>
 				<% end_control %>
 				<% if Can(edit) %><th width="18">&nbsp;</th><% end_if %>
