@@ -29,6 +29,7 @@ CommentTableField.prototype = {
 				'CommentFieldName' : true,
 				'Name' : true,
 				'Comment' : true,
+				'Comments[]' : true,
 				'Page' : true,
 				'CommentSearch' : true
 			}
