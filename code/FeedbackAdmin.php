@@ -41,7 +41,8 @@ class FeedbackAdmin extends LeftAndMain {
 		$tableFields = array(
 			"Name" => "Author",
 			"Comment" => "Comment",
-			"PageTitle" => "Page"
+			"PageTitle" => "Page",
+			"Created" => "Date Posted"
 		);	
 		
 		$popupFields = new FieldSet(
