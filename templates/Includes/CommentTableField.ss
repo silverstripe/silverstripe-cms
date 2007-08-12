@@ -13,7 +13,7 @@
 				</th>
 				<% end_control %>
 				<% if Can(edit) %><th width="18">&nbsp;</th><% end_if %>
-				<% if HasAcceptButton %><th width="18">&nbsp;</th><% end_if %>
+				<% if HasApproveButton %><th width="18">&nbsp;</th><% end_if %>
 				<% if HasSpamButton %><th width="18">&nbsp;</th><% end_if %>
 				<% if HasHamButton %><th width="18">&nbsp;</th><% end_if %>
 				<% if Can(delete) %><th width="18">&nbsp;</th><% end_if %>
@@ -28,7 +28,7 @@
 					<td<% if Function %> class="$Function"<% end_if %>>&nbsp;</td>
 				<% end_control %>
 				<% if Can(edit) %><th width="18">&nbsp;</th><% end_if %>
-				<% if HasAcceptButton %><th width="18">&nbsp;</th><% end_if %>
+				<% if HasApproveButton %><th width="18">&nbsp;</th><% end_if %>
 				<% if HasSpamButton %><th width="18">&nbsp;</th><% end_if %>
 				<% if HasHamButtom %><th width="18">&nbsp;</th><% end_if %>
 				<% if Can(delete) %><th width="18">&nbsp;</th><% end_if %>
@@ -46,8 +46,8 @@
 					<% if Can(edit) %>
 						<td width="18"><a class="popuplink editlink" href="$EditLink" target="_blank"><img src="cms/images/edit.gif" alt="edit" /></a></td>
 					<% end_if %>
-					<% if HasAcceptButton %>
-						<td width="18"><a class="acceptlink" href="$AcceptLink" title="Accept this comment"><img src="cms/images/approvecomment.png" alt="accept" /></a></td>
+					<% if HasApproveButton %>
+						<td width="18"><a class="approvelink" href="$ApproveLink" title="Approve this comment"><img src="cms/images/approvecomment.png" alt="approve" /></a></td>
 					<% end_if %>
 					<% if HasSpamButton %>
 						<td width="18"><a class="spamlink" href="$SpamLink" title="Mark this comment as spam"><img src="cms/images/declinecomment.png" alt="spam" /></a></td>
@@ -65,7 +65,7 @@
 					<% if Markable %><th width="18">&nbsp;</th><% end_if %>
 					<td colspan="$Headings.Count"><i>No items found</i></td>
 					<% if Can(edit) %><th width="18">&nbsp;</th><% end_if %>
-					<% if HasAcceptButton %><th width="18">&nbsp;</th><% end_if %>
+					<% if HasApproveButton %><th width="18">&nbsp;</th><% end_if %>
 					<% if HasSpamButton %><th width="18">&nbsp;</th><% end_if %>
 					<% if HasHamButtom %><th width="18">&nbsp;</th><% end_if %>
 					<% if Can(delete) %><th width="18">&nbsp;</th><% end_if %>

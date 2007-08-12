@@ -76,7 +76,7 @@ class CommentTableField extends ComplexTableField {
 		}
 	}
 	
-	function accept() {
+	function approve() {
 		if(!Permission::check('ADMIN')) {
 			return false;
 		}
@@ -96,10 +96,10 @@ class CommentTableField extends ComplexTableField {
 	}
 	
 	function HasSpamButton() {
-		return $this->mode == 'accepted' || $this->mode == 'unmoderated';
+		return $this->mode == 'approved' || $this->mode == 'unmoderated';
 	}
 	
-	function HasAcceptButton() {
+	function HasApproveButton() {
 		return $this->mode == 'unmoderated';
 	}
 	
@@ -131,8 +131,8 @@ class CommentTableField_Item extends ComplexTableField_Item {
 		return $this->parent()->HasSpamButton();
 	}
 	
-	function HasAcceptButton() {
-		return $this->parent()->HasAcceptButton();
+	function HasApproveButton() {
+		return $this->parent()->HasApproveButton();
 	}
 	
 	function HasHamButton() {
@@ -147,8 +147,8 @@ class CommentTableField_Item extends ComplexTableField_Item {
 		return $this->BaseLink() . "&methodName=ham";
 	}
 	
-	function AcceptLink() {
-		return $this->BaseLink() . "&methodName=accept";
+	function ApproveLink() {
+		return $this->BaseLink() . "&methodName=approve";
 	}
 }
 

@@ -8,8 +8,8 @@
 	<span>Posted by $Name.XML, $Created.Nice ($Created.Ago)</span>
 	<br />
 	<ul class="actionLinks">
-		<% if AcceptLink %>
-			<li><a href="$AcceptLink" class="acceptlink">accept this comment</a></li>
+		<% if ApproveLink %>
+			<li><a href="$ApproveLink" class="approvelink">approve this comment</a></li>
 		<% end_if %>
 		<% if SpamLink %>
 			<li><a href="$SpamLink" class="spamlink">this comment is spam</a></li>

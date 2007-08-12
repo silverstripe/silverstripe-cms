@@ -63,9 +63,9 @@ class PageComment extends DataObject {
 		}
 	}
 	
-	function AcceptLink() {
+	function ApproveLink() {
 		if(Permission::check('CMS_ACCESS_CMSMain') && $this->getField('NeedsModeration')) {
-			return "PageComment/accept/$this->ID";
+			return "PageComment/approve/$this->ID";
 		}
 	}
 	
@@ -77,7 +77,7 @@ class PageComment extends DataObject {
 		}
 	}
 	
-	function accept() {
+	function approve() {
 		if(Permission::check('CMS_ACCESS_CMSMain')) {
 			$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
 			$comment->NeedsModeration = false;

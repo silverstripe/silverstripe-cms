@@ -23,8 +23,8 @@ class FeedbackAdmin extends LeftAndMain {
 		}
 		$section = substr($url, strrpos($url, '/') + 1);
 		
-		if($section != 'accepted' && $section != 'unmoderated' && $section != 'spam') {
-			$section = 'accepted';
+		if($section != 'approved' && $section != 'unmoderated' && $section != 'spam') {
+			$section = 'approved';
 		}
 		
 		return $section;
@@ -33,9 +33,9 @@ class FeedbackAdmin extends LeftAndMain {
 	public function EditForm() {
 		$section = $this->Section();
 		
-		if($section == 'accepted') {
+		if($section == 'approved') {
 			$filter = 'IsSpam=0 AND NeedsModeration=0';
-			$title = "<h2>Accepted Comments</h2>";
+			$title = "<h2>Approved Comments</h2>";
 		} else if($section == 'unmoderated') {
 			$filter = 'NeedsModeration=1';
 			$title = "<h2>Comments Awaiting Moderation</h2>";
@@ -159,7 +159,7 @@ JS;
 JS;
 	}
 	
-	function acceptmarked() {
+	function approvemarked() {
 			$numComments = 0;
 			$folderID = 0;
 			$deleteList = '';

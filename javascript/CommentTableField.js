@@ -7,7 +7,7 @@ CommentTableField.prototype = {
 			onclick: this.removeRowAfterAjax.bind(this)
 		};
 		
-		rules['#'+this.id+' table.data a.acceptlink'] = {
+		rules['#'+this.id+' table.data a.approvelink'] = {
 			onclick: this.removeRowAfterAjax.bind(this)
 		};
 		

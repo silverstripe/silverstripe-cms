@@ -20,8 +20,8 @@ PageCommentInterface.prototype = {
 			'#PageComments a.hamlink' : {
 				onclick : this.reportHam	
 			},
-			'#PageComments a.acceptlink' : {
-				onclick : this.acceptComment	
+			'#PageComments a.approvelink' : {
+				onclick : this.approveComment	
 			}
 		});
 	},
@@ -188,10 +188,10 @@ PageCommentInterface.prototype = {
 	/**
 	 * Ajax handler of ham reporting
 	 */
-	 acceptComment: function() {
+	 approveComment: function() {
 	 	var __comment = this.parentNode.parentNode.parentNode;
 	 	
-	 	__comment.getElementsByTagName('span')[0].innerHTML = "Marking comment as accepted...";
+	 	__comment.getElementsByTagName('span')[0].innerHTML = "Marking comment as approved...";
 	 	
 	 	new Ajax.Request(this.href + '?ajax=1', {
 	 		onSuccess : function(response) {
