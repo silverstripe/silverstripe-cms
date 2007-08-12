@@ -86,7 +86,7 @@ PageCommentInterface.prototype = {
 	 * Ajax handler of moderation removal
 	 */
 	deleteComment: function() {
-		var __comment = this.parentNode.parentNode.parentNode;
+		var __comment = this.parentNode.parentNode.parentNode.parentNode;
 		
 		__comment.getElementsByTagName('span')[0].innerHTML = "Removing...";
 		
@@ -120,7 +120,7 @@ PageCommentInterface.prototype = {
 	 * Ajax handler of spam reporting
 	 */
 	 reportSpam: function() {
-	 	var __comment = this.parentNode.parentNode.parentNode;
+	 	var __comment = this.parentNode.parentNode.parentNode.parentNode;
 	 	
 	 	__comment.getElementsByTagName('span')[0].innerHTML = "Reporting spam...";
 	 	
@@ -162,7 +162,7 @@ PageCommentInterface.prototype = {
 	 * Ajax handler of ham reporting
 	 */
 	 reportHam: function() {
-	 	var __comment = this.parentNode.parentNode.parentNode;
+	 	var __comment = this.parentNode.parentNode.parentNode.parentNode;
 	 	
 	 	__comment.getElementsByTagName('span')[0].innerHTML = "Reporting as not spam...";
 	 	
@@ -189,7 +189,7 @@ PageCommentInterface.prototype = {
 	 * Ajax handler of ham reporting
 	 */
 	 approveComment: function() {
-	 	var __comment = this.parentNode.parentNode.parentNode;
+	 	var __comment = this.parentNode.parentNode.parentNode.parentNode;
 	 	
 	 	__comment.getElementsByTagName('span')[0].innerHTML = "Marking comment as approved...";
 	 	
