@@ -48,11 +48,23 @@ class CommentTableField extends ComplexTableField {
 		$childId = Convert::raw2sql($_REQUEST['tf']['childID']);
 
 		if (is_numeric($childId)) {
-			$childObject = DataObject::get_by_id($this->sourceClass, $childId);
-			if($childObject) {
-				$childObject->IsSpam = true;
-				$childObject->NeedsModeration = false;
-				$childObject->write();
+			$comment = DataObject::get_by_id($this->sourceClass, $childId);
+			if($comment) {
+				$comment->IsSpam = true;
+				$comment->NeedsModeration = false;
+				$comment->write();
+				
+				if(SSAkismet::isEnabled()) {
+					try {
+						$akismet = new SSAkismet();
+						$akismet->setCommentAuthor($comment->getField('Name'));
+						$akismet->setCommentContent($comment->getField('Comment'));
+						
+						$akismet->submitSpam();
+					} catch (Exception $e) {
+						// Akismet didn't work, most likely the service is down.
+					}
+				}
 			}
 		}
 	}
@@ -67,11 +79,23 @@ class CommentTableField extends ComplexTableField {
 		$childId = Convert::raw2sql($_REQUEST['tf']['childID']);
 
 		if (is_numeric($childId)) {
-			$childObject = DataObject::get_by_id($this->sourceClass, $childId);
-			if($childObject) {
-				$childObject->IsSpam = false;
-				$childObject->NeedsModeration = false;
-				$childObject->write();
+			$comment = DataObject::get_by_id($this->sourceClass, $childId);
+			if($comment) {
+				$comment->IsSpam = false;
+				$comment->NeedsModeration = false;
+				$comment->write();
+				
+				if(SSAkismet::isEnabled()) {
+					try {
+						$akismet = new SSAkismet();
+						$akismet->setCommentAuthor($comment->getField('Name'));
+						$akismet->setCommentContent($comment->getField('Comment'));
+						
+						$akismet->submitHam();
+					} catch (Exception $e) {
+						// Akismet didn't work, most likely the service is down.
+					}
+				}
 			}
 		}
 	}

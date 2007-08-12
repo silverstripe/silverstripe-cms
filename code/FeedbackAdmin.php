@@ -68,7 +68,7 @@ class FeedbackAdmin extends LeftAndMain {
 			$actions->push(new FormAction('acceptmarked', 'Accept'));
 		}
 		
-		if($section == 'accepted' || $section == 'unmoderated') {
+		if($section == 'approved' || $section == 'unmoderated') {
 			$actions->push(new FormAction('spammarked', 'Mark as spam'));
 		}
 		
@@ -119,6 +119,18 @@ JS;
 						$comment->IsSpam = true;
 						$comment->NeedsModeration = false;
 						$comment->write();
+						
+						if(SSAkismet::isEnabled()) {
+							try {
+								$akismet = new SSAkismet();
+								$akismet->setCommentAuthor($comment->getField('Name'));
+								$akismet->setCommentContent($comment->getField('Comment'));
+								
+								$akismet->submitSpam();
+							} catch (Exception $e) {
+								// Akismet didn't work, most likely the service is down.
+							}
+						}
 						$numComments++;
 					}
 				}
@@ -145,6 +157,19 @@ JS;
 						$comment->IsSpam = false;
 						$comment->NeedsModeration = false;
 						$comment->write();
+						
+						if(SSAkismet::isEnabled()) {
+							try {
+								$akismet = new SSAkismet();
+								$akismet->setCommentAuthor($comment->getField('Name'));
+								$akismet->setCommentContent($comment->getField('Comment'));
+								
+								$akismet->submitSpam();
+							} catch (Exception $e) {
+								// Akismet didn't work, most likely the service is down.
+							}
+						}
+						
 						$numComments++;
 					}
 				}
