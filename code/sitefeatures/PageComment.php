@@ -72,6 +72,8 @@ class PageComment extends DataObject {
 	function SpamClass() {
 		if($this->getField('IsSpam')) {
 			return 'spam';
+		} else if($this->getField('NeedsModeration')) {
+			return 'unmoderated';
 		} else {
 			return 'notspam';
 		}

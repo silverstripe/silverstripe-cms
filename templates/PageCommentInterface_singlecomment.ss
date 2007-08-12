@@ -1,7 +1,4 @@
 <p class="comment" id="PageComment_$ID">
-	<% if NeedsModeration %>
-		<p><b>Unmoderated comment</b></p>
-	<% end_if %>
 	$Comment.XML
 </p>
 <p class="info">
