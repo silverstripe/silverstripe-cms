@@ -78,6 +78,10 @@ class CommentAdmin extends LeftAndMain {
 		
 		$actions->push(new FormAction('deletemarked', 'Delete'));
 		
+		if($section == 'spam') {
+			$actions->push(new FormAction('deleteall', 'Delete All'));
+		}
+		
 		$form = new Form($this, "EditForm", $fields, $actions);
 		
 		return $form;
@@ -105,6 +109,25 @@ class CommentAdmin extends LeftAndMain {
 				$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value);
 				statusMessage("Deleted $numComments comments.");
 JS;
+	}
+	
+	function deleteall() {
+		$numComments = 0;
+		$spam = DataObject::get('PageComment', "PageComment.IsSpam=1");
+		
+		if($spam) {
+			$numComments = $spam->Count();
+			
+			foreach($spam as $comment) {
+				$comment->delete();
+			}
+		}
+		
+		echo <<<JS
+				$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value);
+				statusMessage("Deleted $numComments comments.");
+JS;
+		
 	}
 	
 	function spammarked() {
