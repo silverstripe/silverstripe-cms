@@ -1,19 +1,19 @@
 <?php
 
-class FeedbackAdmin extends LeftAndMain {
+class CommentAdmin extends LeftAndMain {
 	
 	public function init() {
 		parent::init();
 		
-		Requirements::javascript("cms/javascript/FeedbackAdmin_right.js");
+		Requirements::javascript("cms/javascript/CommentAdmin_right.js");
 	}
 	
 	public function Link($action = null) {
-		return "admin/feedback/$action";
+		return "admin/comments/$action";
 	}
 	
 	public function showtable($params) {
-	    return $this->getLastFormIn($this->renderWith('FeedbackAdmin_right'));
+	    return $this->getLastFormIn($this->renderWith('CommentAdmin_right'));
 	}
 	
 	public function Section() {

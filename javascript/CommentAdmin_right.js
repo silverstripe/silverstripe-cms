@@ -3,7 +3,7 @@ Behaviour.register({
 		getPageFromServer : function(id) {
 			statusMessage("loading...");
 			
-			var requestURL = 'admin/feedback/showtable/' + id;
+			var requestURL = 'admin/comments/showtable/' + id;
 			
 			this.loadURLFromServer(requestURL);
 			

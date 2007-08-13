@@ -201,7 +201,7 @@ html>body #top #MainMenu li {
 #top #MainMenu #Menu-report { background-image: url(../images/mainmenu/reports.gif); }
 #top #MainMenu #Menu-newsletter { background-image: url(../images/mainmenu/emails.gif); }
 #top #MainMenu #Menu-files { background-image: url(../images/mainmenu/files.gif); }
-#top #MainMenu #Menu-feedback { background-image: url(../images/mainmenu/feedback.gif); }
+#top #MainMenu #Menu-comments { background-image: url(../images/mainmenu/comments.gif); }
 
 #top #MainMenu #Menu-help { background-image: url(../images/mainmenu/help.gif); 
 	float: right;

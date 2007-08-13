@@ -154,7 +154,7 @@ abstract class LeftAndMain extends Controller {
 			"Newsletters" => array("newsletter", "admin/newsletter/", "NewsletterAdmin"),
 			"Reports" => array("report", "admin/reports/", "ReportAdmin"),
 			"Security" => array("security", "admin/security/", "SecurityAdmin"),
-			"Feedback" => array("feedback", "admin/feedback/", "FeedbackAdmin"),
+			"Comments" => array("comments", "admin/comments/", "CommentAdmin"),
 			"Help" => array("help", "http://userhelp.silverstripe.com"),
 		);
 

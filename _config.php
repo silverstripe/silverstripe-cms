@@ -9,7 +9,7 @@ Director::addRules(50, array(
 	'admin/newsletter/$Action/$ID' => 'NewsletterAdmin',
 	'admin/reports/$Action/$ID' => 'ReportAdmin',
 	'admin/assets/$Action/$ID' => 'AssetAdmin',
-	'admin/feedback/$Action' => 'FeedbackAdmin',
+	'admin/comments/$Action' => 'CommentAdmin',
 	'admin/ReportField/$Action/$ID/$Type/$OtherID' => 'ReportField_Controller',
 	'admin/bulkload/$Action/$ID/$OtherID' => 'BulkLoaderAdmin',
 	'admin/$Action/$ID/$OtherID' => 'CMSMain',
