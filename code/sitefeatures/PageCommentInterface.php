@@ -35,14 +35,10 @@ class PageCommentInterface extends ViewableData {
 			new HiddenField("ParentID", "ParentID", $this->page->ID),
 			new TextField("Name", "Your name")
 		);	
+		
 		if(MathSpamProtection::isEnabled()){
 			$fields->push(new TextField("Math","Spam protection question: ".MathSpamProtection::getMathQuestion()));
 		}				
-		
-		/*//TODO
-		  if(CaptchaSpamProtection::isEnabled()){
-			$fields->push(new TextField("Captcha",CaptchaSpamProtection::getImage()."<br /><br />Please copy down the text from the image above"));
-		}	*/	
 		
 		$fields->push(new TextareaField("Comment", "Comments"));
 		
@@ -116,24 +112,14 @@ class PageCommentInterface_Form extends Form {
 		}
 		
 		//check if spam question was right.
-		if(MathSpamProtection::isEnabled()){		
+		if(MathSpamProtection::isEnabled()){
 			if(!MathSpamProtection::correctAnswer($data['Math'])){
-						if(Director::is_ajax()) {
-							echo "<div class='BlogError'><p>You got the spam protection question wrong.</p></div>";
-						} else {		
+						if(!Director::is_ajax()) {				
 							Director::redirectBack();
 						}
-				return;
+						return "spamprotectionfalied"; //used by javascript for checking if the spam question was wrong
 			}
 		}
-		
-		/*
-		if(CaptchaSpamProtection::isEnabled()){		
-			if(!CaptchaSpamProtection::correctAnswer($data['Captcha'])){
-				echo "<div class='BlogError'><p>You got the captcha protection question wrong.</p></div>";
-				return;
-			}
-		}*/
 		
 		Cookie::set("PageCommentInterface_Name", $data['Name']);
 		
@@ -145,9 +131,26 @@ class PageCommentInterface_Form extends Form {
 		$comment->write();
 		
 		if(Director::is_ajax()) {
-			echo $comment->renderWith('PageCommentInterface_singlecomment');
+			if($comment->NeedsModeration){
+				echo "Your comment has been submitted and is now awating moderation.";
+			} else{
+				echo $comment->renderWith('PageCommentInterface_singlecomment');
+			}
 		} else {		
 			Director::redirectBack();
+		}
+	}
+}
+
+class PageCommentInterface_Controller extends ContentController {
+	function __construct() {
+		parent::__construct(null);
+	}
+	
+	function newspamquestion() {
+			if(Director::is_ajax()) {
+			echo Convert::raw2xml("Spam protection question: ".MathSpamProtection::getMathQuestion());
+			exit;
 		}
 	}
 }

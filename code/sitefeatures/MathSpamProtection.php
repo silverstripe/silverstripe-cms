@@ -38,7 +38,15 @@ class MathSpamProtection {
 	static function correctAnswer($answer){
 		$v1 = Session::get("mathQuestionV1");
 		$v2 = Session::get("mathQuestionV2");
-		return (MathSpamProtection::digitToWord($v1 + $v2) == $answer || ($v1 + $v2) == $answer) ? true : false;	
+		
+		Session::clear('mathQuestionV1');
+		Session::clear('mathQuestionV2');
+		
+		if(MathSpamProtection::digitToWord($v1 + $v2) == $answer || ($v1 + $v2) == $answer){
+			return true;
+		}
+		return false;
+		
 	}
 	
 	/**
