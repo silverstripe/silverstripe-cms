@@ -26,6 +26,12 @@ PageCommentInterface.prototype = {
 		});
 	},
 	
+	loadSpamQuestion: function(response) {
+		var spamQuestionDiv = $('Math');
+		var mathLabel = spamQuestionDiv.getElementsByTagName('label')[0];
+		mathLabel.innerHTML = response.responseText;
+	},
+	
 	postComment: function() {
 		var form = $("PageCommentInterface_Form_PageCommentsPostCommentForm");
 		var message = $("PageCommentInterface_Form_PageCommentsPostCommentForm_error");
@@ -44,27 +50,56 @@ PageCommentInterface.prototype = {
 			var pageComments = $('PageComments').getElementsByTagName('li');
 			var __newComment = document.createElement('li');
 
-			// Add it to the list with a 'loading' message
+	
+						// Add it to the list with a 'loading' message
 			$('PageComments').insertBefore(__newComment, pageComments[0]);
 			__newComment.innerHTML = '<p><img src="cms/images/network-save.gif" /> Loading...</p>';
-
+			__newComment.className ="even";
+			
 			// Submit the form via ajax
 			Ajax.SubmitForm(form, "action_postcomment", {
 				onSuccess : function(response) {
-					// Load the response into the new <li>
-					__newComment.innerHTML = response.responseText;
-					Behaviour.apply(__newComment);
 					
-					// Flash it using Scriptaculous
-					new Effect.Highlight(__newComment, { endcolor: '#e9e9e9' } );
-					if(response.responseText.match('<b>Spam detected!!</b>')) {
-						__newComment.className = 'spam';
+								// Create an Ajax request to regenerate the spam protection question
+			//need to check if there is actually a spam question to change first
+			if(form.elements.Math){
+				new Ajax.Request(document.getElementsByTagName('base')[0].href+'PageCommentInterface_Controller/newspamquestion', {
+					onSuccess: loadSpamQuestion,
+					onFailure: Ajax.Evaluator
+				});
+			}
+					
+						if(response.responseText != "spamprotectionfalied"){
+						
+							// Load the response into the new <li>
+							__newComment.innerHTML = response.responseText;
+							Behaviour.apply(__newComment);
+							
+							// Flash it using Scriptaculous
+							new Effect.Highlight(__newComment, { endcolor: '#e9e9e9' } );
+							if(response.responseText.match('<b>Spam detected!!</b>')) {
+								__newComment.className = 'spam';
+							}
+						
+						}else{
+							__newComment.innerHTML = "";
+							Behaviour.apply(__newComment);
+							message.style.display = '';
+							message.innerHTML = "You got the spam question wrong.";
+							
+						}
+						
+						
+					},
+					onFailure : function(response) {
+						alert(response.responseText);
 					}
-				},
-				onFailure : function(response) {
-					alert(response.responseText);
-				}
+				
+				
+				
 			});
+			
+
 			
 			// Clear the fields
 			
@@ -214,3 +249,8 @@ PageCommentInterface.prototype = {
 }
  
 PageCommentInterface.applyTo("#PageComments_holder");
+function loadSpamQuestion(response) {
+	var spamQuestionDiv = $('Math');
+	var mathLabel = spamQuestionDiv.getElementsByTagName('label')[0];
+	mathLabel.innerHTML = response.responseText;
+}
