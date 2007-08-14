@@ -54,7 +54,7 @@ PageCommentInterface.prototype = {
 						// Add it to the list with a 'loading' message
 			$('PageComments').insertBefore(__newComment, pageComments[0]);
 			__newComment.innerHTML = '<p><img src="cms/images/network-save.gif" /> Loading...</p>';
-			__newComment.className ="even";
+
 			
 			// Submit the form via ajax
 			Ajax.SubmitForm(form, "action_postcomment", {
@@ -70,7 +70,7 @@ PageCommentInterface.prototype = {
 			}
 					
 						if(response.responseText != "spamprotectionfalied"){
-						
+									__newComment.className ="even";
 							// Load the response into the new <li>
 							__newComment.innerHTML = response.responseText;
 							Behaviour.apply(__newComment);
