@@ -17,6 +17,7 @@
 			
 			<% if Comments.MoreThanOnePage %>
 				<div id="PageCommentsPagination">
+					<p>
 					<% if Comments.PrevLink %>
 						<a href="$Comments.PrevLink">&laquo; previous</a>
 					<% end_if %>
@@ -34,12 +35,13 @@
 					<% if Comments.NextLink %>
 						<a href="$Comments.NextLink">next &raquo;</a>
 					<% end_if %>
+					</p>
 				</div>
 			<% end_if %>
 		<% else %>
 			<p id="NoComments">No one has commented on this page yet.</p>
 		<% end_if %>
 	</div>
-	<a class="commentrss" href="$CommentRssLink">RSS feed for comments on this page</a>
+	<p id="CommentsRSSFeed"><a class="commentrss" href="$CommentRssLink">RSS feed for comments on this page</a></p>
 </div>
 	
