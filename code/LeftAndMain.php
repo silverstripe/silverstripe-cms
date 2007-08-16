@@ -68,6 +68,9 @@ abstract class LeftAndMain extends Controller {
 		Requirements::javascript('sapphire/javascript/Validator.js');
 		
 		Requirements::css("sapphire/css/SubmittedFormReportField.css");
+		
+		$dummy = null;
+		$this->extend('augmentInit', $dummy);
 	}
 	
 	/**
@@ -286,7 +289,12 @@ abstract class LeftAndMain extends Controller {
 		
 		if(!$rootID) {
 			$rootLink = $this->Link() . '0';
-			$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-0\" class=\"Root nodelete\"><a href=\"$rootLink\">Site Content</a>"
+			
+			// This lets us override the tree title with an extension
+			if($this->hasMethod('getCMSTreeTitle')) $treeTitle = $this->getCMSTreeTitle();
+			else $treeTitle = "Site Content";
+			
+			$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-0\" class=\"Root nodelete\"><a href=\"$rootLink\">$treeTitle</a>"
 				. $siteTree . "</li></ul>";
 		}
 				
