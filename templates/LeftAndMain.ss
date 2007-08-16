@@ -15,17 +15,7 @@
 	<div id="Loading" style="background: #FFF url(cms/images/loading.gif) 50% 50% no-repeat; position: absolute;z-index: 100000;height: 100%;width: 100%;margin: 0;padding: 0;z-index: 100000;position: absolute;">Loading...</div>
 
 	<div id="top">
-		<div id="Logo" style="$LogoStyle">
-			<% if ApplicationLogoText %>
-			<a href="http://www.silverstripe.com/">$ApplicationLogoText</a><br />
-			<% end_if %>
-		</div>
-		<ul id="MainMenu">
-		<% control MainMenu %>
-			<li class="$LinkingMode" id="Menu-$Code"><a href="$Link">$Title</a></li>
-		<% end_control %>
-		</ul>
-	
+		<% include CMSTopMenu %>	
 	</div><div id="left" style="float:left">
 		$Left
 	
