@@ -148,9 +148,8 @@ class PageCommentInterface_Controller extends ContentController {
 	}
 	
 	function newspamquestion() {
-			if(Director::is_ajax()) {
+		if(Director::is_ajax()) {
 			echo Convert::raw2xml("Spam protection question: ".MathSpamProtection::getMathQuestion());
-			exit;
 		}
 	}
 }

@@ -21,7 +21,7 @@ abstract class LeftAndMain extends Controller {
 				$menu = $this->MainMenu();
 				if(($first = $menu->First()) && $first->Link) {
 					Director::redirect($first->Link);
-					exit();
+					return;
 				}
 			}
 
@@ -33,7 +33,7 @@ abstract class LeftAndMain extends Controller {
 			);
 
 			Security::permissionFailure($this, $messageSet);
-			exit;
+			return;
 		}
 
 		Requirements::javascript("jsparty/prototype.js");

@@ -16,7 +16,6 @@ class StaticExporter extends Controller {
 			);
 
 			Security::permissionFailure($this, $messageSet);
-			exit;
 		}
 	}
 		
@@ -67,7 +66,9 @@ class StaticExporter extends Controller {
 				$controllerClass = "{$page->class}_Controller";
 				if(class_exists($controllerClass)) {
 					$controller = new $controllerClass($page);
-					$pageContent = $controller->run( array() );
+					
+					$response = $controller->run( array() );
+					$pageContent = $response->getBody();
 					
 					// Write to file
 					if($fh = fopen($contentfile, 'w')) {
