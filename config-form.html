@@ -1,115 +1,147 @@
 <html>
-<head>
-<title>SilverStripe CMS Installation</title>
-<script>
-function show(id) {
-	document.getElementById(id).style.display = '';
-}
-function hide(id) {
-	document.getElementById(id).style.display = 'none';
-}
-</script>
-<link rel="stylesheet" type="text/css" href="config-form.css" />
-</head>
+	<head>
+		<title>SilverStripe CMS Installation</title>
+		<script type="text/js">
+			function show(id) {
+				document.getElementById(id).style.display = '';
+			}
+			function hide(id) {
+				document.getElementById(id).style.display = 'none';
+			}
+		</script>
+		<link rel="stylesheet" type="text/css" href="config-form.css" />
+	</head>
 
-<body>
-<div id="All">
-<p style="float: right"><b>Version <?= $silverstripe_version ?></b></p>
-<h1>SilverStripe CMS Installation</h1>
-<p>Thanks for choosing to use SilverStripe!  Please follow the instructions below to get SilverStripe
-installed.</p>
+	<body>
+		<div id="All">
+			<p style="float: right">
+				<b>Version <?= $silverstripe_version ?></b>
+			</p>
+			<h1>SilverStripe CMS Installation</h1>
+			<p>
+				Thanks for choosing to use SilverStripe!  Please follow the instructions below to get SilverStripe
+				installed.
+			</p>
 
-<form action="install.php" method="post">
+			<form action="install.php" method="post">
+				<?php if(isset($hasErrorOtherThanDatabase)) { ?>
+					<p class="error">
+						You aren't currently able to install the software.  Please <a style="color: #CCF" href="#requirements">see below</a> for details.
+					</p>
+				<?php } else { ?>
+					<?php if($req->hasWarnings()) { ?>
+						<p class="warning">
+							There are some issues that we recommend you look at before installing, however, you are still able to install the software.
+							Please see below for details.
+						</p>
+					<?php } else if(!$dbReq->hasErrors()) { ?>
+						<p class="good">
+							You're ready to install! &nbsp;&nbsp; 
+						</p>
+						
+						<p>
+							<b>Template to install:</b>
+						</p>
+						<input type="radio" name="template" value="default" checked="checked">Default template</input><br />
+						<input type="radio" name="template" value="tutorial">Tutorial template</input><br />
+					<?php } ?>
+					
+					<?php if($alreadyInstalled) { ?>
+						<p>
+							<b>Note:</b> It seems as though SilverStripe is already installed here.  If you ask me to install, I will overwrite
+							the <b>.htaccess</b> and <b>mysite/_config.php</b> files. <br /> <br />
+							<label style="cursor: pointer">
+								<input type="checkbox" name="force_reinstall" onclick="document.getElementById('install_button').disabled = !this.checked" /> That's okay, please re-install SilverStripe and overwrite these files.
+							</label>
+						</p>
+					<? } ?>
 
-<?php if(isset($hasErrorOtherThanDatabase)) { ?>
-<p class="error">You aren't currently able to install the software.  Please <a style="color: #CCF" href="#requirements">see below</a> for details.</p>
-<?php } else { ?>
-<?php if($req->hasWarnings()) { ?>
-<p class="warning">There are some issues that we recommend you look at before installing, however, you are still able to install the software.  Please see below for details.</p>
+					<p>
+						<?php if($alreadyInstalled) { ?>
+							<input id="install_button" type="submit" disabled="disabled" name="go" value="Install SilverStripe" onclick="document.getElementById('saving_top').style.display = ''; this.value = 'Installing SilverStripe...'" />
+						<?php } else { ?>
+							<input id="install_button" type="submit" name="go" value="Install SilverStripe" onclick="document.getElementById('saving_top').style.display = ''; this.value = 'Installing SilverStripe...'" />
+						<? } ?>
+						
+						<span id="saving_top" style="display: none">
+							&nbsp;
+							<img src="cms/images/network-save.gif" />
+							(this will take a minute or so)
+						</span>
+					</p>
+				<?php } ?>
 
-<?php } else if(!$dbReq->hasErrors()) { ?>
-<p class="good">You're ready to install! &nbsp;&nbsp; 
-</p>
+				<input type="hidden" name="database" value="MySQLDatabase" />
+				<h2>MySQL Database</h2>
+				<p>
+					SilverStripe stores its content in a MySQL database.  Please provide the username
+					and password to connect to the server here.  If this account has permission to create databases, then we will
+					create the database for you; otherwise, you must give the name of a database that already exists.
+				</p>
 
-<p><b>Template to install:</b></p>
-<input type="radio" name="template" value="default" checked="checked">Default template</input><br />
-<input type="radio" name="template" value="tutorial">Tutorial template</input><br />
+				<?php if($dbReq->hasErrors()) { ?>
+					<p class="error">
+						These database details don't appear to be correct.  Please enter the correct details before installing.
+					</p>
+				<?php } else { ?>
+					<p class="good">
+						These database details look all good!
+					</p>
+				<?php } ?>
 
-<?php } ?>
+				<p style="margin-left: 2em" id="mysql_credentials">
+					<label for="mysql_server">
+						<span>MySQL server:</span>
+						<input id="mysql_server" type="text" name="mysql[server]" value="<?= $databaseConfig['server'] ?>" />
+					</label> <br />
+					<label for="mysql_username">
+						<span>MySQL username:</span>
+						<input id="mysql_username" type="text" name="mysql[username]" value="<?= $databaseConfig['username'] ?>"  />
+					</label> <br />
+					<label for="mysql_password">
+						<span>MySQL password:</span>
+						<input id="mysql_password" type="text" name="mysql[password]" value="<?= $databaseConfig['password'] ?>" />
+					</label> <br />
+					<label for="mysql_database">
+						<span>MySQL database:</span>
+						<input id="mysql_database" type="text" name="mysql[database]" value="<?= $databaseConfig['database'] ?>" onchange="this.value = this.value.replace(/[^A-Za-z0-9_]+/g,'');" />
+					</label> <br />
+				</p>
 
-	<?php if($alreadyInstalled) { ?>
-	<p><b>Note:</b> It seems as though SilverStripe is already installed here.  If you ask me to install, I will overwrite
-		the <b>.htaccess</b> and <b>mysite/_config.php</b> files. <br /> <br />
-		<label style="cursor: pointer">
-			<input type="checkbox" name="force_reinstall" onclick="document.getElementById('install_button').disabled = !this.checked" /> That's okay, please re-install SilverStripe and overwrite these files.
-		</label>
-	</p>
-	<? } ?>
+				<p style="margin-left: 2em">
+					<input type="submit" value="Re-check requirements" />
+				</p>
 
-<p>
-	<?php if($alreadyInstalled) { ?>
-	<input id="install_button" type="submit" disabled="disabled" name="go" value="Install SilverStripe" onclick="document.getElementById('saving_top').style.display = ''; this.value = 'Installing SilverStripe...'" />
-	<?php } else { ?>
-	<input id="install_button" type="submit" name="go" value="Install SilverStripe" onclick="document.getElementById('saving_top').style.display = ''; this.value = 'Installing SilverStripe...'" />
-	<? } ?>
-	
-	<span id="saving_top" style="display: none">
-	&nbsp;
-	<img src="cms/images/network-save.gif" />
-	(this will take a minute or so)
-	</span>
-</p>
-<?php } ?>
+				<h4>Details</h4>
+				<?php $dbReq->showTable("MySQL Configuration"); ?>
 
+				<br /><hr />
 
-<input type="hidden" name="database" value="MySQLDatabase" />
+				<h2>SilverStripe Administration Account</h2>
+				<p>
+					We will set up 1 administrator account for you automatically.  Enter the email address and password.  If you'd
+					rather log-in with a username instead of an email address, enter that instead.
+				</p>
 
-<h2>MySQL Database</h2>
-<p>
-SilverStripe stores its content in a MySQL database.  Please provide the username
-and password to connect to the server here.  If this account has permission to create databases, then we will
-create the database for you; otherwise, you must give the name of a database that already exists.
-</p>
+				<p style="margin-left: 2em">
+					<label for="username">
+						<span>Administrator email:</span>
+						<input type="text" name="username" id="username" value="admin" />
+					</label><br />
+					<label for="password">
+						<span>Administrator password:</span>
+						<input type="text" name="password" id="password" value="password" />
+					</label> <br />
+				</p>
 
-<?php if($dbReq->hasErrors()) { ?>
-<p class="error">These database details don't appear to be correct.  Please enter the correct details before installing.</p>
-<?php } else { ?>
-<p class="good">These database details look all good!</p>
-<?php } ?>
+				<br /><hr />
 
-<p style="margin-left: 2em" id="mysql_credentials" > <!--style="display: none"-->
-	<label for="mysql_server"> <span>MySQL server:</span> <input id="mysql_server" type="text" name="mysql[server]" value="<?= $databaseConfig['server'] ?>" /></label> <br />
-	<label for="mysql_username"> <span>MySQL username:</span> <input id="mysql_username" type="text" name="mysql[username]" value="<?= $databaseConfig['username'] ?>"  /></label> <br />
-	<label for="mysql_password"> <span>MySQL password:</span> <input id="mysql_password" type="text" name="mysql[password]" value="<?= $databaseConfig['password'] ?>" /></label> <br />
-	<label for="mysql_database"><span>MySQL database:</span> <input id="mysql_database" type="text" name="mysql[database]" value="<?= $databaseConfig['database'] ?>" onchange="this.value = this.value.replace(/[^A-Za-z0-9_]+/g,'');" /></label> <br />
-</p>
+				<h2 id="requirements">Requirements</h2>
+				<?php
+					$req->showTable();
+				?>
 
-<p style="margin-left: 2em"><input type="submit" value="Re-check requirements" /></p>
-
-<h4>Details</h4>
-<?php $dbReq->showTable("MySQL Configuration"); ?>
-
-<br /><hr />
-
-<h2>SilverStripe Administration Account</h2>
-<p>
-We will set up 1 administrator account for you automatically.  Enter the email address and password.  If you'd
-rather log-in with a username instead of an email address, enter that instead.
-</p>
-
-<p style="margin-left: 2em">
-	<label for="username"> <span>Administrator email:</span> <input type="text" name="username" id="username" value="admin" /></label> <br />
-	<label for="password"> <span>Administrator password:</span> <input type="text" name="password" id="password" value="password" /></label> <br />
-</p>
-
-<br /><hr />
-
-<h2 id="requirements">Requirements</h2>
-<?php
-$req->showTable();
-?>
-
-</form>
-</div>
-</body>
+			</form>
+		</div>
+	</body>
 </html>
