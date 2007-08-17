@@ -250,7 +250,7 @@ abstract class GenericDataAdmin extends LeftAndMain {
 	
 	function getResults() {
 		if(Director::is_ajax()) {
-			echo $this->Results();
+			return $this->Results();
 		} else {
 			return $this->Results();
 		}
