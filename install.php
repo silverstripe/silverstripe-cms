@@ -7,7 +7,6 @@
 
 ini_set('max_execution_time', 300);
 
-
 // Load database config
 if(isset($_REQUEST['mysql'])) {
 	$databaseConfig = $_REQUEST['mysql'];
@@ -20,7 +19,7 @@ if(isset($_REQUEST['mysql'])) {
 	);
 }
 
-$alreadyInstalled = (file_exists('assets') || file_exists('mysite/_config.php'));
+$alreadyInstalled = (file_exists('mysite/_config.php') || file_exists('tutorial/_config.php'));
 
 if(file_exists('sapphire/silverstripe_version')) {
 	$sapphireVersionFile = file_get_contents('sapphire/silverstripe_version');
@@ -38,7 +37,9 @@ if(file_exists('sapphire/silverstripe_version')) {
 $req = new InstallRequirements();
 $req->check();
 
-if($req->hasErrors()) $hasErrorOtherThanDatabase = true;
+if($req->hasErrors()) {
+	$hasErrorOtherThanDatabase = true;
+}
 
 if($databaseConfig) {
 	$dbReq = new InstallRequirements();
@@ -108,17 +109,15 @@ class InstallRequirements {
 		$this->requireFile('sapphire', array("File permissions", "sapphire/ folder exists", "There's no sapphire folder."));
 		$this->requireFile('cms', array("File permissions", "cms/ folder exists", "There's no cms folder."));
 		$this->requireFile('jsparty', array("File permissions", "jsparty/ folder exists", "There's no jsparty folder."));
-		$this->requireWriteable('.', array("File permissions", "Is the base folder writeable?", null));
-		$this->requireWriteable('mysite', array("File permissions", "Is the mysite /folder writeable?", null));
+		$this->requireWriteable('.htaccess', array("File permissions", "Is the .htaccess file writeable?", null));
+		$this->requireWriteable('mysite', array("File permissions", "Is the mysite/ folder writeable?", null));
+		$this->requireWriteable('tutorial', array("File permissions", "Is the tutorial/ folder writeable?", null));
+		$this->requireWriteable('assets', array("File permissions", "Is the assets/ folder writeable?", null));
 		
 		if(!is_writeable(dirname(tempnam('adfadsfdas','')))) {
 			$this->error(array("File permissions", "Is the temporary folder writeable?", "The temporary folder isn't writeable!"));
 		}
-
-		// Check that there's no stray files to get in the way
-		//$this->moveFileOutOfTheWay('.htaccess', "Please remove the current .htaccess file.");		
-		//$this->moveFileOutOfTheWay('mysite/_config.php', "Please remove the current mysite/_config.php file.");		
-
+		
 		// Check for rewriting
 		
 		$webserver = strip_tags(trim($_SERVER['SERVER_SIGNATURE']));
@@ -475,11 +474,6 @@ class Installer extends InstallRequirements {
 		<p>If you receive a fatal error, refresh this page to continue the installation
 		<?
 		flush();
-		
-		echo "<li>Creating 'assets' folder...</li>";
-		flush();
-		
-		$this->makeFolder('assets');
 		
 		// Write the config file
 		
