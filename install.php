@@ -475,10 +475,19 @@ class Installer extends InstallRequirements {
 		<?
 		flush();
 		
+		// Delete old _config.php files
+		if(file_exists('tutorial/_config.php')) {
+			unlink('tutorial/_config.php');
+		}
+		
+		if(file_exists('mysite/_config.php')) {
+			unlink('mysite/_config.php');
+		}
+		
 		// Write the config file
 		
 		$template = $_POST['template'] == 'tutorial' ? 'tutorial' : 'mysite';
-
+		
 		echo "<li>Creating '$template/_config.php'...</li>";
 		flush();
 
