@@ -530,18 +530,23 @@ PHP
 		$_SERVER['SCRIPT_FILENAME'] = dirname($_SERVER['SCRIPT_FILENAME']) . '/sapphire/main.php';
 		chdir('sapphire');
 		
-		require_once("core/Core.php");
-		require_once("core/ManifestBuilder.php");
-		require_once("core/ClassInfo.php");
+		require_once('core/Core.php');
+		require_once('core/ManifestBuilder.php');
+		require_once('core/ClassInfo.php');
 		require_once('core/Object.php');
 		require_once('core/control/Director.php');
+		require_once('core/ViewableData.php');
+		require_once('core/Session.php');
+		require_once('core/control/Controller.php');
 		require_once('filesystem/Filesystem.php');
-
 
 		echo "<li>Building database schema...</li>";
 		flush();
 		
 		// Build database
+		$_GET['flush'] = true;
+		$con = new Controller();
+		$con->pushCurrent();
 		ManifestBuilder::compileManifest();
 		$dbAdmin = new DatabaseAdmin();
 		$dbAdmin->init();
@@ -562,8 +567,8 @@ PHP
 			} else {
 	
 				echo "<p>Installed SilverStripe successfully.  I will now try and direct you to 
-					<a href=\"home/successfullyinstalled\">home/successfullyinstalled</a> to confirm that the installation was successful.</p>
-					<script>setTimeout(function() { window.location.href = 'home/successfullyinstalled'; }, 1000);</script>
+					<a href=\"home/successfullyinstalled?flush=1\">home/successfullyinstalled</a> to confirm that the installation was successful.</p>
+					<script>setTimeout(function() { window.location.href = 'home/successfullyinstalled?flush=1'; }, 1000);</script>
 					";
 			}
 		}
