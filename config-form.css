@@ -1,23 +1,3 @@
-* {
-	font-family: Arial;
-}
-#All {
-	width: 50em;
-	margin: 2em auto;
-	border: 1px #CCC solid;
-	padding: 1em;
-}
-form {
-	margin: 0;
-}
-h1 {
-	margin-top: 0;
-}
-
-label span {
-	float: left;
-	width: 12em;
-}
 
 .good td {
 	color: green;
@@ -28,33 +8,33 @@ label span {
 }
 
 .testResults .error td {
-	background-color: #C00;
-	border: 1px #700 solid;
-	color: white;
+	border: 1px #CCC solid;
+	color: red;
 }
 
 p.error {
 	padding: 0.5em;
-	background-color: #C00;
-	border: 1px #700 solid;
-	color: white;
+	background-color: #DDD;
+	border: 1px #CCC solid;
+	color: red;
 }
 p.warning {
 	padding: 0.5em;
-	background-color: #E70;
-	border: 1px #A70 solid;
-	color: white;
+	background-color: #DDD;
+	border: 1px #CCC solid;
+	color: orange;
 }
 p.good {
 	padding: 0.5em;
-	background-color: #0C0;
-	border: 1px #070 solid;
-	color: white;
+	background-color: #DDD;
+	border: 1px #CCC solid;
+	color: #0C0;
 }
 
 .testResults {
 	border-collapse: collapse;
 	font-size: 80%;
+	width: 90%;
 }
 .testResults td {
 	border: 1px #CCC solid;
