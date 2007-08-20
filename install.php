@@ -508,14 +508,14 @@ global \$databaseConfig;
 	"database" => "{$config['mysql']['database']}",
 );
 
-// If we're running on local host, or a server with 'dev.' in its
-// name, set the site to dev mode. You should add a test for your
-// development servers here also.
-if(strpos(Director::baseURL(), "localhost") !== false || 
-	strpos(Director::baseURL(), "127.0.0.1") !== false || 
-	strpos(Director::baseURL(), "dev.") !== false) {
-		Director::set_environment_type("dev");
-	}
+// By default, sites running on localhost or hosts
+// beginning with 'dev' are set to dev mode. For
+// a description of what dev mode does, see
+// http://doc.silverstripe.com/doku.php?id=devmode
+// You can set your site to dev mode by uncommenting
+// the line below:
+
+//Director::set_environment_type('dev');
 
 ?>
 PHP
