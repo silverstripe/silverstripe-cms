@@ -114,9 +114,7 @@ class InstallRequirements {
 		$this->requireWriteable('tutorial', array("File permissions", "Is the tutorial/ folder writeable?", null));
 		$this->requireWriteable('assets', array("File permissions", "Is the assets/ folder writeable?", null));
 		
-		if(!is_writeable(dirname(tempnam('adfadsfdas','')))) {
-			$this->error(array("File permissions", "Is the temporary folder writeable?", "The temporary folder isn't writeable!"));
-		}
+		$this->requireTempFolder(array('File permissions', 'Is the temporary folder writeable?', null));
 		
 		// Check for rewriting
 		
@@ -316,6 +314,42 @@ class InstallRequirements {
 			$this->error($testDetails);
 		}
 	}
+	
+	function requireTempFolder($testDetails) {
+		$this->testing($testDetails);
+		
+		if(function_exists('sys_get_temp_dir')) {
+	        $sysTmp = sys_get_temp_dir();
+	    } elseif(isset($_ENV['TMP'])) {
+			$sysTmp = $_ENV['TMP'];    	
+	    } else {
+	        $tmpFile = tempnam('adfadsfdas','');
+	        unlink($tmpFile);
+	        $sysTmp = dirname($tmpFile);
+	    }
+	    
+	    $worked = true;
+	    $ssTmp = "$sysTmp/silverstripe-cache";
+	    
+	    if(!@file_exists($ssTmp)) {
+	    	@$worked = mkdir($ssTmp);
+	    	
+	    	if(!$worked) {
+		    	$ssTmp = dirname($_SERVER['SCRIPT_FILENAME']) . "/silverstripe-cache";
+		    	$worked = true;
+		    	if(!@file_exists($ssTmp)) {
+		    		@$worked = mkdir($ssTmp);
+		    	}
+		    	if(!$worked) {
+		    		$testDetails[2] = "Permission problem gaining access to a temp folder. " .
+		    			"Please create a folder named silverstripe-cache in the base folder "  .
+		    			"of the installation and ensure it has the adequate permissions";
+		    		$this->error($testDetails);
+		    	}
+		    }
+		}
+	}
+	
 	function requireApacheModule($moduleName, $testDetails) {
 		$this->testing($testDetails);
 		if(!in_array($moduleName, apache_get_modules())) $this->error($testDetails);
