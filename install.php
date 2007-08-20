@@ -485,6 +485,8 @@ class Installer extends InstallRequirements {
 		$this->createFile("$template/_config.php", <<<PHP
 <?
 
+error_reporting(E_ALL ^ E_NOTICE);
+
 global \$project;
 \$project = '$template';
 
