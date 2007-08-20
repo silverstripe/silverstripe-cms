@@ -522,6 +522,15 @@ class Installer extends InstallRequirements {
 		
 		$template = $_POST['template'] == 'tutorial' ? 'tutorial' : 'mysite';
 		
+		$theme = '';
+		if($_POST['template'] == 'default') {
+			$theme = <<<PHP
+// This line set's the current theme. More themes can be
+// downloaded from http://www.silverstripe.com/cms-themes-and-skin
+SSViewer::set_theme('blackcandy');
+PHP;
+		}
+		
 		echo "<li>Creating '$template/_config.php'...</li>";
 		flush();
 
@@ -550,6 +559,8 @@ global \$databaseConfig;
 // the line below:
 
 //Director::set_environment_type('dev');
+
+$theme
 
 ?>
 PHP
