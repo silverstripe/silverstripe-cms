@@ -1,8 +1,6 @@
 <?php
 
-if(file_exists('.htaccess_rewrite')) {
-	copy(".htaccess_rewrite", ".htaccess");
-}
+createHtaccess();
 
 $baseURL = dirname($_SERVER['SCRIPT_NAME']);
 if($baseURL == "/") {
@@ -16,7 +14,7 @@ if(isset($_REQUEST['force'])) {
 	$modRewriteWorking  = performModRewriteTest();
 	
 	if(!$modRewriteWorking) {
-		copy(".htaccess_alternative", ".htaccess");
+		createHtaccessAlternative();
 		$modRewriteWorking  = performModRewriteTest();
 	}
 	
@@ -26,10 +24,8 @@ if(isset($_REQUEST['force'])) {
 					<script>setTimeout(function() { window.location.href = 'home/successfullyinstalled'; }, 1000);</script>
 		";
 	} else {
-		unlink('.htaccess');
-		if(file_exists('.htaccess_orig')) {
-			copy('.htaccess_orig', '.htaccess');
-		}
+		restoreHtaccess();
+		
 		echo "mod_rewrite doesn't appear to be working. Make sure:" .
 				"<ul>" .
 				"<li>mod_rewrite is enabled in your httpd.conf</li>" .
@@ -57,19 +53,128 @@ function performModRewriteTest() {
 	// Workaround for 'URL file-access is disabled in the server configuration' using curl
 	if(function_exists('curl_init')) {
 		$ch = curl_init($location);
-		$fp = @fopen("temp", "w");
+		$fp = @fopen(dirname(tempnam('adfadsfdas','')) . '/rewritetest', "w");
 		curl_setopt($ch, CURLOPT_FILE, $fp);
 		curl_setopt($ch, CURLOPT_HEADER, 0);
 		curl_exec($ch);
 		curl_close($ch);
 		fclose($fp);
-		$testrewriting = file_get_contents('temp');
-		unlink('temp');
+		$testrewriting = file_get_contents(dirname(tempnam('adfadsfdas','')) . '/rewritetest');
+		unlink(dirname(tempnam('adfadsfdas','')) . '/rewritetest');
 		if($testrewriting == 'OK') {
 			return true;
 		}
 	}
 	
 	return false;
+}
+
+function createHtaccess() {
+	$start = "### SILVERSTRIPE START ###\n";
+	$end= "\n### SILVERSTRIPE END ###";
+	$rewrite = <<<TEXT
+RewriteEngine On
+
+RewriteRule \.js$ - [L]
+RewriteRule \.css$ - [L]
+RewriteRule \.png$ - [L]
+RewriteRule \.jpg$ - [L]
+RewriteRule \.gif$ - [L]
+RewriteRule \.php$ - [L]
+
+RewriteCond %{REQUEST_URI} ^(.*)$
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule .* sapphire/main.php?url=%1&%{QUERY_STRING} [L]
+TEXT
+	;
+	
+	$baseURL = dirname($_SERVER['SCRIPT_NAME']);
+	if($baseURL == "/") {
+		$baseURL = "";
+	}
+	if(file_exists('.htaccess')) {
+		$htaccess = file_get_contents('.htaccess');
+	
+		if(strpos($htaccess, '### SILVERSTRIPE START ###') === false && strpos($htaccess, '### SILVERSTRIPE END ###') === false) {
+			$htaccess .= "\n### SILVERSTRIPE START ###\n### SILVERSTRIPE END ###\n";
+		}
+	
+		if(strpos($htaccess, '### SILVERSTRIPE START ###') !== false && strpos($htaccess, '### SILVERSTRIPE END ###') !== false) {
+			$start = substr($htaccess, 0, strpos($htaccess, '### SILVERSTRIPE START ###')) . "### SILVERSTRIPE START ###\n";
+			$end = "\n" . substr($htaccess, strpos($htaccess, '### SILVERSTRIPE END ###'));
+		}
+	}
+		
+	createFile('.htaccess', $start . $rewrite . $end);
+}
+
+function createHtaccessAlternative() {
+	$start = "### SILVERSTRIPE START ###\n";
+	$end= "\n### SILVERSTRIPE END ###";
+	$rewrite = <<<TEXT
+RewriteEngine On
+
+RewriteRule \.js$ - [L]
+RewriteRule \.css$ - [L]
+RewriteRule \.png$ - [L]
+RewriteRule \.jpg$ - [L]
+RewriteRule \.gif$ - [L]
+RewriteRule \.php$ - [L]
+
+RewriteCond %{REQUEST_URI} ^(.*)$
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule .* $_SERVER[DOCUMENT_ROOT]/sapphire/main.php?url=%1&%{QUERY_STRING} [L]
+TEXT
+	;
+		
+	$baseURL = dirname($_SERVER['SCRIPT_NAME']);
+	if($baseURL == "/") {
+		$baseURL = "";
+	}
+
+	if(file_exists('.htaccess')) {
+		$htaccess = file_get_contents('.htaccess');
+		
+		if(strpos($htaccess, '### SILVERSTRIPE START ###') === false && strpos($htaccess, '### SILVERSTRIPE END ###') === false) {
+			$htaccess .= "\n### SILVERSTRIPE START ###\n### SILVERSTRIPE END ###\n";
+		}
+	
+		if(strpos($htaccess, '### SILVERSTRIPE START ###') !== false && strpos($htaccess, '### SILVERSTRIPE END ###') !== false) {
+			$start = substr($htaccess, 0, strpos($htaccess, '### SILVERSTRIPE START ###')) . "### SILVERSTRIPE START ###\n";
+			$end = "\n" . substr($htaccess, strpos($htaccess, '### SILVERSTRIPE END ###'));
+		}
+	}
+		
+	createFile('.htaccess', $start . $rewrite . $end);
+}
+	
+function restoreHtaccess() {
+	$start = "### SILVERSTRIPE START ###\n";
+	$end= "\n### SILVERSTRIPE END ###";
+	
+	if(file_exists('.htaccess')) {
+		$htaccess = file_get_contents('.htaccess');
+		
+		if(strpos($htaccess, '### SILVERSTRIPE START ###') === false && strpos($htaccess, '### SILVERSTRIPE END ###') === false) {
+			$htaccess .= "\n### SILVERSTRIPE START ###\n### SILVERSTRIPE END ###\n";
+		}
+	
+		if(strpos($htaccess, '### SILVERSTRIPE START ###') !== false && strpos($htaccess, '### SILVERSTRIPE END ###') !== false) {
+			$start = substr($htaccess, 0, strpos($htaccess, '### SILVERSTRIPE START ###')) . "### SILVERSTRIPE START ###\n";
+			$end = "\n" . substr($htaccess, strpos($htaccess, '### SILVERSTRIPE END ###'));
+		}
+	}
+	
+	createFile('.htaccess', $start . $end);
+}
+
+function getBaseDir() {
+	return dirname($_SERVER['SCRIPT_FILENAME']) . '/';
+}
+
+function createFile($filename, $content) {
+	$base = getBaseDir();
+	if(($fh = fopen($base . $filename, 'w')) && fwrite($fh, $content) && fclose($fh))
+		return true;
 }
 ?>
