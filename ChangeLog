@@ -159,12 +159,32 @@ SilverStripe ChangeLog
   - Made calendar control register a date change when the calendar is used
   - Improved console.log alternative
   - Fixed sizing issues with CMS right content area
+  - Fixed bug with image insertion
+  - Set some good defaults in DataObjectSet::TotalPages() if they have not been set
+  - Changes to support forum
+  - Removed db/populate as it was a security risk, the initial content is now loaded via requireDefaultRecords()
+  - Require authenficiation to do a db/build on live sites
+  - Close directories before trying to remove them
+  - Fixed bug where new pages weren't being highlighted in the CMS
+  - Fixed bug where the last page in the site tree wasn't being highlighted in the CMS
+  - Fixed a bug where CheckboxSetField wouldn't save if there was a method the same as the field name
+  - Fixed reordering of groups in security section
+  - Improvements to image inserter
+  - Fix multiple "broken" in class attribute of HTML Content
+  - Fixed bug with TreeDropdownField when you clicked the expand link 3 or more times, it wouldn't close
+  - Added dimension fields when inserting images
+  - Fixed bug when editing properties of new text fields
+  - Added FormField::Required(), so that you can put asterisks into a form template if you wish
+  - Fixed duplicate of UserDefinedForm objects
   - Installer changes
       - Added option of installing either the default template, or the tutorial template
       - mod_rewrite check now works with http authentification
       - Workaround for 'URL file-access is disabled in the server configuration' using curl for mod_rewrite test
       - Better error message if the installer can't detect the web server
       - Added an alternative .htaccess configuration
+      - Less file permissions required by the installer
+      - Made deleting the installer files more prominent, it now deletes all the installations files, not just php.
+      - MySQL password is now a hidden field.
 
 2.0.1
   - Text->FirstParagraph() now only shows the first paragraph
