@@ -158,11 +158,11 @@ abstract class GenericDataAdmin extends LeftAndMain {
 	 * @return Form
 	 */
 	function getEditForm($id) {
-		if($_GET['debug_profile']) Profiler::mark('getEditForm');
+		if(isset($_GET['debug_profile'])) Profiler::mark('getEditForm');
 		
 		$genericData = DataObject::get_by_id($this->stat('data_type'), $id);
 
-		$fields = (method_exists($genericData, getCMSFields)) ? $genericData->getCMSFields() : new FieldSet();
+		$fields = (method_exists($genericData, 'getCMSFields')) ? $genericData->getCMSFields() : new FieldSet();
 
 		if(!$fields->dataFieldByName('ID')) {
 
@@ -170,7 +170,7 @@ abstract class GenericDataAdmin extends LeftAndMain {
 			$idField->setValue($id);
 		}
 		
-		if(method_exists($genericData, getGenericStatus)){
+		if(method_exists($genericData, 'getGenericStatus')){
 			$genericDataStatus = $genericData->getGenericStatus();
 			if($genericDataStatus){
 				$fields->push($dataStatusField = new ReadonlyField("GenericDataStatus", "", $genericDataStatus));
@@ -179,7 +179,7 @@ abstract class GenericDataAdmin extends LeftAndMain {
 		}
 		
 
-		$actions = (method_exists($genericData, getCMSActions)) ? $genericData->getCMSActions() : new FieldSet();
+		$actions = (method_exists($genericData, 'getCMSActions')) ? $genericData->getCMSActions() : new FieldSet();
 		if(!$actions->fieldByName('action_save')) {
 			$actions->push(new FormAction('save', 'Save','ajaxAction-save'));
 		}
@@ -207,7 +207,7 @@ abstract class GenericDataAdmin extends LeftAndMain {
 		$form->loadDataFrom($genericData);
 		$form->disableDefaultAction();
 
-		if($_GET['debug_profile']) Profiler::unmark('getEditForm');
+		if(isset($_GET['debug_profile'])) Profiler::unmark('getEditForm');
 		return $form;
 	}
 
