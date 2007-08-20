@@ -509,11 +509,11 @@ global \$databaseConfig;
 );
 
 // If we're running on local host, or a server with 'dev.' in its
-// name, set the site to dev mode. You should add test for your
+// name, set the site to dev mode. You should add a test for your
 // development servers here also.
 if(strpos(Director::baseURL(), "localhost") !== false || 
 	strpos(Director::baseURL(), "127.0.0.1") !== false || 
-	strpos(Director::baseURL(), "dev.")) {
+	strpos(Director::baseURL(), "dev.") !== false) {
 		Director::set_environment_type("dev");
 	}
 
