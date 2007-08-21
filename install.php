@@ -598,6 +598,16 @@ PHP
 		
 		$dbAdmin->doBuild(true);
 		
+		$adminmember = DataObject::get_one('Member',"`Email`= '".$_REQUEST['username']."'");
+		if($adminmember){
+			if($adminmember->_isAdmin()){
+				$adminmember->FirstName = $_REQUEST['firstname'];
+				$adminmember->Surname = $_REQUEST['surname'];
+				$adminmember->write();
+			}
+		}
+		
+		
 		echo "<li>Checking mod_rewrite works</li>";
 		
 		$_SESSION['username'] = $_REQUEST['username'];
