@@ -137,11 +137,25 @@ HTML;
 		if($data['ID'] && $data['ID'] != 'root') $folder = DataObject::get_by_id("Folder", $data['ID']);
 		else $folder = singleton('Folder');
 
-		$warnFiles = array();
+		$newFiles = array();
 		$fileSizeWarnings = '';
-
+		$uploadErrors = '';
+		
 		foreach($processedFiles as $file) {
+			if($file['error'] == UPLOAD_ERR_NO_TMP_DIR) {
+				$status = 'bad';
+				$statusMessage = 'There is no temporary folder for uploads. Please set upload_tmp_dir in php.ini.';
+				break;
+			}
+		
 			if($file['tmp_name']) {
+				// Workaround open_basedir problems
+				if(ini_get("open_basedir")) {
+					$newtmp = TEMP_FOLDER . '/' . $file['name'];
+					move_uploaded_file($file['tmp_name'], $newtmp);
+					$file['tmp_name'] = $newtmp;
+				}
+			
 				// check that the file can be uploaded and isn't too large
 				
 				$extensionIndex = strripos( $file['name'], '.' );
@@ -175,7 +189,7 @@ HTML;
 			$numFiles = sizeof($newFiles);
 			$statusMessage = "Uploaded $numFiles files";
 			$status = "good";
-		} else {
+		} else if($status != 'bad') {
 			$statusMessage = "There was nothing to upload";
 			$status = "";
 		}
