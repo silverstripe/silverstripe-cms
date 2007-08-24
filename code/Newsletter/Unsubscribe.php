@@ -101,6 +101,8 @@ class Unsubscribe_Controller extends Page_Controller {
     protected function unsubscribeFromList( $member, $list ) {
         // track unsubscriptions
         $member->Groups()->remove( $list->GroupID );
+        $unsubscribeRecord = new Member_UnsubscribeRecord();
+        $unsubscribeRecord->unsubscribe($member, $list);
     }
 }
 
