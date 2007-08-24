@@ -167,8 +167,8 @@ class NewsletterAdmin extends LeftAndMain {
 		if(isset($mailType) && is_object($mailType) && $mailType->GroupID) {
 			$group = DataObject::get_one("Group", "ID = $mailType->GroupID");
 		} 
-
-		if(isset($mailType)) {
+		//The function could be called from CMS with $mailType isset but with empty string.
+		if(isset($mailType)&&$mailType) {
 			$fields = new FieldSet(
 				new TextField("Title", "Newsletter Type"),
 				new TextField("FromEmail", "Send newsletters from"),
