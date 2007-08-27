@@ -200,6 +200,8 @@ class UserDefinedForm_Controller extends Page_Controller {
 		$values = array();
 		$recipientAddresses = array();
 		$sendCopy = false;
+        
+        $attachments = array();
 		
 		$submittedFields = new DataObjectSet();			
 		foreach( $this->Fields() as $field ) {

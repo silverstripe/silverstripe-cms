@@ -187,7 +187,7 @@ abstract class GenericDataAdmin extends LeftAndMain {
 			$actions->push(new FormAction('delete', 'Delete','ajaxAction-delete'));
 		}
 		
-		$required = (method_exists($genericData, getCMSRequiredField)) ? $genericData->getCMSRequiredField() : new RequiredFields(); 
+		$required = (method_exists($genericData, 'getCMSRequiredField')) ? $genericData->getCMSRequiredField() : new RequiredFields(); 
 		$form = new Form($this, "EditForm", $fields, $actions, $required); 
 		if($this->stat('data_type_extra')) {
 			foreach ($this->stat('data_type_extra') as $oneRelated) {
