@@ -1110,15 +1110,6 @@ HTML;
 		$page = DataObject::get_by_id("SiteTree", $_REQUEST['ID']);
 		return $page->testInvitation($data,$form);
 	}
-	
-	/**
-	 * Use this as an action handler for custom CMS buttons.
-	 */
-	function callPageMethod($data, $form) {
-		$methodName = $form->buttonClicked()->extraData();
-		$record = $this->CurrentPage();
-		return $record->$methodName($data, $form);		
-	}
 
 	/**
 	 * Provide the permission codes used by LeftAndMain.

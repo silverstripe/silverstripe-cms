@@ -765,6 +765,15 @@ JS;
 	function MceRoot() {
 		return MCE_ROOT;
 	}
+
+	/**
+	 * Use this as an action handler for custom CMS buttons.
+	 */
+	function callPageMethod($data, $form) {
+		$methodName = $form->buttonClicked()->extraData();
+		$record = $this->CurrentPage();
+		return $record->$methodName($data, $form);		
+	}
 }
 
 ?>
