@@ -51,5 +51,76 @@ class NewsletterType extends DataObject {
 		}
 		parent::onBeforeWrite();
 	}
+
+    /**
+     * Get the fieldset to display in the administration section
+     */
+    function getCMSFields() {
+       $group = null;
+		if($this->GroupID) {
+			$group = DataObject::get_one("Group", "ID = $this->GroupID");
+        }
+	
+    	$fields = new FieldSet(
+            new TextField("Title", "Newsletter Type"),
+            new TextField("FromEmail", "Send newsletters from"),
+            new TabSet("Root",
+                new Tab("Drafts",
+                    $draftList = new NewsletterList("Draft", $this, "Draft")
+                ),
+                new TabSet("Sent",
+                    new Tab("Sent",
+                        $sendList = new NewsletterList("Send", $this, "Send")
+                    ),
+                    new Tab("Unsubscribed",
+                        $unsubscribedList = new UnsubscribedList("Unsubscribed", $this)    
+                    ),
+                    new Tab("Bounced",
+                        $bouncedList = new BouncedList("Bounced", $this )
+                    )
+                )
+            )
+        );
+        
+        if($this->GroupID) {
+            $fields->addFieldToTab('Root', 
+                new TabSet("Recipients",
+                    new Tab( "Recipients",
+                        $recipients = new MemberTableField(
+                            $this,
+                            "Recipients", 
+                            $group
+                            )
+                    ),
+                    new Tab( "Import",
+                        $importField = new RecipientImportField("ImportFile","Import from file", $group )
+                    )
+                )
+            );
+            
+            $recipients->setController($this);
+            $importField->setController($this);
+            $importField->setTypeID( $this->ID );
+        }
+                
+        $fields->addFieldToTab('Root', 
+            new Tab("Template",
+                $templates = new TemplateList("Template","Template", $this->Template, NewsletterAdmin::template_path())
+            )
+        );
+        
+        $draftList->setController($this);
+        $sendList->setController($this);
+        
+        $templates->setController($this);
+        $unsubscribedList->setController($this);
+        $bouncedList->setController($this);
+        
+        $fields->push($idField = new HiddenField("ID"));
+        $fields->push( new HiddenField( "executeForm", "", "TypeEditForm" ) );
+        $idField->setValue($this->ID);
+        
+        return $fields;
+    }
 }
 ?>

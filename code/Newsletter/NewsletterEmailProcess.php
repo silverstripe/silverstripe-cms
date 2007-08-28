@@ -17,9 +17,7 @@ class NewsletterEmailProcess extends BatchProcess {
 		$this->nlType = $nlType;
 		$this->messageID = $messageID;
 		
-		$groupID = $nlType->GroupID;
-		
-   	parent::__construct( DataObject::get( 'Member', "`GroupID`='$groupID'", null, "INNER JOIN `Group_Members` ON `MemberID`=`Member`.`ID`" ) );
+        parent::__construct( $nlType->Recipients() );
 	
 	}
 	
