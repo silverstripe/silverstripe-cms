@@ -234,9 +234,19 @@ function prepareAjaxActions(actions, formName, tabName) {
 }
 
 function ingize(val) {
+	var ingWord, suffix;
 	if(!val) val = "process";
-	if(val.substr(val.length-1) == 'e') return val.substr(0, val.length-1) + 'ing...';
-	else return val + 'ing...';
+
+	if(val.match(/^([^ ]+) +(.*)$/)) {
+		ingWord = RegExp.$1;
+		suffix = ' ' + RegExp.$2 + '...';
+	} else {
+		ingWord = val;
+		suffix = '...';
+	}
+	
+	if(ingWord.match(/^(.*)e$/)) return RegExp.$1 + 'ing' + suffix;
+	else return ingWord + 'ing' + suffix;
 }
 
 /**
