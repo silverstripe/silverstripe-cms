@@ -44,32 +44,31 @@
 									<p class="good">
 										You're ready to install! &nbsp;&nbsp; 
 									</p>
-								<?php } ?>	-->					
+								<?php } ?>					
 								<p>
 									<b>Template to install:</b>
 								</p>
-								<p>
-									<input type="radio" name="template" value="default" id="BlackCandy" checked="checked" /><label for="BlackCandy">BlackCandy, default template ready to use.</label>
-									<input type="radio" name="template" value="tutorial" id="EmptyTemplate" /><label for="EmptyTemplate">Empty template, ready to begin the tutorial.</label>
-								</p>
+								<ul id="Themes">
+									<li><input type="radio" name="template" value="default" id="BlackCandy" checked="checked" /><label for="BlackCandy">BlackCandy, default template ready to use.</label></li>
+									<li><input type="radio" name="template" value="tutorial" id="EmptyTemplate" /><label for="EmptyTemplate">Empty template, ready to begin the tutorial.</label></li>
+								</ul>
 								<p>You can change the template or download another from the SilverStripe website after installation.</p>
 			
 								
 								<?php if($alreadyInstalled) { ?>
-									<p>
-										<b>Note:</b> It seems as though SilverStripe is already installed here.  If you ask me to install, I will overwrite
-										the <b>.htaccess</b> and <b>mysite/_config.php</b> files. <br /> <br />
-										<label style="cursor: pointer">
-											<input type="checkbox" name="force_reinstall" onclick="document.getElementById('install_button').disabled = !this.checked" /> That's okay, please re-install SilverStripe and overwrite these files.
-										</label>
+									<p class="warning">
+										<strong>Note:</strong> It seems as though SilverStripe is already installed here.  If you ask me to install, I will overwrite
+										the <strong>.htaccess</strong> and <strong>mysite/_config.php</strong> files. 
+										<br />
+									<input type="checkbox" id="ReIn" name="force_reinstall" onclick="document.getElementById('install_button').disabled = !this.checked" /><label for="ReIn">That's okay, please re-install SilverStripe and overwrite these files.</label>
 									</p>
 								<? } ?>
 			
 								<p>
 									<?php if($alreadyInstalled) { ?>
-										<input id="install_button" type="submit" disabled="disabled" name="go" value="Install SilverStripe" onclick="document.getElementById('saving_top').style.display = ''; this.value = 'Installing SilverStripe...'" />
+										<input id="install_button" type="submit" disabled="disabled" class="action" name="go" value="Install SilverStripe" onclick="document.getElementById('saving_top').style.display = ''; this.value = 'Installing SilverStripe...'" />
 									<?php } else { ?>
-										<input id="install_button" type="submit" name="go" value="Install SilverStripe" onclick="document.getElementById('saving_top').style.display = ''; this.value = 'Installing SilverStripe...'" />
+										<input id="install_button" type="submit" class="action" name="go" value="Install SilverStripe" onclick="document.getElementById('saving_top').style.display = ''; this.value = 'Installing SilverStripe...'" />
 									<? } ?>
 									
 									<span id="saving_top" style="display: none">

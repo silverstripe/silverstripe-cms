@@ -5,7 +5,22 @@ body {
 #Container * {
 	text-align: left;
 }
-
+ul#Themes{
+	list-style: none;
+	margin: 5px;
+}
+	ul#Themes li {
+		clear: both;
+		padding: 3px 0;
+	}
+	ul#Themes input {
+		float: left;
+		width: 10px;
+		height: 10px;
+	}
+	ul#Themes label {
+		margin: -2px 5px 0 15px;
+	}
 .good td {
 	color: green;
 }
@@ -30,6 +45,11 @@ p.warning {
 	border: 1px #ffc28b solid;
 	color: #cb6a1c;
 }
+	p.warning label {
+		display: inline;
+		margin-left: 5px;
+		color: #cb6a1c
+	}
 p.good {
 	padding: 0.5em;
 	background-color: #e2fee1;
