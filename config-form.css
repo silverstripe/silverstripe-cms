@@ -46,15 +46,14 @@ p.error a:hover {
 	text-decoration: none;
 }
 span.middleColumn {
-	width: 306px;
-	padding: 4px;
+	width: 312px;
 	margin-right: 0;
+	padding: 4px;
 }
 input.text, textarea, select {
-	padding: 2px 0 0 2px;
+	padding: 2px;
 	border: 1px solid #A7A7A7;
 	color: #000;
-	height: 1.7em;
 	font-size: 1.2em;
 	font-weight: bold;
 	width: 305px;
@@ -87,6 +86,6 @@ p#AdminAccount {
 }
 #Layout input.action {
 	text-align: center;
-	width: auto;
+	width: 160px;
 	font-size: 1em;
 }
