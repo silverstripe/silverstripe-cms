@@ -1,12 +1,18 @@
+body {
+	text-align: center;
+}
+
+#Container * {
+	text-align: left;
+}
 
 .good td {
 	color: green;
 }
 
 .warning td {
-	color: orange;
+	color: #ef7f24;
 }
-
 .testResults .error td {
 	border: 1px #CCC solid;
 	color: red;
@@ -14,30 +20,73 @@
 
 p.error {
 	padding: 0.5em;
-	background-color: #DDD;
-	border: 1px #CCC solid;
-	color: red;
+	background-color: #ffe9e9;
+	border: 1px #ff8e8e solid;
+	color: #f03838;
 }
 p.warning {
 	padding: 0.5em;
-	background-color: #DDD;
-	border: 1px #CCC solid;
-	color: orange;
+	background-color: #fef1e1;
+	border: 1px #ffc28b solid;
+	color: #cb6a1c;
 }
 p.good {
 	padding: 0.5em;
-	background-color: #DDD;
-	border: 1px #CCC solid;
-	color: #0C0;
+	background-color: #e2fee1;
+	border: 1px #43cb3e solid;
+	color: #359318;
 }
-
-.testResults {
+p.error a,
+p.warning a,
+p.good a {
+	color: inherit;
+	text-decoration: underline;
+}
+p.error a:hover {
+	text-decoration: none;
+}
+span.middleColumn {
+	width: 306px;
+	padding: 4px;
+	margin-right: 0;
+}
+input.text, textarea, select {
+	padding: 2px 0 0 2px;
+	border: 1px solid #A7A7A7;
+	color: #000;
+	height: 1.7em;
+	font-size: 1.2em;
+	font-weight: bold;
+	width: 305px;
+}
+table.testResults {
 	border-collapse: collapse;
-	font-size: 80%;
-	width: 90%;
+	width: 100%;
+	margin: 10px 0;
+}
+#Layout h4 {
+	font-size: 2em;
 }
 .testResults td {
 	border: 1px #CCC solid;
 	width: 400px;
-	padding: 0.2em;
+	padding: 4px;
+}
+.clear {
+	clear: both;
+}
+p.mysql,
+p.adminAcc {
+	padding-top: 20px;
+}
+p#mysql_credentials,
+p#AdminAccount {
+	width: 330px;
+	margin-top: 0;
+	float: left;
+}
+#Layout input.action {
+	text-align: center;
+	width: auto;
+	font-size: 1em;
 }

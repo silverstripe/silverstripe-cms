@@ -218,8 +218,8 @@ class InstallRequirements {
 			
 		} else {
 			foreach($this->tests as $section => $tests) {
-				echo "<h3>$section</h3>";
-				echo "<table class=\"testResults\" width=\"100%\">";
+				echo "<h5>$section</h5>";
+				echo "<table class=\"testResults\">";
 				
 				foreach($tests as $test => $result) {
 					echo "<tr class=\"$result[0]\"><td>$test</td><td>" . nl2br(htmlentities($result[1])) . "</td></tr>";
