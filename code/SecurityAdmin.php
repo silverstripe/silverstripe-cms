@@ -1,6 +1,6 @@
 <?php
 
-class SecurityAdmin extends LeftAndMain {
+class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	static $tree_class = "Group";
 	static $subitem_class = "Member";
 
@@ -57,6 +57,8 @@ class SecurityAdmin extends LeftAndMain {
 					)
 				)
 			);
+			
+			if(!Permission::check('EDIT_PERMISSIONS')) $fields->removeFieldFromTab('Root', 'Permissions');
 			
 			$memberList->setController($this);
 
@@ -220,7 +222,7 @@ class SecurityAdmin extends LeftAndMain {
 		$siteTree = $obj->getChildrenAsUL("", 
 			' "<li id=\"record-$child->ID\" class=\"$child->class " . ($child->Locked ? " nodelete" : "") . ' .
 			' ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' . 
-			' "<a href=\"" . Director::link("admin", "show", $child->ID) . "\" >" . $child->Title . "</a>" ',$this);
+			' "<a href=\"" . Director::link("admin", "show", $child->ID) . "\" >" . $child->TreeTitle() . "</a>" ',$this);
 
 		$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\">" .
 						"<li id=\"record-0\" class=\"Root\">" .
@@ -328,6 +330,12 @@ class SecurityAdmin extends LeftAndMain {
 		);
 		
 		return $memberListField->renderWith('MemberList_Table');
+	}
+	
+	function providePermissions() {
+		return array(
+			'EDIT_PERMISSIONS' => 'Edit Permissions on each Group',
+		);
 	}
 }
 

@@ -14,18 +14,27 @@ abstract class LeftAndMain extends Controller {
 		
 		parent::init();
 		
-		// Security check for LeftAndMain sub-class permissions
-		if(!Permission::check("CMS_ACCESS_$this->class")) {
-			// When access /admin/, we should try a redirect to another part of the admin rather than a 
-			if($this->class == 'CMSMain') {
+		// Allow customisation of the access check by a decorator
+		if($this->hasMethod('alternateAccessCheck')) {
+			$isAllowed = $this->alternateAccessCheck();
+			
+		// Default security check for LeftAndMain sub-class permissions
+		} else {
+			$isAllowed = Permission::check("CMS_ACCESS_$this->class");
+			if(!$isAllowed && $this->class == 'CMSMain') {
+				// When access /admin/, we should try a redirect to another part of the admin rather than be locked out
 				$menu = $this->MainMenu();
 				if(($first = $menu->First()) && $first->Link) {
 					Director::redirect($first->Link);
-					return;
 				}
 			}
+		}
 
+		// Don't continue if there's already been a redirection request.
+		if(Director::redirected_to()) return;
 
+		// Access failure!		
+		if(!$isAllowed) {
 			$messageSet = array(
 				'default' => "Enter your email address and password to access the CMS.",
 				'alreadyLoggedIn' => "I'm sorry, but you can't access that part of the CMS.  If you want to log in as someone else, do so below",
@@ -213,7 +222,15 @@ abstract class LeftAndMain extends Controller {
 		$itemsWithPermission = 0;
 		foreach($menuSrc as $title => $menuItem) {
 			if(is_numeric($title) && isset($menuItem['title'])) $title = $menuItem['title'];
-			if(!isset($menuItem[2]) || Permission::check("CMS_ACCESS_$menuItem[2]")) {
+
+			if(isset($menuItem[2])) {
+				if($this->hasMethod('alternateMenuDisplayCheck')) $isAllowed = $this->alternateMenuDisplayCheck($menuItem[2]);
+				else $isAllowed = Permission::check("CMS_ACCESS_" . $menuItem[2]);
+			} else {
+				$isAllowed = true;
+			}
+
+			if($isAllowed) {
 				// Count up the number of items that have specific permission settings
 				if(isset($menuItem[2])) $itemsWithPermission++;
 
