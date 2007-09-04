@@ -38,6 +38,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Requirements::javascript("sapphire/javascript/TableListField.js");
 		Requirements::javascript("sapphire/javascript/TableField.js");
 		Requirements::javascript("sapphire/javascript/ComplexTableField.js");
+		Requirements::javascript("sapphire/javascript/RelationComplexTableField.js");
 		Requirements::javascript("survey/javascript/SurveyResponses.js");
 		Requirements::javascript("survey/javascript/FormResponses.js");
 		Requirements::javascript( 'sapphire/javascript/DataReport.js' );
@@ -63,13 +64,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		// For Gallery
 		Requirements::javascript('gallery/javascript/GalleryPage_CMS.js');
-				
-		Requirements::themedCSS('typography');
-		
-		// For Widgets
-		Requirements::css("cms/css/WidgetAreaEditor.css");
-		Requirements::javascript("cms/javascript/WidgetAreaEditor.js");
-		
+
 		// HACK ALERT:
 		// We need a better way of including all of the CSS that *might* be used by this application.
 		// Perhaps the ajax responses can include some instructions to go get more CSS / JavaScript?
