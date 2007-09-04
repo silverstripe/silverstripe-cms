@@ -1,6 +1,7 @@
 if(typeof SiteTreeHandlers == 'undefined') SiteTreeHandlers = {};
 SiteTreeHandlers.showNLDraft_url = 'admin/newsletter/shownewsletter/';
 SiteTreeHandlers.showNLType_url = 'admin/newsletter/showtype/';
+SiteTreeHandlers.controller_url = 'admin/newsletter';
 
 SiteTree.prototype = {
 	castAsTreeNode: function(li) {

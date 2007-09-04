@@ -1,6 +1,7 @@
 SiteTreeHandlers.parentChanged_url = 'admin/security/ajaxupdateparent';
 SiteTreeHandlers.orderChanged_url = 'admin/security/ajaxupdatesort';
 SiteTreeHandlers.loadPage_url = 'admin/security/getitem';
+SiteTreeHandlers.controller_url = 'admin/security';
 
 _HANDLER_FORMS['deletegroup'] = 'deletegroup_options';
 

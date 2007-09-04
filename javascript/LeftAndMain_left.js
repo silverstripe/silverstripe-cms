@@ -8,6 +8,7 @@ if(typeof SiteTreeHandlers == 'undefined') SiteTreeHandlers = {};
 SiteTreeHandlers.parentChanged_url = 'admin/ajaxupdateparent';
 SiteTreeHandlers.orderChanged_url = 'admin/ajaxupdatesort';
 SiteTreeHandlers.showRecord_url = 'admin/show/';
+SiteTreeHandlers.controller_url = 'admin';
 
 var _HANDLER_FORMS = {
 	addpage : 'Form_AddPageOptionsForm',

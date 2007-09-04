@@ -7,6 +7,8 @@ SiteTreeHandlers.orderChanged_url = 'admin/assets/ajaxupdatesort';
 SiteTreeHandlers.loadPage_url = 'admin/assets/getitem';
 SiteTreeHandlers.loadTree_url = 'admin/assets/getsubtree';
 SiteTreeHandlers.showRecord_url = 'admin/assets/show/';
+SiteTreeHandlers.controller_url = 'admin/assets';
+
 var _HANDLER_FORMS = {
 	addpage : 'addpage_options',
 	deletepage : 'deletepage_options',
