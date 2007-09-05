@@ -433,7 +433,7 @@ StageLink.prototype = {
 		var linkVal = linkField ? linkField.value : null;
 		if(linkVal) {
 			if(this.id != 'viewArchivedSite') this.style.display = '';
-			this.href = this.baseURL() + linkVal + '/' + this.getVars;
+			this.href = linkVal + this.getVars;
 		} else {
 			if(this.id != 'viewArchivedSite') this.style.display = 'none';
 		}

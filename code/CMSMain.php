@@ -282,8 +282,14 @@ JS;
 			
 			$idField->setValue($id);
 			
-			if($record->ID && is_numeric( $record->ID ) ) $liveURLField->setValue(DB::query("SELECT URLSegment FROM SiteTree_Live WHERE ID = $id")->value());
-			if(!$record->DeletedFromStage) $stageURLField->setValue($record->URLSegment);
+			if($record->ID && is_numeric( $record->ID ) ) {
+				$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "`SiteTree`.ID = $record->ID");
+				if($liveRecord) $liveURLField->setValue($liveRecord->AbsoluteLink());
+			}
+			
+			if(!$record->DeletedFromStage) {
+				$stageURLField->setValue($record->AbsoluteLink());
+			}
 			
 			// getAllCMSActions can be used to completely redefine the action list
 			if($record->hasMethod('getAllCMSActions')) {
