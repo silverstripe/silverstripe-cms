@@ -3,9 +3,15 @@
 	<div class="availableWidgetsHolder">
 		<h2>Available Widgets</h2>
 		<div class="availableWidgets" id="WidgetAreaEditor_availableWidgets">
-			<% control AvailableWidgets %>
-				$DescriptionSegment
-			<% end_control %>
+			<% if AvailableWidgets %>
+				<% control AvailableWidgets %>
+					$DescriptionSegment
+				<% end_control %>
+			<% else %>
+				<div id="NoWidgets">
+					<p>There are currently no widgets available.</p>
+				</div>
+			<% end_if %>
 		</div>
 	</div>
 	<div class="usedWidgetsHolder">
