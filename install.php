@@ -533,6 +533,8 @@ PHP;
 		
 		echo "<li>Creating '$template/_config.php'...</li>";
 		flush();
+		
+		$devServers = $this->var_export_array_nokeys(explode("\n", $_POST['devsites']));
 
 		$this->createFile("$template/_config.php", <<<PHP
 <?
@@ -551,14 +553,11 @@ global \$databaseConfig;
 	"database" => "{$config['mysql']['database']}",
 );
 
-// By default, sites running on localhost or hosts
-// beginning with 'dev' are set to dev mode. For
-// a description of what dev mode does, see
+// Sites running on the following servers will be
+// run in development mode. See
 // http://doc.silverstripe.com/doku.php?id=devmode
-// You can set your site to dev mode by uncommenting
-// the line below:
-
-//Director::set_environment_type('dev');
+// for a description of what dev mode does.
+Director::set_dev_servers($devServers);
 
 $theme
 
@@ -830,6 +829,16 @@ TEXT
 		return false;
 	}
 	
+	function var_export_array_nokeys($array) {
+		$retval = "array(\n";
+		foreach($array as $item) {
+			$retval .= "\t'";
+			$retval .= trim($item);
+			$retval .= "',\n";
+		}
+		$retval .= ")";
+		return $retval;
+	}
 }
 
 /**

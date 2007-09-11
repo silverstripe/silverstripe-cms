@@ -95,11 +95,13 @@ table.testResults {
 	clear: both;
 }
 p.mysql,
-p.adminAcc {
+p.adminAcc,
+p.devHelp {
 	padding-top: 20px;
 }
 p#mysql_credentials,
-p#AdminAccount {
+p#AdminAccount,
+p#DevSites {
 	width: 330px;
 	margin-top: 0;
 	float: left;
