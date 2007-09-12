@@ -97,7 +97,7 @@ class InstallRequirements {
 	function check() {
 		$this->errors = null;
 		
-		$this->requirePHPVersion('5.0.4', array("PHP Configuration", "PHP5 installed", null, "PHP version " . phpversion()));
+		$this->requirePHPVersion('5.2.0', '5.0.4', array("PHP Configuration", "PHP5 installed", null, "PHP version " . phpversion()));
 
 		// Check that we can identify the root folder successfully
 		$this->requireFile('config-form.html', array("File permissions", 
@@ -250,12 +250,19 @@ class InstallRequirements {
 		else return true;
 	}
 	
-	function requirePHPVersion($version, $testDetails) {
+	function requirePHPVersion($recommendedVersion, $requiredVersion, $testDetails) {
 		$this->testing($testDetails);
 		
-		list($reqA, $reqB, $reqC) = explode('.', $version);
+		list($recA, $recB, $recC) = explode('.', $recommendedVersion);
+		list($reqA, $reqB, $reqC) = explode('.', $requiredVersion);
 		list($a, $b, $c) = explode('.', phpversion());
 		$c = ereg_replace('-.*$','',$c);
+		
+		if($a > $recA || ($a == $recA && $b > $recB) || ($a == $reqA && $b == $reqB && $c >= $reqC)) {
+			$testDetails[2] = "SilverStripe recommends PHP version $recommendedVersion or later, only $a.$b.$c is installed. While SilverStripe should run, you may run into issues, and future versions of SilverStripe may require a later version. Upgrading PHP is recommended.";
+			$this->warning($testDetails);
+			return;
+		}
 		
 		if($a > $reqA) return true;
 		if($a == $reqA && $b > $reqB) return true;
@@ -265,7 +272,7 @@ class InstallRequirements {
 			if($a < $reqA) {
 				$testDetails[2] = "You need PHP version $version or later, only $a.$b.$c is installed.  Unfortunately PHP$a and PHP$reqA have some incompatabilities, so if you are on a your web-host may need to move you to a different server.   Some software doesn't work with PHP5 and so upgrading a shared server could be problematic.";
 			} else {
-				$testDetails[2] = "You need PHP version $version or later, only $a.$b.$c is installed.  Please upgrade your server, or ask your web-host to do so.";
+				$testDetails[2] = "You need PHP version $requiredVersion or later, only $a.$b.$c is installed.  Please upgrade your server, or ask your web-host to do so.";
 			}
 		}
 	
