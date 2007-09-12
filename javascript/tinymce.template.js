@@ -10,7 +10,7 @@ tinyMCE.init({
 	mode : "specific_textareas",
 	textarea_trigger : "tinymce",
 	width: -1,
-	height: -1,
+	height: 240,
 	auto_resize : true,
 	theme : "advanced",
 	content_css : "$ContentCSS",
