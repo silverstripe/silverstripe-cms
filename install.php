@@ -301,17 +301,22 @@ class InstallRequirements {
 		$this->testing($testDetails);
 		$filename = $this->getBaseDir() . $filename;
 		
-		if(!is_writeable($filename)) {
-			$user = posix_getpwuid(posix_geteuid());
-			$groups = posix_getgroups();
-			foreach($groups as $group) {
-				$groupInfo = posix_getgrgid($group);
-				$groupList[] = $groupInfo['name'];
+		if(function_exists('posix_getgroups')) {
+			if(!is_writeable($filename)) {
+				$user = posix_getpwuid(posix_geteuid());
+				$groups = posix_getgroups();
+				foreach($groups as $group) {
+					$groupInfo = posix_getgrgid($group);
+					$groupList[] = $groupInfo['name'];
+				}
+				$groupList = "'" . implode("', '", $groupList) . "'";
+				
+				$testDetails[2] .= "User '$user[name]' needs to write be able to write to this file:\n$filename";
+				$this->error($testDetails);
 			}
-			$groupList = "'" . implode("', '", $groupList) . "'";
-			
-			$testDetails[2] .= "User '$user[name]' needs to write be able to write to this file:\n$filename";
-			$this->error($testDetails);
+		} else {
+			$testDetails[2] .= "Unable to detect whether I can write to files. Please ensure $filename is writable.";
+			$this->warning($testDetails);
 		}
 	}
 	
