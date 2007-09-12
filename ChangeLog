@@ -1,14 +1,21 @@
 SilverStripe ChangeLog
 
-2.0.3
+2.1.0
   - Theme support
   - Widget support
+  - Better extension API
+  - Unit testing framework
+  - Comment administration section, and comment moderation
   - TinyMCE has been updated to 2.1.1.1
+  - Drastically improved database build performance
+  - Support for running SilverStripe in safe mode
   - Improved spam detection 
   - More API documentation
   - PHP notice fixes
   - Added support for __ss_environment.php files
   - Use normal authentification rather than basicauth for db/build
+  - Moved RestfulService from mashups module into sapphire core
+  - Added BBCodeParser
   - Fix CSS of profiler pop-up
   - Fix specific newsletter bug
   - Added sorting, highlighting, formatting to TableListField
@@ -60,8 +67,36 @@ SilverStripe ChangeLog
   - Fixed saving root folder causes error
   - Fixed "non-numeric ID" error that occurs when visiting newsletter section for a newsletter that doesn't exist (caused by session sometimes)
   - Added anchors to page comments, and made rss feed link to them
+  - Show an rss link for page comments on each page
+  - Fixed MetaTags so it accepts a string or a boolean, which means it will behave correctly in templates
+  - Improved the encapsulation of ErrorPage publication
+  - Added ID,ID,ID syntax for populating many-many joins
+  - Fix redirect back after failing login
+  - Fixed renaming of .tar.gz and .tar.bz2 files
+  - Added validation to TableField
+  - Fixed validation of DateField, EmailField and NumericField
+  - Fix livesite bug for visibility handling difference between PHP5.2.0 and PHP5.1.6
+  - Changed colouring of db/build to be more appropriate for the actual meaning of the messages
+  - Added PaddedImage to Image
+  - Allow passing of an array of permission codes to Permission::get_members_by_permission()
+  - Refactored newsletter system to put recipient selection and form-fieldset generation into the NewsletterType class, to allow for subclassing NewsletterType to create special system newsletters.
+  - Fixed redirection from /home/ to /./ in IE6
+  - Use the homepage as a model for the security base-page, so that things like the current subsite are factored in
+  - Added Director::redirected_to / Controller::redirectedTo() for redirection-detection 
+  - Added '<% if HasPerm(PERM_CODE() %>' to ViewableData for template
+  - Sorted permission codes in Permission::get_codes
+  - Added EDIT_PERMISSIONS permission code for SecurityAdmin
+  - Added Permission::get_groups_by_permission
+  - Refactored CMS page-URL accessing to use ->AbsoluteLink(), which can be overridden by defining alternateAbsoluteLink() 
+  - Allow logging in via BasicAuth
+  - Allow the dev and test servers to be set via Director
+  - Installer changes
+      - New installer look based on BlackCandy
+      - Use the new theme system
+      - Added ability to set servers that will be in dev mode
+      - When the posix module isn't present, throw a warning instead of dying
+      
   
-
 2.0.2
   - BlackCandy is the new default theme
   - Much more API Documentation
