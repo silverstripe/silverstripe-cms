@@ -93,6 +93,7 @@ SilverStripe ChangeLog
   - Installer changes
       - New installer look based on BlackCandy
       - Use the new theme system
+      - Add first and last name fields
       - Added ability to set servers that will be in dev mode
       - When the posix module isn't present, throw a warning instead of dying
       
