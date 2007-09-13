@@ -694,12 +694,8 @@ PHP
 		$rewrite = <<<TEXT
 RewriteEngine On
 
-RewriteRule \.js$ - [L]
-RewriteRule \.css$ - [L]
-RewriteRule \.png$ - [L]
-RewriteRule \.jpg$ - [L]
-RewriteRule \.gif$ - [L]
-RewriteRule \.php$ - [L]
+
+RewriteCond %{REQUEST_URI} !(\.gif)|(\.jpg)|(\.png)|(\.css)|(\.js)|(\.php)$ 
 
 RewriteCond %{REQUEST_URI} ^(.*)$
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -734,12 +730,7 @@ TEXT
 		$rewrite = <<<TEXT
 RewriteEngine On
 
-RewriteRule \.js$ - [L]
-RewriteRule \.css$ - [L]
-RewriteRule \.png$ - [L]
-RewriteRule \.jpg$ - [L]
-RewriteRule \.gif$ - [L]
-RewriteRule \.php$ - [L]
+RewriteCond %{REQUEST_URI} !(\.gif)|(\.jpg)|(\.png)|(\.css)|(\.js)|(\.php)$ 
 
 RewriteCond %{REQUEST_URI} ^(.*)$
 RewriteCond %{REQUEST_FILENAME} !-f
