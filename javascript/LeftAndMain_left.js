@@ -66,6 +66,7 @@ TreeAPI.prototype = {
 
 		var aTag = document.createElement('a');
 		aTag.href = SiteTreeHandlers.showRecord_url + idx;
+		aTag.title = 'Page type: ' + pageType;
 		aTag.innerHTML = title;
 		node.appendChild(aTag);
 
@@ -95,6 +96,8 @@ TreeAPI.prototype = {
 		this.performOnTreeNode(idx, function(treeNode) {
 			treeNode.className = treeNode.className.replace(oldClassName,newClassName);
 			treeNode.aSpan.className = 'a ' + treeNode.className.replace('closed','spanClosed');
+			var aTag = treeNode.getElementsByTagName('a')[0];
+			aTag.title = 'Page type: ' + newClassName;
 			treeNode.setIconByClass();
 		});
 	},

@@ -297,7 +297,7 @@ abstract class LeftAndMain extends Controller {
 		// getChildrenAsUL is a flexible and complex way of traversing the tree
 		$siteTree = $obj->getChildrenAsUL("", '
 					"<li id=\"record-$child->ID\" class=\"" . $child->CMSTreeClasses($extraArg) . "\">" .
-					"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" " . (($child->canEdit() || $child->canAddChildren()) ? "" : "class=\"disabled\"") . ">" .
+					"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" " . (($child->canEdit() || $child->canAddChildren()) ? "" : "class=\"disabled\"") . " title=\"Page type: ".$child->class."\" >" .
 					($child->TreeTitle()) .
 					"</a>"
 '
