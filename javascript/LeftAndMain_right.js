@@ -382,13 +382,34 @@ function autoSave(confirmation, callAfter) {
 	});
 	
 	if(__somethingHasChanged) {
+		// Note: discard and cancel options are no longer used since switching to confirm dialog.
+		// 	save is still used if confirmation = false
+		var options = {
+			save: function() {
+				statusMessage('saving...', '', true);
+				var i;
+				for(i=0;i<__forms.length;i++) {
+					if(__forms[i].isChanged && __forms[i].isChanged()) {
+						if(i == 0) __forms[i].save(true, __callAfter);
+						else __forms[i].save(true);
+					}
+				}
+			},
+			discard: function() {
+				__forms.each(function(form) { form.resetElements(false); });
+				if(__callAfter) __callAfter();
+			},
+			cancel: function() {
+			}
+		}
+		
 		if(confirmation ) {
 			if(confirm("Are you sure you want to navigate away from this page?\n\nWARNING: Your changes have not been saved.\n\nPress OK to continue, or Cancel to stay on the current page."))
 			{
 				// OK was pressed, call function for what was clicked on
 				if(__callAfter) __callAfter();
 			} else {
-				// Cancel was pressed, stay on the current page their stuff
+				// Cancel was pressed, stay on the current page
 				return true;
 			}
 		} else {
