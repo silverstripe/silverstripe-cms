@@ -1,21 +1,11 @@
 <div class="title"><div style="background-image : url(cms/images/panels/MySite.png)">My Site</div></div>
 
-	<ul style="float: left; clear: left;" id="SideTabs">
-		<li id="sidetab_sitetree" class="selected">Site Map</li>
-		<!--<li id="sidetab_search">Search</li>-->
-		<% if EnterpriseCMS %>
-		<li id="sidetab_tasklist">Task List</li>
-		<li id="sidetab_waitingon">Waiting on</li>
-		<% end_if %>
-		<li id="sidetab_versions">Versions</li>
-		<% if EnterpriseCMS %>
-		<li id="sidetab_comments">Comments</li>
-		<% end_if %>
-		<li id="sidetab_reports">Reports</li>
-	</ul>
-	
 	<div id="treepanes">
-	
+		<h2 id="heading_sitetree" class="selected">
+			<img id="sitetree_toggle_closed" src="cms/images/panels/toggle-closed.gif" alt="+" style="display:none;" title="click to open this box" />
+			<img id="sitetree_toggle_open" src="cms/images/panels/toggle-open.gif" alt="-" title="click to close box" />
+			Site Tree
+		</h2>
 		<div id="sitetree_holder">
 
 			<ul id="TreeActions">
@@ -87,20 +77,31 @@
 		</div>-->
 
 		<% if EnterpriseCMS %>
-		<div class="listpane" id="tasklist_holder" style="display:none">
-			<h2>Tasklist</h2>
+		<h2 id="heading_tasklist">
+			<img id="tasklist_toggle_closed" src="cms/images/panels/toggle-closed.gif" alt="+" title="click to open box" />
+			<img id="tasklist_toggle_open" src="cms/images/panels/toggle-open.gif" alt="-" style="display:none;" title="click to close box" /> 
+			Tasklist
+		</h2>
+		<div class="listpane" id="tasklist_holder" style="display:none">	
 			<div class="unitBody">
 			</div>
 		</div>
-		<div class="listpane" id="waitingon_holder" style="display:none">
-			<h2>Waiting on</h2>
+		<h2 id="heading_waitingon">
+			<img id="waitingon_toggle_closed" src="cms/images/panels/toggle-closed.gif" alt="+" title="click to open box" />
+			<img id="waitingon_toggle_open" src="cms/images/panels/toggle-open.gif" alt="-" style="display:none;" title="click to close box" /> 
+			Waiting on
+		</h2>
+		<div class="listpane" id="waitingon_holder" style="display:none">	
 			<div class="unitBody">
 			</div>
 		</div>
 		<% end_if %>
+		<h2 id="heading_versions">
+			<img id="versions_toggle_closed" src="cms/images/panels/toggle-closed.gif" alt="+" title="click to open box" />
+			<img id="versions_toggle_open" src="cms/images/panels/toggle-open.gif" alt="-" style="display:none;" title="click to close box" /> 
+			History
+		</h2>
 		<div class="listpane" id="versions_holder" style="display:none">
-			<h2>History</h2>
-			
 			<p class="pane_actions" id="versions_actions">
 				<select>
 					<option value="view" selected="selected">View (click to see)</option>
@@ -115,14 +116,22 @@
 			</div>
 		</div>
 		<% if EnterpriseCMS %>
-		<div class="listpane" id="comments_holder" style="display:none">
-			<h2>Comments</h2>
+		<h2 id="heading_comments">
+			<img id="comments_toggle_closed" src="cms/images/panels/toggle-closed.gif" alt="+" title="click to open box" />
+			<img id="comments_toggle_open" src="cms/images/panels/toggle-open.gif" alt="-" style="display:none;" title="click to close box" /> 
+			Comments
+		</h2>
+		<div class="listpane" id="comments_holder" style="display:none">	
 			<div class="unitBody">
 			</div>
 		</div>
 		<% end_if %>
+		<h2 id="heading_reports">
+			<img id="reports_toggle_closed" src="cms/images/panels/toggle-closed.gif" alt="+" title="click to open box" />
+			<img id="reports_toggle_open" src="cms/images/panels/toggle-open.gif" alt="-" style="display:none;" title="click to close box" /> 
+			Reports
+		</h2>
 		<div class="listpane" id="reports_holder" style="display:none">
-			<h2>Reports</h2>
 			<p id="ReportSelector_holder">$ReportSelector</p>
 			<div class="unitBody">
 			</div>

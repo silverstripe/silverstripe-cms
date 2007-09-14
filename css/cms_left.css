@@ -204,44 +204,6 @@ ul.tree span.modified,
 	text-decoration : none;
 }
 
-/**
- * Side tabs
- */
-#SideTabs {
-	float: left;
-	margin: 0;
-	padding: 0;
-	width: 18px;
-	height: 80%;
-}
-#SideTabs li {
-	clear: left;
-	width: 16px;
-	text-indent: -100em;
-	height: 70px;
-	overflow: hidden;
-	margin: 5px 0 5px 2px;
-	background-repeat: no-repeat;
-	cursor: pointer;
-}
-#SideTabs li#sidetab_versions { background-image: url(../images/sidetabs/versions.gif); }
-#SideTabs li#sidetab_sitetree { background-image: url(../images/sidetabs/sitemap.gif); }
-#SideTabs li#sidetab_tasklist { background-image: url(../images/sidetabs/tasklist.gif); }
-#SideTabs li#sidetab_waitingon { background-image: url(../images/sidetabs/waitingon.gif); }
-#SideTabs li#sidetab_comments { background-image: url(../images/sidetabs/comments.gif); }
-#SideTabs li#sidetab_reports { background-image: url(../images/sidetabs/reports.gif); }
-#SideTabs li#sidetab_search { background-image: url(../images/sidetabs/search.gif); }
-#SideTabs li#sidetab_advertisements { background-image: url(../images/sidetabs/advertisements.gif); }
-
-#SideTabs li#sidetab_versions.selected { background-image: url(../images/sidetabs/versions_over.gif); }
-#SideTabs li#sidetab_sitetree.selected { background-image: url(../images/sidetabs/sitemap_over.gif); }
-#SideTabs li#sidetab_tasklist.selected { background-image: url(../images/sidetabs/tasklist_over.gif); }
-#SideTabs li#sidetab_waitingon.selected { background-image: url(../images/sidetabs/waitingon_over.gif); }
-#SideTabs li#sidetab_comments.selected { background-image: url(../images/sidetabs/comments_over.gif); }
-#SideTabs li#sidetab_reports.selected { background-image: url(../images/sidetabs/reports_over.gif); }
-#SideTabs li#sidetab_search.selected { background-image: url(../images/sidetabs/search_over.gif); }
-#SideTabs li#sidetab_advertisements.selected { background-image: url(../images/sidetabs/advertisements_over.gif); }
-
 #left {
 	background-color: #EEE;
 }
@@ -249,6 +211,12 @@ ul.tree span.modified,
 #treepanes {
 	background-color: #FFF;
 	border-left: 1px #ccc solid;
+}
+#treepanes h2 {
+	cursor: pointer;
+}
+#treepanes h2 img {
+	float:right;
 }
 
 .listpane p {

@@ -35,18 +35,6 @@
 				<p id="sortitems_message" style="margin: 0">To reorganise your folders, drag them around as desired.</p>
 			</form>
 		
-		
-			<!--	
-			<ul style="float: left" id="SideTabs">
-				<li id="sidetab_sitetree" class="selected">Site Map</li>
-				<li id="sidetab_tasklist">Task List</li>
-				<li id="sidetab_waitingon">Waiting on</li>
-				<li id="sidetab_versions">Versions</li>
-				<li id="sidetab_comments">Comments</li>
-				<li id="sidetab_reports">Reports</li>
-			</ul>
-			-->
-	
 			$SiteTreeAsUL
 		</div>
 	</div>

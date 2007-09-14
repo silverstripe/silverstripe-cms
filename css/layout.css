@@ -95,9 +95,6 @@ body.stillLoading select {
 #left.hidden form, #left.hidden .title, #left.hidden #TreeActions {
 	display: none;
 }
-#left.hidden #SideTabs {
-	margin-top: 47px;
-}
 	
 #left.hidden {
 	width: 18px;

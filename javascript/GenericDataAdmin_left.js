@@ -180,8 +180,8 @@ ResultTable.prototype = {
 function fixHeight_left() {
 	fitToParent('LeftPane');
 	fitToParent('Search_holder',12);
-	if($('SideTabs')) {
-		$('SideTabs').resize();
+	if($('treepanes')) {
+		$('treepanes').resize();
 	}
 }
 

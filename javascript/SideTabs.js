@@ -5,7 +5,7 @@ SideTabs.prototype = {
 	 * from the HTML.
 	 */
 	initialize: function() {
-		this.tabs = this.getElementsByTagName('li');
+		this.tabs = this.getElementsByTagName('h2');
 		this.resize();
 		$('Form_EditForm').observeMethod('PageLoaded',this.onpagechanged.bind(this));
 	},
@@ -60,11 +60,11 @@ SideTabItem.prototype = {
 	 * Set up one of the side tabs
 	 */
 	initialize: function() {
-		var holderID = this.id.replace('sidetab_','') + '_holder';
+		var holderID = this.id.replace('heading_','') + '_holder';
 		this.linkedPane = $(holderID);
 		if(!this.linkedPane) throw("Can't find item: " + holderID);
 		this.selected = (this.className && this.className.indexOf('selected') > -10);
-		this.holder = this.parentNode;
+		this.holder = $('treepanes');
 		this.linkedPane.style.display = this.selected ? '' : 'none';
 	},
 	
@@ -75,10 +75,13 @@ SideTabItem.prototype = {
 	},
 	
 	/**
-	 * Handler for <li> click
+	 * Handler for <h2> click
 	 */
 	onclick: function(event) {
 		Event.stop(event);
+		var toggleID = this.id.replace('heading_','') + '_toggle';
+		Element.toggle(toggleID + '_closed');
+		Element.toggle(toggleID + '_open');
 		this.toggle();
 	},
 	toggle: function() {
@@ -109,8 +112,8 @@ SideTabItem.prototype = {
 }
 
 // Application order is important - the Items must be created before the SideTabs object.
-SideTabItem.applyTo('#SideTabs li');
-SideTabs.applyTo('#SideTabs');
+SideTabItem.applyTo('#treepanes h2');
+SideTabs.applyTo('#treepanes');
 
 /**
  * Generic base class for all side panels

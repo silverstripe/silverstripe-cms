@@ -414,8 +414,8 @@ treeactions = {
 
 function fixHeight_left() {
 	if($('treepanes')) fitToParent('treepanes');
-	var st = $('SideTabs');
-	if(st) st.resize();
+	var st = $('treepanes');
+	if(st.resize) st.resize();
 	else fitToParent('sitetree_holder');
 }
 
