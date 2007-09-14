@@ -626,18 +626,6 @@ function doYouWantToRollback(handlers) {
 	OpenModalDialog(url, handlers, 'Are you sure?' );
 }
 
-/**
- * Shows a "do you want to save" dialog box.
- * Returns save / discard / cancel
- */
-
-var _DO_YOU_WANT_TO_SAVE_IS_OPEN = false; 
-function doYouWantToSave(handlers) {
-		// modalDialog('admin/dialog?Message=You+have+changed+this+page.+Do+you+want+to+save+these+changes%3F&Buttons[]=save,Save+changes&Buttons[]=discard,Discard+changes&Buttons[]=cancel,Cancel', handlers);
-		var url = document.getElementsByTagName('base')[0].href + 'admin/savedialog';
-		OpenModalDialog(url, handlers, 'Unsaved Changes' );
-}
-
 function modalDialog(url, handlers) {
 	var baseURL = document.getElementsByTagName('base')[0].href;
 	if(window.showModalDialog) {
@@ -645,9 +633,6 @@ function modalDialog(url, handlers) {
 		if(handlers[result])
 			handlers[result]();
 		
-	} else {
-		_DO_YOU_WANT_TO_SAVE_IS_OPEN = true;
-		doYouWantToSave.dialog = new ModalDialog(baseURL + url, handlers);
 	}
 }
 

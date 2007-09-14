@@ -833,24 +833,6 @@ HTML;
 		);
 	}
 	
-	function savedialog() {
-		Requirements::clear();
-		Requirements::css('cms/css/dialog.css');
-		Requirements::javascript('jsparty/prototype.js');
-		Requirements::javascript('jsparty/behaviour.js');
-		Requirements::javascript('jsparty/prototype_improvements.js');
-		Requirements::javascript('cms/javascript/dialog.js');
-		
-		$message = "You have unsaved changes. Would you like to save them?";
-		$buttons = "<button name=\"save\">Save changes</button><button name=\"discard\">Discard changes</button><button name=\"cancel\">Stay on this page</button>";
-		
-		return $this->customise( array( 
-			'Message' => $message,
-			'Buttons' => $buttons,
-			'DialogType' => 'alert' 
-		))->renderWith( 'Dialog' );
-	}
-	
 	function canceldraftchangesdialog() {
 		Requirements::clear();
 		Requirements::css('cms/css/dialog.css');

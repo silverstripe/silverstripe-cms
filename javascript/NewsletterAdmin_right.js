@@ -342,64 +342,6 @@ Behaviour.register({
 	}
 });
 
-
-function save(ifChanged, callAfter, confirmation) {
-	tinyMCE.triggerSave(true);
-	
-	var form = $('Form_EditForm');
-	
-	var alreadySaved = false;
-
-	if(ifChanged) {
-		if(form.elements.length < 2) alreadySaved = true;
-		else alreadySaved = !form.isChanged();
-	}
-	
-	if(alreadySaved && ifChanged) { // pressing save always saves
-		if(!ifChanged && !confirmation) {
-			statusMessage("There's nothing to save");
-		}
-		
-		if(callAfter) callAfter();
-	
-	} else {
-		var options = {
-			save: (function() {
-				statusMessage('saving...', '', true);
-		
-				var success = function(response) {
-					Ajax.Evaluator(response);
-					if(this.callAfter) this.callAfter();
-				}
-				if(callAfter) success = success.bind(this);
-		
-				if( $('Form_EditForm_Type').value == 'Newsletter' )
-					var data = form.serializeChangedFields('ID','type') + '&ajax=1&action_savenewsletter=1';
-				else
-					var data = form.serializeChangedFields('ID','type') + '&ajax=1&action_save=1';	
-		
-				new Ajax.Request(form.action, {
-					method : form.method,
-					postBody: data,
-					onSuccess : success,
-					onFailure : function(response) {
-						errorMessage('Error saving content', response);
-					}
-				});
-			}).bind({callAfter : callAfter}),
-				
-			discard: callAfter,
-			cancel: function() {
-			}
-		}
-		
-		if(confirmation) doYouWantToSave(options);
-		else options.save();
-	}
-	
-	return false;
-}
-
 Behaviour.register({
 	/**
 	 * When the iframe has loaded, apply the listeners
