@@ -446,6 +446,8 @@ JS;
 		//$record->PublishedByID = Member::currentUser()->ID;
 		$record->write();
 		$record->publish("Stage", "Live");
+		
+		Sitemap::Ping();
 
 		// Fix the sort order for this page's siblings		
 		DB::query("UPDATE SiteTree_Live
@@ -671,6 +673,9 @@ HTML;
 		$page->write();
 		
 		return $this->tellBrowserAboutPublicationChange($page, "Removed '$page->Title' from the published site");
+		Sitemap::Ping();
+		
+		return $this->tellBrowserAboutPublicationChange($page, sprintf(_t('CMSMain.REMOVEDPAGE',"Removed '%s' from the published site"),$page->Title));
 	}
 		
 	
