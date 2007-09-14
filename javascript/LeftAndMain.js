@@ -79,6 +79,7 @@ Behaviour.register({
 	
 	'#MainMenu li' : {
 		onclick : function(event) { 
+			return LeftAndMain_window_unload(); // Confirm if there are unsaved changes
 			window.location.href = this.getElementsByTagName('a')[0].href; 
 			Event.stop(event);
 		}
@@ -87,6 +88,14 @@ Behaviour.register({
 	'#Menu-help' : {
 		onclick : function() {
 			var w = window.open(this.getElementsByTagName('a')[0].href, 'help');
+			w.focus();
+			return false;
+		}
+	},
+
+	'#Logo' : {
+		onclick : function() {
+			var w = window.open(this.getElementsByTagName('a')[0].href);
 			w.focus();
 			return false;
 		}
@@ -166,11 +175,12 @@ function isVisible(el) {
 
 LeftAndMain_window_unload = function() {
 	window.exiting = true; // this is used by prototype
-	if(typeof autoSave == 'function')
-	autoSave(navigator.appName == "Microsoft Internet Explorer");
+	if(typeof autoSave == 'function') {
+		return autoSave(true);
+	}
 }
 
-Event.observe(window, 'beforeunload', LeftAndMain_window_unload);
+// Event.observe(window, 'beforeunload', LeftAndMain_window_unload);
 
 /**
  * Unlock the locked status message.

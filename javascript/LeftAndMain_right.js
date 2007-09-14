@@ -410,7 +410,7 @@ function autoSave(confirmation, callAfter) {
 				if(__callAfter) __callAfter();
 			} else {
 				// Cancel was pressed, stay on the current page
-				return true;
+				return false;
 			}
 		} else {
 			options.save();
