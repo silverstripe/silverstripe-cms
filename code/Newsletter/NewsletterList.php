@@ -20,10 +20,11 @@ class NewsletterList extends FormField {
 	function setController($controller) {
 		$this->controller = $controller;
 	}
-    
+    /* No longer used
     function Newsletters() {
         return DataObject::get( 'Newsletter', "`ParentID`='{$this->mailType->ID}' AND `Status`='{$this->status}'" );   
     }
+    */
     
 	function DraftNewsletters() {
 		return $this->mailType->DraftNewsletters();
@@ -36,22 +37,9 @@ class NewsletterList extends FormField {
 	function Status() {
 		return $this->status;
 	}
-	
-
-/*	function AddRecordForm() {
-		return new TabularStyle(new Form($this->controller,'AddRecordForm',
-			new FieldSet(
-				new TextField("FirstName", "First Name"),
-				new TextField("Surname", "Surname"),
-				new TextField("Email", "Email"),
-				new TextField("Password", "Password"),
-				new HiddenField("GroupID", null, $this->group->ID)
-			),
-			new FieldSet(
-				new FormAction("addmember", "Add")
-			)
-		));
-	}*/
+	function mailTypeID() {
+		return $this->mailType->ID;
+	}
 }
 
 ?>

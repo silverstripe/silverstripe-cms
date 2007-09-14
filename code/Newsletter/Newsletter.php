@@ -14,7 +14,7 @@ class Newsletter extends DataObject {
 		
 		$ret = new FieldSet(
 			new TabSet("Root",
-				$mailTab = new Tab("Mail",
+				$mailTab = new Tab("Newsletter",
 					new TextField("Subject", "Subject", $this->Subject),
 					new HtmlEditorField("Content", "Content")
 				)

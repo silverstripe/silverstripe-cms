@@ -206,22 +206,7 @@ SiteTreeNode.prototype.getPageFromServer = function() {
     var otherID = null;
     var type = null;
     
-    var forceReload = $('Form_EditForm_Type') && $('Form_EditForm_Type').value == 'Newsletter';
-        
 		if( match ) {
-            
-      // open the appropriate tab
-      switch( match[1] ) {
-          case 'recipients':
-              openTabName = 'Root_Recipients_set_Recipients';
-              break;
-          case 'drafts':
-              openTabName = 'Root_Drafts';
-              break;
-          case 'sent':
-              openTabName = 'Root_Sent_set_Sent';
-              break;    
-      }
       
       newPageID = match[2];
       type = match[1];
@@ -229,13 +214,8 @@ SiteTreeNode.prototype.getPageFromServer = function() {
 			newPageID = RegExp.$2;
 			type = RegExp.$1;
 			otherID = RegExp.$3;
-			forceReload = true;
 		}
-		
-		if(	forceReload || currentPageID != newPageID )
-			$('Form_EditForm').getPageFromServer(newPageID, type, otherID, openTabName);
-		else
-			openTab( openTabName );
+		$('Form_EditForm').getPageFromServer(newPageID, type, otherID, openTabName);
 };
 
 function draft_sent_ok( newsletterID, draftID ) {
