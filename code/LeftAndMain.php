@@ -8,10 +8,10 @@ abstract class LeftAndMain extends Controller {
 	static $tree_class = null;
 	static $extra_menu_items = array(), $removed_menu_items = array(), $replaced_menu_items = array();
 	static $ForceReload;
-	
+
 	function init() {
 		Director::set_site_mode('cms');
-		
+
 		parent::init();
 		
 		// Allow customisation of the access check by a decorator
@@ -36,7 +36,7 @@ abstract class LeftAndMain extends Controller {
 		// Access failure!		
 		if(!$isAllowed) {
 			$messageSet = array(
-				'default' => "Enter your email address and password to access the CMS.",
+				'default' => "Please choose an authentication method and enter your credentials to access the CMS.",
 				'alreadyLoggedIn' => "I'm sorry, but you can't access that part of the CMS.  If you want to log in as someone else, do so below",
 				'logInAgain' => "You have been logged out of the CMS.  If you would like to log in again, enter a username and password below.",
 			);
@@ -72,32 +72,32 @@ abstract class LeftAndMain extends Controller {
 		Requirements::javascript("jsparty/calendar/lang/calendar-en.js");
 		Requirements::javascript("jsparty/calendar/calendar-setup.js");
 		Requirements::css("sapphire/css/CalendarDateField.css");
-		Requirements::css("jsparty/calendar/calendar-win2k-1.css");		
-		
+		Requirements::css("jsparty/calendar/calendar-win2k-1.css");
+
 		Requirements::javascript('sapphire/javascript/Validator.js');
-		
+
 		Requirements::css("sapphire/css/SubmittedFormReportField.css");
 		
 		$dummy = null;
 		$this->extend('augmentInit', $dummy);
 	}
-	
+
 	/**
 	 * Returns true if the current user can access the CMS
 	 */
 	function canAccessCMS() {
-		
+
 		$member = Member::currentUser();
-		
+
 		if($member) {
 			if($groups = $member->Groups()) {
 				foreach($groups as $group) if($group->CanCMS) return true;
 			}
 		}
-		
+
 		return false;
 	}
-	
+
 	/**
 	 * Returns true if the current user has administrative rights in the CMS
 	 */
@@ -107,33 +107,33 @@ abstract class LeftAndMain extends Controller {
 
 	//------------------------------------------------------------------------------------------//
 	// Main controllers
-	
+
 	/**
 	 * You should implement a Link() function in your subclass of LeftAndMain,
 	 * to point to the URL of that particular controller.
 	 */
 	abstract public function Link();
-	
+
 	public function show($params) {
 		if($params['ID']) $this->setCurrentPageID($params['ID']);
-		if($params['OtherID']) 
+		if($params['OtherID'])
 			Session::set('currentMember', $params['OtherID']);
 
 		if(Director::is_ajax()) {
 			SSViewer::setOption('rewriteHashlinks', false);
 			return $this->EditForm()->formHtmlContent();
-			
+
 		} else {
 			return array();
 		}
 	}
-  
+
 
 	public function getitem() {
 		$this->setCurrentPageID($_REQUEST['ID']);
 		SSViewer::setOption('rewriteHashlinks', false);
 		// Changed 3/11/2006 to not use getLastFormIn because that didn't have _form_action, _form_name, etc.
-		
+
 		$form = $this->EditForm();
 		if($form) return $form->formHtmlContent();
 		else return "";
@@ -145,7 +145,7 @@ abstract class LeftAndMain extends Controller {
 
 	//------------------------------------------------------------------------------------------//
 	// Main UI components
-	
+
 	/**
 	 * Returns the main menu of the CMS.  This is also used by init() to work out which sections the user
 	 * has access to.
@@ -155,7 +155,7 @@ abstract class LeftAndMain extends Controller {
 		if(!Member::currentUserID()) return new DataObjectSet();
 
 		// Built-in modules
-		
+
 		// array[0]: Name of the icon
 		// array[1]: URL to visi
 		// array[2]: The controller class for this menu, used to check permisssions.  If blank, it's assumed that this is public, and always shown to
@@ -171,7 +171,7 @@ abstract class LeftAndMain extends Controller {
 		);
 
 		if(!$this->hasReports()) unset($menuSrc['Reports']);
-		
+
 		// Extra modules
 		if($removed = $this->stat('removed_menu_items')) {
 			foreach($removed as $remove) {
@@ -183,30 +183,30 @@ abstract class LeftAndMain extends Controller {
 				}
 			}
 		}
-		
+
 		// replace menu items
 		if($replaced = $this->stat('replaced_menu_items') ) {
-			
+
 			$newMenu = array();
-			
+
 			reset( $menuSrc );
-			
+
 			for( $i = 0; $i < count( $menuSrc ); $i++ ) {
 				$existing = current($menuSrc);
-				
+
 				if( $replacement = $replaced[$existing[0]] ) {
 					$newMenu = array_merge( $newMenu, $replacement );
 				} else
 					$newMenu = array_merge( $newMenu, array( key( $menuSrc) => current( $menuSrc ) ) );
-				
+
 				next( $menuSrc );
 			}
-			
+
 			reset( $menuSrc );
-			
+
 			$menuSrc = $newMenu;
 		}
-		
+
 		// Extra modules
 		if($extra = $this->stat('extra_menu_items')) {
 			foreach($extra as $k => $v)  {
@@ -216,9 +216,9 @@ abstract class LeftAndMain extends Controller {
 
 			array_splice($menuSrc, count($menuSrc)-2, 0, $extra);
 		}
-		
+
 		// Encode into DO set
-		$menu = new DataObjectSet();		
+		$menu = new DataObjectSet();
 		$itemsWithPermission = 0;
 		foreach($menuSrc as $title => $menuItem) {
 			if(is_numeric($title) && isset($menuItem['title'])) $title = $menuItem['title'];
@@ -245,8 +245,8 @@ abstract class LeftAndMain extends Controller {
 				}
 
 				$menu->push(new ArrayData(array(
-					"Title" => Convert::raw2xml($title), 
-					"Code" => $menuItem[0], 
+					"Title" => Convert::raw2xml($title),
+					"Code" => $menuItem[0],
 					"Link" => $menuItem[1],
 					"LinkingMode" => $linkingmode
 				)));
@@ -260,7 +260,7 @@ abstract class LeftAndMain extends Controller {
 
   /**
    * Return a list of appropriate templates for this class, with the given suffix
-   */	
+   */
   protected function getTemplatesWithSuffix($suffix) {
     $classes = array_reverse(ClassInfo::ancestry($this->class));
     foreach($classes as $class) {
@@ -269,7 +269,7 @@ abstract class LeftAndMain extends Controller {
     }
     return $templates;
   }
-  
+
 	public function Left() {
 		return $this->renderWith($this->getTemplatesWithSuffix('_left'));
 	}
@@ -282,7 +282,7 @@ abstract class LeftAndMain extends Controller {
 		}
 	}
 
-  
+
 	public function getRecord($id, $className = null) {
 		if(!$className) $className = $this->stat('tree_class');
 		return DataObject::get_by_id($className, $rootID);
@@ -292,18 +292,18 @@ abstract class LeftAndMain extends Controller {
 		$obj = $rootID ? $this->getRecord($rootID) : singleton($className);
 		$obj->markPartialTree();
 		if($p = $this->currentPage()) $obj->markToExpose($p);
-		
+
 		// getChildrenAsUL is a flexible and complex way of traversing the tree
 		$siteTree = $obj->getChildrenAsUL("", '
 					"<li id=\"record-$child->ID\" class=\"" . $child->CMSTreeClasses($extraArg) . "\">" .
-					"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" " . (($child->canEdit() || $child->canAddChildren()) ? "" : "class=\"disabled\"") . ">" . 
-					($child->TreeTitle()) . 
+					"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" " . (($child->canEdit() || $child->canAddChildren()) ? "" : "class=\"disabled\"") . ">" .
+					($child->TreeTitle()) .
 					"</a>"
 '
 					,$this, true);
 
-		// Wrap the root if needs be.					
-		
+		// Wrap the root if needs be.
+
 		if(!$rootID) {
 			$rootLink = $this->Link() . '0';
 			
@@ -314,27 +314,27 @@ abstract class LeftAndMain extends Controller {
 			$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-0\" class=\"Root nodelete\"><a href=\"$rootLink\">$treeTitle</a>"
 				. $siteTree . "</li></ul>";
 		}
-				
+
 		return $siteTree;
 	}
-	
+
 	public function getsubtree() {
 		$results = $this->getSiteTreeFor($this->stat('tree_class'), $_REQUEST['ID']);
 		return substr(trim($results), 4,-5);
 	}
-	
+
 	/**
-	 * Allows you to returns a new data object to the tree (subclass of sitetree) 
-	 * and updates the tree via javascript. 
+	 * Allows you to returns a new data object to the tree (subclass of sitetree)
+	 * and updates the tree via javascript.
 	 */
 	public function returnItemToUser($p) {
 		if(Director::is_ajax()) {
 			// Prepare the object for insertion.
 			$parentID = (int)$p->ParentID;
-			$id = $p->ID ? $p->ID : "new-$p->class-$p->ParentID";	
+			$id = $p->ID ? $p->ID : "new-$p->class-$p->ParentID";
 			$treeTitle = Convert::raw2js($p->TreeTitle());
 			$hasChildren = is_numeric( $id ) && $p->AllChildren() ? ' unexpanded' : '';
-			
+
 			// Ensure there is definitly a node avaliable. if not, append to the home tree.
 			$response = <<<JS
 				var tree = $('sitetree');
@@ -358,7 +358,7 @@ JS;
 	public function save($urlParams, $form) {
 		$className = $this->stat('tree_class');
 		$result = '';
-			
+
 		$id = $_REQUEST['ID'];
 		if(substr($id,0,3) != 'new') {
 			$record = DataObject::get_one($className, "`$className`.ID = $id");
@@ -366,7 +366,7 @@ JS;
 			$record = $this->getNewItem($id, false);
 		}
 
-		// We don't want to save a new version if there are no changes		
+		// We don't want to save a new version if there are no changes
 		$dataFields_new = $form->Fields()->dataFields();
 		$dataFields_old = $record->getAllFields();
 		$changed = false;
@@ -374,7 +374,7 @@ JS;
 		foreach($dataFields_new as $datafield) {
 			// if the form has fields not belonging to the record
 			if(!isset($dataFields_old[$datafield->Name()])) {
-				$hasNonRecordFields = true;				
+				$hasNonRecordFields = true;
 			}
 			// if field-values have changed
 			if(!isset($dataFields_old[$datafield->Name()]) || $dataFields_old[$datafield->Name()] != $datafield->dataValue()) {
@@ -391,7 +391,7 @@ JS;
 			FormResponse::update_status($record->Status);
 			return FormResponse::respond();
 		}
-		
+
 		$form->dataFieldByName('ID')->Value = 0;
 
 		if(isset($urlParams['Sort']) && is_numeric($urlParams['Sort'])) {
@@ -411,13 +411,13 @@ JS;
 		$originalURLSegment = $record->URLSegment;
 
 		$form->saveInto($record, true);
-		
+
 		if(is_a($record, "Page")) {
 			$record->Status = ($record->Status == "New page" || $record->Status == "Saved (new)") ? "Saved (new)" : "Saved (update)";
 		}
-		
-		
-		
+
+
+
 		// $record->write();
 
 		if(Director::is_ajax()) {
@@ -427,7 +427,7 @@ JS;
 			}
 
 			$title = Convert::raw2js($record->TreeTitle());
-			
+
 			if($added = DataObjectLog::getAdded('SiteTree')) {
 				foreach($added as $page) {
 					if($page->ID != $record->ID) $result .= $this->addTreeNodeJS($page);
@@ -446,7 +446,7 @@ JS;
 					}
 				}
 			}
-			
+
 			FormResponse::add("$('sitetree').setNodeTitle(\"$record->ID\", \"$title\");");
 			$message = "Saved.";
 
@@ -456,16 +456,16 @@ JS;
 				$record->setClassName( $record->ClassName );
 				$newClass = $record->ClassName;
 				$record = $record->newClassInstance( $newClass );
-				
+
 				FormResponse::add("if(\$('sitetree').setNodeIcon) \$('sitetree').setNodeIcon($record->ID, '$originalClass', '$record->ClassName');");
 			}
 
 			// HACK: This should be turned into somethign more general
-			if( ($record->class == 'VirtualPage' && $originalURLSegment != $record->URLSegment) || 
+			if( ($record->class == 'VirtualPage' && $originalURLSegment != $record->URLSegment) ||
 				($originalClass != $record->ClassName) || self::$ForceReload == true) {
 				FormResponse::add("$('Form_EditForm').getPageFromServer($record->ID);");
 			}
-			
+
 			if( ($record->class != 'VirtualPage') && $originalURLSegment != $record->URLSegment) {
 				$message .= "  Changed URL to '$record->URLSegment'";
 				FormResponse::add("\$('Form_EditForm').elements.URLSegment.value = \"$record->URLSegment\";");
@@ -476,20 +476,20 @@ JS;
 			if($originalStatus != $record->Status) {
 				$message .= "  Status changed to '$record->Status'";
 			}
-		
-			$record->write(); 
-			
+
+			$record->write();
+
 			$result .= $this->getActionUpdateJS($record);
 			FormResponse::status_message($message, "good");
-			
+
 			FormResponse::update_status($record->Status);
 
 
 		}
-		
+
 		return FormResponse::respond();
 	}
-	
+
 	/**
 	 * Return a piece of javascript that will update the actions of the main form
 	 */
@@ -500,12 +500,12 @@ JS;
 		foreach($tempForm->Actions() as $action) {
 			$actionList .= $action->Field() . ' ';
 		}
-		
+
 		FormResponse::add("$('Form_EditForm').loadActionsFromString('" . Convert::raw2js($actionList) . "');");
-		
+
 		return FormResponse::respond();
 	}
-	
+
 	/**
 	 * Return JavaScript code to generate a tree node for the given page, if visible
 	 */
@@ -514,7 +514,7 @@ JS;
 		$title = Convert::raw2js($page->TreeTitle());
 		$response = <<<JS
 var newNode = $('sitetree').createTreeNode($page->ID, \"$title\", \"$page->class\");
-var parentNode = $('sitetree').getTreeNodeByIdx($parentID); 
+var parentNode = $('sitetree').getTreeNodeByIdx($parentID);
 if(parentNode) parentNode.appendTreeNode(newNode);\n"
 ($selected ? "newNode.selectTreeNode();\n" : "") ;
 JS;
@@ -525,23 +525,23 @@ JS;
 	 * Return JavaScript code to remove a tree node for the given page, if it exists.
 	 */
 	public function deleteTreeNodeJS($page) {
-		$id = $page->ID ? $page->ID : $page->OldID;		
+		$id = $page->ID ? $page->ID : $page->OldID;
 		$response = <<<JS
-var node = $('sitetree').getTreeNodeByIdx($id); 
-if(node && node.parentTreeNode) node.parentTreeNode.removeTreeNode(node); 
+var node = $('sitetree').getTreeNodeByIdx($id);
+if(node && node.parentTreeNode) node.parentTreeNode.removeTreeNode(node);
 $('Form_EditForm').closeIfSetTo($id);
 JS;
 		FormResponse::add($response);
 		return FormResponse::respond();
 	}
-	
-	/** 
+
+	/**
 	 * Sets a static variable on this class which means the panel will be reloaded.
 	 */
 	static function ForceReload(){
 		self::$ForceReload = true;
 	}
-	
+
 	/**
 	 * Ajax handler for updating the parent of a tree node
 	 */
@@ -549,38 +549,38 @@ JS;
 		$id = $_REQUEST['ID'];
 		$parentID = $_REQUEST['ParentID'];
 		if($parentID == 'root'){
-			$parentID = 0;	
+			$parentID = 0;
 		}
 		$_REQUEST['ajax'] = 1;
-		
+
 		if(is_numeric($id) && is_numeric($parentID) && $id != $parentID) {
 			$node = DataObject::get_by_id($this->stat('tree_class'), $id);
 			if($node){
 				$node->ParentID = $parentID;
 				$node->Status = "Saved (update)";
 				$node->write();
-				
+
 				if(is_numeric($_REQUEST['CurrentlyOpenPageID'])) {
 					$currentPage = DataObject::get_by_id($this->stat('tree_class'), $_REQUEST['CurrentlyOpenPageID']);
 					if($currentPage) {
 						$cleanupJS = $currentPage->cmsCleanup_parentChanged();
 					}
 				}
-				
+
 				FormResponse::status_message('saved', 'good');
 				FormResponse::add($cleanupJS);
-			
+
 			}else{
-				FormResponse::status_message("Please Save Page: This page could not be upated because it hasn't been saved yet.","good");		
+				FormResponse::status_message("Please Save Page: This page could not be upated because it hasn't been saved yet.","good");
 			}
-			
-			
+
+
 			return FormResponse::respond();
 		} else {
 			user_error("Error in ajaxupdateparent request; id=$id, parentID=$parentID", E_USER_ERROR);
 		}
 	}
-	
+
 	/**
 	 * Ajax handler for updating the order of a number of tree nodes
 	 * $_GET[ID]: An array of node ids in the correct order
@@ -591,7 +591,7 @@ JS;
 		$counter = 0;
 		$js = '';
 		$_REQUEST['ajax'] = 1;
-		
+
 		if(is_array($_REQUEST['ID'])) {
 			$movedNode = DataObject::get_by_id($className, $_REQUEST['MovedNodeID']);
 
@@ -600,10 +600,10 @@ JS;
 					$movedNode->Sort = ++$counter;
 					$movedNode->Status = "Saved (update)";
 					$movedNode->write();
-					
+
 					$title = Convert::raw2js($movedNode->TreeTitle());
 					$js .="$('sitetree').setNodeTitle($movedNode->ID, \"$title\")\n";
-					
+
 				// Nodes that weren't "actually moved" shouldn't be registered as having been edited; do a direct SQL update instead
 				} else if(is_numeric($id)) {
 					++$counter;
@@ -623,7 +623,7 @@ JS;
 		} else {
 			FormResponse::error("Error in request");
 		}
-		
+
 		return FormResponse::respond();
 	}
 
@@ -632,7 +632,7 @@ JS;
 	 */
 	public function deleteitems() {
 		$ids = split(' *, *', $_REQUEST['csvIDs']);
-		
+
 		$script = "st = \$('sitetree'); \n";
 		foreach($ids as $id) {
 			if(is_numeric($id)) {
@@ -641,29 +641,29 @@ JS;
 			}
 		}
 		FormResponse::add($script);
-		
+
 		return FormResponse::respond();
 	}
-	
+
 	public function EditForm() {
 		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : $this->currentPageID();
 		if($id) return $this->getEditForm($id);
 	}
-	
+
 	public function printable() {
 		$id = $_REQUEST['ID'] ? $_REQUEST['ID'] : $this->currentPageID();
-		
+
 		if($id) $form = $this->getEditForm($id);
 		$form->transform(new PrintableTransformation());
 		$form->actions = null;
-		
+
 		Requirements::clear();
 		Requirements::css('cms/css/LeftAndMain_printable.css');
 		return array(
 			"PrintForm" => $form
 		);
 	}
-	
+
 	public function currentPageID() {
 		if(isset($_REQUEST['ID']) && is_numeric($_REQUEST['ID']))	{
 			return $_REQUEST['ID'];
@@ -675,29 +675,29 @@ JS;
 			return null;
 		}
 	}
-	
+
 	public function setCurrentPageID($id) {
 		Session::set("{$this->class}.currentPage", $id);
 	}
-	
+
 	public function currentPage() {
 		$id = $this->currentPageID();
 		if($id && is_numeric($id)) {
 			return DataObject::get_by_id($this->stat('tree_class'), $id);
 		}
 	}
-	
+
 	public function isCurrentPage(DataObject $page) {
 		return $page->ID == Session::get("{$this->class}.currentPage");
 	}
-	
+
 	/**
 	 * Return the CMS's HTML-editor toolbar
 	 */
 	public function EditorToolbar() {
 		return new HtmlEditorField_Toolbar($this, "EditorToolbar");
 	}
-	
+
 	/**
 	 * Return the version number of this application
 	 */
@@ -705,28 +705,28 @@ JS;
 		$sapphireVersionFile = file_get_contents('../sapphire/silverstripe_version');
 		$jspartyVersionFile = file_get_contents('../jsparty/silverstripe_version');
 		$cmsVersionFile = file_get_contents('../cms/silverstripe_version');
-		
+
 		if(strstr($sapphireVersionFile, "/sapphire/trunk")) {
 			$sapphireVersion = "trunk";
 		} else {
 			preg_match("/sapphire\/(?:(?:branches)|(?:tags))(?:\/rc)?\/([A-Za-z0-9._-]+)\/silverstripe_version/", $sapphireVersionFile, $matches);
 			$sapphireVersion = $matches[1];
 		}
-		
+
 		if(strstr($jspartyVersionFile, "/jsparty/trunk")) {
 			$jspartyVersion = "trunk";
 		} else {
 			preg_match("/jsparty\/(?:(?:branches)|(?:tags))(?:\/rc)?\/([A-Za-z0-9._-]+)\/silverstripe_version/", $jspartyVersionFile, $matches);
 			$jspartyVersion = $matches[1];
 		}
-		
+
 		if(strstr($cmsVersionFile, "/cms/trunk")) {
 			$cmsVersion = "trunk";
 		} else {
 			preg_match("/cms\/(?:(?:branches)|(?:tags))(?:\/rc)?\/([A-Za-z0-9._-]+)\/silverstripe_version/", $cmsVersionFile, $matches);
 			$cmsVersion = $matches[1];
-		}		
-			
+		}
+
 		if($sapphireVersion == $jspartyVersion && $jspartyVersion == $cmsVersion) {
 			return $sapphireVersion;
 		}	else {
@@ -737,7 +737,7 @@ JS;
 	/**
 	 * The application name is customisable by calling
 	 * LeftAndMain::setApplicationName("Something New")
-	 */	
+	 */
 	static $application_name = "SilverStripe CMS", $application_logo_text = "SilverStripe CMS";
 	static function setApplicationName($name, $logoText = null) {
 		self::$application_name = $name;
@@ -751,7 +751,7 @@ JS;
 	}
 
 	static $application_logo = "cms/images/mainmenu/logo.gif", $application_logo_style = "";
-	
+
 	static function setLogo($logo, $logoStyle) {
 		self::$application_logo = $logo;
 		self::$application_logo_style = $logoStyle;
@@ -762,8 +762,8 @@ JS;
 	}
 
 	/**
-	 * Determine if we have reports and need to display the Reports main menu item 
-	 * 
+	 * Determine if we have reports and need to display the Reports main menu item
+	 *
 	 * @return boolean
 	 */
 	function hasReports() {
