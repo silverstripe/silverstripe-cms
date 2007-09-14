@@ -312,6 +312,7 @@ html>body #top #Logo {
 	font-weight:bold;
 	font-size : 11px;
 	border : 1px solid #555555;
+	cursor: auto;
 }
 
 
