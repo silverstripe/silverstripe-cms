@@ -197,6 +197,7 @@ html>body #top #MainMenu li {
 
 
 #top #MainMenu #Menu-content {	background-image: url(../images/mainmenu/content.gif); }
+#top #MainMenu #Menu-statistics { background-image: url(../images/mainmenu/statistics.gif); }
 #top #MainMenu #Menu-security { background-image: url(../images/mainmenu/members.gif); }
 #top #MainMenu #Menu-report { background-image: url(../images/mainmenu/reports.gif); }
 #top #MainMenu #Menu-newsletter { background-image: url(../images/mainmenu/emails.gif); }

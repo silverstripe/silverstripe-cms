@@ -2,10 +2,11 @@
 /**
  * URL rules for the CMS module
  */
-Director::addRules(50, array(
+Director::addRules(100, array(
 	'processes/$Action/$ID/$Batch' => 'BatchProcess_Controller',
 	'silverstripe/' => '->admin/',
 	'cms/' => '->admin/',
+	'admin/statistics/$Action/$ID' => 'StatisticsAdmin',
 	'admin/security/$Action/$ID/$OtherID' => 'SecurityAdmin',
 	'admin/help/$Action/$ID' => 'CMSHelp',
 	'admin/newsletter/$Action/$ID' => 'NewsletterAdmin',
