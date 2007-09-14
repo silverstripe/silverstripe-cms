@@ -442,11 +442,9 @@ class NewsletterAdmin extends LeftAndMain {
 		if( isset($_REQUEST['Type']) && $_REQUEST['Type'] == 'Newsletter' )
 			return $this->savenewsletter( $urlParams, $form );
 
-		// @TODO: Find the real fix for this.
-		$className = '';
-
 		$id = $_REQUEST['ID'];
-		$record = DataObject::get_one('NewsletterType', "`NewsletterType`.ID = $id");
+		$className = 'NewsletterType';
+		$record = DataObject::get_one($className, "`$className`.ID = $id");
 		
 		// Is the template attached to the type, or the newsletter itself?
 
@@ -463,10 +461,10 @@ class NewsletterAdmin extends LeftAndMain {
 	
 	public function savenewsletter($urlParams, $form) {
 		$id = $_REQUEST['ID'];
-		// @TODO: Find the real fix for this.
-		$className = '';
-		$record = DataObject::get_one('Newsletter', "`$className`.ID = $id");
-		
+
+		$className = 'Newsletter';
+		$record = DataObject::get_one($className, "`$className`.ID = $id");
+
 		// Is the template attached to the type, or the newsletter itself?
 		$type = $record->getNewsletterType();
 		

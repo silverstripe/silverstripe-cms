@@ -381,8 +381,11 @@ JS;
 						}
 						$brokenPageList .= "</ul>";
 						Notifications::notifyByEmail("BrokenLink", "Page_BrokenLinkEmail");
+					} else {
+						$brokenPageList = '';
 					}
 					
+					$deleteList = '';
 					if( $folderID ) {
 						$remaining = DB::query("SELECT COUNT(*) FROM `File` WHERE `ParentID`=$folderID")->value();
 						
