@@ -2,6 +2,18 @@ function action_send_right() {
 	$('action_send_options').toggle();
 }
 
+/**
+ * Hides the drop-down Send newsletter form if Cancel button is clicked
+ */
+Behaviour.register( {
+	'#action_send_cancel': {
+		onclick : function() {
+			$('action_send_options').toggle();
+			return false;
+		}
+	}
+});
+
 CMSForm.applyTo('#Form_MemberForm','rightbottom');
 
 Behaviour.register({

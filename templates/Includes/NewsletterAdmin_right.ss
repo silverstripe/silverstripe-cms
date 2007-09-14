@@ -17,7 +17,10 @@
 	</fieldset>
 	
 	<p class="actions">
-		<input type="submit" value="Send newsletter" />
+		<ul class="optionset">
+			<li class="cancel"><button id="action_send_cancel">Cancel</button></li>
+			<li class="submit"><input type="submit" value="Send newsletter" /></li>
+		</ul>
 	</p>
 </form>
 

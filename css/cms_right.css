@@ -87,6 +87,12 @@ html>body .right form textarea.htmleditor {
 .right form .optionset li {
 	list-style: none;
 }
+.right form .optionset li.cancel {
+	float: left;
+}
+.right form .optionset li.submit {
+	text-align: right;
+}
 
 .right form h2 {
 	clear: both;
