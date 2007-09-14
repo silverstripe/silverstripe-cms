@@ -355,7 +355,7 @@ class NewsletterAdmin extends LeftAndMain {
 			if( $email->SentDate )
 				$actions->push(new FormAction('send','Resend'));
 			else
-				$actions->push(new FormAction('send','Send'));
+				$actions->push(new FormAction('send','Send...'));
 
 			$actions->push(new FormAction('save','Save'));
 
