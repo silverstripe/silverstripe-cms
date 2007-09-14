@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * URL rules for the CMS module
+ */
 Director::addRules(50, array(
 	'processes/$Action/$ID/$Batch' => 'BatchProcess_Controller',
 	'silverstripe/' => '->admin/',
