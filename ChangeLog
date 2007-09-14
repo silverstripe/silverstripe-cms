@@ -96,7 +96,7 @@ SilverStripe ChangeLog
       - Add first and last name fields
       - Added ability to set servers that will be in dev mode
       - When the posix module isn't present, throw a warning instead of dying
-      - Warn if PHP version is less that 5.2.0
+      - Warn if PHP version is less that 5.2.0 in support of GoPHP5 (http://www.gophp5.org)
       
   
 2.0.2
