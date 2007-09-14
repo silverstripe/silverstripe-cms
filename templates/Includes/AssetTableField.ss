@@ -18,7 +18,7 @@
 					<td>$Value</td>
 					<% end_control %>
 					<td width="18">
-						<a class="popuplink editlink" href="$EditLink" target="_blank"><img src="cms/images/edit.gif" alt="edit" /></a>
+						<a class="popuplink editlink" href="$EditLink" target="_blank" title="Edit asset"><img src="cms/images/edit.gif" alt="edit" /></a>
 					</td>
 				</tr>
 			<% end_control %>
