@@ -4,7 +4,7 @@
 		<h2 id="heading_sitetree" class="selected">
 			<img id="sitetree_toggle_closed" src="cms/images/panels/toggle-closed.gif" alt="+" style="display:none;" title="click to open this box" />
 			<img id="sitetree_toggle_open" src="cms/images/panels/toggle-open.gif" alt="-" title="click to close box" />
-			Site Tree
+			Site Content
 		</h2>
 		<div id="sitetree_holder">
 
@@ -99,7 +99,7 @@
 		<h2 id="heading_versions">
 			<img id="versions_toggle_closed" src="cms/images/panels/toggle-closed.gif" alt="+" title="click to open box" />
 			<img id="versions_toggle_open" src="cms/images/panels/toggle-open.gif" alt="-" style="display:none;" title="click to close box" /> 
-			History
+			Page Version History
 		</h2>
 		<div class="listpane" id="versions_holder" style="display:none">
 			<p class="pane_actions" id="versions_actions">
@@ -129,7 +129,7 @@
 		<h2 id="heading_reports">
 			<img id="reports_toggle_closed" src="cms/images/panels/toggle-closed.gif" alt="+" title="click to open box" />
 			<img id="reports_toggle_open" src="cms/images/panels/toggle-open.gif" alt="-" style="display:none;" title="click to close box" /> 
-			Reports
+			Site Reports
 		</h2>
 		<div class="listpane" id="reports_holder" style="display:none">
 			<p id="ReportSelector_holder">$ReportSelector</p>
