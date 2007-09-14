@@ -12,7 +12,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 
 		Requirements::javascript("jsparty/hover.js");
 		Requirements::javascript("jsparty/scriptaculous/controls.js");
-		
+
 		// needed for MemberTableField (Requirements not determined before Ajax-Call)
 		Requirements::javascript("sapphire/javascript/TableListField.js");
 		Requirements::javascript("sapphire/javascript/TableField.js");
@@ -20,11 +20,11 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		Requirements::javascript("cms/javascript/MemberTableField.js");
 		Requirements::css("jsparty/greybox/greybox.css");
 		Requirements::css("sapphire/css/ComplexTableField.css");
-		
+
 		Requirements::javascript("cms/javascript/SecurityAdmin.js");
 		Requirements::javascript("cms/javascript/SecurityAdmin_left.js");
 		Requirements::javascript("cms/javascript/SecurityAdmin_right.js");
-		
+
 		Requirements::javascript("jsparty/greybox/AmiJS.js");
 		Requirements::javascript("jsparty/greybox/greybox.js");
 	}
@@ -38,14 +38,14 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 						new TextField("Title", "Group name"),
 						$memberList = new MemberTableField(
 							$this,
-							"Members", 
+							"Members",
 							$record
 						)
 					),
-					
+
 					new Tab("Permissions",
-						new LiteralField("", "<p>This section is for advanced users only.  
-							See <a href=\"http://doc.silverstripe.com/doku.php?id=permissions:codes\" target=\"_blank\">this page</a> 
+						new LiteralField("", "<p>This section is for advanced users only.
+							See <a href=\"http://doc.silverstripe.com/doku.php?id=permissions:codes\" target=\"_blank\">this page</a>
 							for more information.</p>"),
 						new TableField(
 							"Permissions",
@@ -57,7 +57,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 					)
 				)
 			);
-			
+
 			if(!Permission::check('EDIT_PERMISSIONS')) $fields->removeFieldFromTab('Root', 'Permissions');
 			
 			$memberList->setController($this);
@@ -67,20 +67,20 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			$actions = new FieldSet(
 				new FormAction('addmember','Add Member')
 			);
-			
+
 			$actions->push(new FormAction('save','Save'));
-			
+
 			$form = new Form($this, "EditForm", $fields, $actions);
 			$form->loadDataFrom($record);
 			return $form;
 		}
 	}
 
-	
+
 	public function AddRecordForm() {
 		$m = new MemberTableField(
 			$this,
-			"Members", 
+			"Members",
 			$this->currentPageID()
 		);
 		return $m->AddRecordForm();
@@ -92,12 +92,12 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	public function autocomplete() {
 		$fieldName = $this->urlParams['ID'];
 		$fieldVal = $_REQUEST[$fieldName];
-		
+
 		$matches = DataObject::get("Member","$fieldName LIKE '" . addslashes($fieldVal) . "%'");
 		if($matches) {
 			$result .= "<ul>";
 			foreach($matches as $match) {
-				
+
 				$data = $match->FirstName;
 				$data .= ",$match->Surname";
 				$data .= ",$match->Email";
@@ -116,21 +116,21 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		$parts = split('</?form[^>]*>', $result);
 		echo $parts[1];
 	}
-	
-	
+
+
 	public function MemberForm() {
 		$id = $_REQUEST['ID'] ? $_REQUEST['ID'] : Session::get('currentMember');
 		if($id)
 			return $this->getMemberForm($id);
 	}
-	
+
 	public function getMemberForm($id) {
 		if($id && $id != 'new') $record = DataObject::get_one("Member", "`Member`.ID = $id");
 		if($record || $id == 'new') {
 			$fields = new FieldSet(
 				new HiddenField('MemberListBaseGroup', '', $this->currentPageID() )
 			);
-			
+
 			if( $extraFields = $record->getCMSFields() )
 				foreach( $extraFields as $extra )
 					$fields->push( $extra );
@@ -138,10 +138,10 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			$fields->push($idField = new HiddenField("ID"));
 			$fields->push($groupIDField = new HiddenField("GroupID"));
 
-			
+
 			$actions = new FieldSet();
 			$actions->push(new FormAction('savemember','Save'));
-			
+
 			$form = new Form($this, "MemberForm", $fields, $actions);
 			if($record) $form->loadDataFrom($record);
 
@@ -151,50 +151,50 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			return $form;
 		}
 	}
-	
+
 	function savemember() {
 		$data = $_REQUEST;
-		
+
 		$className = $this->stat('subitem_class');
 
 		$id = $_REQUEST['ID'];
 		if($id == 'new') $id = null;
-		
+
 		if($id) {
 			$record = DataObject::get_one($className, "`$className`.ID = $id");
 		} else {
 			$record = new $className();
 		}
-		
+
 		$record->update($data);
 		$record->ID = $id;
 		$record->write();
-		
+
 		$record->Groups()->add($data['GroupID']);
 
 
 		FormResponse::add("reloadMemberTableField();");
-		
+
 		return FormResponse::respond();
 	}
 
 	function addmember($className=null) {
 		$data = $_REQUEST;
 		unset($data['ID']);
-		if($className == null);
+		if($className == null)
 			$className = $this->stat('subitem_class');
 		$record = new $className();
-		
+
 		$record->update($data);
 		$record->write();
 		if($data['GroupID'])
-		$record->Groups()->add($data['GroupID']);
+			$record->Groups()->add($data['GroupID']);
 
 		FormResponse::add("reloadMemberTableField();");
-		
+
 		return FormResponse::respond();
 	}
-	
+
 	public function removememberfromgroup() {
 		$groupID = $this->urlParams['ID'];
 		$memberID = $this->urlParams['OtherID'];
@@ -202,14 +202,14 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			$member = DataObject::get_by_id('Member', $memberID);
 			$member->Groups()->remove($groupID);
 			FormResponse::add("reloadMemberTableField();");
-			
+
 		} else {
 			user_error("SecurityAdmin::removememberfromgroup: Bad parameters: Group=$groupID, Member=$memberID", E_USER_ERROR);
 		}
-		
+
 		return FormResponse::respond();
 	}
-				
+
 	/**
 	 * Return the entire site tree as a nested set of ULs
 	 */
@@ -217,24 +217,24 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		$className = "Group";
 
 		$obj = singleton($className);
-		
+
 		// getChildrenAsUL is a flexible and complex way of traversing the tree
-		$siteTree = $obj->getChildrenAsUL("", 
+		$siteTree = $obj->getChildrenAsUL("",
 			' "<li id=\"record-$child->ID\" class=\"$child->class " . ($child->Locked ? " nodelete" : "") . ' .
-			' ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' . 
+			' ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
 			' "<a href=\"" . Director::link("admin", "show", $child->ID) . "\" >" . $child->TreeTitle() . "</a>" ',$this);
 
 		$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\">" .
 						"<li id=\"record-0\" class=\"Root\">" .
-							"<a href=\"admin/security/show/0\" >Security groups</a>"	
-							. $siteTree . 
+							"<a href=\"admin/security/show/0\" >Security groups</a>"
+							. $siteTree .
 						"</li>" .
 					"</ul>";
-				
+
 		return $siteTree;
 
 	}
-	
+
 	public function addgroup() {
 		$parent = $_REQUEST['ParentID'] ? $_REQUEST['ParentID'] : 0;
 			$p = new Group();
@@ -244,7 +244,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			$p->write();
 		return $this->returnItemToUser($p);
 	}
-	
+
 	public function newmember() {
 		Session::clear('currentMember');
 		$newMemberForm = array(
@@ -253,82 +253,82 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		// This should be using FormResponse ;-)
 		if(Director::is_ajax()) {
 			SSViewer::setOption('rewriteHashlinks', false);
-			$customised = $this->customise($newMemberForm);			
+			$customised = $this->customise($newMemberForm);
 			$result = $customised->renderWith($this->class . "_rightbottom");
 			$parts = split('</?form[^>]*>', $result);
 			return $parts[1];
-			
+
 		} else {
 			return $newMemberForm;
 		}
 	}
-	
+
 	public function EditedMember() {
 		if(Session::get('currentMember'))
 			return DataObject::get_by_id("Member", Session::get('currentMember'));
 	}
-	
+
 	public function Link($action = null) {
 		if(!$action) $action = "index";
 		return "admin/security/$action/" . $this->currentPageID();
 	}
-	
+
 	public function listmembers( $baseGroup = null ) {
-		
+
 		if( !$baseGroup )
 			$baseGroup = $this->urlParams['ID'];
-		
+
 		// Debug::message( $_REQUEST['MemberListOrderByField'] );
-		
+
 		// construct the filter and sort
-		
+
 		if( $_REQUEST['MemberListOrderByField'] )
 			$sort = "`" . $_REQUEST['MemberListOrderByField'] . "`" . addslashes( $_REQUEST['MemberListOrderByOrder'] );
-			
+
 		$whereClauses = array();
-		
+
 		$search = addslashes( $_REQUEST['MemberListSearch'] );
-		
+
 		if( $_REQUEST['MemberListPage'] ) {
 			$pageSize = 10;
-	
-			$limitClause = ( $_REQUEST['MemberListPage'] ) . ", $pageSize";	
+
+			$limitClause = ( $_REQUEST['MemberListPage'] ) . ", $pageSize";
 		}
-		
+
 		if( !empty($_REQUEST['MemberListSearch'])  )
 			$whereClauses[] = "( `Email`='$search' OR `FirstName`='$search' OR `Surname`='$search' )";
-			
+
 		if( is_numeric( $_REQUEST['MemberListBaseGroup'] ) ) {
 			$whereClauses[] = "`GroupID`='".$_REQUEST['MemberListBaseGroup']."'";
 			$join = "INNER JOIN `Group_Members` ON `MemberID`=`Member`.`ID`";
-		} 
-		
+		}
+
 		// $_REQUEST['showqueries'] = 1;
-		
+
 		$members = DataObject::get('Member', implode( ' AND ', $whereClauses ), $sort, $join, $limitClause );
-		
+
 		if( is_numeric( $_REQUEST['MemberListGroup'] ) ) {
 			$baseMembers = new DataObjectSet();
-			
+
 			if( $members )
 				foreach( $members as $member )
 					if( $member->inGroup( $_REQUEST['MemberListGroup'] ) )
 						$baseMembers->push( $member );
-		} else 
+		} else
 			$baseMembers = $members;
-			
+
 		$baseMembers = null;
-			
+
 		// user_error( $_REQUEST['MemberListBaseGroup'], E_USER_ERROR );
-			
+
 		$memberListField = new MemberTableField(
 			$this,
-			'MemberList', 
-			$_REQUEST['MemberListBaseGroup'], 
-			$baseMembers, 
+			'MemberList',
+			$_REQUEST['MemberListBaseGroup'],
+			$baseMembers,
 			$_REQUEST['MemberListDontShowPassword']
 		);
-		
+
 		return $memberListField->renderWith('MemberList_Table');
 	}
 	
