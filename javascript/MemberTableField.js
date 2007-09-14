@@ -81,9 +81,6 @@ MemberTableField.prototype = {
 					'MemberFilterButton' : true,
 					'MemberFieldName' : true,
 					'MemberDontShowPassword' : true,
-					'Surname' : true,
-					'FirstName' : true,
-					'Email' : true,
 					'MemberSearch' : true
 				}
 			}
