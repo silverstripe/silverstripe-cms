@@ -488,6 +488,8 @@ function autoSave(confirmation, callAfter) {
 	});
 	
 	if(__somethingHasChanged) {
+		// Note: discard and cancel options are no longer used since switching to confirm dialog.
+		// 	save is still used if confirmation = false
 		var options = {
 			save: function() {
 				statusMessage('saving...', '', true);
@@ -507,8 +509,18 @@ function autoSave(confirmation, callAfter) {
 			}
 		}
 		
-		if(confirmation) doYouWantToSave(options);
-		else options.save();
+		if(confirmation ) {
+			if(confirm("Are you sure you want to navigate away from this page?\n\nWARNING: Your changes have not been saved.\n\nPress OK to continue, or Cancel to stay on the current page."))
+			{
+				// OK was pressed, call function for what was clicked on
+				if(__callAfter) __callAfter();
+			} else {
+				// Cancel was pressed, stay on the current page
+				return false;
+			}
+		} else {
+			options.save();
+		}
 
 	} else {
 		if(__callAfter) __callAfter();
