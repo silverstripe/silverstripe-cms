@@ -768,3 +768,9 @@ div.CommentFilter {
 #Form_EditForm_Permissions .Arg input {
 	text-align: right;
 }
+
+#ComplexTableField_Popup_DetailForm input.action
+{
+    position: relative;
+    float: right;
+}
