@@ -279,6 +279,9 @@ JS;
 			if($record->DeletedFromStage) $record->Status = _t('CMSMain.REMOVEDFD',"Removed from the draft site");
 			
 			$fields = $record->getCMSFields($this);
+			if ($fields == null) {
+				user_error("getCMSFields returned null on a 'Page' object - it should return a FieldSet object. Perhaps you forgot to put a return statement at the end of your method?", E_USER_ERROR);
+			}
 			$fields->push($idField = new HiddenField("ID"));
 			$fields->push($liveURLField = new HiddenField("LiveURLSegment"));
 			$fields->push($stageURLField = new HiddenField("StageURLSegment"));
