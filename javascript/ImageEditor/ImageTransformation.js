@@ -26,7 +26,7 @@ var ImageTransformation = {
 			},
 		 };
 		 imageBox.showIndicator();
-		 new Ajax.Request('/admin/ImageEditor/manipulate', options);	
+		 new Ajax.Request('admin/ImageEditor/manipulate', options);	
 	},
 	
 	rotate: function(angle) {
@@ -44,7 +44,7 @@ var ImageTransformation = {
 			}			
 		 };
 		 imageBox.showIndicator();
-		 new Ajax.Request('/admin/ImageEditor/manipulate', options);		
+		 new Ajax.Request('admin/ImageEditor/manipulate', options);		
 	},
 	
 	crop: function(top,left,width,height) {
@@ -62,7 +62,7 @@ var ImageTransformation = {
 			},
 		 };
 		 imageBox.showIndicator();
-		 new Ajax.Request('/admin/ImageEditor/manipulate', options);			
+		 new Ajax.Request('admin/ImageEditor/manipulate', options);			
 	},
 	
 	save: function(originalFile,editedFile) {
@@ -73,7 +73,7 @@ var ImageTransformation = {
 				imageEditor.onClose();
 			},
 		 };
-		 new Ajax.Request('/admin/ImageEditor/save', options);	
+		 new Ajax.Request('admin/ImageEditor/save', options);	
 	}
 }
 	

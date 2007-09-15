@@ -53,7 +53,7 @@
 			}
 			$rand = md5(rand(1,100000));
 			$gd->writeTo('../assets/tmp/' . $rand . '.jpg');
-			$this->returnImage($gd,'/assets/tmp/' . $rand . '.jpg');	
+			$this->returnImage($gd,'assets/tmp/' . $rand . '.jpg');	
 		}
 		
 		public function save() {
@@ -77,7 +77,7 @@
 		
 		private function returnImage(GD $gd,$strFile)
 		{
-			list($width, $height) = getimagesize('..' . $strFile);		
+			list($width, $height) = getimagesize('../' . $strFile);		
 			echo json_encode(array(
 								'fileName' => $strFile,
 								'width' => $width,

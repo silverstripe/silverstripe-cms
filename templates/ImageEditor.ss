@@ -4,7 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<% base_tag %>
 		<title>Untitled Document</title>
-		<link rel="stylesheet" type="text/css" media="all" href="/css/main.css" />								
+		<link rel="stylesheet" type="text/css" media="all" href="css/main.css" />								
 	</head>
 	<body id="body">
 		<div id="mainContainer">
@@ -41,7 +41,7 @@
 					<div id="cropBox"></div>
 				</div>	
 				<div id="loadingIndicatorContainer">
-					<img id="loadingIndicator" alt="indicator" src="/cms/images/ImageEditor/indicator.gif">
+					<img id="loadingIndicator" alt="indicator" src="cms/images/ImageEditor/indicator.gif">
 				</div>												
 			</div>			
 		</div>
