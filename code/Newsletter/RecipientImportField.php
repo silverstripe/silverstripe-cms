@@ -127,7 +127,7 @@ class RecipientImportField extends FormField {
 		);
 		
 		$columnSource = array_merge( array( 'Unknown' => 'Unknown' ), $columnSource );
-		
+		$colCount = 0;
 		foreach( $columns as $cell ) {
 			$columnType = $this->getColumnType( $this->parseCSVCell( $cell )->Value() );
 			$this->tableColumns[] = new DropdownField( 'ImportFileColumns[' . (string)( $colCount++ ) . ']', '', $columnSource, $columnType );
