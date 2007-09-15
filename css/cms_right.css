@@ -816,9 +816,7 @@ div.CommentFilter {
 .DraggedHandle {
 	width: 30em !important;
 }
-.ComplexTableField tbody td.markingcheckbox {
-	cursor: default;
-}
+
 /**
  * SecurityAdmin
  */
