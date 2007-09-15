@@ -1,3 +1,57 @@
+// script.aculo.us EffectResize.js
+// Copyright(c) 2007 - Frost Innovation AS, http://ajaxwidgets.com
+//
+// EffectResize.js is freely distributable under the terms of an MIT-style license.
+// For details, see the script.aculo.us web site: http://script.aculo.us/
+//
+// From: http://wiki.script.aculo.us/scriptaculous/show/Effect+Resize+Extension
+// Modified to work with Prototype 1.4.0_rc3
+
+/* Helper Effect for resizing elements...
+ */
+Effect.ReSize = Class.create();
+Object.extend(Object.extend(Effect.ReSize.prototype, Effect.Base.prototype), {
+	initialize: function(element) {
+		this.element = element;
+		if(!this.element) throw(Effect._elementDoesNotExistError);
+		var options = Object.extend({ amount: 100, direction: 'vert', toSize:null }, arguments[1] || {});
+		if( options.direction == 'vert' )
+			this.originalSize = options.originalSize || parseInt(this.element.style.height);
+		else
+			this.originalSize = options.originalSize || parseInt(this.element.style.width);
+
+		if( options.toSize != null ) {
+			options.amount = options.toSize - this.originalSize;
+		}
+
+		this.start(options);
+	},
+
+	setup: function() {
+		// Prevent executing on elements not in the layout flow
+		if(this.element.style.display == 'none') { this.cancel(); return; }
+  	},
+	
+	update: function(position) {
+		if( this.options.direction == 'vert' ) {
+			this.element.style.height = this.originalSize+(this.options.amount*position)+'px';
+		} else {
+			this.element.style.width = this.originalSize+(this.options.amount*position)+'px';
+		}
+	},
+  
+	finish: function() {
+		if( this.options.direction ==  'vert' ) {
+			this.element.style.height = this.originalSize+this.options.amount+'px';
+			// Modification to make 'Page Version History' resize correctly:
+			if(this.element.onresize) this.element.onresize();
+		} else {
+			this.element.style.width = this.originalSize+this.options.amount+'px';
+		}
+	}
+});
+// End: script.aculo.us EffectResize.js
+
 SideTabs = Class.create();
 SideTabs.prototype = {
 	/**
@@ -15,30 +69,38 @@ SideTabs.prototype = {
 	},
 	
 	/**
-	 * Fix all the panes' sizes in reponse to one being opened or closed
+	 * Fix all the panes' sizes in response to one being opened or closed
+	 *
+	 * @param useEffect boolean Use smooth resizing effect
 	 */
-	resize: function() {
+	resize: function(useEffect) {
 		var i,numOpenPanes=0,otherPanes = [];
 		for(i=0;i<this.tabs.length;i++) {
 			if(this.tabs[i].selected) {
 				numOpenPanes++;
-				otherPanes[otherPanes.length] = this.tabs[i].linkedPane;
 			}
+			otherPanes[otherPanes.length] = this.tabs[i].linkedPane;
 		}
 		if(numOpenPanes > 0) {
-			$('left').show();
+			// We no longer hide the left frame
+			// $('left').show();
 			var totalHeight = getFittingHeight(this.tabs[0].linkedPane, 0, otherPanes);
 			var eachHeight = totalHeight / numOpenPanes;
 			for(i=0;i<this.tabs.length;i++) {
 				if(this.tabs[i].selected) {
-					this.tabs[i].linkedPane.style.height = eachHeight + 'px';
+					if (useEffect == true) {
+						new Effect.ReSize(this.tabs[i].linkedPane, {direction:'vert', toSize:eachHeight, duration:.4});
+					} else {
+						this.tabs[i].linkedPane.style.height = eachHeight + 'px';
+					}
 					if(this.tabs[i].linkedPane.onresize) this.tabs[i].linkedPane.onresize();
 				}
 			}
 			
 		// All panes closed, hide the whole left-hand panel
 		} else {
-			$('left').hide();
+			// Don't collapse it when all are closed. Can be resized manually
+			// $('left').hide();
 		}
 	},
 	
@@ -93,7 +155,8 @@ SideTabItem.prototype = {
 			this.selected = true;
 			Element.addClassName(this,'selected');
 			this.linkedPane.style.display = '';
-			this.holder.resize();
+			this.linkedPane.style.height = '0px';
+			this.holder.resize(true);
 			if(this.linkedPane.onshow) {
 				this.linkedPane.onshow();
 			}
@@ -103,8 +166,8 @@ SideTabItem.prototype = {
 		if(this.selected) {
 			this.selected = false;
 			Element.removeClassName(this,'selected');
-			this.linkedPane.style.display = 'none';
-			this.holder.resize();
+			new Effect.ReSize(this.linkedPane, {direction:'vert', toSize:0, duration:.4});
+			this.holder.resize(true);
 			if(this.holder.onhide) this.holder.onhide();
 			if(this.linkedPane.onclose) this.linkedPane.onclose();
 		}		
