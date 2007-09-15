@@ -1,4 +1,4 @@
-<div class="title"><div>Report Details</div></div>
+<!-- <div class="title"><div>Report Details</div></div> -->
 
 <% if EditForm %>
 	$EditForm

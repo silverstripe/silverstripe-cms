@@ -1,4 +1,4 @@
-<div class="title"><div>Edit Content</div></div>
+<!-- <div class="title"><div>Edit Content</div></div> -->
 
 <% include Editor_toolbar %>
 

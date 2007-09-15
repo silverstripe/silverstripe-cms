@@ -1,4 +1,4 @@
-<div class="title"><div style="background-image : url(cms/images/panels/MySite.png)">My Site</div></div>
+<!-- <div class="title"><div style="background-image : url(cms/images/panels/MySite.png)">My Site</div></div> -->
 
 	<div id="treepanes">
 		<h2 id="heading_sitetree" class="selected">

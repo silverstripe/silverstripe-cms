@@ -1,4 +1,4 @@
-<div class="title"><div style="background-image : url(cms/images/panels/EditPage.png)">Edit Page</div></div>
+<!-- <div class="title"><div style="background-image : url(cms/images/panels/EditPage.png)">Edit Page</div></div> -->
 <% include Editor_toolbar %>
 
 <% if EditForm %>
