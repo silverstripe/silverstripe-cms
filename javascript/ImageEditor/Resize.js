@@ -20,11 +20,22 @@ var Resize = {
 	},
 	
 	resizeStop: function(event) {
-		imageElement = $('image');
-		EventStack.clearStack();
-		if(this.imageContainerResize.originalWidth != imageElement.width || this.imageContainerResize.originalHeight != imageElement.height) {
-			imageTransformation.resize(imageElement.width,imageElement.height);
-		}	
+		if(EventStack.getLastEventElement() != null) {
+			imageElement = $('image');
+			EventStack.clearStack();
+			if(this.imageContainerResize.originalWidth != imageElement.width || this.imageContainerResize.originalHeight != imageElement.height) {
+				imageTransformation.resize(imageElement.width,imageElement.height,Resize.resizeCallback.bind(this));
+			}	
+			effects.disableRotate();
+			crop.disable();
+			this.imageContainerResize.disable();
+		}
+	},
+	
+	resizeCallback: function() {
+        effects.enableRotate();
+        crop.enable();	
+        this.imageContainerResize.enable();
 	},
 	
 	onDrag: function()

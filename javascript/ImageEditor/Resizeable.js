@@ -16,6 +16,7 @@ Resizeable = {
 		this.placeClickBoxOnImageLoad();
 		this.originalHeight = 0;
 		this.originalWidth = 0;
+		this.isEnabled = true;
 	},
 	
 	resizeStart: function(event) {
@@ -75,7 +76,7 @@ Resizeable = {
 	},
 	
 	onResize: function(event) {		
-		if(EventStack.getLastEventElement() != null && this.isVisible) {					
+		if(EventStack.getLastEventElement() != null && this.isVisible && this.isEnabled) {					
 			lastEventElement = EventStack.getLastEventElement();
 			var relativeMouseX = this.getMousePos(event).x - this.element.getParentLeft();
 			var relativeMouseY = this.getMousePos(event).y - this.element.getParentTop();
@@ -217,6 +218,8 @@ Resizeable = {
 		this.addDraging = Resizeable.addDraging.bind(this);
 		this.setVisible = Resizeable.setVisible.bind(this);
 		this.removeDraging = Resizeable.removeDraging.bind(this);
+		this.disable = Resizeable.disable.bind(this);
+		this.enable = Resizeable.enable.bind(this);
 		
 		this.leftUpperDrag = Resizeable.leftUpperDrag.bind(this);
 		this.leftMiddleDrag = Resizeable.leftMiddleDrag.bind(this);
@@ -284,5 +287,13 @@ Resizeable = {
 				this.lowerMiddleClickBox);					
 			this.removeDraging();
 		}
+	},
+	
+	disable: function() {
+        this.isEnabled = false;   
+	},
+	
+	enable: function() {
+	   this.isEnabled = true;
 	}
 }

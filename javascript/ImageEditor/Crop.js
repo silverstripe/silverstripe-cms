@@ -20,6 +20,8 @@ var Crop = {
 		this.onCropCancel = Crop.onCropCancel.bind(this);
 		this.doCrop = Crop.doCrop.bind(this);
 		this.setVisible = Crop.setVisible.bind(this);
+		this.enable = Crop.enable.bind(this);
+		this.disable = Crop.disable.bind(this);
 		Event.observe('image','load',this.centerCropBox);
 		options = {
 			resizeStop: Crop.resizeStop.bind(this),
@@ -31,6 +33,7 @@ var Crop = {
 		Event.observe(this.cropBox,'dblclick',this.onCropStop.bind(this));
 		this.setListeners();
 		this.setVisible(false);
+		this.isEnabled = true;
 	},
 	
 	resizeStop: function(event) {
@@ -88,20 +91,30 @@ var Crop = {
 	},
 	
 	onCropStop: function(event) {
+		Element.hide($('cropOk'),$('cropCancel'));
 		this.doCrop();
 	},
 	
 	doCrop: function() {
-		newWidth = this.cropBox.getWidth() 
-		newHeight = this.cropBox.getHeight() ;
-		startTop = this.cropBox.getTop() ;
-		startLeft = this.cropBox.getLeft() ;
-		if(newWidth > 35 && newHeight > 35) {
-			imageTransformation.crop(startTop,startLeft,newWidth,newHeight);
-			imageHistory.enable();
-		} else {
-			alert('Crop area too small');
+		if(this.isEnabled) {
+			newWidth = this.cropBox.getWidth() 
+			newHeight = this.cropBox.getHeight() ;
+			startTop = this.cropBox.getTop() ;
+			startLeft = this.cropBox.getLeft() ;
+			if(newWidth > 35 && newHeight > 35) {
+				imageTransformation.crop(startTop,startLeft,newWidth,newHeight,Crop.cropCallback.bind(this));
+				imageHistory.enable();
+			} else {
+				alert('Crop area too small');
+			}
+			this.disable();
 		}
+	},
+	
+	cropCallback: function() {
+	   effects.enableRotate();
+	   this.enable();
+	   
 	},
 	
 	setListeners: function() {
@@ -111,20 +124,29 @@ var Crop = {
 	},
 	
 	onCropStart: function()	 {
-		this.setVisible(true);	
-		Element.show($('cropOk'),$('cropCancel'));
-		imageHistory.disable();
+		if(this.isEnabled) {
+			this.setVisible(true);	
+			Element.show($('cropOk'),$('cropCancel'));
+			imageHistory.disable();
+			effects.disableRotate();
+		}
 	},
 	
 	onCropOk: function() {
-		Element.hide($('cropOk'),$('cropCancel'));
-		this.doCrop();	
+		if(this.isEnabled) {
+		    Element.hide($('cropOk'),$('cropCancel'));
+		    this.doCrop();
+		    effects.disableRotate();
+		}	
 	},
 	
 	onCropCancel: function() {
-		Element.hide($('cropOk'),$('cropCancel'));
-		this.setVisible(false);
-		imageHistory.enable();
+		if(this.isEnabled) {
+		    Element.hide($('cropOk'),$('cropCancel'));
+		    this.setVisible(false);
+		    imageHistory.enable();
+		    effects.enableRotate();
+		}
 	},
 	
 	setVisible: function(setVisible) {
@@ -137,5 +159,14 @@ var Crop = {
 		}
 		resize.imageContainerResize.setVisible(!setVisible);
 		this.resizeCropBox.setVisible(setVisible);
+	},
+	
+	enable: function() {
+	   this.isEnabled = true;
+	},
+	
+	disable: function() {
+	   this.isEnabled = false;
 	}
+	
 }
