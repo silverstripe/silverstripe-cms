@@ -1,9 +1,12 @@
 function action_publish_right() {
 	$('Form_EditForm_action_publish').value = 'Publishing...';
+	$('Form_EditForm_action_publish').className = 'action loading';
 	var publish = true;
 	$('Form_EditForm').save(false, null, 'save', publish);
 }
 function action_revert_right() {
+	$('Form_EditForm_action_unpublish').value = 'Unpublishing...';
+	$('Form_EditForm_action_unpublish').className = 'action loading';
 	Ajax.SubmitForm('Form_EditForm', 'action_revert', {
 		onSuccess : Ajax.Evaluator,
 		onFailure : function(response) {

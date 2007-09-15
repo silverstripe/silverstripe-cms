@@ -379,6 +379,13 @@ table.CMSList tbody td.current td {
 	background: #ce0000;
 	color: #fff;
 }
+.ajaxActions input.loading {
+	background-color: #fff;
+	background-image: url(../images/network-save.gif);
+	background-position: middle left;
+	background-repeat: no-repeat;
+	padding-left: 16px;
+}
 
 .right form div.tab {
 	clear: left;
