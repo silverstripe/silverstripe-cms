@@ -27,6 +27,22 @@ class StatisticsAdmin extends LeftAndMain {
 			)
 		);
 	}
+	
+	public function versions() {
+		/*$pageID = $this->urlParams['ID'];
+		//$pageID = "1";
+		$page = $this->getRecord($pageID);
+		if($page) {
+			$versions = $page->allVersions($_REQUEST['unpublished'] ? "" : "`SiteTree_versions`.WasPublished = 1");
+			return array(
+				'Versions' => $versions,
+			);		
+		} else {
+			return "Can't find page #$pageID";
+		}*/
+		
+	}
+	
 }
 
 ?>
