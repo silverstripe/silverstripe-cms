@@ -183,12 +183,7 @@ deletedraft = {
 SiteTreeNode.prototype.onselect = function() {
 	$('sitetree').changeCurrentTo(this);
 	if($('sitetree').notify('SelectionChanged', this)) {
-		if(typeof save != 'undefined'){
-			autoSave(true, this.getPageFromServer.bind(this));
-		}
-		else {
-			this.getPageFromServer();
-		}
+		autoSave(true, this.getPageFromServer.bind(this));
 	}
 	return false; 
 };
