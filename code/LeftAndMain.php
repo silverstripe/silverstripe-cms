@@ -161,9 +161,9 @@ abstract class LeftAndMain extends Controller {
 		// array[2]: The controller class for this menu, used to check permisssions.  If blank, it's assumed that this is public, and always shown to
 		//           users who have the rights to access some other part of the admin area.
 		$menuSrc = array(
-			_(__FILE__,'HELLO',"Site content",100,"Menu title") => array("content", "admin/", "CMSMain"),
-			_(__FILE__,'FILESIMAGES',"Files & Images",100) => array("files", "admin/assets/", "AssetAdmin"),
-			_("LeftAndMain",'NEWSLETTERS',"Newsletters") => array("newsletter", "admin/newsletter/", "NewsletterAdmin"),
+			_t  ( 'LeftAndMain.HELLO',  "Site content",100,"Menu title") => array("content", "admin/", "CMSMain"),
+			_t('LeftAndMain.FILESIMAGES',"Files & Images",100) => array("files", "admin/assets/", "AssetAdmin"),
+			_t('LeftAndMain.NEWSLETTERS',"Newsletters") => array("newsletter", "admin/newsletter/", "NewsletterAdmin"),
 			"Reports" => array("report", "admin/reports/", "ReportAdmin"),
 			"Security" => array("security", "admin/security/", "SecurityAdmin"),
 			"Comments" => array("comments", "admin/comments/", "CommentAdmin"),
