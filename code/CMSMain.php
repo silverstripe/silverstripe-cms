@@ -427,6 +427,8 @@ JS;
 
 		if(isset($descendantsRemoved)) {
 			$descRemoved = " and $descendantsRemoved descendants";
+		} else {
+			$descRemoved = '';
 		}
 		
 		$title = Convert::raw2js($record->Title);
@@ -937,7 +939,7 @@ HTML;
 		
 		$s = sizeof($ids) > 1 ? "s" : "";
 		$message = sizeof($ids) . " page$s deleted.";
-		if($brokenPageList != '') {
+		if(isset($brokenPageList) && $brokenPageList != '') {
 			$message .= "  The following pages now have broken links:<ul>" . addslashes($brokenPageList) . "</ul>Their owners have been emailed and they will fix up those pages.";
 		}
 
