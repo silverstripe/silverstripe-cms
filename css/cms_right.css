@@ -382,7 +382,7 @@ table.CMSList tbody td.current td {
 .ajaxActions input.loading {
 	background-color: #fff;
 	background-image: url(../images/network-save.gif);
-	background-position: middle left;
+	background-position: center left;
 	background-repeat: no-repeat;
 	padding-left: 16px;
 }
