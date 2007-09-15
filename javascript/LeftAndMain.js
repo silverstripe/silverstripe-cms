@@ -15,7 +15,7 @@ DraggableSeparator.prototype = {
 
 		document.onmousemove = this.document_mousemove.bindAsEventListener(this);
 		document.onmouseup = this.document_mouseup.bindAsEventListener(this);
-		
+
 		document.body.onselectstart = this.body_selectstart.bindAsEventListener(this);
 	},
 	document_mousemove : function(event) {
@@ -25,7 +25,7 @@ DraggableSeparator.prototype = {
 	document_mouseup : function(e) {
 		document.onmousemove = null;
 	},
-	
+
 	body_selectstart : function(event) {
 		Event.stop(event);
 		return false;
@@ -35,18 +35,18 @@ DraggableSeparator.prototype = {
 function fixRightWidth() {
 	if( !$('right') )
 		return;
-	
+
 	// Absolutely position all the elements
 	var sep = getDimension($('left'),'width') + getDimension($('left'),'left');
 	$('separator').style.left = (sep + 2) + 'px';
-	$('right').style.left = (sep + 6) + 'px';		
+	$('right').style.left = (sep + 6) + 'px';
 
 	// Give the remaining space to right
 	var rightWidth = parseInt(document.body.offsetWidth) - parseInt($('left').offsetWidth) - $('separator').offsetWidth - 8;
-	
+
 	if( rightWidth >= 0 )
 		$('right').style.width = rightWidth + 'px';
-	
+
 	var rb;
 	if(rb = $('rightbottom')) {
 		rb.style.left = $('right').style.left;
@@ -56,7 +56,7 @@ function fixRightWidth() {
 
 Behaviour.register({
 	'#separator' : DraggableSeparator,
-	
+
 	'#left' : {
 		hide : function() {
 			if(!this.hidden) {
@@ -73,18 +73,18 @@ Behaviour.register({
 				Element.removeClassName(this,'hidden');
 				Element.removeClassName('separator','hidden');
 				fixRightWidth();
-			}			
-		}		
+			}
+		}
 	},
-	
+
 	'#MainMenu li' : {
-		onclick : function(event) { 
+		onclick : function(event) {
 			return LeftAndMain_window_unload(); // Confirm if there are unsaved changes
-			window.location.href = this.getElementsByTagName('a')[0].href; 
+			window.location.href = this.getElementsByTagName('a')[0].href;
 			Event.stop(event);
 		}
 	},
-	
+
 	'#Menu-help' : {
 		onclick : function() {
 			var w = window.open(this.getElementsByTagName('a')[0].href, 'help');
@@ -107,10 +107,10 @@ Behaviour.register({
 
 window.ontabschanged = function() {
 	var formEl = $('Form_EditForm');
-	
+
 	if( !formEl )
 		return;
-	
+
 	var fs = formEl.getElementsByTagName('fieldset')[0];
 	if(fs) fs.style.height = formEl.style.height;
 
@@ -123,7 +123,7 @@ window.ontabschanged = function() {
 				fitToParent(divs[i], 3);
 		}
 	}*/
-	
+
 	if( _TAB_DIVS_ON_PAGE ) {
 		for(i = 0; i < _TAB_DIVS_ON_PAGE.length; i++ ) {
 			fitToParent(_TAB_DIVS_ON_PAGE[i], 30);
@@ -148,15 +148,15 @@ window.onresize = function(init) {
 		rightbottom.style.display = '';
 		rightbottom.style.top = getDimension(right,'top') + (newHeight*2) + 'px';
 	}
-	
+
 	if(typeof fitToParent == 'function') fitToParent('Form_EditForm');
 	if(typeof fixHeight_left == 'function') fixHeight_left();
 	if(typeof fixRightWidth == 'function') fixRightWidth();
-	
+
 	window.ontabschanged();
 }
 
-appendLoader(function() { 
+appendLoader(function() {
 	document.body.style.overflow = 'hidden';
 	window.onresize(true);
 });
@@ -183,13 +183,13 @@ LeftAndMain_window_unload = function() {
  * Show a queued message, if one exists
  */
 function unlockStatusMessage() {
-	statusMessage.locked = false; 
+	statusMessage.locked = false;
 	if(statusMessage.queued) {
 		statusMessage(
 			statusMessage.queued.msg,
 			statusMessage.queued.type,
-			statusMessage.queued.showNetworkActivity); 
-	
+			statusMessage.queued.showNetworkActivity);
+
 		statusMessage.queued = null;
 	}
 }
@@ -205,7 +205,7 @@ function ajaxActionsAtTop(formName, actionHolderName, tabName) {
 		if((holder = $(actionHolderName)) && holder != actions) {
 			holder.parentNode.removeChild(holder);
 		}
-		
+
 		actions.id = actionHolderName;
 		actions.className = 'ajaxActions';
 
@@ -221,7 +221,7 @@ function prepareAjaxActions(actions, formName, tabName) {
 	var i, button, list = actions.getElementsByTagName('input')
 	for (i=0;button=list[i];i++) {
 		button.ownerForm = $(formName);
-	
+
 		button.onclick = function(e) {
 			// tries to call a custom method of the format "action_<youraction>_right"
 			if(window[this.name + '_' + tabName]) {
@@ -261,19 +261,19 @@ function ingize(val) {
  *  - form
  *  - action
  *  - verb
- * 
+ *
  * The bound function can then be called, with the arguments passed
  */
- 
+
 function ajaxSubmitForm(automated, callAfter, form, action, verb) {
 	// tinyMCE.triggerSave(true);
-	
+
 	var alreadySaved = false;
 	if($(form).elements.length < 2) alreadySaved = true;
 
 	if(alreadySaved) {
 		if(callAfter) callAfter();
-	
+
 	} else {
 		statusMessage(verb + '...', '', true);
 
@@ -281,7 +281,7 @@ function ajaxSubmitForm(automated, callAfter, form, action, verb) {
 			Ajax.Evaluator(response);
 			if(callAfter) callAfter();
 		}
-		
+
 		if(callAfter) success = success.bind({callAfter : callAfter});
 		Ajax.SubmitForm(form, action, {
 			onSuccess : success,
@@ -290,7 +290,7 @@ function ajaxSubmitForm(automated, callAfter, form, action, verb) {
 			}
 		});
 	}
-	
+
 	return false;
 };
 
@@ -312,12 +312,12 @@ function ajaxSubmitFieldSet(href, fieldSet, extraData) {
 		onSuccess : function(response) {
 			//alert(response.responseText);
 			Ajax.Evaluator(response);
-		}, 
+		},
 		onFailure : function(response) {
 			alert(response.responseText);
 			//errorMessage('Error: ', response);
 		}
-	}); 
+	});
 }
 
 /**
@@ -327,9 +327,9 @@ function ajaxLink(href) {
 	// Send request
 	new Ajax.Request(href + (href.indexOf("?") == -1 ? "?" : "&") + "ajax=1", {
 		method : 'get',
-		onSuccess : Ajax.Evaluator, 
+		onSuccess : Ajax.Evaluator,
 		onFailure : ajaxErrorHandler
-	}); 
+	});
 }
 
 /**
@@ -338,7 +338,7 @@ function ajaxLink(href) {
 function ajaxLoadPage() {
 	statusMessage('loading...', 2, true);
 	new Ajax.Request(this.URL + '&ajax=1', {
-		method : 'get', 
+		method : 'get',
 		onSuccess : ajaxLoadPage_success.bind(this)
 	});
 }
@@ -361,15 +361,15 @@ Behaviour.register({
 				this.currentEffect.cancel();
 				this.currentEffect = null;
 			}
-			
+
 			this.innerHTML = message;
 			this.className = type;
-			Element.setOpacity(this, 1); 
-			
+			Element.setOpacity(this, 1);
+
 			this.style.position = 'absolute';
 			this.style.display = '';
 			this.style.visibility = '';
-			
+
 			if(!clearManually) {
 				this.fade(0.5,waitTime ? waitTime : 5);
 			}
@@ -379,18 +379,18 @@ Behaviour.register({
 		},
 		fade: function(fadeTime, waitTime) {
 			if(!fadeTime) fadeTime = 0.5;
-			
-			// Wait a bit before fading			
+
+			// Wait a bit before fading
 			if(waitTime) {
 				this.fadeTimer = setTimeout((function() {
 					this.fade(fadeTime);
 				}).bind(this), waitTime * 1000);
-			
+
 			// Fade straight away
 			} else {
 			 	this.currentEffect = new Effect.Opacity(this,
-				    { duration: 0.5, 
-				      transition: Effect.Transitions.linear, 
+				    { duration: 0.5,
+				      transition: Effect.Transitions.linear,
 				      from: 1.0, to: 0.0,
 				      afterFinish : this.afterFade.bind(this) });
 			}
@@ -400,12 +400,12 @@ Behaviour.register({
 			this.style.display = 'none';
 			this.innerHTML = '';
 		}
-	}	
+	}
 });
 
 /**
- * Show a status message.  
- * 
+ * Show a status message.
+ *
  * @param msg String
  * @param type String (optional) can be 'good' or 'bad'
  * @param clearManually boolean Don't automatically fade message.
@@ -439,7 +439,7 @@ function errorMessage(msg, fullMessage) {
 		}
 		msg = msg + '<br>' + fullMessage.replace(/\n/g,'<br>');
 	}
-	
+
 	$('statusMessage').showMessage(msg,'bad',60);
 }
 
@@ -463,7 +463,7 @@ StatusTitle.prototype = {
 		}
 		if(this.message) {
 			$('statusMessage').showMessage(this.message);
-		}		
+		}
 	},
 	onmouseout : function() {
 		if(this.message) {
@@ -517,7 +517,7 @@ ChangeTracker.prototype = {
 	initialize: function() {
 		this.resetElements();
 	},
-	
+
 	/**
 	 * Reset all the 'changed field' data.
 	 */
@@ -533,11 +533,11 @@ ChangeTracker.prototype = {
 			}
 		}
 	},
-	
+
 	field_changed: function() {
 		return this.originalSerialized != Form.Element.serialize(this);
 	},
-	
+
 	/**
 	 * Returns true if something in the form has been changed
 	 */
@@ -547,7 +547,7 @@ ChangeTracker.prototype = {
 		for(i=0;element=elements[i];i++) {
 			if(!element.isChanged) element.isChanged = this.field_changed;
 			if(!this.changeDetection_fieldsToIgnore[element.name] && element.isChanged()) {
-				
+
 				//if( window.location.href.match( /^https?:\/\/dev/ ) )
 				//	Debug.log('Changed:'+ element.id + '(' + this.originalSerialized +')->('+Form.Element.serialize(element)+')' );
 
@@ -556,11 +556,11 @@ ChangeTracker.prototype = {
 		}
 		return false;
 	},
-	
+
 	changeDetection_fieldsToIgnore : {
 		'Sort' : true
 	},
-	
+
 	/**
 	 * Serialize only the fields to change.
 	 * You can specify the names of fields that must be included as arguments
@@ -569,7 +569,7 @@ ChangeTracker.prototype = {
     var elements = Form.getElements(this);
     var queryComponent, queryComponents = new Array();
 		var i, element;
-		
+
 		var forceFields = {};
 		if(arguments) {for(var i=0;i<arguments.length;i++) forceFields[arguments[i]] = true;}
 
@@ -578,11 +578,11 @@ ChangeTracker.prototype = {
 			{	if(!element.isChanged) element.isChanged = this.field_changed;
 				if(forceFields[element.name] || (element.isChanged()) || element.name.match(/\[.*\]/g) ) {
 	      		queryComponent = Form.Element.serialize(element);
-			    if (queryComponent) 
+			    if (queryComponent)
 					queryComponents.push(queryComponent);
 			    } else {
 			    	// Used by the Sapphire code to preserve the form field value
-			    	
+
 			    	if( element.name.match( '/\]$/' ) )
 			    		queryComponents.push(element.name.substring( 0, element.name.length - 1 ) + '_unchanged' + ']=1' );
 			    	else
@@ -593,19 +593,19 @@ ChangeTracker.prototype = {
 		//alert(queryComponents.join('&'));
     return queryComponents.join('&');
 	},
-	
+
 	/**
 	 * Serialize all the fields on the page
 	 */
 	serializeAllFields: function() {
 		return Form.serializeWithoutButtons(this);
-	}	 
+	}
 }
 
 /*
  * ModalForm provides a form with the functionality to prevent certian actions from occurring until
  * it's been closed.
- * 
+ *
  * To use, You should run the blockEvent method as many times as needed.
  */
 ModalForm = Class.extend('BaseForm');
@@ -617,7 +617,7 @@ ModalForm.prototype = {
 	 */
 	blockEvent: function(element, event) {
 		element.observeMethod(event, (function() { return !this.isVisible();}).bind(this) );
-	}	
+	}
 }
 
 
@@ -632,7 +632,7 @@ function modalDialog(url, handlers) {
 		var result = showModalDialog(baseURL + url + '&Modal=1', null,  "status:no;dialogWidth:400px;dialogHeight:150px;edge:sunken");
 		if(handlers[result])
 			handlers[result]();
-		
+
 	}
 }
 
@@ -670,43 +670,43 @@ ModalDialog.prototype = {
 				if(this.handlers[this.result]) {
 					_DO_YOU_WANT_TO_SAVE_IS_OPEN = false;
 					(this.handlers[this.result])();
-					
+
 				} else {
 					throw("Couldn't find a handler called '" + this.result + "'");
 				}
 			}
 		} else {
 			this.window.focus();
-		}		
+		}
 	}
 }
 
 window.top._OPEN_DIALOG = null;
 
 OpenModalDialog = function( url, handlers, message ) {
-	var dialog = new GBModalDialog( url, handlers, message );	
+	var dialog = new GBModalDialog( url, handlers, message );
 }
 
 GBModalDialog = Class.create();
 GBModalDialog.prototype = {
-	
+
 	initialize: function( url, handlers, message ) {
 		this.url = url;
 		this.handlers = handlers;
 		this.caption = message;
-		
+
 		window.top._OPEN_DIALOG = this;
-		
+
 		GB_show( this.caption, this.url, 110, 450 );
 	},
-	
+
 	execHandler: function( handler ) {
 		GB_hide();
-		
+
 		if( this.handlers[handler] )
 			this.handlers[handler]();
 		else
-			throw( "Unknown handler '" + handler + "'" );	
+			throw( "Unknown handler '" + handler + "'" );
 	}
 }
 
@@ -720,7 +720,7 @@ function baseHref() {
 	else return "";
 }
 
-returnFalse = function() { 
+returnFalse = function() {
 	return false;
 }
 showResponseAsSuccessMessage = function(response) {
@@ -733,7 +733,7 @@ showResponseAsSuccessMessage = function(response) {
  */
 function onSessionLost() {
 	alert("You've been logged out of the server, so we're going to send you back to the log-in screen.");
-	window.location.href = baseHref() + 'Security/login?BackURL=' + encodeURIComponent(window.location.href);
+	window.location.reload(true);
 }
 
 var _CURRENT_CONTEXT_MENU = null;
@@ -742,7 +742,7 @@ var _CURRENT_CONTEXT_MENU = null;
  * Create a new context menu
  * @param event The event object
  * @param owner The DOM element that this context-menu was requested from
- * @param menuItems A map of title -> method; context-menu operations to get called 
+ * @param menuItems A map of title -> method; context-menu operations to get called
  */
 function createContextMenu(event, owner, menuItems) {
 	if(_CURRENT_CONTEXT_MENU) {
@@ -755,7 +755,7 @@ function createContextMenu(event, owner, menuItems) {
 	menu.style.position = 'absolute';
 	menu.style.left = event.clientX + 'px';
 	menu.style.top = event.clientY + 'px';
-	
+
 	var menuItemName, menuItemTag, menuATag;
 	for(menuItemName in menuItems) {
 		menuItemTag = document.createElement("li");
@@ -770,13 +770,13 @@ function createContextMenu(event, owner, menuItems) {
 		menuItemTag.appendChild(menuATag);
 		menu.appendChild(menuItemTag);
 	}
-		
+
 	document.body.appendChild(menu);
-	
+
 	document.body.onclick = contextmenu_close;
-	
+
 	_CURRENT_CONTEXT_MENU = menu;
-	
+
 	return menu;
 }
 
@@ -795,10 +795,10 @@ function contextmenu_onclick() {
 
 /**
  * Shows an ajax loading indicator.
- * 
+ *
  * @param id String Identifier for the newly created image
  * @param container ID/DOM Element
- * @param imgSrc String (optional) 
+ * @param imgSrc String (optional)
  * @param insertionType Object (optional) Prototype-style insertion-classes, defaults to Insertion.Bottom
  * @param displayType String (optional) "inline" or "block"
  */
@@ -811,11 +811,11 @@ function showIndicator(id, container, imgSrc, insertionType, displayType) {
 	if(!$(id)) {
 		var html = '<img src="' + imgSrc + '" class="indicator ' + displayType + '" id="' + id + '" style="display: none" />';
 		new insertionType(container, html);
-	}	
-	
+	}
+
 	Effect.Appear(id);
 }
 
 function hideIndicator(id) {
 	Effect.Fade(id, {duration: 0.3});
-}	
+}
