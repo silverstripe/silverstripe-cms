@@ -510,7 +510,7 @@ JS;
 	/**
 	 * Return JavaScript code to generate a tree node for the given page, if visible
 	 */
-	public function addTreeNodeJS($page, $select = false) {
+	public function addTreeNodeJS($page, $selected = false) {
 		$parentID = (int)$page->ParentID;
 		$title = Convert::raw2js($page->TreeTitle());
 		$response = <<<JS
