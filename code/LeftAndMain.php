@@ -116,7 +116,7 @@ abstract class LeftAndMain extends Controller {
 
 	public function show($params) {
 		if($params['ID']) $this->setCurrentPageID($params['ID']);
-		if($params['OtherID'])
+		if(isset($params['OtherID']))
 			Session::set('currentMember', $params['OtherID']);
 
 		if(Director::is_ajax()) {
