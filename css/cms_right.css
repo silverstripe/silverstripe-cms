@@ -330,30 +330,54 @@ table.CMSList tbody td.current td {
 
 .ajaxActions {
 	position: absolute;
-	top: 0;
-	right: 0;
+	bottom: 3px;
+	right: 10px;
 	padding: 0;
 	margin: 0;
 	text-align: right;
+	/*
 	background-image:url(../images/textures/ToolBar.png);
 	height : 21px;
 	border-left : 1px solid #808080;
 	border-bottom : 1px solid #808080;
+	*/
 }
 .ajaxActions input {
+	/*
 	padding: 0;
 	border-style: none;
 	background-color:transparent;
+	*/
 	cursor: pointer;
 	float : left;
-	height : 22px;
+ 	height : 25px;
+	/*
 	background-image:url(../images/textures/seperator.png);
 	background-repeat:no-repeat;
 	background-position:right;
+	*/
+	background-image: url(../images/textures/ToolBar.png);
 	padding-left: 10px;
 	padding-right : 10px;
 	margin : 0px;
 	color : #333333;
+	overflow: visible;
+	width: auto;
+	border-color: #CCCCCC rgb(153, 153, 153) rgb(153, 153, 153) rgb(204, 204, 204);
+	border-style: double;
+	border-width: 3px;
+	margin: 1px;
+}
+.ajaxActions input:active {
+	background: #F4F4F4 none repeat scroll 0%;
+	border-color: #999999 rgb(204, 204, 204) rgb(204, 204, 204) rgb(153, 153, 153);
+}
+.ajaxActions input:hover {
+	background: #fff;
+}
+.ajaxActions input.delete:hover {
+	background: #ce0000;
+	color: #fff;
 }
 
 .right form div.tab {
@@ -614,29 +638,28 @@ div.TreeDropdownField a.editLink {
 #statusMessage {
 	position: absolute;
 	z-index: 500;
-	bottom: 15px;
-	right: 30px;
+	bottom: 3px;
+	left: 3px;
 	text-align: left;
-
- 	padding: 15px 15px 15px 40px;
+ 	padding: 1px 1px 1px 40px;
  	
  	font-size: 16px;
 	font-weight: bold; 	
  	
- 	border: 1px solid #cc9;
+ 	/* border: 1px solid #cc9; */
 	color: #660;
-	background-color: #F9F9E3;
+	/* background-color: #F9F9E3; */
+	margin: 2px;
 }
-
 #statusMessage.good {
 	border-color: #9c9;
 	color: #060;
-	background: url(../images/alert-good.gif) #E2F9E3 7px no-repeat;
+	background: url(../images/alert-good.gif) /*#E2F9E3*/ 7px no-repeat;
 }
 #statusMessage.bad {
 	border-color: #c99;
-	color: #fff;
-	background: url(../images/alert-bad.gif) #c00 7px no-repeat;
+	color: #c00;
+	background: url(../images/alert-bad.gif) /*#c00*/ 7px no-repeat;
 	max-height: 600px;
 	overflow: auto;
 }
