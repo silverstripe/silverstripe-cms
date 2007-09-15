@@ -95,7 +95,7 @@ body.stillLoading select {
 #left.hidden form, #left.hidden .title, #left.hidden #TreeActions {
 	display: none;
 }
-	
+
 #left.hidden {
 	width: 18px;
 	display: block;
@@ -114,7 +114,7 @@ body.stillLoading select {
 	background-position: 0px 0px;
 
 
-	
+
 }
 
 #rightbottom div.light {
@@ -133,7 +133,7 @@ body.stillLoading select {
 	background-repeat:no-repeat;
 	padding-left : 20px;
 	border-top: 1px #77BBEE solid;
-	
+
 }
 
 #left h2 {
@@ -186,8 +186,8 @@ html>body #top #MainMenu li {
 	-moz-border-radius-topleft : 8px;
 	border : 1px solid #65686e;
 	border-bottom : none;
-   
-	
+
+
 }
 
 #top #MainMenu .current A:link,#top #MainMenu .current A:visited {
@@ -206,7 +206,7 @@ html>body #top #MainMenu li {
 #top #MainMenu #Menu-files { background-image: url(../images/mainmenu/files.gif); }
 #top #MainMenu #Menu-comments { background-image: url(../images/mainmenu/comments.gif); }
 
-#top #MainMenu #Menu-help { background-image: url(../images/mainmenu/help.gif); 
+#top #MainMenu #Menu-help { background-image: url(../images/mainmenu/help.gif);
 	float: right;
 	/*padding: 6px 28px 0 8px;
 	background-position: 100% 0;*/
@@ -262,6 +262,15 @@ html>body #top #Logo {
 #bottom #logInStatus {
 	float: right;
 }
+	#bottom #logInStatus a {
+		color: #FFFFFF;
+		text-decoration: underline;
+	}
+	#bottom #logInStatus a:hover {
+		color: #CDC9C1;
+		text-decoration: underline;
+	}
+
 #bottom #switchView {
 	float: left;
 
@@ -358,7 +367,7 @@ div.spacer, li.spacer {
 }
 
 
-#right form#Form_EditorToolbarLinkForm, 
+#right form#Form_EditorToolbarLinkForm,
 #right form#Form_EditorToolbarImageForm,
 #right form#Form_EditorToolbarFlashForm {
 	background-color: #EEE;
@@ -367,12 +376,12 @@ div.spacer, li.spacer {
 	margin: 1px 0 0 0;
 	padding: 5px;
 	height: 115px;
-	/* 
+	/*
 	 * HACK IE (all versions): container needs to be higher stacking order
-	 * than any DOM-elemnt under it. 
+	 * than any DOM-elemnt under it.
 	 * @see http://www.aplus.co.yu/lab/z-pos/
 	 */
-	z-index: 1001; 
+	z-index: 1001;
 }
 
 #right form#Form_EditorToolbarImageForm {
@@ -433,6 +442,3 @@ ul.tree li.Root span.Root span.c a {
 	background-image : url(../../cms/images/treeicons/root.png) !important;
 
 }
-
-
-
