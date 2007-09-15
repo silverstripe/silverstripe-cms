@@ -103,10 +103,10 @@
 		</h2>
 		<div class="listpane" id="versions_holder" style="display:none">
 			<p class="pane_actions" id="versions_actions">
-				<input type="checkbox" id="versions_comparemode" /> Compare mode (click 2 below)
+				<input type="checkbox" id="versions_comparemode" /> <label for="versions_comparemode">Compare mode (click 2 below)</label>
 				<br />
 
-				<input type="checkbox" id="versions_showall" /> Show unpublished versions
+				<input type="checkbox" id="versions_showall" /> <label for="versions_showall">Show unpublished versions</label>
 			</p>
 			
 			<div class="unitBody">
