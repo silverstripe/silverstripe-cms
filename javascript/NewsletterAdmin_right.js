@@ -172,9 +172,6 @@ Behaviour.register({
 			
 			var action = 'action_save';
 			
-			if( $('Form_NewsletterEditForm_Type') && $('Form_NewsletterEditForm_Type').value == 'Newsletter' )
-				action += 'newsletter';
-			
 			if(ifChanged) {
 				var data = this.serializeChangedFields('ID') + '&ajax=1&' + action + '=1';
 			} else {
