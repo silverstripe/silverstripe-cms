@@ -129,8 +129,10 @@ CMSForm.prototype = {
 	/**
 	 * Save the contens of the form, by submitting it and resetting is changed checker
 	 * on success.
+	 *
+	 * @param publish boolean (optional) whether to publish in addition to saving
 	 */
-	save: function(ifChanged, callAfter, action) {
+	save: function(ifChanged, callAfter, action, publish) {
 		_AJAX_LOADING = true;
 		if(typeof tinyMCE != 'undefined') tinyMCE.triggerSave();
 		if(!action) action = "save";
@@ -159,6 +161,10 @@ CMSForm.prototype = {
 			var data = this.serializeChangedFields('ID') + '&ajax=1&action_' + action + '=1';
 		} else {
 			var data = this.serializeAllFields() + '&ajax=1&action_' + action + '=1';
+		}
+		if(publish)
+		{
+			data += '&publish=1';
 		}
 		
 		statusMessage("Saving...", null, true);

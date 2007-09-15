@@ -354,7 +354,7 @@ JS;
 
 
 	/**
-	 * Save page handler
+	 * Save and Publish page handler
 	 */
 	public function save($urlParams, $form) {
 		$className = $this->stat('tree_class');
@@ -487,8 +487,13 @@ JS;
 
 
 		}
-
-		return FormResponse::respond();
+		// If the 'Save & Publish' button was clicked, also publish the page
+		if (isset($urlParams['publish']) && $urlParams['publish'] == 1) {
+			$this->performPublish($record);
+			return $this->tellBrowserAboutPublicationChange($record, "Published '$record->Title' successfully");
+		} else {
+			return FormResponse::respond();
+		}
 	}
 
 	/**

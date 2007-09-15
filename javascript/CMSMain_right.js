@@ -1,13 +1,6 @@
 function action_publish_right() {
-	$('Form_EditForm').notify('BeforeSave');
-	Ajax.SubmitForm('Form_EditForm', 'action_publish', {
-		onSuccess : function(response) {
-			Ajax.Evaluator(response);
-		},
-		onFailure : function(response) {
-			errorMessage('Error publishing content', response);
-		}
-	});
+	var publish = true;
+	$('Form_EditForm').save(false, null, 'save', publish);
 }
 function action_revert_right() {
 	Ajax.SubmitForm('Form_EditForm', 'action_revert', {

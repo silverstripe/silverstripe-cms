@@ -315,7 +315,7 @@ JS;
 					}
 					
 					if($record->canEdit()) {
-						$actions->push(new FormAction('save','Save draft'));
+						$actions->push(new FormAction('save','Save'));
 					}
 				}
 			}
@@ -393,15 +393,6 @@ JS;
 		return "admin/$action";
 	}
 
-	public function publish($urlParams, $form) {
-		$id = $_REQUEST['ID'];
-		$record = DataObject::get_by_id("SiteTree", $id);
-		$form->saveInto($record);
-		$this->performPublish($record);
-		
-		return $this->tellBrowserAboutPublicationChange($record, "Published '$record->Title' successfully");
-	}
-	
 	public function deletefromlive($urlParams, $form) {
 		$id = $_REQUEST['ID'];
 		Versioned::reading_stage('Live');
