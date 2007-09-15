@@ -73,8 +73,8 @@ var ImageTransformation = {
 				$('image').style.height = response.height + 'px';
 				$('imageContainer').style.width = response.width + 'px';
 				$('imageContainer').style.height = response.height + 'px';
-				imageHistory.add('crop',$('image').src);	
 				if(callback != null) callback();    
+				imageHistory.add('crop',$('image').src);	
 			}
 		 };
 		 imageBox.showIndicator();

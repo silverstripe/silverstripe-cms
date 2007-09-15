@@ -110,7 +110,6 @@ var Crop = {
 			startLeft = this.cropBox.getLeft() ;
 			if(newWidth > 35 && newHeight > 35) {
 				imageTransformation.crop(startTop,startLeft,newWidth,newHeight,Crop.cropCallback.bind(this));
-				imageHistory.enable();
 			} else {
 				alert('Crop area too small');
 			}
@@ -119,10 +118,9 @@ var Crop = {
 	},
 	
 	cropCallback: function() {
-	   this.resizeCropBox.placeClickBox();
-	   effects.enableRotate();
-	   this.enable();
-	   
+	   resize.imageContainerResize.placeClickBox();
+   	   resize.imageContainerResize.setVisible(true);
+	   Element.hide(this.cropBox,this.leftGreyBox,this.rightGreyBox,this.upperGreyBox,this.lowerGreyBox,$('cropOk'),$('cropCancel'));							
 	},
 	
 	setListeners: function() {

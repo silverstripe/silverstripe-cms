@@ -37,10 +37,11 @@ var ImageToResize = {
 			resize.imageContainerResize.originalHeight = this.imageToResize.height;
 			resize.imageContainerResize.placeClickBox();
 			imageBox.checkOutOfDrawingArea($('imageContainer').getWidth(),$('imageContainer').getHeight());
-			crop.onImageLoadCallback();
 			crop.enable();
 			resize.imageContainerResize.enable();
 			effects.enableRotate();
+			imageHistory.enable();
+			crop.onImageLoadCallback();
 		}
 		this.reportSize();
 	},
