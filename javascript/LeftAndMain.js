@@ -126,11 +126,7 @@ window.ontabschanged = function() {
 	
 	if( _TAB_DIVS_ON_PAGE ) {
 		for(i = 0; i < _TAB_DIVS_ON_PAGE.length; i++ ) {
-			// console.log(_TAB_DIVS_ON_PAGE[i].id);
-			if(navigator.appName == "Microsoft Internet Explorer")
-				fitToParent(_TAB_DIVS_ON_PAGE[i], i == 0 ? 18 : 30);
-			else
-				fitToParent(_TAB_DIVS_ON_PAGE[i], /*3*/ 30);
+			fitToParent(_TAB_DIVS_ON_PAGE[i], 30);
 		}
 	}
 }
