@@ -168,7 +168,11 @@ html>body #top #MainMenu li {
 
 #top #MainMenu a {
 	color: white;
+	text-decoration: none;
 }
+	#top #MainMenu a:hover {
+		text-decoration: underline;
+	}
 
 #top #MainMenu .current {
 	background-color: #d4d0c8;
