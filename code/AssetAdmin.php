@@ -230,7 +230,7 @@ HTML;
 		$fileList->setPopupCaption("View/Edit Asset");
 
 		if($record) {
-			$nameField = ($id != "root") ? new TextField("Name") : new HiddenField("Name");
+			$nameField = ($id != "root") ? new TextField("Name", "Folder Name") : new HiddenField("Name");
 			$fields = new FieldSet(
 				new HiddenField("Title"),
 				new TabSet("Root", 
