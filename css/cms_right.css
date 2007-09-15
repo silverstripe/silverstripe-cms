@@ -465,12 +465,11 @@ border : 1px solid #808080;
  * RHS Action Parameters boxes
  */
 #right form.actionparams {
-	border-bottom: 1px #777 solid;
-	border-left: 1px #777 solid;
+	border: 1px #777 solid;
 	background-color: #CCC;
 	position: absolute;
-	top: 23px;
-	right: 0px;
+	bottom: 32px;
+	right: 11px;
 	width: 300px;
 	
 	z-index: 200;
@@ -520,6 +519,7 @@ border : 1px solid #808080;
 
 #right form.actionparams div.TreeDropdownField {
 	width: 220px;
+	padding-bottom: 150px;
 
 }
 #right form.actionparams div.TreeDropdownField span.items {
