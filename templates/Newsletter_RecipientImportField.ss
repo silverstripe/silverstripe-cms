@@ -18,13 +18,6 @@
 	<script src="jsparty/prototype.js" type="text/javascript"></script>
 	<script src="jsparty/behaviour.js" type="text/javascript"></script>
 	<script src="cms/javascript/Newsletter_UploadForm.js" type="text/javascript"></script>
-	<script type="text/javascript">
-	// Make it possible to see all errors and messages
-	function fixOverflow() {
-		document.body.style.overflow = 'auto';
-	}
-	window.afteronload = fixOverflow;
-	</script>
 <% if ImportMessage %>
 	<script type="text/javascript">
 		top.statusMessage('Imported new members','good');
@@ -32,7 +25,7 @@
 	</script>
 <% end_if %>	
 </head>
-<body>
+<body onload="">
 <% if ImportMessage %>
 	<p>
 		$ImportMessage
