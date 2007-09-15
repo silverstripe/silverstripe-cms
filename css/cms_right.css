@@ -519,11 +519,11 @@ border : 1px solid #808080;
 }
 
 #right form.actionparams div.TreeDropdownField {
-	width: 230px;
+	width: 220px;
 
 }
 #right form.actionparams div.TreeDropdownField span.items {
-	width: 210px;
+	width: 195px;
 }
 
 #right form.actionparams div.TreeDropdownField div.tree_holder {
