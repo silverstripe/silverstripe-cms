@@ -339,7 +339,7 @@ html>body #top #Logo {
 #sitetree {
 	width: 500px; /* IE's chocking right now */
 }
-html> #sitetree {
+html>body #sitetree {
 	width: auto;
 }
 
