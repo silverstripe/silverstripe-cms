@@ -244,13 +244,8 @@ TreeContextMenu = {
 		treeNode.selectTreeNode();
 	},
 	'Duplicate this page' : function(treeNode) {
-		new Ajax.Request(baseHref() + 'admin/duplicate/' + treeNode.getIdx() + '?ajax=1', {
-			method : 'get',
-			onSuccess : Ajax.Evaluator,
-			onFailure : function(response) {
-				errorMessage('Error: ', response);
-			}
-		}); 
+		// First save the page silently (without confirmation) and then duplicate the page.
+		autoSave(false, treeNode.duplicatePage.bind(treeNode)); 
 	},
 	'Sort sub-pages' : function(treeNode) {
 		var children = treeNode.treeNodeHolder().childTreeNodes();

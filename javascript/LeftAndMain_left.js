@@ -188,6 +188,15 @@ TreeNodeAPI.prototype = {
 			Event.stop(event);
 			return false;
 		}
+	},
+	duplicatePage: function() {  
+		new Ajax.Request(baseHref() + 'admin/duplicate/' + this.getIdx() + '?ajax=1', {
+			method : 'get',
+			onSuccess : Ajax.Evaluator,
+			onFailure : function(response) {
+				errorMessage('Error: ', response);
+			}
+		}); 
 	}
 }
 
