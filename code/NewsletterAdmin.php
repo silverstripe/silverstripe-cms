@@ -361,7 +361,7 @@ class NewsletterAdmin extends LeftAndMain {
 
 			$actions->push(new FormAction('save','Save'));
 
-			$form = new Form($this, "NewsletterEditForm", $fields, $actions);
+			$form = new Form($this, "EditForm", $fields, $actions);
 			$form->loadDataFrom($email);
 
 			if($email->Status != 'Draft') {

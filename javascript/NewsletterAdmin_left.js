@@ -295,7 +295,7 @@ AddForm.prototype = {
           	
           // create a new node and add it to the site tree
           if( type == 'draft' ) {
-          	$('sitetree').addDraftNode('New draft newsletter', parentID, $('Form_NewsletterEditForm_ID').value );
+          	$('sitetree').addDraftNode('New draft newsletter', parentID, $('Form_EditForm_ID').value );
           } else {
           	$('sitetree').addTypeNode('New newsletter type', $('Form_EditForm_ID').value ); 
           }
