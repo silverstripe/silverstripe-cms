@@ -456,10 +456,14 @@ function autoSave(confirmation, callAfter) {
 function reloadRecipientsList() {
 	
 	var id = $('Form_EditForm_ID').value;
-	
-	var request = new Ajax.Request( 'admin/newsletter/getrecipientslist/' + id + '?ajax=1', {
+	if(navigator.appName == "Microsoft Internet Explorer") {
+		var url = 'admin/newsletter/getrecipientslist/';
+	} else {
+		var url = 'getrecipientslist/';
+	}
+	 var request = new Ajax.Request(url  + id + '?ajax=1', {
 		onSuccess: function( response ) {
-			$('MemberList').outerHTML = response.responseText;
+			$('Root_Recipients').innerHTML = response.responseText;
 			Behaviour.apply( $('MemberList') );
 		},
 		onFailure: function(response) {

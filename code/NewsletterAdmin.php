@@ -309,7 +309,7 @@ class NewsletterAdmin extends LeftAndMain {
 
 			$actions = new FieldSet(new FormAction('save','Save'));
 
-			$form = new Form($this, "MailingListEditForm", $fields, $actions);
+			$form = new Form($this, "EditForm", $fields, $actions);
 			$form->loadDataFrom(array(
 				'Title' => $mailType->Title,
 				'FromEmail' => $mailType->FromEmail
@@ -328,7 +328,10 @@ class NewsletterAdmin extends LeftAndMain {
 	function getrecipientslist() {
 		if( $_REQUEST['ajax'] ) {
 			$newsletterType = DataObject::get_by_id('NewsletterType', $this->urlParams['ID'] );
-			$memberList = new MemberTableField($this, "Recipients", $newsletterType->Group() );
+			$fields = new FieldSet($memberList = new MemberTableField($this, "Recipients", $newsletterType->Group() ));
+			$memberList->setController($this);
+			$actions = new FieldSet(new FormAction('save','Save'));
+			$form = new Form($this, "EditForm", $fields, $actions);
 			return $memberList->FieldHolder();
 		}
 	}
