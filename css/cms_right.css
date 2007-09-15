@@ -659,7 +659,7 @@ div.TreeDropdownField a.editLink {
 #statusMessage.bad {
 	border-color: #c99;
 	color: #c00;
-	background: url(../images/alert-bad.gif) /*#c00*/ 7px no-repeat;
+	background: url(../images/alert-bad.gif) #fff 7px no-repeat;
 	max-height: 600px;
 	overflow: auto;
 }
