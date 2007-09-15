@@ -11,7 +11,7 @@ var Resize = {
 		options = {
 				resizeStop: Resize.resizeStop.bind(this),
 				onDrag: Resize.onDrag.bind(this),
-				onResize: Resize.onResize,
+				onResize: Resize.onResize.bind(this),
 				getMousePos: Resize.getMousePos.bind(this)
 			};		
 		new Positioning.addBehaviour(this.element);
@@ -20,13 +20,11 @@ var Resize = {
 	},
 	
 	resizeStop: function(event) {
-		if(EventStack.getLastEvent() != null) {
-			imageElement = $('image');
-			EventStack.clearStack();
-			if(this.imageContainerResize.originalWidth != imageElement.width || this.imageContainerResize.originalHeight != imageElement.height) {
-				imageTransformation.resize(imageElement.width,imageElement.height);
-			}	
-		}
+		imageElement = $('image');
+		EventStack.clearStack();
+		if(this.imageContainerResize.originalWidth != imageElement.width || this.imageContainerResize.originalHeight != imageElement.height) {
+			imageTransformation.resize(imageElement.width,imageElement.height);
+		}	
 	},
 	
 	onDrag: function()
@@ -38,7 +36,9 @@ var Resize = {
 		imageBox.reCenterIndicator();		
 	},
 	
- 	onResize: function() {
+ 	onResize: function(width,height) {
+		$('image').style.width = width + "px";
+		$('image').style.height = height + "px"; 
 	},
 	getMousePos: function(event) {
 		relativeMouseX = this.getRelativeMousePos(event).x;

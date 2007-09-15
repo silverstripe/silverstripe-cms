@@ -8,7 +8,7 @@ var ImageEditorActivator = {
 		if(iframe != null) {
 			iframe.parentNode.removeChild(iframe);
 		}
-		iframe = document.createElement('iframe');
+		iframe = window.top.document.createElement('iframe');
 		fileToEdit = $('ImageEditorActivator').firstChild.src;
 		iframe.setAttribute("src","admin/ImageEditor?fileToEdit=" + fileToEdit);
 		iframe.id = 'imageEditorIframe';
@@ -19,6 +19,8 @@ var ImageEditorActivator = {
 		iframe.style.top = "-2%";
 		iframe.style.left = "1.5%";
 		window.top.document.body.appendChild(iframe);
+		
+		
 	}
 		
 }

@@ -24,10 +24,10 @@ var ImageTransformation = {
 				response = eval('(' + transport.responseText + ')');
 				$('image').src = response.fileName;
 				imageHistory.add('resize',$('image').src);				
-			},
+			}
 		 };
 		 imageBox.showIndicator();
-		 new Ajax.Request('admin/ImageEditor/manipulate', options);	
+		 new Ajax.Request('admin/ImageEditor/manipulate', options);
 	},
 	
 	rotate: function(angle) {
@@ -37,7 +37,10 @@ var ImageTransformation = {
 			onSuccess: function(transport) {
 				imageBox.hideIndicator();
 				response = eval('(' + transport.responseText + ')');
+				imageBox.checkOutOfDrawingArea(response.width,response.height);
 				$('image').src = response.fileName;
+				$('image').style.width = response.width + 'px';
+				$('image').style.height = response.height + 'px';
 				$('imageContainer').style.width = response.width + 'px';
 				$('imageContainer').style.height = response.height + 'px';
 				imageHistory.add('rotate',$('image').src);	
@@ -45,6 +48,7 @@ var ImageTransformation = {
 			}			
 		 };
 		 imageBox.showIndicator();
+
 		 new Ajax.Request('admin/ImageEditor/manipulate', options);		
 	},
 	
@@ -56,14 +60,16 @@ var ImageTransformation = {
 				imageBox.hideIndicator();
 				response = eval('(' + transport.responseText + ')');
 				$('image').src = response.fileName;
+				$('image').style.width = response.width + 'px';
+				$('image').style.height = response.height + 'px';
 				$('imageContainer').style.width = response.width + 'px';
 				$('imageContainer').style.height = response.height + 'px';
 				imageHistory.add('crop',$('image').src);	
 				crop.setVisible(false);
-			},
+			}
 		 };
 		 imageBox.showIndicator();
-		 new Ajax.Request('admin/ImageEditor/manipulate', options);			
+		 new Ajax.Request('/admin/ImageEditor/manipulate', options);			
 	},
 	
 	save: function(originalFile,editedFile) {
@@ -73,7 +79,7 @@ var ImageTransformation = {
 			onSuccess: function(transport) {
 				eval(transport.responseText);
 				imageEditor.onClose();
-			},
+			}
 		 };
 		 new Ajax.Request('admin/ImageEditor/save', options);
 	},
@@ -84,7 +90,7 @@ var ImageTransformation = {
 			postBody: '',
 			onSuccess: function(transport) {
 				eval(transport.responseText);
-			},
+			}
 		 };
 		 new Ajax.Request('admin/ImageEditor/close', options);
 	}

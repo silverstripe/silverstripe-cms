@@ -4,6 +4,6 @@
 var Environment = {
 	initialize: function (imageFile) {
 		imageBox = new ImageBox.initialize();
-		image = new Image.initialize(imageFile);		
-	},		
+		imageToResize = new Image.initialize(imageFile);		
+	}		
 }

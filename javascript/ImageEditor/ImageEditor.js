@@ -2,18 +2,10 @@
  * @author Mateusz
  */
  
-Scriptaculous.require('cms/javascript/ImageEditor/Utils.js');
-Scriptaculous.require('cms/javascript/ImageEditor/ImageHistory.js');
-Scriptaculous.require('cms/javascript/ImageEditor/Image.js"');
-Scriptaculous.require('cms/javascript/ImageEditor/ImageTransformation.js');
-Scriptaculous.require('cms/javascript/ImageEditor/Resizeable.js');
-Scriptaculous.require('cms/javascript/ImageEditor/Effects.js');
-Scriptaculous.require('cms/javascript/ImageEditor/Environment.js');
-Scriptaculous.require('cms/javascript/ImageEditor/Crop.js');
-Scriptaculous.require('cms/javascript/ImageEditor/Resize.js');
-Scriptaculous.require('cms/javascript/ImageEditor/ImageBox.js');
 var ImageEditor = {
 	initialize: function(imageFile) {
+		imageFile += '1234';
+		crop = null;
 		imageHistory = new ImageHistory.initialize();
 		environment = new Environment.initialize(imageFile);		
 		imageTransformation = new ImageTransformation.initialize();
@@ -26,6 +18,8 @@ var ImageEditor = {
 		this.onClose = ImageEditor.onClose.bind(this);
 		Event.observe($('saveButton'),'click',this.onSave);
 		Event.observe($('closeButton'),'click',this.onClose);				
+		imageToResize.onImageLoad();
+		resize.imageContainerResize.placeClickBox();
 	}, 
 	onSave: function() {
 		if(this.tottalyOriginalImageFile != $('image').src) {
@@ -41,3 +35,4 @@ var ImageEditor = {
 		imageTransformation.close();
 	}		
 }
+

@@ -1,109 +1,111 @@
 *
 {
-	margin: 0px;
-	padding: 0px;
+    margin: 0px;
+    padding: 0px;
 }
 
 .clickBox
-{	
-	width: 7px;
-	height: 7px;
-	background-color: red;
-	position: absolute;		
+{   
+    width: 7px;
+    height: 7px;
+    background-color: red;
+    position: absolute;     
+    overflow: hidden;
 }
 .leftUpperClickBox
 {
-	cursor: nw-resize;
+    cursor: nw-resize;
 }
 
 .leftMiddleClickBox
 {
-	cursor: e-resize;
+    cursor: e-resize;
 }
 
 .leftLowerClickBox
 {
-	cursor: ne-resize;
+    cursor: ne-resize;
 }
 
 .rightUpperClickBox
 {
-	cursor: ne-resize;
+    cursor: ne-resize;
 }
 
 .rightMiddleClickBox
 {
-	cursor: w-resize;
+    cursor: w-resize;
 }
 
 .rightLowerClickBox
 {
-	cursor: nw-resize;
+    cursor: nw-resize;
 }
 
 .upperMiddleClickBox
 {
-	cursor: n-resize;
+    cursor: n-resize;
 }
 
 .lowerMiddleClickBox
 {
-	cursor: n-resize;
+    cursor: n-resize;
 }
 .inline
 {
-	display: inline;
+    display: inline;
 }
-#mainContainer
+.displayNone
 {
-	width: 100%;
-	height:600px;	
+    display: none;
 }
+
 #imageContainer
 {
-	position: absolute;
+    position: absolute;
 }
 #menuBarContainer
 {
-	border-bottom: 1px solid;
-	height: 100px;
-}
-.floatRight
-{
-	float: right;
-}
-#loadingIndicatorContainer
-{
-	display: none;
-	z-index: 1000;
-	position: absolute;
-}
-#fakeImg
-{
-	display: none;
+    border-bottom: 1px solid;
+    height: 100px;
 }
 #image
 {
-	width: 100%;
-	height: 100%;
+    display: block;
+}
+.floatRight
+{
+    float: right;
+}
+#loadingIndicatorContainer
+{
+    display: none;
+    position: absolute;
+    z-index: 1000;
+}
+#fakeImg
+{
+    display: none;
 }
 #cropBox
 {
-	position: absolute;
+    position: absolute;
 }
 .greyBox
 {
-	background-color: black;
-	position: absolute;
-	opacity: 0.5;
+    background-color: black;
+    position: absolute;
+    opacity: .5;
+    filter: alpha(opacity=50);
 }
 #mainContainer
 {
-	border-color: black;
-	border-style: solid;
-	background-color: white;
-	margin: 0px;
-	position: absolute;
-	top: 20px;
-	padding: 0px;
+    position: absolute;
+    border-color: black;
+    border-style: solid;
+    height: 40%;
+    width: 100%;
+    left: 1%;
+    top: 1%;
+    background-color: white;
 }

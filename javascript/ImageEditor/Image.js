@@ -7,7 +7,7 @@ var Image = {
 		this.image.src = imageFile;
 		this.reportSize = Image.reportSize.bind(this);
 		this.onImageLoad = Image.onImageLoad.bind(this);
-		Event.observe('image','load',this.onImageLoad);
+		Event.observe(this.image,'load',this.onImageLoad);
 		imageHistory.add('initialize',this.image.src);
 	},
 	
@@ -16,15 +16,15 @@ var Image = {
 		$('imageHeight').innerHTML = this.image.height + "px";	
 	},
 	
-	onImageLoad: function() {
+	onImageLoad: function(event) {
 		this.reportSize();
+		$('imageContainer').style.width = this.image.width + 'px';
+		$('imageContainer').style.height = this.image.height + 'px';
 		if(resize.imageContainerResize.originalHeight == 0 && resize.imageContainerResize.originalWidth == 0) {
 			imageBox.center();
 		}
-		$('imageContainer').style.width = this.image.width + 'px';
-		$('imageContainer').style.height = this.image.height + 'px';
 		resize.imageContainerResize.originalWidth = this.image.width;
 		resize.imageContainerResize.originalHeight = this.image.height;
-
-	},
+		imageBox.checkOutOfDrawingArea($('imageContainer').getWidth(),$('imageContainer').getHeight());
+	}
 };

@@ -12,6 +12,7 @@ class AssetTableField extends ComplexTableField {
 		$this->sourceSort = "Title";		
 		$this->Markable = true;
 		Requirements::javascript("cms/javascript/ImageEditor/Activator.js");
+
 	}
 	
 	function setFolder($folder) {
@@ -86,7 +87,7 @@ class AssetTableField extends ComplexTableField {
 			$detailFormFields->addFieldToTab("BottomRoot", 
 				new Tab("Image",
 					new LiteralField("ImageFull",
-						'<a id="ImageEditorActivator" href="javascript: void(0)">' . "<img id='thumbnailImage' src='{$thumbnail}' alt='{$childData->Name}' />" . '</a>' .
+						'<a id="ImageEditorActivator" href="javascript: void(0)">' . "<img id='thumbnailImage' src='{$thumbnail}?r=" . rand(1,100000)  . "' alt='{$childData->Name}' />" . '</a>' .
 						'<script type="text/javascript" src="cms/javascript/ImageEditor/Activator.js"></script><script type="text/javascript">imageActivator = new ImageEditorActivator.initialize();Event.observe("ImageEditorActivator","click",imageActivator.onOpen);</script>'
 					)
 				),

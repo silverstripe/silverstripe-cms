@@ -9,17 +9,17 @@ Point = {
 }
 
 EventStack = {
-	lastEvent: null,
-	getLastEvent: function(){		
-		return EventStack.lastEvent
+	lastEventElement: null,
+	getLastEventElement: function(){		
+		return EventStack.lastEventElement;
 	},
 	
 	addEvent: function(event) {
-		EventStack.lastEvent = event;
+		EventStack.lastEventElement = Event.element(event);
 	},
 	
 	clearStack: function() {
-		this.lastEvent = null;
+		this.lastEventElement  = null;
 	}
 }
 
@@ -68,5 +68,17 @@ Positioning = {
 	
 	getParentWidth: function() {
 		return Element.getDimensions(Position.offsetParent(this.element)).width
+	}
+}
+
+Random = {
+	string: function(length) {
+		chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		string = "";
+		for(x=0;x<length;x++) {
+			i = Math.floor(Math.random() * 57);
+			string += chars.charAt(i);
+		}	
+		return string;
 	}
 }

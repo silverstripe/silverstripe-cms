@@ -18,8 +18,18 @@
 			Requirements::clear();
 			Requirements::javascript("jsparty/prototype.js");
 			Requirements::javascript("jsparty/scriptaculous/scriptaculous.js");
-			Requirements::javascript("/cms/javascript/ImageEditor/Require.js");
+            Requirements::javascript('cms/javascript/ImageEditor/Utils.js');
+            Requirements::javascript('cms/javascript/ImageEditor/ImageHistory.js');
+            Requirements::javascript('cms/javascript/ImageEditor/Image.js');
+            Requirements::javascript('cms/javascript/ImageEditor/ImageTransformation.js');
+            Requirements::javascript('cms/javascript/ImageEditor/Resizeable.js');
+            Requirements::javascript('cms/javascript/ImageEditor/Effects.js');
+            Requirements::javascript('cms/javascript/ImageEditor/Environment.js');
+            Requirements::javascript('cms/javascript/ImageEditor/Crop.js');
+            Requirements::javascript('cms/javascript/ImageEditor/Resize.js');
+            Requirements::javascript('cms/javascript/ImageEditor/ImageBox.js');
 			Requirements::javascript("cms/javascript/ImageEditor/ImageEditor.js");
+
 			Requirements::javascript("jsparty/loader.js");
 			Requirements::javascript("jsparty/behaviour.js");
 			Requirements::javascript("cms/javascript/LeftAndMain.js");
@@ -44,6 +54,7 @@
 		*/ 
 		public function manipulate() {
 			$fileName = $this->requestParams['file'];
+			if(strpos($fileName,'?') !== false) $fileName = substr($fileName,0,strpos($fileName,'?'));
 			$command = $this->requestParams['command'];
 			$this->checkFileExists($fileName);
 			$gd = new GD($fileName);
@@ -85,6 +96,7 @@
 			if(isset($this->requestParams['originalFile']) && isset($this->requestParams['editedFile'])) {
 				$originalFile = $this->requestParams['originalFile'];
 				$editedFile = $this->requestParams['editedFile'];
+				if(strpos($originalFile,'?') !== false) $originalFile = substr($originalFile,0,strpos($originalFile,'?'));
 				if($this->checkFileExists($originalFile) && $this->checkFileExists($editedFile)) {
 					if($editedFile != $originalFile && copy($this->url2File($editedFile),$this->url2File($originalFile))) {
 						$image = DataObject::get_one('File',"Filename = '" . substr($this->url2File($originalFile),3) . "'");
@@ -166,8 +178,9 @@
 		*/ 
 		
 		private function checkFileExists($url) {
+			if(strpos($url,'?') !== false) $url = substr($url,0,strpos($url,'?'));
 			$pathInfo = pathinfo($url);
-			if(count($pathInfo) <= 3) $this->raiseError();
+			if(count($pathInfo) < 3) $this->raiseError();
 			if(!in_array($pathInfo['extension'],array('jpeg','jpg','jpe','png','gif'))) $this->raiseError();
 			$path = explode('/',$pathInfo['dirname']);
 			if(count($path) > 1) {

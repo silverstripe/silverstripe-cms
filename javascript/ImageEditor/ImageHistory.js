@@ -70,11 +70,15 @@ ImageHistory = {
 	},
 	
 	onFakeImageLoad: function() {
+		imageBox.checkOutOfDrawingArea(fakeImage.width,fakeImage.height);
+		$('image').style.width = fakeImage.width + 'px';
+		$('image').style.height = fakeImage.height + 'px';
 		$('imageContainer').style.width = fakeImage.width + 'px';
 		$('imageContainer').style.height = fakeImage.height + 'px';
 		resize.imageContainerResize.originalWidth = fakeImage.width;			
 		resize.imageContainerResize.originalHeight = fakeImage.height;				
 		resize.imageContainerResize.placeClickBox();
+		imageToResize.onImageLoad();
 	},
 	
 	enable: function() {
@@ -84,5 +88,5 @@ ImageHistory = {
 	disable: function() {
 		Event.stopObserving($('undoButton'),'click', this.undo);			
 		Event.stopObserving($('redoButton'),'click', this.redo);
-	},
+	}
 };
