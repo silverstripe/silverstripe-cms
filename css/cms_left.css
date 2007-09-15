@@ -36,6 +36,11 @@
 	width: 75%;
 	margin: 0;
 }
+#PageType {
+	width: 75%;
+	float: left;
+	margin-right: 3px;
+}
 #left form.actionparms input.action {
 	width: 5%;
 	margin: 0;
