@@ -18,7 +18,6 @@ ImageHistory = {
 		this.enable = ImageHistory.enable.bind(this);
 		this.disable = ImageHistory.disable.bind(this);
 		this.clear = ImageHistory.clear.bind(this);
-		this.fakeImage = Positioning.addBehaviour($('fakeImg'));
 		this.image = Positioning.addBehaviour($('image'));
 		this.size = new Array();
 	},

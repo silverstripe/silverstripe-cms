@@ -24,8 +24,7 @@ var ImageToResize = {
 	
 	onImageLoad: function(event) {
 		if(this.imageToResize.width != 0 && this.imageToResize.height != 0) {
-			//$('imageContainer').style.width = this.imageToResize.width + 'px';
-			//$('imageContainer').style.height = this.imageToResize.height + 'px';
+			$('imageContainer').style.backgroundImage = 'url("' + $('image').src + '")';
 			imageBox.hideIndicator();
 			Element.show($('imageContainer'),$('image'));
             if(resize.imageContainerResize.originalHeight == 0 && resize.imageContainerResize.originalWidth == 0) {

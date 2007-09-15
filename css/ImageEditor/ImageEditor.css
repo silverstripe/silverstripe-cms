@@ -90,7 +90,6 @@
 #cropBox
 {
     position: absolute;
-    background-image: url("cms/images/ImageEditor/white.gif");
     display: inline;
 }
 .greyBox

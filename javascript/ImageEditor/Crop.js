@@ -114,6 +114,7 @@ var Crop = {
 				alert('Crop area too small');
 			}
 			this.disable();
+			$('image').style.visibility = 'visible';//hack for IE for not selecting image during crop
 		}
 	},
 	
@@ -128,9 +129,9 @@ var Crop = {
 		Event.observe('cropOk','click',this.onCropOk);
 		Event.observe('cropCancel','click',this.onCropCancel);		
 	},
-	
 	onCropStart: function()	 {
 		if(this.isEnabled) {
+			$('image').style.visibility = "hidden";//hack for IE for not selecting image during crop
 			this.setVisible(true);	
 			Element.show($('cropOk'),$('cropCancel'));
 			imageHistory.disable();
@@ -155,6 +156,7 @@ var Crop = {
 		    effects.enableRotate();
 			this.enable();
 		}
+		$('image').style.visibility = 'visible';//hack for IE for not selecting image during crop
 	},
 	
 	setVisible: function(setVisible) {

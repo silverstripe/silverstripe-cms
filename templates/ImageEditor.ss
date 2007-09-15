@@ -36,8 +36,7 @@
                     <div id="rightGreyBox" class="greyBox"></div>
                     <div id="upperGreyBox" class="greyBox"></div>
                     <div id="lowerGreyBox" class="greyBox"></div>   
-                    <img id="image" src="#" alt=""/>                        
-		        <img id="fakeImg" src="#" alt=""/>
+                    <img id="image" src="#" alt=""/>
                     <div id="cropBox"></div>
                 </div>  
             </div>          
