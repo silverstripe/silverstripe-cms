@@ -15,7 +15,7 @@
 	<p id="statusMessage" style="display:none"></p>
 
 	<form id="Form_EditForm" action="admin?executeForm=EditForm" method="post" enctype="multipart/form-data">
-		<p>Welcome to $ApplicationName! Please choose a page from the left.</p>
+		<p><% _t('WELCOMETO','Welcome to'); %> $ApplicationName! <% _t('CHOOSEPAGE','Please choose a page from the left.'); %></p>
 	</form>
 <% end_if %>
 </body>

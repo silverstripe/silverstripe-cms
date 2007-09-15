@@ -234,11 +234,11 @@ JS;
 			if($instance->stat('need_permission') && !$this->can( singleton($class)->stat('need_permission') ) ) continue;
 			
 			$addAction = $instance->uninherited('add_action', true);
-			if(!$addAction) $addAction = "a $class";
+			if(!$addAction) $addAction = "$class";
 			
 			$result->push(new ArrayData(array(
 				"ClassName" => $class,
-				"AddAction" => "Create $addAction",
+				"AddAction" => _t('CMSMain.CREATE','Create a ',PR_MEDIUM,'"Create a " message, followed by an action (e.g. "contact form")') .$addAction,
 			)));
 		}
 		return $result;
@@ -276,7 +276,7 @@ JS;
 		$record = $this->getRecord($id);
 	
 		if($record) {
-			if($record->DeletedFromStage) $record->Status = "Removed from the draft site";
+			if($record->DeletedFromStage) $record->Status = _t('CMSMain.REMOVEDFD',"Removed from the draft site");
 			
 			$fields = $record->getCMSFields($this);
 			$fields->push($idField = new HiddenField("ID"));
@@ -305,8 +305,8 @@ JS;
 				
 				if($record->DeletedFromStage) {
 					if($record->can('CMSEdit')) {
-						$actions->push(new FormAction('revert','Restore'));
-						$actions->push(new FormAction('deletefromlive','Delete from the published site'));
+						$actions->push(new FormAction('revert',_t('CMSMain.RESTORE','Restore')));
+						$actions->push(new FormAction('deletefromlive',_t('CMSMain.DELETEFP','Delete from the published site')));
 					}
 				} else {
 					if($record->hasMethod('getCMSActions')) {
@@ -315,7 +315,7 @@ JS;
 					}
 					
 					if($record->canEdit()) {
-						$actions->push(new FormAction('save','Save'));
+						$actions->push(new FormAction('save',_t('CMSMain.SAVE','Save')));
 					}
 				}
 			}
@@ -329,7 +329,7 @@ JS;
 			return $form;
 		} else if($id) {
 			return new Form($this, "EditForm", new FieldSet(
-				new LabelField("This page doesn't exist")), new FieldSet());
+				new LabelField(_t('CMSMain.PAGENOTEXISTS',"This page doesn't exist"))), new FieldSet());
 				
 		}
 	}
@@ -372,7 +372,7 @@ JS;
 		    	$id = $id . $suffix;
 	    }
         
-		$newItem->Title = "New $className";
+		$newItem->Title = _t('CMSMain.NEW',"New ",PR_MEDIUM,'"New " followed by a className').$className;
 		$newItem->URLSegment = "new-" . strtolower($className);
 		$newItem->ClassName = $className;
 		$newItem->ParentID = $parentID;
@@ -460,7 +460,7 @@ JS;
 		$title = Convert::raw2js($obj->Title);
 		FormResponse::get_page($id);
 		FormResponse::add("$('sitetree').setNodeTitle($id, '$title');");
-		FormResponse::status_message("Restored '$title' successfully",'good');
+		FormResponse::status_message(sprintf(_t('CMSMain.RESTORED',"Restored '%s' successfully",PR_MEDIUM,'Param %s is a title'),$title),'good');
 
 		return FormResponse::respond();			
 	}
@@ -510,7 +510,8 @@ JS;
 		$page->Status = $_REQUEST['Status'];
 		$page->writeWithoutVersion();
 		
-		FormResponse::status_message("Sent to $recipient->FirstName $recipient->Surname for approval.","good");
+		FormResponse::status_message(sprintf(_t('CMSMain.SENTTO',"Sent to %s %s for approval.",PR_LOW,"First param is first name, and second is surname"),
+											 $recipient->FirstName, $recipient->Surname), "good");
 		
 		return FormResponse::respond();
 	}
@@ -570,11 +571,11 @@ HTML;
 		if($tasks) {
 			$data = new ArrayData(array(
 				"Tasks" => $tasks,
-				"Message" => "You have work to do on these <b>" . $tasks->Count() . "</b> pages.",
+				"Message" => sprintf(_t('CMSMain.WORKTODO',"You have work to do on these <b>%d</b> pages."),$tasks->Count()),
 			));
 		} else {
 			$data = new ArrayData(array(
-				"Message" => "You have nothing assigned to you.",
+				"Message" => _t('CMSMain.NOTHINGASSIGNED',"You have nothing assigned to you."),
 			));
 		}
 		return $data->renderWith("TaskList");
@@ -585,11 +586,11 @@ HTML;
 		if($tasks) {
 			$data = new ArrayData(array(
 				"Tasks" => $tasks,
-				"Message" => "You are waiting on other people to work on these <b>" . $tasks->Count() . "</b> pages.",
+				"Message" => sprintf(_t('CMSMain.WAITINGON',"You are waiting on other people to work on these <b>%d</b> pages."),$tasks->Count()),
 			));
 		} else {
 			$data = new ArrayData(array(
-				"Message" => "You aren't waiting on anybody.",
+				"Message" => _t('CMSMain.NOWAITINGON','You aren\'t waiting on anybody.'),
 			));
 		}
 		return $data->renderWith("WaitingOn");
@@ -611,7 +612,7 @@ HTML;
 	function ReportSelector() {
 		$reports = ClassInfo::subclassesFor("SideReport");
 		
-		$options[""] = "(Choose a report)";
+		$options[""] = _t('CMSMain.CHOOSEREPORT',"(Choose a report)");
 		foreach($reports as $report) {
 			if($report != 'SideReport') $options[$report] = singleton($report)->title();
 		}
@@ -637,7 +638,7 @@ HTML;
 				'Versions' => $versions,
 			);		
 		} else {
-			return "Can't find page #$pageID";
+			return sprintf(_t('CMSMain.VERSIONSNOPAGE',"Can't find page #%d",PR_LOW),$pageID);
 		}
 	}
 	
@@ -647,10 +648,10 @@ HTML;
 	function rollback() {
 		if($_REQUEST['Version']) {
 			$record = $this->performRollback($_REQUEST['ID'], $_REQUEST['Version']);
-			echo "Rolled back to version #$_REQUEST[Version].  New version number is #$record->Version";
+			echo sprintf(_t('CMSMain.ROLLEDBACKVERSION',"Rolled back to version #%d.  New version number is #%d"),$_REQUEST[Version],$record->Version);
 		} else {
 			$record = $this->performRollback($_REQUEST['ID'], "Live");
-			echo "Rolled back to published version. New version number is #$record->Version";
+			echo sprintf(_t('CMSMain.ROLLEDBACKPUB',"Rolled back to published version. New version number is #%d"),$record->Version);
 		}
 	}
 	
@@ -664,8 +665,7 @@ HTML;
 		$page = DataObject::get_by_id("SiteTree", $SQL_id);
 		$page->Status = "Unpublished";
 		$page->write();
-		
-		return $this->tellBrowserAboutPublicationChange($page, "Removed '$page->Title' from the published site");
+
 		Sitemap::Ping();
 		
 		return $this->tellBrowserAboutPublicationChange($page, sprintf(_t('CMSMain.REMOVEDPAGE',"Removed '%s' from the published site"),$page->Title));
@@ -717,12 +717,13 @@ HTML;
 
 			$fields->push(new HiddenField("ID"));
 			$fields->push(new HiddenField("Version"));
-			$fields->insertBefore(new HeaderField("You are viewing version #$version, created " . $record->obj('LastEdited')->Ago()), "Root");
+			$fields->insertBefore(new HeaderField(sprintf(_t('CMSMain.VIEWING',"You are viewing version #%d, created %s"),
+														  $version, $record->obj('LastEdited')->Ago())), "Root");
 
 			$actions = new FieldSet(
-				new FormAction("email", "Email"),
-				new FormAction("print", "Print"),
-				new FormAction("rollback", "Roll back to this version")
+				new FormAction("email", _t('CMSMain.EMAIL',"Email")),
+				new FormAction("print", _t('CMSMain.PRINT',"Print")),
+				new FormAction("rollback", _t('CMSMain.ROLLBACK',"Roll back to this version"))
 			);
 			
 			// encode the message to appear in the body of the email
@@ -773,7 +774,7 @@ HTML;
 			$fields = $record->getCMSFields($this);
 			$fields->push(new HiddenField("ID"));
 			$fields->push(new HiddenField("Version"));
-			$fields->insertBefore(new HeaderField("You are comparing versions #$fromVersion and #$toVersion"), "Root");
+			$fields->insertBefore(new HeaderField(sprintf(_t('CMSMain.COMPARINGV',"You are comparing versions #%d and #%d"),$fromVersion,$toVersion)), "Root");
 
 			$actions = new FieldSet();
 
@@ -834,8 +835,8 @@ HTML;
 		Requirements::javascript('jsparty/prototype_improvements.js');
 		Requirements::javascript('cms/javascript/dialog.js');
 		
-		$message = "Do you really want to copy the published content to the stage site?";
-		$buttons = "<button name=\"OK\">OK</button><button name=\"Cancel\">Cancel</button>";
+		$message = _t('CMSMain.COPYPUBTOSTAGE',"Do you really want to copy the published content to the stage site?");
+		$buttons = "<button name=\"OK\">" . _t('CMSMain.OK','OK') ."</button><button name=\"Cancel\">" . _t('CMSMain.CANCEL',"Cancel") . "</button>";
 		
 		return $this->customise( array(
 			'Message' => $message,
@@ -928,10 +929,10 @@ HTML;
 			}
 		}
 		
-		$s = sizeof($ids) > 1 ? "s" : "";
-		$message = sizeof($ids) . " page$s deleted.";
+		if (sizeof($ids) > 1) $message = sprintf(_t('CMSMain.PAGEDEL', "%d page deleted "), sizeof($ids));
+		else $message = sprintf(_t('CMSMain.PAGESDEL', "%d pages deleted "), sizeof($ids));
 		if(isset($brokenPageList) && $brokenPageList != '') {
-			$message .= "  The following pages now have broken links:<ul>" . addslashes($brokenPageList) . "</ul>Their owners have been emailed and they will fix up those pages.";
+			$message .= _t('CMSMain.NOWBROKEN',"  The following pages now have broken links:")."<ul>" . addslashes($brokenPageList) . "</ul>" . _t('CMSMain.NOWBROKEN2',"Their owners have been emailed and they will fix up those pages.");
 		}
 
 		FormResponse::status_message($message);
@@ -984,7 +985,7 @@ HTML;
 			// "Page to copy" => new TreeDropdownField("DuplicateSection", "", "SiteTree"),
 		), 
 		new FieldSet(
-			new FormAction("addpage", "Go")
+			new FormAction("addpage", _t('CMSMain.GO',"Go"))
 		));
 	}
 	
@@ -1009,13 +1010,13 @@ HTML;
 					echo "<li>" . $page->Breadcrumbs(null, true) . "</li>";
 					$count++;
 				} else {
-					echo "<li style=\"color: #777\">" . $page->Breadcrumbs(null, true) . " - no content</li>";
+					echo "<li style=\"color: #777\">" . $page->Breadcrumbs(null, true) . " - " . _t('CMSMain.NOCONTENT',"no content") . "</li>";
 				}
 				
 			}
 		}
 		
-		echo "<p>Total pages: $count</p>";
+		echo '<p>' . _t('CMSMain.TOTALPAGES',"Total pages: ") . "$count</p>";
 	}
 	
 	function publishall() {
@@ -1033,18 +1034,17 @@ HTML;
 				echo "<li>$count";
 			}
 			
-			echo "Done: Published $count pages";
+			echo sprintf(_t('CMSMain.PUBPAGES',"Done: Published %d pages"), $count);
 			
 		} else {
-			echo <<<HTML
-				<h1>"Publish All" functionality</h1>
-				<p>Pressing this button will do the equivalent of going to every page and pressing "publish".  It's
+			echo '<h1>' . _t('CMSMain.PUBALLFUN','"Publish All" functionality') . '</h1>
+				<p>' . _t('CMSMain.PUBALLFUN2', 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It\'s
 				intended to be used after there have been massive edits of the content, such as when the site was
-				first built.</p>
+				first built.') . '</p>
 				<form method="post" action="publishall">
-					<input type="submit" name="confirm" value="Please publish every page in the site, copying content stage to live" />
-				</form>
-HTML;
+					<input type="submit" name="confirm" value="' 
+					. _t('CMSMain.PUBALLCONFIRM',"Please publish every page in the site, copying content stage to live",PR_LOW,'Confirmation button') .'" />
+				</form>';
 		}
 	}
 
@@ -1059,7 +1059,7 @@ HTML;
 			$restoredPage->writeWithoutVersion();
 			Debug::show($restoredPage);
 		}	else {
-			echo "visit restorepage/(ID)";	
+			echo _t('CMSMain.VISITRESTORE',"visit restorepage/(ID)",PR_LOW,'restorepage/(ID) should not be translated (is an URL)');	
 		}
 	}
 	

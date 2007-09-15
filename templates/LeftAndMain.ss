@@ -45,14 +45,15 @@
 
 		<div id="switchView" class="bottomTabs">
 			<% if class = CMSMain %>
-			<div class="blank"> View page in: </div>
+			<div class="blank"> <% _t('VIEWPAGEIN','Page view:'); %> </div>
 			<% else %>
 			<div class="blank"> Switch to: </div>
 			<% end_if %>
-			<a class="current">CMS</a>
-			<a id="viewStageSite" href="home/?stage=Stage" style="left : -1px;">Draft Site</a>
-			<a id="viewLiveSite" href="home/?stage=Live" style="left : -3px;">Published Site</a>
-			<a style="display: none;left : -5px;" id="viewArchivedSite" href="home/">Archived Site</a>
+			<a class="current"><% _t('EDIT','Edit'); %></a>
+			<a id="viewStageSite" href="home/?stage=Stage" style="left : -1px;"><% _t('DRAFTS','Draft Site'); %></a>
+			<div class="blank" style="width:1em;"> </div>
+			<a id="viewLiveSite" href="home/?stage=Live" style="left : -3px;"><% _t('PUBLIS','Published Site'); %></a>
+			<a style="display: none;left : -5px;" id="viewArchivedSite" href="home/"><% _t('ARCHS','Archived Site'); %></a>
 		</div>
 		
 		</div>

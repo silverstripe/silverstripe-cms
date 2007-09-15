@@ -36,9 +36,9 @@ abstract class LeftAndMain extends Controller {
 		// Access failure!		
 		if(!$isAllowed) {
 			$messageSet = array(
-				'default' => "Please choose an authentication method and enter your credentials to access the CMS.",
-				'alreadyLoggedIn' => "I'm sorry, but you can't access that part of the CMS.  If you want to log in as someone else, do so below",
-				'logInAgain' => "You have been logged out of the CMS.  If you would like to log in again, enter a username and password below.",
+				'default' => _t('LeftAndMain.PERMDEFAULT',"Please choose an authentication method and enter your credentials to access the CMS."),
+				'alreadyLoggedIn' => _t('LeftAndMain.PERMALREADY',"I'm sorry, but you can't access that part of the CMS.  If you want to log in as someone else, do so below"),
+				'logInAgain' => _t('LeftAndMain.PERMAGAIN',"You have been logged out of the CMS.  If you would like to log in again, enter a username and password below."),
 			);
 
 			Security::permissionFailure($this, $messageSet);
@@ -161,17 +161,17 @@ abstract class LeftAndMain extends Controller {
 		// array[2]: The controller class for this menu, used to check permisssions.  If blank, it's assumed that this is public, and always shown to
 		//           users who have the rights to access some other part of the admin area.
 		$menuSrc = array(
-			_t  ( 'LeftAndMain.HELLO',  "Site content",100,"Menu title") => array("content", "admin/", "CMSMain"),
+			_t('LeftAndMain.HELLO', "Site content",100,"Menu title") => array("content", "admin/", "CMSMain"),
 			_t('LeftAndMain.FILESIMAGES',"Files & Images",100) => array("files", "admin/assets/", "AssetAdmin"),
 			_t('LeftAndMain.NEWSLETTERS',"Newsletters") => array("newsletter", "admin/newsletter/", "NewsletterAdmin"),
-			"Reports" => array("report", "admin/reports/", "ReportAdmin"),
-			"Security" => array("security", "admin/security/", "SecurityAdmin"),
-			"Comments" => array("comments", "admin/comments/", "CommentAdmin"),
-			"Statistics" => array("statistics", "admin/statistics/", "StatisticsAdmin"),
-			"Help" => array("help", "http://userhelp.silverstripe.com"),
+			_t('LeftAndMain.REPORTS',"Reports",PR_HIGH,'Menu title') => array("report", "admin/reports/", "ReportAdmin"),
+			_t('LeftAndMain.SECURITY',"Security",PR_HIGH,'Menu title') => array("security", "admin/security/", "SecurityAdmin"),
+			_t('LeftAndMain.COMMENTS',"Comments",PR_HIGH,'Menu title') => array("comments", "admin/comments/", "CommentAdmin"),
+			_t('LeftAndMain.STATISTICS',"Statistics",PR_HIGH,'Menu title') => array("statistics", "admin/statistics/", "StatisticsAdmin"),
+			_t('LeftAndMain.HELP',"Help",PR_HIGH,'Menu title') => array("help", "http://userhelp.silverstripe.com"),
 		);
 
-		if(!$this->hasReports()) unset($menuSrc['Reports']);
+		if(!$this->hasReports()) unset($menuSrc[_t('LeftAndMain.REPORTS')]);
 
 		// Extra modules
 		if($removed = $this->stat('removed_menu_items')) {
@@ -297,7 +297,7 @@ abstract class LeftAndMain extends Controller {
 		// getChildrenAsUL is a flexible and complex way of traversing the tree
 		$siteTree = $obj->getChildrenAsUL("", '
 					"<li id=\"record-$child->ID\" class=\"" . $child->CMSTreeClasses($extraArg) . "\">" .
-					"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" " . (($child->canEdit() || $child->canAddChildren()) ? "" : "class=\"disabled\"") . " title=\"Page type: ".$child->class."\" >" .
+					"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" " . (($child->canEdit() || $child->canAddChildren()) ? "" : "class=\"disabled\"") . " title=\"' . _t('LeftAndMain.PAGETYPE','Page type: ') . '".$child->class."\" >" .
 					($child->TreeTitle()) .
 					"</a>"
 '
@@ -310,7 +310,7 @@ abstract class LeftAndMain extends Controller {
 			
 			// This lets us override the tree title with an extension
 			if($this->hasMethod('getCMSTreeTitle')) $treeTitle = $this->getCMSTreeTitle();
-			else $treeTitle = "Site Content";
+			else $treeTitle = _t('LeftAndMain.SITECONTENT',"Site Content",PR_HIGH,'Root node on left');
 			
 			$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-0\" class=\"Root nodelete\"><a href=\"$rootLink\">$treeTitle</a>"
 				. $siteTree . "</li></ul>";
@@ -388,7 +388,7 @@ JS;
 			if(is_a($record, "Page")) {
 				$record->Status = "Saved (update)";
 			}
-			FormResponse::status_message("Saved", "good");
+			FormResponse::status_message(_t('LeftAndMain.SAVEDUP',"Saved"), "good");
 			FormResponse::update_status($record->Status);
 			return FormResponse::respond();
 		}
@@ -449,7 +449,7 @@ JS;
 			}
 
 			FormResponse::add("$('sitetree').setNodeTitle(\"$record->ID\", \"$title\");");
-			$message = "Saved.";
+			$message = _t('LeftAndMain.SAVEDUP');
 
 
 			// Update the icon if the class has changed
@@ -468,14 +468,14 @@ JS;
 			}
 
 			if( ($record->class != 'VirtualPage') && $originalURLSegment != $record->URLSegment) {
-				$message .= "  Changed URL to '$record->URLSegment'";
+				$message .= sprintf(_t('LeftAndMain.CHANGEDURL',"  Changed URL to '%s'"),$record->URLSegment);
 				FormResponse::add("\$('Form_EditForm').elements.URLSegment.value = \"$record->URLSegment\";");
 				FormResponse::add("\$('Form_EditForm_StageURLSegment').value = \"{$record->URLSegment}\";");
 			}
 
 			// After reloading action
 			if($originalStatus != $record->Status) {
-				$message .= "  Status changed to '$record->Status'";
+				$message .= sprintf(_t('LeftAndMain.STATUSTO',"  Status changed to '%s'"),$record->Status);
 			}
 
 			$record->write();
@@ -573,11 +573,11 @@ JS;
 					}
 				}
 
-				FormResponse::status_message('saved', 'good');
+				FormResponse::status_message(_t('LeftAndMain.SAVED','saved'), 'good');
 				FormResponse::add($cleanupJS);
 
 			}else{
-				FormResponse::status_message("Please Save Page: This page could not be upated because it hasn't been saved yet.","good");
+				FormResponse::status_message(_t('LeftAndMain.PLEASESAVE',"Please Save Page: This page could not be upated because it hasn't been saved yet."),"good");
 			}
 
 
@@ -625,9 +625,9 @@ JS;
 					}
 				}\n" . $js
 			);
-			FormResponse::status_message('saved', 'good');
+			FormResponse::status_message(_t('LeftAndMain.SAVED'), 'good');
 		} else {
-			FormResponse::error("Error in request");
+			FormResponse::error(_t('LeftAndMain.REQUESTERROR',"Error in request"));
 		}
 
 		return FormResponse::respond();
