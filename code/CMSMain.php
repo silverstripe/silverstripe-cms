@@ -9,7 +9,7 @@
 class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionProvider {
 	static $tree_class = "SiteTree";
 	static $subitem_class = "Member";
-	
+
 	public function init() {
 		parent::init();
 
@@ -45,23 +45,23 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Requirements::css("survey/css/SurveyFilter.css");
 
 		Requirements::javascript("sapphire/javascript/SelectionGroup.js");
-		
+
 		// For Parents
 		Requirements::javascript("parents/javascript/NotifyMembers.js");
 
 		// For Tourism
 		Requirements::css("tourism/css/SurveyCMSMain.css");
 		Requirements::javascript("tourism/javascript/QuotasReport.js");
-		
+
 		// For Mikano
 		Requirements::javascript("sapphire/javascript/ReportField.js");
-		
+
 		// For Ptraining
 		Requirements::javascript("ptraining/javascript/BookingList.js");
-		
+
 		// For Forum
 		Requirements::javascript("forum/javascript/ForumAccess.js");
-		
+
 		// For Gallery
 		Requirements::javascript('gallery/javascript/GalleryPage_CMS.js');
 		
@@ -77,7 +77,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		if(Director::fileExists('mot')) {
 			Requirements::css("mot/css/WorkflowWidget.css");
 		}
-		
+
 		// We don't want this showing up in every ajax-response, it should always be present in a CMS-environment
 		if(!Director::is_ajax()) {
 			Requirements::javascriptTemplate("cms/javascript/tinymce.template.js", array(
@@ -86,32 +86,32 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			));
 		}
 	}
-	
+
 	//------------------------------------------------------------------------------------------//
 	// Main controllers
 
 	//------------------------------------------------------------------------------------------//
 	// Main UI components
-	
+
 	/**
 	 * Return the entire site tree as a nested set of ULs
 	 */
 	public function SiteTreeAsUL() {
 		$this->generateDataTreeHints();
 		$this->generateTreeStylingJS();
-		
+
 		return $this->getSiteTreeFor("SiteTree");
 	}
-	
+
 	public function generateDataTreeHints() {
 		$classes = ClassInfo::subclassesFor( $this->stat('tree_class') );
-		
+
 		$def['Root'] = array();
-		
+
 		foreach($classes as $class) {
 			$obj = singleton($class);
 			if($obj instanceof HiddenClass) continue;
-			
+
 			$allowedChildren = $obj->allowedChildren();
 			if($allowedChildren != "none")  $def[$class]['allowedChildren'] = $allowedChildren;
 			$def[$class]['defaultChild'] = $obj->defaultChild();
@@ -125,7 +125,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				$def['Root']['allowedChildren'][] = $class;
 			}
 		}
-		
+
 		// Put data hints into a script tag at the top
 		Requirements::customScript("siteTreeHints = " . $this->jsDeclaration($def) . ";");
 	}
@@ -138,11 +138,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			if($icon = $obj->stat('icon')) $iconInfo[$class] = $icon;
 		}
 		$iconInfo['BrokenLink'] = 'cms/images/treeicons/brokenlink';
-		
-		
+
+
 		$js = "var _TREE_ICONS = [];\n";
 
-		
+
 		foreach($iconInfo as $class => $icon) {
 			// SiteTree::$icon can be set to array($icon, $option)
 			// $option can be "file" or "folder" to force the icon to always be the file or the folder form
@@ -154,17 +154,17 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			if(!Director::fileExists($openFolderImage) || $option = "file") $openFolderImage = $fileImage;
 			$closedFolderImage = $icon . '-closedfolder.gif';
 			if(!Director::fileExists($closedFolderImage) || $option = "file") $closedFolderImage = $fileImage;
-			
+
 			$js .= <<<JS
 				_TREE_ICONS['$class'] = {
 					fileIcon: '$fileImage',
 					openFolderIcon: '$openFolderImage',
 					closedFolderIcon: '$closedFolderImage'
 				};
-				
+
 JS;
 		}
-		
+
 		Requirements::customScript($js);
 	}
 
@@ -180,7 +180,7 @@ JS;
 					break;
 				}
 			}
-			
+
 			if($object) {
 				foreach($array as $k => $v) {
 					$parts[] = "$k : " . $this->jsDeclaration($v);
@@ -194,9 +194,9 @@ JS;
 			return "'" . addslashes($array) . "'";
 		}
 	}
-	
+
 	/**
-	 * Populates an array of classes in the CMS which allows the 
+	 * Populates an array of classes in the CMS which allows the
 	 * user to change the page type.
 	 */
 	public function PageTypes() {
@@ -204,7 +204,7 @@ JS;
 		array_shift($classes);
 		$result = new DataObjectSet();
 		$kill_ancestors[] = null;
-		
+
 		// figure out if there are any classes we don't want to appear
 		foreach($classes as $class) {
 		    $instance = singleton($class);
@@ -223,19 +223,19 @@ JS;
 			    unset($classes[$mark]);
             }
         }
-            
+
 		foreach($classes as $class) {
 		    $instance = singleton($class);
             if($instance instanceof HiddenClass) continue;
-			
+
 			if( !$instance->canCreate() ) continue;
-			
+
 			// skip this type if it is restricted
 			if($instance->stat('need_permission') && !$this->can( singleton($class)->stat('need_permission') ) ) continue;
-			
+
 			$addAction = $instance->uninherited('add_action', true);
 			if(!$addAction) $addAction = "$class";
-			
+
 			$result->push(new ArrayData(array(
 				"ClassName" => $class,
 				"AddAction" => _t('CMSMain.CREATE','Create a ',PR_MEDIUM,'"Create a " message, followed by an action (e.g. "contact form")') .$addAction,
@@ -243,17 +243,17 @@ JS;
 		}
 		return $result;
 	}
-	
+
 	/**
 	 * Get a databsae record to be managed by the CMS
 	 */
 	public function getRecord($id) {
-		
+
 		$treeClass = $this->stat('tree_class');
-		
+
 		if($id && is_numeric($id)) {
 			$record = DataObject::get_one( $treeClass, "`$treeClass`.ID = $id");
-			
+
 			if(!$record) {
 				// $record = Versioned::get_one_by_stage($treeClass, "Live", "`$treeClass`.ID = $id");
 				Versioned::reading_stage('Live');
@@ -266,7 +266,7 @@ JS;
 				} 
 			}
 			return $record;
-			
+
 		} else if(substr($id,0,3) == 'new') {
 			return $this->getNewItem($id);
 		}
@@ -274,10 +274,10 @@ JS;
 
 	public function getEditForm($id) {
 		$record = $this->getRecord($id);
-	
+
 		if($record) {
 			if($record->DeletedFromStage) $record->Status = _t('CMSMain.REMOVEDFD',"Removed from the draft site");
-			
+
 			$fields = $record->getCMSFields($this);
 			if ($fields == null) {
 				user_error("getCMSFields returned null on a 'Page' object - it should return a FieldSet object. Perhaps you forgot to put a return statement at the end of your method?", E_USER_ERROR);
@@ -285,10 +285,10 @@ JS;
 			$fields->push($idField = new HiddenField("ID"));
 			$fields->push($liveURLField = new HiddenField("LiveURLSegment"));
 			$fields->push($stageURLField = new HiddenField("StageURLSegment"));
-			
+
 			/*if( substr($record->ID, 0, 3 ) == 'new' )*/
 			$fields->push(new HiddenField('Sort','', $record->Sort ));
-			
+
 			$idField->setValue($id);
 			
 			if($record->ID && is_numeric( $record->ID ) ) {
@@ -305,7 +305,7 @@ JS;
 				$actions = $record->getAllCMSActions();
 			} else {
 				$actions = new FieldSet();
-				
+
 				if($record->DeletedFromStage) {
 					if($record->can('CMSEdit')) {
 						$actions->push(new FormAction('revert',_t('CMSMain.RESTORE','Restore')));
@@ -316,13 +316,13 @@ JS;
 						$extraActions = $record->getCMSActions();
 						if($extraActions) foreach($extraActions as $action) $actions->push($action);
 					}
-					
+
 					if($record->canEdit()) {
 						$actions->push(new FormAction('save',_t('CMSMain.SAVE','Save')));
 					}
 				}
 			}
-					
+
 			$form = new Form($this, "EditForm", $fields, $actions);
 			$form->loadDataFrom($record);
 			$form->disableDefaultAction();
@@ -333,11 +333,11 @@ JS;
 		} else if($id) {
 			return new Form($this, "EditForm", new FieldSet(
 				new LabelField(_t('CMSMain.PAGENOTEXISTS',"This page doesn't exist"))), new FieldSet());
-				
+
 		}
 	}
-	
-	
+
+
 
 	//------------------------------------------------------------------------------------------//
 	// Data saving handlers
@@ -347,22 +347,22 @@ JS;
 		$className = $_REQUEST['PageType'] ? $_REQUEST['PageType'] : "Page";
 		$parent = $_REQUEST['ParentID'] ? $_REQUEST['ParentID'] : 0;
 		$suffix = $_REQUEST['Suffix'] ? "-" . $_REQUEST['Suffix'] : null;
-		
-		
+
+
 		if(is_numeric($parent)) $parentObj = DataObject::get_by_id("SiteTree", $parent);
 		if(!$parentObj || !$parentObj->ID) $parent = 0;
-        
+
 		$p = $this->getNewItem("new-$className-$parent".$suffix );
 		// $p->write();
-        
+
 		$p->CheckedPublicationDifferences = $p->AddedToStage = true;
 		return $this->returnItemToUser($p);
 	}
-	
+
 	public function getNewItem($id, $setID = true) {
 		list($dummy, $className, $parentID, $suffix) = explode('-',$id);
 		$newItem = new $className();
-    
+
 	    if( !$suffix ) {
 			$sessionTag = "NewItems." . $parentID . "." . $className;
     		if(Session::get($sessionTag)) {
@@ -371,27 +371,27 @@ JS;
 		    }
 		    else
 		    	Session::set($sessionTag, 1);
-		    	
+
 		    	$id = $id . $suffix;
 	    }
-        
+
 		$newItem->Title = _t('CMSMain.NEW',"New ",PR_MEDIUM,'"New " followed by a className').$className;
 		$newItem->URLSegment = "new-" . strtolower($className);
 		$newItem->ClassName = $className;
 		$newItem->ParentID = $parentID;
-		
+
 		if($newItem->fieldExists('Sort')) {
 			$newItem->Sort = DB::query("SELECT MAX(Sort)  FROM SiteTree WHERE ParentID = '" . Convert::raw2sql($parentID) . "'")->value() + 1;
 		}
-		
+
 		if( Member::currentUser() )
 			$newItem->OwnerID = Member::currentUser()->ID;
-		
+
 		if($setID) $newItem->ID = $id;
-		
+
 		return $newItem;
 	}
-	
+
 	public function Link($action = null) {
 		return "admin/$action";
 	}
@@ -405,14 +405,15 @@ JS;
 		// before deleting the records, get the descendants of this tree
 		if($record) {
 			$descendantIDs = $record->getDescendantIDList('SiteTree');
-			
+
 			// then delete them from the live site too
+			$descendantsRemoved = 0;
 			foreach( $descendantIDs as $descID )
 				if( $descendant = DataObject::get_by_id('SiteTree', $descID) ) {
 					$descendant->delete();
 					$descendantsRemoved++;
 				}
-			
+
 			// delete the record
 			$record->delete();
 		}
@@ -424,14 +425,14 @@ JS;
 		} else {
 			$descRemoved = '';
 		}
-		
+
 		$title = Convert::raw2js($record->Title);
 		FormResponse::add($this->deleteTreeNodeJS($record));
 		FormResponse::status_message("Deleted '$title'$descRemoved from live site", 'good');
 
 		return FormResponse::respond();
 	}
-	
+
 	/**
 	 * Actually perform the publication step
 	 */
@@ -442,10 +443,10 @@ JS;
 		//$record->PublishedByID = Member::currentUser()->ID;
 		$record->write();
 		$record->publish("Stage", "Live");
-		
+
 		Sitemap::Ping();
 
-		// Fix the sort order for this page's siblings		
+		// Fix the sort order for this page's siblings
 		DB::query("UPDATE SiteTree_Live
 			INNER JOIN SiteTree ON SiteTree_Live.ID = SiteTree.ID
 			SET SiteTree_Live.Sort = SiteTree.Sort
@@ -454,7 +455,7 @@ JS;
 
 	public function revert($urlParams, $form) {
 		$id = $_REQUEST['ID'];
-		
+
 		Versioned::reading_stage('Live');
 		$obj = DataObject::get_by_id("SiteTree", $id);
 		Versioned::reading_stage('Stage');
@@ -465,28 +466,28 @@ JS;
 		FormResponse::add("$('sitetree').setNodeTitle($id, '$title');");
 		FormResponse::status_message(sprintf(_t('CMSMain.RESTORED',"Restored '%s' successfully",PR_MEDIUM,'Param %s is a title'),$title),'good');
 
-		return FormResponse::respond();			
+		return FormResponse::respond();
 	}
-	
+
 	public function delete($urlParams, $form) {
 		$id = $_REQUEST['ID'];
 		$record = DataObject::get_one("SiteTree", "SiteTree.ID = $id");
 		$record->delete();
 		Director::redirectBack();
 	}
-	
+
 	//------------------------------------------------------------------------------------------//
 	// Workflow handlers
 
 	/**
 	 * Send this page on to another user for review
-	 */	
+	 */
 	function submit() {
-		
+
 		$page = DataObject::get_by_id("SiteTree", $_REQUEST['ID']);
 		$recipient = DataObject::get_by_id("Member", $_REQUEST['RecipientID']);
 		if(!$recipient) user_error("CMSMain::submit() Can't find recipient #$_REQUEST[RecipientID]", E_USER_ERROR);
-		
+
 		$comment = new WorkflowPageComment();
 		$comment->Comment = $_REQUEST['Message'];
 		$comment->PageID = $page->ID;
@@ -494,7 +495,7 @@ JS;
 		$comment->Recipient = $recipient;
 		$comment->Action = $_REQUEST['Status'];
 		$comment->write();
-		
+
 		$emailData = $page->customise(array(
 			"Message" => $_REQUEST['Message'],
 			"Recipient" => $recipient,
@@ -503,22 +504,22 @@ JS;
 			"EditLink" => "admin/show/$page->ID",
 			"StageLink" => "$page->URLSegment/?stage=Stage",
 		));
-		
+
 		$email = new Page_WorkflowSubmitEmail();
 		$email->populateTemplate($emailData);
 		$email->send();
-		
+
 		$page->AssignedToID = $recipient->ID;
 		$page->RequestedByID = Member::currentUserID();
 		$page->Status = $_REQUEST['Status'];
 		$page->writeWithoutVersion();
-		
+
 		FormResponse::status_message(sprintf(_t('CMSMain.SENTTO',"Sent to %s %s for approval.",PR_LOW,"First param is first name, and second is surname"),
 											 $recipient->FirstName, $recipient->Surname), "good");
-		
+
 		return FormResponse::respond();
 	}
-	
+
 	function getpagemembers() {
 		$relationName = $_REQUEST['SecurityLevel'];
 		$pageID = $this->urlParams['ID'];
@@ -532,17 +533,17 @@ JS;
 			}
 
 			if($members) {
-				
+
 				if( $page->RequestedByID )
 					$members->shift( $page->RequestedBy() );
-				
+
 				foreach($members as $editor) {
 					$options .= "<option value=\"$editor->ID\">$editor->FirstName $editor->Surname ($editor->Email)</option>";
 				}
 			} else {
 				$options = "<option>(no-one available)</option>";
 			}
-			
+
 			return <<<HTML
 			<label class="left">Send to</label>
 			<select name="RecipientID">$options</select>
@@ -551,7 +552,7 @@ HTML;
 			user_error("CMSMain::getpagemembers() Cannot find page #$pageID", E_USER_ERROR);
 		}
 	}
-	
+
 	function getMembersByGroup() {
 
 		$group = DataObject::get_by_id("Group", $this->urlParams['ID']);
@@ -564,11 +565,11 @@ HTML;
 		}
 
 	}
-	
+
 	function addmember() {
 		SecurityAdmin::addmember($this->stat('subitem_class'));
 	}
-	
+
 	function tasklist() {
 		$tasks = DataObject::get("Page", "AssignedToID = " . Member::currentUserID(), "Created DESC");
 		if($tasks) {
@@ -583,7 +584,7 @@ HTML;
 		}
 		return $data->renderWith("TaskList");
 	}
-	
+
 	function waitingon() {
 		$tasks = DataObject::get("Page", "RequestedByID = " . Member::currentUserID(), "Created DESC");
 		if($tasks) {
@@ -598,7 +599,7 @@ HTML;
 		}
 		return $data->renderWith("WaitingOn");
 	}
-	
+
 	function comments() {
 		if($this->urlParams['ID']) {
 			$comments = DataObject::get("WorkflowPageComment", "PageID = " . $this->urlParams['ID'], "Created DESC");
@@ -608,13 +609,13 @@ HTML;
 			return $data->renderWith("CommentList");
 		}
 	}
-	
+
 	/**
 	 * Return a dropdown for selecting reports
 	 */
 	function ReportSelector() {
 		$reports = ClassInfo::subclassesFor("SideReport");
-		
+
 		$options[""] = _t('CMSMain.CHOOSEREPORT',"(Choose a report)");
 		foreach($reports as $report) {
 			if($report != 'SideReport') $options[$report] = singleton($report)->title();
@@ -639,12 +640,12 @@ HTML;
 			$versions = $page->allVersions($_REQUEST['unpublished'] ? "" : "`SiteTree_versions`.WasPublished = 1");
 			return array(
 				'Versions' => $versions,
-			);		
+			);
 		} else {
 			return sprintf(_t('CMSMain.VERSIONSNOPAGE',"Can't find page #%d",PR_LOW),$pageID);
 		}
 	}
-	
+
 	/**
 	 * Roll a page back to a previous version
 	 */
@@ -657,7 +658,7 @@ HTML;
 			echo sprintf(_t('CMSMain.ROLLEDBACKPUB',"Rolled back to published version. New version number is #%d"),$record->Version);
 		}
 	}
-	
+
 	function unpublish() {
 		$SQL_id = Convert::raw2sql($_REQUEST['ID']);
 
@@ -670,11 +671,11 @@ HTML;
 		$page->write();
 
 		Sitemap::Ping();
-		
+
 		return $this->tellBrowserAboutPublicationChange($page, sprintf(_t('CMSMain.REMOVEDPAGE',"Removed '%s' from the published site"),$page->Title));
 	}
-		
-	
+
+
 	/**
 	 * Return a few pieces of information about a change to a page
 	 *  - Send the new status message
@@ -685,7 +686,7 @@ HTML;
 	function tellBrowserAboutPublicationChange($page, $statusMessage) {
 
 		$JS_title = Convert::raw2js($page->TreeTitle());
-		
+
 		$JS_stageURL = Convert::raw2js(DB::query("SELECT URLSegment FROM SiteTree WHERE ID = $page->ID")->value());
 		$JS_liveURL = Convert::raw2js(DB::query("SELECT URLSegment FROM SiteTree_Live WHERE ID = $page->ID")->value());
 		FormResponse::add($this->getActionUpdateJS($page));
@@ -695,10 +696,10 @@ HTML;
 		FormResponse::add("$('Form_EditForm').elements.StageURLSegment.value = '$JS_stageURL'");
 		FormResponse::add("$('Form_EditForm').elements.LiveURLSegment.value = '$JS_liveURL'");
 		FormResponse::add("$('Form_EditForm').notify('PagePublished', $('Form_EditForm').elements.ID.value);");
-		
+
 		return FormResponse::respond();
 	}
-	
+
 	function performRollback($id, $version) {
 		$record = DataObject::get_by_id($this->stat('tree_class'), $id);
 		$record->publish($version, "Stage", true);
@@ -708,7 +709,7 @@ HTML;
 		$record->writeWithoutVersion();
 		return $record;
 	}
-	
+
 	function getversion() {
 		$id = $this->urlParams['ID'];
 		$version = $this->urlParams['OtherID'];
@@ -728,17 +729,17 @@ HTML;
 				new FormAction("print", _t('CMSMain.PRINT',"Print")),
 				new FormAction("rollback", _t('CMSMain.ROLLBACK',"Roll back to this version"))
 			);
-			
+
 			// encode the message to appear in the body of the email
 			$archiveURL = Director::absoluteBaseURL() . $record->URLSegment . '?archiveDate=' . $record->obj('LastEdited')->URLDate();
 			$archiveEmailMessage = urlencode( $this->customise( array( 'ArchiveDate' => $record->obj('LastEdited'), 'ArchiveURL' => $archiveURL ) )->renderWith( 'ViewArchivedEmail' ) );
-			
+
 			$archiveEmailMessage = preg_replace( '/\+/', '%20', $archiveEmailMessage );
-			
+
 			$fields->push( new HiddenField( 'ArchiveEmailMessage', '', $archiveEmailMessage ) );
 			$fields->push( new HiddenField( 'ArchiveEmailSubject', '', preg_replace( '/\+/', '%20', urlencode( 'Archived version of ' . $record->Title ) ) ) );
 			$fields->push( new HiddenField( 'ArchiveURL', '', $archiveURL ) );
-			
+
 			$form = new Form($this, "EditForm", $fields, $actions);
 			$form->loadDataFrom($record);
 			$form->loadDataFrom(array(
@@ -746,23 +747,23 @@ HTML;
 				"Version" => $version,
 			));
 			$form->makeReadonly();
-			
+
 			$templateData = $this->customise(array(
 				"EditForm" => $form
 			));
-			
+
 			SSViewer::setOption('rewriteHashlinks', false);
 			$result = $templateData->renderWith($this->class . '_right');
 			$parts = split('</?form[^>]*>', $result);
 			return $parts[sizeof($parts)-2];
 		}
 	}
-	
+
 	function compareversions() {
 		$id = $this->urlParams['ID'];
 		$version1 = $_REQUEST['From'];
 		$version2 = $_REQUEST['To'];
-		
+
 		if( $version1 > $version2 ) {
 			$toVersion = $version1;
 			$fromVersion = $version2;
@@ -791,13 +792,13 @@ HTML;
 			foreach($form->Fields()->dataFields() as $field) {
 				$field->dontEscape = true;
 			}
-			
+
 			return $this->sendFormToBrowser(array(
 				"EditForm" => $form
 			));
 		}
 	}
-			
+
 	function sendFormToBrowser($templateData) {
 		if(Director::is_ajax()) {
 			SSViewer::setOption('rewriteHashlinks', false);
@@ -810,10 +811,10 @@ HTML;
 			);
 		}
 	}
-	
+
 	function dialog() {
 		Requirements::clear();
-		
+
 		$buttons = new DataObjectSet;
 		if($_REQUEST['Buttons']) foreach($_REQUEST['Buttons'] as $button) {
 			list($name, $title) = explode(',',$button,2);
@@ -822,14 +823,14 @@ HTML;
 				"Title" => $title,
 			)));
 		}
-		
+
 		return array(
 			"Message" => htmlentities($_REQUEST['Message']),
 			"Buttons" => $buttons,
 			"Modal" => $_REQUEST['Modal'] ? true : false,
 		);
 	}
-	
+
 	function canceldraftchangesdialog() {
 		Requirements::clear();
 		Requirements::css('cms/css/dialog.css');
@@ -837,17 +838,17 @@ HTML;
 		Requirements::javascript('jsparty/behaviour.js');
 		Requirements::javascript('jsparty/prototype_improvements.js');
 		Requirements::javascript('cms/javascript/dialog.js');
-		
+
 		$message = _t('CMSMain.COPYPUBTOSTAGE',"Do you really want to copy the published content to the stage site?");
 		$buttons = "<button name=\"OK\">" . _t('CMSMain.OK','OK') ."</button><button name=\"Cancel\">" . _t('CMSMain.CANCEL',"Cancel") . "</button>";
-		
+
 		return $this->customise( array(
 			'Message' => $message,
 			'Buttons' => $buttons,
 			'DialogType' => 'alert'
 		))->renderWith('Dialog');
 	}
-	
+
 	/**
 	 * Delete a number of items.
 	 * This code supports notification
@@ -855,38 +856,38 @@ HTML;
 	public function deleteitems() {
 		// This method can't be called without ajax.
 		if(!Director::is_ajax()) {
-			Director::redirectBack();			
+			Director::redirectBack();
 			return;
 		}
-		
+
 		$ids = split(' *, *', $_REQUEST['csvIDs']);
-		
+
 		$notifications = array();
-		
+
 		$idList = array();
-		
+
 		// make sure all the ids are numeric.
 		// Add all the children to the list of IDs if they are missing
 		foreach($ids as $id) {
 			$brokenPageList = '';
 			if(is_numeric($id)) {
 				$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-				
+
 				// if(!$record) Debug::message( "Can't find record #$id" );
-				
+
 				if($record) {
-					
+
 					// add all the children for this record if they are not already in the list
 					// this check is a little slower but will prevent circular dependencies
 					// (should they exist, which they probably shouldn't) from causing
 					// the function to not terminate
 					$children = $record->AllChildren();
-					
+
 					if( $children )
 						foreach( $children as $child )
 							if( array_search( $child->ID, $ids ) !== FALSE )
 								$ids[] = $child->ID;
-					
+
 					if($record->hasMethod('BackLinkTracking')) {
 						$brokenPages = $record->BackLinkTracking();
 						foreach($brokenPages as $brokenPage) {
@@ -896,17 +897,17 @@ HTML;
 							$brokenPage->writeWithoutVersion();
 						}
 					}
-					
+
 					$record->delete();
 					$record->destroy();
 
 					// DataObject::delete_by_id($this->stat('tree_class'), $id);
 					$record->CheckedPublicationDifferences = $record->DeletedFromStage = true;
-					
+
 					// check to see if the record exists on the live site, if it doesn't remove the tree node
 					// $_REQUEST['showqueries'] = 1 ;
 					$liveRecord = Versioned::get_one_by_stage( $this->stat('tree_class'), 'Live', "`{$this->stat('tree_class')}`.`ID`={$id}");
-					
+
 					if($liveRecord) {
 						$title = Convert::raw2js($record->TreeTitle());
 						FormResponse::add("$('sitetree').setNodeTitle($record->OldID, '$title');");
@@ -919,19 +920,19 @@ HTML;
 				}
 			}
 		}
-		
+
 		if($notifications) foreach($notifications as $memberID => $pages) {
 			if(class_exists('Page_BrokenLinkEmail')) {
 				$email = new Page_BrokenLinkEmail();
 				$email->populateTemplate(new ArrayData(array(
 					"Recipient" => DataObject::get_by_id("Member", $memberID),
-					"BrokenPages" => new DataObjectSet($pages),			
+					"BrokenPages" => new DataObjectSet($pages),
 				)));
 				$email->debug();
 				$email->send();
 			}
 		}
-		
+
 		if (sizeof($ids) > 1) $message = sprintf(_t('CMSMain.PAGEDEL', "%d page deleted "), sizeof($ids));
 		else $message = sprintf(_t('CMSMain.PAGESDEL', "%d pages deleted "), sizeof($ids));
 		if(isset($brokenPageList) && $brokenPageList != '') {
@@ -939,10 +940,10 @@ HTML;
 		}
 
 		FormResponse::status_message($message);
-		
+
 		return FormResponse::respond();
 	}
-	
+
 	function buildbrokenlinks() {
 		if($this->urlParams['ID']) {
 			$newPageSet[] = DataObject::get_by_id("Page", $this->urlParams['ID']);
@@ -951,7 +952,7 @@ HTML;
 			foreach($pages as $page) $newPageSet[] = $page;
 			$pages = null;
 		}
-	
+
 		$content = new HtmlEditorField('Content');
 		$download = new HtmlEditorField('Download');
 
@@ -968,7 +969,7 @@ HTML;
 			$download->saveInto($page);
 
 			echo "<li>$page->Title (link:$page->HasBrokenLink, file:$page->HasBrokenFile)";
-			
+
 			$page->writeWithoutVersion();
 			$page->destroy();
 			$newPageSet[$i] = null;
@@ -977,31 +978,31 @@ HTML;
 
 	function AddPageOptionsForm() {
 		$pageTypes = array();
-		
+
 		foreach( $this->PageTypes() as $arrayData ) {
 			$pageTypes[$arrayData->getField('ClassName')] = $arrayData->getField('AddAction');
 		}
-		
+
 		return new Form($this, "AddPageOptionsForm", new FieldSet(
-			new HiddenField("ParentID"),		
+			new HiddenField("ParentID"),
 			new DropdownField("PageType", "", $pageTypes)
 			// "Page to copy" => new TreeDropdownField("DuplicateSection", "", "SiteTree"),
-		), 
+		),
 		new FieldSet(
 			new FormAction("addpage", _t('CMSMain.GO',"Go"))
 		));
 	}
-	
+
 	/**
 	 * Helper function to get page count
 	 */
 	function getpagecount() {
 		ini_set('max_execution_time',300);
 		$excludePages = split(" *, *", $_GET['exclude']);
-		
+
 		$pages = DataObject::get("SiteTree", "ParentID = 0");
 		foreach($pages as $page) $pageArr[] = $page;
-		
+
 		while(list($i,$page) = each($pageArr)) {
 			if(!in_array($page->URLSegment, $excludePages)) {
 				if($children = $page->AllChildren()) {
@@ -1015,17 +1016,17 @@ HTML;
 				} else {
 					echo "<li style=\"color: #777\">" . $page->Breadcrumbs(null, true) . " - " . _t('CMSMain.NOCONTENT',"no content") . "</li>";
 				}
-				
+
 			}
 		}
-		
+
 		echo '<p>' . _t('CMSMain.TOTALPAGES',"Total pages: ") . "$count</p>";
 	}
-	
+
 	function publishall() {
-		ini_set("memory_limit","100M"); 
+		ini_set("memory_limit","100M");
 		ini_set('max_execution_time', 300);
-		
+
 		if(isset($_POST['confirm'])) {
 			$pages = DataObject::get("SiteTree");
 			$count = 0;
@@ -1036,16 +1037,16 @@ HTML;
 				$count++;
 				echo "<li>$count";
 			}
-			
+
 			echo sprintf(_t('CMSMain.PUBPAGES',"Done: Published %d pages"), $count);
-			
+
 		} else {
 			echo '<h1>' . _t('CMSMain.PUBALLFUN','"Publish All" functionality') . '</h1>
 				<p>' . _t('CMSMain.PUBALLFUN2', 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It\'s
 				intended to be used after there have been massive edits of the content, such as when the site was
 				first built.') . '</p>
 				<form method="post" action="publishall">
-					<input type="submit" name="confirm" value="' 
+					<input type="submit" name="confirm" value="'
 					. _t('CMSMain.PUBALLCONFIRM',"Please publish every page in the site, copying content stage to live",PR_LOW,'Confirmation button') .'" />
 				</form>';
 		}
@@ -1062,10 +1063,10 @@ HTML;
 			$restoredPage->writeWithoutVersion();
 			Debug::show($restoredPage);
 		}	else {
-			echo _t('CMSMain.VISITRESTORE',"visit restorepage/(ID)",PR_LOW,'restorepage/(ID) should not be translated (is an URL)');	
+			echo _t('CMSMain.VISITRESTORE',"visit restorepage/(ID)",PR_LOW,'restorepage/(ID) should not be translated (is an URL)');
 		}
 	}
-	
+
 	function duplicate() {
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
 			$page = DataObject::get_by_id("SiteTree", $id);
@@ -1082,16 +1083,16 @@ HTML;
 
 	/**
 	 * This is only used by parents inc.
-	 * TODO Work out a better way of handling control to the individual page objects. 
-	 */ 
+	 * TODO Work out a better way of handling control to the individual page objects.
+	 */
 	function sethottip($data,$form) {
 		$page = DataObject::get_by_id("SiteTree", $_REQUEST['ID']);
 		return $page->sethottip($data,$form);
 	}
 	/**
 	 * This is only used by parents inc.
-	 * TODO Work out a better way of handling control to the individual page objects. 
-	 */ 
+	 * TODO Work out a better way of handling control to the individual page objects.
+	 */
 	function notifyInvitation($data,$form) {
 		$page = DataObject::get_by_id("SiteTree", $_REQUEST['ID']);
 		return $page->notifyInvitation($data,$form);
@@ -1107,7 +1108,7 @@ HTML;
 	 */
 	function providePermissions() {
 		$classes = ClassInfo::subclassesFor('LeftAndMain');
-		
+
 		foreach($classes as $class) {
 			$perms["CMS_ACCESS_" . $class] = "Access to $class in CMS";
 		}
