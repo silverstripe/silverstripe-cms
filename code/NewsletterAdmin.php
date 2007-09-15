@@ -615,8 +615,8 @@ JS;
         $newsletterType->GroupID = $newGroup->ID;
         $newsletterType->write();
 
-        // return the contents of the site tree
-        return $newsletterType;
+        // BUGFIX: Return only the ID of the new newsletter type
+        return $newsletterType->ID;
     }
 
    private function newDraft( $parentID ) {
