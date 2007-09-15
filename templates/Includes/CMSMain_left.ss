@@ -2,8 +2,8 @@
 
 	<div id="treepanes">
 		<h2 id="heading_sitetree" class="selected">
-			<img id="sitetree_toggle_closed" src="cms/images/panels/toggle-closed.gif" alt="+" style="display:none;" title="<% _t('OPENBOX','click to open this box'); %>" />
-			<img id="sitetree_toggle_open" src="cms/images/panels/toggle-open.gif" alt="-" title="<% _t('CLOSEBOX','click to close box'); %>" />
+			<img id="sitetree_toggle_closed" src="sapphire/images/toggle-closed.gif" alt="+" style="display:none;" title="<% _t('OPENBOX','click to open this box'); %>" />
+			<img id="sitetree_toggle_open" src="sapphire/images/toggle-open.gif" alt="-" title="<% _t('CLOSEBOX','click to close box'); %>" />
 			<% _t('SITECONTENT TITLE','Site Content and Structure',PR_HIGH); %>
 		</h2>
 		<div id="sitetree_holder">
@@ -78,8 +78,8 @@
 
 		<% if EnterpriseCMS %>
 		<h2 id="heading_tasklist">
-			<img id="tasklist_toggle_closed" src="cms/images/panels/toggle-closed.gif" alt="+" title="<% _t('OPENBOX'); %>" />
-			<img id="tasklist_toggle_open" src="cms/images/panels/toggle-open.gif" alt="-" style="display:none;" title="<% _t('CLOSEBOX'); %>" /> 
+			<img id="tasklist_toggle_closed" src="sapphire/images/toggle-closed.gif" alt="+" title="<% _t('OPENBOX'); %>" />
+			<img id="tasklist_toggle_open" src="sapphire/images/toggle-open.gif" alt="-" style="display:none;" title="<% _t('CLOSEBOX'); %>" /> 
 			<% _t('TASKLIST','Tasklist'); %>
 		</h2>
 		<div class="listpane" id="tasklist_holder" style="display:none">	
@@ -87,8 +87,8 @@
 			</div>
 		</div>
 		<h2 id="heading_waitingon">
-			<img id="waitingon_toggle_closed" src="cms/images/panels/toggle-closed.gif" alt="+" title="<% _t('OPENBOX'); %>" />
-			<img id="waitingon_toggle_open" src="cms/images/panels/toggle-open.gif" alt="-" style="display:none;" title="<% _t('CLOSEBOX'); %>" /> 
+			<img id="waitingon_toggle_closed" src="sapphire/images/toggle-closed.gif" alt="+" title="<% _t('OPENBOX'); %>" />
+			<img id="waitingon_toggle_open" src="sapphire/images/toggle-open.gif" alt="-" style="display:none;" title="<% _t('CLOSEBOX'); %>" /> 
 			<% _t('WAITINGON','Waiting on'); %>
 		</h2>
 		<div class="listpane" id="waitingon_holder" style="display:none">	
@@ -97,8 +97,8 @@
 		</div>
 		<% end_if %>
 		<h2 id="heading_versions">
-			<img id="versions_toggle_closed" src="cms/images/panels/toggle-closed.gif" alt="+" title="<% _t('OPENBOX'); %>" />
-			<img id="versions_toggle_open" src="cms/images/panels/toggle-open.gif" alt="-" style="display:none;" title="<% _t('CLOSEBOX'); %>" /> 
+			<img id="versions_toggle_closed" src="sapphire/images/toggle-closed.gif" alt="+" title="<% _t('OPENBOX'); %>" />
+			<img id="versions_toggle_open" src="sapphire/images/toggle-open.gif" alt="-" style="display:none;" title="<% _t('CLOSEBOX'); %>" /> 
 			<% _t('PAGEVERSIONH','Page Version History'); %>
 		</h2>
 		<div class="listpane" id="versions_holder" style="display:none">
@@ -114,8 +114,8 @@
 		</div>
 		<% if EnterpriseCMS %>
 		<h2 id="heading_comments">
-			<img id="comments_toggle_closed" src="cms/images/panels/toggle-closed.gif" alt="+" title="<% _t('OPENBOX'); %>" />
-			<img id="comments_toggle_open" src="cms/images/panels/toggle-open.gif" alt="-" style="display:none;" title="<% _t('CLOSEBOX'); %>" /> 
+			<img id="comments_toggle_closed" src="sapphire/images/toggle-closed.gif" alt="+" title="<% _t('OPENBOX'); %>" />
+			<img id="comments_toggle_open" src="sapphire/images/toggle-open.gif" alt="-" style="display:none;" title="<% _t('CLOSEBOX'); %>" /> 
 			<% _t('COMMENTS','Comments'); %>
 		</h2>
 		<div class="listpane" id="comments_holder" style="display:none">	
@@ -124,8 +124,8 @@
 		</div>
 		<% end_if %>
 		<h2 id="heading_reports">
-			<img id="reports_toggle_closed" src="cms/images/panels/toggle-closed.gif" alt="+" title="<% _t('OPENBOX'); %>" />
-			<img id="reports_toggle_open" src="cms/images/panels/toggle-open.gif" alt="-" style="display:none;" title="<% _t('CLOSEBOX'); %>" /> 
+			<img id="reports_toggle_closed" src="sapphire/images/toggle-closed.gif" alt="+" title="<% _t('OPENBOX'); %>" />
+			<img id="reports_toggle_open" src="sapphire/images/toggle-open.gif" alt="-" style="display:none;" title="<% _t('CLOSEBOX'); %>" /> 
 			<% _t('SITEREPORTS','Site Reports'); %>
 		</h2>
 		<div class="listpane" id="reports_holder" style="display:none">
