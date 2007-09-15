@@ -44,16 +44,13 @@ var ImageToResize = {
 	   imageHeight= Element.getDimensions(this.image).height;
 	   if(imageWidth > windowWidth - 120 || imageHeight >  windowHeight - 120) {
 	       ratio = imageWidth / imageHeight;
-	       if(imageWidth > imageHeight) {
-                newWidth = windowWidth - 120;
-                newHeight = newWidth * (1/ratio);
-	       } else {
-                newHeight = windowHeight - 120;
-                newWidth = newHeight * ratio;	       
+	       while(imageWidth > windowWidth - 120 || imageHeight >  windowHeight - 120) {
+	           imageWidth--;
+	           imageHeight = imageWidth * (1/ratio);
 	       }
 	       this.reportSize(0,0);
            imageHistory.clear();
-	       imageTransformation.resize(newWidth,newHeight,ImageToResize.resizeOnFirstLoadCallBack.bind(this));
+	       imageTransformation.resize(imageWidth,imageHeight,ImageToResize.resizeOnFirstLoadCallBack.bind(this));
 	   } else {
 	       if(imageWidth != 0 && imageHeight != 0) Element.show($('image'));
 	   }	

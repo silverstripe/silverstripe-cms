@@ -16,8 +16,8 @@
 		*/ 
 		public function index() {
 			Requirements::clear();
-			Requirements::javascript("jsparty/prototype.js");
-			Requirements::javascript("jsparty/scriptaculous/scriptaculous.js");
+			Requirements::javascript('jsparty/prototype.js');
+			Requirements::javascript('jsparty/scriptaculous/scriptaculous.js');
             Requirements::javascript('cms/javascript/ImageEditor/Utils.js');
             Requirements::javascript('cms/javascript/ImageEditor/ImageHistory.js');
             Requirements::javascript('cms/javascript/ImageEditor/Image.js');
@@ -28,12 +28,12 @@
             Requirements::javascript('cms/javascript/ImageEditor/Crop.js');
             Requirements::javascript('cms/javascript/ImageEditor/Resize.js');
             Requirements::javascript('cms/javascript/ImageEditor/ImageBox.js');
-			Requirements::javascript("cms/javascript/ImageEditor/ImageEditor.js");
+			Requirements::javascript('cms/javascript/ImageEditor/ImageEditor.js');
 
-			Requirements::javascript("jsparty/loader.js");
-			Requirements::javascript("jsparty/behaviour.js");
-			Requirements::javascript("cms/javascript/LeftAndMain.js");
-			Requirements::css("cms/css/ImageEditor/ImageEditor.css");
+			Requirements::javascript('jsparty/loader.js');
+			Requirements::javascript('jsparty/behaviour.js');
+			Requirements::javascript('cms/javascript/LeftAndMain.js');
+			Requirements::css('cms/css/ImageEditor/ImageEditor.css');
 
 			if(!isset($this->requestParams['fileToEdit'])) $this->raiseError();
 			$fileWithPath = $this->requestParams['fileToEdit'];
@@ -98,7 +98,7 @@
 				if(strpos($originalFile,'?') !== false) $originalFile = substr($originalFile,0,strpos($originalFile,'?'));
 				if($this->checkFileExists($originalFile) && $this->checkFileExists($editedFile)) {
 					if($editedFile != $originalFile && copy($this->url2File($editedFile),$this->url2File($originalFile))) {
-						$image = DataObject::get_one('File',"Filename = '" . substr($this->url2File($originalFile),3) . "'");
+						$image = DataObject::get_one('File','Filename = \'' . substr($this->url2File($originalFile),3) . '\'');
 						$image->generateFormattedImage('AssetLibraryPreview');
 					} else {
 						$this->raiseError();
@@ -109,7 +109,7 @@
 			} else {
 				$this->raiseError();
 			}
-			return "parent.parent.parent.statusMessage('Image saved','good',false);";
+			return 'parent.parent.parent.statusMessage(\'Image saved\',\'good\',false);';
 		}
 		
 		/**
@@ -134,8 +134,7 @@
 		 * @return string JSON array explained in manipulate method comment
 		*/ 
 		
-		private function getImageInfoInJSON(GD $gd,$file)
-		{
+		private function getImageInfoInJSON(GD $gd,$file) {
 			return '{"fileName":"' . $file . '","width":' . $gd->getWidth() . ',"height":' . $gd->getHeight() . '}';
 		}
 		
@@ -211,10 +210,8 @@
 		 * 
 		*/ 
 		
-		private function raiseError($message = "") 
-		{
+		private function raiseError($message = "") {
 			echo "parent.parent.parent.statusMessage('Error: " . $message . "','bad',false);";
 			exit();	
 		}
 	}
-?>
