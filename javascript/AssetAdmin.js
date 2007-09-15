@@ -211,7 +211,7 @@ deletefolder = {
 				}
 			});
 
-			$('deletepage').getElementsByTagName('a')[0].onclick();
+			$('deletepage').getElementsByTagName('button')[0].onclick();
 			
 		} else {
 			alert("Please select at least 1 page.");
@@ -276,7 +276,7 @@ appendLoader(function () {
 	Observable.applyTo($('deletepage_options'));
 	if($('deletepage')) {
 		$('deletepage').onclick = deletefolder.button_onclick;
-		$('deletepage').getElementsByTagName('a')[0].onclick = function() { return false; };
+		$('deletepage').getElementsByTagName('button')[0].onclick = function() { return false; };
 		$('deletepage_options').onsubmit = deletefolder.form_submit;
 	}
 });
