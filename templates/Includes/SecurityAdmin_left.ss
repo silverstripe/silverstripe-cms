@@ -2,9 +2,9 @@
 <div id="treepanes">
 	<div id="sitetree_holder">
 		<ul id="TreeActions">
-			<li class="action" id="addgroup"><a href="admin/security/addgroup">Create</a></li>
-			<li class="action" id="deletegroup"><a href="admin/security/deletegroup">Delete</a></li>
-			<li class="action" id="sortitems"><a href="#">Reorganise</a></li>
+			<li class="action" id="addgroup"><button>Create</button></li>
+			<li class="action" id="deletegroup"><button>Delete...</button></li>
+			<li class="action" id="sortitems"><button>Reorder...</button></li>
 		</ul>
 		<div style="clear:both;"></div>
 		<form class="actionparams" id="addgroup_options" style="display: none" action="admin/security/addgroup">

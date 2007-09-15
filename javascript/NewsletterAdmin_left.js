@@ -148,7 +148,7 @@ deletedraft = {
 				}
 			});
 
-			$('deletedrafts').getElementsByTagName('a')[0].onclick();
+			$('deletedrafts').getElementsByTagName('button')[0].onclick();
 			
 		} else {
 			alert("Please select at least 1 page.");
@@ -250,7 +250,7 @@ AddForm.applyTo('#addtype');
 AddForm.prototype = {
   initialize: function () {
 		Observable.applyTo($(_HANDLER_FORMS[this.id]));
-		this.getElementsByTagName('a')[0].onclick = returnFalse;
+		this.getElementsByTagName('button')[0].onclick = returnFalse;
 		$(_HANDLER_FORMS[this.id]).onsubmit = this.form_submit;
 	},
     
@@ -374,7 +374,7 @@ Behaviour.addLoader(function () {
     
     if( deleteDrafts ) {
 	    deleteDrafts.onclick = deletedraft.button_onclick;
-	    deleteDrafts.getElementsByTagName('a')[0].onclick = function() {return false;};
+	    deleteDrafts.getElementsByTagName('button')[0].onclick = function() {return false;};
 	    $('deletedrafts_options').onsubmit = deletedraft.form_submit;
     }
 });

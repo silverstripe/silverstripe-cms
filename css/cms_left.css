@@ -10,18 +10,20 @@
 #TreeActions li.action {
 	float: left;
 	margin: 0;
-	padding: 0;
-	padding-right: 7px;
+	padding: 2px;
 	list-style-type: none;
 }
-#TreeActions li.action a {
-	padding: 0.3em;
-	display: block;
+#TreeActions li.action button {
+	margin-left: 0;
+	margin-right: 0;
+	padding: 0pt 0.1em;
+	overflow: visible;
+	width: auto;
 }
-#TreeActions li.action a:hover {
+#TreeActions li.selected  {
 	background-color: #CCC;
 }
-#TreeActions li.selected a {
+#TreeActions li.action:hover  {
 	background-color: #CCC;
 }
 

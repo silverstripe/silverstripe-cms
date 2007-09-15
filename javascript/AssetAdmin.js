@@ -91,7 +91,7 @@ addfolder.applyTo('#addpage');
 addfolder.prototype = {
 	initialize: function () {
 		Observable.applyTo($(this.id + '_options'));
-		this.getElementsByTagName('a')[0].onclick = returnFalse;
+		this.getElementsByTagName('button')[0].onclick = returnFalse;
 		$(this.id + '_options').onsubmit = this.form_submit;
 		
 	},

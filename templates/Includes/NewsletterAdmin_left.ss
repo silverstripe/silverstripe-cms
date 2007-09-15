@@ -27,8 +27,8 @@ ul.tree li.MailType span.Sent a {
 <div id="treepanes">
 	<div id="sitetree_holder">
 		<ul id="TreeActions">
-			<li class="action" id="addtype"><a href="admin/newsletter/addtype">Create</a></li>
-			<li class="action" id="deletedrafts"><a href="admin/newsletter/deletedrafts">Delete</a></li>
+			<li class="action" id="addtype"><button>Create...</button></li>
+			<li class="action" id="deletedrafts"><button>Delete...</button></li>
 		</ul>
 		<div style="clear:both;"></div>
 		<form class="actionparams" id="addtype_options" style="display: none" action="admin/newsletter/addtype">

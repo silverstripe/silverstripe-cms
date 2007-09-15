@@ -9,9 +9,9 @@
 		<div id="sitetree_holder">
 
 			<ul id="TreeActions">
-				<li class="action" id="addpage"><a href="admin/addpage">Create</a></li>
-				<li class="action" id="deletepage"><a href="admin/deletepage">Delete</a></li>
-				<li class="action" id="sortitems"><a href="#">Reorganise</a></li>
+				<li class="action" id="addpage"><button>Create...</button></li>
+				<li class="action" id="deletepage"><button>Delete...</button></li>
+				<li class="action" id="sortitems"><button>Reorder...</button></li>
 				<!-- <li class="action" id="duplicate"><a href="#">Duplicate</a></li>
 				Sam: this should be put into the Create area, I think, so we don't stuff up the layout -->
 			</ul>

@@ -378,7 +378,7 @@ SiteTreeNode.prototype = {
  */
 treeactions = {
 	toggleSelection : function(li) {
-		li = (li.tagName.toLowerCase() == 'a') ? li.parentNode : li;
+		li = (li.tagName.toLowerCase() == 'button') ? li.parentNode : li;
 
 		// Deselect
 		if(li.selected) this.closeSelection(li, true);
@@ -388,7 +388,7 @@ treeactions = {
 		return li.selected;
 	},
 	closeSelection : function(li, nested) {
-		li = (li.tagName.toLowerCase() == 'a') ? li.parentNode : li;
+		li = (li.tagName.toLowerCase() == 'button') ? li.parentNode : li;
 
 		Element.hide(_HANDLER_FORMS[li.id]);
 		removeClass(li, 'selected');
@@ -399,7 +399,7 @@ treeactions = {
 		if(typeof nested == 'undefined') fixHeight_left();
 	},
 	openSelection: function(li, nested) {
-		li = (li.tagName.toLowerCase() == 'a') ? li.parentNode : li;
+		li = (li.tagName.toLowerCase() == 'button') ? li.parentNode : li;
 		
 		addClass(li, 'selected');
 		Element.show(_HANDLER_FORMS[li.id]);
@@ -432,7 +432,7 @@ ReorganiseAction = Class.create();
 ReorganiseAction.applyTo('#sortitems');
 ReorganiseAction.prototype = {
 	initialize: function () {
-		this.getElementsByTagName('a')[0].onclick = returnFalse;
+		this.getElementsByTagName('button')[0].onclick = returnFalse;
 		Observable.applyTo($(_HANDLER_FORMS[this.id]));
 	},
 	

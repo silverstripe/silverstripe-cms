@@ -11,9 +11,9 @@
 	<div id="treepanes">
 		<div id="sitetree_holder">
 			<ul id="TreeActions">
-				<li class="action" id="addpage"><a href="admin/addpage">Create</a></li>
-				<li class="action" id="deletepage"><a href="admin/deletepage">Delete</a></li>
-				<li class="action" id="sortitems"><a href="#">Reorganise</a></li>
+				<li class="action" id="addpage"><button>Create</button></li>
+				<li class="action" id="deletepage"><button>Delete...</button></li>
+				<li class="action" id="sortitems"><button>Reorder...</button></li>
 			</ul>
 			<div style="clear:both;"></div>
 			<form class="actionparams" id="addpage_options" style="display: none" action="admin/assets/addfolder">

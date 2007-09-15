@@ -119,7 +119,7 @@ deletegroup = {
 				}
 			});
 
-			$('deletegroup').getElementsByTagName('a')[0].onclick();
+			$('deletegroup').getElementsByTagName('button')[0].onclick();
 			
 		} else {
 			alert("Please select at least 1 page.");
@@ -137,12 +137,12 @@ Behaviour.addLoader(function () {
 	// Set up add page
 	Observable.applyTo($('addgroup_options'));
 	$('addgroup').onclick = addgroup.button_onclick;
-	$('addgroup').getElementsByTagName('a')[0].onclick = function() {return false;};
+	$('addgroup').getElementsByTagName('button')[0].onclick = function() {return false;};
 	$('addgroup_options').onsubmit = addgroup.form_submit;
 
 	// Set up delete page
 	Observable.applyTo($('deletegroup_options'));
 	$('deletegroup').onclick = deletegroup.button_onclick;
-	$('deletegroup').getElementsByTagName('a')[0].onclick = function() {return false;};
+	$('deletegroup').getElementsByTagName('button')[0].onclick = function() {return false;};
 	$('deletegroup_options').onsubmit = deletegroup.form_submit;
 });

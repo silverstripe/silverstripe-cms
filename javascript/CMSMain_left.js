@@ -14,7 +14,7 @@ addpage.applyTo('#addpage');
 addpage.prototype = {
 	initialize: function () {
 		Observable.applyTo($(_HANDLER_FORMS[this.id]));
-		this.getElementsByTagName('a')[0].onclick = returnFalse;
+		this.getElementsByTagName('button')[0].onclick = returnFalse;
 		$(_HANDLER_FORMS[this.id]).onsubmit = this.form_submit;
 	},
 	
@@ -205,7 +205,7 @@ deletepage = {
 					}
 				});
 	
-				$('deletepage').getElementsByTagName('a')[0].onclick();
+				$('deletepage').getElementsByTagName('button')[0].onclick();
 			}
 			
 		} else {
@@ -232,7 +232,7 @@ appendLoader(function () {
     
 	Observable.applyTo($(_HANDLER_FORMS.deletepage));
 	$('deletepage').onclick = deletepage.button_onclick;
-	$('deletepage').getElementsByTagName('a')[0].onclick = function() { return false; };
+	$('deletepage').getElementsByTagName('button')[0].onclick = function() { return false; };
 	$(_HANDLER_FORMS.deletepage).onsubmit = deletepage.form_submit;
 });
 
