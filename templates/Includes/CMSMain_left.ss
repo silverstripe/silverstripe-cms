@@ -4,7 +4,7 @@
 		<h2 id="heading_sitetree" class="selected">
 			<img id="sitetree_toggle_closed" src="cms/images/panels/toggle-closed.gif" alt="+" style="display:none;" title="click to open this box" />
 			<img id="sitetree_toggle_open" src="cms/images/panels/toggle-open.gif" alt="-" title="click to close box" />
-			Site Content
+			Site Content and Structure
 		</h2>
 		<div id="sitetree_holder">
 
