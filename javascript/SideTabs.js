@@ -308,13 +308,14 @@ VersionAction = Class.create();
 VersionAction.prototype = {
 	initialize: function() {
 		this.holder = $('versions_holder');
-		this.selector = this.getElementsByTagName('select')[0];
-		this.selector.holder = this;
-		this.selector.onchange = function() { this.holder.changed(this.value,this); return false; }
 
 		this.showallCheckbox = $('versions_showall');
 		this.showallCheckbox.holder = this;
 		this.showallCheckbox.onclick = this.showall_change;
+
+		this.comparemodeCheckbox = $('versions_comparemode');
+		this.comparemodeCheckbox.holder = this;
+		this.comparemodeCheckbox.onclick = function() { this.holder.comparemode_change(this.checked); }
 	},
 	
 	showall_change: function() { 
@@ -322,26 +323,26 @@ VersionAction.prototype = {
 	},
 	
 	destroy: function() {
-		if(this.selector) {
-			this.selector.holder = null;		
-			this.selector.onchange = null;
+		if(this.comparemodeCheckbox) {
+			this.comparemodeCheckbox.holder = null;		
+			this.comparemodeCheckbox.onclick = null;
 		}
 		if(this.showallCheckbox) {
 			this.showallCheckbox.holder = null;		
 			this.showallCheckbox.onchange = null;
 		}
 		this.holder = null;
-		this.selector = null;		
+		this.comparemodeCheckbox = null;		
 	},
 	
 	/**
-	 * Handler function whenever an action is clicked
+	 * Handler function when comparemode checkbox is clicked
 	 */
-	changed: function(url, selector) {
-		switch(url) {
-			case 'view': return this.view(); 
-			case 'compare': return this.compare();
-			default: errorMessage("VersionAction.changed: I don't know about action '" + url + "'");
+	comparemode_change: function(isChecked) {
+		if (true == isChecked) {
+			return this.compare();
+		} else {
+			return this.view(); 
 		}
 	},
 	

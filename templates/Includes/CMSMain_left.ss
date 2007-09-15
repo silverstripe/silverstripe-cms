@@ -103,10 +103,7 @@
 		</h2>
 		<div class="listpane" id="versions_holder" style="display:none">
 			<p class="pane_actions" id="versions_actions">
-				<select>
-					<option value="view" selected="selected">View (click to see)</option>
-					<option value="compare" >Compare (click 2 to see)</option>
-				</select>
+				<input type="checkbox" id="versions_comparemode" /> Compare mode (click 2 below)
 				<br />
 
 				<input type="checkbox" id="versions_showall" /> Show unpublished versions
