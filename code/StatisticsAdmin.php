@@ -1,6 +1,9 @@
 <?php
 
 class StatisticsAdmin extends LeftAndMain {
+	static $tree_class = "SiteTree";
+	static $subitem_class = "Member";
+
 	/**
 	 * Initialisation method called before accessing any functionality that BulkLoaderAdmin has to offer
 	 */
@@ -26,6 +29,34 @@ class StatisticsAdmin extends LeftAndMain {
 				new FormAction('go')
 			)
 		);
+	}
+	
+	function getSiteTreeFor($className) {
+		$obj = singleton($className);
+		$obj->markPartialTree();
+		if($p = $this->currentPage()) $obj->markToExpose($p);
+
+		// getChildrenAsUL is a flexible and complex way of traversing the tree
+		$siteTree = $obj->getChildrenAsUL("", '
+					"<li id=\"record-$child->ID\" class=\"" . $child->CMSTreeClasses($extraArg) . "\">" .
+					"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" " . (($child->canEdit() || $child->canAddChildren()) ? "" : "class=\"disabled\"") . " title=\"Page type: ".$child->class."\" >" .
+					($child->TreeTitle()) .
+					"</a>"
+'
+					,$this, true);
+
+		// Wrap the root if needs be.
+	
+		$rootLink = $this->Link() . '0';
+		$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-0\" class=\"Root nodelete\"><a href=\"$rootLink\">Pages</a>"
+			. $siteTree . "</li></ul>";
+		
+
+		return $siteTree;
+	}
+	
+	public function SiteTreeAsUL() {
+		return $this->getSiteTreeFor("SiteTree");
 	}
 	
 	public function versions() {
