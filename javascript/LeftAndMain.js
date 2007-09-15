@@ -239,7 +239,7 @@ function prepareAjaxActions(actions, formName, tabName) {
 			}
 			return false;
 		}
-		behaveAs(button, StatusTitle);
+		// behaveAs(button, StatusTitle);
 	}
 }
 
@@ -455,6 +455,9 @@ function ajaxErrorHandler(response) {
  * Applying StatusTitle to an element will mean that the title attribute is shown as a statusmessage
  * upon hover
  */
+/* Commenting out because on IE6, IE7, and Safari 3, the statusmessage becomes
+ *  'null' on 2nd hover and because there is not room for long titles when
+ *  action buttons are on the same line.
 StatusTitle = Class.create();
 StatusTitle.prototype = {
 	onmouseover : function() {
@@ -472,6 +475,7 @@ StatusTitle.prototype = {
 		}
 	}
 }
+*/
 
 /**
  * BaseForm is the base form class used in the CMS.
