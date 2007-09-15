@@ -1,0 +1,44 @@
+table.statstable {
+    border-collapse: collapse;
+    width: 90%;
+    margin: 20px 0 20px 0;
+    font-size: 12px;
+
+}
+
+.statstable td,.statstable th {
+    padding: 0.2em;
+    border: 1px solid #CCC;
+
+}
+
+.statstable th {
+    background: #CAE8EA url(../images/statistics/bg_header.jpg) no-repeat;
+
+}
+
+.statstable td.id {
+    background: #CAE8EA url(../images/statistics/bg_header.jpg) no-repeat;
+
+}
+
+.statstable th.nobg {
+	background: #fff;
+	border-top: none;
+	border-left: none;
+}
+
+.statstable thead,.statstable tfoot {
+    background-color: #DDD;
+
+}
+
+.statstable tr.rowodd {
+    background-color: #fff;
+
+}
+
+.statstable tr.roweven {
+    background-color: #F0FBFD;
+
+}
