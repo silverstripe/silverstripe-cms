@@ -228,9 +228,13 @@ class NewsletterAdmin extends LeftAndMain {
 
 		if(isset($mailType)) {
 			$fields = new FieldSet(
-				new TextField("Title", "Newsletter Type"),
-				new TextField("FromEmail", "From email address"),
-				$templates = new TemplateList("Template","Template", $mailType->Template, self::template_path())
+				new TabSet("Root",
+					new Tab("Newsletter Settings",
+						new TextField("Title", "Newsletter Type"),
+						new TextField("FromEmail", "From email address"),
+						$templates = new TemplateList("Template","Template", $mailType->Template, self::template_path())
+					)
+				)
 			);
 
 			$templates->setController($this);
