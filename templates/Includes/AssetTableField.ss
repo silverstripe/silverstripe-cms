@@ -14,7 +14,7 @@
 		<tbody>
 			<% control Items %>
 				<tr id="record-$Parent.Name-$ID">
-					<% if Markable %><td width="36" class="markingcheckbox"><div class="dragfile" id="drag-$Parent.Name-$ID"><img id="drag-img-$Parent.Name-$ID" lt="Drag to folder on left to move file" title="Drag to folder on left to move file" src="sapphire/images/drag.gif" /></div> $MarkingCheckbox</td><% end_if %>
+					<% if Markable %><td width="36" class="markingcheckbox"><div class="dragfile" id="drag-$Parent.Name-$ID"><img id="drag-img-$Parent.Name-$ID" alt="Drag" title="Drag to folder on left to move file" src="sapphire/images/drag.gif" /></div> $MarkingCheckbox</td><% end_if %>
 					<% control Fields %>
 					<td>$Value</td>
 					<% end_control %>
