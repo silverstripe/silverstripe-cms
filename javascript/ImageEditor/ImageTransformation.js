@@ -10,7 +10,7 @@ var ImageTransformation = {
 		this.close = ImageTransformation.close.bind(this);
 	},
 		
-	resize: function(width,height,callback) {
+	resize: function(width,height,callback,imageAlreadyChangedSize) {
 		if(imageHistory.modifiedOriginalImage) {
 			fileToResize = $('image').src;
 		} else {
@@ -31,7 +31,11 @@ var ImageTransformation = {
 				if(callback != null) callback();
 			}
 		 };
-		 imageBox.showIndicator();
+		 if(imageAlreadyChangedSize == false) {
+			 imageBox.showIndicator($('mainContainer'));
+	     } else {
+		     imageBox.showIndicator();
+		 }
 		 new Ajax.Request('admin/ImageEditor/manipulate', options);
 	},
 	
@@ -49,7 +53,6 @@ var ImageTransformation = {
 				$('imageContainer').style.width = response.width + 'px';
 				$('imageContainer').style.height = response.height + 'px';
 				imageHistory.add('rotate',$('image').src);	
-				resize.imageContainerResize.placeClickBox();
 				if(callback != null) callback();			
 			}			
 		 };
@@ -71,7 +74,6 @@ var ImageTransformation = {
 				$('imageContainer').style.width = response.width + 'px';
 				$('imageContainer').style.height = response.height + 'px';
 				imageHistory.add('crop',$('image').src);	
-				crop.setVisible(false);
 				if(callback != null) callback();    
 			}
 		 };

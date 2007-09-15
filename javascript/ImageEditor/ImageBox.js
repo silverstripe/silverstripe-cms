@@ -14,7 +14,7 @@ var ImageBox = {
 		Element.hide(this.imageContainer);
 		this.indicator = Positioning.addBehaviour($('loadingIndicatorContainer'));
         this.indicatorImage = Positioning.addBehaviour($('loadingIndicator'));
-        this.showIndicator(Positioning.addBehaviour($('mainContainer')));
+		Positioning.addBehaviour($('mainContainer'));
 	},
 		
 	showIndicator: function(container) {
@@ -47,7 +47,6 @@ var ImageBox = {
 	center: function() {
 		this.imageContainer.style.left = this.imageContainer.getParentWidth()/2 - this.imageContainer.getWidth()/2 + 'px';
 		this.imageContainer.style.top = this.imageContainer.getParentHeight()/2 - this.imageContainer.getHeight()/2 + 'px';
-		Element.show(this.imageContainer);
 	},
 	
 	checkOutOfDrawingArea: function(width,height) {

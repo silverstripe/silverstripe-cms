@@ -13,7 +13,6 @@ Resizeable = {
 		this.element = element;
 		this.createClickBoxes();
 		this.setListeners();
-		this.placeClickBoxOnImageLoad();
 		this.originalHeight = 0;
 		this.originalWidth = 0;
 		this.isEnabled = true;
@@ -126,14 +125,13 @@ Resizeable = {
 		if(height == -1000) {			
 			height = this.originalHeight;
 		}	
-		
+		if(!crop.isVisible) {		
+			$('image').style.width = width + 'px';
+			$('image').style.height =  height + 'px';
+		}
 		this.element.style.width = width + "px";	
 		this.element.style.height = height + "px";
 		return true;		
-	},
-	
-	placeClickBoxOnImageLoad: function() {
-		Event.observe('image','load',this.placeClickBox);
 	},
 	
 	placeClickBox: function(event) {
@@ -174,9 +172,7 @@ Resizeable = {
 		this.upperMiddleClickBox.style.top = upperMiddle.y + 'px';
 		this.lowerMiddleClickBox.style.left = lowerMiddle.x + 'px';
 		this.lowerMiddleClickBox.style.top = lowerMiddle.y + 'px';	
-		if(crop != null) {
-			crop.placeGreyBox();
-		}
+		
 	},
 	
 	createClickBoxes: function() {
@@ -211,7 +207,6 @@ Resizeable = {
 		this.resizeStart = Resizeable.resizeStart.bind(this);	
 		this.onResize = Resizeable.onResize.bind(this);
 		this.resize = Resizeable.resize.bind(this);
-		this.placeClickBoxOnImageLoad = Resizeable.placeClickBoxOnImageLoad.bind(this);
 		this.createClickBoxes = Resizeable.createClickBoxes.bind(this);
 		this.createElement = Resizeable.createElement.bind(this);
 		this.addListener = Resizeable.addListener.bind(this);
@@ -273,7 +268,6 @@ Resizeable = {
 				this.upperMiddleClickBox,
 				this.lowerMiddleClickBox);
 			this.addDraging();
-			this.placeClickBox();
 		} else {
 			Element.hide(
 				this.leftUpperClickBox,

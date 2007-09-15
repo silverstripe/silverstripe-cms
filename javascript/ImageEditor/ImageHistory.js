@@ -13,24 +13,32 @@ ImageHistory = {
 		this.addLinsteners = ImageHistory.addLinsteners.bind(this);
 		this.addLinsteners();	
 		this.operationMade = ImageHistory.operationMade.bind(this);		
-		this.onFakeImageLoad = ImageHistory.onFakeImageLoad.bind(this);
+		this.isInHistory = ImageHistory.isInHistory.bind(this);
+	
 		this.enable = ImageHistory.enable.bind(this);
 		this.disable = ImageHistory.disable.bind(this);
 		this.clear = ImageHistory.clear.bind(this);
+		this.fakeImage = Positioning.addBehaviour($('fakeImg'));
+		this.image = Positioning.addBehaviour($('image'));
+		this.size = new Array();
 	},
 		
 	undo: function() {
 		if(this.historyPointer >= 1) {
-			image = $('image');
-			fakeImage = $('fakeImg');
 			operation = this.history[this.historyPointer].operation;
 			if(operation == 'rotate' || operation == 'crop') {
 				if(this.operationMade(this.historyPointer-1,'rotate') || this.operationMade(this.historyPointer-1,'crop')) 
 					this.modifiedOriginalImage = true; else this.modifiedOriginalImage = false;
 			}
-			image.src = this.history[this.historyPointer-1].fileUrl;
-			fakeImage.src = this.history[this.historyPointer-1].fileUrl; 
-			Event.observe('fakeImg','load',this.onFakeImageLoad);
+			this.image.src = this.history[this.historyPointer-1].fileUrl;
+			imageBox.checkOutOfDrawingArea(this.size[this.historyPointer-1].width,this.size[this.historyPointer-1].height);
+			this.image.style.width = this.size[this.historyPointer-1].width + 'px';
+			this.image.style.height = this.size[this.historyPointer-1].height + 'px';
+			$('imageContainer').style.width = this.size[this.historyPointer-1].width + 'px';
+			$('imageContainer').style.height = this.size[this.historyPointer-1].height + 'px';
+			resize.imageContainerResize.originalWidth = this.size[this.historyPointer-1].width;
+			resize.imageContainerResize.originalHeight = this.size[this.historyPointer-1].height;
+			imageToResize.onImageLoad();
 			this.historyPointer--;
 		} else {
 			alert("No more undo");
@@ -41,9 +49,15 @@ ImageHistory = {
 		if(this.historyPointer < this.history.length-1) {
 			operation = this.history[this.historyPointer+1].operation;
 			if(operation == 'rotate' || operation == 'crop') this.modifiedOriginalImage = true;
-			$('image').src = this.history[this.historyPointer+1].fileUrl;
-			$('fakeImg').src = $('image').src; 
-			Event.observe('fakeImg','load',this.onFakeImageLoad);	
+			this.image.src = this.history[this.historyPointer+1].fileUrl;
+			imageBox.checkOutOfDrawingArea(this.size[this.historyPointer+1].width,this.size[this.historyPointer+1].height);
+			this.image.style.width = this.size[this.historyPointer+1].width + 'px';
+			this.image.style.height = this.size[this.historyPointer+1].height + 'px';
+			$('imageContainer').style.width = this.size[this.historyPointer+1].width + 'px';
+			$('imageContainer').style.height = this.size[this.historyPointer+1].height + 'px';
+			resize.imageContainerResize.originalWidth = this.size[this.historyPointer+1].width;			
+			resize.imageContainerResize.originalHeight = this.size[this.historyPointer+1].height;				
+			imageToResize.onImageLoad();
 			this.historyPointer++;
 		} else {
 			alert("No more redo");
@@ -51,9 +65,15 @@ ImageHistory = {
 	},
 	
 	add: function(operation,url) {
-		this.historyPointer++;
-		this.history[this.historyPointer] = {'operation': operation,'fileUrl' : url};
-		if(operation == 'rotate' || operation == 'crop') this.modifiedOriginalImage = true;
+		var imageWidth =  isNaN(parseInt($('image').style.width)) ? Element.getDimensions($('image')).width : parseInt($('image').style.width);//IE hack
+		var imageHeight = isNaN(parseInt($('image').style.height)) ? Element.getDimensions($('image')).height : parseInt($('image').style.height);//IE hack
+		//code above should be moved to Positioning.addBehaviour
+		if(!this.isInHistory(operation,url)) {
+			this.historyPointer++;
+			this.size[this.historyPointer] = {'width': imageWidth,'height': imageHeight};
+			this.history[this.historyPointer] = {'operation': operation,'fileUrl' : url};
+			if(operation == 'rotate' || operation == 'crop') this.modifiedOriginalImage = true;
+		}
 	},
 	
 	addLinsteners: function() {
@@ -70,18 +90,6 @@ ImageHistory = {
 		return false;
 	},
 	
-	onFakeImageLoad: function() {
-		imageBox.checkOutOfDrawingArea(fakeImage.width,fakeImage.height);
-		$('image').style.width = fakeImage.width + 'px';
-		$('image').style.height = fakeImage.height + 'px';
-		$('imageContainer').style.width = fakeImage.width + 'px';
-		$('imageContainer').style.height = fakeImage.height + 'px';
-		resize.imageContainerResize.originalWidth = fakeImage.width;			
-		resize.imageContainerResize.originalHeight = fakeImage.height;				
-		resize.imageContainerResize.placeClickBox();
-		imageToResize.onImageLoad();
-	},
-	
 	enable: function() {
 		this.addLinsteners();
 	},
@@ -94,5 +102,16 @@ ImageHistory = {
 	clear: function() {
 	   this.history = new Array();
        this.historyPointer = -1;
+	   this.size = new Array();
+	},
+	
+	isInHistory: function(operation,url) {
+		if(operation == 'initialize' && this.historyPointer != -1) return true;
+		for(var k=0;k<this.history.length;k++) {
+			if(this.history[k].operation == operation && this.history[k].fileUrl == url) {
+				return true;	
+			}
+		}
+		return false;	
 	}
 };

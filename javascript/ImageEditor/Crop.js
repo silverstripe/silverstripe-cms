@@ -22,6 +22,7 @@ var Crop = {
 		this.setVisible = Crop.setVisible.bind(this);
 		this.enable = Crop.enable.bind(this);
 		this.disable = Crop.disable.bind(this);
+		this.onImageLoadCallback = Crop.onImageLoadCallback.bind(this);
 		Event.observe('image','load',this.centerCropBox);
 		options = {
 			resizeStop: Crop.resizeStop.bind(this),
@@ -32,14 +33,17 @@ var Crop = {
 		this.resizeCropBox = new Resizeable.initialize(this.cropBox,options);
 		Event.observe(this.cropBox,'dblclick',this.onCropStop.bind(this));
 		this.setListeners();
-		this.setVisible(false);
+		this.isVisible = false;
+		this.setVisible(this.isVisible);
 		this.isEnabled = true;
 	},
 	
 	resizeStop: function(event) {
-		EventStack.clearStack();
-		this.resizeCropBox.originalHeight = this.cropBox.getHeight();
-		this.resizeCropBox.originalWidth = this.cropBox.getWidth();
+		if(this.isVisible) {
+			EventStack.clearStack();
+			this.resizeCropBox.originalHeight = this.cropBox.getHeight();
+			this.resizeCropBox.originalWidth = this.cropBox.getWidth();
+		}
 	},
 	
 	onDrag: function(event) {
@@ -63,18 +67,21 @@ var Crop = {
 	},
 	
 	placeGreyBox: function(width,height) {
-		this.lowerGreyBox.style.left = this.cropBox.getLeft()  + 'px';				
-		this.lowerGreyBox.style.width = width + 'px';
-		this.lowerGreyBox.style.height = this.cropBox.getParentHeight() - this.cropBox.getTop() - height + "px";
-		this.lowerGreyBox.style.top = this.cropBox.getTop() + height + "px";
-		this.leftGreyBox.style.width = this.cropBox.getLeft() + "px";		
-		this.leftGreyBox.style.height = $('imageContainer').getHeight() + 'px';
-		this.rightGreyBox.style.width = this.cropBox.getParentWidth() - this.cropBox.getLeft() - width + "px";
-		this.rightGreyBox.style.height = $('imageContainer').getHeight() + 'px';
-		this.rightGreyBox.style.left = this.cropBox.getLeft()  + width  + "px";
-		this.upperGreyBox.style.width = width + 'px';
-		this.upperGreyBox.style.left = this.cropBox.getLeft()  + 'px';				
-		this.upperGreyBox.style.height = this.cropBox.getTop()  + 'px';
+		if(this.isVisible) {
+			this.lowerGreyBox.style.left = this.cropBox.getLeft()  + 'px';				
+			this.lowerGreyBox.style.width = width + 'px';
+			this.lowerGreyBox.style.height = this.cropBox.getParentHeight() - this.cropBox.getTop() - height + "px";
+			this.lowerGreyBox.style.top = this.cropBox.getTop() + height + "px";
+			this.leftGreyBox.style.width = this.cropBox.getLeft() + "px";		
+			this.leftGreyBox.style.height = $('imageContainer').getHeight() + 'px';
+			this.rightGreyBox.style.width = this.cropBox.getParentWidth() - this.cropBox.getLeft() - width + "px";
+			this.rightGreyBox.style.height = $('imageContainer').getHeight() + 'px';
+			this.rightGreyBox.style.left = this.cropBox.getLeft()  + width  + "px";
+			this.upperGreyBox.style.width = width + 'px';
+			this.upperGreyBox.style.left = this.cropBox.getLeft()  + 'px';				
+			this.upperGreyBox.style.height = this.cropBox.getTop() + 'px';
+			this.resizeCropBox.placeClickBox();
+		}
 	},
 	
 	onResize: function(width,height) {
@@ -112,6 +119,7 @@ var Crop = {
 	},
 	
 	cropCallback: function() {
+	   this.resizeCropBox.placeClickBox();
 	   effects.enableRotate();
 	   this.enable();
 	   
@@ -129,6 +137,7 @@ var Crop = {
 			Element.show($('cropOk'),$('cropCancel'));
 			imageHistory.disable();
 			effects.disableRotate();
+			this.enable();
 		}
 	},
 	
@@ -146,10 +155,12 @@ var Crop = {
 		    this.setVisible(false);
 		    imageHistory.enable();
 		    effects.enableRotate();
+			this.enable();
 		}
 	},
 	
 	setVisible: function(setVisible) {
+		this.isVisible = setVisible;
 		if(setVisible) {
 			Element.show(this.cropBox,this.leftGreyBox,this.rightGreyBox,this.upperGreyBox,this.lowerGreyBox);			
 			this.centerCropBox();
@@ -167,6 +178,10 @@ var Crop = {
 	
 	disable: function() {
 	   this.isEnabled = false;
+	},
+	
+	onImageLoadCallback: function() {
+		crop.setVisible(false);	
 	}
 	
 }
