@@ -34,16 +34,16 @@ class MemberTableField extends ComplexTableField {
 	private static $addedFields = array();
 	
 	private static $addedCsvFields = array();
-	
+
 	public static function addPermissions( $addingPermissionList ) {
 		self::$addedPermissions = $addingPermissionList;
 	}
-	
+
 	public static function addMembershipFields( $addingFieldList, $addingCsvFieldList = null ) {
 		self::$addedFields = $addingFieldList;
 		$addingCsvFieldList == null ? self::$addedCsvFields = $addingFieldList : self::$addedCsvFields = $addingCsvFieldList;
   	}
-	
+
 	function __construct($controller, $name, $group, $members = null, $hidePassword = true, $pageLimit = 10) {
 
 		if($group) {
@@ -67,16 +67,16 @@ class MemberTableField extends ComplexTableField {
 			"Surname" => "Surname",
 			"Email" => "Email"
 		);
-		
+
 		$csvFieldList = $fieldList;
 		foreach( self::$addedCsvFields as $key => $value ) {
 			$csvFieldList[$key] = $value;
 		}
-		
+
 		foreach( self::$addedFields as $key => $value ) {
 			$fieldList[$key] = $value;
 		}
-		
+
 		if(!$hidePassword) {
 			$fieldList["Password"] = "Password";
 		}
@@ -88,7 +88,7 @@ class MemberTableField extends ComplexTableField {
 		}
 		$detailFormFields = $SNG_member->getCMSFields();
 		$this->detailFormValidator =  $SNG_member->getValidator();
-		
+
 		$this->pageSize = $pageLimit;
 
 		// Legacy: Use setCustomSourceItems() instead.
@@ -128,7 +128,7 @@ class MemberTableField extends ComplexTableField {
 		}
 
 		$this->sourceJoin = " INNER JOIN `Group_Members` ON `MemberID`=`Member`.`ID`";
-		
+
 		$this->setFieldListCsv( $csvFieldList );
 	}
 
@@ -248,7 +248,7 @@ class MemberTableField extends ComplexTableField {
 		
 		//if( ! $record->isInGroup( $data['ctf']['ID'] ) )
 			$record->Groups()->add( $data['ctf']['ID'] );
-		
+
 		$this->sourceItems();
 
 		// TODO add javascript to highlight added row (problem: might not show up due to sorting/filtering)
@@ -366,7 +366,7 @@ class MemberTableField extends ComplexTableField {
 		$this->totalCount = ($this->sourceItems) ? $this->sourceItems->TotalItems() : 0;
 		return $this->sourceItems;
 	}
-	
+
 	function TotalCount() {
 		$this->sourceItems(); // Called for its side-effect of setting total count
 		return $this->totalCount;
