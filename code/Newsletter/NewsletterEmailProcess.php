@@ -77,8 +77,11 @@ class NewsletterEmailProcess extends BatchProcess {
 	function complete() {
 		parent::complete();
 		
-		if( $this->newsletter->SentDate )
-    	$resent = true;
+		if( $this->newsletter->SentDate ) {
+			$resent = true;
+		} else {
+			$resent = false;
+		}
     
     $this->newsletter->SentDate = 'now';
     $this->newsletter->Status = 'Send';
