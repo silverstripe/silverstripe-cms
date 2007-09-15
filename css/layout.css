@@ -139,6 +139,7 @@ body.stillLoading select {
 #left h2 {
 	margin: 0;
 	background-image:url(../images/textures/obar-18.gif);
+	height: 18px;
 	line-height: 18px;
 	color: white;
 	font-size: 12px;
