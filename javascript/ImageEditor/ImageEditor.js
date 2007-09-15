@@ -38,5 +38,6 @@ var ImageEditor = {
 	onClose: function() {
 		window.parent.frames[1].location.reload(1);
 		Element.hide(window.frameElement);
+		imageTransformation.close();
 	}		
 }

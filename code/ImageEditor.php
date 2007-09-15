@@ -1,33 +1,47 @@
 <?php
+/**
+ * This Controller handles all operation needed for ImageEditor to work(expect for GD operations).
+ * 
+*/
 
 	class ImageEditor extends Controller {
 		
 		public $fileToEdit = "";
 		
-		public function __construct() {
-		}
-		
+		/**
+		 * Includes all JS required for ImageEditor. This method requires setting
+		 * a fileToEdit URL in POST.
+		 *
+		 * @return String
+		*/ 
 		public function index() {
 			Requirements::clear();
 			Requirements::javascript("jsparty/prototype.js");
 			Requirements::javascript("jsparty/scriptaculous/scriptaculous.js");
 			Requirements::javascript("/cms/javascript/ImageEditor/Require.js");
 			Requirements::javascript("cms/javascript/ImageEditor/ImageEditor.js");
+			Requirements::javascript("jsparty/loader.js");
+			Requirements::javascript("jsparty/behaviour.js");
+			Requirements::javascript("cms/javascript/LeftAndMain.js");
 			Requirements::css("cms/css/ImageEditor/ImageEditor.css");
-			
+
 			if(!isset($this->requestParams['fileToEdit'])) $this->raiseError();
 			$fileWithPath = $this->requestParams['fileToEdit'];
 			$this->fileToEdit = $this->file2Origin($fileWithPath);
-					
+			
 			return $this->renderWith(__CLASS__);
 		}
 		
-		private function raiseError() 
-		{
-			Debug::friendlyError(500,"Bad arguments",__FILE__,__LINE__,'');
-			exit();	
-		}
-		
+		/**
+		 * Method is used for manipulating photos.
+		 * Method requires two params set in POST
+		 * 	file - file on which operation will be performed
+		 *  command - name of operation(crop|rotate|resize)
+		 * 
+		 * Each operation requires additional parameters.
+		 *
+		 * @return String - JSON array with image properties (width,height,url).
+		*/ 
 		public function manipulate() {
 			$fileName = $this->requestParams['file'];
 			$command = $this->requestParams['command'];
@@ -53,8 +67,19 @@
 			}
 			$rand = md5(rand(1,100000));
 			$gd->writeTo('../assets/tmp/' . $rand . '.jpg');
-			$this->returnImage($gd,'assets/tmp/' . $rand . '.jpg');	
+			return $this->getImageInfoInJSON($gd,'../assets/tmp/' . $rand . '.jpg');	
 		}
+		
+		/**
+		 * Method is used for saving photos.
+		 * Method requires two params set in POST
+		 * 	originalFile - this file will be replaced by second file
+		 *  editedFile - this file will replace first file.
+		 * 
+		 * After replacing original file all thumbnails created from it are removed.
+		 *
+		 * @return String - Message that everything went ok.
+		*/ 
 		
 		public function save() {
 			if(isset($this->requestParams['originalFile']) && isset($this->requestParams['editedFile'])) {
@@ -73,17 +98,43 @@
 			} else {
 				$this->raiseError();
 			}
+			return "parent.parent.parent.statusMessage('Image saved','good',false);";
 		}
 		
-		private function returnImage(GD $gd,$strFile)
-		{
-			list($width, $height) = getimagesize('../' . $strFile);		
-			echo json_encode(array(
-								'fileName' => $strFile,
-								'width' => $width,
-								'height' => $height)
-							);
+		/**
+		 * Method is invoked when ImageEditor is closed whether image is saved or not.
+		 * 
+		 * /assets/tmp is folder where we store temporary images created during editing so 
+		 * after closing they are no necessity to keep them.
+		 * 
+		 * @return null
+		*/ 
+		
+		public function close() {
+			Filesystem::removeFolder('../assets/tmp');
 		}
+		
+		/**
+		 * Method return JSON array containing info about image.
+		 * 
+		 * @param gd - GD object used for retrieving info about image
+		 * @param file 
+		 * 
+		 * @return string JSON array explained in manipulate method comment
+		*/ 
+		
+		private function getImageInfoInJSON(GD $gd,$file)
+		{
+			return '{"fileName":"' . $file . '","width":' . $gd->getWidth() . ',"height":' . $gd->getHeight() . '}';
+		}
+		
+		/**
+		 * Method converts thumbnail file name to file name of it's "parent"
+		 * 
+		 * @param file - name of thumbnail file
+		 * 
+		 * @return string name of parent file.
+		*/ 
 		
 		private function file2Origin($file) {
 			$file = str_replace('_resampled/','',$file);
@@ -92,11 +143,27 @@
 			$this->checkFileExists($file);
 			return $file;
 		}
-
+		/**
+		 * Method converts URL of file to file path in file system.
+		 * 
+		 * @param url - url of file
+		 * 
+		 * @return string path of file in file system
+		*/ 
+		
 		private function url2File($url) {
 			return '..' . substr($url,strpos($url,'/assets'));
 		}
 		
+		/**
+		 * Method checks if file exists and have proper name and extension.
+		 * 
+		 * If any of constraints aren't fulfilled method will generate error.
+		 * 
+		 * @param url - url of file
+		 * 
+		 * @return boolean 
+		*/ 
 		
 		private function checkFileExists($url) {
 			$pathInfo = pathinfo($url);
@@ -122,6 +189,19 @@
 			} else {
 				$this->raiseError();
 			}		
+		}
+		
+		/**
+		 * Method raiser error. Error is showed using statusMessage function.
+		 * 
+		 * @param message - error message
+		 * 
+		*/ 
+		
+		private function raiseError($message = "") 
+		{
+			echo "parent.parent.parent.statusMessage('Error: " . $message . "','bad',false);";
+			exit();	
 		}
 	}
 ?>

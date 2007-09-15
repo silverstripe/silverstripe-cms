@@ -7,6 +7,7 @@ var ImageTransformation = {
 		this.rotate = ImageTransformation.rotate.bind(this);
 		this.crop = ImageTransformation.crop.bind(this);	
 		this.save = ImageTransformation.save.bind(this);
+		this.close = ImageTransformation.close.bind(this);
 	},
 		
 	resize: function(width,height) {
@@ -70,10 +71,22 @@ var ImageTransformation = {
 		 	method: 'post',
 			postBody: 'command=save&editedFile=' + editedFile + '&originalFile=' + originalFile,
 			onSuccess: function(transport) {
+				eval(transport.responseText);
 				imageEditor.onClose();
 			},
 		 };
-		 new Ajax.Request('admin/ImageEditor/save', options);	
+		 new Ajax.Request('admin/ImageEditor/save', options);
+	},
+	
+	close: function() {
+		var options = {
+		 	method: 'post',
+			postBody: '',
+			onSuccess: function(transport) {
+				eval(transport.responseText);
+			},
+		 };
+		 new Ajax.Request('admin/ImageEditor/close', options);
 	}
 }
 	
