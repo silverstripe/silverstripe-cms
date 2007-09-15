@@ -38,7 +38,7 @@
 	width: 75%;
 	margin: 0;
 }
-#PageType {
+#ReportSelector_holder select, #PageType {
 	width: 75%;
 	float: left;
 	margin-right: 3px;
@@ -277,9 +277,6 @@ ul.tree span.modified,
 	border-bottom: 1px #CCC solid;
 	margin: 0;
 	padding: 3px;
-}
-#ReportSelector_holder select {
-	width: 100%;
 }
 
 #treepanes .pane_actions {

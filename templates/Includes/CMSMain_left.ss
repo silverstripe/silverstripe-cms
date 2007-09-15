@@ -129,7 +129,7 @@
 			Site Reports
 		</h2>
 		<div class="listpane" id="reports_holder" style="display:none">
-			<p id="ReportSelector_holder">$ReportSelector</p>
+			<p id="ReportSelector_holder">$ReportSelector <input class="action" type="submit" id="report_select_go" value="Go" /></p>
 			<div class="unitBody">
 			</div>
 		</div>

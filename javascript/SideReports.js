@@ -37,14 +37,14 @@ SideReports.prototype = {
 	
 }
 
-SideReportDropdown = Class.create();
-SideReportDropdown.prototype = {
+SideReportGo = Class.create();
+SideReportGo.prototype = {
 	destroy: function() {
-		this.onchange = null;
+		this.onclick = null;
 		this.holder = null;
 	},
-	onchange: function() {
-		this.holder.showreport();
+	onclick: function() {
+		$('reports_holder').showreport();
 	}
 }
 
@@ -65,6 +65,6 @@ SideReportRecord.prototype = {
 	}
 }
 
-SideReportDropdown.applyTo('#ReportSelector');
+SideReportGo.applyTo('#report_select_go');
 SideReportRecord.applyTo('#reports_holder a');
 SideReports.applyTo('#reports_holder');
