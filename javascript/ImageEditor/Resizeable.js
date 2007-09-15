@@ -106,6 +106,7 @@ Resizeable = {
 			this.placeClickBox();
 			this.customOnResize(this.element.getWidth(),this.element.getHeight());		
 			imageBox.reCenterIndicator();			
+			Event.stop(event);
 		}	
 	},
 	
