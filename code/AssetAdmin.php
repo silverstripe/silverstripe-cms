@@ -367,6 +367,9 @@ JS;
 				$files = DataObject::get("File", "`File`.ID IN ($fileList)");
 				if($files) {
 					foreach($files as $file) {
+						if($file instanceof Image) {
+							$file->deleteFormattedImages();
+						}
 						if( !$folderID )
 							$folderID = $file->ParentID;
 						
