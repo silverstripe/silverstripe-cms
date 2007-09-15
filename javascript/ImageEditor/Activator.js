@@ -10,7 +10,7 @@ var ImageEditorActivator = {
 		}
 		iframe = document.createElement('iframe');
 		fileToEdit = $('ImageEditorActivator').firstChild.src;
-		iframe.setAttribute("src","/admin/ImageEditor?fileToEdit=" + fileToEdit);
+		iframe.setAttribute("src","admin/ImageEditor?fileToEdit=" + fileToEdit);
 		iframe.id = 'imageEditorIframe';
 		iframe.style.width = "97%";
 		iframe.style.height = "300%";
