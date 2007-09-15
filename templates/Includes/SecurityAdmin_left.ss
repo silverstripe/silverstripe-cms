@@ -1,6 +1,5 @@
 <h2>Security Groups</h2>
-<div id="treepanes">
-	<div id="sitetree_holder">
+<div id="treepanes" style="overflow-y: auto;">
 		<ul id="TreeActions">
 			<li class="action" id="addgroup"><button>Create</button></li>
 			<li class="action" id="deletegroup"><button>Delete...</button></li>
@@ -24,5 +23,4 @@
 		</form>
 		
 		$SiteTreeAsUL
-	</div>
 </div>

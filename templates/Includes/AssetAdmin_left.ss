@@ -8,8 +8,7 @@
 </script>
 
 <h2>Folders</h2>
-	<div id="treepanes">
-		<div id="sitetree_holder">
+	<div id="treepanes" style="overflow-y: auto;">
 			<ul id="TreeActions">
 				<li class="action" id="addpage"><button>Create</button></li>
 				<li class="action" id="deletepage"><button>Delete...</button></li>
@@ -36,5 +35,4 @@
 			</form>
 		
 			$SiteTreeAsUL
-		</div>
 	</div>

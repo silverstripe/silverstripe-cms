@@ -24,8 +24,7 @@ ul.tree li.MailType span.Sent a {
 </style>
 
 <h2>Newsletters</h2>
-<div id="treepanes">
-	<div id="sitetree_holder">
+<div id="treepanes" style="overflow-y: auto;">
 		<ul id="TreeActions">
 			<li class="action" id="addtype"><button>Create...</button></li>
 			<li class="action" id="deletedrafts"><button>Delete...</button></li>
@@ -46,5 +45,4 @@ ul.tree li.MailType span.Sent a {
 			<input type="submit" value="Delete the selected drafts" />
 		</form>
 		<% include NewsletterAdmin_SiteTree %>
-	</div>
 </div>
