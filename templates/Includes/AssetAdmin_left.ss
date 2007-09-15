@@ -7,7 +7,7 @@
 	};
 </script>
 
-<div class="title"><div style="background-image : url(cms/images/panels/MySite.png)">Files &amp; Images</div></div>
+<h2>Folders</h2>
 	<div id="treepanes">
 		<div id="sitetree_holder">
 			<ul id="TreeActions">

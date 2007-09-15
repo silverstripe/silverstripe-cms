@@ -1,4 +1,4 @@
-<div class="title"><div>Security Groups</div></div>
+<h2>Security Groups</h2>
 <div id="treepanes">
 	<div id="sitetree_holder">
 		<ul id="TreeActions">

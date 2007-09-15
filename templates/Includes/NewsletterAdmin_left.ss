@@ -23,7 +23,7 @@ ul.tree li.MailType span.Sent a {
 }
 </style>
 
-<div class="title"><div>Newsletters</div></div>
+<h2>Newsletters</h2>
 <div id="treepanes">
 	<div id="sitetree_holder">
 		<ul id="TreeActions">

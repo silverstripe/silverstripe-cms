@@ -8,7 +8,7 @@ ul.tree a{
 
 </style>
 
-<div class="title"><div>Reports</div></div>
+<h2>Reports</h2>
 
 <div id="treepanes">
 <div id="sitetree_holder">

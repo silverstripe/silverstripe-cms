@@ -1,4 +1,4 @@
-<div class="title"><div>Report Types</div></div>
+<h2>Report Types</h2>
 
 <div id="treepanes">
 	<div id="sitetree_holder" style="overflow:auto">
