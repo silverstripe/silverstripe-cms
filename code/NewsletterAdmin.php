@@ -457,7 +457,7 @@ class NewsletterAdmin extends LeftAndMain {
 
 		FormResponse::set_node_title("mailtype_$id", $record->Title);
 		FormResponse::status_message('Saved', 'good');
-
+		$result = $this->getActionUpdateJS($record);
 		return FormResponse::respond();
 	}
 
@@ -479,7 +479,12 @@ class NewsletterAdmin extends LeftAndMain {
 
 		FormResponse::set_node_title($id, $record->Title);
 		FormResponse::status_message('Saved', 'good');
-
+		// Get the new action buttons
+		$actionList = '';
+		foreach($form->Actions() as $action) {
+			$actionList .= $action->Field() . ' ';
+		}
+		FormResponse::add("$('Form_EditForm').loadActionsFromString('" . Convert::raw2js($actionList) . "');");
 		return FormResponse::respond();
 	}
 

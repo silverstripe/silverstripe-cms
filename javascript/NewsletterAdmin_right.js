@@ -27,7 +27,7 @@ Behaviour.register({
 		 * Processing called whenever a page is loaded in the right - including the initial one
 		 */
 		prepareForm : function() {
-			ajaxActionsAtTop('Form_EditForm', 'form_actions', 'right');
+			ajaxActionsAtTop('Form_EditForm', 'form_actions_right', 'right');
 		},
 		
 		/**
@@ -391,19 +391,6 @@ NewsletterList.prototype = {
         this.tableBody.removeChild( $(response.responseText) );
     }
 }
-
-/**
- * Add page action
- * @todo Remove duplication between this and the CMSMain Add page action
- */
-Behaviour.register( {
-	'#Form_EditForm_action_save': {
-		onclick : function() {
-			$('Form_EditForm').save();
-			return false;
-		}
-	}
-});
 
 /**
  * Handle auto-saving.  Detects if changes have been made, and if so save everything on the page.
