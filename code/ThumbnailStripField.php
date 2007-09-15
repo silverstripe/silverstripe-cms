@@ -98,7 +98,7 @@ class ThumbnailStripField extends FormField {
 		$height = Image::$strip_thumbnail_height - 10;
 		
 		$flashObjects = DataObject::get("File", "ParentID IN (" . implode(', ', $folderList) . ") AND Filename LIKE '%.swf'");
-		
+		$result = '';		
 		if($flashObjects) {
 			$result .= '<ul>';
 			foreach($flashObjects as $flashObject) {
