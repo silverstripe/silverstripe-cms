@@ -628,6 +628,10 @@ if(!$record)
 	public function removefile(){
 		if($fileID = $this->urlParams['ID']){
 			$file = DataObject::get_by_id('File', $fileID);
+			// Delete the temp verions of this file in assets/_resampled
+			if($file instanceof Image) {
+				$file->deleteFormattedImages();
+			}
 			$file->delete();
 			$file->destroy();
 			

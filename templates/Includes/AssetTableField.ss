@@ -23,7 +23,7 @@
 					</td>
 					<% if Can(delete) %>
 					<td width="18">
-						<a class="deletelink" href="$DeleteLink" title="Delete this file"><img src="cms/images/delete.gif" alt="delete" /></a>
+						<a class="deletelink" href="admin/assets/removefile/$ID" title="Delete this file"><img src="cms/images/delete.gif" alt="delete" /></a>
 					</td>
 					<% end_if %>
 				</tr>
