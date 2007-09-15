@@ -337,6 +337,7 @@ html>body #top #Logo {
 	overflow-x: hidden;
 }
 #sitetree {
+	margin-top: 2px;
 	width: 500px; /* IE's chocking right now */
 }
 html>body #sitetree {
