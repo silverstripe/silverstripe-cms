@@ -319,6 +319,9 @@ HTML;
 				$files = DataObject::get("File", "`File`.ID IN ($fileList)");
 				if($files) {
 					foreach($files as $file) {
+						if($file instanceof Image) {
+                            $file->deleteFormattedImages();
+                        }
 						$file->ParentID = $destFolderID;
 						$file->write();
 						$numFiles++;
