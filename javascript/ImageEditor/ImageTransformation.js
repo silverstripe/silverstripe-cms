@@ -10,7 +10,7 @@ var ImageTransformation = {
 		this.close = ImageTransformation.close.bind(this);
 	},
 		
-	resize: function(width,height) {
+	resize: function(width,height,callback) {
 		if(imageHistory.modifiedOriginalImage) {
 			fileToResize = $('image').src;
 		} else {
@@ -23,7 +23,14 @@ var ImageTransformation = {
 				imageBox.hideIndicator();
 				response = eval('(' + transport.responseText + ')');
 				$('image').src = response.fileName;
-				imageHistory.add('resize',$('image').src);				
+				$('image').style.width = response.width + 'px';
+                $('image').style.height = response.height + 'px';
+                $('imageContainer').style.width = response.width + 'px';
+                $('imageContainer').style.height = response.height + 'px';
+				imageHistory.add('resize',$('image').src);
+				if(callback != null) {
+				    callback();
+				}
 			}
 		 };
 		 imageBox.showIndicator();
@@ -69,7 +76,7 @@ var ImageTransformation = {
 			}
 		 };
 		 imageBox.showIndicator();
-		 new Ajax.Request('/admin/ImageEditor/manipulate', options);			
+		 new Ajax.Request('admin/ImageEditor/manipulate', options);			
 	},
 	
 	save: function(originalFile,editedFile) {

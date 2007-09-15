@@ -16,7 +16,7 @@ var Resize = {
 			};		
 		new Positioning.addBehaviour(this.element);
 		this.imageContainerResize = new Resizeable.initialize(element,options);
-		this.imageContainerResize.setVisible(true);
+		this.imageContainerResize.setVisible(false);
 	},
 	
 	resizeStop: function(event) {

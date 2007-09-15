@@ -38,7 +38,6 @@
 			if(!isset($this->requestParams['fileToEdit'])) $this->raiseError();
 			$fileWithPath = $this->requestParams['fileToEdit'];
 			$this->fileToEdit = $this->file2Origin($fileWithPath);
-			
 			return $this->renderWith(__CLASS__);
 		}
 		
@@ -78,7 +77,7 @@
 			}
 			$rand = md5(rand(1,100000));
 			$gd->writeTo('../assets/tmp/' . $rand . '.jpg');
-			return $this->getImageInfoInJSON($gd,'../assets/tmp/' . $rand . '.jpg');	
+			return $this->getImageInfoInJSON($gd,'assets/tmp/' . $rand . '.jpg');	
 		}
 		
 		/**
@@ -181,7 +180,7 @@
 			if(strpos($url,'?') !== false) $url = substr($url,0,strpos($url,'?'));
 			$pathInfo = pathinfo($url);
 			if(count($pathInfo) < 3) $this->raiseError();
-			if(!in_array($pathInfo['extension'],array('jpeg','jpg','jpe','png','gif'))) $this->raiseError();
+			if(!in_array($pathInfo['extension'],array('jpeg','jpg','jpe','png','gif','JPEG','JPG','JPE','PNG','GIF'))) $this->raiseError();
 			$path = explode('/',$pathInfo['dirname']);
 			if(count($path) > 1) {
 				$assetId = array_search('assets',$path);
@@ -195,7 +194,8 @@
 				} else {
 					$this->raiseError();
 				}
-				if(file_exists($realPath)) {					return true;
+				if(file_exists($realPath)) {
+					return true;
 				} else {
 					$this->raiseError();
 				}

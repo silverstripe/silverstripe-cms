@@ -16,6 +16,7 @@ ImageHistory = {
 		this.onFakeImageLoad = ImageHistory.onFakeImageLoad.bind(this);
 		this.enable = ImageHistory.enable.bind(this);
 		this.disable = ImageHistory.disable.bind(this);
+		this.clear = ImageHistory.clear.bind(this);
 	},
 		
 	undo: function() {
@@ -88,5 +89,10 @@ ImageHistory = {
 	disable: function() {
 		Event.stopObserving($('undoButton'),'click', this.undo);			
 		Event.stopObserving($('redoButton'),'click', this.redo);
+	},
+	
+	clear: function() {
+	   this.history = new Array();
+       this.historyPointer = -1;
 	}
 };
