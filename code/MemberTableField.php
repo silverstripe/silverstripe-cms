@@ -146,7 +146,9 @@ class MemberTableField extends ComplexTableField {
 	}
 
 	function DetailForm() {
-		$ID = Convert::raw2xml($_REQUEST['ctf']['ID']);
+		$ID = Convert::raw2xml(isset($_REQUEST['ctf']['ID'])
+													   ? $_REQUEST['ctf']['ID']
+														 : '');
 		$childID = isset($_REQUEST['ctf']['childID']) ? Convert::raw2xml($_REQUEST['ctf']['childID']) : 0;
 		$childClass = Convert::raw2xml($_REQUEST['fieldName']);
 		$methodName = isset($_REQUEST['methodName']) ? $_REQUEST['methodName'] : '';
