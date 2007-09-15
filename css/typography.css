@@ -30,11 +30,12 @@ h2 {
 }
 
 a {
-	color: #1E3F94;
+	color: #FFFFFF;
 	text-decoration: underline;
 }
 a:hover {
-	text-decoration: none;
+	color: #CDC9C1;
+	text-decoration: underline;
 }
 a img {
 	border-style: none;
