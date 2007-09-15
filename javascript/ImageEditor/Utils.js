@@ -34,6 +34,7 @@ Positioning = {
 		this.element.getParentTop = Positioning.getParentTop.bind(this);
 		this.element.getParentHeight = Positioning.getParentHeight.bind(this);
 		this.element.getParentWidth = Positioning.getParentWidth.bind(this);
+		return this.element;
 	},
 	
 	getTop: function() {

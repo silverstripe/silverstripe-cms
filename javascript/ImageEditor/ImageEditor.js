@@ -14,25 +14,29 @@ var ImageEditor = {
 		crop = new Crop.initialize();
 		this.originalImageFile = imageFile;
 		this.tottalyOriginalImageFile = imageFile;
-		this.onSave = ImageEditor.onSave.bind(this);
-		this.onClose = ImageEditor.onClose.bind(this);
-		Event.observe($('saveButton'),'click',this.onSave);
-		Event.observe($('closeButton'),'click',this.onClose);				
+		this.onSaveClick = ImageEditor.onSaveClick.bind(this);
+		this.onCloseClick = ImageEditor.onCloseClick.bind(this);
+		Event.observe($('saveButton'),'click',this.onSaveClick);
+		Event.observe($('closeButton'),'click',this.onCloseClick);				
 		imageToResize.onImageLoad();
 		resize.imageContainerResize.placeClickBox();
 	}, 
-	onSave: function() {
+	onSaveClick: function() {
 		if(this.tottalyOriginalImageFile != $('image').src) {
-			imageTransformation.save(this.tottalyOriginalImageFile,$('image').src);
+			imageTransformation.save(this.tottalyOriginalImageFile,$('image').src,this.onCloseClick);
 		} else {
-			this.onClose();
+			this.onCloseClick();
 		}
 	},
 	
-	onClose: function() {
+	onCloseClick: function() {
 		window.parent.frames[1].location.reload(1);
-		Element.hide(window.frameElement);
-		imageTransformation.close();
-	}		
+		imageTransformation.close(ImageEditor.onCloseCallback.bind(this));
+	},
+	
+	onCloseCallback: function() {
+	    Element.hide(window.frameElement);
+	}
+	
 }
 

@@ -25,16 +25,19 @@ var ImageToResize = {
 	},
 	
 	onImageLoad: function(event) {
-		this.reportSize();
-		$('imageContainer').style.width = this.image.width + 'px';
-		$('imageContainer').style.height = this.image.height + 'px';
-		if(resize.imageContainerResize.originalHeight == 0 && resize.imageContainerResize.originalWidth == 0) {
-			imageBox.center();
-			this.resizeOnFirstLoad();
+		if(this.image.width != 0 && this.image.height != 0) {
+			this.reportSize();
+			$('imageContainer').style.width = this.image.width + 'px';
+			$('imageContainer').style.height = this.image.height + 'px';
+            imageBox.hideIndicator();
+            if(resize.imageContainerResize.originalHeight == 0 && resize.imageContainerResize.originalWidth == 0) {
+                imageBox.center();
+                this.resizeOnFirstLoad();
+            }
+			resize.imageContainerResize.originalWidth = this.image.width;
+			resize.imageContainerResize.originalHeight = this.image.height;
+			imageBox.checkOutOfDrawingArea($('imageContainer').getWidth(),$('imageContainer').getHeight());
 		}
-		resize.imageContainerResize.originalWidth = this.image.width;
-		resize.imageContainerResize.originalHeight = this.image.height;
-		imageBox.checkOutOfDrawingArea($('imageContainer').getWidth(),$('imageContainer').getHeight());
 	},
 	
 	resizeOnFirstLoad: function() {
@@ -50,6 +53,8 @@ var ImageToResize = {
 	       }
 	       this.reportSize(0,0);
            imageHistory.clear();
+	       imageBox.showIndicator();
+	       resize.imageContainerResize.setVisible(false);
 	       imageTransformation.resize(imageWidth,imageHeight,ImageToResize.resizeOnFirstLoadCallBack.bind(this));
 	   } else {
 	       if(imageWidth != 0 && imageHeight != 0) Element.show($('image'));
@@ -60,5 +65,6 @@ var ImageToResize = {
         imageBox.center();
         Element.show($('image'));
         resize.imageContainerResize.setVisible(true);
+        imageBox.hideIndicator();
     }
 };

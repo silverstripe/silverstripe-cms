@@ -28,9 +28,7 @@ var ImageTransformation = {
                 $('imageContainer').style.width = response.width + 'px';
                 $('imageContainer').style.height = response.height + 'px';
 				imageHistory.add('resize',$('image').src);
-				if(callback != null) {
-				    callback();
-				}
+				if(callback != null) callback();
 			}
 		 };
 		 imageBox.showIndicator();
@@ -81,24 +79,25 @@ var ImageTransformation = {
 		 new Ajax.Request('admin/ImageEditor/manipulate', options);			
 	},
 	
-	save: function(originalFile,editedFile) {
+	save: function(originalFile,editedFile,callback) {
 		var options = {
 		 	method: 'post',
 			postBody: 'command=save&editedFile=' + editedFile + '&originalFile=' + originalFile,
 			onSuccess: function(transport) {
 				eval(transport.responseText);
-				imageEditor.onClose();
+				callback();
 			}
 		 };
 		 new Ajax.Request('admin/ImageEditor/save', options);
 	},
 	
-	close: function() {
+	close: function(callback) {
 		var options = {
 		 	method: 'post',
 			postBody: '',
 			onSuccess: function(transport) {
 				eval(transport.responseText);
+				callback();
 			}
 		 };
 		 new Ajax.Request('admin/ImageEditor/close', options);

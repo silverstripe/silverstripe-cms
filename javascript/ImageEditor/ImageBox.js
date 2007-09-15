@@ -10,41 +10,43 @@ var ImageBox = {
 		this.centerIndicator = ImageBox.centerIndicator.bind(this);					
 		this.checkOutOfDrawingArea = ImageBox.checkOutOfDrawingArea.bind(this);
 		this.center = ImageBox.center.bind(this);
-		this.imageContainer = $('imageContainer');
+		this.imageContainer = Positioning.addBehaviour($('imageContainer'));
 		Element.hide(this.imageContainer);
+		this.indicator = Positioning.addBehaviour($('loadingIndicatorContainer'));
+        this.indicatorImage = Positioning.addBehaviour($('loadingIndicator'));
+        this.showIndicator(Positioning.addBehaviour($('mainContainer')));
 	},
 		
-	showIndicator: function() {
-		this.centerIndicator();
-		indicator.style.display = 'inline';	
+	showIndicator: function(container) {
+		if(container == null) container = this.imageContainer;
+		this.centerIndicator(container);
+		this.indicator.style.display = 'inline';	
 	},
 	
 	hideIndicator: function() {
-		Element.hide($('loadingIndicatorContainer'));
+		Element.hide(this.indicator);
 	},	
 	
-	centerIndicator: function() {
-		indicator = $('loadingIndicatorContainer');
-		indicatorImage = $('loadingIndicator');
-		var top = this.imageContainer.getTop();
-		var left = this.imageContainer.getLeft();
-		var width = this.imageContainer.getWidth();
-		var height = this.imageContainer.getHeight();
-		var parentTop =  this.imageContainer.getParentTop();
-		var parentLeft = this.imageContainer.getParentLeft();
-		indicator.style.left = parentLeft + left + width/2 - indicatorImage.width/2 + 2 + "px"; 
-		indicator.style.top = parentTop + top + height/2 - indicatorImage.height/2 + 2 + "px";		
+	centerIndicator: function(container) {
+		var top = container.getTop();
+		var left = container.getLeft();
+		var width = container.getWidth();
+		var height = container.getHeight();
+		var parentTop =  container.getParentTop();
+		var parentLeft = container.getParentLeft();
+		this.indicator.style.left = parentLeft + left + width/2 - this.indicatorImage.width/2 + 2 + "px"; 
+		this.indicator.style.top = parentTop + top + height/2 - this.indicatorImage.height/2 + 2 + "px";		
 	},
 	
 	reCenterIndicator: function() {
-		if($('loadingIndicatorContainer').style.display == 'inline') {
-			this.centerIndicator();
+		if(this.indicator.style.display == 'inline') {
+			this.centerIndicator(this.imageContainer);
 		}		
 	},
 	
 	center: function() {
-		$('imageContainer').style.left = this.imageContainer.getParentWidth()/2 - this.imageContainer.getWidth()/2 + 'px';
-		$('imageContainer').style.top = this.imageContainer.getParentHeight()/2 - this.imageContainer.getHeight()/2 + 'px';
+		this.imageContainer.style.left = this.imageContainer.getParentWidth()/2 - this.imageContainer.getWidth()/2 + 'px';
+		this.imageContainer.style.top = this.imageContainer.getParentHeight()/2 - this.imageContainer.getHeight()/2 + 'px';
 		Element.show(this.imageContainer);
 	},
 	
@@ -56,12 +58,10 @@ var ImageBox = {
 		var parentWidth = this.imageContainer.getParentWidth(); 
 		var parentHeight = this.imageContainer.getParentHeight(); 
 		if(left + width > parentWidth) {
-			$('imageContainer').style.left = left - (left + width - parentWidth) - 3+ 'px';
+			this.imageContainer.style.left = left - (left + width - parentWidth) - 3+ 'px';
 		}
 		if(top + height > parentHeight) {
-			$('imageContainer').style.top = top - (top + height - parentHeight) - 3 + 'px';
+			this.imageContainer.style.top = top - (top + height - parentHeight) - 3 + 'px';
 		}	 
 	}
-	
-	
 };
