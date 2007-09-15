@@ -660,7 +660,7 @@ div.TreeDropdownField a.editLink {
 	border-color: #c99;
 	color: #c00;
 	background: url(../images/alert-bad.gif) #fff 7px no-repeat;
-	max-height: 600px;
+	max-height: 300px;
 	overflow: auto;
 }
 .pageStatusMessage {
