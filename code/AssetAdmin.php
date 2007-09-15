@@ -233,9 +233,9 @@ HTML;
 			$nameField = ($id != "root") ? new TextField("Name") : new HiddenField("Name");
 			$fields = new FieldSet(
 				new HiddenField("Title"),
-				$nameField,
 				new TabSet("Root", 
 					new Tab("Files",
+						$nameField,
 						$fileList
 					),
 					new Tab("Details", 
