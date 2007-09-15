@@ -1,4 +1,5 @@
 function action_publish_right() {
+	$('Form_EditForm_action_publish').value = 'Publishing...';
 	var publish = true;
 	$('Form_EditForm').save(false, null, 'save', publish);
 }

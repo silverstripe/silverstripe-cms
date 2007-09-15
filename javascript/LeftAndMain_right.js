@@ -294,6 +294,7 @@ CMSRightForm.applyTo('#Form_EditForm', 'right');
 
 function action_save_right() {
 	_AJAX_LOADING = true;
+	$('Form_EditForm_action_save').value = 'Saving...';
 	$('Form_EditForm').save(false);
 }
 
