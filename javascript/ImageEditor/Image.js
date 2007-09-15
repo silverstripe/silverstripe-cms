@@ -39,16 +39,16 @@ var ImageToResize = {
 	
 	resizeOnFirstLoad: function() {
 	   windowWidth = Element.getDimensions($('mainContainer')).width;
-	   windowHeight = Element.getDimensions($('mainContainer')).height;
+	   windowHeight = Element.getDimensions($('mainContainer')).height - 100;
 	   imageWidth =  Element.getDimensions(this.image).width;
 	   imageHeight= Element.getDimensions(this.image).height;
-	   if(imageWidth > windowWidth || imageHeight > windowHeight) {
+	   if(imageWidth > windowWidth - 120 || imageHeight >  windowHeight - 120) {
 	       ratio = imageWidth / imageHeight;
 	       if(imageWidth > imageHeight) {
-                newWidth = windowWidth - windowWidth/1.75;
+                newWidth = windowWidth - 120;
                 newHeight = newWidth * (1/ratio);
 	       } else {
-                newHeight = windowHeight - windowHeight/1.75;
+                newHeight = windowHeight - 120;
                 newWidth = newHeight * ratio;	       
 	       }
 	       this.reportSize(0,0);
