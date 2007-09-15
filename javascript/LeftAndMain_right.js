@@ -100,7 +100,7 @@ CMSForm.prototype = {
 		if(allIframes) for(i=0;i<allIframes.length;i++) {
 			try {
 				allIframes[i].contentWindow.location.href = allIframes[i].src;
-			} catch(er) {alert(er.message);}
+			} catch(er) {alert('Error in LeftAndMain_right.js CMSForm.loadNewPage(): ' + er.message);}
 		}
 		
 		_TAB_DIVS_ON_PAGE = [];
