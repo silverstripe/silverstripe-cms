@@ -73,7 +73,7 @@ $lang['en_US']['LeftAndMain']['PERMDEFAULT'] = 'Please choose an authentication 
 $lang['en_US']['LeftAndMain']['PERMALREADY'] = 'I\'m sorry, but you can\'t access that part of the CMS.  If you want to log in as someone else, do so below';
 $lang['en_US']['LeftAndMain']['PERMAGAIN'] = 'You have been logged out of the CMS.  If you would like to log in again, enter a username and password below.';
 $lang['en_US']['LeftAndMain']['HELLO'] = array(
-	'Site content',
+	'Site Content',
 	PR_HIGH,
 	'Menu title'
 );
