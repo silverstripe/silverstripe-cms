@@ -60,6 +60,7 @@ class NewsletterAdmin extends LeftAndMain {
 	public function remove() {
 		$ids = explode( ',', $_REQUEST['csvIDs'] );
 
+		$count = 0;
 		foreach( $ids as $id ) {
 			if( preg_match( '/^mailtype_(\d+)$/', $id, $matches ) )
 				$record = DataObject::get_by_id( 'NewsletterType', $matches[1] );
@@ -71,9 +72,10 @@ class NewsletterAdmin extends LeftAndMain {
 			}
 
 			FormResponse::add("removeTreeNodeByIdx(\$('sitetree'), '$id' );");
+			$count++;
 		}
 
-		FormResponse::status_message('Deleted $count items','good');
+		FormResponse::status_message('Deleted '.$count.' items','good');
 
 		return FormResponse::respond();
 	}
