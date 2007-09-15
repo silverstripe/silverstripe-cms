@@ -569,7 +569,7 @@ JS;
 	public function deletefolder() {
 		$script = '';
 		$ids = split(' *, *', $_REQUEST['csvIDs']);
-
+		$script = '';
 		foreach($ids as $id) {
 
 			if(is_numeric($id)) {
