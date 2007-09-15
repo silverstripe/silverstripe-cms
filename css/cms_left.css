@@ -99,7 +99,7 @@
 ul.tree span.a {
 	cursor: pointer;
 }
-ul.tree span.a.over {
+.filefolderhover span.a, ul.tree span.a.over {
 	background-color: #FFFFBB !important;
 	
 	/* these push the highlight out to the left of the window */

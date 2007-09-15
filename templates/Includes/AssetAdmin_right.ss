@@ -3,8 +3,6 @@
 <div id="form_actions_right" class="ajaxActions">
 </div>
 
-$MoveMarkedOptionsForm
-$DeleteMarkedOptionsForm
 <!--
 <form class="actionparams" id="action_movemarked_options" style="display:none" action="admin/assets/movemarked">
 	<fieldset>

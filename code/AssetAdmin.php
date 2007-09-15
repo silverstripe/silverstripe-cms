@@ -231,12 +231,22 @@ HTML;
 
 		if($record) {
 			$nameField = ($id != "root") ? new TextField("Name", "Folder Name") : new HiddenField("Name");
+			if( $record->userCanEdit() ) {
+				$deleteButton = new InlineFormAction('deletemarked',"Delete selected files", 'delete');
+				$deleteButton->includeDefaultJS(false);
+			} else {
+				$deleteButton = new HiddenField('deletemarked');
+			}
+
 			$fields = new FieldSet(
 				new HiddenField("Title"),
 				new TabSet("Root", 
 					new Tab("Files",
 						$nameField,
-						$fileList
+						$fileList,
+						$deleteButton,
+						new HiddenField("FileIDs"),
+						new HiddenField("DestFolderID")
 					),
 					new Tab("Details", 
 						new ReadonlyField("URL"),
@@ -255,11 +265,10 @@ HTML;
 			
 			$actions = new FieldSet();
 			
-			if( $record->userCanEdit() ) {
+			// Only show save button if not 'assets' folder
+			if( $record->userCanEdit() && $id != "root") {
 				$actions = new FieldSet(
-					new FormAction('deletemarked',"Delete files"),
-					new FormAction('movemarked',"Move files..."),
-					new FormAction('save',"Save")
+					new FormAction('save',"Save folder name")
 				);
 			}
 			
@@ -289,27 +298,10 @@ HTML;
 	}
 	
 	/**
-	 * Returns the form used to specify options for the "move marked" action.
-	 */
-	public function MoveMarkedOptionsForm() {
-		$folderDropdown = new TreeDropdownField("DestFolderID", "Move files to", "Folder");
-		$folderDropdown->setFilterFunction(create_function('$obj', 'return $obj->class == "Folder";'));
-		
-		return new CMSActionOptionsForm($this, "MoveMarkedOptionsForm", new FieldSet(
-			new HiddenField("ID"),
-			new HiddenField("FileIDs"),
-			$folderDropdown
-		),
-		new FieldSet(
-			new FormAction("movemarked", "Move marked files")
-		));
-	}
-	
-	/**
 	 * Perform the "move marked" action.
-	 * Called by ajax, with a JavaScript return.
+	 * Called and returns in same way as 'save' function
 	 */
-	public function movemarked() {
+	public function movemarked($urlParams, $form) {
 		if($_REQUEST['DestFolderID'] && is_numeric($_REQUEST['DestFolderID'])) {
 			$destFolderID = $_REQUEST['DestFolderID'];
 			$fileList = "'" . ereg_replace(' *, *',"','",trim(addslashes($_REQUEST['FileIDs']))) . "'";
@@ -330,36 +322,21 @@ HTML;
 					user_error("No files in $fileList could be found!", E_USER_ERROR);
 				}
 			}
-		
-			echo <<<JS
-				statusMessage("Moved $numFiles files");
-JS;
+
+			$message = 'Moved '.$numFiles.' files';
+			FormResponse::status_message($message, "good");
+			FormResponse::add("$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value)");
+			return FormResponse::respond();	
 		} else {
 			user_error("Bad data: $_REQUEST[DestFolderID]", E_USER_ERROR);
 		}
 	}
 
 	/**
-	 * Returns the form used to specify options for the "delete marked" action.
-	 * In actual fact, this form only has hidden fields and the button is auto-clickd without the
-	 * form being displayed; it's just the most consistent way of providing this information to the
-	 * CMS.
-	 */
-	public function DeleteMarkedOptionsForm() {
-		return new CMSActionOptionsForm($this, "DeleteMarkedOptionsForm", new FieldSet(
-			new HiddenField("ID"),
-			new HiddenField("FileIDs")
-		),
-		new FieldSet(
-			new FormAction("deletemarked", "Delete marked files")
-		));
-	}
-	
-	/**
 	 * Perform the "delete marked" action.
-	 * Called by ajax, with a JavaScript return.
+	 * Called and returns in same way as 'save' function
 	 */
-	public function deletemarked() {
+	public function deletemarked($urlParams, $form) {
 			$fileList = "'" . ereg_replace(' *, *',"','",trim(addslashes($_REQUEST['FileIDs']))) . "'";
 			$numFiles = 0;
 			$folderID = 0;
@@ -403,12 +380,11 @@ JS;
 					user_error("No files in $fileList could be found!", E_USER_ERROR);
 				}
 			}
-		
-			echo <<<JS
-				$deleteList
-				$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value);
-				statusMessage("Deleted $numFiles files.$brokenPageList");
-JS;
+			$message = "Deleted $numFiles files.$brokenPageList";
+			FormResponse::add($deleteList);
+			FormResponse::status_message($message, "good");
+			FormResponse::add("$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value)");
+			return FormResponse::respond();	
 	}
 	
 	
