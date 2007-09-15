@@ -29,6 +29,7 @@ var Resize = {
 					effects.disableRotate();
 					crop.disable();
 					this.imageContainerResize.disable();
+					imageHistory.disable();
 				}	
 			}
 		}

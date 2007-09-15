@@ -22,6 +22,7 @@ var Effects = {
 			} else {
 				resize.imageContainerResize.disable();
 				crop.disable();
+				imageHistory.disable();
 				imageTransformation.rotate(90,Effects.rotateCallback.bind(this));
 				this.isRotateEnabled = false;
 			}
