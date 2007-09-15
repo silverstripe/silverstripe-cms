@@ -667,14 +667,14 @@ class Diff
 				if($chunks) {
 					foreach($chunks as $item) {
 						// $tagStack > 0 indicates that we should be tag-building
-						if($tagStack[$listName]) $rechunked[$listName][sizeof($rechunked[$listName])-1] .= ' ' . $item;
+						if(isset($tagStack[$listName])) $rechunked[$listName][sizeof($rechunked[$listName])-1] .= ' ' . $item;
 						else $rechunked[$listName][] = $item;
 	
-						if($lookForTag && $item[0] == "<" && substr($item,0,2) != "</") {
+						if($lookForTag && isset($item[0]) && $item[0] == "<" && substr($item,0,2) != "</") {
 							$tagStack[$listName] = 1;
-						} else if($tagStack[$listName]) {
+						} else if(isset($tagStack[$listName])) {
 							if(substr($item,0,2) == "</") $tagStack[$listName]--;
-							else if($item[0] == "<") $tagStack[$listName]++;
+							else if(isset($item[0]) && $item[0] == "<") $tagStack[$listName]++;
 						}
 	
 						// echo "<li>" . htmlentities($item) . " -> "  .$tagStack[$listName];
@@ -686,6 +686,7 @@ class Diff
 		
 		// Diff the re-chunked data, turning it into maked up HTML
 		$diff = new Diff($rechunked[1], $rechunked[2]);
+		$content = '';
 		foreach($diff->edits as $edit) {
 			// echo "<li>$edit->type: " . htmlentities(implode(" " ,$edit->orig));
 			// if($edit->final) echo ' / ' . htmlentities(implode(" " ,$edit->final));
@@ -716,7 +717,7 @@ class Diff
 		$content = str_replace(array("&nbsp;","<", ">"),array(" "," <", "> "),$content);
 		$candidateChunks = split("[\t\r\n ]+", $content);
 		while(list($i,$item) = each($candidateChunks)) {
-			if($item[0] == "<") {
+			if(isset($item[0]) && $item[0] == "<") {
 				$newChunk = $item;
 				while($item[strlen($item)-1] != ">") {
 					list($i,$item) = each($candidateChunks);
