@@ -1,44 +1,125 @@
 table.statstable {
-    border-collapse: collapse;
-    width: 90%;
-    margin: 20px 0 20px 0;
-    font-size: 12px;
-
+    font-family:arial;
+	background-color: #cdcdcd;
+	margin:10px 0pt 15px;
+	font-size: 10pt;
+	width: 100%;
+	text-align: left;
 }
 
-.statstable td,.statstable th {
-    padding: 0.2em;
-    border: 1px solid #CCC;
+.statstable thead tr th {
+	background-color: #B8CDE4;
+	border: 1px solid #fff;
+	font-size: 11pt;
+	padding: 4px;
+}
 
+.statstable td {
+    background-color: #e6EEEE;
+	border: 1px solid #FFF;
+	font-size: 10pt;
+	padding: 4px;
 }
 
 .statstable th {
-    background: #CAE8EA url(../images/statistics/bg_header.jpg) no-repeat;
-
+    background-image: url(../images/statistics/bg.gif);
+    background-color: #8dbdd8;
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
 }
 
-.statstable td.id {
-    background: #CAE8EA url(../images/statistics/bg_header.jpg) no-repeat;
-
+.statstable thead th a {
+	text-decoration:none;
 }
 
-.statstable th.nobg {
-	background: #fff;
-	border-top: none;
-	border-left: none;
+.statstable th.forwardSort {
+	background-color: #69A3F2;
+    background-image: url(../images/statistics/desc.gif);
 }
 
-.statstable thead,.statstable tfoot {
-    background-color: #DDD;
-
+.statstable th.reverseSort {
+	background-color: #69A3F2;
+    background-image: url(../images/statistics/asc.gif);
 }
 
-.statstable tr.rowodd {
-    background-color: #fff;
-
+.statstable tr.alt td {
+    background-color:#D8D8FF;
 }
 
-.statstable tr.roweven {
-    background-color: #F0FBFD;
 
-}
+ul.tablePaginater
+        {
+        display:block;
+        list-style:none;
+        padding:0;
+        margin:1px 0 1em 0;
+        text-align:left;
+        }
+ul.tablePaginater li
+        {
+        display:inline;
+        width:2.1em;
+        height:2.1em;
+        line-height:2em;
+        vertical-align:middle;
+        margin-right:4px;
+        color:#666;
+        list-style:none;
+        cursor:pointer;
+        }
+ul.tablePaginater li.currentPage p
+        {
+        border-color:#1786FF !important;
+        background-color: #C2DAF4;
+        color:#000;
+        }
+ul.tablePaginater li p
+        {
+        display:table-cell !important;
+        display:inline-block;
+        text-align:center;
+        width:2em;
+        height:2em;
+        color:#666;
+        min-width:2em;
+        min-height:2em;
+        text-decoration:none;
+        outline:none;
+        border:1px solid #ccc;
+        cursor:pointer;
+        }
+
+ul.tablePaginater li p:hover
+        {
+        background-color: #C2DAF4;
+        }
+
+ul.tablePaginater li p:focus
+        {
+        color:#333;
+        text-decoration:none;
+        outline:none;
+        border-color:#aaa;
+        }
+td.sized1
+        {
+        width:16em;
+        text-align:left;
+        }
+td.sized2
+        {
+        width:10em;
+        text-align:left;
+        }
+td.sized3
+        {
+        width:7em;
+        text-align:left;
+        }
+
+.statstable tbody tr:hover td,
+.statstable tbody tr.ieRowHover td
+        {
+        background-color: #A0BDF7;
+        }
