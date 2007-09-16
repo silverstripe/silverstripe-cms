@@ -221,9 +221,13 @@ abstract class GenericDataAdmin extends LeftAndMain {
 		
 		$singular_name = singleton($this->stat('data_type'))->singular_name();
 		$plural_name = singleton($this->stat('data_type'))->plural_name();
+		if (!$this->filter) {
 		$this->filter = array(
 			"ClassName" => $this->stat('data_type')
 		);
+		} else {
+			$this->filter = $this->filter + array("ClassName" => $this->stat('data_type'));
+		}
 		
 		$results = $this->performSearch();
 		if($results) {
@@ -442,7 +446,7 @@ HTML;
 	
 	
 	/**
-	 * Save genetric data handler
+	 * Save generic data handler
 	 * 
 	 * @return String Statusmessage
 	 */
