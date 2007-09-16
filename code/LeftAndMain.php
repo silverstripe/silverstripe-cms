@@ -80,6 +80,7 @@ abstract class LeftAndMain extends Controller {
 		
 		Requirements::css('cms/css/TinyMCEImageEnhancement.css');
 		Requirements::javascript("jsparty/SWFUpload/SWFUpload.js");
+		Requirements::javascript("cms/javascript/Upload.js");
 		Requirements::javascript("sapphire/javascript/Security_login.js");
 		Requirements::javascript('cms/javascript/TinyMCEImageEnhancement.js');
 

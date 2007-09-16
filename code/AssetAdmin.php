@@ -42,7 +42,7 @@ class AssetAdmin extends LeftAndMain {
 		Requirements::javascript("cms/javascript/AssetAdmin_left.js");
 		Requirements::javascript("cms/javascript/AssetAdmin_right.js");
 
-		Requirements::javascript("cms/javascript/Upload.js");
+		Requirements::javascript("cms/javascript/CMSMain_upload.js");
 		Requirements::javascript("sapphire/javascript/Security_login.js");
 		Requirements::javascript("jsparty/SWFUpload/SWFUpload.js");
 		
