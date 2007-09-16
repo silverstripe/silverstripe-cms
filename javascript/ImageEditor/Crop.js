@@ -116,7 +116,7 @@ var Crop = {
 				imageTransformation.crop(startTop,startLeft,newWidth,newHeight,Crop.cropCallback.bind(this));
 				this.disable();
 			} else {
-				alert('Crop area too small');
+				statusMessageWrapper.statusMessage("Crop area too small","bad");
 				return false;
 			}
 			$('image').style.visibility = 'visible';//hack for IE for not selecting image during crop

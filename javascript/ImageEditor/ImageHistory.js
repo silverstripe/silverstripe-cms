@@ -25,7 +25,6 @@ ImageHistory = {
 		this.disable = ImageHistory.disable.bind(this);
 		this.clear = ImageHistory.clear.bind(this);
 		this.addListeners();
-		statusMessage = new StatusMessage.initialize();	
 	},
 		
 	undo: function() {
@@ -39,7 +38,7 @@ ImageHistory = {
 			this.historyPointer = this.historyPointer - 1;
 			this.image.src = this.history[this.historyPointer].fileUrl;
 		} else {
-			statusMessage.statusMessage("No more undo","bad");
+			statusMessageWrapper.statusMessage("No more undo","bad");
 		}
 	},
 	
@@ -51,7 +50,7 @@ ImageHistory = {
 			this.historyPointer = this.historyPointer + 1;
 			this.image.src = this.history[this.historyPointer].fileUrl;
 		} else {
-			statusMessage.statusMessage("No more redo","bad");
+			statusMessageWrapper.statusMessage("No more redo","bad");
 		}
 	},
 	

@@ -409,9 +409,11 @@ Behaviour.register({
  * @param msg String
  * @param type String (optional) can be 'good' or 'bad'
  * @param clearManually boolean Don't automatically fade message.
+ * @param container custom #statusMessage element to show message.
  */
-function statusMessage(msg, type, clearManually) {
+function statusMessage(msg, type, clearManually, container) {
 	var statusMessageEl = $('statusMessage');
+	if(container != null) statusMessageEl = container; 
 	if(statusMessageEl) {
 		if(msg) {
 			statusMessageEl.showMessage(msg, type, msg.length / 20, clearManually);
