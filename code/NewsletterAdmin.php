@@ -384,6 +384,8 @@ class NewsletterAdmin extends LeftAndMain {
 			$fields = $email->getCMSFields($this);
 			$fields->push($idField = new HiddenField("ID"));
 			$idField->setValue($myId);
+			$fields->push($ParentidField = new HiddenField("ParentID"));
+			$ParentidField->setValue($email->ParentID);
 			$fields->push($typeField = new HiddenField("Type"));
 			$typeField->setValue('Newsletter');
 			//$fields->push(new HiddenField("executeForm", "", "EditForm") );

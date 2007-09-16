@@ -300,6 +300,9 @@ AddForm.prototype = {
 					
 					// create a new node and add it to the site tree
 					if( type == 'draft' ) {
+						// BUGFIX: If no selection is made in the left tree, and a draft is added, parentID won't be set,
+						// so we need to use the value from the Draft edit form.
+						parentID = $('Form_EditForm_ParentID').value;
 						$('sitetree').addDraftNode('New draft newsletter', parentID, $('Form_EditForm_ID').value );
 					} else {
 						$('sitetree').addTypeNode('New newsletter type', $('Form_EditForm_ID').value ); 
