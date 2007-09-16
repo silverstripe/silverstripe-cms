@@ -372,12 +372,14 @@ HTML;
 				$i++;
 			}
 		} else {
-			list ($field, $caster) = explode("->", $field);
+			$fieldParts = explode("->", $field);
+			$field = $fieldParts[0];
 			if(preg_match('/^(.+)\.(.+)$/', $field, $matches)) {
 				$field = $matches[2];
 			}
 
-			if($caster) {
+			if(isset($fieldParts[1])) {
+				$caster = $fieldParts[1];
 				// When the intending value is Created.Date, the obj need to be casted as Datetime explicitely.
 				if ($field == "Created" || $field == "LastEdited") {
 					$created = Object::create('Datetime', $result->Created, "Created");
