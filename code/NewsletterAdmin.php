@@ -72,6 +72,8 @@ class NewsletterAdmin extends LeftAndMain {
 			}
 
 			FormResponse::add("removeTreeNodeByIdx(\$('sitetree'), '$id' );");
+			// Don't allow a deleted draft to be edited
+			FormResponse::add("$('Form_EditForm').closeIfSetTo('$matches[1]');");
 			$count++;
 		}
 
