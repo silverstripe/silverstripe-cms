@@ -291,7 +291,7 @@ class NewsletterAdmin extends LeftAndMain {
 					$unsubscribedList = new UnsubscribedList("Unsubscribed", $mailType)
 					),
 					new Tab("Bounced",
-					new LiteralField('Instructions', '<p><b>Instructions:</b></p><ul><li>Uncheck the box and click the "Save" button to disable sending to an email address.</li><li>To delete an email address from your mailing list, click the red "X" icon.</li></ul>'),
+					new LiteralField('Instructions', '<p><b>Instructions:</b></p><ul><li>Uncheck the box and click the "Save" button to disable sending to an email address. <b>@TODO Make this functional</b></li><li>To remove a recipients\'s email address from your mailing list, click the red "X" icon.</li></ul>'),
 					$bouncedList = new BouncedList("Bounced", $mailType )
 					)
 				)
@@ -322,6 +322,37 @@ class NewsletterAdmin extends LeftAndMain {
 		return $form;
 
 	}
+
+	/**
+	 * Removes a bounced member from the mailing list
+	 *
+	 * @return String
+	 */
+	function removebouncedmember($urlParams) {
+		// First remove the Bounce entry	
+		$memberID = Convert::raw2sql($urlParams['ID']);
+		if (is_numeric($memberID)) {
+			$bounceObject = DataObject::get_by_id('Email_BounceRecord', $memberID);
+			if($bounceObject) {
+				// Remove this bounce record
+				$bounceObject->delete();
+	
+				$memberObject = DataObject::get_by_id('Member', $bounceObject->MemberID);
+				$groupID = Convert::raw2sql($_REQUEST['GroupID']);
+				if(is_numeric($groupID) && is_object($memberObject)) {
+					// Remove the member from the mailing list
+					$memberObject->Groups()->remove($groupID);
+				} else {
+					user_error("MemberTableField::delete: Bad parameters: Group=$groupID, Member=$memberID", E_USER_ERROR);
+				}
+				// @TODO Reload whole right frame so that Recipients and Bounced tabs will be updated after bounced member is removed.
+				return 1;		
+			}
+		}else{
+			return 0;
+		}
+	}
+
 
 	/**
 	 * Reloads the list of recipients via ajax
