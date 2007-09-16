@@ -43,6 +43,18 @@
 	float: left;
 	margin-right: 3px;
 }
+#LangSelector_holder {
+	float: none;
+	background-color: #EEEEEE;
+	border-bottom: 1px solid #CCCCCC;
+	border-top: 1px solid #CCCCCC;
+}
+#LangSelector_holder select {
+	width: 70%;
+}
+#LangSelector_holder.onelang {
+	display: none;
+}
 #left form.actionparms input.action {
 	width: 5%;
 	margin: 0;
@@ -375,6 +387,11 @@ ul.tree span.a.MailType span.c, ul.tree span.a.last.MailType span.c, ul.tree spa
 	background-color: #B6BDD2;
 	text-decoration: none;
 }
+
+ul.tree li.untranslated a:link, ul.tree li.untranslated a:hover, ul.tree li.untranslated a:visited {
+	color: #CCCCCC
+}
+
 #left form.actionparams .SearchCriteria {
 	width: 45%;
 	float: left;
