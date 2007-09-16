@@ -254,7 +254,7 @@ AddForm.prototype = {
 		$(_HANDLER_FORMS[this.id]).onsubmit = this.form_submit;
 	},
     
-  form_submit : function() {
+	form_submit : function() {
 		var st = $('sitetree');
 		if (st) {
 			if( st.selected && st.selected.length ) {
@@ -265,14 +265,14 @@ AddForm.prototype = {
         	} else {
 			var selectedNode = null;
 		}
-    var parentID = null;
+		var parentID = null;
     
-    while( selectedNode && !parentID ) {
-        if( selectedNode && selectedNode.id && selectedNode.id.match(/mailtype_([0-9a-z\-]+)$/) )
-            parentID = RegExp.$1;
-        else
-            selectedNode = selectedNode.parentNode;
-    }
+    		while( selectedNode && !parentID ) {
+        		if( selectedNode && selectedNode.id && selectedNode.id.match(/mailtype_([0-9a-z\-]+)$/) )
+            			parentID = RegExp.$1;
+        		else
+            			selectedNode = selectedNode.parentNode;
+    		}
         
 		if(parentID && parentID.substr(0,3) == 'new') {
 			alert("You have to save a page before adding children underneath it");
@@ -282,37 +282,37 @@ AddForm.prototype = {
 				this.elements.ParentID.value = parentID;
 			}
 
-      var type = 'draft';
-      var selectIDPrefix = 'draft_' + parentID + '_';
-      
-      if( $('add_type').value == 'type' ) {
-          type = 'type';
-          selectIDPrefix = 'mailtype_';
-      }
-		// Call either addtype or adddraft
+			var type = 'draft';
+			var selectIDPrefix = 'draft_' + parentID + '_';
+			
+			if( $('add_type').value == 'type' ) {
+				type = 'type';
+				selectIDPrefix = 'mailtype_';
+			}
+			// Call either addtype or adddraft
 			var request = new Ajax.Request( this.action + type + '?ajax=1' + '&ParentID=' + parentID, {
-        method: 'get',
-        asynchronous: true,
+				method: 'get',
+				asynchronous: true,
 				onSuccess : function( response ) {
-         
-          $('Form_EditForm').loadNewPage(response.responseText);
-          	
-          // create a new node and add it to the site tree
-          if( type == 'draft' ) {
-          	$('sitetree').addDraftNode('New draft newsletter', parentID, $('Form_EditForm_ID').value );
-          } else {
-          	$('sitetree').addTypeNode('New newsletter type', $('Form_EditForm_ID').value ); 
-          }
-		// Save it so that change detection will work
-		$('Form_EditForm').save();
-
-          statusMessage('Added new ' + type);
-        },
-     
+					
+					$('Form_EditForm').loadNewPage(response.responseText);
+					
+					// create a new node and add it to the site tree
+					if( type == 'draft' ) {
+						$('sitetree').addDraftNode('New draft newsletter', parentID, $('Form_EditForm_ID').value );
+					} else {
+						$('sitetree').addTypeNode('New newsletter type', $('Form_EditForm_ID').value ); 
+					}
+					// Save it so that change detection will work
+					$('Form_EditForm').save();
+					
+					statusMessage('Added new ' + type);
+				},
+	
 				onFailure : function(response) {
 					alert(response.responseText);
-          statusMessage('Could not add new ' + type );
-        }
+					statusMessage('Could not add new ' + type );
+				}
 			});
 		}
 		
