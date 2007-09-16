@@ -5,7 +5,7 @@ var Resize = {
 	
 	initialize: function(element) {		
 		this.element = element;
-		this.leftBoxConstraint = 2;
+		this.leftBoxConstraint = 1;
 		this.topBoxConstraint = 0;
 		this.getRelativeMousePos = Resize.getRelativeMousePos.bind(this);
 		options = {

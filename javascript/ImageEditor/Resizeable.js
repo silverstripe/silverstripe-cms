@@ -25,12 +25,13 @@ Resizeable = {
 		}
 	},
 	
-	leftUpperDrag: function(event,top,left,height,width,parentTop,parentLeft,relativeMouseX,relativeMouseY) {
-		newWidth = left - relativeMouseX + width;
+	leftUpperDrag: function(event,top,left,height,width,parentTop,parentLeft,relativeMouseX,relativeMouseY,ratio) {
 		newHeight = top - relativeMouseY + height;
+		newWidth = Math.round(newHeight / ratio);
 		if(this.resize(newWidth,newHeight)) { 
 			this.element.style.top = top - (newHeight - height) + "px";
-			this.element.style.left = left - (newWidth - width) + "px";			
+			this.element.style.left = left - (newWidth - width) + "px";
+			if(parseInt(this.element.style.left) < 0) this.element.style.left = "1px";			
 		}		
 	},
 	
@@ -39,16 +40,19 @@ Resizeable = {
 		if(this.resize(newWidth,-1000)) this.element.style.left = left - (left - relativeMouseX) + "px";	
 	},
 	
-	leftLowerDrag: function(event,top,left,height,width,parentTop,parentLeft,relativeMouseX,relativeMouseY) {
-		newWidth = left - relativeMouseX + width;											 
+	leftLowerDrag: function(event,top,left,height,width,parentTop,parentLeft,relativeMouseX,relativeMouseY,ratio) {
 		newHeight = relativeMouseY - (top + height) + height;
-		if(this.resize(newWidth,newHeight)) this.element.style.left = left - (left - relativeMouseX) + "px";
+        newWidth = Math.round(newHeight / ratio);
+		if(this.resize(newWidth,newHeight)) {
+		    this.element.style.left = left - (newWidth - width) + "px";
+		    if(parseInt(this.element.style.left) < 0) this.element.style.left = "1px";
+		}
 	},
 	
-	rightUpperDrag: function(event,top,left,height,width,parentTop,parentLeft,relativeMouseX,relativeMouseY) {
-		newWidth = relativeMouseX - left - width + width;
-		newHeight = top - relativeMouseY + height; 
-		if(this.resize(newWidth,newHeight)) this.element.style.top = (top - (newHeight - height) ) + 'px';	
+	rightUpperDrag: function(event,top,left,height,width,parentTop,parentLeft,relativeMouseX,relativeMouseY,ratio) {
+        newHeight = top - relativeMouseY + height;
+        newWidth = Math.round(newHeight / ratio);
+        if(this.resize(newWidth,newHeight)) this.element.style.top = (top - (newHeight - height) ) + 'px';
 	},
 	
 	rightMiddleDrag: function(event,top,left,height,width,parentTop,parentLeft,relativeMouseX,relativeMouseY) {
@@ -56,9 +60,9 @@ Resizeable = {
 		this.resize(newWidth,-1000);	
 	},
 	
-	rightLowerDrag: function(event,top,left,height,width,parentTop,parentLeft,relativeMouseX,relativeMouseY) {
-		newWidth = relativeMouseX - left;
+	rightLowerDrag: function(event,top,left,height,width,parentTop,parentLeft,relativeMouseX,relativeMouseY,ratio) {
 		newHeight = relativeMouseY - top;
+        newWidth = Math.round(newHeight / ratio);
 		this.resize(newWidth,newHeight);	
 	},
 	
@@ -76,26 +80,26 @@ Resizeable = {
 	
 	onResize: function(event) {		
 		if(EventStack.getLastEventElement() != null && this.isVisible && this.isEnabled) {					
-			lastEventElement = EventStack.getLastEventElement();
+		    lastEventElement = EventStack.getLastEventElement();
 			var relativeMouseX = this.getMousePos(event).x - this.element.getParentLeft();
 			var relativeMouseY = this.getMousePos(event).y - this.element.getParentTop();
 			if(Element.hasClassName(lastEventElement,'leftUpperClickBox')) {
-				this.leftUpperDrag(event,this.element.getTop(),this.element.getLeft(),this.element.getHeight(),this.element.getWidth(),this.element.getParentTop(),this.element.getParentLeft(),relativeMouseX,relativeMouseY);						
+				this.leftUpperDrag(event,this.element.getTop(),this.element.getLeft(),this.element.getHeight(),this.element.getWidth(),this.element.getParentTop(),this.element.getParentLeft(),relativeMouseX,relativeMouseY,this.originalHeight/this.originalWidth);						
 			}
 			if(Element.hasClassName(lastEventElement,'leftMiddleClickBox')) {
 				this.leftMiddleDrag(event,this.element.getTop(),this.element.getLeft(),this.element.getHeight(),this.element.getWidth(),this.element.getParentTop(),this.element.getParentLeft(),relativeMouseX,relativeMouseY);						
 			}
 			if(Element.hasClassName(lastEventElement,'leftLowerClickBox')) {
-				this.leftLowerDrag(event,this.element.getTop(),this.element.getLeft(),this.element.getHeight(),this.element.getWidth(),this.element.getParentTop(),this.element.getParentLeft(),relativeMouseX,relativeMouseY);						
+				this.leftLowerDrag(event,this.element.getTop(),this.element.getLeft(),this.element.getHeight(),this.element.getWidth(),this.element.getParentTop(),this.element.getParentLeft(),relativeMouseX,relativeMouseY,this.originalHeight/this.originalWidth);						
 			}
 			if(Element.hasClassName(lastEventElement,'rightUpperClickBox')) {
-				this.rightUpperDrag(event,this.element.getTop(),this.element.getLeft(),this.element.getHeight(),this.element.getWidth(),this.element.getParentTop(),this.element.getParentLeft(),relativeMouseX,relativeMouseY);						
+				this.rightUpperDrag(event,this.element.getTop(),this.element.getLeft(),this.element.getHeight(),this.element.getWidth(),this.element.getParentTop(),this.element.getParentLeft(),relativeMouseX,relativeMouseY,this.originalHeight/this.originalWidth);						
 			}
 			if(Element.hasClassName(lastEventElement,'rightMiddleClickBox')) {
 				this.rightMiddleDrag(event,this.element.getTop(),this.element.getLeft(),this.element.getHeight(),this.element.getWidth(),this.element.getParentTop(),this.element.getParentLeft(),relativeMouseX,relativeMouseY);						
 			}
 			if(Element.hasClassName(lastEventElement,'rightLowerClickBox')) {
-				this.rightLowerDrag(event,this.element.getTop(),this.element.getLeft(),this.element.getHeight(),this.element.getWidth(),this.element.getParentTop(),this.element.getParentLeft(),relativeMouseX,relativeMouseY);						
+				this.rightLowerDrag(event,this.element.getTop(),this.element.getLeft(),this.element.getHeight(),this.element.getWidth(),this.element.getParentTop(),this.element.getParentLeft(),relativeMouseX,relativeMouseY,this.originalHeight/this.originalWidth);						
 			}
 			if(Element.hasClassName(lastEventElement,'upperMiddleClickBox')) {
 				this.upperMiddleDrag(event,this.element.getTop(),this.element.getLeft(),this.element.getHeight(),this.element.getWidth(),this.element.getParentTop(),this.element.getParentLeft(),relativeMouseX,relativeMouseY);						

@@ -84,6 +84,16 @@ var Crop = {
 	},
 	
 	onResize: function(width,height) {
+		if(width + parseInt(this.cropBox.style.left) > Element.getDimensions(this.imageContainer).width) {
+            this.cropBox.style.left = parseInt(this.cropBox.style.left) - Math.abs(Element.getDimensions(this.imageContainer).width - (width + parseInt(this.cropBox.style.left))) +  "px";    		
+		}
+		if(parseInt(this.cropBox.style.left) < 0) {
+            this.cropBox.style.left = "0px";         
+        }
+        if(width > Element.getDimensions(this.imageContainer).width) {
+            this.cropBox.style.width = Element.getDimensions(this.imageContainer).width + "px";
+            width = Element.getDimensions(this.imageContainer).width;
+        }
 		this.placeGreyBox(width,height);
 	},
 	getMousePos: function(event) {
