@@ -11,7 +11,6 @@ class AssetTableField extends ComplexTableField {
 
 		$this->sourceSort = "Title";		
 		$this->Markable = true;
-		Requirements::javascript("cms/javascript/ImageEditor/Activator.js");
 
 	}
 	
