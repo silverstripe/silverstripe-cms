@@ -284,10 +284,9 @@ Behaviour.register({
 			}
 			this.sendingText.style.display = '';
 			
-			var form = $('Form_EditForm');
-			
-			if( form.isChanged() )
-				form.save();
+			// Save always because change detection doesn't work for IE on newly created drafts.
+			// Use onclick instead of form.save() to make things work in IE.
+			$('Form_EditForm_action_save').onclick();
 			
 			// Send the request
 			ajaxSubmitForm(false, this.onCompleteTest.bind(this), this, '', 'sendnewsletter')
@@ -327,11 +326,9 @@ Behaviour.register({
 			}
 			this.sendingText.style.display = '';*/
 			
-			var form = $('Form_EditForm');
-			
-			if( form.isChanged() )
-				form.save();
-				
+			// Save always because change detection doesn't work for IE on newly created drafts.
+			// Use onclick instead of form.save() to make things work in IE.
+			$('Form_EditForm_action_save').onclick();
 			
 			if( $('SendProgressBar') )
 				$('SendProgressBar').start();

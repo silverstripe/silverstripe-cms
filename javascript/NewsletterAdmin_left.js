@@ -304,9 +304,6 @@ AddForm.prototype = {
 					} else {
 						$('sitetree').addTypeNode('New newsletter type', $('Form_EditForm_ID').value ); 
 					}
-					// Save it so that change detection will work
-					$('Form_EditForm').save();
-					
 					statusMessage('Added new ' + type);
 				},
 	
