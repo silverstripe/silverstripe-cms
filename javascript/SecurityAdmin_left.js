@@ -102,25 +102,26 @@ deletegroup = {
 			if(deletegroup.selectedNodes[idx]) csvIDs += (csvIDs ? "," : "") + idx;
 		}
 		if(csvIDs) {
-			$('deletegroup_options').elements.csvIDs.value = csvIDs;
-
-			Ajax.SubmitForm('deletegroup_options', null, {
-				onSuccess : function(response) {
-					Ajax.Evaluator(response);
-
-					var sel;
-					if((sel = $('sitetree').firstSelected()) && sel.parentNode) sel.addNodeClass('current');
-					else $('Form_EditForm').innerHTML = "";
-
-					treeactions.closeSelection($('deletegroup'));
-				},
-				onFailure : function(response) {
-					errorMessage('Error deleting pages', response);
-				}
-			});
-
-			$('deletegroup').getElementsByTagName('button')[0].onclick();
-			
+			if(confirm("Do you really want to these groups?")) {
+				$('deletegroup_options').elements.csvIDs.value = csvIDs;
+	
+				Ajax.SubmitForm('deletegroup_options', null, {
+					onSuccess : function(response) {
+						Ajax.Evaluator(response);
+	
+						var sel;
+						if((sel = $('sitetree').firstSelected()) && sel.parentNode) sel.addNodeClass('current');
+						else $('Form_EditForm').innerHTML = "";
+	
+						treeactions.closeSelection($('deletegroup'));
+					},
+					onFailure : function(response) {
+						errorMessage('Error deleting pages', response);
+					}
+				});
+	
+				$('deletegroup').getElementsByTagName('button')[0].onclick();
+			}
 		} else {
 			alert("Please select at least 1 security group.");
 		}
