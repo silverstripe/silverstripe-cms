@@ -6,7 +6,7 @@
         <title>Untitled Document</title>
         <meta http-equiv="imagetoolbar" content="no"> 
     </head>
-    <body id="body" onload="setTimeout(function() { imageEditor = new ImageEditor.initialize('$fileToEdit'); }, 0);">
+    <body id="body" onload="imageEditor = new ImageEditor.initialize('$fileToEdit');">
         <div id="mainContainer">
             <div id="menuBarContainer">
                 <div id="photoInfoContainer" class="floatRight">
@@ -39,14 +39,17 @@
                     <div id="lowerGreyBox" class="greyBox"></div>   
                     <img id="image" src="#" alt=""/>
                     <div id="cropBox"></div>
-                </div>  
-            </div>          
+                    <div id="loadingIndicatorContainer">
+                        <img id="loadingIndicator" alt="" src="cms/images/ImageEditor/indicator.gif">
+                    </div>  
+                </div>
+            </div>
         </div>
         <div id="fakeImgContainer">
             <img id="fakeImg" src="#" alt=""/>
         </div>
-        <div id="loadingIndicatorContainer">
-            <img id="loadingIndicator" alt="" src="cms/images/ImageEditor/indicator.gif">
-        </div>  
+        <div id="loadingIndicatorContainer2">
+            <img id="loadingIndicator2" alt="" src="cms/images/ImageEditor/indicator.gif">
+        </div>
     </body> 
 </html>

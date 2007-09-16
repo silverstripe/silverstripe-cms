@@ -12,12 +12,13 @@ var ImageEditor = {
 		resize = new Resize.initialize($('imageContainer'));
 		effects = new Effects.initialize();	
 		crop = new Crop.initialize();
+		documentBody = new DocumentBody.initialize();
 		this.originalImageFile = imageFile;
 		this.tottalyOriginalImageFile = imageFile;
 		this.onSaveClick = ImageEditor.onSaveClick.bind(this);
 		this.onCloseClick = ImageEditor.onCloseClick.bind(this);
 		Event.observe($('saveButton'),'click',this.onSaveClick);
-		Event.observe($('closeButton'),'click',this.onCloseClick);				
+		Event.observe($('closeButton'),'click',this.onCloseClick);
 	}, 
 	onSaveClick: function() {
 		if(this.tottalyOriginalImageFile != $('image').src) {

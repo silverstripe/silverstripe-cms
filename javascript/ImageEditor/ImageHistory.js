@@ -121,7 +121,6 @@ ImageHistory = {
 	
 	onImageLoad: function(event) {
 		Event.stopObserving($('image'),'load',this.onImageLoad);
-		imageBox.checkOutOfDrawingArea(this.size[this.historyPointer].width,this.size[this.historyPointer].height);
 		this.image.style.width = this.size[this.historyPointer].width + 'px';
 		this.image.style.height = this.size[this.historyPointer].height + 'px';
 		$('imageContainer').style.width = this.size[this.historyPointer].width + 'px';

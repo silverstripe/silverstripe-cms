@@ -29,6 +29,7 @@
             Requirements::javascript('cms/javascript/ImageEditor/Resize.js');
             Requirements::javascript('cms/javascript/ImageEditor/ImageBox.js');
             Requirements::javascript('cms/javascript/ImageEditor/ImageEditor.js');
+            Requirements::javascript('cms/javascript/ImageEditor/DocumentBody.js');
 
 			Requirements::javascript('jsparty/loader.js');
 			Requirements::javascript('jsparty/behaviour.js');

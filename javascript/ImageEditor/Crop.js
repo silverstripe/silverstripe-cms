@@ -87,8 +87,8 @@ var Crop = {
 		this.placeGreyBox(width,height);
 	},
 	getMousePos: function(event) {
-		x = Event.pointerX(event);
-		y = Event.pointerY(event);
+		x = Event.pointerX(event) + $('imageEditorContainer').scrollLeft;
+		y = Event.pointerY(event) + $('imageEditorContainer').scrollTop;
 		if(x <= this.leftBoxConstraint) x = this.leftBoxConstraint;
 		if(y <= this.topBoxConstraint) y = this.topBoxConstraint;
 		if(x >= this.rightBoxConstraint) x = this.rightBoxConstraint;

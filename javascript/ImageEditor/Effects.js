@@ -13,19 +13,11 @@ var Effects = {
 	
 	rotate: function() {
 		if(this.isRotateEnabled) {
-			var windowWidth = Element.getDimensions($('mainContainer')).width;
-            var windowHeight = Element.getDimensions($('mainContainer')).height - 100;
-            var imageWidth =  Element.getDimensions($('image')).height;
-            var imageHeight = Element.getDimensions($('image')).width;
-			if(imageWidth > windowWidth - 30 || imageHeight >  windowHeight - 30) {
-			    alert('Image to big to rotate');
-			} else {
-				resize.imageContainerResize.disable();
-				crop.disable();
-				imageHistory.disable();
-				imageTransformation.rotate(90,Effects.rotateCallback.bind(this));
-				this.isRotateEnabled = false;
-			}
+			resize.imageContainerResize.disable();
+			crop.disable();
+			imageHistory.disable();
+			imageTransformation.rotate(90,Effects.rotateCallback.bind(this));
+			this.isRotateEnabled = false;
 		}
 	},
 	

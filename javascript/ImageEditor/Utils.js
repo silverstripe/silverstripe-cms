@@ -42,7 +42,7 @@ Positioning = {
 	},
 	
 	getLeft: function() {
-		return Position.positionedOffset(this.element)[0];
+		return parseInt(this.element.style.left);
 	},
 	
 	getWidth: function() {

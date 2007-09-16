@@ -35,7 +35,6 @@ var ImageToResize = {
 			resize.imageContainerResize.originalWidth = this.imageToResize.width;
 			resize.imageContainerResize.originalHeight = this.imageToResize.height;
 			resize.imageContainerResize.placeClickBox();
-			imageBox.checkOutOfDrawingArea($('imageContainer').getWidth(),$('imageContainer').getHeight());
 			crop.enable();
 			resize.imageContainerResize.enable();
 			effects.enableRotate();
@@ -50,11 +49,13 @@ var ImageToResize = {
 	   var windowHeight = Element.getDimensions($('mainContainer')).height - 100;
 	   var imageWidth =  Element.getDimensions($('image')).width;
 	   var imageHeight = Element.getDimensions($('image')).height;
-	   if(imageWidth > windowWidth - 120 || imageHeight >  windowHeight - 120) {
+	   if(imageWidth > windowWidth - 40 || imageHeight >  windowHeight - 40) {
 		   imageHistory.clear();
 		   Element.hide($('imageContainer'),$('image'));
 		   ratio = imageWidth / imageHeight;
-	       while(imageWidth > windowWidth - 120 || imageHeight >  windowHeight - 120) {
+	       $('loadingIndicatorContainer2').style.left = windowWidth/2 + 'px';
+	       $('loadingIndicatorContainer2').style.top = windowHeight/2 + 100 + 'px';
+		   while(imageWidth > windowWidth - 40 || imageHeight >  windowHeight - 40) {
 	           imageWidth--;
 	           imageHeight = imageWidth * (1/ratio);
 	       }
@@ -65,7 +66,8 @@ var ImageToResize = {
     },
     
     resizeOnFirstLoadCallBack: function() {
-        resize.imageContainerResize.setVisible(true);
+        Element.hide($('loadingIndicatorContainer2'));
+		resize.imageContainerResize.setVisible(true);
 		resize.imageContainerResize.placeClickBox();
         imageBox.center();
     }

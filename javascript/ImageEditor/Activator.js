@@ -4,6 +4,8 @@ var ImageEditorActivator = {
 	},
 	
 	onOpen: function() {
+		var windowWidth = Element.getDimensions(window.top.document.body).width;
+        var windowHeight = Element.getDimensions(window.top.document.body).height;
 		iframe = window.top.document.getElementById('imageEditorIframe');
 		if(iframe != null) {
 			iframe.parentNode.removeChild(iframe);
@@ -12,8 +14,8 @@ var ImageEditorActivator = {
 		fileToEdit = $('ImageEditorActivator').firstChild.src;
 		iframe.setAttribute("src","admin/ImageEditor?fileToEdit=" + fileToEdit);
 		iframe.id = 'imageEditorIframe';
-		iframe.style.width = "97%";
-		iframe.style.height = "300%";
+		iframe.style.width = windowWidth - 30 + 'px';
+		iframe.style.height = windowHeight + 10 + 'px';
 		iframe.style.zIndex = "1000";
 		iframe.style.position = "absolute";
 		iframe.style.top = "-2%";

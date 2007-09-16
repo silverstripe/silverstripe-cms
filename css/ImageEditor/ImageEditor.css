@@ -79,10 +79,17 @@
 }
 #loadingIndicatorContainer
 {
-    display: none;
-    position: absolute;
-    z-index: 1000;
+	position: absolute;
+    top: -1000px;
+    left: -1000px;
 }
+#loadingIndicatorContainer2
+{
+    position: absolute;
+    top: -1000px;
+    left: -1000px;
+}
+
 #fakeImg
 {
     display: none;
@@ -110,9 +117,14 @@ body
     position: absolute;
     border-color: black;
     border-style: solid;
-    height: 40%;
+    height: 97%;
     width: 98%;
     left: 1%;
     top: 1%;
     background-color: white;
+}
+#imageEditorContainer
+{
+    position: relative;
+    overflow: auto;
 }
