@@ -14,7 +14,6 @@ var Crop = {
 		this.centerCropBox = Crop.centerCropBox.bind(this);
 		this.placeGreyBox = Crop.placeGreyBox.bind(this);
 		this.setListeners = Crop.setListeners.bind(this);
-		this.onCropStop = Crop.onCropStop.bind(this);
 		this.onCropStart = Crop.onCropStart.bind(this);
 		this.onCropOk = Crop.onCropOk.bind(this);
 		this.onCropCancel = Crop.onCropCancel.bind(this);
@@ -31,7 +30,7 @@ var Crop = {
 			getMousePos: Crop.getMousePos.bind(this)
 		};	
 		this.resizeCropBox = new Resizeable.initialize(this.cropBox,options);
-		Event.observe(this.cropBox,'dblclick',this.onCropStop.bind(this));
+		Event.observe(this.cropBox,'dblclick',this.onCropOk.bind(this));
 		this.setListeners();
 		this.isVisible = false;
 		this.setVisible(this.isVisible);
@@ -97,11 +96,6 @@ var Crop = {
 		return {x: x,y: y};		
 	},
 	
-	onCropStop: function(event) {
-		Element.hide($('cropOk'),$('cropCancel'));
-		this.doCrop();
-	},
-	
 	doCrop: function() {
 		if(this.isEnabled) {
 			newWidth = this.cropBox.getWidth() 
@@ -110,11 +104,13 @@ var Crop = {
 			startLeft = this.cropBox.getLeft() ;
 			if(newWidth > 35 && newHeight > 35) {
 				imageTransformation.crop(startTop,startLeft,newWidth,newHeight,Crop.cropCallback.bind(this));
+				this.disable();
 			} else {
 				alert('Crop area too small');
+				return false;
 			}
-			this.disable();
 			$('image').style.visibility = 'visible';//hack for IE for not selecting image during crop
+			return true;
 		}
 	},
 	
@@ -142,9 +138,7 @@ var Crop = {
 	
 	onCropOk: function() {
 		if(this.isEnabled) {
-		    Element.hide($('cropOk'),$('cropCancel'));
-		    this.doCrop();
-		    effects.disableRotate();
+		    if(this.doCrop()) Element.hide($('cropOk'),$('cropCancel'));
 		}	
 	},
 	
