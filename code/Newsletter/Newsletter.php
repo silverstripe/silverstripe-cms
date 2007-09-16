@@ -71,13 +71,7 @@ class Newsletter extends DataObject {
 		// Create new data object set containing the subscribers who have not been sent this newsletter:
 		$unsent_subscribers = new DataObjectSet();
 		foreach($unsent_subscribers_array as $key => $data) {
-			$record = array(
-				'ID' => $data['ID'],
-				'FirstName' => $data['FirstName'],
-				'Surname' => $data['Surname'],
-				'Email' => $data['Email']
-			);
-			$unsent_subscribers->push(new ArrayData($record));
+			$unsent_subscribers->push(new ArrayData($data));
 		}
 	
 		return $unsent_subscribers;	
