@@ -19,6 +19,7 @@ ImageHistory = {
 		this.operationMade = ImageHistory.operationMade.bind(this);		
 		this.isInHistory = ImageHistory.isInHistory.bind(this);
 		this.onImageLoad = ImageHistory.onImageLoad.bind(this);
+		this.removeLastOperation = ImageHistory.removeLastOperation.bind(this);
 	
 		this.enable = ImageHistory.enable.bind(this);
 		this.disable = ImageHistory.disable.bind(this);
@@ -61,6 +62,8 @@ ImageHistory = {
 			this.historyPointer++;
 			this.size[this.historyPointer] = {'width': imageWidth,'height': imageHeight};
 			this.history[this.historyPointer] = {'operation': operation,'fileUrl' : url};
+			this.size = this.size.slice(0,this.historyPointer+1);
+			this.history = this.history.slice(0,this.historyPointer+1);
 			if(operation == 'rotate' || operation == 'crop') this.modifiedOriginalImage = true;
 		}
 	},
@@ -98,6 +101,12 @@ ImageHistory = {
 	   this.history = new Array();
        this.historyPointer = -1;
 	   this.size = new Array();
+	},
+	
+	removeLastOperation: function() {
+		this.history.pop();
+		this.size.pop();
+		this.historyPointer--;		
 	},
 	
 	isInHistory: function(operation,url) {
