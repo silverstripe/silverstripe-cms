@@ -7,8 +7,8 @@ Upload.prototype = {
         this.uploadInProgress = false;
         this.uploadMessage = '';
         if(typeof params.fileSizeLimit != 'undefined') this.setFileSizeLimit = params.fileSizeLimit; else this.fileSizeLimit = '30720';
-        if(typeof params.fileTypes != 'undefined') this.fileTypes = params.fileTypes; else params.fileTypes = '*.*';
-        if(typeof params.fileTypesDescription != 'underfined') this.fileTypesDescription = params.fileTypesDescription; else this.fileTypesDescription = 'All Files';
+        if(typeof params.fileTypes != 'undefined') this.fileTypes = params.fileTypes; else this.fileTypes = '*.*';
+        if(typeof params.fileTypesDescription != 'undefined') this.fileTypesDescription = params.fileTypesDescription; else this.fileTypesDescription = 'All Files';
         if(typeof params.fileUploadLimit != 'undefined') this.fileUploadLimit = params.fileUploadLimit; else this.fileUploadLimit = '6';
         if(typeof params.beginUploadOnQueue != 'undefined') this.beginUploadOnQueue = params.beginUploadOnQueue; else this.beginUploadOnQueue = false;
         if(typeof params.fileQueued != 'undefined') this.fileQueued = params.fileQueued; 
@@ -28,7 +28,7 @@ Upload.prototype = {
                 file_post_name: 'Files',
                 file_size_limit : this.fileSizeLimit,  // 30 MB
                 file_types : this.fileTypes, // or you could use something like: '*.doc;*.wpd;*.pdf',
-                file_types_description : this.fileTypeDescription,
+                file_types_description : this.fileTypesDescription,
                 file_upload_limit : this.fileUploadLimit,
                 begin_upload_on_queue : this.beginUploadOnQueue,
                 use_server_data_event : true,
@@ -140,6 +140,15 @@ Upload.prototype = {
         this.swfu.browse();
     },
     
+    startUpload: function() {
+        this.swfu.startUpload();
+    },
+    
+    cancelUpload: function(fileId) {
+        this.filesToUpload--;
+        this.swfu.cancelUpload(fileId);
+    },
+    
     setFolderID: function(id) {
         this.folderID = id;
     },
@@ -150,6 +159,10 @@ Upload.prototype = {
     
     getFilesToUpload: function() {
         return this.filesToUpload;
+    },
+    
+    getUploadMessage: function() {
+        return this.uploadMessage;
     },
     
     isUploadInProgress: function() {
