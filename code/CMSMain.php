@@ -1348,8 +1348,8 @@ JS
 	 */
 	function MultipleLanguages() {
 		$langs = i18n::get_existing_languages('SiteTree');
-				
-		return count($langs)>1;
+
+		return (count($langs) > 1);
 	}
 	
 	/**
