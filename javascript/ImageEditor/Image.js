@@ -65,7 +65,6 @@ var ImageToResize = {
     },
     
     resizeOnFirstLoadCallBack: function() {
-		//Element.hide($('imageContainer'),$('image'));
         resize.imageContainerResize.setVisible(true);
 		resize.imageContainerResize.placeClickBox();
         imageBox.center();

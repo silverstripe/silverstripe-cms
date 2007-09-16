@@ -4,6 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
         <% base_tag %>
         <title>Untitled Document</title>
+        <meta http-equiv="imagetoolbar" content="no"> 
     </head>
     <body id="body" onload="setTimeout(function() { imageEditor = new ImageEditor.initialize('$fileToEdit'); }, 0);">
         <div id="mainContainer">
