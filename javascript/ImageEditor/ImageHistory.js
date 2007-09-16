@@ -33,9 +33,9 @@ ImageHistory = {
 				if(this.operationMade(this.historyPointer-1,'rotate') || this.operationMade(this.historyPointer-1,'crop')) 
 					this.modifiedOriginalImage = true; else this.modifiedOriginalImage = false;
 			}
-			this.image.src = this.history[this.historyPointer-1].fileUrl;
-			this.historyPointer--;
-			this.onImageLoad();
+			Event.observe('image','load',this.onImageLoad);
+			this.historyPointer = this.historyPointer - 1;
+			this.image.src = this.history[this.historyPointer].fileUrl;
 		} else {
 			alert("No more undo");
 		}
@@ -45,9 +45,9 @@ ImageHistory = {
 		if(this.historyPointer < this.history.length-1) {
 			operation = this.history[this.historyPointer+1].operation;
 			if(operation == 'rotate' || operation == 'crop') this.modifiedOriginalImage = true;
-			this.image.src = this.history[this.historyPointer+1].fileUrl;
-			this.historyPointer++;
-			this.onImageLoad();
+			Event.observe('image','load',this.onImageLoad);
+			this.historyPointer = this.historyPointer + 1;
+			this.image.src = this.history[this.historyPointer].fileUrl;
 		} else {
 			alert("No more redo");
 		}
@@ -111,6 +111,7 @@ ImageHistory = {
 	},
 	
 	onImageLoad: function(event) {
+		Event.stopObserving($('image'),'load',this.onImageLoad);
 		imageBox.checkOutOfDrawingArea(this.size[this.historyPointer].width,this.size[this.historyPointer].height);
 		this.image.style.width = this.size[this.historyPointer].width + 'px';
 		this.image.style.height = this.size[this.historyPointer].height + 'px';
