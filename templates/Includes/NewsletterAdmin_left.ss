@@ -33,8 +33,8 @@ ul.tree li.MailType span.Sent a {
 		<form class="actionparams" id="addtype_options" style="display: none" action="admin/newsletter/add">
 			<input type="hidden" name="ParentID" value="" />
 				<select name="PageType" id="add_type">
-					<option value="type">Add new type</option>
 					<option value="draft">Add new draft</option>
+					<option value="type">Add new type</option>
 				</select>
 			<input class="action" type="submit" value="Go" />
 		</form>

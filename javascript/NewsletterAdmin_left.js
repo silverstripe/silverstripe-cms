@@ -72,6 +72,8 @@ SiteTree.prototype = {
 		Element.addClassName(mailingListNode,'nodelete');
 		this.appendTreeNode( typeNode );	
 		this.changeCurrentTo( typeNode );
+		// Change the 'Create...' drop-down to 'Add a draft' since this will be the logical next action after a Newsletter type is created
+		$('add_type').value = 'draft';
 	}
 }
 
@@ -190,6 +192,8 @@ deletedraft = {
 }
 
 SiteTreeNode.prototype.onselect = function() {
+	// Change the 'Create...' drop-down to 'Add a draft' whenever a selection is made in the left tree
+	$('add_type').value = 'draft';
 	$('sitetree').changeCurrentTo(this);
 	if($('sitetree').notify('SelectionChanged', this)) {
 		autoSave(true, this.getPageFromServer.bind(this));
@@ -259,7 +263,20 @@ AddForm.applyTo('#addtype');
 AddForm.prototype = {
   initialize: function () {
 		Observable.applyTo($(_HANDLER_FORMS[this.id]));
-		this.getElementsByTagName('button')[0].onclick = returnFalse;
+		this.getElementsByTagName('button')[0].onclick = function() {
+			var st = $('sitetree');
+			if (st) {
+				// Select 'Add new draft' if the left tree is not empty, 
+				// because, most likely, the user will want to add a new draft if they already have a newsletter type
+				if (typeof st.lastTreeNode() != 'undefined') {
+					$('add_type').value = 'draft';
+				} else {
+					$('add_type').value = 'type';
+				}
+			} else {
+				$('add_type').value = 'type';
+			}
+		}
 		$(_HANDLER_FORMS[this.id]).onsubmit = this.form_submit;
 	},
     
