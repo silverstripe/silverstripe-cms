@@ -21,7 +21,6 @@
 <% if ImportMessage %>
 	<script type="text/javascript">
 		top.statusMessage('Imported new members','good');
-		top.reloadRecipientsList();
 	</script>
 <% end_if %>	
 </head>
@@ -29,6 +28,7 @@
 <% if ImportMessage %>
 	<p>
 		$ImportMessage
+		<p><b>Note:</b> To see the new members on the Recipients tab, you need to <a href="#" onclick="javascript:top.reloadRecipientsList()">reload the Mailing List</a>.</p>
 		<ul>
 			<li><label>New members imported:</label>$NewMembers</li>
 			<li><label>Members updated:</label>$ChangedMembers</li>

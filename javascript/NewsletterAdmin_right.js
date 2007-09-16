@@ -108,7 +108,7 @@ Behaviour.register({
                 		if( otherid ) {
 					requestURL = 'admin/newsletter/shownewsletter/' + otherid;
 				}
-				new Ajax.Request(requestURL, {
+				new Ajax.Request(baseHref() + requestURL, {
 					asynchronous : true,
 					method : 'post', 
 					postBody : /*'ID=' +  id + 'type=' + type + */'ajax=1'+ (otherid?('&otherid='+otherid):''),
@@ -535,22 +535,7 @@ function autoSave(confirmation, callAfter) {
 }
 
 function reloadRecipientsList() {
-	
-	var id = $('Form_EditForm_ID').value;
-	if(navigator.appName == "Microsoft Internet Explorer") {
-		var url = 'admin/newsletter/getrecipientslist/';
-	} else {
-		var url = 'getrecipientslist/';
-	}
-	 var request = new Ajax.Request(url  + id + '?ajax=1', {
-		onSuccess: function( response ) {
-			$('Root_Recipients').innerHTML = response.responseText;
-			Behaviour.apply( $('MemberList') );
-		},
-		onFailure: function(response) {
-			statusMessage('Could not automatically refresh recipients list', 'bad');
-		}
-	});	
+	$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value, 'recipients', 0, 'Root_Recipients');	
 }
 
 /*RecipientImportField = Class.create();
