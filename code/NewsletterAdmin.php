@@ -291,6 +291,7 @@ class NewsletterAdmin extends LeftAndMain {
 					$unsubscribedList = new UnsubscribedList("Unsubscribed", $mailType)
 					),
 					new Tab("Bounced",
+					new LiteralField('Instructions', '<p><b>Instructions:</b></p><ul><li>Uncheck the box and click the "Save" button to disable sending to an email address.</li><li>To delete an email address from your mailing list, click the red "X" icon.</li></ul>'),
 					$bouncedList = new BouncedList("Bounced", $mailType )
 					)
 				)
