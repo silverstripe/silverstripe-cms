@@ -106,17 +106,17 @@ class NewsletterEmailProcess extends BatchProcess {
 		} else {
 			$resent = false;
 		}
-    
-    $this->newsletter->SentDate = 'now';
-    $this->newsletter->Status = 'Send';
-    $this->newsletter->write();
-    
-    $message = "statusMessage('Sent " . count( $this->objects ) . " emails successfully','good');";
-	
-	if( $resent )
-    	return $message."resent_ok( '{$this->nlType->ID}', '{$this->newsletter->ID}' )";
-    else    
-      return $message."draft_sent_ok( '{$this->nlType->ID}', '{$this->newsletter->ID}' )";
+		
+		$this->newsletter->SentDate = 'now';
+		$this->newsletter->Status = 'Send';
+		$this->newsletter->write();
+		
+		// Call the success message JS function with the Newsletter information
+		if( $resent ) {
+			return "resent_ok( '{$this->nlType->ID}', '{$this->newsletter->ID}', '".count( $this->objects )."' )";
+		} else {
+			return "draft_sent_ok( '{$this->nlType->ID}', '{$this->newsletter->ID}', '".count( $this->objects )."' )";
+		}
 	}
 }
 ?>

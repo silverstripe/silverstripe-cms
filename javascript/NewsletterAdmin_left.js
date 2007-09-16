@@ -213,7 +213,7 @@ SiteTreeNode.prototype.getPageFromServer = function() {
 		$('Form_EditForm').getPageFromServer(newPageID, type, otherID, openTabName);
 };
 
-function draft_sent_ok( newsletterID, draftID ) {
+function draft_sent_ok( newsletterID, draftID, numEmails ) {
     var draftsListNode = $('drafts_' + newsletterID);
     var sentListNode = $('sent_' + newsletterID);
     var draftNode = $('draft_' + newsletterID + '_' + draftID );
@@ -221,11 +221,11 @@ function draft_sent_ok( newsletterID, draftID ) {
     draftsListNode.removeTreeNode( draftNode );
     draftNode.id = 'sent_' + newsletterID + '_' + draftID;
     sentListNode.appendTreeNode( draftNode, null );
-    statusMessage('Sent email to mailing list', 'good'); 
+    statusMessage('Sent newsletter to mailing list. Sent ' + numEmails + ' emails successfully.', 'good'); 
 }
 
-function resent_ok( newsletterID, sentID ) {
-    statusMessage('Resent email to mailing list', 'good'); 
+function resent_ok( newsletterID, sentID, numEmails ) {
+    statusMessage('Resent newsletter to mailing list. Sent ' + numEmails + ' emails successfully.', 'good'); 
 }
 
 function reloadSiteTree() {
