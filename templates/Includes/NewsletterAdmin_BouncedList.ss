@@ -11,7 +11,7 @@
 	<th>User name</th>
 	<th>Email address</th>
 	<th>Reason:</th>
-	<th>Last bounce at</th>
+	<th>Date</th>
 	<th width="18">&nbsp;</th>
     </tr>
   </thead>
