@@ -34,6 +34,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Requirements::javascript("cms/javascript/TaskList.js");
 		Requirements::javascript("cms/javascript/CommentList.js");
 		Requirements::javascript("cms/javascript/SideReports.js");
+		Requirements::javascript("cms/javascript/LangSelector.js");
+		Requirements::javascript('cms/javascript/TranslationTab.js');
 		Requirements::javascript("sapphire/javascript/UpdateURL.js");
 		Requirements::javascript("sapphire/javascript/UniqueFields.js");
 		Requirements::javascript("sapphire/javascript/RedirectorPage.js");
@@ -142,7 +144,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// getChildrenAsUL is a flexible and complex way of traversing the tree
 		$siteTree = $obj->getChildrenAsUL("", '
 					"<li id=\"record-$child->ID\" class=\"" . $child->CMSTreeClasses($extraArg) . "\">" .
-					"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" " . (($child->canEdit() || $child->canAddChildren()) ? "" : "class=\"disabled\"") . " title=\"' . _t('LeftAndMain.PAGETYPE','Page type: ') . '".$child->class."\" >" .
+					"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" " . (($child->canEdit() || $child->canAddChildren()) ? "" : "class=\"disabled\"") . " title=\"' . _t('LeftAndMain.PAGETYPE') . '".$child->class."\" >" .
 					($child->TreeTitle()) .
 					"</a>"
 '
@@ -292,11 +294,11 @@ JS;
 			if($instance->stat('need_permission') && !$this->can( singleton($class)->stat('need_permission') ) ) continue;
 
 			$addAction = $instance->uninherited('add_action', true);
-			if(!$addAction) $addAction = "$class";
+			if(!$addAction) $addAction = "a $class";
 
 			$result->push(new ArrayData(array(
 				"ClassName" => $class,
-				"AddAction" => _t('CMSMain.CREATE','Create a ',PR_MEDIUM,'"Create a " message, followed by an action (e.g. "contact form")') .$addAction,
+				"AddAction" => _t('CMSMain.CREATE','Create ',PR_MEDIUM,'"Create " message, followed by an action (e.g. "a contact form")') .$addAction,
 			)));
 		}
 		return $result;
@@ -419,6 +421,15 @@ JS;
 
 	public function getNewItem($id, $setID = true) {
 		list($dummy, $className, $parentID, $suffix) = explode('-',$id);
+		if (!Translatable::is_default_lang()) {
+			$originalItem = Translatable::get_original($className,Session::get("{$id}_originalLangID"));
+			if ($setID) $originalItem->ID = $id;
+			else {
+				$originalItem->ID = null;
+				Translatable::creating_from(Session::get($id.'_originalLangID'));
+			}
+			return $originalItem;
+		}
 		$newItem = new $className();
 
 	    if( !$suffix ) {
@@ -695,7 +706,7 @@ HTML;
 		$pageID = $this->urlParams['ID'];
 		$page = $this->getRecord($pageID);
 		if($page) {
-			$versions = $page->allVersions($_REQUEST['unpublished'] ? "" : "`SiteTree_versions`.WasPublished = 1");
+			$versions = $page->allVersions($_REQUEST['unpublished'] ? "" : "`SiteTree`.WasPublished = 1");
 			return array(
 				'Versions' => $versions,
 			);
@@ -710,7 +721,7 @@ HTML;
 	function rollback() {
 		if($_REQUEST['Version']) {
 			$record = $this->performRollback($_REQUEST['ID'], $_REQUEST['Version']);
-			echo sprintf(_t('CMSMain.ROLLEDBACKVERSION',"Rolled back to version #%d.  New version number is #%d"),$_REQUEST[Version],$record->Version);
+			echo sprintf(_t('CMSMain.ROLLEDBACKVERSION',"Rolled back to version #%d.  New version number is #%d"),$_REQUEST['Version'],$record->Version);
 		} else {
 			$record = $this->performRollback($_REQUEST['ID'], "Live");
 			echo sprintf(_t('CMSMain.ROLLEDBACKPUB',"Rolled back to published version. New version number is #%d"),$record->Version);
@@ -770,7 +781,7 @@ HTML;
 
 	function getversion() {
 		$id = $this->urlParams['ID'];
-		$version = $this->urlParams['OtherID'];
+		$version = str_replace('&ajax=1','',$this->urlParams['OtherID']);
 		$record = Versioned::get_version("SiteTree", $id, $version);
 
 		if($record) {
@@ -1183,6 +1194,110 @@ HTML;
 			user_error("CMSMain::duplicate() Bad ID: '$id'", E_USER_WARNING);
 		}
 	}
+	
+	/**
+	 * Switch the cms language and reload the site tree
+	 *
+	 */
+	function switchlanguage($lang, $donotcreate = null) {
+		//is it's a clean switch (to an existing language deselect the current page)
+		if (is_string($lang)) $dontunloadPage = true;
+		$lang = (is_string($lang) ? $lang : urldecode($this->urlParams['ID']));
+		if ($lang != Translatable::default_lang()) {
+			Translatable::set_reading_lang(Translatable::default_lang());
+			$tree_class = $this->stat('tree_class');
+			$obj = new $tree_class;
+			$allIDs = $obj->getDescendantIDList();
+			$allChildren = $obj->AllChildren();
+			$classesMap = $allChildren->map('ID','ClassName');
+			$titlesMap = $allChildren->map();
+			Translatable::set_reading_lang($lang);
+			$obj = new $tree_class;
+			$languageIDs = $obj->getDescendantIDList();
+			$notcreatedlist = array_diff($allIDs,$languageIDs);
+			FormResponse::add("$('addpage').getElementsByTagName('button')[0].disabled=true;");
+			FormResponse::add("$('Form_AddPageOptionsForm').getElementsByTagName('div')[1].getElementsByTagName('input')[0].disabled=true;");
+			FormResponse::add("$('Translating_Message').innerHTML = 'Translating mode - ".i18n::get_language_name($lang)."';");
+			FormResponse::add("Element.removeClassName('Translating_Message','nonTranslating');");
+		} else {
+			Translatable::set_reading_lang($lang);
+			FormResponse::add("$('addpage').getElementsByTagName('button')[0].disabled=false;");
+			FormResponse::add("$('Form_AddPageOptionsForm').getElementsByTagName('div')[1].getElementsByTagName('input')[0].disabled=false;");
+			FormResponse::add("Element.addClassName('Translating_Message','nonTranslating');");
+		}
+		$obj = singleton($this->stat('tree_class'));
+		$obj->markPartialTree();
+		$siteTree = $obj->getChildrenAsUL("", '
+					"<li id=\"record-$child->ID\" class=\"" . $child->CMSTreeClasses($extraArg) . "\">" .
+					"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" " . (($child->canEdit() || $child->canAddChildren()) ? "" : "class=\"disabled\"") . " title=\"' . _t('LeftAndMain.PAGETYPE') . '".$child->class."\" >" .
+					($child->TreeTitle()) .
+					"</a>"
+'
+					,$this, true);
+
+		$rootLink = $this->Link() . '0';
+		$siteTree = "<li id=\"record-0\" class=\"Root nodelete\"><a href=\"$rootLink\">" .
+			 _t('LeftAndMain.SITECONTENT') . "</a>"
+			. $siteTree . "</li></ul>";
+		FormResponse::add("$('sitetree').innerHTML ='". ereg_replace("[\n]","\\\n",$siteTree) ."';");
+		FormResponse::add("SiteTree.applyTo('#sitetree');");
+		if (isset($notcreatedlist)) {
+			foreach ($notcreatedlist as $notcreated) {
+				if ($notcreated == $donotcreate) continue;
+				$id = "new-{$classesMap[$notcreated]}-0-$notcreated";
+				Session::set($id . '_originalLangID',$notcreated);
+				$treeTitle = Convert::raw2js($titlesMap[$notcreated]);	
+				$response = <<<JS
+					var tree = $('sitetree');
+					var newNode = tree.createTreeNode("$id", "$treeTitle", "$classesMap[$notcreated] (untranslated)");
+					addClass(newNode, 'untranslated');
+					node = tree.getTreeNodeByIdx(0);
+					node.open();
+					node.appendTreeNode(newNode);
+JS;
+				FormResponse::add($response);
+			}
+		}
+		if (!isset($dontunloadPage)) FormResponse::add("node = $('sitetree').getTreeNodeByIdx(0); node.selectTreeNode();");
+		return FormResponse::respond();
+	}
+	
+	/**
+	 * Create a new translation from an existing item, switch to this language and reload the tree.
+	 */
+	function createtranslation () {
+		if(!Director::is_ajax()) {
+			Director::redirectBack();
+			return;
+		}
+		$langCode = $_REQUEST['newlang'];
+		$langName = i18n::get_language_name($langCode);
+		$originalLangID = $_REQUEST['ID'];
+
+		$record = $this->getRecord($originalLangID);
+	    $temporalID = "new-$record->RecordClassName-$record->ParentID-$originalLangID";
+		Session::set($temporalID . '_originalLangID',$originalLangID);
+		$tree = $this->switchlanguage($langCode, $originalLangID);
+		FormResponse::add(<<<JS
+		if (Element.hasClassName('LangSelector_holder','onelang')) {
+			Element.removeClassName('LangSelector_holder','onelang');
+			$('treepanes').resize();
+		}
+		if ($('LangSelector').options['$langCode'] == undefined) {
+			var option = document.createElement("option");
+			option.text = '$langName';
+			option.value = '$langCode';
+			$('LangSelector').options.add(option);
+		}
+JS
+		);
+		FormResponse::add("$('LangSelector').selectValue('$langCode');");
+		$newrecord = clone $record;
+		$newrecord->ID = $temporalID;
+
+		$newrecord->CheckedPublicationDifferences = $newrecord->AddedToStage = true;
+		return $this->returnItemToUser($newrecord);
+	}
 
 	// HACK HACK HACK - Dont remove without telling simon ;-)
 
@@ -1218,6 +1333,30 @@ HTML;
 			$perms["CMS_ACCESS_" . $class] = "Access to $class in CMS";
 		}
 		return $perms;
+	}
+	/**
+	 * Return a dropdown with existing languages
+	 */
+	function LangSelector() {
+		$langs = i18n::get_existing_languages('SiteTree');
+				
+		return new DropdownField("LangSelector","Language",$langs,Translatable::current_lang());
+	}
+
+	/**
+	 * Determine if there are more than one languages in our site tree
+	 */
+	function MultipleLanguages() {
+		$langs = i18n::get_existing_languages('SiteTree');
+				
+		return count($langs)>1;
+	}
+	
+	/**
+	 * Get the name of the language that we are translating in
+	 */
+	function EditingLang() {
+		if (!Translatable::is_default_lang()) return i18n::get_language_name(Translatable::current_lang());
 	}
 }
 // TODO: Find way to put this in a class
