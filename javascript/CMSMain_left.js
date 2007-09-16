@@ -98,6 +98,53 @@ addpage.prototype = {
 }
 
 /**
+ * Search button click action
+ */
+search = Class.create();
+search.applyTo('#search');
+search.prototype = {
+	initialize : function() {
+		Observable.applyTo($(_HANDLER_FORMS.search));
+	},
+	onclick : function() {
+		if(treeactions.toggleSelection(this)) {
+			this.o2 = $(_HANDLER_FORMS[this.id]).observeMethod('Close', this.popupClosed.bind(this));
+		}
+		return false;
+	},
+	popupClosed : function() {
+		$(_HANDLER_FORMS.search).stopObserving(this.o2);
+		// Reload the site tree if it has been filtered
+		if ($('SiteTreeIsFiltered').value == 1) {
+			// Show all items in Site Tree again
+			new Ajax.Request( 'admin/SiteTreeAsUL' + '&ajax=1', {
+				onSuccess: function( response ) {
+					$('sitetree_ul').innerHTML = response.responseText;
+					Behaviour.apply();
+					$('SiteTreeIsFiltered').value = 0;
+					statusMessage('Unfiltered tree','good');
+				},
+				onFailure : function(response) {
+					errorMessage('Could not unfilter site tree<br />' + response.responseText);
+				}
+			});
+		}
+	}
+}
+
+/**
+ * Add Criteria Drop-down onchange action which allows more criteria to be shown
+ */
+SiteTreeFilterAddCriteria = Class.create();
+SiteTreeFilterAddCriteria.applyTo('#SiteTreeFilterAddCriteria');
+SiteTreeFilterAddCriteria.prototype = {
+	onchange : function() {
+		Element.show('Text' + this.value);
+		Element.show('Input' + this.value);
+	}
+}
+
+/**
  * Batch Actions button click action
  */
 batchactions = Class.create();

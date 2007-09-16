@@ -2,6 +2,12 @@
 
 global $lang;
 
+$lang['en_US']['LeftAndMain']['PAGETYPE'] = 'Page type: ';
+$lang['en_US']['LeftAndMain']['SITECONTENT'] = array(
+	'Site Content',
+	PR_HIGH,
+	'Root node on left'
+);
 $lang['en_US']['CMSMain']['CREATE'] = array(
 	'Create a ',
 	PR_MEDIUM,
@@ -143,6 +149,10 @@ $lang['en_US']['CMSMain_left.ss']['ENABLEDRAGGING'] = array(
 	'Allow drag &amp; drop reordering',
 	 PR_HIGH
 );
+$lang['en_US']['CMSMain_left.ss']['SEARCH'] = 'Search';
+$lang['en_US']['CMSMain_left.ss']['SEARCHTITLE'] = 'Search through URL, Title, Menu Title, &amp; Content';
+$lang['en_US']['CMSMain_left.ss']['EDITEDSINCE'] = 'Edited Since';
+$lang['en_US']['CMSMain_left.ss']['ADDSEARCHCRITERIA'] = 'Add Criteria...';
 $lang['en_US']['CMSMain_left.ss']['SELECTPAGESACTIONS'] = 'Select the pages that you want to change &amp; then click an action:';
 $lang['en_US']['CMSMain_left.ss']['DELETECONFIRM'] = 'Delete the selected pages';
 $lang['en_US']['CMSMain_left.ss']['PUBLISHCONFIRM'] = 'Publish the selected pages';

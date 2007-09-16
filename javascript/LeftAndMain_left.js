@@ -12,7 +12,8 @@ SiteTreeHandlers.controller_url = 'admin';
 
 var _HANDLER_FORMS = {
 	addpage : 'Form_AddPageOptionsForm',
-	batchactions : 'batchactionsforms'
+	batchactions : 'batchactionsforms',
+	search : 'search_options'
 };
 
 
@@ -460,28 +461,22 @@ ReorganiseAction.prototype = {
  * Control the site tree filter
  */
 SiteTreeFilterForm = Class.create();
-SiteTreeFilterForm.applyTo('form#SiteTreeFilter');
+SiteTreeFilterForm.applyTo('form#search_options');
 SiteTreeFilterForm.prototype = {
-	
-	initialize: function() {
-		this.valueField = $('SiteTreeFilterValue');
-		this.submitButton = $('SiteTreeFilterButton');
-		this.submitButton.onclick = this.submitclick.bind(this);
-		// this.submitButton.onclick = function() { alert('Click'); return false; }
-	},
-	
-	submitclick: function() {
-		new Ajax.Request( this.action + '?SiteTreeFilterValue=' + encodeURIComponent( this.valueField.value ) + '&ajax=1', {
-			onSuccess: function( response ) {
-				alert(response.responseText);
-				$('sitetree').innerHTML = response.responseText;
-				Behaviour.apply( $('sitetree') );
-				statusMessage('Filtered tree','good');
-			},
-			onFailure: function( response ) {
-				errorMessage('Could not filter site tree<br />' + response.responseText);
-			}
-		});
+	onsubmit: function() {
+			$('SiteTreeSearchButton').className = 'loading';
+			Ajax.SubmitForm(this, null, {
+				onSuccess :  function(response) {
+					$('SiteTreeIsFiltered').value = 1;
+					$('SiteTreeSearchButton').className = '';
+					$('sitetree_ul').innerHTML = response.responseText;
+					Behaviour.apply();
+					statusMessage('Filtered tree','good');
+				},
+				onFailure : function(response) {
+					errorMessage('Could not filter site tree<br />' + response.responseText);
+				}
+			});
 		
 		return false;
 	}

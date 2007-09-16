@@ -375,3 +375,7 @@ ul.tree span.a.MailType span.c, ul.tree span.a.last.MailType span.c, ul.tree spa
 	background-color: #B6BDD2;
 	text-decoration: none;
 }
+#left form.actionparams .SearchCriteria {
+	width: 45%;
+	float: left;
+}

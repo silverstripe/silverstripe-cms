@@ -42,6 +42,26 @@
 				
 			</form>
 			<% end_control %>
+			<form class="actionparams" style="display: none" id="search_options" action="admin/filterSiteTree">
+				<div>
+				<input type="hidden" id="SiteTreeIsFiltered" value="0" />
+				<input type="text" id="SiteTreeSearchTerm" name="SiteTreeSearchTerm" />
+				<input type="submit" id="SiteTreeSearchButton" value="<% _t('SEARCH','Search'); %>" title="<% _t('SEARCHTITLE','Search through URL, Title, Menu Title, &amp; Content'); %>" />
+				<div style="display:none" id="TextSiteTreeFilterDate" class="SearchCriteria"><b><% _t('EDITEDSINCE','Edited Since'); %>:</b></div>
+				<div style="display:none" id="InputSiteTreeFilterDate">$SiteTreeFilterDateField</div>
+				<% control SiteTreeFilterOptions %>
+					<div style="display:none" id="Text$Column" class="SearchCriteria"><b>$Title:</b></div>
+					<input style="display:none" id="Input$Column" name="$Column" class="SearchCriteria" />
+				<% end_control %>
+				<select id="SiteTreeFilterAddCriteria">
+					<option><% _t('ADDSEARCHCRITERIA','Add Criteria...'); %></option>
+					<option value="SiteTreeFilterDate"><% _t('EDITEDSINCE','Edited Since'); %></option>
+					<% control SiteTreeFilterOptions %>
+        					<option value="$Column">$Title</option>
+					<% end_control %>
+				</select>
+				</div>
+			</form>
 			<div id="batchactionsforms" style="display: none">
 				<form class="actionparams" style="border:0" id="deletepage_options" action="admin/deleteitems">
 					<p><% _t('SELECTPAGESACTIONS','Select the pages that you want to change &amp; then click an action:'); %></p>
@@ -74,8 +94,9 @@
 				<span style="cursor: help" title="<% _t('EDITEDNOTPUB','Edited on the draft site and not published yet'); %>" class="modified"><% _t('CHANGED','changed'); %></span>
 			</div>
 
-
-		$SiteTreeAsUL
+			<div id="sitetree_ul">
+				$SiteTreeAsUL
+			</div>
 		</div>
 		<!--<div id="search_holder" style="display:none">
 			<h2>Search</h2>

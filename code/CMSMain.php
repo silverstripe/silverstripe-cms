@@ -9,6 +9,11 @@
 class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionProvider {
 	static $tree_class = "SiteTree";
 	static $subitem_class = "Member";
+	/**
+	 * SiteTree Columns that can be filtered using the the Site Tree Search button
+	 */
+	static $site_tree_filter_options = array('ClassName' => 'Page Type', 'Status' => 'Status', 
+						 'MetaDescription' => 'Description', 'MetaKeywords' => 'Keywords');
 
 	public function init() {
 		parent::init();
@@ -101,6 +106,59 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$this->generateTreeStylingJS();
 
 		return $this->getSiteTreeFor("SiteTree");
+	}
+
+	/**
+	 * Returns the SiteTree columns that can be filtered using the the Site Tree Search button as a DataObjectSet
+	 */
+	public function SiteTreeFilterOptions() {
+		$filter_options = new DataObjectSet();
+		foreach(self::$site_tree_filter_options as $key => $value) {
+   			$record = array(
+				'Column' => $key,
+				'Title' => $value,
+			);
+			$filter_options->push(new ArrayData($record));
+		}
+		return $filter_options;
+	}
+		public function SiteTreeFilterDateField() {
+			$dateField = new CalendarDateField('SiteTreeFilterDate');
+			return $dateField->Field();
+		}
+
+	/**
+	 * Returns a filtered Site Tree
+	 */
+	public function filterSiteTree() {
+		$className = 'SiteTree';
+		$rootID = null;
+		$obj = $rootID ? $this->getRecord($rootID) : singleton($className);
+		$obj->setMarkingFilterFunction('CMSMainMarkingFilterFunction');
+		$obj->markPartialTree();
+
+		if($p = $this->currentPage()) $obj->markToExpose($p);
+
+		// getChildrenAsUL is a flexible and complex way of traversing the tree
+		$siteTree = $obj->getChildrenAsUL("", '
+					"<li id=\"record-$child->ID\" class=\"" . $child->CMSTreeClasses($extraArg) . "\">" .
+					"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" " . (($child->canEdit() || $child->canAddChildren()) ? "" : "class=\"disabled\"") . " title=\"' . _t('LeftAndMain.PAGETYPE','Page type: ') . '".$child->class."\" >" .
+					($child->TreeTitle()) .
+					"</a>"
+'
+					,$this, true);
+
+		// Wrap the root if needs be.
+
+		if(!$rootID) {
+			$rootLink = $this->Link() . '0';
+			$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-0\" class=\"Root nodelete\"><a href=\"$rootLink\">" .
+				 _t('LeftAndMain.SITECONTENT',"Site Content",PR_HIGH,'Root node on left') . "</a>"
+				. $siteTree . "</li></ul>";
+		}
+
+		return $siteTree;
+
 	}
 
 	public function generateDataTreeHints() {
@@ -1160,6 +1218,56 @@ HTML;
 			$perms["CMS_ACCESS_" . $class] = "Access to $class in CMS";
 		}
 		return $perms;
+	}
+}
+// TODO: Find way to put this in a class
+function CMSMainMarkingFilterFunction($node) {
+	// Expand all nodes
+	// $node->markingFinished();
+	// Don't ever hide nodes with children, because otherwise if one of their children matches the search, it wouldn't be shown.
+	if($node->AllChildrenIncludingDeleted()->count() > 0) {
+		// Open all nodes with children so it is easy to see any children that match the search.
+ 		$node->markOpened();
+		return true;
+	} else {
+		$failed_filter = false;
+		// First check for the generic search term in the URLSegment, Title, MenuTitle, & Content
+		if (!empty($_REQUEST['SiteTreeSearchTerm'])) {
+			// For childless nodes, show only those matching the filter
+			$filter = strtolower($_REQUEST['SiteTreeSearchTerm']);
+			if ( strpos( strtolower($node->URLSegment) , $filter) === false
+				&& strpos( strtolower($node->Title) , $filter) === false
+				&& strpos( strtolower($node->MenuTitle) , $filter) === false
+				&& strpos( strtolower($node->Content) , $filter) === false) {
+				$failed_filter = true;
+			}
+		}
+		// Check the 'Edited Since' date
+		if (!empty($_REQUEST['SiteTreeFilterDate'])) {
+			$edited_since =  mktime(0, 0, 0, substr($_REQUEST['SiteTreeFilterDate'], 3, 2), 
+						substr($_REQUEST['SiteTreeFilterDate'], 0, 2), substr($_REQUEST['SiteTreeFilterDate'], 6, 4));
+			if ( strtotime($node->LastEdited) < $edited_since ) {
+				$failed_filter = true;
+			}
+		}
+		// Now check if a specified Criteria attribute matches
+		foreach (CMSMain::$site_tree_filter_options as $key => $value)
+		{
+			if (!empty($_REQUEST[$key])) {
+				$parameterName = $key;
+				$filter = strtolower($_REQUEST[$key]);
+				// Show node only if the filter string exists anywere in the filter paramater (ignoring case)
+				if (strpos( strtolower($node->$parameterName) , $filter) === false) {
+					$failed_filter = true;
+				}
+			}
+		}
+		// Each filter must match or it fails
+		if (true == $failed_filter) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 }
 
