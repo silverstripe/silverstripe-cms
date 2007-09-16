@@ -143,6 +143,6 @@ ul.tree li#sttrends a {
 	background-image: url(../images/treeicons/element-file.gif);
 }
 
-ul.tree li#stbrowsers a {
+ul.tree li#stbrowsers a, ul.tree li#stos a {
 	background-image: url(../images/treeicons/reports-file.png);
 }

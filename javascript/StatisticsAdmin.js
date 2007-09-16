@@ -43,6 +43,8 @@ overview = function() {
 	$('trendchart') ? $('trendchart').show() : null;
 	$('usertable') ? $('usertable').show() : null;
 	$('viewtable') ? $('viewtable').show() : null;
+	$('oschart') ? $('oschart').hide() : null;
+	$('uacchart') ? $('uacchart').hide() : null;
 }
 
 users = function() {
@@ -50,6 +52,8 @@ users = function() {
 	$('trendchart') ? $('trendchart').hide() : null;
 	$('usertable') ? $('usertable').show() : null;
 	$('viewtable') ? $('viewtable').hide() : null;
+	$('oschart') ? $('oschart').hide() : null;
+	$('uacchart') ? $('uacchart').show() : null;
 }
 
 views = function() {
@@ -57,6 +61,8 @@ views = function() {
 	$('trendchart') ? $('trendchart').hide() : null;
 	$('usertable') ? $('usertable').hide() : null;
 	$('viewtable') ? $('viewtable').show() : null;
+	$('oschart') ? $('oschart').hide() : null;
+	$('uacchart') ? $('uacchart').hide() : null;
 }
 
 trends = function() {
@@ -64,6 +70,8 @@ trends = function() {
 	$('trendchart') ? $('trendchart').show() : null;
 	$('usertable') ? $('usertable').hide() : null;
 	$('viewtable') ? $('viewtable').hide() : null;
+	$('oschart') ? $('oschart').hide() : null;
+	$('uacchart') ? $('uacchart').hide() : null;
 }
 
 browsers = function() {
@@ -71,6 +79,17 @@ browsers = function() {
 	$('trendchart') ? $('trendchart').hide() : null;
 	$('usertable') ? $('usertable').hide() : null;
 	$('viewtable') ? $('viewtable').hide() : null;
+	$('oschart') ? $('oschart').hide() : null;
+	$('uacchart') ? $('uacchart').hide() : null;
+}
+
+os = function() {
+	$('browserchart') ? $('browserchart').hide() : null;
+	$('trendchart') ? $('trendchart').hide() : null;
+	$('usertable') ? $('usertable').hide() : null;
+	$('viewtable') ? $('viewtable').hide() : null;
+	$('oschart') ? $('oschart').show() : null;
+	$('uacchart') ? $('uacchart').hide() : null;
 }
 
 
@@ -92,6 +111,9 @@ SiteTreeNode.prototype.onselect = function() {
 			break;
 		case 'stbrowsers' :
 			browsers();
+			break;
+		case 'stos' :
+			os();
 			break;
 		default :
 			console.log('Unrecognized option ' + this.id);

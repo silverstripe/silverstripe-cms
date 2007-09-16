@@ -78,15 +78,22 @@ class StatisticsAdmin extends LeftAndMain {
 
 
 	function Trend() {
-		return Statistics::TrendChart(array('Member', 'SiteTree', 'Group'), 'day', 'mchart', 'Line', 'red');
+		return Statistics::TrendChart(array('PageView', 'Member', 'SiteTree'), 'day', 'mchart', 'Line', 'red');
 	}
 
 	function BrowserPie() {
 		return Statistics::BrowserChart();
 	}
 
+	function OSPie() {
+		return Statistics::OSChart();
+	}
+
+	function UACPie() {
+		return Statistics::ActivityChart();
+	}
+
 	function UserTable() {
-		//Statistics::getBrowserChart();
 		return Statistics::UserRecordTable();
 	}
 
@@ -94,12 +101,12 @@ class StatisticsAdmin extends LeftAndMain {
 		return Statistics::getViews('all');
 	}
 
-	public function users($params) {
-		return Statistics::UserRecordTable();
-	}
+
 
 	function showAll() {
 		return $this->BrowserPie() .
+		$this->OSPie() .
+		$this->UACPie() .
 		$this->Trend() .
 		$this->UserTable() .
 		$this->ViewTable();

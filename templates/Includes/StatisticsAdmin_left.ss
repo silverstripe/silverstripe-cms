@@ -8,6 +8,7 @@
 				<li id="stusers"><a href="$baseURL/admin/statistics/users">Users</a></li>
 				<li id="stviews"><a href="$baseURL/admin/statistics/views">Views</a></li>
 				<li id="sttrends"><a href="$baseURL/admin/statistics/trends">Trends</a></li>
+				<li id="stos"><a href="$baseURL/admin/statistics/os">Operating Systems</a></li>
 				<li id="stbrowsers"><a href="$baseURL/admin/statistics/browsers">Browsers</a></li>
 			</li>
 		</ul>
