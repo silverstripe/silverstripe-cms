@@ -43,6 +43,10 @@ iframe {
 	width: 98%;
 }
 
+.right form input {
+	width: 96%;
+}
+
 .right form textarea.htmleditor {
 	width: 90%;
 	display : none;
