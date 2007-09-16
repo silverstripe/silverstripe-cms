@@ -155,6 +155,7 @@ $lang['en_US']['CMSMain_left.ss']['EDITEDSINCE'] = 'Edited Since';
 $lang['en_US']['CMSMain_left.ss']['ADDSEARCHCRITERIA'] = 'Add Criteria...';
 $lang['en_US']['CMSMain_left.ss']['SELECTPAGESACTIONS'] = 'Select the pages that you want to change &amp; then click an action:';
 $lang['en_US']['CMSMain_left.ss']['DELETECONFIRM'] = 'Delete the selected pages';
+$lang['en_US']['CMSMain_left.ss']['SHOWONLYCHANGED'] = 'Show only changed pages';
 $lang['en_US']['CMSMain_left.ss']['PUBLISHCONFIRM'] = 'Publish the selected pages';
 $lang['en_US']['CMSMain_left.ss']['SELECTPAGESDUP'] = 'Select the pages that you want to duplicate, whether it\'s children should be included, and where you want the duplicates placed';
 $lang['en_US']['CMSMain_left.ss']['KEY'] = 'Key:';

@@ -73,6 +73,7 @@
 				<form class="actionparams" style="border:0" id="publishpage_options" action="admin/publishitems">
 					<div>
 					<input type="hidden" name="csvIDs" />
+					<input type="checkbox" id="publishpage_show_drafts" /> <label for="publishpage_show_drafts"><% _t('SHOWONLYCHANGED','Show only changed pages'); %></label>
 					<input type="submit" id="action_publish_selected" value="<% _t('PUBLISHCONFIRM','Publish the selected pages'); %>" />
 					</div>
 				</form>

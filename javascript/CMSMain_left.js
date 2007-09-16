@@ -114,21 +114,7 @@ search.prototype = {
 	},
 	popupClosed : function() {
 		$(_HANDLER_FORMS.search).stopObserving(this.o2);
-		// Reload the site tree if it has been filtered
-		if ($('SiteTreeIsFiltered').value == 1) {
-			// Show all items in Site Tree again
-			new Ajax.Request( 'admin/SiteTreeAsUL' + '&ajax=1', {
-				onSuccess: function( response ) {
-					$('sitetree_ul').innerHTML = response.responseText;
-					Behaviour.apply();
-					$('SiteTreeIsFiltered').value = 0;
-					statusMessage('Unfiltered tree','good');
-				},
-				onFailure : function(response) {
-					errorMessage('Could not unfilter site tree<br />' + response.responseText);
-				}
-			});
-		}
+		batchActionGlobals.unfilterSiteTree();
 	}
 }
 
@@ -173,6 +159,33 @@ batchactions.prototype = {
 		return false;
 	}
 }
+
+/**
+ * Show only drafts checkbox click action
+ */
+showonlydrafts = Class.create();
+showonlydrafts.applyTo('#publishpage_show_drafts');
+showonlydrafts.prototype = {
+	onclick : function() {
+			if (0 == $('SiteTreeIsFiltered').value) {
+			// Show all items in Site Tree again
+			new Ajax.Request( 'admin/filterSiteTree?Status=Saved&ajax=1', {
+				onSuccess: function( response ) {
+					$('sitetree_ul').innerHTML = response.responseText;
+					Behaviour.apply();
+					$('SiteTreeIsFiltered').value = 1;
+					statusMessage('Filtered tree to only show changed pages','good');
+				},
+				onFailure : function(response) {
+					errorMessage('Could not filter tree to only show changed pages<br />' + response.responseText);
+				}
+			});
+			} else {
+				batchActionGlobals.unfilterSiteTree();
+			}
+	}
+}
+
 
 // batchActionGlobals is needed because calls to observeMethod doesn't seem to preserve instance variables so a Prototype can't be used
 batchActionGlobals = {
@@ -240,6 +253,23 @@ batchActionGlobals = {
 			}
 		}
 		return csvIDs;
+	},
+	unfilterSiteTree : function() {
+		// Reload the site tree if it has been filtered
+		if ($('SiteTreeIsFiltered').value == 1) {
+			// Show all items in Site Tree again
+			new Ajax.Request( 'admin/SiteTreeAsUL' + '&ajax=1', {
+				onSuccess: function( response ) {
+					$('sitetree_ul').innerHTML = response.responseText;
+					Behaviour.apply();
+					$('SiteTreeIsFiltered').value = 0;
+					statusMessage('Unfiltered tree','good');
+				},
+				onFailure : function(response) {
+					errorMessage('Could not unfilter site tree<br />' + response.responseText);
+				}
+			});
+		}
 	}
 }
 
