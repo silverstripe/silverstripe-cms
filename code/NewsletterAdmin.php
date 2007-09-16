@@ -440,12 +440,17 @@ class NewsletterAdmin extends LeftAndMain {
 				}
 			    break;
 			case "List":
-      	echo self::sendToList( $subject, $body, $from, $newsletter, $nlType, $messageID );
-			break;
+				// Send to the entire mailing list.
+				$groupID = $nlType->GroupID;
+				echo self::sendToList( $subject, $body, $from, $newsletter, $nlType, $messageID,
+					DataObject::get( 'Member', "`GroupID`='$groupID'", null, "INNER JOIN `Group_Members` ON `MemberID`=`Member`.`ID`" )
+				);
+				break;
 			case "Unsent":
+				// Send to only those who have not already been sent this newsletter.
 				$only_to_unsent = 1;
-      				echo self::sendToList( $subject, $body, $from, $newsletter, $nlType, $messageID, $only_to_unsent);
-			break;
+      				echo self::sendToList( $subject, $body, $from, $newsletter, $nlType, $messageID, $newsletter->UnsentSubscribers());
+				break;
 		}
 
 		return FormResponse::respond();
@@ -457,8 +462,8 @@ class NewsletterAdmin extends LeftAndMain {
         $email->send();
     }
 
-    static function sendToList( $subject, $body, $from, $newsletter, $nlType, $messageID = null, $only_to_unsent = 0) {
-        $emailProcess = new NewsletterEmailProcess( $subject, $body, $from, $newsletter, $nlType, $messageID, $only_to_unsent);
+    static function sendToList( $subject, $body, $from, $newsletter, $nlType, $messageID = null, $recipients) {
+        $emailProcess = new NewsletterEmailProcess( $subject, $body, $from, $newsletter, $nlType, $messageID, $recipients);
         return $emailProcess->start();
     }
 
