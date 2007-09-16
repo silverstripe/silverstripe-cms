@@ -487,11 +487,9 @@ JS;
 			if (isset($urlParams['publish']) && $urlParams['publish'] == 1) {
 				$this->performPublish($record);
 				// BUGFIX: Changed icon sometimes shows after "Save & Publish" button is clicked http://support.silverstripe.com/gsoc/ticket/31
-				if(substr($id,0,3) != 'new') {
-					$publishedRecord = DataObject::get_one($className, "`$className`.ID = $id");
-				} else {
-					$publishedRecord = $this->getNewItem($id, false);
-				}
+				$record->setClassName( $record->ClassName );
+				$newClass = $record->ClassName;
+				$publishedRecord = $record->newClassInstance( $newClass );
 				return $this->tellBrowserAboutPublicationChange($publishedRecord, "Published '$record->Title' successfully");
 			} else {
 				// BUGFIX: Changed icon only shows after Save button is clicked twice http://support.silverstripe.com/gsoc/ticket/76
