@@ -936,3 +936,9 @@ div.originallang_holder.field.CompositeField.nolabel {
 	/* HACK: any IE */
 	padding-bottom: expression('35px');
 }
+
+#ComplexTableField_Popup_DetailForm input.action
+{
+    position: relative;
+    float: right;
+}
