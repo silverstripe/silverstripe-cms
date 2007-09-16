@@ -29,7 +29,7 @@ class NewsletterEmailProcess extends BatchProcess {
 		while($this->current < $max) {
 			$index = $this->current++;
 			$member = $this->objects[$index];
-			
+
 	        // check to see if the user has unsubscribed from the mailing list
 	        // TODO Join in the above query first
 	        $unsubscribeRecord = DataObject::get_one('Member_UnsubscribeRecord', "`MemberID`='{$member->ID}' AND `NewsletterTypeID`='{$this->nlType->ID}'");
@@ -59,7 +59,7 @@ class NewsletterEmailProcess extends BatchProcess {
 	
 	    	
 	    		$e->populateTemplate( array( 'Member' => $member, 'FirstName' => $member->FirstName ) );
-	            $this->sendToAddress( $e, $address, $this->messageID );
+	            $this->sendToAddress( $e, $address, $this->messageID, $member);
 	        }
     	}
     
@@ -69,10 +69,29 @@ class NewsletterEmailProcess extends BatchProcess {
 	    	return parent::next();
 	}
 	
-	private function sendToAddress( $email, $address, $messageID = null ) {
-	    $email->setTo( $address );
-	    $email->send( $messageID );    
-  }
+	/*
+	 * Sends a Newsletter email to the specified address
+	 *
+	 * @param $member The object containing information about the member being emailed
+	 */
+	private function sendToAddress( $email, $address, $messageID = null, $member) {
+		$email->setTo( $address );
+		$result = $email->send( $messageID );
+		// Log result of the send
+		$newsletter = new Newsletter_SentRecipient();
+		$newsletter->Email = $address;
+		$newsletter->MemberID = $member->ID;
+		// If Sending is successful
+		if ($result == true) {
+			$newsletter->Result = 'Sent';
+		} else {
+			$newsletter->Result = 'Failed';
+		}
+		$newsletter->ParentID = $this->newsletter->ID;
+		$newsletter->write();
+		// Adding a pause between email sending can be useful for debugging purposes
+		// sleep(10);
+	}
 	
 	function complete() {
 		parent::complete();

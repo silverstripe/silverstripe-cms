@@ -326,13 +326,24 @@ class NewsletterAdmin extends LeftAndMain {
 	 * Reloads the list of recipients via ajax
 	 */
 	function getrecipientslist() {
-		if( $_REQUEST['ajax'] ) {
+		if(Director::is_ajax()) {
 			$newsletterType = DataObject::get_by_id('NewsletterType', $this->urlParams['ID'] );
 			$fields = new FieldSet($memberList = new MemberTableField($this, "Recipients", $newsletterType->Group() ));
 			$memberList->setController($this);
 			$actions = new FieldSet(new FormAction('save','Save'));
 			$form = new Form($this, "EditForm", $fields, $actions);
 			return $memberList->FieldHolder();
+		}
+	}
+
+	/**
+	 * Reloads the "Sent Status Report" tab via ajax
+	 */
+	function getsentstatusreport($params) {
+		if(Director::is_ajax()) {
+			$newsletter = DataObject::get_by_id( 'Newsletter', $params['ID'] );
+			$sent_status_report = $newsletter->renderWith("Newsletter_SentStatusReport");
+			return $sent_status_report;
 		}
 	}
 

@@ -323,6 +323,17 @@ Behaviour.register({
 			// $('SendProgressBar').setText( 'Done!' );
 			$('SendProgressBar').reset();
 			// this.elements.Message.value = '';
+			
+ 			// Reload the "Sent Status Report" tab after a Newsletter is sent
+			var id = this.elements.NewsletterID.value;
+			var request = new Ajax.Request(baseHref() + 'admin/newsletter/getsentstatusreport/'  + id + '?ajax=1', {
+				onSuccess: function( response ) {
+					$('Root_SentStatusReport').innerHTML = response.responseText;
+				},
+				onFailure: function(response) {
+					statusMessage('Could not automatically refresh Sent Status Report tab', 'bad');
+				}
+			});
         this.close();
       if( response ) 
         Ajax.Evaluator(response);
@@ -359,6 +370,7 @@ Behaviour.register({
 	}
 });
 
+// @TODO: Check if this code is used anymore now that NewsletterList was removed.
 NewsletterList = Class.create();
 NewsletterList.applyTo('table.NewsletterList');
 NewsletterList.prototype = {
