@@ -44,8 +44,8 @@ var Resize = {
 	{
 		if(this.element.getTop() < this.topBoxConstraint) this.element.style.top = this.topBoxConstraint + "px";
 		if(this.element.getLeft() < this.leftBoxConstraint) this.element.style.left = this.leftBoxConstraint + "px";
-		if(this.element.getTop() + this.element.getHeight() >= this.element.getParentHeight()) this.element.style.top = this.element.getParentHeight() - this.element.getHeight() - 3 + 'px';
 		if(this.element.getLeft() + this.element.getWidth() > this.element.getParentWidth()) this.element.style.left = this.element.getParentWidth() - this.element.getWidth() - 3 + 'px';
+		if(this.element.getTop() + this.element.getHeight() >= this.element.getParentHeight()) this.element.style.top = this.element.getParentHeight() - this.element.getHeight() - 3 + 'px';
 		imageBox.reCenterIndicator();		
 	},
 	
