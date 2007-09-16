@@ -689,9 +689,19 @@ JS;
    private function newDraft( $parentID ) {
 		if(!$parentID || !is_numeric( $parentID)) {
 			$parent = DataObject::get_one("NewsletterType");
-			$parentID = $parent->ID;
+			if ($parent) {
+				$parentID = $parent->ID;
+			} else {
+				// BUGFIX: It could be that no Newsletter types have been created, if so add one to prevent errors.
+				$parentID = $this->newNewsletterType();
+			}
 		}
 		if( $parentID && is_numeric( $parentID ) ) {
+			$parent = DataObject::get_by_id("NewsletterType", $parentID);
+			// BUGFIX: It could be that no Newsletter types have been created, if so add one to prevent errors.
+			if(!$parent) {
+				$parentID = $this->newNewsletterType();
+			}
 			$newsletter = new Newsletter();
 			$newsletter->Status = 'Draft';
 			$newsletter->Title = $newsletter->Subject = 'New draft newsletter';
