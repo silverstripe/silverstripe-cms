@@ -16,6 +16,7 @@ SilverStripe ChangeLog
   - Use normal authentification rather than basicauth for db/build
   - Moved RestfulService from mashups module into sapphire core
   - Added BBCodeParser
+  - Added HasOneComplexTableField, HasManyComplexTableField and ManyManyComplexTableField to manage different kinds of relations
   - Fix CSS of profiler pop-up
   - Fix specific newsletter bug
   - Added sorting, highlighting, formatting to TableListField
