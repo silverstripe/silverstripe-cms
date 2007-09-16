@@ -43,6 +43,7 @@ class AssetAdmin extends LeftAndMain {
 		Requirements::javascript("cms/javascript/AssetAdmin_right.js");
 
 		Requirements::javascript("cms/javascript/CMSMain_upload.js");
+		Requirements::javascript("cms/javascript/Upload.js");
 		Requirements::javascript("sapphire/javascript/Security_login.js");
 		Requirements::javascript("jsparty/SWFUpload/SWFUpload.js");
 		
@@ -120,7 +121,7 @@ HTML;
 				<script>
 					var multi_selector = new MultiSelector($('Form_UploadForm_FilesList'), null, $('Form_UploadForm_action_upload'));
 					multi_selector.addElement($('Form_UploadForm_Files-0'));
-                    new window.top.document.Upload.initialize();
+                    new window.top.document.CMSMain_upload();
 				</script>
 			")
 		), new FieldSet(
