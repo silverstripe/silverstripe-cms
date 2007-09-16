@@ -1,5 +1,11 @@
 Upload = Class.create();
 Upload.prototype = {
+    
+    /**
+     * Sets configuration data provided from user if smth is missing sets default value.
+     *
+     * @param params object contains all configuration data for upload.
+    */
     initialize: function(params) {
         this.filesUploaded = 0;
         this.filesToUpload = 0;
@@ -20,14 +26,18 @@ Upload.prototype = {
         this.onLoad();
     },
     
+    /**
+     * Creates SWFUpload object for uploading files.  
+     * 
+    */
     onLoad: function() {
         path = this.getBasePath();
-        sessId = this.getSessionId();
+        sessId = this.getSessionId();//Because flash doesn't send proper cookies, we need to set session id in URL. 
         this.swfu = new SWFUpload({
                 upload_target_url: path + '/assets/index/root?executeForm=UploadForm&PHPSESSID=' + sessId,   // Relative to the SWF file
                 file_post_name: 'Files',
-                file_size_limit : this.fileSizeLimit,  // 30 MB
-                file_types : this.fileTypes, // or you could use something like: '*.doc;*.wpd;*.pdf',
+                file_size_limit : this.fileSizeLimit,
+                file_types : this.fileTypes,
                 file_types_description : this.fileTypesDescription,
                 file_upload_limit : this.fileUploadLimit,
                 begin_upload_on_queue : this.beginUploadOnQueue,
@@ -42,16 +52,16 @@ Upload.prototype = {
                 file_validation_handler : Prototype.emptyFunction,
                 file_cancelled_handler: Prototype.emptyFunction,
                 
-                ui_container_id: 'abc1',
-                degraded_container_id: 'abc2', 
-                
-                
- 
                 flash_url : 'jsparty/SWFUpload/SWFUpload.swf',    // Relative to this file
                 ui_function: this.buildUI.bind(this),
                 debug: false
             });
     },
+    
+    /**
+     * Retrieves base path from URL.
+     * TODO: Use base tag. 
+    */
     
     getBasePath: function() {
         var path = 'http://' + window.location.host + window.location.pathname;
@@ -59,6 +69,11 @@ Upload.prototype = {
         return path;
     },
     
+    /**
+     * Retrieves sessionId from cookie. 
+     * 
+    */
+
     getSessionId: function() {
         var start = document.cookie.indexOf('PHPSESSID')+10;
         var end = document.cookie.indexOf(';',start);
@@ -66,9 +81,21 @@ Upload.prototype = {
         return document.cookie.substring(start,end);
     },
     
+    /**
+     * Calls method defined by user, method should create user interface. 
+     * 
+    */
+    
     buildUI: function() {
         this.customBuildUI();	        
     },
+    
+    /**
+     * Called when new file is added to the queue
+     * 
+     * @param file object 
+     * @param queueLength int
+    */
     
     uploadFileQueuedCallback: function(file,queueLength) {
         this.filesToUpload++;
@@ -76,6 +103,13 @@ Upload.prototype = {
         this.addFileParam(file);
     },
     
+    /**
+     * Called when uploading of particular file has finished
+     * 
+     * @param file object 
+     * @param servedData string
+    */
+   
     uploadFileCompleteCallback: function(file,serverData) {
         this.filesUploaded++;
         var toEval = serverData.substr(serverData.indexOf('<script'));
@@ -85,10 +119,21 @@ Upload.prototype = {
         this.fileComplete(file, serverData);
     },
     
+    /**
+     * Called during uploading file. 
+     *
+     * @param file object 
+     * @param bytes_complete int
+    */
+    
     uploadFileProgressCallback: function(file, bytes_complete) {
         this.uploadInProgress = true;
         this.fileProgress(file, bytes_complete);
     },
+    
+    /**
+     * Called when whole queue has been uploaded or cancelled. 
+    */
     
     uploadQueueCompleteCallback: function() {
         this.queueComplete();
@@ -97,6 +142,13 @@ Upload.prototype = {
         this.filesToUpload = 0;
     },
     
+    /**
+     * Called on error.
+     * @param error_code int
+     * @param file object
+     * @param message string
+    */
+
     uploadErrorCallback: function(error_code, file, message) {
         this.swfu.cancelQueue();
         switch(error_code) {
@@ -128,6 +180,13 @@ Upload.prototype = {
                 alert('You have encountered an error. File hasn\'t has been uploaded. Please hit the "Refresh" button in your web browser');
         }
     },
+    
+    /**
+     * Because we are on top of standard upload we need to add some POST vars that 
+     * normally are being sent as part of form.
+     *
+     * @param file object
+    */
      
     addFileParam: function(file) {
         this.swfu.addFileParam(file.id,'ID',this.folderID);
@@ -136,19 +195,36 @@ Upload.prototype = {
         this.swfu.addFileParam(file.id,'MAX_FILE_SIZE','31457280');
     },
     
+    /**
+     * Starts file explorer. 
+     *
+    */
+    
     browse: function() {
         this.swfu.browse();
     },
     
+    /**
+     *  Starts upload
+     * 
+    */
+    
     startUpload: function() {
         this.swfu.startUpload();
     },
+    
+    /**
+     * Cancels uploading of file. 
+    */
     
     cancelUpload: function(fileId) {
         this.filesToUpload--;
         this.swfu.cancelUpload(fileId);
     },
     
+    /*
+     * Getters and setters.
+    */   
     setFolderID: function(id) {
         this.folderID = id;
     },

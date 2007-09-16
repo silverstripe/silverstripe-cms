@@ -1,3 +1,6 @@
+/**
+ * If one of methods is not commented look for comment in Upload.js 
+*/
 CMSMain_upload = Class.create();
 CMSMain_upload.prototype = {
     initialize: function() {
@@ -17,6 +20,10 @@ CMSMain_upload.prototype = {
                 buildUI : this.extendForm.bind(this)
             });
     },
+    
+    /**
+     * Builds UI, called only when Upload object will be able to create flash uploader. 
+    */
     
     extendForm: function() {
         if(this.iframe.contentDocument == undefined) this.iframe.contentDocument = document.frames[0].document;//IE HACK   

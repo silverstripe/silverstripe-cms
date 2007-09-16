@@ -1,3 +1,6 @@
+/**
+ * If one of methods is not commented look for comment in Upload.js.
+*/
 TinyMCEImageEnhancement = Class.create();
 TinyMCEImageEnhancement.prototype = {
     initialize: function() {
@@ -31,6 +34,10 @@ TinyMCEImageEnhancement.prototype = {
         Event.observe($('UploadFiles'),'click',this.onUpload.bind(this));
     },   
     
+    /**
+     * Method creates HTML element, only reason for this method is DRY. 
+    */
+    
     addElement: function(tag, className, parent, properties) {
         var e = document.createElement(tag);
         Element.addClassName(e,className);
@@ -41,8 +48,6 @@ TinyMCEImageEnhancement.prototype = {
         
     onUpload: function(event) {
         Event.stop(event);
-        
-        
         if(!this.processInProgress) {
 	        if(this.getParentID() != 'root') {
 	            this.upload.browse();
@@ -52,12 +57,20 @@ TinyMCEImageEnhancement.prototype = {
 	    }
     },
     
+    /**
+     * Called when user clicks "add folder" anchor. 
+    */
+    
     onAddFolder: function(event) {
         Event.stop(event);
         Element.hide('AddFolder');
         Element.show('NewFolderName','FolderOk','FolderCancel');
         this.applyIE6Hack();
     },
+    
+    /**
+     * Called when user clicks "ok" anchor/ adds folder with given name. 
+    */
     
     onFolderOk: function(event) {
         Event.stop(event);
@@ -74,6 +87,10 @@ TinyMCEImageEnhancement.prototype = {
                
         
     },
+    
+    /**
+     * Method retrieves folder id and sends request which changes folder name. 
+    */
     
     onFolderGetSuccess: function(transport) {
         var t1 = transport.responseText.indexOf('TreeNode(');
@@ -99,6 +116,10 @@ TinyMCEImageEnhancement.prototype = {
         new Ajax.Request('admin/assets/index/' + this.getParentID() + '?executeForm=EditForm', options);
     },
     
+    /**
+     * When folder name has been changed we need to refresh folder list and return to initial state of UI. 
+    */
+    
     onFolderAddSuccess: function(transport) {
         statusMessage('Creating new folder');
         document.getElementsBySelector("div.TreeDropdownField.single")[2].itemTree = null;
@@ -108,6 +129,10 @@ TinyMCEImageEnhancement.prototype = {
         this.removeIE6Hack();                               
     },
     
+    /**
+     * If user doesn't want to add folder return to default UI. 
+    */
+    
     onFolderCancel: function(event) {
         Event.stop(event);
         $('NewFolderName').value = '';
@@ -116,7 +141,9 @@ TinyMCEImageEnhancement.prototype = {
         this.removeIE6Hack();
     },
     
-    
+    /**
+     * Called on window.onload
+    */
     
     onWindowLoad: function() {
         if($('FolderID') != null) {
@@ -155,6 +182,12 @@ TinyMCEImageEnhancement.prototype = {
         }
     },
     
+    /**
+     * Iterates over all uploaded images and add them to TinyMCE editor
+     *
+     * @param transport object
+    */
+    
     insertImages: function(transport) {
         //HACK FOR STRANGE ERROR OCCURING UNDER SAFARI
         if(transport.responseText == '') {
@@ -171,6 +204,13 @@ TinyMCEImageEnhancement.prototype = {
         });
         this.processInProgress = false;
     },
+    
+    /**
+     * Adds particular image to TinyMCE. Most of code has been copied from tiny_mce_improvements.js / ImageThumbnail.onclick
+     * Sorry for not following DRY, I didn't want to break smth in tiny_mce_improvements.
+     * 
+     *  @param target object
+    */
     
     addToTinyMCE: function(target) {
 		var formObj = $('Form_EditorToolbarImageForm');
@@ -192,6 +232,11 @@ TinyMCEImageEnhancement.prototype = {
         TinyMCE_AdvancedTheme._insertImage(relativeHref, altText, 0, null, null, destWidth, destHeight, null, null, cssClass);
     },
     
+    /**
+     * Under IE6 when we click on "add folder" anchor, rest of anchors loose their correct position
+     *
+    */
+    
     applyIE6Hack: function() {
         if(BrowserDetect.browser == 'Explorer') {
 	        elements = [$('FolderOk'),$('FolderCancel'),$('UploadFiles'),$('PipeSeparator')];
@@ -210,6 +255,11 @@ TinyMCEImageEnhancement.prototype = {
 	        });
 	    }
     },
+    
+    /**
+     * Returns id of upload folder.
+     *
+    */
     
     getParentID: function() {
         return  $('Form_EditorToolbarImageForm_FolderID').value == '' ? 'root' : $('Form_EditorToolbarImageForm_FolderID').value;
