@@ -129,8 +129,10 @@ class Newsletter_SentRecipient extends DataObject {
 	static $db = array(
 		"ParentID" => "Int",
 		"Email" => "Varchar(255)",
-		"MemberID" => "Int",
 		"Result" => "Enum('Sent, Failed, Bounced', 'Sent')",
+	);
+	static $has_one = array(
+		"Member" => "Member",
 	);
 }
 class Newsletter_Recipient extends DataObject {
