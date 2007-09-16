@@ -3,8 +3,6 @@
 	<table class="CMSList">
 		<thead>
 			<tr>
-				<th class="FirstName">Firstname</th>
-				<th class="Surname">Surname</th>
 				<th class="Email">Email</th>
 				<th>Date</th>
 				<th>Result</th>
@@ -13,8 +11,6 @@
 		<tbody>
 			<% control SentRecipients(Failed) %>
 			<tr>
-				<td>$FirstName</td>
-				<td>$Surname</td>
 				<td>$Email</td>
 				<td>$LastEdited</td>
 				<td>$Result</td>
@@ -31,8 +27,6 @@
 	<table class="CMSList">
 		<thead>
 			<tr>
-				<th class="FirstName">Firstname</th>
-				<th class="Surname">Surname</th>
 				<th class="Email">Email</th>
 				<th>Date</th>
 				<th>Result</th>
@@ -42,8 +36,6 @@
 		<tbody>
 			<% control SentRecipients(Bounced) %>
 			<tr>
-				<td>$FirstName</td>
-				<td>$Surname</td>
 				<td>$Email</td>
 				<td>$LastEdited</td>
 				<td>$Result</td>
@@ -84,8 +76,6 @@
 	<table class="CMSList">
 		<thead>
 			<tr>
-				<th class="FirstName">Firstname</th>
-				<th class="Surname">Surname</th>
 				<th class="Email">Email</th>
 				<th>Date</th>
 				<th>Result</th>
@@ -95,8 +85,6 @@
 		<tbody>
 			<% control SentRecipients(Sent) %>
 			<tr id="sent-member-$ID">
-				<td>$FirstName</td>
-				<td>$Surname</td>
 				<td>$Email</td>
 				<td>$LastEdited</td>
 				<td>$Result</td>
