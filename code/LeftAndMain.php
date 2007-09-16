@@ -78,6 +78,11 @@ abstract class LeftAndMain extends Controller {
 
 		Requirements::css("sapphire/css/SubmittedFormReportField.css");
 		
+		Requirements::css('cms/css/TinyMCEImageEnhancement.css');
+		Requirements::javascript("jsparty/SWFUpload/SWFUpload.js");
+		Requirements::javascript("sapphire/javascript/Security_login.js");
+		Requirements::javascript('cms/javascript/TinyMCEImageEnhancement.js');
+
 		$dummy = null;
 		$this->extend('augmentInit', $dummy);
 	}

@@ -27,14 +27,15 @@ ThumbnailStripField.prototype = {
 		}
 	},
 	
-	ajaxGetFiles: function(folderID) {
+	ajaxGetFiles: function(folderID,callback) {
+		if(!callback) callback = this.reapplyBehaviour.bind(this);
 		this.innerHTML = '<span style="float: left">Loading...</span>'
 		var ajaxURL = this.helperURLBase() + '&methodName='+this.updateMethod+'&folderID=' + folderID;
 		new Ajax.Updater(this, ajaxURL, {
 			method : 'get', 
-			onComplete : this.reapplyBehaviour.bind(this),
+			onComplete : callback,
 			onFailure : function(response) { errorMessage("Error getting files", response); }
-		})
+		});
 	},
 
 	reapplyBehaviour: function() {

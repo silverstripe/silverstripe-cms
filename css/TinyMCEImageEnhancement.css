@@ -1,0 +1,26 @@
+.group {
+    display: inline;
+    margin-left: 2px;
+}
+.middleColumn
+{
+    margin-bottom: 2px;	
+    display: inline;
+}
+.addFolder{
+}
+.link {
+    text-decoration: none;
+    margin-left: 2px;
+} 
+/* HACK FOR IE6 */
+#TreeDropdownField_Form_EditorToolbarImageForm_FolderID {
+    display: expression('inline');	
+}
+.tree_holder {
+    display: inline;
+}
+#NewFolderName {
+    width: 120px;
+    margin-top: 0;	
+}

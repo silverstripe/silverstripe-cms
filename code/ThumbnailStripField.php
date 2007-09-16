@@ -48,7 +48,7 @@ class ThumbnailStripField extends FormField {
 	
 		array_unshift($folderList, $folder->ID);
 			
-		$images = DataObject::get("Image", "ParentID IN (" . implode(', ', $folderList) . ")");
+		$images = DataObject::get("Image", "ParentID IN (" . implode(', ', $folderList) . ")","Created");
 		
 		if($images) {
 			$result .= '<ul>';
