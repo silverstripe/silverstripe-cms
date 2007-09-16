@@ -83,7 +83,9 @@ html>body .right form textarea.htmleditor {
 }
 
 .right form  input.checkbox, .right form .optionset input, .right form .htmleditor select, .right form input.action {
+	position: relative;
 	width: auto;
+	float: right;
 }
 .right form ul.optionset {
 	padding: 0;
@@ -837,4 +839,45 @@ div.CommentFilter {
 {
     position: relative;
     float: right;
+}
+
+#Pagination {
+    margin-top: 10px;
+    margin-left: auto;	
+    margin-right: auto;
+}
+#Pagination a {
+    font-size: 14px;
+    width: 1px;
+    heigth: 1px;
+    margin: 1px;
+}
+#Pagination span {
+    
+    display: inline;
+    color: red;
+    font-size: 14px;
+}
+#Pagination div {
+    display: inline;
+}
+#Pagination_Next a {
+    text-decoration: none;	
+}
+#Pagination_Next a div {
+    position: relative;
+    left: -20px;
+}
+#Pagination_Next a img {
+    position: relative;
+    top: -15px;
+    left: 5px;
+}
+#Pagination_Previous a {
+    text-decoration: none;  
+}
+#Pagination_Previous a img {
+    position: relative;
+    top: -15px;
+    left: 35px;
 }
