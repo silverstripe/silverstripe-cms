@@ -97,28 +97,42 @@ addpage.prototype = {
 }
 
 /**
- * Delete page action
+ * Batch Actions button click action
  */
-deletepage = {
-	button_onclick : function() {
+batchactions = Class.create();
+batchactions.applyTo('#batchactions');
+batchactions.prototype = {
+	
+	initialize : function() {
+		Observable.applyTo($(_HANDLER_FORMS.batchactions));
+	},
+	onclick : function() {
 		if(treeactions.toggleSelection(this)) {
-			deletepage.o1 = $('sitetree').observeMethod('SelectionChanged', deletepage.treeSelectionChanged);
-			deletepage.o2 = $(_HANDLER_FORMS.deletepage).observeMethod('Close', deletepage.popupClosed);
+			batchActionGlobals.o1 = $('sitetree').observeMethod('SelectionChanged', batchActionGlobals.treeSelectionChanged);
+			batchActionGlobals.o2 = $(_HANDLER_FORMS.batchactions).observeMethod('Close', batchActionGlobals.popupClosed);
 			addClass($('sitetree'),'multiselect');
 
-			deletepage.selectedNodes = { };
+			batchActionGlobals.selectedNodes = { };
 
 			var sel = $('sitetree').firstSelected();
 			if(sel && sel.className.indexOf('nodelete') == -1) {
 				var selIdx = $('sitetree').getIdxOf(sel);
-				deletepage.selectedNodes[selIdx] = true;
+				batchActionGlobals.selectedNodes[selIdx] = true;
 				sel.removeNodeClass('current');
 				sel.addNodeClass('selected');		
 			}
 		}
 		return false;
-	},
+	}
+}
 
+// batchActionGlobals is needed because calls to observeMethod doesn't seem to preserve instance variables so a Prototype can't be used
+batchActionGlobals = {
+	selectedNodes: { },
+	// count Int - The number of nodes selected
+	count: { },
+	// TODO: Remove 'new-' code http://open.silverstripe.com/ticket/875
+	newNodes: { },
 	treeSelectionChanged : function(selectedNode) {
 		var idx = $('sitetree').getIdxOf(selectedNode);
 
@@ -126,12 +140,12 @@ deletepage = {
 			if(selectedNode.selected) {
 				selectedNode.removeNodeClass('selected');
 				selectedNode.selected = false;
-				deletepage.selectedNodes[idx] = false;
+				batchActionGlobals.selectedNodes[idx] = false;
 	
 			} else {
 				selectedNode.addNodeClass('selected');
 				selectedNode.selected = true;
-				deletepage.selectedNodes[idx] = true;
+				batchActionGlobals.selectedNodes[idx] = true;
 			}
 		}
 		
@@ -140,11 +154,11 @@ deletepage = {
 	
 	popupClosed : function() {
 		removeClass($('sitetree'),'multiselect');
-		$('sitetree').stopObserving(deletepage.o1);
-		$(_HANDLER_FORMS.deletepage).stopObserving(deletepage.o2);
+		$('sitetree').stopObserving(batchActionGlobals.o1);
+		$(_HANDLER_FORMS.batchactions).stopObserving(batchActionGlobals.o2);
 
-		for(var idx in deletepage.selectedNodes) {
-			if(deletepage.selectedNodes[idx]) {
+		for(var idx in batchActionGlobals.selectedNodes) {
+			if(batchActionGlobals.selectedNodes[idx]) {
 				node = $('sitetree').getTreeNodeByIdx(idx);
 				if(node) {
 					node.removeNodeClass('selected');
@@ -152,41 +166,87 @@ deletepage = {
 				}
 			}
 		}
+		batchActionGlobals.selectedNodes = { };
 	},
 
-	form_submit : function() {
-		var csvIDs = "", count = 0;
+	getCsvIds : function() {
+		var csvIDs = "";
+		batchActionGlobals.count = 0;
 		var st = $('sitetree');
-		var newNodes = new Array();
-		
-		for(var idx in deletepage.selectedNodes) {
-			if(deletepage.selectedNodes[idx]) {
+		batchActionGlobals.newNodes = new Array();
+		for(var idx in batchActionGlobals.selectedNodes) {
+			if(batchActionGlobals.selectedNodes[idx]) {
 				
-				// delete new nodes
+				// Delete/Publish new nodes? (Leftover from delete code?) TODO: Remove 'new-' code http://open.silverstripe.com/ticket/875
 				if( idx.match(/^new-[a-z0-9A-Z\-]+$/) ) {
-					newNodes.push( idx );
+					batchActionGlobals.newNodes.push( idx );
 				} else {
-					var i, item, childrenToDelete = st.getTreeNodeByIdx(idx).getElementsByTagName('li');
-					for(i=0;item=childrenToDelete[i];i++) {
-						csvIDs += (csvIDs ? "," : "") + st.getIdxOf(childrenToDelete[i]);
-						count++;
+					var i, item, childrenTopublish = st.getTreeNodeByIdx(idx).getElementsByTagName('li');
+					for(i=0;item=childrenTopublish[i];i++) {
+						csvIDs += (csvIDs ? "," : "") + st.getIdxOf(childrenTopublish[i]);
+						batchActionGlobals.count++;
 					}
 					csvIDs += (csvIDs ? "," : "") + idx;
-					count++;
+					batchActionGlobals.count++;
 				}
 			}
 		}
+		return csvIDs;
+	}
+}
 
-		if(csvIDs || newNodes.length > 0) {
-			count += newNodes.length;
+/**
+ * Publish selected pages action
+ */
+publishpage = Class.create();
+publishpage.applyTo('#publishpage_options');
+publishpage.prototype = {
+	onsubmit : function() {
+		csvIDs = batchActionGlobals.getCsvIds();
+		if(csvIDs) {		
+			this.elements.csvIDs.value = csvIDs;
 			
-			if(confirm("Do you really want to delete the " + count + " marked pages?")) {
-				$(_HANDLER_FORMS.deletepage).elements.csvIDs.value = csvIDs;
+			statusMessage('Publishing pages...');
+			
+			// Put an AJAXY loading icon on the button
+			$('action_publish_selected').className = 'loading';
+			Ajax.SubmitForm(this, null, {
+				onSuccess :  function(response) {
+					Ajax.Evaluator(response);
+					$('action_publish_selected').className = '';
+					treeactions.closeSelection($('batchactions'));
+				},
+				onFailure : function(response) {
+					errorMessage('Error publishing pages', response);
+				}
+			});
+		} else {
+			alert("Please select at least 1 page.");
+		}
+
+		return false;
+	}
+}
+
+
+/**
+ * Delete selected pages action
+ */
+deletepage = Class.create();
+deletepage.applyTo('#deletepage_options');
+deletepage.prototype = {
+	onsubmit : function() {
+		csvIDs = batchActionGlobals.getCsvIds();
+		if(csvIDs || batchActionGlobals.newNodes.length > 0) {
+			batchActionGlobals.count += batchActionGlobals.newNodes.length;
+			
+			if(confirm("Do you really want to delete the " + batchActionGlobals.count + " marked pages?")) {
+				this.elements.csvIDs.value = csvIDs;
 				
-				statusMessage('deleting pages');
-	
-				for( var idx = 0; idx < newNodes.length; idx++ ) {
-					var newNode = $('sitetree').getTreeNodeByIdx( newNodes[idx] );
+				statusMessage('Deleting pages...');
+				// TODO: Remove 'new-' code http://open.silverstripe.com/ticket/875	
+				for( var idx = 0; idx < batchActionGlobals.newNodes.length; idx++ ) {
+					var newNode = $('sitetree').getTreeNodeByIdx( batchActionGlobals.newNodes[idx] );
 					
 					if( newNode.parentTreeNode )
 						newNode.parentTreeNode.removeTreeNode( newNode );
@@ -196,16 +256,19 @@ deletepage = {
 					$('Form_EditForm').reloadIfSetTo(idx);
 				}
 				
-				newNodes = new Array();
-	
-				Ajax.SubmitForm(_HANDLER_FORMS.deletepage, null, {
-					onSuccess : deletepage.submit_success,
+				batchActionGlobals.newNodes = new Array();
+				// Put an AJAXY loading icon on the button
+				$('action_delete_selected').className = 'loading';
+				Ajax.SubmitForm(this, null, {
+					onSuccess : function(response) {
+						Ajax.Evaluator(response);
+						$('action_delete_selected').className = '';
+						treeactions.closeSelection($('batchactions'));
+					},
 					onFailure : function(response) {
 						errorMessage('Error deleting pages', response);
 					}
 				});
-	
-				$('deletepage').getElementsByTagName('button')[0].onclick();
 			}
 			
 		} else {
@@ -213,28 +276,8 @@ deletepage = {
 		}
 
 		return false;
-	},
-	submit_success: function(response) {
-		deletepage.selectedNodes = {};
-		
-		Ajax.Evaluator(response);
-		treeactions.closeSelection($('deletepage'));
 	}
 }
-
-/** 
- * Initialisation function to set everything up
- */
-appendLoader(function () {
-	// Set up deleet page
-    if( !$('deletepage') )
-        return;
-    
-	Observable.applyTo($(_HANDLER_FORMS.deletepage));
-	$('deletepage').onclick = deletepage.button_onclick;
-	$('deletepage').getElementsByTagName('button')[0].onclick = function() { return false; };
-	$(_HANDLER_FORMS.deletepage).onsubmit = deletepage.form_submit;
-});
 
 /**
  * Tree context menu

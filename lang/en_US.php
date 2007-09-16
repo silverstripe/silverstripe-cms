@@ -47,6 +47,8 @@ $lang['en_US']['CMSMain']['COMPARINGV'] = 'You are comparing versions #%d and #%
 $lang['en_US']['CMSMain']['COPYPUBTOSTAGE'] = 'Do you really want to copy the published content to the stage site?';
 $lang['en_US']['CMSMain']['OK'] = 'OK';
 $lang['en_US']['CMSMain']['CANCEL'] = 'Cancel';
+$lang['en_US']['CMSMain']['PAGEPUB'] = '%d page published ';
+$lang['en_US']['CMSMain']['PAGESPUB'] = '%d pages published ';
 $lang['en_US']['CMSMain']['PAGEDEL'] = '%d page deleted ';
 $lang['en_US']['CMSMain']['PAGESDEL'] = '%d pages deleted ';
 $lang['en_US']['CMSMain']['NOWBROKEN'] = '  The following pages now have broken links:';
@@ -126,19 +128,24 @@ $lang['en_US']['CMSMain_left.ss']['SITECONTENT TITLE'] = array(
 	PR_HIGH
 );
 $lang['en_US']['CMSMain_left.ss']['CREATE'] = array(
-	'Create...',
+	'Create',
 	PR_HIGH
 );
-$lang['en_US']['CMSMain_left.ss']['DELETE'] = array(
-	'Delete...',
+$lang['en_US']['CMSMain_left.ss']['SEARCH'] = array(
+	'Search',
+	PR_HIGH
+);
+$lang['en_US']['CMSMain_left.ss']['BATCHACTIONS'] = array(
+	'Batch Actions',
 	PR_HIGH
 );
 $lang['en_US']['CMSMain_left.ss']['ENABLEDRAGGING'] = array(
 	'Allow drag &amp; drop reordering',
 	 PR_HIGH
 );
-$lang['en_US']['CMSMain_left.ss']['SELECTPAGESDEL'] = 'Select the pages that you want to delete and then click the button below';
+$lang['en_US']['CMSMain_left.ss']['SELECTPAGESACTIONS'] = 'Select the pages that you want to change &amp; then click an action:';
 $lang['en_US']['CMSMain_left.ss']['DELETECONFIRM'] = 'Delete the selected pages';
+$lang['en_US']['CMSMain_left.ss']['PUBLISHCONFIRM'] = 'Publish the selected pages';
 $lang['en_US']['CMSMain_left.ss']['SELECTPAGESDUP'] = 'Select the pages that you want to duplicate, whether it\'s children should be included, and where you want the duplicates placed';
 $lang['en_US']['CMSMain_left.ss']['KEY'] = 'Key:';
 $lang['en_US']['CMSMain_left.ss']['ADDEDNOTPUB'] = 'Added to the draft site and not published yet';

@@ -850,6 +850,53 @@ HTML;
 	}
 
 	/**
+	 * Publishes a number of items.
+	 * Called by AJAX
+	 */
+	public function publishitems() {
+		// This method can't be called without ajax.
+		if(!Director::is_ajax()) {
+			Director::redirectBack();
+			return;
+		}
+
+		$ids = split(' *, *', $_REQUEST['csvIDs']);
+
+		$notifications = array();
+
+		$idList = array();
+
+		// make sure all the ids are numeric.
+		// Add all the children to the list of IDs if they are missing
+		foreach($ids as $id) {
+			$brokenPageList = '';
+			if(is_numeric($id)) {
+				$record = DataObject::get_by_id($this->stat('tree_class'), $id);
+
+				if($record) {
+					// Publish this page
+					$this->performPublish($record);
+
+					// Now make sure the 'changed' icon is removed
+					$publishedRecord = DataObject::get_by_id($this->stat('tree_class'), $id);
+					$JS_title = Convert::raw2js($publishedRecord->TreeTitle());
+					FormResponse::add("\$('sitetree').setNodeTitle($id, '$JS_title');");
+					FormResponse::add("$('Form_EditForm').reloadIfSetTo($record->ID);");
+					$record->destroy();
+					unset($record);
+				}
+			}
+		}
+
+		if (sizeof($ids) > 1) $message = sprintf(_t('CMSMain.PAGESPUB', "%d pages published "), sizeof($ids));
+		else $message = sprintf(_t('CMSMain.PAGEPUB', "%d page published "), sizeof($ids));
+
+		FormResponse::add('statusMessage("'.$message.'","good");');
+
+		return FormResponse::respond();
+	}
+
+	/**
 	 * Delete a number of items.
 	 * This code supports notification
 	 */
@@ -933,13 +980,13 @@ HTML;
 			}
 		}
 
-		if (sizeof($ids) > 1) $message = sprintf(_t('CMSMain.PAGEDEL', "%d page deleted "), sizeof($ids));
-		else $message = sprintf(_t('CMSMain.PAGESDEL', "%d pages deleted "), sizeof($ids));
+		if (sizeof($ids) > 1) $message = sprintf(_t('CMSMain.PAGESDEL', "%d pages deleted "), sizeof($ids));
+		else $message = sprintf(_t('CMSMain.PAGEDEL', "%d page deleted "), sizeof($ids));
 		if(isset($brokenPageList) && $brokenPageList != '') {
 			$message .= _t('CMSMain.NOWBROKEN',"  The following pages now have broken links:")."<ul>" . addslashes($brokenPageList) . "</ul>" . _t('CMSMain.NOWBROKEN2',"Their owners have been emailed and they will fix up those pages.");
 		}
 
-		FormResponse::status_message($message);
+		FormResponse::add('statusMessage("'.$message.'","good");');
 
 		return FormResponse::respond();
 	}

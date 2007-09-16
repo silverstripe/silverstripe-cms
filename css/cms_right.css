@@ -385,7 +385,7 @@ input.delete:hover {
 	background: #ce0000;
 	color: #fff;
 }
-.ajaxActions input.loading {
+input.loading {
 	background-color: #fff;
 	background-image: url(../images/network-save.gif);
 	background-position: center left;

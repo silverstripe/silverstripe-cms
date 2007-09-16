@@ -12,7 +12,7 @@ SiteTreeHandlers.controller_url = 'admin';
 
 var _HANDLER_FORMS = {
 	addpage : 'Form_AddPageOptionsForm',
-	deletepage : 'deletepage_options'
+	batchactions : 'batchactionsforms'
 };
 
 

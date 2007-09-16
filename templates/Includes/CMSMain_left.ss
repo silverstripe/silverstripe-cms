@@ -9,8 +9,9 @@
 		<div id="sitetree_holder">
 
 			<ul id="TreeActions">
-				<li class="action" id="addpage"><button><% _t('CREATE','Create...',PR_HIGH); %></button></li>
-				<li class="action" id="deletepage"><button><% _t('DELETE','Delete...',PR_HIGH); %></button></li>
+				<li class="action" id="addpage"><button><% _t('CREATE','Create',PR_HIGH); %></button></li>
+				<li class="action" id="search"><button><% _t('SEARCH','Search',PR_HIGH); %></button></li>
+				<li class="action" id="batchactions"><button><% _t('BATCHACTIONS','Batch Actions',PR_HIGH); %></button></li>
 				<!-- <li class="action" id="duplicate"><a href="#">Duplicate</a></li>
 				Sam: this should be put into the Create area, I think, so we don't stuff up the layout -->
 			</ul>
@@ -41,15 +42,21 @@
 				
 			</form>
 			<% end_control %>
-		
-			<form class="actionparams" id="deletepage_options" style="display: none" action="admin/deleteitems">
-				<p><% _t('SELECTPAGESDEL','Select the pages that you want to delete and then click the button below'); %></p>
-				<div>		
-				<input type="hidden" name="csvIDs" />
-				<input type="submit" value="<% _t('DELETECONFIRM','Delete the selected pages'); %>" />
-				</div>
-			</form>
-			
+			<div id="batchactionsforms" style="display: none">
+				<form class="actionparams" style="border:0" id="deletepage_options" action="admin/deleteitems">
+					<p><% _t('SELECTPAGESACTIONS','Select the pages that you want to change &amp; then click an action:'); %></p>
+					<div>		
+					<input type="hidden" name="csvIDs" />
+					<input type="submit"  id="action_delete_selected" value="<% _t('DELETECONFIRM','Delete the selected pages'); %>" />
+					</div>
+				</form>
+				<form class="actionparams" style="border:0" id="publishpage_options" action="admin/publishitems">
+					<div>
+					<input type="hidden" name="csvIDs" />
+					<input type="submit" id="action_publish_selected" value="<% _t('PUBLISHCONFIRM','Publish the selected pages'); %>" />
+					</div>
+				</form>
+			</div>
 			<% control DuplicatePagesOptionsForm %>
 			<form class="actionparams" id="duplicate_options" style="display: none" action="admin/duplicateSiteTree">
 				<p><% _t('SELECTPAGESDUP','Select the pages that you want to duplicate, whether it\'s children should be included, and where you want the duplicates placed'); %></p>
