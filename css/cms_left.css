@@ -379,3 +379,10 @@ ul.tree span.a.MailType span.c, ul.tree span.a.last.MailType span.c, ul.tree spa
 	width: 45%;
 	float: left;
 }
+#left form.actionparams #InputSiteTreeFilterDate .calendar {
+	margin-left: -100px;
+}
+/* IE7 fix: */
+#left form.actionparams #InputSiteTreeFilterDate table {
+	width: 70%;
+}
