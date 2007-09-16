@@ -123,7 +123,7 @@ deletegroup = {
 				$('deletegroup').getElementsByTagName('button')[0].onclick();
 			}
 		} else {
-			alert("Please select at least 1 security group.");
+			alert("Please select at least 1 group.");
 		}
 
 		return false;
