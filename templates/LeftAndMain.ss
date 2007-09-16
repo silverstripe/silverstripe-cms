@@ -12,7 +12,7 @@
 </head>
 
 <body class="stillLoading">
-	<div id="Loading" style="background: #FFF url(cms/images/loading.gif) 50% 50% no-repeat; position: absolute;z-index: 100000;height: 100%;width: 100%;margin: 0;padding: 0;z-index: 100000;position: absolute;">Loading...</div>
+	<div id="Loading" style="background: #FFF url(cms/images/loading.gif) 50% 50% no-repeat; position: absolute;z-index: 100000;height: 100%;width: 100%;margin: 0;padding: 0;z-index: 100000;position: absolute;"><% _t('LOADING','Loading...',PR_HIGH) %></div>
 
 	<div id="top">
 		<% include CMSTopMenu %>	
@@ -36,24 +36,24 @@
 	<div id="bottom">
 		<div class="holder">
 		<div id="logInStatus">
-			<a href="http://www.silverstripe.com" title="Silverstripe Website">Silverstripe CMS</a>&nbsp;-&nbsp;
-			<abbr style="border-style: none" title="This is the $ApplicationName version that you are currently running, technically it's the CVS branch">$CMSVersion</abbr> &nbsp; &nbsp; &nbsp; 
+			<a href="http://www.silverstripe.com" title="<% _t('SSWEB','Silverstripe Website') %>">Silverstripe CMS</a>&nbsp;-&nbsp;
+			<abbr style="border-style: none" title="<% _t('APPVERSIONTEXT1',"This is the") %> $ApplicationName <% _t('APPVERSIONTEXT2',"version that you are currently running, technically it's the CVS branch") %>">$CMSVersion</abbr> &nbsp; &nbsp; &nbsp; 
 			<% control CurrentMember %>
-			Logged in as $FirstName $Surname - <a href="Security/logout">log out</a>
+			<% _t('LOGGEDINAS','Logged in as') %> $FirstName $Surname - <a href="Security/logout"><% _t('LOGOUT','log out') %></a>
 		<% end_control %>
 		</div>
 
 		<div id="switchView" class="bottomTabs">
 			<% if class = CMSMain %>
-			<div class="blank"> <% _t('VIEWPAGEIN','Page view:'); %> </div>
+			<div class="blank"> <% _t('VIEWPAGEIN','Page view:') %> </div>
 			<% else %>
-			<div class="blank"> Switch to: </div>
+			<div class="blank"> <% _t('SWITCHTO','Switch to:') %> </div>
 			<% end_if %>
-			<a class="current"><% _t('EDIT','Edit'); %></a>
-			<a id="viewStageSite" href="home/?stage=Stage" style="left : -1px;"><% _t('DRAFTS','Draft Site'); %></a>
+			<a class="current"><% _t('EDIT','Edit') %></a>
+			<a id="viewStageSite" href="home/?stage=Stage" style="left : -1px;"><% _t('DRAFTS','Draft Site') %></a>
 			<div class="blank" style="width:1em;"> </div>
-			<a id="viewLiveSite" href="home/?stage=Live" style="left : -3px;"><% _t('PUBLIS','Published Site'); %></a>
-			<a style="display: none;left : -5px;" id="viewArchivedSite" href="home/"><% _t('ARCHS','Archived Site'); %></a>
+			<a id="viewLiveSite" href="home/?stage=Live" style="left : -3px;"><% _t('PUBLIS','Published Site') %></a>
+			<a style="display: none;left : -5px;" id="viewArchivedSite" href="home/"><% _t('ARCHS','Archived Site') %></a>
 		</div>
 		
 		</div>
