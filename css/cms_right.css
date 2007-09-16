@@ -83,9 +83,7 @@ html>body .right form textarea.htmleditor {
 }
 
 .right form  input.checkbox, .right form .optionset input, .right form .htmleditor select, .right form input.action {
-	position: relative;
 	width: auto;
-	float: right;
 }
 .right form ul.optionset {
 	padding: 0;
