@@ -4,6 +4,8 @@
 var ImageBox = {
 	
 	initialize: function() {
+		this.indicatorWidth = 32;
+		this.indicatorHeight = 32;
 		this.showIndicator = ImageBox.showIndicator.bind(this);
 		this.hideIndicator = ImageBox.hideIndicator.bind(this);
 		this.reCenterIndicator = ImageBox.reCenterIndicator.bind(this);
@@ -18,13 +20,14 @@ var ImageBox = {
 	},
 		
 	showIndicator: function(container) {
+		Element.show(this.indicator,this.indicatorImage);
 		if(container == null) container = this.imageContainer;
 		this.centerIndicator(container);
 		this.indicator.style.display = 'inline';	
 	},
 	
 	hideIndicator: function() {
-		Element.hide(this.indicator);
+		Element.hide(this.indicator,this.indicatorImage);
 	},	
 	
 	centerIndicator: function(container) {
@@ -34,8 +37,8 @@ var ImageBox = {
 		var height = container.getHeight();
 		var parentTop =  container.getParentTop();
 		var parentLeft = container.getParentLeft();
-		this.indicator.style.left = parentLeft + left + width/2 - this.indicatorImage.width/2 + 2 + "px"; 
-		this.indicator.style.top = parentTop + top + height/2 - this.indicatorImage.height/2 + 2 + "px";		
+		this.indicator.style.left = parentLeft + left + width/2 - this.indicatorWidth/2 + "px"; 
+		this.indicator.style.top = parentTop + top + height/2 - this.indicatorHeight/2 + "px";		
 	},
 	
 	reCenterIndicator: function() {

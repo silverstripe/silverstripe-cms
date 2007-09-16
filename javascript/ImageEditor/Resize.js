@@ -25,6 +25,7 @@ var Resize = {
 			EventStack.clearStack();
 			if(this.imageContainerResize.isEnabled) {
 				if(this.imageContainerResize.originalWidth != imageElement.width || this.imageContainerResize.originalHeight != imageElement.height) {
+					$('imageContainer').style.backgroundImage = 'url("")';
 					imageTransformation.resize(imageElement.width,imageElement.height,Resize.resizeCallback.bind(this));
 					effects.disableRotate();
 					crop.disable();
@@ -36,6 +37,7 @@ var Resize = {
 	},
 	
 	resizeCallback: function() {
+		$('imageContainer').style.backgroundImage = 'url("' + $('image').src + '")';
 	},
 	
 	onDrag: function()

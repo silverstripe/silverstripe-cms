@@ -7,19 +7,23 @@ ImageHistory = {
 		this.history = new Array();
 		this.historyPointer = -1;
 		this.modifiedOriginalImage = false;		
+		this.isEnabled = true;
+		this.image = Positioning.addBehaviour($('image'));
+		this.size = new Array();
+		this.fakeImage = $('fakeImg');
+		this.image = $('image');
 		this.undo = ImageHistory.undo.bind(this);
 		this.redo = ImageHistory.redo.bind(this);
 		this.add = ImageHistory.add.bind(this);
-		this.addLinsteners = ImageHistory.addLinsteners.bind(this);
-		this.addLinsteners();	
+		this.addListeners = ImageHistory.addListeners.bind(this);
 		this.operationMade = ImageHistory.operationMade.bind(this);		
 		this.isInHistory = ImageHistory.isInHistory.bind(this);
+		this.onImageLoad = ImageHistory.onImageLoad.bind(this);
 	
 		this.enable = ImageHistory.enable.bind(this);
 		this.disable = ImageHistory.disable.bind(this);
 		this.clear = ImageHistory.clear.bind(this);
-		this.image = Positioning.addBehaviour($('image'));
-		this.size = new Array();
+		this.addListeners();	
 	},
 		
 	undo: function() {
@@ -30,15 +34,8 @@ ImageHistory = {
 					this.modifiedOriginalImage = true; else this.modifiedOriginalImage = false;
 			}
 			this.image.src = this.history[this.historyPointer-1].fileUrl;
-			imageBox.checkOutOfDrawingArea(this.size[this.historyPointer-1].width,this.size[this.historyPointer-1].height);
-			this.image.style.width = this.size[this.historyPointer-1].width + 'px';
-			this.image.style.height = this.size[this.historyPointer-1].height + 'px';
-			$('imageContainer').style.width = this.size[this.historyPointer-1].width + 'px';
-			$('imageContainer').style.height = this.size[this.historyPointer-1].height + 'px';
-			resize.imageContainerResize.originalWidth = this.size[this.historyPointer-1].width;
-			resize.imageContainerResize.originalHeight = this.size[this.historyPointer-1].height;
-			imageToResize.onImageLoad();
 			this.historyPointer--;
+			this.onImageLoad();
 		} else {
 			alert("No more undo");
 		}
@@ -49,15 +46,8 @@ ImageHistory = {
 			operation = this.history[this.historyPointer+1].operation;
 			if(operation == 'rotate' || operation == 'crop') this.modifiedOriginalImage = true;
 			this.image.src = this.history[this.historyPointer+1].fileUrl;
-			imageBox.checkOutOfDrawingArea(this.size[this.historyPointer+1].width,this.size[this.historyPointer+1].height);
-			this.image.style.width = this.size[this.historyPointer+1].width + 'px';
-			this.image.style.height = this.size[this.historyPointer+1].height + 'px';
-			$('imageContainer').style.width = this.size[this.historyPointer+1].width + 'px';
-			$('imageContainer').style.height = this.size[this.historyPointer+1].height + 'px';
-			resize.imageContainerResize.originalWidth = this.size[this.historyPointer+1].width;			
-			resize.imageContainerResize.originalHeight = this.size[this.historyPointer+1].height;				
-			imageToResize.onImageLoad();
 			this.historyPointer++;
+			this.onImageLoad();
 		} else {
 			alert("No more redo");
 		}
@@ -75,7 +65,7 @@ ImageHistory = {
 		}
 	},
 	
-	addLinsteners: function() {
+	addListeners: function() {
 		this.undoListener = Event.observe('undoButton','click',this.undo);	
 		this.redoListener = Event.observe('redoButton','click',this.redo);
 	},
@@ -90,12 +80,18 @@ ImageHistory = {
 	},
 	
 	enable: function() {
-		this.addLinsteners();
+		if(!this.isEnabled) {
+			this.addListeners();
+			this.isEnabled = true;
+		}
 	},
 	
 	disable: function() {
-		Event.stopObserving($('undoButton'),'click', this.undo);			
-		Event.stopObserving($('redoButton'),'click', this.redo);
+		if(this.isEnabled) {
+			Event.stopObserving($('undoButton'),'click', this.undo);			
+			Event.stopObserving($('redoButton'),'click', this.redo);
+			this.isEnabled = false;
+		}
 	},
 	
 	clear: function() {
@@ -112,5 +108,16 @@ ImageHistory = {
 			}
 		}
 		return false;	
+	},
+	
+	onImageLoad: function(event) {
+		imageBox.checkOutOfDrawingArea(this.size[this.historyPointer].width,this.size[this.historyPointer].height);
+		this.image.style.width = this.size[this.historyPointer].width + 'px';
+		this.image.style.height = this.size[this.historyPointer].height + 'px';
+		$('imageContainer').style.width = this.size[this.historyPointer].width + 'px';
+		$('imageContainer').style.height = this.size[this.historyPointer].height + 'px';
+		resize.imageContainerResize.originalWidth = this.size[this.historyPointer].width;
+		resize.imageContainerResize.originalHeight = this.size[this.historyPointer].height;
+		imageToResize.onImageLoad();
 	}
 };
