@@ -133,13 +133,12 @@ $lang['en_US']['CMSMain_left.ss']['DELETE'] = array(
 	'Delete...',
 	PR_HIGH
 );
-$lang['en_US']['CMSMain_left.ss']['REORDER'] = array(
-	'Reorder...',
-	PR_HIGH
+$lang['en_US']['CMSMain_left.ss']['ENABLEDRAGGING'] = array(
+	'Allow drag &amp; drop reordering',
+	 PR_HIGH
 );
 $lang['en_US']['CMSMain_left.ss']['SELECTPAGESDEL'] = 'Select the pages that you want to delete and then click the button below';
 $lang['en_US']['CMSMain_left.ss']['DELETECONFIRM'] = 'Delete the selected pages';
-$lang['en_US']['CMSMain_left.ss']['DRAGPAGES'] = 'To reorganise your site, drag the pages around as desired.';
 $lang['en_US']['CMSMain_left.ss']['SELECTPAGESDUP'] = 'Select the pages that you want to duplicate, whether it\'s children should be included, and where you want the duplicates placed';
 $lang['en_US']['CMSMain_left.ss']['KEY'] = 'Key:';
 $lang['en_US']['CMSMain_left.ss']['ADDEDNOTPUB'] = 'Added to the draft site and not published yet';

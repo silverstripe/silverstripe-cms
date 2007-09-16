@@ -12,8 +12,7 @@ SiteTreeHandlers.controller_url = 'admin';
 
 var _HANDLER_FORMS = {
 	addpage : 'Form_AddPageOptionsForm',
-	deletepage : 'deletepage_options',
-	sortitems : 'sortitems_options'
+	deletepage : 'deletepage_options'
 };
 
 
@@ -437,24 +436,23 @@ function fixHeight_left() {
 SiteTree.applyTo('#sitetree');
 
 /**
- * Reorganise action
+ * Reorganise action checkbox 
  */
 ReorganiseAction = Class.create();
 ReorganiseAction.applyTo('#sortitems');
 ReorganiseAction.prototype = {
 	initialize: function () {
-		this.getElementsByTagName('button')[0].onclick = returnFalse;
-		Observable.applyTo($(_HANDLER_FORMS[this.id]));
+		this.isDraggable = false;
 	},
 	
 	onclick : function() {
-		if(treeactions.toggleSelection(this)) {
+		if (this.isDraggable == false) {
 			$('sitetree').makeDraggable();
+			this.isDraggable = true;
+		} else {
+			$('sitetree').stopBeingDraggable();
+			this.isDraggable = false;
 		}
-	},
-
-	onclose : function() {
-		$('sitetree').stopBeingDraggable();
 	}
 }
 

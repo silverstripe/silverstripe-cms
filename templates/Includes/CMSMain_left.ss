@@ -11,7 +11,6 @@
 			<ul id="TreeActions">
 				<li class="action" id="addpage"><button><% _t('CREATE','Create...',PR_HIGH); %></button></li>
 				<li class="action" id="deletepage"><button><% _t('DELETE','Delete...',PR_HIGH); %></button></li>
-				<li class="action" id="sortitems"><button><% _t('REORDER','Reorder...',PR_HIGH); %></button></li>
 				<!-- <li class="action" id="duplicate"><a href="#">Duplicate</a></li>
 				Sam: this should be put into the Create area, I think, so we don't stuff up the layout -->
 			</ul>
@@ -34,6 +33,11 @@
 				<div>
 				<input class="action" type="submit" value="Go" />
 				</div>
+				<div class="field dropdown nolabel" style="margin-top: 4px;">
+					<span class="middleColumn">
+						<input type="checkbox" id="sortitems" /> <label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH); %></label>
+					</span>
+				</div>
 				
 			</form>
 			<% end_control %>
@@ -44,10 +48,6 @@
 				<input type="hidden" name="csvIDs" />
 				<input type="submit" value="<% _t('DELETECONFIRM','Delete the selected pages'); %>" />
 				</div>
-			</form>
-		
-			<form class="actionparams" id="sortitems_options" style="display: none">
-				<p id="sortitems_message" style="margin: 0"><% _t('DRAGPAGES','To reorganise your site, drag the pages around as desired.'); %></p>
 			</form>
 			
 			<% control DuplicatePagesOptionsForm %>
