@@ -18,28 +18,28 @@
                     <p>$fileToEditOnlyName</p>
                 </div>
                 <div id="Actions">
-                    <a id="SaveButton" href="#">
+                    <a id="SaveButton" href="#a">
                         <div id="SaveIcon">
                         </div>
                         <p id="SaveText" class="menuText">
                             save&nbsp;image
                         </p>
                     </a>
-                    <a id="ExitButton" href="#">
+                    <a id="ExitButton" href="#a">
                         <div id="ExitIcon">
                         </div>
                         <p id="ExitText" class="menuText">
                             exit
                         </p>
                     </a>
-                    <a id="UndoButton" href="#">
+                    <a id="UndoButton" href="#a">
                         <div id="UndoIcon">
                         </div>
                         <p id="UndoText" class="menuText">
                             undo
                         </p>
                     </a>
-                    <a id="RedoButton" href="#">
+                    <a id="RedoButton" href="#a">
                         <div id="RedoIcon">
                         </div>
                         <p id="RedoText" class="menuText">
@@ -51,14 +51,14 @@
                     </p>    
                 </div>
                 <div id="Functions">
-                    <a id="RotateButton" href="#">
+                    <a id="RotateButton" href="#a">
                         <div id="RotateIcon">
                         </div>
                         <p id="RotateText" class="menuText">
                             rotate
                         </p>
                     </a>
-                    <a id="CropButton" href="#">
+                    <a id="CropButton" href="#a">
                         <div id="CropIcon"></div>                    
                         <p id="CropText" class="menuText">
                             crop
@@ -75,14 +75,14 @@
                     </p>    
                 </div>
                 <div id="CurrentAction">
-                    <a id="CancelButton" href="#">
+                    <a id="CancelButton" href="#a">
                         <div id="CancelIcon">
                         </div>
                         <p id="CancelText" class="menuText">
                             cancel
                         </p>
                     </a>
-                    <a id="ApplyButton" href="#">
+                    <a id="ApplyButton" href="#a">
                         <div id="ApplyIcon">
                         </div>
                         <p id="ApplyText" class="menuText">
@@ -124,6 +124,5 @@
                 old_onload();
             };
         </script>
-        
     </body> 
 </html>
