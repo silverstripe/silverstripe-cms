@@ -8,6 +8,8 @@
 		
 		public $fileToEdit = "";
 		
+		public $fileToEditOnlyName = "";
+		
 		/**
 		 * Includes all JS required for ImageEditor. This method requires setting
 		 * a fileToEdit URL in POST.
@@ -39,6 +41,7 @@
 			if(!isset($this->requestParams['fileToEdit'])) $this->raiseError();
 			$fileWithPath = $this->requestParams['fileToEdit'];
 			$this->fileToEdit = $this->file2Origin($fileWithPath);
+			$this->fileToEditOnlyName = $this->urlToFilename($this->fileToEdit);  
 			return $this->renderWith(__CLASS__);
 		}
 		
@@ -219,5 +222,17 @@
 		private function raiseError($message = "") {
 			echo "parent.parent.parent.statusMessage('Error: " . $message . "','bad',false);";
 			exit();	
+		}
+		
+		/**
+         * Method converts retrieves filename from url
+         *
+         * @param url
+         * 
+        */ 
+		
+		private function urlToFilename($url) {
+		    $path = pathinfo($url);
+		    return $path['filename'] . "." . substr($path['extension'],0,strpos($path['extension'],'?'));  	
 		}
 	}

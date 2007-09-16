@@ -5,8 +5,8 @@ var Resize = {
 	
 	initialize: function(element) {		
 		this.element = element;
-		this.leftBoxConstraint = 4;
-		this.topBoxConstraint = 4;
+		this.leftBoxConstraint = 2;
+		this.topBoxConstraint = 0;
 		this.getRelativeMousePos = Resize.getRelativeMousePos.bind(this);
 		options = {
 				resizeStop: Resize.resizeStop.bind(this),

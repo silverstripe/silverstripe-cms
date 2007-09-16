@@ -117,19 +117,20 @@ var Crop = {
 	cropCallback: function() {
 	   resize.imageContainerResize.placeClickBox();
    	   resize.imageContainerResize.setVisible(true);
-	   Element.hide(this.cropBox,this.leftGreyBox,this.rightGreyBox,this.upperGreyBox,this.lowerGreyBox,$('cropOk'),$('cropCancel'));							
+	   Element.show($('CropText'));
+	   Element.hide(this.cropBox,this.leftGreyBox,this.rightGreyBox,this.upperGreyBox,this.lowerGreyBox,$('CurrentAction'));							
 	},
 	
 	setListeners: function() {
-		Event.observe('cropStart','click',this.onCropStart);
-		Event.observe('cropOk','click',this.onCropOk);
-		Event.observe('cropCancel','click',this.onCropCancel);		
+		Event.observe('CropButton','click',this.onCropStart);
+		Event.observe('CancelButton','click',this.onCropCancel);
+		Event.observe('ApplyButton','click',this.onCropOk);
 	},
 	onCropStart: function()	 {
 		if(this.isEnabled) {
 			$('image').style.visibility = "hidden";//hack for IE for not selecting image during crop
 			this.setVisible(true);	
-			Element.show($('cropOk'),$('cropCancel'));
+			Element.show($('CurrentAction'));
 			imageHistory.disable();
 			effects.disableRotate();
 			this.enable();
@@ -138,13 +139,14 @@ var Crop = {
 	
 	onCropOk: function() {
 		if(this.isEnabled) {
-		    if(this.doCrop()) Element.hide($('cropOk'),$('cropCancel'));
+		    if(this.doCrop()) Element.hide($('CurrentAction'));
 		}	
 	},
 	
-	onCropCancel: function() {
+	onCropCancel: function(event) {
 		if(this.isEnabled) {
-		    Element.hide($('cropOk'),$('cropCancel'));
+		    Element.hide($('CurrentAction'));
+		    Element.show($('CropText'));
 		    this.setVisible(false);
 		    imageHistory.enable();
 		    effects.enableRotate();
@@ -160,7 +162,7 @@ var Crop = {
 			this.centerCropBox();
 			this.placeGreyBox(this.cropBox.getWidth(),this.cropBox.getHeight());
 		} else {
-			Element.hide(this.cropBox,this.leftGreyBox,this.rightGreyBox,this.upperGreyBox,this.lowerGreyBox,$('cropOk'),$('cropCancel'));							
+			Element.hide(this.cropBox,this.leftGreyBox,this.rightGreyBox,this.upperGreyBox,this.lowerGreyBox,$('CurrentAction'));							
 		}
 		resize.imageContainerResize.setVisible(!setVisible);
 		this.resizeCropBox.setVisible(setVisible);

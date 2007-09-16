@@ -3,19 +3,29 @@
  */
 var DocumentBody = {
 	initialize: function() {
-		var windowHeight = Element.getDimensions(window.top.document.body).height;
-		Event.observe(window.top,'resize',DocumentBody.onWindowResize.bind(this));
-		Event.observe($('imageEditorContainer'),'scroll',DocumentBody.onImageEditorScroll.bind(this));
-		$('imageEditorContainer').style.height = windowHeight - 109 + 'px';
+		this.placeUI = DocumentBody.placeUI.bind(this);
+		this.placeUI();
+		Event.observe(window.top,'resize',DocumentBody.resizeIframe.bind(this));
 	},
 	
-	onWindowResize: function() {
-        var windowWidth = Element.getDimensions(window.top.document.body).width;
+	resizeIframe: function(event) {
+	    var windowWidth = Element.getDimensions(window.top.document.body).width;
         var windowHeight = Element.getDimensions(window.top.document.body).height;
         iframe = window.top.document.getElementById('imageEditorIframe');
-        iframe.style.width = windowWidth - 30 + 'px';
+        iframe.style.width = windowWidth - 6 + 'px';
         iframe.style.height = windowHeight + 10 + 'px';
-        $('imageEditorContainer').style.height = windowHeight - 105 + 'px';		
+        this.placeUI();
+	},
+	
+	placeUI: function() {
+        var iframe = window.top.document.getElementById('imageEditorIframe');
+        $('imageEditorContainer').style.height = Element.getDimensions(iframe).height - Element.getDimensions($('TopRuler')).height - Element.getDimensions($('MenuBar')).height - 32  + 'px';
+        $('imageEditorContainer').style.width = Element.getDimensions(iframe).width - Element.getDimensions($('LeftRuler')).width - 14 + 'px';
+        $('LeftRuler').style.height = $('imageEditorContainer').style.height; 
+        $('TopLeft').style.width = Element.getDimensions($('MenuBar')).width -
+                                   Element.getDimensions($('TopRight')).width + 'px';
+        $('TopRight').style.left = Element.getDimensions($('TopLeft')).width + 'px';
+                                   		
 	},
 	
 	onImageEditorScroll: function() {

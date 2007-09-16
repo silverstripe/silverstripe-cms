@@ -228,8 +228,8 @@ Resizeable = {
 	},
 	
 	setListeners: function() {
-		Event.observe('mainContainer','mousemove',this.onResize);
-		Event.observe('mainContainer','mouseup',this.resizeStop);
+		Event.observe('Main','mousemove',this.onResize);
+		Event.observe('Main','mouseup',this.resizeStop);
 	},
 	
 	addListener: function(element) {

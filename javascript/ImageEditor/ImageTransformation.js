@@ -30,7 +30,7 @@ var ImageTransformation = {
 		};
 			
 		 if(imageAlreadyChangedSize == false) {
-			 imageBox.showIndicator($('mainContainer'));
+			 imageBox.showIndicator($('Main'));
 	     } else {
 			 imageBox.showIndicator();
 		 }

@@ -27,7 +27,7 @@ var Effects = {
 	},
 	
 	setListeners: function() {
-		Event.observe('rotateButton','click',this.rotate);
+		Event.observe('RotateButton','click',this.rotate);
 	},
 	
 	disableRotate: function() {

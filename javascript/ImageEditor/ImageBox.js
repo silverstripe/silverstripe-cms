@@ -15,7 +15,7 @@ var ImageBox = {
 		Element.hide(this.imageContainer);
 		this.indicator = Positioning.addBehaviour($('loadingIndicatorContainer'));
         this.indicatorImage = Positioning.addBehaviour($('loadingIndicator'));
-		Positioning.addBehaviour($('mainContainer'));
+		Positioning.addBehaviour($('Main'));
 	},
 		
 	showIndicator: function(container) {

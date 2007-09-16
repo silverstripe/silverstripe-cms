@@ -24,7 +24,8 @@ ImageHistory = {
 		this.enable = ImageHistory.enable.bind(this);
 		this.disable = ImageHistory.disable.bind(this);
 		this.clear = ImageHistory.clear.bind(this);
-		this.addListeners();	
+		this.addListeners();
+		statusMessage = new StatusMessage.initialize();	
 	},
 		
 	undo: function() {
@@ -38,7 +39,7 @@ ImageHistory = {
 			this.historyPointer = this.historyPointer - 1;
 			this.image.src = this.history[this.historyPointer].fileUrl;
 		} else {
-			alert("No more undo");
+			statusMessage.statusMessage("No more undo","bad");
 		}
 	},
 	
@@ -50,7 +51,7 @@ ImageHistory = {
 			this.historyPointer = this.historyPointer + 1;
 			this.image.src = this.history[this.historyPointer].fileUrl;
 		} else {
-			alert("No more redo");
+			statusMessage.statusMessage("No more redo","bad");
 		}
 	},
 	
@@ -69,8 +70,8 @@ ImageHistory = {
 	},
 	
 	addListeners: function() {
-		this.undoListener = Event.observe('undoButton','click',this.undo);	
-		this.redoListener = Event.observe('redoButton','click',this.redo);
+		this.undoListener = Event.observe('UndoButton','click',this.undo);	
+		this.redoListener = Event.observe('RedoButton','click',this.redo);
 	},
 	
 	operationMade: function(historyPointer,operation) {
@@ -91,8 +92,8 @@ ImageHistory = {
 	
 	disable: function() {
 		if(this.isEnabled) {
-			Event.stopObserving($('undoButton'),'click', this.undo);			
-			Event.stopObserving($('redoButton'),'click', this.redo);
+			Event.stopObserving($('UndoButton'),'click', this.undo);			
+			Event.stopObserving($('RedoButton'),'click', this.redo);
 			this.isEnabled = false;
 		}
 	},

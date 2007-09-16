@@ -17,8 +17,9 @@ var ImageEditor = {
 		this.tottalyOriginalImageFile = imageFile;
 		this.onSaveClick = ImageEditor.onSaveClick.bind(this);
 		this.onCloseClick = ImageEditor.onCloseClick.bind(this);
-		Event.observe($('saveButton'),'click',this.onSaveClick);
-		Event.observe($('closeButton'),'click',this.onCloseClick);
+		Event.observe($('SaveButton'),'click',this.onSaveClick);
+		Event.observe($('ExitButton'),'click',this.onCloseClick);
+		Element.hide($('CurrentAction'));
 	}, 
 	onSaveClick: function() {
 		if(this.tottalyOriginalImageFile != $('image').src) {

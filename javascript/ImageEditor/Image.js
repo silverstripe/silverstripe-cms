@@ -14,11 +14,11 @@ var ImageToResize = {
 		
 	reportSize: function(width,height) {
 		if(width != null && height != null) {
-			$('imageWidth').innerHTML = width + "px";
-            $('imageHeight').innerHTML = height + "px";	
+			$('ImageWidth').innerHTML = width + "px";
+            $('ImageHeight').innerHTML = height + "px";	
 		} else {
-            $('imageWidth').innerHTML = this.imageToResize.width + "px";
-            $('imageHeight').innerHTML = this.imageToResize.height + "px";  
+            $('ImageWidth').innerHTML = this.imageToResize.width + "px";
+            $('ImageHeight').innerHTML = this.imageToResize.height + "px";  
 		}
 	},
 	
@@ -27,6 +27,10 @@ var ImageToResize = {
 			$('imageContainer').style.backgroundImage = 'url("' + $('image').src + '")';
 			imageBox.hideIndicator();
 			Element.show($('imageContainer'),$('image'));
+            crop.enable();
+            resize.imageContainerResize.enable();
+            effects.enableRotate();
+            imageHistory.enable();
             if(resize.imageContainerResize.originalHeight == 0 && resize.imageContainerResize.originalWidth == 0) {
 				imageHistory.add('initialize',$('image').src);
 				this.resizeOnFirstLoad();
@@ -35,18 +39,14 @@ var ImageToResize = {
 			resize.imageContainerResize.originalWidth = this.imageToResize.width;
 			resize.imageContainerResize.originalHeight = this.imageToResize.height;
 			resize.imageContainerResize.placeClickBox();
-			crop.enable();
-			resize.imageContainerResize.enable();
-			effects.enableRotate();
-			imageHistory.enable();
 			crop.onImageLoadCallback();
 		}
 		this.reportSize();
 	},
 	
 	resizeOnFirstLoad: function() {	
-	   var windowWidth = Element.getDimensions($('mainContainer')).width;
-	   var windowHeight = Element.getDimensions($('mainContainer')).height - 100;
+	   var windowWidth = Element.getDimensions($('Main')).width;
+	   var windowHeight = Element.getDimensions($('Main')).height - 100;
 	   var imageWidth =  Element.getDimensions($('image')).width;
 	   var imageHeight = Element.getDimensions($('image')).height;
 	   if(imageWidth > windowWidth - 40 || imageHeight >  windowHeight - 40) {
@@ -61,6 +61,10 @@ var ImageToResize = {
 	       }
 	       this.reportSize(0,0);
 	       resize.imageContainerResize.setVisible(false);
+	       crop.disable();
+           resize.imageContainerResize.disable();
+           effects.disableRotate();
+           imageHistory.disable();
 	       imageTransformation.resize(imageWidth,imageHeight,ImageToResize.resizeOnFirstLoadCallBack.bind(this),false);
 	   }	
     },

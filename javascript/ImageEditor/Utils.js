@@ -83,3 +83,20 @@ Random = {
 		return string;
 	}
 }
+
+StatusMessage = {
+    initialize: function() {
+        this.statusMessage = StatusMessage.statusMessage.bind(this);
+        window.frameElement.statusMessage = statusMessage;
+        var s1 = $('statusMessage');
+        var s2 = window.top.document.getElementById('statusMessage');
+        s1.showMessage = s2.showMessage;
+        s1.clearMessage = s2.clearMessage;
+        s1.fade = s2.fade;
+        s1.afterFade = s2.afterFade;
+    },
+    
+    statusMessage: function(msg, type, clearManually) {
+        window.frameElement.statusMessage(msg, type, clearManually);
+    }
+}
