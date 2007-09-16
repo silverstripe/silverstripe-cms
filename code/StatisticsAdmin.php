@@ -73,9 +73,16 @@ class StatisticsAdmin extends LeftAndMain {
 	 * Form that will be shown when we open one of the items
 	 */
 	public function EditForm() {
-		return $this->showAll();
+		return "<div id=\"bovs\">\n
+		<h1>Select a report type from the left for a detailed look at site statistics</h1>\n\n" .
+		$this->RecentViews() .
+		"\n\n</div>\n\n" .
+		$this->showAll();
 	}
 
+	function RecentViews() {
+		return Statistics::getRecentViews();
+	}
 
 	function Trend() {
 		return Statistics::TrendChart(array('PageView', 'Member', 'SiteTree'), 'day', 'mchart', 'Line', 'red');
@@ -110,6 +117,22 @@ class StatisticsAdmin extends LeftAndMain {
 		$this->Trend() .
 		$this->UserTable() .
 		$this->ViewTable();
+	}
+
+	public function viewcsv() {
+		header("Content-type: application/x-msdownload");
+		header("Content-Disposition: attachment; filename=viewreport.csv");
+		header("Pragma: no-cache");
+		header("Expires: 0");
+		echo Statistics::getViewCSV();
+	}
+
+	public function usercsv() {
+		header("Content-type: application/x-msdownload");
+		header("Content-Disposition: attachment; filename=userreport.csv");
+		header("Pragma: no-cache");
+		header("Expires: 0");
+		echo Statistics::getUserCSV();
 	}
 
 }

@@ -39,12 +39,13 @@ showCT = function() {
 
 
 overview = function() {
-	$('browserchart') ? $('browserchart').show() : null;
-	$('trendchart') ? $('trendchart').show() : null;
-	$('usertable') ? $('usertable').show() : null;
-	$('viewtable') ? $('viewtable').show() : null;
+	$('browserchart') ? $('browserchart').hide() : null;
+	$('trendchart') ? $('trendchart').hide() : null;
+	$('usertable') ? $('usertable').hide() : null;
+	$('viewtable') ? $('viewtable').hide() : null;
 	$('oschart') ? $('oschart').hide() : null;
 	$('uacchart') ? $('uacchart').hide() : null;
+	$('bovs') ? $('bovs').show() : null;
 }
 
 users = function() {
@@ -54,6 +55,7 @@ users = function() {
 	$('viewtable') ? $('viewtable').hide() : null;
 	$('oschart') ? $('oschart').hide() : null;
 	$('uacchart') ? $('uacchart').show() : null;
+	$('bovs') ? $('bovs').hide() : null;
 }
 
 views = function() {
@@ -63,6 +65,7 @@ views = function() {
 	$('viewtable') ? $('viewtable').show() : null;
 	$('oschart') ? $('oschart').hide() : null;
 	$('uacchart') ? $('uacchart').hide() : null;
+	$('bovs') ? $('bovs').hide() : null;
 }
 
 trends = function() {
@@ -72,6 +75,7 @@ trends = function() {
 	$('viewtable') ? $('viewtable').hide() : null;
 	$('oschart') ? $('oschart').hide() : null;
 	$('uacchart') ? $('uacchart').hide() : null;
+	$('bovs') ? $('bovs').hide() : null;
 }
 
 browsers = function() {
@@ -81,6 +85,7 @@ browsers = function() {
 	$('viewtable') ? $('viewtable').hide() : null;
 	$('oschart') ? $('oschart').hide() : null;
 	$('uacchart') ? $('uacchart').hide() : null;
+	$('bovs') ? $('bovs').hide() : null;
 }
 
 os = function() {
@@ -90,6 +95,7 @@ os = function() {
 	$('viewtable') ? $('viewtable').hide() : null;
 	$('oschart') ? $('oschart').show() : null;
 	$('uacchart') ? $('uacchart').hide() : null;
+	$('bovs') ? $('bovs').hide() : null;
 }
 
 
