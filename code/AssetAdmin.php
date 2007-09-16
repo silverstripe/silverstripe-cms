@@ -41,6 +41,10 @@ class AssetAdmin extends LeftAndMain {
 		Requirements::javascript("cms/javascript/AssetAdmin.js");
 		Requirements::javascript("cms/javascript/AssetAdmin_left.js");
 		Requirements::javascript("cms/javascript/AssetAdmin_right.js");
+
+		Requirements::javascript("cms/javascript/Upload.js");
+		Requirements::javascript("sapphire/javascript/Security_login.js");
+		Requirements::javascript("jsparty/SWFUpload/SWFUpload.js");
 		
 		// Requirements::javascript('sapphire/javascript/TableListField.js');
 
@@ -116,6 +120,7 @@ HTML;
 				<script>
 					var multi_selector = new MultiSelector($('Form_UploadForm_FilesList'), null, $('Form_UploadForm_action_upload'));
 					multi_selector.addElement($('Form_UploadForm_Files-0'));
+                    new window.top.document.Upload.initialize();
 				</script>
 			")
 		), new FieldSet(
@@ -129,6 +134,7 @@ HTML;
 	 */
 	function doUpload($data, $form) {
 		foreach($data['Files'] as $param => $files) {
+			if(!is_array($files)) $files = array($files);
 			foreach($files as $key => $value) {
 				$processedFiles[$key][$param] = $value;
 			}
