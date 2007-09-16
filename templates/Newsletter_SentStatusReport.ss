@@ -1,5 +1,5 @@
 <% if SentRecipients(Failed) %>
-	<h2 class="error">Sending to the Following Recipients Failed</h2>
+	<h2 class="error" style="width:auto;">Sending to the Following Recipients Failed</h2>
 	<table class="CMSList">
 		<thead>
 			<tr>
@@ -22,7 +22,7 @@
 <% end_if %>
 
 <% if SentRecipients(Bounced) %>
-	<h2 class="error">Sending to the Following Recipients Bounced</h2>
+	<h2 class="error" style="width:auto;">Sending to the Following Recipients Bounced</h2>
 
 	<table class="CMSList">
 		<thead>
