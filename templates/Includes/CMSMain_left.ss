@@ -99,16 +99,15 @@
 				$SiteTreeAsUL
 			</div>
 		</div>
-			<div id="LangSelector_holder" 
-				<% if MultipleLanguages %>
-				<% else %> class="onelang"
-				<% end_if %>
-			 >Language: $LangSelector </div>
-		<!--<div id="search_holder" style="display:none">
+		<div id="LangSelector_holder" <% if MultipleLanguages %><% else %> class="onelang"<% end_if %>>
+			Language: $LangSelector
+		</div>
+		<!--
+		<div id="search_holder" style="display:none">
 			<h2>Search</h2>
-			<div class="unitBody">
-			</div>
-		</div>-->
+			<div class="unitBody"></div>
+		</div>
+		-->
 
 		<% if EnterpriseCMS %>
 		<h2 id="heading_tasklist">
