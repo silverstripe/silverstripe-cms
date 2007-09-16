@@ -237,18 +237,28 @@ Behaviour.register({
 			return false;
 		},
 		
-		// @TODO: See if this is used anymore
+		/**
+		 * Called by AJAX when 'Send newsletter' button is clicked
+		 *
+		 */
 		send: function() {
-			if( $('SendTypeList').checked )
-				return this.send_to_list();
-			else
+			// If 'Send to the entire mailing list' option is chosen
+			if( $('SendTypeList').checked) { 
+				return this.send_to_list('List');
+			// If 'Send to only people not previously sent to' option is chosen
+			} else if ($('SendTypeUnsent').checked) {
+				return this.send_to_list('Unsent');
+			} else {
 				return this.send_test();
+			}
 		},
 		
 		/**
 		 * Submit the option form and carry out the action
+		 *
+		 * @param sendType string 'List' if sending to entire list and 'Unsent' if only sending to people not previously sent to
 		 */
-		send_to_list : function() {
+		send_to_list : function(sendType) {
 			// Show a "submitting..." box
 			/*if(!this.sendingText) {
 				this.sendingText = document.createElement('div');
@@ -270,7 +280,7 @@ Behaviour.register({
 			
 			// Send the request
 			Ajax.SubmitForm( $('Form_EditForm'), 'action_sendnewsletter', {
-				extraData: '&SendType=List',
+				extraData: '&SendType=' + sendType,
 				onSuccess: this.incrementProcess.bind(this),
 				onFailure: function(response) {
 					statusMessage(response.responseText);
