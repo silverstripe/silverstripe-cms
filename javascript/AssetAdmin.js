@@ -316,7 +316,6 @@ addfolder.prototype = {
 		Ajax.Evaluator(response);
 		// Make it possible to drop files into the new folder
 		DropFileItem.applyTo('#sitetree li');
-		console.log('should now be able to drop into new folder');
 	},
 	showAddPageError: function(response) {
 		errorMessage('Error adding folder', response);
