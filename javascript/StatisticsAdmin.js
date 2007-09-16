@@ -38,6 +38,62 @@ showCT = function() {
 }
 
 
-Event.observe(window, 'load', function() {
-	var stob = $('sitetree').observeMethod('SelectionChanged', showCT());
-});
+overview = function() {
+	$('browserchart') ? $('browserchart').show() : null;
+	$('trendchart') ? $('trendchart').show() : null;
+	$('usertable') ? $('usertable').show() : null;
+	$('viewtable') ? $('viewtable').show() : null;
+}
+
+users = function() {
+	$('browserchart') ? $('browserchart').hide() : null;
+	$('trendchart') ? $('trendchart').hide() : null;
+	$('usertable') ? $('usertable').show() : null;
+	$('viewtable') ? $('viewtable').hide() : null;
+}
+
+views = function() {
+	$('browserchart') ? $('browserchart').hide() : null;
+	$('trendchart') ? $('trendchart').hide() : null;
+	$('usertable') ? $('usertable').hide() : null;
+	$('viewtable') ? $('viewtable').show() : null;
+}
+
+trends = function() {
+	$('browserchart') ? $('browserchart').hide() : null;
+	$('trendchart') ? $('trendchart').show() : null;
+	$('usertable') ? $('usertable').hide() : null;
+	$('viewtable') ? $('viewtable').hide() : null;
+}
+
+browsers = function() {
+	$('browserchart') ? $('browserchart').show() : null;
+	$('trendchart') ? $('trendchart').hide() : null;
+	$('usertable') ? $('usertable').hide() : null;
+	$('viewtable') ? $('viewtable').hide() : null;
+}
+
+
+SiteTreeNode.prototype.onselect = function() {
+	switch(this.id) {
+		case 'statsroot' :
+			break;
+		case 'stoverview' :
+			overview();
+			break;
+		case 'stusers' :
+			users();
+			break;
+		case 'stviews' :
+			views();
+			break;
+		case 'sttrends' :
+			trends();
+			break;
+		case 'stbrowsers' :
+			browsers();
+			break;
+		default :
+			console.log('Unrecognized option ' + this.id);
+	}
+};

@@ -123,3 +123,26 @@ td.sized3
         {
         background-color: #A0BDF7;
         }
+
+
+
+
+ul.tree li#stoverview a {
+	background-image: url(../images/treeicons/task-file.gif);
+}
+
+ul.tree li#stusers a {
+	background-image: url(../images/treeicons/multi-user.gif);
+}
+
+ul.tree li#stviews a {
+	background-image: url(../images/treeicons/preferences-file.gif);
+}
+
+ul.tree li#sttrends a {
+	background-image: url(../images/treeicons/element-file.gif);
+}
+
+ul.tree li#stbrowsers a {
+	background-image: url(../images/treeicons/reports-file.png);
+}
