@@ -290,9 +290,7 @@ class NewsletterAdmin extends LeftAndMain {
 					new Tab("Unsubscribers",
 					$unsubscribedList = new UnsubscribedList("Unsubscribed", $mailType)
 					),
-					new Tab("Bounced",
-					new LiteralField('Instructions', '<p><b>Instructions:</b></p><ul><li>Uncheck the box and click the "Save" button to disable sending to an email address. <b>@TODO Make this functional</b></li><li>To remove a recipients\'s email address from your mailing list, click the red "X" icon.</li></ul>'),
-					$bouncedList = new BouncedList("Bounced", $mailType )
+					new Tab("Bounced", $bouncedList = new BouncedList("Bounced", $mailType )
 					)
 				)
 			);
@@ -307,8 +305,8 @@ class NewsletterAdmin extends LeftAndMain {
 			$fields->push($idField = new HiddenField("ID"));
 			$fields->push( new HiddenField( "executeForm", "", "MailingListEditForm" ) );
 			$idField->setValue($id);
-
-			$actions = new FieldSet(new FormAction('save','Save'));
+			// Save button is not used in Mailing List section
+			$actions = new FieldSet(new HiddenField("save"));
 
 			$form = new Form($this, "EditForm", $fields, $actions);
 			$form->loadDataFrom(array(
@@ -330,9 +328,9 @@ class NewsletterAdmin extends LeftAndMain {
 	 */
 	function removebouncedmember($urlParams) {
 		// First remove the Bounce entry	
-		$memberID = Convert::raw2sql($urlParams['ID']);
-		if (is_numeric($memberID)) {
-			$bounceObject = DataObject::get_by_id('Email_BounceRecord', $memberID);
+		$id = Convert::raw2sql($urlParams['ID']);
+		if (is_numeric($id)) {
+			$bounceObject = DataObject::get_by_id('Email_BounceRecord', $id);
 			if($bounceObject) {
 				// Remove this bounce record
 				$bounceObject->delete();
@@ -343,13 +341,14 @@ class NewsletterAdmin extends LeftAndMain {
 					// Remove the member from the mailing list
 					$memberObject->Groups()->remove($groupID);
 				} else {
-					user_error("MemberTableField::delete: Bad parameters: Group=$groupID, Member=$memberID", E_USER_ERROR);
+					user_error("NewsletterAdmin::removebouncedmember: Bad parameters: Group=$groupID, Member=".$bounceObject->MemberID, E_USER_ERROR);
 				}
-				// @TODO Reload whole right frame so that Recipients and Bounced tabs will be updated after bounced member is removed.
-				return 1;		
+				FormResponse::status_message($memberObject->Email.' was removed from the mailing list', 'good');
+				FormResponse::add("$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value, 'recipients');");
+				return FormResponse::respond();
 			}
-		}else{
-			return 0;
+		} else {
+			user_error("NewsletterAdmin::removebouncedmember: Bad parameters: Group=$groupID, Member=".$bounceObject->MemberID, E_USER_ERROR);
 		}
 	}
 
@@ -545,6 +544,26 @@ class NewsletterAdmin extends LeftAndMain {
 			$actionList .= $action->Field() . ' ';
 		}
 		FormResponse::add("$('Form_EditForm').loadActionsFromString('" . Convert::raw2js($actionList) . "');");
+		return FormResponse::respond();
+	}
+
+	/*
+	 * Saves the settings on the 'Bounced' tab of the 'Mailing List' allowing members to be added to Email_BlackList
+	 *
+	 */
+	public function memberblacklisttoggle($urlParams) {
+		$id = $urlParams['ID'];
+		$bounceObject = DataObject::get_by_id('Email_BounceRecord', $id);
+		$memberObject = DataObject::get_by_id('Member', $bounceObject->MemberID);
+		// If the email is currently not blocked, block it
+		if (FALSE == $memberObject->BlacklistedEmail) {
+			$memberObject->setBlacklistedEmail(TRUE);
+			FormResponse::status_message($memberObject->Email.' was added to blacklist', 'good');
+		} else {
+			// Unblock the email
+			$memberObject->setBlacklistedEmail(FALSE);
+			FormResponse::status_message($memberObject->Email.' was removed from blacklist', 'good');
+		}
 		return FormResponse::respond();
 	}
 

@@ -14,6 +14,64 @@ Behaviour.register( {
 	}
 });
 
+// Called when checkbox on Bounced tab of Mailing List is clicked
+Behaviour.register( {
+	'#BouncedListTable tr td.markingcheckbox input': {
+		onchange : function(e) {
+			new Ajax.Request(
+				'admin/newsletter/memberblacklisttoggle/' + this.value,
+				{
+					method: 'post', 
+					postBody: 'forceajax=1',
+					onComplete: function(response){
+						Ajax.Evaluator(response);
+					}.bind(this),
+					onFailure: ajaxErrorHandler
+				}
+			);
+		}
+	}
+});
+
+// Don't show unsaved changes confirm() for changes to Bounced tab checkboxes
+Behaviour.register({
+	'#Form_EditForm' : {
+		changeDetection_fieldsToIgnore : {
+			'BouncedList[]' : true
+		}
+	}
+});
+
+// Called when X link on Bounced tab of Mailing List is clicked (adapted from TableListField.js)
+Behaviour.register( {
+	'#BouncedListTable a.deletelink': {
+		onclick : function(e) {
+		var img = Event.element(e);
+		var link = Event.findElement(e,"a");
+		var row = Event.findElement(e,"tr");
+		
+		var confirmed = confirm("Are you sure you want to remove this recipient from your mailing list?");
+		if(confirmed)
+		{
+			img.setAttribute("src",'cms/images/network-save.gif');
+			new Ajax.Request(
+				link.getAttribute("href"),
+				{
+					method: 'post', 
+					postBody: 'forceajax=1',
+					onComplete: function(response){
+						Effect.Fade(row);
+						Ajax.Evaluator(response);
+					}.bind(this),
+					onFailure: ajaxErrorHandler
+				}
+			);
+		}
+		Event.stop(e);
+		}
+	}
+});
+
 CMSForm.applyTo('#Form_MemberForm','rightbottom');
 
 Behaviour.register({
