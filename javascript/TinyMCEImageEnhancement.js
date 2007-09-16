@@ -122,14 +122,14 @@ TinyMCEImageEnhancement.prototype = {
         if($('FolderID') != null) {
 	        this.upload = new Upload(
 	            {
-	               'fileTypes': '*.jpeg;*.jpg;*.jpe;*.png;*.gif;',
-	               'fileTypesDescription' : 'Image files',
-	               'fileUploadLimit' : '100',
-	               'beginUploadOnQueue' : true,
-                   'buildUI' : this.buildUI.bind(this),
-                   'fileQueued' : this.uploadFileQueuedCallback.bind(this),
-                   'fileComplete' : this.uploadFileCompleteCallback.bind(this),
-                   'queueComplete' : this.uploadQueueCompleteCallback.bind(this)
+	               fileTypes : '*.jpeg;*.jpg;*.jpe;*.png;*.gif;',
+	               fileTypesDescription : 'Image files',
+	               fileUploadLimit : '100',
+	               beginUploadOnQueue : true,
+                   buildUI : this.buildUI.bind(this),
+                   fileQueued : this.uploadFileQueuedCallback.bind(this),
+                   fileComplete : this.uploadFileCompleteCallback.bind(this),
+                   queueComplete : this.uploadQueueCompleteCallback.bind(this)
 	            }        
             );
         }
