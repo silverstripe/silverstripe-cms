@@ -8,7 +8,7 @@ class NewsletterEmailProcess extends BatchProcess {
 	protected $nlType;
 	protected $messageID;
 	
-	function __construct( $subject, $body, $from, $newsletter, $nlType, $messageID = null ) {
+	function __construct( $subject, $body, $from, $newsletter, $nlType, $messageID = null, $only_to_unsent = 0) {
 		
 		$this->subject = $subject;
 		$this->body = $body;
@@ -17,7 +17,13 @@ class NewsletterEmailProcess extends BatchProcess {
 		$this->nlType = $nlType;
 		$this->messageID = $messageID;
 		
-        parent::__construct( $nlType->Recipients() );
+		$groupID = $nlType->GroupID;
+		// Allow sending to only those who have not already received it.
+		if (0 == $only_to_unsent) {
+			parent::__construct( DataObject::get( 'Member', "`GroupID`='$groupID'", null, "INNER JOIN `Group_Members` ON `MemberID`=`Member`.`ID`" ) );
+		} else {
+			parent::__construct( $newsletter->UnsentSubscribers() );
+		}
 	
 	}
 	

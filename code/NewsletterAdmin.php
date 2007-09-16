@@ -441,6 +441,11 @@ class NewsletterAdmin extends LeftAndMain {
 			    break;
 			case "List":
       	echo self::sendToList( $subject, $body, $from, $newsletter, $nlType, $messageID );
+			break;
+			case "Unsent":
+				$only_to_unsent = 1;
+      				echo self::sendToList( $subject, $body, $from, $newsletter, $nlType, $messageID, $only_to_unsent);
+			break;
 		}
 
 		return FormResponse::respond();
@@ -452,8 +457,8 @@ class NewsletterAdmin extends LeftAndMain {
         $email->send();
     }
 
-    static function sendToList( $subject, $body, $from, $newsletter, $nlType, $messageID = null ) {
-        $emailProcess = new NewsletterEmailProcess( $subject, $body, $from, $newsletter, $nlType, $messageID );
+    static function sendToList( $subject, $body, $from, $newsletter, $nlType, $messageID = null, $only_to_unsent = 0) {
+        $emailProcess = new NewsletterEmailProcess( $subject, $body, $from, $newsletter, $nlType, $messageID, $only_to_unsent);
         return $emailProcess->start();
     }
 
