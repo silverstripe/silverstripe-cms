@@ -430,12 +430,11 @@ class NewsletterAdmin extends LeftAndMain {
 		switch($_REQUEST['SendType']) {
 			case "Test":
 				if($_REQUEST['TestEmail']) {
-					if( $nlType->Template ) {
-						self::sendToAddress( $e, $_REQUEST['TestEmail'], $messageID );
-						FormResponse::status_message('Sent test to ' . $_REQUEST['TestEmail'],'good');
-					} else {
-						FormResponse::status_message('No template selected','bad');
-					}
+					$e->To = $_REQUEST['TestEmail'];
+					$e->setTemplate( $nlType->Template );
+
+					self::sendToAddress( $e, $_REQUEST['TestEmail'], $messageID );
+					FormResponse::status_message('Sent test to ' . $_REQUEST['TestEmail'],'good');
 				} else {
 					FormResponse::status_message('Please enter an email address','bad');
 				}
