@@ -30,7 +30,7 @@ ul.tree li.MailType span.Sent a {
 			<li class="action" id="deletedrafts"><button>Delete...</button></li>
 		</ul>
 		<div style="clear:both;"></div>
-		<form class="actionparams" id="addtype_options" style="display: none" action="admin/newsletter/addtype">
+		<form class="actionparams" id="addtype_options" style="display: none" action="admin/newsletter/add">
 			<input type="hidden" name="ParentID" value="" />
 				<select name="PageType" id="add_type">
 					<option value="type">Add new type</option>

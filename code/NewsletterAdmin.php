@@ -98,7 +98,7 @@ class NewsletterAdmin extends LeftAndMain {
 	}
 
 	/**
-	* Called when a draft or sent newsletter is clicked on the left menu
+	* Called when a draft or sent newsletter is clicked on the left menu and when a new one is added
 	*/
 	public function shownewsletter($params) {
 		return $this->showWithEditForm( $params, $this->getNewsletterEditForm( $params['ID'] ) );
@@ -458,6 +458,7 @@ class NewsletterAdmin extends LeftAndMain {
     }
 
 	public function save($urlParams, $form) {
+		// Both the Newsletter type and the Newsletter draft call save() when "Save" button is clicked
 		if( isset($_REQUEST['Type']) && $_REQUEST['Type'] == 'Newsletter' )
 			return $this->savenewsletter( $urlParams, $form );
 
@@ -594,24 +595,27 @@ JS;
 		$this->returnItemToUser($p);
 	}
 
-    public function addtype( $params ) {
-        switch( $_REQUEST['PageType'] ) {
-           case 'type':
-           	 $form = $this->getNewsletterTypeEditForm( $this->newNewsletterType() );
-           	 break;
-           default:
-           	 $form = $this->getNewsletterEditForm( $this->newDraft( $_REQUEST['ParentID'] ) );
-        }
+	/**
+	 * Called by AJAX to create a new newsletter type
+	 *
+	 */
+	public function addtype( $params ) {
+		$form = $this->getNewsletterTypeEditForm( $this->newNewsletterType() );
 
-        return $this->showWithEditForm( $_REQUEST, $form );
-    }
+		return $this->showWithEditForm( $_REQUEST, $form );
+	}
 
-    public function adddraft( $data, $form ) {
-    	$this->save( $data, $form );
-    	$draftID = $this->newDraft( $_REQUEST['ID'] );
-    	return $this->getNewsletterEditForm( $draftID );
-    }
-
+	/**
+	 * Called by AJAX to create a new newsletter draft
+	 *
+	 */
+	public function adddraft( $data) {
+		$draftID = $this->newDraft( $_REQUEST['ParentID'] );
+		// Needed for shownewsletter() to work
+		$_REQUEST['ID'] = $draftID;
+		return $this->shownewsletter($_REQUEST);
+	}
+	
     /**
     * Create a new newsletter type
     */

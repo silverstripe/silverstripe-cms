@@ -285,8 +285,8 @@ AddForm.prototype = {
           type = 'type';
           selectIDPrefix = 'mailtype_';
       }
-            
-			var request = new Ajax.Request( this.action + '?ajax=1&PageType=' + type + '&ParentID=' + parentID, {
+		// Call either addtype or adddraft
+			var request = new Ajax.Request( this.action + type + '?ajax=1' + '&ParentID=' + parentID, {
         method: 'get',
         asynchronous: true,
 				onSuccess : function( response ) {
@@ -299,7 +299,9 @@ AddForm.prototype = {
           } else {
           	$('sitetree').addTypeNode('New newsletter type', $('Form_EditForm_ID').value ); 
           }
-          	
+		// Save it so that change detection will work
+		$('Form_EditForm').save();
+
           statusMessage('Added new ' + type);
         },
      

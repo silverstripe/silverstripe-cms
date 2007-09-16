@@ -237,6 +237,7 @@ Behaviour.register({
 			return false;
 		},
 		
+		// @TODO: See if this is used anymore
 		send: function() {
 			if( $('SendTypeList').checked )
 				return this.send_to_list();
@@ -510,24 +511,8 @@ RecipientImportField.prototype = {
  
 /**
  * Handle 'add one' link action. Adds a new draft to the site tree and loads it up to edit.
- * Adapted from NewsletterAdmin_left.js
  */
 function addNewDraft(parentID) {
-	var type = 'draft';
-	var request = new Ajax.Request( 'admin/newsletter/addtype?ajax=1&PageType=' + type + '&ParentID=' + parentID, {
-		method: 'get',
-		asynchronous: true,
-		onSuccess : function( response ) {
-			$('Form_EditForm').loadNewPage(response.responseText);
-				
-			// create a new node and add it to the site tree
-			$('sitetree').addDraftNode('New draft newsletter', parentID, $('Form_EditForm_ID').value );
-			
-			statusMessage('Added new ' + type);
-		},
-		onFailure : function(response) {
-			alert(response.responseText);
-			statusMessage('Could not add new ' + type );
-		}
-	});
+	$('add_type').value = 'draft';
+	$('addtype_options').onsubmit();
 }
