@@ -131,25 +131,26 @@ deletedraft = {
 		}
 		
 		if(csvIDs) {
-			$('deletedrafts_options').elements.csvIDs.value = csvIDs;
-
-			Ajax.SubmitForm('deletedrafts_options', null, {
-				onSuccess : function(response) {
-					Ajax.Evaluator(response);
-
-					var sel;
-					if((sel = $('sitetree').selected) && sel.parentNode) sel.addNodeClass('current');
-//					else $('Form_EditForm').innerHTML = "";
-
-					treeactions.closeSelection($('deletedrafts'));
-				},
-				onFailure : function(response) {
-					errorMessage('Error deleting drafts', response);
-				}
-			});
-
-			$('deletedrafts').getElementsByTagName('button')[0].onclick();
-			
+			if(confirm("Do you really want to these Newsletter items?")) {
+				$('deletedrafts_options').elements.csvIDs.value = csvIDs;
+	
+				Ajax.SubmitForm('deletedrafts_options', null, {
+					onSuccess : function(response) {
+						Ajax.Evaluator(response);
+	
+						var sel;
+						if((sel = $('sitetree').selected) && sel.parentNode) sel.addNodeClass('current');
+	//					else $('Form_EditForm').innerHTML = "";
+	
+						treeactions.closeSelection($('deletedrafts'));
+					},
+					onFailure : function(response) {
+						errorMessage('Error deleting drafts', response);
+					}
+				});
+	
+				$('deletedrafts').getElementsByTagName('button')[0].onclick();
+			}
 		} else {
 			alert("Please select at least 1 page.");
 		}
