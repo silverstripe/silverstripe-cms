@@ -103,6 +103,7 @@
 				if($this->checkFileExists($originalFile) && $this->checkFileExists($editedFile)) {
 					if($editedFile != $originalFile && copy($this->url2File($editedFile),$this->url2File($originalFile))) {
 						$image = DataObject::get_one('File','Filename = \'' . substr($this->url2File($originalFile),3) . '\'');
+                        $image->deleteFormattedImages();
 						$image->generateFormattedImage('AssetLibraryPreview');
 					} else {
 						$this->raiseError();
