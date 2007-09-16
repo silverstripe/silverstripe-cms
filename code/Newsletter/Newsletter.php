@@ -124,12 +124,13 @@ class Newsletter_SentRecipient extends DataObject {
 	 *
 	 * ParentID is the the Newsletter
 	 * Email and MemberID keep track of the recpients information
-	 * Result has 3 possible values: "Sent", (mail() returned TRUE), "Failed" (mail() returned FALSE), or "Bounced" ({@see $email_bouncehandler}).
+	 * Result has 4 possible values: "Sent", (mail() returned TRUE), "Failed" (mail() returned FALSE), 
+	 * 	"Bounced" ({@see $email_bouncehandler}), or "BlackListed" (sending to is disabled).
 	 */
 	static $db = array(
 		"ParentID" => "Int",
 		"Email" => "Varchar(255)",
-		"Result" => "Enum('Sent, Failed, Bounced', 'Sent')",
+		"Result" => "Enum('Sent, Failed, Bounced, BlackListed', 'Sent')",
 	);
 	static $has_one = array(
 		"Member" => "Member",

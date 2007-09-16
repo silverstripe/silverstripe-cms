@@ -46,6 +46,31 @@
 	</table>
 <% end_if %>
 
+<% if SentRecipients(BlackListed) %>
+	<h2 class="error" style="width:auto;">Sending to the Following Recipients Did Not Occur Because They Are BlackListed</h2>
+
+	<table class="CMSList">
+		<thead>
+			<tr>
+				<th class="Email" style="width:33%">Email</th>
+				<th>Date</th>
+				<th>Result</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<% control SentRecipients(BlackListed) %>
+			<tr>
+				<td>$Email</td>
+				<td>$LastEdited</td>
+				<td>$Result</td>
+			</tr>
+			<% end_control %>
+			
+		</tbody>
+	</table>
+<% end_if %>
+
 <% if UnsentSubscribers %>
 	<h2>The Newsletter has Never Been Sent to Following Subscribers</h2>
 	<table class="CMSList">
