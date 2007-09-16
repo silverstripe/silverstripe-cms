@@ -138,11 +138,19 @@ window.onresize = function(init) {
 
 	if(typeof fitToParent == 'function') fitToParent('right', 12);
 
-	if( $('left') && $('separator') && right )
-		$('left').style.height = $('separator').style.height = right.style.height;
+	if( $('left') && $('separator') && right ) {
+		// #right has padding-bottom to make room for AJAX Action buttons so we need to add that
+ 		if (navigator.appName == "Microsoft Internet Explorer") {
+			var paddingBottomOffset = 35;
+		} else {
+			var paddingBottomOffset = 20;
+		}
+		var rightH = parseInt(right.style.height) + paddingBottomOffset;
+		$('left').style.height = $('separator').style.height = rightH + 'px';
+	}
 
 	if(rightbottom) {
-		var newHeight = (parseInt(right.style.height) / 3);
+		var newHeight = rightH / 3;
 		right.style.height = (newHeight*2) + 'px';
 		rightbottom.style.height = newHeight + 'px';
 		rightbottom.style.display = '';

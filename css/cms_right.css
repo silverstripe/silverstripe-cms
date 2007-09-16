@@ -397,7 +397,7 @@ input.loading {
 	border: 1px #AAA solid;
 	border-top: none;
 	position: relative;
-	top: -3px;
+	top: 0px;
 	margin: 0;
 	padding: 10px;
 	/*width: 98%;*/
@@ -878,4 +878,10 @@ div.CommentFilter {
     position: relative;
     top: -15px;
     left: 35px;
+}
+/* Makes room for AJAX Action buttons */
+#right {
+	padding-bottom: 20px;
+	/* HACK: any IE */
+	padding-bottom: expression('35px');
 }
