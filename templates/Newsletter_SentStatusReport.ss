@@ -3,7 +3,7 @@
 	<table class="CMSList">
 		<thead>
 			<tr>
-				<th class="Email">Email</th>
+				<th class="Email" style="width:33%">Email</th>
 				<th>Date</th>
 				<th>Result</th>
 			</tr>
@@ -27,7 +27,7 @@
 	<table class="CMSList">
 		<thead>
 			<tr>
-				<th class="Email">Email</th>
+				<th class="Email" style="width:33%">Email</th>
 				<th>Date</th>
 				<th>Result</th>
 			</tr>
@@ -51,19 +51,18 @@
 	<table class="CMSList">
 		<thead>
 			<tr>
+				<th class="Email" style="width:33%">Email</th>
 				<th class="FirstName">Firstname</th>
 				<th class="Surname">Surname</th>
-				<th class="Email">Email</th>
-	
 			</tr>
 		</thead>
 		
 		<tbody>
 			<% control UnsentSubscribers %>
 			<tr id="unsent-member-$ID">
+				<td>$Email</td>
 				<td>$FirstName</td>
 				<td>$Surname</td>
-				<td>$Email</td>
 			</tr>
 			<% end_control %>
 			
@@ -76,7 +75,7 @@
 	<table class="CMSList">
 		<thead>
 			<tr>
-				<th class="Email">Email</th>
+				<th class="Email" style="width:33%">Email</th>
 				<th>Date</th>
 				<th>Result</th>
 			</tr>
