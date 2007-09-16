@@ -367,6 +367,10 @@ div.spacer, li.spacer {
 	display: block;
 }
 
+	.mceToolbarExternal a {
+		text-decoration: none;
+	}
+
 
 #right form#Form_EditorToolbarLinkForm,
 #right form#Form_EditorToolbarImageForm,
