@@ -69,6 +69,7 @@ addpage.prototype = {
 	form_submit : function() {
 		var st = $('sitetree');
 		var parentID = st.getIdxOf(st.firstSelected());
+		// TODO: Remove 'new-' code http://open.silverstripe.com/ticket/875
 		if(parentID && parentID.substr(0,3) == 'new') {
 			alert("You have to save a page before adding children underneath it");
 			
