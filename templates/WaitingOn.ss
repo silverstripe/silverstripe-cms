@@ -4,7 +4,7 @@
 	<% control Tasks %>
 	<li class="$EvenOdd">
 		<a href="admin/show/$ID">$Title</a>
-		<div class="extra">assigned to $AssignedTo.FirstName&nbsp;$AssignedTo.Surname.Initial $LastEdited.Ago</div>
+		<div class="extra"><% _t('ATO','assigned to') %> $AssignedTo.FirstName&nbsp;$AssignedTo.Surname.Initial $LastEdited.Ago</div>
 	</li>
 	<% end_control %>
 </ul>

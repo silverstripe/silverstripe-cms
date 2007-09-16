@@ -15,15 +15,15 @@
 	<script src="cms/javascript/Newsletter_UploadForm.js" type="text/javascript"></script>	
 </head>
 <body onload="">
-<h1>Contents of $FileName</h1>
+<h1><% _t('CONTENTSOF','Contents of') %> $FileName</h1>
 <form method="post" action="admin/newsletter/?executeForm=UploadForm" name="UploadForm">
 	<% control CustomSetFields %>
 		$FieldHolder
 	<% end_control %>
-	<input type="submit" name="action_confirm" value="Confirm" />
-	<input type="submit" name="action_cancel" value="Cancel" />
+	<input type="submit" name="action_confirm" value="<% _t('YES','Confirm') %>" />
+	<input type="submit" name="action_cancel" value="<% _t('NO','Cancel') %>" />
 	<input type="hidden" name="ID" value="$TypeID" />
-	<table summary="Recipients imported from $FileName">
+	<table summary="<% _t('RECIMPORTED','Recipients imported from') %> $FileName">
 		<tbody>
 			<tr>
 				<% control ColumnHeaders %>

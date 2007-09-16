@@ -8,7 +8,7 @@ ul.tree a{
 
 </style>
 
-<h2>Reports</h2>
+<h2><% _t('REPORTS','Reports') %></h2>
 
 <div id="treepanes">
 <div id="sitetree_holder">

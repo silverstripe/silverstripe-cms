@@ -19,6 +19,7 @@ fieldset {
 <% if CanUpload %>
 $UploadForm
 <% else %>
-You do not have permission to upload files into this folder.
+<% _t('PERMFAILED','You do not have permission to upload files into this folder.') %>
+
 <% end_if %>
 </body>

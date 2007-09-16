@@ -2,9 +2,9 @@
 	<thead>
 	<tr>
 		<td>#</td>
-		<td>When</td>
-		<td>Author</td>
-		<td>Publisher</td>
+		<td><% _t('WHEN','When') %></td>
+		<td><% _t('AUTHOR','Author') %></td>
+		<td><% _t('PUBR','Publisher') %></td>
 	</tr>
 	</thead>
 	<tbody>
@@ -18,10 +18,12 @@
 			<% if Publisher %>
 				$Publisher.FirstName $Publisher.Surname.Initial
 			<% else %>	
-				Unknown
+				<% _t('UNKNOWN','Unknown') %>
+
 			<% end_if %>
 		<% else %>
-			Not published
+			<% _t('NOTPUB','Not published') %>
+
 		<% end_if %>
 		</td>			
 	</tr>

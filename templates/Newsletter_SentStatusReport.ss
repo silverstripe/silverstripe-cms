@@ -1,11 +1,11 @@
 <% if SentRecipients(Failed) %>
-	<h2 class="error" style="width:auto;">Sending to the Following Recipients Failed</h2>
+	<h2 class="error" style="width:auto;"><% _t('SENDFAIL','Sending to the Following Recipients Failed') %></h2>
 	<table class="CMSList">
 		<thead>
 			<tr>
-				<th class="Email" style="width:33%">Email</th>
-				<th>Date</th>
-				<th>Result</th>
+				<th class="Email" style="width:33%"><% _t('EMAIL','Email') %></th>
+				<th><% _t('DATE','Date') %></th>
+				<th><% _t('RES','Result') %></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -22,14 +22,14 @@
 <% end_if %>
 
 <% if SentRecipients(Bounced) %>
-	<h2 class="error" style="width:auto;">Sending to the Following Recipients Bounced</h2>
+	<h2 class="error" style="width:auto;"><% _t('SENDBOUNCED','Sending to the Following Recipients Bounced') %></h2>
 
 	<table class="CMSList">
 		<thead>
 			<tr>
-				<th class="Email" style="width:33%">Email</th>
-				<th>Date</th>
-				<th>Result</th>
+				<th class="Email" style="width:33%"><% _t('EMAIL') %></th>
+				<th><% _t('DATE') %></th>
+				<th><% _t('RES') %></th>
 			</tr>
 		</thead>
 		
@@ -52,9 +52,9 @@
 	<table class="CMSList">
 		<thead>
 			<tr>
-				<th class="Email" style="width:33%">Email</th>
-				<th>Date</th>
-				<th>Result</th>
+				<th class="Email" style="width:33%"><% _t('EMAIL') %></th>
+				<th><% _t('DATE') %></th>
+				<th><% _t('RES') %></th>
 			</tr>
 		</thead>
 		
@@ -72,13 +72,13 @@
 <% end_if %>
 
 <% if UnsentSubscribers %>
-	<h2>The Newsletter has Never Been Sent to Following Subscribers</h2>
+	<h2><% _t('NEWSNEVERSENT','The Newsletter has Never Been Sent to Following Subscribers') %></h2>
 	<table class="CMSList">
 		<thead>
 			<tr>
-				<th class="Email" style="width:33%">Email</th>
-				<th class="FirstName">Firstname</th>
-				<th class="Surname">Surname</th>
+				<th class="Email" style="width:33%"><% _t('EMAIL') %></th>
+				<th class="FirstName"><% _t('FN','Firstname') %></th>
+				<th class="Surname"><% _t('SN','Surname') %></th>
 			</tr>
 		</thead>
 		
@@ -96,13 +96,13 @@
 <% end_if %>
 
 <% if SentRecipients(Sent) %>
-	<h2>Sending to the Following Recipients was Successful</h2>
+	<h2><% _t('SENTOK','Sending to the Following Recipients was Successful') %></h2>
 	<table class="CMSList">
 		<thead>
 			<tr>
-				<th class="Email" style="width:33%">Email</th>
-				<th>Date</th>
-				<th>Result</th>
+				<th class="Email" style="width:33%"><% _t('EMAIL') %></th>
+				<th><% _t('DATE') %></th>
+				<th><% _t('RES') %></th>
 			</tr>
 		</thead>
 		

@@ -20,7 +20,8 @@
 	<script src="cms/javascript/Newsletter_UploadForm.js" type="text/javascript"></script>
 <% if ImportMessage %>
 	<script type="text/javascript">
-		top.statusMessage('Imported new members','good');
+		top.statusMessage('<% _t('IMPORTNEW','Imported new members') %>','good');
+		top.reloadRecipientsList();
 	</script>
 <% end_if %>	
 </head>
@@ -30,11 +31,11 @@
 		$ImportMessage
 		<p><b>Note:</b> To see the new members on the Recipients tab, you need to <a href="#" onclick="javascript:top.reloadRecipientsList()">reload the Mailing List</a>.</p>
 		<ul>
-			<li><label>New members imported:</label>$NewMembers</li>
-			<li><label>Members updated:</label>$ChangedMembers</li>
-			<li><label>Number of details changed:</label>$ChangedFields</li>
-			<li><label>Records skipped:</label>$SkippedRecords</li>
-			<li><label>Time taken: </label>$Time seconds</li>
+			<li><label><% _t('IMPORTED','New members imported:') %></label>$NewMembers</li>
+			<li><label><% _t('UPDATED','Members updated:') %></label>$ChangedMembers</li>
+			<li><label><% _t('CHANGED','Number of details changed:') %></label>$ChangedFields</li>
+			<li><label><% _t('SKIPPED','Records skipped:') %></label>$SkippedRecords</li>
+			<li><label><% _t('TIME','Time taken:') %> </label>$Time <% _t('SEC','seconds') %></li>
 		</ul>
 	</p>
 <% end_if %>

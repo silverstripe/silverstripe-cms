@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
         <% base_tag %>
-        <title>Untitled Document</title>
+        <title><% _t('UNTITLED','Untitled Document') %></title>
         <meta http-equiv="imagetoolbar" content="no">
     </head>
     <body id="body" onload="imageEditor = new ImageEditor.initialize('$fileToEdit');">
@@ -22,7 +22,7 @@
                         <div id="SaveIcon">
                         </div>
                         <p id="SaveText" class="menuText">
-                            save&nbsp;image
+                            <% _t('SAVE','save&nbsp;image') %></a></p>
                         </p>
                     </a>
                     <a id="ExitButton" href="#a">
@@ -36,14 +36,14 @@
                         <div id="UndoIcon">
                         </div>
                         <p id="UndoText" class="menuText">
-                            undo
+                            <% _t('UNDO','undo') %>
                         </p>
                     </a>
                     <a id="RedoButton" href="#a">
                         <div id="RedoIcon">
                         </div>
                         <p id="RedoText" class="menuText">
-                            redo
+                            <% _t('REDO','redo') %>
                         </p>
                     </a>
                     <p id="ActionsDescription" class="menuText">
@@ -55,18 +55,18 @@
                         <div id="RotateIcon">
                         </div>
                         <p id="RotateText" class="menuText">
-                            rotate
+                            <% _t('ROT','rotate') %>
                         </p>
                     </a>
                     <a id="CropButton" href="#a">
                         <div id="CropIcon"></div>                    
                         <p id="CropText" class="menuText">
-                            crop
+                            <% _t('CROP','crop') %>
                         </p>
                     </a>
                     <div id="ImageSize">
-                        <p id="ImageWidthLabel" class="menuText">width</p>
-                        <p id="ImageHeightLabel" class="menuText">height</p>
+                        <p id="ImageWidthLabel" class="menuText"><% _t('WIDTH','width') %></p>
+                        <p id="ImageHeightLabel" class="menuText"><% _t('HEIGHT','height') %></p>
                         <p id="ImageWidth" class="menuText"></p>
                         <p id="ImageHeight" class="menuText"></p>
                     </div>
@@ -79,7 +79,7 @@
                         <div id="CancelIcon">
                         </div>
                         <p id="CancelText" class="menuText">
-                            cancel
+                            <% _t('CANCEL','cancel') %>
                         </p>
                     </a>
                     <a id="ApplyButton" href="#a">

@@ -25,7 +25,7 @@
 	<form id="Form_EditForm" action="admin/assets/?executeForm=EditForm" method="post" enctype="multipart/form-data">
 		<h1>$ApplicationName</h1>
 
-		<p>Welcome to $ApplicationName! Please choose a page from the left.</p>
+		<p><% _t('WELCOME','Welcome to') %> $ApplicationName! <% _t('CHOOSEPAGE','Please choose a page from the left.') %></p>
 	</form>
 <% end_if %>
 

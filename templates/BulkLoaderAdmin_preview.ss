@@ -1,6 +1,7 @@
 <p>$Message
 
-Results
+<% _t('RES','Results') %>
+
 
 <% control Results %>
 list changes here

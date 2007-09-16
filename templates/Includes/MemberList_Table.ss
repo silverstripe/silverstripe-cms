@@ -2,12 +2,12 @@
 <table class="CMSList MemberList">
 	<thead>
 		<tr>
-		<td class="FirstName">First Name</td>
-		<td class="Surname">Surname</td>
-		<td class="Email">Email Address</td>
+		<td class="FirstName"><% _t('FN','First Name') %></td>
+		<td class="Surname"><% _t('SN','Surname') %></td>
+		<td class="Email"><% _t('EMAIL','Email Address') %></td>
 	<% if DontShowPassword %>
 	<% else %>
-		<td class="Password">Password</td>
+		<td class="Password"><% _t('PASSWD','Password') %></td>
 	<% end_if %>
 		<td>&nbsp;</td>
 		</tr>

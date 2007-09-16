@@ -8,7 +8,7 @@
 		<% end_control %>
 	</ul>
 <% else %>
-	<p>There are no comments on this page.</p>
-	<p>Comments are created whenever one of the 'workflow actions'
-	are undertaken - Publish, Reject, Submit.</p>
+	<p><% _t('NOCOM','There are no comments on this page.') %></p>
+	<p><% _t('CREATEDW',"Comments are created whenever one of the 'workflow actions'
+	are undertaken - Publish, Reject, Submit.") %></p>
 <% end_if %>

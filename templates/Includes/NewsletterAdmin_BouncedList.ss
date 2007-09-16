@@ -4,12 +4,12 @@
 	<li>Uncheck the box to enable sending to a blacklisted email address.</li>
 	<li>To remove a recipients's email address from your mailing list, click the <img src="cms/images/delete.gif" alt="delete" /> icon.</li>
 </ul>
-<table id="BouncedListTable" class="CMSList BouncedList" summary="Emails that have bounced">
+<table id="BouncedListTable" class="CMSList BouncedList" summary="<% _t('HAVEBOUNCED','Emails that have bounced') %>">
   <thead>
     <tr>
 	<th width="18">Blacklisted</th>
-	<th>User name</th>
-	<th>Email address</th>
+	<th><% _t('UNAME','User name') %></th>
+	<th><% _t('EMADD','Email address') %></th>
 	<th>Reason:</th>
 	<th>Date</th>
 	<th width="18">&nbsp;</th>
@@ -35,5 +35,5 @@
   </tbody>
 </table>
 <% else %>
-<p>No emails sent have bounced.</p>
+<p><% _t('NOBOUNCED','No emails sent have bounced.') %></p>
 <% end_if %>

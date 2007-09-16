@@ -4,7 +4,7 @@
 		<li id="mailtype_$ID" class="MailType">
 			<a href="#">$Title</a>
 			<ul>
-				<li id="drafts_$ID" class="DraftFolder nodelete"><a href="$baseURL/admin/showtype/$ID">Drafts</a>
+				<li id="drafts_$ID" class="DraftFolder nodelete"><a href="$baseURL/admin/showtype/$ID"><% _t('DRAFTS','Drafts') %></a>
 				<% if DraftNewsletters %>
 					<ul>
 						<% control DraftNewsletters %>
@@ -13,7 +13,7 @@
 					</ul>
 				<% end_if %>
 				</li>
-				<li id="sent_$ID" class="SentFolder nodelete"><a href="$baseURL/admin/showtype/$ID">Sent Items</a>
+				<li id="sent_$ID" class="SentFolder nodelete"><a href="$baseURL/admin/showtype/$ID"><% _t('SENT','Sent Items') %></a>
                 <% if SentNewsletters %>
                     <ul>
                         <% control SentNewsletters %>
@@ -22,7 +22,7 @@
                     </ul>
                 <% end_if %>
                 </li>
-                <li id="recipients_$ID" class="Recipients nodelete"><a href="$baseURL/admin/newsletter/showtype/$ID">Mailing List</a></li>
+                <li id="recipients_$ID" class="Recipients nodelete"><a href="$baseURL/admin/newsletter/showtype/$ID"><% _t('MAILLIST','Mailing List') %></a></li>
             </ul>
 		</li>
 	<% end_control %>

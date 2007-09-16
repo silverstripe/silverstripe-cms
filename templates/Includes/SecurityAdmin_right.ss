@@ -7,7 +7,7 @@
 	$EditForm
 <% else %>
 	<form id="Form_EditForm" action="admin/security?executeForm=EditForm" method="post" enctype="multipart/form-data">
-		<p>Welcome to the $ApplicationName security admininistration section.  Please choose a group from the left.</p>
+		<p><% _t('WELCOME1','Welcome to the',50,'Followed by application name') %> $ApplicationName <% _t('WELCOME2','security admininistration section.  Please choose a group from the left.',50) %></p>
 	</form>
 <% end_if %>
 

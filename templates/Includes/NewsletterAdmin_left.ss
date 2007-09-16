@@ -23,26 +23,26 @@ ul.tree li.MailType span.Sent a {
 }
 </style>
 
-<h2>Newsletters</h2>
+<h2><% _t('NEWSLETTERS','Newsletters') %></h2>
 <div id="treepanes" style="overflow-y: auto;">
 		<ul id="TreeActions">
-			<li class="action" id="addtype"><button>Create...</button></li>
-			<li class="action" id="deletedrafts"><button>Delete...</button></li>
+			<li class="action" id="addtype"><button><% _t('CREATE','Create...') %></button></li>
+			<li class="action" id="deletedrafts"><button><% _t('DEL','Delete...') %></button></li>
 		</ul>
 		<div style="clear:both;"></div>
 		<form class="actionparams" id="addtype_options" style="display: none" action="admin/newsletter/add">
 			<input type="hidden" name="ParentID" value="" />
 				<select name="PageType" id="add_type">
-					<option value="draft">Add new draft</option>
-					<option value="type">Add new type</option>
+					<option value="type"><% _t('ADDTYPE','Add new type') %></option>
+					<option value="draft"><% _t('ADDDRAFT','Add new draft') %></option>
 				</select>
-			<input class="action" type="submit" value="Go" />
+			<input class="action" type="submit" value="<% _t('GO','Go') %>" />
 		</form>
 		
 		<form class="actionparams" id="deletedrafts_options" style="display: none" action="admin/newsletter/remove">
-			<p>Select the drafts that you want to delete and then click the button below</p>
+			<p><% _t('SELECTDRAFTS','Select the drafts that you want to delete and then click the button below') %></p>
 			<input type="hidden" name="csvIDs" />
-			<input type="submit" value="Delete the selected drafts" />
+			<input type="submit" value="<% _t('DELETEDRAFTS','Delete the selected drafts') %>" />
 		</form>
 		<% include NewsletterAdmin_SiteTree %>
 </div>

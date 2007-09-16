@@ -1,3 +1,3 @@
-You have asked to view the content of our site on $ArchiveDate.Date
+<% _t('HAVEASKED','You have asked to view the content of our site on',30,'Followed by a date') %> $ArchiveDate.Date
 
-You can access the archived site at this link: $ArchiveURL
+<% _t('CANACCESS','You can access the archived site at this link:') %> $ArchiveURL

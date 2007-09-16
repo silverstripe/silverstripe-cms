@@ -1,9 +1,9 @@
 <div id="PageComments_holder" class="typography">
-	<h4>Post your comment</h4>
+	<h4><% _t('POSTCOM','Post your comment') %></h4>
 	
 	$PostCommentForm
 	
-	<h4>Comments</h4>
+	<h4><% _t('COMMENTS','Comments') %></h4>
 	
 	<div id="CommentHolder">
 		<% if Comments %>
@@ -19,7 +19,7 @@
 				<div id="PageCommentsPagination">
 					<p>
 					<% if Comments.PrevLink %>
-						<a href="$Comments.PrevLink">&laquo; previous</a>
+						<a href="$Comments.PrevLink">&laquo; <% _t('PREV','previous') %></a>
 					<% end_if %>
 					
 					<% if Comments.Pages %>
@@ -33,13 +33,13 @@
 					<% end_if %>
 	
 					<% if Comments.NextLink %>
-						<a href="$Comments.NextLink">next &raquo;</a>
+						<a href="$Comments.NextLink"><% _t('NEXT','next') %> &raquo;</a>
 					<% end_if %>
 					</p>
 				</div>
 			<% end_if %>
 		<% else %>
-			<p id="NoComments">No one has commented on this page yet.</p>
+			<p id="NoComments"><% _t('NOCOMMENTSYET','No one has commented on this page yet.') %></p>
 		<% end_if %>
 	</div>
 	<p id="CommentsRSSFeed"><a class="commentrss" href="$CommentRssLink">RSS feed for comments on this page</a></p>
