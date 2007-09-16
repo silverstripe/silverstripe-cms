@@ -62,6 +62,7 @@ CMSMain_upload.prototype = {
     },
     
     uploadFileQueuedCallback: function(file,queueLength) {
+        this.upload.setFolderID(this.iframe.contentDocument.getElementById('Form_UploadForm_ID').value); 
         this.iframe.contentDocument.getElementById('Form_UploadForm_action_upload').disabled = false;
         var fileContainer = this.iframe.contentDocument.getElementById('Form_UploadForm_FilesList');
         if(fileContainer == null) {
