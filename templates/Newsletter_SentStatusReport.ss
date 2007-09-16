@@ -25,7 +25,6 @@
 	</table>
 <% end_if %>
 
-@TODO: Make bounces actually show up here.
 <% if SentRecipients(Bounced) %>
 	<h2 class="error">Sending to the Following Recipients Bounced</h2>
 
