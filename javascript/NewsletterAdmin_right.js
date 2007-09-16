@@ -17,7 +17,7 @@ Behaviour.register( {
 // Called when checkbox on Bounced tab of Mailing List is clicked
 Behaviour.register( {
 	'#BouncedListTable tr td.markingcheckbox input': {
-		onchange : function(e) {
+		onclick : function(e) {
 			new Ajax.Request(
 				'admin/newsletter/memberblacklisttoggle/' + this.value,
 				{
