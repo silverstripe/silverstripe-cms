@@ -27,4 +27,7 @@
 		</li>
 	<% end_control %>
 	</ul>
+<% else %>
+<ul id="sitetree" class="tree unformatted">
+</ul>
 <% end_if %>

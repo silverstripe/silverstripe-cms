@@ -256,12 +256,15 @@ AddForm.prototype = {
     
   form_submit : function() {
 		var st = $('sitetree');
-		
-		if( st.selected.length )
-			selectedNode = st.selected[0];
-		else
-			selectedNode = st.selected;
-        
+		if (st) {
+			if( st.selected && st.selected.length ) {
+				selectedNode = st.selected[0];
+			} else {
+				selectedNode = st.selected;
+			}
+        	} else {
+			var selectedNode = null;
+		}
     var parentID = null;
     
     while( selectedNode && !parentID ) {
@@ -275,8 +278,9 @@ AddForm.prototype = {
 			alert("You have to save a page before adding children underneath it");
 			
 		} else {
-			
-			this.elements.ParentID.value = parentID;
+			if (this.elements) {
+				this.elements.ParentID.value = parentID;
+			}
 
       var type = 'draft';
       var selectIDPrefix = 'draft_' + parentID + '_';
