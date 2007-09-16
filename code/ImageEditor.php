@@ -28,7 +28,7 @@
             Requirements::javascript('cms/javascript/ImageEditor/Crop.js');
             Requirements::javascript('cms/javascript/ImageEditor/Resize.js');
             Requirements::javascript('cms/javascript/ImageEditor/ImageBox.js');
-			Requirements::javascript('cms/javascript/ImageEditor/ImageEditor.js');
+            Requirements::javascript('cms/javascript/ImageEditor/ImageEditor.js');
 
 			Requirements::javascript('jsparty/loader.js');
 			Requirements::javascript('jsparty/behaviour.js');
@@ -76,8 +76,8 @@
 				break;
 			}
 			$rand = md5(rand(1,100000));
-			$gd->writeTo('../assets/tmp/' . $rand . '.jpg');
-			return $this->getImageInfoInJSON($gd,'assets/tmp/' . $rand . '.jpg');	
+			$gd->writeTo('../assets/_tmp/' . $rand . '.' . $fileInfo['extension']);
+			return $this->getImageInfoInJSON($gd,'assets/_tmp/' . $rand . '.' . $fileInfo['extension']);	
 		}
 		
 		/**
@@ -122,7 +122,12 @@
 		*/ 
 		
 		public function close() {
-			Filesystem::removeFolder('../assets/tmp');
+			$tmpDir = '../assets/_tmp';
+			if(file_exists($tmpDir)) {
+			    Filesystem::removeFolder($tmpDir);
+			    mkdir($tmpDir);
+                chmod($tmpDir, 02775);
+			}
 		}
 		
 		/**
