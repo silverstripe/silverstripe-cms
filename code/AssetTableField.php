@@ -62,14 +62,14 @@ class AssetTableField extends ComplexTableField {
 		$detailFormFields = new FieldSet(
 			new TabSet("BottomRoot",
 				new Tab("Main",
-					new TextField("Title"),
-					new TextField("Name", "Filename"),
+					new TextField("Title", _t('AssetTableField.TITLE','Title')),
+					new TextField("Name", _t('AssetTableField.FILENAME','Filename')),
 					new LiteralField("AbsoluteURL", $urlLink),
-					new ReadonlyField("FileType", "Type"),
-					new ReadonlyField("Size", "Size", $childData->getSize()),
-					new DropdownField("OwnerID", "Owner", Member::mapInCMSGroups( $folder->CanEdit() ) ),
-					new DateField_Disabled("Created", "First uploaded"),
-					new DateField_Disabled("LastEdited", "Last changed")
+					new ReadonlyField("FileType", _t('AssetTableField.TYPE','Type')),
+					new ReadonlyField("Size", _t('AssetTableField.SIZE','Size'), $childData->getSize()),
+					new DropdownField("OwnerID", _t('AssetTableField.OWNER','Owner'), Member::mapInCMSGroups( $folder->CanEdit() ) ),
+					new DateField_Disabled("Created", _t('AssetTableField.CREATED','First uploaded')),
+					new DateField_Disabled("LastEdited", _t('AssetTableField.LASTEDIT','Last changed'))
 				)
 			)
 		);
@@ -79,7 +79,7 @@ class AssetTableField extends ComplexTableField {
 			$thumbnail = $childData->getFormattedImage('AssetLibraryPreview')->URL;
 			
 			$detailFormFields->addFieldToTab("BottomRoot.Main", 
-				new ReadonlyField("Dimensions"),
+				new ReadonlyField("Dimensions", _t('AssetTableField.DIM','Dimensions')),
 				"Created"
 			);
 
@@ -100,9 +100,9 @@ class AssetTableField extends ComplexTableField {
 				foreach($links as $link) {
 					$backlinks[] = "<li><a href=\"admin/show/$link->ID\">" . $link->Breadcrumbs(null,true). "</a></li>";
 				}
-				$backlinks = "<div style=\"clear:left\">The following pages link to this file:<ul>" . implode("",$backlinks) . "</ul>";
+				$backlinks = "<div style=\"clear:left\">". _t('AssetTableField.PAGESLINKING','The following pages link to this file:') ."<ul>" . implode("",$backlinks) . "</ul>";
 			}
-			if(!isset($backlinks)) $backlinks = "<p>This file hasn't been linked to from any pages.</p>";
+			if(!isset($backlinks)) $backlinks = "<p>". _t('AssetTableField.NOLINKS',"This file hasn't been linked to from any pages.") ."</p>";
 			$detailFormFields->addFieldToTab("BottomRoot.Links", new LiteralField("Backlinks", $backlinks));
 		}
 		

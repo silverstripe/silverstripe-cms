@@ -232,8 +232,8 @@ class NewsletterAdmin extends LeftAndMain {
 			$fields = new FieldSet(
 				new TabSet("Root",
 					new Tab("Newsletter Settings",
-						new TextField("Title", "Newsletter Type"),
-						new TextField("FromEmail", "From email address"),
+						new TextField("Title", _t('NewsletterAdmin.NEWSLTYPE','Newsletter Type')),
+						new TextField("FromEmail", _t('NewsletterAdmin.FROMEM','From email address')),
 						$templates = new TemplateList("Template","Template", $mailType->Template, self::template_path())
 					)
 				)
@@ -393,11 +393,11 @@ class NewsletterAdmin extends LeftAndMain {
 			$actions = new FieldSet();
 
 			if( $email->SentDate )
-				$actions->push(new FormAction('send','Resend'));
+				$actions->push(new FormAction('send',_t('NewsletterAdmin.RESEND','Resend')));
 			else
-				$actions->push(new FormAction('send','Send...'));
+				$actions->push(new FormAction('send',_t('NewsletterAdmin.SEND','Send...')));
 
-			$actions->push(new FormAction('save','Save'));
+			$actions->push(new FormAction('save',_t('NewsletterAdmin.SAVE','Save')));
 
 			$form = new Form($this, "EditForm", $fields, $actions);
 			$form->loadDataFrom($email);
@@ -415,7 +415,7 @@ class NewsletterAdmin extends LeftAndMain {
 	}
 
 	public function SendProgressBar() {
-		$progressBar = new ProgressBar( 'SendProgressBar', 'Sending emails...' );
+		$progressBar = new ProgressBar( 'SendProgressBar', _t('NewsletterAdmin.SENDING','Sending emails...') );
 		return $progressBar->FieldHolder();
 	}
 
@@ -454,9 +454,9 @@ class NewsletterAdmin extends LeftAndMain {
 					$e->setTemplate( $nlType->Template );
 
 					self::sendToAddress( $e, $_REQUEST['TestEmail'], $messageID );
-					FormResponse::status_message('Sent test to ' . $_REQUEST['TestEmail'],'good');
+					FormResponse::status_message(_t('NewsletterAdmin.SENTTESTTO','Sent test to ') . $_REQUEST['TestEmail'],'good');
 				} else {
-					FormResponse::status_message('Please enter an email address','bad');
+					FormResponse::status_message(_t('NewsletterAdmin.PLEASEENTERMAIL','Please enter an email address'),'bad');
 				}
 			    break;
 			case "List":
@@ -504,7 +504,7 @@ class NewsletterAdmin extends LeftAndMain {
 		$record->write();
 
 		FormResponse::set_node_title("mailtype_$id", $record->Title);
-		FormResponse::status_message('Saved', 'good');
+		FormResponse::status_message(_t('NewsletterAdmin.SAVED','Saved'), 'good');
 		$result = $this->getActionUpdateJS($record);
 		return FormResponse::respond();
 	}
@@ -624,7 +624,7 @@ class NewsletterAdmin extends LeftAndMain {
 			$('MemberList').clearAddForm();
 JS;
 		FormResponse::add($response);
-		FormResponse::status_message('Saved', 'good');
+		FormResponse::status_message(_t('NewsletterAdmin.SAVED'), 'good');
 
 		return FormResponse::respond();
 	}
@@ -672,13 +672,13 @@ JS;
     private function newNewsletterType() {
         // create a new group for the newsletter
         $newGroup = new Group();
-        $newGroup->Title = "New mailing list";
+        $newGroup->Title = _t('NewsletterAdmin.NEWLIST','New mailing list');
         $newGroup->Code = "new-mailing-list";
         $newGroup->write();
 
         // create the new type
         $newsletterType = new NewsletterType();
-        $newsletterType->Title = 'New newsletter type';
+        $newsletterType->Title = _t('NewsletterAdmin.NEWNEWSLTYPE','New newsletter type');
         $newsletterType->GroupID = $newGroup->ID;
         $newsletterType->write();
 
@@ -704,7 +704,7 @@ JS;
 			}
 			$newsletter = new Newsletter();
 			$newsletter->Status = 'Draft';
-			$newsletter->Title = $newsletter->Subject = 'New draft newsletter';
+			$newsletter->Title = $newsletter->Subject = _t('NewsletterAdmin.MEWDRAFTMEWSL','New draft newsletter');
 			$newsletter->ParentID = $parentID;
 			$newsletter->write();
 		} else {
@@ -761,7 +761,7 @@ JS;
 		);
 
 		$actions = new FieldSet(
-			new FormAction( "action_import", "Show contents" )
+			new FormAction( "action_import", _t('NewsletterAdmin.SHOWCONTENTS','Show contents') )
 		);
 
 		return new RecipientImportField_UploadForm( $this, "UploadForm", $fields, $actions );

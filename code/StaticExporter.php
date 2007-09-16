@@ -10,9 +10,9 @@ class StaticExporter extends Controller {
 		parent::init();
 		if(!$this->can('AdminCMS')) {
 			$messageSet = array(
-				'default' => "Please choose an authentication method and enter your credentials to access the CMS.",
-				'alreadyLoggedIn' => "I'm sorry, but you can't access that part of the CMS.  If you want to log in as someone else, do so below",
-				'logInAgain' => "You have been logged out of the CMS.  If you would like to log in again, enter a username and password below.",
+				'default' => _t('LeftAndMain.PERMDEFAULT'),
+				'alreadyLoggedIn' => _t('LeftAndMain.PERMALREADY'),
+				'logInAgain' => _t('LeftAndMain.PERMAGAIN'),
 			);
 
 			Security::permissionFailure($this, $messageSet);
@@ -25,16 +25,16 @@ class StaticExporter extends Controller {
 	}
 
 	function index() {
-		echo "<h1>Static exporter</h1>";
+		echo "<h1>"._t('StaticExporter.NAME','Static exporter')."</h1>";
 		echo $this->StaticExportForm()->forTemplate();
 	}
 
 	function StaticExportForm() {
 		return new Form($this, 'StaticExportForm', new FieldSet(
-			new TextField('folder', 'Folder to export to'),
-			new TextField('baseurl', 'Base URL')
+			new TextField('folder', _t('StaticExporter.FOLDEREXPORT','Folder to export to')),
+			new TextField('baseurl', _t('StaticExporter.BASEURL','Base URL'))
 		), new FieldSet(
-			new FormAction('export', 'Export to that folder')
+			new FormAction('export', _t('StaticExporter.EXPORTTOTHAT','Export to that folder'))
 		));
 	}
 
@@ -78,7 +78,7 @@ class StaticExporter extends Controller {
 				}
 			}
 		} else {
-			echo "Please specify a folder that exists";
+			echo _t('StaticExporter.ONETHATEXISTS',"Please specify a folder that exists");
 		}
 
 	}

@@ -47,13 +47,13 @@ class BulkLoaderAdmin extends LeftAndMain {
 			$fields = $loader->getOptionFields();
 			if(!$fields) $fields = new FieldSet();
 			
-			$fields->push(new FileField("File", "CSV File"));
+			$fields->push(new FileField("File", _t('BulkLoaderAdmin.CSVFILE','CSV File')));
 			$fields->push(new HiddenField('LoaderClass', '', $loader->class));
 			
 			return new Form($this, "EditForm",
 				$fields,
 				new FieldSet(
-					new FormAction('preview', "Preview")
+					new FormAction('preview', _t('BulkLoaderAdmin.PREVIEW',"Preview"))
 				)
 			);
 			
@@ -68,7 +68,7 @@ class BulkLoaderAdmin extends LeftAndMain {
 			$results = $loader->processAll($_FILES['File']['tmp_name'], false);
 			
 			return $this->customise(array(
-				"Message" => "Press continue to load this data in",
+				"Message" => _t('BulkLoaderAdmin.PRESSCNT','Press continue to load this data in'),
 				"Results" => $results,
 				"ConfirmForm" => $this->getConfirmFormFor($loader, $file),
 			))->renderWith("BulkLoaderAdmin_preview");
@@ -89,7 +89,7 @@ class BulkLoaderAdmin extends LeftAndMain {
 			new HiddenField("File", "", $tmpFile),
 			new HiddenField("LoaderClass", "", $loader->class)
 		), new FieldSet(
-			new FormAction('process', 'Confirm bulk load')
+			new FormAction('process', _t('BulkLoaderAdmin.CONFIRMBULK','Confirm bulk load'))
 		));		
 	}
 	/**
@@ -111,7 +111,7 @@ class BulkLoaderAdmin extends LeftAndMain {
 			$results = $loader->processAll($_REQUEST['Filename'], true);
 			
 			return $this->customise(array(
-				"Message" => "This data has been loaded in",
+				"Message" => _t('BulkLoaderAdmin.DATALOADED', 'This data has been loaded in'),
 				"Results" => $results,
 				"ConfirmForm" => " ",
 			))->renderWith("BulkLoaderAdmin_preview");

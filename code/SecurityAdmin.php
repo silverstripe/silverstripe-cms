@@ -44,9 +44,9 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 					),
 
 					new Tab("Permissions",
-						new LiteralField("", "<p>This section is for advanced users only.
+						new LiteralField("", "<p>"._t('SecurityAdmin.ADVANCEDONLY',"This section is for advanced users only.
 							See <a href=\"http://doc.silverstripe.com/doku.php?id=permissions:codes\" target=\"_blank\">this page</a>
-							for more information.</p>"),
+							for more information.")."</p>"),
 						new TableField(
 							"Permissions",
 							"Permission",
@@ -65,10 +65,10 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			$fields->push($idField = new HiddenField("ID"));
 			$idField->setValue($id);
 			$actions = new FieldSet(
-				new FormAction('addmember','Add Member')
+				new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member'))
 			);
 
-			$actions->push(new FormAction('save','Save'));
+			$actions->push(new FormAction('save',_t('SecurityAdmin.SAVE','Save')));
 
 			$form = new Form($this, "EditForm", $fields, $actions);
 			$form->loadDataFrom($record);
@@ -140,7 +140,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 
 
 			$actions = new FieldSet();
-			$actions->push(new FormAction('savemember','Save'));
+			$actions->push(new FormAction('savemember',_t('SecurityAdmin.SAVE')));
 
 			$form = new Form($this, "MemberForm", $fields, $actions);
 			if($record) $form->loadDataFrom($record);
@@ -226,7 +226,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 
 		$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\">" .
 						"<li id=\"record-0\" class=\"Root\">" .
-							"<a href=\"admin/security/show/0\" >Security groups</a>"
+							"<a href=\"admin/security/show/0\" >"._t('SecurityAdmin.SGROUPS',"Security groups")."</a>"
 							. $siteTree .
 						"</li>" .
 					"</ul>";
@@ -238,7 +238,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	public function addgroup() {
 		$parent = $_REQUEST['ParentID'] ? $_REQUEST['ParentID'] : 0;
 			$p = new Group();
-			$p->Title = "New Group";
+			$p->Title = _t('SecurityAdmin.NEWGROUP',"New Group");
 			$p->Code = "new-group";
 			$p->ParentID = $parent;
 			$p->write();

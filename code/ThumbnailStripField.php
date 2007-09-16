@@ -42,7 +42,7 @@ class ThumbnailStripField extends FormField {
 		$folder = DataObject::get_by_id("Folder", $_GET['folderID']);
 		
 		if( !$folder )
-			return 'This is not a folder';
+			return _t('ThumbnailStripField.NOTAFOLDER','This is not a folder');
 		
 		$folderList = $folder->getDescendantIDList("Folder");
 	
@@ -89,7 +89,7 @@ class ThumbnailStripField extends FormField {
 		$folder = DataObject::get_by_id("Folder", $_GET['folderID']);
 		
 		if( !$folder )
-			return 'This is not a folder';
+			return _t('ThumbnailStripField.NOTAFOLDER');
 		
 		$folderList = $folder->getDescendantIDList("Folder");
 		array_unshift($folderList, $folder->ID);

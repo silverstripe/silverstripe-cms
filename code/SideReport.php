@@ -28,7 +28,7 @@ abstract class SideReport extends Object {
 			}
 			$result .= "</ul>\n";	
 		} else {
-			$result = 'The '.$this->title().' report is empty.';
+			$result = sprintf(_t('SideReport.REPEMPTY','The %s report is empty.',PR_MEDIUM,'%s is a report title'),$this->title());
 		}
 		return $result;
 	}
@@ -36,7 +36,7 @@ abstract class SideReport extends Object {
 
 class SideReport_EmptyPages extends SideReport {
 	function title() {
-		return "Empty pages";
+		return _t('SideReport.EMPTYPAGES',"Empty pages");
 	}
 	function records() {
 		return DataObject::get("SiteTree", "Content = '' OR Content IS NULL OR Content LIKE '<p></p>' OR Content LIKE '<p>&nbsp;</p>'", "Title");
@@ -50,7 +50,7 @@ class SideReport_EmptyPages extends SideReport {
 
 class SideReport_RecentlyEdited extends SideReport {
 	function title() {
-		return "Pages edited in the last 2 weeks";
+		return _t('SideReport.LAST2WEEKS',"Pages edited in the last 2 weeks");
 	}
 	function records() {
 		return DataObject::get("SiteTree", "`SiteTree`.LastEdited > NOW() - INTERVAL 14 DAY", "`SiteTree`.`LastEdited` DESC");

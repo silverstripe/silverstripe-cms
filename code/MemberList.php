@@ -208,34 +208,34 @@ class MemberList extends FormField {
 		{
 			return new TabularStyle(new Form($this->controller,'AddRecordForm',
 				new FieldSet(
-					new TextField("FirstName", "First Name"),
-					new TextField("Surname", "Surname"),
-					new TextField("Email", "Email"),
+					new TextField("FirstName", _t('MemberList.FN', 'First Name')),
+					new TextField("Surname", _t('MemberList.SN', 'Surname')),
+					new TextField("Email", _t('MemberList.EMAIL', 'Email')),
 					new HiddenField("GroupID", null, $this->group->ID)
 				),
 				new FieldSet(
-					new FormAction("addmember", "Add")
+					new FormAction("addmember", _t('MemberList.ADD', 'Add'))
 				)
 			));
 			
 		} else {
 			return new TabularStyle(new Form($this->controller,'AddRecordForm',
 				new FieldSet(
-					new TextField("FirstName", "First Name"),
-					new TextField("Surname", "Surname"),
-					new TextField("Email", "Email"),
-					new TextField("Password", "Password"),
+					new TextField("FirstName", _t('MemberList.FN')),
+					new TextField("Surname", _t('MemberList.SN')),
+					new TextField("Email", _t('MemberList.EMAIL')),
+					new TextField("Password", _t('MemberList.PASSWD', 'Password')),
 					new HiddenField("GroupID", null, $this->group->ID)
 				),
 				new FieldSet(
-					new FormAction("addmember", "Add")
+					new FormAction("addmember", _t('MemberList.ADD'))
 				)
 			));
 		}
 	}
 	
 	function SearchField() {
-		$field = new TextField( 'MemberListSearch', 'Search' );
+		$field = new TextField( 'MemberListSearch', _t('MemberList.SEARCH','Search') );
 		return $field->FieldHolder();
 	}
 	
@@ -263,7 +263,7 @@ class MemberList extends FormField {
 		foreach( $groups as $group )
 			$groupArray[$group->ID] = $group->Title;
 		
-		$field = new DropdownField('MemberListGroup','Filter by group',$groupArray );
+		$field = new DropdownField('MemberListGroup',_t('MemberList.FILTERBYG','Filter by group'),$groupArray );
 		return $field->FieldHolder();
 	}
 }

@@ -111,12 +111,12 @@ HTML;
 			new HiddenField("ID", "", $this->currentPageID()),
 			// needed because the button-action is triggered outside the iframe
 			new HiddenField("action_doUpload", "", "1"), 
-			new FileField("Files[0]" , "Choose file "),
+			new FileField("Files[0]" , _t('AssetAdmin.CHOOSEFILE','Choose file ')),
 			new LiteralField('UploadButton',"
-				<input type='submit' value='Upload Files Listed Below' name='action_upload' id='Form_UploadForm_action_upload' class='action' />
+				<input type='submit' value='". _t('AssetAdmin.UPLOAD', 'Upload Files Listed Below'). "' name='action_upload' id='Form_UploadForm_action_upload' class='action' />
 			"),
 			new LiteralField('MultifileCode',"
-				<p>Files ready to upload:</p>
+				<p>" . _t('AssetAdmin.FILESREADY','Files ready to upload:') ."</p>
 				<div id='Form_UploadForm_FilesList'></div>
 				<script>
 					var multi_selector = new MultiSelector($('Form_UploadForm_FilesList'), null, $('Form_UploadForm_action_upload'));
@@ -177,7 +177,7 @@ HTML;
 				if( $this->can('AdminCMS') || ( File::allowedFileType( $extension ) && (!isset($maxsize) || $file['size'] < $maxSize)))
 					$newFiles[] = $folder->addUploadToFolder($file);
 				elseif( !File::allowedFileType( $extension ) ) {
-					$fileSizeWarnings .= "alert( 'Only administrators can upload $extension files.' );";
+					$fileSizeWarnings .= "alert( '". sprintf(_t('AssetAdmin.ONLYADMINS','Only administrators can upload %s files.'),$extension)."' );";
 				} else {
 					if( $file['size'] > 1048576 )
 						$fileSize = "" . ceil( $file['size'] / 1048576 ) . "MB";
@@ -187,17 +187,17 @@ HTML;
 						$fileSize = "" . ceil( $file['size'] ) . "B";
 											
 								
-					$fileSizeWarnings .= "alert( '\\'" . $file['name'] . "\\' is too large ($fileSize). Files of this type cannot be larger than $warnSize ' );";
+					$fileSizeWarnings .= "alert( '". sprintf(_t('AssetAdmin.TOOLARGE', "%s is too large (%s). Files of this type cannot be larger than %s"),"\\'" . $file['name'] . "\\'", $fileSize, $warnSize ) ."' );";
 				}
 			}
 		}
 		
 		if($newFiles) {
 			$numFiles = sizeof($newFiles);
-			$statusMessage = "Uploaded $numFiles files";
+			$statusMessage = sprintf(_t('AssetAdmin.UPLOADEDX',"Uploaded %s files"),$numFiles) ;
 			$status = "good";
 		} else if($status != 'bad') {
-			$statusMessage = "There was nothing to upload";
+			$statusMessage = _t('AssetAdmin.NOTHINGTOUPLOAD','There was nothing to upload');
 			$status = "";
 		}
 		echo <<<HTML
@@ -239,7 +239,7 @@ HTML;
 		if($record) {
 			$nameField = ($id != "root") ? new TextField("Name", "Folder Name") : new HiddenField("Name");
 			if( $record->userCanEdit() ) {
-				$deleteButton = new InlineFormAction('deletemarked',"Delete selected files", 'delete');
+				$deleteButton = new InlineFormAction('deletemarked',_t('AssetAdmin.DELSELECTED','Delete selected files'), 'delete');
 				$deleteButton->includeDefaultJS(false);
 			} else {
 				$deleteButton = new HiddenField('deletemarked');
@@ -257,9 +257,9 @@ HTML;
 					),
 					new Tab("Details", 
 						new ReadonlyField("URL"),
-						new ReadonlyField("ClassName", "Type"),
-						new ReadonlyField("Created", "First Uploaded"),
-						new ReadonlyField("LastEdited", "Last Updated")
+						new ReadonlyField("ClassName", _t('AssetAdmin.TYPE','Type')),
+						new ReadonlyField("Created", _t('AssetAdmin.CREATED','First Uploaded')),
+						new ReadonlyField("LastEdited", _t('AssetAdmin.LASTEDITED','Last Updated'))
 					),
 					new Tab("Upload",
 						new LiteralField("UploadIframe",
@@ -275,7 +275,7 @@ HTML;
 			// Only show save button if not 'assets' folder
 			if( $record->userCanEdit() && $id != "root") {
 				$actions = new FieldSet(
-					new FormAction('save',"Save folder name")
+					new FormAction('save',_t('AssetAdmin.SAVEFOLDERNAME','Save folder name'))
 				);
 			}
 			
@@ -291,9 +291,9 @@ HTML;
 			
 			// @todo: These workflow features aren't really appropriate for all projects
 			if( Member::currentUser()->_isAdmin() && project() == 'mot' ) {
-				$fields->addFieldsToTab( 'Root.Workflow', new DropdownField("Owner", "Owner", Member::map() ) );
-				$fields->addFieldsToTab( 'Root.Workflow', new TreeMultiselectField("CanUse", "Content usable by") );
-				$fields->addFieldsToTab( 'Root.Workflow', new TreeMultiselectField("CanEdit", "Content modifiable by") );
+				$fields->addFieldsToTab( 'Root.Workflow', new DropdownField("Owner", _t('AssetAdmin.OWNER','Owner'), Member::map() ) );
+				$fields->addFieldsToTab( 'Root.Workflow', new TreeMultiselectField("CanUse", _t('AssetAdmin.CONTENTUSABLEBY','Content usable by')) );
+				$fields->addFieldsToTab( 'Root.Workflow', new TreeMultiselectField("CanEdit", _t('AssetAdmin.CONTENTMODBY','Content modifiable by')) );
 			}
 
 			if( !$record->userCanEdit() )
@@ -330,7 +330,7 @@ HTML;
 				}
 			}
 
-			$message = 'Moved '.$numFiles.' files';
+			$message = sprintf(_t('AssetAdmin.MOVEDX','Moved %s files'),$numFiles);
 			FormResponse::status_message($message, "good");
 			FormResponse::add("$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value)");
 			return FormResponse::respond();	
@@ -351,7 +351,7 @@ HTML;
 			$brokenPageList = '';
 	
 			if($fileList != "''") {
-				$files = DataObject::get("File", "`File`.ID IN ($fileList)");
+				$files = DataObject::get("File", "ID IN ($fileList)");
 				if($files) {
 					foreach($files as $file) {
 						if($file instanceof Image) {
@@ -365,7 +365,7 @@ HTML;
 						$numFiles++;
 					}
 					if($brokenPages = Notifications::getItems("BrokenLink")) {
-						$brokenPageList = "  These pages now have broken links:</ul>";
+						$brokenPageList = "  ". _t('AssetAdmin.NOWBROKEN',"These pages now have broken links:")."</ul>";
 						foreach($brokenPages as $brokenPage) {
 							$brokenPageList .= "<li style=&quot;font-size: 65%&quot;>" . $brokenPage->Breadcrumbs(3, true) . "</li>";
 						}
@@ -380,14 +380,14 @@ HTML;
 						$remaining = DB::query("SELECT COUNT(*) FROM `File` WHERE `ParentID`=$folderID")->value();
 						
 						if( !$remaining )
-							$deleteList = "Element.removeClassName(\$('sitetree').getTreeNodeByIdx( '$folderID' ).getElementsByTagName('a')[0],'contents');";
+							$deleteList .= "Element.removeClassName(\$('sitetree').getTreeNodeByIdx( '$folderID' ).getElementsByTagName('a')[0],'contents');";
 					}
 					
 				} else {
 					user_error("No files in $fileList could be found!", E_USER_ERROR);
 				}
 			}
-			$message = "Deleted $numFiles files.$brokenPageList";
+			$message = sprintf(_t('AssetAdmin.DELETEDX',"Deleted %s files.%s"),$numFiles,$brokenPageList) ;
 			FormResponse::add($deleteList);
 			FormResponse::status_message($message, "good");
 			FormResponse::add("$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value)");
@@ -419,8 +419,9 @@ HTML;
 		$record->write();
 		$title = Convert::raw2js($record->Title);
 		$name = Convert::raw2js($record->Name);
+		$saved = sprintf(_t('AssetAdmin.SAVEDFILE','Saved file %s'),"#$data[ID]");
 		echo <<<JS
-			statusMessage('Saved file #$data[ID]');
+			statusMessage('$saved');
 			$('record-$data[ID]').getElementsByTagName('td')[1].innerHTML = "$title";
 			$('record-$data[ID]').getElementsByTagName('td')[2].innerHTML = "$name";
 JS;
@@ -499,7 +500,7 @@ JS;
 		
 		$p = new Folder();
 		$p->ParentID = $parent;
-		$p->Title = "NewFolder";
+		$p->Title = _t('AssetAdmin.NEWFOLDER',"NewFolder");
 
 		$p->Name = "NewFolder";
 

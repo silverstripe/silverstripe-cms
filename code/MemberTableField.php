@@ -255,7 +255,7 @@ class MemberTableField extends ComplexTableField {
 
 		// TODO add javascript to highlight added row (problem: might not show up due to sorting/filtering)
 		FormResponse::update_dom_id($this->id(), $this->renderWith($this->template), true);
-		FormResponse::status_message('Added member to group', 'good');
+		FormResponse::status_message(_t('MemberTableField.ADDEDTOGROUP','Added member to group'), 'good');
 
 		return FormResponse::respond();
 	}
@@ -331,7 +331,7 @@ class MemberTableField extends ComplexTableField {
 		return new TabularStyle(new Form($this->controller,'AddRecordForm',
 			$fields,
 			new FieldSet(
-				new FormAction("addtogroup", "Add")
+				new FormAction("addtogroup", _t('MemberTableField.ADD','Add'))
 			)
 		));
 	}
