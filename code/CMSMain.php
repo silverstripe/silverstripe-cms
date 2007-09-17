@@ -407,6 +407,7 @@ JS;
 		Versioned::reading_stage('Live');
 		$record = DataObject::get_by_id("SiteTree", $id);
 		$descRemoved = '';
+		$descendantsRemoved = 0;
 		
 		// before deleting the records, get the descendants of this tree
 		if($record) {
