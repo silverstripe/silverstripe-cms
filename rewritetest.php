@@ -54,15 +54,18 @@ function performModRewriteTest() {
 	if(function_exists('curl_init')) {
 		$ch = curl_init($location);
 		$fp = @fopen(dirname(tempnam('adfadsfdas','')) . '/rewritetest', "w");
-		curl_setopt($ch, CURLOPT_FILE, $fp);
-		curl_setopt($ch, CURLOPT_HEADER, 0);
-		curl_exec($ch);
-		curl_close($ch);
-		fclose($fp);
-		$testrewriting = file_get_contents(dirname(tempnam('adfadsfdas','')) . '/rewritetest');
-		unlink(dirname(tempnam('adfadsfdas','')) . '/rewritetest');
-		if($testrewriting == 'OK') {
-			return true;
+		
+		if($fp) {
+			curl_setopt($ch, CURLOPT_FILE, $fp);
+			curl_setopt($ch, CURLOPT_HEADER, 0);
+			curl_exec($ch);
+			curl_close($ch);
+			fclose($fp);
+			$testrewriting = file_get_contents(dirname(tempnam('adfadsfdas','')) . '/rewritetest');
+			unlink(dirname(tempnam('adfadsfdas','')) . '/rewritetest');
+			if($testrewriting == 'OK') {
+				return true;
+			}
 		}
 	}
 	

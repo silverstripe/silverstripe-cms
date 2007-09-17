@@ -681,7 +681,7 @@ PHP
 	function createFile($filename, $content) {
 		$base = $this->getBaseDir();
 
-		if(($fh = fopen($base . $filename, 'w')) && fwrite($fh, $content) && fclose($fh)) {
+		if((@$fh = fopen($base . $filename, 'w')) && fwrite($fh, $content) && fclose($fh)) {
 			return true;
 		} else {
 			$this->error("Couldn't write to file $base$filename");
@@ -817,15 +817,18 @@ TEXT
 		if(function_exists('curl_init')) {
 			$ch = curl_init($location);
 			$fp = @fopen(dirname(tempnam('adfadsfdas','')) . '/rewritetest', "w");
-			curl_setopt($ch, CURLOPT_FILE, $fp);
-			curl_setopt($ch, CURLOPT_HEADER, 0);
-			curl_exec($ch);
-			curl_close($ch);
-			fclose($fp);
-			$testrewriting = file_get_contents(dirname(tempnam('adfadsfdas','')) . '/rewritetest');
-			unlink(dirname(tempnam('adfadsfdas','')) . '/rewritetest');
-			if($testrewriting == 'OK') {
-				return true;
+			
+			if($fp) {
+				curl_setopt($ch, CURLOPT_FILE, $fp);
+				curl_setopt($ch, CURLOPT_HEADER, 0);
+				curl_exec($ch);
+				curl_close($ch);
+				fclose($fp);
+				$testrewriting = file_get_contents(dirname(tempnam('adfadsfdas','')) . '/rewritetest');
+				unlink(dirname(tempnam('adfadsfdas','')) . '/rewritetest');
+				if($testrewriting == 'OK') {
+					return true;
+				}
 			}
 		}
 		
