@@ -20,8 +20,8 @@ if(isset($_REQUEST['force'])) {
 	
 	if($modRewriteWorking) {
 		echo "mod_rewrite is working! I will now try and direct you to
-					<a href=\"home/successfullyinstalled\">home/successfullyinstalled</a> to confirm that the installation was successful.
-					<script>setTimeout(function() { window.location.href = 'home/successfullyinstalled'; }, 1000);</script>
+					<a href=\"home/successfullyinstalled?flush=1\">home/successfullyinstalled</a> to confirm that the installation was successful.
+					<script>setTimeout(function() { window.location.href = 'home/successfullyinstalled?flush=1'; }, 1000);</script>
 		";
 	} else {
 		restoreHtaccess();
