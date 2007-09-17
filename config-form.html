@@ -21,7 +21,7 @@
 			<div id="Container">
 				<div id="Header">
 					<h1>SilverStripe CMS Installation</h1>
-					<p>Version <?php= $silverstripe_version ?></p>
+					<p>Version <?php echo $silverstripe_version; ?></p>
 				</div>
 				
 				<div id="Layout">
@@ -32,13 +32,15 @@
 						<form action="install.php" method="post">
 							<?php if(isset($hasErrorOtherThanDatabase)) { ?>
 								<p class="error">
-									You aren't currently able to install the software.  Please <a href="#requirements">see below</a> for details.
+									You aren't currently able to install the software.  Please <a href="#requirements">see below</a> for details.<br />
+									If you are having problems meeting the requirements, see the <a href="http://doc.silverstripe.com/doku.php?id=server-requirements">server requirements wiki page</a>.
 								</p>
 							<?php } else { ?>
 								<?php if($req->hasWarnings()) { ?>
 									<p class="warning">
 										There are some issues that we recommend you look at before installing, however, you are still able to install the software.
-										Please see below for details.
+										Please see below for details.<br />
+										If you are having problems meeting the requirements, see the <a href="http://doc.silverstripe.com/doku.php?id=server-requirements">server requirements wiki page</a>.
 									</p>
 								<?php } else if(!$dbReq->hasErrors()) { ?>
 									<p class="good">
