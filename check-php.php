@@ -1,9 +1,5 @@
 <?php
-	if(ini_get("short_open_tag")) {
-		 header("Location: install.php"); 
-	} else {
-		echo "Please set the PHP option short_open_tag to true, restart your webserver, and then refresh your browser to continue.";
-	}
+	header("Location: install.php"); 
 ?>
 <!--<?php /*-->
 <html>

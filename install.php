@@ -240,7 +240,7 @@ class InstallRequirements {
 			<p>I have installed SilverStripe CMS successfully!</p>
 			<p><a href="./admin/" target="_blank">Open the CMS tool</a><br />
 			<a href="./" target="_blank">Open the site</a></p>
-			<?
+			<?php
 		}
 	}
 	
@@ -518,7 +518,7 @@ class Installer extends InstallRequirements {
 		<h1>Installing SilverStripe...</h1>
 		<p>I am now running through the installation steps (this should take about 30 seconds)</p>
 		<p>If you receive a fatal error, refresh this page to continue the installation
-		<?
+		<?php
 		flush();
 		
 		// Delete old _config.php files
@@ -549,7 +549,7 @@ PHP;
 		$devServers = $this->var_export_array_nokeys(explode("\n", $_POST['devsites']));
 
 		$this->createFile("$template/_config.php", <<<PHP
-<?
+<?php
 
 error_reporting(E_ALL ^ E_NOTICE);
 

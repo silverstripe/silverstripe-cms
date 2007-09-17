@@ -1,4 +1,4 @@
-<?
+<?php
 
 class Page extends SiteTree {
 	static $db = array(
