@@ -136,7 +136,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$className = 'SiteTree';
 		$rootID = null;
 		$obj = $rootID ? $this->getRecord($rootID) : singleton($className);
-		$obj->setMarkingFilterFunction('CMSMainMarkingFilterFunction');
+		$obj->setMarkingFilterFunction('cmsMainMarkingFilterFunction');
 		$obj->markPartialTree();
 
 		if($p = $this->currentPage()) $obj->markToExpose($p);
@@ -719,7 +719,7 @@ HTML;
 	 * Roll a page back to a previous version
 	 */
 	function rollback() {
-		if($_REQUEST['Version']) {
+		if(isset($_REQUEST['Version']) && (bool)$_REQUEST['Version']) {
 			$record = $this->performRollback($_REQUEST['ID'], $_REQUEST['Version']);
 			echo sprintf(_t('CMSMain.ROLLEDBACKVERSION',"Rolled back to version #%d.  New version number is #%d"),$_REQUEST['Version'],$record->Version);
 		} else {
@@ -1356,11 +1356,16 @@ JS
 	 * Get the name of the language that we are translating in
 	 */
 	function EditingLang() {
-		if (!Translatable::is_default_lang()) return i18n::get_language_name(Translatable::current_lang());
+		if(!Translatable::is_default_lang()) {
+			return i18n::get_language_name(Translatable::current_lang());
+		} else {
+			return false;
+		}
 	}
 }
+
 // TODO: Find way to put this in a class
-function CMSMainMarkingFilterFunction($node) {
+function cmsMainMarkingFilterFunction($node) {
 	// Expand all nodes
 	// $node->markingFinished();
 	// Don't ever hide nodes with children, because otherwise if one of their children matches the search, it wouldn't be shown.
