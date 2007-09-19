@@ -599,8 +599,11 @@ JS;
 		$_REQUEST['ajax'] = 1;
 		
 		if(is_array($_REQUEST['ID'])) {
-			$movedNode = DataObject::get_by_id($className, $_REQUEST['MovedNodeID']);
-
+			if($_REQUEST['MovedNodeID']==0){ //Sorting root
+				$movedNode = DataObject::get($className, "`ParentID`=0");				
+			}else{
+				$movedNode = DataObject::get_by_id($className, $_REQUEST['MovedNodeID']);
+			}
 			foreach($_REQUEST['ID'] as $id) {
 				if($id == $movedNode->ID) {
 					$movedNode->Sort = ++$counter;
