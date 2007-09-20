@@ -90,6 +90,35 @@ class AssetTableField extends ComplexTableField {
 				),
 				'Main'
 			);
+			
+			$detailFormFields->addFieldToTab("BottomRoot", 
+				new Tab("Gallery Options",
+					new TextField( "Content", "Caption"	)
+				)
+			);
+		}
+		else {
+			if( $childData->Extension == 'swf' ) {
+				$detailFormFields->addFieldToTab("BottomRoot", 
+					new Tab("Gallery Options",
+						new TextField( "Content", "Caption"	),
+						new TextField( "PopupWidth", "Popup Width"	),
+						new TextField( "PopupHeight", "Popup Height" ),
+						new HeaderField( 'SWF File Options' ),
+						new CheckboxField( 'Embed', 'Force Embeding' ),
+						new CheckboxField( 'LimitDimensions', 'Limit The Dimensions In The Popup Window' )
+					)
+				);
+			}
+			else {
+				$detailFormFields->addFieldToTab("BottomRoot", 
+					new Tab("Gallery Options",
+						new TextField( "Content", "Caption"	),
+						new TextField( "PopupWidth", "Popup Width"	),
+						new TextField( "PopupHeight", "Popup Height" )
+					)
+				);
+			}
 		}
 		
 		if($childData && $childData->hasMethod('BackLinkTracking')) {
