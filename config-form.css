@@ -78,6 +78,10 @@ input.text, textarea, select {
 	font-weight: bold;
 	width: 305px;
 }
+#stats {
+	float: left;
+	margin: 5px;
+}
 table.testResults {
 	border-collapse: collapse;
 	width: 100%;

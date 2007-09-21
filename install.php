@@ -521,6 +521,33 @@ class Installer extends InstallRequirements {
 		<?php
 		flush();
 		
+		if(isset($_POST['stats'])) {
+			if(file_exists('sapphire/silverstripe_version')) {
+				$sapphireVersionFile = file_get_contents('sapphire/silverstripe_version');
+				if(strstr($sapphireVersionFile, "/sapphire/trunk")) {
+					$silverstripe_version = "trunk";
+				} else {
+					preg_match("/sapphire\/(?:(?:branches)|(?:tags))(?:\/rc)?\/([A-Za-z0-9._-]+)\/silverstripe_version/", $sapphireVersionFile, $matches);
+					$silverstripe_version = $matches[1];
+				}
+			} else {
+				$silverstripe_version = "unknown";
+			}
+			
+			$phpVersion = urlencode(phpversion());
+			$conn = @mysql_connect($config['mysql']['server'], null, null);
+			$databaseVersion = urlencode('MySQL ' . mysql_get_server_info());
+			$webserver = urlencode($_SERVER['SERVER_SOFTWARE']);
+			
+			$url = "http://ss2stat.silverstripe.com/Installation/add?SilverStripe=$silverstripe_version&PHP=$phpVersion&Database=$databaseVersion&WebServer=$webserver";
+			
+			if(isset($_SESSION['StatsID']) && $_SESSION['StatsID']) {
+				$url .= '&ID=' . $_SESSION['StatsID'];
+			}
+			
+			@$_SESSION['StatsID'] = file_get_contents($url);
+		}
+		
 		// Delete old _config.php files
 		if(file_exists('tutorial/_config.php')) {
 			unlink('tutorial/_config.php');
