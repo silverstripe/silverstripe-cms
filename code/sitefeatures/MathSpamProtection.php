@@ -7,14 +7,6 @@ class MathSpamProtection {
 
 	private static $mathProtection = false;
 	
-	static function isEnabled() {
-		return (self::$mathProtection != null) ? true : false;
-	}
-	
-	static function setEnabled($math = true) {
-		MathSpamProtection::$mathProtection = $math;
-	}
-	
 	/**
 	 * Creates the question from random variables, which are also saved to the session.
 	 */
@@ -63,5 +55,13 @@ class MathSpamProtection {
 	}
 	
 	
+	static function isEnabled() {
+		return self::$mathProtection;
+	}
+	
+	static function setEnabled($math = true) {
+		self::$mathProtection = $math;
+	}
+
 }
 ?>
