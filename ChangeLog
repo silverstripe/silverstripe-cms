@@ -8,7 +8,7 @@ SilverStripe ChangeLog
   - Comment administration section, and comment moderation
   - TinyMCE has been updated to 2.1.1.1
   - Drastically improved database build performance
-  - Support for running SilverStripe in safe mode
+  - Support for running SilverStripe in safe mode and under open_basedir restrictions
   - Improved spam detection 
   - More API documentation
   - PHP notice fixes
@@ -53,7 +53,6 @@ SilverStripe ChangeLog
   - The Link for a RedirectorPage points to its target
   - Add SQL_ prefix in place it was missing in Email
   - Added ContentController::project()
-  - layout.css, form.css and typography.css are automatically included
   - Allow CMS users to limit view/edit access to a page.
   - Added a check to make sure record exists before calling hasMethod on it in CheckboxSetField
   - Don't show classes user doesn't have permissions to change to in class dropdown
@@ -91,6 +90,10 @@ SilverStripe ChangeLog
   - Refactored CMS page-URL accessing to use ->AbsoluteLink(), which can be overridden by defining alternateAbsoluteLink() 
   - Allow logging in via BasicAuth
   - Allow the dev and test servers to be set via Director
+  - Changes to support gallery module
+  - Added missing has_many in DataObjectDecorator
+  - Replace empty strings in SQL queries with NULL
+  - Fixed CMS sort subpages bug
   - Installer changes
       - New installer look based on BlackCandy
       - Use the new theme system
@@ -98,7 +101,10 @@ SilverStripe ChangeLog
       - Added ability to set servers that will be in dev mode
       - When the posix module isn't present, throw a warning instead of dying
       - Warn if PHP version is less that 5.2.0 in support of GoPHP5 (http://www.gophp5.org)
-      
+      - Added favicon to installer and default template
+      - Optional reporting of version information to SilverStripe
+      - Installer now runs with short tags disabled
+      - open_basedir and safe mode fixes
   
 2.0.2
   - BlackCandy is the new default theme
