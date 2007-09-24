@@ -425,8 +425,6 @@ JS;
 				FormResponse::add("$('sitetree').setNodeIdx(\"$id\", \"$record->ID\");");
 				FormResponse::add("$('Form_EditForm').elements.ID.value = \"$record->ID\";");
 			}
-
-			$title = Convert::raw2js($record->TreeTitle());
 			
 			if($added = DataObjectLog::getAdded('SiteTree')) {
 				foreach($added as $page) {
@@ -447,7 +445,6 @@ JS;
 				}
 			}
 			
-			FormResponse::add("$('sitetree').setNodeTitle(\"$record->ID\", \"$title\");");
 			$message = "Saved.";
 
 
@@ -479,20 +476,23 @@ JS;
 		
 			$record->write(); 
 			
-			$result .= $this->getActionUpdateJS($record);
-			FormResponse::status_message($message, "good");
-			
-			FormResponse::update_status($record->Status);
-
-
-		}
-		
-		// If the 'Save & Publish' button was clicked, also publish the page
-		if(isset($urlParams['publish']) && $urlParams['publish'] == 1) {
-			$this->performPublish($record);
-			return $this->tellBrowserAboutPublicationChange($record, "Published '$record->Title' successfully");
-		} else {
-			return FormResponse::respond();
+			// If the 'Save & Publish' button was clicked, also publish the page
+			if(isset($urlParams['publish']) && $urlParams['publish'] == 1) {
+				$this->performPublish($record);
+				// BUGFIX: Changed icon sometimes shows after "Save & Publish" button is clicked http://support.silverstripe.com/gsoc/ticket/31
+				$record->setClassName($record->ClassName);
+				$newClass = $record->ClassName;
+				$publishedRecord = $record->newClassInstance($newClass);
+				return $this->tellBrowserAboutPublicationChange($publishedRecord, "Published '$record->Title' successfully");
+			} else {
+				// BUGFIX: Changed icon only shows after Save button is clicked twice http://support.silverstripe.com/gsoc/ticket/76
+				$title = Convert::raw2js($record->TreeTitle());
+				FormResponse::add("$('sitetree').setNodeTitle(\"$record->ID\", \"$title\");");
+				$result .= $this->getActionUpdateJS($record);
+				FormResponse::status_message($message, "good");
+				FormResponse::update_status($record->Status);
+				return FormResponse::respond();
+			}
 		}
 	}
 	
