@@ -91,13 +91,15 @@ class AssetTableField extends ComplexTableField {
 				'Main'
 			);
 			
-			$detailFormFields->addFieldToTab("BottomRoot", 
-				new Tab("Gallery Options",
-					new TextField( "Content", "Caption"	)
-				)
-			);
+			if( class_exists( 'GalleryFile' ) ) {
+				$detailFormFields->addFieldToTab("BottomRoot", 
+					new Tab("Gallery Options",
+						new TextField( "Content", "Caption"	)
+					)
+				);
+			}
 		}
-		else {
+		else if( class_exists( 'GalleryFile' ) ) {
 			if( $childData->Extension == 'swf' ) {
 				$detailFormFields->addFieldToTab("BottomRoot", 
 					new Tab("Gallery Options",
