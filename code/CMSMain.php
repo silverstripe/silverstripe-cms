@@ -425,7 +425,7 @@ JS;
 			$originalItem = Translatable::get_original($className,Session::get("{$id}_originalLangID"));
 			if ($setID) $originalItem->ID = $id;
 			else {
-				$originalItem->ID = 'new'; // to avoid creating and deleting a SiteTree row
+				$originalItem->ID = null;
 				Translatable::creating_from(Session::get($id.'_originalLangID'));
 			}
 			return $originalItem;

@@ -366,11 +366,11 @@ JS;
 		$className = $this->stat('tree_class');
 		$result = '';
 
-		$id = $_REQUEST['ID'];
-		if(substr($id,0,3) != 'new') {
-			$record = DataObject::get_one($className, "`$className`.ID = $id");
+		$SQL_id = Convert::raw2sql($_REQUEST['ID']);
+		if(substr($SQL_id,0,3) != 'new') {
+			$record = DataObject::get_one($className, "`$className`.ID = {$SQL_id}");
 		} else {
-			$record = $this->getNewItem($id, false);
+			$record = $this->getNewItem($SQL_id, false);
 		}
 
 		// We don't want to save a new version if there are no changes
@@ -428,8 +428,8 @@ JS;
 		// $record->write();
 
 		if(Director::is_ajax()) {
-			if($id != $record->ID) {
-				FormResponse::add("$('sitetree').setNodeIdx(\"$id\", \"$record->ID\");");
+			if($SQL_id != $record->ID) {
+				FormResponse::add("$('sitetree').setNodeIdx(\"{$SQL_id}\", \"$record->ID\");");
 				FormResponse::add("$('Form_EditForm').elements.ID.value = \"$record->ID\";");
 			}
 
@@ -486,10 +486,13 @@ JS;
 			// If the 'Save & Publish' button was clicked, also publish the page
 			if (isset($urlParams['publish']) && $urlParams['publish'] == 1) {
 				$this->performPublish($record);
-				// BUGFIX: Changed icon sometimes shows after "Save & Publish" button is clicked http://support.silverstripe.com/gsoc/ticket/31
-				$record->setClassName( $record->ClassName );
-				$newClass = $record->ClassName;
-				$publishedRecord = $record->newClassInstance( $newClass );
+				
+				if(substr($SQL_id,0,3) != 'new') { 
+					$publishedRecord = DataObject::get_one($className, "`$className`.ID = {$SQL_id}"); 
+				} else { 
+					$publishedRecord = $this->getNewItem($SQL_id, false); 
+				} 
+
 				return $this->tellBrowserAboutPublicationChange($publishedRecord, "Published '$record->Title' successfully");
 			} else {
 				// BUGFIX: Changed icon only shows after Save button is clicked twice http://support.silverstripe.com/gsoc/ticket/76
