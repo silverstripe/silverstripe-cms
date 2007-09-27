@@ -8,8 +8,8 @@ if($baseURL == "/") {
 }
 
 if(isset($_REQUEST['force'])) {
-	echo "Forced continue, attempting to redirect to <a href=\"home/successfullyinstalled\">home/successfullyinstalled</a>.
-		<script>setTimeout(function() { window.location.href = 'home/successfullyinstalled'; }, 1000);</script>";
+	echo "Forced continue, attempting to redirect to <a href=\"home/successfullyinstalled?flush=1\">home/successfullyinstalled</a>.
+		<script>setTimeout(function() { window.location.href = 'home/successfullyinstalled?flush=1'; }, 1000);</script>";
 } else {	
 	$modRewriteWorking  = performModRewriteTest();
 	
