@@ -1318,7 +1318,6 @@ JS
 	 */
 	function EditingLang() {
 		if(!Translatable::is_default_lang()) {
-			var_dump(Translatable::current_lang());
 			return i18n::get_language_name(Translatable::current_lang());
 		} else {
 			return false;
