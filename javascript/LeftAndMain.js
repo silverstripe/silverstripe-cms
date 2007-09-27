@@ -99,9 +99,17 @@ Behaviour.register({
 			w.focus();
 			return false;
 		}
+	},
+	
+	'#EditMemberProfile': {
+		onclick: function(e) {
+			var el = Event.element(e);
+			GB_show('Edit Profile', el.attributes.href.value, ComplexTableField.prototype.popupHeight, ComplexTableField.prototype.popupWidth);
+			Event.stop(e);
+		}
 	}
 
-})
+});
 
 
 
