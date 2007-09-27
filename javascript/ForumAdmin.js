@@ -108,7 +108,7 @@ initialiseCMSIfAForumLoaded = function(){
 }
 
 Behaviour.addLoader(function(){
-	if($('Form_EditForm').observeMethod) {
+	if($('Form_EditForm') && $('Form_EditForm').observeMethod) {
 		$('Form_EditForm').observeMethod('PageLoaded', initialiseCMSIfAForumLoaded());
 	}
 	
