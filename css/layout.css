@@ -16,24 +16,20 @@ body {
 	background-color: #d4d0c8;
 }
 
-#top, #left, #bottom, div.title, div.mceToolbarExternal, ul.tabstrip, div.field label, #separator {
-
-/*-moz-user-select: none;*/ /*need to explicitly allow input box selection becuase of this */
-
+#top, 
+#left, 
+#bottom, 
+div.title, 
+div.mceToolbarExternal, 
+ul.tabstrip, 
+div.field label, 
+#separator {
+	/*-moz-user-select: none;*/ /*need to explicitly allow input box selection becuase of this */
 }
 
-
-
-
-form fieldset {
-	margin: 0;
-	padding: 0;
-	border-style: none;
-}
 form#Form_EditForm fieldset {
 	height: 100%;
 }
-
 
 body.stillLoading select {
 	display: none;
@@ -425,25 +421,12 @@ div.spacer, li.spacer {
 	margin-right: 4px;
 }
 
-.indicator.inline {
-	display: inline;
-	margin-left: 5px;
-	vertical-align: middle;
-}
-
-p.Actions {
-	vertical-align: middle;
-}
-
-.indicator.block {
-	display: inline;
-}
-
 /* CMS specific icons for the tree */
-
-
 ul.tree li.Root span.Root span.c a {
-
 	background-image : url(../../cms/images/treeicons/root.png) !important;
+}
 
+/* Misc Styling */
+iframe {
+	border : none;
 }

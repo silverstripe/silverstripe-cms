@@ -6,6 +6,7 @@ class CommentAdmin extends LeftAndMain {
 		parent::init();
 		
 		Requirements::javascript("cms/javascript/CommentAdmin_right.js");
+		Requirements::css("cms/css/CommentAdmin.css");
 	}
 	
 	public function Link($action = null) {

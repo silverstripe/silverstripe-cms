@@ -1,0 +1,21 @@
+#right form .inlineformaction {
+	margin-left: 0;
+}
+.dragfile, 
+.dragfile img {
+	float: left;
+	cursor: move;
+}
+.NumFilesIndicator {
+	text-align: left;
+ 	padding: 1px 1px 1px 10px;
+ 	font-size: 16px;
+	font-weight: bold;
+ 	border: 1px solid #cc9;
+	color: #660;
+	background-color: #F9F9E3;
+	margin: 2px;
+}
+.DraggedHandle {
+	width: 30em !important;
+}

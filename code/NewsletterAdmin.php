@@ -47,14 +47,9 @@ class NewsletterAdmin extends LeftAndMain {
 		}
 
 		// needed for MemberTableField (Requirements not determined before Ajax-Call)
-		Requirements::javascript("jsparty/greybox/AmiJS.js");
-		Requirements::javascript("jsparty/greybox/greybox.js");
-		Requirements::javascript("sapphire/javascript/TableListField.js");
-		Requirements::javascript("sapphire/javascript/TableField.js");
-		Requirements::javascript("sapphire/javascript/ComplexTableField.js");
 		Requirements::javascript("cms/javascript/MemberTableField.js");
-		Requirements::css("jsparty/greybox/greybox.css");
-		Requirements::css("sapphire/css/ComplexTableField.css");
+		
+		Requirements::css("cms/css/NewsletterAdmin.css");
 	}
 
 	public function remove() {

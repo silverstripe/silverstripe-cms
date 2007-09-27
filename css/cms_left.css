@@ -3,9 +3,9 @@
 	border-bottom: 1px #CCC solid;
 	padding: 0;
 	margin: 0;
-       /* height: 23px; */
-       float: left;
-       width: 100%;
+	/* height: 23px; */
+	float: left;
+	width: 100%;
 }
 #TreeActions li.action {
 	float: left;
@@ -26,34 +26,21 @@
 #TreeActions li.action:hover  {
 	background-color: #CCC;
 }
-
 #left form.actionparams {
 	background-color: #CCC;
 	border-bottom: 1px #EEE solid;
 	margin: 0;
 	padding: 0.5em;
 }
-
 #left form.actionparams select {
 	width: 75%;
 	margin: 0;
 }
-#ReportSelector_holder select, #PageType {
+#PageType,
+#ReportSelector_holder select {
 	width: 75%;
 	float: left;
 	margin-right: 3px;
-}
-#LangSelector_holder {
-	float: none;
-	background-color: #EEEEEE;
-	border-bottom: 1px solid #CCCCCC;
-	border-top: 1px solid #CCCCCC;
-}
-#LangSelector_holder select {
-	width: 70%;
-}
-#LangSelector_holder.onelang {
-	display: none;
 }
 #left form.actionparms input.action {
 	width: 5%;
@@ -102,7 +89,6 @@
 #left div.field select {
 	width: 100%;
 }
-
 #left .SelectionGroup li.selected label.selector {
 	font-weight: bold;
 }
@@ -111,9 +97,9 @@
 ul.tree span.a {
 	cursor: pointer;
 }
-.filefolderhover span.a, ul.tree span.a.over {
+.filefolderhover span.a, 
+ul.tree span.a.over {
 	background-color: #FFFFBB !important;
-	
 	/* these push the highlight out to the left of the window */
 	margin-left: -100px;
 	padding-left: 100px;
@@ -126,7 +112,6 @@ ul.tree span.a.current {
 	background-color: #EEEEFF !important;
 	border-top: 1px #CCCCFF solid;
 	border-bottom: 1px #CCCCFF solid;	
-	
 	/* these push the highlight out to the left of the window */
 	margin-left: -100px;
 	padding-left: 100px;
@@ -156,6 +141,7 @@ ul.tree span.a.loading span.b span.c a {
 ul.tree.multiselect span.a span.b a {
 	background-image: url(../images/tickbox-unticked.gif) !important;
 }
+
 ul.tree.multiselect span.a.nodelete span.b a {
 	background-image: url(../images/tickbox-canttick.gif) !important;
 }
@@ -168,14 +154,10 @@ ul.tree.multiselect span.a.selected span.b span.c a {
 ul.tree.multiselect li.selected ul span.a a {
 	background-image: url(../images/tickbox-greyticked.gif) !important;
 }
-/*
-ul.tree.multiselect li.selected ul {
-	display: none;
-}
-*/
 
 /* Span-B: Plus/Minus icon */
-ul.tree.multiselect li.selected span.a.children span.b, ul.tree.multiselect li.selected span.a.unexpanded span.b {
+ul.tree.multiselect li.selected span.a.children span.b, 
+ul.tree.multiselect li.selected span.a.unexpanded span.b {
 	background-image: none;
 	cursor: default;
 }
@@ -206,7 +188,7 @@ ul.tree ins,
 	background-repeat : no-repeat;
 	text-decoration : none;
 }
-/* Deleated on stage */
+/* Deleted on stage */
 ul.tree del,
 #publication_key del {
 	color: red;
@@ -268,30 +250,6 @@ ul.tree span.modified,
 }
 
 
-#CommentList {
-	padding: 0;
-	margin: 0;
-}
-#CommentList li {
-	list-style-type: none;
-	background-color: #EEE;
-	border: 1px #CCC solid;
-	padding: 3px;
-	margin: 7px;
-}
-#CommentList li .extra {
-	margin-top: 3px;
-	font-size: 80%;
-	font-style: italic;
-}
-
-#ReportSelector_holder {
-	background-color: #EEE;
-	border-bottom: 1px #CCC solid;
-	margin: 0;
-	padding: 3px;
-}
-
 #treepanes .pane_actions {
 	margin: 7px 4px;
 }
@@ -344,10 +302,14 @@ ul.tree span.modified,
 /**
  * Change the styling of the root tree node
  */
-ul.tree span.a.Root, ul.tree span.a.last.Root, ul.tree span.a.children.Root {
+ul.tree span.a.Root, 
+ul.tree span.a.last.Root, 
+ul.tree span.a.children.Root {
 	background-image: none;
 }
-ul.tree span.a.Root span.c, ul.tree span.a.last.Root span.c, ul.tree span.a.children.Root span.c {
+ul.tree span.a.Root span.c, 
+ul.tree span.a.last.Root span.c, 
+ul.tree span.a.children.Root span.c {
 	margin: 0;
 }
 ul#sitetree.tree ul {
@@ -358,13 +320,6 @@ ul#sitetree.tree ul ul {
 }
 
 
-
-ul.tree span.a.MailType, ul.tree span.a.last.MailType, ul.tree span.a.children.MailType {
-	background-image: none;
-}
-ul.tree span.a.MailType span.c, ul.tree span.a.last.MailType span.c, ul.tree span.a.children.MailType span.c {
-	margin: 0;
-}
 
 .contextMenu {
 	padding: 0;
@@ -388,7 +343,9 @@ ul.tree span.a.MailType span.c, ul.tree span.a.last.MailType span.c, ul.tree spa
 	text-decoration: none;
 }
 
-ul.tree li.untranslated a:link, ul.tree li.untranslated a:hover, ul.tree li.untranslated a:visited {
+ul.tree li.untranslated a:link, 
+ul.tree li.untranslated a:hover, 
+ul.tree li.untranslated a:visited {
 	color: #CCCCCC
 }
 
@@ -402,4 +359,33 @@ ul.tree li.untranslated a:link, ul.tree li.untranslated a:hover, ul.tree li.untr
 /* IE7 fix: */
 #left form.actionparams #InputSiteTreeFilterDate table {
 	width: 70%;
+}
+
+#right ins * {
+	background-color: green;
+}
+
+#right del *{
+	background-color: red;
+}
+
+#sitetree a.contents {
+	font-style: italic;	
+}
+
+
+/**
+ * i18n
+ */
+#LangSelector_holder {
+	float: none;
+	background-color: #EEEEEE;
+	border-bottom: 1px solid #CCCCCC;
+	border-top: 1px solid #CCCCCC;
+}
+#LangSelector_holder select {
+	width: 70%;
+}
+#LangSelector_holder.onelang {
+	display: none;
 }

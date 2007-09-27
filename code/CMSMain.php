@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The main "content" area of the CMS.
  * This class creates a 2-frame layout - left-tree and right-form - to sit beneath the main
@@ -7,83 +6,23 @@
  * @todo Create some base classes to contain the generic functionality that will be replicated.
  */
 class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionProvider {
+	
 	static $tree_class = "SiteTree";
+	
 	static $subitem_class = "Member";
+	
 	/**
 	 * SiteTree Columns that can be filtered using the the Site Tree Search button
 	 */
-	static $site_tree_filter_options = array('ClassName' => 'Page Type', 'Status' => 'Status', 
-						 'MetaDescription' => 'Description', 'MetaKeywords' => 'Keywords');
+	static $site_tree_filter_options = array(
+		'ClassName' => 'Page Type', 
+		'Status' => 'Status', 
+		'MetaDescription' => 'Description', 
+		'MetaKeywords' => 'Keywords'
+	);
 
 	public function init() {
 		parent::init();
-
-		Requirements::javascript(MCE_ROOT . "tiny_mce_src.js");
-		Requirements::javascript("jsparty/tiny_mce_improvements.js");
-		Requirements::javascript("jsparty/hover.js");
-		Requirements::javascript("jsparty/scriptaculous/controls.js");
-
-		Requirements::javascript("cms/javascript/MemberList.js");
-		Requirements::javascript("cms/javascript/CMSMain.js");
-		Requirements::javascript("cms/javascript/CMSMain_left.js");
-		Requirements::javascript("cms/javascript/CMSMain_right.js");
-		Requirements::javascript("cms/javascript/ForumAdmin.js");
-
-
-		Requirements::javascript("cms/javascript/SideTabs.js");
-		Requirements::javascript("cms/javascript/TaskList.js");
-		Requirements::javascript("cms/javascript/CommentList.js");
-		Requirements::javascript("cms/javascript/SideReports.js");
-		Requirements::javascript("cms/javascript/LangSelector.js");
-		Requirements::javascript('cms/javascript/TranslationTab.js');
-		Requirements::javascript("sapphire/javascript/UpdateURL.js");
-		Requirements::javascript("sapphire/javascript/UniqueFields.js");
-		Requirements::javascript("sapphire/javascript/RedirectorPage.js");
-		Requirements::css("sapphire/css/FieldEditor.css");
-
-		Requirements::javascript("sapphire/javascript/FieldEditor.js");
-		Requirements::javascript("sapphire/javascript/TableListField.js");
-		Requirements::javascript("sapphire/javascript/TableField.js");
-		Requirements::javascript("sapphire/javascript/ComplexTableField.js");
-		Requirements::javascript("sapphire/javascript/RelationComplexTableField.js");
-		Requirements::javascript("survey/javascript/SurveyResponses.js");
-		Requirements::javascript("survey/javascript/FormResponses.js");
-		Requirements::javascript( 'sapphire/javascript/DataReport.js' );
-		Requirements::css("survey/css/SurveyFilter.css");
-
-		Requirements::javascript("sapphire/javascript/SelectionGroup.js");
-
-		// For Parents
-		Requirements::javascript("parents/javascript/NotifyMembers.js");
-
-		// For Tourism
-		Requirements::css("tourism/css/SurveyCMSMain.css");
-		Requirements::javascript("tourism/javascript/QuotasReport.js");
-
-		// For Mikano
-		Requirements::javascript("sapphire/javascript/ReportField.js");
-
-		// For Ptraining
-		Requirements::javascript("ptraining/javascript/BookingList.js");
-
-		// For Forum
-		Requirements::javascript("forum/javascript/ForumAccess.js");
-
-		// For Gallery
-		Requirements::javascript('gallery/javascript/GalleryPage_CMS.js');
-		
-		Requirements::themedCSS('typography');
-		
-		// For Widgets
-		Requirements::css('cms/css/WidgetAreaEditor.css');
-		Requirements::javascript('cms/javascript/WidgetAreaEditor.js');
-
-		// HACK ALERT:
-		// We need a better way of including all of the CSS that *might* be used by this application.
-		// Perhaps the ajax responses can include some instructions to go get more CSS / JavaScript?
-		if(Director::fileExists('mot')) {
-			Requirements::css("mot/css/WorkflowWidget.css");
-		}
 
 		// We don't want this showing up in every ajax-response, it should always be present in a CMS-environment
 		if(!Director::is_ajax()) {
@@ -92,6 +31,28 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				"BaseURL" => Director::absoluteBaseURL(),
 			));
 		}
+		
+		Requirements::javascript('cms/javascript/CMSMain.js');
+		Requirements::javascript('cms/javascript/CMSMain_left.js');
+		Requirements::javascript('cms/javascript/CMSMain_right.js');
+		
+		/**
+		 * HACK ALERT: Project-specific requirements
+		 * 
+		 * We need a better way of including all of the CSS that *might* be used by this application.
+		 * Perhaps the ajax responses can include some instructions to go get more CSS / JavaScript?
+		 */
+		Requirements::css("mot/css/WorkflowWidget.css");
+		Requirements::css("survey/css/SurveyFilter.css");
+		Requirements::javascript("survey/javascript/SurveyResponses.js");
+		Requirements::javascript("survey/javascript/FormResponses.js");
+		Requirements::javascript("parents/javascript/NotifyMembers.js");
+		Requirements::css("tourism/css/SurveyCMSMain.css");
+		Requirements::javascript("tourism/javascript/QuotasReport.js");
+		Requirements::javascript("sapphire/javascript/ReportField.js");
+		Requirements::javascript("ptraining/javascript/BookingList.js");
+		Requirements::javascript("forum/javascript/ForumAccess.js");
+		Requirements::javascript('gallery/javascript/GalleryPage_CMS.js');
 	}
 
 	//------------------------------------------------------------------------------------------//
@@ -1338,7 +1299,7 @@ JS
 	 * Return a dropdown with existing languages
 	 */
 	function LangSelector() {
-		$langs = i18n::get_existing_languages('SiteTree');
+		$langs = i18n::get_existing_content_languages('SiteTree');
 				
 		return new DropdownField("LangSelector","Language",$langs,Translatable::current_lang());
 	}
@@ -1347,7 +1308,7 @@ JS
 	 * Determine if there are more than one languages in our site tree
 	 */
 	function MultipleLanguages() {
-		$langs = i18n::get_existing_languages('SiteTree');
+		$langs = i18n::get_existing_content_languages('SiteTree');
 
 		return (count($langs) > 1);
 	}
@@ -1357,6 +1318,7 @@ JS
 	 */
 	function EditingLang() {
 		if(!Translatable::is_default_lang()) {
+			var_dump(Translatable::current_lang());
 			return i18n::get_language_name(Translatable::current_lang());
 		} else {
 			return false;

@@ -11,6 +11,12 @@ abstract class LeftAndMain extends Controller {
 
 	function init() {
 		Director::set_site_mode('cms');
+		
+		// set language
+		$member = Member::currentUser();
+		if(!empty($member->Lang)) {
+			i18n::set_locale($member->Lang);
+		}
 
 		parent::init();
 		
@@ -44,45 +50,87 @@ abstract class LeftAndMain extends Controller {
 			Security::permissionFailure($this, $messageSet);
 			return;
 		}
+		
+		Requirements::javascript('jsparty/prototype.js');
+		Requirements::javascript('jsparty/behaviour.js');
+		Requirements::javascript('jsparty/prototype_improvements.js');
+		Requirements::javascript('jsparty/loader.js');
+		Requirements::javascript('jsparty/hover.js');
+		Requirements::javascript('jsparty/layout_helpers.js');
 
-		Requirements::javascript("jsparty/prototype.js");
-		Requirements::javascript("jsparty/behaviour.js");
-		Requirements::javascript("jsparty/prototype_improvements.js");
-		Requirements::javascript("jsparty/loader.js");
+		Requirements::javascript(MCE_ROOT . 'tiny_mce_src.js');
+		Requirements::javascript('jsparty/tiny_mce_improvements.js');
 
-		Requirements::javascript("jsparty/layout_helpers.js");
-		Requirements::javascript("jsparty/tree/tree.js");
-		Requirements::css("jsparty/tree/tree.css");
-		Requirements::javascript("jsparty/scriptaculous/effects.js");
-		Requirements::javascript("jsparty/scriptaculous/dragdrop.js");
+		Requirements::javascript('jsparty/scriptaculous/effects.js');
+		Requirements::javascript('jsparty/scriptaculous/dragdrop.js');
+		Requirements::javascript('jsparty/scriptaculous/controls.js');
 
-		Requirements::javascript("jsparty/tabstrip/tabstrip.js");
-		Requirements::css("jsparty/tabstrip/tabstrip.css");
+		Requirements::css('jsparty/greybox/greybox.css');
+		Requirements::javascript('jsparty/greybox/AmiJS.js');
+		Requirements::javascript('jsparty/greybox/greybox.js');
+		
+		Requirements::javascript('jsparty/tree/tree.js');
+		Requirements::css('jsparty/tree/tree.css');
 
-
-		Requirements::css("jsparty/greybox/greybox.css");
-		Requirements::javascript("jsparty/greybox/AmiJS.js");
-		Requirements::javascript("jsparty/greybox/greybox.js");
-
-		Requirements::javascript("cms/javascript/LeftAndMain.js");
-		Requirements::javascript("cms/javascript/LeftAndMain_left.js");
-		Requirements::javascript("cms/javascript/LeftAndMain_right.js");
-
-		Requirements::javascript("jsparty/calendar/calendar.js");
-		Requirements::javascript("jsparty/calendar/lang/calendar-en.js");
-		Requirements::javascript("jsparty/calendar/calendar-setup.js");
-		Requirements::css("sapphire/css/CalendarDateField.css");
-		Requirements::css("jsparty/calendar/calendar-win2k-1.css");
-
-		Requirements::javascript('sapphire/javascript/Validator.js');
-
-		Requirements::css("sapphire/css/SubmittedFormReportField.css");
+		Requirements::javascript('jsparty/tabstrip/tabstrip.js');
+		Requirements::css('jsparty/tabstrip/tabstrip.css');
 		
 		Requirements::css('cms/css/TinyMCEImageEnhancement.css');
-		Requirements::javascript("jsparty/SWFUpload/SWFUpload.js");
-		Requirements::javascript("cms/javascript/Upload.js");
-		Requirements::javascript("sapphire/javascript/Security_login.js");
 		Requirements::javascript('cms/javascript/TinyMCEImageEnhancement.js');
+		
+		Requirements::javascript('cms/javascript/LeftAndMain.js');
+		Requirements::javascript('cms/javascript/LeftAndMain_left.js');
+		Requirements::javascript('cms/javascript/LeftAndMain_right.js');
+	
+		Requirements::css('sapphire/css/Form.css');
+
+		Requirements::javascript('cms/javascript/MemberList.js');
+		Requirements::javascript('cms/javascript/ForumAdmin.js');
+		Requirements::javascript('cms/javascript/SideTabs.js');
+		Requirements::javascript('cms/javascript/TaskList.js');
+		Requirements::javascript('cms/javascript/CommentList.js');
+		Requirements::javascript('cms/javascript/SideReports.js');
+		Requirements::javascript('cms/javascript/LangSelector.js');
+		Requirements::javascript('cms/javascript/TranslationTab.js');
+		Requirements::javascript('sapphire/javascript/Validator.js');
+		Requirements::javascript('sapphire/javascript/UpdateURL.js');
+		Requirements::javascript('sapphire/javascript/UniqueFields.js');
+		Requirements::javascript('sapphire/javascript/RedirectorPage.js');
+		Requirements::javascript('sapphire/javascript/DataReport.js' );
+		Requirements::css('sapphire/css/SubmittedFormReportField.css');
+
+		Requirements::javascript('sapphire/javascript/FieldEditor.js');
+		Requirements::css('sapphire/css/FieldEditor.css');
+
+		Requirements::css('sapphire/css/TableListField.css');
+		Requirements::css('sapphire/css/ComplexTableField.css');
+		Requirements::javascript('sapphire/javascript/TableListField.js');
+		Requirements::javascript('sapphire/javascript/TableField.js');
+		Requirements::javascript('sapphire/javascript/ComplexTableField.js');
+		Requirements::javascript('sapphire/javascript/RelationComplexTableField.js');
+		
+		Requirements::css('sapphire/css/TreeDropdownField.css');
+		Requirements::css('sapphire/css/CheckboxSetField.css');
+		
+		Requirements::javascript('jsparty/calendar/calendar.js');
+		Requirements::javascript('jsparty/calendar/lang/calendar-en.js');
+		Requirements::javascript('jsparty/calendar/calendar-setup.js');
+		Requirements::css('sapphire/css/CalendarDateField.css');
+		Requirements::css('jsparty/calendar/calendar-win2k-1.css');
+		
+		Requirements::javascript('sapphire/javascript/SelectionGroup.js');
+		Requirements::css('sapphire/css/SelectionGroup.css');
+		
+		Requirements::javascript('jsparty/SWFUpload/SWFUpload.js');
+		Requirements::javascript('cms/javascript/Upload.js');
+		
+		Requirements::themedCSS('typography');
+		
+		// For Widgets
+		Requirements::css('cms/css/WidgetAreaEditor.css');
+		Requirements::javascript('cms/javascript/WidgetAreaEditor.js');
+
+		Requirements::javascript("sapphire/javascript/Security_login.js");
 
 		$dummy = null;
 		$this->extend('augmentInit', $dummy);
@@ -664,6 +712,17 @@ JS;
 	public function EditForm() {
 		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : $this->currentPageID();
 		if($id) return $this->getEditForm($id);
+	}
+	
+	public function myprofile() {
+		$form = $this->Member_ProfileForm();
+		return $this->customise(array(
+			'Form' => $form
+		))->renderWith('BlankPage');
+	}
+	
+	public function Member_ProfileForm() {
+		return new Member_ProfileForm($this, 'Member_ProfileForm', Member::currentUser());
 	}
 
 	public function printable() {

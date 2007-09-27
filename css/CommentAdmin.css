@@ -1,0 +1,16 @@
+#CommentList {
+	padding: 0;
+	margin: 0;
+}
+#CommentList li {
+	list-style-type: none;
+	background-color: #EEE;
+	border: 1px #CCC solid;
+	padding: 3px;
+	margin: 7px;
+}
+#CommentList li .extra {
+	margin-top: 3px;
+	font-size: 80%;
+	font-style: italic;
+}

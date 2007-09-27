@@ -47,8 +47,6 @@ class AssetAdmin extends LeftAndMain {
 		Requirements::javascript("sapphire/javascript/Security_login.js");
 		Requirements::javascript("jsparty/SWFUpload/SWFUpload.js");
 		
-		// Requirements::javascript('sapphire/javascript/TableListField.js');
-
 		// Include the right JS]
 		// Hayden: This didn't appear to be used at all
 		/*$fileList = new FileList("Form_EditForm_Files", null);
@@ -58,6 +56,8 @@ class AssetAdmin extends LeftAndMain {
 		Requirements::javascript("jsparty/greybox/AmiJS.js");
 		Requirements::javascript("jsparty/greybox/greybox.js");
 		Requirements::css("jsparty/greybox/greybox.css");
+		
+		Requirements::css("cms/css/AssetAdmin.css");
 	}
 	
 	/**

@@ -1,0 +1,11 @@
+#ReportSelector_holder {
+	background-color: #EEE;
+	border-bottom: 1px #CCC solid;
+	margin: 0;
+	padding: 3px;
+}
+
+#right iframe.AWStatsReport {
+	width: 98%;
+	height: 85%;
+}

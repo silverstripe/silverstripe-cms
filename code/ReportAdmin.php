@@ -24,6 +24,8 @@ class ReportAdmin extends LeftAndMain {
 		Requirements::javascript("cms/javascript/ReportAdmin_left.js");
 		Requirements::javascript("cms/javascript/ReportAdmin_right.js");
 		
+		Requirements::css("cms/css/ReportAdmin.css");		
+		
 		// TODO Find a better solution to integrate optional Requirements in a specific order
 		if(Director::fileExists("ecommerce/css/DataReportCMSMain.css")) {
 			Requirements::css("ecommerce/css/DataReportCMSMain.css");		
