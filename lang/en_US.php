@@ -97,6 +97,7 @@ $lang['en_US']['CMSMain']['GO'] = 'Go';
 $lang['en_US']['CMSMain']['NOCONTENT'] = 'no content';
 $lang['en_US']['CMSMain']['TOTALPAGES'] = 'Total pages: ';
 $lang['en_US']['CMSMain']['PUBPAGES'] = 'Done: Published %d pages';
+$lang['en_US']['CMSMain']['REFRESHLANG'] = 'You have changed the interface language. Please refresh your browser window for the changes to take effect';
 $lang['en_US']['CMSMain']['PUBALLFUN'] = '"Publish All" functionality';
 $lang['en_US']['CMSMain']['PUBALLFUN2'] = 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It\'s
 				intended to be used after there have been massive edits of the content, such as when the site was
@@ -385,6 +386,7 @@ $lang['en_US']['LeftAndMain.ss']['APPVERSIONTEXT1'] = 'This is the';
 $lang['en_US']['LeftAndMain.ss']['APPVERSIONTEXT2'] = 'version that you are currently running, technically it\'s the CVS branch';
 $lang['en_US']['LeftAndMain.ss']['LOGGEDINAS'] = 'Logged in as';
 $lang['en_US']['LeftAndMain.ss']['LOGOUT'] = 'log out';
+$lang['en_US']['LeftAndMain.ss']['EDITPROFILE'] = 'Profile';
 $lang['en_US']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Page view:';
 $lang['en_US']['LeftAndMain.ss']['SWITCHTO'] = 'Switch to:';
 $lang['en_US']['LeftAndMain.ss']['EDIT'] = 'Edit';
