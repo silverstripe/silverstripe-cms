@@ -573,15 +573,15 @@ JS;
 	/**
 	 * Return JavaScript code to generate a tree node for the given page, if visible
 	 */
-	public function addTreeNodeJS($page, $selected = false) {
+	public function addTreeNodeJS($page, $select = false) {
 		$parentID = (int)$page->ParentID;
 		$title = Convert::raw2js($page->TreeTitle());
 		$response = <<<JS
-var newNode = $('sitetree').createTreeNode($page->ID, \"$title\", \"$page->class\");
-var parentNode = $('sitetree').getTreeNodeByIdx($parentID);
-if(parentNode) parentNode.appendTreeNode(newNode);\n"
-($selected ? "newNode.selectTreeNode();\n" : "") ;
+var newNode = $('sitetree').createTreeNode($page->ID, "$title", "$page->class");
+var parentNode = $('sitetree').getTreeNodeByIdx($parentID); 
+if(parentNode) parentNode.appendTreeNode(newNode);
 JS;
+		$response .= ($select ? "newNode.selectTreeNode();\n" : "") ;
 		FormResponse::add($response);
 		return FormResponse::respond();
 	}
