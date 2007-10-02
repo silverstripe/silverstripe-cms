@@ -1,5 +1,7 @@
 /**
- * If one of methods is not commented look for comment in Upload.js 
+ * This class is used for upload in asset part.
+ * If one of methods is not commented look for comment in Upload.js
+  
 */
 CMSMain_upload = Class.create();
 CMSMain_upload.prototype = {

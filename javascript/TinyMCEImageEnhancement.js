@@ -1,4 +1,5 @@
 /**
+ * This class is used for upload in TinyMCE editor.
  * If one of methods is not commented look for comment in Upload.js.
 */
 TinyMCEImageEnhancement = Class.create();

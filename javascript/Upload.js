@@ -1,3 +1,10 @@
+/*
+    This class is wrapper for SWFUpload class. 
+    If you want use SWFUpload, please use this class becuase it will take care of configuration
+    error handling and other things.
+
+*/
+
 Upload = Class.create();
 Upload.prototype = {
     
