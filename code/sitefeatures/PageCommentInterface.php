@@ -127,7 +127,6 @@ class PageCommentInterface_Form extends Form {
 		$this->saveInto($comment);
 		$comment->IsSpam = false;
 		$comment->NeedsModeration = PageComment::moderationEnabled();
-		
 		$comment->write();
 		
 		if(Director::is_ajax()) {

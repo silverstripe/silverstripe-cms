@@ -21,6 +21,8 @@ class PageComment extends DataObject {
 	
 	static $moderate = false;
 	
+	static $bbcode = false;
+	
 	/**
 	 * Return a link to this comment
 	 * @return string link to this comment.
@@ -28,7 +30,11 @@ class PageComment extends DataObject {
 	function Link() {
 		return $this->Parent()->Link() . '#PageComment_'. $this->ID;
 	}
-
+	
+	function ParsedBBCode(){
+		$parser = new BBCodeParser($this->Comment);
+		return $parser->parse();		
+	}
 
 	function DeleteLink() {
 		if(Permission::check('CMS_ACCESS_CMSMain')) {
@@ -185,6 +191,15 @@ class PageComment extends DataObject {
 	static function moderationEnabled() {
 		return self::$moderate;
 	}
+	
+	static function enableBBCode() {
+		self::$bbcode = true;
+	}	
+
+	static function bbCodeEnabled() {
+		return self::$bbcode;
+	}
+	
 }
 
 ?>

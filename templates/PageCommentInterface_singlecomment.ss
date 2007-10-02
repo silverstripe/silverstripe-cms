@@ -1,5 +1,9 @@
 <p class="comment" id="PageComment_$ID">
-	$Comment.XML
+	<% if bbCodeEnabled %>
+		$ParsedBBCode	
+	<% else %>
+		$Comment.XML	
+	<% end_if %>
 </p>
 <p class="info">
 	<span><% _t('PBY','Posted by') %> $Name.XML, $Created.Nice ($Created.Ago)</span>
