@@ -381,6 +381,6 @@ TreeContextMenu = {
 			treeNode.appendTreeNode(child);
 		}
 		
-		treeNode.onOrderChanged(sortedChildren);
+		treeNode.onOrderChanged(sortedChildren,treeNode);
 	}
 };
