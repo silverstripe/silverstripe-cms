@@ -1,35 +1,35 @@
 /**
  * @author Mateusz
  */
-ImageHistory = {
+ImageEditor.ImageHistory = {
 	
 	initialize: function() {
 		this.history = new Array();
 		this.historyPointer = -1;
 		this.modifiedOriginalImage = false;		
 		this.isEnabled = true;
-		this.image = Positioning.addBehaviour($('image'));
+		this.image = ImageEditor.Positioning.addBehaviour($('image'));
 		this.size = new Array();
 		this.fakeImage = $('fakeImg');
 		this.image = $('image');
-		this.undo = ImageHistory.undo.bind(this);
-		this.redo = ImageHistory.redo.bind(this);
-		this.add = ImageHistory.add.bind(this);
-		this.addListeners = ImageHistory.addListeners.bind(this);
-		this.operationMade = ImageHistory.operationMade.bind(this);		
-		this.isInHistory = ImageHistory.isInHistory.bind(this);
-		this.onImageLoad = ImageHistory.onImageLoad.bind(this);
-		this.removeLastOperation = ImageHistory.removeLastOperation.bind(this);
+		this.undo = ImageEditor.ImageHistory.undo.bind(this);
+		this.redo = ImageEditor.ImageHistory.redo.bind(this);
+		this.add = ImageEditor.ImageHistory.add.bind(this);
+		this.addListeners = ImageEditor.ImageHistory.addListeners.bind(this);
+		this.operationMade = ImageEditor.ImageHistory.operationMade.bind(this);		
+		this.isInHistory = ImageEditor.ImageHistory.isInHistory.bind(this);
+		this.onImageLoad = ImageEditor.ImageHistory.onImageLoad.bind(this);
+		this.removeLastOperation = ImageEditor.ImageHistory.removeLastOperation.bind(this);
 	
-		this.enable = ImageHistory.enable.bind(this);
-		this.disable = ImageHistory.disable.bind(this);
-		this.clear = ImageHistory.clear.bind(this);
+		this.enable = ImageEditor.ImageHistory.enable.bind(this);
+		this.disable = ImageEditor.ImageHistory.disable.bind(this);
+		this.clear = ImageEditor.ImageHistory.clear.bind(this);
 		this.addListeners();
 	},
 		
 	undo: function() {
 		if(this.historyPointer >= 1) {
-			operation = this.history[this.historyPointer].operation;
+			var operation = this.history[this.historyPointer].operation;
 			if(operation == 'rotate' || operation == 'crop') {
 				if(this.operationMade(this.historyPointer-1,'rotate') || this.operationMade(this.historyPointer-1,'crop')) 
 					this.modifiedOriginalImage = true; else this.modifiedOriginalImage = false;
@@ -38,19 +38,19 @@ ImageHistory = {
 			this.historyPointer = this.historyPointer - 1;
 			this.image.src = this.history[this.historyPointer].fileUrl;
 		} else {
-			statusMessageWrapper.statusMessage("No more undo","bad");
+			ImageEditor.statusMessageWrapper.statusMessage("No more undo","bad");
 		}
 	},
 	
 	redo: function() {
 		if(this.historyPointer < this.history.length-1) {
-			operation = this.history[this.historyPointer+1].operation;
+			var operation = this.history[this.historyPointer+1].operation;
 			if(operation == 'rotate' || operation == 'crop') this.modifiedOriginalImage = true;
 			Event.observe('image','load',this.onImageLoad);
 			this.historyPointer = this.historyPointer + 1;
 			this.image.src = this.history[this.historyPointer].fileUrl;
 		} else {
-			statusMessageWrapper.statusMessage("No more redo","bad");
+			ImageEditor.statusMessageWrapper.statusMessage("No more redo","bad");
 		}
 	},
 	
@@ -125,8 +125,8 @@ ImageHistory = {
 		this.image.style.height = this.size[this.historyPointer].height + 'px';
 		$('imageContainer').style.width = this.size[this.historyPointer].width + 'px';
 		$('imageContainer').style.height = this.size[this.historyPointer].height + 'px';
-		resize.imageContainerResize.originalWidth = this.size[this.historyPointer].width;
-		resize.imageContainerResize.originalHeight = this.size[this.historyPointer].height;
-		imageToResize.onImageLoad();
+		ImageEditor.resize.imageContainerResize.originalWidth = this.size[this.historyPointer].width;
+		ImageEditor.resize.imageContainerResize.originalHeight = this.size[this.historyPointer].height;
+		ImageEditor.imageToResize.onImageLoad();
 	}
 };

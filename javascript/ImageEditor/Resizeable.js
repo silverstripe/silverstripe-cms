@@ -1,14 +1,14 @@
 /**
  * @author Mateusz
  */
-Resizeable = {
+ImageEditor.Resizeable = {
 	
 	initialize: function(element,options) {		
 		this.resizeStop = options.resizeStop.bind(this);
 		this.onDrag = options.onDrag.bind(this);
 		this.customOnResize = options.onResize.bind(this);
 		this.getMousePos = options.getMousePos.bind(this);
-		this.bindAll = Resizeable.bindAll.bind(this);
+		this.bindAll = ImageEditor.Resizeable.bindAll.bind(this);
 		this.bindAll();
 		this.element = element;
 		this.createClickBoxes();
@@ -20,14 +20,14 @@ Resizeable = {
 	
 	resizeStart: function(event) {
 		if(Element.hasClassName(Event.element(event),'clickBox')) {
-			EventStack.addEvent(event);
+			ImageEditor.EventStack.addEvent(event);
 			Event.stop(event);
 		}
 	},
 	
 	leftUpperDrag: function(event,top,left,height,width,parentTop,parentLeft,relativeMouseX,relativeMouseY,ratio) {
-		newHeight = top - relativeMouseY + height;
-		newWidth = Math.round(newHeight / ratio);
+		var newHeight = top - relativeMouseY + height;
+		var newWidth = Math.round(newHeight / ratio);
 		if(this.resize(newWidth,newHeight)) { 
 			this.element.style.top = top - (newHeight - height) + "px";
 			this.element.style.left = left - (newWidth - width) + "px";
@@ -36,13 +36,13 @@ Resizeable = {
 	},
 	
 	leftMiddleDrag: function(event,top,left,height,width,parentTop,parentLeft,relativeMouseX,relativeMouseY) {
-		newWidth = left - relativeMouseX + width;											 
+		var newWidth = left - relativeMouseX + width;											 
 		if(this.resize(newWidth,-1000)) this.element.style.left = left - (left - relativeMouseX) + "px";	
 	},
 	
 	leftLowerDrag: function(event,top,left,height,width,parentTop,parentLeft,relativeMouseX,relativeMouseY,ratio) {
-		newHeight = relativeMouseY - (top + height) + height;
-        newWidth = Math.round(newHeight / ratio);
+		var newHeight = relativeMouseY - (top + height) + height;
+        var newWidth = Math.round(newHeight / ratio);
 		if(this.resize(newWidth,newHeight)) {
 		    this.element.style.left = left - (newWidth - width) + "px";
 		    if(parseInt(this.element.style.left) < 0) this.element.style.left = "1px";
@@ -50,37 +50,37 @@ Resizeable = {
 	},
 	
 	rightUpperDrag: function(event,top,left,height,width,parentTop,parentLeft,relativeMouseX,relativeMouseY,ratio) {
-        newHeight = top - relativeMouseY + height;
-        newWidth = Math.round(newHeight / ratio);
+        var newHeight = top - relativeMouseY + height;
+        var newWidth = Math.round(newHeight / ratio);
         if(this.resize(newWidth,newHeight)) this.element.style.top = (top - (newHeight - height) ) + 'px';
 	},
 	
 	rightMiddleDrag: function(event,top,left,height,width,parentTop,parentLeft,relativeMouseX,relativeMouseY) {
-		newWidth = relativeMouseX - left; 
+		var newWidth = relativeMouseX - left; 
 		this.resize(newWidth,-1000);	
 	},
 	
 	rightLowerDrag: function(event,top,left,height,width,parentTop,parentLeft,relativeMouseX,relativeMouseY,ratio) {
-		newHeight = relativeMouseY - top;
-        newWidth = Math.round(newHeight / ratio);
+		var newHeight = relativeMouseY - top;
+        var newWidth = Math.round(newHeight / ratio);
 		this.resize(newWidth,newHeight);	
 	},
 	
 	upperMiddleDrag: function(event,top,left,height,width,parentTop,parentLeft,relativeMouseX,relativeMouseY) {
-		newHeight = top - relativeMouseY + height; 
+		var newHeight = top - relativeMouseY + height; 
 		if(this.resize(-1000,newHeight)) {
 			this.element.style.top = (top - (newHeight - height)) + 'px';								
 		}
 	},
 	
 	lowerMiddleDrag: function(event,top,left,height,width,parentTop,parentLeft,relativeMouseX,relativeMouseY) {
-		newHeight = relativeMouseY - (top + height) + height;						
+		var newHeight = relativeMouseY - (top + height) + height;						
 		this.resize(-1000,newHeight);
 	},
 	
 	onResize: function(event) {		
-		if(EventStack.getLastEventElement() != null && this.isVisible && this.isEnabled) {					
-		    lastEventElement = EventStack.getLastEventElement();
+		if(ImageEditor.EventStack.getLastEventElement() != null && this.isVisible && this.isEnabled) {					
+		    var lastEventElement = ImageEditor.EventStack.getLastEventElement();
 			var relativeMouseX = this.getMousePos(event).x - this.element.getParentLeft();
 			var relativeMouseY = this.getMousePos(event).y - this.element.getParentTop();
 			if(Element.hasClassName(lastEventElement,'leftUpperClickBox')) {
@@ -109,7 +109,7 @@ Resizeable = {
 			}
 			this.placeClickBox();
 			this.customOnResize(this.element.getWidth(),this.element.getHeight());		
-			imageBox.reCenterIndicator();			
+			ImageEditor.imageBox.reCenterIndicator();			
 			Event.stop(event);
 		}	
 	},
@@ -130,7 +130,7 @@ Resizeable = {
 		if(height == -1000) {			
 			height = this.originalHeight;
 		}	
-		if(!crop.isVisible) {		
+		if(!ImageEditor.crop.isVisible) {		
 			$('image').style.width = width + 'px';
 			$('image').style.height =  height + 'px';
 		}
@@ -144,18 +144,18 @@ Resizeable = {
 			this.originalHeight = Element.getDimensions(this.element).height;
 			this.originalWidth = Element.getDimensions(this.element).width;
 		}
-		width = Element.getDimensions(this.element).width;
-		height = Element.getDimensions(this.element).height;
-		clickBoxHalfWidth =  Math.floor(Element.getDimensions(this.leftUpperClickBox2).width/2)+1;
+		var width = Element.getDimensions(this.element).width;
+		var height = Element.getDimensions(this.element).height;
+		var clickBoxHalfWidth =  Math.floor(Element.getDimensions(this.leftUpperClickBox2).width/2)+1;
 		
-		leftUpper = new Point.initialize(-clickBoxHalfWidth,-clickBoxHalfWidth);
-		leftMiddle = new Point.initialize(-clickBoxHalfWidth,height/2-clickBoxHalfWidth);
-		leftLower = new Point.initialize(-clickBoxHalfWidth,height-clickBoxHalfWidth);
-		rightUpper = new Point.initialize(width-clickBoxHalfWidth,-clickBoxHalfWidth);
-		rightMiddle = new Point.initialize(width-clickBoxHalfWidth,height/2-clickBoxHalfWidth);
-		rightLower = new Point.initialize(width-clickBoxHalfWidth,height-clickBoxHalfWidth);
-		upperMiddle = new Point.initialize(width/2-clickBoxHalfWidth,-clickBoxHalfWidth);
-		lowerMiddle = new Point.initialize(width/2-clickBoxHalfWidth,height-clickBoxHalfWidth);
+		var leftUpper = new ImageEditor.Point.initialize(-clickBoxHalfWidth,-clickBoxHalfWidth);
+		var leftMiddle = new ImageEditor.Point.initialize(-clickBoxHalfWidth,height/2-clickBoxHalfWidth);
+		var leftLower = new ImageEditor.Point.initialize(-clickBoxHalfWidth,height-clickBoxHalfWidth);
+		var rightUpper = new ImageEditor.Point.initialize(width-clickBoxHalfWidth,-clickBoxHalfWidth);
+		var rightMiddle = new ImageEditor.Point.initialize(width-clickBoxHalfWidth,height/2-clickBoxHalfWidth);
+		var rightLower = new ImageEditor.Point.initialize(width-clickBoxHalfWidth,height-clickBoxHalfWidth);
+		var upperMiddle = new ImageEditor.Point.initialize(width/2-clickBoxHalfWidth,-clickBoxHalfWidth);
+		var lowerMiddle = new ImageEditor.Point.initialize(width/2-clickBoxHalfWidth,height-clickBoxHalfWidth);
 		
 		this.leftUpperClickBox.style.left = leftUpper.x + 'px';
 		this.leftUpperClickBox.style.top = leftUpper.y + 'px';
@@ -181,21 +181,21 @@ Resizeable = {
 	},
 	
 	createClickBoxes: function() {
-		this.leftUpperClickBox = this.createElement('div',Random.string(5),["leftUpperClickBox","clickBox"]);
-		this.leftMiddleClickBox = this.createElement('div',Random.string(5),["leftMiddleClickBox","clickBox"]);
-		this.leftLowerClickBox = this.createElement('div',Random.string(5),["leftLowerClickBox","clickBox"]);
-		this.rightUpperClickBox = this.createElement('div',Random.string(5),["rightUpperClickBox","clickBox"]);
-		this.rightMiddleClickBox = this.createElement('div',Random.string(5),["rightMiddleClickBox","clickBox"]);
-		this.rightLowerClickBox = this.createElement('div',Random.string(5),["rightLowerClickBox","clickBox"]);
-		this.upperMiddleClickBox = this.createElement('div',Random.string(5),["upperMiddleClickBox","clickBox"]);
-		this.lowerMiddleClickBox = this.createElement('div',Random.string(5),["lowerMiddleClickBox","clickBox"]);		
-		this.leftUpperClickBox2 = this.createElement('div',Random.string(5),["leftUpperClickBox","clickBox"]);		
+		this.leftUpperClickBox = this.createElement('div',ImageEditor.Random.string(5),["leftUpperClickBox","clickBox"]);
+		this.leftMiddleClickBox = this.createElement('div',ImageEditor.Random.string(5),["leftMiddleClickBox","clickBox"]);
+		this.leftLowerClickBox = this.createElement('div',ImageEditor.Random.string(5),["leftLowerClickBox","clickBox"]);
+		this.rightUpperClickBox = this.createElement('div',ImageEditor.Random.string(5),["rightUpperClickBox","clickBox"]);
+		this.rightMiddleClickBox = this.createElement('div',ImageEditor.Random.string(5),["rightMiddleClickBox","clickBox"]);
+		this.rightLowerClickBox = this.createElement('div',ImageEditor.Random.string(5),["rightLowerClickBox","clickBox"]);
+		this.upperMiddleClickBox = this.createElement('div',ImageEditor.Random.string(5),["upperMiddleClickBox","clickBox"]);
+		this.lowerMiddleClickBox = this.createElement('div',ImageEditor.Random.string(5),["lowerMiddleClickBox","clickBox"]);		
+		this.leftUpperClickBox2 = this.createElement('div',ImageEditor.Random.string(5),["leftUpperClickBox","clickBox"]);		
 		//Safarai requires creating another clickbox because leftUppperClickBox is hidden (hack)
 		
 	},
 	
 	createElement: function(tag,id,classes) {
-		newElement = document.createElement(tag);
+		var newElement = document.createElement(tag);
 		newElement.id = id;
 		classes.each(function(item) {
 				Element.addClassName(newElement,item);		
@@ -207,28 +207,28 @@ Resizeable = {
 	},
 	
 	bindAll: function() {
-		this.setListeners = Resizeable.setListeners.bind(this);
-		this.placeClickBox = Resizeable.placeClickBox.bind(this);
-		this.resizeStart = Resizeable.resizeStart.bind(this);	
-		this.onResize = Resizeable.onResize.bind(this);
-		this.resize = Resizeable.resize.bind(this);
-		this.createClickBoxes = Resizeable.createClickBoxes.bind(this);
-		this.createElement = Resizeable.createElement.bind(this);
-		this.addListener = Resizeable.addListener.bind(this);
-		this.addDraging = Resizeable.addDraging.bind(this);
-		this.setVisible = Resizeable.setVisible.bind(this);
-		this.removeDraging = Resizeable.removeDraging.bind(this);
-		this.disable = Resizeable.disable.bind(this);
-		this.enable = Resizeable.enable.bind(this);
+		this.setListeners = ImageEditor.Resizeable.setListeners.bind(this);
+		this.placeClickBox = ImageEditor.Resizeable.placeClickBox.bind(this);
+		this.resizeStart = ImageEditor.Resizeable.resizeStart.bind(this);	
+		this.onResize = ImageEditor.Resizeable.onResize.bind(this);
+		this.resize = ImageEditor.Resizeable.resize.bind(this);
+		this.createClickBoxes = ImageEditor.Resizeable.createClickBoxes.bind(this);
+		this.createElement = ImageEditor.Resizeable.createElement.bind(this);
+		this.addListener = ImageEditor.Resizeable.addListener.bind(this);
+		this.addDraging = ImageEditor.Resizeable.addDraging.bind(this);
+		this.setVisible = ImageEditor.Resizeable.setVisible.bind(this);
+		this.removeDraging = ImageEditor.Resizeable.removeDraging.bind(this);
+		this.disable = ImageEditor.Resizeable.disable.bind(this);
+		this.enable = ImageEditor.Resizeable.enable.bind(this);
 		
-		this.leftUpperDrag = Resizeable.leftUpperDrag.bind(this);
-		this.leftMiddleDrag = Resizeable.leftMiddleDrag.bind(this);
-		this.leftLowerDrag = Resizeable.leftLowerDrag.bind(this);		
-		this.rightUpperDrag = Resizeable.rightUpperDrag.bind(this);
-		this.rightMiddleDrag = Resizeable.rightMiddleDrag.bind(this);
-		this.rightLowerDrag = Resizeable.rightLowerDrag.bind(this);
-		this.upperMiddleDrag = Resizeable.upperMiddleDrag.bind(this);
-		this.lowerMiddleDrag = Resizeable.lowerMiddleDrag.bind(this);		
+		this.leftUpperDrag = ImageEditor.Resizeable.leftUpperDrag.bind(this);
+		this.leftMiddleDrag = ImageEditor.Resizeable.leftMiddleDrag.bind(this);
+		this.leftLowerDrag = ImageEditor.Resizeable.leftLowerDrag.bind(this);		
+		this.rightUpperDrag = ImageEditor.Resizeable.rightUpperDrag.bind(this);
+		this.rightMiddleDrag = ImageEditor.Resizeable.rightMiddleDrag.bind(this);
+		this.rightLowerDrag = ImageEditor.Resizeable.rightLowerDrag.bind(this);
+		this.upperMiddleDrag = ImageEditor.Resizeable.upperMiddleDrag.bind(this);
+		this.lowerMiddleDrag = ImageEditor.Resizeable.lowerMiddleDrag.bind(this);		
 	},
 	
 	setListeners: function() {

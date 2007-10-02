@@ -1,21 +1,21 @@
 /**
  * @author Mateusz
  */
-var ImageBox = {
+ImageEditor.ImageBox = {
 	
 	initialize: function() {
 		this.indicatorWidth = 32;
 		this.indicatorHeight = 32;
-		this.showIndicator = ImageBox.showIndicator.bind(this);
-		this.hideIndicator = ImageBox.hideIndicator.bind(this);
-		this.reCenterIndicator = ImageBox.reCenterIndicator.bind(this);
-		this.centerIndicator = ImageBox.centerIndicator.bind(this);					
-		this.center = ImageBox.center.bind(this);
-		this.imageContainer = Positioning.addBehaviour($('imageContainer'));
+		this.showIndicator = ImageEditor.ImageBox.showIndicator.bind(this);
+		this.hideIndicator = ImageEditor.ImageBox.hideIndicator.bind(this);
+		this.reCenterIndicator = ImageEditor.ImageBox.reCenterIndicator.bind(this);
+		this.centerIndicator = ImageEditor.ImageBox.centerIndicator.bind(this);					
+		this.center = ImageEditor.ImageBox.center.bind(this);
+		this.imageContainer = ImageEditor.Positioning.addBehaviour($('imageContainer'));
 		Element.hide(this.imageContainer);
-		this.indicator = Positioning.addBehaviour($('loadingIndicatorContainer'));
-        this.indicatorImage = Positioning.addBehaviour($('loadingIndicator'));
-		Positioning.addBehaviour($('Main'));
+		this.indicator = ImageEditor.Positioning.addBehaviour($('loadingIndicatorContainer'));
+        this.indicatorImage = ImageEditor.Positioning.addBehaviour($('loadingIndicator'));
+		ImageEditor.Positioning.addBehaviour($('Main'));
 	},
 		
 	showIndicator: function(container) {

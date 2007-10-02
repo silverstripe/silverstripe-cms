@@ -1,14 +1,14 @@
 /**
  * @author Mateusz
  */
-var ImageToResize = {	
+ImageEditor.ImageToResize = {	
 	initialize: function(imageFile) {
 		Element.hide($('image'));
 		this.imageToResize = $('image');
 		this.imageToResize.src = imageFile;
-		this.reportSize = ImageToResize.reportSize.bind(this);
-		this.onImageLoad = ImageToResize.onImageLoad.bind(this);
-		this.resizeOnFirstLoad = ImageToResize.resizeOnFirstLoad.bind(this);
+		this.reportSize = ImageEditor.ImageToResize.reportSize.bind(this);
+		this.onImageLoad = ImageEditor.ImageToResize.onImageLoad.bind(this);
+		this.resizeOnFirstLoad = ImageEditor.ImageToResize.resizeOnFirstLoad.bind(this);
 		Event.observe(this.imageToResize,'load',this.onImageLoad);
 	},
 		
@@ -25,21 +25,21 @@ var ImageToResize = {
 	onImageLoad: function(event) {
 		if(this.imageToResize.width != 0 && this.imageToResize.height != 0) {
 			$('imageContainer').style.backgroundImage = 'url("' + $('image').src + '")';
-			imageBox.hideIndicator();
+			ImageEditor.imageBox.hideIndicator();
 			Element.show($('imageContainer'),$('image'));
-            crop.enable();
-            resize.imageContainerResize.enable();
-            effects.enableRotate();
-            imageHistory.enable();
-            if(resize.imageContainerResize.originalHeight == 0 && resize.imageContainerResize.originalWidth == 0) {
-				imageHistory.add('initialize',$('image').src);
+            ImageEditor.crop.enable();
+            ImageEditor.resize.imageContainerResize.enable();
+            ImageEditor.effects.enableRotate();
+            ImageEditor.imageHistory.enable();
+            if(ImageEditor.resize.imageContainerResize.originalHeight == 0 && ImageEditor.resize.imageContainerResize.originalWidth == 0) {
+				ImageEditor.imageHistory.add('initialize',$('image').src);
 				this.resizeOnFirstLoad();
-				imageBox.center();
+				ImageEditor.imageBox.center();
 	        }
-			resize.imageContainerResize.originalWidth = this.imageToResize.width;
-			resize.imageContainerResize.originalHeight = this.imageToResize.height;
-			resize.imageContainerResize.placeClickBox();
-			crop.onImageLoadCallback();
+			ImageEditor.resize.imageContainerResize.originalWidth = this.imageToResize.width;
+			ImageEditor.resize.imageContainerResize.originalHeight = this.imageToResize.height;
+			ImageEditor.resize.imageContainerResize.placeClickBox();
+			ImageEditor.crop.onImageLoadCallback();
 		}
 		this.reportSize();
 	},
@@ -50,9 +50,9 @@ var ImageToResize = {
 	   var imageWidth =  Element.getDimensions($('image')).width;
 	   var imageHeight = Element.getDimensions($('image')).height;
 	   if(imageWidth > windowWidth - 40 || imageHeight >  windowHeight - 40) {
-		   imageHistory.clear();
+		   ImageEditor.imageHistory.clear();
 		   Element.hide($('imageContainer'),$('image'));
-		   ratio = imageWidth / imageHeight;
+		   var ratio = imageWidth / imageHeight;
 	       $('loadingIndicatorContainer2').style.left = windowWidth/2 + 'px';
 	       $('loadingIndicatorContainer2').style.top = windowHeight/2 + 100 + 'px';
 		   while(imageWidth > windowWidth - 40 || imageHeight >  windowHeight - 40) {
@@ -60,19 +60,19 @@ var ImageToResize = {
 	           imageHeight = imageWidth * (1/ratio);
 	       }
 	       this.reportSize(0,0);
-	       resize.imageContainerResize.setVisible(false);
-	       crop.disable();
-           resize.imageContainerResize.disable();
-           effects.disableRotate();
-           imageHistory.disable();
-	       imageTransformation.resize(imageWidth,imageHeight,ImageToResize.resizeOnFirstLoadCallBack.bind(this),false);
+	       ImageEditor.resize.imageContainerResize.setVisible(false);
+	       ImageEditor.crop.disable();
+           ImageEditor.resize.imageContainerResize.disable();
+           ImageEditor.effects.disableRotate();
+           ImageEditor.imageHistory.disable();
+	       ImageEditor.imageTransformation.resize(imageWidth,imageHeight,ImageEditor.ImageToResize.resizeOnFirstLoadCallBack.bind(this),false);
 	   }	
     },
     
     resizeOnFirstLoadCallBack: function() {
         Element.hide($('loadingIndicatorContainer2'));
-		resize.imageContainerResize.setVisible(true);
-		resize.imageContainerResize.placeClickBox();
-        imageBox.center();
+		ImageEditor.resize.imageContainerResize.setVisible(true);
+		ImageEditor.resize.imageContainerResize.placeClickBox();
+        ImageEditor.imageBox.center();
     }
 };

@@ -1,17 +1,19 @@
-var ImageEditorActivator = {
+ImageEditor = {};
+
+ImageEditor.Activator = {
 	initialize: function() {
-		this.onOpen = ImageEditorActivator.onOpen.bind(this);		
+		this.onOpen = ImageEditor.Activator.onOpen.bind(this);		
 	},
 	
 	onOpen: function() {
 		var windowWidth = Element.getDimensions(window.top.document.body).width;
         var windowHeight = Element.getDimensions(window.top.document.body).height;
-		iframe = window.top.document.getElementById('imageEditorIframe');
+		var iframe = window.top.document.getElementById('imageEditorIframe');
 		if(iframe != null) {
 			iframe.parentNode.removeChild(iframe);
 		}
 		iframe = window.top.document.createElement('iframe');
-		fileToEdit = $('ImageEditorActivator').firstChild.src;
+		var fileToEdit = $('ImageEditorActivator').firstChild.src;
 		iframe.setAttribute("src","admin/ImageEditor?fileToEdit=" + fileToEdit);
 		iframe.id = 'imageEditorIframe';
 		iframe.style.width = windowWidth - 6 + 'px';
@@ -21,8 +23,8 @@ var ImageEditorActivator = {
 		iframe.style.top = "8px";
 		iframe.style.left = "8px";
 		window.top.document.body.appendChild(iframe);
-		divLeft = window.top.document.createElement('div');
-		divRight = window.top.document.createElement('div');
+		var divLeft = window.top.document.createElement('div');
+		var divRight = window.top.document.createElement('div');
         divLeft.style.width = "8px";
         divLeft.style.height = "300%";
         divLeft.style.zIndex = "1000";

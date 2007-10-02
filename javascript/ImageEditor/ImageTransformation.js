@@ -1,27 +1,27 @@
 /**
  * @author Mateusz
  */
-var ImageTransformation = {
+ImageEditor.ImageTransformation = {
 	initialize: function() {
 		this.currentOperation = "";
 		this.currentResponse = new Array();
 		this.currentCallback = null;
-		this.resize = ImageTransformation.resize.bind(this);
-		this.rotate = ImageTransformation.rotate.bind(this);
-		this.crop = ImageTransformation.crop.bind(this);	
-		this.save = ImageTransformation.save.bind(this);
-		this.close = ImageTransformation.close.bind(this);
-		this.onSuccess = ImageTransformation.onSuccess.bind(this);
-		this.onImageLoad = ImageTransformation.onImageLoad.bind(this);
+		this.resize = ImageEditor.ImageTransformation.resize.bind(this);
+		this.rotate = ImageEditor.ImageTransformation.rotate.bind(this);
+		this.crop = ImageEditor.ImageTransformation.crop.bind(this);	
+		this.save = ImageEditor.ImageTransformation.save.bind(this);
+		this.close = ImageEditor.ImageTransformation.close.bind(this);
+		this.onSuccess = ImageEditor.ImageTransformation.onSuccess.bind(this);
+		this.onImageLoad = ImageEditor.ImageTransformation.onImageLoad.bind(this);
 	},
 		
 	resize: function(width,height,callback,imageAlreadyChangedSize) {
 		this.currentOperation = "resize";
 		this.currentCallback = callback;	
-		if(imageHistory.modifiedOriginalImage) {
-			fileToResize = $('image').src;
+		if(ImageEditor.imageHistory.modifiedOriginalImage) {
+			var fileToResize = $('image').src;
 		} else {
-			fileToResize = imageEditor.originalImageFile;
+			var fileToResize = ImageEditor.imageEditor.originalImageFile;
 		}	
 		var options = {
 		 	method: 'post',
@@ -30,9 +30,9 @@ var ImageTransformation = {
 		};
 			
 		 if(imageAlreadyChangedSize == false) {
-			 imageBox.showIndicator($('Main'));
+			 ImageEditor.imageBox.showIndicator($('Main'));
 	     } else {
-			 imageBox.showIndicator();
+			 ImageEditor.imageBox.showIndicator();
 		 }
 		 new Ajax.Request('admin/ImageEditor/manipulate', options);
 	},
@@ -45,7 +45,7 @@ var ImageTransformation = {
 			postBody: 'command=rotate&file=' + $('image').src + '&angle=' + angle ,
 			onSuccess: this.onSuccess
 		 };
-		 imageBox.showIndicator();
+		 ImageEditor.imageBox.showIndicator();
 		 new Ajax.Request('admin/ImageEditor/manipulate', options);		
 	},
 	
@@ -57,7 +57,7 @@ var ImageTransformation = {
 			postBody: 'command=crop&file=' + $('image').src + '&top=' + top + '&left=' + left + '&width=' + width + '&height=' + height,
 			onSuccess: this.onSuccess
 		 };
-		 imageBox.showIndicator();
+		 ImageEditor.imageBox.showIndicator();
 		 new Ajax.Request('admin/ImageEditor/manipulate', options);			
 	},
 	
@@ -94,14 +94,14 @@ var ImageTransformation = {
 	onImageLoad: function(event) {
 		Event.stopObserving('fakeImg','load', this.onImageLoad);	
 		$('image').src = this.currentResponse.fileName;
-		imageBox.hideIndicator();			
-		resize.imageContainerResize.originalWidth = this.currentResponse.width;
-		resize.imageContainerResize.originalHeight = this.currentResponse.height;
+		ImageEditor.imageBox.hideIndicator();			
+		ImageEditor.resize.imageContainerResize.originalWidth = this.currentResponse.width;
+		ImageEditor.resize.imageContainerResize.originalHeight = this.currentResponse.height;
 		$('imageContainer').style.height = this.currentResponse.height + 'px';
         $('imageContainer').style.width = this.currentResponse.width + 'px';
 		$('image').style.height = this.currentResponse.height + 'px';
         $('image').style.width = this.currentResponse.width + 'px';
-		imageHistory.add(this.currentOperation,$('image').src);
+		ImageEditor.imageHistory.add(this.currentOperation,$('image').src);
 		if(this.currentCallback != null) this.currentCallback();
 	}
 }

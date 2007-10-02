@@ -1,28 +1,28 @@
 /**
  * @author Mateusz
  */
-var Effects = {
+ImageEditor.Effects = {
 	initialize: function() {
-		this.setListeners = Effects.setListeners.bind(this);
-		this.rotate = Effects.rotate.bind(this);
+		this.setListeners = ImageEditor.Effects.setListeners.bind(this);
+		this.rotate = ImageEditor.Effects.rotate.bind(this);
 		this.setListeners();
 		this.isRotateEnabled = true; 	
-		this.enableRotate = Effects.enableRotate.bind(this);
-		this.disableRotate = Effects.disableRotate.bind(this);
+		this.enableRotate = ImageEditor.Effects.enableRotate.bind(this);
+		this.disableRotate = ImageEditor.Effects.disableRotate.bind(this);
 	},
 	
 	rotate: function() {
 		if(this.isRotateEnabled) {
-			resize.imageContainerResize.disable();
-			crop.disable();
-			imageHistory.disable();
-			imageTransformation.rotate(90,Effects.rotateCallback.bind(this));
+			ImageEditor.resize.imageContainerResize.disable();
+			ImageEditor.crop.disable();
+			ImageEditor.imageHistory.disable();
+			ImageEditor.imageTransformation.rotate(90,ImageEditor.Effects.rotateCallback.bind(this));
 			this.isRotateEnabled = false;
 		}
 	},
 	
 	rotateCallback: function() {
-	   resize.imageContainerResize.placeClickBox();
+	   ImageEditor.resize.imageContainerResize.placeClickBox();
 	   this.isRotateEnabled = true;
 	},
 	

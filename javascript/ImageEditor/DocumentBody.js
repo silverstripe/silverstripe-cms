@@ -1,17 +1,17 @@
 /**
  * @author Mateusz
  */
-var DocumentBody = {
+ImageEditor.DocumentBody = {
 	initialize: function() {
-		this.placeUI = DocumentBody.placeUI.bind(this);
+		this.placeUI = ImageEditor.DocumentBody.placeUI.bind(this);
 		this.placeUI();
-		Event.observe(window.top,'resize',DocumentBody.resizeIframe.bind(this));
+		Event.observe(window.top,'resize',ImageEditor.DocumentBody.resizeIframe.bind(this));
 	},
 	
 	resizeIframe: function(event) {
 	    var windowWidth = Element.getDimensions(window.top.document.body).width;
         var windowHeight = Element.getDimensions(window.top.document.body).height;
-        iframe = window.top.document.getElementById('imageEditorIframe');
+        var iframe = window.top.document.getElementById('imageEditorIframe');
         iframe.style.width = windowWidth - 6 + 'px';
         iframe.style.height = windowHeight + 10 + 'px';
         this.placeUI();
@@ -29,6 +29,6 @@ var DocumentBody = {
 	},
 	
 	onImageEditorScroll: function() {
-	   imageBox.reCenterIndicator();
+	   ImageEditor.imageBox.reCenterIndicator();
 	}
 }

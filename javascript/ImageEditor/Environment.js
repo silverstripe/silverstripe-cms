@@ -1,9 +1,9 @@
 /**
  * @author Mateusz
  */
-var Environment = {
+ImageEditor.Environment = {
 	initialize: function (imageFile) {
-		imageBox = new ImageBox.initialize();
-		imageToResize = new ImageToResize.initialize(imageFile);		
+		ImageEditor.imageBox = new ImageEditor.ImageBox.initialize();
+		ImageEditor.imageToResize = new ImageEditor.ImageToResize.initialize(imageFile);		
 	}		
 }

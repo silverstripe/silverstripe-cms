@@ -1,21 +1,22 @@
 /**
  * @author Mateusz
  */
-Point = {
+ImageEditor = {};
+ImageEditor.Point = {
 	initialize: function(x,y) {
 		this.x = x;
 		this.y = y;
 	}
 }
 
-EventStack = {
+ImageEditor.EventStack = {
 	lastEventElement: null,
 	getLastEventElement: function(){		
-		return EventStack.lastEventElement;
+		return ImageEditor.EventStack.lastEventElement;
 	},
 	
 	addEvent: function(event) {
-		EventStack.lastEventElement = Event.element(event);
+		ImageEditor.EventStack.lastEventElement = Event.element(event);
 	},
 	
 	clearStack: function() {
@@ -23,17 +24,17 @@ EventStack = {
 	}
 }
 
-Positioning = {
+ImageEditor.Positioning = {
 	addBehaviour: function(element) {
 		this.element = element;		
-		this.element.getTop = Positioning.getTop.bind(this);
-		this.element.getLeft = Positioning.getLeft.bind(this);
-		this.element.getWidth = Positioning.getWidth.bind(this);
-		this.element.getHeight = Positioning.getHeight.bind(this);
-		this.element.getParentLeft = Positioning.getParentLeft.bind(this);
-		this.element.getParentTop = Positioning.getParentTop.bind(this);
-		this.element.getParentHeight = Positioning.getParentHeight.bind(this);
-		this.element.getParentWidth = Positioning.getParentWidth.bind(this);
+		this.element.getTop = ImageEditor.Positioning.getTop.bind(this);
+		this.element.getLeft = ImageEditor.Positioning.getLeft.bind(this);
+		this.element.getWidth = ImageEditor.Positioning.getWidth.bind(this);
+		this.element.getHeight = ImageEditor.Positioning.getHeight.bind(this);
+		this.element.getParentLeft = ImageEditor.Positioning.getParentLeft.bind(this);
+		this.element.getParentTop = ImageEditor.Positioning.getParentTop.bind(this);
+		this.element.getParentHeight = ImageEditor.Positioning.getParentHeight.bind(this);
+		this.element.getParentWidth = ImageEditor.Positioning.getParentWidth.bind(this);
 		return this.element;
 	},
 	
@@ -54,12 +55,12 @@ Positioning = {
 	}, 
 	
 	getParentLeft: function() {
-		parentLeft = Position.cumulativeOffset(Position.offsetParent(this.element))[0];
+		var parentLeft = Position.cumulativeOffset(Position.offsetParent(this.element))[0];
 		return parentLeft;
 	},
 	
 	getParentTop: function() {
-		parentTop = Position.cumulativeOffset(Position.offsetParent(this.element))[1];
+		var parentTop = Position.cumulativeOffset(Position.offsetParent(this.element))[1];
 		return parentTop;
 	},
 	
@@ -72,10 +73,11 @@ Positioning = {
 	}
 }
 
-Random = {
+ImageEditor.Random = {
 	string: function(length) {
-		chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		string = "";
+		var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		var string = "";
+		var i = 0;
 		for(x=0;x<length;x++) {
 			i = Math.floor(Math.random() * 57);
 			string += chars.charAt(i);
@@ -84,9 +86,9 @@ Random = {
 	}
 }
 
-StatusMessage = {
+ImageEditor.StatusMessage = {
     initialize: function() {
-        this.statusMessage = StatusMessage.statusMessage.bind(this);
+        this.statusMessage = ImageEditor.StatusMessage.statusMessage.bind(this);
         window.frameElement.statusMessage = window.top.statusMessage;
         var s1 = $('statusMessage');
         var s2 = window.top.document.getElementById('statusMessage');
@@ -101,4 +103,4 @@ StatusMessage = {
         window.frameElement.statusMessage(msg, type, clearManually,this.statusMessageContainer);
     } 
 }   
-Event.observe(window,'load',function(e) {statusMessageWrapper = new StatusMessage.initialize();});
+Event.observe(window,'load',function(e) {ImageEditor.statusMessageWrapper = new ImageEditor.StatusMessage.initialize();});

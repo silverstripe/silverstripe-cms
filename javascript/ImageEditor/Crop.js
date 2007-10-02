@@ -1,35 +1,35 @@
 /**
  * @author Mateusz
  */
-var Crop = {
+ImageEditor.Crop = {
 	
 	initialize: function() {
 		this.cropBox = $('cropBox');
-		new Positioning.addBehaviour(this.cropBox);
+		new ImageEditor.Positioning.addBehaviour(this.cropBox);
 		this.imageContainer = $('imageContainer');
 		this.leftGreyBox = $('leftGreyBox');
 		this.rightGreyBox = $('rightGreyBox');
 		this.upperGreyBox = $('upperGreyBox');
 		this.lowerGreyBox = $('lowerGreyBox');		
-		this.centerCropBox = Crop.centerCropBox.bind(this);
-		this.placeGreyBox = Crop.placeGreyBox.bind(this);
-		this.setListeners = Crop.setListeners.bind(this);
-		this.onCropStart = Crop.onCropStart.bind(this);
-		this.onCropOk = Crop.onCropOk.bind(this);
-		this.onCropCancel = Crop.onCropCancel.bind(this);
-		this.doCrop = Crop.doCrop.bind(this);
-		this.setVisible = Crop.setVisible.bind(this);
-		this.enable = Crop.enable.bind(this);
-		this.disable = Crop.disable.bind(this);
-		this.onImageLoadCallback = Crop.onImageLoadCallback.bind(this);
+		this.centerCropBox = ImageEditor.Crop.centerCropBox.bind(this);
+		this.placeGreyBox = ImageEditor.Crop.placeGreyBox.bind(this);
+		this.setListeners = ImageEditor.Crop.setListeners.bind(this);
+		this.onCropStart = ImageEditor.Crop.onCropStart.bind(this);
+		this.onCropOk = ImageEditor.Crop.onCropOk.bind(this);
+		this.onCropCancel = ImageEditor.Crop.onCropCancel.bind(this);
+		this.doCrop = ImageEditor.Crop.doCrop.bind(this);
+		this.setVisible = ImageEditor.Crop.setVisible.bind(this);
+		this.enable = ImageEditor.Crop.enable.bind(this);
+		this.disable = ImageEditor.Crop.disable.bind(this);
+		this.onImageLoadCallback = ImageEditor.Crop.onImageLoadCallback.bind(this);
 		Event.observe('image','load',this.centerCropBox);
-		options = {
-			resizeStop: Crop.resizeStop.bind(this),
-			onDrag: Crop.onDrag.bind(this),
-			onResize: Crop.onResize.bind(this),
-			getMousePos: Crop.getMousePos.bind(this)
+		var options = {
+			resizeStop: ImageEditor.Crop.resizeStop.bind(this),
+			onDrag: ImageEditor.Crop.onDrag.bind(this),
+			onResize: ImageEditor.Crop.onResize.bind(this),
+			getMousePos: ImageEditor.Crop.getMousePos.bind(this)
 		};	
-		this.resizeCropBox = new Resizeable.initialize(this.cropBox,options);
+		this.resizeCropBox = new ImageEditor.Resizeable.initialize(this.cropBox,options);
 		Event.observe(this.cropBox,'dblclick',this.onCropOk.bind(this));
 		this.setListeners();
 		this.isVisible = false;
@@ -39,7 +39,7 @@ var Crop = {
 	
 	resizeStop: function(event) {
 		if(this.isVisible) {
-			EventStack.clearStack();
+			ImageEditor.EventStack.clearStack();
 			this.resizeCropBox.originalHeight = this.cropBox.getHeight();
 			this.resizeCropBox.originalWidth = this.cropBox.getWidth();
 		}
@@ -96,9 +96,10 @@ var Crop = {
         }
 		this.placeGreyBox(width,height);
 	},
+	
 	getMousePos: function(event) {
-		x = Event.pointerX(event) + $('imageEditorContainer').scrollLeft;
-		y = Event.pointerY(event) + $('imageEditorContainer').scrollTop;
+		var x = Event.pointerX(event) + $('imageEditorContainer').scrollLeft;
+		var y = Event.pointerY(event) + $('imageEditorContainer').scrollTop;
 		if(x <= this.leftBoxConstraint) x = this.leftBoxConstraint;
 		if(y <= this.topBoxConstraint) y = this.topBoxConstraint;
 		if(x >= this.rightBoxConstraint) x = this.rightBoxConstraint;
@@ -108,15 +109,15 @@ var Crop = {
 	
 	doCrop: function() {
 		if(this.isEnabled) {
-			newWidth = this.cropBox.getWidth() 
-			newHeight = this.cropBox.getHeight() ;
-			startTop = this.cropBox.getTop() ;
-			startLeft = this.cropBox.getLeft() ;
+			var newWidth = this.cropBox.getWidth() 
+			var newHeight = this.cropBox.getHeight() ;
+			var startTop = this.cropBox.getTop() ;
+			var startLeft = this.cropBox.getLeft() ;
 			if(newWidth > 35 && newHeight > 35) {
-				imageTransformation.crop(startTop,startLeft,newWidth,newHeight,Crop.cropCallback.bind(this));
+				ImageEditor.imageTransformation.crop(startTop,startLeft,newWidth,newHeight,ImageEditor.Crop.cropCallback.bind(this));
 				this.disable();
 			} else {
-				statusMessageWrapper.statusMessage("Crop area too small","bad");
+				ImageEditor.statusMessageWrapper.statusMessage("Crop area too small","bad");
 				return false;
 			}
 			$('image').style.visibility = 'visible';//hack for IE for not selecting image during crop
@@ -125,8 +126,8 @@ var Crop = {
 	},
 	
 	cropCallback: function() {
-	   resize.imageContainerResize.placeClickBox();
-   	   resize.imageContainerResize.setVisible(true);
+	   ImageEditor.resize.imageContainerResize.placeClickBox();
+   	   ImageEditor.resize.imageContainerResize.setVisible(true);
 	   Element.show($('CropText'));
 	   Element.hide(this.cropBox,this.leftGreyBox,this.rightGreyBox,this.upperGreyBox,this.lowerGreyBox,$('CurrentAction'));							
 	},
@@ -141,8 +142,8 @@ var Crop = {
 			$('image').style.visibility = "hidden";//hack for IE for not selecting image during crop
 			this.setVisible(true);	
 			Element.show($('CurrentAction'));
-			imageHistory.disable();
-			effects.disableRotate();
+			ImageEditor.imageHistory.disable();
+			ImageEditor.effects.disableRotate();
 			this.enable();
 		}
 	},
@@ -158,8 +159,8 @@ var Crop = {
 		    Element.hide($('CurrentAction'));
 		    Element.show($('CropText'));
 		    this.setVisible(false);
-		    imageHistory.enable();
-		    effects.enableRotate();
+		    ImageEditor.imageHistory.enable();
+		    ImageEditor.effects.enableRotate();
 			this.enable();
 		}
 		$('image').style.visibility = 'visible';//hack for IE for not selecting image during crop
@@ -174,7 +175,7 @@ var Crop = {
 		} else {
 			Element.hide(this.cropBox,this.leftGreyBox,this.rightGreyBox,this.upperGreyBox,this.lowerGreyBox,$('CurrentAction'));							
 		}
-		resize.imageContainerResize.setVisible(!setVisible);
+		ImageEditor.resize.imageContainerResize.setVisible(!setVisible);
 		this.resizeCropBox.setVisible(setVisible);
 	},
 	
@@ -187,7 +188,7 @@ var Crop = {
 	},
 	
 	onImageLoadCallback: function() {
-		crop.setVisible(false);	
+		ImageEditor.crop.setVisible(false);	
 	}
 	
 }
