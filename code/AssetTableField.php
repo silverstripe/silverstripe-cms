@@ -5,6 +5,11 @@ class AssetTableField extends ComplexTableField {
 	
 	protected $template = "AssetTableField";
 	
+	protected $permissions = array(
+        "edit",
+        "delete",
+        //"export",
+    );
 	function __construct($controller, $name, $sourceClass, $fieldList, $detailFormFields, $sourceFilter = "", $sourceSort = "", $sourceJoin = "") {
 		
 		parent::__construct($controller, $name, $sourceClass, $fieldList, $detailFormFields, $sourceFilter, $sourceSort, $sourceJoin);
@@ -25,7 +30,7 @@ class AssetTableField extends ComplexTableField {
 	}
 	
 	function sourceID() {
-		return $this->folder->ID;
+		if($this->folder) return $this->folder->ID;
 	}
 	
 	function DetailForm() {

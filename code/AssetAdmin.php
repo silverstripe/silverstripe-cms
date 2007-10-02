@@ -235,8 +235,8 @@ HTML;
 		);
 		$fileList->setFolder($record);
 		$fileList->setPopupCaption("View/Edit Asset");
-
-		if($record) {
+        
+	    if($record) {
 			$nameField = ($id != "root") ? new TextField("Name", "Folder Name") : new HiddenField("Name");
 			if( $record->userCanEdit() ) {
 				$deleteButton = new InlineFormAction('deletemarked',_t('AssetAdmin.DELSELECTED','Delete selected files'), 'delete');
@@ -265,8 +265,21 @@ HTML;
 						new LiteralField("UploadIframe",
 							$this->getUploadIframe()
 						)
-					)
-				),
+					),
+					new Tab("Unused files",
+					    new LiteralField("UnusedAssets",
+                            "<div id=\"UnusedAssets\"><p>Unused files</p>"
+                        ),
+					    $this->getAssetList(),
+					    new LiteralField("UnusedThumbnails",
+                           "</div>
+                                <div id=\"UnusedThumbnails\">
+                                    <p>Unused thumbnails</p>
+                                    <a id=\"UnusedThumbnails\" href=\"#\">Delete unused thumbnails</a>
+                                </div>"
+                        )     
+                    )
+			    ),
 				new HiddenField("ID")
 			);
 			
@@ -668,4 +681,136 @@ JS;
 		
 		return parent::save($urlParams, $form);
 	}
+	
+	/**
+     * #################################
+     *        Garbage collection.
+     * #################################
+    */
+	
+	/**
+     * Removes all unused thumbnails, and echos status message to user.
+     *
+     * @returns null
+    */
+	
+	public function deleteUnusedThumbnails() {
+	    foreach($this->getUnusedThumbnailsArray() as $file) {
+	    	unlink("../assets/" . $file); 	
+	    }
+	    echo "statusMessage('All unused thumbnails has been deleted','good')";
+	}
+	
+	/**
+     * Looks for files used in system and create where clause which contains all ID's of files.
+     * 
+     * @returns String where clause which will work as filter.
+    */
+	
+	private function getUsedFilesList() {
+	    $result = DB::query("SELECT DISTINCT FileID FROM SiteTree_ImageTracking");
+        $usedFiles = array();
+	    $where = "";
+        if($result->numRecords() > 0) {
+            while($nextResult = $result->next()){
+                $where .= $nextResult['FileID'] . ','; 
+            }        
+        }
+        $classes = ClassInfo::subclassesFor('SiteTree');
+        foreach($classes as $className) {
+            $sng = singleton($className);
+            $objects = DataObject::get($className);
+            if($objects !== NULL) {
+	            foreach($sng->has_one() as $fieldName => $joinClass) {
+	                if($joinClass == 'Image' || $joinClass == 'File')  {
+	                	foreach($objects as $object) {
+	                		if($object->$fieldName != NULL) $usedFiles[] = $object->$fieldName;
+	                    }
+	                } elseif($joinClass == 'Folder') {
+	                    /*foreach($objects as $object) {
+	                    	var_dump($object->$fieldName);   	
+	                    }*/
+	                }
+	            }
+            }
+        }
+        foreach($usedFiles as $file) {
+            $where .= $file->ID . ',';     
+        }
+        if($where == "") return "(ClassName = 'File' OR ClassName =  'Image')";
+        $where = substr($where,0,strlen($where)-1);
+        $where = "ID NOT IN (" . $where . ") AND (ClassName = 'File' OR ClassName =  'Image')";
+        return $where;
+	}
+	
+	/**
+     * Creates table for displaying unused files.
+     *
+     * @returns AssetTableField
+    */
+	
+	private function getAssetList() {
+		$where = $this->getUsedFilesList();
+        $assetList = new AssetTableField(
+            $this,
+            "AssetList",
+            "File", 
+            array("Title" => "Title", "LinkedURL" => "Filename"), 
+            "",
+            $where
+        );
+        $assetList->setPopupCaption("View Asset");        
+        $assetList->setPermissions(array("show","delete"));
+        $assetList->Markable = false;
+        return $assetList;
+        
+	}
+	
+	/**
+     * Creates array containg all unused thumbnails.
+     * Array is created in three steps:
+     *     1.Scan assets folder and retrieve all thumbnails
+     *     2.Scan all HTMLField in system and retrieve thumbnails from them.
+     *     3.Count difference between two sets (array_diff)
+     *
+     * @returns Array 
+    */
+
+    private function getUnusedThumbnailsArray() {
+    	$allThumbnails = array();
+    	$dirIterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('../assets'));
+        foreach ($dirIterator as $file) {
+            if($file->isFile()) {
+            	if(strpos($file->getPathname(),"_resampled") !== false) {
+            		$pathInfo = pathinfo($file->getPathname());
+            		if(in_array(strtolower($pathInfo['extension']),array('jpeg','jpg','jpe','png','gif'))) {
+                		$path = str_replace('\\','/',$file->getPathname());
+            			$allThumbnails[] = substr($path,strpos($path,'/assets/')+8);
+            		}
+            	}
+            }
+        }
+    	$classes = ClassInfo::subclassesFor('SiteTree');
+        $usedThumbnails = array();
+    	foreach($classes as $className) {
+            $sng = singleton($className);
+            $objects = DataObject::get($className);
+            if($objects !== NULL) {
+                foreach($objects as $object) {
+            	    foreach($sng->db() as $fieldName => $fieldType) {
+                        if($fieldType == 'HTMLText')  {
+            	            $url1 = HTTP::findByTagAndAttribute($object->$fieldName,array("img" => "src"));
+            	            if($url1 != NULL) $usedThumbnails[] = substr($url1[0],strpos($url1[0],'/assets/')+8);
+            	            if($object->latestPublished > 0) {
+            	                $object = Versioned::get_latest_version($className, $object->ID);
+            	                $url2 = HTTP::findByTagAndAttribute($object->$fieldName,array("img" => "src"));
+            	                if($url2 != NULL) $usedThumbnails[] = substr($url2[0],strpos($url2[0],'/assets/')+8);
+            	            }
+                        }
+            	    }
+                }
+            }
+        }
+        return array_diff($allThumbnails,$usedThumbnails);
+    }
 }

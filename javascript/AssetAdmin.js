@@ -471,3 +471,18 @@ appendLoader(function () {
 		$('deletepage_options').onsubmit = deletefolder.form_submit;
 	}
 });
+
+Behaviour.register({
+    '#UnusedThumbnails': {
+        onclick : function(event) {
+            Event.stop(event);
+            var options = {
+                method: 'get',
+                onSuccess: function(t) {
+                    eval(t.responseText);
+                }
+            };
+            new Ajax.Request('admin/assets/deleteUnusedThumbnails',options);
+        }
+    }
+});
