@@ -22,7 +22,7 @@
                         <div id="SaveIcon">
                         </div>
                         <p id="SaveText" class="menuText">
-                            <% _t('SAVE','save&nbsp;image') %></a></p>
+                            <% _t('SAVE','save&nbsp;image') %>
                         </p>
                     </a>
                     <a id="ExitButton" href="#a">
