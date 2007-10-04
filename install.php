@@ -335,8 +335,8 @@ class InstallRequirements {
 	    } elseif(isset($_ENV['TMP'])) {
 			$sysTmp = $_ENV['TMP'];    	
 	    } else {
-	        $tmpFile = tempnam('adfadsfdas','');
-	        unlink($tmpFile);
+	        @$tmpFile = tempnam('adfadsfdas','');
+	        @unlink($tmpFile);
 	        $sysTmp = dirname($tmpFile);
 	    }
 	    
