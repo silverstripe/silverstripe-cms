@@ -535,11 +535,9 @@ JS;
 			if (isset($urlParams['publish']) && $urlParams['publish'] == 1) {
 				$this->performPublish($record);
 				
-				if(substr($SQL_id,0,3) != 'new') { 
-					$publishedRecord = DataObject::get_one($className, "`$className`.ID = {$SQL_id}"); 
-				} else { 
-					$publishedRecord = $this->getNewItem($SQL_id, false); 
-				} 
+				$record->setClassName($record->ClassName);
+				$newClass = $record->ClassName;
+				$publishedRecord = $record->newClassInstance($newClass);
 
 				return $this->tellBrowserAboutPublicationChange($publishedRecord, "Published '$record->Title' successfully");
 			} else {
@@ -559,6 +557,7 @@ JS;
 	 */
 	public function getActionUpdateJS($record) {
 		// Get the new action buttons
+		
 		$tempForm = $this->getEditForm($record->ID);
 		$actionList = '';
 		foreach($tempForm->Actions() as $action) {
