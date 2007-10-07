@@ -29,6 +29,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			Requirements::javascriptTemplate("cms/javascript/tinymce.template.js", array(
 				"ContentCSS" => (SSViewer::current_theme() ? "themes/" . SSViewer::current_theme() : project()) . "/css/editor.css",
 				"BaseURL" => Director::absoluteBaseURL(),
+				"Lang" => i18n::get_tinymce_lang()
 			));
 		}
 		

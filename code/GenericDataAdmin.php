@@ -83,6 +83,7 @@ abstract class GenericDataAdmin extends LeftAndMain {
 			Requirements::javascriptTemplate("cms/javascript/tinymce.template.js", array(
 				"ContentCSS" => project() . "/css/editor.css",
 				"BaseURL" => Director::absoluteBaseURL(),
+				"Lang" => i18n::get_tinymce_lang()
 			));
 		}
 

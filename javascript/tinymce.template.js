@@ -10,6 +10,7 @@ function nullConverter(url) {
 if((typeof tinyMCE != 'undefined')) {
 	tinyMCE.init({
 		mode : "specific_textareas",
+		language: "$Lang",
 		textarea_trigger : "tinymce",
 		width: -1,
 		height: -1,
