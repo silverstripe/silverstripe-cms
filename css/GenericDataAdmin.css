@@ -104,7 +104,7 @@ form#Form_EditForm #Form_ExportForm fieldset {
 			padding: 0;
 		}
 		
-		#LeftPane #Form_CreationForm p.Actions {
+		#LeftPane #Form_CreationForm .Actions {
 			margin-left: 1em; 
 		}
 		

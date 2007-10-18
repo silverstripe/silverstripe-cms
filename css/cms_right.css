@@ -227,11 +227,11 @@ input.loading {
 #right form.actionparams p.label {
 	margin: 10px 0 0 0;
 }
-#right form.actionparams p.actions {
+#right form.actionparams .actions {
 	margin: 10px 0 0 0;
 	text-align: right;
 }
-#right form.actionparams p.actions input {
+#right form.actionparams .actions input {
 	width: auto;
 }
 #right form.actionparams .sendingText {

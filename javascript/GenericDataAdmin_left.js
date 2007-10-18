@@ -101,7 +101,7 @@ LeftPane.prototype = {
 			// hide existing results
 			$("ResultTable_holder").innerHTML = "";
 			// show loading indicator
-			showIndicator('SearchLoading', $$('#Form_SearchForm p.Actions')[0]);
+			showIndicator('SearchLoading', $$('#Form_SearchForm .Actions')[0]);
 		} catch(e) {}
 		
 		

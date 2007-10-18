@@ -345,7 +345,7 @@ ActionPropertiesForm.prototype = {
 		this.sendingText.style.display = '';
 		
 		// Send the request
-		var buttons = document.getElementsBySelector('#' + this.id + ' p.Actions input');
+		var buttons = document.getElementsBySelector('#' + this.id + ' .Actions input');
 		var actionButton = null;
 		
 		if( buttons )
