@@ -162,13 +162,13 @@ ul.tree.multiselect li.selected span.a.children span.b, ul.tree.multiselect li.s
 
 ul.tree span.a a.disabled {
 	color: #999;
-	cursor: normal;
+	cursor: default;
 }
 	ul.tree span.a a.disabled * {
 		padding: 0;
 		background: none;
 		color: #999;
-		cursor: normal;
+		cursor: default;
 	}
 	
 
