@@ -33,6 +33,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Requirements::javascript("sapphire/javascript/UniqueFields.js");
 		Requirements::javascript("sapphire/javascript/RedirectorPage.js");
 		Requirements::css("sapphire/css/FieldEditor.css");
+		Requirements::css("sapphire/css/ComplexTableField.css");
 
 		Requirements::javascript("sapphire/javascript/FieldEditor.js");
 		Requirements::javascript("sapphire/javascript/TableListField.js");
