@@ -39,7 +39,7 @@
 			<a href="http://www.silverstripe.com" title="<% _t('SSWEB','Silverstripe Website') %>">Silverstripe CMS</a>&nbsp;-&nbsp;
 			<abbr style="border-style: none" title="<% _t('APPVERSIONTEXT1',"This is the") %> $ApplicationName <% _t('APPVERSIONTEXT2',"version that you are currently running, technically it's the CVS branch") %>">$CMSVersion</abbr> &nbsp; &nbsp; &nbsp; 
 			<% control CurrentMember %>
-			<% _t('LOGGEDINAS','Logged in as') %> $FirstName $Surname - <a href="{$BaseHref}admin/myprofile" id="EditMemberProfile"><% _t('EDITPROFILE') %></a> - <a href="Security/logout"><% _t('LOGOUT','log out') %></a>
+			<% _t('LOGGEDINAS','Logged in as') %> $FirstName $Surname - <a href="{$BaseHref}admin/myprofile" id="EditMemberProfile"><% _t('EDITPROFILE','Profile') %></a> - <a href="Security/logout"><% _t('LOGOUT','log out') %></a>
 		<% end_control %>
 		</div>
 

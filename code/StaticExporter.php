@@ -26,16 +26,16 @@ class StaticExporter extends Controller {
 	}
 	
 	function index() {
-		echo "<h1>Static exporter</h1>";
+		echo "<h1>"._t('StaticExporter.NAME','Static exporter')."</h1>";
 		echo $this->StaticExportForm()->forTemplate();
 	}
 	
 	function StaticExportForm() {
 		return new Form($this, 'StaticExportForm', new FieldSet(
-			// new TextField('folder', 'Folder to export to'),
-			new TextField('baseurl', 'Base URL')
+			// new TextField('folder', _t('StaticExporter.FOLDEREXPORT','Folder to export to')),
+			new TextField('baseurl', _t('StaticExporter.BASEURL','Base URL'))
 		), new FieldSet(
-			new FormAction('export', 'Export to that folder')
+			new FormAction('export', _t('StaticExporter.EXPORTTO','Export to that folder'))
 		));
 	}
 	
@@ -95,7 +95,7 @@ class StaticExporter extends Controller {
 			return null;
 			
 		} else {
-			echo "Please specify a folder that exists";
+			echo _t('StaticExporter.ONETHATEXISTS',"Please specify a folder that exists");
 		}
 			
 	}

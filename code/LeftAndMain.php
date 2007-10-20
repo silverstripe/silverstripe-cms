@@ -215,9 +215,9 @@ abstract class LeftAndMain extends Controller {
 		// array[2]: The controller class for this menu, used to check permisssions.  If blank, it's assumed that this is public, and always shown to
 		//           users who have the rights to access some other part of the admin area.
 		$menuSrc = array(
-			_t('LeftAndMain.HELLO', "Site content",100,"Menu title") => array("content", "admin/", "CMSMain"),
-			_t('LeftAndMain.FILESIMAGES',"Files & Images",100) => array("files", "admin/assets/", "AssetAdmin"),
-			_t('LeftAndMain.NEWSLETTERS',"Newsletters") => array("newsletter", "admin/newsletter/", "NewsletterAdmin"),
+			_t('LeftAndMain.SITECONTENT',"Site Content",PR_HIGH,"Menu title") => array("content", "admin/", "CMSMain"),
+			_t('LeftAndMain.FILESIMAGES',"Files & Images",PR_HIGH,"Menu title") => array("files", "admin/assets/", "AssetAdmin"),
+			_t('LeftAndMain.NEWSLETTERS',"Newsletters",PR_HIGH,"Menu title") => array("newsletter", "admin/newsletter/", "NewsletterAdmin"),
 			_t('LeftAndMain.REPORTS',"Reports",PR_HIGH,'Menu title') => array("report", "admin/reports/", "ReportAdmin"),
 			_t('LeftAndMain.SECURITY',"Security",PR_HIGH,'Menu title') => array("security", "admin/security/", "SecurityAdmin"),
 			_t('LeftAndMain.COMMENTS',"Comments",PR_HIGH,'Menu title') => array("comments", "admin/comments/", "CommentAdmin"),
@@ -364,7 +364,7 @@ abstract class LeftAndMain extends Controller {
 			
 			// This lets us override the tree title with an extension
 			if($this->hasMethod('getCMSTreeTitle')) $treeTitle = $this->getCMSTreeTitle();
-			else $treeTitle = _t('LeftAndMain.SITECONTENT',"Site Content",PR_HIGH,'Root node on left');
+			else $treeTitle = _t('LeftAndMain.SITECONTENTLEFT',"Site Content",PR_HIGH,'Root node on left');
 			
 			$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-0\" class=\"Root nodelete\"><a href=\"$rootLink\">$treeTitle</a>"
 				. $siteTree . "</li></ul>";

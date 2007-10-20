@@ -37,11 +37,6 @@ $lang['en_US']['BulkLoaderAdmin']['PREVIEW'] = 'Preview';
 $lang['en_US']['BulkLoaderAdmin']['PRESSCNT'] = 'Press continue to load this data in';
 $lang['en_US']['BulkLoaderAdmin']['CONFIRMBULK'] = 'Confirm bulk load';
 $lang['en_US']['BulkLoaderAdmin']['DATALOADED'] = 'This data has been loaded in';
-$lang['en_US']['LeftAndMain']['SITECONTENT'] = array(
-	'Site Content',
-	PR_HIGH,
-	'Root node on left'
-);
 $lang['en_US']['CMSMain']['CREATE'] = array(
 	'Create ',
 	PR_MEDIUM,
@@ -97,7 +92,6 @@ $lang['en_US']['CMSMain']['GO'] = 'Go';
 $lang['en_US']['CMSMain']['NOCONTENT'] = 'no content';
 $lang['en_US']['CMSMain']['TOTALPAGES'] = 'Total pages: ';
 $lang['en_US']['CMSMain']['PUBPAGES'] = 'Done: Published %d pages';
-$lang['en_US']['CMSMain']['REFRESHLANG'] = 'You have changed the interface language. Please refresh your browser window for the changes to take effect';
 $lang['en_US']['CMSMain']['PUBALLFUN'] = '"Publish All" functionality';
 $lang['en_US']['CMSMain']['PUBALLFUN2'] = 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It\'s
 				intended to be used after there have been massive edits of the content, such as when the site was
@@ -115,7 +109,7 @@ $lang['en_US']['CMSMain']['VISITRESTORE'] = array(
 $lang['en_US']['LeftAndMain']['PERMDEFAULT'] = 'Please choose an authentication method and enter your credentials to access the CMS.';
 $lang['en_US']['LeftAndMain']['PERMALREADY'] = 'I\'m sorry, but you can\'t access that part of the CMS.  If you want to log in as someone else, do so below';
 $lang['en_US']['LeftAndMain']['PERMAGAIN'] = 'You have been logged out of the CMS.  If you would like to log in again, enter a username and password below.';
-$lang['en_US']['LeftAndMain']['HELLO'] = array(
+$lang['en_US']['LeftAndMain']['SITECONTENT'] = array(
 	'Site Content',
 	PR_HIGH,
 	'Menu title'
@@ -142,7 +136,7 @@ $lang['en_US']['LeftAndMain']['SECURITY'] = array(
 );
 $lang['en_US']['LeftAndMain']['COMMENTS'] = array(
 	'Comments',
-	 PR_HIGH,
+	PR_HIGH,
 	'Menu title'
 );
 $lang['en_US']['LeftAndMain']['STATISTICS'] = array(
@@ -156,6 +150,11 @@ $lang['en_US']['LeftAndMain']['HELP'] = array(
 	'Menu title'
 );
 $lang['en_US']['LeftAndMain']['PAGETYPE'] = 'Page type: ';
+$lang['en_US']['LeftAndMain']['SITECONTENTLEFT'] = array(
+	'Site Content',
+	PR_HIGH,
+	'Root node on left'
+);
 $lang['en_US']['LeftAndMain']['SAVEDUP'] = 'Saved';
 $lang['en_US']['LeftAndMain']['CHANGEDURL'] = '  Changed URL to \'%s\'';
 $lang['en_US']['LeftAndMain']['STATUSTO'] = '  Status changed to \'%s\'';
@@ -201,7 +200,7 @@ $lang['en_US']['SideReport']['LAST2WEEKS'] = 'Pages edited in the last 2 weeks';
 $lang['en_US']['StaticExporter']['NAME'] = 'Static exporter';
 $lang['en_US']['StaticExporter']['FOLDEREXPORT'] = 'Folder to export to';
 $lang['en_US']['StaticExporter']['BASEURL'] = 'Base URL';
-$lang['en_US']['StaticExporter']['EXPORTTOTHAT'] = 'Export to that folder';
+$lang['en_US']['StaticExporter']['EXPORTTO'] = 'Export to that folder';
 $lang['en_US']['StaticExporter']['ONETHATEXISTS'] = 'Please specify a folder that exists';
 $lang['en_US']['ThumbnailStripField']['NOTAFOLDER'] = 'This is not a folder';
 $lang['en_US']['AssetAdmin_uploadiframe.ss']['PERMFAILED'] = 'You do not have permission to upload files into this folder.';
@@ -385,8 +384,8 @@ $lang['en_US']['LeftAndMain.ss']['SSWEB'] = 'Silverstripe Website';
 $lang['en_US']['LeftAndMain.ss']['APPVERSIONTEXT1'] = 'This is the';
 $lang['en_US']['LeftAndMain.ss']['APPVERSIONTEXT2'] = 'version that you are currently running, technically it\'s the CVS branch';
 $lang['en_US']['LeftAndMain.ss']['LOGGEDINAS'] = 'Logged in as';
-$lang['en_US']['LeftAndMain.ss']['LOGOUT'] = 'log out';
 $lang['en_US']['LeftAndMain.ss']['EDITPROFILE'] = 'Profile';
+$lang['en_US']['LeftAndMain.ss']['LOGOUT'] = 'log out';
 $lang['en_US']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Page view:';
 $lang['en_US']['LeftAndMain.ss']['SWITCHTO'] = 'Switch to:';
 $lang['en_US']['LeftAndMain.ss']['EDIT'] = 'Edit';
@@ -440,5 +439,10 @@ $lang['en_US']['ViewArchivedEmail.ss']['HAVEASKED'] = array(
 	'Followed by a date'
 );
 $lang['en_US']['ViewArchivedEmail.ss']['CANACCESS'] = 'You can access the archived site at this link:';
+
+$lang['en_US']['NewsletterAdmin_left.ss'] = array_merge($lang['en_US']['NewsletterAdmin_left.ss'], $lang['en_US']['NewsletterAdmin_SiteTree.ss']);
+$lang['en_US']['ReportAdmin_left.ss'] = array_merge($lang['en_US']['ReportAdmin_left.ss'], $lang['en_US']['ReportAdmin_SiteTree.ss']);
+$lang['en_US']['MemberList.ss'] = array_merge($lang['en_US']['MemberList.ss'], $lang['en_US']['MemberList_Table.ss']);
+$lang['en_US']['PageCommentInterface.ss'] = array_merge($lang['en_US']['PageCommentInterface.ss'], $lang['en_US']['PageCommentInterface_singlecomment.ss']);
 
 ?>
