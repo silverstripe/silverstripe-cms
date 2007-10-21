@@ -14,8 +14,8 @@ abstract class LeftAndMain extends Controller {
 		
 		// set language
 		$member = Member::currentUser();
-		if(!empty($member->Lang)) {
-			i18n::set_locale($member->Lang);
+		if(!empty($member->Locale)) {
+			i18n::set_locale($member->Locale);
 		}
 
 		parent::init();
