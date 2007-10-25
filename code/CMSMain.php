@@ -476,7 +476,7 @@ JS;
 		$record->write();
 		$record->publish("Stage", "Live");
 
-		Sitemap::Ping();
+		Sitemap::ping();
 
 		// Fix the sort order for this page's siblings
 		DB::query("UPDATE SiteTree_Live
@@ -702,7 +702,7 @@ HTML;
 		$page->Status = "Unpublished";
 		$page->write();
 
-		Sitemap::Ping();
+		Sitemap::ping();
 
 		return $this->tellBrowserAboutPublicationChange($page, sprintf(_t('CMSMain.REMOVEDPAGE',"Removed '%s' from the published site"),$page->Title));
 	}
