@@ -49,7 +49,7 @@ class StaticExporter extends Controller {
 		
 		$folder = '/tmp/static-export/' . project();
 		if(!project()) $folder .= 'site';
-		if(!file_exists($folder)) mkdir($folder, 02775, true);
+		if(!file_exists($folder)) mkdir($folder, Filesystem::$folder_create_mask, true);
 
 		$f1 = Director::baseFolder() . '/assets';
 		$f2 = Director::baseFolder() . '/' . project();
@@ -66,7 +66,7 @@ class StaticExporter extends Controller {
 				
 				// Make the folder				
 				if(!file_exists($subfolder)) {
-					mkdir($subfolder, 02775);
+					mkdir($subfolder, Filesystem::$folder_create_mask);
 				}
 				
 				// Run the page

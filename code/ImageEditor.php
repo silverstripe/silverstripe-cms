@@ -130,8 +130,7 @@
 			$tmpDir = '../assets/_tmp';
 			if(file_exists($tmpDir)) {
 			    Filesystem::removeFolder($tmpDir);
-			    mkdir($tmpDir);
-                chmod($tmpDir, 02775);
+			    mkdir($tmpDir, Filesystem::$folder_create_mask);
 			}
 		}
 		

@@ -532,7 +532,7 @@ JS;
 		
 		// Actually create
 		mkdir($filename);
-		chmod($filename, 02775);
+		chmod($filename, Filesystem::$file_create_mask);
 
 		$p->write();
 	
