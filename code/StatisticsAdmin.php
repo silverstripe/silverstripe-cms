@@ -81,31 +81,31 @@ class StatisticsAdmin extends LeftAndMain {
 	}
 
 	function RecentViews() {
-		return Statistics::getRecentViews();
+		return Statistics::get_recent_views();
 	}
 
 	function Trend() {
-		return Statistics::TrendChart(array('PageView', 'Member', 'SiteTree'), 'day', 'mchart', 'Line', 'red');
+		return Statistics::trend_chart(array('PageView', 'Member', 'SiteTree'), 'day', 'mchart', 'Line', 'red');
 	}
 
 	function BrowserPie() {
-		return Statistics::BrowserChart();
+		return Statistics::browser_chart();
 	}
 
 	function OSPie() {
-		return Statistics::OSChart();
+		return Statistics::os_chart();
 	}
 
 	function UACPie() {
-		return Statistics::ActivityChart();
+		return Statistics::activity_chart();
 	}
 
 	function UserTable() {
-		return Statistics::UserRecordTable();
+		return Statistics::user_record_table();
 	}
 
 	function ViewTable() {
-		return Statistics::getViews('all');
+		return Statistics::get_views('all');
 	}
 
 
@@ -124,7 +124,7 @@ class StatisticsAdmin extends LeftAndMain {
 		header("Content-Disposition: attachment; filename=viewreport.csv");
 		header("Pragma: no-cache");
 		header("Expires: 0");
-		echo Statistics::getViewCSV();
+		echo Statistics::get_view_csv();
 	}
 
 	public function usercsv() {
@@ -132,7 +132,7 @@ class StatisticsAdmin extends LeftAndMain {
 		header("Content-Disposition: attachment; filename=userreport.csv");
 		header("Pragma: no-cache");
 		header("Expires: 0");
-		echo Statistics::getUserCSV();
+		echo Statistics::get_user_csv();
 	}
 
 }
