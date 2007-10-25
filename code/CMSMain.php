@@ -256,11 +256,17 @@ JS;
 			if($instance->stat('need_permission') && !$this->can( singleton($class)->stat('need_permission') ) ) continue;
 
 			$addAction = $instance->uninherited('add_action', true);
-			if(!$addAction) $addAction = "a $class";
+			if($addAction) {
+				// backwards compatibility for actions like "a page" (instead of "page")
+				$addAction = preg_replace('/^a /','',$addAction);				
+				$addAction = ucfirst($addAction);
+			} else {
+				$addAction = $class;
+			}
 
 			$result->push(new ArrayData(array(
 				"ClassName" => $class,
-				"AddAction" => _t('CMSMain.CREATE','Create ',PR_MEDIUM,'"Create " message, followed by an action (e.g. "a contact form")') .$addAction,
+				"AddAction" => $addAction,
 			)));
 		}
 		return $result;
