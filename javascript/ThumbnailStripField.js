@@ -30,7 +30,7 @@ ThumbnailStripField.prototype = {
 	ajaxGetFiles: function(folderID,callback) {
 		if(!callback) callback = this.reapplyBehaviour.bind(this);
 		this.innerHTML = '<span style="float: left">Loading...</span>'
-		var ajaxURL = this.helperURLBase() + '&methodName='+this.updateMethod+'&folderID=' + folderID;
+		var ajaxURL = this.helperURLBase() + '&methodName='+this.updateMethod+'&folderID=' + folderID + ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : '');
 		new Ajax.Updater(this, ajaxURL, {
 			method : 'get', 
 			onComplete : callback,
@@ -45,7 +45,7 @@ ThumbnailStripField.prototype = {
 	helperURLBase: function() {
 		var fieldName = this.id; //this.id.replace(this.ownerForm().name + '_','');
 		
-		return this.ownerForm().action + '&action_callfieldmethod=1&fieldName=' + fieldName + '&ajax=1'
+		return this.ownerForm().action + '&action_callfieldmethod=1&fieldName=' + fieldName + '&ajax=1' + ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : '');
 	},
 	
 	ownerForm: function() {

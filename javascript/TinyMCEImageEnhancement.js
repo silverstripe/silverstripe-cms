@@ -78,7 +78,7 @@ TinyMCEImageEnhancement.prototype = {
         var folderName = $('NewFolderName').value;
         var options = {
             method: 'post',
-            postBody: 'ParentID=' + this.getParentID() + '&ajax=1' ,
+            postBody: 'ParentID=' + this.getParentID() + '&ajax=1' + ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : ''),
             onSuccess: this.onFolderGetSuccess.bind(this),
             onFailure: function(transport) {
                            errorMessage('Error: Folder not added', transport); 
@@ -108,7 +108,7 @@ TinyMCEImageEnhancement.prototype = {
         var folderName = $('NewFolderName').value;
         var options = {
             method: 'post',
-            postBody: 'Created=' + currentDate + '&Name=' + folderName + '&ClassName=Folder&ID=' + folderID + '&ajax=1&action_save=1',
+            postBody: 'Created=' + currentDate + '&Name=' + folderName + '&ClassName=Folder&ID=' + folderID + '&ajax=1&action_save=1' + ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : ''),
             onSuccess: this.onFolderAddSuccess.bind(this),
             onFailure: function(transport) {
                            errorMessage('Error: Folder not added', transport); 
