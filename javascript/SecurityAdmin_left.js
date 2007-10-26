@@ -102,7 +102,7 @@ deletegroup = {
 			if(deletegroup.selectedNodes[idx]) csvIDs += (csvIDs ? "," : "") + idx;
 		}
 		if(csvIDs) {
-			if(confirm("Do you really want to these groups?")) {
+			if(confirm("Do you really want to delete these groups?")) {
 				$('deletegroup_options').elements.csvIDs.value = csvIDs;
 	
 				Ajax.SubmitForm('deletegroup_options', null, {
@@ -123,7 +123,7 @@ deletegroup = {
 				$('deletegroup').getElementsByTagName('button')[0].onclick();
 			}
 		} else {
-			alert("Please select at least 1 group.");
+			alert("Please select at least one group.");
 		}
 
 		return false;
