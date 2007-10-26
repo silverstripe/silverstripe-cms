@@ -36,6 +36,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Requirements::javascript('cms/javascript/CMSMain.js');
 		Requirements::javascript('cms/javascript/CMSMain_left.js');
 		Requirements::javascript('cms/javascript/CMSMain_right.js');
+		Requirements::javascript('sapphire/javascript/UpdateURL.js');
 		
 		/**
 		 * HACK ALERT: Project-specific requirements

@@ -93,7 +93,6 @@ abstract class LeftAndMain extends Controller {
 		Requirements::javascript('cms/javascript/LangSelector.js');
 		Requirements::javascript('cms/javascript/TranslationTab.js');
 		Requirements::javascript('sapphire/javascript/Validator.js');
-		Requirements::javascript('sapphire/javascript/UpdateURL.js');
 		Requirements::javascript('sapphire/javascript/UniqueFields.js');
 		Requirements::javascript('sapphire/javascript/RedirectorPage.js');
 		Requirements::javascript('sapphire/javascript/DataReport.js' );
