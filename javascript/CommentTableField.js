@@ -121,7 +121,7 @@ CommentFilterButton.prototype = {
 				updateURL += this.inputFields[index].name + '=' + encodeURIComponent( this.inputFields[index].value ) + '&';
 			}
 		}
-		updateURL += 'ajax=1';
+		updateURL += 'ajax=1' + ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : '');
 
 		new Ajax.Request( updateURL, {
 			onSuccess: Ajax.Evaluator,
