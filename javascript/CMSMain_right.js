@@ -45,7 +45,11 @@ function action_rollback_right() {
 		}
 	}
 	
-	doYouWantToRollback(options);
+	if(confirm("Do you really want to copy the published content to the stage site?")) {
+		options.OK();
+	} else {
+		return false;
+	}
 }
 
 /**
