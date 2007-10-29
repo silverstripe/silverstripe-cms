@@ -32,6 +32,10 @@ class AssetAdmin extends LeftAndMain {
 	 */
 	function init() {
 		parent::init();
+		
+		if(!file_exists('../assets')) {
+			mkdir('../assets');
+		}
 
 		// needed for MemberTableField (Requirements not determined before Ajax-Call)
 		Requirements::javascript("sapphire/javascript/ComplexTableField.js");
@@ -531,6 +535,9 @@ JS;
 		}
 		
 		// Actually create
+		if(!file_exists('../assets')) {
+			mkdir('../assets');
+		}
 		mkdir($filename);
 		chmod($filename, Filesystem::$file_create_mask);
 
