@@ -7,6 +7,8 @@
 
 ini_set('max_execution_time', 300);
 
+session_start();
+
 // Load database config
 if(isset($_REQUEST['mysql'])) {
 	$databaseConfig = $_REQUEST['mysql'];
@@ -176,8 +178,17 @@ class InstallRequirements {
 	}
 	
 	function requireMemory($min, $recommended, $testDetails) {
-		$this->testing($testDetails);
+		$_SESSION['forcemem'] = false;
+		
 		$mem = $this->getPHPMemory();
+		if($mem < (32 * 1024 * 1024)) {
+			$_SESSION['forcemem'] = true;
+			ini_set('memory_limit', '32M');
+			$mem = $this->getPHPMemory();
+			$testDetails[3] = ini_get("memory_limit");
+		}
+		
+		$this->testing($testDetails);
 
 		if($mem < $min && $mem > 0) {
 			$testDetails[2] .= " You only have " . ini_get("memory_limit") . " allocated";
@@ -524,7 +535,6 @@ class InstallRequirements {
 
 class Installer extends InstallRequirements {
 	function install($config) {
-		session_start();
 		?>
 		<h1>Installing SilverStripe...</h1>
 		<p>I am now running through the installation steps (this should take about 30 seconds)</p>
@@ -581,6 +591,8 @@ SSViewer::set_theme('blackcandy');
 PHP;
 		}
 		
+		$mem = $_SESSION['forcemem'] ? "ini_set('memory_limit', '32M');" : '';
+		
 		echo "<li>Creating '$template/_config.php'...</li>";
 		flush();
 		
@@ -589,7 +601,7 @@ PHP;
 		$this->createFile("$template/_config.php", <<<PHP
 <?php
 
-error_reporting(E_ALL ^ E_NOTICE);
+$mem
 
 global \$project;
 \$project = '$template';
