@@ -142,21 +142,26 @@ batchactions.prototype = {
 	},
 	onclick : function() {
 		if(treeactions.toggleSelection(this)) {
-			batchActionGlobals.o1 = $('sitetree').observeMethod('SelectionChanged', batchActionGlobals.treeSelectionChanged);
-			batchActionGlobals.o2 = $(_HANDLER_FORMS.batchactions).observeMethod('Close', batchActionGlobals.popupClosed);
-			addClass($('sitetree'),'multiselect');
-
-			batchActionGlobals.selectedNodes = { };
-
-			var sel = $('sitetree').firstSelected();
-			if(sel && sel.className.indexOf('nodelete') == -1) {
-				var selIdx = $('sitetree').getIdxOf(sel);
-				batchActionGlobals.selectedNodes[selIdx] = true;
-				sel.removeNodeClass('current');
-				sel.addNodeClass('selected');		
-			}
+			this.multiselectTransform();
 		}
 		return false;
+	},
+	
+	multiselectTransform : function() {
+		batchActionGlobals.o1 = $('sitetree').observeMethod('SelectionChanged', batchActionGlobals.treeSelectionChanged);
+		batchActionGlobals.o2 = $(_HANDLER_FORMS.batchactions).observeMethod('Close', batchActionGlobals.popupClosed);
+	
+		addClass($('sitetree'),'multiselect');
+
+		batchActionGlobals.selectedNodes = { };
+
+		var sel = $('sitetree').firstSelected();
+		if(sel && sel.className.indexOf('nodelete') == -1) {
+			var selIdx = $('sitetree').getIdxOf(sel);
+			batchActionGlobals.selectedNodes[selIdx] = true;
+			sel.removeNodeClass('current');
+			sel.addNodeClass('selected');		
+		}
 	}
 }
 
@@ -174,6 +179,7 @@ showonlydrafts.prototype = {
 					$('sitetree_ul').innerHTML = response.responseText;
 					Behaviour.apply();
 					$('SiteTreeIsFiltered').value = 1;
+					$('batchactions').multiselectTransform();
 					statusMessage('Filtered tree to only show changed pages','good');
 				},
 				onFailure : function(response) {
@@ -263,6 +269,7 @@ batchActionGlobals = {
 					$('sitetree_ul').innerHTML = response.responseText;
 					Behaviour.apply();
 					$('SiteTreeIsFiltered').value = 0;
+					$('batchactions').multiselectTransform();
 					statusMessage('Unfiltered tree','good');
 				},
 				onFailure : function(response) {
