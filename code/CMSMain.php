@@ -760,8 +760,8 @@ HTML;
 
 			$fields->push(new HiddenField("ID"));
 			$fields->push(new HiddenField("Version"));
-			$fields->insertBefore(new HeaderField(sprintf(_t('CMSMain.VIEWING',"You are viewing version #%d, created %s"),
-														  $version, $record->obj('LastEdited')->Ago())), "Root");
+			$fields->push(new HeaderField(sprintf(_t('CMSMain.VIEWING',"You are viewing version #%d, created %s"),
+														  $version, $record->obj('LastEdited')->Ago())));
 
 			$actions = new FieldSet(
 				new FormAction("email", _t('CMSMain.EMAIL',"Email")),
