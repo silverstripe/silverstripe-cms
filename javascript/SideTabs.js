@@ -331,8 +331,10 @@ VersionList.prototype = {
 		this.ajaxGetPanel(this.afterPanelLoaded);
 	},
 	onclose : function() {
-		$('Form_EditForm').getPageFromServer(this.idLoaded);
-			$('viewArchivedSite').style.display = 'none';
+		if(this.idLoaded) {
+			$('Form_EditForm').getPageFromServer(this.idLoaded);
+		}
+		$('viewArchivedSite').style.display = 'none';
 	}
 }
 
