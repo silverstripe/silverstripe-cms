@@ -19,6 +19,17 @@ if(isset($_REQUEST['mysql'])) {
 	);
 }
 
+if(isset($_REQUEST['admin'])) {
+	$adminConfig = $_REQUEST['admin'];
+} else {
+	$adminConfig = array(
+		'username' => 'admin',
+		'password' => 'password',
+		'firstname' => '',
+		'surname' => ''
+	);
+}
+
 $alreadyInstalled = (file_exists('mysite/_config.php') || file_exists('tutorial/_config.php'));
 
 if(file_exists('sapphire/silverstripe_version')) {
@@ -634,22 +645,22 @@ PHP
 		$dbAdmin = new DatabaseAdmin();
 		$dbAdmin->init();
 		
+		$_REQUEST['username'] = $_REQUEST['admin']['username'];
+		$_REQUEST['password'] = $_REQUEST['admin']['password'];
 		$dbAdmin->doBuild(true);
 		
-		$adminmember = DataObject::get_one('Member',"`Email`= '".$_REQUEST['username']."'");
-		if($adminmember){
-			if($adminmember->_isAdmin()){
-				$adminmember->FirstName = $_REQUEST['firstname'];
-				$adminmember->Surname = $_REQUEST['surname'];
-				$adminmember->write();
-			}
+		$adminmember = DataObject::get_one('Member',"`Email`= '".$_REQUEST['admin']['username']."'");
+		if($adminmember) {
+			$adminmember->FirstName = $_REQUEST['admin']['firstname'];
+			$adminmember->Surname = $_REQUEST['admin']['surname'];
+			$adminmember->write();
 		}
 		
 		
 		echo "<li>Checking mod_rewrite works</li>";
 		
-		$_SESSION['username'] = $_REQUEST['username'];
-		$_SESSION['password'] = $_REQUEST['password'];
+		$_SESSION['username'] = $_REQUEST['admin']['username'];
+		$_SESSION['password'] = $_REQUEST['admin']['password'];
 		
 		if($this->checkModRewrite()) {
 		

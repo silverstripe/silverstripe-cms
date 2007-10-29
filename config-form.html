@@ -120,14 +120,14 @@
 							<h4>SilverStripe Administration Account</h4>
 			
 							<p id="AdminAccount">
-								<label for="username">Administrator email:</label>
-								<span class="middleColumn"><input type="text" class="text" name="username" id="username" value="admin" /></span>
-								<label for="password">Administrator password:</label>
-								<span class="middleColumn"><input type="text" class="text" name="password" id="password" value="password" /></span>
-								<label for="firstname">Administrator first name:</label>
-								<span class="middleColumn"><input type="text" class="text" name="firstname" id="firstname" value="" /></span>
-								<label for="surname">Administrator surname:</label>
-								<span class="middleColumn"><input type="text" class="text" name="surname" id="surname" value="" /></span>
+								<label for="admin_username">Administrator email:</label>
+								<span class="middleColumn"><input type="text" class="text" name="admin[username]" id="admin_username" value="<?php echo $adminConfig['username']; ?>" /></span>
+								<label for="admin_password">Administrator password:</label>
+								<span class="middleColumn"><input type="text" class="text" name="admin[password]" id="admin_password" value="<?php echo $adminConfig['password']; ?>" /></span>
+								<label for="admin_firstname">Administrator first name:</label>
+								<span class="middleColumn"><input type="text" class="text" name="admin[firstname]" id="admin_firstname" value="<?php echo $adminConfig['firstname']; ?>" /></span>
+								<label for="admin_surname">Administrator surname:</label>
+								<span class="middleColumn"><input type="text" class="text" name="admin[surname]" id="admin_surname" value="<?php echo $adminConfig['surname']; ?>" /></span>
 							</p>
 							<p class="adminAcc">
 								We will set up 1 administrator account for you automatically.  Enter the email address and password.  If you'd
