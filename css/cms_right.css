@@ -353,7 +353,9 @@ div.CommentFilter {
 	div.MemberListFilter div.field,
 	div.MemberFilter div.field,
 	div.CommentFilter div.field {
-		margin-left: 0em;
+		margin-left: 0 !important;
+		font-size: 12px;
+		display: inline;
 	}
 	
 	div.MemberListFilter input,
