@@ -1,4 +1,4 @@
-<div class="title"><div>Comments</div></div>
+<h2>Comments</h2>
 
 <div id="treepanes">
 	<div id="sitetree_holder">

@@ -1,5 +1,3 @@
-<div class="title"><div>Comment Management</div></div>
-
 <div id="form_actions_right" class="ajaxActions">
 </div>
 

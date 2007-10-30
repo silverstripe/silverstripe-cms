@@ -3,7 +3,6 @@
 		<ul id="TreeActions">
 			<li class="action" id="addgroup"><button><% _t('CREATE','Create') %></button></li>
 			<li class="action" id="deletegroup"><button><% _t('DEL','Delete...') %></button></li>
-			<li class="action" id="sortitems"><button><% _t('REORDER','Reorder...') %></button></li>
 		</ul>
 		<div style="clear:both;"></div>
 		<form class="actionparams" id="addgroup_options" style="display: none" action="admin/security/addgroup">
