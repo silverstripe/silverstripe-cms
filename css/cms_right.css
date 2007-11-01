@@ -335,7 +335,7 @@ input.loading {
 			max-height: 300px;
 			overflow: auto;
 		}
-		.pageStatusMessage {
+		/*.pageStatusMessage {
 			position: absolute;
 			top: 0;
 			right: 0;
@@ -344,7 +344,7 @@ input.loading {
 			font-size: 12px;
 			padding: 5px;
 		 	border: 1px solid #cc9;
-		}
+		}*/
 
 /**
  * TableField Subclasses

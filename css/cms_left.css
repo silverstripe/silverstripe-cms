@@ -272,13 +272,17 @@ ul.tree span.modified,
 }
 
 #treepanes table thead td {
-	background-color: #777;
-	color: white;
-	border-bottom: 1px #CCC solid;
+	background-color: #aaa;
+	color: #fff;
+	border-bottom: 2px #ccc solid;
 }
 
 #treepanes table tbody tr {
 	cursor: pointer;
+}
+
+#treepanes table tbody td {
+	font-size: 11px;
 }
 
 #treepanes table tbody tr.odd td {

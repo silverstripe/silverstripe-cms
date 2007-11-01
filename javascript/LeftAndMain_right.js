@@ -282,10 +282,10 @@ CMSRightForm.prototype = {
 	/**
 	 * Set the status field
 	 */
-	setStatus: function(newStatus) {
+	/*setStatus: function(newStatus) {
 		var statusLabel = document.getElementsBySelector('label.pageStatusMessage')[0];
 		if(statusLabel) statusLabel.innerHTML = "STATUS: " + newStatus;		
-	}
+	}*/
 }
 
 CMSForm.applyTo('#Form_SubForm', 'rightbottom');
