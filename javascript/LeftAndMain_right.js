@@ -277,7 +277,7 @@ CMSRightForm.prototype = {
 		} else {
 			throw("getPageFromServer: Bad page ID: " + id);
 		}
-	},
+	}
 	
 	/**
 	 * Set the status field

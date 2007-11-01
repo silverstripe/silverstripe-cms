@@ -7,7 +7,9 @@
 	float: left;
 	width: 100%;
 }
-#TreeActions li.action {
+
+
+/*#TreeActions li.action {
 	float: left;
 	margin: 0;
 	padding: 2px;
@@ -19,13 +21,40 @@
 	padding: 0pt 0.1em;
 	overflow: visible;
 	width: auto;
+}*/
+
+#TreeActions li button {
+	cursor: pointer;
+	float: left;
+ 	height: 25px;
+	background-image: url(../images/textures/ToolBar.png);
+	color: #333333;
+	overflow: visible;
+	width: auto;
+	padding: 0;
+	border-color: #CCCCCC rgb(153, 153, 153) rgb(153, 153, 153) rgb(204, 204, 204);
+	border-style: double;
+	margin: 1px;
+	font-weight: bold;
+	font-size: 11px;
 }
+
+#TreeActions li button:active {
+	background: #F4F4F4 none repeat scroll 0%;
+	border-color: #999999 rgb(204, 204, 204) rgb(204, 204, 204) rgb(153, 153, 153);
+}
+
+#TreeActions li button:hover {
+	background: #fff;
+}
+
 #TreeActions li.selected  {
 	background-color: #CCC;
 }
 #TreeActions li.action:hover  {
 	background-color: #CCC;
 }
+
 #left form.actionparams {
 	background-color: #CCC;
 	border-bottom: 1px #EEE solid;
