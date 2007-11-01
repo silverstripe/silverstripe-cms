@@ -159,15 +159,16 @@ body.stillLoading select {
 }
 
 #top #MainMenu a {
-	color: white;
 	display: block;
+	height: 33px;
 	float: left;
 	padding: 0 6px;
 	font-size: 14px;
 	letter-spacing: -0.4px;
 	font-family: Verdana, Arial, Sans-serif;
-	height: 33px;
+	font-weight: normal;
 	line-height: 32px;
+	color: #fff;
 	text-decoration: none;
 }
 	#top #MainMenu a:hover {
