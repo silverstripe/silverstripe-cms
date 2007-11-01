@@ -234,11 +234,11 @@ HTML;
 			$this,
 			"Files",
 			"File", 
-			array("Title" => "Title", "LinkedURL" => "Filename"), 
+			array("Title" => _t('AssetAdmin.TITLE', "Title"), "LinkedURL" => _t('AssetAdmin.FILENAME', "Filename")), 
 			""
 		);
 		$fileList->setFolder($record);
-		$fileList->setPopupCaption("View/Edit Asset");
+		$fileList->setPopupCaption(_t('AssetAdmin.VIEWEDITASSET', "View/Edit Asset"));
         
 	    if($record) {
 			$nameField = ($id != "root") ? new TextField("Name", "Folder Name") : new HiddenField("Name");
@@ -252,34 +252,34 @@ HTML;
 			$fields = new FieldSet(
 				new HiddenField("Title"),
 				new TabSet("Root", 
-					new Tab("Files",
+					new Tab(_t('AssetAdmin.FILESTAB', "Files"),
 						$nameField,
 						$fileList,
 						$deleteButton,
 						new HiddenField("FileIDs"),
 						new HiddenField("DestFolderID")
 					),
-					new Tab("Details", 
+					new Tab(_t('AssetAdmin.DETAILSTAB', "Details"), 
 						new ReadonlyField("URL"),
 						new ReadonlyField("ClassName", _t('AssetAdmin.TYPE','Type')),
 						new ReadonlyField("Created", _t('AssetAdmin.CREATED','First Uploaded')),
 						new ReadonlyField("LastEdited", _t('AssetAdmin.LASTEDITED','Last Updated'))
 					),
-					new Tab("Upload",
+					new Tab(_t('AssetAdmin.UPLOADTAB', "Upload"),
 						new LiteralField("UploadIframe",
 							$this->getUploadIframe()
 						)
 					),
-					new Tab("Unused files",
+					new Tab(_t('AssetAdmin.UNUSEDFILESTAB', "Unused files"),
 					    new LiteralField("UnusedAssets",
-                            "<div id=\"UnusedAssets\"><p>Unused files</p>"
+                            "<div id=\"UnusedAssets\"><p>"._t('AssetAdmin.UNUSEDFILESTITLE', 'Unused files')."</p>"
                         ),
 					    $this->getAssetList(),
 					    new LiteralField("UnusedThumbnails",
                            "</div>
                                 <div id=\"UnusedThumbnails\">
-                                    <p>Unused thumbnails</p>
-                                    <a id=\"UnusedThumbnails\" href=\"#\">Delete unused thumbnails</a>
+                                    <p>"._t('AssetAdmin.UNUSEDTHUMBNAILSTITLE', 'Unused thumbnails')."</p>
+                                    <a id=\"UnusedThumbnails\" href=\"#\">"._t('AssetAdmin.DELETEUNUSEDTHUMBNAILS', 'Delete unused thumbnails')."</a>
                                 </div>"
                         )     
                     )
@@ -762,11 +762,11 @@ JS;
             $this,
             "AssetList",
             "File", 
-            array("Title" => "Title", "LinkedURL" => "Filename"), 
+			array("Title" => _t('AssetAdmin.TITLE', "Title"), "LinkedURL" => _t('AssetAdmin.FILENAME', "Filename")), 
             "",
             $where
         );
-        $assetList->setPopupCaption("View Asset");        
+		$assetList->setPopupCaption(_t('AssetAdmin.VIEWASSET', "View Asset"));
         $assetList->setPermissions(array("show","delete"));
         $assetList->Markable = false;
         return $assetList;
