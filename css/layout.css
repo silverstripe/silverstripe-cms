@@ -13,7 +13,7 @@ body {
 	height: 100%;
 	margin: 0;
 	font-size: 62.5%;
-	background-color: #d4d0c8;
+	background-color: #ccdef3;
 }
 
 #top, 
@@ -35,24 +35,21 @@ body.stillLoading select {
 	display: none;
 }
 
-
-
 /** 3-PANEL LAYOUT **/
 #top {
-	font-size: 1.4em;
-	height: 51px;
-	padding: 3px;
-	background: url(../images/mainmenu/top-bg.gif) top left repeat-x;
+	font-size: 14px;
+	height: 33px;
+	padding: 0;
+	background: #474855 url(../images/mainmenu/top-bg.gif) top left repeat-x;
 	color: #FFF;
-	border-bottom: 3px solid #d4d0c8;
 	overflow: hidden;
 }
 #left {
 	position: absolute;
-	top: 51px;
+	top: 35px;
 	left: 3px;
 	width: 205px;
-	height: 92%;
+	height: 91%;
 	z-index: 50;
 	border : 1px #808080 solid;
 	background-color:#FFFFFF;
@@ -60,8 +57,8 @@ body.stillLoading select {
 #right, #rightbottom {
 	position: absolute;
 	left: 208px;
-	top: 51px;
-	height: 92%;
+	top: 35px;
+	height: 91%;
 	width: 600px;
 	overflow: auto;
 	z-index: 50;
@@ -146,76 +143,67 @@ body.stillLoading select {
 
 /** TOP PANEL **/
 #top #MainMenu {
-	margin: 0;
+	margin: 0 0 0 6px;
 	padding: 0;
 }
 #top #MainMenu li {
-	margin: 8px 8px 0 8px;
-	padding: 6px 8px 0 28px;
+	margin: 0px 4px;
+	/* Do not want to do padding: 0 0; you'll see why */
+	padding-top: 0px;
+	padding-bottom: 0px;
+	
 	list-style-type: none;
 	float: left;
-	height: 32px;
-	background-repeat: no-repeat;
+	height: 33px;
 	cursor: pointer;
-}
-html>body #top #MainMenu li {
-	height: 28px; /* 32 - 6 from the padding */
 }
 
 #top #MainMenu a {
 	color: white;
+	display: block;
+	float: left;
+	padding: 0 6px;
+	font-size: 14px;
+	letter-spacing: -0.4px;
+	font-family: Verdana, Arial, Sans-serif;
+	height: 33px;
+	line-height: 32px;
 	text-decoration: none;
 }
 	#top #MainMenu a:hover {
-		text-decoration: underline;
+		text-decoration: none;
+		background: #6a7580 url(../images/mainmenu/hover.gif) repeat-x left top;
 	}
 
 #top #MainMenu .current {
-	background-color: #d4d0c8;
-	background-position: 5px 5px;
-	position: relative;
-	top : -7px;
-	height : 31px;
-	padding-top : 12px;
-	padding-left : 30px;
-	-moz-border-radius-topright : 8px;
-	-moz-border-radius-topleft : 8px;
-	border : 1px solid #65686e;
+	background: #ccdef3 url(../images/mainmenu/current.gif) repeat-x left top;
 	border-bottom : none;
-
-
 }
+	#top #MainMenu .current a:hover {
+		background: #cddef3 url(../images/mainmenu/currentHover.gif) repeat-x left top;
+	}
 
 #top #MainMenu .current A:link,#top #MainMenu .current A:visited {
-	padding-left: 4px;
-	color : black;
+	color : #2f383f;
 
 }
-
-
-
-#top #MainMenu #Menu-content {	background-image: url(../images/mainmenu/content.gif); }
-#top #MainMenu #Menu-statistics { background-image: url(../images/mainmenu/statistics.gif); }
-#top #MainMenu #Menu-security { background-image: url(../images/mainmenu/members.gif); }
-#top #MainMenu #Menu-report { background-image: url(../images/mainmenu/reports.gif); }
-#top #MainMenu #Menu-newsletter { background-image: url(../images/mainmenu/emails.gif); }
-#top #MainMenu #Menu-files { background-image: url(../images/mainmenu/files.gif); }
-#top #MainMenu #Menu-comments { background-image: url(../images/mainmenu/comments.gif); }
-
-#top #MainMenu #Menu-help { background-image: url(../images/mainmenu/help.gif);
-	float: right;
-	/*padding: 6px 28px 0 8px;
-	background-position: 100% 0;*/
-	margin-right: 60px;
-}
-
 
 #top #Logo {
 	float: right;
+}
+#top #Logo a {
 	margin: 0;
-	padding: 16px 60px 16px 0;
-	height: 32px;
-	font-size: 16px;
+	display: block; 
+	font-size: 14px;
+	text-decoration: none;
+	letter-spacing: -0.4px;
+	height: 26px; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	line-height: 22px;
+	position: absolute; 
+	top: 5px; 
+	right: 8px;
+	padding-right: 34px;
 	background: url(../images/mainmenu/logo.gif) right top no-repeat;
 }
 html>body #top #Logo {
@@ -225,10 +213,6 @@ html>body #top #Logo {
 #top #Logo a {
 	color: white;
 }
-
-
-
-
 
 #bottom {
 	width: 100%;

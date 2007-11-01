@@ -834,7 +834,7 @@ JS;
 		self::$application_logo_text = "";
 	}
 	function LogoStyle() {
-		return "background-image: url(" . self::$application_logo . "); " . self::$application_logo_style;
+		return "background-image: url(" . self::$application_logo . ") no-repeat; " . self::$application_logo_style;
 	}
 
 	/**
