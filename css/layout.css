@@ -46,7 +46,7 @@ body.stillLoading select {
 }
 #left {
 	position: absolute;
-	top: 35px;
+	top: 45px;
 	left: 3px;
 	width: 205px;
 	height: 91%;
@@ -57,7 +57,7 @@ body.stillLoading select {
 #right, #rightbottom {
 	position: absolute;
 	left: 208px;
-	top: 35px;
+	top: 45px;
 	height: 91%;
 	width: 600px;
 	overflow: auto;
@@ -104,15 +104,10 @@ body.stillLoading select {
 	background-color : #0075C9;
 	background-repeat : repeat-x !important;
 	background-position: 0px 0px;
-
-
-
 }
 
 #rightbottom div.light {
-
 	background-image: url(../images/textures/obar-light.png) !important;
-
 }
 
 
@@ -163,8 +158,8 @@ body.stillLoading select {
 	float: left;
 	padding: 0 6px;
 	font-size: 14px;
-	letter-spacing: -0.4px;
-	font-family: Verdana, Arial, Sans-serif;
+	letter-spacing: -0.1px;
+	font-family: "Helvetica Neue", Helvetica, Arial, Sans-serif;
 	font-weight: normal;
 	line-height: 32px;
 	color: #fff;
@@ -219,24 +214,18 @@ html>body #top #Logo {
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	border-top: 3px solid #d4d0c8;
-	background-color:#81858d;
-	height: 18px;
+	height: 23px;
 	overflow:hidden;
-	background-image:url(../images/textures/bottom.png);
-
+	background: #4d4e5a url(../images/textures/footerBg.gif) repeat-x left top;
 }
 
 #bottom .holder {
-
 	text-align: center;
-	padding-top : 3px;
+	padding-top: 5px;
 	padding-left : 3px;
 	padding-right : 6px;
 	font-size: 10px;
 	color: white;
-	border-top: 1px solid #555555;
-
 }
 
 #bottom #logInStatus {
@@ -247,10 +236,13 @@ html>body #top #Logo {
 		text-decoration: underline;
 	}
 	#bottom #logInStatus a:hover {
-		color: #CDC9C1;
+		color: #fff;
 		text-decoration: underline;
 	}
-
+	#bottom #logInStatus a#LogoutLink {
+		background: url(../images/logout.gif) no-repeat right bottom;
+		padding-right: 20px;
+	}
 #bottom #switchView {
 	float: left;
 
@@ -259,53 +251,36 @@ html>body #top #Logo {
 #bottom .bottomTabs a {
 	display: block;
 	float : left;
-	height : 13px;
-	padding-left : 12px;
-	padding-right : 12px;
+	height : 23px;
+	line-height: 25px;
+	padding-left : 6px;
+	padding-right : 6px;
 	position:relative;
-	top : -3px;
-	border : 1px solid #65686e;
+	top : -5px;
 	border-top : none;
 	cursor:pointer;
-	background-color: #cdc9c1;
-	color : #333333;
-	-moz-border-radius-bottomright : 4px;
-	-moz-border-radius-bottomleft : 4px;
+	text-decoration: none;
+	color : #fff;
 }
 
 #bottom .bottomTabs div.blank {
 	display: block;
 	float : left;
-	height : 13px;
-	padding-left : 12px;
-	padding-right : 12px;
-	position:relative;
-	top : -3px;
-	border : 1px solid #65686e;
-	border-top : none;
 	cursor:pointer;
-	background-color: #cdc9c1;
-	color : #333333;
-
-	border : none;
 	background-color: transparent;
-	padding-right: 2px;
+	padding-right: 4px;
+	font-weight: bold;
+	line-height: 13px;
+	font-size: 11px;
 	padding-left: 2px;
-	padding-top : 2px;
 	color:#FFFFFF;
 }
-
-
 #bottom .bottomTabs a.current {
-	background-color : #d4d0c8;
-	padding-top : 1px;
-	top : -5px;
-	height : 15px;
-	font-weight:bold;
-	font-size : 11px;
-	border : 1px solid #555555;
 	cursor: auto;
 }
+	#bottom .bottomTabs a:hover {
+		background: url(../images/mainmenu/hover.gif) repeat-x center center;
+	}
 
 
 /** LEFT PANEL **/
