@@ -34,9 +34,9 @@
 	padding: 0;
 	border-color: #CCCCCC rgb(153, 153, 153) rgb(153, 153, 153) rgb(204, 204, 204);
 	border-style: double;
-	margin: 1px;
 	font-weight: bold;
 	font-size: 11px;
+	margin-right: 3px;
 }
 
 #TreeActions li button:active {
