@@ -4,38 +4,51 @@
 .right form {
 	margin: 1em;
 	position: relative;
-	/*top: 70px;*/
-}
-
-html>body .right from {
-	/*top: 50px;*/
 }
 
 .right form .field {
-	font-size: 1.2em;
+	margin: 3px !important;
 }
-
-.right form textarea {
-	width: 98%;
+	.right form .text,
+	.right form .field span.readonly {
+		font-size: 14px;
+	}
+	.right form .dropdown {
+		font-size: 12px;
+	}
+	.right form .field span.middleColumn {
+		display: block;
+		background: #e9e9e9;
+		padding: 2px;
+	}
+	
+.right form .checkbox input,
+.right form .optionset input {
+	border: none;
 }
-
-.right form input {
+	
+.right form .field label.left {
+	float: none;
+	display: block;
+	margin-left: 0;
+	color: #666;
+	margin-bottom: 3px;
+	font-size: 11px;
 	width: 96%;
 }
 
+.right form textarea,
+.right form input,
 .right form textarea.htmleditor {
-	width: 90%;
-	display : none;
+	border: 1px solid #a7a7a7;
+	padding: 3px;
+	width: 96%;
 }
-html>body .right form textarea.htmleditor {
-	width: 98%;
-}
+	.right form textarea.htmleditor {
+		display: none;
+	}
 
-.right form .creditCardfield input {
-	width: 4.415em;
-}
-
-.right form  input.checkbox, 
+.right form input.checkbox, 
 .right form .optionset input, 
 .right form .htmleditor select, 
 .right form input.action {
@@ -70,7 +83,7 @@ html>body .right form textarea.htmleditor {
 .ajaxActions {
 	position: absolute;
 	bottom: 3px;
-	right: 10px;
+	right: 15px;
 	padding: 0;
 	margin: 0;
 	text-align: right;
@@ -78,19 +91,20 @@ html>body .right form textarea.htmleditor {
 
 .ajaxActions input {
 	cursor: pointer;
-	float : left;
- 	height : 25px;
+	float: left;
+ 	height: 25px;
 	background-image: url(../images/textures/ToolBar.png);
 	padding-left: 10px;
-	padding-right : 10px;
-	margin : 0px;
-	color : #333333;
+	padding-right: 10px;
+	color: #333333;
 	overflow: visible;
 	width: auto;
 	border-color: #CCCCCC rgb(153, 153, 153) rgb(153, 153, 153) rgb(204, 204, 204);
 	border-style: double;
 	border-width: 3px;
 	margin: 1px;
+	font-weight: bold;
+	font-size: 11px;
 }
 
 .ajaxActions input:active {
@@ -121,10 +135,10 @@ input.loading {
 .right form div.tab {
 	clear: left;
 	overflow: auto;
-	border: 1px #AAA solid;
+	border: 1px solid #aaa;
 	border-top: none;
 	position: relative;
-	top: 0px;
+	top: 0;
 	margin: 0;
 	padding: 10px;
 }
@@ -139,10 +153,10 @@ input.loading {
  * Bottom-right
  */
 #rightbottom {
-	border : none;
-	margin-top : 4px;
-	margin-left : 1px;
-	border : 1px solid #808080;
+	border: none;
+	margin-top: 4px;
+	margin-left: 1px;
+	border: 1px solid #808080;
 }
 
 #rightbottom form {
@@ -150,14 +164,14 @@ input.loading {
 }
 
 #rightbottom form div {
-	margin-top : 3px;
+	margin-top: 3px;
 }
 
 #rightbottom form div.field {
 	clear: both;
 	margin-left: 10em;
-	font-size: 1.2em;
-	border : none;
+	font-size: 12px;
+	border: none;
 }
 
 #rightbottom form label.left {
@@ -198,8 +212,8 @@ input.loading {
  * RHS Action Parameters boxes
  */
 #right form.actionparams {
-	border: 1px #777 solid;
-	background-color: #CCC;
+	border: 1px solid #777;
+	background: #ccc;
 	position: absolute;
 	bottom: 32px;
 	right: 11px;
@@ -241,10 +255,10 @@ input.loading {
 	width: 100%;
 	padding: 10% 0 0 0;
 	height: 60%;
-	background-color: #CCC;
+	background: #ccc;
 	font-size: 25px;
 	font-weight: bold;
-	color: white;
+	color: #fff;
 	text-align: center;
 }
 
@@ -265,22 +279,22 @@ input.loading {
  * Autocomplete
  */
 .autocomplete {
-	background-color: #EEEEEE;
-	margin : 0px;
-	padding : 0px;
+	background: #eee;
+	margin: 0;
+	padding: 0;
 }
 	.autocomplete ul {
-		border: 1px #AAA solid;
-		margin : 0px;
-		padding : 0px;
+		border: 1px solid #aaa;
+		margin: 0;
+		padding: 0;
 	}
 	.autocomplete li {
 		list-style-type: none;
 		cursor: pointer;
-		margin: 0px;
-		font-size : 12px;
-		padding : 3px;
-		white-space : nowrap;
+		margin: 0;
+		font-size: 12px;
+		padding: 3px;
+		white-space: nowrap;
 	}
 	.autocomplete .data {
 		display: none;
@@ -289,43 +303,48 @@ input.loading {
 		font-style: italic;
 	}
 
-/*
- * Status
- */
-#statusMessage {
-	position: absolute;
-	z-index: 500;
-	bottom: 3px;
-	left: 3px;
-	text-align: left;
- 	padding: 1px 1px 1px 40px;
- 	font-size: 16px;
-	font-weight: bold; 	
-	color: #660;
-	margin: 2px;
-}
-	#statusMessage.good {
-		border-color: #9c9;
-		color: #060;
-		background: url(../images/alert-good.gif) /*#E2F9E3*/ 7px no-repeat;
-	}
-	#statusMessage.bad {
-		border-color: #c99;
-		color: #c00;
-		background: url(../images/alert-bad.gif) #fff 7px no-repeat;
-		max-height: 300px;
-		overflow: auto;
-	}
-	.pageStatusMessage {
+	/*
+	 * Status
+	 */
+	#statusMessage {
 		position: absolute;
-		top: 0;
-		right: 0;
-		background-color: #F9F9E3;
-		font-weight: bold;
-		font-size: 1.2em;
-		padding: 5px;
-	 	border: 1px solid #cc9;
+		z-index: 500;
+		bottom: 3px;
+		left: 3px;
+		text-align: left;
+	 	padding: 2px 20px 2px 20px;
+	 	font-size: 14px;
+		font-weight: bold; 	
+		color: #660;
+		background: #f4f3eb;
+		border: 1px solid #a9a67d;
+		margin: 0 2px 1px 7px;
+		line-height: 1.5;
 	}
+		#statusMessage.good {
+		 	padding: 2px 20px 2px 40px;
+			color: #060;
+			background: #E2F9E3 url(../images/alert-good.gif) 7px 50% no-repeat;
+			border: 1px solid #8dd38d;
+		}
+		#statusMessage.bad {
+	 		padding: 2px 20px 2px 40px;
+			border-color: #c80700;
+			color: #c80700;
+			background: #ffe3e2 url(../images/alert-bad.gif) 7px 50% no-repeat;
+			max-height: 300px;
+			overflow: auto;
+		}
+		.pageStatusMessage {
+			position: absolute;
+			top: 0;
+			right: 0;
+			background-color: #F9F9E3;
+			font-weight: bold;
+			font-size: 12px;
+			padding: 5px;
+		 	border: 1px solid #cc9;
+		}
 
 /**
  * TableField Subclasses
@@ -395,14 +414,9 @@ div.originallang_holder.field.CompositeField.nolabel {
 	font-style: italic;
 }
 
-.originallang span.readonly{
-	font-size: 0.9em;
-}
-
 #Form_EditForm_URLSegment_original {
-	color: #666666;
+	color: #666;
 	font-style: italic;
-	font-size: 0.9em;
 }
 
 .right form div.languageDropdown {
@@ -416,12 +430,25 @@ div.originallang_holder.field.CompositeField.nolabel {
 }
 
 .translatingMessage {
-	background-color: #F9F9E3;
+	background: #F9F9E3;
 	border: 1px solid #CCCC99;
-	font-size: 1.2em;
+	font-size: 12px;
 	padding: 3px;
 }
 
 .nonTranslating {
 	display: none;
 }
+
+/* Access tab styling */
+#Viewers,
+#Editors {
+	margin: 0;
+}
+	#Viewers .middleColumn,
+	#Editors .middleColumn {
+		display: block;
+		background: none;
+		padding: 0;
+	}
+	
