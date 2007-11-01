@@ -212,7 +212,6 @@ ul.tree span.modified,
 
 #treepanes {
 	background-color: #FFF;
-	border-left: 1px #ccc solid;
 }
 #treepanes h2 {
 	cursor: pointer;
