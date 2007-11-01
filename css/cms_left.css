@@ -217,9 +217,10 @@ ul.tree span.modified,
 #treepanes h2 {
 	cursor: pointer;
 }
-#treepanes h2 img {
+
+/*#treepanes h2 img {
 	float:right;
-}
+}*/
 
 .listpane p {
 	margin: 3px 3px 7px 3px;
