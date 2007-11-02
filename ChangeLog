@@ -1,271 +1,358 @@
 SilverStripe ChangeLog
 
 2.1.0
+
+New Features
+  - Comment administration section, and comment moderation
+  - Allow CMS users to limit view/edit access to a page
+  - Show an rss link for page comments on each page
+
+Developer Tools
   - Theme support
   - Widget support
   - Better extension API
   - Unit testing framework
-  - Comment administration section, and comment moderation
-  - TinyMCE has been updated to 2.1.1.1
-  - Drastically improved database build performance
-  - Support for running SilverStripe in safe mode and under open_basedir restrictions
-  - Improved spam detection 
   - More API documentation
-  - PHP notice fixes
   - Added support for __ss_environment.php files
-  - Use normal authentification rather than basicauth for db/build
-  - Moved RestfulService from mashups module into sapphire core
-  - Added BBCodeParser
-  - Added HasOneComplexTableField, HasManyComplexTableField and ManyManyComplexTableField to manage different kinds of relations
-  - Fix CSS of profiler pop-up
-  - Fix specific newsletter bug
-  - Added sorting, highlighting, formatting to TableListField
-  - Automatic filesystem backup of POST-data in Form
-  - Support for right-aligned titles in FormField
-  - Custom CSS-clases in FormFields by addExtraClass() and removeExtraClass()
-  - Validation in ComplexTableField_Popup
-  - Added BankAccountField
-  - Changed DropdownField.php $emptyString-syntax from '0' to ''
-  - Better validation in PhoneNumberField
-  - Validation and RequiredFields for TableField
-  - Fixed IE6 DOM-parsing bug caused by FormResponse::load_form()
-  - Triggering previewwrite for 'delete' and 'replace' SQL-actions
-  - Changed record-insertion in DataObject
-  - Added DataObjectSet->getRange()
-  - Added Date::past_date()
-  - Boolean.php accepts database-default
-  - Added Varchar->RTF()
-  - Added Convert::raw2htmlatt(), Convert::raw2mailto()
-  - Optionally hide backtrace-headers in Debug::message() and Debug::show() (applied in 'showqueries')
-  - Improved validation in Email::is_valid_address()
-  - MimeType-fallback for Email (from /etc/mime.types)
-  - Added Description-field to Group.php
-  - Added $strict-flag to Permission::check()
-  - Fixed Permission::get_members_by_permission()
-  - Implemented showIndicator() and hideIndicator(), Improved statusMessage() to clear manually instead of fixed interval, added hideStatusMessage()
-  - Added memory_limit to publishall()
-  - Styling changes in TreeDropdownField, TableListField
-  - Allow member cms fields to be added by DataObjectDecorators
-  - Fix many-many component set relation setting
-  - Added FiledSet::insertAfter()
-  - Allow classes other than typography to be set on HtmlEditorFields
-  - Added readonly transforamtion for ImageField
-  - The Link for a RedirectorPage points to its target
-  - Add SQL_ prefix in place it was missing in Email
-  - Added ContentController::project()
-  - Allow CMS users to limit view/edit access to a page.
-  - Added a check to make sure record exists before calling hasMethod on it in CheckboxSetField
-  - Don't show classes user doesn't have permissions to change to in class dropdown
-  - Fixed bug in DataObject::addStaticVars()
-  - Check for string 'true' as well as boolean in SiteTree::MetaTags()
-  - Fix AllNewsletters value not being passed to OptionSetField in SubscribeForm
-  - Fix reading of Live pages in CMSMain
-  - Fix double page reading after changing the class
-  - Fix insert flash
-  - Fix version regex for release candidates
-  - Fix delete in Files and Images section
-  - Fixed saving root folder causes error
-  - Fixed "non-numeric ID" error that occurs when visiting newsletter section for a newsletter that doesn't exist (caused by session sometimes)
-  - Added anchors to page comments, and made rss feed link to them
-  - Show an rss link for page comments on each page
-  - Fixed MetaTags so it accepts a string or a boolean, which means it will behave correctly in templates
-  - Improved the encapsulation of ErrorPage publication
-  - Added ID,ID,ID syntax for populating many-many joins
-  - Fix redirect back after failing login
-  - Fixed renaming of .tar.gz and .tar.bz2 files
-  - Added validation to TableField
-  - Fixed validation of DateField, EmailField and NumericField
-  - Fix livesite bug for visibility handling difference between PHP5.2.0 and PHP5.1.6
-  - Changed colouring of db/build to be more appropriate for the actual meaning of the messages
-  - Added PaddedImage to Image
-  - Allow passing of an array of permission codes to Permission::get_members_by_permission()
-  - Refactored newsletter system to put recipient selection and form-fieldset generation into the NewsletterType class, to allow for subclassing NewsletterType to create special system newsletters.
-  - Fixed redirection from /home/ to /./ in IE6
-  - Use the homepage as a model for the security base-page, so that things like the current subsite are factored in
-  - Added Director::redirected_to / Controller::redirectedTo() for redirection-detection 
-  - Added '<% if HasPerm(PERM_CODE() %>' to ViewableData for template
-  - Sorted permission codes in Permission::get_codes
-  - Added EDIT_PERMISSIONS permission code for SecurityAdmin
-  - Added Permission::get_groups_by_permission
-  - Refactored CMS page-URL accessing to use ->AbsoluteLink(), which can be overridden by defining alternateAbsoluteLink() 
-  - Allow logging in via BasicAuth
-  - Allow the dev and test servers to be set via Director
-  - Changes to support gallery module
-  - Added missing has_many in DataObjectDecorator
-  - Replace empty strings in SQL queries with NULL
-  - Fixed CMS sort subpages bug
-  - Installer changes
-      - New installer look based on BlackCandy
-      - Use the new theme system
-      - Add first and last name fields
-      - Added ability to set servers that will be in dev mode
-      - When the posix module isn't present, throw a warning instead of dying
-      - Warn if PHP version is less that 5.2.0 in support of GoPHP5 (http://www.gophp5.org)
-      - Added favicon to installer and default template
-      - Optional reporting of version information to SilverStripe
-      - Installer now runs with short tags disabled
-      - open_basedir and safe mode fixes
-  
+  - New classes
+      - BankAccountField
+      - BBCodeParser
+      - HasManyComplexTableField
+      - HasOneComplexTableField
+      - ManyManyComplexTableField
+      - NewsletterType
+      - RestfulService (from mashups module)
+   - Improved classes
+      - ComplexTableField
+          - Validation in popup
+      - ContentController
+          - Added project()
+      - Controller
+          - Added redirectedTo()
+      - Convert
+          - Added raw2htmlatt()
+          - Added raw2mailto()
+      - DatabaseAdmin
+          - Drastically improved database build performance
+      - DataObject
+          - Added ID,ID,ID syntax for populating many-many joins
+      - DataObjectDecorator
+          - Allow member CMS fields to be added
+      - DataObjectSet
+          - Added getRange()
+      - Date
+          - Added past_date()
+      - Director
+          - Added set_dev_servers()
+          - Added set_test_servers()
+          - Added redirected_to()
+          - Refactored CMS page-URL accessing to use ->AbsoluteLink(), which can be overridden by defining alternateAbsoluteLink()
+      - Debug
+          - Optionally hide backtrace-headers in message() and show() (applied in 'showqueries')
+      - Email
+          - MimeType-fallback (from /etc/mime.types)
+          - Improved validation in is_valid_address()
+      - FieldSet
+          - Added insertAfter()
+      - Form
+        - Automatic filesystem backup of POST-data
+      - FormField
+          - Support for right-aligned titles
+          - Custom CSS-classes by addExtraClass() and removeExtraClass()
+      - Group
+          - Added Description field
+      - HtmlEditorField
+          - Allow classes other than 'typography' to be set
+      - Image
+          - Added PaddedImage()
+      - ImageField
+          - Added readonly transformation
+      - PageCommentInterface
+          - Added anchors to page comments, and made rss feed link to them
+      - Permission
+          - Added $strict flag to check()
+          - Allow passing of an array of permission codes to get_members_by_permission()
+          - Added get_groups_by_permission()
+      - PhoneNumberField
+          - Improved validation
+      - Security
+         - Added basicauthlogin()
+      - SecurityAdmin
+          - Added EDIT_PERMISSIONS permission code
+      - TableField
+          - Validation and RequiredFields
+      - TableListField
+          - Added sorting, highlighting, formatting
+          - Improved styling
+      - TreeDropdownField
+          - Improved styling
+      - Varchar
+          - Added RTF()
+      - ViewableData
+          - Added '<% if HasPerm(PERM_CODE() %>' for templates
+  - Javascript
+      - Implemented showIndicator() and hideIndicator()
+      - Improved statusMessage() to clear manually instead of fixed interval
+      - Added hideStatusMessage()
+
+Bug Fixes
+  - CMS
+      - Fix specific newsletter bug
+      - Don't show classes user doesn't have permissions to change to in class dropdown
+      - Fix reading of Live pages in CMSMain
+      - Fix double page reading after changing the class
+      - Fix insert flash
+      - Fix version regex for release candidates
+      - Fix delete in Files and Images section
+      - Fixed saving root folder causes error
+      - Fixed "non-numeric ID" error that occurs when visiting newsletter section for a newsletter that doesn't exist (caused by session sometimes)
+      - Fixed CMS sort subpages bug
+  - Sapphire
+      - Improved spam detection
+      - Support for running SilverStripe in safe mode and under open_basedir restrictions
+      - PHP notice fixes
+      - Use normal authentification rather than basicauth for db/build
+      - Fix CSS of profiler pop-up
+      - Changed DropdownField $emptyString syntax from '0' to ''
+      - Fixed IE6 DOM-parsing bug caused by FormResponse::load_form()
+      - Triggering previewwrite for 'delete' and 'replace' SQL-actions
+      - Changed record-insertion in DataObject
+      - Boolean accepts database-default
+      - Fixed Permission::get_members_by_permission()
+      - Added memory_limit to publishall()
+      - Fix many-many component set relation setting
+      - The Link for a RedirectorPage points to its target
+      - Add SQL_ prefix in place it was missing in Email
+      - Added a check to make sure record exists before calling hasMethod on it in CheckboxSetField
+      - Fixed bug in DataObject::addStaticVars()
+      - Check for string 'true' as well as boolean in SiteTree::MetaTags()
+      - Fix AllNewsletters value not being passed to OptionSetField in SubscribeForm
+      - Improved the encapsulation of ErrorPage publication
+      - Fix redirect back after failing login
+      - Fixed renaming of .tar.gz and .tar.bz2 files
+      - Fixed validation of DateField, EmailField and NumericField
+      - Fix livesite bug for visibility handling difference between PHP5.2.0 and PHP5.1.6
+      - Changed colouring of db/build to be more appropriate for the actual meaning of the messages
+      - Fixed redirection from /home/ to /./ in IE6
+      - Use the homepage as a model for the security base-page, so that things like the current subsite are factored in
+      - Sorted permission codes in Permission::get_codes
+      - Changes to support gallery module
+      - Added missing has_many in DataObjectDecorator
+      - Replace empty strings in SQL queries with NULL
+  - JSParty
+      - TinyMCE has been updated to 2.1.1.1
+
+Installer
+  - New installer look based on BlackCandy
+  - Use the new theme system
+  - Add first and last name fields
+  - Added ability to set servers that will be in dev mode
+  - When the posix module isn't present, throw a warning instead of dying
+  - Warn if PHP version is less that 5.2.0 in support of GoPHP5 (http://www.gophp5.org)
+  - Added favicon to installer and default template
+  - Optional reporting of version information to SilverStripe
+  - Installer now runs with short tags disabled
+  - open_basedir and safe mode fixes
+
+
 2.0.2
+
+New Features
   - BlackCandy is the new default theme
-  - Much more API Documentation
-  - Reduced warnings when E_NOTICE is enabled
-  - Modules must now have _config.php files in order to be loaded
-  - Forms in newsletter & security section were incorrectly submitting when enter was pressed
-  - Fixed validation of date fields in a user defined form
-  - Fixed search in MemberTableField
-  - Fixed multiple security groups being created when logging in with default admin
-  - Ensure that WYSIWYG context menu always appears on the screen
-  - Fixed permissions for administrating page comments
   - Added pagination for page comments
-  - Fixed a bug where you couldn't always edit the bottom of an WYSIWYG editor field
-  - Fixed ContentController::PageComments() method to die if spammers are POSTing form data when comments are disabled
-  - Fixed permission checking on PHP 5.0.5
-  - Fixed 'cannot access protected property' error in Security section on PHP 5.0.5
-  - Fixed javascript validation of forms
-  - Don't show popup when validation fails in Security section
-  - Fixed error when asp_tags = On
-  - Fixed bug where you have a non-required field with numeric validation
-  - Added ContentNegotiator::set_encoding() to choose a character set other than utf-8
-  - Added a limit of 20 steps in Breadcrumbs generation
-  - Changed SiteTree.Title length from 100 to 255
-  - Fixed random password generator in Member::createNewPassword()
-  - Fixed bug where scrollbars aren't shown in the CMS
-  - Let CMSMain be used to manage objects without Sort
-  - Fixed BatchProcess to not display an error if no objects could be processed
-  - The help button now redirects to http://userhelp.silverstripe.com
-  - Fixed a bug where a user is redirected incorrectly after logging in
-  - Changed temp-folder selection to not leave temp files lying around, and put silverstripe temp files into a silverstripe-cache folder
-  - Removed duplicate XML class
-  - Made guid of PageComments in rss feed unique
-  - Performance improvements to client-side javascript
-  - Fixed bugs caused by missing html elements
-  - Optimised behaviour load times
-  - Sorted the output of profiler
-  - Performance enhancements to form and template code
-  - Added trace argument to Profiler::show
-  - Added profiling scaffolds
-  - Fixed code to remove need for short_open_tag
-  - Fixed FileSize generation for sizes of just over 1 meg
-  - only show $messageBlock in FormField::FieldHolder() if $Message is existing
-  - fixed rightTitle and id in FormField::FieldHolder()
-  - Added Email::send_all_emails_to to assist in testing
-  - Added Email::cc_all_emails_to() and Email::bcc_all_emails_to()
-  - Fixed ?isDev=1 mode
-  - Replaced sendLiveErrorsTo with send_errors_to, for more flexibility
-  - Set default of sendWarnings on Debug::send_errors_to
-  - Fixed formatting of error emails sent from ajax requests
-  - Removed debug plumbing from the results of Debug::backtrace()
-  - Added ?profile_trace=1 url variable tool to show a trace on the profiler
-  - Simplified return data of htmlEmail, an inconsequential internal optimisation
-  - Create assets folder if it doesn't exist when uploading a file
-  - Improvements to profiling information
-  - Fixed bug in SiteTree::NestedTitle()
-  - Updated CalendarDateField, adding a calendar icon to the right of it
   - Updated date field in CMS-edited forms to use CalendarDateField
-  - Added Form::current_action() and Form::single_field_required() to aid in form optimisation
-  - Don't append /home to the home page URL
-  - Small fix for windows installations
-  - Fixed efficiency problems in Versioned::get_latest_version
-  - Fixed File::sync(), to let it recurse into new directories in a single execution
-  - Fixed bug with getting form action that was breaking form submission and complextablefield pop-up
-  - Prepared CheckboxSetField for use editing a many-many join in the CMS, popualted with a SQLMap object
-  - Added TreeDropdownField::setTreeBaseID, for showing a sub-tree in your field
-  - Fixed SQLMap iteration
-  - Added option to TableField, to aid putting TableFields inside the ComplexTableField? popup
-  - Simplified EmailField validation error message
-  - Fixed some bugs in the debug emailer
-  - Reduced amount of ajax-refetching that the TreeSelectorFields do
   - Added 'open in new window' checkbox to link inserter
-  - Fix macron support in reports
-  - Improved debug message (remove big blocks of redundant data)
-  - Allow for the disabling of default buttons. Apply this to CMSMain and GenericDataAdmin in the administration, so that we don't default to clicking the *DELETE* button.
-  - Added default value to first arg of permissionFailure(); it's not actually used!
-  - Added PermissionProvider class and Permission::get_codes()
-  - Added ClassInfo::implementorsOf()
-  - Added providePermissions() for core items, and set up a dropdown interface for the security CMS admin
-  - Added DataObject::add_extension() for adding decorators in _config.php
-  - Added DataObjectDecorator::extraDBFields() for modifying the decorated data objects, adding extra database fields
-  - Improved handling of EditableFormFields on new UserDefinedForms
-  - Version displayed in CMS now works correctly
-  - Removed non-XHTML compliant border attributes from editor
-  - Updated GenericDataAdmin to use new permissions model
-  - Fixed CMS action button support when text size increases
-  - Added message when report is empty
-  - fixed (overrides) to CSS to avoid larger font-size due to em values
-  - Fixed tree scrolling and resizing issues
-  - Improved search results message shown on first load
-  - Added 2nd argument to LeftAndMain::setApplicationName so that the name in the top corner and the name shown elsewhere can be 2 different strings
-  - Added event.setStyle to prototype_improvements.js
-  - Fix weird bug in behaviour to do with class.applyToChildren
-  - Add class text field to image properties dialog in TinyMCE
-  - Added ?debug_behaviour=1 URL option for debugging behaviour calls with Firebug
-  - Made calendar control register a date change when the calendar is used
-  - Improved console.log alternative
-  - Fixed sizing issues with CMS right content area
-  - Fixed bug with image insertion
-  - Set some good defaults in DataObjectSet::TotalPages() if they have not been set
-  - Changes to support forum
-  - Removed db/populate as it was a security risk, the initial content is now loaded via requireDefaultRecords()
-  - Require authenficiation to do a db/build on live sites
-  - Close directories before trying to remove them
-  - Fixed bug where new pages weren't being highlighted in the CMS
-  - Fixed bug where the last page in the site tree wasn't being highlighted in the CMS
-  - Fixed a bug where CheckboxSetField wouldn't save if there was a method the same as the field name
-  - Fixed reordering of groups in security section
-  - Improvements to image inserter
-  - Fix multiple "broken" in class attribute of HTML Content
-  - Fixed bug with TreeDropdownField when you clicked the expand link 3 or more times, it wouldn't close
   - Added dimension fields when inserting images
-  - Fixed bug when editing properties of new text fields
-  - Added FormField::Required(), so that you can put asterisks into a form template if you wish
-  - Fixed duplicate of UserDefinedForm objects
-  - Installer changes
-      - Added option of installing either the default template, or the tutorial template
-      - mod_rewrite check now works with http authentification
-      - Workaround for 'URL file-access is disabled in the server configuration' using curl for mod_rewrite test
-      - Better error message if the installer can't detect the web server
-      - Added an alternative .htaccess configuration
-      - Less file permissions required by the installer
-      - Made deleting the installer files more prominent, it now deletes all the installations files, not just php.
-      - MySQL password is now a hidden field.
+
+Developer Tools
+  - Much more API Documentation
+  - Modules must now have _config.php files in order to be loaded
+  - New Classes
+      - PermissionProvider
+  - Improved Classes
+      - CalendarDateField
+          - Added a calendar icon
+      - CheckboxSetField
+          - Prepared for use editing a many-many join in the CMS, popualted with a SQLMap object
+      - ClassInfo
+          - Added implementorsOf()
+      - ContentNegotiator
+          - Added set_encoding() to choose a character set other than utf-8
+      - DatabaseAdmin
+          - Removed populate() as it was a security risk, the initial content is now loaded via requireDefaultRecords()
+      - DataObject
+          - Added add_extension() for adding decorators in _config.php
+      - DataObjectDecorator
+          - Added extraDBFields() for modifying the decorated data objects, adding extra database fields
+      - Email
+          - Added send_all_emails_to()
+          - Added cc_all_emails_to()
+          - Added bcc_all_emails_to()
+          - Replaced sentLiveErrorsTo() with send_errors_to(), for more flexibility
+      - Form
+          - Added current_action()
+          - Added single_field_required()
+      - FormField
+          - Added Required(), so that you can put asterisks into a form template if you wish
+      - GenericDataAdmin
+         - Updated to use new permission model
+      - LeftAndMain
+         - Added second argument to setApplicationName() so that the name in the top corner and the name shown elsewhere can be 2 different strings
+      - Permission
+          - Added get_codes()
+      - Profiler
+          - Added trace argument to show()
+          - Added profiling scaffolds
+          - Added ?profile_trace=1 url variable tool to show a trace on the profiler
+          - Sorted the output of profiler
+          - Improvements to profiling information
+      - TableField
+          - Added option to aid putting TableFields inside the ComplexTableField popup
+      - TreeDropdownField
+          - Added setTreeBaseID(), for showing a sub-tree in your field
+  - Javascript
+      - Added event.setStyle to prototype_improvements.js
+      - Add class text field to image properties dialog in TinyMCE
+      - Added ?debug_behaviour=1 URL option for debugging behaviour calls with Firebug
+
+Bug Fixes
+  - CMS
+      - Forms in newsletter & security section were incorrectly submitting when enter was pressed
+      - Fixed search in MemberTableField
+      - Don't show popup when validation fails in Security section
+      - Fixed bug where scrollbars aren't shown in the CMS
+      - Let CMSMain be used to manage objects without Sort
+      - The help button now redirects to http://userhelp.silverstripe.com
+      - Version displayed in CMS now works correctly
+      - Fixed CMS action button support when text size increases
+      - Added message when report is empty
+      - fixed (overrides) to CSS to avoid larger font-size due to em values
+      - Fixed tree scrolling and resizing issues
+      - Fixed sizing issues with CMS right content area
+      - Fixed bug with image insertion
+      - Fixed bug where new pages weren't being highlighted in the CMS
+      - Fixed bug where the last page in the site tree wasn't being highlighted in the CMS
+      - Fixed reordering of groups in security section
+      - Improvements to image inserter
+  - Sapphire
+      - Reduced warnings when E_NOTICE is enabled
+      - Fixed validation of date fields in a user defined form
+      - Fixed multiple security groups being created when logging in with default admin
+      - Fixed permissions for administrating page comments
+      - Fixed ContentController::PageComments() method to die if spammers are POSTing form data when comments are disabled
+      - Fixed permission checking on PHP 5.0.5
+      - Fixed 'cannot access protected property' error in Security section on PHP 5.0.5
+      - Fixed javascript validation of forms
+      - Fixed error when asp_tags = On
+      - Fixed bug where you have a non-required field with numeric validation
+      - Added a limit of 20 steps in Breadcrumbs generation
+      - Changed SiteTree.Title length from 100 to 255
+      - Fixed random password generator in Member::createNewPassword()
+      - Fixed BatchProcess to not display an error if no objects could be processed
+      - Fixed a bug where a user is redirected incorrectly after logging in
+      - Changed temp-folder selection to not leave temp files lying around, and put silverstripe temp files into a silverstripe-cache folder
+      - Made guid of PageComments in rss feed unique
+      - Removed duplicate XML class
+      - Fixed bugs caused by missing html elements
+      - Fixed code to remove need for short_open_tag
+      - Fixed FileSize generation for sizes of just over 1 meg
+      - only show $messageBlock in FormField::FieldHolder() if $Message is existing
+      - fixed rightTitle and id in FormField::FieldHolder()
+      - Fixed ?isDev=1 mode
+      - Set default of sendWarnings on Debug::send_errors_to
+      - Fixed formatting of error emails sent from ajax requests
+      - Removed debug plumbing from the results of Debug::backtrace()
+      - Simplified return data of htmlEmail, an inconsequential internal optimisation
+      - Create assets folder if it doesn't exist when uploading a file
+      - Fixed bug in SiteTree::NestedTitle()
+      - Don't append /home to the home page URL
+      - Small fix for windows installations
+      - Fixed efficiency problems in Versioned::get_latest_version
+      - Fixed File::sync(), to let it recurse into new directories in a single execution
+      - Fixed bug with getting form action that was breaking form submission and complextablefield pop-up
+      - Fixed SQLMap iteration
+      - Simplified EmailField validation error message
+      - Fixed some bugs in the debug emailer
+      - Reduced amount of ajax-refetching that the TreeSelectorFields do
+      - Fix macron support in reports
+      - Improved debug message (remove big blocks of redundant data)
+      - Allow for the disabling of default buttons. Apply this to CMSMain and GenericDataAdmin in the administration, so that we don't default to clicking the *DELETE* button.
+      - Added default value to first arg of permissionFailure(); it's not actually used!
+      - Improved handling of EditableFormFields on new UserDefinedForms
+      - Improved search results message shown on first load
+      - Made calendar control register a date change when the calendar is used
+      - Set some good defaults in DataObjectSet::TotalPages() if they have not been set
+      - Changes to support forum
+      - Require authenficiation to do a db/build on live sites
+      - Close directories before trying to remove them
+      - Fixed a bug where CheckboxSetField wouldn't save if there was a method the same as the field name
+      - Fix multiple "broken" in class attribute of HTML Content
+      - Fixed bug with TreeDropdownField when you clicked the expand link 3 or more times, it wouldn't close
+      - Fixed bug when editing properties of new text fields
+      - Fixed duplicate of UserDefinedForm objects
+  - JSParty
+      - Fixed a bug where you couldn't always edit the bottom of an WYSIWYG editor field
+      - Ensure that WYSIWYG context menu always appears on the screen
+      - Javascript performance improvements
+      - Fix weird bug in behaviour to do with class.applyToChildren
+      - Improved console.log alternative
+  
+Installer
+  - Added option of installing either the default template, or the tutorial template
+  - mod_rewrite check now works with http authentification
+  - Workaround for 'URL file-access is disabled in the server configuration' using curl for mod_rewrite test
+  - Better error message if the installer can't detect the web server
+  - Added an alternative .htaccess configuration
+  - Less file permissions required by the installer
+  - Made deleting the installer files more prominent, it now deletes all the installations files, not just php.
+  - MySQL password is now a hidden field.
+
 
 2.0.1
-  - Text->FirstParagraph() now only shows the first paragraph
-  - Fixed HTMLText->Summary()
-  - Fixed layout issues on IE7 for TreeDropdownField
-  - Don't show Akismet errors to user
-  - Removed overloaded MemberTableField->sourceItems() that was causing problems
+
+New Features
   - Improved layout of UserDefinedForm submissions in CMS
-  - Fixed UserDefinedForm submission emails
-  - Fixed UserDefinedForm permissions
-  - If a file extension doesn't have a maximum upload size associated with it, then allow uploads of any size
-  - Fixed a bug with the TreeMultiselectField that prevented it from displaying the checkboxes
-  - Made Scheduled tasks concrete so they can be instantiated
-  - Fixed sizing of tabs in CMS
-  - Fixed popup for single asset in Files & Images section
-  - Mime types fallback for servers don't have /etc/mime.types
-  - Fixed link to CMS on default homepage
-  - TableField fixes
-  - mb_string module is now an optional dependency
-  - Fixed security vunerability in search
-  - Fixed permissions table in Security section
-  - GD::color_web2gd() was using incorrect substr
-  - Fixed last link css
-  - Fixed el no properties error in IE
-  - Fixed duplicate checkbox fields in UserDefinedForm
-  - Fixed css in UserDefinedForm
   - Don't show name field on root folder in Assets section
-  - Pressing the flash button a second time now hides the dropdown
+
+Developer Tools
+  - Mime types fallback for servers don't have /etc/mime.types
+  - mb_string module is now an optional dependency
   - Added strong_create method to Object, as useCustomClass was not working correctly
-  - Installer fixes
-      - Fixed MySQL version check
-      - Merge with existing .htaccess file
-      - Test that mod_rewrite is working
-      - Added option to delete installer files after successful install
-      - Fixed PHP4 parse error so installer loads and shows correct error message
-      - Apache test passes if apache is used but apache php functions are not available
-      - SilverStripe needs at least PHP version 5.0.4
+
+Bug Fixes
+  - Sapphire
+      - Text->FirstParagraph() now only shows the first paragraph
+      - Fixed HTMLText->Summary()
+      - Fixed layout issues on IE7 for TreeDropdownField
+      - Don't show Akismet errors to user
+      - Removed overloaded MemberTableField->sourceItems() that was causing problems
+      - Fixed UserDefinedForm submission emails
+      - Fixed UserDefinedForm permissions
+      - If a file extension doesn't have a maximum upload size associated with it, then allow uploads of any size
+      - Fixed a bug with the TreeMultiselectField that prevented it from displaying the checkboxes
+      - Made Scheduled tasks concrete so they can be instantiated
+      - TableField fixes
+      - Fixed security vunerability in search
+      - GD::color_web2gd() was using incorrect substr
+      - Fixed last link css
+      - Fixed duplicate checkbox fields in UserDefinedForm
+      - Fixed css in UserDefinedForm
+  - CMS
+      - Fixed sizing of tabs in CMS
+      - Fixed popup for single asset in Files & Images section
+      - Fixed link to CMS on default homepage
+      - Fixed permissions table in Security section
+      - Fixed el no properties error in IE
+      - Pressing the flash button a second time now hides the dropdown
+
+Installer
+  - Fixed MySQL version check
+  - Merge with existing .htaccess file
+  - Test that mod_rewrite is working
+  - Added option to delete installer files after successful install
+  - Fixed PHP4 parse error so installer loads and shows correct error message
+  - Apache test passes if apache is used but apache php functions are not available
+  - SilverStripe needs at least PHP version 5.0.4
 
 2.0.0
   - Initial release
