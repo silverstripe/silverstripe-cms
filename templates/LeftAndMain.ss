@@ -5,7 +5,7 @@
 <% base_tag %>
 <title>$ApplicationName</title>
 
-<link rel="stylesheet" type="text/css" href="cms/css/typography.css" />
+<link rel="stylesheet" type="text/css" href="cms/css/cms_typography.css" />
 <link rel="stylesheet" type="text/css" href="cms/css/layout.css" />
 <link rel="stylesheet" type="text/css" href="cms/css/cms_left.css" />
 <link rel="stylesheet" type="text/css" href="cms/css/cms_right.css" />

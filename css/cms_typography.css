@@ -1,0 +1,35 @@
+* {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+p, ul, td, th {
+	font-size: 12px;
+}
+	p {
+		color: #666;
+	}
+
+h1, h2 {
+	color: #222;
+}
+	h1 {
+		font-size: 20px;
+	}
+	h2{
+		font-family:"Helvetica Neue",Helvetica,Arial,Sans-serif;
+		font-size:12px;
+		font-weight:bold;
+	}
+a {
+	color: #162f42;
+	text-decoration: underline;
+}
+
+a:hover {
+	color: #0074c6;
+	text-decoration: underline;
+}
+
+a img {
+	border-style: none;
+}
