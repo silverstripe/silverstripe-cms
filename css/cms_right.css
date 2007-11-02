@@ -7,7 +7,8 @@
 }
 
 .right form .field {
-	margin: 3px !important;
+	/*margin: 3px !important;*/
+	margin: 0;
 }
 	.right form .text,
 	.right form .field span.readonly {
@@ -19,7 +20,8 @@
 	.right form .field span.middleColumn {
 		display: block;
 		background: #e9e9e9;
-		padding: 2px;
+		padding: 3px;
+		width: 97%;
 	}
 	
 .right form .checkbox input,
@@ -38,14 +40,19 @@
 }
 
 .right form textarea,
-.right form input,
+.right form input.text,
 .right form textarea.htmleditor {
 	border: 1px solid #a7a7a7;
 	padding: 3px;
-	width: 96%;
+	width: 99%;
+	/*outline: 3px solid #e9e9e9;*/
 }
 	.right form textarea.htmleditor {
 		display: none;
+	}
+	.right form .mceEditor {
+		width: 100%;
+		border: 1px solid #a7a7a7;
 	}
 
 .right form input.checkbox, 
@@ -94,7 +101,8 @@
 #CommentFilterButton,
 .actions input,
 #deletemarked input.action,
-#UnusedThumbnails a {
+#UnusedThumbnails a,
+div.Actions input {
 	cursor: pointer;
 	float: left;
  	height: 25px;
@@ -132,7 +140,8 @@
 	border-color: #999999 rgb(204, 204, 204) rgb(204, 204, 204) rgb(153, 153, 153);
 }
 
-.ajaxActions input:hover {
+.ajaxActions input:hover,
+div.Actions input {
 	background: #fff;
 }
 
@@ -154,6 +163,7 @@ input.loading {
  * Tabs
  */
 .right form div.tab {
+	background: #fff;
 	clear: left;
 	overflow: auto;
 	border: 1px solid #aaa;
@@ -374,7 +384,7 @@ div.MemberListFilter,
 div.MemberFilter,
 div.CommentFilter {
 	/*float: right;*/
-	width: 30em;
+	width: 35em;
 	margin: 5px 0;
 	padding: 5px;
 	background-color : #ebeadb;

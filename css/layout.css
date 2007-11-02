@@ -63,7 +63,7 @@ body.stillLoading select {
 	overflow: auto;
 	z-index: 50;
 	border: 1px #acbbcc solid;
-	background-color: white;
+	background-color: #eee;
 	margin-right : 3px;
 }
 
@@ -304,8 +304,8 @@ div.spacer, li.spacer {
 /** RIGHT PANEL **/
 
 .mceToolbarExternal {
-	background-color: #EEE;
-	border-bottom: 1px #CCC solid;
+	background-color: #eee;
+	/*border-bottom: 1px #CCC solid;*/
 	/*position: absolute;
 	top: 23px;
 	left: 0;*/
