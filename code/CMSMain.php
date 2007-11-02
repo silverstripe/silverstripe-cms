@@ -381,8 +381,8 @@ JS;
 		if(is_numeric($parent)) $parentObj = DataObject::get_by_id("SiteTree", $parent);
 		if(!$parentObj || !$parentObj->ID) $parent = 0;
 
-		$p = $this->getNewItem("new-$className-$parent".$suffix );
-		// $p->write();
+		$p = $this->getNewItem("new-$className-$parent".$suffix, false);
+		$p->write();
 
 		$p->CheckedPublicationDifferences = $p->AddedToStage = true;
 		return $this->returnItemToUser($p);
