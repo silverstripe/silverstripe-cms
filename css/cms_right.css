@@ -99,6 +99,12 @@
 	text-align: right;
 }
 
+.right form h1 {
+	color: #000;
+	font-size:18px;
+	font-weight:bold;
+}
+
 .right form h2 {
 	color: #000;
 	font-size:12px;
