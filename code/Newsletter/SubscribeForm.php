@@ -75,9 +75,13 @@ class SubscribeForm extends UserDefinedForm {
         $newsletterTypes = DataObject::get( 'NewsletterType' );       
         
         $availableNewsletters = array();
+        $nlCheckboxes = array();
+
         
         foreach( $this->Newsletters() as $subscribeTo )
             $availableNewsletters[] = $subscribeTo->ID;
+        
+
         
         // create a checkbox for each newsletter
         if($newsletterTypes && is_object($newsletterTypes)) {
