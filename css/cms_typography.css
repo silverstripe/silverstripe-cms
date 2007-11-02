@@ -1,35 +1,39 @@
-* {
-	font-family: Arial, Helvetica, sans-serif;
+/**
+	Everything is important, to make sure the cms has these styles.
+*/
+
+.right * {
+	font-family: Arial, Helvetica, sans-serif !important;
 }
 
-p, ul, td, th {
-	font-size: 12px;
+.right p, ul, td, th {
+	font-size: 12px !important;
 }
-	p {
-		color: #666;
+	.right p {
+		color: #666 !important;
 	}
 
-h1, h2 {
-	color: #222;
+.right h1, h2 {
+	color: #222 !important;
 }
-	h1 {
-		font-size: 20px;
+	.right h1 {
+		font-size: 20px !important;
 	}
-	h2{
-		font-family:"Helvetica Neue",Helvetica,Arial,Sans-serif;
-		font-size:12px;
-		font-weight:bold;
+	.right h2{
+		font-family:"Helvetica Neue",Helvetica,Arial,Sans-serif !important;
+		font-size:12px !important;
+		font-weight:bold !important;
 	}
-a {
-	color: #162f42;
-	text-decoration: underline;
+.right a {
+	color: #162f42 !important;
+	text-decoration: underline !important;
 }
 
-a:hover {
-	color: #0074c6;
-	text-decoration: underline;
+.right a:hover {
+	color: #0074c6 !important;
+	text-decoration: underline !important;
 }
 
-a img {
-	border-style: none;
+.right a img {
+	border-style: none !important;
 }
