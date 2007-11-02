@@ -89,14 +89,19 @@
 	text-align: right;
 }
 
-.ajaxActions input {
+.ajaxActions input,
+#MemberFilterButton,
+#CommentFilterButton,
+.actions input,
+#deletemarked input.action,
+#UnusedThumbnails a {
 	cursor: pointer;
 	float: left;
  	height: 25px;
 	background-image: url(../images/textures/ToolBar.png);
 	padding-left: 10px;
 	padding-right: 10px;
-	color: #333333;
+	color: #333;
 	overflow: visible;
 	width: auto;
 	border-color: #CCCCCC rgb(153, 153, 153) rgb(153, 153, 153) rgb(204, 204, 204);
@@ -105,6 +110,22 @@
 	font-weight: bold;
 	font-size: 11px;
 }
+	#MemberFilterButton,
+	#CommentFilterButton,
+	#deletemarked input.action,
+	.actions input {
+		float: none;
+		padding: 0;
+	}
+	#UnusedThumbnails {
+		display: block;
+	}
+	#deletemarked {
+		text-align: right;
+	}
+		#deletemarked span {
+			background: none;
+		}
 
 .ajaxActions input:active {
 	background: #F4F4F4 none repeat scroll 0%;
@@ -115,7 +136,8 @@
 	background: #fff;
 }
 
-input.delete:hover {
+input.delete:hover,
+#deletemarked input.delete:hover {
 	background: #ce0000;
 	color: #fff;
 }
@@ -328,9 +350,9 @@ input.loading {
 		}
 		#statusMessage.bad {
 	 		padding: 2px 20px 2px 40px;
-			border-color: #c80700;
+			border-color: #ff8e8e;
 			color: #c80700;
-			background: #ffe3e2 url(../images/alert-bad.gif) 7px 50% no-repeat;
+			background: #ffe9e9 url(../images/alert-bad.gif) 7px 50% no-repeat;
 			max-height: 300px;
 			overflow: auto;
 		}
@@ -352,20 +374,26 @@ div.MemberListFilter,
 div.MemberFilter,
 div.CommentFilter {
 	/*float: right;*/
-	width: 40em;
+	width: 30em;
 	margin: 5px 0;
 	padding: 5px;
 	background-color : #ebeadb;
 	border: 1px solid #aca899;
 }
+	div.MemberListFilter span.middleColumn,
+	div.MemberFilter span.middleColumn,
+	div.CommentFilter span.middleColumn {
+		display: inline !important;
+	}
 
 	.right form div.MemberListFilter label,
 	.right form div.MemberFilter label,
 	.right form div.CommentFilter label {
 		display: block;
-		width: 10em;
+		width: 5em;
 		float: left;
 		margin-left: 0em;
+		line-height: 2.3;
 	}
 	
 	div.MemberListFilter div.field,

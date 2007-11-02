@@ -23,6 +23,10 @@
 	width: auto;
 }*/
 
+#TreeActions li {
+	float: left;
+}
+
 #TreeActions li button {
 	cursor: pointer;
 	float: left;

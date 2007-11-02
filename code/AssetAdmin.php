@@ -279,7 +279,7 @@ HTML;
                            "</div>
                                 <div id=\"UnusedThumbnails\">
                                     <p>"._t('AssetAdmin.UNUSEDTHUMBNAILSTITLE', 'Unused thumbnails')."</p>
-                                    <a id=\"UnusedThumbnails\" href=\"#\">"._t('AssetAdmin.DELETEUNUSEDTHUMBNAILS', 'Delete unused thumbnails')."</a>
+                                    <a href=\"#\">"._t('AssetAdmin.DELETEUNUSEDTHUMBNAILS', 'Delete unused thumbnails')."</a>
                                 </div>"
                         )     
                     )
@@ -705,7 +705,7 @@ JS;
 	    foreach($this->getUnusedThumbnailsArray() as $file) {
 	    	unlink("../assets/" . $file); 	
 	    }
-	    echo "statusMessage('All unused thumbnails has been deleted','good')";
+	    echo "statusMessage('All unused thumbnails have been deleted','good')";
 	}
 	
 	/**
