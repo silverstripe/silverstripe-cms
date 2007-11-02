@@ -93,7 +93,7 @@ HTML;
 		Requirements::javascript("cms/javascript/LeftAndMain.js");
 		Requirements::javascript("jsparty/multifile/multifile.js");
 		Requirements::css("jsparty/multifile/multifile.css");
-		Requirements::css("cms/css/cms_typography.css");
+		Requirements::css("cms/css/typography.css");
 		Requirements::css("cms/css/layout.css");
 		Requirements::css("cms/css/cms_left.css");
 		Requirements::css("cms/css/cms_right.css");

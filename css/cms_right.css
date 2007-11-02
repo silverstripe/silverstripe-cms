@@ -89,6 +89,7 @@ body div.TreeDropdownField span.items {
 }
 
 .right form h2 {
+	color: #000;
 	clear: both;
 }
 
@@ -96,6 +97,7 @@ body div.TreeDropdownField span.items {
 .right form .fieldgroup select {
 	width: auto;
 }
+
 
 /**
  * Actions/Buttons
