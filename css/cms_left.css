@@ -40,7 +40,7 @@
 	border-style: double;
 	font-weight: bold;
 	font-size: 11px;
-	margin-right: 3px;
+	margin: 0 3px;
 }
 
 #TreeActions li button:active {
