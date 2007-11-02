@@ -314,7 +314,11 @@ div.spacer, li.spacer {
 
 	.mceToolbarExternal a {
 		text-decoration: none;
+		border: 0 !important;
 	}
+		.mceToolbarExternal a img {
+			border: none;
+		}
 
 
 #right form#Form_EditorToolbarLinkForm,
