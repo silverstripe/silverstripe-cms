@@ -814,7 +814,7 @@ JS;
 	 * The application name is customisable by calling
 	 * LeftAndMain::setApplicationName("Something New")
 	 */
-	static $application_name = "SilverStripe CMS", $application_logo_text = "SilverStripe CMS";
+	static $application_name = "SilverStripe CMS", $application_logo_text = "SilverStripe";
 	static function setApplicationName($name, $logoText = null) {
 		self::$application_name = $name;
 		self::$application_logo_text = $logoText ? $logoText : $name;

@@ -38,18 +38,29 @@
 	font-size: 11px;
 	width: 96%;
 }
-#Form_EditorToolbarImageForm fieldset label.left {
+#Form_EditorToolbarImageForm fieldset label.left, 
+#Form_EditorToolbarLinkForm fieldset label.left {
 	float:left;
 	margin-left:0px;
 	color: #000;
+	line-height: 18px;
 	font-size: 12px;
 	width:120px;
 }
-#Form_EditorToolbarImageForm fieldset span {
+#Form_EditorToolbarImageForm fieldset span,
+#Form_EditorToolbarLinkForm fieldset span {
 	float: left;
+	width: 350px;
+	background: none;
 }
-body div.TreeDropdownField span.items {
+#Form_EditorToolbarLinkForm fieldset li span,
+#Form_EditorToolbarImageForm fieldset li span {
+	float: none;
+}
+#right .TreeDropdownField {
 	width: 300px;
+	float: left;
+	background: #fff;
 	font-size: 12px;
 }
 .right form textarea,
