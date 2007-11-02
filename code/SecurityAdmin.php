@@ -226,7 +226,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 
 		$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\">" .
 						"<li id=\"record-0\" class=\"Root\">" .
-							"<a href=\"admin/security/show/0\" >"._t('SecurityAdmin.SGROUPS',"Security groups")."</a>"
+							"<a href=\"admin/security/show/0\" ><strong>"._t('SecurityAdmin.SGROUPS',"Security groups")."</strong></a>"
 							. $siteTree .
 						"</li>" .
 					"</ul>";

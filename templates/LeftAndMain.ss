@@ -39,23 +39,19 @@
 			<a href="http://www.silverstripe.com" title="<% _t('SSWEB','Silverstripe Website') %>">Silverstripe CMS</a>&nbsp;-&nbsp;
 			<abbr style="border-style: none" title="<% _t('APPVERSIONTEXT1',"This is the") %> $ApplicationName <% _t('APPVERSIONTEXT2',"version that you are currently running, technically it's the CVS branch") %>">$CMSVersion</abbr> &nbsp; &nbsp; &nbsp; 
 			<% control CurrentMember %>
-			<% _t('LOGGEDINAS','Logged in as') %> $FirstName $Surname - <a href="{$BaseHref}admin/myprofile" id="EditMemberProfile"><% _t('EDITPROFILE','Profile') %></a> - <a href="Security/logout" id="LogoutLink"><% _t('LOGOUT','log out') %></a>
+			<% _t('LOGGEDINAS','Logged in as') %> <strong>$FirstName $Surname</strong> | <a href="{$BaseHref}admin/myprofile" id="EditMemberProfile"><% _t('EDITPROFILE','Profile') %></a> | <a href="Security/logout" id="LogoutLink"><% _t('LOGOUT','log out') %></a>
 		<% end_control %>
 		</div>
 
 		<div id="switchView" class="bottomTabs">
 			<% if class = CMSMain %>
-			<div class="blank"> <% _t('VIEWPAGEIN','Page view:') %> </div>
+				<div class="blank"> <% _t('VIEWPAGEIN','Page view:') %> </div>
 			<% else %>
-			<div class="blank"> <% _t('SWITCHTO','Switch to:') %> </div>
+				<div class="blank"> <% _t('SWITCHTO','Switch to:') %> </div>
 			<% end_if %>
-			<% if class = CMSMain %>
-			<% else %>
-			<a class="current" title="Edit this page in the CMS"><% _t('EDIT','Edit') %></a>
-			<% end_if %>
-			<a id="viewStageSite" title="View the Page in the Draft Site" href="home/?stage=Stage"><% _t('DRAFTS','Draft Site') %></a>
-			<div class="blank" style="width:1em;"> </div>
-			<a id="viewLiveSite" title="View the Page in the Published Site" href="home/?stage=Live"><% _t('PUBLIS','Published Site') %></a>
+				<a class="current" title="Edit this page in the CMS"><% _t('EDIT','Edit') %></a>
+				| <a id="viewStageSite" title="View the Page in the Draft Site" href="home/?stage=Stage"><% _t('DRAFTS','Draft Site') %></a>
+			 | <a id="viewLiveSite" title="View the Page in the Published Site" href="home/?stage=Live"><% _t('PUBLIS','Published Site') %></a>
 			<a style="display: none;left : -5px;" id="viewArchivedSite" href="home/"><% _t('ARCHS','Archived Site') %></a>
 		</div>
 		

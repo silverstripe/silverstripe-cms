@@ -1,5 +1,5 @@
 <ul id="sitetree" class="tree unformatted">
-	<li id="$ID" class="Root"><a>Comments</a>
+	<li id="$ID" class="Root"><a><strong>Comments</strong></a>
 		<ul>
 			<li id="record-approved" <% if Section=approved %>class="current"<% end_if %>>
 				<a href="$baseURL/admin/comments/showtable/approved" title="Approved">Approved</a>

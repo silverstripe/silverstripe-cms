@@ -232,12 +232,12 @@ html>body #top #Logo {
 	float: right;
 }
 	#bottom #logInStatus a {
-		color: #FFFFFF;
+		color: #FFF;
 		text-decoration: underline;
 	}
 	#bottom #logInStatus a:hover {
 		color: #fff;
-		text-decoration: underline;
+		text-decoration: none;
 	}
 	#bottom #logInStatus a#LogoutLink {
 		background: url(../images/logout.gif) no-repeat right bottom;
@@ -249,18 +249,7 @@ html>body #top #Logo {
 }
 
 #bottom .bottomTabs a {
-	display: block;
-	float : left;
-	height : 23px;
-	line-height: 25px;
-	padding-left : 6px;
-	padding-right : 6px;
-	position:relative;
-	top : -5px;
-	border-top : none;
-	cursor:pointer;
-	text-decoration: none;
-	color : #fff;
+	color: #fff;
 }
 
 #bottom .bottomTabs div.blank {
@@ -279,7 +268,7 @@ html>body #top #Logo {
 	cursor: auto;
 }
 	#bottom .bottomTabs a:hover {
-		background: url(../images/mainmenu/hover.gif) repeat-x center center;
+		text-decoration: none;
 	}
 
 
@@ -295,6 +284,7 @@ html>body #top #Logo {
 	margin-top: 2px;
 	width: 500px; /* IE's chocking right now */
 }
+
 html>body #sitetree {
 	width: auto;
 }
