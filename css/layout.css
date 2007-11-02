@@ -325,20 +325,12 @@ div.spacer, li.spacer {
 	display: none;
 	margin: 1px 0 0 0;
 	padding: 5px;
-	height: 115px;
 	/*
 	 * HACK IE (all versions): container needs to be higher stacking order
 	 * than any DOM-elemnt under it.
 	 * @see http://www.aplus.co.yu/lab/z-pos/
 	 */
 	z-index: 1001;
-}
-
-#right form#Form_EditorToolbarImageForm {
-	height: 160px;
-}
-#right form#Form_EditorToolbarFlashForm {
-	height: 130px;
 }
 
 
@@ -374,7 +366,9 @@ div.spacer, li.spacer {
 ul.tree li.Root span.Root span.c a {
 	background-image : url(../../cms/images/treeicons/root.png) !important;
 }
-
+.TreeDropdownField {
+	background: #ff0;
+}
 /* Misc Styling */
 iframe {
 	border : none;

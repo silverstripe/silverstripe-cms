@@ -38,7 +38,20 @@
 	font-size: 11px;
 	width: 96%;
 }
-
+#Form_EditorToolbarImageForm fieldset label.left {
+	float:left;
+	margin-left:0px;
+	color: #000;
+	font-size: 12px;
+	width:120px;
+}
+#Form_EditorToolbarImageForm fieldset span {
+	float: left;
+}
+body div.TreeDropdownField span.items {
+	width: 300px;
+	font-size: 12px;
+}
 .right form textarea,
 .right form input.text,
 .right form textarea.htmleditor {
