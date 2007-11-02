@@ -82,6 +82,11 @@
 	margin: 0;
 }
 
+#deletepage_options p {
+	margin: 4px 0;
+	font-size: 11px;
+	color: #666;
+}
 
 
 /**
@@ -399,6 +404,10 @@ ul.tree li.untranslated a:visited {
 /* IE7 fix: */
 #left form.actionparams #InputSiteTreeFilterDate table {
 	width: 70%;
+}
+
+#left #batchactionsforms label {
+	padding-bottom: 2px;
 }
 
 #right ins * {

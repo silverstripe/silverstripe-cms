@@ -11,7 +11,7 @@
 	<% control Versions %>
 	<tr id="page-$RecordID-version-$Version" class="$EvenOdd $PublishedClass">
 		<td>$Version</td>
-		<td class="$LastEdited" title="$LastEdited.Ago">$LastEdited.Ago</td>
+		<td class="$LastEdited" title="$LastEdited.Ago - $LastEdited.Nice">$LastEdited.Ago</td>
 		<td>$Author.FirstName $Author.Surname.Initial</td>
 		<td>
 		<% if Published %>
@@ -19,11 +19,9 @@
 				$Publisher.FirstName $Publisher.Surname.Initial
 			<% else %>	
 				<% _t('UNKNOWN','Unknown') %>
-
 			<% end_if %>
 		<% else %>
 			<% _t('NOTPUB','Not published') %>
-
 		<% end_if %>
 		</td>			
 	</tr>
