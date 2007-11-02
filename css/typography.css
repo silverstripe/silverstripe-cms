@@ -10,15 +10,16 @@ p, ul, td, th {
 	}
 
 h1, h2 {
-	color: #0074c6;
+	color: #222;
 }
 	h1 {
 		font-size: 20px;
 	}
-	h2 {
-		font-size: 18px;
+	h2{
+		font-family:"Helvetica Neue",Helvetica,Arial,Sans-serif;
+		font-size:12px;
+		font-weight:bold;
 	}
-	
 a {
 	color: #162f42;
 	text-decoration: underline;
