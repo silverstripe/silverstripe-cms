@@ -37,7 +37,7 @@
 	color: #333333;
 	overflow: visible;
 	width: auto;
-	padding: 0 2px;
+	padding: 0;
 	margin: 0 2px;
 	border-color: #CCCCCC rgb(153, 153, 153) rgb(153, 153, 153) rgb(204, 204, 204);
 	border-style: double;
@@ -395,7 +395,7 @@ ul.tree li.untranslated a:visited {
 }
 
 #left form.actionparams .SearchCriteria {
-	width: 45%;
+	width: 37%;
 	float: left;
 }
 #left form.actionparams #InputSiteTreeFilterDate .calendar {
