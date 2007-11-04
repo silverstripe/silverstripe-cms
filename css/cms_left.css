@@ -204,13 +204,13 @@ ul.tree.multiselect li.selected span.a.unexpanded span.b {
 
 ul.tree span.a a.disabled {
 	color: #999;
-	cursor: normal;
+	cursor: default;
 }
 	ul.tree span.a a.disabled * {
 		padding: 0;
 		background: none;
 		color: #999;
-		cursor: normal;
+		cursor: default;
 	}
 	
 
