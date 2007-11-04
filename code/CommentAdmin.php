@@ -45,6 +45,8 @@ class CommentAdmin extends LeftAndMain {
 			$title = "<h2>Spam</h2>";
 		}
 		
+		$filter .= ' AND ParentID>0';
+		
 		$tableFields = array(
 			"Name" => "Author",
 			"Comment" => "Comment",
