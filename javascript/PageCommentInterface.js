@@ -121,7 +121,7 @@ PageCommentInterface.prototype = {
 	 * Ajax handler of moderation removal
 	 */
 	deleteComment: function() {
-		var __comment = this.parentNode.parentNode.parentNode.parentNode;
+		var __comment = this.parentNode.parentNode.parentNode;
 		
 		__comment.getElementsByTagName('span')[0].innerHTML = "Removing...";
 		
