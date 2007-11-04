@@ -1,6 +1,27 @@
 SilverStripe ChangeLog
 
-2.1.0
+2.1.1 (2 Nov 2007)
+
+Bug Fixes
+  - CMS
+      - BBCode help link now works inside CMS
+      - Fixed invalid 'cursor: normal' CSS in cms_left.css
+      - Ensure ComplexTableField CSS is loaded in CMS
+      - Fixed blank comments showing in Comment Admin
+      - Ensure behaviour is applied correctly to new fields in a UserDefinedForm
+      - Fixed fatal error in Newsletter Admin on some servers
+  - Sapphire
+      - Fix infinite redirects when upgrading from 2.0.2
+      - Use the hostname, not the ip address, in dev/test mode tests
+      - Changed the include of the BBCodeParser so it works on more systems
+      - Fixed saving of HasOneComplexTableField and HasManyComplexTableField when value is undefined
+      - Removed extra comma in TableListField.js
+      - Fixed redirection of login when login fails
+      - Fixed bug where removing a comment via ajax removed all comments from display
+      - Fix $_SESSION not saving correctly on some servers
+
+
+2.1.0 (2 Oct 2007)
 
 New Features
   - Comment administration section, and comment moderation
@@ -155,7 +176,7 @@ Installer
   - open_basedir and safe mode fixes
 
 
-2.0.2
+2.0.2 (14 Jul 2007)
 
 New Features
   - BlackCandy is the new default theme
@@ -308,7 +329,7 @@ Installer
   - MySQL password is now a hidden field.
 
 
-2.0.1
+2.0.1 (17 Apr 2007)
 
 New Features
   - Improved layout of UserDefinedForm submissions in CMS
@@ -354,5 +375,5 @@ Installer
   - Apache test passes if apache is used but apache php functions are not available
   - SilverStripe needs at least PHP version 5.0.4
 
-2.0.0
+2.0.0 (3 Feb 2007)
   - Initial release
