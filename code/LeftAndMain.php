@@ -128,6 +128,9 @@ abstract class LeftAndMain extends Controller {
 		// For Widgets
 		Requirements::css('cms/css/WidgetAreaEditor.css');
 		Requirements::javascript('cms/javascript/WidgetAreaEditor.js');
+		
+		// For Blog
+		Requirements::javascript('blog/javascript/bbcodehelp.js');
 
 		Requirements::javascript("sapphire/javascript/Security_login.js");
 
