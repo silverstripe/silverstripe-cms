@@ -191,9 +191,7 @@ body.stillLoading select {
 	display: block; 
 	font-size: 14px;
 	text-decoration: none;
-	letter-spacing: -0.4px;
 	height: 26px; 
-	font-family: Verdana, Arial, Helvetica, sans-serif;
 	line-height: 22px;
 	position: absolute; 
 	top: 5px; 
