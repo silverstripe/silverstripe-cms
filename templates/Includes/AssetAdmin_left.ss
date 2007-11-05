@@ -11,7 +11,7 @@
 	<div id="treepanes" style="overflow-y: auto;">
 			<ul id="TreeActions">
 				<li class="action" id="addpage"><button><% _t('CREATE','Create') %></button></li>
-				<li class="action" id="deletepage"><button><% _t('DELETE','Delete...') %></button></li>
+				<li class="action" id="deletepage"><button><% _t('DELETE','Delete') %></button></li>
 			</ul>
 			<div style="clear:both;"></div>
 			<form class="actionparams" id="addpage_options" style="display: none" action="admin/assets/addfolder">

@@ -26,8 +26,8 @@ ul.tree li.MailType span.Sent a {
 <h2><% _t('NEWSLETTERS','Newsletters') %></h2>
 <div id="treepanes" style="overflow-y: auto;">
 		<ul id="TreeActions">
-			<li class="action" id="addtype"><button><% _t('CREATE','Create...') %></button></li>
-			<li class="action" id="deletedrafts"><button><% _t('DEL','Delete...') %></button></li>
+			<li class="action" id="addtype"><button><% _t('CREATE','Create') %></button></li>
+			<li class="action" id="deletedrafts"><button><% _t('DEL','Delete') %></button></li>
 		</ul>
 		<div style="clear:both;"></div>
 		<form class="actionparams" id="addtype_options" style="display: none" action="admin/newsletter/add">
