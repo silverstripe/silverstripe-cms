@@ -46,7 +46,7 @@
 				<div>
 				<input type="hidden" id="SiteTreeIsFiltered" value="0" />
 				<input type="text" id="SiteTreeSearchTerm" name="SiteTreeSearchTerm" />
-				<input type="submit" id="SiteTreeSearchButton" value="<% _t('SEARCH') %>" title="<% _t('SEARCHTITLE','Search through URL, Title, Menu Title, &amp; Content') %>" />
+				<input type="submit" id="SiteTreeSearchButton" class="action" value="<% _t('SEARCH') %>" title="<% _t('SEARCHTITLE','Search through URL, Title, Menu Title, &amp; Content') %>" />
 				<div style="display:none" id="TextSiteTreeFilterDate" class="SearchCriteria"><% _t('EDITEDSINCE','Edited Since') %>:</div>
 				<div style="display:none" id="InputSiteTreeFilterDate">$SiteTreeFilterDateField</div>
 				<% control SiteTreeFilterOptions %>
@@ -67,14 +67,14 @@
 					<p><% _t('SELECTPAGESACTIONS','Select the pages that you want to change &amp; then click an action:') %></p>
 					<div>		
 					<input type="hidden" name="csvIDs" />
-					<input type="submit"  id="action_delete_selected" value="<% _t('DELETECONFIRM','Delete the selected pages') %>" />
+					<input type="submit" id="action_delete_selected" class="action delete" value="<% _t('DELETECONFIRM','Delete the selected pages') %>" />
 					</div>
 				</form>
 				<form class="actionparams" style="border:0" id="publishpage_options" action="admin/publishitems">
 					<div>
 					<input type="hidden" name="csvIDs" />
 					<input type="checkbox" id="publishpage_show_drafts" /> <label for="publishpage_show_drafts"><% _t('SHOWONLYCHANGED','Show only changed pages') %></label>
-					<input type="submit" id="action_publish_selected" value="<% _t('PUBLISHCONFIRM','Publish the selected pages') %>" />
+					<input type="submit" id="action_publish_selected" class="action" value="<% _t('PUBLISHCONFIRM','Publish the selected pages') %>" />
 					</div>
 				</form>
 			</div>

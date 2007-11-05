@@ -146,7 +146,7 @@
 #deletemarked input.action,
 #UnusedThumbnails button,
 div.Actions input,
-.actionparams input[type="submit"] {
+.actionparams input.action {
 	cursor: pointer;
 	float: left;
  	height: 25px;
@@ -166,9 +166,12 @@ div.Actions input,
 	#CommentFilterButton,
 	#deletemarked input.action,
 	.actions input,
-	.actionparams input[type="submit"] {
+	.actionparams input.action {
 		float: none;
 	}
+		.actionparams input.action {
+			padding: 0;
+		}
 	
 	#deletemarked {
 		text-align: right;
@@ -183,14 +186,15 @@ div.Actions input,
 }
 
 .ajaxActions input:hover,
-div.Actions input:hover {
+div.Actions input:hover,
+.actionparams input[type="submit"]:hover {
 	background: #fff;
 }
 
 input.delete:hover,
 #deletemarked input.delete:hover,
 #UnusedThumbnails button:hover,
-.actionparams input:hover {
+.actionparams input.delete:hover {
 	background: #ce0000;
 	color: #fff;
 }
