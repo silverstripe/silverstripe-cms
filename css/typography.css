@@ -18,13 +18,14 @@ h2 {
 }
 
 a {
-	color: #162F42;
+	font-size: inherit;
+	color: #0074C6;
 	text-decoration: underline;
 }
 
 a:hover {
-	color: #0074C6;
-	text-decoration: underline;
+	text-decoration: none;
+	background: #ccc;
 }
 
 a img {

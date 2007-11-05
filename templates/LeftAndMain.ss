@@ -52,7 +52,7 @@
 				<a class="current" title="Edit this page in the CMS"><% _t('EDIT','Edit') %></a>
 				| <a id="viewStageSite" title="View the Page in the Draft Site" href="home/?stage=Stage"><% _t('DRAFTS','Draft Site') %></a>
 			 | <a id="viewLiveSite" title="View the Page in the Published Site" href="home/?stage=Live"><% _t('PUBLIS','Published Site') %></a>
-			<a style="display: none;left : -5px;" id="viewArchivedSite" href="home/"><% _t('ARCHS','Archived Site') %></a>
+			<a style="margin-left: 20px;" id="viewArchivedSite" href="home/"><% _t('ARCHS','Archived Site') %></a>
 		</div>
 		
 		</div>

@@ -199,6 +199,7 @@ body.stillLoading select {
 	#bottom #logInStatus a,
 	#bottom #logInStatus a:hover {
 		color: #fff;
+		background: none;
 	}
 		#bottom #logInStatus a {
 			text-decoration: underline;
@@ -213,6 +214,9 @@ body.stillLoading select {
 #bottom #switchView {
 	float: left;
 }
+	#bottom #switchView a {
+		background: none;
+	}
 
 #bottom .bottomTabs a {
 	color: #fff;
