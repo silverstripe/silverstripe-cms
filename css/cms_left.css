@@ -343,7 +343,7 @@ ul#sitetree.tree ul ul {
 ul.tree li.untranslated a:link, 
 ul.tree li.untranslated a:hover, 
 ul.tree li.untranslated a:visited {
-	color: #CCCCCC
+	color: #ccc
 }
 
 #left form.actionparams .SearchCriteria {
@@ -356,10 +356,6 @@ ul.tree li.untranslated a:visited {
 /* IE7 fix: */
 #left form.actionparams #InputSiteTreeFilterDate table {
 	width: 70%;
-}
-
-#left #batchactionsforms label {
-	padding-bottom: 2px;
 }
 
 #right ins * {

@@ -272,14 +272,14 @@ HTML;
 					),
 					new Tab(_t('AssetAdmin.UNUSEDFILESTAB', "Unused files"),
 					    new LiteralField("UnusedAssets",
-                            "<div id=\"UnusedAssets\"><p>"._t('AssetAdmin.UNUSEDFILESTITLE', 'Unused files')."</p>"
+                            "<div id=\"UnusedAssets\"><h2>"._t('AssetAdmin.UNUSEDFILESTITLE', 'Unused files')."</h2>"
                         ),
 					    $this->getAssetList(),
 					    new LiteralField("UnusedThumbnails",
                            "</div>
                                 <div id=\"UnusedThumbnails\">
-                                    <p>"._t('AssetAdmin.UNUSEDTHUMBNAILSTITLE', 'Unused thumbnails')."</p>
-                                    <a href=\"#\">"._t('AssetAdmin.DELETEUNUSEDTHUMBNAILS', 'Delete unused thumbnails')."</a>
+                                    <h2>"._t('AssetAdmin.UNUSEDTHUMBNAILSTITLE', 'Unused thumbnails')."</h2>
+                                    <button>"._t('AssetAdmin.DELETEUNUSEDTHUMBNAILS', 'Delete unused thumbnails')."</button>
                                 </div>"
                         )     
                     )

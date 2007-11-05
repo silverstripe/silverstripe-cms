@@ -144,8 +144,9 @@
 #CommentFilterButton,
 .actions input,
 #deletemarked input.action,
-#UnusedThumbnails a,
-div.Actions input {
+#UnusedThumbnails button,
+div.Actions input,
+.actionparams input[type="submit"] {
 	cursor: pointer;
 	float: left;
  	height: 25px;
@@ -164,12 +165,11 @@ div.Actions input {
 	#MemberFilterButton,
 	#CommentFilterButton,
 	#deletemarked input.action,
-	.actions input {
+	.actions input,
+	.actionparams input[type="submit"] {
 		float: none;
 	}
-	#UnusedThumbnails {
-		display: block;
-	}
+	
 	#deletemarked {
 		text-align: right;
 	}
@@ -188,7 +188,9 @@ div.Actions input:hover {
 }
 
 input.delete:hover,
-#deletemarked input.delete:hover {
+#deletemarked input.delete:hover,
+#UnusedThumbnails button:hover,
+.actionparams input:hover {
 	background: #ce0000;
 	color: #fff;
 }

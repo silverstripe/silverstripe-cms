@@ -473,7 +473,7 @@ appendLoader(function () {
 });
 
 Behaviour.register({
-    '#UnusedThumbnails': {
+    '#UnusedThumbnails button': {
         onclick : function(event) {
             Event.stop(event);
             var options = {
