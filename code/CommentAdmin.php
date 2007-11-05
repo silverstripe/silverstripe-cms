@@ -63,7 +63,15 @@ class CommentAdmin extends LeftAndMain {
 		$table = new CommentTableField($this, "Comments", "PageComment", $section, $tableFields, $popupFields, array($filter));
 		$table->setParentClass(false);
 		
-		$fields = new FieldSet(new LiteralField("Title", $title), $idField, $table);
+		$fields = new FieldSet(
+			new TabSet(	'Root',
+				new Tab('Comments',
+					new LiteralField("Title", $title),
+					$idField,
+					$table
+				)
+			)
+		);
 		
 		$actions = new FieldSet();
 		
