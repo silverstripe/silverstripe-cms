@@ -9,21 +9,20 @@ $lang['en_US']['AssetAdmin']['ONLYADMINS'] = 'Only administrators can upload %s 
 $lang['en_US']['AssetAdmin']['TOOLARGE'] = '%s is too large (%s). Files of this type cannot be larger than %s';
 $lang['en_US']['AssetAdmin']['UPLOADEDX'] = 'Uploaded %s files';
 $lang['en_US']['AssetAdmin']['NOTHINGTOUPLOAD'] = 'There was nothing to upload';
-$lang['en_US']['AssetAdmin']['DELSELECTED'] = 'Delete selected files';
-$lang['en_US']['AssetAdmin']['VIEWEDITASSET'] = 'View/Edit Asset';
-$lang['en_US']['AssetAdmin']['VIEWASSET'] = 'View Asset';
 $lang['en_US']['AssetAdmin']['TITLE'] = 'Title';
 $lang['en_US']['AssetAdmin']['FILENAME'] = 'Filename';
-$lang['en_US']['AssetAdmin']['FILESTAB'] = "Files";
-$lang['en_US']['AssetAdmin']['DETAILSTAB'] = "Details";
-$lang['en_US']['AssetAdmin']['UPLOADTAB'] = "Upload";
-$lang['en_US']['AssetAdmin']['UNUSEDFILESTAB'] = "Unused files";
-$lang['en_US']['AssetAdmin']['UNUSEDFILESTITLE'] = 'Unused files';
-$lang['en_US']['AssetAdmin']['UNUSEDTHUMBNAILSTITLE'] = 'Unused thumbnails';
-$lang['en_US']['AssetAdmin']['DELETEUNUSEDTHUMBNAILS'] = 'Delete unused thumbnails';
+$lang['en_US']['AssetAdmin']['VIEWEDITASSET'] = 'View/Edit Asset';
+$lang['en_US']['AssetAdmin']['DELSELECTED'] = 'Delete selected files';
+$lang['en_US']['AssetAdmin']['FILESTAB'] = 'Files';
+$lang['en_US']['AssetAdmin']['DETAILSTAB'] = 'Details';
 $lang['en_US']['AssetAdmin']['TYPE'] = 'Type';
 $lang['en_US']['AssetAdmin']['CREATED'] = 'First Uploaded';
 $lang['en_US']['AssetAdmin']['LASTEDITED'] = 'Last Updated';
+$lang['en_US']['AssetAdmin']['UPLOADTAB'] = 'Upload';
+$lang['en_US']['AssetAdmin']['UNUSEDFILESTAB'] = 'Unused files';
+$lang['en_US']['AssetAdmin']['UNUSEDFILESTITLE'] = 'Unused files';
+$lang['en_US']['AssetAdmin']['UNUSEDTHUMBNAILSTITLE'] = 'Unused thumbnails';
+$lang['en_US']['AssetAdmin']['DELETEUNUSEDTHUMBNAILS'] = 'Delete unused thumbnails';
 $lang['en_US']['AssetAdmin']['SAVEFOLDERNAME'] = 'Save folder name';
 $lang['en_US']['AssetAdmin']['OWNER'] = 'Owner';
 $lang['en_US']['AssetAdmin']['CONTENTUSABLEBY'] = 'Content usable by';
@@ -33,6 +32,7 @@ $lang['en_US']['AssetAdmin']['NOWBROKEN'] = 'These pages now have broken links:'
 $lang['en_US']['AssetAdmin']['DELETEDX'] = 'Deleted %s files.%s';
 $lang['en_US']['AssetAdmin']['SAVEDFILE'] = 'Saved file %s';
 $lang['en_US']['AssetAdmin']['NEWFOLDER'] = 'NewFolder';
+$lang['en_US']['AssetAdmin']['VIEWASSET'] = 'View Asset';
 $lang['en_US']['AssetTableField']['TITLE'] = 'Title';
 $lang['en_US']['AssetTableField']['FILENAME'] = 'Filename';
 $lang['en_US']['AssetTableField']['TYPE'] = 'Type';
@@ -48,10 +48,10 @@ $lang['en_US']['BulkLoaderAdmin']['PREVIEW'] = 'Preview';
 $lang['en_US']['BulkLoaderAdmin']['PRESSCNT'] = 'Press continue to load this data in';
 $lang['en_US']['BulkLoaderAdmin']['CONFIRMBULK'] = 'Confirm bulk load';
 $lang['en_US']['BulkLoaderAdmin']['DATALOADED'] = 'This data has been loaded in';
-$lang['en_US']['CMSMain']['CREATE'] = array(
-	'Create ',
-	PR_MEDIUM,
-	'"Create " message, followed by an action (e.g. "a contact form")'
+$lang['en_US']['LeftAndMain']['SITECONTENT'] = array(
+	'Site Content',
+	PR_HIGH,
+	'Root node on left'
 );
 $lang['en_US']['CMSMain']['REMOVEDFD'] = 'Removed from the draft site';
 $lang['en_US']['CMSMain']['RESTORE'] = 'Restore';
@@ -236,7 +236,6 @@ $lang['en_US']['ImageEditor.ss']['CANCEL'] = 'cancel';
 $lang['en_US']['AssetAdmin_left.ss']['FOLDERS'] = 'Folders';
 $lang['en_US']['AssetAdmin_left.ss']['CREATE'] = 'Create';
 $lang['en_US']['AssetAdmin_left.ss']['DELETE'] = 'Delete...';
-$lang['en_US']['AssetAdmin_left.ss']['REORDER'] = 'Reorder...';
 $lang['en_US']['AssetAdmin_left.ss']['GO'] = 'Go';
 $lang['en_US']['AssetAdmin_left.ss']['SELECTTODEL'] = 'Select the folders that you want to delete and then click the button below';
 $lang['en_US']['AssetAdmin_left.ss']['DELFOLDERS'] = 'Delete the selected folders';
@@ -370,7 +369,6 @@ $lang['en_US']['ReportAdmin_right.ss']['WELCOME2'] = array(
 $lang['en_US']['SecurityAdmin_left.ss']['SECGROUPS'] = 'Security Groups';
 $lang['en_US']['SecurityAdmin_left.ss']['CREATE'] = 'Create';
 $lang['en_US']['SecurityAdmin_left.ss']['DEL'] = 'Delete...';
-$lang['en_US']['SecurityAdmin_left.ss']['REORDER'] = 'Reorder...';
 $lang['en_US']['SecurityAdmin_left.ss']['GO'] = 'Go';
 $lang['en_US']['SecurityAdmin_left.ss']['SELECT'] = 'Select the pages that you want to delete and then click the button below';
 $lang['en_US']['SecurityAdmin_left.ss']['DELGROUPS'] = 'Delete the selected groups';
@@ -450,10 +448,5 @@ $lang['en_US']['ViewArchivedEmail.ss']['HAVEASKED'] = array(
 	'Followed by a date'
 );
 $lang['en_US']['ViewArchivedEmail.ss']['CANACCESS'] = 'You can access the archived site at this link:';
-
-$lang['en_US']['NewsletterAdmin_left.ss'] = array_merge($lang['en_US']['NewsletterAdmin_left.ss'], $lang['en_US']['NewsletterAdmin_SiteTree.ss']);
-$lang['en_US']['ReportAdmin_left.ss'] = array_merge($lang['en_US']['ReportAdmin_left.ss'], $lang['en_US']['ReportAdmin_SiteTree.ss']);
-$lang['en_US']['MemberList.ss'] = array_merge($lang['en_US']['MemberList.ss'], $lang['en_US']['MemberList_Table.ss']);
-$lang['en_US']['PageCommentInterface.ss'] = array_merge($lang['en_US']['PageCommentInterface.ss'], $lang['en_US']['PageCommentInterface_singlecomment.ss']);
 
 ?>
