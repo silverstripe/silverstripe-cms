@@ -1,4 +1,11 @@
 /**
+ * General
+ */
+#right p {
+	margin: 7px 0;
+}
+
+/**
  * Forms
  */
 .right form {
@@ -51,7 +58,7 @@
 #Form_EditorToolbarImageForm fieldset span,
 #Form_EditorToolbarLinkForm fieldset span {
 	float: left;
-	width: 350px;
+	width: 278px;
 	background: none;
 }
 #Form_EditorToolbarLinkForm fieldset li span,
@@ -176,7 +183,7 @@ div.Actions input {
 }
 
 .ajaxActions input:hover,
-div.Actions input {
+div.Actions input:hover {
 	background: #fff;
 }
 
@@ -283,9 +290,9 @@ input.loading {
 	width: 300px;
 	z-index: 200;
 	margin: 0;
-	padding: 10px;
-	
+	padding: 10px;	
 }
+
 #right form.actionparams div.field {
 	margin-left: 6em;
 }

@@ -1,5 +1,5 @@
-<!-- <div class="title"><div style="background-image : url(cms/images/panels/EditPage.png)">Edit Page</div></div> -->
 <% include Editor_toolbar %>
+
 <span id="Translating_Message" class="translatingMessage <% if EditingLang %><% else %>nonTranslating<% end_if %>"></span>
 
 <div id="form_actions_right" class="ajaxActions">

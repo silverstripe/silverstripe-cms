@@ -194,6 +194,14 @@ ul.tree .deleted {
 	color: red;
 	text-decoration: line-through;
 }
+
+#publication_key {
+	border-bottom: 1px solid #ccc;
+	background: #eee;
+	padding: 3px;
+	text-align: center;
+}
+
 /* Created on stage, never published */
 ul.tree ins,
 #publication_key ins {

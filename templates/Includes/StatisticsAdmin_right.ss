@@ -1,5 +1,3 @@
-<!-- <div class="title"><div>Statistics</div></div> -->
-
 <form id="Form_EditForm" action="" method="post" enctype="multipart/form-data">
 <% if EditForm %>
 	$EditForm

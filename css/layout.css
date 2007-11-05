@@ -1,18 +1,24 @@
-html {
+* {
 	margin: 0;
-	height: 100%;
-	overflow:hidden;
-}
-body {
-	height: 100%;
-	margin: 0;
-	background-color: #ccdef3;
+	padding: 0;
+	list-style: none;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
+html {
+	height: 100%;
+	overflow: hidden;
+}
+
+body {
+	height: 100%;
+	background: #ccdef3;
+}
+
+/* Overrides - TODO Find a better place to put them */
 form#Form_EditForm fieldset {
 	height: 100%;
 }
-
 body.stillLoading select {
 	display: none;
 }
@@ -21,7 +27,6 @@ body.stillLoading select {
 #top {
 	font-size: 14px;
 	height: 33px;
-	padding: 0;
 	background: #474855 url(../images/mainmenu/top-bg.gif) top left repeat-x;
 	color: #fff;
 	overflow: hidden;
@@ -100,11 +105,10 @@ body.stillLoading select {
 }
 
 #left h2 {
-	margin: 0;
 	background-image:url(../images/textures/obar-18.gif);
 	height: 18px;
 	line-height: 18px;
-	color: white;
+	color: #fff;
 	font-size: 12px;
 	padding-left: 3px;
 }
@@ -112,13 +116,9 @@ body.stillLoading select {
 /** TOP PANEL **/
 #top #MainMenu {
 	margin: 0 0 0 6px;
-	padding: 0;
 }
 #top #MainMenu li {
-	margin: 0px 4px;
-	padding-top: 0;
-	padding-bottom: 0;
-	list-style-type: none;
+	margin: 0 4px;
 	float: left;
 	height: 33px;
 	cursor: pointer;
@@ -158,27 +158,24 @@ body.stillLoading select {
 #top #Logo {
 	float: right;
 }
-#top #Logo a {
-	margin: 0;
-	display: block; 
-	font-size: 14px;
-	text-decoration: none;
-	height: 26px; 
-	line-height: 22px;
-	position: absolute; 
-	top: 5px; 
-	right: 8px;
-	padding-right: 34px;
-	background: url(../images/mainmenu/logo.gif) right top no-repeat;
-}
+	#top #Logo a {
+		margin: 0;
+		display: block; 
+		font-size: 14px;
+		text-decoration: none;
+		height: 26px; 
+		line-height: 22px;
+		position: absolute; 
+		top: 5px; 
+		right: 8px;
+		padding-right: 34px;
+		background: url(../images/mainmenu/logo.gif) right top no-repeat;
+		color: #fff;
+	}
 	html > body #top #Logo {
 		padding-bottom: 0;
 	}
 	
-	#top #Logo a {
-		color: #fff;
-	}
-
 #bottom {
 	width: 100%;
 	position: absolute;
@@ -191,9 +188,7 @@ body.stillLoading select {
 
 #bottom .holder {
 	text-align: center;
-	padding-top: 5px;
-	padding-left: 3px;
-	padding-right: 6px;
+	padding: 5px 6px 0 3px;
 	font-size: 10px;
 	color: #fff;
 }
@@ -201,14 +196,16 @@ body.stillLoading select {
 #bottom #logInStatus {
 	float: right;
 }
-	#bottom #logInStatus a {
-		color: #FFF;
-		text-decoration: underline;
-	}
+	#bottom #logInStatus a,
 	#bottom #logInStatus a:hover {
 		color: #fff;
-		text-decoration: none;
 	}
+		#bottom #logInStatus a {
+			text-decoration: underline;
+		}
+		#bottom #logInStatus a:hover {
+			text-decoration: none;
+		}
 	#bottom #logInStatus #LogoutLink {
 		background: url(../images/logout.gif) no-repeat right center;
 		padding-right: 20px;
@@ -257,12 +254,10 @@ body.stillLoading select {
 	}
 
 div.spacer, li.spacer {
-	list-style-type: none;
 	float: none;
 	clear: both;
 	background-color: transparent;
 	border-style: none;
-	padding: 0;
 	margin: -1px 0 0 0;
 	height: 1px;
 	font-size: 1px;
@@ -271,13 +266,8 @@ div.spacer, li.spacer {
 /** RIGHT PANEL **/
 .mceToolbarExternal {
 	background-color: #eee;
-	/*border-bottom: 1px #CCC solid;*/
-	/*position: absolute;
-	top: 23px;
-	left: 0;*/
 	display: block;
 }
-
 	.mceToolbarExternal a {
 		text-decoration: none;
 		border: 0 !important;
@@ -286,12 +276,11 @@ div.spacer, li.spacer {
 			border: none;
 		}
 
-
 #right form#Form_EditorToolbarLinkForm,
 #right form#Form_EditorToolbarImageForm,
 #right form#Form_EditorToolbarFlashForm {
-	background-color: #EEE;
-	border-bottom: 1px #CCC solid;
+	background: #eee;
+	border-bottom: 1px solid #ccc;
 	display: none;
 	margin: 1px 0 0 0;
 	padding: 5px;
@@ -307,8 +296,8 @@ div.spacer, li.spacer {
 
 #right form#Form_EditorToolbarLinkForm ul.optionset {
 	height: 1em;
-	margin: 0;
 }
+
 #right form#Form_EditorToolbarLinkForm ul.optionset li {
 	float: left;
 }
@@ -322,12 +311,6 @@ div.spacer, li.spacer {
 	border: 1px solid #aaa;
 }
 
-.thumbnailstrip ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
 .thumbnailstrip li {
 	float: left;
 	margin-right: 4px;
@@ -335,12 +318,12 @@ div.spacer, li.spacer {
 
 /* CMS specific icons for the tree */
 ul.tree li.Root span.Root span.c a {
-	background-image : url(../../cms/images/treeicons/root.png) !important;
+	background-image: url(../../cms/images/treeicons/root.png) !important;
 }
 .TreeDropdownField {
 	background: #ff0;
 }
 /* Misc Styling */
 iframe {
-	border : none;
+	border: none;
 }

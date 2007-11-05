@@ -1,10 +1,7 @@
-<!-- <div class="title"><div>Edit Content</div></div> -->
-
 <% include Editor_toolbar %>
 
 <div id="form_actions_right" class="ajaxActions">
 </div>
-
 
 <form class="actionparams" id="action_send_options" style="display:none" action="admin/newsletter/sendnewsletter">
 	<fieldset>

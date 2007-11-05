@@ -88,17 +88,18 @@
 			</form>
 			<% end_control %>
 
-			<div id="publication_key" style="border-bottom: 1px #CCC solid; background-color: #EEE; padding: 3px;">
-				<% _t('KEY','Key:') %>
-				<ins style="cursor: help" title="<% _t('ADDEDNOTPUB','Added to the draft site and not published yet') %>"><% _t('NEW','new') %></ins>
-				<del style="cursor: help" title="<% _t('DELETEDSTILLLIVE','Deleted from the draft site but still on the live site') %>"><% _t('DEL','deleted') %></del>
-				<span style="cursor: help" title="<% _t('EDITEDNOTPUB','Edited on the draft site and not published yet') %>" class="modified"><% _t('CHANGED','changed') %></span>
-			</div>
-
 			<div id="sitetree_ul">
 				$SiteTreeAsUL
 			</div>
 		</div>
+
+		<div id="publication_key">
+			<% _t('KEY','Key:') %>
+			<ins style="cursor: help" title="<% _t('ADDEDNOTPUB','Added to the draft site and not published yet') %>"><% _t('NEW','new') %></ins>
+			<del style="cursor: help" title="<% _t('DELETEDSTILLLIVE','Deleted from the draft site but still on the live site') %>"><% _t('DEL','deleted') %></del>
+			<span style="cursor: help" title="<% _t('EDITEDNOTPUB','Edited on the draft site and not published yet') %>" class="modified"><% _t('CHANGED','changed') %></span>
+		</div>		
+		
 		<div id="LangSelector_holder" <% if MultipleLanguages %><% else %> class="onelang"<% end_if %>>
 			Language: $LangSelector
 		</div>

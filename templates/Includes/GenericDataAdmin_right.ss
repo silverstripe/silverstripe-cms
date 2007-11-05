@@ -1,4 +1,3 @@
-<!-- <div class="title"><div style="background-image : url(cms/images/panels/EditPage.png)">Edit Page</div></div> -->
 <% include Editor_toolbar %>
 
 <% if EditForm %>
@@ -11,6 +10,5 @@
 		
 	</form>
 <% end_if %>
-
 
 <p id="statusMessage" style="visibility:hidden"></p>
