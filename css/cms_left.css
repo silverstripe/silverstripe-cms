@@ -1,65 +1,42 @@
 #TreeActions {
-	background-color: #EEE;
-	border-bottom: 1px #CCC solid;
+	background: #eee;
+	border-bottom: 1px solid #ccc;
 	padding: 0;
 	margin: 0;
 	/* height: 23px; */
 	float: left;
 	width: 100%;
 }
-
-
-/*#TreeActions li.action {
-	float: left;
-	margin: 0;
-	padding: 2px;
-	list-style-type: none;
-}
-#TreeActions li.action button {
-	margin-left: 0;
-	margin-right: 0;
-	padding: 0pt 0.1em;
-	overflow: visible;
-	width: auto;
-}*/
-
-#TreeActions li {
-	float: left;
-	list-style: none;
-	list-style-type: none;
-}
-
-#TreeActions li button {
-	cursor: pointer;
-	float: left;
- 	height: 25px;
-	background-image: url(../images/textures/ToolBar.png);
-	color: #333333;
-	overflow: visible;
-	width: auto;
-	padding: 0;
-	margin: 0 2px;
-	border-color: #CCCCCC rgb(153, 153, 153) rgb(153, 153, 153) rgb(204, 204, 204);
-	border-style: double;
-	font-weight: bold;
-	font-size: 11px;
-}
-
-#TreeActions li button:active {
-	background: #F4F4F4 none repeat scroll 0%;
-	border-color: #999999 rgb(204, 204, 204) rgb(204, 204, 204) rgb(153, 153, 153);
-}
-
-#TreeActions li button:hover {
-	background: #fff;
-}
-
-#TreeActions li.selected  {
-	background-color: #CCC;
-}
-#TreeActions li.action:hover  {
-	background-color: #CCC;
-}
+	#TreeActions li {
+		float: left;
+		list-style: none;
+		list-style-type: none;
+	}
+		#TreeActions li button {
+			cursor: pointer;
+			float: left;
+			background-image: url(../images/textures/ToolBar.png);
+			color: #333;
+			overflow: visible;
+			width: auto;
+			padding: 0;
+			margin: 1px;
+			border-color: #ccc rgb(153, 153, 153) rgb(153, 153, 153) rgb(204, 204, 204);
+			border-style: double;
+			font-weight: bold;
+			font-size: 11px;
+		}
+		#TreeActions li button:active {
+			background: #F4F4F4 none repeat scroll 0%;
+			border-color: #999 rgb(204, 204, 204) rgb(204, 204, 204) rgb(153, 153, 153);
+		}
+		#TreeActions li button:hover {
+			background: #fff;
+		}
+		#TreeActions li.selected,
+		#TreeActions li.action:hover {
+			background: #ccc;
+		}
 
 #left form.actionparams {
 	background-color: #CCC;
@@ -88,7 +65,6 @@
 	color: #666;
 }
 
-
 /**
  * Selection Groups
  */
@@ -102,7 +78,7 @@
 	clear: left;
 	padding: 0;
 	margin: 0;
-	border: 1px #CCC solid;
+	border: 1px solid #ccc;
 }
 #left .SelectionGroup li input {
 	width: 20px;
@@ -204,13 +180,13 @@ ul.tree.multiselect li.selected span.a.unexpanded span.b {
 
 ul.tree span.a a.disabled {
 	color: #999;
-	cursor: default;
+	cursor: pointer;
 }
 	ul.tree span.a a.disabled * {
 		padding: 0;
 		background: none;
 		color: #999;
-		cursor: default;
+		cursor: pointer;
 	}
 	
 
@@ -223,9 +199,7 @@ ul.tree ins,
 #publication_key ins {
 	color: orange;
 	padding-left : 16px;
-	background-image : url(../../sapphire/images/NewOnStage.png);
-	background-position : 0px 1px;
-	background-repeat : no-repeat;
+	background: url(../../sapphire/images/NewOnStage.png) no-repeat center left;
 	text-decoration : none;
 }
 /* Deleted on stage */
@@ -233,25 +207,22 @@ ul.tree del,
 #publication_key del {
 	color: red;
 	padding-left : 16px;
-	background-image : url(../../sapphire/images/TrashedOnStage.png);
-	background-repeat : no-repeat;
+	background: url(../../sapphire/images/TrashedOnStage.png) no-repeat center left;
 }
 ul.tree span.modified,
 #publication_key span.modified {
 	color: green;
 	padding-left : 16px;
-	background-position : 1px 0px;
-	background-image : url(../../sapphire/images/EditedOnStage.png);
-	background-repeat : no-repeat;
+	background: url(../../sapphire/images/EditedOnStage.png) no-repeat center left;
 	text-decoration : none;
 }
 
 #left {
-	background-color: #EEE;
+	background-color: #eee;
 }
 
 #treepanes {
-	background-color: #FFF;
+	background-color: #fff;
 }
 #treepanes h2 {
 	cursor: pointer;

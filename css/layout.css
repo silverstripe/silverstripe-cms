@@ -1,30 +1,12 @@
-/*
- Tenative color scheme:
- #0074C6  	#95B2C6 #639DC6 	#162F42 #2C5F84
- 4A7695	819BAD
- */
-
 html {
 	margin: 0;
 	height: 100%;
-		overflow:hidden;
+	overflow:hidden;
 }
 body {
 	height: 100%;
 	margin: 0;
-	font-size: 62.5%;
 	background-color: #ccdef3;
-}
-
-#top, 
-#left, 
-#bottom, 
-div.title, 
-div.mceToolbarExternal, 
-ul.tabstrip, 
-div.field label, 
-#separator {
-	/*-moz-user-select: none;*/ /*need to explicitly allow input box selection becuase of this */
 }
 
 form#Form_EditForm fieldset {
@@ -41,7 +23,7 @@ body.stillLoading select {
 	height: 33px;
 	padding: 0;
 	background: #474855 url(../images/mainmenu/top-bg.gif) top left repeat-x;
-	color: #FFF;
+	color: #fff;
 	overflow: hidden;
 }
 #left {
@@ -51,8 +33,8 @@ body.stillLoading select {
 	width: 205px;
 	height: 91%;
 	z-index: 50;
-	border : 1px #acbbcc solid;
-	background-color:#FFFFFF;
+	border: 1px solid #acbbcc;
+	background: #fff;
 }
 #right, #rightbottom {
 	position: absolute;
@@ -62,9 +44,9 @@ body.stillLoading select {
 	width: 600px;
 	overflow: auto;
 	z-index: 50;
-	border: 1px #acbbcc solid;
-	background-color: #eee;
-	margin-right : 3px;
+	border: 1px solid #acbbcc;
+	background: #eee;
+	margin-right: 3px;
 }
 
 #rightbottom {
@@ -79,7 +61,6 @@ body.stillLoading select {
 	width: 3px;
 	cursor: e-resize;
 }
-
 
 /**
  * Hidden left-hand panel
@@ -97,30 +78,25 @@ body.stillLoading select {
 }
 
 
-#left div.title, #right div.title, #rightbottom div.title{
-	border-top: 1px #77BBEE solid;
-	background-image:url(../images/textures/obar.gif);
-	height : 22px !important;
-	background-color : #0075C9;
-	background-repeat : repeat-x !important;
-	background-position: 0px 0px;
+#left div.title, #right div.title, #rightbottom div.title {
+	border-top: 1px solid #77BBEE;
+	height: 22px !important;
+	background: #0075C9 url(../images/texture/obar.gif) repeat-x 0 0;
 }
 
 #rightbottom div.light {
 	background-image: url(../images/textures/obar-light.png) !important;
 }
 
-
-#left div.title div, #right div.title div, #rightbottom div.title div{
-	font-size : 14px;
-	font-weight : bold;
-	color: white;
+#left div.title div, #right div.title div, #rightbottom div.title div {
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
 	padding: 2px 0 0 4px;
 	background-position: 2px 2px;
-	background-repeat:no-repeat;
-	padding-left : 20px;
-	border-top: 1px #77BBEE solid;
-
+	background-repeat: no-repeat;
+	padding-left: 20px;
+	border-top: 1px solid #77BBEE;
 }
 
 #left h2 {
@@ -133,8 +109,6 @@ body.stillLoading select {
 	padding-left: 3px;
 }
 
-
-
 /** TOP PANEL **/
 #top #MainMenu {
 	margin: 0 0 0 6px;
@@ -142,10 +116,8 @@ body.stillLoading select {
 }
 #top #MainMenu li {
 	margin: 0px 4px;
-	/* Do not want to do padding: 0 0; you'll see why */
-	padding-top: 0px;
-	padding-bottom: 0px;
-	
+	padding-top: 0;
+	padding-bottom: 0;
 	list-style-type: none;
 	float: left;
 	height: 33px;
@@ -159,7 +131,7 @@ body.stillLoading select {
 	padding: 0 6px;
 	font-size: 14px;
 	letter-spacing: -0.1px;
-	font-family: "Helvetica Neue", Helvetica, Arial, Sans-serif;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: normal;
 	line-height: 32px;
 	color: #fff;
@@ -178,9 +150,9 @@ body.stillLoading select {
 		background: #cddef3 url(../images/mainmenu/currentHover.gif) repeat-x left top;
 	}
 
-#top #MainMenu .current A:link,#top #MainMenu .current A:visited {
+#top #MainMenu .current a:link,
+#top #MainMenu .current a:visited {
 	color : #2f383f;
-
 }
 
 #top #Logo {
@@ -199,13 +171,13 @@ body.stillLoading select {
 	padding-right: 34px;
 	background: url(../images/mainmenu/logo.gif) right top no-repeat;
 }
-html>body #top #Logo {
-	padding-bottom: 0;
-}
-
-#top #Logo a {
-	color: white;
-}
+	html > body #top #Logo {
+		padding-bottom: 0;
+	}
+	
+	#top #Logo a {
+		color: #fff;
+	}
 
 #bottom {
 	width: 100%;
@@ -213,17 +185,17 @@ html>body #top #Logo {
 	bottom: 0;
 	left: 0;
 	height: 23px;
-	overflow:hidden;
+	overflow: hidden;
 	background: #4d4e5a url(../images/textures/footerBg.gif) repeat-x left top;
 }
 
 #bottom .holder {
 	text-align: center;
 	padding-top: 5px;
-	padding-left : 3px;
-	padding-right : 6px;
+	padding-left: 3px;
+	padding-right: 6px;
 	font-size: 10px;
-	color: white;
+	color: #fff;
 }
 
 #bottom #logInStatus {
@@ -237,13 +209,12 @@ html>body #top #Logo {
 		color: #fff;
 		text-decoration: none;
 	}
-	#bottom #logInStatus a#LogoutLink {
-		background: url(../images/logout.gif) no-repeat right bottom;
+	#bottom #logInStatus #LogoutLink {
+		background: url(../images/logout.gif) no-repeat right center;
 		padding-right: 20px;
 	}
 #bottom #switchView {
 	float: left;
-
 }
 
 #bottom .bottomTabs a {
@@ -252,15 +223,15 @@ html>body #top #Logo {
 
 #bottom .bottomTabs div.blank {
 	display: block;
-	float : left;
-	cursor:pointer;
+	float: left;
+	cursor: pointer;
 	background-color: transparent;
 	padding-right: 4px;
 	font-weight: bold;
 	line-height: 13px;
 	font-size: 11px;
 	padding-left: 2px;
-	color:#FFFFFF;
+	color: #fff;
 }
 #bottom .bottomTabs a.current {
 	cursor: auto;
@@ -271,7 +242,6 @@ html>body #top #Logo {
 
 
 /** LEFT PANEL **/
-
 #sitetree_holder {
 	height: 80%;
 	width: 100%;
@@ -282,10 +252,9 @@ html>body #top #Logo {
 	margin-top: 2px;
 	width: 500px; /* IE's chocking right now */
 }
-
-html>body #sitetree {
-	width: auto;
-}
+	html>body #sitetree {
+		width: auto;
+	}
 
 div.spacer, li.spacer {
 	list-style-type: none;
@@ -300,7 +269,6 @@ div.spacer, li.spacer {
 	width: auto;
 }
 /** RIGHT PANEL **/
-
 .mceToolbarExternal {
 	background-color: #eee;
 	/*border-bottom: 1px #CCC solid;*/
@@ -351,7 +319,7 @@ div.spacer, li.spacer {
 	white-space: nowrap;
 	width: 100%;
 	float: left;
-	border : 1px solid #AAAAAA;
+	border: 1px solid #aaa;
 }
 
 .thumbnailstrip ul {

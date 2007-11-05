@@ -187,11 +187,8 @@ input.delete:hover,
 }
 
 input.loading {
-	background-color: #fff;
-	background-image: url(../images/network-save.gif);
-	background-position: center left;
-	background-repeat: no-repeat;
 	padding-left: 16px;
+	background: #fff url(../images/network-save.gif) no-repeat center left;
 }
 
 /**
@@ -401,16 +398,6 @@ input.loading {
 			max-height: 300px;
 			overflow: auto;
 		}
-		/*.pageStatusMessage {
-			position: absolute;
-			top: 0;
-			right: 0;
-			background-color: #F9F9E3;
-			font-weight: bold;
-			font-size: 12px;
-			padding: 5px;
-		 	border: 1px solid #cc9;
-		}*/
 
 /**
  * TableField Subclasses
@@ -467,25 +454,17 @@ div.CommentFilter {
 }
 
 
-
-
 /**
  * i18n
  */
 div.originallang_holder.field.CompositeField.nolabel {
-	border: 1px dashed #AAAAAA;
+	border: 1px dashed #aaa;
 	margin-bottom: 10px; 
-	margin-left: 0px; 
-	padding-top: 8px;
-	padding-bottom: 6px;
-	padding-left: 5px;
+	margin-left: 0;
+	padding: 8px 0 6px 5px;
 }
 
-.originallang {
-	color: #666666;
-	font-style: italic;
-}
-
+.originallang,
 #Form_EditForm_URLSegment_original {
 	color: #666;
 	font-style: italic;
@@ -493,8 +472,8 @@ div.originallang_holder.field.CompositeField.nolabel {
 
 .right form div.languageDropdown {
 	clear: right;
-	padding-right: 4pt;
 	float: left;
+	padding-right: 4px;
 }
 
 .right form div.createTranslationButton {

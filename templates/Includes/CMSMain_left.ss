@@ -47,17 +47,17 @@
 				<input type="hidden" id="SiteTreeIsFiltered" value="0" />
 				<input type="text" id="SiteTreeSearchTerm" name="SiteTreeSearchTerm" />
 				<input type="submit" id="SiteTreeSearchButton" value="<% _t('SEARCH') %>" title="<% _t('SEARCHTITLE','Search through URL, Title, Menu Title, &amp; Content') %>" />
-				<div style="display:none" id="TextSiteTreeFilterDate" class="SearchCriteria"><b><% _t('EDITEDSINCE','Edited Since') %>:</b></div>
+				<div style="display:none" id="TextSiteTreeFilterDate" class="SearchCriteria"><% _t('EDITEDSINCE','Edited Since') %>:</div>
 				<div style="display:none" id="InputSiteTreeFilterDate">$SiteTreeFilterDateField</div>
 				<% control SiteTreeFilterOptions %>
-					<div style="display:none" id="Text$Column" class="SearchCriteria"><b>$Title:</b></div>
+					<div style="display:none" id="Text$Column" class="SearchCriteria">$Title:</div>
 					<input style="display:none" id="Input$Column" name="$Column" class="SearchCriteria" />
 				<% end_control %>
 				<select id="SiteTreeFilterAddCriteria">
 					<option><% _t('ADDSEARCHCRITERIA','Add Criteria...') %></option>
 					<option value="SiteTreeFilterDate"><% _t('EDITEDSINCE','Edited Since') %></option>
 					<% control SiteTreeFilterOptions %>
-        					<option value="$Column">$Title</option>
+        				<option value="$Column">$Title</option>
 					<% end_control %>
 				</select>
 				</div>
