@@ -48,7 +48,7 @@ $lang['en_US']['BulkLoaderAdmin']['PREVIEW'] = 'Preview';
 $lang['en_US']['BulkLoaderAdmin']['PRESSCNT'] = 'Press continue to load this data in';
 $lang['en_US']['BulkLoaderAdmin']['CONFIRMBULK'] = 'Confirm bulk load';
 $lang['en_US']['BulkLoaderAdmin']['DATALOADED'] = 'This data has been loaded in';
-$lang['en_US']['LeftAndMain']['SITECONTENT'] = array(
+$lang['en_US']['LeftAndMain']['TREESITECONTENT'] = array(
 	'Site Content',
 	PR_HIGH,
 	'Root node on left'
