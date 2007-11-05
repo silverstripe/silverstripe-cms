@@ -4,7 +4,7 @@ i18n::include_locale_file('cms', 'en_US');
 
 global $lang;
 
-$lang['zh_CN'] = $lang['en_US'];
+if(!isset($lang['zh_CN'])) $lang['zh_CN'] = $lang['en_US'];
 
 $lang['zh_CN']['CMSMain']['CREATE'] = '创建';
 $lang['zh_CN']['CMSMain']['REMOVEDFD'] = '从预备发布站删除';
@@ -224,7 +224,7 @@ $lang['zh_CN']['CMSLeft.ss']['GO'] = '执行';
 $lang['zh_CN']['CMSLeft.ss']['SELECTPAGESDEL'] = '选择您想要删除的网页，然后点击下面的按钮';
 $lang['zh_CN']['CMSLeft.ss']['DELPAGES'] = '删除所选网页';
 $lang['zh_CN']['CMSMain_left.ss']['SEARCH'] = '搜索';
-$lang['zh_CN']['CMSMain_left.ss']['BATCHACTIONS'] = '批量行动';
+$lang['zh_CN']['CMSMain_left.ss']['BATCHACTIONS'] = '批量处理';
 $lang['zh_CN']['CMSMain_left.ss']['ENABLEDRAGGING'] = '允许拖拽以重新排序';
 $lang['zh_CN']['CMSMain_left.ss']['SEARCHTITLE'] = '搜索URL（路径），名称，菜单名称以及内容';
 $lang['zh_CN']['CMSMain_left.ss']['EDITEDSINCE'] = '上一次被编辑';
