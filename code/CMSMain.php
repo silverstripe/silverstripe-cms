@@ -118,7 +118,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		if(!$rootID) {
 			$rootLink = $this->Link() . '0';
 			$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-0\" class=\"Root nodelete\"><a href=\"$rootLink\">" .
-				 _t('LeftAndMain.SITECONTENT',"Site Content",PR_HIGH,'Root node on left') . "</a>"
+				 _t('LeftAndMain.TREESITECONTENT',"Site Content",PR_HIGH,'Root node on left') . "</a>"
 				. $siteTree . "</li></ul>";
 		}
 
