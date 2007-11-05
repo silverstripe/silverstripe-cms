@@ -1,5 +1,199 @@
 SilverStripe ChangeLog
 
+2.2.0 (in development)
+
+New Features
+   - New look for CMS
+   - Usability improvements
+   - Image editor, allowing a user to rotate, crop and resize an image from within the CMS
+   - Support for authentification by OpenID
+   - Google Sitemaps support
+   - Internationalisation support
+       - German translation
+       - Dutch translation
+       - Chinese translation
+       - Catalan translation
+       - Spanish translation
+   - Support for multilingual content
+   - Statistics area showing a number of statistics collected on the sight
+   - Added profile popup in CMS
+
+
+Developer Tools
+  - New classes
+      - Authenticator, allowing multiple authentification methods
+      - ConfirmPasswordField
+      - DropdownTimeField
+      - i18n, for internationalisation
+      - LanguageDropdownField
+      - LoginForm, base class for login forms for each authentification method
+      - MemberAuthenticator, providing username/password authentification
+      - MemberLoginForm, refactored from old LoginForm form
+      - PopupDateTimeField
+      - ToggleField
+      - OpenIDAuthenticatedRole, which is an extension to Member that adds OpenID authentification columns
+      - OpenIDAuthenticator, providing OpenID authentification
+      - OpenIDLoginForm, providing OpenID sign in
+      - PageView, which saves the details of each page view for statistics
+      - Statistics, which provides static methods for statistics
+      - Translatable, for multilingual content
+  - New third party libraries
+      - PHP OpenID (http://openidenabled.com/php-openid/)
+      - Browscap (http://garetjax.info/projects/browscap/)
+  - Improved classes
+      - CalendarDateField
+          - Refactored part of Field() into HTMLField() so it can be used in PopupDateTimeField
+      - ComplexTableField
+          - Improved pagination in popup
+          - Better transformation of save-button (replaced indicator with "saving..." label) 
+      - CompositeField
+          - Added SmallFieldHolder() to properly render fields in a FieldGroup
+          - Added insertBeforeRecursive()
+          - Allow empty children
+          - Added Field()
+          - Added linebreaks for HTML
+      - ConfirmedFormAction
+          - Respect $extraClass
+      - ContentController
+          - Save statistics on page views
+          - Added LangAttributes(), for use in XML header
+      - Core
+         - Added _t() for internationalisation
+         - Check if TEMP_FOLDER is already defined before defining it, allowing the user to set the temporary folder themself
+      - DataObject
+         - Added merge()
+      - Director
+          - Added extend_site(), which allows modules to register a function that will be run on every page load
+          - redirectBack() now redirects to the base URL if neither the referrer nor the _REDIRECT_BACK_URL is set
+          - Added support for translatable URLs
+      - Email
+          - Define 'EMAIL_BOUNCEHANDLER_KEY' in sapphire/_config.php and require its value to be sent as 'Key' $_GET var in pings to /Email_BounceHandler to prevent fake email bounce pings
+          - Display an error on duplicate bounce logs instead of a blank screen
+          - If the contents of the X-SilverStripeMessageID header is sent to /Email_BounceHandler in the 'SilverStripeMessageID' _GET variable, then it will be logged in the Newsletter_SentRecipient table so that the bounce report will show up on the 'Sent Status Report' tab of the Newsletter
+          - Bounced newsletter recipient emails and blacklisted by default
+      - FieldSet
+          - Added insertBeforeRecursive()
+      - FileSystem
+          - Added $file_create_mask and $folder_create_mask, which are used whenever creating new files/folders in sapphire
+      - Form
+          - All Forms now have a hidden SecurityID field to prevent CSRF attacks
+          - Added disableSecurityToken() to disable the SecurityID field
+          - Added securityTokenEnabled()
+          - Changed <p class="Actions"> to <div class="Actions">
+          - Renamed PureName() to Name()
+      - GD
+          - Added rotate()
+          - Added rotatePixelByPixel(), allowing rotation where the imagerotate function is unavailable
+          - Added crop()
+          - Added getWidth()
+          - Added getHeight()
+      - Hierachy
+          - Versioned now automatically add suffixes, so Hierachy no longer needs to
+      - HTTP
+          - Added register_modification_timestamp()
+          - Added register_etag()
+      - ImageField
+          - Improved layout
+      - Int
+          - Added support for default value
+      - ManifestBuilder
+          - Refactored getClassManifest() for clearer ignore rules
+          - Ignore i18n language files
+          - Ignore folders that have a '_manifest_exclude' file
+      - Member
+          - Automatically login user if the 'remember login' cookie is set
+          - Added createNewPassword(), which generates a random password, optionally using a word list
+          - Added support for password encryption
+          - Added Locale field to store user preferred language
+      - MemberLoginForm (refactored from old LoginForm)
+          - Save the email address in the session to reuse when the login fails
+      - ModelAsController
+          - Added support for translatable URLs
+      - PasswordField
+          - Always show five stars in performReadonlyTransformation(), so it is impossible to use the information of the password length for brute-force attacks
+      - Permission
+         - Added declare_permissions()
+         - Added get_declared_permissions_list()
+         - Added traverse_declared_permissions()
+         - Added Permission_Group class, used to group permissions together for showing on an interface
+         - Added $admin_implies_all, if this is false then the 'ADMIN' permission doesn't imply all permissions
+         - Refactored Permission::checkMember(), should be faster now because the non-strict checking is now only executed if the user doesn't has the permission
+         - Added deny(), giving the ability to define 'deny permissions'
+      - RecipientImportField
+          - Added default 'GenericEmail.ss' template
+      - RSSFeed
+          - Added support for conditional GETs
+      - Security
+          - Added support for password encryption
+          - Added set_word_list() and get_word_list(), to set the location of the word list used in Member::generateNewPassword()
+      - SiteTree
+          - Changed references to 'stage site' to 'draft site' in TreeTitle()
+          - Use Translatable interface by default
+          - Add content language in MetaTags()
+          - Add delete class to unpublish and rollback buttons
+      - SSViewer
+          - Added support for internationalisation in templates, using <% _t() %>
+          - Added $Iteration in templates, which keeps track of the number of iterations in a control block
+      - TableListField
+          - Prevent onclick event in td.markingcheckbox from showing the popup
+      - TabSet
+          - Remove tabset div to reduce wasted space on tabs
+          - Added insertBeforeRecursive()
+      - ToggleCompositeField
+          - Refactored from TogglePanel
+          - Added icons and used 'cursor: pointer' to make it obvious that it is clickable
+      - Versioned
+          - Added the ability to versionise suffixed tables that have names that are not DataObject descendants
+          - Added canBeVersioned()
+          - Added extendWithSuffix()
+          - Added hasVersionField()
+
+Bug Fixes
+  - Sapphire
+      - E_NOTICE fixes
+      - Fixed incorrect deprecated message in Convert::raw2xml()
+      - Don't show and error message and quit the script when @ is used to suppress the error
+      - Changed width of HTMLEditorFields to prevent horizontal scrollbars in IE7
+      - Added checks in DataObjectSet::First() and DataObjectSet::Last() to prevent errors on an empty $items array
+      - Fixed incorrect treatment of Member::logout() as a static method in Security::logout()
+      - Ensure Priority is set in SiteTree::onBeforeWrite(), otherwise an invalid SQL statement will be generated when the page is published
+      - Only highlight broken links in HTMLEditorFields once, to prevent execution timeouts when there are lots of identical broken links
+      - Fixed bug "Fatal error: Access to undeclared static property: Controller::$db in ../sapphire/core/Object.php(282) : eval()'d code on line 1"
+      - Fixed DataObjectDecorators not supporting indexes and defaults
+      - Fixed ReportField generating invalid HTML
+      - In Member::setBlacklistedEmail() call this->write() so that the BlacklistedEmail field state will be saved to the Member database table
+      - Fix Email_BlackList::isBlocked() to check the BlockedEmail field instead of non-existant Email field so that it will actaully return true when an email is blocked
+      - Fix layout problems with search box in IE by only generating a label tag if TItle is set in FormField::FieldHolder()
+      - Fixed Permission::check() not p[assing $strict to Permission::checkMember()
+      - Fixed HTTP::gmt_date()
+      - Fix validation of Member extensions
+      - Removed DriversLicense references from LoginForm (project specific clutter)
+      - Added check for existence of #sitetree in RelationComplexTableField.js
+		- Fixed VirtualPage creation
+		- Fixed lighttpd flushing bug
+		- Fixed CustomRequiredFields
+      - Fix bugs with ComplexTableField when it is used outside of the CMS
+      - Fixed error saving when value is undefined in HasOneComplexTableField and HasManyComplexTableField
+      - Fixed saving error in FileIFrameField
+      - Added a security fix for Security::check_default_admin()
+      - Fixed caching in DataObject::getManyManyComponents() to take into account different SQL parameters
+      - Geop::ip2country() now throws an E_USER_NOTICE instead of an error when it cannot run geoiplookup
+      - Added if() check around a foreach loop that was causing errors when there were no entries in an RSS feed
+      - Fix inheritance in ManyManyComplexTableField
+      - Fixed FormField::setRightTitle() not showing because of a typo
+      - Create assets folder if doesn't eixts on ErrorPage publish
+      - Fixed submission of ImageField when no file was selected
+      - Catch errors in ContentController::deleteinstallfiles()
+      - Fix generation of group codes on creation of a Group
+      - Fix title on LabelledLiteralField
+      - Fix ImageField deleting the Image instead of unlinking it from the page
+      - Set TimeField value to null when a bad value is passed
+      - Don't return a span when the Title doesn't exist in DropdownField
+  - CMS
+      - E_NOTICE fixes
+      - Fixed Email link not working in page history
+
+
 2.1.1 (2 Nov 2007)
 
 Bug Fixes
