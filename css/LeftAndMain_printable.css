@@ -22,17 +22,9 @@ form div.field {
 form .inlineformaction,
 form .inlineformaction_readonly,
 form .action,
-form .action_readonly
-{
+form .action_readonly {
 	display: none !important;
 }
-
-/*.pageStatusMessage {
-	position: absolute;
-	right: 2em;
-	top: 2em;
-	border: 1px #777 solid;
-}*/
 
 .TableListField table.data th {
 	background: #eee;

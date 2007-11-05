@@ -1,16 +1,11 @@
 #TreeActions {
 	background: #eee;
 	border-bottom: 1px solid #ccc;
-	padding: 0;
-	margin: 0;
-	/* height: 23px; */
 	float: left;
 	width: 100%;
 }
 	#TreeActions li {
 		float: left;
-		list-style: none;
-		list-style-type: none;
 	}
 		#TreeActions li button {
 			cursor: pointer;
@@ -19,7 +14,6 @@
 			color: #333;
 			overflow: visible;
 			width: auto;
-			padding: 0;
 			margin: 1px;
 			border-color: #ccc rgb(153, 153, 153) rgb(153, 153, 153) rgb(204, 204, 204);
 			border-style: double;
@@ -39,14 +33,12 @@
 		}
 
 #left form.actionparams {
-	background-color: #CCC;
-	border-bottom: 1px #EEE solid;
-	margin: 0;
+	background: #ccc;
+	border-bottom: 1px solid #eee;
 	padding: 0.5em;
 }
 #left form.actionparams select {
 	width: 75%;
-	margin: 0;
 }
 #PageType,
 #ReportSelector_holder select {
@@ -56,7 +48,6 @@
 }
 #left form.actionparms input.action {
 	width: 5%;
-	margin: 0;
 }
 
 #deletepage_options p {
@@ -69,21 +60,16 @@
  * Selection Groups
  */
 #left .SelectionGroup {
-	padding: 0;
-	margin: 0;
 	display: block;
 }
 #left .SelectionGroup li {
 	list-style-type: none;
 	clear: left;
-	padding: 0;
-	margin: 0;
 	border: 1px solid #ccc;
 }
 #left .SelectionGroup li input {
 	width: 20px;
 	float: left;
-	margin: 0;
 }
 #left .SelectionGroup li div.field {
 	display: none;
@@ -91,7 +77,6 @@
 }
 #left .SelectionGroup li label {
 	margin: 0 0 0 2px;
-	padding: 0;
 	display: block;
 	height: 1.2em;
 	width: auto;
@@ -134,18 +119,6 @@ ul.tree span.a.current {
 	background-position: 100px 50%;
 	/*position: relative;*/
 }
-
-
-
-/*
-ul.tree span.a.current span#currentNodeActions {
-	position: absolute;
-	right: 0;
-	top: 0;
-	background-color: white;
-	padding: 0 3px;
-}
-*/
 
 ul.tree span.a.loading span.b span.c a {
 	background-image: url(../images/network-save.gif) !important;

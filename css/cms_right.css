@@ -1,9 +1,13 @@
 /**
  * General
  */
-#right p {
+#right p,
+#right .optionset {
 	margin: 7px 0;
 }
+	#right .optionset li {
+		margin: 4px 0;
+	}
 
 /**
  * Forms
@@ -77,7 +81,6 @@
 	border: 1px solid #a7a7a7;
 	padding: 3px;
 	width: 99%;
-	/*outline: 3px solid #e9e9e9;*/
 }
 	.right form textarea.htmleditor {
 		display: none;
@@ -131,10 +134,8 @@
  */
 .ajaxActions {
 	position: absolute;
-	bottom: 3px;
+	bottom: 5px;
 	right: 15px;
-	padding: 0;
-	margin: 0;
 	text-align: right;
 }
 
@@ -165,7 +166,6 @@ div.Actions input {
 	#deletemarked input.action,
 	.actions input {
 		float: none;
-		padding: 0;
 	}
 	#UnusedThumbnails {
 		display: block;
@@ -209,14 +209,12 @@ input.loading {
 	border-top: none;
 	position: relative;
 	top: 0;
-	margin: 0;
 	padding: 10px;
 }
 
 .right form div.tabset {
 	border: 1px solid #fff; /* Hack for FF1.5/Win Float-Bug */
 	clear: left;
-	margin: 0;
 }
 
 /**
@@ -262,9 +260,6 @@ input.loading {
 #rightbottom form input.action {
 	width: auto;
 }
-#rightbottom form ul.optionset {
-	padding: 0;
-}
 #rightbottom form .optionset li {
 	list-style: none;
 }
@@ -289,7 +284,6 @@ input.loading {
 	right: 11px;
 	width: 300px;
 	z-index: 200;
-	margin: 0;
 	padding: 10px;	
 }
 
@@ -350,18 +344,13 @@ input.loading {
  */
 .autocomplete {
 	background: #eee;
-	margin: 0;
-	padding: 0;
 }
 	.autocomplete ul {
 		border: 1px solid #aaa;
-		margin: 0;
-		padding: 0;
 	}
 	.autocomplete li {
 		list-style-type: none;
 		cursor: pointer;
-		margin: 0;
 		font-size: 12px;
 		padding: 3px;
 		white-space: nowrap;
@@ -379,8 +368,8 @@ input.loading {
 	#statusMessage {
 		position: absolute;
 		z-index: 500;
-		bottom: 3px;
-		left: 3px;
+		bottom: 4px;
+		left: 10px;
 		text-align: left;
 	 	padding: 2px 20px 2px 20px;
 	 	font-size: 14px;
@@ -388,7 +377,7 @@ input.loading {
 		color: #660;
 		background: #f4f3eb;
 		border: 1px solid #a9a67d;
-		margin: 0 2px 1px 7px;
+		margin: 0 !important;
 		line-height: 1.5;
 	}
 		#statusMessage.good {
@@ -412,11 +401,10 @@ input.loading {
 div.MemberListFilter,
 div.MemberFilter,
 div.CommentFilter {
-	/*float: right;*/
 	width: 35em;
 	margin: 5px 0;
 	padding: 5px;
-	background-color : #ebeadb;
+	background: #ebeadb;
 	border: 1px solid #aca899;
 }
 	div.MemberListFilter span.middleColumn,
@@ -431,8 +419,10 @@ div.CommentFilter {
 		display: block;
 		width: 5em;
 		float: left;
-		margin-left: 0em;
+		margin-left: 0;
 		line-height: 2.3;
+		font-weight: bold;
+		font-size: 12px;
 	}
 	
 	div.MemberListFilter div.field,
@@ -497,16 +487,3 @@ div.originallang_holder.field.CompositeField.nolabel {
 .nonTranslating {
 	display: none;
 }
-
-/* Access tab styling */
-#Viewers,
-#Editors {
-	margin: 0;
-}
-	#Viewers .middleColumn,
-	#Editors .middleColumn {
-		display: block;
-		background: none;
-		padding: 0;
-	}
-	
