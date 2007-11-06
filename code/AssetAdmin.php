@@ -470,7 +470,7 @@ JS;
 
 		$rootLink = $this->Link() . 'show/root';
 
-		if(!isset($rootID)) $siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-root\" class=\"Root\"><strong><a href=\"$rootLink\">http://www.yoursite.com/assets</strong></a>"
+		if(!isset($rootID)) $siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-root\" class=\"Root\"><a href=\"$rootLink\"><strong>http://www.yoursite.com/assets</strong></a>"
 
 					. $siteTree . "</li></ul>";
 

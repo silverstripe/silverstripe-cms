@@ -27,6 +27,23 @@
 	.right form .dropdowntime input {
 		font-size: 14px;
 	}
+		.right form .field span.readonly {
+			margin: 0;
+			width: auto;
+		}
+			.right form #URL .fieldgroup label.left {
+				float: left;
+				width: 100px;
+			}
+			.right form #URL .fieldgroup span.readonly {
+				background: none;
+				display: inline;
+				border: none;
+				padding: 0;
+				font-size: 10px;
+				font-weight: bold;
+			}
+			
 	.right form .dropdown {
 		font-size: 12px;
 	}
