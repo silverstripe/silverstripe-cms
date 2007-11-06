@@ -61,7 +61,7 @@
 			$command = $this->requestParams['command'];
 			$this->checkFileExists($fileName);
 			$fileInfo = pathinfo($fileName);
-			$gd = new GD($fileName);
+			$gd = new GD($this->url2File($fileName));
 			switch($command) {
 				case 'rotate':
 					$angle = $_POST['angle'];
