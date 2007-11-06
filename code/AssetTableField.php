@@ -91,7 +91,7 @@ class AssetTableField extends ComplexTableField {
 			$detailFormFields->addFieldToTab("BottomRoot", 
 				new Tab("Image",
 					new LiteralField("ImageFull",
-						'<a id="ImageEditorActivator" href="javascript: void(0)">' . "<img id='thumbnailImage' src='{$thumbnail}?r=" . rand(1,100000)  . "' alt='{$childData->Name}' />" . '</a>' .
+						'<a id="ImageEditorActivator" href="javascript: void(0)">' . "<img id='thumbnailImage' src='{$thumbnail}?r=" . rand(1,100000)  . "' alt='{$childData->Name}' /><p>Edit this image</p>" . '</a>' .
 						'<script type="text/javascript" src="cms/javascript/ImageEditor/Activator.js"></script><script type="text/javascript">var imageActivator = new ImageEditor.Activator.initialize();Event.observe("ImageEditorActivator","click",imageActivator.onOpen);</script>'
 					)
 				),
