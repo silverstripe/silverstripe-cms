@@ -366,7 +366,7 @@ div.spacer, li.spacer {
 	 * than any DOM-elemnt under it.
 	 * @see http://www.aplus.co.yu/lab/z-pos/
 	 */
-	overflow: hidden;
+	/*overflow: hidden;*/
 	z-index: 1001;
 }
 
