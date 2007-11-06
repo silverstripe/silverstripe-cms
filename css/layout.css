@@ -408,10 +408,11 @@ iframe {
 #contentPanel {
 	background-color: #FFFFFF;
 	width: 205px;
-	float: left;
 	position: absolute;
 	border: 1px solid #ACBBCC;
 	top: 45px;
-	padding 3px;
+	padding: 0;
+	margin-right: 10px;
+	overflow:hidden;
 }
 
