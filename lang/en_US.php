@@ -161,7 +161,7 @@ $lang['en_US']['LeftAndMain']['HELP'] = array(
 	'Menu title'
 );
 $lang['en_US']['LeftAndMain']['PAGETYPE'] = 'Page type: ';
-$lang['en_US']['LeftAndMain']['SITECONTENTLEFT'] = array(
+$lang['en_US']['LeftAndMain']['TREESITECONTENT'] = array(
 	'Site Content',
 	PR_HIGH,
 	'Root node on left'
