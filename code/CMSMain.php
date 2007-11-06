@@ -15,10 +15,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * SiteTree Columns that can be filtered using the the Site Tree Search button
 	 */
 	static $site_tree_filter_options = array(
-		'ClassName' => 'Page Type', 
-		'Status' => 'Status', 
-		'MetaDescription' => 'Description', 
-		'MetaKeywords' => 'Keywords'
+		'ClassName' => array('CMSMain.PAGETYPE', 'Page Type'), 
+		'Status' => array('CMSMain.STATUS', 'Status'),
+		'MetaDescription' => array('CMSMain.METADESC', 'Description'),
+		'MetaKeywords' => array('CMSMain.METAKEYWORDS', 'Keywords')
 	);
 
 	public function init() {
@@ -81,7 +81,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		foreach(self::$site_tree_filter_options as $key => $value) {
    			$record = array(
 				'Column' => $key,
-				'Title' => $value,
+				'Title' => _t($value[0], $value[1])
 			);
 			$filter_options->push(new ArrayData($record));
 		}
