@@ -279,7 +279,7 @@ HTML;
                            "</div>
                                 <div id=\"UnusedThumbnails\">
                                     <h2>"._t('AssetAdmin.UNUSEDTHUMBNAILSTITLE', 'Unused thumbnails')."</h2>
-                                    <button>"._t('AssetAdmin.DELETEUNUSEDTHUMBNAILS', 'Delete unused thumbnails')."</button>
+                                    <button class=\"action\">"._t('AssetAdmin.DELETEUNUSEDTHUMBNAILS', 'Delete unused thumbnails')."</button>
                                 </div>"
                         )     
                     )

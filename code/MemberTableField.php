@@ -216,7 +216,7 @@ class MemberTableField extends ComplexTableField {
 		}
 		$groupFields = new DropdownField('MemberGroup','Filter by group',$groupArray );
 
-		$actionFields = new LiteralField('MemberFilterButton','<input type="submit" name="MemberFilterButton" value="Filter" id="MemberFilterButton"/>');
+		$actionFields = new LiteralField('MemberFilterButton','<input type="submit" class="action" name="MemberFilterButton" value="Filter" id="MemberFilterButton"/>');
 
 		$fieldContainer = new FieldGroup(
 				$searchFields,

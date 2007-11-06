@@ -138,7 +138,7 @@ class CommentTableField extends ComplexTableField {
 			new HiddenField('CommentFieldName','',$this->name)
 		);
 		
-		$actionFields = new LiteralField('CommentFilterButton','<input type="submit" name="CommentFilterButton" value="Filter" id="CommentFilterButton"/>');
+		$actionFields = new LiteralField('CommentFilterButton','<input type="submit" class="action" name="CommentFilterButton" value="Filter" id="CommentFilterButton"/>');
 		
 		$fieldContainer = new FieldGroup(
 			$searchFields,
