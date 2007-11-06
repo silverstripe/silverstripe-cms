@@ -117,6 +117,10 @@ abstract class LeftAndMain extends Controller {
 		Requirements::css('sapphire/css/CalendarDateField.css');
 		Requirements::css('jsparty/calendar/calendar-win2k-1.css');
 		
+		Requirements::css('sapphire/javascript/DropdownTimeField.js');
+		Requirements::css('sapphire/css/DropdownTimeField.css');
+		Requirements::css('sapphire/css/PopupDateTimeField.css');
+		
 		Requirements::javascript('sapphire/javascript/SelectionGroup.js');
 		Requirements::css('sapphire/css/SelectionGroup.css');
 		
