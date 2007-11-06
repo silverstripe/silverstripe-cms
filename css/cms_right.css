@@ -172,6 +172,7 @@ div.Actions input,
 	}
 		.actionparams input.action {
 			padding: 0;
+			height: auto;
 		}
 	
 	#deletemarked {
