@@ -23,7 +23,8 @@
 }
 	.right form .text,
 	.right form .field span.readonly,
-	.right form .calendardate input {
+	.right form .calendardate input,
+	.right form .dropdowntime input {
 		font-size: 14px;
 	}
 	.right form .dropdown {
