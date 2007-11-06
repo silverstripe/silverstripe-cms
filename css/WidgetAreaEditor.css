@@ -24,14 +24,16 @@ div.availableWidgets div.Widget {
 }
 div.widgetDescription p,
 div.widgetFields {
-	margin-left: 8px;
+	padding: 0 8px;
+	color: #666;
+	font-size: 11px;
 }
 
 p.deleteWidget {
 	margin: 0;
-	height: 2.2em;
-	line-height: 2.2em;
-	font-size: 1.2em;
+	height: 22px;
+	line-height: 2.2;
+	font-size: 12px;
 }
 span.widgetDelete {
 	padding-left: 20px;
@@ -42,11 +44,10 @@ span.widgetDelete {
 }
 div.usedWidgets div.Widget h3,
 div.availableWidgets div.Widget h3 {
-	font-size: 1.3em;
-	height: 1.5em;
+	font-size: 12px;
 	color: #fff;
-	line-height: 1.5em;
+	line-height: 1.8;
 	text-indent: 5px;
-	background: #7ab7ec url(../images/widget-title-bg.gif);
+	background: #000 url(../images/textures/obar-18.gif);
 	margin: 0;
 }
