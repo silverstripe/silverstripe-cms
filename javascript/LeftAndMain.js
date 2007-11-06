@@ -42,7 +42,16 @@ function fixRightWidth() {
 	$('right').style.left = (sep + 6) + 'px';
 
 	// Give the remaining space to right
-	var rightWidth = parseInt(document.body.offsetWidth) - parseInt($('left').offsetWidth) - $('separator').offsetWidth - 8;
+	var bodyWidth = parseInt(document.body.offsetWidth);
+	var leftWidth = parseInt($('left').offsetWidth);
+	var sepWidth = parseInt($('separator').offsetWidth - 8);
+	var rightWidth = bodyWidth - leftWidth - sepWidth -18;
+	
+	// Extra pane in right for insert image/flash/link things
+	if($('contentPanel').style.display != "none") {
+		rightWidth -= 210;
+		$('contentPanel').style.left = leftWidth + sepWidth + rightWidth + sepWidth + 23 + 'px';
+	}
 
 	if( rightWidth >= 0 )
 		$('right').style.width = rightWidth + 'px';
@@ -144,7 +153,12 @@ window.onresize = function(init) {
 	var rightbottom = $('rightbottom');
 	if(rightbottom) rightbottom.style.display = 'none';
 
-	if(typeof fitToParent == 'function') fitToParent('right', 12);
+	if(typeof fitToParent == 'function') {
+		fitToParent('right', 12);
+		if($('contentPanel')) {
+			fitToParent('contentPanel', 12);
+		}
+	}
 
 	if( $('left') && $('separator') && right ) {
 		// #right has padding-bottom to make room for AJAX Action buttons so we need to add that

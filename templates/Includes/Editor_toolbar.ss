@@ -32,10 +32,4 @@
 </table>
 </div>
 
-$LinkForm
-
-$ImageForm
-
-$FlashForm
-
 <% end_control %>

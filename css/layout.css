@@ -177,7 +177,8 @@ body.stillLoading select {
 	border-top: 1px solid #77BBEE;
 }
 
-#left h2 {
+#left h2,
+#contentPanel h2 {
 	background-image:url(../images/textures/obar-18.gif);
 	height: 18px;
 	line-height: 18px;
@@ -380,7 +381,6 @@ div.spacer, li.spacer {
 }
 
 .thumbnailstrip {
-	height: 58px;
 	overflow: auto;
 	white-space: nowrap;
 	width: 100%;
@@ -404,3 +404,14 @@ ul.tree li.Root span.Root span.c a {
 iframe {
 	border: none;
 }
+
+#contentPanel {
+	background-color: #FFFFFF;
+	width: 205px;
+	float: left;
+	position: absolute;
+	border: 1px solid #ACBBCC;
+	top: 45px;
+	padding 3px;
+}
+

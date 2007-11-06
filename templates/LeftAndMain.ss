@@ -33,6 +33,14 @@
 	</div>
 	<% end_if %>
 	
+	<div id="contentPanel" style="display:none;">
+		<% control EditorToolbar %>
+			$ImageForm
+			$LinkForm
+			$FlashForm
+		<% end_control %>
+	</div>
+	
 	<div id="bottom">
 		<div class="holder">
 		<div id="logInStatus">

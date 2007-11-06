@@ -1,3 +1,4 @@
+
 <% include Editor_toolbar %>
 
 <span id="Translating_Message" class="translatingMessage <% if EditingLang %><% else %>nonTranslating<% end_if %>"></span>
