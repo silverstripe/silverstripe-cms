@@ -60,6 +60,7 @@
 			if(strpos($fileName,'?') !== false) $fileName = substr($fileName,0,strpos($fileName,'?'));
 			$command = $this->requestParams['command'];
 			$this->checkFileExists($fileName);
+			$fileInfo = pathinfo($fileName);
 			$gd = new GD($fileName);
 			switch($command) {
 				case 'rotate':
