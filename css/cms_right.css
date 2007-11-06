@@ -71,11 +71,12 @@
 	float: none;
 }
 #right .TreeDropdownField {
-	width: 300px;
-	float: left;
+	width: 27.7em;
 	background: #fff;
 	font-size: 12px;
+	height: 21px;
 }
+
 .right form textarea,
 .right form input.text,
 .right form textarea.htmleditor {
