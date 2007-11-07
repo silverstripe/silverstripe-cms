@@ -108,7 +108,6 @@
 #Form_EditorToolbarImageForm fieldset span,
 #Form_EditorToolbarLinkForm fieldset span {
 	float: left;
-	background: none;
 }
 #Form_EditorToolbarLinkForm fieldset li span,
 #Form_EditorToolbarImageForm fieldset li span {
