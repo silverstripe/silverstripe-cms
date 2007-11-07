@@ -432,7 +432,7 @@ iframe {
 	border-right: none;
 }
 #contentPanel .thumbnailstrip {
-	width: 184px;	
+	width: 195px;	
 	border: none;
 }
 #contentPanel fieldset {
@@ -509,6 +509,9 @@ iframe {
 }
 #contentPanel div.Actions {
 	margin: 2px 0 0 5px;
+}
+#contentPanel #Image a.selectedImage img {
+	border: 2px solid #222;
 }
  /* going to use this */
 #BlankImage {
