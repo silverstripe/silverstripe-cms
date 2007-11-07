@@ -282,8 +282,9 @@ body.stillLoading select {
 			text-decoration: none;
 		}
 	#bottom #logInStatus #LogoutLink {
-		background: url(../images/logout.gif) no-repeat right center;
+		background: url(../images/logout.gif) no-repeat right top;
 		padding-right: 20px;
+		padding-bottom: 3px;
 	}
 #bottom #switchView {
 	float: left;
