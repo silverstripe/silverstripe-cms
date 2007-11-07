@@ -97,21 +97,21 @@ td.sized3 {
 }
 
 ul.tree li#stoverview a {
-	background-image: url(../images/treeicons/task-file.gif);
+	background: url(../images/treeicons/task-file.gif) no-repeat;
 }
 
 ul.tree li#stusers a {
-	background-image: url(../images/treeicons/multi-user.gif);
+	background: url(../images/treeicons/multi-user.gif) no-repeat;
 }
 
 ul.tree li#stviews a {
-	background-image: url(../images/treeicons/preferences-file.gif);
+	background: url(../images/treeicons/preferences-file.gif) no-repeat;
 }
 
 ul.tree li#sttrends a {
-	background-image: url(../images/treeicons/element-file.gif);
+	background: url(../images/treeicons/element-file.gif) no-repeat;
 }
 
 ul.tree li#stbrowsers a, ul.tree li#stos a {
-	background-image: url(../images/treeicons/reports-file.png);
+	background: url(../images/treeicons/reports-file.png) no-repeat;
 }
