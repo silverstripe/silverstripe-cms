@@ -404,9 +404,11 @@ ul.tree li.Root span.Root span.c a {
 iframe {
 	border: none;
 }
-
+/* Content Panel Design
+ * This is our new right hand pane for inserting images and links etc
+ */
 #contentPanel {
-	background-color: #FFFFFF;
+	background-color: #fff;
 	width: 205px;
 	position: absolute;
 	border: 1px solid #ACBBCC;
@@ -414,5 +416,69 @@ iframe {
 	padding: 0;
 	margin-right: 10px;
 	overflow:hidden;
+	font-size: 12px;
 }
 
+#contentPanel div,
+#contentPanel p#TargetBlank {
+	margin-left: 0;
+}
+#contentPanel div.TreeDropdownField span.items {
+	width: 162px;
+	background: #fff;
+	border:1px solid #A7A7A7;
+	border-right: none;
+}
+#contentPanel .thumbnailstrip {
+	width: 184px;	
+	border: none;
+}
+#contentPanel fieldset {
+	padding: 5px;
+}
+#contentPanel h2 {
+	margin: -5px -5px 0 -5px;
+}
+#contentPanel select {
+	width: 186px;
+	padding: 1px 0;
+	font-size: 12px;
+}
+#contentPanel option {
+	font-size: 12px;
+}
+#contentPanel span.middleColumn {
+	background:#E9E9E9 none repeat scroll 0%;
+	display:block;
+	padding:3px;
+	width:98%;
+}
+#contentPanel input.text {
+	border:1px solid #A7A7A7;
+	padding:3px;
+	width: 179px;
+}
+#contentPanel #Dimensions span {
+	background: none;
+}
+/* Image height and width inputs. We need to position them in the right places */
+#contentPanel input#Form_EditorToolbarImageForm_Width {
+	width: 30px;
+}
+#contentPanel input#Form_EditorToolbarImageForm_Height {
+	width: 30px;
+}
+#Form_EditorToolbarImageForm #Image {
+	margin: 5px;
+}
+#Form_EditorToolbarImageForm #Image img {
+	border: 2px solid #e4e3e3;
+}
+#contentPanel div.Actions {
+	margin: 2px 0 0 5px;
+}
+ /* going to use this */
+#BlankImage {
+	text-indent: -9000px;
+
+}
