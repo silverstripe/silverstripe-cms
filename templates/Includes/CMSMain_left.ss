@@ -32,7 +32,7 @@
 				</div>
 				-->
 				<div>
-				<input class="action" type="submit" value="Go" />
+				<input class="action" type="submit" value="<% _t('Go','Go') %>" />
 				</div>
 				<div class="field dropdown nolabel" style="margin-top: 4px;">
 					<span class="middleColumn">
