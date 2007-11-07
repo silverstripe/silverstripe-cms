@@ -58,6 +58,13 @@
 	.right form .dropdown {
 		font-size: 12px;
 	}
+		.right form .dropdown select {
+			font-size: 12px;
+			height: 19px;
+		}
+			.right form .dropdown select option {
+				font-size: 12px;
+			}
 	.right form .field span.middleColumn {
 		display: block;
 		background: #e9e9e9;
