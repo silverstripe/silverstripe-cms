@@ -290,6 +290,7 @@ $lang['en_US']['CMSMain_left.ss']['BATCHACTIONS'] = array(
 	'Batch Actions',
 	PR_HIGH
 );
+$lang['en_US']['CMSMain_left.ss']['GO'] = 'Go';
 $lang['en_US']['CMSMain_left.ss']['ENABLEDRAGGING'] = array(
 	'Allow drag &amp; drop reordering',
 	 PR_HIGH
@@ -316,7 +317,6 @@ $lang['en_US']['CMSMain_left.ss']['COMPAREMODE'] = 'Compare mode (click 2 below)
 $lang['en_US']['CMSMain_left.ss']['SHOWUNPUB'] = 'Show unpublished versions';
 $lang['en_US']['CMSMain_left.ss']['COMMENTS'] = 'Comments';
 $lang['en_US']['CMSMain_left.ss']['SITEREPORTS'] = 'Site Reports';
-$lang['en_US']['CMSMain_left.ss']['GO'] = 'Go';
 $lang['en_US']['CMSMain_right.ss']['SENDTO'] = 'Send to';
 $lang['en_US']['CMSMain_right.ss']['LOADING'] = 'loading...';
 $lang['en_US']['CMSMain_right.ss']['STATUS'] = 'Status';
