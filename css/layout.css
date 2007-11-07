@@ -425,15 +425,17 @@ iframe {
 	margin-left: 0;
 }
 #contentPanel div.TreeDropdownField span.items {
-	width: 162px;
+	width: 165px;
 	background: #fff;
 	font-size: 12px;
 	border:1px solid #A7A7A7;
 	border-right: none;
 }
 #contentPanel .thumbnailstrip {
-	width: 195px;	
 	border: none;
+	width: 195px;
+	height: 120px;
+	overflow-y: auto;	
 }
 #contentPanel fieldset {
 	padding: 5px;
