@@ -23,6 +23,8 @@
 }
 	.right form .text,
 	.right form .field span.readonly,
+	.right form .field span.readonly i,
+	.right form div.TableListField table i,
 	.right form .calendardate input,
 	.right form .dropdowntime input {
 		font-size: 14px;
@@ -74,14 +76,17 @@
 .right form .optionset input {
 	border: none;
 }
-	
+
+.right form .field label {
+	font-size: 11px;
+}
 .right form .field label.left {
 	float: none;
 	display: block;
 	margin-left: 0;
 	color: #666;
 	margin-bottom: 3px;
-	font-size: 11px;
+	/*font-size: 11px;*/
 	width: 96%;
 }
 #Form_EditorToolbarImageForm fieldset label.left, 
@@ -116,6 +121,9 @@
 	border: 1px solid #a7a7a7;
 	padding: 3px;
 	width: 99%;
+}
+.right form textarea {
+	font-size: 12px;
 }
 	.right form textarea.htmleditor {
 		display: none;
