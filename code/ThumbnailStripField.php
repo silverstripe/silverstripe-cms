@@ -70,8 +70,8 @@ class ThumbnailStripField extends FormField {
 				
 				$result .= 
 						'<li>' .
-						'<a href=" ' . $image->Filename . '">' .
-								'<img class="destwidth=' . round($width) . ',destheight=' . round($height) . '" src="'. $thumbnail->URL .'" alt="' . $image->Title . '" title="' . $image->Title .   '" />' .
+						'<a href=" ' . $image->Filename . '?r=' . rand(1,100000) . '">' .
+								'<img class="destwidth=' . round($width) . ',destheight=' . round($height) . '" src="'. $thumbnail->URL . '" alt="' . $image->Title . '" title="' . $image->Title .   '" />' .
 						'</a>' .
 						'</li>';
 			}

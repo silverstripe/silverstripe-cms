@@ -59,6 +59,7 @@ abstract class LeftAndMain extends Controller {
 		Requirements::javascript('jsparty/layout_helpers.js');
 
 		Requirements::javascript(MCE_ROOT . 'tiny_mce_src.js');
+		Requirements::javascript('cms/javascript/ImageEditor/Activator.js');
 		Requirements::javascript('jsparty/tiny_mce_improvements.js');
 
 		Requirements::javascript('jsparty/scriptaculous/effects.js');

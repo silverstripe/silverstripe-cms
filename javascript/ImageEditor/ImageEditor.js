@@ -30,8 +30,7 @@ ImageEditor.Main = {
 	},
 	
 	onCloseClick: function() {
-		window.parent.frames[0].location.reload(1);
-		window.parent.frames[1].location.reload(1);
+		window.parent.imageEditorClosed();
 		ImageEditor.imageTransformation.close(ImageEditor.Main.onCloseCallback.bind(this));
 	},
 	
