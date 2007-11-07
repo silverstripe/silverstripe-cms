@@ -475,3 +475,9 @@ div.originallang_holder.field.CompositeField.nolabel {
 #contentPanel ul.tree a {
 	padding-left: 15px;
 }
+#contentPanel h2 img {
+	float: right;
+	margin-right: 2px;
+	cursor: pointer;
+}
+
