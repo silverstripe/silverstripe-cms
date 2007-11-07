@@ -107,10 +107,12 @@
 	width:120px;
 }
 #Form_EditorToolbarImageForm fieldset span,
+#Form_EditorToolbarFlashForm fieldset span,
 #Form_EditorToolbarLinkForm fieldset span {
 	float: left;
 }
 #Form_EditorToolbarLinkForm fieldset li span,
+#Form_EditorToolbarFlashForm fieldset li span,
 #Form_EditorToolbarImageForm fieldset li span {
 	float: none;
 }

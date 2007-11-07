@@ -2,12 +2,8 @@
     display: inline;
     margin-left: 2px;
 }
-.middleColumn
-{
+.middleColumn {
     margin-bottom: 2px;	
-	 float: left;
-}
-.addFolder{
 }
 .link {
     text-decoration: none;

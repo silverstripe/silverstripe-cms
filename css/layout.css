@@ -476,6 +476,26 @@ iframe {
 #Form_EditorToolbarFlashForm #Flash {
 	margin: 5px;
 }
+#Form_EditorToolbarImageForm fieldset label.left,
+#Form_EditorToolbarFlashForm fieldset label.left, 
+#Form_EditorToolbarLinkForm fieldset label.left {
+	float:left;
+	margin-left:0px;
+	color: #000;
+	line-height: 18px;
+	font-size: 12px;
+	width:120px;
+}
+#Form_EditorToolbarImageForm fieldset span,
+#Form_EditorToolbarFlashForm fieldset span,
+#Form_EditorToolbarLinkForm fieldset span {
+	float: left;
+}
+#Form_EditorToolbarLinkForm fieldset li span,
+#Form_EditorToolbarFlashForm fieldset li span,
+#Form_EditorToolbarImageForm fieldset li span {
+	float: none;
+}
 #Form_EditorToolbarImageForm #Image img {
 	border: 2px solid #e4e3e3;
 }
