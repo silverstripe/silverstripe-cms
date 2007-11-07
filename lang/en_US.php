@@ -48,6 +48,26 @@ $lang['en_US']['BulkLoaderAdmin']['PREVIEW'] = 'Preview';
 $lang['en_US']['BulkLoaderAdmin']['PRESSCNT'] = 'Press continue to load this data in';
 $lang['en_US']['BulkLoaderAdmin']['CONFIRMBULK'] = 'Confirm bulk load';
 $lang['en_US']['BulkLoaderAdmin']['DATALOADED'] = 'This data has been loaded in';
+$lang['en_US']['CMSMain']['PAGETYPEOPT'] = array(
+	'Page Type',
+	 0,
+	'The dropdown title in CMSMain left SiteTreeFilterOptions'
+);
+$lang['en_US']['CMSMain']['STATUSOPT'] = array(
+	'Status',
+	  0,
+	'The dropdown title in CMSMain left SiteTreeFilterOptions'
+);
+$lang['en_US']['CMSMain']['METADESCOPT'] = array(
+	'Description',
+	 0,
+	'The dropdown title in CMSMain left SiteTreeFilterOptions'
+);
+$lang['en_US']['CMSMain']['METAKEYWORDSOPT'] = array(
+	'Keywords',
+	 0,
+	'The dropdown title in CMSMain left SiteTreeFilterOptions'
+);
 $lang['en_US']['LeftAndMain']['TREESITECONTENT'] = array(
 	'Site Content',
 	PR_HIGH,
@@ -161,7 +181,7 @@ $lang['en_US']['LeftAndMain']['HELP'] = array(
 	'Menu title'
 );
 $lang['en_US']['LeftAndMain']['PAGETYPE'] = 'Page type: ';
-$lang['en_US']['LeftAndMain']['TREESITECONTENT'] = array(
+$lang['en_US']['LeftAndMain']['SITECONTENTLEFT'] = array(
 	'Site Content',
 	PR_HIGH,
 	'Root node on left'
