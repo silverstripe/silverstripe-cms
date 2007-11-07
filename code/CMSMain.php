@@ -20,6 +20,15 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'MetaDescription' => array('CMSMain.METADESC', 'Description'),
 		'MetaKeywords' => array('CMSMain.METAKEYWORDS', 'Keywords')
 	);
+	
+	static function T_SiteTreeFilterOptions(){
+		return array(
+			'ClassName' => _t('CMSMain.PAGETYPEOPT', 'Page Type', 0, "The dropdown title in CMSMain left SiteTreeFilterOptions"), 
+			'Status' => _t('CMSMain.STATUSOPT', 'Status',  0, "The dropdown title in CMSMain left SiteTreeFilterOptions"), 
+			'MetaDescription' => _t('CMSMain.METADESCOPT', 'Description', 0, "The dropdown title in CMSMain left SiteTreeFilterOptions"), 
+			'MetaKeywords' => _t('CMSMain.METAKEYWORDSOPT', 'Keywords', 0, "The dropdown title in CMSMain left SiteTreeFilterOptions"), 
+		);
+	}
 
 	public function init() {
 		parent::init();
@@ -78,10 +87,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 */
 	public function SiteTreeFilterOptions() {
 		$filter_options = new DataObjectSet();
-		foreach(self::$site_tree_filter_options as $key => $value) {
+		foreach(self::T_SiteTreeFilterOptions() as $key => $value) {
    			$record = array(
 				'Column' => $key,
-				'Title' => _t($value[0], $value[1])
+				'Title' => $value,
 			);
 			$filter_options->push(new ArrayData($record));
 		}
@@ -1365,7 +1374,7 @@ function cmsMainMarkingFilterFunction($node) {
 			}
 		}
 		// Now check if a specified Criteria attribute matches
-		foreach (CMSMain::$site_tree_filter_options as $key => $value)
+		foreach (CMSMain::T_SiteTreeFilterOptions() as $key => $value)
 		{
 			if (!empty($_REQUEST[$key])) {
 				$parameterName = $key;
