@@ -481,9 +481,9 @@ iframe {
 #Form_EditorToolbarLinkForm fieldset label.left {
 	float:left;
 	margin-left:0px;
-	color: #000;
+	color: #666;
 	line-height: 18px;
-	font-size: 12px;
+	font-size: 11px;
 	width:120px;
 }
 #Form_EditorToolbarImageForm fieldset span,
@@ -496,6 +496,14 @@ iframe {
 #Form_EditorToolbarImageForm fieldset li span {
 	float: none;
 }
+
+#Form_EditorToolbarImageForm_Width,
+#Form_EditorToolbarImageForm_Height,
+#Form_EditorToolbarFlashForm_Width,
+#Form_EditorToolbarFlashForm_Height {
+	outline: 3px solid #E9E9E9;
+}
+
 #Form_EditorToolbarImageForm #Image img {
 	border: 2px solid #e4e3e3;
 }

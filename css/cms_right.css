@@ -96,26 +96,6 @@
 	/*font-size: 11px;*/
 	width: 96%;
 }
-#Form_EditorToolbarImageForm fieldset label.left,
-#Form_EditorToolbarFlashForm fieldset label.left, 
-#Form_EditorToolbarLinkForm fieldset label.left {
-	float:left;
-	margin-left:0px;
-	color: #000;
-	line-height: 18px;
-	font-size: 12px;
-	width:120px;
-}
-#Form_EditorToolbarImageForm fieldset span,
-#Form_EditorToolbarFlashForm fieldset span,
-#Form_EditorToolbarLinkForm fieldset span {
-	float: left;
-}
-#Form_EditorToolbarLinkForm fieldset li span,
-#Form_EditorToolbarFlashForm fieldset li span,
-#Form_EditorToolbarImageForm fieldset li span {
-	float: none;
-}
 #right .TreeDropdownField {
 	width: 27.7em;
 	background: #fff;
