@@ -5,7 +5,7 @@
 .middleColumn
 {
     margin-bottom: 2px;	
-    display: inline;
+	 float: left;
 }
 .addFolder{
 }

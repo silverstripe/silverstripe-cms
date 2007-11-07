@@ -464,13 +464,16 @@ iframe {
 	background: none;
 }
 /* Image height and width inputs. We need to position them in the right places */
-#contentPanel input#Form_EditorToolbarImageForm_Width {
+#contentPanel input#Form_EditorToolbarImageForm_Width,
+#contentPanel input#Form_EditorToolbarFlashForm_Width {
 	width: 30px;
 }
-#contentPanel input#Form_EditorToolbarImageForm_Height {
+#contentPanel input#Form_EditorToolbarImageForm_Height,
+#contentPanel input#Form_EditorToolbarFlashForm_Height {
 	width: 30px;
 }
-#Form_EditorToolbarImageForm #Image {
+#Form_EditorToolbarImageForm #Image,
+#Form_EditorToolbarFlashForm #Flash {
 	margin: 5px;
 }
 #Form_EditorToolbarImageForm #Image img {

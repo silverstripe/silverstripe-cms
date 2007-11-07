@@ -96,7 +96,8 @@
 	/*font-size: 11px;*/
 	width: 96%;
 }
-#Form_EditorToolbarImageForm fieldset label.left, 
+#Form_EditorToolbarImageForm fieldset label.left,
+#Form_EditorToolbarFlashForm fieldset label.left, 
 #Form_EditorToolbarLinkForm fieldset label.left {
 	float:left;
 	margin-left:0px;
