@@ -73,7 +73,7 @@ class StatisticsAdmin extends LeftAndMain {
 	 * Form that will be shown when we open one of the items
 	 */
 	public function EditForm() {
-		return "<div id=\"bovs\">\n
+		return "<div class=\"tab statstab\" id=\"bovs\">\n
 		<h1>Select a report type from the left for a detailed look at site statistics</h1>\n\n" .
 		$this->RecentViews() .
 		"\n\n</div>\n\n" .
@@ -111,12 +111,12 @@ class StatisticsAdmin extends LeftAndMain {
 
 
 	function showAll() {
-		return $this->BrowserPie() .
+		return '<div class="tab statstab">' . $this->BrowserPie() .
 		$this->OSPie() .
 		$this->UACPie() .
 		$this->Trend() .
 		$this->UserTable() .
-		$this->ViewTable();
+		$this->ViewTable() . '</div>';
 	}
 
 	public function viewcsv() {
