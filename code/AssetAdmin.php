@@ -746,7 +746,7 @@ JS;
         }
         if($where == "") return "(ClassName = 'File' OR ClassName =  'Image')";
         $where = substr($where,0,strlen($where)-1);
-        $where = "ID NOT IN (" . $where . ") AND (ClassName = 'File' OR ClassName =  'Image')";
+        $where = "`File`.ID NOT IN (" . $where . ") AND (ClassName = 'File' OR ClassName =  'Image')";
         return $where;
 	}
 	
