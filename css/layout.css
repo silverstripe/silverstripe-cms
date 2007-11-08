@@ -396,7 +396,7 @@ div.spacer, li.spacer {
 
 /* CMS specific icons for the tree */
 ul.tree li.Root span.Root span.c a {
-	background-image: url(../../cms/images/treeicons/root.png) !important;
+	background: url(../../cms/images/treeicons/root.png) no-repeat !important;
 }
 .TreeDropdownField {
 	background: #ff0;

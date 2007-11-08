@@ -3,13 +3,17 @@
 	border-bottom: 1px solid #eee;
 	padding: 3px 5px;
 }
+#left form.actionparams input,
 #left form.actionparams select {
-	width: 75%;
 	padding: 1px;
 }
+#left form.actionparams select,
 #PageType,
 #ReportSelector_holder select {
 	width: 75%;
+}
+#PageType,
+#ReportSelector_holder select {
 	float: left;
 	margin-right: 3px;
 }
@@ -313,8 +317,14 @@ ul.tree li.untranslated a:visited {
 	color: #ccc
 }
 
-#left form.actionparams .SearchCriteria {
-	width: 37%;
+#left form.actionparams div.SearchCriteria {
+	width: 40%;
+	overflow: hidden;
+	float: left;
+}
+
+#left form.actionparams input.SearchCriteria {
+	width: 41%;
 	float: left;
 }
 #left form.actionparams #InputSiteTreeFilterDate .calendar {
