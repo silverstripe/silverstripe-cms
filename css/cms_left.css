@@ -144,28 +144,29 @@ ul.tree .deleted {
 	background: #eee;
 	padding: 3px;
 	text-align: center;
+	font-weight: bold;
 }
+	#publication_key ins,
+	#publication_key del,
+	#publication_key span {
+		margin: 0 5px;
+		font-weight: normal;
+	}
 
 /* Created on stage, never published */
 ul.tree ins,
 #publication_key ins {
 	color: orange;
-	padding-left : 16px;
-	background: url(../../sapphire/images/NewOnStage.png) no-repeat center left;
 	text-decoration : none;
 }
 /* Deleted on stage */
 ul.tree del,
 #publication_key del {
 	color: red;
-	padding-left : 16px;
-	background: url(../../sapphire/images/TrashedOnStage.png) no-repeat center left;
 }
 ul.tree span.modified,
 #publication_key span.modified {
 	color: green;
-	padding-left : 16px;
-	background: url(../../sapphire/images/EditedOnStage.png) no-repeat center left;
 	text-decoration : none;
 }
 
