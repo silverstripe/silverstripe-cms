@@ -111,11 +111,10 @@ class ThumbnailStripField extends FormField {
 //	</object>
 //</a>
 //HTML;
-				$mceRoot = MCE_ROOT . 
 				$result .= <<<HTML
 <li>
 <a href="$flashObject->URL">
-	<img src="{$mceRoot}themes/advanced/images/spacer_flash.jpg" alt="spacer" width="$width" height="$height" />
+	<img src="cms/images/flash_small.jpg" alt="spacer" />
 	<br />
 	$flashObject->Name
 </a>
