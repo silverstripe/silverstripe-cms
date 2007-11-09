@@ -97,6 +97,9 @@ body.stillLoading select {
 }
 
 /** 3-PANEL LAYOUT **/
+#right {
+	overflow: hidden;
+}
 #top {
 	font-size: 14px;
 	height: 33px;
