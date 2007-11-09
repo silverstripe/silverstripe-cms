@@ -9,10 +9,8 @@
     text-decoration: none;
     margin-left: 2px;
 } 
-/* HACK FOR IE6 */
-#TreeDropdownField_Form_EditorToolbarImageForm_FolderID {
-    display: expression('inline');	
-}
+
+
 .tree_holder {
     display: inline;
 }

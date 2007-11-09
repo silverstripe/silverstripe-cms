@@ -398,9 +398,7 @@ div.spacer, li.spacer {
 ul.tree li.Root span.Root span.c a {
 	background: url(../../cms/images/treeicons/root.png) no-repeat !important;
 }
-.TreeDropdownField {
-	background: #ff0;
-}
+
 /* Misc Styling */
 iframe {
 	border: none;
