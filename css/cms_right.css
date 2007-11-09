@@ -403,6 +403,7 @@ div.CommentFilter {
 /* Makes room for AJAX Action buttons */
 #right {
 	padding-bottom: 20px;
+	overflow: hidden;
 	/* HACK: any IE */
 	padding-bottom: expression('35px');
 }
