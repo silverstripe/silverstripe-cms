@@ -184,12 +184,20 @@ window.onresize = function(init) {
 		if($('Form_EditorToolbarImageForm') && $('Form_EditorToolbarImageForm').style.display == "block") {
 			fitToParent('Form_EditorToolbarImageForm', 5);
 			fitToParent($('Form_EditorToolbarImageForm').getElementsByTagName('fieldset')[0]);
-			fitToParent('Image', 170);
+			if(navigator.appName == "Microsoft Internet Explorer") {
+				fitToParent('Image');
+			} else {
+				fitToParent('Image', 170);
+			}
 		}
 		if($('Form_EditorToolbarFlashForm') && $('Form_EditorToolbarFlashForm').style.display == "block") {
 			fitToParent('Form_EditorToolbarFlashForm', 5);
 			fitToParent($('Form_EditorToolbarFlashForm').getElementsByTagName('fieldset')[0]);
-			fitToParent('Flash', 80);
+			if(navigator.appName == "Microsoft Internet Explorer") {
+				fitToParent('Flash');
+			} else {
+				fitToParent('Flash', 80);
+			}
 		}
 	
 	}
