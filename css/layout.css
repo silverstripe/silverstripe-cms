@@ -509,7 +509,8 @@ iframe {
 	border: 2px solid #e4e3e3;
 }
 #contentPanel div.Actions {
-	margin: 2px 0 0 5px;
+	margin: 2px 5px 0 0;
+	text-align: right;
 }
 #contentPanel #Image a.selectedImage img,
 #contentPanel #Flash a.selectedFlash img {
