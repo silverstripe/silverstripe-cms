@@ -13,6 +13,7 @@ CMSMain_upload.prototype = {
     onLoad: function() {
         this.upload = new Upload({
                 fileUploadLimit : '6',
+                securityID : $('SecurityID').value,
                 beginUploadOnQueue : false,
                 fileQueued : this.uploadFileQueuedCallback.bind(this),
                 fileProgress : this.uploadProgressCallback.bind(this),

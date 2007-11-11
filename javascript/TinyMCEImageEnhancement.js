@@ -10,28 +10,12 @@ TinyMCEImageEnhancement.prototype = {
         Event.observe(window,'load',this.onWindowLoad.bind(this));
     },
     
-    buildUI: function() {
+    addListeners: function() {
         $('Form_EditorToolbarImageForm_FolderID').value = "";
         
-        divAddFolder = this.addElement('div','group',$('FolderID'),{'id': 'AddFolderGroup'});
-        addFolder = this.addElement('a','link',divAddFolder,{'id': 'AddFolder','href' : '#','innerHTML': 'add folder'});
-        newFolderName = this.addElement('input', 'addFolder',divAddFolder,{'id': 'NewFolderName','type' : 'text'});
-        Element.hide(newFolderName);
-        var folderOk = this.addElement('a','link',divAddFolder,{'id': 'FolderOk','href' : '#','innerHTML': 'ok'});
-        Element.hide(folderOk);
-        Element.addClassName(folderOk,'addFolder');
-        var folderCancel = this.addElement('a','link',divAddFolder,{'id': 'FolderCancel','href' : '#','innerHTML': 'cancel'});
-        Element.hide(folderCancel);
-        Element.addClassName(folderCancel,'addFolder');
-        
-        var divUpload = this.addElement('div','group',$('FolderID'),{'id': 'UploadrGroup'});
-        var pipeSeparator = this.addElement('div','',divUpload,{'id' : 'PipeSeparator','innerHTML' : ' | '});
-        pipeSeparator.style.display = "inline";
-        var uploadFiles = this.addElement('a','link',divUpload,{'id' : 'UploadFiles','href' : '#','innerHTML' : 'upload'}); 
-        
-        Event.observe(addFolder,'click',this.onAddFolder.bind(this));
-        Event.observe(folderOk,'click',this.onFolderOk.bind(this));
-        Event.observe(folderCancel,'click',this.onFolderCancel.bind(this));    
+        Event.observe($('AddFolder'),'click',this.onAddFolder.bind(this));
+        Event.observe($('FolderOk'),'click',this.onFolderOk.bind(this));
+        Event.observe($('FolderCancel'),'click',this.onFolderCancel.bind(this)); 
         Event.observe($('UploadFiles'),'click',this.onUpload.bind(this));
     },   
     
@@ -153,8 +137,9 @@ TinyMCEImageEnhancement.prototype = {
 	               fileTypes : '*.jpeg;*.jpg;*.jpe;*.png;*.gif;',
 	               fileTypesDescription : 'Image files',
 	               fileUploadLimit : '100',
+	               securityID : $('SecurityID').value,
 	               beginUploadOnQueue : true,
-                   buildUI : this.buildUI.bind(this),
+                   buildUI : this.addListeners.bind(this),
                    fileQueued : this.uploadFileQueuedCallback.bind(this),
                    fileComplete : this.uploadFileCompleteCallback.bind(this),
                    queueComplete : this.uploadQueueCompleteCallback.bind(this)
