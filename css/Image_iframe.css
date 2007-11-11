@@ -26,10 +26,14 @@ h2 {
 }
 .SelectionGroup li {
 	list-style-type: none;
-	margin: 0;
+	margin: 0 0 4px;
+}
+.SelectionGroup li label {
+	font-size: 11px;
 }
 .SelectionGroup li input.selector {
 	width: 20px;
+	margin-top: 0;
 }
 
 
@@ -37,10 +41,16 @@ h2 {
 	display: none;
 }
 .SelectionGroup li.selected div.field {
-	margin-left: 30px;
 	display: block;
+	margin-left: 30px;
 	margin-bottom: 1em;
+	margin-top: 4px;
 }
+.mainblock .SelectionGroup li.selected div.field {
+	margin-left: 27px;
+	margin-bottom: 4px;
+}
+
 .SelectionGroup li.selected label.selector {
 	font-weight: bold;
 }
@@ -50,7 +60,7 @@ h2 {
 /**
  * TreeDropdownField stying
  */
-div.TreeDropdownField {
+.SelectionGroup div.TreeDropdownField {
 	width: 241px;
 	padding: 0;
 }
@@ -58,19 +68,19 @@ html>body div.TreeDropdownField {
 	position:relative;
 }
 
-div.TreeDropdownField span.items {
+.SelectionGroup div.TreeDropdownField span.items {
 	display: block;
 	height: 100%;
 	border: 1px #7f9db9 solid;
 	cursor: pointer;
-	width: 220px;
+	width: 214px;
 	float: left;
 	padding-top: 2px;
 	padding-bottom: 2px;
 	background-color: white;
 }
 
-div.TreeDropdownField div.tree_holder {
+.SelectionGroup div.TreeDropdownField div.tree_holder {
 	clear: left;
 	cursor: default;
 	border: 1px black solid;
@@ -83,7 +93,7 @@ div.TreeDropdownField div.tree_holder {
 	 */
 	position:absolute;
 	z-index:10;
-	width:240px;/*must have for any value*/
+	width:238px;/*must have for any value*/
 }
 
 html>body div.TreeDropdownField div.tree_holder {
@@ -95,7 +105,7 @@ html>body div.TreeDropdownField div.tree_holder {
 /**
  * HACK IE6, see http://www.hedgerwow.com/360/bugs/css-select-free.html
  */
-div.TreeDropdownField div.tree_holder iframe {
+.SelectionGroup div.TreeDropdownField div.tree_holder iframe {
 	display:none;/* IE5*/
 	display/**/:block;/* IE5*/
 	position:absolute;
@@ -138,4 +148,12 @@ div.TreeDropdownField a.editLink {
 	margin-right: 5px;
 	height: 140px;
 	position: relative;
+}
+
+.mainblock form fieldset {
+	border: none;
+}
+
+.mainblock form div.Actions input {
+	font-size: 11px;
 }
