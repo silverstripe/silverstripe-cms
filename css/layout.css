@@ -270,16 +270,13 @@ body.stillLoading select {
 #bottom #logInStatus {
 	float: right;
 }
-	#bottom #logInStatus a,
-	#bottom #logInStatus a:hover {
+	#bottom a {
 		color: #fff;
 		background: none;
 	}
-		#bottom #logInStatus a {
-			text-decoration: underline;
-		}
-		#bottom #logInStatus a:hover {
+		#bottom a:hover {
 			text-decoration: none;
+			color: #ccc;
 		}
 	#bottom #logInStatus #LogoutLink {
 		background: url(../images/logout.gif) no-repeat right top;
@@ -309,10 +306,11 @@ body.stillLoading select {
 	padding-left: 2px;
 	color: #fff;
 }
-#bottom .bottomTabs a.current {
-	cursor: auto;
+#bottom .bottomTabs .current {
+	color: #ccc;
 }
 	#bottom .bottomTabs a:hover {
+		color: #ccc;
 		text-decoration: none;
 	}
 
