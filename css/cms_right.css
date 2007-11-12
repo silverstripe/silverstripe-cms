@@ -44,6 +44,11 @@
 				border:1px dotted #CCCCCC;
 				padding:3px;
 			}
+				.right form #URL .originallang_holder {
+					display: inline;
+					border: none;
+					padding: 0;
+				}
 			.right form #URL .fieldgroup input {
 				border: 1px solid #A7A7A7;
 				padding: 2px;
