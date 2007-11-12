@@ -166,7 +166,11 @@ class PageComment extends DataObject {
 	}
 	
 	function RSSTitle() {
-		return "Comment by '". Convert::raw2xml($this->Name) . "' on " . $this->Parent()->Title;
+		return sprintf(
+			_t('PageComment.COMMENTBY', "Comment by '%s' on %s", PR_MEDIUM, 'Name, Page Title'),
+			Convert::raw2xml($this->Name),
+			$this->Parent()->Title
+		);
 	}
 	function rss() {
 		$parentcheck = isset($_REQUEST['pageid']) ? "ParentID = {$_REQUEST['pageid']}" : "ParentID > 0";
