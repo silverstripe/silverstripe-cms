@@ -60,14 +60,17 @@
 				padding: 0;
 			}
 				
-	.right form .dropdown {
+	.right form .dropdown,
+	.right form .countrydropdown {
 		font-size: 12px;
 	}
-		.right form .dropdown select {
+		.right form .dropdown select,
+		.right form .countrydropdown select {
 			font-size: 12px;
 			height: 19px;
 		}
-			.right form .dropdown select option {
+			.right form .dropdown select option,
+			.right form .countrydropdown select option {
 				font-size: 12px;
 			}
 	.right form .field span.middleColumn {
