@@ -69,9 +69,9 @@
 			</tbody>
 		</table>
 		<div class="utility">
-			<% if Can(export) %>
-				$ExportButton
-			<% end_if %>
+			<% control Utility %>
+				<span class="item"><a href="$Link" target="_blank">$Title</a></span>
+			<% end_control %>
 		</div>
 	</div>
 </div>
