@@ -549,9 +549,11 @@ JS;
 
 		$p->write();
 	
-	
-		return $this->returnItemToUser($p);
-
+		if(isset($_REQUEST['returnID'])) {
+			return $p->ID;
+		} else {
+			return $this->returnItemToUser($p);
+		}
 	}
 	
 	/**

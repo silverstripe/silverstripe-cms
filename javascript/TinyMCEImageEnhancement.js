@@ -62,7 +62,7 @@ TinyMCEImageEnhancement.prototype = {
         var folderName = $('NewFolderName').value;
         var options = {
             method: 'post',
-            postBody: 'ParentID=' + this.getParentID() + '&ajax=1' + ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : ''),
+            postBody: 'ParentID=' + this.getParentID() + '&ajax=1&returnID=1' + ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : ''),
             onSuccess: this.onFolderGetSuccess.bind(this),
             onFailure: function(transport) {
                            errorMessage('Error: Folder not added', transport); 
@@ -78,9 +78,7 @@ TinyMCEImageEnhancement.prototype = {
     */
     
     onFolderGetSuccess: function(transport) {
-        var t1 = transport.responseText.indexOf('TreeNode(');
-        var t2 = transport.responseText.indexOf(',');
-        var folderID = transport.responseText.substring(t1 + 9,t2);
+        var folderID = transport.responseText;
         var date = new Date();
         var year = date.getFullYear();
         var month = date.getMonth() < 10 ? '0' + date.getMonth() : date.getMonth();  
@@ -90,6 +88,7 @@ TinyMCEImageEnhancement.prototype = {
         var seconds = date.getSeconds() < 10  == 1 ? '0' + date.getSeconds() : date.getSeconds();
         var currentDate = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds; 
         var folderName = $('NewFolderName').value;
+        this.folderID = folderID;
         var options = {
             method: 'post',
             postBody: 'Created=' + currentDate + '&Name=' + folderName + '&ClassName=Folder&ID=' + folderID + '&ajax=1&action_save=1' + ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : ''),
@@ -107,11 +106,12 @@ TinyMCEImageEnhancement.prototype = {
     
     onFolderAddSuccess: function(transport) {
         statusMessage('Creating new folder');
-        document.getElementsBySelector("div.TreeDropdownField.single")[2].itemTree = null;
+        $('TreeDropdownField_Form_EditorToolbarImageForm_FolderID').itemTree = null;
+        $('TreeDropdownField_Form_EditorToolbarImageForm_FolderID').setValue(this.folderID);
         $('NewFolderName').value = '';
         Element.show('AddFolder');
         Element.hide('NewFolderName','FolderOk','FolderCancel');
-        this.removeIE6Hack();                               
+        this.removeIE6Hack();                              
     },
     
     /**
@@ -225,7 +225,7 @@ TinyMCEImageEnhancement.prototype = {
     
     applyIE6Hack: function() {
         if(BrowserDetect.browser == 'Explorer') {
-	        elements = [$('FolderOk'),$('FolderCancel'),$('UploadFiles'),$('PipeSeparator')];
+	        elements = [$('FolderOk'),$('FolderCancel'),$('UploadFiles')];
 	        $A(elements).each(function(element) {
 	            element.style.position = "relative";
 	            element.style.top = "-3px";
@@ -235,7 +235,7 @@ TinyMCEImageEnhancement.prototype = {
     
     removeIE6Hack: function() {
         if(BrowserDetect.browser == 'Explorer') {
-	        elements = [$('FolderOk'),$('FolderCancel'),$('UploadFiles'),$('PipeSeparator')];
+	        elements = [$('FolderOk'),$('FolderCancel'),$('UploadFiles')];
 	        $A(elements).each(function(element) {
 	            element.style.position = "";
 	        });
