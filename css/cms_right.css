@@ -79,6 +79,10 @@
 		padding: 3px;
 		width: 97%;
 	}
+	.right form .field.image span.middleColumn,
+	.right form .field.simpleimagefield_disabled span.middleColumn {
+		padding-bottom:0;
+	}
 	
 	.right form .htmleditorfield span.readonly *,
 	#right form .htmleditorfield span.readonly * {
