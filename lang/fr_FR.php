@@ -4,8 +4,7 @@ i18n::include_locale_file('cms', 'en_US');
 
 global $lang;
 
-
-if(!isset($lang['fr_FR'])) $lang['fr_FR'] = $lang['en_US'];
+$lang['fr_FR'] = $lang['en_US'];
 
 $lang['fr_FR']['CMSMain']['REMOVEDFD'] = 'Supprimé du site brouillon';
 $lang['fr_FR']['CMSMain']['RESTORE'] = 'Restaurer';

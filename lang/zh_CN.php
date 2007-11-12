@@ -4,8 +4,7 @@ i18n::include_locale_file('cms', 'en_US');
 
 global $lang;
 
-
-if(!isset($lang['zh_CN'])) $lang['zh_CN'] = $lang['en_US'];
+$lang['zh_CN'] = $lang['en_US'];
 
 $lang['zh_CN']['AssetAdmin']['VIEWASSET'] = '显示文件资源';
 $lang['zh_CN']['LeftAndMain']['TREESITECONTENT'] = '网站内容';
@@ -60,7 +59,7 @@ $lang['zh_CN']['LeftAndMain']['REPORTS'] = '报告系统';
 $lang['zh_CN']['LeftAndMain']['SECURITY'] = '用户权限管理';
 $lang['zh_CN']['LeftAndMain']['STATISTICS'] = '网站统计报告';
 $lang['zh_CN']['LeftAndMain']['HELP'] = '帮助';
-$lang['zh_CN']['LeftAndMain']['SITECONTENT'] = '网站内容';
+$lang['zh_CN']['LeftAndMain']['SITECONTENT'] = '网站内容管理';
 $lang['zh_CN']['LeftAndMain']['SAVEDUP'] = '已保存';
 $lang['zh_CN']['LeftAndMain']['CHANGEDURL'] = '路径（URL）已改为”%s“';
 $lang['zh_CN']['LeftAndMain']['STATUSTO'] = '状态已改为”%s“';
@@ -334,4 +333,5 @@ $lang['zh_CN']['CMSMain']['PAGETYPEOPT'] = '网页类型';
 $lang['zh_CN']['CMSMain']['STATUSOPT'] = '网页状态';
 $lang['zh_CN']['LeftAndMain']['SITECONTENTLEFT'] = '网站内容';
 $lang['zh_CN']['StaticExporter']['EXPORTTO'] = '导出到该文件夹';
+
 ?>
