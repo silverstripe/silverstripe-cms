@@ -4,7 +4,7 @@ SilverStripe ChangeLog
 
 New Features
    - New look for CMS
-   - Support for authentification by OpenID
+   - Support for authentification by OpenID (auth_openid module included with installer)
    - Google Sitemaps support
    - Internationalisation support
        - German translation
@@ -35,6 +35,7 @@ New Features
    - Added a list of unused assets in the Files & Images section, and the ability to delete unused thumbnails 
    - Usability improvements
        - Move action buttons to bottom right of screen
+       - Moved insert image/flash/link to pane on right
        - Removed right frame headers as the buttons have been moved and they only contain redundant information
        - Use a javascript dialog box for confirming unsaved changes instead of the slow loading model one
        - Reworked the tabs in the Newsletter section to be less confusing
@@ -101,6 +102,7 @@ Developer Tools
       - ContentController
           - Save statistics on page views
           - Added LangAttributes(), for use in XML header
+          - Draft/Archived content can only be viewed by users with permission to access the CMS
       - Core
          - Added _t() for internationalisation
          - Check if TEMP_FOLDER is already defined before defining it, allowing the user to set the temporary folder themself
@@ -110,6 +112,7 @@ Developer Tools
           - Added extend_site(), which allows modules to register a function that will be run on every page load
           - redirectBack() now redirects to the base URL if neither the referrer nor the _REDIRECT_BACK_URL is set
           - Added support for translatable URLs
+          - Added is_cli()
       - Email
           - Define 'EMAIL_BOUNCEHANDLER_KEY' in sapphire/_config.php and require its value to be sent as 'Key' $_GET var in pings to /Email_BounceHandler to prevent fake email bounce pings
           - Display an error on duplicate bounce logs instead of a blank screen
@@ -153,6 +156,9 @@ Developer Tools
           - Save the email address in the session to reuse when the login fails
       - ModelAsController
           - Added support for translatable URLs
+      - Object
+          - Added require_developer_login(), which allows you to check if the user has permission to use URL debugging tools
+          - ?debugmethods=1 now requires developer login
       - PageComment
           - Added the ability to have BBCode in comments (disabled by default)
       - PasswordField
@@ -172,6 +178,8 @@ Developer Tools
       - Security
           - Added support for password encryption
           - Added set_word_list() and get_word_list(), to set the location of the word list used in Member::generateNewPassword()
+      - Session
+          - Added save(), which copies the current controllers session to $_SESSION
       - SiteTree
           - Changed references to 'stage site' to 'draft site' in TreeTitle()
           - Use Translatable interface by default
@@ -235,6 +243,10 @@ Bug Fixes
       - Fix ImageField deleting the Image instead of unlinking it from the page
       - Set TimeField value to null when a bad value is passed
       - Don't return a span when the Title doesn't exist in DropdownField
+      - Fix bug where NumericField couldn't have 0 as a default value
+      - Call Page_Controller->init() when rendering Security/changepassword etc to respect any Requirements called in there
+      - Fixed an error when a CheckboxSetField is submitted with no checkboxes ticked
+      - Fixed exporting of TableListField to use commas for CSV files
   - CMS
       - E_NOTICE fixes
       - New pages are created in the database straight away, which solves a number of issues
