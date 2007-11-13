@@ -17,6 +17,11 @@ abstract class LeftAndMain extends Controller {
 		if(!empty($member->Locale)) {
 			i18n::set_locale($member->Locale);
 		}
+		
+		// set reading lang
+		if(Translatable::is_enabled()) {
+			Translatable::choose_site_lang(i18n::get_existing_content_languages('SiteTree'));
+		}
 
 		parent::init();
 		
