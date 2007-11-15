@@ -215,7 +215,7 @@ $lang['en_US']['NewsletterAdmin']['NEWNEWSLTYPE'] = 'New newsletter type';
 $lang['en_US']['NewsletterAdmin']['MEWDRAFTMEWSL'] = 'New draft newsletter';
 $lang['en_US']['NewsletterAdmin']['SHOWCONTENTS'] = 'Show contents';
 $lang['en_US']['SecurityAdmin']['ADVANCEDONLY'] = 'This section is for advanced users only.
-							See <a href=\"http://doc.silverstripe.com/doku.php?id=permissions:codes\" target=\"_blank\">this page</a>
+							See <a href="http://doc.silverstripe.com/doku.php?id=permissions:codes" target="_blank">this page</a>
 							for more information.';
 $lang['en_US']['SecurityAdmin']['ADDMEMBER'] = 'Add Member';
 $lang['en_US']['SecurityAdmin']['SAVE'] = 'Save';
