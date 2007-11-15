@@ -6,6 +6,13 @@
 CMSMain_upload = Class.create();
 CMSMain_upload.prototype = {
     initialize: function() {
+        // Due to a bug in the flash plugin on Linux and Mac, we need at least version 9.0.64 to use SWFUpload
+        if(navigator.appVersion.indexOf("Mac") != -1 || navigator.appVersion.indexOf("X11") != -1 || navigator.appVersion.indexOf("Linux") != -1) {
+           pv = getFlashPlayerVersion();
+           if(pv.major < 9 || (pv.major == 9 && pv.minor == 0 && pv.rev < 64)) {
+              return;
+           }
+        }
         this.iframe = window.top.document.getElementById('AssetAdmin_upload');
         this.onLoad();
     },

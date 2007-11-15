@@ -5,7 +5,7 @@
 TinyMCEImageEnhancement = Class.create();
 TinyMCEImageEnhancement.prototype = {
     initialize: function() {
-        this.filesUploaed = 0;
+        this.filesUploaded = 0;
         this.processInProgress = false;
         Event.observe(window,'load',this.onWindowLoad.bind(this));
     },
@@ -131,6 +131,17 @@ TinyMCEImageEnhancement.prototype = {
     */
     
     onWindowLoad: function() {
+        // Due to a bug in the flash plugin on Linux and Mac, we need at least version 9.0.64 to use SWFUpload
+        if(navigator.appVersion.indexOf("Mac") != -1 || navigator.appVersion.indexOf("X11") != -1 || navigator.appVersion.indexOf("Linux") != -1) {
+           pv = getFlashPlayerVersion();
+           if(pv.major < 9 || (pv.major == 9 && pv.minor == 0 && pv.rev < 64)) {
+              $('AddFolderGroup').style.display = 'none';
+              $('PipeSeparator').style.display = 'none';
+              $('UploadGroup').style.display = 'none';
+              return;
+           }
+        }
+    
         if($('FolderID') != null) {
 	        this.upload = new Upload(
 	            {
