@@ -46,16 +46,10 @@ class AssetAdmin extends LeftAndMain {
 		Requirements::javascript("cms/javascript/AssetAdmin_left.js");
 		Requirements::javascript("cms/javascript/AssetAdmin_right.js");
 
+		Requirements::javascript("cms/javascript/CMSMain_upload.js");
+		Requirements::javascript("cms/javascript/Upload.js");
 		Requirements::javascript("sapphire/javascript/Security_login.js");
-		
-		// We don't want SWFUpload on linux, since it doesn't work
-		$browscap = new Browscap();
-		$hitdata = $browscap->getBrowser(null, true);
-		if(!($hitdata['Platform'] && stristr($hitdata['Platform'], 'linux'))) {
-			Requirements::javascript("cms/javascript/CMSMain_upload.js");
-			Requirements::javascript("cms/javascript/Upload.js");
-			Requirements::javascript("jsparty/SWFUpload/SWFUpload.js");
-		}
+		Requirements::javascript("jsparty/swfupload/swfupload.js");
 		
 		// Include the right JS]
 		// Hayden: This didn't appear to be used at all
