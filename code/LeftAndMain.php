@@ -81,6 +81,9 @@ abstract class LeftAndMain extends Controller {
 		Requirements::javascript('jsparty/tabstrip/tabstrip.js');
 		Requirements::css('jsparty/tabstrip/tabstrip.css');
 		
+		Requirements::css('cms/css/TinyMCEImageEnhancement.css');
+		Requirements::javascript('cms/javascript/TinyMCEImageEnhancement.js');
+		
 		Requirements::javascript('cms/javascript/LeftAndMain.js');
 		Requirements::javascript('cms/javascript/LeftAndMain_left.js');
 		Requirements::javascript('cms/javascript/LeftAndMain_right.js');
@@ -128,15 +131,8 @@ abstract class LeftAndMain extends Controller {
 		Requirements::javascript('sapphire/javascript/SelectionGroup.js');
 		Requirements::css('sapphire/css/SelectionGroup.css');
 		
-		// We don't want SWFUpload on linux, since it doesn't work
-		$browscap = new Browscap();
-		$hitdata = $browscap->getBrowser(null, true);
-		if(!($hitdata['Platform'] && stristr($hitdata['Platform'], 'linux'))) {
-			Requirements::css('cms/css/TinyMCEImageEnhancement.css');
-			Requirements::javascript('cms/javascript/TinyMCEImageEnhancement.js');
-			Requirements::javascript('jsparty/SWFUpload/SWFUpload.js');
-			Requirements::javascript('cms/javascript/Upload.js');
-		}
+		Requirements::javascript('jsparty/SWFUpload/SWFUpload.js');
+		Requirements::javascript('cms/javascript/Upload.js');
 		
 		Requirements::themedCSS('typography');
 		
