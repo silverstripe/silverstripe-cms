@@ -51,7 +51,7 @@ class StatisticsAdmin extends LeftAndMain {
 		Requirements::css("sapphire/css/SubmittedFormReportField.css");
 
 		Requirements::css('cms/css/TinyMCEImageEnhancement.css');
-		Requirements::javascript("jsparty/swfupload/swfupload.js");
+		Requirements::javascript("jsparty/SWFUpload/SWFUpload.js");
 		Requirements::javascript("cms/javascript/Upload.js");
 		Requirements::javascript("sapphire/javascript/Security_login.js");
 		Requirements::javascript('cms/javascript/TinyMCEImageEnhancement.js');

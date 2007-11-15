@@ -60,8 +60,8 @@ Upload.prototype = {
                 file_validation_handler : Prototype.emptyFunction,
                 file_cancelled_handler: Prototype.emptyFunction,
                 
-                flash_url : 'jsparty/swfupload/swfupload.swf',    // Relative to this file
-                swfupload_loaded_handler: this.buildUI.bind(this),
+                flash_url : 'jsparty/SWFUpload/SWFUpload.swf',    // Relative to this file
+                ui_function: this.buildUI.bind(this),
                 debug: false
             });
     },
@@ -209,7 +209,7 @@ Upload.prototype = {
     */
     
     browse: function() {
-        this.swfu.selectFiles();
+        this.swfu.browse();
     },
     
     /**
