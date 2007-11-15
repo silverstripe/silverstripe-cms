@@ -61,7 +61,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			if(!Permission::check('EDIT_PERMISSIONS')) $fields->removeFieldFromTab('Root', 'Permissions');
 			
 			$memberList->setController($this);
-			$memberList->setPermissions(array('show','edit','export'));
+			$memberList->setPermissions(array('show', 'edit', 'delete', 'export'));
 
 			$fields->push($idField = new HiddenField("ID"));
 			$idField->setValue($id);
