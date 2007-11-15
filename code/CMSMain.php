@@ -1343,54 +1343,69 @@ JS
 	}
 }
 
+$filterCache = array();
+
 // TODO: Find way to put this in a class
 function cmsMainMarkingFilterFunction($node) {
 	// Expand all nodes
 	// $node->markingFinished();
-	// Don't ever hide nodes with children, because otherwise if one of their children matches the search, it wouldn't be shown.
-	if($node->AllChildrenIncludingDeleted()->count() > 0) {
-		// Open all nodes with children so it is easy to see any children that match the search.
- 		$node->markOpened();
-		return true;
-	} else {
-		$failed_filter = false;
-		// First check for the generic search term in the URLSegment, Title, MenuTitle, & Content
-		if (!empty($_REQUEST['SiteTreeSearchTerm'])) {
-			// For childless nodes, show only those matching the filter
-			$filter = strtolower($_REQUEST['SiteTreeSearchTerm']);
-			if ( strpos( strtolower($node->URLSegment) , $filter) === false
-				&& strpos( strtolower($node->Title) , $filter) === false
-				&& strpos( strtolower($node->MenuTitle) , $filter) === false
-				&& strpos( strtolower($node->Content) , $filter) === false) {
+
+	$failed_filter = false;
+	// First check for the generic search term in the URLSegment, Title, MenuTitle, & Content
+	if (!empty($_REQUEST['SiteTreeSearchTerm'])) {
+		// For childless nodes, show only those matching the filter
+		$filter = strtolower($_REQUEST['SiteTreeSearchTerm']);
+		if ( strpos( strtolower($node->URLSegment) , $filter) === false
+			&& strpos( strtolower($node->Title) , $filter) === false
+			&& strpos( strtolower($node->MenuTitle) , $filter) === false
+			&& strpos( strtolower($node->Content) , $filter) === false) {
+			$failed_filter = true;
+		}
+	}
+	// Check the 'Edited Since' date
+	if (!empty($_REQUEST['SiteTreeFilterDate'])) {
+		$edited_since =  mktime(0, 0, 0, substr($_REQUEST['SiteTreeFilterDate'], 3, 2), 
+					substr($_REQUEST['SiteTreeFilterDate'], 0, 2), substr($_REQUEST['SiteTreeFilterDate'], 6, 4));
+		if ( strtotime($node->LastEdited) < $edited_since ) {
+			$failed_filter = true;
+		}
+	}
+	// Now check if a specified Criteria attribute matches
+	foreach (CMSMain::T_SiteTreeFilterOptions() as $key => $value)
+	{
+		if (!empty($_REQUEST[$key])) {
+			$parameterName = $key;
+			$filter = strtolower($_REQUEST[$key]);
+			// Show node only if the filter string exists anywere in the filter paramater (ignoring case)
+			if (strpos( strtolower($node->$parameterName) , $filter) === false) {
 				$failed_filter = true;
 			}
 		}
-		// Check the 'Edited Since' date
-		if (!empty($_REQUEST['SiteTreeFilterDate'])) {
-			$edited_since =  mktime(0, 0, 0, substr($_REQUEST['SiteTreeFilterDate'], 3, 2), 
-						substr($_REQUEST['SiteTreeFilterDate'], 0, 2), substr($_REQUEST['SiteTreeFilterDate'], 6, 4));
-			if ( strtotime($node->LastEdited) < $edited_since ) {
-				$failed_filter = true;
-			}
-		}
-		// Now check if a specified Criteria attribute matches
-		foreach (CMSMain::T_SiteTreeFilterOptions() as $key => $value)
-		{
-			if (!empty($_REQUEST[$key])) {
-				$parameterName = $key;
-				$filter = strtolower($_REQUEST[$key]);
-				// Show node only if the filter string exists anywere in the filter paramater (ignoring case)
-				if (strpos( strtolower($node->$parameterName) , $filter) === false) {
-					$failed_filter = true;
+	}
+	// Each filter must match or it fails
+	if (true == $failed_filter) {
+		// Don't ever hide nodes with children, because otherwise if one of their children matches the search, it wouldn't be shown.
+		if($node->AllChildrenIncludingDeleted()->count() > 0) {
+			// Open all nodes with children so it is easy to see any children that match the search.
+		
+			foreach($node->AllChildrenIncludingDeleted() as $childNode) {
+				if(cmsMainMarkingFilterFunction($childNode)) {
+	 				$node->markOpened();
+	 				$filterCache[$node->ID] = true;
+					return true;
 				}
 			}
 		}
-		// Each filter must match or it fails
-		if (true == $failed_filter) {
-			return false;
-		} else {
-			return true;
+	
+		$filterCache[$node->ID] = false;
+		return false;
+	} else {
+		if($node->AllChildrenIncludingDeleted()->count() > 0) {
+			$node->markOpened();
 		}
+		
+		$filterCache[$node->ID] = true;
+		return true;
 	}
 }
 
