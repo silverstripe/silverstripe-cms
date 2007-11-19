@@ -46,32 +46,35 @@ class NewsletterEmailProcess extends BatchProcess {
 	    		/**
 	    		 * Email Blacklisting Support
 	    		 */
-	    		if($member->BlacklistedEmail && Email_BlackList::isBlocked($address)){
-		    		 $bounceRecord = new Email_BounceRecord();
-		    		 $bounceRecord->BounceEmail = $member->Email;
-		    		 $bounceRecord->BounceTime = date("Y-m-d H:i:s",time());
-		    		 $bounceRecord->BounceMessage = "BlackListed Email";
-		    		 $bounceRecord->MemberID = $member->ID;
-		    		 $bounceRecord->write();
+				if($member->BlacklistedEmail && Email_BlackList::isBlocked($address)){
+					$bounceRecord = new Email_BounceRecord();
+					$bounceRecord->BounceEmail = $member->Email;
+					$bounceRecord->BounceTime = date("Y-m-d H:i:s",time());
+					$bounceRecord->BounceMessage = "BlackListed Email";
+					$bounceRecord->MemberID = $member->ID;
+					$bounceRecord->write();
 
-				// Log the blacklist for this specific Newsletter
-				$newsletter = new Newsletter_SentRecipient();
-				$newsletter->Email = $address;
-				$newsletter->MemberID = $member->ID;
-				$newsletter->Result = 'BlackListed';
-				$newsletter->ParentID = $this->newsletter->ID;
-				$newsletter->write();
-		    	} else {		
-				$e = new Newsletter_Email($this->nlType);
+					// Log the blacklist for this specific Newsletter
+					$newsletter = new Newsletter_SentRecipient();
+					$newsletter->Email = $address;
+					$newsletter->MemberID = $member->ID;
+					$newsletter->Result = 'BlackListed';
+					$newsletter->ParentID = $this->newsletter->ID;
+					$newsletter->write();
+
+				} else {		
+					$e = new Newsletter_Email($this->nlType);
 					$e->setBody( $this->body );
 					$e->setSubject( $this->subject );
 					$e->setFrom( $this->from );
 					$e->setTemplate( $this->nlType->Template );
 		
+					if(method_exists($member, "getNameForEmail"))
+						$nameForEmail = $member->getNameForEmail();
 			
-				$e->populateTemplate( array( 'Member' => $member, 'FirstName' => $member->FirstName ) );
-				$this->sendToAddress( $e, $address, $this->messageID, $member);
-			}
+					$e->populateTemplate( array( 'Member' => $member, 'FirstName' => $member->FirstName, 'NameForEmail'=>$nameForEmail ) );
+					$this->sendToAddress( $e, $address, $this->messageID, $member);
+				}
 	        }
     	}
     
