@@ -208,7 +208,7 @@ class RecipientImportField_UploadForm extends Form {
 	}
 	
 	function isValidCSV( $file ) {
-		return preg_match( '/.*\.csv$/', $file['name'] ) > 0;
+		return preg_match( '/.*\.csv$/i', $file['name'] ) > 0;
 	}
 	
 	function confirm( $data, $form ) {

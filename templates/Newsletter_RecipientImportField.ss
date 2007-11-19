@@ -13,6 +13,8 @@
 	<style type="text/css">
 		body {
 			padding-top: 1em;
+			padding-bottom: 2em;
+			overflow: scroll !important;
 		}
 	</style>
 	<script src="jsparty/prototype.js" type="text/javascript"></script>
