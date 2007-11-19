@@ -190,7 +190,13 @@ TreeNodeAPI.prototype = {
 		}
 	},
 	duplicatePage: function() {  
-		new Ajax.Request(baseHref() + 'admin/duplicate/' + this.getIdx() + '?ajax=1', {
+		// Pass the parent ID to the duplicator, which helps ensure that multi-parent pages are duplicated into the node that the user clicked
+		var parentClause = "";
+		if(this.parentTreeNode && this.parentTreeNode.getIdx) {
+			parentClause = "&parentID=" + this.parentTreeNode.getIdx();
+		}
+
+		new Ajax.Request(baseHref() + 'admin/duplicate/' + this.getIdx() + '?ajax=1' + parentClause, {
 			method : 'get',
 			onSuccess : Ajax.Evaluator,
 			onFailure : function(response) {

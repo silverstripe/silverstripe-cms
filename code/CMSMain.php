@@ -1167,6 +1167,12 @@ HTML;
 			$page = DataObject::get_by_id("SiteTree", $id);
 
 			$newPage = $page->duplicate();
+			
+			// ParentID can be hard-set in the URL.  This is useful for pages with multiple parents
+			if($_GET['parentID'] && is_numeric($_GET['parentID'])) {
+				$newPage->ParentID = $_GET['parentID'];
+				$newPage->write();
+			}
 
 			return $this->returnItemToUser($newPage);
 		} else {
