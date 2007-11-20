@@ -67,6 +67,7 @@ Developer Tools
       - Authenticator, allowing multiple authentification methods
       - ConfirmPasswordField
       - DropdownTimeField
+      - GoogleSitemap
       - i18n, for internationalisation
       - LanguageDropdownField
       - LoginForm, base class for login forms for each authentification method
@@ -118,6 +119,8 @@ Developer Tools
           - Display an error on duplicate bounce logs instead of a blank screen
           - If the contents of the X-SilverStripeMessageID header is sent to /Email_BounceHandler in the 'SilverStripeMessageID' _GET variable, then it will be logged in the Newsletter_SentRecipient table so that the bounce report will show up on the 'Sent Status Report' tab of the Newsletter
           - Bounced newsletter recipient emails and blacklisted by default
+      - ErrorPage
+          - Return the HTTP status code in the header
       - FieldSet
           - Added insertBeforeRecursive()
       - FileSystem
@@ -173,6 +176,8 @@ Developer Tools
          - Added deny(), giving the ability to define 'deny permissions'
       - RecipientImportField
           - Added default 'GenericEmail.ss' template
+      - RestfulService
+          - Added caching support
       - RSSFeed
           - Added support for conditional GETs
       - Security
@@ -247,6 +252,9 @@ Bug Fixes
       - Call Page_Controller->init() when rendering Security/changepassword etc to respect any Requirements called in there
       - Fixed an error when a CheckboxSetField is submitted with no checkboxes ticked
       - Fixed exporting of TableListField to use commas for CSV files
+      - The cache folder now contains the location of silverstripe in its name, preventing clashes and permission problems on shared servers
+      - ?previewwrite no longer works on live sites
+      - Fixed incorrect CSS in TableListField.css
   - CMS
       - E_NOTICE fixes
       - New pages are created in the database straight away, which solves a number of issues
@@ -269,6 +277,7 @@ Bug Fixes
       - Fix changed icon only showing after Save button is clicked twice
       - Fixed VirtualPage creation
       - Fix 'Sort subpages' not working correctly
+      - Disabled the Draft site and Published links in bottom left hand corner from showing in everything except the Content section
 
 
 2.1.1 (2 Nov 2007)
