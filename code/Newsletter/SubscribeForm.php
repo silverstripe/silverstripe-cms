@@ -18,9 +18,9 @@ class SubscribeForm extends UserDefinedForm {
       'Subject' => 'Varchar'
     );
 
-		static $defaults = array(
-			"OnCompleteMessage" => "<p>Thanks, you have been added to our mailing list.</p>",
-		);
+	static $defaults = array(
+		"OnCompleteMessage" => "<p>Thanks, you have been added to our mailing list.</p>",
+	);
     
     static $has_many = array(
       'Newsletters' => 'NewsletterType'

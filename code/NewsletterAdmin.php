@@ -223,8 +223,7 @@ class NewsletterAdmin extends LeftAndMain {
 		if(isset($mailType) && is_object($mailType) && $mailType->GroupID) {
 			$group = DataObject::get_one("Group", "ID = $mailType->GroupID");
 		}
-
-		if(isset($mailType)) {
+		if(isset($mailType)&&$mailType) {
 			$fields = new FieldSet(
 				new TabSet("Root",
 					new Tab("Newsletter Settings",

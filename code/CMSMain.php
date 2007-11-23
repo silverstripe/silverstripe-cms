@@ -255,7 +255,6 @@ JS;
 			    unset($classes[$mark]);
             }
         }
-
 		foreach($classes as $class) {
 		    $instance = singleton($class);
             if($instance instanceof HiddenClass) continue;
@@ -271,7 +270,7 @@ JS;
 				$addAction = preg_replace('/^a /','',$addAction);				
 				$addAction = ucfirst($addAction);
 			} else {
-				$addAction = $class;
+				$addAction = $instance->singular_name();
 			}
 
 			$result->push(new ArrayData(array(
@@ -279,6 +278,8 @@ JS;
 				"AddAction" => $addAction,
 			)));
 		}
+		$result->sort('AddAction');
+		
 		return $result;
 	}
 

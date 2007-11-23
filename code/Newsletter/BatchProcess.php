@@ -46,7 +46,7 @@ class BatchProcess extends Object {
 		$this->id = self::generateID(); 
     
     if( !$this->objects || count( $this->objects ) === 0 )
-      return $this->complete();
+      	return $this->complete();
     
 		return $this->next();
 	}

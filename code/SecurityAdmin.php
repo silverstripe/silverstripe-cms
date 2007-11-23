@@ -50,8 +50,16 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 						new TableField(
 							"Permissions",
 							"Permission",
-							array("Code" => "Code", "Arg" => "Optional ID"),
-							array("Code" => "PermissionDropdownField", "Arg" => "TextField"),
+							array(
+								"Code" => "Code",
+								"Arg" => "Optional ID",
+								"Enabled" => "Enabled",
+							),
+							array(
+								"Code" => "PermissionDropdownField",
+								"Arg" => "TextField",
+								"Enabled" => "CheckboxField",
+							),
 							"GroupID", $id
 						)
 					)

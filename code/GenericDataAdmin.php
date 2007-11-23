@@ -439,7 +439,7 @@ HTML;
 				$fileData .= implode(",",$columnData);
 				$fileData .= "\n";
 			}
-			
+
 			HTTP::sendFileToBrowser($fileData, $fileName);
 		} else {
 			user_error("No records found", E_USER_ERROR);
