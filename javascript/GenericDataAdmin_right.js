@@ -54,7 +54,7 @@ RightContent.prototype = {
 	remove: function(e) {
 		if(window.confirm('Are you sure you want to delete?')){
 			var el = Event.element(e);
-			Ajax.SubmitForm($('Form_EditForm'),, el.name, {
+			Ajax.SubmitForm($('Form_EditForm'), el.name, {
 				postBody : 'ajax=1',
 				onSuccess: Ajax.Evaluator,
 				onFailure: ajaxErrorHandler
