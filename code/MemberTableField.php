@@ -206,6 +206,7 @@ class MemberTableField extends ComplexTableField {
 
 		// the ID field confuses the Controller-logic in finding the right view for ReferencedField
 		$detailFields->removeByName('ID');
+		$detailFields->push(new HiddenField("ctf[ID]"," ",$ID)); 
 		
 		// add a namespaced ID instead thats "converted" by saveComplexTableField()
 		$detailFields->push(new HiddenField("ctf[childID]","",$childID)); 
