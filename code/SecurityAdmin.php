@@ -53,12 +53,10 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 							array(
 								"Code" => "Code",
 								"Arg" => "Optional ID",
-								"Enabled" => "Enabled",
 							),
 							array(
 								"Code" => "PermissionDropdownField",
 								"Arg" => "TextField",
-								"Enabled" => "CheckboxField",
 							),
 							"GroupID", $id
 						)
