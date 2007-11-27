@@ -481,7 +481,7 @@ HTML;
 				}
 			}
 		}
-
+		$this->getActionUpdateJS($generic);
 		FormResponse::status_message('Saved', 'good');
 		FormResponse::update_status($generic->Status);
 
