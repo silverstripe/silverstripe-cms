@@ -493,7 +493,9 @@ JS;
 		$record->write();
 		$record->publish("Stage", "Live");
 
-		Sitemap::ping();
+		//TODO: This has been fixed in 2.2-rc2 and need to be merged back to trunk,
+		// for now just comment it out.
+		//Sitemap::ping();
 
 		// Fix the sort order for this page's siblings
 		DB::query("UPDATE SiteTree_Live
