@@ -194,11 +194,13 @@ TinyMCEImageEnhancement.prototype = {
         //END OF HACK
         $('Image').reapplyBehaviour();
         this.addToTinyMCE = this.addToTinyMCE.bind(this);
+        /* Don't insert images for now - this inserts the wrong image as images are now sorted by filename rather than date uploaded.
         var childNodes = $('Image').childNodes[0].childNodes;
         var newImages = $A(childNodes).slice(childNodes.length - this.filesUploaded);
         newImages.each(function(item) {
             tinyMCEImageEnhancement.addToTinyMCE(item.childNodes[0]);
         });
+        */
         this.processInProgress = false;
     },
     
