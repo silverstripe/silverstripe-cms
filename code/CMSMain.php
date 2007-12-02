@@ -492,10 +492,8 @@ JS;
 		//$record->PublishedByID = Member::currentUser()->ID;
 		$record->write();
 		$record->publish("Stage", "Live");
-
-		//TODO: This has been fixed in 2.2-rc2 and need to be merged back to trunk,
-		// for now just comment it out.
-		//Sitemap::ping();
+		
+		GoogleSitemap::ping();
 
 		// Fix the sort order for this page's siblings
 		DB::query("UPDATE SiteTree_Live
@@ -721,7 +719,7 @@ HTML;
 		$page->Status = "Unpublished";
 		$page->write();
 
-		Sitemap::ping();
+		GoogleSitemap::ping();
 
 		return $this->tellBrowserAboutPublicationChange($page, sprintf(_t('CMSMain.REMOVEDPAGE',"Removed '%s' from the published site"),$page->Title));
 	}
