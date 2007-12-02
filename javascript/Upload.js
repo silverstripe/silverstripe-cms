@@ -161,13 +161,13 @@ Upload.prototype = {
         this.swfu.cancelQueue();
         switch(error_code) {
 	        case SWFUpload.ERROR_CODE_HTTP_ERROR:
-	            alert('You have encountered an error. File hasn\'t been uploaded. Please hit the "Refresh" button in your web browser');
+	            alert('You have encountered an error. File hasn\'t been uploaded. Please hit the "Refresh" button in your web browser. Error Code: HTTP Error, File name: ' + file.name + ', Message: ' + msg);
 	        break;
 	        case SWFUpload.ERROR_CODE_IO_ERROR:
-	            alert('You have encountered an error. File hasn\'t been uploaded. Please hit the "Refresh" button in your web browser');
+	            alert('You have encountered an error. File hasn\'t been uploaded. Please hit the "Refresh" button in your web browser. Error Code: IO Error, File name: ' + file.name + ', Message: ' + msg);
             break;
 	        case SWFUpload.ERROR_CODE_SECURITY_ERROR:
-	            alert('You have encountered an error. File hasn\'t been uploaded. Please hit the "Refresh" button in your web browser');
+	            alert('You have encountered an error. File hasn\'t been uploaded. Please hit the "Refresh" button in your web browser. Error Code: Security Error, File name: ' + file.name + ', Message: ' + msg);
 	        break;
 	        case SWFUpload.ERROR_CODE_FILE_EXCEEDS_SIZE_LIMIT:
 	            alert('Files cannot be bigger than ' + this.fileSizeLimit/1024 + ' MB.');
