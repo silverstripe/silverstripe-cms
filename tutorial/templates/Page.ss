@@ -15,6 +15,7 @@
 			<div id="ContentContainer">
 				<div id="Content" class="typography">
 					$Content
+					$Form
 				</div>
 			</div>
 			<div id="Footer">
