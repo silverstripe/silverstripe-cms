@@ -475,9 +475,8 @@ JS;
 			$descRemoved = '';
 		}
 
-		$title = Convert::raw2js($record->Title);
 		FormResponse::add($this->deleteTreeNodeJS($record));
-		FormResponse::status_message("Deleted '$title'$descRemoved from live site", 'good');
+		FormResponse::status_message("Deleted '$record->Title'$descRemoved from live site", 'good');
 
 		return FormResponse::respond();
 	}
