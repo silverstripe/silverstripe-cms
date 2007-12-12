@@ -133,12 +133,12 @@ class CommentTableField extends ComplexTableField {
 
 	function SearchForm() {
 		$searchFields = new FieldGroup(
-			new TextField('CommentSearch', 'Search'),
+			new TextField('CommentSearch', _t('CommentTableField.SEARCH', 'Search')),
 			new HiddenField("ctf[ID]",'',$this->mode),
 			new HiddenField('CommentFieldName','',$this->name)
 		);
 		
-		$actionFields = new LiteralField('CommentFilterButton','<input type="submit" class="action" name="CommentFilterButton" value="Filter" id="CommentFilterButton"/>');
+		$actionFields = new LiteralField('CommentFilterButton','<input type="submit" name="CommentFilterButton" value="'. _t('CommentTableField.FILTER', 'Filter') .'" id="CommentFilterButton"/>');
 		
 		$fieldContainer = new FieldGroup(
 			$searchFields,

@@ -33,17 +33,16 @@ class PageCommentInterface extends ViewableData {
 		
 		$fields = new FieldSet(
 			new HiddenField("ParentID", "ParentID", $this->page->ID),
-			new TextField("Name", "Your name")
-		);	
+			new TextField("Name", _t('PageCommentInterface.YOURNAME', 'Your name')));	
 		
 		if(MathSpamProtection::isEnabled()){
-			$fields->push(new TextField("Math","Spam protection question: ".MathSpamProtection::getMathQuestion()));
+			$fields->push(new TextField("Math", sprintf(_t('PageCommentInterface.SPAMQUESTION', "Spam protection question: %s"), MathSpamProtection::getMathQuestion())));
 		}				
 		
-		$fields->push(new TextareaField("Comment", "Comments"));
+		$fields->push(new TextareaField("Comment", _t('PageCommentInterface.YOURCOMMENT', "Comments")));
 		
 		$form = new PageCommentInterface_Form($this->controller, $this->methodName . ".PostCommentForm",$fields, new FieldSet(
-			new FormAction("postcomment", "Post")
+			new FormAction("postcomment", _t('PageCommentInterface.POST', 'Post'))
 		));
 		
 		$form->loadDataFrom(array(
@@ -98,10 +97,9 @@ class PageCommentInterface_Form extends Form {
 						$comment->setField("IsSpam", true);
 						$comment->write();
 					}
-					echo "<b>Spam detected!!</b><br /><br />";
-					echo "If you believe this was in error, please email ";
-					echo ereg_replace("@", " _(at)_", Email::getAdminEmail());
-					echo ".<br /><br />The message you posted was:<br /><br />";
+					echo "<b>"._t('PageCommentInterface_Form.SPAMDETECTED', 'Spam detected!!') . "</b><br /><br />";
+					printf("If you believe this was in error, please email %s.", ereg_replace("@", " _(at)_", Email::getAdminEmail()));
+					echo "<br /><br />"._t('PageCommentInterface_Form.MSGYOUPOSTED', 'The message you posted was:'). "<br /><br />";
 					echo $data['Comment'];
 					
 					return;
@@ -131,7 +129,7 @@ class PageCommentInterface_Form extends Form {
 		
 		if(Director::is_ajax()) {
 			if($comment->NeedsModeration){
-				echo "Your comment has been submitted and is now awating moderation.";
+				echo _t('PageCommentInterface_Form.AWAITINGMODERATION', "Your comment has been submitted and is now awating moderation.");
 			} else{
 				echo $comment->renderWith('PageCommentInterface_singlecomment');
 			}
@@ -148,7 +146,7 @@ class PageCommentInterface_Controller extends ContentController {
 	
 	function newspamquestion() {
 		if(Director::is_ajax()) {
-			echo Convert::raw2xml("Spam protection question: ".MathSpamProtection::getMathQuestion());
+			echo Convert::raw2xml(sprintf(_t('PageCommentInterface_Controller.SPAMQUESTION', "Spam protection question: %s"),MathSpamProtection::getMathQuestion()));
 		}
 	}
 }

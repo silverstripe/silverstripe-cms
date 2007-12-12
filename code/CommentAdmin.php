@@ -36,22 +36,22 @@ class CommentAdmin extends LeftAndMain {
 		
 		if($section == 'approved') {
 			$filter = 'IsSpam=0 AND NeedsModeration=0';
-			$title = "<h2>Approved Comments</h2>";
+			$title = "<h2>". _t('CommentAdmin.APPROVEDCOMMENTS', 'Approved Comments')."</h2>";
 		} else if($section == 'unmoderated') {
 			$filter = 'NeedsModeration=1';
-			$title = "<h2>Comments Awaiting Moderation</h2>";
+			$title = "<h2>"._t('CommentAdmin.COMMENTSAWAITINGMODERATION', 'Comments Awaiting Moderation')."</h2>";
 		} else {
 			$filter = 'IsSpam=1';
-			$title = "<h2>Spam</h2>";
+			$title = "<h2>"._t('CommentAdmin.SPAM', 'Spam')."</h2>";
 		}
 		
 		$filter .= ' AND ParentID>0';
 		
 		$tableFields = array(
-			"Name" => "Author",
-			"Comment" => "Comment",
-			"PageTitle" => "Page",
-			"Created" => "Date Posted"
+			"Name" => _t('CommentAdmin.AUTHOR', 'Author'),
+			"Comment" => _t('CommentAdmin.COMMENT', 'Comment'),
+			"PageTitle" => _t('CommentAdmin.PAGE', 'Page'),
+			"Created" => _t('CommentAdmin.DATEPOSTED', 'Date Posted')
 		);	
 		
 		$popupFields = new FieldSet(
@@ -76,21 +76,21 @@ class CommentAdmin extends LeftAndMain {
 		$actions = new FieldSet();
 		
 		if($section == 'unmoderated') {
-			$actions->push(new FormAction('acceptmarked', 'Accept'));
+			$actions->push(new FormAction('acceptmarked', _t('CommentAdmin.ACCEPT', 'Accept')));
 		}
 		
 		if($section == 'approved' || $section == 'unmoderated') {
-			$actions->push(new FormAction('spammarked', 'Mark as spam'));
+			$actions->push(new FormAction('spammarked', _t('CommentAdmin.SPAMMARKED', 'Mark as spam')));
 		}
 		
 		if($section == 'spam') {
-			$actions->push(new FormAction('hammarked', 'Mark as not spam'));
+			$actions->push(new FormAction('hammarked', _t('CommentAdmin.MARKASNOTSPAM', 'Mark as not spam')));
 		}
 		
-		$actions->push(new FormAction('deletemarked', 'Delete'));
+		$actions->push(new FormAction('deletemarked', _t('CommentAdmin.DELETE', 'Delete')));
 		
 		if($section == 'spam') {
-			$actions->push(new FormAction('deleteall', 'Delete All'));
+			$actions->push(new FormAction('deleteall', _t('CommentAdmin.DELETEALL', 'Delete All')));
 		}
 		
 		$form = new Form($this, "EditForm", $fields, $actions);
