@@ -204,8 +204,24 @@ HTML;
 			$statusMessage = _t('AssetAdmin.NOTHINGTOUPLOAD','There was nothing to upload');
 			$status = "";
 		}
+		
+		
+		$fileIDs = array();
+		$fileNames = array();
+		foreach($newFiles as $newFile) {
+			$fileIDs[] = $newFile;
+			$fileObj = DataObject::get_one('File', "`File`.ID=$newFile");
+			$fileNames[] = $fileObj->Name;
+		}
+		
+		$sFileIDs = implode(',', $fileIDs);
+		$sFileNames = implode(',', $fileNames);
+		
 		echo <<<HTML
 			<script type="text/javascript">
+			/* IDs: $sFileIDs */
+			/* Names: $sFileNames */
+			
 			var form = parent.document.getElementById('Form_EditForm');
 			form.getPageFromServer(form.elements.ID.value);
 			parent.statusMessage("{$statusMessage}","{$status}");

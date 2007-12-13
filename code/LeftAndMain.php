@@ -135,6 +135,7 @@ abstract class LeftAndMain extends Controller {
 		Requirements::javascript('cms/javascript/Upload.js');
 		
 		Requirements::javascript('sapphire/javascript/HasManyFileField.js');
+		Requirements::css('sapphire/css/HasManyFileField.css');
 		
 		Requirements::themedCSS('typography');
 		
