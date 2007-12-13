@@ -368,7 +368,7 @@ HTML;
 			$brokenPageList = '';
 	
 			if($fileList != "''") {
-				$files = DataObject::get("File", "ID IN ($fileList)");
+				$files = DataObject::get("File", "`File`.ID IN ($fileList)");
 				if($files) {
 					foreach($files as $file) {
 						if($file instanceof Image) {
