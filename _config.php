@@ -17,8 +17,7 @@ Director::addRules(50, array(
 	'admin/bulkload/$Action/$ID/$OtherID' => 'BulkLoaderAdmin',
 	'admin/ImageEditor/$Action' => 'ImageEditor',
 	'admin/$Action/$ID/$OtherID' => 'CMSMain',
-	'unsubscribe/$Email/$MailingList' => 'Unsubscribe_Controller',
-	'membercontrolpanel/$Email' => 'MemberControlPanel'	
+	'unsubscribe/$Email/$MailingList' => 'Unsubscribe_Controller'
 ));
 
 ?>
