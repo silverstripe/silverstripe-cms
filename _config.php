@@ -4,8 +4,8 @@
  */
 Director::addRules(50, array(
 	'processes/$Action/$ID/$Batch' => 'BatchProcess_Controller',
-	'silverstripe/' => '->admin/',
-	'cms/' => '->admin/',
+	'silverstripe' => '->admin',
+	'cms' => '->admin',
 	'admin/statistics/$Action/$ID' => 'StatisticsAdmin',
 	'admin/security/$Action/$ID/$OtherID' => 'SecurityAdmin',
 	'admin/help/$Action/$ID' => 'CMSHelp',
