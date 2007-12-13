@@ -134,6 +134,8 @@ abstract class LeftAndMain extends Controller {
 		Requirements::javascript('jsparty/SWFUpload/SWFUpload.js');
 		Requirements::javascript('cms/javascript/Upload.js');
 		
+		Requirements::javascript('sapphire/javascript/HasManyFileField.js');
+		
 		Requirements::themedCSS('typography');
 		
 		// For Widgets
