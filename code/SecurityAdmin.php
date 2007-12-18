@@ -119,7 +119,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	public function getmember() {
 		Session::set('currentMember', $_REQUEST['ID']);
 		SSViewer::setOption('rewriteHashlinks', false);
-		$result = $this->renderWith($this->class . "_rightbottom");
+		$result = $this->renderWith("LeftAndMain_rightbottom");
 		$parts = split('</?form[^>]*>', $result);
 		echo $parts[1];
 	}
