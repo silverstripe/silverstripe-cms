@@ -68,7 +68,8 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			
 			$memberList->setController($this);
 			$memberList->setPermissions(array('show', 'edit', 'delete', 'export', 'add'));
-
+			$memberList->setParentClass('Group');
+			
 			$fields->push($idField = new HiddenField("ID"));
 			$idField->setValue($id);
 			$actions = new FieldSet(

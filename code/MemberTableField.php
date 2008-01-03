@@ -13,14 +13,21 @@
  * - members based on a search-query
  */
 class MemberTableField extends ComplexTableField {
+	
 	protected $members;
+	
 	protected $hidePassword;
+	
 	protected $pageSize;
+	
 	protected $detailFormValidator;
+	
 	protected $group;
 
 	protected $template = "MemberTableField";
 
+	public $popupClass = 'MemberTableField_Popup';
+	
 	static $data_class = "Member";
 
 	protected $permissions = array(
@@ -144,88 +151,6 @@ class MemberTableField extends ComplexTableField {
 
 	function AddLink() {
 		return "{$this->PopupBaseLink()}&methodName=add";
-	}
-
-	function DetailForm() {
-		
-		// Get all the requests
-		$ID = Convert::raw2xml(isset($_REQUEST['ctf']['ID'])
-													   ? $_REQUEST['ctf']['ID']
-														 : '');
-		$childID = isset($_REQUEST['ctf']['childID']) ? Convert::raw2xml($_REQUEST['ctf']['childID']) : 0;
-		$childClass = Convert::raw2xml($_REQUEST['fieldName']);
-		$this->methodName = $_REQUEST['methodName']; 
-
- 		// used to discover fields if requested and for population of field 
- 		if(is_numeric($childID)) { 
- 			// we have to use the basedataclass, otherwise we might exclude other subclasses 
- 			$childData = DataObject::get_by_id(ClassInfo::baseDataClass($this->sourceClass), $childID); 
- 		} 
- 		
- 		$parentIdName = $this->getParentIdName($this->sourceClass,$this->getParentClass()); 
- 		 
- 		if(!$parentIdName) { 
- 			user_error("ComplexTableField::DetailForm() DataObject does not seem to have an 'has-one'-relationship", E_USER_WARNING); 
- 			return; 
- 		} 
- 		// If the fieldset is passed, use it, else use the formfields returned 
- 		// from the object via a string method call. 
- 		if(is_a($this->detailFormFields,"Fieldset")){ 
- 			$detailFields = $this->detailFormFields; 
- 		} else if(is_string($this->detailFormFields)){ 
- 			$functioncall = $this->detailFormFields; 
- 			if($childData->hasMethod($functioncall)){ 
- 				$detailFields = $childData->$functioncall(); 
- 			} 
- 		} elseif(!$childData || $this->methodName == 'add') { 
- 			$SNG_sourceClass = singleton($this->sourceClass); 
- 			if(is_numeric($ID) && $this->getParentClass()) { 
- 				// make sure the relation-link is existing, even if we just add the sourceClass 
- 				// and didn't save it 
- 				$parentIDName = $this->getParentIdName($this->sourceClass,$this->getParentClass()); 
- 				$SNG_sourceClass->$parentIDName = $ID; 
- 			} 
- 			$detailFields = $SNG_sourceClass->getCMSFields(); 
- 		} else { 
- 			$detailFields = $childData->getCMSFields(); 
- 		} 
- 		
- 		if($this->getParentClass()) {
- 			$parentIdName = $this->getParentIdName($this->sourceClass,$this->getParentClass()); 
-			if(!$parentIdName) {
-				user_error("ComplexTableField::DetailForm() Cannot automatically  
- 					determine 'has-one'-relationship to parent,  
- 					please use setParentClass() to set it manually",  
- 				E_USER_WARNING); 
-				return;
-			}
-			// add relational fields 
- 			$detailFields->push(new HiddenField("ctf[parentClass]"," ",$this->getParentClass())); 
- 			$detailFields->push(new HiddenField("$parentIdName"," ",$ID)); 
- 		}
-
-		// the ID field confuses the Controller-logic in finding the right view for ReferencedField
-		$detailFields->removeByName('ID');
-		$detailFields->push(new HiddenField("ctf[ID]"," ",$ID)); 
-		
-		// add a namespaced ID instead thats "converted" by saveComplexTableField()
-		$detailFields->push(new HiddenField("ctf[childID]","",$childID)); 
- 		$detailFields->push(new HiddenField("ctf[ClassName]","",$this->sourceClass)); 
- 		
- 		$form = new MemberTableField_Popup($this, "DetailForm", $detailFields, $this->sourceClass, false, $this->detailFormValidator); 
-
-		if (is_numeric($childID)) {
-			if ($this->methodName == "show" || $this->methodName == "edit") { 
-				$childData = DataObject::get_by_id($this->sourceClass, $childID);
-				$form->loadDataFrom($childData);
-			}
-		}
-
-		if ($this->methodName == "show") {
-			$form->makeReadonly();
-		}
-
-		return $form;
 	}
 
 	function SearchForm() {
@@ -422,10 +347,8 @@ class MemberTableField extends ComplexTableField {
 
 
 class MemberTableField_Popup extends ComplexTableField_Popup {
+	
 	function __construct($controller, $name, $fields, $sourceClass, $readonly=false, $validator = null) {
-
-		// DO NOT CHANGE THE ORDER OF THESE JS FILES. THESE ARE ONLY REQUIRED FOR THIS INSTANCE !!!11onetwo
-
 		parent::__construct($controller, $name, $fields, $sourceClass, $readonly, $validator);
 
 		Requirements::javascript("cms/javascript/MemberTableField.js");
@@ -434,17 +357,20 @@ class MemberTableField_Popup extends ComplexTableField_Popup {
 
 
 	function saveComplexTableField() {
-		$id = Convert::raw2sql($_REQUEST['ctf']['childID']);
+		$id = (isset($_REQUEST['ctf']['childID'])) ? Convert::raw2sql($_REQUEST['ctf']['childID']) : false;
 
 		if (is_numeric($id)) {
 			$childObject = DataObject::get_by_id($this->sourceClass, $id);
 		} else {
 			$childObject = new $this->sourceClass();
+			$this->fields->removeByName('ID');
 		}
+
 		$this->saveInto($childObject);
 		$childObject->write();
 
-		$childObject->Groups()->add($_REQUEST['ctf']['ID']);
+		// add member to current group
+		$childObject->Groups()->add($_REQUEST['GroupID']);
 
 		// if ajax-call in an iframe, close window by javascript, else redirect to referrer
 		if(!Director::is_ajax()) {
