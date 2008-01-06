@@ -3,16 +3,19 @@ SilverStripe ChangeLog
 2.2.1 (In development)
 
 New Features
-   - Translations
-       - Added Italian translation
-       - Added Russian translation
-       - Added Slovak translation
-       - Added Turkish translation
-       - Added Bulgarian translation
-       - Added Czech translation
-       - Added Hungarian translation
-       - Added Portuguese (Brazil) translation
-       - Added support for sapphire to Portuguese (Portugal) translation
+  - Translations
+      - Added Italian translation
+      - Added Russian translation
+      - Added Slovak translation
+      - Added Turkish translation
+      - Added Bulgarian translation
+      - Added Czech translation
+      - Added Hungarian translation
+      - Added Portuguese (Brazil) translation
+      - Added Swedish translation
+      - Added support for sapphire to Portuguese (Portugal) translation
+Developer Tools
+  - Added augmentDefaultRecords(), so DataObjectDecorators can extend requireDefaultRecords
 Bug fixes
    - Sapphire
       - Hardcoded array of encryption algorithims in Security::get_encryption_algorithms(), as a bug in MySQL causes corruption in dumps with enums with commas
