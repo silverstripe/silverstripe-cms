@@ -13,6 +13,7 @@ New Features
       - Added Hungarian translation
       - Added Portuguese (Brazil) translation
       - Added Swedish translation
+      - Added Chinese (Taiwan) translation
       - Added support for sapphire to Portuguese (Portugal) translation
 Developer Tools
   - Added augmentDefaultRecords(), so DataObjectDecorators can extend requireDefaultRecords
