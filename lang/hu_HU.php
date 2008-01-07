@@ -4,7 +4,11 @@ i18n::include_locale_file('cms', 'en_US');
 
 global $lang;
 
-$lang['hu_HU'] = $lang['en_US'];
+if(array_key_exists('hu_HU', $lang) && is_array($lang['hu_HU'])) {
+	$lang['hu_HU'] = array_merge($lang['en_US'], $lang['hu_HU']);
+} else {
+	$lang['hu_HU'] = $lang['en_US'];
+}
 
 $lang['hu_HU']['AssetAdmin']['CHOOSEFILE'] = 'Válassz fájlt';
 $lang['hu_HU']['AssetAdmin']['CONTENTMODBY'] = 'A tartalmat módosíthatja';
