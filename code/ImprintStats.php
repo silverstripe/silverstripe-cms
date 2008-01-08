@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * @package cms
+ * @subpackage
+ */
+
+/**
+ * Module to provide imprint statistics integration.
+ */
 class ImprintStats extends ViewableData {
 	protected static $imprintID;
 	

@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * @package cms
+ * @subpackage newsletter
+ */
+
+/**
+ * Single newsletter instance.  Each Newsletter belongs to a NewsletterType.
+ */
 class Newsletter extends DataObject {
 	
 	/**

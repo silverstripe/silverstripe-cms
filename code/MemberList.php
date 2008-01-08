@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * @package cms
+ * @subpackage
+ */
+
+/**
+ * Form field showing a list of members.
+ */
 class MemberList extends FormField {
 	protected $members;
 	protected $hidePassword;

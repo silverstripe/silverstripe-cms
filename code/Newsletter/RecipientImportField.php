@@ -1,6 +1,12 @@
 <?php
+
 /**
- * Displays a file upload field. 
+ * @package cms
+ * @subpackage newsletter
+ */
+
+/**
+ * Displays a field for importing recipients. 
  */
 class RecipientImportField extends FormField {
 	

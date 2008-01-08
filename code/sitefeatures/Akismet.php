@@ -15,7 +15,8 @@
  *
  * See the Akismet class documentation page linked to below for usage information.
  *
- * @package Akismet
+ * @package cms
+ * @subpackage
  * @author Alex Potsides, {@link http://www.achingbrain.net http://www.achingbrain.net}
  * @version 0.1
  * @copyright Alex Potsides, {@link http://www.achingbrain.net http://www.achingbrain.net}
@@ -43,8 +44,6 @@
  *      // store the comment normally
  *  </code>
  *
- *	@package	akismet
- *	@name		Akismet
  *	@version	0.2
  *  @author		Alex Potsides
  *  @link		http://www.achingbrain.net/
@@ -298,7 +297,6 @@ class Akismet
  *
  *	N.B. It is not necessary to call this class directly to use the Akismet class.  This is included here mainly out of a sense of completeness.
  *
- *	@package	akismet
  *	@name		SocketWriteRead
  *	@version	0.1
  *  @author		Alex Potsides

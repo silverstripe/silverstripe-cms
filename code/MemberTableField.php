@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * @package cms
+ * @subpackage
+ */
+
 /**
  * Enhances {ComplexTableField} with the ability to list groups and given members.
  * It is based around groups, so it deletes Members from a Group rather than from the entire system.

@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @package cms
+ * @subpackage
+ */
+
+/**
  * Provides a common interface for searching, viewing and editing DataObjects.
  * Extend the class to adjust functionality to your specific DataObjects.
  * 

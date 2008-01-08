@@ -1,7 +1,13 @@
 <?php
+
 /**
-* Displays a list of all members that have unsubscribed from the list
-*/
+ * @package cms
+ * @subpackage newsletter
+ */
+
+/**
+ * Displays a list of all members that have unsubscribed from the list
+ */
 class UnsubscribedList extends FormField {
     
     protected $nlType;

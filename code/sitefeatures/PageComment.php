@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * @package cms
+ * @subpackage
+ */
+
+/**
+ * Represents a single comment on a page
+ */
 class PageComment extends DataObject {
 	static $db = array(
 		"Name" => "Varchar",

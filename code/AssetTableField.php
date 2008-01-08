@@ -1,4 +1,12 @@
 <?php
+/**
+ * @package cms
+ * @subpackage
+ */
+
+/**
+ * A special kind of complex table field for manipulating assets.
+ */
 class AssetTableField extends ComplexTableField {
 	
 	protected $folder;

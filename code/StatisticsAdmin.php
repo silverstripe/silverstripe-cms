@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * @package cms
+ * @subpackage
+ */
+
+/**
+ * Statistics section of the CMS
+ */
 class StatisticsAdmin extends LeftAndMain {
 	static $tree_class = "SiteTree";
 	static $subitem_class = "Member";

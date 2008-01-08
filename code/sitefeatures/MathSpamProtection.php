@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * @package cms
+ * @subpackage
+ */
+
 /**
  * Tools for adding an optional protection question to a form.
  * Remember to add MathSpamProtection::enabled(true); to _config.php for this question to be added to the comments form.

@@ -1,5 +1,10 @@
 <?php
 /**
+ * @package cms
+ * @subpackage
+ */
+
+/**
  * The main "content" area of the CMS.
  * This class creates a 2-frame layout - left-tree and right-form - to sit beneath the main
  * admin menu.

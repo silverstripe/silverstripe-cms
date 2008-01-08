@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * @package cms
+ * @subpackage
+ */
+
+/**
+ * Comment administration system within the CMS
+ */
 class CommentAdmin extends LeftAndMain {
 	
 	public function init() {

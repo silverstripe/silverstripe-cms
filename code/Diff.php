@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @package cms
+ * @subpackage
+ * A PHP diff engine
+ */
+
 // difflib.php
 //
 // A PHP diff engine for phpwiki.

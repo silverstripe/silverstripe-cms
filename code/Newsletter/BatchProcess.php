@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * @package cms
+ * @subpackage newsletter
+ */
+
 /**
  * Create a process in session which is incremented to calls from the client
  */

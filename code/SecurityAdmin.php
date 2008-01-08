@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * @package cms
+ * @subpackage
+ */
+
+/**
+ * Security section of the CMS
+ */
 class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	static $tree_class = "Group";
 	static $subitem_class = "Member";

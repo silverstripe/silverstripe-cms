@@ -1,4 +1,13 @@
 <?php
+
+/**
+ * @package cms
+ * @subpackage newsletter
+ */
+
+/**
+ * Page type for creating a page that contains a form that visitors can use to subscript to a newsletter.
+ */
 class SubscribeForm extends UserDefinedForm {
 	static $add_action = "a newsletter subscription form";
 

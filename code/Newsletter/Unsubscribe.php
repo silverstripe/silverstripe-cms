@@ -1,7 +1,13 @@
 <?php
+
 /**
-* Create a form that a user can use to unsubscribe from a mailing list
-*/
+ * @package cms
+ * @subpackage newsletter
+ */
+
+/**
+ * Create a form that a user can use to unsubscribe from a mailing list
+ */
 class Unsubscribe_Controller extends Page_Controller {
     function __construct($data = null) {
     }

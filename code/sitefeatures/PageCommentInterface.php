@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @package cms
+ * @subpackage
+ */
+
+/**
  * Represents an interface for viewing and adding page comments
  * Create one, passing the page discussed to the constructor.  It can then be
  * inserted into a template.

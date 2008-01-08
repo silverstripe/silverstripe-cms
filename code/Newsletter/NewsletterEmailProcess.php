@@ -1,4 +1,13 @@
 <?php
+
+/**
+ * @package cms
+ * @subpackage newsletter
+ */
+
+/**
+ * Batch process for sending newsletters.
+ */
 class NewsletterEmailProcess extends BatchProcess {
 	
 	protected $subject;

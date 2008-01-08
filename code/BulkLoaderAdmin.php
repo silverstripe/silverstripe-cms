@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @package cms
+ * @subpackage
+ */
+
+/**
  * Class to provide batch-update facilities to CMS users.
  * The BulkLoaderAdmin class provides an interface for accessing all of the subclasses of BulkLoader,
  * each of which defines a particular bulk loading operation.

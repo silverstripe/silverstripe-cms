@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * @package cms
+ * @subpackage pagetypes
+ */
+
+/**
+ * Page type that lets users build a contact form.
+ */
 class UserDefinedForm extends Page {
 	static $add_action = "a contact form";
 

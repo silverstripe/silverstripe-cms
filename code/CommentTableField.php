@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * @package cms
+ * @subpackage
+ */
+
+/**
+ * Special kind of ComplexTableField for managing comments.
+ */
 class CommentTableField extends ComplexTableField {
 	protected $template = "CommentTableField";
 	protected $mode;
