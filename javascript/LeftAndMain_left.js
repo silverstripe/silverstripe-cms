@@ -449,16 +449,13 @@ ReorganiseAction = Class.create();
 ReorganiseAction.applyTo('#sortitems');
 ReorganiseAction.prototype = {
 	initialize: function () {
-		this.isDraggable = false;
 	},
 	
 	onclick : function() {
-		if (this.isDraggable == false) {
+		if ($('sitetree').isDraggable == false) {
 			$('sitetree').makeDraggable();
-			this.isDraggable = true;
 		} else {
 			$('sitetree').stopBeingDraggable();
-			this.isDraggable = false;
 		}
 	}
 }
