@@ -596,4 +596,74 @@ $lang['pt_PT']['CommentAdmin_right.ss']['WELCOME2'] = 'gestão de comentários. 
 
 
 
+// New2
+
+$lang['pt_PT']['MemberTableField.ss']['DISPLAYING'] = 'A mostrar';
+$lang['pt_PT']['MemberTableField.ss']['TO'] = 'até';
+$lang['pt_PT']['MemberTableField.ss']['OF'] = 'de';
+$lang['pt_PT']['MemberTableField.ss']['EDITASSET'] = 'Editar ficheiro';
+$lang['pt_PT']['MemberTableField']['FIRSTNAME'] = 'Primeiro Nome';
+$lang['pt_PT']['MemberTableField']['SURNAME'] = 'Sobrenome';
+$lang['pt_PT']['MemberTableField']['EMAIL'] = 'Email';
+
+$lang['pt_PT']['GenericDataAdmin']['CSVEXPORT'] = 'Exportar para CSV';
+
+$lang['pt_PT']['SecurityAdmin']['VIEWUSER'] = 'Ver Utilizador';
+
+$lang['pt_PT']['CMSMain']['ACCESSTO'] = array('Accesso a %s no CMS');
+$lang['pt_PT']['CMSMain']['ASSETADMINNAME'] = 'Ficheiros e Imagens';
+$lang['pt_PT']['CMSMain']['BULKLOADERADMINNAME'] = 'Acções em Volume';
+$lang['pt_PT']['CMSMain']['CMSMAINNAME'] = 'CMS Principal';
+$lang['pt_PT']['CMSMain']['COMMENTADMINNAME'] = 'Comentários';
+$lang['pt_PT']['CMSMain']['GENERICDATAADMINNAME'] = 'Dados Genéricos';
+$lang['pt_PT']['CMSMain']['LEFTANDMAINNAME'] = 'Esquerda e Principal';
+$lang['pt_PT']['CMSMain']['NEWSLETTERADMINNAME'] = 'Listas de Email';
+$lang['pt_PT']['CMSMain']['REPORTADMINNAME'] = 'Relatórios';
+$lang['pt_PT']['CMSMain']['SECURITYADMINNAME'] = 'Segurança';
+$lang['pt_PT']['CMSMain']['STATISTICSADMINNAME'] = 'Estatísticas';
+
+$lang['pt_PT']['CommentAdmin']['APPROVEDCOMMENTS'] = 'Comentários Aprovados';
+$lang['pt_PT']['CommentAdmin']['WAITINGMODERATION'] = 'Comentários por Aprovar';
+$lang['pt_PT']['CommentAdmin']['SPAM'] = 'Spam';
+$lang['pt_PT']['CommentAdmin']['AUTHOR'] = 'Autor';
+$lang['pt_PT']['CommentAdmin']['COMMENT'] = 'Comentário';
+$lang['pt_PT']['CommentAdmin']['COMMENTS'] = 'Comentários';
+$lang['pt_PT']['CommentAdmin']['PAGE'] = 'Página';
+$lang['pt_PT']['CommentAdmin']['CREATED'] = 'Criado em';
+$lang['pt_PT']['CommentAdmin']['ACCEPT'] = 'Aceitar';
+$lang['pt_PT']['CommentAdmin']['MARKSPAM'] = 'Marcar como spam';
+$lang['pt_PT']['CommentAdmin']['MARKNOTSPAM'] = 'Marcar como não sendo spam';
+$lang['pt_PT']['CommentAdmin']['DELETE'] = 'Apagar';
+$lang['pt_PT']['CommentAdmin']['DELETEALL'] = 'Apagar Todos';
+$lang['pt_PT']['CommentAdmin']['NAME'] = 'Nome';
+$lang['pt_PT']['CommentAdmin']['EDIT'] = 'Editar';
+
+$lang['pt_PT']['CommentTableField']['SEARCH'] = 'Procurar';
+$lang['pt_PT']['CommentTableField']['FILTER'] = 'Filtro';
+
+$lang['pt_PT']['CommentTableField.ss']['DISPLAYING'] = 'A mostrar';
+$lang['pt_PT']['CommentTableField.ss']['TO'] = 'até';
+$lang['pt_PT']['CommentTableField.ss']['OF'] = 'de';
+$lang['pt_PT']['CommentTableField.ss']['NOITEMSFOUND'] = 'Nenhum item encontrado';
+$lang['pt_PT']['CommentTableField.ss']['EDIT'] = 'Editar';
+$lang['pt_PT']['CommentTableField.ss']['APPROVE'] = 'Aprovar este comentário';
+$lang['pt_PT']['CommentTableField.ss']['MARKASSPAM'] = 'Marcar como spam';
+$lang['pt_PT']['CommentTableField.ss']['MARKASNOTSPAM'] = 'Marcar como não sendo spam';
+$lang['pt_PT']['CommentTableField.ss']['DELETEROW'] = 'Apagar esta linha';
+
+$lang['pt_PT']['CommentAdmin_left.ss']['COMMENTS'] = 'Comentários';
+$lang['pt_PT']['CommentAdmin_left.ss']['APPROVED'] = 'Aprovados';
+$lang['pt_PT']['CommentAdmin_left.ss']['WAITINGMODERATION'] = 'Por Aprovar';
+$lang['pt_PT']['CommentAdmin_left.ss']['SPAM'] = 'Spam';
+
+$lang['pt_PT']['StatisticsAdmin']['SELECTREPORT'] = 'Seleccione um relatório da esquerda para ver as estatísticas do site mais detalhadamente';
+
+$lang['pt_PT']['StatisticsAdmin_left.ss']['STATISTICS'] = 'Estatísticas';
+$lang['pt_PT']['StatisticsAdmin_left.ss']['VIEWS'] = 'Visualizações';
+$lang['pt_PT']['StatisticsAdmin_left.ss']['TRENDS'] = 'Tendências';
+$lang['pt_PT']['StatisticsAdmin_left.ss']['OS'] = 'Sistemas Operativos';
+$lang['pt_PT']['StatisticsAdmin_left.ss']['BROWSERS'] = 'Browsers';
+
+
+
 ?>

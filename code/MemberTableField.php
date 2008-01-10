@@ -117,21 +117,21 @@ class MemberTableField extends ComplexTableField {
 
 		parent::__construct($controller, $name, $sourceClass, $fieldList);
 
-		Requirements::javascript("cms/javascript/MemberTableField.js");
+		Requirements::javascript('cms/javascript/MemberTableField.js');
 
 		// construct the filter and sort
 		if(isset($_REQUEST['MemberOrderByField'])) {
-			$this->sourceSort = "`" . Convert::raw2sql($_REQUEST['MemberOrderByField']) . "`" . Convert::raw2sql( $_REQUEST['MemberOrderByOrder'] );
+			$this->sourceSort = '`' . Convert::raw2sql($_REQUEST['MemberOrderByField']) . '`' . Convert::raw2sql( $_REQUEST['MemberOrderByOrder'] );
 		}
 
 		// search
 		$search = isset($_REQUEST['MemberSearch']) ? Convert::raw2sql($_REQUEST['MemberSearch']) : null;
 		if(!empty($_REQUEST['MemberSearch'])) {
 			//$this->sourceFilter[] = "( `Email` LIKE '%$search%' OR `FirstName` LIKE '%$search%' OR `Surname` LIKE '%$search%' )";
-			$sourceF = "( ";
+			$sourceF = '( ';
 			foreach( $fieldList as $k => $v )
-				$sourceF .= "`$k` LIKE '%$search%' OR ";
-			$this->sourceFilter[] = substr( $sourceF, 0, -3 ) . ")";
+				$sourceF .= '`$k` LIKE '%$search%' OR ';
+			$this->sourceFilter[] = substr( $sourceF, 0, -3 ) . ')';
 		}
 
 		// filter by groups
@@ -240,8 +240,8 @@ class MemberTableField extends ComplexTableField {
 	 * Remove member from group rather than from the database
 	 */
 	function delete() {
-		$groupID = Convert::raw2sql($_REQUEST["ctf"]["ID"]);
-		$memberID = Convert::raw2sql($_REQUEST["ctf"]["childID"]);
+		$groupID = Convert::raw2sql($_REQUEST['ctf']['ID']);
+		$memberID = Convert::raw2sql($_REQUEST['ctf']['childID']);
 		if(is_numeric($groupID) && is_numeric($memberID)) {
 			$member = DataObject::get_by_id('Member', $memberID);
 			$member->Groups()->remove($groupID);
@@ -261,11 +261,11 @@ class MemberTableField extends ComplexTableField {
 	 * #################################
 	 */
 	function getParentClass() {
-		return "Group";
+		return 'Group';
 	}
 
 	function getParentIdName($childClass,$parentClass){
-		return "GroupID";
+		return 'GroupID';
 	}
 
 
@@ -277,7 +277,7 @@ class MemberTableField extends ComplexTableField {
 	function memberListWithGroupID($members, $group) {
 		$newMembers = new DataObjectSet();
 		foreach($members as $member) {
-			$newMembers->push($member->customise(array("GroupID" => $group->ID)));
+			$newMembers->push($member->customise(array('GroupID' => $group->ID)));
 		}
 		return $newMembers;
 	}
@@ -301,12 +301,12 @@ class MemberTableField extends ComplexTableField {
 		foreach($this->FieldList() as $fieldName=>$fieldTitle) {
 			$fields->push(new TextField($fieldName));
 		}
-		$fields->push(new HiddenField("ctf[ID]", null, $this->group->ID));
+		$fields->push(new HiddenField('ctf[ID]', null, $this->group->ID));
 
 		return new TabularStyle(new Form($this->controller,'AddRecordForm',
 			$fields,
 			new FieldSet(
-				new FormAction("addtogroup", _t('MemberTableField.ADD','Add'))
+				new FormAction('addtogroup', _t('MemberTableField.ADD','Add'))
 			)
 		));
 	}
@@ -323,7 +323,7 @@ class MemberTableField extends ComplexTableField {
 		}
 
 		// Setup limits
-		$limitClause = "";
+		$limitClause = '';
 		if(isset($_REQUEST['ctf'][$this->Name()]['start']) && is_numeric($_REQUEST['ctf'][$this->Name()]['start'])) {
 			$limitClause = ($_REQUEST['ctf'][$this->Name()]['start']) . ", {$this->pageSize}";
 		} else {
@@ -339,7 +339,7 @@ class MemberTableField extends ComplexTableField {
 	        $this->sourceFilter,
 	        $this->sourceSort
         );
-		$this->unpagedSourceItems = $this->group->Members( "", "", $this->sourceFilter, $this->sourceSort );
+		$this->unpagedSourceItems = $this->group->Members( '', '', $this->sourceFilter, $this->sourceSort );
 		$this->totalCount = ($this->sourceItems) ? $this->sourceItems->TotalItems() : 0;
 		return $this->sourceItems;
 	}
@@ -360,8 +360,8 @@ class MemberTableField_Popup extends ComplexTableField_Popup {
 	function __construct($controller, $name, $fields, $sourceClass, $readonly=false, $validator = null) {
 		parent::__construct($controller, $name, $fields, $sourceClass, $readonly, $validator);
 
-		Requirements::javascript("cms/javascript/MemberTableField.js");
-		Requirements::javascript("cms/javascript/MemberTableField_popup.js");
+		Requirements::javascript('cms/javascript/MemberTableField.js');
+		Requirements::javascript('cms/javascript/MemberTableField_popup.js');
 	}
 
 
@@ -383,7 +383,7 @@ class MemberTableField_Popup extends ComplexTableField_Popup {
 
 		// if ajax-call in an iframe, close window by javascript, else redirect to referrer
 		if(!Director::is_ajax()) {
-			Director::redirect(substr($_SERVER['REQUEST_URI'],0,strpos($_SERVER['REQUEST_URI'],"?")));
+			Director::redirect(substr($_SERVER['REQUEST_URI'],0,strpos($_SERVER['REQUEST_URI'],'?')));
 		}
 	}
 

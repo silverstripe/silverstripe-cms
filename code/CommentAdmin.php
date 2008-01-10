@@ -15,8 +15,8 @@ class CommentAdmin extends LeftAndMain {
 	public function init() {
 		parent::init();
 		
-		Requirements::javascript("cms/javascript/CommentAdmin_right.js");
-		Requirements::css("cms/css/CommentAdmin.css");
+		Requirements::javascript('cms/javascript/CommentAdmin_right.js');
+		Requirements::css('cms/css/CommentAdmin.css');
 	}
 	
 	public function Link($action = null) {
@@ -134,7 +134,7 @@ JS;
 	
 	function deleteall() {
 		$numComments = 0;
-		$spam = DataObject::get('PageComment', "PageComment.IsSpam=1");
+		$spam = DataObject::get('PageComment', 'PageComment.IsSpam=1');
 		
 		if($spam) {
 			$numComments = $spam->Count();
