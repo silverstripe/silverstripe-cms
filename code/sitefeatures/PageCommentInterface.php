@@ -2,13 +2,15 @@
 
 /**
  * @package cms
- * @subpackage
+ * @subpackage comments
  */
 
 /**
  * Represents an interface for viewing and adding page comments
  * Create one, passing the page discussed to the constructor.  It can then be
  * inserted into a template.
+ * @package cms
+ * @subpackage comments
  */
 class PageCommentInterface extends ViewableData {
 	protected $controller, $methodName, $page;
@@ -85,6 +87,10 @@ class PageCommentInterface extends ViewableData {
 	
 }
 
+/**
+ * @package cms
+ * @subpackage comments
+ */
 class PageCommentInterface_Form extends Form {
 	function postcomment($data) {
 		// Spam filtering
@@ -144,6 +150,10 @@ class PageCommentInterface_Form extends Form {
 	}
 }
 
+/**
+ * @package cms
+ * @subpackage comments
+ */
 class PageCommentInterface_Controller extends ContentController {
 	function __construct() {
 		parent::__construct(null);

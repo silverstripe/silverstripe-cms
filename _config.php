@@ -1,6 +1,7 @@
 <?php
 /**
  * URL rules for the CMS module
+ * @package cms
  */
 Director::addRules(50, array(
 	'processes/$Action/$ID/$Batch' => 'BatchProcess_Controller',

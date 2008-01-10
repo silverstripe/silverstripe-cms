@@ -2,11 +2,13 @@
 
 /**
  * @package cms
- * @subpackage
+ * @subpackage comments
  */
 
 /**
  * Special kind of ComplexTableField for managing comments.
+ * @package cms
+ * @subpackage comments
  */
 class CommentTableField extends ComplexTableField {
 	protected $template = "CommentTableField";
@@ -157,7 +159,11 @@ class CommentTableField extends ComplexTableField {
 	}
 }
 
-
+/**
+ * Single row of a {@link CommentTableField}
+ * @package cms
+ * @subpackage comments
+ */
 class CommentTableField_Item extends ComplexTableField_Item {
 	function HasSpamButton() {
 		return $this->parent()->HasSpamButton();

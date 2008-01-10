@@ -2,12 +2,14 @@
 
 /**
  * @package cms
- * @subpackage
+ * @subpackage core
  */
 
 /**
  * LeftAndMain is the parent class of all the two-pane views in the CMS.
  * If you are wanting to add more areas to the CMS, you can do it by subclassing LeftAndMain.
+ * @package cms
+ * @subpackage core
  */
 abstract class LeftAndMain extends Controller {
 	static $tree_class = null;

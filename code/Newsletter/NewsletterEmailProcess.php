@@ -7,6 +7,8 @@
 
 /**
  * Batch process for sending newsletters.
+ * @package cms
+ * @subpackage newsletter
  */
 class NewsletterEmailProcess extends BatchProcess {
 	
@@ -20,7 +22,7 @@ class NewsletterEmailProcess extends BatchProcess {
 	/** 
 	 * Set up a Newsletter Email Process
 	 *
-	 * @recipients A DataObject containing the addresses of the recipients of this newsletter
+	 * @param $recipients DataObjectSet The recipients of this newsletter
 	 */
 	function __construct( $subject, $body, $from, $newsletter, $nlType, $messageID = null, $recipients) {
 		

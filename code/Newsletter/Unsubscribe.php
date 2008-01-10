@@ -7,6 +7,8 @@
 
 /**
  * Create a form that a user can use to unsubscribe from a mailing list
+ * @package cms
+ * @subpackage newsletter
  */
 class Unsubscribe_Controller extends Page_Controller {
     function __construct($data = null) {
@@ -112,6 +114,12 @@ class Unsubscribe_Controller extends Page_Controller {
     }
 }
 
+/**
+ * 2nd step form for the Unsubcribe page.
+ * The form will list all the mailing lists that the user is subscribed to.
+ * @package cms
+ * @subpackage newsletter
+ */
 class Unsubscribe_MailingListForm extends Form {
     
     protected $memberEmail;
@@ -151,6 +159,12 @@ class Unsubscribe_MailingListForm extends Form {
     }
 }
 
+/**
+ * 1st step form for the Unsubcribe page.
+ * The form will let people enter an email address and press a button to continue.
+ * @package cms
+ * @subpackage newsletter
+ */
 class Unsubscribe_EmailAddressForm extends Form {
 
     function __construct( $controller, $name ) {
@@ -171,6 +185,12 @@ class Unsubscribe_EmailAddressForm extends Form {
     }    
 }
 
+/**
+ * Final stage form for the Unsubcribe page.
+ * The form just gives you a success message.
+ * @package cms
+ * @subpackage newsletter
+ */
 class Unsubscribe_Successful extends Form {
 	function __construct($controller, $name){
 		$fields = new FieldSet();

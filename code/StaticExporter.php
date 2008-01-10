@@ -2,13 +2,15 @@
 
 /**
  * @package cms
- * @subpackage
+ * @subpackage export
  */
 
 /**
  * This class lets you export a static copy of your site.
  * It creates a huge number of folders each containing an index.html file.
  * This preserves the URL naming format.
+ * @package cms
+ * @subpackage export
  */
 class StaticExporter extends Controller {
 	function init() {

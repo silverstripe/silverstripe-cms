@@ -2,11 +2,13 @@
 
 /**
  * @package cms
- * @subpackage
+ * @subpackage comments
  */
 
 /**
  * Comment administration system within the CMS
+ * @package cms
+ * @subpackage comments
  */
 class CommentAdmin extends LeftAndMain {
 	

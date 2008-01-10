@@ -7,6 +7,8 @@
 
 /**
  * Displays a list of all members that have unsubscribed from the list
+ * @package cms
+ * @subpackage newsletter
  */
 class UnsubscribedList extends FormField {
     

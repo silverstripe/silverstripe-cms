@@ -2,11 +2,13 @@
 
 /**
  * @package cms
- * @subpackage
+ * @subpackage reports
  */
 
 /**
  * Statistics section of the CMS
+ * @package cms
+ * @subpackage reports
  */
 class StatisticsAdmin extends LeftAndMain {
 	static $tree_class = "SiteTree";

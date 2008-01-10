@@ -7,6 +7,8 @@
 
 /**
  * Page type that lets users build a contact form.
+ * @package cms
+ * @subpackage pagetypes
  */
 class UserDefinedForm extends Page {
 	static $add_action = "a contact form";
@@ -157,6 +159,11 @@ class UserDefinedForm extends Page {
 	}
 }
 
+/**
+ * Controller for the {@link UserDefinedForm} page type.
+ * @package cms
+ * @subpackage pagetypes
+ */
 class UserDefinedForm_Controller extends Page_Controller {
 	
 	function init() {
@@ -309,6 +316,11 @@ class UserDefinedForm_Controller extends Page_Controller {
 	}
 }
 
+/**
+ * Email that gets sent when a submission is made.
+ * @package cms
+ * @subpackage pagetypes
+ */
 class UserDefinedForm_SubmittedFormEmail extends Email_Template {
 	protected $ss_template = "SubmittedFormEmail";
 	protected $from = '$Sender.Email';

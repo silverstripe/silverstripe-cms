@@ -2,13 +2,15 @@
 
 /**
  * @package cms
- * @subpackage
+ * @subpackage assets
  */
 
 /**
  * Provides a strip of thumbnails showing all of the images in the system.
  * It will be tied to a 'parent field' that will provide it with a filter by which to reduce the number
  * of thumbnails displayed.
+ * @package cms
+ * @subpackage assets
  */
 class ThumbnailStripField extends FormField {
 	protected $parentField;

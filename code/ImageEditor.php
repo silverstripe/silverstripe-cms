@@ -2,11 +2,13 @@
 
 /**
  * @package cms
- * @subpackage
+ * @subpackage assets
  */
 
 /**
  * This Controller handles all operation needed for ImageEditor to work(expect for GD operations).
+ * @package cms
+ * @subpackage assets
  */
 class ImageEditor extends Controller {
 	

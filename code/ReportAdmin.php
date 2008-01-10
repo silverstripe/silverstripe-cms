@@ -2,11 +2,13 @@
 
 /**
  * @package cms
- * @subpackage
+ * @subpackage reports
  */
 
 /**
  * Reports section of the CMS
+ * @package cms
+ * @subpackage reports
  */
 class ReportAdmin extends LeftAndMain {
 	static $subitem_class = "GrantObject";

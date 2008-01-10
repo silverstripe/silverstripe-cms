@@ -2,11 +2,13 @@
 
 /**
  * @package cms
- * @subpackage
+ * @subpackage comments
  */
 
 /**
  * Represents a single comment on a page
+ * @package cms
+ * @subpackage comments
  */
 class PageComment extends DataObject {
 	static $db = array(

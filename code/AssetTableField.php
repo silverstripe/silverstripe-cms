@@ -1,11 +1,13 @@
 <?php
 /**
  * @package cms
- * @subpackage
+ * @subpackage assets
  */
 
 /**
  * A special kind of complex table field for manipulating assets.
+ * @package cms
+ * @subpackage assets
  */
 class AssetTableField extends ComplexTableField {
 	

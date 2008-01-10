@@ -2,16 +2,15 @@
 
 /**
  * @package cms
- * @subpackage
+ * @subpackage core
  */
 
 /**
  * Provides a common interface for searching, viewing and editing DataObjects.
  * Extend the class to adjust functionality to your specific DataObjects.
  * 
- * @var $data_type DataObject The base class
- * @var $data_type_extra Array Additional DataObjects which are included in the search.
- * @var $resultColumnts Array Columnnames shown in the result-table.
+ * @package cms
+ * @subpackage core
  */
 abstract class GenericDataAdmin extends LeftAndMain {
 

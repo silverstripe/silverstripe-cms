@@ -2,12 +2,14 @@
 
 /**
  * @package cms
- * @subpackage
+ * @subpackage assets
  */
 
 /**
  * AssetAdmin is the 'file store' section of the CMS.
  * It provides an interface for maniupating the File and Folder objects in the system.
+ * @package cms
+ * @subpackage assets
  */
 class AssetAdmin extends LeftAndMain {
 	static $tree_class = "File";

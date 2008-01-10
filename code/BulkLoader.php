@@ -2,12 +2,14 @@
 
 /**
  * @package cms
- * @subpackage
+ * @subpackage bulkloading
  */
 
 /**
  * An abstract base for bulk loaders of content into the SilverStripe database.
  * Bulk loaders give SilverStripe authors the ability to do large-scale CSV uploads into their Sapphire databases.
+ * @package cms
+ * @subpackage bulkloading
  */
 abstract class BulkLoader extends ViewableData {
 	/**

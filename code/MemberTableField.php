@@ -2,7 +2,7 @@
 
 /**
  * @package cms
- * @subpackage
+ * @subpackage security
  */
 
 /**
@@ -17,6 +17,8 @@
  * - members of a provided group
  * - all members
  * - members based on a search-query
+ * @package cms
+ * @subpackage security
  */
 class MemberTableField extends ComplexTableField {
 	
@@ -348,10 +350,11 @@ class MemberTableField extends ComplexTableField {
 	}
 }
 
-
-
-
-
+/**
+ * Popup window for {@link MemberTableField}.
+ * @package cms
+ * @subpackage security
+ */
 class MemberTableField_Popup extends ComplexTableField_Popup {
 	
 	function __construct($controller, $name, $fields, $sourceClass, $readonly=false, $validator = null) {

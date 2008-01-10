@@ -16,7 +16,7 @@
  * See the Akismet class documentation page linked to below for usage information.
  *
  * @package cms
- * @subpackage
+ * @subpackage comments
  * @author Alex Potsides, {@link http://www.achingbrain.net http://www.achingbrain.net}
  * @version 0.1
  * @copyright Alex Potsides, {@link http://www.achingbrain.net http://www.achingbrain.net}
@@ -47,6 +47,8 @@
  *	@version	0.2
  *  @author		Alex Potsides
  *  @link		http://www.achingbrain.net/
+ * @package cms
+ * @subpackage comments
  */
 class Akismet
 	{
@@ -301,6 +303,8 @@ class Akismet
  *	@version	0.1
  *  @author		Alex Potsides
  *  @link		http://www.achingbrain.net/
+ * @package cms
+ * @subpackage comments
  */
 class SocketWriteRead
 	{

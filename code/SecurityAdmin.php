@@ -2,11 +2,13 @@
 
 /**
  * @package cms
- * @subpackage
+ * @subpackage security
  */
 
 /**
  * Security section of the CMS
+ * @package cms
+ * @subpackage security
  */
 class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	static $tree_class = "Group";

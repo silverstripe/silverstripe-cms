@@ -7,6 +7,8 @@
 
 /**
  * Page type for creating a page that contains a form that visitors can use to subscript to a newsletter.
+ * @package cms
+ * @subpackage newsletter
  */
 class SubscribeForm extends UserDefinedForm {
 	static $add_action = "a newsletter subscription form";
@@ -157,6 +159,11 @@ class SubscribeForm extends UserDefinedForm {
     }
 }
 
+/**
+ * Email for sending subscribe form submissions.
+ * @package cms
+ * @subpackage newsletter
+ */
 class SubscribeForm_SubscribeEmail extends Email_Template {
     protected $to = '$Email';
     protected $subject = '$Subject';
@@ -164,6 +171,11 @@ class SubscribeForm_SubscribeEmail extends Email_Template {
     protected $from = '';   
 }
 
+/**
+ * Controller for the SubscribeForm page
+ * @package cms
+ * @subpackage newsletter
+ */
 class SubscribeForm_Controller extends UserDefinedForm_Controller {
  
     function process( $data, $form ) {

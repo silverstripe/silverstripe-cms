@@ -2,12 +2,14 @@
 
 /**
  * @package cms
- * @subpackage
+ * @subpackage content
  */
 
 /**
  * Base class for the small reports that appear in the left hand site of the Site Content section of the CMS.
  * Create subclasses of this class to build new reports.
+ * @package cms
+ * @subpackage content
  */
 abstract class SideReport extends Object {
 	abstract function records();
@@ -45,6 +47,8 @@ abstract class SideReport extends Object {
 
 /**
  * Content side-report listing empty pages
+ * @package cms
+ * @subpackage content
  */
 class SideReport_EmptyPages extends SideReport {
 	function title() {
@@ -62,6 +66,8 @@ class SideReport_EmptyPages extends SideReport {
 
 /**
  * Content side-report listing recently editing pages.
+ * @package cms
+ * @subpackage content
  */
 class SideReport_RecentlyEdited extends SideReport {
 	function title() {

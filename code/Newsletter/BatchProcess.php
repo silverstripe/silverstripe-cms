@@ -7,6 +7,8 @@
 
 /**
  * Create a process in session which is incremented to calls from the client
+ * @package cms
+ * @subpackage newsletter
  */
 class BatchProcess extends Object {
 	
@@ -74,6 +76,11 @@ class BatchProcess extends Object {
 	}
 }
 
+/**
+ * Controller for calling the batch processes via Ajax.
+ * @package cms
+ * @subpackage newsletter
+ */
 class BatchProcess_Controller extends Controller {
 	
 	function next() {

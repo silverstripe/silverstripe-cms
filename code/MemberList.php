@@ -2,11 +2,13 @@
 
 /**
  * @package cms
- * @subpackage
+ * @subpackage security
  */
 
 /**
  * Form field showing a list of members.
+ * @package cms
+ * @subpackage security
  */
 class MemberList extends FormField {
 	protected $members;

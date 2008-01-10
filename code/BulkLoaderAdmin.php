@@ -2,7 +2,7 @@
 
 /**
  * @package cms
- * @subpackage
+ * @subpackage bulkloading
  */
 
 /**
@@ -11,6 +11,8 @@
  * each of which defines a particular bulk loading operation.
  * 
  * This code was originally developed for Per Week in collaboration with Brian Calhoun.
+ * @package cms
+ * @subpackage bulkloading
  */
 class BulkLoaderAdmin extends LeftAndMain {
 

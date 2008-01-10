@@ -7,6 +7,8 @@
 
 /**
  * Displays a field for importing recipients. 
+ * @package cms
+ * @subpackage newsletter
  */
 class RecipientImportField extends FormField {
 	
@@ -180,6 +182,11 @@ class RecipientImportField extends FormField {
 	}
 }
 
+/**
+ * Single cell of the recipient import field
+ * @package cms
+ * @subpackage newsletter
+ */
 class RecipientImportField_Cell extends ViewableData {
 	protected $value;
 	
@@ -192,6 +199,11 @@ class RecipientImportField_Cell extends ViewableData {
 	}
 }
 
+/**
+ * Upload form that appears in the iframe
+ * @package cms
+ * @subpackage newsletter
+ */
 class RecipientImportField_UploadForm extends Form {
 	function import( $data, $form ) {
 		$id = $data['ID'];

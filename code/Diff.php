@@ -2,7 +2,7 @@
 
 /**
  * @package cms
- * @subpackage
+ * @subpackage core
  * A PHP diff engine
  */
 
@@ -17,8 +17,15 @@
 // FIXME: possibly remove assert()'s for production version?
 
 // PHP3 does not have assert()
+/**
+ */
 define('USE_ASSERTS', function_exists('assert'));
 
+/**
+ * @package cms
+ * @subpackage core
+ * @access private
+ */
 class _DiffOp {
     var $type;
     var $orig;
@@ -37,6 +44,11 @@ class _DiffOp {
     }
 }
 
+/**
+ * @package cms
+ * @subpackage core
+ * @access private
+ */
 class _DiffOp_Copy extends _DiffOp {
     var $type = 'copy';
 
@@ -52,6 +64,11 @@ class _DiffOp_Copy extends _DiffOp {
     }
 }
 
+/**
+ * @package cms
+ * @subpackage core
+ * @access private
+ */
 class _DiffOp_Delete extends _DiffOp {
     var $type = 'delete';
 
@@ -65,6 +82,11 @@ class _DiffOp_Delete extends _DiffOp {
     }
 }
 
+/**
+ * @package cms
+ * @subpackage core
+ * @access private
+ */
 class _DiffOp_Add extends _DiffOp {
     var $type = 'add';
 
@@ -78,6 +100,11 @@ class _DiffOp_Add extends _DiffOp {
     }
 }
 
+/**
+ * @package cms
+ * @subpackage core
+ * @access private
+ */
 class _DiffOp_Change extends _DiffOp {
     var $type = 'change';
 
@@ -111,6 +138,8 @@ class _DiffOp_Change extends _DiffOp {
  *
  * @author Geoffrey T. Dairiki
  * @access private
+ * @package cms
+ * @subpackage core
  */
 class _DiffEngine
 {
@@ -495,6 +524,8 @@ class _DiffEngine
 
 /**
  * Class representing a 'diff' between two sequences of strings.
+ * @package cms
+ * @subpackage core
  */
 class Diff
 {
@@ -743,7 +774,9 @@ class Diff
 
 
 /**
- * FIXME: bad name.
+ * Computes diff between sequences of strings.
+ * @package cms
+ * @subpackage core
  */
 class MappedDiff
 extends Diff
