@@ -188,6 +188,10 @@ class UserDefinedForm_Controller extends Page_Controller {
 				$required[] = $field->Name;
 		}
 		
+		if(!isset($_SERVER['HTTP_REFERER'])) {
+			$_SERVER['HTTP_REFERER'] = "";
+		}
+		
 		$fields->push( new HiddenField( "Referrer", "", $_SERVER['HTTP_REFERER'] ) );
 		
 		// Build actions
