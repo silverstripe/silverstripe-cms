@@ -47,7 +47,7 @@
 <% end_if %>
 
 <% if SentRecipients(BlackListed) %>
-	<h2 class="error" style="width:auto;">Sending to the Following Recipients Did Not Occur Because They Are BlackListed</h2>
+	<h2 class="error" style="width:auto;"><% _t('FAILEDBL', 'Sending to the Following Recipients Did Not Occur Because They Are BlackListed') %></h2>
 
 	<table class="CMSList">
 		<thead>

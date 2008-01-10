@@ -44,8 +44,8 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		if($record) {
 			$fields = new FieldSet(
 				new TabSet("Root",
-					new Tab("Members",
-						new TextField("Title", "Group name"),
+					new Tab(_t('SecurityAdmin.MEMBERS', 'Members'),
+						new TextField("Title", _t('SecurityAdmin.GROUPNAME', 'Group name')),
 						$memberList = new MemberTableField(
 							$this,
 							"Members",
@@ -53,7 +53,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 						)
 					),
 
-					new Tab("Permissions",
+					new Tab(_t('SecurityAdmin.PERMISSIONS', 'Permissions'),
 						new LiteralField("", "<p>"._t('SecurityAdmin.ADVANCEDONLY',"This section is for advanced users only.
 							See <a href=\"http://doc.silverstripe.com/doku.php?id=permissions:codes\" target=\"_blank\">this page</a>
 							for more information.")."</p>"),
@@ -61,8 +61,8 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 							"Permissions",
 							"Permission",
 							array(
-								"Code" => "Code",
-								"Arg" => "Optional ID",
+							        "Code" => _t('SecurityAdmin.CODE', 'Code'),
+							        "Arg" => _t('SecurityAdmin.OPTIONALID', 'Optional ID'),
 							),
 							array(
 								"Code" => "PermissionDropdownField",
@@ -352,7 +352,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	
 	function providePermissions() {
 		return array(
-			'EDIT_PERMISSIONS' => 'Edit Permissions on each Group',
+			'EDIT_PERMISSIONS' => _t('SecurityAdmin.EDITPERMISSIONS', 'Edit Permissions on each Group'),
 		);
 	}
 }

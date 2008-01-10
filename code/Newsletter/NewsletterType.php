@@ -54,7 +54,7 @@ class NewsletterType extends DataObject {
 		if($this->ID){
 			$group = $this->Group();
 			if($group->Title != "$this->Title"){
-				$group->Title = "Mailing List: " . $this->Title;	
+			        $group->Title = _t('NewsletterType.MAILINGLIST', 'Mailing List:').' '. $this->Title;	
 				// Otherwise the code would have mailing list in it too :-(
 				$group->Code = SiteTree::generateURLSegment($this->Title);
 				$group->write();
@@ -73,20 +73,20 @@ class NewsletterType extends DataObject {
         }
 	
     	$fields = new FieldSet(
-            new TextField("Title", "Newsletter Type"),
-            new TextField("FromEmail", "Send newsletters from"),
+	    new TextField("Title", _t('NewsletterType.NEWSLETTERTYPE', 'Newsletter Type')),
+            new TextField("FromEmail", _t('NewsletterType.SENDFROM', 'Send newsletters from')),
             new TabSet("Root",
-                new Tab("Drafts",
-                    $draftList = new NewsletterList("Draft", $this, "Draft")
+		new Tab(_t('NewsletterType.DRAFTS', 'Drafts'),
+		    $draftList = new NewsletterList("Draft", $this, _t('NewsletterType.DRAFT', 'Draft'))
                 ),
-                new TabSet("Sent",
-                    new Tab("Sent",
-                        $sendList = new NewsletterList("Send", $this, "Send")
+		new TabSet('Sent',
+                    new Tab(_t('NewsletterType.SENT', 'Sent'),
+			$sendList = new NewsletterList("Send", $this, _t('NewsletterType.SEND', 'Send'))
                     ),
-                    new Tab("Unsubscribed",
+		    new Tab(_t('NewsletterType.UNSUBSCRIBED', 'Unsubscribed'),
                         $unsubscribedList = new UnsubscribedList("Unsubscribed", $this)    
                     ),
-                    new Tab("Bounced",
+		    new Tab(_t('NewsletterType.BOUNCED', 'Bounced'),
                         $bouncedList = new BouncedList("Bounced", $this )
                     )
                 )
@@ -96,15 +96,15 @@ class NewsletterType extends DataObject {
         if($this->GroupID) {
             $fields->addFieldToTab('Root', 
                 new TabSet("Recipients",
-                    new Tab( "Recipients",
+		    new Tab( _t('NewsletterType.RECIPIENTS', 'Recipients'),
                         $recipients = new MemberTableField(
                             $this,
                             "Recipients", 
                             $group
                             )
                     ),
-                    new Tab( "Import",
-                        $importField = new RecipientImportField("ImportFile","Import from file", $group )
+		    new Tab( _t('NewsletterType.IMPORT', 'Import'),
+			$importField = new RecipientImportField("ImportFile", _t('NewsletterType.IMPORTFROM', 'Import from file'), $group )
                     )
                 )
             );
@@ -115,7 +115,7 @@ class NewsletterType extends DataObject {
         }
                 
         $fields->addFieldToTab('Root', 
-            new Tab("Template",
+	    new Tab(_t('NewsletterType.TEMPLATE', 'Template'),
                 $templates = new TemplateList("Template","Template", $this->Template, NewsletterAdmin::template_path())
             )
         );

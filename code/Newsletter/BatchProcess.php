@@ -88,13 +88,13 @@ class BatchProcess_Controller extends Controller {
 		$processID = $this->urlParams['ID'];
 		
 		if( !$processID ) {
-			return "ERROR: Could not continue process";
+		        return _t('BatchProcess_Controller.ERROR', 'ERROR: Could not continue process');
 		}
 		
 		$process = unserialize(Session::get('BatchProcesses.' . ($this->urlParams['ID'] - 1)));
 		
 		if( !$process ) {
-			return "ERROR:Could not continue process";
+		        return _t('BatchProcess_Controller.ERROR', 'ERROR:Could not continue process');
 		}
 		
 		if( $this->urlParams['Batch'] )

@@ -11,10 +11,10 @@ function buttonClick(el) {
 			window.linkedObject.result = el.name;
 		
 		} else {
-			throw("Couldn't find the button name");
+			throw("<% _t('BUTTONNOTFOUND', 'Couldn\'t find the button name') %>");
 		}
 	} else {
-		throw("Can't find window.linkedObject to send the button click back to the main window");
+		throw("<% _t('NOLINKED', 'Can\'t find window.linkedObject to send the button click back to the main window') %>");
 	}
 	window.close();
 	<% end_if %>

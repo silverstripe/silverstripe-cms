@@ -271,14 +271,18 @@ JS;
 			// skip this type if it is restricted
 			if($instance->stat('need_permission') && !$this->can( singleton($class)->stat('need_permission') ) ) continue;
 
+			/*
+			 * Since i18n_singular_name() this is not necessary
 			$addAction = $instance->uninherited('add_action', true);
 			if($addAction) {
 				// backwards compatibility for actions like "a page" (instead of "page")
 				$addAction = preg_replace('/^a /','',$addAction);				
 				$addAction = ucfirst($addAction);
 			} else {
-				$addAction = $instance->singular_name();
+				$addAction = $instance->i18n_singular_name();
 			}
+			*/
+			$addAction = $instance->i18n_singular_name();
 
 			$result->push(new ArrayData(array(
 				"ClassName" => $class,
@@ -478,12 +482,13 @@ JS;
 
 		if(isset($descendantsRemoved)) {
 			$descRemoved = " and $descendantsRemoved descendants";
+			$descRemoved = sprintf(' '._t('CMSMain.DESCREMOVED', 'and %s descendants'), $descendantsRemoved);
 		} else {
 			$descRemoved = '';
 		}
 
 		FormResponse::add($this->deleteTreeNodeJS($record));
-		FormResponse::status_message("Deleted '$record->Title'$descRemoved from live site", 'good');
+		FormResponse::status_message(sprintf(_t('CMSMain.REMOVED', 'Deleted \'%s\'%s from live site'), $record->Title, $descRemoved), 'good');
 
 		return FormResponse::respond();
 	}
@@ -675,7 +680,7 @@ HTML;
 		foreach($reports as $report) {
 			if($report != 'SideReport') $options[$report] = singleton($report)->title();
 		}
-		return new DropdownField("ReportSelector","Report",$options);
+		return new DropdownField("ReportSelector", _t('CMSMain.REPORT', 'Report'),$options);
 	}
 	/**
 	 * Get the content for a side report
@@ -1322,7 +1327,7 @@ JS
 		$classes = ClassInfo::subclassesFor('LeftAndMain');
 
 		foreach($classes as $class) {
-			$perms["CMS_ACCESS_" . $class] = "Access to $class in CMS";
+		        $perms["CMS_ACCESS_" . $class] = sprintf(_t('CMSMain.ACCESS', "Access to %s in CMS"), $class);
 		}
 		return $perms;
 	}

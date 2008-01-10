@@ -20,7 +20,7 @@ class TemplateList extends DropdownField {
 	}
 	
 	private function getTemplates() {
-		$templates = array( "" => "None" );
+	  $templates = array( "" => _t('TemplateList.NONE', 'None') );
 
 		$absPath = Director::baseFolder();
 		if( $absPath{strlen($absPath)-1} != "/" )

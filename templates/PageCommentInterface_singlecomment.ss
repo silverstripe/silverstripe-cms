@@ -10,7 +10,7 @@
 	<br />
 	<ul class="actionLinks">
 		<% if ApproveLink %>
-			<li><a href="$ApproveLink" class="approvelink">approve this comment</a></li>
+			<li><a href="$ApproveLink" class="approvelink"><% _t('APPROVE', 'approve this comment') %></a></li>
 		<% end_if %>
 		<% if SpamLink %>
 			<li><a href="$SpamLink" class="spamlink"><% _t('ISSPAM','this comment is spam') %></a></li>

@@ -162,7 +162,7 @@ HTML;
 		foreach($processedFiles as $file) {
 			if($file['error'] == UPLOAD_ERR_NO_TMP_DIR) {
 				$status = 'bad';
-				$statusMessage = 'There is no temporary folder for uploads. Please set upload_tmp_dir in php.ini.';
+				$statusMessage = _t('AssetAdmin.NOTEMP', 'There is no temporary folder for uploads. Please set upload_tmp_dir in php.ini.');
 				break;
 			}
 		
@@ -283,7 +283,7 @@ HTML;
 						new HiddenField("DestFolderID")
 					),
 					new Tab(_t('AssetAdmin.DETAILSTAB', "Details"), 
-						new ReadonlyField("URL"),
+						new ReadonlyField("URL", _t('AssetAdmin.URL', 'URL')),
 						new ReadonlyField("ClassName", _t('AssetAdmin.TYPE','Type')),
 						new ReadonlyField("Created", _t('AssetAdmin.CREATED','First Uploaded')),
 						new ReadonlyField("LastEdited", _t('AssetAdmin.LASTEDITED','Last Updated'))
@@ -542,7 +542,7 @@ JS;
 		$p->ParentID = $parent;
 		$p->Title = _t('AssetAdmin.NEWFOLDER',"NewFolder");
 
-		$p->Name = "NewFolder";
+		$p->Name = _t('AssetAdmin.NEWFOLDER', 'NewFolder');
 
 		// Get the folder to be created		
 		if(isset($parentObj->ID)) $filename = $parentObj->FullPath . $p->Name;
@@ -668,12 +668,24 @@ if(!$record)
 		}*/
 
 		
-
+		/*
 		$s = (sizeof($ids) > 1) ? "s" :"";
 		
 		$message = sizeof($ids) . " folder$s deleted.";
 		//
 		if(isset($brokenPageList)) $message .= "  The following pages now have broken links:<ul>" . addslashes($brokenPageList) . "</ul>Their owners have been emailed and they will fix up those pages.";
+		*/
+		
+		$size = sizeof($ids);
+		if($size > 1)
+		  $message = $size.' '._t('AssetAdmin.FOLDERSDELETED', 'folders deleted.');
+		else
+		  $message = $size.' '._t('AssetAdmin.FOLDERDELETED', 'folder deleted.');
+
+		if(isset($brokenPageList))
+		  $message .= '  '._t('AssetAdmin.NOWBROKEN', 'The following pages now have broken links:').'<ul>'.addslashes($brokenPageList).'</ul>'.
+		    _t('AssetAdmin.NOWBROKEN2', 'Their owners have been emailed and they will fix up those pages.');
+
 		$script .= "statusMessage('$message');";
 		echo $script;
 	}
@@ -730,7 +742,7 @@ JS;
 	    foreach($this->getUnusedThumbnailsArray() as $file) {
 	    	unlink("../assets/" . $file); 	
 	    }
-	    echo "statusMessage('All unused thumbnails have been deleted','good')";
+	    echo "statusMessage('"._t('AssetAdmin.THUMBSDELETED', 'All unused thumbnails have been deleted')."','good')";
 	}
 	
 	/**

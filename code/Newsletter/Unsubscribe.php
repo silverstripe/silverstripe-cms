@@ -45,7 +45,7 @@ class Unsubscribe_Controller extends Page_Controller {
         }
  	
  		if($this->urlParams['Email'] == "done")
- 			$listForm->sessionMessage("Thank you. You have been removed from the selected groups", "good");
+		  $listForm->sessionMessage(_t('Unsubscribe.SUCCESS', 'Thank you. You have been removed from the selected groups'), "good");
 
         return $this->customise( array( 'Content' => $listForm->forTemplate() ) )->renderWith('Page');           
     }
@@ -101,7 +101,7 @@ class Unsubscribe_Controller extends Page_Controller {
 	         $url = "unsubscribe/done/".$member->Email."/".$nlTypeTitles;
 	      	 Director::redirect($url);
         } else {
-        	$form->addErrorMessage('MailingLists', 'You need to select at least one mailing list to unsubscribe from.', 'bad');
+	        $form->addErrorMessage('MailingLists', _t('Unsubscribe.NOMLSELECTED', 'You need to select at least one mailing list to unsubscribe from.'), 'bad');
         	Director::redirectBack();
         }
       }
@@ -135,15 +135,15 @@ class Unsubscribe_MailingListForm extends Form {
         $lists = $this->getMailingLists( $member );
         
         if( $lists ) {
-            $fields->push( new LabelField( 'You are subscribed to the following lists:' ) );
+	    $fields->push( new LabelField( _t('Unsubcribe.SUBSCRIBEDTO', 'You are subscribed to the following lists:')) );
             
             foreach( $lists as $list ) {
                 $fields->push( new CheckboxField( "MailingLists[{$list->ID}]", $list->Title ) );
             }
             
-            $actions->push( new FormAction('unsubscribe', 'Unsubscribe' ) );
+            $actions->push( new FormAction('unsubscribe', _t('Unsubscribe.UNSUBSCRIBE', 'Unsubscribe') ) );
         } else {
-            $fields->push( new LabelField( "I'm sorry, but $email doesn't appear to be in any of our mailing lists." ) );   
+	    $fields->push( new LabelField(sprintf(_t('Unsubscribe.NOTSUBSCRIBED', 'I\'m sorry, but %s doesn\'t appear to be in any of our mailing lists.'), $email) ) );   
         }
         
         parent::__construct( $controller, $name, $fields, $actions );   
@@ -170,11 +170,11 @@ class Unsubscribe_EmailAddressForm extends Form {
     function __construct( $controller, $name ) {
         
         $fields = new FieldSet(
-            new EmailField( 'Email', 'Email address' )
+	    new EmailField( 'Email', _t('Unsubscribe.EMAILADDR', 'Email address') )
         );
         
         $actions = new FieldSet(
-            new FormAction( 'showlists', 'Show lists' )
+	    new FormAction( 'showlists', _t('Unsubscribe.SHOWLISTS', 'Show lists') )
         );
         
         parent::__construct( $controller, $name, $fields, $actions );    
@@ -199,7 +199,7 @@ class Unsubscribe_Successful extends Form {
 	}
 	function setSuccessfulMessage($email, $newsletterTypes) {
 		Requirements::themedCSS("form");
-		$this->setMessage("Thank you. $email will no longer receive the $newsletterTypes.", "good");
+		$this->setMessage(sprintf(_t('Unsubscribe.REMOVESUCCESS', 'Thank you. %s will no longer receive the %s.'), $email, $newsletterTypes), "good");
 	}
 }
 

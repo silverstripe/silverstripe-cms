@@ -236,10 +236,10 @@ class NewsletterAdmin extends LeftAndMain {
 		if(isset($mailType)&&$mailType) {
 			$fields = new FieldSet(
 				new TabSet("Root",
-					new Tab("Newsletter Settings",
+					new Tab(_t('NewsletterAdmin.NLSETTINGS', 'Newsletter Settings'),
 						new TextField("Title", _t('NewsletterAdmin.NEWSLTYPE','Newsletter Type')),
 						new TextField("FromEmail", _t('NewsletterAdmin.FROMEM','From email address')),
-						$templates = new TemplateList("Template","Template", $mailType->Template, self::template_path())
+						$templates = new TemplateList("Template", _t('NewsletterAdmin.TEMPLATE', 'Template'), $mailType->Template, self::template_path())
 					)
 				)
 			);
@@ -250,7 +250,7 @@ class NewsletterAdmin extends LeftAndMain {
 			$fields->push( new HiddenField( "executeForm", "", "TypeEditForm" ) );
 			$idField->setValue($id);
 
-			$actions = new FieldSet(new FormAction('save','Save'));
+			$actions = new FieldSet(new FormAction('save', _t('NewsletterAdmin.SAVE', 'Save')));
 
 			$form = new Form($this, "EditForm", $fields, $actions);
 			$form->loadDataFrom(array(
@@ -284,20 +284,20 @@ class NewsletterAdmin extends LeftAndMain {
 		if(isset($mailType) && is_object($mailType)) {
 			$fields = new FieldSet(
 				new TabSet("Root",
-					new Tab( "Recipients",
+					new Tab(_t('NewsletterAdmin.RECIPIENTS', 'Recipients'),
 						$recipients = new MemberTableField(
 							$this,
 							"Recipients",
 							$group
 							)
 					),
-					new Tab( "Import",
-						$importField = new RecipientImportField("ImportFile","Import from file", $group )
+					new Tab(_t('NewsletterAdmin.IMPORT', 'Import'),
+						$importField = new RecipientImportField("ImportFile",_t('NewsletterAdmin.IMPORTFROM', 'Import from file'), $group )
 					),
-					new Tab("Unsubscribers",
+					new Tab(_t('NewsletterAdmin.UNSUBSCRIBERS', 'Unsubscribers'),
 					$unsubscribedList = new UnsubscribedList("Unsubscribed", $mailType)
 					),
-					new Tab("Bounced", $bouncedList = new BouncedList("Bounced", $mailType )
+					new Tab(_t('NewsletterAdmin.BOUNCED','Bounced'), $bouncedList = new BouncedList("Bounced", $mailType )
 					)
 				)
 			);
@@ -350,7 +350,7 @@ class NewsletterAdmin extends LeftAndMain {
 				} else {
 					user_error("NewsletterAdmin::removebouncedmember: Bad parameters: Group=$groupID, Member=".$bounceObject->MemberID, E_USER_ERROR);
 				}
-				FormResponse::status_message($memberObject->Email.' was removed from the mailing list', 'good');
+				FormResponse::status_message($memberObject->Email.' '._t('NewsletterAdmin.REMOVEDSUCCESS', 'was removed from the mailing list'), 'good');
 				FormResponse::add("$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value, 'recipients');");
 				return FormResponse::respond();
 			}
@@ -429,7 +429,7 @@ class NewsletterAdmin extends LeftAndMain {
 		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : $_REQUEST['NewsletterID'];
 
 		if( !$id ) {
-			FormResponse::status_message('No newsletter specified','bad');
+		        FormResponse::status_message(_t('NewsletterAdmin.NONLSPECIFIED', 'No newsletter specified'),'bad');
 			return FormResponse::respond();
 		}
 
@@ -552,11 +552,11 @@ class NewsletterAdmin extends LeftAndMain {
 		// If the email is currently not blocked, block it
 		if (FALSE == $memberObject->BlacklistedEmail) {
 			$memberObject->setBlacklistedEmail(TRUE);
-			FormResponse::status_message($memberObject->Email.' was added to blacklist', 'good');
+			FormResponse::status_message($memberObject->Email.' '._t('NewsletterAdmin.ADDEDTOBL', 'was added to blacklist'), 'good');
 		} else {
 			// Unblock the email
 			$memberObject->setBlacklistedEmail(FALSE);
-			FormResponse::status_message($memberObject->Email.' was removed from blacklist', 'good');
+			FormResponse::status_message($memberObject->Email.' '._t('NewsletterAdmin.REMOVEDFROMBL','was removed from blacklist'), 'good');
 		}
 		return FormResponse::respond();
 	}

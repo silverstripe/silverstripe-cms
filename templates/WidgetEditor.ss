@@ -8,5 +8,5 @@
 		<input type="hidden" name="$Name[Type]" value="$ClassName" />   
 		<input type="hidden" name="$Name[Sort]" value="$Sort" />
 	</div>
-	<p class="deleteWidget"><span class="widgetDelete">Delete</span></p>
+	<p class="deleteWidget"><span class="widgetDelete"><% _t('DELETE', 'Delete') %></span></p>
 </div>

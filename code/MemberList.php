@@ -251,16 +251,16 @@ class MemberList extends FormField {
 	
 	function OrderByField() {
 		$fields = new FieldGroup( new DropdownField('MemberListOrderByField','', array(
-			'FirstName' => 'FirstName',
-			'Surname' => 'Surname',
-			'Email' => 'Email'
+			'FirstName' => _t('MemberList.FN', 'FirstName'),
+			'Surname' => _t('MemberList.SN', 'Surname'),
+			'Email' => _t('MemberList.EMAIL', 'Email')
 		)),
 		new DropdownField('MemberListOrderByOrder','',array(
-			'ASC' => 'Ascending',
-			'DESC' => 'Descending'
+		        'ASC' => _t('MemberList.ASC', 'Ascending'),
+			'DESC' => _t('MemberList.DESC', 'Descending')
 		)));
 		
-		$field = new FieldGroup( new LabelField( 'Order by' ), $fields );
+		$field = new FieldGroup( new LabelField(_t('MemberList.ORDERBY', 'Order by')), $fields );
 		return $field->FieldHolder();
 	}
 	
@@ -268,7 +268,7 @@ class MemberList extends FormField {
 		
 		$groups = DataObject::get('Group');
 		
-		$groupArray = array( '' => 'Any group' );
+		$groupArray = array( '' => _t('MemberList.ANYGROUP', 'Any group'));
 		
 		foreach( $groups as $group )
 			$groupArray[$group->ID] = $group->Title;

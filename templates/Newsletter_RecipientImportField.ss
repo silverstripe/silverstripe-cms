@@ -31,7 +31,7 @@
 <% if ImportMessage %>
 	<p>
 		$ImportMessage
-		<p><b>Note:</b> To see the new members on the Recipients tab, you need to <a href="#" onclick="javascript:top.reloadRecipientsList()">reload the Mailing List</a>.</p>
+		<p><b>Note:</b><% _t('MLRELOAD1', 'To see the new members on the Recipients tab, you need to') %> <a href="#" onclick="javascript:top.reloadRecipientsList()"><% _t('MLRELOAD2', 'reload the Mailing List') %></a>.</p>
 		<ul>
 			<li><label><% _t('IMPORTED','New members imported:') %></label>$NewMembers</li>
 			<li><label><% _t('UPDATED','Members updated:') %></label>$ChangedMembers</li>

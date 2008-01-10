@@ -65,8 +65,8 @@ class CommentAdmin extends LeftAndMain {
 		);	
 		
 		$popupFields = new FieldSet(
-			new TextField("Name"),
-			new TextareaField("Comment", "Comment")
+			new TextField('Name', _t('CommentAdmin.NAME', 'Name')),
+			new TextareaField('Comment', _t('CommentAdmin.COMMENT', 'Comment'))
 		);
 		
 		$idField = new HiddenField('ID', '', $section);
@@ -75,7 +75,7 @@ class CommentAdmin extends LeftAndMain {
 		
 		$fields = new FieldSet(
 			new TabSet(	'Root',
-				new Tab('Comments',
+				new Tab(_t('CommentAdmin.COMMENTS', 'Comments'),
 					new LiteralField("Title", $title),
 					$idField,
 					$table
@@ -143,10 +143,11 @@ JS;
 				$comment->delete();
 			}
 		}
-		
+
+		$msg = sprintf(_t('CommentAdmin.DELETED', 'Deleted %s comments.'), $numComments);
 		echo <<<JS
 				$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value);
-				statusMessage("Deleted $numComments comments.");
+				statusMessage("$msg");
 JS;
 		
 	}
@@ -182,10 +183,11 @@ JS;
 				user_error("No comments in $commentList could be found!", E_USER_ERROR);
 			}
 		
+			$msg = sprintf(_t('CommentAdmin.MARKEDSPAM', 'Marked %s comments as spam.'), $numComments);
 			echo <<<JS
 				$deleteList
 				$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value);
-				statusMessage("Marked $numComments comments as spam.");
+				statusMessage("$msg");
 JS;
 	}
 	
@@ -221,10 +223,11 @@ JS;
 				user_error("No comments in $commentList could be found!", E_USER_ERROR);
 			}
 		
+			$msg = sprintf(_t('CommentAdmin.MARKEDNOTSPAM', 'Marked %s comments as not spam.'), $numComments);
 			echo <<<JS
 				$deleteList
 				$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value);
-				statusMessage("Marked $numComments comments as not spam.");
+				statusMessage("$msg");
 JS;
 	}
 	
@@ -246,7 +249,8 @@ JS;
 			} else {
 				user_error("No comments in $commentList could be found!", E_USER_ERROR);
 			}
-		
+			
+			$msg = sprintf(_t('CommentAdmin.APPROVED', 'Accepted %s comments.'), $numComments);
 			echo <<<JS
 				$deleteList
 				$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value);

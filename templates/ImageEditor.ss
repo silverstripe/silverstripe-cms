@@ -29,7 +29,7 @@
                         <div id="ExitIcon">
                         </div>
                         <p id="ExitText" class="menuText">
-                            exit
+                            <% _t('EXIT', 'exit') %>
                         </p>
                     </a>
                     <a id="UndoButton" href="#a">
@@ -47,7 +47,7 @@
                         </p>
                     </a>
                     <p id="ActionsDescription" class="menuText">
-                        actions
+                        <% _t('ACTIONS', 'actions') %>
                     </p>    
                 </div>
                 <div id="Functions">
@@ -71,7 +71,7 @@
                         <p id="ImageHeight" class="menuText"></p>
                     </div>
                     <p id="FunctionsDescription" class="menuText">
-                        edit&nbsp;functions
+                        <% _t('EDITFUNCTIONS', 'edit&nbsp;functions') %>
                     </p>    
                 </div>
                 <div id="CurrentAction">
@@ -86,11 +86,11 @@
                         <div id="ApplyIcon">
                         </div>
                         <p id="ApplyText" class="menuText">
-                            apply
+                            <% _t('APPLY', 'apply') %>
                         </p>
                     </a>
                     <p id="CurrentActionDescription" class="menuText">
-                        current&nbsp;action
+                        <% _t('CURRENTACTION', 'current&nbsp;action') %>
                     </p>  
                 </div>                
             </div>              

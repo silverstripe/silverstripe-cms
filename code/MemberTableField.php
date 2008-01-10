@@ -78,9 +78,9 @@ class MemberTableField extends ComplexTableField {
 			array_push( $this->permissions, $permission );
 
 		$fieldList = array(
-			"FirstName" => "Firstname",
-			"Surname" => "Surname",
-			"Email" => "Email"
+			"FirstName" => _t('MemberTableField.FIRSTNAME', 'Firstname'),
+			"Surname" => _t('MemberTableField.SURNAME', 'Surname'),
+			"Email" => _t('MemberTableField.EMAIL', 'Email')
 		);
 
 		$csvFieldList = $fieldList;
@@ -163,35 +163,35 @@ class MemberTableField extends ComplexTableField {
 
 	function SearchForm() {
 		$searchFields = new FieldGroup(
-			new TextField('MemberSearch', 'Search'),
+			new TextField('MemberSearch', _t('MemberTableField.SEARCH', 'Search')),
 			new HiddenField("ctf[ID]",'',$this->group->ID),
 			new HiddenField('MemberFieldName','',$this->name),
 			new HiddenField('MemberDontShowPassword','',$this->hidePassword)
 		);
 
 		$orderByFields = new FieldGroup(
-			new LabelField('Order by'),
+			new LabelField(_t('MemberTableField.ORDERBY', 'Order by')),
 			new FieldSet(
 				new DropdownField('MemberOrderByField','', array(
-				'FirstName' => 'FirstName',
-				'Surname' => 'Surname',
-				'Email' => 'Email'
+				'FirstName' => _t('MemberTableField.FIRSTNAME', 'FirstName'),
+				'Surname' => _t('MemberTableField.SURNAME', 'Surname'),
+				'Email' => _t('MemberTableField', 'Email')
 				)),
 				new DropdownField('MemberOrderByOrder','',array(
-					'ASC' => 'Ascending',
-					'DESC' => 'Descending'
+					'ASC' => _t('MemberTableField.ASC', 'Ascending'),
+					'DESC' => _t('MemberTableField.DESC', 'Descending')
 				))
 			)
 		);
 
 		$groups = DataObject::get('Group');
-		$groupArray = array('' => 'Any group');
+		$groupArray = array('' => _t('MemberTableField.ANYGROUP', 'Any group'));
 		foreach( $groups as $group ) {
 			$groupArray[$group->ID] = $group->Title;
 		}
-		$groupFields = new DropdownField('MemberGroup','Filter by group',$groupArray );
+		$groupFields = new DropdownField('MemberGroup', _t('MemberTableField.FILTERBYGROUP', 'Filter by group'),$groupArray );
 
-		$actionFields = new LiteralField('MemberFilterButton','<input type="submit" class="action" name="MemberFilterButton" value="Filter" id="MemberFilterButton"/>');
+		$actionFields = new LiteralField('MemberFilterButton','<input type="submit" class="action" name="MemberFilterButton" value="'._t('MemberTableField.FILTER', 'Filter').'" id="MemberFilterButton"/>');
 
 		$fieldContainer = new FieldGroup(
 				$searchFields,
@@ -212,7 +212,7 @@ class MemberTableField extends ComplexTableField {
 		unset($data['ID']);
 
 		if(!is_numeric($data['ctf']['ID'])) {
-			FormResponse::status_messsage('Adding failed', 'bad');
+		  FormResponse::status_messsage(_t('MemberTableField.ADDINGFIELD', 'Adding failed'), 'bad');
 		}
 
 		$className = $this->stat('data_class');
