@@ -1,6 +1,5 @@
 #left form.actionparams {
 	background: #ccc;
-	border-bottom: 1px solid #eee;
 	padding: 3px 5px;
 }
 #left form.actionparams input,
@@ -363,4 +362,10 @@ ul.tree li.untranslated a:visited {
 }
 #LangSelector_holder.onelang {
 	display: none;
+}
+
+#SortItems {
+	border-bottom: 1px solid #cccccc;
+	background: #CCCCCC none repeat scroll 0%;
+	padding: 3px 0 3px 7px;
 }
