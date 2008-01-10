@@ -182,7 +182,6 @@ class InstallRequirements {
 		
 		$mem = $this->getPHPMemory();
 		if($mem < (32 * 1024 * 1024)) {
-			$_SESSION['forcemem'] = true;
 			ini_set('memory_limit', '32M');
 			$mem = $this->getPHPMemory();
 			$testDetails[3] = ini_get("memory_limit");
@@ -590,8 +589,6 @@ class Installer extends InstallRequirements {
 SSViewer::set_theme('blackcandy');
 PHP;
 		}
-		
-		$mem = $_SESSION['forcemem'] ? "ini_set('memory_limit', '32M');" : '';
 		
 		echo "<li>Creating '$template/_config.php'...</li>";
 		flush();
