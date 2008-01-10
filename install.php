@@ -737,10 +737,12 @@ PHP
 	
 	function createHtaccess() {
 		$start = "### SILVERSTRIPE START ###\n";
-		$end= "\n### SILVERSTRIPE END ###";
+		$end = "\n### SILVERSTRIPE END ###";
+		$base = dirname($_SERVER['SCRIPT_NAME']);
+		
 		$rewrite = <<<TEXT
 RewriteEngine On
-
+RewriteBase $base
 
 RewriteCond %{REQUEST_URI} !(\.gif)|(\.jpg)|(\.png)|(\.css)|(\.js)|(\.php)$ 
 
@@ -750,11 +752,6 @@ RewriteRule .* sapphire/main.php?url=%1&%{QUERY_STRING} [L]
 TEXT
 		;
 		
-		$baseURL = dirname($_SERVER['SCRIPT_NAME']);
-		if($baseURL == "/") {
-			$baseURL = "";
-		}
-
 		if(file_exists('.htaccess')) {
 			$htaccess = file_get_contents('.htaccess');
 			
@@ -774,8 +771,11 @@ TEXT
 	function createHtaccessAlternative() {
 		$start = "### SILVERSTRIPE START ###\n";
 		$end= "\n### SILVERSTRIPE END ###";
+		$base = dirname($_SERVER['SCRIPT_NAME']);
+		
 		$rewrite = <<<TEXT
 RewriteEngine On
+RewriteBase $base
 
 RewriteCond %{REQUEST_URI} !(\.gif)|(\.jpg)|(\.png)|(\.css)|(\.js)|(\.php)$ 
 
@@ -785,10 +785,6 @@ RewriteRule .* $_SERVER[DOCUMENT_ROOT]/sapphire/main.php?url=%1&%{QUERY_STRING} 
 TEXT
 		;
 		
-		$baseURL = dirname($_SERVER['SCRIPT_NAME']);
-		if($baseURL == "/") {
-			$baseURL = "";
-		}
 
 		if(file_exists('.htaccess')) {
 			$htaccess = file_get_contents('.htaccess');
