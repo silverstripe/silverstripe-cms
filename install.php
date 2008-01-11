@@ -594,7 +594,8 @@ PHP;
 		flush();
 		
 		$devServers = $this->var_export_array_nokeys(explode("\n", $_POST['devsites']));
-
+		
+		$escapedPassword = addslashes($config['mysql']['password']);
 		$this->createFile("$template/_config.php", <<<PHP
 <?php
 
@@ -608,7 +609,7 @@ global \$databaseConfig;
 	"type" => "$config[database]",
 	"server" => "{$config['mysql']['server']}", 
 	"username" => "{$config['mysql']['username']}", 
-	"password" => "{$config['mysql']['password']}", 
+	"password" => "{$escapedPassword}", 
 	"database" => "{$config['mysql']['database']}",
 );
 
