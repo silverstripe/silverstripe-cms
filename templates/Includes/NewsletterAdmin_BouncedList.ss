@@ -2,7 +2,7 @@
 <p><b><% _t('INSTRUCTIONS', 'Instructions:') %></b></p>
 <ul>
 	<li><% _t('INSTRUCTIONS1', 'Uncheck the box to enable sending to a blacklisted email address.') %></li>
-	<li><% _t('INSTRUCTIONS2', 'To remove a recipients's email address from your mailing list, click the icon') %> <img src="cms/images/delete.gif" alt="delete" /></li>
+	<li><% _t('INSTRUCTIONS2', 'To remove a recipients\'s email address from your mailing list, click the icon') %> <img src="cms/images/delete.gif" alt="delete" /></li>
 </ul>
 <table id="BouncedListTable" class="CMSList BouncedList" summary="<% _t('HAVEBOUNCED','Emails that have bounced') %>">
   <thead>

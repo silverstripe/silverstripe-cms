@@ -175,7 +175,7 @@ class MemberTableField extends ComplexTableField {
 				new DropdownField('MemberOrderByField','', array(
 				'FirstName' => _t('MemberTableField.FIRSTNAME', 'FirstName'),
 				'Surname' => _t('MemberTableField.SURNAME', 'Surname'),
-				'Email' => _t('MemberTableField', 'Email')
+				'Email' => _t('MemberTableField.EMAIL', 'Email')
 				)),
 				new DropdownField('MemberOrderByOrder','',array(
 					'ASC' => _t('MemberTableField.ASC', 'Ascending'),
