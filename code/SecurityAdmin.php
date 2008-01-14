@@ -111,6 +111,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	public function autocomplete() {
 		$fieldName = $this->urlParams['ID'];
 		$fieldVal = $_REQUEST[$fieldName];
+		$result = '';
 
 		$matches = DataObject::get("Member","$fieldName LIKE '" . addslashes($fieldVal) . "%'");
 		if($matches) {

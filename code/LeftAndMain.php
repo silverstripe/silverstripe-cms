@@ -97,7 +97,7 @@ abstract class LeftAndMain extends Controller {
 	
 		Requirements::css('sapphire/css/Form.css');
 
-		Requirements::javascript('cms/javascript/MemberList.js');
+		// Requirements::javascript('cms/javascript/MemberList.js');
 		Requirements::javascript('cms/javascript/ForumAdmin.js');
 		Requirements::javascript('cms/javascript/SideTabs.js');
 		Requirements::javascript('cms/javascript/TaskList.js');
