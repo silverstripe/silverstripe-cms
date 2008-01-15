@@ -1,0 +1,6 @@
+{"params": {"id": "MemberLoginForm_LoginForm_Email"}, "method": "asserts.assertNode"}
+{"params": {"id": "MemberLoginForm_LoginForm_Email"}, "method": "click"}
+{"params": {"text": "td", "id": "MemberLoginForm_LoginForm_Email"}, "method": "type"}
+{"params": {"text": "badpassword", "id": "MemberLoginForm_LoginForm_Password"}, "method": "type"}
+{"params": {"id": "MemberLoginForm_LoginForm_action_dologin"}, "method": "click"}
+{"params": {"id": "MemberLoginForm_LoginForm_error"}, "method": "asserts.assertNode"}
