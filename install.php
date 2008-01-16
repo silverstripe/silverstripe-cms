@@ -9,15 +9,25 @@ ini_set('max_execution_time', 300);
 
 session_start();
 
+// Include environment files
+$envFiles = array('_ss_environment.php', '../_ss_environment.php', '../../_ss_environment.php');
+foreach($envFiles as $envFile) {
+        if(@file_exists($envFile)) {
+                include($envFile);
+                break;
+        }
+}
+
 // Load database config
 if(isset($_REQUEST['mysql'])) {
 	$databaseConfig = $_REQUEST['mysql'];
 } else {
 	$databaseConfig = array(
-		"server" => "localhost",
-		"username" => "root",
-		"password" => "",
-		"database" => "SS_mysite",
+		"type" => "MySQLDatabase",
+		"server" => defined('SS_DATABASE_SERVER') ? SS_DATABASE_SERVER : "localhost",
+		"username" => defined('SS_DATABASE_USERNAME') ? SS_DATABASE_USERNAME : "root",
+		"password" => defined('SS_DATABASE_PASSWORD') ? SS_DATABASE_PASSWORD : "",
+		"database" => isset($_SERVER['argv'][2]) ? $_SERVER['argv'][2] : "SS_mysite",
 	);
 }
 
@@ -60,14 +70,20 @@ if($databaseConfig) {
 }
 
 // Actual processor
-if(isset($_REQUEST['go']) && !$req->hasErrors() && !$dbReq->hasErrors()) {
+$installFromCli = (isset($_SERVER['argv'][1]) && $_SERVER['argv'][1] == 'install');
+if(isset($_REQUEST['go']) || $installFromCli && !$req->hasErrors() && !$dbReq->hasErrors()) {
 	// Confirm before reinstalling
-	if(!isset($_REQUEST['force_reinstall']) && $alreadyInstalled) {
+	if(!isset($_REQUEST['force_reinstall']) && !$installFromCli && $alreadyInstalled) {
 		include('config-form.html');
 		
 	} else {
 		$inst = new Installer();
-		$inst->install($_REQUEST);
+		if($_REQUEST) $inst->install($_REQUEST);
+		else $inst->install(array(
+			'database' => $databaseConfig['type'],
+			'mysql' => $databaseConfig,
+			'admin' => $adminConfig,
+		));
 	}
 
 // Show the config form
@@ -129,22 +145,22 @@ class InstallRequirements {
 		
 		$this->requireTempFolder(array('File permissions', 'Is the temporary folder writeable?', null));
 		
-		// Check for rewriting
+		// Check for web server, unless we're calling the installer from the command-line
+		if(!$_SERVER['argv']) {
+			$webserver = strip_tags(trim($_SERVER['SERVER_SIGNATURE']));
+			if($webserver == '') {
+				$webserver = "I can't tell what webserver you are running";
+			}
 		
-		$webserver = strip_tags(trim($_SERVER['SERVER_SIGNATURE']));
-		if($webserver == '') {
-			$webserver = "I can't tell what webserver you are running";
+			$this->isRunningApache(array("Webserver Configuration", "Server software", "$webserver.  Without Apache I can't tell if mod_rewrite is enabled.", $webserver));
+			if(function_exists('apache_get_modules')) {
+				$this->requireApacheModule('mod_rewrite', array("Webserver Configuration", "mod_rewrite enabled", "You need mod_rewrite to run SilverStripe CMS, but it is not enabled."));
+			} else {
+				$this->warning(array("Webserver Configuration", "mod_rewrite enabled", "I can't tell whether mod_rewrite is running.  You may need to configure a rewriting rule yourself."));
+			}
+		
+			$this->requireServerVariables(array('SCRIPT_NAME','HTTP_HOST','SCRIPT_FILENAME'), array("Webserver config", "Recognised webserver", "You seem to be using an unsupported webserver.  The server variables SCRIPT_NAME, HTTP_HOST, SCRIPT_FILENAME need to be set."));
 		}
-		
-		$this->isRunningApache(array("Webserver Configuration", "Server software", "$webserver.  Without Apache I can't tell if mod_rewrite is enabled.", $webserver));
-		if(function_exists('apache_get_modules')) {
-			$this->requireApacheModule('mod_rewrite', array("Webserver Configuration", "mod_rewrite enabled", "You need mod_rewrite to run SilverStripe CMS, but it is not enabled."));
-		} else {
-			$this->warning(array("Webserver Configuration", "mod_rewrite enabled", "I can't tell whether mod_rewrite is running.  You may need to configure a rewriting rule yourself."));
-		}
-		
-		// Check for $_SERVER configuration
-		$this->requireServerVariables(array('SCRIPT_NAME','HTTP_HOST','SCRIPT_FILENAME'), array("Webserver config", "Recognised webserver", "You seem to be using an unsupported webserver.  The server variables SCRIPT_NAME, HTTP_HOST, SCRIPT_FILENAME need to be set."));
 		
 		// Check for GD support
 		if(!$this->requireFunction("imagecreatetruecolor", array("PHP Configuration", "GD2 support", "PHP must have GD version 2."))) {
@@ -490,8 +506,12 @@ class InstallRequirements {
 	}
 
 
+	protected $baseDir;
 	function getBaseDir() {
-		return dirname($_SERVER['SCRIPT_FILENAME']) . '/';
+		// Cache the value so that when the installer mucks with SCRIPT_FILENAME half way through, this method
+		// still returns the correct value.
+		if(!$this->baseDir) $this->baseDir = realpath(dirname($_SERVER['SCRIPT_FILENAME'])) . '/';
+		return $this->baseDir;
 	}
 	
 	function testing($testDetails) {
@@ -533,6 +553,11 @@ class InstallRequirements {
 }
 
 class Installer extends InstallRequirements {
+	function __construct() {
+		// Cache the baseDir value
+		$this->getBaseDir();
+	}
+	
 	function install($config) {
 		?>
 		<h1>Installing SilverStripe...</h1>
@@ -582,7 +607,7 @@ class Installer extends InstallRequirements {
 		$template = $_POST['template'] == 'tutorial' ? 'tutorial' : 'mysite';
 		
 		$theme = '';
-		if($_POST['template'] == 'default') {
+		if($_POST['template'] != 'tutorial') {
 			$theme = <<<PHP
 // This line set's the current theme. More themes can be
 // downloaded from http://www.silverstripe.com/cms-themes-and-skin
@@ -631,7 +656,7 @@ PHP
 		$this->createHtaccess();
 
 		// Load the sapphire runtime
-		$_SERVER['SCRIPT_FILENAME'] = dirname($_SERVER['SCRIPT_FILENAME']) . '/sapphire/main.php';
+		$_SERVER['SCRIPT_FILENAME'] = dirname(realpath($_SERVER['SCRIPT_FILENAME'])) . '/sapphire/main.php';
 		chdir('sapphire');
 		
 		require_once('core/Core.php');
@@ -652,6 +677,7 @@ PHP
 		$con = new Controller();
 		$con->pushCurrent();
 		ManifestBuilder::compileManifest();
+		require(MANIFEST_FILE);
 		$dbAdmin = new DatabaseAdmin();
 		$dbAdmin->init();
 		
@@ -671,15 +697,11 @@ PHP
 		
 		$_SESSION['username'] = $_REQUEST['admin']['username'];
 		$_SESSION['password'] = $_REQUEST['admin']['password'];
-		
+
 		if($this->checkModRewrite()) {
-		
-			
 			if($this->errors) {
 				
-				
 			} else {
-	
 				echo "<p>Installed SilverStripe successfully.  I will now try and direct you to 
 					<a href=\"home/successfullyinstalled?flush=1\">home/successfullyinstalled</a> to confirm that the installation was successful.</p>
 					<script>setTimeout(function() { window.location.href = 'home/successfullyinstalled?flush=1'; }, 1000);</script>
@@ -728,6 +750,7 @@ PHP
 	
 	function createFile($filename, $content) {
 		$base = $this->getBaseDir();
+		echo "<li>Creating $base$filename\n";
 
 		if((@$fh = fopen($base . $filename, 'w')) && fwrite($fh, $content) && fclose($fh)) {
 			return true;
@@ -740,11 +763,12 @@ PHP
 		$start = "### SILVERSTRIPE START ###\n";
 		$end = "\n### SILVERSTRIPE END ###";
 		$base = dirname($_SERVER['SCRIPT_NAME']);
+		if($base != '.') $baseClause = "RewriteBase $base\n";
+		else $baseClause = "";
 		
 		$rewrite = <<<TEXT
 RewriteEngine On
-RewriteBase $base
-
+$baseClause
 RewriteCond %{REQUEST_URI} !(\.gif)|(\.jpg)|(\.png)|(\.css)|(\.js)|(\.php)$ 
 
 RewriteCond %{REQUEST_URI} ^(.*)$
@@ -772,23 +796,22 @@ TEXT
 	function createHtaccessAlternative() {
 		$start = "### SILVERSTRIPE START ###\n";
 		$end= "\n### SILVERSTRIPE END ###";
+		
 		$base = dirname($_SERVER['SCRIPT_NAME']);
+		if($base != '.') $baseClause = "RewriteBase $base\n";
 		
 		$rewrite = <<<TEXT
 RewriteEngine On
-RewriteBase $base
-
+$baseClause
 RewriteCond %{REQUEST_URI} !(\.gif)|(\.jpg)|(\.png)|(\.css)|(\.js)|(\.php)$ 
 
 RewriteCond %{REQUEST_URI} ^(.*)$
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule .* $_SERVER[DOCUMENT_ROOT]/sapphire/main.php?url=%1&%{QUERY_STRING} [L]
-TEXT
-		;
-		
+TEXT;
 
-		if(file_exists('.htaccess')) {
-			$htaccess = file_get_contents('.htaccess');
+		if(file_exists($this->getBaseDir() . '.htaccess')) {
+			$htaccess = file_get_contents($this->getBaseDir() . '.htaccess');
 			
 			if(strpos($htaccess, '### SILVERSTRIPE START ###') === false && strpos($htaccess, '### SILVERSTRIPE END ###') === false) {
 				$htaccess .= "\n### SILVERSTRIPE START ###\n### SILVERSTRIPE END ###\n";
@@ -799,6 +822,8 @@ TEXT
 				$end = "\n" . substr($htaccess, strpos($htaccess, '### SILVERSTRIPE END ###'));
 			}
 		}
+		
+		echo "\n\nRewrite is $rewrite\n";
 		
 		$this->createFile('.htaccess', $start . $rewrite . $end);
 	}
@@ -844,6 +869,11 @@ TEXT
 	}
 	
 	function performModRewriteTest() {
+		if(!$_SERVER['HTTP_HOST']) {
+			echo "<li>Installer seems to be called from command-line, we're going to assume that rewriting is working.\n";
+			return true;
+		}
+		
 		$baseURL = dirname($_SERVER['SCRIPT_NAME']);
 		if($baseURL == "/") {
 			$baseURL = "";
@@ -851,6 +881,7 @@ TEXT
 
 		// Check if mod_rewrite works properly
 		$location = 'http://' . (isset($_SERVER['PHP_AUTH_USER']) ? "$_SERVER[PHP_AUTH_USER]:$_SERVER[PHP_AUTH_PW]@" : '') . $_SERVER['HTTP_HOST'] . $baseURL . '/InstallerTest/testRewrite';
+		echo $location;
 		@$testrewriting = file_get_contents($location);
 	
 		if($testrewriting == 'OK') {
