@@ -259,7 +259,8 @@ JS;
         if ($kill_ancestors) {
             foreach ($kill_ancestors as $mark) {
     		    // unset from $classes
-			    unset($classes[$mark]);
+			    $idx = array_search($mark, $classes);
+			    unset($classes[$idx]);
             }
         }
 		foreach($classes as $class) {
