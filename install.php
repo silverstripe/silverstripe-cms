@@ -71,6 +71,15 @@ if($databaseConfig) {
 
 // Actual processor
 $installFromCli = (isset($_SERVER['argv'][1]) && $_SERVER['argv'][1] == 'install');
+
+// CLI-install error message.  exit(1) will halt any makefile.
+if($installFromCli && ($req->hasErrors() || $dbReq->hasErrors())) {
+	echo "Cannot install due to errors:\n";
+	$req->listErrors();
+	$dbReq->listErrors();
+	exit(1);
+}
+
 if(isset($_REQUEST['go']) || $installFromCli && !$req->hasErrors() && !$dbReq->hasErrors()) {
 	// Confirm before reinstalling
 	if(!isset($_REQUEST['force_reinstall']) && !$installFromCli && $alreadyInstalled) {
@@ -237,9 +246,9 @@ class InstallRequirements {
 	
 	function listErrors() {
 		if($this->errors) {
-			echo "<p>The following problems are preventing me from installing SilverStripe CMS:</p>";
+			echo "<p>The following problems are preventing me from installing SilverStripe CMS:</p>\n\n";
 			foreach($this->errors as $error) {
-				echo "<li>" . htmlentities($error) . "</li>";
+				echo "<li>" . htmlentities(implode(", ", $error)) . "</li>\n";
 			}
 		}
 	}
