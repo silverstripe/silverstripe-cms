@@ -690,8 +690,8 @@ PHP
 		$dbAdmin = new DatabaseAdmin();
 		$dbAdmin->init();
 		
-		$_REQUEST['username'] = $_REQUEST['admin']['username'];
-		$_REQUEST['password'] = $_REQUEST['admin']['password'];
+		$_REQUEST['username'] = $config['admin']['username'];
+		$_REQUEST['password'] = $config['admin']['password'];
 		$dbAdmin->doBuild(true);
 		
 		$adminmember = DataObject::get_one('Member',"`Email`= '".$_REQUEST['admin']['username']."'");
@@ -704,8 +704,8 @@ PHP
 		
 		echo "<li>Checking mod_rewrite works</li>";
 		
-		$_SESSION['username'] = $_REQUEST['admin']['username'];
-		$_SESSION['password'] = $_REQUEST['admin']['password'];
+		$_SESSION['username'] = $config['admin']['username'];
+		$_SESSION['password'] = $config['admin']['password'];
 
 		if($this->checkModRewrite()) {
 			if($this->errors) {
