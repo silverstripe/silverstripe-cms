@@ -242,7 +242,7 @@ JS;
 		$classes = ClassInfo::getValidSubClasses();
 		array_shift($classes);
 		$result = new DataObjectSet();
-		$kill_ancestors[] = null;
+		$kill_ancestors = array();
 
 		// figure out if there are any classes we don't want to appear
 		foreach($classes as $class) {
@@ -263,6 +263,7 @@ JS;
 			    unset($classes[$idx]);
             }
         }
+
 		foreach($classes as $class) {
 		    $instance = singleton($class);
             if($instance instanceof HiddenClass) continue;
