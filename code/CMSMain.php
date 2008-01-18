@@ -1137,14 +1137,23 @@ HTML;
 		ini_set('max_execution_time', 300);
 
 		if(isset($_POST['confirm'])) {
-			$pages = DataObject::get("SiteTree");
+			$start = 0;
+			$pages = DataObject::get("SiteTree", "", "", "", "$start,30");
 			$count = 0;
-			foreach($pages as $page) {
-				$this->performPublish($page);
-				$page->destroy();
-				unset($page);
-				$count++;
-				echo "<li>$count";
+			while(true) {
+				foreach($pages as $page) {
+					$this->performPublish($page);
+					$page->destroy();
+					unset($page);
+					$count++;
+					echo "<li>$count</li>";
+				}
+				if($pages->Count() > 29) {
+					$start += 30;
+					$pages = DataObject::get("SiteTree", "", "", "", "$start,30");
+				} else {
+					break;
+				}
 			}
 
 			echo sprintf(_t('CMSMain.PUBPAGES',"Done: Published %d pages"), $count);
