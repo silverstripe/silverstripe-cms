@@ -3,8 +3,8 @@
 {"params": {"text": "password", "id": "MemberLoginForm_LoginForm_Password"}, "method": "type"}
 {"params": {"id": "MemberLoginForm_LoginForm_action_dologin"}, "method": "click"}
 
-{"params": {"id": "heading_sitetree"}, "method": "waits.forElement"}
-{"params": {"timeout": 60000, "id": "heading_sitetree"}, "method": "waits.sleep"}
+{"params": {"id": "heading_sitetree", "timeout": 240000}, "method": "waits.forElement"}
+{"params": {"milliseconds": 30000}, "method": "waits.sleep"}
 
 {"params": {"xpath": "\/html\/body\/div\/div\/div\/ul\/li\/button"}, "method": "click"}
 {"params": {"id": "Form_AddPageOptionsForm_PageType"}, "method": "click"}
@@ -15,7 +15,7 @@
 
 {"params": {"xpath": "\/html\/body\/div\/div\/div\/form\/div[2]\/input"}, "method": "click"}
 
-{"params": {"timeout": 10000, "id": "heading_sitetree"}, "method": "waits.sleep"}
+{"params": {"milliseconds": 10000}, "method": "waits.sleep"}
 {"params": {"timeout": 10000, "id": "Form_EditForm_Title"}, "method": "waits.forElement"}
 {"params": {"validator": "New Page", "id": "Form_EditForm_Title"}, "method": "asserts.assertValue"}
 {"params": {"id": "Form_EditForm_Title"}, "method": "click"}
