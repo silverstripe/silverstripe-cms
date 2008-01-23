@@ -25,7 +25,19 @@ abstract class SideReport extends Object {
 			
 			foreach($records as $record) {
 				$result .= "<li>\n";
-				foreach($fieldsToShow as $fieldTitle => $fieldSource) {
+				foreach($fieldsToShow as $fieldTitle => $fieldInfo) {
+					if(isset($fieldInfo['source'])) {
+						$fieldSource = $fieldInfo['source'];
+						
+					// Legacy format for the input data
+					} else {
+						$fieldSource = $fieldInfo;
+						$fieldInfo = array(
+							'link' => true,
+							'newline' => false,
+						)
+					}
+					
 					$fieldName = ereg_replace('[^A-Za-z0-9]+','',$fieldTitle);
 					if(is_string($fieldSource)) {
 						$val = $record->$fieldSource;
@@ -33,7 +45,14 @@ abstract class SideReport extends Object {
 						$val = $record->val($fieldSource[0], $fieldSource[1]);
 					}
 					
-					$result .= "<a class=\"$fieldName\" href=\"admin/show/$record->ID\">$val</a>";
+					if(isset($fieldInfo['newline']) && $fieldInfo['newline']) $result .= "<br>";
+					
+					if(isset($fieldInfo['link']) && $fieldInfo['link']) {
+						$link = ($fieldInfo['link'] === true) ? "admin/show/$record->ID" : $fieldInfo['link'];
+						$result .= "<a class=\"$fieldName\" href=\"$link\">$val</a>";
+					} else {
+						$result .= "<span class=\"$fieldName\">$val</span>";
+					}
 				}
 				$result .= "\n</li>\n";
 			}
@@ -79,6 +98,27 @@ class SideReport_RecentlyEdited extends SideReport {
 	function fieldsToShow() {
 		return array(
 			"Title" => array("NestedTitle", array("2")),
+		);
+	}
+}
+
+class SideReport_ToDo extends SideReport {
+	function title() {
+		return _t('SideReport.TODO',"To do");
+	}
+	function records() {
+		return DataObject::get("SiteTree", "`SiteTree`.ToDo IS NOT NULL AND `SiteTree`.ToDo <> ''", "`SiteTree`.`LastEdited` DESC");
+	}
+	function fieldsToShow() {
+		return array(
+			"Title" => array(
+				"source" => array("NestedTitle", array("2")),
+				"link" => true,
+			),
+			"ToDo" => array(
+				"source" => "ToDo",
+				"newline" => true,
+			), 
 		);
 	}
 }
