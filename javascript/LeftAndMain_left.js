@@ -203,6 +203,15 @@ TreeNodeAPI.prototype = {
 				errorMessage('Error: ', response);
 			}
 		}); 
+	},
+	duplicatePageWithChildren: function() {  
+		new Ajax.Request(baseHref() + 'admin/duplicatewithchildren/' + this.getIdx() + '?ajax=1', {
+			method : 'get',
+			onSuccess : Ajax.Evaluator,
+			onFailure : function(response) {
+				errorMessage('Error: ', response);
+			}
+		}); 
 	}
 }
 

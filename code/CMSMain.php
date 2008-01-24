@@ -13,7 +13,7 @@
  * @todo Create some base classes to contain the generic functionality that will be replicated.
  */
 class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionProvider {
-	
+		
 	static $tree_class = "SiteTree";
 	
 	static $subitem_class = "Member";
@@ -1196,6 +1196,18 @@ HTML;
 				$newPage->ParentID = $_GET['parentID'];
 				$newPage->write();
 			}
+
+			return $this->returnItemToUser($newPage);
+		} else {
+			user_error("CMSMain::duplicate() Bad ID: '$id'", E_USER_WARNING);
+		}
+	}
+
+	function duplicatewithchildren() {
+		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
+			$page = DataObject::get_by_id("SiteTree", $id);
+
+			$newPage = $page->duplicateWithChildren();
 
 			return $this->returnItemToUser($newPage);
 		} else {
