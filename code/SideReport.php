@@ -35,7 +35,7 @@ abstract class SideReport extends Object {
 						$fieldInfo = array(
 							'link' => true,
 							'newline' => false,
-						)
+						);
 					}
 					
 					$fieldName = ereg_replace('[^A-Za-z0-9]+','',$fieldTitle);
