@@ -138,7 +138,14 @@ abstract class GenericDataAdmin extends LeftAndMain {
 
 	// legacy
 	function ExportForm() {
-		return $this->EditForm();
+		return $form = new Form(
+			$this,
+			"ExportForm",
+			new FieldSet(
+				new HiddenField("csvIDs","csvIDs",$_REQUEST[csvIDs])
+			),
+			$this->result_actions
+		);
 	}
 
 	/**
