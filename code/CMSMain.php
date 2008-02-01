@@ -848,7 +848,7 @@ HTML;
 			$form->loadDataFrom($record);
 			$form->loadDataFrom(array(
 				"ID" => $id,
-				"Version" => $version,
+				"Version" => $fromVersion,
 			));
 			$form->makeReadonly();
 			foreach($form->Fields()->dataFields() as $field) {
