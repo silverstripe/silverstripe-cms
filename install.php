@@ -364,7 +364,7 @@ class InstallRequirements {
 				}
 				$groupList = "'" . implode("', '", $groupList) . "'";
 				
-				$testDetails[2] .= "User '$user[name]' needs to write be able to write to this file:\n$filename";
+				$testDetails[2] .= "User '$user[name]' needs to be able to write to this file:\n$filename";
 				$this->error($testDetails);
 			}
 		} else {
