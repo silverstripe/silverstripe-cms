@@ -776,6 +776,10 @@ PHP
 		else $baseClause = "";
 		
 		$rewrite = <<<TEXT
+<IfModule mod_dir.c>
+DirectorySlash Off
+</IfModule>
+
 RewriteEngine On
 $baseClause
 RewriteCond %{REQUEST_URI} !(\.gif)|(\.jpg)|(\.png)|(\.css)|(\.js)|(\.php)$ 
@@ -810,6 +814,10 @@ TEXT
 		if($base != '.') $baseClause = "RewriteBase $base\n";
 		
 		$rewrite = <<<TEXT
+<IfModule mod_dir.c>
+DirectorySlash Off
+</IfModule>
+
 RewriteEngine On
 $baseClause
 RewriteCond %{REQUEST_URI} !(\.gif)|(\.jpg)|(\.png)|(\.css)|(\.js)|(\.php)$ 
