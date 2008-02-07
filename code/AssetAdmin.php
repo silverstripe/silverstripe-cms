@@ -292,7 +292,8 @@ HTML;
 						new LiteralField("UploadIframe",
 							$this->getUploadIframe()
 						)
-					),
+					)/* This has been disabled for now because of it's mass memory consumption
+					,
 					new Tab(_t('AssetAdmin.UNUSEDFILESTAB', "Unused files"),
 					    new LiteralField("UnusedAssets",
                             "<div id=\"UnusedAssets\"><h2>"._t('AssetAdmin.UNUSEDFILESTITLE', 'Unused files')."</h2>"
@@ -305,7 +306,7 @@ HTML;
                                     <button class=\"action\">"._t('AssetAdmin.DELETEUNUSEDTHUMBNAILS', 'Delete unused thumbnails')."</button>
                                 </div>"
                         )     
-                    )
+                    )*/
 			    ),
 				new HiddenField("ID")
 			);
