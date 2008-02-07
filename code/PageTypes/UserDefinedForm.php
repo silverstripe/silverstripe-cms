@@ -232,7 +232,7 @@ class UserDefinedForm_Controller extends Page_Controller {
 			if( $field->hasMethod( 'getValueFromData' ) )
 				$submittedField->Value = $field->getValueFromData( $data );
 			else
-				$submittedField->Value = $data[$field->Name];
+				if(isset($data[$field->Name])) $submittedField->Value = $data[$field->Name];
 				
 			$submittedField->write();
 			$submittedFields->push($submittedField);
@@ -278,7 +278,7 @@ class UserDefinedForm_Controller extends Page_Controller {
 				$values[$field->Title] = Convert::linkIfMatch($field->getValueFromData( $data ));
 			
 			} else {
-				$values[$field->Title] = Convert::linkIfMatch($data[$field->Name]);
+				if(isset($data[$field->Name])) $values[$field->Title] = Convert::linkIfMatch($data[$field->Name]);
 			}
 			
 		}	

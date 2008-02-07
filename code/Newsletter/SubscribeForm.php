@@ -64,14 +64,19 @@ class SubscribeForm extends UserDefinedForm {
             if( !empty( $typeValue ) )  {
                 $newField->prepopulate( $typeValue );  
             }
-            
-            $newField->setField('ID', "new-" . $count);    
-            
+
+            $newField->ParentID = $this->ID;
             $newField->Sort = $count;
-            $f->addWithoutWrite($newField);
+			$newField->write();
             $count++;
         }
     }
+
+	public function write($showDebug = false, $forceInsert = false, $forceWrite = false) {
+		$isNew = (!$this->ID);
+		parent::write($showDebug, $forceInsert, $forceWrite);
+		if($isNew) $this->addDefaultFields();		
+	}
     
     public function Newsletters() {
     	$components = $this->getComponents('Newsletters');
@@ -179,7 +184,6 @@ class SubscribeForm_SubscribeEmail extends Email_Template {
 class SubscribeForm_Controller extends UserDefinedForm_Controller {
  
     function process( $data, $form ) {
-        
         // Add the user to the mailing list
         $member = Object::create("Member");
         
@@ -188,7 +192,6 @@ class SubscribeForm_Controller extends UserDefinedForm_Controller {
         // map the editables to the data
         
         foreach( $this->Fields() as $editable ) {
-            
             $field = $editable->CustomParameter;
             if( !$field )
                 continue;
@@ -198,14 +201,14 @@ class SubscribeForm_Controller extends UserDefinedForm_Controller {
             // if( $member->hasField( $field ) )
                 $member->$field = $data[$editable->Name];   
         }
-        
+
         // need to write the member record before adding the user to groups
         $member->write(); 
         
         $newsletters = array();
         
         // Add member to the selected newsletters
-        if( $data['Newsletters'] ) foreach( $data['Newsletters'] as $listID ) {
+        if( isset($data['Newsletters'])) foreach( $data['Newsletters'] as $listID ) {
             
             if( !is_numeric( $listID ) )
                 continue;
@@ -259,13 +262,9 @@ class SubscribeForm_Controller extends UserDefinedForm_Controller {
         
         $newsletters = array();
         
-        // Debug::show($newsletterList);
-        
         // get the newsletter types to display on the form
         foreach( $newsletterList as $newsletter )
-            $newsletters[] = $newsletter;
-        
-        // Debug::show( $newsletters );
+            $newsletters[$newsletter->ID] = $newsletter->Title;
         
         $form->Fields()->push( new CheckboxSetField( 'Newsletters', 'Subscribe to lists', $newsletters ) );
         
