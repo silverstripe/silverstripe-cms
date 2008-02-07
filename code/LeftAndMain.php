@@ -541,18 +541,18 @@ JS;
 				FormResponse::add("$('Form_EditForm').getPageFromServer($record->ID);");
 			}
 
-			if( ($record->class != 'VirtualPage') && $originalURLSegment != $record->URLSegment) {
-				$message .= sprintf(_t('LeftAndMain.CHANGEDURL',"  Changed URL to '%s'"),$record->URLSegment);
-				FormResponse::add("\$('Form_EditForm').elements.URLSegment.value = \"$record->URLSegment\";");
-				FormResponse::add("\$('Form_EditForm_StageURLSegment').value = \"{$record->URLSegment}\";");
-			}
-
 			// After reloading action
 			if($originalStatus != $record->Status) {
 				$message .= sprintf(_t('LeftAndMain.STATUSTO',"  Status changed to '%s'"),$record->Status);
 			}
 
 			$record->write();
+
+			if( ($record->class != 'VirtualPage') && $originalURLSegment != $record->URLSegment) {
+				$message .= sprintf(_t('LeftAndMain.CHANGEDURL',"  Changed URL to '%s'"),$record->URLSegment);
+				FormResponse::add("\$('Form_EditForm').elements.URLSegment.value = \"$record->URLSegment\";");
+				FormResponse::add("\$('Form_EditForm_StageURLSegment').value = \"{$record->URLSegment}\";");
+			}
 
 			// If the 'Save & Publish' button was clicked, also publish the page
 			if (isset($urlParams['publish']) && $urlParams['publish'] == 1) {
