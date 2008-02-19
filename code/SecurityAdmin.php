@@ -86,7 +86,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			$fields->push($idField = new HiddenField("ID"));
 			$idField->setValue($id);
 			$actions = new FieldSet(
-				new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member'))
+				//new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member'))
 			);
 
 			$actions->push(new FormAction('save',_t('SecurityAdmin.SAVE','Save')));
