@@ -49,7 +49,9 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 						$memberList = new MemberTableField(
 							$this,
 							"Members",
-							$record
+							$record,
+							null,
+							false
 						)
 					),
 

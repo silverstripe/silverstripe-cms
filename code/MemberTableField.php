@@ -93,7 +93,7 @@ class MemberTableField extends ComplexTableField {
 		}
 
 		if(!$hidePassword) {
-			$fieldList["Password"] = "Password";
+			$fieldList["SetPassword"] = "Password"; 
 		}
 		
 //              $detailFormFields = singleton(Object::getCustomClass($this->stat("data_class")))->getCMSFields(); 		
