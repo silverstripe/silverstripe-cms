@@ -441,7 +441,9 @@ JS;
 		$newItem->ClassName = $className;
 		$newItem->ParentID = $parentID;
 
-		if($newItem->fieldExists('Sort')) {
+		// DataObject::fieldExists only checks the current class, not the hierarchy
+		// This allows the CMS to set the correct sort value
+		if($newItem->castingHelperPair('Sort')) {
 			$newItem->Sort = DB::query("SELECT MAX(Sort)  FROM SiteTree WHERE ParentID = '" . Convert::raw2sql($parentID) . "'")->value() + 1;
 		}
 
