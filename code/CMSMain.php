@@ -450,6 +450,9 @@ JS;
 
 		if($setID) $newItem->ID = $id;
 
+		# Some modules like subsites add extra fields that need to be set when the new item is created
+		$this->extend('augmentNewSiteTreeItem', $newItem);
+		
 		return $newItem;
 	}
 
