@@ -11,6 +11,14 @@
  * @subpackage comments
  */
 class CommentAdmin extends LeftAndMain {
+	static $allowed_actions = array(
+		'approvedmarked',
+		'deleteall',
+		'deletemarked',
+		'hammarked',
+		'showtable',
+		'spammarked',
+	);
 	
 	public function init() {
 		parent::init();

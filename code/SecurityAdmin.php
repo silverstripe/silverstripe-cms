@@ -13,6 +13,17 @@
 class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	static $tree_class = "Group";
 	static $subitem_class = "Member";
+	
+	static $allowed_actions = array(
+		'addgroup',
+		'addmember',
+		'autocomplete',
+		'getmember',
+		'listmembers',
+		'newmember',
+		'removememberfromgroup',
+		'savemember',
+	);
 
 	public function init() {
 		// Check permissions

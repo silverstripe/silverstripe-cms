@@ -13,6 +13,21 @@
  */
 class AssetAdmin extends LeftAndMain {
 	static $tree_class = "File";
+	
+	static $allowed_actions = array(
+		'addfolder',
+		'deletefolder',
+		'deletemarked',
+		'deleteUnusedThumbnails',
+		'doUpload',
+		'getfile',
+		'getsubtree',
+		'movemarked',
+		'removefile',
+		'save',
+		'savefile',
+		'uploadiframe',
+	);
 
 	public function Link($action=null) {
 		if(!$action) $action = "index";

@@ -16,6 +16,19 @@ abstract class LeftAndMain extends Controller {
 	static $extra_menu_items = array(), $removed_menu_items = array(), $replaced_menu_items = array();
 	static $ForceReload;
 
+	static $allowed_actions = array(
+		'ajaxupdateparent',
+		'ajaxupdatesort',
+		'callPageMethod',
+		'deleteitems',
+		'getitem',
+		'getsubtree',
+		'myprofile',
+		'printable',
+		'save',
+		'show',
+	);
+
 	function init() {
 		Director::set_site_mode('cms');
 		

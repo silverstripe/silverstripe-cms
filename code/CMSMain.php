@@ -13,10 +13,40 @@
  * @todo Create some base classes to contain the generic functionality that will be replicated.
  */
 class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionProvider {
-		
+	
 	static $tree_class = "SiteTree";
 	
 	static $subitem_class = "Member";
+	
+	static $allowed_actions = array(
+		'addmember',
+		'addpage',
+		'buildbrokenlinks',
+		'canceldraftchangesdialog',
+		'compareversions',
+		'createtranslation',
+		'delete',
+		'deletefromlive',
+		'deleteitems',
+		'dialog',
+		'duplicate',
+		'duplicatewithchildren',
+		'getpagecount',
+		'getpagemembers',
+		'getversion',
+		'publishall',
+		'publishitems',
+		'restorepage',
+		'revert',
+		'rollback',
+		'sidereport',
+		'submit',
+		'switchlanguage',
+		'tasklist',
+		'unpublish',
+		'versions',
+		'waitingon',		
+	);
 	
 	/**
 	 * SiteTree Columns that can be filtered using the the Site Tree Search button
@@ -1322,29 +1352,6 @@ JS
 
 		$newrecord->CheckedPublicationDifferences = $newrecord->AddedToStage = true;
 		return $this->returnItemToUser($newrecord);
-	}
-
-	// HACK HACK HACK - Dont remove without telling simon ;-)
-
-	/**
-	 * This is only used by parents inc.
-	 * TODO Work out a better way of handling control to the individual page objects.
-	 */
-	function sethottip($data,$form) {
-		$page = DataObject::get_by_id("SiteTree", $_REQUEST['ID']);
-		return $page->sethottip($data,$form);
-	}
-	/**
-	 * This is only used by parents inc.
-	 * TODO Work out a better way of handling control to the individual page objects.
-	 */
-	function notifyInvitation($data,$form) {
-		$page = DataObject::get_by_id("SiteTree", $_REQUEST['ID']);
-		return $page->notifyInvitation($data,$form);
-	}
-	function testInvitation($data,$form) {
-		$page = DataObject::get_by_id("SiteTree", $_REQUEST['ID']);
-		return $page->testInvitation($data,$form);
 	}
 
 	/**

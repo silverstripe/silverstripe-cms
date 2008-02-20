@@ -13,6 +13,14 @@
  * @subpackage core
  */
 abstract class GenericDataAdmin extends LeftAndMain {
+	static $allowed_actions = array(
+		'createRecord',
+		'delete',
+		'export',
+		'getResults',
+		'save',
+		'show',
+	);
 
 	public $filter;
 	

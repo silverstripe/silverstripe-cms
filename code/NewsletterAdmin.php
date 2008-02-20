@@ -14,6 +14,31 @@ class NewsletterAdmin extends LeftAndMain {
 	static $subitem_class = "Member";
 
 	static $template_path = null; // defaults to (project)/templates/email
+	
+	static $allowed_actions = array(
+		'adddraft',
+		'addgroup',
+		'addtype',
+		'autocomplete',
+		'displayfilefield',
+		'getformcontent',
+		'getsentstatusreport',
+		'getsitetree',
+		'memberblacklisttoggle',
+		'newmember',
+		'remove',
+		'removebouncedmember',
+		'removenewsletter',
+		'save',
+		'savemember',
+		'savenewsletter',
+		'sendnewsletter',
+		'showdrafts',
+		'showmailtype',
+		'shownewsletter',
+		'showrecipients',
+		'showsent',
+	);
 
 	public function init() {
 		// Check permissions
