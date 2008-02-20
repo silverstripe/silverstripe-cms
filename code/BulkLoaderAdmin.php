@@ -10,9 +10,9 @@
  * The BulkLoaderAdmin class provides an interface for accessing all of the subclasses of BulkLoader,
  * each of which defines a particular bulk loading operation.
  * 
- * This code was originally developed for Per Week in collaboration with Brian Calhoun.
  * @package cms
  * @subpackage bulkloading
+ * @deprecated This class has never been used in production; if we're going to continue to support it we should increase its usefulness.
  */
 class BulkLoaderAdmin extends LeftAndMain {
 
