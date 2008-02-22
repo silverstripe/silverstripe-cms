@@ -192,8 +192,9 @@ class UserDefinedForm_Controller extends Page_Controller {
 			$_SERVER['HTTP_REFERER'] = "";
 		}
 		
-		$fields->push( new HiddenField( "Referrer", "", $_SERVER['HTTP_REFERER'] ) );
-		
+		$referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+		$fields->push( new HiddenField( "Referrer", "", $referer ) );
+				
 		// Build actions
 		$actions = new FieldSet( 
 			new FormAction( "process", $this->SubmitButtonText )
