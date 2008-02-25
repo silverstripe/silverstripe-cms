@@ -190,22 +190,7 @@ TreeNodeAPI.prototype = {
 		}
 	},
 	duplicatePage: function() {  
-		// Pass the parent ID to the duplicator, which helps ensure that multi-parent pages are duplicated into the node that the user clicked
-		var parentClause = "";
-		if(this.parentTreeNode && this.parentTreeNode.getIdx) {
-			parentClause = "&parentID=" + this.parentTreeNode.getIdx();
-		}
-
-		new Ajax.Request(baseHref() + 'admin/duplicate/' + this.getIdx() + '?ajax=1' + parentClause, {
-			method : 'get',
-			onSuccess : Ajax.Evaluator,
-			onFailure : function(response) {
-				errorMessage('Error: ', response);
-			}
-		}); 
-	},
-	duplicatePageWithChildren: function() {  
-		new Ajax.Request(baseHref() + 'admin/duplicatewithchildren/' + this.getIdx() + '?ajax=1', {
+		new Ajax.Request(baseHref() + 'admin/duplicate/' + this.getIdx() + '?ajax=1', {
 			method : 'get',
 			onSuccess : Ajax.Evaluator,
 			onFailure : function(response) {
@@ -458,13 +443,16 @@ ReorganiseAction = Class.create();
 ReorganiseAction.applyTo('#sortitems');
 ReorganiseAction.prototype = {
 	initialize: function () {
+		this.isDraggable = false;
 	},
 	
 	onclick : function() {
-		if ($('sitetree').isDraggable == false) {
+		if (this.isDraggable == false) {
 			$('sitetree').makeDraggable();
+			this.isDraggable = true;
 		} else {
 			$('sitetree').stopBeingDraggable();
+			this.isDraggable = false;
 		}
 	}
 }

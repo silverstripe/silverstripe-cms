@@ -1,33 +1,11 @@
 <?php
 
 /**
- * @package cms
- * @subpackage assets
- */
-
-/**
  * AssetAdmin is the 'file store' section of the CMS.
  * It provides an interface for maniupating the File and Folder objects in the system.
- * @package cms
- * @subpackage assets
  */
 class AssetAdmin extends LeftAndMain {
 	static $tree_class = "File";
-	
-	static $allowed_actions = array(
-		'addfolder',
-		'deletefolder',
-		'deletemarked',
-		'deleteUnusedThumbnails',
-		'doUpload',
-		'getfile',
-		'getsubtree',
-		'movemarked',
-		'removefile',
-		'save',
-		'savefile',
-		'uploadiframe',
-	);
 
 	public function Link($action=null) {
 		if(!$action) $action = "index";
@@ -86,6 +64,15 @@ class AssetAdmin extends LeftAndMain {
 		Requirements::css("cms/css/AssetAdmin.css");
 	}
 	
+	/**
+	 * Display the upload form.  Returns an iframe tag that will show admin/assets/uploadiframe.
+	 */
+	function getUploadIframe() {
+		return <<<HTML
+		<iframe name="AssetAdmin_upload" src="admin/assets/uploadiframe/{$this->urlParams['ID']}" id="AssetAdmin_upload" border="0" style="border-style: none; width: 100%; height: 200px">
+		</iframe>
+HTML;
+	}
 
 	function index() {
 		File::sync();
@@ -168,7 +155,7 @@ class AssetAdmin extends LeftAndMain {
 		foreach($processedFiles as $file) {
 			if($file['error'] == UPLOAD_ERR_NO_TMP_DIR) {
 				$status = 'bad';
-				$statusMessage = _t('AssetAdmin.NOTEMP', 'There is no temporary folder for uploads. Please set upload_tmp_dir in php.ini.');
+				$statusMessage = 'There is no temporary folder for uploads. Please set upload_tmp_dir in php.ini.';
 				break;
 			}
 		
@@ -217,24 +204,8 @@ class AssetAdmin extends LeftAndMain {
 			$statusMessage = _t('AssetAdmin.NOTHINGTOUPLOAD','There was nothing to upload');
 			$status = "";
 		}
-		
-		
-		$fileIDs = array();
-		$fileNames = array();
-		foreach($newFiles as $newFile) {
-			$fileIDs[] = $newFile;
-			$fileObj = DataObject::get_one('File', "`File`.ID=$newFile");
-			$fileNames[] = $fileObj->Name;
-		}
-		
-		$sFileIDs = implode(',', $fileIDs);
-		$sFileNames = implode(',', $fileNames);
-		
 		echo <<<HTML
 			<script type="text/javascript">
-			/* IDs: $sFileIDs */
-			/* Names: $sFileNames */
-			
 			var form = parent.document.getElementById('Form_EditForm');
 			form.getPageFromServer(form.elements.ID.value);
 			parent.statusMessage("{$statusMessage}","{$status}");
@@ -259,8 +230,62 @@ HTML;
 			$record = singleton("Folder");
 		}
 		
-		if($record) {
-			$fields = $record->getCMSFields();
+		$fileList = new AssetTableField(
+			$this,
+			"Files",
+			"File", 
+			array("Title" => _t('AssetAdmin.TITLE', "Title"), "LinkedURL" => _t('AssetAdmin.FILENAME', "Filename")), 
+			""
+		);
+		$fileList->setFolder($record);
+		$fileList->setPopupCaption(_t('AssetAdmin.VIEWEDITASSET', "View/Edit Asset"));
+        
+	    if($record) {
+			$nameField = ($id != "root") ? new TextField("Name", "Folder Name") : new HiddenField("Name");
+			if( $record->userCanEdit() ) {
+				$deleteButton = new InlineFormAction('deletemarked',_t('AssetAdmin.DELSELECTED','Delete selected files'), 'delete');
+				$deleteButton->includeDefaultJS(false);
+			} else {
+				$deleteButton = new HiddenField('deletemarked');
+			}
+
+			$fields = new FieldSet(
+				new HiddenField("Title"),
+				new TabSet("Root", 
+					new Tab(_t('AssetAdmin.FILESTAB', "Files"),
+						$nameField,
+						$fileList,
+						$deleteButton,
+						new HiddenField("FileIDs"),
+						new HiddenField("DestFolderID")
+					),
+					new Tab(_t('AssetAdmin.DETAILSTAB', "Details"), 
+						new ReadonlyField("URL"),
+						new ReadonlyField("ClassName", _t('AssetAdmin.TYPE','Type')),
+						new ReadonlyField("Created", _t('AssetAdmin.CREATED','First Uploaded')),
+						new ReadonlyField("LastEdited", _t('AssetAdmin.LASTEDITED','Last Updated'))
+					),
+					new Tab(_t('AssetAdmin.UPLOADTAB', "Upload"),
+						new LiteralField("UploadIframe",
+							$this->getUploadIframe()
+						)
+					),
+					new Tab(_t('AssetAdmin.UNUSEDFILESTAB', "Unused files"),
+					    new LiteralField("UnusedAssets",
+                            "<div id=\"UnusedAssets\"><h2>"._t('AssetAdmin.UNUSEDFILESTITLE', 'Unused files')."</h2>"
+                        ),
+					    $this->getAssetList(),
+					    new LiteralField("UnusedThumbnails",
+                           "</div>
+                                <div id=\"UnusedThumbnails\">
+                                    <h2>"._t('AssetAdmin.UNUSEDTHUMBNAILSTITLE', 'Unused thumbnails')."</h2>
+                                    <button class=\"action\">"._t('AssetAdmin.DELETEUNUSEDTHUMBNAILS', 'Delete unused thumbnails')."</button>
+                                </div>"
+                        )     
+                    )
+			    ),
+				new HiddenField("ID")
+			);
 			
 			$actions = new FieldSet();
 			
@@ -343,7 +368,7 @@ HTML;
 			$brokenPageList = '';
 	
 			if($fileList != "''") {
-				$files = DataObject::get("File", "`File`.ID IN ($fileList)");
+				$files = DataObject::get("File", "ID IN ($fileList)");
 				if($files) {
 					foreach($files as $file) {
 						if($file instanceof Image) {
@@ -421,7 +446,8 @@ JS;
 	
 	/**
 	 * Return the entire site tree as a nested set of ULs
-	 */
+	
+*/
 	public function SiteTreeAsUL() {
 		$obj = singleton('Folder');
 		$obj->setMarkingFilter("ClassName", "Folder");
@@ -435,7 +461,7 @@ JS;
 
 					' "<li id=\"record-$child->ID\" class=\"$child->class" . $child->markingClasses() .  ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
 
-					' "<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" class=\"" . ($child->hasChildren() ? " contents" : "") . "\" >" . $child->TreeTitle() . "</a>" ',
+					' "<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" class=\"" . ($child->hasChildren() ? " contents" : "") . "\" >" . $child->Title . "</a>" ',
 
 					$this, true);
 					
@@ -465,7 +491,7 @@ JS;
 
 					' "<li id=\"record-$child->ID\" class=\"$child->class" . $child->markingClasses() .  ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
 
-					' "<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" >" . $child->TreeTitle() . "</a>" ',
+					' "<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" >" . $child->Title . "</a>" ',
 
 					$this, true);
 
@@ -493,7 +519,7 @@ JS;
 		$p->ParentID = $parent;
 		$p->Title = _t('AssetAdmin.NEWFOLDER',"NewFolder");
 
-		$p->Name = _t('AssetAdmin.NEWFOLDER', 'NewFolder');
+		$p->Name = "NewFolder";
 
 		// Get the folder to be created		
 		if(isset($parentObj->ID)) $filename = $parentObj->FullPath . $p->Name;
@@ -619,24 +645,12 @@ if(!$record)
 		}*/
 
 		
-		/*
+
 		$s = (sizeof($ids) > 1) ? "s" :"";
 		
 		$message = sizeof($ids) . " folder$s deleted.";
 		//
 		if(isset($brokenPageList)) $message .= "  The following pages now have broken links:<ul>" . addslashes($brokenPageList) . "</ul>Their owners have been emailed and they will fix up those pages.";
-		*/
-		
-		$size = sizeof($ids);
-		if($size > 1)
-		  $message = $size.' '._t('AssetAdmin.FOLDERSDELETED', 'folders deleted.');
-		else
-		  $message = $size.' '._t('AssetAdmin.FOLDERDELETED', 'folder deleted.');
-
-		if(isset($brokenPageList))
-		  $message .= '  '._t('AssetAdmin.NOWBROKEN', 'The following pages now have broken links:').'<ul>'.addslashes($brokenPageList).'</ul>'.
-		    _t('AssetAdmin.NOWBROKEN2', 'Their owners have been emailed and they will fix up those pages.');
-
 		$script .= "statusMessage('$message');";
 		echo $script;
 	}
@@ -693,7 +707,7 @@ JS;
 	    foreach($this->getUnusedThumbnailsArray() as $file) {
 	    	unlink("../assets/" . $file); 	
 	    }
-	    echo "statusMessage('"._t('AssetAdmin.THUMBSDELETED', 'All unused thumbnails have been deleted')."','good')";
+	    echo "statusMessage('All unused thumbnails have been deleted','good')";
 	}
 	
 	/**

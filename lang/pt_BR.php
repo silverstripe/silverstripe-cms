@@ -4,11 +4,7 @@ i18n::include_locale_file('cms', 'en_US');
 
 global $lang;
 
-if(array_key_exists('pt_BR', $lang) && is_array($lang['pt_BR'])) {
-	$lang['pt_BR'] = array_merge($lang['en_US'], $lang['pt_BR']);
-} else {
-	$lang['pt_BR'] = $lang['en_US'];
-}
+$lang['pt_BR'] = $lang['en_US'];
 
 $lang['pt_BR']['AssetAdmin']['CHOOSEFILE'] = 'Selecione Arquivo';
 $lang['pt_BR']['AssetAdmin']['CONTENTMODBY'] = 'Conteúdos modificáveis por';

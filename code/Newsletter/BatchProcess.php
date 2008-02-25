@@ -1,14 +1,6 @@
 <?php
-
-/**
- * @package cms
- * @subpackage newsletter
- */
-
 /**
  * Create a process in session which is incremented to calls from the client
- * @package cms
- * @subpackage newsletter
  */
 class BatchProcess extends Object {
 	
@@ -54,7 +46,7 @@ class BatchProcess extends Object {
 		$this->id = self::generateID(); 
     
     if( !$this->objects || count( $this->objects ) === 0 )
-      	return $this->complete();
+      return $this->complete();
     
 		return $this->next();
 	}
@@ -76,11 +68,6 @@ class BatchProcess extends Object {
 	}
 }
 
-/**
- * Controller for calling the batch processes via Ajax.
- * @package cms
- * @subpackage newsletter
- */
 class BatchProcess_Controller extends Controller {
 	
 	function next() {
@@ -88,13 +75,13 @@ class BatchProcess_Controller extends Controller {
 		$processID = $this->urlParams['ID'];
 		
 		if( !$processID ) {
-		        return _t('BatchProcess_Controller.ERROR', 'ERROR: Could not continue process');
+			return "ERROR: Could not continue process";
 		}
 		
 		$process = unserialize(Session::get('BatchProcesses.' . ($this->urlParams['ID'] - 1)));
 		
 		if( !$process ) {
-		        return _t('BatchProcess_Controller.ERROR', 'ERROR:Could not continue process');
+			return "ERROR:Could not continue process";
 		}
 		
 		if( $this->urlParams['Batch'] )

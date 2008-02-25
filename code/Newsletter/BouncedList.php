@@ -1,15 +1,4 @@
 <?php
-
-/**
- * @package cms
- * @subpackage newsletter
- */
-
-/**
- * Form field showing a list of bounced addresses
- * @package cms
- * @subpackage newsletter
- */
 class BouncedList extends FormField {
     
     protected $nlType;

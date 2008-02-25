@@ -4,11 +4,7 @@ i18n::include_locale_file('cms', 'en_US');
 
 global $lang;
 
-if(array_key_exists('ru_RU', $lang) && is_array($lang['ru_RU'])) {
-	$lang['ru_RU'] = array_merge($lang['en_US'], $lang['ru_RU']);
-} else {
-	$lang['ru_RU'] = $lang['en_US'];
-}
+$lang['ru_RU'] = $lang['en_US'];
 
 $lang['ru_RU']['AssetAdmin']['CHOOSEFILE'] = 'Выберите файл';
 $lang['ru_RU']['AssetAdmin']['CONTENTMODBY'] = 'Редакторы содержимого:';

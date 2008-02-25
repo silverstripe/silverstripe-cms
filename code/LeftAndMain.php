@@ -1,33 +1,13 @@
 <?php
 
 /**
- * @package cms
- * @subpackage core
- */
-
-/**
  * LeftAndMain is the parent class of all the two-pane views in the CMS.
  * If you are wanting to add more areas to the CMS, you can do it by subclassing LeftAndMain.
- * @package cms
- * @subpackage core
  */
 abstract class LeftAndMain extends Controller {
 	static $tree_class = null;
 	static $extra_menu_items = array(), $removed_menu_items = array(), $replaced_menu_items = array();
 	static $ForceReload;
-
-	static $allowed_actions = array(
-		'ajaxupdateparent',
-		'ajaxupdatesort',
-		'callPageMethod',
-		'deleteitems',
-		'getitem',
-		'getsubtree',
-		'myprofile',
-		'printable',
-		'save',
-		'show',
-	);
 
 	function init() {
 		Director::set_site_mode('cms');
@@ -39,8 +19,8 @@ abstract class LeftAndMain extends Controller {
 		}
 		
 		// set reading lang
-		if(Translatable::is_enabled()) {
-			Translatable::choose_site_lang(i18n::get_existing_content_languages('SiteTree'));
+		if(Translatable::is_enabled() && !Director::is_ajax()) {
+			Translatable::choose_site_lang(array_keys(i18n::get_existing_content_languages('SiteTree')));
 		}
 
 		parent::init();
@@ -110,7 +90,7 @@ abstract class LeftAndMain extends Controller {
 	
 		Requirements::css('sapphire/css/Form.css');
 
-		// Requirements::javascript('cms/javascript/MemberList.js');
+		Requirements::javascript('cms/javascript/MemberList.js');
 		Requirements::javascript('cms/javascript/ForumAdmin.js');
 		Requirements::javascript('cms/javascript/SideTabs.js');
 		Requirements::javascript('cms/javascript/TaskList.js');
@@ -153,9 +133,6 @@ abstract class LeftAndMain extends Controller {
 		
 		Requirements::javascript('jsparty/SWFUpload/SWFUpload.js');
 		Requirements::javascript('cms/javascript/Upload.js');
-		
-		Requirements::javascript('sapphire/javascript/HasManyFileField.js');
-		Requirements::css('sapphire/css/HasManyFileField.css');
 		
 		Requirements::themedCSS('typography');
 		
@@ -387,8 +364,8 @@ abstract class LeftAndMain extends Controller {
 		// getChildrenAsUL is a flexible and complex way of traversing the tree
 		$siteTree = $obj->getChildrenAsUL("", '
 					"<li id=\"record-$child->ID\" class=\"" . $child->CMSTreeClasses($extraArg) . "\">" .
-					"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" class=\"" . $child->CMSTreeClasses($extraArg) . "\" title=\"' . _t('LeftAndMain.PAGETYPE','Page type: ') . '".$child->class."\" >" . 
-					($child->TreeTitle()) . 
+					"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" " . (($child->canEdit() || $child->canAddChildren()) ? "" : "class=\"disabled\"") . " title=\"' . _t('LeftAndMain.PAGETYPE','Page type: ') . '".$child->class."\" >" .
+					($child->TreeTitle()) .
 					"</a>"
 '
 					,$this, true);
@@ -554,18 +531,18 @@ JS;
 				FormResponse::add("$('Form_EditForm').getPageFromServer($record->ID);");
 			}
 
+			if( ($record->class != 'VirtualPage') && $originalURLSegment != $record->URLSegment) {
+				$message .= sprintf(_t('LeftAndMain.CHANGEDURL',"  Changed URL to '%s'"),$record->URLSegment);
+				FormResponse::add("\$('Form_EditForm').elements.URLSegment.value = \"$record->URLSegment\";");
+				FormResponse::add("\$('Form_EditForm_StageURLSegment').value = \"{$record->URLSegment}\";");
+			}
+
 			// After reloading action
 			if($originalStatus != $record->Status) {
 				$message .= sprintf(_t('LeftAndMain.STATUSTO',"  Status changed to '%s'"),$record->Status);
 			}
 
 			$record->write();
-
-			if( ($record->class != 'VirtualPage') && $originalURLSegment != $record->URLSegment) {
-				$message .= sprintf(_t('LeftAndMain.CHANGEDURL',"  Changed URL to '%s'"),$record->URLSegment);
-				FormResponse::add("\$('Form_EditForm').elements.URLSegment.value = \"$record->URLSegment\";");
-				FormResponse::add("\$('Form_EditForm_StageURLSegment').value = \"{$record->URLSegment}\";");
-			}
 
 			// If the 'Save & Publish' button was clicked, also publish the page
 			if (isset($urlParams['publish']) && $urlParams['publish'] == 1) {
@@ -871,7 +848,7 @@ JS;
 		self::$application_logo_text = "";
 	}
 	function LogoStyle() {
-		return "background: url(" . self::$application_logo . ") no-repeat; " . self::$application_logo_style;
+		return "background-image: url(" . self::$application_logo . ") no-repeat; " . self::$application_logo_style;
 	}
 
 	/**

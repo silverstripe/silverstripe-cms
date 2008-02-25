@@ -4,11 +4,7 @@ i18n::include_locale_file('cms', 'en_US');
 
 global $lang;
 
-if(array_key_exists('fr_FR', $lang) && is_array($lang['fr_FR'])) {
-	$lang['fr_FR'] = array_merge($lang['en_US'], $lang['fr_FR']);
-} else {
-	$lang['fr_FR'] = $lang['en_US'];
-}
+$lang['fr_FR'] = $lang['en_US'];
 
 $lang['fr_FR']['AssetAdmin']['CHOOSEFILE'] = 'Choisir un fichier';
 $lang['fr_FR']['AssetAdmin']['CONTENTMODBY'] = 'Contenu modifiable par';
@@ -184,7 +180,7 @@ $lang['fr_FR']['LeftAndMain']['CHANGEDURL'] = 'URL modifiée en \'%s\'';
 $lang['fr_FR']['LeftAndMain']['COMMENTS'] = 'Commentaires';
 $lang['fr_FR']['LeftAndMain']['FILESIMAGES'] = 'Fichiers & Images';
 $lang['fr_FR']['LeftAndMain']['HELP'] = 'Aide';
-$lang['fr_FR']['LeftAndMain']['NEWSLETTERS'] = 'Newsletters';
+$lang['fr_FR']['LeftAndMain']['NEWSLETTERS'] = 'News-Lettres';
 $lang['fr_FR']['LeftAndMain']['PAGETYPE'] = 'Type de page :';
 $lang['fr_FR']['LeftAndMain']['PERMAGAIN'] = 'Vous avez été déconnecté du CMS. Si vous voulez vous reconnecter, entrez un nom d\'utilisateur et un mot de passe ci-dessous.';
 $lang['fr_FR']['LeftAndMain']['PERMALREADY'] = 'Désolé, mais vous ne pouvez pas accéder cette partie du CMS. Si vous voulez changer d\'identification, faites le ci-dessous';
@@ -292,7 +288,6 @@ $lang['fr_FR']['Newsletter_SentStatusReport.ss']['SENDBOUNCED'] = 'Envois aux De
 $lang['fr_FR']['Newsletter_SentStatusReport.ss']['SENDFAIL'] = 'Envois aux Destinataires Suivants Echoué';
 $lang['fr_FR']['Newsletter_SentStatusReport.ss']['SENTOK'] = 'L\'Envoi aux Destinataires Suivants a été Réussi';
 $lang['fr_FR']['Newsletter_SentStatusReport.ss']['SN'] = 'Nom de famille';
-$lang['fr_FR']['PageComment']['COMMENTBY'] = 'Commentaire de \'%s\' sur %s';
 $lang['fr_FR']['PageCommentInterface.ss']['COMMENTS'] = 'Commentaires';
 $lang['fr_FR']['PageCommentInterface.ss']['NEXT'] = 'suivant';
 $lang['fr_FR']['PageCommentInterface.ss']['NOCOMMENTSYET'] = 'Personne n\'a encore commenté cette page.';

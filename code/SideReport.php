@@ -1,16 +1,5 @@
 <?php
 
-/**
- * @package cms
- * @subpackage content
- */
-
-/**
- * Base class for the small reports that appear in the left hand site of the Site Content section of the CMS.
- * Create subclasses of this class to build new reports.
- * @package cms
- * @subpackage content
- */
 abstract class SideReport extends Object {
 	abstract function records();
 	abstract function fieldsToShow();
@@ -25,19 +14,7 @@ abstract class SideReport extends Object {
 			
 			foreach($records as $record) {
 				$result .= "<li>\n";
-				foreach($fieldsToShow as $fieldTitle => $fieldInfo) {
-					if(isset($fieldInfo['source'])) {
-						$fieldSource = $fieldInfo['source'];
-						
-					// Legacy format for the input data
-					} else {
-						$fieldSource = $fieldInfo;
-						$fieldInfo = array(
-							'link' => true,
-							'newline' => false,
-						);
-					}
-					
+				foreach($fieldsToShow as $fieldTitle => $fieldSource) {
 					$fieldName = ereg_replace('[^A-Za-z0-9]+','',$fieldTitle);
 					if(is_string($fieldSource)) {
 						$val = $record->$fieldSource;
@@ -45,14 +22,7 @@ abstract class SideReport extends Object {
 						$val = $record->val($fieldSource[0], $fieldSource[1]);
 					}
 					
-					if(isset($fieldInfo['newline']) && $fieldInfo['newline']) $result .= "<br>";
-					
-					if(isset($fieldInfo['link']) && $fieldInfo['link']) {
-						$link = ($fieldInfo['link'] === true) ? "admin/show/$record->ID" : $fieldInfo['link'];
-						$result .= "<a class=\"$fieldName\" href=\"$link\">$val</a>";
-					} else {
-						$result .= "<span class=\"$fieldName\">$val</span>";
-					}
+					$result .= "<a class=\"$fieldName\" href=\"admin/show/$record->ID\">$val</a>";
 				}
 				$result .= "\n</li>\n";
 			}
@@ -64,11 +34,6 @@ abstract class SideReport extends Object {
 	}
 }
 
-/**
- * Content side-report listing empty pages
- * @package cms
- * @subpackage content
- */
 class SideReport_EmptyPages extends SideReport {
 	function title() {
 		return _t('SideReport.EMPTYPAGES',"Empty pages");
@@ -83,11 +48,6 @@ class SideReport_EmptyPages extends SideReport {
 	}
 }
 
-/**
- * Content side-report listing recently editing pages.
- * @package cms
- * @subpackage content
- */
 class SideReport_RecentlyEdited extends SideReport {
 	function title() {
 		return _t('SideReport.LAST2WEEKS',"Pages edited in the last 2 weeks");
@@ -98,27 +58,6 @@ class SideReport_RecentlyEdited extends SideReport {
 	function fieldsToShow() {
 		return array(
 			"Title" => array("NestedTitle", array("2")),
-		);
-	}
-}
-
-class SideReport_ToDo extends SideReport {
-	function title() {
-		return _t('SideReport.TODO',"To do");
-	}
-	function records() {
-		return DataObject::get("SiteTree", "`SiteTree`.ToDo IS NOT NULL AND `SiteTree`.ToDo <> ''", "`SiteTree`.`LastEdited` DESC");
-	}
-	function fieldsToShow() {
-		return array(
-			"Title" => array(
-				"source" => array("NestedTitle", array("2")),
-				"link" => true,
-			),
-			"ToDo" => array(
-				"source" => "ToDo",
-				"newline" => true,
-			), 
 		);
 	}
 }

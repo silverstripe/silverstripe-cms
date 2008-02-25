@@ -1,14 +1,6 @@
 <?php
-
 /**
- * @package cms
- * @subpackage newsletter
- */
-
-/**
- * Subclass of DropdownField for showing a list of the newsletter templates available.
- * @package cms
- * @subpackage newsletter
+ * This should extend DropdownField
  */
 class TemplateList extends DropdownField {
 	
@@ -20,7 +12,7 @@ class TemplateList extends DropdownField {
 	}
 	
 	private function getTemplates() {
-	  $templates = array( "" => _t('TemplateList.NONE', 'None') );
+		$templates = array( "" => "None" );
 
 		$absPath = Director::baseFolder();
 		if( $absPath{strlen($absPath)-1} != "/" )

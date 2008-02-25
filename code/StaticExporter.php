@@ -1,25 +1,18 @@
 <?php
 
 /**
- * @package cms
- * @subpackage export
- */
-
-/**
  * This class lets you export a static copy of your site.
  * It creates a huge number of folders each containing an index.html file.
  * This preserves the URL naming format.
- * @package cms
- * @subpackage export
  */
 class StaticExporter extends Controller {
 	function init() {
 		parent::init();
 		if(!Permission::check('ADMIN')) {
 			$messageSet = array(
-				'default' => _t('LeftAndMain.PERMDEFAULT', 'Enter your email address and password to access the CMS.'),
-				'alreadyLoggedIn' => _t('LeftAndMain.PERMALREADY', 'I\'m sorry, but you can\'t access that part of the CMS.  If you want to log in as someone else, do so below'),
-				'logInAgain' => _t('LeftAndMain.PERMAGAIN', 'You have been logged out of the CMS.  If you would like to log in again, enter a username and password below.'),
+				'default' => "Enter your email address and password to access the CMS.",
+				'alreadyLoggedIn' => "I'm sorry, but you can't access that part of the CMS.  If you want to log in as someone else, do so below",
+				'logInAgain' => "You have been logged out of the CMS.  If you would like to log in again, enter a username and password below.",
 			);
 
 			Security::permissionFailure($this, $messageSet);

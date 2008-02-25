@@ -1,15 +1,5 @@
 <?php
 
-/**
- * @package cms
- * @subpackage comments
- */
-
-/**
- * Represents a single comment on a page
- * @package cms
- * @subpackage comments
- */
 class PageComment extends DataObject {
 	static $db = array(
 		"Name" => "Varchar",
@@ -182,9 +172,8 @@ class PageComment extends DataObject {
 			$this->Parent()->Title
 		);
 	}
-	
 	function rss() {
-		$parentcheck = isset($_REQUEST['pageid']) ? "ParentID = " . (int) $_REQUEST['pageid'] : "ParentID > 0";
+		$parentcheck = isset($_REQUEST['pageid']) ? "ParentID = {$_REQUEST['pageid']}" : "ParentID > 0";
 		$comments = DataObject::get("PageComment", "$parentcheck AND IsSpam=0", "Created DESC", "", 10);
 		if(!isset($comments)) {
 			$comments = new DataObjectSet();

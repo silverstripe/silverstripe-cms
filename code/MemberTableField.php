@@ -1,10 +1,4 @@
 <?php
-
-/**
- * @package cms
- * @subpackage security
- */
-
 /**
  * Enhances {ComplexTableField} with the ability to list groups and given members.
  * It is based around groups, so it deletes Members from a Group rather than from the entire system.
@@ -17,25 +11,16 @@
  * - members of a provided group
  * - all members
  * - members based on a search-query
- * @package cms
- * @subpackage security
  */
 class MemberTableField extends ComplexTableField {
-	
 	protected $members;
-	
 	protected $hidePassword;
-	
 	protected $pageSize;
-	
 	protected $detailFormValidator;
-	
 	protected $group;
 
 	protected $template = "MemberTableField";
 
-	public $popupClass = 'MemberTableField_Popup';
-	
 	static $data_class = "Member";
 
 	protected $permissions = array(
@@ -78,9 +63,9 @@ class MemberTableField extends ComplexTableField {
 			array_push( $this->permissions, $permission );
 
 		$fieldList = array(
-			"FirstName" => _t('MemberTableField.FIRSTNAME', 'Firstname'),
-			"Surname" => _t('MemberTableField.SURNAME', 'Surname'),
-			"Email" => _t('MemberTableField.EMAIL', 'Email')
+			"FirstName" => "Firstname",
+			"Surname" => "Surname",
+			"Email" => "Email"
 		);
 
 		$csvFieldList = $fieldList;
@@ -93,10 +78,8 @@ class MemberTableField extends ComplexTableField {
 		}
 
 		if(!$hidePassword) {
-			$fieldList["SetPassword"] = "Password"; 
+			$fieldList["Password"] = "Password";
 		}
-		
-//              $detailFormFields = singleton(Object::getCustomClass($this->stat("data_class")))->getCMSFields(); 		
 		
 		if(isset($_REQUEST['ctf']['childID']) && $memberID = $_REQUEST['ctf']['childID']) {
 			$SNG_member = DataObject::get_by_id($this->stat("data_class"),$_REQUEST['ctf']['childID']); 
@@ -115,23 +98,23 @@ class MemberTableField extends ComplexTableField {
 
 		$this->hidePassword = $hidePassword;
 
-		parent::__construct($controller, $name, $sourceClass, $fieldList);
+		parent::__construct($controller, $name, $sourceClass, $fieldList, $detailFormFields);
 
-		Requirements::javascript('cms/javascript/MemberTableField.js');
+		Requirements::javascript("cms/javascript/MemberTableField.js");
 
 		// construct the filter and sort
 		if(isset($_REQUEST['MemberOrderByField'])) {
-			$this->sourceSort = '`' . Convert::raw2sql($_REQUEST['MemberOrderByField']) . '`' . Convert::raw2sql( $_REQUEST['MemberOrderByOrder'] );
+			$this->sourceSort = "`" . Convert::raw2sql($_REQUEST['MemberOrderByField']) . "`" . Convert::raw2sql( $_REQUEST['MemberOrderByOrder'] );
 		}
 
 		// search
 		$search = isset($_REQUEST['MemberSearch']) ? Convert::raw2sql($_REQUEST['MemberSearch']) : null;
 		if(!empty($_REQUEST['MemberSearch'])) {
 			//$this->sourceFilter[] = "( `Email` LIKE '%$search%' OR `FirstName` LIKE '%$search%' OR `Surname` LIKE '%$search%' )";
-			$sourceF = '( ';
+			$sourceF = "( ";
 			foreach( $fieldList as $k => $v )
-				$sourceF .= '`$k` LIKE '%$search%' OR ';
-			$this->sourceFilter[] = substr( $sourceF, 0, -3 ) . ')';
+				$sourceF .= "`$k` LIKE '%$search%' OR ";
+			$this->sourceFilter[] = substr( $sourceF, 0, -3 ) . ")";
 		}
 
 		// filter by groups
@@ -145,6 +128,7 @@ class MemberTableField extends ComplexTableField {
 		}
 
 		$this->sourceJoin = " INNER JOIN `Group_Members` ON `MemberID`=`Member`.`ID`";
+
 		$this->setFieldListCsv( $csvFieldList );
 	}
 
@@ -161,37 +145,78 @@ class MemberTableField extends ComplexTableField {
 		return "{$this->PopupBaseLink()}&methodName=add";
 	}
 
+	function DetailForm() {
+		$ID = Convert::raw2xml(isset($_REQUEST['ctf']['ID'])
+													   ? $_REQUEST['ctf']['ID']
+														 : '');
+		$childID = isset($_REQUEST['ctf']['childID']) ? Convert::raw2xml($_REQUEST['ctf']['childID']) : 0;
+		$childClass = Convert::raw2xml($_REQUEST['fieldName']);
+		$methodName = isset($_REQUEST['methodName']) ? $_REQUEST['methodName'] : '';
+
+		if($methodName == "add") {
+			$parentIdName = $this->getParentIdName($childClass,$this->getParentClass());
+			if(!$parentIdName) {
+				user_error("ComplexTableField::DetailForm() Dataobject does not seem to have an 'has-one'-relationship", E_USER_WARNING);
+				return;
+			}
+			$this->detailFormFields->push(new HiddenField('parentClass'," ",$this->getParentClass()));
+		}
+
+		// the ID field confuses the Controller-logic in finding the right view for ReferencedField
+		$this->detailFormFields->removeByName('ID');
+
+		$this->detailFormFields->push(new HiddenField("ctf[ID]"," ",$ID));
+		// add a namespaced ID instead thats "converted" by saveComplexTableField()
+		$this->detailFormFields->push(new HiddenField("ctf[childID]","",$childID));
+		$this->detailFormFields->push(new HiddenField("ClassName","",$this->sourceClass));
+		
+		$form = new MemberTableField_Popup($this, "DetailForm", $this->detailFormFields, $this->sourceClass, $methodName == "show", $this->detailFormValidator);
+
+		if (is_numeric($childID)) {
+			if ($methodName == "show" || $methodName == "edit") {
+				$childData = DataObject::get_by_id($this->sourceClass, $childID);
+				$form->loadDataFrom($childData);
+			}
+		}
+
+		if ($methodName == "show") {
+			$form->makeReadonly();
+		}
+
+		return $form;
+	}
+
 	function SearchForm() {
 		$searchFields = new FieldGroup(
-			new TextField('MemberSearch', _t('MemberTableField.SEARCH', 'Search')),
+			new TextField('MemberSearch', 'Search'),
 			new HiddenField("ctf[ID]",'',$this->group->ID),
 			new HiddenField('MemberFieldName','',$this->name),
 			new HiddenField('MemberDontShowPassword','',$this->hidePassword)
 		);
 
 		$orderByFields = new FieldGroup(
-			new LabelField(_t('MemberTableField.ORDERBY', 'Order by')),
+			new LabelField('Order by'),
 			new FieldSet(
 				new DropdownField('MemberOrderByField','', array(
-				'FirstName' => _t('MemberTableField.FIRSTNAME', 'FirstName'),
-				'Surname' => _t('MemberTableField.SURNAME', 'Surname'),
-				'Email' => _t('MemberTableField.EMAIL', 'Email')
+				'FirstName' => 'FirstName',
+				'Surname' => 'Surname',
+				'Email' => 'Email'
 				)),
 				new DropdownField('MemberOrderByOrder','',array(
-					'ASC' => _t('MemberTableField.ASC', 'Ascending'),
-					'DESC' => _t('MemberTableField.DESC', 'Descending')
+					'ASC' => 'Ascending',
+					'DESC' => 'Descending'
 				))
 			)
 		);
 
 		$groups = DataObject::get('Group');
-		$groupArray = array('' => _t('MemberTableField.ANYGROUP', 'Any group'));
+		$groupArray = array('' => 'Any group');
 		foreach( $groups as $group ) {
 			$groupArray[$group->ID] = $group->Title;
 		}
-		$groupFields = new DropdownField('MemberGroup', _t('MemberTableField.FILTERBYGROUP', 'Filter by group'),$groupArray );
+		$groupFields = new DropdownField('MemberGroup','Filter by group',$groupArray );
 
-		$actionFields = new LiteralField('MemberFilterButton','<input type="submit" class="action" name="MemberFilterButton" value="'._t('MemberTableField.FILTER', 'Filter').'" id="MemberFilterButton"/>');
+		$actionFields = new LiteralField('MemberFilterButton','<input type="submit" class="action" name="MemberFilterButton" value="Filter" id="MemberFilterButton"/>');
 
 		$fieldContainer = new FieldGroup(
 				$searchFields,
@@ -212,7 +237,7 @@ class MemberTableField extends ComplexTableField {
 		unset($data['ID']);
 
 		if(!is_numeric($data['ctf']['ID'])) {
-		  FormResponse::status_messsage(_t('MemberTableField.ADDINGFIELD', 'Adding failed'), 'bad');
+			FormResponse::status_messsage('Adding failed', 'bad');
 		}
 
 		$className = $this->stat('data_class');
@@ -240,8 +265,8 @@ class MemberTableField extends ComplexTableField {
 	 * Remove member from group rather than from the database
 	 */
 	function delete() {
-		$groupID = Convert::raw2sql($_REQUEST['ctf']['ID']);
-		$memberID = Convert::raw2sql($_REQUEST['ctf']['childID']);
+		$groupID = Convert::raw2sql($_REQUEST["ctf"]["ID"]);
+		$memberID = Convert::raw2sql($_REQUEST["ctf"]["childID"]);
 		if(is_numeric($groupID) && is_numeric($memberID)) {
 			$member = DataObject::get_by_id('Member', $memberID);
 			$member->Groups()->remove($groupID);
@@ -261,11 +286,11 @@ class MemberTableField extends ComplexTableField {
 	 * #################################
 	 */
 	function getParentClass() {
-		return 'Group';
+		return "Group";
 	}
 
 	function getParentIdName($childClass,$parentClass){
-		return 'GroupID';
+		return "GroupID";
 	}
 
 
@@ -277,7 +302,7 @@ class MemberTableField extends ComplexTableField {
 	function memberListWithGroupID($members, $group) {
 		$newMembers = new DataObjectSet();
 		foreach($members as $member) {
-			$newMembers->push($member->customise(array('GroupID' => $group->ID)));
+			$newMembers->push($member->customise(array("GroupID" => $group->ID)));
 		}
 		return $newMembers;
 	}
@@ -301,12 +326,12 @@ class MemberTableField extends ComplexTableField {
 		foreach($this->FieldList() as $fieldName=>$fieldTitle) {
 			$fields->push(new TextField($fieldName));
 		}
-		$fields->push(new HiddenField('ctf[ID]', null, $this->group->ID));
+		$fields->push(new HiddenField("ctf[ID]", null, $this->group->ID));
 
 		return new TabularStyle(new Form($this->controller,'AddRecordForm',
 			$fields,
 			new FieldSet(
-				new FormAction('addtogroup', _t('MemberTableField.ADD','Add'))
+				new FormAction("addtogroup", _t('MemberTableField.ADD','Add'))
 			)
 		));
 	}
@@ -323,7 +348,7 @@ class MemberTableField extends ComplexTableField {
 		}
 
 		// Setup limits
-		$limitClause = '';
+		$limitClause = "";
 		if(isset($_REQUEST['ctf'][$this->Name()]['start']) && is_numeric($_REQUEST['ctf'][$this->Name()]['start'])) {
 			$limitClause = ($_REQUEST['ctf'][$this->Name()]['start']) . ", {$this->pageSize}";
 		} else {
@@ -339,7 +364,7 @@ class MemberTableField extends ComplexTableField {
 	        $this->sourceFilter,
 	        $this->sourceSort
         );
-		$this->unpagedSourceItems = $this->group->Members( '', '', $this->sourceFilter, $this->sourceSort );
+		$this->unpagedSourceItems = $this->group->Members( "", "", $this->sourceFilter, $this->sourceSort );
 		$this->totalCount = ($this->sourceItems) ? $this->sourceItems->TotalItems() : 0;
 		return $this->sourceItems;
 	}
@@ -350,40 +375,38 @@ class MemberTableField extends ComplexTableField {
 	}
 }
 
-/**
- * Popup window for {@link MemberTableField}.
- * @package cms
- * @subpackage security
- */
+
+
+
+
 class MemberTableField_Popup extends ComplexTableField_Popup {
-	
 	function __construct($controller, $name, $fields, $sourceClass, $readonly=false, $validator = null) {
+
+		// DO NOT CHANGE THE ORDER OF THESE JS FILES. THESE ARE ONLY REQUIRED FOR THIS INSTANCE !!!11onetwo
+
 		parent::__construct($controller, $name, $fields, $sourceClass, $readonly, $validator);
 
-		Requirements::javascript('cms/javascript/MemberTableField.js');
-		Requirements::javascript('cms/javascript/MemberTableField_popup.js');
+		Requirements::javascript("cms/javascript/MemberTableField.js");
+		Requirements::javascript("cms/javascript/MemberTableField_popup.js");
 	}
 
 
 	function saveComplexTableField() {
-		$id = (isset($_REQUEST['ctf']['childID'])) ? Convert::raw2sql($_REQUEST['ctf']['childID']) : false;
+		$id = Convert::raw2sql($_REQUEST['ctf']['childID']);
 
 		if (is_numeric($id)) {
 			$childObject = DataObject::get_by_id($this->sourceClass, $id);
 		} else {
 			$childObject = new $this->sourceClass();
-			$this->fields->removeByName('ID');
 		}
-
 		$this->saveInto($childObject);
 		$childObject->write();
 
-		// add member to current group
-		$childObject->Groups()->add($_REQUEST['GroupID']);
+		$childObject->Groups()->add($_REQUEST['ctf']['ID']);
 
 		// if ajax-call in an iframe, close window by javascript, else redirect to referrer
 		if(!Director::is_ajax()) {
-			Director::redirect(substr($_SERVER['REQUEST_URI'],0,strpos($_SERVER['REQUEST_URI'],'?')));
+			Director::redirect(substr($_SERVER['REQUEST_URI'],0,strpos($_SERVER['REQUEST_URI'],"?")));
 		}
 	}
 

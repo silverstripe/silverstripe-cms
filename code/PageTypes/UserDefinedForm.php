@@ -1,15 +1,5 @@
 <?php
 
-/**
- * @package cms
- * @subpackage pagetypes
- */
-
-/**
- * Page type that lets users build a contact form.
- * @package cms
- * @subpackage pagetypes
- */
 class UserDefinedForm extends Page {
 	static $add_action = "a contact form";
 
@@ -43,9 +33,9 @@ class UserDefinedForm extends Page {
 	function getCMSFields($cms) {
 		$fields = parent::getCMSFields($cms);
 
-		$fields->addFieldToTab("Root."._t('UserDefinedForm.FORM', 'Form'), new FieldEditor("Fields", 'Fields', "", $this ));
-		$fields->addFieldToTab("Root."._t('UserDefinedForm.SUBMISSIONS','Submissions'), new SubmittedFormReportField( "Reports", _t('UserDefinedForm.RECEIVED', 'Received Submissions'), "", $this ) );
-		$fields->addFieldToTab("Root.Content."._t('UserDefinedForm.ONCOMPLETE','On complete'), new HtmlEditorField( "OnCompleteMessage", _t('UserDefinedForm.ONCOMPLETELABEL', 'Show on completion'),3,"",_t('UserDefinedForm.ONCOMPLETEMESSAGE', $this->OnCompleteMessage), $this ) );
+		$fields->addFieldToTab("Root.Form", new FieldEditor("Fields", "Fields", "", $this ));
+		$fields->addFieldToTab("Root.Submissions", new SubmittedFormReportField( "Reports", "Received Submissions", "", $this ) );
+		$fields->addFieldToTab("Root.Content.On complete", new HtmlEditorField( "OnCompleteMessage", "Show on completion",3,"",$this->OnCompleteMessage, $this ) );
 		
 		return $fields;
 	}
@@ -61,7 +51,7 @@ class UserDefinedForm extends Page {
 		
 		// Build actions
 		$actions = new FieldSet( 
-			new FormAction( "filter", _t('UserDefinedForm.SUBMIT', 'Submit') )
+			new FormAction( "filter", "Submit" )
 		);
 		
 		// set the name of the form
@@ -116,12 +106,12 @@ class UserDefinedForm extends Page {
 		$submittedValues = DataObject::get( 'SubmittedFormField', implode( ' AND ', $filterClause ), "", "INNER JOIN `SubmittedForm` ON `SubmittedFormField`.`ParentID`=`SubmittedForm`.`ID`" );
 	
 		if( !$submittedValues || $submittedValues->Count() == 0 )
-		        return _t('UserDefinedForm.NORESULTS', 'No matching results found');
+			return "No matching results found";
 			
 		$submissions = $submittedValues->groupWithParents( 'ParentID', 'SubmittedForm' );
 		
 		if( !$submissions || $submissions->Count() == 0 )
-		        return _t('UserDefinedForm.NORESULTS', 'No matching results found');
+			return "No matching results found";
 		
 		return $submissions->customise( 
 			array( 'Submissions' => $submissions )
@@ -141,7 +131,7 @@ class UserDefinedForm extends Page {
   }
   
   public function customFormActions( $isReadonly = false ) {
-          return new FieldSet( new TextField( "SubmitButtonText", _t('UserDefinedForm.TEXTONSUBMIT', 'Text on submit button:'), $this->SubmitButtonText ) );
+		return new FieldSet( new TextField( "SubmitButtonText", "Text on submit button:", $this->SubmitButtonText ) );
 	}
 
 	/**
@@ -159,11 +149,6 @@ class UserDefinedForm extends Page {
 	}
 }
 
-/**
- * Controller for the {@link UserDefinedForm} page type.
- * @package cms
- * @subpackage pagetypes
- */
 class UserDefinedForm_Controller extends Page_Controller {
 	
 	function init() {
@@ -188,13 +173,8 @@ class UserDefinedForm_Controller extends Page_Controller {
 				$required[] = $field->Name;
 		}
 		
-		if(!isset($_SERVER['HTTP_REFERER'])) {
-			$_SERVER['HTTP_REFERER'] = "";
-		}
+		$fields->push( new HiddenField( "Referrer", "", $_SERVER['HTTP_REFERER'] ) );
 		
-		$referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
-		$fields->push( new HiddenField( "Referrer", "", $referer ) );
-				
 		// Build actions
 		$actions = new FieldSet( 
 			new FormAction( "process", $this->SubmitButtonText )
@@ -233,7 +213,7 @@ class UserDefinedForm_Controller extends Page_Controller {
 			if( $field->hasMethod( 'getValueFromData' ) )
 				$submittedField->Value = $field->getValueFromData( $data );
 			else
-				if(isset($data[$field->Name])) $submittedField->Value = $data[$field->Name];
+				$submittedField->Value = $data[$field->Name];
 				
 			$submittedField->write();
 			$submittedFields->push($submittedField);
@@ -279,7 +259,7 @@ class UserDefinedForm_Controller extends Page_Controller {
 				$values[$field->Title] = Convert::linkIfMatch($field->getValueFromData( $data ));
 			
 			} else {
-				if(isset($data[$field->Name])) $values[$field->Title] = Convert::linkIfMatch($data[$field->Name]);
+				$values[$field->Title] = Convert::linkIfMatch($data[$field->Name]);
 			}
 			
 		}	
@@ -321,20 +301,14 @@ class UserDefinedForm_Controller extends Page_Controller {
 	}
 }
 
-/**
- * Email that gets sent when a submission is made.
- * @package cms
- * @subpackage pagetypes
- */
 class UserDefinedForm_SubmittedFormEmail extends Email_Template {
 	protected $ss_template = "SubmittedFormEmail";
 	protected $from = '$Sender.Email';
 	protected $to = '$Recipient.Email';
-	protected $subject = 'Submission of form';
+	protected $subject = "Submission of form";
 	protected $data;
 	
 	function __construct($values) {
-	        $this->subject = _t('UserDefinedForm_SubmittedFormEmail.EMAILSUBJECT', 'Submission of form');
 		parent::__construct();
 		
 		$this->data = $values;

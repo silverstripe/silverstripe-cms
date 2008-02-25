@@ -8,13 +8,18 @@ RightContent.prototype = {
 	welcomeMessage: "<h1>SilverStripe CMS</h1><p>Welcome to SilverStripe CMS! Please choose click on one of the items on the left pane.</p>",
 	
 	initialize : function() {
+		Behaviour.register({
+			'#Form_EditForm_action_delete' : {
+				onclick: this.remove.bind(this)
+			}
+		});
 	},
 	
 	updateCMSContent: function(el, currentTab, link, customCallBack) {
 		if(!customCallBack) customCallBack = function(){};
 		
 		if(el || link){
-			var reqLink = (el && el.href) ? el.href : link;
+			var reqLink = (el.href) ? el.href : link;
 			
 			if(typeof(currentTab) != 'undefined')
 				$('Form_EditForm').openTab = currentTab;
@@ -54,7 +59,7 @@ RightContent.prototype = {
 	remove: function(e) {
 		if(window.confirm('Are you sure you want to delete?')){
 			var el = Event.element(e);
-			Ajax.SubmitForm($('Form_EditForm'), el.name, {
+			Ajax.SubmitForm(el.ownerForm, el.name, {
 				postBody : 'ajax=1',
 				onSuccess: Ajax.Evaluator,
 				onFailure: ajaxErrorHandler
@@ -109,7 +114,3 @@ RightContent.prototype = {
 		}
 	}
 }
-
-var action_delete_right = function(e) { 
- 	$('Form_EditForm').remove(e); 
-}  

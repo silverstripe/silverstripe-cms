@@ -1,15 +1,5 @@
 <?php
 
-/**
- * @package cms
- * @subpackage security
- */
-
-/**
- * Form field showing a list of members.
- * @package cms
- * @subpackage security
- */
 class MemberList extends FormField {
 	protected $members;
 	protected $hidePassword;
@@ -251,16 +241,16 @@ class MemberList extends FormField {
 	
 	function OrderByField() {
 		$fields = new FieldGroup( new DropdownField('MemberListOrderByField','', array(
-			'FirstName' => _t('MemberList.FN', 'FirstName'),
-			'Surname' => _t('MemberList.SN', 'Surname'),
-			'Email' => _t('MemberList.EMAIL', 'Email')
+			'FirstName' => 'FirstName',
+			'Surname' => 'Surname',
+			'Email' => 'Email'
 		)),
 		new DropdownField('MemberListOrderByOrder','',array(
-		        'ASC' => _t('MemberList.ASC', 'Ascending'),
-			'DESC' => _t('MemberList.DESC', 'Descending')
+			'ASC' => 'Ascending',
+			'DESC' => 'Descending'
 		)));
 		
-		$field = new FieldGroup( new LabelField(_t('MemberList.ORDERBY', 'Order by')), $fields );
+		$field = new FieldGroup( new LabelField( 'Order by' ), $fields );
 		return $field->FieldHolder();
 	}
 	
@@ -268,7 +258,7 @@ class MemberList extends FormField {
 		
 		$groups = DataObject::get('Group');
 		
-		$groupArray = array( '' => _t('MemberList.ANYGROUP', 'Any group'));
+		$groupArray = array( '' => 'Any group' );
 		
 		foreach( $groups as $group )
 			$groupArray[$group->ID] = $group->Title;

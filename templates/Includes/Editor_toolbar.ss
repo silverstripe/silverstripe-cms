@@ -17,7 +17,7 @@
 	<% else_if Type = dropdown %>
 	<select name="$Command" class="mceSelectList" id="mce_editor_$IDSegment">$Options</select>
 	<% else_if Type = separator %>
-	<img width="1" height="15" class="mceSeparatorLine" src="jsparty/tiny_mce2/themes/advanced/images/spacer.gif" alt="|" />
+	<img width="1" height="15" class="mceSeparatorLine" src="{$MceRoot}themes/advanced/images/spacer.gif" alt="|" />
 	<% else_if Type = break %>
 	<br />
 	<% end_if %>

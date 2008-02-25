@@ -1,15 +1,5 @@
 <?php
 
-/**
- * @package cms
- * @subpackage comments
- */
-
-/**
- * Special kind of ComplexTableField for managing comments.
- * @package cms
- * @subpackage comments
- */
 class CommentTableField extends ComplexTableField {
 	protected $template = "CommentTableField";
 	protected $mode;
@@ -143,12 +133,12 @@ class CommentTableField extends ComplexTableField {
 
 	function SearchForm() {
 		$searchFields = new FieldGroup(
-			new TextField('CommentSearch', _t('CommentTableField.SEARCH', 'Search')),
+			new TextField('CommentSearch', 'Search'),
 			new HiddenField("ctf[ID]",'',$this->mode),
 			new HiddenField('CommentFieldName','',$this->name)
 		);
 		
-		$actionFields = new LiteralField('CommentFilterButton','<input type="submit" name="CommentFilterButton" value="'. _t('CommentTableField.FILTER', 'Filter') .'" id="CommentFilterButton"/>');
+		$actionFields = new LiteralField('CommentFilterButton','<input type="submit" class="action" name="CommentFilterButton" value="Filter" id="CommentFilterButton"/>');
 		
 		$fieldContainer = new FieldGroup(
 			$searchFields,
@@ -159,11 +149,7 @@ class CommentTableField extends ComplexTableField {
 	}
 }
 
-/**
- * Single row of a {@link CommentTableField}
- * @package cms
- * @subpackage comments
- */
+
 class CommentTableField_Item extends ComplexTableField_Item {
 	function HasSpamButton() {
 		return $this->parent()->HasSpamButton();

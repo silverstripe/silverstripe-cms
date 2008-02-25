@@ -22,7 +22,7 @@
 	&nbsp;
 	</div>
 	<h2><% _t('SEARCHRESULTS','Search Results') %></h2>
-	<div id="ResultTable_holder" class="leftbottom">
+	<div id="ResultTable_holder" class="leftbottom" style="overflow:auto">
 		$Results
 	</div>
 </div>

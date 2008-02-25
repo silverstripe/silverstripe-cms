@@ -371,11 +371,7 @@ TreeContextMenu = {
 	'Edit this page' : function(treeNode) {
 		treeNode.selectTreeNode();
 	},
-	'Duplicate page and children' : function(treeNode) {
-		// First save the page silently (without confirmation) and then duplicate the page.
-		autoSave(false, treeNode.duplicatePageWithChildren.bind(treeNode)); 
-	},
-	'Duplicate just this page' : function(treeNode) {
+	'Duplicate this page' : function(treeNode) {
 		// First save the page silently (without confirmation) and then duplicate the page.
 		autoSave(false, treeNode.duplicatePage.bind(treeNode)); 
 	},
