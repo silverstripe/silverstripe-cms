@@ -1,4 +1,15 @@
 <?php
+
+/**
+ * @package cms
+ * @subpackage newsletter
+ */
+
+/**
+ * Batch process for sending newsletters.
+ * @package cms
+ * @subpackage newsletter
+ */
 class NewsletterEmailProcess extends BatchProcess {
 	
 	protected $subject;
@@ -11,7 +22,7 @@ class NewsletterEmailProcess extends BatchProcess {
 	/** 
 	 * Set up a Newsletter Email Process
 	 *
-	 * @recipients A DataObject containing the addresses of the recipients of this newsletter
+	 * @param $recipients DataObjectSet The recipients of this newsletter
 	 */
 	function __construct( $subject, $body, $from, $newsletter, $nlType, $messageID = null, $recipients) {
 		
@@ -46,32 +57,35 @@ class NewsletterEmailProcess extends BatchProcess {
 	    		/**
 	    		 * Email Blacklisting Support
 	    		 */
-	    		if($member->BlacklistedEmail && Email_BlackList::isBlocked($address)){
-		    		 $bounceRecord = new Email_BounceRecord();
-		    		 $bounceRecord->BounceEmail = $member->Email;
-		    		 $bounceRecord->BounceTime = date("Y-m-d H:i:s",time());
-		    		 $bounceRecord->BounceMessage = "BlackListed Email";
-		    		 $bounceRecord->MemberID = $member->ID;
-		    		 $bounceRecord->write();
+				if($member->BlacklistedEmail && Email_BlackList::isBlocked($address)){
+					$bounceRecord = new Email_BounceRecord();
+					$bounceRecord->BounceEmail = $member->Email;
+					$bounceRecord->BounceTime = date("Y-m-d H:i:s",time());
+					$bounceRecord->BounceMessage = "BlackListed Email";
+					$bounceRecord->MemberID = $member->ID;
+					$bounceRecord->write();
 
-				// Log the blacklist for this specific Newsletter
-				$newsletter = new Newsletter_SentRecipient();
-				$newsletter->Email = $address;
-				$newsletter->MemberID = $member->ID;
-				$newsletter->Result = 'BlackListed';
-				$newsletter->ParentID = $this->newsletter->ID;
-				$newsletter->write();
-		    	} else {		
-				$e = new Newsletter_Email($this->nlType);
+					// Log the blacklist for this specific Newsletter
+					$newsletter = new Newsletter_SentRecipient();
+					$newsletter->Email = $address;
+					$newsletter->MemberID = $member->ID;
+					$newsletter->Result = 'BlackListed';
+					$newsletter->ParentID = $this->newsletter->ID;
+					$newsletter->write();
+
+				} else {		
+					$e = new Newsletter_Email($this->nlType);
 					$e->setBody( $this->body );
 					$e->setSubject( $this->subject );
 					$e->setFrom( $this->from );
 					$e->setTemplate( $this->nlType->Template );
 		
+					if(method_exists($member, "getNameForEmail"))
+						$nameForEmail = $member->getNameForEmail();
 			
-				$e->populateTemplate( array( 'Member' => $member, 'FirstName' => $member->FirstName ) );
-				$this->sendToAddress( $e, $address, $this->messageID, $member);
-			}
+					$e->populateTemplate( array( 'Member' => $member, 'FirstName' => $member->FirstName, 'NameForEmail'=>$nameForEmail ) );
+					$this->sendToAddress( $e, $address, $this->messageID, $member);
+				}
 	        }
     	}
     

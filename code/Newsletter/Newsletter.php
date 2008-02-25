@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * @package cms
+ * @subpackage newsletter
+ */
+
+/**
+ * Single newsletter instance.  Each Newsletter belongs to a NewsletterType.
+ * @package cms
+ * @subpackage newsletter
+ */
 class Newsletter extends DataObject {
 	
 	/**
@@ -14,18 +24,18 @@ class Newsletter extends DataObject {
 		$sent_status_report = $this->renderWith("Newsletter_SentStatusReport");
 		$ret = new FieldSet(
 			new TabSet("Root",
-				$mailTab = new Tab("Newsletter",
-					new TextField("Subject", "Subject", $this->Subject),
-					new HtmlEditorField("Content", "Content")
+				$mailTab = new Tab(_t('Newsletter.NEWSLETTER', 'Newsletter'),
+					new TextField("Subject", _t('Newsletter.SUBJECT', 'Subject'), $this->Subject),
+					new HtmlEditorField("Content", _t('Newsletter.CONTENT', 'Content'))
 				),
-				$sentToTab = new Tab("Sent Status Report",
+				$sentToTab = new Tab(_t('Newsletter.SENTREPORT', 'Sent Status Report'),
 					new LiteralField("Sent Status Report", $sent_status_report)
 				)
 			)
 		);
 		
 		if( $this->Status != 'Draft' ) {
-			$mailTab->push( new ReadonlyField("SendDate", "Sent at", $this->SendDate) );
+		        $mailTab->push( new ReadonlyField("SendDate", _t('Newsletter.SENTAT', 'Sent at'), $this->SendDate) );
 		} 
 		
 		
@@ -118,6 +128,11 @@ class Newsletter extends DataObject {
   }
 }
 
+/**
+ * Database record for recipients that have had the newsletter sent to them.
+ * @package cms
+ * @subpackage newsletter
+ */ 
 class Newsletter_SentRecipient extends DataObject {
 	/**
 	 * The DB schema for Newsletter_SentRecipient.
@@ -136,6 +151,12 @@ class Newsletter_SentRecipient extends DataObject {
 		"Member" => "Member",
 	);
 }
+
+/**
+ * Single recipient of the newsletter
+ * @package cms
+ * @subpackage newsletter
+ */
 class Newsletter_Recipient extends DataObject {
 	static $db = array(
 		"ParentID" => "Int",
@@ -145,6 +166,11 @@ class Newsletter_Recipient extends DataObject {
 	);
 }
 
+/**
+ * Email object for sending newsletters.
+ * @package cms
+ * @subpackage newsletter
+ */
 class Newsletter_Email extends Email_Template {
 	protected $nlType;
 	

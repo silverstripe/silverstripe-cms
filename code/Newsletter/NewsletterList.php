@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * @package cms
+ * @subpackage newsletter
+ */
+
+/**
+ * Simple form field shown when the NewsletterAdmin first loads.
+ * @package cms
+ * @subpackage newsletter
+ */
 class NewsletterList extends FormField {
 	function __construct($name, $mailtype, $status = "Draft") {
 		if(is_object($mailtype)) $this->mailType = $mailtype;

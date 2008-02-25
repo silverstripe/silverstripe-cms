@@ -27,7 +27,7 @@ if((typeof tinyMCE != 'undefined')) {
 		theme_advanced_toolbar_location : "manually_placed",
 		theme_advanced_toolbar_align : "left",
 		theme_advanced_toolbar_parent : "right",
-		plugins : "contextmenu,table,emotions,flash",	
+		plugins : "contextmenu,table,emotions,flash,paste",	
 		table_inline_editing : true,
 		theme_advanced_buttons1 : "italic,underline,strikethrough,separator,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,separator,bullist,numlist,outdent,indent,hr,charmap",
 		theme_advanced_buttons2 : "undo,redo,separator,cut,copy,paste,separator,search,replace,separator,flash",

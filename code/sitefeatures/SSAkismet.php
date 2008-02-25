@@ -1,4 +1,14 @@
 <?php
+
+/**
+ * @package cms
+ * @subpackage comments
+ */
+
+/**
+ * @package cms
+ * @subpackage comments
+ */
 class SSAkismet extends Akismet {
 	private static $apiKey;
 	private static $saveSpam = true;

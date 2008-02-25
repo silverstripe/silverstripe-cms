@@ -1,17 +1,17 @@
 <% if Entries %>
-<p><b>Instructions:</b></p>
+<p><b><% _t('INSTRUCTIONS', 'Instructions:') %></b></p>
 <ul>
-	<li>Uncheck the box to enable sending to a blacklisted email address.</li>
-	<li>To remove a recipients's email address from your mailing list, click the <img src="cms/images/delete.gif" alt="delete" /> icon.</li>
+	<li><% _t('INSTRUCTIONS1', 'Uncheck the box to enable sending to a blacklisted email address.') %></li>
+	<li><% _t('INSTRUCTIONS2', 'To remove a recipients\'s email address from your mailing list, click the icon') %> <img src="cms/images/delete.gif" alt="delete" /></li>
 </ul>
 <table id="BouncedListTable" class="CMSList BouncedList" summary="<% _t('HAVEBOUNCED','Emails that have bounced') %>">
   <thead>
     <tr>
-	<th width="18">Blacklisted</th>
+	<th width="18"><% _t('BLACKLISTED', 'Blacklisted') %></th>
 	<th><% _t('UNAME','User name') %></th>
 	<th><% _t('EMADD','Email address') %></th>
-	<th>Reason:</th>
-	<th>Date</th>
+	<th><% _t('RESON', 'Reason:') %></th>
+	<th><% _t('DATE', 'Date') %></th>
 	<th width="18">&nbsp;</th>
     </tr>
   </thead>

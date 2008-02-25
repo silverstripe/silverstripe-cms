@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * @package cms
+ * @subpackage assets
+ */
+
+/**
+ * A FormField showing a list of files
+ * @package cms
+ * @subpackage assets
+ */
 class FileList extends TableListField {
 	// bdc: added sort by Title as default behaviour
 	protected $folder;

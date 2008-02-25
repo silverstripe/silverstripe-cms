@@ -1,8 +1,29 @@
 <?php
 
+/**
+ * @package cms
+ * @subpackage security
+ */
+
+/**
+ * Security section of the CMS
+ * @package cms
+ * @subpackage security
+ */
 class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	static $tree_class = "Group";
 	static $subitem_class = "Member";
+	
+	static $allowed_actions = array(
+		'addgroup',
+		'addmember',
+		'autocomplete',
+		'getmember',
+		'listmembers',
+		'newmember',
+		'removememberfromgroup',
+		'savemember',
+	);
 
 	public function init() {
 		// Check permissions
@@ -34,24 +55,32 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		if($record) {
 			$fields = new FieldSet(
 				new TabSet("Root",
-					new Tab("Members",
-						new TextField("Title", "Group name"),
+					new Tab(_t('SecurityAdmin.MEMBERS', 'Members'),
+						new TextField("Title", _t('SecurityAdmin.GROUPNAME', 'Group name')),
 						$memberList = new MemberTableField(
 							$this,
 							"Members",
-							$record
+							$record,
+							null,
+							false
 						)
 					),
 
-					new Tab("Permissions",
+					new Tab(_t('SecurityAdmin.PERMISSIONS', 'Permissions'),
 						new LiteralField("", "<p>"._t('SecurityAdmin.ADVANCEDONLY',"This section is for advanced users only.
 							See <a href=\"http://doc.silverstripe.com/doku.php?id=permissions:codes\" target=\"_blank\">this page</a>
 							for more information.")."</p>"),
 						new TableField(
 							"Permissions",
 							"Permission",
-							array("Code" => "Code", "Arg" => "Optional ID"),
-							array("Code" => "PermissionDropdownField", "Arg" => "TextField"),
+							array(
+							        "Code" => _t('SecurityAdmin.CODE', 'Code'),
+							        "Arg" => _t('SecurityAdmin.OPTIONALID', 'Optional ID'),
+							),
+							array(
+								"Code" => "PermissionDropdownField",
+								"Arg" => "TextField",
+							),
 							"GroupID", $id
 						)
 					)
@@ -62,11 +91,13 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			
 			$memberList->setController($this);
 			$memberList->setPermissions(array('show', 'edit', 'delete', 'export', 'add'));
-
+			$memberList->setParentClass('Group');
+			$memberList->setPopupCaption(_t('SecurityAdmin.VIEWUSER', 'View User'));
+			
 			$fields->push($idField = new HiddenField("ID"));
 			$idField->setValue($id);
 			$actions = new FieldSet(
-				new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member'))
+				//new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member'))
 			);
 
 			$actions->push(new FormAction('save',_t('SecurityAdmin.SAVE','Save')));
@@ -93,6 +124,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	public function autocomplete() {
 		$fieldName = $this->urlParams['ID'];
 		$fieldVal = $_REQUEST[$fieldName];
+		$result = '';
 
 		$matches = DataObject::get("Member","$fieldName LIKE '" . addslashes($fieldVal) . "%'");
 		if($matches) {
@@ -335,7 +367,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	
 	function providePermissions() {
 		return array(
-			'EDIT_PERMISSIONS' => 'Edit Permissions on each Group',
+			'EDIT_PERMISSIONS' => _t('SecurityAdmin.EDITPERMISSIONS', 'Edit Permissions on each Group'),
 		);
 	}
 }

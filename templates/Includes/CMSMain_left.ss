@@ -34,12 +34,6 @@
 				<div>
 				<input class="action" type="submit" value="<% _t('GO','Go') %>" />
 				</div>
-				<div class="field dropdown nolabel" style="margin-top: 4px;">
-					<span class="middleColumn">
-						<input type="checkbox" id="sortitems" /> <label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
-					</span>
-				</div>
-				
 			</form>
 			<% end_control %>
 			<form class="actionparams" style="display: none" id="search_options" action="admin/filterSiteTree">
@@ -87,7 +81,9 @@
 				</div>
 			</form>
 			<% end_control %>
-
+			<div id="SortItems">
+					<input type="checkbox" id="sortitems" /> <label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
+			</div>
 			<div id="sitetree_ul">
 				$SiteTreeAsUL
 			</div>

@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * @package cms
+ * @subpackage reports
+ */
+
+/**
+ * Statistics section of the CMS
+ * @package cms
+ * @subpackage reports
+ */
 class StatisticsAdmin extends LeftAndMain {
 	static $tree_class = "SiteTree";
 	static $subitem_class = "Member";
@@ -74,7 +84,7 @@ class StatisticsAdmin extends LeftAndMain {
 	 */
 	public function EditForm() {
 		return "<div class=\"tab statstab\" id=\"bovs\">\n
-		<h1>Select a report type from the left for a detailed look at site statistics</h1>\n\n" .
+		<h1>"._t('StatisticsAdmin.WELCOME','Select a report type from the left for a detailed look at site statistics')."</h1>\n\n" .
 		$this->RecentViews() .
 		"\n\n</div>\n\n" .
 		$this->showAll();

@@ -1,11 +1,12 @@
 <?php
 /**
  * URL rules for the CMS module
+ * @package cms
  */
 Director::addRules(50, array(
 	'processes/$Action/$ID/$Batch' => 'BatchProcess_Controller',
-	'silverstripe/' => '->admin/',
-	'cms/' => '->admin/',
+	'silverstripe' => '->admin',
+	'cms' => '->admin',
 	'admin/statistics/$Action/$ID' => 'StatisticsAdmin',
 	'admin/security/$Action/$ID/$OtherID' => 'SecurityAdmin',
 	'admin/help/$Action/$ID' => 'CMSHelp',
@@ -17,8 +18,7 @@ Director::addRules(50, array(
 	'admin/bulkload/$Action/$ID/$OtherID' => 'BulkLoaderAdmin',
 	'admin/ImageEditor/$Action' => 'ImageEditor',
 	'admin/$Action/$ID/$OtherID' => 'CMSMain',
-	'unsubscribe/$Email/$MailingList' => 'Unsubscribe_Controller',
-	'membercontrolpanel/$Email' => 'MemberControlPanel'	
+	'unsubscribe/$Email/$MailingList' => 'Unsubscribe_Controller'
 ));
 
 ?>

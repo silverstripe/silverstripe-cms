@@ -1,8 +1,15 @@
 <?php
 /**
+ * @package cms
+ * @subpackage content
+ */
+
+/**
  * The main "content" area of the CMS.
  * This class creates a 2-frame layout - left-tree and right-form - to sit beneath the main
  * admin menu.
+ * @package cms
+ * @subpackage content
  * @todo Create some base classes to contain the generic functionality that will be replicated.
  */
 class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionProvider {
@@ -10,6 +17,36 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	static $tree_class = "SiteTree";
 	
 	static $subitem_class = "Member";
+	
+	static $allowed_actions = array(
+		'addmember',
+		'addpage',
+		'buildbrokenlinks',
+		'canceldraftchangesdialog',
+		'compareversions',
+		'createtranslation',
+		'delete',
+		'deletefromlive',
+		'deleteitems',
+		'dialog',
+		'duplicate',
+		'duplicatewithchildren',
+		'getpagecount',
+		'getpagemembers',
+		'getversion',
+		'publishall',
+		'publishitems',
+		'restorepage',
+		'revert',
+		'rollback',
+		'sidereport',
+		'submit',
+		'switchlanguage',
+		'tasklist',
+		'unpublish',
+		'versions',
+		'waitingon',		
+	);
 	
 	/**
 	 * SiteTree Columns that can be filtered using the the Site Tree Search button
@@ -235,7 +272,7 @@ JS;
 		$classes = ClassInfo::getValidSubClasses();
 		array_shift($classes);
 		$result = new DataObjectSet();
-		$kill_ancestors[] = null;
+		$kill_ancestors = array();
 
 		// figure out if there are any classes we don't want to appear
 		foreach($classes as $class) {
@@ -252,7 +289,8 @@ JS;
         if ($kill_ancestors) {
             foreach ($kill_ancestors as $mark) {
     		    // unset from $classes
-			    unset($classes[$mark]);
+			    $idx = array_search($mark, $classes);
+			    unset($classes[$idx]);
             }
         }
 
@@ -265,20 +303,26 @@ JS;
 			// skip this type if it is restricted
 			if($instance->stat('need_permission') && !$this->can( singleton($class)->stat('need_permission') ) ) continue;
 
+			/*
+			 * Since i18n_singular_name() this is not necessary
 			$addAction = $instance->uninherited('add_action', true);
 			if($addAction) {
 				// backwards compatibility for actions like "a page" (instead of "page")
 				$addAction = preg_replace('/^a /','',$addAction);				
 				$addAction = ucfirst($addAction);
 			} else {
-				$addAction = $class;
+				$addAction = $instance->i18n_singular_name();
 			}
+			*/
+			$addAction = $instance->i18n_singular_name();
 
 			$result->push(new ArrayData(array(
 				"ClassName" => $class,
 				"AddAction" => $addAction,
 			)));
 		}
+		$result->sort('AddAction');
+		
 		return $result;
 	}
 
@@ -427,7 +471,9 @@ JS;
 		$newItem->ClassName = $className;
 		$newItem->ParentID = $parentID;
 
-		if($newItem->fieldExists('Sort')) {
+		// DataObject::fieldExists only checks the current class, not the hierarchy
+		// This allows the CMS to set the correct sort value
+		if($newItem->castingHelperPair('Sort')) {
 			$newItem->Sort = DB::query("SELECT MAX(Sort)  FROM SiteTree WHERE ParentID = '" . Convert::raw2sql($parentID) . "'")->value() + 1;
 		}
 
@@ -436,6 +482,9 @@ JS;
 
 		if($setID) $newItem->ID = $id;
 
+		# Some modules like subsites add extra fields that need to be set when the new item is created
+		$this->extend('augmentNewSiteTreeItem', $newItem);
+		
 		return $newItem;
 	}
 
@@ -470,13 +519,13 @@ JS;
 
 		if(isset($descendantsRemoved)) {
 			$descRemoved = " and $descendantsRemoved descendants";
+			$descRemoved = sprintf(' '._t('CMSMain.DESCREMOVED', 'and %s descendants'), $descendantsRemoved);
 		} else {
 			$descRemoved = '';
 		}
 
-		$title = Convert::raw2js($record->Title);
 		FormResponse::add($this->deleteTreeNodeJS($record));
-		FormResponse::status_message("Deleted '$title'$descRemoved from live site", 'good');
+		FormResponse::status_message(sprintf(_t('CMSMain.REMOVED', 'Deleted \'%s\'%s from live site'), $record->Title, $descRemoved), 'good');
 
 		return FormResponse::respond();
 	}
@@ -491,7 +540,7 @@ JS;
 		//$record->PublishedByID = Member::currentUser()->ID;
 		$record->write();
 		$record->publish("Stage", "Live");
-
+		
 		GoogleSitemap::ping();
 
 		// Fix the sort order for this page's siblings
@@ -668,7 +717,7 @@ HTML;
 		foreach($reports as $report) {
 			if($report != 'SideReport') $options[$report] = singleton($report)->title();
 		}
-		return new DropdownField("ReportSelector","Report",$options);
+		return new DropdownField("ReportSelector", _t('CMSMain.REPORT', 'Report'),$options);
 	}
 	/**
 	 * Get the content for a side report
@@ -834,7 +883,7 @@ HTML;
 			$form->loadDataFrom($record);
 			$form->loadDataFrom(array(
 				"ID" => $id,
-				"Version" => $version,
+				"Version" => $fromVersion,
 			));
 			$form->makeReadonly();
 			foreach($form->Fields()->dataFields() as $field) {
@@ -1123,14 +1172,23 @@ HTML;
 		ini_set('max_execution_time', 300);
 
 		if(isset($_POST['confirm'])) {
-			$pages = DataObject::get("SiteTree");
+			$start = 0;
+			$pages = DataObject::get("SiteTree", "", "", "", "$start,30");
 			$count = 0;
-			foreach($pages as $page) {
-				$this->performPublish($page);
-				$page->destroy();
-				unset($page);
-				$count++;
-				echo "<li>$count";
+			while(true) {
+				foreach($pages as $page) {
+					$this->performPublish($page);
+					$page->destroy();
+					unset($page);
+					$count++;
+					echo "<li>$count</li>";
+				}
+				if($pages->Count() > 29) {
+					$start += 30;
+					$pages = DataObject::get("SiteTree", "", "", "", "$start,30");
+				} else {
+					break;
+				}
 			}
 
 			echo sprintf(_t('CMSMain.PUBPAGES',"Done: Published %d pages"), $count);
@@ -1167,6 +1225,24 @@ HTML;
 			$page = DataObject::get_by_id("SiteTree", $id);
 
 			$newPage = $page->duplicate();
+			
+			// ParentID can be hard-set in the URL.  This is useful for pages with multiple parents
+			if($_GET['parentID'] && is_numeric($_GET['parentID'])) {
+				$newPage->ParentID = $_GET['parentID'];
+				$newPage->write();
+			}
+
+			return $this->returnItemToUser($newPage);
+		} else {
+			user_error("CMSMain::duplicate() Bad ID: '$id'", E_USER_WARNING);
+		}
+	}
+
+	function duplicatewithchildren() {
+		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
+			$page = DataObject::get_by_id("SiteTree", $id);
+
+			$newPage = $page->duplicateWithChildren();
 
 			return $this->returnItemToUser($newPage);
 		} else {
@@ -1278,29 +1354,6 @@ JS
 		return $this->returnItemToUser($newrecord);
 	}
 
-	// HACK HACK HACK - Dont remove without telling simon ;-)
-
-	/**
-	 * This is only used by parents inc.
-	 * TODO Work out a better way of handling control to the individual page objects.
-	 */
-	function sethottip($data,$form) {
-		$page = DataObject::get_by_id("SiteTree", $_REQUEST['ID']);
-		return $page->sethottip($data,$form);
-	}
-	/**
-	 * This is only used by parents inc.
-	 * TODO Work out a better way of handling control to the individual page objects.
-	 */
-	function notifyInvitation($data,$form) {
-		$page = DataObject::get_by_id("SiteTree", $_REQUEST['ID']);
-		return $page->notifyInvitation($data,$form);
-	}
-	function testInvitation($data,$form) {
-		$page = DataObject::get_by_id("SiteTree", $_REQUEST['ID']);
-		return $page->testInvitation($data,$form);
-	}
-
 	/**
 	 * Provide the permission codes used by LeftAndMain.
 	 * Can't put it on LeftAndMain since that's an abstract base class.
@@ -1309,7 +1362,7 @@ JS
 		$classes = ClassInfo::subclassesFor('LeftAndMain');
 
 		foreach($classes as $class) {
-			$perms["CMS_ACCESS_" . $class] = "Access to $class in CMS";
+		        $perms["CMS_ACCESS_" . $class] = sprintf(_t('CMSMain.ACCESS', "Access to %s in CMS"), $class);
 		}
 		return $perms;
 	}

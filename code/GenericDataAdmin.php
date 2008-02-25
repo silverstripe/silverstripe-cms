@@ -1,14 +1,26 @@
 <?php
 
 /**
+ * @package cms
+ * @subpackage core
+ */
+
+/**
  * Provides a common interface for searching, viewing and editing DataObjects.
  * Extend the class to adjust functionality to your specific DataObjects.
  * 
- * @var $data_type DataObject The base class
- * @var $data_type_extra Array Additional DataObjects which are included in the search.
- * @var $resultColumnts Array Columnnames shown in the result-table.
+ * @package cms
+ * @subpackage core
  */
 abstract class GenericDataAdmin extends LeftAndMain {
+	static $allowed_actions = array(
+		'createRecord',
+		'delete',
+		'export',
+		'getResults',
+		'save',
+		'show',
+	);
 
 	public $filter;
 	
@@ -52,7 +64,7 @@ abstract class GenericDataAdmin extends LeftAndMain {
 
 	function __construct() {
 		$this->result_actions = new FieldSet(
-			new FormAction("export","Export as CSV")
+			new FormAction('export', _t('GenericDataAdmin.EXPORTCSV', 'Export as CSV'))
 		);
 		
 		parent::__construct();
@@ -116,9 +128,10 @@ abstract class GenericDataAdmin extends LeftAndMain {
 	 * @return Form
 	 */
 	function CreationForm() {
-		$plural_name = singleton($this->stat('data_type'))->plural_name();
-		$singular_name = singleton($this->stat('data_type'))->singular_name();
-		return new Form($this, 'CreationForm', new FieldSet(), new FieldSet(new FormAction("createRecord", "Create {$singular_name}")));
+	        // is this plural name used ??
+		$plural_name = singleton($this->stat('data_type'))->i18n_plural_name();
+		$singular_name = singleton($this->stat('data_type'))->i18_nsingular_name();
+		return new Form($this, 'CreationForm', new FieldSet(), new FieldSet(new FormAction("createRecord", _t('GenericDataAdmin.CREATE', 'Create').' '.$singular_name)));
 	}
 
 	/**
@@ -133,7 +146,14 @@ abstract class GenericDataAdmin extends LeftAndMain {
 
 	// legacy
 	function ExportForm() {
-		return $this->EditForm();
+		return $form = new Form(
+			$this,
+			"ExportForm",
+			new FieldSet(
+				new HiddenField("csvIDs","csvIDs",$_REQUEST[csvIDs])
+			),
+			$this->result_actions
+		);
 	}
 
 	/**
@@ -142,7 +162,7 @@ abstract class GenericDataAdmin extends LeftAndMain {
 	function SearchForm() {
 		
 		$fields = $this->getSearchFields();
-		$actions = new FieldSet($action = new FormAction("getResults", "Go"));
+		$actions = new FieldSet($action = new FormAction("getResults", _t('GenericDataAdmin.GO', 'Go')));
 
 		$searchForm = new Form($this, "SearchForm", $fields, $actions);
 		$searchForm->loadDataFrom($_REQUEST);
@@ -182,10 +202,10 @@ abstract class GenericDataAdmin extends LeftAndMain {
 
 		$actions = (method_exists($genericData, 'getCMSActions')) ? $genericData->getCMSActions() : new FieldSet();
 		if(!$actions->fieldByName('action_save')) {
-			$actions->push(new FormAction('save', 'Save','ajaxAction-save'));
+		        $actions->push(new FormAction('save', _t('GenericDataAdmin.SAVE', 'Save'),'ajaxAction-save'));
 		}
 		if(!$actions->fieldByName('action_delete')) {
-			$actions->push(new FormAction('delete', 'Delete','ajaxAction-delete'));
+		        $actions->push(new FormAction('delete', _t('GenericDataAdmin.DELETE', 'Delete'),'ajaxAction-delete'));
 		}
 		
 		$required = (method_exists($genericData, 'getCMSRequiredField')) ? $genericData->getCMSRequiredField() : new RequiredFields(); 
@@ -220,8 +240,8 @@ abstract class GenericDataAdmin extends LeftAndMain {
 	function Results() {
 		$ret = "";
 		
-		$singular_name = singleton($this->stat('data_type'))->singular_name();
-		$plural_name = singleton($this->stat('data_type'))->plural_name();
+		$singular_name = singleton($this->stat('data_type'))->i18n_singular_name();
+		$plural_name = singleton($this->stat('data_type'))->i18n_plural_name();
 		if (!$this->filter) {
 		$this->filter = array(
 			"ClassName" => $this->stat('data_type')
@@ -233,7 +253,7 @@ abstract class GenericDataAdmin extends LeftAndMain {
 		$results = $this->performSearch();
 		if($results) {
 			$name = ($results->Count() > 1) ? $plural_name : $singular_name;
-			$ret .= "<H2>{$results->Count()} {$name} found:</H2>";
+			$ret .= "<H2>{$results->Count()} {$name} "._t('GenericDataAdmin.FOUND', 'found:')."</H2>";
 			
 			switch($this->stat('result_format')) {
 				case 'table':
@@ -246,9 +266,9 @@ abstract class GenericDataAdmin extends LeftAndMain {
 			$ret .= $this->getResultActionsForm($results);
 		} else {
 			if($this->hasMethod('isEmptySearch') && $this->isEmptySearch()) {
-				$ret .="<h3>Please choose some search criteria and press 'Go'.</h3>";
+			        $ret .='<h3>'._t('GenericDataAdmin.CHOOSECRIT', 'Please choose some search criteria and press \'Go\'.').'</h3>';
 			} else {
-				$ret .="<h3>Sorry, no {$plural_name} found by this search.</h3>";
+			        $ret .='<h3>'.sprintf(_t('GenericDataAdmin.NORESULTS', 'Sorry, no %s found by this search.'), $plural_name).'</h3>';
 			}
 		}
 		return $ret;
@@ -439,7 +459,7 @@ HTML;
 				$fileData .= implode(",",$columnData);
 				$fileData .= "\n";
 			}
-			
+
 			HTTP::sendFileToBrowser($fileData, $fileName);
 		} else {
 			user_error("No records found", E_USER_ERROR);
@@ -481,8 +501,8 @@ HTML;
 				}
 			}
 		}
-
-		FormResponse::status_message('Saved', 'good');
+		$this->getActionUpdateJS($generic);
+		FormResponse::status_message(_t('GenericDataAdmin.SAVED', 'Saved'), 'good');
 		FormResponse::update_status($generic->Status);
 
 		if (method_exists($this, "saveAfterCall")) {
@@ -544,7 +564,7 @@ HTML;
 		// clear session data
 		Session::clear('currentPage');
 
-		FormResponse::status_message('Successfully deleted', 'good');
+		FormResponse::status_message(_t('GenericDataAdmin.DELETEDSUCCESS', 'Successfully deleted'), 'good');
 		FormResponse::add("$('Form_EditForm').deleteEffect();");
 
 		return FormResponse::respond();

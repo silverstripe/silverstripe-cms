@@ -4,7 +4,11 @@ i18n::include_locale_file('cms', 'en_US');
 
 global $lang;
 
-$lang['nl_NL'] = $lang['en_US'];
+if(array_key_exists('nl_NL', $lang) && is_array($lang['nl_NL'])) {
+	$lang['nl_NL'] = array_merge($lang['en_US'], $lang['nl_NL']);
+} else {
+	$lang['nl_NL'] = $lang['en_US'];
+}
 
 $lang['nl_NL']['AssetAdmin']['CHOOSEFILE'] = 'Kies een bestand ';
 $lang['nl_NL']['AssetAdmin']['CONTENTMODBY'] = 'Inhoud bewerkbaar door';

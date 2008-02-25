@@ -20,17 +20,17 @@
 					<% end_control %>
 					<% if Can(show) %>
                         <td width="18">
-                            <a class="popuplink showlink" href="$ShowLink" target="_blank" title="Show asset"><img src="cms/images/show.png" alt="show" /></a>
+                            <a class="popuplink showlink" href="$ShowLink" target="_blank" title="<% _t('SHOW', 'Show asset') %>"><img src="cms/images/show.png" alt="<% _t('SHOW', 'Show asset') %>" /></a>
                         </td>
                     <% end_if %>
 					<% if Can(edit) %>
     					<td width="18">
-    						<a class="popuplink editlink" href="$EditLink" target="_blank" title="Edit asset"><img src="cms/images/edit.gif" alt="edit" /></a>
+    						<a class="popuplink editlink" href="$EditLink" target="_blank" title="<% _t('EDIT', 'Edit asset') %>"><img src="cms/images/edit.gif" alt="<% _t('EDIT', 'Edit asset') %>" /></a>
     					</td>
 			        <% end_if %>
 			        <% if Can(delete) %>
 					<td width="18">
-						<a class="deletelink" href="admin/assets/removefile/$ID" title="Delete this file"><img src="cms/images/delete.gif" alt="delete" title="<% _t('DELFILE','Delete this file') %>" /></a>
+						<a class="deletelink" href="admin/assets/removefile/$ID" title="<% _t('DELFILE', 'Delete this file') %>"><img src="cms/images/delete.gif" alt="<% _t('DELFILE', 'Delete this file') %>" title="<% _t('DELFILE','Delete this file') %>" /></a>
 					</td>
 					<% end_if %>
 				</tr>

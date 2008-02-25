@@ -1,4 +1,14 @@
 <?php
+/**
+ * @package cms
+ * @subpackage assets
+ */
+
+/**
+ * A special kind of complex table field for manipulating assets.
+ * @package cms
+ * @subpackage assets
+ */
 class AssetTableField extends ComplexTableField {
 	
 	protected $folder;
@@ -60,13 +70,13 @@ class AssetTableField extends ComplexTableField {
 		}
 		
 		$urlLink = "<div class='field readonly'>";
-		$urlLink .= "<label class='left'>URL</label>";
+		$urlLink .= "<label class='left'>"._t('AssetTableField.URL','URL')."</label>";
 		$urlLink .= "<span class='readonly'><a href='{$childData->Link()}'>{$childData->RelativeLink()}</a></span>";
 		$urlLink .= "</div>";
 		
 		$detailFormFields = new FieldSet(
 			new TabSet("BottomRoot",
-				new Tab("Main",
+				new Tab(_t('AssetTableField.MAIN', 'Main'),
 					new TextField("Title", _t('AssetTableField.TITLE','Title')),
 					new TextField("Name", _t('AssetTableField.FILENAME','Filename')),
 					new LiteralField("AbsoluteURL", $urlLink),
@@ -83,15 +93,16 @@ class AssetTableField extends ComplexTableField {
 			$big = $childData->URL;
 			$thumbnail = $childData->getFormattedImage('AssetLibraryPreview')->URL;
 			
-			$detailFormFields->addFieldToTab("BottomRoot.Main", 
+			// Hmm this required the translated string to be appended to BottomRoot to add this to the Main tab
+			$detailFormFields->addFieldToTab("BottomRoot."._t('AssetTableField.MAIN','Main'), 
 				new ReadonlyField("Dimensions", _t('AssetTableField.DIM','Dimensions')),
 				"Created"
 			);
 
 			$detailFormFields->addFieldToTab("BottomRoot", 
-				new Tab("Image",
+				new Tab(_t('AssetTableField.IMAGE', 'Image'),
 					new LiteralField("ImageFull",
-						'<a id="ImageEditorActivator" href="javascript: void(0)">' . "<img id='thumbnailImage' src='{$thumbnail}?r=" . rand(1,100000)  . "' alt='{$childData->Name}' /><p>Edit this image</p>" . '</a>' .
+						'<a id="ImageEditorActivator" href="javascript: void(0)">' . "<img id='thumbnailImage' src='{$thumbnail}?r=" . rand(1,100000)  . "' alt='{$childData->Name}' /><p>"._t('AssetTableField.EDITIMAGE', 'Edit this image')."</p>" . '</a>' .
 						'<script type="text/javascript" src="cms/javascript/ImageEditor/Activator.js"></script><script type="text/javascript">var imageActivator = new ImageEditor.Activator.initialize();Event.observe("ImageEditorActivator","click",imageActivator.onOpen);</script>'
 					)
 				),
@@ -100,8 +111,8 @@ class AssetTableField extends ComplexTableField {
 			
 			if(class_exists('GalleryFile')) {
 				$detailFormFields->addFieldToTab("BottomRoot", 
-					new Tab("Gallery Options",
-						new TextField( "Content", "Caption" )
+					new Tab(_t('AssetTableField.GALLERYOPTIONS', 'Gallery Options'),
+						new TextField( "Content", _t('AssetTableField.CAPTION', 'Caption') )
 					)
 				);
 			}
@@ -109,22 +120,22 @@ class AssetTableField extends ComplexTableField {
 		else if (class_exists('GalleryFile')) {
 			if( $childData->Extension == 'swf' ) {
 				$detailFormFields->addFieldToTab("BottomRoot", 
-					new Tab("Gallery Options",
-						new TextField( "Content", "Caption" ),
-						new TextField( 'PopupWidth', 'Popup Width' ),
-						new TextField( 'PopupHeight', 'Popup Height' ),
-						new HeaderField( 'SWF File Options' ),
-						new CheckboxField( 'Embed', 'Is A Flash Document' ),
-						new CheckboxField( 'LimitDimensions', 'Limit The Dimensions In The Popup Window' )
+					new Tab(_t('AssetTableField.GALLERYOPTIONS', 'Gallery Options'),
+						new TextField( "Content", _t('AssetTableField.CAPTION', 'Caption') ),
+						new TextField( 'PopupWidth', _t('AssetTableField.POPUPWIDTH', 'Popup Width') ),
+						new TextField( 'PopupHeight', _t('AssetTableField.POPUPHEIGHT', 'Popup Height') ),
+						new HeaderField( _t('AssetTableField.SWFFILEOPTIONS', 'SWF File Options') ),
+						new CheckboxField( 'Embed', _t('AssetTableField.ISFLASH', 'Is A Flash Document') ),
+						new CheckboxField( 'LimitDimensions', _t('AssetTableField.DIMLIMT', 'Limit The Dimensions In The Popup Window') )
 					)
 				);
 			}
 			else {
 				$detailFormFields->addFieldToTab("BottomRoot", 
-					new Tab("Gallery Options",
-						new TextField( "Content", "Caption" ),
-						new TextField( 'PopupWidth', 'Popup Width' ),
-						new TextField( 'PopupHeight', 'Popup Height' )
+					new Tab(_t('AssetTableField.GALLERYOPTIONS', 'Gallery Options'),
+						new TextField( "Content", _t('AssetTableField.CAPTION', 'Caption') ),
+						new TextField( 'PopupWidth', _t('AssetTableField.POPUPWIDTH', 'Popup Width') ),
+						new TextField( 'PopupHeight', _t('AssetTableField.POPUPHEIGHT', 'Popup Height') )
 					)
 				);
 			}

@@ -1,6 +1,14 @@
 <?php
+
 /**
- * Displays a file upload field. 
+ * @package cms
+ * @subpackage newsletter
+ */
+
+/**
+ * Displays a field for importing recipients. 
+ * @package cms
+ * @subpackage newsletter
  */
 class RecipientImportField extends FormField {
 	
@@ -174,6 +182,11 @@ class RecipientImportField extends FormField {
 	}
 }
 
+/**
+ * Single cell of the recipient import field
+ * @package cms
+ * @subpackage newsletter
+ */
 class RecipientImportField_Cell extends ViewableData {
 	protected $value;
 	
@@ -186,6 +199,11 @@ class RecipientImportField_Cell extends ViewableData {
 	}
 }
 
+/**
+ * Upload form that appears in the iframe
+ * @package cms
+ * @subpackage newsletter
+ */
 class RecipientImportField_UploadForm extends Form {
 	function import( $data, $form ) {
 		$id = $data['ID'];
@@ -208,7 +226,7 @@ class RecipientImportField_UploadForm extends Form {
 	}
 	
 	function isValidCSV( $file ) {
-		return preg_match( '/.*\.csv$/', $file['name'] ) > 0;
+		return preg_match( '/.*\.csv$/i', $file['name'] ) > 0;
 	}
 	
 	function confirm( $data, $form ) {

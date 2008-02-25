@@ -5,7 +5,7 @@
 	$EditForm
 <% else %>
 	<form id="Form_EditForm" action="admin/comments?executeForm=EditForm" method="post" enctype="multipart/form-data">
-		<p>Welcome to the $ApplicationName comment management. Please select a folder in the tree on the left.</p>
+		<p><% _t('WELCOME1', 'Welcome to the') %> $ApplicationName <% _t('WELCOME2', 'comment management. Please select a folder in the tree on the left.') %></p>
 	</form>
 <% end_if %>
 

@@ -4,7 +4,11 @@ i18n::include_locale_file('cms', 'en_US');
 
 global $lang;
 
-$lang['sv_SE'] = $lang['en_US'];
+if(array_key_exists('sv_SE', $lang) && is_array($lang['sv_SE'])) {
+	$lang['sv_SE'] = array_merge($lang['en_US'], $lang['sv_SE']);
+} else {
+	$lang['sv_SE'] = $lang['en_US'];
+}
 
 $lang['sv_SE']['AssetAdmin']['CHOOSEFILE'] = 'Välj fil';
 $lang['sv_SE']['AssetAdmin']['CONTENTMODBY'] = 'Följande kan redigera innehållet';

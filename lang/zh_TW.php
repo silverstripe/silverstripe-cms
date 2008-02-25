@@ -4,7 +4,11 @@ i18n::include_locale_file('cms', 'en_US');
 
 global $lang;
 
-$lang['zh_TW'] = $lang['en_US'];
+if(array_key_exists('zh_TW', $lang) && is_array($lang['zh_TW'])) {
+	$lang['zh_TW'] = array_merge($lang['en_US'], $lang['zh_TW']);
+} else {
+	$lang['zh_TW'] = $lang['en_US'];
+}
 
 $lang['zh_TW']['AssetAdmin']['CHOOSEFILE'] = '選擇檔案';
 $lang['zh_TW']['AssetAdmin']['CONTENTMODBY'] = '可以更改內容的人：';

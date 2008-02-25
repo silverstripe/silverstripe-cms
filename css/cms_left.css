@@ -1,6 +1,5 @@
 #left form.actionparams {
 	background: #ccc;
-	border-bottom: 1px solid #eee;
 	padding: 3px 5px;
 }
 #left form.actionparams input,
@@ -289,17 +288,23 @@ ul#sitetree.tree ul ul {
 }
 
 
-
+/* This applies to both the LHS context menu and the TinyMCE context menu */
 .contextMenu {
+	z-index: 1000;
+	background-color: white;
+	border: 1px #CCC solid;
+}
+
+ul.contextMenu {	
 	padding: 0;
 	margin: 0;
 }
-.contextMenu li {
+ul.contextMenu li {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 }
-.contextMenu li a {
+ul.contextMenu li a {
 	display: block;
 	font-family: Tahoma, Verdana, Arial, Helvetica;
 	font-size: 11px;
@@ -307,7 +312,7 @@ ul#sitetree.tree ul ul {
 	color: black;
 	text-decoration: none;
 }
-.contextMenu li a:hover {
+ul.contextMenu li a:hover {
 	background-color: #B6BDD2;
 	text-decoration: none;
 }
@@ -363,4 +368,10 @@ ul.tree li.untranslated a:visited {
 }
 #LangSelector_holder.onelang {
 	display: none;
+}
+
+#SortItems {
+	border-bottom: 1px solid #cccccc;
+	background: #CCCCCC none repeat scroll 0%;
+	padding: 3px 0 3px 7px;
 }

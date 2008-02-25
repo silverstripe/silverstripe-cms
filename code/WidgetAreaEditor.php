@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * @package cms
+ * @subpackage content
+ */
+
+/**
+ * Special field type for selecting and configuring widgets on a page.
+ * @package cms
+ * @subpackage content
+ */
 class WidgetAreaEditor extends FormField {
 	function FieldHolder() {
 		return $this->renderWith("WidgetAreaEditor");

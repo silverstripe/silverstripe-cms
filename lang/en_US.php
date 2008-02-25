@@ -137,6 +137,20 @@ $lang['en_US']['CMSMain']['VISITRESTORE'] = array(
 	PR_LOW,
 	'restorepage/(ID) should not be translated (is an URL)'
 );
+$lang['en_US']['CommentAdmin']['APPROVEDCOMMENTS'] = 'Approved Comments';
+$lang['en_US']['CommentAdmin']['COMMENTSAWAITINGMODERATION'] = 'Comments Awaiting Moderation';
+$lang['en_US']['CommentAdmin']['SPAM'] = 'Spam';
+$lang['en_US']['CommentAdmin']['AUTHOR'] = 'Author';
+$lang['en_US']['CommentAdmin']['COMMENT'] = 'Comment';
+$lang['en_US']['CommentAdmin']['PAGE'] = 'Page';
+$lang['en_US']['CommentAdmin']['DATEPOSTED'] = 'Date Posted';
+$lang['en_US']['CommentAdmin']['ACCEPT'] = 'Accept';
+$lang['en_US']['CommentAdmin']['SPAMMARKED'] = 'Mark as spam';
+$lang['en_US']['CommentAdmin']['MARKASNOTSPAM'] = 'Mark as not spam';
+$lang['en_US']['CommentAdmin']['DELETE'] = 'Delete';
+$lang['en_US']['CommentAdmin']['DELETEALL'] = 'Delete All';
+$lang['en_US']['CommentTableField']['SEARCH'] = 'Search';
+$lang['en_US']['CommentTableField']['FILTER'] = 'Filter';
 $lang['en_US']['LeftAndMain']['PERMDEFAULT'] = 'Please choose an authentication method and enter your credentials to access the CMS.';
 $lang['en_US']['LeftAndMain']['PERMALREADY'] = 'I\'m sorry, but you can\'t access that part of the CMS.  If you want to log in as someone else, do so below';
 $lang['en_US']['LeftAndMain']['PERMAGAIN'] = 'You have been logged out of the CMS.  If you would like to log in again, enter a username and password below.';
@@ -244,6 +258,11 @@ $lang['en_US']['CMSMain_versions.ss']['NOTPUB'] = 'Not published';
 $lang['en_US']['CommentList.ss']['NOCOM'] = 'There are no comments on this page.';
 $lang['en_US']['CommentList.ss']['CREATEDW'] = 'Comments are created whenever one of the \'workflow actions\'
 	are undertaken - Publish, Reject, Submit.';
+$lang['en_US']['CommentTableField.ss']['APPROVECOMMENT'] = 'Approve this comment'; 
+$lang['en_US']['CommentTableField.ss']['MARKASSPAM'] = 'Mark this comment as spam' ; 
+$lang['en_US']['CommentTableField.ss']['MARKNOSPAM'] = 'Mark this comment as not spam'; 
+$lang['en_US']['CommentTableField.ss']['DELETEROW'] = 'Delete this row'; 
+$lang['en_US']['CommentTableField.ss']['NOITEMSFOUND'] = 'No items found'; 
 $lang['en_US']['ImageEditor.ss']['UNTITLED'] = 'Untitled Document';
 $lang['en_US']['ImageEditor.ss']['SAVE'] = 'save&nbsp;image';
 $lang['en_US']['ImageEditor.ss']['UNDO'] = 'undo';
@@ -328,6 +347,10 @@ $lang['en_US']['CMSMain_right.ss']['CHOOSEPAGE'] = 'Please choose a page from th
 $lang['en_US']['CMSRight.ss']['ECONTENT'] = 'Edit Content';
 $lang['en_US']['CMSRight.ss']['WELCOMETO'] = 'Welcome to';
 $lang['en_US']['CMSRight.ss']['CHOOSEPAGE'] = 'Please choose a page from the left.';
+$lang['en_US']['CommentAdmin_left.ss']['COMMENTS'] = 'Comments';
+$lang['en_US']['CommentAdmin_left.ss']['APPROVED'] = 'Approved';
+$lang['en_US']['CommentAdmin_left.ss']['AWAITMODERATION'] = 'Awaiting Moderation';
+$lang['en_US']['CommentAdmin_left.ss']['SPAM'] = 'Spam';
 $lang['en_US']['GenericDataAdmin_left.ss']['ADDLISTING'] = 'Add Listing';
 $lang['en_US']['GenericDataAdmin_left.ss']['SEARCHLISTINGS'] = 'Search Listings';
 $lang['en_US']['GenericDataAdmin_left.ss']['SEARCHRESULTS'] = 'Search Results';
@@ -454,6 +477,7 @@ $lang['en_US']['PageCommentInterface.ss']['COMMENTS'] = 'Comments';
 $lang['en_US']['PageCommentInterface.ss']['PREV'] = 'previous';
 $lang['en_US']['PageCommentInterface.ss']['NEXT'] = 'next';
 $lang['en_US']['PageCommentInterface.ss']['NOCOMMENTSYET'] = 'No one has commented on this page yet.';
+$lang['en_US']['PageCommentInterface.ss']['RSSFEEDCOMMENTS'] = 'RSS feed for comments on this page';
 $lang['en_US']['PageCommentInterface_singlecomment.ss']['PBY'] = 'Posted by';
 $lang['en_US']['PageCommentInterface_singlecomment.ss']['ISSPAM'] = 'this comment is spam';
 $lang['en_US']['PageCommentInterface_singlecomment.ss']['ISNTSPAM'] = 'this comment is not spam';
@@ -468,5 +492,76 @@ $lang['en_US']['ViewArchivedEmail.ss']['HAVEASKED'] = array(
 	'Followed by a date'
 );
 $lang['en_US']['ViewArchivedEmail.ss']['CANACCESS'] = 'You can access the archived site at this link:';
+
+// New2
+
+$lang['en_US']['MemberTableField.ss']['DISPLAYING'] = 'Displaying';
+$lang['en_US']['MemberTableField.ss']['TO'] = 'to';
+$lang['en_US']['MemberTableField.ss']['OF'] = 'of';
+$lang['en_US']['MemberTableField.ss']['EDITASSET'] = 'Edit file';
+$lang['en_US']['MemberTableField']['FIRSTNAME'] = 'Firstname';
+$lang['en_US']['MemberTableField']['SURNAME'] = 'Surname';
+$lang['en_US']['MemberTableField']['EMAIL'] = 'Email';
+
+$lang['en_US']['GenericDataAdmin']['CSVEXPORT'] = 'Export to CSV';
+
+$lang['en_US']['SecurityAdmin']['VIEWUSER'] = 'View User';
+$lang['en_US']['CMSMain']['ACCESSTO'] = array('Access to %s in CMS',
+					      PR_MEDIUM,
+					      '%s is a class name');
+
+$lang['en_US']['CMSMain']['ASSETADMINNAME'] = 'Assets';
+$lang['en_US']['CMSMain']['BULKLOADERADMINNAME'] = 'Bulk Loader';
+$lang['en_US']['CMSMain']['CMSMAINNAME'] = 'Main CMS';
+$lang['en_US']['CMSMain']['COMMENTADMINNAME'] = 'Comments';
+$lang['en_US']['CMSMain']['GENERICDATAADMINNAME'] = 'Generic Data';
+$lang['en_US']['CMSMain']['LEFTANDMAINNAME'] = 'Left And Main';
+$lang['en_US']['CMSMain']['NEWSLETTERADMINNAME'] = 'Newsletter';
+$lang['en_US']['CMSMain']['REPORTADMINNAME'] = 'Reports';
+$lang['en_US']['CMSMain']['SECURITYADMINNAME'] = 'Security';
+$lang['en_US']['CMSMain']['STATISTICSADMINNAME'] = 'Statistics';
+
+$lang['en_US']['CommentAdmin']['APPROVEDCOMMENTS'] = 'Approved Comments';
+$lang['en_US']['CommentAdmin']['WAITINGMODERATION'] = 'Comments Awaiting Moderation';
+$lang['en_US']['CommentAdmin']['SPAM'] = 'Spam';
+$lang['en_US']['CommentAdmin']['AUTHOR'] = 'Author';
+$lang['en_US']['CommentAdmin']['COMMENT'] = 'Comment';
+$lang['en_US']['CommentAdmin']['COMMENTS'] = 'Comments';
+$lang['en_US']['CommentAdmin']['PAGE'] = 'Page';
+$lang['en_US']['CommentAdmin']['CREATED'] = 'Date Posted';
+$lang['en_US']['CommentAdmin']['ACCEPT'] = 'Accept';
+$lang['en_US']['CommentAdmin']['MARKSPAM'] = 'Mark as spam';
+$lang['en_US']['CommentAdmin']['MARKNOTSPAM'] = 'Mark as not spam';
+$lang['en_US']['CommentAdmin']['DELETE'] = 'Delete';
+$lang['en_US']['CommentAdmin']['DELETEALL'] = 'Delete All';
+$lang['en_US']['CommentAdmin']['NAME'] = 'Name';
+$lang['en_US']['CommentAdmin']['EDIT'] = 'Edit';
+
+$lang['en_US']['CommentTableField']['SEARCH'] = 'Search';
+$lang['en_US']['CommentTableField']['FILTER'] = 'Filter';
+
+$lang['en_US']['CommentTableField.ss']['DISPLAYING'] = 'Displaying';
+$lang['en_US']['CommentTableField.ss']['TO'] = 'to';
+$lang['en_US']['CommentTableField.ss']['OF'] = 'of';
+$lang['en_US']['CommentTableField.ss']['NOITEMSFOUND'] = 'No items found';
+$lang['en_US']['CommentTableField.ss']['EDIT'] = 'Edit';
+
+$lang['en_US']['CommentTableField.ss']['APPROVE'] = 'Approve this comment';
+$lang['en_US']['CommentTableField.ss']['MARKASSPAM'] = 'Mark this comment as spam';
+$lang['en_US']['CommentTableField.ss']['MARKASNOTSPAM'] = 'Mark this comment as not spam';
+$lang['en_US']['CommentTableField.ss']['DELETEROW'] = 'Delete this row';
+
+$lang['en_US']['CommentAdmin_left.ss']['COMMENTS'] = 'Comments';
+$lang['en_US']['CommentAdmin_left.ss']['APPROVED'] = 'Approved';
+$lang['en_US']['CommentAdmin_left.ss']['WAITINGMODERATION'] = 'Awaiting Moderation';
+$lang['en_US']['CommentAdmin_left.ss']['SPAM'] = 'Spam';
+
+$lang['en_US']['StatisticsAdmin']['SELECTREPORT'] = 'Select a report type from the left for a detailed look at site statistics';
+
+$lang['en_US']['StatisticsAdmin_left.ss']['STATISTICS'] = 'Statistics';
+$lang['en_US']['StatisticsAdmin_left.ss']['VIEWS'] = 'Views';
+$lang['en_US']['StatisticsAdmin_left.ss']['TRENDS'] = 'Trends';
+$lang['en_US']['StatisticsAdmin_left.ss']['OS'] = 'Operating Systems';
+$lang['en_US']['StatisticsAdmin_left.ss']['BROWSERS'] = 'Browsers';
 
 ?>
