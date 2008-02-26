@@ -781,11 +781,12 @@ HTML;
 	 *  - Send a status message
 	 */
 	function tellBrowserAboutPublicationChange($page, $statusMessage) {
-
 		$JS_title = Convert::raw2js($page->TreeTitle());
 
-		$JS_stageURL = Convert::raw2js(DB::query("SELECT URLSegment FROM SiteTree WHERE ID = $page->ID")->value());
-		$JS_liveURL = Convert::raw2js(DB::query("SELECT URLSegment FROM SiteTree_Live WHERE ID = $page->ID")->value());
+		$JS_stageURL = $page->DeletedFromStage ? '' : Convert::raw2js($page->AbsoluteLink());
+		$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "`SiteTree`.ID = $page->ID");
+		$JS_liveURL = $liveRecord ? Convert::raw2js($liveRecord->AbsoluteLink()) : '';
+
 		FormResponse::add($this->getActionUpdateJS($page));
 		FormResponse::update_status($page->Status);
 		FormResponse::add("\$('sitetree').setNodeTitle($page->ID, '$JS_title')");
