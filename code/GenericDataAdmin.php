@@ -537,9 +537,10 @@ HTML;
 	 * 
 	 * @return String
 	 */
-	function createRecord() {
+	function createRecord($data, $form) {
 		$baseClass = $this->stat('data_type');
 		$obj = new $baseClass();
+		$form->saveInto($obj);
 		$obj->write();
 
 		$editForm = $this->getEditForm($obj->ID);
