@@ -444,7 +444,7 @@ HTML;
 		$csv_columns = ($this->stat('csv_columns')) ? array_values($this->stat('csv_columns')) : array_values($this->stat('result_columns'));
 
 		$fileData = "";
-		$fileData .= "\"" . implode("\";\"",$csv_columns) . "\"";
+		$fileData .= "\"" . implode("\",\"",$csv_columns) . "\"";
 		$fileData .= "\n";
 
 		$records = $this->performSearch();
