@@ -466,7 +466,8 @@ div.originallang_holder.field.CompositeField.nolabel {
 #contentPanel div.tree_holder {
 	width: 184px;
 	height: 260px;
-	overflow-x: hidden;
+	/* Keep a scrollbar in the RHS tree dropdowns, in case the content is too wide for the column */
+	overflow-x: scroll;
 }
 #contentPanel ul.tree a {
 	padding-left: 15px;
