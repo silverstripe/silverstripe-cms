@@ -701,6 +701,8 @@ PHP
 			$adminmember->write();
 		}
 		
+		// Syncing filesystem (so /assets/Uploads is available instantly, see ticket #2266)
+		File::sync();
 		
 		echo "<li>Checking mod_rewrite works</li>";
 		
