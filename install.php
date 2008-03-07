@@ -155,7 +155,7 @@ class InstallRequirements {
 		$this->requireTempFolder(array('File permissions', 'Is the temporary folder writeable?', null));
 		
 		// Check for web server, unless we're calling the installer from the command-line
-		if(!$_SERVER['argv']) {
+		if(!isset($_SERVER['argv']) || !$_SERVER['argv']) { 
 			$webserver = strip_tags(trim($_SERVER['SERVER_SIGNATURE']));
 			if($webserver == '') {
 				$webserver = "I can't tell what webserver you are running";
