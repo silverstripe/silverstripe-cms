@@ -43,8 +43,8 @@ function performModRewriteTest() {
 	}
 
 	// Check if mod_rewrite works properly
-	$location = 'http://' . (isset($_SERVER['PHP_AUTH_USER']) ? "$_SERVER[PHP_AUTH_USER]:$_SERVER[PHP_AUTH_PW]@" : '') . $_SERVER['HTTP_HOST'] . $baseURL . '/InstallerTest/testRewrite';
-	@$testrewriting = file_get_contents($location);
+	$location = 'http://' . (isset($_SERVER['PHP_AUTH_USER']) ? "$_SERVER[PHP_AUTH_USER]:$_SERVER[PHP_AUTH_PW]@" : '') . $_SERVER['HTTP_HOST'] . $baseURL . '/InstallerTest/testrewrite';
+	$testrewriting = file_get_contents($location);
 
 	if($testrewriting == 'OK') {
 		return true;
