@@ -130,7 +130,7 @@ abstract class GenericDataAdmin extends LeftAndMain {
 	function CreationForm() {
 	        // is this plural name used ??
 		$plural_name = singleton($this->stat('data_type'))->i18n_plural_name();
-		$singular_name = singleton($this->stat('data_type'))->i18_nsingular_name();
+		$singular_name = singleton($this->stat('data_type'))->i18n_singular_name();
 		return new Form($this, 'CreationForm', new FieldSet(), new FieldSet(new FormAction("createRecord", _t('GenericDataAdmin.CREATE', 'Create').' '.$singular_name)));
 	}
 
