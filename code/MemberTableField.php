@@ -96,8 +96,6 @@ class MemberTableField extends ComplexTableField {
 			$fieldList["SetPassword"] = "Password"; 
 		}
 		
-//              $detailFormFields = singleton(Object::getCustomClass($this->stat("data_class")))->getCMSFields(); 		
-		
 		if(isset($_REQUEST['ctf']['childID']) && $memberID = $_REQUEST['ctf']['childID']) {
 			$SNG_member = DataObject::get_by_id($this->stat("data_class"),$_REQUEST['ctf']['childID']); 
 		} else {
@@ -125,13 +123,13 @@ class MemberTableField extends ComplexTableField {
 		}
 
 		// search
-		$search = isset($_REQUEST['MemberSearch']) ? Convert::raw2sql($_REQUEST['MemberSearch']) : null;
+		$SQL_search = isset($_REQUEST['MemberSearch']) ? Convert::raw2sql($_REQUEST['MemberSearch']) : null;
 		if(!empty($_REQUEST['MemberSearch'])) {
-			//$this->sourceFilter[] = "( `Email` LIKE '%$search%' OR `FirstName` LIKE '%$search%' OR `Surname` LIKE '%$search%' )";
-			$sourceF = '( ';
-			foreach( $fieldList as $k => $v )
-				$sourceF .= '`$k` LIKE '%$search%' OR ';
-			$this->sourceFilter[] = substr( $sourceF, 0, -3 ) . ')';
+			$searchFilters = array();
+			foreach($SNG_member->stat('searchable_fields') as $fieldName => $fieldSpec) {
+				$searchFilters[] = "`$fieldName` LIKE '%{$SQL_search}%'";
+			}
+			$this->sourceFilter[] = '(' . implode(' OR ', $searchFilters) . ')';
 		}
 
 		// filter by groups
