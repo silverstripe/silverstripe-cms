@@ -96,7 +96,7 @@ class ReportAdmin extends LeftAndMain {
   }
   
   public function EditForm() {
-		$id = $_REQUEST['ID'] ? $_REQUEST['ID'] : Session::get('currentPage');
+		$id = (isset($_REQUEST['ID'])) ? $_REQUEST['ID'] : Session::get('currentPage');
 		
 		$subclasses = ClassInfo::subclassesFor('Report');
 		
