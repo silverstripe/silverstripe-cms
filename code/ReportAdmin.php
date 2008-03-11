@@ -79,14 +79,14 @@ class ReportAdmin extends LeftAndMain {
 	}
 
 	protected function showWithEditForm( $params, $editForm ) {
-		if($params['ID']) {
+		if(isset($params['ID'])) {
 			Session::set('currentPage', $params['ID']);
 		}
-		if($params['OtherID']) {
+		if(isset($params['OtherID'])) {
 			Session::set('currentOtherID', $params['OtherID']);
 		}
 
-		if($_REQUEST['ajax']) {
+		if(Director::is_ajax()) {
 			SSViewer::setOption('rewriteHashlinks', false);
 			$result = $this->customise( array( 'EditForm' => $editForm ) )->renderWith($this->getTemplatesWithSuffix("_right"));
 			return $this->getLastFormIn($result);
@@ -120,12 +120,9 @@ class ReportAdmin extends LeftAndMain {
   public function getReportEditForm($id){
   	if(is_numeric($id))
   		$page = DataObject::get_by_id("SiteTree", $id);
-		if($page) $reportClass = "Report_".$page->ClassName;
+		$reportClass = (isset($page)) ? "Report_".$page->ClassName : $id;
 		
-		if(!$reportClass)
-			$reportClass = $id;
-		
-  	$obj = new $reportClass();
+	  	$obj = new $reportClass();
 		$fields = $obj->getCMSFields();
 			
 		$fields->push($idField = new HiddenField("ID"));
