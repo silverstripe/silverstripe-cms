@@ -40,7 +40,7 @@ abstract class SideReport extends Object {
 					
 					$fieldName = ereg_replace('[^A-Za-z0-9]+','',$fieldTitle);
 					if(is_string($fieldSource)) {
-						$val = $record->$fieldSource;
+						$val = Convert::raw2xml($record->$fieldSource);
 					} else {
 						$val = $record->val($fieldSource[0], $fieldSource[1]);
 					}
