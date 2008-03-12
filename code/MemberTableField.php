@@ -362,12 +362,14 @@ class MemberTableField_Popup extends ComplexTableField_Popup {
 		Requirements::javascript('cms/javascript/MemberTableField_popup.js');
 	}
 
-
+	/**
+	 * Same behaviour as parent class, but adds the member to the passed GroupID.
+	 *
+	 * @return string
+	 */
 	function saveComplexTableField() {
-		$id = (isset($_REQUEST['ctf']['childID'])) ? Convert::raw2sql($_REQUEST['ctf']['childID']) : false;
-
-		if (is_numeric($id)) {
-			$childObject = DataObject::get_by_id($this->sourceClass, $id);
+		if(isset($_REQUEST['ctf']['childID']) && is_numeric($_REQUEST['ctf']['childID'])) {
+			$childObject = DataObject::get_by_id($this->sourceClass, $_REQUEST['ctf']['childID']);
 		} else {
 			$childObject = new $this->sourceClass();
 			$this->fields->removeByName('ID');
@@ -375,13 +377,19 @@ class MemberTableField_Popup extends ComplexTableField_Popup {
 
 		$this->saveInto($childObject);
 		$childObject->write();
-
-		// add member to current group
+		
+		// custom behaviour for MemberTableField: add member to current group
 		$childObject->Groups()->add($_REQUEST['GroupID']);
 
-		// if ajax-call in an iframe, close window by javascript, else redirect to referrer
-		if(!Director::is_ajax()) {
-			Director::redirect(substr($_SERVER['REQUEST_URI'],0,strpos($_SERVER['REQUEST_URI'],'?')));
+		// if ajax-call in an iframe, update window
+		if(Director::is_ajax()) {
+			// Newly saved objects need their ID reflected in the reloaded form to avoid double saving 
+			$form = $this->controller->DetailForm($childObject->ID);
+			$form->loadDataFrom($childObject);
+			FormResponse::update_dom_id($form->FormName(), $form->formHtmlContent(), true, 'update');
+			return FormResponse::respond();
+		} else {
+			Director::redirectBack();
 		}
 	}
 
