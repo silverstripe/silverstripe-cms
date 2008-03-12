@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Chinese (Taiwan) language pack
+ * @package cms
+ * @subpackage i18n
+ */
+
 i18n::include_locale_file('cms', 'en_US');
 
 global $lang;

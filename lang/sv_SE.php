@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Swedish (Sweden) language pack
+ * @package cms
+ * @subpackage i18n
+ */
+
 i18n::include_locale_file('cms', 'en_US');
 
 global $lang;
@@ -78,7 +84,7 @@ $lang['sv_SE']['CMSLeft.ss']['SITECONT'] = 'Sidinnehåll';
 $lang['sv_SE']['CMSMain']['CANCEL'] = 'Avbryt';
 $lang['sv_SE']['CMSMain']['CHOOSEREPORT'] = '(Välj en rapport)';
 $lang['sv_SE']['CMSMain']['COMPARINGV'] = 'Du jämför versionerna #%d och #%d';
-$lang['sv_SE']['CMSMain']['DELETEFP'] = 'Raderad från den publicerade sajten';
+$lang['sv_SE']['CMSMain']['DELETEFP'] = 'Radera från den publicerade sajten';
 $lang['sv_SE']['CMSMain']['EMAIL'] = 'E-post';
 $lang['sv_SE']['CMSMain']['GO'] = 'Kör';
 $lang['sv_SE']['CMSMain']['METADESCOPT'] = 'Beskrivning';
