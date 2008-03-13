@@ -394,6 +394,11 @@ JS;
 						$actions->push(new FormAction('deletefromlive',_t('CMSMain.DELETEFP','Delete from the published site')));
 					}
 				} else {
+					if($record->canEdit()) {
+						$actions->push($deleteAction = new FormAction('delete',_t('CMSMain.DELETE','Delete from the draft site')));
+						$deleteAction->addExtraClass('delete');
+					}
+
 					if($record->hasMethod('getCMSActions')) {
 						$extraActions = $record->getCMSActions();
 						if($extraActions) foreach($extraActions as $action) $actions->push($action);
@@ -565,12 +570,22 @@ JS;
 
 		return FormResponse::respond();
 	}
-
+	
+	/**
+	 * Delete the current page
+	 */
 	public function delete($urlParams, $form) {
 		$id = $_REQUEST['ID'];
 		$record = DataObject::get_one("SiteTree", "SiteTree.ID = $id");
+		$recordID = $record->ID;
 		$record->delete();
-		Director::redirectBack();
+		$record->ID = $recordID;
+		
+		if(Director::is_ajax()) {
+			return $this->tellBrowserAboutPublicationChange($record, sprintf(_t('CMSMain.REMOVEDPAGEFROMDRAFT',"Removed '%s' from the draft site"),$record->Title));
+		} else {
+			Director::redirectBack();
+		}
 	}
 
 	//------------------------------------------------------------------------------------------//
@@ -771,8 +786,7 @@ HTML;
 
 		return $this->tellBrowserAboutPublicationChange($page, sprintf(_t('CMSMain.REMOVEDPAGE',"Removed '%s' from the published site"),$page->Title));
 	}
-
-
+	
 	/**
 	 * Return a few pieces of information about a change to a page
 	 *  - Send the new status message
@@ -789,7 +803,15 @@ HTML;
 
 		FormResponse::add($this->getActionUpdateJS($page));
 		FormResponse::update_status($page->Status);
-		FormResponse::add("\$('sitetree').setNodeTitle($page->ID, '$JS_title')");
+		
+		if($JS_stageURL || $JS_liveURL) {
+			FormResponse::add("\$('sitetree').setNodeTitle($page->ID, '$JS_title')");
+		} else {
+			FormResponse::add("var node = $('sitetree').getTreeNodeByIdx('$page->ID');");
+			FormResponse::add("if(node.parentTreeNode)	node.parentTreeNode.removeTreeNode(node);");
+			FormResponse::add("$('Form_EditForm').reloadIfSetTo($page->ID);");
+		}
+		
 		FormResponse::status_message($statusMessage, 'good');
 		FormResponse::add("$('Form_EditForm').elements.StageURLSegment.value = '$JS_stageURL'");
 		FormResponse::add("$('Form_EditForm').elements.LiveURLSegment.value = '$JS_liveURL'");
