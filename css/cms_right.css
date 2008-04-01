@@ -466,7 +466,7 @@ div.originallang_holder.field.CompositeField.nolabel {
 #contentPanel div.tree_holder {
 	width: 184px;
 	height: 260px;
-	overflow-x: hidden;
+	overflow-x: auto; /* Give a scrollbar for navigating big trees in a little box */
 }
 #contentPanel ul.tree a {
 	padding-left: 15px;
