@@ -68,7 +68,7 @@ CMSForm.prototype = {
 		var rightHTML = formContent;
 		
 		// Rewrite # links
-		rightHTML = rightHTML.replace(/href *= *"#/g, 'href="' + window.location.href.replace(/#.*$/,'') + '#');
+		rightHTML = rightHTML.replace(/(<a[^>]+href *= *")#/g, '$1' + window.location.href.replace(/#.*$/,'') + '#');
 		
 		// Rewrite iframe links (for IE)
 		rightHTML = rightHTML.replace(/(<iframe[^>]*src=")([^"]+)("[^>]*>)/g, '$1' + baseHref() + '$2$3');
