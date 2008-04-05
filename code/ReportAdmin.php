@@ -134,6 +134,21 @@ class ReportAdmin extends LeftAndMain {
 
 		return $form;
 	}
+	
+	/**
+	 * Determine if we have reports and need to display the Reports main menu item
+	 *
+	 * @return boolean
+	 */
+	public static function has_reports() {
+		$subclasses = ClassInfo::subclassesFor('Report');
+		foreach($subclasses as $class){
+			if($class != 'Report') {
+				return true;
+			}
+		}
+		return false;
+	}
 }
 
 ?>

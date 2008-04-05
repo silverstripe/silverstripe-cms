@@ -1,19 +1,27 @@
 <?php
-
-/**
- * @package cms
- * @subpackage core
- */
-
 /**
  * LeftAndMain is the parent class of all the two-pane views in the CMS.
  * If you are wanting to add more areas to the CMS, you can do it by subclassing LeftAndMain.
+ * 
+ * This is essentially an abstract class which should be subclassed.
+ * See {@link CMSMain} for a good example.
+ * 
  * @package cms
  * @subpackage core
  */
-abstract class LeftAndMain extends Controller {
+class LeftAndMain extends Controller {
+	
 	static $tree_class = null;
-	static $extra_menu_items = array(), $removed_menu_items = array(), $replaced_menu_items = array();
+	
+	/**
+	 * Default menu items for the core cms functionality,
+	 * set in cms/_config.php.
+	 *
+	 * @usedby {@link add_menu_item()}
+	 * @var array
+	 */
+	protected static $menu_items = array();
+	
 	static $ForceReload;
 
 	static $allowed_actions = array(
@@ -201,8 +209,12 @@ abstract class LeftAndMain extends Controller {
 	/**
 	 * You should implement a Link() function in your subclass of LeftAndMain,
 	 * to point to the URL of that particular controller.
+	 * 
+	 * @return string
 	 */
-	abstract public function Link();
+	public function Link() {
+		user_error('LeftAndMain::Link(): Please implement in your subclass', E_USER_ERROR);
+	}
 
 	public function show($params) {
 		if($params['ID']) $this->setCurrentPageID($params['ID']);
@@ -239,113 +251,49 @@ abstract class LeftAndMain extends Controller {
 	/**
 	 * Returns the main menu of the CMS.  This is also used by init() to work out which sections the user
 	 * has access to.
+	 * 
+	 * @return DataObjectSet
 	 */
 	public function MainMenu() {
 		// Don't accidentally return a menu if you're not logged in - it's used to determine access.
 		if(!Member::currentUserID()) return new DataObjectSet();
 
-		// Built-in modules
-
-		// array[0]: Name of the icon
-		// array[1]: URL to visi
-		// array[2]: The controller class for this menu, used to check permisssions.  If blank, it's assumed that this is public, and always shown to
-		//           users who have the rights to access some other part of the admin area.
-		$menuSrc = array(
-			_t('LeftAndMain.SITECONTENT',"Site Content",PR_HIGH,"Menu title") => array("content", "admin/", "CMSMain"),
-			_t('LeftAndMain.FILESIMAGES',"Files & Images",PR_HIGH,"Menu title") => array("files", "admin/assets/", "AssetAdmin"),
-			_t('LeftAndMain.NEWSLETTERS',"Newsletters",PR_HIGH,"Menu title") => array("newsletter", "admin/newsletter/", "NewsletterAdmin"),
-			_t('LeftAndMain.REPORTS',"Reports",PR_HIGH,'Menu title') => array("report", "admin/reports/", "ReportAdmin"),
-			_t('LeftAndMain.SECURITY',"Security",PR_HIGH,'Menu title') => array("security", "admin/security/", "SecurityAdmin"),
-			_t('LeftAndMain.COMMENTS',"Comments",PR_HIGH,'Menu title') => array("comments", "admin/comments/", "CommentAdmin"),
-			_t('LeftAndMain.HELP',"Help",PR_HIGH,'Menu title') => array("help", "http://userhelp.silverstripe.com"),
-		);
-
-		if(!$this->hasReports()) unset($menuSrc[_t('LeftAndMain.REPORTS')]);
-
-		// Extra modules
-		if($removed = $this->stat('removed_menu_items')) {
-			foreach($removed as $remove) {
-				foreach($menuSrc as $k => $v) {
-					if($v[0] == $remove) {
-						unset($menuSrc[$k]);
-						break;
-					}
-				}
-			}
-		}
-
-		// replace menu items
-		if($replaced = $this->stat('replaced_menu_items') ) {
-
-			$newMenu = array();
-
-			reset( $menuSrc );
-
-			for( $i = 0; $i < count( $menuSrc ); $i++ ) {
-				$existing = current($menuSrc);
-
-				if( $replacement = $replaced[$existing[0]] ) {
-					$newMenu = array_merge( $newMenu, $replacement );
-				} else
-					$newMenu = array_merge( $newMenu, array( key( $menuSrc) => current( $menuSrc ) ) );
-
-				next( $menuSrc );
-			}
-
-			reset( $menuSrc );
-
-			$menuSrc = $newMenu;
-		}
-
-		// Extra modules
-		if($extra = $this->stat('extra_menu_items')) {
-			foreach($extra as $code => $spec)  {
-				if(!is_array($spec)) $extra[$code] = array($code, $spec, 'title' => $code);
-				else $extra[$code]['title'] = $code;
-			}
-
-			array_splice($menuSrc, count($menuSrc)-2, 0, $extra);
-		}
-
 		// Encode into DO set
 		$menu = new DataObjectSet();
-		$itemsWithPermission = 0;
-		foreach($menuSrc as $title => $menuItem) {
-			if(is_numeric($title) && isset($menuItem['title'])) $title = $menuItem['title'];
-
-			if(isset($menuItem[2])) {
-				if($this->hasMethod('alternateMenuDisplayCheck')) $isAllowed = $this->alternateMenuDisplayCheck($menuItem[2]);
-				else $isAllowed = Permission::check("CMS_ACCESS_" . $menuItem[2]);
+		foreach($this->stat('menu_items') as $code => $menuItem) {
+			if(isset($menuItem['controllerClass']) && $this->hasMethod('alternateMenuDisplayCheck')) {
+				$isAllowed = $this->alternateMenuDisplayCheck($menuItem['controllerClass']);
+			} elseif(isset($menuItem['controllerClass'])) {
+				$isAllowed = Permission::check("CMS_ACCESS_" . $menuItem['controllerClass']);
 			} else {
 				$isAllowed = true;
 			}
 
-			if($isAllowed) {
-				// Count up the number of items that have specific permission settings
-				if(isset($menuItem[2])) $itemsWithPermission++;
+			if(!$isAllowed) continue;
 
-				$linkingmode = "";
-				if(!(strpos($this->Link(), $menuItem[1]) === false)) {
-					if($menuItem[0] == "content") {
-						if($this->Link() == "admin/")
-							$linkingmode = "current";
-					}
-					else
+			$linkingmode = "";
+			if(!(strpos($this->Link(), $menuItem['url']) === false)) {
+				// HACK Hardcoding assumptions about the first default menu item
+				if($code == "content") {
+					if($this->Link() == "admin/")
 						$linkingmode = "current";
+				} else {
+					$linkingmode = "current";
 				}
-
-				$menu->push(new ArrayData(array(
-					"Title" => Convert::raw2xml($title),
-					"Code" => $menuItem[0],
-					"Link" => $menuItem[1],
-					"LinkingMode" => $linkingmode
-				)));
 			}
+		
+			$menu->push(new ArrayData(array(
+				"Title" => Convert::raw2xml($menuItem['title']),
+				"Code" => $code,
+				"Link" => $menuItem['url'],
+				"LinkingMode" => $linkingmode
+			)));
 		}
+		
+		// if no current item is found, assume that first item is shown
+		//if(!isset($foundCurrent)) 
 
-		// Only return a menu if there is at least one permission-requiring item.  Otherwise, the menu will just be the "help" icon.
-		if($itemsWithPermission > 0) return $menu;
-		else return new DataObjectSet();
+		return $menu;
 	}
 
   /**
@@ -874,21 +822,6 @@ JS;
 	}
 
 	/**
-	 * Determine if we have reports and need to display the Reports main menu item
-	 *
-	 * @return boolean
-	 */
-	function hasReports() {
-		$subclasses = ClassInfo::subclassesFor('Report');
-		foreach($subclasses as $class){
-			if($class != 'Report') {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	/**
 	 * Return the base directory of the tiny_mce codebase
 	 */
 	function MceRoot() {
@@ -902,6 +835,72 @@ JS;
 		$methodName = $form->buttonClicked()->extraData();
 		$record = $this->CurrentPage();
 		return $record->$methodName($data, $form);		
+	}
+	
+	/**
+	 * Add a navigation item to the main administration menu showing in the top bar.
+	 *
+	 * @param string $code Unique identifier for this menu item (e.g. used by {@link replace_menu_item()} and
+	 * 					{@link remove_menu_item}. Also used as a CSS-class for icon customization.
+	 * @param string $menuTitle Localized title showing in the menu bar 
+	 * @param string $url A relative URL that will be linked in the menu bar.
+	 * 					Make sure to add a matching route via {@link Director::addRules()} to this url.
+	 * @param string $controllerClass The controller class for this menu, used to check permisssions.  
+	 * 					If blank, it's assumed that this is public, and always shown to users who 
+	 * 					have the rights to access some other part of the admin area.
+	 */
+	public static function add_menu_item($code, $menuTitle, $url, $controllerClass = null) {
+		$menuItems = singleton('LeftAndMain')->stat('menu_items', true);
+		if(isset($menuItems[$code])) {
+			user_error("LeftAndMain::add_menu_item(): A menu item with code '{$menuItems}' 
+				already exists, can't add it. Please use replace_menu_item() to explicitly replace it", 
+				E_USER_ERROR
+			);
+		}
+		
+		self::replace_menu_item($code, $menuTitle, $url, $controllerClass);
+	}
+	
+	/**
+	 * Removes an existing item from the menu.
+	 *
+	 * @param string $code Unique identifier for this menu item
+	 */
+	public static function remove_menu_item($code) {
+		$menuItems = singleton('LeftAndMain')->stat('menu_items', true);
+		if(isset($menuItems[$code])) unset($menuItems[$code]);
+		// replace the whole array
+		Object::addStaticVars(
+			'LeftAndMain', 
+			array('menu_items' => $menuItems),
+			true
+		);
+	}
+
+	/**
+	 * Replace a navigation item to the main administration menu showing in the top bar.
+	 *
+	 * @param string $code Unique identifier for this menu item (e.g. used by {@link replace_menu_item()} and
+	 * 					{@link remove_menu_item}. Also used as a CSS-class for icon customization.
+	 * @param string $menuTitle Localized title showing in the menu bar 
+	 * @param string $url A relative URL that will be linked in the menu bar.
+	 * 					Make sure to add a matching route via {@link Director::addRules()} to this url.
+	 * @param string $controllerClass The controller class for this menu, used to check permisssions.  
+	 * 					If blank, it's assumed that this is public, and always shown to users who 
+	 * 					have the rights to access some other part of the admin area.
+	 */
+	public static function replace_menu_item($code, $menuTitle, $url, $controllerClass = null) {
+		$menuItems = singleton('LeftAndMain')->stat('menu_items', true);
+		$menuItems[$code] = array(
+			'title' => $menuTitle, 
+			'url' => $url, 
+			'controllerClass' => $controllerClass
+		);
+		Object::addStaticVars(
+			'LeftAndMain', 
+			array('menu_items' => $menuItems),
+			true
+		);
 	}
 	
 }
