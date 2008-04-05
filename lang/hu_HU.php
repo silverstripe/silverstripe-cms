@@ -216,7 +216,7 @@ $lang['hu_HU']['LeftAndMain.ss']['PUBLIS'] = 'Publikált oldal';
 $lang['hu_HU']['LeftAndMain.ss']['SSWEB'] = 'Silverstripe weboldal';
 $lang['hu_HU']['LeftAndMain.ss']['SWITCHTO'] = 'Váltás: ';
 $lang['hu_HU']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Oldal nézet: ';
-$lang['hu_HU']['LeftAndMain']['STATISTICS'] = 'Statisztika';
+
 $lang['hu_HU']['LeftAndMain']['STATUSTO'] = 'Az állapot megváltoztatásra került „%s”-re.';
 $lang['hu_HU']['LeftAndMain']['TREESITECONTENT'] = 'Oldal tartalma';
 $lang['hu_HU']['MemberList']['ADD'] = 'Hozzáadás';
@@ -334,9 +334,9 @@ $lang['hu_HU']['StaticExporter']['EXPORTTO'] = 'Exportálás abba a mappába';
 $lang['hu_HU']['StaticExporter']['FOLDEREXPORT'] = 'Exportálás célmappája';
 $lang['hu_HU']['StaticExporter']['NAME'] = 'Statikus exportáló';
 $lang['hu_HU']['StaticExporter']['ONETHATEXISTS'] = 'Kérünk, adj meg egy létező mappát.';
-$lang['hu_HU']['StatisticsAdmin_left.ss']['OVERV'] = 'Áttekintés';
-$lang['hu_HU']['StatisticsAdmin_left.ss']['REPTYPES'] = 'Jelentéstípusok';
-$lang['hu_HU']['StatisticsAdmin_left.ss']['USERS'] = 'Felhasználók';
+
+
+
 $lang['hu_HU']['SubmittedFormEmail.ss']['SUBMITTED'] = 'A következő adat lett elküldve a weboldaladra: ';
 $lang['hu_HU']['TaskList.ss']['BY'] = 'által';
 $lang['hu_HU']['ThumbnailStripField']['NOTAFOLDER'] = 'Ez nem egy mappa.';

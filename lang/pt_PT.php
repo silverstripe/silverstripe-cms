@@ -222,7 +222,7 @@ $lang['pt_PT']['LeftAndMain.ss']['PUBLIS'] = 'Site Publicado';
 $lang['pt_PT']['LeftAndMain.ss']['SSWEB'] = 'Site Silverstripe';
 $lang['pt_PT']['LeftAndMain.ss']['SWITCHTO'] = 'Mudar para:';
 $lang['pt_PT']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Ver Página:';
-$lang['pt_PT']['LeftAndMain']['STATISTICS'] = 'Estatísticas';
+
 $lang['pt_PT']['LeftAndMain']['STATUSTO'] = 'Estado alterado para \'%s\'';
 $lang['pt_PT']['LeftAndMain']['TREESITECONTENT'] = 'Conteúdo';
 $lang['pt_PT']['MemberList']['ADD'] = 'Adicionar';
@@ -344,9 +344,9 @@ $lang['pt_PT']['StaticExporter']['EXPORTTO'] = 'Exportar para esta pasta';
 $lang['pt_PT']['StaticExporter']['FOLDEREXPORT'] = 'Pasta para onde exportar';
 $lang['pt_PT']['StaticExporter']['NAME'] = 'Exportador estático';
 $lang['pt_PT']['StaticExporter']['ONETHATEXISTS'] = 'Por favor, especifique uma pasta existente';
-$lang['pt_PT']['StatisticsAdmin_left.ss']['OVERV'] = 'Vista Geral';
-$lang['pt_PT']['StatisticsAdmin_left.ss']['REPTYPES'] = 'Tipos de Relatórios';
-$lang['pt_PT']['StatisticsAdmin_left.ss']['USERS'] = 'Utilizadores';
+
+
+
 $lang['pt_PT']['SubmittedFormEmail.ss']['SUBMITTED'] = 'Os seguintes dados foram inseridos no seu site:';
 $lang['pt_PT']['TaskList.ss']['BY'] = 'por';
 $lang['pt_PT']['ThumbnailStripField']['NOTAFOLDER'] = 'Não é uma pasta';

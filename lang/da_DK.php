@@ -216,7 +216,7 @@ $lang['da_DK']['LeftAndMain.ss']['PUBLIS'] = 'Udgivet side';
 $lang['da_DK']['LeftAndMain.ss']['SSWEB'] = 'Silverstripe hjemmeside';
 $lang['da_DK']['LeftAndMain.ss']['SWITCHTO'] = 'Skift til:';
 $lang['da_DK']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Sidevisning:';
-$lang['da_DK']['LeftAndMain']['STATISTICS'] = 'Statistikker';
+
 $lang['da_DK']['LeftAndMain']['STATUSTO'] = 'Status er ændret til \'%s\'';
 $lang['da_DK']['LeftAndMain']['TREESITECONTENT'] = 'Sideindhold';
 $lang['da_DK']['MemberList']['ADD'] = 'Tilføj';
@@ -334,9 +334,9 @@ $lang['da_DK']['StaticExporter']['EXPORTTO'] = 'Eksporter til mappen';
 $lang['da_DK']['StaticExporter']['FOLDEREXPORT'] = 'Mappe der skal eksporteres til';
 $lang['da_DK']['StaticExporter']['NAME'] = 'Statisk eksporter';
 $lang['da_DK']['StaticExporter']['ONETHATEXISTS'] = 'Specificer en mappe der findes';
-$lang['da_DK']['StatisticsAdmin_left.ss']['OVERV'] = 'Oversigt';
-$lang['da_DK']['StatisticsAdmin_left.ss']['REPTYPES'] = 'Rapporttyper';
-$lang['da_DK']['StatisticsAdmin_left.ss']['USERS'] = 'Brugere';
+
+
+
 $lang['da_DK']['SubmittedFormEmail.ss']['SUBMITTED'] = 'Følgende data er indsendt til din hjemmeside:';
 $lang['da_DK']['TaskList.ss']['BY'] = 'af';
 $lang['da_DK']['ThumbnailStripField']['NOTAFOLDER'] = 'Dette  er ikke en mappe';

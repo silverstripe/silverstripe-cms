@@ -216,7 +216,7 @@ $lang['ru_RU']['LeftAndMain.ss']['PUBLIS'] = 'Опубликованный са�
 $lang['ru_RU']['LeftAndMain.ss']['SSWEB'] = 'Вебсайт Silverstripe';
 $lang['ru_RU']['LeftAndMain.ss']['SWITCHTO'] = 'Переключиться на:';
 $lang['ru_RU']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Вид страниц:';
-$lang['ru_RU']['LeftAndMain']['STATISTICS'] = 'Статистика';
+
 $lang['ru_RU']['LeftAndMain']['STATUSTO'] = 'Статус изменен на \'%s\'';
 $lang['ru_RU']['LeftAndMain']['TREESITECONTENT'] = 'Содержимое сайта';
 $lang['ru_RU']['MemberList']['ADD'] = 'Добавить';
@@ -335,9 +335,9 @@ $lang['ru_RU']['StaticExporter']['EXPORTTO'] = 'Экспорт в эту пап�
 $lang['ru_RU']['StaticExporter']['FOLDEREXPORT'] = 'Папка для экспорта';
 $lang['ru_RU']['StaticExporter']['NAME'] = 'Статический экспорт';
 $lang['ru_RU']['StaticExporter']['ONETHATEXISTS'] = 'Пожалуйста, укажите существующую папку';
-$lang['ru_RU']['StatisticsAdmin_left.ss']['OVERV'] = 'Обзор';
-$lang['ru_RU']['StatisticsAdmin_left.ss']['REPTYPES'] = 'Типы отчетов';
-$lang['ru_RU']['StatisticsAdmin_left.ss']['USERS'] = 'Пользователи';
+
+
+
 $lang['ru_RU']['SubmittedFormEmail.ss']['SUBMITTED'] = 'На Ваш сайт были отправлены следующие данные: ';
 $lang['ru_RU']['TaskList.ss']['BY'] = '-';
 $lang['ru_RU']['ThumbnailStripField']['NOTAFOLDER'] = 'Это не папка';

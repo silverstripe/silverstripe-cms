@@ -211,11 +211,6 @@ $lang['en_US']['LeftAndMain']['COMMENTS'] = array(
 	PR_HIGH,
 	'Menu title'
 );
-$lang['en_US']['LeftAndMain']['STATISTICS'] = array(
-	'Statistics',
-	PR_HIGH,
-	'Menu title'
-);
 $lang['en_US']['LeftAndMain']['HELP'] = array(
 	'Help',
 	PR_HIGH,
@@ -352,7 +347,7 @@ $lang['en_US']['StaticExporter']['FOLDEREXPORT'] = 'Folder to export to';
 $lang['en_US']['StaticExporter']['BASEURL'] = 'Base URL';
 $lang['en_US']['StaticExporter']['EXPORTTO'] = 'Export to that folder';
 $lang['en_US']['StaticExporter']['ONETHATEXISTS'] = 'Please specify a folder that exists';
-$lang['en_US']['StatisticsAdmin']['WELCOME'] = 'Select a report type from the left for a detailed look at site statistics';
+
 $lang['en_US']['ThumbnailStripField']['NOTAFOLDER'] = 'This is not a folder';
 $lang['en_US']['ThumbnailStripField']['NOIMAGESFOUND'] = 'No images found in';
 $lang['en_US']['PageComment']['COMMENTBY'] = array(
@@ -582,14 +577,14 @@ $lang['en_US']['SecurityAdmin_right.ss']['WELCOME2'] = array(
 	'security admininistration section.  Please choose a group from the left.',
 	50
 );
-$lang['en_US']['StatisticsAdmin_left.ss']['STATISTICS'] = 'Statistics';
-$lang['en_US']['StatisticsAdmin_left.ss']['REPTYPES'] = 'Report Types';
-$lang['en_US']['StatisticsAdmin_left.ss']['OVERV'] = 'Overview';
-$lang['en_US']['StatisticsAdmin_left.ss']['USERS'] = 'Users';
-$lang['en_US']['StatisticsAdmin_left.ss']['VIEWS'] = 'Views';
-$lang['en_US']['StatisticsAdmin_left.ss']['TRENDS'] = 'Trends';
-$lang['en_US']['StatisticsAdmin_left.ss']['OS'] = 'Operating Systems';
-$lang['en_US']['StatisticsAdmin_left.ss']['BROWSERS'] = 'Browsers';
+
+
+
+
+
+
+
+
 $lang['en_US']['LeftAndMain.ss']['LOADING'] = array(
 	'Loading...',
 	PR_HIGH

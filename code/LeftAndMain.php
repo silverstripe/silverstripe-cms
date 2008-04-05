@@ -257,7 +257,6 @@ abstract class LeftAndMain extends Controller {
 			_t('LeftAndMain.REPORTS',"Reports",PR_HIGH,'Menu title') => array("report", "admin/reports/", "ReportAdmin"),
 			_t('LeftAndMain.SECURITY',"Security",PR_HIGH,'Menu title') => array("security", "admin/security/", "SecurityAdmin"),
 			_t('LeftAndMain.COMMENTS',"Comments",PR_HIGH,'Menu title') => array("comments", "admin/comments/", "CommentAdmin"),
-			_t('LeftAndMain.STATISTICS',"Statistics",PR_HIGH,'Menu title') => array("statistics", "admin/statistics/", "StatisticsAdmin"),
 			_t('LeftAndMain.HELP',"Help",PR_HIGH,'Menu title') => array("help", "http://userhelp.silverstripe.com"),
 		);
 
@@ -300,9 +299,9 @@ abstract class LeftAndMain extends Controller {
 
 		// Extra modules
 		if($extra = $this->stat('extra_menu_items')) {
-			foreach($extra as $k => $v)  {
-				if(!is_array($v)) $extra[$k] = array($k, $v, 'title' => $k);
-				else $extra[$k]['title'] = $k;
+			foreach($extra as $code => $spec)  {
+				if(!is_array($spec)) $extra[$code] = array($code, $spec, 'title' => $code);
+				else $extra[$code]['title'] = $code;
 			}
 
 			array_splice($menuSrc, count($menuSrc)-2, 0, $extra);
@@ -904,6 +903,7 @@ JS;
 		$record = $this->CurrentPage();
 		return $record->$methodName($data, $form);		
 	}
+	
 }
 
 ?>

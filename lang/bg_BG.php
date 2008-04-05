@@ -216,7 +216,7 @@ $lang['bg_BG']['LeftAndMain.ss']['PUBLIS'] = 'Публикуван сайт';
 $lang['bg_BG']['LeftAndMain.ss']['SSWEB'] = 'Silverstripe Уебсайт';
 $lang['bg_BG']['LeftAndMain.ss']['SWITCHTO'] = 'Смени на:';
 $lang['bg_BG']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Изглед на страница:';
-$lang['bg_BG']['LeftAndMain']['STATISTICS'] = 'Статистики';
+
 $lang['bg_BG']['LeftAndMain']['STATUSTO'] = 'Състояние променено на \' %s \'';
 $lang['bg_BG']['LeftAndMain']['TREESITECONTENT'] = 'Съдържание на сайта';
 $lang['bg_BG']['MemberList']['ADD'] = 'Добави';
@@ -336,9 +336,9 @@ $lang['bg_BG']['StaticExporter']['EXPORTTO'] = 'Експортирай в таз
 $lang['bg_BG']['StaticExporter']['FOLDEREXPORT'] = 'Папка към която да се експортира';
 $lang['bg_BG']['StaticExporter']['NAME'] = 'Статичен експортър';
 $lang['bg_BG']['StaticExporter']['ONETHATEXISTS'] = 'Моля укажете съществуваща папка';
-$lang['bg_BG']['StatisticsAdmin_left.ss']['OVERV'] = 'Преглед';
-$lang['bg_BG']['StatisticsAdmin_left.ss']['REPTYPES'] = 'Вид доклади';
-$lang['bg_BG']['StatisticsAdmin_left.ss']['USERS'] = 'Потребители';
+
+
+
 $lang['bg_BG']['SubmittedFormEmail.ss']['SUBMITTED'] = 'Следващите данни бяха пратени на вашият сайт:';
 $lang['bg_BG']['TaskList.ss']['BY'] = 'от';
 $lang['bg_BG']['ThumbnailStripField']['NOTAFOLDER'] = 'Това не е папка';

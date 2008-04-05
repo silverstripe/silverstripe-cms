@@ -216,7 +216,7 @@ $lang['nb_NO']['LeftAndMain.ss']['PUBLIS'] = 'Publisert side';
 $lang['nb_NO']['LeftAndMain.ss']['SSWEB'] = 'Silverstripe Nettside';
 $lang['nb_NO']['LeftAndMain.ss']['SWITCHTO'] = 'Bytt til:';
 $lang['nb_NO']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Se side:';
-$lang['nb_NO']['LeftAndMain']['STATISTICS'] = 'Statistikker';
+
 $lang['nb_NO']['LeftAndMain']['STATUSTO'] = 'Status endret til %s';
 $lang['nb_NO']['LeftAndMain']['TREESITECONTENT'] = 'Nettstedets innhold';
 $lang['nb_NO']['MemberList']['ADD'] = 'Legg til';
@@ -334,9 +334,9 @@ $lang['nb_NO']['StaticExporter']['EXPORTTO'] = 'Eksporter til den mappen';
 $lang['nb_NO']['StaticExporter']['FOLDEREXPORT'] = 'Mappe å eksportere til';
 $lang['nb_NO']['StaticExporter']['NAME'] = 'Statistikk eksportør';
 $lang['nb_NO']['StaticExporter']['ONETHATEXISTS'] = 'Vennligst spesifiser en mappe som eksisterer';
-$lang['nb_NO']['StatisticsAdmin_left.ss']['OVERV'] = 'Overblikk';
-$lang['nb_NO']['StatisticsAdmin_left.ss']['REPTYPES'] = 'Rapporttyper';
-$lang['nb_NO']['StatisticsAdmin_left.ss']['USERS'] = 'Brukere';
+
+
+
 $lang['nb_NO']['SubmittedFormEmail.ss']['SUBMITTED'] = 'Følgende data ble sendt til ditt nettsted:';
 $lang['nb_NO']['TaskList.ss']['BY'] = 'av';
 $lang['nb_NO']['ThumbnailStripField']['NOTAFOLDER'] = 'Dette er ikke en mappe';

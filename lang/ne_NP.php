@@ -216,7 +216,7 @@ $lang['ne_NP']['LeftAndMain.ss']['PUBLIS'] = 'प्रकाशित साई
 $lang['ne_NP']['LeftAndMain.ss']['SSWEB'] = 'सिल्भरस्त्रिप वेबसाईट';
 $lang['ne_NP']['LeftAndMain.ss']['SWITCHTO'] = 'यसमा स्विच गर्नुहोस् : ';
 $lang['ne_NP']['LeftAndMain.ss']['VIEWPAGEIN'] = 'पेज हेर्नुस्:';
-$lang['ne_NP']['LeftAndMain']['STATISTICS'] = 'तथ्याङ्क';
+
 $lang['ne_NP']['LeftAndMain']['STATUSTO'] = 'स्तिति \'%s\' मा बदलियो';
 $lang['ne_NP']['LeftAndMain']['TREESITECONTENT'] = 'साईट सामाग्री';
 $lang['ne_NP']['MemberList']['ADD'] = 'थप';
@@ -335,9 +335,9 @@ $lang['ne_NP']['StaticExporter']['EXPORTTO'] = 'त्यो फोल्डर�
 $lang['ne_NP']['StaticExporter']['FOLDEREXPORT'] = 'फोल्डर आयत गने ';
 $lang['ne_NP']['StaticExporter']['NAME'] = 'स्टाटिक एक्स्प्लोरेर';
 $lang['ne_NP']['StaticExporter']['ONETHATEXISTS'] = 'कृपया भएको फोल्डर छन्नुहोस् ';
-$lang['ne_NP']['StatisticsAdmin_left.ss']['OVERV'] = 'सिंहावलोकन ';
-$lang['ne_NP']['StatisticsAdmin_left.ss']['REPTYPES'] = 'रिपोर्ट किसिमहरु';
-$lang['ne_NP']['StatisticsAdmin_left.ss']['USERS'] = 'प्रयोगकताहरु';
+
+
+
 $lang['ne_NP']['SubmittedFormEmail.ss']['SUBMITTED'] = 'तलको डाटा तपाईंको वेबसाईटमा बुझाइएको थियो:';
 $lang['ne_NP']['TaskList.ss']['BY'] = 'योद्वरा';
 $lang['ne_NP']['ThumbnailStripField']['NOTAFOLDER'] = 'यो फोल्डर होइन';

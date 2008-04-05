@@ -211,7 +211,7 @@ $lang['si_LK']['LeftAndMain.ss']['LOGOUT'] = 'පිටවීම';
 $lang['si_LK']['LeftAndMain.ss']['PUBLIS'] = 'ප්‍රකාශයට පත් කරන ලද අඩවි';
 $lang['si_LK']['LeftAndMain.ss']['SSWEB'] = 'SilverStripe වෙබ් අඩවිය';
 $lang['si_LK']['LeftAndMain.ss']['VIEWPAGEIN'] = 'පිටු දර්ශනය';
-$lang['si_LK']['LeftAndMain']['STATISTICS'] = 'සංක්යාන';
+
 $lang['si_LK']['LeftAndMain']['STATUSTO'] = 'තත්වය වෙනස් කරන ලදී';
 $lang['si_LK']['LeftAndMain']['TREESITECONTENT'] = 'අන්තර්ගතය';
 $lang['si_LK']['MemberList']['ADD'] = 'එකතු කරන්න';
@@ -329,9 +329,9 @@ $lang['si_LK']['StaticExporter']['EXPORTTO'] = 'ඵම ගොනුවට අප
 $lang['si_LK']['StaticExporter']['FOLDEREXPORT'] = 'අපනයනය කරන ගොනුව';
 $lang['si_LK']['StaticExporter']['NAME'] = 'ස්තිතික අපනයනය කරන්නා';
 $lang['si_LK']['StaticExporter']['ONETHATEXISTS'] = 'පවතින ගොනුවක් තෝරන්න';
-$lang['si_LK']['StatisticsAdmin_left.ss']['OVERV'] = 'පසු දැක්ම';
-$lang['si_LK']['StatisticsAdmin_left.ss']['REPTYPES'] = 'වාර්තා වර්ග';
-$lang['si_LK']['StatisticsAdmin_left.ss']['USERS'] = 'ග්රාහකයන්';
+
+
+
 $lang['si_LK']['SubmittedFormEmail.ss']['SUBMITTED'] = 'පහත දත්ත අඩවියට භාරකරන ලදී';
 $lang['si_LK']['TaskList.ss']['BY'] = 'විසින්';
 $lang['si_LK']['ThumbnailStripField']['NOTAFOLDER'] = 'මෙය ගොනුවක් නොවේ';

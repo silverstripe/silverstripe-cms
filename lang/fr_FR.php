@@ -216,7 +216,7 @@ $lang['fr_FR']['LeftAndMain.ss']['PUBLIS'] = 'Site Public';
 $lang['fr_FR']['LeftAndMain.ss']['SSWEB'] = 'Site Web SilverStripe';
 $lang['fr_FR']['LeftAndMain.ss']['SWITCHTO'] = 'Changer à :';
 $lang['fr_FR']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Vue de la page :';
-$lang['fr_FR']['LeftAndMain']['STATISTICS'] = 'Statistiques';
+
 $lang['fr_FR']['LeftAndMain']['STATUSTO'] = 'Statut changé en \'%s\'';
 $lang['fr_FR']['LeftAndMain']['TREESITECONTENT'] = 'Contenu du site';
 $lang['fr_FR']['MemberList']['ADD'] = 'Ajouter';
@@ -335,9 +335,9 @@ $lang['fr_FR']['StaticExporter']['EXPORTTO'] = 'Exporter vers ce dossier';
 $lang['fr_FR']['StaticExporter']['FOLDEREXPORT'] = 'Dossier à exporter vers';
 $lang['fr_FR']['StaticExporter']['NAME'] = 'Exportation Statique';
 $lang['fr_FR']['StaticExporter']['ONETHATEXISTS'] = 'Spécifier un dossier qui existe s\'il vous plaît';
-$lang['fr_FR']['StatisticsAdmin_left.ss']['OVERV'] = 'Aperçu';
-$lang['fr_FR']['StatisticsAdmin_left.ss']['REPTYPES'] = 'Types de rapport';
-$lang['fr_FR']['StatisticsAdmin_left.ss']['USERS'] = 'Utilisateurs';
+
+
+
 $lang['fr_FR']['SubmittedFormEmail.ss']['SUBMITTED'] = 'Les données suivantes ont été envoyées à votre site web :';
 $lang['fr_FR']['TaskList.ss']['BY'] = 'par';
 $lang['fr_FR']['ThumbnailStripField']['NOTAFOLDER'] = 'Ce n\'est pas un dossier';

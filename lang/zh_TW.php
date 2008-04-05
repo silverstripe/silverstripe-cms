@@ -216,7 +216,7 @@ $lang['zh_TW']['LeftAndMain.ss']['PUBLIS'] = '正式發布站';
 $lang['zh_TW']['LeftAndMain.ss']['SSWEB'] = 'Silverstripe網站';
 $lang['zh_TW']['LeftAndMain.ss']['SWITCHTO'] = '切換至：';
 $lang['zh_TW']['LeftAndMain.ss']['VIEWPAGEIN'] = '網頁瀏覽：';
-$lang['zh_TW']['LeftAndMain']['STATISTICS'] = '統計報告';
+
 $lang['zh_TW']['LeftAndMain']['STATUSTO'] = '狀態改變為「%s」';
 $lang['zh_TW']['LeftAndMain']['TREESITECONTENT'] = '網站內容';
 $lang['zh_TW']['MemberList']['ADD'] = '新增';
@@ -334,9 +334,9 @@ $lang['zh_TW']['StaticExporter']['EXPORTTO'] = '匯出至那個資料夾';
 $lang['zh_TW']['StaticExporter']['FOLDEREXPORT'] = '資料夾匯出至';
 $lang['zh_TW']['StaticExporter']['NAME'] = '網站靜態匯出';
 $lang['zh_TW']['StaticExporter']['ONETHATEXISTS'] = '請選擇存在的資料夾';
-$lang['zh_TW']['StatisticsAdmin_left.ss']['OVERV'] = '概況';
-$lang['zh_TW']['StatisticsAdmin_left.ss']['REPTYPES'] = '報告類型';
-$lang['zh_TW']['StatisticsAdmin_left.ss']['USERS'] = '使用者';
+
+
+
 $lang['zh_TW']['SubmittedFormEmail.ss']['SUBMITTED'] = '下列的資料被送到您的網站：';
 $lang['zh_TW']['TaskList.ss']['BY'] = '由';
 $lang['zh_TW']['ThumbnailStripField']['NOTAFOLDER'] = '這不是一個資料夾';

@@ -216,7 +216,7 @@ $lang['tr_TR']['LeftAndMain.ss']['PUBLIS'] = 'Yayınlanmış Site';
 $lang['tr_TR']['LeftAndMain.ss']['SSWEB'] = 'Silverstripe Websitesi';
 $lang['tr_TR']['LeftAndMain.ss']['SWITCHTO'] = 'Şuna değiştir:';
 $lang['tr_TR']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Sayfa görünümü:';
-$lang['tr_TR']['LeftAndMain']['STATISTICS'] = 'İstatistikler';
+
 $lang['tr_TR']['LeftAndMain']['STATUSTO'] = 'Durum \'%s\' olarak değiştirildi';
 $lang['tr_TR']['LeftAndMain']['TREESITECONTENT'] = 'Site İçeriği';
 $lang['tr_TR']['MemberList']['ADD'] = 'Ekle';
@@ -334,9 +334,9 @@ $lang['tr_TR']['StaticExporter']['EXPORTTO'] = 'Bu dosyaya dışa aktar';
 $lang['tr_TR']['StaticExporter']['FOLDEREXPORT'] = 'Kaydedilecek klasör';
 $lang['tr_TR']['StaticExporter']['NAME'] = 'Statik Dosya Olarak Dışa Aktarma';
 $lang['tr_TR']['StaticExporter']['ONETHATEXISTS'] = 'Lütfen geçerli bir klasör belirtiniz';
-$lang['tr_TR']['StatisticsAdmin_left.ss']['OVERV'] = 'Genel Bilgi';
-$lang['tr_TR']['StatisticsAdmin_left.ss']['REPTYPES'] = 'Rapor Türleri';
-$lang['tr_TR']['StatisticsAdmin_left.ss']['USERS'] = 'Üyeler';
+
+
+
 $lang['tr_TR']['SubmittedFormEmail.ss']['SUBMITTED'] = 'Bu içerik, websitesine yollanmıştır:';
 $lang['tr_TR']['TaskList.ss']['BY'] = 'tarafından';
 $lang['tr_TR']['ThumbnailStripField']['NOTAFOLDER'] = 'Bu klasör geçerli değil';

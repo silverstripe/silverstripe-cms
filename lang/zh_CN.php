@@ -216,7 +216,7 @@ $lang['zh_CN']['LeftAndMain.ss']['PUBLIS'] = '正式发布站';
 $lang['zh_CN']['LeftAndMain.ss']['SSWEB'] = 'SilverStripe网站';
 $lang['zh_CN']['LeftAndMain.ss']['SWITCHTO'] = '切换到：';
 $lang['zh_CN']['LeftAndMain.ss']['VIEWPAGEIN'] = '展示站：';
-$lang['zh_CN']['LeftAndMain']['STATISTICS'] = '网站统计报告';
+
 $lang['zh_CN']['LeftAndMain']['STATUSTO'] = '状态已改为”%s“';
 $lang['zh_CN']['LeftAndMain']['TREESITECONTENT'] = '网站内容';
 $lang['zh_CN']['MemberList']['ADD'] = '新加';
@@ -334,9 +334,9 @@ $lang['zh_CN']['StaticExporter']['EXPORTTO'] = '导出到该文件夹';
 $lang['zh_CN']['StaticExporter']['FOLDEREXPORT'] = '导出文件夹';
 $lang['zh_CN']['StaticExporter']['NAME'] = '网站静态拷贝导出器';
 $lang['zh_CN']['StaticExporter']['ONETHATEXISTS'] = '请指定一已存在的文件夹';
-$lang['zh_CN']['StatisticsAdmin_left.ss']['OVERV'] = '概观';
-$lang['zh_CN']['StatisticsAdmin_left.ss']['REPTYPES'] = '报告类型';
-$lang['zh_CN']['StatisticsAdmin_left.ss']['USERS'] = '用户';
+
+
+
 $lang['zh_CN']['SubmittedFormEmail.ss']['SUBMITTED'] = '下列数据已被提交给您的网站：';
 $lang['zh_CN']['TaskList.ss']['BY'] = '作者：';
 $lang['zh_CN']['ThumbnailStripField']['NOTAFOLDER'] = '这并非一个文件夹';
