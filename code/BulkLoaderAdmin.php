@@ -16,6 +16,11 @@
  */
 class BulkLoaderAdmin extends LeftAndMain {
 
+	static $allowed_actions = array(
+		'preview' => 'ADMIN',
+		'process' => 'ADMIN',
+	);
+	
 	/**
 	 * Initialisation method called before accessing any functionality that BulkLoaderAdmin has to offer
 	 */
