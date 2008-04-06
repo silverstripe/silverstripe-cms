@@ -838,6 +838,55 @@ JS;
 	}
 	
 	/**
+	 * Generate the default entries for the CMS main menu.
+	 */
+	public static function populate_default_menu() {
+		self::add_menu_item(
+			"content",
+			_t('LeftAndMain.SITECONTENT',"Site Content",PR_HIGH,"Menu title"),
+			"admin/",
+			"CMSMain"
+		);
+		self::add_menu_item(
+			"files",
+			_t('LeftAndMain.FILESIMAGES',"Files & Images",PR_HIGH,"Menu title"),
+			"admin/assets/", 
+			"AssetAdmin"
+		);
+		self::add_menu_item(
+			"newsletter", 
+			_t('LeftAndMain.NEWSLETTERS',"Newsletters",PR_HIGH,"Menu title"),
+			"admin/newsletter/", 
+			"NewsletterAdmin"
+		);
+		if(ReportAdmin::has_reports()) {
+			self::add_menu_item(
+				"report", 
+				_t('LeftAndMain.REPORTS',"Reports",PR_HIGH,'Menu title'),
+				"admin/reports/", 
+				"ReportAdmin"
+			);
+		}
+		self::add_menu_item(
+			"security", 
+			_t('LeftAndMain.SECURITY',"Security",PR_HIGH,'Menu title'),
+			"admin/security/", 
+			"SecurityAdmin"
+		);
+		self::add_menu_item(
+			"comments", 
+			_t('LeftAndMain.COMMENTS',"Comments",PR_HIGH,'Menu title'),
+			"admin/comments/", 
+			"CommentAdmin"
+		);
+		self::add_menu_item(
+			"help",	
+			_t('LeftAndMain.HELP',"Help",PR_HIGH,'Menu title'), 
+			"http://userhelp.silverstripe.com"
+		);
+	}
+	
+	/**
 	 * Add a navigation item to the main administration menu showing in the top bar.
 	 *
 	 * @param string $code Unique identifier for this menu item (e.g. used by {@link replace_menu_item()} and
@@ -848,17 +897,42 @@ JS;
 	 * @param string $controllerClass The controller class for this menu, used to check permisssions.  
 	 * 					If blank, it's assumed that this is public, and always shown to users who 
 	 * 					have the rights to access some other part of the admin area.
+	 * @return boolean Success
 	 */
 	public static function add_menu_item($code, $menuTitle, $url, $controllerClass = null) {
 		$menuItems = singleton('LeftAndMain')->stat('menu_items', true);
+		
+		if(isset($menuItems[$code])) return false;
+		/*
 		if(isset($menuItems[$code])) {
 			user_error("LeftAndMain::add_menu_item(): A menu item with code '{$menuItems}' 
 				already exists, can't add it. Please use replace_menu_item() to explicitly replace it", 
 				E_USER_ERROR
 			);
 		}
+		*/
 		
-		self::replace_menu_item($code, $menuTitle, $url, $controllerClass);
+		return self::replace_menu_item($code, $menuTitle, $url, $controllerClass);
+	}
+	
+	/**
+	 * Get a single menu item by its code value.
+	 *
+	 * @param string $code
+	 * @return array
+	 */
+	public static function get_menu_item($code) {
+		$menuItems = singleton('LeftAndMain')->stat('menu_items', true);
+		return (isset($menuItems[$code])) ? $menuItems[$code] : false; 
+	}
+	
+	/**
+	 * Get all menu entries.
+	 *
+	 * @return array
+	 */
+	public static function get_menu_items() {
+		return singleton('LeftAndMain')->stat('menu_items', true);
 	}
 	
 	/**
@@ -876,6 +950,18 @@ JS;
 			true
 		);
 	}
+	
+	/**
+	 * Clears the entire menu
+	 *
+	 */
+	public static function clear_menu() {
+		Object::addStaticVars(
+			'LeftAndMain', 
+			array('menu_items' => array()),
+			true
+		);
+	}
 
 	/**
 	 * Replace a navigation item to the main administration menu showing in the top bar.
@@ -888,6 +974,7 @@ JS;
 	 * @param string $controllerClass The controller class for this menu, used to check permisssions.  
 	 * 					If blank, it's assumed that this is public, and always shown to users who 
 	 * 					have the rights to access some other part of the admin area.
+	 * @return boolean Success
 	 */
 	public static function replace_menu_item($code, $menuTitle, $url, $controllerClass = null) {
 		$menuItems = singleton('LeftAndMain')->stat('menu_items', true);
@@ -901,6 +988,8 @@ JS;
 			array('menu_items' => $menuItems),
 			true
 		);
+		
+		return true;
 	}
 	
 }
