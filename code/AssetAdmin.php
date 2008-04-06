@@ -1,18 +1,26 @@
 <?php
-
-/**
- * @package cms
- * @subpackage assets
- */
-
 /**
  * AssetAdmin is the 'file store' section of the CMS.
  * It provides an interface for maniupating the File and Folder objects in the system.
+ * 
  * @package cms
  * @subpackage assets
  */
 class AssetAdmin extends LeftAndMain {
-	static $tree_class = "File";
+
+	public static $tree_class = "File";
+	
+	/**
+	 * @see {Upload->allowedMaxFileSize}
+	 * @var int
+	 */
+	public static $allowed_max_file_size;
+	
+	/**
+	 * @see {Upload->allowedExtensions}
+	 * @var array
+	 */
+	public static $allowed_extensions = array();
 	
 	static $allowed_actions = array(
 		'addfolder',
@@ -29,7 +37,7 @@ class AssetAdmin extends LeftAndMain {
 		'uploadiframe',
 	);
 
-	public function Link($action=null) {
+	public function Link($action = null) {
 		if(!$action) $action = "index";
 		return "admin/assets/$action/" . $this->currentPageID();
 	}
@@ -88,7 +96,7 @@ class AssetAdmin extends LeftAndMain {
 	
 
 	function index() {
-		File::sync();
+		Filesystem::sync();
 		return array();		
 	}
 
@@ -165,47 +173,39 @@ class AssetAdmin extends LeftAndMain {
 		$fileSizeWarnings = '';
 		$uploadErrors = '';
 		
-		foreach($processedFiles as $file) {
-			if($file['error'] == UPLOAD_ERR_NO_TMP_DIR) {
+		foreach($processedFiles as $tmpFile) {
+			if($tmpFile['error'] == UPLOAD_ERR_NO_TMP_DIR) {
 				$status = 'bad';
 				$statusMessage = _t('AssetAdmin.NOTEMP', 'There is no temporary folder for uploads. Please set upload_tmp_dir in php.ini.');
 				break;
 			}
 		
-			if($file['tmp_name']) {
+			if($tmpFile['tmp_name']) {
 				// Workaround open_basedir problems
 				if(ini_get("open_basedir")) {
-					$newtmp = TEMP_FOLDER . '/' . $file['name'];
-					move_uploaded_file($file['tmp_name'], $newtmp);
-					$file['tmp_name'] = $newtmp;
+					$newtmp = TEMP_FOLDER . '/' . $tmpFile['name'];
+					move_uploaded_file($tmpFile['tmp_name'], $newtmp);
+					$tmpFile['tmp_name'] = $newtmp;
 				}
-			
-				// check that the file can be uploaded and isn't too large
 				
-				$extensionIndex = strripos( $file['name'], '.' );
-				$extension = strtolower( substr( $file['name'], $extensionIndex + 1 ) );
-				
-				if( $extensionIndex !== FALSE )
-					list( $maxSize, $warnSize ) = File::getMaxFileSize( $extension );
-				else
-					list( $maxSize, $warnSize ) = File::getMaxFileSize();
-				
-				// check that the file is not too large or that the current user is an administrator
-				if( $this->can('AdminCMS') || ( File::allowedFileType( $extension ) && (!isset($maxsize) || $file['size'] < $maxSize)))
-					$newFiles[] = $folder->addUploadToFolder($file);
-				elseif( !File::allowedFileType( $extension ) ) {
-					$fileSizeWarnings .= "alert( '". sprintf(_t('AssetAdmin.ONLYADMINS','Only administrators can upload %s files.'),$extension)."' );";
+				// validate files (only if not logged in as admin)
+				if(Permission::check('ADMIN')) {
+					$valid = true;
 				} else {
-					if( $file['size'] > 1048576 )
-						$fileSize = "" . ceil( $file['size'] / 1048576 ) . "MB";
-					elseif( $file['size'] > 1024 )
-						$fileSize = "" . ceil( $file['size'] / 1024 ) . "KB";
-					else
-						$fileSize = "" . ceil( $file['size'] ) . "B";
-											
-								
-					$fileSizeWarnings .= "alert( '". sprintf(_t('AssetAdmin.TOOLARGE', "%s is too large (%s). Files of this type cannot be larger than %s"),"\\'" . $file['name'] . "\\'", $fileSize, $warnSize ) ."' );";
+					$upload = new Upload();
+					$upload->setAllowedExtensions(self::$allowed_extensions);
+					$upload->setAllowedMaxFileSize(self::$allowed_max_file_size);
+					$valid = $upload->validate($tmpFile);
+					if(!$valid) {
+						$errors = $upload->getErrors();
+						if($errors) foreach($errors as $error) {
+							$jsErrors .= "alert('" . Convert::raw2js($error) . "');";
+						}
+					}
 				}
+				
+				// move file to given folder
+				if($valid) $newFiles[] = $folder->addUploadToFolder($tmpFile);
 			}
 		}
 		
@@ -238,7 +238,7 @@ class AssetAdmin extends LeftAndMain {
 			var form = parent.document.getElementById('Form_EditForm');
 			form.getPageFromServer(form.elements.ID.value);
 			parent.statusMessage("{$statusMessage}","{$status}");
-			$fileSizeWarnings
+			$jsErrors
 			parent.document.getElementById('sitetree').getTreeNodeByIdx( "{$folder->ID}" ).getElementsByTagName('a')[0].className += ' contents';
 			</script>
 HTML;
