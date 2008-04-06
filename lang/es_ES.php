@@ -48,7 +48,7 @@ $lang['es_ES']['AssetAdmin']['UPLOADTAB'] = 'Agregar';
 $lang['es_ES']['AssetAdmin']['VIEWASSET'] = 'Ver Recursos';
 $lang['es_ES']['AssetAdmin']['VIEWEDITASSET'] = 'Ver/Editar Recursos';
 $lang['es_ES']['AssetAdmin_left.ss']['CREATE'] = 'Crear';
-$lang['es_ES']['AssetAdmin_left.ss']['DELETE'] = 'Eliminar...';
+$lang['es_ES']['AssetAdmin_left.ss']['DELETE'] = 'Eliminar';
 $lang['es_ES']['AssetAdmin_left.ss']['DELFOLDERS'] = 'Eliminar las carpetas seleccionadas';
 $lang['es_ES']['AssetAdmin_left.ss']['FOLDERS'] = 'Carpetas';
 $lang['es_ES']['AssetAdmin_left.ss']['GO'] = 'Ir';
@@ -216,7 +216,6 @@ $lang['es_ES']['LeftAndMain.ss']['PUBLIS'] = 'Sitio Publicado';
 $lang['es_ES']['LeftAndMain.ss']['SSWEB'] = 'Sitio web de Silverstripe';
 $lang['es_ES']['LeftAndMain.ss']['SWITCHTO'] = 'Cambiar a:';
 $lang['es_ES']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Ver página:';
-
 $lang['es_ES']['LeftAndMain']['STATUSTO'] = 'Estado cambiado a \'%s\'';
 $lang['es_ES']['LeftAndMain']['TREESITECONTENT'] = 'Contenido del Sitio';
 $lang['es_ES']['MemberList']['ADD'] = 'Añadir';
@@ -256,8 +255,8 @@ $lang['es_ES']['NewsletterAdmin_BouncedList.ss']['NOBOUNCED'] = 'No han sido dev
 $lang['es_ES']['NewsletterAdmin_BouncedList.ss']['UNAME'] = 'Usuario';
 $lang['es_ES']['NewsletterAdmin_left.ss']['ADDDRAFT'] = 'Añadir nuevo borrador';
 $lang['es_ES']['NewsletterAdmin_left.ss']['ADDTYPE'] = 'Añadir nuevo tipo';
-$lang['es_ES']['NewsletterAdmin_left.ss']['CREATE'] = 'Crear...';
-$lang['es_ES']['NewsletterAdmin_left.ss']['DEL'] = 'Eliminar...';
+$lang['es_ES']['NewsletterAdmin_left.ss']['CREATE'] = 'Crear';
+$lang['es_ES']['NewsletterAdmin_left.ss']['DEL'] = 'Eliminar';
 $lang['es_ES']['NewsletterAdmin_left.ss']['DELETEDRAFTS'] = 'Eliminar los borradores seleccionados';
 $lang['es_ES']['NewsletterAdmin_left.ss']['GO'] = 'Ir';
 $lang['es_ES']['NewsletterAdmin_left.ss']['NEWSLETTERS'] = 'Boletines';
@@ -320,7 +319,7 @@ $lang['es_ES']['SecurityAdmin']['NEWGROUP'] = 'Nuevo grupo';
 $lang['es_ES']['SecurityAdmin']['SAVE'] = 'Guardar';
 $lang['es_ES']['SecurityAdmin']['SGROUPS'] = 'Grupos de seguridad';
 $lang['es_ES']['SecurityAdmin_left.ss']['CREATE'] = 'Crear';
-$lang['es_ES']['SecurityAdmin_left.ss']['DEL'] = 'Eliminar...';
+$lang['es_ES']['SecurityAdmin_left.ss']['DEL'] = 'Eliminar';
 $lang['es_ES']['SecurityAdmin_left.ss']['DELGROUPS'] = 'Eliminar los grupos seleccionados';
 $lang['es_ES']['SecurityAdmin_left.ss']['GO'] = 'Ir';
 $lang['es_ES']['SecurityAdmin_left.ss']['SECGROUPS'] = 'Grupos de seguridad';
@@ -336,9 +335,6 @@ $lang['es_ES']['StaticExporter']['EXPORTTO'] = 'Exportar a esa carpeta';
 $lang['es_ES']['StaticExporter']['FOLDEREXPORT'] = 'Carpeta a exportar';
 $lang['es_ES']['StaticExporter']['NAME'] = 'Exportador estático';
 $lang['es_ES']['StaticExporter']['ONETHATEXISTS'] = 'Por favor especifique una carpeta que exista';
-
-
-
 $lang['es_ES']['SubmittedFormEmail.ss']['SUBMITTED'] = 'Los siguientes datos fueron enviados a su sitio web:';
 $lang['es_ES']['TaskList.ss']['BY'] = 'por';
 $lang['es_ES']['ThumbnailStripField']['NOTAFOLDER'] = 'Esto no es una carpeta';

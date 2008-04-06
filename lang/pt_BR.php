@@ -214,7 +214,6 @@ $lang['pt_BR']['LeftAndMain.ss']['PUBLIS'] = 'Site Publicado';
 $lang['pt_BR']['LeftAndMain.ss']['SSWEB'] = 'Silverstripe Website';
 $lang['pt_BR']['LeftAndMain.ss']['SWITCHTO'] = 'Mudar para:';
 $lang['pt_BR']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Visualização da página:';
-
 $lang['pt_BR']['LeftAndMain']['STATUSTO'] = 'Status alterado para \'%s\'';
 $lang['pt_BR']['LeftAndMain']['TREESITECONTENT'] = 'Conteúdo do Site';
 $lang['pt_BR']['MemberList']['ADD'] = 'Adicionar';
@@ -334,9 +333,6 @@ $lang['pt_BR']['StaticExporter']['EXPORTTO'] = 'Exportar para a pasta';
 $lang['pt_BR']['StaticExporter']['FOLDEREXPORT'] = 'Pasta para exportar para';
 $lang['pt_BR']['StaticExporter']['NAME'] = 'Relatório estático';
 $lang['pt_BR']['StaticExporter']['ONETHATEXISTS'] = 'Especifique uma pasta que existe';
-
-
-
 $lang['pt_BR']['SubmittedFormEmail.ss']['SUBMITTED'] = 'Os seguintes dados foram submetidos ao seu website:';
 $lang['pt_BR']['TaskList.ss']['BY'] = 'por';
 $lang['pt_BR']['ThumbnailStripField']['NOTAFOLDER'] = 'Isto não é uma pasta';

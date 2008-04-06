@@ -216,7 +216,6 @@ $lang['pl_PL']['LeftAndMain.ss']['PUBLIS'] = 'Opublikowane strony';
 $lang['pl_PL']['LeftAndMain.ss']['SSWEB'] = 'Strona Silverstripe';
 $lang['pl_PL']['LeftAndMain.ss']['SWITCHTO'] = 'Przełącz na:';
 $lang['pl_PL']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Widok strony:';
-
 $lang['pl_PL']['LeftAndMain']['STATUSTO'] = 'Status zmieniony na \'%s\'';
 $lang['pl_PL']['LeftAndMain']['TREESITECONTENT'] = 'Zawartość strony';
 $lang['pl_PL']['MemberList']['ADD'] = 'Dodaj';
@@ -334,9 +333,6 @@ $lang['pl_PL']['StaticExporter']['EXPORTTO'] = 'Eksportuj do tego folderu';
 $lang['pl_PL']['StaticExporter']['FOLDEREXPORT'] = 'Folder przeniesiony do';
 $lang['pl_PL']['StaticExporter']['NAME'] = 'Statyczny eksport';
 $lang['pl_PL']['StaticExporter']['ONETHATEXISTS'] = 'Proszę wybierz dostępny folder';
-
-
-
 $lang['pl_PL']['SubmittedFormEmail.ss']['SUBMITTED'] = 'Następujące dane zostały przesłane do Twojej strony:';
 $lang['pl_PL']['TaskList.ss']['BY'] = 'przez';
 $lang['pl_PL']['ThumbnailStripField']['NOTAFOLDER'] = 'To nie jest folder';

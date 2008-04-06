@@ -216,7 +216,6 @@ $lang['cs_CZ']['LeftAndMain.ss']['PUBLIS'] = 'Zveřejněné';
 $lang['cs_CZ']['LeftAndMain.ss']['SSWEB'] = 'Webová stránka SilverStripe';
 $lang['cs_CZ']['LeftAndMain.ss']['SWITCHTO'] = 'Přepnout na:';
 $lang['cs_CZ']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Zobrazení stránky:';
-
 $lang['cs_CZ']['LeftAndMain']['STATUSTO'] = 'Stav změněn na \'%s\'';
 $lang['cs_CZ']['LeftAndMain']['TREESITECONTENT'] = 'Obsah webu';
 $lang['cs_CZ']['MemberList']['ADD'] = 'Přidat';
@@ -334,9 +333,6 @@ $lang['cs_CZ']['StaticExporter']['EXPORTTO'] = 'Exportovat do této složky';
 $lang['cs_CZ']['StaticExporter']['FOLDEREXPORT'] = 'Složka, kam se má exportovat';
 $lang['cs_CZ']['StaticExporter']['NAME'] = 'Statický exportér';
 $lang['cs_CZ']['StaticExporter']['ONETHATEXISTS'] = 'Prosím určete existující složku';
-
-
-
 $lang['cs_CZ']['SubmittedFormEmail.ss']['SUBMITTED'] = 'Následující data byla odevzdána na Váš web:';
 $lang['cs_CZ']['TaskList.ss']['BY'] = '-';
 $lang['cs_CZ']['ThumbnailStripField']['NOTAFOLDER'] = 'Toto není složka';

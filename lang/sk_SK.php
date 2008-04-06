@@ -217,7 +217,6 @@ $lang['sk_SK']['LeftAndMain.ss']['PUBLIS'] = 'Publikovaný web';
 $lang['sk_SK']['LeftAndMain.ss']['SSWEB'] = 'Silverstripe Website';
 $lang['sk_SK']['LeftAndMain.ss']['SWITCHTO'] = 'Zmeniť na:';
 $lang['sk_SK']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Zobrazenie stránky:';
-
 $lang['sk_SK']['LeftAndMain']['STATUSTO'] = 'Stav zmenený na \'%s\'';
 $lang['sk_SK']['LeftAndMain']['TREESITECONTENT'] = 'Obsah webu';
 $lang['sk_SK']['MemberList']['ADD'] = 'Pridať';
@@ -336,9 +335,6 @@ $lang['sk_SK']['StaticExporter']['EXPORTTO'] = 'Exportovať do tohto adresára';
 $lang['sk_SK']['StaticExporter']['FOLDEREXPORT'] = 'Adresár, kam sa má exportovať';
 $lang['sk_SK']['StaticExporter']['NAME'] = 'Statický export';
 $lang['sk_SK']['StaticExporter']['ONETHATEXISTS'] = 'Prosím uveďte adresár, ktorý existuje';
-
-
-
 $lang['sk_SK']['SubmittedFormEmail.ss']['SUBMITTED'] = 'Nasledujúce údaje boli odoslané na Vašu webstránku:';
 $lang['sk_SK']['TaskList.ss']['BY'] = '-';
 $lang['sk_SK']['ThumbnailStripField']['NOTAFOLDER'] = 'Toto nie je adresár';

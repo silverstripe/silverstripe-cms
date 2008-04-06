@@ -208,7 +208,6 @@ $lang['sv_SE']['LeftAndMain.ss']['PUBLIS'] = 'Publicerad sajt';
 $lang['sv_SE']['LeftAndMain.ss']['SSWEB'] = 'Silverstripes websajt';
 $lang['sv_SE']['LeftAndMain.ss']['SWITCHTO'] = 'Växla till:';
 $lang['sv_SE']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Sidvy:';
-
 $lang['sv_SE']['LeftAndMain']['STATUSTO'] = 'Status ändrad till \'%s\'';
 $lang['sv_SE']['LeftAndMain']['TREESITECONTENT'] = 'Sajt-innehåll';
 $lang['sv_SE']['MemberList']['ADD'] = 'Lägg till';
@@ -325,9 +324,6 @@ $lang['sv_SE']['StaticExporter']['BASEURL'] = 'Bas-URL';
 $lang['sv_SE']['StaticExporter']['EXPORTTO'] = 'Exportera till den mappen';
 $lang['sv_SE']['StaticExporter']['FOLDEREXPORT'] = 'Mapp att exportera till';
 $lang['sv_SE']['StaticExporter']['ONETHATEXISTS'] = 'Var god och ange ett mappnamn som existerar';
-
-
-
 $lang['sv_SE']['SubmittedFormEmail.ss']['SUBMITTED'] = 'Följande uppgifter har lämnats till din sajt:';
 $lang['sv_SE']['TaskList.ss']['BY'] = 'av';
 $lang['sv_SE']['ThumbnailStripField']['NOTAFOLDER'] = 'Det är ingen mapp';

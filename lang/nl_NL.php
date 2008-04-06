@@ -216,7 +216,6 @@ $lang['nl_NL']['LeftAndMain.ss']['PUBLIS'] = 'Gepubliceerde Site';
 $lang['nl_NL']['LeftAndMain.ss']['SSWEB'] = 'Silverstripe Website';
 $lang['nl_NL']['LeftAndMain.ss']['SWITCHTO'] = 'Spring naar:';
 $lang['nl_NL']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Pagina weergave:';
-
 $lang['nl_NL']['LeftAndMain']['STATUSTO'] = '  Status veranderd naar \'%s\'';
 $lang['nl_NL']['LeftAndMain']['TREESITECONTENT'] = 'Site Inhoud';
 $lang['nl_NL']['MemberList']['ADD'] = 'Toevoegen';
@@ -334,9 +333,6 @@ $lang['nl_NL']['StaticExporter']['EXPORTTO'] = 'Exporteren naar die map';
 $lang['nl_NL']['StaticExporter']['FOLDEREXPORT'] = 'Map waarnaar geexporteerd dient te worden';
 $lang['nl_NL']['StaticExporter']['NAME'] = 'Statische export';
 $lang['nl_NL']['StaticExporter']['ONETHATEXISTS'] = 'Geef een map op die bestaat';
-
-
-
 $lang['nl_NL']['SubmittedFormEmail.ss']['SUBMITTED'] = 'Onderstaande data is ingestuurd op de website:';
 $lang['nl_NL']['TaskList.ss']['BY'] = 'door';
 $lang['nl_NL']['ThumbnailStripField']['NOTAFOLDER'] = 'Dit is geen map';

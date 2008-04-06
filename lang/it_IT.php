@@ -216,7 +216,6 @@ $lang['it_IT']['LeftAndMain.ss']['PUBLIS'] = 'Sito pubblicato';
 $lang['it_IT']['LeftAndMain.ss']['SSWEB'] = 'Sito web Silverstripe';
 $lang['it_IT']['LeftAndMain.ss']['SWITCHTO'] = 'Trasferisciti su:';
 $lang['it_IT']['LeftAndMain.ss']['VIEWPAGEIN'] = 'vista pagina:';
-
 $lang['it_IT']['LeftAndMain']['STATUSTO'] = 'Stato cambiato a \'%s\'';
 $lang['it_IT']['LeftAndMain']['TREESITECONTENT'] = 'Contenuto del sito';
 $lang['it_IT']['MemberList']['ADD'] = 'Aggiungi';
@@ -334,9 +333,6 @@ $lang['it_IT']['StaticExporter']['EXPORTTO'] = 'Esporta in questa cartella';
 $lang['it_IT']['StaticExporter']['FOLDEREXPORT'] = 'Cartella dove esportare';
 $lang['it_IT']['StaticExporter']['NAME'] = 'Sistema di esportazione statico';
 $lang['it_IT']['StaticExporter']['ONETHATEXISTS'] = 'Per favore specifica una cartella esistente';
-
-
-
 $lang['it_IT']['SubmittedFormEmail.ss']['SUBMITTED'] = 'I seguenti dati sono stati inviati al tuo sito web:';
 $lang['it_IT']['TaskList.ss']['BY'] = 'da';
 $lang['it_IT']['ThumbnailStripField']['NOTAFOLDER'] = 'Questa non è una cartella';

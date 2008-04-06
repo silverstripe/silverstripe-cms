@@ -217,7 +217,6 @@ $lang['hr_HR']['LeftAndMain.ss']['PUBLIS'] = 'Objavljena stranica';
 $lang['hr_HR']['LeftAndMain.ss']['SSWEB'] = 'Silverstripe Web stranica';
 $lang['hr_HR']['LeftAndMain.ss']['SWITCHTO'] = 'Prebaci na:';
 $lang['hr_HR']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Pregleda stranice:';
-
 $lang['hr_HR']['LeftAndMain']['STATUSTO'] = 'Status promjenjen na \'%s\'';
 $lang['hr_HR']['LeftAndMain']['TREESITECONTENT'] = 'Sadržaj stranice';
 $lang['hr_HR']['MemberList']['ADD'] = 'Dodaj';
@@ -336,9 +335,6 @@ $lang['hr_HR']['StaticExporter']['EXPORTTO'] = 'Izvezi u taj direktorij';
 $lang['hr_HR']['StaticExporter']['FOLDEREXPORT'] = 'Direktorij za izvoz na';
 $lang['hr_HR']['StaticExporter']['NAME'] = 'Statični exporter';
 $lang['hr_HR']['StaticExporter']['ONETHATEXISTS'] = 'Molimo odredite direktorij koji postoji';
-
-
-
 $lang['hr_HR']['SubmittedFormEmail.ss']['SUBMITTED'] = 'Slijedeći podaci pridodani su Vašoj stranici:';
 $lang['hr_HR']['TaskList.ss']['BY'] = 'by';
 $lang['hr_HR']['ThumbnailStripField']['NOTAFOLDER'] = 'Ovo nije direktorij';

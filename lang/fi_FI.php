@@ -212,7 +212,6 @@ $lang['fi_FI']['LeftAndMain.ss']['PUBLIS'] = 'Julkaistu sivusto';
 $lang['fi_FI']['LeftAndMain.ss']['SSWEB'] = 'Silverstripe-verkkosivusto';
 $lang['fi_FI']['LeftAndMain.ss']['SWITCHTO'] = 'Vaihda:';
 $lang['fi_FI']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Sivun katselu:';
-
 $lang['fi_FI']['LeftAndMain']['STATUSTO'] = 'Tila vaihdettiin tilaksi %s';
 $lang['fi_FI']['LeftAndMain']['TREESITECONTENT'] = 'Sivuston sisältö';
 $lang['fi_FI']['MemberList']['ADD'] = 'Lisää';
@@ -330,9 +329,6 @@ $lang['fi_FI']['StaticExporter']['EXPORTTO'] = 'Vie tähän kansioon';
 $lang['fi_FI']['StaticExporter']['FOLDEREXPORT'] = 'Kansio, jonne viedään:';
 $lang['fi_FI']['StaticExporter']['NAME'] = 'Staattinen viejä';
 $lang['fi_FI']['StaticExporter']['ONETHATEXISTS'] = 'Anna olemassaoleva kansio';
-
-
-
 $lang['fi_FI']['SubmittedFormEmail.ss']['SUBMITTED'] = 'Seuraava tiedot lähetettiin verkkosivustollesi:';
 $lang['fi_FI']['TaskList.ss']['BY'] = 'henkilöltä';
 $lang['fi_FI']['ThumbnailStripField']['NOTAFOLDER'] = 'Tämä ei ole kansio';

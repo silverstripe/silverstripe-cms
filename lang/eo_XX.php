@@ -216,7 +216,6 @@ $lang['eo_XX']['LeftAndMain.ss']['PUBLIS'] = 'Eldonita retejo';
 $lang['eo_XX']['LeftAndMain.ss']['SSWEB'] = 'Silverstripe-retejo';
 $lang['eo_XX']['LeftAndMain.ss']['SWITCHTO'] = 'Ŝalti al: ';
 $lang['eo_XX']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Paĝa vido:';
-
 $lang['eo_XX']['LeftAndMain']['STATUSTO'] = 'Stato ŝanĝiĝis al \'%s\'';
 $lang['eo_XX']['LeftAndMain']['TREESITECONTENT'] = 'Enhavo de retejo';
 $lang['eo_XX']['MemberList']['ADD'] = 'Enmetu';
@@ -334,9 +333,6 @@ $lang['eo_XX']['StaticExporter']['EXPORTTO'] = 'Eksportu al tiu teko';
 $lang['eo_XX']['StaticExporter']['FOLDEREXPORT'] = 'Teko al kiu eksporti';
 $lang['eo_XX']['StaticExporter']['NAME'] = 'Statika eksportilo';
 $lang['eo_XX']['StaticExporter']['ONETHATEXISTS'] = 'Bonvolu specifi tekon ekzistantan';
-
-
-
 $lang['eo_XX']['SubmittedFormEmail.ss']['SUBMITTED'] = 'La sekvaj donitaĵoj estas senditaj al via retejo:';
 $lang['eo_XX']['TaskList.ss']['BY'] = 'de';
 $lang['eo_XX']['ThumbnailStripField']['NOTAFOLDER'] = 'Ĉi tiu ne estas teko';
