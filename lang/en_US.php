@@ -83,6 +83,7 @@ $lang['en_US']['LeftAndMain']['TREESITECONTENT'] = array(
 $lang['en_US']['CMSMain']['REMOVEDFD'] = 'Removed from the draft site';
 $lang['en_US']['CMSMain']['RESTORE'] = 'Restore';
 $lang['en_US']['CMSMain']['DELETEFP'] = 'Delete from the published site';
+$lang['en_US']['CMSMain']['DELETE'] = 'Delete from the draft site';
 $lang['en_US']['CMSMain']['SAVE'] = 'Save';
 $lang['en_US']['CMSMain']['PAGENOTEXISTS'] = 'This page doesn\'t exist';
 $lang['en_US']['CMSMain']['NEW'] = array(
@@ -97,6 +98,7 @@ $lang['en_US']['CMSMain']['RESTORED'] = array(
 	PR_MEDIUM,
 	'Param %s is a title'
 );
+$lang['en_US']['CMSMain']['REMOVEDPAGEFROMDRAFT'] = 'Removed \'%s\' from the draft site';
 $lang['en_US']['CMSMain']['SENTTO'] = array(
 	'Sent to %s %s for approval.',
 	PR_LOW,
@@ -181,6 +183,18 @@ $lang['en_US']['GenericDataAdmin']['DELETEDSUCCESS'] = 'Successfully deleted';
 $lang['en_US']['LeftAndMain']['PERMDEFAULT'] = 'Please choose an authentication method and enter your credentials to access the CMS.';
 $lang['en_US']['LeftAndMain']['PERMALREADY'] = 'I\'m sorry, but you can\'t access that part of the CMS.  If you want to log in as someone else, do so below';
 $lang['en_US']['LeftAndMain']['PERMAGAIN'] = 'You have been logged out of the CMS.  If you would like to log in again, enter a username and password below.';
+$lang['en_US']['LeftAndMain']['PAGETYPE'] = 'Page type: ';
+$lang['en_US']['LeftAndMain']['SITECONTENTLEFT'] = array(
+	'Site Content',
+	PR_HIGH,
+	'Root node on left'
+);
+$lang['en_US']['LeftAndMain']['SAVEDUP'] = 'Saved';
+$lang['en_US']['LeftAndMain']['STATUSTO'] = '  Status changed to \'%s\'';
+$lang['en_US']['LeftAndMain']['CHANGEDURL'] = '  Changed URL to \'%s\'';
+$lang['en_US']['LeftAndMain']['SAVED'] = 'saved';
+$lang['en_US']['LeftAndMain']['PLEASESAVE'] = 'Please Save Page: This page could not be upated because it hasn\'t been saved yet.';
+$lang['en_US']['LeftAndMain']['REQUESTERROR'] = 'Error in request';
 $lang['en_US']['LeftAndMain']['SITECONTENT'] = array(
 	'Site Content',
 	PR_HIGH,
@@ -216,18 +230,6 @@ $lang['en_US']['LeftAndMain']['HELP'] = array(
 	PR_HIGH,
 	'Menu title'
 );
-$lang['en_US']['LeftAndMain']['PAGETYPE'] = 'Page type: ';
-$lang['en_US']['LeftAndMain']['SITECONTENTLEFT'] = array(
-	'Site Content',
-	PR_HIGH,
-	'Root node on left'
-);
-$lang['en_US']['LeftAndMain']['SAVEDUP'] = 'Saved';
-$lang['en_US']['LeftAndMain']['STATUSTO'] = '  Status changed to \'%s\'';
-$lang['en_US']['LeftAndMain']['CHANGEDURL'] = '  Changed URL to \'%s\'';
-$lang['en_US']['LeftAndMain']['SAVED'] = 'saved';
-$lang['en_US']['LeftAndMain']['PLEASESAVE'] = 'Please Save Page: This page could not be upated because it hasn\'t been saved yet.';
-$lang['en_US']['LeftAndMain']['REQUESTERROR'] = 'Error in request';
 $lang['en_US']['MemberList']['FN'] = 'First Name';
 $lang['en_US']['MemberList']['SN'] = 'Surname';
 $lang['en_US']['MemberList']['EMAIL'] = 'Email';
@@ -347,7 +349,6 @@ $lang['en_US']['StaticExporter']['FOLDEREXPORT'] = 'Folder to export to';
 $lang['en_US']['StaticExporter']['BASEURL'] = 'Base URL';
 $lang['en_US']['StaticExporter']['EXPORTTO'] = 'Export to that folder';
 $lang['en_US']['StaticExporter']['ONETHATEXISTS'] = 'Please specify a folder that exists';
-
 $lang['en_US']['ThumbnailStripField']['NOTAFOLDER'] = 'This is not a folder';
 $lang['en_US']['ThumbnailStripField']['NOIMAGESFOUND'] = 'No images found in';
 $lang['en_US']['PageComment']['COMMENTBY'] = array(
@@ -577,14 +578,6 @@ $lang['en_US']['SecurityAdmin_right.ss']['WELCOME2'] = array(
 	'security admininistration section.  Please choose a group from the left.',
 	50
 );
-
-
-
-
-
-
-
-
 $lang['en_US']['LeftAndMain.ss']['LOADING'] = array(
 	'Loading...',
 	PR_HIGH
