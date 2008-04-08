@@ -870,6 +870,20 @@ JS;
 		self::$application_logo_style = $logoStyle;
 		self::$application_logo_text = "";
 	}
+	
+	protected static $loading_image = 'cms/images/loading.gif';
+	
+	/**
+	 * Set the image shown when the CMS is loading.
+	 */
+	static function set_loading_image($loadingImage) {
+		self::$loading_image = $loadingImage;
+	}
+	
+	function LoadingImage() {
+		return self::$loading_image;
+	}
+	
 	function LogoStyle() {
 		return "background: url(" . self::$application_logo . ") no-repeat; " . self::$application_logo_style;
 	}
