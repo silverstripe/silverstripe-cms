@@ -51,20 +51,6 @@ class PageComment extends DataObject {
 			return "PageComment/deletecomment/$this->ID";
 		}
 	}
-	function deletecomment() {
-		if(Permission::check('CMS_ACCESS_CMSMain')) {
-			$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
-			if($comment) {
-				$comment->delete();
-			}
-		}
-		
-		if(Director::is_ajax()) {
-			echo "";
-		} else {
-			Director::redirectBack();
-		}
-	}
 	
 	function SpamLink() {
 		$member = Member::currentUser();
@@ -95,7 +81,69 @@ class PageComment extends DataObject {
 		}
 	}
 	
-	function approve() {
+	
+	function RSSTitle() {
+		return sprintf(
+			_t('PageComment.COMMENTBY', "Comment by '%s' on %s", PR_MEDIUM, 'Name, Page Title'),
+			Convert::raw2xml($this->Name),
+			$this->Parent()->Title
+		);
+	}
+	
+
+
+	
+	function PageTitle() {
+		return $this->Parent()->Title;
+	}
+	
+	static function enableModeration() {
+		self::$moderate = true;
+	}	
+
+	static function moderationEnabled() {
+		return self::$moderate;
+	}
+	
+	static function enableBBCode() {
+		self::$bbcode = true;
+	}	
+
+	static function bbCodeEnabled() {
+		return self::$bbcode;
+	}
+	
+}
+
+
+class PageComment_Controller extends Controller {
+	function rss() {
+		$parentcheck = isset($_REQUEST['pageid']) ? "ParentID = " . (int) $_REQUEST['pageid'] : "ParentID > 0";
+		$comments = DataObject::get("PageComment", "$parentcheck AND IsSpam=0", "Created DESC", "", 10);
+		if(!isset($comments)) {
+			$comments = new DataObjectSet();
+		}
+		
+		$rss = new RSSFeed($comments, "home/", "Page comments", "", "RSSTitle", "Comment", "Name");
+		$rss->outputToBrowser();
+	}
+	
+	function deletecomment() {
+		if(Permission::check('CMS_ACCESS_CMSMain')) {
+			$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
+			if($comment) {
+				$comment->delete();
+			}
+		}
+		
+		if(Director::is_ajax()) {
+			echo "";
+		} else {
+			Director::redirectBack();
+		}
+	}
+	
+		function approve() {
 		if(Permission::check('CMS_ACCESS_CMSMain')) {
 			$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
 			$comment->NeedsModeration = false;
@@ -174,47 +222,6 @@ class PageComment extends DataObject {
 			}
 		}
 	}
-	
-	function RSSTitle() {
-		return sprintf(
-			_t('PageComment.COMMENTBY', "Comment by '%s' on %s", PR_MEDIUM, 'Name, Page Title'),
-			Convert::raw2xml($this->Name),
-			$this->Parent()->Title
-		);
-	}
-	
-	function rss() {
-		$parentcheck = isset($_REQUEST['pageid']) ? "ParentID = " . (int) $_REQUEST['pageid'] : "ParentID > 0";
-		$comments = DataObject::get("PageComment", "$parentcheck AND IsSpam=0", "Created DESC", "", 10);
-		if(!isset($comments)) {
-			$comments = new DataObjectSet();
-		}
-		
-		$rss = new RSSFeed($comments, "home/", "Page comments", "", "RSSTitle", "Comment", "Name");
-		$rss->outputToBrowser();
-	}
-
-	
-	function PageTitle() {
-		return $this->Parent()->Title;
-	}
-	
-	static function enableModeration() {
-		self::$moderate = true;
-	}	
-
-	static function moderationEnabled() {
-		return self::$moderate;
-	}
-	
-	static function enableBBCode() {
-		self::$bbcode = true;
-	}	
-
-	static function bbCodeEnabled() {
-		return self::$bbcode;
-	}
-	
 }
 
 ?>
