@@ -6,13 +6,16 @@
 CMSMain_upload = Class.create();
 CMSMain_upload.prototype = {
     initialize: function() {
+		// We require flash 9
+	    pv = getFlashPlayerVersion();
+		if(pv.major < 9) return;
+    
         // Due to a bug in the flash plugin on Linux and Mac, we need at least version 9.0.64 to use SWFUpload
         if(navigator.appVersion.indexOf("Mac") != -1 || navigator.appVersion.indexOf("X11") != -1 || navigator.appVersion.indexOf("Linux") != -1) {
-           pv = getFlashPlayerVersion();
-           if(pv.major < 9 || (pv.major == 9 && pv.minor == 0 && pv.rev < 64)) {
-              return;
-           }
+           if(pv.major == 9 && pv.minor == 0 && pv.rev < 64) return;
         }
+
+		// If those 2 checks pass, we can provide upload capabilities to the user
         this.iframe = window.top.document.getElementById('AssetAdmin_upload');
         this.onLoad();
     },
@@ -175,7 +178,7 @@ CMSMain_upload.prototype = {
     },
     
     uploadQueueCompleteCallback: function() {
-        eval(this.upload.getUploadMessage().replace('1',this.upload.getFilesUploaded()));
+        eval(this.upload.getUploadMessage().replace(/Uploaded 1 files/g,'Uploaded ' + this.upload.getFilesUploaded() + ' files'));
     }
 }
 window.top.document.CMSMain_upload = CMSMain_upload;

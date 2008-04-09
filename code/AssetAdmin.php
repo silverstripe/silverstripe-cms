@@ -124,7 +124,7 @@ class AssetAdmin extends LeftAndMain {
 	 */
 	function UploadForm() {
 
-		return new Form($this,'UploadForm', new FieldSet(
+		$form = new Form($this,'UploadForm', new FieldSet(
 			new HiddenField("ID", "", $this->currentPageID()),
 			// needed because the button-action is triggered outside the iframe
 			new HiddenField("action_doUpload", "", "1"), 
@@ -143,6 +143,11 @@ class AssetAdmin extends LeftAndMain {
 			")
 		), new FieldSet(
 		));
+		
+		// Makes ajax easier
+		$form->disableSecurityToken();
+		
+		return $form;
 
 	}
 	
@@ -229,7 +234,7 @@ class AssetAdmin extends LeftAndMain {
 		
 		$sFileIDs = implode(',', $fileIDs);
 		$sFileNames = implode(',', $fileNames);
-		
+
 		echo <<<HTML
 			<script type="text/javascript">
 			/* IDs: $sFileIDs */

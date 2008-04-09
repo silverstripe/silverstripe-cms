@@ -42,7 +42,7 @@ Upload.prototype = {
         path = this.getBasePath();
         sessId = this.getSessionId();//Because flash doesn't send proper cookies, we need to set session id in URL. 
         this.swfu = new SWFUpload({
-                upload_target_url: path + '/assets/index/root?executeForm=UploadForm&SecurityID=' + this.securityID +  '&PHPSESSID=' + sessId,   // Relative to the SWF file
+                upload_url: path + 'admin/assets/index/root?executeForm=UploadForm&SecurityID=' + this.securityID +  '&PHPSESSID=' + sessId,   // Relative to the SWF file
                 file_post_name: 'Files',
                 file_size_limit : this.fileSizeLimit,
                 file_types : this.fileTypes,
@@ -53,15 +53,14 @@ Upload.prototype = {
                 validate_files: false,
 
                 file_queued_handler : this.uploadFileQueuedCallback.bind(this),
-                file_complete_handler : this.uploadFileCompleteCallback.bind(this),
-                file_progress_handler: this.uploadFileProgressCallback.bind(this),
-                queue_complete_handler : this.uploadQueueCompleteCallback.bind(this),
+                upload_success_handler : this.uploadFileCompleteCallback.bind(this),
+                upload_progress_handler: this.uploadFileProgressCallback.bind(this),
                 error_handler : this.uploadErrorCallback.bind(this),
                 file_validation_handler : Prototype.emptyFunction,
                 file_cancelled_handler: Prototype.emptyFunction,
                 
-                flash_url : 'jsparty/SWFUpload/SWFUpload.swf',    // Relative to this file
-                ui_function: this.buildUI.bind(this),
+                flash_url : 'jsparty/SWFUpload/swfupload_f9.swf',    // Relative to this file
+                swfupload_loaded_handler: this.buildUI.bind(this),
                 debug: false
             });
     },
@@ -73,8 +72,9 @@ Upload.prototype = {
     
     getBasePath: function() {
         var path = 'http://' + window.location.host + window.location.pathname;
-        if(path[path.length-1] == '/') path = path.substring(0,path.length-1);
-        return path;
+
+		if(path.match(/^(.*\/)admin/i)) return RegExp.$1;
+		else return path;
     },
     
     /**
@@ -117,14 +117,26 @@ Upload.prototype = {
      * @param file object 
      * @param servedData string
     */
-   
     uploadFileCompleteCallback: function(file,serverData) {
         this.filesUploaded++;
-        var toEval = serverData.substr(serverData.indexOf('<script'));
-        toEval = toEval.replace('<script type="text/javascript">','');
-        toEval = toEval.replace('</script>','');
-        this.uploadMessage = toEval;
-        this.fileComplete(file, serverData);
+		if(serverData) {
+	       var toEval = serverData.substr(serverData.indexOf('<script'));
+	       toEval = toEval.replace('<script type="text/javascript">','');
+	       toEval = toEval.replace('</script>','');
+	       this.uploadMessage = toEval;
+	   }
+
+		this.fileComplete(file, serverData);
+		
+		// Run the next file in the queue, if there is one
+		if(this.swfu.getStats().files_queued > 0) this.startUpload();
+		// Otherwise indicate that the queue is finished
+		else {
+			this.queueComplete();
+			this.uploadInProgress = false;
+	        this.filesUploaded = 0;
+	        this.filesToUpload = 0;
+		}
     },
     
     /**
@@ -138,18 +150,7 @@ Upload.prototype = {
         this.uploadInProgress = true;
         this.fileProgress(file, bytes_complete);
     },
-    
-    /**
-     * Called when whole queue has been uploaded or cancelled. 
-    */
-    
-    uploadQueueCompleteCallback: function() {
-        this.queueComplete();
-        this.uploadInProgress = false;
-        this.filesUploaded = 0;
-        this.filesToUpload = 0;
-    },
-    
+        
     /**
      * Called on error.
      * @param error_code int
@@ -209,7 +210,7 @@ Upload.prototype = {
     */
     
     browse: function() {
-        this.swfu.browse();
+        this.swfu.selectFiles();
     },
     
     /**
