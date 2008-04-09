@@ -363,7 +363,7 @@ class RecipientImportField_UploadForm extends Form {
 		}
 		
 		$numChangedFields = count( $changedFields );
-		$this->notifyChanges( $changedFields );
+		if($changedFields) $this->notifyChanges( $changedFields );
 		
 		// TODO Refresh window
 		$customData = array( 
@@ -385,17 +385,19 @@ class RecipientImportField_UploadForm extends Form {
 	}
 	
 	function notifyChanges( $changes ) {
-		$email = new Email( Email::getAdminEmail(), Email::getAdminEmail(), 'Changed Fields' );
+		if($changes)  {
+			$email = new Email( Email::getAdminEmail(), Email::getAdminEmail(), 'Changed Fields' );
 	
-		$body = "";
+			$body = "";
 		
-		foreach( $changes as $change ) {
-			$body .= "-------------------------------\n";
-			$body .= implode( ' ', $change ) . "\n";
+			foreach( $changes as $change ) {
+				$body .= "-------------------------------\n";
+				$body .= implode( ' ', $change ) . "\n";
+			}
+		
+			$email->setBody( $body );
+			$email->send();
 		}
-		
-		$email->setBody( $body );
-		$email->send();
 	}
 }
 ?>
