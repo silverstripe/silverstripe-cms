@@ -52,60 +52,19 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 
 	public function getEditForm($id) {
 		$record = DataObject::get_by_id("Group", $id);
-		if($record) {
-			$fields = new FieldSet(
-				new TabSet("Root",
-					new Tab(_t('SecurityAdmin.MEMBERS', 'Members'),
-						new TextField("Title", _t('SecurityAdmin.GROUPNAME', 'Group name')),
-						$memberList = new MemberTableField(
-							$this,
-							"Members",
-							$record,
-							null,
-							false
-						)
-					),
+		if(!$record) return false;
+		
+		$fields = $record->getCMSFields();
+		
+		$actions = new FieldSet(
+			new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member')),
+			new FormAction('save',_t('SecurityAdmin.SAVE','Save'))
+		);
 
-					new Tab(_t('SecurityAdmin.PERMISSIONS', 'Permissions'),
-						new LiteralField("", "<p>"._t('SecurityAdmin.ADVANCEDONLY',"This section is for advanced users only.
-							See <a href=\"http://doc.silverstripe.com/doku.php?id=permissions:codes\" target=\"_blank\">this page</a>
-							for more information.")."</p>"),
-						new TableField(
-							"Permissions",
-							"Permission",
-							array(
-							        "Code" => _t('SecurityAdmin.CODE', 'Code'),
-							        "Arg" => _t('SecurityAdmin.OPTIONALID', 'Optional ID'),
-							),
-							array(
-								"Code" => "PermissionDropdownField",
-								"Arg" => "TextField",
-							),
-							"GroupID", $id
-						)
-					)
-				)
-			);
-
-			if(!Permission::check('EDIT_PERMISSIONS')) $fields->removeFieldFromTab('Root', 'Permissions');
-			
-			$memberList->setController($this);
-			$memberList->setPermissions(array('show', 'edit', 'delete', 'export', 'add'));
-			$memberList->setParentClass('Group');
-			$memberList->setPopupCaption(_t('SecurityAdmin.VIEWUSER', 'View User'));
-			
-			$fields->push($idField = new HiddenField("ID"));
-			$idField->setValue($id);
-			$actions = new FieldSet(
-				new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member'))
-			);
-
-			$actions->push(new FormAction('save',_t('SecurityAdmin.SAVE','Save')));
-
-			$form = new Form($this, "EditForm", $fields, $actions);
-			$form->loadDataFrom($record);
-			return $form;
-		}
+		$form = new Form($this, "EditForm", $fields, $actions);
+		$form->loadDataFrom($record);
+		
+		return $form;
 	}
 
 
