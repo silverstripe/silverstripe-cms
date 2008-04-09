@@ -51,7 +51,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	}
 
 	public function getEditForm($id) {
-		$record = DataObject::get_by_id("Group", $id);
+		$record = DataObject::get_by_id($this->stat('tree_class'), $id);
 		if(!$record) return false;
 		
 		$fields = $record->getCMSFields();
@@ -206,9 +206,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	 * Return the entire site tree as a nested set of ULs
 	 */
 	public function SiteTreeAsUL() {
-		$className = "Group";
-
-		$obj = singleton($className);
+		$obj = singleton($this->stat('tree_class'));
 
 		// getChildrenAsUL is a flexible and complex way of traversing the tree
 		$siteTree = $obj->getChildrenAsUL("",
@@ -228,13 +226,13 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	}
 
 	public function addgroup() {
-		$parent = $_REQUEST['ParentID'] ? $_REQUEST['ParentID'] : 0;
-			$p = new Group();
-			$p->Title = _t('SecurityAdmin.NEWGROUP',"New Group");
-			$p->Code = "new-group";
-			$p->ParentID = $parent;
-			$p->write();
-		return $this->returnItemToUser($p);
+		$newGroup = Object::create($this->stat('tree_class'));
+		$newGroup->Title = _t('SecurityAdmin.NEWGROUP',"New Group");
+		$newGroup->Code = "new-group";
+		$newGroup->ParentID = (is_numeric($_REQUEST['ParentID'])) ? (int)$_REQUEST['ParentID'] : 0;
+		$newGroup->write();
+		
+		return $this->returnItemToUser($newGroup);
 	}
 
 	public function newmember() {
