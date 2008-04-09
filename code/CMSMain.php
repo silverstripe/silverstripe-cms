@@ -31,6 +31,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'dialog',
 		'duplicate',
 		'duplicatewithchildren',
+		'filtersitetree',
 		'getpagecount',
 		'getpagemembers',
 		'getversion',
@@ -45,7 +46,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'tasklist',
 		'unpublish',
 		'versions',
-		'waitingon',		
+		'waitingon',
 	);
 	
 	/**
@@ -141,7 +142,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	/**
 	 * Returns a filtered Site Tree
 	 */
-	public function filterSiteTree() {
+	public function filtersitetree() {
 		$className = 'SiteTree';
 		$rootID = null;
 		$obj = $rootID ? $this->getRecord($rootID) : singleton($className);
