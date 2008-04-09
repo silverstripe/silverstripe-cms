@@ -95,6 +95,9 @@ class RecipientImportField extends FormField {
 		
 		$this->clientFileName = $_FILES['ImportFile']['name'];
 		
+		$table = array();
+		$sessionTable = array();
+		
 		while( ( $row = fgetcsv( $tempFile ) ) !== false ) {
 			
 			if( !$this->tableColumns ) {
@@ -205,6 +208,11 @@ class RecipientImportField_Cell extends ViewableData {
  * @subpackage newsletter
  */
 class RecipientImportField_UploadForm extends Form {
+	function __construct($controller, $name, $fields, $actions, $validator = null) {
+		parent::__construct($controller, $name, $fields, $actions, $validator);
+		$this->disableSecurityToken();
+	}
+	
 	function import( $data, $form ) {
 		$id = $data['ID'];
 		$mailType = DataObject::get_one("NewsletterType", "ID = $id");
@@ -221,7 +229,7 @@ class RecipientImportField_UploadForm extends Form {
 			/*if( file_exists( $_FILES['ImportFile']['tmp_name'] ) ) unlink( $_FILES['ImportFile']['tmp_name'] );
 			unset( $_FILES['ImportFile'] );*/
 			return $this->customise( array( 'ID' => $id, "UploadForm" => $this->controller->UploadForm( $id ), 'ErrorMessage' => 'The selected file was not a CSV file' ) )->renderWith('Newsletter_RecipientImportField');
-		} else
+		} else 
 			return $recipientField->displaytable();
 	}
 	
@@ -234,7 +242,9 @@ class RecipientImportField_UploadForm extends Form {
 		$mailType = DataObject::get_one("NewsletterType", "ID = $id");
 		if($mailType->GroupID) 
 			$group = DataObject::get_one("Group", "ID = $mailType->GroupID");
-		// @TODO Look into seeing if $data['Set'] should be removed since it seems to be undefined
+		
+		// $data['Set'] lists custom-set fields defined by self::setCustomField().
+		if(!isset($data['Set'])) $data['Set'] = array();
 		return $this->importMembers( $id, $group, $data['ImportFileColumns'], $data['Set'] );
 	}
 	
