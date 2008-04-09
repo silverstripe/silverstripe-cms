@@ -38,6 +38,3 @@
 		</tbody>
 	</table>
 </div>
-  <script type="text/javascript">
-    new CheckBoxRange(document.getElementById('Form_EditForm'), 'Files[]');
-  </script>
