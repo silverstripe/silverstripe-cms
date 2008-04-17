@@ -853,12 +853,6 @@ JS;
 			"admin/assets/", 
 			"AssetAdmin"
 		);
-		self::add_menu_item(
-			"newsletter", 
-			_t('LeftAndMain.NEWSLETTERS',"Newsletters",PR_HIGH,"Menu title"),
-			"admin/newsletter/", 
-			"NewsletterAdmin"
-		);
 		if(ReportAdmin::has_reports()) {
 			self::add_menu_item(
 				"report", 
