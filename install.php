@@ -633,8 +633,6 @@ PHP;
 		$this->createFile("$template/_config.php", <<<PHP
 <?php
 
-$mem
-
 global \$project;
 \$project = '$template';
 
