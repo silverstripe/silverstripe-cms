@@ -799,15 +799,20 @@ JS;
 	 * LeftAndMain::setApplicationName("Something New")
 	 */
 	static $application_name = "SilverStripe CMS", $application_logo_text = "SilverStripe";
-	static function setApplicationName($name, $logoText = null) {
+	static $application_link = "http://www.silverstripe.com/";
+	static function setApplicationName($name, $logoText = null, $link = null) {
 		self::$application_name = $name;
 		self::$application_logo_text = $logoText ? $logoText : $name;
+		if($link) self::$application_link = $link;
 	}
 	function ApplicationName() {
 		return self::$application_name;
 	}
 	function ApplicationLogoText() {
 		return self::$application_logo_text;
+	}
+	function ApplicationLink() {
+		return self::$application_link;
 	}
 
 	static $application_logo = "cms/images/mainmenu/logo.gif", $application_logo_style = "";
