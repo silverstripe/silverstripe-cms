@@ -700,7 +700,7 @@ PHP
 		}
 		
 		// Syncing filesystem (so /assets/Uploads is available instantly, see ticket #2266)
-		File::sync();
+		FileSystem::sync();
 		
 		echo "<li>Checking mod_rewrite works</li>";
 		
