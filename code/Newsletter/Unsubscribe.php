@@ -11,43 +11,54 @@
  * @subpackage newsletter
  */
 class Unsubscribe_Controller extends Page_Controller {
-    function __construct($data = null) {
-    }
-    function RelativeLink($action = null) {
-        return "unsubscribe/$action";
-    }
+
+	function __construct($data = null) {
+		parent::__construct($data);
+	}
+	
+	function RelativeLink($action = null) {
+		return "unsubscribe/$action";
+	}
     
-    function index() {
-       	Session::clear("loggedInAs");
-       	Requirements::themedCSS("form");
-        // if the email address is given
-        $emailAddress = addslashes( $this->urlParams['Email'] );
-        $mailingListID = addslashes( $this->urlParams['MailingList'] );
-        
-        if(is_numeric($mailingListID)) {
-        	$mailingList = DataObject::get_by_id("NewsletterType", $mailingListID);
-        }
-        
-        // try to find the user
-        if($emailAddress)
-        	$member = DataObject::get_one( 'Member', "`Email`='$emailAddress'" );
+	function index() {
+		Session::clear("loggedInAs");
+		Requirements::themedCSS("form");
 
-        // if the email address and mailing list is given in the URL and both are valid,
-        // then unsubscribe the user
-        if( $member && $mailingList && $member->inGroup( $mailingList->GroupID ) ) {
-            $this->unsubscribeFromList( $member, $mailingList );
-            $url = "unsubscribe"."/done/".$member->Email."/".$mailingList->Title;
-	      	 	Director::redirect($url);
-        } elseif( $member ) {
-            $listForm = $this->MailingListForm( $member );
-        } else {
-        	$listForm = $this->EmailAddressForm();
-        }
- 	
- 		if($this->urlParams['Email'] == "done")
-		  $listForm->sessionMessage(_t('Unsubscribe.SUCCESS', 'Thank you. You have been removed from the selected groups'), "good");
+		// if the email address is given
+		$emailAddress = Convert::raw2sql($this->urlParams['Email']);
+		$mailingListID = (int)$this->urlParams['MailingList'];
 
-        return $this->customise( array( 'Content' => $listForm->forTemplate() ) )->renderWith('Page');           
+		if($mailingListID) {
+			$mailingList = DataObject::get_by_id("NewsletterType", $mailingListID);
+		}
+
+		// try to find the member with the email specified
+		if($emailAddress) {
+			$member = DataObject::get_one('Member', "`Email` = '$emailAddress'");
+		} else {
+			$member = false;
+		}
+
+		// if the email address and mailing list is given in the URL and both are valid,
+		// then unsubscribe the user
+		if($member && $mailingList && $member->inGroup($mailingList->GroupID)) {
+			$this->unsubscribeFromList($member, $mailingList);
+			$url = '/done/' . $member->Email . '/' . $mailingList->Title;
+			Director::redirect(Director::absoluteBaseURL() . $this->RelativeLink() . $url);
+			return;
+		} elseif($member) {
+			$listForm = $this->MailingListForm($member);
+		} else {
+			$listForm = $this->EmailAddressForm();
+		}
+
+ 		if($this->urlParams['Email'] == "done") {
+ 			$listForm->sessionMessage(_t('Unsubscribe.SUCCESS', 'Thank you. You have been removed from the selected groups'), "good");
+ 		}
+
+		return $this->customise(array(
+			'Content' => $listForm->forTemplate()
+		))->renderWith('Page');           
     }
     
     /**
@@ -126,13 +137,19 @@ class Unsubscribe_MailingListForm extends Form {
     
     function __construct( $controller, $name, $member, $email ) {
     		
+    	if($member) {
         $this->memberEmail = $member->Email;
+    	}
         
         $fields = new FieldSet(); 
         $actions = new FieldSet();
         
-        // get all the mailing lists for this user
-        $lists = $this->getMailingLists( $member );
+        if($member) {
+	        // get all the mailing lists for this user
+	        $lists = $this->getMailingLists( $member );
+        } else {
+        	$lists = false;
+        }
         
         if( $lists ) {
 	    $fields->push( new LabelField( _t('Unsubcribe.SUBSCRIBEDTO', 'You are subscribed to the following lists:')) );
@@ -146,11 +163,11 @@ class Unsubscribe_MailingListForm extends Form {
 	    $fields->push( new LabelField(sprintf(_t('Unsubscribe.NOTSUBSCRIBED', 'I\'m sorry, but %s doesn\'t appear to be in any of our mailing lists.'), $email) ) );   
         }
         
-        parent::__construct( $controller, $name, $fields, $actions );   
+        parent::__construct( $controller, $name, $fields, $actions );
     }
     
     function FormAction() {
-        return $this->controller->Link() . "{$this->memberEmail}?executeForm=" . $this->name;   
+        return $this->controller->RelativeLink() . "{$this->memberEmail}?executeForm=" . $this->name;   
     }
     
     protected function getMailingLists( $member ) {
@@ -181,7 +198,7 @@ class Unsubscribe_EmailAddressForm extends Form {
     }
     
     function FormAction() {
-        return parent::FormAction() . ( $_REQUEST['showqueries'] ? '&showqueries=1' : '' );
+        return parent::FormAction() . ( isset($_REQUEST['showqueries']) ? '&showqueries=1' : '' );
     }    
 }
 
