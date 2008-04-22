@@ -848,27 +848,75 @@ JS;
 	}
 
 	/**
-	 * The application name is customisable by calling
-	 * LeftAndMain::setApplicationName("Something New")
+	 * The application name. Customisable by calling
+	 * LeftAndMain::setApplicationName() - the first parameter.
+	 * 
+	 * @var String
 	 */
-	static $application_name = "SilverStripe CMS", $application_logo_text = "SilverStripe";
+	static $application_name = 'SilverStripe CMS';
+	
+	/**
+	 * The application logo text. Customisable by calling
+	 * LeftAndMain::setApplicationName() - the second parameter.
+	 *
+	 * @var String
+	 */
+	static $application_logo_text = 'SilverStripe';
+
+	/**
+	 * Set the application name, and the logo text.
+	 *
+	 * @param String $name The application name
+	 * @param String $logoText The logo text
+	 */
 	static function setApplicationName($name, $logoText = null) {
 		self::$application_name = $name;
 		self::$application_logo_text = $logoText ? $logoText : $name;
 	}
-	function ApplicationName() {
+
+	/**
+	 * Get the application name.
+	 * @return String
+	 */
+	function getApplicationName() {
 		return self::$application_name;
 	}
-	function ApplicationLogoText() {
+	
+	/**
+	 * Get the application logo text.
+	 * @return String
+	 */
+	function getApplicationLogoText() {
 		return self::$application_logo_text;
 	}
 
-	static $application_logo = "cms/images/mainmenu/logo.gif", $application_logo_style = "";
+	/**
+	 * The application logo path. Customisable by calling
+	 * LeftAndMain::setLogo() - the first parameter.
+	 *
+	 * @var unknown_type
+	 */
+	static $application_logo = 'cms/images/mainmenu/logo.gif';
 
+	/**
+	 * The application logo style. Customisable by calling
+	 * LeftAndMain::setLogo() - the second parameter.
+	 *
+	 * @var String
+	 */
+	static $application_logo_style = '';
+	
+	/**
+	 * Set the CMS application logo.
+	 *
+	 * @param String $logo Relative path to the logo
+	 * @param String $logoStyle Custom CSS styles for the logo
+	 * 							e.g. "border: 1px solid red; padding: 5px;"
+	 */
 	static function setLogo($logo, $logoStyle) {
 		self::$application_logo = $logo;
 		self::$application_logo_style = $logoStyle;
-		self::$application_logo_text = "";
+		self::$application_logo_text = '';
 	}
 	
 	protected static $loading_image = 'cms/images/loading.gif';
