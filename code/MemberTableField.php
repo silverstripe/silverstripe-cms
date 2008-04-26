@@ -218,18 +218,25 @@ class MemberTableField extends ComplexTableField {
 		$record = new $className();
 
 		$record->update($data);
-		$record->write();
 		
-		// To Avoid duplication in the Group_Members table if the ComponentSet.php is not modified just uncomment le line below
+		$valid = $record->validate();
+		if($valid->valid()) {
+			$record->write();
+
+			// To Avoid duplication in the Group_Members table if the ComponentSet.php is not modified just uncomment le line below
+
+			//if( ! $record->isInGroup( $data['ctf']['ID'] ) )
+				$record->Groups()->add( $data['ctf']['ID'] );
+
+			$this->sourceItems();
+
+			// TODO add javascript to highlight added row (problem: might not show up due to sorting/filtering)
+			FormResponse::update_dom_id($this->id(), $this->renderWith($this->template), true);
+			FormResponse::status_message(_t('MemberTableField.ADDEDTOGROUP','Added member to group'), 'good');
 		
-		//if( ! $record->isInGroup( $data['ctf']['ID'] ) )
-			$record->Groups()->add( $data['ctf']['ID'] );
-
-		$this->sourceItems();
-
-		// TODO add javascript to highlight added row (problem: might not show up due to sorting/filtering)
-		FormResponse::update_dom_id($this->id(), $this->renderWith($this->template), true);
-		FormResponse::status_message(_t('MemberTableField.ADDEDTOGROUP','Added member to group'), 'good');
+		} else {
+			FormResponse::status_message(Convert::raw2xml("I couldn't add that user to this group:\n\n" . $valid->starredlist()), 'bad');
+		}
 
 		return FormResponse::respond();
 	}
@@ -387,8 +394,9 @@ class MemberTableField_Popup extends ComplexTableField_Popup {
 			// custom behaviour for MemberTableField: add member to current group
 			$childObject->Groups()->add($_REQUEST['GroupID']);
 
+			$form->sessionMessage("Changes saved.",  'good');
 		} else {
-			$form->sessionMessage($valid->message(), 'bad');
+			$form->sessionMessage(Convert::raw2xml("I couldn't save your changes:\n\n" . $valid->starredList()), 'bad');
 		}
 		
 	
