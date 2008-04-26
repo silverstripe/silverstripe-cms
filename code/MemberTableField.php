@@ -116,6 +116,7 @@ class MemberTableField extends ComplexTableField {
 		parent::__construct($controller, $name, $sourceClass, $fieldList);
 
 		Requirements::javascript('cms/javascript/MemberTableField.js');
+		Requirements::javascript("cms/javascript/MemberTableField_popup.js");
 
 		// construct the filter and sort
 		if(isset($_REQUEST['MemberOrderByField'])) {
@@ -376,22 +377,36 @@ class MemberTableField_Popup extends ComplexTableField_Popup {
 		}
 
 		$this->saveInto($childObject);
-		$childObject->write();
-		
-		// custom behaviour for MemberTableField: add member to current group
-		$childObject->Groups()->add($_REQUEST['GroupID']);
 
+		$form = $this->controller->DetailForm($childObject->ID);
+	
+		$valid = $childObject->validate();
+		if($valid->valid()) {
+			$childObject->write();
+
+			// custom behaviour for MemberTableField: add member to current group
+			$childObject->Groups()->add($_REQUEST['GroupID']);
+
+		} else {
+			$form->sessionMessage($valid->message(), 'bad');
+		}
+		
+	
 		// if ajax-call in an iframe, update window
 		if(Director::is_ajax()) {
 			// Newly saved objects need their ID reflected in the reloaded form to avoid double saving 
-			$form = $this->controller->DetailForm($childObject->ID);
 			$form->loadDataFrom($childObject);
-			FormResponse::update_dom_id($form->FormName(), $form->formHtmlContent(), true, 'update');
+			
+			if($valid->valid()) {
+				FormResponse::update_dom_id($form->FormName(), $form->formHtmlContent(), true, 'update');
+			} else {
+				FormResponse::load_form($form->forTemplate(), $form->FormName());
+			}
+
 			return FormResponse::respond();
 		} else {
 			Director::redirectBack();
 		}
 	}
-
 }
 ?>
