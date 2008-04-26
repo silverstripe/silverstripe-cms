@@ -470,6 +470,8 @@ appendLoader(function () {
 		$('deletepage').getElementsByTagName('button')[0].onclick = function() { return false; };
 		$('deletepage_options').onsubmit = deletefolder.form_submit;
 	}
+	
+	new CheckBoxRange($('Form_EditForm'), 'Files[]');
 });
 
 Behaviour.register({
