@@ -14,7 +14,6 @@ Director::addRules(50, array(
 	'admin/assets/$Action/$ID' => 'AssetAdmin',
 	'admin/comments/$Action' => 'CommentAdmin',
 	'admin/ReportField/$Action/$ID/$Type/$OtherID' => 'ReportField_Controller',
-	'admin/bulkload/$Action/$ID/$OtherID' => 'BulkLoaderAdmin',
 	'admin/ImageEditor/$Action' => 'ImageEditor',
 	'admin/$Action/$ID/$OtherID' => 'CMSMain',
 	'unsubscribe/$Email/$MailingList' => 'Unsubscribe_Controller',
