@@ -13,6 +13,10 @@
 class Unsubscribe_Controller extends Page_Controller {
 
 	function __construct($data = null) {
+		if(!$data) {
+			$data = new Page();
+			$data->Title = "Unsubscribe";
+		}
 		parent::__construct($data);
 	}
 	
