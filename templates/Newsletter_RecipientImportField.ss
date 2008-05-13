@@ -3,13 +3,6 @@
 <head>
 	<% base_tag %>
 	$MetaTags
-	<style type="text/css" media="screen">
-		   @import "mot/css/css.css";
-		   @import "mot/css/typography.css";
-		</style>
-	<style type="text/css" media="print">
-		   @import "mot/css/print.css";
-	</style>
 	<style type="text/css">
 		body {
 			padding-top: 1em;
