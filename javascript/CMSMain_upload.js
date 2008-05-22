@@ -6,6 +6,9 @@
 CMSMain_upload = Class.create();
 CMSMain_upload.prototype = {
     initialize: function() {
+		// This is disabled until we get it working reliably
+		return;
+	
 		// We require flash 9
 	    pv = getFlashPlayerVersion();
 		if(pv.major < 9) return;
