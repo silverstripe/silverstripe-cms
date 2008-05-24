@@ -705,8 +705,7 @@ JS;
      * Looks for files used in system and create where clause which contains all ID's of files.
      * 
      * @returns String where clause which will work as filter.
-    */
-	
+     */
 	private function getUsedFilesList() {
 	    $result = DB::query("SELECT DISTINCT FileID FROM SiteTree_ImageTracking");
         $usedFiles = array();
@@ -718,20 +717,20 @@ JS;
         }
         $classes = ClassInfo::subclassesFor('SiteTree');
         foreach($classes as $className) {
-            $sng = singleton($className);
-            $objects = DataObject::get($className);
-            if($objects !== NULL) {
-	            foreach($sng->has_one() as $fieldName => $joinClass) {
-	                if($joinClass == 'Image' || $joinClass == 'File')  {
-	                	foreach($objects as $object) {
-	                		if($object->$fieldName != NULL) $usedFiles[] = $object->$fieldName;
-	                    }
-	                } elseif($joinClass == 'Folder') {
-	                    /*foreach($objects as $object) {
-	                    	var_dump($object->$fieldName);   	
-	                    }*/
-	                }
-	            }
+            $query = singleton($className)->extendedSQL();
+            $ids = $query->execute()->column();
+            if(!count($ids)) continue;
+            
+            foreach(singleton($className)->has_one() as $fieldName => $joinClass) {
+                if($joinClass == 'Image' || $joinClass == 'File')  {
+                	foreach($ids as $id) {
+                		$object = DataObject::get_by_id($className, $id);
+                		if($object->$fieldName != NULL) $usedFiles[] = $object->$fieldName;
+		                unset($object);
+                    }
+                } elseif($joinClass == 'Folder') {
+                    // @todo 
+                }
             }
         }
         foreach($usedFiles as $file) {
