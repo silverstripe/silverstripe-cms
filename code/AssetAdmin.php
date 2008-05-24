@@ -35,6 +35,7 @@ class AssetAdmin extends LeftAndMain {
 		'save',
 		'savefile',
 		'uploadiframe',
+		'deleteUnusedThumbnails' => 'ADMIN'
 	);
 
 	public function Link($action = null) {
@@ -699,70 +700,6 @@ JS;
 	    	unlink("../assets/" . $file); 	
 	    }
 	    echo "statusMessage('"._t('AssetAdmin.THUMBSDELETED', 'All unused thumbnails have been deleted')."','good')";
-	}
-	
-	/**
-     * Looks for files used in system and create where clause which contains all ID's of files.
-     * 
-     * @returns String where clause which will work as filter.
-     */
-	private function getUsedFilesList() {
-	    $result = DB::query("SELECT DISTINCT FileID FROM SiteTree_ImageTracking");
-        $usedFiles = array();
-	    $where = "";
-        if($result->numRecords() > 0) {
-            while($nextResult = $result->next()){
-                $where .= $nextResult['FileID'] . ','; 
-            }        
-        }
-        $classes = ClassInfo::subclassesFor('SiteTree');
-        foreach($classes as $className) {
-            $query = singleton($className)->extendedSQL();
-            $ids = $query->execute()->column();
-            if(!count($ids)) continue;
-            
-            foreach(singleton($className)->has_one() as $fieldName => $joinClass) {
-                if($joinClass == 'Image' || $joinClass == 'File')  {
-                	foreach($ids as $id) {
-                		$object = DataObject::get_by_id($className, $id);
-                		if($object->$fieldName != NULL) $usedFiles[] = $object->$fieldName;
-		                unset($object);
-                    }
-                } elseif($joinClass == 'Folder') {
-                    // @todo 
-                }
-            }
-        }
-        foreach($usedFiles as $file) {
-            $where .= $file->ID . ',';     
-        }
-        if($where == "") return "(ClassName = 'File' OR ClassName =  'Image')";
-        $where = substr($where,0,strlen($where)-1);
-        $where = "`File`.ID NOT IN (" . $where . ") AND (ClassName = 'File' OR ClassName =  'Image')";
-        return $where;
-	}
-	
-	/**
-     * Creates table for displaying unused files.
-     *
-     * @returns AssetTableField
-    */
-	
-	private function getAssetList() {
-		$where = $this->getUsedFilesList();
-        $assetList = new AssetTableField(
-            $this,
-            "AssetList",
-            "File", 
-			array("Title" => _t('AssetAdmin.TITLE', "Title"), "LinkedURL" => _t('AssetAdmin.FILENAME', "Filename")), 
-            "",
-            $where
-        );
-		$assetList->setPopupCaption(_t('AssetAdmin.VIEWASSET', "View Asset"));
-        $assetList->setPermissions(array("show","delete"));
-        $assetList->Markable = false;
-        return $assetList;
-        
 	}
 	
 	/**
