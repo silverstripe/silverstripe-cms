@@ -326,7 +326,7 @@ class UserDefinedForm_Controller extends Page_Controller {
  * @package cms
  * @subpackage pagetypes
  */
-class UserDefinedForm_SubmittedFormEmail extends Email_Template {
+class UserDefinedForm_SubmittedFormEmail extends Email {
 	protected $ss_template = "SubmittedFormEmail";
 	protected $from = '$Sender.Email';
 	protected $to = '$Recipient.Email';
