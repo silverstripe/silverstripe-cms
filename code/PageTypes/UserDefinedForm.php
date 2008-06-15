@@ -1,10 +1,4 @@
 <?php
-
-/**
- * @package cms
- * @subpackage pagetypes
- */
-
 /**
  * Page type that lets users build a contact form.
  * @package cms

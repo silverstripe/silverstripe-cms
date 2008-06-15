@@ -1,10 +1,4 @@
 <?php
-
-/**
- * @package cms
- * @subpackage security
- */
-
 /**
  * Security section of the CMS
  * @package cms

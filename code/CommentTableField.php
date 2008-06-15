@@ -1,10 +1,4 @@
 <?php
-
-/**
- * @package cms
- * @subpackage comments
- */
-
 /**
  * Special kind of ComplexTableField for managing comments.
  * @package cms

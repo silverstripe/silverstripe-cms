@@ -1,10 +1,4 @@
 <?php
-
-/**
- * @package cms
- * @subpackage assets
- */
-
 /**
  * Provides a strip of thumbnails showing all of the images in the system.
  * It will be tied to a 'parent field' that will provide it with a filter by which to reduce the number

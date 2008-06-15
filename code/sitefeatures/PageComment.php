@@ -1,10 +1,4 @@
 <?php
-
-/**
- * @package cms
- * @subpackage comments
- */
-
 /**
  * Represents a single comment on a page
  * @package cms

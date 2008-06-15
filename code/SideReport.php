@@ -1,10 +1,4 @@
 <?php
-
-/**
- * @package cms
- * @subpackage content
- */
-
 /**
  * Base class for the small reports that appear in the left hand site of the Site Content section of the CMS.
  * Create subclasses of this class to build new reports.

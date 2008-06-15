@@ -1,10 +1,4 @@
 <?php
-
-/**
- * @package cms
- * @subpackage reports
- */
-
 /**
  * Reports section of the CMS
  * @package cms

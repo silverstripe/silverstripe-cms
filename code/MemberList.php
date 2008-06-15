@@ -1,12 +1,9 @@
 <?php
-
-/**
- * @package cms
- * @subpackage security
- */
-
 /**
  * Form field showing a list of members.
+ *
+ * @deprecated Use {@link MemberTableField} instead
+ *
  * @package cms
  * @subpackage security
  */

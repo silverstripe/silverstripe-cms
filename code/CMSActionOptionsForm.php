@@ -1,13 +1,8 @@
 <?php
-
-/**
- * @package cms
- * @subpackage core
- */
-
 /**
  * A special kind of form used to make the action dialogs that appear just underneath the top-right
  * buttons in the CMS
+ * 
  * @package cms
  * @subpackage core
  */

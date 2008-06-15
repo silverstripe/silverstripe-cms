@@ -1,10 +1,4 @@
 <?php
-
-/**
- * @package cms
- * @subpackage assets
- */
-
 /**
  * This Controller handles all operation needed for ImageEditor to work(expect for GD operations).
  * @package cms

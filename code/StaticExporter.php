@@ -1,10 +1,4 @@
 <?php
-
-/**
- * @package cms
- * @subpackage export
- */
-
 /**
  * This class lets you export a static copy of your site.
  * It creates a huge number of folders each containing an index.html file.

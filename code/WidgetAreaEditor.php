@@ -1,10 +1,4 @@
 <?php
-
-/**
- * @package cms
- * @subpackage content
- */
-
 /**
  * Special field type for selecting and configuring widgets on a page.
  * @package cms

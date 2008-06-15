@@ -1,13 +1,9 @@
 <?php
 /**
- * @package cms
- * @subpackage content
- */
-
-/**
  * The main "content" area of the CMS.
  * This class creates a 2-frame layout - left-tree and right-form - to sit beneath the main
  * admin menu.
+ * 
  * @package cms
  * @subpackage content
  * @todo Create some base classes to contain the generic functionality that will be replicated.

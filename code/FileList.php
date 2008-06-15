@@ -1,10 +1,4 @@
 <?php
-
-/**
- * @package cms
- * @subpackage assets
- */
-
 /**
  * A FormField showing a list of files
  * @package cms

@@ -1,11 +1,7 @@
 <?php
 /**
- * @package cms
- * @subpackage assets
- */
-
-/**
  * A special kind of complex table field for manipulating assets.
+ *
  * @package cms
  * @subpackage assets
  */

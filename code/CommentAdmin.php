@@ -1,10 +1,4 @@
 <?php
-
-/**
- * @package cms
- * @subpackage comments
- */
-
 /**
  * Comment administration system within the CMS
  * @package cms
