@@ -23,9 +23,6 @@ $lang['en_US']['AssetAdmin']['FOLDERDELETED'] = 'folder deleted.';
 $lang['en_US']['AssetAdmin']['NOWBROKEN'] = 'The following pages now have broken links:';
 $lang['en_US']['AssetAdmin']['NOWBROKEN2'] = 'Their owners have been emailed and they will fix up those pages.';
 $lang['en_US']['AssetAdmin']['THUMBSDELETED'] = 'All unused thumbnails have been deleted';
-$lang['en_US']['AssetAdmin']['TITLE'] = 'Title';
-$lang['en_US']['AssetAdmin']['FILENAME'] = 'Filename';
-$lang['en_US']['AssetAdmin']['VIEWASSET'] = 'View Asset';
 $lang['en_US']['AssetTableField']['URL'] = 'URL';
 $lang['en_US']['AssetTableField']['MAIN'] = 'Main';
 $lang['en_US']['AssetTableField']['TITLE'] = 'Title';
@@ -48,11 +45,6 @@ $lang['en_US']['AssetTableField']['ISFLASH'] = 'Is A Flash Document';
 $lang['en_US']['AssetTableField']['DIMLIMT'] = 'Limit The Dimensions In The Popup Window';
 $lang['en_US']['AssetTableField']['PAGESLINKING'] = 'The following pages link to this file:';
 $lang['en_US']['AssetTableField']['NOLINKS'] = 'This file hasn\'t been linked to from any pages.';
-$lang['en_US']['BulkLoaderAdmin']['CSVFILE'] = 'CSV File';
-$lang['en_US']['BulkLoaderAdmin']['PREVIEW'] = 'Preview';
-$lang['en_US']['BulkLoaderAdmin']['PRESSCNT'] = 'Press continue to load this data in';
-$lang['en_US']['BulkLoaderAdmin']['CONFIRMBULK'] = 'Confirm bulk load';
-$lang['en_US']['BulkLoaderAdmin']['DATALOADED'] = 'This data has been loaded in';
 $lang['en_US']['CMSMain']['PAGETYPEOPT'] = array(
 	'Page Type',
 	 0,
@@ -262,7 +254,7 @@ $lang['en_US']['SecurityAdmin']['ADDMEMBER'] = 'Add Member';
 $lang['en_US']['SecurityAdmin']['SAVE'] = 'Save';
 $lang['en_US']['SecurityAdmin']['SGROUPS'] = 'Security groups';
 $lang['en_US']['SecurityAdmin']['NEWGROUP'] = 'New Group';
-$lang['en_US']['SecurityAdmin']['EDITPERMISSIONS'] = 'Edit Permissions on each Group';
+$lang['en_US']['SecurityAdmin']['EDITPERMISSIONS'] = 'Edit permissions and IP addresses on each group';
 $lang['en_US']['SideReport']['REPEMPTY'] = array(
 	'The %s report is empty.',
 	PR_MEDIUM,
@@ -295,7 +287,6 @@ $lang['en_US']['PageCommentInterface_Form']['MSGYOUPOSTED'] = 'The message you p
 $lang['en_US']['PageCommentInterface_Form']['AWAITINGMODERATION'] = 'Your comment has been submitted and is now awating moderation.';
 $lang['en_US']['PageCommentInterface_Controller']['SPAMQUESTION'] = 'Spam protection question: %s';
 $lang['en_US']['AssetAdmin_uploadiframe.ss']['PERMFAILED'] = 'You do not have permission to upload files into this folder.';
-$lang['en_US']['BulkLoaderAdmin_preview.ss']['RES'] = 'Results';
 $lang['en_US']['CMSMain_dialog.ss']['BUTTONNOTFOUND'] = 'Couldn\'t find the button name';
 $lang['en_US']['CMSMain_dialog.ss']['NOLINKED'] = 'Can\'t find window.linkedObject to send the button click back to the main window';
 $lang['en_US']['CMSMain_versions.ss']['WHEN'] = 'When';
@@ -327,6 +318,10 @@ $lang['en_US']['AssetAdmin_left.ss']['GO'] = 'Go';
 $lang['en_US']['AssetAdmin_left.ss']['SELECTTODEL'] = 'Select the folders that you want to delete and then click the button below';
 $lang['en_US']['AssetAdmin_left.ss']['DELFOLDERS'] = 'Delete the selected folders';
 $lang['en_US']['AssetAdmin_left.ss']['TOREORG'] = 'To reorganise your folders, drag them around as desired.';
+$lang['en_US']['AssetAdmin_left.ss']['ENABLEDRAGGING'] = array(
+	'Allow drag &amp; drop reordering',
+	 PR_HIGH
+);
 $lang['en_US']['AssetAdmin_right.ss']['WELCOME'] = 'Welcome to';
 $lang['en_US']['AssetAdmin_right.ss']['CHOOSEPAGE'] = 'Please choose a page from the left.';
 $lang['en_US']['AssetTableField.ss']['DRAGTOFOLDER'] = 'Drag to folder on left to move file';
@@ -334,8 +329,6 @@ $lang['en_US']['AssetTableField.ss']['SHOW'] = 'Show asset';
 $lang['en_US']['AssetTableField.ss']['EDIT'] = 'Edit asset';
 $lang['en_US']['AssetTableField.ss']['DELFILE'] = 'Delete this file';
 $lang['en_US']['AssetTableField.ss']['DELFILE'] = 'Delete this file';
-$lang['en_US']['BulkLoaderAdmin_left.ss']['FUNCTIONS'] = 'Functions';
-$lang['en_US']['BulkLoaderAdmin_left.ss']['BATCHEF'] = 'Batch entry functions';
 $lang['en_US']['CMSLeft.ss']['SITECONT'] = 'Site Content';
 $lang['en_US']['CMSLeft.ss']['NEWPAGE'] = 'New Page...';
 $lang['en_US']['CMSLeft.ss']['DELPAGE'] = 'Delete Pages...';
@@ -461,6 +454,10 @@ $lang['en_US']['SecurityAdmin_left.ss']['GO'] = 'Go';
 $lang['en_US']['SecurityAdmin_left.ss']['SELECT'] = 'Select the pages that you want to delete and then click the button below';
 $lang['en_US']['SecurityAdmin_left.ss']['DELGROUPS'] = 'Delete the selected groups';
 $lang['en_US']['SecurityAdmin_left.ss']['TOREORG'] = 'To reorganise your site, drag the pages around as desired.';
+$lang['en_US']['SecurityAdmin_left.ss']['ENABLEDRAGGING'] = array(
+	'Allow drag &amp; drop reordering',
+	 PR_HIGH
+);
 $lang['en_US']['SecurityAdmin_right.ss']['WELCOME1'] = array(
 	'Welcome to the',
 	50,
