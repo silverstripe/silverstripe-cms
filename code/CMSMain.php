@@ -99,6 +99,16 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Requirements::javascript("forum/javascript/ForumAccess.js");
 		Requirements::javascript('gallery/javascript/GalleryPage_CMS.js');
 	}
+	
+	/**
+	 * If this is set to true, the "switchView" context in the
+	 * template is shown, with links to the staging and publish site.
+	 *
+	 * @return boolean
+	 */
+	function ShowSwitchView() {
+		return true;
+	}
 
 	//------------------------------------------------------------------------------------------//
 	// Main controllers
