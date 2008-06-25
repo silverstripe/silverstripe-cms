@@ -163,6 +163,7 @@ TinyMCEImageEnhancement.prototype = {
         this.processInProgress = true;
         this.upload.setFolderID(this.getParentID()); 
         $('UploadFiles').innerHTML = "Uploading ... 1/" + this.upload.getFilesToUpload();    
+        this.upload.startUpload();
     },
     
     uploadFileCompleteCallback: function(file,serverData) {
