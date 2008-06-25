@@ -1,5 +1,203 @@
 SilverStripe ChangeLog
 
+
+2.2.2 (In development)
+
+New Features
+  - Translations
+      Added Translations for LOLCAT
+      Added Translations for Esperanto
+      Added Translations for Sinhalese
+      Added Translations for Finnish
+      Added Translations for Danish
+      Ability to translate newsletter
+      Updated several translations in cms/auth_openid/sapphire
+	  Added package names for i18n files 
+  
+  - CMS
+      - HtmlEditorField: Added paste plain text and paste from word buttons
+      - Added simple to-do list facility to SiteTree
+      - Added MenuTitle in the CMS LHS tree instead of Title
+      
+ 
+Developer Tools
+  - CompositeField
+      -
+  - SiteTree
+      - Made breadcrumbs delimiter configurable
+  - adding more unit tests
+  - Added better handling of memory limit
+  - Added $SecurityID for templates
+  - Added ViewableData?->escapeFlagForField() to determine if the record-field needs escaping (currently only 'xml' supported) + changed name to escapeTypeForField
+  - Added Makefile so that you can execute 'make test' in sapphire
+  - Added title attributes to the SilverStripeNavigator messages 
+  - Added ArrayLib::in_array_recursive() for recursively checking an array with nested arrays
+  - Improvements to RestfulService
+  - DataObjectSet: Implemented equal values
+  - Added ability to choose which file to upload in a FileField
+  - adding "delete" class to Image::DeleteImageForm
+  - Email: Changed email encoding from iso-8859-15 to utf-8, in compliance with other parts of SilverStripe and IMC recommendations
+  - ErrorPage: Added all the types of error pages (ErrorPage.400,401,403 - 417,500 - 505)
+  - SiteTree: Don't let people create a page name that is the same as a class name
+  - Added SS_DEFAULT_ADMIN_USERNAME/PASSWORD defines to conf/ConfigureFromEnv.php
+  - Form: added setFields()/setActions()
+  - Added Date:TimeDiffIn()
+  - Added missing ChangePasswordEmail.ss 
+  - Added Member::$notify_password_change - now sends an email to the member
+  - Member: Added BaseHref() to Member_ChangePasswordEmail so that the email shows the domain name of the current subsite.
+  - Tidyied up lost password form
+  - Create Group::canEdit(), which can be used to filter the SecurityAdmin group list 
+  - Fixed DataObjectSet::insertFirst() - it now uses a numeric key rather than null
+  - Added Member->SetPassword, a field that lets you have a write-only password field
+      - Used Member->SetPassword to create a password column on the MemberTableField for SecurityAdmin
+      - Send 'changed password' emails when a user is first created as well as edited 
+  - Moved CMS page-disabled logic into SiteTree::CMSTreeClasses(), so that it can be more easily customised for specific sites
+  - Moved folder admin form to Folder::getCMSFields() to let you more easily manipulate the form with a decorator
+  - File: Updated AssetAdmin to use TreeTitle() in place of Title for tree generation
+      - Updated TreeTitle?() to allow use of alternateTreeTitle() in decorator
+      - Updated File to allow the insertion of extra columns by decorator 
+  - ViewableData: added $casting for BaseHref?()
+  - main.php: Moved _ss_environment.php include to very top
+  - Controller: Improved allowed_actions support for subclassed controllers, such as CMSMain extends LeftAndMain
+  - Controller: Allow use of on controller extensions 
+  - Security: Added support for password and old_password encryption mechanisms if you're using MySQL 
+  - Versioned: added database indexes for AuthorID and PublisherID 
+  - HTMLEditorField: Added 'anchor' option to link inserter 
+  - Member: added $searchable_fields in preparation for a more generic search implementation, currently limited to Member.php and MemberTableField.php
+  - RSSFeed: Make RSS feed work with objects that don't support AbsoluteLink, such as the forum
+  - Added DataObject::hasDatabaseField()
+
+CMS
+  - Added LeftAndMainSubsites?->augmentNewSiteTreeItem that allows extensions of LeftAndMain? to provide the current SubsiteID for the new item
+  - MemberTableField: Added Member->SetPassword?, a field that lets you have a write-only password field 
+  - Removed redundant Add Member button at the top-right 
+  - Moved CMS page-disabled logic into SiteTree::CMSTreeClasses(), so that it can be more easily customised for specific sites
+  
+
+Bug Fixes
+  - Sapphire
+      - Fix locale files on Windows
+      - More solid ID-detection in Member::php()
+      - ComplexTableField: 
+          - added $popupClass to avoid duplication, getting basedataclass for existing children in DetailForm() (in case we're dealing with different subclasses)
+          - fixed getParentIdName() call in DetailForm() - paramter-order was wrong
+          - better checking in saveComplexTableField() to avoid PHP-notice 
+      - Fix title and description in RSS feeds
+      - Fix interface translations in CMS footer
+      - DataObject: 
+          - fix for quering database for child elements when it hasnt been serialized
+          - Remove HAVING clause from methods where it doesn't make sense to have them
+          - Fix caching in DataObject::get_one()
+          - Take orderby clause into account when caching in DataObject::get_one()
+          - Removes having clause as it can't be used
+      - TestRunner: Ensured that the autoloader pulls in the test class
+      - Database::createDatabase() shouldn't need any arguments. Fixed this in the core class and MySQLDatabase
+      - Debug: Fix stack trace on objects that don't extend the Object class
+      - SapphireTest.php: Fix YAML many_many/has_many relationships
+      - HasManyComplexTableField: set $template and $itemClass to public (according to parent implementation) and fixed formatting
+      - Email: Fix attachments that could not be emailed from mac or windows systems
+      - Use lighter version of browscap.ini
+      - Added ArrayLib::is_associative()
+      - allowing object-parameters in DataObjectSet and ArrayData, added ArrayData::object_to_array()
+      - Allow insertion of <img> tags that refer to external domains and add alt= to any images that don't have alt tags 
+      - Show the saved value of EditableEmailField.SendCopy
+      - ManifestBuilder: Fix building manifest before database is created
+      - HTMLText.Summary: Don't close img and br tags
+      - Don't fail in i18n::include_by_class if the module isn't translatable
+      - Database: When removing a value from an enum, set affected rows back to the default
+      - Fix DataObjectSet constructor breaking with associative arrays
+      - Make ContentNegotiator send XHTML to the W3C validator
+      - Image: Fix attaching an existing folder to an ImageField
+      - TableField: 
+          - when no source items found, the table should still show and it should works as adding new records
+          - renamed $wantDefaultAddRow to $showAddRow 
+      - Form: removed Form::dropDatalessFields()
+      - Refactored Member::session_regenerate_id to make it easier to disable in some circumstances.
+      - Deprecated use of DBField 'Text' for saving HTML-Content (added check in HTMLEditorField->saveInto()) 
+      - Make Security::get_encryption_algorithms() a dynamic function again.
+      - Fix sorting in complextablefield
+      - Added sapphire/conf/ConfigureFromEnv.php for making use of _ss_environment.php
+      - SelectionGroup: Fix for bug that initialises with preloaded selected items with right hide/show
+      - Fixed fatal error due to browscap.ini capitalisation error  
+      - Allow many-many complex table fields to be used on the reverse side of the join (belongs many many)
+      - Fix incorrect text boxes on many-many complex table fields and relational complex table fields being set on an ajax request 
+      - BasicAuth: Fixed illegal reference to this 
+      - Image: locking down URLs: image/iframe, image/flush, image/transferlegacycontent
+      - RelationComplexTableField: fixed "object not found" error in ie6
+      - ImageField: compressed layout to fit in CTF-popup (removed "click here to remove" label), removed iframe-borders for IE 
+      - RelationComplexTableField: added check if sitetree exists otherwise IE broken with all genericDataAdmin panel
+      - ComplexTableField: updating form in ctf-popup after saving (including validation-errors and fields that have may changed on the serverside, e.g. ImageField?)
+      - fix PageView's recording of referrers.
+      - File: fix upload folder
+      - Fixed seamonkey browser recognition in browscap.ini
+      - ComplexTableField: fix sql error on comments section
+      - fixed i18n::get_owner_module() calls on classes with _s
+      - Fixed ManifestBuilder execution in restrictive openbasedir environments 
+      - Removed clone behaviour from Form::Fields() 
+      - Object: Added object caching methods 
+      - Make DataObject::write() call the recursive write on components, even when the dataobject itself hasn't changed
+      - fix ComplexTableField caching
+      - ManifestBuilder regex
+      - Debug: Supress disabled errors on live site 
+      - Allowed subclasses in ComponentSet::add/remove
+      - added extra security on Controller ( checkAccessAction() )
+      - Member: Used Object::create() to create email instances sent by the system.
+      - Object, Versioned, Hierarchy: Allow selection of folder when inserting files / images 
+      - AjaxUniqueTextField: fixed sql-injection
+      - TableField: Removed use of deprecated TableField::setExtraClass()
+      - Group: Removed warning in group admin
+      - DataObject: fixed caching in getManyManyComponents
+      - DataObject: Fixed MySQL 4.1 support for situations where we are sorting by a group aggregation function and fixed notice level error
+      - Fixed bug with BasicAuth enabled on an old database, it was preventing you from visiting db/build
+      
+      - DataObject: Fixed 4.1-sort-by-group-aggregate query rewriter for sort functions containing columns, eg, ORDER BY if(A,B,C), X 
+      - Director: Small fix for session bugs on Lightspeed server
+      - DataObjectSets: cannot be iterated over multiple times concurrently 
+      - fix to Installer: falsely claims modrewrite fails (mamp) 
+      - Widget: fixed widget editor
+      - ComplexTableField: Fixed double-escaping of CTF popup page-navigation links
+      - ComponentSet: fixing bug with in-memory child objects not having their parent ID field updated via the ->add() method 
+      - ComplexTableField: BUGFIX properly setting $childID in form for newly created items to avoid duplicates after subsequent saving (the form reloaded without the ID connection)
+      - TableListField: fixed csv export in MemberTableField by checking for valid database columns when building SELECT statement
+      - ComplexTableField: fix popup breaking after saving 
+      
+      
+  - CMS
+      - cmsmain_left: You can't reorganise pages without creating pages
+      - MemberTableField: Patch for more i18n strings
+      - Fix i18n errors
+      - UserDefinedForm: Fixed notice level error 
+      - Bug in PageComments class (Security)
+      - Fix autocompletion in Security Admin
+      - Fixed the $hide_ancestor static on SiteTree? subclasses
+      - Fixed bug: Page class wasn't shown in add-page dropdown
+      - More memory-efficient version of admin/publishall
+      - tinymce.template: Added paste plain text and paste from word buttons to the HtmlEditorField in the CMS 
+      - SideReport: fixed bug in todo list report
+      - Fixed 404 on spacer.gif 
+      - Fixed context menus in CMS 
+      - CMSMain: Added 'duplicate page and children' context-item in addition to 'duplicate just this page' 
+      - GenericDataAdmin: Recover ExportForm for genericDataAdmin Which is needed for CRM CreateCommunication
+      - Added default SubscribeForm?.ss
+      - Added SubscribeSubmission? template to get subscribeforms to work
+      - SubscribeForm: Fix newsletter subscription form
+      - AssetAdmin: Disabled unused files list, as it uses way too much memory
+      - CMSMain->getNewItem now calls $this->extend('augmentNewSiteTreeItem', $newItem);
+      - Changed call to ViewableData::castingHelperPair to fix sort not being set by getNewItem
+      - Used Member->SetPassword? to create a password column on the MemberTableField? for SecurityAdmin?
+	  - Send 'changed password' emails when a user is first created as well as edited 
+      - Updated core to allow for subsites restriction of filesystem: Folder::getCMSFields() is now responsible for generating the folder form.
+      - Folder::syncChildren() now exclusively uses DB::query() calls instead of DataObject::get(). 
+      - CMSMain: Fixed CMS bottom-navigation after publish, when using the subsites module (or other alternateAbsoluteLink implementors)
+      - SideReport: Fixed newlines in to-do report
+      
+      
+  - Javascript
+      - Improved the Behaviour.addLoader() method to play more nicely with tools
+      - tree.js: Fix bug when duplicating pages with reorganise enabled 
+      - tiny_mce_improvements.js: Improvement to link-insertion logic when selecting text that doesn't have a link
+      - tiny_mce_improvements.js: Fixed default-setting for link anchor 
+
 2.2.1 (21 Dec 2007)
 
 New Features
