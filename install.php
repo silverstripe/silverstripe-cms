@@ -173,7 +173,7 @@ class InstallRequirements {
 		
 		// Check for GD support
 		if(!$this->requireFunction("imagecreatetruecolor", array("PHP Configuration", "GD2 support", "PHP must have GD version 2."))) {
-			$this->requireFunction("imagecreate", array("PHP Configuration", "GD2 support", "GD2 support", "GD support for PHP not included."));
+			$this->requireFunction("imagecreate", array("PHP Configuration", "GD2 support", "GD support for PHP not included."));
 		}
 		
 		// Check for XML support
