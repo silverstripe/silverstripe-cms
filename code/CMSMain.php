@@ -87,7 +87,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		 * We need a better way of including all of the CSS that *might* be used by this application.
 		 * Perhaps the ajax responses can include some instructions to go get more CSS / JavaScript?
 		 */
-		Requirements::css("mot/css/WorkflowWidget.css");
 		Requirements::css("survey/css/SurveyFilter.css");
 		Requirements::javascript("survey/javascript/SurveyResponses.js");
 		Requirements::javascript("survey/javascript/FormResponses.js");
