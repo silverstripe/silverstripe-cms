@@ -230,6 +230,10 @@ form#Form_EditForm #Form_ExportForm fieldset {
 
 .clear {display: inline-block;}
 
+#LeftPane {
+	overflow-y: scroll;
+}
+
 /* Hides from IE-mac \*/
 * html .clear {height: 1%;}
 .clear {display: block;}
