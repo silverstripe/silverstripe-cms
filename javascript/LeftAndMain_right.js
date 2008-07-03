@@ -8,6 +8,17 @@ CMSForm.prototype = {
 	},
 	
 	/**
+	 * Trigger normal save event, helpful e.g. when enter key is pressed in
+	 * single line input fields.
+	 */
+	onsubmit: function(e) {
+		this.save();
+		
+		Event.stop(e);
+		return false;
+	},
+	
+	/**
 	 * Processing called whenever a page is loaded in the right - including the initial one
 	 */
 	prepareForm : function() {
