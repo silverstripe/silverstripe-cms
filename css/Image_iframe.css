@@ -131,7 +131,11 @@ div.TreeDropdownField a.editLink {
 	overflow: hidden;
 }
 
-
+/* added block/width so tree values don't disappear in ie7 */
+.SelectionGroup div.TreeDropdownField ul.tree li {
+	display: block;
+	width: 100%;
+}
 
 .Actions {
 	text-align: right;
