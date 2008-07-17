@@ -36,7 +36,20 @@ class LeftAndMain extends Controller {
 		'save',
 		'show',
 	);
-
+	
+	/**
+	 * Register additional requirements through the {@link Requirements class}.
+	 * Used mainly to work around the missing "lazy loading" functionality
+	 * for getting css/javascript required after an ajax-call (e.g. loading the editform).
+	 *
+	 * @var array $extra_requirements
+	 */
+	protected static $extra_requirements = array(
+		'javascript' => array(),
+		'css' => array(),
+		'themedcss' => array(),
+	);
+	
 	function init() {
 		Director::set_site_mode('cms');
 		
@@ -118,7 +131,6 @@ class LeftAndMain extends Controller {
 	
 		Requirements::css('sapphire/css/Form.css');
 
-		// Requirements::javascript('cms/javascript/MemberList.js');
 		Requirements::javascript('cms/javascript/ForumAdmin.js');
 		Requirements::javascript('cms/javascript/SideTabs.js');
 		Requirements::javascript('cms/javascript/TaskList.js');
@@ -171,10 +183,19 @@ class LeftAndMain extends Controller {
 		Requirements::css('cms/css/WidgetAreaEditor.css');
 		Requirements::javascript('cms/javascript/WidgetAreaEditor.js');
 		
-		// For Blog
-		Requirements::javascript('blog/javascript/bbcodehelp.js');
-
 		Requirements::javascript("sapphire/javascript/Security_login.js");
+		
+		foreach (self::$extra_requirements['javascript'] as $file) {
+			Requirements::javascript($file[0]);
+		}
+		
+		foreach (self::$extra_requirements['css'] as $file) {
+			Requirements::css($file[0], $file[1]);
+		}
+		
+		foreach (self::$extra_requirements['themedcss'] as $file) {
+			Requirements::css($file[0], $file[1]);
+		}
 
 		$dummy = null;
 		$this->extend('augmentInit', $dummy);
@@ -1051,6 +1072,37 @@ JS;
 		);
 		
 		return true;
+	}
+	
+	/**
+	 * Register the given javascript file as required in the CMS.
+	 * Filenames should be relative to the base, eg, 'sapphire/javascript/loader.js'
+	 */
+	public static function require_javascript($file) {
+		self::$extra_requirements['javascript'][] = array($file);
+	}
+	
+	/**
+	 * Register the given stylesheet file as required.
+	 * 
+	 * @param $file String Filenames should be relative to the base, eg, 'jsparty/tree/tree.css'
+	 * @param $media String Comma-separated list of media-types (e.g. "screen,projector") 
+	 * @see http://www.w3.org/TR/REC-CSS2/media.html
+	 */
+	public static function require_css($file, $media = null) {
+		self::$extra_requirements['css'][] = array($file, $media);
+	}
+	
+	/**
+	 * Register the given "themeable stylesheet" as required.
+	 * Themeable stylesheets have globally unique names, just like templates and PHP files.
+	 * Because of this, they can be replaced by similarly named CSS files in the theme directory.
+	 * 
+	 * @param $name String The identifier of the file.  For example, css/MyFile.css would have the identifier "MyFile"
+	 * @param $media String Comma-separated list of media-types (e.g. "screen,projector") 
+	 */
+	static function require_themed_css($name, $media = null) {
+		self::$extra_requirements['themedcss'][] = array($name, $media);
 	}
 	
 }
