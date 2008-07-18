@@ -499,7 +499,7 @@ JS;
 				foreach($changed as $page) {
 					if($page->ID != $record->ID) {
 						$title = Convert::raw2js($page->TreeTitle());
-						FormResponse::add("$('sitetree').setNodeTitle($page->ID, \"$title\")");
+						FormResponse::add("$('sitetree').setNodeTitle($page->ID, \"$title\");");
 					}
 				}
 			}
@@ -672,7 +672,7 @@ JS;
 					$movedNode->write();
 
 					$title = Convert::raw2js($movedNode->TreeTitle());
-					$js .="$('sitetree').setNodeTitle($movedNode->ID, \"$title\")\n";
+					$js .="$('sitetree').setNodeTitle($movedNode->ID, \"$title\");\n";
 
 				// Nodes that weren't "actually moved" shouldn't be registered as having been edited; do a direct SQL update instead
 				} else if(is_numeric($id)) {

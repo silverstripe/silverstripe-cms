@@ -811,7 +811,7 @@ HTML;
 		FormResponse::update_status($page->Status);
 		
 		if($JS_stageURL || $JS_liveURL) {
-			FormResponse::add("\$('sitetree').setNodeTitle($page->ID, '$JS_title')");
+			FormResponse::add("\$('sitetree').setNodeTitle($page->ID, '$JS_title');");
 		} else {
 			FormResponse::add("var node = $('sitetree').getTreeNodeByIdx('$page->ID');");
 			FormResponse::add("if(node.parentTreeNode)	node.parentTreeNode.removeTreeNode(node);");
@@ -819,8 +819,8 @@ HTML;
 		}
 		
 		FormResponse::status_message($statusMessage, 'good');
-		FormResponse::add("$('Form_EditForm').elements.StageURLSegment.value = '$JS_stageURL'");
-		FormResponse::add("$('Form_EditForm').elements.LiveURLSegment.value = '$JS_liveURL'");
+		FormResponse::add("$('Form_EditForm').elements.StageURLSegment.value = '$JS_stageURL';");
+		FormResponse::add("$('Form_EditForm').elements.LiveURLSegment.value = '$JS_liveURL';");
 		FormResponse::add("$('Form_EditForm').notify('PagePublished', $('Form_EditForm').elements.ID.value);");
 
 		return FormResponse::respond();
