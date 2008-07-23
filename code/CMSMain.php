@@ -45,6 +45,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Requirements::javascript( 'sapphire/javascript/DataReport.js' );
 		Requirements::css("survey/css/SurveyFilter.css");
 
+		Requirements::javascript("sapphire/javascript/TreeSelectorField.js");
+		Requirements::javascript("manfocus/javascript/ManFocusTreeField.js");
+		Requirements::css("manfocus/css/ManFocusTreeField.css");
+
 		Requirements::javascript("sapphire/javascript/SelectionGroup.js");
 		
 		// For Parents
