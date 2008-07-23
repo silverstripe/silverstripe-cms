@@ -163,7 +163,7 @@ class PageComment extends DataObject {
 		return "Comment by '". Convert::raw2xml($this->Name) . "' on " . $this->Parent()->Title;
 	}
 	function rss() {
-		$parentcheck = isset($_REQUEST['pageid']) ? "ParentID = {$_REQUEST['pageid']}" : "ParentID > 0";
+		$parentcheck = isset($_REQUEST['pageid']) ? "ParentID = " . (int) $_REQUEST['pageid'] : "ParentID > 0";
 		$comments = DataObject::get("PageComment", "$parentcheck AND IsSpam=0", "Created DESC", "", 10);
 		if(!isset($comments)) {
 			$comments = new DataObjectSet();
