@@ -447,7 +447,7 @@ iframe {
 #contentPanel option {
 	font-size: 12px;
 }
-#contentPanel span.middleColumn {
+#contentPanel .middleColumn {
 	background:#E9E9E9 none repeat scroll 0%;
 	display:block;
 	padding:3px;
