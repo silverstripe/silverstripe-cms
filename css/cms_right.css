@@ -73,14 +73,14 @@
 			.right form .countrydropdown select option {
 				font-size: 12px;
 			}
-	.right form .field span.middleColumn {
+	.right form .field .middleColumn {
 		display: block;
 		background: #e9e9e9;
 		padding: 3px;
 		width: 97%;
 	}
-	.right form .field.image span.middleColumn,
-	.right form .field.simpleimagefield_disabled span.middleColumn {
+	.right form .field.image .middleColumn,
+	.right form .field.simpleimagefield_disabled .middleColumn {
 		padding-bottom:0;
 	}
 	
@@ -376,9 +376,9 @@ div.CommentFilter {
 	background: #ebeadb;
 	border: 1px solid #aca899;
 }
-	div.MemberListFilter span.middleColumn,
-	div.MemberFilter span.middleColumn,
-	div.CommentFilter span.middleColumn {
+	div.MemberListFilter .middleColumn,
+	div.MemberFilter .middleColumn,
+	div.CommentFilter .middleColumn {
 		display: inline !important;
 	}
 
