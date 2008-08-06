@@ -39,7 +39,7 @@ abstract class ModelAdmin extends LeftAndMain {
 	public static $allowed_actions = array(
 		'add',
 		'edit',
-		'delete',
+		'delete'
 	);
 	
 	public function init() {
@@ -181,8 +181,6 @@ abstract class ModelAdmin extends LeftAndMain {
 		return $form;
 	}
 	
-	
-	
 	// ############# Utility Methods ##############
 	
 	/**
@@ -257,8 +255,67 @@ abstract class ModelAdmin extends LeftAndMain {
 				new FormAction('search', _t('MemberTableField.SEARCH'))
 			)
 		);
-		
+		//$form->setFormMethod('get');
 		return $form;
 	}
+	
+	/**
+	 * Another counter intuitive hoop to jump through, as the Form constructor
+	 * is still thoroughly confusing the hell out of me.
+	 */
+	function FormObjectLink($value) {
+		$value = str_replace('SearchForm_', '', $value);
+		return "admin/crm/$value/search";
+	}
+
+	/**
+	 * Action to execute a search using the model context
+	 */
+	function search() {
+		$className = $this->urlParams['ClassName'];
+		if (in_array($className, $this->getManagedModels())) {
+			$model = singleton($className);
+			// @todo need to filter post vars
+			$searchKeys = array_intersect_key($_POST, $model->searchableFields());
+			$context = $model->getDefaultSearchContext();
+			$results = $context->getResultSet($searchKeys);
+			if ($results) {
+				echo "<table>";
+				foreach($results as $row) {
+					$uri = Director::absoluteBaseUrl();
+					echo "<tr id=\"{$uri}admin/crm/$className/view/$row->ID\">";
+					foreach($model->searchableFields() as $key=>$val) {
+						echo "<td>";
+						echo $row->getField($key);
+						echo "</td>";
+					}
+					echo "</tr>";
+				}
+				echo "</table>";
+			} else {
+				echo "<p>No results found</p>";
+			}
+		}
+	}
+	
+	function view() {
+		$className = $this->urlParams['ClassName'];
+		$ID = $this->urlParams['ID'];
+		
+		if (in_array($className, $this->getManagedModels())) {
+			
+			$model = DataObject::get_by_id($className, $ID);
+			
+			$fields = $model->getCMSFields();
+			
+			$form = new Form($this, $className, $fields, new FieldSet());
+			$form->makeReadonly();
+			$form->loadNonBlankDataFrom($model);
+			echo $form->forTemplate();
+		}
+	}
+	
+	
+
 }
 ?>
