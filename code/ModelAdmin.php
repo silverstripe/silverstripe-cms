@@ -127,7 +127,6 @@ abstract class ModelAdmin extends LeftAndMain {
 				new FormAction('add', _t('GenericDataAdmin.CREATE'))
 			)
 		);
-		
 		return $form;
 	}
 	
