@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="cms/css/cms_right.css" />
 </head>
 
-<body class="stillLoading">
+<body class="stillLoading $CSSClasses">
 	<div id="Loading" style="background: #FFF url($LoadingImage) 50% 50% no-repeat; position: absolute;z-index: 100000;height: 100%;width: 100%;margin: 0;padding: 0;z-index: 100000;position: absolute;"><% _t('LOADING','Loading...',PR_HIGH) %></div>
 
 	<div id="top">

@@ -765,7 +765,7 @@ GBModalDialog.prototype = {
 
 function hideLoading() {
 	$('Loading').style.display = 'none';
-	document.body.className = '';
+	Element.removeClassName(document.body, 'stillLoading');
 }
 function baseHref() {
 	var baseTags = document.getElementsByTagName('base');

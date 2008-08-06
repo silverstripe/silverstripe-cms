@@ -6,7 +6,7 @@
         <title><% _t('UNTITLED','Untitled Document') %></title>
         <meta http-equiv="imagetoolbar" content="no">
     </head>
-    <body id="body" onload="ImageEditor.imageEditor = new ImageEditor.Main.initialize('$fileToEdit');">
+    <body id="body" class="$CSSClasses" onload="ImageEditor.imageEditor = new ImageEditor.Main.initialize('$fileToEdit');">
         <div id="Loading" style="background: #FFF url(cms/images/loading.gif) 50% 50% no-repeat; position: absolute;z-index: 100000;height: 100%;width: 100%;margin: 0;padding: 0;z-index: 100000;position: absolute;">Loading...</div>
         <div id="Main">
             <script type="text/javascript">

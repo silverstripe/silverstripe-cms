@@ -5,7 +5,7 @@
 <title>$Title</title>
 <% base_tag %>
 </head>
-<body>
+<body class="$CSSClasses">
 	$Content
 	<div class="right">
 		$Form

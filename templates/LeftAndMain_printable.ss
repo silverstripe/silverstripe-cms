@@ -6,7 +6,7 @@
 <title>SilverStripe CMS - $Title</title>
 </head>
 
-<body onblur="window.close()">
+<body class="$CSSClasses" onblur="window.close()">
 	$PrintForm
 </body>
 </html>

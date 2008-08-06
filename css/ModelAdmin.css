@@ -1,0 +1,27 @@
+body.ModelAdmin #left {
+	width: 250px;
+}
+
+body.ModelAdmin #Form_AddForm fieldset {
+	float: left;
+}
+
+body.ModelAdmin #Form_AddForm #ClassName {
+	margin: 0;
+	padding: auto;
+	width: auto;
+}
+
+body.ModelAdmin #Form_AddForm #ClassName label {
+	display: none;
+}
+
+body.ModelAdmin #SearchForm_holder,
+body.ModelAdmin #AddForm_holder {
+	padding: 1em;
+}
+
+body.ModelAdmin #SearchForm_holder {
+	overflow: auto;
+	height: 300px;
+}
