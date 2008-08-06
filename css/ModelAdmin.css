@@ -23,5 +23,33 @@ body.ModelAdmin #AddForm_holder {
 
 body.ModelAdmin #SearchForm_holder {
 	overflow: auto;
-	height: 300px;
+	margin-bottom:1em;
+}
+
+body.ModelAdmin #ResultTable_holder {
+	overflow:auto;
+}
+
+body.ModelAdmin #ResultTable_holder table {
+	margin:6px;
+	padding:0;
+	border-spacing:0 2px;
+	width:230px;
+}
+
+body.ModelAdmin #ResultTable_holder table td {
+	font-size:11px;
+	font-weight:bold;
+	background-color:#fff;
+	padding:2px;
+}
+
+body.ModelAdmin #ResultTable_holder table td.over {
+	background-color:#bbb;
+	cursor:pointer;
+}
+
+body.ModelAdmin #ResultTable_holder table td.active {
+	background-color:#555;
+	color:#fff;
 }

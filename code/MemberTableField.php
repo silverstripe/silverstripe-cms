@@ -303,12 +303,12 @@ class MemberTableField extends ComplexTableField {
 		}
 		$fields->push(new HiddenField('ctf[ID]', null, $this->group->ID));
 
-		return new TabularStyle(new Form($this->controller,'AddRecordForm',
+		return new TabularStyle(new NestedForm(new Form($this, 'AddRecordForm',
 			$fields,
 			new FieldSet(
 				new FormAction('addtogroup', _t('MemberTableField.ADD','Add'))
 			)
-		));
+		)));
 	}
 
 	/**
