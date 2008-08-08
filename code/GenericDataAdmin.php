@@ -507,8 +507,9 @@ HTML;
 					foreach($_REQUEST[$oneExtra->class] as $field => $value) {
 						$oneExtra->setField($field, $value);
 					}
-					$oneExtra->write();
 				}
+				$oneExtra->write();
+				$oneExtra->destroy();
 			}
 		}
 		$this->getActionUpdateJS($generic);
@@ -518,6 +519,8 @@ HTML;
 		if (method_exists($this, "saveAfterCall")) {
 			$this->saveAfterCall($generic, $urlParams, $form);
 		}
+		
+		$generic->destroy();
 		
 		return FormResponse::respond();
 	}
