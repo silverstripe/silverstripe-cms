@@ -84,7 +84,7 @@ LeftPane.prototype = {
 		var callback = function() {
 			Form.Element.enable(this);
 			statusMessage("Record created","good");
-		}.bind(e);
+		}.bind(Event.element(e));
 		$('Form_EditForm').updateCMSContent(el, openTab, link, callback);
 
 		Event.stop(e);
