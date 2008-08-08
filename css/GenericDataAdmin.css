@@ -93,6 +93,7 @@ form#Form_EditForm #Form_ExportForm fieldset {
 			
 			#Search_holder .Actions {
 				margin: 5px 0;
+				vertical-align: middle;
 			}
 			
 			#Search_holder h3 {
@@ -112,6 +113,15 @@ form#Form_EditForm #Form_ExportForm fieldset {
 			overflow: auto; /* TODO */
 			padding: 5px 10px;
 		}
+		
+			#SearchForm_holder .indicator {
+				margin: .8em 0 0 .5em;
+				display: block;
+			}
+			
+			#Form_SearchForm_action_getResults {
+				float: left;
+			}
 	
 			#SearchForm_holder #DateRange .calendardate,
 			#SearchForm_holder #DateRange label{
