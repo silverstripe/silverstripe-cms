@@ -475,10 +475,10 @@ HTML;
 
 		if(substr($id, 0, 3) != 'new') {
 			$generic = DataObject::get_one($className, "`$className`.ID = $id");
-			$generic->Status = "Saved (Update)";
+			$generic->__Status = "Saved (Update)";
 		} else {
 			$generic = new $className();
-			$generic->Status = "Saved (New)";
+			$generic->__Status = "Saved (New)";
 		}
 
 		$form->saveInto($generic, true);
@@ -497,7 +497,7 @@ HTML;
 		}
 		$this->getActionUpdateJS($generic);
 		FormResponse::status_message(_t('GenericDataAdmin.SAVED', 'Saved'), 'good');
-		FormResponse::update_status($generic->Status);
+		FormResponse::update_status($generic->__Status);
 
 		if (method_exists($this, "saveAfterCall")) {
 			$this->saveAfterCall($generic, $urlParams, $form);
@@ -536,6 +536,9 @@ HTML;
 		$obj = new $baseClass();
 		$form->saveInto($obj);
 		$obj->write();
+		
+		// This appears to be a typo. There is no 'urlParms'.             
+		// $this->urlParms['ID'] = $obj->ID;
 
 		$editForm = $this->getEditForm($obj->ID);
 

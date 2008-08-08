@@ -274,6 +274,7 @@ function prepareAjaxActions(actions, formName, tabName) {
 		button.ownerForm = $(formName);
 
 		button.onclick = function(e) {
+			if(!e) e = window.event;
 			// tries to call a custom method of the format "action_<youraction>_right"
 			if(window[this.name + '_' + tabName]) {
 				window[this.name + '_' + tabName](e);
