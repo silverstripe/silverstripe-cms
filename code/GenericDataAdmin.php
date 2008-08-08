@@ -380,6 +380,7 @@ HTML;
 	 */
 	protected function buildResultFieldValue($result, $field) {
 		if(is_array($field)) {
+			// array-syntax
 			$i = 0;
 			foreach($field as $each) {
 				$value .= $i == 0 ? "" : "_";
@@ -387,23 +388,38 @@ HTML;
 				$i++;
 			}
 		} else {
-			$fieldParts = explode("->", $field);
-			$field = $fieldParts[0];
-			if(preg_match('/^(.+)\.(.+)$/', $field, $matches)) {
-				$field = $matches[2];
+			// This supports simple FieldName syntax
+			if(strpos($field,'.') === false) {
+				$value = ($result->val($field)) ? $result->val($field) : $result->$field;
+			// This support the syntax fieldName = Relation.RelatedField				
+			} else {					
+				$fieldNameParts = explode('.', $field)	;
+				$tmpItem = $result;
+				for($j=0;$j<sizeof($fieldNameParts);$j++) {
+					$relationMethod = $fieldNameParts[$j];
+					$idField = $relationMethod . 'ID';
+					if($j == sizeof($fieldNameParts)-1) {
+						$value = $tmpItem->$relationMethod;
+					} else {
+						$tmpItem = $tmpItem->$relationMethod();
+					}
+				}
+				$result = $tmpItem;
 			}
 
-			if(isset($fieldParts[1])) {
-				$caster = $fieldParts[1];
+			// casting
+			list ($field, $caster) = explode("->", $field);
+			if($caster) {
+				$fieldNameParts = explode('.', $field);
+				$fieldName = $fieldNameParts[sizeof($fieldNameParts)-1];
 				// When the intending value is Created.Date, the obj need to be casted as Datetime explicitely.
 				if ($field == "Created" || $field == "LastEdited") {
 					$created = Object::create('Datetime', $result->Created, "Created");
-					// $created->setVal();
 					$value = $created->val($caster);
-				} else // Dealing with other field like "Total->Nice", etc.
-					$value = $result->obj($field)->val($caster);
-			} else { // Simple field, no casting
-				$value = $result->val($field);
+				} else {
+					// Dealing with other field like "Total->Nice", etc.
+					$value = $result->obj($fieldName)->val($caster);
+				}
 			}
 		}
 
