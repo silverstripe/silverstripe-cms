@@ -78,10 +78,13 @@ LeftPane.prototype = {
 		var form = (form) ? form : Event.findElement(e,"form");
 		var link = form.action + "&" + Form.serialize(form);
 
+		// disable button
+		Form.Element.disable(el);
 		var openTab = $('Form_EditForm').getCurrentTab();
 		var callback = function() {
+			Form.Element.enable(this);
 			statusMessage("Record created","good");
-		}
+		}.bind(e);
 		$('Form_EditForm').updateCMSContent(el, openTab, link, callback);
 
 		Event.stop(e);
