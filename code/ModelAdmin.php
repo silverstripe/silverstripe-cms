@@ -42,6 +42,17 @@ abstract class ModelAdmin extends LeftAndMain {
 		'delete'
 	);
 	
+	/**
+	 * Model object currently in manipulation queue. Used for updating Link to point
+	 * to the correct generic data object in generated URLs.
+	 *
+	 * @var string
+	 */
+	private $currentModel = false;
+	
+	/**
+	 * Initialize the model admin interface. Sets up embedded jquery libraries and requisite plugins
+	 */
 	public function init() {
 		parent::init();
 		
@@ -50,13 +61,34 @@ abstract class ModelAdmin extends LeftAndMain {
 			user_error('ModelAdmin::init(): Invalid Model class', E_USER_ERROR);
 		}
 		
-		Requirements::css('cms/css/ModelAdmin.css');
+		Requirements::css('cms/css/ModelAdmin.css'); // standard layout formatting for management UI
+		Requirements::css('cms/css/silverstripe.tabs.css'); // follows the jQuery UI theme conventions
+		
+		Requirements::javascript('jsparty/jquery/jquery.js');
+		Requirements::javascript('jsparty/jquery/livequery/jquery.livequery.js');
+		Requirements::javascript('jsparty/jquery/ui/ui/ui.base.js');
+		Requirements::javascript('jsparty/jquery/ui/ui/ui.tabs.js');
+		Requirements::javascript('jsparty/jquery/ui/plugins/form/jquery.form.js');
+		Requirements::javascript('cms/javascript/ModelAdmin.js');
 	}
+	
+	/**
+	 * Add mappings for generic form constructors to automatically delegate to a scaffolded form object.
+	 */
+	function defineMethods() {
+		parent::defineMethods();
+		foreach($this->getManagedModels() as $class) {
+			$this->addWrapperMethod('SearchForm_' . $class, 'getSearchFormForModel');
+			$this->addWrapperMethod('AddForm_' . $class, 'getAddFormForModel');
+			$this->addWrapperMethod('EditForm_' . $class, 'getEditFormForModel');
+		}
+	}	
 	
 	/**
 	 * Return default link to this controller
 	 *
-	 * @todo We've specified this in Director::addRules(), why repeat?
+	 * @todo extract full URL binding from Director::addRules so that it's not tied to 'admin/crm'
+	 * @todo is there a way of removing the dependency on this method from the Form?
 	 * 
 	 * @return string
 	 */
@@ -91,13 +123,11 @@ abstract class ModelAdmin extends LeftAndMain {
 	}
 	
 	/**
-	 * @todo documentation
 	 *
 	 * @param array $data
-	 * @param Form $form
 	 */
 	public function save($data, $form) {
-		// @todo implementation
+		Debug::dump($data);
 	}
 	
 	/**
@@ -112,7 +142,7 @@ abstract class ModelAdmin extends LeftAndMain {
 		
 		$form = new Form(
 			$this,
-			'AddForm_add',
+			"AddForm",
 			new FieldSet(
 				new DropdownField('ClassName', 'Type', $modelMap)
 			),
@@ -120,6 +150,7 @@ abstract class ModelAdmin extends LeftAndMain {
 				new FormAction('add', _t('GenericDataAdmin.CREATE'))
 			)
 		);
+		$form->setFormMethod('get');
 		return $form;
 	}
 	
@@ -156,21 +187,14 @@ abstract class ModelAdmin extends LeftAndMain {
 	 */
 	protected function getEditForm($modelClass) {
 		$modelObj = singleton($modelClass);
-		
-		$fields = $this->getFieldsForModel($modelObj); 
-		
+		$formName = "EditForm_$modelClass";
+		$fields = $this->getFieldsForModel($modelObj);
+		$this->getComponentFieldsForModel($modelObj, $fields);
 		$actions = $this->getActionsForModel($modelObj);
-		
 		$validator = $this->getValidatorForModel($modelObj);
-		
-		$form = new Form(
-			$this,
-			'ModelEditForm',
-			$fields,
-			$actions,
-			$validator
-		);
-		
+		// necessary because of overriding the form action - NEED TO VERIFY THIS
+		$fields->push(new HiddenField("executeForm", $formName));
+		$form = new Form($this, $formName, $fields, $actions, $validator);
 		return $form;
 	}
 	
@@ -197,7 +221,28 @@ abstract class ModelAdmin extends LeftAndMain {
 	 * @return FieldSet
 	 */
 	protected function getFieldsForModel($modelObj) {
-		return $modelObj->getCMSFields();
+		$fields = $modelObj->getCMSFields();
+		if (!$fields->dataFieldByName('ID')) {
+			$fields->push(new HiddenField('ID'));
+		}
+		return $fields;
+	}
+	
+	/**
+	 * Update: complex table field generation moved into controller - could be
+	 * in the DataObject scaffolding?
+	 *
+	 * @param unknown_type $modelObj
+	 * @return FieldSet of ComplexTableFields
+	 */
+	protected function getComponentFieldsForModel($modelObj, $fieldSet) {
+		foreach($modelObj->has_many() as $relationship => $component) {
+			
+			$relationshipFields = array_keys(singleton($component)->searchableFields());
+			$fieldSet->push(new ComplexTableField($this, $relationship, $component, $relationshipFields));
+			
+		}
+		return $fieldSet;		
 	}
 	
 	/**
@@ -214,7 +259,6 @@ abstract class ModelAdmin extends LeftAndMain {
 			new FormAction('save', _t('GenericDataAdmin.SAVE')),
 			new FormAction('delete', _t('GenericDataAdmin.DELETE'))
 		);
-		
 		return $actions;
 	}
 	
@@ -230,7 +274,7 @@ abstract class ModelAdmin extends LeftAndMain {
 	protected function getValidatorForModel($modelObj) {
 		return false;
 	}
-
+		
 	/**
 	 * Get a search form for a single {@link DataObject} subclass.
 	 * 
@@ -238,18 +282,19 @@ abstract class ModelAdmin extends LeftAndMain {
 	 * @return FieldSet
 	 */
 	protected function getSearchFormForModel($modelClass) {
+		if(substr($modelClass,0,11) == 'SearchForm_') $modelClass = substr($modelClass, 11);
+		
 		$context = singleton($modelClass)->getDefaultSearchContext();
 		
 		$form = new Form(
 			$this,
-			"SearchForm_search_{$modelClass}",
+			"SearchForm_$modelClass",
 			$context->getSearchFields(),
 			new FieldSet(
 				new FormAction('search', _t('MemberTableField.SEARCH'))
 			)
 		);
-		//can't set generic search form as GET because of weirdness with FormObjectLink
-		//$form->setFormMethod('get');
+		$form->setFormMethod('get');
 		return $form;
 	}
 	
@@ -257,25 +302,19 @@ abstract class ModelAdmin extends LeftAndMain {
 	 * Overwrite the default form action with the path to the DataObject filter
 	 * (relies on the search form having the specifically named id as 'SearchForm_DataObject')
 	 * 
-	 * @todo extract hard-coded prefix and generate from Director settings
+	 * @todo override default linking to add DataObject based URI paths
 	 */
 	function FormObjectLink($formName) {
-		$segments = explode('_', $formName);
-		if (count($segments) == 3) {
-			return Director::absoluteBaseURL()."admin/crm/{$segments[1]}/{$segments[2]}";
-		} elseif (count($segments) == 2) {
-			return Director::absoluteBaseURL()."admin/crm/{$segments[1]}";
-		} else {
-			return "?executeForm=$formName";
-		}
+		return $this->Link();
 	}
 
 	/**
 	 * Action to render a data object collection, using the model context to provide filters
 	 * and paging.
 	 */
-	function search() {
+	function search($data, $form) {
 		$className = $this->urlParams['ClassName'];
+		Debug::dump($className);
 		if (in_array($className, $this->getManagedModels())) {
 			$model = singleton($className);
 			// @todo need to filter post vars
@@ -306,7 +345,7 @@ abstract class ModelAdmin extends LeftAndMain {
 	 * View a generic model using a form object to render a partial HTML
 	 * fragment to be embedded via Ajax calls.
 	 */
-	function view() {
+	function show() {
 		$className = $this->urlParams['ClassName'];
 		$ID = $this->urlParams['ID'];
 		
@@ -314,14 +353,15 @@ abstract class ModelAdmin extends LeftAndMain {
 			
 			$model = DataObject::get_by_id($className, $ID);
 			
-			$fields = $model->getCMSFields();
+			/*$fields = $model->getCMSFields();
 			
 			$actions = new FieldSet(
 				new FormAction('save', 'Save')
 			);
 			
 			$form = new Form($this, $className, $fields, $actions);
-			$form->makeReadonly();
+			$form->makeReadonly();*/
+			$form = $this->getEditForm($className);
 			$form->loadNonBlankDataFrom($model);
 			return $form->forTemplate();
 		}
