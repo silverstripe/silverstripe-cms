@@ -1,4 +1,4 @@
-<div  class="$Classes" id="$id">
+<div id="$id" class="$CSSClasses">
 	<div class="MemberFilter">
 		$SearchForm
 	</div>
