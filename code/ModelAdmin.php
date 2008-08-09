@@ -355,26 +355,31 @@ class ModelAdmin_CollectionController extends Controller {
 		$searchKeys = array_intersect_key($request->getVars(), $model->searchable_fields());
 		$context = $model->getDefaultSearchContext();
 		$results = $context->getResults($searchKeys, null, array('start'=>0, 'limit'=>$this->parentController->stat('page_length')));
-		$output = "<h2>" . _t('ModelAdmin.SEARCHRESULTS','Search Results') . "</h2>\n";
+		$summaryFields = $model->summaryFields();	
 		
-
-		if ($results) {
-			$output .= "<table class=\"results\">";
-			foreach($results as $row) {
-				$uri = Director::absoluteBaseUrl();
-				$output .= "<tr title=\"{$uri}admin/crm/{$this->modelClass}/{$row->ID}/edit\">";
-				foreach($model->searchable_fields() as $key=>$val) {
-					$output .=  "<td>";
-					$output .=  $row->$key;
-					$output .=  "</td>";
-				}
-				$output .=  "</tr>";
-			}
-			$output .=  "</table>";
-		} else {
-			$output .=  "<p>No results found</p>";
-		}
-		return $output;
+		$tf = new TableListField(
+			$this->modelClass,
+			$this->modelClass,
+			$summaryFields
+		);
+		$tf->setCustomSourceItems($results);
+		$tf->setPermissions(array('view'));
+		$url = '<a href=\"' . Director::absoluteBaseURL() . 'admin/crm/' . $this->modelClass . '/$ID/edit\">$value</a>';
+		$tf->setFieldFormatting(array_combine(array_keys($summaryFields), array_fill(0,count($summaryFields), $url)));
+		
+		// implemented as a form to enable further actions on the resultset
+		// (serverside sorting, export as CSV, etc)
+		$form = new Form(
+			$this,
+			'ResultsForm',
+			new FieldSet(
+				new HeaderField(_t('ModelAdmin.SEARCHRESULTS','Search Results'), 2),
+				$tf
+			),
+			new FieldSet()
+		);
+		
+		return $form->forTemplate();
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -464,7 +469,7 @@ class ModelAdmin_RecordController extends Controller {
 		$validator = ($this->currentRecord->hasMethod('getCMSValidator')) ? $this->currentRecord->getCMSValidator() : null;
 		
 		$actions = new FieldSet(
-			new FormAction("goBack", "Back"),
+			//new FormAction("goBack", "Back"),
 			new FormAction("doSave", "Save")
 		);
 		

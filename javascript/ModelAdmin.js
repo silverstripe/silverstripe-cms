@@ -99,11 +99,12 @@ jQuery(document).ready(function() {
 		data = formData(form);
 		jQuery.get(form.attr('action'), data, function(result){
 			jQuery('#right #ModelAdminPanel').html(result);
-			jQuery('#right #ModelAdminPanel td').click(function(){
-				td = jQuery(this);
-				showRecord(td.parent().attr('title'));
-				td.parent().parent().find('td').removeClass('active');
-				td.addClass('active').siblings().addClass('active');
+			jQuery('#right #ModelAdminPanel tbody td a').click(function(){
+				var el = jQuery(this);
+				showRecord(el.attr('href'));
+				//el.parent().parent().find('td').removeClass('active');
+				//el.addClass('active').siblings().addClass('active');
+				return false;
 			}).hover(function(){
 						jQuery(this).addClass('over').siblings().addClass('over')
 					}, function(){
@@ -123,4 +124,10 @@ function fixHeight_left() {
 	fitToParent('LeftPane');
 	fitToParent('Search_holder',12);
 	fitToParent('ResultTable_holder',12);
+}
+
+function prepareAjaxActions(actions, formName, tabName) {
+	// @todo HACK Overwrites LeftAndMain.js version of this method to avoid double form actions
+	// (by new jQuery and legacy prototype) 
+	return false;
 }
