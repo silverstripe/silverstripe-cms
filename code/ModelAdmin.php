@@ -352,9 +352,8 @@ class ModelAdmin_CollectionController extends Controller {
 	 */
 	function search($request) {
 		$model = singleton($this->modelClass);
-		$searchKeys = array_intersect_key($request->getVars(), $model->searchable_fields());
 		$context = $model->getDefaultSearchContext();
-		$results = $context->getResults($searchKeys, null, array('start'=>0, 'limit'=>$this->parentController->stat('page_length')));
+		$results = $context->getResults($request->getVars(), null, array('start'=>0, 'limit'=>$this->parentController->stat('page_length')));
 		$summaryFields = $model->summaryFields();	
 		
 		$tf = new TableListField(
