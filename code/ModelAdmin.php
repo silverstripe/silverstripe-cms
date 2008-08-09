@@ -211,18 +211,7 @@ class ModelAdmin_CollectionController extends Controller {
 	function getModelClass() {
 		return $this->modelClass;
 	}
-	
-	/**
-	 * Smashes a massive whole in the Law of Demeter.
-	 * 
-	 * http://en.wikipedia.org/wiki/Law_of_Demeter
-	 */
-	/* I've commented this out because it's not actually used anymore
-	function getParentController() {
-		return $this->parentController;
-	}
-	*/
-	
+		
 	/**
 	 * Delegate to different control flow, depending on whether the
 	 * URL parameter is a numeric type (record id) or string (action).
@@ -279,7 +268,7 @@ class ModelAdmin_CollectionController extends Controller {
 	 */
 	function search($request) {
 		$model = singleton($this->modelClass);
-		$searchKeys = array_intersect_key($request->getVars(), $model->searchableFields());
+		$searchKeys = array_intersect_key($request->getVars(), $model->searchable_fields());
 		$context = $model->getDefaultSearchContext();
 		$results = $context->getResultSet($searchKeys);
 		$output = "";
@@ -288,7 +277,7 @@ class ModelAdmin_CollectionController extends Controller {
 			foreach($results as $row) {
 				$uri = Director::absoluteBaseUrl();
 				$output .= "<tr title=\"{$uri}admin/crm/{$this->modelClass}/{$row->ID}/edit\">";
-				foreach($model->searchableFields() as $key=>$val) {
+				foreach($model->searchable_fields() as $key=>$val) {
 					$output .=  "<td>";
 					$output .=  $row->getField($key);
 					$output .=  "</td>";

@@ -75,7 +75,7 @@ class StaticExporter extends Controller {
 				$controllerClass = "{$page->class}_Controller";
 				if(class_exists($controllerClass)) {
 					$controller = new $controllerClass($page);
-					$pageContent = $controller->run( array() );
+					$pageContent = $controller->handleRequest(new HTTPRequest('GET',''))->getBody();
 					
 					// Write to file
 					if($fh = fopen($contentfile, 'w')) {

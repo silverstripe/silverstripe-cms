@@ -26,6 +26,7 @@ jQuery(document).ready(function() {
 	function saveRecord(uri, data) {
 		jQuery.post(uri, data, function(result){
 			jQuery('#right').html(result);
+			Behaviour.apply(); // refreshes ComplexTableField
 		});
 	}
 	

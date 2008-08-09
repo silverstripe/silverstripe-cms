@@ -151,7 +151,7 @@ class MemberTableField extends ComplexTableField {
 	}
 
 	function AddLink() {
-		return "{$this->PopupBaseLink()}&methodName=add";
+		return "{$this->Link()}&methodName=add";
 	}
 
 	function SearchForm() {
