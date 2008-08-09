@@ -376,23 +376,6 @@ class ModelAdmin_CollectionController extends Controller {
 		}
 		return $output;
 	}
-	
-	/**
-	 * Action to render results for an autocomplete filter.
-	 *
-	 * @param unknown_type $request
-	 * @return unknown
-	 */
-	function filter($request) {
-		$model = singleton($this->modelClass);
-		$context = $model->getDefaultSearchContext();
-		$value = $request->getVar('q');
-		$results = $context->getResults(array("Name"=>$value));
-		header("Content-Type: text/plain");
-		foreach($results as $result) {
-			echo $result->Name . "\n";
-		}
-	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 	

@@ -19,27 +19,27 @@ jQuery(document).ready(function() {
 	 */
 	function showRecord(uri) {
 		jQuery.get(uri, function(result){
-			jQuery('#right').html(result);
+			jQuery('#right #ModelAdminPanel').html(result);
 			jQuery('#SearchForm_holder').tabs();
 			
 			// TODO/SAM: It seems a bit of a hack to have to list all the little updaters here. 
 			// Is livequery a solution?
 			Behaviour.apply(); // refreshes ComplexTableField
 			jQuery('#right ul.tabstrip').tabs();
-			
-			jQuery('#Form_EditForm_action_goBack').click(function() {
-				if(__lastSearch) __lastSearch.trigger('submit');
-				return false;
-			});
 		});
 	}
+
+	jQuery('#Form_EditForm_action_goBack').livequery('click', function() {
+		if(__lastSearch) __lastSearch.trigger('submit');
+		return false;
+	});
 	
 	/**
 	 * POST a hash of form submitted data to the given endpoint
 	 */
 	function saveRecord(uri, data) {
 		jQuery.post(uri, data, function(result){
-			jQuery('#right').html(result);
+			jQuery('#right #ModelAdminPanel').html(result);
 
 			// TODO/SAM: It seems a bit of a hack to have to list all the little updaters here. 
 			// Is livequery a solution?
@@ -98,8 +98,8 @@ jQuery(document).ready(function() {
 		form = jQuery(this);
 		data = formData(form);
 		jQuery.get(form.attr('action'), data, function(result){
-			jQuery('#right').html(result);
-			jQuery('#right td').click(function(){
+			jQuery('#right #ModelAdminPanel').html(result);
+			jQuery('#right #ModelAdminPanel td').click(function(){
 				td = jQuery(this);
 				showRecord(td.parent().attr('title'));
 				td.parent().parent().find('td').removeClass('active');

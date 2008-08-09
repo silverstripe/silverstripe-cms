@@ -1,4 +1,5 @@
-<% include Editor_toolbar %>
+
+<div id="ModelAdminPanel">
 
 <% if EditForm %>
 	$EditForm
@@ -10,5 +11,7 @@
 		
 	</form>
 <% end_if %>
+
+</div>
 
 <p id="statusMessage" style="visibility:hidden"></p>
