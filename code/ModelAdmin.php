@@ -77,7 +77,7 @@ abstract class ModelAdmin extends LeftAndMain {
 		
 		Requirements::javascript('jsparty/jquery/jquery.js');
 		Requirements::javascript('jsparty/jquery/livequery/jquery.livequery.js');
-		Requirements::javascript('jsparty/jquery/ui/ui/ui.base.js');
+		Requirements::javascript('jsparty/jquery/ui/ui/ui.core.js');
 		Requirements::javascript('jsparty/jquery/ui/ui/ui.tabs.js');
 		Requirements::javascript('jsparty/jquery/ui/plugins/form/jquery.form.js');
 		Requirements::javascript('cms/javascript/ModelAdmin.js');
@@ -300,7 +300,7 @@ class ModelAdmin_CollectionController extends Controller {
 	 * @return unknown
 	 */
 	function add($request) {
-		return $this->AddForm()->forTemplate();
+		return $this->AddForm()->forAjaxTemplate();
 	}
 
 	/**
@@ -362,7 +362,7 @@ class ModelAdmin_RecordController extends Controller {
 	 */
 	function edit($request) {
 		if ($this->currentRecord) {
-			return $this->EditForm()->forTemplate();
+			return $this->EditForm()->forAjaxTemplate();
 		} else {
 			return "I can't find that item";
 		}
@@ -405,7 +405,7 @@ class ModelAdmin_RecordController extends Controller {
 	function view($request) {
 		if ($this->currentRecord) {
 			$form = $this->ViewForm();
-			return $form->forTemplate();
+			return $form->forAjaxTemplate();
 		} else {
 			return "I can't find that item";
 		}

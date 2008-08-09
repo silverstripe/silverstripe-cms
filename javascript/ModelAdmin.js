@@ -16,7 +16,12 @@ jQuery(document).ready(function() {
 	function showRecord(uri) {
 		jQuery.get(uri, function(result){
 			jQuery('#right').html(result);
+			jQuery('#SearchForm_holder').tabs();
+			
+			// TODO/SAM: It seems a bit of a hack to have to list all the little updaters here. 
+			// Is livequery a solution?
 			Behaviour.apply(); // refreshes ComplexTableField
+			jQuery('#right ul.tabstrip').tabs();
 		});
 	}
 	
@@ -26,7 +31,11 @@ jQuery(document).ready(function() {
 	function saveRecord(uri, data) {
 		jQuery.post(uri, data, function(result){
 			jQuery('#right').html(result);
+
+			// TODO/SAM: It seems a bit of a hack to have to list all the little updaters here. 
+			// Is livequery a solution?
 			Behaviour.apply(); // refreshes ComplexTableField
+			jQuery('#right ul.tabstrip').tabs();
 		});
 	}
 	
