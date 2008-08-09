@@ -1,13 +1,13 @@
 <?php
 /**
- * Generates a three-pane UI for editing one or many model classes,
+ * Generates a three-pane UI for editing model classes,
  * with an automatically generated search panel, tabular results
  * and edit forms.
  * Relies on data such as {@link DataObject::$db} and {@DataObject::getCMSFields()}
  * to scaffold interfaces "out of the box", while at the same time providing
  * flexibility to customize the default output.
  * 
- * Add a route:
+ * Add a route (note - this doc is not currently in sync with the code, need to update)
  * <code>
  * Director::addRules(50, array('admin/mymodel/$Class/$Action/$ID' => 'MyModelAdmin'));
  * </code>
@@ -67,18 +67,15 @@ abstract class ModelAdmin extends LeftAndMain {
 	/**
 	 * Create empty edit form (scaffolded from DataObject->getCMSFields() by default).
 	 * Can be called either through {@link AddForm()} or directly through URL:
-	 * "/myadminroute/MyModelClass/add"
-	 *
-	 * @param array $data
-	 * @param Form $form
+	 * "/myadminroute/add/MyModelClass"
 	 */
-	public function add($data, $form) {
+	public function add($data) {
 		$className = (isset($data['ClassName'])) ? $data['ClassName'] : $this->urlParams['ClassName'];
+		
 		if(!isset($className) || !in_array($data['ClassName'], $this->getManagedModels())) return false;
 
-		return $this->customise(array(
-			'EditForm' => $this->getEditForm($data['ClassName'])
-		))->renderWith('LeftAndMain');
+		$form = $this->getEditForm($data['ClassName']);
+		return $form->forTemplate();
 	}
 	
 	/**
@@ -115,13 +112,9 @@ abstract class ModelAdmin extends LeftAndMain {
 		
 		$form = new Form(
 			$this,
-			'AddForm',
+			'AddForm_add',
 			new FieldSet(
-				new DropdownField(
-					'ClassName',
-					'Type',
-					$modelMap
-				)
+				new DropdownField('ClassName', 'Type', $modelMap)
 			),
 			new FieldSet(
 				new FormAction('add', _t('GenericDataAdmin.CREATE'))
@@ -249,27 +242,37 @@ abstract class ModelAdmin extends LeftAndMain {
 		
 		$form = new Form(
 			$this,
-			"SearchForm_{$modelClass}",
+			"SearchForm_search_{$modelClass}",
 			$context->getSearchFields(),
 			new FieldSet(
 				new FormAction('search', _t('MemberTableField.SEARCH'))
 			)
 		);
+		//can't set generic search form as GET because of weirdness with FormObjectLink
 		//$form->setFormMethod('get');
 		return $form;
 	}
 	
 	/**
-	 * Another counter intuitive hoop to jump through, as the Form constructor
-	 * is still thoroughly confusing the hell out of me.
+	 * Overwrite the default form action with the path to the DataObject filter
+	 * (relies on the search form having the specifically named id as 'SearchForm_DataObject')
+	 * 
+	 * @todo extract hard-coded prefix and generate from Director settings
 	 */
-	function FormObjectLink($value) {
-		$value = str_replace('SearchForm_', '', $value);
-		return "admin/crm/$value/search";
+	function FormObjectLink($formName) {
+		$segments = explode('_', $formName);
+		if (count($segments) == 3) {
+			return Director::absoluteBaseURL()."admin/crm/{$segments[1]}/{$segments[2]}";
+		} elseif (count($segments) == 2) {
+			return Director::absoluteBaseURL()."admin/crm/{$segments[1]}";
+		} else {
+			return "?executeForm=$formName";
+		}
 	}
 
 	/**
-	 * Action to execute a search using the model context
+	 * Action to render a data object collection, using the model context to provide filters
+	 * and paging.
 	 */
 	function search() {
 		$className = $this->urlParams['ClassName'];
@@ -283,7 +286,7 @@ abstract class ModelAdmin extends LeftAndMain {
 				echo "<table>";
 				foreach($results as $row) {
 					$uri = Director::absoluteBaseUrl();
-					echo "<tr id=\"{$uri}admin/crm/$className/view/$row->ID\">";
+					echo "<tr id=\"{$uri}admin/crm/view/$className/$row->ID\">";
 					foreach($model->searchableFields() as $key=>$val) {
 						echo "<td>";
 						echo $row->getField($key);
@@ -296,8 +299,13 @@ abstract class ModelAdmin extends LeftAndMain {
 				echo "<p>No results found</p>";
 			}
 		}
+		die();
 	}
 	
+	/**
+	 * View a generic model using a form object to render a partial HTML
+	 * fragment to be embedded via Ajax calls.
+	 */
 	function view() {
 		$className = $this->urlParams['ClassName'];
 		$ID = $this->urlParams['ID'];
@@ -308,10 +316,14 @@ abstract class ModelAdmin extends LeftAndMain {
 			
 			$fields = $model->getCMSFields();
 			
-			$form = new Form($this, $className, $fields, new FieldSet());
+			$actions = new FieldSet(
+				new FormAction('save', 'Save')
+			);
+			
+			$form = new Form($this, $className, $fields, $actions);
 			$form->makeReadonly();
 			$form->loadNonBlankDataFrom($model);
-			echo $form->forTemplate();
+			return $form->forTemplate();
 		}
 	}
 	
