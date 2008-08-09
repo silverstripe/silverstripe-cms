@@ -47,6 +47,16 @@ abstract class ModelAdmin extends LeftAndMain {
 	);
 	
 	/**
+	 * @param string $collection_controller_class Override for controller class
+	 */
+	protected static $collection_controller_class = "ModelAdmin_CollectionController";
+	
+	/**
+	 * @param string $collection_controller_class Override for controller class
+	 */
+	protected static $record_controller_class = "ModelAdmin_RecordController";
+	
+	/**
 	 * Forward control to the default action handler
 	 */
 	public static $url_handlers = array(
@@ -129,7 +139,8 @@ abstract class ModelAdmin extends LeftAndMain {
 	 * Base scaffolding method for returning a generic model instance.
 	 */
 	public function bindModelController($model, $request = null) {
-		return new ModelAdmin_CollectionController($this, $model);
+		$class = $this->stat('collection_controller_class');
+		return new $class($this, $model);
 	}
 	
 	/**
@@ -319,7 +330,8 @@ class ModelAdmin_CollectionController extends Controller {
 	 * @return RecordController
 	 */
 	function handleID($request) {
-		return new ModelAdmin_RecordController($this, $request);
+		$class = $this->parentController->stat('record_controller_class');
+		return new $class($this, $request);
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////

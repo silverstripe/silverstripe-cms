@@ -75,9 +75,10 @@ jQuery(document).ready(function() {
 	/**
 	 * attach generic action handler to all forms displayed in the #right panel
 	 */
-	jQuery('#right .action').livequery('click', function(){
+	jQuery('#right #form_actions_right .action').livequery('click', function(){
 		form = jQuery('#right form');
-		saveRecord(form.attr('action'), formData(form));
+		var formAction = form.attr('action') + '?' + jQuery(this).fieldSerialize();
+		saveRecord(formAction, formData(form));
 		return false;
 	});
 	
