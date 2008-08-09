@@ -53,3 +53,7 @@ body.ModelAdmin #ResultTable_holder table td.active {
 	background-color:#555;
 	color:#fff;
 }
+
+body.ModelAdmin #right .tab {
+	height: 450px; /* @todo add dynamic resizing */
+}

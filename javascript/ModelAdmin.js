@@ -56,7 +56,7 @@ jQuery(document).ready(function() {
 	/**
 	 * Find the selected data object and load its create form
 	 */
-	jQuery('#AddForm_holder form').submit(function(){
+	jQuery('#Form_ManagedModelsSelect').submit(function(){
 		className = jQuery('select option:selected', this).val();
 		requestPath = jQuery(this).attr('action').replace('ManagedModelsSelect', className + '/add');
 		showRecord(requestPath);
@@ -83,7 +83,7 @@ jQuery(document).ready(function() {
 	 * 
 	 * @todo use livequery to manage ResultTable click handlers
 	 */
-	jQuery('.tab form').submit(function(){
+	jQuery('#SearchForm_holder .tab form').submit(function(){
 		form = jQuery(this);
 		data = formData(form);
 		jQuery.get(form.attr('action'), data, function(result){
@@ -104,3 +104,12 @@ jQuery(document).ready(function() {
 	});
 	
 });
+
+/**
+ * @todo Terrible HACK, but thats the cms UI...
+ */
+function fixHeight_left() {
+	fitToParent('LeftPane');
+	fitToParent('Search_holder',12);
+	fitToParent('ResultTable_holder',12);
+}

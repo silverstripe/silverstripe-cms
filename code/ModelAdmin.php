@@ -40,6 +40,8 @@ abstract class ModelAdmin extends LeftAndMain {
 		'add',
 		'edit',
 		'delete',
+		'import',
+		'renderimportform',
 		'handleList',
 		'handleItem'
 	);
@@ -60,6 +62,23 @@ abstract class ModelAdmin extends LeftAndMain {
 	private $currentModel = false;
 		
 	/**
+	 * List of all {@link DataObject}s which can be imported through
+	 * a subclass of {@link BulkLoader} (mostly CSV data).
+	 * By default {@link CsvBulkLoader} is used, assuming a standard mapping
+	 * of column names to {@link DataObject} properties/relations.
+	 *
+	 * @var array
+	 */
+	protected static $model_importers = null;
+	
+	/**
+	 * Amount of results showing on a single page.
+	 *
+	 * @var int
+	 */
+	protected static $page_length = 30;
+	
+	/**
 	 * Initialize the model admin interface. Sets up embedded jquery libraries and requisite plugins.
 	 * 
 	 * @todo remove reliance on urlParams
@@ -69,7 +88,7 @@ abstract class ModelAdmin extends LeftAndMain {
 		
 		// security check for valid models
 		if(isset($this->urlParams['Action']) && !in_array($this->urlParams['Action'], $this->getManagedModels())) {
-			user_error('ModelAdmin::init(): Invalid Model class', E_USER_ERROR);
+			//user_error('ModelAdmin::init(): Invalid Model class', E_USER_ERROR);
 		}
 		
 		Requirements::css('cms/css/ModelAdmin.css'); // standard layout formatting for management UI
@@ -137,9 +156,54 @@ abstract class ModelAdmin extends LeftAndMain {
 		return $form;
 	}
 	
+	/**
+	 * Generate a CSV import form with an option to select
+	 * one of the "importable" models specified through {@link self::$model_importers}.
+	 *
+	 * @return Form
+	 */	
+	public function ImportForm() {
+		$models = $this->getManagedModels();
+		$modelMap = array();
+		foreach($this->getModelImporters() as $modelName => $spec) $modelMap[$modelName] = singleton($modelName)->singular_name();
+		
+		$form = new Form(
+			$this,
+			"ImportForm",
+			new FieldSet(
+				new DropdownField('ClassName', 'Type', $modelMap),
+				new FileField('_CsvFile', false)
+			),
+			new FieldSet(
+				new FormAction('import', _t('ModelAdmin.IMPORT', 'Import from CSV'))
+			)
+		);
+		return $form;
+	}
+	
 	function add($data, $form, $request) {
 		$className = $request->requestVar("ClassName");
 		return $this->$className()->add($request);
+	}
+	
+	/**
+	 * Imports the submitted CSV file based on specifications given in
+	 * {@link self::model_importers}.
+	 * Redirects back with a success/failure message.
+	 * 
+	 * @todo Figure out ajax submission of files via jQuery.form plugin
+	 *
+	 * @param unknown_type $data
+	 * @param unknown_type $form
+	 * @param unknown_type $request
+	 */
+	function import($data, $form, $request) {
+		$loader = new DemandPointBulkLoader($data['ClassName']);
+		$results = $loader->load($_FILES['_CsvFile']['tmp_name']);
+		$resultsCount = ($results) ? $results->Count() : 0;
+		
+		Session::setFormMessage('Form_ImportForm', "Loaded {$resultsCount} items", 'good');
+		Director::redirect($_SERVER['HTTP_REFERER'] . '#Form_ImportForm_holder');
 	}
 	
 	/**
@@ -174,6 +238,26 @@ abstract class ModelAdmin extends LeftAndMain {
 			You need to specify at least one DataObject subclass in $managed_models', E_USER_ERROR);
 		
 		return $models;
+	}
+	
+	/**
+	 * Returns all importers defined in {@link self::$model_importers}.
+	 * If none are defined, we fall back to {@link self::managed_models}
+	 * with a default {@link CsvBulkLoader} class. In this case the column names of the first row
+	 * in the CSV file are assumed to have direct mappings to properties on the object.
+	 *
+	 * @return array
+	 */
+	protected function getModelImporters() {
+		$importers = $this->stat('model_importers');
+		
+		// fallback to all defined models if not explicitly defined
+		if(!$importers) {
+			$models = $this->getManagedModels();
+			foreach($models as $modelName) $importers[$modelName] = 'CsvBulkLoader';
+		}
+		
+		return $importers;
 	}
 }
 
@@ -270,7 +354,7 @@ class ModelAdmin_CollectionController extends Controller {
 		$model = singleton($this->modelClass);
 		$searchKeys = array_intersect_key($request->getVars(), $model->searchable_fields());
 		$context = $model->getDefaultSearchContext();
-		$results = $context->getResults($searchKeys);
+		$results = $context->getResults($searchKeys, 0, $this->parentController->stat('page_length'));
 		$output = "";
 		if ($results) {
 			$output .= "<table>";
