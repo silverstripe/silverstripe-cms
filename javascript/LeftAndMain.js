@@ -141,7 +141,7 @@ window.ontabschanged = function() {
 		}
 	}*/
 
-	if( _TAB_DIVS_ON_PAGE ) {
+	if(typeof  _TAB_DIVS_ON_PAGE != 'undefined') {
 		for(i = 0; i < _TAB_DIVS_ON_PAGE.length; i++ ) {
 			fitToParent(_TAB_DIVS_ON_PAGE[i], 30);
 		}

@@ -354,16 +354,18 @@ class ModelAdmin_CollectionController extends Controller {
 		$model = singleton($this->modelClass);
 		$searchKeys = array_intersect_key($request->getVars(), $model->searchable_fields());
 		$context = $model->getDefaultSearchContext();
-		$results = $context->getResults($searchKeys, 0, $this->parentController->stat('page_length'));
-		$output = "";
+		$results = $context->getResults($searchKeys, null, array('start'=>0, 'limit'=>$this->parentController->stat('page_length')));
+		$output = "<h2>" . _t('ModelAdmin.SEARCHRESULTS','Search Results') . "</h2>\n";
+		
+
 		if ($results) {
-			$output .= "<table>";
+			$output .= "<table class=\"results\">";
 			foreach($results as $row) {
 				$uri = Director::absoluteBaseUrl();
 				$output .= "<tr title=\"{$uri}admin/crm/{$this->modelClass}/{$row->ID}/edit\">";
 				foreach($model->searchable_fields() as $key=>$val) {
 					$output .=  "<td>";
-					$output .=  $row->getField($key);
+					$output .=  $row->$key;
 					$output .=  "</td>";
 				}
 				$output .=  "</tr>";
@@ -373,6 +375,23 @@ class ModelAdmin_CollectionController extends Controller {
 			$output .=  "<p>No results found</p>";
 		}
 		return $output;
+	}
+	
+	/**
+	 * Action to render results for an autocomplete filter.
+	 *
+	 * @param unknown_type $request
+	 * @return unknown
+	 */
+	function filter($request) {
+		$model = singleton($this->modelClass);
+		$context = $model->getDefaultSearchContext();
+		$value = $request->getVar('q');
+		$results = $context->getResults(array("Name"=>$value));
+		header("Content-Type: text/plain");
+		foreach($results as $result) {
+			echo $result->Name . "\n";
+		}
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -461,7 +480,10 @@ class ModelAdmin_RecordController extends Controller {
 		
 		$validator = ($this->currentRecord->hasMethod('getCMSValidator')) ? $this->currentRecord->getCMSValidator() : null;
 		
-		$actions = new FieldSet(new FormAction("doSave", "Save"));
+		$actions = new FieldSet(
+			new FormAction("goBack", "Back"),
+			new FormAction("doSave", "Save")
+		);
 		
 		$form = new Form($this, "EditForm", $fields, $actions, $validator);
 		$form->loadDataFrom($this->currentRecord);

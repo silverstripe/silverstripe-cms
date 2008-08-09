@@ -9,6 +9,10 @@
  * @todo alias the $ function instead of literal jQuery
  */
 jQuery(document).ready(function() {
+	/**
+	 * Stores a jQuery reference to the last submitted search form.
+	 */
+	__lastSearch = null;
 
 	/**
 	 * GET a fragment of HTML to display in the right panel
@@ -22,6 +26,11 @@ jQuery(document).ready(function() {
 			// Is livequery a solution?
 			Behaviour.apply(); // refreshes ComplexTableField
 			jQuery('#right ul.tabstrip').tabs();
+			
+			jQuery('#Form_EditForm_action_goBack').click(function() {
+				if(__lastSearch) __lastSearch.trigger('submit');
+				return false;
+			});
 		});
 	}
 	
@@ -73,9 +82,9 @@ jQuery(document).ready(function() {
 	});
 	
 	/**
-	 * Attach tabs plugin to the set of search filter forms
+	 * Attach tabs plugin to the set of search filter and edit forms
 	 */
-	jQuery('#SearchForm_holder').tabs();
+	jQuery('ul.tabstrip').tabs();
 	
 	/**
 	 * Submits a search filter query and attaches event handlers
@@ -84,11 +93,13 @@ jQuery(document).ready(function() {
 	 * @todo use livequery to manage ResultTable click handlers
 	 */
 	jQuery('#SearchForm_holder .tab form').submit(function(){
+		__lastSearch = jQuery(this);
+		
 		form = jQuery(this);
 		data = formData(form);
 		jQuery.get(form.attr('action'), data, function(result){
-			jQuery('#ResultTable_holder').html(result);
-			jQuery('#ResultTable_holder td').click(function(){
+			jQuery('#right').html(result);
+			jQuery('#right td').click(function(){
 				td = jQuery(this);
 				showRecord(td.parent().attr('title'));
 				td.parent().parent().find('td').removeClass('active');

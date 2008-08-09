@@ -25,7 +25,8 @@
 			</div>
 		<% end_control %>
 	</div>
-	<h2><% _t('SEARCHRESULTS','Search Results') %></h2>
+	<!--
 	<div id="ResultTable_holder" class="leftbottom">
 	</div>
+	-->
 </div>

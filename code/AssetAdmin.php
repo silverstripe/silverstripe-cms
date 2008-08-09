@@ -35,6 +35,7 @@ class AssetAdmin extends LeftAndMain {
 		'save',
 		'savefile',
 		'uploadiframe',
+		'UploadForm',
 		'deleteUnusedThumbnails' => 'ADMIN'
 	);
 

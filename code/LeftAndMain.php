@@ -35,7 +35,8 @@ class LeftAndMain extends Controller {
 		'printable',
 		'save',
 		'show',
-		'Member_ProfileForm'
+		'Member_ProfileForm',
+		'EditorToolbar',
 	);
 	
 	/**
@@ -120,7 +121,9 @@ class LeftAndMain extends Controller {
 		Requirements::javascript('jsparty/tree/tree.js');
 		Requirements::css('jsparty/tree/tree.css');
 
+		/*
 		Requirements::javascript('jsparty/tabstrip/tabstrip.js');
+	*/
 		Requirements::css('jsparty/tabstrip/tabstrip.css');
 		
 		Requirements::css('cms/css/TinyMCEImageEnhancement.css');

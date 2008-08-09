@@ -14,6 +14,9 @@ abstract class GenericDataAdmin extends LeftAndMain {
 		'getResults',
 		'save',
 		'show',
+		'CreationForm',
+		'ExportForm',
+		'SearchForm',
 	);
 
 	public $filter;
