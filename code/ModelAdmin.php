@@ -39,7 +39,16 @@ abstract class ModelAdmin extends LeftAndMain {
 	public static $allowed_actions = array(
 		'add',
 		'edit',
-		'delete'
+		'delete',
+		'handleList',
+		'handleItem'
+	);
+	
+	/**
+	 * Forward control to the default action handler
+	 */
+	public static $url_handlers = array(
+		'$Action' => 'handleAction'
 	);
 	
 	/**
@@ -49,15 +58,17 @@ abstract class ModelAdmin extends LeftAndMain {
 	 * @var string
 	 */
 	private $currentModel = false;
-	
+		
 	/**
-	 * Initialize the model admin interface. Sets up embedded jquery libraries and requisite plugins
+	 * Initialize the model admin interface. Sets up embedded jquery libraries and requisite plugins.
+	 * 
+	 * @todo remove reliance on urlParams
 	 */
 	public function init() {
 		parent::init();
 		
 		// security check for valid models
-		if(isset($this->urlParams['Model']) && !in_array($this->urlParams['Model'], $this->getManagedModels())) {
+		if(isset($this->urlParams['Action']) && !in_array($this->urlParams['Action'], $this->getManagedModels())) {
 			user_error('ModelAdmin::init(): Invalid Model class', E_USER_ERROR);
 		}
 		
@@ -77,15 +88,14 @@ abstract class ModelAdmin extends LeftAndMain {
 	 */
 	function defineMethods() {
 		parent::defineMethods();
-		foreach($this->getManagedModels() as $class) {
-			$this->addWrapperMethod('SearchForm_' . $class, 'getSearchFormForModel');
-			$this->addWrapperMethod('AddForm_' . $class, 'getAddFormForModel');
-			$this->addWrapperMethod('EditForm_' . $class, 'getEditFormForModel');
+		foreach($this->getManagedModels() as $ClassName) {
+			$this->addWrapperMethod($ClassName, 'bindModelController');
 		}
-	}	
+	}
 	
 	/**
-	 * Return default link to this controller
+	 * Return default link to this controller. This assfaced method is abstract, so we can't
+	 * get rid of it.
 	 *
 	 * @todo extract full URL binding from Director::addRules so that it's not tied to 'admin/crm'
 	 * @todo is there a way of removing the dependency on this method from the Form?
@@ -93,41 +103,14 @@ abstract class ModelAdmin extends LeftAndMain {
 	 * @return string
 	 */
 	public function Link() {
-		return 'admin/crm/' . implode('/', array_values(array_unique($this->urlParams)));
+		return Controller::join_links(Director::absoluteBaseURL(), 'admin/crm/');
 	}
 	
 	/**
-	 * Create empty edit form (scaffolded from DataObject->getCMSFields() by default).
-	 * Can be called either through {@link AddForm()} or directly through URL:
-	 * "/myadminroute/add/MyModelClass"
+	 * Base scaffolding method for returning a generic model instance.
 	 */
-	public function add($data) {
-		$className = (isset($data['ClassName'])) ? $data['ClassName'] : $this->urlParams['ClassName'];
-		
-		if(!isset($className) || !in_array($data['ClassName'], $this->getManagedModels())) return false;
-
-		$form = $this->getEditForm($data['ClassName']);
-		return $form->forTemplate();
-	}
-	
-	/**
-	 * Edit forms (scaffolded from DataObject->getCMSFields() by default).
-	 *
-	 * @param array $data
-	 * @param Form $form
-	 */
-	public function edit($data, $form) {
-		if(!isset($data['ClassName']) || !in_array($data['ClassName'], $this->getManagedModels())) return false;
-		
-		// @todo generate editform
-	}
-	
-	/**
-	 *
-	 * @param array $data
-	 */
-	public function save($data, $form) {
-		Debug::dump($data);
+	public function bindModelController($model, $request = null) {
+		return new ModelAdmin_CollectionController($this, $model);
 	}
 	
 	/**
@@ -135,14 +118,14 @@ abstract class ModelAdmin extends LeftAndMain {
 	 * 
 	 * @return Form
 	 */
-	protected function AddForm() {
+	protected function ManagedModelsSelect() {
 		$models = $this->getManagedModels();
 		$modelMap = array();
 		foreach($models as $modelName) $modelMap[$modelName] = singleton($modelName)->singular_name();
 		
 		$form = new Form(
 			$this,
-			"AddForm",
+			"ManagedModelsSelect",
 			new FieldSet(
 				new DropdownField('ClassName', 'Type', $modelMap)
 			),
@@ -152,6 +135,11 @@ abstract class ModelAdmin extends LeftAndMain {
 		);
 		$form->setFormMethod('get');
 		return $form;
+	}
+	
+	function add($data, $form, $request) {
+		$className = $request->requestVar("ClassName");
+		return $this->$className()->add($request);
 	}
 	
 	/**
@@ -165,40 +153,17 @@ abstract class ModelAdmin extends LeftAndMain {
 		
 		$forms = new DataObjectSet();
 		foreach($modelClasses as $modelClass) {
-			$modelObj = singleton($modelClass);
-			
-			$form = $this->getSearchFormForModel($modelClass);
-			
+			$this->$modelClass()->SearchForm();
+
 			$forms->push(new ArrayData(array(
-				'Form' => $form,
-				'Title' => $modelObj->singular_name() 
+				'Form' => $this->$modelClass()->SearchForm(),
+				'Title' => singleton($modelClass)->singular_name(),
+				'ClassName' => $modelClass,
 			)));
 		}
 		
 		return $forms;
 	}
-	
-	/**
-	 * Enter description here...
-	 *
-	 * @todo Add customizeable validator
-	 * 
-	 * @param string $modelClass
-	 */
-	protected function getEditForm($modelClass) {
-		$modelObj = singleton($modelClass);
-		$formName = "EditForm_$modelClass";
-		$fields = $this->getFieldsForModel($modelObj);
-		$this->getComponentFieldsForModel($modelObj, $fields);
-		$actions = $this->getActionsForModel($modelObj);
-		$validator = $this->getValidatorForModel($modelObj);
-		// necessary because of overriding the form action - NEED TO VERIFY THIS
-		$fields->push(new HiddenField("executeForm", $formName));
-		$form = new Form($this, $formName, $fields, $actions, $validator);
-		return $form;
-	}
-	
-	// ############# Utility Methods ##############
 	
 	/**
 	 * @return array
@@ -210,164 +175,271 @@ abstract class ModelAdmin extends LeftAndMain {
 		
 		return $models;
 	}
+}
+
+/**
+ * Handles a managed model class and provides default collection filtering behavior.
+ *
+ */
+class ModelAdmin_CollectionController extends Controller {
+	protected $parentController;
+	protected $modelClass;
 	
-	/**
-	 * Get all cms fields for the model
-	 * (defaults to {@link DataObject->getCMSFields()}).
-	 * 
-	 * @todo Make method hook customizeable
-	 * 
-	 * @param DataObject $modelObj
-	 * @return FieldSet
-	 */
-	protected function getFieldsForModel($modelObj) {
-		$fields = $modelObj->getCMSFields();
-		if (!$fields->dataFieldByName('ID')) {
-			$fields->push(new HiddenField('ID'));
-		}
-		return $fields;
+	static $url_handlers = array(
+		'$Action' => 'handleActionOrID'
+	);
+
+	function __construct($parent, $model) {
+		$this->parentController = $parent;
+		$this->modelClass = $model;
 	}
 	
 	/**
-	 * Update: complex table field generation moved into controller - could be
-	 * in the DataObject scaffolding?
+	 * Appends the model class to the URL.
 	 *
-	 * @param unknown_type $modelObj
-	 * @return FieldSet of ComplexTableFields
+	 * @return unknown
 	 */
-	protected function getComponentFieldsForModel($modelObj, $fieldSet) {
-		foreach($modelObj->has_many() as $relationship => $component) {
-			
-			$relationshipFields = array_keys(singleton($component)->searchableFields());
-			$fieldSet->push(new ComplexTableField($this, $relationship, $component, $relationshipFields));
-			
+	function Link() {
+		return Controller::join_links($this->parentController->Link(), "$this->modelClass");
+	}
+	
+	/**
+	 * Return the class name of the model being managed.
+	 *
+	 * @return unknown
+	 */
+	function getModelClass() {
+		return $this->modelClass;
+	}
+	
+	/**
+	 * Smashes a massive whole in the Law of Demeter.
+	 * 
+	 * http://en.wikipedia.org/wiki/Law_of_Demeter
+	 */
+	/* I've commented this out because it's not actually used anymore
+	function getParentController() {
+		return $this->parentController;
+	}
+	*/
+	
+	/**
+	 * Delegate to different control flow, depending on whether the
+	 * URL parameter is a numeric type (record id) or string (action).
+	 * 
+	 * @param unknown_type $request
+	 * @return unknown
+	 */
+	function handleActionOrID($request) {
+		if (is_numeric($request->param('Action'))) {
+			return $this->handleID($request);
+		} else {
+			return $this->handleAction($request);
 		}
-		return $fieldSet;		
 	}
 	
 	/**
-	 * Get all actions which are possible in this controller,
-	 * and allowed by the model security.
-	 * 
-	 * @todo Hook into model security once its is implemented
-	 * 
-	 * @param DataObject $modelObj
-	 * @return FieldSet
+	 * Delegate to the RecordController if a valid numeric ID appears in the URL
+	 * segment.
+	 *
+	 * @param HTTPRequest $request
+	 * @return RecordController
 	 */
-	protected function getActionsForModel($modelObj) {
-		$actions = new FieldSet(
-			new FormAction('save', _t('GenericDataAdmin.SAVE')),
-			new FormAction('delete', _t('GenericDataAdmin.DELETE'))
-		);
-		return $actions;
+	function handleID($request) {
+		return new ModelAdmin_RecordController($this, $request);
 	}
-	
-	/**
-	 * NOT IMPLEMENTED
-	 * Get a valdidator for the model.
-	 * 
-	 * @todo Hook into model security once its is implemented
-	 * 
-	 * @param DataObject $modelObj
-	 * @return FieldSet
-	 */
-	protected function getValidatorForModel($modelObj) {
-		return false;
-	}
-		
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	/**
 	 * Get a search form for a single {@link DataObject} subclass.
 	 * 
-	 * @param string $modelClass
-	 * @return FieldSet
+	 * @return Form
 	 */
-	protected function getSearchFormForModel($modelClass) {
-		if(substr($modelClass,0,11) == 'SearchForm_') $modelClass = substr($modelClass, 11);
+	public function SearchForm() {
+		$context = singleton($this->modelClass)->getDefaultSearchContext();
 		
-		$context = singleton($modelClass)->getDefaultSearchContext();
-		
-		$form = new Form(
-			$this,
-			"SearchForm_$modelClass",
+		$form = new Form($this, "SearchForm",
 			$context->getSearchFields(),
 			new FieldSet(
 				new FormAction('search', _t('MemberTableField.SEARCH'))
 			)
 		);
+		$form->setFormAction(Controller::join_links($this->Link(), "search"));
 		$form->setFormMethod('get');
+		$form->setHTMLID("Form_SearchForm_" . $this->modelClass);
 		return $form;
-	}
-	
-	/**
-	 * Overwrite the default form action with the path to the DataObject filter
-	 * (relies on the search form having the specifically named id as 'SearchForm_DataObject')
-	 * 
-	 * @todo override default linking to add DataObject based URI paths
-	 */
-	function FormObjectLink($formName) {
-		return $this->Link();
 	}
 
 	/**
 	 * Action to render a data object collection, using the model context to provide filters
 	 * and paging.
+	 * 
+	 * @todo push this HTML structure out into separate template
 	 */
-	function search($data, $form) {
-		$className = $this->urlParams['ClassName'];
-		Debug::dump($className);
-		if (in_array($className, $this->getManagedModels())) {
-			$model = singleton($className);
-			// @todo need to filter post vars
-			$searchKeys = array_intersect_key($_POST, $model->searchableFields());
-			$context = $model->getDefaultSearchContext();
-			$results = $context->getResultSet($searchKeys);
-			if ($results) {
-				echo "<table>";
-				foreach($results as $row) {
-					$uri = Director::absoluteBaseUrl();
-					echo "<tr id=\"{$uri}admin/crm/view/$className/$row->ID\">";
-					foreach($model->searchableFields() as $key=>$val) {
-						echo "<td>";
-						echo $row->getField($key);
-						echo "</td>";
-					}
-					echo "</tr>";
+	function search($request) {
+		$model = singleton($this->modelClass);
+		$searchKeys = array_intersect_key($request->getVars(), $model->searchableFields());
+		$context = $model->getDefaultSearchContext();
+		$results = $context->getResultSet($searchKeys);
+		$output = "";
+		if ($results) {
+			$output .= "<table>";
+			foreach($results as $row) {
+				$uri = Director::absoluteBaseUrl();
+				$output .= "<tr title=\"{$uri}admin/crm/{$this->modelClass}/{$row->ID}/edit\">";
+				foreach($model->searchableFields() as $key=>$val) {
+					$output .=  "<td>";
+					$output .=  $row->getField($key);
+					$output .=  "</td>";
 				}
-				echo "</table>";
-			} else {
-				echo "<p>No results found</p>";
+				$output .=  "</tr>";
 			}
+			$output .=  "</table>";
+		} else {
+			$output .=  "<p>No results found</p>";
 		}
-		die();
+		return $output;
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	/**
+	 * Create a new model record.
+	 *
+	 * @param unknown_type $request
+	 * @return unknown
+	 */
+	function add($request) {
+		return $this->AddForm()->forTemplate();
+	}
+
+	/**
+	 * Returns a form for editing the attached model
+	 */
+	public function AddForm() {
+		$newRecord = new $this->modelClass();
+		$fields = $newRecord->getCMSFields();
+		
+		$validator = ($newRecord->hasMethod('getCMSValidator')) ? $newRecord->getCMSValidator() : null;
+		
+		$actions = new FieldSet(new FormAction("doCreate", "Add"));
+		
+		$form = new Form($this, "AddForm", $fields, $actions, $validator);
+
+		return $form;
+	}	
+	
+	function doCreate($data, $form, $request) {
+		$className = $this->getModelClass();
+		$model = new $className();
+		$form->saveInto($model);
+		$model->write();
+		
+		Director::redirect(Controller::join_links($this->Link(), $model->ID , 'edit'));
+	}
+}
+
+/**
+ * Handles operations on a single record from a managed model.
+ * 
+ * @todo change the parent controller varname to indicate the model scaffolding functionality in ModelAdmin
+ */
+class ModelAdmin_RecordController extends Controller {
+	protected $parentController;
+	protected $currentRecord;
+	
+	static $allowed_actions = array('edit', 'view', 'EditForm', 'ViewForm');
+	
+	function __construct($parentController, $request) {
+		$this->parentController = $parentController;
+		$modelName = $parentController->getModelClass();
+		$recordID = $request->param('Action');
+		$this->currentRecord = DataObject::get_by_id($modelName, $recordID);
 	}
 	
 	/**
-	 * View a generic model using a form object to render a partial HTML
-	 * fragment to be embedded via Ajax calls.
+	 * Link fragment - appends the current record ID to the URL.
+	 *
 	 */
-	function show() {
-		$className = $this->urlParams['ClassName'];
-		$ID = $this->urlParams['ID'];
-		
-		if (in_array($className, $this->getManagedModels())) {
-			
-			$model = DataObject::get_by_id($className, $ID);
-			
-			/*$fields = $model->getCMSFields();
-			
-			$actions = new FieldSet(
-				new FormAction('save', 'Save')
-			);
-			
-			$form = new Form($this, $className, $fields, $actions);
-			$form->makeReadonly();*/
-			$form = $this->getEditForm($className);
-			$form->loadNonBlankDataFrom($model);
-			return $form->forTemplate();
+	function Link() {
+		return Controller::join_links($this->parentController->Link(), "/{$this->currentRecord->ID}");
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	/**
+	 * Edit action - shows a form for editing this record
+	 */
+	function edit($request) {
+		if ($this->currentRecord) {
+			return $this->EditForm()->forTemplate();
+		} else {
+			return "I can't find that item";
 		}
 	}
-	
-	
 
+	/**
+	 * Returns a form for editing the attached model
+	 */
+	public function EditForm() {
+		$fields = $this->currentRecord->getCMSFields();
+		$fields->push(new HiddenField("ID"));
+		
+		$validator = ($this->currentRecord->hasMethod('getCMSValidator')) ? $this->currentRecord->getCMSValidator() : null;
+		
+		$actions = new FieldSet(new FormAction("doSave", "Save"));
+		
+		$form = new Form($this, "EditForm", $fields, $actions, $validator);
+		$form->loadDataFrom($this->currentRecord);
+
+		return $form;
+	}
+
+	function doSave($data, $form, $request) {
+		$this->currentRecord->update($request->postVars());
+		$this->currentRecord->write();
+		
+		// Behaviour switched on ajax.
+		if(Director::is_ajax()) {
+			return $this->edit($request);
+		} else {
+			Director::redirectBack();
+		}
+	}	
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/**
+	 * @todo remove base controller hack and refactor scaffolding methods to be better distributed in class heirachy
+	 */
+	function view($request) {
+		if ($this->currentRecord) {
+			$form = $this->ViewForm();
+			return $form->forTemplate();
+		} else {
+			return "I can't find that item";
+		}
+	}
+
+	/**
+	 * Returns a form for viewing the attached model
+	 */
+	public function ViewForm() {
+		$fields = $this->currentRecord->getCMSFields();
+		$form = new Form($this, "EditForm", $fields, new FieldSet());
+		$form->loadDataFrom($this->currentRecord);
+		$form->makeReadonly();
+
+		return $form;
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	function index() {
+		Director::redirect(Controller::join_links($this->Link(), 'edit'));
+	}
+	
 }
+
 ?>

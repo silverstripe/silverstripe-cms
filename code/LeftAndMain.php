@@ -35,6 +35,7 @@ class LeftAndMain extends Controller {
 		'printable',
 		'save',
 		'show',
+		'Member_ProfileForm'
 	);
 	
 	/**
