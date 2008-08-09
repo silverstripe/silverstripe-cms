@@ -30,6 +30,7 @@
 	<% if RightBottom %>
 	<div class="right" id="rightbottom">
 		$RightBottom
+		<div id="statusMessage" style="display:none;"></div>
 	</div>
 	<% end_if %>
 	

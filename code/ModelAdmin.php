@@ -76,10 +76,10 @@ abstract class ModelAdmin extends LeftAndMain {
 		Requirements::css('cms/css/silverstripe.tabs.css'); // follows the jQuery UI theme conventions
 		
 		Requirements::javascript('jsparty/jquery/jquery.js');
-		Requirements::javascript('jsparty/jquery/livequery/jquery.livequery.js');
-		Requirements::javascript('jsparty/jquery/ui/ui/ui.core.js');
-		Requirements::javascript('jsparty/jquery/ui/ui/ui.tabs.js');
-		Requirements::javascript('jsparty/jquery/ui/plugins/form/jquery.form.js');
+		Requirements::javascript('jsparty/jquery/plugins/livequery/jquery.livequery.js');
+		Requirements::javascript('jsparty/jquery/ui/ui.core.js');
+		Requirements::javascript('jsparty/jquery/ui/ui.tabs.js');
+		Requirements::javascript('jsparty/jquery/plugins/form/jquery.form.js');
 		Requirements::javascript('cms/javascript/ModelAdmin.js');
 	}
 	
@@ -214,7 +214,7 @@ class ModelAdmin_CollectionController extends Controller {
 		
 	/**
 	 * Delegate to different control flow, depending on whether the
-	 * URL parameter is a numeric type (record id) or string (action).
+	 * URL parameter is a number (record id) or string (action).
 	 * 
 	 * @param unknown_type $request
 	 * @return unknown
@@ -270,7 +270,7 @@ class ModelAdmin_CollectionController extends Controller {
 		$model = singleton($this->modelClass);
 		$searchKeys = array_intersect_key($request->getVars(), $model->searchable_fields());
 		$context = $model->getDefaultSearchContext();
-		$results = $context->getResultSet($searchKeys);
+		$results = $context->getResults($searchKeys);
 		$output = "";
 		if ($results) {
 			$output .= "<table>";
@@ -385,6 +385,14 @@ class ModelAdmin_RecordController extends Controller {
 		return $form;
 	}
 
+	/**
+	 * Postback action to save a record
+	 *
+	 * @param array $data
+	 * @param Form $form
+	 * @param HTTPRequest $request
+	 * @return mixed
+	 */
 	function doSave($data, $form, $request) {
 		$this->currentRecord->update($request->postVars());
 		$this->currentRecord->write();
@@ -400,7 +408,10 @@ class ModelAdmin_RecordController extends Controller {
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * @todo remove base controller hack and refactor scaffolding methods to be better distributed in class heirachy
+	 * Renders the record view template.
+	 * 
+	 * @param HTTPRequest $request
+	 * @return mixed
 	 */
 	function view($request) {
 		if ($this->currentRecord) {
@@ -413,13 +424,14 @@ class ModelAdmin_RecordController extends Controller {
 
 	/**
 	 * Returns a form for viewing the attached model
+	 * 
+	 * @return Form
 	 */
 	public function ViewForm() {
 		$fields = $this->currentRecord->getCMSFields();
 		$form = new Form($this, "EditForm", $fields, new FieldSet());
 		$form->loadDataFrom($this->currentRecord);
 		$form->makeReadonly();
-
 		return $form;
 	}
 	
