@@ -100,6 +100,9 @@ jQuery(document).ready(function() {
 		data = formData(form);
 		jQuery.get(form.attr('action'), data, function(result){
 			jQuery('#right #ModelAdminPanel').html(result);
+			
+			Behaviour.apply();
+			
 			jQuery('#right #ModelAdminPanel tbody td a').click(function(){
 				var el = jQuery(this);
 				showRecord(el.attr('href'));

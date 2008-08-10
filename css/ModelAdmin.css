@@ -30,6 +30,10 @@ body.ModelAdmin #ResultTable_holder {
 	overflow:auto;
 }
 
+body.ModelAdmin #right{
+	overflow:auto;
+}
+
 body.ModelAdmin #right table.results {
 	margin:6px;
 	padding:0;

@@ -113,6 +113,20 @@ abstract class ModelAdmin extends LeftAndMain {
 	}
 	
 	/**
+	 * overwrite the static page_length of the admin panel, 
+	 * should be called in the project _config file.
+	 */
+	static function set_page_length($length){
+		self::$page_length = $length;
+	}
+	
+	/**
+	 * Return the static page_length of the admin, default as 30
+	 */
+	static function get_page_length(){
+		return self::$page_length;
+	} 
+	/**
 	 * Add mappings for generic form constructors to automatically delegate to a scaffolded form object.
 	 */
 	function defineMethods() {
@@ -363,19 +377,23 @@ class ModelAdmin_CollectionController extends Controller {
 	 * @todo push this HTML structure out into separate template
 	 */
 	function search($request) {
+		$filteredParams = $request->getVars();
+		unset($filteredParams['ctf']);
 		$model = singleton($this->modelClass);
 		$context = $model->getDefaultSearchContext();
-		$results = $context->getResults($request->getVars(), null, array('start'=>0, 'limit'=>$this->parentController->stat('page_length')));
+		$length = $this->parentController->stat('page_length');
+		$results = $context->getResults($request->getVars());
 		$summaryFields = $model->summaryFields();	
-		
 		$tf = new TableListField(
 			$this->modelClass,
 			$this->modelClass,
 			$summaryFields
 		);
 		$tf->setCustomSourceItems($results);
+		$tf->setPageSize($length);
+		$tf->setShowPagination(true);
 		$tf->setPermissions(array('view'));
-		$url = '<a href=\"' . Director::absoluteBaseURL() . 'admin/crm/' . $this->modelClass . '/$ID/edit\">$value</a>';
+		$url = '<a href=\"' . $this->Link() . '/$ID/edit\">$value</a>';
 		$tf->setFieldFormatting(array_combine(array_keys($summaryFields), array_fill(0,count($summaryFields), $url)));
 		
 		// implemented as a form to enable further actions on the resultset
@@ -389,8 +407,16 @@ class ModelAdmin_CollectionController extends Controller {
 			),
 			new FieldSet()
 		);
-		
-		return $form->forTemplate();
+		$tf->setExtraLinkParams($filteredParams);
+
+		if(isset($_POST['paginate']) && $_POST['paginate']==1){
+			$response = $tf->renderWith("TableListField");
+			FormResponse::update_dom_id($tf->id(), $response);
+			FormResponse::set_non_ajax_content($response);
+			return FormResponse::respond();
+		}else{
+			return $form->forTemplate();
+		}
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////

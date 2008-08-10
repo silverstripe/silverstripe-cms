@@ -255,8 +255,9 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	}
 
 	public function Link($action = null) {
-		if(!$action) $action = "index";
-		return "admin/security/$action/" . $this->currentPageID();
+		//if(!$action) $action = "index";
+		//return "admin/security/$action/" . $this->currentPageID();
+		return "admin/security/$action/";
 	}
 
 	public function listmembers( $baseGroup = null ) {

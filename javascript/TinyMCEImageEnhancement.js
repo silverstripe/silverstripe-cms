@@ -143,12 +143,14 @@ TinyMCEImageEnhancement.prototype = {
         }
     
         if($('FolderID') != null) {
+        	if($('SecurityID')) var securityid=$('SecurityID').value;
+	        else var securityid=null;
 	        this.upload = new Upload(
 	            {
 	               fileTypes : '*.jpeg;*.jpg;*.jpe;*.png;*.gif;',
 	               fileTypesDescription : 'Image files',
 	               fileUploadLimit : '100',
-	               securityID : $('SecurityID').value,
+	               securityID : securityid,
 	               beginUploadOnQueue : true,
                    buildUI : this.addListeners.bind(this),
                    fileQueued : this.uploadFileQueuedCallback.bind(this),
