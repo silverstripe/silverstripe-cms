@@ -190,18 +190,48 @@ abstract class ModelAdmin extends LeftAndMain {
 	public function ImportForm() {
 		$models = $this->getManagedModels();
 		$modelMap = array();
-		foreach($this->getModelImporters() as $modelName => $spec) $modelMap[$modelName] = singleton($modelName)->singular_name();
+		$importers = $this->getModelImporters();
+		if(!$importers) return false;
+
+		foreach($importers as $modelName => $importerClass) {
+			$modelMap[$modelName] = singleton($modelName)->singular_name();
+		}
+		
+		$fields = new FieldSet(
+			new DropdownField('ClassName', 'Type', $modelMap),
+			new FileField('_CsvFile', false)
+		);
+		
+		// get HTML specification for each import (column names etc.)
+		foreach($importers as $modelName => $importerClass) {
+			$importer = new $importerClass($modelName);
+			$spec = $importer->getImportSpec();
+			$specFields = new DataObjectSet();
+			foreach($spec['fields'] as $name => $desc) {
+				$specFields->push(new ArrayData(array('Name' => $name, 'Description' => $desc)));
+			}
+			$specRelations = new DataObjectSet();
+			foreach($spec['relations'] as $name => $desc) {
+				$specRelations->push(new ArrayData(array('Name' => $name, 'Description' => $desc)));
+			}
+			$specHTML = $this->customise(array(
+				'ModelName' => $modelName, 
+				'Fields' => $specFields,
+				'Relations' => $specRelations, 
+			))->renderWith('ModelAdmin_ImportSpec');
+			
+			$fields->push(new LiteralField("SpecFor{$modelName}", $specHTML));
+		}
+		
+		$actions = new FieldSet(
+			new FormAction('import', _t('ModelAdmin.IMPORT', 'Import from CSV'))
+		);
 		
 		$form = new Form(
 			$this,
 			"ImportForm",
-			new FieldSet(
-				new DropdownField('ClassName', 'Type', $modelMap),
-				new FileField('_CsvFile', false)
-			),
-			new FieldSet(
-				new FormAction('import', _t('ModelAdmin.IMPORT', 'Import from CSV'))
-			)
+			$fields,
+			$actions
 		);
 		return $form;
 	}
@@ -223,7 +253,10 @@ abstract class ModelAdmin extends LeftAndMain {
 	 * @param unknown_type $request
 	 */
 	function import($data, $form, $request) {
-		$loader = new DemandPointBulkLoader($data['ClassName']);
+		$importers = $this->getModelImporters();
+		$importerClass = $importers[$data['ClassName']];
+		
+		$loader = new $importerClass($data['ClassName']);
 		$results = $loader->load($_FILES['_CsvFile']['tmp_name']);
 		$resultsCount = ($results) ? $results->Count() : 0;
 		
@@ -275,9 +308,9 @@ abstract class ModelAdmin extends LeftAndMain {
 	 */
 	protected function getModelImporters() {
 		$importers = $this->stat('model_importers');
-		
+
 		// fallback to all defined models if not explicitly defined
-		if(!$importers) {
+		if(is_null($importers)) {
 			$models = $this->getManagedModels();
 			foreach($models as $modelName) $importers[$modelName] = 'CsvBulkLoader';
 		}
@@ -374,23 +407,42 @@ class ModelAdmin_CollectionController extends Controller {
 	 * Action to render a data object collection, using the model context to provide filters
 	 * and paging.
 	 * 
-	 * @todo push this HTML structure out into separate template
+	 * @return string
 	 */
 	function search($request) {
-		$filteredParams = $request->getVars();
-		unset($filteredParams['ctf']);
+		$form = $this->ResultsForm();
+
+		return $form->forTemplate();
+	}
+	
+	/**
+	 * Gets the search query generated on the SearchContext from
+	 * {@link DataObject::getDefaultSearchContext()},
+	 * and the current GET parameters on the request.
+	 *
+	 * @return SQLQuery
+	 */
+	function getSearchQuery() {
+		$context = singleton($this->modelClass)->getDefaultSearchContext();
+		
+		return $context->getQuery($this->request->getVars());
+	}
+	
+	/**
+	 * Shows results from the "search" action in a TableListField.
+	 *
+	 * @return Form
+	 */
+	function ResultsForm() {
 		$model = singleton($this->modelClass);
-		$context = $model->getDefaultSearchContext();
-		$length = $this->parentController->stat('page_length');
-		$results = $context->getResults($request->getVars());
 		$summaryFields = $model->summaryFields();	
 		$tf = new TableListField(
 			$this->modelClass,
 			$this->modelClass,
 			$summaryFields
 		);
-		$tf->setCustomSourceItems($results);
-		$tf->setPageSize($length);
+		$tf->setCustomQuery($this->getSearchQuery());
+		$tf->setPageSize($this->parentController->stat('page_length'));
 		$tf->setShowPagination(true);
 		$tf->setPermissions(array('view'));
 		$url = '<a href=\"' . $this->Link() . '/$ID/edit\">$value</a>';
@@ -407,17 +459,18 @@ class ModelAdmin_CollectionController extends Controller {
 			),
 			new FieldSet()
 		);
+		
+		// HACK to preserve search parameters on TableField
+		// ajax actions like pagination
+		$filteredParams = $this->request->getVars();
+		unset($filteredParams['ctf']);
+		unset($filteredParams['url']);
+		unset($filteredParams['action_search']);
 		$tf->setExtraLinkParams($filteredParams);
-
-		if(isset($_POST['paginate']) && $_POST['paginate']==1){
-			$response = $tf->renderWith("TableListField");
-			FormResponse::update_dom_id($tf->id(), $response);
-			FormResponse::set_non_ajax_content($response);
-			return FormResponse::respond();
-		}else{
-			return $form->forTemplate();
-		}
+		
+		return $form;
 	}
+	
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 	

@@ -60,3 +60,9 @@ body.ModelAdmin #right table.results td.active {
 body.ModelAdmin #right .tab {
 	height: 450px; /* @todo add dynamic resizing */
 }
+
+body.ModelAdmin #Form_ImportForm_holder dt {
+	float: left;
+	width: 10em;
+	margin-right: 2em;
+}

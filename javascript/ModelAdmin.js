@@ -119,6 +119,15 @@ jQuery(document).ready(function() {
 		return false;
 	});
 	
+	/**
+	 * Toggle import specifications
+	 */
+	jQuery('#Form_ImportForm_holder .spec .details').hide();
+	jQuery('#Form_ImportForm_holder .spec a.detailsLink').click(function() {
+		jQuery('#' + jQuery(this).attr('href').replace(/.*#/,'')).toggle();
+		return false;
+	});
+	
 });
 
 /**
