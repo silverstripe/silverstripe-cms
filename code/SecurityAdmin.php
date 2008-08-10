@@ -65,7 +65,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 
 
 	public function AddRecordForm() {
-		$m = new MemberTableField(
+		$m = Object::create('MemberTableField',
 			$this,
 			"Members",
 			$this->currentPageID()
