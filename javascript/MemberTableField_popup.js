@@ -4,11 +4,11 @@ MemberTableFieldPopupForm.prototype = {
 		this.ComplexTableFieldPopupForm.initialize();
 		
 		Behaviour.register({
-			"form#MemberTableField_Popup_DetailForm .Actions input.action": {
+			"div.MemberTableField_Popup .Actions input.action": {
 				onclick: this.submitForm.bind(this)
 			}
 		});
 	}
 }
 
-MemberTableFieldPopupForm.applyTo('form#MemberTableField_Popup_DetailForm');
+MemberTableFieldPopupForm.applyTo('div.MemberTableField_Popup .Actions');
