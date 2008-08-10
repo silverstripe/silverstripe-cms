@@ -435,7 +435,7 @@ class ModelAdmin_CollectionController extends Controller {
 	 */
 	function ResultsForm() {
 		$model = singleton($this->modelClass);
-		$summaryFields = $model->summaryFields();	
+		$summaryFields = $model->summaryFields();
 		$tf = new TableListField(
 			$this->modelClass,
 			$this->modelClass,
@@ -444,10 +444,10 @@ class ModelAdmin_CollectionController extends Controller {
 		$tf->setCustomQuery($this->getSearchQuery());
 		$tf->setPageSize($this->parentController->stat('page_length'));
 		$tf->setShowPagination(true);
-		$tf->setPermissions(array('view'));
+		$tf->setPermissions(array_merge(array('view'), $model->stat('results_permissions')));
 		$url = '<a href=\"' . $this->Link() . '/$ID/edit\">$value</a>';
 		$tf->setFieldFormatting(array_combine(array_keys($summaryFields), array_fill(0,count($summaryFields), $url)));
-		
+
 		// implemented as a form to enable further actions on the resultset
 		// (serverside sorting, export as CSV, etc)
 		$form = new Form(
