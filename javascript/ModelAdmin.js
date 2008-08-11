@@ -111,7 +111,7 @@ jQuery(document).ready(function() {
 		return false;
 	});
 	
-	jQuery('#right #ModelAdminPanel tbody td a').livequery('click', function(){
+	jQuery('#right #Form_ResultsForm tbody td a').livequery('click', function(){
 		var el = jQuery(this);
 		showRecord(el.attr('href'));
 		//el.parent().parent().find('td').removeClass('active');
