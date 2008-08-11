@@ -405,7 +405,7 @@ class ModelAdmin_CollectionController extends Controller {
 				$clearAction = new ResetFormAction('clearsearch', _t('ModelAdmin.CLEAR_SEARCH','Clear Search'))
 			)
 		);
-		$form->setFormAction(Controller::join_links($this->Link(), "search"));
+		//$form->setFormAction(Controller::join_links($this->Link(), "search"));
 		$form->setFormMethod('get');
 		$form->setHTMLID("Form_SearchForm_" . $this->modelClass);
 		$clearAction->useButtonTag = true;
@@ -451,10 +451,9 @@ class ModelAdmin_CollectionController extends Controller {
 	 * 
 	 * @return string
 	 */
-	function search($request) {
-		$form = $this->ResultsForm();
-
-		return $form->forTemplate();
+	function search($request, $form) {
+		$resultsForm = $this->ResultsForm($form->getData());
+		return $resultsForm->forTemplate();
 	}
 	
 	/**
@@ -464,10 +463,9 @@ class ModelAdmin_CollectionController extends Controller {
 	 *
 	 * @return SQLQuery
 	 */
-	function getSearchQuery() {
+	function getSearchQuery($searchCriteria) {
 		$context = singleton($this->modelClass)->getDefaultSearchContext();
-		
-		return $context->getQuery($this->request->getVars());
+		return $context->getQuery($searchCriteria);
 	}
 	
 	/**
@@ -475,7 +473,7 @@ class ModelAdmin_CollectionController extends Controller {
 	 *
 	 * @return Form
 	 */
-	function ResultsForm() {
+	function ResultsForm($searchCritera) {
 		$model = singleton($this->modelClass);
 		$summaryFields = $model->summaryFields();
 		$resultAssembly = $_REQUEST['ResultAssembly'];
@@ -489,7 +487,7 @@ class ModelAdmin_CollectionController extends Controller {
 			$this->modelClass,
 			$summaryFields
 		);
-		$tf->setCustomQuery($this->getSearchQuery());
+		$tf->setCustomQuery($this->getSearchQuery($searchCriteria));
 		$tf->setPageSize($this->parentController->stat('page_length'));
 		$tf->setShowPagination(true);
 		$tf->setPermissions(array_merge(array('view','export'), $model->stat('results_permissions')));

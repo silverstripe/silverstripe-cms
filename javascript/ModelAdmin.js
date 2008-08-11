@@ -72,8 +72,9 @@ jQuery(document).ready(function() {
 		var data = {};
 		jQuery('*[name]', scope).each(function(){
 			var t = jQuery(this);
-			var val = (t.attr('type') == 'checkbox') ? (t.attr('checked') == true) ? 1 : 0 : t.val();
-			data[t.attr('name')] = val;
+			if(t.attr('type') != 'checkbox' || t.attr('checked') == true) {
+				data[t.attr('name')] = t.val();
+			}
 		});
 		return data;
 	}
