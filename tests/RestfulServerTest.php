@@ -178,6 +178,8 @@ class RestfulServerTest_Comment extends DataObject implements PermissionProvider
 		"Comment" => "Text"
 	);
 	
+	static $has_many = array();
+	
 	public function providePermissions(){
 		return array(
 			'EDIT_Comment' => 'Edit Comment Objects',
