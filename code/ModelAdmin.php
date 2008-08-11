@@ -492,7 +492,7 @@ class ModelAdmin_CollectionController extends Controller {
 		$tf->setCustomQuery($this->getSearchQuery());
 		$tf->setPageSize($this->parentController->stat('page_length'));
 		$tf->setShowPagination(true);
-		$tf->setPermissions(array_merge(array('view'), $model->stat('results_permissions')));
+		$tf->setPermissions(array_merge(array('view','export'), $model->stat('results_permissions')));
 		$url = '<a href=\"' . $this->Link() . '/$ID/edit\">$value</a>';
 		$tf->setFieldFormatting(array_combine(array_keys($summaryFields), array_fill(0,count($summaryFields), $url)));
 
