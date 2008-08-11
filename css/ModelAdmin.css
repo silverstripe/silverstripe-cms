@@ -4,7 +4,7 @@
 }
 
 body.ModelAdmin #left {
-	width: 250px;
+	width: 260px;
 }
 
 body.ModelAdmin #Form_AddForm fieldset {
@@ -32,7 +32,7 @@ body.ModelAdmin #SearchForm_holder {
 }
 
 body.ModelAdmin #SearchForm_holder div.ResultAssemblyBlock{
-	margin: 1.5em 0px;
+	margin-bottom: 1em;
 }
 
 body.ModelAdmin #SearchForm_holder form div.field.hidden{

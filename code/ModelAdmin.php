@@ -328,7 +328,7 @@ abstract class ModelAdmin extends LeftAndMain {
  *
  */
 class ModelAdmin_CollectionController extends Controller {
-	protected $parentController;
+	public $parentController;
 	protected $modelClass;
 	
 	static $url_handlers = array(
@@ -401,12 +401,15 @@ class ModelAdmin_CollectionController extends Controller {
 		$form = new Form($this, "SearchForm",
 			$fields,
 			new FieldSet(
-				new FormAction('search', _t('MemberTableField.SEARCH'))
+				new FormAction('search', _t('MemberTableField.SEARCH')),
+				$clearAction = new ResetFormAction('clearsearch', _t('ModelAdmin.CLEAR_SEARCH','Clear Search'))
 			)
 		);
 		$form->setFormAction(Controller::join_links($this->Link(), "search"));
 		$form->setFormMethod('get');
 		$form->setHTMLID("Form_SearchForm_" . $this->modelClass);
+		$clearAction->useButtonTag = true;
+		$clearAction->addExtraClass('minorAction');
 		return $form;
 	}
 	
@@ -420,10 +423,15 @@ class ModelAdmin_CollectionController extends Controller {
 		foreach ($source as $fieldName => $label){
 			$value[] = $fieldName;
 		}
-		$checkboxes = new CheckboxSetField("ResultAssembly", "Tick the box if you want it to be shown in the results", $source, $value);
+		$checkboxes = new CheckboxSetField("ResultAssembly", false, $source, $value);
 		
 		$field = new CompositeField(
-			new LiteralField("ToggleResultAssemblyLink", "<a class=\"form_frontend_function toggle_result_assembly\" href=\"#\">+ choose columns</a>"),
+			new LiteralField(
+				"ToggleResultAssemblyLink", 
+				sprintf("<a class=\"form_frontend_function toggle_result_assembly\" href=\"#\">%s</a>",
+					_t('ModelAdmin.CHOOSE_COLUMNS', 'Select result columns...')
+				)
+			),
 			$checkboxesBlock = new CompositeField(
 				$checkboxes,
 				new LiteralField("ClearDiv", "<div class=\"clear\"></div>"),
@@ -583,7 +591,13 @@ class ModelAdmin_RecordController extends Controller {
 	 */
 	function edit($request) {
 		if ($this->currentRecord) {
-			return $this->EditForm()->forAjaxTemplate();
+			if(Director::is_ajax()) {
+				return $this->EditForm()->forAjaxTemplate();
+			} else {
+				return $this->parentController->parentController->customise(array(
+					'EditForm' => $this->EditForm()
+				))->renderWith('LeftAndMain');
+			}
 		} else {
 			return "I can't find that item";
 		}
@@ -602,6 +616,11 @@ class ModelAdmin_RecordController extends Controller {
 			//new FormAction("goBack", "Back"),
 			new FormAction("doSave", "Save")
 		);
+		
+		if($this->currentRecord->canDelete(Member::currentUser())) {
+			$actions->insertFirst($deleteAction = new FormAction('doDelete', 'Delete'));
+			$deleteAction->addExtraClass('delete');
+		}
 		
 		$form = new Form($this, "EditForm", $fields, $actions, $validator);
 		$form->loadDataFrom($this->currentRecord);
@@ -628,7 +647,19 @@ class ModelAdmin_RecordController extends Controller {
 			Director::redirectBack();
 		}
 	}	
-
+	
+	/**
+	 * Delete the current record
+	 */
+	public function doDelete($data, $form, $request) {
+		if($this->currentRecord->canDelete(Member::currentUser())) {
+			$this->currentRecord->delete();
+			Director::redirect($this->parentController->Link());
+		}
+		else Director::redirectBack();
+		return;
+	}
+	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**

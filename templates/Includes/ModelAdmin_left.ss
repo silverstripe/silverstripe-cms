@@ -9,7 +9,6 @@
 		<% control SearchForms %>
 			<div class="tab" id="{$Form.Name}_$ClassName">
 			$Form
-			<a class="form_frontend_function clear_search" href="#">Clear Search</a>
 			</div>
 		<% end_control %>
 	</div>

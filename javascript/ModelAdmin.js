@@ -49,6 +49,22 @@ jQuery(document).ready(function() {
 	}
 	
 	/**
+	 * POST a hash of form submitted data to the given endpoint
+	 */
+	function deleteRecord(uri, data) {
+		jQuery.post(uri, data, function(result){
+			jQuery('#right #ModelAdminPanel').html(result);
+			
+			statusMessage("Deleted");
+
+			// TODO/SAM: It seems a bit of a hack to have to list all the little updaters here. 
+			// Is livequery a solution?
+			Behaviour.apply(); // refreshes ComplexTableField
+			jQuery('#right ul.tabstrip').tabs();
+		});
+	}
+	
+	/**
 	 * Returns a flattened array of data from each field
 	 * of the given form 
 	 */
@@ -75,10 +91,23 @@ jQuery(document).ready(function() {
 	/**
 	 * attach generic action handler to all forms displayed in the #right panel
 	 */
-	jQuery('#right #form_actions_right .action').livequery('click', function(){
-		form = jQuery('#right form');
+	jQuery('#right #form_actions_right input[name=action_doSave]').livequery('click', function(){
+		var form = jQuery('#right form');
 		var formAction = form.attr('action') + '?' + jQuery(this).fieldSerialize();
 		saveRecord(formAction, formData(form));
+		return false;
+	});
+	
+	/**
+	 * attach generic action handler to all forms displayed in the #right panel
+	 */
+	jQuery('#right #form_actions_right input[name=action_doDelete]').livequery('click', function(){
+		var confirmed = confirm("Do you really want to delete?");
+		if(!confirmed) return false;
+		
+		var form = jQuery('#right form');
+		var formAction = form.attr('action') + '?' + jQuery(this).fieldSerialize();
+		deleteRecord(formAction, formData(form));
 		return false;
 	});
 	
@@ -128,22 +157,14 @@ jQuery(document).ready(function() {
 		return false;
 	});
 	
-	jQuery('a.form_frontend_function.clear_search').click(function(e) {
-		//jQuery('#SearchForm_holder .tab form').clearForm();
-		var searchform = jQuery(this).parent().get(0);
-		jQuery(searchform).clearForm();
+	jQuery('#SearchForm_holder button[name=action_clearsearch]').click(function(e) {
+		jQuery(this.form).clearForm();
 		return false;
 	});
 	
 	jQuery('a.form_frontend_function.toggle_result_assembly').click(function(){
 		var toggleElement = jQuery(this).next();
-		if(toggleElement.css('display') != 'none'){
-			jQuery(this).html('+ choose columns');
-			toggleElement.hide();
-		}else{
-			jQuery(this).html('- hide column choose');
-			toggleElement.show();
-		}
+		toggleElement.toggle();
 		return false;
 	});
 	
