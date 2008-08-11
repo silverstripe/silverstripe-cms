@@ -91,11 +91,25 @@ class MemberTableField extends ComplexTableField {
 		}
 		
 		if(isset($_REQUEST['ctf']['childID']) && $memberID = $_REQUEST['ctf']['childID']) {
-			$SNG_member = DataObject::get_by_id($this->stat("data_class"),$_REQUEST['ctf']['childID']); 
+			$SNG_member = DataObject::get_by_id($this->stat("data_class"),$memberID); 
 		} else {
 			$SNG_member = singleton(Object::getCustomClass($this->stat("data_class")));
 		}
-		$detailFormFields = $SNG_member->getCMSFields();
+		
+		// If the fieldset is passed, use it, else use the formfields returned
+		// from the object via a string method call.
+		if(is_a($this->detailFormFields,"Fieldset")){
+			$detailFormFields = $this->detailFormFields;
+		} else if(is_string($this->detailFormFields)){
+			$functioncall = $this->detailFormFields;
+			if($SNG_member->hasMethod($functioncall)){
+				$detailFields = $childData->$functioncall();
+			}
+		} else {
+			$detailFormFields = $SNG_member->getCMSFields();
+		}
+		
+		
 		$this->detailFormValidator =  $SNG_member->getValidator();
 
 		$this->pageSize = $pageLimit;
@@ -107,7 +121,7 @@ class MemberTableField extends ComplexTableField {
 
 		$this->hidePassword = $hidePassword;
 
-		parent::__construct($controller, $name, $sourceClass, $fieldList);
+		parent::__construct($controller, $name, $sourceClass, $fieldList, $detailFormFields);
 
 		Requirements::javascript('cms/javascript/MemberTableField.js');
 		Requirements::javascript("cms/javascript/MemberTableField_popup.js");
@@ -152,6 +166,51 @@ class MemberTableField extends ComplexTableField {
 
 	function AddLink() {
 		return "{$this->Link()}&methodName=add";
+	}
+
+	/**
+	 * TODO Check if this was modified as a result of the
+	 * Ajax changes. As a single method, it should be fairly safe
+	 */
+	function DetailForm() {
+		$ID = Convert::raw2xml(isset($_REQUEST['ctf']['ID'])
+													   ? $_REQUEST['ctf']['ID']
+														 : '');
+		$childID = isset($_REQUEST['ctf']['childID']) ? Convert::raw2xml($_REQUEST['ctf']['childID']) : 0;
+		$childClass = Convert::raw2xml($_REQUEST['fieldName']);
+		$methodName = isset($_REQUEST['methodName']) ? $_REQUEST['methodName'] : '';
+
+		if($methodName == "add") {
+			$parentIdName = $this->getParentIdName($childClass,$this->getParentClass());
+			if(!$parentIdName) {
+				user_error("ComplexTableField::DetailForm() Dataobject does not seem to have an 'has-one'-relationship", E_USER_WARNING);
+				return;
+			}
+			$this->detailFormFields->push(new HiddenField('parentClass'," ",$this->getParentClass()));
+		}
+
+		// the ID field confuses the Controller-logic in finding the right view for ReferencedField
+		$this->detailFormFields->removeByName('ID');
+
+		$this->detailFormFields->push(new HiddenField("ctf[ID]"," ",$ID));
+		// add a namespaced ID instead thats "converted" by saveComplexTableField()
+		$this->detailFormFields->push(new HiddenField("ctf[childID]","",$childID));
+		$this->detailFormFields->push(new HiddenField("ClassName","",$this->sourceClass));
+		
+		$form = Object::create('MemberTableField_Popup', $this, "DetailForm", $this->detailFormFields, $this->sourceClass, $methodName == "show", $this->detailFormValidator);
+
+		if (is_numeric($childID)) {
+			if ($methodName == "show" || $methodName == "edit") {
+				$childData = DataObject::get_by_id($this->sourceClass, $childID);
+				$form->loadDataFrom($childData);
+			}
+		}
+
+		if ($methodName == "show") {
+			$form->makeReadonly();
+		}
+
+		return $form;
 	}
 
 	function SearchForm() {
@@ -208,7 +267,7 @@ class MemberTableField extends ComplexTableField {
 		  FormResponse::status_messsage(_t('MemberTableField.ADDINGFIELD', 'Adding failed'), 'bad');
 		}
 
-		$className = $this->stat('data_class');
+		$className = Object::getCustomClass($this->stat('data_class'));
 		$record = new $className();
 
 		$record->update($data);
@@ -370,8 +429,10 @@ class MemberTableField_Popup extends ComplexTableField_Popup {
 	 * @return string
 	 */
 	function saveComplexTableField() {
-		if(isset($_REQUEST['ctf']['childID']) && is_numeric($_REQUEST['ctf']['childID'])) {
-			$childObject = DataObject::get_by_id($this->sourceClass, $_REQUEST['ctf']['childID']);
+		$id = (isset($_REQUEST['ctf']['childID'])) ? Convert::raw2sql($_REQUEST['ctf']['childID']) : false;
+	
+		if (is_numeric($id) && $id != 0) {
+			$childObject = DataObject::get_by_id($this->sourceClass, $id);
 		} else {
 			$childObject = new $this->sourceClass();
 			$this->fields->removeByName('ID');
