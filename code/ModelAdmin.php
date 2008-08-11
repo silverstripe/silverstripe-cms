@@ -167,7 +167,9 @@ abstract class ModelAdmin extends LeftAndMain {
 	protected function ManagedModelsSelect() {
 		$models = $this->getManagedModels();
 		$modelMap = array();
-		foreach($models as $modelName) $modelMap[$modelName] = singleton($modelName)->singular_name();
+		foreach($models as $modelName) {
+			if(singleton($modelName)->canCreate(Member::currentUser())) $modelMap[$modelName] = singleton($modelName)->singular_name();
+		}
 		
 		$form = new Form(
 			$this,
@@ -616,7 +618,7 @@ class ModelAdmin_RecordController extends Controller {
 	 * @return mixed
 	 */
 	function doSave($data, $form, $request) {
-		$this->currentRecord->update($request->postVars());
+		$form->saveInto($this->currentRecord);
 		$this->currentRecord->write();
 		
 		// Behaviour switched on ajax.

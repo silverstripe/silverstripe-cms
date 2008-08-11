@@ -38,6 +38,8 @@ jQuery(document).ready(function() {
 	function saveRecord(uri, data) {
 		jQuery.post(uri, data, function(result){
 			jQuery('#right #ModelAdminPanel').html(result);
+			
+			statusMessage("Saved");
 
 			// TODO/SAM: It seems a bit of a hack to have to list all the little updaters here. 
 			// Is livequery a solution?
