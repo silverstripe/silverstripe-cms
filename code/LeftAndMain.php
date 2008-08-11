@@ -101,6 +101,11 @@ class LeftAndMain extends Controller {
 			return;
 		}
 		
+		Requirements::css('cms/css/typography.css');
+		Requirements::css('cms/css/layout.css');
+		Requirements::css('cms/css/cms_left.css');
+		Requirements::css('cms/css/cms_right.css');
+		
 		Requirements::javascript('jsparty/prototype.js');
 		Requirements::javascript('jsparty/behaviour.js');
 		Requirements::javascript('jsparty/prototype_improvements.js');
@@ -202,6 +207,8 @@ class LeftAndMain extends Controller {
 		foreach (self::$extra_requirements['themedcss'] as $file) {
 			Requirements::css($file[0], $file[1]);
 		}
+		
+		Requirements::customScript('Behaviour.addLoader(hideLoading);');
 
 		$dummy = null;
 		$this->extend('augmentInit', $dummy);

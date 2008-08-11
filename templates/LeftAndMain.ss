@@ -4,11 +4,6 @@
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <% base_tag %>
 <title>$ApplicationName</title>
-
-<link rel="stylesheet" type="text/css" href="cms/css/typography.css" />
-<link rel="stylesheet" type="text/css" href="cms/css/layout.css" />
-<link rel="stylesheet" type="text/css" href="cms/css/cms_left.css" />
-<link rel="stylesheet" type="text/css" href="cms/css/cms_right.css" />
 </head>
 
 <body class="stillLoading $CSSClasses">
@@ -64,6 +59,5 @@
 		
 		</div>
 	</div>
-	<script type="text/javascript">Behaviour.addLoader(hideLoading)</script>
 </body>
 </html>
