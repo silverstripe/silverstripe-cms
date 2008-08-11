@@ -43,7 +43,8 @@ abstract class ModelAdmin extends LeftAndMain {
 		'import',
 		'renderimportform',
 		'handleList',
-		'handleItem'
+		'handleItem',
+		'ImportForm'
 	);
 	
 	/**
@@ -109,6 +110,7 @@ abstract class ModelAdmin extends LeftAndMain {
 		Requirements::javascript('jsparty/jquery/ui/ui.core.js');
 		Requirements::javascript('jsparty/jquery/ui/ui.tabs.js');
 		Requirements::javascript('jsparty/jquery/plugins/form/jquery.form.js');
+		Requirements::javascript('jsparty/jquery/jquery_improvement.js');
 		Requirements::javascript('cms/javascript/ModelAdmin.js');
 	}
 	
@@ -390,9 +392,12 @@ class ModelAdmin_CollectionController extends Controller {
 	 */
 	public function SearchForm() {
 		$context = singleton($this->modelClass)->getDefaultSearchContext();
+		$fields = $context->getSearchFields();
+		$columnSelectionField = $this->ColumnSelectionField();
+		$fields->push($columnSelectionField);
 		
 		$form = new Form($this, "SearchForm",
-			$context->getSearchFields(),
+			$fields,
 			new FieldSet(
 				new FormAction('search', _t('MemberTableField.SEARCH'))
 			)
@@ -402,7 +407,34 @@ class ModelAdmin_CollectionController extends Controller {
 		$form->setHTMLID("Form_SearchForm_" . $this->modelClass);
 		return $form;
 	}
-
+	
+	/**
+	 * Give the flexibilility to show variouse combination of columns in the search result table
+	 */
+	public function ColumnSelectionField() {
+		$model = singleton($this->modelClass);
+		
+		$source = $model->summaryFields();
+		foreach ($source as $fieldName => $label){
+			$value[] = $fieldName;
+		}
+		$checkboxes = new CheckboxSetField("ResultAssembly", "Tick the box if you want it to be shown in the results", $source, $value);
+		
+		$field = new CompositeField(
+			new LiteralField("ToggleResultAssemblyLink", "<a class=\"form_frontend_function toggle_result_assembly\" href=\"#\">+ choose columns</a>"),
+			$checkboxesBlock = new CompositeField(
+				$checkboxes,
+				new LiteralField("ClearDiv", "<div class=\"clear\"></div>"),
+				new LiteralField("TickAllAssemblyLink","<a class=\"form_frontend_function tick_all_result_assembly\" href=\"#\">select all</a>"),
+				new LiteralField("UntickAllAssemblyLink","<a class=\"form_frontend_function untick_all_result_assembly\" href=\"#\">select none</a>")
+			)
+		);
+		
+		$field -> setExtraClass("ResultAssemblyBlock");
+		$checkboxesBlock -> setExtraClass("hidden");
+		return $field;
+	}
+	
 	/**
 	 * Action to render a data object collection, using the model context to provide filters
 	 * and paging.
@@ -436,6 +468,12 @@ class ModelAdmin_CollectionController extends Controller {
 	function ResultsForm() {
 		$model = singleton($this->modelClass);
 		$summaryFields = $model->summaryFields();
+		$resultAssembly = $_REQUEST['ResultAssembly'];
+		foreach($summaryFields as $fieldname=>$label){
+			if(!$resultAssembly[$fieldname]){
+				unset($summaryFields[$fieldname]);
+			}
+		}
 		$tf = new TableListField(
 			$this->modelClass,
 			$this->modelClass,

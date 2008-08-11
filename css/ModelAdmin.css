@@ -1,3 +1,8 @@
+.clear{
+	display: block;
+	clear: both;
+}
+
 body.ModelAdmin #left {
 	width: 250px;
 }
@@ -25,6 +30,30 @@ body.ModelAdmin #SearchForm_holder {
 	overflow: auto;
 	margin-bottom:1em;
 }
+
+body.ModelAdmin #SearchForm_holder div.ResultAssemblyBlock{
+	margin: 1.5em 0px;
+}
+
+body.ModelAdmin #SearchForm_holder form div.field.hidden{
+	display: none;
+}
+
+body.ModelAdmin #SearchForm_holder form div#ResultAssembly{
+	margin: 0;
+	display: block;
+	clear: both;
+}
+	body.ModelAdmin #SearchForm_holder form div#ResultAssembly label{
+		width: auto;
+		clear: both;
+		margin: 0px;
+	}
+
+	body.ModelAdmin #SearchForm_holder form div#ResultAssembly ul.optionset li{
+		float: left;
+		width: 45%;
+	}
 
 body.ModelAdmin #ResultTable_holder {
 	overflow:auto;

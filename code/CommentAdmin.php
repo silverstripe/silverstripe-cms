@@ -12,6 +12,7 @@ class CommentAdmin extends LeftAndMain {
 		'hammarked',
 		'showtable',
 		'spammarked',
+		'EditForm',
 	);
 	
 	public function init() {

@@ -5,6 +5,8 @@
  * 
  * @package cms
  * @subpackage core
+ *
+ * @deprecated Use {@link ModelAdmin} instead, it's much more advanced and does much more for you.
  */
 abstract class GenericDataAdmin extends LeftAndMain {
 	static $allowed_actions = array(

@@ -37,6 +37,8 @@ class LeftAndMain extends Controller {
 		'show',
 		'Member_ProfileForm',
 		'EditorToolbar',
+		'EditForm',
+		
 	);
 	
 	/**

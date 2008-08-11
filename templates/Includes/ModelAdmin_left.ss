@@ -1,4 +1,18 @@
 <div id="LeftPane">
+	<h2><% _t('SEARCHLISTINGS','Search Listings') %></h2>
+	<div id="SearchForm_holder" class="leftbottom">		
+		<ul class="tabstrip">
+		<% control SearchForms %>
+			<li class="first"><a href="#{$Form.Name}_$ClassName">$Title</a></li>
+		<% end_control %>
+		</ul>
+		<% control SearchForms %>
+			<div class="tab" id="{$Form.Name}_$ClassName">
+			$Form
+			<a class="form_frontend_function clear_search" href="#">Clear Search</a>
+			</div>
+		<% end_control %>
+	</div>
 	<h2><% _t('ADDLISTING','Add Listing') %></h2>
 	<div id="AddForm_holder" class="lefttop">
 		<ul class="tabstrip">
@@ -13,19 +27,6 @@
 			$ImportForm
 		</div>
 		<% end_if %>
-	</div>
-	<h2><% _t('SEARCHLISTINGS','Search Listings') %></h2>
-	<div id="SearchForm_holder" class="leftbottom">		
-		<ul class="tabstrip">
-		<% control SearchForms %>
-			<li class="first"><a href="#{$Form.Name}_$ClassName">$Title</a></li>
-		<% end_control %>
-		</ul>
-		<% control SearchForms %>
-			<div class="tab" id="{$Form.Name}_$ClassName">
-			$Form
-			</div>
-		<% end_control %>
 	</div>
 	<!--
 	<div id="ResultTable_holder" class="leftbottom">

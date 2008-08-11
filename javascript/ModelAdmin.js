@@ -22,8 +22,6 @@ jQuery(document).ready(function() {
 			jQuery('#right #ModelAdminPanel').html(result);
 			jQuery('#SearchForm_holder').tabs();
 			
-			// TODO/SAM: It seems a bit of a hack to have to list all the little updaters here. 
-			// Is livequery a solution?
 			Behaviour.apply(); // refreshes ComplexTableField
 			jQuery('#right ul.tabstrip').tabs();
 		});
@@ -82,6 +80,18 @@ jQuery(document).ready(function() {
 		return false;
 	});
 	
+	jQuery('#right #ModelAdminPanel tbody td a').livequery('click', function(){
+		var el = jQuery(this);
+		showRecord(el.attr('href'));
+		//el.parent().parent().find('td').removeClass('active');
+		//el.addClass('active').siblings().addClass('active');
+		return false;
+	}).hover(function(){
+		jQuery(this).addClass('over').siblings().addClass('over')
+	}, function(){
+		jQuery(this).removeClass('over').siblings().removeClass('over')
+	});
+	
 	/**
 	 * Attach tabs plugin to the set of search filter and edit forms
 	 */
@@ -102,18 +112,6 @@ jQuery(document).ready(function() {
 			jQuery('#right #ModelAdminPanel').html(result);
 			
 			Behaviour.apply();
-			
-			jQuery('#right #ModelAdminPanel tbody td a').click(function(){
-				var el = jQuery(this);
-				showRecord(el.attr('href'));
-				//el.parent().parent().find('td').removeClass('active');
-				//el.addClass('active').siblings().addClass('active');
-				return false;
-			}).hover(function(){
-						jQuery(this).addClass('over').siblings().addClass('over')
-					}, function(){
-						jQuery(this).removeClass('over').siblings().removeClass('over')
-					});
 		});
 		
 		return false;
@@ -125,6 +123,37 @@ jQuery(document).ready(function() {
 	jQuery('#Form_ImportForm_holder .spec .details').hide();
 	jQuery('#Form_ImportForm_holder .spec a.detailsLink').click(function() {
 		jQuery('#' + jQuery(this).attr('href').replace(/.*#/,'')).toggle();
+		return false;
+	});
+	
+	jQuery('a.form_frontend_function.clear_search').click(function(e) {
+		//jQuery('#SearchForm_holder .tab form').clearForm();
+		var searchform = jQuery(this).parent().get(0);
+		jQuery(searchform).clearForm();
+		return false;
+	});
+	
+	jQuery('a.form_frontend_function.toggle_result_assembly').click(function(){
+		var toggleElement = jQuery(this).next();
+		if(toggleElement.css('display') != 'none'){
+			jQuery(this).html('+ choose columns');
+			toggleElement.hide();
+		}else{
+			jQuery(this).html('- hide column choose');
+			toggleElement.show();
+		}
+		return false;
+	});
+	
+	jQuery('a.form_frontend_function.tick_all_result_assembly').click(function(){
+		var resultAssembly = jQuery('div#ResultAssembly ul li input');
+		resultAssembly.attr('checked', 'checked');
+		return false;
+	});
+	
+	jQuery('a.form_frontend_function.untick_all_result_assembly').click(function(){
+		var resultAssembly = jQuery('div#ResultAssembly ul li input');
+		resultAssembly.removeAttr('checked');
 		return false;
 	});
 	
