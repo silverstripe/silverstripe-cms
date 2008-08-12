@@ -673,6 +673,7 @@ PHP
 		require_once('core/control/Director.php');
 		require_once('core/ViewableData.php');
 		require_once('core/Session.php');
+		require_once('core/control/RequestHandlingData.php');
 		require_once('core/control/Controller.php');
 		require_once('filesystem/Filesystem.php');
 
