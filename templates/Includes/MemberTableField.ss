@@ -41,17 +41,17 @@
 						<td>$Value</td>
 						<% end_control %>
 						<% if Can(show) %>
-						<td width="18">
+						<td width="18" class="action">
 							<a class="popuplink showlink" href="$ShowLink" title="<% _t('SHOWMEMBER','Show this member') %>" target="_blank"><img src="cms/images/show.png" alt="show" /></a>
 						</td>
 						<% end_if %>
 						<% if Can(edit) %>
-						<td width="18">
+						<td width="18" class="action">
 							<a class="popuplink editlink" href="$EditLink" title="<% _t('EDITMEMBER','Edit this member') %>" target="_blank"><img src="cms/images/edit.gif" alt="edit" /></a>
 						</td>
 						<% end_if %>
 						<% if Can(delete) %>
-						<td width="18">
+						<td width="18" class="action">
 							<a class="deletelink" href="$DeleteLink" title="<% _t('DELETEMEMBER','Delete this member') %>"><img src="cms/images/delete.gif" alt="delete" /></a>
 						</td>
 						<% end_if %>

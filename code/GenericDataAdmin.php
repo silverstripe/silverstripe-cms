@@ -412,9 +412,11 @@ HTML;
 				$result = $tmpItem;
 			}
 
-			// casting
-			list ($field, $caster) = explode("->", $field);
-			if($caster) {
+			if(strpos('->', $field) !== false) {
+				list ($field, $caster) = explode("->", $field);
+			}
+			
+			if(!empty($caster)) {
 				$fieldNameParts = explode('.', $field);
 				$fieldName = $fieldNameParts[sizeof($fieldNameParts)-1];
 				// When the intending value is Created.Date, the obj need to be casted as Datetime explicitely.
