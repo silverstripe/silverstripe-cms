@@ -549,7 +549,7 @@ JS;
 
 			// If the 'Save & Publish' button was clicked, also publish the page
 			if (isset($urlParams['publish']) && $urlParams['publish'] == 1) {
-				$this->performPublish($record);
+				$record->doPublish();
 				
 				$record->setClassName($record->ClassName);
 				$newClass = $record->ClassName;

@@ -69,7 +69,7 @@ PageCommentInterface.prototype = {
 				});
 			}
 					
-						if(response.responseText != "spamprotectionfalied"){
+						if(response.responseText != "spamprotectionfailed"){
 									__newComment.className ="even";
 							// Load the response into the new <li>
 							__newComment.innerHTML = response.responseText;

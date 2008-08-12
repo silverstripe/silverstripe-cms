@@ -14,6 +14,7 @@ class PageComment extends DataObject {
 
 	static $has_one = array(
 		"Parent" => "SiteTree",
+		"Author" => "Member" // Only set when the user is logged in when posting 
 	);
 	
 	static $casting = array(

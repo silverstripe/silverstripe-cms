@@ -1,0 +1,24 @@
+Page:
+    page1:
+        Title: Page 1
+    page2:
+        Title: Page 2
+    page3:
+        Title: Page 2
+    page4:
+        Title: Page 2
+
+Group:
+    admin:
+        Title: Administrators
+        
+Member:
+    admin:
+        Email: admin@example.com
+        Password: ZXXlkwecxz2390232233
+        Groups: =>Group.admin
+
+Permission:
+    admin:
+        Code: ADMIN
+        GroupID: =>Group.admin

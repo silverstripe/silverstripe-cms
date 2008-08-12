@@ -1,7 +1,11 @@
 <div id="PageComments_holder" class="typography">
-	<h4><% _t('POSTCOM','Post your comment') %></h4>
-	
-	$PostCommentForm
+	<% if CanPostComment %>
+		<h4><% _t('POSTCOM','Post your comment') %></h4>
+		
+		$PostCommentForm
+	<% else %>
+		<p>You can't post comments until you have logged in<% if PostingRequiresPermission %>, and that you have an appropriate permission level<% end_if %>. Please <a href="Security/login?BackURL={$Page.URLSegment}/" title="Login to post a comment">login by clicking here</a>.</p>
+	<% end_if %>
 	
 	<h4><% _t('COMMENTS','Comments') %></h4>
 	

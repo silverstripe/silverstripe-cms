@@ -548,20 +548,7 @@ JS;
 	 * Actually perform the publication step
 	 */
 	public function performPublish($record) {
-		$record->AssignedToID = 0;
-		$record->RequestedByID = 0;
-		$record->Status = "Published";
-		//$record->PublishedByID = Member::currentUser()->ID;
-		$record->write();
-		$record->publish("Stage", "Live");
-		
-		GoogleSitemap::ping();
-
-		// Fix the sort order for this page's siblings
-		DB::query("UPDATE SiteTree_Live
-			INNER JOIN SiteTree ON SiteTree_Live.ID = SiteTree.ID
-			SET SiteTree_Live.Sort = SiteTree.Sort
-			WHERE SiteTree_Live.ParentID = " . sprintf('%d', $record->ParentID));
+		$record->doPublish();
 	}
 
 	public function revert($urlParams, $form) {
@@ -989,7 +976,7 @@ HTML;
 			return;
 		}
 
-		$ids = split(' *, *', $_REQUEST['csvIDs']);
+		$ids = split(' *, *', $this->requestParams['csvIDs']);
 
 		$notifications = array();
 
@@ -1004,7 +991,7 @@ HTML;
 
 				if($record) {
 					// Publish this page
-					$this->performPublish($record);
+					$record->doPublish();
 
 					// Now make sure the 'changed' icon is removed
 					$publishedRecord = DataObject::get_by_id($this->stat('tree_class'), $id);
@@ -1202,18 +1189,20 @@ HTML;
 	function publishall() {
 		ini_set("memory_limit","100M");
 		ini_set('max_execution_time', 300);
+		
+		$response = "";
 
-		if(isset($_POST['confirm'])) {
+		if(isset($this->requestParams['confirm'])) {
 			$start = 0;
 			$pages = DataObject::get("SiteTree", "", "", "", "$start,30");
 			$count = 0;
 			while(true) {
 				foreach($pages as $page) {
-					$this->performPublish($page);
+					$page->doPublish();
 					$page->destroy();
 					unset($page);
 					$count++;
-					echo "<li>$count</li>";
+					$response .= "<li>$count</li>";
 				}
 				if($pages->Count() > 29) {
 					$start += 30;
@@ -1223,10 +1212,10 @@ HTML;
 				}
 			}
 
-			echo sprintf(_t('CMSMain.PUBPAGES',"Done: Published %d pages"), $count);
+			$response .= sprintf(_t('CMSMain.PUBPAGES',"Done: Published %d pages"), $count);
 
 		} else {
-			echo '<h1>' . _t('CMSMain.PUBALLFUN','"Publish All" functionality') . '</h1>
+			$response .= '<h1>' . _t('CMSMain.PUBALLFUN','"Publish All" functionality') . '</h1>
 				<p>' . _t('CMSMain.PUBALLFUN2', 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It\'s
 				intended to be used after there have been massive edits of the content, such as when the site was
 				first built.') . '</p>
@@ -1235,6 +1224,8 @@ HTML;
 					. _t('CMSMain.PUBALLCONFIRM',"Please publish every page in the site, copying content stage to live",PR_LOW,'Confirmation button') .'" />
 				</form>';
 		}
+		
+		return $response;
 	}
 
 	function restorepage() {

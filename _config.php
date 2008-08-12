@@ -19,6 +19,7 @@ Director::addRules(50, array(
 	'admin//$Action/$ID/$OtherID' => 'CMSMain',
 	'unsubscribe//$Email/$MailingList' => 'Unsubscribe_Controller',
 	'PageComment//$Action/$ID' => 'PageComment_Controller',
+	'dev/buildcache' => 'RebuildStaticCacheTask',
 ));
 
 // Built-in modules
