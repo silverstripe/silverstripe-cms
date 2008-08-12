@@ -8,7 +8,7 @@ LeftPane.prototype = {
 	effectDuration: .7,
 	
 	initialize: function() {
-		Behaviour.register({
+		Behaviour.register('LeftPane',{
 			'#Form_CreationForm_action_createRecord': {
 				onclick: this.addNewRecord.bind(this)
 			},
@@ -49,7 +49,7 @@ LeftPane.prototype = {
 		var toggleLinks = document.getElementsBySelector('div#LeftPane .ToggleAdvancedSearchFields');
 		if(toggleLinks && toggleLinks[0]) toggleLinks[0].style.display = "block";
 		
-		Behaviour.register({
+		Behaviour.register('LeftPane_initAdvancedSearch',{
 			"div#LeftPane .ToggleAdvancedSearchFields a":{
 				onclick: function(e){
 					var el = Event.element(e);
@@ -153,7 +153,7 @@ ResultTable = Class.create();
 ResultTable.applyTo('#ResultTable_holder');
 ResultTable.prototype = {
 	initialize: function() {
-		Behaviour.register({
+		Behaviour.register('ResultTable',{
 			"#LeftPane a.show":{
 				onclick: function(e){
 					var openTab = $('Form_EditForm').getCurrentTab();
