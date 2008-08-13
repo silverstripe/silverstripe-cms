@@ -101,6 +101,9 @@ class LeftAndMain extends Controller {
 			return;
 		}
 		
+		// Audit logging hook
+		if(empty($_REQUEST['executeForm']) && !Director::is_ajax()) $this->extend('accessedCMS');
+		
 		Requirements::css('cms/css/typography.css');
 		Requirements::css('cms/css/layout.css');
 		Requirements::css('cms/css/cms_left.css');
