@@ -11,10 +11,10 @@ class CMSMainTest extends SapphireTest {
 			'loggedInAs' => $this->idFromFixture('Member', 'admin')
 		));
 		
-		$response = Director::test("admin/publishall", array('confirm' => 1), $session);
+		$response = Director::test("admin/cms/publishall", array('confirm' => 1), $session);
 		$this->assertContains('Done: Published 4 pages', $response->getBody());
 
-		$response = Director::test("admin/publishitems", array('csvIDs' => '1,2', 'ajax' => 1), $session);
+		$response = Director::test("admin/cms/publishitems", array('csvIDs' => '1,2', 'ajax' => 1), $session);
 		$this->assertContains('setNodeTitle(1, \'Page 1\');', $response->getBody());
 		$this->assertContains('setNodeTitle(2, \'Page 2\');', $response->getBody());
 		
