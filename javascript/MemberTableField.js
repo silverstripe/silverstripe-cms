@@ -45,7 +45,7 @@ MemberTableField.applyTo('#Form_EditForm div.MemberTableField');
 MemberTableField.prototype = {
 	
 	initialize: function() {
-		Behaviour.register('MemberTableField',{
+		Behaviour.register({
 			'#Form_EditForm div.MemberFilter input' : {
 				onkeypress : this.prepareSearch.bind(this)
 			},
