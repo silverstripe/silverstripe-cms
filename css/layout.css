@@ -458,7 +458,7 @@ iframe {
 	padding:3px;
 	width: 179px;
 }
-#contentPanel #Dimensions span {
+#contentPanel #Dimensions div.middleColumn {
 	background: none;
 }
 /* Image height and width inputs. We need to position them in the right places */
@@ -484,16 +484,23 @@ iframe {
 	font-size: 11px;
 	width:120px;
 }
-#Form_EditorToolbarImageForm fieldset span,
-#Form_EditorToolbarFlashForm fieldset span,
-#Form_EditorToolbarLinkForm fieldset span {
+#Form_EditorToolbarImageForm fieldset div.middleColumn,
+#Form_EditorToolbarFlashForm fieldset div.middleColumn,
+#Form_EditorToolbarLinkForm fieldset div.middleColumn {
 	float: left;
 }
-#Form_EditorToolbarLinkForm fieldset li span,
-#Form_EditorToolbarFlashForm fieldset li span,
-#Form_EditorToolbarImageForm fieldset li span {
+#Form_EditorToolbarLinkForm fieldset li div.middleColumn,
+#Form_EditorToolbarFlashForm fieldset li div.middleColumn,
+#Form_EditorToolbarImageForm fieldset li div.middleColumn {
 	float: none;
 }
+
+#Form_EditorToolbarImageForm fieldset div.fieldgroupField,
+#Form_EditorToolbarFlashForm fieldset div.fieldgroupField,
+#Form_EditorToolbarLinkForm fieldset div.fieldgroupField {
+	display: inline;
+}
+
 
 #Form_EditorToolbarImageForm_Width,
 #Form_EditorToolbarImageForm_Height,
