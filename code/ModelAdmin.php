@@ -420,7 +420,7 @@ class ModelAdmin_CollectionController extends Controller {
 		$model = singleton($this->modelClass);
 		
 		$source = $model->summaryFields();
-		foreach ($source as $fieldName => $label){
+		if($source) foreach ($source as $fieldName => $label){
 			$value[] = $fieldName;
 		}
 		$checkboxes = new CheckboxSetField("ResultAssembly", false, $source, $value);
@@ -473,7 +473,7 @@ class ModelAdmin_CollectionController extends Controller {
 	 *
 	 * @return Form
 	 */
-	function ResultsForm($searchCritera) {
+	function ResultsForm($searchCriteria) {
 		$model = singleton($this->modelClass);
 		$summaryFields = $model->summaryFields();
 		$resultAssembly = $_REQUEST['ResultAssembly'];
