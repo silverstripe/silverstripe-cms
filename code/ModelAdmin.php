@@ -490,7 +490,8 @@ class ModelAdmin_CollectionController extends Controller {
 		$tf->setCustomQuery($this->getSearchQuery($searchCriteria));
 		$tf->setPageSize($this->parentController->stat('page_length'));
 		$tf->setShowPagination(true);
-		$tf->setPermissions(array_merge(array('view','export'), $model->stat('results_permissions')));
+		// @todo Remove records that can't be viewed by the current user
+		$tf->setPermissions(array_merge(array('view','export'), TableListField::permissions_for_object($this->modelClass)));
 		$url = '<a href=\"' . $this->Link() . '/$ID/edit\">$value</a>';
 		$tf->setFieldFormatting(array_combine(array_keys($summaryFields), array_fill(0,count($summaryFields), $url)));
 
