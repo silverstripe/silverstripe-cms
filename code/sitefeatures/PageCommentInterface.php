@@ -6,7 +6,14 @@
  * @package cms
  * @subpackage comments
  */
-class PageCommentInterface extends ViewableData {
+class PageCommentInterface extends RequestHandlingData {
+	static $url_handlers = array(
+		'$Item!' => '$Item',
+	);
+	static $allowed_actions = array(
+		'PostCommentForm',
+	);
+	
 	protected $controller, $methodName, $page;
 	
 	/**
@@ -33,6 +40,10 @@ class PageCommentInterface extends ViewableData {
 		$this->controller = $controller;
 		$this->methodName = $methodName;
 		$this->page = $page;
+	}
+	
+	function Link() {
+		return Controller::join_links($this->controller->Link(), $this->methodName);
 	}
 	
 	/**
@@ -114,7 +125,7 @@ class PageCommentInterface extends ViewableData {
 		
 		$fields->push(new TextareaField("Comment", _t('PageCommentInterface.YOURCOMMENT', "Comments")));
 		
-		$form = new PageCommentInterface_Form($this->controller, $this->methodName . ".PostCommentForm",$fields, new FieldSet(
+		$form = new PageCommentInterface_Form($this, "PostCommentForm", $fields, new FieldSet(
 			new FormAction("postcomment", _t('PageCommentInterface.POST', 'Post'))
 		));
 		
