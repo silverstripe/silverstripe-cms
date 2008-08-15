@@ -19,6 +19,8 @@ class FilesystemPublisher extends StaticPublisher {
 	}
 	
 	function publishPages($urls) {
+		set_time_limit(0);
+		
 		//$base = Director::absoluteURL($this->destFolder);
 		//$base = preg_replace('/\/[^\/]+\/\.\./','',$base) . '/';
 		//Director::setBaseURL($base);
