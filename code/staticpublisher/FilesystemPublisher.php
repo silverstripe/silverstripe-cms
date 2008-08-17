@@ -20,6 +20,7 @@ class FilesystemPublisher extends StaticPublisher {
 	
 	function publishPages($urls) {
 		set_time_limit(0);
+		ini_set("memory_limit" , -1);
 		
 		//$base = Director::absoluteURL($this->destFolder);
 		//$base = preg_replace('/\/[^\/]+\/\.\./','',$base) . '/';
