@@ -17,8 +17,8 @@ class AssetTableField extends ComplexTableField {
         //"export",
     );
 	function __construct($controller, $name, $sourceClass, $fieldList, $detailFormFields, $sourceFilter = "", $sourceSort = "", $sourceJoin = "") {
-		
 		parent::__construct($controller, $name, $sourceClass, $fieldList, $detailFormFields, $sourceFilter, $sourceSort, $sourceJoin);
+		$this->
 
 		$this->sourceSort = "Title";		
 		$this->Markable = true;
@@ -39,21 +39,10 @@ class AssetTableField extends ComplexTableField {
 		if($this->folder) return $this->folder->ID;
 	}
 	
-	function DetailForm() {
-		$ID = (isset($_REQUEST['ctf']['ID'])) ? Convert::raw2xml($_REQUEST['ctf']['ID']) : null;
-		$childID = (isset($_REQUEST['ctf']['childID'])) ? Convert::raw2xml($_REQUEST['ctf']['childID']) : null;
-		$childClass = (isset($_REQUEST['fieldName'])) ? Convert::raw2xml($_REQUEST['fieldName']) : null;
-		$methodName = (isset($_REQUEST['methodName'])) ? $_REQUEST['methodName'] : null;
-		
-		if(!$childID) {
-			user_error("AssetTableField::DetailForm Please specify a valid ID");
-			return null;
-		}
-		
-		if($childID) {
-			$childData = DataObject::get_by_id("File", $childID);
-		}
-		
+	/**
+	 * Get the pop-up fields for the given record.
+	 */
+	function getCustomFieldsFor($childData) {
 		if(!$childData) {
 			user_error("AssetTableField::DetailForm No record found");
 			return null;
@@ -151,24 +140,8 @@ class AssetTableField extends ComplexTableField {
 		
 		// the ID field confuses the Controller-logic in finding the right view for ReferencedField
 		$detailFormFields->removeByName('ID');
-		// add a namespaced ID instead thats "converted" by saveComplexTableField()
-		$detailFormFields->push(new HiddenField("ctf[childID]","",$childID));
-		$detailFormFields->push(new HiddenField("ctf[ClassName]","",$this->sourceClass));
-			
-		$readonly = ($this->methodName == "show");
-		$form = new ComplexTableField_Popup($this, "DetailForm", $detailFormFields, $this->sourceClass, $readonly);
-			
-		if (is_numeric($childID)) {
-			if ($methodName == "show" || $methodName == "edit") {
-				$form->loadDataFrom($childData);
-			}
-		}
 		
-		if( !$folder->userCanEdit() || $methodName == "show") {
-			$form->makeReadonly();
-		}
-		
-		return $form;
+		return $detailFormFields;
 	}
 	
 }
