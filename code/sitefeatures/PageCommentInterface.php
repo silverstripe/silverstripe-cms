@@ -113,7 +113,11 @@ class PageCommentInterface extends RequestHandlingData {
 		$member = Member::currentUser();
 		
 		if((self::$comments_require_login || self::$comments_require_permission) && $member && $member->FirstName) {
-			$fields->push(new ReadonlyField("Name", _t('PageCommentInterface.YOURNAME', 'Your name'), $member->getName()));
+			// note this was a ReadonlyField - which displayed the name in a span as well as the hidden field but
+			// it was not saving correctly. Have changed it to a hidden field. It passes the data correctly but I 
+			// believe the id of the form field is wrong.
+			$fields->push(new ReadonlyField("NameView", _t('PageCommentInterface.YOURNAME', 'Your name'), $member->getName()));
+			$fields->push(new HiddenField("Name", "", $member->getName()));
 		} else {
 			$fields->push(new TextField("Name", _t('PageCommentInterface.YOURNAME', 'Your name')));
 		}
@@ -206,7 +210,6 @@ class PageCommentInterface_Form extends Form {
 						return "spamprotectionfailed"; //used by javascript for checking if the spam question was wrong
 			}
 		}
-		
 		Cookie::set("PageCommentInterface_Name", $data['Name']);
 		
 		// If commenting can only be done by logged in users, make sure the user is logged in

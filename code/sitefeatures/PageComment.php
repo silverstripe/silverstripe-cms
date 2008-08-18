@@ -6,7 +6,7 @@
  */
 class PageComment extends DataObject {
 	static $db = array(
-		"Name" => "Varchar",
+		"Name" => "Varchar(200)",
 		"Comment" => "Text",
 		"IsSpam" => "Boolean",
 		"NeedsModeration" => "Boolean"
