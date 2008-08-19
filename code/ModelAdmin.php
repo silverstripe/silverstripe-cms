@@ -612,7 +612,6 @@ class ModelAdmin_RecordController extends Controller {
 		$validator = ($this->currentRecord->hasMethod('getCMSValidator')) ? $this->currentRecord->getCMSValidator() : null;
 		
 		$actions = new FieldSet(
-			//new FormAction("goBack", "Back"),
 			new FormAction("doSave", "Save")
 		);
 		
@@ -620,6 +619,8 @@ class ModelAdmin_RecordController extends Controller {
 			$actions->insertFirst($deleteAction = new FormAction('doDelete', 'Delete'));
 			$deleteAction->addExtraClass('delete');
 		}
+
+		$actions->insertFirst(new FormAction("goBack", "Back"));
 		
 		$form = new Form($this, "EditForm", $fields, $actions, $validator);
 		$form->loadDataFrom($this->currentRecord);

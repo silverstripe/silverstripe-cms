@@ -142,7 +142,7 @@ jQuery(document).ready(function() {
 		data = formData(form);
 		jQuery.get(form.attr('action'), data, function(result){
 			jQuery('#right #ModelAdminPanel').html(result);
-			
+			jQuery('#form_actions_right').remove();
 			Behaviour.apply();
 		});
 		
