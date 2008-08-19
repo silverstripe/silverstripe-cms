@@ -468,20 +468,29 @@ class ModelAdmin_CollectionController extends Controller {
 		return $context->getQuery($searchCriteria);
 	}
 	
+	function getResultColumns($searchCriteria) {
+		$model = singleton($this->modelClass);
+		$summaryFields = $model->summaryFields();
+
+		$resultAssembly = $searchCriteria['ResultAssembly'];
+		foreach($summaryFields as $fieldname=>$label){
+			if(!$resultAssembly[$fieldname]){
+				unset($summaryFields[$fieldname]);
+			}
+		}
+
+		return $summaryFields;
+	}
+	
 	/**
 	 * Shows results from the "search" action in a TableListField.
 	 *
 	 * @return Form
 	 */
 	function ResultsForm($searchCriteria) {
-		$model = singleton($this->modelClass);
-		$summaryFields = $model->summaryFields();
-		$resultAssembly = $_REQUEST['ResultAssembly'];
-		foreach($summaryFields as $fieldname=>$label){
-			if(!$resultAssembly[$fieldname]){
-				unset($summaryFields[$fieldname]);
-			}
-		}
+		if($searchCriteria instanceof HTTPRequest) $searchCriteria = $searchCriteria->getVars();
+		$summaryFields = $this->getResultColumns($searchCriteria);
+
 		$tf = new TableListField(
 			$this->modelClass,
 			$this->modelClass,
@@ -514,6 +523,8 @@ class ModelAdmin_CollectionController extends Controller {
 		unset($filteredParams['url']);
 		unset($filteredParams['action_search']);
 		$tf->setExtraLinkParams($filteredParams);
+		
+		$form->setFormAction($this->Link() . '/ResultsForm?' . http_build_query($searchCriteria));
 		
 		return $form;
 	}
