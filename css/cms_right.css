@@ -156,10 +156,18 @@
 .right form h1 {
 	font-size: 20px;
 }
-
 .right form h2 {
 	font-size: 18px;
 	clear: both;
+}
+.right form h3 {
+	font-size: 16px;	
+}
+.right form h4 {
+	font-size: 14px;	
+}
+.right form h5 {
+	font-size: 12px;	
 }
 
 .right form .fieldgroup input, 
