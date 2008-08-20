@@ -261,8 +261,8 @@ abstract class ModelAdmin extends LeftAndMain {
 		$importerClass = $importers[$data['ClassName']];
 		
 		$loader = new $importerClass($data['ClassName']);
-		$results = $loader->load($_FILES['_CsvFile']['tmp_name']);
-		$resultsCount = ($results) ? $results->Count() : 0;
+		$resultsCount = $loader->load($_FILES['_CsvFile']['tmp_name']);
+		//$resultsCount = ($results) ? $results->Count() : 0;
 		
 		Session::setFormMessage('Form_ImportForm', "Loaded {$resultsCount} items", 'good');
 		Director::redirect($_SERVER['HTTP_REFERER'] . '#Form_ImportForm_holder');
