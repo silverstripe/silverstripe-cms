@@ -18,7 +18,6 @@ class AssetTableField extends ComplexTableField {
     );
 	function __construct($controller, $name, $sourceClass, $fieldList, $detailFormFields, $sourceFilter = "", $sourceSort = "", $sourceJoin = "") {
 		parent::__construct($controller, $name, $sourceClass, $fieldList, $detailFormFields, $sourceFilter, $sourceSort, $sourceJoin);
-		$this->
 
 		$this->sourceSort = "Title";		
 		$this->Markable = true;
