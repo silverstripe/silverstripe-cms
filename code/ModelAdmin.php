@@ -473,13 +473,13 @@ class ModelAdmin_CollectionController extends Controller {
 		$summaryFields = $model->summaryFields();
 
 		$resultAssembly = $searchCriteria['ResultAssembly'];
-		foreach($summaryFields as $fieldname=>$label){
-			if(!$resultAssembly[$fieldname]){
-				unset($summaryFields[$fieldname]);
-			}
+		if(!is_array($resultAssembly)) {
+			$explodedAssembly = split(' *, *', $resultAssembly);
+			$resultAssembly = array();
+			foreach($explodedAssembly as $item) $resultAssembly[$item] = true;
 		}
-
-		return $summaryFields;
+		
+		return array_intersect_key($summaryFields, $resultAssembly);
 	}
 	
 	/**
@@ -516,16 +516,12 @@ class ModelAdmin_CollectionController extends Controller {
 			new FieldSet()
 		);
 		
-		// HACK to preserve search parameters on TableField
-		// ajax actions like pagination
-		$filteredParams = $this->request->getVars();
-		unset($filteredParams['ctf']);
-		unset($filteredParams['url']);
-		unset($filteredParams['action_search']);
-		$tf->setExtraLinkParams($filteredParams);
-		
-		$form->setFormAction($this->Link() . '/ResultsForm?' . http_build_query($searchCriteria));
-		
+		// Include the search criteria on the results form URL, but not dodgy variables like those below
+		$filteredCriteria = $searchCriteria;
+		unset($filteredCriteria['ctf']);
+		unset($filteredCriteria['url']);
+		unset($filteredCriteria['action_search']);
+		$form->setFormAction($this->Link() . '/ResultsForm?' . http_build_query($filteredCriteria));
 		return $form;
 	}
 	
