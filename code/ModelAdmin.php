@@ -547,7 +547,11 @@ class ModelAdmin_CollectionController extends Controller {
 	 */
 	public function AddForm() {
 		$newRecord = new $this->modelClass();
-		$fields = $newRecord->getCMSFields();
+		if($newRecord->hasMethod('getCMSAddFormFields')) {
+			$fields = $newRecord->getCMSAddFormFields();
+		} else {
+			$fields = $newRecord->getCMSFields();
+		}
 		
 		$validator = ($newRecord->hasMethod('getCMSValidator')) ? $newRecord->getCMSValidator() : null;
 		
@@ -561,6 +565,8 @@ class ModelAdmin_CollectionController extends Controller {
 	function doCreate($data, $form, $request) {
 		$className = $this->getModelClass();
 		$model = new $className();
+		// We write before saveInto, since this will let us save has-many and many-many relationships :-)
+		$model->write();
 		$form->saveInto($model);
 		$model->write();
 		
@@ -604,9 +610,13 @@ class ModelAdmin_RecordController extends Controller {
 			if(Director::is_ajax()) {
 				return $this->EditForm()->forAjaxTemplate();
 			} else {
-				return $this->parentController->parentController->customise(array(
-					'EditForm' => $this->EditForm()
-				))->renderWith('LeftAndMain');
+				// This is really quite ugly; to fix will require a change in the way that customise() works. :-(
+				return$this->parentController->parentController->customise(array(
+					'Right' => $this->parentController->parentController->customise(array(
+						'EditForm' => $this->EditForm()
+					))->renderWith('ModelAdmin_right')
+				))->renderWith(array('ModelAdmin','LeftAndMain'));
+				return ;
 			}
 		} else {
 			return "I can't find that item";
