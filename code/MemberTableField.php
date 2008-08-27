@@ -135,8 +135,8 @@ class MemberTableField extends ComplexTableField {
 		$SQL_search = isset($_REQUEST['MemberSearch']) ? Convert::raw2sql($_REQUEST['MemberSearch']) : null;
 		if(!empty($_REQUEST['MemberSearch'])) {
 			$searchFilters = array();
-			foreach($SNG_member->stat('searchable_fields') as $fieldName => $fieldSpec) {
-				$searchFilters[] = "`$fieldName` LIKE '%{$SQL_search}%'";
+			foreach($SNG_member->searchableFields() as $fieldName => $fieldSpec) {
+				if(strpos($fieldName,'.') === false) $searchFilters[] = "`$fieldName` LIKE '%{$SQL_search}%'";
 			}
 			$this->sourceFilter[] = '(' . implode(' OR ', $searchFilters) . ')';
 		}
@@ -392,6 +392,7 @@ class MemberTableField extends ComplexTableField {
 				
 		// We use the group to get the members, as they already have the bulk of the look up functions
 		$start = isset($_REQUEST['ctf'][$this->Name()]['start']) ? $_REQUEST['ctf'][$this->Name()]['start'] : 0; 
+
 		$this->sourceItems = $this->group->Members( 
  	        $this->pageSize, // limit 
  	        $start, // offset 

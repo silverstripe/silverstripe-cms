@@ -214,7 +214,7 @@ MemberFilterButton.prototype = {
 	initialize: function() {
 		this.inputFields = new Array();
 		
-		var childNodes = this.parentNode.getElementsByTagName('input');
+		var childNodes = this.parentNode.parentNode.getElementsByTagName('input');
 		
 		for( var index = 0; index < childNodes.length; index++ ) {
 			if( childNodes[index].tagName ) {
@@ -246,9 +246,7 @@ MemberFilterButton.prototype = {
 		
 		var updateURL = "";
 		updateURL += Event.findElement(e,"form").action;
-		// we can't set "fieldName" as a HiddenField because there might be multiple ComplexTableFields in a single EditForm-container
-		updateURL += "&fieldName="+$('MemberFieldName').value;
-		updateURL += "&action_callfieldmethod&methodName=ajax_refresh&";
+		updateURL += '/field/' + $('MemberFieldName').value + '/ajax_refresh?ajax=1&';
 		for( var index = 0; index < this.inputFields.length; index++ ) {
 			if( this.inputFields[index].tagName ) {
 				updateURL += this.inputFields[index].name + '=' + encodeURIComponent( this.inputFields[index].value ) + '&';
