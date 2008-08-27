@@ -12,7 +12,7 @@ class CMSMainTest extends SapphireTest {
 		));
 		
 		$response = Director::test("admin/cms/publishall", array('confirm' => 1), $session);
-		$this->assertContains('Done: Published 4 pages', $response->getBody());
+		$this->assertContains('Done: Published 5 pages', $response->getBody());
 
 		$response = Director::test("admin/cms/publishitems", array('csvIDs' => '1,2', 'ajax' => 1), $session);
 		$this->assertContains('setNodeTitle(1, \'Page 1\');', $response->getBody());

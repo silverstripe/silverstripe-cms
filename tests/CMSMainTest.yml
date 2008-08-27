@@ -1,7 +1,4 @@
 Page:
-   home:
-      Title: Home
-      URLSegment: home
    page1:
       Title: Page 1
    page2:
@@ -10,6 +7,9 @@ Page:
       Title: Page 2
    page4:
       Title: Page 2
+   home:
+      Title: Home
+      URLSegment: home
 
 Group:
     admin:
