@@ -4,7 +4,6 @@ import windmill
 def setup_module(module):
     client = WindmillTestClient(__name__)
 
-    client.open(url=windmill.settings['TEST_URL'], id=u'fixture-file')
     client.type(text=u'cms/tests/CMSMainTest.yml', id=u'fixture-file')
     client.click(id=u'start-session')
 
