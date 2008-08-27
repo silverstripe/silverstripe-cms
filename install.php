@@ -10,10 +10,12 @@ ini_set('max_execution_time', 300);
 session_start();
 
 // Include environment files
+$usingEnv = false;
 $envFiles = array('_ss_environment.php', '../_ss_environment.php', '../../_ss_environment.php');
 foreach($envFiles as $envFile) {
         if(@file_exists($envFile)) {
                 include($envFile);
+                $usingEnv = true;				
                 break;
         }
 }
@@ -624,13 +626,39 @@ SSViewer::set_theme('blackcandy');
 PHP;
 		}
 		
-		echo "<li>Creating '$template/_config.php'...</li>";
-		flush();
 		
-		$devServers = $this->var_export_array_nokeys(explode("\n", $_POST['devsites']));
+		global $usingEnv;
+		if($usingEnv) {
+			echo "<li>Creating '$template/_config.php' for use with _ss_environment.php...</li>\n";
+			flush();
+			$this->createFile("$template/_config.php", <<<PHP
+<?php
+
+global \$project;
+\$project = '$template';
+
+global \$database;
+\$database = "{$config['mysql']['database']}";
+
+require_once("conf/ConfigureFromEnv.php");
+
+$theme
+
+?>
+PHP
+			);
+
+			
+		} else {
+			echo "<li>Creating '$template/_config.php'...</li>\n";
+			flush();
 		
-		$escapedPassword = addslashes($config['mysql']['password']);
-		$this->createFile("$template/_config.php", <<<PHP
+		
+		
+			$devServers = $this->var_export_array_nokeys(explode("\n", $_POST['devsites']));
+		
+			$escapedPassword = addslashes($config['mysql']['password']);
+			$this->createFile("$template/_config.php", <<<PHP
 <?php
 
 global \$project;
@@ -655,7 +683,8 @@ $theme
 
 ?>
 PHP
-		);
+			);
+		}
 
 		echo "<li>Creating '.htaccess' file...</li>";
 		flush();
