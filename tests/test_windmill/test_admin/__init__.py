@@ -14,7 +14,7 @@ def setup_module(module):
     client.type(text=u'admin@example.com', id=u'MemberLoginForm_LoginForm_Email')
     client.type(text=u'ZXXlkwecxz2390232233', id=u'MemberLoginForm_LoginForm_Password')
     client.click(id=u'MemberLoginForm_LoginForm_action_dologin')
-    client.waits.forPageLoad(timeout=u'120000')
+    client.waits.forPageLoad(timeout=u'300000')
 
 def teardown_module(module):
     client = WindmillTestClient(__name__)
