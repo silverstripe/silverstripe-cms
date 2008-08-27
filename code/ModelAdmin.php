@@ -168,7 +168,14 @@ abstract class ModelAdmin extends LeftAndMain {
 		$models = $this->getManagedModels();
 		$modelMap = array();
 		foreach($models as $modelName) {
-			if(singleton($modelName)->canCreate(Member::currentUser())) $modelMap[$modelName] = singleton($modelName)->singular_name();
+			if ($this->hasMethod('alternatePermissionCheck')) {
+				if ($this->alternatePermissionCheck()) {
+					$modelMap[$modelName] = singleton($modelName)->singular_name();
+				}
+			}
+			else {
+				if(singleton($modelName)->canCreate(Member::currentUser())) $modelMap[$modelName] = singleton($modelName)->singular_name();
+			}
 		}
 		
 		$form = new Form(
