@@ -172,15 +172,15 @@ class CommentTableField_Item extends ComplexTableField_Item {
 	}
 	
 	function SpamLink() {
-		return $this->BaseLink() . "&methodName=spam";
+		return Controller::join_links($this->Link(), "?methodName=spam");
 	}
 	
 	function HamLink() {
-		return $this->BaseLink() . "&methodName=ham";
+		return Controller::join_links($this->Link(), "?methodName=ham");
 	}
 	
 	function ApproveLink() {
-		return $this->BaseLink() . "&methodName=approve";
+		return Controller::join_links($this->Link(), "?methodName=approve");
 	}
 }
 

@@ -243,24 +243,32 @@ MemberFilterButton.prototype = {
 		if(!$('ctf-ID') || !$('MemberFieldName')) {
 			return false;
 		}
-		
-		var updateURL = "";
-		updateURL += Event.findElement(e,"form").action;
-		updateURL += '/field/' + $('MemberFieldName').value + '/ajax_refresh?ajax=1&';
-		for( var index = 0; index < this.inputFields.length; index++ ) {
-			if( this.inputFields[index].tagName ) {
-				updateURL += this.inputFields[index].name + '=' + encodeURIComponent( this.inputFields[index].value ) + '&';
-			}
-		}
-		updateURL += 'ajax=1' + ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : '');
 
-		new Ajax.Request( updateURL, {
-			onSuccess: Ajax.Evaluator,
-			onFailure: function( response ) {
-				errorMessage('Could not filter results: ' + response.responseText );
-			}.bind(this)
-		});
-		
+	    try {
+    	    var form = Event.findElement(e,"form");
+    	    var fieldName = $('MemberFieldName').value;
+    	    var fieldID = form.id + '_' + fieldName;
+	    
+    		var updateURL = form.action + '/field/' + fieldName + '?ajax=1';
+    		for( var index = 0; index < this.inputFields.length; index++ ) {
+    			if( this.inputFields[index].tagName ) {
+    				updateURL += '&' + this.inputFields[index].name + '=' + encodeURIComponent( this.inputFields[index].value );
+    			}
+    		}
+    		updateURL += ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : '');
+
+    		new Ajax.Updater( fieldID, updateURL, {
+    			onSuccess: function() {
+    			    Behaviour.apply(fieldID, true);
+    			},
+    			onFailure: function( response ) {
+    				errorMessage('Could not filter results: ' + response.responseText );
+    			}.bind(this)
+    		});
+		} catch(er) {
+			errorMessage('Error searching');
+		}
+
 		return false;	
 	}
 }

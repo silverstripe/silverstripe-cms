@@ -14,12 +14,9 @@ CommentTableField.prototype = {
 		rules['#'+this.id+' table.data a.hamlink'] = {
 			onclick: this.removeRowAfterAjax.bind(this)
 		};
-		
 		rules['#Form_EditForm div.CommentFilter input'] = {
 				onkeypress : this.prepareSearch.bind(this)
 		};
-		
-
 		
 		rules['#Form_EditForm'] = {
 			changeDetection_fieldsToIgnore : {
@@ -76,7 +73,7 @@ CommentTableField.prototype = {
 CommentTableField.applyTo('div.CommentTableField');
 
 CommentFilterButton = Class.create();
-CommentFilterButton.applyTo('#Form_EditForm #CommentFilterButton');
+CommentFilterButton.applyTo('#CommentFilterButton');
 CommentFilterButton.prototype = {
 	initialize: function() {
 		this.inputFields = new Array();
@@ -107,28 +104,30 @@ CommentFilterButton.prototype = {
 	},
 	
 	onclick: function(e) {
-		//if(!$('ctf-ID') || !$('CommentFieldName')) {
-		//	return false;
-		//}
-		
-		var updateURL = "";
-		updateURL += Event.findElement(e,"form").action;
-		// we can't set "fieldName" as a HiddenField because there might be multiple ComplexTableFields in a single EditForm-container
-		updateURL += "&fieldName="+$('CommentFieldName').value;
-		updateURL += "&action_callfieldmethod&&methodName=ajax_refresh&";
-		for( var index = 0; index < this.inputFields.length; index++ ) {
-			if( this.inputFields[index].tagName ) {
-				updateURL += this.inputFields[index].name + '=' + encodeURIComponent( this.inputFields[index].value ) + '&';
-			}
-		}
-		updateURL += 'ajax=1' + ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : '');
+	    try {
+    	    var form = Event.findElement(e,"form");
+    	    var fieldName = $('CommentFieldName').value;
+    	    var fieldID = form.id + '_' + fieldName;
+	    
+    		var updateURL = form.action + '/field/' + fieldName + '?ajax=1';
+    		for( var index = 0; index < this.inputFields.length; index++ ) {
+    			if( this.inputFields[index].tagName ) {
+    				updateURL += '&' + this.inputFields[index].name + '=' + encodeURIComponent( this.inputFields[index].value );
+    			}
+    		}
+    		updateURL += ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : '');
 
-		new Ajax.Request( updateURL, {
-			onSuccess: Ajax.Evaluator,
-			onFailure: function( response ) {
-				errorMessage('Could not filter results: ' + response.responseText );
-			}.bind(this)
-		});
+    		new Ajax.Updater( fieldID, updateURL, {
+    			onSuccess: function() {
+    			    Behaviour.apply(fieldID, true);
+    			},
+    			onFailure: function( response ) {
+    				errorMessage('Could not filter results: ' + response.responseText );
+    			}.bind(this)
+    		});
+		} catch(er) {
+			errorMessage('Error searching');
+		}
 		
 		return false;	
 	}
