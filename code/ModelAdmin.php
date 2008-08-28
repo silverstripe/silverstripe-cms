@@ -430,7 +430,22 @@ class ModelAdmin_CollectionController extends Controller {
 		if($source) foreach ($source as $fieldName => $label){
 			$value[] = $fieldName;
 		}
-		$checkboxes = new CheckboxSetField("ResultAssembly", false, $source, $value);
+		
+		// Reorder the source so that you read items down the column and then across
+		$columnisedSource = array();
+		$keys = array_keys($source);
+		$midPoint = ceil(sizeof($source)/2);
+		for($i=0;$i<$midPoint;$i++) {
+			$key1 = $keys[$i];
+			$columnisedSource[$key1] = $source[$key1];
+			// If there are an odd number of items, the last item will be unset
+			if(isset($keys[$i+$midPoint])) {
+				$key2 = $keys[$i+$midPoint];
+				$columnisedSource[$key2] = $source[$key2];
+			}
+		}
+		
+		$checkboxes = new CheckboxSetField("ResultAssembly", false, $columnisedSource, $value);
 		
 		$field = new CompositeField(
 			new LiteralField(
