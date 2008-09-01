@@ -180,6 +180,7 @@ class AssetAdmin extends LeftAndMain {
 		$newFiles = array();
 		$fileSizeWarnings = '';
 		$uploadErrors = '';
+		$jsErrors = '';
 		
 		foreach($processedFiles as $tmpFile) {
 			if($tmpFile['error'] == UPLOAD_ERR_NO_TMP_DIR) {
