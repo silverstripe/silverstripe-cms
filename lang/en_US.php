@@ -471,6 +471,10 @@ $lang['en_US']['LeftAndMain.ss']['LOADING'] = array(
 	'Loading...',
 	PR_HIGH
 );
+$lang['en_US']['LeftAndMain.ss']['REQUIREJS'] = array(
+	'The CMS requires that you have JavaScript enabled.',
+	PR_HIGH
+);
 $lang['en_US']['LeftAndMain.ss']['SSWEB'] = 'Silverstripe Website';
 $lang['en_US']['LeftAndMain.ss']['APPVERSIONTEXT1'] = 'This is the';
 $lang['en_US']['LeftAndMain.ss']['APPVERSIONTEXT2'] = 'version that you are currently running, technically it\'s the CVS branch';
