@@ -626,10 +626,10 @@ class ModelAdmin_RecordController extends Controller {
 	function edit($request) {
 		if ($this->currentRecord) {
 			if(Director::is_ajax()) {
-				return $this->EditForm()->forAjaxTemplate();
+				return new HTTPResponse($this->EditForm()->forAjaxTemplate(), 200, "Page loaded");
 			} else {
 				// This is really quite ugly; to fix will require a change in the way that customise() works. :-(
-				return$this->parentController->parentController->customise(array(
+				return $this->parentController->parentController->customise(array(
 					'Right' => $this->parentController->parentController->customise(array(
 						'EditForm' => $this->EditForm()
 					))->renderWith('ModelAdmin_right')

@@ -187,13 +187,11 @@ jQuery(document).ready(function() {
  	 * @todo Should this be turned into a method on the #Form_EditForm using effen or something?
 	 */
 	function showRecord(uri) {
-		jQuery.get(uri, function(result){
-			jQuery('#right #ModelAdminPanel').html(result);
+	    jQuery('#right #ModelAdminPanel').load(uri, standardStatusHandler(function(result) {
 			jQuery('#SearchForm_holder').tabs();
-			
 			Behaviour.apply(); // refreshes ComplexTableField
 			jQuery('#right ul.tabstrip').tabs();
-		});
+		}));
 	}
 	
 	/**
@@ -210,6 +208,29 @@ jQuery(document).ready(function() {
 		});
 		return data;
 	}
+	
+	/**
+	 * Standard SilverStripe status handler for ajax responses
+	 * It will generate a status message out of the response, and only call the callback for successful responses
+	 *
+	 * To use:
+	 *    Instead of passing your callback function as:
+	 *       function(response) { ... }
+	 * 
+	 *    Pass it as this:
+	 *       standardStatusHandler(function(response) { ... })
+	 */
+	function standardStatusHandler(callback) {
+	    return function(response, status, xhr) {
+	        if(status == 'success') {
+	            statusMessage(xhr.statusText, "good");
+	            callback(response, status, xhr);
+			} else {
+	            statusMessage(xhr.statusText, "bad");
+			}
+	    }
+	}
+	
 });
 
 /**
