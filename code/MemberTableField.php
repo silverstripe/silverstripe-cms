@@ -408,6 +408,14 @@ class MemberTableField extends ComplexTableField {
 		$this->sourceItems(); // Called for its side-effect of setting total count
 		return $this->totalCount;
 	}
+
+	/**
+	 * Handles item requests
+	 * MemberTableField needs its own item request class so that it can overload the delete method
+	 */
+	function handleItem($request) {
+		return new MemberTableField_ItemRequest($this, $request->param('ID'));
+	}
 }
 
 /**
@@ -473,4 +481,20 @@ class MemberTableField_Popup extends ComplexTableField_Popup {
 		}
 	}
 }
+
+class MemberTableField_ItemRequest extends ComplexTableField_ItemRequest {
+	/**
+	 * Deleting an item from a member table field should just remove that member from the group
+	 */
+	function delete() {
+		if($this->ctf->Can('delete') !== true) {
+			return false;
+		}
+		
+		$groupID = $this->ctf->sourceID();
+		$this->dataObj()->Groups()->remove($groupID);
+	}
+	
+}
+
 ?>
