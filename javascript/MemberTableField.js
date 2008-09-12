@@ -209,7 +209,7 @@ MemberTableField.prototype = {
 }
 
 MemberFilterButton = Class.create();
-MemberFilterButton.applyTo('#Form_EditForm #MemberFilterButton');
+MemberFilterButton.applyTo('#MemberFilterButton');
 MemberFilterButton.prototype = {
 	initialize: function() {
 		this.inputFields = new Array();
@@ -258,12 +258,12 @@ MemberFilterButton.prototype = {
     		updateURL += ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : '');
 
     		new Ajax.Updater( fieldID, updateURL, {
-    			onSuccess: function() {
-    			    Behaviour.apply(fieldID, true);
+    			onComplete: function() {
+    			    Behaviour.apply($(fieldID), true);
     			},
     			onFailure: function( response ) {
     				errorMessage('Could not filter results: ' + response.responseText );
-    			}.bind(this)
+    			}
     		});
 		} catch(er) {
 			errorMessage('Error searching');
