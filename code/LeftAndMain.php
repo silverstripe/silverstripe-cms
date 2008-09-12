@@ -154,7 +154,6 @@ class LeftAndMain extends Controller {
 		Requirements::javascript('sapphire/javascript/Validator.js');
 		Requirements::javascript('sapphire/javascript/UniqueFields.js');
 		Requirements::javascript('sapphire/javascript/RedirectorPage.js');
-		Requirements::javascript('sapphire/javascript/DataReport.js' );
 		Requirements::javascript('sapphire/javascript/ToggleCompositeField.js');
 		Requirements::css('sapphire/css/SubmittedFormReportField.css');
 
