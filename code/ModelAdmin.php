@@ -110,6 +110,7 @@ abstract class ModelAdmin extends LeftAndMain {
 		Requirements::javascript('jsparty/jquery/ui/ui.core.js');
 		Requirements::javascript('jsparty/jquery/ui/ui.tabs.js');
 		Requirements::javascript('jsparty/jquery/plugins/form/jquery.form.js');
+		Requirements::javascript('jsparty/jquery/plugins/effen/jquery.fn.js');
 		Requirements::javascript('jsparty/jquery/jquery_improvements.js');
 		Requirements::javascript('cms/javascript/ModelAdmin.js');
 	}

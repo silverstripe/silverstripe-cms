@@ -13,12 +13,14 @@ $(document).ready(function() {
 	/**
 	 * Attach tabs plugin to the set of search filter and edit forms
 	 */
-	$('ul.tabstrip').tabs();
+	$('ul.tabstrip').livequery(function() {
+	    $(this).tabs();
+	});
 
     /*
      * Highlight buttons on click
      */
-	$('input[type=submit]').click(function() {
+	$('input[type=submit]').livequery('click', function() {
 	    $(this).addClass('loading');
 	});
 
@@ -104,14 +106,16 @@ $(document).ready(function() {
 	
 	/**
 	 * Table record handler for search result record
+	 * @todo: Shouldn't this be part of TableListField?
 	 */
 	$('#right #Form_ResultsForm tbody td a')
 	    .livequery('click', function(){
 	        $(this).parent().parent().addClass('loading');
     		var el = $(this);
-    		showRecord(el.attr('href'));
+    		$('#ModelAdminPanel').fn('loadForm', el.attr('href'));
     		return false;
-    	})
+    	});
+    	/* this isn't being used currently; the real hover code is part of TableListField
     	.hover(
     	    function(){
         		$(this).addClass('over').siblings().addClass('over')
@@ -120,6 +124,7 @@ $(document).ready(function() {
         		$(this).removeClass('over').siblings().removeClass('over')
         	}
         );
+        */
 
 	////////////////////////////////////////////////////////////////// 
 	// RHS detail form
@@ -129,8 +134,6 @@ $(document).ready(function() {
      * RHS panel Back button
      */
 	$('#Form_EditForm_action_goBack').livequery('click', function() {
-	    $(this).addClass('loading');
-
 		if(__lastSearch) __lastSearch.trigger('submit');
 		return false;
 	});
@@ -139,13 +142,11 @@ $(document).ready(function() {
 	 * RHS panel Save button 
 	 */
 	$('#right #form_actions_right input[name=action_doSave]').livequery('click', function(){
-	    $(this).addClass('loading');
-
 		var form = $('#right form');
 		var formAction = form.attr('action') + '?' + $(this).fieldSerialize();
 		
 		// Post the data to save
-		$.post(formAction, formData(form), function(result){
+		$.post(formAction, form.formToArray(), function(result){
 			$('#right #ModelAdminPanel').html(result);
 			
 			statusMessage("Saved");
@@ -153,7 +154,6 @@ $(document).ready(function() {
 			// TODO/SAM: It seems a bit of a hack to have to list all the little updaters here. 
 			// Is livequery a solution?
 			Behaviour.apply(); // refreshes ComplexTableField
-			$('#right ul.tabstrip').tabs();
 		});
 
 		return false;
@@ -165,23 +165,20 @@ $(document).ready(function() {
 	$('#right #form_actions_right input[name=action_doDelete]').livequery('click', function(){
 		var confirmed = confirm("Do you really want to delete?");
 		if(!confirmed) return false;
-		
-	    $(this).addClass('loading');
+
 		var form = $('#right form');
 		var formAction = form.attr('action') + '?' + $(this).fieldSerialize();
 
         // The POST actually handles the delete
-		$.post(formAction, formData(form), function(result){
+		$.post(formAction, form.formToArray(), function(result){
 		    // On success, the panel is refreshed and a status message shown.
 			$('#right #ModelAdminPanel').html(result);
 			
 			statusMessage("Deleted");
     		$('#form_actions_right').remove();
-
-			// TODO/SAM: It seems a bit of a hack to have to list all the little updaters here. 
-			// Is livequery a solution?
+            
+            // To do - convert everything to jQuery so that this isn't needed
 			Behaviour.apply(); // refreshes ComplexTableField
-			$('#right ul.tabstrip').tabs();
 		});
 		
 		return false;
@@ -198,7 +195,7 @@ $(document).ready(function() {
 	$('#Form_ManagedModelsSelect').submit(function(){
 		className = $('select option:selected', this).val();
 		requestPath = $(this).attr('action').replace('ManagedModelsSelect', className + '/add');
-		showRecord(requestPath);
+		$('#ModelAdminPanel').fn('loadForm', requestPath);
 		return false;
 	});
 	
@@ -214,33 +211,18 @@ $(document).ready(function() {
 	////////////////////////////////////////////////////////////////// 
 	// Helper functions
 	////////////////////////////////////////////////////////////////// 
-
-	/**
-	 * GET a fragment of HTML to display in the right panel
- 	 * @todo Should this be turned into a method on the #Form_EditForm using effen or something?
-	 */
-	function showRecord(uri) {
-	    $('#right #ModelAdminPanel').load(uri, standardStatusHandler(function(result) {
-			$('#SearchForm_holder').tabs();
-			Behaviour.apply(); // refreshes ComplexTableField
-			$('#right ul.tabstrip').tabs();
-		}));
-	}
 	
-	/**
-	 * Returns a flattened array of data from each field of the given form.
-	 * @todo Surely jQuery has a built-in version of this?
-	 */
-	function formData(scope) {
-		var data = {};
-		$('*[name]', scope).each(function(){
-			var t = $(this);
-			if(t.attr('type') != 'checkbox' || t.attr('checked') == true) {
-				data[t.attr('name')] = t.val();
-			}
-		});
-		return data;
-	}
+    $('#ModelAdminPanel').fn({
+        /**
+         * Load a detail editing form into the main edit panel
+         * @todo Convert everything to jQuery so that the built-in load method can be used with this instead
+         */
+        loadForm: function(url) {
+    	    $('#right #ModelAdminPanel').load(url, standardStatusHandler(function(result) {
+    			Behaviour.apply(); // refreshes ComplexTableField
+    		}));
+    	}
+    });
 	
 	/**
 	 * Standard SilverStripe status handler for ajax responses
