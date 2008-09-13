@@ -160,6 +160,18 @@ abstract class ModelAdmin extends LeftAndMain {
 	}
 	
 	/**
+	 * This method can be overloaded to specify the UI by which the search class is chosen.
+	 *
+	 * It can create a tab strip or a dropdown.  The dropdown is useful when there are a large number of classes.
+	 * By default, it will show a tabs for 1-3 classes, and a dropdown for 4 or more classes.
+	 *
+	 * @return String: 'tabs' or 'dropdown'
+	 */
+	public function SearchClassSelector() {
+		return sizeof($this->getManagedModels()) > 3 ? 'dropdown' : 'tabs';
+	}
+	
+	/**
 	 * Allows to choose which record needs to be created.
 	 * 
 	 * @return Form
@@ -427,6 +439,7 @@ class ModelAdmin_CollectionController extends Controller {
 		$model = singleton($this->modelClass);
 		
 		$source = $model->summaryFields();
+		$value = array();
 		if($source) foreach ($source as $fieldName => $label){
 			$value[] = $fieldName;
 		}
@@ -474,8 +487,17 @@ class ModelAdmin_CollectionController extends Controller {
 	 * @return string
 	 */
 	function search($request, $form) {
+		// Get the results form to be rendered
 		$resultsForm = $this->ResultsForm($form->getData());
-		return $resultsForm->forTemplate();
+		// Before rendering, let's get the total number of results returned
+		$tableField = $resultsForm->Fields()->fieldByName($this->modelClass);
+		$numResults = $tableField->TotalCount();
+		
+		if($numResults) {
+			return new HTTPResponse($resultsForm->forTemplate(), 200, "Your search found $numResults matching items");
+		} else {
+			return new HTTPResponse($resultsForm->forTemplate(), 404, "Your search didn't return any matching items");
+		}
 	}
 	
 	/**
@@ -557,7 +579,7 @@ class ModelAdmin_CollectionController extends Controller {
 	 * @return unknown
 	 */
 	function add($request) {
-		return $this->AddForm()->forAjaxTemplate();
+		return new HTTPResponse($this->AddForm()->forAjaxTemplate(), 200, "Fill out this form to add a $this->modelClass to the database.");
 	}
 
 	/**
@@ -626,7 +648,7 @@ class ModelAdmin_RecordController extends Controller {
 	function edit($request) {
 		if ($this->currentRecord) {
 			if(Director::is_ajax()) {
-				return new HTTPResponse($this->EditForm()->forAjaxTemplate(), 200, "Page loaded");
+				return new HTTPResponse($this->EditForm()->forAjaxTemplate(), 200, "Loaded '" . $this->currentRecord->Title . "' for editing.");
 			} else {
 				// This is really quite ugly; to fix will require a change in the way that customise() works. :-(
 				return $this->parentController->parentController->customise(array(

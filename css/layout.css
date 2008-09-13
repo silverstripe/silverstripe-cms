@@ -75,6 +75,11 @@ li.action button {
 	li.action button:hover {
 		background: #fff;
 	}
+	
+	input.action.loading, input.action.loading:hover {
+        padding-left: 22px;
+        background: url(../images/network-save.gif) 3px 2px no-repeat;
+	}
 
 input.delete:hover,
 button.delete:hover,

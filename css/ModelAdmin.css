@@ -31,6 +31,12 @@ body.ModelAdmin #SearchForm_holder {
 	margin-bottom:1em;
 }
 
+body.ModelAdmin #ModelClassSelector {
+    border-bottom: 1px #AAA solid;
+    padding-bottom: 0.5em;
+}
+
+
 body.ModelAdmin #SearchForm_holder div.ResultAssemblyBlock{
 	margin-bottom: 1em;
 }

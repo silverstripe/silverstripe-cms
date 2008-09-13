@@ -1,15 +1,29 @@
 <div id="LeftPane">
 	<h2><% _t('SEARCHLISTINGS','Search Listings') %></h2>
 	<div id="SearchForm_holder" class="leftbottom">		
+	    <% if SearchClassSelector = tabs %>
 		<ul class="tabstrip">
 		<% control SearchForms %>
-			<li class="first"><a href="#{$Form.Name}_$ClassName">$Title</a></li>
+			<li class="$FirstLast"><a href="#{$Form.Name}_$ClassName">$Title</a></li>
 		<% end_control %>
 		</ul>
+		<% end_if %>
+		
+		<% if SearchClassSelector = dropdown %>
+		<p id="ModelClassSelector">
+		    Search for:
+    		<select>
+            	<% control SearchForms %>
+            		<option value="{$Form.Name}_$ClassName">$Title</option>
+            	<% end_control %>
+    		</select>
+    	</p>
+    	<% end_if %>
+		
 		<% control SearchForms %>
-			<div class="tab" id="{$Form.Name}_$ClassName">
-			$Form
-			</div>
+		<div class="tab" id="{$Form.Name}_$ClassName">
+		$Form
+		</div>
 		<% end_control %>
 	</div>
 	<h2><% _t('ADDLISTING','Add Listing') %></h2>

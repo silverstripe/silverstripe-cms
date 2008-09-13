@@ -8,15 +8,39 @@
  * @todo add live query to manage application of events to DOM refreshes
  * @todo alias the $ function instead of literal jQuery
  */
-jQuery(document).ready(function() {
+(function($) {
+$(document).ready(function() {
 	/**
 	 * Attach tabs plugin to the set of search filter and edit forms
 	 */
-	jQuery('ul.tabstrip').tabs();
+	$('ul.tabstrip').tabs();
+
+    /*
+     * Highlight buttons on click
+     */
+	$('input[type=submit]').click(function() {
+	    $(this).addClass('loading');
+	});
 
 	////////////////////////////////////////////////////////////////// 
 	// Search form 
 	////////////////////////////////////////////////////////////////// 
+	
+	/**
+	 * If a dropdown is used to choose between the classes, it is handled by this code
+	 */
+    $('#ModelClassSelector select')
+        // Set up an onchange function to show the applicable form and hide all others
+        .change(function() {
+            var $selector = $(this);
+            $('option', this).each(function() {
+                var $form = $('#'+$(this).val());
+                if($selector.val() == $(this).val()) $form.show();
+                else $form.hide();
+            });
+        })
+        // Initialise the form by calling this onchange event straight away
+        .change();
 
 	/**
 	 * Stores a jQuery reference to the last submitted search form.
@@ -29,45 +53,47 @@ jQuery(document).ready(function() {
 	 * 
 	 * @todo use livequery to manage ResultTable click handlers
 	 */
-	jQuery('#SearchForm_holder .tab form').submit(function(){
-		__lastSearch = jQuery(this);
-		
-		form = jQuery(this);
-		data = formData(form);
-		jQuery.get(form.attr('action'), data, function(result){
-			jQuery('#right #ModelAdminPanel').html(result);
-			jQuery('#form_actions_right').remove();
-			Behaviour.apply();
-		});
-		
-		return false;
+	$('#SearchForm_holder .tab form').submit(function () {
+	    var $form = $(this);
+	    $('#ModelAdminPanel').load($(this).attr('action'), $(this).formToArray(), standardStatusHandler(function(result) {
+    		__lastSearch = $form;
+    		$('#form_actions_right').remove();
+    		Behaviour.apply();
+    		// Remove the loading indicators from the buttons
+    		$('input[type=submit]', $form).removeClass('loading');
+	    }, 
+	    // Failure handler - we should still remove loading indicator
+	    function () {
+    		$('input[type=submit]', $form).removeClass('loading');
+	    }));
+	    return false;
 	});
 
 	/**
 	 * Clear search button
 	 */
-	jQuery('#SearchForm_holder button[name=action_clearsearch]').click(function(e) {
-		jQuery(this.form).clearForm();
+	$('#SearchForm_holder button[name=action_clearsearch]').click(function(e) {
+		$(this.form).clearForm();
 		return false;
 	});
 
 	/**
 	 * Column selection in search form
 	  */
-	jQuery('a.form_frontend_function.toggle_result_assembly').click(function(){
-		var toggleElement = jQuery(this).next();
+	$('a.form_frontend_function.toggle_result_assembly').click(function(){
+		var toggleElement = $(this).next();
 		toggleElement.toggle();
 		return false;
 	});
 	
-	jQuery('a.form_frontend_function.tick_all_result_assembly').click(function(){
-		var resultAssembly = jQuery('div#ResultAssembly ul li input');
+	$('a.form_frontend_function.tick_all_result_assembly').click(function(){
+		var resultAssembly = $('div#ResultAssembly ul li input');
 		resultAssembly.attr('checked', 'checked');
 		return false;
 	});
 	
-	jQuery('a.form_frontend_function.untick_all_result_assembly').click(function(){
-		var resultAssembly = jQuery('div#ResultAssembly ul li input');
+	$('a.form_frontend_function.untick_all_result_assembly').click(function(){
+		var resultAssembly = $('div#ResultAssembly ul li input');
 		resultAssembly.removeAttr('checked');
 		return false;
 	});
@@ -79,18 +105,19 @@ jQuery(document).ready(function() {
 	/**
 	 * Table record handler for search result record
 	 */
-	jQuery('#right #Form_ResultsForm tbody td a')
+	$('#right #Form_ResultsForm tbody td a')
 	    .livequery('click', function(){
-    		var el = jQuery(this);
+	        $(this).parent().parent().addClass('loading');
+    		var el = $(this);
     		showRecord(el.attr('href'));
     		return false;
     	})
     	.hover(
     	    function(){
-        		jQuery(this).addClass('over').siblings().addClass('over')
+        		$(this).addClass('over').siblings().addClass('over')
         	}, 
         	function(){
-        		jQuery(this).removeClass('over').siblings().removeClass('over')
+        		$(this).removeClass('over').siblings().removeClass('over')
         	}
         );
 
@@ -101,7 +128,9 @@ jQuery(document).ready(function() {
     /**
      * RHS panel Back button
      */
-	jQuery('#Form_EditForm_action_goBack').livequery('click', function() {
+	$('#Form_EditForm_action_goBack').livequery('click', function() {
+	    $(this).addClass('loading');
+
 		if(__lastSearch) __lastSearch.trigger('submit');
 		return false;
 	});
@@ -109,20 +138,22 @@ jQuery(document).ready(function() {
 	/**
 	 * RHS panel Save button 
 	 */
-	jQuery('#right #form_actions_right input[name=action_doSave]').livequery('click', function(){
-		var form = jQuery('#right form');
-		var formAction = form.attr('action') + '?' + jQuery(this).fieldSerialize();
+	$('#right #form_actions_right input[name=action_doSave]').livequery('click', function(){
+	    $(this).addClass('loading');
+
+		var form = $('#right form');
+		var formAction = form.attr('action') + '?' + $(this).fieldSerialize();
 		
 		// Post the data to save
-		jQuery.post(formAction, formData(form), function(result){
-			jQuery('#right #ModelAdminPanel').html(result);
+		$.post(formAction, formData(form), function(result){
+			$('#right #ModelAdminPanel').html(result);
 			
 			statusMessage("Saved");
 
 			// TODO/SAM: It seems a bit of a hack to have to list all the little updaters here. 
 			// Is livequery a solution?
 			Behaviour.apply(); // refreshes ComplexTableField
-			jQuery('#right ul.tabstrip').tabs();
+			$('#right ul.tabstrip').tabs();
 		});
 
 		return false;
@@ -131,24 +162,26 @@ jQuery(document).ready(function() {
 	/**
 	 * RHS panel Delete button
 	 */
-	jQuery('#right #form_actions_right input[name=action_doDelete]').livequery('click', function(){
+	$('#right #form_actions_right input[name=action_doDelete]').livequery('click', function(){
 		var confirmed = confirm("Do you really want to delete?");
 		if(!confirmed) return false;
 		
-		var form = jQuery('#right form');
-		var formAction = form.attr('action') + '?' + jQuery(this).fieldSerialize();
+	    $(this).addClass('loading');
+		var form = $('#right form');
+		var formAction = form.attr('action') + '?' + $(this).fieldSerialize();
 
         // The POST actually handles the delete
-		jQuery.post(formAction, formData(form), function(result){
+		$.post(formAction, formData(form), function(result){
 		    // On success, the panel is refreshed and a status message shown.
-			jQuery('#right #ModelAdminPanel').html(result);
+			$('#right #ModelAdminPanel').html(result);
 			
 			statusMessage("Deleted");
+    		$('#form_actions_right').remove();
 
 			// TODO/SAM: It seems a bit of a hack to have to list all the little updaters here. 
 			// Is livequery a solution?
 			Behaviour.apply(); // refreshes ComplexTableField
-			jQuery('#right ul.tabstrip').tabs();
+			$('#right ul.tabstrip').tabs();
 		});
 		
 		return false;
@@ -162,9 +195,9 @@ jQuery(document).ready(function() {
 	/**
 	 * Add object button
 	 */
-	jQuery('#Form_ManagedModelsSelect').submit(function(){
-		className = jQuery('select option:selected', this).val();
-		requestPath = jQuery(this).attr('action').replace('ManagedModelsSelect', className + '/add');
+	$('#Form_ManagedModelsSelect').submit(function(){
+		className = $('select option:selected', this).val();
+		requestPath = $(this).attr('action').replace('ManagedModelsSelect', className + '/add');
 		showRecord(requestPath);
 		return false;
 	});
@@ -172,9 +205,9 @@ jQuery(document).ready(function() {
 	/**
 	 * Toggle import specifications
 	 */
-	jQuery('#Form_ImportForm_holder .spec .details').hide();
-	jQuery('#Form_ImportForm_holder .spec a.detailsLink').click(function() {
-		jQuery('#' + jQuery(this).attr('href').replace(/.*#/,'')).toggle();
+	$('#Form_ImportForm_holder .spec .details').hide();
+	$('#Form_ImportForm_holder .spec a.detailsLink').click(function() {
+		$('#' + $(this).attr('href').replace(/.*#/,'')).toggle();
 		return false;
 	});
 
@@ -187,10 +220,10 @@ jQuery(document).ready(function() {
  	 * @todo Should this be turned into a method on the #Form_EditForm using effen or something?
 	 */
 	function showRecord(uri) {
-	    jQuery('#right #ModelAdminPanel').load(uri, standardStatusHandler(function(result) {
-			jQuery('#SearchForm_holder').tabs();
+	    $('#right #ModelAdminPanel').load(uri, standardStatusHandler(function(result) {
+			$('#SearchForm_holder').tabs();
 			Behaviour.apply(); // refreshes ComplexTableField
-			jQuery('#right ul.tabstrip').tabs();
+			$('#right ul.tabstrip').tabs();
 		}));
 	}
 	
@@ -200,8 +233,8 @@ jQuery(document).ready(function() {
 	 */
 	function formData(scope) {
 		var data = {};
-		jQuery('*[name]', scope).each(function(){
-			var t = jQuery(this);
+		$('*[name]', scope).each(function(){
+			var t = $(this);
 			if(t.attr('type') != 'checkbox' || t.attr('checked') == true) {
 				data[t.attr('name')] = t.val();
 			}
@@ -220,18 +253,26 @@ jQuery(document).ready(function() {
 	 *    Pass it as this:
 	 *       standardStatusHandler(function(response) { ... })
 	 */
-	function standardStatusHandler(callback) {
+	function standardStatusHandler(callback, failureCallback) {
 	    return function(response, status, xhr) {
+	        // If the response is takne from $.ajax's complete handler, then swap the variables around
+	        if(response.status) {
+	            xhr = response;
+	            response = xhr.responseText;
+	        }
+
 	        if(status == 'success') {
 	            statusMessage(xhr.statusText, "good");
-	            callback(response, status, xhr);
+	            $(this).each(callback, [response, status, xhr]);
 			} else {
 	            statusMessage(xhr.statusText, "bad");
+	            if(failureCallback) $(this).each(failureCallback, [response, status, xhr]);
 			}
 	    }
 	}
 	
-});
+})
+})(jQuery);
 
 /**
  * @todo Terrible HACK, but thats the cms UI...
