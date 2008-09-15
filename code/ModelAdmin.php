@@ -281,10 +281,15 @@ abstract class ModelAdmin extends LeftAndMain {
 		$importerClass = $importers[$data['ClassName']];
 		
 		$loader = new $importerClass($data['ClassName']);
-		$resultsCount = $loader->load($_FILES['_CsvFile']['tmp_name']);
-		//$resultsCount = ($results) ? $results->Count() : 0;
+		$results = $loader->load($_FILES['_CsvFile']['tmp_name']);
 		
-		Session::setFormMessage('Form_ImportForm', "Loaded {$resultsCount} items", 'good');
+		$message = '';
+		if($results->CreatedCount()) $message .= "Imported " . $results->CreatedCount() . " records. ";
+		if($results->UpdatedCount()) $message .= "Updated " . $results->UpdatedCount() . " records. ";
+		if($results->DeletedCount()) $message .= "Deleted " . $results->DeletedCount() . " records. ";
+		if(!$results->CreatedCount() && !$results->UpdatedCount()) $message .= "Nothing to import";
+		
+		Session::setFormMessage('Form_ImportForm', $message, 'good');
 		Director::redirect($_SERVER['HTTP_REFERER'] . '#Form_ImportForm_holder');
 	}
 	
