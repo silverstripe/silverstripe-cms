@@ -491,7 +491,7 @@ function errorMessage(msg, fullMessage) {
 		} catch(er) {
 			fullMessage = "";
 		}
-		console.log(fullMessage);
+		console.error(fullMessage);
 	}
 	
 	msg = msg.replace(/\n/g,'<br>');
