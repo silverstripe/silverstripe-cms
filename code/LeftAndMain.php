@@ -109,13 +109,24 @@ class LeftAndMain extends Controller {
 		Requirements::css('cms/css/cms_left.css');
 		Requirements::css('cms/css/cms_right.css');
 		
+		if(isset($_REQUEST['debug_firebug'])) {
+			// Firebug is a useful console for debugging javascript
+			// Its available as a Firefox extension or a javascript library
+			// for easy inclusion in other browsers (just append ?debug_firebug=1 to the URL)
+			Requirements::javascript('jsparty/firebug/firebug-lite-compressed.js');
+		} else {
+			// By default, we include fake-objects for all firebug calls
+			// to avoid javascript errors when referencing console.log() etc in javascript code
+			Requirements::javascript('jsparty/firebug/firebugx.js');
+		}
+		
 		Requirements::javascript('jsparty/prototype.js');
 		Requirements::javascript('jsparty/behaviour.js');
 		Requirements::javascript('jsparty/prototype_improvements.js');
 		Requirements::javascript('jsparty/loader.js');
 		Requirements::javascript('jsparty/hover.js');
 		Requirements::javascript('jsparty/layout_helpers.js');
-
+		
 		Requirements::javascript(MCE_ROOT . 'tiny_mce_src.js');
 		Requirements::javascript('cms/javascript/ImageEditor/Activator.js');
 		Requirements::javascript('jsparty/tiny_mce_improvements.js');

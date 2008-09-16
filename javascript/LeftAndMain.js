@@ -483,22 +483,24 @@ function clearStatusMessage() {
  * Called when something goes wrong
  */
 function errorMessage(msg, fullMessage) {
-	// More complex error for developers
-	if(fullMessage && window.location.href.indexOf('//dev') != -1) {
+	// Show complex error for developers in the console
+	if(fullMessage) {
 		// Get the message from an Ajax response object
 		try {
 			if(typeof fullMessage == 'object') fullMessage = fullMessage.status + '//' + fullMessage.responseText;
 		} catch(er) {
 			fullMessage = "";
 		}
-		msg = msg + '<br>' + fullMessage.replace(/\n/g,'<br>');
+		console.log(fullMessage);
 	}
+	
+	msg = msg.replace(/\n/g,'<br>');
 
-	$('statusMessage').showMessage(msg,'bad',60);
+	$('statusMessage').showMessage(msg,'bad');
 }
 
 function ajaxErrorHandler(response) {
-	errorMessage('Error talking to server', response);
+	errorMessage('Server Error', response);
 }
 
 /**
