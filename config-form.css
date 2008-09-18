@@ -89,6 +89,7 @@ table.testResults {
 }
 #Layout h4 {
 	font-size: 2em;
+	clear: left;
 }
 .testResults td {
 	border: 1px #CCC solid;
