@@ -196,6 +196,7 @@ $(document).ready(function() {
 		className = $('select option:selected', this).val();
 		requestPath = $(this).attr('action').replace('ManagedModelsSelect', className + '/add');
 		$('#ModelAdminPanel').fn('loadForm', requestPath);
+		$('#form_actions_right').remove();
 		return false;
 	});
 	
