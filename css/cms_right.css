@@ -37,6 +37,9 @@
 				font-size: 14px;
 				font-weight: bold;
 			}
+			.right form .fieldgroupField {
+			    display: inline;
+			}
 			.right form #URL .fieldgroup {
 				display:block;
 				height: 16px;
