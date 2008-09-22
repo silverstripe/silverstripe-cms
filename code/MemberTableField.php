@@ -278,7 +278,7 @@ class MemberTableField extends ComplexTableField {
 
 			// To Avoid duplication in the Group_Members table if the ComponentSet.php is not modified just uncomment le line below
 
-			//if( ! $record->isInGroup( $data['ctf']['ID'] ) )
+			//if( ! $record->inGroup( $data['ctf']['ID'] ) )
 				$record->Groups()->add( $data['ctf']['ID'] );
 
 			$this->sourceItems();
