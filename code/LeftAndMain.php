@@ -342,6 +342,7 @@ class LeftAndMain extends Controller {
 		return $menu;
 	}
 
+
   /**
    * Return a list of appropriate templates for this class, with the given suffix
    */
@@ -886,6 +887,18 @@ JS;
 	}
 	function ApplicationLink() {
 		return self::$application_link;
+	}
+
+	/**
+	 * Return the title of the current section, as shown on the main menu
+	 */
+	function SectionTitle() {
+		// Get menu - use obj() to cache it in the same place as the template engine
+		$menu = $this->obj('MainMenu');
+		
+		foreach($menu as $menuItem) {
+			if($menuItem->LinkingMode == 'current') return $menuItem->Title;
+		}
 	}
 
 	/**

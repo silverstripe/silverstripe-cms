@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <% base_tag %>
-<title>$ApplicationName</title>
+<title>$ApplicationName | $SectionTitle</title>
 </head>
 
 <body class="stillLoading $CSSClasses">
