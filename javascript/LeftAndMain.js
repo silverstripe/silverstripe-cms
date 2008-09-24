@@ -788,8 +788,12 @@ showResponseAsSuccessMessage = function(response) {
  * It redirects back to the login form.
  */
 function onSessionLost() {
-	alert("You've been logged out of the server, so we're going to send you back to the log-in screen.");
-	window.location.reload(true);
+	w = window.open('Security/login');
+	if(w) {
+	    alert("Please log in and then try again");
+	} else {
+	    alert("Please enable pop-ups for this site");
+	}
 }
 
 var _CURRENT_CONTEXT_MENU = null;
@@ -875,3 +879,7 @@ function showIndicator(id, container, imgSrc, insertionType, displayType) {
 function hideIndicator(id) {
 	Effect.Fade(id, {duration: 0.3});
 }
+
+setInterval(function() {
+    new Ajax.Request("Security/ping");
+}, 5*60*1000);
