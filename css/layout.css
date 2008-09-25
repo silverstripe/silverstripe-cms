@@ -425,8 +425,11 @@ iframe {
 #contentPanel p#TargetBlank {
 	margin-left: 0;
 }
+#contentPanel div.TreeDropdownField {
+	width: 180px;
+}
 #contentPanel div.TreeDropdownField span.items {
-	width: 165px;
+	width: 155px;
 	background: #fff;
 	font-size: 12px;
 	border:1px solid #A7A7A7;
