@@ -437,7 +437,7 @@ iframe {
 }
 #contentPanel .thumbnailstrip {
 	border: none;
-	width: 195px;
+	width: 180px;
 	height: 120px;
 	overflow-y: auto;	
 }
