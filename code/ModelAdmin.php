@@ -23,7 +23,7 @@
  * @todo Hook into RESTful interface on DataObjects (yet to be developed)
  * @todo Permission control via datamodel and Form class
  * 
- * @uses {@link SearchContext}
+ * @uses SearchContext
  * 
  * @package cms
  */
