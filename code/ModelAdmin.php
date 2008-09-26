@@ -295,8 +295,8 @@ abstract class ModelAdmin extends LeftAndMain {
 	
 	/**
 	 * 
-	 * @uses {@link SearchContext}
-	 * @uses {@link SearchFilter}
+	 * @uses SearchContext
+	 * @uses SearchFilter
 	 * @return Form
 	 */
 	protected function getSearchForms() {
