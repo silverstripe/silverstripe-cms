@@ -52,7 +52,7 @@ class StaticExporter extends Controller {
 		if(!project()) $folder .= 'site';
 		if(!file_exists($folder)) mkdir($folder, Filesystem::$folder_create_mask, true);
 
-		$f1 = Director::baseFolder() . '/assets';
+		$f1 = ASSETS_PATH;
 		$f2 = Director::baseFolder() . '/' . project();
 		`cd $folder; ln -s $f1; ln -s $f2`;
 

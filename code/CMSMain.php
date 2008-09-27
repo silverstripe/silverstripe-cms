@@ -72,18 +72,18 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		// We don't want this showing up in every ajax-response, it should always be present in a CMS-environment
 		if(!Director::is_ajax()) {
-			Requirements::javascriptTemplate("cms/javascript/tinymce.template.js", array(
-				"ContentCSS" => (SSViewer::current_theme() ? "themes/" . SSViewer::current_theme() : project()) . "/css/editor.css",
+			Requirements::javascriptTemplate(CMS_DIR . "/javascript/tinymce.template.js", array(
+				"ContentCSS" => (SSViewer::current_theme() ? THEMES_DIR . "/" . SSViewer::current_theme() : project()) . "/css/editor.css",
 				"BaseURL" => Director::absoluteBaseURL(),
 				"Lang" => i18n::get_tinymce_lang()
 			));
 		}
 		
-		Requirements::javascript('cms/javascript/CMSMain.js');
-		Requirements::javascript('cms/javascript/CMSMain_left.js');
-		Requirements::javascript('cms/javascript/CMSMain_right.js');
-		Requirements::javascript('sapphire/javascript/UpdateURL.js');
-		Requirements::javascript('jsparty/tabstrip/tabstrip.js');		
+		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.js');
+		Requirements::javascript(CMS_DIR . '/javascript/CMSMain_left.js');
+		Requirements::javascript(CMS_DIR . '/javascript/CMSMain_right.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/javascript/UpdateURL.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/tabstrip/tabstrip.js');		
 		
 		/**
 		 * HACK ALERT: Project-specific requirements
@@ -97,7 +97,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Requirements::javascript("parents/javascript/NotifyMembers.js");
 		Requirements::css("tourism/css/SurveyCMSMain.css");
 		Requirements::javascript("tourism/javascript/QuotasReport.js");
-		Requirements::javascript("sapphire/javascript/ReportField.js");
+		Requirements::javascript(SAPPHIRE_DIR . "/javascript/ReportField.js");
 		Requirements::javascript("ptraining/javascript/BookingList.js");
 		Requirements::javascript("forum/javascript/ForumAccess.js");
 		Requirements::javascript('gallery/javascript/GalleryPage_CMS.js');
@@ -950,11 +950,11 @@ HTML;
 
 	function canceldraftchangesdialog() {
 		Requirements::clear();
-		Requirements::css('cms/css/dialog.css');
-		Requirements::javascript('jsparty/prototype.js');
-		Requirements::javascript('jsparty/behaviour.js');
-		Requirements::javascript('jsparty/prototype_improvements.js');
-		Requirements::javascript('cms/javascript/dialog.js');
+		Requirements::css(CMS_DIR . 'css/dialog.css');
+		Requirements::javascript(THIRDPARTY_DIR . 'jsparty/prototype.js');
+		Requirements::javascript(THIRDPARTY_DIR . 'jsparty/behaviour.js');
+		Requirements::javascript(THIRDPARTY_DIR . 'jsparty/prototype_improvements.js');
+		Requirements::javascript(CMS_DIR . '/javascript/dialog.js');
 
 		$message = _t('CMSMain.COPYPUBTOSTAGE',"Do you really want to copy the published content to the stage site?");
 		$buttons = "<button name=\"OK\">" . _t('CMSMain.OK','OK') ."</button><button name=\"Cancel\">" . _t('CMSMain.CANCEL',"Cancel") . "</button>";

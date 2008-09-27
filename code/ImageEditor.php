@@ -18,25 +18,25 @@ class ImageEditor extends Controller {
 	*/ 
 	public function index() {
 		Requirements::clear();
-		Requirements::javascript('jsparty/prototype.js');
-		Requirements::javascript('jsparty/scriptaculous/scriptaculous.js');
-           Requirements::javascript('cms/javascript/ImageEditor/Utils.js');
-           Requirements::javascript('cms/javascript/ImageEditor/ImageHistory.js');
-           Requirements::javascript('cms/javascript/ImageEditor/Image.js');
-           Requirements::javascript('cms/javascript/ImageEditor/ImageTransformation.js');
-           Requirements::javascript('cms/javascript/ImageEditor/Resizeable.js');
-           Requirements::javascript('cms/javascript/ImageEditor/Effects.js');
-           Requirements::javascript('cms/javascript/ImageEditor/Environment.js');
-           Requirements::javascript('cms/javascript/ImageEditor/Crop.js');
-           Requirements::javascript('cms/javascript/ImageEditor/Resize.js');
-           Requirements::javascript('cms/javascript/ImageEditor/ImageBox.js');
-           Requirements::javascript('cms/javascript/ImageEditor/ImageEditor.js');
-           Requirements::javascript('cms/javascript/ImageEditor/DocumentBody.js');
+		Requirements::javascript(THIRDPARTY_DIR . 'jsparty/prototype.js');
+		Requirements::javascript(THIRDPARTY_DIR . 'jsparty/scriptaculous/scriptaculous.js');
+           Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/Utils.js');
+           Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/ImageHistory.js');
+           Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/Image.js');
+           Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/ImageTransformation.js');
+           Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/Resizeable.js');
+           Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/Effects.js');
+           Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/Environment.js');
+           Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/Crop.js');
+           Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/Resize.js');
+           Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/ImageBox.js');
+           Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/ImageEditor.js');
+           Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/DocumentBody.js');
 
-		Requirements::javascript('jsparty/loader.js');
-		Requirements::javascript('jsparty/behaviour.js');
-		Requirements::javascript('cms/javascript/LeftAndMain.js');
-		Requirements::css('cms/css/ImageEditor/ImageEditor.css');
+		Requirements::javascript(THIRDPARTY_DIR . 'jsparty/loader.js');
+		Requirements::javascript(THIRDPARTY_DIR . 'jsparty/behaviour.js');
+		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.js');
+		Requirements::css(CMS_DIR . 'css/ImageEditor/ImageEditor.css');
 
 		if(!isset($this->requestParams['fileToEdit'])) $this->raiseError();
 		$fileWithPath = $this->requestParams['fileToEdit'];
@@ -81,8 +81,8 @@ class ImageEditor extends Controller {
 			break;
 		}
 		$rand = md5(rand(1,100000));
-		$gd->writeTo('../assets/_tmp/' . $rand . '.' . $fileInfo['extension']);
-		return $this->getImageInfoInJSON($gd,'assets/_tmp/' . $rand . '.' . $fileInfo['extension']);	
+		$gd->writeTo(ASSETS_PATH . '/_tmp/' . $rand . '.' . $fileInfo['extension']);
+		return $this->getImageInfoInJSON($gd,ASSETS_PATH . '/_tmp/' . $rand . '.' . $fileInfo['extension']);	
 	}
 	
 	/**
@@ -128,7 +128,7 @@ class ImageEditor extends Controller {
 	*/ 
 	
 	public function close() {
-		$tmpDir = '../assets/_tmp';
+		$tmpDir = ASSETS_PATH . '/_tmp';
 		if(file_exists($tmpDir)) {
 		    Filesystem::removeFolder($tmpDir);
 		    mkdir($tmpDir, Filesystem::$folder_create_mask);

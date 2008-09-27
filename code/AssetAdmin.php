@@ -66,23 +66,23 @@ class AssetAdmin extends LeftAndMain {
 	function init() {
 		parent::init();
 		
-		if(!file_exists('../assets')) {
-			mkdir('../assets');
+		if(!file_exists(ASSETS_PATH)) {
+			mkdir(ASSETS_PATH);
 		}
 
 		// needed for MemberTableField (Requirements not determined before Ajax-Call)
-		Requirements::javascript("sapphire/javascript/ComplexTableField.js");
-		Requirements::css("jsparty/greybox/greybox.css");
-		Requirements::css("sapphire/css/ComplexTableField.css");
+		Requirements::javascript(SAPPHIRE_DIR . "/javascript/ComplexTableField.js");
+		Requirements::css(THIRDPARTY_DIR . "/greybox/greybox.css");
+		Requirements::css(SAPPHIRE_DIR . "/css/ComplexTableField.css");
 
-		Requirements::javascript("cms/javascript/AssetAdmin.js");
-		Requirements::javascript("cms/javascript/AssetAdmin_left.js");
-		Requirements::javascript("cms/javascript/AssetAdmin_right.js");
+		Requirements::javascript(CMS_DIR . "/javascript/AssetAdmin.js");
+		Requirements::javascript(CMS_DIR . "/javascript/AssetAdmin_left.js");
+		Requirements::javascript(CMS_DIR . "/javascript/AssetAdmin_right.js");
 
-		Requirements::javascript("cms/javascript/CMSMain_upload.js");
-		Requirements::javascript("cms/javascript/Upload.js");
-		Requirements::javascript("sapphire/javascript/Security_login.js");
-		Requirements::javascript("jsparty/SWFUpload/SWFUpload.js");
+		Requirements::javascript(CMS_DIR . "/javascript/CMSMain_upload.js");
+		Requirements::javascript(CMS_DIR . "/javascript/Upload.js");
+		Requirements::javascript(SAPPHIRE_DIR . "/javascript/Security_login.js");
+		Requirements::javascript(THIRDPARTY_DIR . "/SWFUpload/SWFUpload.js");
 		
 		// Include the right JS]
 		// Hayden: This didn't appear to be used at all
@@ -90,11 +90,11 @@ class AssetAdmin extends LeftAndMain {
 		$fileList->setClick_AjaxLoad('admin/assets/getfile/', 'Form_SubForm');
 		$fileList->FieldHolder();*/
 		
-		Requirements::javascript("jsparty/greybox/AmiJS.js");
-		Requirements::javascript("jsparty/greybox/greybox.js");
-		Requirements::css("jsparty/greybox/greybox.css");
+		Requirements::javascript(THIRDPARTY_DIR . "/greybox/AmiJS.js");
+		Requirements::javascript(THIRDPARTY_DIR . "/greybox/greybox.js");
+		Requirements::css(THIRDPARTY_DIR . "/greybox/greybox.css");
 		
-		Requirements::css("cms/css/AssetAdmin.css");
+		Requirements::css(CMS_DIR . "/css/AssetAdmin.css");
 	}
 	
 
@@ -109,18 +109,18 @@ class AssetAdmin extends LeftAndMain {
 	function uploadiframe() {
 		Requirements::clear();
 		
-		Requirements::javascript("jsparty/prototype.js");
-		Requirements::javascript("jsparty/loader.js");
-		Requirements::javascript("jsparty/behaviour.js");
-		Requirements::javascript("jsparty/prototype_improvements.js");
-		Requirements::javascript("jsparty/layout_helpers.js");
-		Requirements::javascript("cms/javascript/LeftAndMain.js");
-		Requirements::javascript("jsparty/multifile/multifile.js");
-		Requirements::css("jsparty/multifile/multifile.css");
-		Requirements::css("cms/css/typography.css");
-		Requirements::css("cms/css/layout.css");
-		Requirements::css("cms/css/cms_left.css");
-		Requirements::css("cms/css/cms_right.css");
+		Requirements::javascript(THIRDPARTY_DIR . "/prototype.js");
+		Requirements::javascript(THIRDPARTY_DIR . "/loader.js");
+		Requirements::javascript(THIRDPARTY_DIR . "/behaviour.js");
+		Requirements::javascript(THIRDPARTY_DIR . "/prototype_improvements.js");
+		Requirements::javascript(THIRDPARTY_DIR . "/layout_helpers.js");
+		Requirements::javascript(CMS_DIR . "/javascript/LeftAndMain.js");
+		Requirements::javascript(THIRDPARTY_DIR . "/multifile/multifile.js");
+		Requirements::css(THIRDPARTY_DIR . "/multifile/multifile.css");
+		Requirements::css(CMS_DIR . "/css/typography.css");
+		Requirements::css(CMS_DIR . "/css/layout.css");
+		Requirements::css(CMS_DIR . "/css/cms_left.css");
+		Requirements::css(CMS_DIR . "/css/cms_right.css");
 		
 		if(isset($data['ID']) && $data['ID'] != 'root') $folder = DataObject::get_by_id("Folder", $data['ID']);
 		else $folder = singleton('Folder');
@@ -506,7 +506,7 @@ JS;
 
 		// Get the folder to be created		
 		if(isset($parentObj->ID)) $filename = $parentObj->FullPath . $p->Name;
-		else $filename = '../assets/' . $p->Name;
+		else $filename = ASSETS_PATH . '/' . $p->Name;
 		
 		// Ensure uniqueness		
 		$i = 2;
@@ -518,8 +518,8 @@ JS;
 		}
 		
 		// Actually create
-		if(!file_exists('../assets')) {
-			mkdir('../assets');
+		if(!file_exists(ASSETS_PATH)) {
+			mkdir(ASSETS_PATH);
 		}
 		mkdir($filename);
 		chmod($filename, Filesystem::$file_create_mask);
@@ -700,7 +700,7 @@ JS;
 	
 	public function deleteUnusedThumbnails() {
 	    foreach($this->getUnusedThumbnailsArray() as $file) {
-	    	unlink("../assets/" . $file); 	
+	    	unlink(ASSETS_PATH . "/" . $file); 	
 	    }
 	    echo "statusMessage('"._t('AssetAdmin.THUMBSDELETED', 'All unused thumbnails have been deleted')."','good')";
 	}
@@ -717,7 +717,7 @@ JS;
 
     private function getUnusedThumbnailsArray() {
     	$allThumbnails = array();
-    	$dirIterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('../assets'));
+    	$dirIterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(ASSETS_PATH));
         foreach ($dirIterator as $file) {
             if($file->isFile()) {
             	if(strpos($file->getPathname(),"_resampled") !== false) {

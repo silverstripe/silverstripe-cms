@@ -27,23 +27,23 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 
 		parent::init();
 
-		Requirements::javascript("jsparty/hover.js");
-		Requirements::javascript("jsparty/scriptaculous/controls.js");
+		Requirements::javascript(THIRDPARTY_DIR . "/hover.js");
+		Requirements::javascript(THIRDPARTY_DIR . "/scriptaculous/controls.js");
 
 		// needed for MemberTableField (Requirements not determined before Ajax-Call)
-		Requirements::javascript("sapphire/javascript/TableListField.js");
-		Requirements::javascript("sapphire/javascript/TableField.js");
-		Requirements::javascript("sapphire/javascript/ComplexTableField.js");
-		Requirements::javascript("cms/javascript/MemberTableField.js");
-		Requirements::css("jsparty/greybox/greybox.css");
-		Requirements::css("sapphire/css/ComplexTableField.css");
+		Requirements::javascript(SAPPHIRE_DIR . "/javascript/TableListField.js");
+		Requirements::javascript(SAPPHIRE_DIR . "/javascript/TableField.js");
+		Requirements::javascript(SAPPHIRE_DIR . "/javascript/ComplexTableField.js");
+		Requirements::javascript(CMS_DIR . "/javascript/MemberTableField.js");
+		Requirements::css(THIRDPARTY_DIR . "/greybox/greybox.css");
+		Requirements::css(SAPPHIRE_DIR . "/css/ComplexTableField.css");
 
-		Requirements::javascript("cms/javascript/SecurityAdmin.js");
-		Requirements::javascript("cms/javascript/SecurityAdmin_left.js");
-		Requirements::javascript("cms/javascript/SecurityAdmin_right.js");
+		Requirements::javascript(CMS_DIR . "/javascript/SecurityAdmin.js");
+		Requirements::javascript(CMS_DIR . "/javascript/SecurityAdmin_left.js");
+		Requirements::javascript(CMS_DIR . "/javascript/SecurityAdmin_right.js");
 
-		Requirements::javascript("jsparty/greybox/AmiJS.js");
-		Requirements::javascript("jsparty/greybox/greybox.js");
+		Requirements::javascript(THIRDPARTY_DIR . "/greybox/AmiJS.js");
+		Requirements::javascript(THIRDPARTY_DIR . "/greybox/greybox.js");
 	}
 
 	public function getEditForm($id) {
