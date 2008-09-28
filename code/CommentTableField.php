@@ -22,7 +22,7 @@ class CommentTableField extends ComplexTableField {
 			$this->sourceFilter[] = "( `Name` LIKE '%$search%' OR `Comment` LIKE '%$search%')";
 		}
 		
-		Requirements::javascript('cms/javascript/CommentTableField.js');
+		Requirements::javascript(CMS_DIR . '/javascript/CommentTableField.js');
 	}
 	
 	function Items() {

@@ -161,8 +161,8 @@ class UserDefinedForm extends Page {
 class UserDefinedForm_Controller extends Page_Controller {
 	
 	function init() {
-		Requirements::javascript('jsparty/prototype-safe.js');
-		Requirements::javascript('jsparty/behaviour.js');
+		Requirements::javascript(THIRDPARTY_DIR . 'jsparty/prototype-safe.js');
+		Requirements::javascript(THIRDPARTY_DIR . 'jsparty/behaviour.js');
 		
 		parent::init();
 	}

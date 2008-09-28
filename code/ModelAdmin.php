@@ -102,17 +102,17 @@ abstract class ModelAdmin extends LeftAndMain {
 			//user_error('ModelAdmin::init(): Invalid Model class', E_USER_ERROR);
 		}
 		
-		Requirements::css('cms/css/ModelAdmin.css'); // standard layout formatting for management UI
-		Requirements::css('cms/css/silverstripe.tabs.css'); // follows the jQuery UI theme conventions
+		Requirements::css(CMS_DIR . 'css/ModelAdmin.css'); // standard layout formatting for management UI
+		Requirements::css(CMS_DIR . 'css/silverstripe.tabs.css'); // follows the jQuery UI theme conventions
 		
-		Requirements::javascript('jsparty/jquery/jquery.js');
-		Requirements::javascript('jsparty/jquery/plugins/livequery/jquery.livequery.js');
-		Requirements::javascript('jsparty/jquery/ui/ui.core.js');
-		Requirements::javascript('jsparty/jquery/ui/ui.tabs.js');
-		Requirements::javascript('jsparty/jquery/plugins/form/jquery.form.js');
-		Requirements::javascript('jsparty/jquery/plugins/effen/jquery.fn.js');
-		Requirements::javascript('jsparty/jquery/jquery_improvements.js');
-		Requirements::javascript('cms/javascript/ModelAdmin.js');
+		Requirements::javascript(THIRDPARTY_DIR . 'jsparty/jquery/jquery.js');
+		Requirements::javascript(THIRDPARTY_DIR . 'jsparty/jquery/plugins/livequery/jquery.livequery.js');
+		Requirements::javascript(THIRDPARTY_DIR . 'jsparty/jquery/ui/ui.core.js');
+		Requirements::javascript(THIRDPARTY_DIR . 'jsparty/jquery/ui/ui.tabs.js');
+		Requirements::javascript(THIRDPARTY_DIR . 'jsparty/jquery/plugins/form/jquery.form.js');
+		Requirements::javascript(THIRDPARTY_DIR . 'jsparty/jquery/plugins/effen/jquery.fn.js');
+		Requirements::javascript(THIRDPARTY_DIR . 'jsparty/jquery/jquery_improvements.js');
+		Requirements::javascript(CMS_DIR . '/javascript/ModelAdmin.js');
 	}
 	
 	/**

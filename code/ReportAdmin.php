@@ -13,22 +13,22 @@ class ReportAdmin extends LeftAndMain {
 		parent::init();
 
 		Requirements::javascript(MCE_ROOT . "tiny_mce_src.js");
-		Requirements::javascript("jsparty/tiny_mce_improvements.js");
+		Requirements::javascript(THIRDPARTY_DIR . "/tiny_mce_improvements.js");
 
-		Requirements::javascript("jsparty/hover.js");
-		Requirements::javascript("jsparty/scriptaculous/controls.js");
+		Requirements::javascript(THIRDPARTY_DIR . "/hover.js");
+		Requirements::javascript(THIRDPARTY_DIR . "/scriptaculous/controls.js");
 		
-		Requirements::javascript("cms/javascript/SecurityAdmin.js");
+		Requirements::javascript(CMS_DIR . "/javascript/SecurityAdmin.js");
         
-    	Requirements::javascript("cms/javascript/LeftAndMain_left.js");
-		Requirements::javascript("cms/javascript/LeftAndMain_right.js");
-    	Requirements::javascript("cms/javascript/CMSMain_left.js");
+    	Requirements::javascript(CMS_DIR . "/javascript/LeftAndMain_left.js");
+		Requirements::javascript(CMS_DIR . "/javascript/LeftAndMain_right.js");
+    	Requirements::javascript(CMS_DIR . "/javascript/CMSMain_left.js");
         
 
-		Requirements::javascript("cms/javascript/ReportAdmin_left.js");
-		Requirements::javascript("cms/javascript/ReportAdmin_right.js");
+		Requirements::javascript(CMS_DIR . "/javascript/ReportAdmin_left.js");
+		Requirements::javascript(CMS_DIR . "/javascript/ReportAdmin_right.js");
 		
-		Requirements::css("cms/css/ReportAdmin.css");		
+		Requirements::css(CMS_DIR . "/css/ReportAdmin.css");		
 		
 		// TODO Find a better solution to integrate optional Requirements in a specific order
 		if(Director::fileExists("ecommerce/css/DataReportCMSMain.css")) {

@@ -123,8 +123,8 @@ class MemberTableField extends ComplexTableField {
 
 		parent::__construct($controller, $name, $sourceClass, $fieldList, $detailFormFields);
 
-		Requirements::javascript('cms/javascript/MemberTableField.js');
-		Requirements::javascript("cms/javascript/MemberTableField_popup.js");
+		Requirements::javascript(CMS_DIR . '/javascript/MemberTableField.js');
+		Requirements::javascript(CMS_DIR . "/javascript/MemberTableField_popup.js");
 
 		// construct the filter and sort
 		if(isset($_REQUEST['MemberOrderByField'])) {
@@ -428,8 +428,8 @@ class MemberTableField_Popup extends ComplexTableField_Popup {
 	function __construct($controller, $name, $fields, $sourceClass, $readonly=false, $validator = null) {
 		parent::__construct($controller, $name, $fields, $sourceClass, $readonly, $validator);
 
-		Requirements::javascript('cms/javascript/MemberTableField.js');
-		Requirements::javascript('cms/javascript/MemberTableField_popup.js');
+		Requirements::javascript(CMS_DIR . '/javascript/MemberTableField.js');
+		Requirements::javascript(CMS_DIR . '/javascript/MemberTableField_popup.js');
 	}
 
 	/**

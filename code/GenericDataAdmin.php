@@ -77,17 +77,17 @@ abstract class GenericDataAdmin extends LeftAndMain {
 		parent::init();
 
 		Requirements::javascript(MCE_ROOT . "tiny_mce_src.js");
-		Requirements::javascript("jsparty/tiny_mce_improvements.js");
+		Requirements::javascript(THIRDPARTY_DIR . "/tiny_mce_improvements.js");
 
-		Requirements::javascript("jsparty/hover.js");
-		Requirements::javascript("jsparty/scriptaculous/controls.js");
+		Requirements::javascript(THIRDPARTY_DIR . "/hover.js");
+		Requirements::javascript(THIRDPARTY_DIR . "/scriptaculous/controls.js");
 
-		Requirements::javascript("cms/javascript/SecurityAdmin.js");
-		Requirements::javascript("cms/javascript/CMSMain_left.js");
+		Requirements::javascript(CMS_DIR . "/javascript/SecurityAdmin.js");
+		Requirements::javascript(CMS_DIR . "/javascript/CMSMain_left.js");
 
-		Requirements::javascript("cms/javascript/GenericDataAdmin_left.js");
-		Requirements::javascript("cms/javascript/GenericDataAdmin_right.js");
-		Requirements::javascript("cms/javascript/SideTabs.js");
+		Requirements::javascript(CMS_DIR . "/javascript/GenericDataAdmin_left.js");
+		Requirements::javascript(CMS_DIR . "/javascript/GenericDataAdmin_right.js");
+		Requirements::javascript(CMS_DIR . "/javascript/SideTabs.js");
 		
 		// We don't want this showing up in every ajax-response, it should always be present in a CMS-environment
 		if(!Director::is_ajax()) {
@@ -98,7 +98,7 @@ abstract class GenericDataAdmin extends LeftAndMain {
 			));
 		}
 
-		Requirements::css("cms/css/GenericDataAdmin.css");
+		Requirements::css(CMS_DIR . "/css/GenericDataAdmin.css");
 
 		//For wrightgroup workshop
 		Requirements::css("writework/css/WorkshopCMSLayout.css");
