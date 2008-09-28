@@ -13,6 +13,14 @@ class RebuildStaticCacheTask extends Controller {
 		StaticPublisher::set_echo_progress(true);
 
 		$page = singleton('Page');
+		if(!$page->hasMethod('allPagesToCache')) {
+			user_error(
+				'RebuildStaticCacheTask::index(): Please define a method "allPagesToCache()" on your Page class to return all pages affected by a cache refresh.', 
+				E_USER_ERROR
+			);
+		}
+		
+		
 		if($_GET['urls']) $urls = $_GET['urls'];
 		else $urls = $page->allPagesToCache();
 
