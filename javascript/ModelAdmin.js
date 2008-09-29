@@ -195,7 +195,15 @@ $(document).ready(function() {
 	$('#Form_ManagedModelsSelect').submit(function(){
 		className = $('select option:selected', this).val();
 		requestPath = $(this).attr('action').replace('ManagedModelsSelect', className + '/add');
-		$('#ModelAdminPanel').fn('loadForm', requestPath);
+		var $button = $(':submit', this);
+		$('#ModelAdminPanel').fn(
+			'loadForm', 
+			requestPath,
+			function() {
+				$button.removeClass('loading');
+				$button = null;
+			}
+		);
 		$('#form_actions_right').remove();
 		return false;
 	});
@@ -218,8 +226,9 @@ $(document).ready(function() {
          * Load a detail editing form into the main edit panel
          * @todo Convert everything to jQuery so that the built-in load method can be used with this instead
          */
-        loadForm: function(url) {
+        loadForm: function(url, successCallback) {
     	    $('#right #ModelAdminPanel').load(url, standardStatusHandler(function(result) {
+				if(typeof(successCallback) == 'function') successCallback.apply();
     			Behaviour.apply(); // refreshes ComplexTableField
     		}));
     	}
