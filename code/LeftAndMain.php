@@ -168,9 +168,6 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/ToggleCompositeField.js');
 		Requirements::css(SAPPHIRE_DIR . '/css/SubmittedFormReportField.css');
 
-		Requirements::javascript(SAPPHIRE_DIR . '/javascript/FieldEditor.js');
-		Requirements::css(SAPPHIRE_DIR . '/css/FieldEditor.css');
-
 		Requirements::css(SAPPHIRE_DIR . '/css/TableListField.css');
 		Requirements::css(SAPPHIRE_DIR . '/css/ComplexTableField.css');
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/TableListField.js');
