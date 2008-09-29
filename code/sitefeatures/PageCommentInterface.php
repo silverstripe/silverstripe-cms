@@ -100,9 +100,9 @@ class PageCommentInterface extends RequestHandlingData {
 	}
 	
 	function PostCommentForm() {
-		Requirements::javascript(THIRDPARTY_DIR . 'jsparty/behaviour.js');
-		Requirements::javascript(THIRDPARTY_DIR . 'jsparty/prototype.js');
-		Requirements::javascript(THIRDPARTY_DIR . 'jsparty/scriptaculous/effects.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/behaviour.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/prototype.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/scriptaculous/effects.js');
 		Requirements::javascript(CMS_DIR . '/javascript/PageCommentInterface.js');
 		
 		
