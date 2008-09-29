@@ -322,7 +322,10 @@ abstract class ModelAdmin extends LeftAndMain {
 	protected function getManagedModels() {
 		$models = $this->stat('managed_models');
 		if(!count($models)) user_error('ModelAdmin::getManagedModels(): 
-			You need to specify at least one DataObject subclass in $managed_models', E_USER_ERROR);
+			You need to specify at least one DataObject subclass in protected static $managed_models.
+			Make sure the visibility of your property is set to "protected"', 
+			E_USER_ERROR
+		);
 		
 		return $models;
 	}
