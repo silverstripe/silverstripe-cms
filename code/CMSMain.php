@@ -592,7 +592,7 @@ JS;
 	 * Send this page on to another user for review
 	 */
 	function submit() {
-
+		Debug::show($this);
 		$page = DataObject::get_by_id("SiteTree", $_REQUEST['ID']);
 		$recipient = DataObject::get_by_id("Member", $_REQUEST['RecipientID']);
 		if(!$recipient) user_error("CMSMain::submit() Can't find recipient #$_REQUEST[RecipientID]", E_USER_ERROR);

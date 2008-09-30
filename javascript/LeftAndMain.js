@@ -418,7 +418,7 @@ Behaviour.register({
 			this.className = type;
 			Element.setOpacity(this, 1);
 
-			this.style.position = 'absolute';
+			//this.style.position = 'absolute';
 			this.style.display = '';
 			this.style.visibility = '';
 

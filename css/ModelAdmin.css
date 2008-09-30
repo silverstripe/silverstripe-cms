@@ -69,6 +69,10 @@ body.ModelAdmin #right{
 	overflow:auto;
 }
 
+body.ModelAdmin #right #ModelAdminPanel {
+	padding-bottom: 30px;
+}
+
 body.ModelAdmin #right table.results {
 	margin:6px;
 	padding:0;
@@ -100,4 +104,17 @@ body.ModelAdmin #Form_ImportForm_holder dt {
 	float: left;
 	width: 10em;
 	margin-right: 2em;
+}
+
+body.ModelAdmin #statusMessage {
+	position: fixed;
+	left: auto;
+	bottom: 35px;
+}
+
+/* Form */
+body.ModelAdmin #right .ajaxActions {
+	position: fixed;
+	right: 30px;
+	bottom: 35px;
 }
