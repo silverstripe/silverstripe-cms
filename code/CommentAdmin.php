@@ -260,6 +260,27 @@ JS;
 				statusMessage("Accepted $numComments comments.");
 JS;
 	}
+	
+	/**
+	 * Return the number of moderated comments
+	 */
+	function NumModerated() {
+		return DB::query("SELECT COUNT(*) FROM PageComment WHERE !IsSpam AND !NeedsModeration")->value();
+	}
+
+	/**
+	 * Return the number of unmoderated comments
+	 */
+	function NumUnmoderated() {
+		return DB::query("SELECT COUNT(*) FROM PageComment WHERE !IsSpam AND NeedsModeration")->value();
+	}
+	
+	/**
+	 * Return the number of comments marked as spam
+	 */
+	function NumSpam() {
+		return DB::query("SELECT COUNT(*) FROM PageComment WHERE IsSpam")->value();
+	}
 }
 
 ?>
