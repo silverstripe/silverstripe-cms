@@ -40,9 +40,7 @@ class AssetAdmin extends LeftAndMain {
 	);
 
 	public function Link($action = null) {
-		//if(!$action) $action = "index";
-		//return "admin/assets/$action/" . $this->currentPageID();
-		return "admin/assets/$action/";
+		return "admin/assets/$action";
 	}
 	
 	/**
