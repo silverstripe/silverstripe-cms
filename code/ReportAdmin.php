@@ -108,12 +108,10 @@ class ReportAdmin extends LeftAndMain {
 		if(Director::is_ajax()) {
 			SSViewer::setOption('rewriteHashlinks', false);
 			
-			$result = $this->customise(
-				array(
-					'EditForm' => $editForm
-				)
-			)->renderWith($this->getTemplatesWithSuffix('_right'));
-			
+			$result = $this->customise(array(
+				'EditForm' => $editForm
+			))->renderWith($this->getTemplatesWithSuffix('_right'));
+						
 			return $this->getLastFormIn($result);
 		} else {
 			return array();
