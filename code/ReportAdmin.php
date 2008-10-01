@@ -72,7 +72,7 @@ class ReportAdmin extends LeftAndMain {
 				if($subClass != 'Report') $processedReports[] = new $subClass();
 			}
 		}
-		
+
 		$reports = new DataObjectSet($processedReports);
 		
 		return $reports;

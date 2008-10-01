@@ -27,7 +27,7 @@ Behaviour.register({
 				
 				statusMessage("loading...");
 
-				var requestURL = 'admin/reports/showreport/' + id;
+				var requestURL = 'admin/reports/show/' + id;
 				new Ajax.Request(requestURL, {
 					asynchronous : true,
 					method : 'post', 
