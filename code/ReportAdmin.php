@@ -5,7 +5,6 @@
  * @subpackage reports
  */
 class ReportAdmin extends LeftAndMain {
-	static $subitem_class = "GrantObject";
 	
 	static $template_path = null; // defaults to (project)/templates/email
 	
@@ -58,89 +57,142 @@ class ReportAdmin extends LeftAndMain {
 		return "admin/reports/$action";
 	}
 	
-	public function Reports(){
-		$allReports= ClassInfo::subclassesFor("Report");
-		foreach($allReports as $report) {
-			if($report != 'Report') $processedReports[] = new $report();
+	/**
+	 * Return a DataObjectSet of Report subclasses
+	 * that are available for use.
+	 *
+	 * @return DataObjectSet
+	 */
+	public function Reports() {
+		$processedReports = array();
+		$subClasses = ClassInfo::subclassesFor('Report');
+		
+		if($subClasses) {
+			foreach($subClasses as $subClass) {
+				if($subClass != 'Report') $processedReports[] = new $subClass();
+			}
 		}
 		
 		$reports = new DataObjectSet($processedReports);
+		
 		return $reports;
 	}
 	
-	public function showreport($params) {
-	    return $this->showWithEditForm( $params, $this->getReportEditForm( $params['ID'] ) );	
+	/**
+	 * Show a report based on the URL query string.
+	 *
+	 * @param HTTPRequest $request The HTTP request object
+	 */
+	public function show($request) {
+		$params = $request->allParams();
+		
+		return $this->showWithEditForm($params, $this->reportEditFormFor($params['ID']));	
 	}
 
-	protected function showWithEditForm( $params, $editForm ) {
-		if(isset($params['ID'])) {
-			Session::set('currentPage', $params['ID']);
-		}
-		if(isset($params['OtherID'])) {
-			Session::set('currentOtherID', $params['OtherID']);
-		}
-
+	/**
+	 * @TODO What does this do?
+	 *
+	 * @param unknown_type $params
+	 * @param unknown_type $editForm
+	 * @return unknown
+	 */
+	protected function showWithEditForm($params, $editForm) {
+		if(isset($params['ID'])) Session::set('currentPage', $params['ID']);
+		if(isset($params['OtherID'])) Session::set('currentOtherID', $params['OtherID']);
+		
 		if(Director::is_ajax()) {
 			SSViewer::setOption('rewriteHashlinks', false);
-			$result = $this->customise( array( 'EditForm' => $editForm ) )->renderWith($this->getTemplatesWithSuffix("_right"));
+			
+			$result = $this->customise(
+				array(
+					'EditForm' => $editForm
+				)
+			)->renderWith($this->getTemplatesWithSuffix('_right'));
+			
 			return $this->getLastFormIn($result);
-		} else {
-			return array();
 		}
-  }
+		
+		return array();
+	}
   
+  /**
+   * For the current report that the user is viewing,
+   * return a Form instance with the fields for that
+   * report.
+   *
+   * @return Form
+   */
   public function EditForm() {
-		$id = (isset($_REQUEST['ID'])) ? $_REQUEST['ID'] : Session::get('currentPage');
+		$ids = array();
+  		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : Session::get('currentPage');
+		$subClasses = ClassInfo::subclassesFor('Report');
 		
-		$subclasses = ClassInfo::subclassesFor('Report');
-		
-		foreach($subclasses as $class){
-			if($class != 'Report') {
-				$obj = new $class();
-				$ids[] = $obj->getOwnerID();
+		if($subClasses) {
+			foreach($subClasses as $subClass) {
+				if($subClass != 'Report') {
+					$obj = new $subClass();
+					$ids[] = $obj->getOwnerID();
+				}
 			}
 		}
 
-	 	// bdc: do we have any subclasses?
-	    if(sizeof($ids) > 0){
-				if($id && in_array($id, $ids)) return $this->getReportEditForm($id);
-	    }
-	    else {
-				return null;	    	
-	    }
-	   
+		if($id && in_array($id, $ids)) return $this->reportEditFormFor($id);
+		else return false;
 	}
   
-  public function getReportEditForm($id){
-  	if(is_numeric($id))
-  		$page = DataObject::get_by_id("SiteTree", $id);
-		$reportClass = (isset($page)) ? "Report_".$page->ClassName : $id;
+	/**
+	 * Return a Form instance with fields for the
+	 * particular report currently viewed.
+	 * 
+	 * @TODO Dealing with multiple data types for the
+	 * $id parameter is confusing. Ideally, it should
+	 * deal with only one.
+	 *
+	 * @param id|string $id The ID of the report, or class name
+	 * @return Form
+	 */
+	public function reportEditFormFor($id) {
+		$page = false;
+		$fields = new FieldSet();
+		$actions = new FieldSet();
+		
+		if(is_numeric($id)) $page = DataObject::get_by_id('SiteTree', $id);
+		$reportClass = is_object($page) ? 'Report_' . $page->ClassName : $id;
 		
 	  	$obj = new $reportClass();
-		$fields = $obj->getCMSFields();
-			
-		$fields->push($idField = new HiddenField("ID"));
-		$idField->setValue($id);
+	  	if($obj) $fields = $obj->getCMSFields();
 		
-		//$actions = new FieldSet(new FormAction('exporttocsv', 'Export to CVS'));
-		$actions = new FieldSet();
-		$form = new Form($this, "EditForm", $fields, $actions);
+		$idField = new HiddenField('ID');
+		$idField->setValue($id);
+		$fields->push($idField);
+		
+		$form = new Form($this, 'EditForm', $fields, $actions);
 
 		return $form;
 	}
 	
 	/**
-	 * Determine if we have reports and need to display the Reports main menu item
+	 * Determine if we have reports and need
+	 * to display the "Reports" main menu item
+	 * in the CMS.
+	 * 
+	 * The test for an existance of a report
+	 * is done by checking for a subclass of
+	 * "Report" that exists.
 	 *
 	 * @return boolean
 	 */
 	public static function has_reports() {
-		$subclasses = ClassInfo::subclassesFor('Report');
-		foreach($subclasses as $class){
-			if($class != 'Report') {
-				return true;
+		$subClasses = ClassInfo::subclassesFor('Report');
+		
+		if($subClasses) {
+			foreach($subClasses as $subClass) {
+				if($subClass != 'Report') {
+					return true;
+				}
 			}
 		}
+		
 		return false;
 	}
 }
