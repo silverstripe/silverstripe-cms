@@ -110,9 +110,9 @@ class ReportAdmin extends LeftAndMain {
 			)->renderWith($this->getTemplatesWithSuffix('_right'));
 			
 			return $this->getLastFormIn($result);
+		} else {
+			return array();
 		}
-		
-		return array();
 	}
   
   /**
