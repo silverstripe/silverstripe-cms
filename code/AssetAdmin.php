@@ -11,13 +11,13 @@ class AssetAdmin extends LeftAndMain {
 	public static $tree_class = "File";
 	
 	/**
-	 * @see {Upload->allowedMaxFileSize}
+	 * @see Upload->allowedMaxFileSize
 	 * @var int
 	 */
 	public static $allowed_max_file_size;
 	
 	/**
-	 * @see {Upload->allowedExtensions}
+	 * @see Upload->allowedExtensions
 	 * @var array
 	 */
 	public static $allowed_extensions = array();
