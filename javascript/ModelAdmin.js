@@ -23,6 +23,25 @@ $(document).ready(function() {
 	$('input[type=submit]').livequery('click', function() {
 	    $(this).addClass('loading');
 	});
+	
+	$("#right").scroll( function () {
+		positionActionArea();
+	});
+	
+	$(window).resize( function() {
+		positionActionArea();
+	});
+	
+	/*
+	 * Make the status message and ajax action button fixed 
+	 */
+	function positionActionArea() {
+		if ( $.browser.msie && $.browser.version.indexOf("6.", 0)==0 ) {
+			newTopValue = $("#right").scrollTop()+$(window).height()-139;
+			$('.ajaxActions').css('top', newTopValue);
+			$('#statusMessage').css('top', newTopValue);
+		}
+	}
 
 	////////////////////////////////////////////////////////////////// 
 	// Search form 

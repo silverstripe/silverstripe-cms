@@ -107,14 +107,16 @@ body.ModelAdmin #Form_ImportForm_holder dt {
 }
 
 body.ModelAdmin #statusMessage {
-	position: fixed;
-	left: auto;
-	bottom: 35px;
+	position: fixed !important;
+	position: absolute;
+	left: auto !important;
+	bottom: 35px !important;
 }
 
 /* Form */
 body.ModelAdmin #right .ajaxActions {
-	position: fixed;
-	right: 30px;
-	bottom: 35px;
+	position: fixed !important;
+	position: absolute;
+	right: 30px !important;
+	bottom: 35px !important;
 }
