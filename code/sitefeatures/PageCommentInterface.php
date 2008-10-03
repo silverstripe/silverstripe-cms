@@ -229,7 +229,7 @@ class PageCommentInterface_Form extends Form {
 		
 		if(Director::is_ajax()) {
 			if($comment->NeedsModeration){
-				echo _t('PageCommentInterface_Form.AWAITINGMODERATION', "Your comment has been submitted and is now awating moderation.");
+				echo _t('PageCommentInterface_Form.AWAITINGMODERATION', "Your comment has been submitted and is now awaiting moderation.");
 			} else{
 				echo $comment->renderWith('PageCommentInterface_singlecomment');
 			}
