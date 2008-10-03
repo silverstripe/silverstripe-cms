@@ -92,8 +92,7 @@ class StaticExporter extends Controller {
 			$content = file_get_contents("/tmp/static-export/$baseFolder.tar.gz");
 			Filesystem::removeFolder('/tmp/static-export');
 
-			HTTP::sendFileToBrowser($content, "$baseFolder.tar.gz");
-			return null;
+			return HTTPRequest::send_file($content, "$baseFolder.tar.gz");
 			
 		} else {
 			echo _t('StaticExporter.ONETHATEXISTS',"Please specify a folder that exists");
