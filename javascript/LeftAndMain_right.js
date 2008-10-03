@@ -184,7 +184,7 @@ CMSForm.prototype = {
 			data += '&publish=1';
 		}
 		
-		statusMessage("Saving...", null, true);
+		statusMessage(ss.i18n._t('CMSMAIN.SAVING'), null, true);
 		new Ajax.Request(this.action, {
 			method : this.method,
 			postBody: data,
@@ -311,7 +311,7 @@ CMSRightForm.applyTo('#Form_EditForm', 'right');
 
 function action_save_right() {
 	_AJAX_LOADING = true;
-	$('Form_EditForm_action_save').value = 'Saving...';
+	$('Form_EditForm_action_save').value = ss.i18n._t('CMSMAIN.SAVING');
 	$('Form_EditForm_action_save').className = 'action loading';
 	$('Form_EditForm').save(false);
 }
@@ -411,7 +411,7 @@ function autoSave(confirmation, callAfter) {
 		// 	save is still used if confirmation = false
 		var options = {
 			save: function() {
-				statusMessage('saving...', '', true);
+				statusMessage(ss.i18n._t('CMSMAIN.SAVING'), '', true);
 				var i;
 				for(i=0;i<__forms.length;i++) {
 					if(__forms[i].isChanged && __forms[i].isChanged()) {

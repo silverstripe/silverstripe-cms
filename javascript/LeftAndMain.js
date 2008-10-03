@@ -279,7 +279,7 @@ function prepareAjaxActions(actions, formName, tabName) {
 			if(window[this.name + '_' + tabName]) {
 				window[this.name + '_' + tabName](e);
 			} else {
-				statusMessage(ingize(this.value));
+				statusMessage('...');
 				Ajax.SubmitForm(this.ownerForm, this.name, {
 					onSuccess: Ajax.Evaluator,
 					onFailure: ajaxErrorHandler
@@ -291,6 +291,9 @@ function prepareAjaxActions(actions, formName, tabName) {
 	}
 }
 
+/**
+ * @deprecated 2.3 Please use ss.i18n
+ */
 function ingize(val) {
 	var ingWord, suffix;
 	if(!val) val = "process";

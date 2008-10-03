@@ -126,6 +126,7 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(THIRDPARTY_DIR . '/loader.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/hover.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/layout_helpers.js');
+		Requirements::javascript(SAPPHIRE_DIR . "/javascript/i18n.js");
 		
 		Requirements::javascript(MCE_ROOT . 'tiny_mce_src.js');
 		Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/Activator.js');
@@ -584,7 +585,7 @@ JS;
 	 */
 	public function getActionUpdateJS($record) {
 		// Get the new action buttons
-		
+
 		$tempForm = $this->getEditForm($record->ID);
 		$actionList = '';
 		foreach($tempForm->Actions() as $action) {

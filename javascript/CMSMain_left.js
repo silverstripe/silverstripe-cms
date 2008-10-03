@@ -71,10 +71,10 @@ addpage.prototype = {
 		var parentID = st.getIdxOf(st.firstSelected());
 		// TODO: Remove 'new-' code http://open.silverstripe.com/ticket/875
 		if(parentID && parentID.substr(0,3) == 'new') {
-			alert("You have to save a page before adding children underneath it");
+			alert(ss.i18n._t('CMSMAIN.WARNINGSAVEPAGESBEFOREADDING'));
 			
 		} else if( Element.hasClassName( st.firstSelected(), "nochildren" ) ) {
-			alert("You can't add children to the selected node" );
+			alert(ss.i18n._t('CMSMAIN.CANTADDCHILDREN') );
 		} else {
 			$(_HANDLER_FORMS.addpage).elements.ParentID.value = parentID ? parentID : 0;
 		
@@ -93,7 +93,7 @@ addpage.prototype = {
 	},
 	
 	showAddPageError: function(response) {
-		errorMessage('Error adding page', response);
+		errorMessage(ss.i18n._t('CMSMAIN.ERRORADDINGPAGE'), response);
 	}
 }
 
@@ -180,10 +180,13 @@ showonlydrafts.prototype = {
 					Behaviour.apply();
 					$('SiteTreeIsFiltered').value = 1;
 					$('batchactions').multiselectTransform();
-					statusMessage('Filtered tree to only show changed pages','good');
+					statusMessage(ss.i18n._t('CMSMAIN.FILTEREDTREE'),'good');
 				},
 				onFailure : function(response) {
-					errorMessage('Could not filter tree to only show changed pages<br />' + response.responseText);
+					errorMessage(ss.i18n.printf(
+						ss.i18n._t('CMSMAIN.ERRORFILTERPAGES'),
+						response.responseText
+					));
 				}
 			});
 			} else {
@@ -270,10 +273,13 @@ batchActionGlobals = {
 					Behaviour.apply();
 					$('SiteTreeIsFiltered').value = 0;
 					$('batchactions').multiselectTransform();
-					statusMessage('Unfiltered tree','good');
+					statusMessage(ss.i18n._t('CMSMAIN.SUCCESSUNFILTER'),'good');
 				},
 				onFailure : function(response) {
-					errorMessage('Could not unfilter site tree<br />' + response.responseText);
+					errorMessage(ss.i18n.printf(
+						ss.i18n._t('CMSMAIN.ERRORUNFILTER'),
+						response.responseText
+					));
 				}
 			});
 		}
@@ -291,7 +297,7 @@ publishpage.prototype = {
 		if(csvIDs) {		
 			this.elements.csvIDs.value = csvIDs;
 			
-			statusMessage('Publishing pages...');
+			statusMessage(ss.i18n._t('CMSMAIN.PUBLISHINGPAGES'));
 			
 			// Put an AJAXY loading icon on the button
 			$('action_publish_selected').className = 'loading';
@@ -302,11 +308,11 @@ publishpage.prototype = {
 					treeactions.closeSelection($('batchactions'));
 				},
 				onFailure : function(response) {
-					errorMessage('Error publishing pages', response);
+					errorMessage(ss.i18n._t('CMSMAIN.ERRORPUBLISHING'), response);
 				}
 			});
 		} else {
-			alert("Please select at least 1 page.");
+			alert(ss.i18n._t('CMSMAIN.SELECTONEPAGE'));
 		}
 
 		return false;
@@ -325,10 +331,13 @@ deletepage.prototype = {
 		if(csvIDs || batchActionGlobals.newNodes.length > 0) {
 			batchActionGlobals.count += batchActionGlobals.newNodes.length;
 			
-			if(confirm("Do you really want to delete the " + batchActionGlobals.count + " marked pages?")) {
+			if(confirm(ss.i18n.printf(
+				ss.i18n._t('CMSMAIN.REALLYDELETEPAGES'),
+				batchActionGlobals.count
+			))) {
 				this.elements.csvIDs.value = csvIDs;
 				
-				statusMessage('Deleting pages...');
+				statusMessage(ss.i18n._t('CMSMAIN.DELETINGPAGES'));
 				// TODO: Remove 'new-' code http://open.silverstripe.com/ticket/875	
 				for( var idx = 0; idx < batchActionGlobals.newNodes.length; idx++ ) {
 					var newNode = $('sitetree').getTreeNodeByIdx( batchActionGlobals.newNodes[idx] );
@@ -351,13 +360,13 @@ deletepage.prototype = {
 						treeactions.closeSelection($('batchactions'));
 					},
 					onFailure : function(response) {
-						errorMessage('Error deleting pages', response);
+						errorMessage(ss.i18n._t('CMSMAIN.ERRORDELETINGPAGES'), response);
 					}
 				});
 			}
 			
 		} else {
-			alert("Please select at least 1 page.");
+			alert(ss.i18n._t('CMSMAIN.SELECTONEPAGE'));
 		}
 
 		return false;

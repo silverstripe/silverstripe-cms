@@ -336,7 +336,7 @@ SiteTreeNode.prototype = {
 		var currentlyOpenPageID = 0;
 		if($('Form_EditForm').elements.ID) currentlyOpenPageID = $('Form_EditForm').elements.ID.value;
 
-		statusMessage('saving...', '', true);
+		statusMessage(ss.i18n._t('CMSMAIN.SAVING'), '', true);
 		new Ajax.Request(SiteTreeHandlers.parentChanged_url, {
 			method : 'post', 
 			postBody : 'ID=' + node.getIdx() + '&ParentID=' + newParent.getIdx() + '&CurrentlyOpenPageID=' + currentlyOpenPageID,
@@ -355,7 +355,7 @@ SiteTreeNode.prototype = {
 	 * movedNode is the node that actually got moved to trigger this resorting
 	 */
 	onOrderChanged : function(nodeList, movedNode) {
-		statusMessage('saving...', '', true);
+		statusMessage(ss.i18n._t('CMSMAIN.SAVING'), '', true);
 
 		var i, parts = Array();
 		sort = 0;

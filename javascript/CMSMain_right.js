@@ -1,16 +1,16 @@
 function action_publish_right() {
-	$('Form_EditForm_action_publish').value = 'Publishing...';
+	$('Form_EditForm_action_publish').value = ss.i18n._t('CMSMAIN.PUBLISHING');
 	$('Form_EditForm_action_publish').className = 'action loading';
 	var publish = true;
 	$('Form_EditForm').save(false, null, 'save', publish);
 }
 function action_revert_right() {
-	$('Form_EditForm_action_revert').value = 'Restoring...';
+	$('Form_EditForm_action_revert').value = ss.i18n._t('CMSMAIN.RESTORING');
 	$('Form_EditForm_action_revert').className = 'action loading';
 	Ajax.SubmitForm('Form_EditForm', 'action_revert', {
 		onSuccess : Ajax.Evaluator,
 		onFailure : function(response) {
-			errorMessage('Error reverting to live content', response);
+			errorMessage(ss.i18n._t('CMSMAIN.ERRORREVERTING'), response);
 		}
 	});
 }
