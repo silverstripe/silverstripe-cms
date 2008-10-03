@@ -85,20 +85,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/UpdateURL.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/tabstrip/tabstrip.js');		
 		
-		/**
-		 * HACK ALERT: Project-specific requirements
-		 * 
-		 * We need a better way of including all of the CSS that *might* be used by this application.
-		 * Perhaps the ajax responses can include some instructions to go get more CSS / JavaScript?
-		 */
-		Requirements::css("survey/css/SurveyFilter.css");
-		Requirements::javascript("survey/javascript/SurveyResponses.js");
-		Requirements::javascript("survey/javascript/FormResponses.js");
-		Requirements::javascript("parents/javascript/NotifyMembers.js");
-		Requirements::css("tourism/css/SurveyCMSMain.css");
-		Requirements::javascript("tourism/javascript/QuotasReport.js");
 		Requirements::javascript(SAPPHIRE_DIR . "/javascript/ReportField.js");
-		Requirements::javascript("ptraining/javascript/BookingList.js");
 		Requirements::javascript("forum/javascript/ForumAccess.js");
 		Requirements::javascript('gallery/javascript/GalleryPage_CMS.js');
 	}
