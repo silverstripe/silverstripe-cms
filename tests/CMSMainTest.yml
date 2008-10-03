@@ -12,8 +12,10 @@ Page:
       URLSegment: home
 
 Group:
-    admin:
-        Title: Administrators
+   admin:
+      Title: Administrators
+   empty:
+      Title: Empty Group
         
 Member:
     admin:
