@@ -246,6 +246,7 @@ ul.tree span.modified,
 
 #treepanes table tbody td {
 	font-size: 11px;
+	padding:0 2px;
 }
 
 #treepanes table tbody tr.odd td {
