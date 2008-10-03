@@ -276,7 +276,7 @@ $(document).ready(function() {
 	            statusMessage(xhr.statusText, "good");
 	            $(this).each(callback, [response, status, xhr]);
 			} else {
-	            errorMessage('Server Error', xhr.statusText);
+	            statusMessage('Server Error', xhr.statusText, 'bad');
 	            if(failureCallback) $(this).each(failureCallback, [response, status, xhr]);
 			}
 	    }
