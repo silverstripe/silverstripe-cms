@@ -18,8 +18,6 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'CMSMAIN.PUBLISHING' : 'Publishing...',
 		'CMSMAIN.RESTORING': 'Restoring...',
 		'CMSMAIN.ERRORREVERTING': 'Error reverting to live content',
-		'CMSMAIN.SAVING' : 'saving...',
-		
-		
+		'CMSMAIN.SAVING' : 'saving...'
 	});
 }
