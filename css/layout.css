@@ -447,6 +447,12 @@ iframe {
 #contentPanel h2 {
 	margin: -5px -5px 0 -5px;
 }
+	#contentPanel #Image h2 {
+		margin: 0;
+		background: none;
+		color: #555;
+		height: auto;
+	}
 #contentPanel select {
 	width: 186px;
 	padding: 1px 0;
