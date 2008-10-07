@@ -497,7 +497,7 @@ class ModelAdmin_CollectionController extends Controller {
 	 */
 	function search($request, $form) {
 		// Get the results form to be rendered
-		$resultsForm = $this->ResultsForm($form->getData());
+		$resultsForm = $this->ResultsForm(array_merge($form->getData(), $request));
 		// Before rendering, let's get the total number of results returned
 		$tableField = $resultsForm->Fields()->fieldByName($this->modelClass);
 		$numResults = $tableField->TotalCount();
@@ -554,6 +554,7 @@ class ModelAdmin_CollectionController extends Controller {
 		$tf->setShowPagination(true);
 		// @todo Remove records that can't be viewed by the current user
 		$tf->setPermissions(array_merge(array('view','export'), TableListField::permissions_for_object($this->modelClass)));
+		
 		$url = '<a href=\"' . $this->Link() . '/$ID/edit\">$value</a>';
 		$tf->setFieldFormatting(array_combine(array_keys($summaryFields), array_fill(0,count($summaryFields), $url)));
 
