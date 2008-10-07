@@ -121,10 +121,6 @@ class MemberTableField extends ComplexTableField {
 		// TODO Not implemented yet
 		if(isset($_REQUEST['ctf'][$this->Name()]['GroupID']) && is_numeric($_REQUEST['ctf'][$this->Name()]['GroupID'])) {
 			$this->sourceFilter[] = "`GroupID`='{$_REQUEST['ctf'][$this->Name()]['GroupID']}'";
-		} elseif($this->group) {
-			//$this->sourceFilter[] = "`GroupID`='{$this->group->ID}'";
-			// If the table is not clean (without duplication), the  total and navigation wil not work well, so uncheck the big line below
-			$this->sourceFilter[] = "`Group_Members`.`ID` IN (SELECT `ID` FROM `Group_Members` WHERE `GroupID`='{$this->group->ID}' GROUP BY `MemberID` HAVING MIN(`ID`))";
 		}
 
 		$this->sourceJoin = " INNER JOIN `Group_Members` ON `MemberID`=`Member`.`ID`";
