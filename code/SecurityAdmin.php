@@ -5,8 +5,10 @@
  * @subpackage security
  */
 class SecurityAdmin extends LeftAndMain implements PermissionProvider {
-	static $tree_class = "Group";
-	static $subitem_class = "Member";
+
+	static $tree_class = 'Group';
+	
+	static $subitem_class = 'Member';
 	
 	static $allowed_actions = array(
 		'addgroup',
