@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Base "abstract" class for all Report classes
  * viewable in the Reports top menu section of CMS.
