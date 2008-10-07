@@ -208,7 +208,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		$siteTree = $obj->getChildrenAsUL("",
 			' "<li id=\"record-$child->ID\" class=\"$child->class " . ($child->Locked ? " nodelete" : "") . ' .
 			' ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
-			' "<a href=\"" . Director::link("admin", "show", $child->ID) . "\" >" . $child->TreeTitle() . "</a>" ',$this);
+			' "<a href=\"admin/security/show/$child->ID\" >" . $child->TreeTitle() . "</a>" ',$this);
 
 		$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\">" .
 						"<li id=\"record-0\" class=\"Root\">" .
@@ -255,9 +255,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	}
 
 	public function Link($action = null) {
-		//if(!$action) $action = "index";
-		//return "admin/security/$action/" . $this->currentPageID();
-		return "admin/security/$action/";
+		return "admin/security/$action";
 	}
 
 	public function listmembers( $baseGroup = null ) {
