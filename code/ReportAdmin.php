@@ -134,7 +134,7 @@ class ReportAdmin extends LeftAndMain {
 			foreach($subClasses as $subClass) {
 				if($subClass != 'Report') {
 					$obj = new $subClass();
-					$ids[] = $obj->getOwnerID();
+					$ids[] = $obj->ID();
 				}
 			}
 		}
