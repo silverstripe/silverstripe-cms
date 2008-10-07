@@ -2,9 +2,10 @@
 /**
  * Reports section of the CMS.
  * 
- * @TODO If reports need to subclass Report in order
- * to show, then why don't we have an abstract Report
- * class around?'
+ * All reports that should show in the ReportAdmin section
+ * of the CMS need to subclass Report.
+ * 
+ * @see Report
  * 
  * @package cms
  * @subpackage reports
@@ -16,44 +17,18 @@ class ReportAdmin extends LeftAndMain {
 	public function init() {
 		parent::init();
 		
-		// @TODO determine what is not necessary to include here
-		Requirements::javascript(MCE_ROOT . "tiny_mce_src.js");
-		Requirements::javascript(THIRDPARTY_DIR . "/tiny_mce_improvements.js");
+		Requirements::javascript(CMS_DIR . '/javascript/ReportAdmin_left.js');
+		Requirements::javascript(CMS_DIR . '/javascript/ReportAdmin_right.js');
+
+		Requirements::css(CMS_DIR . '/css/ReportAdmin.css');		
 		
-		Requirements::javascript(THIRDPARTY_DIR . "/hover.js");
-		Requirements::javascript(THIRDPARTY_DIR . "/scriptaculous/controls.js");
-		
-		Requirements::javascript(CMS_DIR . "/javascript/SecurityAdmin.js");
-        
-		Requirements::javascript(CMS_DIR . "/javascript/LeftAndMain_left.js");
-		Requirements::javascript(CMS_DIR . "/javascript/LeftAndMain_right.js");
-		Requirements::javascript(CMS_DIR . "/javascript/CMSMain_left.js");
-		
-		Requirements::javascript(CMS_DIR . "/javascript/ReportAdmin_left.js");
-		Requirements::javascript(CMS_DIR . "/javascript/ReportAdmin_right.js");
-		
-		Requirements::css(CMS_DIR . "/css/ReportAdmin.css");		
-		
-		// TODO Find a better solution to integrate optional Requirements in a specific order
-		if(Director::fileExists("ecommerce/css/DataReportCMSMain.css")) {
-			Requirements::css("ecommerce/css/DataReportCMSMain.css");		
-		}
-		if(Director::fileExists("ecommerce/css/DataReportCMSMain.css")) {
-			Requirements::javascript("ecommerce/javascript/DataReport.js");		
-		}
-		if(Director::fileExists(project() . "/css/DataReportCMSMain.css")) {
-			Requirements::css(project() . "/css/DataReportCMSMain.css");		
-		}
-		if(Director::fileExists(project() . "/css/DataReportCMSMain.css")) {
-			Requirements::javascript(project() . "/javascript/DataReport.js");		
-		}
-		
-		// We don't want this showing up in every ajax-response, it should always be present in a CMS-environment
+		// We don't want this showing up in every ajax-response, it should
+		// always be present in a CMS environment
 		if(!Director::is_ajax()) {
-			Requirements::javascriptTemplate("cms/javascript/tinymce.template.js", array(
-				"ContentCSS" => project() . "/css/editor.css",
-				"BaseURL" => Director::absoluteBaseURL(),
-				"Lang" => i18n::get_tinymce_lang()
+			Requirements::javascriptTemplate(CMS_DIR . '/javascript/tinymce.template.js', array(
+				'ContentCSS' => project() . '/css/editor.css',
+				'BaseURL' => Director::absoluteBaseURL(),
+				'Lang' => i18n::get_tinymce_lang()
 			));
 		}
 	}
@@ -113,9 +88,9 @@ class ReportAdmin extends LeftAndMain {
 			))->renderWith($this->getTemplatesWithSuffix('_right'));
 						
 			return $this->getLastFormIn($result);
-		} else {
-			return array();
 		}
+		
+		return array();
 	}
 	
 	/**
