@@ -271,7 +271,6 @@ $lang['pt_BR']['StaticExporter']['EXPORTTO'] = 'Exportar para a pasta';
 $lang['pt_BR']['StaticExporter']['FOLDEREXPORT'] = 'Pasta para exportar para';
 $lang['pt_BR']['StaticExporter']['NAME'] = 'Relatório estático';
 $lang['pt_BR']['StaticExporter']['ONETHATEXISTS'] = 'Especifique uma pasta que existe';
-$lang['pt_BR']['SubmittedFormEmail.ss']['SUBMITTED'] = 'Os seguintes dados foram submetidos ao seu website:';
 $lang['pt_BR']['TaskList.ss']['BY'] = 'por';
 $lang['pt_BR']['ThumbnailStripField']['NOTAFOLDER'] = 'Isto não é uma pasta';
 $lang['pt_BR']['ThumbnailStripField.ss']['CHOOSEFOLDER'] = '(Selecione uma pasta)';

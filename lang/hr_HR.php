@@ -274,7 +274,6 @@ $lang['hr_HR']['StaticExporter']['EXPORTTO'] = 'Izvezi u taj direktorij';
 $lang['hr_HR']['StaticExporter']['FOLDEREXPORT'] = 'Direktorij za izvoz na';
 $lang['hr_HR']['StaticExporter']['NAME'] = 'Statični exporter';
 $lang['hr_HR']['StaticExporter']['ONETHATEXISTS'] = 'Molimo odredite direktorij koji postoji';
-$lang['hr_HR']['SubmittedFormEmail.ss']['SUBMITTED'] = 'Slijedeći podaci pridodani su Vašoj stranici:';
 $lang['hr_HR']['TaskList.ss']['BY'] = 'by';
 $lang['hr_HR']['ThumbnailStripField']['NOTAFOLDER'] = 'Ovo nije direktorij';
 $lang['hr_HR']['ThumbnailStripField.ss']['CHOOSEFOLDER'] = '(Odaberite direktorij)';

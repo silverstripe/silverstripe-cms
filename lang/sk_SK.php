@@ -273,7 +273,6 @@ $lang['sk_SK']['StaticExporter']['EXPORTTO'] = 'Exportovať do tohto adresára';
 $lang['sk_SK']['StaticExporter']['FOLDEREXPORT'] = 'Adresár, kam sa má exportovať';
 $lang['sk_SK']['StaticExporter']['NAME'] = 'Statický export';
 $lang['sk_SK']['StaticExporter']['ONETHATEXISTS'] = 'Prosím uveďte adresár, ktorý existuje';
-$lang['sk_SK']['SubmittedFormEmail.ss']['SUBMITTED'] = 'Nasledujúce údaje boli odoslané na Vašu webstránku:';
 $lang['sk_SK']['TaskList.ss']['BY'] = '-';
 $lang['sk_SK']['ThumbnailStripField']['NOTAFOLDER'] = 'Toto nie je adresár';
 $lang['sk_SK']['ThumbnailStripField.ss']['CHOOSEFOLDER'] = '(Vyberte adresár vyššie)';

@@ -263,7 +263,6 @@ $lang['sv_SE']['StaticExporter']['BASEURL'] = 'Bas-URL';
 $lang['sv_SE']['StaticExporter']['EXPORTTO'] = 'Exportera till den mappen';
 $lang['sv_SE']['StaticExporter']['FOLDEREXPORT'] = 'Mapp att exportera till';
 $lang['sv_SE']['StaticExporter']['ONETHATEXISTS'] = 'Var god och ange ett mappnamn som existerar';
-$lang['sv_SE']['SubmittedFormEmail.ss']['SUBMITTED'] = 'Följande uppgifter har lämnats till din sajt:';
 $lang['sv_SE']['TaskList.ss']['BY'] = 'av';
 $lang['sv_SE']['ThumbnailStripField']['NOTAFOLDER'] = 'Det är ingen mapp';
 $lang['sv_SE']['ThumbnailStripField.ss']['CHOOSEFOLDER'] = '(Välj en mapp ovan)';

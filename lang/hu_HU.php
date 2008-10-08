@@ -271,7 +271,6 @@ $lang['hu_HU']['StaticExporter']['EXPORTTO'] = 'Exportálás abba a mappába';
 $lang['hu_HU']['StaticExporter']['FOLDEREXPORT'] = 'Exportálás célmappája';
 $lang['hu_HU']['StaticExporter']['NAME'] = 'Statikus exportáló';
 $lang['hu_HU']['StaticExporter']['ONETHATEXISTS'] = 'Kérünk, adj meg egy létező mappát.';
-$lang['hu_HU']['SubmittedFormEmail.ss']['SUBMITTED'] = 'A következő adat lett elküldve a weboldaladra: ';
 $lang['hu_HU']['TaskList.ss']['BY'] = 'által';
 $lang['hu_HU']['ThumbnailStripField']['NOTAFOLDER'] = 'Ez nem egy mappa.';
 $lang['hu_HU']['ThumbnailStripField.ss']['CHOOSEFOLDER'] = '(Válassz egy mappát felülről)';

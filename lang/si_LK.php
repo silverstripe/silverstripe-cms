@@ -266,7 +266,6 @@ $lang['si_LK']['StaticExporter']['EXPORTTO'] = 'ඵම ගොනුවට අප
 $lang['si_LK']['StaticExporter']['FOLDEREXPORT'] = 'අපනයනය කරන ගොනුව';
 $lang['si_LK']['StaticExporter']['NAME'] = 'ස්තිතික අපනයනය කරන්නා';
 $lang['si_LK']['StaticExporter']['ONETHATEXISTS'] = 'පවතින ගොනුවක් තෝරන්න';
-$lang['si_LK']['SubmittedFormEmail.ss']['SUBMITTED'] = 'පහත දත්ත අඩවියට භාරකරන ලදී';
 $lang['si_LK']['TaskList.ss']['BY'] = 'විසින්';
 $lang['si_LK']['ThumbnailStripField']['NOTAFOLDER'] = 'මෙය ගොනුවක් නොවේ';
 $lang['si_LK']['ThumbnailStripField.ss']['CHOOSEFOLDER'] = '(ඉහතින් ගොනුවක් තෝරන්න)';

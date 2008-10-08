@@ -271,7 +271,6 @@ $lang['cs_CZ']['StaticExporter']['EXPORTTO'] = 'Exportovat do této složky';
 $lang['cs_CZ']['StaticExporter']['FOLDEREXPORT'] = 'Složka, kam se má exportovat';
 $lang['cs_CZ']['StaticExporter']['NAME'] = 'Statický exportér';
 $lang['cs_CZ']['StaticExporter']['ONETHATEXISTS'] = 'Prosím určete existující složku';
-$lang['cs_CZ']['SubmittedFormEmail.ss']['SUBMITTED'] = 'Následující data byla odevzdána na Váš web:';
 $lang['cs_CZ']['TaskList.ss']['BY'] = '-';
 $lang['cs_CZ']['ThumbnailStripField']['NOTAFOLDER'] = 'Toto není složka';
 $lang['cs_CZ']['ThumbnailStripField.ss']['CHOOSEFOLDER'] = '(Vyberte složku výše)';

@@ -272,7 +272,6 @@ $lang['ne_NP']['StaticExporter']['EXPORTTO'] = 'त्यो फोल्डर�
 $lang['ne_NP']['StaticExporter']['FOLDEREXPORT'] = 'फोल्डर आयत गने ';
 $lang['ne_NP']['StaticExporter']['NAME'] = 'स्टाटिक एक्स्प्लोरेर';
 $lang['ne_NP']['StaticExporter']['ONETHATEXISTS'] = 'कृपया भएको फोल्डर छन्नुहोस् ';
-$lang['ne_NP']['SubmittedFormEmail.ss']['SUBMITTED'] = 'तलको डाटा तपाईंको वेबसाईटमा बुझाइएको थियो:';
 $lang['ne_NP']['TaskList.ss']['BY'] = 'योद्वरा';
 $lang['ne_NP']['ThumbnailStripField']['NOTAFOLDER'] = 'यो फोल्डर होइन';
 $lang['ne_NP']['ThumbnailStripField.ss']['CHOOSEFOLDER'] = '(माथिबाट एउटा फोल्डर छन्नुहोस्)';

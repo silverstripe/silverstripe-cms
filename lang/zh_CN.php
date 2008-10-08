@@ -271,7 +271,6 @@ $lang['zh_CN']['StaticExporter']['EXPORTTO'] = '导出到该文件夹';
 $lang['zh_CN']['StaticExporter']['FOLDEREXPORT'] = '导出文件夹';
 $lang['zh_CN']['StaticExporter']['NAME'] = '网站静态拷贝导出器';
 $lang['zh_CN']['StaticExporter']['ONETHATEXISTS'] = '请指定一已存在的文件夹';
-$lang['zh_CN']['SubmittedFormEmail.ss']['SUBMITTED'] = '下列数据已被提交给您的网站：';
 $lang['zh_CN']['TaskList.ss']['BY'] = '作者：';
 $lang['zh_CN']['ThumbnailStripField']['NOTAFOLDER'] = '这并非一个文件夹';
 $lang['zh_CN']['ThumbnailStripField.ss']['CHOOSEFOLDER'] = '（选择上面的一个文件夹）';

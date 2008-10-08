@@ -272,7 +272,6 @@ $lang['zh_TW']['StaticExporter']['EXPORTTO'] = '匯出至那個資料夾';
 $lang['zh_TW']['StaticExporter']['FOLDEREXPORT'] = '資料夾匯出至';
 $lang['zh_TW']['StaticExporter']['NAME'] = '網站靜態匯出';
 $lang['zh_TW']['StaticExporter']['ONETHATEXISTS'] = '請選擇存在的資料夾';
-$lang['zh_TW']['SubmittedFormEmail.ss']['SUBMITTED'] = '下列的資料被送到您的網站：';
 $lang['zh_TW']['TaskList.ss']['BY'] = '由';
 $lang['zh_TW']['ThumbnailStripField']['NOTAFOLDER'] = '這不是一個資料夾';
 $lang['zh_TW']['ThumbnailStripField.ss']['CHOOSEFOLDER'] = '(請選擇上面的一個資料夾)';

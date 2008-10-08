@@ -290,7 +290,6 @@ $lang['eo_XX']['StaticExporter']['EXPORTTO'] = 'Eksportu al tiu teko';
 $lang['eo_XX']['StaticExporter']['FOLDEREXPORT'] = 'Teko al kiu eksporti';
 $lang['eo_XX']['StaticExporter']['NAME'] = 'Statika eksportilo';
 $lang['eo_XX']['StaticExporter']['ONETHATEXISTS'] = 'Bonvolu specifi tekon ekzistantan';
-$lang['eo_XX']['SubmittedFormEmail.ss']['SUBMITTED'] = 'La sekvaj donitaĵoj estas senditaj al via retejo:';
 $lang['eo_XX']['TaskList.ss']['BY'] = 'de';
 $lang['eo_XX']['ThumbnailStripField']['NOTAFOLDER'] = 'Ĉi tiu ne estas teko';
 $lang['eo_XX']['ThumbnailStripField.ss']['CHOOSEFOLDER'] = '(Elektu tekon supre)';

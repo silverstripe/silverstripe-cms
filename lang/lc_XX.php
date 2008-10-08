@@ -276,7 +276,6 @@ $lang['lc_XX']['StaticExporter']['EXPORTTO'] = 'EXPORT 2 DAT FOLDR';
 $lang['lc_XX']['StaticExporter']['FOLDEREXPORT'] = 'FOLDR 2 EXPORT 2';
 $lang['lc_XX']['StaticExporter']['NAME'] = 'STATIC EXPORTR';
 $lang['lc_XX']['StaticExporter']['ONETHATEXISTS'] = 'PLZ SPECIFY FOLDR DAT EXISTS';
-$lang['lc_XX']['SubmittedFormEmail.ss']['SUBMITTED'] = 'TEH FOLLOWIN DATA WUZ SUBMITTD 2 UR WEBSIET:';
 $lang['lc_XX']['TaskList.ss']['BY'] = 'BY';
 $lang['lc_XX']['ThumbnailStripField']['NOTAFOLDER'] = 'DIS AR TEH NOT FOLDR';
 $lang['lc_XX']['ThumbnailStripField.ss']['CHOOSEFOLDER'] = '(PIK FOLDR ABOOV)';
