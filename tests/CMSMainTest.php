@@ -32,4 +32,51 @@ class CMSMainTest extends SapphireTest {
 		*/
 	}
 	
+	/**
+	 * Test publication of one of every page type
+	 */
+	function testPublishOneOfEachKindOfPage() {
+		return;
+		$classes = ClassInfo::subclassesFor("SiteTree");
+		array_shift($classes);
+		unset($classes['GhostPage']); //Ghost Pages aren't used anymore
+
+		foreach($classes as $class) {
+			$page = new $class();
+			if($class instanceof TestOnly) continue;
+			
+			$page->Title = "Test $class page";
+			
+			$page->write();
+			$this->assertEquals("Test $class page", DB::query("SELECT Title FROM SiteTree WHERE ID = $page->ID")->value());
+			
+			$page->doPublish();
+			$this->assertEquals("Test $class page", DB::query("SELECT Title FROM SiteTree_Live WHERE ID = $page->ID")->value());
+			
+			// Check that you can visit the page
+			Director::test($page->Link());
+		}
+	}
+
+	/**
+	 * Test that getCMSFields works on each page type.
+	 * Mostly, this is just checking that the method doesn't return an error
+	 */
+	function testThatGetCMSFieldsWorksOnEveryPageType() {
+		$classes = ClassInfo::subclassesFor("SiteTree");
+		array_shift($classes);
+		unset($classes['GhostPage']); //Ghost Pages aren't used anymore
+
+		foreach($classes as $class) {
+			$page = new $class();
+			if($class instanceof TestOnly) continue;
+
+			$page->Title = "Test $class page";
+			$page->write();
+			$page->flushCache();
+			$page = DataObject::get_by_id("SiteTree", $page->ID);
+			
+			$this->assertTrue($page->getCMSFields(null) instanceof FieldSet);
+		}
+	}	
 }
