@@ -770,7 +770,7 @@ GBModalDialog.prototype = {
 }
 
 function hideLoading() {
-	$('Loading').style.display = 'none';
+	if($('Loading')) $('Loading').style.display = 'none';
 	Element.removeClassName(document.body, 'stillLoading');
 }
 function baseHref() {
