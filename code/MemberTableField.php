@@ -137,7 +137,7 @@ class MemberTableField extends ComplexTableField {
 	}
 
 	function AddLink() {
-		return "{$this->Link()}&methodName=add";
+		return $this->Link() . '/add';
 	}
 
 	function SearchForm() {
