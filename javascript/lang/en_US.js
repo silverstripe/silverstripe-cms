@@ -12,7 +12,7 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'CMSMAIN.PUBLISHINGPAGES' : 'Publishing pages...',
 		'CMSMAIN.SELECTONEPAGE' : "Please select at least 1 page.",
 		'CMSMAIN.ERRORPUBLISHING' : 'Error publishing pages',
-		'CMSMAIN.REALLYDELETEPAGE' : "Do you really want to delete the %s marked pages?",
+		'CMSMAIN.REALLYDELETEPAGES' : "Do you really want to delete the %s marked pages?",
 		'CMSMAIN.DELETINGPAGES' : 'Deleting pages...',
 		'CMSMAIN.ERRORDELETINGPAGES': 'Error deleting pages',
 		'CMSMAIN.PUBLISHING' : 'Publishing...',
