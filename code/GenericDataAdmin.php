@@ -412,7 +412,7 @@ HTML;
 				$result = $tmpItem;
 			}
 
-			if(strpos('->', $field) !== false) {
+			if(strpos($field, '->') !== false) {
 				list ($field, $caster) = explode("->", $field);
 			}
 			

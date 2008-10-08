@@ -213,7 +213,8 @@ SidePanel.prototype = {
 		var srcName = this.id.replace('_holder','');				
 		var id = $('Form_EditForm').elements.ID;
 		if(id) id = id.value; else id = "";
-		return 'admin/' + srcName + '/' + id + '?ajax=1';
+		// This assumes that admin/cms/ refers to CMSMain
+		return 'admin/cms/' + srcName + '/' + id + '?ajax=1';
 	},
 	
 	afterPanelLoaded : function() {

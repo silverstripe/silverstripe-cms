@@ -155,6 +155,9 @@ class RestfulServerTest extends SapphireTest {
 	}
 	
 	public function testUnsupportedMediaType() {
+		$_SERVER['PHP_AUTH_USER'] = 'user@test.com';
+		$_SERVER['PHP_AUTH_PW'] = 'user';
+
 		$url = "/api/v1/RestfulServerTest_Comment/1";
 		$data = "Comment||\/||updated"; // weird format
 		$headers = array('Content-Type' => 'text/weirdformat');

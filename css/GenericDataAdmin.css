@@ -246,5 +246,8 @@ form#Form_EditForm #Form_ExportForm fieldset {
 
 /* Hides from IE-mac \*/
 * html .clear {height: 1%;}
-.clear {display: block;}
+.clear {
+	display: block;
+	clear: both;
+}
 /* End hide from IE-mac */

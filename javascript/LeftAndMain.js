@@ -48,7 +48,7 @@ function fixRightWidth() {
 	var rightWidth = bodyWidth - leftWidth - sepWidth -18;
 	
 	// Extra pane in right for insert image/flash/link things
-	if($('contentPanel').style.display != "none") {
+	if($('contentPanel') && $('contentPanel').style.display != "none") {
 		rightWidth -= 210;
 		$('contentPanel').style.left = leftWidth + sepWidth + rightWidth + sepWidth + 23 + 'px';
 	}

@@ -163,6 +163,9 @@ CMSForm.prototype = {
 		if(this.validate && !this.validate()) {
 			// TODO Automatically switch to the tab/position of the first error
 			statusMessage("Validation failed.", "bad");
+			
+			if($('Form_EditForm_action_save') && $('Form_EditForm_action_save').stopLoading) $('Form_EditForm_action_save').stopLoading();
+			
 			return false;
 		}
 		
@@ -171,6 +174,7 @@ CMSForm.prototype = {
 			__form.resetElements();
 			if(__callAfter) __callAfter();
 			if(__form.notify) __form.notify('PageSaved', __form.elements.ID.value);
+			if($('Form_EditForm_action_save') && $('Form_EditForm_action_save').stopLoading) $('Form_EditForm_action_save').stopLoading();
 			_AJAX_LOADING = false;
 		}
 		
@@ -191,6 +195,7 @@ CMSForm.prototype = {
 			onSuccess : success,
 			onFailure : function(response) {
 				errorMessage('Error saving content', response);
+				if($('Form_EditForm_action_save') && $('Form_EditForm_action_save').stopLoading) $('Form_EditForm_action_save').stopLoading();
 				_AJAX_LOADING = false;
 			}
 		});
@@ -308,11 +313,17 @@ CMSRightForm.prototype = {
 CMSForm.applyTo('#Form_SubForm', 'rightbottom');
 CMSRightForm.applyTo('#Form_EditForm', 'right');
 
-
 function action_save_right() {
 	_AJAX_LOADING = true;
 	$('Form_EditForm_action_save').value = ss.i18n._t('CMSMAIN.SAVING');
 	$('Form_EditForm_action_save').className = 'action loading';
+	$('Form_EditForm_action_save').stopLoading = function() {
+		if($('Form_EditForm_action_save') && $('Form_EditForm_action_save').className.indexOf('loading') != -1) {
+			$('Form_EditForm_action_save').value = 'Save';
+			Element.removeClassName($('Form_EditForm_action_save'), 'loading');
+		}
+	}	
+	
 	$('Form_EditForm').save(false);
 }
 

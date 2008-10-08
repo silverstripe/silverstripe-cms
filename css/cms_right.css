@@ -326,7 +326,7 @@
  * Autocomplete
  */
 .autocomplete {
-	background: #eee;
+	background: white;
 }
 	.autocomplete ul {
 		border: 1px solid #aaa;
@@ -492,3 +492,16 @@ div.originallang_holder.field.CompositeField.nolabel {
 	cursor: pointer;
 }
 
+.right form .field.confirmedpassword.nolabel .middleColumn {
+	background-color: #fff;	
+	padding: 0px;
+}
+
+	.right form .field.confirmedpassword.nolabel .middleColumn .middleColumn {
+		background-color: #e9e9e9;
+		padding: 3px;
+	}
+	
+.autocompleteoptions {
+	background-color: white;
+}
