@@ -107,6 +107,8 @@ class MemberTableField extends ComplexTableField {
 			$this->sourceSort = '`' . Convert::raw2sql($_REQUEST['MemberOrderByField']) . '`' . Convert::raw2sql( $_REQUEST['MemberOrderByOrder'] );
 		}
 
+		$SNG_member = singleton('Member');
+		
 		// search
 		$SQL_search = isset($_REQUEST['MemberSearch']) ? Convert::raw2sql($_REQUEST['MemberSearch']) : null;
 		if(!empty($_REQUEST['MemberSearch'])) {
