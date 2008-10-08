@@ -3,7 +3,7 @@
  * Base "abstract" class for all Report classes
  * viewable in the Reports top menu section of CMS.
  */
-class Report extends ViewableData {
+class SSReport extends ViewableData {
 
 	/**
 	 * This is the title of the report,

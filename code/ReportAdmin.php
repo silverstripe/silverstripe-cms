@@ -38,18 +38,18 @@ class ReportAdmin extends LeftAndMain {
 	}
 	
 	/**
-	 * Return a DataObjectSet of Report subclasses
+	 * Return a DataObjectSet of SSReport subclasses
 	 * that are available for use.
 	 *
 	 * @return DataObjectSet
 	 */
 	public function Reports() {
 		$processedReports = array();
-		$subClasses = ClassInfo::subclassesFor('Report');
+		$subClasses = ClassInfo::subclassesFor('SSReport');
 		
 		if($subClasses) {
 			foreach($subClasses as $subClass) {
-				if($subClass != 'Report') $processedReports[] = new $subClass();
+				if($subClass != 'SSReport') $processedReports[] = new $subClass();
 			}
 		}
 		
@@ -103,11 +103,11 @@ class ReportAdmin extends LeftAndMain {
 	public function EditForm() {
 		$ids = array();
 		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : Session::get('currentPage');
-		$subClasses = ClassInfo::subclassesFor('Report');
+		$subClasses = ClassInfo::subclassesFor('SSReport');
 		
 		if($subClasses) {
 			foreach($subClasses as $subClass) {
-				if($subClass != 'Report') {
+				if($subClass != 'SSReport') {
 					$obj = new $subClass();
 					$ids[] = $obj->ID();
 				}
@@ -135,7 +135,7 @@ class ReportAdmin extends LeftAndMain {
 		$actions = new FieldSet();
 		
 		if(is_numeric($id)) $page = DataObject::get_by_id('SiteTree', $id);
-		$reportClass = is_object($page) ? 'Report_' . $page->ClassName : $id;
+		$reportClass = is_object($page) ? 'SSReport_' . $page->ClassName : $id;
 		
 		$obj = new $reportClass();
 		if($obj) $fields = $obj->getCMSFields();
@@ -156,16 +156,16 @@ class ReportAdmin extends LeftAndMain {
 	 * 
 	 * The test for an existance of a report
 	 * is done by checking for a subclass of
-	 * "Report" that exists.
+	 * "SSReport" that exists.
 	 *
 	 * @return boolean
 	 */
 	public static function has_reports() {
-		$subClasses = ClassInfo::subclassesFor('Report');
+		$subClasses = ClassInfo::subclassesFor('SSReport');
 		
 		if($subClasses) {
 			foreach($subClasses as $subClass) {
-				if($subClass != 'Report') {
+				if($subClass != 'SSReport') {
 					return true;
 				}
 			}
