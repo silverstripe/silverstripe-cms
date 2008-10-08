@@ -722,8 +722,8 @@ HTML;
 	 */
 	function sidereport() {
 		$reportClass = $this->urlParams['ID'];
-		$report = new $reportClass();
-		return $report->getHTML();
+		$report = ClassInfo::exists($reportClass) ? new $reportClass() : false;
+		return $report ? $report->getHTML() : false;
 	}
 	/**
 	 * Get the versions of the current page
