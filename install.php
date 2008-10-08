@@ -456,8 +456,11 @@ class InstallRequirements {
 			$this->warning($testDetails);
 		} else {
 			list($majorRequested, $minorRequested) = explode('.', $version);
-			list($majorHas, $minorHas) = explode('.', mysql_get_server_info());
-			
+			$result = mysql_query('SELECT VERSION()');
+			$row=mysql_fetch_row($result);
+			$version = ereg_replace("([A-Za-z-])", "", $row[0]);
+			list($majorHas, $minorHas) = explode('.', substr(trim($version), 0, 3));
+						
 			if(($majorHas > $majorRequested) || ($majorHas == $majorRequested && $minorHas >= $minorRequested)) {
 				return true;
 			} else {
