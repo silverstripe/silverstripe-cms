@@ -300,6 +300,35 @@ class MemberTableField extends ComplexTableField {
 	}
 
 	/**
+	 * Same behaviour as parent class, but adds the
+	 * member to the passed GroupID.
+	 *
+	 * @return string
+	 */
+	function saveComplexTableField($data, $form, $params) {
+		$className = $this->sourceClass();
+		$childData = new $className();
+		$form->saveInto($childData);
+		$childData->write();
+
+		$childData->Groups()->add($data['GroupID']);
+		
+		$closeLink = sprintf(
+			'<small><a href="' . $_SERVER['HTTP_REFERER'] . '" onclick="javascript:window.top.GB_hide(); return false;">(%s)</a></small>',
+			_t('ComplexTableField.CLOSEPOPUP', 'Close Popup')
+		);
+		$message = sprintf(
+			_t('ComplexTableField.SUCCESSADD', 'Added %s %s %s'),
+			$childData->singular_name(),
+			'<a href="' . $this->Link() . '">' . $childData->Title . '</a>',
+			$closeLink
+		);
+		$form->sessionMessage($message, 'good');
+
+		Director::redirectBack();		
+	}	
+	
+	/**
 	 * Cached version for getting the appropraite members for this particular group.
 	 *
 	 * This includes getting inherited groups, such as groups under groups.
@@ -361,54 +390,6 @@ class MemberTableField_Popup extends ComplexTableField_Popup {
 		Requirements::javascript(CMS_DIR . '/javascript/MemberTableField_popup.js');
 	}
 
-	/**
-	 * Same behaviour as parent class, but adds the member to the passed GroupID.
-	 *
-	 * @return string
-	 */
-	function saveComplexTableField() {
-		$id = (isset($_REQUEST['ctf']['childID'])) ? Convert::raw2sql($_REQUEST['ctf']['childID']) : false;
-	
-		if (is_numeric($id) && $id != 0) {
-			$childObject = DataObject::get_by_id($this->sourceClass, $id);
-		} else {
-			$childObject = new $this->sourceClass();
-			$this->fields->removeByName('ID');
-		}
-
-		$this->saveInto($childObject);
-
-		$form = $this->controller->DetailForm($childObject->ID);
-	
-		$valid = $childObject->validate();
-		if($valid->valid()) {
-			$childObject->write();
-
-			// custom behaviour for MemberTableField: add member to current group
-			$childObject->Groups()->add($_REQUEST['GroupID']);
-
-			$form->sessionMessage("Changes saved.",  'good');
-		} else {
-			$form->sessionMessage(Convert::raw2xml("I couldn't save your changes:\n\n" . $valid->starredList()), 'bad');
-		}
-		
-	
-		// if ajax-call in an iframe, update window
-		if(Director::is_ajax()) {
-			// Newly saved objects need their ID reflected in the reloaded form to avoid double saving 
-			$form->loadDataFrom($childObject);
-			
-			if($valid->valid()) {
-				FormResponse::update_dom_id($form->FormName(), $form->formHtmlContent(), true, 'update');
-			} else {
-				FormResponse::load_form($form->forTemplate(), $form->FormName());
-			}
-
-			return FormResponse::respond();
-		} else {
-			Director::redirectBack();
-		}
-	}
 }
 
 class MemberTableField_ItemRequest extends ComplexTableField_ItemRequest {
