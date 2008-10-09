@@ -66,8 +66,6 @@ class SSReport extends ViewableData {
 			)
 		);
 
-		$this->extend('augmentReportCMSFields', $fields);
-
 		return $fields;
 	}
 
