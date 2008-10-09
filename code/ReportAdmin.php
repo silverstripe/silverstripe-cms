@@ -47,7 +47,9 @@ class ReportAdmin extends LeftAndMain {
 		
 		if($subClasses) {
 			foreach($subClasses as $subClass) {
-				if($subClass != 'SSReport') $processedReports[] = new $subClass();
+				if($subClass != 'SSReport') {
+					$processedReports[] = new $subClass();
+				}
 			}
 		}
 		
@@ -159,6 +161,7 @@ class ReportAdmin extends LeftAndMain {
 	 * @return boolean
 	 */
 	public static function has_reports() {
+		global $_ALL_CLASSES;
 		$subClasses = ClassInfo::subclassesFor('SSReport');
 		
 		if($subClasses) {
