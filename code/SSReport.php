@@ -2,6 +2,28 @@
 /**
  * Base "abstract" class for all Report classes
  * viewable in the Reports top menu section of CMS.
+ * 
+ * To include your own report into the ReportAdmin
+ * of the CMS, your subclass of SSReport should
+ * overload these:
+ * 
+ * @link SSReport::$title
+ * @link SSReport::$description
+ * @link SSReport->getReportField()
+ * 
+ * getReportField() should return a FormField instance,
+ * such as a ComplexTableField, or TableListField. This
+ * is the "meat" of the report, as it's designed to
+ * show the actual data for the function of the report.
+ * For example, if this was an order that should show
+ * all orders that aren't printed, then it would show
+ * a TableListField with the filter "Unprinted = 1".
+ * 
+ * @see ReportAdmin for where SSReport instances are
+ * used in the CMS.
+ * 
+ * @package cms
+ * @subpackage reports
  */
 class SSReport extends ViewableData {
 

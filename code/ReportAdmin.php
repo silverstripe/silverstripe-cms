@@ -3,9 +3,7 @@
  * Reports section of the CMS.
  * 
  * All reports that should show in the ReportAdmin section
- * of the CMS need to subclass Report.
- * 
- * @see Report
+ * of the CMS need to subclass {@link SSReport}.
  * 
  * @package cms
  * @subpackage reports
