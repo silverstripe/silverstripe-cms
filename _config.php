@@ -26,4 +26,14 @@ Director::addRules(50, array(
 // Built-in modules
 LeftAndMain::populate_default_menu();
 
+// If there are reports, add the ReportAdmin tab in CMS
+if(ReportAdmin::has_reports()) {
+	LeftAndMain::add_menu_item(
+		'reports', 
+		_t('LeftAndMain.REPORTS', 'Reports', PR_HIGH, 'Menu title'),
+		'admin/reports/', 
+		'ReportAdmin'
+	);
+}
+
 ?>

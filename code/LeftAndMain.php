@@ -977,14 +977,6 @@ JS;
 			"admin/assets/", 
 			"AssetAdmin"
 		);
-		if(ReportAdmin::has_reports()) {
-			self::add_menu_item(
-				"report", 
-				_t('LeftAndMain.REPORTS',"Reports",PR_HIGH,'Menu title'),
-				"admin/reports/", 
-				"ReportAdmin"
-			);
-		}
 		self::add_menu_item(
 			"security", 
 			_t('LeftAndMain.SECURITY',"Security",PR_HIGH,'Menu title'),
