@@ -51,7 +51,7 @@ class SSReport extends ViewableData {
 	 * data objects.
 	 *
 	 * @uses getReportField() to render a table, or similar field for the report. This
-	 * method should be defined on the Report subclasses.
+	 * method should be defined on the SSReport subclasses.
 	 *
 	 * @return FieldSet
 	 */
