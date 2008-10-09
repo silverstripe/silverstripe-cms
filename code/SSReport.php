@@ -15,9 +15,10 @@
  * such as a ComplexTableField, or TableListField. This
  * is the "meat" of the report, as it's designed to
  * show the actual data for the function of the report.
- * For example, if this was an order that should show
+ * For example, if this was a report that should show
  * all orders that aren't printed, then it would show
- * a TableListField with the filter "Unprinted = 1".
+ * a TableListField listing orders that have the property
+ * "Unprinted = 1".
  * 
  * @see ReportAdmin for where SSReport instances are
  * used in the CMS.
