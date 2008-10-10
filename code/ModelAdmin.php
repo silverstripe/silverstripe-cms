@@ -195,7 +195,7 @@ abstract class ModelAdmin extends LeftAndMain {
 			$this,
 			"ManagedModelsSelect",
 			new FieldSet(
-				new DropdownField('ClassName', 'Type', $modelMap)
+				new DropdownField('ClassName', _t('ModelAdmin.CLASSTYPE', 'Type', PR_MEDIUM, 'Type of object to add'), $modelMap)
 			),
 			new FieldSet(
 				new FormAction('add', _t('GenericDataAdmin.CREATE'))
@@ -222,7 +222,7 @@ abstract class ModelAdmin extends LeftAndMain {
 		}
 		
 		$fields = new FieldSet(
-			new DropdownField('ClassName', 'Type', $modelMap),
+			new DropdownField('ClassName', _t('ModelAdmin.CLASSTYPE'), $modelMap),
 			new FileField('_CsvFile', false)
 		);
 		
@@ -239,7 +239,7 @@ abstract class ModelAdmin extends LeftAndMain {
 				$specRelations->push(new ArrayData(array('Name' => $name, 'Description' => $desc)));
 			}
 			$specHTML = $this->customise(array(
-				'ModelName' => $modelName, 
+				'ModelName' => singleton($modelName)->i18n_singular_name(), 
 				'Fields' => $specFields,
 				'Relations' => $specRelations, 
 			))->renderWith('ModelAdmin_ImportSpec');
@@ -284,10 +284,19 @@ abstract class ModelAdmin extends LeftAndMain {
 		$results = $loader->load($_FILES['_CsvFile']['tmp_name']);
 		
 		$message = '';
-		if($results->CreatedCount()) $message .= "Imported " . $results->CreatedCount() . " records. ";
-		if($results->UpdatedCount()) $message .= "Updated " . $results->UpdatedCount() . " records. ";
-		if($results->DeletedCount()) $message .= "Deleted " . $results->DeletedCount() . " records. ";
-		if(!$results->CreatedCount() && !$results->UpdatedCount()) $message .= "Nothing to import";
+		if($results->CreatedCount()) $message .= sprintf(
+			_t('ModelAdmin.IMPORTEDRECORDS', "Imported %s records."), 
+			$results->CreatedCount()
+		);
+		if($results->UpdatedCount()) $message .= sprintf(
+			_t('ModelAdmin.UPDATEDRECORDS', "Updated %s records."),
+			$results->UpdatedCount()
+		);
+		if($results->DeletedCount()) $message .= sprintf(
+			_t('ModelAdmin.DELETEDRECORDS', "Deleted %s records."),
+			$results->DeletedCount()
+		);
+		if(!$results->CreatedCount() && !$results->UpdatedCount()) $message .= _t('ModelAdmin.NOIMPORT', "Nothing to import");
 		
 		Session::setFormMessage('Form_ImportForm', $message, 'good');
 		Director::redirect($_SERVER['HTTP_REFERER'] . '#Form_ImportForm_holder');
@@ -459,14 +468,14 @@ class ModelAdmin_CollectionController extends Controller {
 		$midPoint = ceil(sizeof($source)/2);
 		for($i=0;$i<$midPoint;$i++) {
 			$key1 = $keys[$i];
-			$columnisedSource[$key1] = $source[$key1];
+			$columnisedSource[$key1] = $model->fieldLabel($source[$key1]);
 			// If there are an odd number of items, the last item will be unset
 			if(isset($keys[$i+$midPoint])) {
 				$key2 = $keys[$i+$midPoint];
-				$columnisedSource[$key2] = $source[$key2];
+				$columnisedSource[$key2] = $model->fieldLabel($source[$key2]);
 			}
 		}
-		
+
 		$checkboxes = new CheckboxSetField("ResultAssembly", false, $columnisedSource, $value);
 		
 		$field = new CompositeField(
@@ -479,8 +488,20 @@ class ModelAdmin_CollectionController extends Controller {
 			$checkboxesBlock = new CompositeField(
 				$checkboxes,
 				new LiteralField("ClearDiv", "<div class=\"clear\"></div>"),
-				new LiteralField("TickAllAssemblyLink","<a class=\"form_frontend_function tick_all_result_assembly\" href=\"#\">select all</a>"),
-				new LiteralField("UntickAllAssemblyLink","<a class=\"form_frontend_function untick_all_result_assembly\" href=\"#\">select none</a>")
+				new LiteralField(
+					"TickAllAssemblyLink",
+					sprintf(
+						"<a class=\"form_frontend_function tick_all_result_assembly\" href=\"#\">%s</a>",
+						_t('ModelAdmin.SELECTALL', 'select all')
+					)
+				),
+				new LiteralField(
+					"UntickAllAssemblyLink",
+					sprintf(
+						"<a class=\"form_frontend_function untick_all_result_assembly\" href=\"#\">%s</a>",
+						_t('ModelAdmin.SELECTNONE', 'select none')
+					)
+				)
 			)
 		);
 		
@@ -503,9 +524,20 @@ class ModelAdmin_CollectionController extends Controller {
 		$numResults = $tableField->TotalCount();
 		
 		if($numResults) {
-			return new HTTPResponse($resultsForm->forTemplate(), 200, "Your search found $numResults matching items");
+			return new HTTPResponse(
+				$resultsForm->forTemplate(), 
+				200, 
+				sprintf(
+					_t('ModelAdmin.FOUNDRESULTS',"Your search found %s matching items"), 
+					$numResults
+				)
+			);
 		} else {
-			return new HTTPResponse($resultsForm->forTemplate(), 404, "Your search didn't return any matching items");
+			return new HTTPResponse(
+				$resultsForm->forTemplate(), 
+				404, 
+				_t('ModelAdmin.NORESULTS',"Your search didn't return any matching items")
+			);
 		}
 	}
 	
@@ -589,7 +621,14 @@ class ModelAdmin_CollectionController extends Controller {
 	 * @return unknown
 	 */
 	function add($request) {
-		return new HTTPResponse($this->AddForm()->forAjaxTemplate(), 200, "Fill out this form to add a $this->modelClass to the database.");
+		return new HTTPResponse(
+			$this->AddForm()->forAjaxTemplate(), 
+			200, 
+			sprintf(
+				_t('ModelAdmin.ADDFORM', "Fill out this form to add a %s to the database."),
+				$this->modelClass
+			)
+		);
 	}
 
 	/**
@@ -605,7 +644,9 @@ class ModelAdmin_CollectionController extends Controller {
 		
 		$validator = ($newRecord->hasMethod('getCMSValidator')) ? $newRecord->getCMSValidator() : null;
 		
-		$actions = new FieldSet(new FormAction("doCreate", "Add"));
+		$actions = new FieldSet(
+			new FormAction("doCreate", _t('ModelAdmin.ADDBUTTON', "Add"))
+		);
 		
 		$form = new Form($this, "AddForm", $fields, $actions, $validator);
 
@@ -658,7 +699,14 @@ class ModelAdmin_RecordController extends Controller {
 	function edit($request) {
 		if ($this->currentRecord) {
 			if(Director::is_ajax()) {
-				return new HTTPResponse($this->EditForm()->forAjaxTemplate(), 200, "Loaded '" . $this->currentRecord->Title . "' for editing.");
+				return new HTTPResponse(
+					$this->EditForm()->forAjaxTemplate(), 
+					200, 
+					sprintf(
+						_t('ModelAdmin.LOADEDFOREDITING', "Loaded '%s' for editing."),
+						$this->currentRecord->Title
+					)
+				);
 			} else {
 				// This is really quite ugly; to fix will require a change in the way that customise() works. :-(
 				return $this->parentController->parentController->customise(array(
@@ -669,7 +717,7 @@ class ModelAdmin_RecordController extends Controller {
 				return ;
 			}
 		} else {
-			return "I can't find that item";
+			return _t('ModelAdmin.ITEMNOTFOUND', "I can't find that item");
 		}
 	}
 
@@ -683,15 +731,15 @@ class ModelAdmin_RecordController extends Controller {
 		$validator = ($this->currentRecord->hasMethod('getCMSValidator')) ? $this->currentRecord->getCMSValidator() : null;
 		
 		$actions = new FieldSet(
-			new FormAction("doSave", "Save")
+			new FormAction("doSave", _t('ModelAdmin.SAVE', "Save"))
 		);
 		
 		if($this->currentRecord->canDelete(Member::currentUser())) {
-			$actions->insertFirst($deleteAction = new FormAction('doDelete', 'Delete'));
+			$actions->insertFirst($deleteAction = new FormAction('doDelete', _t('ModelAdmin.DELETE', 'Delete')));
 			$deleteAction->addExtraClass('delete');
 		}
 
-		$actions->insertFirst(new FormAction("goBack", "Back"));
+		$actions->insertFirst(new FormAction("goBack", _t('ModelAdmin.GOBACK', "Back")));
 		
 		$form = new Form($this, "EditForm", $fields, $actions, $validator);
 		$form->loadDataFrom($this->currentRecord);
@@ -744,7 +792,7 @@ class ModelAdmin_RecordController extends Controller {
 			$form = $this->ViewForm();
 			return $form->forAjaxTemplate();
 		} else {
-			return "I can't find that item";
+			return _t('ModelAdmin.ITEMNOTFOUND');
 		}
 	}
 

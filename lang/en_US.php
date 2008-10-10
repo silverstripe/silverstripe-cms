@@ -195,11 +195,6 @@ $lang['en_US']['LeftAndMain']['FILESIMAGES'] = array(
 	PR_HIGH,
 	'Menu title'
 );
-$lang['en_US']['LeftAndMain']['REPORTS'] = array(
-	'Reports',
-	PR_HIGH,
-	'Menu title'
-);
 $lang['en_US']['LeftAndMain']['SECURITY'] = array(
 	'Security',
 	PR_HIGH,
@@ -244,9 +239,24 @@ $lang['en_US']['MemberTableField']['ADD'] = 'Add';
 $lang['en_US']['ComplexTableField']['CLOSEPOPUP'] = 'Close Popup';
 $lang['en_US']['ComplexTableField']['SUCCESSADD'] = 'Added %s %s %s';
 $lang['en_US']['ModelAdmin']['IMPORT'] = 'Import from CSV';
+$lang['en_US']['ModelAdmin']['IMPORTEDRECORDS'] = 'Imported %s records.';
+$lang['en_US']['ModelAdmin']['UPDATEDRECORDS'] = 'Updated %s records.';
+$lang['en_US']['ModelAdmin']['DELETEDRECORDS'] = 'Deleted %s records.';
+$lang['en_US']['ModelAdmin']['NOIMPORT'] = 'Nothing to import';
 $lang['en_US']['ModelAdmin']['CLEAR_SEARCH'] = 'Clear Search';
 $lang['en_US']['ModelAdmin']['CHOOSE_COLUMNS'] = 'Select result columns...';
+$lang['en_US']['ModelAdmin']['SELECTALL'] = 'select all';
+$lang['en_US']['ModelAdmin']['SELECTNONE'] = 'select none';
+$lang['en_US']['ModelAdmin']['FOUNDRESULTS'] = 'Your search found %s matching items';
+$lang['en_US']['ModelAdmin']['NORESULTS'] = 'Your search didn\'t return any matching items';
 $lang['en_US']['ModelAdmin']['SEARCHRESULTS'] = 'Search Results';
+$lang['en_US']['ModelAdmin']['ADDFORM'] = 'Fill out this form to add a %s to the database.';
+$lang['en_US']['ModelAdmin']['ADDBUTTON'] = 'Add';
+$lang['en_US']['ModelAdmin']['LOADEDFOREDITING'] = 'Loaded \'%s\' for editing.';
+$lang['en_US']['ModelAdmin']['ITEMNOTFOUND'] = 'I can\'t find that item';
+$lang['en_US']['ModelAdmin']['SAVE'] = 'Save';
+$lang['en_US']['ModelAdmin']['DELETE'] = 'Delete';
+$lang['en_US']['ModelAdmin']['GOBACK'] = 'Back';
 $lang['en_US']['SecurityAdmin']['ADDMEMBER'] = 'Add Member';
 $lang['en_US']['SecurityAdmin']['SAVE'] = 'Save';
 $lang['en_US']['SecurityAdmin']['SGROUPS'] = 'Security groups';

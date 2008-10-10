@@ -168,7 +168,7 @@ $(document).ready(function() {
 		$.post(formAction, form.formToArray(), function(result){
 			$('#right #ModelAdminPanel').html(result);
 			
-			statusMessage("Saved");
+			statusMessage(ss.i18n._t('ModelAdmin.SAVED'));
 
 			// TODO/SAM: It seems a bit of a hack to have to list all the little updaters here. 
 			// Is livequery a solution?
@@ -182,7 +182,7 @@ $(document).ready(function() {
 	 * RHS panel Delete button
 	 */
 	$('#right #form_actions_right input[name=action_doDelete]').livequery('click', function(){
-		var confirmed = confirm("Do you really want to delete?");
+		var confirmed = confirm(ss.i18n._t('ModelAdmin.REALLYDELETE'));
 		if(!confirmed) return false;
 
 		var form = $('#right form');
@@ -193,7 +193,7 @@ $(document).ready(function() {
 		    // On success, the panel is refreshed and a status message shown.
 			$('#right #ModelAdminPanel').html(result);
 			
-			statusMessage("Deleted");
+			statusMessage(ss.i18n._t('ModelAdmin.DELETED'));
     		$('#form_actions_right').remove();
             
             // To do - convert everything to jQuery so that this isn't needed
