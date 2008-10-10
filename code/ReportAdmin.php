@@ -164,7 +164,6 @@ class ReportAdmin extends LeftAndMain {
 	 * @return boolean
 	 */
 	public static function has_reports() {
-		global $_ALL_CLASSES;
 		$subClasses = ClassInfo::subclassesFor('SSReport');
 		
 		if($subClasses) {
