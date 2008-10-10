@@ -18,6 +18,9 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'CMSMAIN.PUBLISHING' : 'Veröffentliche...',
 		'CMSMAIN.RESTORING': 'Wiederherstellen...',
 		'CMSMAIN.ERRORREVERTING': 'Fehler beim Wiederherstellen des Live-Inhaltes',
-		'CMSMAIN.SAVING' : 'Sichern...'
+		'CMSMAIN.SAVING' : 'Sichern...',
+		'ModelAdmin.SAVED': "Gespeichert",
+		'ModelAdmin.REALLYDELETE': "Wirklich löschen?",
+		'ModelAdmin.DELETED': "Gelöscht"
 	});
 }

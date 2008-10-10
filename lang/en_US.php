@@ -238,6 +238,11 @@ $lang['en_US']['MemberTableField']['ADDEDTOGROUP'] = 'Added member to group';
 $lang['en_US']['MemberTableField']['ADD'] = 'Add';
 $lang['en_US']['ComplexTableField']['CLOSEPOPUP'] = 'Close Popup';
 $lang['en_US']['ComplexTableField']['SUCCESSADD'] = 'Added %s %s %s';
+$lang['en_US']['ModelAdmin']['CLASSTYPE'] = array(
+	'Type',
+	 PR_MEDIUM,
+	'Type of object to add'
+);
 $lang['en_US']['ModelAdmin']['IMPORT'] = 'Import from CSV';
 $lang['en_US']['ModelAdmin']['IMPORTEDRECORDS'] = 'Imported %s records.';
 $lang['en_US']['ModelAdmin']['UPDATEDRECORDS'] = 'Updated %s records.';
@@ -451,8 +456,7 @@ $lang['en_US']['ModelAdmin_left.ss']['SEARCHLISTINGS'] = 'Search Listings';
 $lang['en_US']['ModelAdmin_left.ss']['ADDLISTING'] = 'Add Listing';
 $lang['en_US']['ModelAdmin_left.ss']['ADD_TAB_HEADER'] = 'Add';
 $lang['en_US']['ModelAdmin_left.ss']['IMPORT_TAB_HEADER'] = 'Import';
-$lang['en_US']['ModelAdmin_right.ss']['WELCOME1'] = 'Welcome to';
-$lang['en_US']['ModelAdmin_right.ss']['WELCOME2'] = 'Please choose on one of the entries in the left pane.';
+$lang['en_US']['ModelAdmin_right.ss']['WELCOME1'] = 'Welcome to %s. Please choose on one of the entries in the left pane.';
 $lang['en_US']['ReportAdmin_SiteTree.ss']['REPORTS'] = 'Reports';
 $lang['en_US']['ReportAdmin_left.ss']['REPORTS'] = 'Reports';
 $lang['en_US']['ReportAdmin_right.ss']['WELCOME1'] = array(
