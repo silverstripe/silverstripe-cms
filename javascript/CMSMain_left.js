@@ -183,7 +183,7 @@ showonlydrafts.prototype = {
 					statusMessage(ss.i18n._t('CMSMAIN.FILTEREDTREE'),'good');
 				},
 				onFailure : function(response) {
-					errorMessage(ss.i18n.printf(
+					errorMessage(ss.i18n.sprintf(
 						ss.i18n._t('CMSMAIN.ERRORFILTERPAGES'),
 						response.responseText
 					));
@@ -276,7 +276,7 @@ batchActionGlobals = {
 					statusMessage(ss.i18n._t('CMSMAIN.SUCCESSUNFILTER'),'good');
 				},
 				onFailure : function(response) {
-					errorMessage(ss.i18n.printf(
+					errorMessage(ss.i18n.sprintf(
 						ss.i18n._t('CMSMAIN.ERRORUNFILTER'),
 						response.responseText
 					));
@@ -331,7 +331,7 @@ deletepage.prototype = {
 		if(csvIDs || batchActionGlobals.newNodes.length > 0) {
 			batchActionGlobals.count += batchActionGlobals.newNodes.length;
 			
-			if(confirm(ss.i18n.printf(
+			if(confirm(ss.i18n.sprintf(
 				ss.i18n._t('CMSMAIN.REALLYDELETEPAGES'),
 				batchActionGlobals.count
 			))) {
