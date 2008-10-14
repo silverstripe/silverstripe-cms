@@ -151,7 +151,7 @@ class InstallRequirements {
 		$this->requireFile('jsparty', array("File permissions", "jsparty/ folder exists", "There's no jsparty folder."));
 		$this->requireWriteable('.htaccess', array("File permissions", "Is the .htaccess file writeable?", null));
 		$this->requireWriteable('mysite', array("File permissions", "Is the mysite/ folder writeable?", null));
-		$this->requireWriteable('tutorial', array("File permissions", "Is the tutorial/ folder writeable?", null));
+		if(file_exists('tutorial')) $this->requireWriteable('tutorial', array("File permissions", "Is the tutorial/ folder writeable?", null));
 		$this->requireWriteable('assets', array("File permissions", "Is the assets/ folder writeable?", null));
 		
 		$this->requireTempFolder(array('File permissions', 'Is the temporary folder writeable?', null));
