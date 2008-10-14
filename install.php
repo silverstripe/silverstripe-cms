@@ -806,7 +806,7 @@ PHP
 		$end = "\n### SILVERSTRIPE END ###";
 		
 		$base = dirname($_SERVER['SCRIPT_NAME']);
-		if(defined('DIRECTORY_SEPARATOR')) $base = str_replace('/',DIRECTORY_SEPARATOR, $base);
+		if(defined('DIRECTORY_SEPARATOR')) $base = str_replace(DIRECTORY_SEPARATOR, '/', $base);
 		
 		if($base != '.') $baseClause = "RewriteBase $base\n";
 		else $baseClause = "";
