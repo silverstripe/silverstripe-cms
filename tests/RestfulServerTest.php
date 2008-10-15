@@ -25,6 +25,16 @@ class RestfulServerTest extends SapphireTest {
 		$this->assertEquals($response->getStatusCode(), 403);
 	}
 	
+	public function testApiAccessBoolean() {
+		$url = "/api/v1/RestfulServerTest_Comment/1";
+		$response = Director::test($url, null, null, 'GET');
+		$this->assertContains('<ID>', $response->getBody());
+		$this->assertContains('<Name>', $response->getBody());
+		$this->assertContains('<Comment>', $response->getBody());
+		$this->assertContains('<Page', $response->getBody());
+		$this->assertContains('<Author', $response->getBody());
+	}
+	
 	public function testAuthenticatedGET() {
 		// @todo create additional mock object with authenticated VIEW permissions
 		$url = "/api/v1/RestfulServerTest_SecretThing/1";
