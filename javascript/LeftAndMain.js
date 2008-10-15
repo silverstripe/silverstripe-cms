@@ -252,7 +252,7 @@ function ajaxActionsAtTop(formName, actionHolderName, tabName) {
 	var actions = document.getElementsBySelector('#' + formName + ' .Actions')[0];
 	var holder;
 
-	if((holder = $(actionHolderName)) && holder != actions) {
+	if((holder = $(actionHolderName)) && holder != actions && holder.className != 'ajaxActions') {
 		holder.parentNode.removeChild(holder);
 	}
 
