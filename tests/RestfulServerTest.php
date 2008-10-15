@@ -9,7 +9,7 @@
 class RestfulServerTest extends SapphireTest {
 	
 	static $fixture_file = 'cms/tests/RestfulServerTest.yml';
-	
+
 	public function testApiAccess() {
 		// normal GET should succeed with $api_access enabled
 		$url = "/api/v1/RestfulServerTest_Comment/1";
@@ -25,10 +25,9 @@ class RestfulServerTest extends SapphireTest {
 		$this->assertEquals($response->getStatusCode(), 403);
 	}
 	
-	/*
 	public function testAuthenticatedGET() {
 		// @todo create additional mock object with authenticated VIEW permissions
-		$url = "/api/v1/RestfulServerTest_Comment/1";
+		$url = "/api/v1/RestfulServerTest_SecretThing/1";
 		$response = Director::test($url, null, null, 'GET');
 		$this->assertEquals($response->getStatusCode(), 403);
 		
@@ -39,7 +38,6 @@ class RestfulServerTest extends SapphireTest {
 		$response = Director::test($url, null, null, 'GET');
 		$this->assertEquals($response->getStatusCode(), 200);
 	}
-	*/
 
 	public function testAuthenticatedPUT() {
 		$url = "/api/v1/RestfulServerTest_Comment/1";
@@ -165,6 +163,73 @@ class RestfulServerTest extends SapphireTest {
 		$this->assertEquals($response->getStatusCode(), 415);
 	}
 	
+	public function testXMLValueFormatting() {
+		$rating1 = $this->objFromFixture('RestfulServerTest_AuthorRating','rating1');
+		
+		$url = "/api/v1/RestfulServerTest_AuthorRating/" . $rating1->ID;
+		$response = Director::test($url, null, null, 'GET');
+		$this->assertContains('<ID>' . $rating1->ID . '</ID>', $response->getBody());
+		$this->assertContains('<Rating>' . $rating1->Rating . '</Rating>', $response->getBody());
+	}
+	
+	public function testApiAccessFieldRestrictions() {
+		$rating1 = $this->objFromFixture('RestfulServerTest_AuthorRating','rating1');
+		
+		$url = "/api/v1/RestfulServerTest_AuthorRating/" . $rating1->ID;
+		$response = Director::test($url, null, null, 'GET');
+		$this->assertContains('<ID>', $response->getBody());
+		$this->assertContains('<Rating>', $response->getBody());
+		$this->assertContains('<Author', $response->getBody());
+		$this->assertNotContains('<SecretField>', $response->getBody());
+		$this->assertNotContains('<SecretRelation>', $response->getBody());
+		
+		$url = "/api/v1/RestfulServerTest_AuthorRating/" . $rating1->ID . '?add_fields=SecretField,SecretRelation';
+		$response = Director::test($url, null, null, 'GET');
+		$this->assertNotContains('<SecretField>', $response->getBody(),
+			'"add_fields" URL parameter filters out disallowed fields from $api_access'
+		);
+		$this->assertNotContains('<SecretRelation>', $response->getBody(),
+			'"add_fields" URL parameter filters out disallowed relations from $api_access'
+		);
+		
+		$url = "/api/v1/RestfulServerTest_AuthorRating/" . $rating1->ID . '?fields=SecretField,SecretRelation';
+		$response = Director::test($url, null, null, 'GET');
+		$this->assertNotContains('<SecretField>', $response->getBody(),
+			'"fields" URL parameter filters out disallowed fields from $api_access'
+		);
+		$this->assertNotContains('<SecretRelation>', $response->getBody(),
+			'"fields" URL parameter filters out disallowed relations from $api_access'
+		);
+	}
+	
+	public function testApiAccessWithPUT() {
+		$rating1 = $this->objFromFixture('RestfulServerTest_AuthorRating','rating1');
+		
+		$url = "/api/v1/RestfulServerTest_AuthorRating/" . $rating1->ID;
+		$data = array(
+			'Rating' => '42',
+			'WriteProtectedField' => 'haxx0red'
+		);
+		$response = Director::test($url, $data, null, 'PUT');
+		// Assumption: XML is default output
+		$responseArr = Convert::xml2array($response->getBody());
+		$this->assertEquals($responseArr['Rating'], 42);
+		$this->assertNotEquals($responseArr['WriteProtectedField'], 'haxx0red');
+	}
+	
+	public function testApiAccessWithPOST() {
+		$url = "/api/v1/RestfulServerTest_AuthorRating";
+		$data = array(
+			'Rating' => '42',
+			'WriteProtectedField' => 'haxx0red'
+		);
+		$response = Director::test($url, $data, null, 'POST');
+		// Assumption: XML is default output
+		$responseArr = Convert::xml2array($response->getBody());
+		$this->assertEquals($responseArr['Rating'], 42);
+		$this->assertNotEquals($responseArr['WriteProtectedField'], 'haxx0red');
+	}
+	
 }
 
 /**
@@ -181,7 +246,10 @@ class RestfulServerTest_Comment extends DataObject implements PermissionProvider
 		"Comment" => "Text"
 	);
 	
-	static $has_many = array();
+	static $has_one = array(
+		'Page' => 'RestfulServerTest_Page', 
+		'Author' => 'RestfulServerTest_Author', 
+	);
 	
 	public function providePermissions(){
 		return array(
@@ -209,6 +277,24 @@ class RestfulServerTest_Comment extends DataObject implements PermissionProvider
 	
 }
 
+class RestfulServerTest_SecretThing extends DataObject implements TestOnly,PermissionProvider{
+	static $api_access = true;
+	
+	static $db = array(
+		"Name" => "Varchar(255)",
+	);
+	
+	public function canView($member = null) {
+		return Permission::checkMember($member, 'VIEW_SecretThing');
+	}
+	
+	public function providePermissions(){
+		return array(
+			'VIEW_SecretThing' => 'View Secret Things',
+		);
+	}
+}
+
 class RestfulServerTest_Page extends DataObject implements TestOnly {
 	
 	static $api_access = false;
@@ -217,5 +303,55 @@ class RestfulServerTest_Page extends DataObject implements TestOnly {
 		'Title' => 'Text',	
 		'Content' => 'HTMLText',
 	);
+
+}
+
+class RestfulServerTest_Author extends DataObject implements TestOnly {
+	
+	static $api_access = true;
+	
+	static $db = array(
+		'Name' => 'Text',
+	);
+	
+	static $has_many = array(
+		'Ratings' => 'RestfulServerTest_AuthorRating', 
+	);
+}
+
+class RestfulServerTest_AuthorRating extends DataObject implements TestOnly {
+	static $api_access = array(
+		'view' => array(
+			'Rating',
+			'WriteProtectedField',
+			'Author'
+		),
+		'edit' => array(
+			'Rating'
+		)
+	);
+	
+	static $db = array(
+		'Rating' => 'Int',
+		'SecretField' => 'Text',
+		'WriteProtectedField' => 'Text'
+	);
+	
+	static $has_one = array(
+		'Author' => 'RestfulServerTest_Author', 
+		'SecretRelation' => 'RestfulServerTest_Author', 
+	);
+	
+	public function canView($member = null) {
+		return true;
+	}
+	
+	public function canEdit($member = null) {
+		return true;
+	}
+	
+	public function canCreate($member = null) {
+		return true;
+	}
 }
 ?>

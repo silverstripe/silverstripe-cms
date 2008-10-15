@@ -33,6 +33,21 @@ Permission:
    perm5:
       Code: CREATE_Comment
       Group: =>Group.editorgroup
+   perm6:
+      Code: VIEW_SecretThing
+      Group: =>Group.editorgroup
 RestfulServerTest_Page:
    page1:
        Title: Testpage without API Access
+RestfulServerTest_Author:
+   author1:
+      FirstName: Author 1
+RestfulServerTest_AuthorRating:
+   rating1:
+      Rating: 3
+      WriteProtectedField: Dont overwrite me
+      SecretField: Dont look at me!
+      Author: =>RestfulServerTest_Author.author1
+RestfulServerTest_SecretThing:
+   thing1:
+      Name: Unspeakable
