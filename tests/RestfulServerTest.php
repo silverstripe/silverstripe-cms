@@ -23,6 +23,9 @@ class RestfulServerTest extends SapphireTest {
 		$url = "/api/v1/RestfulServerTest_Page/1";
 		$response = Director::test($url, null, null, 'GET');
 		$this->assertEquals($response->getStatusCode(), 403);
+		
+		unset($_SERVER['PHP_AUTH_USER']);
+		unset($_SERVER['PHP_AUTH_PW']);
 	}
 	
 	public function testApiAccessBoolean() {
@@ -47,6 +50,9 @@ class RestfulServerTest extends SapphireTest {
 		$url = "/api/v1/RestfulServerTest_Comment/1";
 		$response = Director::test($url, null, null, 'GET');
 		$this->assertEquals($response->getStatusCode(), 200);
+		
+		unset($_SERVER['PHP_AUTH_USER']);
+		unset($_SERVER['PHP_AUTH_PW']);
 	}
 
 	public function testAuthenticatedPUT() {
@@ -60,6 +66,9 @@ class RestfulServerTest extends SapphireTest {
 		$_SERVER['PHP_AUTH_PW'] = 'editor';
 		$response = Director::test($url, $data, null, 'PUT');
 		$this->assertEquals($response->getStatusCode(), 200); // Success
+		
+		unset($_SERVER['PHP_AUTH_USER']);
+		unset($_SERVER['PHP_AUTH_PW']);
 	}
 
 	public function testPUTWithFormEncoded() {
@@ -74,6 +83,9 @@ class RestfulServerTest extends SapphireTest {
 		$responseArr = Convert::xml2array($response->getBody());
 		$this->assertEquals($responseArr['ID'], 1);
 		$this->assertEquals($responseArr['Comment'], 'updated');
+		
+		unset($_SERVER['PHP_AUTH_USER']);
+		unset($_SERVER['PHP_AUTH_PW']);
 	}
 
 	public function testPOSTWithFormEncoded() {
@@ -88,6 +100,9 @@ class RestfulServerTest extends SapphireTest {
 		$responseArr = Convert::xml2array($response->getBody());
 		$this->assertEquals($responseArr['ID'], 2);
 		$this->assertEquals($responseArr['Comment'], 'created');
+		
+		unset($_SERVER['PHP_AUTH_USER']);
+		unset($_SERVER['PHP_AUTH_PW']);
 	}
 	
 	public function testPUTwithJSON() {
@@ -111,6 +126,9 @@ class RestfulServerTest extends SapphireTest {
 		$obj = Convert::json2obj($response->getBody());
 		$this->assertEquals($obj->ID, 1);
 		$this->assertEquals($obj->Comment, 'updated');
+		
+		unset($_SERVER['PHP_AUTH_USER']);
+		unset($_SERVER['PHP_AUTH_PW']);
 	}
 	
 	public function testPUTwithXML() {
@@ -134,6 +152,9 @@ class RestfulServerTest extends SapphireTest {
 		$obj = Convert::xml2array($response->getBody());
 		$this->assertEquals($obj['ID'], 1);
 		$this->assertEquals($obj['Comment'], 'updated');
+		
+		unset($_SERVER['PHP_AUTH_USER']);
+		unset($_SERVER['PHP_AUTH_PW']);
 	}
 	
 	public function testHTTPAcceptAndContentType() {
@@ -154,6 +175,9 @@ class RestfulServerTest extends SapphireTest {
 		$url = "/api/v1/RestfulServerTest_Comment/99";
 		$response = Director::test($url, null, null, 'GET');
 		$this->assertEquals($response->getStatusCode(), 404);
+		
+		unset($_SERVER['PHP_AUTH_USER']);
+		unset($_SERVER['PHP_AUTH_PW']);
 	}
 	
 	public function testMethodNotAllowed() {
@@ -171,6 +195,9 @@ class RestfulServerTest extends SapphireTest {
 		$headers = array('Content-Type' => 'text/weirdformat');
 		$response = Director::test($url, null, null, 'POST', $data, $headers);
 		$this->assertEquals($response->getStatusCode(), 415);
+		
+		unset($_SERVER['PHP_AUTH_USER']);
+		unset($_SERVER['PHP_AUTH_PW']);
 	}
 	
 	public function testXMLValueFormatting() {
