@@ -651,10 +651,6 @@ HTML;
 
 	}
 
-	function addmember() {
-		SecurityAdmin::addmember($this->stat('subitem_class'));
-	}
-
 	function tasklist() {
 		$tasks = DataObject::get("Page", "AssignedToID = " . Member::currentUserID(), "Created DESC");
 		if($tasks) {
