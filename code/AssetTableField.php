@@ -108,7 +108,7 @@ class AssetTableField extends ComplexTableField {
 						new TextField( "Content", _t('AssetTableField.CAPTION', 'Caption') ),
 						new TextField( 'PopupWidth', _t('AssetTableField.POPUPWIDTH', 'Popup Width') ),
 						new TextField( 'PopupHeight', _t('AssetTableField.POPUPHEIGHT', 'Popup Height') ),
-						new HeaderField( _t('AssetTableField.SWFFILEOPTIONS', 'SWF File Options') ),
+						new HeaderField( 'SWFFileOptionsHeader', _t('AssetTableField.SWFFILEOPTIONS', 'SWF File Options') ),
 						new CheckboxField( 'Embed', _t('AssetTableField.ISFLASH', 'Is A Flash Document') ),
 						new CheckboxField( 'LimitDimensions', _t('AssetTableField.DIMLIMT', 'Limit The Dimensions In The Popup Window') )
 					)

@@ -596,7 +596,7 @@ class ModelAdmin_CollectionController extends Controller {
 			$this,
 			'ResultsForm',
 			new FieldSet(
-				new HeaderField(_t('ModelAdmin.SEARCHRESULTS','Search Results'), 2),
+				new HeaderField('SearchResultsHeader',_t('ModelAdmin.SEARCHRESULTS','Search Results'), 2),
 				$tf
 			),
 			new FieldSet()

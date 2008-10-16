@@ -409,7 +409,7 @@ JS;
 			return $form;
 		} else if($id) {
 			return new Form($this, "EditForm", new FieldSet(
-				new LabelField(_t('CMSMain.PAGENOTEXISTS',"This page doesn't exist"))), new FieldSet());
+				new LabelField('PageDoesntExistLabel',_t('CMSMain.PAGENOTEXISTS',"This page doesn't exist"))), new FieldSet());
 
 		}
 	}
@@ -786,7 +786,7 @@ HTML;
 
 			$fields->push(new HiddenField("ID"));
 			$fields->push(new HiddenField("Version"));
-			$fields->push(new HeaderField(sprintf(_t('CMSMain.VIEWING',"You are viewing version #%d, created %s"),
+			$fields->push(new HeaderField('YouAreViewingHeader', sprintf(_t('CMSMain.VIEWING',"You are viewing version #%d, created %s"),
 														  $version, $record->obj('LastEdited')->Ago())));
 
 			$actions = new FieldSet(
@@ -843,7 +843,7 @@ HTML;
 			$fields = $record->getCMSFields($this);
 			$fields->push(new HiddenField("ID"));
 			$fields->push(new HiddenField("Version"));
-			$fields->insertBefore(new HeaderField(sprintf(_t('CMSMain.COMPARINGV',"You are comparing versions #%d and #%d"),$fromVersion,$toVersion)), "Root");
+			$fields->insertBefore(new HeaderField('YouAreComparingHeader',sprintf(_t('CMSMain.COMPARINGV',"You are comparing versions #%d and #%d"),$fromVersion,$toVersion)), "Root");
 
 			$actions = new FieldSet();
 

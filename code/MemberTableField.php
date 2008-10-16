@@ -151,7 +151,7 @@ class MemberTableField extends ComplexTableField {
 		);
 
 		$orderByFields = new FieldGroup(
-			new LabelField(_t('MemberTableField.ORDERBY', 'Order by')),
+			new LabelField('OrderByLabel',_t('MemberTableField.ORDERBY', 'Order by')),
 			new FieldSet(
 				new DropdownField('MemberOrderByField','', array(
 				'FirstName' => _t('MemberTableField.FIRSTNAME', 'FirstName'),
