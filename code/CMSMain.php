@@ -262,8 +262,10 @@ JS;
 	}
 
 	/**
-	 * Populates an array of classes in the CMS which allows the
-	 * user to change the page type.
+	 * Populates an array of classes in the CMS
+	 * which allows the user to change the page type.
+	 *
+	 * @return DataObjectSet
 	 */
 	public function PageTypes() {
 		$classes = ClassInfo::getValidSubClasses();
@@ -273,51 +275,42 @@ JS;
 
 		// figure out if there are any classes we don't want to appear
 		foreach($classes as $class) {
-		    $instance = singleton($class);
+			$instance = singleton($class);
 
-		    // do any of the progeny want to hide an ancestor?
-            if ($ancestor_to_hide = $instance->stat('hide_ancestor')){
-    		    // note for killing later
-    		    $kill_ancestors[] = $ancestor_to_hide;
+			// do any of the progeny want to hide an ancestor?
+			if($ancestor_to_hide = $instance->stat('hide_ancestor')) {
+				// note for killing later
+				$kill_ancestors[] = $ancestor_to_hide;
 			}
 		}
 
-        // If any of the descendents don't want any of the elders to show up, cruelly render the elders surplus to requirements.
-        if ($kill_ancestors) {
-            foreach ($kill_ancestors as $mark) {
-    		    // unset from $classes
-			    $idx = array_search($mark, $classes);
-			    unset($classes[$idx]);
-            }
-        }
+		// If any of the descendents don't want any of the elders to show up, cruelly render the elders surplus to requirements.
+		if($kill_ancestors) {
+			foreach ($kill_ancestors as $mark) {
+				// unset from $classes
+				$idx = array_search($mark, $classes);
+				unset($classes[$idx]);
+			}
+		}
 
 		foreach($classes as $class) {
-		    $instance = singleton($class);
-            if($instance instanceof HiddenClass) continue;
+			$instance = singleton($class);
 
-			if( !$instance->canCreate() ) continue;
+			if($instance instanceof HiddenClass) continue;
+
+			if(!$instance->canCreate()) continue;
 
 			// skip this type if it is restricted
-			if($instance->stat('need_permission') && !$this->can( singleton($class)->stat('need_permission') ) ) continue;
+			if($instance->stat('need_permission') && !$this->can(singleton($class)->stat('need_permission'))) continue;
 
-			/*
-			 * Since i18n_singular_name() this is not necessary
-			$addAction = $instance->uninherited('add_action', true);
-			if($addAction) {
-				// backwards compatibility for actions like "a page" (instead of "page")
-				$addAction = preg_replace('/^a /','',$addAction);				
-				$addAction = ucfirst($addAction);
-			} else {
-				$addAction = $instance->i18n_singular_name();
-			}
-			*/
 			$addAction = $instance->i18n_singular_name();
 
 			$result->push(new ArrayData(array(
-				"ClassName" => $class,
-				"AddAction" => $addAction,
+				'ClassName' => $class,
+				'AddAction' => $addAction,
 			)));
 		}
+		
 		$result->sort('AddAction');
 		
 		return $result;
