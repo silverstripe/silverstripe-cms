@@ -224,29 +224,6 @@ class LeftAndMain extends Controller {
 		$this->extend('augmentInit', $dummy);
 	}
 
-	/**
-	 * Returns true if the current user can access the CMS
-	 */
-	function canAccessCMS() {
-
-		$member = Member::currentUser();
-
-		if($member) {
-			if($groups = $member->Groups()) {
-				foreach($groups as $group) if($group->CanCMS) return true;
-			}
-		}
-
-		return false;
-	}
-
-	/**
-	 * Returns true if the current user has administrative rights in the CMS
-	 */
-	function canAdminCMS() {
-		if($member = Member::currentUser()) return $member->isAdmin();
-	}
-
 	//------------------------------------------------------------------------------------------//
 	// Main controllers
 
