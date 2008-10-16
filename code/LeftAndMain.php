@@ -121,6 +121,7 @@ class LeftAndMain extends Controller {
 		}
 		
 		Requirements::javascript(THIRDPARTY_DIR . '/prototype.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/behaviour.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/prototype_improvements.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/loader.js');

@@ -2,7 +2,7 @@
 Behaviour.register({
 	'#Form_EditForm' : {
 		initialise : function() {
-      this.openTab = null;
+      		this.openTab = null;
 			this.prepareForm();
 		},
 		
