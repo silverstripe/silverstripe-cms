@@ -156,7 +156,7 @@ class RestfulServerTest extends SapphireTest {
 		unset($_SERVER['PHP_AUTH_USER']);
 		unset($_SERVER['PHP_AUTH_PW']);
 	}
-	
+		
 	public function testHTTPAcceptAndContentType() {
 		$url = "/api/v1/RestfulServerTest_Comment/1";
 		
@@ -186,11 +186,19 @@ class RestfulServerTest extends SapphireTest {
 		$this->assertEquals($response->getStatusCode(), 405);
 	}
 	
+	public function testConflictOnExistingResourceWhenUsingPost() {
+		$rating1 = $this->objFromFixture('RestfulServerTest_AuthorRating', 'rating1');
+		
+		$url = "/api/v1/RestfulServerTest_AuthorRating/" . $rating1->ID;
+		$response = Director::test($url, null, null, 'POST');
+		$this->assertEquals($response->getStatusCode(), 409);
+	}
+	
 	public function testUnsupportedMediaType() {
 		$_SERVER['PHP_AUTH_USER'] = 'user@test.com';
 		$_SERVER['PHP_AUTH_PW'] = 'user';
 
-		$url = "/api/v1/RestfulServerTest_Comment/1";
+		$url = "/api/v1/RestfulServerTest_Comment";
 		$data = "Comment||\/||updated"; // weird format
 		$headers = array('Content-Type' => 'text/weirdformat');
 		$response = Director::test($url, null, null, 'POST', $data, $headers);
@@ -339,6 +347,10 @@ class RestfulServerTest_Page extends DataObject implements TestOnly {
 	static $db = array(
 		'Title' => 'Text',	
 		'Content' => 'HTMLText',
+	);
+	
+	static $has_many = array(
+		'TestComments' => 'RestfulServerTest_Comment'
 	);
 
 }
