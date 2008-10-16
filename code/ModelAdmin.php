@@ -505,8 +505,8 @@ class ModelAdmin_CollectionController extends Controller {
 			)
 		);
 		
-		$field -> setExtraClass("ResultAssemblyBlock");
-		$checkboxesBlock -> setExtraClass("hidden");
+		$field->addExtraClass("ResultAssemblyBlock");
+		$checkboxesBlock->addExtraClass("hidden");
 		return $field;
 	}
 	
