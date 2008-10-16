@@ -18,7 +18,6 @@ Director::addRules(50, array(
 	'admin//ImageEditor/$Action' => 'ImageEditor',
 	'admin/cms//$Action/$ID/$OtherID' => 'CMSMain',
 	'admin//$Action/$ID/$OtherID' => 'CMSMain',
-	'unsubscribe//$Email/$MailingList' => 'Unsubscribe_Controller',
 	'PageComment//$Action/$ID' => 'PageComment_Controller',
 	'dev/buildcache' => 'RebuildStaticCacheTask',
 ));
