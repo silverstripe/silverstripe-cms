@@ -541,11 +541,8 @@ JS;
 
 	public function revert($urlParams, $form) {
 		$id = $_REQUEST['ID'];
-
-		Versioned::reading_stage('Live');
 		$obj = DataObject::get_by_id("SiteTree", $id);
-		Versioned::reading_stage('Stage');
-		$obj->publish("Live", "Stage");
+		$obj->doRevertToLive();
 
 		$title = Convert::raw2js($obj->Title);
 		FormResponse::get_page($id);
@@ -758,15 +755,8 @@ HTML;
 		$SQL_id = Convert::raw2sql($_REQUEST['ID']);
 
 		$page = DataObject::get_by_id("SiteTree", $SQL_id);
-		$page->deleteFromStage('Live');
-		$page->flushCache();
-
-		$page = DataObject::get_by_id("SiteTree", $SQL_id);
-		$page->Status = "Unpublished";
-		$page->write();
-
-		GoogleSitemap::ping();
-
+		$page->doUnpublish();
+		
 		return $this->tellBrowserAboutPublicationChange($page, sprintf(_t('CMSMain.REMOVEDPAGE',"Removed '%s' from the published site"),$page->Title));
 	}
 	
@@ -805,11 +795,7 @@ HTML;
 
 	function performRollback($id, $version) {
 		$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-		$record->publish($version, "Stage", true);
-		$record->AssignedToID = 0;
-		$record->RequestedByID = 0;
-		$record->Status = "Saved (update)";
-		$record->writeWithoutVersion();
+		$record->doRollbackTo($version);
 		return $record;
 	}
 
