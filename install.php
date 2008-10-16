@@ -6,7 +6,7 @@
  */
 
 ini_set('max_execution_time', 300);
-
+error_reporting(E_ALL ^ E_NOTICE);
 session_start();
 
 // Include environment files
@@ -24,7 +24,7 @@ foreach($envFiles as $envFile) {
 if(isset($_REQUEST['mysql'])) {
 	$databaseConfig = $_REQUEST['mysql'];
 } else {
-	$databaseConfig = array(
+	$_REQUEST['mysql'] = $databaseConfig = array(
 		"type" => "MySQLDatabase",
 		"server" => defined('SS_DATABASE_SERVER') ? SS_DATABASE_SERVER : "localhost",
 		"username" => defined('SS_DATABASE_USERNAME') ? SS_DATABASE_USERNAME : "root",
@@ -36,7 +36,7 @@ if(isset($_REQUEST['mysql'])) {
 if(isset($_REQUEST['admin'])) {
 	$adminConfig = $_REQUEST['admin'];
 } else {
-	$adminConfig = array(
+	$_REQUEST['admin'] = $adminConfig = array(
 		'username' => 'admin',
 		'password' => 'password',
 		'firstname' => '',
