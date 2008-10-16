@@ -155,6 +155,9 @@ class AssetTableField extends ComplexTableField {
 		
 		// the ID field confuses the Controller-logic in finding the right view for ReferencedField
 		$detailFormFields->removeByName('ID');
+		
+		if($childData) $childData->extend('updateCMSFields', $detailFormFields);
+		
 		// add a namespaced ID instead thats "converted" by saveComplexTableField()
 		$detailFormFields->push(new HiddenField("ctf[childID]","",$childID));
 		$detailFormFields->push(new HiddenField("ctf[ClassName]","",$this->sourceClass));
