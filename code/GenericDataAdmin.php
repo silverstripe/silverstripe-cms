@@ -84,7 +84,8 @@ abstract class GenericDataAdmin extends LeftAndMain {
 
 		Requirements::javascript(CMS_DIR . "/javascript/SecurityAdmin.js");
 		Requirements::javascript(CMS_DIR . "/javascript/CMSMain_left.js");
-
+		Requirements::javascript(CMS_DIR . '/javascript/CMSMain_right.js');
+		
 		Requirements::javascript(CMS_DIR . "/javascript/GenericDataAdmin_left.js");
 		Requirements::javascript(CMS_DIR . "/javascript/GenericDataAdmin_right.js");
 		Requirements::javascript(CMS_DIR . "/javascript/SideTabs.js");
