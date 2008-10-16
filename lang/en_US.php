@@ -210,18 +210,6 @@ $lang['en_US']['LeftAndMain']['HELP'] = array(
 	PR_HIGH,
 	'Menu title'
 );
-$lang['en_US']['MemberList']['FN'] = 'First Name';
-$lang['en_US']['MemberList']['SN'] = 'Surname';
-$lang['en_US']['MemberList']['EMAIL'] = 'Email';
-$lang['en_US']['MemberList']['ADD'] = 'Add';
-$lang['en_US']['MemberList']['PASSWD'] = 'Password';
-$lang['en_US']['MemberList']['SEARCH'] = 'Search';
-$lang['en_US']['MemberList']['FN'] = 'FirstName';
-$lang['en_US']['MemberList']['ASC'] = 'Ascending';
-$lang['en_US']['MemberList']['DESC'] = 'Descending';
-$lang['en_US']['MemberList']['ORDERBY'] = 'Order by';
-$lang['en_US']['MemberList']['ANYGROUP'] = 'Any group';
-$lang['en_US']['MemberList']['FILTERBYG'] = 'Filter by group';
 $lang['en_US']['MemberTableField']['FIRSTNAME'] = 'Firstname';
 $lang['en_US']['MemberTableField']['SURNAME'] = 'Surname';
 $lang['en_US']['MemberTableField']['EMAIL'] = 'Email';

@@ -277,25 +277,3 @@ MemberFilterButton.prototype = {
 Behaviour.register({
 	'#Form_EditForm div.MemberTableField table.data input' : AjaxMemberLookup
 });
-
-/*
-function reloadMemberTableField( groupID ) {
-	
-	if( !groupID )
-		groupID = $('MemberBaseGroupID').value;
-		
-	if($('MemberStart')) var listStart = $('MemberStart').value;
-	else var listStart = 0;
-	
-	new Ajax.Request( 'admin/security/listmembers?&ajax=1&MemberBaseGroup=' + groupID + '&MemberStart=' + listStart, {
-		onSuccess: function( response ) {
-			$('MemberList').innerHTML = response.responseText;
-			// Behaviour.debug();
-			Behaviour.apply( $('MemberList') );
-		},
-		onFailure: function( response ) {
-			errorMessage('Could not filter results: ' + response.responseText );
-		}
-	});
-}
-*/

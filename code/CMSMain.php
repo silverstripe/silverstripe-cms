@@ -638,19 +638,6 @@ HTML;
 		}
 	}
 
-	function getMembersByGroup() {
-
-		$group = DataObject::get_by_id("Group", $this->urlParams['ID']);
-		if($group){
-			$memberList = new MemberList('Users', $group);
-			$memberList->setController($this);
-			return $memberList->renderWith('MemberList');
-		}else{
-			return user_error("CMSMain::getpagemembers() Cannot find Group #$group->ID", E_USER_ERROR);
-		}
-
-	}
-
 	function tasklist() {
 		$tasks = DataObject::get("Page", "AssignedToID = " . Member::currentUserID(), "Created DESC");
 		if($tasks) {

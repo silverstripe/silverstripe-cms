@@ -15,7 +15,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		'addmember',
 		'autocomplete',
 		'getmember',
-		'listmembers',
 		'newmember',
 		'removememberfromgroup',
 		'savemember',
@@ -258,65 +257,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 
 	public function Link($action = null) {
 		return "admin/security/$action";
-	}
-
-	public function listmembers( $baseGroup = null ) {
-
-		if( !$baseGroup )
-			$baseGroup = $this->urlParams['ID'];
-
-		// Debug::message( $_REQUEST['MemberListOrderByField'] );
-
-		// construct the filter and sort
-
-		if( $_REQUEST['MemberListOrderByField'] )
-			$sort = "`" . $_REQUEST['MemberListOrderByField'] . "`" . addslashes( $_REQUEST['MemberListOrderByOrder'] );
-
-		$whereClauses = array();
-
-		$search = addslashes( $_REQUEST['MemberListSearch'] );
-
-		if( $_REQUEST['MemberListPage'] ) {
-			$pageSize = 10;
-
-			$limitClause = ( $_REQUEST['MemberListPage'] ) . ", $pageSize";
-		}
-
-		if( !empty($_REQUEST['MemberListSearch'])  )
-			$whereClauses[] = "( `Email`='$search' OR `FirstName`='$search' OR `Surname`='$search' )";
-
-		if( is_numeric( $_REQUEST['MemberListBaseGroup'] ) ) {
-			$whereClauses[] = "`GroupID`='".$_REQUEST['MemberListBaseGroup']."'";
-			$join = "INNER JOIN `Group_Members` ON `MemberID`=`Member`.`ID`";
-		}
-
-		// $_REQUEST['showqueries'] = 1;
-
-		$members = DataObject::get('Member', implode( ' AND ', $whereClauses ), $sort, $join, $limitClause );
-
-		if( is_numeric( $_REQUEST['MemberListGroup'] ) ) {
-			$baseMembers = new DataObjectSet();
-
-			if( $members )
-				foreach( $members as $member )
-					if( $member->inGroup( $_REQUEST['MemberListGroup'] ) )
-						$baseMembers->push( $member );
-		} else
-			$baseMembers = $members;
-
-		$baseMembers = null;
-
-		// user_error( $_REQUEST['MemberListBaseGroup'], E_USER_ERROR );
-
-		$memberListField = new MemberTableField(
-			$this,
-			'MemberList',
-			$_REQUEST['MemberListBaseGroup'],
-			$baseMembers,
-			$_REQUEST['MemberListDontShowPassword']
-		);
-
-		return $memberListField->renderWith('MemberList_Table');
 	}
 	
 	function providePermissions() {
