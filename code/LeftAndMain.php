@@ -17,7 +17,6 @@ class LeftAndMain extends Controller {
 	 * Default menu items for the core cms functionality,
 	 * set in cms/_config.php.
 	 *
-	 * @usedby {@link add_menu_item()}
 	 * @var array
 	 */
 	protected static $menu_items = array();
@@ -976,6 +975,8 @@ JS;
 	
 	/**
 	 * Add a navigation item to the main administration menu showing in the top bar.
+	 *
+	 * @uses {@link LeftAndMain::$menu_items}
 	 *
 	 * @param string $code Unique identifier for this menu item (e.g. used by {@link replace_menu_item()} and
 	 * 					{@link remove_menu_item}. Also used as a CSS-class for icon customization.
