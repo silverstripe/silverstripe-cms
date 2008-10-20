@@ -145,7 +145,6 @@ $lang['sv_SE']['CMSRight.ss']['CHOOSEPAGE'] = 'Var god välj en sida till vänst
 $lang['sv_SE']['CMSRight.ss']['ECONTENT'] = 'Redigera innehåll';
 $lang['sv_SE']['CMSRight.ss']['WELCOMETO'] = 'Välkommen till';
 $lang['sv_SE']['CommentList.ss']['NOCOM'] = 'Det finns inga kommentarer på den här sidan.';
-$lang['sv_SE']['GenericDataAdmin_left.ss']['SEARCHRESULTS'] = 'Sökresultat';
 $lang['sv_SE']['ImageEditor.ss']['CANCEL'] = 'avbryt';
 $lang['sv_SE']['ImageEditor.ss']['CROP'] = 'beskär';
 $lang['sv_SE']['ImageEditor.ss']['HEIGHT'] = 'höjd';

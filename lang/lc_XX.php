@@ -153,9 +153,6 @@ $lang['lc_XX']['CMSRight.ss']['WELCOMETO'] = 'WELCUM TO';
 $lang['lc_XX']['CommentList.ss']['CREATEDW'] = 'COMMENTz R CREATD WHENEVR WAN OV TEH WERKFLOW ACSHUNS
 R UNDERTAKEN - PUBLISH, REJECT, SUBMIT.';
 $lang['lc_XX']['CommentList.ss']['NOCOM'] = 'THERE IS NO COMMENTZ IN DIS PAEG.';
-$lang['lc_XX']['GenericDataAdmin_left.ss']['ADDLISTING'] = 'ADD TEH LISTING';
-$lang['lc_XX']['GenericDataAdmin_left.ss']['SEARCHLISTINGS'] = 'SEARCH LISTINGZ';
-$lang['lc_XX']['GenericDataAdmin_left.ss']['SEARCHRESULTS'] = 'SEARCH REZULTZ';
 $lang['lc_XX']['ImageEditor.ss']['CANCEL'] = 'ABANDONEZ';
 $lang['lc_XX']['ImageEditor.ss']['CROP'] = 'CROP';
 $lang['lc_XX']['ImageEditor.ss']['HEIGHT'] = 'HEIGHT';
