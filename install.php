@@ -14,7 +14,7 @@ $usingEnv = false;
 $envFiles = array('_ss_environment.php', '../_ss_environment.php', '../../_ss_environment.php');
 foreach($envFiles as $envFile) {
         if(@file_exists($envFile)) {
-                include($envFile);
+                include_once($envFile);
                 $usingEnv = true;				
                 break;
         }
