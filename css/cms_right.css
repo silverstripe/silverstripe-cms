@@ -134,10 +134,12 @@
 	.right form textarea.htmleditor {
 		display: none;
 	}
+	/*
 	.right form .mceEditor {
 		width: 100%;
 		border: 1px solid #a7a7a7;
 	}
+	*/
 
 .right form input.checkbox, 
 .right form .optionset input, 

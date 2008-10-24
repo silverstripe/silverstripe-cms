@@ -9,11 +9,10 @@ function nullConverter(url) {
 // Prevents "Error: 'tinyMCE' is undefined" error in IE7 on Newsletter Recipient import.
 if((typeof tinyMCE != 'undefined')) {
 	tinyMCE.init({
-		mode : "specific_textareas",
+		mode : "none",
 		language: "$Lang",
-		textarea_trigger : "tinymce",
-		width: -1,
-		height: -1,
+		width: "100%",
+		/*height: "300",*/
 		auto_resize : true,
 		theme : "advanced",
 		content_css : "$ContentCSS",
@@ -23,20 +22,17 @@ if((typeof tinyMCE != 'undefined')) {
 		setupcontent_callback : "sapphiremce_setupcontent",
 		cleanup_callback : "sapphiremce_cleanup",
 		
-		Theme_Advanced_Layout_manager : "SimpleLayout",
-		theme_advanced_toolbar_location : "manually_placed",
+		theme_advanced_layout_manager: "SimpleLayout",
+		theme_advanced_toolbar_location : "top",
 		theme_advanced_toolbar_align : "left",
 		theme_advanced_toolbar_parent : "right",
-		plugins : "contextmenu,table,emotions,flash,paste",	
+		plugins : "advcode,contextmenu,table,emotions,../../ssbuttons,paste",	
 		table_inline_editing : true,
-		theme_advanced_buttons1 : "italic,underline,strikethrough,separator,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,separator,bullist,numlist,outdent,indent,hr,charmap",
-		theme_advanced_buttons2 : "undo,redo,separator,cut,copy,paste,separator,search,replace,separator,flash",
+		theme_advanced_buttons1 : "bold,italic,underline,strikethrough,separator,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,separator,bullist,numlist,outdent,indent,hr,charmap",
+		theme_advanced_buttons2 : "undo,redo,separator,cut,copy,paste,pastetext,pasteword,separator,ssimage,ssflash,sslink,unlink,anchor,separator,code,separator,search,replace,selectall,visualaid,separator,tablecontrols",
 		theme_advanced_buttons3 : "",
 		theme_advanced_buttons3_add : "emotions",
-	/*
-		theme_advanced_buttons1 : "bold,italic,underline,strikethrough,separator,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,separator,bullist,numlist,outdent,indent,hr,charmap",
-		theme_advanced_buttons2 : "undo,redo,separator,cut,copy,paste,separator,search,replace,separator,link,unlink,anchor,image,separator,cleanup,removeformat,visualaid,code,separator,tablecontrols",
-	*/	
+
 		safari_warning : false,
 		relative_urls : true,
 		verify_html : true,
@@ -44,3 +40,11 @@ if((typeof tinyMCE != 'undefined')) {
 		extended_valid_elements : "img[class|src|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name],script[src|type]"
 	});
 }
+
+Behaviour.register({
+    'textarea.htmleditor' : {
+        initialize : function() {
+            tinyMCE.execCommand("mceAddControl", true, this.id);
+        }
+    }
+})
