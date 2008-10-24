@@ -492,14 +492,13 @@ JS;
 		$parent = ($_REQUEST['ParentID'] && is_numeric($_REQUEST['ParentID'])) ? $_REQUEST['ParentID'] : 0;
 		
 		if($parent) {
-			$parentObj = DataObject::get_by_id("File", $parent);
+			$parentObj = DataObject::get_by_id('File', $parent);
 			if(!$parentObj || !$parentObj->ID) $parent = 0;
 		}
 		
 		$p = new Folder();
 		$p->ParentID = $parent;
 		$p->Title = _t('AssetAdmin.NEWFOLDER',"NewFolder");
-
 		$p->Name = _t('AssetAdmin.NEWFOLDER', 'NewFolder');
 
 		// Get the folder to be created		
