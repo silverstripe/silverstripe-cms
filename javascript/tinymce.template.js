@@ -26,7 +26,7 @@ if((typeof tinyMCE != 'undefined')) {
 		theme_advanced_toolbar_location : "top",
 		theme_advanced_toolbar_align : "left",
 		theme_advanced_toolbar_parent : "right",
-		plugins : "advcode,contextmenu,table,emotions,../../ssbuttons,paste",	
+		plugins : "advcode,contextmenu,table,emotions,paste,../../tinymce_ssbuttons",	
 		table_inline_editing : true,
 		theme_advanced_buttons1 : "bold,italic,underline,strikethrough,separator,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,separator,bullist,numlist,outdent,indent,hr,charmap",
 		theme_advanced_buttons2 : "undo,redo,separator,cut,copy,paste,pastetext,pasteword,separator,ssimage,ssflash,sslink,unlink,anchor,separator,code,separator,search,replace,selectall,visualaid,separator,tablecontrols",
