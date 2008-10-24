@@ -198,7 +198,7 @@ abstract class ModelAdmin extends LeftAndMain {
 				new DropdownField('ClassName', _t('ModelAdmin.CLASSTYPE', 'Type', PR_MEDIUM, 'Type of object to add'), $modelMap)
 			),
 			new FieldSet(
-				new FormAction('add', _t('GenericDataAdmin.CREATE'))
+				new FormAction('add', _t('ModelAdmin.CREATE', 'Create'))
 			)
 		);
 		$form->setFormMethod('get');
