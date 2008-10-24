@@ -53,51 +53,57 @@ TinyMCEImageEnhancement.prototype = {
         this.applyIE6Hack();
     },
     
-    /**
-     * Called when user clicks "ok" anchor/ adds folder with given name. 
-    */
+	/**
+	 * The user clicks the "ok" anchor link, the click event calls up
+	 * this function which creates a new AJAX request to add a new folder
+	 * using the addfolder function in AssetAdmin.php (admin/assets/addfolder).
+	 */
+	onFolderOk: function(event) {
+		Event.stop(event);
+		var folderName = $('NewFolderName').value;
+		var options = {
+			method: 'post',
+			postBody: 'ParentID=' + this.getParentID() + '&ajax=1&returnID=1' + ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : ''),
+			onSuccess: this.onFolderGetSuccess.bind(this),
+			onFailure: function(transport) {
+				errorMessage('Error: Folder not added', transport); 
+			}
+		};
+		
+		new Ajax.Request('admin/assets/addfolder', options);
+	},
     
-    onFolderOk: function(event) {
-        Event.stop(event);
-        var folderName = $('NewFolderName').value;
-        var options = {
-            method: 'post',
-            postBody: 'ParentID=' + this.getParentID() + '&ajax=1&returnID=1' + ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : ''),
-            onSuccess: this.onFolderGetSuccess.bind(this),
-            onFailure: function(transport) {
-                           errorMessage('Error: Folder not added', transport); 
-                       }
-         };
-         new Ajax.Request('admin/assets/addfolder', options);
-               
-        
-    },
-    
-    /**
-     * Method retrieves folder id and sends request which changes folder name. 
-    */
-    
-    onFolderGetSuccess: function(transport) {
-        var folderID = transport.responseText;
-        var date = new Date();
-        var year = date.getFullYear();
-        var month = date.getMonth() < 10 ? '0' + date.getMonth() : date.getMonth();  
-        var day = date.getDay() < 10  ? '0' + date.getDay() : date.getDay();
-        var hours = date.getHours() < 10  ? '0' + date.getHours() : date.getHours();
-        var minutes = date.getMinutes() < 10  ? '0' + date.getMinutes() : date.getMinutes();
-        var seconds = date.getSeconds() < 10  == 1 ? '0' + date.getSeconds() : date.getSeconds();
-        var currentDate = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds; 
-        var folderName = $('NewFolderName').value;
-        this.folderID = folderID;
-        var options = {
-            method: 'post',
-            postBody: 'Created=' + currentDate + '&Name=' + folderName + '&ClassName=Folder&ID=' + folderID + '&ajax=1&action_save=1' + ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : ''),
-            onSuccess: this.onFolderAddSuccess.bind(this),
-            onFailure: function(transport) {
-                           errorMessage('Error: Folder not added', transport); 
-                       }
-        };
-        new Ajax.Request('admin/assets/index/' + this.getParentID() + '?executeForm=EditForm', options);
+	/**
+	 * If the "addFolderOk" function does a successful AJAX post, call this
+	 * function. Take the folder ID that was created in "addFolderOk"
+	 * via ajax and send data to modify that folder record.
+	 */    
+	onFolderGetSuccess: function(transport) {
+		var folderID = transport.responseText;
+		
+		var date = new Date();
+		var year = date.getFullYear();
+		var month = date.getMonth() < 10 ? '0' + date.getMonth() : date.getMonth();  
+		var day = date.getDay() < 10  ? '0' + date.getDay() : date.getDay();
+		var hours = date.getHours() < 10  ? '0' + date.getHours() : date.getHours();
+		var minutes = date.getMinutes() < 10  ? '0' + date.getMinutes() : date.getMinutes();
+		var seconds = date.getSeconds() < 10  == 1 ? '0' + date.getSeconds() : date.getSeconds();
+		var currentDate = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds; 
+		
+		var folderName = $('NewFolderName').value;
+		
+		this.folderID = folderID;
+		
+		var options = {
+			method: 'post',
+			postBody: 'Created=' + currentDate + '&Name=' + folderName + '&ClassName=Folder&ID=' + folderID + '&ajax=1&action_save=1' + ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : ''),
+			onSuccess: this.onFolderAddSuccess.bind(this),
+			onFailure: function(transport) {
+				errorMessage('Error: Folder not added', transport); 
+			}
+		};
+
+		new Ajax.Request('admin/assets/EditForm', options);
     },
     
     /**
@@ -119,7 +125,6 @@ TinyMCEImageEnhancement.prototype = {
     */
     
     onFolderCancel: function(event) {
-        Event.stop(event);
         $('NewFolderName').value = '';
         Element.show('AddFolder');
         Element.hide('NewFolderName','FolderOk','FolderCancel');
