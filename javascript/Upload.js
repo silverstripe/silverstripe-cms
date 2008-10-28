@@ -42,7 +42,7 @@ Upload.prototype = {
         path = this.getBasePath();
         sessId = this.getSessionId();//Because flash doesn't send proper cookies, we need to set session id in URL. 
         this.swfu = new SWFUpload({
-                upload_url: path + 'admin/assets/index/root?executeForm=UploadForm&SecurityID=' + this.securityID +  '&PHPSESSID=' + sessId,   // Relative to the SWF file
+                upload_url: path + 'admin/assets/UploadForm?SecurityID=' + this.securityID +  '&PHPSESSID=' + sessId,   // Relative to the SWF file
                 file_post_name: 'Files',
                 file_size_limit : this.fileSizeLimit,
                 file_types : this.fileTypes,
