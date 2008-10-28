@@ -321,8 +321,6 @@ function ingize(val) {
  */
 
 function ajaxSubmitForm(automated, callAfter, form, action, verb) {
-	// tinyMCE.triggerSave(true);
-
 	var alreadySaved = false;
 	if($(form).elements.length < 2) alreadySaved = true;
 

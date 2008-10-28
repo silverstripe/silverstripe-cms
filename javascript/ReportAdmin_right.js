@@ -98,11 +98,10 @@ Behaviour.register({
 				for(var i=0;i<tabs.length;i++) if(tabs[i].tagName) initTabstrip(tabs[i]);
 			} catch(er) { /*alert('b: '+ er.message + '\n' + er.line); */}
 
-			if((typeof tinyMCE != 'undefined') && tinyMCE.instances) {
-				tinyMCE.instances = [];
-				tinyMCE.isLoaded = false;
-				tinyMCE.onLoad();
-			}
+    		// Note: TinyMCE coupling
+    		if((typeof tinymce != 'undefined') && tinymce.EditorManager) {
+    			tinymce.EditorManager.editors = {};
+    		}
 
 			// if(this.prepareForm) this.prepareForm();
 			Behaviour.apply($('Form_EditForm'));
