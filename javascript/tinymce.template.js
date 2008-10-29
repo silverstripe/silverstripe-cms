@@ -12,7 +12,6 @@ if((typeof tinyMCE != 'undefined')) {
 		mode : "none",
 		language: "$Lang",
 		width: "100%",
-		/*height: "300",*/
 		auto_resize : true,
 		theme : "advanced",
 		content_css : "$ContentCSS",
