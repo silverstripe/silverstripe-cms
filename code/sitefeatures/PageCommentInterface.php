@@ -6,7 +6,7 @@
  * @package cms
  * @subpackage comments
  */
-class PageCommentInterface extends RequestHandlingData {
+class PageCommentInterface extends RequestHandler {
 	static $url_handlers = array(
 		'$Item!' => '$Item',
 	);
