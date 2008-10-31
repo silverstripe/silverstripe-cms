@@ -206,7 +206,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		$obj = singleton($this->stat('tree_class'));
 
 		// getChildrenAsUL is a flexible and complex way of traversing the tree
-		$siteTree = $obj->getChildrenAsUL("",
+		$siteTreeItem = $obj->getChildrenAsUL("",
 			' "<li id=\"record-$child->ID\" class=\"$child->class " . ($child->Locked ? " nodelete" : "") . ' .
 			' ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
 			' "<a href=\"admin/security/show/$child->ID\" >" . $child->TreeTitle() . "</a>" ',$this);
@@ -214,7 +214,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\">" .
 						"<li id=\"record-0\" class=\"Root\">" .
 							"<a href=\"admin/security/show/0\" ><strong>"._t('SecurityAdmin.SGROUPS',"Security groups")."</strong></a>"
-							. $siteTree .
+							. $siteTreeItem .
 						"</li>" .
 					"</ul>";
 
