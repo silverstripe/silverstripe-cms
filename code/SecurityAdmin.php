@@ -114,7 +114,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	}
 
 	public function getMemberForm($id) {
-		if($id && $id != 'new') $record = DataObject::get_one("Member", "`Member`.ID = $id");
+		if($id && $id != 'new') $record = DataObject::get_by_id("Member",$id);
 		if($record || $id == 'new') {
 			$fields = new FieldSet(
 				new HiddenField('MemberListBaseGroup', '', $this->currentPageID() )
