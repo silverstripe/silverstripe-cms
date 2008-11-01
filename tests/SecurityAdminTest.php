@@ -13,7 +13,10 @@ class SecurityAdminTest extends FunctionalTest {
 		/* Then load the export page */
 		$this->get('admin/security//EditForm/field/Members/export');
 		
-		$this->assertRegExp('/"FirstName","Surname","Email"/', $this->content());
+		$this->assertRegExp(
+			'/"' . _t('MemberTableField.FIRSTNAME') . '","' . _t('MemberTableField.SURNAME') . '","' . _t('MemberTableField.EMAIL') . '"/', 
+			$this->content()
+		);
 		$this->assertRegExp('/"","","admin@example.com"/', $this->content());
 	}
 
@@ -27,7 +30,10 @@ class SecurityAdminTest extends FunctionalTest {
 		/* Then load the export page */
 		$this->get('admin/security//EditForm/field/Members/export');
 		
-		$this->assertRegExp('/"FirstName","Surname","Email"/', $this->content());
+		$this->assertRegExp(
+			'/"' . _t('MemberTableField.FIRSTNAME') . '","' . _t('MemberTableField.SURNAME') . '","' . _t('MemberTableField.EMAIL') . '"/', 
+			$this->content()
+		);
 	}
 	
 }
