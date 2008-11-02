@@ -103,7 +103,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 	
 	public function getMenuTitle() {
-		return _t('LeftAndMain.CMSMAIN', 'Site Content', PR_HIGH, 'Menu title');
+		return _t('LeftAndMain.SITECONTENT', 'Site Content', PR_HIGH, 'Menu title');
 	}	
 	
 	/**

@@ -46,7 +46,7 @@ class AssetAdmin extends LeftAndMain {
 	);
 
 	public function getMenuTitle() {
-		return _t('LeftAndMain.ASSETS', 'Files & Images', PR_HIGH, 'Menu title');
+		return _t('LeftAndMain.FILESIMAGES', 'Files & Images', PR_HIGH, 'Menu title');
 	}
 	
 	/**
