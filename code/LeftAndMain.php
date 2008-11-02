@@ -329,8 +329,18 @@ class LeftAndMain extends Controller {
 				}
 			}
 		
+			// already set in CMSMenu::populate_menu(), but from a static pre-controller
+			// context, so doesn't respect the current user locale in _t() calls - as a workaround,
+			// we simply call getMenuTitle() again if we're dealing with a controller
+			if($menuItem->controller) {
+				$controllerObj = singleton($menuItem->controller);
+				$title = $controllerObj->getMenuTitle();
+			} else {
+				$title = $menuItem->title;
+			}
+			
 			$menu->push(new ArrayData(array(
-				"Title" => Convert::raw2xml($menuItem->title),
+				"Title" => Convert::raw2xml($title),
 				"Code" => $code,
 				"Link" => $menuItem->url,
 				"LinkingMode" => $linkingmode
