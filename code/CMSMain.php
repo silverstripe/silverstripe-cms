@@ -10,6 +10,18 @@
  */
 class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionProvider {
 	
+	static $url_segment = '';
+	
+	static $url_rule = '/$Action/$ID/$OtherID';
+	
+	// Maintain a lower priority than other administration sections
+	// so that Director does not think they are actions of CMSMain
+	static $url_priority = 40;
+	
+	static $menu_title = 'Site Content';
+	
+	static $menu_priority = 10;
+	
 	static $tree_class = "SiteTree";
 	
 	static $subitem_class = "Member";
@@ -89,6 +101,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Requirements::javascript("forum/javascript/ForumAccess.js");
 		Requirements::javascript('gallery/javascript/GalleryPage_CMS.js');
 	}
+	
+	public function getMenuTitle() {
+		return _t('LeftAndMain.CMSMAIN', 'Site Content', PR_HIGH, 'Menu title');
+	}	
 	
 	/**
 	 * If this is set to true, the "switchView" context in the
@@ -481,10 +497,6 @@ JS;
 		$this->extend('augmentNewSiteTreeItem', $newItem);
 		
 		return $newItem;
-	}
-
-	public function Link($action = null) {
-		return "admin/$action";
 	}
 
 	public function deletefromlive($urlParams, $form) {

@@ -6,6 +6,12 @@
  */
 class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 
+	static $url_segment = 'security';
+	
+	static $url_rule = '/$Action/$ID/$OtherID';
+	
+	static $menu_title = 'Security';
+	
 	static $tree_class = 'Group';
 	
 	static $subitem_class = 'Member';
@@ -255,8 +261,8 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			return DataObject::get_by_id("Member", Session::get('currentMember'));
 	}
 
-	public function Link($action = null) {
-		return "admin/security/$action";
+	public function getMenuTitle() {
+		return _t('LeftAndMain.SECURITY', 'Security', PR_HIGH, 'Menu title');
 	}
 	
 	function providePermissions() {

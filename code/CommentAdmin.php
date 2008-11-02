@@ -5,6 +5,13 @@
  * @subpackage comments
  */
 class CommentAdmin extends LeftAndMain {
+
+	static $url_segment = 'comments';
+	
+	static $url_rule = '/$Action';
+	
+	static $menu_title = 'Comments';
+
 	static $allowed_actions = array(
 		'approvedmarked',
 		'deleteall',
@@ -22,9 +29,9 @@ class CommentAdmin extends LeftAndMain {
 		Requirements::css(CMS_DIR . 'css/CommentAdmin.css');
 	}
 	
-	public function Link($action = null) {
-		return "admin/comments/$action";
-	}
+	public function getMenuTitle() {
+		return _t('LeftAndMain.COMMENTS', 'Comments', PR_HIGH, 'Menu title');
+	}	
 	
 	public function showtable($params) {
 	    return $this->getLastFormIn($this->renderWith('CommentAdmin_right'));

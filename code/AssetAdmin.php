@@ -8,6 +8,12 @@
  */
 class AssetAdmin extends LeftAndMain {
 
+	static $url_segment = 'assets';
+	
+	static $url_rule = '/$Action/$ID';
+	
+	static $menu_title = 'Files & Images';
+
 	public static $tree_class = "File";
 	
 	/**
@@ -39,8 +45,8 @@ class AssetAdmin extends LeftAndMain {
 		'deleteUnusedThumbnails' => 'ADMIN'
 	);
 
-	public function Link($action = null) {
-		return "admin/assets/$action";
+	public function getMenuTitle() {
+		return _t('LeftAndMain.ASSETS', 'Files & Images', PR_HIGH, 'Menu title');
 	}
 	
 	/**

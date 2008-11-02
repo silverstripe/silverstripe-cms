@@ -13,6 +13,12 @@
  */
 class ReportAdmin extends LeftAndMain {
 	
+	static $url_segment = 'reports';
+	
+	static $url_rule = '/$Action/$ID';
+	
+	static $menu_title = 'Reports';	
+	
 	static $template_path = null; // defaults to (project)/templates/email
 	
 	public function init() {
@@ -34,8 +40,8 @@ class ReportAdmin extends LeftAndMain {
 		}
 	}
 	
-	public function Link($action = null) {
-		return "admin/reports/$action";
+	public function getMenuTitle() {
+		return _t('LeftAndMain.REPORTS', 'Reports', PR_HIGH, 'Menu title');
 	}
 	
 	/**

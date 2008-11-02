@@ -28,6 +28,8 @@
  * @package cms
  */
 abstract class ModelAdmin extends LeftAndMain {
+
+	static $url_rule = '/$Action';	
 	
 	/**
 	 * List of all managed {@link DataObject}s in this interface.
@@ -137,19 +139,6 @@ abstract class ModelAdmin extends LeftAndMain {
 		foreach($this->getManagedModels() as $ClassName) {
 			$this->addWrapperMethod($ClassName, 'bindModelController');
 		}
-	}
-	
-	/**
-	 * Return default link to this controller. This assfaced method is abstract, so we can't
-	 * get rid of it.
-	 *
-	 * @todo extract full URL binding from Director::addRules so that it's not tied to 'admin/crm'
-	 * @todo is there a way of removing the dependency on this method from the Form?
-	 * 
-	 * @return string
-	 */
-	public function Link() {
-		return Controller::join_links(Director::absoluteBaseURL(), 'admin/crm/');
 	}
 	
 	/**
