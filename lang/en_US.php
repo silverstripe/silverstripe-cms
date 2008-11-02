@@ -406,6 +406,10 @@ $lang['en_US']['PageComment']['COMMENTBY'] = array(
 	PR_MEDIUM,
 	'Name, Page Title'
 );
+$lang['en_US']['PageComment']['Comment'] = 'Comment';
+$lang['en_US']['PageComment']['IsSpam'] = 'Spam?';
+$lang['en_US']['PageComment']['Name'] = 'Author Name';
+$lang['en_US']['PageComment']['NeedsModeration'] = 'Needs Moderation?';
 $lang['en_US']['PageComment']['PLURALNAME'] = array(
 	'Page Comments',
 	50,
@@ -415,26 +419,6 @@ $lang['en_US']['PageComment']['SINGULARNAME'] = array(
 	'Page Comment',
 	50,
 	'Singular name of the object, used in dropdowns and to generally identify a single object in the interface'
-);
-$lang['en_US']['PageComment']['db_Comment'] = array(
-	'Comment',
-	50,
-	'Name of the object property, mainly used for automatically generating forms'
-);
-$lang['en_US']['PageComment']['db_IsSpam'] = array(
-	'IsSpam',
-	50,
-	'Name of the object property, mainly used for automatically generating forms'
-);
-$lang['en_US']['PageComment']['db_Name'] = array(
-	'Name',
-	50,
-	'Name of the object property, mainly used for automatically generating forms'
-);
-$lang['en_US']['PageComment']['db_NeedsModeration'] = array(
-	'NeedsModeration',
-	50,
-	'Name of the object property, mainly used for automatically generating forms'
 );
 $lang['en_US']['PageCommentInterface']['POST'] = 'Post';
 $lang['en_US']['PageCommentInterface']['SPAMQUESTION'] = 'Spam protection question: %s';
