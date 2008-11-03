@@ -374,24 +374,20 @@
 /**
  * TableField Subclasses
  */
-div.MemberListFilter,
-div.MemberFilter,
-div.CommentFilter {
-	width: 37em;
+ 
+/* Filter box (for search/filter box above a table on Asset/MemberTableField) */
+div.filterBox {
+	width: 33em;
 	margin: 5px 0;
 	padding: 5px;
 	background: #ebeadb;
 	border: 1px solid #aca899;
 }
-	div.MemberListFilter .middleColumn,
-	div.MemberFilter .middleColumn,
-	div.CommentFilter .middleColumn {
-		display: inline !important;
+	div.filterBox .middleColumn {
+		background: none !important;
 	}
 
-	.right form div.MemberListFilter label,
-	.right form div.MemberFilter label,
-	.right form div.CommentFilter label {
+	.right form div.filterBox label {
 		display: block;
 		width: 5em;
 		float: left;
@@ -401,20 +397,15 @@ div.CommentFilter {
 		font-size: 12px;
 	}
 	
-	div.MemberListFilter div.field,
-	div.MemberFilter div.field,
-	div.CommentFilter div.field {
+	div.filterBox div.field {
 		margin-left: 0 !important;
+		padding: 0;
 		font-size: 12px;
 		display: inline;
 	}
 	
-	div.MemberListFilter input,
-	div.MemberListFilter select,
-	div.MemberFilter input,
-	div.MemberFilter select,
-	div.CommentFilter input,
-	div.CommentFilter select {
+	div.filterBox input,
+	div.filterBox select {
 		width: auto;
 	}
 

@@ -19,9 +19,22 @@ class AssetTableField extends ComplexTableField {
 	function __construct($controller, $name, $sourceClass, $fieldList, $detailFormFields, $sourceFilter = "", $sourceSort = "", $sourceJoin = "") {
 		parent::__construct($controller, $name, $sourceClass, $fieldList, $detailFormFields, $sourceFilter, $sourceSort, $sourceJoin);
 
-		$this->sourceSort = "Title";		
+		Requirements::javascript(CMS_DIR . '/javascript/AssetTableField.js');
+		
+		$SNG_file = singleton('File');
+		
+		// If search was request, filter the results here
+		$SQL_search = (!empty($_REQUEST['FileSearch'])) ? Convert::raw2sql($_REQUEST['FileSearch']) : null;
+		if($SQL_search) {
+			$searchFilters = array();
+			foreach($SNG_file->searchableFields() as $fieldName => $fieldSpec) {
+				if(strpos($fieldName, '.') === false) $searchFilters[] = "`$fieldName` LIKE '%{$SQL_search}%'";
+			}
+			$this->sourceFilter = '(' . implode(' OR ', $searchFilters) . ')';
+		}		
+		
+		$this->sourceSort = 'Title';
 		$this->Markable = true;
-
 	}
 	
 	function setFolder($folder) {
@@ -141,6 +154,34 @@ class AssetTableField extends ComplexTableField {
 		$detailFormFields->removeByName('ID');
 		
 		return $detailFormFields;
+	}
+
+	/**
+	 * Provide some HTML for a search form, to be 
+	 * added above the AssetTable field, allowing
+	 * a user to filter the current table's files
+	 * by their filename.
+	 *
+	 * @return string HTML for search form
+	 */
+	function SearchForm() {
+		$searchFields = new FieldGroup(
+			new TextField('FileSearch', _t('MemberTableField.SEARCH', 'Search')),
+			new HiddenField("ctf[ID]", '', $this->ID),
+			new HiddenField('FileFieldName', '', $this->name)
+		);
+
+		$actionFields = new LiteralField(
+			'FileFilterButton',
+			'<input type="submit" class="action" name="FileFilterButton" value="' . _t('MemberTableField.FILTER', 'Filter') . '" id="FileFilterButton"/>'
+		);
+		
+		$fieldContainer = new FieldGroup(
+			$searchFields,
+			$actionFields
+		);
+
+		return $fieldContainer->FieldHolder();
 	}
 	
 }

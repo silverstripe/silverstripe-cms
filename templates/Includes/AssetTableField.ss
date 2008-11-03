@@ -1,4 +1,7 @@
 <div id="$id" class="$CSSClasses field">
+	<div class="FileFilter filterBox">
+		$SearchForm
+	</div>
 	<% include TableListField_PageControls %>
 	<table class="data">
 		<thead>

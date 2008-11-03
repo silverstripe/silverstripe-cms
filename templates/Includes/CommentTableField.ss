@@ -1,5 +1,5 @@
 <div id="$id" class="$CSSClasses">
-	<div class="CommentFilter">
+	<div class="CommentFilter filterBox">
 		$SearchForm
 	</div>
 	<% include TableListField_PageControls %>

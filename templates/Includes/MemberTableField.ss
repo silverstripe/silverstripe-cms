@@ -1,5 +1,5 @@
 <div id="$id" class="$CSSClasses">
-	<div class="MemberFilter">
+	<div class="MemberFilter filterBox">
 		$SearchForm
 	</div>
 	<div id="MemberList"> 
