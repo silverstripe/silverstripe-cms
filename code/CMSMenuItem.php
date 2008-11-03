@@ -39,10 +39,10 @@ class CMSMenuItem extends Object
 	 * @param integer $priority The sort priority of the item
 	 */
 	public function __construct($title, $url, $controller = null, $priority = -1) {
-			$this->title = $title;
-			$this->url = $url;
-			$this->controller = $controller;
-			$this->priority = $priority;
+		$this->title = $title;
+		$this->url = $url;
+		$this->controller = $controller;
+		$this->priority = $priority;
 	}
 	
 }
