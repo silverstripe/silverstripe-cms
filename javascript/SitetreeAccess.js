@@ -7,54 +7,54 @@
  */
 
 ViewersGroupHide = function() {
-	$('ViewersGroup').style.display = "none";
+	$('ViewerGroups').style.display = "none";
 }
 EditorsGroupHide = function() {
-	$('EditorsGroup').style.display = "none";
+	$('EditorGroups').style.display = "none";
 }
 
 Behaviour.register({
-	'#Form_EditForm_Viewers_OnlyTheseUsers': {
+	'#Form_EditForm_CanViewType_OnlyTheseUsers': {
 
 		onclick: function() {
-			$('ViewersGroup').style.display = "block";
+			$('ViewerGroups').style.display = "block";
 		},
 
 		initialize: function() {
-			if($('Form_EditForm_Viewers_OnlyTheseUsers')) {
-				if($('Form_EditForm_Viewers_OnlyTheseUsers').checked)
-					$('ViewersGroup').style.display = "block";
+			if($('Form_EditForm_CanViewType_OnlyTheseUsers')) {
+				if($('Form_EditForm_CanViewType_OnlyTheseUsers').checked)
+					$('ViewerGroups').style.display = "block";
 				else
-					$('ViewersGroup').style.display = "none";
+					$('ViewerGroups').style.display = "none";
 			}
 		}
 	},
 
-	'#Form_EditForm_Viewers_Anyone': {
+	'#Form_EditForm_CanViewType_Anyone': {
 		onclick: ViewersGroupHide
 	},
 
-	'#Form_EditForm_Viewers_LoggedInUsers': {
+	'#Form_EditForm_CanViewType_LoggedInUsers': {
 		onclick: ViewersGroupHide
 	},
 
-	'#Form_EditForm_Editors_OnlyTheseUsers': {
+	'#Form_EditForm_CanEditType_OnlyTheseUsers': {
 
 		onclick: function() {
-			$('EditorsGroup').style.display = "block";
+			$('EditorGroups').style.display = "block";
 		},
 
 		initialize: function() {
-			if($('Form_EditForm_Editors_OnlyTheseUsers')) {
-				if($('Form_EditForm_Editors_OnlyTheseUsers').checked)
-					$('EditorsGroup').style.display = "block";
+			if($('Form_EditForm_CanEditType_OnlyTheseUsers')) {
+				if($('Form_EditForm_CanEditType_OnlyTheseUsers').checked)
+					$('EditorGroups').style.display = "block";
 				else
-					$('EditorsGroup').style.display = "none";
+					$('EditorGroups').style.display = "none";
 			}
 		}
 	},
 
-	'#Form_EditForm_Editors_LoggedInUsers': {
+	'#Form_EditForm_CanEditType_LoggedInUsers': {
 		onclick: EditorsGroupHide
 	}
 });
