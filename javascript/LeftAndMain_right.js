@@ -144,8 +144,8 @@ CMSForm.prototype = {
 
 		// If there's a title field and it's got a "new XX" value, focus/select that first
 		// This is really a little too CMS-specific (as opposed to LeftAndMain), but the cleanup can happen after jQuery refactoring
-		if($('Form_EditForm_Title') && $('Form_EditForm_Title').value.match(/^new/i)) {
-    		$('Form_EditForm_Title').select();
+		if($('input#Form_EditForm_Title') && $('input#Form_EditForm_Title').value.match(/^new/i)) {
+    		$('input#Form_EditForm_Title').select();
 		}
 	},
 	/**
