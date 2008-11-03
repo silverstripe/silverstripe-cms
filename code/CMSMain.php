@@ -444,6 +444,9 @@ JS;
 
 		if(is_numeric($parent)) $parentObj = DataObject::get_by_id("SiteTree", $parent);
 		if(!$parentObj || !$parentObj->ID) $parent = 0;
+		
+		if($parentObj && !$parentObj->canAddChildren()) return Security::permissionFailure($this);
+		if(!singleton($className)->canCreate()) return Security::permissionFailure($this);
 
 		$p = $this->getNewItem("new-$className-$parent".$suffix, false);
 		$p->write();
@@ -454,14 +457,16 @@ JS;
 
 	public function getNewItem($id, $setID = true) {
 		list($dummy, $className, $parentID, $suffix) = explode('-',$id);
-		if (!Translatable::is_default_lang()) {
-			$originalItem = Translatable::get_original($className,Session::get("{$id}_originalLangID"));
-			if ($setID) $originalItem->ID = $id;
-			else {
-				$originalItem->ID = null;
-				Translatable::creating_from(Session::get($id.'_originalLangID'));
+		if(Translatable::is_enabled()) {
+			if (!Translatable::is_default_lang()) {
+				$originalItem = Translatable::get_original($className,Session::get("{$id}_originalLangID"));
+				if ($setID) $originalItem->ID = $id;
+				else {
+					$originalItem->ID = null;
+					Translatable::creating_from(Session::get($id.'_originalLangID'));
+				}
+				return $originalItem;
 			}
-			return $originalItem;
 		}
 		$newItem = new $className();
 
@@ -503,6 +508,8 @@ JS;
 		$id = $_REQUEST['ID'];
 		Versioned::reading_stage('Live');
 		$record = DataObject::get_by_id("SiteTree", $id);
+		if($record && !$record->canDelete()) return Security::permissionFailure($this);
+		
 		$descRemoved = '';
 		$descendantsRemoved = 0;
 		
@@ -541,12 +548,16 @@ JS;
 	 * Actually perform the publication step
 	 */
 	public function performPublish($record) {
+		if($record && !$record->canPublish()) return Security::permissionFailure($this);
+		
 		$record->doPublish();
 	}
 
 	public function revert($urlParams, $form) {
 		$id = $_REQUEST['ID'];
 		$obj = DataObject::get_by_id("SiteTree", $id);
+		if($record && !$record->canEdit()) return Security::permissionFailure($this);
+		
 		$obj->doRevertToLive();
 
 		$title = Convert::raw2js($obj->Title);
@@ -563,6 +574,8 @@ JS;
 	public function delete($urlParams, $form) {
 		$id = $_REQUEST['ID'];
 		$record = DataObject::get_one("SiteTree", "SiteTree.ID = $id");
+		if($record && !$record->canDelete()) return Security::permissionFailure();
+		
 		$recordID = $record->ID;
 		$record->delete();
 		$record->ID = $recordID;
@@ -743,6 +756,8 @@ HTML;
 		$SQL_id = Convert::raw2sql($_REQUEST['ID']);
 
 		$page = DataObject::get_by_id("SiteTree", $SQL_id);
+		if($page && !$page->canPublish()) return Security::permissionFailure($this);
+		
 		$page->doUnpublish();
 		
 		return $this->tellBrowserAboutPublicationChange($page, sprintf(_t('CMSMain.REMOVEDPAGE',"Removed '%s' from the published site"),$page->Title));
@@ -783,6 +798,8 @@ HTML;
 
 	function performRollback($id, $version) {
 		$record = DataObject::get_by_id($this->stat('tree_class'), $id);
+		if($record && !$record->canPublish()) return Security::permissionFailure($this);
+		
 		$record->doRollbackTo($version);
 		return $record;
 	}
@@ -793,6 +810,8 @@ HTML;
 		$record = Versioned::get_version("SiteTree", $id, $version);
 
 		if($record) {
+			if($record && !$record->canView()) return Security::permissionFailure($this);
+			
 			$fields = $record->getCMSFields($this);
 			$fields->removeByName("Status");
 
@@ -850,6 +869,8 @@ HTML;
 		}
 
 		$page = DataObject::get_by_id("SiteTree", $id);
+		if($page && !$page->canView()) return Security::permissionFailure($this);
+		
 		$record = $page->compareVersions($fromVersion, $toVersion);
 		if($record) {
 			$fields = $record->getCMSFields($this);
@@ -949,8 +970,10 @@ HTML;
 			$brokenPageList = '';
 			if(is_numeric($id)) {
 				$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-
+				
 				if($record) {
+					if($record && !$record->canPublish()) return Security::permissionFailure($this);
+					
 					// Publish this page
 					$record->doPublish();
 
@@ -997,10 +1020,9 @@ HTML;
 			if(is_numeric($id)) {
 				$record = DataObject::get_by_id($this->stat('tree_class'), $id);
 
-				// if(!$record) Debug::message( "Can't find record #$id" );
-
 				if($record) {
-
+					if($record && !$record->canDelete()) return Security::permissionFailure($this);	
+					
 					// add all the children for this record if they are not already in the list
 					// this check is a little slower but will prevent circular dependencies
 					// (should they exist, which they probably shouldn't) from causing
@@ -1159,6 +1181,8 @@ HTML;
 			$count = 0;
 			while(true) {
 				foreach($pages as $page) {
+					if($page && !$page->canPublish()) return Security::permissionFailure($this);
+					
 					$page->doPublish();
 					$page->destroy();
 					unset($page);
@@ -1207,6 +1231,7 @@ HTML;
 	function duplicate() {
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
 			$page = DataObject::get_by_id("SiteTree", $id);
+			if($page && !$page->canEdit()) return Security::permissionFailure($this);
 
 			$newPage = $page->duplicate();
 			
@@ -1225,6 +1250,7 @@ HTML;
 	function duplicatewithchildren() {
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
 			$page = DataObject::get_by_id("SiteTree", $id);
+			if($page && !$page->canEdit()) return Security::permissionFailure($this);
 
 			$newPage = $page->duplicateWithChildren();
 

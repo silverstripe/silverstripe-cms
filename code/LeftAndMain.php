@@ -280,7 +280,11 @@ class LeftAndMain extends Controller {
 	public function getitem() {
 		$this->setCurrentPageID($_REQUEST['ID']);
 		SSViewer::setOption('rewriteHashlinks', false);
-		// Changed 3/11/2006 to not use getLastFormIn because that didn't have _form_action, _form_name, etc.
+
+		if(isset($_REQUEST['ID'])) {
+			$record = DataObject::get_by_id($this->stat('tree_class'), $_REQUEST['ID']);
+			if($record && !$record->canView()) return Security::permissionFailure($this);
+		}
 
 		$form = $this->EditForm();
 		if($form) return $form->formHtmlContent();
@@ -458,7 +462,9 @@ JS;
 		$SQL_id = Convert::raw2sql($_REQUEST['ID']);
 		if(substr($SQL_id,0,3) != 'new') {
 			$record = DataObject::get_one($className, "`$className`.ID = {$SQL_id}");
+			if($record && !$record->canEdit()) return Security::permissionFailure($this);
 		} else {
+			if(!singleton($this->stat('tree_class'))->canCreate()) return Security::permissionFailure($this);
 			$record = $this->getNewItem($SQL_id, false);
 		}
 
@@ -660,6 +666,8 @@ JS;
 		if(is_numeric($id) && is_numeric($parentID) && $id != $parentID) {
 			$node = DataObject::get_by_id($this->stat('tree_class'), $id);
 			if($node){
+				if($node && !$node->canEdit()) return Security::permissionFailure($this);
+				
 				$node->ParentID = $parentID;
 				$node->Status = "Saved (update)";
 				$node->write();
@@ -743,6 +751,9 @@ JS;
 		$script = "st = \$('sitetree'); \n";
 		foreach($ids as $id) {
 			if(is_numeric($id)) {
+				$record = DataObject::get_by_id($id);
+				if($record && !$record->canDelete()) return Security::permissionFailure($this);
+				
 				DataObject::delete_by_id($this->stat('tree_class'), $id);
 				$script .= "node = st.getTreeNodeByIdx($id); if(node) node.parentTreeNode.removeTreeNode(node); $('Form_EditForm').closeIfSetTo($id); \n";
 			}
@@ -754,7 +765,13 @@ JS;
 
 	public function EditForm() {
 		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : $this->currentPageID();
-		if($id) return $this->getEditForm($id);
+		
+		if(!$id) return false;
+			
+		$record = DataObject::get_by_id($this->stat('tree_class'), $id);
+		if($record && !$record->canView()) return Security::permissionFailure($this);
+			
+		return $this->getEditForm($id);
 	}
 	
 	public function myprofile() {
