@@ -38,6 +38,9 @@ abstract class ModelAdmin extends LeftAndMain {
 	 */
 	protected static $managed_models = null;
 	
+	/**
+	 * More actions are dynamically added in {@link defineMethods()} below.
+	 */
 	public static $allowed_actions = array(
 		'add',
 		'edit',
@@ -138,6 +141,7 @@ abstract class ModelAdmin extends LeftAndMain {
 		parent::defineMethods();
 		foreach($this->getManagedModels() as $ClassName) {
 			$this->addWrapperMethod($ClassName, 'bindModelController');
+			self::$allowed_actions[] = $ClassName;
 		}
 	}
 	
@@ -364,6 +368,8 @@ class ModelAdmin_CollectionController extends Controller {
 	function __construct($parent, $model) {
 		$this->parentController = $parent;
 		$this->modelClass = $model;
+		
+		parent::__construct();
 	}
 	
 	/**
@@ -436,6 +442,7 @@ class ModelAdmin_CollectionController extends Controller {
 		$form->setHTMLID("Form_SearchForm_" . $this->modelClass);
 		$clearAction->useButtonTag = true;
 		$clearAction->addExtraClass('minorAction');
+
 		return $form;
 	}
 	
@@ -670,6 +677,8 @@ class ModelAdmin_RecordController extends Controller {
 		$modelName = $parentController->getModelClass();
 		$recordID = $request->param('Action');
 		$this->currentRecord = DataObject::get_by_id($modelName, $recordID);
+		
+		parent::__construct();
 	}
 	
 	/**
