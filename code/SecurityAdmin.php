@@ -29,9 +29,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	);
 
 	public function init() {
-		// Check permissions
-		// if(!Member::currentUser() || !Member::currentUser()->isAdmin()) Security::permissionFailure($this);
-
 		parent::init();
 
 		Requirements::javascript(THIRDPARTY_DIR . "/hover.js");

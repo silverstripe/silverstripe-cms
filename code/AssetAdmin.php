@@ -295,13 +295,6 @@ HTML;
 				));
 			}
 			
-			// @todo: These workflow features aren't really appropriate for all projects
-			if( Member::currentUser()->isAdmin() && project() == 'mot' ) {
-				$fields->addFieldsToTab( 'Root.Workflow', new DropdownField("Owner", _t('AssetAdmin.OWNER','Owner'), Member::map() ) );
-				$fields->addFieldsToTab( 'Root.Workflow', new TreeMultiselectField("CanUse", _t('AssetAdmin.CONTENTUSABLEBY','Content usable by')) );
-				$fields->addFieldsToTab( 'Root.Workflow', new TreeMultiselectField("CanEdit", _t('AssetAdmin.CONTENTMODBY','Content modifiable by')) );
-			}
-
 			if( !$record->userCanEdit() )
 				$form->makeReadonly();
 
