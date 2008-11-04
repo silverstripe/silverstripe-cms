@@ -163,9 +163,9 @@ class CMSMenu extends Object implements Iterator
 		}
 		$subClasses = array_unique($subClasses);
 		foreach($subClasses as $key => $className) {
-			// Test that the class is not abstract and it has a valid menu title
+			// Remove abstract classes and LeftAndMain
 			$classReflection = new ReflectionClass($className);
-			if(!$classReflection->isInstantiable()) {
+			if(!$classReflection->isInstantiable() || 'LeftAndMain' == $className) {
 				unset($subClasses[$key]);
 			} else {
 				if(singleton($className)->getMenuTitle() == '') {
