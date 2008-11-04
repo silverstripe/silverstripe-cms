@@ -282,7 +282,7 @@ class LeftAndMain extends Controller {
 		$this->setCurrentPageID($_REQUEST['ID']);
 		SSViewer::setOption('rewriteHashlinks', false);
 
-		if(isset($_REQUEST['ID'])) {
+		if(isset($_REQUEST['ID']) && is_numeric($_REQUEST['ID'])) {
 			$record = DataObject::get_by_id($this->stat('tree_class'), $_REQUEST['ID']);
 			if($record && !$record->canView()) return Security::permissionFailure($this);
 		}
@@ -768,9 +768,11 @@ JS;
 		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : $this->currentPageID();
 		
 		if(!$id) return false;
-			
-		$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-		if($record && !$record->canView()) return Security::permissionFailure($this);
+		
+		if(is_numeric($id)) {
+			$record = DataObject::get_by_id($this->stat('tree_class'), $id);
+			if($record && !$record->canView()) return Security::permissionFailure($this);
+		}
 			
 		return $this->getEditForm($id);
 	}
