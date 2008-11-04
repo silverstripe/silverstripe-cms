@@ -254,12 +254,13 @@ class LeftAndMain extends Controller {
 	}
 	
 	/**
-	 * Override {@link getMenuTitle} in child classes to make the menu title translatable for that class
+	 * Override {@link getMenuTitle} in child classes to make the menu title translatable for that class.
+	 * Uses {@link $menu_title} if present, otherwise falls back to the classname without the "Admin" suffix.
 	 *
 	 * @return string
 	 */
 	public function getMenuTitle() {
-		return $this->stat('menu_title');
+		return ($this->stat('menu_title')) ? $this->stat('menu_title') : preg_replace('/Admin$/', '', $this->class);
 	}
 
 	public function show($params) {
