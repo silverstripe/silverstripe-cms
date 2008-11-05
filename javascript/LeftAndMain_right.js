@@ -39,7 +39,7 @@ CMSForm.prototype = {
 	 */
 	closeIfSetTo: function(id) {
 		if(this.elements.ID && this.elements.ID.value == id) {
-			this.innerHTML = "<p>This page was deleted.  To edit a page, select it from the left.</p>";
+			this.innerHTML = "<p>" + ss.i18n._t('LeftAndMain.PAGEWASDELETED') + "</p>";
     		// Note: TinyMCE coupling
     		if((typeof tinymce != 'undefined') && tinymce.EditorManager) {
     			tinymce.EditorManager.editors = {};

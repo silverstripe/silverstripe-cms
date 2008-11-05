@@ -21,6 +21,7 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'CMSMAIN.SAVING' : 'Sichern...',
 		'ModelAdmin.SAVED': "Gespeichert",
 		'ModelAdmin.REALLYDELETE': "Wirklich löschen?",
-		'ModelAdmin.DELETED': "Gelöscht"
+		'ModelAdmin.DELETED': "Gelöscht",
+		'LeftAndMain.PAGEWASDELETED': "Diese Seite wurde gelöscht."
 	});
 }

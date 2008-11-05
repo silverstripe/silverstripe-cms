@@ -21,6 +21,7 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'CMSMAIN.SAVING' : 'saving...',
 		'ModelAdmin.SAVED': "Saved",
 		'ModelAdmin.REALLYDELETE': "Do you really want to delete?",
-		'ModelAdmin.DELETED': "Deleted"
+		'ModelAdmin.DELETED': "Deleted",
+		'LeftAndMain.PAGEWASDELETED': "This page was deleted.  To edit a page, select it from the left."
 	});
 }
