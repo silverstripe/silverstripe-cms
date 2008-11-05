@@ -151,7 +151,6 @@ class InstallRequirements {
 		$this->requireFile('jsparty', array("File permissions", "jsparty/ folder exists", "There's no jsparty folder."));
 		$this->requireWriteable('.htaccess', array("File permissions", "Is the .htaccess file writeable?", null));
 		$this->requireWriteable('mysite', array("File permissions", "Is the mysite/ folder writeable?", null));
-		if(file_exists('tutorial')) $this->requireWriteable('tutorial', array("File permissions", "Is the tutorial/ folder writeable?", null));
 		$this->requireWriteable('assets', array("File permissions", "Is the assets/ folder writeable?", null));
 		
 		$this->requireTempFolder(array('File permissions', 'Is the temporary folder writeable?', null));
@@ -607,45 +606,29 @@ class Installer extends InstallRequirements {
 			@$_SESSION['StatsID'] = file_get_contents($url);
 		}
 		
-		// Delete old _config.php files
-		if(file_exists('tutorial/_config.php')) {
-			unlink('tutorial/_config.php');
-		}
-		
 		if(file_exists('mysite/_config.php')) {
 			unlink('mysite/_config.php');
 		}
-		
+		$theme = $_POST['template'];
 		// Write the config file
-		
-		$template = $_POST['template'] == 'tutorial' ? 'tutorial' : 'mysite';
-		
-		$theme = '';
-		if($_POST['template'] != 'tutorial') {
-			$theme = <<<PHP
-// This line set's the current theme. More themes can be
-// downloaded from http://www.silverstripe.com/cms-themes-and-skin
-SSViewer::set_theme('blackcandy');
-PHP;
-		}
-		
-		
 		global $usingEnv;
 		if($usingEnv) {
-			echo "<li>Creating '$template/_config.php' for use with _ss_environment.php...</li>\n";
+			echo "<li>Creating 'mysite/_config.php' for use with _ss_environment.php...</li>\n";
 			flush();
-			$this->createFile("$template/_config.php", <<<PHP
+			$this->createFile("mysite/_config.php", <<<PHP
 <?php
 
 global \$project;
-\$project = '$template';
+\$project = 'mysite';
 
 global \$database;
 \$database = "{$config['mysql']['database']}";
 
 require_once("conf/ConfigureFromEnv.php");
 
-$theme
+// This line set's the current theme. More themes can be
+// downloaded from http://www.silverstripe.com/cms-themes-and-skin
+SSViewer::set_theme('$theme');
 
 ?>
 PHP
@@ -653,7 +636,7 @@ PHP
 
 			
 		} else {
-			echo "<li>Creating '$template/_config.php'...</li>\n";
+			echo "<li>Creating 'mysite/_config.php'...</li>\n";
 			flush();
 		
 		
@@ -661,11 +644,11 @@ PHP
 			$devServers = $this->var_export_array_nokeys(explode("\n", $_POST['devsites']));
 		
 			$escapedPassword = addslashes($config['mysql']['password']);
-			$this->createFile("$template/_config.php", <<<PHP
+			$this->createFile("mysite/_config.php", <<<PHP
 <?php
 
 global \$project;
-\$project = '$template';
+\$project = 'mysite';
 
 global \$databaseConfig;
 \$databaseConfig = array(
@@ -682,7 +665,9 @@ global \$databaseConfig;
 // for a description of what dev mode does.
 Director::set_dev_servers($devServers);
 
-$theme
+// This line set's the current theme. More themes can be
+// downloaded from http://www.silverstripe.com/cms-themes-and-skin
+SSViewer::set_theme('$theme');
 
 ?>
 PHP
@@ -697,21 +682,37 @@ PHP
 		// Load the sapphire runtime
 		$_SERVER['SCRIPT_FILENAME'] = dirname(realpath($_SERVER['SCRIPT_FILENAME'])) . '/sapphire/main.php';
 		chdir('sapphire');
-		
+		/**
+		 * @TODO - Remove Dependance on CMS FOLDER.
+		 * 			This will be refactored into dev/build
+		 */
+		require_once('core/Object.php');
+		require_once('core/ViewableData.php');
+		require_once('core/control/RequestHandler.php');
+		require_once('core/control/Controller.php');
+		require_once('../cms/code/LeftAndMain.php');
+		require_once('../cms/code/CMSMenuItem.php');
+		require_once('../cms/code/CMSMenu.php');
+		require_once('core/i18n.php');
+		require_once('core/i18nEntityProvider.php');
+		require_once('core/model/DataObjectInterface.php');
+		require_once('core/model/DataObject.php');
+		require_once('email/Email.php');
+		require_once('security/Security.php');
+		require_once('dev/Debug.php');
+		require_once('core/SSViewer.php');
 		require_once('core/Core.php');
 		require_once('core/ManifestBuilder.php');
 		require_once('core/ClassInfo.php');
-		require_once('core/Object.php');
 		require_once('core/control/Director.php');
-		require_once('core/ViewableData.php');
 		require_once('core/Session.php');
 		require_once('core/control/RequestHandler.php');
-		require_once('core/control/Controller.php');
 		require_once('filesystem/Filesystem.php');
-
+		
+	
 		echo "<li>Building database schema...</li>";
 		flush();
-		
+
 		// Build database
 		$_GET['flush'] = true;
 		$con = new Controller();
