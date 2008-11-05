@@ -7,7 +7,7 @@ PageCommentInterface = Class.create();
 PageCommentInterface.prototype = {
 	initialize: function() {
 		Behaviour.register({
-			'#PageCommentInterface_Form_PageCommentsPostCommentForm_action_postcomment' : {
+			'#PageCommentInterface_Form_PostCommentForm_action_postcomment' : {
 				onclick : this.postComment
 			},
 
@@ -33,8 +33,8 @@ PageCommentInterface.prototype = {
 	},
 	
 	postComment: function() {
-		var form = $("PageCommentInterface_Form_PageCommentsPostCommentForm");
-		var message = $("PageCommentInterface_Form_PageCommentsPostCommentForm_error");
+		var form = $("PageCommentInterface_Form_PostCommentForm");
+		var message = $("PageCommentInterface_Form_PostCommentForm");
 		
 		if(form.elements.Name.value && form.elements.Comment.value) {
 			if(noComments = $('NoComments')) {
