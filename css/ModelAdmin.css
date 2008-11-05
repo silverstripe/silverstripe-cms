@@ -9,7 +9,7 @@ body.ModelAdmin #left {
 }
 
 body.ModelAdmin #Form_AddForm fieldset {
-	float: left;
+	/* float: left; */
 }
 
 body.ModelAdmin #Form_AddForm #ClassName {

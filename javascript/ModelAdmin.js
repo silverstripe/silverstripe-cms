@@ -10,6 +10,14 @@
  */
 (function($) {
 $(document).ready(function() {
+	/** 
+	 * Add class ajaxActions class to the parent of Add button of AddForm
+	 * so it float to the right
+	 */
+	$('#Form_AddForm_action_doCreate').livequery(function(){
+		$(this).parent().addClass('ajaxActions');
+	});
+	
 	/**
 	 * Attach tabs plugin to the set of search filter and edit forms
 	 */
