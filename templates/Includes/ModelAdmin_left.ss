@@ -22,13 +22,13 @@
 		
 		<% control ModelForms %>
 		<div class="tab" id="{$Form.Name}_$ClassName">
-			<h3>Create</h3>
+			<h3><% _t('ADDLISTING','Add') %></h3>
 			$CreateForm
 			
-			<h3>Search</h3>
+			<h3><% _t('SEARCHLISTINGS','Search') %></h3>
 			$SearchForm
 		
-			<h3>Import</h3>
+			<h3><% _t('IMPORT_TAB_HEADER', 'Import') %></h3>
 			$ImportForm
 			</div>
 		<% end_control %>

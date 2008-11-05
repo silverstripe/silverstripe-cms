@@ -333,11 +333,12 @@ class ModelAdmin_CollectionController extends Controller {
 			if (!singleton($modelName)->canCreate(Member::currentUser())) return false;
 		}
 		
-		$buttonLabel = sprintf(_t('ModelAdmin.CREATEBUTTON', "Create a %s", PR_MEDIUM, "Create a new instance from a model class"), singleton($modelName)->i18n_singular_name());
+		$buttonLabel = sprintf(_t('ModelAdmin.CREATEBUTTON', "Create '%s'", PR_MEDIUM, "Create a new instance from a model class"), singleton($modelName)->i18n_singular_name());
 		
 		$actions = new FieldSet(
-			new FormAction('add', $buttonLabel)
+			$createButton = new FormAction('add', $buttonLabel)
 		);
+		$createButton->dontEscape = true;
 		
 		return new Form($this, "CreateForm", new FieldSet(), $actions);	
 	}
