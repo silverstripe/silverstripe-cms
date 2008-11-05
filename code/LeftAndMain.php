@@ -689,7 +689,7 @@ JS;
 				}
 
 				FormResponse::status_message(_t('LeftAndMain.SAVED','saved'), 'good');
-				FormResponse::add($cleanupJS);
+				if($cleanupJS) FormResponse::add($cleanupJS);
 
 			}else{
 				FormResponse::status_message(_t('LeftAndMain.PLEASESAVE',"Please Save Page: This page could not be upated because it hasn't been saved yet."),"good");
