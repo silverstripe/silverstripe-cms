@@ -70,11 +70,12 @@ $(document).ready(function() {
 
 	/**
 	 * Submits a search filter query and attaches event handlers
-	 * to the response table
+	 * to the response table, excluding the import form because 
+	 * file ($_FILES) submission doesn't work using AJAX 
 	 * 
 	 * @todo use livequery to manage ResultTable click handlers
 	 */
-	$('#SearchForm_holder .tab form').submit(function () {
+	$('#SearchForm_holder .tab form:not(#Form_ImportForm)').submit(function () {
 	    var $form = $(this);
 	    $('#ModelAdminPanel').load($(this).attr('action'), $(this).formToArray(), standardStatusHandler(function(result) {
     		__lastSearch = $form;
@@ -230,8 +231,8 @@ $(document).ready(function() {
 	/**
 	 * Toggle import specifications
 	 */
-	$('#Form_ImportForm_holder .spec .details').hide();
-	$('#Form_ImportForm_holder .spec a.detailsLink').click(function() {
+	$('.importSpec .details').hide();
+	$('.importSpec a.detailsLink').click(function() {
 		$('#' + $(this).attr('href').replace(/.*#/,'')).toggle();
 		return false;
 	});

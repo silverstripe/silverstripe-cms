@@ -166,142 +166,12 @@ abstract class ModelAdmin extends LeftAndMain {
 	}
 	
 	/**
-	 * Allows to choose which record needs to be created.
-	 * 
-	 * @return Form
-	 */
-	protected function ManagedModelsSelect() {
-		$models = $this->getManagedModels();
-		$modelMap = array();
-		foreach($models as $modelName) {
-			if ($this->hasMethod('alternatePermissionCheck')) {
-				if ($this->alternatePermissionCheck()) {
-					$modelMap[$modelName] = singleton($modelName)->singular_name();
-				}
-			}
-			else {
-				if(singleton($modelName)->canCreate(Member::currentUser())) $modelMap[$modelName] = singleton($modelName)->singular_name();
-			}
-		}
-		
-		$form = new Form(
-			$this,
-			"ManagedModelsSelect",
-			new FieldSet(
-				new DropdownField('ClassName', _t('ModelAdmin.CLASSTYPE', 'Type', PR_MEDIUM, 'Type of object to add'), $modelMap)
-			),
-			new FieldSet(
-				new FormAction('add', _t('ModelAdmin.CREATE', 'Create'))
-			)
-		);
-		$form->setFormMethod('get');
-		return $form;
-	}
-	
-	/**
-	 * Generate a CSV import form with an option to select
-	 * one of the "importable" models specified through {@link self::$model_importers}.
-	 *
-	 * @return Form
-	 */	
-	public function ImportForm() {
-		$models = $this->getManagedModels();
-		$modelMap = array();
-		$importers = $this->getModelImporters();
-		if(!$importers) return false;
-
-		foreach($importers as $modelName => $importerClass) {
-			$modelMap[$modelName] = singleton($modelName)->singular_name();
-		}
-		
-		$fields = new FieldSet(
-			new DropdownField('ClassName', _t('ModelAdmin.CLASSTYPE'), $modelMap),
-			new FileField('_CsvFile', false)
-		);
-		
-		// get HTML specification for each import (column names etc.)
-		foreach($importers as $modelName => $importerClass) {
-			$importer = new $importerClass($modelName);
-			$spec = $importer->getImportSpec();
-			$specFields = new DataObjectSet();
-			foreach($spec['fields'] as $name => $desc) {
-				$specFields->push(new ArrayData(array('Name' => $name, 'Description' => $desc)));
-			}
-			$specRelations = new DataObjectSet();
-			foreach($spec['relations'] as $name => $desc) {
-				$specRelations->push(new ArrayData(array('Name' => $name, 'Description' => $desc)));
-			}
-			$specHTML = $this->customise(array(
-				'ModelName' => singleton($modelName)->i18n_singular_name(), 
-				'Fields' => $specFields,
-				'Relations' => $specRelations, 
-			))->renderWith('ModelAdmin_ImportSpec');
-			
-			$fields->push(new LiteralField("SpecFor{$modelName}", $specHTML));
-		}
-		
-		$actions = new FieldSet(
-			new FormAction('import', _t('ModelAdmin.IMPORT', 'Import from CSV'))
-		);
-		
-		$form = new Form(
-			$this,
-			"ImportForm",
-			$fields,
-			$actions
-		);
-		return $form;
-	}
-	
-	function add($data, $form, $request) {
-		$className = $request->requestVar("ClassName");
-		return $this->$className()->add($request);
-	}
-	
-	/**
-	 * Imports the submitted CSV file based on specifications given in
-	 * {@link self::model_importers}.
-	 * Redirects back with a success/failure message.
-	 * 
-	 * @todo Figure out ajax submission of files via jQuery.form plugin
-	 *
-	 * @param unknown_type $data
-	 * @param unknown_type $form
-	 * @param unknown_type $request
-	 */
-	function import($data, $form, $request) {
-		$importers = $this->getModelImporters();
-		$importerClass = $importers[$data['ClassName']];
-		
-		$loader = new $importerClass($data['ClassName']);
-		$results = $loader->load($_FILES['_CsvFile']['tmp_name']);
-		
-		$message = '';
-		if($results->CreatedCount()) $message .= sprintf(
-			_t('ModelAdmin.IMPORTEDRECORDS', "Imported %s records."), 
-			$results->CreatedCount()
-		);
-		if($results->UpdatedCount()) $message .= sprintf(
-			_t('ModelAdmin.UPDATEDRECORDS', "Updated %s records."),
-			$results->UpdatedCount()
-		);
-		if($results->DeletedCount()) $message .= sprintf(
-			_t('ModelAdmin.DELETEDRECORDS', "Deleted %s records."),
-			$results->DeletedCount()
-		);
-		if(!$results->CreatedCount() && !$results->UpdatedCount()) $message .= _t('ModelAdmin.NOIMPORT', "Nothing to import");
-		
-		Session::setFormMessage('Form_ImportForm', $message, 'good');
-		Director::redirect($_SERVER['HTTP_REFERER'] . '#Form_ImportForm_holder');
-	}
-	
-	/**
-	 * 
+	 * Returns managed models' create, search, and import forms
 	 * @uses SearchContext
 	 * @uses SearchFilter
-	 * @return Form
+	 * @return DataObjectSet of forms 
 	 */
-	protected function getSearchForms() {
+	protected function getModelForms() {
 		$modelClasses = $this->getManagedModels();
 		
 		$forms = new DataObjectSet();
@@ -309,7 +179,9 @@ abstract class ModelAdmin extends LeftAndMain {
 			$this->$modelClass()->SearchForm();
 
 			$forms->push(new ArrayData(array(
-				'Form' => $this->$modelClass()->SearchForm(),
+				'SearchForm' => $this->$modelClass()->SearchForm(),
+				'CreateForm' => $this->$modelClass()->CreateForm(),
+				'ImportForm' => $this->$modelClass()->ImportForm(),
 				'Title' => singleton($modelClass)->singular_name(),
 				'ClassName' => $modelClass,
 			)));
@@ -340,7 +212,7 @@ abstract class ModelAdmin extends LeftAndMain {
 	 *
 	 * @return array
 	 */
-	protected function getModelImporters() {
+	 function getModelImporters() {
 		$importers = $this->stat('model_importers');
 
 		// fallback to all defined models if not explicitly defined
@@ -351,6 +223,7 @@ abstract class ModelAdmin extends LeftAndMain {
 		
 		return $importers;
 	}
+	
 }
 
 /**
@@ -444,6 +317,117 @@ class ModelAdmin_CollectionController extends Controller {
 		$clearAction->addExtraClass('minorAction');
 
 		return $form;
+	}
+	
+	/**
+	 * Create a form that consists of one button 
+	 * that directs to a give model's Add form
+	 */ 
+	public function CreateForm() {
+		$modelName = $this->modelClass;
+
+		if ($this->hasMethod('alternatePermissionCheck')) {
+			if (!$this->alternatePermissionCheck()) return false;
+		}
+		else {
+			if (!singleton($modelName)->canCreate(Member::currentUser())) return false;
+		}
+		
+		$buttonLabel = sprintf(_t('ModelAdmin.CREATEBUTTON', "Create a %s", PR_MEDIUM, "Create a new instance from a model class"), singleton($modelName)->i18n_singular_name());
+		
+		$actions = new FieldSet(
+			new FormAction('add', $buttonLabel)
+		);
+		
+		return new Form($this, "CreateForm", new FieldSet(), $actions);	
+	}
+	
+	/**
+	 * Generate a CSV import form for a single {@link DataObject} subclass.
+	 *
+	 * @return Form
+	 */
+	public function ImportForm() {
+		$modelName = $this->modelClass;
+
+		$importers = $this->parentController->getModelImporters();
+		
+		if(!$importers) return false;
+		
+		$fields = new FieldSet(
+			new HiddenField('ClassName', _t('ModelAdmin.CLASSTYPE'), $modelName),
+			new FileField('_CsvFile', false)
+		);
+		
+		// get HTML specification for each import (column names etc.)
+		$importerClass = $importers[$modelName];
+		$importer = new $importerClass($modelName);
+		$spec = $importer->getImportSpec();
+		$specFields = new DataObjectSet();
+		foreach($spec['fields'] as $name => $desc) {
+			$specFields->push(new ArrayData(array('Name' => $name, 'Description' => $desc)));
+		}
+		$specRelations = new DataObjectSet();
+		foreach($spec['relations'] as $name => $desc) {
+			$specRelations->push(new ArrayData(array('Name' => $name, 'Description' => $desc)));
+		}
+		$specHTML = $this->customise(array(
+			'ModelName' => singleton($modelName)->i18n_singular_name(), 
+			'Fields' => $specFields,
+			'Relations' => $specRelations, 
+		))->renderWith('ModelAdmin_ImportSpec');
+		
+		$fields->push(new LiteralField("SpecFor{$modelName}", $specHTML));
+		
+		$actions = new FieldSet(
+			new FormAction('import', _t('ModelAdmin.IMPORT', 'Import from CSV'))
+		);
+		
+		$form = new Form(
+			$this,
+			"ImportForm",
+			$fields,
+			$actions
+		);
+		return $form;
+	}
+	
+	/**
+	 * Imports the submitted CSV file based on specifications given in
+	 * {@link self::model_importers}.
+	 * Redirects back with a success/failure message.
+	 * 
+	 * @todo Figure out ajax submission of files via jQuery.form plugin
+	 *
+	 * @param unknown_type $data
+	 * @param unknown_type $form
+	 * @param unknown_type $request
+	 */
+	function import($data, $form, $request) {
+		$modelName = singleton($data['ClassName'])->i18n_singular_name();
+		$importers = $this->parentController->getModelImporters();
+		$importerClass = $importers[$modelName];
+		
+		$loader = new $importerClass($data['ClassName']);
+		$results = $loader->load($_FILES['_CsvFile']['tmp_name']);
+		
+		$message = '';
+		if($results->CreatedCount()) $message .= sprintf(
+			_t('ModelAdmin.IMPORTEDRECORDS', "Imported %s %s."), 
+			$results->CreatedCount()
+		);
+		if($results->UpdatedCount()) $message .= sprintf(
+			_t('ModelAdmin.UPDATEDRECORDS', "Updated %s records."),
+			$results->UpdatedCount()
+		);
+		if($results->DeletedCount()) $message .= sprintf(
+			_t('ModelAdmin.DELETEDRECORDS', "Deleted %s records."),
+			$results->DeletedCount()
+		);
+		if(!$results->CreatedCount() && !$results->UpdatedCount()) $message .= _t('ModelAdmin.NOIMPORT', "Nothing to import");
+		
+		Session::setFormMessage('Form_ImportForm', $message, 'good');
+		Director::redirect($_SERVER['HTTP_REFERER'] . '#Form_ImportForm_holder');
 	}
 	
 	/**

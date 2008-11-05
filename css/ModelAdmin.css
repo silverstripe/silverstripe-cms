@@ -4,7 +4,8 @@
 }
 
 body.ModelAdmin #left {
-	width: 260px;
+	width: 270px;
+	overflow: auto;
 }
 
 body.ModelAdmin #Form_AddForm fieldset {
@@ -100,7 +101,7 @@ body.ModelAdmin #right .tab {
 	height: 450px; /* @todo add dynamic resizing */
 }
 
-body.ModelAdmin #Form_ImportForm_holder dt {
+body.ModelAdmin #Form_ImportForm dt {
 	float: left;
 	width: 10em;
 	margin-right: 2em;
@@ -119,4 +120,15 @@ body.ModelAdmin #right .ajaxActions {
 	position: absolute;
 	right: 30px !important;
 	bottom: 35px !important;
+}
+
+.tab h3 {
+	margin-top: 10px;
+	font-size: 1.2em;
+}
+
+form .message {
+	font-size: 1em;
+	margin: .3em 0;
+	padding: 0.3em;
 }

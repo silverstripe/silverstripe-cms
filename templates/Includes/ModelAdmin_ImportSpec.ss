@@ -1,4 +1,4 @@
-<div class="spec" id="SpecFor{$ModelName}">
+<div class="importSpec" id="SpecFor{$ModelName}">
 	<a href="#SpecDetailsFor{$ModelName}" class="detailsLink"><% sprintf(_t('IMPORTSPECLINK', 'Show Specification for %s'),$ModelName) %></a>
 	<div class="details" id="SpecDetailsFor{$ModelName}">
 	<h4><% sprintf(_t('IMPORTSPECTITLE', 'Specification for %s'),$ModelName) %></h4>
