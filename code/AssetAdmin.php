@@ -421,37 +421,33 @@ JS;
 	}
 	
 	/**
-	 * Return the entire site tree as a nested set of ULs
+	 * Return the entire site tree as a nested UL.
+	 * @return string HTML for site tree
 	 */
 	public function SiteTreeAsUL() {
 		$obj = singleton('Folder');
-		$obj->setMarkingFilter("ClassName", "Folder");
+		$obj->setMarkingFilter('ClassName', 'Folder');
 		$obj->markPartialTree();
 
 		if($p = $this->currentPage()) $obj->markToExpose($p);
 
 		// getChildrenAsUL is a flexible and complex way of traversing the tree
+		$siteTreeList = $obj->getChildrenAsUL(
+			'',
+			'"<li id=\"record-$child->ID\" class=\"$child->class" . $child->markingClasses() .  ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
+			'"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" class=\"" . ($child->hasChildren() ? " contents" : "") . "\" >" . $child->TreeTitle() . "</a>" ',
+			$this,
+			true
+		);	
 
-		$siteTree = $obj->getChildrenAsUL("",
-
-					' "<li id=\"record-$child->ID\" class=\"$child->class" . $child->markingClasses() .  ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
-
-					' "<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" class=\"" . ($child->hasChildren() ? " contents" : "") . "\" >" . $child->TreeTitle() . "</a>" ',
-
-					$this, true);
-					
-
-		// Wrap the root if needs be.
-
+		// Wrap the root if needs be
 		$rootLink = $this->Link() . 'show/root';
-
-		if(!isset($rootID)) $siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-root\" class=\"Root\"><a href=\"$rootLink\"><strong>http://www.yoursite.com/assets</strong></a>"
-
-					. $siteTree . "</li></ul>";
-
+		if(!isset($rootID)) {
+			$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-root\" class=\"Root\"><a href=\"$rootLink\"><strong>http://www.yoursite.com/assets</strong></a>"
+			. $siteTreeList . "</li></ul>";
+		}
 
 		return $siteTree;
-
 	}
 
 	/**
