@@ -283,11 +283,15 @@ class InstallRequirements {
 				echo "<li>" . htmlentities($warning) . "</li>";
 			}
 		} else {
-			?>
-			<p>I have installed SilverStripe CMS successfully!</p>
-			<p><a href="./admin/" target="_blank">Open the CMS tool</a><br />
-			<a href="./" target="_blank">Open the site</a></p>
-			<?php
+			if(isset($_SERVER['HTTP_HOST'])) {
+				?>
+				<p>I have installed SilverStripe CMS successfully!</p>
+				<p><a href="./admin/" target="_blank">Open the CMS tool</a><br />
+				<a href="./" target="_blank">Open the site</a></p>
+				<?php
+			} else {
+				echo "\nSilverStripe successfully installed\n";
+			}
 		}
 	}
 	
@@ -572,11 +576,16 @@ class Installer extends InstallRequirements {
 	}
 	
 	function install($config) {
-		?>
-		<h1>Installing SilverStripe...</h1>
-		<p>I am now running through the installation steps (this should take about 30 seconds)</p>
-		<p>If you receive a fatal error, refresh this page to continue the installation
-		<?php
+		if(isset($_SERVER['HTTP_HOST'])) {
+			?>
+<h1>Installing SilverStripe...</h1>
+<p>I am now running through the installation steps (this should take about 30 seconds)</p>
+<p>If you receive a fatal error, refresh this page to continue the installation
+			<?php
+		} else {
+			echo "SILVERSTRIPE COMMAND-LINE INSTALLATION\n\n";
+		}
+		
 		flush();
 		
 		if(isset($_POST['stats'])) {
@@ -609,12 +618,11 @@ class Installer extends InstallRequirements {
 		if(file_exists('mysite/_config.php')) {
 			unlink('mysite/_config.php');
 		}
-		$theme = $_POST['template'];
+		$theme = isset($_POST['template']) ? $_POST['template'] : 'blackcandy';
 		// Write the config file
 		global $usingEnv;
 		if($usingEnv) {
-			echo "<li>Creating 'mysite/_config.php' for use with _ss_environment.php...</li>\n";
-			flush();
+			$this->statusMessage("Creating 'mysite/_config.php' for use with _ss_environment.php...");
 			$this->createFile("mysite/_config.php", <<<PHP
 <?php
 
@@ -636,10 +644,7 @@ PHP
 
 			
 		} else {
-			echo "<li>Creating 'mysite/_config.php'...</li>\n";
-			flush();
-		
-		
+			$this->statusMessage("Creating 'mysite/_config.php'...");
 		
 			$devServers = $this->var_export_array_nokeys(explode("\n", $_POST['devsites']));
 		
@@ -674,51 +679,26 @@ PHP
 			);
 		}
 
-		echo "<li>Creating '.htaccess' file...</li>";
-		flush();
+		$this->statusMessage("Creating '.htaccess' file...");
 		
 		$this->createHtaccess();
 
 		// Load the sapphire runtime
 		$_SERVER['SCRIPT_FILENAME'] = dirname(realpath($_SERVER['SCRIPT_FILENAME'])) . '/sapphire/main.php';
 		chdir('sapphire');
-		/**
-		 * @TODO - Remove Dependance on CMS FOLDER.
-		 * 			This will be refactored into dev/build
-		 */
-		require_once('core/Object.php');
-		require_once('core/ViewableData.php');
-		require_once('core/control/RequestHandler.php');
-		require_once('core/control/Controller.php');
-		require_once('../cms/code/LeftAndMain.php');
-		require_once('../cms/code/CMSMenuItem.php');
-		require_once('../cms/code/CMSMenu.php');
-		require_once('core/i18n.php');
-		require_once('core/i18nEntityProvider.php');
-		require_once('core/model/DataObjectInterface.php');
-		require_once('core/model/DataObject.php');
-		require_once('email/Email.php');
-		require_once('security/Security.php');
-		require_once('dev/Debug.php');
-		require_once('core/SSViewer.php');
+
 		require_once('core/Core.php');
-		require_once('core/ManifestBuilder.php');
-		require_once('core/ClassInfo.php');
-		require_once('core/control/Director.php');
-		require_once('core/Session.php');
-		require_once('core/control/RequestHandler.php');
-		require_once('filesystem/Filesystem.php');
-		
 	
-		echo "<li>Building database schema...</li>";
-		flush();
+		$this->statusMessage("Building database schema...");
 
 		// Build database
 		$_GET['flush'] = true;
 		$con = new Controller();
 		$con->pushCurrent();
-		ManifestBuilder::compileManifest();
-		require(MANIFEST_FILE);
+
+		global $databaseConfig;
+		DB::connect($databaseConfig);
+		
 		$dbAdmin = new DatabaseAdmin();
 		$dbAdmin->init();
 		
@@ -735,20 +715,25 @@ PHP
 		
 		// Syncing filesystem (so /assets/Uploads is available instantly, see ticket #2266)
 		FileSystem::sync();
-		
-		echo "<li>Checking mod_rewrite works</li>";
+
+		if(isset($_SERVER['HTTP_HOST'])) {
+			$this->statusMessage("Checking mod_rewrite works...");
+			$modRewriteWorks = $this->checkModRewrite();
+		} else {
+			$modRewriteWorks = true;
+		}
 		
 		$_SESSION['username'] = $config['admin']['username'];
 		$_SESSION['password'] = $config['admin']['password'];
 
-		if($this->checkModRewrite()) {
-			if($this->errors) {
-				
-			} else {
+		if($modRewriteWorks && !$this->errors) {
+			if(isset($_SERVER['HTTP_HOST'])) {
 				echo "<p>Installed SilverStripe successfully.  I will now try and direct you to 
 					<a href=\"home/successfullyinstalled?flush=1\">home/successfullyinstalled</a> to confirm that the installation was successful.</p>
 					<script>setTimeout(function() { window.location.href = 'home/successfullyinstalled?flush=1'; }, 1000);</script>
 					";
+			} else {
+				echo "\nSilverStripe successfully installed\n";
 			}
 		}
 		
@@ -793,7 +778,7 @@ PHP
 	
 	function createFile($filename, $content) {
 		$base = $this->getBaseDir();
-		echo "<li>Creating $base$filename\n";
+		$this->statusMessage("Creating $base$filename");
 
 		if((@$fh = fopen($base . $filename, 'w')) && fwrite($fh, $content) && fclose($fh)) {
 			return true;
@@ -924,8 +909,8 @@ TEXT;
 	}
 	
 	function performModRewriteTest() {
-		if(!$_SERVER['HTTP_HOST']) {
-			echo "<li>Installer seems to be called from command-line, we're going to assume that rewriting is working.\n";
+		if(!isset($_SERVER['HTTP_HOST']) || !$_SERVER['HTTP_HOST']) {
+			$this->statusMessage("Installer seems to be called from command-line, we're going to assume that rewriting is working.");
 			return true;
 		}
 		
@@ -974,6 +959,16 @@ TEXT;
 		}
 		$retval .= ")";
 		return $retval;
+	}
+	
+	/**
+	 * Show an installation status message.
+	 * The output differs depending on whether this is CLI or web based
+	 */
+	function statusMessage($msg) {
+		if(isset($_SERVER['HTTP_HOST'])) echo "<li>$msg</li>\n";
+		else echo "$msg\n";
+		flush();
 	}
 }
 
