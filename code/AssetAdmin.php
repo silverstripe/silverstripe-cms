@@ -89,12 +89,6 @@ class AssetAdmin extends LeftAndMain {
 		Requirements::javascript(SAPPHIRE_DIR . "/javascript/Security_login.js");
 		Requirements::javascript(THIRDPARTY_DIR . "/SWFUpload/SWFUpload.js");
 		
-		// Include the right JS]
-		// Hayden: This didn't appear to be used at all
-		/*$fileList = new FileList("Form_EditForm_Files", null);
-		$fileList->setClick_AjaxLoad('admin/assets/getfile/', 'Form_SubForm');
-		$fileList->FieldHolder();*/
-		
 		Requirements::javascript(THIRDPARTY_DIR . "/greybox/AmiJS.js");
 		Requirements::javascript(THIRDPARTY_DIR . "/greybox/greybox.js");
 		Requirements::css(THIRDPARTY_DIR . "/greybox/greybox.css");
