@@ -627,7 +627,7 @@ global \$database;
 require_once("conf/ConfigureFromEnv.php");
 
 // This line set's the current theme. More themes can be
-// downloaded from http://www.silverstripe.com/cms-themes-and-skin
+// downloaded from http://www.silverstripe.com/themes/
 SSViewer::set_theme('$theme');
 
 ?>
@@ -666,7 +666,7 @@ global \$databaseConfig;
 Director::set_dev_servers($devServers);
 
 // This line set's the current theme. More themes can be
-// downloaded from http://www.silverstripe.com/cms-themes-and-skin
+// downloaded from http://www.silverstripe.com/themes/
 SSViewer::set_theme('$theme');
 
 ?>
