@@ -35,6 +35,7 @@ ImageEditor.Crop = {
 		this.isVisible = false;
 		this.setVisible(this.isVisible);
 		this.isEnabled = true;
+		this.lastCrop = {};
 	},
 	
 	resizeStop: function(event) {
@@ -114,7 +115,11 @@ ImageEditor.Crop = {
 			var startTop = this.cropBox.getTop() ;
 			var startLeft = this.cropBox.getLeft() ;
 			if(newWidth > 35 && newHeight > 35) {
-				ImageEditor.imageTransformation.crop(startTop,startLeft,newWidth,newHeight,ImageEditor.Crop.cropCallback.bind(this));
+				this.lastCrop.top = startTop;
+				this.lastCrop.left = startLeft;
+				this.lastCrop.newWidth = newWidth;
+				this.lastCrop.newHeight = newHeight;
+				ImageEditor.transformation.crop(startTop,startLeft,newWidth,newHeight,ImageEditor.Crop.cropCallback.bind(this));
 				this.disable();
 			} else {
 				ImageEditor.statusMessageWrapper.statusMessage("Crop area too small","bad");
@@ -126,6 +131,12 @@ ImageEditor.Crop = {
 	},
 	
 	cropCallback: function() {
+	   ImageEditor.history.addCrop($('image').src,
+	                                               this.lastCrop.top,
+	                                               this.lastCrop.left,
+	                                               this.lastCrop.newWidth,
+	                                               this.lastCrop.newHeight
+	                               );
 	   ImageEditor.resize.imageContainerResize.placeClickBox();
    	   ImageEditor.resize.imageContainerResize.setVisible(true);
 	   Element.show($('CropText'));
@@ -142,8 +153,7 @@ ImageEditor.Crop = {
 			$('image').style.visibility = "hidden";//hack for IE for not selecting image during crop
 			this.setVisible(true);	
 			Element.show($('CurrentAction'));
-			ImageEditor.imageHistory.disable();
-			ImageEditor.effects.disableRotate();
+			ImageEditor.Main.disableFunctionality();
 			this.enable();
 		}
 	},
@@ -159,8 +169,7 @@ ImageEditor.Crop = {
 		    Element.hide($('CurrentAction'));
 		    Element.show($('CropText'));
 		    this.setVisible(false);
-		    ImageEditor.imageHistory.enable();
-		    ImageEditor.effects.enableRotate();
+		    ImageEditor.Main.enableFunctionality();
 			this.enable();
 		}
 		$('image').style.visibility = 'visible';//hack for IE for not selecting image during crop

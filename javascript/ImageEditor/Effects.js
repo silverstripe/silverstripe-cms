@@ -1,41 +1,35 @@
 /**
  * @author Mateusz
  */
-ImageEditor.Effects = {
+ImageEditor.Effects.Main = {
 	initialize: function() {
-		this.setListeners = ImageEditor.Effects.setListeners.bind(this);
-		this.rotate = ImageEditor.Effects.rotate.bind(this);
-		this.setListeners();
-		this.isRotateEnabled = true; 	
-		this.enableRotate = ImageEditor.Effects.enableRotate.bind(this);
-		this.disableRotate = ImageEditor.Effects.disableRotate.bind(this);
+		this.enable = ImageEditor.Effects.Main.enable.bind(this);
+		this.disable = ImageEditor.Effects.Main.disable.bind(this);
+		this.effects = Array();
+		this.effects['rotate'] = new ImageEditor.Effects.Base.initialize('rotate');
+		this.effects['greyscale'] = new ImageEditor.Effects.Base.initialize('greyscale');
+		this.effects['sepia'] = new ImageEditor.Effects.Base.initialize('sepia');
+		this.effects['blur'] = new ImageEditor.Effects.Base.initialize('blur');
+		this.effects['adjust-contrast'] = new ImageEditor.Effects.AdjustBase.initialize('adjust-contrast',$R(-100, 100),0.1,62);
+		this.effects['adjust-brightness'] = new ImageEditor.Effects.AdjustBase.initialize('adjust-brightness',$R(-255, 255),0.1,160);
+		this.effects['adjust-gamma'] = new ImageEditor.Effects.AdjustBase.initialize('adjust-gamma',$R(0, 5),1.2,4);
+		this.getEffect = ImageEditor.Effects.Main.getEffect.bind(this);
 	},
 	
-	rotate: function() {
-		if(this.isRotateEnabled) {
-			ImageEditor.resize.imageContainerResize.disable();
-			ImageEditor.crop.disable();
-			ImageEditor.imageHistory.disable();
-			ImageEditor.imageTransformation.rotate(90,ImageEditor.Effects.rotateCallback.bind(this));
-			this.isRotateEnabled = false;
-		}
-	},
-	
-	rotateCallback: function() {
-	   ImageEditor.resize.imageContainerResize.placeClickBox();
-	   this.isRotateEnabled = true;
-	},
-	
-	setListeners: function() {
-		Event.observe('RotateButton','click',this.rotate);
-	},
-	
-	disableRotate: function() {
-	   this.isRotateEnabled = false;   
-	},
-	
-	enableRotate: function() {
-	    this.isRotateEnabled = true;
-	}
+	enable: function() {
+ 	    for (var name in this.effects) { 
+             if(this.effects.hasOwnProperty(name)) this.effects[name].enable();            
+         }
+  	},
+  	
+ 	disable: function() {
+ 	    for (var name in this.effects) { 
+             if(this.effects.hasOwnProperty(name)) this.effects[name].disable();
+         }
+  	},
+  	
+ 	getEffect: function(name) {
+ 	    return this.effects[name];
+  	}
 		
 }

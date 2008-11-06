@@ -240,7 +240,7 @@ body
 #Functions
 {
     position: absolute;
-    left: 240px;
+    left: 480px;
     top: 38px;
     height: 73px;
     width: 220px;
@@ -317,11 +317,12 @@ body
 
 #TopRuler
 {
-    position: absolute;
-    width: 100%;
-    height: 15px;
-    background-image: url(../../images/ImageEditor/topRuler.png);
-    overflow: hidden;   
+	position: absolute;
+	top: 38px;
+	left: 720px;
+	width: 106px;
+	height: 73px;
+	background-image: url(../../images/ImageEditor/c3.png);
 }
 #LeftRuler
 {
@@ -330,6 +331,108 @@ body
     height: 100%;
     top: 147px;
     background-image: url(../../images/ImageEditor/leftRuler.png);
+}
+#Effects
+{
+    position: absolute;
+    left: 240px;
+    top: 38px;
+    height: 73px;
+    width: 220px;
+    z-index: 1234;
+    background-image: url(../../images/ImageEditor/c4.png);
+}
+#GreyscaleText
+{
+    position: absolute;
+    top: 42px;
+    left: 7px;
+}
+#SepiaText
+{
+    position: absolute;
+    top: 42px;
+    left: 70px;
+}
+#BlurText
+{
+    position: absolute;
+    top: 42px;
+    left: 125px;
+}
+#AdjustText
+{
+    position: absolute;
+    top: 42px;
+    left: 173px;
+}
+#AdjustMenu
+{
+	position: absolute;
+	width: 211px;
+	height: 74px;
+	background-color: rgb(201, 229, 232);
+	top: 60px;
+	left: 5px;
+	z-index: 1234;
+	background-image: url(../../images/ImageEditor/c1.png);
+}
+#AdjustMenuDescription
+{
+    position: absolute;
+    top: 57px;
+    left: 85px;	
+}
+.sliderTrack
+{
+    width: 86px;
+    height: 6px;
+    left: 95px;
+    position: absolute;
+    background-image: url(../../images/ImageEditor/slider2.png);
+}
+.sliderTrackHandler
+{
+    width: 13px;
+    height: 11px;
+    top: -2px;
+    cursor:move;
+    background-image: url(../../images/ImageEditor/slider.png);
+}
+#AdjustMenuContrastSliderTrack
+{
+    top: 8px;
+}
+.effectDescription
+{
+    position: absolute;
+	left: 15px;   
+}
+#AdjustMenuConstrastDescription
+{
+    top: 2px;
+}
+#AdjustMenuBrightnessSliderTrack
+{
+    top: 25px;
+}
+#AdjustMenuBrightnessDescription
+{
+    top: 22px;
+}
+#AdjustMenuGammaSliderTrack
+{
+    top: 42px;
+}
+#AdjustMenuGammaDescription
+{
+    top: 42px;
+}
+#EffectsDescription
+{
+    position: absolute;
+    top: 58px;
+    left: 90px; 	
 }
 #Filename p
 {

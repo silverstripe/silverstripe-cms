@@ -8,6 +8,8 @@ ImageEditor.Resize = {
 		this.leftBoxConstraint = 1;
 		this.topBoxConstraint = 0;
 		this.getRelativeMousePos = ImageEditor.Resize.getRelativeMousePos.bind(this);
+		this.enable = ImageEditor.Resize.enable.bind(this);
+		this.disable = ImageEditor.Resize.disable.bind(this);
 		var options = {
 				resizeStop: ImageEditor.Resize.resizeStop.bind(this),
 				onDrag: ImageEditor.Resize.onDrag.bind(this),
@@ -17,6 +19,7 @@ ImageEditor.Resize = {
 		new ImageEditor.Positioning.addBehaviour(this.element);
 		this.imageContainerResize = new ImageEditor.Resizeable.initialize(element,options);
 		this.imageContainerResize.setVisible(false);
+		this.lastResize = {};
 	},
 	
 	resizeStop: function(event) {
@@ -26,11 +29,9 @@ ImageEditor.Resize = {
 			if(this.imageContainerResize.isEnabled) {
 				if(this.imageContainerResize.originalWidth != imageElement.width || this.imageContainerResize.originalHeight != imageElement.height) {
 					$('imageContainer').style.backgroundImage = 'url("")';
-					ImageEditor.imageTransformation.resize(imageElement.width,imageElement.height,ImageEditor.Resize.resizeCallback.bind(this));
-					ImageEditor.effects.disableRotate();
-					ImageEditor.crop.disable();
-					this.imageContainerResize.disable();
-					ImageEditor.imageHistory.disable();
+					this.lastResize.width = imageElement.width;
+					this.lastResize.height = imageElement.height;
+					ImageEditor.transformation.resize(imageElement.width,imageElement.height,ImageEditor.Resize.resizeCallback.bind(this));
 				}	
 			}
 		}
@@ -38,6 +39,7 @@ ImageEditor.Resize = {
 	
 	resizeCallback: function() {
 		$('imageContainer').style.backgroundImage = 'url("' + $('image').src + '")';
+		ImageEditor.history.addResize($('image').src,this.lastResize.width,this.lastResize.height);
 	},
 	
 	onDrag: function()
@@ -63,5 +65,13 @@ ImageEditor.Resize = {
 		var relativeMouseX = Event.pointerX(event) + $('imageEditorContainer').scrollLeft - this.element.getParentLeft();
 		var relativeMouseY = Event.pointerY(event) + $('imageEditorContainer').scrollTop - this.element.getParentTop();
 		return {x: relativeMouseX,y: relativeMouseY};				
+	},
+	
+	enable: function() {
+	   this.imageContainerResize.enable();
+	},
+	
+	disable: function() {
+	   this.imageContainerResize.disable();
 	}
 }

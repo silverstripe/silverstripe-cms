@@ -21,9 +21,9 @@ class ImageEditor extends Controller {
 		Requirements::javascript(THIRDPARTY_DIR . '/prototype.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/scriptaculous/scriptaculous.js');
            Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/Utils.js');
-           Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/ImageHistory.js');
+           //Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/ImageHistory.js');
            Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/Image.js');
-           Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/ImageTransformation.js');
+           //Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/ImageTransformation.js');
            Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/Resizeable.js');
            Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/Effects.js');
            Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/Environment.js');
@@ -64,8 +64,7 @@ class ImageEditor extends Controller {
 		$gd = new GD($this->url2File($fileName));
 		switch($command) {
 			case 'rotate':
-				$angle = $_POST['angle'];
-				$gd = $gd->rotate($angle);
+				$gd = $gd->rotate(90);
 			break;
 			case 'resize':
 				$imageNewWidth = $_POST['newImageWidth'];
@@ -79,6 +78,27 @@ class ImageEditor extends Controller {
 				$height = $_POST['height'];
 				$gd = $gd->crop($top,$left,$width,$height);
 			break;
+  			case 'greyscale':
+				$gd = $gd->greyscale();                 
+				break;
+            case 'sepia':
+				$gd = $gd->sepia();                 
+				break;
+			case 'blur':
+				$gd = $gd->blur();                 
+				break;
+			case 'adjust-contrast':
+				$value = intval($_POST['value']);
+				$gd = $gd->contrast($value);
+				break;
+			case 'adjust-brightness':
+				$value = intval($_POST['value']);
+				$gd = $gd->brightness($value);
+				break;
+			case 'adjust-gamma':
+				$value = floatval($_POST['value']);
+				$gd = $gd->gamma($value);
+				break;
 		}
 		$rand = md5(rand(1,100000));
 		$gd->writeTo(ASSETS_PATH . '/_tmp/' . $rand . '.' . $fileInfo['extension']);

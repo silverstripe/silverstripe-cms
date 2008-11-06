@@ -50,6 +50,67 @@
                         <% _t('ACTIONS', 'actions') %>
                     </p>    
                 </div>
+				<div id="Effects">
+					<a id="GreyscaleButton" href="#a">
+						<div id="GreyscaleIcon"></div>
+						<p id="GreyscaleText" class="menuText">
+							<% _t('GREYSCALE','greyscale') %>
+						</p>
+					</a>
+					<a id="SepiaButton" href="#a">
+						<div id="SepiaIcon"></div>
+						<p id="SepiaText" class="menuText">
+							<% _t('SEPIA','sepia') %>
+						</p>
+				 	</a>
+					<a id="BlurButton" href="#a">
+				 		<div id="BlurIcon"></div>
+						<p id="BlurText" class="menuText">
+							<% _t('BLUR','blur') %>
+						</p>
+					</a>
+					<a id="AdjustButton" href="#a">
+						<div id="AdjustIcon"></div>
+						<p id="AdjustText" class="menuText">
+							<% _t('ADJUST','adjust') %>
+						</p>                        
+					</a>
+					<div id="AdjustMenu">
+						<div id="AdjustMenuContrastSlider">
+							<div id="AdjustMenuContrastSliderTrack" class="sliderTrack">
+								<div id="AdjustMenuContrastSliderTrackHandler" class="sliderTrackHandler">
+								</div>
+							</div>
+						</div> 
+						<p id="AdjustMenuConstrastDescription" class="menuText effectDescription">
+							<% _t('CONTRAST','contrast') %>
+						</p>
+						<div id="AdjustMenuBrightnessSlider">
+							<div id="AdjustMenuBrightnessSliderTrack" class="sliderTrack">
+								<div id="AdjustMenuBrightnessSliderTrackHandler" class="sliderTrackHandler">
+								</div>
+							</div>
+						</div>
+						<p id="AdjustMenuBrightnessDescription" class="menuText effectDescription">
+							<% _t('BRIGHTNESS','brightness') %>
+						</p>
+						<div id="AdjustMenuGammaSlider">
+							<div id="AdjustMenuGammaSliderTrack" class="sliderTrack">
+								<div id="AdjustMenuGammaSliderTrackHandler" class="sliderTrackHandler">
+								</div>
+							</div>
+						</div>
+						<p id="AdjustMenuGammaDescription" class="menuText effectDescription">
+							<% _t('GAMMA','gamma') %>
+						</p>
+						<p id="AdjustMenuDescription" class="menuText">
+							<% _t('ADJUST','adjust') %>
+						</p>    
+					</div>
+					<p id="EffectsDescription" class="menuText">
+						<% _t('EFFECTS','effects') %>
+				 	</p>    
+				</div>
                 <div id="Functions">
                     <a id="RotateButton" href="#a">
                         <div id="RotateIcon">
@@ -74,6 +135,7 @@
                         <% _t('EDITFUNCTIONS', 'edit&nbsp;functions') %>
                     </p>    
                 </div>
+
                 <div id="CurrentAction">
                     <a id="CancelButton" href="#a">
                         <div id="CancelIcon">

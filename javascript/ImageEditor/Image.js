@@ -10,6 +10,7 @@ ImageEditor.ImageToResize = {
 		this.onImageLoad = ImageEditor.ImageToResize.onImageLoad.bind(this);
 		this.resizeOnFirstLoad = ImageEditor.ImageToResize.resizeOnFirstLoad.bind(this);
 		Event.observe(this.imageToResize,'load',this.onImageLoad);
+		this.firstResize = {};
 	},
 		
 	reportSize: function(width,height) {
@@ -27,12 +28,8 @@ ImageEditor.ImageToResize = {
 			$('imageContainer').style.backgroundImage = 'url("' + $('image').src + '")';
 			ImageEditor.imageBox.hideIndicator();
 			Element.show($('imageContainer'),$('image'));
-            ImageEditor.crop.enable();
-            ImageEditor.resize.imageContainerResize.enable();
-            ImageEditor.effects.enableRotate();
-            ImageEditor.imageHistory.enable();
             if(ImageEditor.resize.imageContainerResize.originalHeight == 0 && ImageEditor.resize.imageContainerResize.originalWidth == 0) {
-				ImageEditor.imageHistory.add('initialize',$('image').src);
+				ImageEditor.history.add('initialize',$('image').src);
 				this.resizeOnFirstLoad();
 				ImageEditor.imageBox.center();
 	        }
@@ -50,7 +47,7 @@ ImageEditor.ImageToResize = {
 	   var imageWidth =  Element.getDimensions($('image')).width;
 	   var imageHeight = Element.getDimensions($('image')).height;
 	   if(imageWidth > windowWidth - 40 || imageHeight >  windowHeight - 40) {
-		   ImageEditor.imageHistory.clear();
+		   ImageEditor.history.clear();
 		   Element.hide($('imageContainer'),$('image'));
 		   var ratio = imageWidth / imageHeight;
 	       $('loadingIndicatorContainer2').style.left = windowWidth/2 + 'px';
@@ -61,15 +58,14 @@ ImageEditor.ImageToResize = {
 	       }
 	       this.reportSize(0,0);
 	       ImageEditor.resize.imageContainerResize.setVisible(false);
-	       ImageEditor.crop.disable();
-           ImageEditor.resize.imageContainerResize.disable();
-           ImageEditor.effects.disableRotate();
-           ImageEditor.imageHistory.disable();
-	       ImageEditor.imageTransformation.resize(imageWidth,imageHeight,ImageEditor.ImageToResize.resizeOnFirstLoadCallBack.bind(this),false);
+	       ImageEditor.transformation.resize(imageWidth,imageHeight,ImageEditor.ImageToResize.resizeOnFirstLoadCallBack.bind(this),false);
+	       this.firstResize.width = imageWidth;
+           this.firstResize.height = imageHeight;
 	   }	
     },
     
     resizeOnFirstLoadCallBack: function() {
+        ImageEditor.history.addResize($('image').src,this.firstResize.width,this.firstResize.height);
         Element.hide($('loadingIndicatorContainer2'));
 		ImageEditor.resize.imageContainerResize.setVisible(true);
 		ImageEditor.resize.imageContainerResize.placeClickBox();
