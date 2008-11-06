@@ -454,20 +454,19 @@ JS;
 	 * Returns a subtree of items underneat the given folder.
 	 */
 	public function getsubtree() {
-		$obj = DataObject::get_by_id("Folder", $_REQUEST['ID']);
-		$obj->setMarkingFilter("ClassName", "Folder");
+		$obj = DataObject::get_by_id('Folder', $_REQUEST['ID']);
+		$obj->setMarkingFilter('ClassName', 'Folder');
 		$obj->markPartialTree();
 
-		$results = $obj->getChildrenAsUL("",
+		$results = $obj->getChildrenAsUL(
+			'',
+			'"<li id=\"record-$child->ID\" class=\"$child->class" . $child->markingClasses() .  ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
+			'"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" >" . $child->TreeTitle() . "</a>" ',
+			$this,
+			true
+		);
 
-					' "<li id=\"record-$child->ID\" class=\"$child->class" . $child->markingClasses() .  ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
-
-					' "<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" >" . $child->TreeTitle() . "</a>" ',
-
-					$this, true);
-
-		return substr(trim($results), 4,-5);
-
+		return substr(trim($results), 4, -5);
 	}
 	
 
