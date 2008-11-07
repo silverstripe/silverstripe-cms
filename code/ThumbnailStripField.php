@@ -41,10 +41,10 @@ class ThumbnailStripField extends FormField {
 	function getimages() {
 		$result = '';
 		$folder = DataObject::get_by_id('Folder', (int) $_GET['folderID']);
-		
+
 		if(!$folder) return _t('ThumbnailStripField.NOTAFOLDER', 'This is not a folder');
+		
 		$folderList = $folder->getDescendantIDList("Folder");
-	
 		array_unshift($folderList, $folder->ID);
 			
 		$images = DataObject::get('Image', 'ParentID IN (' . implode(', ', $folderList) . ')', 'Title');
