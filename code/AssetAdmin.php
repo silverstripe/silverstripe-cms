@@ -124,9 +124,7 @@ class AssetAdmin extends LeftAndMain {
 		if(isset($data['ID']) && $data['ID'] != 'root') $folder = DataObject::get_by_id("Folder", $data['ID']);
 		else $folder = singleton('Folder');
 		
-		$canUpload = $folder->userCanEdit();
-		
-		return array( 'CanUpload' => $canUpload );
+		return array( 'CanUpload' => $folder->canEdit());
 	}
 	
 	/**
@@ -273,7 +271,7 @@ HTML;
 			$actions = new FieldSet();
 			
 			// Only show save button if not 'assets' folder
-			if( $record->userCanEdit() && $id != "root") {
+			if( $record->canEdit() && $id != "root") {
 				$actions = new FieldSet(
 					new FormAction('save',_t('AssetAdmin.SAVEFOLDERNAME','Save folder name'))
 				);
@@ -289,7 +287,7 @@ HTML;
 				));
 			}
 			
-			if( !$record->userCanEdit() )
+			if( !$record->canEdit() )
 				$form->makeReadonly();
 
 			return $form;
