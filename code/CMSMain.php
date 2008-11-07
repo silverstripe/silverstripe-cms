@@ -455,6 +455,9 @@ JS;
 		return $this->returnItemToUser($p);
 	}
 
+	/**
+	 * @uses LeftAndMainDecorator->augmentNewSiteTreeItem()
+	 */
 	public function getNewItem($id, $setID = true) {
 		list($dummy, $className, $parentID, $suffix) = explode('-',$id);
 		if(Translatable::is_enabled()) {

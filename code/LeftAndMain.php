@@ -64,6 +64,10 @@ class LeftAndMain extends Controller {
 		'themedcss' => array(),
 	);
 	
+	/**
+	 * @uses LeftAndMainDecorator->init()
+	 * @uses LeftAndMainDecorator->accessedCMS()
+	 */
 	function init() {
 		Director::set_site_mode('cms');
 		
@@ -231,8 +235,12 @@ class LeftAndMain extends Controller {
 		
 		Requirements::customScript('Behaviour.addLoader(hideLoading);');
 
+		// DEPRECATED 2.3: Use init()
 		$dummy = null;
 		$this->extend('augmentInit', $dummy);
+		
+		$dummy = null;
+		$this->extend('init', $dummy);
 	}
 
 	//------------------------------------------------------------------------------------------//
