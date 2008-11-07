@@ -1,5 +1,6 @@
 <html>
 <head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <style>
 body {
 	padding: 0;
