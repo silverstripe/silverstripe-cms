@@ -40,16 +40,15 @@ class ThumbnailStripField extends FormField {
 	 */
 	function getimages() {
 		$result = '';
-		$folder = DataObject::get_by_id("Folder", $_GET['folderID']);
+		$folder = DataObject::get_by_id('Folder', (int) $_GET['folderID']);
 		
-		if( !$folder )
-			return _t('ThumbnailStripField.NOTAFOLDER','This is not a folder');
+		if(!$folder) return _t('ThumbnailStripField.NOTAFOLDER', 'This is not a folder');
 		
 		$folderList = $folder->getDescendantIDList("Folder");
 	
 		array_unshift($folderList, $folder->ID);
 			
-		$images = DataObject::get("Image", "ParentID IN (" . implode(', ', $folderList) . ")","Title");
+		$images = DataObject::get('Image', 'ParentID IN (' . implode(', ', $folderList) . ')', 'Title');
 		
 		if($images) {
 			$result .= '<ul>';
@@ -70,19 +69,18 @@ class ThumbnailStripField extends FormField {
 				}
 				
 				$result .= 
-						'<li>' .
+					'<li>' .
 						'<a href=" ' . $image->Filename . '?r=' . rand(1,100000) . '">' .
-								'<img class="destwidth=' . round($width) . ',destheight=' . round($height) . '" src="'. $thumbnail->URL . '?r=' . rand(1,100000) . '" alt="' . $image->Title . '" title="' . $image->Title .   '" />' .
+							'<img class="destwidth=' . round($width) . ',destheight=' . round($height) . '" src="'. $thumbnail->URL . '?r=' . rand(1,100000) . '" alt="' . $image->Title . '" title="' . $image->Title .   '" />' .
 						'</a>' .
-						'</li>';
+					'</li>';
 			}
 			$result .= '</ul>';
-		}else{
-		        $result =  '<h2> '._t('ThumbnailStripField.NOIMAGESFOUND', 'No images found in').' '. $folder->Title. '</h2>';
+		} else {
+			$result = '<h2>' . _t('ThumbnailStripField.NOIMAGESFOUND', 'No images found in') . ' ' . $folder->Title . '</h2>';
 		}
 		
 		return $result;
-
 	}
 
 	function getflash() {
