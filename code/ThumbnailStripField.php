@@ -43,7 +43,6 @@ class ThumbnailStripField extends FormField {
 		$folder = DataObject::get_by_id('Folder', (int) $_GET['folderID']);
 		
 		if(!$folder) return _t('ThumbnailStripField.NOTAFOLDER', 'This is not a folder');
-		
 		$folderList = $folder->getDescendantIDList("Folder");
 	
 		array_unshift($folderList, $folder->ID);
@@ -84,13 +83,11 @@ class ThumbnailStripField extends FormField {
 	}
 
 	function getflash() {
-
-		$folder = DataObject::get_by_id("Folder", $_GET['folderID']);
+		$folder = DataObject::get_by_id("Folder", (int) $_GET['folderID']);
 		
-		if( !$folder )
-			return _t('ThumbnailStripField.NOTAFOLDER');
+		if(!$folder) return _t('ThumbnailStripField.NOTAFOLDER', 'This is not a folder');
 		
-		$folderList = $folder->getDescendantIDList("Folder");
+		$folderList = $folder->getDescendantIDList('Folder');
 		array_unshift($folderList, $folder->ID);
 
 		$width = Image::$strip_thumbnail_width - 10;
@@ -101,15 +98,6 @@ class ThumbnailStripField extends FormField {
 		if($flashObjects) {
 			$result .= '<ul>';
 			foreach($flashObjects as $flashObject) {
-				// doesn't work well because we can't stop/mute flash-files, AND IE does not bubble javascript-events
-				// over a flash-object grml
-//				$result .= <<<HTML
-//<a href="$flashObject->URL">
-//	<object type="application/x-shockwave-flash" data="$flashObject->URL" width="$width" height="$height">
-//		<param name="movie" value="$flashObject->URL" />
-//	</object>
-//</a>
-//HTML;
 				$result .= <<<HTML
 <li>
 <a href="$flashObject->URL">
@@ -124,7 +112,6 @@ HTML;
 		}
 		
 		return $result;
-
 	}
 }
 
