@@ -34,7 +34,7 @@ abstract class ModelAdmin extends LeftAndMain {
 	/**
 	 * List of all managed {@link DataObject}s in this interface.
 	 *
-	 * @var array
+	 * @var array|string
 	 */
 	protected static $managed_models = null;
 	
@@ -195,6 +195,7 @@ abstract class ModelAdmin extends LeftAndMain {
 	 */
 	protected function getManagedModels() {
 		$models = $this->stat('managed_models');
+		if(is_string($models)) $models = array($models);
 		if(!count($models)) user_error('ModelAdmin::getManagedModels(): 
 			You need to specify at least one DataObject subclass in protected static $managed_models.
 			Make sure the visibility of your property is set to "protected"', 
