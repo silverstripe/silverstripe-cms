@@ -3,7 +3,7 @@
  * @package cms
  * @subpackage tasks
  */
-class SiteTreeMaintenanceTask extends Task {
+class SiteTreeMaintenanceTask extends Controller {
 	static $allowed_actions = array(
 		'*' => 'ADMIN'
 	);
