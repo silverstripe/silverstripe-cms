@@ -23,7 +23,6 @@
 		<input type="submit" value="<% _t('SUBMIT','Submit for approval') %>" />
 	</p>
 </form>
-
 <% if EditForm %>
 	$EditForm
 <% else %>
