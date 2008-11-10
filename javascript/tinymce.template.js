@@ -30,7 +30,7 @@ if((typeof tinyMCE != 'undefined')) {
 		theme_advanced_buttons1 : "bold,italic,underline,strikethrough,separator,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,separator,bullist,numlist,outdent,indent,hr,charmap",
 		theme_advanced_buttons2 : "undo,redo,separator,cut,copy,paste,pastetext,pasteword,spellchecker,separator,ssimage,ssflash,sslink,unlink,anchor,separator,template,code,separator,search,replace,selectall,visualaid,separator,tablecontrols",
 		theme_advanced_buttons3 : "",
-		spellchecker_languages : "+English=en",
+		spellchecker_languages : "$SpellcheckLangs",
 		
 		template_templates : [
 		    { title : "Three column", src : "assets/snippet.html", description : "A simple 3 column layout"},

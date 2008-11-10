@@ -81,13 +81,24 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	public function init() {
 		parent::init();
+		
+		// collect languages for TinyMCE spellchecker plugin
+		if(Translatable::is_enabled()) {
+			$spellcheckLangs = i18n::get_existing_content_languages();
+		} else {
+			$defaultLang = Translatable::get_default_lang();
+			$spellcheckLangs = array($defaultLang => i18n::get_language_name($defaultLang));
+		}
+		$spellcheckSpec = array();
+		foreach($spellcheckLangs as $lang => $title) $spellcheckSpec[] = "{$title}={$lang}";
 
 		// We don't want this showing up in every ajax-response, it should always be present in a CMS-environment
 		if(!Director::is_ajax()) {
 			Requirements::javascriptTemplate(CMS_DIR . "/javascript/tinymce.template.js", array(
 				"ContentCSS" => (SSViewer::current_theme() ? THEMES_DIR . "/" . SSViewer::current_theme() : project()) . "/css/editor.css",
 				"BaseURL" => Director::absoluteBaseURL(),
-				"Lang" => i18n::get_tinymce_lang()
+				"Lang" => i18n::get_tinymce_lang(),
+				'SpellcheckLangs' => '+' . implode(',', $spellcheckSpec)
 			));
 		}
 		
