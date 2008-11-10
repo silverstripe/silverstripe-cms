@@ -86,7 +86,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		if(Translatable::is_enabled()) {
 			$spellcheckLangs = i18n::get_existing_content_languages();
 		} else {
-			$defaultLang = Translatable::get_default_lang();
+			$defaultLang = Translatable::default_lang();
 			$spellcheckLangs = array($defaultLang => i18n::get_language_name($defaultLang));
 		}
 		$spellcheckSpec = array();
