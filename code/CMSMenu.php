@@ -33,9 +33,18 @@ class CMSMenu extends Object implements Iterator
 	 */	
 	public static function add_controller($controllerClass) {
 		$controller = singleton($controllerClass);
-		Director::addRules($controller->stat('url_priority', true), 
-			array(Controller::join_links($controller->Link(), $controller->stat('url_rule', true)) => $controllerClass)
-		);
+
+		$link = $controller->Link();
+		if(substr($link,-1) == '/') $link = substr($link,0,-1);
+		$subRule = $controller->stat('url_rule', true);
+		if($subRule[0] == '/') $subRule = substr($subRule,1);
+		$rule = $link . '//' . $subRule;
+		
+		Director::addRules($controller->stat('url_priority', true), array(
+			$rule => $controllerClass
+			
+		));
+		
 		return self::add_menu_item(
 			$controllerClass, 
 			$controller->getMenuTitle(), 
