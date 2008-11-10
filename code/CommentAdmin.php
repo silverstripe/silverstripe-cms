@@ -241,7 +241,7 @@ JS;
 JS;
 	}
 	
-	function approvemarked() {
+	function acceptmarked() {
 			$numComments = 0;
 			$folderID = 0;
 			$deleteList = '';

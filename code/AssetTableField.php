@@ -153,6 +153,8 @@ class AssetTableField extends ComplexTableField {
 		// the ID field confuses the Controller-logic in finding the right view for ReferencedField
 		$detailFormFields->removeByName('ID');
 		
+		if($childData) $childData->extend('updateCMSFields', $detailFormFields);
+		
 		return $detailFormFields;
 	}
 

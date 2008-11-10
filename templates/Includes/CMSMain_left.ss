@@ -106,26 +106,6 @@
 		</div>
 		-->
 
-		<% if EnterpriseCMS %>
-		<h2 id="heading_tasklist">
-			<img id="tasklist_toggle_closed" src="sapphire/images/toggle-closed.gif" alt="+" title="<% _t('OPENBOX') %>" />
-			<img id="tasklist_toggle_open" src="sapphire/images/toggle-open.gif" alt="-" style="display:none;" title="<% _t('CLOSEBOX') %>" /> 
-			<% _t('TASKLIST','Tasklist') %>
-		</h2>
-		<div class="listpane" id="tasklist_holder" style="display:none">	
-			<div class="unitBody">
-			</div>
-		</div>
-		<h2 id="heading_waitingon">
-			<img id="waitingon_toggle_closed" src="sapphire/images/toggle-closed.gif" alt="+" title="<% _t('OPENBOX') %>" />
-			<img id="waitingon_toggle_open" src="sapphire/images/toggle-open.gif" alt="-" style="display:none;" title="<% _t('CLOSEBOX') %>" /> 
-			<% _t('WAITINGON','Waiting on') %>
-		</h2>
-		<div class="listpane" id="waitingon_holder" style="display:none">	
-			<div class="unitBody">
-			</div>
-		</div>
-		<% end_if %>
 		<h2 id="heading_versions">
 			<img id="versions_toggle_closed" src="sapphire/images/toggle-closed.gif" alt="+" title="<% _t('OPENBOX') %>" />
 			<img id="versions_toggle_open" src="sapphire/images/toggle-open.gif" alt="-" style="display:none;" title="<% _t('CLOSEBOX') %>" /> 
@@ -142,17 +122,7 @@
 			<div class="unitBody">
 			</div>
 		</div>
-		<% if EnterpriseCMS %>
-		<h2 id="heading_comments">
-			<img id="comments_toggle_closed" src="sapphire/images/toggle-closed.gif" alt="+" title="<% _t('OPENBOX') %>" />
-			<img id="comments_toggle_open" src="sapphire/images/toggle-open.gif" alt="-" style="display:none;" title="<% _t('CLOSEBOX') %>" /> 
-			<% _t('COMMENTS','Comments') %>
-		</h2>
-		<div class="listpane" id="comments_holder" style="display:none">	
-			<div class="unitBody">
-			</div>
-		</div>
-		<% end_if %>
+
 		<h2 id="heading_reports">
 			<img id="reports_toggle_closed" src="sapphire/images/toggle-closed.gif" alt="+" title="<% _t('OPENBOX') %>" />
 			<img id="reports_toggle_open" src="sapphire/images/toggle-open.gif" alt="-" style="display:none;" title="<% _t('CLOSEBOX') %>" /> 
