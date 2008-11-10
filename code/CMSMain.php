@@ -1157,7 +1157,7 @@ HTML;
 	 * Helper function to get page count
 	 */
 	function getpagecount() {
-		ini_set('max_execution_time',300);
+		ini_set('max_execution_time', 0);
 		$excludePages = split(" *, *", $_GET['exclude']);
 
 		$pages = DataObject::get("SiteTree", "ParentID = 0");
@@ -1185,7 +1185,7 @@ HTML;
 
 	function publishall() {
 		ini_set("memory_limit", -1);
-		ini_set('max_execution_time', 300);
+		ini_set('max_execution_time', 0);
 		
 		$response = "";
 
