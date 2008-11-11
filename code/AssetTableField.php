@@ -79,7 +79,7 @@ class AssetTableField extends ComplexTableField {
 					new LiteralField("AbsoluteURL", $urlLink),
 					new ReadonlyField("FileType", _t('AssetTableField.TYPE','Type')),
 					new ReadonlyField("Size", _t('AssetTableField.SIZE','Size'), $childData->getSize()),
-					new DropdownField("OwnerID", _t('AssetTableField.OWNER','Owner'), Member::mapInCMSGroups( $folder->CanEdit() ) ),
+					new DropdownField("OwnerID", _t('AssetTableField.OWNER','Owner'), Member::mapInCMSGroups()),
 					new DateField_Disabled("Created", _t('AssetTableField.CREATED','First uploaded')),
 					new DateField_Disabled("LastEdited", _t('AssetTableField.LASTEDIT','Last changed'))
 				)
