@@ -32,6 +32,7 @@ class ReportAdmin extends LeftAndMain {
 		// We don't want this showing up in every ajax-response, it should
 		// always be present in a CMS environment
 		if(!Director::is_ajax()) {
+			Requirements::javascript(MCE_ROOT . "tiny_mce_src.js");
 			Requirements::javascriptTemplate(CMS_DIR . '/javascript/tinymce.template.js', array(
 				'ContentCSS' => project() . '/css/editor.css',
 				'BaseURL' => Director::absoluteBaseURL(),

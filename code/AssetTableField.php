@@ -37,6 +37,12 @@ class AssetTableField extends ComplexTableField {
 		$this->Markable = true;
 	}
 	
+	function FieldHolder() {
+		Requirements::javascript('cms/javascript/ImageEditor/Activator.js');
+
+		return parent::FieldHolder();
+	}
+	
 	function setFolder($folder) {
 		$this->folder = $folder;
 		$this->sourceFilter .= ($this->sourceFilter) ? " AND " : "";

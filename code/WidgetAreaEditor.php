@@ -6,6 +6,9 @@
  */
 class WidgetAreaEditor extends FormField {
 	function FieldHolder() {
+		Requirements::css(CMS_DIR . '/css/WidgetAreaEditor.css');
+		Requirements::javascript(CMS_DIR . '/javascript/WidgetAreaEditor.js');
+
 		return $this->renderWith("WidgetAreaEditor");
 	}
 	

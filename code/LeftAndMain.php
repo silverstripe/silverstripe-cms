@@ -122,6 +122,7 @@ class LeftAndMain extends Controller {
 		Requirements::css(CMS_DIR . '/css/layout.css');
 		Requirements::css(CMS_DIR . '/css/cms_left.css');
 		Requirements::css(CMS_DIR . '/css/cms_right.css');
+		Requirements::css(SAPPHIRE_DIR . '/css/Form.css');
 		
 		if(isset($_REQUEST['debug_firebug'])) {
 			// Firebug is a useful console for debugging javascript
@@ -137,16 +138,13 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(THIRDPARTY_DIR . '/prototype.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/behaviour.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/javascript/core/jquery.ondemand.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/prototype_improvements.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/loader.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/hover.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/layout_helpers.js');
 		Requirements::javascript(SAPPHIRE_DIR . "/javascript/i18n.js");
 		
-		Requirements::javascript(MCE_ROOT . 'tiny_mce_src.js');
-		Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/Activator.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/tiny_mce_improvements.js');
-
 		Requirements::javascript(THIRDPARTY_DIR . '/scriptaculous/effects.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/scriptaculous/dragdrop.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/scriptaculous/controls.js');
@@ -157,70 +155,18 @@ class LeftAndMain extends Controller {
 		
 		Requirements::javascript(THIRDPARTY_DIR . '/tree/tree.js');
 		Requirements::css(THIRDPARTY_DIR . '/tree/tree.css');
-
-		Requirements::javascript(THIRDPARTY_DIR . '/tabstrip/tabstrip.js');
-
-		Requirements::css(THIRDPARTY_DIR . '/tabstrip/tabstrip.css');
-		
-		Requirements::css(CMS_DIR . '/css/TinyMCEImageEnhancement.css');
-		Requirements::javascript(CMS_DIR . '/javascript/TinyMCEImageEnhancement.js');
 		
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.js');
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain_left.js');
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain_right.js');
 	
-		Requirements::css(SAPPHIRE_DIR . '/css/Form.css');
-
-		Requirements::javascript(CMS_DIR . '/javascript/ForumAdmin.js');
 		Requirements::javascript(CMS_DIR . '/javascript/SideTabs.js');
-		Requirements::javascript(CMS_DIR . '/javascript/TaskList.js');
-		Requirements::javascript(CMS_DIR . '/javascript/CommentList.js');
 		Requirements::javascript(CMS_DIR . '/javascript/SideReports.js');
 		Requirements::javascript(CMS_DIR . '/javascript/LangSelector.js');
 		Requirements::javascript(CMS_DIR . '/javascript/TranslationTab.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/javascript/Validator.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/javascript/UniqueFields.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/javascript/RedirectorPage.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/javascript/ToggleCompositeField.js');
-		Requirements::css(SAPPHIRE_DIR . '/css/SubmittedFormReportField.css');
-
-		Requirements::css(SAPPHIRE_DIR . '/css/TableListField.css');
-		Requirements::css(SAPPHIRE_DIR . '/css/ComplexTableField.css');
-		Requirements::javascript(SAPPHIRE_DIR . '/javascript/TableListField.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/javascript/TableField.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/javascript/ComplexTableField.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/javascript/RelationComplexTableField.js');
-		
-		Requirements::css(SAPPHIRE_DIR . '/css/TreeDropdownField.css');
-		Requirements::css(SAPPHIRE_DIR . '/css/CheckboxSetField.css');
-		
-		Requirements::javascript(THIRDPARTY_DIR . '/calendar/calendar.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/calendar/lang/calendar-en.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/calendar/calendar-setup.js');
-		Requirements::css(SAPPHIRE_DIR . '/css/CalendarDateField.css');
-		Requirements::css(THIRDPARTY_DIR . '/calendar/calendar-win2k-1.css');
-		
-		Requirements::javascript(SAPPHIRE_DIR . '/javascript/DropdownTimeField.js');
-		Requirements::css(SAPPHIRE_DIR . '/css/DropdownTimeField.css');
-		Requirements::css(SAPPHIRE_DIR . '/css/PopupDateTimeField.css');
-		
-		Requirements::javascript(SAPPHIRE_DIR . '/javascript/SelectionGroup.js');
-		Requirements::css(SAPPHIRE_DIR . '/css/SelectionGroup.css');
-		
-		Requirements::javascript(THIRDPARTY_DIR . '/SWFUpload/SWFUpload.js');
-		Requirements::javascript(CMS_DIR . '/javascript/Upload.js');
-		
-		Requirements::javascript(SAPPHIRE_DIR . '/javascript/HasManyFileField.js');
-		Requirements::css(SAPPHIRE_DIR . '/css/HasManyFileField.css');
 		
 		Requirements::themedCSS('typography');
-		
-		// For Widgets
-		Requirements::css(CMS_DIR . '/css/WidgetAreaEditor.css');
-		Requirements::javascript(CMS_DIR . '/javascript/WidgetAreaEditor.js');
-		
-		Requirements::javascript(SAPPHIRE_DIR . "/javascript/Security_login.js");
-		
+
 		foreach (self::$extra_requirements['javascript'] as $file) {
 			Requirements::javascript($file[0]);
 		}

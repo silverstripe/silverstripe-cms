@@ -12,7 +12,7 @@ if((typeof tinyMCE != 'undefined')) {
 		mode : "none",
 		language: "$Lang",
 		width: "100%",
-		auto_resize : true,
+		auto_resize : false,
 		theme : "advanced",
 		content_css : "$ContentCSS",
 		document_base_url: "$BaseURL",
