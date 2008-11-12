@@ -1,5 +1,5 @@
 
-<div id="ModelAdminPanel" style="display: auto">
+<div id="ModelAdminPanel" style="overflow: auto">
 
 <% if EditForm %>
 	$EditForm
