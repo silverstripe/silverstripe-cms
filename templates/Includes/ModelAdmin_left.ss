@@ -22,8 +22,10 @@
 		
 		<% control ModelForms %>
 		<div class="tab" id="{$Form.Name}_$ClassName">
-			<h3><% _t('ADDLISTING','Add') %></h3>
-			$CreateForm
+			<% if CreateForm %>
+				<h3><% _t('ADDLISTING','Add') %></h3>
+				$CreateForm
+			<% end_if %>
 			
 			<h3><% _t('SEARCHLISTINGS','Search') %></h3>
 			$SearchForm
