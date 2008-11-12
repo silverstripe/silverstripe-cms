@@ -517,7 +517,7 @@ class ModelAdmin_CollectionController extends Controller {
 		} else {
 			return new HTTPResponse(
 				$resultsForm->forTemplate(), 
-				404, 
+				200, 
 				_t('ModelAdmin.NORESULTS',"Your search didn't return any matching items")
 			);
 		}
