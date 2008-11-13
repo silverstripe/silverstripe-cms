@@ -25,7 +25,7 @@ ThumbnailStripField.prototype = {
 				parentField.observeMethod('Change', this.ajaxGetFiles.bind(this));
 			}
 			
-			var searchField = $$('#' + this.updateMethod + 'Search input')[0];
+			var searchField = $$('#' + this.updateMethod + 'Search input')[0];		
 			var timeout = undefined;
 			
 			if(searchField) {
@@ -35,6 +35,7 @@ ThumbnailStripField.prototype = {
 					timeout = setTimeout(function() {
 						var searchText = searchField.value;
 						
+						$('Flash').ajaxGetFiles(null, searchText);
 						$('Image').ajaxGetFiles(null, searchText);
 					}, 500);
 				});
