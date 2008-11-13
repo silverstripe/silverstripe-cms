@@ -5,7 +5,7 @@
  * This installer doesn't use any of the fancy Sapphire stuff in case it's unsupported.
  */
 
-ini_set('max_execution_time', 300);
+ini_set('max_execution_time', 0);
 error_reporting(E_ALL ^ E_NOTICE);
 session_start();
 
@@ -184,7 +184,7 @@ class InstallRequirements {
 		$this->requireFunction('mysql_connect', array("PHP Configuration", "MySQL support", "MySQL support not included in PHP."));
 		
 		// Check memory allocation
-		$this->requireMemory(20*1024*1024, 32*1024*1024, array("PHP Configuration", "Memory allocated (PHP config option 'memory_limit')", "SilverStripe needs a minimum of 20M allocated to PHP, but recommends 32M.", ini_get("memory_limit")));
+		$this->requireMemory(32*1024*1024, 64*1024*1024, array("PHP Configuration", "Memory allocated (PHP config option 'memory_limit')", "SilverStripe needs a minimum of 32M allocated to PHP, but recommends 64M.", ini_get("memory_limit")));
 		
 		// Check allow_call_time_pass_reference
 		$this->suggestPHPSetting('allow_call_time_pass_reference', array(1,'1','on','On'), array("PHP Configuration", "Check that the php.ini setting allow_call_time_pass_reference is on",
@@ -207,8 +207,8 @@ class InstallRequirements {
 		$_SESSION['forcemem'] = false;
 		
 		$mem = $this->getPHPMemory();
-		if($mem < (32 * 1024 * 1024)) {
-			ini_set('memory_limit', '32M');
+		if($mem < (64 * 1024 * 1024)) {
+			ini_set('memory_limit', '64M');
 			$mem = $this->getPHPMemory();
 			$testDetails[3] = ini_get("memory_limit");
 		}
