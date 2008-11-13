@@ -53,8 +53,6 @@ Behaviour.register({
 			}
 			statusMessage('');
       
-      onload_init_tabstrip();
-            
       if( this.openTab ) {
           openTab( this.openTab );
           this.openTab = null;    
