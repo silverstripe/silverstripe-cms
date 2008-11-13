@@ -687,12 +687,12 @@ PHP
 		$_SERVER['SCRIPT_FILENAME'] = dirname(realpath($_SERVER['SCRIPT_FILENAME'])) . '/sapphire/main.php';
 		chdir('sapphire');
 
+		$_GET['flush'] = true;
 		require_once('core/Core.php');
 	
 		$this->statusMessage("Building database schema...");
 
 		// Build database
-		$_GET['flush'] = true;
 		$con = new Controller();
 		$con->pushCurrent();
 
@@ -803,6 +803,12 @@ PHP
 DirectorySlash Off
 </IfModule>
 
+<Files *.ss>
+Order deny,allow
+Deny from all
+Allow from 127.0.0.1
+</Files>
+
 RewriteEngine On
 $baseClause
 RewriteCond %{REQUEST_URI} !(\.gif)|(\.jpg)|(\.png)|(\.css)|(\.js)|(\.php)$ 
@@ -840,6 +846,12 @@ TEXT
 <IfModule mod_dir.c>
 DirectorySlash Off
 </IfModule>
+
+<Files *.ss>
+Order deny,allow
+Deny from all
+Allow from 127.0.0.1
+</Files>
 
 RewriteEngine On
 $baseClause
