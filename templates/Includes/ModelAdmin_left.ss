@@ -13,7 +13,7 @@
 		<p id="ModelClassSelector">
 		    Search for:
     		<select>
-            	<% control SearchForms %>
+            	<% control ModelForms %>
             		<option value="{$Form.Name}_$ClassName">$Title</option>
             	<% end_control %>
     		</select>
