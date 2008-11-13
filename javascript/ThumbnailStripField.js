@@ -25,8 +25,6 @@ ThumbnailStripField.prototype = {
 				parentField.observeMethod('Change', this.ajaxGetFiles.bind(this));
 			}
 			
-			console.debug(parentField);
-			
 			var searchField = $$('#' + this.updateMethod + 'Search input')[0];		
 			var timeout = undefined;
 			
