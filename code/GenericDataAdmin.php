@@ -150,7 +150,7 @@ abstract class GenericDataAdmin extends LeftAndMain {
 			$this,
 			"ExportForm",
 			new FieldSet(
-				new HiddenField("csvIDs","csvIDs",$_REQUEST[csvIDs])
+				new HiddenField("csvIDs","csvIDs",$_REQUEST['csvIDs'])
 			),
 			$this->result_actions
 		);
