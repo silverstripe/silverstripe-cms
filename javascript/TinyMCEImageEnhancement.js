@@ -183,7 +183,7 @@ TinyMCEImageEnhancement.prototype = {
         $('UploadFiles').innerHTML = "upload";
         statusMessage('Uploaded ' + this.upload.getFilesUploaded() + ' files','good');
         if(this.getParentID() != 'root') {
-            $('Image').ajaxGetFiles(this.getParentID(),this.insertImages.bind(this));    
+            $('Image').ajaxGetFiles(this.getParentID(), null, this.insertImages.bind(this));    
         }
     },
     
@@ -192,24 +192,19 @@ TinyMCEImageEnhancement.prototype = {
      *
      * @param transport object
     */
-    
     insertImages: function(transport) {
         //HACK FOR STRANGE ERROR OCCURING UNDER SAFARI
         if(transport.responseText == '') {
-            $('Image').ajaxGetFiles(this.getParentID(),this.insertImages.bind(this));
+            $('Image').ajaxGetFiles(this.getParentID(), null, this.insertImages.bind(this));
             return;
         }
         //END OF HACK
+
         $('Image').reapplyBehaviour();
+
         this.addToTinyMCE = this.addToTinyMCE.bind(this);
-        /* Don't insert images for now - this inserts the wrong image as images are now sorted by filename rather than date uploaded.
-        var childNodes = $('Image').childNodes[0].childNodes;
-        var newImages = $A(childNodes).slice(childNodes.length - this.filesUploaded);
-        newImages.each(function(item) {
-            tinyMCEImageEnhancement.addToTinyMCE(item.childNodes[0]);
-        });
-        */
-        this.processInProgress = false;
+
+			this.processInProgress = false;
     },
     
     /**
