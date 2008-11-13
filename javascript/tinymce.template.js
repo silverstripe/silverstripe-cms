@@ -48,6 +48,9 @@ Behaviour.register({
     'textarea.htmleditor' : {
         initialize : function() {
             tinyMCE.execCommand("mceAddControl", true, this.id);
+            this.isChanged = function() {
+                return tinyMCE.getInstanceById(this.id).isDirty();
+            }
         }
     }
 })
