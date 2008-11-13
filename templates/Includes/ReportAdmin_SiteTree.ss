@@ -1,6 +1,6 @@
 <% if Reports %>
 <ul id="sitetree" class="tree unformatted">
-	<li id="$ID" class="root">
+	<li id="$ID" class="Root">
 		<a><% _t('REPORTS','Reports') %></a>
 		<ul>
 		<% control Reports %>
