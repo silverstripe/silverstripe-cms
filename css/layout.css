@@ -447,7 +447,7 @@ iframe {
 #contentPanel h2 {
 	margin: -5px -5px 0 -5px;
 }
-	#contentPanel #Image h2 {
+	#contentPanel .thumbnailstrip h2 {
 		margin: 0;
 		background: none;
 		color: #555;
