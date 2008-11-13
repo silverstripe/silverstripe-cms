@@ -119,7 +119,7 @@ class ThumbnailStripField extends FormField {
 			$flashObjects = DataObject::get('File', $whereSQL);
 		} else {
 			if($searchText) {
-				$flashObjects = DataObject::get('File', "Filename LIKE '%$searchText%'");
+				$flashObjects = DataObject::get('File', "Filename LIKE '%$searchText%' AND Filename LIKE '%.swf'");
 			}
 		}
 		
@@ -137,6 +137,12 @@ class ThumbnailStripField extends FormField {
 HTML;
 			}
 			$result .= '</ul>';			
+		} else {
+			if($folder) {
+				$result = '<h2>' . _t('ThumbnailStripField.NOFOLDERFLASHFOUND', 'No flash files found in') . ' ' . $folder->Title . '</h2>';
+			} else {
+				$result = '<h2>' . _t('ThumbnailStripField.NOFLASHFOUND', 'No flash files found') . '</h2>';
+			}
 		}
 		
 		return $result;
