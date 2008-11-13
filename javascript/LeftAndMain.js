@@ -196,7 +196,7 @@ window.onresize = function(init) {
 			if(navigator.appName == "Microsoft Internet Explorer") {
 				fitToParent('Flash');
 			} else {
-				fitToParent('Flash', 100);
+				fitToParent('Flash', 130);
 			}
 		}
 	
