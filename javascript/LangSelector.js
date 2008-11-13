@@ -3,8 +3,8 @@ var _TRANSLATING_LANG = null;
 /**
  * 
  */
-LangSelector = Class.create();
-LangSelector.prototype = {
+LangSelectorClass = Class.create();
+LangSelectorClass.prototype = {
 
 	initialize: function() {
 		if(this.selectedIndex != 0) {
@@ -50,7 +50,7 @@ LangSelector.prototype = {
 		}
 	}	
 };
-LangSelector.applyTo('#LangSelector');
+LangSelectorClass.applyTo('#LangSelector');
 
 /**
  * 

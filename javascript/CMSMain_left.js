@@ -9,9 +9,9 @@ _NEW_PAGES = new Array();
 /**
  * Add page action
  */
-addpage = Class.create();
-addpage.applyTo('#addpage');
-addpage.prototype = {
+addpageclass = Class.create();
+addpageclass.applyTo('#addpage');
+addpageclass.prototype = {
 	initialize: function () {
 		Observable.applyTo($(_HANDLER_FORMS[this.id]));
 		this.getElementsByTagName('button')[0].onclick = returnFalse;
@@ -100,9 +100,9 @@ addpage.prototype = {
 /**
  * Search button click action
  */
-search = Class.create();
-search.applyTo('#search');
-search.prototype = {
+searchclass = Class.create();
+searchclass.applyTo('#search');
+searchclass.prototype = {
 	initialize : function() {
 		Observable.applyTo($(_HANDLER_FORMS.search));
 	},
@@ -133,9 +133,9 @@ SiteTreeFilterAddCriteria.prototype = {
 /**
  * Batch Actions button click action
  */
-batchactions = Class.create();
-batchactions.applyTo('#batchactions');
-batchactions.prototype = {
+batchactionsclass = Class.create();
+batchactionsclass.applyTo('#batchactions');
+batchactionsclass.prototype = {
 	
 	initialize : function() {
 		Observable.applyTo($(_HANDLER_FORMS.batchactions));
