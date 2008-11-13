@@ -1,3 +1,3 @@
 <div id="$Name" class="thumbnailstrip parent=$ParentField updatemethod=$updateMethod">
-	<span style="float: left"><% _t('CHOOSEFOLDER','(Choose a folder above)') %></span>
+	<h2><% _t('CHOOSEFOLDER','(Choose a folder or search above)') %></h2>
 </div>

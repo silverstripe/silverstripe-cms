@@ -187,7 +187,7 @@ window.onresize = function(init) {
 			if(navigator.appName == "Microsoft Internet Explorer") {
 				fitToParent('Image');
 			} else {
-				fitToParent('Image', 170);
+				fitToParent('Image', 190);
 			}
 		}
 		if($('Form_EditorToolbarFlashForm') && $('Form_EditorToolbarFlashForm').style.display == "block") {
@@ -196,7 +196,7 @@ window.onresize = function(init) {
 			if(navigator.appName == "Microsoft Internet Explorer") {
 				fitToParent('Flash');
 			} else {
-				fitToParent('Flash', 80);
+				fitToParent('Flash', 130);
 			}
 		}
 	

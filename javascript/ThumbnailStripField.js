@@ -11,7 +11,7 @@ ThumbnailStripField.prototype = {
 	 * in the PHP-constructor of ThumbnailStripField and is passed to the client
 	 * as a fake css-class.
 	 */
-	updateMethod: "getimages",
+	updateMethod: 'getimages',
 	
 	initialize: function() {
 		try {
@@ -24,13 +24,30 @@ ThumbnailStripField.prototype = {
 			if(parentField) {
 				parentField.observeMethod('Change', this.ajaxGetFiles.bind(this));
 			}
+			
+			var searchField = $$('#' + this.updateMethod + 'Search input')[0];
+			var timeout = undefined;
+			
+			if(searchField) {
+				Event.observe(searchField, 'keypress', function(event) {
+					if(timeout != undefined) clearTimeout(timeout);
+					
+					timeout = setTimeout(function() {
+						var searchText = searchField.value;
+						
+						$('Image').ajaxGetFiles(null, searchText);
+					}, 500);
+				});
+			}
 		}
 	},
 	
-	ajaxGetFiles: function(folderID,callback) {
+	ajaxGetFiles: function(folderID, searchText, callback) {
 		if(!callback) callback = this.reapplyBehaviour.bind(this);
-		this.innerHTML = '<span style="float: left">Loading...</span>'
-		var ajaxURL = this.helperURLBase() + '&methodName='+this.updateMethod+'&folderID=' + folderID + ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : '') + '&cacheKillerDate=' + parseInt((new Date()).getTime()) + '&cacheKillerRand=' + parseInt(10000*Math.random());
+		var securityID = ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : '');
+		this.innerHTML = '<h2>Loading...</h2>';
+		var ajaxURL = this.helperURLBase() + '&methodName=' + this.updateMethod + '&folderID=' + folderID + '&searchText=' + searchText + securityID + '&cacheKillerDate=' + parseInt((new Date()).getTime()) + '&cacheKillerRand=' + parseInt(10000 * Math.random());
+
 		new Ajax.Updater(this, ajaxURL, {
 			method : 'get', 
 			onComplete : callback,
@@ -43,9 +60,11 @@ ThumbnailStripField.prototype = {
 	},
 
 	helperURLBase: function() {
-		var fieldName = this.id; //this.id.replace(this.ownerForm().name + '_','');
+		var fieldName = this.id;
+		var ownerForm = this.ownerForm();
+		var securityID = ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : '');
 		
-		return this.ownerForm().action + '&action_callfieldmethod=1&fieldName=' + fieldName + '&ajax=1' + ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : '');
+		return ownerForm.action + '?action_callfieldmethod=1&fieldName=' + fieldName + '&ajax=1' + securityID;
 	},
 	
 	ownerForm: function() {

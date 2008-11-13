@@ -26,10 +26,6 @@ class ThumbnailStripField extends FormField {
 		return $this->renderWith('ThumbnailStripField');
 	}
 	
-	function Images() {
-		//return DataObject::get("Image", "Paretn);
-	}
-	
 	function UpdateMethod() {
 		return $this->updateMethod;
 	}
@@ -40,14 +36,29 @@ class ThumbnailStripField extends FormField {
 	 */
 	function getimages() {
 		$result = '';
-		$folder = DataObject::get_by_id('Folder', (int) $_GET['folderID']);
+		$images = null;
+		$whereSQL = '';
+		$folderID = isset($_GET['folderID']) ? (int) $_GET['folderID'] : 0;
+		$searchText = (isset($_GET['searchText']) && $_GET['searchText'] != 'undefined' && $_GET['searchText'] != 'null') ? Convert::raw2sql($_GET['searchText']) : '';
 
-		if(!$folder) return _t('ThumbnailStripField.NOTAFOLDER', 'This is not a folder');
+		$folder = DataObject::get_by_id('Folder', (int) $_GET['folderID']);
 		
-		$folderList = $folder->getDescendantIDList("Folder");
-		array_unshift($folderList, $folder->ID);
+		if($folder) {
+			$folderList = $folder->getDescendantIDList('Folder');
+			array_unshift($folderList, $folder->ID);
+
+			$whereSQL = 'ParentID IN (' . implode(', ', $folderList) . ')';
+			if($searchText) $whereSQL .= " AND Filename LIKE '%$searchText%'";
 			
-		$images = DataObject::get('Image', 'ParentID IN (' . implode(', ', $folderList) . ')', 'Title');
+			$images = DataObject::get('Image', $whereSQL, 'Title');
+			
+		} else {
+			if($searchText) {
+				$whereSQL = "Filename LIKE '%$searchText%'";
+
+				$images = DataObject::get('Image', $whereSQL, 'Title');
+			}
+		}
 		
 		if($images) {
 			$result .= '<ul>';
@@ -59,11 +70,11 @@ class ThumbnailStripField extends FormField {
 				$width = $image->Width;
 				$height = $image->Height;
 				if($width > 600) {
-					$height *= (600/$width);
+					$height *= (600 / $width);
 					$width = 600;
 				}
 				if($height > 600) {
-					$width *= (600/$height);
+					$width *= (600 / $height);
 					$height = 600;
 				}
 				
@@ -76,25 +87,42 @@ class ThumbnailStripField extends FormField {
 			}
 			$result .= '</ul>';
 		} else {
-			$result = '<h2>' . _t('ThumbnailStripField.NOIMAGESFOUND', 'No images found in') . ' ' . $folder->Title . '</h2>';
+			if($folder) {
+				$result = '<h2>' . _t('ThumbnailStripField.NOFOLDERIMAGESFOUND', 'No images found in') . ' ' . $folder->Title . '</h2>';
+			} else {
+				$result = '<h2>' . _t('ThumbnailStripField.NOIMAGESFOUND', 'No images found') . '</h2>';
+			}
 		}
 		
 		return $result;
 	}
 
 	function getflash() {
-		$folder = DataObject::get_by_id("Folder", (int) $_GET['folderID']);
-		
-		if(!$folder) return _t('ThumbnailStripField.NOTAFOLDER', 'This is not a folder');
-		
-		$folderList = $folder->getDescendantIDList('Folder');
-		array_unshift($folderList, $folder->ID);
+		$flashObjects = null;
+		$result = '';
+		$whereSQL = '';
+		$folderID = isset($_GET['folderID']) ? (int) $_GET['folderID'] : 0;
+		$searchText = (isset($_GET['searchText']) && $_GET['searchText'] != 'undefined' && $_GET['searchText'] != 'null') ? Convert::raw2sql($_GET['searchText']) : '';
 
 		$width = Image::$strip_thumbnail_width - 10;
 		$height = Image::$strip_thumbnail_height - 10;
 		
-		$flashObjects = DataObject::get("File", "ParentID IN (" . implode(', ', $folderList) . ") AND Filename LIKE '%.swf'");
-		$result = '';		
+		$folder = DataObject::get_by_id("Folder", (int) $_GET['folderID']);
+		
+		if($folder) {
+			$folderList = $folder->getDescendantIDList('Folder');
+			array_unshift($folderList, $folder->ID);
+			
+			$whereSQL = "ParentID IN (" . implode(', ', $folderList) . ") AND Filename LIKE '%.swf'";
+			if($searchText) $whereSQL .= " AND Filename LIKE '%$searchText%'";
+			
+			$flashObjects = DataObject::get('File', $whereSQL);
+		} else {
+			if($searchText) {
+				$flashObjects = DataObject::get('File', "Filename LIKE '%$searchText%'");
+			}
+		}
+		
 		if($flashObjects) {
 			$result .= '<ul>';
 			foreach($flashObjects as $flashObject) {

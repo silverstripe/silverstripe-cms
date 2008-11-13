@@ -353,7 +353,7 @@ $lang['pl_PL']['StaticExporter']['FOLDEREXPORT'] = 'Folder przeniesiony do';
 $lang['pl_PL']['StaticExporter']['NAME'] = 'Statyczny eksport';
 $lang['pl_PL']['StaticExporter']['ONETHATEXISTS'] = 'Proszę wybierz dostępny folder';
 $lang['pl_PL']['TaskList.ss']['BY'] = 'przez';
-$lang['pl_PL']['ThumbnailStripField']['NOIMAGESFOUND'] = 'Nie znaleziono obrazków w';
+$lang['pl_PL']['ThumbnailStripField']['NOFOLDERIMAGESFOUND'] = 'Nie znaleziono obrazków w';
 $lang['pl_PL']['ThumbnailStripField']['NOTAFOLDER'] = 'To nie jest folder';
 $lang['pl_PL']['ThumbnailStripField.ss']['CHOOSEFOLDER'] = '(Wybierz powyższy folder)
 ';
