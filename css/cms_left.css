@@ -342,12 +342,16 @@ ul.tree li.untranslated a:visited {
 	width: 70%;
 }
 
-#right ins * {
+#right ins, #right ins * {
 	background-color: green;
+	color: white;
+	text-decoration: none;
 }
 
-#right del *{
+#right del, #right del *{
 	background-color: red;
+	color: white;
+	text-decoration: strikethough;
 }
 
 #sitetree a.contents {
