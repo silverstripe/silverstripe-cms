@@ -565,7 +565,7 @@ JS;
 	public function revert($urlParams, $form) {
 		$id = $_REQUEST['ID'];
 		$obj = DataObject::get_by_id("SiteTree", $id);
-		if($record && !$record->canEdit()) return Security::permissionFailure($this);
+		if(isset($record) && $record && !$record->canEdit()) return Security::permissionFailure($this);
 		
 		$obj->doRevertToLive();
 
