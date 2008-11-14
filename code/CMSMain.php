@@ -443,9 +443,9 @@ JS;
 
 
 	public function addpage() {
-		$className = $_REQUEST['PageType'] ? $_REQUEST['PageType'] : "Page";
-		$parent = $_REQUEST['ParentID'] ? $_REQUEST['ParentID'] : 0;
-		$suffix = $_REQUEST['Suffix'] ? "-" . $_REQUEST['Suffix'] : null;
+		$className = isset($_REQUEST['PageType']) ? $_REQUEST['PageType'] : "Page";
+		$parent = isset($_REQUEST['ParentID']) ? $_REQUEST['ParentID'] : 0;
+		$suffix = isset($_REQUEST['Suffix']) ? "-" . $_REQUEST['Suffix'] : null;
 
 
 		if(is_numeric($parent)) $parentObj = DataObject::get_by_id("SiteTree", $parent);
@@ -465,7 +465,7 @@ JS;
 	 * @uses LeftAndMainDecorator->augmentNewSiteTreeItem()
 	 */
 	public function getNewItem($id, $setID = true) {
-		list($dummy, $className, $parentID, $suffix) = explode('-',$id);
+		list($dummy, $className, $parentID, $suffix) = array_pad(explode('-',$id),4,null);
 		if(Translatable::is_enabled()) {
 			if (!Translatable::is_default_lang()) {
 				$originalItem = Translatable::get_original($className,Session::get("{$id}_originalLangID"));

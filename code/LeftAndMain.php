@@ -410,9 +410,12 @@ class LeftAndMain extends Controller {
 				newNode.selectTreeNode();
 JS;
 			FormResponse::add($response);
+
+			return FormResponse::respond();
+		} else {
+			Director::redirect("admin/show/" . $p->ID);
 		}
 
-		return FormResponse::respond();
 	}
 
 
