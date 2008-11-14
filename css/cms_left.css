@@ -121,6 +121,12 @@ ul.tree.multiselect li.selected span.a.unexpanded span.b {
 	cursor: default;
 }
 
+
+ul.tree span.a a.notinmenu, ul.tree span.a a.notinmenu * {
+	color: #77A;
+}
+
+
 ul.tree span.a a.disabled {
 	color: #999;
 	cursor: pointer;
@@ -153,17 +159,17 @@ ul.tree .deleted {
 	}
 
 /* Created on stage, never published */
-ul.tree ins,
+ul.tree span.a a ins, ul.tree span.a a.notinmenu ins,
 #publication_key ins {
 	color: orange;
 	text-decoration : none;
 }
 /* Deleted on stage */
-ul.tree del,
+ul.tree span.a a del, ul.tree span.a a.notinmenu del,
 #publication_key del {
 	color: red;
 }
-ul.tree span.modified,
+ul.tree span.a span.modified,
 #publication_key span.modified {
 	color: green;
 	text-decoration : none;
