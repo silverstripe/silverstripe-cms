@@ -521,22 +521,16 @@ JS;
 	 * Otherwise, it will redirect back.
 	 */
 	public function returnItemToUser($p) {
-		if($_REQUEST['ajax']) {
+		if(!empty($_REQUEST['ajax'])) {
 			$parentID = (int)$p->ParentID;
 			return <<<JS
 				tree = $('sitetree');
-
 				var newNode = tree.createTreeNode($p->ID, "$p->Title", "$p->class");
-
 				tree.getTreeNodeByIdx($parentID).appendTreeNode(newNode);
-
 				newNode.selectTreeNode();
 JS;
-
 		} else {
-
 			Director::redirectBack();
-
 		}
 	}
 	
@@ -547,86 +541,26 @@ JS;
 		$script = '';
 		$ids = split(' *, *', $_REQUEST['csvIDs']);
 		$script = '';
+		
+		if(!$ids) return false;
+		
 		foreach($ids as $id) {
-
-			if(is_numeric($id)) {
-
-				$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-				
-if(!$record)
-
-					Debug::message( "Record appears to be null" );
-
-				
-
-				/*if($record->hasMethod('BackLinkTracking')) {
-					$brokenPages = $record->BackLinkTracking();
-
-					foreach($brokenPages as $brokenPage) {
-
-						$brokenPageList .= "<li style=\"font-size: 65%\">" . $brokenPage->Breadcrumbs(3, true) . "</li>";
-
-						$brokenPage->HasBrokenLink = true;
-
-						$notifications[$brokenPage->OwnerID][] = $brokenPage;
-
-						$brokenPage->write();
-
-					}
-
-				}*/
-				
+			$record = DataObject::get_by_id($this->stat('tree_class'), (int) $id);
+			if($record) {
 				$record->delete();
 				$record->destroy();
-
-
-
-				// DataObject::delete_by_id($this->stat('tree_class'), $id);
-
 				$script .= $this->deleteTreeNodeJS($record);
-
 			}
-
 		}
-
-
-		
-/*if($notifications) foreach($notifications as $memberID => $pages) {
-
-			$email = new Page_BrokenLinkEmail();
-
-			$email->populateTemplate(new ArrayData(array(
-
-				"Recipient" => DataObject::get_by_id("Member", $memberID),
-
-				"BrokenPages" => new DataObjectSet($pages),
-
-			)));
-
-			$email->debug();
-
-			$email->send();
-
-		}*/
-
-		
-		/*
-		$s = (sizeof($ids) > 1) ? "s" :"";
-		
-		$message = sizeof($ids) . " folder$s deleted.";
-		//
-		if(isset($brokenPageList)) $message .= "  The following pages now have broken links:<ul>" . addslashes($brokenPageList) . "</ul>Their owners have been emailed and they will fix up those pages.";
-		*/
 		
 		$size = sizeof($ids);
-		if($size > 1)
-		  $message = $size.' '._t('AssetAdmin.FOLDERSDELETED', 'folders deleted.');
-		else
-		  $message = $size.' '._t('AssetAdmin.FOLDERDELETED', 'folder deleted.');
+		if($size > 1) $message = $size . ' ' . _t('AssetAdmin.FOLDERSDELETED', 'folders deleted.');
+		else $message = $size . ' ' . _t('AssetAdmin.FOLDERDELETED', 'folder deleted.');
 
-		if(isset($brokenPageList))
+		if(isset($brokenPageList)) {
 		  $message .= '  '._t('AssetAdmin.NOWBROKEN', 'The following pages now have broken links:').'<ul>'.addslashes($brokenPageList).'</ul>'.
-		    _t('AssetAdmin.NOWBROKEN2', 'Their owners have been emailed and they will fix up those pages.');
+		    _t('AssetAdmin.NOWBROKEN2', 'Their owners have been emailed and they will fix up those pages.');			
+		}
 
 		$script .= "statusMessage('$message');";
 		echo $script;
