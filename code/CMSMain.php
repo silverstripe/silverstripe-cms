@@ -793,7 +793,7 @@ HTML;
 			FormResponse::add("\$('sitetree').setNodeTitle($page->ID, '$JS_title');");
 		} else {
 			FormResponse::add("var node = $('sitetree').getTreeNodeByIdx('$page->ID');");
-			FormResponse::add("if(node.parentTreeNode)	node.parentTreeNode.removeTreeNode(node);");
+			FormResponse::add("if(node && node.parentTreeNode) node.parentTreeNode.removeTreeNode(node);");
 			FormResponse::add("$('Form_EditForm').reloadIfSetTo($page->ID);");
 		}
 		
@@ -1069,7 +1069,7 @@ HTML;
 						FormResponse::add("$('Form_EditForm').reloadIfSetTo($record->OldID);");
 					} else {
 						FormResponse::add("var node = $('sitetree').getTreeNodeByIdx('$id');");
-						FormResponse::add("if(node.parentTreeNode)	node.parentTreeNode.removeTreeNode(node);");
+						FormResponse::add("if(node && node.parentTreeNode)	node.parentTreeNode.removeTreeNode(node);");
 						FormResponse::add("$('Form_EditForm').reloadIfSetTo($record->OldID);");
 					}
 				}
