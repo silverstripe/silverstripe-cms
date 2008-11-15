@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Extended URL rules for the CMS module
  * 
