@@ -80,8 +80,8 @@ class ThumbnailStripField extends FormField {
 				
 				$result .= 
 					'<li>' .
-						'<a href=" ' . $image->Filename . '?r=' . rand(1,100000) . '">' .
-							'<img class="destwidth=' . round($width) . ',destheight=' . round($height) . '" src="'. $thumbnail->URL . '?r=' . rand(1,100000) . '" alt="' . $image->Title . '" title="' . $image->Title .   '" />' .
+						'<a href="' . $image->Filename . '?r=' . rand(1,100000) . '" title="' . $image->Title .   '">' .
+							'<img class="destwidth=' . round($width) . ',destheight=' . round($height) . '" src="'. $thumbnail->URL . '?r=' . rand(1,100000) . '" alt="' . $image->Title . '" />' .
 						'</a>' .
 					'</li>';
 			}
@@ -128,7 +128,7 @@ class ThumbnailStripField extends FormField {
 			foreach($flashObjects as $flashObject) {
 				$result .= <<<HTML
 <li>
-<a href="$flashObject->URL">
+<a href="$flashObject->URL" title="$flashObject->Title">
 	<img src="cms/images/flash_small.jpg" alt="spacer" />
 	<br />
 	$flashObject->Name
