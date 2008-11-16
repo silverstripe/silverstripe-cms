@@ -718,7 +718,7 @@ JS;
 		$script = "st = \$('sitetree'); \n";
 		foreach($ids as $id) {
 			if(is_numeric($id)) {
-				$record = DataObject::get_by_id($id);
+				$record = DataObject::get_by_id($this->stat('tree_class'), $id);
 				if($record && !$record->canDelete()) return Security::permissionFailure($this);
 				
 				DataObject::delete_by_id($this->stat('tree_class'), $id);
