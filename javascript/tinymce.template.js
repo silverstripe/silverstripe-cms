@@ -15,6 +15,7 @@ if((typeof tinyMCE != 'undefined')) {
 		auto_resize : false,
 		theme : "advanced",
 		content_css : "$ContentCSS",
+		body_class : 'typography',
 		document_base_url: "$BaseURL",
 		urlconverter_callback : "nullConverter",
 		
