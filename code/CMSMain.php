@@ -578,12 +578,12 @@ JS;
 
 	public function revert($urlParams, $form) {
 		$id = $_REQUEST['ID'];
-		$obj = DataObject::get_by_id("SiteTree", $id);
+		$record = DataObject::get_by_id("SiteTree", $id);
 		if($record && !$record->canEdit()) return Security::permissionFailure($this);
 		
-		$obj->doRevertToLive();
+		$record->doRevertToLive();
 
-		$title = Convert::raw2js($obj->Title);
+		$title = Convert::raw2js($record->Title);
 		FormResponse::get_page($id);
 		FormResponse::add("$('sitetree').setNodeTitle($id, '$title');");
 		FormResponse::status_message(sprintf(_t('CMSMain.RESTORED',"Restored '%s' successfully",PR_MEDIUM,'Param %s is a title'),$title),'good');
