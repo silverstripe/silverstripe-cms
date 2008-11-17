@@ -85,8 +85,16 @@ $(document).ready(function() {
 	 */
 	$('#SearchForm_holder .tab form:not(#Form_ImportForm)').submit(function () {
 	    var $form = $(this);
+
+		$('#ModelAdminPanel').fn('startHistory', $(this).attr('action'), $(this).formToArray());
 	    $('#ModelAdminPanel').load($(this).attr('action'), $(this).formToArray(), standardStatusHandler(function(result) {
-    		__lastSearch = $form;
+			if(!this.future || !this.future.length) {
+			    $('#Form_EditForm_action_goForward, #Form_ResultsForm_action_goForward').hide();
+		    }
+			if(!this.history || this.history.length <= 1) {
+			    $('#Form_EditForm_action_goBack, #Form_ResultsForm_action_goBack').hide();
+		    }
+
     		$('#form_actions_right').remove();
     		Behaviour.apply();
     		// Remove the loading indicators from the buttons
@@ -136,10 +144,11 @@ $(document).ready(function() {
 	 * Table record handler for search result record
 	 * @todo: Shouldn't this be part of TableListField?
 	 */
-	$('#right #Form_ResultsForm tbody td a')
+	$('#right #Form_ResultsForm tbody td a:not(.deletelink)')
 	    .livequery('click', function(){
 	        $(this).parent().parent().addClass('loading');
     		var el = $(this);
+    		$('#ModelAdminPanel').fn('addHistory', el.attr('href'));
     		$('#ModelAdminPanel').fn('loadForm', el.attr('href'));
     		return false;
     	});
@@ -161,8 +170,16 @@ $(document).ready(function() {
     /**
      * RHS panel Back button
      */
-	$('#Form_EditForm_action_goBack').livequery('click', function() {
-		if(__lastSearch) __lastSearch.trigger('submit');
+	$('#Form_EditForm_action_goBack, #Form_ResultsForm_action_goBack').livequery('click', function() {
+	    $('#ModelAdminPanel').fn('goBack');
+		return false;
+	});
+
+    /**
+     * RHS panel Back button
+     */
+	$('#Form_ResultsForm_action_goForward').livequery('click', function() {
+	    $('#ModelAdminPanel').fn('goForward');
 		return false;
 	});
 	
@@ -257,9 +274,63 @@ $(document).ready(function() {
         loadForm: function(url, successCallback) {
     	    $('#right #ModelAdminPanel').load(url, standardStatusHandler(function(result) {
 				if(typeof(successCallback) == 'function') successCallback.apply();
+				if(!this.future || !this.future.length) {
+				    $('#Form_EditForm_action_goForward, #Form_ResultsForm_action_goForward').hide();
+			    }
+				if(!this.history || this.history.length <= 1) {
+				    $('#Form_EditForm_action_goBack, #Form_ResultsForm_action_goBack').hide();
+			    }
+				
     			Behaviour.apply(); // refreshes ComplexTableField
     		}));
+    	},
+    	
+    	startHistory: function(url, data) {
+    	    this.history = [];
+    	    $(this).fn('addHistory', url, data);
+    	},
+    	
+    	/**
+    	 * Add an item to the history, to be accessed by goBack and goForward
+    	 */
+    	addHistory: function(url, data) {
+    	    // Combine data into URL
+    	    if(data) {
+    	        if(url.indexOf('?') == -1) url += '?' + $.param(data);
+    	        else url += '&' + $.param(data);
+	        }
+	        
+	        // Add to history 
+    	    if(this.history == null) this.history = [];
+    	    this.history.push(url);
+    	    
+    	    // Reset future
+    	    this.future = [];
+    	},
+    	
+    	goBack: function() {
+    	    if(this.history && this.history.length) {
+        	    if(this.future == null) this.future = [];
+        	    
+        	    var currentPage = this.history.pop();
+        	    var previousPage = this.history[this.history.length-1];
+        	    
+        	    this.future.push(currentPage);
+        	    $(this).fn('loadForm', previousPage);
+    	    }
+    	},
+    	
+    	goForward: function() {
+    	    if(this.future && this.future.length) {
+        	    if(this.future == null) this.future = [];
+        	    
+        	    var nextPage = this.future.pop();
+        	    
+        	    this.history.push(nextPage);
+        	    $(this).fn('loadForm', nextPage);
+    	    }
     	}
+
     });
 	
 	/**

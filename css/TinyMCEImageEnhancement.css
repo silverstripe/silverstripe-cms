@@ -1,20 +1,20 @@
-.group {
+.contentPanel .group {
     display: inline;
     margin-left: 2px;
 }
-.middleColumn {
+.contentPanel .middleColumn {
     margin-bottom: 2px;	
 }
-.link {
+.contentPanel .link {
     text-decoration: none;
     margin-left: 2px;
 } 
 
 
-.tree_holder {
+.contentPanel .tree_holder {
     display: inline;
 }
-#NewFolderName {
+.contentPanel #NewFolderName {
     width: 120px;
     margin-top: 0;	
 }

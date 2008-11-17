@@ -581,7 +581,10 @@ class ModelAdmin_CollectionController extends Controller {
 				new HeaderField('SearchResultsHeader',_t('ModelAdmin.SEARCHRESULTS','Search Results'), 2),
 				$tf
 			),
-			new FieldSet()
+			new FieldSet(
+				new FormAction("goBack", _t('ModelAdmin.GOFORWARD', "Back")),
+				new FormAction("goForward", _t('ModelAdmin.GOFORWARD', "Forward"))
+			)
 		);
 		
 		// Include the search criteria on the results form URL, but not dodgy variables like those below
@@ -589,6 +592,8 @@ class ModelAdmin_CollectionController extends Controller {
 		unset($filteredCriteria['ctf']);
 		unset($filteredCriteria['url']);
 		unset($filteredCriteria['action_search']);
+		if(isset($filteredCriteria['Investors__PEFirm__IsPECMember']) && !$filteredCriteria['Investors__PEFirm__IsPECMember']) unset($filteredCriteria['Investors__PEFirm__IsPECMember']);
+		
 		$form->setFormAction($this->Link() . '/ResultsForm?' . http_build_query($filteredCriteria));
 		return $form;
 	}
