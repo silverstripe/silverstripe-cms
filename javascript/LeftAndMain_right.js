@@ -195,7 +195,7 @@ CMSForm.prototype = {
 		}
 		
 		statusMessage(ss.i18n._t('CMSMAIN.SAVING'), null, true);
-		console.log(this.action+"?"+data);
+
 		new Ajax.Request(this.action, {
 			method : this.method,
 			postBody: data,
