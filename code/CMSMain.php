@@ -129,6 +129,20 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	// Main UI components
 
 	/**
+	 * Override {@link LeftAndMain} Link to allow blank URL segment for CMSMain.
+	 * 
+	 * @return string
+	 */
+	public function Link($action = null) {
+		return Controller::join_links(
+			$this->stat('url_base', true),
+			$this->stat('url_segment', true), // in case we want to change the segment
+			'/', // trailing slash needed if $action is null!
+			"$action"
+		);
+	}
+
+	/**
 	 * Return the entire site tree as a nested set of ULs
 	 */
 	public function SiteTreeAsUL() {

@@ -82,8 +82,10 @@ class CMSMenu extends Object implements Iterator
 	 * @return boolean Success
 	 */
 	public static function add_menu_item($code, $menuTitle, $url, $controllerClass = null, $priority = -1) {
+		// If a class is defined, then force the use of that as a code.  This helps prevent menu item duplication
+		if($controllerClass) $code = $controllerClass;
+
 		$menuItems = self::$menu_items;
-		
 		if(isset($menuItems[$code])) return false;
 	
 		return self::replace_menu_item($code, $menuTitle, $url, $controllerClass, $priority);

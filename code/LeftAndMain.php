@@ -200,6 +200,9 @@ class LeftAndMain extends Controller {
 	 * @return string
 	 */
 	public function Link($action = null) {
+		// Handle missing url_segments
+		if(!$this->stat('url_segment', true))
+			self::$url_segment = $this->class;
 		return Controller::join_links(
 			$this->stat('url_base', true),
 			$this->stat('url_segment', true),
@@ -287,11 +290,14 @@ class LeftAndMain extends Controller {
 
 			$linkingmode = "";
 			
-			if(!(strpos($this->Link(), $menuItem->url) === false)) {
+			if(strpos($this->Link(), $menuItem->url) !== false) {
+				if($this->Link() == $menuItem->url) {
+					$linkingmode = "current";
+				
 				// default menu is the one with a blank {@link url_segment}
-				if(singleton($menuItem->controller)->stat('url_segment') == '') {
-					if($this->Link() == $this->stat('url_base').'/')
-						$linkingmode = "current";
+				} else if(singleton($menuItem->controller)->stat('url_segment') == '') {
+					if($this->Link() == $this->stat('url_base').'/') $linkingmode = "current";
+
 				} else {
 					$linkingmode = "current";
 				}
@@ -317,7 +323,6 @@ class LeftAndMain extends Controller {
 		
 		// if no current item is found, assume that first item is shown
 		//if(!isset($foundCurrent)) 
-
 		return $menu;
 	}
 
