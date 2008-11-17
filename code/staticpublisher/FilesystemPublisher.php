@@ -7,6 +7,16 @@ class FilesystemPublisher extends StaticPublisher {
 	protected $destFolder;
 	protected $fileExtension;
 	
+	protected static $static_base_url = null;
+	
+	/**
+	 * Set a different base URL for the static copy of the site.
+	 * This can be useful if you are running the CMS on a different domain from the website.
+	 */
+	static function set_static_base_url($url) {
+		self::$static_base_url = $url;
+	}
+	
 	/**
 	 * @param $destFolder The folder to save the cached site into
 	 * @param $fileExtension  The file extension to use, for example, 'html'.  If omitted, then each page will be placed
@@ -24,7 +34,8 @@ class FilesystemPublisher extends StaticPublisher {
 		
 		//$base = Director::absoluteURL($this->destFolder);
 		//$base = preg_replace('/\/[^\/]+\/\.\./','',$base) . '/';
-		//Director::setBaseURL($base);
+		
+		if(self::$static_base_url) Director::setBaseURL(self::$static_base_url);
 		
 		$files = array();
 		$i = 0;
@@ -83,7 +94,8 @@ class FilesystemPublisher extends StaticPublisher {
 				}
 			}*/
 		}
-		Director::setBaseURL(null);
+
+		if(self::$static_base_url) Director::setBaseURL(null);
 
 		//Debug::show(array_keys($files));
 		//Debug::show(array_keys($missingFiles));
