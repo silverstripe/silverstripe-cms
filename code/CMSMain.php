@@ -1304,13 +1304,13 @@ HTML;
 			$languageIDs = $obj->getDescendantIDList();
 			$notcreatedlist = array_diff($allIDs,$languageIDs);
 			FormResponse::add("$('addpage').getElementsByTagName('button')[0].disabled=true;");
-			FormResponse::add("$('Form_AddPageOptionsForm').getElementsByTagName('div')[1].getElementsByTagName('input')[0].disabled=true;");
+			//FormResponse::add("$('Form_AddPageOptionsForm').getElementsByTagName('div')[1].getElementsByTagName('input')[0].disabled=true;");
 			FormResponse::add("$('Translating_Message').innerHTML = 'Translating mode - ".i18n::get_language_name($lang)."';");
 			FormResponse::add("Element.removeClassName('Translating_Message','nonTranslating');");
 		} else {
 			Translatable::set_reading_lang($lang);
 			FormResponse::add("$('addpage').getElementsByTagName('button')[0].disabled=false;");
-			FormResponse::add("$('Form_AddPageOptionsForm').getElementsByTagName('div')[1].getElementsByTagName('input')[0].disabled=false;");
+			//FormResponse::add("$('Form_AddPageOptionsForm').getElementsByTagName('div')[1].getElementsByTagName('input')[0].disabled=false;");
 			FormResponse::add("Element.addClassName('Translating_Message','nonTranslating');");
 		}
 		$obj = singleton($this->stat('tree_class'));
