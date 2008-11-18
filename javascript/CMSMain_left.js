@@ -240,8 +240,7 @@ batchActionGlobals = {
 	},
 
 	getCsvIds : function() {
-		var csvIDs = "";
-		batchActionGlobals.count = 0;
+		var csvIDs = new Array();
 		var st = $('sitetree');
 		batchActionGlobals.newNodes = new Array();
 		for(var idx in batchActionGlobals.selectedNodes) {
@@ -253,15 +252,18 @@ batchActionGlobals = {
 				} else {
 					var i, item, childrenTopublish = st.getTreeNodeByIdx(idx).getElementsByTagName('li');
 					for(i=0;item=childrenTopublish[i];i++) {
-						csvIDs += (csvIDs ? "," : "") + st.getIdxOf(childrenTopublish[i]);
-						batchActionGlobals.count++;
+						if(csvIDs.indexOf(st.getIdxOf(childrenTopublish[i])) == -1) {
+							csvIDs.push(st.getIdxOf(childrenTopublish[i]));
+						}
 					}
-					csvIDs += (csvIDs ? "," : "") + idx;
-					batchActionGlobals.count++;
+					if(csvIDs.indexOf(idx) == -1) {
+						csvIDs.push(idx);
+					}
 				}
 			}
 		}
-		return csvIDs;
+		batchActionGlobals.count=csvIDs.length;	
+		return (csvIDs.toString());
 	},
 	unfilterSiteTree : function() {
 		// Reload the site tree if it has been filtered
