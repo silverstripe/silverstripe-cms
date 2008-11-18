@@ -435,6 +435,15 @@ div.originallang_holder.field.CompositeField.nolabel {
 	font-style: italic;
 }
 
+.right form .field.CompositeField .originallang label.left {
+	margin-left: 0;
+	width: auto;
+}
+
+.right form div.field.CompositeField .originallang .middleColumn {
+	clear: left;
+}
+
 .right form div.languageDropdown {
 	clear: right;
 	float: left;
