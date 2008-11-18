@@ -298,8 +298,8 @@ HTML;
 	 * Called and returns in same way as 'save' function
 	 */
 	public function movemarked($urlParams, $form) {
-		if($_REQUEST['DestFolderID'] && is_numeric($_REQUEST['DestFolderID'])) {
-			$destFolderID = $_REQUEST['DestFolderID'];
+		if($_REQUEST['DestFolderID'] && (is_numeric($_REQUEST['DestFolderID']) || ($_REQUEST['DestFolderID']) == 'root')) {
+			$destFolderID = ($_REQUEST['DestFolderID'] == 'root') ? 0 : $_REQUEST['DestFolderID'];
 			$fileList = "'" . ereg_replace(' *, *',"','",trim(addslashes($_REQUEST['FileIDs']))) . "'";
 			$numFiles = 0;
 	

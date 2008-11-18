@@ -238,30 +238,27 @@ DropFileItem.prototype = {
 		// eg: <li id="treenode-6"> would give a recordID of 6
 		if(this.id && this.id.match(/-([^-]+)$/))
 			this.recordID = RegExp.$1;
-		// Do not allow files to be dropped to the root
-		if (this.recordID != 'root') {
-			this.droppable = Droppables.add(this.id, {accept:'dragfile', hoverclass:'filefolderhover',
-				onDrop:function(droppedElement) {
-					// Get this.recordID from the last "-" separated chunk of the id HTML attribute
-					// eg: <li id="treenode-6"> would give a recordID of 6
-					if(this.element.id && this.element.id.match(/-([^-]+)$/))
-						this.recordID = RegExp.$1;
-					$('Form_EditForm').elements['DestFolderID'].value = this.recordID;
+		this.droppable = Droppables.add(this.id, {accept:'dragfile', hoverclass:'filefolderhover',
+			onDrop:function(droppedElement) {
+				// Get this.recordID from the last "-" separated chunk of the id HTML attribute
+				// eg: <li id="treenode-6"> would give a recordID of 6
+				if(this.element.id && this.element.id.match(/-([^-]+)$/))
+					this.recordID = RegExp.$1;
+				$('Form_EditForm').elements['DestFolderID'].value = this.recordID;
 
-					// Add the dropped file to the list of files to move
-					var list = droppedElement.getElementsByTagName('img')[0].id.replace('drag-img-Files-','');
-					var i, checkboxes = $('Form_EditForm').elements['Files[]'];
-					if(!checkboxes) checkboxes = [];
-					if(!checkboxes.length) checkboxes = [ checkboxes ];
-					// Add each checked file to the list of ones to move
-					for(i=0;i<checkboxes.length;i++) {
-						if(checkboxes[i].checked) list += (list?',':'') + checkboxes[i].value;
-					}
-					$('Form_EditForm_FileIDs').value = list;
-					$('Form_EditForm').save(false, null, 'movemarked')
+				// Add the dropped file to the list of files to move
+				var list = droppedElement.getElementsByTagName('img')[0].id.replace('drag-img-Files-','');
+				var i, checkboxes = $('Form_EditForm').elements['Files[]'];
+				if(!checkboxes) checkboxes = [];
+				if(!checkboxes.length) checkboxes = [ checkboxes ];
+				// Add each checked file to the list of ones to move
+				for(i=0;i<checkboxes.length;i++) {
+					if(checkboxes[i].checked) list += (list?',':'') + checkboxes[i].value;
 				}
-			});
-		}
+				$('Form_EditForm_FileIDs').value = list;
+				$('Form_EditForm').save(false, null, 'movemarked')
+			}
+		});
 	},
 	destroy: function() {
 		this.droppable = null;
