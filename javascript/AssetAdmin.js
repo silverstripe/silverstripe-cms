@@ -228,7 +228,7 @@ DragFileItem.prototype = {
 		this.draggable = null;
 	}
 }
-DragFileItem.applyTo('#Form_EditForm_Files tr td.markingcheckbox div.dragfile');
+DragFileItem.applyTo('#Form_EditForm_Files tr .dragfile');
 
 // Set up folder drop target
 DropFileItem = Class.create();

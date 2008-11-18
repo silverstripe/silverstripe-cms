@@ -1,3 +1,5 @@
+<% require javascript(jsparty/tabstrip/tabstrip.js) %>
+<% require css(jsparty/tabstrip/tabstrip.css) %>
 <div id="LeftPane">
 	<!-- <h2><% _t('SEARCHLISTINGS','Search Listings') %></h2> -->
 	<div id="SearchForm_holder" class="leftbottom">		
@@ -13,7 +15,7 @@
 		<p id="ModelClassSelector">
 		    Search for:
     		<select>
-            	<% control SearchForms %>
+            	<% control ModelForms %>
             		<option value="{$Form.Name}_$ClassName">$Title</option>
             	<% end_control %>
     		</select>

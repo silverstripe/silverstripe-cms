@@ -200,6 +200,9 @@ class LeftAndMain extends Controller {
 	 * @return string
 	 */
 	public function Link($action = null) {
+		// Handle missing url_segments
+		if(!$this->stat('url_segment', true))
+			self::$url_segment = $this->class;
 		return Controller::join_links(
 			$this->stat('url_base', true),
 			$this->stat('url_segment', true),
@@ -287,11 +290,14 @@ class LeftAndMain extends Controller {
 
 			$linkingmode = "";
 			
-			if(!(strpos($this->Link(), $menuItem->url) === false)) {
+			if(strpos($this->Link(), $menuItem->url) !== false) {
+				if($this->Link() == $menuItem->url) {
+					$linkingmode = "current";
+				
 				// default menu is the one with a blank {@link url_segment}
-				if(singleton($menuItem->controller)->stat('url_segment') == '') {
-					if($this->Link() == $this->stat('url_base').'/')
-						$linkingmode = "current";
+				} else if(singleton($menuItem->controller)->stat('url_segment') == '') {
+					if($this->Link() == $this->stat('url_base').'/') $linkingmode = "current";
+
 				} else {
 					$linkingmode = "current";
 				}
@@ -317,7 +323,6 @@ class LeftAndMain extends Controller {
 		
 		// if no current item is found, assume that first item is shown
 		//if(!isset($foundCurrent)) 
-
 		return $menu;
 	}
 
@@ -410,9 +415,12 @@ class LeftAndMain extends Controller {
 				newNode.selectTreeNode();
 JS;
 			FormResponse::add($response);
+
+			return FormResponse::respond();
+		} else {
+			Director::redirect("admin/show/" . $p->ID);
 		}
 
-		return FormResponse::respond();
 	}
 
 
@@ -715,7 +723,7 @@ JS;
 		$script = "st = \$('sitetree'); \n";
 		foreach($ids as $id) {
 			if(is_numeric($id)) {
-				$record = DataObject::get_by_id($id);
+				$record = DataObject::get_by_id($this->stat('tree_class'), $id);
 				if($record && !$record->canDelete()) return Security::permissionFailure($this);
 				
 				DataObject::delete_by_id($this->stat('tree_class'), $id);

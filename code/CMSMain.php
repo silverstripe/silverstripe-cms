@@ -129,6 +129,20 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	// Main UI components
 
 	/**
+	 * Override {@link LeftAndMain} Link to allow blank URL segment for CMSMain.
+	 * 
+	 * @return string
+	 */
+	public function Link($action = null) {
+		return Controller::join_links(
+			$this->stat('url_base', true),
+			$this->stat('url_segment', true), // in case we want to change the segment
+			'/', // trailing slash needed if $action is null!
+			"$action"
+		);
+	}
+
+	/**
 	 * Return the entire site tree as a nested set of ULs
 	 */
 	public function SiteTreeAsUL() {
@@ -443,9 +457,9 @@ JS;
 
 
 	public function addpage() {
-		$className = $_REQUEST['PageType'] ? $_REQUEST['PageType'] : "Page";
-		$parent = $_REQUEST['ParentID'] ? $_REQUEST['ParentID'] : 0;
-		$suffix = $_REQUEST['Suffix'] ? "-" . $_REQUEST['Suffix'] : null;
+		$className = isset($_REQUEST['PageType']) ? $_REQUEST['PageType'] : "Page";
+		$parent = isset($_REQUEST['ParentID']) ? $_REQUEST['ParentID'] : 0;
+		$suffix = isset($_REQUEST['Suffix']) ? "-" . $_REQUEST['Suffix'] : null;
 
 
 		if(is_numeric($parent)) $parentObj = DataObject::get_by_id("SiteTree", $parent);
@@ -465,7 +479,7 @@ JS;
 	 * @uses LeftAndMainDecorator->augmentNewSiteTreeItem()
 	 */
 	public function getNewItem($id, $setID = true) {
-		list($dummy, $className, $parentID, $suffix) = explode('-',$id);
+		list($dummy, $className, $parentID, $suffix) = array_pad(explode('-',$id),4,null);
 		if(Translatable::is_enabled()) {
 			if (!Translatable::is_default_lang()) {
 				$originalItem = Translatable::get_original($className,Session::get("{$id}_originalLangID"));
@@ -564,12 +578,12 @@ JS;
 
 	public function revert($urlParams, $form) {
 		$id = $_REQUEST['ID'];
-		$obj = DataObject::get_by_id("SiteTree", $id);
+		$record = DataObject::get_by_id("SiteTree", $id);
 		if(isset($record) && $record && !$record->canEdit()) return Security::permissionFailure($this);
 		
-		$obj->doRevertToLive();
+		$record->doRevertToLive();
 
-		$title = Convert::raw2js($obj->Title);
+		$title = Convert::raw2js($record->Title);
 		FormResponse::get_page($id);
 		FormResponse::add("$('sitetree').setNodeTitle($id, '$title');");
 		FormResponse::status_message(sprintf(_t('CMSMain.RESTORED',"Restored '%s' successfully",PR_MEDIUM,'Param %s is a title'),$title),'good');
@@ -793,7 +807,7 @@ HTML;
 			FormResponse::add("\$('sitetree').setNodeTitle($page->ID, '$JS_title');");
 		} else {
 			FormResponse::add("var node = $('sitetree').getTreeNodeByIdx('$page->ID');");
-			FormResponse::add("if(node.parentTreeNode)	node.parentTreeNode.removeTreeNode(node);");
+			FormResponse::add("if(node && node.parentTreeNode) node.parentTreeNode.removeTreeNode(node);");
 			FormResponse::add("$('Form_EditForm').reloadIfSetTo($page->ID);");
 		}
 		
@@ -1069,7 +1083,7 @@ HTML;
 						FormResponse::add("$('Form_EditForm').reloadIfSetTo($record->OldID);");
 					} else {
 						FormResponse::add("var node = $('sitetree').getTreeNodeByIdx('$id');");
-						FormResponse::add("if(node.parentTreeNode)	node.parentTreeNode.removeTreeNode(node);");
+						FormResponse::add("if(node && node.parentTreeNode)	node.parentTreeNode.removeTreeNode(node);");
 						FormResponse::add("$('Form_EditForm').reloadIfSetTo($record->OldID);");
 					}
 				}

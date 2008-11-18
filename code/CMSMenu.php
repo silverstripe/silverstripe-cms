@@ -60,7 +60,7 @@ class CMSMenu extends Object implements Iterator
 	 * @param string $code A unique identifier (used to create a CSS ID and as it's key in {@link $menu_items}
 	 * @param string $menuTitle The link's title in the CMS menu
 	 * @param string $url The url of the link
-	 * @param integer $priority The menu priority (sorting order) of the menu item
+	 * @param integer $priority The menu priority (sorting order) of the menu item.  Higher priorities will be further left.
 	 * @return boolean The result of the operation.
 	 */
 	public static function add_link($code, $menuTitle, $url, $priority = -1) {
@@ -82,8 +82,10 @@ class CMSMenu extends Object implements Iterator
 	 * @return boolean Success
 	 */
 	public static function add_menu_item($code, $menuTitle, $url, $controllerClass = null, $priority = -1) {
+		// If a class is defined, then force the use of that as a code.  This helps prevent menu item duplication
+		if($controllerClass) $code = $controllerClass;
+
 		$menuItems = self::$menu_items;
-		
 		if(isset($menuItems[$code])) return false;
 	
 		return self::replace_menu_item($code, $menuTitle, $url, $controllerClass, $priority);
@@ -145,8 +147,13 @@ class CMSMenu extends Object implements Iterator
 	public static function replace_menu_item($code, $menuTitle, $url, $controllerClass = null, $priority = -1) {
 		$menuItems = self::$menu_items;
 		$menuItems[$code] = new CMSMenuItem($menuTitle, $url, $controllerClass, $priority);
+		
+		$menuPriority = array();
+		$i = 0;
 		foreach($menuItems as $key => $menuItem) {
-			$menuPriority[$key] = $menuItem->priority;
+			$i++;
+			// This funny litle formula ensures that the first item added with the same priority will be left-most.
+			$menuPriority[$key] = $menuItem->priority*100 - $i;
 		}
 		array_multisort($menuPriority, SORT_DESC, $menuItems);
 
