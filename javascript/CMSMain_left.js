@@ -177,7 +177,7 @@ showonlydrafts.prototype = {
 			new Ajax.Request( 'admin/filterSiteTree?Status=Saved&ajax=1', {
 				onSuccess: function( response ) {
 					$('sitetree_ul').innerHTML = response.responseText;
-					Behaviour.apply();
+					Behaviour.apply($('sitetree_ul'));
 					$('SiteTreeIsFiltered').value = 1;
 					$('batchactions').multiselectTransform();
 					statusMessage(ss.i18n._t('CMSMAIN.FILTEREDTREE'),'good');
@@ -272,7 +272,7 @@ batchActionGlobals = {
 			new Ajax.Request( 'admin/SiteTreeAsUL' + '&ajax=1', {
 				onSuccess: function( response ) {
 					$('sitetree_ul').innerHTML = response.responseText;
-					Behaviour.apply();
+					Behaviour.apply($('sitetree_ul'));
 					$('SiteTreeIsFiltered').value = 0;
 					$('batchactions').multiselectTransform();
 					statusMessage(ss.i18n._t('CMSMAIN.SUCCESSUNFILTER'),'good');
