@@ -18,9 +18,11 @@
 		<tbody>
 			<% control Items %>
 				<tr id="record-$Parent.Name-$ID">
-					<td class="dragfile" id="drag-$Parent.Name-$ID">
-						<img id="drag-img-$Parent.Name-$ID" alt="Drag" title="<% _t('DRAGTOFOLDER','Drag to folder on left to move file') %>" src="sapphire/images/drag.gif" />
-					</div>
+					<td>
+						<div class="dragfile" id="drag-$Parent.Name-$ID">
+							<img id="drag-img-$Parent.Name-$ID" alt="Drag" title="<% _t('DRAGTOFOLDER','Drag to folder on left to move file') %>" src="sapphire/images/drag.gif" />
+						</div>
+					</td>
 					<% if Markable %><td class="markingcheckbox">$MarkingCheckbox</td><% end_if %>
 					<% control Fields %>
 					<td>$Value</td>

@@ -228,7 +228,7 @@ DragFileItem.prototype = {
 		this.draggable = null;
 	}
 }
-DragFileItem.applyTo('#Form_EditForm_Files tr .dragfile');
+DragFileItem.applyTo('#Form_EditForm_Files tr td .dragfile');
 
 // Set up folder drop target
 DropFileItem = Class.create();
