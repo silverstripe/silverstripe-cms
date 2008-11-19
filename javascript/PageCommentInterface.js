@@ -30,6 +30,8 @@ PageCommentInterface.prototype = {
 		var spamQuestionDiv = $('Math');
 		var mathLabel = spamQuestionDiv.getElementsByTagName('label')[0];
 		mathLabel.innerHTML = response.responseText;
+		var mathQuestion = spamQuestionDiv.getElementsByTagName('input')[0];
+		mathQuestion.value = '';
 	},
 	
 	postComment: function() {
@@ -253,4 +255,6 @@ function loadSpamQuestion(response) {
 	var spamQuestionDiv = $('Math');
 	var mathLabel = spamQuestionDiv.getElementsByTagName('label')[0];
 	mathLabel.innerHTML = response.responseText;
+	var mathQuestion = spamQuestionDiv.getElementsByTagName('input')[0];
+	mathQuestion.value = '';
 }
