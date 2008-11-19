@@ -17,7 +17,6 @@ class CMSMenuTest extends SapphireTest implements TestOnly {
 		$menuItems = CMSMenu::get_menu_items();
 		$menuItem = $menuItems['CMSMain'];
 		$this->assertType('CMSMenuItem', $menuItem, 'Controller menu item is of class CMSMenuItem');
-		$this->assertEquals($menuItem->title, singleton('CMSMain')->getMenuTitle(), 'Controller menu item has the correct title');
 		$this->assertEquals($menuItem->url, singleton('CMSMain')->Link(), 'Controller menu item has the correct link');
 		$this->assertEquals($menuItem->controller, 'CMSMain', 'Controller menu item has the correct controller class');
 		$this->assertEquals($menuItem->priority, singleton('CMSMain')->stat('menu_priority'), 'Controller menu item has the correct priority');				
@@ -55,7 +54,6 @@ class CMSMenuTest extends SapphireTest implements TestOnly {
 		CMSMenu::populate_menu();
 		$menuItem = CMSMenu::get_menu_item('CMSMain');
 		$this->assertType('CMSMenuItem', $menuItem, 'CMSMain menu item exists');
-		$this->assertEquals($menuItem->title, singleton('CMSMain')->getMenuTitle(), 'Menu item has the correct title');
 		$this->assertEquals($menuItem->url, singleton('CMSMain')->Link(), 'Menu item has the correct link');
 		$this->assertEquals($menuItem->controller, 'CMSMain', 'Menu item has the correct controller class');
 		$this->assertEquals(

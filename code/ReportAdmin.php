@@ -41,10 +41,6 @@ class ReportAdmin extends LeftAndMain {
 		}
 	}
 	
-	public function getMenuTitle() {
-		return _t('LeftAndMain.REPORTS', 'Reports', PR_HIGH, 'Menu title');
-	}
-	
 	/**
 	 * Return a DataObjectSet of SSReport subclasses
 	 * that are available for use.

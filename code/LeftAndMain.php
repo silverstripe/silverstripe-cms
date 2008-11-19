@@ -18,7 +18,7 @@ class LeftAndMain extends Controller {
 	 *
 	 * @var string $url_base
 	 */
-	protected static $url_base = "admin";
+	static $url_base = "admin";
 	
 	static $url_segment;
 	
@@ -212,13 +212,14 @@ class LeftAndMain extends Controller {
 	}
 	
 	/**
-	 * Override {@link getMenuTitle} in child classes to make the menu title translatable for that class.
-	 * Uses {@link $menu_title} if present, otherwise falls back to the classname without the "Admin" suffix.
-	 *
-	 * @return string
+	 * Returns the menu title for the given LeftAndMain subclass.
+	 * Implemented static so that we can get this value without instantiating an object.
+	 * Menu title is *not* internationalised.
 	 */
-	public function getMenuTitle() {
-		return ($this->stat('menu_title')) ? $this->stat('menu_title') : preg_replace('/Admin$/', '', $this->class);
+	static function menu_title_for_class($class) {
+		$title = eval("return $class::\$menu_title;");
+		if(!$title) $title = preg_replace('/Admin$/', '', $class);
+		return $title;
 	}
 
 	public function show($params) {
@@ -305,10 +306,9 @@ class LeftAndMain extends Controller {
 		
 			// already set in CMSMenu::populate_menu(), but from a static pre-controller
 			// context, so doesn't respect the current user locale in _t() calls - as a workaround,
-			// we simply call getMenuTitle() again if we're dealing with a controller
+			// we simply call LeftAndMain::menu_title_for_class() again if we're dealing with a controller
 			if($menuItem->controller) {
-				$controllerObj = singleton($menuItem->controller);
-				$title = $controllerObj->getMenuTitle();
+				$title = LeftAndMain::menu_title_for_class($menuItem->controller);
 			} else {
 				$title = $menuItem->title;
 			}
@@ -326,6 +326,10 @@ class LeftAndMain extends Controller {
 		return $menu;
 	}
 
+
+	public function CMSTopMenu() {
+		return $this->renderWith(array('CMSTopMenu_alternative','CMSTopMenu'));
+	}
 
   /**
    * Return a list of appropriate templates for this class, with the given suffix

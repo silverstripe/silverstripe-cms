@@ -108,10 +108,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain_right.js');
 	}
 	
-	public function getMenuTitle() {
-		return _t('LeftAndMain.SITECONTENT', 'Site Content', PR_HIGH, 'Menu title');
-	}	
-	
 	/**
 	 * If this is set to true, the "switchView" context in the
 	 * template is shown, with links to the staging and publish site.

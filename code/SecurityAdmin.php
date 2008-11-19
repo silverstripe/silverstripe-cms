@@ -258,10 +258,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			return DataObject::get_by_id("Member", Session::get('currentMember'));
 	}
 
-	public function getMenuTitle() {
-		return _t('LeftAndMain.SECURITY', 'Security', PR_HIGH, 'Menu title');
-	}
-	
 	function providePermissions() {
 		return array(
 			'EDIT_PERMISSIONS' => _t('SecurityAdmin.EDITPERMISSIONS', 'Edit permissions and IP addresses on each group'),

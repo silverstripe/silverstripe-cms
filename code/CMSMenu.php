@@ -5,7 +5,7 @@
  * @package cms
  * @subpackage content
  */
-class CMSMenu extends Object implements Iterator
+class CMSMenu extends Object implements Iterator, i18nEntityProvider
 {
 
 	protected static $menu_items = array();
@@ -21,7 +21,6 @@ class CMSMenu extends Object implements Iterator
 		}
 		return true;
 	}
-
 	
 	/**
 	 * Add a LeftAndMain controller to the CMS menu.
@@ -32,25 +31,35 @@ class CMSMenu extends Object implements Iterator
 	 *			when the item is removed. Functionality needed in {@link Director}.
 	 */	
 	public static function add_controller($controllerClass) {
-		$controller = singleton($controllerClass);
+		// Get static bits
+		$urlBase = eval("return $controllerClass::\$url_base;");
+		$urlSegment = eval("return $controllerClass::\$url_segment;");
+		$urlRule = eval("return $controllerClass::\$url_rule;");
+		$urlPriority = eval("return $controllerClass::\$url_priority;");
+		$menuPriority = eval("return $controllerClass::\$menu_priority;");
 
-		$link = $controller->Link();
-		if(substr($link,-1) == '/') $link = substr($link,0,-1);
-		$subRule = $controller->stat('url_rule', true);
-		if($subRule[0] == '/') $subRule = substr($subRule,1);
-		$rule = $link . '//' . $subRule;
-		
-		Director::addRules($controller->stat('url_priority', true), array(
+		// Don't add menu items defined the old way
+		if($urlSegment === null) return;
+
+		$link = Controller::join_links($urlBase,$urlSegment) . '/';
+
+		// Make director rule
+		if($urlRule[0] == '/') $urlRule = substr($urlRule,1);
+		$rule = $link . '/' . $urlRule; // the / will combine with the / on the end of $link to make a //
+		Director::addRules($urlPriority, array(
 			$rule => $controllerClass
-			
 		));
 		
+		
+		// Add menu item
+		$defaultTitle = LeftAndMain::menu_title_for_class($controllerClass);
+		$menuTitle = _t('LeftAndMain.' . strtoupper($controllerClass) . '_MENU', $defaultTitle);
 		return self::add_menu_item(
 			$controllerClass, 
-			$controller->getMenuTitle(), 
-			$controller->Link(), 
+			$menuTitle, 
+			$link, 
 			$controllerClass,
-			$controller->stat('menu_priority')
+			$menuPriority
 		);
 	}
 	
@@ -183,12 +192,7 @@ class CMSMenu extends Object implements Iterator
 			$classReflection = new ReflectionClass($className);
 			if(!$classReflection->isInstantiable() || 'LeftAndMain' == $className) {
 				unset($subClasses[$key]);
-			} else {
-				if(singleton($className)->getMenuTitle() == '') {
-					unset($subClasses[$key]);
-				}
-			}
-			
+			}			
 		}
 		return $subClasses;
 	}
@@ -213,6 +217,18 @@ class CMSMenu extends Object implements Iterator
 	public function valid() {
 		return (bool)self::current();
 	}
-	
+
+	/**
+	 * Provide menu titles to the i18n entity provider
+	 */
+	function provideI18nEntities() {
+		$cmsClasses = self::get_cms_classes();
+		$entities = array();
+		foreach($cmsClasses as $cmsClass) {
+			$defaultTitle = LeftAndMain::menu_title_for_class($cmsClass);
+			$entities['LeftAndMain.' . strtoupper($cmsClass) . '_MENU'] = array($defaultTitle, PR_HIGH, 'Menu title');
+		}
+		return $entities;
+	}
 }
 ?>

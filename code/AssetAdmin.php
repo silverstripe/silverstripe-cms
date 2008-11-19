@@ -44,10 +44,6 @@ class AssetAdmin extends LeftAndMain {
 		'UploadForm',
 		'deleteUnusedThumbnails' => 'ADMIN'
 	);
-
-	public function getMenuTitle() {
-		return _t('LeftAndMain.FILESIMAGES', 'Files & Images', PR_HIGH, 'Menu title');
-	}
 	
 	/**
 	 * Return fake-ID "root" if no ID is found (needed to upload files into the root-folder)
