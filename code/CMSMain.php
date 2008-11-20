@@ -41,7 +41,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'duplicatewithchildren',
 		'filtersitetree',
 		'getpagecount',
-		'getpagemembers',
 		'getversion',
 		'publishall',
 		'publishitems',
@@ -603,122 +602,6 @@ JS;
 			return $this->tellBrowserAboutPublicationChange($record, sprintf(_t('CMSMain.REMOVEDPAGEFROMDRAFT',"Removed '%s' from the draft site"),$record->Title));
 		} else {
 			Director::redirectBack();
-		}
-	}
-
-	//------------------------------------------------------------------------------------------//
-	// Workflow handlers
-
-	/**
-	 * Send this page on to another user for review
-	 */
-	function submit() {
-		$page = DataObject::get_by_id("SiteTree", $_REQUEST['ID']);
-		$recipient = DataObject::get_by_id("Member", $_REQUEST['RecipientID']);
-		if(!$recipient) user_error("CMSMain::submit() Can't find recipient #$_REQUEST[RecipientID]", E_USER_ERROR);
-
-		$comment = new WorkflowPageComment();
-		$comment->Comment = $_REQUEST['Message'];
-		$comment->PageID = $page->ID;
-		$comment->AuthorID = Member::currentUserID();
-		$comment->Recipient = $recipient;
-		$comment->Action = $_REQUEST['Status'];
-		$comment->write();
-
-		$emailData = $page->customise(array(
-			"Message" => $_REQUEST['Message'],
-			"Recipient" => $recipient,
-			"Sender" => Member::currentUser(),
-			"ApproveLink" => "admin/approve/$page->ID",
-			"EditLink" => "admin/show/$page->ID",
-			"StageLink" => "$page->URLSegment/?stage=Stage",
-		));
-
-		$email = new Page_WorkflowSubmitEmail();
-		$email->populateTemplate($emailData);
-		$email->send();
-
-		$page->AssignedToID = $recipient->ID;
-		$page->RequestedByID = Member::currentUserID();
-		$page->Status = $_REQUEST['Status'];
-		$page->writeWithoutVersion();
-
-		FormResponse::status_message(sprintf(_t('CMSMain.SENTTO',"Sent to %s %s for approval.",PR_LOW,"First param is first name, and second is surname"),
-											 $recipient->FirstName, $recipient->Surname), "good");
-
-		return FormResponse::respond();
-	}
-
-	function getpagemembers() {
-		$relationName = $_REQUEST['SecurityLevel'];
-		$pageID = $this->urlParams['ID'];
-		$page = DataObject::get_by_id('SiteTree',$pageID);
-		if($page) {
-			foreach($page->$relationName() as $editorGroup) $groupIDs[] = $editorGroup->ID;
-			if($groupIDs) {
-				$groupList = implode(", ", $groupIDs);
-				$members = DataObject::get("Member","","",
-					"INNER JOIN `Group_Members` ON `Group_Members`.MemberID = `Member`.ID AND `Group_Members`.GroupID IN ($groupList)");
-			}
-
-			if($members) {
-
-				if( $page->RequestedByID )
-					$members->shift( $page->RequestedBy() );
-
-				foreach($members as $editor) {
-					$options .= "<option value=\"$editor->ID\">$editor->FirstName $editor->Surname ($editor->Email)</option>";
-				}
-			} else {
-				$options = "<option>(no-one available)</option>";
-			}
-
-			return <<<HTML
-			<label class="left">Send to</label>
-			<select name="RecipientID">$options</select>
-HTML;
-		} else {
-			user_error("CMSMain::getpagemembers() Cannot find page #$pageID", E_USER_ERROR);
-		}
-	}
-
-	function tasklist() {
-		$tasks = DataObject::get("Page", "AssignedToID = " . Member::currentUserID(), "Created DESC");
-		if($tasks) {
-			$data = new ArrayData(array(
-				"Tasks" => $tasks,
-				"Message" => sprintf(_t('CMSMain.WORKTODO',"You have work to do on these <b>%d</b> pages."),$tasks->Count()),
-			));
-		} else {
-			$data = new ArrayData(array(
-				"Message" => _t('CMSMain.NOTHINGASSIGNED',"You have nothing assigned to you."),
-			));
-		}
-		return $data->renderWith("TaskList");
-	}
-
-	function waitingon() {
-		$tasks = DataObject::get("Page", "RequestedByID = " . Member::currentUserID(), "Created DESC");
-		if($tasks) {
-			$data = new ArrayData(array(
-				"Tasks" => $tasks,
-				"Message" => sprintf(_t('CMSMain.WAITINGON',"You are waiting on other people to work on these <b>%d</b> pages."),$tasks->Count()),
-			));
-		} else {
-			$data = new ArrayData(array(
-				"Message" => _t('CMSMain.NOWAITINGON','You aren\'t waiting on anybody.'),
-			));
-		}
-		return $data->renderWith("WaitingOn");
-	}
-
-	function comments() {
-		if($this->urlParams['ID']) {
-			$comments = DataObject::get("WorkflowPageComment", "PageID = " . $this->urlParams['ID'], "Created DESC");
-			$data = new ArrayData(array(
-				"Comments" => $comments,
-			));
-			return $data->renderWith("CommentList");
 		}
 	}
 
