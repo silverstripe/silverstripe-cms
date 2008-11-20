@@ -812,7 +812,11 @@ JS;
 	}
 
 	/**
-	 * Return the version number of this application
+	 * Return the version number of this application.
+	 * Uses the subversion path information in <mymodule>/silverstripe_version
+	 * (automacially replaced $URL$ placeholder).
+	 * 
+	 * @return string
 	 */
 	public function CMSVersion() {
 		$sapphireVersionFile = file_get_contents('../sapphire/silverstripe_version');
@@ -823,21 +827,21 @@ JS;
 			$sapphireVersion = "trunk";
 		} else {
 			preg_match("/sapphire\/(?:(?:branches)|(?:tags))(?:\/rc)?\/([A-Za-z0-9._-]+)\/silverstripe_version/", $sapphireVersionFile, $matches);
-			$sapphireVersion = $matches[1];
+			$sapphireVersion = ($matches) ? $matches[1] : null;
 		}
 
 		if(strstr($jspartyVersionFile, "/jsparty/trunk")) {
 			$jspartyVersion = "trunk";
 		} else {
 			preg_match("/jsparty\/(?:(?:branches)|(?:tags))(?:\/rc)?\/([A-Za-z0-9._-]+)\/silverstripe_version/", $jspartyVersionFile, $matches);
-			$jspartyVersion = $matches[1];
+			$jspartyVersion = ($matches) ? $matches[1] : null;
 		}
 
 		if(strstr($cmsVersionFile, "/cms/trunk")) {
 			$cmsVersion = "trunk";
 		} else {
 			preg_match("/cms\/(?:(?:branches)|(?:tags))(?:\/rc)?\/([A-Za-z0-9._-]+)\/silverstripe_version/", $cmsVersionFile, $matches);
-			$cmsVersion = $matches[1];
+			$cmsVersion = ($matches) ? $matches[1] : null;
 		}
 
 		if($sapphireVersion == $jspartyVersion && $jspartyVersion == $cmsVersion) {
