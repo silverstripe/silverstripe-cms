@@ -113,7 +113,7 @@ Behaviour.register({
 	'#EditMemberProfile': {
 		onclick: function(e) {
 			var el = Event.element(e);
-			GB_show('Edit Profile', el.attributes.href.value, ComplexTableField.prototype.defaultPopupHeight, ComplexTableField.prototype.defaultPopupWidth);
+			GB_show('Edit Profile', el.attributes.href.value, 390, 560);
 			Event.stop(e);
 		}
 	}
