@@ -16,34 +16,45 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% control Items %>
-				<tr id="record-$Parent.Name-$ID">
-					<td>
-						<div class="dragfile" id="drag-$Parent.Name-$ID">
-							<img id="drag-img-$Parent.Name-$ID" alt="Drag" title="<% _t('DRAGTOFOLDER','Drag to folder on left to move file') %>" src="sapphire/images/drag.gif" />
-						</div>
-					</td>
-					<% if Markable %><td class="markingcheckbox">$MarkingCheckbox</td><% end_if %>
-					<% control Fields %>
-					<td>$Value</td>
-					<% end_control %>
-					<% if Can(show) %>
-					<td width="18">
-						<a class="popuplink showlink" href="$ShowLink" target="_blank" title="<% _t('SHOW', 'Show asset') %>"><img src="cms/images/show.png" alt="<% _t('SHOW', 'Show asset') %>" /></a>
-					</td>
-					<% end_if %>
-					<% if Can(edit) %>
-						<td width="18">
-							<a class="popuplink editlink" href="$EditLink" target="_blank" title="<% _t('EDIT', 'Edit asset') %>"><img src="cms/images/edit.gif" alt="<% _t('EDIT', 'Edit asset') %>" /></a>
+			<% if Items %>
+				<% control Items %>
+					<tr id="record-$Parent.Name-$ID">
+						<td>
+							<div class="dragfile" id="drag-$Parent.Name-$ID">
+								<img id="drag-img-$Parent.Name-$ID" alt="Drag" title="<% _t('DRAGTOFOLDER','Drag to folder on left to move file') %>" src="sapphire/images/drag.gif" />
+							</div>
 						</td>
-					<% end_if %>
-					<% if Can(delete) %>
-					<td width="18">
-						<a class="deletelink" href="admin/assets/removefile/$ID" title="<% _t('DELFILE', 'Delete this file') %>"><img src="cms/images/delete.gif" alt="<% _t('DELFILE', 'Delete this file') %>" title="<% _t('DELFILE','Delete this file') %>" /></a>
-					</td>
-					<% end_if %>
+						<% if Markable %><td class="markingcheckbox">$MarkingCheckbox</td><% end_if %>
+						<% control Fields %>
+						<td>$Value</td>
+						<% end_control %>
+						<% if Can(show) %>
+						<td width="18">
+							<a class="popuplink showlink" href="$ShowLink" target="_blank" title="<% _t('SHOW', 'Show asset') %>"><img src="cms/images/show.png" alt="<% _t('SHOW', 'Show asset') %>" /></a>
+						</td>
+						<% end_if %>
+						<% if Can(edit) %>
+							<td width="18">
+								<a class="popuplink editlink" href="$EditLink" target="_blank" title="<% _t('EDIT', 'Edit asset') %>"><img src="cms/images/edit.gif" alt="<% _t('EDIT', 'Edit asset') %>" /></a>
+							</td>
+						<% end_if %>
+						<% if Can(delete) %>
+						<td width="18">
+							<a class="deletelink" href="admin/assets/removefile/$ID" title="<% _t('DELFILE', 'Delete this file') %>"><img src="cms/images/delete.gif" alt="<% _t('DELFILE', 'Delete this file') %>" title="<% _t('DELFILE','Delete this file') %>" /></a>
+						</td>
+						<% end_if %>
+					</tr>
+				<% end_control %>
+			<% else %>
+				<tr class="notfound">
+					<td>&nbsp;</td>
+					<% if Markable %><td width="18">&nbsp;</td><% end_if %>
+					<td colspan="$Headings.Count"><i>No $NamePlural found</i></td>
+					<% if Can(show) %><td width="18">&nbsp;</td><% end_if %>
+					<% if Can(edit) %><td width="18">&nbsp;</td><% end_if %>
+					<% if Can(delete) %><td width="18">&nbsp;</td><% end_if %>
 				</tr>
-			<% end_control %>
+			<% end_if %>
 		</tbody>
 	</table>
 </div>
