@@ -20,8 +20,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		'addgroup',
 		'addmember',
 		'autocomplete',
-		'getmember',
-		'newmember',
 		'removememberfromgroup',
 		'savemember',
 		'AddRecordForm',
@@ -100,15 +98,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			return $result;
 		}
 	}
-
-	public function getmember() {
-		Session::set('currentMember', $_REQUEST['ID']);
-		SSViewer::setOption('rewriteHashlinks', false);
-		$result = $this->renderWith("LeftAndMain_rightbottom");
-		$parts = split('</?form[^>]*>', $result);
-		echo $parts[1];
-	}
-
 
 	public function MemberForm() {
 		$id = $_REQUEST['ID'] ? $_REQUEST['ID'] : Session::get('currentMember');
@@ -233,24 +222,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		$newGroup->write();
 		
 		return $this->returnItemToUser($newGroup);
-	}
-
-	public function newmember() {
-		Session::clear('currentMember');
-		$newMemberForm = array(
-			"MemberForm" => $this->getMemberForm('new'),
-		);
-		// This should be using FormResponse ;-)
-		if(Director::is_ajax()) {
-			SSViewer::setOption('rewriteHashlinks', false);
-			$customised = $this->customise($newMemberForm);
-			$result = $customised->renderWith($this->class . "_rightbottom");
-			$parts = split('</?form[^>]*>', $result);
-			return $parts[1];
-
-		} else {
-			return $newMemberForm;
-		}
 	}
 
 	public function EditedMember() {

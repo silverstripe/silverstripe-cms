@@ -347,15 +347,10 @@ class LeftAndMain extends Controller {
 	public function Left() {
 		return $this->renderWith($this->getTemplatesWithSuffix('_left'));
 	}
+
 	public function Right() {
 		return $this->renderWith($this->getTemplatesWithSuffix('_right'));
 	}
-	public function RightBottom() {
-		if(SSViewer::hasTemplate($this->getTemplatesWithSuffix('_rightbottom'))) {
-			return $this->renderWith($this->getTemplatesWithSuffix('_rightbottom'));
-		}
-	}
-
 
 	public function getRecord($id, $className = null) {
 		if(!$className) $className = $this->stat('tree_class');

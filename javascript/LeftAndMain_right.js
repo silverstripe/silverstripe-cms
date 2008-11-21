@@ -317,7 +317,7 @@ CMSRightForm.prototype = {
 	}*/
 }
 
-CMSForm.applyTo('#Form_SubForm', 'rightbottom');
+CMSForm.applyTo('#Form_SubForm');
 CMSRightForm.applyTo('#Form_EditForm', 'right');
 
 function action_save_right() {

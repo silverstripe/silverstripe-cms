@@ -194,62 +194,6 @@
 }
 
 /**
- * Bottom-right
- */
-#rightbottom {
-	border: none;
-	margin-top: 4px;
-	margin-left: 1px;
-	border: 1px solid #808080;
-}
-
-#rightbottom form {
-	margin: 1em;
-}
-
-#rightbottom form div {
-	margin-top: 3px;
-}
-
-#rightbottom form div.field {
-	clear: both;
-	margin-left: 10em;
-	font-size: 12px;
-	border: none;
-}
-
-#rightbottom form label.left {
-	float: left;
-	width: 10em;
-	margin-left: -10em;
-}
-
-#rightbottom form input, 
-#rightbottom form select, 
-#rightbottom form textarea {
-	width: 90%;
-}
-
-#rightbottom form  input.checkbox, 
-#rightbottom form .optionset input, 
-#rightbottom form .htmleditor select, 
-#rightbottom form input.action {
-	width: auto;
-}
-#rightbottom form .optionset li {
-	list-style: none;
-}
-
-#rightbottom form h2 {
-	clear: both;
-}
-
-#rightbottom form .fieldgroup input, 
-#rightbottom form .fieldgroup select {
-	width: auto;
-}
-
-/**
  * RHS Action Parameters boxes
  */
 #right form.actionparams {

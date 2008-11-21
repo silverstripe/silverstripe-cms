@@ -33,8 +33,7 @@ DraggableSeparator.prototype = {
 }
 
 function fixRightWidth() {
-	if( !$('right') )
-		return;
+	if(!$('right')) return;
 
 	// Absolutely position all the elements
 	var sep = getDimension($('left'),'width') + getDimension($('left'),'left');
@@ -53,14 +52,7 @@ function fixRightWidth() {
 		$('contentPanel').style.left = leftWidth + sepWidth + rightWidth + sepWidth + 23 + 'px';
 	}
 
-	if( rightWidth >= 0 )
-		$('right').style.width = rightWidth + 'px';
-
-	var rb;
-	if(rb = $('rightbottom')) {
-		rb.style.left = $('right').style.left;
-		rb.style.width = $('right').style.width;
-	}
+	if(rightWidth >= 0) $('right').style.width = rightWidth + 'px';
 }
 
 Behaviour.register({
@@ -150,8 +142,6 @@ window.ontabschanged = function() {
 
 window.onresize = function(init) {
 	var right = $('right');
-	var rightbottom = $('rightbottom');
-	if(rightbottom) rightbottom.style.display = 'none';
 
 	if(typeof fitToParent == 'function') {
 		fitToParent('right', 12);
@@ -169,14 +159,6 @@ window.onresize = function(init) {
 		}
 		var rightH = parseInt(right.style.height) + paddingBottomOffset;
 		$('left').style.height = $('separator').style.height = rightH + 'px';
-	}
-
-	if(rightbottom) {
-		var newHeight = rightH / 3;
-		right.style.height = (newHeight*2) + 'px';
-		rightbottom.style.height = newHeight + 'px';
-		rightbottom.style.display = '';
-		rightbottom.style.top = getDimension(right,'top') + (newHeight*2) + 'px';
 	}
 
 	if(typeof fitToParent == 'function') {
