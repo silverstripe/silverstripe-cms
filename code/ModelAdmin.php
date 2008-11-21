@@ -719,9 +719,8 @@ class ModelAdmin_RecordController extends Controller {
 		
 		$validator = ($this->currentRecord->hasMethod('getCMSValidator')) ? $this->currentRecord->getCMSValidator() : null;
 		
-		$actions = new FieldSet(
-			new FormAction("doSave", _t('ModelAdmin.SAVE', "Save"))
-		);
+		$actions = $this->currentRecord->getCMSActions();
+		$actions->push(new FormAction("doSave", _t('ModelAdmin.SAVE', "Save")));
 		
 		if($this->currentRecord->canDelete(Member::currentUser())) {
 			$actions->insertFirst($deleteAction = new FormAction('doDelete', _t('ModelAdmin.DELETE', 'Delete')));
