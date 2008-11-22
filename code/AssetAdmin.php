@@ -92,6 +92,16 @@ class AssetAdmin extends LeftAndMain {
 		Requirements::css(THIRDPARTY_DIR . "/greybox/greybox.css");
 		
 		Requirements::css(CMS_DIR . "/css/AssetAdmin.css");
+
+		Requirements::customScript(<<<JS
+			_TREE_ICONS = {};
+			_TREE_ICONS['Folder'] = {
+					fileIcon: 'jsparty/tree/images/page-closedfolder.gif',
+					openFolderIcon: 'jsparty/tree/images/page-openfolder.gif',
+					closedFolderIcon: 'jsparty/tree/images/page-closedfolder.gif'
+			};
+JS
+		);
 	}
 	
 
