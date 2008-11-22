@@ -20,6 +20,7 @@ foreach($envFiles as $envFile) {
         }
 }
 
+
 // Load database config
 if(isset($_REQUEST['mysql'])) {
 	$databaseConfig = $_REQUEST['mysql'];
@@ -44,7 +45,19 @@ if(isset($_REQUEST['admin'])) {
 	);
 }
 
-$alreadyInstalled = (file_exists('mysite/_config.php') || file_exists('tutorial/_config.php'));
+$alreadyInstalled = false;
+if(file_exists('mysite/_config.php')) {
+	// Find the $database variable in the relevant config file without having to execute the config file
+	if(preg_match("/\\\$database\s*=\s*[^\n\r]+[\n\r]/", file_get_contents("mysite/_config.php"), $parts)) {
+		eval($parts[0]);
+		if($database) $alreadyInstalled = true;
+	// Assume that if $databaseConfig is defined in mysite/_config.php, then a non-environment-based installation has
+	// already gone ahead
+	} else if(preg_match("/\\\$databaseConfig\s*=\s*[^\n\r]+[\n\r]/", file_get_contents("mysite/_config.php"), $parts)) {
+		$alreadyInstalled = true;
+	}
+	
+}
 
 if(file_exists('sapphire/silverstripe_version')) {
 	$sapphireVersionFile = file_get_contents('sapphire/silverstripe_version');
@@ -150,7 +163,7 @@ class InstallRequirements {
 		$this->requireFile('cms', array("File permissions", "cms/ folder exists", "There's no cms folder."));
 		$this->requireFile('jsparty', array("File permissions", "jsparty/ folder exists", "There's no jsparty folder."));
 		$this->requireWriteable('.htaccess', array("File permissions", "Is the .htaccess file writeable?", null));
-		$this->requireWriteable('mysite', array("File permissions", "Is the mysite/ folder writeable?", null));
+		$this->requireWriteable('mysite/_config.php', array("File permissions", "Is the mysite/_config.php file writeable?", null));
 		$this->requireWriteable('assets', array("File permissions", "Is the assets/ folder writeable?", null));
 		
 		$this->requireTempFolder(array('File permissions', 'Is the temporary folder writeable?', null));
@@ -357,24 +370,40 @@ class InstallRequirements {
 	
 	function requireWriteable($filename, $testDetails) {
 		$this->testing($testDetails);
-		$filename = $this->getBaseDir() . $filename;
+		$filename = $this->getBaseDir() . str_replace("/", DIRECTORY_SEPARATOR,$filename);
 		
-		if(function_exists('posix_getgroups')) {
-			if(!is_writeable($filename)) {
-				$user = posix_getpwuid(posix_geteuid());
-				$groups = posix_getgroups();
-				foreach($groups as $group) {
-					$groupInfo = posix_getgrgid($group);
-					$groupList[] = $groupInfo['name'];
+		if(!is_writeable($filename)) {
+			if(function_exists('posix_getgroups')) {
+				$userID = posix_geteuid();
+				$user = posix_getpwuid($userID);
+
+				$currentOwnerID = fileowner($filename);
+				$currentOwner = posix_getpwuid($currentOwnerID);
+
+				$testDetails[2] .= "User '$user[name]' needs to be able to write to this file:\n$filename\n\nThe file is currently owned by '$currentOwner[name]'.  ";
+
+				if($user['name'] == $currentOwner['name']) {
+					$testDetails[2] .= "We recommend that you make the file writeable.";
+				} else {
+					
+					$groups = posix_getgroups();
+					foreach($groups as $group) {
+						$groupInfo = posix_getgrgid($group);
+						if(in_array($currentOwner['name'], $groupInfo['members'])) $groupList[] = $groupInfo['name'];
+					}
+					if($groupList) {
+						$testDetails[2] .= "	We recommend that you make the file group-writeable and change the group to one of these groups:\n - ". implode("\n - ", $groupList)
+							. "\n\nFor example:\nchmod g+w $filename\nchgrp " . $groupList[0] . " $filename";  		
+					} else {
+						$testDetails[2] .= "  There is no user-group that contains both the web-server user and the owner of this file.  Change the ownership of the file, create a new group, or temporarily make the file writeable by everyone during the install process.";
+					}
 				}
-				$groupList = "'" . implode("', '", $groupList) . "'";
-				
-				$testDetails[2] .= "User '$user[name]' needs to be able to write to this file:\n$filename";
-				$this->error($testDetails);
+
+			} else {
+				$testDetails[2] .= "The webserver user needs to be able to write to this file:\n$filename";
 			}
-		} else {
-			$testDetails[2] .= "Unable to detect whether I can write to files. Please ensure $filename is writable.";
-			$this->warning($testDetails);
+			
+			$this->error($testDetails);
 		}
 	}
 	
@@ -527,7 +556,7 @@ class InstallRequirements {
 	function getBaseDir() {
 		// Cache the value so that when the installer mucks with SCRIPT_FILENAME half way through, this method
 		// still returns the correct value.
-		if(!$this->baseDir) $this->baseDir = realpath(dirname($_SERVER['SCRIPT_FILENAME'])) . '/';
+		if(!$this->baseDir) $this->baseDir = realpath(dirname($_SERVER['SCRIPT_FILENAME'])) . DIRECTORY_SEPARATOR;
 		return $this->baseDir;
 	}
 	
