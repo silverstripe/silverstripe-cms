@@ -433,7 +433,7 @@ JS;
 
 		$SQL_id = Convert::raw2sql($_REQUEST['ID']);
 		if(substr($SQL_id,0,3) != 'new') {
-			$record = DataObject::get_one($className, "\"$className\".ID = {$SQL_id}");
+			$record = DataObject::get_one($className, "\"$className\".\"ID\" = {$SQL_id}");
 			if($record && !$record->canEdit()) return Security::permissionFailure($this);
 		} else {
 			if(!singleton($this->stat('tree_class'))->canCreate()) return Security::permissionFailure($this);

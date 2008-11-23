@@ -51,10 +51,10 @@ class CMSMainTest extends SapphireTest {
 			$page->Title = "Test $class page";
 			
 			$page->write();
-			$this->assertEquals("Test $class page", DB::query("SELECT Title FROM SiteTree WHERE ID = $page->ID")->value());
+			$this->assertEquals("Test $class page", DB::query("SELECT \"Title\" FROM \"SiteTree\" WHERE \"ID\" = $page->ID")->value());
 			
 			$page->doPublish();
-			$this->assertEquals("Test $class page", DB::query("SELECT Title FROM SiteTree_Live WHERE ID = $page->ID")->value());
+			$this->assertEquals("Test $class page", DB::query("SELECT \"Title\" FROM \"SiteTree_Live\" WHERE \"ID\" = $page->ID")->value());
 			
 			// Check that you can visit the page
 			Director::test($page->Link());

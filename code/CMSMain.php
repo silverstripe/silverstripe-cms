@@ -360,13 +360,13 @@ JS;
 		$treeClass = $this->stat('tree_class');
 
 		if($id && is_numeric($id)) {
-			$record = DataObject::get_one( $treeClass, "\"$treeClass\".ID = $id");
+			$record = DataObject::get_one( $treeClass, "\"$treeClass\".\"ID\" = $id");
 
 			if(!$record) {
-				// $record = Versioned::get_one_by_stage($treeClass, "Live", "\"$treeClass\".ID = $id");
+				// $record = Versioned::get_one_by_stage($treeClass, "Live", "\"$treeClass\".\"ID\" = $id");
 				Versioned::reading_stage('Live');
 				singleton($treeClass)->flushCache();
-				$record = DataObject::get_one( $treeClass, "\"$treeClass\".ID = $id");
+				$record = DataObject::get_one( $treeClass, "\"$treeClass\".\"ID\" = $id");
 				if($record) {
 					$record->DeletedFromStage = true;
 				} else {
@@ -400,7 +400,7 @@ JS;
 			$idField->setValue($id);
 			
 			if($record->ID && is_numeric( $record->ID ) ) {
-				$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree\".ID = $record->ID");
+				$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree\".\"ID\" = $record->ID");
 				if($liveRecord) $liveURLField->setValue($liveRecord->AbsoluteLink());
 			}
 			
@@ -596,7 +596,7 @@ JS;
 	 */
 	public function delete($urlParams, $form) {
 		$id = $_REQUEST['ID'];
-		$record = DataObject::get_one("SiteTree", "SiteTree.ID = $id");
+		$record = DataObject::get_one("SiteTree", "SiteTree.\"ID\" = $id");
 		if($record && !$record->canDelete()) return Security::permissionFailure();
 		
 		$recordID = $record->ID;
@@ -797,7 +797,7 @@ HTML;
 		$JS_title = Convert::raw2js($page->TreeTitle());
 
 		$JS_stageURL = $page->DeletedFromStage ? '' : Convert::raw2js($page->AbsoluteLink());
-		$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree\".ID = $page->ID");
+		$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree\".\"ID\" = $page->ID");
 		$JS_liveURL = $liveRecord ? Convert::raw2js($liveRecord->AbsoluteLink()) : '';
 
 		FormResponse::add($this->getActionUpdateJS($page));
@@ -1240,8 +1240,8 @@ HTML;
 		if($id = $this->urlParams['ID']) {
 			$restoredPage = Versioned::get_latest_version("SiteTree", $id);
 			$restoredPage->ID = $restoredPage->RecordID;
-			if(!DB::query("SELECT ID FROM SiteTree WHERE ID = $restoredPage->ID")->value()) {
-				DB::query("INSERT INTO SiteTree SET ID = $restoredPage->ID");
+			if(!DB::query("SELECT \"ID\" FROM \"SiteTree\" WHERE \"ID\" = $restoredPage->ID")->value()) {
+				DB::query("INSERT INTO \"SiteTree\" SET \"ID\" = $restoredPage->ID");
 			}
 			$restoredPage->forceChange();
 			$restoredPage->writeWithoutVersion();
