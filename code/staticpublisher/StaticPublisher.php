@@ -26,7 +26,7 @@ abstract class StaticPublisher extends DataObjectDecorator {
 		if($this->owner->hasMethod('pagesAffectedByChanges')) {
 			$urls = $this->owner->pagesAffectedByChanges($original);
 		} else {
-			// $pages = array(Versioned::get_one_by_stage('SiteTree', 'Live', "`SiteTree`.ID = {$this->owner->ID}"));
+			// $pages = array(Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree\".ID = {$this->owner->ID}"));
 			$pages = Versioned::get_by_stage('SiteTree', 'Live', '', '', 10);
 			foreach($pages as $page) {
 				$urls[] = $page->Link();

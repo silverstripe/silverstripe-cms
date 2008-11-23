@@ -360,13 +360,13 @@ JS;
 		$treeClass = $this->stat('tree_class');
 
 		if($id && is_numeric($id)) {
-			$record = DataObject::get_one( $treeClass, "`$treeClass`.ID = $id");
+			$record = DataObject::get_one( $treeClass, "\"$treeClass\".ID = $id");
 
 			if(!$record) {
-				// $record = Versioned::get_one_by_stage($treeClass, "Live", "`$treeClass`.ID = $id");
+				// $record = Versioned::get_one_by_stage($treeClass, "Live", "\"$treeClass\".ID = $id");
 				Versioned::reading_stage('Live');
 				singleton($treeClass)->flushCache();
-				$record = DataObject::get_one( $treeClass, "`$treeClass`.ID = $id");
+				$record = DataObject::get_one( $treeClass, "\"$treeClass\".ID = $id");
 				if($record) {
 					$record->DeletedFromStage = true;
 				} else {
@@ -400,7 +400,7 @@ JS;
 			$idField->setValue($id);
 			
 			if($record->ID && is_numeric( $record->ID ) ) {
-				$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "`SiteTree`.ID = $record->ID");
+				$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree\".ID = $record->ID");
 				if($liveRecord) $liveURLField->setValue($liveRecord->AbsoluteLink());
 			}
 			
@@ -662,7 +662,7 @@ JS;
 			if($groupIDs) {
 				$groupList = implode(", ", $groupIDs);
 				$members = DataObject::get("Member","","",
-					"INNER JOIN `Group_Members` ON `Group_Members`.MemberID = `Member`.ID AND `Group_Members`.GroupID IN ($groupList)");
+					"INNER JOIN \"Group_Members\" ON \"Group_Members\".MemberID = \"Member\".ID AND \"Group_Members\".GroupID IN ($groupList)");
 			}
 
 			if($members) {
@@ -753,7 +753,7 @@ HTML;
 		$pageID = $this->urlParams['ID'];
 		$page = $this->getRecord($pageID);
 		if($page) {
-			$versions = $page->allVersions($_REQUEST['unpublished'] ? "" : "`SiteTree`.WasPublished = 1");
+			$versions = $page->allVersions($_REQUEST['unpublished'] ? "" : "\"SiteTree\".WasPublished = 1");
 			return array(
 				'Versions' => $versions,
 			);
@@ -797,7 +797,7 @@ HTML;
 		$JS_title = Convert::raw2js($page->TreeTitle());
 
 		$JS_stageURL = $page->DeletedFromStage ? '' : Convert::raw2js($page->AbsoluteLink());
-		$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "`SiteTree`.ID = $page->ID");
+		$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree\".ID = $page->ID");
 		$JS_liveURL = $liveRecord ? Convert::raw2js($liveRecord->AbsoluteLink()) : '';
 
 		FormResponse::add($this->getActionUpdateJS($page));
@@ -1075,7 +1075,7 @@ HTML;
 
 					// check to see if the record exists on the live site, if it doesn't remove the tree node
 					// $_REQUEST['showqueries'] = 1 ;
-					$liveRecord = Versioned::get_one_by_stage( $this->stat('tree_class'), 'Live', "`{$this->stat('tree_class')}`.`ID`={$id}");
+					$liveRecord = Versioned::get_one_by_stage( $this->stat('tree_class'), 'Live', "\"{$this->stat('tree_class')}\".\"ID\"={$id}");
 
 					if($liveRecord) {
 						$title = Convert::raw2js($record->TreeTitle());

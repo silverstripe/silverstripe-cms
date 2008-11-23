@@ -153,7 +153,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		if($id == 'new') $id = null;
 
 		if($id) {
-			$record = DataObject::get_one($className, "`$className`.ID = $id");
+			$record = DataObject::get_one($className, "\"$className\".ID = $id");
 		} else {
 			$record = new $className();
 		}

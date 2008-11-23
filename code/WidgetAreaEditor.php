@@ -67,8 +67,8 @@ class WidgetAreaEditor extends FormField {
 			foreach(array_keys( $_REQUEST['Widget'] ) as $newWidgetID ) {
 				$newWidgetData  = $_REQUEST['Widget'][$newWidgetID];
 				
-				// `ParentID`=0 is for the new page
-		  		$widget = DataObject::get_one( 'Widget', "(`ParentID`='{$record->$name()->ID}' OR `ParentID`=0) AND `Widget`.`ID`='$newWidgetID'" ); 
+				// \"ParentID\"=0 is for the new page
+		  		$widget = DataObject::get_one( 'Widget', "(\"ParentID\"='{$record->$name()->ID}' OR \"ParentID\"=0) AND \"Widget\".\"ID\"='$newWidgetID'" ); 
 		  		
 		  		// check if we are updating an existing widget
 		  		if($widget && isset($missingWidgets[$widget->ID]))

@@ -19,7 +19,7 @@ class CommentTableField extends ComplexTableField {
 		// search
 		$search = isset($_REQUEST['CommentSearch']) ? Convert::raw2sql($_REQUEST['CommentSearch']) : null;
 		if(!empty($_REQUEST['CommentSearch'])) {
-			$this->sourceFilter[] = "( `Name` LIKE '%$search%' OR `Comment` LIKE '%$search%')";
+			$this->sourceFilter[] = "( \"Name\" LIKE '%$search%' OR \"Comment\" LIKE '%$search%')";
 		}
 		
 		Requirements::javascript(CMS_DIR . '/javascript/CommentTableField.js');

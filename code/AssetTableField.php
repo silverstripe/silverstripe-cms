@@ -28,7 +28,7 @@ class AssetTableField extends ComplexTableField {
 		if($SQL_search) {
 			$searchFilters = array();
 			foreach($SNG_file->searchableFields() as $fieldName => $fieldSpec) {
-				if(strpos($fieldName, '.') === false) $searchFilters[] = "`$fieldName` LIKE '%{$SQL_search}%'";
+				if(strpos($fieldName, '.') === false) $searchFilters[] = "\"$fieldName\" LIKE '%{$SQL_search}%'";
 			}
 			$this->sourceFilter = '(' . implode(' OR ', $searchFilters) . ')';
 		}		

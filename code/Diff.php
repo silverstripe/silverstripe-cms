@@ -408,7 +408,7 @@ class _DiffEngine
      * We do something when a run of changed lines include a
      * line at one end and has an excluded, identical line at the other.
      * We are free to choose which identical line is included.
-     * `compareseq' usually chooses the one at the beginning,
+     * 'compareseq' usually chooses the one at the beginning,
      * but usually it is cleaner to consider the following identical line
      * to be the "change".
      *

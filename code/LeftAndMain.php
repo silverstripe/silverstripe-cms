@@ -433,7 +433,7 @@ JS;
 
 		$SQL_id = Convert::raw2sql($_REQUEST['ID']);
 		if(substr($SQL_id,0,3) != 'new') {
-			$record = DataObject::get_one($className, "`$className`.ID = {$SQL_id}");
+			$record = DataObject::get_one($className, "\"$className\".ID = {$SQL_id}");
 			if($record && !$record->canEdit()) return Security::permissionFailure($this);
 		} else {
 			if(!singleton($this->stat('tree_class'))->canCreate()) return Security::permissionFailure($this);
@@ -678,7 +678,7 @@ JS;
 
 		if(is_array($_REQUEST['ID'])) {
 			if($_REQUEST['MovedNodeID']==0){ //Sorting root
-				$movedNode = DataObject::get($className, "`ParentID`=0");				
+				$movedNode = DataObject::get($className, "\"ParentID\"=0");				
 			}else{
 				$movedNode = DataObject::get_by_id($className, $_REQUEST['MovedNodeID']);
 			}
@@ -694,7 +694,7 @@ JS;
 				// Nodes that weren't "actually moved" shouldn't be registered as having been edited; do a direct SQL update instead
 				} else if(is_numeric($id)) {
 					++$counter;
-					DB::query("UPDATE `$className` SET `Sort` = $counter WHERE `ID` = '$id'");
+					DB::query("UPDATE \"$className\" SET \"Sort\" = $counter WHERE \"ID\" = '$id'");
 				}
 			}
 			// Virtual pages require selected to be null if the page is the same.

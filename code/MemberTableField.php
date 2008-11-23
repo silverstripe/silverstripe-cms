@@ -104,7 +104,7 @@ class MemberTableField extends ComplexTableField {
 
 		// construct the filter and sort
 		if(isset($_REQUEST['MemberOrderByField'])) {
-			$this->sourceSort = '`' . Convert::raw2sql($_REQUEST['MemberOrderByField']) . '`' . Convert::raw2sql( $_REQUEST['MemberOrderByOrder'] );
+			$this->sourceSort = '"' . Convert::raw2sql($_REQUEST['MemberOrderByField']) . '"' . Convert::raw2sql( $_REQUEST['MemberOrderByOrder'] );
 		}
 
 		$SNG_member = singleton('Member');
@@ -114,7 +114,7 @@ class MemberTableField extends ComplexTableField {
 		if(!empty($_REQUEST['MemberSearch'])) {
 			$searchFilters = array();
 			foreach($SNG_member->searchableFields() as $fieldName => $fieldSpec) {
-				if(strpos($fieldName,'.') === false) $searchFilters[] = "`$fieldName` LIKE '%{$SQL_search}%'";
+				if(strpos($fieldName,'.') === false) $searchFilters[] = "\"$fieldName\" LIKE '%{$SQL_search}%'";
 			}
 			$this->sourceFilter[] = '(' . implode(' OR ', $searchFilters) . ')';
 		}
@@ -122,10 +122,10 @@ class MemberTableField extends ComplexTableField {
 		// filter by groups
 		// TODO Not implemented yet
 		if(isset($_REQUEST['ctf'][$this->Name()]['GroupID']) && is_numeric($_REQUEST['ctf'][$this->Name()]['GroupID'])) {
-			$this->sourceFilter[] = "`GroupID`='{$_REQUEST['ctf'][$this->Name()]['GroupID']}'";
+			$this->sourceFilter[] = "\"GroupID\"='{$_REQUEST['ctf'][$this->Name()]['GroupID']}'";
 		}
 
-		$this->sourceJoin = " INNER JOIN `Group_Members` ON `MemberID`=`Member`.`ID`";
+		$this->sourceJoin = " INNER JOIN \"Group_Members\" ON \"MemberID\"=\"Member\".\"ID\"";
 		$this->setFieldListCsv( $csvFieldList );
 	}
 
