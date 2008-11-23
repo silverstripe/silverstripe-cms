@@ -735,7 +735,7 @@ PHP
 		$_REQUEST['password'] = $config['admin']['password'];
 		$dbAdmin->doBuild(true);
 		
-		$adminmember = DataObject::get_one('Member',"`Email`= '".$_REQUEST['admin']['username']."'");
+		$adminmember = DataObject::get_one('Member',"\"Email\"= '".$_REQUEST['admin']['username']."'");
 		if($adminmember) {
 			$adminmember->FirstName = $_REQUEST['admin']['firstname'];
 			$adminmember->Surname = $_REQUEST['admin']['surname'];
