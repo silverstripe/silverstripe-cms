@@ -68,7 +68,7 @@ class CommentAdmin extends LeftAndMain {
 		$tableFields = array(
 			"Name" => _t('CommentAdmin.AUTHOR', 'Author'),
 			"Comment" => _t('CommentAdmin.COMMENT', 'Comment'),
-			"PageTitle" => _t('CommentAdmin.PAGE', 'Page'),
+			"Parent.Title" => _t('CommentAdmin.PAGE', 'Page'),
 			"Created" => _t('CommentAdmin.DATEPOSTED', 'Date Posted')
 		);	
 		
