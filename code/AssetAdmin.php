@@ -237,7 +237,7 @@ JS
 		$fileNames = array();
 		foreach($newFiles as $newFile) {
 			$fileIDs[] = $newFile;
-			$fileObj = DataObject::get_one('File', "\"File\".ID=$newFile");
+			$fileObj = DataObject::get_one('File', "\"File\".\"ID\"=$newFile");
 			$fileNames[] = $fileObj->Name;
 		}
 		
@@ -314,7 +314,7 @@ HTML;
 			$numFiles = 0;
 	
 			if($fileList != "''") {
-				$files = DataObject::get("File", "\"File\".ID IN ($fileList)");
+				$files = DataObject::get("File", "\"File\".\"ID\" IN ($fileList)");
 				if($files) {
 					foreach($files as $file) {
 						if($file instanceof Image) {
@@ -350,7 +350,7 @@ HTML;
 			$brokenPageList = '';
 	
 			if($fileList != "''") {
-				$files = DataObject::get("File", "\"File\".ID IN ($fileList)");
+				$files = DataObject::get("File", "\"File\".\"ID\" IN ($fileList)");
 				if($files) {
 					foreach($files as $file) {
 						if($file instanceof Image) {

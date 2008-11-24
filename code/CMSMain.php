@@ -513,7 +513,7 @@ JS;
 		// DataObject::fieldExists only checks the current class, not the hierarchy
 		// This allows the CMS to set the correct sort value
 		if($newItem->castingHelperPair('Sort')) {
-			$newItem->Sort = DB::query("SELECT MAX(Sort)  FROM SiteTree WHERE ParentID = '" . Convert::raw2sql($parentID) . "'")->value() + 1;
+			$newItem->Sort = DB::query("SELECT MAX(\"Sort\") FROM \"SiteTree\" WHERE \"ParentID\" = '" . Convert::raw2sql($parentID) . "'")->value() + 1;
 		}
 
 		if( Member::currentUser() )
@@ -596,7 +596,7 @@ JS;
 	 */
 	public function delete($urlParams, $form) {
 		$id = $_REQUEST['ID'];
-		$record = DataObject::get_one("SiteTree", "SiteTree.\"ID\" = $id");
+		$record = DataObject::get_one("SiteTree", "\"SiteTree\".\"ID\" = $id");
 		if($record && !$record->canDelete()) return Security::permissionFailure();
 		
 		$recordID = $record->ID;
@@ -662,7 +662,7 @@ JS;
 			if($groupIDs) {
 				$groupList = implode(", ", $groupIDs);
 				$members = DataObject::get("Member","","",
-					"INNER JOIN \"Group_Members\" ON \"Group_Members\".MemberID = \"Member\".ID AND \"Group_Members\".GroupID IN ($groupList)");
+					"INNER JOIN \"Group_Members\" ON \"Group_Members\".\"MemberID\" = \"Member\".\"ID\" AND \"Group_Members\".\"GroupID\" IN ($groupList)");
 			}
 
 			if($members) {
@@ -687,7 +687,7 @@ HTML;
 	}
 
 	function tasklist() {
-		$tasks = DataObject::get("Page", "AssignedToID = " . Member::currentUserID(), "Created DESC");
+		$tasks = DataObject::get("Page", "\"AssignedToID\" = " . Member::currentUserID(), "\"Created\" DESC");
 		if($tasks) {
 			$data = new ArrayData(array(
 				"Tasks" => $tasks,
@@ -702,7 +702,7 @@ HTML;
 	}
 
 	function waitingon() {
-		$tasks = DataObject::get("Page", "RequestedByID = " . Member::currentUserID(), "Created DESC");
+		$tasks = DataObject::get("Page", "\"RequestedByID\" = " . Member::currentUserID(), "\"Created\" DESC");
 		if($tasks) {
 			$data = new ArrayData(array(
 				"Tasks" => $tasks,
@@ -718,7 +718,7 @@ HTML;
 
 	function comments() {
 		if($this->urlParams['ID']) {
-			$comments = DataObject::get("WorkflowPageComment", "PageID = " . $this->urlParams['ID'], "Created DESC");
+			$comments = DataObject::get("WorkflowPageComment", "\"PageID\" = " . $this->urlParams['ID'], "\"Created\" DESC");
 			$data = new ArrayData(array(
 				"Comments" => $comments,
 			));
@@ -1169,7 +1169,7 @@ HTML;
 		ini_set('max_execution_time', 0);
 		$excludePages = split(" *, *", $_GET['exclude']);
 
-		$pages = DataObject::get("SiteTree", "ParentID = 0");
+		$pages = DataObject::get("SiteTree", "\"ParentID\" = 0");
 		foreach($pages as $page) $pageArr[] = $page;
 
 		while(list($i,$page) = each($pageArr)) {
@@ -1241,7 +1241,7 @@ HTML;
 			$restoredPage = Versioned::get_latest_version("SiteTree", $id);
 			$restoredPage->ID = $restoredPage->RecordID;
 			if(!DB::query("SELECT \"ID\" FROM \"SiteTree\" WHERE \"ID\" = $restoredPage->ID")->value()) {
-				DB::query("INSERT INTO \"SiteTree\" SET \"ID\" = $restoredPage->ID");
+				DB::query("INSERT INTO \"SiteTree\" (\"ID\") VALUES ($restoredPage->ID)");
 			}
 			$restoredPage->forceChange();
 			$restoredPage->writeWithoutVersion();

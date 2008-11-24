@@ -14,7 +14,7 @@ class FileList extends TableListField {
 	}
 	
 	function sourceItems() {
-		return DataObject::get("File", "ParentID = '" . $this->folder->ID . "' AND ClassName <> 'Folder'", "Title");
+		return DataObject::get("File", "\"ParentID\" = '" . $this->folder->ID . "' AND \"ClassName\" <> 'Folder'", '"Title"');
 	}
 }
 

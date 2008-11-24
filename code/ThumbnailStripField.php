@@ -47,14 +47,14 @@ class ThumbnailStripField extends FormField {
 			$folderList = $folder->getDescendantIDList('Folder');
 			array_unshift($folderList, $folder->ID);
 
-			$whereSQL = 'ParentID IN (' . implode(', ', $folderList) . ')';
-			if($searchText) $whereSQL .= " AND Filename LIKE '%$searchText%'";
+			$whereSQL = '"ParentID" IN (' . implode(', ', $folderList) . ')';
+			if($searchText) $whereSQL .= " AND \"Filename\" LIKE '%$searchText%'";
 			
 			$images = DataObject::get('Image', $whereSQL, 'Title');
 			
 		} else {
 			if($searchText) {
-				$whereSQL = "Filename LIKE '%$searchText%'";
+				$whereSQL = "\"Filename\" LIKE '%$searchText%'";
 
 				$images = DataObject::get('Image', $whereSQL, 'Title');
 			}
@@ -113,13 +113,13 @@ class ThumbnailStripField extends FormField {
 			$folderList = $folder->getDescendantIDList('Folder');
 			array_unshift($folderList, $folder->ID);
 			
-			$whereSQL = "ParentID IN (" . implode(', ', $folderList) . ") AND Filename LIKE '%.swf'";
-			if($searchText) $whereSQL .= " AND Filename LIKE '%$searchText%'";
+			$whereSQL = "\"ParentID\" IN (" . implode(', ', $folderList) . ") AND \"Filename\" LIKE '%.swf'";
+			if($searchText) $whereSQL .= " AND \"Filename\" LIKE '%$searchText%'";
 			
 			$flashObjects = DataObject::get('File', $whereSQL);
 		} else {
 			if($searchText) {
-				$flashObjects = DataObject::get('File', "Filename LIKE '%$searchText%' AND Filename LIKE '%.swf'");
+				$flashObjects = DataObject::get('File', "\"Filename\" LIKE '%$searchText%' AND \"Filename\" LIKE '%.swf'");
 			}
 		}
 		

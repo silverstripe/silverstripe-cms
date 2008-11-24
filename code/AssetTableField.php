@@ -46,7 +46,7 @@ class AssetTableField extends ComplexTableField {
 	function setFolder($folder) {
 		$this->folder = $folder;
 		$this->sourceFilter .= ($this->sourceFilter) ? " AND " : "";
-		$this->sourceFilter .= " ParentID = '" . $folder->ID . "' AND ClassName <> 'Folder'";
+		$this->sourceFilter .= " \"ParentID\" = '" . $folder->ID . "' AND \"ClassName\" <> 'Folder'";
 	}
 	
 	function Folder() {

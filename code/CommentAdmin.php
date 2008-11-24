@@ -55,17 +55,17 @@ class CommentAdmin extends LeftAndMain {
 		$section = $this->Section();
 		
 		if($section == 'approved') {
-			$filter = 'IsSpam=0 AND NeedsModeration=0';
+			$filter = 'NOT "IsSpam" AND NOT "NeedsModeration"';
 			$title = "<h2>". _t('CommentAdmin.APPROVEDCOMMENTS', 'Approved Comments')."</h2>";
 		} else if($section == 'unmoderated') {
-			$filter = 'NeedsModeration=1';
+			$filter = '"NeedsModeration"';
 			$title = "<h2>"._t('CommentAdmin.COMMENTSAWAITINGMODERATION', 'Comments Awaiting Moderation')."</h2>";
 		} else {
-			$filter = 'IsSpam=1';
+			$filter = '"IsSpam"';
 			$title = "<h2>"._t('CommentAdmin.SPAM', 'Spam')."</h2>";
 		}
 		
-		$filter .= ' AND ParentID>0';
+		$filter .= ' AND "ParentID">0';
 		
 		$tableFields = array(
 			"Name" => _t('CommentAdmin.AUTHOR', 'Author'),
@@ -125,7 +125,7 @@ class CommentAdmin extends LeftAndMain {
 	
 			if($_REQUEST['Comments']) {
 				foreach($_REQUEST['Comments'] as $commentid) {
-					$comment = DataObject::get_one('PageComment', "\"PageComment\".ID = $commentid");
+					$comment = DataObject::get_one('PageComment', "\"PageComment\".\"ID\" = $commentid");
 					if($comment) {
 						$comment->delete();
 						$numComments++;
@@ -144,7 +144,7 @@ JS;
 	
 	function deleteall() {
 		$numComments = 0;
-		$spam = DataObject::get('PageComment', 'PageComment.IsSpam=1');
+		$spam = DataObject::get('PageComment', '"PageComment"."IsSpam"');
 		
 		if($spam) {
 			$numComments = $spam->Count();
@@ -169,7 +169,7 @@ JS;
 	
 			if($_REQUEST['Comments']) {
 				foreach($_REQUEST['Comments'] as $commentid) {
-					$comment = DataObject::get_one('PageComment', "\"PageComment\".ID = $commentid");
+					$comment = DataObject::get_one('PageComment', "\"PageComment\".\"ID\" = $commentid");
 					if($comment) {
 						$comment->IsSpam = true;
 						$comment->NeedsModeration = false;
@@ -208,7 +208,7 @@ JS;
 	
 			if($_REQUEST['Comments']) {
 				foreach($_REQUEST['Comments'] as $commentid) {
-					$comment = DataObject::get_one('PageComment', "\"PageComment\".ID = $commentid");
+					$comment = DataObject::get_one('PageComment', "\"PageComment\".\"ID\" = $commentid");
 					if($comment) {
 						$comment->IsSpam = false;
 						$comment->NeedsModeration = false;
@@ -248,7 +248,7 @@ JS;
 	
 			if($_REQUEST['Comments']) {
 				foreach($_REQUEST['Comments'] as $commentid) {
-					$comment = DataObject::get_one('PageComment', "\"PageComment\".ID = $commentid");
+					$comment = DataObject::get_one('PageComment', "\"PageComment\".\"ID\" = $commentid");
 					if($comment) {
 						$comment->IsSpam = false;
 						$comment->NeedsModeration = false;
@@ -272,21 +272,21 @@ JS;
 	 * Return the number of moderated comments
 	 */
 	function NumModerated() {
-		return DB::query("SELECT COUNT(*) FROM PageComment WHERE !IsSpam AND !NeedsModeration")->value();
+		return DB::query("SELECT COUNT(*) FROM \"PageComment\" WHERE NOT \"IsSpam\" AND NOT \"NeedsModeration\"")->value();
 	}
 
 	/**
 	 * Return the number of unmoderated comments
 	 */
 	function NumUnmoderated() {
-		return DB::query("SELECT COUNT(*) FROM PageComment WHERE !IsSpam AND NeedsModeration")->value();
+		return DB::query("SELECT COUNT(*) FROM \"PageComment\" WHERE NOT \"IsSpam\" AND \"NeedsModeration\"")->value();
 	}
 	
 	/**
 	 * Return the number of comments marked as spam
 	 */
 	function NumSpam() {
-		return DB::query("SELECT COUNT(*) FROM PageComment WHERE IsSpam")->value();
+		return DB::query("SELECT COUNT(*) FROM \"PageComment\" WHERE \"IsSpam\"")->value();
 	}
 }
 

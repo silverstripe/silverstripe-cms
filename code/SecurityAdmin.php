@@ -85,7 +85,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		$fieldVal = $_REQUEST[$fieldName];
 		$result = '';
 
-		$matches = DataObject::get($this->stat('subitem_class'),"$fieldName LIKE '" . addslashes($fieldVal) . "%'");
+		$matches = DataObject::get($this->stat('subitem_class'),"\"$fieldName\" LIKE '" . addslashes($fieldVal) . "%'");
 		if($matches) {
 			$result .= "<ul>";
 			foreach($matches as $match) {
@@ -153,7 +153,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		if($id == 'new') $id = null;
 
 		if($id) {
-			$record = DataObject::get_one($className, "\"$className\".ID = $id");
+			$record = DataObject::get_one($className, "\"$className\".\"ID\" = $id");
 		} else {
 			$record = new $className();
 		}
