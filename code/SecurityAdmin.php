@@ -125,8 +125,11 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		$fieldName = $this->urlParams['ID'];
 		$fieldVal = $_REQUEST[$fieldName];
 		$result = '';
+		
+		// Make sure we only autocomplete on keys that actually exist, and that we don't autocomplete on password
+		if(!array_key_exists($fieldName, singleton($this->stat('subitem_class'))->stat('db')) || $fieldName == 'Password') return;
 
-		$matches = DataObject::get("Member","$fieldName LIKE '" . addslashes($fieldVal) . "%'");
+		$matches = DataObject::get("Member","$fieldName LIKE '" . Convert::raw2sql($fieldVal) . "%'");
 		if($matches) {
 			$result .= "<ul>";
 			foreach($matches as $match) {
@@ -134,7 +137,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 				$data = $match->FirstName;
 				$data .= ",$match->Surname";
 				$data .= ",$match->Email";
-				$data .= ",$match->Password";
 				$result .= "<li>" . $match->$fieldName . "<span class=\"informal\">($match->FirstName $match->Surname, $match->Email)</span><span class=\"informal data\">$data</span></li>";
 			}
 			$result .= "</ul>";
