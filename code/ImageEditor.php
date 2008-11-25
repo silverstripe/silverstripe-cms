@@ -257,3 +257,5 @@ class ImageEditor extends Controller {
 	    return $path['filename'] . "." . substr($path['extension'],0,strpos($path['extension'],'?'));  	
 	}
 }
+
+?>
