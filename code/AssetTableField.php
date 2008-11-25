@@ -193,4 +193,5 @@ class AssetTableField extends ComplexTableField {
 	}
 	
 }
+
 ?>
