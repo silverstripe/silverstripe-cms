@@ -52,7 +52,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'switchlanguage',
 		'unpublish',
 		'versions',
-		'waitingon',
 		'EditForm',
 		'AddPageOptionsForm',
 		'SiteTreeAsUL',
