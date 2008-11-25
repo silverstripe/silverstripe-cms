@@ -83,7 +83,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		$result = '';
 		
 		// Make sure we only autocomplete on keys that actually exist, and that we don't autocomplete on password
-		if(!array_key_exists($fieldName, singleton($this->stat('subitem_class'))->stat('db')) && $fieldName != 'Password') return;
+		if(!array_key_exists($fieldName, singleton($this->stat('subitem_class'))->stat('db')) || $fieldName == 'Password') return;
 
 		$matches = DataObject::get($this->stat('subitem_class'),"$fieldName LIKE '" . Convert::raw2sql($fieldVal) . "%'");
 		if($matches) {
