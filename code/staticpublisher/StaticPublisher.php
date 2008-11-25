@@ -75,3 +75,5 @@ abstract class StaticPublisher extends DataObjectDecorator {
 		return $urls;		
 	}
 }
+
+?>
