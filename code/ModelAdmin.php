@@ -434,11 +434,13 @@ class ModelAdmin_CollectionController extends Controller {
 	
 	/**
 	 * Give the flexibilility to show variouse combination of columns in the search result table
+	 * @param $columnsAvailable array The columns that should be made available for selecting.  Should be a map.  Keys are dot-syntax
+	 * field names, and values are titles.  By default the $summary_fields from your model will be used.
 	 */
-	public function ColumnSelectionField() {
+	public function ColumnSelectionField($columnsAvailable = null) {
 		$model = singleton($this->modelClass);
 		
-		$source = $model->summaryFields();
+		$source = $columnsAvailable ? $columnsAvailable : $model->summaryFields();
 		
 		// select all fields by default
 		$value = array();
@@ -548,6 +550,8 @@ class ModelAdmin_CollectionController extends Controller {
 		$model = singleton($this->modelClass);
 		$summaryFields = $model->summaryFields();
 
+		$summaryFields = $this->ColumnSelectionField()->Children->dataFieldByName('ResultAssembly')->Source;
+		
 		if($selectedOnly) {
 			$resultAssembly = $searchCriteria['ResultAssembly'];
 			if(!is_array($resultAssembly)) {
