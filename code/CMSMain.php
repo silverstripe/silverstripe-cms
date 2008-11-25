@@ -50,7 +50,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'sidereport',
 		'submit',
 		'switchlanguage',
-		'tasklist',
 		'unpublish',
 		'versions',
 		'waitingon',

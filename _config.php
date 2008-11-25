@@ -69,7 +69,6 @@ Requirements::combine_files(
 		'cms/javascript/CMSMain_left.js',
 		'cms/javascript/CMSMain_right.js',
 		'cms/javascript/SideTabs.js',
-		'cms/javascript/TaskList.js',
 		'cms/javascript/SideReports.js',
 		'cms/javascript/LangSelector.js',
 		'cms/javascript/TranslationTab.js',
