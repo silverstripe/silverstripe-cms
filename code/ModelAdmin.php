@@ -439,6 +439,8 @@ class ModelAdmin_CollectionController extends Controller {
 		$model = singleton($this->modelClass);
 		
 		$source = $model->summaryFields();
+		
+		// select all fields by default
 		$value = array();
 		if($source) foreach ($source as $fieldName => $label){
 			$value[] = $fieldName;
@@ -535,18 +537,28 @@ class ModelAdmin_CollectionController extends Controller {
 		return $context->getQuery($searchCriteria);
 	}
 	
-	function getResultColumns($searchCriteria) {
+	/**
+	 * Returns all columns used for tabular search results display.
+	 * Defaults to all fields specified in {@link DataObject->summaryFields()}.
+	 * 
+	 * @param array $searchCriteria Limit fields by populating the 'ResultsAssembly' key
+	 * @param boolean $selectedOnly Limit by 'ResultsAssempty
+	 */
+	function getResultColumns($searchCriteria, $selectedOnly = true) {
 		$model = singleton($this->modelClass);
 		$summaryFields = $model->summaryFields();
 
-		$resultAssembly = $searchCriteria['ResultAssembly'];
-		if(!is_array($resultAssembly)) {
-			$explodedAssembly = split(' *, *', $resultAssembly);
-			$resultAssembly = array();
-			foreach($explodedAssembly as $item) $resultAssembly[$item] = true;
+		if($selectedOnly) {
+			$resultAssembly = $searchCriteria['ResultAssembly'];
+			if(!is_array($resultAssembly)) {
+				$explodedAssembly = split(' *, *', $resultAssembly);
+				$resultAssembly = array();
+				foreach($explodedAssembly as $item) $resultAssembly[$item] = true;
+			}
+			return array_intersect_key($summaryFields, $resultAssembly);
+		} else {
+			return $summaryFields;
 		}
-		
-		return array_intersect_key($summaryFields, $resultAssembly);
 	}
 	
 	/**
@@ -568,6 +580,10 @@ class ModelAdmin_CollectionController extends Controller {
 		$tf->setShowPagination(true);
 		// @todo Remove records that can't be viewed by the current user
 		$tf->setPermissions(array_merge(array('view','export'), TableListField::permissions_for_object($this->modelClass)));
+		
+		// csv export settings (select all columns regardless of user checkbox settings in 'ResultsAssembly')
+		$exportFields = $this->getResultColumns($searchCriteria, false);
+		$tf->setFieldListCsv($exportFields);
 		
 		$url = '<a href=\"' . $this->Link() . '/$ID/edit\">$value</a>';
 		$tf->setFieldFormatting(array_combine(array_keys($summaryFields), array_fill(0,count($summaryFields), $url)));
@@ -593,7 +609,7 @@ class ModelAdmin_CollectionController extends Controller {
 		unset($filteredCriteria['url']);
 		unset($filteredCriteria['action_search']);
 		if(isset($filteredCriteria['Investors__PEFirm__IsPECMember']) && !$filteredCriteria['Investors__PEFirm__IsPECMember']) unset($filteredCriteria['Investors__PEFirm__IsPECMember']);
-		
+
 		$form->setFormAction($this->Link() . '/ResultsForm?' . http_build_query($filteredCriteria));
 		return $form;
 	}
