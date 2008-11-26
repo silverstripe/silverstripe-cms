@@ -22,7 +22,7 @@ class LeftAndMain extends Controller {
 	
 	static $url_segment;
 	
-	static $url_rule;
+	static $url_rule = '/$Action/$ID/$OtherID';
 	
 	static $menu_title;
 	
@@ -275,7 +275,7 @@ class LeftAndMain extends Controller {
 	 */
 	public function MainMenu() {
 		// Don't accidentally return a menu if you're not logged in - it's used to determine access.
-		if(!Member::currentUserID()) return new DataObjectSet();
+		if(!Member::currentUser()) return new DataObjectSet();
 
 		// Encode into DO set
 		$menu = new DataObjectSet();
