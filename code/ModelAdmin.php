@@ -351,9 +351,7 @@ class ModelAdmin_CollectionController extends Controller {
 	 */
 	public function ImportForm() {
 		$modelName = $this->modelClass;
-
 		$importers = $this->parentController->getModelImporters();
-		
 		if(!$importers || !isset($importers[$modelName])) return false;
 		
 		$fields = new FieldSet(
@@ -374,7 +372,7 @@ class ModelAdmin_CollectionController extends Controller {
 			$specRelations->push(new ArrayData(array('Name' => $name, 'Description' => $desc)));
 		}
 		$specHTML = $this->customise(array(
-			'ModelName' => Convert::raw2att(str_replace(' ', '', singleton($modelName)->i18n_singular_name())),
+			'ModelName' => Convert::raw2att($modelName),
 			'Fields' => $specFields,
 			'Relations' => $specRelations, 
 		))->renderWith('ModelAdmin_ImportSpec');
@@ -406,11 +404,19 @@ class ModelAdmin_CollectionController extends Controller {
 	 * @param unknown_type $request
 	 */
 	function import($data, $form, $request) {
-		$modelName = singleton($data['ClassName'])->i18n_singular_name();
+		$modelName = $data['ClassName'];
 		$importers = $this->parentController->getModelImporters();
 		$importerClass = $importers[$modelName];
 		
 		$loader = new $importerClass($data['ClassName']);
+		
+		// File wasn't properly uploaded, show a reminder to the user
+		if(empty($_FILES['_CsvFile']['tmp_name'])) {
+			$form->sessionMessage(_t('ModelAdmin.NOCSVFILE', 'Please browse for a CSV file to import'), 'good');
+			Director::redirectBack();
+			return false;
+		}
+		
 		$results = $loader->load($_FILES['_CsvFile']['tmp_name']);
 		
 		$message = '';
