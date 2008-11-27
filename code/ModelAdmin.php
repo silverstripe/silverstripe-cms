@@ -82,6 +82,8 @@ abstract class ModelAdmin extends LeftAndMain {
 	 * a subclass of {@link BulkLoader} (mostly CSV data).
 	 * By default {@link CsvBulkLoader} is used, assuming a standard mapping
 	 * of column names to {@link DataObject} properties/relations.
+	 * 
+	 * e.g. "BlogEntry" => "BlogEntryCsvBulkLoader"
 	 *
 	 * @var array
 	 */
