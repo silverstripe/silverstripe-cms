@@ -374,7 +374,7 @@ class ModelAdmin_CollectionController extends Controller {
 			$specRelations->push(new ArrayData(array('Name' => $name, 'Description' => $desc)));
 		}
 		$specHTML = $this->customise(array(
-			'ModelName' => str_replace(' ', '', singleton($modelName)->i18n_singular_name()), 
+			'ModelName' => Convert::raw2att(str_replace(' ', '', singleton($modelName)->i18n_singular_name())),
 			'Fields' => $specFields,
 			'Relations' => $specRelations, 
 		))->renderWith('ModelAdmin_ImportSpec');
