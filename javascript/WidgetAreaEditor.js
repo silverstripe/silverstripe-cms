@@ -103,16 +103,22 @@ WidgetAreaEditor.prototype = {
 		// Order the sort by the order the widgets are in the list
 		var usedWidgets = $('WidgetAreaEditor_usedWidgets');
 		
-		if (usedWidgets) {
+		if(usedWidgets) {
 			widgets = usedWidgets.childNodes;
 			
-			for( i = 0; div = widgets[i]; i++ ) {
-				var fields = div.getElementsByTagName('input');
-				for( j = 0; field = fields.item(j); j++ ) {
-					if( field.name == div.id + '[Sort]' ) {
-						field.value = i;
+			for(i = 0; i < widgets.length; i++) {
+				var div = widgets[i];
+
+				if(div.nodeName != '#comment') {
+					var fields = div.getElementsByTagName('input');
+					
+					for(j = 0; field = fields.item(j); j++) {
+						if(field.name == div.id + '[Sort]') {
+							field.value = i;
+						}
 					}
 				}
+				
 			}
 		}
 	},
