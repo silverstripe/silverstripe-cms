@@ -401,9 +401,9 @@ class ModelAdmin_CollectionController extends Controller {
 	 * 
 	 * @todo Figure out ajax submission of files via jQuery.form plugin
 	 *
-	 * @param unknown_type $data
-	 * @param unknown_type $form
-	 * @param unknown_type $request
+	 * @param array $data
+	 * @param Form $form
+	 * @param HTTPRequest $request
 	 */
 	function import($data, $form, $request) {
 		$modelName = $data['ClassName'];
@@ -436,8 +436,8 @@ class ModelAdmin_CollectionController extends Controller {
 		);
 		if(!$results->CreatedCount() && !$results->UpdatedCount()) $message .= _t('ModelAdmin.NOIMPORT', "Nothing to import");
 		
-		Session::setFormMessage('Form_ImportForm', $message, 'good');
-		Director::redirect($_SERVER['HTTP_REFERER'] . '#Form_ImportForm_holder');
+		$form->sessionMessage($message, 'good');
+		Director::redirectBack();
 	}
 	
 	/**
