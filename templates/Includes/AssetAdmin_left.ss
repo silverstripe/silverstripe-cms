@@ -1,12 +1,3 @@
-<script>
-	_TREE_ICONS = {};
-	_TREE_ICONS['Folder'] = {
-			fileIcon: 'jsparty/tree/images/page-closedfolder.gif',
-			openFolderIcon: 'jsparty/tree/images/page-openfolder.gif',
-			closedFolderIcon: 'jsparty/tree/images/page-closedfolder.gif'
-	};
-</script>
-
 <h2><% _t('FOLDERS','Folders') %></h2>
 	<div id="treepanes" style="overflow-y: auto;">
 			<ul id="TreeActions">
