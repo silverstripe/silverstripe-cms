@@ -559,7 +559,9 @@ JS;
 	public function revert($urlParams, $form) {
 		$id = $_REQUEST['ID'];
 		$record = DataObject::get_by_id("SiteTree", $id);
-		if($record && !$record->canEdit()) return Security::permissionFailure($this);
+		
+		// if the user can't publish, he shouldn't be able to revert a page (and hence copy the last stored revision to the live site)
+		if($record && !$record->canPublish()) return Security::permissionFailure($this);
 		
 		$record->doRevertToLive();
 
