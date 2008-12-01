@@ -405,26 +405,13 @@ JS;
 			if($record->hasMethod('getAllCMSActions')) {
 				$actions = $record->getAllCMSActions();
 			} else {
-				$actions = new FieldSet();
-
-				if($record->DeletedFromStage) {
-					if($record->can('CMSEdit')) {
-						$actions->push(new FormAction('revert',_t('CMSMain.RESTORE','Restore')));
-						$actions->push(new FormAction('deletefromlive',_t('CMSMain.DELETEFP','Delete from the published site')));
-					}
-				} else {
-					if($record->canEdit()) {
-						$actions->push($deleteAction = new FormAction('delete',_t('CMSMain.DELETE','Delete from the draft site')));
-						$deleteAction->addExtraClass('delete');
-					}
-
-					if($record->hasMethod('getCMSActions')) {
-						$extraActions = $record->getCMSActions();
-						if($extraActions) foreach($extraActions as $action) $actions->push($action);
-					}
-
+				$actions = $record->getCMSActions();
+				// add default actions if none are defined
+				if(!$actions || !$actions->Count()) {
 					if($record->canEdit()) {
 						$actions->push(new FormAction('save',_t('CMSMain.SAVE','Save')));
+						$actions->push($deleteAction = new FormAction('delete',_t('CMSMain.DELETE','Delete from the draft site')));
+						$deleteAction->addExtraClass('delete');
 					}
 				}
 			}
