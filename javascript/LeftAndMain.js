@@ -1,5 +1,15 @@
 var _AJAX_LOADING = false;
 
+// Resize the tabs once the document is properly loaded
+// @todo most of this file needs to be tidied up using jQuery
+if(typeof(jQuery) != 'undefined') {
+	(function($) {
+		$(document).ready(function() {
+			window.onresize(true);
+		});
+	})(jQuery);
+}
+
 /**
  * Code for the separator bar between the two panes
  */
@@ -132,7 +142,7 @@ window.ontabschanged = function() {
 				fitToParent(divs[i], 3);
 		}
 	}*/
-
+	
 	if(typeof  _TAB_DIVS_ON_PAGE != 'undefined') {
 		for(i = 0; i < _TAB_DIVS_ON_PAGE.length; i++ ) {
 			fitToParent(_TAB_DIVS_ON_PAGE[i], 30);
