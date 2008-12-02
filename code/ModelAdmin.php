@@ -97,6 +97,19 @@ abstract class ModelAdmin extends LeftAndMain {
 	protected static $page_length = 30;
 	
 	/**
+	 * Class name of the form field used for the results list.  Overloading this in subclasses
+	 * can let you customise the results table field.
+	 */
+	protected $resultsTableClassName = 'TableListField';
+
+	/**
+	 * Return {@link $this->resultsTableClassName}
+	 */
+	public function resultsTableClassName() {
+		return $this->resultsTableClassName;
+	}
+	
+	/**
 	 * Initialize the model admin interface. Sets up embedded jquery libraries and requisite plugins.
 	 * 
 	 * @todo remove reliance on urlParams
@@ -582,7 +595,8 @@ class ModelAdmin_CollectionController extends Controller {
 		if($searchCriteria instanceof HTTPRequest) $searchCriteria = $searchCriteria->getVars();
 		$summaryFields = $this->getResultColumns($searchCriteria);
 
-		$tf = new TableListField(
+		$className = $this->parentController->resultsTableClassName();
+		$tf = new $className(
 			$this->modelClass,
 			$this->modelClass,
 			$summaryFields
