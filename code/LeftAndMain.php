@@ -22,7 +22,7 @@ class LeftAndMain extends Controller {
 	
 	static $url_segment;
 	
-	static $url_rule;
+	static $url_rule = '/$Action/$ID/$OtherID';
 	
 	static $menu_title;
 	
@@ -137,6 +137,7 @@ class LeftAndMain extends Controller {
 		
 		Requirements::javascript(THIRDPARTY_DIR . '/prototype.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery_improvements.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/behaviour.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/livequery/jquery.livequery.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/core/jquery.ondemand.js');
@@ -181,6 +182,64 @@ class LeftAndMain extends Controller {
 		}
 		
 		Requirements::customScript('Behaviour.addLoader(hideLoading);');
+
+		// Javascript combined files
+		Requirements::combine_files(
+			'assets/base.js',
+			array(
+				'jsparty/prototype.js',
+				'jsparty/behaviour.js',
+				'jsparty/prototype_improvements.js',
+				'jsparty/jquery/jquery.js',
+				'jsparty/jquery/plugins/livequery/jquery.livequery.js',
+				'jsparty/jquery/plugins/effen/jquery.fn.js',
+				'sapphire/javascript/core/jquery.ondemand.js',
+				'jsparty/jquery/jquery_improvements.js',
+				'jsparty/firebug/firebugx.js',
+				'sapphire/javascript/i18n.js',
+			)
+		);
+
+		Requirements::combine_files(
+			'assets/leftandmain.js',
+			array(
+				'jsparty/loader.js',
+				'jsparty/hover.js',
+				'jsparty/layout_helpers.js',
+				'jsparty/scriptaculous/effects.js',
+				'jsparty/scriptaculous/dragdrop.js',
+				'jsparty/scriptaculous/controls.js',
+				'jsparty/greybox/AmiJS.js',
+				'jsparty/greybox/greybox.js',
+				'cms/javascript/LeftAndMain.js',
+				'cms/javascript/LeftAndMain_left.js',
+				'cms/javascript/LeftAndMain_right.js',
+				//'jsparty/tiny_mce2/tiny_mce_src.js',
+				'jsparty/tree/tree.js',
+				'jsparty/tabstrip/tabstrip.js',
+				'cms/javascript/TinyMCEImageEnhancement.js',
+				'jsparty/SWFUpload/SWFUpload.js',
+				'cms/javascript/Upload.js',
+				'sapphire/javascript/TreeSelectorField.js',
+		 		'cms/javascript/ThumbnailStripField.js',
+			)
+		);
+
+		Requirements::combine_files(
+			'assets/cmsmain.js',
+			array(
+				'cms/javascript/CMSMain.js',
+				'cms/javascript/CMSMain_left.js',
+				'cms/javascript/CMSMain_right.js',
+				'cms/javascript/SideTabs.js',
+				'cms/javascript/SideReports.js',
+				'cms/javascript/LangSelector.js',
+				'cms/javascript/TranslationTab.js',
+				'jsparty/calendar/calendar.js',
+				'jsparty/calendar/lang/calendar-en.js',
+				'jsparty/calendar/calendar-setup.js',
+			)
+		);
 
 		// DEPRECATED 2.3: Use init()
 		$dummy = null;
@@ -273,7 +332,7 @@ class LeftAndMain extends Controller {
 	 */
 	public function MainMenu() {
 		// Don't accidentally return a menu if you're not logged in - it's used to determine access.
-		if(!Member::currentUserID()) return new DataObjectSet();
+		if(!Member::currentUser()) return new DataObjectSet();
 
 		// Encode into DO set
 		$menu = new DataObjectSet();
@@ -342,15 +401,10 @@ class LeftAndMain extends Controller {
 	public function Left() {
 		return $this->renderWith($this->getTemplatesWithSuffix('_left'));
 	}
+
 	public function Right() {
 		return $this->renderWith($this->getTemplatesWithSuffix('_right'));
 	}
-	public function RightBottom() {
-		if(SSViewer::hasTemplate($this->getTemplatesWithSuffix('_rightbottom'))) {
-			return $this->renderWith($this->getTemplatesWithSuffix('_rightbottom'));
-		}
-	}
-
 
 	public function getRecord($id, $className = null) {
 		if(!$className) $className = $this->stat('tree_class');

@@ -24,13 +24,6 @@
 		$Right
 	</div>
 
-	<% if RightBottom %>
-	<div class="right" id="rightbottom">
-		$RightBottom
-		<div id="statusMessage" style="display:none;"></div>
-	</div>
-	<% end_if %>
-	
 	<div id="contentPanel" style="display:none;">
 		<% control EditorToolbar %>
 			$ImageForm

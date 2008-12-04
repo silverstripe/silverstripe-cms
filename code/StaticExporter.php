@@ -3,6 +3,12 @@
  * This class lets you export a static copy of your site.
  * It creates a huge number of folders each containing an index.html file.
  * This preserves the URL naming format.
+ * 
+ * Requirements: Unix Filesystem supporting symlinking.
+ * Doesn't work on Windows.
+ * 
+ * @see StaticPublisher
+ * 
  * @package cms
  * @subpackage export
  */
@@ -41,63 +47,60 @@ class StaticExporter extends Controller {
 	}
 	
 	function export() {
-		
-		if($_REQUEST['baseurl']) {
+		// specify custom baseurl for publishing to other webroot
+		if(isset($_REQUEST['baseurl'])) {
 			$base = $_REQUEST['baseurl'];
 			if(substr($base,-1) != '/') $base .= '/';
 			Director::setBaseURL($base);
 		}
 		
-		$folder = '/tmp/static-export/' . project();
-		if(!project()) $folder .= 'site';
-		if(!file_exists($folder)) mkdir($folder, Filesystem::$folder_create_mask, true);
+		// setup temporary folders
+		$tmpBaseFolder = TEMP_FOLDER . '/static-export';
+		$tmpFolder = (project()) ? "$tmpBaseFolder/" . project() : "$tmpBaseFolder/site";
+		if(!file_exists($tmpFolder)) Filesystem::makeFolder($tmpFolder);
+		$baseFolderName = basename($tmpFolder);
 
+		// symlink /assets
 		$f1 = ASSETS_PATH;
 		$f2 = Director::baseFolder() . '/' . project();
-		`cd $folder; ln -s $f1; ln -s $f2`;
+		`cd $tmpFolder; ln -s $f1; ln -s $f2`;
 
-		
-		$baseFolder = basename($folder);
-		
-		if($folder && file_exists($folder)) {
-			$pages = DataObject::get("SiteTree");
-			foreach($pages as $page) {
-				$subfolder = "$folder/$page->URLSegment";
-				$contentfile = "$folder/$page->URLSegment/index.html";
-				
-				// Make the folder				
-				if(!file_exists($subfolder)) {
-					mkdir($subfolder, Filesystem::$folder_create_mask);
-				}
-				
-				// Run the page
-				Requirements::clear();
-				$controllerClass = "{$page->class}_Controller";
-				if(class_exists($controllerClass)) {
-					$controller = new $controllerClass($page);
-					$pageContent = $controller->handleRequest(new HTTPRequest('GET',''))->getBody();
-					
-					// Write to file
-					if($fh = fopen($contentfile, 'w')) {
-						fwrite($fh, $pageContent->getBody());
-						fclose($fh);
-					}
-				}
+		// iterate through all instances of SiteTree
+		$pages = DataObject::get("SiteTree");
+		foreach($pages as $page) {
+			$subfolder = "$tmpFolder/$page->URLSegment";
+			$contentfile = "$tmpFolder/$page->URLSegment/index.html";
+			
+			// Make the folder				
+			if(!file_exists($subfolder)) {
+				Filesystem::makeFolder($subfolder);
 			}
 			
-			copy("$folder/home/index.html", "$folder/index.html");			
+			// Run the page
+			Requirements::clear();
+			$link = Director::makeRelative($page->Link());
+			$response = Director::test($link);
 
-			`cd /tmp/static-export; tar -czhf $baseFolder.tar.gz $baseFolder`;
-
-			$content = file_get_contents("/tmp/static-export/$baseFolder.tar.gz");
-			Filesystem::removeFolder('/tmp/static-export');
-
-			return HTTPRequest::send_file($content, "$baseFolder.tar.gz");
-			
-		} else {
-			echo _t('StaticExporter.ONETHATEXISTS',"Please specify a folder that exists");
+			// Write to file
+			if($fh = fopen($contentfile, 'w')) {
+				fwrite($fh, $response->getBody());
+				fclose($fh);
+			}
 		}
-			
+
+		// copy homepage (URLSegment: "home") to webroot
+		copy("$tmpFolder/home/index.html", "$tmpFolder/index.html");			
+		
+		// archive all generated files
+		`cd $tmpBaseFolder; tar -czhf $baseFolderName.tar.gz $baseFolderName`;
+		$archiveContent = file_get_contents("$tmpBaseFolder/$baseFolderName.tar.gz");
+		
+		// remove temporary files and folder
+		Filesystem::removeFolder($tmpBaseFolder);
+		
+		// return as download to the client
+		$response = HTTPRequest::send_file($archiveContent, "$baseFolderName.tar.gz", 'application/x-tar-gz');
+		echo $response->output();
 	}
 	
 }

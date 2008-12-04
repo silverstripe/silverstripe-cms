@@ -114,3 +114,5 @@ class FilesystemPublisher extends StaticPublisher {
 		}
 	}
 }
+
+?>

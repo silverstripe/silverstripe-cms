@@ -111,7 +111,7 @@ $(document).ready(function() {
 	 * Clear search button
 	 */
 	$('#SearchForm_holder button[name=action_clearsearch]').click(function(e) {
-		$(this.form).clearForm();
+		$(this.form).resetForm();
 		return false;
 	});
 

@@ -82,6 +82,8 @@ abstract class ModelAdmin extends LeftAndMain {
 	 * a subclass of {@link BulkLoader} (mostly CSV data).
 	 * By default {@link CsvBulkLoader} is used, assuming a standard mapping
 	 * of column names to {@link DataObject} properties/relations.
+	 * 
+	 * e.g. "BlogEntry" => "BlogEntryCsvBulkLoader"
 	 *
 	 * @var array
 	 */
@@ -93,6 +95,19 @@ abstract class ModelAdmin extends LeftAndMain {
 	 * @var int
 	 */
 	protected static $page_length = 30;
+	
+	/**
+	 * Class name of the form field used for the results list.  Overloading this in subclasses
+	 * can let you customise the results table field.
+	 */
+	protected $resultsTableClassName = 'TableListField';
+
+	/**
+	 * Return {@link $this->resultsTableClassName}
+	 */
+	public function resultsTableClassName() {
+		return $this->resultsTableClassName;
+	}
 	
 	/**
 	 * Initialize the model admin interface. Sets up embedded jquery libraries and requisite plugins.
@@ -351,10 +366,8 @@ class ModelAdmin_CollectionController extends Controller {
 	 */
 	public function ImportForm() {
 		$modelName = $this->modelClass;
-
 		$importers = $this->parentController->getModelImporters();
-		
-		if(!$importers) return false;
+		if(!$importers || !isset($importers[$modelName])) return false;
 		
 		$fields = new FieldSet(
 			new HiddenField('ClassName', _t('ModelAdmin.CLASSTYPE'), $modelName),
@@ -374,7 +387,7 @@ class ModelAdmin_CollectionController extends Controller {
 			$specRelations->push(new ArrayData(array('Name' => $name, 'Description' => $desc)));
 		}
 		$specHTML = $this->customise(array(
-			'ModelName' => singleton($modelName)->i18n_singular_name(), 
+			'ModelName' => Convert::raw2att($modelName),
 			'Fields' => $specFields,
 			'Relations' => $specRelations, 
 		))->renderWith('ModelAdmin_ImportSpec');
@@ -401,16 +414,24 @@ class ModelAdmin_CollectionController extends Controller {
 	 * 
 	 * @todo Figure out ajax submission of files via jQuery.form plugin
 	 *
-	 * @param unknown_type $data
-	 * @param unknown_type $form
-	 * @param unknown_type $request
+	 * @param array $data
+	 * @param Form $form
+	 * @param HTTPRequest $request
 	 */
 	function import($data, $form, $request) {
-		$modelName = singleton($data['ClassName'])->i18n_singular_name();
+		$modelName = $data['ClassName'];
 		$importers = $this->parentController->getModelImporters();
 		$importerClass = $importers[$modelName];
 		
 		$loader = new $importerClass($data['ClassName']);
+		
+		// File wasn't properly uploaded, show a reminder to the user
+		if(empty($_FILES['_CsvFile']['tmp_name'])) {
+			$form->sessionMessage(_t('ModelAdmin.NOCSVFILE', 'Please browse for a CSV file to import'), 'good');
+			Director::redirectBack();
+			return false;
+		}
+		
 		$results = $loader->load($_FILES['_CsvFile']['tmp_name']);
 		
 		$message = '';
@@ -428,17 +449,21 @@ class ModelAdmin_CollectionController extends Controller {
 		);
 		if(!$results->CreatedCount() && !$results->UpdatedCount()) $message .= _t('ModelAdmin.NOIMPORT', "Nothing to import");
 		
-		Session::setFormMessage('Form_ImportForm', $message, 'good');
-		Director::redirect($_SERVER['HTTP_REFERER'] . '#Form_ImportForm_holder');
+		$form->sessionMessage($message, 'good');
+		Director::redirectBack();
 	}
 	
 	/**
 	 * Give the flexibilility to show variouse combination of columns in the search result table
+	 * @param $columnsAvailable array The columns that should be made available for selecting.  Should be a map.  Keys are dot-syntax
+	 * field names, and values are titles.  By default the $summary_fields from your model will be used.
 	 */
-	public function ColumnSelectionField() {
+	public function ColumnSelectionField($columnsAvailable = null) {
 		$model = singleton($this->modelClass);
 		
-		$source = $model->summaryFields();
+		$source = $columnsAvailable ? $columnsAvailable : $model->summaryFields();
+		
+		// select all fields by default
 		$value = array();
 		if($source) foreach ($source as $fieldName => $label){
 			$value[] = $fieldName;
@@ -535,18 +560,30 @@ class ModelAdmin_CollectionController extends Controller {
 		return $context->getQuery($searchCriteria);
 	}
 	
-	function getResultColumns($searchCriteria) {
+	/**
+	 * Returns all columns used for tabular search results display.
+	 * Defaults to all fields specified in {@link DataObject->summaryFields()}.
+	 * 
+	 * @param array $searchCriteria Limit fields by populating the 'ResultsAssembly' key
+	 * @param boolean $selectedOnly Limit by 'ResultsAssempty
+	 */
+	function getResultColumns($searchCriteria, $selectedOnly = true) {
 		$model = singleton($this->modelClass);
 		$summaryFields = $model->summaryFields();
 
-		$resultAssembly = $searchCriteria['ResultAssembly'];
-		if(!is_array($resultAssembly)) {
-			$explodedAssembly = split(' *, *', $resultAssembly);
-			$resultAssembly = array();
-			foreach($explodedAssembly as $item) $resultAssembly[$item] = true;
-		}
+		$summaryFields = $this->ColumnSelectionField()->Children->dataFieldByName('ResultAssembly')->Source;
 		
-		return array_intersect_key($summaryFields, $resultAssembly);
+		if($selectedOnly) {
+			$resultAssembly = $searchCriteria['ResultAssembly'];
+			if(!is_array($resultAssembly)) {
+				$explodedAssembly = split(' *, *', $resultAssembly);
+				$resultAssembly = array();
+				foreach($explodedAssembly as $item) $resultAssembly[$item] = true;
+			}
+			return array_intersect_key($summaryFields, $resultAssembly);
+		} else {
+			return $summaryFields;
+		}
 	}
 	
 	/**
@@ -558,7 +595,8 @@ class ModelAdmin_CollectionController extends Controller {
 		if($searchCriteria instanceof HTTPRequest) $searchCriteria = $searchCriteria->getVars();
 		$summaryFields = $this->getResultColumns($searchCriteria);
 
-		$tf = new TableListField(
+		$className = $this->parentController->resultsTableClassName();
+		$tf = new $className(
 			$this->modelClass,
 			$this->modelClass,
 			$summaryFields
@@ -568,6 +606,10 @@ class ModelAdmin_CollectionController extends Controller {
 		$tf->setShowPagination(true);
 		// @todo Remove records that can't be viewed by the current user
 		$tf->setPermissions(array_merge(array('view','export'), TableListField::permissions_for_object($this->modelClass)));
+		
+		// csv export settings (select all columns regardless of user checkbox settings in 'ResultsAssembly')
+		$exportFields = $this->getResultColumns($searchCriteria, false);
+		$tf->setFieldListCsv($exportFields);
 		
 		$url = '<a href=\"' . $this->Link() . '/$ID/edit\">$value</a>';
 		$tf->setFieldFormatting(array_combine(array_keys($summaryFields), array_fill(0,count($summaryFields), $url)));
@@ -593,7 +635,7 @@ class ModelAdmin_CollectionController extends Controller {
 		unset($filteredCriteria['url']);
 		unset($filteredCriteria['action_search']);
 		if(isset($filteredCriteria['Investors__PEFirm__IsPECMember']) && !$filteredCriteria['Investors__PEFirm__IsPECMember']) unset($filteredCriteria['Investors__PEFirm__IsPECMember']);
-		
+
 		$form->setFormAction($this->Link() . '/ResultsForm?' . http_build_query($filteredCriteria));
 		return $form;
 	}
@@ -719,9 +761,8 @@ class ModelAdmin_RecordController extends Controller {
 		
 		$validator = ($this->currentRecord->hasMethod('getCMSValidator')) ? $this->currentRecord->getCMSValidator() : null;
 		
-		$actions = new FieldSet(
-			new FormAction("doSave", _t('ModelAdmin.SAVE', "Save"))
-		);
+		$actions = $this->currentRecord->getCMSActions();
+		$actions->push(new FormAction("doSave", _t('ModelAdmin.SAVE', "Save")));
 		
 		if($this->currentRecord->canDelete(Member::currentUser())) {
 			$actions->insertFirst($deleteAction = new FormAction('doDelete', _t('ModelAdmin.DELETE', 'Delete')));

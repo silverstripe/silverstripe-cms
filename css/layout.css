@@ -119,7 +119,7 @@ body.stillLoading select {
 	border: 1px solid #acbbcc;
 	background: #fff;
 }
-#right, #rightbottom {
+#right {
 	position: absolute;
 	left: 208px;
 	top: 45px;
@@ -130,10 +130,6 @@ body.stillLoading select {
 	border: 1px solid #acbbcc;
 	background: #eee;
 	margin-right: 3px;
-}
-
-#rightbottom {
-	height: 30%;
 }
 
 #separator {
@@ -161,17 +157,13 @@ body.stillLoading select {
 }
 
 
-#left div.title, #right div.title, #rightbottom div.title {
+#left div.title, #right div.title {
 	border-top: 1px solid #77BBEE;
 	height: 22px !important;
 	background: #0075C9 url(../images/texture/obar.gif) repeat-x 0 0;
 }
 
-#rightbottom div.light {
-	background-image: url(../images/textures/obar-light.png) !important;
-}
-
-#left div.title div, #right div.title div, #rightbottom div.title div {
+#left div.title div, #right div.title div {
 	font-size: 14px;
 	font-weight: bold;
 	color: #fff;

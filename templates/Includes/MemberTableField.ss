@@ -17,6 +17,7 @@
 				</tr>
 			</thead>
 			<tfoot>
+				<% if can(add) %>
 				 <tr class="addtogrouprow">
 					<% if Markable %><td width="18">&nbsp;</dh><% end_if %>
 					$AddRecordForm.CellFields
@@ -31,6 +32,7 @@
 					<% if Can(edit) %><td width="18">&nbsp;</td><% end_if %>
 					<% if Can(delete) %><td width="18">&nbsp;</td><% end_if %>
 				</tr>
+				<% end_if %>
 			</tfoot>
 			<tbody>
 				<% if Items %>

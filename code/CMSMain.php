@@ -51,10 +51,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'sidereport',
 		'submit',
 		'switchlanguage',
-		'tasklist',
 		'unpublish',
 		'versions',
-		'waitingon',
 		'EditForm',
 		'AddPageOptionsForm',
 		'SiteTreeAsUL',
@@ -412,26 +410,13 @@ JS;
 			if($record->hasMethod('getAllCMSActions')) {
 				$actions = $record->getAllCMSActions();
 			} else {
-				$actions = new FieldSet();
-
-				if($record->DeletedFromStage) {
-					if($record->can('CMSEdit')) {
-						$actions->push(new FormAction('revert',_t('CMSMain.RESTORE','Restore')));
-						$actions->push(new FormAction('deletefromlive',_t('CMSMain.DELETEFP','Delete from the published site')));
-					}
-				} else {
-					if($record->canEdit()) {
-						$actions->push($deleteAction = new FormAction('delete',_t('CMSMain.DELETE','Delete from the draft site')));
-						$deleteAction->addExtraClass('delete');
-					}
-
-					if($record->hasMethod('getCMSActions')) {
-						$extraActions = $record->getCMSActions();
-						if($extraActions) foreach($extraActions as $action) $actions->push($action);
-					}
-
+				$actions = $record->getCMSActions();
+				// add default actions if none are defined
+				if(!$actions || !$actions->Count()) {
 					if($record->canEdit()) {
 						$actions->push(new FormAction('save',_t('CMSMain.SAVE','Save')));
+						$actions->push($deleteAction = new FormAction('delete',_t('CMSMain.DELETE','Delete from the draft site')));
+						$deleteAction->addExtraClass('delete');
 					}
 				}
 			}
@@ -579,6 +564,8 @@ JS;
 	public function revert($urlParams, $form) {
 		$id = $_REQUEST['ID'];
 		$record = DataObject::get_by_id("SiteTree", $id);
+
+		// if the user can't publish, he shouldn't be able to revert a page (and hence copy the last stored revision to the live site)
 		if(isset($record) && $record && !$record->canEdit()) return Security::permissionFailure($this);
 		
 		$record->doRevertToLive();

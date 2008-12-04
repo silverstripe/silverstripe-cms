@@ -14,7 +14,7 @@ class AssetAdmin extends LeftAndMain {
 	
 	static $menu_title = 'Files & Images';
 
-	public static $tree_class = "File";
+	public static $tree_class = 'File';
 	
 	/**
 	 * @see Upload->allowedMaxFileSize
@@ -164,7 +164,6 @@ JS
 		$form->disableSecurityToken();
 		
 		return $form;
-
 	}
 	
 	/**
@@ -232,7 +231,6 @@ JS
 			$status = "";
 		}
 		
-		
 		$fileIDs = array();
 		$fileNames = array();
 		foreach($newFiles as $newFile) {
@@ -259,11 +257,6 @@ HTML;
 	}
 	
 	/**
-	 * Needs to be overridden to make sure an ID with value "0" is still valid (rootfolder)
-	 */
-	
-	
-	/**
 	 * Return the form that displays the details of a folder, including a file list and fields for editing the folder name.
 	 */
 	function getEditForm($id) {
@@ -275,11 +268,10 @@ HTML;
 		
 		if($record) {
 			$fields = $record->getCMSFields();
-			
 			$actions = new FieldSet();
 			
 			// Only show save button if not 'assets' folder
-			if( $record->canEdit() && $id != "root") {
+			if($record->canEdit() && $id != 'root') {
 				$actions = new FieldSet(
 					new FormAction('save',_t('AssetAdmin.SAVEFOLDERNAME','Save folder name'))
 				);
@@ -295,11 +287,11 @@ HTML;
 				));
 			}
 			
-			if( !$record->canEdit() )
+			if(!$record->canEdit()) {
 				$form->makeReadonly();
+			}
 
 			return $form;
-
 		}
 	}
 	
@@ -318,8 +310,8 @@ HTML;
 				if($files) {
 					foreach($files as $file) {
 						if($file instanceof Image) {
-                            $file->deleteFormattedImages();
-                        }
+							$file->deleteFormattedImages();
+						}
 						$file->ParentID = $destFolderID;
 						$file->write();
 						$numFiles++;
@@ -330,11 +322,13 @@ HTML;
 			}
 
 			$message = sprintf(_t('AssetAdmin.MOVEDX','Moved %s files'),$numFiles);
+			
 			FormResponse::status_message($message, "good");
 			FormResponse::add("$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value)");
+
 			return FormResponse::respond();	
 		} else {
-			user_error("Bad data: $_REQUEST[DestFolderID]", E_USER_ERROR);
+			user_error('Bad data:' . $_REQUEST['DestFolderID'], E_USER_ERROR);
 		}
 	}
 
@@ -343,54 +337,53 @@ HTML;
 	 * Called and returns in same way as 'save' function
 	 */
 	public function deletemarked($urlParams, $form) {
-			$fileList = "'" . ereg_replace(' *, *',"','",trim(addslashes($_REQUEST['FileIDs']))) . "'";
-			$numFiles = 0;
-			$folderID = 0;
-			$deleteList = '';
-			$brokenPageList = '';
-	
-			if($fileList != "''") {
-				$files = DataObject::get("File", "\"File\".\"ID\" IN ($fileList)");
-				if($files) {
-					foreach($files as $file) {
-						if($file instanceof Image) {
-							$file->deleteFormattedImages();
-						}
-						if( !$folderID )
-							$folderID = $file->ParentID;
-						
-						// $deleteList .= "\$('Form_EditForm_Files').removeById($file->ID);\n";
-						$file->delete();
-						$numFiles++;
+		$fileList = "'" . ereg_replace(' *, *',"','",trim(addslashes($_REQUEST['FileIDs']))) . "'";
+		$numFiles = 0;
+		$folderID = 0;
+		$deleteList = '';
+		$brokenPageList = '';
+
+		if($fileList != "''") {
+			$files = DataObject::get("File", "\"File\".\"ID\" IN ($fileList)");
+			if($files) {
+				foreach($files as $file) {
+					if($file instanceof Image) {
+						$file->deleteFormattedImages();
 					}
-					if($brokenPages = Notifications::getItems("BrokenLink")) {
-						$brokenPageList = "  ". _t('AssetAdmin.NOWBROKEN',"These pages now have broken links:")."</ul>";
-						foreach($brokenPages as $brokenPage) {
-							$brokenPageList .= "<li style=&quot;font-size: 65%&quot;>" . $brokenPage->Breadcrumbs(3, true) . "</li>";
-						}
-						$brokenPageList .= "</ul>";
-						Notifications::notifyByEmail("BrokenLink", "Page_BrokenLinkEmail");
-					} else {
-						$brokenPageList = '';
+					if(!$folderID) {
+						$folderID = $file->ParentID;
 					}
-					
-					$deleteList = '';
-					if( $folderID ) {
-						$remaining = DB::query("SELECT COUNT(*) FROM \"File\" WHERE \"ParentID\" = $folderID")->value();
-						
-						if( !$remaining )
-							$deleteList .= "Element.removeClassName(\$('sitetree').getTreeNodeByIdx( '$folderID' ).getElementsByTagName('a')[0],'contents');";
-					}
-					
-				} else {
-					user_error("No files in $fileList could be found!", E_USER_ERROR);
+					$file->delete();
+					$numFiles++;
 				}
+				if($brokenPages = Notifications::getItems('BrokenLink')) {
+					$brokenPageList = "  ". _t('AssetAdmin.NOWBROKEN', 'These pages now have broken links:') . '</ul>';
+					foreach($brokenPages as $brokenPage) {
+						$brokenPageList .= "<li style=&quot;font-size: 65%&quot;>" . $brokenPage->Breadcrumbs(3, true) . '</li>';
+					}
+					$brokenPageList .= '</ul>';
+					Notifications::notifyByEmail("BrokenLink", "Page_BrokenLinkEmail");
+				} else {
+					$brokenPageList = '';
+				}
+				
+				$deleteList = '';
+				if($folderID) {
+					$remaining = DB::query("SELECT COUNT(*) FROM \"File\" WHERE \"ParentID\" = $folderID")->value();
+					if(!$remaining) $deleteList .= "Element.removeClassName(\$('sitetree').getTreeNodeByIdx('$folderID').getElementsByTagName('a')[0],'contents');";
+				}
+			} else {
+				user_error("No files in $fileList could be found!", E_USER_ERROR);
 			}
-			$message = sprintf(_t('AssetAdmin.DELETEDX',"Deleted %s files.%s"),$numFiles,$brokenPageList) ;
-			FormResponse::add($deleteList);
-			FormResponse::status_message($message, "good");
-			FormResponse::add("$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value)");
-			return FormResponse::respond();	
+		}
+		
+		$message = sprintf(_t('AssetAdmin.DELETEDX',"Deleted %s files.%s"),$numFiles,$brokenPageList) ;
+		
+		FormResponse::add($deleteList);
+		FormResponse::status_message($message, "good");
+		FormResponse::add("$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value)");
+		
+		return FormResponse::respond();	
 	}
 	
 	
@@ -532,7 +525,7 @@ JS;
 	 */
 	public function returnItemToUser($p) {
 		if(!empty($_REQUEST['ajax'])) {
-			$parentID = (int)$p->ParentID;
+			$parentID = (int) $p->ParentID;
 			return <<<JS
 				tree = $('sitetree');
 				var newNode = tree.createTreeNode($p->ID, "$p->Title", "$p->class");
@@ -555,17 +548,24 @@ JS;
 		if(!$ids) return false;
 		
 		foreach($ids as $id) {
-			$record = DataObject::get_by_id($this->stat('tree_class'), (int) $id);
-			if($record) {
+			if(is_numeric($id)) {
+				$record = DataObject::get_by_id($this->stat('tree_class'), $id);
+				if(!$record) {
+					Debug::message( "Record appears to be null" );
+				}
 				$record->delete();
 				$record->destroy();
+
 				$script .= $this->deleteTreeNodeJS($record);
 			}
 		}
 		
 		$size = sizeof($ids);
-		if($size > 1) $message = $size . ' ' . _t('AssetAdmin.FOLDERSDELETED', 'folders deleted.');
-		else $message = $size . ' ' . _t('AssetAdmin.FOLDERDELETED', 'folder deleted.');
+		if($size > 1) {
+		  $message = $size.' '._t('AssetAdmin.FOLDERSDELETED', 'folders deleted.');
+		} else {
+		  $message = $size.' '._t('AssetAdmin.FOLDERDELETED', 'folder deleted.');
+		}
 
 		if(isset($brokenPageList)) {
 		  $message .= '  '._t('AssetAdmin.NOWBROKEN', 'The following pages now have broken links:').'<ul>'.addslashes($brokenPageList).'</ul>'.
@@ -577,7 +577,7 @@ JS;
 	}
 	
 	public function removefile(){
-		if($fileID = $this->urlParams['ID']){
+		if($fileID = $this->urlParams['ID']) {
 			$file = DataObject::get_by_id('File', $fileID);
 			// Delete the temp verions of this file in assets/_resampled
 			if($file instanceof Image) {
@@ -591,10 +591,10 @@ JS;
 				$('Form_EditForm_Files').removeFile($fileID);
 				statusMessage('removed file', 'good');
 JS;
-			}else{
+			} else {
 				Director::redirectBack();
 			}
-		}else{
+		} else {
 			user_error("AssetAdmin::removefile: Bad parameters: File=$fileID", E_USER_ERROR);
 		}
 	}
@@ -602,10 +602,9 @@ JS;
 	public function save($urlParams, $form) {
 		// Don't save the root folder - there's no database record
 		if($_REQUEST['ID'] == 'root') {
-			FormResponse::status_message("Saved", "good");
+			FormResponse::status_message('Saved', 'good');
 			return FormResponse::respond();
 		}
-		
 		
 		$form->dataFieldByName('Title')->value = $form->dataFieldByName('Name')->value;
 		
@@ -619,11 +618,8 @@ JS;
     */
 	
 	/**
-     * Removes all unused thumbnails, and echos status message to user.
-     *
-     * @returns null
-    */
-	
+	 * Removes all unused thumbnails, and echos status message to user.
+	 */
 	public function deleteUnusedThumbnails() {
 	    foreach($this->getUnusedThumbnailsArray() as $file) {
 	    	unlink(ASSETS_PATH . "/" . $file); 	
@@ -632,50 +628,57 @@ JS;
 	}
 	
 	/**
-     * Creates array containg all unused thumbnails.
-     * Array is created in three steps:
-     *     1.Scan assets folder and retrieve all thumbnails
-     *     2.Scan all HTMLField in system and retrieve thumbnails from them.
-     *     3.Count difference between two sets (array_diff)
-     *
-     * @returns Array 
-    */
-
-    private function getUnusedThumbnailsArray() {
-    	$allThumbnails = array();
-    	$dirIterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(ASSETS_PATH));
-        foreach ($dirIterator as $file) {
-            if($file->isFile()) {
-            	if(strpos($file->getPathname(),"_resampled") !== false) {
-            		$pathInfo = pathinfo($file->getPathname());
-            		if(in_array(strtolower($pathInfo['extension']),array('jpeg','jpg','jpe','png','gif'))) {
-                		$path = str_replace('\\','/',$file->getPathname());
-            			$allThumbnails[] = substr($path,strpos($path,'/assets/')+8);
-            		}
-            	}
-            }
-        }
-    	$classes = ClassInfo::subclassesFor('SiteTree');
-        $usedThumbnails = array();
-    	foreach($classes as $className) {
-            $sng = singleton($className);
-            $objects = DataObject::get($className);
-            if($objects !== NULL) {
-                foreach($objects as $object) {
-            	    foreach($sng->db() as $fieldName => $fieldType) {
-                        if($fieldType == 'HTMLText')  {
-            	            $url1 = HTTP::findByTagAndAttribute($object->$fieldName,array("img" => "src"));
-            	            if($url1 != NULL) $usedThumbnails[] = substr($url1[0],strpos($url1[0],'/assets/')+8);
-            	            if($object->latestPublished > 0) {
-            	                $object = Versioned::get_latest_version($className, $object->ID);
-            	                $url2 = HTTP::findByTagAndAttribute($object->$fieldName,array("img" => "src"));
-            	                if($url2 != NULL) $usedThumbnails[] = substr($url2[0],strpos($url2[0],'/assets/')+8);
-            	            }
-                        }
-            	    }
-                }
-            }
-        }
-        return array_diff($allThumbnails,$usedThumbnails);
-    }
+	 * Creates array containg all unused thumbnails.
+	 * 
+	 * Array is created in three steps:
+	 *     1.Scan assets folder and retrieve all thumbnails
+	 *     2.Scan all HTMLField in system and retrieve thumbnails from them.
+	 *     3.Count difference between two sets (array_diff)
+	 *
+	 * @return array 
+	 */
+	private function getUnusedThumbnailsArray() {
+		$allThumbnails = array();
+		$usedThumbnails = array();
+		$dirIterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(ASSETS_PATH));
+		
+		foreach($dirIterator as $file) {
+			if($file->isFile()) {
+				if(strpos($file->getPathname(),"_resampled") !== false) {
+					$pathInfo = pathinfo($file->getPathname());
+					if(in_array(strtolower($pathInfo['extension']), array('jpeg', 'jpg', 'jpe', 'png', 'gif'))) {
+						$path = str_replace('\\','/', $file->getPathname());
+						$allThumbnails[] = substr($path, strpos($path, '/assets/') + 8);
+					}
+				}
+			}
+		}
+		
+		$classes = ClassInfo::subclassesFor('SiteTree');
+		
+		foreach($classes as $className) {
+			$sng = singleton($className);
+			$objects = DataObject::get($className);
+			if($objects !== NULL) {
+				foreach($objects as $object) {
+					foreach($sng->db() as $fieldName => $fieldType) {
+						if($fieldType == 'HTMLText')  {
+							$url1 = HTTP::findByTagAndAttribute($object->$fieldName,array("img" => "src"));
+							if($url1 != NULL) $usedThumbnails[] = substr($url1[0],strpos($url1[0],'/assets/')+8);
+							if($object->latestPublished > 0) {
+								$object = Versioned::get_latest_version($className, $object->ID);
+								$url2 = HTTP::findByTagAndAttribute($object->$fieldName,array("img" => "src"));
+								if($url2 != NULL) $usedThumbnails[] = substr($url2[0],strpos($url2[0],'/assets/')+8);
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		return array_diff($allThumbnails,$usedThumbnails);
+	}
+    
 }
+
+?>
