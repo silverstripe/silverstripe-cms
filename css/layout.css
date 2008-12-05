@@ -96,6 +96,7 @@ input.loading {
 /* Overrides - TODO Find a better place to put them */
 form#Form_EditForm fieldset {
 	height: 100%;
+	border: none;
 }
 body.stillLoading select {
 	display: none;
