@@ -84,7 +84,7 @@ WidgetAreaEditor.prototype = {
 				widget.innerHTML = response.responseText.replace(/Widget\[0\]/gi, "Widget[new-" + (++$('WidgetAreaEditor_usedWidgets').parentNode.parentNode.maxid) + "]");
 				
 				// Replace the available widget with the used widget with editor form
-				widget.parentNode.insertBefore(widget.childNodes[0], widget);
+				widget.parentNode.insertBefore($(widget).getElementsByClassName('Widget')[0], widget);
 				widget.parentNode.removeChild(widget);
 				
 				// Put the clone into the available widgets column
