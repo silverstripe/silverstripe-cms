@@ -18,12 +18,12 @@ Group:
       Title: Empty Group
         
 Member:
-    admin:
-        Email: admin@example.com
-        Password: ZXXlkwecxz2390232233
-        Groups: =>Group.admin
-
+   admin:
+      Email: admin@example.com
+      Password: ZXXlkwecxz2390232233
+      Groups: =>Group.admin
+   
 Permission:
-    admin:
-        Code: ADMIN
-        GroupID: =>Group.admin
+   admin:
+      Code: ADMIN
+      GroupID: =>Group.admin
