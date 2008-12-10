@@ -76,6 +76,10 @@ li.action button {
 		background: #fff;
 	}
 	
+	.ajaxActions input.disabled {
+		color: #666;
+	}
+	
 	input.action.loading, input.action.loading:hover {
         padding-left: 22px;
         background: url(../images/network-save.gif) 3px 2px no-repeat;
