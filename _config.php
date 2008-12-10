@@ -19,11 +19,4 @@ Director::addRules(50, array(
 ));
 
 CMSMenu::populate_menu();
-
-CMSMenu::add_link(
-	'Help', 
-	_t('LeftAndMain.HELP', 'Help', PR_HIGH, 'Menu title'), 
-	'http://userhelp.silverstripe.com'
-);
-
 ?>

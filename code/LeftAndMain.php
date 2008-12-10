@@ -77,6 +77,13 @@ class LeftAndMain extends Controller {
 			i18n::set_locale($member->Locale);
 		}
 		
+		// can't be done in cms/_config.php as locale is not set yet
+		CMSMenu::add_link(
+			'Help', 
+			_t('LeftAndMain.HELP', 'Help', PR_HIGH, 'Menu title'), 
+			'http://userhelp.silverstripe.com'
+		);
+		
 		// set reading lang
 		if(Translatable::is_enabled() && !Director::is_ajax()) {
 			Translatable::choose_site_lang(array_keys(i18n::get_existing_content_languages('SiteTree')));
