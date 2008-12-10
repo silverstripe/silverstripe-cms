@@ -7,6 +7,11 @@ $lang['en_US']['AssetAdmin']['DELETEDX'] = 'Deleted %s files.%s';
 $lang['en_US']['AssetAdmin']['FILESREADY'] = 'Files ready to upload:';
 $lang['en_US']['AssetAdmin']['FOLDERDELETED'] = 'folder deleted.';
 $lang['en_US']['AssetAdmin']['FOLDERSDELETED'] = 'folders deleted.';
+$lang['en_US']['AssetAdmin']['MENUTITLE'] = array(
+	'Files & Images',
+	100,
+	'Menu title'
+);
 $lang['en_US']['AssetAdmin']['MOVEDX'] = 'Moved %s files';
 $lang['en_US']['AssetAdmin']['NEWFOLDER'] = 'NewFolder';
 $lang['en_US']['AssetAdmin']['NOTEMP'] = 'There is no temporary folder for uploads. Please set upload_tmp_dir in php.ini.';
@@ -72,6 +77,11 @@ $lang['en_US']['CMSMain']['DELETE'] = 'Delete from the draft site';
 $lang['en_US']['CMSMain']['DESCREMOVED'] = 'and %s descendants';
 $lang['en_US']['CMSMain']['EMAIL'] = 'Email';
 $lang['en_US']['CMSMain']['GO'] = 'Go';
+$lang['en_US']['CMSMain']['MENUTITLE'] = array(
+	'Site Content',
+	100,
+	'Menu title'
+);
 $lang['en_US']['CMSMain']['METADESCOPT'] = 'Description';
 $lang['en_US']['CMSMain']['METAKEYWORDSOPT'] = 'Keywords';
 $lang['en_US']['CMSMain']['NEW'] = array(
@@ -194,6 +204,11 @@ $lang['en_US']['CommentAdmin']['DELETED'] = 'Deleted %s comments.';
 $lang['en_US']['CommentAdmin']['MARKASNOTSPAM'] = 'Mark as not spam';
 $lang['en_US']['CommentAdmin']['MARKEDNOTSPAM'] = 'Marked %s comments as not spam.';
 $lang['en_US']['CommentAdmin']['MARKEDSPAM'] = 'Marked %s comments as spam.';
+$lang['en_US']['CommentAdmin']['MENUTITLE'] = array(
+	'Comments',
+	100,
+	'Menu title'
+);
 $lang['en_US']['CommentAdmin']['NAME'] = 'Name';
 $lang['en_US']['CommentAdmin']['PAGE'] = 'Page';
 $lang['en_US']['CommentAdmin']['SPAM'] = 'Spam';
@@ -241,45 +256,15 @@ $lang['en_US']['ImageEditor.ss']['SEPIA'] = 'sepia';
 $lang['en_US']['ImageEditor.ss']['UNDO'] = 'undo';
 $lang['en_US']['ImageEditor.ss']['UNTITLED'] = 'Untitled Document';
 $lang['en_US']['ImageEditor.ss']['WIDTH'] = 'width';
-$lang['en_US']['LeftAndMain']['ASSETADMIN_MENU'] = array(
-	'Files & Images',
-	100,
-	'Menu title'
-);
 $lang['en_US']['LeftAndMain']['CHANGEDURL'] = '  Changed URL to \'%s\'';
-$lang['en_US']['LeftAndMain']['CMSMAIN_MENU'] = array(
-	'Site Content',
-	100,
-	'Menu title'
-);
-$lang['en_US']['LeftAndMain']['COMMENTADMIN_MENU'] = array(
-	'Comments',
-	100,
-	'Menu title'
-);
-$lang['en_US']['LeftAndMain']['COMMUNITYADMIN_MENU'] = array(
-	'Community',
-	100,
-	'Menu title'
-);
 $lang['en_US']['LeftAndMain']['PAGETYPE'] = 'Page type: ';
 $lang['en_US']['LeftAndMain']['PERMAGAIN'] = 'You have been logged out of the CMS.  If you would like to log in again, enter a username and password below.';
 $lang['en_US']['LeftAndMain']['PERMALREADY'] = 'I\'m sorry, but you can\'t access that part of the CMS.  If you want to log in as someone else, do so below';
 $lang['en_US']['LeftAndMain']['PERMDEFAULT'] = 'Enter your email address and password to access the CMS.';
 $lang['en_US']['LeftAndMain']['PLEASESAVE'] = 'Please Save Page: This page could not be upated because it hasn\'t been saved yet.';
-$lang['en_US']['LeftAndMain']['REPORTADMIN_MENU'] = array(
-	'Reports',
-	100,
-	'Menu title'
-);
 $lang['en_US']['LeftAndMain']['REQUESTERROR'] = 'Error in request';
 $lang['en_US']['LeftAndMain']['SAVED'] = 'saved';
 $lang['en_US']['LeftAndMain']['SAVEDUP'] = 'Saved';
-$lang['en_US']['LeftAndMain']['SECURITYADMIN_MENU'] = array(
-	'Security',
-	100,
-	'Menu title'
-);
 $lang['en_US']['LeftAndMain']['SITECONTENTLEFT'] = array(
 	'Site Content',
 	PR_HIGH,
@@ -426,6 +411,11 @@ $lang['en_US']['PageCommentInterface_singlecomment.ss']['ISNTSPAM'] = 'this comm
 $lang['en_US']['PageCommentInterface_singlecomment.ss']['ISSPAM'] = 'this comment is spam';
 $lang['en_US']['PageCommentInterface_singlecomment.ss']['PBY'] = 'Posted by';
 $lang['en_US']['PageCommentInterface_singlecomment.ss']['REMCOM'] = 'remove this comment';
+$lang['en_US']['ReportAdmin']['MENUTITLE'] = array(
+	'Reports',
+	100,
+	'Menu title'
+);
 $lang['en_US']['ReportAdmin_SiteTree.ss']['REPORTS'] = 'Reports';
 $lang['en_US']['ReportAdmin_left.ss']['REPORTS'] = 'Reports';
 $lang['en_US']['ReportAdmin_right.ss']['WELCOME1'] = array(
@@ -439,6 +429,11 @@ $lang['en_US']['ReportAdmin_right.ss']['WELCOME2'] = array(
 );
 $lang['en_US']['SecurityAdmin']['ADDMEMBER'] = 'Add Member';
 $lang['en_US']['SecurityAdmin']['EDITPERMISSIONS'] = 'Edit permissions and IP addresses on each group';
+$lang['en_US']['SecurityAdmin']['MENUTITLE'] = array(
+	'Security',
+	100,
+	'Menu title'
+);
 $lang['en_US']['SecurityAdmin']['NEWGROUP'] = 'New Group';
 $lang['en_US']['SecurityAdmin']['SAVE'] = 'Save';
 $lang['en_US']['SecurityAdmin']['SGROUPS'] = 'Security groups';
