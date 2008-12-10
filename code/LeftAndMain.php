@@ -367,7 +367,8 @@ class LeftAndMain extends Controller {
 			// context, so doesn't respect the current user locale in _t() calls - as a workaround,
 			// we simply call LeftAndMain::menu_title_for_class() again if we're dealing with a controller
 			if($menuItem->controller) {
-				$title = LeftAndMain::menu_title_for_class($menuItem->controller);
+				$defaultTitle = LeftAndMain::menu_title_for_class($menuItem->controller);
+				$title = _t("{$menuItem->controller}.MENUTITLE", $defaultTitle);
 			} else {
 				$title = $menuItem->title;
 			}

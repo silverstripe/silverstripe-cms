@@ -50,10 +50,13 @@ class CMSMenu extends Object implements Iterator, i18nEntityProvider
 			$rule => $controllerClass
 		));
 		
+		// doesn't work if called outside of a controller context (e.g. in _config.php)
+		// as the locale won't be detected properly. Use {@link LeftAndMain->MainMenu()} to update
+		// titles for existing menu entries
+		$defaultTitle = LeftAndMain::menu_title_for_class($controllerClass);
+		$menuTitle = _t("{$controllerClass}.MENUTITLE", $defaultTitle);
 		
 		// Add menu item
-		$defaultTitle = LeftAndMain::menu_title_for_class($controllerClass);
-		$menuTitle = _t('LeftAndMain.' . strtoupper($controllerClass) . '_MENU', $defaultTitle);
 		return self::add_menu_item(
 			$controllerClass, 
 			$menuTitle, 
