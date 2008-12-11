@@ -6,7 +6,12 @@
 	<% end_if %>
 </p>
 <p class="info">
-	<span><% _t('PBY','Posted by') %> $Name.XML, $Created.Nice ($Created.Ago)</span>
+	<% if CommenterURL %>
+		<span><% _t('PBY','Posted by') %> <a href="$CommenterURL">$Name.XML</a>, $Created.Nice ($Created.Ago)</span>
+	<% else %>
+		<span><% _t('PBY','Posted by') %> $Name.XML, $Created.Nice ($Created.Ago)</span>
+	<% end_if %>
+
 	<br />
 	<ul class="actionLinks">
 		<% if ApproveLink %>

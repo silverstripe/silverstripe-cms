@@ -9,7 +9,8 @@ class PageComment extends DataObject {
 		"Name" => "Varchar(200)",
 		"Comment" => "Text",
 		"IsSpam" => "Boolean",
-		"NeedsModeration" => "Boolean"
+		"NeedsModeration" => "Boolean",
+		"CommenterURL" => "Varchar(255)"	
 	);
 
 	static $has_one = array(
