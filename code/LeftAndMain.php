@@ -65,10 +65,40 @@ class LeftAndMain extends Controller {
 	);
 	
 	/**
+	 * @param Member $member
+	 * @return boolean
+	 */
+	function canView($member = null) {
+		if(!$member && $member !== FALSE) {
+			$member = Member::currentUser();
+		}
+		
+		// cms menus only for logged-in members
+		if(!$member) return false;
+		
+		// alternative decorated checks
+		if($this->hasMethod('alternateAccessCheck')) {
+			$alternateAllowed = $this->alternateAccessCheck();
+			if($alternateAllowed === FALSE) return false;
+		}
+			
+		// Default security check for LeftAndMain sub-class permissions
+		if(!Permission::checkMember($member, "CMS_ACCESS_$this->class")) {
+			return false;
+		}
+		
+		return true;
+	}
+	
+	/**
 	 * @uses LeftAndMainDecorator->init()
 	 * @uses LeftAndMainDecorator->accessedCMS()
+	 * @uses CMSMenu
+	 * @uses Director::set_site_mode()
 	 */
 	function init() {
+		parent::init();
+
 		Director::set_site_mode('cms');
 		
 		// set language
@@ -89,39 +119,38 @@ class LeftAndMain extends Controller {
 			Translatable::choose_site_lang(array_keys(i18n::get_existing_content_languages('SiteTree')));
 		}
 
-		parent::init();
-		
 		// Allow customisation of the access check by a decorator
-		if($this->hasMethod('alternateAccessCheck')) {
-			$isAllowed = $this->alternateAccessCheck();
-			
-		// Default security check for LeftAndMain sub-class permissions
-		} else {
-			$isAllowed = Permission::check("CMS_ACCESS_$this->class");
-			if(!$isAllowed && $this->class == 'CMSMain') {
-				// When access /admin/, we should try a redirect to another part of the admin rather than be locked out
-				$menu = $this->MainMenu();
-				if(($first = $menu->First()) && $first->Link) {
-					Director::redirect($first->Link);
+		if(!$this->canView()) {
+			// When access /admin/, we should try a redirect to another part of the admin rather than be locked out
+			$menu = $this->MainMenu();
+			foreach($menu as $candidate) {
+				if(
+					$candidate->Link && 
+					$candidate->Link != $this->Link() 
+					&& $candidate->MenuItem->controller 
+					&& singleton($candidate->MenuItem->controller)->canView()
+				) {
+					return Director::redirect($candidate->Link);
 				}
 			}
-		}
-
-		// Don't continue if there's already been a redirection request.
-		if(Director::redirected_to()) return;
-
-		// Access failure!		
-		if(!$isAllowed) {
+			
+			if(Member::currentUser()) {
+				Session::set("BackURL", null);
+			}
+			
+			// if no alternate menu items have matched, return a permission error
 			$messageSet = array(
 				'default' => _t('LeftAndMain.PERMDEFAULT',"Please choose an authentication method and enter your credentials to access the CMS."),
 				'alreadyLoggedIn' => _t('LeftAndMain.PERMALREADY',"I'm sorry, but you can't access that part of the CMS.  If you want to log in as someone else, do so below"),
 				'logInAgain' => _t('LeftAndMain.PERMAGAIN',"You have been logged out of the CMS.  If you would like to log in again, enter a username and password below."),
 			);
 
-			Security::permissionFailure($this, $messageSet);
-			return;
+			return Security::permissionFailure($this, $messageSet);
 		}
-		
+
+		// Don't continue if there's already been a redirection request.
+		if(Director::redirected_to()) return;
+
 		// Audit logging hook
 		if(empty($_REQUEST['executeForm']) && !Director::is_ajax()) $this->extend('accessedCMS');
 		
@@ -344,16 +373,16 @@ class LeftAndMain extends Controller {
 
 		// Encode into DO set
 		$menu = new DataObjectSet();
-		foreach(singleton('CMSMenu') as $code => $menuItem) {
-			if(isset($menuItem->controller) && $this->hasMethod('alternateMenuDisplayCheck')) {
-				$isAllowed = $this->alternateMenuDisplayCheck($menuItem->controller);
-			} elseif(isset($menuItem->controller)) {
-				$isAllowed = Permission::check("CMS_ACCESS_" . $menuItem->controller);
-			} else {
-				$isAllowed = true;
+		$menuItems = CMSMenu::get_viewable_menu_items();
+		if($menuItems) foreach($menuItems as $code => $menuItem) {
+			// alternate permission checks (in addition to LeftAndMain->canView())
+			if(
+				isset($menuItem->controller) 
+				&& $this->hasMethod('alternateMenuDisplayCheck')
+				&& !$this->alternateMenuDisplayCheck($menuItem->controller)
+			) {
+				continue;
 			}
-
-			if(!$isAllowed) continue;
 
 			$linkingmode = "";
 			
@@ -381,6 +410,7 @@ class LeftAndMain extends Controller {
 			}
 			
 			$menu->push(new ArrayData(array(
+				"MenuItem" => $menuItem,
 				"Title" => Convert::raw2xml($title),
 				"Code" => $code,
 				"Link" => $menuItem->url,

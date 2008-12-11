@@ -1,6 +1,7 @@
 <?php
 /**
- * The object manages the main CMS menu
+ * The object manages the main CMS menu.
+ * See {@link LeftAndMain::init()} for example usage.
  * 
  * @package cms
  * @subpackage content
@@ -121,6 +122,31 @@ class CMSMenu extends Object implements Iterator, i18nEntityProvider
 	 */
 	public static function get_menu_items() {
 		return self::$menu_items;
+	}
+	
+	/**
+	 * Get all menu items that the passed member can view.
+	 * Defaults to {@link Member::currentUser()}.
+	 * 
+	 * @param Member $member
+	 * @return array
+	 */
+	public static function get_viewable_menu_items($member = null) {
+		if(!$member && $member !== FALSE) {
+			$member = Member::currentUser();
+		}
+		
+		$viewableMenuItems = array();
+		$allMenuItems = self::get_menu_items();
+		if($allMenuItems) foreach($allMenuItems as $code => $menuItem) {
+			// exclude all items which have a controller to perform permission
+			// checks on
+			if($menuItem->controller && !singleton($menuItem->controller)->canView($member)) continue;
+			
+			$viewableMenuItems[$code] = $menuItem;
+		}
+		
+		return $viewableMenuItems;
 	}
 	
 	/**

@@ -68,6 +68,18 @@ class SSReport extends ViewableData {
 
 		return $fields;
 	}
+	
+	/**
+	 * @param Member $member
+	 * @return boolean
+	 */
+	function canView($member = null) {
+		if(!$member && $member !== FALSE) {
+			$member = Member::currentUser();
+		}
+		
+		return true;
+	}
 
 	/**
 	 * Return a field, such as a {@link ComplexTableField} that is

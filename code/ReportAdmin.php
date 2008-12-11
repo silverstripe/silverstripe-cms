@@ -42,6 +42,35 @@ class ReportAdmin extends LeftAndMain {
 	}
 	
 	/**
+	 * Does the parent permission checks, but also
+	 * makes sure that instantiatable subclasses of
+	 * {@link Report} exist. By default, the CMS doesn't
+	 * include any Reports, so there's no point in showing
+	 * 
+	 * @param Member $member
+	 * @return boolean
+	 */
+	function canView($member = null) {
+		if(!$member && $member !== FALSE) {
+			$member = Member::currentUser();
+		}
+		
+		if(!parent::canView($member)) return false;
+		
+		$hasViewableSubclasses = false;
+		$subClasses = array_values(ClassInfo::subclassesFor('SSReport'));
+		foreach($subClasses as $subclass) {
+			// Remove abstract classes and LeftAndMain
+			$classReflection = new ReflectionClass($subclass);
+			if($classReflection->isInstantiable() && $subclass != 'SSReport') {
+				if(singleton($subclass)->canView()) $hasViewableSubclasses = true;
+			}			
+		}
+		
+		return $hasViewableSubclasses;
+	}
+	
+	/**
 	 * Return a DataObjectSet of SSReport subclasses
 	 * that are available for use.
 	 *
