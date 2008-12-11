@@ -436,7 +436,7 @@ class ModelAdmin_CollectionController extends Controller {
 		
 		$message = '';
 		if($results->CreatedCount()) $message .= sprintf(
-			_t('ModelAdmin.IMPORTEDRECORDS', "Imported %s %s."), 
+			_t('ModelAdmin.IMPORTEDRECORDS', "Imported %s records."), 
 			$results->CreatedCount()
 		);
 		if($results->UpdatedCount()) $message .= sprintf(
