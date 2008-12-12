@@ -9,7 +9,7 @@ _HANDLER_FORMS['deletegroup'] = 'deletegroup_options';
  * Add page action
  * @todo Remove duplication between this and the CMSMain Add page action
  */
-addgroup = {
+var addgroup = {
 	button_onclick : function() {
 		addgroup.form_submit();
 		return false;
@@ -32,7 +32,7 @@ addgroup = {
 /**
  * Delete page action
  */
-deletegroup = {
+var deletegroup = {
 	button_onclick : function() {
 		/*if( $('deletegroup_options').style.display == 'none' )
 			$('deletegroup_options').style.display = 'block';
