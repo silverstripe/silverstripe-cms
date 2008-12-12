@@ -439,8 +439,9 @@ JS;
 
 		// Wrap the root if needs be
 		$rootLink = $this->Link() . 'show/root';
+		$baseUrl = Director::absoluteBaseURL() . "assets";
 		if(!isset($rootID)) {
-			$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-root\" class=\"Root\"><a href=\"$rootLink\"><strong>http://www.yoursite.com/assets</strong></a>"
+			$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-root\" class=\"Root\"><a href=\"$rootLink\"><strong>{$baseUrl}</strong></a>"
 			. $siteTreeList . "</li></ul>";
 		}
 
