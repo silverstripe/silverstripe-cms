@@ -9,6 +9,7 @@ body.ModelAdmin #left {
 }
 
 body.ModelAdmin #Form_AddForm fieldset {
+	border: none;
 }
 
 body.ModelAdmin #Form_AddForm #ClassName {
