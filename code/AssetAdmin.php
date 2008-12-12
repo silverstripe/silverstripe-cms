@@ -181,6 +181,8 @@ JS
 		$fileSizeWarnings = '';
 		$uploadErrors = '';
 		$jsErrors = '';
+		$status = '';
+		$statusMessage = '';
 		
 		foreach($processedFiles as $tmpFile) {
 			if($tmpFile['error'] == UPLOAD_ERR_NO_TMP_DIR) {
