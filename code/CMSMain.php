@@ -421,7 +421,10 @@ JS;
 			$form->loadDataFrom($record);
 			$form->disableDefaultAction();
 
-			if(!$record->canEdit() || $record->DeletedFromStage) $form->makeReadonly();
+			if(!$record->canEdit() || $record->DeletedFromStage) {
+				$readonlyFields = $form->Fields()->makeReadonly();
+				$form->setFields($readonlyFields);
+			}
 
 			return $form;
 		} else if($id) {
