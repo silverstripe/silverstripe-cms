@@ -79,7 +79,7 @@ class AssetTableField extends ComplexTableField {
 		
 		$detailFormFields = new FieldSet(
 			new TabSet("BottomRoot",
-				new Tab(_t('AssetTableField.MAIN', 'Main'),
+				$mainTab = new Tab('Main',
 					new TextField("Title", _t('AssetTableField.TITLE','Title')),
 					new TextField("Name", _t('AssetTableField.FILENAME','Filename')),
 					new LiteralField("AbsoluteURL", $urlLink),
@@ -91,59 +91,55 @@ class AssetTableField extends ComplexTableField {
 				)
 			)
 		);
-				
+		$mainTab->setTitle(_t('AssetTableField.MAIN', 'Main'));
+
 		if(is_a($childData,'Image')) {
+			$tab = $detailFormFields->findOrMakeTab("BottomRoot.Image", _t('AssetTableField.IMAGE', 'Image'));
+			
 			$big = $childData->URL;
 			$thumbnail = $childData->getFormattedImage('AssetLibraryPreview')->URL;
 			
 			// Hmm this required the translated string to be appended to BottomRoot to add this to the Main tab
-			$detailFormFields->addFieldToTab("BottomRoot."._t('AssetTableField.MAIN','Main'), 
-				new ReadonlyField("Dimensions", _t('AssetTableField.DIM','Dimensions')),
-				"Created"
+			$detailFormFields->addFieldToTab('BottomRoot.Main',
+				new ReadonlyField("Dimensions", _t('AssetTableField.DIM','Dimensions'))
 			);
 
-			$detailFormFields->addFieldToTab("BottomRoot", 
-				new Tab(_t('AssetTableField.IMAGE', 'Image'),
-					new LiteralField("ImageFull",
-						'<a id="ImageEditorActivator" href="javascript: void(0)">' . "<img id='thumbnailImage' src='{$thumbnail}?r=" . rand(1,100000)  . "' alt='{$childData->Name}' /><p>"._t('AssetTableField.EDITIMAGE', 'Edit this image')."</p>" . '</a>' .
-						'<script type="text/javascript" src="cms/javascript/ImageEditor/Activator.js"></script><script type="text/javascript">var imageActivator = new ImageEditor.Activator.initialize();Event.observe("ImageEditorActivator","click",imageActivator.onOpen);</script>'
-					)
-				),
-				'Main'
+			$tab->push(
+				new LiteralField("ImageFull",
+					'<a id="ImageEditorActivator" href="javascript: void(0)">' . "<img id='thumbnailImage' src='{$thumbnail}?r=" . rand(1,100000)  . "' alt='{$childData->Name}' /><p>"._t('AssetTableField.EDITIMAGE', 'Edit this image')."</p>" . '</a>' .
+					'<script type="text/javascript" src="cms/javascript/ImageEditor/Activator.js"></script><script type="text/javascript">var imageActivator = new ImageEditor.Activator.initialize();Event.observe("ImageEditorActivator","click",imageActivator.onOpen);</script>'
+				)
 			);
-			
+
 			if(class_exists('GalleryFile')) {
-				$detailFormFields->addFieldToTab("BottomRoot", 
-					new Tab(_t('AssetTableField.GALLERYOPTIONS', 'Gallery Options'),
-						new TextField( "Content", _t('AssetTableField.CAPTION', 'Caption') )
-					)
+				$tab = $detailFormFields->findOrMakeTab("BottomRoot.GalleryOptions", _t('AssetTableField.GALLERYOPTIONS', 'Gallery Options'));
+				$tab->push(
+					new TextField( "Content", _t('AssetTableField.CAPTION', 'Caption') )
 				);
 			}
 		}
 		else if (class_exists('GalleryFile')) {
+			$tab = $detailFormFields->findOrMakeTab("BottomRoot.GalleryOptions", _t('AssetTableField.GALLERYOPTIONS', 'Gallery Options'));
 			if( $childData->Extension == 'swf' ) {
-				$detailFormFields->addFieldToTab("BottomRoot", 
-					new Tab(_t('AssetTableField.GALLERYOPTIONS', 'Gallery Options'),
-						new TextField( "Content", _t('AssetTableField.CAPTION', 'Caption') ),
-						new TextField( 'PopupWidth', _t('AssetTableField.POPUPWIDTH', 'Popup Width') ),
-						new TextField( 'PopupHeight', _t('AssetTableField.POPUPHEIGHT', 'Popup Height') ),
-						new HeaderField( 'SWFFileOptionsHeader', _t('AssetTableField.SWFFILEOPTIONS', 'SWF File Options') ),
-						new CheckboxField( 'Embed', _t('AssetTableField.ISFLASH', 'Is A Flash Document') ),
-						new CheckboxField( 'LimitDimensions', _t('AssetTableField.DIMLIMT', 'Limit The Dimensions In The Popup Window') )
-					)
+				$tab->push(
+					new TextField( "Content", _t('AssetTableField.CAPTION', 'Caption') ),
+					new TextField( 'PopupWidth', _t('AssetTableField.POPUPWIDTH', 'Popup Width') ),
+					new TextField( 'PopupHeight', _t('AssetTableField.POPUPHEIGHT', 'Popup Height') ),
+					new HeaderField( 'SWFFileOptionsHeader', _t('AssetTableField.SWFFILEOPTIONS', 'SWF File Options') ),
+					new CheckboxField( 'Embed', _t('AssetTableField.ISFLASH', 'Is A Flash Document') ),
+					new CheckboxField( 'LimitDimensions', _t('AssetTableField.DIMLIMT', 'Limit The Dimensions In The Popup Window') )
 				);
 			}
 			else {
-				$detailFormFields->addFieldToTab("BottomRoot", 
-					new Tab(_t('AssetTableField.GALLERYOPTIONS', 'Gallery Options'),
-						new TextField( "Content", _t('AssetTableField.CAPTION', 'Caption') ),
-						new TextField( 'PopupWidth', _t('AssetTableField.POPUPWIDTH', 'Popup Width') ),
-						new TextField( 'PopupHeight', _t('AssetTableField.POPUPHEIGHT', 'Popup Height') )
-					)
+				$tab = $detailFormFields->findOrMakeTab("BottomRoot.GalleryOptions", _t('AssetTableField.GALLERYOPTIONS', 'Gallery Options'));
+				$tab->push(
+					new TextField( "Content", _t('AssetTableField.CAPTION', 'Caption') ),
+					new TextField( 'PopupWidth', _t('AssetTableField.POPUPWIDTH', 'Popup Width') ),
+					new TextField( 'PopupHeight', _t('AssetTableField.POPUPHEIGHT', 'Popup Height') )
 				);
 			}
 		}
-						
+
 		if($childData && $childData->hasMethod('BackLinkTracking')) {
 			$links = $childData->BackLinkTracking();
 			if($links->exists()) {
