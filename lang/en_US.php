@@ -257,6 +257,11 @@ $lang['en_US']['ImageEditor.ss']['UNDO'] = 'undo';
 $lang['en_US']['ImageEditor.ss']['UNTITLED'] = 'Untitled Document';
 $lang['en_US']['ImageEditor.ss']['WIDTH'] = 'width';
 $lang['en_US']['LeftAndMain']['CHANGEDURL'] = '  Changed URL to \'%s\'';
+$lang['en_US']['LeftAndMain']['HELP'] = array(
+	'Help',
+	PR_HIGH,
+	'Menu title'
+);
 $lang['en_US']['LeftAndMain']['PAGETYPE'] = 'Page type: ';
 $lang['en_US']['LeftAndMain']['PERMAGAIN'] = 'You have been logged out of the CMS.  If you would like to log in again, enter a username and password below.';
 $lang['en_US']['LeftAndMain']['PERMALREADY'] = 'I\'m sorry, but you can\'t access that part of the CMS.  If you want to log in as someone else, do so below';
@@ -392,6 +397,7 @@ $lang['en_US']['PageComment']['SINGULARNAME'] = array(
 	50,
 	'Singular name of the object, used in dropdowns and to generally identify a single object in the interface'
 );
+$lang['en_US']['PageCommentInterface']['COMMENTERURL'] = 'Your website URL';
 $lang['en_US']['PageCommentInterface']['POST'] = 'Post';
 $lang['en_US']['PageCommentInterface']['SPAMQUESTION'] = 'Spam protection question: %s';
 $lang['en_US']['PageCommentInterface']['YOURCOMMENT'] = 'Comments';
