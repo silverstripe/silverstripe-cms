@@ -735,7 +735,10 @@ JS;
 				"ID" => $id,
 				"Version" => $version,
 			));
-			$form->makeReadonly();
+			
+			// historical version shouldn't be editable
+			$readonlyFields = $form->Fields()->makeReadonly();
+			$form->setFields($readonlyFields);
 
 			$templateData = $this->customise(array(
 				"EditForm" => $form
@@ -779,7 +782,11 @@ JS;
 				"ID" => $id,
 				"Version" => $fromVersion,
 			));
-			$form->makeReadonly();
+			
+			// comparison views shouldn't be editable
+			$readonlyFields = $form->Fields()->makeReadonly();
+			$form->setFields($readonlyFields);
+			
 			foreach($form->Fields()->dataFields() as $field) {
 				$field->dontEscape = true;
 			}
