@@ -334,6 +334,14 @@ JS;
 			if($instance->stat('need_permission') && !$this->can(singleton($class)->stat('need_permission'))) continue;
 
 			$addAction = $instance->i18n_singular_name();
+			
+			// if we're in translation mode, the link between the translated pagetype
+			// title and the actual classname might not be obvious, so we add it in parantheses
+			// Example: class "RedirectorPage" has the title "Weiterleitung" in German,
+			// so it shows up as "Weiterleitung (RedirectorPage)"
+			if(i18n::get_locale() != 'en_US') {
+				$addAction .= " ({$class})";
+			}
 
 			$result->push(new ArrayData(array(
 				'ClassName' => $class,
