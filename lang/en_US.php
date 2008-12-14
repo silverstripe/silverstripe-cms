@@ -68,7 +68,12 @@ $lang['en_US']['CMSLeft.ss']['GO'] = 'Go';
 $lang['en_US']['CMSLeft.ss']['NEWPAGE'] = 'New Page...';
 $lang['en_US']['CMSLeft.ss']['SELECTPAGESDEL'] = 'Select the pages that you want to delete and then click the button below';
 $lang['en_US']['CMSLeft.ss']['SITECONT'] = 'Site Content';
-$lang['en_US']['CMSMain']['ACCESS'] = 'Access to %s in CMS';
+$lang['en_US']['CMSMain']['ACCESS'] = array(
+	'Access to \'%s\' (%s)',
+	PR_MEDIUM,
+	'Item in permission selection identifying the admin section, with title and classname. Example: Access to \'Files & Images\' (AssetAdmin)'
+);
+$lang['en_US']['CMSMain']['ACCESSALLINTERFACES'] = 'Access to all CMS interfaces';
 $lang['en_US']['CMSMain']['CANCEL'] = 'Cancel';
 $lang['en_US']['CMSMain']['CHOOSEREPORT'] = '(Choose a report)';
 $lang['en_US']['CMSMain']['COMPARINGV'] = 'You are comparing versions #%d and #%d';

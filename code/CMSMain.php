@@ -1265,10 +1265,25 @@ JS
 		$classes = ClassInfo::subclassesFor('LeftAndMain');
 
 		foreach($classes as $class) {
-		        $perms["CMS_ACCESS_" . $class] = sprintf(_t('CMSMain.ACCESS', "Access to %s in CMS"), $class);
+			$title = _t("{$class}.MENUTITLE", LeftAndMain::menu_title_for_class($class));
+	        $perms["CMS_ACCESS_" . $class] = sprintf(
+				_t(
+					'CMSMain.ACCESS', 
+					"Access to '%s' (%s)",
+					PR_MEDIUM,
+					"Item in permission selection identifying the admin section, with title and classname. Example: Access to 'Files & Images' (AssetAdmin)"
+				), 
+				$title,
+				$class
+			);
 		}
+		$perms["CMS_ACCESS_LeftAndMain"] = _t(
+			'CMSMain.ACCESSALLINTERFACES', 
+			'Access to all CMS interfaces'
+		);
 		return $perms;
 	}
+	
 	/**
 	 * Return a dropdown with existing languages
 	 */
