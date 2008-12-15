@@ -46,6 +46,9 @@
 			<p id="NoComments"><% _t('NOCOMMENTSYET','No one has commented on this page yet.') %></p>
 		<% end_if %>
 	</div>
-	<p id="CommentsRSSFeed"><a class="commentrss" href="$CommentRssLink"><% _t('RSSFEEDCOMMENTS', 'RSS feed for comments on this page') %></a> | <a href="PageComment/rss" class="commentrss" title="View all Comments">RSS feed for all comments</a></p>
+	<p id="CommentsRSSFeed">
+		<a class="commentrss" href="$CommentRssLink"><% _t('RSSFEEDCOMMENTS', 'RSS feed for comments on this page') %></a> | 
+		<a href="PageComment/rss" class="commentrss" title="<% _t('RSSVIEWALLCOMMENTS', 'View all Comments') %>"><% _t('RSSFEEDALLCOMMENTS', 'RSS feed for all comments') %></a>
+	</p>
 </div>
 	
