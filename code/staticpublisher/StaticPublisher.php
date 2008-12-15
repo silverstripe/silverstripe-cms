@@ -34,6 +34,10 @@ abstract class StaticPublisher extends DataObjectDecorator {
 		}
 		
 		foreach($urls as $i => $url) {
+			if(!is_string($url)) {
+				user_error("Bad URL: " . var_export($url, true), E_USER_WARNING);
+				continue;
+			}
 			$url = Director::makeRelative($url);
 			if(substr($url,-1) == '/') $url = substr($url,0,-1);
 			$urls[$i] = $url;

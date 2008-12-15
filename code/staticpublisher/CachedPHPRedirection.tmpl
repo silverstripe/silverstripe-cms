@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * This is a system-generated PHP script that performs header management for a 301 redirection.
+ */
+
+define('DESTINATION', '**DESTINATION**');
+define('MAX_AGE', 3600);
+
+if(MAX_AGE > 0) {
+	header("Cache-Control: max-age=" . MAX_AGE);
+	header("Pragma:");
+} else {
+	header("Cache-Control: no-cache, max-age=0, must-revalidate");
+}
+
+header("Expires: " . gmdate('D, d M Y H:i:s', time() + MAX_AGE) . ' GMT');
+header("Location: " . DESTINATION, true, 301);
+
+?>

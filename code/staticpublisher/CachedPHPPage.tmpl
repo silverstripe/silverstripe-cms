@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * This is a system-generated PHP script that performs header management for the statically cached content given below.
+ */
+
+define('MAX_AGE', '**MAX_AGE**');
+define('LAST_MODIFIED', '**LAST_MODIFIED**');
+
+if(MAX_AGE > 0) {
+	header("Cache-Control: max-age=" . MAX_AGE);
+	header("Pragma:");
+} else {
+	header("Cache-Control: no-cache, max-age=0, must-revalidate");
+}
+
+header("Expires: " . gmdate('D, d M Y H:i:s', time() + MAX_AGE) . ' GMT');
+header("Last-modified: " . gmdate('D, d M Y H:i:s', strtotime(LAST_MODIFIED)) . ' GMT');
+
+if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
+	if(strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) >= strtotime(LAST_MODIFIED)) {
+		header("Last-modified: " . gmdate('D, d M Y H:i:s', strtotime(LAST_MODIFIED)) . ' GMT', true, 304);
+		exit;
+	}
+}
+
+?>
+**CONTENT**

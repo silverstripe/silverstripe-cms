@@ -5,6 +5,8 @@
  */ 
 class RebuildStaticCacheTask extends Controller {
 	function init() {
+		Versioned::reading_stage('live');
+
 		if(!Director::is_cli() && !Director::isDev() && !Permission::check("ADMIN")) Security::permissionFailure();
 		parent::init();
 	}
@@ -23,7 +25,7 @@ class RebuildStaticCacheTask extends Controller {
 		
 		if($_GET['urls']) $urls = $_GET['urls'];
 		else $urls = $page->allPagesToCache();
-
+		
 		$this->rebuildCache($urls, true);
 	}
 	
@@ -40,21 +42,43 @@ class RebuildStaticCacheTask extends Controller {
 		$page = singleton('Page');
 		
 		foreach($urls as $i => $url) {
+			if($url && !is_string($url)) {
+				user_error("Bad URL: " . var_export($url, true), E_USER_WARNING);
+				continue;
+			}
+
 			$url = Director::makeRelative($url);
-			if(substr($url,-1) == '/') $url = substr($url,0,-1);
-			$urls[$i] = $url;
+			// Exclude absolute links
+			if(preg_match('/^https?:/', $url)) {
+				unset($urls[$i]);
+			} else {
+				if(substr($url,-1) == '/') $url = substr($url,0,-1);
+				$urls[$i] = $url;
+			}
 		}
 		$urls = array_unique($urls);
-		
-		if($removeAll) {
-			echo "Removing old cache... \n";
-			flush();
+		sort($urls);
+
+		$start = isset($_GET['start']) ? $_GET['start'] : 0;
+		$count = isset($_GET['count']) ? $_GET['count'] : sizeof($urls);
+		if(($start + $count) > sizeof($urls)) $count = sizeof($urls) - $start;
+
+		$urls = array_slice($urls, $start, $count);
+
+		if(!isset($_GET['urls']) && $start == 0) {
+			echo "Removing old cache... ";
 			Filesystem::removeFolder("../cache", true);
 			echo "done.\n\n";
 		}
-
 		echo  "Republishing " . sizeof($urls) . " urls...\n\n";
 		$page->publishPages($urls);
 		echo "\n\n== Done! ==";
+	}
+	
+	function show() {
+		$urls = singleton('Page')->allPagesToCache();
+		echo "<pre>\n";
+		print_r($urls);
+		echo "\n</pre>";
 	}
 }

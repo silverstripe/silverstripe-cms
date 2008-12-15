@@ -15,7 +15,7 @@ Director::addRules(50, array(
 	'admin//ImageEditor/$Action' => 'ImageEditor',
 	'admin/cms//$Action/$ID/$OtherID' => 'CMSMain', 
 	'PageComment//$Action/$ID' => 'PageComment_Controller',
-	'dev/buildcache' => 'RebuildStaticCacheTask',
+	'dev/buildcache/$Action' => 'RebuildStaticCacheTask',
 ));
 
 CMSMenu::populate_menu();
