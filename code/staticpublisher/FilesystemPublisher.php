@@ -61,8 +61,8 @@ class FilesystemPublisher extends StaticPublisher {
 			Requirements::clear();
 			
 			DataObject::flush_and_destroy_cache();
-			DataObject::destroy_cached_get_calls(false);
-			DataObject::cache_get_calls(false);
+			//DataObject::destroy_cached_get_calls(false);
+			//DataObject::cache_get_calls(false);
 			
 			//echo 'Memory: ' . round(memory_get_usage()/100000)/10 . "\n";
 			/*
