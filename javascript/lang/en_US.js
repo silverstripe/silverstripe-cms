@@ -1,5 +1,5 @@
 if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
-	console.error('Class ss.i18n not defined');
+	if(typeof(console) != 'undefined') console.error('Class ss.i18n not defined');
 } else {
 	ss.i18n.addDictionary('en_US', {
 		'CMSMAIN.WARNINGSAVEPAGESBEFOREADDING' : "You have to save a page before adding children underneath it",
