@@ -325,6 +325,7 @@ $lang['de_DE']['ModelAdmin']['ADDFORM'] = 'Fügen Sie einen Datensatz vom Typ "%
 $lang['de_DE']['ModelAdmin']['CHOOSE_COLUMNS'] = 'Spalten in Suchergebnissen';
 $lang['de_DE']['ModelAdmin']['CLASSTYPE'] = 'Typ';
 $lang['de_DE']['ModelAdmin']['CLEAR_SEARCH'] = 'Zurücksetzen';
+$lang['de_DE']['ModelAdmin']['CREATEBUTTON'] = '%s erstellen';
 $lang['de_DE']['ModelAdmin']['DELETE'] = 'Löschen';
 $lang['de_DE']['ModelAdmin']['DELETEDRECORDS'] = '%s Datensätze gelöscht.';
 $lang['de_DE']['ModelAdmin']['FOUNDRESULTS'] = '%s Suchergebnisse';
