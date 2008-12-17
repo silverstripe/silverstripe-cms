@@ -454,20 +454,30 @@ class ModelAdmin_CollectionController extends Controller {
 	}
 	
 	/**
-	 * Give the flexibilility to show variouse combination of columns in the search result table
-	 * @param $columnsAvailable array The columns that should be made available for selecting.  Should be a map.  Keys are dot-syntax
-	 * field names, and values are titles.  By default the $summary_fields from your model will be used.
+	 * Return the columns available in the column selection field.
+	 * Overload this to make other columns available
 	 */
-	public function ColumnSelectionField($columnsAvailable = null) {
+	public function columnsAvailable() {
+		return singleton($this->modelClass)->summaryFields();
+	}
+
+	/**
+	 * Return the columns selected by default in the column selection field.
+	 * Overload this to make other columns selected by default
+	 */
+	public function columnsSelectedByDefault() {
+		return array_keys(singleton($this->modelClass)->summaryFields());
+	}
+	
+	/**
+	 * Give the flexibilility to show variouse combination of columns in the search result table
+	 */
+	public function ColumnSelectionField() {
 		$model = singleton($this->modelClass);
-		
-		$source = $columnsAvailable ? $columnsAvailable : $model->summaryFields();
+		$source = $this->columnsAvailable();
 		
 		// select all fields by default
-		$value = array();
-		if($source) foreach ($source as $fieldName => $label){
-			$value[] = $fieldName;
-		}
+		$value = $this->columnsSelectedByDefault();
 		
 		// Reorder the source so that you read items down the column and then across
 		$columnisedSource = array();
@@ -569,9 +579,8 @@ class ModelAdmin_CollectionController extends Controller {
 	 */
 	function getResultColumns($searchCriteria, $selectedOnly = true) {
 		$model = singleton($this->modelClass);
-		$summaryFields = $model->summaryFields();
 
-		$summaryFields = $this->ColumnSelectionField()->Children->dataFieldByName('ResultAssembly')->Source;
+		$summaryFields = $this->columnsAvailable();
 		
 		if($selectedOnly) {
 			$resultAssembly = $searchCriteria['ResultAssembly'];
