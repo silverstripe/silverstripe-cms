@@ -710,6 +710,7 @@ JS;
 		$id = $this->urlParams['ID'];
 		$version = str_replace('&ajax=1','',$this->urlParams['OtherID']);
 		$record = Versioned::get_version("SiteTree", $id, $version);
+		$versionAuthor = DataObject::get_by_id('Member', $record->AuthorID);
 
 		if($record) {
 			if($record && !$record->canView()) return Security::permissionFailure($this);
@@ -719,8 +720,25 @@ JS;
 
 			$fields->push(new HiddenField("ID"));
 			$fields->push(new HiddenField("Version"));
-			$fields->push(new HeaderField('YouAreViewingHeader', sprintf(_t('CMSMain.VIEWING',"You are viewing version #%d, created %s"),
-														  $version, $record->obj('LastEdited')->Ago())));
+			$fields->insertBefore(
+				new LiteralField(
+					'YouAreViewingHeader', 
+					'<p class="message notice">' .
+					sprintf(
+						_t(
+							'CMSMain.VIEWING',
+							"You are viewing version #%s, created %s by %s",
+							PR_MEDIUM,
+							'Version number is a linked string, created is a relative time (e.g. 2 days ago), by a specific author'
+						),
+						"<a href=\"admin/getversion/$record->ID/$version\" title=\"" . $versionAuthor->Title . "\">$version</a>", 
+						$record->obj('LastEdited')->Ago(),
+						$versionAuthor->Title
+					) .
+					'</p>'
+				),
+				'Root'
+			);
 
 			$actions = new FieldSet(
 				new FormAction("email", _t('CMSMain.EMAIL',"Email")),
@@ -754,16 +772,23 @@ JS;
 			));
 
 			SSViewer::setOption('rewriteHashlinks', false);
-			$result = $templateData->renderWith($this->class . '_right');
-			$parts = split('</?form[^>]*>', $result);
-			return $parts[sizeof($parts)-2];
+			
+			if(Director::is_ajax()) {
+				$result = $templateData->renderWith($this->class . '_right');
+				$parts = split('</?form[^>]*>', $result);
+				return $parts[sizeof($parts)-2];
+			} else {
+				return $templateData->renderWith('LeftAndMain');
+			}
+			
+			
 		}
 	}
 
 	function compareversions() {
-		$id = $this->urlParams['ID'];
-		$version1 = $_REQUEST['From'];
-		$version2 = $_REQUEST['To'];
+		$id = (int)$this->urlParams['ID'];
+		$version1 = (int)$_REQUEST['From'];
+		$version2 = (int)$_REQUEST['To'];
 
 		if( $version1 > $version2 ) {
 			$toVersion = $version1;
@@ -777,11 +802,31 @@ JS;
 		if($page && !$page->canView()) return Security::permissionFailure($this);
 		
 		$record = $page->compareVersions($fromVersion, $toVersion);
+		$fromVersionRecord = Versioned::get_version('SiteTree', $id, $fromVersion);
+		$toVersionRecord = Versioned::get_version('SiteTree', $id, $toVersion);
+		
 		if($record) {
+			$fromDateNice = $fromVersionRecord->obj('LastEdited')->Ago();
+			$toDateNice = $toVersionRecord->obj('LastEdited')->Ago();
+			$fromAuthor = DataObject::get_by_id('Member', $fromVersionRecord->AuthorID);
+			$toAuthor = DataObject::get_by_id('Member', $toVersionRecord->AuthorID);
+
 			$fields = $record->getCMSFields($this);
 			$fields->push(new HiddenField("ID"));
 			$fields->push(new HiddenField("Version"));
-			$fields->insertBefore(new HeaderField('YouAreComparingHeader',sprintf(_t('CMSMain.COMPARINGV',"You are comparing versions #%d and #%d"),$fromVersion,$toVersion)), "Root");
+			$fields->insertBefore(
+				new LiteralField(
+					'YouAreComparingHeader',
+					'<p class="message notice">' . 
+					sprintf(
+						_t('CMSMain.COMPARINGV',"Comparing versions %s and %s"),
+						"<a href=\"admin/getversion/$id/$fromVersionRecord->Version\" title=\"$fromAuthor->Title\">$fromVersionRecord->Version</a> <small>($fromDateNice)</small>",
+						"<a href=\"admin/getversion/$id/$toVersionRecord->Version\" title=\"$toAuthor->Title\">$toVersionRecord->Version</a> <small>($toDateNice)</small>"
+					) .
+					'</p>'
+				), 
+				"Root"
+			);
 
 			$actions = new FieldSet();
 

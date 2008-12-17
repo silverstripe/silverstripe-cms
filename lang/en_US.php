@@ -76,7 +76,7 @@ $lang['en_US']['CMSMain']['ACCESS'] = array(
 $lang['en_US']['CMSMain']['ACCESSALLINTERFACES'] = 'Access to all CMS interfaces';
 $lang['en_US']['CMSMain']['CANCEL'] = 'Cancel';
 $lang['en_US']['CMSMain']['CHOOSEREPORT'] = '(Choose a report)';
-$lang['en_US']['CMSMain']['COMPARINGV'] = 'You are comparing versions #%d and #%d';
+$lang['en_US']['CMSMain']['COMPARINGV'] = 'You are comparing versions %s and %s';
 $lang['en_US']['CMSMain']['COPYPUBTOSTAGE'] = 'Do you really want to copy the published content to the stage site?';
 $lang['en_US']['CMSMain']['DELETE'] = 'Delete from the draft site';
 $lang['en_US']['CMSMain']['DESCREMOVED'] = 'and %s descendants';
@@ -135,7 +135,7 @@ $lang['en_US']['CMSMain']['VERSIONSNOPAGE'] = array(
 	'Can\'t find page #%d',
 	PR_LOW
 );
-$lang['en_US']['CMSMain']['VIEWING'] = 'You are viewing version #%d, created %s';
+$lang['en_US']['CMSMain']['VIEWING'] = 'You are viewing version %s, created %s by %s';
 $lang['en_US']['CMSMain']['VISITRESTORE'] = array(
 	'visit restorepage/(ID)',
 	PR_LOW,
