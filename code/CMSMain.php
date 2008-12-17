@@ -365,11 +365,7 @@ JS;
 				Versioned::reading_stage('Live');
 				singleton($treeClass)->flushCache();
 				$record = DataObject::get_one( $treeClass, "\"$treeClass\".\"ID\" = $id");
-				if($record) {
-					$record->DeletedFromStage = true;
-				} else {
-					Versioned::reading_stage(null);
-				} 
+				if($record) Versioned::reading_stage(null);
 			}
 			return $record;
 
@@ -382,7 +378,7 @@ JS;
 		$record = $this->getRecord($id);
 
 		if($record) {
-			if($record->DeletedFromStage) $record->Status = _t('CMSMain.REMOVEDFD',"Removed from the draft site");
+			if($record->IsDeletedFromStage) $record->Status = _t('CMSMain.REMOVEDFD',"Removed from the draft site");
 
 			$fields = $record->getCMSFields($this);
 			if ($fields == null) {
@@ -402,7 +398,7 @@ JS;
 				if($liveRecord) $liveURLField->setValue($liveRecord->AbsoluteLink());
 			}
 			
-			if(!$record->DeletedFromStage) {
+			if(!$record->IsDeletedFromStage) {
 				$stageURLField->setValue($record->AbsoluteLink());
 			}
 			
@@ -425,7 +421,7 @@ JS;
 			$form->loadDataFrom($record);
 			$form->disableDefaultAction();
 
-			if(!$record->canEdit() || $record->DeletedFromStage) $form->makeReadonly();
+			if(!$record->canEdit() || $record->IsDeletedFromStage) $form->makeReadonly();
 
 			return $form;
 		} else if($id) {
@@ -456,7 +452,6 @@ JS;
 		$p = $this->getNewItem("new-$className-$parent".$suffix, false);
 		$p->write();
 
-		$p->CheckedPublicationDifferences = $p->AddedToStage = true;
 		return $this->returnItemToUser($p);
 	}
 
@@ -512,6 +507,11 @@ JS;
 		return $newItem;
 	}
 
+	/**
+	 * Delete the page from live. This means a page in draft mode might still exist.
+	 * 
+	 * @see delete()
+	 */
 	public function deletefromlive($urlParams, $form) {
 		$id = $_REQUEST['ID'];
 		Versioned::reading_stage('Live');
@@ -562,12 +562,11 @@ JS;
 	}
 
 	public function revert($urlParams, $form) {
-		$id = $_REQUEST['ID'];
-		$record = DataObject::get_by_id("SiteTree", $id);
+		$id = (int)$_REQUEST['ID'];
+		$record = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree_Live\".\"ID\" = {$id}");
 
 		// if the user can't publish, he shouldn't be able to revert a page (and hence copy the last stored revision to the live site)
 		if(isset($record) && $record && !$record->canEdit()) return Security::permissionFailure($this);
-		
 		$record->doRevertToLive();
 
 		$title = Convert::raw2js($record->Title);
@@ -579,19 +578,32 @@ JS;
 	}
 	
 	/**
-	 * Delete the current page
+	 * Delete the current page from draft stage.
+	 * @see deletefromlive()
 	 */
 	public function delete($urlParams, $form) {
 		$id = $_REQUEST['ID'];
 		$record = DataObject::get_one("SiteTree", "\"SiteTree\".\"ID\" = $id");
 		if($record && !$record->canDelete()) return Security::permissionFailure();
 		
+		// save ID and delete record
 		$recordID = $record->ID;
 		$record->delete();
-		$record->ID = $recordID;
 		
 		if(Director::is_ajax()) {
-			return $this->tellBrowserAboutPublicationChange($record, sprintf(_t('CMSMain.REMOVEDPAGEFROMDRAFT',"Removed '%s' from the draft site"),$record->Title));
+			// need a valid ID value even if the record doesn't have one in the database
+			// (its still present in the live tables)
+			$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree_Live\".\"ID\" = $recordID");
+			// if the page has never been published to live, we need to act the same way as in deletefromlive()
+			if($liveRecord) {
+				// the form is readonly now, so we need to refresh the representation
+				FormResponse::get_page($recordID);
+				return $this->tellBrowserAboutPublicationChange($liveRecord, sprintf(_t('CMSMain.REMOVEDPAGEFROMDRAFT',"Removed '%s' from the draft site"),$record->Title));
+			} else {
+				FormResponse::add($this->deleteTreeNodeJS($record));
+				FormResponse::status_message(sprintf(_t('CMSMain.REMOVEDPAGEFROMDRAFT',"Removed '%s' from the draft site"),$record->Title), 'good');
+				return FormResponse::respond();
+			}			
 		} else {
 			Director::redirectBack();
 		}
@@ -783,7 +795,7 @@ HTML;
 	function tellBrowserAboutPublicationChange($page, $statusMessage) {
 		$JS_title = Convert::raw2js($page->TreeTitle());
 
-		$JS_stageURL = $page->DeletedFromStage ? '' : Convert::raw2js($page->AbsoluteLink());
+		$JS_stageURL = $page->IsDeletedFromStage ? '' : Convert::raw2js($page->AbsoluteLink());
 		$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree\".\"ID\" = $page->ID");
 		$JS_liveURL = $liveRecord ? Convert::raw2js($liveRecord->AbsoluteLink()) : '';
 
@@ -1058,10 +1070,8 @@ HTML;
 					$record->destroy();
 
 					// DataObject::delete_by_id($this->stat('tree_class'), $id);
-					$record->CheckedPublicationDifferences = $record->DeletedFromStage = true;
 
 					// check to see if the record exists on the live site, if it doesn't remove the tree node
-					// $_REQUEST['showqueries'] = 1 ;
 					$liveRecord = Versioned::get_one_by_stage( $this->stat('tree_class'), 'Live', "\"{$this->stat('tree_class')}\".\"ID\"={$id}");
 
 					if($liveRecord) {
@@ -1370,7 +1380,6 @@ JS
 		$newrecord = clone $record;
 		$newrecord->ID = $temporalID;
 
-		$newrecord->CheckedPublicationDifferences = $newrecord->AddedToStage = true;
 		return $this->returnItemToUser($newrecord);
 	}
 
