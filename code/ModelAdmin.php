@@ -633,7 +633,7 @@ class ModelAdmin_CollectionController extends Controller {
 				$tf
 			),
 			new FieldSet(
-				new FormAction("goBack", _t('ModelAdmin.GOFORWARD', "Back")),
+				new FormAction("goBack", _t('ModelAdmin.GOBACK', "Back")),
 				new FormAction("goForward", _t('ModelAdmin.GOFORWARD', "Forward"))
 			)
 		);
