@@ -98,7 +98,8 @@ body.ModelAdmin #right table.results td.active {
 }
 
 body.ModelAdmin #right .tab {
-	height: 450px; /* @todo add dynamic resizing */
+	overflow: hidden;
+	padding-bottom: 20px;
 }
 
 body.ModelAdmin #Form_ImportForm dt {
