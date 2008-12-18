@@ -569,12 +569,20 @@ JS;
 		$record->doPublish();
 	}
 
+	/**
+ 	 * Reverts a page by publishing it to live.
+ 	 * Use {@link restorepage()} if you want to restore a page
+ 	 * which was deleted from draft without publishing.
+ 	 * 
+ 	 * @uses SiteTree->doRevertToLive()
+	 */
 	public function revert($urlParams, $form) {
 		$id = $_REQUEST['ID'];
 		$record = DataObject::get_by_id("SiteTree", $id);
 		
-		// if the user can't publish, he shouldn't be able to revert a page (and hence copy the last stored revision to the live site)
-		if($record && !$record->canPublish()) return Security::permissionFailure($this);
+		// a user can restore a page without publication rights, as it just adds a new draft state
+		// (this action should just be available when page has been "deleted from draft")
+		if($record && !$record->canEdit()) return Security::permissionFailure($this);
 		
 		$record->doRevertToLive();
 
@@ -1167,10 +1175,16 @@ JS;
 		return $response;
 	}
 
+	/**
+	 * Restore a previously deleted page.
+	 * Internal action which shouldn't be executed through URL-handlers.
+	 */
 	function restorepage() {
 		if($id = $this->urlParams['ID']) {
 			$restoredPage = Versioned::get_latest_version("SiteTree", $id);
 			$restoredPage->ID = $restoredPage->RecordID;
+			// if no record can be found on draft stage (meaning it has been "deleted from draft" before),
+			// create an empty record
 			if(!DB::query("SELECT ID FROM SiteTree WHERE ID = $restoredPage->ID")->value()) {
 				DB::query("INSERT INTO SiteTree SET ID = $restoredPage->ID");
 			}
