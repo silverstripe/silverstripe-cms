@@ -52,7 +52,12 @@ abstract class SideReport extends Object {
 			}
 			$result .= "</ul>\n";	
 		} else {
-			$result = sprintf(_t('SideReport.REPEMPTY','The %s report is empty.',PR_MEDIUM,'%s is a report title'),$this->title());
+			$result = "<p class=\"message notice\">" . 
+				sprintf(
+					_t('SideReport.REPEMPTY','The %s report is empty.',PR_MEDIUM,'%s is a report title'),
+					$this->title()
+				) 
+				. "</p>";
 		}
 		return $result;
 	}
