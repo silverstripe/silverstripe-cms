@@ -76,7 +76,7 @@ $lang['en_US']['CMSMain']['ACCESS'] = array(
 $lang['en_US']['CMSMain']['ACCESSALLINTERFACES'] = 'Access to all CMS interfaces';
 $lang['en_US']['CMSMain']['CANCEL'] = 'Cancel';
 $lang['en_US']['CMSMain']['CHOOSEREPORT'] = '(Choose a report)';
-$lang['en_US']['CMSMain']['COMPARINGV'] = 'You are comparing versions %s and %s';
+$lang['en_US']['CMSMain']['COMPARINGV'] = 'Comparing versions %s and %s';
 $lang['en_US']['CMSMain']['COPYPUBTOSTAGE'] = 'Do you really want to copy the published content to the stage site?';
 $lang['en_US']['CMSMain']['DELETE'] = 'Delete from the draft site';
 $lang['en_US']['CMSMain']['DESCREMOVED'] = 'and %s descendants';
@@ -135,7 +135,11 @@ $lang['en_US']['CMSMain']['VERSIONSNOPAGE'] = array(
 	'Can\'t find page #%d',
 	PR_LOW
 );
-$lang['en_US']['CMSMain']['VIEWING'] = 'You are viewing version %s, created %s by %s';
+$lang['en_US']['CMSMain']['VIEWING'] = array(
+	'You are viewing version #%s, created %s by %s',
+	PR_MEDIUM,
+	'Version number is a linked string, created is a relative time (e.g. 2 days ago), by a specific author'
+);
 $lang['en_US']['CMSMain']['VISITRESTORE'] = array(
 	'visit restorepage/(ID)',
 	PR_LOW,
@@ -280,6 +284,11 @@ $lang['en_US']['LeftAndMain']['SITECONTENTLEFT'] = array(
 	PR_HIGH,
 	'Root node on left'
 );
+$lang['en_US']['LeftAndMain']['STATUSPUBLISHEDSUCCESS'] = array(
+	'Published \'%s\' successfully',
+	PR_MEDIUM,
+	'Status message after publishing a page, showing the page title'
+);
 $lang['en_US']['LeftAndMain']['STATUSTO'] = '  Status changed to \'%s\'';
 $lang['en_US']['LeftAndMain']['TREESITECONTENT'] = array(
 	'Site Content',
@@ -412,7 +421,9 @@ $lang['en_US']['PageCommentInterface.ss']['NEXT'] = 'next';
 $lang['en_US']['PageCommentInterface.ss']['NOCOMMENTSYET'] = 'No one has commented on this page yet.';
 $lang['en_US']['PageCommentInterface.ss']['POSTCOM'] = 'Post your comment';
 $lang['en_US']['PageCommentInterface.ss']['PREV'] = 'previous';
+$lang['en_US']['PageCommentInterface.ss']['RSSFEEDALLCOMMENTS'] = 'RSS feed for all comments';
 $lang['en_US']['PageCommentInterface.ss']['RSSFEEDCOMMENTS'] = 'RSS feed for comments on this page';
+$lang['en_US']['PageCommentInterface.ss']['RSSVIEWALLCOMMENTS'] = 'View all Comments';
 $lang['en_US']['PageCommentInterface_Controller']['SPAMQUESTION'] = 'Spam protection question: %s';
 $lang['en_US']['PageCommentInterface_Form']['AWAITINGMODERATION'] = 'Your comment has been submitted and is now awaiting moderation.';
 $lang['en_US']['PageCommentInterface_Form']['MSGYOUPOSTED'] = 'The message you posted was:';

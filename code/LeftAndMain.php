@@ -654,7 +654,18 @@ JS;
 				$newClass = $record->ClassName;
 				$publishedRecord = $record->newClassInstance($newClass);
 
-				return $this->tellBrowserAboutPublicationChange($publishedRecord, "Published '$record->Title' successfully");
+				return $this->tellBrowserAboutPublicationChange(
+					$publishedRecord, 
+					sprintf(
+						_t(
+							'LeftAndMain.STATUSPUBLISHEDSUCCESS', 
+							"Published '%s' successfully",
+							PR_MEDIUM,
+							'Status message after publishing a page, showing the page title'
+						),
+						$record->Title
+					)
+				);
 			} else {
 				// BUGFIX: Changed icon only shows after Save button is clicked twice http://support.silverstripe.com/gsoc/ticket/76
 				$title = Convert::raw2js($record->TreeTitle());
