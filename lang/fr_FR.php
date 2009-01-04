@@ -369,6 +369,11 @@ $lang['fr_FR']['PageCommentInterface_singlecomment.ss']['ISNTSPAM'] = 'ce commen
 $lang['fr_FR']['PageCommentInterface_singlecomment.ss']['ISSPAM'] = 'ce commentaire est un spam';
 $lang['fr_FR']['PageCommentInterface_singlecomment.ss']['PBY'] = 'Envoyé par';
 $lang['fr_FR']['PageCommentInterface_singlecomment.ss']['REMCOM'] = 'supprimer ce commentaire';
+$lang['fr_FR']['PageCommentInterface.ss']['APPROVE'] = $lang['fr_FR']['PageCommentInterface_singlecomment.ss']['APPROVE'];
+$lang['fr_FR']['PageCommentInterface.ss']['ISNTSPAM'] = $lang['fr_FR']['PageCommentInterface_singlecomment.ss']['ISNTSPAM'];
+$lang['fr_FR']['PageCommentInterface.ss']['ISSPAM'] = $lang['fr_FR']['PageCommentInterface_singlecomment.ss']['ISSPAM'];
+$lang['fr_FR']['PageCommentInterface.ss']['PBY'] = $lang['fr_FR']['PageCommentInterface_singlecomment.ss']['PBY'];
+$lang['fr_FR']['PageCommentInterface.ss']['REMCOM'] = $lang['fr_FR']['PageCommentInterface_singlecomment.ss']['REMCOM'];
 $lang['fr_FR']['ReportAdmin_left.ss']['REPORTS'] = 'Rapports';
 $lang['fr_FR']['ReportAdmin_right.ss']['WELCOME1'] = 'Bienvenue dans le';
 $lang['fr_FR']['ReportAdmin_right.ss']['WELCOME2'] = 'Section rapports. Choisir un rapport à gauche s\'il vous plaît';
@@ -410,5 +415,46 @@ $lang['fr_FR']['WidgetAreaEditor.ss']['INUSE'] = 'Gadgets actuellement utilisés
 $lang['fr_FR']['WidgetAreaEditor.ss']['NOAVAIL'] = 'Actuellement aucun gadget disponible';
 $lang['fr_FR']['WidgetAreaEditor.ss']['TOADD'] = 'Pour ajouter un gadget, effectuez un glisser-déposer de la zone de gauche à ici.';
 $lang['fr_FR']['WidgetEditor.ss']['DELETE'] = 'Supprimer';
+$lang['fr_FR']['ModelAdmin']['ADDBUTTON'] = 'Ajouter';
+$lang['fr_FR']['ModelAdmin']['ADDFORM'] = 'Remplissez ce formulaire pour ajouter %s à la base de données.';
+$lang['fr_FR']['ModelAdmin']['CHOOSE_COLUMNS'] = 'Sélectionnez les colonnes de résultats...';
+$lang['fr_FR']['ModelAdmin']['CLASSTYPE'] = array(
+	'Type',
+	PR_MEDIUM,
+	'Type de l\'objet à ajouter'
+);
+$lang['fr_FR']['ModelAdmin']['CLEAR_SEARCH'] = 'Annuler la recherche';
+$lang['fr_FR']['ModelAdmin']['CREATE'] = 'Créer';
+$lang['fr_FR']['ModelAdmin']['DELETE'] = 'Supprimer';
+$lang['fr_FR']['ModelAdmin']['DELETEDRECORDS'] = '%s enregistrements supprimés.';
+$lang['fr_FR']['ModelAdmin']['FOUNDRESULTS'] = 'Votre recherche a renvoyé %s objets concordants';
+$lang['fr_FR']['ModelAdmin']['GOBACK'] = 'Retour';
+$lang['fr_FR']['ModelAdmin']['IMPORT'] = 'Importer depuis un CSV';
+$lang['fr_FR']['ModelAdmin']['IMPORTEDRECORDS'] = '%s enregistrements importés.';
+$lang['fr_FR']['ModelAdmin']['ITEMNOTFOUND'] = 'Je n\'arrive pas à trouver cette objet';
+$lang['fr_FR']['ModelAdmin']['LOADEDFOREDITING'] = '\'%s\' chargé pour édition.';
+$lang['fr_FR']['ModelAdmin']['NOIMPORT'] = 'Rien à importer';
+$lang['fr_FR']['ModelAdmin']['NORESULTS'] = 'Pas de résultats';
+$lang['fr_FR']['ModelAdmin']['SAVE'] = 'Sauver';
+$lang['fr_FR']['ModelAdmin']['SEARCHRESULTS'] = 'Résultats de la recherche';
+$lang['fr_FR']['ModelAdmin']['SELECTALL'] = 'tout sélectionner';
+$lang['fr_FR']['ModelAdmin']['SELECTNONE'] = 'ne rien sélectionner';
+$lang['fr_FR']['ModelAdmin']['UPDATEDRECORDS'] = '%s enregistrements mis à jour.';
+$lang['fr_FR']['ModelAdmin_ImportSpec.ss']['IMPORTSPECFIELDS'] = 'Les colonnes de la base de données';
+$lang['fr_FR']['ModelAdmin_ImportSpec.ss']['IMPORTSPECLINK'] = 'Voir les spécifications de %s';
+$lang['fr_FR']['ModelAdmin_ImportSpec.ss']['IMPORTSPECRELATIONS'] = 'Relations';
+$lang['fr_FR']['ModelAdmin_ImportSpec.ss']['IMPORTSPECTITLE'] = 'Spécification de %s';
+$lang['fr_FR']['ModelAdmin_left.ss']['ADDLISTING'] = 'Ajouter un listing';
+$lang['fr_FR']['ModelAdmin_left.ss']['ADD_TAB_HEADER'] = 'Ajouter';
+$lang['fr_FR']['ModelAdmin_left.ss']['IMPORT_TAB_HEADER'] = 'Importer';
+$lang['fr_FR']['ModelAdmin_left.ss']['SEARCHLISTINGS'] = 'Rechercher des Listings';
+$lang['fr_FR']['ModelAdmin_right.ss']['WELCOME1'] = 'Bienvenue à %s. Veuillez choisir une des entrées dans le panneau de gauche.';
+$lang['fr_FR']['TableListField_PageControls.ss']['DISPLAYING'] = 'Affichage';
+$lang['fr_FR']['TableListField_PageControls.ss']['OF'] = 'de';
+$lang['fr_FR']['TableListField_PageControls.ss']['TO'] = 'à';
+$lang['fr_FR']['TableListField_PageControls.ss']['VIEWFIRST'] = 'Voir le premier';
+$lang['fr_FR']['TableListField_PageControls.ss']['VIEWLAST'] = 'Voir le dernier';
+$lang['fr_FR']['TableListField_PageControls.ss']['VIEWNEXT'] = 'Voir le suivant';
+$lang['fr_FR']['TableListField_PageControls.ss']['VIEWPREVIOUS'] = 'Voir le précédent';
 
 ?>
