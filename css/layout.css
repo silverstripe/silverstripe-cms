@@ -26,7 +26,6 @@ body {
 
 #TreeActions {
 	background: #eee;
-	border-bottom: 1px solid #ccc;
 	float: left;
 	width: 100%;
 }
@@ -72,10 +71,12 @@ li.action button {
 	input.action:hover,
 	button.action:hover,
 	li.action input:hover,
-	li.action button:hover {
+	li.action button:hover,
+	li.selected input,
+	li.selected button {
 		background: #fff;
 	}
-	
+
 	.ajaxActions input.disabled {
 		color: #666;
 	}
