@@ -18,11 +18,16 @@ TinyMCEImageEnhancement.prototype = {
         Event.observe($('FolderCancel'),'click',this.onFolderCancel.bind(this)); 
         Event.observe($('UploadFiles'),'click',this.onUpload.bind(this));
 
-		// Image alignment/style changing link
-		Event.observe($('ImageAligmentStyle_left'),'click',this.onChangeImageAlignmentStyle.bind(this));
-		Event.observe($('ImageAligmentStyle_leftAlone'),'click',this.onChangeImageAlignmentStyle.bind(this));
-		Event.observe($('ImageAligmentStyle_right'),'click',this.onChangeImageAlignmentStyle.bind(this));
-		Event.observe($('ImageAligmentStyle_center'),'click',this.onChangeImageAlignmentStyle.bind(this));
+		jQuery("#ImageAligmentStyle a").click(function() {
+			id = jQuery(this).attr('id');
+			jQuery(this).siblings().removeClass('selected');
+			jQuery(this).addClass('selected');
+			// get alignment from id, e.g. ImageAlignment_center -> center
+			aligment = id.split('_')[1];
+			$('Form_EditorToolbarImageForm_CSSClass').value = aligment;
+			
+			return false;
+		});
     },   
     
     /**
@@ -47,17 +52,6 @@ TinyMCEImageEnhancement.prototype = {
 	        }
 	    }
     },
-
-	onChangeImageAlignmentStyle: function(event) {
-		Event.stop(event);
-		id = event.target.id ;
-		jQuery(event.target).siblings().removeClass('selected');
-		jQuery(event.target).addClass('selected');
-		
-		// get alignment from id, e.g. ImageAlignment_center -> center
-		aligment = id.split('_')[1];
-		$('Form_EditorToolbarImageForm_CSSClass').value = aligment;
-	},
     
     /**
      * Called when user clicks "add folder" anchor. 
