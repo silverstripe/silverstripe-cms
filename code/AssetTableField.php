@@ -106,9 +106,7 @@ class AssetTableField extends ComplexTableField {
 
 			$tab->push(
 				new LiteralField("ImageFull",
-					'<a id="ImageEditorActivator" href="javascript: void(0)">' . "<img id='thumbnailImage' src='{$thumbnail}?r=" . rand(1,100000)  . "' alt='{$childData->Name}' /><p>"._t('AssetTableField.EDITIMAGE', 'Edit this image')."</p>" . '</a>' .
-					'<script type="text/javascript" src="cms/javascript/ImageEditor/Activator.js"></script><script type="text/javascript">var imageActivator = new ImageEditor.Activator.initialize();Event.observe("ImageEditorActivator","click",imageActivator.onOpen);</script>'
-				)
+					"<img id='thumbnailImage' src='{$thumbnail}?r=" . rand(1,100000)  . "' alt='{$childData->Name}' />"				)
 			);
 
 			if(class_exists('GalleryFile')) {
