@@ -41,6 +41,10 @@ class CommentAdmin extends LeftAndMain {
 		$section = substr($url, strrpos($url, '/') + 1);
 		
 		if($section != 'approved' && $section != 'unmoderated' && $section != 'spam') {
+			$section = Session::get('CommentsSection');
+		}
+		
+		if($section != 'approved' && $section != 'unmoderated' && $section != 'spam') {
 			$section = 'approved';
 		}
 		
