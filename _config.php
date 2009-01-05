@@ -7,7 +7,6 @@
  */
 Director::addRules(50, array(
 	'processes//$Action/$ID/$Batch' => 'BatchProcess_Controller',
-	'silverstripe' => '->admin',
 	'cms' => '->admin',
 	'admin/help//$Action/$ID' => 'CMSHelp',
 	'admin/ReportField//$Action/$ID/$Type/$OtherID' => 'ReportField_Controller',
