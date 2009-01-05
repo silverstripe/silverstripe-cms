@@ -530,6 +530,9 @@ iframe {
 }
 
 /* IMAGE ALIGNMENT in the right panel */
+#ImageAlignmentStyles_Wrapper {
+	padding-left: 3px;
+}
 #ImageAligmentStyle {
 	clear: both;
 	padding-top: 8px;
@@ -538,6 +541,8 @@ iframe {
 	#ImageAligmentStyle label{
 		display: block;
 		color: #666666;
+		font-size: 11px;
+		line-height: 18px;
 	}
 	#ImageAligmentStyle a {
 		float: left;
