@@ -18,7 +18,7 @@ class LeftAndMain extends Controller {
 	 *
 	 * @var string $url_base
 	 */
-	protected static $url_base = "admin";
+	static $url_base = "admin";
 	
 	static $url_segment;
 	
@@ -65,10 +65,40 @@ class LeftAndMain extends Controller {
 	);
 	
 	/**
+	 * @param Member $member
+	 * @return boolean
+	 */
+	function canView($member = null) {
+		if(!$member && $member !== FALSE) {
+			$member = Member::currentUser();
+		}
+		
+		// cms menus only for logged-in members
+		if(!$member) return false;
+		
+		// alternative decorated checks
+		if($this->hasMethod('alternateAccessCheck')) {
+			$alternateAllowed = $this->alternateAccessCheck();
+			if($alternateAllowed === FALSE) return false;
+		}
+			
+		// Default security check for LeftAndMain sub-class permissions
+		if(!Permission::checkMember($member, "CMS_ACCESS_$this->class")) {
+			return false;
+		}
+		
+		return true;
+	}
+	
+	/**
 	 * @uses LeftAndMainDecorator->init()
 	 * @uses LeftAndMainDecorator->accessedCMS()
+	 * @uses CMSMenu
+	 * @uses Director::set_site_mode()
 	 */
 	function init() {
+		parent::init();
+
 		Director::set_site_mode('cms');
 		
 		// set language
@@ -77,44 +107,50 @@ class LeftAndMain extends Controller {
 			i18n::set_locale($member->Locale);
 		}
 		
+		// can't be done in cms/_config.php as locale is not set yet
+		CMSMenu::add_link(
+			'Help', 
+			_t('LeftAndMain.HELP', 'Help', PR_HIGH, 'Menu title'), 
+			'http://userhelp.silverstripe.com'
+		);
+		
 		// set reading lang
 		if(Translatable::is_enabled() && !Director::is_ajax()) {
 			Translatable::choose_site_lang(array_keys(i18n::get_existing_content_languages('SiteTree')));
 		}
 
-		parent::init();
-		
 		// Allow customisation of the access check by a decorator
-		if($this->hasMethod('alternateAccessCheck')) {
-			$isAllowed = $this->alternateAccessCheck();
-			
-		// Default security check for LeftAndMain sub-class permissions
-		} else {
-			$isAllowed = Permission::check("CMS_ACCESS_$this->class");
-			if(!$isAllowed && $this->class == 'CMSMain') {
-				// When access /admin/, we should try a redirect to another part of the admin rather than be locked out
-				$menu = $this->MainMenu();
-				if(($first = $menu->First()) && $first->Link) {
-					Director::redirect($first->Link);
+		if(!$this->canView()) {
+			// When access /admin/, we should try a redirect to another part of the admin rather than be locked out
+			$menu = $this->MainMenu();
+			foreach($menu as $candidate) {
+				if(
+					$candidate->Link && 
+					$candidate->Link != $this->Link() 
+					&& $candidate->MenuItem->controller 
+					&& singleton($candidate->MenuItem->controller)->canView()
+				) {
+					return Director::redirect($candidate->Link);
 				}
 			}
-		}
-
-		// Don't continue if there's already been a redirection request.
-		if(Director::redirected_to()) return;
-
-		// Access failure!		
-		if(!$isAllowed) {
+			
+			if(Member::currentUser()) {
+				Session::set("BackURL", null);
+			}
+			
+			// if no alternate menu items have matched, return a permission error
 			$messageSet = array(
 				'default' => _t('LeftAndMain.PERMDEFAULT',"Please choose an authentication method and enter your credentials to access the CMS."),
 				'alreadyLoggedIn' => _t('LeftAndMain.PERMALREADY',"I'm sorry, but you can't access that part of the CMS.  If you want to log in as someone else, do so below"),
 				'logInAgain' => _t('LeftAndMain.PERMAGAIN',"You have been logged out of the CMS.  If you would like to log in again, enter a username and password below."),
 			);
 
-			Security::permissionFailure($this, $messageSet);
-			return;
+			return Security::permissionFailure($this, $messageSet);
 		}
-		
+
+		// Don't continue if there's already been a redirection request.
+		if(Director::redirected_to()) return;
+
 		// Audit logging hook
 		if(empty($_REQUEST['executeForm']) && !Director::is_ajax()) $this->extend('accessedCMS');
 		
@@ -279,6 +315,17 @@ class LeftAndMain extends Controller {
 	public function getMenuTitle() {
 		return ($this->stat('menu_title')) ? $this->stat('menu_title') : preg_replace('/Admin$/', '', $this->class);
 	}
+	
+	/**
+ 	* Returns the menu title for the given LeftAndMain subclass.
+ 	* Implemented static so that we can get this value without instantiating an object.
+ 	* Menu title is *not* internationalised.
+ 	*/
+	static function menu_title_for_class($class) {
+		$title = eval("return $class::\$menu_title;");
+		if(!$title) $title = preg_replace('/Admin$/', '', $class);
+		return $title;
+	}
 
 	public function show($params) {
 		if($params['ID']) $this->setCurrentPageID($params['ID']);
@@ -336,16 +383,16 @@ class LeftAndMain extends Controller {
 
 		// Encode into DO set
 		$menu = new DataObjectSet();
-		foreach(singleton('CMSMenu') as $code => $menuItem) {
-			if(isset($menuItem->controller) && $this->hasMethod('alternateMenuDisplayCheck')) {
-				$isAllowed = $this->alternateMenuDisplayCheck($menuItem->controller);
-			} elseif(isset($menuItem->controller)) {
-				$isAllowed = Permission::check("CMS_ACCESS_" . $menuItem->controller);
-			} else {
-				$isAllowed = true;
+		$menuItems = CMSMenu::get_viewable_menu_items();
+		if($menuItems) foreach($menuItems as $code => $menuItem) {
+			// alternate permission checks (in addition to LeftAndMain->canView())
+			if(
+				isset($menuItem->controller) 
+				&& $this->hasMethod('alternateMenuDisplayCheck')
+				&& !$this->alternateMenuDisplayCheck($menuItem->controller)
+			) {
+				continue;
 			}
-
-			if(!$isAllowed) continue;
 
 			$linkingmode = "";
 			
@@ -366,13 +413,14 @@ class LeftAndMain extends Controller {
 			// context, so doesn't respect the current user locale in _t() calls - as a workaround,
 			// we simply call getMenuTitle() again if we're dealing with a controller
 			if($menuItem->controller) {
-				$controllerObj = singleton($menuItem->controller);
-				$title = $controllerObj->getMenuTitle();
+				$defaultTitle = LeftAndMain::menu_title_for_class($menuItem->controller);
+				$title = _t("{$menuItem->controller}.MENUTITLE", $defaultTitle);
 			} else {
 				$title = $menuItem->title;
 			}
 			
 			$menu->push(new ArrayData(array(
+				"MenuItem" => $menuItem,
 				"Title" => Convert::raw2xml($title),
 				"Code" => $code,
 				"Link" => $menuItem->url,
@@ -612,7 +660,18 @@ JS;
 				$newClass = $record->ClassName;
 				$publishedRecord = $record->newClassInstance($newClass);
 
-				return $this->tellBrowserAboutPublicationChange($publishedRecord, "Published '$record->Title' successfully");
+				return $this->tellBrowserAboutPublicationChange(
+					$publishedRecord, 
+					sprintf(
+						_t(
+							'LeftAndMain.STATUSPUBLISHEDSUCCESS', 
+							"Published '%s' successfully",
+							PR_MEDIUM,
+							'Status message after publishing a page, showing the page title'
+						),
+						$record->Title
+					)
+				);
 			} else {
 				// BUGFIX: Changed icon only shows after Save button is clicked twice http://support.silverstripe.com/gsoc/ticket/76
 				$title = Convert::raw2js($record->TreeTitle());

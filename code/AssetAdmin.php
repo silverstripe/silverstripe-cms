@@ -139,7 +139,8 @@ JS
 	 * Return the form object shown in the uploadiframe.
 	 */
 	function UploadForm() {
-
+		// disabled flash upload javascript (CMSMain_upload()) below,
+		// see r54952 (originally committed in r42014)
 		$form = new Form($this,'UploadForm', new FieldSet(
 			new HiddenField("ID", "", $this->currentPageID()),
 			// needed because the button-action is triggered outside the iframe
@@ -154,7 +155,7 @@ JS
 				<script>
 					var multi_selector = new MultiSelector($('Form_UploadForm_FilesList'), null, $('Form_UploadForm_action_upload'));
 					multi_selector.addElement($('Form_UploadForm_Files-0'));
-                    new window.top.document.CMSMain_upload();
+                    //new window.top.document.CMSMain_upload();
 				</script>
 			")
 		), new FieldSet(
@@ -185,6 +186,8 @@ JS
 		$fileSizeWarnings = '';
 		$uploadErrors = '';
 		$jsErrors = '';
+		$status = '';
+		$statusMessage = '';
 		
 		foreach($processedFiles as $tmpFile) {
 			if($tmpFile['error'] == UPLOAD_ERR_NO_TMP_DIR) {
@@ -441,8 +444,9 @@ JS;
 
 		// Wrap the root if needs be
 		$rootLink = $this->Link() . 'show/root';
+		$baseUrl = Director::absoluteBaseURL() . "assets";
 		if(!isset($rootID)) {
-			$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-root\" class=\"Root\"><a href=\"$rootLink\"><strong>http://www.yoursite.com/assets</strong></a>"
+			$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-root\" class=\"Root\"><a href=\"$rootLink\"><strong>{$baseUrl}</strong></a>"
 			. $siteTreeList . "</li></ul>";
 		}
 

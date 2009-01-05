@@ -1,5 +1,5 @@
 if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
-	console.error('Class ss.i18n not defined');
+	if(typeof(console) != 'undefined') console.error('Class ss.i18n not defined');
 } else {
 	ss.i18n.addDictionary('en_US', {
 		'CMSMAIN.WARNINGSAVEPAGESBEFOREADDING' : "You have to save a page before adding children underneath it",
@@ -22,6 +22,7 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'ModelAdmin.SAVED': "Saved",
 		'ModelAdmin.REALLYDELETE': "Do you really want to delete?",
 		'ModelAdmin.DELETED': "Deleted",
-		'LeftAndMain.PAGEWASDELETED': "This page was deleted.  To edit a page, select it from the left."
+		'LeftAndMain.PAGEWASDELETED': "This page was deleted.  To edit a page, select it from the left.",
+		'LeftAndMain.CONFIRMUNSAVED': "Are you sure you want to navigate away from this page?\n\nWARNING: Your changes have not been saved.\n\nPress OK to continue, or Cancel to stay on the current page."
 	});
 }

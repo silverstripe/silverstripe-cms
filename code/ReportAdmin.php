@@ -39,10 +39,41 @@ class ReportAdmin extends LeftAndMain {
 				'Lang' => i18n::get_tinymce_lang()
 			));
 		}
+		// Always block the HtmlEditorField.js otherwise it will be sent with an ajax request
+		Requirements::block(SAPPHIRE_DIR . '/javascript/HtmlEditorField.js');
 	}
 	
 	public function getMenuTitle() {
 		return _t('LeftAndMain.REPORTS', 'Reports', PR_HIGH, 'Menu title');
+	}
+	
+	/**
+	 * Does the parent permission checks, but also
+	 * makes sure that instantiatable subclasses of
+	 * {@link Report} exist. By default, the CMS doesn't
+	 * include any Reports, so there's no point in showing
+	 * 
+	 * @param Member $member
+	 * @return boolean
+	 */
+	function canView($member = null) {
+		if(!$member && $member !== FALSE) {
+			$member = Member::currentUser();
+		}
+		
+		if(!parent::canView($member)) return false;
+		
+		$hasViewableSubclasses = false;
+		$subClasses = array_values(ClassInfo::subclassesFor('SSReport'));
+		foreach($subClasses as $subclass) {
+			// Remove abstract classes and LeftAndMain
+			$classReflection = new ReflectionClass($subclass);
+			if($classReflection->isInstantiable() && $subclass != 'SSReport') {
+				if(singleton($subclass)->canView()) $hasViewableSubclasses = true;
+			}			
+		}
+		
+		return $hasViewableSubclasses;
 	}
 	
 	/**

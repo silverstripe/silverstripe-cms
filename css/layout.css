@@ -76,6 +76,10 @@ li.action button {
 		background: #fff;
 	}
 	
+	.ajaxActions input.disabled {
+		color: #666;
+	}
+	
 	input.action.loading, input.action.loading:hover {
         padding-left: 22px;
         background: url(../images/network-save.gif) 3px 2px no-repeat;
@@ -96,6 +100,7 @@ input.loading {
 /* Overrides - TODO Find a better place to put them */
 form#Form_EditForm fieldset {
 	height: 100%;
+	border: none;
 }
 body.stillLoading select {
 	display: none;
@@ -426,6 +431,7 @@ iframe {
 	font-size: 12px;
 	border:1px solid #A7A7A7;
 	border-right: none;
+	overflow: hidden;
 }
 #contentPanel .thumbnailstrip {
 	border: none;
@@ -570,3 +576,28 @@ iframe {
 	text-indent: -9000px;
 
 }
+
+/**
+ * Messages (see sapphire/css/Form.css)
+ */
+.message {
+	margin: 1em 0;
+	padding: 0.5em;
+	font-weight: bold;
+	border: 1px black solid;
+	background-color: #B9FFB9;
+	border-color: #00FF00;
+}
+	.message.notice {
+		background-color: #FCFFDF;
+		border-color: #FF9300;
+	}
+	
+	.message.warning {
+		background-color: #FFD2A6;
+		border-color: #FF9300;
+	}
+	.message.bad {
+		background-color: #FF8080;
+		border-color: #FF0000;
+	}

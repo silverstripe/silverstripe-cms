@@ -23,7 +23,7 @@ class RebuildStaticCacheTask extends Controller {
 		}
 		
 		
-		if($_GET['urls']) $urls = $_GET['urls'];
+		if(!empty($_GET['urls'])) $urls = $_GET['urls'];
 		else $urls = $page->allPagesToCache();
 		
 		$this->rebuildCache($urls, true);

@@ -9,6 +9,7 @@ body.ModelAdmin #left {
 }
 
 body.ModelAdmin #Form_AddForm fieldset {
+	border: none;
 }
 
 body.ModelAdmin #Form_AddForm #ClassName {
@@ -97,7 +98,8 @@ body.ModelAdmin #right table.results td.active {
 }
 
 body.ModelAdmin #right .tab {
-	height: 450px; /* @todo add dynamic resizing */
+	overflow: hidden;
+	padding-bottom: 20px;
 }
 
 body.ModelAdmin #Form_ImportForm dt {

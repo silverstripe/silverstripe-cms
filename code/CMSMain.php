@@ -100,6 +100,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				'SpellcheckLangs' => '+' . implode(',', $spellcheckSpec)
 			));
 		}
+		// Always block the HtmlEditorField.js otherwise it will be sent with an ajax request
+		Requirements::block(SAPPHIRE_DIR . '/javascript/HtmlEditorField.js');
 		
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.js');
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain_left.js');
@@ -338,6 +340,14 @@ JS;
 			if($instance->stat('need_permission') && !$this->can(singleton($class)->stat('need_permission'))) continue;
 
 			$addAction = $instance->i18n_singular_name();
+			
+			// if we're in translation mode, the link between the translated pagetype
+			// title and the actual classname might not be obvious, so we add it in parantheses
+			// Example: class "RedirectorPage" has the title "Weiterleitung" in German,
+			// so it shows up as "Weiterleitung (RedirectorPage)"
+			if(i18n::get_locale() != 'en_US') {
+				$addAction .= " ({$class})";
+			}
 
 			$result->push(new ArrayData(array(
 				'ClassName' => $class,
@@ -421,7 +431,10 @@ JS;
 			$form->loadDataFrom($record);
 			$form->disableDefaultAction();
 
-			if(!$record->canEdit() || $record->IsDeletedFromStage) $form->makeReadonly();
+			if(!$record->canEdit() || $record->IsDeletedFromStage) {
+				$readonlyFields = $form->Fields()->makeReadonly();
+				$form->setFields($readonlyFields);
+			}
 
 			return $form;
 		} else if($id) {
@@ -561,12 +574,21 @@ JS;
 		$record->doPublish();
 	}
 
+	/**
+ 	 * Reverts a page by publishing it to live.
+ 	 * Use {@link restorepage()} if you want to restore a page
+ 	 * which was deleted from draft without publishing.
+ 	 * 
+ 	 * @uses SiteTree->doRevertToLive()
+	 */
 	public function revert($urlParams, $form) {
 		$id = (int)$_REQUEST['ID'];
 		$record = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree_Live\".\"ID\" = {$id}");
 
-		// if the user can't publish, he shouldn't be able to revert a page (and hence copy the last stored revision to the live site)
+		// a user can restore a page without publication rights, as it just adds a new draft state
+		// (this action should just be available when page has been "deleted from draft")
 		if(isset($record) && $record && !$record->canEdit()) return Security::permissionFailure($this);
+
 		$record->doRevertToLive();
 
 		$title = Convert::raw2js($record->Title);
@@ -830,6 +852,7 @@ HTML;
 		$id = $this->urlParams['ID'];
 		$version = str_replace('&ajax=1','',$this->urlParams['OtherID']);
 		$record = Versioned::get_version("SiteTree", $id, $version);
+		$versionAuthor = DataObject::get_by_id('Member', $record->AuthorID);
 
 		if($record) {
 			if($record && !$record->canView()) return Security::permissionFailure($this);
@@ -839,8 +862,25 @@ HTML;
 
 			$fields->push(new HiddenField("ID"));
 			$fields->push(new HiddenField("Version"));
-			$fields->push(new HeaderField('YouAreViewingHeader', sprintf(_t('CMSMain.VIEWING',"You are viewing version #%d, created %s"),
-														  $version, $record->obj('LastEdited')->Ago())));
+			$fields->insertBefore(
+				new LiteralField(
+					'YouAreViewingHeader', 
+					'<p class="message notice">' .
+					sprintf(
+						_t(
+							'CMSMain.VIEWING',
+							"You are viewing version #%s, created %s by %s",
+							PR_MEDIUM,
+							'Version number is a linked string, created is a relative time (e.g. 2 days ago), by a specific author'
+						),
+						"<a href=\"admin/getversion/$record->ID/$version\" title=\"" . $versionAuthor->Title . "\">$version</a>", 
+						$record->obj('LastEdited')->Ago(),
+						$versionAuthor->Title
+					) .
+					'</p>'
+				),
+				'Root'
+			);
 
 			$actions = new FieldSet(
 				new FormAction("email", _t('CMSMain.EMAIL',"Email")),
@@ -864,23 +904,33 @@ HTML;
 				"ID" => $id,
 				"Version" => $version,
 			));
-			$form->makeReadonly();
+			
+			// historical version shouldn't be editable
+			$readonlyFields = $form->Fields()->makeReadonly();
+			$form->setFields($readonlyFields);
 
 			$templateData = $this->customise(array(
 				"EditForm" => $form
 			));
 
 			SSViewer::setOption('rewriteHashlinks', false);
-			$result = $templateData->renderWith($this->class . '_right');
-			$parts = split('</?form[^>]*>', $result);
-			return $parts[sizeof($parts)-2];
+			
+			if(Director::is_ajax()) {
+				$result = $templateData->renderWith($this->class . '_right');
+				$parts = split('</?form[^>]*>', $result);
+				return $parts[sizeof($parts)-2];
+			} else {
+				return $templateData->renderWith('LeftAndMain');
+			}
+			
+			
 		}
 	}
 
 	function compareversions() {
-		$id = $this->urlParams['ID'];
-		$version1 = $_REQUEST['From'];
-		$version2 = $_REQUEST['To'];
+		$id = (int)$this->urlParams['ID'];
+		$version1 = (int)$_REQUEST['From'];
+		$version2 = (int)$_REQUEST['To'];
 
 		if( $version1 > $version2 ) {
 			$toVersion = $version1;
@@ -894,11 +944,31 @@ HTML;
 		if($page && !$page->canView()) return Security::permissionFailure($this);
 		
 		$record = $page->compareVersions($fromVersion, $toVersion);
+		$fromVersionRecord = Versioned::get_version('SiteTree', $id, $fromVersion);
+		$toVersionRecord = Versioned::get_version('SiteTree', $id, $toVersion);
+		
 		if($record) {
+			$fromDateNice = $fromVersionRecord->obj('LastEdited')->Ago();
+			$toDateNice = $toVersionRecord->obj('LastEdited')->Ago();
+			$fromAuthor = DataObject::get_by_id('Member', $fromVersionRecord->AuthorID);
+			$toAuthor = DataObject::get_by_id('Member', $toVersionRecord->AuthorID);
+
 			$fields = $record->getCMSFields($this);
 			$fields->push(new HiddenField("ID"));
 			$fields->push(new HiddenField("Version"));
-			$fields->insertBefore(new HeaderField('YouAreComparingHeader',sprintf(_t('CMSMain.COMPARINGV',"You are comparing versions #%d and #%d"),$fromVersion,$toVersion)), "Root");
+			$fields->insertBefore(
+				new LiteralField(
+					'YouAreComparingHeader',
+					'<p class="message notice">' . 
+					sprintf(
+						_t('CMSMain.COMPARINGV',"Comparing versions %s and %s"),
+						"<a href=\"admin/getversion/$id/$fromVersionRecord->Version\" title=\"$fromAuthor->Title\">$fromVersionRecord->Version</a> <small>($fromDateNice)</small>",
+						"<a href=\"admin/getversion/$id/$toVersionRecord->Version\" title=\"$toAuthor->Title\">$toVersionRecord->Version</a> <small>($toDateNice)</small>"
+					) .
+					'</p>'
+				), 
+				"Root"
+			);
 
 			$actions = new FieldSet();
 
@@ -908,7 +978,11 @@ HTML;
 				"ID" => $id,
 				"Version" => $fromVersion,
 			));
-			$form->makeReadonly();
+			
+			// comparison views shouldn't be editable
+			$readonlyFields = $form->Fields()->makeReadonly();
+			$form->setFields($readonlyFields);
+			
 			foreach($form->Fields()->dataFields() as $field) {
 				$field->dontEscape = true;
 			}
@@ -1233,16 +1307,24 @@ HTML;
 		return $response;
 	}
 
+	/**
+	 * Restore a previously deleted page.
+	 * Internal action which shouldn't be executed through URL-handlers.
+	 */
 	function restorepage() {
 		if($id = $this->urlParams['ID']) {
 			$restoredPage = Versioned::get_latest_version("SiteTree", $id);
 			$restoredPage->ID = $restoredPage->RecordID;
+
+			// if no record can be found on draft stage (meaning it has been "deleted from draft" before),
+			// create an empty record
 			if(!DB::query("SELECT \"ID\" FROM \"SiteTree\" WHERE \"ID\" = $restoredPage->ID")->value()) {
 				DB::query("INSERT INTO \"SiteTree\" (\"ID\") VALUES ($restoredPage->ID)");
 			}
+			
 			$restoredPage->forceChange();
 			$restoredPage->writeWithoutVersion();
-			Debug::show($restoredPage);
+			
 		}	else {
 			echo _t('CMSMain.VISITRESTORE',"visit restorepage/(ID)",PR_LOW,'restorepage/(ID) should not be translated (is an URL)');
 		}
@@ -1391,10 +1473,25 @@ JS
 		$classes = ClassInfo::subclassesFor('LeftAndMain');
 
 		foreach($classes as $class) {
-		        $perms["CMS_ACCESS_" . $class] = sprintf(_t('CMSMain.ACCESS', "Access to %s in CMS"), $class);
+			$title = _t("{$class}.MENUTITLE", LeftAndMain::menu_title_for_class($class));
+	        $perms["CMS_ACCESS_" . $class] = sprintf(
+				_t(
+					'CMSMain.ACCESS', 
+					"Access to '%s' (%s)",
+					PR_MEDIUM,
+					"Item in permission selection identifying the admin section, with title and classname. Example: Access to 'Files & Images' (AssetAdmin)"
+				), 
+				$title,
+				$class
+			);
 		}
+		$perms["CMS_ACCESS_LeftAndMain"] = _t(
+			'CMSMain.ACCESSALLINTERFACES', 
+			'Access to all CMS interfaces'
+		);
 		return $perms;
 	}
+	
 	/**
 	 * Return a dropdown with existing languages
 	 */

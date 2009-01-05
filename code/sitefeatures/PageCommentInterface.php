@@ -122,6 +122,8 @@ class PageCommentInterface extends RequestHandler {
 			$fields->push(new TextField("Name", _t('PageCommentInterface.YOURNAME', 'Your name')));
 		}
 				
+		// optional commenter URL
+		$fields->push(new TextField("CommenterURL", _t('PageCommentInterface.COMMENTERURL', "Your website URL")));
 		
 		if(MathSpamProtection::isEnabled()){
 			$fields->push(new TextField("Math", sprintf(_t('PageCommentInterface.SPAMQUESTION', "Spam protection question: %s"), MathSpamProtection::getMathQuestion())));

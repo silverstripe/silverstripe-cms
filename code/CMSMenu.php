@@ -1,11 +1,12 @@
 <?php
 /**
- * The object manages the main CMS menu
+ * The object manages the main CMS menu.
+ * See {@link LeftAndMain::init()} for example usage.
  * 
  * @package cms
  * @subpackage content
  */
-class CMSMenu extends Object implements Iterator
+class CMSMenu extends Object implements Iterator, i18nEntityProvider
 {
 
 	protected static $menu_items = array();
@@ -21,7 +22,6 @@ class CMSMenu extends Object implements Iterator
 		}
 		return true;
 	}
-
 	
 	/**
 	 * Add a LeftAndMain controller to the CMS menu.
@@ -32,25 +32,38 @@ class CMSMenu extends Object implements Iterator
 	 *			when the item is removed. Functionality needed in {@link Director}.
 	 */	
 	public static function add_controller($controllerClass) {
-		$controller = singleton($controllerClass);
+		// Get static bits
+		$urlBase = eval("return $controllerClass::\$url_base;");
+		$urlSegment = eval("return $controllerClass::\$url_segment;");
+		$urlRule = eval("return $controllerClass::\$url_rule;");
+		$urlPriority = eval("return $controllerClass::\$url_priority;");
+		$menuPriority = eval("return $controllerClass::\$menu_priority;");
 
-		$link = $controller->Link();
-		if(substr($link,-1) == '/') $link = substr($link,0,-1);
-		$subRule = $controller->stat('url_rule', true);
-		if($subRule[0] == '/') $subRule = substr($subRule,1);
-		$rule = $link . '//' . $subRule;
-		
-		Director::addRules($controller->stat('url_priority', true), array(
+		// Don't add menu items defined the old way
+		if($urlSegment === null) return;
+
+		$link = Controller::join_links($urlBase,$urlSegment) . '/';
+
+		// Make director rule
+		if($urlRule[0] == '/') $urlRule = substr($urlRule,1);
+		$rule = $link . '/' . $urlRule; // the / will combine with the / on the end of $link to make a //
+		Director::addRules($urlPriority, array(
 			$rule => $controllerClass
-			
 		));
 		
+		// doesn't work if called outside of a controller context (e.g. in _config.php)
+		// as the locale won't be detected properly. Use {@link LeftAndMain->MainMenu()} to update
+		// titles for existing menu entries
+		$defaultTitle = LeftAndMain::menu_title_for_class($controllerClass);
+		$menuTitle = _t("{$controllerClass}.MENUTITLE", $defaultTitle);
+		
+		// Add menu item
 		return self::add_menu_item(
 			$controllerClass, 
-			$controller->getMenuTitle(), 
-			$controller->Link(), 
+			$menuTitle, 
+			$link, 
 			$controllerClass,
-			$controller->stat('menu_priority')
+			$menuPriority
 		);
 	}
 	
@@ -109,6 +122,31 @@ class CMSMenu extends Object implements Iterator
 	 */
 	public static function get_menu_items() {
 		return self::$menu_items;
+	}
+	
+	/**
+	 * Get all menu items that the passed member can view.
+	 * Defaults to {@link Member::currentUser()}.
+	 * 
+	 * @param Member $member
+	 * @return array
+	 */
+	public static function get_viewable_menu_items($member = null) {
+		if(!$member && $member !== FALSE) {
+			$member = Member::currentUser();
+		}
+		
+		$viewableMenuItems = array();
+		$allMenuItems = self::get_menu_items();
+		if($allMenuItems) foreach($allMenuItems as $code => $menuItem) {
+			// exclude all items which have a controller to perform permission
+			// checks on
+			if($menuItem->controller && !singleton($menuItem->controller)->canView($member)) continue;
+			
+			$viewableMenuItems[$code] = $menuItem;
+		}
+		
+		return $viewableMenuItems;
 	}
 	
 	/**
@@ -183,12 +221,7 @@ class CMSMenu extends Object implements Iterator
 			$classReflection = new ReflectionClass($className);
 			if(!$classReflection->isInstantiable() || 'LeftAndMain' == $className) {
 				unset($subClasses[$key]);
-			} else {
-				if(singleton($className)->getMenuTitle() == '') {
-					unset($subClasses[$key]);
-				}
-			}
-			
+			}			
 		}
 		return $subClasses;
 	}
@@ -213,6 +246,19 @@ class CMSMenu extends Object implements Iterator
 	public function valid() {
 		return (bool)self::current();
 	}
-	
+
+	/**
+	 * Provide menu titles to the i18n entity provider
+	 */
+	function provideI18nEntities() {
+		$cmsClasses = self::get_cms_classes();
+		$entities = array();
+		foreach($cmsClasses as $cmsClass) {
+			$defaultTitle = LeftAndMain::menu_title_for_class($cmsClass);
+			$ownerModule = i18n::get_owner_module($cmsClass);
+			$entities["{$cmsClass}.MENUTITLE"] = array($defaultTitle, PR_HIGH, 'Menu title', $ownerModule);
+		}
+		return $entities;
+	}
 }
 ?>

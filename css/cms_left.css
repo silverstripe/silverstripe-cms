@@ -15,6 +15,7 @@
 #ReportSelector_holder select {
 	float: left;
 	margin-right: 3px;
+	padding: 1px;
 }
 #left form.actionparms input.action {
 	width: 5%;
@@ -201,7 +202,6 @@ ul.tree span.a span.modified,
 }
 .listpane ul li {
 	list-style-type: none;
-	padding: 5px 2px 5px 2px;
 	font-size: 10px;
 	border-bottom: 1px #CCC dotted;
 	background-color: #FFF;
@@ -217,6 +217,19 @@ ul.tree span.a span.modified,
 .listpane div.unitBody {
 	overflow: auto;
 	width: 100%;
+}
+
+.listpane li a {
+	display: block;
+	padding: 5px;
+}
+
+.listpane input.action {
+	padding: 0;
+}
+
+.listpane p.message {
+	padding: 5px;
 }
 
 

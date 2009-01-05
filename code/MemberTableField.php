@@ -54,7 +54,7 @@ class MemberTableField extends ComplexTableField {
   	}
 
 	function __construct($controller, $name, $group, $members = null, $hidePassword = true, $pageLimit = 10) {
-
+		
 		if($group) {
 			if(is_object($group)) {
 				$this->group = $group;
@@ -191,9 +191,10 @@ class MemberTableField extends ComplexTableField {
 	function addtogroup() {
 		$data = $_REQUEST;
 		unset($data['ID']);
+		$ctfID = isset($data['ctf']) ? $data['ctf']['ID'] : null;
 
-		if(!is_numeric($data['ctf']['ID'])) {
-		  FormResponse::status_messsage(_t('MemberTableField.ADDINGFIELD', 'Adding failed'), 'bad');
+		if(!is_numeric($ctfID)) {
+			FormResponse::status_messsage(_t('MemberTableField.ADDINGFIELD', 'Adding failed'), 'bad');
 		}
 
 		$className = Object::getCustomClass($this->stat('data_class'));
@@ -202,13 +203,10 @@ class MemberTableField extends ComplexTableField {
 		$record->update($data);
 		
 		$valid = $record->validate();
+
 		if($valid->valid()) {
 			$record->write();
-
-			// To Avoid duplication in the Group_Members table if the ComponentSet.php is not modified just uncomment le line below
-
-			//if( ! $record->inGroup( $data['ctf']['ID'] ) )
-				$record->Groups()->add( $data['ctf']['ID'] );
+			$record->Groups()->add($ctfID);
 
 			$this->sourceItems();
 

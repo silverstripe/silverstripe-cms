@@ -9,7 +9,8 @@ class PageComment extends DataObject {
 		"Name" => "Varchar(200)",
 		"Comment" => "Text",
 		"IsSpam" => "Boolean",
-		"NeedsModeration" => "Boolean"
+		"NeedsModeration" => "Boolean",
+		"CommenterURL" => "Varchar(255)"	
 	);
 
 	static $has_one = array(
@@ -116,6 +117,29 @@ class PageComment extends DataObject {
 		$labels['NeedsModeration'] = _t('PageComment.NeedsModeration', 'Needs Moderation?');
 		
 		return $labels;
+	}
+	
+	/**
+	 * This method is called just before this object is
+	 * written to the database.
+	 * 
+	 * Specifically, make sure "http://" exists at the start
+	 * of the URL, if it doesn't have https:// or http://
+	 */
+	public function onBeforeWrite() {
+		parent::onBeforeWrite();
+		
+		$url = $this->CommenterURL;
+		
+		if($url) {
+			if(substr($url, 0, 8) != 'https://') {
+				if(substr($url, 0, 7) != 'http://') {
+					$url = $this->CommenterURL = 'http://' . $url;
+				}
+			}
+		}
+		
+		$this->CommenterURL = strtolower($url);
 	}
 	
 }
@@ -227,6 +251,7 @@ class PageComment_Controller extends Controller {
 			}
 		}
 	}
+	
 }
 
 ?>

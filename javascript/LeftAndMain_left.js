@@ -169,7 +169,10 @@ TreeNodeAPI.prototype = {
 		}
 		
 
-		new Ajax.Request(SiteTreeHandlers.loadTree_url + '&ajax=1&ID=' + this.getIdx(), {
+		var url = SiteTreeHandlers.loadTree_url;
+		url += (url.match(/\?/)) ? '&' : '?';
+		url += 'ajax=1&ID=' + this.getIdx();
+		new Ajax.Request(url, {
 			onSuccess : this.installSubtree.bind(this),
 			onFailure : this.showSubtreeLoadingError
 		});
