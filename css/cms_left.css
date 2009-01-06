@@ -21,7 +21,7 @@
 	width: 5%;
 }
 
-#deletepage_options p {
+#Form_DeleteItemsForm p {
 	margin: 4px 0;
 	font-size: 11px;
 	color: #666;
@@ -190,6 +190,10 @@ ul.tree span.a span.modified,
 #treepanes h2 img {
 	float:right;
 	margin-right: 2px;
+}
+
+#treepanes form .field {
+	margin: 0;
 }
 
 .listpane p {

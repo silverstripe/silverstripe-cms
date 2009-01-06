@@ -36,6 +36,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'delete',
 		'deletefromlive',
 		'deleteitems',
+		'DeleteItemsForm',
 		'dialog',
 		'duplicate',
 		'duplicatewithchildren',
@@ -45,6 +46,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'getversion',
 		'publishall',
 		'publishitems',
+		'PublishItemsForm',
 		'restorepage',
 		'revert',
 		'rollback',
@@ -1091,6 +1093,25 @@ HTML;
 
 		return FormResponse::respond();
 	}
+	
+	/**
+	 * @return Form
+	 */
+	public function PublishItemsForm() {
+		$form = new Form(
+			$this,
+			'PublishItemsForm',
+			new FieldSet(
+				new HiddenField('csvIDs'),
+				new CheckboxField('ShowDrafts', _t('CMSMain_left.ss.SHOWONLYCHANGED','Show only changed pages'))
+			),
+			new FieldSet(
+				new FormAction('publishitems', _t('CMSMain_left.ss.PUBLISHCONFIRM','Publish the selected pages'))
+			)
+		);
+		$form->addExtraClass('actionparams');
+		return $form;
+	}
 
 	/**
 	 * Delete a number of items.
@@ -1182,6 +1203,27 @@ HTML;
 		FormResponse::add('statusMessage("'.$message.'","good");');
 
 		return FormResponse::respond();
+	}
+	
+	/**
+	 * @return Form
+	 */
+	function DeleteItemsForm() {
+		$form = new Form(
+			$this,
+			'DeleteItemsForm',
+			new FieldSet(
+				new LiteralField('SelectedPagesNote',
+					sprintf('<p>%s</p>', _t('CMSMain_left.ss.SELECTPAGESACTIONS','Select the pages that you want to change &amp; then click an action:'))
+				),
+				new HiddenField('csvIDs')
+			),
+			new FieldSet(
+				new FormAction('deleteitems', _t('CMSMain_left.ss.DELETECONFIRM','Delete the selected pages'))
+			)
+		);
+		$form->addExtraClass('actionparams');
+		return $form;
 	}
 
 	function buildbrokenlinks() {

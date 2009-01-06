@@ -57,20 +57,9 @@
 				</div>
 			</form>
 			<div id="batchactionsforms" style="display: none">
-				<form class="actionparams" style="border:0" id="deletepage_options" action="admin/deleteitems">
-					<p><% _t('SELECTPAGESACTIONS','Select the pages that you want to change &amp; then click an action:') %></p>
-					<div>		
-					<input type="hidden" name="csvIDs" />
-					<input type="submit" id="action_delete_selected" class="action delete" value="<% _t('DELETECONFIRM','Delete the selected pages') %>" />
-					</div>
-				</form>
-				<form class="actionparams" style="border:0" id="publishpage_options" action="admin/publishitems">
-					<div>
-					<input type="hidden" name="csvIDs" />
-					<input type="checkbox" id="publishpage_show_drafts" /> <label for="publishpage_show_drafts"><% _t('SHOWONLYCHANGED','Show only changed pages') %></label>
-					<input type="submit" id="action_publish_selected" class="action" value="<% _t('PUBLISHCONFIRM','Publish the selected pages') %>" />
-					</div>
-				</form>
+				$DeleteItemsForm
+				$PublishItemsForm
+				
 			</div>
 			<% control DuplicatePagesOptionsForm %>
 			<form class="actionparams" id="duplicate_options" style="display: none" action="admin/duplicateSiteTree">

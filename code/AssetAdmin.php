@@ -32,6 +32,7 @@ class AssetAdmin extends LeftAndMain {
 		'addfolder',
 		'deletefolder',
 		'deletemarked',
+		'DeleteItemsForm',
 		'deleteUnusedThumbnails',
 		'doUpload',
 		'getfile',
@@ -539,6 +540,28 @@ JS;
 		} else {
 			Director::redirectBack();
 		}
+	}
+	
+	/**
+	 * @return Form
+	 */
+	function DeleteItemsForm() {
+		$form = new Form(
+			$this,
+			'DeleteItemsForm',
+			new FieldSet(
+				new LiteralField('SelectedPagesNote',
+					sprintf('<p>%s</p>', _t('AssetAdmin_left.ss.SELECTTODEL','Select the folders that you want to delete and then click the button below'))
+				),
+				new HiddenField('csvIDs')
+			),
+			new FieldSet(
+				new FormAction('deletefolder', _t('AssetAdmin_left.ss.DELFOLDERS','Delete the selected folders'))
+			)
+		);
+		$form->addExtraClass('actionparams');
+		
+		return $form;
 	}
 	
 	/**

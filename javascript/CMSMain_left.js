@@ -290,7 +290,7 @@ batchActionGlobals = {
  * Publish selected pages action
  */
 publishpage = Class.create();
-publishpage.applyTo('#publishpage_options');
+publishpage.applyTo('#Form_PublishItemsForm');
 publishpage.prototype = {
 	onsubmit : function() {
 		csvIDs = batchActionGlobals.getCsvIds();
@@ -300,11 +300,11 @@ publishpage.prototype = {
 			statusMessage(ss.i18n._t('CMSMAIN.PUBLISHINGPAGES'));
 			
 			// Put an AJAXY loading icon on the button
-			$('action_publish_selected').className = 'loading';
+			$('Form_PublishItemsForm_action_publishitems').className = 'loading';
 			Ajax.SubmitForm(this, null, {
 				onSuccess :  function(response) {
 					Ajax.Evaluator(response);
-					$('action_publish_selected').className = '';
+					$('Form_PublishItemsForm_action_publishitems').className = '';
 					treeactions.closeSelection($('batchactions'));
 				},
 				onFailure : function(response) {
@@ -324,7 +324,7 @@ publishpage.prototype = {
  * Delete selected pages action
  */
 deletepage = Class.create();
-deletepage.applyTo('#deletepage_options');
+deletepage.applyTo('#Form_DeleteItemsForm');
 deletepage.prototype = {
 	onsubmit : function() {
 		csvIDs = batchActionGlobals.getCsvIds();
@@ -352,11 +352,11 @@ deletepage.prototype = {
 				
 				batchActionGlobals.newNodes = new Array();
 				// Put an AJAXY loading icon on the button
-				$('action_delete_selected').className = 'loading';
+				$('Form_DeleteItemsForm_action_deleteitems').className = 'loading';
 				Ajax.SubmitForm(this, null, {
 					onSuccess : function(response) {
 						Ajax.Evaluator(response);
-						$('action_delete_selected').className = '';
+						$('Form_DeleteItemsForm_action_deleteitems').className = '';
 						treeactions.closeSelection($('batchactions'));
 					},
 					onFailure : function(response) {

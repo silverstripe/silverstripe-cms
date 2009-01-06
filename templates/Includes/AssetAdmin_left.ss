@@ -12,13 +12,7 @@
 				</div>
 			</form>
 		
-			<form class="actionparams" id="deletepage_options" style="display: none" action="admin/assets/deletefolder">
-				<p><% _t('SELECTTODEL','Select the folders that you want to delete and then click the button below') %></p>
-				<div>		
-				<input type="hidden" name="csvIDs" />
-				<input type="submit" value="<% _t('DELFOLDERS','Delete the selected folders') %>" />
-				</div>
-			</form>
+			$DeleteItemsForm
 		
 			<form class="actionparams" id="sortitems_options" style="display: none">
 				<p id="sortitems_message" style="margin: 0"><% _t('TOREORG','To reorganise your folders, drag them around as desired.') %></p>

@@ -11,7 +11,7 @@ SiteTreeHandlers.controller_url = 'admin/assets';
 
 var _HANDLER_FORMS = {
 	addpage : 'addpage_options',
-	deletepage : 'deletepage_options',
+	deletepage : 'Form_DeleteItemsForm',
 	sortitems : 'sortitems_options'
 };
 
@@ -330,7 +330,7 @@ deletefolder = {
 	button_onclick : function() {
 		if(treeactions.toggleSelection(this)) {
 			deletefolder.o1 = $('sitetree').observeMethod('SelectionChanged', deletefolder.treeSelectionChanged);
-			deletefolder.o2 = $('deletepage_options').observeMethod('Close', deletefolder.popupClosed);
+			deletefolder.o2 = $('Form_DeleteItemsForm').observeMethod('Close', deletefolder.popupClosed);
 			
 			addClass($('sitetree'),'multiselect');
 
@@ -367,7 +367,7 @@ deletefolder = {
 	popupClosed : function() {
 		removeClass($('sitetree'),'multiselect');
 		$('sitetree').stopObserving(deletefolder.o1);
-		$('deletepage_options').stopObserving(deletefolder.o2);
+		$('Form_DeleteItemsForm').stopObserving(deletefolder.o2);
 
 		for(var idx in deletefolder.selectedNodes) {
 			if(deletefolder.selectedNodes[idx]) {
@@ -391,11 +391,11 @@ deletefolder = {
 		}
 		
 		if(csvIDs) {
-			$('deletepage_options').elements.csvIDs.value = csvIDs;
+			$('Form_DeleteItemsForm').elements.csvIDs.value = csvIDs;
 			
 			statusMessage('deleting pages');
 
-			Ajax.SubmitForm('deletepage_options', null, {
+			Ajax.SubmitForm('Form_DeleteItemsForm', null, {
 				onSuccess : deletefolder.submit_success,
 				onFailure : function(response) {
 					errorMessage('Error deleting pages', response);
@@ -464,11 +464,12 @@ Behaviour.register({
  */
 appendLoader(function () {
 	// Set up delete page
-	Observable.applyTo($('deletepage_options'));
+	Observable.applyTo($('Form_DeleteItemsForm'));
 	if($('deletepage')) {
 		$('deletepage').onclick = deletefolder.button_onclick;
 		$('deletepage').getElementsByTagName('button')[0].onclick = function() { return false; };
-		$('deletepage_options').onsubmit = deletefolder.form_submit;
+		$('Form_DeleteItemsForm').onsubmit = deletefolder.form_submit;
+		Element.hide('Form_DeleteItemsForm');
 	}
 	
 	new CheckBoxRange($('Form_EditForm'), 'Files[]');
