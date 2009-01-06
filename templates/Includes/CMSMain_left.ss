@@ -61,15 +61,6 @@
 				$PublishItemsForm
 				
 			</div>
-			<% control DuplicatePagesOptionsForm %>
-			<form class="actionparams" id="duplicate_options" style="display: none" action="admin/duplicateSiteTree">
-				<p><% _t('SELECTPAGESDUP','Select the pages that you want to duplicate, whether it\'s children should be included, and where you want the duplicates placed') %></p>
-				<div>		
-					<input type="hidden" name="csvIDs" />
-					<input type="submit" value="Duplicate" />
-				</div>
-			</form>
-			<% end_control %>
 			<div id="SortItems">
 					<input type="checkbox" id="sortitems" /> <label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
 			</div>
