@@ -5,7 +5,7 @@
  * @package cms
  * @subpackage core
  */
-abstract class SiteTreeDecorator extends Extension {
+abstract class LeftAndMainDecorator extends Extension {
 
 	function init() {
 	}
