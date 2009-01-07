@@ -11,6 +11,8 @@ class CommentTableField extends ComplexTableField {
 	function __construct($controller, $name, $sourceClass, $mode, $fieldList, $detailFormFields = null, $sourceFilter = "", $sourceSort = "Created", $sourceJoin = "") {
 		$this->mode = $mode;
 		
+		Session::set('CommentsSection', $mode);
+		
 		parent::__construct($controller, $name, $sourceClass, $fieldList, $detailFormFields, $sourceFilter, $sourceSort, $sourceJoin);
 		
 		$this->Markable = true;

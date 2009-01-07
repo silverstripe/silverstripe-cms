@@ -1,5 +1,5 @@
 #left form.actionparams {
-	background: #ccc;
+	background: #eee;
 	padding: 3px 5px;
 }
 #left form.actionparams input,
@@ -400,6 +400,10 @@ ul.tree li.untranslated a:visited {
 
 #SortItems {
 	border-bottom: 1px solid #cccccc;
-	background: #CCCCCC none repeat scroll 0%;
+	background: #eee none repeat scroll 0%;
 	padding: 3px 0 3px 7px;
 }
+	#SortItems #sortitems {
+		float: left;
+		margin-right: 3px;
+	}

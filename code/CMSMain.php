@@ -376,6 +376,7 @@ JS;
 				// $record = Versioned::get_one_by_stage($treeClass, "Live", "\"$treeClass\".\"ID\" = $id");
 				Versioned::reading_stage('Live');
 				singleton($treeClass)->flushCache();
+
 				$record = DataObject::get_one( $treeClass, "\"$treeClass\".\"ID\" = $id");
 				if($record) Versioned::reading_stage(null);
 			}
@@ -821,6 +822,7 @@ HTML;
 
 		$JS_stageURL = $page->IsDeletedFromStage ? '' : Convert::raw2js($page->AbsoluteLink());
 		$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree\".\"ID\" = $page->ID");
+
 		$JS_liveURL = $liveRecord ? Convert::raw2js($liveRecord->AbsoluteLink()) : '';
 
 		FormResponse::add($this->getActionUpdateJS($page));
