@@ -440,6 +440,12 @@ iframe {
 	height: 120px;
 	overflow-y: auto;	
 }
+
+#Caption {
+	margin: 0;
+	text-align: right;
+}
+
 #contentPanel fieldset {
 	padding: 5px;
 }
