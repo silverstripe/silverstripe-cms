@@ -396,8 +396,8 @@ div.originallang_holder.field.CompositeField.nolabel {
 	padding-right: 4px;
 }
 
-.right form div.createTranslationButton {
-	clear: right;
+.right form .field.createTranslationButton .middleColumn {
+	background: none;
 }
 
 .translatingMessage {
