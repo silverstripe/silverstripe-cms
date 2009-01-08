@@ -22,6 +22,34 @@ class Page_Controller extends ContentController {
 		Requirements::themedCSS("form"); 
 	}
 	
+	/**
+	 * Site search form 
+	 */ 
+	function SearchForm() {
+		$searchText = isset($_REQUEST['Search']) ? $_REQUEST['Search'] : 'Search';
+		$fields = new FieldSet(
+	      	new TextField("Search", "", $searchText)
+	  	);
+		$actions = new FieldSet(
+	      	new FormAction('results', 'Search')
+	  	);
+
+	  	return new SearchForm($this, "SearchForm", $fields, $actions);
+	}
+	
+	/**
+	 * Process and render search results
+	 */
+	function results($data, $form){
+	  	$data = array(
+	     	'Results' => $form->getResults(),
+	     	'Query' => $form->getSearchQuery(),
+	      	'Title' => 'Search Results'
+	  	);
+
+	  	return $this->customise($data)->renderWith(array('Page_results', 'Page'));
+	}
+	
 }
 
 ?>
