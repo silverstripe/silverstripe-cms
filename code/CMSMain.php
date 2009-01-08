@@ -450,6 +450,10 @@ JS;
 		$parent = isset($_REQUEST['ParentID']) ? $_REQUEST['ParentID'] : 0;
 		$suffix = isset($_REQUEST['Suffix']) ? "-" . $_REQUEST['Suffix'] : null;
 
+		if(!$parent && isset($_REQUEST['Parent'])) {
+			$page = SiteTree::get_by_url($_REQUEST['Parent']);
+			if($page) $parent = $page->ID;
+		}
 
 		if(is_numeric($parent)) $parentObj = DataObject::get_by_id("SiteTree", $parent);
 		if(!$parentObj || !$parentObj->ID) $parent = 0;
