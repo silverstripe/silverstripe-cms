@@ -79,6 +79,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function init() {
 		parent::init();
 		
+		if(Translatable::is_enabled()) {
+			$this->Lang = $this->requestParams["lang"] ? $this->requestParams["lang"] : Translatable::default_lang();
+			Translatable::set_reading_lang($this->Lang);
+		}
+		
 		// collect languages for TinyMCE spellchecker plugin
 		if(Translatable::is_enabled()) {
 			$spellcheckLangs = Translatable::get_existing_content_languages();
@@ -472,6 +477,7 @@ JS;
 	 */
 	public function getNewItem($id, $setID = true) {
 		list($dummy, $className, $parentID, $suffix) = array_pad(explode('-',$id),4,null);
+		
 		if(Translatable::is_enabled()) {
 			if (!Translatable::is_default_lang()) {
 				$originalItem = Translatable::get_original($className,Session::get("{$id}_originalLangID"));
@@ -483,6 +489,7 @@ JS;
 				return $originalItem;
 			}
 		}
+		
 		$newItem = new $className();
 
 	    if( !$suffix ) {
