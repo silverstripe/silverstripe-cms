@@ -46,7 +46,7 @@ class RebuildStaticCacheTask extends Controller {
 		}
 		$urls = array_unique($urls);
 		
-		if($removeAll) {
+		if($removeAll && file_exists("../cache")) {
 			echo "Removing old cache... \n";
 			flush();
 			Filesystem::removeFolder("../cache", true);
