@@ -81,7 +81,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		// collect languages for TinyMCE spellchecker plugin
 		if(Translatable::is_enabled()) {
-			$spellcheckLangs = i18n::get_existing_content_languages();
+			$spellcheckLangs = Translatable::get_existing_content_languages();
 		} else {
 			$defaultLang = Translatable::default_lang();
 			$spellcheckLangs = array($defaultLang => i18n::get_language_name($defaultLang));
@@ -1188,7 +1188,7 @@ JS;
 		
 		return $response;
 	}
-
+	
 	/**
 	 * Restore a previously deleted page.
 	 * Internal action which shouldn't be executed through URL-handlers.
@@ -1376,7 +1376,7 @@ JS
 	 * Return a dropdown with existing languages
 	 */
 	function LangSelector() {
-		$langs = i18n::get_existing_content_languages('SiteTree');
+		$langs = Translatable::get_existing_content_languages('SiteTree');
 				
 		return new DropdownField("LangSelector","Language",$langs,Translatable::current_lang());
 	}
@@ -1385,7 +1385,7 @@ JS
 	 * Determine if there are more than one languages in our site tree
 	 */
 	function MultipleLanguages() {
-		$langs = i18n::get_existing_content_languages('SiteTree');
+		$langs = Translatable::get_existing_content_languages('SiteTree');
 
 		return (count($langs) > 1);
 	}
