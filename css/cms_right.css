@@ -379,9 +379,11 @@ div.originallang_holder.field.CompositeField.nolabel {
 	font-style: italic;
 }
 
-.right form .field.CompositeField .originallang label.left {
+.right form .field.CompositeField .originallang label.left,
+.right form .field.CompositeField.originallang_holder label.left {
 	margin-left: 0;
 	width: auto;
+	float: none;
 }
 
 .right form div.field.CompositeField .originallang .middleColumn {
