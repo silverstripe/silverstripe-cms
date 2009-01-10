@@ -82,8 +82,18 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function init() {
 		parent::init();
 		
+		// "Lang" attribute is either explicitly added by LeftAndMain Javascript logic,
+		// or implied on a translated record (see {@link Translatable->updateCMSFields()}).
 		if(Translatable::is_enabled()) {
-			$this->Lang = $this->requestParams["lang"] ? $this->requestParams["lang"] : Translatable::default_lang();
+			// $Lang serves as a "context" which can be inspected by Translatable - hence it
+			// has the same name as the database property on Translatable.
+			if($this->getRequest()->requestVar("Lang")) {
+				$this->Lang = $this->getRequest()->requestVar("Lang");
+			} elseif($this->getRequest()->requestVar("lang")) {
+				$this->Lang = $this->getRequest()->requestVar("lang");
+			} else {
+				$this->Lang = Translatable::default_lang();
+			}
 			Translatable::set_reading_lang($this->Lang);
 		}
 		
@@ -487,14 +497,13 @@ JS;
 		list($dummy, $className, $parentID, $suffix) = array_pad(explode('-',$id),4,null);
 		
 		if(Translatable::is_enabled()) {
-			if (!Translatable::is_default_lang()) {
-				$originalItem = Translatable::get_original($className,Session::get("{$id}_originalLangID"));
-				if ($setID) $originalItem->ID = $id;
-				else {
-					$originalItem->ID = null;
-					Translatable::creating_from(Session::get($id.'_originalLangID'));
-				}
-				return $originalItem;
+			if (Translatable::default_lang() != $this->Lang) {
+				Translatable::set_reading_lang(Translatable::default_lang());
+				$originalItem = DataObject::get_by_id($className,$suffix);
+				Translatable::set_reading_lang($this->Lang);
+				$translation = $originalItem->getTranslation($this->Lang);
+				if($setID) $translation->ID = $id;
+				return $translation;
 			}
 		}
 		
@@ -1425,62 +1434,32 @@ HTML;
 		//is it's a clean switch (to an existing language deselect the current page)
 		if (is_string($lang)) $dontunloadPage = true;
 		$lang = (is_string($lang) ? $lang : urldecode($this->urlParams['ID']));
+
+		$this->Lang = $lang;
+		Translatable::set_reading_lang($lang);
+
+		Translatable::set_reading_lang(Translatable::default_lang());
+		$siteTree = $this->getSiteTreeFor("SiteTree");
+		Translatable::set_reading_lang($lang);
+
 		if ($lang != Translatable::default_lang()) {
-			Translatable::set_reading_lang(Translatable::default_lang());
-			$tree_class = $this->stat('tree_class');
-			$obj = new $tree_class;
-			$allIDs = $obj->getDescendantIDList();
-			$allChildren = $obj->AllChildren();
-			$classesMap = $allChildren->map('ID','ClassName');
-			$titlesMap = $allChildren->map();
-			Translatable::set_reading_lang($lang);
-			$obj = new $tree_class;
-			$languageIDs = $obj->getDescendantIDList();
-			$notcreatedlist = array_diff($allIDs,$languageIDs);
-			FormResponse::add("$('addpage').getElementsByTagName('button')[0].disabled=true;");
-			FormResponse::add("$('Form_AddPageOptionsForm').getElementsByTagName('div')[1].getElementsByTagName('input')[0].disabled=true;");
+//			FormResponse::add("$('addpage').getElementsByTagName('button')[0].disabled=true;");
+//			FormResponse::add("$('Form_AddPageOptionsForm').getElementsByTagName('div')[1].getElementsByTagName('input')[0].disabled=true;");
 			FormResponse::add("$('Translating_Message').innerHTML = 'Translating mode - ".i18n::get_language_name($lang)."';");
 			FormResponse::add("Element.removeClassName('Translating_Message','nonTranslating');");
 		} else {
-			Translatable::set_reading_lang($lang);
-			FormResponse::add("$('addpage').getElementsByTagName('button')[0].disabled=false;");
-			FormResponse::add("$('Form_AddPageOptionsForm').getElementsByTagName('div')[1].getElementsByTagName('input')[0].disabled=false;");
+			Translatable::set_reading_lang(Translatable::default_lang());
+//			FormResponse::add("$('addpage').getElementsByTagName('button')[0].disabled=false;");
+//			FormResponse::add("$('Form_AddPageOptionsForm').getElementsByTagName('div')[1].getElementsByTagName('input')[0].disabled=false;");
 			FormResponse::add("Element.addClassName('Translating_Message','nonTranslating');");
 		}
-		$obj = singleton($this->stat('tree_class'));
-		$obj->markPartialTree();
-		$siteTree = $obj->getChildrenAsUL("", '
-					"<li id=\"record-$child->ID\" class=\"" . $child->CMSTreeClasses($extraArg) . "\">" .
-					"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" " . (($child->canEdit() || $child->canAddChildren()) ? "" : "class=\"disabled\"") . " title=\"' . _t('LeftAndMain.PAGETYPE') . '".$child->class."\" >" .
-					(Convert::raw2js($child->TreeTitle())) .
-					"</a>"
-'
-					,$this, true);
-
 		$rootLink = $this->Link() . '0';
-		$siteTree = "<li id=\"record-0\" class=\"Root nodelete\"><a href=\"$rootLink\">" .
-			 _t('LeftAndMain.SITECONTENT') . "</a>"
-			. $siteTree . "</li></ul>";
-		FormResponse::add("$('sitetree').innerHTML ='". ereg_replace("[\n]","\\\n",$siteTree) ."';");
+		FormResponse::add("$('sitetree').parentNode.innerHTML ='". ereg_replace("[\n]","\\\n",$siteTree) ."';");
 		FormResponse::add("SiteTree.applyTo('#sitetree');");
-		if (isset($notcreatedlist)) {
-			foreach ($notcreatedlist as $notcreated) {
-				if ($notcreated == $donotcreate) continue;
-				$id = "new-{$classesMap[$notcreated]}-0-$notcreated";
-				Session::set($id . '_originalLangID',$notcreated);
-				$treeTitle = Convert::raw2js($titlesMap[$notcreated]);	
-				$response = <<<JS
-					var tree = $('sitetree');
-					var newNode = tree.createTreeNode("$id", "$treeTitle", "$classesMap[$notcreated] (untranslated)");
-					addClass(newNode, 'untranslated');
-					node = tree.getTreeNodeByIdx(0);
-					node.open();
-					node.appendTreeNode(newNode);
-JS;
-				FormResponse::add($response);
-			}
-		}
+
+		FormResponse::add("$('sitetree').observeMethod('SelectionChanged', $('LangSelector_holder').onSelectionChanged.bind($('LangSelector_holder')));"); 
 		if (!isset($dontunloadPage)) FormResponse::add("node = $('sitetree').getTreeNodeByIdx(0); node.selectTreeNode();");
+
 		return FormResponse::respond();
 	}
 	
@@ -1499,24 +1478,44 @@ JS;
 		$record = $this->getRecord($originalLangID);
 	    $temporalID = "new-$record->RecordClassName-$record->ParentID-$originalLangID";
 		Session::set($temporalID . '_originalLangID',$originalLangID);
+		
 		$tree = $this->switchlanguage($langCode, $originalLangID);
+		
 		FormResponse::add(<<<JS
-		if (Element.hasClassName('LangSelector_holder','onelang')) {
-			Element.removeClassName('LangSelector_holder','onelang');
-			$('treepanes').resize();
-		}
-		if ($('LangSelector').options['$langCode'] == undefined) {
-			var option = document.createElement("option");
-			option.text = '$langName';
-			option.value = '$langCode';
-			$('LangSelector').options.add(option);
-		}
+if (Element.hasClassName('LangSelector_holder','onelang')) {
+	Element.removeClassName('LangSelector_holder','onelang');
+	$('treepanes').resize();
+}
+if ($('LangSelector').options['$langCode'] == undefined) {
+	var option = document.createElement("option");
+	option.text = '$langName';
+	option.value = '$langCode';
+	$('LangSelector').options.add(option);
+}
 JS
 		);
 		FormResponse::add("$('LangSelector').selectValue('$langCode');");
+		
+		// creating a record in-memory, which means setting the $Lang property
+		// will have no effect as the record is loaded through another javascript
+		// call and CMSMain->getitem(). The CMS submits the currently selected language
+		// through javascript, which will cause $Lang to be written to the database.
+		// @todo Explicitly set $Lang property for in-memory object so we don't need javascript modifying GET-calls to save the new object
 		$newrecord = clone $record;
 		$newrecord->ID = $temporalID;
+		$newrecord->Lang = $langCode;
 
+		//FormResponse::add("$('sitetree').getTreeNodeByIdx($originalLangID).selectTreeNode();");
+		
+		// @todo New node is currently added at the end of the tree,
+		// rather than replacing the position of the original page
+		FormResponse::add(<<<JS
+var oldNode = $('sitetree').getTreeNodeByIdx($record->ID);
+var oldParentNode = $('sitetree').getTreeNodeByIdx($record->ParentID);
+oldParentNode.removeTreeNode(oldNode);
+JS
+);
+		
 		return $this->returnItemToUser($newrecord);
 	}
 

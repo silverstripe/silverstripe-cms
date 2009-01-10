@@ -341,9 +341,9 @@ ul.contextMenu li a:hover {
 	text-decoration: none;
 }
 
-ul.tree li.untranslated a:link, 
-ul.tree li.untranslated a:hover, 
-ul.tree li.untranslated a:visited {
+ul.tree span.untranslated a:link, 
+ul.tree span.untranslated a:hover, 
+ul.tree span.untranslated a:visited {
 	color: #ccc
 }
 

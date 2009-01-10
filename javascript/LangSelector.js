@@ -8,19 +8,14 @@ LangSelectorClass.prototype = {
 
 	initialize: function() {
 		if(this.selectedIndex != 0) {
-			this.showlangtree();
 			_TRANSLATING_LANG = this.value;
 		}
-	},
-	
-	onshow: function() {
-		if(this.value) this.showlangtree();
 	},
 	
 	onchange: function(e, val) {
 		if(this.value != _TRANSLATING_LANG) {
 			_TRANSLATING_LANG = this.value;
-			this.showlangtree();
+			document.location = 'admin/?lang=' + this.value;
 		}
 	},
 
@@ -36,17 +31,6 @@ LangSelectorClass.prototype = {
 		    	this.add(newLang); // IE only
 		    }
 		    this.value = lang;
-		}
-	},
-
-	showlangtree: function() {
-		if(this.value) {
-			$('sitetree').innerHTML='&nbsp;<img src="cms/images/network-save.gif>&nbsp;loading...';
-			new Ajax.Request('admin/switchlanguage/' + this.value, {
-				method : 'post', 
-				onSuccess: Ajax.Evaluator,
-				onFailure : Ajax.Evaluator
-			});
 		}
 	}	
 };
