@@ -41,7 +41,6 @@ $lang['en_US']['AssetTableField']['CAPTION'] = 'Caption';
 $lang['en_US']['AssetTableField']['CREATED'] = 'First uploaded';
 $lang['en_US']['AssetTableField']['DIM'] = 'Dimensions';
 $lang['en_US']['AssetTableField']['DIMLIMT'] = 'Limit The Dimensions In The Popup Window';
-$lang['en_US']['AssetTableField']['EDITIMAGE'] = 'Edit this image';
 $lang['en_US']['AssetTableField']['FILENAME'] = 'Filename';
 $lang['en_US']['AssetTableField']['GALLERYOPTIONS'] = 'Gallery Options';
 $lang['en_US']['AssetTableField']['IMAGE'] = 'Image';

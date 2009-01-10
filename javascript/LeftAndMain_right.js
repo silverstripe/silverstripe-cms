@@ -300,6 +300,12 @@ CMSRightForm.prototype = {
 				var sep = (SiteTreeHandlers.loadPage_url.indexOf('?') == -1) ? '?' : '&';
 				url = SiteTreeHandlers.loadPage_url + sep + 'ID=' + id;
 			}
+			
+			// used to set language in CMSMain->init()
+			var lang = $('LangSelector') ? $F('LangSelector') : null;
+			if(lang) {
+			  url += '&lang='+lang;
+			}
 
 			statusMessage("loading...");
 			this.loadURLFromServer(url);

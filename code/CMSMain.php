@@ -82,9 +82,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function init() {
 		parent::init();
 		
+		if(Translatable::is_enabled()) {
+			$this->Lang = $this->requestParams["lang"] ? $this->requestParams["lang"] : Translatable::default_lang();
+			Translatable::set_reading_lang($this->Lang);
+		}
+		
 		// collect languages for TinyMCE spellchecker plugin
 		if(Translatable::is_enabled()) {
-			$spellcheckLangs = i18n::get_existing_content_languages();
+			$spellcheckLangs = Translatable::get_existing_content_languages();
 		} else {
 			$defaultLang = Translatable::default_lang();
 			$spellcheckLangs = array($defaultLang => i18n::get_language_name($defaultLang));
@@ -458,6 +463,10 @@ JS;
 		$parent = isset($_REQUEST['ParentID']) ? $_REQUEST['ParentID'] : 0;
 		$suffix = isset($_REQUEST['Suffix']) ? "-" . $_REQUEST['Suffix'] : null;
 
+		if(!$parent && isset($_REQUEST['Parent'])) {
+			$page = SiteTree::get_by_url($_REQUEST['Parent']);
+			if($page) $parent = $page->ID;
+		}
 
 		if(is_numeric($parent)) $parentObj = DataObject::get_by_id("SiteTree", $parent);
 		if(!$parentObj || !$parentObj->ID) $parent = 0;
@@ -476,6 +485,7 @@ JS;
 	 */
 	public function getNewItem($id, $setID = true) {
 		list($dummy, $className, $parentID, $suffix) = array_pad(explode('-',$id),4,null);
+		
 		if(Translatable::is_enabled()) {
 			if (!Translatable::is_default_lang()) {
 				$originalItem = Translatable::get_original($className,Session::get("{$id}_originalLangID"));
@@ -487,6 +497,7 @@ JS;
 				return $originalItem;
 			}
 		}
+		
 		$newItem = new $className();
 
 	    if( !$suffix ) {
@@ -1350,7 +1361,7 @@ HTML;
 		
 		return $response;
 	}
-
+	
 	/**
 	 * Restore a previously deleted page.
 	 * Internal action which shouldn't be executed through URL-handlers.
@@ -1540,7 +1551,7 @@ JS
 	 * Return a dropdown with existing languages
 	 */
 	function LangSelector() {
-		$langs = i18n::get_existing_content_languages('SiteTree');
+		$langs = Translatable::get_existing_content_languages('SiteTree');
 				
 		return new DropdownField("LangSelector","Language",$langs,Translatable::current_lang());
 	}
@@ -1549,7 +1560,7 @@ JS
 	 * Determine if there are more than one languages in our site tree
 	 */
 	function MultipleLanguages() {
-		$langs = i18n::get_existing_content_languages('SiteTree');
+		$langs = Translatable::get_existing_content_languages('SiteTree');
 
 		return (count($langs) > 1);
 	}

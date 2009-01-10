@@ -40,7 +40,8 @@ if((typeof tinyMCE != 'undefined')) {
 
 		safari_warning : false,
 		relative_urls : true,
-		verify_html : true
+		verify_html : true,
+		use_native_selects : true // fancy selects are bug as of SS 2.3.0
 	});
 }
 

@@ -116,7 +116,7 @@ class LeftAndMain extends Controller {
 		
 		// set reading lang
 		if(Translatable::is_enabled() && !Director::is_ajax()) {
-			Translatable::choose_site_lang(array_keys(i18n::get_existing_content_languages('SiteTree')));
+			Translatable::choose_site_lang(array_keys(Translatable::get_existing_content_languages('SiteTree')));
 		}
 
 		// Allow customisation of the access check by a decorator
@@ -461,7 +461,7 @@ class LeftAndMain extends Controller {
 
 	function getSiteTreeFor($className, $rootID = null) {
 		$obj = $rootID ? $this->getRecord($rootID) : singleton($className);
-		$obj->markPartialTree();
+		$obj->markPartialTree(null, $this);
 		if($p = $this->currentPage()) $obj->markToExpose($p);
 
 		// getChildrenAsUL is a flexible and complex way of traversing the tree
