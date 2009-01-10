@@ -496,6 +496,9 @@ StageLink.prototype = {
 		} else {
 			if(this.id != 'viewArchivedSite') this.style.display = 'none';
 		}
+		if($('Form_EditForm_Lang')) {
+			this.href += "&lang=" + $('Form_EditForm_Lang').value;
+		}
 	},
 	onclick : function() {
 		var w = window.open(this.href, windowName('site'));
