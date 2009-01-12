@@ -61,12 +61,6 @@ $lang['en_US']['AssetTableField.ss']['DELFILE'] = 'Delete this file';
 $lang['en_US']['AssetTableField.ss']['DRAGTOFOLDER'] = 'Drag to folder on left to move file';
 $lang['en_US']['AssetTableField.ss']['EDIT'] = 'Edit asset';
 $lang['en_US']['AssetTableField.ss']['SHOW'] = 'Show asset';
-$lang['en_US']['CMSLeft.ss']['DELPAGE'] = 'Delete Pages...';
-$lang['en_US']['CMSLeft.ss']['DELPAGES'] = 'Delete the selected pages';
-$lang['en_US']['CMSLeft.ss']['GO'] = 'Go';
-$lang['en_US']['CMSLeft.ss']['NEWPAGE'] = 'New Page...';
-$lang['en_US']['CMSLeft.ss']['SELECTPAGESDEL'] = 'Select the pages that you want to delete and then click the button below';
-$lang['en_US']['CMSLeft.ss']['SITECONT'] = 'Site Content';
 $lang['en_US']['CMSMain']['ACCESS'] = array(
 	'Access to \'%s\' (%s)',
 	PR_MEDIUM,
@@ -94,6 +88,8 @@ $lang['en_US']['CMSMain']['NEW'] = array(
 	'"New " followed by a className'
 );
 $lang['en_US']['CMSMain']['NOCONTENT'] = 'no content';
+$lang['en_US']['CMSMain']['NOTHINGASSIGNED'] = 'You have nothing assigned to you.';
+$lang['en_US']['CMSMain']['NOWAITINGON'] = 'You aren\'t waiting on anybody.';
 $lang['en_US']['CMSMain']['NOWBROKEN'] = '  The following pages now have broken links:';
 $lang['en_US']['CMSMain']['NOWBROKEN2'] = 'Their owners have been emailed and they will fix up those pages.';
 $lang['en_US']['CMSMain']['OK'] = 'OK';
@@ -128,6 +124,11 @@ $lang['en_US']['CMSMain']['ROLLBACK'] = 'Roll back to this version';
 $lang['en_US']['CMSMain']['ROLLEDBACKPUB'] = 'Rolled back to published version. New version number is #%d';
 $lang['en_US']['CMSMain']['ROLLEDBACKVERSION'] = 'Rolled back to version #%d.  New version number is #%d';
 $lang['en_US']['CMSMain']['SAVE'] = 'Save';
+$lang['en_US']['CMSMain']['SENTTO'] = array(
+	'Sent to %s %s for approval.',
+	PR_LOW,
+	'First param is first name, and second is surname'
+);
 $lang['en_US']['CMSMain']['STATUSOPT'] = 'Status';
 $lang['en_US']['CMSMain']['TOTALPAGES'] = 'Total pages: ';
 $lang['en_US']['CMSMain']['VERSIONSNOPAGE'] = array(
@@ -144,6 +145,8 @@ $lang['en_US']['CMSMain']['VISITRESTORE'] = array(
 	PR_LOW,
 	'restorepage/(ID) should not be translated (is an URL)'
 );
+$lang['en_US']['CMSMain']['WAITINGON'] = 'You are waiting on other people to work on these <b>%d</b> pages.';
+$lang['en_US']['CMSMain']['WORKTODO'] = 'You have work to do on these <b>%d</b> pages.';
 $lang['en_US']['CMSMain_dialog.ss']['BUTTONNOTFOUND'] = 'Couldn\'t find the button name';
 $lang['en_US']['CMSMain_dialog.ss']['NOLINKED'] = 'Can\'t find window.linkedObject to send the button click back to the main window';
 $lang['en_US']['CMSMain_left.ss']['ADDEDNOTPUB'] = 'Added to the draft site and not published yet';
@@ -180,7 +183,6 @@ $lang['en_US']['CMSMain_left.ss']['SEARCH'] = array(
 );
 $lang['en_US']['CMSMain_left.ss']['SEARCHTITLE'] = 'Search through URL, Title, Menu Title, &amp; Content';
 $lang['en_US']['CMSMain_left.ss']['SELECTPAGESACTIONS'] = 'Select the pages that you want to change &amp; then click an action:';
-$lang['en_US']['CMSMain_left.ss']['SELECTPAGESDUP'] = 'Select the pages that you want to duplicate, whether it\'s children should be included, and where you want the duplicates placed';
 $lang['en_US']['CMSMain_left.ss']['SHOWONLYCHANGED'] = 'Show only changed pages';
 $lang['en_US']['CMSMain_left.ss']['SHOWUNPUB'] = 'Show unpublished versions';
 $lang['en_US']['CMSMain_left.ss']['SITECONTENT TITLE'] = array(
@@ -188,16 +190,19 @@ $lang['en_US']['CMSMain_left.ss']['SITECONTENT TITLE'] = array(
 	PR_HIGH
 );
 $lang['en_US']['CMSMain_left.ss']['SITEREPORTS'] = 'Site Reports';
+$lang['en_US']['CMSMain_right.ss']['ANYMESSAGE'] = 'Do you have any message for your editor?';
 $lang['en_US']['CMSMain_right.ss']['CHOOSEPAGE'] = 'Please choose a page from the left.';
+$lang['en_US']['CMSMain_right.ss']['LOADING'] = 'loading...';
+$lang['en_US']['CMSMain_right.ss']['MESSAGE'] = 'Message';
+$lang['en_US']['CMSMain_right.ss']['SENDTO'] = 'Send to';
+$lang['en_US']['CMSMain_right.ss']['STATUS'] = 'Status';
+$lang['en_US']['CMSMain_right.ss']['SUBMIT'] = 'Submit for approval';
 $lang['en_US']['CMSMain_right.ss']['WELCOMETO'] = 'Welcome to';
 $lang['en_US']['CMSMain_versions.ss']['AUTHOR'] = 'Author';
 $lang['en_US']['CMSMain_versions.ss']['NOTPUB'] = 'Not published';
 $lang['en_US']['CMSMain_versions.ss']['PUBR'] = 'Publisher';
 $lang['en_US']['CMSMain_versions.ss']['UNKNOWN'] = 'Unknown';
 $lang['en_US']['CMSMain_versions.ss']['WHEN'] = 'When';
-$lang['en_US']['CMSRight.ss']['CHOOSEPAGE'] = 'Please choose a page from the left.';
-$lang['en_US']['CMSRight.ss']['ECONTENT'] = 'Edit Content';
-$lang['en_US']['CMSRight.ss']['WELCOMETO'] = 'Welcome to';
 $lang['en_US']['CommentAdmin']['ACCEPT'] = 'Accept';
 $lang['en_US']['CommentAdmin']['APPROVED'] = 'Accepted %s comments.';
 $lang['en_US']['CommentAdmin']['APPROVEDCOMMENTS'] = 'Approved Comments';
@@ -228,6 +233,9 @@ $lang['en_US']['CommentAdmin_SiteTree.ss']['SPAM'] = 'Spam';
 $lang['en_US']['CommentAdmin_left.ss']['COMMENTS'] = 'Comments';
 $lang['en_US']['CommentAdmin_right.ss']['WELCOME1'] = 'Welcome to the';
 $lang['en_US']['CommentAdmin_right.ss']['WELCOME2'] = 'comment management. Please select a folder in the tree on the left.';
+$lang['en_US']['CommentList.ss']['CREATEDW'] = 'Comments are created whenever one of the \'workflow actions\'
+	are undertaken - Publish, Reject, Submit.';
+$lang['en_US']['CommentList.ss']['NOCOM'] = 'There are no comments on this page.';
 $lang['en_US']['CommentTableField']['FILTER'] = 'Filter';
 $lang['en_US']['CommentTableField']['SEARCH'] = 'Search';
 $lang['en_US']['CommentTableField.ss']['APPROVE'] = 'approve';
@@ -265,6 +273,16 @@ $lang['en_US']['ImageEditor.ss']['UNDO'] = 'undo';
 $lang['en_US']['ImageEditor.ss']['UNTITLED'] = 'Untitled Document';
 $lang['en_US']['ImageEditor.ss']['WIDTH'] = 'width';
 $lang['en_US']['LeftAndMain']['CHANGEDURL'] = '  Changed URL to \'%s\'';
+$lang['en_US']['LeftAndMain']['COMMENTS'] = array(
+	'Comments',
+	PR_HIGH,
+	'Menu title'
+);
+$lang['en_US']['LeftAndMain']['FILESIMAGES'] = array(
+	'Files & Images',
+	PR_HIGH,
+	'Menu title'
+);
 $lang['en_US']['LeftAndMain']['HELP'] = array(
 	'Help',
 	PR_HIGH,
@@ -275,9 +293,24 @@ $lang['en_US']['LeftAndMain']['PERMAGAIN'] = 'You have been logged out of the CM
 $lang['en_US']['LeftAndMain']['PERMALREADY'] = 'I\'m sorry, but you can\'t access that part of the CMS.  If you want to log in as someone else, do so below';
 $lang['en_US']['LeftAndMain']['PERMDEFAULT'] = 'Enter your email address and password to access the CMS.';
 $lang['en_US']['LeftAndMain']['PLEASESAVE'] = 'Please Save Page: This page could not be upated because it hasn\'t been saved yet.';
+$lang['en_US']['LeftAndMain']['REPORTS'] = array(
+	'Reports',
+	PR_HIGH,
+	'Menu title'
+);
 $lang['en_US']['LeftAndMain']['REQUESTERROR'] = 'Error in request';
 $lang['en_US']['LeftAndMain']['SAVED'] = 'saved';
 $lang['en_US']['LeftAndMain']['SAVEDUP'] = 'Saved';
+$lang['en_US']['LeftAndMain']['SECURITY'] = array(
+	'Security',
+	PR_HIGH,
+	'Menu title'
+);
+$lang['en_US']['LeftAndMain']['SITECONTENT'] = array(
+	'Site Content',
+	PR_HIGH,
+	'Menu title'
+);
 $lang['en_US']['LeftAndMain']['SITECONTENTLEFT'] = array(
 	'Site Content',
 	PR_HIGH,
@@ -508,6 +541,7 @@ $lang['en_US']['ViewArchivedEmail.ss']['HAVEASKED'] = array(
 	30,
 	'Followed by a date'
 );
+$lang['en_US']['WaitingOn.ss']['ATO'] = 'assigned to';
 $lang['en_US']['WidgetAreaEditor.ss']['AVAILABLE'] = 'Available Widgets';
 $lang['en_US']['WidgetAreaEditor.ss']['INUSE'] = 'Widgets currently used';
 $lang['en_US']['WidgetAreaEditor.ss']['NOAVAIL'] = 'There are currently no widgets available.';
