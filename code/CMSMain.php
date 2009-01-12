@@ -149,6 +149,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$this->generateDataTreeHints();
 		$this->generateTreeStylingJS();
 
+		// Pre-cache sitetree version numbers for querying efficiency
+		Versioned::prepopulate_versionnumber_cache("SiteTree", "Stage");
+		Versioned::prepopulate_versionnumber_cache("SiteTree", "Live");
+
 		return $this->getSiteTreeFor("SiteTree");
 	}
 
@@ -175,6 +179,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * Returns a filtered Site Tree
 	 */
 	public function filtersitetree() {
+		// Pre-cache sitetree version numbers for querying efficiency
+		Versioned::prepopulate_versionnumber_cache("SiteTree", "Stage");
+		Versioned::prepopulate_versionnumber_cache("SiteTree", "Live");
+		
 		$className = 'SiteTree';
 		$rootID = null;
 		$obj = $rootID ? $this->getRecord($rootID) : singleton($className);
