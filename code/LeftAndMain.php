@@ -455,7 +455,7 @@ class LeftAndMain extends Controller {
 
 	function getSiteTreeFor($className, $rootID = null) {
 		$obj = $rootID ? $this->getRecord($rootID) : singleton($className);
-		$obj->markPartialTree(null, $this);
+		$obj->markPartialTree(30, $this);
 		if($p = $this->currentPage()) $obj->markToExpose($p);
 
 		// getChildrenAsUL is a flexible and complex way of traversing the tree
