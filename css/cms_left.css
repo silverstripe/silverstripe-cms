@@ -397,7 +397,7 @@ ul.tree li.untranslated a:visited {
 #SortItems {
 	border-bottom: 1px solid #cccccc;
 	background: #eee none repeat scroll 0%;
-	padding: 3px 0 3px 7px;
+	padding: 3px 0 5px 7px;
 }
 	#SortItems #sortitems {
 		float: left;
