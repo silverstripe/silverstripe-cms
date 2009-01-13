@@ -231,7 +231,7 @@ TinyMCEImageEnhancement.prototype = {
             destHeight = imgTag.className.match(/destheight=([0-9.\-]+)([, ]|$)/) ? RegExp.$1 : null;
         } catch(er) {
         }
-        TinyMCE_AdvancedTheme._insertImage(relativeHref, altText, 0, null, null, destWidth, destHeight, null, null, cssClass);
+        TinyMCE_AdvancedTheme._insertImage(relativeHref, altText, 0, '', '', destWidth, destHeight, '', '', cssClass);
     },
     
     /**
