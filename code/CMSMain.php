@@ -628,7 +628,7 @@ JS;
 		if(Director::is_ajax()) {
 			// need a valid ID value even if the record doesn't have one in the database
 			// (its still present in the live tables)
-			$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree_Live\".\"ID\" = $recordID");
+			$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "SiteTree_Live.ID = $recordID");
 			// if the page has never been published to live, we need to act the same way as in deletefromlive()
 			if($liveRecord) {
 				// the form is readonly now, so we need to refresh the representation
