@@ -1123,7 +1123,6 @@ JS;
 		return new Form($this, "AddPageOptionsForm", new FieldSet(
 			new HiddenField("ParentID"),
 			new DropdownField("PageType", "", $pageTypes, 'Page')
-			// "Page to copy" => new TreeDropdownField("DuplicateSection", "", "SiteTree"),
 		),
 		new FieldSet(
 			new FormAction("addpage", _t('CMSMain.GO',"Go"))
