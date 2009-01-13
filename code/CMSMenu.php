@@ -83,7 +83,7 @@ class CMSMenu extends Object implements Iterator, i18nEntityProvider
 	/**
 	 * Add a navigation item to the main administration menu showing in the top bar.
 	 *
-	 * @uses {@link CMSMenu::$menu_items}
+	 * uses {@link CMSMenu::$menu_items}
 	 *
 	 * @param string $code Unique identifier for this menu item (e.g. used by {@link replace_menu_item()} and
 	 * 					{@link remove_menu_item}. Also used as a CSS-class for icon customization.
