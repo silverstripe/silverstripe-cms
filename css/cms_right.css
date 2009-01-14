@@ -17,6 +17,11 @@
 	position: relative;
 }
 
+/* legend tag shows up annoying spacing in IE6/7 */
+.right form legend {
+	display: none;
+}
+
 .right form .field {
 	/*margin: 3px !important;*/
 	margin: 0;
