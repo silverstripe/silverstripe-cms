@@ -1,0 +1,39 @@
+### SILVERSTRIPE START ###
+RewriteEngine On
+
+## CONFIG FOR DEV ENVIRONMENTS
+
+# Cached content - **sitedir** subdirectory
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteCond %{QUERY_STRING} ^$
+RewriteCond %{REQUEST_URI} ^/**sitedir**/(.*)$
+RewriteCond %{REQUEST_URI} /**sitedir**/(.*[^/])/?$
+RewriteCond %{DOCUMENT_ROOT}/**sitedir**/cache/%1.php -f
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule .* /**sitedir**/cache/%1.php [L]
+
+# Cached content - homepage
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteCond %{QUERY_STRING} ^$
+RewriteCond %{REQUEST_URI} ^/**sitedir**/?$
+RewriteCond /**sitedir**/cache/index.php -f
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule .* /**sitedir**/cache/index.php [L]
+
+## CONFIG FOR TEST/LIVE ENVIRONMENTS
+
+# Cached content - live webserver
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteCond %{QUERY_STRING} ^$
+RewriteCond %{REQUEST_URI} /(.*[^/])/?$
+RewriteCond %{DOCUMENT_ROOT}/cache/%1.php -f
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule .* /cache/%1.php [L]
+
+# Cached content - homepage
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteCond %{QUERY_STRING} ^$
+RewriteCond %{REQUEST_URI} ^/?$
+RewriteCond %{DOCUMENT_ROOT}/cache/index.php -f
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule .* /cache/index.php [L]
