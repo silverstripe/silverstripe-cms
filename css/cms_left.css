@@ -197,7 +197,9 @@ ul.tree span.a span.modified,
 }
 
 .listpane p {
-	margin: 3px 3px 7px 3px;
+	display: block;
+	margin: 0px 4px 0px 4px;
+	padding: 3px 0px;
 	font-size: 10px;
 }
 .listpane ul {
@@ -238,7 +240,7 @@ ul.tree span.a span.modified,
 
 
 #treepanes .pane_actions {
-	margin: 7px 4px;
+	margin: 0px 4px 0px 4px; 
 }
 
 #treepanes .pane_actions a {
