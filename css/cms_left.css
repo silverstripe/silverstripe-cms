@@ -304,7 +304,8 @@ ul#sitetree.tree ul {
 	margin-left: 0;
 }
 ul#sitetree.tree ul ul {
-	margin-left: 16px;
+	padding-left: 16px;
+	background: url(../../jsparty/tree/images/i-repeater.gif) repeat-y scroll 0 50% !important;
 }
 
 
