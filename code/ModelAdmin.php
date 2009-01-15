@@ -208,7 +208,7 @@ abstract class ModelAdmin extends LeftAndMain {
 	/**
 	 * @return array
 	 */
-	protected function getManagedModels() {
+	function getManagedModels() {
 		$models = $this->stat('managed_models');
 		if(is_string($models)) $models = array($models);
 		if(!count($models)) user_error('ModelAdmin::getManagedModels(): 
