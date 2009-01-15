@@ -28,6 +28,7 @@ body {
 	background: #eee;
 	float: left;
 	width: 100%;
+	padding-bottom: 4px;
 }
 	#TreeActions li {
 		float: left;

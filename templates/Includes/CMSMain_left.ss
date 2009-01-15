@@ -15,7 +15,7 @@
 				<!-- <li class="action" id="duplicate"><a href="#">Duplicate</a></li>
 				Sam: this should be put into the Create area, I think, so we don't stuff up the layout -->
 			</ul>
-			<div style="clear:both;"></div>
+			
 			<% control AddPageOptionsForm %>
 			<form class="actionparams" id="$FormName" style="display: none" action="$FormAction">
 				<% control Fields %>

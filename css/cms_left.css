@@ -1,6 +1,6 @@
 #left form.actionparams {
 	background: #eee;
-	padding: 3px 5px;
+	padding: 0 5px 5px 5px;
 }
 #left form.actionparams input,
 #left form.actionparams select {
@@ -397,10 +397,22 @@ ul.tree li.untranslated a:visited {
 }
 
 #SortItems {
+	border-top: 1px solid #cccccc;
 	border-bottom: 1px solid #cccccc;
 	background: #eee none repeat scroll 0%;
 	padding: 3px 0 5px 7px;
+	overflow: hidden;
+	clear: left;
 }
+	#SortItems input {
+		position: relative;
+		top: -1px;
+		_top: -2px;
+	}
+	#SortItems label {
+			_position: relative;
+		_top: 1px;
+	}
 	#SortItems #sortitems {
 		float: left;
 		margin-right: 3px;
