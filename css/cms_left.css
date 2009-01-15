@@ -300,12 +300,17 @@ ul.tree span.a.last.Root span.c,
 ul.tree span.a.children.Root span.c {
 	margin: 0;
 }
+
+ul.tree span.a.Root span.c {
+	background: url(../../jsparty/tree/images/i-bottom.gif) no-repeat scroll 0 50%;
+}
+
 ul#sitetree.tree ul {
 	margin-left: 0;
 }
 ul#sitetree.tree ul ul {
 	padding-left: 16px;
-	background: url(../../jsparty/tree/images/i-repeater.gif) repeat-y scroll 0 50% !important;
+	background: url(../../jsparty/tree/images/i-repeater.gif) repeat-y scroll 0 50%;
 }
 
 
