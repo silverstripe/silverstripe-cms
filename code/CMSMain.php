@@ -502,6 +502,7 @@ JS;
 				$originalItem = DataObject::get_by_id($className,$suffix);
 				Translatable::set_reading_lang($this->Lang);
 				$translation = $originalItem->getTranslation($this->Lang);
+				if(!$translation) $translation = $originalItem->createTranslation($this->Lang);
 				if($setID) $translation->ID = $id;
 				return $translation;
 			}
@@ -1427,43 +1428,6 @@ HTML;
 	}
 	
 	/**
-	 * Switch the cms language and reload the site tree
-	 *
-	 */
-	function switchlanguage($lang, $donotcreate = null) {
-		//is it's a clean switch (to an existing language deselect the current page)
-		if (is_string($lang)) $dontunloadPage = true;
-		$lang = (is_string($lang) ? $lang : urldecode($this->urlParams['ID']));
-
-		$this->Lang = $lang;
-		Translatable::set_reading_lang($lang);
-
-		Translatable::set_reading_lang(Translatable::default_lang());
-		$siteTree = $this->getSiteTreeFor("SiteTree");
-		Translatable::set_reading_lang($lang);
-
-		if ($lang != Translatable::default_lang()) {
-//			FormResponse::add("$('addpage').getElementsByTagName('button')[0].disabled=true;");
-//			FormResponse::add("$('Form_AddPageOptionsForm').getElementsByTagName('div')[1].getElementsByTagName('input')[0].disabled=true;");
-			FormResponse::add("$('Translating_Message').innerHTML = 'Translating mode - ".i18n::get_language_name($lang)."';");
-			FormResponse::add("Element.removeClassName('Translating_Message','nonTranslating');");
-		} else {
-			Translatable::set_reading_lang(Translatable::default_lang());
-//			FormResponse::add("$('addpage').getElementsByTagName('button')[0].disabled=false;");
-//			FormResponse::add("$('Form_AddPageOptionsForm').getElementsByTagName('div')[1].getElementsByTagName('input')[0].disabled=false;");
-			FormResponse::add("Element.addClassName('Translating_Message','nonTranslating');");
-		}
-		$rootLink = $this->Link() . '0';
-		FormResponse::add("$('sitetree').parentNode.innerHTML ='". ereg_replace("[\n]","\\\n",$siteTree) ."';");
-		FormResponse::add("SiteTree.applyTo('#sitetree');");
-
-		FormResponse::add("$('sitetree').observeMethod('SelectionChanged', $('LangSelector_holder').onSelectionChanged.bind($('LangSelector_holder')));"); 
-		if (!isset($dontunloadPage)) FormResponse::add("node = $('sitetree').getTreeNodeByIdx(0); node.selectTreeNode();");
-
-		return FormResponse::respond();
-	}
-	
-	/**
 	 * Create a new translation from an existing item, switch to this language and reload the tree.
 	 */
 	function createtranslation () {
@@ -1472,51 +1436,28 @@ HTML;
 			return;
 		}
 		$langCode = $_REQUEST['newlang'];
-		$langName = i18n::get_language_name($langCode);
 		$originalLangID = $_REQUEST['ID'];
 
 		$record = $this->getRecord($originalLangID);
-	    $temporalID = "new-$record->RecordClassName-$record->ParentID-$originalLangID";
-		Session::set($temporalID . '_originalLangID',$originalLangID);
 		
-		$tree = $this->switchlanguage($langCode, $originalLangID);
-		
-		FormResponse::add(<<<JS
-if (Element.hasClassName('LangSelector_holder','onelang')) {
-	Element.removeClassName('LangSelector_holder','onelang');
-	$('treepanes').resize();
-}
-if ($('LangSelector').options['$langCode'] == undefined) {
-	var option = document.createElement("option");
-	option.text = '$langName';
-	option.value = '$langCode';
-	$('LangSelector').options.add(option);
-}
-JS
-		);
-		FormResponse::add("$('LangSelector').selectValue('$langCode');");
+		$this->Lang = $langCode;
+		Translatable::set_reading_lang($langCode);
 		
 		// creating a record in-memory, which means setting the $Lang property
 		// will have no effect as the record is loaded through another javascript
 		// call and CMSMain->getitem(). The CMS submits the currently selected language
 		// through javascript, which will cause $Lang to be written to the database.
 		// @todo Explicitly set $Lang property for in-memory object so we don't need javascript modifying GET-calls to save the new object
-		$newrecord = clone $record;
-		$newrecord->ID = $temporalID;
-		$newrecord->Lang = $langCode;
+		$translatedRecord = $record->createTranslation($langCode);
 
-		//FormResponse::add("$('sitetree').getTreeNodeByIdx($originalLangID).selectTreeNode();");
-		
-		// @todo New node is currently added at the end of the tree,
-		// rather than replacing the position of the original page
-		FormResponse::add(<<<JS
-var oldNode = $('sitetree').getTreeNodeByIdx($record->ID);
-var oldParentNode = $('sitetree').getTreeNodeByIdx($record->ParentID);
-oldParentNode.removeTreeNode(oldNode);
-JS
-);
-		
-		return $this->returnItemToUser($newrecord);
+		$url = sprintf(
+			"%s/%d/?lang=%s", 
+			$this->Link('show'),
+			$translatedRecord->ID,
+			$langCode
+		);
+		FormResponse::add(sprintf('window.location.href = "%s";', $url));
+		return FormResponse::respond();
 	}
 
 	/**
