@@ -1,7 +1,11 @@
 #left form.actionparams {
 	background: #eee;
-	padding: 0 5px 5px 5px;
+	padding: 0 0 5px 0;
+	float: left;
 }
+	#left form#search_options {
+		padding-bottom: 8px;
+	}
 #left form.actionparams input,
 #left form.actionparams select {
 	padding: 1px;
@@ -14,7 +18,7 @@
 #PageType,
 #ReportSelector_holder select {
 	float: left;
-	margin-right: 3px;
+	margin-right: 4px;
 	padding: 1px;
 }
 #left form.actionparms input.action {
@@ -404,22 +408,12 @@ ul.tree li.untranslated a:visited {
 
 #SortItems {
 	border-top: 1px solid #cccccc;
-	border-bottom: 1px solid #cccccc;
-	background: #eee none repeat scroll 0%;
-	padding: 3px 0 5px 7px;
+	padding: 5px 0 0 0;
 	overflow: hidden;
 	clear: left;
+	width: 100%;
 }
-	#SortItems input {
-		position: relative;
-		top: -1px;
-		_top: -2px;
-	}
-	#SortItems label {
-			_position: relative;
-		_top: 1px;
-	}
-	#SortItems #sortitems {
+	#SortItems input, #ShowChanged input {
 		float: left;
-		margin-right: 3px;
+		margin: 0 3px 0 0;
 	}

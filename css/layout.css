@@ -25,10 +25,9 @@ body {
 }
 
 #TreeActions {
-	background: #eee;
 	float: left;
 	width: 100%;
-	padding-bottom: 4px;
+	padding-bottom: 5px;
 }
 	#TreeActions li {
 		float: left;
@@ -48,8 +47,8 @@ li.action button {
 	width: auto;
 	border-color: #CCCCCC rgb(153, 153, 153) rgb(153, 153, 153) rgb(204, 204, 204);
 	border-style: double;
-	margin: 1px;
-	padding: 2px;
+	margin-right: 2px;
+	padding: 2px 1px;
 	font-size: 11px;
 }
 	.ajaxActions input,
@@ -326,15 +325,63 @@ body.stillLoading select {
 	overflow-y: auto;
 	overflow-x: hidden;
 }
-#sitetree {
-	margin-top: 2px;
-	width: 500px; /* IE's chocking right now */
-}
-	html>body #sitetree {
-		width: auto;
+	
+	#sitetree_holder #TreeTools {
+		background: #EEE;
+		padding: 5px;
+		border-bottom: 1px solid #CCC;
+		float: left;
+		width: 95%;
 	}
+	#SearchBox {
+		float: left;
+		width: 100%;
+		margin-bottom: 5px;
+	}
+		#SearchBox #SiteTreeSearchTerm {
+			padding: 1px 0 2px 0;
+		}
+	#sitetree_ul {
+		padding: 3px 0 0 3px;
+		clear: left;
+	}
+	#sitetree {
+		width: 500px; /* IE's chocking right now */
+	}
+		html>body #sitetree {
+			width: auto;
+		}
 
-div.spacer, li.spacer {
+#TreeTools label {
+	display: block;
+	padding-top: 2px;
+	_padding-top: 4px;
+}
+
+#TreeTools #batchactionsforms {
+	padding: 0 0 7px 1px;
+	float: left;
+}
+
+		#TreeTools div p, #ShowChanged {
+			margin: 0 0 5px 0;
+			float: left;
+		}
+		#ShowChanged {
+			width: 100%;
+		}
+			#TreeTools div.middleColumn {
+				margin: 0;
+			}
+		#TreeTools #action_publish_selected, 
+		#TreeTools #action_publish_selected {
+			padding: 2px 1px;
+			float: left;
+		}
+
+	
+div.spacer, 
+li.spacer {
 	float: none;
 	clear: both;
 	background-color: transparent;
