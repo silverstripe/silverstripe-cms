@@ -392,12 +392,7 @@ ul.tree span.untranslated a:visited {
 	background-color: #EEEEEE;
 	border-bottom: 1px solid #CCCCCC;
 	border-top: 1px solid #CCCCCC;
-}
-#LangSelector_holder select {
-	width: 70%;
-}
-#LangSelector_holder.onelang {
-	display: none;
+	padding: 3px 0 3px 7px;
 }
 
 #SortItems {

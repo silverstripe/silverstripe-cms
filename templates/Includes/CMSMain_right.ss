@@ -1,5 +1,3 @@
-<span id="Translating_Message" class="translatingMessage <% if EditingLang %><% else %>nonTranslating<% end_if %>"></span>
-
 <div id="form_actions_right" class="ajaxActions">
 </div>
 

@@ -64,6 +64,9 @@
 			<div id="SortItems">
 					<input type="checkbox" id="sortitems" /> <label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
 			</div>
+			<div id="LangSelector_holder" <% if MultipleLanguages %><% else %> class="onelang"<% end_if %>>
+				Language: $LangSelector
+			</div>
 			<div id="sitetree_ul">
 				$SiteTreeAsUL
 			</div>
@@ -76,9 +79,6 @@
 			<span style="cursor: help" title="<% _t('EDITEDNOTPUB','Edited on the draft site and not published yet') %>" class="modified"><% _t('CHANGED','changed') %></span>
 		</div>		
 		
-		<div id="LangSelector_holder" <% if MultipleLanguages %><% else %> class="onelang"<% end_if %>>
-			Language: $LangSelector
-		</div>
 		<!--
 		<div id="search_holder" style="display:none">
 			<h2>Search</h2>
