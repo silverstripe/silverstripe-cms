@@ -849,16 +849,17 @@ JS;
 	}
 
 	public function EditForm() {
-		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : $this->currentPageID();
-		
-		if(!$id) return false;
-		
-		if(is_numeric($id)) {
-			$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-			if($record && !$record->canView()) return Security::permissionFailure($this);
+		if(isset($_REQUEST['ID'])) {
+			$record = DataObject::get_by_id($this->stat('tree_class'), $_REQUEST['ID']);
+		} else {
+			$record = $this->CurrentPage();
 		}
+		
+		if(!$record) return false;
+		
+		if($record && !$record->canView()) return Security::permissionFailure($this);
 			
-		return $this->getEditForm($id);
+		return $this->getEditForm($record->ID);
 	}
 	
 	public function myprofile() {
@@ -905,7 +906,12 @@ JS;
 	public function currentPage() {
 		$id = $this->currentPageID();
 		if($id && is_numeric($id)) {
-			return DataObject::get_by_id($this->stat('tree_class'), $id);
+			$page = DataObject::get_by_id($this->stat('tree_class'), $id);
+			if(Translatable::is_enabled() && $page->Lang && $page->Lang != Translatable::current_lang()) {
+				return false;
+			} else {
+				return $page;
+			}
 		}
 	}
 
