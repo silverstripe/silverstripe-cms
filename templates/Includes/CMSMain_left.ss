@@ -9,7 +9,7 @@
 		<div id="sitetree_holder">
 
 			<ul id="TreeActions">
-				<li class="action" id="addpage"><button><% _t('CREATE','Create',PR_HIGH) %></button></li>
+				<li class="action" id="addpage"><button<% if EditingLang %> disabled="disabled" class="disabled"<% end_if %>><% _t('CREATE','Create',PR_HIGH) %></button></li>
 				<li class="action" id="search"><button><% _t('SEARCH','Search',PR_HIGH) %></button></li>
 				<li class="action" id="batchactions"><button><% _t('BATCHACTIONS','Batch Actions',PR_HIGH) %></button></li>
 				<!-- <li class="action" id="duplicate"><a href="#">Duplicate</a></li>
