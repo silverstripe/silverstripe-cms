@@ -328,6 +328,7 @@ body.stillLoading select {
 	
 	#sitetree_holder #TreeTools {
 		float: left;
+		width: inherit;
 	}
 	#SearchBox {
 		float: left;
