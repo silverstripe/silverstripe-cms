@@ -327,11 +327,7 @@ body.stillLoading select {
 }
 	
 	#sitetree_holder #TreeTools {
-		background: #EEE;
-		padding: 5px;
-		border-bottom: 1px solid #CCC;
 		float: left;
-		width: 95%;
 	}
 	#SearchBox {
 		float: left;
