@@ -389,6 +389,31 @@ ul.tree li.untranslated a:visited {
 	font-style: italic;	
 }
 
+#SortItems {
+	border-top: 1px solid #cccccc;
+	padding: 5px 0 0 0;
+	overflow: hidden;
+	clear: left;
+	width: 100%;
+}
+	#SortItems input, #ShowChanged input {
+		float: left;
+		margin: 0 3px 0 0;
+	}
+	
+#versions_actions .versionChoice {
+	float: left;
+	display: block;
+	margin: 0 0 5px 0;
+}
+
+#versions_actions input, #Remember input {
+	float: left;
+	display: block;
+	padding-top: 2px;
+	margin: 0 3px 0 0;
+}
+
 
 /**
  * i18n
@@ -405,15 +430,3 @@ ul.tree li.untranslated a:visited {
 #LangSelector_holder.onelang {
 	display: none;
 }
-
-#SortItems {
-	border-top: 1px solid #cccccc;
-	padding: 5px 0 0 0;
-	overflow: hidden;
-	clear: left;
-	width: 100%;
-}
-	#SortItems input, #ShowChanged input {
-		float: left;
-		margin: 0 3px 0 0;
-	}
