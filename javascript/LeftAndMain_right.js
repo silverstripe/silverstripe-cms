@@ -163,7 +163,7 @@ CMSForm.prototype = {
 		var __callAfter = callAfter;
 		var __form = this;
 		
-		if(__form.notify) __form.notify('BeforeSave', __form.elements.ID.value);
+		if(__form.notify && __form.elements.ID != undefined) __form.notify('BeforeSave', __form.elements.ID.value);
 
 		// validate if required
 		if(this.validate && !this.validate()) {
@@ -179,7 +179,7 @@ CMSForm.prototype = {
 			Ajax.Evaluator(response);
 			__form.resetElements();
 			if(__callAfter) __callAfter();
-			if(__form.notify) __form.notify('PageSaved', __form.elements.ID.value);
+			if(__form.notify && __form.elements.ID != undefined) __form.notify('PageSaved', __form.elements.ID.value);
 			if($('Form_EditForm_action_save') && $('Form_EditForm_action_save').stopLoading) $('Form_EditForm_action_save').stopLoading();
 			_AJAX_LOADING = false;
 		}
