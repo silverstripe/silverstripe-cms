@@ -338,9 +338,12 @@ body.stillLoading select {
 		#SearchBox #SiteTreeSearchTerm {
 			padding: 1px 0 2px 0;
 		}
-	#sitetree_ul {
+	#sitetree_ul, ul#sitetree {
 		padding: 3px 0 0 3px;
 		clear: left;
+	}
+	#sitetree_ul ul#sitetree {
+		padding: 0;
 	}
 	#sitetree {
 		width: 500px; /* IE's chocking right now */
