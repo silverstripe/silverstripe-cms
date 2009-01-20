@@ -1,6 +1,7 @@
 #left form.actionparams {
 	background: #eee;
 	padding: 0 0 5px 0;
+	_padding-left: 5px;
 	float: left;
 	width: 100%;
 }
