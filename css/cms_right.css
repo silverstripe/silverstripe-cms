@@ -6,7 +6,7 @@
 	margin: 7px 0;
 }
 	#right .optionset li {
-		margin: 4px 0;
+		margin: 8px 0;
 	}
 
 /**
@@ -142,6 +142,8 @@
 .right form .htmleditor select, 
 .right form input.action {
 	width: auto;
+	margin-right: 4px;
+	float: left;
 }
 
 .right form ul.optionset {
