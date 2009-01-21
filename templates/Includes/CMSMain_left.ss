@@ -8,6 +8,8 @@
 		</h2>
 		<div id="sitetree_holder">
 
+			<div id="TreeTools">
+
 				<ul id="TreeActions">
 					<li class="action" id="addpage"><button><% _t('CREATE','Create',PR_HIGH) %></button></li>
 					<li class="action" id="search"><button><% _t('SEARCH','Search',PR_HIGH) %></button></li>
@@ -98,7 +100,9 @@
 						<input type="checkbox" id="sortitems" /> <label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
 				</div>
 			</div>
-		
+			
+			</div> <!-- treetools -->
+
 			<div id="sitetree_ul">
 				$SiteTreeAsUL
 			</div>
