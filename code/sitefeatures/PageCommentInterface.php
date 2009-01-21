@@ -137,6 +137,8 @@ class PageCommentInterface extends RequestHandler {
 		
 		$form->loadDataFrom(array(
 			"Name" => Cookie::get("PageCommentInterface_Name"),
+			"Comment" => Cookie::get("PageCommentInterface_Comment"),
+			"URL" => Cookie::get("PageCommentInterface_CommenterURL")	
 		));
 		
 		return $form;
@@ -177,6 +179,10 @@ class PageCommentInterface extends RequestHandler {
 class PageCommentInterface_Form extends Form {
 	function postcomment($data) {
 		// Spam filtering
+		Cookie::set("PageCommentInterface_Name", $data['Name']);
+		Cookie::set("PageCommentInterface_CommenterURL", $data['CommenterURL']);
+		Cookie::set("PageCommentInterface_Comment", $data['Comment']);
+		
 		if(SSAkismet::isEnabled()) {
 			try {
 				$akismet = new SSAkismet();
@@ -212,7 +218,6 @@ class PageCommentInterface_Form extends Form {
 						return "spamprotectionfailed"; //used by javascript for checking if the spam question was wrong
 			}
 		}
-		Cookie::set("PageCommentInterface_Name", $data['Name']);
 		
 		// If commenting can only be done by logged in users, make sure the user is logged in
 		$member = Member::currentUser();
@@ -228,7 +233,7 @@ class PageCommentInterface_Form extends Form {
 		$comment->IsSpam = false;
 		$comment->NeedsModeration = PageComment::moderationEnabled();
 		$comment->write();
-		
+		Cookie::set("PageCommentInterface_Comment", '');
 		if(Director::is_ajax()) {
 			if($comment->NeedsModeration){
 				echo _t('PageCommentInterface_Form.AWAITINGMODERATION', "Your comment has been submitted and is now awaiting moderation.");
