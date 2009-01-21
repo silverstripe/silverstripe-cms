@@ -99,12 +99,12 @@
 				<div id="SortItems">
 						<input type="checkbox" id="sortitems" /> <label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
 				</div>
-			</div>
 			
-			</div> <!-- treetools -->
+			</div>
 
-			<div id="sitetree_ul">
-				$SiteTreeAsUL
+				<div id="sitetree_ul">
+					$SiteTreeAsUL
+				</div>
 			</div>
 		</div>
 
