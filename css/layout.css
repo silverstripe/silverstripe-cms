@@ -333,7 +333,8 @@ body.stillLoading select {
 	#SearchBox {
 		float: left;
 		width: 100%;
-		margin-bottom: 5px;
+		margin: 0 0 5px 0;
+		padding-left: 5px;
 	}
 		#SearchBox #SiteTreeSearchTerm {
 			padding: 1px 0 2px 0;
@@ -369,8 +370,9 @@ body.stillLoading select {
 }
 
 #TreeTools #batchactionsforms {
-	padding: 0 0 7px 1px;
+	padding: 0 5px 7px 5px;
 	float: left;
+	background: #EEE;
 }
 
 		#TreeTools div p, #ShowChanged {

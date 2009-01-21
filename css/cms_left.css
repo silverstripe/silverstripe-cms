@@ -67,6 +67,9 @@
 #left div.field select {
 	width: 100%;
 }
+#TreeTools select {
+	margin-left: 2px;
+}
 #left .SelectionGroup li.selected label.selector {
 	font-weight: bold;
 }
