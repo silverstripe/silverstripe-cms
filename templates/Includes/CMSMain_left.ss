@@ -39,7 +39,7 @@
 				</form>
 				<% end_control %>
 				<form class="actionparams" style="display: none" id="search_options" action="admin/filterSiteTree">
-					<div>
+				<div>
 					<input type="hidden" id="SiteTreeIsFiltered" value="0" />
 					
 					<div id="SearchBox">
@@ -53,14 +53,17 @@
 						<div style="display:none" id="Text$Column" class="SearchCriteria">$Title:</div>
 						<input style="display:none" id="Input$Column" name="$Column" class="SearchCriteria" />
 					<% end_control %>
-					<select id="SiteTreeFilterAddCriteria">
-						<option><% _t('ADDSEARCHCRITERIA','Add Criteria...') %></option>
-						<option value="SiteTreeFilterDate"><% _t('EDITEDSINCE','Edited Since') %></option>
-						<% control SiteTreeFilterOptions %>
-	        				<option value="$Column">$Title</option>
-						<% end_control %>
-					</select>
+					
+					<div id="addCriteria">
+						<select id="SiteTreeFilterAddCriteria">
+							<option><% _t('ADDSEARCHCRITERIA','Add Criteria...') %></option>
+							<option value="SiteTreeFilterDate"><% _t('EDITEDSINCE','Edited Since') %></option>
+							<% control SiteTreeFilterOptions %>
+		        				<option value="$Column">$Title</option>
+							<% end_control %>
+						</select>
 					</div>
+				</div>
 				</form>
 				<div id="batchactionsforms" style="display: none">
 					<form class="actionparams" style="border:0" id="deletepage_options" action="admin/deleteitems">
