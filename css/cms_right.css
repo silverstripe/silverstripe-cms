@@ -143,6 +143,9 @@
 .right form input.action {
 	width: auto;
 	margin-right: 4px;
+}
+
+.right form #Root_Access input {
 	float: left;
 }
 
