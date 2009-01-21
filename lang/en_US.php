@@ -390,7 +390,7 @@ $lang['en_US']['ModelAdmin_ImportSpec.ss']['IMPORTSPECTITLE'] = 'Specification f
 $lang['en_US']['ModelAdmin_left.ss']['ADDLISTING'] = 'Add';
 $lang['en_US']['ModelAdmin_left.ss']['IMPORT_TAB_HEADER'] = 'Import';
 $lang['en_US']['ModelAdmin_left.ss']['SEARCHLISTINGS'] = 'Search';
-$lang['en_US']['ModelAdmin_right.ss']['WELCOME1'] = 'Welcome to %s. Please choose on one of the entries in the left pane.';
+$lang['en_US']['ModelAdmin_right.ss']['WELCOME1'] = 'Welcome to %s. Please choose one of the entries in the left pane.';
 $lang['en_US']['PageComment']['COMMENTBY'] = array(
 	'Comment by \'%s\' on %s',
 	PR_MEDIUM,
