@@ -1,5 +1,5 @@
 <!-- <div class="title"><div style="background-image : url(cms/images/panels/MySite.png)">My Site</div></div> -->
-
+<div id="TreeTools">
 	<div id="treepanes">
 		<h2 id="heading_sitetree" class="selected">
 			<img id="sitetree_toggle_closed" src="sapphire/images/toggle-closed.gif" alt="+" style="display:none;" title="<% _t('OPENBOX','click to open this box') %>" />
@@ -100,6 +100,8 @@
 						<input type="checkbox" id="sortitems" /> <label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
 				</div>
 			</div>
+			
+			</div> <!-- treetools -->
 
 			<div id="sitetree_ul">
 				$SiteTreeAsUL
