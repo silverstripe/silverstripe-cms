@@ -456,6 +456,7 @@ ul.tree li.untranslated a:visited {
 	background-color: #EEEEEE;
 	border-bottom: 1px solid #CCCCCC;
 	border-top: 1px solid #CCCCCC;
+	padding: 5px;
 }
 #LangSelector_holder select {
 	width: 70%;

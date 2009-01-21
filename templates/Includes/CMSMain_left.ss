@@ -1,5 +1,4 @@
 <!-- <div class="title"><div style="background-image : url(cms/images/panels/MySite.png)">My Site</div></div> -->
-<div id="TreeTools">
 	<div id="treepanes">
 		<h2 id="heading_sitetree" class="selected">
 			<img id="sitetree_toggle_closed" src="sapphire/images/toggle-closed.gif" alt="+" style="display:none;" title="<% _t('OPENBOX','click to open this box') %>" />
@@ -85,7 +84,6 @@
 							
 						</form>
 					</div>
-					
 				</div>
 				<% control DuplicatePagesOptionsForm %>
 				<form class="actionparams" id="duplicate_options" style="display: none" action="admin/duplicateSiteTree">
@@ -99,13 +97,11 @@
 				<div id="SortItems">
 						<input type="checkbox" id="sortitems" /> <label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
 				</div>
-			
 			</div>
 
 				<div id="sitetree_ul">
 					$SiteTreeAsUL
 				</div>
-			</div>
 		</div>
 
 		<div id="publication_key">
