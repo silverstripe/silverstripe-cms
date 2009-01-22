@@ -331,11 +331,11 @@
  
 /* Filter box (for search/filter box above a table on Asset/MemberTableField) */
 div.filterBox {
-	width: 33em;
+	width: inherit;
 	margin: 5px 0;
 	padding: 5px;
-	background: #ebeadb;
-	border: 1px solid #aca899;
+	background: #EEE;
+	border: 1px solid #BBB;
 }
 	div.filterBox .middleColumn {
 		background: none !important;
