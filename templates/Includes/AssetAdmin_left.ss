@@ -16,7 +16,7 @@
 				<p><% _t('SELECTTODEL','Select the folders that you want to delete and then click the button below') %></p>
 				<div>		
 				<input type="hidden" name="csvIDs" />
-				<input type="submit" value="<% _t('DELFOLDERS','Delete the selected folders') %>" />
+				<input type="submit" value="<% _t('DELFOLDERS','Delete the selected folders') %>" class="action delete" />
 				</div>
 			</form>
 		
