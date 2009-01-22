@@ -1,6 +1,9 @@
 #right form .inlineformaction {
 	margin-left: 0;
 }
+#right form #deletemarked .middleColumn {
+	background: none;
+}
 .dragfile, 
 .dragfile img {
 	float: left;
