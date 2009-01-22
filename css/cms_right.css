@@ -273,10 +273,13 @@
  * Autocomplete
  */
 .autocomplete {
+	margin-left: 1px;
 	background: white;
+	overflow: visible;
 }
 	.autocomplete ul {
 		border: 1px solid #aaa;
+		background: #FFFFBB;
 	}
 	.autocomplete li {
 		list-style-type: none;
