@@ -514,6 +514,7 @@ iframe {
 	margin: -5px -5px 0 -5px;
 }
 	#contentPanel .thumbnailstrip h2 {
+		font-size: 1.1em;
 		margin: 0;
 		background: none;
 		color: #555;
