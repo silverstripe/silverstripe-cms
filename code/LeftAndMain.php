@@ -498,7 +498,7 @@ class LeftAndMain extends Controller {
 			$parentID = (int)$p->ParentID;
 			$id = $p->ID ? $p->ID : "new-$p->class-$p->ParentID";
 			$treeTitle = Convert::raw2js($p->TreeTitle());
-			$hasChildren = is_numeric( $id ) && $p->AllChildren() ? ' unexpanded' : '';
+			$hasChildren = (is_numeric($id) && $p->AllChildren() && $p->AllChildren()->Count()) ? ' unexpanded' : '';
 
 			// Ensure there is definitly a node avaliable. if not, append to the home tree.
 			$response = <<<JS
