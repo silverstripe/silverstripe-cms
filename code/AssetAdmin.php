@@ -141,7 +141,7 @@ JS
 			new HiddenField("ID", "", $this->currentPageID()),
 			// needed because the button-action is triggered outside the iframe
 			new HiddenField("action_doUpload", "", "1"), 
-			new FileField("Files[0]" , _t('AssetAdmin.CHOOSEFILE','Choose file ')),
+			new FileField("Files[0]" , _t('AssetAdmin.CHOOSEFILE','Choose file: ')),
 			new LiteralField('UploadButton',"
 				<input type='submit' value='". _t('AssetAdmin.UPLOAD', 'Upload Files Listed Below'). "' name='action_upload' id='Form_UploadForm_action_upload' class='action' />
 			"),
