@@ -136,6 +136,35 @@
 .right form textarea {
 	font-size: 12px;
 }
+.right form .mceEditor select.mceNativeListBox { 
+	background: #fff; 
+	padding-top: 2px;
+	width: 95px; /* Added width to stop sizes jumping and text wrapping */
+	font-size: 11px;
+}
+	.right form .mceEditor select.mceNativeListBox option {
+		padding: 0 2px 0 2px;
+		font-size: 11px;
+	}
+.right form .mceEditor .mceFirst { 
+	background: #f4f4f4; 
+} 
+.right form .mceEditor .mceToolbar table { 
+	background: transparent; 
+} 
+.right form .mceEditor .mceButton { 
+	padding: 1px; 
+} 
+
+.right form .mceEditor select.mceNativeListBox {
+	background: #fff;
+}
+.right form .mceEditor .mceFirst {
+	background:url(../images/textures/mce_editor.gif) repeat-x bottom;
+}
+.right form .mceEditor .mceToolbar table {
+	background: transparent;
+}
 
 .right form .mceEditor select.mceNativeListBox {
 	background: #fff;
@@ -147,21 +176,6 @@
 	background: transparent;
 }
 .right form .mceEditor .mceButton {
-	border: none;
-	padding: 1px;
-}
-
-.right form .mceEditor select.mceNativeListBox {
-	background: #fff;
-}
-.right form .mceEditor .mceFirst {
-	background:url(../images/textures/mce_editor.gif) repeat-x bottom;
-}
-.right form .mceEditor .mceToolbar table {
-	background: transparent;
-}
-.right form .mceEditor .mceButton {
-	border: none;
 	padding: 1px;
 }
 
