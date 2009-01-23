@@ -14,7 +14,7 @@ if((typeof tinyMCE != 'undefined')) {
 		width: "100%",
 		auto_resize : false,
 		theme : "advanced",
-		content_css : "$ContentCSS",
+		content_css : "cms/css/editor.css, $ContentCSS",
 		body_class : 'typography',
 		document_base_url: "$BaseURL",
 		urlconverter_callback : "nullConverter",

@@ -136,6 +136,7 @@
 .right form textarea {
 	font-size: 12px;
 }
+
 .right form .mceEditor select.mceNativeListBox { 
 	background: #fff; 
 	padding-top: 2px;
@@ -169,7 +170,7 @@
 .right form .mceEditor select.mceNativeListBox {
 	background: #fff;
 }
-
+	
 .right form input.checkbox, 
 .right form .optionset input, 
 .right form .htmleditor select, 
