@@ -137,6 +137,34 @@
 	font-size: 12px;
 }
 
+.right form .mceEditor select.mceNativeListBox {
+	background: #fff;
+}
+.right form .mceEditor .mceFirst {
+	background:url(../images/textures/mce_editor.gif) repeat-x bottom;
+}
+.right form .mceEditor .mceToolbar table {
+	background: transparent;
+}
+.right form .mceEditor .mceButton {
+	border: none;
+	padding: 1px;
+}
+
+.right form .mceEditor select.mceNativeListBox {
+	background: #fff;
+}
+.right form .mceEditor .mceFirst {
+	background:url(../images/textures/mce_editor.gif) repeat-x bottom;
+}
+.right form .mceEditor .mceToolbar table {
+	background: transparent;
+}
+.right form .mceEditor .mceButton {
+	border: none;
+	padding: 1px;
+}
+
 .right form input.checkbox, 
 .right form .optionset input, 
 .right form .htmleditor select, 
