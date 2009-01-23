@@ -23,7 +23,7 @@
 }
 
 .right form .field {
-	/*margin: 3px !important;*/
+	border: none;
 	margin: 0;
 }
 	.right form .text,
