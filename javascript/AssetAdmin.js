@@ -483,7 +483,7 @@ Behaviour.register({
                     eval(t.responseText);
                 }
             };
-            new Ajax.Request('admin/assets/deleteUnusedThumbnails',options);
+            new Ajax.Request('admin/assets/deleteunusedthumbnails',options);
         }
     }
 });

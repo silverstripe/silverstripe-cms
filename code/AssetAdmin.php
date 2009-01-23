@@ -616,57 +616,78 @@ JS;
     */
 	
 	/**
-	 * Removes all unused thumbnails, and echos status message to user.
+	 * Removes all unused thumbnails from the file store
+	 * and returns the status of the process to the user.
 	 */
-	public function deleteUnusedThumbnails() {
-	    foreach($this->getUnusedThumbnailsArray() as $file) {
-	    	unlink(ASSETS_PATH . "/" . $file); 	
-	    }
-	    echo "statusMessage('"._t('AssetAdmin.THUMBSDELETED', 'All unused thumbnails have been deleted')."','good')";
+	public function deleteunusedthumbnails() {
+		$count = 0;
+		$thumbnails = $this->getUnusedThumbnails();
+		
+		if($thumbnails) {
+			foreach($thumbnails as $thumbnail) {
+				unlink(ASSETS_PATH . "/" . $thumbnail);
+				$count++;
+			}
+		}
+		
+		$message = sprintf(_t('AssetAdmin.THUMBSDELETED', '%s unused thumbnails have been deleted'), $count);
+		FormResponse::status_message($message, 'good');
+		echo FormResponse::respond();
 	}
 	
 	/**
 	 * Creates array containg all unused thumbnails.
 	 * 
 	 * Array is created in three steps:
-	 *     1.Scan assets folder and retrieve all thumbnails
-	 *     2.Scan all HTMLField in system and retrieve thumbnails from them.
-	 *     3.Count difference between two sets (array_diff)
+	 *     1. Scan assets folder and retrieve all thumbnails
+	 *     2. Scan all HTMLField in system and retrieve thumbnails from them.
+	 *     3. Count difference between two sets (array_diff)
 	 *
 	 * @return array 
 	 */
-	private function getUnusedThumbnailsArray() {
+	private function getUnusedThumbnails() {
 		$allThumbnails = array();
 		$usedThumbnails = array();
 		$dirIterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(ASSETS_PATH));
+		$classes = ClassInfo::subclassesFor('SiteTree');
 		
-		foreach($dirIterator as $file) {
-			if($file->isFile()) {
-				if(strpos($file->getPathname(),"_resampled") !== false) {
-					$pathInfo = pathinfo($file->getPathname());
-					if(in_array(strtolower($pathInfo['extension']), array('jpeg', 'jpg', 'jpe', 'png', 'gif'))) {
-						$path = str_replace('\\','/', $file->getPathname());
-						$allThumbnails[] = substr($path, strpos($path, '/assets/') + 8);
+		if($dirIterator) {
+			foreach($dirIterator as $file) {
+				if($file->isFile()) {
+					if(strpos($file->getPathname(), '_resampled') !== false) {
+						$pathInfo = pathinfo($file->getPathname());
+						if(in_array(strtolower($pathInfo['extension']), array('jpeg', 'jpg', 'jpe', 'png', 'gif'))) {
+							$path = str_replace('\\','/', $file->getPathname());
+							$allThumbnails[] = substr($path, strpos($path, '/assets/') + 8);
+						}
 					}
 				}
 			}
 		}
 		
-		$classes = ClassInfo::subclassesFor('SiteTree');
-		
-		foreach($classes as $className) {
-			$sng = singleton($className);
-			$objects = DataObject::get($className);
-			if($objects !== NULL) {
-				foreach($objects as $object) {
-					foreach($sng->db() as $fieldName => $fieldType) {
-						if($fieldType == 'HTMLText')  {
-							$url1 = HTTP::findByTagAndAttribute($object->$fieldName,array("img" => "src"));
-							if($url1 != NULL) $usedThumbnails[] = substr($url1[0],strpos($url1[0],'/assets/')+8);
-							if($object->latestPublished > 0) {
-								$object = Versioned::get_latest_version($className, $object->ID);
-								$url2 = HTTP::findByTagAndAttribute($object->$fieldName,array("img" => "src"));
-								if($url2 != NULL) $usedThumbnails[] = substr($url2[0],strpos($url2[0],'/assets/')+8);
+		if($classes) {
+			foreach($classes as $className) {
+				$SNG_class = singleton($className);
+				$objects = DataObject::get($className);
+				
+				if($objects !== NULL) {
+					foreach($objects as $object) {
+						foreach($SNG_class->db() as $fieldName => $fieldType) {
+							if($fieldType == 'HTMLText') {
+								$url1 = HTTP::findByTagAndAttribute($object->$fieldName,array('img' => 'src'));
+								
+								if($url1 != NULL) {
+									$usedThumbnails[] = substr($url1[0], strpos($url1[0], '/assets/') + 8);
+								}
+								
+								if($object->latestPublished > 0) {
+									$object = Versioned::get_latest_version($className, $object->ID);
+									$url2 = HTTP::findByTagAndAttribute($object->$fieldName, array('img' => 'src'));
+									
+									if($url2 != NULL) {
+										$usedThumbnails[] = substr($url2[0], strpos($url2[0], '/assets/') + 8);
+									}
+								}
 							}
 						}
 					}
@@ -674,9 +695,8 @@ JS;
 			}
 		}
 		
-		return array_diff($allThumbnails,$usedThumbnails);
+		return array_diff($allThumbnails, $usedThumbnails);
 	}
-    
+	
 }
-
 ?>
