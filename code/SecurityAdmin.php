@@ -23,7 +23,8 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		'removememberfromgroup',
 		'savemember',
 		'AddRecordForm',
-		'MemberForm'
+		'MemberForm',
+		'EditForm'
 	);
 
 	public function init() {
