@@ -670,32 +670,28 @@ class ModelAdmin_CollectionController extends Controller {
 	}
 
 	/**
-	 * Returns a form suitable for adding a new model, falling back on the default edit form
-	 *
-	 * @return Form
+	 * Returns a form for editing the attached model
 	 */
 	public function AddForm() {
 		$newRecord = new $this->modelClass();
-		
 		if($newRecord->canCreate()){
 			if($newRecord->hasMethod('getCMSAddFormFields')) {
 				$fields = $newRecord->getCMSAddFormFields();
 			} else {
 				$fields = $newRecord->getCMSFields();
 			}
-			
+		
 			$validator = ($newRecord->hasMethod('getCMSValidator')) ? $newRecord->getCMSValidator() : null;
-			
-			$actions = new FieldSet (
+		
+			$actions = new FieldSet(
 				new FormAction("doCreate", _t('ModelAdmin.ADDBUTTON', "Add"))
 			);
-			
+		
 			$form = new Form($this, "AddForm", $fields, $actions, $validator);
-			$form->loadDataFrom($newRecord);
-			
+
 			return $form;
 		}
-	}
+	}	
 	
 	function doCreate($data, $form, $request) {
 		$className = $this->getModelClass();
