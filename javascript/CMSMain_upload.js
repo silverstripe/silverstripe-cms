@@ -111,17 +111,7 @@ CMSMain_upload.prototype = {
         fileProgress.style.left = '5px';
         fileProgress.style.width = '0px';
         fileProgress.finished = false;        
-        switch(BrowserDetect.browser) {
-            case 'Explorer':
-                fileProgress.style.top = parseInt(fileProgress.style.top) + 6 + 'px';
-            break;
-            case 'Safari':
-                fileProgress.style.top = parseInt(fileProgress.style.top) + 4 + 'px';
-            break;
-            case 'Firefox':  
-                fileProgress.style.top = parseInt(fileProgress.style.top) + 8 + 'px';
-            break;
-        }
+        fileProgress.style.top = parseInt(fileProgress.style.top) + 6 + 'px';
         fileProgress.style.height = Element.getDimensions(fileName).height + 1 + 'px';        
         fileToUpload.appendChild(fileProgress);
         

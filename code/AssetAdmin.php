@@ -80,7 +80,6 @@ class AssetAdmin extends LeftAndMain {
 
 		Requirements::javascript(CMS_DIR . "/javascript/CMSMain_upload.js");
 		Requirements::javascript(CMS_DIR . "/javascript/Upload.js");
-		Requirements::javascript(SAPPHIRE_DIR . "/javascript/Security_login.js");
 		Requirements::javascript(THIRDPARTY_DIR . "/SWFUpload/SWFUpload.js");
 		
 		Requirements::javascript(THIRDPARTY_DIR . "/greybox/AmiJS.js");
@@ -477,7 +476,8 @@ JS;
 	 * Add a new folder and return its details suitable for ajax.
 	 */
 	public function addfolder() {
-		$parent = ($_REQUEST['ParentID'] && is_numeric($_REQUEST['ParentID'])) ? $_REQUEST['ParentID'] : 0;
+		$parent = ($_REQUEST['ParentID'] && is_numeric($_REQUEST['ParentID'])) ? (int)$_REQUEST['ParentID'] : 0;
+		$name = (isset($_REQUEST['Name'])) ? basename($_REQUEST['Name']) : _t('AssetAdmin.NEWFOLDER',"NewFolder");
 		
 		if($parent) {
 			$parentObj = DataObject::get_by_id('File', $parent);
@@ -486,8 +486,8 @@ JS;
 		
 		$p = new Folder();
 		$p->ParentID = $parent;
-		$p->Title = _t('AssetAdmin.NEWFOLDER',"NewFolder");
-		$p->Name = _t('AssetAdmin.NEWFOLDER', 'NewFolder');
+		$p->Title = $name;
+		$p->Name = $name;
 
 		// Get the folder to be created		
 		if(isset($parentObj->ID)) $filename = $parentObj->FullPath . $p->Name;
