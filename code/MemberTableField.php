@@ -326,7 +326,9 @@ class MemberTableField extends ComplexTableField {
 			$this->sourceSort
 		);
 		
-		$this->unpagedSourceItems = $this->group->Members('', '', $this->sourceFilter, $this->sourceSort);
+		// Because we are not used $this->upagedSourceItems any more, and the DataObjectSet is usually the source
+		// that a large member set runs out of memory. we disable it here.
+		//$this->unpagedSourceItems = $this->group->Members('', '', $this->sourceFilter, $this->sourceSort);
 		$this->totalCount = ($this->sourceItems) ? $this->sourceItems->TotalItems() : 0;
 		
 		return $this->sourceItems;
