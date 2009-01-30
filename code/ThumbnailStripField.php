@@ -64,26 +64,27 @@ class ThumbnailStripField extends FormField {
 			$result .= '<ul>';
 			foreach($images as $image) {
 				$thumbnail = $image->getFormattedImage('StripThumbnail');
-				
-				// Constrain the output image to a 600x600 square.  This is passed to the destwidth/destheight in the class, which are then used to
-				// set width & height properties on the <img> tag inserted into the CMS.  Resampling is done after save
-				$width = $image->Width;
-				$height = $image->Height;
-				if($width > 600) {
-					$height *= (600 / $width);
-					$width = 600;
+				if ($thumbnail instanceof Image_Cached) { 	//Hack here... 
+					// Constrain the output image to a 600x600 square.  This is passed to the destwidth/destheight in the class, which are then used to
+					// set width & height properties on the <img> tag inserted into the CMS.  Resampling is done after save
+					$width = $image->Width;
+					$height = $image->Height;
+					if($width > 600) {
+						$height *= (600 / $width);
+						$width = 600;
+					}
+					if($height > 600) {
+						$width *= (600 / $height);
+						$height = 600;
+					}
+					
+					$result .= 
+						'<li>' .
+							'<a href=" ' . $image->Filename . '?r=' . rand(1,100000) . '">' .
+								'<img class="destwidth=' . round($width) . ',destheight=' . round($height) . '" src="'. $thumbnail->URL . '?r=' . rand(1,100000) . '" alt="' . $image->Title . '" title="' . $image->Title .   '" />' .
+							'</a>' .
+						'</li>';
 				}
-				if($height > 600) {
-					$width *= (600 / $height);
-					$height = 600;
-				}
-				
-				$result .= 
-					'<li>' .
-						'<a href=" ' . $image->Filename . '?r=' . rand(1,100000) . '">' .
-							'<img class="destwidth=' . round($width) . ',destheight=' . round($height) . '" src="'. $thumbnail->URL . '?r=' . rand(1,100000) . '" alt="' . $image->Title . '" title="' . $image->Title .   '" />' .
-						'</a>' .
-					'</li>';
 			}
 			$result .= '</ul>';
 		} else {
