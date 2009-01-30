@@ -594,9 +594,12 @@ ChangeTracker.prototype = {
     	var elements = Form.getElements(this);
 		var i, element;
 		for(i=0;element=elements[i];i++) {
+		    // NOTE: TinyMCE coupling
+		    // Ignore mce-generated elements
+		    if(element.className.substr(0,3) == 'mce') continue;
+		    
 			if(!element.isChanged) element.isChanged = this.field_changed;
 			if(!this.changeDetection_fieldsToIgnore[element.name] && element.isChanged()) {
-
 				//if( window.location.href.match( /^https?:\/\/dev/ ) )
 				//	Debug.log('Changed:'+ element.id + '(' + this.originalSerialized +')->('+Form.Element.serialize(element)+')' );
 
