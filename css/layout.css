@@ -358,8 +358,8 @@ body.stillLoading select {
 		height: 16px;
 		background: #EFEFEF url(../images/network-save.gif) no-repeat;
 		position: absolute;
-		left: 158px;
-		top: 3px;
+		left: 145px;
+		top: 2px;
 	}
 		#searchIndicator.loading {
 			display: block;
