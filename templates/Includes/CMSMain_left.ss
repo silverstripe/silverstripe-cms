@@ -31,6 +31,7 @@
 					<input type="hidden" id="SiteTreeIsFiltered" value="0" />
 					<div id="SearchBox">
 						<input type="text" id="SiteTreeSearchTerm" name="SiteTreeSearchTerm" />
+						<div id="searchIndicator">&nbsp;</div>
 						<input type="submit" id="SiteTreeSearchButton" class="action" value="<% _t('SEARCH') %>" title="<% _t('SEARCHTITLE','Search through URL, Title, Menu Title, &amp; Content') %>" />
 					</div>			
 		

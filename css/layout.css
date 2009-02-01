@@ -98,6 +98,14 @@ input.loading {
 	background: #fff url(../images/network-save.gif) no-repeat center left;
 }
 
+.loading {
+	background: #fff url(../images/network-save.gif) no-repeat center left;
+}
+
+input.hidden {
+	display: none;
+}
+
 /* Overrides - TODO Find a better place to put them */
 form#Form_EditForm fieldset {
 	height: 100%;
@@ -338,9 +346,23 @@ body.stillLoading select {
 		width: 100%;
 		margin: 0 0 5px 0;
 		padding-left: 5px;
+		position: relative;
 	}
 		#SearchBox #SiteTreeSearchTerm {
 			padding: 1px 0 2px 0;
+		}
+	
+	#searchIndicator {
+		display: none;
+		width: 16px;
+		height: 16px;
+		background: #EFEFEF url(../images/network-save.gif) no-repeat;
+		position: absolute;
+		left: 158px;
+		top: 3px;
+	}
+		#searchIndicator.loading {
+			display: block;
 		}
 	.SearchCriteriaContainer {
 		float: left;

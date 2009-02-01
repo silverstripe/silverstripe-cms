@@ -479,11 +479,13 @@ SiteTreeFilterForm = Class.create();
 SiteTreeFilterForm.applyTo('form#search_options');
 SiteTreeFilterForm.prototype = {
 	onsubmit: function() {
-			$('SiteTreeSearchButton').className = 'loading';
+			$('SiteTreeSearchButton').className = 'hidden';
+			$('searchIndicator').className = 'loading';
 			Ajax.SubmitForm(this, null, {
 				onSuccess :  function(response) {
 					$('SiteTreeIsFiltered').value = 1;
 					$('SiteTreeSearchButton').className = '';
+					$('searchIndicator').className = '';
 					$('sitetree_ul').innerHTML = response.responseText;
 					Behaviour.apply($('sitetree_ul'));
 					statusMessage('Filtered tree','good');
