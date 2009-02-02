@@ -98,10 +98,6 @@ input.loading {
 	background: #fff url(../images/network-save.gif) no-repeat center left;
 }
 
-.loading {
-	background: #fff url(../images/network-save.gif) no-repeat center left;
-}
-
 input.hidden {
 	display: none;
 }
