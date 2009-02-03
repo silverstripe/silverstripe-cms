@@ -426,7 +426,6 @@ JS;
 					}
 				}
 			}
-
 			$form = new Form($this, "EditForm", $fields, $actions);
 			$form->loadDataFrom($record);
 			$form->disableDefaultAction();
@@ -589,7 +588,7 @@ JS;
 	 */
 	public function revert($urlParams, $form) {
 		$id = (int)$_REQUEST['ID'];
-		$record = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree_Live\".\"ID\" = {$id}");
+		$record = Versioned::get_one_by_stage('SiteTree', 'Live', "`SiteTree_Live`.`ID` = {$id}");
 
 		// a user can restore a page without publication rights, as it just adds a new draft state
 		// (this action should just be available when page has been "deleted from draft")
