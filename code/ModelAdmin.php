@@ -210,12 +210,17 @@ abstract class ModelAdmin extends LeftAndMain {
 	 */
 	function getManagedModels() {
 		$models = $this->stat('managed_models');
-		if(is_string($models)) $models = array($models);
-		if(!count($models)) user_error('ModelAdmin::getManagedModels(): 
-			You need to specify at least one DataObject subclass in protected static $managed_models.
-			Make sure the visibility of your property is set to "protected"', 
-			E_USER_ERROR
-		);
+		if(is_string($models)) {
+			$models = array($models);
+		}
+		if(!count($models)) {
+			user_error(
+				'ModelAdmin::getManagedModels(): 
+				You need to specify at least one DataObject subclass in protected static $managed_models.
+				Make sure the visibility of your property is set to "protected"', 
+				E_USER_ERROR
+			);
+		}
 		
 		return $models;
 	}
@@ -342,11 +347,10 @@ class ModelAdmin_CollectionController extends Controller {
 	public function CreateForm() {
 		$modelName = $this->modelClass;
 
-		if ($this->hasMethod('alternatePermissionCheck')) {
-			if (!$this->alternatePermissionCheck()) return false;
-		}
-		else {
-			if (!singleton($modelName)->canCreate(Member::currentUser())) return false;
+		if($this->hasMethod('alternatePermissionCheck')) {
+			if(!$this->alternatePermissionCheck()) return false;
+		} else {
+			if(!singleton($modelName)->canCreate(Member::currentUser())) return false;
 		}
 		
 		$buttonLabel = sprintf(_t('ModelAdmin.CREATEBUTTON', "Create '%s'", PR_MEDIUM, "Create a new instance from a model class"), singleton($modelName)->i18n_singular_name());
@@ -354,6 +358,7 @@ class ModelAdmin_CollectionController extends Controller {
 		$actions = new FieldSet(
 			$createButton = new FormAction('add', $buttonLabel)
 		);
+		
 		$createButton->dontEscape = true;
 		
 		return new Form($this, "CreateForm", new FieldSet(), $actions);	
@@ -837,7 +842,7 @@ class ModelAdmin_RecordController extends Controller {
 	 * @return mixed
 	 */
 	function view($request) {
-		if ($this->currentRecord) {
+		if($this->currentRecord) {
 			$form = $this->ViewForm();
 			return $form->forAjaxTemplate();
 		} else {
