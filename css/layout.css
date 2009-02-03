@@ -333,18 +333,27 @@ body.stillLoading select {
 	#sitetree_holder #TreeTools {
 		float: left;
 		width: inherit;
+		background: #EEE;
 	}
 	#SearchBox {
 		float: left;
 		width: 100%;
-		margin-bottom: 5px;
+		margin: 0 0 5px 0;
+		padding-left: 5px;
 	}
 		#SearchBox #SiteTreeSearchTerm {
 			padding: 1px 0 2px 0;
 		}
-	#sitetree_ul {
+	#addCriteria {
+		float: left;
+		width: 100%;
+	}
+	#sitetree_ul, ul#sitetree {
 		padding: 3px 0 0 3px;
 		clear: left;
+	}
+	#sitetree_ul ul#sitetree {
+		padding: 0;
 	}
 	#sitetree {
 		width: 500px; /* IE's chocking right now */
@@ -361,7 +370,7 @@ body.stillLoading select {
 		}
 		#left #SortItems {
 			border-bottom: 1px solid #CCC;
-			margin-bottom: 5px;
+			margin-bottom: 2px;
 		}
 #TreeTools label {
 	display: block;
@@ -370,8 +379,7 @@ body.stillLoading select {
 }
 
 #TreeTools #batchactionsforms {
-	padding: 0 0 7px 1px;
-	float: left;
+	padding: 0 5px 7px 5px;
 }
 
 		#TreeTools div p, #ShowChanged {
@@ -389,7 +397,6 @@ body.stillLoading select {
 			padding: 2px 1px;
 			float: left;
 		}
-
 	
 div.spacer, 
 li.spacer {

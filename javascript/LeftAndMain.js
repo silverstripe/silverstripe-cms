@@ -115,7 +115,7 @@ Behaviour.register({
 	'#EditMemberProfile': {
 		onclick: function(e) {
 			var el = Event.element(e);
-			GB_show('Edit Profile', el.attributes.href.value, 390, 560);
+			GB_show('Edit Profile', el.attributes.href.value, 290, 500);
 			Event.stop(e);
 		}
 	}

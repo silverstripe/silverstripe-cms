@@ -1,7 +1,9 @@
 #left form.actionparams {
 	background: #eee;
-	padding: 0 0 5px 0;
+	padding: 0 5px 5px 5px;
+	_padding-left: 5px;
 	float: left;
+	width: 100%;
 }
 	#left form#search_options {
 		padding-bottom: 8px;
@@ -64,6 +66,9 @@
 }	
 #left div.field select {
 	width: 100%;
+}
+#TreeTools select {
+	margin-left: 2px;
 }
 #left .SelectionGroup li.selected label.selector {
 	font-weight: bold;
@@ -267,6 +272,7 @@ ul.tree span.a span.modified,
 	background-color: #aaa;
 	color: #fff;
 	border-bottom: 2px #ccc solid;
+	padding: 0 3px;
 }
 
 #treepanes table tbody tr {
@@ -275,10 +281,10 @@ ul.tree span.a span.modified,
 
 #treepanes table tbody td {
 	font-size: 11px;
-	padding:0 2px;
+	padding: 1px 3px;
 }
 
-#treepanes table tbody tr.odd td {
+#treepanes table tbody tr.even td {
 	background-color: #EEE;
 }
 #treepanes table tbody tr.over td {
@@ -289,12 +295,15 @@ ul.tree span.a span.modified,
 	background-color: #BBBBFF;
 }
 
-
 #treepanes #Versions tbody tr.internal {
 	color: #777;
 }
 #treepanes #Versions tbody tr.published {
 	color: black;
+}
+
+.SideReport_RecentlyEdited li a:hover {
+	background-color: #FFFFBB;
 }
 
 /**
@@ -406,18 +415,42 @@ ul.tree span.untranslated a:visited {
 		float: left;
 		margin: 0 3px 0 0;
 	}
-	
+
+#versions_actions {
+	float: left;
+	width: 100%;
+	border-bottom:1px solid #CCC;
+}	
 #versions_actions .versionChoice {
 	float: left;
 	display: block;
 	margin: 0 0 5px 0;
 }
 
+	.versionChoice label {
+		display: block;
+		float: left;
+		margin-top: 3px;
+		_margin-top: 4px;
+	}
+
 #versions_actions input, #Remember input {
 	float: left;
 	display: block;
-	padding-top: 2px;
 	margin: 0 3px 0 0;
+}
+
+#ReportSelector_holder {
+	background: #EEE;
+	margin: 0 !important;
+	padding: 3px 3px 7px;
+	border-bottom: 1px solid #CCC;
+}
+#versions_actions {
+	background: #EEE;
+	overflow: hidden;
+	margin: 0 !important;
+	padding: 4px 7px;
 }
 
 

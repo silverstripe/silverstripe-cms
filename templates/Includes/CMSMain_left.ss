@@ -37,7 +37,7 @@
 				</form>
 				<% end_control %>
 				<form class="actionparams" style="display: none" id="search_options" action="admin/filterSiteTree">
-					<div>
+				<div>
 					<input type="hidden" id="SiteTreeIsFiltered" value="0" />
 					
 					<div id="SearchBox">
@@ -51,14 +51,17 @@
 						<div style="display:none" id="Text$Column" class="SearchCriteria">$Title:</div>
 						<input style="display:none" id="Input$Column" name="$Column" class="SearchCriteria" />
 					<% end_control %>
-					<select id="SiteTreeFilterAddCriteria">
-						<option><% _t('ADDSEARCHCRITERIA','Add Criteria...') %></option>
-						<option value="SiteTreeFilterDate"><% _t('EDITEDSINCE','Edited Since') %></option>
-						<% control SiteTreeFilterOptions %>
-	        				<option value="$Column">$Title</option>
-						<% end_control %>
-					</select>
+					
+					<div id="addCriteria">
+						<select id="SiteTreeFilterAddCriteria">
+							<option><% _t('ADDSEARCHCRITERIA','Add Criteria...') %></option>
+							<option value="SiteTreeFilterDate"><% _t('EDITEDSINCE','Edited Since') %></option>
+							<% control SiteTreeFilterOptions %>
+		        				<option value="$Column">$Title</option>
+							<% end_control %>
+						</select>
 					</div>
+				</div>
 				</form>
 				<div id="batchactionsforms" style="display: none">
 					$DeleteItemsForm
@@ -98,10 +101,14 @@
 		</h2>
 		<div class="listpane" id="versions_holder" style="display:none">
 			<p class="pane_actions" id="versions_actions">
-				<input type="checkbox" id="versions_comparemode" /> <label for="versions_comparemode"><% _t('COMPAREMODE','Compare mode (click 2 below)') %></label>
-				<br />
-
-				<input type="checkbox" id="versions_showall" /> <label for="versions_showall"><% _t('SHOWUNPUB','Show unpublished versions') %></label>
+				
+				<span class="versionChoice">
+					<input type="checkbox" id="versions_comparemode" /> <label for="versions_comparemode"><% _t('COMPAREMODE','Compare mode (click 2 below)') %></label>
+				</span>
+				<span class="versionChoice">
+					<input type="checkbox" id="versions_showall" /> <label for="versions_showall"><% _t('SHOWUNPUB','Show unpublished versions') %></label>
+				</span>
+			
 			</p>
 			
 			<div class="unitBody">

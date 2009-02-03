@@ -96,24 +96,10 @@ PageCommentInterface.prototype = {
 					onFailure : function(response) {
 						alert(response.responseText);
 					}
-				
-				
-				
 			});
-			
-
-			
-			// Clear the fields
-			
-			// form.elements.Name.value = "";
-			form.elements.Comment.value = "";
-			
-
-			
 		} else {
 			message.style.display = '';
-			message.innerHTML = "Please enter your name and a comment to be posted to the site.";
-				
+			message.innerHTML = "Please enter your name and a comment to be posted to the site.";	
 		}
 		
 		return false;

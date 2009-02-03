@@ -5,6 +5,7 @@
  * @subpackage comments
  */
 class PageComment extends DataObject {
+	
 	static $db = array(
 		"Name" => "Varchar(200)",
 		"Comment" => "Text",
@@ -18,6 +19,12 @@ class PageComment extends DataObject {
 		"Author" => "Member" // Only set when the user is logged in when posting 
 	);
 	
+	static $has_many = array();
+	
+	static $many_many = array();
+	
+	static $defaults = array();
+	
 	static $casting = array(
 		"RSSTitle" => "Varchar",
 	);
@@ -28,7 +35,7 @@ class PageComment extends DataObject {
 	static $moderate = false;
 	
 	static $bbcode = false;
-	
+
 	/**
 	 * Return a link to this comment
 	 * @return string link to this comment.
