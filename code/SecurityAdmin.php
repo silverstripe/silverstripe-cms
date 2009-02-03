@@ -63,6 +63,11 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		$form = new Form($this, "EditForm", $fields, $actions);
 		$form->loadDataFrom($record);
 		
+		if(!$record->canEdit()) {
+			$readonlyFields = $form->Fields()->makeReadonly();
+			$form->setFields($readonlyFields);
+		}
+		
 		return $form;
 	}
 
@@ -90,6 +95,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		if($matches) {
 			$result .= "<ul>";
 			foreach($matches as $match) {
+				if(!$match->canView()) continue;
 
 				$data = $match->FirstName;
 				$data .= ",$match->Surname";
@@ -130,6 +136,11 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 
 			$idField->setValue($id);
 			$groupIDField->setValue($this->currentPageID());
+			
+			if($record && !$record->canEdit()) {
+				$readonlyFields = $form->Fields()->makeReadonly();
+				$form->setFields($readonlyFields);
+			}
 
 			return $form;
 		}
@@ -144,7 +155,9 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 
 		if($id) {
 			$record = DataObject::get_one($className, "\"$className\".\"ID\" = $id");
+			if($record && !$record->canEdit()) return Security::permissionFailure($this);
 		} else {
+			if(!singleton($this->stat('subitem_class'))->canCreate()) return Security::permissionFailure($this);
 			$record = new $className();
 		}
 
@@ -164,6 +177,8 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		unset($data['ID']);
 		if($className == null) $className = $this->stat('subitem_class');
 
+		if(!singleton($this->stat('subitem_class'))->canCreate()) return Security::permissionFailure($this);
+
 		$record = new $className();
 
 		$record->update($data);
@@ -181,6 +196,8 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		$memberID = $this->urlParams['OtherID'];
 		if(is_numeric($groupID) && is_numeric($memberID)) {
 			$member = DataObject::get_by_id('Member', (int) $memberID);
+			if(!$member->canDelete()) return Security::permissionFailure($this);
+			
 			$member->Groups()->remove($groupID);
 			FormResponse::add("reloadMemberTableField();");
 		} else {
@@ -213,6 +230,8 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	}
 
 	public function addgroup() {
+		if(!singleton($this->stat('tree_class'))->canCreate()) return Security::permissionFailure($this);
+		
 		$newGroup = Object::create($this->stat('tree_class'));
 		$newGroup->Title = _t('SecurityAdmin.NEWGROUP',"New Group");
 		$newGroup->Code = "new-group";
