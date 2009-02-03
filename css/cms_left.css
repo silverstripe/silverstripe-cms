@@ -1,7 +1,11 @@
 #left form.actionparams {
 	background: #eee;
-	padding: 3px 5px;
+	padding: 0 0 5px 0;
+	float: left;
 }
+	#left form#search_options {
+		padding-bottom: 8px;
+	}
 #left form.actionparams input,
 #left form.actionparams select {
 	padding: 1px;
@@ -14,7 +18,7 @@
 #PageType,
 #ReportSelector_holder select {
 	float: left;
-	margin-right: 3px;
+	margin-right: 4px;
 	padding: 1px;
 }
 #left form.actionparms input.action {
@@ -306,11 +310,17 @@ ul.tree span.a.last.Root span.c,
 ul.tree span.a.children.Root span.c {
 	margin: 0;
 }
+
+ul.tree span.a.Root span.c {
+	background: url(../../jsparty/tree/images/i-bottom.gif) no-repeat scroll 0 50%;
+}
+
 ul#sitetree.tree ul {
 	margin-left: 0;
 }
 ul#sitetree.tree ul ul {
-	margin-left: 16px;
+	padding-left: 16px;
+	background: url(../../jsparty/tree/images/i-repeater.gif) repeat-y scroll 0 50%;
 }
 
 
@@ -360,7 +370,9 @@ ul.tree span.untranslated a:visited {
 	float: left;
 }
 #left form.actionparams #InputSiteTreeFilterDate .calendar {
-	margin-left: -100px;
+	margin-left: -96px;
+	width: 190px;
+	height: 141px;
 }
 /* IE7 fix: */
 #left form.actionparams #InputSiteTreeFilterDate table {
@@ -383,6 +395,31 @@ ul.tree span.untranslated a:visited {
 	font-style: italic;	
 }
 
+#SortItems {
+	border-top: 1px solid #cccccc;
+	padding: 5px 0 0 0;
+	overflow: hidden;
+	clear: left;
+	width: 100%;
+}
+	#SortItems input, #ShowChanged input {
+		float: left;
+		margin: 0 3px 0 0;
+	}
+	
+#versions_actions .versionChoice {
+	float: left;
+	display: block;
+	margin: 0 0 5px 0;
+}
+
+#versions_actions input, #Remember input {
+	float: left;
+	display: block;
+	padding-top: 2px;
+	margin: 0 3px 0 0;
+}
+
 
 /**
  * i18n
@@ -394,13 +431,3 @@ ul.tree span.untranslated a:visited {
 	border-top: 1px solid #CCCCCC;
 	padding: 3px 0 3px 7px;
 }
-
-#SortItems {
-	border-bottom: 1px solid #cccccc;
-	background: #eee none repeat scroll 0%;
-	padding: 3px 0 3px 7px;
-}
-	#SortItems #sortitems {
-		float: left;
-		margin-right: 3px;
-	}

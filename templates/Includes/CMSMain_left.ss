@@ -7,65 +7,70 @@
 			<% _t('SITECONTENT TITLE','Site Content and Structure',PR_HIGH) %>
 		</h2>
 		<div id="sitetree_holder">
-
-			<ul id="TreeActions">
-				<li class="action" id="addpage"><button<% if EditingLang %> disabled="disabled" class="disabled"<% end_if %>><% _t('CREATE','Create',PR_HIGH) %></button></li>
-				<li class="action" id="search"><button><% _t('SEARCH','Search',PR_HIGH) %></button></li>
-				<li class="action" id="batchactions"><button><% _t('BATCHACTIONS','Batch Actions',PR_HIGH) %></button></li>
-				<!-- <li class="action" id="duplicate"><a href="#">Duplicate</a></li>
-				Sam: this should be put into the Create area, I think, so we don't stuff up the layout -->
-			</ul>
-			<div style="clear:both;"></div>
-			<% control AddPageOptionsForm %>
-			<form class="actionparams" id="$FormName" style="display: none" action="$FormAction">
-				<% control Fields %>
-				$FieldHolder
-				<% end_control %>
-				<!--
-				<div>
-				<select name="Type">
-					<% control PageTypes %>
-					<option value="$ClassName">$AddAction</option>
+			<div id="TreeTools">
+				<ul id="TreeActions">
+					<li class="action" id="addpage"><button<% if EditingLang %> disabled="disabled" class="disabled"<% end_if %>><% _t('CREATE','Create',PR_HIGH) %></button></li>
+					<li class="action" id="search"><button><% _t('SEARCH','Search',PR_HIGH) %></button></li>
+					<li class="action" id="batchactions"><button><% _t('BATCHACTIONS','Batch Actions',PR_HIGH) %></button></li>
+					<!-- <li class="action" id="duplicate"><a href="#">Duplicate</a></li>
+					Sam: this should be put into the Create area, I think, so we don't stuff up the layout -->
+				</ul>
+				<div style="clear:both;"></div>
+				<% control AddPageOptionsForm %>
+				<form class="actionparams" id="$FormName" style="display: none" action="$FormAction">
+					<% control Fields %>
+					$FieldHolder
 					<% end_control %>
-				</select>
-				<input type="hidden" name="ParentID" />
-				</div>
-				-->
-				<div>
-				<input class="action" type="submit" value="<% _t('GO','Go') %>" />
-				</div>
-			</form>
-			<% end_control %>
-			<form class="actionparams" style="display: none" id="search_options" action="admin/filterSiteTree">
-				<div>
-				<input type="hidden" id="SiteTreeIsFiltered" value="0" />
-				<input type="text" id="SiteTreeSearchTerm" name="SiteTreeSearchTerm" />
-				<input type="submit" id="SiteTreeSearchButton" class="action" value="<% _t('SEARCH') %>" title="<% _t('SEARCHTITLE','Search through URL, Title, Menu Title, &amp; Content') %>" />
-				<div style="display:none" id="TextSiteTreeFilterDate" class="SearchCriteria"><% _t('EDITEDSINCE','Edited Since') %>:</div>
-				<div style="display:none" id="InputSiteTreeFilterDate">$SiteTreeFilterDateField</div>
-				<% control SiteTreeFilterOptions %>
-					<div style="display:none" id="Text$Column" class="SearchCriteria">$Title:</div>
-					<input style="display:none" id="Input$Column" name="$Column" class="SearchCriteria" />
+					<!--
+					<div>
+					<select name="Type">
+						<% control PageTypes %>
+						<option value="$ClassName">$AddAction</option>
+						<% end_control %>
+					</select>
+					<input type="hidden" name="ParentID" />
+					</div>
+					-->
+					<div>
+					<input class="action" type="submit" value="<% _t('GO','Go') %>" />
+					</div>
+				</form>
 				<% end_control %>
-				<select id="SiteTreeFilterAddCriteria">
-					<option><% _t('ADDSEARCHCRITERIA','Add Criteria...') %></option>
-					<option value="SiteTreeFilterDate"><% _t('EDITEDSINCE','Edited Since') %></option>
+				<form class="actionparams" style="display: none" id="search_options" action="admin/filterSiteTree">
+					<div>
+					<input type="hidden" id="SiteTreeIsFiltered" value="0" />
+					
+					<div id="SearchBox">
+						<input type="text" id="SiteTreeSearchTerm" name="SiteTreeSearchTerm" />
+						<input type="submit" id="SiteTreeSearchButton" class="action" value="<% _t('SEARCH') %>" title="<% _t('SEARCHTITLE','Search through URL, Title, Menu Title, &amp; Content') %>" />
+					</div>
+					
+					<div style="display:none" id="TextSiteTreeFilterDate" class="SearchCriteria"><% _t('EDITEDSINCE','Edited Since') %>:</div>
+					<div style="display:none" id="InputSiteTreeFilterDate">$SiteTreeFilterDateField</div>
 					<% control SiteTreeFilterOptions %>
-        				<option value="$Column">$Title</option>
+						<div style="display:none" id="Text$Column" class="SearchCriteria">$Title:</div>
+						<input style="display:none" id="Input$Column" name="$Column" class="SearchCriteria" />
 					<% end_control %>
-				</select>
+					<select id="SiteTreeFilterAddCriteria">
+						<option><% _t('ADDSEARCHCRITERIA','Add Criteria...') %></option>
+						<option value="SiteTreeFilterDate"><% _t('EDITEDSINCE','Edited Since') %></option>
+						<% control SiteTreeFilterOptions %>
+	        				<option value="$Column">$Title</option>
+						<% end_control %>
+					</select>
+					</div>
+				</form>
+				<div id="batchactionsforms" style="display: none">
+					$DeleteItemsForm
+					$PublishItemsForm
+					
 				</div>
-			</form>
-			<div id="batchactionsforms" style="display: none">
-				$DeleteItemsForm
-				$PublishItemsForm
-				
-			</div>
-			<div id="SortItems">
-					<input type="checkbox" id="sortitems" /> <label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
-			</div>
-			<div id="LangSelector_holder" <% if MultipleLanguages %><% else %> class="onelang"<% end_if %>>
-				Language: $LangSelector
+				<div id="SortItems">
+						<input type="checkbox" id="sortitems" /> <label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
+				</div>
+				<div id="LangSelector_holder" <% if MultipleLanguages %><% else %> class="onelang"<% end_if %>>
+					Language: $LangSelector
+				</div>
 			</div>
 			<div id="sitetree_ul">
 				$SiteTreeAsUL

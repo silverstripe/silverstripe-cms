@@ -102,8 +102,10 @@ CheckBoxRange.prototype = {
 		this.form = form;
 		this.field = field;
 		this.eventPossibleCheckHappened = this.possibleCheckHappened.bindAsEventListener(this);
-		Event.observe(form, "click", this.eventPossibleCheckHappened);
-		Event.observe(form, "keyup", this.eventPossibleCheckHappened);
+		if(form) {
+			Event.observe(form, "click", this.eventPossibleCheckHappened);
+			Event.observe(form, "keyup", this.eventPossibleCheckHappened);
+		}
 	},
 		
 	possibleCheckHappened: function(event) {

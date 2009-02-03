@@ -208,7 +208,7 @@ abstract class ModelAdmin extends LeftAndMain {
 	/**
 	 * @return array
 	 */
-	protected function getManagedModels() {
+	function getManagedModels() {
 		$models = $this->stat('managed_models');
 		if(is_string($models)) $models = array($models);
 		if(!count($models)) user_error('ModelAdmin::getManagedModels(): 
@@ -674,21 +674,23 @@ class ModelAdmin_CollectionController extends Controller {
 	 */
 	public function AddForm() {
 		$newRecord = new $this->modelClass();
-		if($newRecord->hasMethod('getCMSAddFormFields')) {
-			$fields = $newRecord->getCMSAddFormFields();
-		} else {
-			$fields = $newRecord->getCMSFields();
-		}
+		if($newRecord->canCreate()){
+			if($newRecord->hasMethod('getCMSAddFormFields')) {
+				$fields = $newRecord->getCMSAddFormFields();
+			} else {
+				$fields = $newRecord->getCMSFields();
+			}
 		
-		$validator = ($newRecord->hasMethod('getCMSValidator')) ? $newRecord->getCMSValidator() : null;
+			$validator = ($newRecord->hasMethod('getCMSValidator')) ? $newRecord->getCMSValidator() : null;
 		
-		$actions = new FieldSet(
-			new FormAction("doCreate", _t('ModelAdmin.ADDBUTTON', "Add"))
-		);
+			$actions = new FieldSet(
+				new FormAction("doCreate", _t('ModelAdmin.ADDBUTTON', "Add"))
+			);
 		
-		$form = new Form($this, "AddForm", $fields, $actions, $validator);
+			$form = new Form($this, "AddForm", $fields, $actions, $validator);
 
-		return $form;
+			return $form;
+		}
 	}	
 	
 	function doCreate($data, $form, $request) {
@@ -771,7 +773,11 @@ class ModelAdmin_RecordController extends Controller {
 		$validator = ($this->currentRecord->hasMethod('getCMSValidator')) ? $this->currentRecord->getCMSValidator() : null;
 		
 		$actions = $this->currentRecord->getCMSActions();
-		$actions->push(new FormAction("doSave", _t('ModelAdmin.SAVE', "Save")));
+		if($this->currentRecord->canEdit(Member::currentUser())){
+			$actions->push(new FormAction("doSave", _t('ModelAdmin.SAVE', "Save")));
+		}else{
+			$fields = $fields->makeReadonly();
+		}
 		
 		if($this->currentRecord->canDelete(Member::currentUser())) {
 			$actions->insertFirst($deleteAction = new FormAction('doDelete', _t('ModelAdmin.DELETE', 'Delete')));

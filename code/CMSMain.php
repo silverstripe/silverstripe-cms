@@ -324,30 +324,9 @@ JS;
 	 * @return DataObjectSet
 	 */
 	public function PageTypes() {
-		$classes = ClassInfo::getValidSubClasses();
-		array_shift($classes);
+		$classes = SiteTree::page_type_classes();
+
 		$result = new DataObjectSet();
-		$kill_ancestors = array();
-
-		// figure out if there are any classes we don't want to appear
-		foreach($classes as $class) {
-			$instance = singleton($class);
-
-			// do any of the progeny want to hide an ancestor?
-			if($ancestor_to_hide = $instance->stat('hide_ancestor')) {
-				// note for killing later
-				$kill_ancestors[] = $ancestor_to_hide;
-			}
-		}
-
-		// If any of the descendents don't want any of the elders to show up, cruelly render the elders surplus to requirements.
-		if($kill_ancestors) {
-			foreach ($kill_ancestors as $mark) {
-				// unset from $classes
-				$idx = array_search($mark, $classes);
-				unset($classes[$idx]);
-			}
-		}
 
 		foreach($classes as $class) {
 			$instance = singleton($class);
@@ -642,7 +621,7 @@ JS;
 		if(Director::is_ajax()) {
 			// need a valid ID value even if the record doesn't have one in the database
 			// (its still present in the live tables)
-			$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree_Live\".\"ID\" = $recordID");
+			$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "SiteTree_Live.ID = $recordID");
 			// if the page has never been published to live, we need to act the same way as in deletefromlive()
 			if($liveRecord) {
 				// the form is readonly now, so we need to refresh the representation
@@ -1177,8 +1156,7 @@ JS;
 
 		return new Form($this, "AddPageOptionsForm", new FieldSet(
 			new HiddenField("ParentID"),
-			new DropdownField("PageType", "", $pageTypes)
-			// "Page to copy" => new TreeDropdownField("DuplicateSection", "", "SiteTree"),
+			new DropdownField("PageType", "", $pageTypes, 'Page')
 		),
 		new FieldSet(
 			new FormAction("addpage", _t('CMSMain.GO',"Go"))

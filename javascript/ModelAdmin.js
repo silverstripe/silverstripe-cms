@@ -144,7 +144,7 @@ $(document).ready(function() {
 	 * Table record handler for search result record
 	 * @todo: Shouldn't this be part of TableListField?
 	 */
-	$('#right #Form_ResultsForm tbody td a:not(.deletelink)')
+	$('#right #Form_ResultsForm tbody td a:not(.deletelink,.downloadlink)')
 	    .livequery('click', function(){
 	        $(this).parent().parent().addClass('loading');
     		var el = $(this);
