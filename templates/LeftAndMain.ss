@@ -10,16 +10,19 @@
 
 <body class="stillLoading $CSSClasses">
 	<div id="Loading" style="background: #FFF url($LoadingImage) 50% 50% no-repeat; position: absolute;z-index: 100000;height: 100%;width: 100%;margin: 0;padding: 0;z-index: 100000;position: absolute;"><% _t('LOADING','Loading...',PR_HIGH) %><noscript><h1><% _t('REQUIREJS','The CMS requires that you have JavaScript enabled.',PR_HIGH) %></h1></noscript></div>
-
-	<div id="top">
-		<% include CMSTopMenu %>	
-	</div><div id="left" style="float:left">
-		$Left
 	
+	<div id="top">
+		$CMSTopMenu
 	</div>
+	
+	<div id="left" style="float:left">
+		$Left
+	</div>
+	
 	<div id="separator" style="float:left">
 		&nbsp;
 	</div>
+	
 	<div class="right" id="right">
 		$Right
 	</div>
@@ -34,24 +37,23 @@
 	
 	<div id="bottom">
 		<div class="holder">
-		<div id="logInStatus">
-			<a href="$ApplicationLink" title="<% _t('SSWEB','Silverstripe Website') %>">$ApplicationName</a>&nbsp;-&nbsp;
-			<abbr style="border-style: none" title="<% _t('APPVERSIONTEXT1',"This is the") %> $ApplicationName <% _t('APPVERSIONTEXT2',"version that you are currently running, technically it's the CVS branch") %>">$CMSVersion</abbr> &nbsp; &nbsp; &nbsp; 
-			<% control CurrentMember %>
-			<% _t('LOGGEDINAS','Logged in as') %> <strong><% if FirstName && Surname %>$FirstName $Surname<% else_if FirstName %>$FirstName<% else %>$Email<% end_if %></strong> | <a href="{$BaseHref}admin/myprofile" id="EditMemberProfile"><% _t('EDITPROFILE','Profile') %></a> | <a href="Security/logout" id="LogoutLink"><% _t('LOGOUT','log out') %></a>
-		<% end_control %>
-		</div>
+			<div id="logInStatus">
+				<a href="$ApplicationLink" title="<% _t('SSWEB','Silverstripe Website') %>">$ApplicationName</a>&nbsp;-&nbsp;
+				<abbr style="border-style: none" title="<% _t('APPVERSIONTEXT1',"This is the") %> $ApplicationName <% _t('APPVERSIONTEXT2',"version that you are currently running, technically it's the CVS branch") %>">$CMSVersion</abbr> &nbsp; &nbsp; &nbsp; 
+				<% control CurrentMember %>
+					<% _t('LOGGEDINAS','Logged in as') %> <strong><% if FirstName && Surname %>$FirstName $Surname<% else_if FirstName %>$FirstName<% else %>$Email<% end_if %></strong> | <a href="{$BaseHref}admin/myprofile" id="EditMemberProfile"><% _t('EDITPROFILE','Profile') %></a> | <a href="Security/logout" id="LogoutLink"><% _t('LOGOUT','log out') %></a>
+				<% end_control %>
+			</div>
 
-		<div id="switchView" class="bottomTabs">
-			<% if ShowSwitchView %>
-				<div class="blank"> <% _t('VIEWPAGEIN','Page view:') %> </div>
-				<span class="current" title="<% _t('EDITINCMS', 'Edit this page in the CMS') %>"><% _t('EDIT','Edit') %></span>
-				| <a id="viewStageSite" title="<% _t('VIEWINDRAFT', 'View the Page in the Draft Site') %>" href="home/?stage=Stage"><% _t('DRAFTS','Draft Site') %></a>
-			 | <a id="viewLiveSite" title="<% _t('VIEWINPUBLISHED', 'View the Page in the Published Site') %>" href="home/?stage=Live"><% _t('PUBLIS','Published Site') %></a>
-			<a style="display: none; margin-left: 20px;" id="viewArchivedSite" href="home/"><% _t('ARCHS','Archived Site') %></a>
-			<% end_if %>
-		</div>
-		
+			<div id="switchView" class="bottomTabs">
+				<% if ShowSwitchView %>
+					<div class="blank"> <% _t('VIEWPAGEIN','Page view:') %> </div>
+					<span class="current" title="<% _t('EDITINCMS', 'Edit this page in the CMS') %>"><% _t('EDIT','Edit') %></span>
+					| <a id="viewStageSite" title="<% _t('VIEWINDRAFT', 'View the Page in the Draft Site') %>" href="home/?stage=Stage"><% _t('DRAFTS','Draft Site') %></a>
+				 | <a id="viewLiveSite" title="<% _t('VIEWINPUBLISHED', 'View the Page in the Published Site') %>" href="home/?stage=Live"><% _t('PUBLIS','Published Site') %></a>
+				<a style="display: none; margin-left: 20px;" id="viewArchivedSite" href="home/"><% _t('ARCHS','Archived Site') %></a>
+				<% end_if %>
+			</div>
 		</div>
 	</div>
 </body>

@@ -29,10 +29,6 @@ class CommentAdmin extends LeftAndMain {
 		Requirements::css(CMS_DIR . 'css/CommentAdmin.css');
 	}
 	
-	public function getMenuTitle() {
-		return _t('LeftAndMain.COMMENTS', 'Comments', PR_HIGH, 'Menu title');
-	}	
-	
 	public function showtable($params) {
 	    return $this->getLastFormIn($this->renderWith('CommentAdmin_right'));
 	}

@@ -14,18 +14,7 @@ function action_revert_right() {
 		}
 	});
 }
-/*function action_submit_right() {
-	$('action_submit_options').configure('CanApprove', 'Awaiting editor approval');
-	$('action_submit_options').toggle();
-}*/
-function action_reject_right() {
-	$('action_submit_options').configure('CanReject', 'Content declined');
-	$('action_submit_options').toggle();
-}
-function action_submit_right() {
-	$('action_submit_options').configure('CanPublish', 'Awaiting final approval');
-	$('action_submit_options').toggle();
-}
+
 function action_rollback_right() {
 	var options = {
 		OK: function() {
@@ -64,21 +53,6 @@ function action_print_right() {
 	if(printURL.substr(0,7) != 'http://') printURL = baseHref() + printURL;
 	
 	window.open(printURL, 'printable');
-}
-
-
-
-Submit_ActionPropertiesForm = Class.extend('ActionPropertiesForm');
-Submit_ActionPropertiesForm.applyTo('#action_submit_options');
-Submit_ActionPropertiesForm.prototype = {
-	/**
-	 * Define how this form is to be used
-	 */
-	configure : function(securityLevel, status) {
-		this.securityLevel = securityLevel;
-		this.elements.Status.value = status
-		this.elements.Status.parentNode.getElementsByTagName('span')[0].innerHTML= status;			
-	}
 }
 
 function suggestStageSiteLink() {

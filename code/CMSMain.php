@@ -42,7 +42,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'duplicatewithchildren',
 		'filtersitetree',
 		'getpagecount',
-		'getpagemembers',
 		'getversion',
 		'publishall',
 		'publishitems',
@@ -125,10 +124,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain_right.js');
 	}
 	
-	public function getMenuTitle() {
-		return _t('LeftAndMain.SITECONTENT', 'Site Content', PR_HIGH, 'Menu title');
-	}	
-	
 	/**
 	 * If this is set to true, the "switchView" context in the
 	 * template is shown, with links to the staging and publish site.
@@ -166,6 +161,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$this->generateDataTreeHints();
 		$this->generateTreeStylingJS();
 
+		// Pre-cache sitetree version numbers for querying efficiency
+		Versioned::prepopulate_versionnumber_cache("SiteTree", "Stage");
+		Versioned::prepopulate_versionnumber_cache("SiteTree", "Live");
+
 		return $this->getSiteTreeFor("SiteTree");
 	}
 
@@ -192,6 +191,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * Returns a filtered Site Tree
 	 */
 	public function filtersitetree() {
+		// Pre-cache sitetree version numbers for querying efficiency
+		Versioned::prepopulate_versionnumber_cache("SiteTree", "Stage");
+		Versioned::prepopulate_versionnumber_cache("SiteTree", "Live");
+		
 		$className = 'SiteTree';
 		$rootID = null;
 		$obj = $rootID ? $this->getRecord($rootID) : singleton($className);
@@ -655,123 +658,7 @@ JS;
 		}
 	}
 
-	//------------------------------------------------------------------------------------------//
-	// Workflow handlers
-
-	/**
-	 * Send this page on to another user for review
-	 */
-	function submit() {
-		$page = DataObject::get_by_id("SiteTree", $_REQUEST['ID']);
-		$recipient = DataObject::get_by_id("Member", $_REQUEST['RecipientID']);
-		if(!$recipient) user_error("CMSMain::submit() Can't find recipient #$_REQUEST[RecipientID]", E_USER_ERROR);
-
-		$comment = new WorkflowPageComment();
-		$comment->Comment = $_REQUEST['Message'];
-		$comment->PageID = $page->ID;
-		$comment->AuthorID = Member::currentUserID();
-		$comment->Recipient = $recipient;
-		$comment->Action = $_REQUEST['Status'];
-		$comment->write();
-
-		$emailData = $page->customise(array(
-			"Message" => $_REQUEST['Message'],
-			"Recipient" => $recipient,
-			"Sender" => Member::currentUser(),
-			"ApproveLink" => "admin/approve/$page->ID",
-			"EditLink" => "admin/show/$page->ID",
-			"StageLink" => "$page->URLSegment/?stage=Stage",
-		));
-
-		$email = new Page_WorkflowSubmitEmail();
-		$email->populateTemplate($emailData);
-		$email->send();
-
-		$page->AssignedToID = $recipient->ID;
-		$page->RequestedByID = Member::currentUserID();
-		$page->Status = $_REQUEST['Status'];
-		$page->writeWithoutVersion();
-
-		FormResponse::status_message(sprintf(_t('CMSMain.SENTTO',"Sent to %s %s for approval.",PR_LOW,"First param is first name, and second is surname"),
-											 $recipient->FirstName, $recipient->Surname), "good");
-
-		return FormResponse::respond();
-	}
-
-	function getpagemembers() {
-		$relationName = $_REQUEST['SecurityLevel'];
-		$pageID = $this->urlParams['ID'];
-		$page = DataObject::get_by_id('SiteTree',$pageID);
-		if($page) {
-			foreach($page->$relationName() as $editorGroup) $groupIDs[] = $editorGroup->ID;
-			if($groupIDs) {
-				$groupList = implode(", ", $groupIDs);
-				$members = DataObject::get("Member","","",
-					"INNER JOIN \"Group_Members\" ON \"Group_Members\".\"MemberID\" = \"Member\".\"ID\" AND \"Group_Members\".\"GroupID\" IN ($groupList)");
-			}
-
-			if($members) {
-
-				if( $page->RequestedByID )
-					$members->shift( $page->RequestedBy() );
-
-				foreach($members as $editor) {
-					$options .= "<option value=\"$editor->ID\">$editor->FirstName $editor->Surname ($editor->Email)</option>";
-				}
-			} else {
-				$options = "<option>(no-one available)</option>";
-			}
-
-			return <<<HTML
-			<label class="left">Send to</label>
-			<select name="RecipientID">$options</select>
-HTML;
-		} else {
-			user_error("CMSMain::getpagemembers() Cannot find page #$pageID", E_USER_ERROR);
-		}
-	}
-
-	function tasklist() {
-		$tasks = DataObject::get("Page", "\"AssignedToID\" = " . Member::currentUserID(), "\"Created\" DESC");
-		if($tasks) {
-			$data = new ArrayData(array(
-				"Tasks" => $tasks,
-				"Message" => sprintf(_t('CMSMain.WORKTODO',"You have work to do on these <b>%d</b> pages."),$tasks->Count()),
-			));
-		} else {
-			$data = new ArrayData(array(
-				"Message" => _t('CMSMain.NOTHINGASSIGNED',"You have nothing assigned to you."),
-			));
-		}
-		return $data->renderWith("TaskList");
-	}
-
-	function waitingon() {
-		$tasks = DataObject::get("Page", "\"RequestedByID\" = " . Member::currentUserID(), "\"Created\" DESC");
-		if($tasks) {
-			$data = new ArrayData(array(
-				"Tasks" => $tasks,
-				"Message" => sprintf(_t('CMSMain.WAITINGON',"You are waiting on other people to work on these <b>%d</b> pages."),$tasks->Count()),
-			));
-		} else {
-			$data = new ArrayData(array(
-				"Message" => _t('CMSMain.NOWAITINGON','You aren\'t waiting on anybody.'),
-			));
-		}
-		return $data->renderWith("WaitingOn");
-	}
-
-	function comments() {
-		if($this->urlParams['ID']) {
-			$comments = DataObject::get("WorkflowPageComment", "\"PageID\" = " . $this->urlParams['ID'], "\"Created\" DESC");
-			$data = new ArrayData(array(
-				"Comments" => $comments,
-			));
-			return $data->renderWith("CommentList");
-		}
-	}
-
-	/**
+	/*
 	 * Return a dropdown for selecting reports
 	 */
 	function ReportSelector() {
@@ -1425,6 +1312,73 @@ HTML;
 		} else {
 			user_error("CMSMain::duplicate() Bad ID: '$id'", E_USER_WARNING);
 		}
+	}
+	
+	/**
+	 * Switch the cms language and reload the site tree
+	 *
+	 */
+	function switchlanguage($lang, $donotcreate = null) {
+		//is it's a clean switch (to an existing language deselect the current page)
+		if (is_string($lang)) $dontunloadPage = true;
+		$lang = (is_string($lang) ? $lang : urldecode($this->urlParams['ID']));
+		if ($lang != Translatable::default_lang()) {
+			Translatable::set_reading_lang(Translatable::default_lang());
+			$tree_class = $this->stat('tree_class');
+			$obj = new $tree_class;
+			$allIDs = $obj->getDescendantIDList();
+			$allChildren = $obj->AllChildren();
+			$classesMap = $allChildren->map('ID','ClassName');
+			$titlesMap = $allChildren->map();
+			Translatable::set_reading_lang($lang);
+			$obj = new $tree_class;
+			$languageIDs = $obj->getDescendantIDList();
+			$notcreatedlist = array_diff($allIDs,$languageIDs);
+			FormResponse::add("$('addpage').getElementsByTagName('button')[0].disabled=true;");
+			//FormResponse::add("$('Form_AddPageOptionsForm').getElementsByTagName('div')[1].getElementsByTagName('input')[0].disabled=true;");
+			FormResponse::add("$('Translating_Message').innerHTML = 'Translating mode - ".i18n::get_language_name($lang)."';");
+			FormResponse::add("Element.removeClassName('Translating_Message','nonTranslating');");
+		} else {
+			Translatable::set_reading_lang($lang);
+			FormResponse::add("$('addpage').getElementsByTagName('button')[0].disabled=false;");
+			//FormResponse::add("$('Form_AddPageOptionsForm').getElementsByTagName('div')[1].getElementsByTagName('input')[0].disabled=false;");
+			FormResponse::add("Element.addClassName('Translating_Message','nonTranslating');");
+		}
+		$obj = singleton($this->stat('tree_class'));
+		$obj->markPartialTree();
+		$siteTree = $obj->getChildrenAsUL("", '
+					"<li id=\"record-$child->ID\" class=\"" . $child->CMSTreeClasses($extraArg) . "\">" .
+					"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" " . (($child->canEdit() || $child->canAddChildren()) ? "" : "class=\"disabled\"") . " title=\"' . _t('LeftAndMain.PAGETYPE') . '".$child->class."\" >" .
+					(Convert::raw2js($child->TreeTitle())) .
+					"</a>"
+'
+					,$this, true);
+
+		$rootLink = $this->Link() . '0';
+		$siteTree = "<li id=\"record-0\" class=\"Root nodelete\"><a href=\"$rootLink\">" .
+			 _t('LeftAndMain.SITECONTENT') . "</a>"
+			. $siteTree . "</li></ul>";
+		FormResponse::add("$('sitetree').innerHTML ='". ereg_replace("[\n]","\\\n",$siteTree) ."';");
+		FormResponse::add("SiteTree.applyTo('#sitetree');");
+		if (isset($notcreatedlist)) {
+			foreach ($notcreatedlist as $notcreated) {
+				if ($notcreated == $donotcreate) continue;
+				$id = "new-{$classesMap[$notcreated]}-0-$notcreated";
+				Session::set($id . '_originalLangID',$notcreated);
+				$treeTitle = Convert::raw2js($titlesMap[$notcreated]);	
+				$response = <<<JS
+					var tree = $('sitetree');
+					var newNode = tree.createTreeNode("$id", "$treeTitle", "$classesMap[$notcreated] (untranslated)");
+					addClass(newNode, 'untranslated');
+					node = tree.getTreeNodeByIdx(0);
+					node.open();
+					node.appendTreeNode(newNode);
+JS;
+				FormResponse::add($response);
+			}
+		}
+		if (!isset($dontunloadPage)) FormResponse::add("node = $('sitetree').getTreeNodeByIdx(0); node.selectTreeNode();");
+		return FormResponse::respond();
 	}
 	
 	/**

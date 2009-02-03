@@ -306,15 +306,6 @@ class LeftAndMain extends Controller {
 		);
 	}
 	
-	/**
-	 * Override {@link getMenuTitle} in child classes to make the menu title translatable for that class.
-	 * Uses {@link $menu_title} if present, otherwise falls back to the classname without the "Admin" suffix.
-	 *
-	 * @return string
-	 */
-	public function getMenuTitle() {
-		return ($this->stat('menu_title')) ? $this->stat('menu_title') : preg_replace('/Admin$/', '', $this->class);
-	}
 	
 	/**
  	* Returns the menu title for the given LeftAndMain subclass.
@@ -411,7 +402,7 @@ class LeftAndMain extends Controller {
 		
 			// already set in CMSMenu::populate_menu(), but from a static pre-controller
 			// context, so doesn't respect the current user locale in _t() calls - as a workaround,
-			// we simply call getMenuTitle() again if we're dealing with a controller
+			// we simply call LeftAndMain::menu_title_for_class() again if we're dealing with a controller
 			if($menuItem->controller) {
 				$defaultTitle = LeftAndMain::menu_title_for_class($menuItem->controller);
 				$title = _t("{$menuItem->controller}.MENUTITLE", $defaultTitle);
@@ -433,6 +424,10 @@ class LeftAndMain extends Controller {
 		return $menu;
 	}
 
+
+	public function CMSTopMenu() {
+		return $this->renderWith(array('CMSTopMenu_alternative','CMSTopMenu'));
+	}
 
   /**
    * Return a list of appropriate templates for this class, with the given suffix
@@ -461,7 +456,7 @@ class LeftAndMain extends Controller {
 
 	function getSiteTreeFor($className, $rootID = null) {
 		$obj = $rootID ? $this->getRecord($rootID) : singleton($className);
-		$obj->markPartialTree(null, $this);
+		$obj->markPartialTree(30, $this);
 		if($p = $this->currentPage()) $obj->markToExpose($p);
 
 		// getChildrenAsUL is a flexible and complex way of traversing the tree
@@ -927,7 +922,11 @@ JS;
 	}
 
 	/**
-	 * Return the version number of this application
+	 * Return the version number of this application.
+	 * Uses the subversion path information in <mymodule>/silverstripe_version
+	 * (automacially replaced $URL$ placeholder).
+	 * 
+	 * @return string
 	 */
 	public function CMSVersion() {
 		$sapphireVersionFile = file_get_contents('../sapphire/silverstripe_version');
@@ -938,21 +937,21 @@ JS;
 			$sapphireVersion = "trunk";
 		} else {
 			preg_match("/sapphire\/(?:(?:branches)|(?:tags))(?:\/rc)?\/([A-Za-z0-9._-]+)\/silverstripe_version/", $sapphireVersionFile, $matches);
-			$sapphireVersion = $matches[1];
+			$sapphireVersion = ($matches) ? $matches[1] : null;
 		}
 
 		if(strstr($jspartyVersionFile, "/jsparty/trunk")) {
 			$jspartyVersion = "trunk";
 		} else {
 			preg_match("/jsparty\/(?:(?:branches)|(?:tags))(?:\/rc)?\/([A-Za-z0-9._-]+)\/silverstripe_version/", $jspartyVersionFile, $matches);
-			$jspartyVersion = $matches[1];
+			$jspartyVersion = ($matches) ? $matches[1] : null;
 		}
 
 		if(strstr($cmsVersionFile, "/cms/trunk")) {
 			$cmsVersion = "trunk";
 		} else {
 			preg_match("/cms\/(?:(?:branches)|(?:tags))(?:\/rc)?\/([A-Za-z0-9._-]+)\/silverstripe_version/", $cmsVersionFile, $matches);
-			$cmsVersion = $matches[1];
+			$cmsVersion = ($matches) ? $matches[1] : null;
 		}
 
 		if($sapphireVersion == $jspartyVersion && $jspartyVersion == $cmsVersion) {

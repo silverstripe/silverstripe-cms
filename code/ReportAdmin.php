@@ -43,10 +43,6 @@ class ReportAdmin extends LeftAndMain {
 		Requirements::block(SAPPHIRE_DIR . '/javascript/HtmlEditorField.js');
 	}
 	
-	public function getMenuTitle() {
-		return _t('LeftAndMain.REPORTS', 'Reports', PR_HIGH, 'Menu title');
-	}
-	
 	/**
 	 * Does the parent permission checks, but also
 	 * makes sure that instantiatable subclasses of

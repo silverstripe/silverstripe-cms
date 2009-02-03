@@ -485,7 +485,7 @@ SiteTreeFilterForm.prototype = {
 					$('SiteTreeIsFiltered').value = 1;
 					$('SiteTreeSearchButton').className = '';
 					$('sitetree_ul').innerHTML = response.responseText;
-					Behaviour.apply();
+					Behaviour.apply($('sitetree_ul'));
 					statusMessage('Filtered tree','good');
 				},
 				onFailure : function(response) {

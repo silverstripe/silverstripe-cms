@@ -65,7 +65,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		return $form;
 	}
 
-
 	public function AddRecordForm() {
 		$m = Object::create('MemberTableField',
 			$this,
@@ -103,29 +102,29 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 
 	public function MemberForm() {
 		$id = $_REQUEST['ID'] ? $_REQUEST['ID'] : Session::get('currentMember');
-		if($id)
-			return $this->getMemberForm($id);
+		if($id) return $this->getMemberForm($id);
 	}
 
 	public function getMemberForm($id) {
-		if($id && $id != 'new') $record = DataObject::get_by_id("Member",$id);
+		if($id && $id != 'new') $record = DataObject::get_by_id('Member', (int) $id);
 		if($record || $id == 'new') {
 			$fields = new FieldSet(
 				new HiddenField('MemberListBaseGroup', '', $this->currentPageID() )
 			);
 
-			if( $extraFields = $record->getCMSFields() )
-				foreach( $extraFields as $extra )
+			if($extraFields = $record->getCMSFields()) {
+				foreach($extraFields as $extra) {
 					$fields->push( $extra );
+				}
+			}
 
-			$fields->push($idField = new HiddenField("ID"));
-			$fields->push($groupIDField = new HiddenField("GroupID"));
-
+			$fields->push($idField = new HiddenField('ID'));
+			$fields->push($groupIDField = new HiddenField('GroupID'));
 
 			$actions = new FieldSet();
-			$actions->push(new FormAction('savemember',_t('SecurityAdmin.SAVE')));
+			$actions->push(new FormAction('savemember', _t('SecurityAdmin.SAVE')));
 
-			$form = new Form($this, "MemberForm", $fields, $actions);
+			$form = new Form($this, 'MemberForm', $fields, $actions);
 			if($record) $form->loadDataFrom($record);
 
 			$idField->setValue($id);
@@ -137,7 +136,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 
 	function savemember() {
 		$data = $_REQUEST;
-
 		$className = $this->stat('subitem_class');
 
 		$id = $_REQUEST['ID'];
@@ -155,7 +153,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 
 		$record->Groups()->add($data['GroupID']);
 
-
 		FormResponse::add("reloadMemberTableField();");
 
 		return FormResponse::respond();
@@ -164,14 +161,14 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	function addmember($className=null) {
 		$data = $_REQUEST;
 		unset($data['ID']);
-		if($className == null)
-			$className = $this->stat('subitem_class');
+		if($className == null) $className = $this->stat('subitem_class');
+
 		$record = new $className();
 
 		$record->update($data);
 		$record->write();
-		if($data['GroupID'])
-			$record->Groups()->add($data['GroupID']);
+		
+		if($data['GroupID']) $record->Groups()->add($data['GroupID']);
 
 		FormResponse::add("reloadMemberTableField();");
 
@@ -182,10 +179,9 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		$groupID = $this->urlParams['ID'];
 		$memberID = $this->urlParams['OtherID'];
 		if(is_numeric($groupID) && is_numeric($memberID)) {
-			$member = DataObject::get_by_id('Member', $memberID);
+			$member = DataObject::get_by_id('Member', (int) $memberID);
 			$member->Groups()->remove($groupID);
 			FormResponse::add("reloadMemberTableField();");
-
 		} else {
 			user_error("SecurityAdmin::removememberfromgroup: Bad parameters: Group=$groupID, Member=$memberID", E_USER_ERROR);
 		}
@@ -213,7 +209,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 					"</ul>";
 
 		return $siteTree;
-
 	}
 
 	public function addgroup() {
@@ -227,14 +222,9 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	}
 
 	public function EditedMember() {
-		if(Session::get('currentMember'))
-			return DataObject::get_by_id("Member", Session::get('currentMember'));
+		if(Session::get('currentMember')) return DataObject::get_by_id('Member', (int) Session::get('currentMember'));
 	}
 
-	public function getMenuTitle() {
-		return _t('LeftAndMain.SECURITY', 'Security', PR_HIGH, 'Menu title');
-	}
-	
 	function providePermissions() {
 		return array(
 			'EDIT_PERMISSIONS' => _t('SecurityAdmin.EDITPERMISSIONS', 'Edit permissions and IP addresses on each group'),
