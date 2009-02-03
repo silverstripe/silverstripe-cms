@@ -179,7 +179,7 @@ class PageComment_Controller extends Controller {
 		}
 	}
 	
-		function approve() {
+	function approve() {
 		if(Permission::check('CMS_ACCESS_CMSMain')) {
 			$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
 			$comment->NeedsModeration = false;

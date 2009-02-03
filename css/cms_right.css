@@ -23,7 +23,7 @@
 }
 
 .right form .field {
-	/*margin: 3px !important;*/
+	border: none;
 	margin: 0;
 }
 	.right form .text,
@@ -137,6 +137,40 @@
 	font-size: 12px;
 }
 
+.right form .mceEditor select.mceNativeListBox { 
+	background: #fff; 
+	padding-top: 2px;
+	width: 95px; /* Added width to stop sizes jumping and text wrapping */
+	font-size: 11px;
+}
+	.right form .mceEditor select.mceNativeListBox option {
+		padding: 0 2px 0 2px;
+		font-size: 11px;
+	}
+.right form .mceEditor .mceFirst { 
+	background: #f4f4f4; 
+} 
+.right form .mceEditor .mceToolbar table { 
+	background: transparent; 
+} 
+.right form .mceEditor .mceButton { 
+	padding: 1px; 
+} 
+
+.right form .mceEditor select.mceNativeListBox {
+	background: #fff;
+}
+.right form .mceEditor .mceFirst {
+	background:url(../images/textures/mce_editor.gif) repeat-x bottom;
+}
+.right form .mceEditor .mceToolbar table {
+	background: transparent;
+}
+
+.right form .mceEditor select.mceNativeListBox {
+	background: #fff;
+}
+	
 .right form input.checkbox, 
 .right form .optionset input, 
 .right form .htmleditor select, 
@@ -159,7 +193,7 @@
 	float: left;
 }
 .right form .optionset li.submit {
-	text-align: right;
+	float: right;
 }
 
 .right form h1 {
@@ -273,10 +307,13 @@
  * Autocomplete
  */
 .autocomplete {
+	margin-left: 1px;
 	background: white;
+	overflow: visible;
 }
 	.autocomplete ul {
 		border: 1px solid #aaa;
+		background: #FFFFBB;
 	}
 	.autocomplete li {
 		list-style-type: none;
@@ -331,11 +368,11 @@
  
 /* Filter box (for search/filter box above a table on Asset/MemberTableField) */
 div.filterBox {
-	width: 33em;
+	width: inherit;
 	margin: 5px 0;
 	padding: 5px;
-	background: #ebeadb;
-	border: 1px solid #aca899;
+	background: #EEE;
+	border: 1px solid #BBB;
 }
 	div.filterBox .middleColumn {
 		background: none !important;

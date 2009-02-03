@@ -20,7 +20,7 @@ $lang['en_US']['AssetAdmin']['NOWBROKEN'] = 'The following pages now have broken
 $lang['en_US']['AssetAdmin']['NOWBROKEN2'] = 'Their owners have been emailed and they will fix up those pages.';
 $lang['en_US']['AssetAdmin']['SAVEDFILE'] = 'Saved file %s';
 $lang['en_US']['AssetAdmin']['SAVEFOLDERNAME'] = 'Save folder name';
-$lang['en_US']['AssetAdmin']['THUMBSDELETED'] = 'All unused thumbnails have been deleted';
+$lang['en_US']['AssetAdmin']['THUMBSDELETED'] = '%s unused thumbnails have been deleted';
 $lang['en_US']['AssetAdmin']['UPLOAD'] = 'Upload Files Listed Below';
 $lang['en_US']['AssetAdmin']['UPLOADEDX'] = 'Uploaded %s files';
 $lang['en_US']['AssetAdmin_left.ss']['CREATE'] = 'Create';
@@ -423,7 +423,7 @@ $lang['en_US']['ModelAdmin_ImportSpec.ss']['IMPORTSPECTITLE'] = 'Specification f
 $lang['en_US']['ModelAdmin_left.ss']['ADDLISTING'] = 'Add';
 $lang['en_US']['ModelAdmin_left.ss']['IMPORT_TAB_HEADER'] = 'Import';
 $lang['en_US']['ModelAdmin_left.ss']['SEARCHLISTINGS'] = 'Search';
-$lang['en_US']['ModelAdmin_right.ss']['WELCOME1'] = 'Welcome to %s. Please choose on one of the entries in the left pane.';
+$lang['en_US']['ModelAdmin_right.ss']['WELCOME1'] = 'Welcome to %s. Please choose one of the entries in the left pane.';
 $lang['en_US']['PageComment']['COMMENTBY'] = array(
 	'Comment by \'%s\' on %s',
 	PR_MEDIUM,

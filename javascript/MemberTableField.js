@@ -131,8 +131,8 @@ MemberTableField.prototype = {
 			updateURL = "";
 			updateURL += Event.findElement(e,"form").action;
 			// we can't set "fieldName" as a HiddenField because there might be multiple ComplexTableFields in a single EditForm-container
-			updateURL += "&fieldName="+$('MemberFieldName').value;
-			updateURL += "&action_callfieldmethod&&methodName=addtogroup&";
+			updateURL += "?fieldName="+$('MemberFieldName').value;
+			updateURL += "&action_callfieldmethod&methodName=addtogroup";
 
 			ajaxSubmitFieldSet(updateURL, data);
 		}

@@ -232,6 +232,7 @@ ul.tree span.a span.modified,
 .listpane div.unitBody {
 	overflow: auto;
 	width: 100%;
+	clear: left;
 }
 
 .listpane li a {

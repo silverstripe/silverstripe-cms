@@ -65,9 +65,10 @@ class MemberTableField extends ComplexTableField {
 		}
 
 		$sourceClass = $this->stat('data_class');
+		$SNG_member = singleton($this->stat('data_class'));
 
 		foreach(self::$addedPermissions as $permission) {
-			array_push( $this->permissions, $permission );
+			array_push($this->permissions, $permission);
 		}
 
 		$fieldList = array(
@@ -75,12 +76,14 @@ class MemberTableField extends ComplexTableField {
 			"Surname" => _t('MemberTableField.SURNAME', 'Surname'),
 			"Email" => _t('MemberTableField.EMAIL', 'Email')
 		);
+		
+		$memberDbFields = $SNG_member->db();
+		$csvFieldList = array();
 
-		$csvFieldList = $fieldList;
-		foreach(self::$addedCsvFields as $key => $value) {
-			$csvFieldList[$key] = $value;
+		foreach($memberDbFields as $field => $dbFieldType) {
+			$csvFieldList[$field] = $field;
 		}
-
+		
 		foreach(self::$addedFields as $key => $value) {
 			$fieldList[$key] = $value;
 		}
@@ -100,8 +103,6 @@ class MemberTableField extends ComplexTableField {
 
 		Requirements::javascript(CMS_DIR . '/javascript/MemberTableField.js');
 		Requirements::javascript(CMS_DIR . "/javascript/MemberTableField_popup.js");
-
-		$SNG_member = singleton($this->stat('data_class'));
 		
 		// search
 		$SQL_search = isset($_REQUEST['MemberSearch']) ? Convert::raw2sql($_REQUEST['MemberSearch']) : null;
@@ -120,7 +121,7 @@ class MemberTableField extends ComplexTableField {
 		}
 
 		$this->sourceJoin = " INNER JOIN \"Group_Members\" ON \"MemberID\"=\"Member\".\"ID\"";
-		$this->setFieldListCsv( $csvFieldList );
+		$this->setFieldListCsv($csvFieldList);
 	}
 
 	function sourceID() {
@@ -325,7 +326,9 @@ class MemberTableField extends ComplexTableField {
 			$this->sourceSort
 		);
 		
-		$this->unpagedSourceItems = $this->group->Members('', '', $this->sourceFilter, $this->sourceSort);
+		// Because we are not used $this->upagedSourceItems any more, and the DataObjectSet is usually the source
+		// that a large member set runs out of memory. we disable it here.
+		//$this->unpagedSourceItems = $this->group->Members('', '', $this->sourceFilter, $this->sourceSort);
 		$this->totalCount = ($this->sourceItems) ? $this->sourceItems->TotalItems() : 0;
 		
 		return $this->sourceItems;

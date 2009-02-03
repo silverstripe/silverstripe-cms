@@ -12,7 +12,6 @@ TinyMCEImageEnhancement.prototype = {
     
     addListeners: function() {
         $('Form_EditorToolbarImageForm_FolderID').value = "";
-        
         Event.observe($('AddFolder'),'click',this.onAddFolder.bind(this));
         Event.observe($('FolderOk'),'click',this.onFolderOk.bind(this));
         Event.observe($('FolderCancel'),'click',this.onFolderCancel.bind(this)); 
@@ -74,7 +73,7 @@ TinyMCEImageEnhancement.prototype = {
 		var folderName = $('NewFolderName').value;
 		var options = {
 			method: 'post',
-			postBody: 'ParentID=' + this.getParentID() + '&ajax=1&returnID=1' + ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : ''),
+			postBody: 'ParentID=' + this.getParentID() + '&ajax=1&returnID=1&Name=' + folderName + ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : ''),
 			onSuccess: this.onFolderGetSuccess.bind(this),
 			onFailure: function(transport) {
 				errorMessage('Error: Folder not added', transport); 
@@ -105,30 +104,13 @@ TinyMCEImageEnhancement.prototype = {
 		
 		this.folderID = folderID;
 		
-		var options = {
-			method: 'post',
-			postBody: 'Created=' + currentDate + '&Name=' + folderName + '&ClassName=Folder&ID=' + folderID + '&ajax=1&action_save=1' + ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : ''),
-			onSuccess: this.onFolderAddSuccess.bind(this),
-			onFailure: function(transport) {
-				errorMessage('Error: Folder not added', transport); 
-			}
-		};
-
-		new Ajax.Request('admin/assets/EditForm', options);
-    },
-    
-    /**
-     * When folder name has been changed we need to refresh folder list and return to initial state of UI. 
-    */
-    
-    onFolderAddSuccess: function(transport) {
-        statusMessage('Creating new folder');
+		statusMessage('Creating new folder');
         $('TreeDropdownField_Form_EditorToolbarImageForm_FolderID').itemTree = null;
         $('TreeDropdownField_Form_EditorToolbarImageForm_FolderID').setValue(this.folderID);
         $('NewFolderName').value = '';
         Element.show('AddFolder');
         Element.hide('NewFolderName','FolderOk','FolderCancel');
-        this.removeIE6Hack();                              
+        this.removeIE6Hack();
     },
     
     /**
@@ -140,6 +122,8 @@ TinyMCEImageEnhancement.prototype = {
         Element.show('AddFolder');
         Element.hide('NewFolderName','FolderOk','FolderCancel');
         this.removeIE6Hack();
+		Event.stop(event);
+		return false;
     },
     
     /**
@@ -147,10 +131,12 @@ TinyMCEImageEnhancement.prototype = {
     */
     
     onWindowLoad: function() {
-        // Due to a bug in the flash plugin on Linux and Mac, we need at least version 9.0.64 to use SWFUpload
+        // Due to a bug in the flash plugin on Linux and Mac, 
+		 //we need at least version 9.0.64 to use SWFUpload
+		// see http://open.silverstripe.com/ticket/3023
         if(navigator.appVersion.indexOf("Mac") != -1 || navigator.appVersion.indexOf("X11") != -1 || navigator.appVersion.indexOf("Linux") != -1) {
            pv = getFlashPlayerVersion();
-           if(pv.major < 9 || (pv.major == 9 && pv.minor == 0 && pv.rev < 64)) {
+           if(pv.major < 9 || pv.major > 9 || (pv.major == 9 && pv.minor == 0 && pv.rev < 64)) {
               if($('AddFolderGroup')) $('AddFolderGroup').style.display = 'none';
               if($('PipeSeparator')) $('PipeSeparator').style.display = 'none';
               if($('UploadGroup')) $('UploadGroup').style.display = 'none';
@@ -251,7 +237,7 @@ TinyMCEImageEnhancement.prototype = {
     */
     
     applyIE6Hack: function() {
-        if(BrowserDetect.browser == 'Explorer') {
+        if(/msie/i.test(navigator.userAgent)) {
 	        elements = [$('FolderOk'),$('FolderCancel'),$('UploadFiles')];
 	        $A(elements).each(function(element) {
 	            element.style.position = "relative";
@@ -261,7 +247,7 @@ TinyMCEImageEnhancement.prototype = {
     },
     
     removeIE6Hack: function() {
-        if(BrowserDetect.browser == 'Explorer') {
+        if(/msie/i.test(navigator.userAgent)) {
 	        elements = [$('FolderOk'),$('FolderCancel'),$('UploadFiles')];
 	        $A(elements).each(function(element) {
 	            element.style.position = "";
