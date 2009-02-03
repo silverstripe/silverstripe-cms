@@ -295,6 +295,8 @@ body.stillLoading select {
 }
 	#bottom #switchView a {
 		background: none;
+		margin-left: 8px;
+		border-left: 1px solid;
 	}
 
 #bottom .bottomTabs a {
@@ -344,10 +346,19 @@ body.stillLoading select {
 		#SearchBox #SiteTreeSearchTerm {
 			padding: 1px 0 2px 0;
 		}
+	.SearchCriteriaContainer {
+		float: left;
+		width: 100%;
+		padding-left: 5px;
+		margin-bottom: 4px;
+	}
 	#addCriteria {
 		float: left;
 		width: 100%;
 	}
+		#addCriteria label {
+			display: none;
+		}
 	#sitetree_ul, ul#sitetree {
 		padding: 3px 0 0 3px;
 		clear: left;

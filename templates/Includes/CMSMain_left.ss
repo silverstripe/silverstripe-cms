@@ -12,8 +12,6 @@
 					<li class="action" id="addpage"><button<% if EditingLang %> disabled="disabled" class="disabled"<% end_if %>><% _t('CREATE','Create',PR_HIGH) %></button></li>
 					<li class="action" id="search"><button><% _t('SEARCH','Search',PR_HIGH) %></button></li>
 					<li class="action" id="batchactions"><button><% _t('BATCHACTIONS','Batch Actions',PR_HIGH) %></button></li>
-					<!-- <li class="action" id="duplicate"><a href="#">Duplicate</a></li>
-					Sam: this should be put into the Create area, I think, so we don't stuff up the layout -->
 				</ul>
 				<div style="clear:both;"></div>
 				<% control AddPageOptionsForm %>
@@ -21,18 +19,8 @@
 					<% control Fields %>
 					$FieldHolder
 					<% end_control %>
-					<!--
 					<div>
-					<select name="Type">
-						<% control PageTypes %>
-						<option value="$ClassName">$AddAction</option>
-						<% end_control %>
-					</select>
-					<input type="hidden" name="ParentID" />
-					</div>
-					-->
-					<div>
-					<input class="action" type="submit" value="<% _t('GO','Go') %>" />
+						<input class="action" type="submit" value="<% _t('GO','Go') %>" />
 					</div>
 				</form>
 				<% end_control %>
@@ -45,16 +33,20 @@
 						<input type="submit" id="SiteTreeSearchButton" class="action" value="<% _t('SEARCH') %>" title="<% _t('SEARCHTITLE','Search through URL, Title, Menu Title, &amp; Content') %>" />
 					</div>
 					
-					<div style="display:none" id="TextSiteTreeFilterDate" class="SearchCriteria"><% _t('EDITEDSINCE','Edited Since') %>:</div>
-					<div style="display:none" id="InputSiteTreeFilterDate">$SiteTreeFilterDateField</div>
+					<div id="ContainerSiteTreeFilterDate" class="SearchCriteriaContainer" style="display:none">
+						<div id="TextSiteTreeFilterDate" class="SearchCriteria"><% _t('EDITEDSINCE','Edited Since') %>:</div>
+						<div id="InputSiteTreeFilterDate">$SiteTreeFilterDateField</div>
+					</div>
 					<% control SiteTreeFilterOptions %>
-						<div style="display:none" id="Text$Column" class="SearchCriteria">$Title:</div>
-						<input style="display:none" id="Input$Column" name="$Column" class="SearchCriteria" />
+						<div id="Container$Column" class="SearchCriteriaContainer" style="display:none">
+							<div id="Text$Column" class="SearchCriteria">$Title:</div>
+							<input id="Input$Column" name="$Column" class="SearchCriteria" />
+						</div>
 					<% end_control %>
 					
 					<div id="addCriteria">
 						<select id="SiteTreeFilterAddCriteria">
-							<option><% _t('ADDSEARCHCRITERIA','Add Criteria...') %></option>
+							<option value=""><% _t('ADDSEARCHCRITERIA','Add Criteria...') %></option>
 							<option value="SiteTreeFilterDate"><% _t('EDITEDSINCE','Edited Since') %></option>
 							<% control SiteTreeFilterOptions %>
 		        				<option value="$Column">$Title</option>

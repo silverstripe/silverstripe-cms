@@ -125,8 +125,10 @@ SiteTreeFilterAddCriteria = Class.create();
 SiteTreeFilterAddCriteria.applyTo('#SiteTreeFilterAddCriteria');
 SiteTreeFilterAddCriteria.prototype = {
 	onchange : function() {
-		Element.show('Text' + this.value);
-		Element.show('Input' + this.value);
+		Element.show('Container' + this.value);
+		// Element.show('Text' + this.value);
+		// Element.show('Input' + this.value);
+		this.selectedIndex = 0; //reset selected criteria to prompt 
 	}
 }
 
