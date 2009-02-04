@@ -6,6 +6,8 @@
  * In contrast to the original implementation, the URL-parameters "ParentClass" and "ParentID" are used
  * to specify "Group" (hardcoded) and the GroupID-relation.
  *
+ *	@todo write a better description about what this field does.
+ *
  * Returns either:
  * - provided members
  * - members of a provided group
@@ -20,63 +22,49 @@ class MemberTableField extends ComplexTableField {
 	
 	protected $hidePassword;
 	
-	protected $pageSize;
-	
 	protected $detailFormValidator;
 	
 	protected $group;
 
-	protected $template = "MemberTableField";
+	protected $template = 'MemberTableField';
 
 	public $popupClass = 'MemberTableField_Popup';
 	
-	static $data_class = "Member";
+	static $data_class = 'Member';
 
-	protected $permissions = array(
-		'add',
-		'edit',
-		'delete'
-	);
-	
-	private static $addedPermissions = array();
-	
+	/**
+	 * @deprecated 2.4: See {@link MemberTableField->addMembershipFields()}
+	 */
 	private static $addedFields = array();
-	
+
+	/**
+	 * @deprecated 2.4: See {@link MemberTableField->addMembershipFields()}
+	 */
 	private static $addedCsvFields = array();
-
-	public static function addPermissions($addingPermissionList) {
-		self::$addedPermissions = $addingPermissionList;
-	}
-
+	
+	/**
+	 * @deprecated 2.4: Please use a DataObjectDecorator, implementing updateSummaryFields
+	 * to alter the table overview fields instead.
+	 */
 	public static function addMembershipFields($addingFieldList, $addingCsvFieldList = null) {
+		trigger_error('MemberTableField::addMembershipFields() is deprecated. Please implement updateSummaryFields() on a Member decorator instead.', E_USER_NOTICE);
 		self::$addedFields = $addingFieldList;
 		$addingCsvFieldList == null ? self::$addedCsvFields = $addingFieldList : self::$addedCsvFields = $addingCsvFieldList;
   	}
 
-	function __construct($controller, $name, $group, $members = null, $hidePassword = true, $pageLimit = 10) {
-		if($group) {
-			if(is_object($group)) {
-				$this->group = $group;
-			} elseif(is_numeric($group)) {
-				$this->group = DataObject::get_by_id('Group', $group);
-			}
-		} else if(is_numeric($_REQUEST['ctf'][$this->Name()]["ID"])) {
-			$this->group = DataObject::get_by_id('Group', $_REQUEST['ctf'][$this->Name()]["ID"]);
-		}
-
-		$sourceClass = $this->stat('data_class');
-		$SNG_member = singleton($this->stat('data_class'));
-
-		foreach(self::$addedPermissions as $permission) {
-			array_push($this->permissions, $permission);
-		}
-
-		$fieldList = array(
-			"FirstName" => _t('MemberTableField.FIRSTNAME', 'Firstname'),
-			"Surname" => _t('MemberTableField.SURNAME', 'Surname'),
-			"Email" => _t('MemberTableField.EMAIL', 'Email')
-		);
-		
+  	/**
+  	 * Constructor method for MemberTableField.
+  	 * 
+  	 * @param Controller $controller Controller class which created this field
+  	 * @param string $name Name of the field (e.g. "Members")
+  	 * @param mixed $group Can be the ID of a Group instance, or a Group instance itself
+  	 * @param DataObjectSet $members Optional set of Members to set as the source items for this field
+  	 * @param boolean $hidePassword Hide the password field or not in the summary?
+  	 */
+	function __construct($controller, $name, $group, $members = null, $hidePassword = true) {
+		$sourceClass = self::$data_class;
+		$SNG_member = singleton($sourceClass);
+		$fieldList = $SNG_member->summaryFields();
 		$memberDbFields = $SNG_member->db();
 		$csvFieldList = array();
 
@@ -84,6 +72,16 @@ class MemberTableField extends ComplexTableField {
 			$csvFieldList[$field] = $field;
 		}
 		
+		if($group) {
+			if(is_object($group)) {
+				$this->group = $group;
+			} elseif(is_numeric($group)) {
+				$this->group = DataObject::get_by_id('Group', $group);
+			}
+		} elseif(is_numeric($_REQUEST['ctf'][$this->Name()]['ID'])) {
+			$this->group = DataObject::get_by_id('Group', $_REQUEST['ctf'][$this->Name()]['ID']);
+		}
+
 		foreach(self::$addedFields as $key => $value) {
 			$fieldList[$key] = $value;
 		}
@@ -92,36 +90,31 @@ class MemberTableField extends ComplexTableField {
 			$fieldList["SetPassword"] = "Password"; 
 		}
 
-		// Legacy: Use setCustomSourceItems() instead.
-		if($members) {
-			$this->customSourceItems = $this->memberListWithGroupID($members, $group);
-		}
-
 		$this->hidePassword = $hidePassword;
+		
+		// @todo shouldn't this use $this->group? It's unclear exactly
+		// what group it should be customising the custom Member set with.
+		if($members) {
+			$this->setCustomSourceItems($this->memberListWithGroupID($members, $group));
+		}
 
 		parent::__construct($controller, $name, $sourceClass, $fieldList);
 
 		Requirements::javascript(CMS_DIR . '/javascript/MemberTableField.js');
-		Requirements::javascript(CMS_DIR . "/javascript/MemberTableField_popup.js");
+		Requirements::javascript(CMS_DIR . '/javascript/MemberTableField_popup.js');
 		
-		// search
 		$SQL_search = isset($_REQUEST['MemberSearch']) ? Convert::raw2sql($_REQUEST['MemberSearch']) : null;
 		if(!empty($_REQUEST['MemberSearch'])) {
 			$searchFilters = array();
 			foreach($SNG_member->searchableFields() as $fieldName => $fieldSpec) {
-				if(strpos($fieldName,'.') === false) $searchFilters[] = "\"$fieldName\" LIKE '%{$SQL_search}%'";
+				if(strpos($fieldName, '.') === false) $searchFilters[] = "\"$fieldName\" LIKE '%{$SQL_search}%'";
 			}
 			$this->sourceFilter[] = '(' . implode(' OR ', $searchFilters) . ')';
 		}
 
-		// filter by groups
-		// TODO Not implemented yet
-		if(isset($_REQUEST['ctf'][$this->Name()]['GroupID']) && is_numeric($_REQUEST['ctf'][$this->Name()]['GroupID'])) {
-			$this->sourceFilter[] = "\"GroupID\"='{$_REQUEST['ctf'][$this->Name()]['GroupID']}'";
-		}
-
 		$this->sourceJoin = " INNER JOIN \"Group_Members\" ON \"MemberID\"=\"Member\".\"ID\"";
 		$this->setFieldListCsv($csvFieldList);
+		$this->setPageSize(100);
 	}
 
 	function sourceID() {
@@ -135,7 +128,7 @@ class MemberTableField extends ComplexTableField {
 	function SearchForm() {
 		$searchFields = new FieldGroup(
 			new TextField('MemberSearch', _t('MemberTableField.SEARCH', 'Search')),
-			new HiddenField("ctf[ID]", '', $this->group->ID),
+			new HiddenField('ctf[ID]', '', $this->group->ID),
 			new HiddenField('MemberFieldName', '', $this->name),
 			new HiddenField('MemberDontShowPassword', '', $this->hidePassword)
 		);
@@ -162,7 +155,7 @@ class MemberTableField extends ComplexTableField {
 			FormResponse::status_messsage(_t('MemberTableField.ADDINGFIELD', 'Adding failed'), 'bad');
 		}
 
-		$className = Object::getCustomClass($this->stat('data_class'));
+		$className = self::$data_class;
 		$record = new $className();
 
 		$record->update($data);
@@ -213,7 +206,7 @@ class MemberTableField extends ComplexTableField {
 		return 'Group';
 	}
 
-	function getParentIdName($childClass,$parentClass){
+	function getParentIdName($childClass, $parentClass) {
 		return 'GroupID';
 	}
 
@@ -221,6 +214,15 @@ class MemberTableField extends ComplexTableField {
 	 * #################################
 	 *           Custom Functions
 	 * #################################
+	 */
+	
+	/**
+	 * Customise an existing DataObjectSet of Member
+	 * objects with a GroupID.
+	 * 
+	 * @param DataObjectSet $members Set of Member objects to customise
+	 * @param Group $group Group object to customise with
+	 * @return DataObjectSet Customised set of Member objects
 	 */
 	function memberListWithGroupID($members, $group) {
 		$newMembers = new DataObjectSet();
@@ -319,7 +321,7 @@ class MemberTableField extends ComplexTableField {
 		// We use the group to get the members, as they already have the bulk of the look up functions
 		$start = isset($_REQUEST['ctf'][$this->Name()]['start']) ? $_REQUEST['ctf'][$this->Name()]['start'] : 0; 
 
-		$this->sourceItems = $this->group->Members( 
+		$this->sourceItems = $this->group->Members(
 			$this->pageSize, // limit 
 			$start, // offset 
 			$this->sourceFilter,
