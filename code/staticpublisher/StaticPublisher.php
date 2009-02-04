@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * @package cms
+ * @subpackage publishers
+ */
 abstract class StaticPublisher extends DataObjectDecorator {
 	/**
 	 * Defines whether to output information about publishing or not. By 

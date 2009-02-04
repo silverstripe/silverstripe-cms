@@ -2,6 +2,11 @@
 
 /**
  * Usage: Object::add_extension("SiteTree", "FilesystemPublisher('../static-folder/')")
+ *
+ * @see http://doc.silverstripe.com/doku.php?id=staticpublisher
+ * 
+ * @package cms
+ * @subpackage publishers
  */
 class FilesystemPublisher extends StaticPublisher {
 	protected $destFolder;
@@ -136,9 +141,6 @@ class FilesystemPublisher extends StaticPublisher {
 		}
 
 		if(self::$static_base_url) Director::setBaseURL(null);
-
-		//Debug::show(array_keys($files));
-		//Debug::show(array_keys($missingFiles));
 		
 		$base = "../$this->destFolder";
 		foreach($files as $file) {

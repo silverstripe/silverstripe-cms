@@ -3,6 +3,11 @@
 /**
  * This static publisher can be used to deploy static content to multiple hosts, by generating the cache files locally and then rsyncing then to
  * each destination box.  This can be used to set up a load-balanced collection of static servers.
+ * 
+ * @see http://doc.silverstripe.com/doku.php?id=staticpublisher
+ *
+ * @package cms
+ * @subpackage publishers
  */
 class RsyncMultiHostPublisher extends FilesystemPublisher {
 	/**
@@ -12,6 +17,9 @@ class RsyncMultiHostPublisher extends FilesystemPublisher {
 	
 	/**
 	 * Set the targets to publish to.
+	 * If target is an scp-style remote path, no password is accepted - we assume key-based authentication to be set up on the application server
+	 * initiating the publication.
+	 * 
 	 * @param $targets An array of targets to publish to.  These can either be local file names, or scp-style targets, in the form "user@server:path"
 	 */
 	static function set_targets($targets) {
