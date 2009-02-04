@@ -170,10 +170,23 @@ class MemberTableField extends ComplexTableField {
 
 			// TODO add javascript to highlight added row (problem: might not show up due to sorting/filtering)
 			FormResponse::update_dom_id($this->id(), $this->renderWith($this->template), true);
-			FormResponse::status_message(_t('MemberTableField.ADDEDTOGROUP','Added member to group'), 'good');
+			FormResponse::status_message(
+				_t(
+					'MemberTableField.ADDEDTOGROUP','Added member to group'
+				),
+				'good'
+			);
 		
 		} else {
-			FormResponse::status_message(Convert::raw2xml("I couldn't add that user to this group:\n\n" . $valid->starredlist()), 'bad');
+			$message = sprintf(
+				_t(
+					'MemberTableField.ERRORADDINGUSER',
+					'There was an error adding the user to the group: %s'
+				),
+				Convert::raw2xml($valid->starredList())
+			);
+			
+			FormResponse::status_message($message, 'bad');
 		}
 
 		return FormResponse::respond();
