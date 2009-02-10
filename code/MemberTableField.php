@@ -33,6 +33,11 @@ class MemberTableField extends ComplexTableField {
 	static $data_class = 'Member';
 
 	/**
+	 * @deprecated 2.4. See {@link MemberTableField->addPermissions()}
+	 */
+	private static $addedPermissions = array();
+	
+	/**
 	 * @deprecated 2.4: See {@link MemberTableField->addMembershipFields()}
 	 */
 	private static $addedFields = array();
@@ -41,6 +46,15 @@ class MemberTableField extends ComplexTableField {
 	 * @deprecated 2.4: See {@link MemberTableField->addMembershipFields()}
 	 */
 	private static $addedCsvFields = array();
+
+	/**
+	 * @deprecated 2.4. Set permissions using setPermissions(Array) on
+	 * the MemberTableField object.
+	 */
+	public static function addPermissions($addingPermissionList) {
+		trigger_error('MemberTableField::addPermissions() is deprecated. Please set permissions using setPermissions(Array) on the MemberTableField object.', E_USER_NOTICE);
+		self::$addedPermissions = $addingPermissionList;
+	}
 	
 	/**
 	 * @deprecated 2.4: Please use a DataObjectDecorator, implementing updateSummaryFields
