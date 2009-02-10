@@ -209,7 +209,10 @@ $(document).ready(function() {
 	 */
 	$('#right #form_actions_right input[name=action_doDelete]').livequery('click', function(){
 		var confirmed = confirm(ss.i18n._t('ModelAdmin.REALLYDELETE'));
-		if(!confirmed) return false;
+		if(!confirmed) {
+			$(this).removeClass('loading')
+			return false;
+		}
 
 		var form = $('#right form');
 		var formAction = form.attr('action') + '?' + $(this).fieldSerialize();
