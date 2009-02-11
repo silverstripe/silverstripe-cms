@@ -116,6 +116,20 @@ body.ModelAdmin #statusMessage {
 }
 
 /* Form */
+
+#LeftPane form {
+	border-bottom: 2px solid #ddd;
+	padding-bottom: 10px;
+}
+
+#LeftPane #Form_ImportForm {
+	border-bottom: none;
+}
+
+#LeftPane form .Actions {
+	margin: 5px 0;
+}
+
 body.ModelAdmin #right .ajaxActions {
 	position: fixed !important;
 	position: absolute;
@@ -123,13 +137,17 @@ body.ModelAdmin #right .ajaxActions {
 	bottom: 35px !important;
 }
 
+#LeftPane .tab {
+	padding: 7px;
+}
+
 .tab h3 {
-	margin-top: 10px;
-	font-size: 1.2em;
+	margin: 10px 0 5px 0;
+	font-size: 12px;
 }
 
 form .message {
-	font-size: 1em;
+	font-size: 10px;
 	margin: .3em 0;
 	padding: 0.3em;
 }
