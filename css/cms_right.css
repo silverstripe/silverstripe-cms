@@ -109,12 +109,12 @@
 
 .right form .field label {
 	font-size: 11px;
+	color: #666;
 }
 .right form .field label.left {
 	float: none;
 	display: block;
 	margin-left: 0;
-	color: #666;
 	margin-bottom: 3px;
 	/*font-size: 11px;*/
 	width: 96%;
