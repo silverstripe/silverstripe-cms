@@ -66,6 +66,7 @@ class ReportAdmin extends LeftAndMain {
 	
 	public function Reports(){
 		$allReports= ClassInfo::subclassesFor("Report");
+		$processedReports = array();
 		foreach($allReports as $report) {
 			if($report != 'Report') $processedReports[] = new $report();
 		}
@@ -100,6 +101,7 @@ class ReportAdmin extends LeftAndMain {
 		
 		$subclasses = ClassInfo::subclassesFor('Report');
 		
+		$ids = array();
 		foreach($subclasses as $class){
 			if($class != 'Report') {
 				$obj = new $class();
