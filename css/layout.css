@@ -297,12 +297,16 @@ body.stillLoading select {
 #bottom #switchView {
 	float: left;
 }
-	#bottom #switchView a {
+	#bottom #switchView a, #bottom #switchView span {
 		background: none;
-		margin-left: 8px;
-		border-left: 1px solid;
+		padding-left: 8px;
+		padding-right: 8px;
+		display: inline-block;
+		border-left: 1px solid #AAA;
 	}
-
+	#bottom #switchView span {
+		border-left: none;
+	}
 #bottom .bottomTabs a {
 	color: #fff;
 }

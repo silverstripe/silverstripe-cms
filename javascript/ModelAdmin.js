@@ -125,13 +125,13 @@ $(document).ready(function() {
 	});
 	
 	$('a.form_frontend_function.tick_all_result_assembly').click(function(){
-		var resultAssembly = $('div#ResultAssembly ul li input');
+		var resultAssembly = $(this).prevAll('div#ResultAssembly').find('ul li input');
 		resultAssembly.attr('checked', 'checked');
 		return false;
 	});
 	
 	$('a.form_frontend_function.untick_all_result_assembly').click(function(){
-		var resultAssembly = $('div#ResultAssembly ul li input');
+		var resultAssembly = $(this).prevAll('div#ResultAssembly').find('ul li input');
 		resultAssembly.removeAttr('checked');
 		return false;
 	});
@@ -209,7 +209,10 @@ $(document).ready(function() {
 	 */
 	$('#right #form_actions_right input[name=action_doDelete]').livequery('click', function(){
 		var confirmed = confirm(ss.i18n._t('ModelAdmin.REALLYDELETE'));
-		if(!confirmed) return false;
+		if(!confirmed) {
+			$(this).removeClass('loading')
+			return false;
+		}
 
 		var form = $('#right form');
 		var formAction = form.attr('action') + '?' + $(this).fieldSerialize();

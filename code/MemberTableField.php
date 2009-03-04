@@ -31,7 +31,13 @@ class MemberTableField extends ComplexTableField {
 	public $popupClass = 'MemberTableField_Popup';
 	
 	static $data_class = 'Member';
-
+	
+	/**
+	 * Set the page size for this table. 
+	 * @var int 
+	 */ 
+	public static $page_size = 20; 
+ 	
 	/**
 	 * @deprecated 2.4. See {@link MemberTableField->addPermissions()}
 	 */
@@ -128,7 +134,7 @@ class MemberTableField extends ComplexTableField {
 
 		$this->sourceJoin = " INNER JOIN \"Group_Members\" ON \"MemberID\"=\"Member\".\"ID\"";
 		$this->setFieldListCsv($csvFieldList);
-		$this->setPageSize(100);
+		$this->setPageSize($this->stat('page_size'));
 	}
 
 	function sourceID() {
