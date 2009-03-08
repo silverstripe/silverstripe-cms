@@ -530,9 +530,10 @@ iframe {
 }
 #contentPanel .thumbnailstrip {
 	border: none;
-	width: 180px;
+	width: 190px;
 	height: 120px;
 	overflow-y: auto;	
+	margin-right: 0 !important;
 }
 
 #Caption {
