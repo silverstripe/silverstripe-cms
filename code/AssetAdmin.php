@@ -423,7 +423,7 @@ JS;
 	 */
 	public function SiteTreeAsUL() {
 		$obj = singleton('Folder');
-		$obj->setMarkingFilter('ClassName', 'Folder');
+		$obj->setMarkingFilter('ClassName', ClassInfo::subclassesFor('Folder'));
 		$obj->markPartialTree();
 
 		if($p = $this->currentPage()) $obj->markToExpose($p);
@@ -453,7 +453,7 @@ JS;
 	 */
 	public function getsubtree() {
 		$obj = DataObject::get_by_id('Folder', $_REQUEST['ID']);
-		$obj->setMarkingFilter('ClassName', 'Folder');
+		$obj->setMarkingFilter('ClassName', ClassInfo::subclassesFor('Folder'));
 		$obj->markPartialTree();
 
 		$results = $obj->getChildrenAsUL(
