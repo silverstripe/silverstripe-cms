@@ -136,7 +136,6 @@
 .right form textarea {
 	font-size: 12px;
 }
-
 .right form .mceEditor select.mceNativeListBox { 
 	background: #fff; 
 	padding-top: 2px;
@@ -155,7 +154,7 @@
 } 
 .right form .mceEditor .mceButton { 
 	padding: 1px; 
-} 
+}
 
 .right form .mceEditor select.mceNativeListBox {
 	background: #fff;
