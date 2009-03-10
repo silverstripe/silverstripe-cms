@@ -41,7 +41,8 @@ if((typeof tinyMCE != 'undefined')) {
 		safari_warning : false,
 		relative_urls : true,
 		verify_html : true,
-		use_native_selects : true // fancy selects are bug as of SS 2.3.0
+		use_native_selects : true, // fancy selects are bug as of SS 2.3.0
+		extended_valid_elements : "img[class|src|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name],iframe[src|name|width|height|align|frameborder|marginwidth|marginheight|scrolling]"
 	});
 }
 
