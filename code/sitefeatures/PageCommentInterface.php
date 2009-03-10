@@ -17,18 +17,31 @@ class PageCommentInterface extends RequestHandler {
 	protected $controller, $methodName, $page;
 	
 	/**
-	 * @var boolean If this is true, you must be logged in to post a comment 
+	 * If this is true, you must be logged in to post a comment 
 	 * (and therefore, you don't need to specify a 'Your name' field unless 
 	 * your name is blank)
+	 * 
+	 * @var bool
 	 */
 	static $comments_require_login = false;
 	
 	/**
-	 * @var string If this is a valid permission code, you must be logged in 
+	 * If this is a valid permission code, you must be logged in 
 	 * and have the appropriate permission code on your account before you can 
 	 * post a comment.
+	 * 
+	 * @var string 
 	 */
 	static $comments_require_permission = "";
+	
+	/**
+	 * If this is true it will include the javascript for AJAX 
+	 * commenting. If it is set to false then it will not load
+	 * the files required and it will fall back
+	 * 
+	 * @var bool
+	 */
+	static $use_ajax_commenting = true;
 	
 	/**
 	 * Create a new page comment interface
@@ -62,6 +75,14 @@ class PageCommentInterface extends RequestHandler {
 		self::$comments_require_permission = $permission;
 	}
 	
+	/**
+	 * See {@link PageCommentInterface::$use_ajax_commenting}
+	 * @param bool
+	 */
+	static function set_use_ajax_commenting($state) {
+		self::$use_ajax_commenting = $state;
+	}
+	
 	function forTemplate() {
 		return $this->renderWith('PageCommentInterface');
 	}
@@ -87,9 +108,11 @@ class PageCommentInterface extends RequestHandler {
 	}
 	
 	/**
-	 * @return boolean true if this page comment form requires users to have a
+	 * if this page comment form requires users to have a
 	 * valid permission code in order to post (used to customize the error 
 	 * message).
+	 * 
+	 * @return bool
 	 */
 	function PostingRequiresPermission() {
 		return self::$comments_require_permission;
@@ -100,12 +123,6 @@ class PageCommentInterface extends RequestHandler {
 	}
 	
 	function PostCommentForm() {
-		Requirements::javascript(THIRDPARTY_DIR . '/behaviour.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/prototype.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/scriptaculous/effects.js');
-		Requirements::javascript(CMS_DIR . '/javascript/PageCommentInterface.js');
-		
-		
 		$fields = new FieldSet(
 			new HiddenField("ParentID", "ParentID", $this->page->ID)
 		);
@@ -135,6 +152,28 @@ class PageCommentInterface extends RequestHandler {
 			new FormAction("postcomment", _t('PageCommentInterface.POST', 'Post'))
 		));
 		
+		// Optional Spam Protection.
+		if(class_exists('SpamProtecterManager')) {
+			// Update the form to add the protecter field to it
+			$protecter = SpamProtecterManager::update_form($form);
+			if($protecter) {
+				$protecter->setFieldMapping('Name', 'Comment');
+				
+				// Because most of the Spam Protection will need to query another service
+				// disable ajax commenting
+				self::set_use_ajax_commenting(false);
+			}
+		}
+		
+		// Shall We use AJAX?
+		if(self::$use_ajax_commenting) {
+			Requirements::javascript(THIRDPARTY_DIR . '/behaviour.js');
+			Requirements::javascript(THIRDPARTY_DIR . '/prototype.js');
+			Requirements::javascript(THIRDPARTY_DIR . '/scriptaculous/effects.js');
+			Requirements::javascript(CMS_DIR . '/javascript/PageCommentInterface.js');
+		}
+		
+		// Load the data from Session
 		$form->loadDataFrom(array(
 			"Name" => Cookie::get("PageCommentInterface_Name"),
 			"Comment" => Cookie::get("PageCommentInterface_Comment"),
