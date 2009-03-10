@@ -976,7 +976,7 @@ JS;
 	 * @param String $name The application name
 	 * @param String $logoText The logo text
 	 */
-	static $application_link = "http://www.silverstripe.com/";
+	static $application_link = "http://www.silverstripe.org/";
 	static function setApplicationName($name, $logoText = null, $link = null) {
 		self::$application_name = $name;
 		self::$application_logo_text = $logoText ? $logoText : $name;
