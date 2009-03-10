@@ -1,0 +1,74 @@
+***************
+*** 213,218 ****
+  $lang['fr_FR']['CommentTableField.ss']['MARKNOSPAM'] = 'Marquer ce commentaire comme non-spam';
+  $lang['fr_FR']['CommentTableField.ss']['NOITEMSFOUND'] = 'Aucun élément trouvé';
+  $lang['fr_FR']['CommentTableField.ss']['SPAM'] = 'indésirable';
+  $lang['fr_FR']['ImageEditor.ss']['ACTIONS'] = 'actions';
+  $lang['fr_FR']['ImageEditor.ss']['APPLY'] = 'appliquer';
+  $lang['fr_FR']['ImageEditor.ss']['CANCEL'] = 'annuler';
+--- 213,220 ----
+  $lang['fr_FR']['CommentTableField.ss']['MARKNOSPAM'] = 'Marquer ce commentaire comme non-spam';
+  $lang['fr_FR']['CommentTableField.ss']['NOITEMSFOUND'] = 'Aucun élément trouvé';
+  $lang['fr_FR']['CommentTableField.ss']['SPAM'] = 'indésirable';
++ $lang['fr_FR']['ComplexTableField']['CLOSEPOPUP'] = 'Fermer Popup';
++ $lang['fr_FR']['ComplexTableField']['SUCCESSADD'] = 'Ajouté %s %s %s';
+  $lang['fr_FR']['ImageEditor.ss']['ACTIONS'] = 'actions';
+  $lang['fr_FR']['ImageEditor.ss']['APPLY'] = 'appliquer';
+  $lang['fr_FR']['ImageEditor.ss']['CANCEL'] = 'annuler';
+***************
+*** 254,259 ****
+  $lang['fr_FR']['LeftAndMain.ss']['LOGGEDINAS'] = 'Connecté en tant que';
+  $lang['fr_FR']['LeftAndMain.ss']['LOGOUT'] = 'Se Déconnecter';
+  $lang['fr_FR']['LeftAndMain.ss']['PUBLIS'] = 'Site Public';
+  $lang['fr_FR']['LeftAndMain.ss']['SSWEB'] = 'Site Web SilverStripe';
+  $lang['fr_FR']['LeftAndMain.ss']['VIEWINDRAFT'] = 'Voir la page sur le brouillon du site';
+  $lang['fr_FR']['LeftAndMain.ss']['VIEWINPUBLISHED'] = 'Voir la page sur le site de publication';
+--- 256,265 ----
+  $lang['fr_FR']['LeftAndMain.ss']['LOGGEDINAS'] = 'Connecté en tant que';
+  $lang['fr_FR']['LeftAndMain.ss']['LOGOUT'] = 'Se Déconnecter';
+  $lang['fr_FR']['LeftAndMain.ss']['PUBLIS'] = 'Site Public';
++ $lang['fr_FR']['LeftAndMain.ss']['REQUIREJS'] = array(
++ 	'Le CMS a besoin que vous ayez JavaScript activé.',
++ 	PR_HIGH
++ );
+  $lang['fr_FR']['LeftAndMain.ss']['SSWEB'] = 'Site Web SilverStripe';
+  $lang['fr_FR']['LeftAndMain.ss']['VIEWINDRAFT'] = 'Voir la page sur le brouillon du site';
+  $lang['fr_FR']['LeftAndMain.ss']['VIEWINPUBLISHED'] = 'Voir la page sur le site de publication';
+***************
+*** 304,311 ****
+  $lang['fr_FR']['MemberTableField.ss']['EDITMEMBER'] = 'Modifier ce membre';
+  $lang['fr_FR']['MemberTableField.ss']['SHOWMEMBER'] = 'Afficher ce membre';
+  $lang['fr_FR']['MemberTableField']['SURNAME'] = 'Nom';
+- $lang['fr_FR']['PageComment']['COMMENTBY'] = 'Commentaire de \'%s\' sur %s';
+- $lang['fr_FR']['PageCommentInterface']['POST'] = 'Post';
+  $lang['fr_FR']['PageCommentInterface']['SPAMQUESTION'] = 'Question pour la protection anti-spam : %s';
+  $lang['fr_FR']['PageCommentInterface.ss']['COMMENTS'] = 'Commentaires';
+  $lang['fr_FR']['PageCommentInterface.ss']['NEXT'] = 'suivant';
+--- 310,336 ----
+  $lang['fr_FR']['MemberTableField.ss']['EDITMEMBER'] = 'Modifier ce membre';
+  $lang['fr_FR']['MemberTableField.ss']['SHOWMEMBER'] = 'Afficher ce membre';
+  $lang['fr_FR']['MemberTableField']['SURNAME'] = 'Nom';
++ $lang['fr_FR']['PageComment']['COMMENTBY'] = array(
++ 	'Commentaire de \'%s\' sur %s',
++ 	PR_MEDIUM,
++ 	'Nom, Titre de la Page'
++ );
++ $lang['fr_FR']['PageComment']['Comment'] = 'Commentaire';
++ $lang['fr_FR']['PageComment']['IsSpam'] = 'Spam ?';
++ $lang['fr_FR']['PageComment']['Name'] = 'Nom de l\'auteur';
++ $lang['fr_FR']['PageComment']['NeedsModeration'] = 'Modération requise ?';
++ $lang['fr_FR']['PageComment']['PLURALNAME'] = array(
++ 	'Les commentaires de la Page',
++ 	50,
++ 	'Pural name of the object, used in dropdowns and to generally identify a collection of this object in the interface'
++ );
++ $lang['fr_FR']['PageComment']['SINGULARNAME'] = array(
++ 	'Le commentaire de la Page',
++ 	50,
++ 	'Singular name of the object, used in dropdowns and to generally identify a single object in the interface'
++ );
++ 
++ $lang['fr_FR']['PageCommentInterface']['POST'] = 'Envoyer';
+  $lang['fr_FR']['PageCommentInterface']['SPAMQUESTION'] = 'Question pour la protection anti-spam : %s';
+  $lang['fr_FR']['PageCommentInterface.ss']['COMMENTS'] = 'Commentaires';
+  $lang['fr_FR']['PageCommentInterface.ss']['NEXT'] = 'suivant';
