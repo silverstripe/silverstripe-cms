@@ -255,7 +255,12 @@ class MemberTableField extends ComplexTableField {
 	function AddRecordForm() {
 		$fields = new FieldSet();
 		foreach($this->FieldList() as $fieldName => $fieldTitle) {
-			$fields->push(new TextField($fieldName));
+			// If we're adding the set password field, we want to hide the text from any peeping eyes
+			if($fieldName == 'SetPassword') {
+				$fields->push(new PasswordField($fieldName));
+			} else {
+				$fields->push(new TextField($fieldName));
+			}
 		}
 		$fields->push(new HiddenField('ctf[ID]', null, $this->group->ID));
 
