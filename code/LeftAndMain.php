@@ -181,7 +181,7 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(THIRDPARTY_DIR . '/loader.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/hover.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/layout_helpers.js');
-		Requirements::javascript(SAPPHIRE_DIR . "/javascript/i18n.js");
+		Requirements::add_i18n_javascript(SAPPHIRE_DIR . '/javascript/lang');
 		
 		Requirements::javascript(THIRDPARTY_DIR . '/scriptaculous/effects.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/scriptaculous/dragdrop.js');
@@ -983,7 +983,7 @@ JS;
 	 * @param String $name The application name
 	 * @param String $logoText The logo text
 	 */
-	static $application_link = "http://www.silverstripe.com/";
+	static $application_link = "http://www.silverstripe.org/";
 	static function setApplicationName($name, $logoText = null, $link = null) {
 		self::$application_name = $name;
 		self::$application_logo_text = $logoText ? $logoText : $name;
