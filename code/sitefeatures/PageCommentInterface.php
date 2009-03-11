@@ -221,7 +221,7 @@ class PageCommentInterface_Form extends Form {
 		Cookie::set("PageCommentInterface_Name", $data['Name']);
 		Cookie::set("PageCommentInterface_CommenterURL", $data['CommenterURL']);
 		Cookie::set("PageCommentInterface_Comment", $data['Comment']);
-		
+
 		if(SSAkismet::isEnabled()) {
 			try {
 				$akismet = new SSAkismet();
@@ -251,10 +251,10 @@ class PageCommentInterface_Form extends Form {
 		//check if spam question was right.
 		if(MathSpamProtection::isEnabled()){
 			if(!MathSpamProtection::correctAnswer($data['Math'])){
-						if(!Director::is_ajax()) {				
-							Director::redirectBack();
-						}
-						return "spamprotectionfailed"; //used by javascript for checking if the spam question was wrong
+				if(!Director::is_ajax()) {				
+					Director::redirectBack();
+				}
+				return "spamprotectionfailed"; //used by javascript for checking if the spam question was wrong
 			}
 		}
 		
@@ -269,9 +269,16 @@ class PageCommentInterface_Form extends Form {
 
 		$comment = Object::create('PageComment');
 		$this->saveInto($comment);
+		
+		// Store the Session ID if needed for Spamprotection
+		if($session = Session::get('mollom_user_session_id')) {
+			$comment->SessionID = $session;
+			Session::clear('mollom_user_session_id');	
+		}
 		$comment->IsSpam = false;
 		$comment->NeedsModeration = PageComment::moderationEnabled();
 		$comment->write();
+		
 		Cookie::set("PageCommentInterface_Comment", '');
 		if(Director::is_ajax()) {
 			if($comment->NeedsModeration){
