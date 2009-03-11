@@ -484,24 +484,18 @@ JS;
 			if(!$parentObj || !$parentObj->ID) $parent = 0;
 		}
 		
-		$p = new Folder();
-		$p->ParentID = $parent;
-		$p->Title = $name;
-		$p->Name = $name;
-
 		// Get the folder to be created		
-		if(isset($parentObj->ID)) $filename = $parentObj->FullPath . $p->Name;
-		else $filename = ASSETS_PATH . '/' . $p->Name;
-		
+		if(isset($parentObj->ID)) $filename = $parentObj->FullPath . $name;
+		else $filename = ASSETS_PATH . '/' . $name;
+
 		// Ensure uniqueness		
 		$i = 2;
 		$baseFilename = $filename . '-';
 		while(file_exists($filename)) {
 			$filename = $baseFilename . $i;
-			$p->Name = $p->Title = basename($filename);
 			$i++;
 		}
-		
+
 		// Actually create
 		if(!file_exists(ASSETS_PATH)) {
 			mkdir(ASSETS_PATH);
@@ -509,8 +503,12 @@ JS;
 		mkdir($filename);
 		chmod($filename, Filesystem::$file_create_mask);
 
+		// Create object
+		$p = new Folder();
+		$p->ParentID = $parent;
+		$p->Name = $p->Title = basename($filename);		
 		$p->write();
-	
+
 		if(isset($_REQUEST['returnID'])) {
 			return $p->ID;
 		} else {
