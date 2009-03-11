@@ -92,7 +92,7 @@ class SideReport_RecentlyEdited extends SideReport {
 		return _t('SideReport.LAST2WEEKS',"Pages edited in the last 2 weeks");
 	}
 	function records() {
-		return DataObject::get("SiteTree", "\"SiteTree\".\"LastEdited\" > NOW() - INTERVAL '14 DAY'", "\"SiteTree\".\"LastEdited\" DESC");
+		return DataObject::get("SiteTree", "\"SiteTree\".\"LastEdited\" > " . DB::getConn()->now() . " - INTERVAL '14 DAY'", "\"SiteTree\".\"LastEdited\" DESC");
 	}
 	function fieldsToShow() {
 		return array(
