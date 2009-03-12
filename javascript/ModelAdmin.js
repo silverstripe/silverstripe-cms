@@ -10,6 +10,14 @@
  */
 (function($) {
 $(document).ready(function() {
+	/**
+	 * Generic ajax error handler
+	 */
+	$('form').livequery('ajaxError', function (XMLHttpRequest, textStatus, errorThrown) {
+			$('input', this).removeClass('loading');
+			statusMessage(ss.i18n._t('ModelAdmin.ERROR', 'Error'), 'bad');
+	});
+	
 	/** 
 	 * Add class ajaxActions class to the parent of Add button of AddForm
 	 * so it float to the right
@@ -186,20 +194,20 @@ $(document).ready(function() {
 	/**
 	 * RHS panel Save button 
 	 */
-	$('#right #form_actions_right input[name=action_doSave]').livequery('click', function(){
+	$('#right input[name=action_doSave],#right input[name=action_doCreate]').livequery('click', function(){
 		var form = $('#right form');
 		var formAction = form.attr('action') + '?' + $(this).fieldSerialize();
 		
 		// Post the data to save
 		$.post(formAction, form.formToArray(), function(result){
 			$('#right #ModelAdminPanel').html(result);
-			
-			statusMessage(ss.i18n._t('ModelAdmin.SAVED'));
+
+			statusMessage(ss.i18n._t('ModelAdmin.SAVED', 'Saved'));
 
 			// TODO/SAM: It seems a bit of a hack to have to list all the little updaters here. 
 			// Is livequery a solution?
 			Behaviour.apply(); // refreshes ComplexTableField
-		});
+		}, 'html');
 
 		return false;
 	});
@@ -207,8 +215,8 @@ $(document).ready(function() {
 	/**
 	 * RHS panel Delete button
 	 */
-	$('#right #form_actions_right input[name=action_doDelete]').livequery('click', function(){
-		var confirmed = confirm(ss.i18n._t('ModelAdmin.REALLYDELETE'));
+	$('#right input[name=action_doDelete]').livequery('click', function(){
+		var confirmed = confirm(ss.i18n._t('ModelAdmin.REALLYDELETE', 'Really delete?'));
 		if(!confirmed) {
 			$(this).removeClass('loading')
 			return false;
@@ -222,7 +230,7 @@ $(document).ready(function() {
 		    // On success, the panel is refreshed and a status message shown.
 			$('#right #ModelAdminPanel').html(result);
 			
-			statusMessage(ss.i18n._t('ModelAdmin.DELETED'));
+			statusMessage(ss.i18n._t('ModelAdmin.DELETED', 'Successfully deleted'));
     		$('#form_actions_right').remove();
             
             // To do - convert everything to jQuery so that this isn't needed

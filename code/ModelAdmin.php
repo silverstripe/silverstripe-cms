@@ -323,13 +323,16 @@ class ModelAdmin_CollectionController extends Controller {
 		$fields = $context->getSearchFields();
 		$columnSelectionField = $this->ColumnSelectionField();
 		$fields->push($columnSelectionField);
+		$validator = new RequiredFields();
+		$validator->setJavascriptValidationHandler('none');
 		
 		$form = new Form($this, "SearchForm",
 			$fields,
 			new FieldSet(
 				new FormAction('search', _t('MemberTableField.SEARCH')),
 				$clearAction = new ResetFormAction('clearsearch', _t('ModelAdmin.CLEAR_SEARCH','Clear Search'))
-			)
+			),
+			$validator
 		);
 		//$form->setFormAction(Controller::join_links($this->Link(), "search"));
 		$form->setFormMethod('get');
@@ -361,7 +364,10 @@ class ModelAdmin_CollectionController extends Controller {
 		
 		$createButton->dontEscape = true;
 		
-		return new Form($this, "CreateForm", new FieldSet(), $actions);	
+		$validator = new RequiredFields();
+		$validator->setJavascriptValidationHandler('none');
+		
+		return new Form($this, "CreateForm", new FieldSet(), $actions, $validator);	
 	}
 	
 	/**
@@ -403,11 +409,15 @@ class ModelAdmin_CollectionController extends Controller {
 			new FormAction('import', _t('ModelAdmin.IMPORT', 'Import from CSV'))
 		);
 		
+		$validator = new RequiredFields();
+		$validator->setJavascriptValidationHandler('none');
+		
 		$form = new Form(
 			$this,
 			"ImportForm",
 			$fields,
-			$actions
+			$actions,
+			$validator
 		);
 		return $form;
 	}
@@ -690,6 +700,8 @@ class ModelAdmin_CollectionController extends Controller {
 			}
 			
 			$validator = ($newRecord->hasMethod('getCMSValidator')) ? $newRecord->getCMSValidator() : null;
+			if(!$validator) $validator = new RequiredFields();
+			$validator->setJavascriptValidationHandler('none');
 			
 			$actions = new FieldSet (
 				new FormAction("doCreate", _t('ModelAdmin.ADDBUTTON', "Add"))
@@ -710,7 +722,19 @@ class ModelAdmin_CollectionController extends Controller {
 		$form->saveInto($model);
 		$model->write();
 		
-		Director::redirect(Controller::join_links($this->Link(), $model->ID , 'edit'));
+		if(Director::is_ajax()) {
+			$recordController = new ModelAdmin_RecordController($this, $request, $model->ID);
+			return new HTTPResponse(
+				$recordController->EditForm()->forAjaxTemplate(), 
+				200, 
+				sprintf(
+					_t('ModelAdmin.LOADEDFOREDITING', "Loaded '%s' for editing."),
+					$model->Title
+				)
+			);
+		} else {
+			Director::redirect(Controller::join_links($this->Link(), $model->ID , 'edit'));
+		}
 	}
 }
 
@@ -725,10 +749,10 @@ class ModelAdmin_RecordController extends Controller {
 	
 	static $allowed_actions = array('edit', 'view', 'EditForm', 'ViewForm');
 	
-	function __construct($parentController, $request) {
+	function __construct($parentController, $request, $recordID = null) {
 		$this->parentController = $parentController;
 		$modelName = $parentController->getModelClass();
-		$recordID = $request->param('Action');
+		$recordID = ($recordID) ? $recordID : $request->param('Action');
 		$this->currentRecord = DataObject::get_by_id($modelName, $recordID);
 		
 		parent::__construct();
@@ -779,7 +803,8 @@ class ModelAdmin_RecordController extends Controller {
 		$fields = $this->currentRecord->getCMSFields();
 		$fields->push(new HiddenField("ID"));
 		
-		$validator = ($this->currentRecord->hasMethod('getCMSValidator')) ? $this->currentRecord->getCMSValidator() : null;
+		$validator = ($this->currentRecord->hasMethod('getCMSValidator')) ? $this->currentRecord->getCMSValidator() : new RequiredFields();
+		$validator->setJavascriptValidationHandler('none');
 		
 		$actions = $this->currentRecord->getCMSActions();
 		if($this->currentRecord->canEdit(Member::currentUser())){
