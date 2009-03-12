@@ -55,7 +55,7 @@ class CommentAdmin extends LeftAndMain {
 		$section = $this->Section();
 		
 		if($section == 'approved') {
-			$filter = 'NOT "IsSpam" AND NOT "NeedsModeration"';
+			$filter = "\"IsSpam\"=0 AND \"NeedsModeration\"=0";
 			$title = "<h2>". _t('CommentAdmin.APPROVEDCOMMENTS', 'Approved Comments')."</h2>";
 		} else if($section == 'unmoderated') {
 			$filter = '"NeedsModeration"';
@@ -272,21 +272,21 @@ JS;
 	 * Return the number of moderated comments
 	 */
 	function NumModerated() {
-		return DB::query("SELECT COUNT(*) FROM \"PageComment\" WHERE NOT \"IsSpam\" AND NOT \"NeedsModeration\"")->value();
+		return DB::query("SELECT COUNT(*) FROM \"PageComment\" WHERE \"IsSpam\"=0 AND \"NeedsModeration\"=0")->value();
 	}
 
 	/**
 	 * Return the number of unmoderated comments
 	 */
 	function NumUnmoderated() {
-		return DB::query("SELECT COUNT(*) FROM \"PageComment\" WHERE NOT \"IsSpam\" AND \"NeedsModeration\"")->value();
+		return DB::query("SELECT COUNT(*) FROM \"PageComment\" WHERE \"IsSpam\"=0 AND \"NeedsModeration\"=0")->value();
 	}
 	
 	/**
 	 * Return the number of comments marked as spam
 	 */
 	function NumSpam() {
-		return DB::query("SELECT COUNT(*) FROM \"PageComment\" WHERE \"IsSpam\"")->value();
+		return DB::query("SELECT COUNT(*) FROM \"PageComment\" WHERE \"IsSpam\"=1")->value();
 	}
 }
 
