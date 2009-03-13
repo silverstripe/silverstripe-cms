@@ -58,7 +58,7 @@ $(document).ready(function() {
 			$('#statusMessage').css('top', newTopValue);
 		}
 	}
-
+	
 	////////////////////////////////////////////////////////////////// 
 	// Search form 
 	////////////////////////////////////////////////////////////////// 
@@ -202,7 +202,11 @@ $(document).ready(function() {
 		$.post(formAction, form.formToArray(), function(result){
 			$('#right #ModelAdminPanel').html(result);
 
-			statusMessage(ss.i18n._t('ModelAdmin.SAVED', 'Saved'));
+			if($('#right #ModelAdminPanel form').hasClass('validationerror')) {
+				statusMessage(ss.i18n._t('ModelAdmin.VALIDATIONERROR', 'Validation Error'), 'bad');
+			} else {
+				statusMessage(ss.i18n._t('ModelAdmin.SAVED', 'Saved'), 'good');
+			}
 
 			// TODO/SAM: It seems a bit of a hack to have to list all the little updaters here. 
 			// Is livequery a solution?
