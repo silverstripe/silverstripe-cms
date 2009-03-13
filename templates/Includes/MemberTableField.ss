@@ -37,35 +37,13 @@
 			<tbody>
 				<% if Items %>
 				<% control Items %>
-					<tr id="record-$Parent.Name-$ID">
-						<% if Markable %><td width="18" class="markingcheckbox">$MarkingCheckbox</td><% end_if %>
-						<% control Fields %>
-						<td>$Value</td>
-						<% end_control %>
-						<% if Can(show) %>
-						<td width="18" class="action">
-							<a class="popuplink showlink" href="$ShowLink" title="<% _t('SHOWMEMBER','Show this member') %>" target="_blank"><img src="cms/images/show.png" alt="show" /></a>
-						</td>
-						<% end_if %>
-						<% if Can(edit) %>
-						<td width="18" class="action">
-							<a class="popuplink editlink" href="$EditLink" title="<% _t('EDITMEMBER','Edit this member') %>" target="_blank"><img src="cms/images/edit.gif" alt="edit" /></a>
-						</td>
-						<% end_if %>
-						<% if Can(delete) %>
-						<td width="18" class="action">
-							<a class="deletelink" href="$DeleteLink" title="<% _t('DELETEMEMBER','Delete this member') %>"><img src="cms/images/delete.gif" alt="delete" /></a>
-						</td>
-						<% end_if %>
-					</tr>
+					<% include TableListField_Item %>
 				<% end_control %>
 				<% else %>
 				<tr class="notfound">
 					<% if Markable %><th width="18">&nbsp;</th><% end_if %>
-					<td colspan="$Headings.Count"><i>No $NamePlural found</i></td>
-					<% if Can(show) %><td width="18">&nbsp;</td><% end_if %>
-					<% if Can(edit) %><td width="18">&nbsp;</td><% end_if %>
-					<% if Can(delete) %><td width="18">&nbsp;</td><% end_if %>
+					<td colspan="$Headings.Count"><i><% _t('NOITEMSFOUND', 'No items found') %></i></td>
+					<% control Actions %><td width="18">&nbsp;</td><% end_control %>
 				</tr>
 			<% end_if %>
 			</tbody>
