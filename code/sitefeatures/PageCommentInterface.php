@@ -287,7 +287,16 @@ class PageCommentInterface_Form extends Form {
 				echo $comment->renderWith('PageCommentInterface_singlecomment');
 			}
 		} else {		
-			Director::redirectBack();
+			// since it is not ajax redirect user down to their comment since it has been posted
+			// get the pages url off the comments parent ID.
+			if($comment->ParentID) {
+				$page = DataObject::get_by_id("Page", $comment->ParentID);
+				if($page) {
+					// Redirect to the actual post on the page.
+					return Director::redirect(Director::baseURL(). $page->URLSegment.'#PageComment_'.$comment->ID);
+				}
+			}
+			return Director::redirectBack(); // worst case, just go back to the page
 		}
 	}
 }
