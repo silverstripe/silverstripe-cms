@@ -1015,6 +1015,7 @@ JS;
 						}
 					}
 
+					$oldID = $record->ID;
 					$record->delete();
 					$record->destroy();
 
@@ -1024,13 +1025,14 @@ JS;
 					$liveRecord = Versioned::get_one_by_stage( $this->stat('tree_class'), 'Live', "`{$this->stat('tree_class')}`.`ID`={$id}");
 
 					if($liveRecord) {
-						$title = Convert::raw2js($record->TreeTitle());
-						FormResponse::add("$('sitetree').setNodeTitle($record->OldID, '$title');");
-						FormResponse::add("$('Form_EditForm').reloadIfSetTo($record->OldID);");
+						$liveRecord->IsDeletedFromStage = true;
+						$title = Convert::raw2js($liveRecord->TreeTitle());
+						FormResponse::add("$('sitetree').setNodeTitle($oldID, '$title');");
+						FormResponse::add("$('Form_EditForm').reloadIfSetTo($oldID);");
 					} else {
 						FormResponse::add("var node = $('sitetree').getTreeNodeByIdx('$id');");
 						FormResponse::add("if(node && node.parentTreeNode)	node.parentTreeNode.removeTreeNode(node);");
-						FormResponse::add("$('Form_EditForm').reloadIfSetTo($record->OldID);");
+						FormResponse::add("$('Form_EditForm').reloadIfSetTo($oldID);");
 					}
 				}
 			}
