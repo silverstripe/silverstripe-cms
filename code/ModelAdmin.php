@@ -322,7 +322,7 @@ class ModelAdmin_CollectionController extends Controller {
 		$form = new Form($this, "SearchForm",
 			$fields,
 			new FieldSet(
-				new FormAction('search', _t('MemberTableField.SEARCH')),
+				new FormAction('search', _t('MemberTableField.SEARCH', 'Search')),
 				$clearAction = new ResetFormAction('clearsearch', _t('ModelAdmin.CLEAR_SEARCH','Clear Search'))
 			)
 		);
