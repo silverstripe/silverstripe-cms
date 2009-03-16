@@ -584,7 +584,9 @@ ChangeTracker.prototype = {
 	},
 
 	field_changed: function() {
-		return this.originalSerialized != Form.Element.serialize(this);
+		// Something a value will go from 'undefined' to ''.  Ignore such changes
+		if((this.originalSerialized+'') == 'undefined') return Form.Element.serialize(this) ? true : false;
+		else return this.originalSerialized != Form.Element.serialize(this);
 	},
 
 	/**
@@ -600,8 +602,8 @@ ChangeTracker.prototype = {
 		    
 			if(!element.isChanged) element.isChanged = this.field_changed;
 			if(!this.changeDetection_fieldsToIgnore[element.name] && element.isChanged()) {
-				//if( window.location.href.match( /^https?:\/\/dev/ ) )
-				//	Debug.log('Changed:'+ element.id + '(' + this.originalSerialized +')->('+Form.Element.serialize(element)+')' );
+				//console.log('Changed:'+ element.id + '(' + this.originalSerialized +')->('+Form.Element.serialize(element)+')' );
+				//console.log(element)
 
 				return true;
 			}

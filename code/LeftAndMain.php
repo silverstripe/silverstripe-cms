@@ -182,6 +182,7 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(THIRDPARTY_DIR . '/hover.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/layout_helpers.js');
 		Requirements::add_i18n_javascript(SAPPHIRE_DIR . '/javascript/lang');
+		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang');
 		
 		Requirements::javascript(THIRDPARTY_DIR . '/scriptaculous/effects.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/scriptaculous/dragdrop.js');
