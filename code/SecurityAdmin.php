@@ -155,7 +155,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		if($id == 'new') $id = null;
 
 		if($id) {
-			$record = DataObject::get_one($className, "\"$className\".\"ID\" = $id");
+			$record = DataObject::get_by_id($className, $id);
 			if($record && !$record->canEdit()) return Security::permissionFailure($this);
 		} else {
 			if(!singleton($this->stat('subitem_class'))->canCreate()) return Security::permissionFailure($this);
@@ -185,7 +185,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		$record->update($data);
 		$record->write();
 		
-		if($data['GroupID']) $record->Groups()->add($data['GroupID']);
+		if($data['GroupID']) $record->Groups()->add((int)$data['GroupID']);
 
 		FormResponse::add("reloadMemberTableField();");
 
@@ -199,7 +199,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			$member = DataObject::get_by_id('Member', (int) $memberID);
 			if(!$member->canDelete()) return Security::permissionFailure($this);
 			
-			$member->Groups()->remove($groupID);
+			$member->Groups()->remove((int)$groupID);
 			FormResponse::add("reloadMemberTableField();");
 		} else {
 			user_error("SecurityAdmin::removememberfromgroup: Bad parameters: Group=$groupID, Member=$memberID", E_USER_ERROR);
