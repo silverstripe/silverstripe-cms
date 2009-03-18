@@ -154,7 +154,7 @@ CMSForm.prototype = {
 	 *
 	 * @param publish boolean (optional) whether to publish in addition to saving
 	 */
-	save: function(ifChanged, callAfter, action, publish) {console.log(this.action);
+	save: function(ifChanged, callAfter, action, publish) {
 		_AJAX_LOADING = true;
 		// Note: TinyMCE coupling
 		if(typeof tinyMCE != 'undefined') tinyMCE.triggerSave();
@@ -177,6 +177,7 @@ CMSForm.prototype = {
 		
 		var success = function(response) {
 			Ajax.Evaluator(response);
+			
 			__form.resetElements();
 			if(__callAfter) __callAfter();
 			if(__form.notify && __form.elements.ID != undefined) __form.notify('PageSaved', __form.elements.ID.value);
