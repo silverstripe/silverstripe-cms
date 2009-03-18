@@ -197,7 +197,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 
 		if($id) {
 			$record = DataObject::get_by_id($className, $id);
-			if($record && !$record->canEdit()) return Security::permissionFailure($this);
 		} else {
 			$record = new $className();
 		}
