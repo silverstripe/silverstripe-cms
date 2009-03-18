@@ -12,6 +12,10 @@
  */
 class ImageEditor extends Controller {
 	
+	static $allowed_actions = array(
+		'*' => 'CMS_ACCESS_CMSMain'
+	);
+	
 	public $fileToEdit = "";
 	
 	public $fileToEditOnlyName = "";
