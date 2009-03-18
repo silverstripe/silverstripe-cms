@@ -426,7 +426,27 @@ JS;
 					}
 				}
 			}
-			$form = new Form($this, "EditForm", $fields, $actions);
+			
+			// Add a default or custom validator.
+			// @todo Currently the default Validator.js implementation
+			//  adds javascript to the document body, meaning it won't
+			//  be included properly if the associated fields are loaded
+			//  through ajax. This means only serverside validation
+			//  will kick in for pages+validation loaded through ajax.
+			//  This will be solved by using less obtrusive javascript validation
+			//  in the future, see http://open.silverstripe.com/ticket/2915 and http://open.silverstripe.com/ticket/3386
+			if($record->hasMethod('getCMSValidator')) {
+				$validator = $record->getCMSValidator();
+			} else {
+				$validator = new RequiredFields();
+			}
+			
+			// The clientside (mainly LeftAndMain*.js) rely on ajax responses
+			// which can be evaluated as javascript, hence we need
+			// to override any global changes to the validation handler.
+			$validator->setJavascriptValidationHandler('prototype');
+			
+			$form = new Form($this, "EditForm", $fields, $actions, $validator);
 			$form->loadDataFrom($record);
 			$form->disableDefaultAction();
 
