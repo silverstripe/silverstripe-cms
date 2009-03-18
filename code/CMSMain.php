@@ -51,7 +51,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'rollback',
 		'sidereport',
 		'submit',
-		'switchlanguage',
 		'unpublish',
 		'versions',
 		'EditForm',
@@ -360,9 +359,9 @@ JS;
 	}
 
 	/**
-	 * Get a databsae record to be managed by the CMS
+	 * Get a database record to be managed by the CMS
 	 */
-	public function getRecord($id) {
+ 	public function getRecord($id) {
 
 		$treeClass = $this->stat('tree_class');
 
@@ -486,6 +485,7 @@ JS;
 		if(!singleton($className)->canCreate()) return Security::permissionFailure($this);
 
 		$p = $this->getNewItem("new-$className-$parent".$suffix, false);
+		$p->Lang = $_REQUEST['Lang'];
 		$p->write();
 
 		return $this->returnItemToUser($p);
@@ -496,18 +496,6 @@ JS;
 	 */
 	public function getNewItem($id, $setID = true) {
 		list($dummy, $className, $parentID, $suffix) = array_pad(explode('-',$id),4,null);
-		
-		if(Translatable::is_enabled()) {
-			if (Translatable::default_lang() != $this->Lang) {
-				Translatable::set_reading_lang(Translatable::default_lang());
-				$originalItem = DataObject::get_by_id($className,$suffix);
-				Translatable::set_reading_lang($this->Lang);
-				$translation = $originalItem->getTranslation($this->Lang);
-				if(!$translation) $translation = $originalItem->createTranslation($this->Lang);
-				if($setID) $translation->ID = $id;
-				return $translation;
-			}
-		}
 		
 		$newItem = new $className();
 
@@ -1172,14 +1160,18 @@ JS;
 		foreach( $this->PageTypes() as $arrayData ) {
 			$pageTypes[$arrayData->getField('ClassName')] = $arrayData->getField('AddAction');
 		}
-
-		return new Form($this, "AddPageOptionsForm", new FieldSet(
+		
+		$fields = new FieldSet(
 			new HiddenField("ParentID"),
+			new HiddenField("Lang", 'Lang', Translatable::current_lang()),
 			new DropdownField("PageType", "", $pageTypes, 'Page')
-		),
-		new FieldSet(
+		);
+		
+		$actions = new FieldSet(
 			new FormAction("addpage", _t('CMSMain.GO',"Go"))
-		));
+		);
+
+		return new Form($this, "AddPageOptionsForm", $fields, $actions);
 	}
 
 	/**
@@ -1311,94 +1303,25 @@ JS;
 		}
 	}
 	
-	/**
-	 * Switch the cms language and reload the site tree
-	 *
-	 */
-	function switchlanguage($lang, $donotcreate = null) {
-		//is it's a clean switch (to an existing language deselect the current page)
-		if (is_string($lang)) $dontunloadPage = true;
-		$lang = (is_string($lang) ? $lang : urldecode($this->urlParams['ID']));
-		if ($lang != Translatable::default_lang()) {
-			Translatable::set_reading_lang(Translatable::default_lang());
-			$tree_class = $this->stat('tree_class');
-			$obj = new $tree_class;
-			$allIDs = $obj->getDescendantIDList();
-			$allChildren = $obj->AllChildren();
-			$classesMap = $allChildren->map('ID','ClassName');
-			$titlesMap = $allChildren->map();
-			Translatable::set_reading_lang($lang);
-			$obj = new $tree_class;
-			$languageIDs = $obj->getDescendantIDList();
-			$notcreatedlist = array_diff($allIDs,$languageIDs);
-			FormResponse::add("$('addpage').getElementsByTagName('button')[0].disabled=true;");
-			//FormResponse::add("$('Form_AddPageOptionsForm').getElementsByTagName('div')[1].getElementsByTagName('input')[0].disabled=true;");
-			FormResponse::add("$('Translating_Message').innerHTML = 'Translating mode - ".i18n::get_language_name($lang)."';");
-			FormResponse::add("Element.removeClassName('Translating_Message','nonTranslating');");
-		} else {
-			Translatable::set_reading_lang($lang);
-			FormResponse::add("$('addpage').getElementsByTagName('button')[0].disabled=false;");
-			//FormResponse::add("$('Form_AddPageOptionsForm').getElementsByTagName('div')[1].getElementsByTagName('input')[0].disabled=false;");
-			FormResponse::add("Element.addClassName('Translating_Message','nonTranslating');");
-		}
-		$obj = singleton($this->stat('tree_class'));
-		$obj->markPartialTree();
-		$siteTree = $obj->getChildrenAsUL("", '
-					"<li id=\"record-$child->ID\" class=\"" . $child->CMSTreeClasses($extraArg) . "\">" .
-					"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" " . (($child->canEdit() || $child->canAddChildren()) ? "" : "class=\"disabled\"") . " title=\"' . _t('LeftAndMain.PAGETYPE') . '".$child->class."\" >" .
-					(Convert::raw2js($child->TreeTitle())) .
-					"</a>"
-'
-					,$this, true);
 
-		$rootLink = $this->Link() . '0';
-		$siteTree = "<li id=\"record-0\" class=\"Root nodelete\"><a href=\"$rootLink\">" .
-			 _t('LeftAndMain.SITECONTENT') . "</a>"
-			. $siteTree . "</li></ul>";
-		FormResponse::add("$('sitetree').innerHTML ='". ereg_replace("[\n]","\\\n",$siteTree) ."';");
-		FormResponse::add("SiteTree.applyTo('#sitetree');");
-		if (isset($notcreatedlist)) {
-			foreach ($notcreatedlist as $notcreated) {
-				if ($notcreated == $donotcreate) continue;
-				$id = "new-{$classesMap[$notcreated]}-0-$notcreated";
-				Session::set($id . '_originalLangID',$notcreated);
-				$treeTitle = Convert::raw2js($titlesMap[$notcreated]);	
-				$response = <<<JS
-					var tree = $('sitetree');
-					var newNode = tree.createTreeNode("$id", "$treeTitle", "$classesMap[$notcreated] (untranslated)");
-					addClass(newNode, 'untranslated');
-					node = tree.getTreeNodeByIdx(0);
-					node.open();
-					node.appendTreeNode(newNode);
-JS;
-				FormResponse::add($response);
-			}
-		}
-		if (!isset($dontunloadPage)) FormResponse::add("node = $('sitetree').getTreeNodeByIdx(0); node.selectTreeNode();");
-		return FormResponse::respond();
-	}
 	
 	/**
 	 * Create a new translation from an existing item, switch to this language and reload the tree.
 	 */
 	function createtranslation () {
-		if(!Director::is_ajax()) {
-			Director::redirectBack();
-			return;
-		}
-		$langCode = $_REQUEST['newlang'];
-		$originalLangID = $_REQUEST['ID'];
+		$langCode = Convert::raw2sql($_REQUEST['newlang']);
+		$originalLangID = (int)$_REQUEST['ID'];
 
 		$record = $this->getRecord($originalLangID);
 		
 		$this->Lang = $langCode;
 		Translatable::set_reading_lang($langCode);
 		
-		// creating a record in-memory, which means setting the $Lang property
-		// will have no effect as the record is loaded through another javascript
-		// call and CMSMain->getitem(). The CMS submits the currently selected language
-		// through javascript, which will cause $Lang to be written to the database.
-		// @todo Explicitly set $Lang property for in-memory object so we don't need javascript modifying GET-calls to save the new object
+		// Create a new record in the database - this is different
+		// to the usual "create page" pattern of storing the record
+		// in-memory until a "save" is performed by the user, mainly
+		// to simplify things a bit.
+		// @todo Allow in-memory creation of translations that don't persist in the database before the user requests it
 		$translatedRecord = $record->createTranslation($langCode);
 
 		$url = sprintf(
@@ -1439,21 +1362,47 @@ JS;
 	}
 	
 	/**
-	 * Return a dropdown with existing languages
-	 */
-	function LangSelector() {
-		$langs = Translatable::get_existing_content_languages('SiteTree');
-				
-		return new DropdownField("LangSelector","Language",$langs,Translatable::current_lang());
-	}
+     * Returns all languages with languages already used appearing first.
+     * Called by the SSViewer when rendering the template.
+     */
+    function LangSelector() {
+		$member = Member::currentUser(); //check to see if the current user can switch langs or not
+		if(Permission::checkMember($member, 'VIEW_LANGS')) {
+            $allKey = _t('Form.LANGAOTHER', "Other languages");
+            $all = i18n::get_common_languages(); //all languages
+            $used = Translatable::get_existing_content_languages(); //languages currently in use
+            if( $used && count($used) ) {
+                foreach($used as $index => $code) {
+                    if(!$code) continue;
+                    $available[$index] = $all[$index];
+                    unset($all[$index]);
+                }
+                $langs[ _t('Form.LANGAVAIL', "Available languages") ] = (isset( $available )) ? $available : array();
+            }
+            $langs[ _t('Form.LANGAOTHER', "Other languages") ] = $all;
+            return new GroupedDropdownField('LangSelector', 'Language', $langs, Translatable::current_lang());
+        }
+        
+        //user doesn't have permission to switch langs so just show a string displaying current language
+        return i18n::get_language_name( Translatable::current_lang() );
+    }
 
 	/**
-	 * Determine if there are more than one languages in our site tree
+	 * Determine if there are more than one languages in our site tree.
+	 * 
+	 * @return boolean
 	 */
 	function MultipleLanguages() {
 		$langs = Translatable::get_existing_content_languages('SiteTree');
 
 		return (count($langs) > 1);
+	}
+	
+	/**
+	 * @return boolean
+	 */
+	function IsTranslatableEnabled() {
+		return Translatable::is_enabled();
 	}
 	
 	/**

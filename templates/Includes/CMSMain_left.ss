@@ -9,7 +9,7 @@
 		<div id="sitetree_holder">
 			<div id="TreeTools">
 				<ul id="TreeActions">
-					<li class="action" id="addpage"><button<% if EditingLang %> disabled="disabled" class="disabled"<% end_if %>><% _t('CREATE','Create',PR_HIGH) %></button></li>
+					<li class="action" id="addpage"><button><% _t('CREATE','Create',PR_HIGH) %></button></li>
 					<li class="action" id="search"><button><% _t('SEARCH','Search',PR_HIGH) %></button></li>
 					<li class="action" id="batchactions"><button><% _t('BATCHACTIONS','Batch Actions',PR_HIGH) %></button></li>
 				</ul>
@@ -64,7 +64,7 @@
 				<div id="SortItems">
 						<input type="checkbox" id="sortitems" /> <label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
 				</div>
-				<% if MultipleLanguages %>
+				<% if IsTranslatableEnabled %>
 				<div id="LangSelector_holder">
 					Language: $LangSelector
 				</div>
