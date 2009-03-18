@@ -685,7 +685,24 @@ class ModelAdmin_CollectionController extends Controller {
 	}
 
 	/**
-	 * Returns a form suitable for adding a new model, falling back on the default edit form
+	 * Returns a form suitable for adding a new model, falling back on the default edit form.
+	 * 
+	 * Caution: The add-form shows a DataObject's {@link DataObject->getCMSFields()} method on a record
+	 * that doesn't exist in the database yet, hence has no ID. This means the {@link DataObject->getCMSFields()}
+	 * implementation has to ensure that no fields are added which would rely on a
+	 * record ID being present, e.g. {@link HasManyComplexTableField}.
+	 * 
+	 * Example:
+	 * <code>
+	 * function getCMSFields() {
+	 *   $fields = parent::getCMSFields();
+	 *     if($this->exists()) {
+	 *       $ctf = new HasManyComplexTableField($this, 'MyRelations', 'MyRelation');
+	 *       $fields->addFieldToTab('Root.Main', $ctf);
+	 *     }
+	 *   return $fields;
+	 * }
+	 * </code>
 	 *
 	 * @return Form
 	 */
