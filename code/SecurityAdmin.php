@@ -196,7 +196,8 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		if($id == 'new') $id = null;
 
 		if($id) {
-			$record = DataObject::get_one($className, "`$className`.ID = $id");
+			$record = DataObject::get_by_id($className, $id);
+			if($record && !$record->canEdit()) return Security::permissionFailure($this);
 		} else {
 			$record = new $className();
 		}
@@ -206,7 +207,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		$record->write();
 
 		$record->Groups()->add($data['GroupID']);
-
 
 		FormResponse::add("reloadMemberTableField();");
 
@@ -222,8 +222,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 
 		$record->update($data);
 		$record->write();
-		if($data['GroupID'])
-			$record->Groups()->add($data['GroupID']);
+		if($data['GroupID']) $record->Groups()->add((int)$data['GroupID']);
 
 		FormResponse::add("reloadMemberTableField();");
 
@@ -235,7 +234,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		$memberID = $this->urlParams['OtherID'];
 		if(is_numeric($groupID) && is_numeric($memberID)) {
 			$member = DataObject::get_by_id('Member', $memberID);
-			$member->Groups()->remove($groupID);
+			$member->Groups()->remove((int)$groupID);
 			FormResponse::add("reloadMemberTableField();");
 
 		} else {

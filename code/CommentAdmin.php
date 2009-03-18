@@ -123,7 +123,7 @@ class CommentAdmin extends LeftAndMain {
 	
 			if($_REQUEST['Comments']) {
 				foreach($_REQUEST['Comments'] as $commentid) {
-					$comment = DataObject::get_one('PageComment', "`PageComment`.ID = $commentid");
+					$comment = DataObject::get_by_id('PageComment', $commentid);
 					if($comment) {
 						$comment->delete();
 						$numComments++;
@@ -167,7 +167,7 @@ JS;
 	
 			if($_REQUEST['Comments']) {
 				foreach($_REQUEST['Comments'] as $commentid) {
-					$comment = DataObject::get_one('PageComment', "`PageComment`.ID = $commentid");
+					$comment = DataObject::get_by_id('PageComment', $commentid);
 					if($comment) {
 						$comment->IsSpam = true;
 						$comment->NeedsModeration = false;
@@ -206,7 +206,7 @@ JS;
 	
 			if($_REQUEST['Comments']) {
 				foreach($_REQUEST['Comments'] as $commentid) {
-					$comment = DataObject::get_one('PageComment', "`PageComment`.ID = $commentid");
+					$comment = DataObject::get_by_id('PageComment', $commentid);
 					if($comment) {
 						$comment->IsSpam = false;
 						$comment->NeedsModeration = false;
@@ -246,7 +246,7 @@ JS;
 	
 			if($_REQUEST['Comments']) {
 				foreach($_REQUEST['Comments'] as $commentid) {
-					$comment = DataObject::get_one('PageComment', "`PageComment`.ID = $commentid");
+					$comment = DataObject::get_by_id('PageComment', $commentid);
 					if($comment) {
 						$comment->IsSpam = false;
 						$comment->NeedsModeration = false;
