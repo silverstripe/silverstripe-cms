@@ -22,7 +22,13 @@ $(document).ready(function() {
 	 * Attach tabs plugin to the set of search filter and edit forms
 	 */
 	$('ul.tabstrip').livequery(function() {
-	    $(this).tabs();
+	    $(this).tabs({
+			// This show handler is necessary to get tabs working properly with the crappy old layout_helpers.js layout
+			// manager
+			show : function() {
+				if(window.onresize) window.onresize();
+			}
+		});
 	});
 
     /*
