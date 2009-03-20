@@ -902,7 +902,7 @@ JS;
 		$id = $this->currentPageID();
 		if($id && is_numeric($id)) {
 			$page = DataObject::get_by_id($this->stat('tree_class'), $id);
-			if($page && Translatable::is_enabled() && $page->Lang && $page->Lang != Translatable::current_lang()) {
+			if($page && Translatable::is_enabled() && $page->Locale && $page->Locale != Translatable::current_locale()) {
 				return false;
 			} else {
 				return $page;

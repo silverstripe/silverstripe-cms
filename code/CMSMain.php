@@ -80,27 +80,27 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function init() {
 		parent::init();
 		
-		// "Lang" attribute is either explicitly added by LeftAndMain Javascript logic,
+		// Locale" attribute is either explicitly added by LeftAndMain Javascript logic,
 		// or implied on a translated record (see {@link Translatable->updateCMSFields()}).
 		if(Translatable::is_enabled()) {
 			// $Lang serves as a "context" which can be inspected by Translatable - hence it
 			// has the same name as the database property on Translatable.
-			if($this->getRequest()->requestVar("Lang")) {
-				$this->Lang = $this->getRequest()->requestVar("Lang");
-			} elseif($this->getRequest()->requestVar("lang")) {
-				$this->Lang = $this->getRequest()->requestVar("lang");
+			if($this->getRequest()->requestVar("Locale")) {
+				$this->Locale = $this->getRequest()->requestVar("Locale");
+			} elseif($this->getRequest()->requestVar("locale")) {
+				$this->Locale = $this->getRequest()->requestVar("locale");
 			} else {
-				$this->Lang = Translatable::default_lang();
+				$this->Locale = Translatable::default_locale();
 			}
-			Translatable::set_reading_lang($this->Lang);
+			Translatable::set_reading_locale($this->Locale);
 		}
 		
 		// collect languages for TinyMCE spellchecker plugin
 		if(Translatable::is_enabled()) {
 			$spellcheckLangs = Translatable::get_existing_content_languages();
 		} else {
-			$defaultLang = Translatable::default_lang();
-			$spellcheckLangs = array($defaultLang => i18n::get_language_name($defaultLang));
+			$defaultLang = Translatable::default_locale();
+			$spellcheckLangs = array($defaultLang => i18n::get_locale_name($defaultLang));
 		}
 		$spellcheckSpec = array();
 		foreach($spellcheckLangs as $lang => $title) $spellcheckSpec[] = "{$title}={$lang}";
@@ -485,7 +485,7 @@ JS;
 		if(!singleton($className)->canCreate()) return Security::permissionFailure($this);
 
 		$p = $this->getNewItem("new-$className-$parent".$suffix, false);
-		$p->Lang = $_REQUEST['Lang'];
+		$p->Locale = $_REQUEST['Locale'];
 		$p->write();
 
 		return $this->returnItemToUser($p);
@@ -1163,7 +1163,7 @@ JS;
 		
 		$fields = new FieldSet(
 			new HiddenField("ParentID"),
-			new HiddenField("Lang", 'Lang', Translatable::current_lang()),
+			new HiddenField("Locale", 'Locale', Translatable::current_locale()),
 			new DropdownField("PageType", "", $pageTypes, 'Page')
 		);
 		
@@ -1314,8 +1314,8 @@ JS;
 
 		$record = $this->getRecord($originalLangID);
 		
-		$this->Lang = $langCode;
-		Translatable::set_reading_lang($langCode);
+		$this->Locale = $langCode;
+		Translatable::set_reading_locale($langCode);
 		
 		// Create a new record in the database - this is different
 		// to the usual "create page" pattern of storing the record
@@ -1325,7 +1325,7 @@ JS;
 		$translatedRecord = $record->createTranslation($langCode);
 
 		$url = sprintf(
-			"%s/%d/?lang=%s", 
+			"%s/%d/?locale=%s", 
 			$this->Link('show'),
 			$translatedRecord->ID,
 			$langCode
@@ -1369,7 +1369,7 @@ JS;
 		$member = Member::currentUser(); //check to see if the current user can switch langs or not
 		if(Permission::checkMember($member, 'VIEW_LANGS')) {
             $allKey = _t('Form.LANGAOTHER', "Other languages");
-            $all = i18n::get_common_languages(); //all languages
+            $all = i18n::get_common_locales(); //all languages
             $used = Translatable::get_existing_content_languages(); //languages currently in use
             if( $used && count($used) ) {
                 foreach($used as $index => $code) {
@@ -1380,11 +1380,11 @@ JS;
                 $langs[ _t('Form.LANGAVAIL', "Available languages") ] = (isset( $available )) ? $available : array();
             }
             $langs[ _t('Form.LANGAOTHER', "Other languages") ] = $all;
-            return new GroupedDropdownField('LangSelector', 'Language', $langs, Translatable::current_lang());
+            return new GroupedDropdownField('LangSelector', 'Language', $langs, Translatable::current_locale());
         }
         
         //user doesn't have permission to switch langs so just show a string displaying current language
-        return i18n::get_language_name( Translatable::current_lang() );
+        return i18n::get_locale_name( Translatable::current_locale() );
     }
 
 	/**
@@ -1409,8 +1409,8 @@ JS;
 	 * Get the name of the language that we are translating in
 	 */
 	function EditingLang() {
-		if(!Translatable::is_default_lang()) {
-			return i18n::get_language_name(Translatable::current_lang());
+		if(!Translatable::is_default_locale()) {
+			return i18n::get_locale_name(Translatable::current_locale());
 		} else {
 			return false;
 		}
