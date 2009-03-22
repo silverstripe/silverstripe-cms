@@ -26,6 +26,7 @@
  * @uses SearchContext
  * 
  * @package cms
+ * @subpackage core
  */
 abstract class ModelAdmin extends LeftAndMain {
 
@@ -250,6 +251,8 @@ abstract class ModelAdmin extends LeftAndMain {
 /**
  * Handles a managed model class and provides default collection filtering behavior.
  *
+ * @package cms
+ * @subpackage core
  */
 class ModelAdmin_CollectionController extends Controller {
 	public $parentController;
@@ -758,6 +761,8 @@ class ModelAdmin_CollectionController extends Controller {
 /**
  * Handles operations on a single record from a managed model.
  * 
+ * @package cms
+ * @subpackage core
  * @todo change the parent controller varname to indicate the model scaffolding functionality in ModelAdmin
  */
 class ModelAdmin_RecordController extends Controller {

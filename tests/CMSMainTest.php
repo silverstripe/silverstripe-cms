@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * @package cms
+ * @subpackage tests
+ */
 class CMSMainTest extends SapphireTest {
 	static $fixture_file = 'cms/tests/CMSMainTest.yml';
 	

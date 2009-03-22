@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * @package cms
+ * @subpackage tests
+ */
 class SecurityAdminTest extends FunctionalTest {
 	static $fixture_file = 'cms/tests/CMSMainTest.yml';
 	
