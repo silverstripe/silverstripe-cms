@@ -98,7 +98,7 @@ body.ModelAdmin #right table.results td.active {
 }
 
 body.ModelAdmin #right .tab {
-	overflow: hidden;
+	overflow: auto;
 	padding-bottom: 20px;
 }
 
