@@ -30,8 +30,8 @@ if((typeof tinyMCE != 'undefined')) {
 		blockquote_clear_tag : "p",
 		table_inline_editing : true,
 		theme_advanced_buttons1 : "bold,italic,underline,strikethrough,separator,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,separator,bullist,numlist,outdent,indent,blockquote,hr,charmap",
-		theme_advanced_buttons2 : "undo,redo,separator,cut,copy,paste,pastetext,pasteword,spellchecker,separator,ssimage,ssflash,sslink,unlink,anchor,separator,advcode,search,replace,selectall,visualaid,separator,tablecontrols",
-		theme_advanced_buttons3 : "",
+		theme_advanced_buttons2 : "undo,redo,separator,cut,copy,paste,pastetext,pasteword,spellchecker,separator,ssimage,ssflash,sslink,unlink,anchor,separator,advcode,search,replace,selectall,visualaid",
+		theme_advanced_buttons3 : "tablecontrols",
 		spellchecker_languages : "$SpellcheckLangs",
 		
 		template_templates : [
