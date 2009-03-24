@@ -916,6 +916,10 @@ class ModelAdmin_RecordController extends Controller {
 		Director::redirect(Controller::join_links($this->Link(), 'edit'));
 	}
 	
+	function getCurrentRecord(){
+		return $this->currentRecord;
+	}
+	
 }
 
 ?>
