@@ -175,7 +175,7 @@ window.onresize = function(init) {
 	}
 
 	if(typeof fitToParent == 'function') {
-		fitToParent('Form_EditForm', -20);
+		fitToParent('Form_EditForm', 4);
 		if($('Form_EditorToolbarImageForm') && $('Form_EditorToolbarImageForm').style.display == "block") {
 			fitToParent('Form_EditorToolbarImageForm', 5);
 			fitToParent($('Form_EditorToolbarImageForm').getElementsByTagName('fieldset')[0]);
