@@ -161,7 +161,7 @@
 	background: #fff;
 }
 .right form .mceEditor .mceFirst {
-	background:url(../images/textures/mce_editor.gif) repeat-x bottom;
+	background: #fbfbfb url(../images/textures/mce_editor.gif) repeat-x bottom;
 }
 .right form .mceEditor .mceToolbar table {
 	background: transparent;
