@@ -234,6 +234,8 @@ JS
 		foreach($newFiles as $newFile) {
 			$fileIDs[] = $newFile;
 			$fileObj = DataObject::get_one('File', "`File`.ID=$newFile");
+			// notify file object after uploading
+			if (method_exists($fileObj, 'onAfterUpload')) $fileObj->onAfterUpload();
 			$fileNames[] = $fileObj->Name;
 		}
 		
