@@ -628,6 +628,8 @@ class ModelAdmin_CollectionController extends Controller {
 			$this->modelClass,
 			$summaryFields
 		);
+		//foreach($searchCriteria as $oneCriterium=>$v) {echo($oneCriterium."=>");print_r($v);echo("<br />");}
+	//	Debug::show($this->getSearchQuery($searchCriteria)->sql());die;
 		$tf->setCustomQuery($this->getSearchQuery($searchCriteria));
 		$tf->setPageSize($this->parentController->stat('page_length'));
 		$tf->setShowPagination(true);
