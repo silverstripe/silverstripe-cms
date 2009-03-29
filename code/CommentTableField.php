@@ -45,7 +45,7 @@ class CommentTableField extends ComplexTableField {
 
 		$this->methodName = "spam";
 		
-		$childId = Convert::raw2sql($_REQUEST['tf']['childID']);
+		$childId = Convert::raw2sql($_REQUEST['ctf']['childID']);
 
 		if (is_numeric($childId)) {
 			$comment = DataObject::get_by_id($this->sourceClass, $childId);
@@ -76,7 +76,7 @@ class CommentTableField extends ComplexTableField {
 
 		$this->methodName = "ham";
 		
-		$childId = Convert::raw2sql($_REQUEST['tf']['childID']);
+		$childId = Convert::raw2sql($_REQUEST['ctf']['childID']);
 
 		if (is_numeric($childId)) {
 			$comment = DataObject::get_by_id($this->sourceClass, $childId);
@@ -107,7 +107,7 @@ class CommentTableField extends ComplexTableField {
 
 		$this->methodName = "accept";
 		
-		$childId = Convert::raw2sql($_REQUEST['tf']['childID']);
+		$childId = Convert::raw2sql($_REQUEST['ctf']['childID']);
 
 		if(is_numeric($childId)) {
 			$childObject = DataObject::get_by_id($this->sourceClass, $childId);
