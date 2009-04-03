@@ -428,8 +428,8 @@ StageLink.prototype = {
 		} else {
 			if(this.id != 'viewArchivedSite') this.style.display = 'none';
 		}
-		if($('Form_EditForm_Lang')) {
-			this.href += "&locale=" + $('Form_EditForm_Lang').value;
+		if($('Form_EditForm_Locale')) {
+			this.href += "&locale=" + $('Form_EditForm_Locale').value;
 		}
 	},
 	onclick : function() {
