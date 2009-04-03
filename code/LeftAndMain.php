@@ -116,7 +116,7 @@ class LeftAndMain extends Controller {
 		
 		// set reading lang
 		if(Translatable::is_enabled() && !Director::is_ajax()) {
-			Translatable::choose_site_lang(array_keys(Translatable::get_existing_content_languages('SiteTree')));
+			Translatable::choose_site_locale(array_keys(Translatable::get_existing_content_languages('SiteTree')));
 		}
 
 		// Allow customisation of the access check by a decorator
