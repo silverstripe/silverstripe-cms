@@ -66,7 +66,7 @@ class MemberTableField extends ComplexTableField {
 			} elseif(is_numeric($group)) {
 				$this->group = DataObject::get_by_id('Group', $group);
 			}
-		} else if(is_numeric($_REQUEST['ctf'][$this->Name()]["ID"])) {
+		} else if(isset($_REQUEST['ctf']) && is_numeric($_REQUEST['ctf'][$this->Name()]["ID"])) {
 			$this->group = DataObject::get_by_id('Group', $_REQUEST['ctf'][$this->Name()]["ID"]);
 		}
 
@@ -132,7 +132,7 @@ class MemberTableField extends ComplexTableField {
 	}
 
 	function sourceID() {
-		return $this->group->ID;
+		return ($this->group) ? $this->group->ID : 0;
 	}
 
 	function AddLink() {
@@ -140,9 +140,11 @@ class MemberTableField extends ComplexTableField {
 	}
 
 	function SearchForm() {
+		$groupID = (isset($this->group)) ? $this->group->ID : 0;
+		
 		$searchFields = new FieldGroup(
 			new TextField('MemberSearch', _t('MemberTableField.SEARCH', 'Search')),
-			new HiddenField("ctf[ID]", '', $this->group->ID),
+			new HiddenField("ctf[ID]", '', $groupID),
 			new HiddenField('MemberFieldName', '', $this->name),
 			new HiddenField('MemberDontShowPassword', '', $this->hidePassword)
 		);
@@ -262,8 +264,9 @@ class MemberTableField extends ComplexTableField {
 				$fields->push(new TextField($fieldName));
 			}
 		}
-		$fields->push(new HiddenField('ctf[ID]', null, $this->group->ID));
-
+		if($this->group) {
+			$fields->push(new HiddenField('ctf[ID]', null, $this->group->ID));
+		}
 		$actions = new FieldSet(
 			new FormAction('addtogroup', _t('MemberTableField.ADD','Add'))
 		);
@@ -330,14 +333,16 @@ class MemberTableField extends ComplexTableField {
 				
 		// We use the group to get the members, as they already have the bulk of the look up functions
 		$start = isset($_REQUEST['ctf'][$this->Name()]['start']) ? $_REQUEST['ctf'][$this->Name()]['start'] : 0; 
-
-		$this->sourceItems = $this->group->Members( 
-			$this->pageSize, // limit 
-			$start, // offset 
-			$this->sourceFilter,
-			$this->sourceSort
-		);
 		
+		$this->sourceItems = false;
+		if($this->group) {
+			$this->sourceItems = $this->group->Members( 
+				$this->pageSize, // limit 
+				$start, // offset 
+				$this->sourceFilter,
+				$this->sourceSort
+			);	
+		}
 		// Because we are not used $this->upagedSourceItems any more, and the DataObjectSet is usually the source
 		// that a large member set runs out of memory. we disable it here.
 		//$this->unpagedSourceItems = $this->group->Members('', '', $this->sourceFilter, $this->sourceSort);
