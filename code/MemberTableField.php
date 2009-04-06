@@ -141,9 +141,10 @@ class MemberTableField extends ComplexTableField {
 
 	function SearchForm() {
 		$groupID = (isset($this->group)) ? $this->group->ID : 0;
+		$query = isset($_GET['MemberSearch']) ? $_GET['MemberSearch'] : null;
 		
 		$searchFields = new FieldGroup(
-			new TextField('MemberSearch', _t('MemberTableField.SEARCH', 'Search')),
+			new TextField('MemberSearch', _t('MemberTableField.SEARCH', 'Search'), $query),
 			new HiddenField("ctf[ID]", '', $groupID),
 			new HiddenField('MemberFieldName', '', $this->name),
 			new HiddenField('MemberDontShowPassword', '', $this->hidePassword)

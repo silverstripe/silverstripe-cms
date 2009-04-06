@@ -138,8 +138,10 @@ class CommentTableField extends ComplexTableField {
 	}
 
 	function SearchForm() {
+		$query = isset($_GET['CommentSearch']) ? $_GET['CommentSearch'] : null;
+		
 		$searchFields = new FieldGroup(
-			new TextField('CommentSearch', _t('CommentTableField.SEARCH', 'Search')),
+			new TextField('CommentSearch', _t('CommentTableField.SEARCH', 'Search'), $query),
 			new HiddenField("ctf[ID]",'',$this->mode),
 			new HiddenField('CommentFieldName','',$this->name)
 		);
