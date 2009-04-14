@@ -84,7 +84,10 @@ class MemberTableField extends ComplexTableField {
 		);
 		
 		$memberDbFields = $SNG_member->db();
-		$csvFieldList = array();
+		$csvFieldList = array(
+			'Created' => 'Created',
+			'LastEdited' => 'LastEdited'
+		);
 
 		foreach($memberDbFields as $field => $dbFieldType) {
 			$csvFieldList[$field] = $field;
