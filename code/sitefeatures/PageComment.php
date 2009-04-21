@@ -117,8 +117,8 @@ class PageComment extends DataObject {
 		return self::$bbcode;
 	}
 	
-	function fieldLabels() {
-		$labels = parent::fieldLabels();
+	function fieldLabels($includerelations = true) {
+		$labels = parent::fieldLabels($includerelations);
 		$labels['Name'] = _t('PageComment.Name', 'Author Name');
 		$labels['Comment'] = _t('PageComment.Comment', 'Comment');
 		$labels['IsSpam'] = _t('PageComment.IsSpam', 'Spam?');
