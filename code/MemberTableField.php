@@ -109,9 +109,6 @@ class MemberTableField extends ComplexTableField {
 		$this->hidePassword = $hidePassword;
 
 		parent::__construct($controller, $name, $sourceClass, $fieldList);
-
-		Requirements::javascript(CMS_DIR . '/javascript/MemberTableField.js');
-		Requirements::javascript(CMS_DIR . "/javascript/MemberTableField_popup.js");
 		
 		// search
 		$SQL_search = isset($_REQUEST['MemberSearch']) ? Convert::raw2sql($_REQUEST['MemberSearch']) : null;
@@ -132,6 +129,15 @@ class MemberTableField extends ComplexTableField {
 		$this->sourceJoin = " INNER JOIN `Group_Members` ON `MemberID` = `Member`.`ID`";
 		$this->setFieldListCsv($csvFieldList);
 		$this->setPageSize($this->stat('page_size'));
+	}
+	
+	function FieldHolder() {
+		$ret = parent::FieldHolder();
+		
+		Requirements::javascript(CMS_DIR . '/javascript/MemberTableField.js');
+		Requirements::javascript(CMS_DIR . "/javascript/MemberTableField_popup.js");
+		
+		return $ret;
 	}
 
 	function sourceID() {
@@ -376,11 +382,13 @@ class MemberTableField extends ComplexTableField {
  */
 class MemberTableField_Popup extends ComplexTableField_Popup {
 	
-	function __construct($controller, $name, $fields, $sourceClass, $readonly=false, $validator = null) {
-		parent::__construct($controller, $name, $fields, $sourceClass, $readonly, $validator);
-
+	function forTemplate() {
+		$ret = parent::forTemplate();
+		
 		Requirements::javascript(CMS_DIR . '/javascript/MemberTableField.js');
 		Requirements::javascript(CMS_DIR . '/javascript/MemberTableField_popup.js');
+		
+		return $ret;
 	}
 
 }

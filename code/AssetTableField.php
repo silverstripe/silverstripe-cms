@@ -18,8 +18,6 @@ class AssetTableField extends ComplexTableField {
     );
 	function __construct($controller, $name, $sourceClass, $fieldList, $detailFormFields, $sourceFilter = "", $sourceSort = "", $sourceJoin = "") {
 		parent::__construct($controller, $name, $sourceClass, $fieldList, $detailFormFields, $sourceFilter, $sourceSort, $sourceJoin);
-
-		Requirements::javascript(CMS_DIR . '/javascript/AssetTableField.js');
 		
 		$SNG_file = singleton('File');
 		
@@ -38,9 +36,12 @@ class AssetTableField extends ComplexTableField {
 	}
 	
 	function FieldHolder() {
+		$ret = parent::FieldHolder();
+		
+		Requirements::javascript(CMS_DIR . '/javascript/AssetTableField.js');
 		Requirements::javascript('cms/javascript/ImageEditor/Activator.js');
 
-		return parent::FieldHolder();
+		return $ret;
 	}
 	
 	function setFolder($folder) {
