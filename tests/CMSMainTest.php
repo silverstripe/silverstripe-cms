@@ -75,7 +75,7 @@ class CMSMainTest extends SapphireTest {
 
 		foreach($classes as $class) {
 			$page = new $class();
-			if($class instanceof TestOnly) continue;
+			if($page instanceof TestOnly) continue;
 
 			$page->Title = "Test $class page";
 			$page->write();
