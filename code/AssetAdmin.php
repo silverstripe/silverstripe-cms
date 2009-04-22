@@ -75,8 +75,6 @@ class AssetAdmin extends LeftAndMain {
 		Requirements::css(SAPPHIRE_DIR . "/css/ComplexTableField.css");
 
 		Requirements::javascript(CMS_DIR . "/javascript/AssetAdmin.js");
-		Requirements::javascript(CMS_DIR . "/javascript/AssetAdmin_left.js");
-		Requirements::javascript(CMS_DIR . "/javascript/AssetAdmin_right.js");
 
 		Requirements::javascript(CMS_DIR . "/javascript/CMSMain_upload.js");
 		Requirements::javascript(CMS_DIR . "/javascript/Upload.js");
@@ -519,25 +517,6 @@ JS;
 	}
 	
 	/**
-	 * Return the given tree item to the client.
-	 * If called by ajax, this will be some javascript commands.
-	 * Otherwise, it will redirect back.
-	 */
-	public function returnItemToUser($p) {
-		if($_REQUEST['ajax']) {
-			$parentID = (int) $p->ParentID;
-			return <<<JS
-				tree = $('sitetree');
-				var newNode = tree.createTreeNode($p->ID, "$p->Title", "$p->class");
-				tree.getTreeNodeByIdx($parentID).appendTreeNode(newNode);
-				newNode.selectTreeNode();
-JS;
-		} else {
-			Director::redirectBack();
-		}
-	}
-	
-	/**
 	 * Delete a folder
 	 */
 	public function deletefolder() {
@@ -545,16 +524,13 @@ JS;
 		$ids = split(' *, *', $_REQUEST['csvIDs']);
 		$script = '';
 		foreach($ids as $id) {
-
 			if(is_numeric($id)) {
 				$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-				if(!$record) {
-					Debug::message( "Record appears to be null" );
+				if($record) {
+					$script .= $this->deleteTreeNodeJS($record);
+					$record->delete();
+					$record->destroy();
 				}
-				$record->delete();
-				$record->destroy();
-
-				$script .= $this->deleteTreeNodeJS($record);
 			}
 		}
 		

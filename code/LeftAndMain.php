@@ -496,7 +496,7 @@ class LeftAndMain extends Controller {
 	public function returnItemToUser($p) {
 		if(Director::is_ajax()) {
 			// Prepare the object for insertion.
-			$parentID = (int)$p->ParentID;
+			$parentID = (int) $p->ParentID;
 			$id = $p->ID ? $p->ID : "new-$p->class-$p->ParentID";
 			$treeTitle = Convert::raw2js($p->TreeTitle());
 			$hasChildren = (is_numeric($id) && $p->AllChildren() && $p->AllChildren()->Count()) ? ' unexpanded' : '';
@@ -506,7 +506,9 @@ class LeftAndMain extends Controller {
 				var tree = $('sitetree');
 				var newNode = tree.createTreeNode("$id", "$treeTitle", "{$p->class}{$hasChildren}");
 				node = tree.getTreeNodeByIdx($parentID);
-				if(!node){	node = tree.getTreeNodeByIdx(0); }
+				if(!node) {
+					node = tree.getTreeNodeByIdx(0);
+				}
 				node.open();
 				node.appendTreeNode(newNode);
 				newNode.selectTreeNode();
@@ -515,11 +517,9 @@ JS;
 
 			return FormResponse::respond();
 		} else {
-			Director::redirect("admin/show/" . $p->ID);
+			Director::redirect('admin/' . self::$url_segment . '/show/' . $p->ID);
 		}
-
 	}
-
 
 	/**
 	 * Save and Publish page handler
