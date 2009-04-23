@@ -844,7 +844,7 @@ JS;
 	}
 
 	public function EditForm() {
-		if(isset($_REQUEST['ID'])) {
+		if(isset($_REQUEST['ID']) && is_numeric($_REQUEST['ID'])) {
 			$record = DataObject::get_by_id($this->stat('tree_class'), $_REQUEST['ID']);
 		} else {
 			$record = $this->CurrentPage();
