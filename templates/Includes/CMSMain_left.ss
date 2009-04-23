@@ -6,19 +6,17 @@
 			<% _t('SITECONTENT TITLE','Site Content and Structure',PR_HIGH) %>
 		</h2>
 		<div id="sitetree_holder">
-
 			<div id="TreeTools">
-
 				<ul id="TreeActions">
 					<li class="action" id="addpage"><button><% _t('CREATE','Create',PR_HIGH) %></button></li>
 					<li class="action" id="search"><button><% _t('SEARCH','Search',PR_HIGH) %></button></li>
 					<li class="action" id="batchactions"><button><% _t('BATCHACTIONS','Batch Actions',PR_HIGH) %></button></li>
 				</ul>
-			
+				<div style="clear:both;"></div>
 				<% control AddPageOptionsForm %>
 				<form class="actionparams" id="$FormName" style="display: none" action="$FormAction">
 					<% control Fields %>
-						$FieldHolder
+					$FieldHolder
 					<% end_control %>
 					<div>
 						<input class="action" type="submit" value="<% _t('GO','Go') %>" />
@@ -94,11 +92,15 @@
 				<div id="SortItems">
 						<input type="checkbox" id="sortitems" /> <label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
 				</div>
-			</div>
-
-				<div id="sitetree_ul">
-					$SiteTreeAsUL
+				<% if IsTranslatableEnabled %>
+				<div id="LangSelector_holder">
+					Language: $LangSelector
 				</div>
+				<% end_if %>
+			</div>
+			<div id="sitetree_ul">
+				$SiteTreeAsUL
+			</div>
 		</div>
 
 		<div id="publication_key">
@@ -110,9 +112,6 @@
 			
 		</div>		
 		
-		<div id="LangSelector_holder" <% if MultipleLanguages %><% else %> class="onelang"<% end_if %>>
-			Language: $LangSelector
-		</div>
 		<!--
 		<div id="search_holder" style="display:none">
 			<h2>Search</h2>

@@ -32,6 +32,10 @@ body {
 	#TreeActions li {
 		float: left;
 	}
+	
+	#TreeActions button.disabled {
+		color: #aaa;
+	}
 
 .ajaxActions input,
 .actions input,

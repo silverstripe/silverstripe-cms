@@ -300,7 +300,7 @@ CMSRightForm.prototype = {
 			// used to set language in CMSMain->init()
 			var lang = $('LangSelector') ? $F('LangSelector') : null;
 			if(lang) {
-			  url += '&lang='+lang;
+			  url += '&locale='+lang;
 			}
 
 			statusMessage("loading...");
@@ -422,6 +422,9 @@ StageLink.prototype = {
 			this.href = linkVal + this.getVars;
 		} else {
 			if(this.id != 'viewArchivedSite') this.style.display = 'none';
+		}
+		if($('Form_EditForm_Locale')) {
+			this.href += "&locale=" + $('Form_EditForm_Locale').value;
 		}
 	},
 	onclick : function() {

@@ -358,9 +358,9 @@ ul.contextMenu li a:hover {
 	text-decoration: none;
 }
 
-ul.tree li.untranslated a:link, 
-ul.tree li.untranslated a:hover, 
-ul.tree li.untranslated a:visited {
+ul.tree span.untranslated a:link, 
+ul.tree span.untranslated a:hover, 
+ul.tree span.untranslated a:visited {
 	color: #ccc
 }
 
@@ -458,11 +458,5 @@ ul.tree li.untranslated a:visited {
 	background-color: #EEEEEE;
 	border-bottom: 1px solid #CCCCCC;
 	border-top: 1px solid #CCCCCC;
-	padding: 5px;
-}
-#LangSelector_holder select {
-	width: 70%;
-}
-#LangSelector_holder.onelang {
-	display: none;
+	padding: 3px 0 3px 7px;
 }

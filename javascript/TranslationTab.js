@@ -1,7 +1,6 @@
 Behaviour.register({
-	'div.inlineformaction input#Form_EditForm_createtranslation': {
-		onclick: function() {
-
+	'input#Form_EditForm_createtranslation': {
+		onclick: function(e) {
 			var st = $('sitetree');
 			var originalID = st.getIdxOf(st.firstSelected());
 			if(originalID && originalID.substr(0,3) == 'new') {
