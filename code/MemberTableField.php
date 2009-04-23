@@ -120,12 +120,6 @@ class MemberTableField extends ComplexTableField {
 			$this->sourceFilter[] = '(' . implode(' OR ', $searchFilters) . ')';
 		}
 
-		// filter by groups
-		// TODO Not implemented yet
-		if(isset($_REQUEST['ctf'][$this->Name()]['GroupID']) && is_numeric($_REQUEST['ctf'][$this->Name()]['GroupID'])) {
-			$this->sourceFilter[] = "`GroupID`='{$_REQUEST['ctf'][$this->Name()]['GroupID']}'";
-		}
-
 		$this->sourceJoin = " INNER JOIN `Group_Members` ON `MemberID` = `Member`.`ID`";
 		$this->setFieldListCsv($csvFieldList);
 		$this->setPageSize($this->stat('page_size'));
