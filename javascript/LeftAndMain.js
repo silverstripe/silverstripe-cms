@@ -182,7 +182,7 @@ window.onresize = function(init) {
 			if(navigator.appName == "Microsoft Internet Explorer") {
 				fitToParent('Image');
 			} else {
-				fitToParent('Image', 190);
+				fitToParent('Image', 210);
 			}
 		}
 		if($('Form_EditorToolbarFlashForm') && $('Form_EditorToolbarFlashForm').style.display == "block") {
