@@ -253,6 +253,18 @@ JS
 			</script>
 HTML;
 	}
+
+	/**
+	 * Custom currentPage() method to handle opening the 'root' folder
+	 */
+	public function currentPage() {
+		$id = $this->currentPageID();
+		if($id && is_numeric($id)) {
+			return DataObject::get_by_id($this->stat('tree_class'), $id);
+		} else if($id == 'root') {
+			return singleton($this->stat('tree_class'));
+		}
+	}
 	
 	/**
 	 * Return the form that displays the details of a folder, including a file list and fields for editing the folder name.
