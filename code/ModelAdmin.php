@@ -127,8 +127,8 @@ abstract class ModelAdmin extends LeftAndMain {
 		
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/livequery/jquery.livequery.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.core.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.tabs.js');
+		//Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.core.js');
+		//Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.tabs.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/form/jquery.form.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/effen/jquery.fn.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery_improvements.js');
