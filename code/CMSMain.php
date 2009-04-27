@@ -60,6 +60,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * SiteTree Columns that can be filtered using the the Site Tree Search button
 	 */
 	static $site_tree_filter_options = array(
+		'Title' => array('CMSMain.TITLE', 'Title'),
+		'MenuTitle' => array('CMSMain.MENUTITLE', 'Navigation Label'),
 		'ClassName' => array('CMSMain.PAGETYPE', 'Page Type'), 
 		'Status' => array('CMSMain.STATUS', 'Status'),
 		'MetaDescription' => array('CMSMain.METADESC', 'Description'),
@@ -68,10 +70,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	
 	static function T_SiteTreeFilterOptions(){
 		return array(
+			'Title' => _t('CMSMain.TITLEOPT', 'Title', 0, 'The dropdown title in CMSMain left SiteTreeFilterOptions'),
+			'MenuTitle' => _t('CMSMain.MENUTITLEOPT', 'Navigation Label', 0, 'The dropdown title in CMSMain left SiteTreeFilterOptions'),
 			'ClassName' => _t('CMSMain.PAGETYPEOPT', 'Page Type', 0, "The dropdown title in CMSMain left SiteTreeFilterOptions"), 
 			'Status' => _t('CMSMain.STATUSOPT', 'Status',  0, "The dropdown title in CMSMain left SiteTreeFilterOptions"), 
 			'MetaDescription' => _t('CMSMain.METADESCOPT', 'Description', 0, "The dropdown title in CMSMain left SiteTreeFilterOptions"), 
-			'MetaKeywords' => _t('CMSMain.METAKEYWORDSOPT', 'Keywords', 0, "The dropdown title in CMSMain left SiteTreeFilterOptions"), 
+			'MetaKeywords' => _t('CMSMain.METAKEYWORDSOPT', 'Keywords', 0, "The dropdown title in CMSMain left SiteTreeFilterOptions")
 		);
 	}
 
