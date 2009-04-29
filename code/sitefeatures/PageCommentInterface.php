@@ -53,6 +53,7 @@ class PageCommentInterface extends RequestHandler {
 		$this->controller = $controller;
 		$this->methodName = $methodName;
 		$this->page = $page;
+		parent::__construct();
 	}
 	
 	function Link() {
