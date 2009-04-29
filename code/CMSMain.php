@@ -377,6 +377,12 @@ JS;
 				$record = DataObject::get_one( $treeClass, "`$treeClass`.ID = $id");
 				if($record) Versioned::reading_stage(null);
 			}
+
+			// Don't open a page from a different locale
+			if($record && Translatable::is_enabled() && $record->Locale && $record->Locale != Translatable::current_locale()) {
+				$record = null;
+			}
+
 			return $record;
 
 		} else if(substr($id,0,3) == 'new') {

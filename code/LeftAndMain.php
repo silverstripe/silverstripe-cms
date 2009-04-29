@@ -451,7 +451,7 @@ class LeftAndMain extends Controller {
 
 	public function getRecord($id, $className = null) {
 		if(!$className) $className = $this->stat('tree_class');
-		return DataObject::get_by_id($className, $rootID);
+		return DataObject::get_by_id($className, $id);
 	}
 
 	function getSiteTreeFor($className, $rootID = null) {
@@ -844,12 +844,7 @@ JS;
 	}
 
 	public function EditForm() {
-		if(isset($_REQUEST['ID']) && is_numeric($_REQUEST['ID'])) {
-			$record = DataObject::get_by_id($this->stat('tree_class'), $_REQUEST['ID']);
-		} else {
-			$record = $this->CurrentPage();
-		}
-		
+		$record = $this->currentPage();
 		if(!$record) return false;
 		
 		if($record && !$record->canView()) return Security::permissionFailure($this);
@@ -899,15 +894,7 @@ JS;
 	}
 
 	public function currentPage() {
-		$id = $this->currentPageID();
-		if($id && is_numeric($id)) {
-			$page = DataObject::get_by_id($this->stat('tree_class'), $id);
-			if($page && Translatable::is_enabled() && $page->Locale && $page->Locale != Translatable::current_locale()) {
-				return false;
-			} else {
-				return $page;
-			}
-		}
+		return $this->getRecord($this->currentPageID());
 	}
 
 	public function isCurrentPage(DataObject $page) {
