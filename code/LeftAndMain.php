@@ -589,10 +589,6 @@ JS;
 			$record->Status = ($record->Status == "New page" || $record->Status == "Saved (new)") ? "Saved (new)" : "Saved (update)";
 		}
 
-
-
-		// $record->write();
-
 		if(Director::is_ajax()) {
 			if($SQL_id != $record->ID) {
 				FormResponse::add("$('sitetree').setNodeIdx(\"{$SQL_id}\", \"$record->ID\");");
@@ -620,13 +616,17 @@ JS;
 
 			$message = _t('LeftAndMain.SAVEDUP');
 
-
-			// Update the icon if the class has changed
+			// Update the class instance if necessary
 			if($originalClass != $record->ClassName) {
-				$record->setClassName( $record->ClassName );
-				$newClass = $record->ClassName;
-				$record = $record->newClassInstance( $newClass );
-
+				$newClassName = $record->ClassName;
+				// The records originally saved attribute was overwritten by $form->saveInto($record) before.
+				// This is necessary for newClassInstance() to work as expected, and trigger change detection
+				// on the ClassName attribute
+				$record->setClassName($originalClass);
+				// Replace $record with a new instance
+				$record = $record->newClassInstance($newClassName);
+				
+				// update the tree icon
 				FormResponse::add("if(\$('sitetree').setNodeIcon) \$('sitetree').setNodeIcon($record->ID, '$originalClass', '$record->ClassName');");
 			}
 
@@ -653,9 +653,9 @@ JS;
 			if (isset($urlParams['publish']) && $urlParams['publish'] == 1) {
 				$record->doPublish();
 				
-				$record->setClassName($record->ClassName);
-				$newClass = $record->ClassName;
-				$publishedRecord = $record->newClassInstance($newClass);
+				// Update classname with original and get new instance (see above for explanation)
+				$record->setClassName($originalClass);
+				$publishedRecord = $record->newClassInstance($record->ClassName);
 
 				return $this->tellBrowserAboutPublicationChange(
 					$publishedRecord, 
