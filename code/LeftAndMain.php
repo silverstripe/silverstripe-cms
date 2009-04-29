@@ -450,8 +450,10 @@ class LeftAndMain extends Controller {
 	}
 
 	public function getRecord($id, $className = null) {
-		if(!$className) $className = $this->stat('tree_class');
-		return DataObject::get_by_id($className, $id);
+		if($id && is_numeric($id)) {
+			if(!$className) $className = $this->stat('tree_class');
+			return DataObject::get_by_id($className, $id);
+		}
 	}
 
 	function getSiteTreeFor($className, $rootID = null) {
