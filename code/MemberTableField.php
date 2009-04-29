@@ -98,8 +98,8 @@ class MemberTableField extends ComplexTableField {
 			} elseif(is_numeric($group)) {
 				$this->group = DataObject::get_by_id('Group', $group);
 			}
-		} elseif(is_numeric($_REQUEST['ctf'][$this->Name()]['ID'])) {
-			$this->group = DataObject::get_by_id('Group', $_REQUEST['ctf'][$this->Name()]['ID']);
+		} else if(isset($_REQUEST['ctf']) && is_numeric($_REQUEST['ctf'][$this->Name()]["ID"])) {
+			$this->group = DataObject::get_by_id('Group', $_REQUEST['ctf'][$this->Name()]["ID"]);
 		}
 
 		foreach(self::$addedFields as $key => $value) {
@@ -119,9 +119,6 @@ class MemberTableField extends ComplexTableField {
 		}
 
 		parent::__construct($controller, $name, $sourceClass, $fieldList);
-
-		Requirements::javascript(CMS_DIR . '/javascript/MemberTableField.js');
-		Requirements::javascript(CMS_DIR . '/javascript/MemberTableField_popup.js');
 		
 		$SQL_search = isset($_REQUEST['MemberSearch']) ? Convert::raw2sql($_REQUEST['MemberSearch']) : null;
 		if(!empty($_REQUEST['MemberSearch'])) {
@@ -136,9 +133,18 @@ class MemberTableField extends ComplexTableField {
 		$this->setFieldListCsv($csvFieldList);
 		$this->setPageSize($this->stat('page_size'));
 	}
+	
+	function FieldHolder() {
+		$ret = parent::FieldHolder();
+		
+		Requirements::javascript(CMS_DIR . '/javascript/MemberTableField.js');
+		Requirements::javascript(CMS_DIR . "/javascript/MemberTableField_popup.js");
+		
+		return $ret;
+	}
 
 	function sourceID() {
-		return $this->group->ID;
+		return ($this->group) ? $this->group->ID : 0;
 	}
 
 	function AddLink() {
@@ -146,9 +152,12 @@ class MemberTableField extends ComplexTableField {
 	}
 
 	function SearchForm() {
+		$groupID = (isset($this->group)) ? $this->group->ID : 0;
+		$query = isset($_GET['MemberSearch']) ? $_GET['MemberSearch'] : null;
+		
 		$searchFields = new FieldGroup(
-			new TextField('MemberSearch', _t('MemberTableField.SEARCH', 'Search')),
-			new HiddenField('ctf[ID]', '', $this->group->ID),
+			new TextField('MemberSearch', _t('MemberTableField.SEARCH', 'Search'), $query),
+			new HiddenField("ctf[ID]", '', $groupID),
 			new HiddenField('MemberFieldName', '', $this->name),
 			new HiddenField('MemberDontShowPassword', '', $this->hidePassword)
 		);
@@ -290,8 +299,9 @@ class MemberTableField extends ComplexTableField {
 				$fields->push(new TextField($fieldName));
 			}
 		}
-		$fields->push(new HiddenField('ctf[ID]', null, $this->group->ID));
-
+		if($this->group) {
+			$fields->push(new HiddenField('ctf[ID]', null, $this->group->ID));
+		}
 		$actions = new FieldSet(
 			new FormAction('addtogroup', _t('MemberTableField.ADD','Add'))
 		);
@@ -358,14 +368,16 @@ class MemberTableField extends ComplexTableField {
 				
 		// We use the group to get the members, as they already have the bulk of the look up functions
 		$start = isset($_REQUEST['ctf'][$this->Name()]['start']) ? $_REQUEST['ctf'][$this->Name()]['start'] : 0; 
-
-		$this->sourceItems = $this->group->Members(
-			$this->pageSize, // limit 
-			$start, // offset 
-			$this->sourceFilter,
-			$this->sourceSort
-		);
 		
+		$this->sourceItems = false;
+		if($this->group) {
+			$this->sourceItems = $this->group->Members( 
+				$this->pageSize, // limit 
+				$start, // offset 
+				$this->sourceFilter,
+				$this->sourceSort
+			);	
+		}
 		// Because we are not used $this->upagedSourceItems any more, and the DataObjectSet is usually the source
 		// that a large member set runs out of memory. we disable it here.
 		//$this->unpagedSourceItems = $this->group->Members('', '', $this->sourceFilter, $this->sourceSort);
@@ -395,11 +407,13 @@ class MemberTableField extends ComplexTableField {
  */
 class MemberTableField_Popup extends ComplexTableField_Popup {
 	
-	function __construct($controller, $name, $fields, $sourceClass, $readonly=false, $validator = null) {
-		parent::__construct($controller, $name, $fields, $sourceClass, $readonly, $validator);
-
+	function forTemplate() {
+		$ret = parent::forTemplate();
+		
 		Requirements::javascript(CMS_DIR . '/javascript/MemberTableField.js');
 		Requirements::javascript(CMS_DIR . '/javascript/MemberTableField_popup.js');
+		
+		return $ret;
 	}
 
 }

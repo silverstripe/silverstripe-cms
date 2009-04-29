@@ -11,7 +11,8 @@ class PageComment extends DataObject {
 		"Comment" => "Text",
 		"IsSpam" => "Boolean",
 		"NeedsModeration" => "Boolean",
-		"CommenterURL" => "Varchar(255)"	
+		"CommenterURL" => "Varchar(255)",
+		"SessionID" => "Varchar(255)"	
 	);
 
 	static $has_one = array(
@@ -116,8 +117,13 @@ class PageComment extends DataObject {
 		return self::$bbcode;
 	}
 	
-	function fieldLabels() {
-		$labels = parent::fieldLabels();
+	/**
+	 *
+	 * @param boolean $includerelations a boolean value to indicate if the labels returned include relation fields
+	 * 
+	 */
+	function fieldLabels($includerelations = true) {
+		$labels = parent::fieldLabels($includerelations);
 		$labels['Name'] = _t('PageComment.Name', 'Author Name');
 		$labels['Comment'] = _t('PageComment.Comment', 'Comment');
 		$labels['IsSpam'] = _t('PageComment.IsSpam', 'Spam?');
@@ -185,6 +191,8 @@ class PageComment_Controller extends Controller {
 			$comment->NeedsModeration = false;
 			$comment->write();
 			
+			// @todo Report to spamprotecter this is true
+			
 			if(Director::is_ajax()) {
 				echo $comment->renderWith('PageCommentInterface_singlecomment');
 			} else {
@@ -194,68 +202,80 @@ class PageComment_Controller extends Controller {
 	}
 	
 	function reportspam() {
-		if(SSAkismet::isEnabled()) {
+		$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
+		
+		if($comment) {
+			// check they have access
 			if(Permission::check('CMS_ACCESS_CMSMain')) {
-				$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
 				
-				if($comment) {
+				// if spam protection module exists
+				if(class_exists('SpamProtecterManager')) {
+					SpamProtecterManager::send_feedback($comment, 'spam');
+					$comment->setField('IsSpam', true);
+					$comment->write();
+				}
+				
+				// If Akismet is enabled
+				else if(SSAkismet::isEnabled()) {
 					try {
 						$akismet = new SSAkismet();
 						$akismet->setCommentAuthor($comment->getField('Name'));
 						$akismet->setCommentContent($comment->getField('Comment'));
-						
 						$akismet->submitSpam();
 					} catch (Exception $e) {
 						// Akismet didn't work, most likely the service is down.
 					}
-					
+
 					if(SSAkismet::getSaveSpam()) {
 						$comment->setField('IsSpam', true);
 						$comment->write();
-					} else {
-						$comment->delete();
 					}
 				}
 			}
-				
-			if(Director::is_ajax()) {
-				if(SSAkismet::getSaveSpam()) {
-					echo $comment->renderWith('PageCommentInterface_singlecomment');
-				} else {
-					echo '';
-				}
-			} else {
-				Director::redirectBack();
-			}
 		}
+		if(Director::is_ajax()) {
+			if(SSAkismet::getSaveSpam()) {
+				echo $comment->renderWith('PageCommentInterface_singlecomment');
+			} else {
+				echo '';
+			}
+		} else {
+			Director::redirectBack();
+		}	
 	}
-	
+	/**
+	 * Report a Spam Comment as valid comment (not spam)
+	 */
 	function reportham() {
-		if(SSAkismet::isEnabled()) {
+		$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
+		if($comment) {
 			if(Permission::check('CMS_ACCESS_CMSMain')) {
-				$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
+					
+				// if spam protection module exists
+				if(class_exists('SpamProtecterManager')) {
+					SpamProtecterManager::send_feedback($comment, 'ham');
+					$comment->setField('IsSpam', false);
+					$comment->write();
+				}
 				
-				if($comment) {
+				if(SSAkismet::isEnabled()) {
 					try {
 						$akismet = new SSAkismet();
 						$akismet->setCommentAuthor($comment->getField('Name'));
 						$akismet->setCommentContent($comment->getField('Comment'));
-						
 						$akismet->submitHam();
 					} catch (Exception $e) {
 						// Akismet didn't work, most likely the service is down.
 					}
-					
 					$comment->setField('IsSpam', false);
 					$comment->write();
 				}
 			}
-		
-			if(Director::is_ajax()) {
-				echo $comment->renderWith('PageCommentInterface_singlecomment');
-			} else {		
-				Director::redirectBack();
-			}
+		}
+		if(Director::is_ajax()) {
+			echo $comment->renderWith('PageCommentInterface_singlecomment');
+		} else {		
+			Director::redirectBack();
 		}
 	}
 	

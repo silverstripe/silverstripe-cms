@@ -132,7 +132,8 @@ ul.tree.multiselect li.selected span.a.unexpanded span.b {
 }
 
 
-ul.tree span.a a.notinmenu, ul.tree span.a a.notinmenu * {
+ul.tree span.a a.notinmenu, ul.tree span.a a.notinmenu *,
+#publication_key span.notinmenu {
 	color: #77A;
 }
 

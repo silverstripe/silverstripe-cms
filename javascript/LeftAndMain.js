@@ -175,14 +175,14 @@ window.onresize = function(init) {
 	}
 
 	if(typeof fitToParent == 'function') {
-		fitToParent('Form_EditForm', -20);
+		fitToParent('Form_EditForm', 4);
 		if($('Form_EditorToolbarImageForm') && $('Form_EditorToolbarImageForm').style.display == "block") {
 			fitToParent('Form_EditorToolbarImageForm', 5);
 			fitToParent($('Form_EditorToolbarImageForm').getElementsByTagName('fieldset')[0]);
 			if(navigator.appName == "Microsoft Internet Explorer") {
 				fitToParent('Image');
 			} else {
-				fitToParent('Image', 190);
+				fitToParent('Image', 210);
 			}
 		}
 		if($('Form_EditorToolbarFlashForm') && $('Form_EditorToolbarFlashForm').style.display == "block") {
@@ -587,7 +587,9 @@ ChangeTracker.prototype = {
 	},
 
 	field_changed: function() {
-		return this.originalSerialized != Form.Element.serialize(this);
+		// Something a value will go from 'undefined' to ''.  Ignore such changes
+		if((this.originalSerialized+'') == 'undefined') return Form.Element.serialize(this) ? true : false;
+		else return this.originalSerialized != Form.Element.serialize(this);
 	},
 
 	/**
@@ -603,8 +605,8 @@ ChangeTracker.prototype = {
 		    
 			if(!element.isChanged) element.isChanged = this.field_changed;
 			if(!this.changeDetection_fieldsToIgnore[element.name] && element.isChanged()) {
-				//if( window.location.href.match( /^https?:\/\/dev/ ) )
-				//	Debug.log('Changed:'+ element.id + '(' + this.originalSerialized +')->('+Form.Element.serialize(element)+')' );
+				//console.log('Changed:'+ element.id + '(' + this.originalSerialized +')->('+Form.Element.serialize(element)+')' );
+				//console.log(element)
 
 				return true;
 			}

@@ -81,8 +81,13 @@ li.action button {
 		background: #fff;
 	}
 
-	.ajaxActions input.disabled {
+	.ajaxActions input.disabled,
+	input.disabled {
 		color: #666;
+	}
+	
+	input.disabled:hover {
+		background-image: url(../images/textures/ToolBar.png);
 	}
 	
 	input.action.loading, input.action.loading:hover {

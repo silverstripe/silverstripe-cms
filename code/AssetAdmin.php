@@ -76,8 +76,6 @@ class AssetAdmin extends LeftAndMain {
 		Requirements::css(SAPPHIRE_DIR . "/css/ComplexTableField.css");
 
 		Requirements::javascript(CMS_DIR . "/javascript/AssetAdmin.js");
-		Requirements::javascript(CMS_DIR . "/javascript/AssetAdmin_left.js");
-		Requirements::javascript(CMS_DIR . "/javascript/AssetAdmin_right.js");
 
 		Requirements::javascript(CMS_DIR . "/javascript/CMSMain_upload.js");
 		Requirements::javascript(CMS_DIR . "/javascript/Upload.js");
@@ -235,6 +233,8 @@ JS
 		foreach($newFiles as $newFile) {
 			$fileIDs[] = $newFile;
 			$fileObj = DataObject::get_one('File', "\"File\".\"ID\"=$newFile");
+			// notify file object after uploading
+			if (method_exists($fileObj, 'onAfterUpload')) $fileObj->onAfterUpload();
 			$fileNames[] = $fileObj->Name;
 		}
 		
@@ -253,6 +253,18 @@ JS
 			parent.document.getElementById('sitetree').getTreeNodeByIdx( "{$folder->ID}" ).getElementsByTagName('a')[0].className += ' contents';
 			</script>
 HTML;
+	}
+
+	/**
+	 * Custom currentPage() method to handle opening the 'root' folder
+	 */
+	public function currentPage() {
+		$id = $this->currentPageID();
+		if($id && is_numeric($id)) {
+			return DataObject::get_by_id($this->stat('tree_class'), $id);
+		} else if($id == 'root') {
+			return singleton($this->stat('tree_class'));
+		}
 	}
 	
 	/**
@@ -485,24 +497,18 @@ JS;
 			if(!$parentObj || !$parentObj->ID) $parent = 0;
 		}
 		
-		$p = new Folder();
-		$p->ParentID = $parent;
-		$p->Title = $name;
-		$p->Name = $name;
-
 		// Get the folder to be created		
-		if(isset($parentObj->ID)) $filename = $parentObj->FullPath . $p->Name;
-		else $filename = ASSETS_PATH . '/' . $p->Name;
-		
+		if(isset($parentObj->ID)) $filename = $parentObj->FullPath . $name;
+		else $filename = ASSETS_PATH . '/' . $name;
+
 		// Ensure uniqueness		
 		$i = 2;
 		$baseFilename = $filename . '-';
 		while(file_exists($filename)) {
 			$filename = $baseFilename . $i;
-			$p->Name = $p->Title = basename($filename);
 			$i++;
 		}
-		
+
 		// Actually create
 		if(!file_exists(ASSETS_PATH)) {
 			mkdir(ASSETS_PATH);
@@ -510,31 +516,16 @@ JS;
 		mkdir($filename);
 		chmod($filename, Filesystem::$file_create_mask);
 
+		// Create object
+		$p = new Folder();
+		$p->ParentID = $parent;
+		$p->Name = $p->Title = basename($filename);		
 		$p->write();
-	
+
 		if(isset($_REQUEST['returnID'])) {
 			return $p->ID;
 		} else {
 			return $this->returnItemToUser($p);
-		}
-	}
-	
-	/**
-	 * Return the given tree item to the client.
-	 * If called by ajax, this will be some javascript commands.
-	 * Otherwise, it will redirect back.
-	 */
-	public function returnItemToUser($p) {
-		if(!empty($_REQUEST['ajax'])) {
-			$parentID = (int) $p->ParentID;
-			return <<<JS
-				tree = $('sitetree');
-				var newNode = tree.createTreeNode($p->ID, "$p->Title", "$p->class");
-				tree.getTreeNodeByIdx($parentID).appendTreeNode(newNode);
-				newNode.selectTreeNode();
-JS;
-		} else {
-			Director::redirectBack();
 		}
 	}
 	
@@ -573,13 +564,11 @@ JS;
 		foreach($ids as $id) {
 			if(is_numeric($id)) {
 				$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-				if(!$record) {
-					Debug::message( "Record appears to be null" );
+				if($record) {
+					$script .= $this->deleteTreeNodeJS($record);
+					$record->delete();
+					$record->destroy();
 				}
-				$record->delete();
-				$record->destroy();
-
-				$script .= $this->deleteTreeNodeJS($record);
 			}
 		}
 		

@@ -182,6 +182,7 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(THIRDPARTY_DIR . '/hover.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/layout_helpers.js');
 		Requirements::add_i18n_javascript(SAPPHIRE_DIR . '/javascript/lang');
+		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang');
 		
 		Requirements::javascript(THIRDPARTY_DIR . '/scriptaculous/effects.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/scriptaculous/dragdrop.js');
@@ -496,7 +497,7 @@ class LeftAndMain extends Controller {
 	public function returnItemToUser($p) {
 		if(Director::is_ajax()) {
 			// Prepare the object for insertion.
-			$parentID = (int)$p->ParentID;
+			$parentID = (int) $p->ParentID;
 			$id = $p->ID ? $p->ID : "new-$p->class-$p->ParentID";
 			$treeTitle = Convert::raw2js($p->TreeTitle());
 			$hasChildren = (is_numeric($id) && $p->AllChildren() && $p->AllChildren()->Count()) ? ' unexpanded' : '';
@@ -506,7 +507,9 @@ class LeftAndMain extends Controller {
 				var tree = $('sitetree');
 				var newNode = tree.createTreeNode("$id", "$treeTitle", "{$p->class}{$hasChildren}");
 				node = tree.getTreeNodeByIdx($parentID);
-				if(!node){	node = tree.getTreeNodeByIdx(0); }
+				if(!node) {
+					node = tree.getTreeNodeByIdx(0);
+				}
 				node.open();
 				node.appendTreeNode(newNode);
 				newNode.selectTreeNode();
@@ -515,11 +518,9 @@ JS;
 
 			return FormResponse::respond();
 		} else {
-			Director::redirect("admin/show/" . $p->ID);
+			Director::redirect('admin/' . self::$url_segment . '/show/' . $p->ID);
 		}
-
 	}
-
 
 	/**
 	 * Save and Publish page handler
@@ -844,7 +845,7 @@ JS;
 	}
 
 	public function EditForm() {
-		if(isset($_REQUEST['ID'])) {
+		if(isset($_REQUEST['ID']) && is_numeric($_REQUEST['ID'])) {
 			$record = DataObject::get_by_id($this->stat('tree_class'), $_REQUEST['ID']);
 		} else {
 			$record = $this->CurrentPage();

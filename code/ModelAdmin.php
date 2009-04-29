@@ -128,8 +128,8 @@ abstract class ModelAdmin extends LeftAndMain {
 		
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/livequery/jquery.livequery.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.core.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.tabs.js');
+		//Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.core.js');
+		//Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.tabs.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/form/jquery.form.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/effen/jquery.fn.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery_improvements.js');
@@ -332,7 +332,7 @@ class ModelAdmin_CollectionController extends Controller {
 		$form = new Form($this, "SearchForm",
 			$fields,
 			new FieldSet(
-				new FormAction('search', _t('MemberTableField.SEARCH')),
+				new FormAction('search', _t('MemberTableField.SEARCH', 'Search')),
 				$clearAction = new ResetFormAction('clearsearch', _t('ModelAdmin.CLEAR_SEARCH','Clear Search'))
 			),
 			$validator

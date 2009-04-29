@@ -71,6 +71,9 @@ Behaviour.register({
 			rightHTML = formContent;
 			rightHTML = rightHTML.replace(/href *= *"#/g, 'href="' + window.location.href.replace(/#.*$/,'') + '#');
 
+    		// Note: TinyMCE coupling
+			tinymce_removeAll();
+
 			// Prepare iframes for removal, otherwise we get loading bugs
 			var i, allIframes = this.getElementsByTagName('iframe');
 			if(allIframes) for(i=0;i<allIframes.length;i++) {
@@ -95,11 +98,6 @@ Behaviour.register({
 			try {
 				for(var i=0;i<tabs.length;i++) if(tabs[i].tagName) initTabstrip(tabs[i]);
 			} catch(er) { /*alert('b: '+ er.message + '\n' + er.line); */}
-
-    		// Note: TinyMCE coupling
-    		if((typeof tinymce != 'undefined') && tinymce.EditorManager) {
-    			tinymce.EditorManager.editors = {};
-    		}
 
 			// if(this.prepareForm) this.prepareForm();
 			Behaviour.apply($('Form_EditForm'));

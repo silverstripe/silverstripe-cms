@@ -78,7 +78,7 @@ CommentFilterButton.prototype = {
 	initialize: function() {
 		this.inputFields = new Array();
 		
-		var childNodes = this.parentNode.getElementsByTagName('input');
+		var childNodes = this.parentNode.parentNode.getElementsByTagName('input');
 		
 		for( var index = 0; index < childNodes.length; index++ ) {
 			if( childNodes[index].tagName ) {
@@ -108,7 +108,7 @@ CommentFilterButton.prototype = {
     	    var form = Event.findElement(e,"form");
     	    var fieldName = $('CommentFieldName').value;
     	    var fieldID = form.id + '_' + fieldName;
-	    
+
     		var updateURL = form.action + '/field/' + fieldName + '?ajax=1';
     		for( var index = 0; index < this.inputFields.length; index++ ) {
     			if( this.inputFields[index].tagName ) {
@@ -118,8 +118,8 @@ CommentFilterButton.prototype = {
     		updateURL += ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : '');
 
     		new Ajax.Updater( fieldID, updateURL, {
-    			onSuccess: function() {
-    			    Behaviour.apply(fieldID, true);
+    			onComplete: function() {
+    			    Behaviour.apply($(fieldID), true);
     			},
     			onFailure: function( response ) {
     				errorMessage('Could not filter results: ' + response.responseText );

@@ -23,8 +23,14 @@ class CommentTableField extends ComplexTableField {
 		if(!empty($_REQUEST['CommentSearch'])) {
 			$this->sourceFilter[] = "( \"Name\" LIKE '%$search%' OR \"Comment\" LIKE '%$search%')";
 		}
+	}
+	
+	function FieldHolder() {
+		$ret = parent::FieldHolder();
 		
 		Requirements::javascript(CMS_DIR . '/javascript/CommentTableField.js');
+		
+		return $ret;
 	}
 	
 	function Items() {
@@ -138,8 +144,10 @@ class CommentTableField extends ComplexTableField {
 	}
 
 	function SearchForm() {
+		$query = isset($_GET['CommentSearch']) ? $_GET['CommentSearch'] : null;
+		
 		$searchFields = new FieldGroup(
-			new TextField('CommentSearch', _t('CommentTableField.SEARCH', 'Search')),
+			new TextField('CommentSearch', _t('CommentTableField.SEARCH', 'Search'), $query),
 			new HiddenField("ctf[ID]",'',$this->mode),
 			new HiddenField('CommentFieldName','',$this->name)
 		);

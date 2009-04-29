@@ -475,7 +475,7 @@ appendLoader(function () {
 });
 
 Behaviour.register({
-    '#UnusedThumbnails button': {
+    '#Form_EditForm_delete_unused_thumbnails': {
         onclick : function(event) {
             Event.stop(event);
             var options = {

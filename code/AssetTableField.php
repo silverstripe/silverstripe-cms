@@ -16,10 +16,14 @@ class AssetTableField extends ComplexTableField {
         "delete",
         //"export",
     );
+
+	/**
+	 * Indicates whether a search is being executed on this object
+	 */
+	protected $searchingFor = null;
+
 	function __construct($controller, $name, $sourceClass, $fieldList, $detailFormFields, $sourceFilter = "", $sourceSort = "", $sourceJoin = "") {
 		parent::__construct($controller, $name, $sourceClass, $fieldList, $detailFormFields, $sourceFilter, $sourceSort, $sourceJoin);
-
-		Requirements::javascript(CMS_DIR . '/javascript/AssetTableField.js');
 		
 		$SNG_file = singleton('File');
 		
@@ -31,6 +35,7 @@ class AssetTableField extends ComplexTableField {
 				if(strpos($fieldName, '.') === false) $searchFilters[] = "\"$fieldName\" LIKE '%{$SQL_search}%'";
 			}
 			$this->sourceFilter = '(' . implode(' OR ', $searchFilters) . ')';
+			$this->searchingFor = $_REQUEST['FileSearch'];
 		}		
 		
 		$this->sourceSort = 'Title';
@@ -38,15 +43,36 @@ class AssetTableField extends ComplexTableField {
 	}
 	
 	function FieldHolder() {
+		$ret = parent::FieldHolder();
+		
+		Requirements::javascript(CMS_DIR . '/javascript/AssetTableField.js');
 		Requirements::javascript('cms/javascript/ImageEditor/Activator.js');
 
-		return parent::FieldHolder();
+		return $ret;
 	}
 	
 	function setFolder($folder) {
 		$this->folder = $folder;
 		$this->sourceFilter .= ($this->sourceFilter) ? " AND " : "";
-		$this->sourceFilter .= " \"ParentID\" = '" . $folder->ID . "' AND \"ClassName\" <> 'Folder'";
+
+		// If you are searching for files then show all those from subfolders
+		if($this->searchingFor) {
+			$folderIDs = $nextIDSet = array($folder->ID);
+			$folderClasses = "'" . implode("','", ClassInfo::subclassesFor("Folder")) . "'";
+			
+			while($nextIDSet) {
+				// TO DO: In 2.4 this should be refactored to use the new data mapper.
+				$nextIDSet = DB::query("SELECT ID FROM `File` WHERE ParentID IN (" 
+					. implode(", " , $nextIDSet) . ") AND ClassName IN ($folderClasses)")->column();
+				if($nextIDSet) $folderIDs = array_merge($folderIDs, $nextIDSet);
+			}
+			
+			$this->sourceFilter .= " ParentID IN (" . implode(", ", $folderIDs) . ") AND ClassName <> 'Folder'";
+
+		// Otherwise just show the direct contents
+		} else {
+			$this->sourceFilter .= " ParentID = '" . $folder->ID . "' AND ClassName <> 'Folder'";
+		}
 	}
 	
 	function Folder() {
@@ -140,7 +166,7 @@ class AssetTableField extends ComplexTableField {
 	 */
 	function SearchForm() {
 		$searchFields = new FieldGroup(
-			new TextField('FileSearch', _t('MemberTableField.SEARCH', 'Search')),
+			new TextField('FileSearch', _t('MemberTableField.SEARCH', 'Search'), $this->searchingFor),
 			new HiddenField("ctf[ID]", '', $this->ID),
 			new HiddenField('FileFieldName', '', $this->name)
 		);

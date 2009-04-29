@@ -219,7 +219,7 @@ class PageCommentInterface_Form extends Form {
 		Cookie::set("PageCommentInterface_Name", $data['Name']);
 		Cookie::set("PageCommentInterface_CommenterURL", $data['CommenterURL']);
 		Cookie::set("PageCommentInterface_Comment", $data['Comment']);
-		
+
 		if(SSAkismet::isEnabled()) {
 			try {
 				$akismet = new SSAkismet();
@@ -249,10 +249,10 @@ class PageCommentInterface_Form extends Form {
 		//check if spam question was right.
 		if(MathSpamProtection::isEnabled()){
 			if(!MathSpamProtection::correctAnswer($data['Math'])){
-						if(!Director::is_ajax()) {				
-							Director::redirectBack();
-						}
-						return "spamprotectionfailed"; //used by javascript for checking if the spam question was wrong
+				if(!Director::is_ajax()) {				
+					Director::redirectBack();
+				}
+				return "spamprotectionfailed"; //used by javascript for checking if the spam question was wrong
 			}
 		}
 		
@@ -267,9 +267,16 @@ class PageCommentInterface_Form extends Form {
 
 		$comment = Object::create('PageComment');
 		$this->saveInto($comment);
+		
+		// Store the Session ID if needed for Spamprotection
+		if($session = Session::get('mollom_user_session_id')) {
+			$comment->SessionID = $session;
+			Session::clear('mollom_user_session_id');	
+		}
 		$comment->IsSpam = false;
 		$comment->NeedsModeration = PageComment::moderationEnabled();
 		$comment->write();
+		
 		Cookie::set("PageCommentInterface_Comment", '');
 		if(Director::is_ajax()) {
 			if($comment->NeedsModeration){
@@ -278,7 +285,16 @@ class PageCommentInterface_Form extends Form {
 				echo $comment->renderWith('PageCommentInterface_singlecomment');
 			}
 		} else {		
-			Director::redirectBack();
+			// since it is not ajax redirect user down to their comment since it has been posted
+			// get the pages url off the comments parent ID.
+			if($comment->ParentID) {
+				$page = DataObject::get_by_id("Page", $comment->ParentID);
+				if($page) {
+					// Redirect to the actual post on the page.
+					return Director::redirect(Director::baseURL(). $page->URLSegment.'#PageComment_'.$comment->ID);
+				}
+			}
+			return Director::redirectBack(); // worst case, just go back to the page
 		}
 	}
 }

@@ -71,11 +71,13 @@ class CommentAdmin extends LeftAndMain {
 			"Name" => _t('CommentAdmin.AUTHOR', 'Author'),
 			"Comment" => _t('CommentAdmin.COMMENT', 'Comment'),
 			"Parent.Title" => _t('CommentAdmin.PAGE', 'Page'),
+			"CommenterURL" => _t('CommentAdmin.COMMENTERURL', 'URL'),
 			"Created" => _t('CommentAdmin.DATEPOSTED', 'Date Posted')
 		);	
 		
 		$popupFields = new FieldSet(
 			new TextField('Name', _t('CommentAdmin.NAME', 'Name')),
+			new TextField('CommenterURL', _t('CommentAdmin.COMMENTERURL', 'URL')),
 			new TextareaField('Comment', _t('CommentAdmin.COMMENT', 'Comment'))
 		);
 		

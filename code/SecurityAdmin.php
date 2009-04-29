@@ -42,16 +42,20 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		Requirements::css(THIRDPARTY_DIR . "/greybox/greybox.css");
 		Requirements::css(SAPPHIRE_DIR . "/css/ComplexTableField.css");
 
-		Requirements::javascript(CMS_DIR . "/javascript/SecurityAdmin.js");
-		Requirements::javascript(CMS_DIR . "/javascript/SecurityAdmin_left.js");
-		Requirements::javascript(CMS_DIR . "/javascript/SecurityAdmin_right.js");
-
+		Requirements::javascript(CMS_DIR . '/javascript/SecurityAdmin_left.js');
+		Requirements::javascript(CMS_DIR . '/javascript/SecurityAdmin_right.js');
+		
 		Requirements::javascript(THIRDPARTY_DIR . "/greybox/AmiJS.js");
 		Requirements::javascript(THIRDPARTY_DIR . "/greybox/greybox.js");
 	}
 
 	public function getEditForm($id) {
-		$record = DataObject::get_by_id($this->stat('tree_class'), $id);
+		$record = null;
+		
+		if($id && $id != 'root') {
+			$record = DataObject::get_by_id($this->stat('tree_class'), $id);
+		}
+		
 		if(!$record) return false;
 		
 		$fields = $record->getCMSFields();
@@ -197,9 +201,11 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		$memberID = $this->urlParams['OtherID'];
 		if(is_numeric($groupID) && is_numeric($memberID)) {
 			$member = DataObject::get_by_id('Member', (int) $memberID);
+
 			if(!$member->canDelete()) return Security::permissionFailure($this);
-			
+
 			$member->Groups()->remove((int)$groupID);
+
 			FormResponse::add("reloadMemberTableField();");
 		} else {
 			user_error("SecurityAdmin::removememberfromgroup: Bad parameters: Group=$groupID, Member=$memberID", E_USER_ERROR);
@@ -209,24 +215,32 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	}
 
 	/**
-	 * Return the entire site tree as a nested set of ULs
+	 * Return the entire site tree as a nested set of ULs.
+	 * @return string Unordered list <UL> HTML
 	 */
 	public function SiteTreeAsUL() {
 		$obj = singleton($this->stat('tree_class'));
+		$obj->markPartialTree();
+		
+		if($p = $this->currentPage()) $obj->markToExpose($p);
 
 		// getChildrenAsUL is a flexible and complex way of traversing the tree
-		$siteTreeItem = $obj->getChildrenAsUL("",
-			' "<li id=\"record-$child->ID\" class=\"$child->class " . ($child->Locked ? " nodelete" : "") . ' .
-			' ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
-			' "<a href=\"admin/security/show/$child->ID\" >" . $child->TreeTitle() . "</a>" ',$this);
+		$siteTreeList = $obj->getChildrenAsUL(
+			'',
+			'"<li id=\"record-$child->ID\" class=\"$child->class " . ($child->Locked ? " nodelete" : "") . $child->markingClasses() . ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
+			'"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" >" . $child->TreeTitle() . "</a>" ',
+			$this,
+			true
+		);	
 
-		$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\">" .
-						"<li id=\"record-0\" class=\"Root\">" .
-							"<a href=\"admin/security/show/0\" ><strong>"._t('SecurityAdmin.SGROUPS',"Security groups")."</strong></a>"
-							. $siteTreeItem .
-						"</li>" .
-					"</ul>";
-
+		// Wrap the root if needs be
+		$rootLink = $this->Link() . 'show/root';
+		$rootTitle = _t('SecurityAdmin.SGROUPS', 'Security Groups');
+		if(!isset($rootID)) {
+			$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-root\" class=\"Root\"><a href=\"$rootLink\"><strong>{$rootTitle}</strong></a>"
+			. $siteTreeList . "</li></ul>";
+		}
+							
 		return $siteTree;
 	}
 
