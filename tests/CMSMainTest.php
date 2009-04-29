@@ -3,28 +3,31 @@
  * @package cms
  * @subpackage tests
  */
-class CMSMainTest extends SapphireTest {
+class CMSMainTest extends FunctionalTest {
+
 	static $fixture_file = 'cms/tests/CMSMainTest.yml';
+	
+	protected $autoFollowRedirection = false;
 	
 	/**
 	 * @todo Test the results of a publication better
 	 */
 	function testPublish() {
-		$session = new Session(array(
-			'loggedInAs' => $this->idFromFixture('Member', 'admin')
-		));
+		$this->session()->inst_set('loggedInAs', $this->idFromFixture('Member', 'admin'));
 		
-		$response = Director::test("admin/cms/publishall", array('confirm' => 1), $session);
+		$response = $this->post('admin/cms/publishall', array('confirm' => 1));
+		
 		$this->assertContains(
 			sprintf(_t('CMSMain.PUBPAGES',"Done: Published %d pages"), 5), 
 			$response->getBody()
 		);
 
-		$response = Director::test("admin/cms/publishitems", array('csvIDs' => '1,2', 'ajax' => 1), $session);
+		$response = $this->post('admin/cms/publishitems', array('csvIDs' => '1,2', 'ajax' => 1));
+		
 		$this->assertContains('setNodeTitle(1, \'Page 1\');', $response->getBody());
 		$this->assertContains('setNodeTitle(2, \'Page 2\');', $response->getBody());
 		
-		
+		$this->session()->clear('loggedInAs');
 		
 		//$this->assertRegexp('/Done: Published 4 pages/', $response->getBody())
 			
@@ -60,7 +63,7 @@ class CMSMainTest extends SapphireTest {
 			$this->assertEquals("Test $class page", DB::query("SELECT \"Title\" FROM \"SiteTree_Live\" WHERE \"ID\" = $page->ID")->value());
 			
 			// Check that you can visit the page
-			Director::test($page->Link());
+			$this->get($page->URLSegment);
 		}
 	}
 
