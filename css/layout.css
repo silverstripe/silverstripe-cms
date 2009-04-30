@@ -518,7 +518,7 @@ iframe {
 	top: 45px;
 	padding: 0;
 	margin-right: 10px;
-	overflow:hidden;
+	overflow: hidden;
 	font-size: 12px;
 }
 
@@ -544,6 +544,7 @@ iframe {
 	overflow-y: auto;	
 	margin-right: 0 !important;
 }
+
 
 #Caption {
 	margin: 0;
@@ -605,9 +606,9 @@ iframe {
 	float:left;
 	margin-left:0px;
 	color: #666;
-	line-height: 18px;
+	line-height: 1.2;
 	font-size: 11px;
-	width:120px;
+	width: 190px;
 }
 #Form_EditorToolbarImageForm fieldset div.middleColumn,
 #Form_EditorToolbarFlashForm fieldset div.middleColumn,
