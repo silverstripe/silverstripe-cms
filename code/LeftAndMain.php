@@ -456,9 +456,18 @@ class LeftAndMain extends Controller {
 		}
 	}
 
-	function getSiteTreeFor($className, $rootID = null) {
+	/**
+	 * Get a site tree displaying the nodes under the given objects
+	 * @param $className The class of the root object
+	 * @param $rootID The ID of the root object.  If this is null then a complete tree will be
+	 *                shown
+	 * @param $childrenMethod The method to call to get the children of the tree.  For example,
+	 *                        Children, AllChildrenIncludingDeleted, or AllHistoricalChildren
+	 */
+	function getSiteTreeFor($className, $rootID = null, 
+			$childrenMethod = "AllChildrenIncludingDeleted") {
 		$obj = $rootID ? $this->getRecord($rootID) : singleton($className);
-		$obj->markPartialTree(30, $this);
+		$obj->markPartialTree(30, $this, $childrenMethod);
 		if($p = $this->currentPage()) $obj->markToExpose($p);
 
 		// getChildrenAsUL is a flexible and complex way of traversing the tree
@@ -468,7 +477,7 @@ class LeftAndMain extends Controller {
 					($child->TreeTitle()) . 
 					"</a>"
 '
-					,$this, true);
+					,$this, true, $childrenMethod);
 
 		// Wrap the root if needs be.
 
@@ -486,9 +495,19 @@ class LeftAndMain extends Controller {
 		return $siteTree;
 	}
 
+	/**
+	 * Get a subtree underneath the request param 'ID'.
+	 * If ID = 0, then get the whole tree.
+	 */
 	public function getsubtree() {
-		$results = $this->getSiteTreeFor($this->stat('tree_class'), $_REQUEST['ID']);
-		return substr(trim($results), 4,-5);
+		// Get the tree
+		$tree = $this->getSiteTreeFor($this->stat('tree_class'), $_REQUEST['ID']);
+
+		// Trim off the outer tag
+		$tree = ereg_replace('^[ \t\r\n]*<ul[^>]*>','', $tree);
+		$tree = ereg_replace('</ul[^>]*>[ \t\r\n]*$','', $tree);
+		
+		return $tree;
 	}
 
 	/**

@@ -180,6 +180,12 @@ ul.tree span.a a del, ul.tree span.a a.notinmenu del,
 #publication_key del {
 	color: red;
 }
+/* Deleted on stage & live (when show deleted pages is active) */
+ul.tree span.a a del, ul.tree span.a a.notinmenu del.deletedOnLive, 
+#publication_key del.deletedOnLive {
+	color: #700;
+}
+
 ul.tree span.a span.modified,
 #publication_key span.modified {
 	color: green;
@@ -400,14 +406,14 @@ ul.tree span.untranslated a:visited {
 	font-style: italic;	
 }
 
-#SortItems {
+.checkboxAboveTree {
 	border-top: 1px solid #cccccc;
 	padding: 5px 0 0 0;
 	overflow: hidden;
 	clear: left;
 	width: 100%;
 }
-	#SortItems input, #ShowChanged input {
+	.checkboxAboveTree input, #ShowChanged input {
 		float: left;
 		margin: 0 3px 0 0;
 	}

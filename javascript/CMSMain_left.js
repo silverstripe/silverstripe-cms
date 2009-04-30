@@ -119,6 +119,43 @@ searchclass.prototype = {
 }
 
 /**
+ * Show deleted pages checkbox
+ */
+ShowDeletedPagesAction = Class.create();
+ShowDeletedPagesAction.applyTo('#showdeletedpages');
+ShowDeletedPagesAction.prototype = {
+	initialize: function () {
+	},
+	
+	onclick : function() {
+		if(this.checked) { 
+			SiteTreeHandlers.loadTree_url = SiteTreeHandlers.controller_url + '/getshowdeletedsubtree';
+		} else {
+			SiteTreeHandlers.loadTree_url = SiteTreeHandlers.controller_url + '/getsubtree';
+		}
+
+		// We can't update the tree while it's draggable; it gets b0rked.
+		var __makeDraggableAfterUpdate = false;
+		if($('sitetree').isDraggable) {
+			$('sitetree').stopBeingDraggable();
+			__makeDraggableAfterUpdate = true;
+		}
+		
+		var request = new Ajax.Request(SiteTreeHandlers.loadTree_url + '?ID=0&ajax=1', {
+			onSuccess: function(response) {
+				$('sitetree').innerHTML = response.responseText;
+				SiteTree.applyTo($('sitetree'));
+				if(__makeDraggableAfterUpdate) $('sitetree').makeDraggable();
+			},
+			onFailure: function(response) {
+				errorMessage('Could not update tree', response);
+			}
+		});
+
+	}
+}
+
+/**
  * Add Criteria Drop-down onchange action which allows more criteria to be shown
  */
 SiteTreeFilterAddCriteria = Class.create();

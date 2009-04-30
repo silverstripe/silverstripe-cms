@@ -23,7 +23,7 @@
 			<form class="actionparams" id="sortitems_options" style="display: none">
 				<p id="sortitems_message" style="margin: 0"><% _t('TOREORG','To reorganise your folders, drag them around as desired.') %></p>
 			</form>
-			<div id="SortItems">
+			<div class="checkboxAboveTree">
 					<input type="checkbox" id="sortitems" /> <label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
 			</div>
 		
