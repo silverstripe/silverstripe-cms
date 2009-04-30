@@ -61,9 +61,15 @@
 					$PublishItemsForm
 					
 				</div>
-				<div id="SortItems">
-						<input type="checkbox" id="sortitems" /> <label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
+				<div class="checkboxAboveTree">
+					<div>
+					<input type="checkbox" id="sortitems" /> <label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
+					</div>
+					<div>
+					<input type="checkbox" id="showdeletedpages" /> <label for="showdeletedpages"><% _t('SHOW_DELETED_PAGES','Show deleted pages', PR_HIGH) %></label>
+					</div>
 				</div>
+					
 				<% if IsTranslatableEnabled %>
 				<div id="LangSelector_holder">
 					Language: $LangSelector

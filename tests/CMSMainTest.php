@@ -4,7 +4,6 @@
  * @subpackage tests
  */
 class CMSMainTest extends FunctionalTest {
-
 	static $fixture_file = 'cms/tests/CMSMainTest.yml';
 	
 	protected $autoFollowRedirection = false;
@@ -88,4 +87,48 @@ class CMSMainTest extends FunctionalTest {
 			$this->assertTrue($page->getCMSFields(null) instanceof FieldSet);
 		}
 	}	
+
+	/**
+	 * Test that a draft-deleted page can still be opened in the CMS
+	 */
+	function testDraftDeletedPageCanBeOpenedInCMS() {
+		// Set up a page that is delete from live
+		$page = $this->objFromFixture('Page','page1');
+		$pageID = $page->ID;
+		$page->doPublish();
+		$page->delete();
+		
+		$this->session()->inst_set('loggedInAs', $this->idFromFixture('Member', 'admin'));
+		$response = $this->get('admin/getitem?ID=' . $pageID . '&ajax=1');
+
+		// Check that the 'delete from live' button exists as a simple way of checking that the correct page is returned.
+		$this->assertRegExp('/<input[^>]+type="submit"[^>]+name="action_deletefromlive"/i', $response->getBody());
+	}
+	
+	/**
+	 * Test CMSMain::getRecord()
+	 */
+	function testGetRecord() {
+		// Set up a page that is delete from live
+		$page1 = $this->objFromFixture('Page','page1');
+		$page1ID = $page1->ID;
+		$page1->doPublish();
+		$page1->delete();
+		
+		$cmsMain = new CMSMain();
+
+		// Bad calls
+		$this->assertNull($cmsMain->getRecord('0'));
+		$this->assertNull($cmsMain->getRecord('asdf'));
+		
+		// Pages that are on draft and aren't on draft should both work
+		$this->assertType('Page', $cmsMain->getRecord($page1ID));
+		$this->assertType('Page', $cmsMain->getRecord($this->idFromFixture('Page','page2')));
+
+		// This functionality isn't actually used any more.
+		$newPage = $cmsMain->getRecord('new-Page-5');
+		$this->assertType('Page', $newPage);
+		$this->assertEquals('5', $newPage->ParentID);
+
+	}
 }

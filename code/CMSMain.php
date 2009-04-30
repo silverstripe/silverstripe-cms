@@ -46,7 +46,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'publishall',
 		'publishitems',
 		'PublishItemsForm',
-		'restorepage',
+		'restore',
 		'revert',
 		'rollback',
 		'sidereport',
@@ -56,6 +56,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'EditForm',
 		'AddPageOptionsForm',
 		'SiteTreeAsUL',
+		'getshowdeletedsubtree'
 	);
 	
 	/**
@@ -169,6 +170,21 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Versioned::prepopulate_versionnumber_cache("SiteTree", "Live");
 
 		return $this->getSiteTreeFor("SiteTree");
+	}
+
+	/**
+	 * Get a subtree underneath the request param 'ID', of the tree that includes deleted pages.
+	 * If ID = 0, then get the whole tree.
+	 */
+	public function getshowdeletedsubtree() {
+		// Get the tree
+		$tree = $this->getSiteTreeFor($this->stat('tree_class'), $_REQUEST['ID'], "AllHistoricalChildren");
+
+		// Trim off the outer tag
+		$tree = ereg_replace('^[ \t\r\n]*<ul[^>]*>','', $tree);
+		$tree = ereg_replace('</ul[^>]*>[ \t\r\n]*$','', $tree);
+
+		return $tree;
 	}
 
 	/**
@@ -372,6 +388,7 @@ JS;
 		if($id && is_numeric($id)) {
 			$record = DataObject::get_one( $treeClass, "\"$treeClass\".\"ID\" = $id");
 
+			// Then, try getting a record from the live site
 			if(!$record) {
 				// $record = Versioned::get_one_by_stage($treeClass, "Live", "\"$treeClass\".\"ID\" = $id");
 				Versioned::reading_stage('Live');
@@ -380,6 +397,17 @@ JS;
 				$record = DataObject::get_one( $treeClass, "\"$treeClass\".\"ID\" = $id");
 				if($record) Versioned::reading_stage(null);
 			}
+			
+			// Then, try getting a deleted record
+			if(!$record) {
+				$record = Versioned::get_latest_version($treeClass, $id);
+			}
+
+			// Don't open a page from a different locale
+			if($record && Translatable::is_enabled() && $record->Locale && $record->Locale != Translatable::current_locale()) {
+				$record = null;
+			}
+
 			return $record;
 
 		} else if(substr($id,0,3) == 'new') {
@@ -1255,25 +1283,25 @@ JS;
 	}
 	
 	/**
-	 * Restore a previously deleted page.
-	 * Internal action which shouldn't be executed through URL-handlers.
+	 * Restore a completely deleted page from the SiteTree_versions table.
 	 */
-	function restorepage() {
-		if($id = $this->urlParams['ID']) {
+	function restore() {
+		if(($id = $_REQUEST['ID']) && is_numeric($id)) {
 			$restoredPage = Versioned::get_latest_version("SiteTree", $id);
-			$restoredPage->ID = $restoredPage->RecordID;
+			if($restoredPage) {
+				$restoredPage = $restoredPage->doRestoreToStage();
 
-			// if no record can be found on draft stage (meaning it has been "deleted from draft" before),
-			// create an empty record
-			if(!DB::query("SELECT \"ID\" FROM \"SiteTree\" WHERE \"ID\" = $restoredPage->ID")->value()) {
-				DB::query("INSERT INTO \"SiteTree\" (\"ID\") VALUES ($restoredPage->ID)");
+				FormResponse::get_page($id);
+				$title = Convert::raw2js($restoredPage->TreeTitle());
+				FormResponse::add("$('sitetree').setNodeTitle($id, '$title');");
+				FormResponse::status_message(sprintf(_t('CMSMain.RESTORED',"Restored '%s' successfully",PR_MEDIUM,'Param %s is a title'),$title),'good');
+				return FormResponse::respond();
+
+			} else {
+				return new HTTPResponse("SiteTree #$id not found", 400);
 			}
-			
-			$restoredPage->forceChange();
-			$restoredPage->writeWithoutVersion();
-			
-		}	else {
-			echo _t('CMSMain.VISITRESTORE',"visit restorepage/(ID)",PR_LOW,'restorepage/(ID) should not be translated (is an URL)');
+		} else {
+			return new HTTPResponse("Please pass an ID in the form content", 400);
 		}
 	}
 

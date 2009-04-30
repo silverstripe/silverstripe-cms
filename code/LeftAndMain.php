@@ -451,13 +451,24 @@ class LeftAndMain extends Controller {
 	}
 
 	public function getRecord($id, $className = null) {
-		if(!$className) $className = $this->stat('tree_class');
-		return DataObject::get_by_id($className, $rootID);
+		if($id && is_numeric($id)) {
+			if(!$className) $className = $this->stat('tree_class');
+			return DataObject::get_by_id($className, $id);
+		}
 	}
 
-	function getSiteTreeFor($className, $rootID = null) {
+	/**
+	 * Get a site tree displaying the nodes under the given objects
+	 * @param $className The class of the root object
+	 * @param $rootID The ID of the root object.  If this is null then a complete tree will be
+	 *                shown
+	 * @param $childrenMethod The method to call to get the children of the tree.  For example,
+	 *                        Children, AllChildrenIncludingDeleted, or AllHistoricalChildren
+	 */
+	function getSiteTreeFor($className, $rootID = null, 
+			$childrenMethod = "AllChildrenIncludingDeleted") {
 		$obj = $rootID ? $this->getRecord($rootID) : singleton($className);
-		$obj->markPartialTree(30, $this);
+		$obj->markPartialTree(30, $this, $childrenMethod);
 		if($p = $this->currentPage()) $obj->markToExpose($p);
 
 		// getChildrenAsUL is a flexible and complex way of traversing the tree
@@ -467,7 +478,7 @@ class LeftAndMain extends Controller {
 					($child->TreeTitle()) . 
 					"</a>"
 '
-					,$this, true);
+					,$this, true, $childrenMethod);
 
 		// Wrap the root if needs be.
 
@@ -485,9 +496,19 @@ class LeftAndMain extends Controller {
 		return $siteTree;
 	}
 
+	/**
+	 * Get a subtree underneath the request param 'ID'.
+	 * If ID = 0, then get the whole tree.
+	 */
 	public function getsubtree() {
-		$results = $this->getSiteTreeFor($this->stat('tree_class'), $_REQUEST['ID']);
-		return substr(trim($results), 4,-5);
+		// Get the tree
+		$tree = $this->getSiteTreeFor($this->stat('tree_class'), $_REQUEST['ID']);
+
+		// Trim off the outer tag
+		$tree = ereg_replace('^[ \t\r\n]*<ul[^>]*>','', $tree);
+		$tree = ereg_replace('</ul[^>]*>[ \t\r\n]*$','', $tree);
+		
+		return $tree;
 	}
 
 	/**
@@ -845,12 +866,7 @@ JS;
 	}
 
 	public function EditForm() {
-		if(isset($_REQUEST['ID']) && is_numeric($_REQUEST['ID'])) {
-			$record = DataObject::get_by_id($this->stat('tree_class'), $_REQUEST['ID']);
-		} else {
-			$record = $this->CurrentPage();
-		}
-		
+		$record = $this->currentPage();
 		if(!$record) return false;
 		
 		if($record && !$record->canView()) return Security::permissionFailure($this);
@@ -900,15 +916,7 @@ JS;
 	}
 
 	public function currentPage() {
-		$id = $this->currentPageID();
-		if($id && is_numeric($id)) {
-			$page = DataObject::get_by_id($this->stat('tree_class'), $id);
-			if($page && Translatable::is_enabled() && $page->Locale && $page->Locale != Translatable::current_locale()) {
-				return false;
-			} else {
-				return $page;
-			}
-		}
+		return $this->getRecord($this->currentPageID());
 	}
 
 	public function isCurrentPage(DataObject $page) {
