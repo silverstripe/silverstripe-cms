@@ -642,42 +642,6 @@ iframe {
 	border: 2px solid #222;
 }
 
-/* IMAGE ALIGNMENT in the right panel */
-#ImageAlignmentStyles_Wrapper {
-	padding-left: 3px;
-}
-#ImageAligmentStyle {
-	clear: both;
-	padding-top: 8px;
-}
-	
-	#ImageAligmentStyle label{
-		display: block;
-		color: #666666;
-		font-size: 11px;
-		line-height: 18px;
-	}
-	#ImageAligmentStyle a {
-		float: left;
-		display: block;
-		width: 38px;
-		height: 47px;
-		text-indent: -9999em;
-		margin-top: 5px;
-		margin-right: 8px;
-		outline: none;
-	}
-		#ImageAligmentStyle a:hover {
-			background-position: 0px -47px;
-		}
-		#ImageAligmentStyle a.selected {
-			background-position: 0px -94px;
-		}
-	a#ImageAligmentStyle_left { background-image: url(../images/imagealignment_left.gif); }
-	a#ImageAligmentStyle_leftAlone { background-image: url(../images/imagealignment_leftalone.gif); }
-	a#ImageAligmentStyle_right { background-image: url(../images/imagealignment_right.gif); }
-	a#ImageAligmentStyle_center { background-image: url(../images/imagealignment_center.gif); }
-	
  /* going to use this */
 #BlankImage {
 	text-indent: -9000px;
