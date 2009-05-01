@@ -593,6 +593,7 @@ JS;
 		// HACK: This should be turned into something more general
 		$originalClass = $record->ClassName;
 		$originalStatus = $record->Status;
+		$originalParentID = $record->ParentID;
 
 		$record->HasBrokenLink = 0;
 		$record->HasBrokenFile = 0;
@@ -658,6 +659,10 @@ JS;
 			// After reloading action
 			if($originalStatus != $record->Status) {
 				$message .= sprintf(_t('LeftAndMain.STATUSTO',"  Status changed to '%s'"),$record->Status);
+			}
+			
+			if($originalParentID != $record->ParentID) {
+				FormResponse::add("if(\$('sitetree').setNodeParentID) \$('sitetree').setNodeParentID($record->ID, $record->ParentID);");
 			}
 
 			$record->write();

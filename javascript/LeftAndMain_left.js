@@ -102,6 +102,15 @@ TreeAPI.prototype = {
 		});
 	},
 	
+	/**
+	 * Set the parent ID of a tree node
+	 */
+	setNodeParentID: function (idx, parentID) {
+		var treeNode = this.getTreeNodeByIdx(idx);
+		var parentNode = this.getTreeNodeByIdx(parentID);
+		parentNode.appendTreeNode(treeNode);
+	},
+	
 	setCurrentByIdx : function(idx) {
 		if(this.selected) {
 			var i,item;

@@ -85,14 +85,34 @@ Behaviour.register({
 		onchange: function() {
 			alert('The page type will be updated after the page is saved');
 		}
-	}
-});
+	},
 
-Behaviour.register({
 	'#Form_EditForm' : {	
 		changeDetection_fieldsToIgnore : {
 			'restricted-chars[Form_EditForm_URLSegment]' : true,
 			'Sort' : true	
 		}
-	}	
+	},
+
+	// ParentType / ParentID field combination
+	'#Form_EditForm_ParentType' : {
+		initialize : function() {
+			$('Form_EditForm_ParentType_root').onclick = this.rootClick.bind(this);
+			$('Form_EditForm_ParentType_subpage').onclick = this.showHide;
+			this.showHide();
+		},
+		
+		rootClick : function() {
+			$('Form_EditForm_ParentID').setValue(0);
+			this.showHide();
+		},
+		
+		showHide : function() {
+			if($('Form_EditForm_ParentType_root').checked) {
+				Element.hide('ParentID');
+			} else {
+				Element.show('ParentID');
+			}
+		}
+	}
 });
