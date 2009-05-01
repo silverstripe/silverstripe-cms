@@ -16,17 +16,6 @@ TinyMCEImageEnhancement.prototype = {
         Event.observe($('FolderOk'),'click',this.onFolderOk.bind(this));
         Event.observe($('FolderCancel'),'click',this.onFolderCancel.bind(this)); 
         Event.observe($('UploadFiles'),'click',this.onUpload.bind(this));
-
-		jQuery("#ImageAligmentStyle a").click(function() {
-			id = jQuery(this).attr('id');
-			jQuery(this).siblings().removeClass('selected');
-			jQuery(this).addClass('selected');
-			// get alignment from id, e.g. ImageAlignment_center -> center
-			aligment = id.split('_')[1];
-			$('Form_EditorToolbarImageForm_CSSClass').value = aligment;
-			
-			return false;
-		});
     },   
     
     /**
