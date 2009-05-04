@@ -153,6 +153,9 @@ class PageCommentInterface extends RequestHandler {
 			new FormAction("postcomment", _t('PageCommentInterface.POST', 'Post'))
 		));
 		
+		// Set it so the user gets redirected back down to the form upon form fail
+		$form->setRedirectToFormOnValidationError(true);
+		
 		// Optional Spam Protection.
 		if(class_exists('SpamProtecterManager')) {
 			// Update the form to add the protecter field to it
@@ -295,6 +298,7 @@ class PageCommentInterface_Form extends Form {
 					return Director::redirect(Director::baseURL(). $page->URLSegment.'#PageComment_'.$comment->ID);
 				}
 			}
+
 			return Director::redirectBack(); // worst case, just go back to the page
 		}
 	}
