@@ -796,8 +796,11 @@ JS;
 
 			// encode the message to appear in the body of the email
 			$archiveURL = Director::absoluteBaseURL() . $record->URLSegment . '?archiveDate=' . $record->obj('LastEdited')->URLDatetime();
+			
+			// Ensure that source file comments are disabled
+			SSViewer::set_source_file_comments(false);
+			
 			$archiveEmailMessage = urlencode( $this->customise( array( 'ArchiveDate' => $record->obj('LastEdited'), 'ArchiveURL' => $archiveURL ) )->renderWith( 'ViewArchivedEmail' ) );
-
 			$archiveEmailMessage = preg_replace( '/\+/', '%20', $archiveEmailMessage );
 
 			$fields->push( new HiddenField( 'ArchiveEmailMessage', '', $archiveEmailMessage ) );
