@@ -6,5 +6,5 @@
 #
 
 test:
-	php ./sapphire/cli-script.php dev/build
+	php ./sapphire/cli-script.php dev/build flush=1
 	$(MAKE) -C sapphire test
