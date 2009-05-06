@@ -419,6 +419,9 @@ ul.tree span.untranslated a:visited {
 	clear: left;
 	width: 100%;
 }
+	.checkboxAboveTree div {
+		clear: left;
+	}
 	.checkboxAboveTree input, #ShowChanged input {
 		float: left;
 		margin: 0 3px 0 0;
