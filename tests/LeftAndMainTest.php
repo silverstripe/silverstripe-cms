@@ -11,6 +11,7 @@ class LeftAndMainTest extends FunctionalTest {
 		
 		// @todo fix controller stack problems and re-activate
 		//$this->autoFollowRedirection = false;
+		CMSMenu::populate_menu();
 	}
 	
 	/**
