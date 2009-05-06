@@ -36,7 +36,7 @@ abstract class ModelAdmin extends LeftAndMain {
 	 *
 	 * @var array|string
 	 */
-	protected static $managed_models = null;
+	public static $managed_models = null;
 	
 	/**
 	 * More actions are dynamically added in {@link defineMethods()} below.
@@ -55,12 +55,12 @@ abstract class ModelAdmin extends LeftAndMain {
 	/**
 	 * @param string $collection_controller_class Override for controller class
 	 */
-	protected static $collection_controller_class = "ModelAdmin_CollectionController";
+	public static $collection_controller_class = "ModelAdmin_CollectionController";
 	
 	/**
 	 * @param string $collection_controller_class Override for controller class
 	 */
-	protected static $record_controller_class = "ModelAdmin_RecordController";
+	public static $record_controller_class = "ModelAdmin_RecordController";
 	
 	/**
 	 * Forward control to the default action handler
@@ -87,14 +87,14 @@ abstract class ModelAdmin extends LeftAndMain {
 	 *
 	 * @var array
 	 */
-	protected static $model_importers = null;
+	public static $model_importers = null;
 	
 	/**
 	 * Amount of results showing on a single page.
 	 *
 	 * @var int
 	 */
-	protected static $page_length = 30;
+	public static $page_length = 30;
 	
 	/**
 	 * Class name of the form field used for the results list.  Overloading this in subclasses

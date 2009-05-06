@@ -7,8 +7,6 @@ class ModelAdminTest extends FunctionalTest {
 		$this->autoFollowRedirection = false;
 		$this->logInAs('admin');
 		$this->assertTrue((bool)Permission::check("ADMIN"));
-		
-		Debug::message($this->get('ModelAdminTest_Admin')->getBody());
 		$this->assertEquals(200, $this->get('ModelAdminTest_Admin')->getStatusCode());
 	}
 }
@@ -16,7 +14,7 @@ class ModelAdminTest extends FunctionalTest {
 class ModelAdminTest_Admin extends ModelAdmin {
 	static $url_segment = 'testadmin';
 	
-	protected static $managed_models = array(
+	public static $managed_models = array(
 		'ModelAdminTest_Contact',
 	);
 }
