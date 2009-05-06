@@ -67,7 +67,7 @@ body.ModelAdmin #ResultTable_holder {
 }
 
 body.ModelAdmin #right{
-	overflow:auto;
+	overflow:auto !important;
 }
 
 body.ModelAdmin #right #ModelAdminPanel {

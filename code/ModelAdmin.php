@@ -610,6 +610,7 @@ class ModelAdmin_CollectionController extends Controller {
 			$this->modelClass,
 			$summaryFields
 		);
+		
 		$tf->setCustomQuery($this->getSearchQuery($searchCriteria));
 		$tf->setPageSize($this->parentController->stat('page_length'));
 		$tf->setShowPagination(true);
