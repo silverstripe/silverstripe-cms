@@ -418,12 +418,12 @@ body.stillLoading select {
 #TreeTools #batchactionsforms {
 	padding: 0 5px 7px 5px;
 }
-
+	#TreeTools select {
+		margin-left: 2px;
+	}
 		#TreeTools div p, #ShowChanged {
 			margin: 0 0 5px 0;
 			float: left;
-		}
-		#ShowChanged {
 			width: 100%;
 		}
 			#TreeTools div.middleColumn {

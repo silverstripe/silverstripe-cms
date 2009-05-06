@@ -67,9 +67,6 @@
 #left div.field select {
 	width: 100%;
 }
-#TreeTools select {
-	margin-left: 2px;
-}
 #left .SelectionGroup li.selected label.selector {
 	font-weight: bold;
 }
@@ -412,6 +409,10 @@ ul.tree span.untranslated a:visited {
 	font-style: italic;	
 }
 
+#ShowDrafts {
+	float: none;
+}
+
 .checkboxAboveTree {
 	border-top: 1px solid #cccccc;
 	padding: 5px 0 0 0;
@@ -422,7 +423,7 @@ ul.tree span.untranslated a:visited {
 	.checkboxAboveTree div {
 		clear: left;
 	}
-	.checkboxAboveTree input, #ShowChanged input {
+	.checkboxAboveTree input, #ShowChanged input, #ShowDrafts input {
 		float: left;
 		margin: 0 3px 0 0;
 	}
