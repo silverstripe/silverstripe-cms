@@ -97,8 +97,14 @@ Behaviour.register({
 	// ParentType / ParentID field combination
 	'#Form_EditForm_ParentType' : {
 		initialize : function() {
-			$('Form_EditForm_ParentType_root').onclick = this.rootClick.bind(this);
-			$('Form_EditForm_ParentType_subpage').onclick = this.showHide;
+			var parentTypeRootEl = $('Form_EditForm_ParentType_root');
+			var parentTypeSubpageEl = $('Form_EditForm_ParentType_subpage');
+			if(parentTypeRootEl) {
+				parentTypeRootEl.onclick = this.rootClick.bind(this);
+			}
+			if(parentTypeSubpageEl) {
+				parentTypeSubpageEl.onclick = this.showHide;
+			}
 			this.showHide();
 		},
 		
@@ -108,7 +114,8 @@ Behaviour.register({
 		},
 		
 		showHide : function() {
-			if($('Form_EditForm_ParentType_root').checked) {
+			var parentTypeRootEl = $('Form_EditForm_ParentType_root');
+			if(parentTypeRootEl && parentTypeRootEl.checked) {
 				Element.hide('ParentID');
 			} else {
 				Element.show('ParentID');
