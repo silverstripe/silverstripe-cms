@@ -14,9 +14,19 @@ WidgetAreaEditor.prototype = {
 		}
 		
 		// Create dummy sortable to prevent javascript errors
-		Sortable.create('WidgetAreaEditor_availableWidgets', {tag: 'li', handle: 'handle', containment: []});
+		Sortable.create('WidgetAreaEditor_availableWidgets', {
+			tag: 'li',
+			handle: 'handle',
+			containment: []
+		});
+		
 		// Used widgets are sortable
-		Sortable.create('WidgetAreaEditor_usedWidgets', {tag: 'div', handle: 'handle', containment: ['WidgetAreaEditor_availableWidgets', 'WidgetAreaEditor_usedWidgets'], onUpdate: this.updateWidgets});
+		Sortable.create('WidgetAreaEditor_usedWidgets', {
+			tag: 'div',
+			handle: 'handle',
+			containment: ['WidgetAreaEditor_availableWidgets', 'WidgetAreaEditor_usedWidgets'],
+			onUpdate: this.updateWidgets
+		});
 		
 		// Figure out maxid, this is used when creating new widgets
 		this.maxid = 0;
@@ -60,8 +70,10 @@ WidgetAreaEditor.prototype = {
 		var usedWidgets = $('WidgetAreaEditor_usedWidgets').childNodes;
 		for(var i = 0; i < usedWidgets.length; i++) {
 			var widget = usedWidgets[i];
-			if(widget.id && (widget.id.indexOf("Widget[") != 0)) {
-				new Ajax.Request('Widget_Controller/EditableSegment/' + widget.id, {onSuccess : $('WidgetAreaEditor_usedWidgets').parentNode.parentNode.insertWidgetEditor.bind(this)});
+			if(widget.id && (widget.id.indexOf("Widget[") != 0) && (widget.id != 'NoWidgets')) {
+				new Ajax.Request('Widget_Controller/EditableSegment/' + widget.id, {
+					onSuccess : $('WidgetAreaEditor_usedWidgets').parentNode.parentNode.insertWidgetEditor.bind(this)
+				});
 			}
 		}
 	},
@@ -92,7 +104,14 @@ WidgetAreaEditor.prototype = {
 				
 				// Reapply behaviour
 				new Draggable(clone.id);
-				Sortable.create('WidgetAreaEditor_usedWidgets', {tag: 'div', handle: 'handle', containment: ['WidgetAreaEditor_availableWidgets', 'WidgetAreaEditor_usedWidgets'], onUpdate: $('WidgetAreaEditor_usedWidgets').parentNode.parentNode.updateWidgets});
+				
+				Sortable.create('WidgetAreaEditor_usedWidgets', {
+					tag: 'div',
+					handle: 'handle',
+					containment: ['WidgetAreaEditor_availableWidgets', 'WidgetAreaEditor_usedWidgets'],
+					onUpdate: $('WidgetAreaEditor_usedWidgets').parentNode.parentNode.updateWidgets
+				});
+				
 				UsedWidget.applyToChildren($('WidgetAreaEditor_usedWidgets'), 'div.Widget');
 				return;
 			}
