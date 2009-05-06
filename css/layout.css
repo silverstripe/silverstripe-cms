@@ -434,6 +434,13 @@ body.stillLoading select {
 			padding: 2px 1px;
 			float: left;
 		}
+
+#checkboxActionIndicator {
+	float: right;
+	width: auto;
+	margin-top: 7px;
+	display: none;
+}
 	
 div.spacer, 
 li.spacer {

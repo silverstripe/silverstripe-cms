@@ -141,17 +141,20 @@ ShowDeletedPagesAction.prototype = {
 			__makeDraggableAfterUpdate = true;
 		}
 		
+		var indicator = $('checkboxActionIndicator');
+		indicator.style.display = 'block';
+		
 		var request = new Ajax.Request(SiteTreeHandlers.loadTree_url + '?ID=0&ajax=1', {
 			onSuccess: function(response) {
 				$('sitetree').innerHTML = response.responseText;
 				SiteTree.applyTo($('sitetree'));
 				if(__makeDraggableAfterUpdate) $('sitetree').makeDraggable();
+				indicator.style.display = 'none';
 			},
 			onFailure: function(response) {
 				errorMessage('Could not update tree', response);
 			}
 		});
-
 	}
 }
 
