@@ -540,6 +540,9 @@ iframe {
 	border-right: none;
 	overflow: hidden;
 }
+	#contentPanel div.TreeDropdownField a {
+		overflow: visible;
+	}
 #contentPanel .thumbnailstrip {
 	border: none;
 	width: 190px;
