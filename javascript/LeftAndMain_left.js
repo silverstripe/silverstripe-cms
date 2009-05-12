@@ -181,6 +181,7 @@ TreeNodeAPI.prototype = {
 		var url = SiteTreeHandlers.loadTree_url;
 		url += (url.match(/\?/)) ? '&' : '?';
 		url += 'ajax=1&ID=' + this.getIdx();
+		if($('Form_EditForm_Locale')) url += "&locale=" + $('Form_EditForm_Locale').value;
 		new Ajax.Request(url, {
 			onSuccess : this.installSubtree.bind(this),
 			onFailure : this.showSubtreeLoadingError
