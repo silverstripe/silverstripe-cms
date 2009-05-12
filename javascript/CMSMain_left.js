@@ -142,7 +142,7 @@ ShowDeletedPagesAction.prototype = {
 		}
 		
 		var url = SiteTreeHandlers.loadTree_url + '?ID=0&ajax=1';
-		if($('Form_EditForm_Locale')) url += "&locale=" + $('Form_EditForm_Locale').value;
+		if($('LangSelector')) url += "&locale=" + $('LangSelector').value;
 		
 		var request = new Ajax.Request(url, {
 			onSuccess: function(response) {
