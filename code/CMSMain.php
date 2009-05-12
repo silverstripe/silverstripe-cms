@@ -54,7 +54,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'EditForm',
 		'AddPageOptionsForm',
 		'SiteTreeAsUL',
-		'getshowdeletedsubtree'
+		'getshowdeletedsubtree',
+		'batchactions'
 	);
 	
 	/**
@@ -951,148 +952,19 @@ JS;
 			'DialogType' => 'alert'
 		))->renderWith('Dialog');
 	}
-
+	
 	/**
-	 * Publishes a number of items.
-	 * Called by AJAX
+	 * Batch Actions Handler
 	 */
-	public function publishitems() {
-		// This method can't be called without ajax.
-		if(!Director::is_ajax()) {
-			Director::redirectBack();
-			return;
-		}
-
-		$ids = split(' *, *', $this->requestParams['csvIDs']);
-
-		$notifications = array();
-
-		$idList = array();
-
-		// make sure all the ids are numeric.
-		// Add all the children to the list of IDs if they are missing
-		foreach($ids as $id) {
-			$brokenPageList = '';
-			if(is_numeric($id)) {
-				$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-				
-				if($record) {
-					if($record && !$record->canPublish()) return Security::permissionFailure($this);
-					
-					// Publish this page
-					$record->doPublish();
-
-					// Now make sure the 'changed' icon is removed
-					$publishedRecord = DataObject::get_by_id($this->stat('tree_class'), $id);
-					$JS_title = Convert::raw2js($publishedRecord->TreeTitle());
-					FormResponse::add("\$('sitetree').setNodeTitle($id, '$JS_title');");
-					FormResponse::add("$('Form_EditForm').reloadIfSetTo($record->ID);");
-					$record->destroy();
-					unset($record);
-				}
-			}
-		}
-
-		if (sizeof($ids) > 1) $message = sprintf(_t('CMSMain.PAGESPUB', "%d pages published "), sizeof($ids));
-		else $message = sprintf(_t('CMSMain.PAGEPUB', "%d page published "), sizeof($ids));
-
-		FormResponse::add('statusMessage("'.$message.'","good");');
-
-		return FormResponse::respond();
+	function batchactions() {
+		return new CMSBatchActionHandler($this, 'batchactions');
 	}
 
 	/**
-	 * Delete a number of items.
-	 * This code supports notification
+	 * Returns a list of batch actions
 	 */
-	public function deleteitems() {
-		// This method can't be called without ajax.
-		if(!Director::is_ajax()) {
-			Director::redirectBack();
-			return;
-		}
-
-		$ids = split(' *, *', $_REQUEST['csvIDs']);
-
-		$notifications = array();
-
-		$idList = array();
-
-		// make sure all the ids are numeric.
-		// Add all the children to the list of IDs if they are missing
-		foreach($ids as $id) {
-			$brokenPageList = '';
-			if(is_numeric($id)) {
-				$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-
-				if($record) {
-					if($record && !$record->canDelete()) return Security::permissionFailure($this);	
-					
-					// add all the children for this record if they are not already in the list
-					// this check is a little slower but will prevent circular dependencies
-					// (should they exist, which they probably shouldn't) from causing
-					// the function to not terminate
-					$children = $record->AllChildren();
-
-					if( $children )
-						foreach( $children as $child )
-							if( array_search( $child->ID, $ids ) !== FALSE )
-								$ids[] = $child->ID;
-
-					if($record->hasMethod('BackLinkTracking')) {
-						$brokenPages = $record->BackLinkTracking();
-						foreach($brokenPages as $brokenPage) {
-							$brokenPageList .= "<li style=\"font-size: 65%\">" . $brokenPage->Breadcrumbs(3, true) . "</li>";
-							$brokenPage->HasBrokenLink = true;
-							$notifications[$brokenPage->OwnerID][] = $brokenPage;
-							$brokenPage->writeWithoutVersion();
-						}
-					}
-
-					$oldID = $record->ID;
-					$record->delete();
-					$record->destroy();
-
-					// DataObject::delete_by_id($this->stat('tree_class'), $id);
-
-					// check to see if the record exists on the live site, if it doesn't remove the tree node
-					$liveRecord = Versioned::get_one_by_stage( $this->stat('tree_class'), 'Live', "`{$this->stat('tree_class')}`.`ID`={$id}");
-
-					if($liveRecord) {
-						$liveRecord->IsDeletedFromStage = true;
-						$title = Convert::raw2js($liveRecord->TreeTitle());
-						FormResponse::add("$('sitetree').setNodeTitle($oldID, '$title');");
-						FormResponse::add("$('Form_EditForm').reloadIfSetTo($oldID);");
-					} else {
-						FormResponse::add("var node = $('sitetree').getTreeNodeByIdx('$id');");
-						FormResponse::add("if(node && node.parentTreeNode)	node.parentTreeNode.removeTreeNode(node);");
-						FormResponse::add("$('Form_EditForm').reloadIfSetTo($oldID);");
-					}
-				}
-			}
-		}
-
-		if($notifications) foreach($notifications as $memberID => $pages) {
-			if(class_exists('Page_BrokenLinkEmail')) {
-				$email = new Page_BrokenLinkEmail();
-				$email->populateTemplate(new ArrayData(array(
-					"Recipient" => DataObject::get_by_id("Member", $memberID),
-					"BrokenPages" => new DataObjectSet($pages),
-				)));
-				$email->debug();
-				$email->send();
-			}
-		}
-
-		if (sizeof($ids) > 1) $message = sprintf(_t('CMSMain.PAGESDEL', "%d pages deleted "), sizeof($ids));
-		else $message = sprintf(_t('CMSMain.PAGEDEL', "%d page deleted "), sizeof($ids));
-		if(isset($brokenPageList) && $brokenPageList != '') {
-			$message .= _t('CMSMain.NOWBROKEN',"  The following pages now have broken links:")."<ul>" . addslashes($brokenPageList) . "</ul>" . _t('CMSMain.NOWBROKEN2',"Their owners have been emailed and they will fix up those pages.");
-		}
-
-		FormResponse::add('statusMessage("'.$message.'","good");');
-
-		return FormResponse::respond();
+	function BatchActionList() {
+		return $this->batchactions()->batchActionList();
 	}
 
 	function buildbrokenlinks() {

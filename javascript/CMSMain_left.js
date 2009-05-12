@@ -334,25 +334,39 @@ batchActionGlobals = {
  * Publish selected pages action
  */
 publishpage = Class.create();
-publishpage.applyTo('#publishpage_options');
+publishpage.applyTo('#batchactions_options');
 publishpage.prototype = {
 	onsubmit : function() {
 		csvIDs = batchActionGlobals.getCsvIds();
 		if(csvIDs) {		
+			var optionEl = $('choose_batch_action').options[$('choose_batch_action').selectedIndex];
+			var actionText = optionEl.text;
+			var optionParams = eval(optionEl.className);
+			var ingText = optionParams.doingText;
+
+			// Confirmation
+			if(!confirm("You have " + batchActionGlobals.count + " pages selected.\n\nDo your really want to " + actionText.toLowerCase() + "?")) {
+				return false;
+			}
+
 			this.elements.csvIDs.value = csvIDs;
+
+			// Select form submission URL
+			this.action = $('choose_batch_action').value;
 			
-			statusMessage(ss.i18n._t('CMSMAIN.PUBLISHINGPAGES'));
+			// Loading indicator
+			statusMessage(ingText);
+			$('batchactions_go').className = 'loading';
 			
-			// Put an AJAXY loading icon on the button
-			$('action_publish_selected').className = 'loading';
+			// Submit form
 			Ajax.SubmitForm(this, null, {
 				onSuccess :  function(response) {
 					Ajax.Evaluator(response);
-					$('action_publish_selected').className = '';
+					$('batchactions_go').className = '';
 					treeactions.closeSelection($('batchactions'));
 				},
 				onFailure : function(response) {
-					errorMessage(ss.i18n._t('CMSMAIN.ERRORPUBLISHING'), response);
+					errorMessage('Error ' + ingText, response);
 				}
 			});
 		} else {

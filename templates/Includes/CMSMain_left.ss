@@ -55,54 +55,43 @@
 						</select>
 					</div>
 				</div>
-			
 				</form>
+
+			<div id="batchactionsforms" style="display: none">
+				<form class="actionparams" style="border:0" id="batchactions_options" action="">
+					<p><% _t('SELECTPAGESACTIONS','Select the pages that you want to change &amp; then click an action:') %></p>
+
+					<input type="hidden" name="csvIDs" />
+
+					<div>
+						<select id="choose_batch_action">
+							<% control BatchActionList %>
+							<option value="$Link" class="{doingText:'$DoingText'}">$Title</option>
+							<% end_control %>
+						</select>
+						<input id="batchactions_go" type="submit" class="action" value="Go" />
+					</div>
+				</form>
+			</div>
+
+			<div class="checkboxAboveTree">
+				<div>
+				<input type="checkbox" id="sortitems" /> <label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
+				</div>
+				<div>
+				<input type="checkbox" id="publishpage_show_drafts" /> <label for="publishpage_show_drafts"><% _t('SHOWONLYCHANGED','Show only changed pages') %></label>
+				</div>
+				<div>
+				<input type="checkbox" id="showdeletedpages" /> <label for="showdeletedpages"><% _t('SHOW_DELETED_PAGES','Show deleted pages', PR_HIGH) %></label>
+				</div>
+			</div>
 				
-			
-				<div id="batchactionsforms" style="display: none">
-					<form class="actionparams" style="border:0" id="deletepage_options" action="admin/deleteitems">
-						<p><% _t('SELECTPAGESACTIONS','Select the pages that you want to change &amp; then click an action:') %></p>
-						<div>		
-						<input type="hidden" name="csvIDs" />
-						<input type="submit" id="action_delete_selected" class="action delete" value="<% _t('DELETECONFIRM','Delete the selected pages') %>" />
-						</div>
-					</form>
-					
-					<div>
-						<form class="actionparams" style="border:0" id="publishpage_options" action="admin/publishitems">
-							
-							<input type="hidden" name="csvIDs" />
-							<div id="ShowChanged">
-								<input type="checkbox" id="publishpage_show_drafts" /> <label for="publishpage_show_drafts"><% _t('SHOWONLYCHANGED','Show only changed pages') %></label>
-							</div>
-							<input type="submit" id="action_publish_selected" class="action" value="<% _t('PUBLISHCONFIRM','Publish the selected pages') %>" />
-							
-						</form>
-					</div>
-				</div>
-				<% control DuplicatePagesOptionsForm %>
-				<form class="actionparams" id="duplicate_options" style="display: none" action="admin/duplicateSiteTree">
-					<p><% _t('SELECTPAGESDUP','Select the pages that you want to duplicate, whether it\'s children should be included, and where you want the duplicates placed') %></p>
-					<div>		
-						<input type="hidden" name="csvIDs" />
-						<input type="submit" value="Duplicate" />
-					</div>
-				</form>
-				<% end_control %>
-				<div class="checkboxAboveTree">
-					<div>
-					<input type="checkbox" id="sortitems" /> <label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
-					</div>
-					<div>
-					<input type="checkbox" id="showdeletedpages" /> <label for="showdeletedpages"><% _t('SHOW_DELETED_PAGES','Show deleted pages', PR_HIGH) %></label>
-					</div>
-				</div>
-					
-				<% if IsTranslatableEnabled %>
-				<div id="LangSelector_holder">
-					Language: $LangSelector
-				</div>
-				<% end_if %>
+			<% if IsTranslatableEnabled %>
+			<div id="LangSelector_holder">
+				Language: $LangSelector
+			</div>
+			<% end_if %>
+
 			</div>
 			<div id="sitetree_ul">
 				$SiteTreeAsUL
