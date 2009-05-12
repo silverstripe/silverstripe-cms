@@ -144,7 +144,10 @@ ShowDeletedPagesAction.prototype = {
 		var indicator = $('checkboxActionIndicator');
 		indicator.style.display = 'block';
 		
-		var request = new Ajax.Request(SiteTreeHandlers.loadTree_url + '?ID=0&ajax=1', {
+		var url = SiteTreeHandlers.loadTree_url + '?ID=0&ajax=1';
+		if($('Form_EditForm_Locale')) url += "&locale=" + $('Form_EditForm_Locale').value;
+		
+		var request = new Ajax.Request(url, {
 			onSuccess: function(response) {
 				$('sitetree').innerHTML = response.responseText;
 				SiteTree.applyTo($('sitetree'));
