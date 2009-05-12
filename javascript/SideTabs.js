@@ -213,8 +213,11 @@ SidePanel.prototype = {
 		var srcName = this.id.replace('_holder','');				
 		var id = $('Form_EditForm').elements.ID;
 		if(id) id = id.value; else id = "";
+		
 		// This assumes that admin/cms/ refers to CMSMain
-		return 'admin/cms/' + srcName + '/' + id + '?ajax=1';
+		var url = 'admin/cms/' + srcName + '/' + id + '?ajax=1';
+		if($('Form_EditForm_Locale')) url += "&locale=" + $('Form_EditForm_Locale').value;
+		return url;
 	},
 	
 	afterPanelLoaded : function() {
@@ -303,7 +306,9 @@ VersionList.prototype = {
 	select : function(pageID, versionID, sourceEl) {
 		if(this.mode == 'view') {
 			sourceEl.select();
-			$('Form_EditForm').loadURLFromServer('admin/getversion/' + pageID + '/' + versionID);
+			var url = 'admin/getversion/' + pageID + '/' + versionID;
+			if($('Form_EditForm_Locale')) url += "?locale=" + $('Form_EditForm_Locale').value;
+			$('Form_EditForm').loadURLFromServer(url);
 			$('viewArchivedSite').style.display = '';
 			$('viewArchivedSite').getVars = '?archiveDate=' + sourceEl.getElementsByTagName('td')[1].className;
 			
@@ -314,7 +319,9 @@ VersionList.prototype = {
 				sourceEl.select();
 				this.otherSourceEl.select(true);
 				statusMessage('Loading comparison...');
-				$('Form_EditForm').loadURLFromServer('admin/compareversions/' + pageID + '/?From=' + this.otherVersionID + '&To=' + versionID);
+				var url = 'admin/compareversions/' + pageID + '/?From=' + this.otherVersionID + '&To=' + versionID;
+				if($('Form_EditForm_Locale')) url += "&locale=" + $('Form_EditForm_Locale').value;
+				$('Form_EditForm').loadURLFromServer(url);
 			} else {
 				sourceEl.select();
 			}
