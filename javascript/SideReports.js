@@ -32,7 +32,9 @@ SideReports.prototype = {
 		SideReportRecord.applyTo('#' + this.id + ' a');
 	},
 	ajaxURL: function() {
-		return 'admin/sidereport/' + this.selector.value;
+		var url = 'admin/sidereport/' + this.selector.value;
+		if($('LangSelector')) url += "?locale=" + $('LangSelector').value;
+		return url;
 	}
 	
 }
