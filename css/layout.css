@@ -409,6 +409,9 @@ body.stillLoading select {
 		#left .checkboxAboveTree {
 			border-bottom: 1px solid #CCC;
 		}
+			#left .checkboxAboveTree div {
+				clear: both;
+			}
 #TreeTools label {
 	display: block;
 	padding-top: 2px;
@@ -544,6 +547,9 @@ iframe {
 	border-right: none;
 	overflow: hidden;
 }
+	#contentPanel div.TreeDropdownField a {
+		overflow: visible;
+	}
 #contentPanel .thumbnailstrip {
 	border: none;
 	width: 190px;
