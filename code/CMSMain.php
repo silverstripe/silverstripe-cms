@@ -1439,18 +1439,7 @@ JS;
 	 * @return boolean
 	 */
 	function IsTranslatableEnabled() {
-		return Translatable::is_enabled();
-	}
-	
-	/**
-	 * Get the name of the language that we are translating in
-	 */
-	function EditingLang() {
-		if(!Translatable::is_default_locale()) {
-			return i18n::get_locale_name(Translatable::current_locale());
-		} else {
-			return false;
-		}
+		return Object::has_extension('SiteTree', 'Translatable');
 	}
 }
 
