@@ -410,9 +410,6 @@ body.stillLoading select {
 		#left .checkboxAboveTree {
 			border-bottom: 1px solid #CCC;
 		}
-			#left .checkboxAboveTree div {
-				clear: both;
-			}
 #TreeTools label {
 	display: block;
 	padding-top: 2px;
