@@ -371,14 +371,15 @@ ul.tree span.untranslated a:visited {
 }
 
 #left form.actionparams div.SearchCriteria {
-	width: 40%;
+	width: 28%;
 	overflow: hidden;
 	float: left;
 }
 
-#left form.actionparams input.SearchCriteria {
-	width: 43%;
+#left form.actionparams input.SearchCriteria, #left form.actionparams #InputSiteTreeFilterClassName select {
+	width: 60%;
 	float: left;
+	margin: 0;
 }
 #left form.actionparams #InputSiteTreeFilterDate .calendar {
 	margin-left: -96px;

@@ -28,14 +28,18 @@
 				<div>
 					<input type="hidden" id="SiteTreeIsFiltered" value="0" />
 					<div id="SearchBox">
-						<input type="text" id="SiteTreeSearchTerm" name="SiteTreeSearchTerm" />
-						<div id="searchIndicator">&nbsp;</div>
-						<input type="submit" id="SiteTreeSearchButton" class="action" value="<% _t('SEARCH') %>" title="<% _t('SEARCHTITLE','Search through URL, Title, Menu Title, &amp; Content') %>" />
+						<div class="SearchCriteria">Text:</div>
+						<input type="text" id="SiteTreeSearchTerm" class='SearchCriteria' name="SiteTreeSearchTerm" />
 					</div>			
 		
 					<div id="ContainerSiteTreeFilterDate" class="SearchCriteriaContainer" style="display:none" >
 						<div id="TextSiteTreeFilterDate" class="SearchCriteria"><% _t('EDITEDSINCE','Edited Since') %>:</div>
 						<div id="InputSiteTreeFilterDate">$SiteTreeFilterDateField</div>
+					</div>
+
+					<div id='ContainerSiteTreeFilterClassName' class='SearchCriteriaContainer' style="display:none">
+						<div id="TextSiteTreeFilterClassName" class="SearchCriteria">Page type: </div>
+						<div id="InputSiteTreeFilterClassName">$SiteTreeFilterPageTypeField</div>
 					</div>
 
 					<% control SiteTreeFilterOptions %>
@@ -45,14 +49,18 @@
 					</div>
 					<% end_control %>
 					
-					<div id="addCriteria">
+					<div id='SearchControls'>
 						<select id="SiteTreeFilterAddCriteria">
-							<option value=""><% _t('ADDSEARCHCRITERIA','Add Criteria...') %></option>
+							<option value=""><% _t('ADDSEARCHCRITERIA','Add Criteria') %></option>
 							<option value="SiteTreeFilterDate"><% _t('EDITEDSINCE','Edited Since') %></option>
+							<option value="SiteTreeFilterClassName">Page type</option>
 							<% control SiteTreeFilterOptions %>
 		        				<option value="$Column">$Title</option>
 							<% end_control %>
 						</select>
+						<div id="searchIndicator">&nbsp;</div>
+						<input type="submit" id="SiteTreeSearchClearButton" class="action" value="<% _t('CLEAR') %>" title="<% _t('CLEARTITLE','Clear the search and view all items') %>" />
+						<input type="submit" id="SiteTreeSearchButton" class="action" value="<% _t('SEARCH') %>" title="<% _t('SEARCHTITLE','Search through URL, Title, Menu Title, &amp; Content') %>" />
 					</div>
 				</div>
 				</form>

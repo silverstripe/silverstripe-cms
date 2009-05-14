@@ -39,7 +39,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'dialog',
 		'duplicate',
 		'duplicatewithchildren',
-		'filtersitetree',
 		'getpagecount',
 		'getversion',
 		'publishall',
@@ -55,6 +54,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'AddPageOptionsForm',
 		'SiteTreeAsUL',
 		'getshowdeletedsubtree',
+		'getfilteredsubtree',
 		'batchactions'
 	);
 	
@@ -74,7 +74,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return array(
 			'Title' => _t('CMSMain.TITLEOPT', 'Title', 0, 'The dropdown title in CMSMain left SiteTreeFilterOptions'),
 			'MenuTitle' => _t('CMSMain.MENUTITLEOPT', 'Navigation Label', 0, 'The dropdown title in CMSMain left SiteTreeFilterOptions'),
-			'ClassName' => _t('CMSMain.PAGETYPEOPT', 'Page Type', 0, "The dropdown title in CMSMain left SiteTreeFilterOptions"), 
 			'Status' => _t('CMSMain.STATUSOPT', 'Status',  0, "The dropdown title in CMSMain left SiteTreeFilterOptions"), 
 			'MetaDescription' => _t('CMSMain.METADESCOPT', 'Description', 0, "The dropdown title in CMSMain left SiteTreeFilterOptions"), 
 			'MetaKeywords' => _t('CMSMain.METAKEYWORDSOPT', 'Keywords', 0, "The dropdown title in CMSMain left SiteTreeFilterOptions")
@@ -185,7 +184,18 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		return $tree;
 	}
+	
+	public function getfilteredsubtree() {
+		// Get the tree
+		$tree = $this->getSiteTreeFor($this->stat('tree_class'), $_REQUEST['ID'], null, 'cmsMainMarkingFilterFunction');
 
+		// Trim off the outer tag
+		$tree = ereg_replace('^[ \t\r\n]*<ul[^>]*>','', $tree);
+		$tree = ereg_replace('</ul[^>]*>[ \t\r\n]*$','', $tree);
+		
+		return $tree;
+	}
+	
 	/**
 	 * Returns the SiteTree columns that can be filtered using the the Site Tree Search button as a DataObjectSet
 	 */
@@ -204,44 +214,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$dateField = new CalendarDateField('SiteTreeFilterDate');
 			return $dateField->Field();
 		}
-
-	/**
-	 * Returns a filtered Site Tree
-	 */
-	public function filtersitetree() {
-		// Pre-cache sitetree version numbers for querying efficiency
-		Versioned::prepopulate_versionnumber_cache("SiteTree", "Stage");
-		Versioned::prepopulate_versionnumber_cache("SiteTree", "Live");
-		
-		$className = 'SiteTree';
-		$rootID = null;
-		$obj = $rootID ? $this->getRecord($rootID) : singleton($className);
-		$obj->setMarkingFilterFunction('cmsMainMarkingFilterFunction');
-		$obj->markPartialTree();
-
-		if($p = $this->currentPage()) $obj->markToExpose($p);
-
-		// getChildrenAsUL is a flexible and complex way of traversing the tree
-		$siteTree = $obj->getChildrenAsUL("", '
-					"<li id=\"record-$child->ID\" class=\"" . $child->CMSTreeClasses($extraArg) . "\">" .
-					"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" " . (($child->canEdit() || $child->canAddChildren()) ? "" : "class=\"disabled\"") . " title=\"' . _t('LeftAndMain.PAGETYPE') . '".$child->class."\" >" .
-					($child->TreeTitle()) .
-					"</a>"
-'
-					,$this, true);
-
-		// Wrap the root if needs be.
-
-		if(!$rootID) {
-			$rootLink = $this->Link() . '0';
-			$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-0\" class=\"Root nodelete\"><a href=\"$rootLink\">" .
-				 _t('LeftAndMain.TREESITECONTENT',"Site Content",PR_HIGH,'Root node on left') . "</a>"
-				. $siteTree . "</li></ul>";
-		}
-
-		return $siteTree;
-
-	}
+		public function SiteTreeFilterPageTypeField() {
+			$types = SiteTree::page_type_classes(); array_unshift($types, 'All');
+			$optionsetField = new DropdownField('ClassName', 'ClassName', array_combine($types, $types), 'Any');
+			return $optionsetField->Field();
+		}	
 
 	public function generateDataTreeHints() {
 		$classes = ClassInfo::subclassesFor( $this->stat('tree_class') );
@@ -1255,6 +1232,7 @@ $filterCache = array();
 
 // TODO: Find way to put this in a class
 function cmsMainMarkingFilterFunction($node) {
+	global $filterCache;
 	// Expand all nodes
 	// $node->markingFinished();
 
@@ -1278,6 +1256,11 @@ function cmsMainMarkingFilterFunction($node) {
 			$failed_filter = true;
 		}
 	}
+	// Check the ClassName
+	if (!empty($_REQUEST['ClassName']) && $_REQUEST['ClassName'] != 'Any') {
+		if ($node->ClassName != $_REQUEST['ClassName']) $failed_filter = true;
+	}
+	
 	// Now check if a specified Criteria attribute matches
 	foreach (CMSMain::T_SiteTreeFilterOptions() as $key => $value)
 	{

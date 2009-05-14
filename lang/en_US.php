@@ -147,7 +147,7 @@ $lang['en_US']['CMSMain']['VISITRESTORE'] = array(
 $lang['en_US']['CMSMain_dialog.ss']['BUTTONNOTFOUND'] = 'Couldn\'t find the button name';
 $lang['en_US']['CMSMain_dialog.ss']['NOLINKED'] = 'Can\'t find window.linkedObject to send the button click back to the main window';
 $lang['en_US']['CMSMain_left.ss']['ADDEDNOTPUB'] = 'Added to the draft site and not published yet';
-$lang['en_US']['CMSMain_left.ss']['ADDSEARCHCRITERIA'] = 'Add Criteria...';
+$lang['en_US']['CMSMain_left.ss']['ADDSEARCHCRITERIA'] = 'Add Criteria';
 $lang['en_US']['CMSMain_left.ss']['BATCHACTIONS'] = array(
 	'Batch Actions',
 	PR_HIGH
@@ -174,6 +174,7 @@ $lang['en_US']['CMSMain_left.ss']['NEW'] = 'new';
 $lang['en_US']['CMSMain_left.ss']['OPENBOX'] = 'click to open this box';
 $lang['en_US']['CMSMain_left.ss']['PAGEVERSIONH'] = 'Page Version History';
 $lang['en_US']['CMSMain_left.ss']['PUBLISHCONFIRM'] = 'Publish the selected pages';
+$lang['en_US']['CMSMain_left.ss']['CLEAR'] = 'Clear';
 $lang['en_US']['CMSMain_left.ss']['SEARCH'] = array(
 	'Search',
 	PR_HIGH
