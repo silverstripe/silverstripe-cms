@@ -884,3 +884,27 @@ function hideIndicator(id) {
 setInterval(function() {
     new Ajax.Request("Security/ping");
 }, 5*60*1000);
+
+/**
+ * Find and enable TinyMCE on all htmleditor fields
+ * Pulled in from old tinymce.template.js
+ */
+
+function nullConverter(url) {
+	return url;
+}
+
+Behaviour.register({
+    'textarea.htmleditor' : {
+        initialize : function() {
+            tinyMCE.execCommand("mceAddControl", true, this.id);
+            this.isChanged = function() {
+                return tinyMCE.getInstanceById(this.id).isDirty();
+            }
+            this.resetChanged = function() {
+                inst = tinyMCE.getInstanceById(this.id);
+                inst.startContent = tinymce.trim(inst.getContent({format : 'raw', no_events : 1}));
+            }
+        }
+    }
+})

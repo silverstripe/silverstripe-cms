@@ -79,7 +79,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			'MetaKeywords' => _t('CMSMain.METAKEYWORDSOPT', 'Keywords', 0, "The dropdown title in CMSMain left SiteTreeFilterOptions")
 		);
 	}
-
+	
 	public function init() {
 		parent::init();
 		
@@ -108,18 +108,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$spellcheckSpec = array();
 		foreach($spellcheckLangs as $lang => $title) $spellcheckSpec[] = "{$title}={$lang}";
 
+		HtmlEditorConfig::get('cms')->setOption('spellchecker_languages', '+' . implode(',', $spellcheckSpec));
+		
+		// @todo Do we need this - I'm pretty sure not, since HtmlEditorField#Field() will include it on being called.
+		//       The only time you might need it is if you are creating an textarea.htmlfield yourself, in which case bad things are going to happen now we've moved configuration
 		// We don't want this showing up in every ajax-response, it should always be present in a CMS-environment
 		if(!Director::is_ajax()) {
 			Requirements::javascript(MCE_ROOT . "tiny_mce_src.js");
-			Requirements::javascriptTemplate(CMS_DIR . "/javascript/tinymce.template.js", array(
-				"ContentCSS" => (SSViewer::current_theme() ? THEMES_DIR . "/" . SSViewer::current_theme() : project()) . "/css/editor.css",
-				"BaseURL" => Director::absoluteBaseURL(),
-				"Lang" => i18n::get_tinymce_lang(),
-				'SpellcheckLangs' => '+' . implode(',', $spellcheckSpec)
-			));
 		}
-		// Always block the HtmlEditorField.js otherwise it will be sent with an ajax request
-		Requirements::block(SAPPHIRE_DIR . '/javascript/HtmlEditorField.js');
 		
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.js');
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain_left.js');

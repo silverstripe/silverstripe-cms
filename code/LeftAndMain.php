@@ -153,6 +153,9 @@ class LeftAndMain extends Controller {
 
 		// Audit logging hook
 		if(empty($_REQUEST['executeForm']) && !Director::is_ajax()) $this->extend('accessedCMS');
+
+		// Override HtmlEditorField's config with our own
+		HtmlEditorconfig::set_active('cms');
 		
 		Requirements::css(CMS_DIR . '/css/typography.css');
 		Requirements::css(CMS_DIR . '/css/layout.css');
