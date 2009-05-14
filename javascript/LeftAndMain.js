@@ -126,6 +126,7 @@ Behaviour.register({
 
 window.ontabschanged = function() {
 	var formEl = $('Form_EditForm');
+	if( !formEl ) formEl = $('Form_AddForm');
 
 	if( !formEl )
 		return;
@@ -156,7 +157,7 @@ window.onresize = function(init) {
 	if(typeof fitToParent == 'function') {
 		fitToParent('right', 12);
 		if($('ModelAdminPanel')) {
-			fitToParent('ModelAdminPanel',-30);
+			fitToParent('ModelAdminPanel',-60);
 		}
 		if($('contentPanel')) {
 			fitToParent('contentPanel', 12);
@@ -175,7 +176,9 @@ window.onresize = function(init) {
 	}
 
 	if(typeof fitToParent == 'function') {
-		fitToParent('Form_EditForm', 4);
+		if($('Form_EditForm')) fitToParent('Form_EditForm', 4);
+		if($('Form_AddForm')) fitToParent('Form_AddForm', 4);
+		
 		if($('Form_EditorToolbarImageForm') && $('Form_EditorToolbarImageForm').style.display == "block") {
 			fitToParent('Form_EditorToolbarImageForm', 5);
 			fitToParent($('Form_EditorToolbarImageForm').getElementsByTagName('fieldset')[0]);

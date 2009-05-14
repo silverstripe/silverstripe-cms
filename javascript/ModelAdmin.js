@@ -82,6 +82,8 @@ $(document).ready(function() {
 	 * to the response table, excluding the import form because 
 	 * file ($_FILES) submission doesn't work using AJAX 
 	 * 
+	 * Note: This is used for Form_CreateForm too
+	 * 
 	 * @todo use livequery to manage ResultTable click handlers
 	 */
 	$('#SearchForm_holder .tab form:not(#Form_ImportForm)').submit(function () {
@@ -98,6 +100,8 @@ $(document).ready(function() {
 
     		$('#form_actions_right').remove();
     		Behaviour.apply();
+			console.log(window.onresize);
+			if(window.onresize) window.onresize();
     		// Remove the loading indicators from the buttons
     		$('input[type=submit]', $form).removeClass('loading');
 	    }, 
@@ -204,6 +208,7 @@ $(document).ready(function() {
 			// TODO/SAM: It seems a bit of a hack to have to list all the little updaters here. 
 			// Is livequery a solution?
 			Behaviour.apply(); // refreshes ComplexTableField
+			if(window.onresize) window.onresize();
 		}, 'html');
 
 		return false;
