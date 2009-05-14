@@ -210,7 +210,7 @@ SiteTreeFilterForm.prototype = {
 		}
 		else {
 			Form.getElements(this).each(function(el){
-				if (el.type == 'text') $(el).clear();
+				if (el.type == 'text') el.value = '';
 				else if (el.type == 'select-one') el.value = 'All';
 			});
 			document.getElementsBySelector('.SearchCriteriaContainer', this).each(function(el){
