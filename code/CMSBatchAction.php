@@ -5,8 +5,11 @@
  * 
  * <code>
  * CMSMain::register_batch_action('publishitems', new CMSBatchAction('doPublish', 
-	_t('CMSBatchActions.PUBLISHED_PAGES', 'published %d pages')));
+ * 	_t('CMSBatchActions.PUBLISHED_PAGES', 'published %d pages')));
  * </code>
+ * 
+ * @package cms
+ * @subpackage batchaction
  */
 abstract class CMSBatchAction extends Object {
 	/**
@@ -58,6 +61,9 @@ abstract class CMSBatchAction extends Object {
 
 /**
  * Publish items batch action.
+ * 
+ * @package cms
+ * @subpackage batchaction
  */
 class CMSBatchAction_Publish extends CMSBatchAction {
 	function getActionTitle() {
@@ -76,6 +82,9 @@ class CMSBatchAction_Publish extends CMSBatchAction {
 
 /**
  * Un-publish items batch action.
+ * 
+ * @package cms
+ * @subpackage batchaction
  */
 class CMSBatchAction_Unpublish extends CMSBatchAction {
 	function getActionTitle() {
@@ -94,6 +103,9 @@ class CMSBatchAction_Unpublish extends CMSBatchAction {
 
 /**
  * Delete items batch action.
+ * 
+ * @package cms
+ * @subpackage batchaction
  */
 class CMSBatchAction_Delete extends CMSBatchAction {
 	function getActionTitle() {
@@ -136,6 +148,9 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 
 /**
  * Delete items batch action.
+ * 
+ * @package cms
+ * @subpackage batchaction
  */
 class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 	function getActionTitle() {
