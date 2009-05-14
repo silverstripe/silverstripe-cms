@@ -376,7 +376,7 @@ JS;
 			}
 
 			// Don't open a page from a different locale
-			if($record && Translatable::is_enabled() && $record->Locale && $record->Locale != Translatable::current_locale()) {
+			if($record && Translatable::is_enabled() && $record->Locale && $record->Locale != Translatable::get_current_locale()) {
 				$record = null;
 			}
 
@@ -981,7 +981,7 @@ JS;
 		
 		$fields = new FieldSet(
 			new HiddenField("ParentID"),
-			new HiddenField("Locale", 'Locale', Translatable::current_locale()),
+			new HiddenField("Locale", 'Locale', Translatable::get_current_locale()),
 			new DropdownField("PageType", "", $pageTypes, 'Page')
 		);
 		
@@ -1190,7 +1190,7 @@ JS;
         }
         
         //user doesn't have permission to switch langs so just show a string displaying current language
-        return i18n::get_locale_name( Translatable::current_locale() );
+        return i18n::get_locale_name( Translatable::get_current_locale() );
     }
 
 	/**
