@@ -129,9 +129,9 @@ ShowDeletedPagesAction.prototype = {
 	
 	onclick : function() {
 		if(this.checked) { 
-			SiteTreeHandlers.loadTree_url = SiteTreeHandlers.controller_url + '/getshowdeletedsubtree';
+			$('sitetree').setCustomURL(SiteTreeHandlers.controller_url+'/getshowdeletedsubtree');
 		} else {
-			SiteTreeHandlers.loadTree_url = SiteTreeHandlers.controller_url + '/getsubtree';
+			$('sitetree').clearCustomURL();
 		}
 
 		// We can't update the tree while it's draggable; it gets b0rked.
@@ -144,13 +144,8 @@ ShowDeletedPagesAction.prototype = {
 		var indicator = $('checkboxActionIndicator');
 		indicator.style.display = 'block';
 		
-		var url = SiteTreeHandlers.loadTree_url + '?ID=0&ajax=1';
-		if($('LangSelector')) url += "&locale=" + $('LangSelector').value;
-		
-		var request = new Ajax.Request(url, {
-			onSuccess: function(response) {
-				$('sitetree').innerHTML = response.responseText;
-				SiteTree.applyTo($('sitetree'));
+		$('sitetree').reload({
+			onSuccess: function() {
 				if(__makeDraggableAfterUpdate) $('sitetree').makeDraggable();
 				indicator.style.display = 'none';
 			},
@@ -158,6 +153,107 @@ ShowDeletedPagesAction.prototype = {
 				errorMessage('Could not update tree', response);
 			}
 		});
+	}
+}
+
+/**
+ * Show only drafts checkbox click action
+ */
+showonlydrafts = Class.create();
+showonlydrafts.applyTo('#publishpage_show_drafts');
+showonlydrafts.prototype = {
+	onclick : function() {
+		if(this.checked) { 
+			$('sitetree').setCustomURL(SiteTreeHandlers.controller_url+'/getfilteredsubtree', {Status:'Saved'});
+		} else {
+			$('sitetree').clearCustomURL();
+		}
+		
+		$('sitetree').reload({
+			onSuccess: function() {
+				statusMessage(ss.i18n._t('CMSMAIN.FILTEREDTREE'),'good');
+			},
+			onFailure: function(response) {
+				errorMessage(ss.i18n.sprintf(
+					ss.i18n._t('CMSMAIN.ERRORFILTERPAGES'),
+					response.responseText
+				));
+			}
+		});
+	}
+}
+
+/**
+ * Control the site tree filter
+ */
+SiteTreeFilterForm = Class.create();
+SiteTreeFilterForm.applyTo('form#search_options');
+SiteTreeFilterForm.prototype = {
+	initialize: function() {
+		var self = this;
+		Form.getElements(this).each(function(el){
+			if (el.type == 'submit') el.onclick = function(){self.clicked = $F(this); console.log(self.clicked)};
+		});
+	},
+	onsubmit: function() {
+		var filters = $H();
+		
+		if (this.clicked == 'Search') {
+			Form.getElements(this).each(function(el){
+				if (el.type == 'text') {
+					if ($F(el)) filters[el.name] = $F(el);
+				}
+				else if (el.type == 'select-one') {
+					if ($F(el) && $F(el) != 'All') filters[el.name] = $F(el);
+				}
+			});
+		}
+		else {
+			Form.getElements(this).each(function(el){
+				if (el.type == 'text') $(el).clear();
+				else if (el.type == 'select-one') el.value = 'All';
+			});
+			document.getElementsBySelector('.SearchCriteriaContainer', this).each(function(el){
+				Element.hide(el);
+			})
+		}
+		
+		if (filters.keys().length) {
+			// Set new URL
+			$('sitetree').setCustomURL(SiteTreeHandlers.controller_url + '/getfilteredsubtree', filters);
+			
+			// Disable checkbox tree controls that currently don't work with search.
+			// @todo: Make them work together
+			if ($('sitetree').isDraggable) $('sitetree').stopBeingDraggable();
+			document.getElementsBySelector('.checkboxAboveTree input[type=checkbox]').each(function(el){
+				el.value = false; el.disabled = true;	
+			})
+		}
+		else {
+			// Reset URL to default
+			$('sitetree').clearCustomURL();
+			
+			// Enable checkbox tree controls
+			document.getElementsBySelector('.checkboxAboveTree input[type=checkbox]').each(function(el){
+				el.disabled = false;	
+			})
+		}
+		
+		$('SiteTreeSearchButton').className = $('SiteTreeSearchClearButton').className = 'hidden';
+		$('searchIndicator').className = 'loading';
+		
+		$('sitetree').reload({
+			onSuccess :  function(response) {
+				$('SiteTreeSearchButton').className = $('SiteTreeSearchClearButton').className = 'action';
+				$('searchIndicator').className = '';
+				statusMessage('Filtered tree','good');
+			},
+			onFailure : function(response) {
+				errorMessage('Could not filter site tree<br />' + response.responseText);
+			}
+		});
+		
+		return false;
 	}
 }
 
@@ -209,37 +305,6 @@ batchactionsclass.prototype = {
 		}
 	}
 }
-
-/**
- * Show only drafts checkbox click action
- */
-showonlydrafts = Class.create();
-showonlydrafts.applyTo('#publishpage_show_drafts');
-showonlydrafts.prototype = {
-	onclick : function() {
-			if (0 == $('SiteTreeIsFiltered').value) {
-			// Show all items in Site Tree again
-			new Ajax.Request( 'admin/filterSiteTree?Status=Saved&ajax=1', {
-				onSuccess: function( response ) {
-					$('sitetree_ul').innerHTML = response.responseText;
-					Behaviour.apply($('sitetree_ul'));
-					$('SiteTreeIsFiltered').value = 1;
-					$('batchactions').multiselectTransform();
-					statusMessage(ss.i18n._t('CMSMAIN.FILTEREDTREE'),'good');
-				},
-				onFailure : function(response) {
-					errorMessage(ss.i18n.sprintf(
-						ss.i18n._t('CMSMAIN.ERRORFILTERPAGES'),
-						response.responseText
-					));
-				}
-			});
-			} else {
-				batchActionGlobals.unfilterSiteTree();
-			}
-	}
-}
-
 
 // batchActionGlobals is needed because calls to observeMethod doesn't seem to preserve instance variables so a Prototype can't be used
 batchActionGlobals = {
@@ -337,25 +402,39 @@ batchActionGlobals = {
  * Publish selected pages action
  */
 publishpage = Class.create();
-publishpage.applyTo('#Form_PublishItemsForm');
+publishpage.applyTo('#batchactions_options');
 publishpage.prototype = {
 	onsubmit : function() {
 		csvIDs = batchActionGlobals.getCsvIds();
 		if(csvIDs) {		
+			var optionEl = $('choose_batch_action').options[$('choose_batch_action').selectedIndex];
+			var actionText = optionEl.text;
+			var optionParams = eval(optionEl.className);
+			var ingText = optionParams.doingText;
+
+			// Confirmation
+			if(!confirm("You have " + batchActionGlobals.count + " pages selected.\n\nDo your really want to " + actionText.toLowerCase() + "?")) {
+				return false;
+			}
+
 			this.elements.csvIDs.value = csvIDs;
+
+			// Select form submission URL
+			this.action = $('choose_batch_action').value;
 			
-			statusMessage(ss.i18n._t('CMSMAIN.PUBLISHINGPAGES'));
+			// Loading indicator
+			statusMessage(ingText);
+			$('batchactions_go').className = 'loading';
 			
-			// Put an AJAXY loading icon on the button
-			$('Form_PublishItemsForm_action_publishitems').className = 'loading';
+			// Submit form
 			Ajax.SubmitForm(this, null, {
 				onSuccess :  function(response) {
 					Ajax.Evaluator(response);
-					$('Form_PublishItemsForm_action_publishitems').className = '';
+					$('batchactions_go').className = '';
 					treeactions.closeSelection($('batchactions'));
 				},
 				onFailure : function(response) {
-					errorMessage(ss.i18n._t('CMSMAIN.ERRORPUBLISHING'), response);
+					errorMessage('Error ' + ingText, response);
 				}
 			});
 		} else {

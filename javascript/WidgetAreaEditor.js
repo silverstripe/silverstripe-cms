@@ -1,7 +1,7 @@
-WidgetAreaEditor = Class.create();
-WidgetAreaEditor.applyTo('div.WidgetAreaEditor');
+WidgetAreaEditorClass = Class.create();
+WidgetAreaEditorClass.applyTo('div.WidgetAreaEditor');
 
-WidgetAreaEditor.prototype = {
+WidgetAreaEditorClass.prototype = {
 	initialize: function() {
 		UsedWidget.applyToChildren($('WidgetAreaEditor_usedWidgets'), 'div.Widget');
 	

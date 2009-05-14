@@ -27,6 +27,48 @@ var TreeContextMenu = null;
  */
 TreeAPI = Class.create();
 TreeAPI.prototype = {
+
+	setCustomURL: function(url, arguments) {
+		this.customURL = url;
+		this.customArguments = $H(arguments);
+	},
+	
+	clearCustomURL: function() {
+		this.customURL = this.customArguments = null;
+	},
+	
+	url: function(args) {
+		var args = $H(args).merge(this.customArguments);
+
+		var url = this.customURL ? this.customURL : SiteTreeHandlers.loadTree_url; 
+		url = url + (url.match(/\?/) ? '&' : '?') + args.toQueryString();
+
+		console.log('Loading tree from ' + url);
+		return url;
+	},
+	
+	reload: function(options) {
+		this.innerHTML = 'Loading...';
+
+		var args = {ajax:1, ID:0};
+		if ($('Form_EditForm_Locale')) args.local = $('Form_EditForm_Locale').value;
+		
+		url = this.url(args); 
+		
+		var self = this;
+		new Ajax.Request(url, {
+			onSuccess: function(response){
+				self.innerHTML = response.responseText;
+				self.castAsTreeNode(self.firstChild);
+				if (options.onSuccess) options.onSuccess(response);
+			},
+			onFailure: function(response){
+				errorMessage('error loading tree', response);
+				if (options.onError) options.onError(response);
+			}
+		});
+	},
+	
 	/**
 	 * Perform the given code on the each tree node with the given index.
 	 * There could be more than one :-)
@@ -177,11 +219,11 @@ TreeNodeAPI.prototype = {
 			this.cuedNewNodes[this.cuedNewNodes.length] = node;
 		}
 		
-
-		var url = SiteTreeHandlers.loadTree_url;
-		url += (url.match(/\?/)) ? '&' : '?';
-		url += 'ajax=1&ID=' + this.getIdx();
-		if($('Form_EditForm_Locale')) url += "&locale=" + $('Form_EditForm_Locale').value;
+		var args = {ajax:1, ID:this.getIdx()};
+		if ($('Form_EditForm_Locale')) args.local = $('Form_EditForm_Locale').value;
+		
+		url = this.tree.url(args); 
+		
 		new Ajax.Request(url, {
 			onSuccess : this.installSubtree.bind(this),
 			onFailure : this.showSubtreeLoadingError
@@ -479,32 +521,5 @@ ReorganiseAction.prototype = {
 		} else {
 			$('sitetree').stopBeingDraggable();
 		}
-	}
-}
-
-/**
- * Control the site tree filter
- */
-SiteTreeFilterForm = Class.create();
-SiteTreeFilterForm.applyTo('form#search_options');
-SiteTreeFilterForm.prototype = {
-	onsubmit: function() {
-			$('SiteTreeSearchButton').className = 'hidden';
-			$('searchIndicator').className = 'loading';
-			Ajax.SubmitForm(this, null, {
-				onSuccess :  function(response) {
-					$('SiteTreeIsFiltered').value = 1;
-					$('SiteTreeSearchButton').className = '';
-					$('searchIndicator').className = '';
-					$('sitetree_ul').innerHTML = response.responseText;
-					Behaviour.apply($('sitetree_ul'));
-					statusMessage('Filtered tree','good');
-				},
-				onFailure : function(response) {
-					errorMessage('Could not filter site tree<br />' + response.responseText);
-				}
-			});
-		
-		return false;
 	}
 }

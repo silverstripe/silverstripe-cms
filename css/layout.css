@@ -357,17 +357,25 @@ body.stillLoading select {
 		padding-left: 5px;
 		position: relative;
 	}
-		#SearchBox #SiteTreeSearchTerm {
-			padding: 1px 0 2px 0;
+	#SearchControls {
+		float: left;
+		position: relative;
+		margin-top:2px;
+	}
+		#SearchControls label {
+			display: none;
 		}
-	
+		#SearchControls select#SiteTreeFilterAddCriteria {
+			width: 8.8em;
+			padding:1px 0; margin:0;
+		}
 	#searchIndicator {
 		display: none;
 		width: 16px;
 		height: 16px;
 		background: #EFEFEF url(../images/network-save.gif) no-repeat;
 		position: absolute;
-		left: 145px;
+		left: 95px;
 		top: 2px;
 	}
 		#searchIndicator.loading {
@@ -379,13 +387,6 @@ body.stillLoading select {
 		padding-left: 5px;
 		margin-bottom: 4px;
 	}
-	#addCriteria {
-		float: left;
-		width: 100%;
-	}
-		#addCriteria label {
-			display: none;
-		}
 	#sitetree_ul, ul#sitetree {
 		padding: 3px 0 0 3px;
 		clear: left;

@@ -40,7 +40,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'dialog',
 		'duplicate',
 		'duplicatewithchildren',
-		'filtersitetree',
 		'getpagecount',
 		'getversion',
 		'publishall',
@@ -56,7 +55,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'EditForm',
 		'AddPageOptionsForm',
 		'SiteTreeAsUL',
-		'getshowdeletedsubtree'
+		'getshowdeletedsubtree',
+		'getfilteredsubtree',
+		'batchactions'
 	);
 	
 	/**
@@ -75,13 +76,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return array(
 			'Title' => _t('CMSMain.TITLEOPT', 'Title', 0, 'The dropdown title in CMSMain left SiteTreeFilterOptions'),
 			'MenuTitle' => _t('CMSMain.MENUTITLEOPT', 'Navigation Label', 0, 'The dropdown title in CMSMain left SiteTreeFilterOptions'),
-			'ClassName' => _t('CMSMain.PAGETYPEOPT', 'Page Type', 0, "The dropdown title in CMSMain left SiteTreeFilterOptions"), 
 			'Status' => _t('CMSMain.STATUSOPT', 'Status',  0, "The dropdown title in CMSMain left SiteTreeFilterOptions"), 
 			'MetaDescription' => _t('CMSMain.METADESCOPT', 'Description', 0, "The dropdown title in CMSMain left SiteTreeFilterOptions"), 
 			'MetaKeywords' => _t('CMSMain.METAKEYWORDSOPT', 'Keywords', 0, "The dropdown title in CMSMain left SiteTreeFilterOptions")
 		);
 	}
-
+	
 	public function init() {
 		parent::init();
 		
@@ -110,18 +110,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$spellcheckSpec = array();
 		foreach($spellcheckLangs as $lang => $title) $spellcheckSpec[] = "{$title}={$lang}";
 
+		HtmlEditorConfig::get('cms')->setOption('spellchecker_languages', '+' . implode(',', $spellcheckSpec));
+		
+		// @todo Do we need this - I'm pretty sure not, since HtmlEditorField#Field() will include it on being called.
+		//       The only time you might need it is if you are creating an textarea.htmlfield yourself, in which case bad things are going to happen now we've moved configuration
 		// We don't want this showing up in every ajax-response, it should always be present in a CMS-environment
 		if(!Director::is_ajax()) {
 			Requirements::javascript(MCE_ROOT . "tiny_mce_src.js");
-			Requirements::javascriptTemplate(CMS_DIR . "/javascript/tinymce.template.js", array(
-				"ContentCSS" => (SSViewer::current_theme() ? THEMES_DIR . "/" . SSViewer::current_theme() : project()) . "/css/editor.css",
-				"BaseURL" => Director::absoluteBaseURL(),
-				"Lang" => i18n::get_tinymce_lang(),
-				'SpellcheckLangs' => '+' . implode(',', $spellcheckSpec)
-			));
 		}
-		// Always block the HtmlEditorField.js otherwise it will be sent with an ajax request
-		Requirements::block(SAPPHIRE_DIR . '/javascript/HtmlEditorField.js');
 		
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.js');
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain_left.js');
@@ -186,7 +182,18 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		return $tree;
 	}
+	
+	public function getfilteredsubtree() {
+		// Get the tree
+		$tree = $this->getSiteTreeFor($this->stat('tree_class'), $_REQUEST['ID'], null, 'cmsMainMarkingFilterFunction');
 
+		// Trim off the outer tag
+		$tree = ereg_replace('^[ \t\r\n]*<ul[^>]*>','', $tree);
+		$tree = ereg_replace('</ul[^>]*>[ \t\r\n]*$','', $tree);
+		
+		return $tree;
+	}
+	
 	/**
 	 * Returns the SiteTree columns that can be filtered using the the Site Tree Search button as a DataObjectSet
 	 */
@@ -205,44 +212,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$dateField = new CalendarDateField('SiteTreeFilterDate');
 			return $dateField->Field();
 		}
-
-	/**
-	 * Returns a filtered Site Tree
-	 */
-	public function filtersitetree() {
-		// Pre-cache sitetree version numbers for querying efficiency
-		Versioned::prepopulate_versionnumber_cache("SiteTree", "Stage");
-		Versioned::prepopulate_versionnumber_cache("SiteTree", "Live");
-		
-		$className = 'SiteTree';
-		$rootID = null;
-		$obj = $rootID ? $this->getRecord($rootID) : singleton($className);
-		$obj->setMarkingFilterFunction('cmsMainMarkingFilterFunction');
-		$obj->markPartialTree();
-
-		if($p = $this->currentPage()) $obj->markToExpose($p);
-
-		// getChildrenAsUL is a flexible and complex way of traversing the tree
-		$siteTree = $obj->getChildrenAsUL("", '
-					"<li id=\"record-$child->ID\" class=\"" . $child->CMSTreeClasses($extraArg) . "\">" .
-					"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" " . (($child->canEdit() || $child->canAddChildren()) ? "" : "class=\"disabled\"") . " title=\"' . _t('LeftAndMain.PAGETYPE') . '".$child->class."\" >" .
-					($child->TreeTitle()) .
-					"</a>"
-'
-					,$this, true);
-
-		// Wrap the root if needs be.
-
-		if(!$rootID) {
-			$rootLink = $this->Link() . '0';
-			$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-0\" class=\"Root nodelete\"><a href=\"$rootLink\">" .
-				 _t('LeftAndMain.TREESITECONTENT',"Site Content",PR_HIGH,'Root node on left') . "</a>"
-				. $siteTree . "</li></ul>";
-		}
-
-		return $siteTree;
-
-	}
+		public function SiteTreeFilterPageTypeField() {
+			$types = SiteTree::page_type_classes(); array_unshift($types, 'All');
+			$optionsetField = new DropdownField('ClassName', 'ClassName', array_combine($types, $types), 'Any');
+			return $optionsetField->Field();
+		}	
 
 	public function generateDataTreeHints() {
 		$classes = ClassInfo::subclassesFor( $this->stat('tree_class') );
@@ -975,54 +949,12 @@ JS;
 			'DialogType' => 'alert'
 		))->renderWith('Dialog');
 	}
-
+	
 	/**
-	 * Publishes a number of items.
-	 * Called by AJAX
+	 * Batch Actions Handler
 	 */
-	public function publishitems() {
-		// This method can't be called without ajax.
-		if(!Director::is_ajax()) {
-			Director::redirectBack();
-			return;
-		}
-
-		$ids = split(' *, *', $this->requestParams['csvIDs']);
-
-		$notifications = array();
-
-		$idList = array();
-
-		// make sure all the ids are numeric.
-		// Add all the children to the list of IDs if they are missing
-		foreach($ids as $id) {
-			$brokenPageList = '';
-			if(is_numeric($id)) {
-				$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-				
-				if($record) {
-					if($record && !$record->canPublish()) return Security::permissionFailure($this);
-					
-					// Publish this page
-					$record->doPublish();
-
-					// Now make sure the 'changed' icon is removed
-					$publishedRecord = DataObject::get_by_id($this->stat('tree_class'), $id);
-					$JS_title = Convert::raw2js($publishedRecord->TreeTitle());
-					FormResponse::add("\$('sitetree').setNodeTitle($id, '$JS_title');");
-					FormResponse::add("$('Form_EditForm').reloadIfSetTo($record->ID);");
-					$record->destroy();
-					unset($record);
-				}
-			}
-		}
-
-		if (sizeof($ids) > 1) $message = sprintf(_t('CMSMain.PAGESPUB', "%d pages published "), sizeof($ids));
-		else $message = sprintf(_t('CMSMain.PAGEPUB', "%d page published "), sizeof($ids));
-
-		FormResponse::add('statusMessage("'.$message.'","good");');
-
-		return FormResponse::respond();
+	function batchactions() {
+		return new CMSBatchActionHandler($this, 'batchactions');
 	}
 	
 	/**
@@ -1045,97 +977,10 @@ JS;
 	}
 
 	/**
-	 * Delete a number of items.
-	 * This code supports notification
+	 * Returns a list of batch actions
 	 */
-	public function deleteitems() {
-		// This method can't be called without ajax.
-		if(!Director::is_ajax()) {
-			Director::redirectBack();
-			return;
-		}
-
-		$ids = split(' *, *', $_REQUEST['csvIDs']);
-
-		$notifications = array();
-
-		$idList = array();
-
-		// make sure all the ids are numeric.
-		// Add all the children to the list of IDs if they are missing
-		foreach($ids as $id) {
-			$brokenPageList = '';
-			if(is_numeric($id)) {
-				$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-
-				if($record) {
-					if($record && !$record->canDelete()) return Security::permissionFailure($this);	
-					
-					// add all the children for this record if they are not already in the list
-					// this check is a little slower but will prevent circular dependencies
-					// (should they exist, which they probably shouldn't) from causing
-					// the function to not terminate
-					$children = $record->AllChildren();
-
-					if( $children )
-						foreach( $children as $child )
-							if( array_search( $child->ID, $ids ) !== FALSE )
-								$ids[] = $child->ID;
-
-					if($record->hasMethod('BackLinkTracking')) {
-						$brokenPages = $record->BackLinkTracking();
-						foreach($brokenPages as $brokenPage) {
-							$brokenPageList .= "<li style=\"font-size: 65%\">" . $brokenPage->Breadcrumbs(3, true) . "</li>";
-							$brokenPage->HasBrokenLink = true;
-							$notifications[$brokenPage->OwnerID][] = $brokenPage;
-							$brokenPage->writeWithoutVersion();
-						}
-					}
-
-					$oldID = $record->ID;
-					$record->delete();
-					$record->destroy();
-
-					// DataObject::delete_by_id($this->stat('tree_class'), $id);
-
-					// check to see if the record exists on the live site, if it doesn't remove the tree node
-					$liveRecord = Versioned::get_one_by_stage( $this->stat('tree_class'), 'Live', "\"{$this->stat('tree_class')}\".\"ID\"={$id}");
-
-					if($liveRecord) {
-						$liveRecord->IsDeletedFromStage = true;
-						$title = Convert::raw2js($liveRecord->TreeTitle());
-						FormResponse::add("$('sitetree').setNodeTitle($oldID, '$title');");
-						FormResponse::add("$('Form_EditForm').reloadIfSetTo($oldID);");
-					} else {
-						FormResponse::add("var node = $('sitetree').getTreeNodeByIdx('$id');");
-						FormResponse::add("if(node && node.parentTreeNode)	node.parentTreeNode.removeTreeNode(node);");
-						FormResponse::add("$('Form_EditForm').reloadIfSetTo($oldID);");
-					}
-				}
-			}
-		}
-
-		if($notifications) foreach($notifications as $memberID => $pages) {
-			if(class_exists('Page_BrokenLinkEmail')) {
-				$email = new Page_BrokenLinkEmail();
-				$email->populateTemplate(new ArrayData(array(
-					"Recipient" => DataObject::get_by_id("Member", $memberID),
-					"BrokenPages" => new DataObjectSet($pages),
-				)));
-				$email->debug();
-				$email->send();
-			}
-		}
-
-		if (sizeof($ids) > 1) $message = sprintf(_t('CMSMain.PAGESDEL', "%d pages deleted "), sizeof($ids));
-		else $message = sprintf(_t('CMSMain.PAGEDEL', "%d page deleted "), sizeof($ids));
-		if(isset($brokenPageList) && $brokenPageList != '') {
-			$message .= _t('CMSMain.NOWBROKEN',"  The following pages now have broken links:")."<ul>" . addslashes($brokenPageList) . "</ul>" . _t('CMSMain.NOWBROKEN2',"Their owners have been emailed and they will fix up those pages.");
-		}
-
-		FormResponse::add('statusMessage("'.$message.'","good");');
-
-		return FormResponse::respond();
+	function BatchActionList() {
+		return $this->batchactions()->batchActionList();
 	}
 	
 	/**
@@ -1435,6 +1280,7 @@ $filterCache = array();
 
 // TODO: Find way to put this in a class
 function cmsMainMarkingFilterFunction($node) {
+	global $filterCache;
 	// Expand all nodes
 	// $node->markingFinished();
 
@@ -1458,6 +1304,11 @@ function cmsMainMarkingFilterFunction($node) {
 			$failed_filter = true;
 		}
 	}
+	// Check the ClassName
+	if (!empty($_REQUEST['ClassName']) && $_REQUEST['ClassName'] != 'Any') {
+		if ($node->ClassName != $_REQUEST['ClassName']) $failed_filter = true;
+	}
+	
 	// Now check if a specified Criteria attribute matches
 	foreach (CMSMain::T_SiteTreeFilterOptions() as $key => $value)
 	{

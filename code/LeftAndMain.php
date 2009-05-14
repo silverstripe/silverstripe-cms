@@ -153,6 +153,9 @@ class LeftAndMain extends Controller {
 
 		// Audit logging hook
 		if(empty($_REQUEST['executeForm']) && !Director::is_ajax()) $this->extend('accessedCMS');
+
+		// Override HtmlEditorField's config with our own
+		HtmlEditorconfig::set_active('cms');
 		
 		Requirements::css(CMS_DIR . '/css/typography.css');
 		Requirements::css(CMS_DIR . '/css/layout.css');
@@ -465,10 +468,18 @@ class LeftAndMain extends Controller {
 	 * @param $childrenMethod The method to call to get the children of the tree.  For example,
 	 *                        Children, AllChildrenIncludingDeleted, or AllHistoricalChildren
 	 */
-	function getSiteTreeFor($className, $rootID = null, 
-			$childrenMethod = "AllChildrenIncludingDeleted") {
+	function getSiteTreeFor($className, $rootID = null, $childrenMethod = null, $filterFunction = null) {
+		// Default childrenMethod
+		if (!$childrenMethod) $childrenMethod = 'AllChildrenIncludingDeleted';
+		
+		// Get the tree root
 		$obj = $rootID ? $this->getRecord($rootID) : singleton($className);
+		
+		// Mark the nodes of the tree to return
+		if ($filterFunction) $obj->setMarkingFilterFunction($filterFunction);
 		$obj->markPartialTree(30, $this, $childrenMethod);
+		
+		// Ensure current page is exposed
 		if($p = $this->currentPage()) $obj->markToExpose($p);
 
 		// getChildrenAsUL is a flexible and complex way of traversing the tree

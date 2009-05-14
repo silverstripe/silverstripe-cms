@@ -29,15 +29,19 @@
 					<input type="hidden" id="SiteTreeIsFiltered" value="0" />
 					
 					<div id="SearchBox">
-						<input type="text" id="SiteTreeSearchTerm" name="SiteTreeSearchTerm" />
-						<div id="searchIndicator">&nbsp;</div>
-						<input type="submit" id="SiteTreeSearchButton" class="action" value="<% _t('SEARCH') %>" title="<% _t('SEARCHTITLE','Search through URL, Title, Menu Title, &amp; Content') %>" />
+						<div class="SearchCriteria">Text:</div>
+						<input type="text" id="SiteTreeSearchTerm" class='SearchCriteria' name="SiteTreeSearchTerm" />
 					</div>
 					
 					<div id="ContainerSiteTreeFilterDate" class="SearchCriteriaContainer" style="display:none">
 						<div id="TextSiteTreeFilterDate" class="SearchCriteria"><% _t('EDITEDSINCE','Edited Since') %>:</div>
 						<div id="InputSiteTreeFilterDate">$SiteTreeFilterDateField</div>
 					</div>
+					<div id='ContainerSiteTreeFilterClassName' class='SearchCriteriaContainer' style="display:none">
+						<div id="TextSiteTreeFilterClassName" class="SearchCriteria">Page type: </div>
+						<div id="InputSiteTreeFilterClassName">$SiteTreeFilterPageTypeField</div>
+					</div>
+
 					<% control SiteTreeFilterOptions %>
 						<div id="Container$Column" class="SearchCriteriaContainer" style="display:none">
 							<div id="Text$Column" class="SearchCriteria">$Title:</div>
@@ -45,39 +49,60 @@
 						</div>
 					<% end_control %>
 					
-					<div id="addCriteria">
+					<div id='SearchControls'>
 						<select id="SiteTreeFilterAddCriteria">
-							<option value=""><% _t('ADDSEARCHCRITERIA','Add Criteria...') %></option>
+							<option value=""><% _t('ADDSEARCHCRITERIA','Add Criteria') %></option>
 							<option value="SiteTreeFilterDate"><% _t('EDITEDSINCE','Edited Since') %></option>
+							<option value="SiteTreeFilterClassName">Page type</option>
 							<% control SiteTreeFilterOptions %>
 		        				<option value="$Column">$Title</option>
 							<% end_control %>
 						</select>
+						<div id="searchIndicator">&nbsp;</div>
+						<input type="submit" id="SiteTreeSearchClearButton" class="action" value="<% _t('CLEAR') %>" title="<% _t('CLEARTITLE','Clear the search and view all items') %>" />
+						<input type="submit" id="SiteTreeSearchButton" class="action" value="<% _t('SEARCH') %>" title="<% _t('SEARCHTITLE','Search through URL, Title, Menu Title, &amp; Content') %>" />
 					</div>
 				</div>
 				</form>
-				<div id="batchactionsforms" style="display: none">
-					$DeleteItemsForm
-					$PublishItemsForm
-					
-				</div>
-				<div class="checkboxAboveTree">
-					<img id="checkboxActionIndicator" src="cms/images/network-save.gif">
+
+			<div id="batchactionsforms" style="display: none">
+				<form class="actionparams" style="border:0" id="batchactions_options" action="">
+					<p><% _t('SELECTPAGESACTIONS','Select the pages that you want to change &amp; then click an action:') %></p>
+
+					<input type="hidden" name="csvIDs" />
+
 					<div>
-						<input type="checkbox" id="sortitems" />
-						<label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
+						<select id="choose_batch_action">
+							<% control BatchActionList %>
+							<option value="$Link" class="{doingText:'$DoingText'}">$Title</option>
+							<% end_control %>
+						</select>
+						<input id="batchactions_go" type="submit" class="action" value="Go" />
 					</div>
-					<div>
-						<input type="checkbox" id="showdeletedpages" />
-						<label for="showdeletedpages"><% _t('SHOW_DELETED_PAGES','Show deleted pages', PR_HIGH) %></label>
-					</div>
+				</form>
+			</div>
+			<div class="checkboxAboveTree">
+				<img id="checkboxActionIndicator" src="cms/images/network-save.gif">
+				<div>
+					<input type="checkbox" id="sortitems" />
+					<label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
 				</div>
-					
-				<% if IsTranslatableEnabled %>
-				<div id="LangSelector_holder">
-					Language: $LangSelector
+				<div>
+					<input type="checkbox" id="publishpage_show_drafts" />
+					<label for="publishpage_show_drafts"><% _t('SHOWONLYCHANGED','Show only changed pages') %></label>
 				</div>
-				<% end_if %>
+				<div>
+					<input type="checkbox" id="showdeletedpages" />
+					<label for="showdeletedpages"><% _t('SHOW_DELETED_PAGES','Show deleted pages', PR_HIGH) %></label>
+				</div>
+			</div>
+
+			<% if IsTranslatableEnabled %>
+			<div id="LangSelector_holder">
+				Language: $LangSelector
+			</div>
+			<% end_if %>
+
 			</div>
 			<div id="sitetree_ul">
 				$SiteTreeAsUL

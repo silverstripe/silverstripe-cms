@@ -21,8 +21,7 @@ class CMSMainTest extends FunctionalTest {
 			$response->getBody()
 		);
 
-		$response = $this->post('admin/cms/publishitems', array('csvIDs' => '1,2', 'ajax' => 1));
-		
+		$response = Director::test("admin/cms/batchactions/publish", array('csvIDs' => '1,2', 'ajax' => 1), $session);
 		$this->assertContains('setNodeTitle(1, \'Page 1\');', $response->getBody());
 		$this->assertContains('setNodeTitle(2, \'Page 2\');', $response->getBody());
 		
