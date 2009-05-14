@@ -1405,19 +1405,7 @@ JS;
     function LangSelector() {
 		$member = Member::currentUser(); //check to see if the current user can switch langs or not
 		if(Permission::checkMember($member, 'VIEW_LANGS')) {
-            $allKey = _t('Form.LANGAOTHER', "Other languages");
-            $all = i18n::get_common_locales(); //all languages
-            $used = Translatable::get_existing_content_languages(); //languages currently in use
-            if( $used && count($used) ) {
-                foreach($used as $index => $code) {
-                    if(!$code) continue;
-                    $available[$index] = $all[$index];
-                    unset($all[$index]);
-                }
-                $langs[ _t('Form.LANGAVAIL', "Available languages") ] = (isset( $available )) ? $available : array();
-            }
-            $langs[ _t('Form.LANGAOTHER', "Other languages") ] = $all;
-            return new GroupedDropdownField('LangSelector', 'Language', $langs, Translatable::current_locale());
+             return new LanguageDropdownField('LangSelector', 'Language', array(), 'SiteTree', 'Locale-English');
         }
         
         //user doesn't have permission to switch langs so just show a string displaying current language
