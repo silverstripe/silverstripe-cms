@@ -1,7 +1,9 @@
 <?php
-
 /**
  * Special request handler for admin/batchaction
+ *  
+ * @package cms
+ * @subpackage batchaction
  */
 class CMSBatchActionHandler extends RequestHandler {
 	static $batch_actions = array(
