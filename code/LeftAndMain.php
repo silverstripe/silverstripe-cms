@@ -779,6 +779,7 @@ JS;
 			$parentID = 0;
 		}
 		$_REQUEST['ajax'] = 1;
+		$cleanupJS = '';
 
 		if(is_numeric($id) && is_numeric($parentID) && $id != $parentID) {
 			$node = DataObject::get_by_id($this->stat('tree_class'), $id);
@@ -1103,8 +1104,10 @@ JS;
 	 */
 	function callPageMethod($data, $form) {
 		$methodName = $form->buttonClicked()->extraData();
-		$record = $this->CurrentPage();
-		return $record->$methodName($data, $form);		
+		$record = $this->currentPage();
+		if(!$record) return false;
+		
+		return $record->$methodName($data, $form);
 	}
 	
 	/**
