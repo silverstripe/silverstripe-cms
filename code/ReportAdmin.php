@@ -33,12 +33,10 @@ class ReportAdmin extends LeftAndMain {
 		// always be present in a CMS environment
 		if(!Director::is_ajax()) {
 			Requirements::javascript(MCE_ROOT . "tiny_mce_src.js");
-			Requirements::javascriptTemplate(CMS_DIR . '/javascript/tinymce.template.js', array(
-				'ContentCSS' => project() . '/css/editor.css',
-				'BaseURL' => Director::absoluteBaseURL(),
-				'Lang' => i18n::get_tinymce_lang()
-			));
+			HtmlEditorConfig::get('cms')->setOption('ContentCSS', project() . '/css/editor.css');
+			HtmlEditorConfig::get('cms')->setOption('Lang', i18n::get_tinymce_lang());
 		}
+		
 		// Always block the HtmlEditorField.js otherwise it will be sent with an ajax request
 		Requirements::block(SAPPHIRE_DIR . '/javascript/HtmlEditorField.js');
 	}

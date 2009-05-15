@@ -906,7 +906,7 @@ Behaviour.register({
             }
             this.resetChanged = function() {
                 inst = tinyMCE.getInstanceById(this.id);
-                inst.startContent = tinymce.trim(inst.getContent({format : 'raw', no_events : 1}));
+                if (inst) inst.startContent = tinymce.trim(inst.getContent({format : 'raw', no_events : 1}));
             }
         }
     }
