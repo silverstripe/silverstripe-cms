@@ -183,7 +183,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	
 	public function getfilteredsubtree() {
 		// Get the tree
-		$tree = $this->getSiteTreeFor($this->stat('tree_class'), $_REQUEST['ID'], null, 'cmsMainMarkingFilterFunction');
+		$tree = $this->getSiteTreeFor($this->stat('tree_class'), $_REQUEST['ID'], null, array(new CMSMainMarkingFilter(), 'mark'));
 
 		// Trim off the outer tag
 		$tree = ereg_replace('^[ \t\r\n]*<ul[^>]*>','', $tree);
@@ -1220,75 +1220,72 @@ JS;
 	}
 }
 
-$filterCache = array();
-
-// TODO: Find way to put this in a class
-function cmsMainMarkingFilterFunction($node) {
-	global $filterCache;
-	// Expand all nodes
-	// $node->markingFinished();
-
-	$failed_filter = false;
-	// First check for the generic search term in the URLSegment, Title, MenuTitle, & Content
-	if (!empty($_REQUEST['SiteTreeSearchTerm'])) {
-		// For childless nodes, show only those matching the filter
-		$filter = strtolower($_REQUEST['SiteTreeSearchTerm']);
-		if ( strpos( strtolower($node->URLSegment) , $filter) === false
-			&& strpos( strtolower($node->Title) , $filter) === false
-			&& strpos( strtolower($node->MenuTitle) , $filter) === false
-			&& strpos( strtolower($node->Content) , $filter) === false) {
-			$failed_filter = true;
-		}
-	}
-	// Check the 'Edited Since' date
-	if (!empty($_REQUEST['SiteTreeFilterDate'])) {
-		$edited_since =  mktime(0, 0, 0, substr($_REQUEST['SiteTreeFilterDate'], 3, 2), 
-					substr($_REQUEST['SiteTreeFilterDate'], 0, 2), substr($_REQUEST['SiteTreeFilterDate'], 6, 4));
-		if ( strtotime($node->LastEdited) < $edited_since ) {
-			$failed_filter = true;
-		}
-	}
-	// Check the ClassName
-	if (!empty($_REQUEST['ClassName']) && $_REQUEST['ClassName'] != 'Any') {
-		if ($node->ClassName != $_REQUEST['ClassName']) $failed_filter = true;
-	}
+class CMSMainMarkingFilter {
 	
-	// Now check if a specified Criteria attribute matches
-	foreach (CMSMain::T_SiteTreeFilterOptions() as $key => $value)
-	{
-		if (!empty($_REQUEST[$key])) {
-			$parameterName = $key;
-			$filter = strtolower($_REQUEST[$key]);
-			// Show node only if the filter string exists anywere in the filter paramater (ignoring case)
-			if (strpos( strtolower($node->$parameterName) , $filter) === false) {
-				$failed_filter = true;
+	function __construct() {
+		$this->ids = array();
+		$this->expanded = array();
+		
+		$where = array();
+		
+		// Match against URLSegment, Title, MenuTitle & Content
+		if (isset($_REQUEST['SiteTreeSearchTerm'])) {
+			$term = Convert::raw2sql($_REQUEST['SiteTreeSearchTerm']);
+			$where[] = "`URLSegment` LIKE '%$term%' OR `Title` LIKE '%$term%' OR `MenuTitle` LIKE '%$term%' OR `Content` LIKE '%$term%'";
+		}
+		
+		// Match against date
+		if (isset($_REQUEST['SiteTreeFilterDate'])) {
+			$date = $_REQUEST['SiteTreeFilterDate'];
+			$date = ((int)substr($date,6,4)) . '-' . ((int)substr($date,3,2)) . '-' . ((int)substr($date,0,2));
+			$where[] = "`LastEdited` > '$date'"; 
+		}
+		
+		// Match against exact ClassName
+		if (isset($_REQUEST['ClassName']) && $_REQUEST['ClassName'] != 'All') {
+			$klass = Convert::raw2sql($_REQUEST['ClassName']);
+			$where[] = "`ClassName` = '$klass'";
+		}
+		
+		// Partial string match against a variety of fields 
+		foreach (CMSMain::T_SiteTreeFilterOptions() as $key => $value) {
+			if (!empty($_REQUEST[$key])) {
+				$match = Convert::raw2sql($_REQUEST[$key]);
+				$where[] = "`$key` LIKE '%$match%'";
+			}
+		}
+		
+		$where = empty($where) ? '' : 'WHERE (' . implode(') AND (',$where) . ')';
+		
+		$parents = array();
+		
+		/* Do the actual search */
+		$res = DB::query('SELECT `ParentID`, `ID` FROM SiteTree '.$where);
+		if (!$res) return;
+		
+		/* And keep a record of parents we don't need to get parents of themselves, as well as IDs to mark */
+		foreach($res as $row) {
+			if ($row['ParentID']) $parents[$row['ParentID']] = true;
+			$this->ids[$row['ID']] = true;
+		}
+		
+		/* We need to recurse up the tree, finding ParentIDs for each ID until we run out of parents */
+		while (!empty($parents)) {
+			$res = DB::query('SELECT `ParentID`, `ID` FROM SiteTree WHERE `ID` in ('.implode(',',array_keys($parents)).')');
+			$parents = array();
+
+			foreach($res as $row) {
+				if ($row['ParentID']) $parents[$row['ParentID']] = true;
+				$this->ids[$row['ID']] = true;
+				$this->expanded[$row['ID']] = true;
 			}
 		}
 	}
-	// Each filter must match or it fails
-	if (true == $failed_filter) {
-		// Don't ever hide nodes with children, because otherwise if one of their children matches the search, it wouldn't be shown.
-		if($node->AllChildrenIncludingDeleted()->count() > 0) {
-			// Open all nodes with children so it is easy to see any children that match the search.
-		
-			foreach($node->AllChildrenIncludingDeleted() as $childNode) {
-				if(cmsMainMarkingFilterFunction($childNode)) {
-	 				$node->markOpened();
-	 				$filterCache[$node->ID] = true;
-					return true;
-				}
-			}
-		}
 	
-		$filterCache[$node->ID] = false;
-		return false;
-	} else {
-		if($node->AllChildrenIncludingDeleted()->count() > 0) {
-			$node->markOpened();
-		}
-		
-		$filterCache[$node->ID] = true;
-		return true;
+	function mark($node) {
+		$id = $node->ID;
+		if (array_key_exists($id, $this->expanded)) $node->markOpened();
+		return array_key_exists($id, $this->ids) ? $this->ids[$id] : false;
 	}
 }
 
