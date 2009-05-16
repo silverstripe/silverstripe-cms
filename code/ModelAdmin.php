@@ -191,9 +191,9 @@ abstract class ModelAdmin extends LeftAndMain {
 		$models = $this->getManagedModels();
 		$forms  = new DataObjectSet();
 		
-		foreach($models as $class) {
+		foreach($models as $title => $class) {
 			$forms->push(new ArrayData(array (
-				'Title'     => singleton($class)->singular_name(),
+				'Title'     => (is_string($title) ? $title : singleton($modelClass)->singular_name()),
 				'ClassName' => $class,
 				'Content'   => $this->$class()->getModelSidebar()
 			)));
