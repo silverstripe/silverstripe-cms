@@ -188,18 +188,14 @@ abstract class ModelAdmin extends LeftAndMain {
 	 * @return DataObjectSet of forms 
 	 */
 	protected function getModelForms() {
-		$modelClasses = $this->getManagedModels();
+		$models = $this->getManagedModels();
+		$forms  = new DataObjectSet();
 		
-		$forms = new DataObjectSet();
-		foreach($modelClasses as $modelClass) {
-			$this->$modelClass()->SearchForm();
-
-			$forms->push(new ArrayData(array(
-				'SearchForm' => $this->$modelClass()->SearchForm(),
-				'CreateForm' => $this->$modelClass()->CreateForm(),
-				'ImportForm' => $this->$modelClass()->ImportForm(),
-				'Title' => singleton($modelClass)->singular_name(),
-				'ClassName' => $modelClass,
+		foreach($models as $class) {
+			$forms->push(new ArrayData(array (
+				'Title'     => singleton($class)->singular_name(),
+				'ClassName' => $class,
+				'Content'   => $this->$class()->getModelSidebar()
 			)));
 		}
 		
@@ -313,9 +309,18 @@ class ModelAdmin_CollectionController extends Controller {
 		$class = $this->parentController->stat('record_controller_class');
 		return new $class($this, $request);
 	}
-
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	
+	// -----------------------------------------------------------------------------------------------------------------
+	
+	/**
+	 * Get a combination of the Search, Import and Create forms that can be inserted into a {@link ModelAdmin} sidebar.
+	 *
+	 * @return string
+	 */
+	public function getModelSidebar() {
+		return $this->renderWith('ModelSidebar');
+	}
+	
 	/**
 	 * Get a search form for a single {@link DataObject} subclass.
 	 * 
