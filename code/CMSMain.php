@@ -95,7 +95,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			} else {
 				$this->Locale = Translatable::default_locale();
 			}
-			Translatable::set_reading_locale($this->Locale);
+			Translatable::set_current_locale($this->Locale);
 		}
 		
 		// collect languages for TinyMCE spellchecker plugin
@@ -1133,7 +1133,7 @@ JS;
 		$record = $this->getRecord($originalLangID);
 		
 		$this->Locale = $langCode;
-		Translatable::set_reading_locale($langCode);
+		Translatable::set_current_locale($langCode);
 		
 		// Create a new record in the database - this is different
 		// to the usual "create page" pattern of storing the record
