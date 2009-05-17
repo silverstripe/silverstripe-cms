@@ -198,7 +198,16 @@ SiteTreeFilterForm.prototype = {
 	onsubmit: function() {
 		var filters = $H();
 		
-		if (this.clicked == 'Search') {
+		if (this.clicked == 'Clear') {
+			Form.getElements(this).each(function(el){
+				if (el.type == 'text') el.value = '';
+				else if (el.type == 'select-one') el.value = 'All';
+			});
+			document.getElementsBySelector('.SearchCriteriaContainer', this).each(function(el){
+				Element.hide(el);
+			})
+		}
+		else {
 			Form.getElements(this).each(function(el){
 				if (el.type == 'text') {
 					if ($F(el)) filters[el.name] = $F(el);
@@ -207,15 +216,6 @@ SiteTreeFilterForm.prototype = {
 					if ($F(el) && $F(el) != 'All') filters[el.name] = $F(el);
 				}
 			});
-		}
-		else {
-			Form.getElements(this).each(function(el){
-				if (el.type == 'text') el.value = '';
-				else if (el.type == 'select-one') el.value = 'All';
-			});
-			document.getElementsBySelector('.SearchCriteriaContainer', this).each(function(el){
-				Element.hide(el);
-			})
 		}
 		
 		if (filters.keys().length) {
