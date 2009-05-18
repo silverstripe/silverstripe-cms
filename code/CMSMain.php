@@ -108,15 +108,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$spellcheckSpec = array();
 		foreach($spellcheckLangs as $lang => $title) $spellcheckSpec[] = "{$title}={$lang}";
 
+		// Set custom options for TinyMCE specific to CMSMain
 		HtmlEditorConfig::get('cms')->setOption('spellchecker_languages', '+' . implode(',', $spellcheckSpec));
-		
-		// @todo Do we need this - I'm pretty sure not, since HtmlEditorField#Field() will include it on being called.
-		//       The only time you might need it is if you are creating an textarea.htmlfield yourself, in which case bad things are going to happen now we've moved configuration
-		// We don't want this showing up in every ajax-response, it should always be present in a CMS-environment
-		if(!Director::is_ajax()) {
-			Requirements::javascript(MCE_ROOT . "tiny_mce_src.js");
-		}
-		
+				
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.js');
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain_left.js');
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain_right.js');

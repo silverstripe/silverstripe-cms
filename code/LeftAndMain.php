@@ -882,6 +882,9 @@ JS;
 	}
 
 	public function EditForm() {
+		// Include JavaScript to ensure HtmlEditorField works.
+		HtmlEditorField::include_js();
+		
 		$record = $this->currentPage();
 		if(!$record) return false;
 		
