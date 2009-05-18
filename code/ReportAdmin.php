@@ -29,13 +29,9 @@ class ReportAdmin extends LeftAndMain {
 
 		Requirements::css(CMS_DIR . '/css/ReportAdmin.css');		
 		
-		// We don't want this showing up in every ajax-response, it should
-		// always be present in a CMS environment
-		if(!Director::is_ajax()) {
-			Requirements::javascript(MCE_ROOT . "tiny_mce_src.js");
-			HtmlEditorConfig::get('cms')->setOption('ContentCSS', project() . '/css/editor.css');
-			HtmlEditorConfig::get('cms')->setOption('Lang', i18n::get_tinymce_lang());
-		}
+		// Set custom options for TinyMCE specific to ReportAdmin
+		HtmlEditorConfig::get('cms')->setOption('ContentCSS', project() . '/css/editor.css');
+		HtmlEditorConfig::get('cms')->setOption('Lang', i18n::get_tinymce_lang());
 		
 		// Always block the HtmlEditorField.js otherwise it will be sent with an ajax request
 		Requirements::block(SAPPHIRE_DIR . '/javascript/HtmlEditorField.js');
