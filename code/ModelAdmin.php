@@ -35,6 +35,21 @@ abstract class ModelAdmin extends LeftAndMain {
 	/**
 	 * List of all managed {@link DataObject}s in this interface.
 	 *
+	 * Simple notation with class names only:
+	 * <code>
+	 * array('MyObjectClass','MyOtherObjectClass')
+	 * </code>
+	 * 
+	 * Extended notation with options (e.g. custom titles):
+	 * <code>
+	 * array(
+	 *   'MyObjectClass' => array('title' => "Custom title")
+	 * )
+	 * </code>
+	 * 
+	 * Available options:
+	 * - 'title': Set custom titles for the tabs or dropdown names
+	 *
 	 * @var array|string
 	 */
 	public static $managed_models = null;
@@ -155,9 +170,10 @@ abstract class ModelAdmin extends LeftAndMain {
 	 */
 	function defineMethods() {
 		parent::defineMethods();
-		foreach($this->getManagedModels() as $ClassName) {
-			$this->addWrapperMethod($ClassName, 'bindModelController');
-			self::$allowed_actions[] = $ClassName;
+		foreach($this->getManagedModels() as $class => $options) {
+			if(is_numeric($class)) $class = $options;
+			$this->addWrapperMethod($class, 'bindModelController');
+			self::$allowed_actions[] = $class;
 		}
 	}
 	
@@ -191,9 +207,10 @@ abstract class ModelAdmin extends LeftAndMain {
 		$models = $this->getManagedModels();
 		$forms  = new DataObjectSet();
 		
-		foreach($models as $title => $class) {
+		foreach($models as $class => $options) { 
+			if(is_numeric($class)) $class = $options;
 			$forms->push(new ArrayData(array (
-				'Title'     => (is_string($title) ? $title : singleton($class)->singular_name()),
+				'Title'     => (is_array($options) && isset($options['title'])) ? $options['title'] : singleton($class)->singular_name(),
 				'ClassName' => $class,
 				'Content'   => $this->$class()->getModelSidebar()
 			)));
@@ -236,7 +253,10 @@ abstract class ModelAdmin extends LeftAndMain {
 		// fallback to all defined models if not explicitly defined
 		if(is_null($importers)) {
 			$models = $this->getManagedModels();
-			foreach($models as $modelName) $importers[$modelName] = 'CsvBulkLoader';
+			foreach($models as $modelName => $options) {
+				if(is_numeric($modelName)) $modelName = $options;
+				$importers[$modelName] = 'CsvBulkLoader';
+			}
 		}
 		
 		return $importers;
