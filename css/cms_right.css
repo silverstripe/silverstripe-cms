@@ -32,14 +32,14 @@
 	.right form div.TableListField table i,
 	.right form .calendardate input,
 	.right form .dropdowntime input {
-		font-size: 14px;
+		font-size: 12px;
 	}
 		.right form .field span.readonly {
 			margin: 0;
 			width: auto;
 		}
 			.right form #URL .fieldgroup * {
-				font-size: 14px;
+				font-size: 12px;
 				font-weight: bold;
 			}
 			.right form .fieldgroupField {
@@ -412,10 +412,10 @@ div.filterBox {
 /**
  * i18n
  */
-div.originallang_holder.field.CompositeField.nolabel {
+.right form div.originallang_holder {
 	border: 1px dashed #aaa;
 	margin-bottom: 10px; 
-	margin-left: 0;
+	margin-left: 0 !important;
 	padding: 8px 0 6px 5px;
 }
 
@@ -425,14 +425,14 @@ div.originallang_holder.field.CompositeField.nolabel {
 	font-style: italic;
 }
 
-.right form .field.CompositeField .originallang label.left,
-.right form .field.CompositeField.originallang_holder label.left {
-	margin-left: 0;
-	width: auto;
-	float: none;
+.right form .CompositeField .originallang label.left,
+.right form div.originallang_holder label.left {
+	margin-left: 0 !important;
+	width: auto !important;
+	float: none !important;
 }
 
-.right form div.field.CompositeField .originallang .middleColumn {
+.right form div.CompositeField .originallang .middleColumn {
 	clear: left;
 }
 
@@ -442,7 +442,7 @@ div.originallang_holder.field.CompositeField.nolabel {
 	padding-right: 4px;
 }
 
-.right form .field.createTranslationButton .middleColumn {
+.right form .createTranslationButton .middleColumn {
 	background: none;
 }
 
