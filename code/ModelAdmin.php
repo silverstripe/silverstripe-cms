@@ -639,12 +639,16 @@ class ModelAdmin_CollectionController extends Controller {
 	}
 	
 	/**
-	 * Shows results from the "search" action in a TableListField.
+	 * Creates and returns the result table field for resultsForm.
+	 * Uses {@link resultsTableClassName()} to initialise the formfield. 
+	 * Method is called from {@link ResultsForm}.
 	 *
-	 * @return Form
+	 * @param array $searchCriteria passed through from ResultsForm 
+	 *
+	 * @return TableListField 
 	 */
-	function ResultsForm($searchCriteria) {
-		if($searchCriteria instanceof HTTPRequest) $searchCriteria = $searchCriteria->getVars();
+	function getResultsTable($searchCriteria) {
+		
 		$summaryFields = $this->getResultColumns($searchCriteria);
 
 		$className = $this->parentController->resultsTableClassName();
@@ -653,20 +657,36 @@ class ModelAdmin_CollectionController extends Controller {
 			$this->modelClass,
 			$summaryFields
 		);
-		
+
 		$tf->setCustomQuery($this->getSearchQuery($searchCriteria));
 		$tf->setPageSize($this->parentController->stat('page_length'));
 		$tf->setShowPagination(true);
 		// @todo Remove records that can't be viewed by the current user
 		$tf->setPermissions(array_merge(array('view','export'), TableListField::permissions_for_object($this->modelClass)));
-		
+
 		// csv export settings (select all columns regardless of user checkbox settings in 'ResultsAssembly')
 		$exportFields = $this->getResultColumns($searchCriteria, false);
 		$tf->setFieldListCsv($exportFields);
-		
+
 		$url = '<a href=\"' . $this->Link() . '/$ID/edit\">$value</a>';
 		$tf->setFieldFormatting(array_combine(array_keys($summaryFields), array_fill(0,count($summaryFields), $url)));
-
+	
+		return $tf;
+	}
+	
+	/**
+	 * Shows results from the "search" action in a TableListField. 
+	 *
+	 * @uses getResultsTable()
+	 *
+	 * @return Form
+	 */
+	function ResultsForm($searchCriteria) {
+		
+		if($searchCriteria instanceof HTTPRequest) $searchCriteria = $searchCriteria->getVars();
+		
+		$tf = $this->getResultsTable($searchCriteria);
+		
 		// implemented as a form to enable further actions on the resultset
 		// (serverside sorting, export as CSV, etc)
 		$form = new Form(
