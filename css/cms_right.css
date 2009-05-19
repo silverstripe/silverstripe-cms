@@ -32,14 +32,14 @@
 	.right form div.TableListField table i,
 	.right form .calendardate input,
 	.right form .dropdowntime input {
-		font-size: 14px;
+		font-size: 12px;
 	}
 		.right form .field span.readonly {
 			margin: 0;
 			width: auto;
 		}
 			.right form #URL .fieldgroup * {
-				font-size: 14px;
+				font-size: 12px;
 				font-weight: bold;
 			}
 			.right form .fieldgroupField {
