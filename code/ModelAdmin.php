@@ -49,6 +49,8 @@ abstract class ModelAdmin extends LeftAndMain {
 	 * 
 	 * Available options:
 	 * - 'title': Set custom titles for the tabs or dropdown names
+	 * - 'collection_controller': Set a custom class to use as a collection controller for this model
+	 * - 'record_controller': Set a custom class to use as a record controller for this model
 	 *
 	 * @var array|string
 	 */
@@ -181,7 +183,14 @@ abstract class ModelAdmin extends LeftAndMain {
 	 * Base scaffolding method for returning a generic model instance.
 	 */
 	public function bindModelController($model, $request = null) {
-		$class = $this->stat('collection_controller_class');
+		$models = $this->getManagedModels();
+		
+		if(isset($models[$model]['collection_controller'])) {
+			$class = $models[$model]['collection_controller'];
+		} else {
+			$class = $this->stat('collection_controller_class');
+		}
+		
 		return new $class($this, $model);
 	}
 	
@@ -325,8 +334,16 @@ class ModelAdmin_CollectionController extends Controller {
 	 * @param HTTPRequest $request
 	 * @return RecordController
 	 */
-	function handleID($request) {
-		$class = $this->parentController->stat('record_controller_class');
+	public function handleID($request) {
+		$models = $this->parentController->getManagedModels();
+		$model  = $this->getModelClass();
+		
+		if(isset($models[$model]['record_controller'])) {
+			$class = $models[$model]['record_controller'];
+		} else {
+			$class = $this->parentController->stat('record_controller_class');
+		}
+		
 		return new $class($this, $request);
 	}
 	
