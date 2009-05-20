@@ -290,25 +290,6 @@ function prepareAjaxActions(actions, formName, tabName) {
 }
 
 /**
- * @deprecated 2.3 Please use ss.i18n
- */
-function ingize(val) {
-	var ingWord, suffix;
-	if(!val) val = "process";
-
-	if(val.match(/^([^ ]+) +(.*)$/)) {
-		ingWord = RegExp.$1;
-		suffix = ' ' + RegExp.$2 + '...';
-	} else {
-		ingWord = val;
-		suffix = '...';
-	}
-	
-	if(ingWord.match(/^(.*)e$/)) return RegExp.$1 + 'ing' + suffix;
-	else return ingWord + 'ing' + suffix;
-}
-
-/**
  * Submit the given form and evaluate the Ajax response.
  * Needs to be bound to an object with the following parameters to work:
  *  - form
