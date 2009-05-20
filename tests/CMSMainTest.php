@@ -42,6 +42,7 @@ class CMSMainTest extends FunctionalTest {
 		return;
 		$classes = ClassInfo::subclassesFor("SiteTree");
 		array_shift($classes);
+		unset($classes['GhostPage']); //Ghost Pages aren't used anymore
 
 		foreach($classes as $class) {
 			$page = new $class();
@@ -67,6 +68,7 @@ class CMSMainTest extends FunctionalTest {
 	function testThatGetCMSFieldsWorksOnEveryPageType() {
 		$classes = ClassInfo::subclassesFor("SiteTree");
 		array_shift($classes);
+		unset($classes['GhostPage']); //Ghost Pages aren't used anymore
 
 		foreach($classes as $class) {
 			$page = new $class();
