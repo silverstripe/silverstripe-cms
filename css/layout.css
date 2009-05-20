@@ -112,7 +112,7 @@ input.hidden {
 }
 
 /* Overrides - TODO Find a better place to put them */
-form#Form_EditForm fieldset {
+form#Form_EditForm fieldset, form#Form_AddForm fieldset {
 	height: 100%;
 	border: none;
 }
