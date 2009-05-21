@@ -26,9 +26,7 @@ class WidgetAreaEditor extends FormField {
 	
 	function UsedWidgets() {
 		$relationName = $this->name;
-		
-		$widgets = $this->form->getRecord()->$relationName()->Widgets();
-		
+		$widgets = $this->form->getRecord()->getComponent($relationName)->Widgets();
 		return $widgets;
 	}
 	
@@ -38,14 +36,14 @@ class WidgetAreaEditor extends FormField {
 	
 	function Value() {
 		$relationName = $this->name;
-		return $this->form->getRecord()->$relationName()->ID;
+		return $this->form->getRecord()->getComponent($relationName)->ID;
 	}
 	
 	function saveInto(DataObject $record) {
 		$name = $this->name;
 		$idName = $name . "ID";
 		
-		$widgetarea = $record->$name();
+		$widgetarea = $record->getComponent($name);
 		$widgetarea->write();
 		
 		$record->$idName = $widgetarea->ID;
