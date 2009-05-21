@@ -192,7 +192,7 @@ SiteTreeFilterForm.prototype = {
 	initialize: function() {
 		var self = this;
 		Form.getElements(this).each(function(el){
-			if (el.type == 'submit') el.onclick = function(){self.clicked = $F(this); console.log(self.clicked)};
+			if (el.type == 'submit') el.onclick = function(){self.clicked = $F(this);};
 		});
 	},
 	onsubmit: function() {

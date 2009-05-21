@@ -43,7 +43,6 @@ TreeAPI.prototype = {
 		var url = this.customURL ? this.customURL : SiteTreeHandlers.loadTree_url; 
 		url = url + (url.match(/\?/) ? '&' : '?') + args.toQueryString();
 
-		console.log('Loading tree from ' + url);
 		return url;
 	},
 	
