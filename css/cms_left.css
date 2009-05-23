@@ -394,15 +394,14 @@ ul.tree span.untranslated a:visited {
 	width: 70%;
 }
 
+/* Change detection CSS */
 #right ins, #right ins * {
-	background-color: green;
-	color: white;
+	background-color: #99EE66;
 	text-decoration: none;
 }
 
 #right del, #right del *{
-	background-color: red;
-	color: white;
+	background-color: #FF9999;
 	text-decoration: strikethough;
 }
 
