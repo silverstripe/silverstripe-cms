@@ -11,7 +11,7 @@
 			</p>
 		<% end_if %>
 	<% else %>
-		<p><% _t('COMMENTSDISABLED', 'Posting Comments has been disabled') %>.</p>	
+		<p><% _t('COMMENTSDISABLED', 'Posting comments has been disabled') %>.</p>	
 	<% end_if %>
 
 	<h4><% _t('COMMENTS','Comments') %></h4>
