@@ -5,10 +5,13 @@
 		<% if CanPostComment %>
 			$PostCommentForm
 		<% else %>
-			<p>You can't post comments until you have logged in<% if PostingRequiresPermission %>, and that you have an appropriate permission level<% end_if %>. Please <a href="Security/login?BackURL={$Page.URLSegment}/" title="Login to post a comment">login by clicking here</a>.</p>
+			<p><% _t('COMMENTLOGINERROR', 'You cannot post comments until you have logged in') %>,
+				<% if PostingRequiresPermission %><% _t('COMMENTPERMISSIONERROR', 'and that you have an appropriate permission level') %><% end_if %>. 
+				<a href="Security/login?BackURL={$Page.URLSegment}/" title="Login to post a comment"><% _t('COMMENTPOSTLOGIN', 'Login Here') %></a>.
+			</p>
 		<% end_if %>
 	<% else %>
-		<p><% _t('COMMENTSDISABLED', 'Posting Comments has been Disabled') %>.</p>	
+		<p><% _t('COMMENTSDISABLED', 'Posting Comments has been disabled') %>.</p>	
 	<% end_if %>
 
 	<h4><% _t('COMMENTS','Comments') %></h4>
