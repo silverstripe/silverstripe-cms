@@ -921,7 +921,13 @@ class ModelAdmin_RecordController extends Controller {
 	 */
 	function doSave($data, $form, $request) {
 		$form->saveInto($this->currentRecord);
-		$this->currentRecord->write();
+		
+		try {
+			$this->currentRecord->write();
+		} catch(ValidationException $e) {
+			$form->sessionMessage($e->getResult()->message(), 'bad');
+		}
+		
 		
 		// Behaviour switched on ajax.
 		if(Director::is_ajax()) {
