@@ -44,6 +44,17 @@ class PageCommentInterface extends RequestHandler {
 	static $use_ajax_commenting = true;
 	
 	/**
+	 * If this is true then we should show the existing comments on 
+	 * the page even when we have disabled the comment form. 
+	 *
+	 * If this is false the form + existing comments will be hidden
+	 * 
+	 * @var bool
+	 * @since 2.4 - Always show them by default
+	 */
+	static $show_comments_when_disabled = true;
+	
+	/**
 	 * Create a new page comment interface
 	 * @param controller The controller that the interface is used on
 	 * @param methodName The method to return this PageCommentInterface object
@@ -61,7 +72,8 @@ class PageCommentInterface extends RequestHandler {
 	}
 	
 	/**
-	 * See @link PageCommentInterface::$comments_require_login
+	 * See {@link PageCommentInterface::$comments_require_login}
+	 *
 	 * @param boolean state The new state of this static field
 	 */
 	static function set_comments_require_login($state) {
@@ -69,13 +81,22 @@ class PageCommentInterface extends RequestHandler {
 	}
 	
 	/**
-	 * See @link PageCommentInterface::$comments_require_permission
+	 * See {@link PageCommentInterface::$comments_require_permission}
+	 *
 	 * @param string permission The permission to check against.
 	 */
 	static function set_comments_require_permission($permission) {
 		self::$comments_require_permission = $permission;
 	}
 	
+	/**
+	 * See {@link PageCommentInterface::$show_comments_when_disabled}
+	 * 
+	 * @param bool - show / hide the existing comments when disabled
+	 */
+	static function set_show_comments_when_disabled($state) {
+		self::$show_comments_when_disabled = $state;
+	}
 	/**
 	 * See {@link PageCommentInterface::$use_ajax_commenting}
 	 * @param bool
@@ -124,6 +145,9 @@ class PageCommentInterface extends RequestHandler {
 	}
 	
 	function PostCommentForm() {
+		if(!$this->page->ProvideComments){ 
+			return false;
+		}
 		$fields = new FieldSet(
 			new HiddenField("ParentID", "ParentID", $this->page->ID)
 		);
