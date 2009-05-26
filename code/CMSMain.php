@@ -1346,8 +1346,8 @@ class CMSMainMarkingFilter {
 	
 	function mark($node) {
 		$id = $node->ID;
-		if (array_key_exists($id, $this->expanded)) $node->markOpened();
-		return array_key_exists($id, $this->ids) ? $this->ids[$id] : false;
+		if(array_key_exists((int) $id, $this->expanded)) $node->markOpened();
+		return array_key_exists((int) $id, $this->ids) ? $this->ids[$id] : false;
 	}
 }
 
