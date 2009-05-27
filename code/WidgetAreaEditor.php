@@ -73,7 +73,11 @@ class WidgetAreaEditor extends FormField {
 				// \"ParentID\" = '0' is for the new page
 		  		$widget = DataObject::get_one(
 					'Widget',
-					"(\"ParentID\" = '{$record->$name()->ID}' OR \"ParentID\" = '0') AND \"Widget\".\"ID\" = '$newWidgetID'"
+					sprintf(
+						'("ParentID" = %d OR "ParentID" = 0) AND "Widget"."ID" = %d',
+						$record->$name()->ID,
+						(int)$newWidgetID
+					)
 				);
 		  		
 		  		// check if we are updating an existing widget
