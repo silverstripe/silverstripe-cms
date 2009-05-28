@@ -50,7 +50,7 @@ TreeAPI.prototype = {
 		this.innerHTML = 'Loading...';
 
 		var args = {ajax:1, ID:0};
-		if ($('Form_EditForm_Locale')) args.local = $('Form_EditForm_Locale').value;
+		if ($('LangSelector')) args.locale = $('LangSelector').value;
 		
 		url = this.url(args); 
 		
@@ -219,7 +219,7 @@ TreeNodeAPI.prototype = {
 		}
 		
 		var args = {ajax:1, ID:this.getIdx()};
-		if ($('Form_EditForm_Locale')) args.local = $('Form_EditForm_Locale').value;
+		if ($('LangSelector')) args.locale = $('LangSelector').value;
 		
 		url = this.tree.url(args); 
 		
