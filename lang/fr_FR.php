@@ -276,6 +276,7 @@ $lang['fr_FR']['LeftAndMain.ss']['SSWEB'] = 'Site Web SilverStripe';
 $lang['fr_FR']['LeftAndMain.ss']['VIEWINDRAFT'] = 'Voir la page sur le brouillon du site';
 $lang['fr_FR']['LeftAndMain.ss']['VIEWINPUBLISHED'] = 'Voir la page sur le site de publication';
 $lang['fr_FR']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Vue de la page :';
+$lang['fr_FR']['LeftAndMain']['STATUSPUBLISHEDSUCCESS'] = '%s publié avec succès';
 $lang['fr_FR']['LeftAndMain']['STATUSTO'] = 'Statut changé en \'%s\'';
 $lang['fr_FR']['LeftAndMain']['TREESITECONTENT'] = 'Contenu du site';
 $lang['fr_FR']['MemberList']['ADD'] = 'Ajouter';
