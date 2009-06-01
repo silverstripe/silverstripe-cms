@@ -187,7 +187,7 @@ class LeftAndMain extends Controller {
 		HtmlEditorConfig::get('cms')->removeButtons('tablecontrols');
 		HtmlEditorConfig::get('cms')->addButtonsToLine(3, 'tablecontrols');
 		
-		HtmlEditorconfig::set_active('cms');
+		HtmlEditorConfig::set_active('cms');
 		
 		Requirements::css(CMS_DIR . '/css/typography.css');
 		Requirements::css(CMS_DIR . '/css/layout.css');
