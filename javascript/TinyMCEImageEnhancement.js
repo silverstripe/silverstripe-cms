@@ -123,15 +123,13 @@ TinyMCEImageEnhancement.prototype = {
 		// Due to a bug in the flash plugin on Linux and Mac, 
 		 //we need at least version 9.0.64 to use SWFUpload
 		// see http://open.silverstripe.com/ticket/3023
-		if(navigator.appVersion.indexOf("Mac") != -1 || navigator.appVersion.indexOf("X11") != -1 || navigator.appVersion.indexOf("Linux") != -1) {
-		   pv = getFlashPlayerVersion();
-		   if(pv.major < 9 || pv.major > 9 || (pv.major == 9 && pv.minor == 0 && pv.rev < 64)) {
-			  if($('AddFolderGroup')) $('AddFolderGroup').style.display = 'none';
-			  if($('PipeSeparator')) $('PipeSeparator').style.display = 'none';
-			  if($('UploadGroup')) $('UploadGroup').style.display = 'none';
-			  return;
-		   }
-		}
+	   pv = getFlashPlayerVersion();
+	   if(pv.major < 9 || pv.major > 9 || (pv.major == 9 && pv.minor == 0 && pv.rev < 64)) {
+		  if($('AddFolderGroup')) $('AddFolderGroup').style.display = 'none';
+		  if($('PipeSeparator')) $('PipeSeparator').style.display = 'none';
+		  if($('UploadGroup')) $('UploadGroup').style.display = 'none';
+		  return;
+	   }
 	
 		if($('FolderID') != null) {
 			if($('SecurityID')) var securityid=$('SecurityID').value;
