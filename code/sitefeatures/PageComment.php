@@ -209,8 +209,8 @@ class PageComment_Controller extends Controller {
 			if(Permission::check('CMS_ACCESS_CMSMain')) {
 				
 				// if spam protection module exists
-				if(class_exists('SpamProtecterManager')) {
-					SpamProtecterManager::send_feedback($comment, 'spam');
+				if(class_exists('SpamProtectorManager')) {
+					SpamProtectorManager::send_feedback($comment, 'spam');
 					$comment->setField('IsSpam', true);
 					$comment->write();
 				}
@@ -252,8 +252,8 @@ class PageComment_Controller extends Controller {
 			if(Permission::check('CMS_ACCESS_CMSMain')) {
 					
 				// if spam protection module exists
-				if(class_exists('SpamProtecterManager')) {
-					SpamProtecterManager::send_feedback($comment, 'ham');
+				if(class_exists('SpamProtectorManager')) {
+					SpamProtectorManager::send_feedback($comment, 'ham');
 					$comment->setField('IsSpam', false);
 					$comment->write();
 				}

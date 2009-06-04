@@ -157,9 +157,9 @@ class PageCommentInterface extends RequestHandler {
 		$form->setRedirectToFormOnValidationError(true);
 		
 		// Optional Spam Protection.
-		if(class_exists('SpamProtecterManager')) {
+		if(class_exists('SpamProtectorManager')) {
 			// Update the form to add the protecter field to it
-			$protecter = SpamProtecterManager::update_form($form);
+			$protecter = SpamProtectorManager::update_form($form);
 			if($protecter) {
 				$protecter->setFieldMapping('Name', 'Comment');
 				
