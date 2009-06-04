@@ -642,8 +642,9 @@ class ModelAdmin_CollectionController extends Controller {
 
 		$summaryFields = $this->columnsAvailable();
 		
-		if($selectedOnly) {
-			$resultAssembly = $searchCriteria['ResultAssembly'];
+		$resultAssembly = $searchCriteria['ResultAssembly'];
+		if($selectedOnly && $resultAssembly) {
+			
 			if(!is_array($resultAssembly)) {
 				$explodedAssembly = split(' *, *', $resultAssembly);
 				$resultAssembly = array();
