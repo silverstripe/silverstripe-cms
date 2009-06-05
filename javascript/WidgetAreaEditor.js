@@ -60,7 +60,7 @@ WidgetAreaEditorClass.prototype = {
 		var usedWidgets = $('WidgetAreaEditor_usedWidgets').childNodes;
 		for(var i = 0; i < usedWidgets.length; i++) {
 			var widget = usedWidgets[i];
-			if(widget.id && (widget.id.indexOf("Widget[") != 0)) {
+			if(widget.id && (widget.id.indexOf("Widget[") != 0) && (widget.id != 'NoWidgets')) {
 				new Ajax.Request('Widget_Controller/EditableSegment/' + widget.id, {onSuccess : $('WidgetAreaEditor_usedWidgets').parentNode.parentNode.insertWidgetEditor.bind(this)});
 			}
 		}
