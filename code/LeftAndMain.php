@@ -286,7 +286,6 @@ class LeftAndMain extends Controller {
 				'cms/javascript/LeftAndMain.js',
 				'cms/javascript/LeftAndMain_left.js',
 				'cms/javascript/LeftAndMain_right.js',
-				//'jsparty/tiny_mce2/tiny_mce_src.js',
 				'jsparty/tree/tree.js',
 				'jsparty/tabstrip/tabstrip.js',
 				'cms/javascript/TinyMCEImageEnhancement.js',
