@@ -1,7 +1,7 @@
 ThumbnailStripField = Class.create();
 // We do this instead of div.thumbnailstrip for efficiency.  It means that ThumbnailStripField can only be used in the
 // CMS toolbar
-ThumbnailStripField.applyTo('#Image');
+ThumbnailStripField.applyTo('#FolderImages');
 ThumbnailStripField.applyTo('#Flash');
 ThumbnailStripField.prototype = {
 	
