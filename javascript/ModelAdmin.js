@@ -88,6 +88,9 @@ $(document).ready(function() {
 	 */
 	$('#SearchForm_holder .tab form:not(#Form_ImportForm)').submit(function () {
 	    var $form = $(this);
+	
+		// @todo TinyMCE coupling
+		tinymce_removeAll();
 
 		$('#ModelAdminPanel').fn('startHistory', $(this).attr('action'), $(this).formToArray());
 	    $('#ModelAdminPanel').load($(this).attr('action'), $(this).formToArray(), standardStatusHandler(function(result) {
@@ -100,7 +103,7 @@ $(document).ready(function() {
 
     		$('#form_actions_right').remove();
     		Behaviour.apply();
-			console.log(window.onresize);
+
 			if(window.onresize) window.onresize();
     		// Remove the loading indicators from the buttons
     		$('input[type=submit]', $form).removeClass('loading');
@@ -195,8 +198,14 @@ $(document).ready(function() {
 		var form = $('#right form');
 		var formAction = form.attr('action') + '?' + $(this).fieldSerialize();
 		
+		// @todo TinyMCE coupling
+		if(typeof tinyMCE != 'undefined') tinyMCE.triggerSave();
+		
 		// Post the data to save
 		$.post(formAction, form.formToArray(), function(result){
+			// @todo TinyMCE coupling
+			tinymce_removeAll();
+			
 			$('#right #ModelAdminPanel').html(result);
 
 			if($('#right #ModelAdminPanel form').hasClass('validationerror')) {
@@ -285,6 +294,9 @@ $(document).ready(function() {
          * @todo Convert everything to jQuery so that the built-in load method can be used with this instead
          */
         loadForm: function(url, successCallback) {
+			// @todo TinyMCE coupling
+			tinymce_removeAll();
+	
     	    $('#right #ModelAdminPanel').load(url, standardStatusHandler(function(result) {
 				if(typeof(successCallback) == 'function') successCallback.apply();
 				if(!this.future || !this.future.length) {
