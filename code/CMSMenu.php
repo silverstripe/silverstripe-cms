@@ -32,18 +32,17 @@ class CMSMenu extends Object implements Iterator, i18nEntityProvider
 	 *			when the item is removed. Functionality needed in {@link Director}.
 	 */	
 	public static function add_controller($controllerClass) {
-		// Get static bits
-		$urlBase = eval("return $controllerClass::\$url_base;");
-		$urlSegment = eval("return $controllerClass::\$url_segment;");
-		$urlRule = eval("return $controllerClass::\$url_rule;");
-		$urlPriority = eval("return $controllerClass::\$url_priority;");
-		$menuPriority = eval("return $controllerClass::\$menu_priority;");
-
+		$urlBase      = Object::get_static($controllerClass, 'url_base');
+		$urlSegment   = Object::get_static($controllerClass, 'url_segment');
+		$urlRule      = Object::get_static($controllerClass, 'url_rule');
+		$urlPriority  = Object::get_static($controllerClass, 'url_priority');
+		$menuPriority = Object::get_static($controllerClass, 'menu_priority');
+		
 		// Don't add menu items defined the old way
 		if($urlSegment === null) return;
-
-		$link = Controller::join_links($urlBase,$urlSegment) . '/';
-
+		
+		$link = Controller::join_links($urlBase, $urlSegment) . '/';
+		
 		// Make director rule
 		if($urlRule[0] == '/') $urlRule = substr($urlRule,1);
 		$rule = $link . '/' . $urlRule; // the / will combine with the / on the end of $link to make a //
