@@ -29,17 +29,18 @@ Behaviour.register({
 			}
 		}
 	},
-
 	'#Form_EditForm_CanViewType_Anyone': {
 		onclick: ViewersGroupHide
 	},
-
 	'#Form_EditForm_CanViewType_LoggedInUsers': {
 		onclick: ViewersGroupHide
 	},
-
+	'#Form_EditForm_CanViewType_Inherit': {
+		onclick: ViewersGroupHide
+	},
+	
 	'#Form_EditForm_CanEditType_OnlyTheseUsers': {
-
+		
 		onclick: function() {
 			$('EditorGroups').style.display = "block";
 		},
@@ -53,8 +54,10 @@ Behaviour.register({
 			}
 		}
 	},
-
 	'#Form_EditForm_CanEditType_LoggedInUsers': {
+		onclick: EditorsGroupHide
+	},
+	'#Form_EditForm_CanEditType_Inherit': {
 		onclick: EditorsGroupHide
 	}
 });
