@@ -15,7 +15,7 @@
 		<p><% _t('SELECT','Select the pages that you want to delete and then click the button below') %></p>
 		
 		<input type="hidden" name="csvIDs" />
-		<input type="submit" value="<% _t('DELGROUPS','Delete the selected groups') %>" />
+		<input type="submit" value="<% _t('DELGROUPS','Delete the selected groups') %>" class="action delete" />
 	</form>
 	
 	<form class="actionparams" id="sortitems_options" style="display: none" action="">
