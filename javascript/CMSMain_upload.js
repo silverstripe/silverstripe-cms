@@ -14,9 +14,7 @@ CMSMain_upload.prototype = {
 		if(pv.major < 9) return;
 	
 		// Due to a bug in the flash plugin on Linux and Mac, we need at least version 9.0.64 to use SWFUpload
-		if(navigator.appVersion.indexOf("Mac") != -1 || navigator.appVersion.indexOf("X11") != -1 || navigator.appVersion.indexOf("Linux") != -1) {
-		   if(pv.major == 9 && pv.minor == 0 && pv.rev < 64) return;
-		}
+		if(pv.major == 9 && pv.minor == 0 && pv.rev < 64) return;
 
 		// If those 2 checks pass, we can provide upload capabilities to the user
 		this.iframe = window.top.document.getElementById('AssetAdmin_upload');

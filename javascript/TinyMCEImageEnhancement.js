@@ -123,68 +123,66 @@ TinyMCEImageEnhancement.prototype = {
         // Due to a bug in the flash plugin on Linux and Mac, 
 		 //we need at least version 9.0.64 to use SWFUpload
 		// see http://open.silverstripe.com/ticket/3023
-        if(navigator.appVersion.indexOf("Mac") != -1 || navigator.appVersion.indexOf("X11") != -1 || navigator.appVersion.indexOf("Linux") != -1) {
-           pv = getFlashPlayerVersion();
-           if(pv.major < 9 || pv.major > 9 || (pv.major == 9 && pv.minor == 0 && pv.rev < 64)) {
-              if($('AddFolderGroup')) $('AddFolderGroup').style.display = 'none';
-              if($('PipeSeparator')) $('PipeSeparator').style.display = 'none';
-              if($('UploadGroup')) $('UploadGroup').style.display = 'none';
-              return;
-           }
-        }
-    
-        if($('FolderID') != null) {
-        	if($('SecurityID')) var securityid=$('SecurityID').value;
-	        else var securityid=null;
-	        this.upload = new Upload(
-	            {
-	               fileTypes : '*.jpeg;*.jpg;*.jpe;*.png;*.gif;',
-	               fileTypesDescription : 'Image files',
-	               fileUploadLimit : '100',
-	               securityID : securityid,
-	               beginUploadOnQueue : true,
-                   buildUI : this.addListeners.bind(this),
-                   fileQueued : this.uploadFileQueuedCallback.bind(this),
-                   fileComplete : this.uploadFileCompleteCallback.bind(this),
-                   queueComplete : this.uploadQueueCompleteCallback.bind(this)
-	            }        
-            );
-        }
-    },
-    
-    uploadFileQueuedCallback: function(file,queueLength) {
-        this.processInProgress = true;
-        this.upload.setFolderID(this.getParentID()); 
-        $('UploadFiles').innerHTML = "Uploading ... 1/" + this.upload.getFilesToUpload();    
-        this.upload.startUpload();
-    },
-    
-    uploadFileCompleteCallback: function(file,serverData) {
-        Element.addClassName($('UploadFiles'),'link');//Safari hack
-        $('UploadFiles').innerHTML = 'Uploading ... ' + this.upload.getFilesUploaded() + "/" + this.upload.getFilesToUpload();
-    },
-    
-    uploadQueueCompleteCallback: function() {
-        this.filesUploaded = this.upload.getFilesUploaded();
-        $('UploadFiles').innerHTML = "upload";
-        statusMessage('Uploaded ' + this.upload.getFilesUploaded() + ' files','good');
-        if(this.getParentID() != 'root') {
-            $('Image').ajaxGetFiles(this.getParentID(), null, this.insertImages.bind(this));    
-        }
-    },
-    
-    /**
-     * Iterates over all uploaded images and add them to TinyMCE editor
-     *
-     * @param transport object
-    */
-    insertImages: function(transport) {
-        //HACK FOR STRANGE ERROR OCCURING UNDER SAFARI
-        if(transport.responseText == '') {
-            $('Image').ajaxGetFiles(this.getParentID(), null, this.insertImages.bind(this));
-            return;
-        }
-        //END OF HACK
+	   pv = getFlashPlayerVersion();
+	   if(pv.major < 9 || pv.major > 9 || (pv.major == 9 && pv.minor == 0 && pv.rev < 64)) {
+		  if($('AddFolderGroup')) $('AddFolderGroup').style.display = 'none';
+		  if($('PipeSeparator')) $('PipeSeparator').style.display = 'none';
+		  if($('UploadGroup')) $('UploadGroup').style.display = 'none';
+		  return;
+	   }
+	
+		if($('FolderID') != null) {
+			if($('SecurityID')) var securityid=$('SecurityID').value;
+			else var securityid=null;
+			this.upload = new Upload(
+				{
+				   fileTypes : '*.jpeg;*.jpg;*.jpe;*.png;*.gif;',
+				   fileTypesDescription : 'Image files',
+				   fileUploadLimit : '100',
+				   securityID : securityid,
+				   beginUploadOnQueue : true,
+				   buildUI : this.addListeners.bind(this),
+				   fileQueued : this.uploadFileQueuedCallback.bind(this),
+				   fileComplete : this.uploadFileCompleteCallback.bind(this),
+				   queueComplete : this.uploadQueueCompleteCallback.bind(this)
+				}		
+			);
+		}
+	},
+	
+	uploadFileQueuedCallback: function(file,queueLength) {
+		this.processInProgress = true;
+		this.upload.setFolderID(this.getParentID()); 
+		$('UploadFiles').innerHTML = "Uploading ... 1/" + this.upload.getFilesToUpload();	
+		this.upload.startUpload();
+	},
+	
+	uploadFileCompleteCallback: function(file,serverData) {
+		Element.addClassName($('UploadFiles'),'link');//Safari hack
+		$('UploadFiles').innerHTML = 'Uploading ... ' + this.upload.getFilesUploaded() + "/" + this.upload.getFilesToUpload();
+	},
+	
+	uploadQueueCompleteCallback: function() {
+		this.filesUploaded = this.upload.getFilesUploaded();
+		$('UploadFiles').innerHTML = "upload";
+		statusMessage('Uploaded ' + this.upload.getFilesUploaded() + ' files','good');
+		if(this.getParentID() != 'root') {
+			$('Image').ajaxGetFiles(this.getParentID(), null, this.insertImages.bind(this));	
+		}
+	},
+	
+	/**
+	 * Iterates over all uploaded images and add them to TinyMCE editor
+	 *
+	 * @param transport object
+	*/
+	insertImages: function(transport) {
+		//HACK FOR STRANGE ERROR OCCURING UNDER SAFARI
+		if(transport.responseText == '') {
+			$('Image').ajaxGetFiles(this.getParentID(), null, this.insertImages.bind(this));
+			return;
+		}
+		//END OF HACK
 
         $('Image').reapplyBehaviour();
 
