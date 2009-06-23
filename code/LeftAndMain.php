@@ -564,21 +564,23 @@ class LeftAndMain extends Controller {
 			$id = $p->ID ? $p->ID : "new-$p->class-$p->ParentID";
 			$treeTitle = Convert::raw2js($p->TreeTitle());
 			$hasChildren = (is_numeric($id) && $p->AllChildren() && $p->AllChildren()->Count()) ? ' unexpanded' : '';
+			$singleInstanceCSSClass = $p->stat('single_instance_only') ?  $p->stat('single_instance_only_css_class') : "";
 
 			// Ensure there is definitly a node avaliable. if not, append to the home tree.
 			$response = <<<JS
 				var tree = $('sitetree');
-				var newNode = tree.createTreeNode("$id", "$treeTitle", "{$p->class}{$hasChildren}");
+				var newNode = tree.createTreeNode("$id", "$treeTitle", "{$p->class}{$hasChildren} {$singleInstanceCSSClass}");
 				node = tree.getTreeNodeByIdx($parentID);
 				if(!node) {
 					node = tree.getTreeNodeByIdx(0);
 				}
 				node.open();
 				node.appendTreeNode(newNode);
-				newNode.selectTreeNode();
+				newNode.selectTreeNode();	
 JS;
 			FormResponse::add($response);
-
+			FormResponse::add($this->hideSingleInstanceOnlyFromCreateFieldJS($p));
+			
 			return FormResponse::respond();
 		} else {
 			Director::redirect('admin/' . self::$url_segment . '/show/' . $p->ID);
@@ -709,7 +711,21 @@ JS;
 			}
 
 			$record->write();
-
+			
+			// if changed to a single_instance_only page type
+			if ($record->stat('single_instance_only')) {
+				FormResponse::add("jQuery('#sitetree li.{$record->ClassName}').addClass('{$record->stat('single_instance_only_css_class')}');");
+				FormResponse::add($this->hideSingleInstanceOnlyFromCreateFieldJS($record));
+			}
+			else {
+				FormResponse::add("jQuery('#sitetree li.{$record->ClassName}').removeClass('{$record->stat('single_instance_only_css_class')}');");
+			}
+			// if chnaged from a single_instance_only page type
+			$sampleOriginalClassObject = new $originalClass();
+			if($sampleOriginalClassObject->stat('single_instance_only')) {
+				FormResponse::add($this->showSingleInstanceOnlyInCreateFieldJS($sampleOriginalClassObject));
+			}
+			
 			if( ($record->class != 'VirtualPage') && $originalURLSegment != $record->URLSegment) {
 				$message .= sprintf(_t('LeftAndMain.CHANGEDURL',"  Changed URL to '%s'"),$record->URLSegment);
 				FormResponse::add("\$('Form_EditForm').elements.URLSegment.value = \"$record->URLSegment\";");
@@ -743,9 +759,58 @@ JS;
 				$result .= $this->getActionUpdateJS($record);
 				FormResponse::status_message($message, "good");
 				FormResponse::update_status($record->Status);
+				
 				return FormResponse::respond();
 			}
 		}
+	}
+	
+	/** 
+	 * Return a javascript snippet that hides a page type from Create dropdownfield 
+	 * if it's a single_instance_only page type and has been created in the site tree
+	 */
+	protected function hideSingleInstanceOnlyFromCreateFieldJS($createdPage) {
+		// Prepare variable to single_instance_only checking in javascript
+		$pageClassName = $createdPage->class;
+		$singleInstanceCSSClass = "";
+		$singleInstanceClassSelector = "." . $createdPage->stat('single_instance_only_css_class');
+		if ($createdPage->stat('single_instance_only')) {
+			$singleInstanceCSSClass = $createdPage->stat('single_instance_only_css_class');
+		}
+		
+		return <<<JS
+			// if the current page type that was created is single_instance_only, 
+			// hide it from the create dropdownlist afterward
+			singleSingleOnlyOfThisPageType = jQuery("#sitetree li.{$pageClassName}{$singleInstanceClassSelector}");
+			
+			if (singleSingleOnlyOfThisPageType.length > 0) {
+				jQuery("#" + _HANDLER_FORMS.addpage + " option[@value={$pageClassName}]").remove();
+			}
+JS;
+	}
+	
+	/** 
+	 * Return a javascript snippet that that shows a single_instance_only page type in Create dropdownfield 
+	 * if there isn't any of its instance in the site tree
+	 */
+	protected function showSingleInstanceOnlyInCreateFieldJS($deletedPage) {
+		$className = $deletedPage->class;
+		$singularName = $deletedPage->singular_name();
+		$singleInstanceClassSelector = "." . $deletedPage->stat('single_instance_only_css_class');
+		return <<<JS
+// show the hidden single_instance_only page type in the create dropdown field
+singleSingleOnlyOfThisPageType = jQuery("#sitetree li.{$className}{$singleInstanceClassSelector}");
+
+if (singleSingleOnlyOfThisPageType.length == 0) {	
+	if(jQuery("#" + _HANDLER_FORMS.addpage + " option[@value={$className}]").length == 0) {
+		jQuery("#" + _HANDLER_FORMS.addpage + " select option").each(function(){
+			if ("{$singularName}".toLowerCase() >= jQuery(this).val().toLowerCase()) {
+				jQuery("<option value=\"{$className}\">{$singularName}</option>").insertAfter(this);
+			}
+		});
+	}
+}
+JS;
 	}
 
 	/**
@@ -791,6 +856,7 @@ if(node && node.parentTreeNode) node.parentTreeNode.removeTreeNode(node);
 $('Form_EditForm').closeIfSetTo($id);
 JS;
 		FormResponse::add($response);
+		FormResponse::add($this->showSingleInstanceOnlyInCreateFieldJS($page));
 		return FormResponse::respond();
 	}
 
