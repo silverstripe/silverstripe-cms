@@ -38,6 +38,37 @@ class ReportAdmin extends LeftAndMain {
 	}
 	
 	/**
+	* Returns an array of all the reports classnames that could be shown on this site 
+	* to any user. Base class is not included in the response.
+	* It does not perform filtering based on canView(). 
+	*
+	* @return An array of report class-names, i.e.:
+	*         array("AllOrdersReport","CurrentOrdersReport","UnprintedOrderReport")
+	*/
+	public function getReportClassNames() {
+
+		$baseClass  = 'SSReport';		
+		$response   = array();
+		
+		// get all sub-classnames (incl. base classname).
+		$classNames = ClassInfo::subclassesFor( $baseClass );
+		
+		// drop base className
+		$classNames = array_diff($classNames, array($baseClass));
+		
+		// drop report classes, which are not initiatable.
+		foreach($classNames as $className) {
+			
+			// Remove abstract classes
+			$classReflection = new ReflectionClass($className);
+			if($classReflection->isInstantiable() ) {
+				$response[] = $className;
+			}			
+		}
+		return $response;
+	}
+	
+	/**
 	 * Does the parent permission checks, but also
 	 * makes sure that instantiatable subclasses of
 	 * {@link Report} exist. By default, the CMS doesn't
@@ -54,15 +85,15 @@ class ReportAdmin extends LeftAndMain {
 		if(!parent::canView($member)) return false;
 		
 		$hasViewableSubclasses = false;
-		$subClasses = array_values(ClassInfo::subclassesFor('SSReport'));
+		$subClasses = array_values( $this->getReportClassNames() );
+
 		foreach($subClasses as $subclass) {
-			// Remove abstract classes and LeftAndMain
-			$classReflection = new ReflectionClass($subclass);
-			if($classReflection->isInstantiable() && $subclass != 'SSReport') {
-				if(singleton($subclass)->canView()) $hasViewableSubclasses = true;
-			}			
+
+			if(singleton($subclass)->canView()) {
+				$hasViewableSubclasses = true;
+			}
+				
 		}
-		
 		return $hasViewableSubclasses;
 	}
 	
@@ -74,13 +105,11 @@ class ReportAdmin extends LeftAndMain {
 	 */
 	public function Reports() {
 		$processedReports = array();
-		$subClasses = ClassInfo::subclassesFor('SSReport');
+		$subClasses = $this->getReportClassNames();
 		
 		if($subClasses) {
 			foreach($subClasses as $subClass) {
-				if($subClass != 'SSReport') {
-					$processedReports[] = new $subClass();
-				}
+				$processedReports[] = new $subClass();
 			}
 		}
 		
@@ -134,14 +163,12 @@ class ReportAdmin extends LeftAndMain {
 	public function EditForm() {
 		$ids = array();
 		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : Session::get('currentPage');
-		$subClasses = ClassInfo::subclassesFor('SSReport');
+		$subClasses = $this->getReportClassNames();
 		
 		if($subClasses) {
 			foreach($subClasses as $subClass) {
-				if($subClass != 'SSReport') {
-					$obj = new $subClass();
-					$ids[] = $obj->ID();
-				}
+				$obj = new $subClass();
+				$ids[] = $obj->ID();
 			}
 		}
 		
@@ -192,16 +219,12 @@ class ReportAdmin extends LeftAndMain {
 	 * @return boolean
 	 */
 	public static function has_reports() {
-		$subClasses = ClassInfo::subclassesFor('SSReport');
-		
+		$subClasses = $this->getReportClassNames();
 		if($subClasses) {
 			foreach($subClasses as $subClass) {
-				if($subClass != 'SSReport') {
-					return true;
-				}
+				return true;
 			}
 		}
-		
 		return false;
 	}
 }
