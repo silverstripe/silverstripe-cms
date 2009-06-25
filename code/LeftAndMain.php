@@ -94,12 +94,9 @@ class LeftAndMain extends Controller {
 	 * @uses LeftAndMainDecorator->init()
 	 * @uses LeftAndMainDecorator->accessedCMS()
 	 * @uses CMSMenu
-	 * @uses Director::set_site_mode()
 	 */
 	function init() {
 		parent::init();
-
-		Director::set_site_mode('cms');
 		
 		// set language
 		$member = Member::currentUser();
