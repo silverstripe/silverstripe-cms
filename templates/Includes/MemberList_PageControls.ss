@@ -1,3 +1,4 @@
+<% if TotalCount %>
 <div class="PageControls">
 	<input name="MemberListStart" id="MemberListStart" type="hidden" value="$MemberListStart" />
 	<% if LastLink %><a class="Last" href="$LastLink" title="<% _t('VIEWLAST', 'View last') %> $PageSize <% _t('LASTMEMBERS', 'members') %>"><img src="cms/images/pagination/record-last.png" alt="View last $PageSize members" /></a>
@@ -13,3 +14,4 @@
 	<% else %><img class="Next" src="cms/images/pagination/record-next-g.png" alt="<% _t('VIEWNEXT', 'View next') %> $PageSize <% _t('NEXTMEMBERS', 'members') %>" /><% end_if %>
 	
 </div>
+<% end_if %>
