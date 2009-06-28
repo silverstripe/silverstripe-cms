@@ -37,8 +37,8 @@ class FilesystemPublisher extends StaticPublisher {
 	function publishPages($urls) { 
 		// This can be quite memory hungry and time-consuming
 		// @todo - Make a more memory efficient publisher
-		set_time_limit(0);
-		ini_set("memory_limit" , -1);
+		increase_time_limit_to();
+		increase_memory_limit_to();
 		
 		//$base = Director::absoluteURL($this->destFolder);
 		//$base = preg_replace('/\/[^\/]+\/\.\./','',$base) . '/';
