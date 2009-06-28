@@ -32,7 +32,7 @@ class CMSBatchActionHandler extends RequestHandler {
 		if(is_subclass_of($batchActionClass, 'CMSBatchAction')) {
 			self::$batch_actions[$urlSegment] = $batchActionClass;
 		} else {
-			user_error("CMSBatchActionHandler::regiser() - Bad class '$batchActionClass'", E_USER_ERROR);
+			user_error("CMSBatchActionHandler::register() - Bad class '$batchActionClass'", E_USER_ERROR);
 		}
 	}
 	
