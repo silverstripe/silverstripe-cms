@@ -36,7 +36,7 @@ ThumbnailStripField.prototype = {
 						var searchText = searchField.value;
 						
 						$('Flash').ajaxGetFiles(null, searchText);
-						$('Image').ajaxGetFiles(null, searchText);
+						$('FolderImages').ajaxGetFiles(null, searchText);
 					}, 500);
 				});
 			}
