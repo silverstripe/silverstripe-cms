@@ -62,7 +62,7 @@ class AssetTableField extends ComplexTableField {
 			
 			while($nextIDSet) {
 				// TO DO: In 2.4 this should be refactored to use the new data mapper.
-				$nextIDSet = DB::query("SELECT ID FROM `File` WHERE ParentID IN (" 
+				$nextIDSet = DB::query("SELECT ID FROM \"File\" WHERE ParentID IN (" 
 					. implode(", " , $nextIDSet) . ") AND ClassName IN ($folderClasses)")->column();
 				if($nextIDSet) $folderIDs = array_merge($folderIDs, $nextIDSet);
 			}

@@ -321,6 +321,35 @@ addfolder.prototype = {
 	}	
 }
 
+/**
+ * Look for new files (FilesystemSync) action
+ */
+FilesystemSyncClass = Class.create();
+FilesystemSyncClass.applyTo('#filesystemsync');
+FilesystemSyncClass.prototype = {
+	initialize: function () {
+		this.getElementsByTagName('button')[0].onclick = returnFalse;
+	},
+	
+	onclick : function() {
+		statusMessage('Looking for new files');
+        var options = {
+            method: 'get',
+            onSuccess: function(t) {
+                eval(t.responseText);
+            }
+        };
+        new Ajax.Request('dev/tasks/FilesystemSyncTask',{
+            onSuccess: function(t) {
+                statusMessage("I have finished looking for files", "good");
+            },
+            onFailure: function(t) {
+                errorMessage("There was an error looking for new files");
+            }
+		});
+		return false;
+	}
+}
 
 /**
  * Delete folder action

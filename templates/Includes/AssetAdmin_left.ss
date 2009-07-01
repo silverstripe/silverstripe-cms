@@ -3,6 +3,11 @@
 			<ul id="TreeActions">
 				<li class="action" id="addpage"><button><% _t('CREATE','Create') %></button></li>
 				<li class="action" id="deletepage"><button><% _t('DELETE','Delete') %></button></li>
+				<li class="action" id="filesystemsync">
+					<button title="<% _t('FILESYSTEMSYNC_DESC', 'SilverStripe maintains its own database of the files &amp; images stored in your assets/ folder.  Click this button to update that database, if files are added to the assets/ folder from outside SilverStripe, for example, if you have uploaded files via FTP.') %>">
+						<% _t('FILESYSTEMSYNC','Look for new files') %>
+					</button>
+				</li>
 			</ul>
 			<div style="clear:both;"></div>
 			<form class="actionparams" id="addpage_options" style="display: none" action="admin/assets/addfolder">

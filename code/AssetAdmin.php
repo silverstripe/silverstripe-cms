@@ -98,12 +98,6 @@ JS
 		);
 	}
 	
-
-	function index() {
-		Filesystem::sync();
-		return array();		
-	}
-
 	/**
 	 * Show the content of the upload iframe.  The form is specified by a template.
 	 */
@@ -276,7 +270,7 @@ HTML;
 		} else {
 			$record = singleton("Folder");
 		}
-		
+
 		if($record) {
 			$fields = $record->getCMSFields();
 			$actions = new FieldSet();
@@ -437,7 +431,7 @@ JS;
 	public function SiteTreeAsUL() {
 		$obj = singleton('Folder');
 		$obj->setMarkingFilter('ClassName', ClassInfo::subclassesFor('Folder'));
-		$obj->markPartialTree();
+		$obj->markPartialTree(30, null, "ChildFolders");
 
 		if($p = $this->currentPage()) $obj->markToExpose($p);
 
@@ -445,9 +439,10 @@ JS;
 		$siteTreeList = $obj->getChildrenAsUL(
 			'',
 			'"<li id=\"record-$child->ID\" class=\"$child->class" . $child->markingClasses() .  ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
-			'"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" class=\"" . ($child->hasChildren() ? " contents" : "") . "\" >" . $child->TreeTitle() . "</a>" ',
+			'"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" class=\"" . ($child->hasChildFolders() ? " contents" : "") . "\" >" . $child->TreeTitle() . "</a>" ',
 			$this,
-			true
+			true,
+			"ChildFolders"
 		);	
 
 		// Wrap the root if needs be
