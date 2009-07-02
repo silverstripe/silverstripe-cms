@@ -125,6 +125,9 @@ JS
 		if(isset($data['ID']) && $data['ID'] != 'root') $folder = DataObject::get_by_id("Folder", $data['ID']);
 		else $folder = singleton('Folder');
 		
+		// Don't modify the output of the template, or it will become invalid
+		ContentNegotiator::disable();
+		
 		return array( 'CanUpload' => $folder->canEdit());
 	}
 	
@@ -140,16 +143,11 @@ JS
 			new HiddenField("action_doUpload", "", "1"), 
 			new FileField("Files[0]" , _t('AssetAdmin.CHOOSEFILE','Choose file: ')),
 			new LiteralField('UploadButton',"
-				<input type='submit' value='". _t('AssetAdmin.UPLOAD', 'Upload Files Listed Below'). "' name='action_upload' id='Form_UploadForm_action_upload' class='action' />
+				<input type=\"submit\" value=\"". _t('AssetAdmin.UPLOAD', 'Upload Files Listed Below'). "\" name=\"action_upload\" id=\"Form_UploadForm_action_upload\" class=\"action\" />
 			"),
 			new LiteralField('MultifileCode',"
 				<p>" . _t('AssetAdmin.FILESREADY','Files ready to upload:') ."</p>
-				<div id='Form_UploadForm_FilesList'></div>
-				<script>
-					var multi_selector = new MultiSelector($('Form_UploadForm_FilesList'), null, $('Form_UploadForm_action_upload'));
-					multi_selector.addElement($('Form_UploadForm_Files-0'));
-                    //new window.top.document.CMSMain_upload();
-				</script>
+				<div id=\"Form_UploadForm_FilesList\"></div>
 			")
 		), new FieldSet(
 		));
