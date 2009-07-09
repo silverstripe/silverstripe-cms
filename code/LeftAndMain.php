@@ -496,7 +496,7 @@ class LeftAndMain extends Controller {
 	 * @param $childrenMethod The method to call to get the children of the tree.  For example,
 	 *                        Children, AllChildrenIncludingDeleted, or AllHistoricalChildren
 	 */
-	function getSiteTreeFor($className, $rootID = null, $childrenMethod = null, $filterFunction = null) {
+	function getSiteTreeFor($className, $rootID = null, $childrenMethod = null, $filterFunction = null, $minNodeCount = 30) {
 		// Default childrenMethod
 		if (!$childrenMethod) $childrenMethod = 'AllChildrenIncludingDeleted';
 		
@@ -505,19 +505,27 @@ class LeftAndMain extends Controller {
 		
 		// Mark the nodes of the tree to return
 		if ($filterFunction) $obj->setMarkingFilterFunction($filterFunction);
-		$obj->markPartialTree(30, $this, $childrenMethod);
+
+		$obj->markPartialTree($minNodeCount, $this, $childrenMethod);
 		
 		// Ensure current page is exposed
 		if($p = $this->currentPage()) $obj->markToExpose($p);
 
 		// getChildrenAsUL is a flexible and complex way of traversing the tree
-		$siteTree = $obj->getChildrenAsUL("", '
+		$titleEval = '
 					"<li id=\"record-$child->ID\" class=\"" . $child->CMSTreeClasses($extraArg) . "\">" .
 					"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" class=\"" . $child->CMSTreeClasses($extraArg) . "\" title=\"' . _t('LeftAndMain.PAGETYPE','Page type: ') . '".$child->class."\" >" . 
 					($child->TreeTitle()) . 
 					"</a>"
-'
-					,$this, true, $childrenMethod);
+';
+		$siteTree = $obj->getChildrenAsUL(
+			"", 
+			$titleEval,
+			$this, 
+			true, 
+			$childrenMethod,
+			$minNodeCount
+		);
 
 		// Wrap the root if needs be.
 
@@ -539,9 +547,16 @@ class LeftAndMain extends Controller {
 	 * Get a subtree underneath the request param 'ID'.
 	 * If ID = 0, then get the whole tree.
 	 */
-	public function getsubtree() {
+	public function getsubtree($request) {
 		// Get the tree
-		$tree = $this->getSiteTreeFor($this->stat('tree_class'), $_REQUEST['ID']);
+		$minNodeCount = (is_numeric($request->getVar('minNodeCount'))) ? $request->getVar('minNodeCount') : NULL;
+		$tree = $this->getSiteTreeFor(
+			$this->stat('tree_class'), 
+			$request->getVar('ID'), 
+			null, 
+			null, 
+			$minNodeCount
+		);
 
 		// Trim off the outer tag
 		$tree = ereg_replace('^[ \t\r\n]*<ul[^>]*>','', $tree);

@@ -219,7 +219,14 @@ TreeNodeAPI.prototype = {
 		}
 		
 		var args = {ajax:1, ID:this.getIdx()};
+		
+		// Add current locale for any subtree selection
 		if ($('LangSelector')) args.locale = $('LangSelector').value;
+		
+		// If the tree is selectable, we have to show all available children without
+		// artificial limitations from the serverside (minNodeCount). This is a measure
+		// to ensure no unexpanded nodes are missed in batch selection
+		if(Element.hasClassName('sitetree', 'multiselect')) args.minNodeCount = 0;
 		
 		url = this.tree.url(args); 
 		
