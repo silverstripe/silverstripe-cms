@@ -323,9 +323,22 @@ batchActionGlobals = {
 				batchActionGlobals.selectedNodes[idx] = false;
 	
 			} else {
+				// Open node in order to allow proper selection of children
+				if(Element.hasClassName(selectedNode, 'unexpanded')) {
+					selectedNode.open();
+				}
+				
+				// Select node
 				selectedNode.addNodeClass('selected');
 				selectedNode.selected = true;
 				batchActionGlobals.selectedNodes[idx] = true;
+				
+				// Open all existing children, which might trigger further
+				// ajaxExansion calls to ensure all nodes are selectable
+				var children = selectedNode.getElementsByTagName('li');
+				for(var i=0; i<children.length; i++) {
+					children[i].open();
+				}
 			}
 		}
 		
