@@ -773,9 +773,9 @@ JS;
 							PR_MEDIUM,
 							'Version number is a linked string, created is a relative time (e.g. 2 days ago), by a specific author'
 						),
-						"<a href=\"admin/getversion/$record->ID/$version\" title=\"" . $versionAuthor->Title . "\">$version</a>", 
+						"<a href=\"admin/getversion/$record->ID/$version\" title=\"" . ($versionAuthor ? $versionAuthor->Title : '') . "\">$version</a>", 
 						$record->obj('LastEdited')->Ago(),
-						$versionAuthor->Title
+						($versionAuthor ? $versionAuthor->Title : '')
 					) .
 					'</p>'
 				),
