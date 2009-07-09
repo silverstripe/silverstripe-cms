@@ -208,7 +208,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 		public function SiteTreeFilterPageTypeField() {
 			$types = SiteTree::page_type_classes(); array_unshift($types, 'All');
-			$optionsetField = new DropdownField('ClassName', 'ClassName', array_combine($types, $types), 'Any');
+			$source = array_combine($types, $types);
+			asort($source);
+			$optionsetField = new DropdownField('ClassName', 'ClassName', $source, 'Any');
 			return $optionsetField->Field();
 		}	
 
