@@ -296,12 +296,20 @@ batchactionsclass.prototype = {
 
 		batchActionGlobals.selectedNodes = { };
 
-		var sel = $('sitetree').firstSelected();
-		if(sel && sel.className.indexOf('nodelete') == -1) {
-			var selIdx = $('sitetree').getIdxOf(sel);
+		var selectedNode = $('sitetree').firstSelected();
+		if(selectedNode && selectedNode.className.indexOf('nodelete') == -1) {
+			var selIdx = $('sitetree').getIdxOf(selectedNode);
 			batchActionGlobals.selectedNodes[selIdx] = true;
-			sel.removeNodeClass('current');
-			sel.addNodeClass('selected');		
+			selectedNode.removeNodeClass('current');
+			selectedNode.addNodeClass('selected');	
+			selectedNode.open();	
+			
+			// Open all existing children, which might trigger further
+			// ajaxExansion calls to ensure all nodes are selectable
+			var children = selectedNode.getElementsByTagName('li');
+			for(var i=0; i<children.length; i++) {
+				children[i].open();
+			}
 		}
 	}
 }
@@ -315,7 +323,6 @@ batchActionGlobals = {
 	newNodes: { },
 	treeSelectionChanged : function(selectedNode) {
 		var idx = $('sitetree').getIdxOf(selectedNode);
-
 		if(selectedNode.className.indexOf('nodelete') == -1) {
 			if(selectedNode.selected) {
 				selectedNode.removeNodeClass('selected');
