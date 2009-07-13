@@ -49,14 +49,8 @@ class RebuildStaticCacheTask extends Controller {
 				continue;
 			}
 
-			$url = Director::makeRelative($url);
-			// Exclude absolute links
-			if(preg_match('/^https?:/', $url)) {
-				unset($urls[$i]);
-			} else {
-				if(substr($url,-1) == '/') $url = substr($url,0,-1);
-				$urls[$i] = $url;
-			}
+			if(substr($url,-1) == '/') $url = substr($url,0,-1);
+			$urls[$i] = $url;
 		}
 		$urls = array_unique($urls);
 		sort($urls);

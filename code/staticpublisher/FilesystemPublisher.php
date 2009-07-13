@@ -15,6 +15,12 @@ class FilesystemPublisher extends StaticPublisher {
 	protected static $static_base_url = null;
 	
 	/**
+	 * Use domain based cacheing (put cache files into a domain subfolder)
+	 * This must be true if you are using this with subsites.
+	 */
+	public static $domain_based_caching = false;
+	
+	/**
 	 * Set a different base URL for the static copy of the site.
 	 * This can be useful if you are running the CMS on a different domain from the website.
 	 */
@@ -67,16 +73,7 @@ class FilesystemPublisher extends StaticPublisher {
 			Requirements::clear();
 			
 			DataObject::flush_and_destroy_cache();
-			//DataObject::destroy_cached_get_calls(false);
-			//DataObject::cache_get_calls(false);
-			
-			//echo 'Memory: ' . round(memory_get_usage()/100000)/10 . "\n";
-			/*
-			if(!is_object($response)) {
-				echo "String response for url '$url'\n";
-				print_r($response);
-			}*/
-			
+
 			// Generate file content			
 			// PHP file caching will generate a simple script from a template
 			if($this->fileExtension == 'php') {
@@ -103,11 +100,20 @@ class FilesystemPublisher extends StaticPublisher {
 					$content = $response . '';
 				}
 			}
-
+			
+			
+			$urlParts = @parse_url($url);
+			$urlParts['path'] = isset($urlParts['path']) ? $urlParts['path'] : '';
+			$url = preg_replace('/[^a-zA-Z0-9]/si', '_', trim($urlParts['path'], '/'));
 
 			if($this->fileExtension) $filename = $url ? "$url.$this->fileExtension" : "index.$this->fileExtension";
 			else $filename = $url ? "$url/index.html" : "index.html";
-				
+			
+			if (self::$domain_based_caching) {
+				if (!$urlParts) continue; // seriously malformed url here...
+				$filename = $urlParts['host'] . '/' . $filename;
+			}
+			
 			$files[$filename] = array(
 				'Content' => $content,
 				'Folder' => (dirname($filename) == '/') ? '' :  (dirname($filename).'/'),

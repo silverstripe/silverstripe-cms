@@ -34,7 +34,7 @@ abstract class StaticPublisher extends DataObjectDecorator {
 			$pages = Versioned::get_by_stage('SiteTree', 'Live', '', '', '', 10);
 			if($pages) {
 				foreach($pages as $page) {
-					$urls[] = $page->Link();
+					$urls[] = $page->AbsoluteLink();
 				}
 			}
 		}
@@ -44,7 +44,6 @@ abstract class StaticPublisher extends DataObjectDecorator {
 				user_error("Bad URL: " . var_export($url, true), E_USER_WARNING);
 				continue;
 			}
-			$url = Director::makeRelative($url);
 			if(substr($url,-1) == '/') $url = substr($url,0,-1);
 			$urls[$i] = $url;
 		}
