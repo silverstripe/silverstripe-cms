@@ -730,7 +730,7 @@ JS;
 
 		if($record) {
 			if($record && !$record->canView()) return Security::permissionFailure($this);
-			
+			if(!$versionAuthor) $versionAuthor = new ArrayData(array('Title' => 'Unknown author'));
 			$fields = $record->getCMSFields($this);
 			$fields->removeByName("Status");
 
@@ -823,12 +823,16 @@ JS;
 		$record = $page->compareVersions($fromVersion, $toVersion);
 		$fromVersionRecord = Versioned::get_version('SiteTree', $id, $fromVersion);
 		$toVersionRecord = Versioned::get_version('SiteTree', $id, $toVersion);
+		if(!$fromVersionRecord) user_error("Can't find version $fromVersion of page $id", E_USER_ERROR);
+		if(!$toVersionRecord) user_error("Can't find version $toVersion of page $id", E_USER_ERROR);
 		
 		if($record) {
 			$fromDateNice = $fromVersionRecord->obj('LastEdited')->Ago();
 			$toDateNice = $toVersionRecord->obj('LastEdited')->Ago();
 			$fromAuthor = DataObject::get_by_id('Member', $fromVersionRecord->AuthorID);
+			if(!$fromAuthor) $fromAuthor = new ArrayData(array('Title' => 'Unknown author'));
 			$toAuthor = DataObject::get_by_id('Member', $toVersionRecord->AuthorID);
+			if(!$toAuthor) $toAuthor = new ArrayData(array('Title' => 'Unknown author'));
 
 			$fields = $record->getCMSFields($this);
 			$fields->push(new HiddenField("ID"));

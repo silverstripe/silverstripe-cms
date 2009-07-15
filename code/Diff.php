@@ -667,6 +667,9 @@ class Diff
 		
 		// Diff that
 		$diff = new Diff($set1, $set2);
+
+		$tagStack[1] = $tagStack[2] = 0;
+		$rechunked[1] = $rechunked[2] = array();
 		
 		// Go through everything, converting edited tags (and their content) into single chunks.  Otherwise
 		// the generated HTML gets crusty
@@ -704,12 +707,12 @@ class Diff
 				if($chunks) {
 					foreach($chunks as $item) {
 						// $tagStack > 0 indicates that we should be tag-building
-						if(isset($tagStack[$listName])) $rechunked[$listName][sizeof($rechunked[$listName])-1] .= ' ' . $item;
+						if($tagStack[$listName]) $rechunked[$listName][sizeof($rechunked[$listName])-1] .= ' ' . $item;
 						else $rechunked[$listName][] = $item;
 	
 						if($lookForTag && isset($item[0]) && $item[0] == "<" && substr($item,0,2) != "</") {
 							$tagStack[$listName] = 1;
-						} else if(isset($tagStack[$listName])) {
+						} else if($tagStack[$listName]) {
 							if(substr($item,0,2) == "</") $tagStack[$listName]--;
 							else if(isset($item[0]) && $item[0] == "<") $tagStack[$listName]++;
 						}
@@ -719,7 +722,6 @@ class Diff
 				}
 			}
 		}
-
 		
 		// Diff the re-chunked data, turning it into maked up HTML
 		$diff = new Diff($rechunked[1], $rechunked[2]);
