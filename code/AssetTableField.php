@@ -36,6 +36,12 @@ class AssetTableField extends ComplexTableField {
 			}
 			$this->sourceFilter = '(' . implode(' OR ', $searchFilters) . ')';
 			$this->searchingFor = $_REQUEST['FileSearch'];
+			
+			// @todo Integrate search form more closely and don't rely on deprecated
+			//  $extraLinkParams.
+			$this->extraLinkParams = array(
+				'FileSearch' => $SQL_search
+			);
 		}		
 		
 		$this->sourceSort = 'Title';
