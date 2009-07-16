@@ -706,7 +706,7 @@ JS;
 			FormResponse::add("$('Form_EditForm').reloadIfSetTo($page->ID);");
 		}
 		
-		FormResponse::status_message($statusMessage, 'good');
+		if($statusMessage) FormResponse::status_message($statusMessage, 'good');
 		FormResponse::add("$('Form_EditForm').elements.StageURLSegment.value = '$JS_stageURL';");
 		FormResponse::add("$('Form_EditForm').elements.LiveURLSegment.value = '$JS_liveURL';");
 		FormResponse::add("$('Form_EditForm').notify('PagePublished', $('Form_EditForm').elements.ID.value);");
