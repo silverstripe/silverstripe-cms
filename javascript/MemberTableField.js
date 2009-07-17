@@ -275,5 +275,5 @@ MemberFilterButton.prototype = {
 
 // has to be external from initialize() because otherwise request will double on each reload - WTF
 Behaviour.register({
-	'#Form_EditForm div.MemberTableField table.data input' : AjaxMemberLookup
+	'#Form_EditForm div.MemberTableField table.data input.text' : AjaxMemberLookup
 });
