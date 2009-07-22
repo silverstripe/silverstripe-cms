@@ -55,6 +55,8 @@ class RebuildStaticCacheTask extends Controller {
 		$urls = array_unique($urls);
 		sort($urls);
 
+		$mappedUrls = $page->urlsToPaths($urls);
+		
 		$start = isset($_GET['start']) ? $_GET['start'] : 0;
 		$count = isset($_GET['count']) ? $_GET['count'] : sizeof($urls);
 		if(($start + $count) > sizeof($urls)) $count = sizeof($urls) - $start;
@@ -62,13 +64,29 @@ class RebuildStaticCacheTask extends Controller {
 		$urls = array_slice($urls, $start, $count);
 
 		if(!isset($_GET['urls']) && $start == 0 && file_exists("../cache")) {
-			echo "Removing old cache... \n";
+			echo "Removing stale cache files... \n";
 			flush();
-			Filesystem::removeFolder("../cache", true);
+			$cacheBaseDir = $page->getDestDir();
+			
+			if (FilesystemPublisher::$domain_based_caching) {
+				// Glob each dir, then glob each one of those
+				foreach(glob('../cache/*', GLOB_ONLYDIR) as $cacheDir) {
+					foreach(glob($cacheDir.'/*') as $cacheFile) {
+						$searchCacheFile = trim(str_replace($cacheBaseDir, '', $cacheFile), '\/');
+						if (!in_array($searchCacheFile, $mappedUrls)) {
+							echo " * Deleting $cacheFile\n";
+							@unlink($cacheFile);
+						}
+					}
+				}
+			} else {
+				
+			}
+			
 			echo "done.\n\n";
 		}
-		echo  "Republishing " . sizeof($urls) . " urls...\n\n";
-		$page->publishPages($urls);
+		echo  "Rebuilding cache from " . sizeof($mappedUrls) . " urls...\n\n";
+		$page->publishPages($mappedUrls);
 		echo "\n\n== Done! ==";
 	}
 	

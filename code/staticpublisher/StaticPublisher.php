@@ -12,6 +12,7 @@ abstract class StaticPublisher extends DataObjectDecorator {
 	static $echo_progress = false;
 	
 	abstract function publishPages($pages);
+	abstract function unpublishPages($pages);
 	
 	static function echo_progress() {
 		return (boolean)self::$echo_progress;
@@ -51,6 +52,21 @@ abstract class StaticPublisher extends DataObjectDecorator {
 		$urls = array_unique($urls);
 
 		$this->publishPages($urls);
+	}
+	
+	/**
+	 * On after unpublish, get changes and hook into underlying
+	 * functionality
+	 */
+	function onAfterUnpublish($page) {
+		if($this->owner->hasMethod('pagesAffectedByUnpublishing')) {
+			$urls = $this->owner->pagesAffectedByUnpublishing();
+			$urls = array_unique($urls);
+		} else {
+			$urls = array($this->owner->AbsoluteLink());
+		}
+		
+		$this->unpublishPages($urls);
 	}
 		
 	/**

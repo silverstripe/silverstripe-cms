@@ -3,6 +3,9 @@
 /**
  * Usage: Object::add_extension("SiteTree", "FilesystemPublisher('../static-folder/')")
  *
+ * You may also have a method $page->pagesAffectedByUnpublishing() to return other URLS
+ * that should be de-cached if $page is unpublished.
+ *
  * @see http://doc.silverstripe.com/doku.php?id=staticpublisher
  * 
  * @package cms
@@ -10,7 +13,7 @@
  */
 class FilesystemPublisher extends StaticPublisher {
 	protected $destFolder;
-	protected $fileExtension;
+	protected $fileExtension = 'html';
 	
 	protected static $static_base_url = null;
 	
@@ -41,21 +44,62 @@ class FilesystemPublisher extends StaticPublisher {
 		parent::__construct();
 	}
 	
-	function publishPages($urls) { 
+	function urlsToPaths($urls) {
+		$mappedUrls = array();
+		foreach($urls as $url) {
+			$urlParts = @parse_url($url);
+			$urlParts['path'] = isset($urlParts['path']) ? $urlParts['path'] : '';
+			$urlSegment = preg_replace('/[^a-zA-Z0-9]/si', '_', trim($urlParts['path'], '/'));
+
+			$filename = $urlSegment ? "$urlSegment.$this->fileExtension" : "index.$this->fileExtension";
+
+			if (self::$domain_based_caching) {
+				if (!$urlParts) continue; // seriously malformed url here...
+				$filename = $urlParts['host'] . '/' . $filename;
+			}
+		
+			$mappedUrls[$url] = ((dirname($filename) == '/') ? '' :  (dirname($filename).'/')).basename($filename);
+		}
+
+		return $mappedUrls;
+	}
+	
+	function unpublishPages($urls) {
+		// Do we need to map these?
+		// Detect a numerically indexed arrays
+		if (is_numeric(join('', array_keys($urls)))) $urls = $this->urlsToPaths($urls);
+		
 		// This can be quite memory hungry and time-consuming
 		// @todo - Make a more memory efficient publisher
 		increase_time_limit_to();
 		increase_memory_limit_to();
 		
-		//$base = Director::absoluteURL($this->destFolder);
-		//$base = preg_replace('/\/[^\/]+\/\.\./','',$base) . '/';
+		$cacheBaseDir = $this->getDestDir();
 		
+		foreach($urls as $url => $path) {
+			if (file_exists($cacheBaseDir.'/'.$path)) {
+				@unlink($cacheBaseDir.'/'.$path);
+			}
+		}
+	}
+	
+	function publishPages($urls) { 
+		// Do we need to map these?
+		// Detect a numerically indexed arrays
+		if (is_numeric(join('', array_keys($urls)))) $urls = $this->urlsToPaths($urls);
+		
+		// This can be quite memory hungry and time-consuming
+		// @todo - Make a more memory efficient publisher
+		increase_time_limit_to();
+		increase_memory_limit_to();
+		
+		$currentBaseURL = Director::baseURL();
 		if(self::$static_base_url) Director::setBaseURL(self::$static_base_url);
 		
 		$files = array();
 		$i = 0;
 		$totalURLs = sizeof($urls);
-		foreach($urls as $url) {
+		foreach($urls as $url => $path) {
 			$i++;
 
 			if($url && !is_string($url)) {
@@ -101,23 +145,10 @@ class FilesystemPublisher extends StaticPublisher {
 				}
 			}
 			
-			
-			$urlParts = @parse_url($url);
-			$urlParts['path'] = isset($urlParts['path']) ? $urlParts['path'] : '';
-			$url = preg_replace('/[^a-zA-Z0-9]/si', '_', trim($urlParts['path'], '/'));
-
-			if($this->fileExtension) $filename = $url ? "$url.$this->fileExtension" : "index.$this->fileExtension";
-			else $filename = $url ? "$url/index.html" : "index.html";
-			
-			if (self::$domain_based_caching) {
-				if (!$urlParts) continue; // seriously malformed url here...
-				$filename = $urlParts['host'] . '/' . $filename;
-			}
-			
-			$files[$filename] = array(
+			$files[] = array(
 				'Content' => $content,
-				'Folder' => (dirname($filename) == '/') ? '' :  (dirname($filename).'/'),
-				'Filename' => basename($filename),
+				'Folder' => dirname($path).'/',
+				'Filename' => basename($path),
 			);
 			
 			// Add externals
@@ -147,8 +178,8 @@ class FilesystemPublisher extends StaticPublisher {
 			}*/
 		}
 
-		if(self::$static_base_url) Director::setBaseURL(null);
-		
+		if(self::$static_base_url) Director::setBaseURL($currentBaseURL); 
+
 		$base = "../$this->destFolder";
 		foreach($files as $file) {
 			Filesystem::makeFolder("$base/$file[Folder]");
@@ -182,6 +213,10 @@ class FilesystemPublisher extends StaticPublisher {
 				array('**DESTINATION**'),
 				array($destination),
 				$template);
+	}
+	
+	public function getDestDir() {
+		return '../'.$this->destFolder;
 	}
 }
 
