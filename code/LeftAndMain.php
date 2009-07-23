@@ -864,7 +864,8 @@ if(node && node.parentTreeNode) node.parentTreeNode.removeTreeNode(node);
 $('Form_EditForm').closeIfSetTo($id);
 JS;
 		FormResponse::add($response);
-		FormResponse::add($this->showSingleInstanceOnlyInCreateFieldJS($page));
+		
+		if ($this instanceof LeftAndMain) FormResponse::add($this->showSingleInstanceOnlyInCreateFieldJS($page));
 		return FormResponse::respond();
 	}
 
