@@ -45,8 +45,10 @@ abstract class CMSBatchAction extends Object {
 			
 			// Now make sure the tree title is appropriately updated
 			$publishedRecord = DataObject::get_by_id('SiteTree', $page->ID);
-			$JS_title = Convert::raw2js($publishedRecord->TreeTitle());
-			FormResponse::add("\$('sitetree').setNodeTitle($page->ID, '$JS_title');");
+			if ($publishedRecord) {
+				$JS_title = Convert::raw2js($publishedRecord->TreeTitle());
+				FormResponse::add("\$('sitetree').setNodeTitle($page->ID, '$JS_title');");
+			}
 			$page->destroy();
 			unset($page);
 		}
