@@ -43,6 +43,7 @@ class CMSMenuItem extends Object
 		$this->url = $url;
 		$this->controller = $controller;
 		$this->priority = $priority;
+		parent::__construct();
 	}
 	
 }
