@@ -26,6 +26,7 @@ class FilesystemPublisher extends StaticPublisher {
 		if(substr($destFolder, -1) == '/') $destFolder = substr($destFolder, 0, -1);
 		$this->destFolder = $destFolder;
 		$this->fileExtension = $fileExtension;
+		parent::__construct();
 	}
 	
 	function publishPages($urls) {
