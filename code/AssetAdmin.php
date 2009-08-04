@@ -28,6 +28,13 @@ class AssetAdmin extends LeftAndMain {
 	 */
 	public static $allowed_extensions = array();
 	
+	/**
+	 * If this is true, then restrictions set in $allowed_max_file_size and
+	 * $allowed_extensions will be applied to users with admin privileges as
+	 * well.
+	 */
+	public static $apply_restrictions_to_admin = false;
+	
 	static $allowed_actions = array(
 		'addfolder',
 		'deletefolder',
@@ -196,7 +203,7 @@ JS
 				}
 				
 				// validate files (only if not logged in as admin)
-				if(Permission::check('ADMIN')) {
+				if(!self::$apply_restrictions_to_admin && Permission::check('ADMIN')) {
 					$valid = true;
 				} else {
 					$upload = new Upload();
