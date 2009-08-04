@@ -57,6 +57,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'SiteTreeAsUL',
 		'getshowdeletedsubtree',
 		'getfilteredsubtree',
+		'getawesomesubtree',
 		'batchactions'
 	);
 	
@@ -152,31 +153,43 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		return $this->getSiteTreeFor("SiteTree");
 	}
-
+	
 	/**
-	 * Get a subtree underneath the request param 'ID', of the tree that includes deleted pages.
-	 * If ID = 0, then get the whole tree.
+	 * Use a CMSSiteTreeFilter to only get certain nodes
+	 *
+	 * @return string
 	 */
-	public function getshowdeletedsubtree() {
-		// Get the tree
-		$tree = $this->getSiteTreeFor($this->stat('tree_class'), $_REQUEST['ID'], "AllHistoricalChildren");
-
-		// Trim off the outer tag
-		$tree = ereg_replace('^[ \t\r\n]*<ul[^>]*>','', $tree);
-		$tree = ereg_replace('</ul[^>]*>[ \t\r\n]*$','', $tree);
-
-		return $tree;
+	public function getfilteredsubtree() {
+		// Sanity and security checks
+		if (!isset($_REQUEST['filter'])) die('No filter passed');
+		if (!ClassInfo::exists($_REQUEST['filter'])) die ('That filter class does not exist');
+		if (!is_subclass_of($_REQUEST['filter'], 'CMSSiteTreeFilter')) die ('That is not a valid filter');
+		
+		// Do eeet!
+		$filter = new $_REQUEST['filter']();
+		return $filter->getTree();
 	}
 	
-	public function getfilteredsubtree() {
-		// Get the tree
-		$tree = $this->getSiteTreeFor($this->stat('tree_class'), $_REQUEST['ID'], null, array(new CMSMainMarkingFilter(), 'mark'));
-
-		// Trim off the outer tag
-		$tree = ereg_replace('^[ \t\r\n]*<ul[^>]*>','', $tree);
-		$tree = ereg_replace('</ul[^>]*>[ \t\r\n]*$','', $tree);
-		
-		return $tree;
+	/**
+	 * Returns a list of batch actions
+	 */
+	function SiteTreeFilters() {
+		$filters = ClassInfo::subclassesFor('CMSSiteTreeFilter');
+		array_shift($filters);
+		$doSet = new DataObjectSet();
+		$doSet->push(new ArrayData(array(
+			'ClassName' => 'all',
+			'Title' => 'All items'
+		)));
+		foreach($filters as $filter) {
+			if (call_user_func(array($filter, 'showInList'))) {
+				$doSet->push(new ArrayData(array(
+					'ClassName' => $filter,
+					'Title' => call_user_func(array($filter, 'title'))
+				)));
+			}
+		}
+		return $doSet;
 	}
 	
 	/**

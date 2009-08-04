@@ -81,19 +81,18 @@
 					</div>
 				</form>
 			</div>
+			<div class="checkboxAboveTree" style="border-bottom:none">
+				Show: <select id="siteTreeFilterList">
+					<% control SiteTreeFilters %>
+					<option value="$ClassName">$Title</option>
+					<% end_control %>
+				</select> <img id="siteTreeFilterActionIndicator" style="display:none" src="cms/images/network-save.gif">
+			</div>
 			<div class="checkboxAboveTree">
 				<img id="checkboxActionIndicator" src="cms/images/network-save.gif">
 				<div>
 					<input type="checkbox" id="sortitems" />
 					<label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
-				</div>
-				<div>
-					<input type="checkbox" id="publishpage_show_drafts" />
-					<label for="publishpage_show_drafts"><% _t('SHOWONLYCHANGED','Show only changed pages') %></label>
-				</div>
-				<div>
-					<input type="checkbox" id="showdeletedpages" />
-					<label for="showdeletedpages"><% _t('SHOW_DELETED_PAGES','Show deleted pages', PR_HIGH) %></label>
 				</div>
 			</div>
 

@@ -118,18 +118,16 @@ searchclass.prototype = {
 	}
 }
 
-/**
- * Show deleted pages checkbox
- */
-ShowDeletedPagesAction = Class.create();
-ShowDeletedPagesAction.applyTo('#showdeletedpages');
-ShowDeletedPagesAction.prototype = {
+SiteTreeFilter = Class.create();
+SiteTreeFilter.applyTo('#siteTreeFilterList');
+SiteTreeFilter.prototype = {
 	initialize: function () {
 	},
-	
-	onclick : function() {
-		if(this.checked) { 
-			$('sitetree').setCustomURL(SiteTreeHandlers.controller_url+'/getshowdeletedsubtree');
+	onchange : function() {
+		var value = this.options[this.selectedIndex].value;
+		
+		if(value != 'all') { 
+			$('sitetree').setCustomURL(SiteTreeHandlers.controller_url+'/getfilteredsubtree?filter='+escape(value));
 		} else {
 			$('sitetree').clearCustomURL();
 		}
@@ -140,14 +138,14 @@ ShowDeletedPagesAction.prototype = {
 			$('sitetree').stopBeingDraggable();
 			__makeDraggableAfterUpdate = true;
 		}
-		
-		var indicator = $('checkboxActionIndicator');
-		indicator.style.display = 'block';
-		
+	
+		var indicator = $('siteTreeFilterActionIndicator');
+		indicator.style.display = 'inline';
+	
 		$('sitetree').reload({
 			onSuccess: function() {
-				if(__makeDraggableAfterUpdate) $('sitetree').makeDraggable();
 				indicator.style.display = 'none';
+				if(__makeDraggableAfterUpdate) $('sitetree').makeDraggable();
 			},
 			onFailure: function(response) {
 				errorMessage('Could not update tree', response);
@@ -155,34 +153,6 @@ ShowDeletedPagesAction.prototype = {
 		});
 	}
 }
-
-/**
- * Show only drafts checkbox click action
- */
-showonlydrafts = Class.create();
-showonlydrafts.applyTo('#publishpage_show_drafts');
-showonlydrafts.prototype = {
-	onclick : function() {
-		if(this.checked) { 
-			$('sitetree').setCustomURL(SiteTreeHandlers.controller_url+'/getfilteredsubtree', {Status:'Saved'});
-		} else {
-			$('sitetree').clearCustomURL();
-		}
-		
-		$('sitetree').reload({
-			onSuccess: function() {
-				statusMessage(ss.i18n._t('CMSMAIN.FILTEREDTREE'),'good');
-			},
-			onFailure: function(response) {
-				errorMessage(ss.i18n.sprintf(
-					ss.i18n._t('CMSMAIN.ERRORFILTERPAGES'),
-					response.responseText
-				));
-			}
-		});
-	}
-}
-
 /**
  * Control the site tree filter
  */

@@ -286,6 +286,7 @@ class LeftAndMain extends Controller {
 				'cms/javascript/Upload.js',
 				'sapphire/javascript/TreeSelectorField.js',
 		 		'cms/javascript/ThumbnailStripField.js',
+		 		'cms/javascript/FilterSiteTree.js',
 			)
 		);
 
