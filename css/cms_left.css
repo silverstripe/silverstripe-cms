@@ -413,6 +413,10 @@ ul.tree span.untranslated a:visited {
 	float: none;
 }
 
+.noBottomBorder {
+	border-bottom: none;
+}
+
 .checkboxAboveTree {
 	border-top: 1px solid #cccccc;
 	padding: 5px 0 0 0;

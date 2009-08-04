@@ -81,7 +81,7 @@
 					</div>
 				</form>
 			</div>
-			<div class="checkboxAboveTree" style="border-bottom:none">
+			<div class="checkboxAboveTree noBottomBorder">
 				Show: <select id="siteTreeFilterList">
 					<% control SiteTreeFilters %>
 					<option value="$ClassName">$Title</option>
