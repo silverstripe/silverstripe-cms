@@ -32,11 +32,13 @@ abstract class SideReport extends Object {
 						);
 					}
 					
+					$val = isset($fieldInfo['prefix']) ? $fieldInfo['prefix'] : '';
+					
 					$fieldName = ereg_replace('[^A-Za-z0-9]+','',$fieldTitle);
 					if(is_string($fieldSource)) {
-						$val = Convert::raw2xml($record->$fieldSource);
+						$val .= Convert::raw2xml($record->$fieldSource);
 					} else {
-						$val = $record->val($fieldSource[0], $fieldSource[1]);
+						$val .= $record->val($fieldSource[0], $fieldSource[1]);
 					}
 					
 					if(isset($fieldInfo['newline']) && $fieldInfo['newline']) $result .= "<br>";
@@ -47,6 +49,8 @@ abstract class SideReport extends Object {
 					} else {
 						$result .= "<span class=\"$fieldName\">$val</span>";
 					}
+					
+					$val .= isset($fieldInfo['suffix']) ? $fieldInfo['suffix'] : '';
 				}
 				$result .= "\n</li>\n";
 			}
