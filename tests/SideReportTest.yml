@@ -1,0 +1,5 @@
+SiteTree:
+    after:
+        Title: after
+    before:
+        Title: before
