@@ -88,6 +88,7 @@
 					<% end_control %>
 				</select> <img id="siteTreeFilterActionIndicator" style="display:none" src="cms/images/network-save.gif">
 			</div>
+			<% if CanOrganiseSitetree %>
 			<div class="checkboxAboveTree">
 				<img id="checkboxActionIndicator" src="cms/images/network-save.gif">
 				<div>
@@ -95,7 +96,7 @@
 					<label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
 				</div>
 			</div>
-
+			<% end_if %>
 			<% if IsTranslatableEnabled %>
 			<div id="LangSelector_holder">
 				Language: $LangSelector

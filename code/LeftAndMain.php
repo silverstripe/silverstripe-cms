@@ -891,6 +891,11 @@ JS;
 		}
 		$_REQUEST['ajax'] = 1;
 		$cleanupJS = '';
+		
+		if (!Permission::check('SITETREE_REORGANISE') && !Permission::check('ADMIN')) {
+			FormResponse::status_message(_t('LeftAndMain.CANT_REORGANISE',"You do not have permission to rearange the site tree. Your change was not saved."),"bad");
+			return FormResponse::respond();
+		}
 
 		if(is_numeric($id) && is_numeric($parentID) && $id != $parentID) {
 			$node = DataObject::get_by_id($this->stat('tree_class'), $id);
@@ -932,6 +937,11 @@ JS;
 		$counter = 0;
 		$js = '';
 		$_REQUEST['ajax'] = 1;
+		
+		if (!Permission::check('SITETREE_REORGANISE') && !Permission::check('ADMIN')) {
+			FormResponse::status_message(_t('LeftAndMain.CANT_REORGANISE',"You do not have permission to rearange the site tree. Your change was not saved."),"bad");
+			return FormResponse::respond();
+		}
 
 		if(is_array($_REQUEST['ID'])) {
 			if($_REQUEST['MovedNodeID']==0){ //Sorting root
@@ -969,6 +979,10 @@ JS;
 		}
 
 		return FormResponse::respond();
+	}
+	
+	public function CanOrganiseSitetree() {
+		return !Permission::check('SITETREE_REORGANISE') && !Permission::check('ADMIN') ? false : true;
 	}
 
 	/**
