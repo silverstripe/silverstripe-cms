@@ -32,6 +32,8 @@ class LeftAndMain extends Controller {
 
 	static $tree_class = null;
 	
+	static $edit_timeout = 180;
+	
 	static $ForceReload;
 
 	static $allowed_actions = array(
@@ -48,7 +50,7 @@ class LeftAndMain extends Controller {
 		'Member_ProfileForm',
 		'EditorToolbar',
 		'EditForm',
-		
+		'pageStatus',
 	);
 	
 	/**
@@ -343,7 +345,7 @@ class LeftAndMain extends Controller {
 		}
 
 		$form = $this->EditForm();
-		if($form) return $form->formHtmlContent();
+		if ($form) return $form->formHtmlContent();
 		else return "";
 	}
 	public function getLastFormIn($html) {
@@ -716,6 +718,9 @@ JS;
 				FormResponse::add("\$('Form_EditForm_StageURLSegment').value = \"{$record->URLSegment}\";");
 			}
 
+			$newVersion = ((int)$record->Version) + 1;
+			FormResponse::add("\$('Form_EditForm_Version').value = {$newVersion};");
+			
 			// If the 'Save & Publish' button was clicked, also publish the page
 			if (isset($urlParams['publish']) && $urlParams['publish'] == 1) {
 				$record->doPublish();
@@ -971,6 +976,8 @@ JS;
 				
 				DataObject::delete_by_id($this->stat('tree_class'), $id);
 				$script .= "node = st.getTreeNodeByIdx($id); if(node) node.parentTreeNode.removeTreeNode(node); $('Form_EditForm').closeIfSetTo($id); \n";
+				
+				if ($id == $this->currentPageID()) FormResponse::add('CurrentPage.isDeleted = 1;');
 			}
 		}
 		FormResponse::add($script);
@@ -1037,6 +1044,52 @@ JS;
 
 	public function isCurrentPage(DataObject $page) {
 		return $page->ID == Session::get("{$this->class}.currentPage");
+	}
+	
+	/**
+	 * Get the staus of a certain page and version.
+	 *
+	 * This function is used for concurrent editing, and providing alerts
+	 * when multiple users are editing a single page. It echoes a json
+	 * encoded string to the UA.
+	 */
+	public function pageStatus() {
+		// If no ID is set, we're merely keeping the session alive
+		if (!isset($_REQUEST['ID'])) return 1;
+		
+		$page = $this->getRecord($_REQUEST['ID']);
+		if (!$page) {
+			// Page has not been found
+			$return = array('status' => 'not_found');
+		} elseif ($page->getIsDeletedFromStage()) {
+			// Page has been deleted from stage
+			$return = array('status' => 'deleted');
+		} else {
+			// Mark me as editing if I'm not already
+			$page->UsersCurrentlyEditing()->add(Member::currentUser());
+			DB::query("UPDATE SiteTree_UsersCurrentlyEditing SET LastPing = '".date('Y-m-d H:i:s')."'
+				WHERE MemberID = ".Member::currentUserID()." AND SiteTreeID = {$page->ID}");
+			
+			// Page exists, who else is editing it?
+			$names = array();
+			foreach($page->UsersCurrentlyEditing() as $user) {
+				if ($user->ID == Member::currentUserId()) continue;
+				$names[] = trim($user->FirstName . ' ' . $user->Surname);
+			}
+			$return = array('status' => 'editing', 'names' => $names);
+			
+			// Has it been published since the CMS first loaded it?
+			$usersCurrentVersion = isset($_REQUEST['Version']) ? $_REQUEST['Version'] : $page->Version;
+			if ($usersCurrentVersion < $page->Version) {
+				$return = array('status' => 'not_current_version');
+			}
+		}
+		
+		// Delete pings older than 3 minutes from the cache...
+		DB::query("DELETE FROM SiteTree_UsersCurrentlyEditing WHERE LastPing < '".date('Y-m-d H:i:s', time()-self::$edit_timeout)."'");
+		
+		echo Convert::array2json($return);
+		return;
 	}
 
 	/**

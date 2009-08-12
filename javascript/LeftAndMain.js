@@ -1,4 +1,5 @@
 var _AJAX_LOADING = false;
+var pagePingInterval = 15;
 
 // Resize the tabs once the document is properly loaded
 // @todo most of this file needs to be tidied up using jQuery
@@ -865,9 +866,66 @@ function hideIndicator(id) {
 	Effect.Fade(id, {duration: 0.3});
 }
 
+var CurrentPage = {
+           id: function() { return $('Form_EditForm_ID').value; },
+      version: function() { return $('Form_EditForm_Version').value; },
+    isDeleted: function() { return $('SiteTree_Alert').getAttribute('deletedfromstage'); }
+}
+
 setInterval(function() {
-    new Ajax.Request("Security/ping");
-}, 5*60*1000);
+	if ($('Form_EditForm_ID')) {
+    	new Ajax.Request("admin/pageStatus?ID="+CurrentPage.id()+'&Version='+CurrentPage.version(), {
+			onSuccess: function(t) {
+				var data = eval('('+t.responseText+')');
+				var hasAlert = false;
+				
+				switch(data.status) {
+					case 'editing':
+						$('SiteTree_Alert').style.border = '2px solid #B5D4FE';
+						$('SiteTree_Alert').style.backgroundColor = '#F8FAFC';
+						if (data.names.length) {
+							hasAlert = true;
+							$('SiteTree_Alert').innerHTML = "This page is also being edited by: "+data.names.join(', ');
+						}
+						break;
+					case 'deleted':
+						// handle deletion by another user (but not us, or if we're already looking at a deleted version)
+						if (CurrentPage.isDeleted() == 0) {
+							$('SiteTree_Alert').style.border = '2px solid #ffd324';
+							$('SiteTree_Alert').style.backgroundColor = '#fff6bf';
+							$('SiteTree_Alert').innerHTML = "This page has been deleted since you opened it.";
+							hasAlert = true;
+						}
+						break;
+					case 'not_current_version':
+						// handle another user publishing
+						$('SiteTree_Alert').style.border = '2px solid #FFD324';
+						$('SiteTree_Alert').style.backgroundColor = '#fff6bf';
+						$('SiteTree_Alert').innerHTML = "This page has been saved since you opened it. You may want to reload it, or risk overwriting changes.";
+						hasAlert = true;
+						break;
+					case 'not_found':
+						break;
+				}
+				
+				if (hasAlert) {
+					$('SiteTree_Alert').style.padding = '5px';
+					$('SiteTree_Alert').style.marginBottom = '5px';
+					$('SiteTree_Alert').style.display = 'block';
+				} else {
+					$('SiteTree_Alert').innerHTML = '';
+					$('SiteTree_Alert').style.padding = '0px';
+					$('SiteTree_Alert').style.marginBottom = '0px';
+					if ($('SiteTree_Alert').style.display != 'none') $('SiteTree_Alert').style.display = 'none';
+				}
+			}
+		});
+	} else {
+		// We're not looking at a page, so at this stage, we're just
+		// pinging to keep the session alive.
+		new Ajax.Request("admin/pageStatus");
+	}
+}, pagePingInterval*1000);
 
 /**
  * Find and enable TinyMCE on all htmleditor fields
