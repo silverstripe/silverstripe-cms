@@ -190,7 +190,7 @@ SiteTreeFilterForm.prototype = {
 		
 		if (filters.keys().length) {
 			// Set new URL
-			$('sitetree').setCustomURL(SiteTreeHandlers.controller_url + '/getfilteredsubtree', filters);
+			$('sitetree').setCustomURL(SiteTreeHandlers.controller_url + '/getfilteredsubtree?filter=CMSSiteTreeFilter_Search', filters);
 			
 			// Disable checkbox tree controls that currently don't work with search.
 			// @todo: Make them work together

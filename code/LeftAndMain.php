@@ -721,6 +721,8 @@ JS;
 			$newVersion = ((int)$record->Version) + 1;
 			FormResponse::add("\$('Form_EditForm_Version').value = {$newVersion};");
 			
+			$this->extend('onAfterSave', $record);
+			
 			// If the 'Save & Publish' button was clicked, also publish the page
 			if (isset($urlParams['publish']) && $urlParams['publish'] == 1) {
 				$record->doPublish();
