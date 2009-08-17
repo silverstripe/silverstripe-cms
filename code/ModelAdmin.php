@@ -425,6 +425,8 @@ class ModelAdmin_CollectionController extends Controller {
 		$importers = $this->parentController->getModelImporters();
 		if(!$importers || !isset($importers[$modelName])) return false;
 		
+		if(!singleton($modelName)->canCreate(Member::currentUser())) return false;
+
 		$fields = new FieldSet(
 			new HiddenField('ClassName', _t('ModelAdmin.CLASSTYPE'), $modelName),
 			new FileField('_CsvFile', false)
