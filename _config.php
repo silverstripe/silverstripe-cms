@@ -15,7 +15,7 @@ Director::addRules(50, array(
 	'dev/buildcache/$Action' => 'RebuildStaticCacheTask',
 ));
 
-CMSMenu::populate_menu();
+CMSMenu::add_director_rules();
 
 // Default CMS HTMLEditorConfig
 HtmlEditorConfig::get('cms')->setOptions(array(

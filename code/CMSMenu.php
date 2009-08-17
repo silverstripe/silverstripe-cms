@@ -6,23 +6,38 @@
  * @package cms
  * @subpackage content
  */
-class CMSMenu extends Object implements Iterator, i18nEntityProvider
+class CMSMenu extends Object implements IteratorAggregate, i18nEntityProvider
 {
-
-	protected static $menu_items = array();
+	
+	/**
+	 * An array of changes to be made to the menu items, in the order that the changes should be
+	 * applied.  Each item is a map in one of the two forms:
+	 *  - array('type' => 'add', 'item' => new CMSMenuItem(...) )
+	 *  - array('type' => 'remove', 'code' => 'codename' )
+	 */
+	protected static $menu_item_changes = array();
+	
+	/**
+	 * Set to true if clear_menu() is called, to indicate that the default menu shouldn't be
+	 * included
+	 */
+	protected static $menu_is_cleared = false;
 
 	/**
 	 * Generate CMS main menu items by collecting valid 
 	 * subclasses of {@link LeftAndMain}
 	 */
 	public static function populate_menu() {
-		$cmsClasses = self::get_cms_classes();
-		foreach($cmsClasses as $cmsClass) {
-			self::add_controller($cmsClass);
-		}
-		return true;
+		self::$menu_is_cleared = false;
 	}
-	
+
+	/**
+	 * Add Director rules for all of the CMS controllers.
+	 */
+	public static function add_director_rules() {
+		array_map(array('self','add_director_rule_for_controller'), self::get_cms_classes());
+	}
+
 	/**
 	 * Add a LeftAndMain controller to the CMS menu.
 	 *
@@ -32,14 +47,39 @@ class CMSMenu extends Object implements Iterator, i18nEntityProvider
 	 *			when the item is removed. Functionality needed in {@link Director}.
 	 */	
 	public static function add_controller($controllerClass) {
+		self::add_menu_item_obj($controllerClass, self::menuitem_for_controller($controllerClass));
+	}
+	
+	/**
+	 * Return a CMSMenuItem to add the given controller to the CMSMenu
+	 */
+	protected static function menuitem_for_controller($controllerClass) {
 		$urlBase      = Object::get_static($controllerClass, 'url_base');
 		$urlSegment   = Object::get_static($controllerClass, 'url_segment');
-		$urlRule      = Object::get_static($controllerClass, 'url_rule');
-		$urlPriority  = Object::get_static($controllerClass, 'url_priority');
 		$menuPriority = Object::get_static($controllerClass, 'menu_priority');
 		
 		// Don't add menu items defined the old way
 		if($urlSegment === null) return;
+
+		$link = Controller::join_links($urlBase, $urlSegment) . '/';
+
+		// doesn't work if called outside of a controller context (e.g. in _config.php)
+		// as the locale won't be detected properly. Use {@link LeftAndMain->MainMenu()} to update
+		// titles for existing menu entries
+		$defaultTitle = LeftAndMain::menu_title_for_class($controllerClass);
+		$menuTitle = _t("{$controllerClass}.MENUTITLE", $defaultTitle);
+
+		return new CMSMenuItem($menuTitle, $link, $controllerClass, $menuPriority);
+	}
+	
+	/**
+	 * Add the appropriate Director rules for the given controller.
+	 */
+	protected static function add_director_rule_for_controller($controllerClass) {
+		$urlBase      = Object::get_static($controllerClass, 'url_base');
+		$urlSegment   = Object::get_static($controllerClass, 'url_segment');
+		$urlRule      = Object::get_static($controllerClass, 'url_rule');
+		$urlPriority  = Object::get_static($controllerClass, 'url_priority');
 		
 		$link = Controller::join_links($urlBase, $urlSegment) . '/';
 		
@@ -49,21 +89,6 @@ class CMSMenu extends Object implements Iterator, i18nEntityProvider
 		Director::addRules($urlPriority, array(
 			$rule => $controllerClass
 		));
-		
-		// doesn't work if called outside of a controller context (e.g. in _config.php)
-		// as the locale won't be detected properly. Use {@link LeftAndMain->MainMenu()} to update
-		// titles for existing menu entries
-		$defaultTitle = LeftAndMain::menu_title_for_class($controllerClass);
-		$menuTitle = _t("{$controllerClass}.MENUTITLE", $defaultTitle);
-		
-		// Add menu item
-		return self::add_menu_item(
-			$controllerClass, 
-			$menuTitle, 
-			$link, 
-			$controllerClass,
-			$menuPriority
-		);
 	}
 	
 	/**
@@ -96,10 +121,7 @@ class CMSMenu extends Object implements Iterator, i18nEntityProvider
 	public static function add_menu_item($code, $menuTitle, $url, $controllerClass = null, $priority = -1) {
 		// If a class is defined, then force the use of that as a code.  This helps prevent menu item duplication
 		if($controllerClass) $code = $controllerClass;
-
-		$menuItems = self::$menu_items;
-		if(isset($menuItems[$code])) return false;
-	
+		
 		return self::replace_menu_item($code, $menuTitle, $url, $controllerClass, $priority);
 	}
 	
@@ -110,7 +132,7 @@ class CMSMenu extends Object implements Iterator, i18nEntityProvider
 	 * @return array
 	 */
 	public static function get_menu_item($code) {
-		$menuItems = self::$menu_items;
+		$menuItems = self::get_menu_items();
 		return (isset($menuItems[$code])) ? $menuItems[$code] : false; 
 	}
 	
@@ -120,7 +142,43 @@ class CMSMenu extends Object implements Iterator, i18nEntityProvider
 	 * @return array
 	 */
 	public static function get_menu_items() {
-		return self::$menu_items;
+		$menuItems = array();
+
+		// Set up default menu items
+		if(!self::$menu_is_cleared) {
+			$cmsClasses = self::get_cms_classes();
+			foreach($cmsClasses as $cmsClass) {
+				$menuItems[$cmsClass] = self::menuitem_for_controller($cmsClass);
+			}
+		}
+		
+		// Apply changes
+		foreach(self::$menu_item_changes as $change) {
+			switch($change['type']) {
+				case 'add':
+					$menuItems[$change['code']] = $change['item'];
+					break;
+				
+				case 'remove':
+					unset($menuItems[$change['code']]);
+					break;
+					
+				default:
+					user_error("Bad menu item change type {$change[type]}", E_USER_WARNING);
+			}
+		}
+		
+		// Sort menu items according to priority
+		$menuPriority = array();
+		$i = 0;
+		foreach($menuItems as $key => $menuItem) {
+			$i++;
+			// This funny litle formula ensures that the first item added with the same priority will be left-most.
+			$menuPriority[$key] = $menuItem->priority*100 - $i;
+		}
+		array_multisort($menuPriority, SORT_DESC, $menuItems);
+		
+		return $menuItems;
 	}
 	
 	/**
@@ -154,18 +212,15 @@ class CMSMenu extends Object implements Iterator, i18nEntityProvider
 	 * @param string $code Unique identifier for this menu item
 	 */
 	public static function remove_menu_item($code) {
-		$menuItems = self::$menu_items;
-		if(isset($menuItems[$code])) unset($menuItems[$code]);
-		// replace the whole array
-		self::$menu_items = $menuItems;
+		self::$menu_item_changes[] = array('type' => 'remove', 'code' => $code);
 	}
 	
 	/**
 	 * Clears the entire menu
-	 *
 	 */
 	public static function clear_menu() {
-		self::$menu_items = array();
+		self::$menu_item_changes = array();
+		self::$menu_is_cleared = true;
 	}
 
 	/**
@@ -182,21 +237,23 @@ class CMSMenu extends Object implements Iterator, i18nEntityProvider
 	 * @return boolean Success
 	 */
 	public static function replace_menu_item($code, $menuTitle, $url, $controllerClass = null, $priority = -1) {
-		$menuItems = self::$menu_items;
-		$menuItems[$code] = new CMSMenuItem($menuTitle, $url, $controllerClass, $priority);
-		
-		$menuPriority = array();
-		$i = 0;
-		foreach($menuItems as $key => $menuItem) {
-			$i++;
-			// This funny litle formula ensures that the first item added with the same priority will be left-most.
-			$menuPriority[$key] = $menuItem->priority*100 - $i;
-		}
-		array_multisort($menuPriority, SORT_DESC, $menuItems);
-
-		self::$menu_items = $menuItems;
-		return true;
-	}	
+		self::$menu_item_changes[] = array(
+			'type' => 'add',
+			'code' => $code,
+			'item' => new CMSMenuItem($menuTitle, $url, $controllerClass, $priority),
+		);
+	}
+	
+	/**
+	 * Add a previously built menuitem object to the menu
+	 */
+	protected static function add_menu_item_obj($code, $cmsMenuItem) {
+		self::$menu_item_changes[] = array(
+			'type' => 'add',
+			'code' => $code,
+			'item' => $cmsMenuItem,
+		);
+	}
 
 	/**
 	 * A utility funciton to retrieve subclasses of a given class that
@@ -225,25 +282,11 @@ class CMSMenu extends Object implements Iterator, i18nEntityProvider
 		return $subClasses;
 	}
 	
-	// Iterator Interface Methods	
-	public function key() {
-		return key(self::$menu_items);
-	}
-	
-	public function current() {
-		return current(self::$menu_items);
-	}
-	
-	public function next() {
-		return next(self::$menu_items);
-	}
-	
-	public function rewind() {
-		return reset(self::$menu_items);
-	}
-	
-	public function valid() {
-		return (bool)self::current();
+	/**
+	 * IteratorAggregate Interface Method.  Iterates over the menu items.
+	 */
+	function getIterator() {
+		return new ArrayIterator(self::get_menu_items());
 	}
 
 	/**
