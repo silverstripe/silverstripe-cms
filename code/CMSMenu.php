@@ -47,7 +47,9 @@ class CMSMenu extends Object implements IteratorAggregate, i18nEntityProvider
 	 *			when the item is removed. Functionality needed in {@link Director}.
 	 */	
 	public static function add_controller($controllerClass) {
-		self::add_menu_item_obj($controllerClass, self::menuitem_for_controller($controllerClass));
+		if($menuItem = self::menuitem_for_controller($controllerClass)) {
+			self::add_menu_item_obj($controllerClass, $menuItem);
+		}
 	}
 	
 	/**
@@ -59,7 +61,7 @@ class CMSMenu extends Object implements IteratorAggregate, i18nEntityProvider
 		$menuPriority = Object::get_static($controllerClass, 'menu_priority');
 		
 		// Don't add menu items defined the old way
-		if($urlSegment === null) return;
+		if($urlSegment === null && $controllerClass != "CMSMain") return;
 
 		$link = Controller::join_links($urlBase, $urlSegment) . '/';
 
@@ -81,14 +83,16 @@ class CMSMenu extends Object implements IteratorAggregate, i18nEntityProvider
 		$urlRule      = Object::get_static($controllerClass, 'url_rule');
 		$urlPriority  = Object::get_static($controllerClass, 'url_priority');
 		
-		$link = Controller::join_links($urlBase, $urlSegment) . '/';
+		if($urlSegment || $controllerClass == "CMSMain") {
+			$link = Controller::join_links($urlBase, $urlSegment) . '/';
 		
-		// Make director rule
-		if($urlRule[0] == '/') $urlRule = substr($urlRule,1);
-		$rule = $link . '/' . $urlRule; // the / will combine with the / on the end of $link to make a //
-		Director::addRules($urlPriority, array(
-			$rule => $controllerClass
-		));
+			// Make director rule
+			if($urlRule[0] == '/') $urlRule = substr($urlRule,1);
+			$rule = $link . '/' . $urlRule; // the / will combine with the / on the end of $link to make a //
+			Director::addRules($urlPriority, array(
+				$rule => $controllerClass
+			));
+		}
 	}
 	
 	/**
@@ -148,7 +152,8 @@ class CMSMenu extends Object implements IteratorAggregate, i18nEntityProvider
 		if(!self::$menu_is_cleared) {
 			$cmsClasses = self::get_cms_classes();
 			foreach($cmsClasses as $cmsClass) {
-				$menuItems[$cmsClass] = self::menuitem_for_controller($cmsClass);
+				$menuItem = self::menuitem_for_controller($cmsClass);
+				if($menuItem) $menuItems[$cmsClass] = $menuItem;
 			}
 		}
 		
