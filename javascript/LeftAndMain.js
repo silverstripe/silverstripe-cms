@@ -867,9 +867,9 @@ function hideIndicator(id) {
 }
 
 var CurrentPage = {
-           id: function() { return $('Form_EditForm_ID').value; },
-      version: function() { return $('Form_EditForm_Version').value; },
-    isDeleted: function() { return $('SiteTree_Alert').getAttribute('deletedfromstage'); }
+           id: function() { if($('Form_EditForm_ID')) return $('Form_EditForm_ID').value; },
+      version: function() { if($('Form_EditForm_Version')) return $('Form_EditForm_Version').value; },
+    isDeleted: function() { if($('SiteTree_Alert')) return $('SiteTree_Alert').getAttribute('deletedfromstage'); }
 }
 
 setInterval(function() {
