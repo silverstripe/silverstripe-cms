@@ -1159,7 +1159,9 @@ JS;
 	function duplicate() {
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
 			$page = DataObject::get_by_id("SiteTree", $id);
-			if($page && !$page->canEdit()) return Security::permissionFailure($this);
+			if($page && (!$page->canEdit() || !$page->canCreate())) {
+				return Security::permissionFailure($this);
+			}
 
 			$newPage = $page->duplicate();
 			
@@ -1178,7 +1180,9 @@ JS;
 	function duplicatewithchildren() {
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
 			$page = DataObject::get_by_id("SiteTree", $id);
-			if($page && !$page->canEdit()) return Security::permissionFailure($this);
+			if($page && (!$page->canEdit() || !$page->canCreate())) {
+				return Security::permissionFailure($this);
+			}
 
 			$newPage = $page->duplicateWithChildren();
 
