@@ -219,7 +219,7 @@ abstract class ModelAdmin extends LeftAndMain {
 		foreach($models as $class => $options) { 
 			if(is_numeric($class)) $class = $options;
 			$forms->push(new ArrayData(array (
-				'Title'     => (is_array($options) && isset($options['title'])) ? $options['title'] : singleton($class)->singular_name(),
+				'Title'     => (is_array($options) && isset($options['title'])) ? $options['title'] : singleton($class)->i18n_singular_name(),
 				'ClassName' => $class,
 				'Content'   => $this->$class()->getModelSidebar()
 			)));

@@ -13,7 +13,7 @@
 		
 		<% if SearchClassSelector = dropdown %>
 			<p id="ModelClassSelector">
-				Search for:
+				<% _t('ModelAdmin.SEARCHFOR','Search for:') %>
 				<select>
 					<% control ModelForms %>
 						<option value="{$Form.Name}_$ClassName">$Title</option>
