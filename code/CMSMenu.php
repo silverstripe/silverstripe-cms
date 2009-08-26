@@ -280,10 +280,15 @@ class CMSMenu extends Object implements IteratorAggregate, i18nEntityProvider
 		foreach($subClasses as $key => $className) {
 			// Remove abstract classes and LeftAndMain
 			$classReflection = new ReflectionClass($className);
-			if(!$classReflection->isInstantiable() || 'LeftAndMain' == $className) {
+			if(
+				!$classReflection->isInstantiable() 
+				|| 'LeftAndMain' == $className 
+				|| ClassInfo::classImplements($className, 'TestOnly')
+			) {
 				unset($subClasses[$key]);
 			}			
 		}
+		
 		return $subClasses;
 	}
 	

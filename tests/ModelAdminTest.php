@@ -11,7 +11,7 @@ class ModelAdminTest extends FunctionalTest {
 	}
 }
 
-class ModelAdminTest_Admin extends ModelAdmin {
+class ModelAdminTest_Admin extends ModelAdmin implements TestOnly {
 	static $url_segment = 'testadmin';
 	
 	public static $managed_models = array(
