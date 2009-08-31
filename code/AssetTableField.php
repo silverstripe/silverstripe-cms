@@ -68,16 +68,16 @@ class AssetTableField extends ComplexTableField {
 			
 			while($nextIDSet) {
 				// TO DO: In 2.4 this should be refactored to use the new data mapper.
-				$nextIDSet = DB::query("SELECT ID FROM \"File\" WHERE ParentID IN (" 
-					. implode(", " , $nextIDSet) . ") AND ClassName IN ($folderClasses)")->column();
+				$nextIDSet = DB::query("SELECT \"ID\" FROM \"File\" WHERE \"ParentID\" IN (" 
+					. implode(", " , $nextIDSet) . ") AND \"ClassName\" IN ($folderClasses)")->column();
 				if($nextIDSet) $folderIDs = array_merge($folderIDs, $nextIDSet);
 			}
 			
-			$this->sourceFilter .= " ParentID IN (" . implode(", ", $folderIDs) . ") AND ClassName <> 'Folder'";
+			$this->sourceFilter .= " \"ParentID\" IN (" . implode(", ", $folderIDs) . ") AND \"ClassName\" <> 'Folder'";
 
 		// Otherwise just show the direct contents
 		} else {
-			$this->sourceFilter .= " ParentID = '" . $folder->ID . "' AND ClassName <> 'Folder'";
+			$this->sourceFilter .= " \"ParentID\" = '" . $folder->ID . "' AND \"ClassName\" <> 'Folder'";
 		}
 	}
 	
