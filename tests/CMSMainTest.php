@@ -97,7 +97,7 @@ class CMSMainTest extends FunctionalTest {
 		$page->delete();
 		
 		$this->session()->inst_set('loggedInAs', $this->idFromFixture('Member', 'admin'));
-		$response = $this->get('admin/getitem?ID=' . $pageID . '&ajax=1');
+		$response = $this->get('admin/cms/getitem?ID=' . $pageID . '&ajax=1');
 
 		// Check that the 'delete from live' button exists as a simple way of checking that the correct page is returned.
 		$this->assertRegExp('/<input[^>]+type="submit"[^>]+name="action_deletefromlive"/i', $response->getBody());
