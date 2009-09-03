@@ -179,7 +179,7 @@ body.stillLoading select {
 #left div.title, #right div.title {
 	border-top: 1px solid #77BBEE;
 	height: 22px !important;
-	background: #0075C9 url(../images/texture/obar.gif) repeat-x 0 0;
+	background: #0075C9 url(../images/textures/obar.gif) repeat-x 0 0;
 }
 
 #left div.title div, #right div.title div {
