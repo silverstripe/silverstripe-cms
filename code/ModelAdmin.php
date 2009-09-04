@@ -451,6 +451,7 @@ class ModelAdmin_CollectionController extends Controller {
 		))->renderWith('ModelAdmin_ImportSpec');
 		
 		$fields->push(new LiteralField("SpecFor{$modelName}", $specHTML));
+		$fields->push(new CheckboxField('EmptyBeforeImport', 'Clear Database before import', true)); 
 		
 		$actions = new FieldSet(
 			new FormAction('import', _t('ModelAdmin.IMPORT', 'Import from CSV'))
@@ -495,6 +496,11 @@ class ModelAdmin_CollectionController extends Controller {
 		}
 		
 		$results = $loader->load($_FILES['_CsvFile']['tmp_name']);
+		if (!empty($data['EmptyBeforeImport']) && $data['EmptyBeforeImport']) { //clear database before import 
+			$results = $loader->load($_FILES['_CsvFile']['tmp_name'], '512M', true);                 
+		} else {        //normal import without clearing 
+			$results = $loader->load($_FILES['_CsvFile']['tmp_name']); 
+		}
 		
 		$message = '';
 		if($results->CreatedCount()) $message .= sprintf(
