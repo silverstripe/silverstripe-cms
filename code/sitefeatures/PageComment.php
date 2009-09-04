@@ -161,7 +161,8 @@ class PageComment extends DataObject {
 class PageComment_Controller extends Controller {
 	function rss() {
 		$parentcheck = isset($_REQUEST['pageid']) ? "\"ParentID\" = " . (int) $_REQUEST['pageid'] : "\"ParentID\" > 0";
-		$comments = DataObject::get("PageComment", "$parentcheck AND NOT \"IsSpam\"", "\"Created\" DESC", "", 10);
+		$unmoderatedfilter = Permission::check('ADMIN') ? '' : "AND NOT \"NeedsModeration\"";
+		$comments = DataObject::get("PageComment", "$parentcheck AND NOT \"IsSpam\" $unmoderatedfilter", "\"Created\" DESC", "", 10);
 		if(!isset($comments)) {
 			$comments = new DataObjectSet();
 		}
