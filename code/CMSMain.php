@@ -755,8 +755,7 @@ JS;
 		$id = $this->urlParams['ID'];
 		$version = str_replace('&ajax=1','',$this->urlParams['OtherID']);
 		$record = Versioned::get_version("SiteTree", $id, $version);
-		$versionAuthor = DataObject::get_by_id('Member', $record->AuthorID);
-
+		
 		if($record) {
 			if($record && !$record->canView()) return Security::permissionFailure($this);
 			
@@ -765,6 +764,8 @@ JS;
 
 			$fields->push(new HiddenField("ID"));
 			$fields->push(new HiddenField("Version"));
+			
+			$versionAuthor = DataObject::get_by_id('Member', $record->AuthorID);
 			$fields->insertBefore(
 				new LiteralField(
 					'YouAreViewingHeader', 
