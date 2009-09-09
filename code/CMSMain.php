@@ -621,9 +621,11 @@ JS;
 	 * Delete the current page from draft stage.
 	 * @see deletefromlive()
 	 */
-	public function delete($urlParams, $form) {
-		$id = $_REQUEST['ID'];
-		$record = DataObject::get_one("SiteTree", "\"SiteTree\".\"ID\" = $id");
+	public function delete($data, $form) {
+		$record = DataObject::get_one(
+			"SiteTree", 
+			sprintf("\"SiteTree\".\"ID\" = %d", Convert::raw2sql($data['ID']))
+		);
 		if($record && !$record->canDelete()) return Security::permissionFailure();
 		
 		// save ID and delete record
