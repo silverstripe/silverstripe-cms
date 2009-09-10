@@ -2,7 +2,7 @@
 
 global $lang;
 
-$lang['en_US']['AssetAdmin']['CHOOSEFILE'] = 'Choose file ';
+$lang['en_US']['AssetAdmin']['CHOOSEFILE'] = 'Choose file: ';
 $lang['en_US']['AssetAdmin']['DELETEDX'] = 'Deleted %s files.%s';
 $lang['en_US']['AssetAdmin']['FILESREADY'] = 'Files ready to upload:';
 $lang['en_US']['AssetAdmin']['FOLDERDELETED'] = 'folder deleted.';
@@ -30,6 +30,8 @@ $lang['en_US']['AssetAdmin_left.ss']['ENABLEDRAGGING'] = array(
 	'Allow drag &amp; drop reordering',
 	PR_HIGH
 );
+$lang['en_US']['AssetAdmin_left.ss']['FILESYSTEMSYNC'] = 'Look for new files';
+$lang['en_US']['AssetAdmin_left.ss']['FILESYSTEMSYNC_DESC'] = 'SilverStripe maintains its own database of the files &amp; images stored in your assets/ folder.  Click this button to update that database, if files are added to the assets/ folder from outside SilverStripe, for example, if you have uploaded files via FTP.';
 $lang['en_US']['AssetAdmin_left.ss']['FOLDERS'] = 'Folders';
 $lang['en_US']['AssetAdmin_left.ss']['GO'] = 'Go';
 $lang['en_US']['AssetAdmin_left.ss']['SELECTTODEL'] = 'Select the folders that you want to delete and then click the button below';
@@ -37,23 +39,17 @@ $lang['en_US']['AssetAdmin_left.ss']['TOREORG'] = 'To reorganise your folders, d
 $lang['en_US']['AssetAdmin_right.ss']['CHOOSEPAGE'] = 'Please choose a page from the left.';
 $lang['en_US']['AssetAdmin_right.ss']['WELCOME'] = 'Welcome to';
 $lang['en_US']['AssetAdmin_uploadiframe.ss']['PERMFAILED'] = 'You do not have permission to upload files into this folder.';
-$lang['en_US']['AssetTableField']['CAPTION'] = 'Caption';
+$lang['en_US']['AssetAdmin_uploadiframe.ss']['TITLE'] = 'Image Uploading Iframe';
 $lang['en_US']['AssetTableField']['CREATED'] = 'First uploaded';
 $lang['en_US']['AssetTableField']['DIM'] = 'Dimensions';
-$lang['en_US']['AssetTableField']['DIMLIMT'] = 'Limit The Dimensions In The Popup Window';
 $lang['en_US']['AssetTableField']['FILENAME'] = 'Filename';
-$lang['en_US']['AssetTableField']['GALLERYOPTIONS'] = 'Gallery Options';
 $lang['en_US']['AssetTableField']['IMAGE'] = 'Image';
-$lang['en_US']['AssetTableField']['ISFLASH'] = 'Is A Flash Document';
 $lang['en_US']['AssetTableField']['LASTEDIT'] = 'Last changed';
 $lang['en_US']['AssetTableField']['MAIN'] = 'Main';
 $lang['en_US']['AssetTableField']['NOLINKS'] = 'This file hasn\'t been linked to from any pages.';
 $lang['en_US']['AssetTableField']['OWNER'] = 'Owner';
 $lang['en_US']['AssetTableField']['PAGESLINKING'] = 'The following pages link to this file:';
-$lang['en_US']['AssetTableField']['POPUPHEIGHT'] = 'Popup Height';
-$lang['en_US']['AssetTableField']['POPUPWIDTH'] = 'Popup Width';
 $lang['en_US']['AssetTableField']['SIZE'] = 'Size';
-$lang['en_US']['AssetTableField']['SWFFILEOPTIONS'] = 'SWF File Options';
 $lang['en_US']['AssetTableField']['TITLE'] = 'Title';
 $lang['en_US']['AssetTableField']['TYPE'] = 'Type';
 $lang['en_US']['AssetTableField']['URL'] = 'URL';
@@ -61,6 +57,15 @@ $lang['en_US']['AssetTableField.ss']['DELFILE'] = 'Delete this file';
 $lang['en_US']['AssetTableField.ss']['DRAGTOFOLDER'] = 'Drag to folder on left to move file';
 $lang['en_US']['AssetTableField.ss']['EDIT'] = 'Edit asset';
 $lang['en_US']['AssetTableField.ss']['SHOW'] = 'Show asset';
+$lang['en_US']['CMSBatchActions']['DELETED_PAGES'] = 'Deleted %d pages from the published site';
+$lang['en_US']['CMSBatchActions']['DELETE_PAGES'] = 'Delete from published site';
+$lang['en_US']['CMSBatchActions']['DELETING_PAGES'] = 'Deleting selected pages from the published site';
+$lang['en_US']['CMSBatchActions']['PUBLISHED_PAGES'] = 'Published %d pages';
+$lang['en_US']['CMSBatchActions']['PUBLISHING_PAGES'] = 'Publishing pages';
+$lang['en_US']['CMSBatchActions']['PUBLISH_PAGES'] = 'Publish';
+$lang['en_US']['CMSBatchActions']['UNPUBLISHED_PAGES'] = 'Un-published %d pages';
+$lang['en_US']['CMSBatchActions']['UNPUBLISHING_PAGES'] = 'Un-publishing pages';
+$lang['en_US']['CMSBatchActions']['UNPUBLISH_PAGES'] = 'Un-publish';
 $lang['en_US']['CMSMain']['ACCESS'] = array(
 	'Access to \'%s\' (%s)',
 	PR_MEDIUM,
@@ -80,6 +85,7 @@ $lang['en_US']['CMSMain']['MENUTITLE'] = array(
 	100,
 	'Menu title'
 );
+$lang['en_US']['CMSMain']['MENUTITLEOPT'] = 'Navigation Label';
 $lang['en_US']['CMSMain']['METADESCOPT'] = 'Description';
 $lang['en_US']['CMSMain']['METAKEYWORDSOPT'] = 'Keywords';
 $lang['en_US']['CMSMain']['NEW'] = array(
@@ -88,17 +94,8 @@ $lang['en_US']['CMSMain']['NEW'] = array(
 	'"New " followed by a className'
 );
 $lang['en_US']['CMSMain']['NOCONTENT'] = 'no content';
-$lang['en_US']['CMSMain']['NOTHINGASSIGNED'] = 'You have nothing assigned to you.';
-$lang['en_US']['CMSMain']['NOWAITINGON'] = 'You aren\'t waiting on anybody.';
-$lang['en_US']['CMSMain']['NOWBROKEN'] = '  The following pages now have broken links:';
-$lang['en_US']['CMSMain']['NOWBROKEN2'] = 'Their owners have been emailed and they will fix up those pages.';
 $lang['en_US']['CMSMain']['OK'] = 'OK';
-$lang['en_US']['CMSMain']['PAGEDEL'] = '%d page deleted ';
 $lang['en_US']['CMSMain']['PAGENOTEXISTS'] = 'This page doesn\'t exist';
-$lang['en_US']['CMSMain']['PAGEPUB'] = '%d page published ';
-$lang['en_US']['CMSMain']['PAGESDEL'] = '%d pages deleted ';
-$lang['en_US']['CMSMain']['PAGESPUB'] = '%d pages published ';
-$lang['en_US']['CMSMain']['PAGETYPEOPT'] = 'Page Type';
 $lang['en_US']['CMSMain']['PRINT'] = 'Print';
 $lang['en_US']['CMSMain']['PUBALLCONFIRM'] = array(
 	'Please publish every page in the site, copying content stage to live',
@@ -124,12 +121,8 @@ $lang['en_US']['CMSMain']['ROLLBACK'] = 'Roll back to this version';
 $lang['en_US']['CMSMain']['ROLLEDBACKPUB'] = 'Rolled back to published version. New version number is #%d';
 $lang['en_US']['CMSMain']['ROLLEDBACKVERSION'] = 'Rolled back to version #%d.  New version number is #%d';
 $lang['en_US']['CMSMain']['SAVE'] = 'Save';
-$lang['en_US']['CMSMain']['SENTTO'] = array(
-	'Sent to %s %s for approval.',
-	PR_LOW,
-	'First param is first name, and second is surname'
-);
 $lang['en_US']['CMSMain']['STATUSOPT'] = 'Status';
+$lang['en_US']['CMSMain']['TITLEOPT'] = 'Title';
 $lang['en_US']['CMSMain']['TOTALPAGES'] = 'Total pages: ';
 $lang['en_US']['CMSMain']['VERSIONSNOPAGE'] = array(
 	'Can\'t find page #%d',
@@ -140,13 +133,6 @@ $lang['en_US']['CMSMain']['VIEWING'] = array(
 	PR_MEDIUM,
 	'Version number is a linked string, created is a relative time (e.g. 2 days ago), by a specific author'
 );
-$lang['en_US']['CMSMain']['VISITRESTORE'] = array(
-	'visit restorepage/(ID)',
-	PR_LOW,
-	'restorepage/(ID) should not be translated (is an URL)'
-);
-$lang['en_US']['CMSMain']['WAITINGON'] = 'You are waiting on other people to work on these <b>%d</b> pages.';
-$lang['en_US']['CMSMain']['WORKTODO'] = 'You have work to do on these <b>%d</b> pages.';
 $lang['en_US']['CMSMain_dialog.ss']['BUTTONNOTFOUND'] = 'Couldn\'t find the button name';
 $lang['en_US']['CMSMain_dialog.ss']['NOLINKED'] = 'Can\'t find window.linkedObject to send the button click back to the main window';
 $lang['en_US']['CMSMain_left.ss']['ADDEDNOTPUB'] = 'Added to the draft site and not published yet';
@@ -156,6 +142,7 @@ $lang['en_US']['CMSMain_left.ss']['BATCHACTIONS'] = array(
 	PR_HIGH
 );
 $lang['en_US']['CMSMain_left.ss']['CHANGED'] = 'changed';
+$lang['en_US']['CMSMain_left.ss']['CLEARTITLE'] = 'Clear the search and view all items';
 $lang['en_US']['CMSMain_left.ss']['CLOSEBOX'] = 'click to close box';
 $lang['en_US']['CMSMain_left.ss']['COMPAREMODE'] = 'Compare mode (click 2 below)';
 $lang['en_US']['CMSMain_left.ss']['CREATE'] = array(
@@ -172,12 +159,13 @@ $lang['en_US']['CMSMain_left.ss']['ENABLEDRAGGING'] = array(
 	PR_HIGH
 );
 $lang['en_US']['CMSMain_left.ss']['GO'] = 'Go';
+$lang['en_US']['CMSMain_left.ss']['HIDDEN'] = 'hidden';
 $lang['en_US']['CMSMain_left.ss']['KEY'] = 'Key:';
 $lang['en_US']['CMSMain_left.ss']['NEW'] = 'new';
+$lang['en_US']['CMSMain_left.ss']['NOTINMENU'] = 'Excluded from navigation menus';
 $lang['en_US']['CMSMain_left.ss']['OPENBOX'] = 'click to open this box';
 $lang['en_US']['CMSMain_left.ss']['PAGEVERSIONH'] = 'Page Version History';
 $lang['en_US']['CMSMain_left.ss']['PUBLISHCONFIRM'] = 'Publish the selected pages';
-$lang['en_US']['CMSMain_left.ss']['CLEAR'] = 'Clear';
 $lang['en_US']['CMSMain_left.ss']['SEARCH'] = array(
 	'Search',
 	PR_HIGH
@@ -191,13 +179,7 @@ $lang['en_US']['CMSMain_left.ss']['SITECONTENT TITLE'] = array(
 	PR_HIGH
 );
 $lang['en_US']['CMSMain_left.ss']['SITEREPORTS'] = 'Site Reports';
-$lang['en_US']['CMSMain_right.ss']['ANYMESSAGE'] = 'Do you have any message for your editor?';
 $lang['en_US']['CMSMain_right.ss']['CHOOSEPAGE'] = 'Please choose a page from the left.';
-$lang['en_US']['CMSMain_right.ss']['LOADING'] = 'loading...';
-$lang['en_US']['CMSMain_right.ss']['MESSAGE'] = 'Message';
-$lang['en_US']['CMSMain_right.ss']['SENDTO'] = 'Send to';
-$lang['en_US']['CMSMain_right.ss']['STATUS'] = 'Status';
-$lang['en_US']['CMSMain_right.ss']['SUBMIT'] = 'Submit for approval';
 $lang['en_US']['CMSMain_right.ss']['WELCOMETO'] = 'Welcome to';
 $lang['en_US']['CMSMain_versions.ss']['AUTHOR'] = 'Author';
 $lang['en_US']['CMSMain_versions.ss']['NOTPUB'] = 'Not published';
@@ -209,6 +191,7 @@ $lang['en_US']['CommentAdmin']['APPROVED'] = 'Accepted %s comments.';
 $lang['en_US']['CommentAdmin']['APPROVEDCOMMENTS'] = 'Approved Comments';
 $lang['en_US']['CommentAdmin']['AUTHOR'] = 'Author';
 $lang['en_US']['CommentAdmin']['COMMENT'] = 'Comment';
+$lang['en_US']['CommentAdmin']['COMMENTERURL'] = 'URL';
 $lang['en_US']['CommentAdmin']['COMMENTS'] = 'Comments';
 $lang['en_US']['CommentAdmin']['COMMENTSAWAITINGMODERATION'] = 'Comments Awaiting Moderation';
 $lang['en_US']['CommentAdmin']['DATEPOSTED'] = 'Date Posted';
@@ -234,9 +217,6 @@ $lang['en_US']['CommentAdmin_SiteTree.ss']['SPAM'] = 'Spam';
 $lang['en_US']['CommentAdmin_left.ss']['COMMENTS'] = 'Comments';
 $lang['en_US']['CommentAdmin_right.ss']['WELCOME1'] = 'Welcome to the';
 $lang['en_US']['CommentAdmin_right.ss']['WELCOME2'] = 'comment management. Please select a folder in the tree on the left.';
-$lang['en_US']['CommentList.ss']['CREATEDW'] = 'Comments are created whenever one of the \'workflow actions\'
-	are undertaken - Publish, Reject, Submit.';
-$lang['en_US']['CommentList.ss']['NOCOM'] = 'There are no comments on this page.';
 $lang['en_US']['CommentTableField']['FILTER'] = 'Filter';
 $lang['en_US']['CommentTableField']['SEARCH'] = 'Search';
 $lang['en_US']['CommentTableField.ss']['APPROVE'] = 'approve';
@@ -273,17 +253,8 @@ $lang['en_US']['ImageEditor.ss']['SEPIA'] = 'sepia';
 $lang['en_US']['ImageEditor.ss']['UNDO'] = 'undo';
 $lang['en_US']['ImageEditor.ss']['UNTITLED'] = 'Untitled Document';
 $lang['en_US']['ImageEditor.ss']['WIDTH'] = 'width';
+$lang['en_US']['LeftAndMain']['CANT_REORGANISE'] = 'You do not have permission to rearange the site tree. Your change was not saved.';
 $lang['en_US']['LeftAndMain']['CHANGEDURL'] = '  Changed URL to \'%s\'';
-$lang['en_US']['LeftAndMain']['COMMENTS'] = array(
-	'Comments',
-	PR_HIGH,
-	'Menu title'
-);
-$lang['en_US']['LeftAndMain']['FILESIMAGES'] = array(
-	'Files & Images',
-	PR_HIGH,
-	'Menu title'
-);
 $lang['en_US']['LeftAndMain']['HELP'] = array(
 	'Help',
 	PR_HIGH,
@@ -292,26 +263,11 @@ $lang['en_US']['LeftAndMain']['HELP'] = array(
 $lang['en_US']['LeftAndMain']['PAGETYPE'] = 'Page type: ';
 $lang['en_US']['LeftAndMain']['PERMAGAIN'] = 'You have been logged out of the CMS.  If you would like to log in again, enter a username and password below.';
 $lang['en_US']['LeftAndMain']['PERMALREADY'] = 'I\'m sorry, but you can\'t access that part of the CMS.  If you want to log in as someone else, do so below';
-$lang['en_US']['LeftAndMain']['PERMDEFAULT'] = 'Enter your email address and password to access the CMS.';
+$lang['en_US']['LeftAndMain']['PERMDEFAULT'] = 'Please choose an authentication method and enter your credentials to access the CMS.';
 $lang['en_US']['LeftAndMain']['PLEASESAVE'] = 'Please Save Page: This page could not be upated because it hasn\'t been saved yet.';
-$lang['en_US']['LeftAndMain']['REPORTS'] = array(
-	'Reports',
-	PR_HIGH,
-	'Menu title'
-);
 $lang['en_US']['LeftAndMain']['REQUESTERROR'] = 'Error in request';
 $lang['en_US']['LeftAndMain']['SAVED'] = 'saved';
 $lang['en_US']['LeftAndMain']['SAVEDUP'] = 'Saved';
-$lang['en_US']['LeftAndMain']['SECURITY'] = array(
-	'Security',
-	PR_HIGH,
-	'Menu title'
-);
-$lang['en_US']['LeftAndMain']['SITECONTENT'] = array(
-	'Site Content',
-	PR_HIGH,
-	'Menu title'
-);
 $lang['en_US']['LeftAndMain']['SITECONTENTLEFT'] = array(
 	'Site Content',
 	PR_HIGH,
@@ -323,11 +279,6 @@ $lang['en_US']['LeftAndMain']['STATUSPUBLISHEDSUCCESS'] = array(
 	'Status message after publishing a page, showing the page title'
 );
 $lang['en_US']['LeftAndMain']['STATUSTO'] = '  Status changed to \'%s\'';
-$lang['en_US']['LeftAndMain']['TREESITECONTENT'] = array(
-	'Site Content',
-	PR_HIGH,
-	'Root node on left'
-);
 $lang['en_US']['LeftAndMain.ss']['APPVERSIONTEXT1'] = 'This is the';
 $lang['en_US']['LeftAndMain.ss']['APPVERSIONTEXT2'] = 'version that you are currently running, technically it\'s the CVS branch';
 $lang['en_US']['LeftAndMain.ss']['ARCHS'] = 'Archived Site';
@@ -340,7 +291,7 @@ $lang['en_US']['LeftAndMain.ss']['LOADING'] = array(
 	PR_HIGH
 );
 $lang['en_US']['LeftAndMain.ss']['LOGGEDINAS'] = 'Logged in as';
-$lang['en_US']['LeftAndMain.ss']['LOGOUT'] = 'log out';
+$lang['en_US']['LeftAndMain.ss']['LOGOUT'] = 'Log out';
 $lang['en_US']['LeftAndMain.ss']['PUBLIS'] = 'Published Site';
 $lang['en_US']['LeftAndMain.ss']['REQUIREJS'] = array(
 	'The CMS requires that you have JavaScript enabled.',
@@ -373,24 +324,15 @@ $lang['en_US']['MemberList_Table.ss']['SN'] = 'Surname';
 $lang['en_US']['MemberTableField']['ADD'] = 'Add';
 $lang['en_US']['MemberTableField']['ADDEDTOGROUP'] = 'Added member to group';
 $lang['en_US']['MemberTableField']['ADDINGFIELD'] = 'Adding failed';
-$lang['en_US']['MemberTableField']['ANYGROUP'] = 'Any group';
-$lang['en_US']['MemberTableField']['ASC'] = 'Ascending';
-$lang['en_US']['MemberTableField']['DESC'] = 'Descending';
-$lang['en_US']['MemberTableField']['EMAIL'] = 'Email';
+$lang['en_US']['MemberTableField']['ERRORADDINGUSER'] = 'There was an error adding the user to the group: %s';
 $lang['en_US']['MemberTableField']['FILTER'] = 'Filter';
-$lang['en_US']['MemberTableField']['FILTERBYGROUP'] = 'Filter by group';
-$lang['en_US']['MemberTableField']['FIRSTNAME'] = 'FirstName';
-$lang['en_US']['MemberTableField']['ORDERBY'] = 'Order by';
 $lang['en_US']['MemberTableField']['SEARCH'] = 'Search';
-$lang['en_US']['MemberTableField']['SURNAME'] = 'Surname';
 $lang['en_US']['MemberTableField.ss']['ADDNEW'] = array(
 	'Add new',
 	50,
 	'Followed by a member type'
 );
-$lang['en_US']['MemberTableField.ss']['DELETEMEMBER'] = 'Delete this member';
-$lang['en_US']['MemberTableField.ss']['EDITMEMBER'] = 'Edit this member';
-$lang['en_US']['MemberTableField.ss']['SHOWMEMBER'] = 'Show this member';
+$lang['en_US']['MemberTableField.ss']['NOITEMSFOUND'] = 'No items found';
 $lang['en_US']['ModelAdmin']['ADDBUTTON'] = 'Add';
 $lang['en_US']['ModelAdmin']['ADDFORM'] = 'Fill out this form to add a %s to the database.';
 $lang['en_US']['ModelAdmin']['CHOOSE_COLUMNS'] = 'Select result columns...';
@@ -413,6 +355,7 @@ $lang['en_US']['ModelAdmin']['NOCSVFILE'] = 'Please browse for a CSV file to imp
 $lang['en_US']['ModelAdmin']['NOIMPORT'] = 'Nothing to import';
 $lang['en_US']['ModelAdmin']['NORESULTS'] = 'No results';
 $lang['en_US']['ModelAdmin']['SAVE'] = 'Save';
+$lang['en_US']['ModelAdmin']['SEARCHFOR'] = 'Search for:';
 $lang['en_US']['ModelAdmin']['SEARCHRESULTS'] = 'Search Results';
 $lang['en_US']['ModelAdmin']['SELECTALL'] = 'select all';
 $lang['en_US']['ModelAdmin']['SELECTNONE'] = 'select none';
@@ -421,10 +364,10 @@ $lang['en_US']['ModelAdmin_ImportSpec.ss']['IMPORTSPECFIELDS'] = 'Database colum
 $lang['en_US']['ModelAdmin_ImportSpec.ss']['IMPORTSPECLINK'] = 'Show Specification for %s';
 $lang['en_US']['ModelAdmin_ImportSpec.ss']['IMPORTSPECRELATIONS'] = 'Relations';
 $lang['en_US']['ModelAdmin_ImportSpec.ss']['IMPORTSPECTITLE'] = 'Specification for %s';
-$lang['en_US']['ModelAdmin_left.ss']['ADDLISTING'] = 'Add';
-$lang['en_US']['ModelAdmin_left.ss']['IMPORT_TAB_HEADER'] = 'Import';
-$lang['en_US']['ModelAdmin_left.ss']['SEARCHLISTINGS'] = 'Search';
-$lang['en_US']['ModelAdmin_right.ss']['WELCOME1'] = 'Welcome to %s. Please choose one of the entries in the left pane.';
+$lang['en_US']['ModelAdmin_right.ss']['WELCOME1'] = 'Welcome to %s. Please choose on one of the entries in the left pane.';
+$lang['en_US']['ModelSidebar.ss']['ADDLISTING'] = 'Add';
+$lang['en_US']['ModelSidebar.ss']['IMPORT_TAB_HEADER'] = 'Import';
+$lang['en_US']['ModelSidebar.ss']['SEARCHLISTINGS'] = 'Search';
 $lang['en_US']['PageComment']['COMMENTBY'] = array(
 	'Comment by \'%s\' on %s',
 	PR_MEDIUM,
@@ -449,7 +392,11 @@ $lang['en_US']['PageCommentInterface']['POST'] = 'Post';
 $lang['en_US']['PageCommentInterface']['SPAMQUESTION'] = 'Spam protection question: %s';
 $lang['en_US']['PageCommentInterface']['YOURCOMMENT'] = 'Comments';
 $lang['en_US']['PageCommentInterface']['YOURNAME'] = 'Your name';
+$lang['en_US']['PageCommentInterface.ss']['COMMENTLOGINERROR'] = 'You cannot post comments until you have logged in';
+$lang['en_US']['PageCommentInterface.ss']['COMMENTPERMISSIONERROR'] = 'and that you have an appropriate permission level';
+$lang['en_US']['PageCommentInterface.ss']['COMMENTPOSTLOGIN'] = 'Login Here';
 $lang['en_US']['PageCommentInterface.ss']['COMMENTS'] = 'Comments';
+$lang['en_US']['PageCommentInterface.ss']['COMMENTSDISABLED'] = 'Posting comments has been disabled';
 $lang['en_US']['PageCommentInterface.ss']['NEXT'] = 'next';
 $lang['en_US']['PageCommentInterface.ss']['NOCOMMENTSYET'] = 'No one has commented on this page yet.';
 $lang['en_US']['PageCommentInterface.ss']['POSTCOM'] = 'Post your comment';
@@ -491,7 +438,7 @@ $lang['en_US']['SecurityAdmin']['MENUTITLE'] = array(
 );
 $lang['en_US']['SecurityAdmin']['NEWGROUP'] = 'New Group';
 $lang['en_US']['SecurityAdmin']['SAVE'] = 'Save';
-$lang['en_US']['SecurityAdmin']['SGROUPS'] = 'Security groups';
+$lang['en_US']['SecurityAdmin']['SGROUPS'] = 'Security Groups';
 $lang['en_US']['SecurityAdmin_left.ss']['CREATE'] = 'Create';
 $lang['en_US']['SecurityAdmin_left.ss']['DEL'] = 'Delete';
 $lang['en_US']['SecurityAdmin_left.ss']['DELGROUPS'] = 'Delete the selected groups';
@@ -542,7 +489,6 @@ $lang['en_US']['ViewArchivedEmail.ss']['HAVEASKED'] = array(
 	30,
 	'Followed by a date'
 );
-$lang['en_US']['WaitingOn.ss']['ATO'] = 'assigned to';
 $lang['en_US']['WidgetAreaEditor.ss']['AVAILABLE'] = 'Available Widgets';
 $lang['en_US']['WidgetAreaEditor.ss']['INUSE'] = 'Widgets currently used';
 $lang['en_US']['WidgetAreaEditor.ss']['NOAVAIL'] = 'There are currently no widgets available.';
