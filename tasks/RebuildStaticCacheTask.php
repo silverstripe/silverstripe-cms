@@ -7,10 +7,12 @@
  */ 
 class RebuildStaticCacheTask extends Controller {
 	function init() {
+		parent::init();
+		
 		Versioned::reading_stage('live');
 
-		if(!Director::is_cli() && !Director::isDev() && !Permission::check("ADMIN")) Security::permissionFailure();
-		parent::init();
+		$canAccess = (Director::isDev() || Director::is_cli() || Permission::check("ADMIN"));
+		if(!$canAccess) return Security::permissionFailure($this);
 	}
 
 	function index() {
