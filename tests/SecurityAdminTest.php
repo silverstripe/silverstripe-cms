@@ -15,12 +15,10 @@ class SecurityAdminTest extends FunctionalTest {
 		
 		/* Then load the export page */
 		$this->get('admin/security//EditForm/field/Members/export');
+		$lines = preg_split('/\n/', $this->content());
 		
-		$this->assertRegExp(
-			'/"' . _t('MemberTableField.FIRSTNAME') . '","' . _t('MemberTableField.SURNAME') . '","' . _t('MemberTableField.EMAIL') . '"/', 
-			$this->content()
-		);
-		$this->assertRegExp('/"","","admin@example.com"/', $this->content());
+		$this->assertEquals(count($lines), 3, "Export with members has one content row");
+		$this->assertRegExp('/"","","admin@example.com"/', $lines[1], "Member values are correctly exported");
 	}
 
 	function testEmptyGroupExport() {
@@ -32,11 +30,10 @@ class SecurityAdminTest extends FunctionalTest {
 		
 		/* Then load the export page */
 		$this->get('admin/security//EditForm/field/Members/export');
+		$lines = preg_split('/\n/', $this->content());
 		
-		$this->assertRegExp(
-			'/"' . _t('MemberTableField.FIRSTNAME') . '","' . _t('MemberTableField.SURNAME') . '","' . _t('MemberTableField.EMAIL') . '"/', 
-			$this->content()
-		);
+		$this->assertEquals(count($lines), 2, "Empty export only has header fields and an empty row");
+		$this->assertEquals($lines[1], '', "Empty export only has no content row");
 	}
 	
 }
