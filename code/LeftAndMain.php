@@ -37,6 +37,7 @@ class LeftAndMain extends Controller {
 	static $ForceReload;
 
 	static $allowed_actions = array(
+		'index',
 		'ajaxupdateparent',
 		'ajaxupdatesort',
 		'callPageMethod',
