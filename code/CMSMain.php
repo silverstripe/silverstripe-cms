@@ -1102,24 +1102,25 @@ JS;
 			$start = 0;
 			$pages = DataObject::get("SiteTree", "", "", "", "$start,30");
 			$count = 0;
-			while(true) {
-				foreach($pages as $page) {
-					if($page && !$page->canPublish()) return Security::permissionFailure($this);
-					
-					$page->doPublish();
-					$page->destroy();
-					unset($page);
-					$count++;
-					$response .= "<li>$count</li>";
-				}
-				if($pages->Count() > 29) {
-					$start += 30;
-					$pages = DataObject::get("SiteTree", "", "", "", "$start,30");
-				} else {
-					break;
+			if($pages){
+				while(true) {
+					foreach($pages as $page) {
+						if($page && !$page->canPublish()) return Security::permissionFailure($this);
+						
+						$page->doPublish();
+						$page->destroy();
+						unset($page);
+						$count++;
+						$response .= "<li>$count</li>";
+					}
+					if($pages->Count() > 29) {
+						$start += 30;
+						$pages = DataObject::get("SiteTree", "", "", "", "$start,30");
+					} else {
+						break;
+					}
 				}
 			}
-
 			$response .= sprintf(_t('CMSMain.PUBPAGES',"Done: Published %d pages"), $count);
 
 		} else {
