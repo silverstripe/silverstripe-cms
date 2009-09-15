@@ -733,7 +733,6 @@ class ModelAdmin_CollectionController extends Controller {
 		unset($filteredCriteria['ctf']);
 		unset($filteredCriteria['url']);
 		unset($filteredCriteria['action_search']);
-		if(isset($filteredCriteria['Investors__PEFirm__IsPECMember']) && !$filteredCriteria['Investors__PEFirm__IsPECMember']) unset($filteredCriteria['Investors__PEFirm__IsPECMember']);
 
 		$form->setFormAction($this->Link() . '/ResultsForm?' . http_build_query($filteredCriteria));
 		return $form;
