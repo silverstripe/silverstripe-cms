@@ -158,15 +158,8 @@ class PageCommentInterface extends RequestHandler {
 		
 		// Optional Spam Protection.
 		if(class_exists('SpamProtectorManager')) {
-			// Update the form to add the protecter field to it
-			$protecter = SpamProtectorManager::update_form($form);
-			if($protecter) {
-				$protecter->setFieldMapping('Name', 'Comment');
-				
-				// Because most of the Spam Protection will need to query another service
-				// disable ajax commenting
-				self::set_use_ajax_commenting(false);
-			}
+			SpamProtectorManager::update_form($form, null, array('Name', 'CommenterURL', 'Comment'));
+			self::set_use_ajax_commenting(false);
 		}
 		
 		// Shall We use AJAX?
@@ -181,7 +174,7 @@ class PageCommentInterface extends RequestHandler {
 		$form->loadDataFrom(array(
 			"Name" => Cookie::get("PageCommentInterface_Name"),
 			"Comment" => Cookie::get("PageCommentInterface_Comment"),
-			"URL" => Cookie::get("PageCommentInterface_CommenterURL")	
+			"CommenterURL" => Cookie::get("PageCommentInterface_CommenterURL")	
 		));
 		
 		return $form;
