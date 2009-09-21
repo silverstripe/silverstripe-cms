@@ -1,26 +1,23 @@
-<div id="comments">
-	
-	<!-- HEADING AND LOGIN -->
+<div id="PageComments_holder" class="typography">
 	<% if CanPostComment %>
 		<h4><% _t('POSTCOM','Post your comment') %></h4>
+		
 		$PostCommentForm
 	<% else %>
 		<p>You can't post comments until you have logged in<% if PostingRequiresPermission %>, and that you have an appropriate permission level<% end_if %>. Please <a href="Security/login?BackURL={$Page.URLSegment}/" title="Login to post a comment">login by clicking here</a>.</p>
 	<% end_if %>
 	
-	
-	<!-- COMMENTS -->
 	<h4><% _t('COMMENTS','Comments') %></h4>
 	
-	
+	<div id="CommentHolder">
 		<% if Comments %>
-			
+			<ul id="PageComments">
 				<% control Comments %>
-					<div class="comment $EvenOdd<% if FirstLast %> $FirstLast <% end_if %> $SpamClass">
+					<li class="$EvenOdd<% if FirstLast %> $FirstLast <% end_if %> $SpamClass">
 						<% include PageCommentInterface_singlecomment %>
-					</div>
+					</li>
 				<% end_control %>
-		
+			</ul>
 			
 			<% if Comments.MoreThanOnePage %>
 				<div id="PageCommentsPagination">
@@ -48,8 +45,7 @@
 		<% else %>
 			<p id="NoComments"><% _t('NOCOMMENTSYET','No one has commented on this page yet.') %></p>
 		<% end_if %>
-		
-		
+	</div>
 	<p id="CommentsRSSFeed">
 		<a class="commentrss" href="$CommentRssLink"><% _t('RSSFEEDCOMMENTS', 'RSS feed for comments on this page') %></a> | 
 		<a href="PageComment/rss" class="commentrss" title="<% _t('RSSVIEWALLCOMMENTS', 'View all Comments') %>"><% _t('RSSFEEDALLCOMMENTS', 'RSS feed for all comments') %></a>
