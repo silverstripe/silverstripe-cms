@@ -98,9 +98,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		// collect languages for TinyMCE spellchecker plugin.
 		// see http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/spellchecker
-		$lang = i18n::get_lang_from_locale($this->Locale);
 		$langName = i18n::get_locale_name($this->Locale);
-		HtmlEditorConfig::get('cms')->setOption('spellchecker_languages', "+{$langName}={$lang}");
+		HtmlEditorConfig::get('cms')->setOption('spellchecker_languages', "+{$langName}={$this->Locale}");
 				
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.js');
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain_left.js');
