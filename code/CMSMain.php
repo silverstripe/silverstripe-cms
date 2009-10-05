@@ -1259,21 +1259,17 @@ JS;
      * Called by the SSViewer when rendering the template.
      */
     function LangSelector() {
-		$member = Member::currentUser(); //check to see if the current user can switch langs or not
-		if(Permission::checkMember($member, 'VIEW_LANGS')) {
-			$dropdown = new LanguageDropdownField(
-				'LangSelector', 
-				'Language', 
-				array(), 
-				'SiteTree', 
-				'Locale-English'
-			);
-			$dropdown->setValue(Translatable::get_current_locale());
-			return $dropdown;
-        }
-        
-        //user doesn't have permission to switch langs so just show a string displaying current language
-        return i18n::get_locale_name( Translatable::get_current_locale() );
+		$member = Member::currentUser(); 
+		$dropdown = new LanguageDropdownField(
+			'LangSelector', 
+			'Language', 
+			array(),
+			'SiteTree', 
+			'Locale-English',
+			singleton('SiteTree')
+		);
+		$dropdown->setValue(Translatable::get_current_locale());
+		return $dropdown;
     }
 
 	/**
