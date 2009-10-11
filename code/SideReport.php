@@ -126,4 +126,27 @@ class SideReport_ToDo extends SideReport {
 		);
 	}
 }
-?>
+
+/**
+ * Lists all pages with either broken page or file links.
+ *
+ * @package cms
+ * @subpackage content
+ */
+class SideReport_BrokenLinks extends SideReport {
+	
+	public function title() {
+		return _t('SideReport.BROKENPAGEFILELINKS', 'Broken Page & File Links');
+	}
+	
+	public function records() {
+		return DataObject::get('SiteTree', '"HasBrokenLink" = 1 OR "HasBrokenFile" = 1');
+	}
+	
+	public function fieldsToShow() {
+		return array(
+			'Title' => array('NestedTitle', array(2)),
+		);
+	}
+	
+}
