@@ -61,8 +61,8 @@ class StaticExporter extends Controller {
 		// iterate through all instances of SiteTree
 		$pages = DataObject::get("SiteTree");
 		foreach($pages as $page) {
-			$subfolder = "$tmpFolder/$page->URLSegment";
-			$contentfile = "$tmpFolder/$page->URLSegment/index.html";
+			$subfolder   = "$tmpFolder/" . trim($page->RelativeLink(null, true), '/');
+			$contentfile = "$tmpFolder/" . trim($page->RelativeLink(null, true), '/') . '/index.html';
 			
 			// Make the folder				
 			if(!file_exists($subfolder)) {
