@@ -667,7 +667,8 @@ MySQLDatabase::set_connection_charset('utf8');
 // downloaded from http://www.silverstripe.com/themes/
 SSViewer::set_theme('$theme');
 
-?>
+// enable nested URLs for this site (e.g. page/sub-page/)
+SiteTree::enable_nested_urls();
 PHP
 			);
 
@@ -703,7 +704,8 @@ Director::set_dev_servers($devServers);
 // downloaded from http://www.silverstripe.com/themes/
 SSViewer::set_theme('$theme');
 
-?>
+// enable nested URLs for this site (e.g. page/sub-page/)
+SiteTree::enable_nested_urls();
 PHP
 			);
 		}

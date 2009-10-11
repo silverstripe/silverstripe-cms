@@ -14,4 +14,5 @@ MySQLDatabase::set_connection_charset('utf8');
 // downloaded from http://www.silverstripe.com/themes/
 SSViewer::set_theme('blackcandy');
 
-?>
+// enable nested URLs for this site (e.g. page/sub-page/)
+SiteTree::enable_nested_urls();
