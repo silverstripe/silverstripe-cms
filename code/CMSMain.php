@@ -229,7 +229,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$allowedChildren = $obj->allowedChildren();
 			if($allowedChildren != "none")  $def[$class]['allowedChildren'] = $allowedChildren;
 			$def[$class]['defaultChild'] = $obj->defaultChild();
-			$def[$class]['defaultParent'] = isset(SiteTree::get_by_url($obj->defaultParent())->ID) ? SiteTree::get_by_url($obj->defaultParent())->ID : null;
+			$def[$class]['defaultParent'] = isset(SiteTree::get_by_link($obj->defaultParent())->ID) ? SiteTree::get_by_link($obj->defaultParent())->ID : null;
 
 			if(is_array($allowedChildren)) foreach($allowedChildren as $allowedChild) {
 				$def[$allowedChild]['allowedParents'][] = $class;
@@ -479,7 +479,7 @@ JS;
 		$suffix = isset($_REQUEST['Suffix']) ? "-" . $_REQUEST['Suffix'] : null;
 
 		if(!$parent && isset($_REQUEST['Parent'])) {
-			$page = SiteTree::get_by_url($_REQUEST['Parent']);
+			$page = SiteTree::get_by_link($_REQUEST['Parent']);
 			if($page) $parent = $page->ID;
 		}
 
