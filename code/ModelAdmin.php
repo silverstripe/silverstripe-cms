@@ -297,10 +297,11 @@ class ModelAdmin_CollectionController extends Controller {
 	/**
 	 * Appends the model class to the URL.
 	 *
-	 * @return unknown
+	 * @param string $action
+	 * @return string
 	 */
-	function Link() {
-		return Controller::join_links($this->parentController->Link(), "$this->modelClass");
+	function Link($action = null) {
+		$this->parentController->Link(Controller::join_links($this->modelClass, $action));
 	}
 	
 	/**
@@ -853,10 +854,9 @@ class ModelAdmin_RecordController extends Controller {
 	
 	/**
 	 * Link fragment - appends the current record ID to the URL.
-	 *
 	 */
-	function Link() {
-		return Controller::join_links($this->parentController->Link(), "/{$this->currentRecord->ID}");
+	public function Link($action = null) {
+		return $this->parentController->Link(Controller::join_links($this->currentRecord->ID, $action));
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
