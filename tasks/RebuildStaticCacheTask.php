@@ -88,7 +88,7 @@ class RebuildStaticCacheTask extends Controller {
 			echo "done.\n\n";
 		}
 		echo  "Rebuilding cache from " . sizeof($mappedUrls) . " urls...\n\n";
-		$page->publishPages($mappedUrls);
+		$page->extend('publishPages', $mappedUrls);
 		echo "\n\n== Done! ==";
 	}
 	
