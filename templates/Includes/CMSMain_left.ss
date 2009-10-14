@@ -59,8 +59,8 @@
 							<% end_control %>
 						</select>
 						<div id="searchIndicator">&nbsp;</div>
-						<input type="submit" id="SiteTreeSearchClearButton" class="action" value="<% _t('CLEAR') %>" title="<% _t('CLEARTITLE','Clear the search and view all items') %>" />
-						<input type="submit" id="SiteTreeSearchButton" class="action" value="<% _t('SEARCH') %>" title="<% _t('SEARCHTITLE','Search through URL, Title, Menu Title, &amp; Content') %>" />
+						<input type="submit" id="SiteTreeSearchClearButton" class="action" value="<% _t('CLEAR','Clear') %>" title="<% _t('CLEARTITLE','Clear the search and view all items') %>" />
+						<input type="submit" id="SiteTreeSearchButton" class="action" value="<% _t('SEARCH','Search') %>" title="<% _t('SEARCHTITLE','Search through URL, Title, Menu Title, &amp; Content') %>" />
 					</div>
 				</div>
 				</form>
