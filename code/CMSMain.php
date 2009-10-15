@@ -685,7 +685,7 @@ JS;
 				if ($fieldset = singleton($report)->getParameterFields()) {
 					$formHtml = '';
 					foreach($fieldset as $field) {
-						$formHtml .= $field->Field();
+						$formHtml .= $field->FieldHolder();
 					}
 					$forms[$report] = $formHtml;
 				}

@@ -469,6 +469,11 @@ ul.tree span.untranslated a:visited {
 	padding: 4px 7px;
 }
 
+form#SideReportForm label.left {
+	margin-left: 0em;
+	width: auto;
+}
+
 
 /**
  * i18n
