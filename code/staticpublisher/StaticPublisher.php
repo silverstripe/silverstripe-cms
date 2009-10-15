@@ -11,6 +11,10 @@ abstract class StaticPublisher extends DataObjectDecorator {
 	 */
 	static $echo_progress = false;
 	
+	// Realtime static publishing... the second a page
+	// is saved, it is written to the cache
+	static $disable_realtime = false;
+	
 	abstract function publishPages($pages);
 	abstract function unpublishPages($pages);
 	
@@ -27,6 +31,8 @@ abstract class StaticPublisher extends DataObjectDecorator {
 	}
 
 	function onAfterPublish($original) {
+		if (self::$disable_realtime) return;
+		
 		$urls = array();
 		
 		if($this->owner->hasMethod('pagesAffectedByChanges')) {
@@ -59,6 +65,8 @@ abstract class StaticPublisher extends DataObjectDecorator {
 	 * functionality
 	 */
 	function onAfterUnpublish($page) {
+		if (self::$disable_realtime) return;
+		
 		if($this->owner->hasMethod('pagesAffectedByUnpublishing')) {
 			$urls = $this->owner->pagesAffectedByUnpublishing();
 			$urls = array_unique($urls);
