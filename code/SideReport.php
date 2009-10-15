@@ -106,6 +106,25 @@ class SideReport_RecentlyEdited extends SideReport {
 	}
 }
 
+/**
+ * Content side-report listing pages with broken links
+ * @package cms
+ * @subpackage content
+ */
+class SideReport_BrokenLinks extends SideReport {
+	function title() {
+		return _t('SideReport.BROKENLINKS',"Pages with broken links");
+	}
+	function records() {
+		return DataObject::get("SiteTree", "HasBrokenLink = 1");
+	}
+	function fieldsToShow() {
+		return array(
+			"Title" => array("NestedTitle", array("2")),
+		);
+	}
+}
+
 class SideReport_ToDo extends SideReport {
 	function title() {
 		return _t('SideReport.TODO',"To do");
