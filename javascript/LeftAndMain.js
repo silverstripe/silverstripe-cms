@@ -868,7 +868,8 @@ function hideIndicator(id) {
 
 var CurrentPage = {
            id: function() { if($('Form_EditForm_ID')) return $('Form_EditForm_ID').value; },
-      version: function() { if($('Form_EditForm_Version')) return $('Form_EditForm_Version').value; },
+      version: function() { if($('Form_EditForm_Version')) return parseInt($('Form_EditForm_Version').value, 10); },
+   setVersion: function(version) { $('Form_EditForm_Version').value = version; },
     isDeleted: function() { if($('SiteTree_Alert')) return $('SiteTree_Alert').getAttribute('deletedfromstage'); }
 }
 
