@@ -6,6 +6,8 @@
  * @subpackage content
  */
 abstract class SideReport extends Object {
+	protected $params = array();
+	
 	abstract function records();
 	abstract function fieldsToShow();
 	abstract function title();
@@ -65,6 +67,15 @@ abstract class SideReport extends Object {
 		}
 		return $result;
 	}
+	
+	function setParams($params) {
+		$this->params = $params;
+	}
+	
+	// if your batchaction has parameters, return a fieldset here
+	function getParameterFields() {
+		return false;
+	}
 }
 
 /**
@@ -76,7 +87,7 @@ class SideReport_EmptyPages extends SideReport {
 	function title() {
 		return _t('SideReport.EMPTYPAGES',"Empty pages");
 	}
-	function records() {
+	function records($params = null) {
 		return DataObject::get("SiteTree", "\"Content\" = '' OR \"Content\" IS NULL OR \"Content\" LIKE '<p></p>' OR \"Content\" LIKE '<p>&nbsp;</p>'", '"Title"');
 	}
 	function fieldsToShow() {
@@ -95,7 +106,7 @@ class SideReport_RecentlyEdited extends SideReport {
 	function title() {
 		return _t('SideReport.LAST2WEEKS',"Pages edited in the last 2 weeks");
 	}
-	function records() {
+	function records($params = null) {
 		$threshold = strtotime('-14 days', SSDatetime::now()->Format('U'));
 		return DataObject::get("SiteTree", "\"SiteTree\".\"LastEdited\" > '".date("Y-m-d H:i:s", $threshold)."'", "\"SiteTree\".\"LastEdited\" DESC");
 	}
@@ -115,7 +126,7 @@ class SideReport_BrokenLinks extends SideReport {
 	function title() {
 		return _t('SideReport.BROKENLINKS',"Pages with broken links");
 	}
-	function records() {
+	function records($params = null) {
 		return DataObject::get("SiteTree", "HasBrokenLink = 1");
 	}
 	function fieldsToShow() {
@@ -129,7 +140,7 @@ class SideReport_ToDo extends SideReport {
 	function title() {
 		return _t('SideReport.TODO',"To do");
 	}
-	function records() {
+	function records($params = null) {
 		return DataObject::get("SiteTree", "\"SiteTree\".\"ToDo\" IS NOT NULL AND \"SiteTree\".\"ToDo\" <> ''", "\"SiteTree\".\"LastEdited\" DESC");
 	}
 	function fieldsToShow() {

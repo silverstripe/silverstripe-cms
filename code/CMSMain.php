@@ -676,12 +676,35 @@ JS;
 		}
 		return new DropdownField("ReportSelector", _t('CMSMain.REPORT', 'Report'),$options);
 	}
+	function ReportFormParameters() {
+		$reports = ClassInfo::subclassesFor("SideReport");
+
+		$forms = array();
+		foreach($reports as $report) {
+			if ($report != 'SideReport') {
+				if ($fieldset = singleton($report)->getParameterFields()) {
+					$formHtml = '';
+					foreach($fieldset as $field) {
+						$formHtml .= $field->Field();
+					}
+					$forms[$report] = $formHtml;
+				}
+			}
+		}
+		$pageHtml = '';
+		foreach($forms as $class => $html) {
+			$pageHtml .= "<div id=\"SideReportForm_$class\" style=\"display:none\">$html</div>\n\n";
+		} 
+		return new LiteralField("ReportFormParameters", '<div id="SideReportForms" style="display:none">'.$pageHtml.'</div>');
+	}
+	
 	/**
 	 * Get the content for a side report
 	 */
 	function sidereport() {
 		$reportClass = $this->urlParams['ID'];
 		$report = ClassInfo::exists($reportClass) ? new $reportClass() : false;
+		$report->setParams($this->request->requestVars());
 		return $report ? $report->getHTML() : false;
 	}
 	/**
@@ -995,6 +1018,25 @@ JS;
 		return $form;
 	}
 
+	function BatchActionParameters() {
+		$batchActions = CMSBatchActionHandler::$batch_actions;
+
+		$forms = array();
+		foreach($batchActions as $batchAction) {
+			if ($fieldset = singleton($batchAction)->getParameterFields()) {
+				$formHtml = '';
+				foreach($fieldset as $field) {
+					$formHtml .= $field->Field();
+				}
+				$forms[$batchAction] = $formHtml;
+			}
+		}
+		$pageHtml = '';
+		foreach($forms as $class => $html) {
+			$pageHtml .= "<div id=\"BatchActionParameters_$class\" style=\"display:none\">$html</div>\n\n";
+		} 
+		return new LiteralField("BatchActionParameters", '<div id="BatchActionParameters" style="display:none">'.$pageHtml.'</div>');
+	}
 	/**
 	 * Returns a list of batch actions
 	 */

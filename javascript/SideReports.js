@@ -33,10 +33,38 @@ SideReports.prototype = {
 	},
 	ajaxURL: function() {
 		var url = 'admin/sidereport/' + this.selector.value;
-		if($('LangSelector')) url += "?locale=" + $('LangSelector').value;
+		if ($('SideReportForm')) {
+			url += '?'+Form.serialize('SideReportForm');
+			if($('LangSelector')) url += "&locale=" + $('LangSelector').value;
+		} else {
+			if($('LangSelector')) url += "?locale=" + $('LangSelector').value;
+		}
 		return url;
+	},
+	reportSelected: function() {
+		var value = this.selector.value;
+		if ($('SideReportForm')) {
+			$('SideReportForm').parentNode.removeChild($('SideReportForm'));
+		}
+		if ($('SideReportForm_'+this.selector.value)) {
+			// Copy form content...
+			var form = '<form id="SideReportForm">'+
+				$('SideReportForm_'+this.selector.value).innerHTML
+				+'</form>';
+			$('ReportSelector_holder').innerHTML += form;
+		}
+		
+		this.selector = $('ReportSelector');
+		this.selector.value = value;
+		if(this.selector) this.selector.holder = this;
+		Behaviour.register({
+			'#ReportSelector' : {
+				onchange : function() {
+					$('reports_holder').reportSelected();
+				},
+			}
+		});
 	}
-	
 }
 
 SideReportGo = Class.create();
@@ -70,3 +98,11 @@ SideReportRecord.prototype = {
 SideReportGo.applyTo('#report_select_go');
 SideReportRecord.applyTo('#reports_holder a');
 SideReports.applyTo('#reports_holder');
+
+Behaviour.register({
+	'#ReportSelector' : {
+		onchange : function() {
+			$('reports_holder').reportSelected();
+		},
+	}
+});

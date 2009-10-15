@@ -64,7 +64,8 @@
 					</div>
 				</div>
 				</form>
-
+			
+			$BatchActionParameters
 			<div id="batchactionsforms" style="display: none">
 				<form class="actionparams" style="border:0" id="batchactions_options" action="">
 					<p><% _t('SELECTPAGESACTIONS','Select the pages that you want to change &amp; then click an action:') %></p>
@@ -151,9 +152,12 @@
 			<img id="reports_toggle_open" src="sapphire/images/toggle-open.gif" alt="-" style="display:none;" title="<% _t('CLOSEBOX') %>" /> 
 			<% _t('SITEREPORTS','Site Reports') %>
 		</h2>
+		$ReportFormParameters
 		<div class="listpane" id="reports_holder" style="display:none">
-			<p id="ReportSelector_holder">$ReportSelector <input class="action" type="submit" id="report_select_go" value="<% _t('GO','Go') %>" /></p>
-			<div class="unitBody">
-			</div>
+			<p id="ReportSelector_holder">
+				$ReportSelector
+				<input class="action" type="submit" id="report_select_go" onclick="$('reports_holder').showreport();" value="<% _t('GO','Go') %>" />
+			</p>
+			<div class="unitBody"></div>
 		</div>
 	</div>
