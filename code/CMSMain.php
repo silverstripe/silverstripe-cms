@@ -351,6 +351,14 @@ JS;
 		return $result;
 	}
 
+	function save_siteconfig($data, $form) {
+		$siteConfig = SiteConfig::current_site_config();
+		$form->saveInto($siteConfig);
+		$siteConfig->write();
+		FormResponse::status_message('Saved site configuration', "good");
+		FormResponse::add("$('Form_EditForm').resetElements();");
+		return FormResponse::respond();
+	}
 	/**
 	 * Get a database record to be managed by the CMS
 	 */
@@ -396,7 +404,7 @@ JS;
 
 			$fields = $record->getCMSFields($this);
 			if ($fields == null) {
-				user_error("getCMSFields returned null on a 'Page' object - it should return a FieldSet object. Perhaps you forgot to put a return statement at the end of your method?", E_USER_ERROR);
+				user_error("getCMSFields returned null on a '".get_class($record)."' object - it should return a FieldSet object. Perhaps you forgot to put a return statement at the end of your method?", E_USER_ERROR);
 			}
 			$fields->push($idField = new HiddenField("ID"));
 			$fields->push($liveURLField = new HiddenField("LiveURLSegment"));
@@ -459,6 +467,11 @@ JS;
 				$form->setFields($readonlyFields);
 			}
 
+			return $form;
+		} if ($id == 0) {
+			$siteConfig = SiteConfig::current_site_config();
+			$form = new Form($this, "EditForm", $siteConfig->getFormFields(), $siteConfig->getFormActions());
+			$form->loadDataFrom($siteConfig);
 			return $form;
 		} else if($id) {
 			return new Form($this, "EditForm", new FieldSet(

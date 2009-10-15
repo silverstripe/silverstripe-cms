@@ -992,12 +992,16 @@ JS;
 		// Include JavaScript to ensure HtmlEditorField works.
 		HtmlEditorField::include_js();
 		
-		$record = $this->currentPage();
-		if(!$record) return false;
+		if ($this->currentPageID() != 0) {
+			$record = $this->currentPage();
+			if(!$record) return false;
+			if($record && !$record->canView()) return Security::permissionFailure($this);
+		}
+		if ($this->hasMethod('getEditForm')) {
+			return $this->getEditForm($this->currentPageID());
+		}
 		
-		if($record && !$record->canView()) return Security::permissionFailure($this);
-			
-		return $this->getEditForm($record->ID);
+		return false;
 	}
 	
 	public function myprofile() {
