@@ -722,10 +722,10 @@ JS;
 			$newVersion = ((int)$record->Version) + 1;
 			FormResponse::add("\$('Form_EditForm_Version').value = {$newVersion};");
 			
-			$this->extend('onAfterSave', $record);
-			
 			// If the 'Save & Publish' button was clicked, also publish the page
 			if (isset($urlParams['publish']) && $urlParams['publish'] == 1) {
+				$this->extend('onAfterSave', $record);
+			
 				$record->doPublish();
 				
 				// Update classname with original and get new instance (see above for explanation)
@@ -751,6 +751,8 @@ JS;
 				$result .= $this->getActionUpdateJS($record);
 				FormResponse::status_message($message, "good");
 				FormResponse::update_status($record->Status);
+				
+				$this->extend('onAfterSave', $record);
 				
 				return FormResponse::respond();
 			}
