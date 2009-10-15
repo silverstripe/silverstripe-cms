@@ -258,6 +258,19 @@ batchactionsclass.prototype = {
 		return false;
 	},
 	
+	actionChanged: function() {
+		var urlSegment = $('choose_batch_action').value.split('/').pop()
+		if ($('BatchActionParameters_'+urlSegment)) {
+			jQuery('#actionParams').empty();
+			jQuery('#BatchActionParameters_'+urlSegment).appendTo('#actionParams');
+			$('actionParams').style.display = 'block';
+			$('actionParams').style.padding = '4px';
+		} else {
+			$('actionParams').innerHTML = '';
+			$('actionParams').style.display = 'none';
+		}
+	},
+	
 	multiselectTransform : function() {
 		batchActionGlobals.o1 = $('sitetree').observeMethod('SelectionChanged', batchActionGlobals.treeSelectionChanged);
 		batchActionGlobals.o2 = $(_HANDLER_FORMS.batchactions).observeMethod('Close', batchActionGlobals.popupClosed);
@@ -387,6 +400,17 @@ batchActionGlobals = {
 		}
 	}
 }
+
+
+Behaviour.register({
+	'#choose_batch_action' : {
+		onchange : function() {
+			$('batchactions').actionChanged();
+		},
+	}
+});
+
+
 
 /**
  * Publish selected pages action

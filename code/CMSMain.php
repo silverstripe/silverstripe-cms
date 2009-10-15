@@ -1022,18 +1022,18 @@ JS;
 		$batchActions = CMSBatchActionHandler::$batch_actions;
 
 		$forms = array();
-		foreach($batchActions as $batchAction) {
+		foreach($batchActions as $urlSegment => $batchAction) {
 			if ($fieldset = singleton($batchAction)->getParameterFields()) {
 				$formHtml = '';
 				foreach($fieldset as $field) {
 					$formHtml .= $field->Field();
 				}
-				$forms[$batchAction] = $formHtml;
+				$forms[$urlSegment] = $formHtml;
 			}
 		}
 		$pageHtml = '';
-		foreach($forms as $class => $html) {
-			$pageHtml .= "<div id=\"BatchActionParameters_$class\" style=\"display:none\">$html</div>\n\n";
+		foreach($forms as $urlSegment => $html) {
+			$pageHtml .= "<div class=\"params\" id=\"BatchActionParameters_$urlSegment\">$html</div>\n\n";
 		} 
 		return new LiteralField("BatchActionParameters", '<div id="BatchActionParameters" style="display:none">'.$pageHtml.'</div>');
 	}

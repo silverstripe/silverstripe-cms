@@ -38,10 +38,11 @@ abstract class CMSBatchAction extends Object {
 	 * @param $helperMethod The method to call on each of those objects.
 	 * @para
 	 */
-	public function batchaction(DataObjectSet $pages, $helperMethod, $successMessage) {
+	public function batchaction(DataObjectSet $pages, $helperMethod, $successMessage, $arguments = array()) {
 		foreach($pages as $page) {
+			
 			// Perform the action
-			$page->$helperMethod();
+			call_user_func_array(array($page, $helperMethod), $arguments);
 			
 			// Now make sure the tree title is appropriately updated
 			$publishedRecord = DataObject::get_by_id('SiteTree', $page->ID);
@@ -59,6 +60,10 @@ abstract class CMSBatchAction extends Object {
 		return FormResponse::respond();
 	}
 	
+	// if your batchaction has parameters, return a fieldset here
+	function getParameterFields() {
+		return false;
+	}
 }
 
 /**
