@@ -6,7 +6,6 @@
  */
 abstract class CMSSiteTreeFilter extends Object {
 	abstract function getTree();
-	static function title();
 	
 	static function showInList() {
 		return true;
