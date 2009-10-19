@@ -90,14 +90,19 @@ class CMSMainTest extends FunctionalTest {
 	 * Test that a draft-deleted page can still be opened in the CMS
 	 */
 	function testDraftDeletedPageCanBeOpenedInCMS() {
+		$this->session()->inst_set('loggedInAs', $this->idFromFixture('Member', 'admin'));
+
 		// Set up a page that is delete from live
 		$page = $this->objFromFixture('Page','page1');
 		$pageID = $page->ID;
 		$page->doPublish();
 		$page->delete();
 		
-		$this->session()->inst_set('loggedInAs', $this->idFromFixture('Member', 'admin'));
 		$response = $this->get('admin/cms/getitem?ID=' . $pageID . '&ajax=1');
+
+		$livePage = Versioned::get_one_by_stage("SiteTree", "Live", "\"SiteTree\".\"ID\" = $pageID");
+		$this->assertType('SiteTree', $livePage);
+		$this->assertTrue($livePage->canDelete());
 
 		// Check that the 'delete from live' button exists as a simple way of checking that the correct page is returned.
 		$this->assertRegExp('/<input[^>]+type="submit"[^>]+name="action_deletefromlive"/i', $response->getBody());
