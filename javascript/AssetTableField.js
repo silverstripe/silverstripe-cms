@@ -74,25 +74,20 @@ FileFilterButton.prototype = {
 		try {
 			var form = Event.findElement(e, 'form');
 			var fieldName = $('FileFieldName').value;
-			var fieldID = form.id + '_' + fieldName;
 	    
-			var updateURL = form.action + '/field/' + fieldName + '?ajax=1';
+			// build url
+			var updateURL = form.action + '/field/' + fieldName + '?';
 			for(var index = 0; index < this.inputFields.length; index++) {
 				if(this.inputFields[index].tagName) {
 					updateURL += '&' + this.inputFields[index].name + '=' + encodeURIComponent(this.inputFields[index].value);
 				}
 			}
-			
 			updateURL += ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : '');
 
-			new Ajax.Updater(fieldID, updateURL, {
-				onComplete: function() {
-					Behaviour.apply($(fieldID), true);
-				},
-				onFailure: function(response) {
-					errorMessage('Could not filter results: ' + response.responseText );
-				}
-			});
+			// update the field
+			var field = form.getElementsByClassName('AssetTableField')[0];
+			field.setAttribute('href', updateURL);
+			field.refresh();
 		} catch(er) {
 			errorMessage('Error searching');
 		}

@@ -48,6 +48,26 @@ class AssetTableField extends ComplexTableField {
 		$this->Markable = true;
 	}
 	
+	/**
+	 * Creates the link to this form, including the search pattern
+	 *
+	 * @return string
+	 */
+	function CurrentLink() {
+		$link = parent::CurrentLink();
+		
+		if(isset($_REQUEST['FileSearch']) ) {
+			if ( strpos($link, '?')!==false )
+				$link .= "&";
+			else
+				$link .= "/?";
+				
+			$link .= "FileSearch=".urlencode($_REQUEST['FileSearch']);
+		}
+		
+		return $link;
+	}
+	
 	function FieldHolder() {
 		$ret = parent::FieldHolder();
 		

@@ -334,7 +334,7 @@ HTML;
 			$message = sprintf(_t('AssetAdmin.MOVEDX','Moved %s files'),$numFiles);
 			
 			FormResponse::status_message($message, "good");
-			FormResponse::add("$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value)");
+			FormResponse::add("$('Form_EditForm_Files').refresh();");
 
 			return FormResponse::respond();
 		}
