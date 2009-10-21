@@ -8,6 +8,26 @@ class CMSMainTest extends FunctionalTest {
 	
 	protected $autoFollowRedirection = false;
 	
+	static protected $orig = array();
+	
+	static function set_up_once() {
+		self::$orig['CMSBatchActionHandler_batch_actions'] = CMSBatchActionHandler::$batch_actions;
+		CMSBatchActionHandler::$batch_actions = array(
+			'publish' => 'CMSBatchAction_Publish',
+			'unpublish' => 'CMSBatchAction_Unpublish',
+			'delete' => 'CMSBatchAction_Delete',
+			'deletefromlive' => 'CMSBatchAction_DeleteFromLive',
+		);
+		
+		parent::set_up_once();
+	}
+	
+	static function tear_down_once() {
+		CMSBatchActionHandler::$batch_actions = self::$orig['CMSBatchActionHandler_batch_actions'];
+		
+		parent::tear_down_once();
+	}
+	
 	/**
 	 * @todo Test the results of a publication better
 	 */
