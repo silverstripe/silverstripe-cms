@@ -157,11 +157,12 @@ class AssetTableField extends ComplexTableField {
 		);
 		$mainTab->setTitle(_t('AssetTableField.MAIN', 'Main'));
 
-		if(is_a($childData,'Image')) {
+		if(is_a($childData, 'Image')) {
 			$tab = $detailFormFields->findOrMakeTab("BottomRoot.Image", _t('AssetTableField.IMAGE', 'Image'));
 			
 			$big = $childData->URL;
-			$thumbnail = $childData->getFormattedImage('AssetLibraryPreview')->URL;
+			$formattedImage = $childData->getFormattedImage('AssetLibraryPreview');
+			$thumbnail = $formattedImage ? $formattedImage->URL : '';
 			
 			// Hmm this required the translated string to be appended to BottomRoot to add this to the Main tab
 			$detailFormFields->addFieldToTab('BottomRoot.Main',
@@ -170,7 +171,8 @@ class AssetTableField extends ComplexTableField {
 
 			$tab->push(
 				new LiteralField("ImageFull",
-					"<img id='thumbnailImage' src='{$thumbnail}?r=" . rand(1,100000)  . "' alt='{$childData->Name}' />"				)
+					"<img id='thumbnailImage' src='{$thumbnail}?r=" . rand(1,100000)  . "' alt='{$childData->Name}' />"
+				)
 			);
 		}
 
