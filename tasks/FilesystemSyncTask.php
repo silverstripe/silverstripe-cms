@@ -1,6 +1,6 @@
 <?php
-
 class FilesystemSyncTask extends BuildTask {
+	
 	protected $title = "Sync Files & Images assets";
 	
 	protected $description = "The Files & Images system in SilverStripe maintains its own database
@@ -9,6 +9,13 @@ class FilesystemSyncTask extends BuildTask {
 		SilverStripe, for example, if an author uploads files via FTP.";
 	
 	function run($request) {
-		echo Filesystem::sync();
+		if(isset($_GET['folderID'])) {
+			$folderID = $_GET['folderID'];
+		} else {
+			$folderID = null;
+		}
+		
+		echo Filesystem::sync($folderID);
 	}
+	
 }
