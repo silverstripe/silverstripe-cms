@@ -336,9 +336,7 @@ HTML;
 			FormResponse::status_message($message, "good");
 			FormResponse::add("$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value)");
 
-			return FormResponse::respond();	
-		} else {
-			user_error('Bad data:' . $_REQUEST['DestFolderID'], E_USER_ERROR);
+			return FormResponse::respond();
 		}
 	}
 
