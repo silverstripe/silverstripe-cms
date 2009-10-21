@@ -1,15 +1,76 @@
 <?php
 /**
- * Base class for filtering the subtree for certain node statuses
+ * Base class for filtering the subtree for certain node statuses.
+ * 
+ * The simplest way of building a CMSSiteTreeFilter is to create a pagesToBeShown() method that
+ * returns an Iterator of maps, each entry containing the 'ID' and 'ParentID' of the pages to be
+ * included in the tree.  The reuslt of a DB::query() can be returned directly.
+ *
+ * If you wish to make a more complex tree, you can overload includeInTree($page) to return true/
+ * false depending on whether the given page should be included.  Note that you will need to include
+ * parent helper pages yourself.
+ * 
  * @package cms
  * @subpackage content
  */
 abstract class CMSSiteTreeFilter extends Object {
-	abstract function getTree();
+
+	protected $ids = null;
+	protected $expanded = array();
 	
 	static function showInList() {
 		return true;
 	}
+
+	function getTree() {
+		if(method_exists($this, 'pagesIncluded')) {
+			$this->populateIDs();
+		}
+
+		$leftAndMain = new LeftAndMain();
+		$tree = $leftAndMain->getSiteTreeFor('SiteTree', isset($_REQUEST['ID']) ? $_REQUEST['ID'] : 0, null, array($this, 'includeInTree'));
+
+		// Trim off the outer tag
+		$tree = ereg_replace('^[ \t\r\n]*<ul[^>]*>','', $tree);
+		$tree = ereg_replace('</ul[^>]*>[ \t\r\n]*$','', $tree);
+
+		return $tree;
+	}
+	
+	/**
+	 * Populate $this->ids with the IDs of the pages returned by pagesIncluded(), also including
+	 * the necessary parent helper pages.
+	 */
+	protected function populateIDs() {
+		if($res = $this->pagesIncluded()) {
+			
+			/* And keep a record of parents we don't need to get parents of themselves, as well as IDs to mark */
+			foreach($res as $row) {
+				if ($row['ParentID']) $parents[$row['ParentID']] = true;
+				$this->ids[$row['ID']] = true;
+			}
+		
+		
+			while (!empty($parents)) {
+				$res = DB::query('SELECT "ParentID", "ID" FROM "SiteTree" WHERE "ID" in ('.implode(',',array_keys($parents)).')');
+				$parents = array();
+
+				foreach($res as $row) {
+					if ($row['ParentID']) $parents[$row['ParentID']] = true;
+					$this->ids[$row['ID']] = true;
+					$this->expanded[$row['ID']] = true;
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Returns true if the given page should be included in the tree.
+	 */
+	public function includeInTree($page) {
+		return isset($this->ids[$page->ID]) && $this->ids[$page->ID] ? true : false;
+	}
+
 }
 
 class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter {
@@ -34,16 +95,12 @@ class CMSSiteTreeFilter_ChangedPages extends CMSSiteTreeFilter {
 		return "Changed pages";
 	}
 	
-	function getTree() {
-		$search = new CMSSitetreeFilter_Search();
-		$search->data = array('Status' => 'Saved');
-		return $search->getTree();
-	}
+	function pagesIncluded() {
+		return DB::query('SELECT "ParentID", "ID" FROM "SiteTree" WHERE "Status" LIKE \'Saved%\'');
+	}	
 }
 
 class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter {
-	protected $ids = null;
-	protected $expanded = array();
 	public $data;
 	
 	
@@ -57,7 +114,13 @@ class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter {
 		return "Search";
 	}
 	
-	function populateIds($data) {
+	/**
+	 * Retun an array of maps containing the keys, 'ID' and 'ParentID' for each page to be displayed
+	 * in the search.
+	 */
+	function pagesIncluded() {
+		$data = $this->data;
+		
 		$this->ids = array();
 		$this->expanded = array();
 
@@ -96,40 +159,6 @@ class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter {
 		
 		/* Do the actual search */
 		$res = DB::query('SELECT "ParentID", "ID" FROM "SiteTree" '.$where);
-		if (!$res) return;
-		
-		/* And keep a record of parents we don't need to get parents of themselves, as well as IDs to mark */
-		foreach($res as $row) {
-			if ($row['ParentID']) $parents[$row['ParentID']] = true;
-			$this->ids[$row['ID']] = true;
-		}
-		
-		/* We need to recurse up the tree, finding ParentIDs for each ID until we run out of parents */
-		while (!empty($parents)) {
-			$res = DB::query('SELECT "ParentID", "ID" FROM "SiteTree" WHERE "ID" in ('.implode(',',array_keys($parents)).')');
-			$parents = array();
-
-			foreach($res as $row) {
-				if ($row['ParentID']) $parents[$row['ParentID']] = true;
-				$this->ids[$row['ID']] = true;
-				$this->expanded[$row['ID']] = true;
-			}
-		}
-	}
-	
-	public function includeInTree($page) {
-		if ($this->ids === null) $this->populateIds($this->data);
-		return isset($this->ids[$page->ID]) && $this->ids[$page->ID] ? true : false;
-	}
-	
-	function getTree() {
-		$leftAndMain = new LeftAndMain();
-		$tree = $leftAndMain->getSiteTreeFor('SiteTree', isset($_REQUEST['ID']) ? $_REQUEST['ID'] : 0, null, array($this, 'includeInTree'));
-
-		// Trim off the outer tag
-		$tree = ereg_replace('^[ \t\r\n]*<ul[^>]*>','', $tree);
-		$tree = ereg_replace('</ul[^>]*>[ \t\r\n]*$','', $tree);
-
-		return $tree;
+		return $res;
 	}
 }
