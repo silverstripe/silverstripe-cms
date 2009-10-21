@@ -42,7 +42,7 @@ class AssetTableField extends ComplexTableField {
 			$this->extraLinkParams = array(
 				'FileSearch' => $SQL_search
 			);
-		}		
+		}
 		
 		$this->sourceSort = 'Title';
 		$this->Markable = true;
@@ -55,6 +55,38 @@ class AssetTableField extends ComplexTableField {
 		Requirements::javascript('cms/javascript/ImageEditor/Activator.js');
 
 		return $ret;
+	}
+	
+	function FirstLink() {
+		$link = parent::FirstLink();
+		if($link && isset($_REQUEST['FileSearch'])) {
+			return $link . '&FileSearch=' . $_REQUEST['FileSearch'];
+		}
+		return $link;
+	}
+	
+	function PrevLink() {
+		$link = parent::PrevLink();
+		if($link && isset($_REQUEST['FileSearch'])) {
+			return $link . '&FileSearch=' . $_REQUEST['FileSearch'];
+		}
+		return $link;
+	}
+	
+	function NextLink() {
+		$link = parent::NextLink();
+		if($link && isset($_REQUEST['FileSearch'])) {
+			return $link . '&FileSearch=' . $_REQUEST['FileSearch'];
+		}
+		return $link;
+	}
+	
+	function LastLink() {
+		$link = parent::LastLink();
+		if($link && isset($_REQUEST['FileSearch'])) {
+			return $link . '&FileSearch=' . $_REQUEST['FileSearch'];
+		}
+		return $link;
 	}
 	
 	function setFolder($folder) {
