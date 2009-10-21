@@ -45,6 +45,14 @@ class PageComment extends DataObject {
 		return $this->Parent()->Link() . '#PageComment_'. $this->ID;
 	}
 	
+	function getRSSName() {
+		if($this->Name) {
+			return $this->Name;
+		} elseif($this->Author()) {
+			return $this->Author()->getName();
+		}
+	}
+	
 	function ParsedBBCode(){
 		$parser = new BBCodeParser($this->Comment);
 		return $parser->parse();		
@@ -95,7 +103,7 @@ class PageComment extends DataObject {
 	function RSSTitle() {
 		return sprintf(
 			_t('PageComment.COMMENTBY', "Comment by '%s' on %s", PR_MEDIUM, 'Name, Page Title'),
-			Convert::raw2xml($this->Name),
+			Convert::raw2xml($this->getRSSName()),
 			$this->Parent()->Title
 		);
 	}
@@ -173,7 +181,7 @@ class PageComment_Controller extends Controller {
 			$comments = new DataObjectSet();
 		}
 		
-		$rss = new RSSFeed($comments, "home/", "Page comments", "", "RSSTitle", "Comment", "Name");
+		$rss = new RSSFeed($comments, "home/", "Page comments", "", "RSSTitle", "Comment", "RSSName");
 		$rss->outputToBrowser();
 	}
 	
