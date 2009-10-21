@@ -56,6 +56,10 @@ class PageComment extends DataObject {
 		}
 	}
 	
+	function CommentTextWithLinks() {
+		return preg_replace("#\[(([a-zA-Z]+://)([a-zA-Z0-9?&%.;:/=+_-]*))\]#", "'<a rel=\"nofollow\" href=\"$1\" target=\"_blank\">$1</a>'", $this->Comment);
+	}
+	
 	function SpamLink() {
 		$member = Member::currentUser();
 		if(Permission::check('CMS_ACCESS_CMSMain') && !$this->getField('IsSpam')) {
