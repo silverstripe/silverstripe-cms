@@ -301,7 +301,7 @@ class ModelAdmin_CollectionController extends Controller {
 	 * @return string
 	 */
 	function Link($action = null) {
-		$this->parentController->Link(Controller::join_links($this->modelClass, $action));
+		return $this->parentController->Link(Controller::join_links($this->modelClass, $action));
 	}
 	
 	/**
