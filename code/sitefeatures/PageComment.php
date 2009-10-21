@@ -57,7 +57,9 @@ class PageComment extends DataObject {
 	}
 	
 	function CommentTextWithLinks() {
-		return preg_replace("#\[(([a-zA-Z]+://)([a-zA-Z0-9?&%.;:/=+_-]*))\]#", "'<a rel=\"nofollow\" href=\"$1\" target=\"_blank\">$1</a>'", $this->Comment);
+		$pattern = '|([a-zA-Z]+://)([a-zA-Z0-9?&%.;:/=+_-]*)|is';
+		$replace = '<a rel="nofollow" href="$1$2">$1$2</a>';
+		return preg_replace($pattern, $replace, $this->Comment);
 	}
 	
 	function SpamLink() {
