@@ -333,15 +333,9 @@ FilesystemSyncClass.prototype = {
 	
 	onclick : function() {
 		statusMessage('Looking for new files');
-        var options = {
-            method: 'get',
+        new Ajax.Request('dev/tasks/FilesystemSyncTask', {
             onSuccess: function(t) {
-                eval(t.responseText);
-            }
-        };
-        new Ajax.Request('dev/tasks/FilesystemSyncTask',{
-            onSuccess: function(t) {
-                statusMessage("I have finished looking for files", "good");
+                statusMessage(t.responseText, "good");
             },
             onFailure: function(t) {
                 errorMessage("There was an error looking for new files");

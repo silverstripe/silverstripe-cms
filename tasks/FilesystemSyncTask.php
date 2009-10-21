@@ -9,6 +9,6 @@ class FilesystemSyncTask extends BuildTask {
 		SilverStripe, for example, if an author uploads files via FTP.";
 	
 	function run($request) {
-		Filesystem::sync();
+		echo Filesystem::sync();
 	}
 }
