@@ -4,12 +4,12 @@
  * viewable in the Reports top menu section of CMS.
  * 
  * To include your own report into the ReportAdmin
- * of the CMS, your subclass of SSReport should
+ * of the CMS, your subclass of SS_Report should
  * overload these:
  * 
- * @link SSReport::$title
- * @link SSReport::$description
- * @link SSReport->getReportField()
+ * @link SS_Report::$title
+ * @link SS_Report::$description
+ * @link SS_Report->getReportField()
  * 
  * getReportField() should return a FormField instance,
  * such as a ComplexTableField, or TableListField. This
@@ -20,13 +20,13 @@
  * a TableListField listing orders that have the property
  * "Unprinted = 1".
  * 
- * @see ReportAdmin for where SSReport instances are
+ * @see ReportAdmin for where SS_Report instances are
  * used in the CMS.
  * 
  * @package cms
  * @subpackage reports
  */
-class SSReport extends ViewableData {
+class SS_Report extends ViewableData {
 
 	/**
 	 * This is the title of the report,
@@ -51,7 +51,7 @@ class SSReport extends ViewableData {
 	 * data objects.
 	 *
 	 * @uses getReportField() to render a table, or similar field for the report. This
-	 * method should be defined on the SSReport subclasses.
+	 * method should be defined on the SS_Report subclasses.
 	 *
 	 * @return FieldSet
 	 */

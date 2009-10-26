@@ -107,7 +107,7 @@ class SideReport_RecentlyEdited extends SideReport {
 		return _t('SideReport.LAST2WEEKS',"Pages edited in the last 2 weeks");
 	}
 	function records($params = null) {
-		$threshold = strtotime('-14 days', SSDatetime::now()->Format('U'));
+		$threshold = strtotime('-14 days', SS_Datetime::now()->Format('U'));
 		return DataObject::get("SiteTree", "\"SiteTree\".\"LastEdited\" > '".date("Y-m-d H:i:s", $threshold)."'", "\"SiteTree\".\"LastEdited\" DESC");
 	}
 	function fieldsToShow() {

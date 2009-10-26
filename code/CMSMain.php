@@ -1208,10 +1208,10 @@ JS;
 				return FormResponse::respond();
 
 			} else {
-				return new HTTPResponse("SiteTree #$id not found", 400);
+				return new SS_HTTPResponse("SiteTree #$id not found", 400);
 			}
 		} else {
-			return new HTTPResponse("Please pass an ID in the form content", 400);
+			return new SS_HTTPResponse("Please pass an ID in the form content", 400);
 		}
 	}
 

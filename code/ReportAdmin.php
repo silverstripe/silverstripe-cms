@@ -3,10 +3,10 @@
  * Reports section of the CMS.
  * 
  * All reports that should show in the ReportAdmin section
- * of the CMS need to subclass {@link SSReport}, and implement
+ * of the CMS need to subclass {@link SS_Report}, and implement
  * the appropriate methods and variables that are required.
  * 
- * @see SSReport
+ * @see SS_Report
  * 
  * @package cms
  * @subpackage reports
@@ -47,7 +47,7 @@ class ReportAdmin extends LeftAndMain {
 	*/
 	public function getReportClassNames() {
 
-		$baseClass  = 'SSReport';		
+		$baseClass  = 'SS_Report';		
 		$response   = array();
 		
 		// get all sub-classnames (incl. base classname).
@@ -98,7 +98,7 @@ class ReportAdmin extends LeftAndMain {
 	}
 	
 	/**
-	 * Return a DataObjectSet of SSReport subclasses
+	 * Return a DataObjectSet of SS_Report subclasses
 	 * that are available for use.
 	 *
 	 * @return DataObjectSet
@@ -121,7 +121,7 @@ class ReportAdmin extends LeftAndMain {
 	/**
 	 * Show a report based on the URL query string.
 	 *
-	 * @param HTTPRequest $request The HTTP request object
+	 * @param SS_HTTPRequest $request The HTTP request object
 	 */
 	public function show($request) {
 		$params = $request->allParams();
@@ -193,7 +193,7 @@ class ReportAdmin extends LeftAndMain {
 		$actions = new FieldSet();
 		
 		if(is_numeric($id)) $page = DataObject::get_by_id('SiteTree', $id);
-		$reportClass = is_object($page) ? 'SSReport_' . $page->ClassName : $id;
+		$reportClass = is_object($page) ? 'SS_Report_' . $page->ClassName : $id;
 		
 		$obj = new $reportClass();
 		if($obj) $fields = $obj->getCMSFields();
@@ -214,7 +214,7 @@ class ReportAdmin extends LeftAndMain {
 	 * 
 	 * The test for an existance of a report
 	 * is done by checking for a subclass of
-	 * "SSReport" that exists.
+	 * "SS_Report" that exists.
 	 *
 	 * @return boolean
 	 */

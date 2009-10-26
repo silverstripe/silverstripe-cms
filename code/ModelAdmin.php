@@ -332,7 +332,7 @@ class ModelAdmin_CollectionController extends Controller {
 	 * Delegate to the RecordController if a valid numeric ID appears in the URL
 	 * segment.
 	 *
-	 * @param HTTPRequest $request
+	 * @param SS_HTTPRequest $request
 	 * @return RecordController
 	 */
 	public function handleID($request) {
@@ -480,7 +480,7 @@ class ModelAdmin_CollectionController extends Controller {
 	 *
 	 * @param array $data
 	 * @param Form $form
-	 * @param HTTPRequest $request
+	 * @param SS_HTTPRequest $request
 	 */
 	function import($data, $form, $request) {
 		$modelName = $data['ClassName'];
@@ -610,7 +610,7 @@ class ModelAdmin_CollectionController extends Controller {
 		$numResults = $tableField->TotalCount();
 		
 		if($numResults) {
-			return new HTTPResponse(
+			return new SS_HTTPResponse(
 				$resultsForm->forTemplate(), 
 				200, 
 				sprintf(
@@ -619,7 +619,7 @@ class ModelAdmin_CollectionController extends Controller {
 				)
 			);
 		} else {
-			return new HTTPResponse(
+			return new SS_HTTPResponse(
 				$resultsForm->forTemplate(), 
 				200, 
 				_t('ModelAdmin.NORESULTS',"Your search didn't return any matching items")
@@ -710,7 +710,7 @@ class ModelAdmin_CollectionController extends Controller {
 	 */
 	function ResultsForm($searchCriteria) {
 		
-		if($searchCriteria instanceof HTTPRequest) $searchCriteria = $searchCriteria->getVars();
+		if($searchCriteria instanceof SS_HTTPRequest) $searchCriteria = $searchCriteria->getVars();
 		
 		$tf = $this->getResultsTable($searchCriteria);
 		
@@ -749,7 +749,7 @@ class ModelAdmin_CollectionController extends Controller {
 	 * @return unknown
 	 */
 	function add($request) {
-		return new HTTPResponse(
+		return new SS_HTTPResponse(
 			$this->AddForm()->forAjaxTemplate(), 
 			200, 
 			sprintf(
@@ -816,7 +816,7 @@ class ModelAdmin_CollectionController extends Controller {
 		
 		if(Director::is_ajax()) {
 			$recordController = new ModelAdmin_RecordController($this, $request, $model->ID);
-			return new HTTPResponse(
+			return new SS_HTTPResponse(
 				$recordController->EditForm()->forAjaxTemplate(), 
 				200, 
 				sprintf(
@@ -867,7 +867,7 @@ class ModelAdmin_RecordController extends Controller {
 	function edit($request) {
 		if ($this->currentRecord) {
 			if(Director::is_ajax()) {
-				return new HTTPResponse(
+				return new SS_HTTPResponse(
 					$this->EditForm()->forAjaxTemplate(), 
 					200, 
 					sprintf(
@@ -924,7 +924,7 @@ class ModelAdmin_RecordController extends Controller {
 	 *
 	 * @param array $data
 	 * @param Form $form
-	 * @param HTTPRequest $request
+	 * @param SS_HTTPRequest $request
 	 * @return mixed
 	 */
 	function doSave($data, $form, $request) {
@@ -962,7 +962,7 @@ class ModelAdmin_RecordController extends Controller {
 	/**
 	 * Renders the record view template.
 	 * 
-	 * @param HTTPRequest $request
+	 * @param SS_HTTPRequest $request
 	 * @return mixed
 	 */
 	function view($request) {

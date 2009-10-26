@@ -23,7 +23,7 @@ class SideReportTest extends SapphireTest {
 	}
 
 	function testRecentlyEdited() {
-		SSDateTime::set_mock_now('31-06-2009 00:00:00');
+		SS_Datetime::set_mock_now('31-06-2009 00:00:00');
 
 		$after = $this->objFromFixture('SiteTree', 'after');
 		$before = $this->objFromFixture('SiteTree', 'before');
@@ -35,6 +35,6 @@ class SideReportTest extends SapphireTest {
 		$this->assertContains($after->ID, $r->records()->column('ID'));
 		$this->assertNotContains($before->ID, $r->records()->column('ID'));
 		
-		SSDateTime::clear_mock_now();
+		SS_DateTime::clear_mock_now();
 	}
 }
