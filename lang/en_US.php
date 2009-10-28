@@ -67,11 +67,11 @@ $lang['en_US']['CMSBatchActions']['UNPUBLISHED_PAGES'] = 'Un-published %d pages'
 $lang['en_US']['CMSBatchActions']['UNPUBLISHING_PAGES'] = 'Un-publishing pages';
 $lang['en_US']['CMSBatchActions']['UNPUBLISH_PAGES'] = 'Un-publish';
 $lang['en_US']['CMSMain']['ACCESS'] = array(
-	'Access to \'%s\' (%s)',
+	'Access to \'%s\'',
 	PR_MEDIUM,
 	'Item in permission selection identifying the admin section, with title and classname. Example: Access to \'Files & Images\' (AssetAdmin)'
 );
-$lang['en_US']['CMSMain']['ACCESSALLINTERFACES'] = 'Access to all CMS interfaces';
+$lang['en_US']['CMSMain']['ACCESSALLINTERFACES'] = 'Access to all CMS sections';
 $lang['en_US']['CMSMain']['CANCEL'] = 'Cancel';
 $lang['en_US']['CMSMain']['CHOOSEREPORT'] = '(Choose a report)';
 $lang['en_US']['CMSMain']['COMPARINGV'] = 'Comparing versions %s and %s';
@@ -142,6 +142,7 @@ $lang['en_US']['CMSMain_left.ss']['BATCHACTIONS'] = array(
 	PR_HIGH
 );
 $lang['en_US']['CMSMain_left.ss']['CHANGED'] = 'changed';
+$lang['en_US']['CMSMain_left.ss']['CLEAR'] = 'Clear';
 $lang['en_US']['CMSMain_left.ss']['CLEARTITLE'] = 'Clear the search and view all items';
 $lang['en_US']['CMSMain_left.ss']['CLOSEBOX'] = 'click to close box';
 $lang['en_US']['CMSMain_left.ss']['COMPAREMODE'] = 'Compare mode (click 2 below)';
@@ -166,10 +167,7 @@ $lang['en_US']['CMSMain_left.ss']['NOTINMENU'] = 'Excluded from navigation menus
 $lang['en_US']['CMSMain_left.ss']['OPENBOX'] = 'click to open this box';
 $lang['en_US']['CMSMain_left.ss']['PAGEVERSIONH'] = 'Page Version History';
 $lang['en_US']['CMSMain_left.ss']['PUBLISHCONFIRM'] = 'Publish the selected pages';
-$lang['en_US']['CMSMain_left.ss']['SEARCH'] = array(
-	'Search',
-	PR_HIGH
-);
+$lang['en_US']['CMSMain_left.ss']['SEARCH'] = 'Search';
 $lang['en_US']['CMSMain_left.ss']['SEARCHTITLE'] = 'Search through URL, Title, Menu Title, &amp; Content';
 $lang['en_US']['CMSMain_left.ss']['SELECTPAGESACTIONS'] = 'Select the pages that you want to change &amp; then click an action:';
 $lang['en_US']['CMSMain_left.ss']['SHOWONLYCHANGED'] = 'Show only changed pages';
@@ -413,6 +411,11 @@ $lang['en_US']['PageCommentInterface_singlecomment.ss']['ISNTSPAM'] = 'this comm
 $lang['en_US']['PageCommentInterface_singlecomment.ss']['ISSPAM'] = 'this comment is spam';
 $lang['en_US']['PageCommentInterface_singlecomment.ss']['PBY'] = 'Posted by';
 $lang['en_US']['PageCommentInterface_singlecomment.ss']['REMCOM'] = 'remove this comment';
+$lang['en_US']['PermissionRoleAdmin']['MENUTITLE'] = array(
+	'Roles',
+	100,
+	'Menu title'
+);
 $lang['en_US']['ReportAdmin']['MENUTITLE'] = array(
 	'Reports',
 	100,
@@ -430,7 +433,7 @@ $lang['en_US']['ReportAdmin_right.ss']['WELCOME2'] = array(
 	50
 );
 $lang['en_US']['SecurityAdmin']['ADDMEMBER'] = 'Add Member';
-$lang['en_US']['SecurityAdmin']['EDITPERMISSIONS'] = 'Edit permissions and IP addresses on each group';
+$lang['en_US']['SecurityAdmin']['EDITPERMISSIONS'] = 'Manage permissions for groups';
 $lang['en_US']['SecurityAdmin']['MENUTITLE'] = array(
 	'Security',
 	100,
@@ -459,6 +462,7 @@ $lang['en_US']['SecurityAdmin_right.ss']['WELCOME2'] = array(
 	'security admininistration section.  Please choose a group from the left.',
 	50
 );
+$lang['en_US']['SideReport']['BROKENPAGEFILELINKS'] = 'Broken Page & File Links';
 $lang['en_US']['SideReport']['EMPTYPAGES'] = 'Empty pages';
 $lang['en_US']['SideReport']['LAST2WEEKS'] = 'Pages edited in the last 2 weeks';
 $lang['en_US']['SideReport']['REPEMPTY'] = array(
