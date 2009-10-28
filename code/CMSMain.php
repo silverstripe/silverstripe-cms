@@ -1294,17 +1294,16 @@ JS;
 	        $perms["CMS_ACCESS_" . $class] = sprintf(
 				_t(
 					'CMSMain.ACCESS', 
-					"Access to '%s' (%s)",
+					"Access to '%s'",
 					PR_MEDIUM,
 					"Item in permission selection identifying the admin section, with title and classname. Example: Access to 'Files & Images' (AssetAdmin)"
 				), 
-				$title,
-				$class
+				$title
 			);
 		}
 		$perms["CMS_ACCESS_LeftAndMain"] = _t(
 			'CMSMain.ACCESSALLINTERFACES', 
-			'Access to all CMS interfaces'
+			'Access to all CMS sections'
 		);
 		return $perms;
 	}
