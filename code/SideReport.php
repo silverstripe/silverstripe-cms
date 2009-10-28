@@ -76,6 +76,10 @@ abstract class SideReport extends Object {
 	function getParameterFields() {
 		return false;
 	}
+	
+	function canView() {
+		return true;
+	}
 }
 
 /**

@@ -672,7 +672,7 @@ JS;
 
 		$options[""] = _t('CMSMain.CHOOSEREPORT',"(Choose a report)");
 		foreach($reports as $report) {
-			if($report != 'SideReport') $options[$report] = singleton($report)->title();
+			if($report != 'SideReport' && singleton($report)->canView()) $options[$report] = singleton($report)->title();
 		}
 		return new DropdownField("ReportSelector", _t('CMSMain.REPORT', 'Report'),$options);
 	}
@@ -681,7 +681,7 @@ JS;
 
 		$forms = array();
 		foreach($reports as $report) {
-			if ($report != 'SideReport') {
+			if ($report != 'SideReport' && singleton($report)->canView()) {
 				if ($fieldset = singleton($report)->getParameterFields()) {
 					$formHtml = '';
 					foreach($fieldset as $field) {
