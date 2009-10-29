@@ -670,11 +670,24 @@ JS;
 	function ReportSelector() {
 		$reports = ClassInfo::subclassesFor("SideReport");
 
-		$options[""] = _t('CMSMain.CHOOSEREPORT',"(Choose a report)");
+		// $options[""] = _t('CMSMain.CHOOSEREPORT',"(Choose a report)");
 		foreach($reports as $report) {
-			if($report != 'SideReport' && singleton($report)->canView()) $options[$report] = singleton($report)->title();
+			if($report != 'SideReport' && singleton($report)->canView()) {
+				$options[singleton($report)->group()][singleton($report)->sort()][$report] = singleton($report)->title();
+			}
 		}
-		return new DropdownField("ReportSelector", _t('CMSMain.REPORT', 'Report'),$options);
+		
+		$finalOptions = array();
+		foreach($options as $group => $weights) {
+			ksort($weights);
+			foreach($weights as $weight => $reports) {
+				foreach($reports as $class => $report) {
+					$finalOptions[$group][$class] = $report;
+				}
+			}
+		}
+		
+		return new GroupedDropdownField("ReportSelector", _t('CMSMain.REPORT', 'Report'),$finalOptions);
 	}
 	function ReportFormParameters() {
 		$reports = ClassInfo::subclassesFor("SideReport");

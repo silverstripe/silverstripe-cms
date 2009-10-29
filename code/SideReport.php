@@ -12,6 +12,14 @@ abstract class SideReport extends Object {
 	abstract function fieldsToShow();
 	abstract function title();
 	
+	function group() {
+		return 'Other';
+	}
+	
+	function sort() {
+		return 0;
+	}
+	
 	function getHTML() {
 		$records = $this->records();
 		$fieldsToShow = $this->fieldsToShow();
@@ -89,7 +97,13 @@ abstract class SideReport extends Object {
  */
 class SideReport_EmptyPages extends SideReport {
 	function title() {
-		return _t('SideReport.EMPTYPAGES',"Empty pages");
+		return _t('SideReport.EMPTYPAGES',"Pages with no content");
+	}
+	function group() {
+		return "Content reports";
+	}
+	function sort() {
+		return 100;
 	}
 	function records($params = null) {
 		return DataObject::get("SiteTree", "\"Content\" = '' OR \"Content\" IS NULL OR \"Content\" LIKE '<p></p>' OR \"Content\" LIKE '<p>&nbsp;</p>'", '"Title"');
@@ -110,6 +124,12 @@ class SideReport_RecentlyEdited extends SideReport {
 	function title() {
 		return _t('SideReport.LAST2WEEKS',"Pages edited in the last 2 weeks");
 	}
+	function group() {
+		return "Content reports";
+	}
+	function sort() {
+		return 200;
+	}
 	function records($params = null) {
 		$threshold = strtotime('-14 days', SS_Datetime::now()->Format('U'));
 		return DataObject::get("SiteTree", "\"SiteTree\".\"LastEdited\" > '".date("Y-m-d H:i:s", $threshold)."'", "\"SiteTree\".\"LastEdited\" DESC");
@@ -123,7 +143,13 @@ class SideReport_RecentlyEdited extends SideReport {
 
 class SideReport_ToDo extends SideReport {
 	function title() {
-		return _t('SideReport.TODO',"To do");
+		return _t('SideReport.TODO',"Pages with To Do items");
+	}
+	function group() {
+		return "Content reports";
+	}
+	function sort() {
+		return 0;
 	}
 	function records($params = null) {
 		return DataObject::get("SiteTree", "\"SiteTree\".\"ToDo\" IS NOT NULL AND \"SiteTree\".\"ToDo\" <> ''", "\"SiteTree\".\"LastEdited\" DESC");
@@ -152,6 +178,10 @@ class SideReport_BrokenLinks extends SideReport {
 	
 	public function title() {
 		return _t('SideReport.BROKENPAGEFILELINKS', 'Broken Page & File Links');
+	}
+	
+	function group() {
+		return "Broken links reports";
 	}
 	
 	public function records() {

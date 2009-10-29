@@ -67,9 +67,9 @@ $lang['en_US']['CMSBatchActions']['UNPUBLISHED_PAGES'] = 'Un-published %d pages'
 $lang['en_US']['CMSBatchActions']['UNPUBLISHING_PAGES'] = 'Un-publishing pages';
 $lang['en_US']['CMSBatchActions']['UNPUBLISH_PAGES'] = 'Un-publish';
 $lang['en_US']['CMSMain']['ACCESS'] = array(
-	'Access to \'%s\'',
+	'Access to %s',
 	PR_MEDIUM,
-	'Item in permission selection identifying the admin section, with title and classname. Example: Access to \'Files & Images\' (AssetAdmin)'
+	'Item in permission selection identifying the admin section, with title and classname. Example: Access to Files & Images'
 );
 $lang['en_US']['CMSMain']['ACCESSALLINTERFACES'] = 'Access to all CMS sections';
 $lang['en_US']['CMSMain']['CANCEL'] = 'Cancel';
@@ -463,14 +463,14 @@ $lang['en_US']['SecurityAdmin_right.ss']['WELCOME2'] = array(
 	50
 );
 $lang['en_US']['SideReport']['BROKENPAGEFILELINKS'] = 'Broken Page & File Links';
-$lang['en_US']['SideReport']['EMPTYPAGES'] = 'Empty pages';
+$lang['en_US']['SideReport']['EMPTYPAGES'] = 'Pages with no content';
 $lang['en_US']['SideReport']['LAST2WEEKS'] = 'Pages edited in the last 2 weeks';
 $lang['en_US']['SideReport']['REPEMPTY'] = array(
 	'The %s report is empty.',
 	PR_MEDIUM,
 	'%s is a report title'
 );
-$lang['en_US']['SideReport']['TODO'] = 'To do';
+$lang['en_US']['SideReport']['TODO'] = 'Pages with To Do items';
 $lang['en_US']['StaticExporter']['BASEURL'] = 'Base URL';
 $lang['en_US']['StaticExporter']['EXPORTTO'] = 'Export to that folder';
 $lang['en_US']['StaticExporter']['FOLDEREXPORT'] = 'Folder to export to';
