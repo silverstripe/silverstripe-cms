@@ -169,29 +169,121 @@ class SideReport_ToDo extends SideReport {
 }
 
 /**
- * Lists all pages with either broken page or file links.
- *
+ * Content side-report listing pages with broken links
  * @package cms
  * @subpackage content
  */
 class SideReport_BrokenLinks extends SideReport {
-	
-	public function title() {
-		return _t('SideReport.BROKENPAGEFILELINKS', 'Broken Page & File Links');
+	function title() {
+		return _t('SideReport.BROKENLINKS',"Pages with broken links");
 	}
-	
 	function group() {
 		return "Broken links reports";
 	}
-	
-	public function records() {
-		return DataObject::get('SiteTree', '"HasBrokenLink" = 1 OR "HasBrokenFile" = 1');
+	function records($params = null) {
+		// Get class names for page types that are not virtual pages or redirector pages
+		$classes = array_diff(ClassInfo::subclassesFor('SiteTree'), ClassInfo::subclassesFor('VirtualPage'), ClassInfo::subclassesFor('RedirectorPage'));
+		$classNames = "'".join("','", $classes)."'";
+		
+		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "ClassName IN ($classNames) AND HasBrokenLink = 1");
+		else $ret = DataObject::get('SiteTree', "ClassName IN ($classNames) AND HasBrokenLink = 1");
+		return $ret;
 	}
-	
-	public function fieldsToShow() {
+	function fieldsToShow() {
 		return array(
-			'Title' => array('NestedTitle', array(2)),
+			"Title" => array("NestedTitle", array("2")),
 		);
 	}
+	function getParameterFields() {
+		return new FieldSet(
+			new CheckboxField('OnLive', 'Check live site')
+		);
+	}
+}
+
+/**
+ * Content side-report listing pages with broken files
+ * or asset links
+ * @package cms
+ * @subpackage content
+ */
+class SideReport_BrokenFiles extends SideReport {
+	function title() {
+		return _t('SideReport.BROKENFILES',"Pages with broken files");
+	}
+	function group() {
+		return "Broken links reports";
+	}
+	function records($params = null) {
+		// Get class names for page types that are not virtual pages or redirector pages
+		$classes = array_diff(ClassInfo::subclassesFor('SiteTree'), ClassInfo::subclassesFor('VirtualPage'), ClassInfo::subclassesFor('RedirectorPage'));
+		$classNames = "'".join("','", $classes)."'";
+		
+		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "ClassName IN ($classNames) AND HasBrokenFile = 1");
+		else $ret = DataObject::get('SiteTree', "ClassName IN ($classNames) AND HasBrokenFile = 1");
+		return $ret;
+	}
+	function fieldsToShow() {
+		return array(
+			"Title" => array("NestedTitle", array("2")),
+		);
+	}
+	function getParameterFields() {
+		return new FieldSet(
+			new CheckboxField('OnLive', 'Check live site')
+		);
+	}
+}
+
+class SideReport_BrokenVirtualPages extends SideReport {
+	function title() {
+		return _t('SideReport.BROKENVIRTUALPAGES', 'VirtualPages pointing to deleted pages');
+	}
+	function group() {
+		return "Broken links reports";
+	}
+	function records($params = null) {
+		$classNames = "'".join("','", ClassInfo::subclassesFor('VirtualPage'))."'";
+		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "ClassName IN ($classNames) AND HasBrokenLink = 1");
+		else $ret = DataObject::get('SiteTree', "ClassName IN ($classNames) AND HasBrokenLink = 1");
+		return $ret;
+	}
 	
+	function fieldsToShow() {
+		return array(
+			"Title" => array("NestedTitle", array("2")),
+		);
+	}
+	function getParameterFields() {
+		return new FieldSet(
+			new CheckboxField('OnLive', 'Check live site')
+		);
+	}
+}
+
+class SideReport_BrokenRedirectorPages extends SideReport {
+	function title() {
+		return _t('SideReport.BROKENREDIRECTORPAGES', 'RedirectorPages pointing to deleted pages');
+	}
+	function group() {
+		return "Broken links reports";
+	}
+	function records($params = null) {
+		$classNames = "'".join("','", ClassInfo::subclassesFor('RedirectorPage'))."'";
+		
+		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "ClassName IN ($classNames) AND HasBrokenLink = 1");
+		else $ret = DataObject::get('SiteTree', "ClassName IN ($classNames) AND HasBrokenLink = 1");
+		return $ret;
+	}
+	
+	function fieldsToShow() {
+		return array(
+			"Title" => array("NestedTitle", array("2")),
+		);
+	}
+	function getParameterFields() {
+		return new FieldSet(
+			new CheckboxField('OnLive', 'Check live site')
+		);
+	}
 }
