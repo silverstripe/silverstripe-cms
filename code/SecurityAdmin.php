@@ -267,6 +267,12 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 				'category' => 'Roles and access permissions',
 				'help' => 'Ability to edit Permissions and IP Addresses for a group. Requires "Access to Security".',
 				'sort' => 0
+			),
+			'APPLY_ROLES' => array(
+				'name' => _t('SecurityAdmin.APPLY_ROLES', 'Apply roles to groups'),
+				'category' => 'Roles and access permissions',
+				'help' => 'Ability to edit the roles assigned to a group. Requires "Access to Security.".',
+				'sort' => 0
 			)
 		);
 	}
