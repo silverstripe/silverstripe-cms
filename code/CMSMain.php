@@ -1289,22 +1289,26 @@ JS;
 	function providePermissions() {
 		$classes = ClassInfo::subclassesFor('LeftAndMain');
 
-		foreach($classes as $class) {
+		foreach($classes as $i => $class) {
 			$title = _t("{$class}.MENUTITLE", LeftAndMain::menu_title_for_class($class));
-	        $perms["CMS_ACCESS_" . $class] = sprintf(
-				_t(
+	        $perms["CMS_ACCESS_" . $class] = array(
+				'name' => sprintf(_t(
 					'CMSMain.ACCESS', 
-					"Access to '%s'",
+					"Access to %s",
 					PR_MEDIUM,
-					"Item in permission selection identifying the admin section, with title and classname. Example: Access to 'Files & Images' (AssetAdmin)"
-				), 
-				$title
+					"Item in permission selection identifying the admin section, with title and classname. Example: Access to Files & Images"
+				), $title),
+				'category' => 'CMS Access'
 			);
 		}
-		$perms["CMS_ACCESS_LeftAndMain"] = _t(
-			'CMSMain.ACCESSALLINTERFACES', 
-			'Access to all CMS sections'
+		$perms["CMS_ACCESS_LeftAndMain"] = array(
+			'name' => _t('CMSMain.ACCESSALLINTERFACES', 'Access to all CMS sections'),
+			'category' => 'CMS Access',
+			'sort' => -100
 		);
+		
+		if (isset($perms['CMS_ACCESS_ModelAdmin'])) unset($perms['CMS_ACCESS_ModelAdmin']);
+		
 		return $perms;
 	}
 	

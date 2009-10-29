@@ -262,7 +262,12 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 
 	function providePermissions() {
 		return array(
-			'EDIT_PERMISSIONS' => _t('SecurityAdmin.EDITPERMISSIONS', 'Manage permissions for groups'),
+			'EDIT_PERMISSIONS' => array(
+				'name' => _t('SecurityAdmin.EDITPERMISSIONS', 'Manage permissions for groups'),
+				'category' => 'Roles and access permissions',
+				'help' => 'Ability to edit Permissions and IP Addresses for a group. Requires "Access to Security".',
+				'sort' => 0
+			)
 		);
 	}
 }
