@@ -8,7 +8,6 @@
 class CMSBatchActionHandler extends RequestHandler {
 	static $batch_actions = array(
 		'publish' => 'CMSBatchAction_Publish',
-		'unpublish' => 'CMSBatchAction_Unpublish',
 		'delete' => 'CMSBatchAction_Delete',
 		'deletefromlive' => 'CMSBatchAction_DeleteFromLive',
 	);

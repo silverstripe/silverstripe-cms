@@ -39,10 +39,14 @@ abstract class CMSBatchAction extends Object {
 	 * @para
 	 */
 	public function batchaction(DataObjectSet $pages, $helperMethod, $successMessage, $arguments = array()) {
+		$failures = 0;
+		
 		foreach($pages as $page) {
 			
 			// Perform the action
-			call_user_func_array(array($page, $helperMethod), $arguments);
+			if (!call_user_func_array(array($page, $helperMethod), $arguments)) {
+				$failures++;
+			}
 			
 			// Now make sure the tree title is appropriately updated
 			$publishedRecord = DataObject::get_by_id('SiteTree', $page->ID);
@@ -126,7 +130,7 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 			unset($page);
 		}
 
-		$message = sprintf(_t('CMSBatchActions.DELETED_PAGES', 'Deleted %d pages from the draft site, %d failures'), $pages->Count()-$failures, $failures);
+		$message = sprintf(_t('CMSBatchActions.DELETED_PAGES', 'Deleted %d pages from the draft site'), $pages->Count());
 		FormResponse::add('statusMessage("'.$message.'","good");');
 
 		return FormResponse::respond();
