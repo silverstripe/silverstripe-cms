@@ -60,12 +60,9 @@ $lang['en_US']['AssetTableField.ss']['SHOW'] = 'Show asset';
 $lang['en_US']['CMSBatchActions']['DELETED_PAGES'] = 'Deleted %d pages from the published site';
 $lang['en_US']['CMSBatchActions']['DELETE_PAGES'] = 'Delete from published site';
 $lang['en_US']['CMSBatchActions']['DELETING_PAGES'] = 'Deleting selected pages from the published site';
-$lang['en_US']['CMSBatchActions']['PUBLISHED_PAGES'] = 'Published %d pages';
+$lang['en_US']['CMSBatchActions']['PUBLISHED_PAGES'] = 'Published %d pages, %d failures';
 $lang['en_US']['CMSBatchActions']['PUBLISHING_PAGES'] = 'Publishing pages';
 $lang['en_US']['CMSBatchActions']['PUBLISH_PAGES'] = 'Publish';
-$lang['en_US']['CMSBatchActions']['UNPUBLISHED_PAGES'] = 'Un-published %d pages';
-$lang['en_US']['CMSBatchActions']['UNPUBLISHING_PAGES'] = 'Un-publishing pages';
-$lang['en_US']['CMSBatchActions']['UNPUBLISH_PAGES'] = 'Un-publish';
 $lang['en_US']['CMSMain']['ACCESS'] = array(
 	'Access to %s',
 	PR_MEDIUM,
@@ -433,6 +430,7 @@ $lang['en_US']['ReportAdmin_right.ss']['WELCOME2'] = array(
 	50
 );
 $lang['en_US']['SecurityAdmin']['ADDMEMBER'] = 'Add Member';
+$lang['en_US']['SecurityAdmin']['APPLY_ROLES'] = 'Apply roles to groups';
 $lang['en_US']['SecurityAdmin']['EDITPERMISSIONS'] = 'Manage permissions for groups';
 $lang['en_US']['SecurityAdmin']['MENUTITLE'] = array(
 	'Security',
@@ -462,7 +460,10 @@ $lang['en_US']['SecurityAdmin_right.ss']['WELCOME2'] = array(
 	'security admininistration section.  Please choose a group from the left.',
 	50
 );
-$lang['en_US']['SideReport']['BROKENPAGEFILELINKS'] = 'Broken Page & File Links';
+$lang['en_US']['SideReport']['BROKENFILES'] = 'Pages with broken files';
+$lang['en_US']['SideReport']['BROKENLINKS'] = 'Pages with broken links';
+$lang['en_US']['SideReport']['BROKENREDIRECTORPAGES'] = 'RedirectorPages pointing to deleted pages';
+$lang['en_US']['SideReport']['BROKENVIRTUALPAGES'] = 'VirtualPages pointing to deleted pages';
 $lang['en_US']['SideReport']['EMPTYPAGES'] = 'Pages with no content';
 $lang['en_US']['SideReport']['LAST2WEEKS'] = 'Pages edited in the last 2 weeks';
 $lang['en_US']['SideReport']['REPEMPTY'] = array(

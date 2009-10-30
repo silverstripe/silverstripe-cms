@@ -54,7 +54,8 @@ abstract class CMSBatchAction extends Object {
 			unset($page);
 		}
 
-		$message = sprintf($successMessage, $pages->Count());
+		$message = sprintf($successMessage, $pages->Count()-$failures, $failures);
+
 		FormResponse::add('statusMessage("'.$message.'","good");');
 
 		return FormResponse::respond();
@@ -82,28 +83,7 @@ class CMSBatchAction_Publish extends CMSBatchAction {
 
 	function run(DataObjectSet $pages) {
 		return $this->batchaction($pages, 'doPublish',
-			_t('CMSBatchActions.PUBLISHED_PAGES', 'Published %d pages')
-		);
-	}
-}
-
-/**
- * Un-publish items batch action.
- * 
- * @package cms
- * @subpackage batchaction
- */
-class CMSBatchAction_Unpublish extends CMSBatchAction {
-	function getActionTitle() {
-		return _t('CMSBatchActions.UNPUBLISH_PAGES', 'Un-publish');
-	}
-	function getDoingText() {
-		return _t('CMSBatchActions.UNPUBLISHING_PAGES', 'Un-publishing pages');
-	}
-
-	function run(DataObjectSet $pages) {
-		return $this->batchaction($pages, 'doUnpublish',
-			_t('CMSBatchActions.UNPUBLISHED_PAGES', 'Un-published %d pages')
+			_t('CMSBatchActions.PUBLISHED_PAGES', 'Published %d pages, %d failures')
 		);
 	}
 }
@@ -146,7 +126,7 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 			unset($page);
 		}
 
-		$message = sprintf(_t('CMSBatchActions.DELETED_PAGES', 'Deleted %d pages from the draft site'), $pages->Count());
+		$message = sprintf(_t('CMSBatchActions.DELETED_PAGES', 'Deleted %d pages from the draft site, %d failures'), $pages->Count()-$failures, $failures);
 		FormResponse::add('statusMessage("'.$message.'","good");');
 
 		return FormResponse::respond();
@@ -168,11 +148,13 @@ class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 	}
 
 	function run(DataObjectSet $pages) {
-		foreach($pages as $page) {
-			$id = $page->ID;
-			
-			// Perform the action
-			if($page->canDelete()) $page->doDeleteFromLive();
+		$ids = $pages->column('ID');
+		$this->batchaction($pages, 'doUnpublish',
+			_t('CMSBatchActions.DELETED_PAGES', 'Deleted %d pages from the published site, %d failures')
+		);
+		
+		foreach($ids as $pageID) {
+			$id = $pageID;
 
 			// check to see if the record exists on the live site, if it doesn't remove the tree node
 			$stageRecord = Versioned::get_one_by_stage( 'SiteTree', 'Stage', "\"SiteTree\".\"ID\"=$id");
