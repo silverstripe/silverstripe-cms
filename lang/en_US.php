@@ -408,11 +408,13 @@ $lang['en_US']['PageCommentInterface_singlecomment.ss']['ISNTSPAM'] = 'this comm
 $lang['en_US']['PageCommentInterface_singlecomment.ss']['ISSPAM'] = 'this comment is spam';
 $lang['en_US']['PageCommentInterface_singlecomment.ss']['PBY'] = 'Posted by';
 $lang['en_US']['PageCommentInterface_singlecomment.ss']['REMCOM'] = 'remove this comment';
+$lang['en_US']['Permission']['CMS_ACCESS_CATEGORY'] = 'CMS Access';
 $lang['en_US']['PermissionRoleAdmin']['MENUTITLE'] = array(
 	'Roles',
 	100,
 	'Menu title'
 );
+$lang['en_US']['Permissions']['PERMISSIONS_CATEGORY'] = 'Roles and access permissions';
 $lang['en_US']['ReportAdmin']['MENUTITLE'] = array(
 	'Reports',
 	100,
@@ -431,7 +433,9 @@ $lang['en_US']['ReportAdmin_right.ss']['WELCOME2'] = array(
 );
 $lang['en_US']['SecurityAdmin']['ADDMEMBER'] = 'Add Member';
 $lang['en_US']['SecurityAdmin']['APPLY_ROLES'] = 'Apply roles to groups';
+$lang['en_US']['SecurityAdmin']['APPLY_ROLES_HELP'] = 'Ability to edit the roles assigned to a group. Requires "Access to Security.".';
 $lang['en_US']['SecurityAdmin']['EDITPERMISSIONS'] = 'Manage permissions for groups';
+$lang['en_US']['SecurityAdmin']['EDITPERMISSIONS_HELP'] = 'Ability to edit Permissions and IP Addresses for a group. Requires "Access to Security".';
 $lang['en_US']['SecurityAdmin']['MENUTITLE'] = array(
 	'Security',
 	100,

@@ -1311,12 +1311,12 @@ JS;
 					PR_MEDIUM,
 					"Item in permission selection identifying the admin section, with title and classname. Example: Access to Files & Images"
 				), $title),
-				'category' => 'CMS Access'
+				Two => _t('Permission.CMS_ACCESS_CATEGORY', 'CMS Access')
 			);
 		}
 		$perms["CMS_ACCESS_LeftAndMain"] = array(
 			'name' => _t('CMSMain.ACCESSALLINTERFACES', 'Access to all CMS sections'),
-			'category' => 'CMS Access',
+			Two => _t('Permission.CMS_ACCESS_CATEGORY', 'CMS Access'),
 			'sort' => -100
 		);
 		
