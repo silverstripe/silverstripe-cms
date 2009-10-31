@@ -499,32 +499,34 @@ JS;
 		if(isset($parentObj->ID)) $filename = $parentObj->FullPath . $name;
 		else $filename = ASSETS_PATH . '/' . $name;
 
-		// Ensure uniqueness		
-		$i = 2;
-		$baseFilename = $filename . '-';
-		while(file_exists($filename)) {
-			$filename = $baseFilename . $i;
-			$i++;
-		}
-
 		// Actually create
 		if(!file_exists(ASSETS_PATH)) {
 			mkdir(ASSETS_PATH);
 		}
-		mkdir($filename);
-		chmod($filename, Filesystem::$file_create_mask);
-
-		// Create object
+		
 		$p = new Folder();
 		$p->ParentID = $parent;
-		$p->Name = $p->Title = basename($filename);		
+		$p->Name = $p->Title = basename($filename);
+		
+		// Ensure uniqueness		
+		$i = 2;
+		$baseFilename = substr($p->Filename, 0, -1) . '-';
+		while(file_exists($p->FullPath)) {
+			$p->Filename = $baseFilename . $i . '/';
+			$i++;
+		}
+		
 		$p->write();
-
+		
+		mkdir($p->FullPath);
+		chmod($p->FullPath, Filesystem::$file_create_mask);
+		
 		if(isset($_REQUEST['returnID'])) {
 			return $p->ID;
 		} else {
 			return $this->returnItemToUser($p);
 		}
+		
 	}
 	
 	/**
