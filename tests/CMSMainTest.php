@@ -14,7 +14,6 @@ class CMSMainTest extends FunctionalTest {
 		self::$orig['CMSBatchActionHandler_batch_actions'] = CMSBatchActionHandler::$batch_actions;
 		CMSBatchActionHandler::$batch_actions = array(
 			'publish' => 'CMSBatchAction_Publish',
-			'unpublish' => 'CMSBatchAction_Unpublish',
 			'delete' => 'CMSBatchAction_Delete',
 			'deletefromlive' => 'CMSBatchAction_DeleteFromLive',
 		);
