@@ -406,7 +406,7 @@ Behaviour.register({
 	'#choose_batch_action' : {
 		onchange : function() {
 			$('batchactions').actionChanged();
-		},
+		}
 	}
 });
 

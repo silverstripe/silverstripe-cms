@@ -61,7 +61,7 @@ SideReports.prototype = {
 			'#ReportSelector' : {
 				onchange : function() {
 					$('reports_holder').reportSelected();
-				},
+				}
 			}
 		});
 	}
@@ -103,6 +103,6 @@ Behaviour.register({
 	'#ReportSelector' : {
 		onchange : function() {
 			$('reports_holder').reportSelected();
-		},
+		}
 	}
 });
