@@ -100,10 +100,10 @@ class CMSBatchAction_Publish extends CMSBatchAction {
  */
 class CMSBatchAction_Delete extends CMSBatchAction {
 	function getActionTitle() {
-		return _t('CMSBatchActions.DELETE_PAGES', 'Delete from draft');
+		return _t('CMSBatchActions.DELETE_DRAFT_PAGES', 'Delete from draft');
 	}
 	function getDoingText() {
-		return _t('CMSBatchActions.DELETING_PAGES', 'Deleting selected pages from draft');
+		return _t('CMSBatchActions.DELETING_DRAFT_PAGES', 'Deleting selected pages from draft');
 	}
 
 	function run(DataObjectSet $pages) {
@@ -130,7 +130,7 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 			unset($page);
 		}
 
-		$message = sprintf(_t('CMSBatchActions.DELETED_PAGES', 'Deleted %d pages from the draft site'), $pages->Count());
+		$message = sprintf(_t('CMSBatchActions.DELETED_DRAFT_PAGES', 'Deleted %d pages from the draft site'), $pages->Count());
 		FormResponse::add('statusMessage("'.$message.'","good");');
 
 		return FormResponse::respond();
