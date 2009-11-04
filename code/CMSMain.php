@@ -1331,15 +1331,13 @@ JS;
      */
     function LangSelector() {
 		$member = Member::currentUser(); 
-		$locales = singleton('SiteTree')->getAllowedLocalesForMember(Member::currentUser());
-		$localesMap = array();
-		if($locales) foreach($locales as $locale) {
-			$localesMap[$locale] = i18n::get_locale_name($locale);
-		}
-		$dropdown = new DropdownField(
+		$dropdown = new LanguageDropdownField(
 			'LangSelector', 
 			'Language', 
-			$localesMap
+			array(),
+			'SiteTree', 
+			'Locale-English',
+			singleton('SiteTree')
 		);
 		$dropdown->setValue(Translatable::get_current_locale());
 		return $dropdown;
