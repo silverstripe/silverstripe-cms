@@ -172,9 +172,6 @@ class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 				FormResponse::add("if(node && node.parentTreeNode)	node.parentTreeNode.removeTreeNode(node);");
 				FormResponse::add("$('Form_EditForm').reloadIfSetTo($id);");
 			}
-
-			$page->destroy();
-			unset($page);
 		}
 
 		$message = sprintf(_t('CMSBatchActions.DELETED_PAGES', 'Deleted %d pages from the published site'), $pages->Count());
