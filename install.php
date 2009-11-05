@@ -668,7 +668,7 @@ require_once("conf/ConfigureFromEnv.php");
 MySQLDatabase::set_connection_charset('utf8');
 
 // This line set's the current theme. More themes can be
-// downloaded from http://www.silverstripe.com/themes/
+// downloaded from http://www.silverstripe.org/themes/
 SSViewer::set_theme('$theme');
 
 // enable nested URLs for this site (e.g. page/sub-page/)
@@ -700,12 +700,12 @@ global \$databaseConfig;
 
 // Sites running on the following servers will be
 // run in development mode. See
-// http://doc.silverstripe.com/doku.php?id=devmode
+// http://doc.silverstripe.org/doku.php?id=configuration
 // for a description of what dev mode does.
 Director::set_dev_servers($devServers);
 
 // This line set's the current theme. More themes can be
-// downloaded from http://www.silverstripe.com/themes/
+// downloaded from http://www.silverstripe.org/themes/
 SSViewer::set_theme('$theme');
 
 // enable nested URLs for this site (e.g. page/sub-page/)
