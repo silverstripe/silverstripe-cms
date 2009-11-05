@@ -166,7 +166,7 @@ class PageComment extends DataObject {
 			}
 		}
 		
-		$this->CommenterURL = strtolower($url);
+		$this->CommenterURL = $url;
 	}
 	
 }
