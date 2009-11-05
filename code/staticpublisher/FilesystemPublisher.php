@@ -95,6 +95,7 @@ class FilesystemPublisher extends StaticPublisher {
 		
 		$currentBaseURL = Director::baseURL();
 		if(self::$static_base_url) Director::setBaseURL(self::$static_base_url);
+		if($this->fileExtension == 'php') SSViewer::setOption('rewriteHashlinks', 'php'); 
 		if(StaticPublisher::echo_progress()) echo "Publishing to " . self::$static_base_url . "\n";		
 		$files = array();
 		$i = 0;
@@ -180,6 +181,7 @@ class FilesystemPublisher extends StaticPublisher {
 		}
 
 		if(self::$static_base_url) Director::setBaseURL($currentBaseURL); 
+		if($this->fileExtension == 'php') SSViewer::setOption('rewriteHashlinks', true); 
 
 		$base = "../$this->destFolder";
 		foreach($files as $file) {
