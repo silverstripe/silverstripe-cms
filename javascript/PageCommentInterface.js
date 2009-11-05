@@ -36,7 +36,7 @@ PageCommentInterface.prototype = {
 	
 	postComment: function() {
 		var form = $("PageCommentInterface_Form_PostCommentForm");
-		var message = $("PageCommentInterface_Form_PostCommentForm");
+		var message = $("PageCommentInterface_Form_PostCommentForm_error");
 		
 		if(form.elements.Name.value && form.elements.Comment.value) {
 			if(noComments = $('NoComments')) {
