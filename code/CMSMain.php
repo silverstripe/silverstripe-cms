@@ -809,7 +809,6 @@ JS;
 		
 		if($record) {
 			if($record && !$record->canView()) return Security::permissionFailure($this);
-			
 			$fields = $record->getCMSFields($this);
 			$fields->removeByName("Status");
 
@@ -817,6 +816,7 @@ JS;
 			$fields->push(new HiddenField("Version"));
 			
 			$versionAuthor = DataObject::get_by_id('Member', $record->AuthorID);
+			if(!$versionAuthor) $versionAuthor = new ArrayData(array('Title' => 'Unknown author'));
 			$fields->insertBefore(
 				new LiteralField(
 					'YouAreViewingHeader', 
