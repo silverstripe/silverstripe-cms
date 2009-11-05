@@ -42,14 +42,14 @@ class WidgetAreaEditor extends FormField {
 	function saveInto(DataObject $record) {
 		$name = $this->name;
 		$idName = $name . "ID";
-		
+
 		$widgetarea = $record->getComponent($name);
 		$widgetarea->write();
 		
 		$record->$idName = $widgetarea->ID;
-		
+	
 		$widgets = $widgetarea->Widgets();
-		
+	
 		// store the field IDs and delete the missing fields
 		// alternatively, we could delete all the fields and re add them
 		$missingWidgets = array();
@@ -60,48 +60,50 @@ class WidgetAreaEditor extends FormField {
 			}
 		}
 		
-		// write the new widgets to the database
 		if(isset($_REQUEST['Widget'])) {
-			foreach(array_keys($_REQUEST['Widget']) as $newWidgetID) {
-				$newWidgetData = $_REQUEST['Widget'][$newWidgetID];
-				
-				// Sometimes the id is "new-1" or similar, ensure this doesn't get into the query
-				if(!is_numeric($newWidgetID)) {
-					$newWidgetID = 0;
+			foreach(array_keys($_REQUEST['Widget']) as $widgetAreaName) {
+				if ($widgetAreaName !== $this->name) {
+					continue;
 				}
-				
-				// \"ParentID\" = '0' is for the new page
-		  		$widget = DataObject::get_one(
-					'Widget',
-					sprintf(
-						'("ParentID" = %d OR "ParentID" = 0) AND "Widget"."ID" = %d',
-						$record->$name()->ID,
-						(int)$newWidgetID
-					)
-				);
-		  		
-		  		// check if we are updating an existing widget
-				if($widget && isset($missingWidgets[$widget->ID])) {
-		  			unset($missingWidgets[$widget->ID]);
-				}
-		  		
-		  		// create a new object
-		  		if(!$widget && !empty($newWidgetData['Type']) && class_exists($newWidgetData['Type'])) {
-		  			$widget = new $newWidgetData['Type']();
-		  			$widget->ID = 0;
-		  			$widget->ParentID = $record->$name()->ID;
-		  			
-		  			if(!is_subclass_of($widget, 'Widget')) {
-		  				$widget = null;
-		  			}
-		  		}
-		  		
-				if($widget) {
-					if($widget->ParentID == 0) {
-						$widget->ParentID = $record->$name()->ID;
+
+				foreach(array_keys($_REQUEST['Widget'][$widgetAreaName]) as $newWidgetID) {
+					$newWidgetData = $_REQUEST['Widget'][$widgetAreaName][$newWidgetID];
+
+					// Sometimes the id is "new-1" or similar, ensure this doesn't get into the query
+					if(!is_numeric($newWidgetID)) {
+						$newWidgetID = 0;
 					}
-		
-					$widget->populateFromPostData($newWidgetData);
+				
+					// \"ParentID\" = '0' is for the new page
+			  		$widget = DataObject::get_one(
+						'Widget',
+						"(\"ParentID\" = '{$record->$name()->ID}' OR \"ParentID\" = '0') AND \"Widget\".\"ID\" = '$newWidgetID'"
+					);
+
+		  		
+			  		// check if we are updating an existing widget
+					if($widget && isset($missingWidgets[$widget->ID])) {
+			  			unset($missingWidgets[$widget->ID]);
+					}
+					
+			  		// create a new object
+			  		if(!$widget && !empty($newWidgetData['Type']) && class_exists($newWidgetData['Type'])) {
+			  			$widget = new $newWidgetData['Type']();
+			  			$widget->ID = 0;
+			  			$widget->ParentID = $record->$name()->ID;
+
+			  			if(!is_subclass_of($widget, 'Widget')) {
+			  				$widget = null;
+			  			}
+			  		}
+		  		
+					if($widget) {
+						if($widget->ParentID == 0) {
+							$widget->ParentID = $record->$name()->ID;
+						}
+						// echo "Saving $widget->ID into $name/$widget->ParentID\n<br/>";
+						$widget->populateFromPostData($newWidgetData);
+					}
 				}
 			}
 		}
@@ -109,7 +111,9 @@ class WidgetAreaEditor extends FormField {
 		// remove the fields not saved
 		if($missingWidgets) {
 			foreach($missingWidgets as $removedWidget) {
-				if(isset($removedWidget) && is_numeric($removedWidget->ID)) $removedWidget->delete();
+				if(isset($removedWidget) && is_numeric($removedWidget->ID)) {
+					$removedWidget->delete();
+				}
 			}
 		}
 	}

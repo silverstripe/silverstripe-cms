@@ -1,53 +1,97 @@
 WidgetAreaEditorClass = Class.create();
-WidgetAreaEditorClass.applyTo('div.WidgetAreaEditor');
 
 WidgetAreaEditorClass.prototype = {
 	initialize: function() {
-		UsedWidget.applyToChildren($('WidgetAreaEditor_usedWidgets'), 'div.Widget');
+		this.name = this.getAttribute('name');
+		this.rewriteWidgetAreaAttributes();
+		UsedWidget.applyToChildren($('usedWidgets-'+this.name), 'div.Widget');
 	
 		// Make available widgets draggable
-		var availableWidgets = $('WidgetAreaEditor_availableWidgets').childNodes;
+		var availableWidgets = $('availableWidgets-'+this.name).childNodes;
+		
 		for(var i = 0; i < availableWidgets.length; i++) {
 			var widget = availableWidgets[i];
-			if(widget.id)
-				new Draggable(widget.id);
+			// Don't run on comments, whitespace, etc
+			if (widget.nodeType == 1) {
+				// Gotta change their ID's because otherwise we get clashes between two tabs
+				widget.id = widget.id + '-'+this.name;
+				if(widget.id) {
+					widget.onclick = function(event) {
+						parts = event.currentTarget.id.split('-');
+						var widgetArea = parts.pop();
+						var className = parts.pop();
+						$('WidgetAreaEditor-'+widgetArea).addWidget(className, widgetArea);
+					}
+				}
+			}
 		}
-		
+	
+	
 		// Create dummy sortable to prevent javascript errors
-		Sortable.create('WidgetAreaEditor_availableWidgets', {
+		Sortable.create('availableWidgets-'+this.name, {
 			tag: 'li',
 			handle: 'handle',
 			containment: []
 		});
 		
 		// Used widgets are sortable
-		Sortable.create('WidgetAreaEditor_usedWidgets', {
+		Sortable.create('usedWidgets-'+this.name, {
 			tag: 'div',
 			handle: 'handle',
-			containment: ['WidgetAreaEditor_availableWidgets', 'WidgetAreaEditor_usedWidgets'],
+			containment: ['availableWidgets-'+this.name, 'usedWidgets-'+this.name],
 			onUpdate: this.updateWidgets
 		});
 		
 		// Figure out maxid, this is used when creating new widgets
 		this.maxid = 0;
 		
-		var usedWidgets = $('WidgetAreaEditor_usedWidgets').childNodes;
+		var usedWidgets = $('usedWidgets-'+this.name).childNodes;
 		for(var i = 0; i < usedWidgets.length; i++) {
 			var widget = usedWidgets[i];
 			if(widget.id) {
-				widgetid = widget.id.match(/Widget\[([0-9]+)\]/i);
-				if(widgetid && parseInt(widgetid[1]) > this.maxid)
-					this.maxid = parseInt(widgetid[1]);
+				widgetid = widget.id.match(/\Widget\[(.+?)\]\[([0-9]+)\]/i);
+				if(widgetid && parseInt(widgetid[2]) > this.maxid) {
+					this.maxid = parseInt(widgetid[2]);
+				}
 			}
 		}
-		
+
 		// Ensure correct sort values are written when page is saved
 		$('Form_EditForm').observeMethod('BeforeSave', this.beforeSave.bind(this));
 	},
 	
+	rewriteWidgetAreaAttributes: function() {
+		this.name = this.getAttribute('name');
+
+		var monkeyWith = function(widgets, name) {
+			for(var i = 0; i < widgets.length; i++) {
+				widget = widgets[i];
+				if (!widget.getAttribute('rewritten') && (widget.id || widget.name)) {
+					if (widget.id && widget.id.indexOf('Widget[') === 0) {
+						var newValue = widget.id.replace(/Widget\[/, 'Widget['+name+'][');
+						//console.log('Renaming '+widget.tagName+' ID '+widget.id+' to '+newValue);
+						widget.id = newValue;
+					}
+					if (widget.name && widget.name.indexOf('Widget[') === 0) {
+						var newValue = widget.name.replace(/Widget\[/, 'Widget['+name+'][');
+						//console.log('Renaming '+widget.tagName+' Name '+widget.name+' to '+newValue);
+						widget.name = newValue;
+					}
+					widget.setAttribute('rewritten', 'yes');
+				}
+				else {
+					//console.log('Skipping '+(widget.id ? widget.id : (widget.name ? widget.name : 'unknown '+widget.tagName)));
+				}
+			}
+		}
+		
+		monkeyWith($$('#WidgetAreaEditor-'+this.name+' .Widget'), this.name);
+		monkeyWith($$('#WidgetAreaEditor-'+this.name+' .Widget *'), this.name);
+	},
+	
 	beforeSave: function() {
 		// Ensure correct sort values are written when page is saved
-		var usedWidgets = $('WidgetAreaEditor_usedWidgets');
+		var usedWidgets = $('usedWidgets-'+this.name);
 		
 		if(usedWidgets) {
 			this.sortWidgets();
@@ -64,15 +108,37 @@ WidgetAreaEditorClass.prototype = {
 		}
 	},
 	
+	addWidget: function(className, holder) {
+		this.name = holder;
+		new Ajax.Request('Widget_Controller/EditableSegment/' + className, {
+			onSuccess : $('usedWidgets-'+holder).parentNode.parentNode.insertWidgetEditor.bind(this)
+		});
+	},
+
 	updateWidgets: function() {
+
+		// Gotta get the name of the current dohickey based off the ID
+		this.name = this.element.id.split('-').pop();
+
+		// alert(this.name);
+	
+		// Gotta get the name of the current dohickey based off the ID
+		this.name = this.element.id.split('-').pop();
+		
+
 		// This is called when an available widgets is dragged over to used widgets.
 		// It inserts the editor form into the new used widget
-		var usedWidgets = $('WidgetAreaEditor_usedWidgets').childNodes;
+
+		var usedWidgets = $('usedWidgets-'+this.name).childNodes;
 		for(var i = 0; i < usedWidgets.length; i++) {
 			var widget = usedWidgets[i];
-			if(widget.id && (widget.id.indexOf("Widget[") != 0) && (widget.id != 'NoWidgets')) {
-				new Ajax.Request('Widget_Controller/EditableSegment/' + widget.id, {
-					onSuccess : $('WidgetAreaEditor_usedWidgets').parentNode.parentNode.insertWidgetEditor.bind(this)
+			if(widget.id && (widget.id.indexOf("Widget[") != 0) && (widget.id != 'NoWidgets-'+this.name)) {
+				// Need to remove the -$Name part.
+				var wIdArray = widget.id.split('-');
+				wIdArray.pop();
+
+				new Ajax.Request('Widget_Controller/EditableSegment/' + wIdArray.join('-'), {
+					onSuccess : $('usedWidgets-'+this.name).parentNode.parentNode.insertWidgetEditor.bind(this)
 				});
 			}
 		}
@@ -80,47 +146,31 @@ WidgetAreaEditorClass.prototype = {
 	
 	insertWidgetEditor: function(response) {
 		// Remove placeholder text
-		if($('NoWidgets')) {
-			$('WidgetAreaEditor_usedWidgets').removeChild($('NoWidgets'));
+		if($('NoWidgets-'+this.name)) {
+			$('usedWidgets-'+this.name).removeChild($('NoWidgets-'+this.name));
 		}
+
+		var usedWidgets = $('usedWidgets-'+this.name).childNodes;
+		
+		// Give the widget a unique id
+		widget = document.createElement('div');
+		widget.innerHTML = response.responseText.replace(/Widget\[0\]/gi, "Widget[new-" + (++$('usedWidgets-'+this.name).parentNode.parentNode.maxid) + "]");
 	
-		// Find the new widget
-		var usedWidgets = $('WidgetAreaEditor_usedWidgets').childNodes;
-		for(var i = 0; i < usedWidgets.length; i++) {
-			var widget = usedWidgets[i];
-			if(widget.id && (widget.id.indexOf("Widget[") != 0)) {
-				// Clone the widget so we can put it back in the available widgets column
-				clone = widget.cloneNode(true);
-				
-				// Give the widget a unique id
-				widget.innerHTML = response.responseText.replace(/Widget\[0\]/gi, "Widget[new-" + (++$('WidgetAreaEditor_usedWidgets').parentNode.parentNode.maxid) + "]");
-				
-				// Replace the available widget with the used widget with editor form
-				widget.parentNode.insertBefore($(widget).getElementsByClassName('Widget')[0], widget);
-				widget.parentNode.removeChild(widget);
-				
-				// Put the clone into the available widgets column
-				$('WidgetAreaEditor_availableWidgets').appendChild(clone);
-				
-				// Reapply behaviour
-				new Draggable(clone.id);
-				
-				Sortable.create('WidgetAreaEditor_usedWidgets', {
-					tag: 'div',
-					handle: 'handle',
-					containment: ['WidgetAreaEditor_availableWidgets', 'WidgetAreaEditor_usedWidgets'],
-					onUpdate: $('WidgetAreaEditor_usedWidgets').parentNode.parentNode.updateWidgets
-				});
-				
-				UsedWidget.applyToChildren($('WidgetAreaEditor_usedWidgets'), 'div.Widget');
-				return;
-			}
-		}
+		$('usedWidgets-'+this.name).appendChild(widget.childNodes[0]);
+		$('usedWidgets-'+this.name).parentNode.parentNode.rewriteWidgetAreaAttributes();
+		UsedWidget.applyToChildren($('usedWidgets-'+this.name), 'div.Widget');
+		
+		Sortable.create('usedWidgets-SideBar', {
+			tag: 'div',
+			handle: 'handle',
+			containment: ['availableWidgets-'+this.name, 'usedWidgets-'+this.name],
+			onUpdate: $('usedWidgets-'+this.name).parentNode.parentNode.updateWidgets
+		});
 	},
 	
 	sortWidgets: function() {
 		// Order the sort by the order the widgets are in the list
-		var usedWidgets = $('WidgetAreaEditor_usedWidgets');
+		var usedWidgets = $('usedWidgets-'+this.name);
 		
 		if(usedWidgets) {
 			widgets = usedWidgets.childNodes;
@@ -144,7 +194,8 @@ WidgetAreaEditorClass.prototype = {
 	
 	deleteWidget: function(widgetToRemove) {
 		// Remove a widget from the used widgets column
-		$('WidgetAreaEditor_usedWidgets').removeChild(widgetToRemove);
+		$('usedWidgets-'+this.name).removeChild(widgetToRemove);
+		// TODO ... re-create NoWidgets div?
 	}
 }
 
@@ -178,5 +229,12 @@ UsedWidget.prototype = {
 	deleteWidget: function() {
 		this.parentNode.parentNode.parentNode.deleteWidget(this);
 	}
+}
+
+// Loop over all WidgetAreas and fire 'em up
+var wAs = $$('.WidgetAreaEditor');
+for(var i = 0; i < wAs.length; i++) {
+	WidgetAreaEditorClass.applyTo('div#'+wAs[i].id);
+	
 }
 

@@ -15,7 +15,7 @@ div.usedWidgets {
 	border: 1px #CCC dotted;
 	padding: 5px;
 }
-#NoWidgets {
+.NoWidgets {
 	padding: 50px; /* Make this nice and big and easily 'droppable' */
 }
 
