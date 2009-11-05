@@ -59,9 +59,7 @@ class PageComment extends DataObject {
 	}
 
 	function DeleteLink() {
-		if(Permission::check('CMS_ACCESS_CMSMain')) {
-			return "PageComment/deletecomment/$this->ID";
-		}
+		return (Permission::check('CMS_ACCESS_CMSMain')) ? "PageComment_Controller/deletecomment/$this->ID" : false;
 	}
 	
 	function CommentTextWithLinks() {
@@ -71,22 +69,15 @@ class PageComment extends DataObject {
 	}
 	
 	function SpamLink() {
-		$member = Member::currentUser();
-		if(Permission::check('CMS_ACCESS_CMSMain') && !$this->getField('IsSpam')) {
-			return "PageComment/reportspam/$this->ID";
-		}
+		return (Permission::check('CMS_ACCESS_CMSMain') && !$this->IsSpam) ? "PageComment_Controller/reportspam/$this->ID" : false;
 	}
 	
 	function HamLink() {
-		if(Permission::check('CMS_ACCESS_CMSMain') && $this->getField('IsSpam')) {
-			return "PageComment/reportham/$this->ID";
-		}
+		return (Permission::check('CMS_ACCESS_CMSMain') && $this->IsSpam) ? "PageComment_Controller/reportham/$this->ID" : false;
 	}
 	
 	function ApproveLink() {
-		if(Permission::check('CMS_ACCESS_CMSMain') && $this->getField('NeedsModeration')) {
-			return "PageComment/approve/$this->ID";
-		}
+		return (Permission::check('CMS_ACCESS_CMSMain') && $this->NeedsModeration) ? "PageComment_Controller/approve/$this->ID" : false;
 	}
 	
 	function SpamClass() {
@@ -203,22 +194,24 @@ class PageComment_Controller extends Controller {
 	function approve() {
 		if(Permission::check('CMS_ACCESS_CMSMain')) {
 			$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
-			$comment->NeedsModeration = false;
-			$comment->write();
+
+			if($comment) {
+				$comment->NeedsModeration = false;
+				$comment->write();
 			
-			// @todo Report to spamprotecter this is true
+				// @todo Report to spamprotecter this is true
 			
-			if(Director::is_ajax()) {
-				echo $comment->renderWith('PageCommentInterface_singlecomment');
-			} else {
-				Director::redirectBack();
+				if(Director::is_ajax()) {
+					echo $comment->renderWith('PageCommentInterface_singlecomment');
+				} else {
+					Director::redirectBack();
+				}
 			}
 		}
 	}
 	
 	function reportspam() {
 		$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
-		
 		if($comment) {
 			// check they have access
 			if(Permission::check('CMS_ACCESS_CMSMain')) {
@@ -226,8 +219,6 @@ class PageComment_Controller extends Controller {
 				// if spam protection module exists
 				if(class_exists('SpamProtectorManager')) {
 					SpamProtectorManager::send_feedback($comment, 'spam');
-					$comment->setField('IsSpam', true);
-					$comment->write();
 				}
 				
 				// If Akismet is enabled
@@ -240,12 +231,11 @@ class PageComment_Controller extends Controller {
 					} catch (Exception $e) {
 						// Akismet didn't work, most likely the service is down.
 					}
-
-					if(SSAkismet::getSaveSpam()) {
-						$comment->setField('IsSpam', true);
-						$comment->write();
-					}
 				}
+				
+				$comment->IsSpam = true;
+				$comment->NeedsModeration = false;
+				$comment->write();
 			}
 		}
 		if(Director::is_ajax()) {
