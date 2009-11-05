@@ -796,7 +796,7 @@ JS;
 
 	function performRollback($id, $version) {
 		$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-		if($record && !$record->canPublish()) return Security::permissionFailure($this);
+		if($record && !$record->canEdit()) return Security::permissionFailure($this);
 		
 		$record->doRollbackTo($version);
 		return $record;
