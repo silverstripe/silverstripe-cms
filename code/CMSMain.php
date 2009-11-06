@@ -20,7 +20,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	
 	static $menu_title = 'Site Content';
 	
-	static $menu_priority = 10;
+	static $menu_priority = 100;
 	
 	static $tree_class = "SiteTree";
 	
