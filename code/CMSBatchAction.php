@@ -138,7 +138,7 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 }
 
 /**
- * Delete items batch action.
+ * Unpublish (delete from live site) items batch action.
  * 
  * @package cms
  * @subpackage batchaction
