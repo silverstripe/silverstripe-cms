@@ -874,7 +874,7 @@ var CurrentPage = {
 }
 
 setInterval(function() {
-	if ($('Form_EditForm_ID')) {
+	if ($('Form_EditForm_ID') && !($('Form_EditForm_ArchiveURL'))) {
     	new Ajax.Request("admin/pageStatus?ID="+CurrentPage.id()+'&Version='+CurrentPage.version(), {
 			onSuccess: function(t) {
 				var data = eval('('+t.responseText+')');
