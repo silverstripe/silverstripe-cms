@@ -7,21 +7,29 @@ TinyMCEImageEnhancement.prototype = {
     initialize: function() {
         this.filesUploaded = 0;
         this.processInProgress = false;
-        Event.observe(window,'load',this.onWindowLoad.bind(this));
-    },
-    
-    addListeners: function() {
-        $('Form_EditorToolbarImageForm_FolderID').value = "";
+
         Event.observe($('AddFolder'),'click',this.onAddFolder.bind(this));
         Event.observe($('FolderOk'),'click',this.onFolderOk.bind(this));
-        Event.observe($('FolderCancel'),'click',this.onFolderCancel.bind(this)); 
-        Event.observe($('UploadFiles'),'click',this.onUpload.bind(this));
+        Event.observe($('FolderCancel'),'click',this.onFolderCancel.bind(this));
+
+		this.onLoad();
     },   
-    
-    /**
+	
+	onLoad: function() {
+		this.upload = new Upload({
+			fileUploadLimit : '6',
+			button_image_url : '../cms/images/swf-upload-button-small.jpg',
+			button_width : 59,
+			button_height: 18,
+			fileQueued: this.uploadFileQueuedCallback.bind(this),
+			fileComplete: this.uploadFileCompleteCallback.bind(this),
+			queueComplete: this.uploadQueueCompleteCallback.bind(this)
+		});
+	},
+	
+	/**
      * Method creates HTML element, only reason for this method is DRY. 
     */
-    
     addElement: function(tag, className, parent, properties) {
         var e = document.createElement(tag);
         Element.addClassName(e,className);
@@ -30,17 +38,6 @@ TinyMCEImageEnhancement.prototype = {
         return e;
     },
         
-    onUpload: function(event) {
-        Event.stop(event);
-        if(!this.processInProgress) {
-	        if(this.getParentID() != 'root') {
-	            this.upload.browse();
-	        } else {
-	            statusMessage("Please choose folder","bad");                                                
-	        }
-	    }
-    },
-    
     /**
      * Called when user clicks "add folder" anchor. 
     */
@@ -115,51 +112,25 @@ TinyMCEImageEnhancement.prototype = {
 		return false;
     },
     
-    /**
-     * Called on window.onload
-    */
-    
-    onWindowLoad: function() {
-        // Due to a bug in the flash plugin on Linux and Mac, 
-		 //we need at least version 9.0.64 to use SWFUpload
-		// see http://open.silverstripe.com/ticket/3023
-	   pv = getFlashPlayerVersion();
-	   if(pv.major < 9 || pv.major > 9 || (pv.major == 9 && pv.minor == 0 && pv.rev < 64)) {
-		  if($('AddFolderGroup')) $('AddFolderGroup').style.display = 'none';
-		  if($('PipeSeparator')) $('PipeSeparator').style.display = 'none';
-		  if($('UploadGroup')) $('UploadGroup').style.display = 'none';
-		  return;
-	   }
-	
-		if($('FolderID') != null) {
-			if($('SecurityID')) var securityid=$('SecurityID').value;
-			else var securityid=null;
-			this.upload = new Upload(
-				{
-				   fileTypes : '*.jpeg;*.jpg;*.jpe;*.png;*.gif;',
-				   fileTypesDescription : 'Image files',
-				   fileUploadLimit : '100',
-				   securityID : securityid,
-				   beginUploadOnQueue : true,
-				   buildUI : this.addListeners.bind(this),
-				   fileQueued : this.uploadFileQueuedCallback.bind(this),
-				   fileComplete : this.uploadFileCompleteCallback.bind(this),
-				   queueComplete : this.uploadQueueCompleteCallback.bind(this)
-				}		
-			);
+	uploadFileQueuedCallback: function(file,queueLength) {
+		if(this.getParentID() == "root") {
+			statusMessage("Please choose folder","bad");	
+		}
+		else {
+			this.processInProgress = true;
+			this.upload.setFolderID(this.getParentID());
+			this.upload.addFileParam(file.id,'ID',this.folderID);
+			this.upload.addFileParam(file.id,'action_doUpload','1');
+			this.upload.addFileParam(file.id,'Files',file.name);
+			this.upload.addFileParam(file.id,'MAX_FILE_SIZE','31457280');
+			$('UploadFiles').innerHTML = "Uploading Files...("+ this.filesUploaded +")";	
+			this.upload.swfu.startUpload(file.id);		
 		}
 	},
 	
-	uploadFileQueuedCallback: function(file,queueLength) {
-		this.processInProgress = true;
-		this.upload.setFolderID(this.getParentID()); 
-		$('UploadFiles').innerHTML = "Uploading ... 1/" + this.upload.getFilesToUpload();	
-		this.upload.startUpload();
-	},
-	
 	uploadFileCompleteCallback: function(file,serverData) {
-		Element.addClassName($('UploadFiles'),'link');//Safari hack
-		$('UploadFiles').innerHTML = 'Uploading ... ' + this.upload.getFilesUploaded() + "/" + this.upload.getFilesToUpload();
+		this.filesUploaded++;
+		$('UploadFiles').innerHTML = 'Uploading Files..... ('+ this.filesUploaded +")";
 	},
 	
 	uploadQueueCompleteCallback: function() {
