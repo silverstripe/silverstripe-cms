@@ -126,8 +126,6 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 				FormResponse::add("$('Form_EditForm').reloadIfSetTo($id);");
 			}
 
-			$page->destroy();
-			unset($page);
 		}
 
 		$message = sprintf(_t('CMSBatchActions.DELETED_DRAFT_PAGES', 'Deleted %d pages from the draft site'), $pages->Count());
@@ -173,8 +171,6 @@ class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 				FormResponse::add("$('Form_EditForm').reloadIfSetTo($id);");
 			}
 
-			$page->destroy();
-			unset($page);
 		}
 
 		$message = sprintf(_t('CMSBatchActions.DELETED_PAGES', 'Deleted %d pages from the published site'), $pages->Count());
