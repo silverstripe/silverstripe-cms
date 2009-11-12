@@ -165,23 +165,37 @@ JS
 	 * It will save the uploaded files to /assets/ and create new File objects as required.
 	 */
 	function doUpload($data, $form) {
-		foreach($data['Files'] as $param => $files) {
-			if(!is_array($files)) $files = array($files);
-			foreach($files as $key => $value) {
-				$processedFiles[$key][$param] = $value;
+		$processedFiles = array();
+		
+		if(!isset($data['Files'])) return Director::set_status_code("404");
+		
+		if(is_array($data['Files'])) {
+			foreach($data['Files'] as $param => $files) {
+				if(!is_array($files)) $files = array($files);
+				foreach($files as $key => $value) {
+					$processedFiles[$key][$param] = $value;
+				}
 			}
 		}
+		else {
+			$proccessedFiles[] = $data['Files'];
+		}
 		
-		if($data['ID'] && $data['ID'] != 'root') $folder = DataObject::get_by_id("Folder", $data['ID']);
-		else $folder = singleton('Folder');
-
+		// get the folder to upload to.
+		if(isset($data['FolderID']) && $data['FolderID'] != "root") {
+			$folder = DataObject::get_by_id('Folder', $data['FolderID']);
+		}
+		else {
+			$folder = DataObject::get_one('Folder');
+		}
+		
 		$newFiles = array();
 		$fileSizeWarnings = '';
 		$uploadErrors = '';
 		$jsErrors = '';
 		$status = '';
 		$statusMessage = '';
-		
+
 		foreach($processedFiles as $tmpFile) {
 			if($tmpFile['error'] == UPLOAD_ERR_NO_TMP_DIR) {
 				$status = 'bad';
@@ -226,7 +240,7 @@ JS
 			$statusMessage = _t('AssetAdmin.NOTHINGTOUPLOAD','There was nothing to upload');
 			$status = "";
 		}
-		
+
 		$fileIDs = array();
 		$fileNames = array();
 		foreach($newFiles as $newFile) {

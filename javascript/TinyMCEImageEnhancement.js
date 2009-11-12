@@ -18,7 +18,7 @@ TinyMCEImageEnhancement.prototype = {
 	onLoad: function() {
 		this.upload = new Upload({
 			fileUploadLimit : '6',
-			button_image_url : '../cms/images/swf-upload-button-small.jpg',
+			button_image_url : 'cms/images/swf-upload-button-small.jpg',
 			button_width : 59,
 			button_height: 18,
 			fileQueued: this.uploadFileQueuedCallback.bind(this),
@@ -118,11 +118,9 @@ TinyMCEImageEnhancement.prototype = {
 		}
 		else {
 			this.processInProgress = true;
-			this.upload.setFolderID(this.getParentID());
-			this.upload.addFileParam(file.id,'ID',this.folderID);
-			this.upload.addFileParam(file.id,'action_doUpload','1');
-			this.upload.addFileParam(file.id,'Files',file.name);
-			this.upload.addFileParam(file.id,'MAX_FILE_SIZE','31457280');
+			this.upload.swfu.addPostParam('FolderID', this.getParentID());
+			this.upload.swfu.addFileParam(file.id,'ID',this.folderID);
+			this.upload.swfu.addFileParam(file.id,'Files',file.name);
 			$('UploadFiles').innerHTML = "Uploading Files...("+ this.filesUploaded +")";	
 			this.upload.swfu.startUpload(file.id);		
 		}
@@ -133,13 +131,12 @@ TinyMCEImageEnhancement.prototype = {
 		$('UploadFiles').innerHTML = 'Uploading Files..... ('+ this.filesUploaded +")";
 	},
 	
-	uploadQueueCompleteCallback: function() {
+	uploadQueueCompleteCallback: function(serverData) {
 		this.filesUploaded = this.upload.getFilesUploaded();
-		$('UploadFiles').innerHTML = "upload";
-		statusMessage('Uploaded ' + this.upload.getFilesUploaded() + ' files','good');
-		if(this.getParentID() != 'root') {
-			$('Image').ajaxGetFiles(this.getParentID(), null, this.insertImages.bind(this));	
-		}
+		$('UploadFiles').innerHTML = "";
+		statusMessage('Uploaded Files Successfully','good');
+		
+		$('FolderImages').ajaxGetFiles(this.getParentID(), null);	
 	},
 	
 	/**
@@ -158,8 +155,7 @@ TinyMCEImageEnhancement.prototype = {
         $('Image').reapplyBehaviour();
 
         this.addToTinyMCE = this.addToTinyMCE.bind(this);
-
-			this.processInProgress = false;
+		this.processInProgress = false;
     },
     
     /**
