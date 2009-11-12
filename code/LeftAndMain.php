@@ -254,7 +254,7 @@ class LeftAndMain extends Controller {
 				'jsparty/tree/tree.js',
 				'jsparty/tabstrip/tabstrip.js',
 				'cms/javascript/TinyMCEImageEnhancement.js',
-				'jsparty/SWFUpload/SWFUpload.js',
+				'jsparty/SWFUpload/swfupload.js',
 				'cms/javascript/Upload.js',
 				'sapphire/javascript/TreeSelectorField.js',
 		 		'cms/javascript/ThumbnailStripField.js',
