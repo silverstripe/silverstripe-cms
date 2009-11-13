@@ -14,23 +14,33 @@ Upload.prototype = {
 	 * @param params object contains all configuration data for upload.
 	*/
 	initialize: function(params) {
+		
 		this.filesUploaded = 0;
 		this.filesToUpload = 0;
 		this.folderID = 'root';
 		this.uploadInProgress = false;
 		this.uploadMessage = '';
+		this.queueComplete = this.uploadQueueCompleteCallback.bind(this);
+		this.fileComplete = this.uploadFileCompleteCallback.bind(this);
+		this.fileQueued = this.uploadFileQueuedCallback;
+		
 		if(typeof params.fileSizeLimit != 'undefined') this.setFileSizeLimit = params.fileSizeLimit; else this.fileSizeLimit = '30720';
 		if(typeof params.fileTypes != 'undefined') this.fileTypes = params.fileTypes; else this.fileTypes = '*.*';
 		if(typeof params.fileTypesDescription != 'undefined') this.fileTypesDescription = params.fileTypesDescription; else this.fileTypesDescription = 'All Files';
 		if(typeof params.fileUploadLimit != 'undefined') this.fileUploadLimit = params.fileUploadLimit; else this.fileUploadLimit = '6';
-		if(typeof params.beginUploadOnQueue != 'undefined') this.beginUploadOnQueue = params.beginUploadOnQueue; else this.beginUploadOnQueue = false;
+		if(typeof params.beginUploadOnQueue != 'undefined') this.beginUploadOnQueue = params.beginUploadOnQueue; else this.beginUploadOnQueue = true;
 		if(typeof params.fileQueued != 'undefined') this.fileQueued = params.fileQueued; 
+		
 		if(typeof params.fileProgress != 'undefined') this.fileProgress = params.fileProgress; else this.fileProgress = Prototype.emptyFunction;
 		if(typeof params.fileCancelled != 'undefined') this.fileCancelled  = params.fileCancelled;
-		if(typeof params.fileComplete != 'undefined') this.fileComplete = params.fileComplete ;
+		if(typeof params.fileComplete != 'undefined') this.fileComplete = params.fileComplete;
 		if(typeof params.queueComplete != 'undefined') this.queueComplete = params.queueComplete;
 		if(typeof params.buildUI != 'undefined') this.customBuildUI = params.buildUI;
 		if(typeof params.securityID != 'undefined') this.securityID = params.securityID;
+		if(typeof params.button_image_url != 'undefined') this.buttonImageURL = params.button_image_url;
+		if(typeof params.button_width != 'undefined') this.buttonWidth = params.button_width;
+		if(typeof params.button_height != 'undefined') this.buttonHeight = params.button_height;
+		
 		this.onLoad();
 	},
 	
@@ -39,10 +49,11 @@ Upload.prototype = {
 	 * 
 	*/
 	onLoad: function() {
+		
 		path = this.getBasePath();
 		sessId = this.getSessionId();//Because flash doesn't send proper cookies, we need to set session id in URL. 
 		this.swfu = new SWFUpload({
-				upload_url: path + 'admin/assets/UploadForm?SecurityID=' + this.securityID +  '&PHPSESSID=' + sessId,   // Relative to the SWF file
+				upload_url: path + 'admin/assets/UploadForm?action_doUpload=1&PHPSESSID=' + sessId,   // Relative to the SWF file
 				file_post_name: 'Files',
 				file_size_limit : this.fileSizeLimit,
 				file_types : this.fileTypes,
@@ -51,19 +62,25 @@ Upload.prototype = {
 				begin_upload_on_queue : this.beginUploadOnQueue,
 				use_server_data_event : true,
 				validate_files: false,
-
-				file_queued_handler : this.uploadFileQueuedCallback.bind(this),
-				upload_success_handler : this.uploadFileCompleteCallback.bind(this),
+				button_placeholder_id: "SWFUploadButton",
+				file_queued_handler : this.fileQueued,
+				upload_success_handler : this.queueComplete,
+				file_dialog_complete_handler : this.fileCompleted,
 				upload_progress_handler: this.uploadFileProgressCallback.bind(this),
 				error_handler : this.uploadErrorCallback.bind(this),
 				file_validation_handler : Prototype.emptyFunction,
 				file_cancelled_handler: Prototype.emptyFunction,
-				
-				flash_url : 'jsparty/SWFUpload/swfupload_f9.swf',	// Relative to this file
+				button_image_url : this.buttonImageURL,
+				button_window_mode : "transparent",
+				button_width : this.buttonWidth,
+				button_height : this.buttonHeight,
+				flash_url : 'jsparty/SWFUpload/swfupload.swf',	// Relative to this file
 				swfupload_loaded_handler: this.buildUI.bind(this),
-				debug: false
+				debug: false,
+				preserve_relative_urls: true
 			});
-	},
+
+	},	
 	
 	/**
 	 * Retrieves base path from URL.
@@ -95,7 +112,7 @@ Upload.prototype = {
 	*/
 	
 	buildUI: function() {
-		this.customBuildUI();			
+		return;
 	},
 	
 	/**
@@ -107,7 +124,7 @@ Upload.prototype = {
 	
 	uploadFileQueuedCallback: function(file,queueLength) {
 		this.filesToUpload++;
-		this.fileQueued(file, queueLength);
+//		this.swfu.fileQueued(file, queueLength);
 		this.addFileParam(file);
 	},
 	
@@ -151,6 +168,10 @@ Upload.prototype = {
 		this.fileProgress(file, bytes_complete);
 	},
 		
+	uploadQueueCompleteCallback: function(event) {
+		
+	},
+	
 	/**
 	 * Called on error.
 	 * @param error_code int
