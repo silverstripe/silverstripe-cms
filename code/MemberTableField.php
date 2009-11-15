@@ -37,40 +37,6 @@ class MemberTableField extends ComplexTableField {
 	 * @var int 
 	 */ 
 	public static $page_size = 20; 
- 	
-	/**
-	 * @deprecated 2.4. See {@link MemberTableField->addPermissions()}
-	 */
-	private static $addedPermissions = array();
-	
-	/**
-	 * @deprecated 2.4: See {@link MemberTableField->addMembershipFields()}
-	 */
-	private static $addedFields = array();
-
-	/**
-	 * @deprecated 2.4: See {@link MemberTableField->addMembershipFields()}
-	 */
-	private static $addedCsvFields = array();
-
-	/**
-	 * @deprecated 2.4. Set permissions using setPermissions(Array) on
-	 * the MemberTableField object.
-	 */
-	public static function addPermissions($addingPermissionList) {
-		trigger_error('MemberTableField::addPermissions() is deprecated. Please set permissions using setPermissions(Array) on the MemberTableField object.', E_USER_NOTICE);
-		self::$addedPermissions = $addingPermissionList;
-	}
-	
-	/**
-	 * @deprecated 2.4: Please use a DataObjectDecorator, implementing updateSummaryFields
-	 * to alter the table overview fields instead.
-	 */
-	public static function addMembershipFields($addingFieldList, $addingCsvFieldList = null) {
-		trigger_error('MemberTableField::addMembershipFields() is deprecated. Please implement updateSummaryFields() on a Member decorator instead.', E_USER_NOTICE);
-		self::$addedFields = $addingFieldList;
-		$addingCsvFieldList == null ? self::$addedCsvFields = $addingFieldList : self::$addedCsvFields = $addingCsvFieldList;
-  	}
 
   	/**
   	 * Constructor method for MemberTableField.
