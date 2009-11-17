@@ -160,6 +160,10 @@ WidgetAreaEditorClass.prototype = {
 		$('usedWidgets-'+this.name).parentNode.parentNode.rewriteWidgetAreaAttributes();
 		UsedWidget.applyToChildren($('usedWidgets-'+this.name), 'div.Widget');
 		
+		// Repply some common form controls
+		WidgetTreeDropdownField.applyTo('div.usedWidgets .TreeDropdownField');
+		
+		
 		Sortable.create('usedWidgets-SideBar', {
 			tag: 'div',
 			handle: 'handle',
@@ -230,6 +234,15 @@ UsedWidget.prototype = {
 		this.parentNode.parentNode.parentNode.deleteWidget(this);
 	}
 }
+
+WidgetTreeDropdownField = Class.extend('TreeDropdownField');
+WidgetTreeDropdownField.prototype = {
+	getName: function() {
+		return 'Widget_TDF_Endpoint';
+	}
+}
+
+WidgetTreeDropdownField.applyTo('div.usedWidgets .TreeDropdownField');
 
 // Loop over all WidgetAreas and fire 'em up
 var wAs = $$('.WidgetAreaEditor');

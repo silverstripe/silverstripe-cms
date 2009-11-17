@@ -17,7 +17,7 @@
 	</div>
 	<div class="usedWidgetsHolder">
 		<h2><% _t('INUSE', 'Widgets currently used') %></h2>
-		<p><% _t('TOADD', 'To add widgets, drag them from the left area to here.') %></p>
+		<p><% _t('TOADD', 'To add widgets, click on the purple header on the left') %></p>
 		
 		<div class="usedWidgets" id="usedWidgets-$Name">
 			<% if UsedWidgets %>
