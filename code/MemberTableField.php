@@ -278,10 +278,6 @@ class MemberTableField extends ComplexTableField {
 		$this->group = $group;
 	}
 	
-	function setController($controller) {
-		$this->controller = $controller;
-	}
-
 	function GetControllerName() {
 		return $this->controller->class;
 	}
