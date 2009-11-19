@@ -332,33 +332,42 @@ class InstallRequirements {
 		else return true;
 	}
 	
+	function requireNoClasses($classNames, $testDetails) {
+		$this->testing($testDetails);
+		$badClasses = array();
+		foreach($classNames as $className) {
+			if(class_exists($className)) $badClasses[] = $className;
+		}
+		if($badClasses) {
+			$testDetails[2] .= ".  The following classes are at fault: " . implode(', ', $badClasses);
+			$this->error($testDetails);
+		}
+		else return true;
+	}
+	
 	function requirePHPVersion($recommendedVersion, $requiredVersion, $testDetails) {
 		$this->testing($testDetails);
 		
-		list($recA, $recB, $recC) = explode('.', $recommendedVersion);
-		list($reqA, $reqB, $reqC) = explode('.', $requiredVersion);
-		list($a, $b, $c) = explode('.', phpversion());
-		$c = ereg_replace('-.*$','',$c);
+		$installedVersion = phpversion();
 		
-		if($a > $recA || ($a == $recA && $b > $recB) || ($a == $reqA && $b == $reqB && $c >= $reqC)) {
-			$testDetails[2] = "SilverStripe recommends PHP version $recommendedVersion or later, only $a.$b.$c is installed. While SilverStripe should run, you may run into issues, and future versions of SilverStripe may require a later version. Upgrading PHP is recommended.";
+		if(version_compare($installedVersion, $requiredVersion, '<')) {
+			$testDetails[2] = "SilverStripe requires PHP version $requiredVersion or later.\n
+				PHP version $installedVersion is currently installed.\n
+				While SilverStripe requires at least PHP version $requiredVersion, upgrading to $recommendedVersion or later is recommended.\n
+				If you are installing SilverStripe on a shared web server, please ask your web hosting provider to upgrade PHP for you.";
+			$this->error($testDetails);
+			return;
+		}
+		
+		if(version_compare($installedVersion, $recommendedVersion, '<')) {
+			$testDetails[2] = "PHP version $installedVersion is currently installed.\n
+				Upgrading to at least PHP version $recommendedVersion is recommended.\n
+				SilverStripe should run, but you may run into issues. Future releases may require a later version of PHP.\n";
 			$this->warning($testDetails);
 			return;
 		}
 		
-		if($a > $reqA) return true;
-		if($a == $reqA && $b > $reqB) return true;
-		if($a == $reqA && $b == $reqB && $c >= $reqC) return true;
-
-		if(!$testDetails[2]) {
-			if($a < $reqA) {
-				$testDetails[2] = "You need PHP version $version or later, only $a.$b.$c is installed.  Unfortunately PHP$a and PHP$reqA have some incompatabilities, so if you are on a your web-host may need to move you to a different server.   Some software doesn't work with PHP5 and so upgrading a shared server could be problematic.";
-			} else {
-				$testDetails[2] = "You need PHP version $requiredVersion or later, only $a.$b.$c is installed.  Please upgrade your server, or ask your web-host to do so.";
-			}
-		}
-	
-		$this->error($testDetails);
+		return true;
 	}
 	
 	function requireFile($filename, $testDetails) {
