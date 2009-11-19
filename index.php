@@ -20,25 +20,41 @@ define('BASE_SCRIPT_URL','index.php/');
 $ruLen = strlen($_SERVER['REQUEST_URI']);
 $snLen = strlen($_SERVER['SCRIPT_NAME']);
 
-if($ruLen > $snLen && substr($_SERVER['REQUEST_URI'],0,$snLen+1) == ($_SERVER['SCRIPT_NAME'] . '/')) {
-	$url = substr($_SERVER['REQUEST_URI'],$snLen+1);
-	$url = strtok($url, '?');
-	$_GET['url'] = $_REQUEST['url'] = $url;
+$isIIS = (strpos($_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS') !== false);
 
-	$fileName = dirname($_SERVER['SCRIPT_FILENAME']) . '/' . $url;
-
-	/**
-	 * This code is a very simple wrapper for sending files
-	 * Very quickly pass through references to files
-	 */
-	if(file_exists($fileName)) {
-		$baseURL = dirname($_SERVER['SCRIPT_NAME']);
-		if($baseURL == "\\" || $baseURL == "/") $baseURL = "";
-		$fileURL =  "$baseURL/$url";
-		header($_SERVER['SERVER_PROTOCOL'] . ' 301 Moved Permanently');
-		header("Location: $fileURL");
-		die();
+// IIS will populate server variables using one of these two ways
+if($isIIS) {
+	if($_SERVER['REQUEST_URI'] == $_SERVER['SCRIPT_NAME']) {
+		$url = "";
+	} else {
+		$url = $_SERVER['REQUEST_URI'];
+		if($url[0] == '/') $url = substr($url,1);
+		$url = strtok($url, '?');
 	}
+
+// Apache will populate the server variables this way
+} else {
+	if($ruLen > $snLen && substr($_SERVER['REQUEST_URI'],0,$snLen+1) == ($_SERVER['SCRIPT_NAME'] . '/')) {
+		$url = substr($_SERVER['REQUEST_URI'],$snLen+1);
+		$url = strtok($url, '?');
+	} else {
+		$url = "";
+	}
+}
+
+$_GET['url'] = $_REQUEST['url'] = $url;
+
+$fileName = dirname($_SERVER['SCRIPT_FILENAME']) . '/' . $url;
+
+/**
+ * This code is a very simple wrapper for sending files
+ * Very quickly pass through references to files
+ */
+if($url && file_exists($fileName)) {
+	$fileURL = dirname($_SERVER['SCRIPT_NAME']) . '/' . $url;
+	header($_SERVER['SERVER_PROTOCOL'] . ' 301 Moved Permanently');
+	header("Location: $fileURL");
+	die();
 }
 
 // For linux
