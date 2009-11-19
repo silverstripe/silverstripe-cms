@@ -200,6 +200,10 @@ class InstallRequirements {
 		
 		// Check memory allocation
 		$this->requireMemory(32*1024*1024, 64*1024*1024, array("PHP Configuration", "Memory allocated (PHP config option 'memory_limit')", "SilverStripe needs a minimum of 32M allocated to PHP, but recommends 64M.", ini_get("memory_limit")));
+
+		// Check that troublesome classes don't exist
+		$badClasses = array('Query', 'HTTPResponse');
+		$this->requireNoClasses($badClasses, array("PHP Configuration", "Check that certain classes haven't been defined by PHP plugins", "Your version of PHP has defined some classes that conflict with SilverStripe's"));
 		
 		// Check allow_call_time_pass_reference
 		$this->suggestPHPSetting('allow_call_time_pass_reference', array(1,'1','on','On'), array("PHP Configuration", "Check that the php.ini setting allow_call_time_pass_reference is on",
@@ -313,6 +317,22 @@ class InstallRequirements {
 	function requireFunction($funcName, $testDetails) {
 		$this->testing($testDetails);
 		if(!function_exists($funcName)) $this->error($testDetails);
+		else return true;
+	}
+	
+	/**
+	 * Require that the given class doesn't exist
+	 */
+	function requireNoClasses($classNames, $testDetails) {
+		$this->testing($testDetails);
+		$badClasses = array();
+		foreach($classNames as $className) {
+			if(class_exists($className)) $badClasses[] = $className;
+		}
+		if($badClasses) {
+			$testDetails[2] .= ".  The following classes are at fault: " . implode(', ', $badClasses);
+			$this->error($testDetails);
+		}
 		else return true;
 	}
 	
