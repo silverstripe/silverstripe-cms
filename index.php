@@ -26,6 +26,9 @@ $isIIS = (strpos($_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS') !== false);
 if($isIIS) {
 	if($_SERVER['REQUEST_URI'] == $_SERVER['SCRIPT_NAME']) {
 		$url = "";
+	} else if($ruLen > $snLen && substr($_SERVER['REQUEST_URI'],0,$snLen+1) == ($_SERVER['SCRIPT_NAME'] . '/')) {
+		$url = substr($_SERVER['REQUEST_URI'],$snLen+1);
+		$url = strtok($url, '?');
 	} else {
 		$url = $_SERVER['REQUEST_URI'];
 		if($url[0] == '/') $url = substr($url,1);
