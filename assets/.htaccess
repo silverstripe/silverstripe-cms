@@ -1,2 +1,2 @@
-RemoveHandler .php .phtml .php3 ,php4 .php5 .inc
+RemoveHandler .php .phtml .php3 .php4 .php5 .inc
 RemoveType .php .phtml .php3 .php4 .php5 .inc
