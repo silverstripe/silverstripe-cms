@@ -39,7 +39,7 @@ if(isset($_REQUEST['admin'])) {
 } else {
 	$_REQUEST['admin'] = $adminConfig = array(
 		'username' => 'admin',
-		'password' => 'password',
+		'password' => '',
 		'firstname' => '',
 		'surname' => ''
 	);
@@ -95,7 +95,7 @@ if($installFromCli && ($req->hasErrors() || $dbReq->hasErrors())) {
 	exit(1);
 }
 
-if(isset($_REQUEST['go']) || $installFromCli && !$req->hasErrors() && !$dbReq->hasErrors()) {
+if((isset($_REQUEST['go']) || $installFromCli) && !$req->hasErrors() && !$dbReq->hasErrors() && $adminConfig['username'] && $adminConfig['password']) { 
 	// Confirm before reinstalling
 	if(!isset($_REQUEST['force_reinstall']) && !$installFromCli && $alreadyInstalled) {
 		include('config-form.html');
@@ -204,11 +204,7 @@ class InstallRequirements {
 		// Check that troublesome classes don't exist
 		$badClasses = array('Query', 'HTTPResponse');
 		$this->requireNoClasses($badClasses, array("PHP Configuration", "Check that certain classes haven't been defined by PHP plugins", "Your version of PHP has defined some classes that conflict with SilverStripe's"));
-		
-		// Check allow_call_time_pass_reference
-		$this->suggestPHPSetting('allow_call_time_pass_reference', array(1,'1','on','On'), array("PHP Configuration", "Check that the php.ini setting allow_call_time_pass_reference is on",
-			"You can install with allow_call_time_pass_reference not set, but some warnings may get displayed.  For best results, turn it on."));
-	
+			
 		return $this->errors;
 	}
 	
