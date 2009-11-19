@@ -741,7 +741,7 @@ global \$databaseConfig;
 	"type" => "$config[database]",
 	"server" => "{$config['mysql']['server']}", 
 	"username" => "{$config['mysql']['username']}", 
-	"password" => "{$escapedPassword}", 
+	"password" => '{$escapedPassword}', 
 	"database" => "{$config['mysql']['database']}",
 );
 
