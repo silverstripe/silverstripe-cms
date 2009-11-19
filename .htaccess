@@ -10,6 +10,7 @@ Allow from 127.0.0.1
 </Files>
 
 RewriteEngine On
+RewriteBase /phpinstaller-2.4
 
 RewriteCond %{REQUEST_URI} !(\.gif$)|(\.jpg$)|(\.png$)|(\.css$)|(\.js$) 
 

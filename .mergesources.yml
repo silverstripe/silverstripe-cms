@@ -2,6 +2,7 @@
 # Keeps track of all opensource branches of submodules 
 # that could be merged back to the current submodule paths.
 trunk:
+  .: /open/phpinstaller/trunk
   sapphire: /open/modules/sapphire/trunk
   cms: /open/modules/cms/trunk
   jsparty: /open/modules/jsparty/trunk
