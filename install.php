@@ -742,7 +742,11 @@ PHP
 		$_SERVER['SCRIPT_FILENAME'] = dirname(realpath($_SERVER['SCRIPT_FILENAME'])) . '/sapphire/main.php';
 		chdir('sapphire');
 
+		// Rebuild the manifest
 		$_GET['flush'] = true;
+		// Show errors as if you're in development mode 
+		$_SESSION['isDev'] = 1;
+		
 		require_once('core/Core.php');
 	
 		$this->statusMessage("Building database schema...");
