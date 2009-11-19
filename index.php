@@ -39,8 +39,12 @@ if($ruLen > $snLen && substr($_SERVER['REQUEST_URI'],0,$snLen+1) == ($_SERVER['S
 	}
 }
 
+// For linux
 $_SERVER['SCRIPT_FILENAME'] = str_replace('/index.php','/sapphire/main.php', $_SERVER['SCRIPT_FILENAME']);
 $_SERVER['SCRIPT_NAME'] = str_replace('/index.php','/sapphire/main.php', $_SERVER['SCRIPT_NAME']);
+// And for windows
+$_SERVER['SCRIPT_FILENAME'] = str_replace('\\index.php','\\sapphire\\main.php', $_SERVER['SCRIPT_FILENAME']);
+$_SERVER['SCRIPT_NAME'] = str_replace('\\index.php','\\sapphire\\main.php', $_SERVER['SCRIPT_NAME']);
 
 chdir('sapphire');
 require_once('sapphire/main.php');
