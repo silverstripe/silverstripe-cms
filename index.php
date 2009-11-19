@@ -32,7 +32,9 @@ if($ruLen > $snLen && substr($_SERVER['REQUEST_URI'],0,$snLen+1) == ($_SERVER['S
 	 * Very quickly pass through references to files
 	 */
 	if(file_exists($fileName)) {
-		$fileURL = dirname($_SERVER['SCRIPT_NAME']) . '/' . $url;
+		$baseURL = dirname($_SERVER['SCRIPT_NAME']);
+		if($baseURL == "\\" || $baseURL == "/") $baseURL = "";
+		$fileURL =  "$baseURL/$url";
 		header($_SERVER['SERVER_PROTOCOL'] . ' 301 Moved Permanently');
 		header("Location: $fileURL");
 		die();
