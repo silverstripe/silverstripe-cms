@@ -94,6 +94,10 @@ select {
 	font-size: 1em;
 }
 
+.typography .optionset label {
+	display: inline;
+}
+
 label.right {
 	display:inline;
 }
