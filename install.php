@@ -629,10 +629,32 @@ class Installer extends InstallRequirements {
 	function install($config) {
 		if(isset($_SERVER['HTTP_HOST'])) {
 			?>
-<h1>Installing SilverStripe...</h1>
-<p>I am now running through the installation steps (this should take about 30 seconds)</p>
-<p>If you receive a fatal error, refresh this page to continue the installation
-			<?php
+<html>
+	<head>
+		<title>PHP 5 is required</title>
+		<link rel="stylesheet" type="text/css" href="themes/blackcandy/css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="themes/blackcandy/css/typography.css" />
+		<link rel="stylesheet" type="text/css" href="themes/blackcandy/css/form.css" />
+		<link rel="stylesheet" type="text/css" href="sapphire/dev/install/install.css" />
+		<script src="jsparty/jquery/jquery.js"></script>
+	</head>
+	<body>
+		<div id="BgContainer">
+			<div id="Container">
+				<div id="Header">
+					<h1>SilverStripe CMS Installation</h1>
+				</div>
+
+				<div id="Navigation">&nbsp;</div>
+				<div class="clear"><!-- --></div>
+
+				<div id="Layout">
+					<div class="typography">
+						<h1>Installing SilverStripe...</h1>
+						<p>I am now running through the installation steps (this should take about 30 seconds)</p>
+						<p>If you receive a fatal error, refresh this page to continue the installation</p>
+						<ul>
+<?php
 		} else {
 			echo "SILVERSTRIPE COMMAND-LINE INSTALLATION\n\n";
 		}
@@ -774,25 +796,16 @@ PHP
 		
 		// Syncing filesystem (so /assets/Uploads is available instantly, see ticket #2266)
 		FileSystem::sync();
-
-		if(isset($_SERVER['HTTP_HOST'])) {
-			$this->statusMessage("Checking mod_rewrite works...");
-			$modRewriteWorks = $this->checkModRewrite();
-		} else {
-			$modRewriteWorks = true;
-		}
 		
 		$_SESSION['username'] = $config['admin']['username'];
 		$_SESSION['password'] = $config['admin']['password'];
 
-		if($modRewriteWorks && !$this->errors) {
+		if(!$this->errors) {
 			if(isset($_SERVER['HTTP_HOST'])) {
-				echo "<p>Installed SilverStripe successfully.  I will now try and direct you to 
-					<a href=\"home/successfullyinstalled?flush=1\">home/successfullyinstalled</a> to confirm that the installation was successful.</p>
-					<script>setTimeout(function() { window.location.href = 'home/successfullyinstalled?flush=1'; }, 1000);</script>
-					";
+				$this->statusMessage("Checking that friendly URLs work...");
+				$this->checkModRewrite();
 			} else {
-				echo "\nSilverStripe successfully installed\n";
+				echo "\n\nSilverStripe successfully installed\n";
 			}
 		}
 		
@@ -960,65 +973,43 @@ TEXT;
 	}
 	
 	function checkModRewrite() {
-		if($this->performModRewriteTest() == true) {
-			return true;
-		}
-		
-		$this->createHtaccessAlternative();
-		
-		if($this->performModRewriteTest() == false) {
-			echo "<li>ERROR: mod_rewrite not working, redirecting to mod_rewrite test page</li>";
-			
-			$this->restoreHtaccess();
-			
-			echo "I will now try and direct you to <a href=\"rewritetest.php\">rewritetest</a> to troubleshoot mod_rewrite</p>
-				<script>setTimeout(function() { window.location.href = 'rewritetest.php'; }, 1000);</script>
-				";
-			return false;
-		}
-		return true;
-	}
-	
-	function performModRewriteTest() {
 		if(!isset($_SERVER['HTTP_HOST']) || !$_SERVER['HTTP_HOST']) {
 			$this->statusMessage("Installer seems to be called from command-line, we're going to assume that rewriting is working.");
 			return true;
 		}
-		
-		$baseURL = dirname($_SERVER['SCRIPT_NAME']);
-		if($baseURL == "/") {
-			$baseURL = "";
-		}
 
-		// Check if mod_rewrite works properly
-		$location = 'http://' . (isset($_SERVER['PHP_AUTH_USER']) ? "$_SERVER[PHP_AUTH_USER]:$_SERVER[PHP_AUTH_PW]@" : '') . $_SERVER['HTTP_HOST'] . $baseURL . '/InstallerTest/testrewrite';
-		echo $location;
-		@$testrewriting = file_get_contents($location);
-	
-		if($testrewriting == 'OK') {
-			return true;
-		}
-		
-		// Workaround for 'URL file-access is disabled in the server configuration' using curl
-		if(function_exists('curl_init')) {
-			$ch = curl_init($location);
-			$fp = @fopen(dirname(tempnam('adfadsfdas','')) . '/rewritetest', "w");
-			
-			if($fp) {
-				curl_setopt($ch, CURLOPT_FILE, $fp);
-				curl_setopt($ch, CURLOPT_HEADER, 0);
-				curl_exec($ch);
-				curl_close($ch);
-				fclose($fp);
-				$testrewriting = file_get_contents(dirname(tempnam('adfadsfdas','')) . '/rewritetest');
-				unlink(dirname(tempnam('adfadsfdas','')) . '/rewritetest');
-				if($testrewriting == 'OK') {
-					return true;
+		echo <<<HTML
+<li id="ModRewriteResult">Testing...</li>
+<script>
+	if(typeof $ == 'undefined') {
+		document.getElemenyById('ModeRewriteResult').innerHTML = "I can't run jQuery ajax to set rewriting; I will redirect you to the homepage to see if everything is working.";
+		setTimeout(function() {
+			window.location = "home/successfullyinstalled?flush=1";
+		}, 10000);
+	} else {
+		$.ajax({
+			method: 'get',
+			url: 'InstallerTest/testrewrite',
+			complete: function(response) {
+				if(response.responseText == 'OK') {
+					$('#ModRewriteResult').html("Friendly URLs set up successfully; I am now redirecting you to your SilverStripe site...")
+					setTimeout(function() {
+						window.location = "home/successfullyinstalled?flush=1";
+					}, 2000);
+				} else {
+					$('#ModRewriteResult').html("Friendly URLs are not working.  This is most likely because mod_rewrite isn't configured"
+						+ "correctly on your site.  Please check the following things in your Apache configuration; "
+						+ " you may need to get your web host or server administrator to do this for you:"
+						+ "<ul><li>mod_rewrite is enabled</li><li>AllowOverride All is set for your directory</li></ul>");
 				}
 			}
-		}
-		
-		return false;
+		});
+	}
+</script>
+<noscript>
+<li><a href="home/successfullyinstalled?flush=1">Click here to check friendly URLs are working.  If you get a 404 then something is wrong.</li>
+</noscript>
+HTML;
 	}
 	
 	function var_export_array_nokeys($array) {
