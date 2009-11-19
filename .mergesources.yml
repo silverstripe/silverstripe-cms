@@ -2,10 +2,12 @@
 # Keeps track of all opensource branches of submodules 
 # that could be merged back to the current submodule paths.
 2.3:
+  .: /open/phpinstaller/branches/2.3
   sapphire: /open/modules/sapphire/branches/2.3
   cms: /open/modules/cms/branches/2.3
   jsparty: /open/modules/jsparty/branches/2.3
 2.4:
+  .: /open/phpinstaller/branches/2.4
   sapphire: /open/modules/sapphire/branches/2.4
   cms: /open/modules/cms/branches/2.4
   jsparty: /open/modules/jsparty/branches/2.4
