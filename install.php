@@ -1,13 +1,30 @@
 <?php
 
+/************************************************************************************
+ ************************************************************************************
+ **                                                                                **
+ **  If you can read this text in your browser then you don't have PHP installed.  **
+ **  Please install PHP 5.0 or higher, preferably PHP 5.2.                         **
+ **                                                                                **
+ ************************************************************************************
+ ************************************************************************************/
+
 /**
  * SilverStripe CMS Installer
  * This installer doesn't use any of the fancy Sapphire stuff in case it's unsupported.
+ * It's also PHP4 syntax compatable
  */
 
 ini_set('max_execution_time', 0);
 error_reporting(E_ALL ^ E_NOTICE);
 session_start();
+
+$majorVersion = strtok(phpversion(),'.');
+if($majorVersion < 5) {
+	header("HTTP/1.1 500 Server Error");
+	echo str_replace('$PHPVersion', phpversion(), file_get_contents("sapphire/dev/install/php5-required.html"));
+	die();
+}
 
 // Include environment files
 $usingEnv = false;
@@ -95,10 +112,10 @@ if($installFromCli && ($req->hasErrors() || $dbReq->hasErrors())) {
 	exit(1);
 }
 
-if((isset($_REQUEST['go']) || $installFromCli) && !$req->hasErrors() && !$dbReq->hasErrors() && $adminConfig['username'] && $adminConfig['password']) { 
+if((isset($_REQUEST['go']) || $installFromCli) && !$req->hasErrors() && !$dbReq->hasErrors() && $adminConfig['username'] && $adminConfig['password']) {
 	// Confirm before reinstalling
 	if(!isset($_REQUEST['force_reinstall']) && !$installFromCli && $alreadyInstalled) {
-		include('config-form.html');
+		include('sapphire/dev/install/config-form.html');
 		
 	} else {
 		$inst = new Installer();
@@ -112,7 +129,7 @@ if((isset($_REQUEST['go']) || $installFromCli) && !$req->hasErrors() && !$dbReq-
 
 // Show the config form
 } else {
-	include('config-form.html');	
+	include('sapphire/dev/install/config-form.html');	
 }
 
 /**
@@ -132,8 +149,10 @@ class InstallRequirements {
 	 */
 	function checkdatabase($databaseConfig) {
 			if($this->requireFunction('mysql_connect', array("PHP Configuration", "MySQL support", "MySQL support not included in PHP."))) {
+				$this->requireMySQLServer($databaseConfig['server'], array("MySQL Configuration", "Does the server exist", 
+					"Can't find the a MySQL server on '$databaseConfig[server]'", $databaseConfig['server']));
 				if($this->requireMysqlConnection($databaseConfig['server'], $databaseConfig['username'], $databaseConfig['password'], 
-					array("MySQL Configuration", "Can I access the server with the given credentials?", "That username/password doesn't work"))) {
+					array("MySQL Configuration", "Are the access credentials correct", "That username/password doesn't work"))) {
 					@$this->requireMySQLVersion("4.1", array("MySQL Configuration", "MySQL version at least 4.1", "MySQL version 4.1 is required, you only have ", "MySQL " . mysql_get_server_info()));
 					}
 				$this->requireDatabaseOrCreatePermissions($databaseConfig['server'], $databaseConfig['username'], $databaseConfig['password'], $databaseConfig['database'], 
@@ -151,7 +170,7 @@ class InstallRequirements {
 		$this->requirePHPVersion('5.2.0', '5.0.4', array("PHP Configuration", "PHP5 installed", null, "PHP version " . phpversion()));
 
 		// Check that we can identify the root folder successfully
-		$this->requireFile('config-form.html', array("File permissions", 
+		$this->requireFile('sapphire/dev/install/config-form.html', array("File permissions", 
 			"Does the webserver know where files are stored?", 
 			"The webserver isn't letting me identify where files are stored.",
 			$this->getBaseDir()
@@ -331,20 +350,7 @@ class InstallRequirements {
 		}
 		else return true;
 	}
-	
-	function requireNoClasses($classNames, $testDetails) {
-		$this->testing($testDetails);
-		$badClasses = array();
-		foreach($classNames as $className) {
-			if(class_exists($className)) $badClasses[] = $className;
-		}
-		if($badClasses) {
-			$testDetails[2] .= ".  The following classes are at fault: " . implode(', ', $badClasses);
-			$this->error($testDetails);
-		}
-		else return true;
-	}
-	
+		
 	function requirePHPVersion($recommendedVersion, $requiredVersion, $testDetails) {
 		$this->testing($testDetails);
 		
@@ -579,7 +585,8 @@ class InstallRequirements {
 	}
 
 
-	protected $baseDir;
+	// Must be PHP4 compatible
+	var $baseDir;
 	function getBaseDir() {
 		// Cache the value so that when the installer mucks with SCRIPT_FILENAME half way through, this method
 		// still returns the correct value.
@@ -720,6 +727,7 @@ SSViewer::set_theme('$theme');
 
 // enable nested URLs for this site (e.g. page/sub-page/)
 SiteTree::enable_nested_urls();
+?>
 PHP
 			);
 
@@ -757,6 +765,7 @@ SSViewer::set_theme('$theme');
 
 // enable nested URLs for this site (e.g. page/sub-page/)
 SiteTree::enable_nested_urls();
+?>
 PHP
 			);
 		}
