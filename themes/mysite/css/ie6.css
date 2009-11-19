@@ -1,0 +1,66 @@
+/**
+ SilverStripe Black Candy Theme
+ http://www.silverstripe.com
+ 
+ IE6 Hacks Stylesheet.
+*/
+#Sidebar ul#Menu2 li a {
+	width: 185px; /* 196 - 4 - 2 - some random ie bug = 185 */
+}
+	#Sidebar ul#Menu2 li li a {
+		width: 183px;
+	}
+	#Sidebar ul#Menu2 li a:hover,
+    #Sidebar ul#Menu2 li a.current,
+    #Sidebar ul#Menu2 li a.current:hover {
+			background-image: none;
+          background: #DCDCDC;
+    }
+#Sidebar ul#Menu2 li li a.levelb:hover {
+	 background: #BCBCBC;
+}
+#Sidebar ul#Menu2 li li a.current {
+	 background: #BCBCBC;
+}
+/* Again IE does not like Margins and padding around my nice forms **/
+label {
+	margin-bottom: -10px;
+}
+
+/**
+ * Hack to get the member login form (with tabs) looking good in IE6.
+ * Otherwise, it looks really bad.
+ */
+div.tab .field {
+	clear: none !important;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+	div.tab .field label {
+		margin: 0 !important;
+	}
+
+input.action {
+	padding: 2px !important;
+}
+#Sidebar input.action {
+	width: 50px;
+	margin-top: -27px;
+}
+#Sidebar .middleColumn {
+	width: 112px;
+}
+span.middleColumn {
+	display: inline-block;
+}
+
+/* SEARCH FORM 
+-----------------------------------------------*/
+html body #SearchForm_SearchForm {
+	width: 240px;
+	margin-top: -5px;
+}
+html body #SearchForm_SearchForm #SearchForm_SearchForm_action_results {
+	float: right;
+	margin-top: -25px;
+}

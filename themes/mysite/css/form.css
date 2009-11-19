@@ -1,0 +1,116 @@
+/** 
+ * SilverStripe Black Candy Theme
+ * http://www.silverstripe.com
+ *
+ * Form Styling
+ */
+
+
+/* FIELDSETS
+---------------------------------------- */
+fieldset {
+	border: 0;
+	font-size: 1.2em;
+}
+
+/* ACTION BUTTONS
+---------------------------------------- */
+input.action {
+	padding: 2px;
+	font-size: 1em;
+	font-family: Verdana, Tahoma, Sans-serif;
+}
+input.action:hover,
+input.action:focus {
+	cursor: pointer;
+}
+
+/* FIELD FORMATING
+---------------------------------------- */
+form ul {
+	list-style: none;
+}
+.middleColumn {
+ 	display: block;
+ 	margin: 15px 10px 10px 0;
+	background: #E9E9E9;
+	padding: 4px;
+	width: 306px;
+	clear: left;
+}
+	#Sidebar .middleColumn {
+		margin: 0 0 0 8px;
+		display: inline;
+	}
+	
+	div.tab .field .middleColumn {
+		clear: none !important;
+ 		margin: 0 !important;
+		width: auto;
+	}
+	
+	.middleColumn .middleColumn {
+		margin-left: 0;
+		margin-right: 0;
+		padding: 0;
+	}
+	
+	.middleColumn .message {
+		margin: 0;
+	}
+/* INPUT BOXS
+---------------------------------------- */
+
+input.text, textarea, select {
+	padding: 2px;
+	border: 1px solid #A7A7A7;
+	color: #000;
+	font-size: 1.1em;
+	font-weight: bold;
+	width: 300px;
+}
+
+textarea {
+	font-family: Verdana, Tahoma, sans-serif;
+	font-size: 1.2em;
+}
+input:focus span, textarea:focus span {
+	border: 3px solid #000;
+}
+
+/* SELECT DROPDOWN
+---------------------------------------- */
+
+select {
+	width: auto;
+}
+
+/* LABELS
+---------------------------------------- */
+.typography label {
+ 	display: block;
+	margin: 10px 0 -10px 0;
+	color: #777;
+	font-size: 1em;
+}
+
+label.right {
+	display:inline;
+}
+/* SEARCH BOX 
+---------------------------------------- */
+#Search {
+	width: 105px;
+}
+	input#Search_Form_SearchForm_Search {
+		width: 110px;
+		padding: 3px;
+		margin-left: -4px;
+		font-size: 1.2em;
+	}
+#Sidebar input.action {
+	font-size: 1.2em;
+	float: right;
+	padding: 1px;
+	margin: -22px 10px 0 0;
+}

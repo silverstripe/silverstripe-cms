@@ -1,0 +1,57 @@
+/*
+	This stylesheet is used for styling the BBCode hints
+*/
+
+#BBTagsHolder.hide {
+	display: none;
+}
+#BBTagsHolder.show {
+	display: block;
+}
+
+/* These are for the BBCode example tags at the top of the start topic/reply to topic/edit post forms */
+
+#BBTagsHolder h2{
+	margin: 0;
+	padding: 0;
+	font-size:1.2em;
+}
+
+ul.bbcodeExamples li {
+	list-style-type:square;
+	font-size: 1em;
+}
+ul.bbcodeExamples li.last {
+	border: none;
+}
+ul.bbcodeExamples li span.example {
+	
+}
+
+#BBTagsHolder{
+	float:right;
+	padding: 5px;
+	width: 270px;
+	background-color: #fff;
+	border: 1px solid #777;
+	font-size:0.8em;
+}
+
+
+.bbcodeExamples{
+	margin: 0 !important;
+	padding: 0;
+}
+
+#BBTagsHolder ul{
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+}
+
+#BlogEntry_Form_BlogEntryForm #tagsnote{
+	float:left:
+	margin: 0;
+	margin-top: -10px;
+	margin-bottom: 10px;
+}
