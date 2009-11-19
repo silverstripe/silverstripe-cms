@@ -906,51 +906,6 @@ TEXT
 		
 		$this->createFile('.htaccess', $start . $rewrite . $end);
 	}
-
-	function createHtaccessAlternative() {
-		$start = "### SILVERSTRIPE START ###\n";
-		$end= "\n### SILVERSTRIPE END ###";
-		
-		$base = dirname($_SERVER['SCRIPT_NAME']);
-		if($base != '.') $baseClause = "RewriteBase $base\n";
-		
-		$rewrite = <<<TEXT
-<IfModule mod_dir.c>
-DirectorySlash Off
-</IfModule>
-
-<Files *.ss>
-Order deny,allow
-Deny from all
-Allow from 127.0.0.1
-</Files>
-
-RewriteEngine On
-$baseClause
-RewriteCond %{REQUEST_URI} !(\.gif$)|(\.jpg$)|(\.png$)|(\.css$)|(\.js$) 
-
-RewriteCond %{REQUEST_URI} ^(.*)$
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule .* $_SERVER[DOCUMENT_ROOT]/sapphire/main.php?url=%1&%{QUERY_STRING} [L]
-TEXT;
-
-		if(file_exists($this->getBaseDir() . '.htaccess')) {
-			$htaccess = file_get_contents($this->getBaseDir() . '.htaccess');
-			
-			if(strpos($htaccess, '### SILVERSTRIPE START ###') === false && strpos($htaccess, '### SILVERSTRIPE END ###') === false) {
-				$htaccess .= "\n### SILVERSTRIPE START ###\n### SILVERSTRIPE END ###\n";
-			}
-		
-			if(strpos($htaccess, '### SILVERSTRIPE START ###') !== false && strpos($htaccess, '### SILVERSTRIPE END ###') !== false) {
-				$start = substr($htaccess, 0, strpos($htaccess, '### SILVERSTRIPE START ###')) . "### SILVERSTRIPE START ###\n";
-				$end = "\n" . substr($htaccess, strpos($htaccess, '### SILVERSTRIPE END ###'));
-			}
-		}
-		
-		echo "\n\nRewrite is $rewrite\n";
-		
-		$this->createFile('.htaccess', $start . $rewrite . $end);
-	}
 	
 	function restoreHtaccess() {
 		$start = "### SILVERSTRIPE START ###\n";
