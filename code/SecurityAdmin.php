@@ -276,6 +276,18 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			)
 		);
 	}
+	
+	/**
+	 * the permissions represented in the $codes will not appearing in the form
+	 * containning {@link PermissionCheckboxSetField} so as not to be checked / unchecked.
+	 * @param $codes array of permission code
+	 * @return void
+	 */
+	static function hide_permissions($codes){
+		foreach($codes as $code){
+			Permission::add_to_hidden_permissions($code);
+		}
+	}
 }
 
 ?>

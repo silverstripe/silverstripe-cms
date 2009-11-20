@@ -36,6 +36,16 @@ class SecurityAdminTest extends FunctionalTest {
 		$this->assertEquals($lines[1], '', "Empty export only has no content row");
 	}
 	
+	function testHidePermissions() {
+		$permissionCheckboxSet = new PermissionCheckboxSetField('Permissions','Permissions','Permission','GroupID');
+		$this->assertContains('CMS_ACCESS_CMSMain', $permissionCheckboxSet->Field());
+		$this->assertContains('CMS_ACCESS_AssetAdmin', $permissionCheckboxSet->Field());
+		
+		SecurityAdmin::hide_permissions(array('CMS_ACCESS_CMSMain','CMS_ACCESS_AssetAdmin'));
+		$this->assertNotContains('CMS_ACCESS_CMSMain', $permissionCheckboxSet->Field());
+		$this->assertNotContains('CMS_ACCESS_AssetAdmin', $permissionCheckboxSet->Field());
+	}
+	
 }
 
 ?>
