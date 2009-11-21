@@ -160,12 +160,12 @@
 	
 			/**
 			 * @param {String} url
-			 * @param {Function} callback (Optional)
+			 * @param {Function} callback (Optional) Called after the form content as been loaded
 			 * @param {ajaxOptions} Object literal merged into the jQuery.ajax() call (Optional)
 			 */
 			load: function(url, callback, ajaxOptions) {
-			  var self = this;
-			  
+				var self = this;
+
 				// Alert when unsaved changes are present
 				if(this._checkChangeTracker(true) == false) return false;
 				
@@ -176,10 +176,10 @@
 					complete: function(xmlhttp, status) {
 					  // TODO This should be using the plugin API
 						self.removeClass('changed');
-						
-						if(callback) callback.apply(self, arguments);
 					  
 						self._loadResponse(xmlhttp.responseText, status, xmlhttp);
+						
+						if(callback) callback.apply(self, arguments);
 					}, 
 					dataType: 'html'
 				}, ajaxOptions));
