@@ -419,7 +419,7 @@ Behaviour.register({
 			new Ajax.Request(this.href + (this.href.indexOf("?") == -1 ? "?" : "&") + "ajax=1", {
 				method : 'get',
 				onSuccess : Ajax.Evaluator,
-				onFailure : ajaxErrorHandler
+				onFailure : function(response) {errorMessage('Server Error', response);}
 			});
 			Event.stop(event);
 			return false;

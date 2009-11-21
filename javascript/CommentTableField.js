@@ -49,7 +49,7 @@ CommentTableField.prototype = {
 				onComplete: function(){
 					Effect.Fade(row);
 				}.bind(this),
-				onFailure: ajaxErrorHandler
+				onFailure: function(response) {errorMessage('Server Error', response);}
 			}
 		);
 		Event.stop(e);

@@ -389,18 +389,15 @@ var ss_MainLayout;
 // Backwards compatibility
 var statusMessage = function(text, type) {
 	jQuery.noticeAdd({text: text, type: type});
-}
+};
+
 var errorMessage = function(text) {
 	jQuery.noticeAdd({text: text, type: 'error'});
-}
-
-function ajaxErrorHandler(response) {
-	errorMessage('Server Error', response);
-}
+};
 
 returnFalse = function() {
 	return false;
-}
+};
 
 /**
  * Find and enable TinyMCE on all htmleditor fields
@@ -409,4 +406,4 @@ returnFalse = function() {
 
 function nullConverter(url) {
 	return url;
-}
+};
