@@ -136,3 +136,34 @@ MarkingPropertiesButton.prototype = {
 		return false;
 	}
 }
+
+Behaviour.register({
+	'#Form_EditForm_Files': {
+		removeFile : function(fileID) {
+			var record;
+			if(record = $('record-' + fileID)) {
+				record.parentNode.removeChild(record);
+			} 
+		}
+	},	
+	
+	'#Form_EditForm_Files a.deletelink' : {
+		onclick : function(event) {
+			// Send request
+			new Ajax.Request(this.href + (this.href.indexOf("?") == -1 ? "?" : "&") + "ajax=1", {
+				method : 'get',
+				onSuccess : Ajax.Evaluator,
+				onFailure : function(response) {errorMessage('Server Error', response);}
+			});
+			Event.stop(event);
+			return false;
+		}
+	},
+	
+	
+	'#Form_EditForm' : {
+		changeDetection_fieldsToIgnore : {
+			'Files[]' : true
+		}
+	}
+});
