@@ -147,7 +147,7 @@ var ss_MainLayout;
 			var parentTypeRootEl = $('#Form_EditForm_ParentType_root');
 			var parentTypeSubpageEl = $('#Form_EditForm_ParentType_subpage');
 			if(parentTypeRootEl) {
-				parentTypeRootEl.onclick = this.rootClick.bind(this);
+				parentTypeRootEl.onclick = this._rootClick.bind(this);
 			}
 			if(parentTypeSubpageEl) {
 				parentTypeSubpageEl.onclick = this.showHide;
@@ -155,7 +155,7 @@ var ss_MainLayout;
 			this.showHide();
 		},
 		
-		rootClick : function() {
+		_rootClick : function() {
 			$('#Form_EditForm_ParentID').val(0);
 			this.showHide();
 		},
@@ -288,7 +288,7 @@ var ss_MainLayout;
 			
 			// add default option
 			// TODO i18n
-			$('<option value="0">Add Criteria</option>').appendTo(self.SelectEl())
+			this('<option value="0">Add Criteria</option>').appendTo(self.SelectEl())
 			
 			// populate dropdown values from existing fields
 			this.find('.field').each(function() {
