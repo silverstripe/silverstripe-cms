@@ -810,7 +810,7 @@ JS;
 				),
 				new LiteralField(
 					'WelcomeText',
-					sprintf('<p>%s %s. %s</p>',
+					sprintf('<p id="WelcomeMessage">%s %s. %s</p>',
 						_t('LeftAndMain_right.ss.WELCOMETO','Welcome to'),
 						$this->getApplicationName(),
 						_t('CHOOSEPAGE','Please choose an item from the left.')
