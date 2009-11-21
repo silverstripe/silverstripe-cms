@@ -472,7 +472,6 @@
  * Tabs
  */
 .right form .ss-tabset {
-	width: 100%;
 	/* Need this to stop tabs from disappearing sometimes */
 	position: relative;
 }
