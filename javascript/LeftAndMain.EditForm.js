@@ -300,6 +300,8 @@
 			  
 				// TODO Fix once concrete library is updated
 				this.bind('click', function(e) {return self.clickFake(e);});
+				
+				this._super();
 			},
 			clickFake: function(e) {
 				$(this[0].form).concrete('ss').ajaxSubmit(this);

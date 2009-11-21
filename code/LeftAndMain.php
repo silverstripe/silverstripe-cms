@@ -211,7 +211,6 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/TabSet.js');
 		
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/behaviour/behaviour.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-livequery/jquery.livequery.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-cookie/jquery.cookie.js');
 		Requirements::javascript(CMS_DIR . '/thirdparty/jquery-notice/jquery.notice.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/jquery-ondemand/jquery.ondemand.js');

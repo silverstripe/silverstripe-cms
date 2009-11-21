@@ -56,7 +56,6 @@ var ss_MainLayout;
 				$(window).unload(function(){ layoutState.save('ss_MainLayout');});
 			
 				this._setupPinging();
-				this._setupButtons();
 				this._resizeChildren();
 			
 				// artificially delay the resize event 200ms
@@ -169,33 +168,6 @@ var ss_MainLayout;
 			},
 		
 			/**
-			 * Make all buttons "hoverable" with jQuery theming.
-			 */
-			_setupButtons: function() {
-				// Initialize buttons
-				this.find(':submit, button, :reset').livequery(function() {
-					jQuery(this).addClass(
-						'ui-state-default ' +
-						'ui-corner-all'
-					)
-					.hover(
-						function() {
-							$(this).addClass('ui-state-hover');
-						},
-						function() {
-							$(this).removeClass('ui-state-hover');
-						}
-					)
-					.focus(function() {
-						$(this).addClass('ui-state-focus');
-					})
-					.blur(function() {
-						$(this).removeClass('ui-state-focus');
-					});
-				});
-			},
-		
-			/**
 			 * Resize elements in center panel
 			 * to fit the boundary box provided by the layout manager
 			 */
@@ -213,6 +185,38 @@ var ss_MainLayout;
 				$('#Form_EditForm fieldset > .ss-tabset > .tab', this).fitHeightToParent();
 				$('#Form_EditForm fieldset > .ss-tabset > .tab > .ss-tabset', this).fitHeightToParent();
 				$('#Form_EditForm fieldset > .ss-tabset > .tab > .ss-tabset > .tab', this).fitHeightToParent();
+			}
+		};
+	});
+	
+	/**
+	 * @class Make all buttons "hoverable" with jQuery theming.
+	 * @name ss.LeftAndMain.Buttons
+	 */
+	$('.LeftAndMain :submit, .LeftAndMain button, .LeftAndMain :reset').concrete('ss', function($){
+		return/** @lends ss.LeftAndMain.Buttons */{
+			onmatch: function() {
+				console.debug(this);
+				this.addClass(
+					'ui-state-default ' +
+					'ui-corner-all'
+				)
+				.hover(
+					function() {
+						$(this).addClass('ui-state-hover');
+					},
+					function() {
+						$(this).removeClass('ui-state-hover');
+					}
+				)
+				.focus(function() {
+					$(this).addClass('ui-state-focus');
+				})
+				.blur(function() {
+					$(this).removeClass('ui-state-focus');
+				});
+				
+				this._super();
 			}
 		};
 	});
