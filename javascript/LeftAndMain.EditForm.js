@@ -305,8 +305,13 @@
 	 */
 	$('#Form_EditForm .Actions :submit').concrete('ss', function($){
 		return/** @lends ss.Form_EditForm.Actions.submit */{
-			onclick: function() {
-			  jQuery('#Form_EditForm').concrete('ss').ajaxSubmit(this);
+			onmatch: function() {
+				this.bind('click', this._onclick);
+				
+				this._super();
+			},
+			_onclick: function() {
+				jQuery('#Form_EditForm').concrete('ss').ajaxSubmit(this);
 				return false;
 			}
 		};
