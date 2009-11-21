@@ -362,9 +362,10 @@ var ss_MainLayout;
 			onmatch: function() {
 				var self = this;
 				this.setForm($('#Form_EditForm'));
-
 				jQuery('#Form_EditForm').bind('loadnewpage delete', function(e) {self.refresh();});
 				self.refresh();
+				
+				this._super();
 			},
 
 			/**
