@@ -133,44 +133,10 @@
 .right form textarea {
 	font-size: 12px;
 }
-.right form .mceEditor select.mceNativeListBox { 
-	background: #fff; 
-	padding-top: 2px;
-	width: 95px; /* Added width to stop sizes jumping and text wrapping */
-	font-size: 11px;
-}
-	.right form .mceEditor select.mceNativeListBox option {
-		padding: 0 2px 0 2px;
-		font-size: 11px;
-	}
-.right form .mceEditor .mceFirst { 
-	background: #f4f4f4; 
-} 
-.right form .mceEditor .mceToolbar table { 
-	background: transparent; 
-} 
-.right form .mceEditor .mceButton { 
-	padding: 1px; 
-}
-
-.right form .mceEditor select.mceNativeListBox {
-	background: #fff;
-}
-.right form .mceEditor .mceFirst {
-	background: #fbfbfb url(../images/textures/mce_editor.gif) repeat-x bottom;
-}
-.right form .mceEditor .mceToolbar table {
-	background: transparent;
-}
-
-.right form .mceEditor select.mceNativeListBox {
-	background: #fff;
-}
 	
 .right form input.checkbox, 
 .right form .optionset input, 
-.right form .htmleditor select, 
-.right form input.action {
+.right form .htmleditor select {
 	width: auto;
 	margin-right: 4px;
 }
@@ -223,14 +189,44 @@
 	padding-top: 1em;
 }
 
-/* Overflow is handled by tabsets inside the panel */
-.ui-layout-center {
-	overflow: hidden !important;
+/** 
+ * Tinymce 
+ */
+.right form .mceEditor select.mceNativeListBox { 
+	background: #fff; 
+	padding-top: 2px;
+	width: 95px; /* Added width to stop sizes jumping and text wrapping */
+	font-size: 11px;
 }
+	.right form .mceEditor select.mceNativeListBox option {
+		padding: 0 2px 0 2px;
+		font-size: 11px;
+	}
+	.right form .mceEditor .mceFirst { 
+		background: #f4f4f4; 
+	} 
+	.right form .mceEditor .mceToolbar table { 
+		background: transparent; 
+	} 
+	.right form .mceEditor .mceButton { 
+		padding: 1px; 
+	}
+	.right form .mceEditor select.mceNativeListBox {
+		background: #fff;
+	}
+	.right form .mceEditor .mceFirst {
+		background: #fbfbfb url(../images/textures/mce_editor.gif) repeat-x bottom;
+	}
+	.right form .mceEditor .mceToolbar table {
+		background: transparent;
+	}
 
+	.right form .mceEditor select.mceNativeListBox {
+		background: #fff;
+	}
 
 /**
- * RHS Action Parameters boxes
+ * RHS Action Parameters boxes 
  */
 #right form.actionparams {
 	border: 1px solid #777;
@@ -243,57 +239,57 @@
 	padding: 10px;	
 }
 
-#right form.actionparams div.field {
-	margin-left: 6em;
-}
+	#right form.actionparams div.field {
+		margin-left: 6em;
+	}
 
-#right form.actionparams label.left {
-	width: 6em;
-	margin-left: -6em;
-}
-#right form.actionparams input, #right form.actionparams select, #right form.actionparams textarea {
-	width: 100%;
-}
-#right form.actionparams  input.checkbox, #right form.actionparams .optionset input {
-	width: auto;
-}
+	#right form.actionparams label.left {
+		width: 6em;
+		margin-left: -6em;
+	}
+	#right form.actionparams input, #right form.actionparams select, #right form.actionparams textarea {
+		width: 100%;
+	}
+	#right form.actionparams  input.checkbox, #right form.actionparams .optionset input {
+		width: auto;
+	}
 
-#right form.actionparams p.label {
-	margin: 10px 0 0 0;
-}
-#right form.actionparams .actions {
-	margin: 10px 0 0 0;
-	text-align: right;
-}
-#right form.actionparams .actions input {
-	width: auto;
-}
-#right form.actionparams .sendingText {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	padding: 10% 0 0 0;
-	height: 60%;
-	background: #ccc;
-	font-size: 25px;
-	font-weight: bold;
-	color: #fff;
-	text-align: center;
-}
+	#right form.actionparams p.label {
+		margin: 10px 0 0 0;
+	}
+	#right form.actionparams .actions {
+		margin: 10px 0 0 0;
+		text-align: right;
+	}
+	#right form.actionparams .actions input {
+		width: auto;
+	}
+	#right form.actionparams .sendingText {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		padding: 10% 0 0 0;
+		height: 60%;
+		background: #ccc;
+		font-size: 25px;
+		font-weight: bold;
+		color: #fff;
+		text-align: center;
+	}
 
-#right form.actionparams div.TreeDropdownField {
-	width: 220px;
-	padding-bottom: 150px;
+	#right form.actionparams div.TreeDropdownField {
+		width: 220px;
+		padding-bottom: 150px;
 
-}
-#right form.actionparams div.TreeDropdownField span.items {
-	width: 195px;
-}
+	}
+	#right form.actionparams div.TreeDropdownField span.items {
+		width: 195px;
+	}
 
-#right form.actionparams div.TreeDropdownField div.tree_holder {
-	width: 214px;
-}
+	#right form.actionparams div.TreeDropdownField div.tree_holder {
+		width: 214px;
+	}
 
 /**
  * Autocomplete
@@ -321,52 +317,52 @@
 		font-style: italic;
 	}
 
-	/*
-	 * Status
-	 */
-	#statusMessage {
-		position: absolute;
-		z-index: 500;
-		bottom: 4px;
-		left: 10px;
-		text-align: left;
-	 	padding: 2px 20px 2px 20px;
-	 	font-size: 14px;
-		font-weight: bold; 	
-		color: #660;
-		background: #f4f3eb;
-		border: 1px solid #a9a67d;
-		margin: 0 !important;
-		line-height: 1.5;
+/**
+ * Status Messages
+ */
+#statusMessage {
+	position: absolute;
+	z-index: 500;
+	bottom: 4px;
+	left: 10px;
+	text-align: left;
+ 	padding: 2px 20px 2px 20px;
+ 	font-size: 14px;
+	font-weight: bold; 	
+	color: #660;
+	background: #f4f3eb;
+	border: 1px solid #a9a67d;
+	margin: 0 !important;
+	line-height: 1.5;
+}
+	#statusMessage.good {
+	 	padding: 2px 20px 2px 40px;
+		color: #060;
+		background: #E2F9E3 url(../images/alert-good.gif) 7px 50% no-repeat;
+		border: 1px solid #8dd38d;
 	}
-		#statusMessage.good {
-		 	padding: 2px 20px 2px 40px;
-			color: #060;
-			background: #E2F9E3 url(../images/alert-good.gif) 7px 50% no-repeat;
-			border: 1px solid #8dd38d;
-		}
-		#statusMessage.bad {
-	 		padding: 2px 20px 2px 40px;
-			border-color: #ff8e8e;
-			color: #c80700;
-			background: #ffe9e9 url(../images/alert-bad.gif) 7px 50% no-repeat;
-			max-height: 300px;
-			overflow: auto;
-		}
+	#statusMessage.bad {
+ 		padding: 2px 20px 2px 40px;
+		border-color: #ff8e8e;
+		color: #c80700;
+		background: #ffe9e9 url(../images/alert-bad.gif) 7px 50% no-repeat;
+		max-height: 300px;
+		overflow: auto;
+	}
 
 /**
  * TableField Subclasses
  */
  
 /* Filter box (for search/filter box above a table on Asset/MemberTableField) */
-div.filterBox {
+.right div.filterBox {
 	width: inherit;
 	margin: 5px 0;
 	padding: 5px;
 	background: #EEE;
 	border: 1px solid #BBB;
 }
-	div.filterBox .middleColumn {
+	.right div.filterBox .middleColumn {
 		background: none !important;
 	}
 
