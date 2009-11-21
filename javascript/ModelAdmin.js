@@ -390,12 +390,3 @@ $(document).ready(function() {
 	
 })
 })(jQuery);
-
-/**
- * @todo Terrible HACK, but thats the cms UI...
- */
-function fixHeight_left() {
-	//fitToParent('LeftPane');
-	fitToParent('Search_holder',12);
-	fitToParent('ResultTable_holder',12);
-}
