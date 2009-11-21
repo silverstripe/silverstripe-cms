@@ -298,7 +298,7 @@ Behaviour.register({
 
 	'#MainMenu li' : {
 		onclick : function(event) {
-			return LeftAndMain_window_unload(); // Confirm if there are unsaved changes
+			LeftAndMain_window_unload(); // Confirm if there are unsaved changes
 			window.location.href = this.getElementsByTagName('a')[0].href;
 			Event.stop(event);
 		}
