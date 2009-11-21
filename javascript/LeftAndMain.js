@@ -89,9 +89,13 @@ var ss_MainLayout;
 			 */
 			_setupLayout: function() {
 				var self = this;
+				
+				var widthEast = this.find('.ui-layout-east').width();
+				var widthWest = this.find('.ui-layout-west').width();
 			
 				// layout containing the tree, CMS menu, the main form etc.
 				var savedLayoutSettings = layoutState.load('ss_MainLayout');
+
 				var layoutSettings = jQuery.extend({
 					defaults: {
 						// TODO Reactivate once we have localized values
@@ -115,7 +119,7 @@ var ss_MainLayout;
 						togglerLength_open: 0
 					},
 					west: {
-						size: this.find('.ui-layout-west').width(),
+						size: (widthWest) ? widthWest : undefined,
 						fxName: "none"
 					},
 					east: {
@@ -124,8 +128,7 @@ var ss_MainLayout;
 						// so a user shouldn't be able to toggle this panel manually
 						initHidden: true,
 						spacing_closed: 0,
-						fxName: "none",
-						size: this.find('.ui-layout-east').width()
+						fxName: "none"
 					},
 					center: {}
 				}, savedLayoutSettings);
