@@ -264,7 +264,6 @@ class LeftAndMain extends Controller {
 		Requirements::combine_files(
 			'assets/cmsmain.js',
 			array(
-				'cms/javascript/CMSMain.js',
 				'cms/javascript/CMSMain_left.js',
 				'cms/javascript/CMSMain_right.js',
 				'cms/javascript/SideTabs.js',

@@ -103,7 +103,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$langName = i18n::get_locale_name($this->Locale);
 		HtmlEditorConfig::get('cms')->setOption('spellchecker_languages', "+{$langName}={$this->Locale}");
 				
-		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.js');
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain_left.js');
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain_right.js');
 	}
