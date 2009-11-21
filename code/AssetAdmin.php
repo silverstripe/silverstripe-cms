@@ -81,6 +81,8 @@ class AssetAdmin extends LeftAndMain {
 		// needed for MemberTableField (Requirements not determined before Ajax-Call)
 		Requirements::css(SAPPHIRE_DIR . "/css/ComplexTableField.css");
 
+		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.BatchActions.js');
+
 		Requirements::javascript(CMS_DIR . "/javascript/AssetAdmin.DragDrop.js");
 		Requirements::javascript(CMS_DIR . "/javascript/AssetAdmin.js");
 
