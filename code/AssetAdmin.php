@@ -14,7 +14,7 @@ class AssetAdmin extends LeftAndMain {
 	
 	static $menu_title = 'Files & Images';
 
-	public static $tree_class = 'File';
+	public static $tree_class = 'Folder';
 	
 	/**
 	 * @see Upload->allowedMaxFileSize
