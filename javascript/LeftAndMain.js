@@ -48,8 +48,8 @@
 			 * It redirects back to the login form if the URL is either unreachable, or returns '0'.
 			 */
 			_setupPinging: function() {
-				var onSessionLost = function(response, type, XMLHttpRequest) {
-					if(XMLHttpRequest.status > 400 || response == 0) {
+				var onSessionLost = function(xmlhttp, status) {
+					if(xmlhttp.status > 400 || xmlhttp.responseText == 0) {
 						// TODO will pile up additional alerts when left unattended
 						if(window.open('Security/login')) {
 						    alert("Please log in and then try again");
@@ -64,8 +64,7 @@
 					jQuery.ajax({
 						url: "Security/ping",
 						global: false,
-						error: onSessionLost,
-						success: onSessionLost
+						complete: onSessionLost
 					});
 				}, this.PingIntervalSeconds() * 1000);
 			},
