@@ -10,11 +10,11 @@ class SecurityAdminTest extends FunctionalTest {
 		$this->session()->inst_set('loggedInAs', $this->idFromFixture('Member', 'admin'));
 		
 		/* First, open the applicable group */
-		$this->get('admin/security/getitem?ID=' . $this->idFromFixture('Group','admin'));
+		$this->get('admin/security/show/' . $this->idFromFixture('Group','admin'));
 		$this->assertRegExp('/<input[^>]+id="Form_EditForm_Title"[^>]+value="Administrators"[^>]*>/',$this->content());
 		
 		/* Then load the export page */
-		$this->get('admin/security//EditForm/field/Members/export');
+		$this->get('admin/security/EditForm/field/Members/export');
 		$lines = preg_split('/\n/', $this->content());
 		
 		$this->assertEquals(count($lines), 3, "Export with members has one content row");
@@ -25,7 +25,7 @@ class SecurityAdminTest extends FunctionalTest {
 		$this->session()->inst_set('loggedInAs', $this->idFromFixture('Member', 'admin'));
 		
 		/* First, open the applicable group */
-		$this->get('admin/security/getitem?ID=' . $this->idFromFixture('Group','empty'));
+		$this->get('admin/security/show/' . $this->idFromFixture('Group','empty'));
 		$this->assertRegExp('/<input[^>]+id="Form_EditForm_Title"[^>]+value="Empty Group"[^>]*>/',$this->content());
 		
 		/* Then load the export page */

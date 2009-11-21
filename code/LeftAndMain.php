@@ -635,41 +635,27 @@ JS;
 			$node = DataObject::get_by_id($this->stat('tree_class'), $id);
 			if($node){
 				if($node && !$node->canEdit()) return Security::permissionFailure($this);
-				
+			
 				$node->ParentID = $parentID;
-				$node->Status = "Saved (update)";
 				$node->write();
-
-				if(is_numeric($_REQUEST['CurrentlyOpenPageID'])) {
-					$currentPage = DataObject::get_by_id($this->stat('tree_class'), $_REQUEST['CurrentlyOpenPageID']);
-					if($currentPage) {
-						$cleanupJS = $currentPage->cmsCleanup_parentChanged();
-					}
-				}
-
-		$node = DataObject::get_by_id($this->stat('tree_class'), $id);
-		if($node){
-			if($node && !$node->canEdit()) return Security::permissionFailure($this);
 			
-			$node->ParentID = $parentID;
-			$node->write();
-			
-			$statusUpdates['modified'][$node->ID] = array(
-				'TreeTitle'=>$node->TreeTitle
-			);
+				$statusUpdates['modified'][$node->ID] = array(
+					'TreeTitle'=>$node->TreeTitle
+				);
 
-			$this->response->addHeader(
-				'X-Status',
-				_t('LeftAndMain.SAVED','saved')
-			);
-		}else{
-			$this->response->setStatusCode(
-				500,
-				_t(
-					'LeftAndMain.PLEASESAVE',
-					"Please Save Page: This page could not be upated because it hasn't been saved yet."
-				)
-			);
+				$this->response->addHeader(
+					'X-Status',
+					_t('LeftAndMain.SAVED','saved')
+				);
+			}else{
+				$this->response->setStatusCode(
+					500,
+					_t(
+						'LeftAndMain.PLEASESAVE',
+						"Please Save Page: This page could not be upated because it hasn't been saved yet."
+					)
+				);
+			}
 		}
 		
 		return Convert::raw2json($statusUpdates);
@@ -870,7 +856,6 @@ JS;
 				new FormAction('doAdd', _t('AssetAdmin_left.ss.GO','Go'))
 			)
 		);
-		$form->setValidator(null);
 		$form->addExtraClass('actionparams');
 		
 		return $form;
