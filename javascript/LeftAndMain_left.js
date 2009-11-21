@@ -202,7 +202,7 @@ TreeNodeAPI.prototype = {
 		if(this.getElementsByTagName('a')[0].href) {
 			_AJAX_LOADING = true;
 			if($('sitetree').notify('SelectionChanged', this)) {
-				jQuery('#Form_EditForm').concrete('ss').ajaxSubmit(null, this.getPageFromServer.bind(this)); 
+		    this.getPageFromServer();
 			}
 		}
 	},
@@ -210,9 +210,7 @@ TreeNodeAPI.prototype = {
 	getPageFromServer : function() {
 		var self = this;
 		
-		this.addNodeClass('loading');
-		
-		jQuery('#Form_EditForm').concrete('ss').load(
+		var xmlhttp = jQuery('#Form_EditForm').concrete('ss').load(
 			jQuery(this).find('a').attr('href'),
 			function(response) {
 				self.removeNodeClass('loading');
@@ -223,6 +221,9 @@ TreeNodeAPI.prototype = {
 				}
 			}
 		);
+		
+		if(xmlhttp) this.addNodeClass('loading');
+		
 		_AJAX_LOADING = false;
 	},
 	ajaxExpansion : function() {

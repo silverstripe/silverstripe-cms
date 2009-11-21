@@ -22,42 +22,47 @@
 			ChangeTrackerOptions: {},
 			
 			onmatch: function() {
+				var self = this;
+				
 				this._setupChangeTracker();
+				
+				// Can't bind this through jQuery
+				window.onbeforeunload = function(e) {return self._checkChangeTracker(false);};
 				
 				$._super();
 			},
 			
 			_setupChangeTracker: function() {
-				var self = this;
-				
 				// Don't bind any events here, as we dont replace the
 				// full <form> tag by any ajax updates they won't automatically reapply
 				this.changetracker(this.ChangeTrackerOptions());
-				
-				var autoSaveOnUnload = function(e) {
-					// @todo TinyMCE coupling
-					if(typeof tinyMCE != 'undefined') tinyMCE.triggerSave();
-					if(self.is('.changed') && confirm(ss.i18n._t('LeftAndMain.CONFIRMUNSAVED'))) {
-						// unloads can't be prevented, but we can delay it with a synchronous ajax request
-						self.ajaxSubmit(
-							self.find(':submit[name=action_save]'), 
-							null, 
-							{async: false}
-						);
-					}
-				};
-				
-				// use custom IE 'onbeforeunload' event, as it destroys the DOM
-				// before going into 'unload'
-				if(typeof window.onbeforeunload != 'undefined') {
-					window.onbeforeunload = autoSaveOnUnload;
-				} else {
-					$(window).unload(autoSaveOnUnload);
+			},
+			
+			/**
+			 * Checks the jquery.changetracker plugin status for this form.
+			 * Usually bound to window.onbeforeunload.
+			 * 
+			 * @param {boolean} doConfirm
+			 * @return Either a string with a confirmation message, or the result of a confirm() dialog,
+			 *  based on the doConfirm parameter.
+			 */
+			_checkChangeTracker: function(doConfirm) {
+			  var self = this;
+			  
+				// @todo TinyMCE coupling
+				if(typeof tinyMCE != 'undefined') tinyMCE.triggerSave();
+				if(self.is('.changed')) {
+					var msg = ss.i18n._t('LeftAndMain.CONFIRMUNSAVED');
+					// returned string will trigger a confirm() dialog, 
+					// but only if the method is triggered by an event
+					return (doConfirm) ? confirm(msg) : msg;
 				}
 			},
 	
 			/**
-			 * Suppress submission unless it is handled through ajaxSubmit()
+			 * Suppress submission unless it is handled through ajaxSubmit().
+			 * 
+			 * @param {Event} e
 			 */
 			onsubmit: function(e) {
 				return false;
@@ -66,14 +71,16 @@
 			/**
 			 * @param {DOMElement} button The pressed button (optional)
 			 * @param {Function} callback Called in complete() handler of jQuery.ajax()
+			 * @param {Object} ajaxOptions Object literal to merge into $.ajax() call
+			 * @param {boolean} loadResponse Render response through _loadResponse() (Default: true)
 			 */
-			ajaxSubmit: function(button, callback, ajaxOptions) {
+			ajaxSubmit: function(button, callback, ajaxOptions, loadResponse) {
+			  var self = this;
+			  
 				// look for save button
 				if(!button) button = this.find('.Actions :submit[name=action_save]');
 				// default to first button if none given - simulates browser behaviour
 				if(!button) button = this.find('.Actions :submit:first');
-		
-				var self = this;
 		
 				this.trigger('ajaxsubmit', {button: button});
 		
@@ -97,17 +104,22 @@
 				var formData = this.serializeArray();
 				// add button action
 				formData.push({name: $(button).attr('name'), value:'1'});
-				$.ajax($.extend({
+				jQuery.ajax(jQuery.extend({
 					url: this.attr('action'), 
 					data: formData,
 					type: 'POST',
 					complete: function(xmlhttp, status) {
 						$(button).removeClass('loading');
 						
+						// TODO This should be using the plugin API
+						self.removeClass('changed');
+						
 						if(callback) callback(xmlhttp, status);
 						
 						// pass along original form data to enable old/new comparisons
-						self._loadResponse(xmlhttp.responseText, status, xmlhttp, formData);
+						if(loadResponse !== false) {
+						  self._loadResponse(xmlhttp.responseText, status, xmlhttp, formData);
+						}
 					}, 
 					dataType: 'html'
 				}, ajaxOptions));
@@ -131,19 +143,28 @@
 			},
 	
 			/**
-			 * @param String url
-			 * @param Function callback (Optional)
+			 * @param {String} url
+			 * @param {Function} callback (Optional)
+			 * @param {ajaxOptions} Object literal merged into the jQuery.ajax() call (Optional)
 			 */
-			load: function(url, callback) {
-				var self = this;
-				$.ajax({
+			load: function(url, callback, ajaxOptions) {
+			  var self = this;
+			  
+			  // Alert when unsaved changes are present
+				if(!this._checkChangeTracker(true)) return false;
+				
+				return jQuery.ajax(jQuery.extend({
 					url: url, 
 					complete: function(xmlhttp, status) {
-						self._loadResponse(xmlhttp.responseText, status, xmlhttp);
+					  // TODO This should be using the plugin API
+						self.removeClass('changed');
+						
 						if(callback) callback.apply(self, arguments);
+					  
+						self._loadResponse(xmlhttp.responseText, status, xmlhttp);
 					}, 
 					dataType: 'html'
-				});
+				}, ajaxOptions));
 			},
 	
 			/**
@@ -206,6 +227,8 @@
 					} else {
 						this.removeForm();
 					}
+					
+					this._setupChangeTracker();
 				
 					// Optionally get the form attributes from embedded fields, see Form->formHtmlContent()
 					for(var overrideAttr in {'action':true,'method':true,'enctype':true,'name':true}) {
@@ -245,7 +268,8 @@
 	$('#Form_EditForm .Actions :submit').concrete('ss', function($){
 		return/** @lends ss.Form_EditForm.Actions.submit */{
 			onmatch: function() {
-				var self = this;
+			  var self = this;
+			  
 				// TODO Fix once concrete library is updated
 				this.bind('click', function(e) {return self.clickFake(e);});
 			},
