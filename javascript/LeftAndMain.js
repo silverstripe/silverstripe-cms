@@ -24,6 +24,20 @@
 			this._setupPinging();
 			this._setupButtons();
 			this._resizeChildren();
+			
+			// artificially delay the resize event 200ms
+			// to avoid overlapping height changes in different onresize() methods
+			$(window).resize(function () {
+				var timerID = "timerLeftAndMainResize";
+				if (window[timerID]) clearTimeout(window[timerID]);
+				window[timerID] = setTimeout(function() {self._resizeChildren();}, 200);
+			});
+			
+			// trigger resize whenever new tabs are shown
+			// @todo This is called multiple times when tabs are loaded
+			this.find('.ss-tabset').bind('tabsshow', function() {self._resizeChildren();});
+			
+			$('#Form_EditForm').bind('loadnewpage', function() {self._resizeChildren();});
 
 			this._super();
 		},
@@ -101,15 +115,15 @@
 		},
 		
 		/**
-		 * @param DOMElement button The pressed button (optiona)
+		 * @param {DOMElement} button The pressed button (optional)
 		 */
 		ajaxSubmit: function(button) {
 			// default to first button if none given - simulates browser behaviour
 			if(!button) button = this.find(':submit:first');
 			
-			var $form = this;
+			var self = this;
 			
-			this.trigger('beforeSubmit', [button]);
+			this.trigger('ajaxsubmit', {button: button});
 			
 			// set button to "submitting" state
 			$(button).addClass('loading');
@@ -119,12 +133,10 @@
 			
 			// validate if required
 			if(!this.validate()) {
-				this.trigger('validationError', [button]);
-				
 				// TODO Automatically switch to the tab/position of the first error
 				statusMessage("Validation failed.", "bad");
 
-				if($('Form_EditForm_action_save') && $('Form_EditForm_action_save').stopLoading) $('Form_EditForm_action_save').stopLoading();
+				$(button).removeClass('loading');
 
 				return false;
 			}
@@ -136,12 +148,10 @@
 			$.post(
 				this.attr('action'), 
 				data,
-				function(result) {
+				function(response) {
 					$(button).removeClass('loading');
 					
-					$form.trigger('afterSubmit', [result]);
-					
-					$form.loadNewPage();
+					self._loadResponse(response);
 				}, 
 				// @todo Currently all responses are assumed to be evaluated
 				'script'
@@ -159,22 +169,56 @@
 		 * @return {boolean}
 		 */
 		validate: function() {
-			this.trigger('beforeValidate');
 			var isValid = true;
-			this.trigger('afterValidate', [isValid]);
+			this.trigger('validate', {isValid: isValid});
 			
 			return isValid;
 		},
 		
-		loadNewPage: function(result) {
+		/**
+		 * @param String url
+		 * @param Function callback (Optional)
+		 */
+		load: function(url, callback) {
+			var self = this;
+			$.get(
+				url, 
+				function(response) {
+					self._loadResponse(response);
+					if(callback) callback.apply(self, [response]);
+				}, 
+				// @todo Currently all responses are assumed to be evaluated
+				'script'
+			);
+		},
+		
+		/**
+		 * Remove everying inside the <form> tag
+		 * with a custom HTML fragment. Useful e.g. for deleting a page in the CMS.
+		 * 
+		 * @param {String} removeText
+		 */
+		remove: function(removeHTML) {
+			
+		},
+		
+		
+		/**
+		 * @param {String} result Either HTML for straight insertion, or eval'ed JavaScript.
+		 *  If passed as HTML, it is assumed that everying inside the <form> tag is replaced,
+		 *  but the old <form> tag itself stays intact.
+		 */
+		_loadResponse: function(response) {
 			// TinyMCE coupling
 			if(typeof tinymce_removeAll != 'undefined') tinymce_removeAll();
+			
+			var html = response;
 
 			// Rewrite # links
-			result = result.replace(/(<a[^>]+href *= *")#/g, '$1' + window.location.href.replace(/#.*$/,'') + '#');
+			html = html.replace(/(<a[^>]+href *= *")#/g, '$1' + window.location.href.replace(/#.*$/,'') + '#');
 
 			// Rewrite iframe links (for IE)
-			result = result.replace(/(<iframe[^>]*src=")([^"]+)("[^>]*>)/g, '$1' + $('base').attr('href') + '$2$3');
+			html = html.replace(/(<iframe[^>]*src=")([^"]+)("[^>]*>)/g, '$1' + $('base').attr('href') + '$2$3');
 
 			// Prepare iframes for removal, otherwise we get loading bugs
 			this.find('iframe').each(function() {
@@ -182,7 +226,7 @@
 				this.remove();
 			})
 
-			this.html(result);
+			this.html(html);
 
 			if(this.hasClass('validationerror')) {
 				statusMessage(ss.i18n._t('ModelAdmin.VALIDATIONERROR', 'Validation Error'), 'bad');

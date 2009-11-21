@@ -204,7 +204,15 @@ TreeNodeAPI.prototype = {
 	},
 		
 	getPageFromServer : function() {
-		$('Form_EditForm').getPageFromServer(this.id.replace('record-',''), this);
+		jQuery('#Form_EditForm').concrete('ss').load(
+			jQuery(this).find('a').attr('href'),
+			function(response) {
+				var pageID = jQuery(this).find(':input[name=ID]').val();
+				if(pageID) {
+					jQuery('#sitetree')[0].setCurrentByIdx(pageID);
+				}
+			}
+		);
 		_AJAX_LOADING = false;
 	},
 	ajaxExpansion : function() {
