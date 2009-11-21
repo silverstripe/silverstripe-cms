@@ -534,7 +534,7 @@ class LeftAndMain extends Controller {
 	}
 
 	/**
-	 * Save and Publish page handler
+	 * Save  handler
 	 */
 	public function save($data, $form) {
 		$className = $this->stat('tree_class');
@@ -549,71 +549,15 @@ class LeftAndMain extends Controller {
 			$record = $this->getNewItem($SQL_id, false);
 		}
 		
-		// TODO Coupling to SiteTree
-		$record->HasBrokenLink = 0;
-		$record->HasBrokenFile = 0;
-
-		$record->writeWithoutVersion();
-
-		// Update the class instance if necessary
-		if($data['ClassName'] != $record->ClassName) {
-			$newClassName = $record->ClassName;
-			// The records originally saved attribute was overwritten by $form->saveInto($record) before.
-			// This is necessary for newClassInstance() to work as expected, and trigger change detection
-			// on the ClassName attribute
-			$record->setClassName($data['ClassName']);
-			// Replace $record with a new instance
-			$record = $record->newClassInstance($newClassName);
-		}
-
 		// save form data into record
 		$form->saveInto($record, true);
 		$record->write();
-		
-		// if changed to a single_instance_only page type
-		if ($record->stat('single_instance_only')) {
-			FormResponse::add("jQuery('#sitetree li.{$record->ClassName}').addClass('{$record->stat('single_instance_only_css_class')}');");
-			FormResponse::add($this->hideSingleInstanceOnlyFromCreateFieldJS($record));
-		}
-		else {
-			FormResponse::add("jQuery('#sitetree li.{$record->ClassName}').removeClass('{$record->stat('single_instance_only_css_class')}');");
-		}
-		// if chnaged from a single_instance_only page type
-		$sampleOriginalClassObject = new $data['ClassName']();
-		if($sampleOriginalClassObject->stat('single_instance_only')) {
-			FormResponse::add($this->showSingleInstanceOnlyInCreateFieldJS($sampleOriginalClassObject));
-		}
+		$this->extend('onAfterSave', $record);
 
-		// If the 'Save & Publish' button was clicked, also publish the page
-		if (isset($data['publish']) && $data['publish'] == 1) {
-			$record->doPublish();
-			$this->extend('onAfterSave', $record);
-			
-			// Update classname with original and get new instance (see above for explanation)
-			$record->setClassName($data['ClassName']);
-			$publishedRecord = $record->newClassInstance($record->ClassName);
-			
-			$this->response->addHeader(
-				'X-Status',
-				sprintf(
-					_t(
-						'LeftAndMain.STATUSPUBLISHEDSUCCESS', 
-						"Published '%s' successfully",
-						PR_MEDIUM,
-						'Status message after publishing a page, showing the page title'
-					),
-					$publishedRecord->Title
-				)
-			);
-			
-			$form->loadDataFrom($publishedRecord);
-		} else {
-			$this->extend('onAfterSave', $record);
-			$this->response->addHeader('X-Status', _t('LeftAndMain.SAVEDUP'));
-			
-			// write process might've changed the record, so we reload before returning
-			$form->loadDataFrom($record);
-		}
+		$this->response->addHeader('X-Status', _t('LeftAndMain.SAVEDUP'));
+		
+		// write process might've changed the record, so we reload before returning
+		$form->loadDataFrom($record);
 		
 		return $form->formHtmlContent();
 	}
@@ -790,10 +734,74 @@ JS;
 	 *  Form might be readonly if the current user doesn't have the permission to edit
 	 *  the record.
 	 */
+	/**
+	 * @return Form
+	 */
 	function EditForm($request = null) {
-		return $this->EmptyForm();
+		return $this->getEditForm();
 	}
-	
+
+	public function getEditForm($id = null) {
+		if(!$id) $id = $this->currentPageID();
+		
+		$record = ($id && $id != "root") ? DataObject::get_by_id($this->stat('tree_class'), $id) : null;
+		if($record && !$record->canView()) return Security::permissionFailure($this);
+		
+		if($record) {
+			$fields = $record->getCMSFields();
+			if ($fields == null) {
+				user_error(
+					"getCMSFields() returned null  - it should return a FieldSet object. 
+					Perhaps you forgot to put a return statement at the end of your method?", 
+					E_USER_ERROR
+				);
+			}
+			
+			if($record->hasMethod('getAllCMSActions')) {
+				$actions = $record->getAllCMSActions();
+			} else {
+				$actions = $record->getCMSActions();
+				// add default actions if none are defined
+				if(!$actions || !$actions->Count()) {
+					if($record->canEdit()) {
+						$actions->push(new FormAction('save',_t('CMSMain.SAVE','Save')));
+					}
+				}
+			}
+			
+			$form = new Form($this, "EditForm", $fields, $actions);
+			$form->loadDataFrom($record);
+			
+			// Add a default or custom validator.
+			// @todo Currently the default Validator.js implementation
+			//  adds javascript to the document body, meaning it won't
+			//  be included properly if the associated fields are loaded
+			//  through ajax. This means only serverside validation
+			//  will kick in for pages+validation loaded through ajax.
+			//  This will be solved by using less obtrusive javascript validation
+			//  in the future, see http://open.silverstripe.com/ticket/2915 and
+			//  http://open.silverstripe.com/ticket/3386
+			if($record->hasMethod('getCMSValidator')) {
+				$validator = $record->getCMSValidator();
+				// The clientside (mainly LeftAndMain*.js) rely on ajax responses
+				// which can be evaluated as javascript, hence we need
+				// to override any global changes to the validation handler.
+				$validator->setJavascriptValidationHandler('prototype');
+				$form->setValidator($validator);
+			} else {
+				$form->unsetValidator();
+			}
+		
+			if(!$record->canEdit()) {
+				$readonlyFields = $form->Fields()->makeReadonly();
+				$form->setFields($readonlyFields);
+			}
+		} else {
+			$form = $this->EmptyForm();
+		}
+		
+		return $form;
+	}	
 	/**
 	 * Returns a placeholder form, used by {@link getEditForm()} if no record is selected.
 	 * Our javascript logic always requires a form to be present in the CMS interface.

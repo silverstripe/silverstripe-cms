@@ -261,60 +261,10 @@ HTML;
 	public function currentPage() {
 		$id = $this->currentPageID();
 		if($id && is_numeric($id)) {
-			return DataObject::get_by_id($this->stat('tree_class'), $id);
+			return DataObject::get_by_id('File', $id);
 		} else if($id == 'root') {
-			return singleton($this->stat('tree_class'));
+			return singleton('File');
 		}
-	}
-	
-	/**
-	 * @return Form
-	 */
-	function EditForm($request = null) {
-		return $this->getEditForm();
-	}
-	
-	/**
-	 * Return the form that displays the details of a folder, including a file list and fields for editing the folder name.
-	 */
-	function getEditForm($id = null) {
-		if(!$id) $id = $this->currentPageID();
-		
-		$record = ($id && $id != "root") ? DataObject::get_by_id("File", $id) : null;		
-		if($record && !$record->canView()) return Security::permissionFailure($this);
-
-		if($record) {
-			$fields = $record->getCMSFields();
-			// Required for file tree setup
-			if(!$fields->dataFieldByName('ParentID')) $fields->push(new HiddenField('ParentID'));
-			
-			$actions = new FieldSet();
-			
-			// Only show save button if not 'assets' folder
-			if($record->canEdit() && $id != 'root') {
-				$actions = new FieldSet(
-					new FormAction('save',_t('AssetAdmin.SAVEFOLDERNAME','Save folder name'))
-				);
-			}
-			
-			$form = new Form($this, "EditForm", $fields, $actions);
-			if($record->ID) {
-				$form->loadDataFrom($record);
-			} else {
-				$form->loadDataFrom(array(
-					"ID" => "root",
-					"URL" => Director::absoluteBaseURL() . 'assets/',
-				));
-			}
-			
-			if(!$record->canEdit()) {
-				$form->makeReadonly();
-			}
-		} else {
-			$form = $this->EmptyForm();
-		}
-		
-		return $form;
 	}
 		
 	/**
@@ -377,7 +327,7 @@ HTML;
 	 * @return Form
 	 */
 	function AddForm() {
-		$typeMap = array('Folder' => singleton('Folder')->i18n_singular_name());
+		$typeMap = array('Folder' => singleton($this->stat('tree_class'))->i18n_singular_name());
 		$typeField = new DropdownField('Type', false, $typeMap, 'Folder');
 		$form = new Form(
 			$this,
@@ -451,19 +401,7 @@ HTML;
 		
 		return $form;
 	}
-	
-	public function save($urlParams, $form) {
-		// Don't save the root folder - there's no database record
-		if($_REQUEST['ID'] == 'root') {
-			FormResponse::status_message('Saved', 'good');
-			return FormResponse::respond();
-		}
 		
-		$form->dataFieldByName('Title')->value = $form->dataFieldByName('Name')->value;
-		
-		return parent::save($urlParams, $form);
-	}
-	
 	/**
      * #################################
      *        Garbage collection.
