@@ -313,43 +313,6 @@ function unlockStatusMessage() {
 }
 
 /**
- * Submit the given form and evaluate the Ajax response.
- * Needs to be bound to an object with the following parameters to work:
- *  - form
- *  - action
- *  - verb
- *
- * The bound function can then be called, with the arguments passed
- */
-
-function ajaxSubmitForm(automated, callAfter, form, action, verb) {
-	var alreadySaved = false;
-	if($(form).elements.length < 2) alreadySaved = true;
-
-	if(alreadySaved) {
-		if(callAfter) callAfter();
-
-	} else {
-		statusMessage(verb + '...', '', true);
-
-		var success = function(response) {
-			Ajax.Evaluator(response);
-			if(callAfter) callAfter();
-		}
-
-		if(callAfter) success = success.bind({callAfter : callAfter});
-		Ajax.SubmitForm(form, action, {
-			onSuccess : success,
-			onFailure : function(response) {
-				errorMessage('Error ' + verb, response);
-			}
-		});
-	}
-
-	return false;
-};
-
-/**
  * Behaviour of the statuts message.
  */
 Behaviour.register({
