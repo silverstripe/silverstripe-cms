@@ -77,7 +77,7 @@
 		},
 		
 		/**
-		 * Suppress submission unless it is handled through save()
+		 * Suppress submission unless it is handled through ajaxSubmit()
 		 */
 		onsubmit: function(e) {
 			return false;
@@ -218,6 +218,17 @@
 		}
 	});
 	
+	/**
+	 * Link for editing the profile for a logged-in member
+	 * through a popup. Required "greybox" javascript library.
+	 */
+	$('#EditMemberProfile').concrete({
+		onclick: function(e) {
+			GB_show('Edit Profile', this.attr('href'), 290, 500);
+			return false;
+		}
+	});
+	
 })(jQuery);
 
 jQuery(document).ready(function() {
@@ -249,30 +260,8 @@ Behaviour.register({
 			Event.stop(event);
 		}
 	},
-
-	'#Menu-help' : {
-		onclick : function() {
-			var w = window.open(this.getElementsByTagName('a')[0].href, 'help');
-			w.focus();
-			return false;
-		}
-	},
-
-	'#Logo' : {
-		onclick : function() {
-			var w = window.open(this.getElementsByTagName('a')[0].href);
-			w.focus();
-			return false;
-		}
-	},
 	
-	'#EditMemberProfile': {
-		onclick: function(e) {
-			var el = Event.element(e);
-			GB_show('Edit Profile', el.attributes.href.value, 290, 500);
-			Event.stop(e);
-		}
-	}
+	
 
 });
 

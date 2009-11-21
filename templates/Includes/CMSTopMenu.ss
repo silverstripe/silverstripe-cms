@@ -1,6 +1,6 @@
 <div id="Logo" style="$LogoStyle">
 	<% if ApplicationLogoText %>
-	<a href="$ApplicationLink">$ApplicationLogoText</a><br />
+	<a href="$ApplicationLink" target="_blank">$ApplicationLogoText</a><br />
 	<% end_if %>
 </div>
 <ul id="MainMenu">
