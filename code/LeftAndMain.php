@@ -228,6 +228,7 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.js');
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.Tree.js');
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.EditForm.js');
+		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.AddForm.js');
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.BatchActions.js');
 		
 		Requirements::themedCSS('typography');
