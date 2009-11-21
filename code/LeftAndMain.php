@@ -98,6 +98,8 @@ class LeftAndMain extends Controller {
 	function init() {
 		parent::init();
 		
+		SSViewer::setOption('rewriteHashlinks', false);
+		
 		// set language
 		$member = Member::currentUser();
 		if(!empty($member->Locale)) {
