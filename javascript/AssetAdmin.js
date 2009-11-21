@@ -466,21 +466,6 @@ jQuery(document).ready(function() {
 	new CheckBoxRange($('Form_EditForm'), 'Files[]');
 });
 
-Behaviour.register({
-    '#Form_EditForm_delete_unused_thumbnails': {
-        onclick : function(event) {
-            Event.stop(event);
-            var options = {
-                method: 'get',
-                onSuccess: function(t) {
-                    eval(t.responseText);
-                }
-            };
-            new Ajax.Request('admin/assets/deleteunusedthumbnails',options);
-        }
-    }
-});
-
 function refreshAsset() {
 	frames[0].location.reload(0);
 	frames[1].location.reload(1);
