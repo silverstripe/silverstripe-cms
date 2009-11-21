@@ -683,19 +683,18 @@ JS;
 	/**
 	 * Ajax handler for updating the parent of a tree node
 	 */
-	public function ajaxupdateparent() {
-		$id = $_REQUEST['ID'];
-		$parentID = $_REQUEST['ParentID'];
-		if($parentID == 'root'){
-			$parentID = 0;
-		}
-		$_REQUEST['ajax'] = 1;
-		$cleanupJS = '';
-		
+	public function ajaxupdateparent($request) {
 		if (!Permission::check('SITETREE_REORGANISE') && !Permission::check('ADMIN')) {
-			FormResponse::status_message(_t('LeftAndMain.CANT_REORGANISE',"You do not have permission to rearange the site tree. Your change was not saved."),"bad");
-			return FormResponse::respond();
+			$this->response->setStatusCode(
+				403,
+				_t('LeftAndMain.CANT_REORGANISE',"You do not have permission to rearange the site tree. Your change was not saved.")
+			);
+			return;
 		}
+
+		$id = $request->requestVar('ID');
+		$parentID = $request->requestVar('ParentID');
+		$statusUpdates = array('modified'=>array());
 
 		if(is_numeric($id) && is_numeric($parentID) && $id != $parentID) {
 			$node = DataObject::get_by_id($this->stat('tree_class'), $id);
@@ -713,18 +712,33 @@ JS;
 					}
 				}
 
-				FormResponse::status_message(_t('LeftAndMain.SAVED','saved'), 'good');
-				if($cleanupJS) FormResponse::add($cleanupJS);
+		$node = DataObject::get_by_id($this->stat('tree_class'), $id);
+		if($node){
+			if($node && !$node->canEdit()) return Security::permissionFailure($this);
+			
+			$node->ParentID = $parentID;
+			$node->Status = "Saved (update)";
+			$node->write();
+			
+			$statusUpdates['modified'][$node->ID] = array(
+				'TreeTitle'=>$node->TreeTitle
+			);
 
-			}else{
-				FormResponse::status_message(_t('LeftAndMain.PLEASESAVE',"Please Save Page: This page could not be upated because it hasn't been saved yet."),"good");
-			}
-
-
-			return FormResponse::respond();
-		} else {
-			user_error("Error in ajaxupdateparent request; id=$id, parentID=$parentID", E_USER_ERROR);
+			$this->response->addHeader(
+				'X-Status',
+				_t('LeftAndMain.SAVED','saved')
+			);
+		}else{
+			$this->response->setStatusCode(
+				500,
+				_t(
+					'LeftAndMain.PLEASESAVE',
+					"Please Save Page: This page could not be upated because it hasn't been saved yet."
+				)
+			);
 		}
+		
+		return Convert::raw2json($statusUpdates);
 	}
 
 	/**
@@ -732,53 +746,44 @@ JS;
 	 * $_GET[ID]: An array of node ids in the correct order
 	 * $_GET[MovedNodeID]: The node that actually got moved
 	 */
-	public function ajaxupdatesort() {
+	public function ajaxupdatesort($request) {
+		if (!Permission::check('SITETREE_REORGANISE') && !Permission::check('ADMIN')) {
+			$this->response->setStatusCode(
+				403,
+				_t('LeftAndMain.CANT_REORGANISE',"You do not have permission to rearange the site tree. Your change was not saved.")
+			);
+			return;
+		}
+
 		$className = $this->stat('tree_class');
 		$counter = 0;
-		$js = '';
-		$_REQUEST['ajax'] = 1;
+		$statusUpdates = array('modified'=>array());
+
+		if(!is_array($request->requestVar('ID'))) return false;
 		
-		if (!Permission::check('SITETREE_REORGANISE') && !Permission::check('ADMIN')) {
-			FormResponse::status_message(_t('LeftAndMain.CANT_REORGANISE',"You do not have permission to rearange the site tree. Your change was not saved."),"bad");
-			return FormResponse::respond();
+		//Sorting root
+		if($request->requestVar('MovedNodeID')==0){ 
+			$movedNode = DataObject::get($className, "\"ParentID\"=0");				
+		}else{
+			$movedNode = DataObject::get_by_id($className, $request->requestVar('MovedNodeID'));
+		}
+		foreach($request->requestVar('ID') as $id) {
+			if($id == $movedNode->ID) {
+				$movedNode->Sort = ++$counter;
+				$movedNode->Status = "Saved (update)";
+				$movedNode->write();
+				$statusUpdates['modified'][$movedNode->ID] = array(
+					'TreeTitle'=>$movedNode->TreeTitle
+				);
+			} else if(is_numeric($id)) {
+				// Nodes that weren't "actually moved" shouldn't be registered as 
+				// having been edited; do a direct SQL update instead
+				++$counter;
+				DB::query("UPDATE \"$className\" SET \"Sort\" = $counter WHERE \"ID\" = '$id'");
+			}
 		}
 
-		if(is_array($_REQUEST['ID'])) {
-			if($_REQUEST['MovedNodeID']==0){ //Sorting root
-				$movedNode = DataObject::get($className, "\"ParentID\"=0");				
-			}else{
-				$movedNode = DataObject::get_by_id($className, $_REQUEST['MovedNodeID']);
-			}
-			foreach($_REQUEST['ID'] as $id) {
-				if($id == $movedNode->ID) {
-					$movedNode->Sort = ++$counter;
-					$movedNode->Status = "Saved (update)";
-					$movedNode->write();
-
-					$title = Convert::raw2js($movedNode->TreeTitle);
-					$js .="$('sitetree').setNodeTitle($movedNode->ID, \"$title\");\n";
-
-				// Nodes that weren't "actually moved" shouldn't be registered as having been edited; do a direct SQL update instead
-				} else if(is_numeric($id)) {
-					++$counter;
-					DB::query("UPDATE \"$className\" SET \"Sort\" = $counter WHERE \"ID\" = '$id'");
-				}
-			}
-			// Virtual pages require selected to be null if the page is the same.
-			FormResponse::add(
-				"if( $('sitetree').selected && $('sitetree').selected[0]){
-					var idx =  $('sitetree').selected[0].getIdx();
-					if(idx){
-						$('Form_EditForm').getPageFromServer(idx);
-					}
-				}\n" . $js
-			);
-			FormResponse::status_message(_t('LeftAndMain.SAVED'), 'good');
-		} else {
-			FormResponse::error(_t('LeftAndMain.REQUESTERROR',"Error in request"));
-		}
-
-		return FormResponse::respond();
+		return Convert::raw2json($statusUpdates);
 	}
 	
 	public function CanOrganiseSitetree() {

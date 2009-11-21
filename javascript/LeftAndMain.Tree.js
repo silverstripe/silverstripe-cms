@@ -445,6 +445,8 @@ SiteTreeNode.prototype = {
 	 * Drag'n'drop handlers - Ajax saving
 	 */
 	onParentChanged : function(node, oldParent, newParent) {
+		var self = this;
+		
 		if(newParent.id.match(/^record-new/)) {
 			alert("You must save the page before dragging children into it");
 			return false;
@@ -465,18 +467,30 @@ SiteTreeNode.prototype = {
 			return false;
 		}
 		
-		var currentlyOpenPageID = 0;
-		if($('Form_EditForm').elements.ID) currentlyOpenPageID = $('Form_EditForm').elements.ID.value;
-
-		statusMessage(ss.i18n._t('CMSMAIN.SAVING'), '', true);
-		new Ajax.Request(SiteTreeHandlers.parentChanged_url, {
-			method : 'post', 
-			postBody : 'ID=' + node.getIdx() + '&ParentID=' + newParent.getIdx() + '&CurrentlyOpenPageID=' + currentlyOpenPageID,
-			onSuccess : Ajax.Evaluator,
-			onFailure : function(response) {
-				errorMessage('error saving parent', response);
-			}
-		});
+		jQuery.post(
+			SiteTreeHandlers.parentChanged_url,
+			'ID=' + node.getIdx() + '&ParentID=' + newParent.getIdx(),
+			function(data, status) {
+				// TODO This should use a more common serialization in a new tree library
+				if(data.modified) {
+					for(var id in data.modified) {
+						self.tree.setNodeTitle(id, data.modified[id]['TreeTitle']);
+					}
+				}
+				
+				// Check if current page still exists, and refresh it.
+				// Otherwise remove the current form
+				var selectedNode = self.tree.firstSelected();
+				if(selectedNode) {
+					var selectedNodeId = self.tree.getIdxOf(selectedNode);
+					if(data.modified[selectedNode.getIdx()]) {
+						// only if the current page was modified
+						selectedNode.selectTreeNode();
+					} 
+				} 
+			},
+			'json'
+		);
 		
 		return true;
 	},
@@ -487,8 +501,8 @@ SiteTreeNode.prototype = {
 	 * movedNode is the node that actually got moved to trigger this resorting
 	 */
 	onOrderChanged : function(nodeList, movedNode) {
-		statusMessage(ss.i18n._t('CMSMAIN.SAVING'), '', true);
-
+		var self = this;
+		
 		var i, parts = Array();
 		sort = 0;
 		
@@ -497,10 +511,14 @@ SiteTreeNode.prototype = {
 				parts[parts.length] = 'ID[]=' + nodeList[i].getIdx();
 			
 				// Ensure that the order of new records is preserved when they are moved THEN saved
-				if( nodeList[i].id.indexOf("record-new") == 0 )
-					if( $('Form_EditForm_ID') && ( 'record-' + $('Form_EditForm_ID').value == nodeList[i].id ) )
-						if( $('Form_EditForm_Sort') )
-							$('Form_EditForm_Sort').value = ++sort;
+				if(
+					nodeList[i].id.indexOf("record-new") == 0
+					&& $('Form_EditForm_ID') 
+					&& ('record-' + $('Form_EditForm_ID').value == nodeList[i].id)
+					&& $('Form_EditForm_Sort')
+				) {
+					$('Form_EditForm_Sort').value = ++sort
+				}
 			}
 		}
 		
@@ -508,21 +526,31 @@ SiteTreeNode.prototype = {
 			parts[parts.length] = 'MovedNodeID=' + movedNode.getIdx();
 		}
 
-		var currentlyOpenPageID = 0;
-		if($('Form_EditForm').elements.ID) currentlyOpenPageID = $('Form_EditForm').elements.ID.value;
-
 		if(parts) {
-			new Ajax.Request(SiteTreeHandlers.orderChanged_url, {
-				method : 'post', 
-				postBody : parts.join('&') + '&CurrentlyOpenPageID=' + currentlyOpenPageID,
-				/*onSuccess : function(response) {
-					// statusMessage(response.responseText, 'good');
-				},*/
-				onSuccess: Ajax.Evaluator,
-				onFailure : function(response) {
-					errorMessage('error saving order', response);
-				}
-			});
+			jQuery.post(
+				SiteTreeHandlers.orderChanged_url,
+				parts.join('&'),
+				function(data, status) {
+					// TODO This should use a more common serialization in a new tree library
+					if(data.modified) {
+						for(var id in data.modified) {
+							self.tree.setNodeTitle(id, data.modified[id]['TreeTitle']);
+						}
+					}
+
+					// Check if current page still exists, and refresh it.
+					// Otherwise remove the current form
+					var selectedNode = self.tree.firstSelected();
+					if(selectedNode) {
+						var selectedNodeId = self.tree.getIdxOf(selectedNode);
+						if(data.modified[selectedNode.getIdx()]) {
+							// only if the current page was modified
+							selectedNode.selectTreeNode();
+						} 
+					} 
+				},
+				'json'
+			);
 		}
 		
 		return true;
