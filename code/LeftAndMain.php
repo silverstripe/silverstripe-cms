@@ -186,8 +186,12 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/effects.slide.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/effects.drop.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/effects.scale.js');
+		
 		Requirements::javascript(CMS_DIR . '/thirdparty/jquery-layout/jquery.layout.js');
+		Requirements::javascript(CMS_DIR . '/thirdparty/jquery-layout/jquery.layout.state.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/json-js/json2.js');
 		Requirements::javascript(CMS_DIR . '/javascript/jquery-fitheighttoparent/jquery.fitheighttoparent.js');
+		
 		Requirements::javascript(CMS_DIR . '/javascript/ssui.core.js');
 		// @todo Load separately so the CSS files can be inlined
 		Requirements::css(SAPPHIRE_DIR . '/thirdparty/jquery-ui-themes/smoothness/ui.all.css');
