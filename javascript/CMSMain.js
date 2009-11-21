@@ -11,9 +11,8 @@ var ss_MainLayout;
 	 * with tree on left and main edit form on the right.
 	 * @name ss.CMSMain
 	 */
-	$('body.CMSMain').concrete('ss', function($){return
-		/** @lends ss.CMSMain */
-		{
+	$('body.CMSMain').concrete('ss', function($){
+		return/** @lends ss.CMSMain */{
 
 		/**
 		 * Reference to jQuery.layout element
@@ -119,9 +118,8 @@ var ss_MainLayout;
 	 * @class CMS-specific form behaviour
 	 * @name ss.EditForm
 	 */
-	$('#Form_EditForm').concrete('ss', function($){return
-		/** @lends ss.EditForm */
-		{
+	$('#Form_EditForm').concrete('ss', function($){
+		return/** @lends ss.EditForm */{
 		onmatch: function() {
 			// Alert the user on change of page-type - this might have implications
 			// on the available form fields etc.
@@ -140,9 +138,8 @@ var ss_MainLayout;
 	 * the two radiobuttons and setting the hidden "ParentID" field
 	 * @name ss.EditForm.ParentType
 	 */
-	$('#Form_EditForm_ParentType').concrete('ss', function($){return
-		/** @lends ss.EditForm.ParentType */
-		{
+	$('#Form_EditForm_ParentType').concrete('ss', function($){
+		return/** @lends ss.EditForm.ParentType */{
 		onmatch : function() {
 			var parentTypeRootEl = $('#Form_EditForm_ParentType_root');
 			var parentTypeSubpageEl = $('#Form_EditForm_ParentType_subpage');
@@ -175,9 +172,8 @@ var ss_MainLayout;
 	 * Visible on readonly older versions of a specific page at the moment.
 	 * @name ss.Form_EditForm_action_email
 	 */
-	$('#Form_EditForm .Actions #Form_EditForm_action_email').concrete('ss', function($){return
-		/** @lends ss.Form_EditForm_action_email */
-		{
+	$('#Form_EditForm .Actions #Form_EditForm_action_email').concrete('ss', function($){
+		return/** @lends ss.Form_EditForm_action_email */{
 		onclick: function(e) {
 			window.open(
 				'mailto:?subject=' 
@@ -196,9 +192,8 @@ var ss_MainLayout;
 	 * Used for readonly older versions of a specific page.
 	 * @name ss.Form_EditForm_action_print
 	 */
-	$('#Form_EditForm .Actions #Form_EditForm_action_print').concrete('ss', function($){return
-		/** @lends ss.Form_EditForm_action_print */
-		{
+	$('#Form_EditForm .Actions #Form_EditForm_action_print').concrete('ss', function($){
+		return/** @lends ss.Form_EditForm_action_print */{
 		onclick: function(e) {
 			var printURL = $(this[0].form).attr('action').replace(/\?.*$/,'') 
 				+ '/printable/' 
@@ -215,9 +210,8 @@ var ss_MainLayout;
 	 * @class A "rollback" to a specific version needs user confirmation.
 	 * @name ss.Form_EditForm_action_rollback
 	 */
-	$('#Form_EditForm .Actions #Form_EditForm_action_rollback').concrete('ss', function($){return
-		/** @lends ss.Form_EditForm_action_rollback */
-		{
+	$('#Form_EditForm .Actions #Form_EditForm_action_rollback').concrete('ss', function($){
+		return/** @lends ss.Form_EditForm_action_rollback */{
 		onclick: function(e) {
 			// @todo i18n
 			return confirm("Do you really want to copy the published content to the stage site?");
@@ -228,9 +222,8 @@ var ss_MainLayout;
 	 * @class All forms in the right content panel should have closeable jQuery UI style titles.
 	 * @name ss.contentPanel.form
 	 */
-	$('#contentPanel form').concrete('ss', function($){return
-		/** @lends ss.contentPanel.form */
-		{
+	$('#contentPanel form').concrete('ss', function($){
+		return/** @lends ss.contentPanel.form */{
 		onmatch: function() {
 		  // Style as title bar
 			this.find(':header:first').titlebar({
@@ -251,9 +244,8 @@ var ss_MainLayout;
 	 * similar to "Smart Search" criteria in iTunes.
 	 * @name ss.Form_SeachTreeForm
 	 */
-	$('#Form_SearchTreeForm').concrete('ss', function($) {return
-		/** @lends ss.Form_SeachTreeForm */
-		{
+	$('#Form_SearchTreeForm').concrete('ss', function($) {
+		return/** @lends ss.Form_SeachTreeForm */{
 		
 		/**
 		 * @type DOMElement

@@ -11,9 +11,8 @@
 	 * panel and an edit form.
 	 * @name ss.LeftAndMain
 	 */
-	$('.LeftAndMain').concrete('ss', function($){return
-		/** @lends ss.EditMemberProfile */
-		{
+	$('.LeftAndMain').concrete('ss', function($){
+		return/** @lends ss.EditMemberProfile */ {
 		
 		/**
 		 * @type Number
@@ -98,9 +97,8 @@
 	 * Takes care of resizing tabsets within the layout container.
 	 * @name ss.Form_EditForm
 	 */
-	$('#Form_EditForm').concrete('ss',function($){return
-		/** @lends ss.Form_EditForm */
-		{	
+	$('#Form_EditForm').concrete('ss',function($){
+		return/** @lends ss.Form_EditForm */{	
 		
 		/**
 		 * @type String HTML text to show when the form has been deleted.
@@ -249,9 +247,8 @@
 	 * clicked button from a form.onsubmit event.
 	 * @name ss.Form_EditForm.Actions.submit
 	 */
-	$('#Form_EditForm .Actions :submit').concrete('ss', function($){return
-		/** @lends ss.Form_EditForm.Actions.submit */
-		{
+	$('#Form_EditForm .Actions :submit').concrete('ss', function($){
+		return/** @lends ss.Form_EditForm.Actions.submit */{
 		onclick: function(e) {
 			$(this[0].form).ajaxSubmit(this);
 			return false;
@@ -262,9 +259,8 @@
 	 * @class Container for tree actions like "create", "search", etc.
 	 * @name ss.TreeActions
 	 */
-	$('#TreeActions').concrete('ss', function($){return
-		/** @lends ss.TreeActions */
-		{
+	$('#TreeActions').concrete('ss', function($){
+		return/** @lends ss.TreeActions */{
 			
 		/**
 		 * Setup "create", "search", "batch actions" layers above tree.
@@ -284,9 +280,8 @@
 	 * through a modal dialog.
 	 * @name ss.EditMemberProfile
 	 */
-	$('a#EditMemberProfile').concrete('ss', function($){return
-		/** @lends ss.EditMemberProfile */
-		{
+	$('a#EditMemberProfile').concrete('ss', function($){
+		return/** @lends ss.EditMemberProfile */{
 		
 		onmatch: function() {
 			var self = this;
