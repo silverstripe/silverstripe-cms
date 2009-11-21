@@ -71,9 +71,10 @@ var ss_MainLayout;
 			
 				// trigger resize whenever new tabs are shown
 				// @todo This is called multiple times when tabs are loaded
-				this.find('.ss-tabset').bind('tabsshow', function() {self._resizeChildren();});
+				this.find('.ss-tabset').live('tabsshow', function() {self._resizeChildren();});
 			
-				$('#Form_EditForm').bind('loadnewpage', function() {self._resizeChildren();});
+				// @todo Doesn't resize properly if the response doesn't contain a tabset (see above)
+				//$('#Form_EditForm').bind('loadnewpage', function() {self._resizeChildren();});
 				
 				this._super();
 			},
