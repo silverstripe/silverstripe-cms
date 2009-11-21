@@ -4,10 +4,15 @@
 	}
 </style>
 
-<h2><% _t('REPORTS','Reports') %></h2>
-
 <div id="treepanes">
-<div id="sitetree_holder">
-	<% include ReportAdmin_SiteTree %>
-</div>
+	<h3>
+		<a href="#"><% _t('REPORTS','Reports') %></a>
+	</h3>
+	<div id="sitetree_holder">
+		<div id="sitetree_and_tools">
+			<div id="sitetree_ul">
+				<% include ReportAdmin_SiteTree %>
+			</div>
+		</div>
+	</div>
 </div>

@@ -24,9 +24,6 @@ class ReportAdmin extends LeftAndMain {
 	public function init() {
 		parent::init();
 		
-		Requirements::javascript(CMS_DIR . '/javascript/ReportAdmin_left.js');
-		Requirements::javascript(CMS_DIR . '/javascript/ReportAdmin_right.js');
-
 		Requirements::css(CMS_DIR . '/css/ReportAdmin.css');		
 		
 		// Set custom options for TinyMCE specific to ReportAdmin
@@ -35,6 +32,7 @@ class ReportAdmin extends LeftAndMain {
 		
 		// Always block the HtmlEditorField.js otherwise it will be sent with an ajax request
 		Requirements::block(SAPPHIRE_DIR . '/javascript/HtmlEditorField.js');
+		Requirements::javascript(CMS_DIR . '/javascript/ReportAdmin.Tree.js');
 	}
 	
 	/**
@@ -112,97 +110,63 @@ class ReportAdmin extends LeftAndMain {
 				$processedReports[] = new $subClass();
 			}
 		}
-		
 		$reports = new DataObjectSet($processedReports);
 		
 		return $reports;
 	}
 	
 	/**
-	 * Show a report based on the URL query string.
+	 * Get EditForm for the class specified in request or in session variable
 	 *
-	 * @param SS_HTTPRequest $request The HTTP request object
-	 */
-	public function show($request) {
-		$params = $request->allParams();
-		
-		return $this->showWithEditForm($params, $this->reportEditFormFor($params['ID']));	
-	}
-
-	/**
-	 * @TODO What does this do?
-	 *
-	 * @param unknown_type $params
-	 * @param unknown_type $editForm
-	 * @return unknown
-	 */
-	protected function showWithEditForm($params, $editForm) {
-		if(isset($params['ID'])) Session::set('currentPage', $params['ID']);
-		if(isset($params['OtherID'])) Session::set('currentOtherID', $params['OtherID']);
-		
-		if(Director::is_ajax()) {
-			SSViewer::setOption('rewriteHashlinks', false);
-			
-			return $form->formHtmlContent();
-		}
-		
-		return array();
-	}
-	
-	/**
-	 * For the current report that the user is viewing,
-	 * return a Form instance with the fields for that
-	 * report.
-	 *
+	 * @param HTTPRequest
 	 * @return Form
 	 */
-	public function EditForm() {
-		$ids = array();
-		$id = $this->currentPageID();
-		$subClasses = $this->getReportClassNames();
+	public function EditForm($request = null) {
+		$className = Session::get('currentPage');
+		$requestId = $request ? $request->requestVar('ID') : null;
 		
-		if($subClasses) {
-			foreach($subClasses as $subClass) {
-				$obj = new $subClass();
-				$ids[] = $obj->ID();
-			}
-		}
+		if ( $requestId )
+			return $this->getEditForm($requestId);
 		
-		if($id && in_array($id, $ids)) return $this->reportEditFormFor($id);
-		else return false;
+		// $className can be null
+		return $this->getEditForm($className);
+
 	}
 	
 	/**
 	 * Return a Form instance with fields for the
 	 * particular report currently viewed.
 	 * 
-	 * @TODO Dealing with multiple data types for the
-	 * $id parameter is confusing. Ideally, it should
-	 * deal with only one.
-	 *
-	 * @param id|string $id The ID of the report, or class name
+	 * @param string $className Class of the report to fetch
 	 * @return Form
 	 */
-	public function reportEditFormFor($id) {
-		$page = false;
-		$fields = new FieldSet();
-		$actions = new FieldSet();
+	public function getEditForm($className = null) {
+		if (!$className) {
+			return $form = $this->EmptyForm();
+		}
 		
-		if(is_numeric($id)) $page = DataObject::get_by_id('SiteTree', $id);
-		$reportClass = is_object($page) ? 'SS_Report_' . $page->ClassName : $id;
-		
-		$obj = new $reportClass();
-		if($obj) $fields = $obj->getCMSFields();
-		
+		if (!class_exists($className)) {
+			die("$className does not exist");
+		}
+
+		Session::set('currentPage', $className);
+
+		$obj = new $className();
+		if(!$obj->canView()) return Security::permissionFailure($this);
+
+		$fields = $obj->getCMSFields();
+
 		$idField = new HiddenField('ID');
-		$idField->setValue($id);
+		$idField->setValue($className);
 		$fields->push($idField);
-		
+
+		$actions = new FieldSet();
+
 		$form = new Form($this, 'EditForm', $fields, $actions);
-		
+
 		return $form;
 	}
-	
+
 	/**
 	 * Determine if we have reports and need
 	 * to display the "Reports" main menu item
