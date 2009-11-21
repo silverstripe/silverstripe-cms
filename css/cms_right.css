@@ -366,11 +366,12 @@
 	width: auto;
 	background: #f4f3eb;
 	border: 1px solid #a9a67d;
-	margin-top: 6px;
 	padding: 2px 20px 2px 20px;
 	font-size: 14px;
 	font-weight: bold;
 	line-height: 1.5;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
 }
 
 .notice-item-close {
