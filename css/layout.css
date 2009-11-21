@@ -125,7 +125,7 @@ body {
 	}
 	
 	input.action.loading, input.action.loading:hover {
-        padding-left: 22px;
+        padding-left: 22px !important;
         background: url(../images/network-save.gif) 3px 2px no-repeat;
 	}
 
