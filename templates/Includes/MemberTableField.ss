@@ -1,4 +1,4 @@
-<div id="$id" class="$CSSClasses" href="$CurrentLink">
+<div id="$id" class="$CSSClasses $extraClass field" href="$CurrentLink">
 	<div class="MemberFilter filterBox">
 		$SearchForm
 	</div>
