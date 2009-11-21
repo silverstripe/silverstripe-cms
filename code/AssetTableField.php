@@ -244,6 +244,65 @@ class AssetTableField extends ComplexTableField {
 		return $fieldContainer->FieldHolder();
 	}
 	
+	/**
+	 * @return FormField|null
+	 */
+	function DeleteMarkedButton() {
+		if(!$this->isReadonly() ) {
+			$deleteButton = new InlineFormAction(
+				'deletemarked',
+				_t('Folder.DELSELECTED','Delete selected files'), 
+				'delete'
+			);
+			$deleteButton->includeDefaultJS(false);
+			return $deleteButton;
+		}
+	}
+	
+	/**
+	 * @return string HTML
+	 */
+	public function deletemarked($request) {
+		$fileIDs = $request->requestVar($this->Name());
+		$numFiles = 0;
+		$brokenPageList = '';
+
+		if($fileIDs && count($fileIDs)) {
+			$files = DataObject::get(
+				"File", 
+				sprintf("\"File\".\"ID\" IN (%s)", Convert::raw2sql(implode(',', $fileIDs)))
+			);
+			if($files) {
+				foreach($files as $file) {
+					$file->delete();
+					$numFiles++;
+				}
+				if($brokenPages = Notifications::getItems('BrokenLink')) {
+					$brokenPageList = "  ". _t('AssetAdmin.NOWBROKEN', 'These pages now have broken links:') . '<ul>';
+					foreach($brokenPages as $brokenPage) {
+						$brokenPageList .= "<li style=&quot;font-size: 65%&quot;>" . $brokenPage->Breadcrumbs(3, true) . '</li>';
+					}
+					$brokenPageList .= '</ul>';
+					Notifications::notifyByEmail("BrokenLink", "Page_BrokenLinkEmail");
+				} else {
+					$brokenPageList = '';
+				}
+
+			}
+		}
+
+		$response = $this->form->Controller()->getResponse();
+		$response->addHeader(
+			'X-Status',
+			sprintf(
+				_t('AssetAdmin.DELETEDX',"Deleted %s file(s) %s"),
+				$numFiles,
+				$brokenPageList
+			)
+		);
+		
+		return $response->output();
+	}
 }
 
 ?>

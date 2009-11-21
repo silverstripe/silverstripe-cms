@@ -359,62 +359,7 @@ HTML;
 			return FormResponse::respond();
 		}
 	}
-
-	/**
-	 * Perform the "delete marked" action.
-	 * Called and returns in same way as 'save' function
-	 */
-	public function deletemarked($urlParams, $form) {
-		$fileList = "'" . ereg_replace(' *, *',"','",trim(addslashes($_REQUEST['FileIDs']))) . "'";
-		$numFiles = 0;
-		$folderID = 0;
-		$deleteList = '';
-		$brokenPageList = '';
-
-		if($fileList != "''") {
-			$files = DataObject::get("File", "\"File\".\"ID\" IN ($fileList)");
-			if($files) {
-				foreach($files as $file) {
-					if($file instanceof Image) {
-						$file->deleteFormattedImages();
-					}
-					if(!$folderID) {
-						$folderID = $file->ParentID;
-					}
-					$file->delete();
-					$numFiles++;
-				}
-				if($brokenPages = Notifications::getItems('BrokenLink')) {
-					$brokenPageList = "  ". _t('AssetAdmin.NOWBROKEN', 'These pages now have broken links:') . '</ul>';
-					foreach($brokenPages as $brokenPage) {
-						$brokenPageList .= "<li style=&quot;font-size: 65%&quot;>" . $brokenPage->Breadcrumbs(3, true) . '</li>';
-					}
-					$brokenPageList .= '</ul>';
-					Notifications::notifyByEmail("BrokenLink", "Page_BrokenLinkEmail");
-				} else {
-					$brokenPageList = '';
-				}
-				
-				$deleteList = '';
-				if($folderID) {
-					$remaining = DB::query("SELECT COUNT(*) FROM \"File\" WHERE \"ParentID\" = $folderID")->value();
-					if(!$remaining) $deleteList .= "Element.removeClassName(\$('sitetree').getTreeNodeByIdx('$folderID').getElementsByTagName('a')[0],'contents');";
-				}
-			} else {
-				user_error("No files in $fileList could be found!", E_USER_ERROR);
-			}
-		}
 		
-		$message = sprintf(_t('AssetAdmin.DELETEDX',"Deleted %s files.%s"),$numFiles,$brokenPageList) ;
-		
-		FormResponse::add($deleteList);
-		FormResponse::status_message($message, "good");
-		FormResponse::add("$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value)");
-		
-		return FormResponse::respond();	
-	}
-	
-	
 	/**
 	 * Returns the content to be placed in Form_SubForm when editing a file.
 	 * Called using ajax.

@@ -1,3 +1,47 @@
+(function($) {
+	$.concrete('ss', function($){
+		
+		$('.AssetTableField :checkbox').concrete({
+			onchange: function() {
+				var container = this.parents('.AssetTableField');
+				var input = container.find('input#deletemarked');
+				if(container.find(':input[name=Files\[\]]:checked').length) {
+					input.removeAttr('disabled');
+				} else {
+					input.attr('disabled', 'disabled');
+				}
+			}
+		})
+		
+		/**
+		 * Batch delete files marked by checkboxes in the table.
+		 * Refreshes the form field afterwards via ajax.
+		 */
+		$('.AssetTableField input#deletemarked').concrete({
+			onmatch: function() {
+				this.attr('disabled', 'disabled');
+				this._super();
+			},
+			onclick: function(e) {
+				if(!confirm(ss.i18n._t('AssetTableField.REALLYDELETE'))) return false;
+				
+				var container = this.parents('.AssetTableField');
+				var self = this;
+				this.addClass('loading');
+				$.post(
+					container.attr('href') + '/deletemarked',
+					this.parents('form').serialize(),
+					function(data, status) {
+						self.removeClass('loading');
+						container[0].refresh();
+					}
+				);
+				return false;
+			}
+		});
+	});
+}(jQuery));
+
 AssetTableField = Class.create();
 AssetTableField.applyTo('#Form_EditForm_Files');
 AssetTableField.prototype = {
@@ -94,46 +138,5 @@ FileFilterButton.prototype = {
 		}
 
 		return false;	
-	}
-}
-
-MarkingPropertiesButton = Class.create();
-MarkingPropertiesButton.applyTo(
-	'#Form_EditForm_deletemarked', 
-	"Please select some files to delete!", 'deletemarked', 'Do you really want to delete the marked files?'
-);
-
-MarkingPropertiesButton.prototype = {
-	initialize: function(noneCheckedError, action, confirmMessage) {
-		this.noneCheckedError = noneCheckedError;
-		this.action = action;
-		this.confirmMessage = confirmMessage;
-	},
-	
-	onclick: function() {
-		var i, list = "", checkboxes = $('Form_EditForm').elements['Files[]'];
-		if(!checkboxes) checkboxes = [];
-		if(!checkboxes.length) checkboxes = [ checkboxes ];
-		for(i=0;i<checkboxes.length;i++) {
-			if(checkboxes[i].checked) list += (list?',':'') + checkboxes[i].value;
-		}
-		
-		if(list == "") {
-			alert(this.noneCheckedError);
-			return false;
-			
-		} else {
-			$('Form_EditForm_FileIDs').value = list;
-		}
-		// If there is a confirmation message, show it before submitting
-		if('' != this.confirmMessage) {
-			// Only submit if OK button is clicked
-			if (confirm(this.confirmMessage)) {
-				$('Form_EditForm').save(false, null, this.action);
-			}
-		} else {
-			$('Form_EditForm').save(false, null, this.action);
-		}
-		return false;
 	}
 }

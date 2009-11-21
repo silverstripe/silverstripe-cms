@@ -30,4 +30,10 @@
 			<% end_if %>
 		</tbody>
 	</table>
+	<div class="utility">
+		$DeleteMarkedButton
+		<% control Utility %>
+			<span class="item"><a href="$Link">$Title</a></span>
+		<% end_control %>
+	</div>
 </div>
