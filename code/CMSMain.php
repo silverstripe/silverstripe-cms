@@ -1204,6 +1204,7 @@ JS;
 			return new HTTPResponse("Please pass an ID in the form content", 400);
 		}
 		
+		$id = (int)$data['ID'];
 		$restoredPage = Versioned::get_latest_version("SiteTree", $id);
 		if(!$restoredPage) 	return new HTTPResponse("SiteTree #$id not found", 400);
 		
@@ -1416,7 +1417,7 @@ class CMSMainMarkingFilter {
 					break;
 				// Match against exact ClassName
 				case 'ClassName':
-					if($val != 'All') {
+					if($val && $val != 'All') {
 						$where[] = "\"ClassName\" = '$val'";
 					}
 					break;
@@ -1429,7 +1430,7 @@ class CMSMainMarkingFilter {
 		}
 		
 		$where = empty($where) ? '' : 'WHERE (' . implode(') AND (',$where) . ')';
-		
+
 		$parents = array();
 		
 		/* Do the actual search */
