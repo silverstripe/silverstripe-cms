@@ -70,12 +70,10 @@ class AssetAdmin extends LeftAndMain {
 	function init() {
 		parent::init();
 		
-		if(!file_exists(ASSETS_PATH)) {
-			mkdir(ASSETS_PATH);
-		}
-
 		// needed for MemberTableField (Requirements not determined before Ajax-Call)
 		Requirements::css(SAPPHIRE_DIR . "/css/ComplexTableField.css");
+		// Create base folder if it doesnt exist already
+		if(!file_exists(ASSETS_PATH)) Filesystem::makeFolder(ASSETS_PATH);
 
 		Requirements::javascript(CMS_DIR . "/javascript/AssetAdmin.js");
 
