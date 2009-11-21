@@ -336,16 +336,13 @@ class LeftAndMain extends Controller {
 		// TODO Necessary for TableListField URLs to work properly
 		if($request->param('ID')) $this->setCurrentPageID($request->param('ID'));
 		
-		$form = $this->getEditForm($request->param('ID'));
-		
 		if(Director::is_ajax()) {
 			SSViewer::setOption('rewriteHashlinks', false);
+			$form = $this->getEditForm($request->param('ID'));
 			return $form->formHtmlContent();
 		} else {
 			// Rendering is handled by template, which will call EditForm() eventually
-			return $this->customise(array(
-				'EditForm' => $form
-			))->renderWith($this->getViewer('show'));
+			return $this->renderWith($this->getViewer('show'));
 		}
 	}
 
