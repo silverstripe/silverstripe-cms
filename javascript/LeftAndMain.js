@@ -404,7 +404,7 @@ var ss_MainLayout;
 		};
 	});
 		
-})(jQuery);
+}(jQuery));
 
 // Backwards compatibility
 var statusMessage = function(text, type) {
