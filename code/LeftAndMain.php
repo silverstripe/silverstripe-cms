@@ -352,8 +352,8 @@ class LeftAndMain extends Controller {
 	/**
 	 * @deprecated 2.4 Please use show()
 	 */
-	public function getitem() {
-		$form = $this->getEditForm();
+	public function getitem($request) {
+		$form = $this->getEditForm($request->getVar('ID'));
 		if($form) return $form->formHtmlContent();
 		else return "";
 	}
@@ -748,10 +748,10 @@ JS;
 
 	public function getEditForm($id = null) {
 		if(!$id) $id = $this->currentPageID();
-		
-		$record = ($id && $id != "root") ? DataObject::get_by_id($this->stat('tree_class'), $id) : null;
+
+		$record = ($id && $id != "root") ? $this->getRecord($id) : null;
 		if($record && !$record->canView()) return Security::permissionFailure($this);
-		
+
 		if($record) {
 			$fields = $record->getCMSFields();
 			if ($fields == null) {
