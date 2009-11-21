@@ -133,9 +133,9 @@ TreeAPI.prototype = {
 		});
 	},
 	
-	setNodeIcon: function(idx, oldClassName, newClassName) {
+	setNodeIcon: function(idx, newClassName) {
 		this.performOnTreeNode(idx, function(treeNode) {
-			treeNode.className = treeNode.className.replace(oldClassName,newClassName);
+			treeNode.className = treeNode.className.replace(/(class-)[^\s]*/,'$1' + newClassName);
 			treeNode.aSpan.className = 'a ' + treeNode.className.replace('closed','spanClosed');
 			var aTag = treeNode.getElementsByTagName('a')[0];
 			aTag.title = 'Page type: ' + newClassName;
@@ -149,7 +149,11 @@ TreeAPI.prototype = {
 	setNodeParentID: function (idx, parentID) {
 		var treeNode = this.getTreeNodeByIdx(idx);
 		var parentNode = this.getTreeNodeByIdx(parentID);
-		parentNode.appendTreeNode(treeNode);
+		var currentParentNode = jQuery(treeNode).parents('li')[0];
+		// Only change parent node if its different than the current,
+		// otherwise we affect the sort order unnecessarily due to
+		// appendTreeNode() not looking at existing sorts
+		if(!currentParentNode || parentNode != currentParentNode) parentNode.appendTreeNode(treeNode);
 	},
 	
 	setCurrentByIdx : function(idx) {
