@@ -220,7 +220,8 @@
 			// All tab contents are closed by default.
 			this.tabs({
 				collapsible: true,
-				selected: null
+				selected: parseInt(jQuery.cookie('ui-tabs-TreeActions')) || null,
+				cookie: { expires: 30, path: '/', name: 'ui-tabs-TreeActions' }
 			});
 		}
 	}});

@@ -20,9 +20,6 @@
 			});
 
 			this._resizeChildren();
-			
-			// save cookie state of all tabs
-			$('.ss-tabset').tabs('option', 'cookie', { expires: 30 });
 
 			this._super();
 		},
