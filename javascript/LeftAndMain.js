@@ -196,7 +196,6 @@ var ss_MainLayout;
 	$('.LeftAndMain :submit, .LeftAndMain button, .LeftAndMain :reset').concrete('ss', function($){
 		return/** @lends ss.LeftAndMain.Buttons */{
 			onmatch: function() {
-				console.debug(this);
 				this.addClass(
 					'ui-state-default ' +
 					'ui-corner-all'
