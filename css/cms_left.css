@@ -191,9 +191,6 @@ ul.tree span.a span.modified,
 	background-color: #eee;
 }
 
-#treepanes {
-	background-color: #fff;
-}
 #treepanes .ui-accordion-content {
 	padding: 0;
 }
