@@ -171,9 +171,15 @@
 	 */
 	$('#Form_EditForm .Actions :submit').concrete('ss', function($){
 		return/** @lends ss.Form_EditForm.Actions.submit */{
-		onclick: function(e) {
-			$(this[0].form).ajaxSubmit(this);
-			return false;
-		}
-	}});
+			onmatch: function() {
+				var self = this;
+				// TODO Fix once concrete library is updated
+				this.bind('click', function(e) {self.clickFake(e);});
+			},
+			clickFake: function(e) {
+				$(this[0].form).concrete('ss').ajaxSubmit(this);
+				return false;
+			}
+		};
+	});
 }(jQuery));
