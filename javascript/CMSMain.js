@@ -168,6 +168,30 @@ var ss_MainLayout;
 	}});
 	
 	/**
+	 * @class Toggle display of group dropdown in "access" tab,
+	 * based on selection of radiobuttons.
+	 * @name ss.Form_EditForm.Access
+	 */
+	$('#Form_EditForm #CanViewType, #Form_EditForm #CanEditType').concrete('ss', function($){
+		return/** @lends ss.Form_EditForm.Access */{
+			onmatch: function() {
+				// TODO Decouple
+				var dropdown;
+				if(this.attr('id') == 'CanViewType') dropdown = $('#ViewerGroups');
+				else if(this.attr('id') == 'CanEditType') dropdown = $('#EditorGroups');
+				
+				this.find('.optionset :input').bind('change', function(e) {
+					dropdown.toggle(e.target.value == 'OnlyTheseUsers');
+				});
+				
+				// initial state
+				var currentVal = this.find('input[name=' + this.attr('id') + ']:checked').val();
+				dropdown.toggle(currentVal == 'OnlyTheseUsers');
+			}
+		}
+	});	
+	
+	/**
 	 * @class Email containing the link to the archived version of the page.
 	 * Visible on readonly older versions of a specific page at the moment.
 	 * @name ss.Form_EditForm_action_email
