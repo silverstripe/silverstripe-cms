@@ -236,12 +236,12 @@ body.stillLoading select {
 
 /** TOP PANEL **/
 .ss-cms-top-menu #MainMenu {
-	margin: 0 0 0 6px;
+	margin: 0 0 0 10px;
 }
 .ss-cms-top-menu #MainMenu li {
-	margin: 0 4px;
+	margin: 0 5px;
 	float: left;
-	height: 33px;
+	height: 35px;
 	cursor: pointer;
 }
 
@@ -249,7 +249,7 @@ body.stillLoading select {
 	display: block;
 	height: 33px;
 	float: left;
-	padding: 0 6px;
+	padding: 0 10px;
 	font-size: 14px;
 	letter-spacing: -0.1px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -306,7 +306,7 @@ body.stillLoading select {
 	text-align: center;
 	font-size: 10px;
 	color: #fff;
-	padding: 5px 6px 0 3px;
+	padding: 0.5em;
 }
 
 .ss-cms-bottom-bar #logInStatus {
@@ -506,6 +506,9 @@ iframe {
  */
 #contentPanel {
 	font-size: 12px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-bottomleft: 4px;
+	border: 1px solid #AAA;
 }
 #contentPanel .content {
 	overflow: auto;
