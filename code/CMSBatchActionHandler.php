@@ -6,38 +6,55 @@
  * @subpackage batchaction
  */
 class CMSBatchActionHandler extends RequestHandler {
-	static $batch_actions = array(
-		'publish' => 'CMSBatchAction_Publish',
-		'delete' => 'CMSBatchAction_Delete',
-		'deletefromlive' => 'CMSBatchAction_DeleteFromLive',
-	);
+	static $batch_actions = array();
 	
 	static $url_handlers = array(
 		'$BatchAction' => 'handleAction'
 	);
 	
 	protected $parentController;
+	
+	/**
+	 * @var String
+	 */
 	protected $urlSegment;
 	
 	/**
+	 * @var String $recordClass The classname that should be affected
+	 * by any batch changes. Needs to be set in the actual {@link CMSBatchAction}
+	 * implementations as well.
+	 */
+	protected $recordClass = 'SiteTree';
+	
+	/**
 	 * Register a new batch action.  Each batch action needs to be represented by a subclass
-	 * of 
+	 * of {@link CMSBatchAction}.
 	 * 
 	 * @param $urlSegment The URL Segment of the batch action - the URL used to process this
 	 * action will be admin/batchactions/(urlSegment)
 	 * @param $batchActionClass The name of the CMSBatchAction subclass to register
 	 */
-	static function register($urlSegment, $batchActionClass) {
+	static function register($urlSegment, $batchActionClass, $recordClass = 'SiteTree') {
 		if(is_subclass_of($batchActionClass, 'CMSBatchAction')) {
-			self::$batch_actions[$urlSegment] = $batchActionClass;
+			self::$batch_actions[$urlSegment] = array(
+				'class' => $batchActionClass,
+				'recordClass' => $recordClass
+			);
 		} else {
 			user_error("CMSBatchActionHandler::register() - Bad class '$batchActionClass'", E_USER_ERROR);
 		}
 	}
 	
-	function __construct($parentController, $urlSegment) {
+	/**
+	 * @param string $parentController
+	 * @param string $urlSegment
+	 * @param string $recordClass
+	 */
+	function __construct($parentController, $urlSegment, $recordClass = null) {
 		$this->parentController = $parentController;
 		$this->urlSegment = $urlSegment;
+		if($recordClass) $this->recordClass = $recordClass;
+		
 		parent::__construct();
 	}
 	
@@ -52,8 +69,8 @@ class CMSBatchActionHandler extends RequestHandler {
 			return;
 		}
 
-		$actions = Object::get_static($this->class, 'batch_actions');
-		$actionClass = $actions[$request->param('BatchAction')];
+		$actions = $this->batchActions();
+		$actionClass = $actions[$request->param('BatchAction')]['class'];
 		$actionHandler = new $actionClass();
 		
 		// Sanitise ID list and query the database for apges
@@ -61,18 +78,32 @@ class CMSBatchActionHandler extends RequestHandler {
 		foreach($ids as $k => $v) if(!is_numeric($v)) unset($ids[$k]);
 		
 		if($ids) {
-			$pages = DataObject::get('SiteTree', "\"SiteTree\".\"ID\" IN (" . implode(", ", $ids) . ")");
+			$pages = DataObject::get(
+				$this->recordClass, 
+				sprintf(
+					'"%s"."ID" IN (%s)',
+					ClassInfo::baseDataClass($this->recordClass),
+					implode(", ", $ids)
+				)
+			);
 			
-			// If we didn't query all the pages, then find the rest on the live site
-			if(!$pages || $pages->Count() < sizeof($ids)) {
-				foreach($ids as $id) $idsFromLive[$id] = true;
-				if($pages) foreach($pages as $page) unset($idsFromLive[$page->ID]);
-				$idsFromLive = array_keys($idsFromLive);
-				
-				Debug::message("\"SiteTree\".\"ID\" IN (" . implode(", ", $idsFromLive) . ")");
-				$livePages = Versioned::get_by_stage('SiteTree', 'Live', "\"SiteTree\".\"ID\" IN (" . implode(", ", $idsFromLive) . ")");
-				if($pages) $pages->merge($livePages);
-				else $pages = $livePages;
+			if(Object::has_extension($this->recordClass, 'Versioned')) {
+				// If we didn't query all the pages, then find the rest on the live site
+				if(!$pages || $pages->Count() < sizeof($ids)) {
+					foreach($ids as $id) $idsFromLive[$id] = true;
+					if($pages) foreach($pages as $page) unset($idsFromLive[$page->ID]);
+					$idsFromLive = array_keys($idsFromLive);
+
+					$sql = sprintf(
+						'"%s"."ID" IN (%s)',
+						$this->recordClass,
+						implode(", ", $idsFromLive)
+					);
+					Debug::message($sql);
+					$livePages = Versioned::get_by_stage($this->recordClass, 'Live', $sql);
+					if($pages) $pages->merge($livePages);
+					else $pages = $livePages;
+				}
 			}
 		} else {
 			$pages = new DataObjectSet();
@@ -89,10 +120,11 @@ class CMSBatchActionHandler extends RequestHandler {
 	 *  - DoingText
 	 */
 	function batchActionList() {
-		$actions = Object::get_static($this->class, 'batch_actions');
+		$actions = $this->batchActions();
 		$actionList = new DataObjectSet();
 		
-		foreach($actions as $urlSegment => $actionClass) {
+		foreach($actions as $urlSegment => $action) {
+			$actionClass = $action['class'];
 			$actionObj = new $actionClass();
 			$actionDef = new ArrayData(array(
 				"Link" => Controller::join_links($this->Link(), $urlSegment),
@@ -104,6 +136,19 @@ class CMSBatchActionHandler extends RequestHandler {
 		return $actionList;
 	}
 	
-
+	/**
+	 * Get all registered actions through the static defaults set by {@link register()}.
+	 * Filters for the currently set {@link recordClass}.
+	 * 
+	 * @return array See {@link register()} for the returned format.
+	 */
+	function batchActions() {
+		$actions = Object::get_static($this->class, 'batch_actions');
+		if($actions) foreach($actions as $action) {
+			if($action['recordClass'] != $this->recordClass) unset($action);
+		}
+		
+		return $actions;
+	}
 
 }

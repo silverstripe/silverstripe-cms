@@ -85,6 +85,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.Translatable.js');
 		
 		Requirements::css(CMS_DIR . '/css/CMSMain.css');
+		
+		CMSBatchActionHandler::register('publish', 'CMSBatchAction_Publish');
+		CMSBatchActionHandler::register('unpublish', 'CMSBatchAction_Unpublish');
+		CMSBatchActionHandler::register('delete', 'CMSBatchAction_Delete');
+		CMSBatchActionHandler::register('deletefromlive', 'CMSBatchAction_DeleteFromLive');
 	}
 	
 	/**
