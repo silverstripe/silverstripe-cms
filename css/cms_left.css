@@ -32,6 +32,12 @@
 	color: #666;
 }
 
+form.oneline fieldset {
+	width: 80%;
+	float: left;
+	margin-right: .5em;
+}
+
 /**
  * Selection Groups
  */
@@ -423,7 +429,7 @@ ul.tree span.untranslated a:visited {
 
 .checkboxAboveTree {
 	border-top: 1px solid #cccccc;
-	padding: 5px 0 0 0;
+	padding: .5em;
 	overflow: hidden;
 	clear: left;
 }
@@ -475,12 +481,10 @@ ul.tree span.untranslated a:visited {
 
 }
 
-form#SideReportForm label.left {
-	margin-left: 0em;
-	width: auto;
+#Form_SideReportsForm select,
+#Form_SideReportsForm .middlecolumn {
+	width: 80%;
 }
-
-
 /**
  * i18n
  */

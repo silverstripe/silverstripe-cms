@@ -660,7 +660,7 @@ JS;
 		}
 		$selectorField = new GroupedDropdownField(
 			"ReportClass", 
-			_t('CMSMain.REPORT', 'Report'),
+			false,
 			$finalOptions
 		);
 		
@@ -677,6 +677,7 @@ JS;
 			)
 		);
 		$form->unsetValidator();
+		$form->addExtraClass('oneline');
 		
 		return $form;
 	}
@@ -1029,8 +1030,8 @@ JS;
 		);
 
 		$form = new Form($this, "AddForm", $fields, $actions);
-		
 		$form->addExtraClass('actionparams');
+		$form->addExtraClass('oneline');
 		
 		return $form;
 	}

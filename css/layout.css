@@ -404,6 +404,11 @@ body.stillLoading select {
 	_padding-top: 4px;
 }
 
+#TreeTools .ui-tabs .ui-tabs-nav li a {
+	padding-left: .5em;
+	padding-right: .5em;
+}
+
 #TreeTools #batchactionsforms {
 	padding: 0 5px 7px 5px;
 }

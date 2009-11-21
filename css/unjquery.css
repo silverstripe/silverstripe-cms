@@ -67,13 +67,6 @@
 #treepanes .ui-widget input {
 	font-size: 1.1em;
 }
-#treepanes select {
-	font-size: 1.1em;
-}
-#treepanes option {
-	padding: 3px;
-	font-size: 1.1em;
-}
 
 #treepanes .ui-tabs-panel {
 	padding: 0.5em;
@@ -100,7 +93,6 @@
 
 #treepanes .ui-accordion-header a {
 	font-size: 120%;
-	padding: 0.5em 2.2em 0.5em 0.5em;
 }
 #treepanes.ui-accordion .ui-accordion-header .ui-icon {
 	right: 0.5em !important;
@@ -140,8 +132,3 @@ p#WelcomeMessage {
 .ui-layout-resizer-dragging {
 	background: #ccdef3 none repeat scroll 0 0;
 }
-
-.CMSMain .ui-tabs .ui-tabs-nav li {
-	margin-right: 5px;
-}
-
