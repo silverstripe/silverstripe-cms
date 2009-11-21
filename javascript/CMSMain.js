@@ -19,7 +19,7 @@ var ss_MainLayout;
 			ss_MainLayout = this._setupLayout();
 			this.setMainLayout(ss_MainLayout);
 			layoutState.options.keys = "west.size,west.isClosed";
-			$(window).unload(function(){ console.debug(layoutState);layoutState.save('ss_MainLayout') }); 
+			$(window).unload(function(){ layoutState.save('ss_MainLayout') }); 
 			
 			// artificially delay the resize event 200ms
 			// to avoid overlapping height changes in different onresize() methods
