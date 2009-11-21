@@ -202,7 +202,9 @@ TreeNodeAPI.prototype = {
 		var url = jQuery(this).find('a').attr('href');
 		if(url && url != '#') {
 		  jQuery('#sitetree').trigger('selectionchanged', {node: this});
-			if($('sitetree').notify('SelectionChanged', this)) {
+			// don't get page if either event was cancelled,
+			// or the tree is currently in a selectable state.
+			if($('sitetree').notify('SelectionChanged', this) && !jQuery(this.tree).hasClass('multiselect')) {
 		    this.getPageFromServer();
 			}
 		} else {
