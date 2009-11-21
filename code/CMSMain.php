@@ -431,7 +431,7 @@ JS;
 		if($parentObj && !$parentObj->canAddChildren()) return Security::permissionFailure($this);
 		if(!singleton($className)->canCreate()) return Security::permissionFailure($this);
 
-		$p = $this->getNewItem("new-$className-$parent".$suffix, false);
+		$p = $this->getNewItem("new-$className-$parentID".$suffix, false);
 		$p->Locale = $data['Locale'];
 		$p->write();
 		
