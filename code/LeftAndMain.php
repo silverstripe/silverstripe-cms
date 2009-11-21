@@ -230,8 +230,6 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.js');
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.Tree.js');
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.EditForm.js');
-	
-		Requirements::javascript(CMS_DIR . '/javascript/SideTabs.js');
 		
 		Requirements::themedCSS('typography');
 
@@ -289,7 +287,6 @@ class LeftAndMain extends Controller {
 			array(
 				'cms/javascript/CMSMain_left.js',
 				'cms/javascript/CMSMain_right.js',
-				'cms/javascript/SideTabs.js',
 			)
 		);
 

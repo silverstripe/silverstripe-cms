@@ -473,6 +473,9 @@ ul.tree span.untranslated a:visited {
 	margin: 0 !important;
 	padding: 4px 7px;
 }
+#Form_VersionsForm td.checkbox {
+
+}
 
 form#SideReportForm label.left {
 	margin-left: 0em;

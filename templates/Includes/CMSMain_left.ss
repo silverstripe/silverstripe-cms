@@ -25,19 +25,7 @@
 			<a href="#"><% _t('PAGEVERSIONH','Page Version History') %></a>
 		</h3>
 		<div id="versions_holder">
-			<p class="pane_actions" id="versions_actions">
-				
-				<span class="versionChoice">
-					<input type="checkbox" id="versions_comparemode" /> <label for="versions_comparemode"><% _t('COMPAREMODE','Compare mode (click 2 below)') %></label>
-				</span>
-				<span class="versionChoice">
-					<input type="checkbox" id="versions_showall" /> <label for="versions_showall"><% _t('SHOWUNPUB','Show unpublished versions') %></label>
-				</span>
-			
-			</p>
-			
-			<div class="unitBody">
-			</div>
+			$VersionsForm
 		</div>
 
 		<h3>

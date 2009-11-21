@@ -261,9 +261,7 @@
 	/**
 	 * @class Simple form with a page type dropdown
 	 * which creates a new page through #Form_EditForm and adds a new tree node.
-	 * @name ss.Form_AddPageOptionsForm
-	 * @requires ss.i18n
-	 * @requires ss.reports_holder
+	 * @name ss.reports_holder
 	 */
 	$('#Form_ReportForm').concrete(function($) {
 	  return/** @lends ss.reports_holder */{
@@ -319,6 +317,129 @@
 						button.removeClass('loading');
 					}
 				});
+				
+				return false;
+			}
+		};
+	});
+	
+	/**
+	 * @class Simple form showing versions of a specific page.
+	 * @name ss.Form_VersionsForm
+	 * @requires ss.i18n
+	 */
+	$('#Form_VersionsForm').concrete(function($) {
+	  return/** @lends ss.Form_VersionsForm */{
+			onmatch: function() {
+				var self = this;
+				
+				this.bind('submit', function(e) {
+					return self._submit(e);
+				});
+				
+				// set button to be available in form submit event later on
+				this.find(':submit').bind('click', function(e) {
+					self.data('_clickedButton', this);
+				});
+				
+				// integrate with sitetree selection changes
+				jQuery('#sitetree').bind('selectionchanged', function(e, data) {
+					self.find(':input[name=ID]').val(data.node.getIdx());
+					self.trigger('submit');
+				});
+				
+				// refresh when field is selected
+				// TODO coupling
+				$('#treepanes').bind('accordionchange', function(e, ui) {
+					if($(ui.newContent).attr('id') == 'Form_VersionsForm') self.trigger('submit');
+				});
+				
+				// submit when 'show unpublished versions' checkbox is changed
+				this.find(':input[name=ShowUnpublished]').bind('change', function(e) {
+					// force the refresh button, not 'compare versions'
+					self.data('_clickedButton', self.find(':submit[name=action_versions]'));
+					self.trigger('submit');
+				});
+				
+				// move submit button to the top
+				this.find('#ReportClass').after(this.find('.Actions'));
+				
+				// links in results
+				this.find('td').bind('click', function(e) {
+					var td = $(this);
+					
+					// exclude checkboxes
+					if($(e.target).is(':input')) return true;
+					
+					var link = $(this).siblings('.versionlink').find('a').attr('href');
+					td.addClass('loading');
+					jQuery('#Form_EditForm').concrete('ss').loadForm(
+						link,
+						function(e) {
+							td.removeClass('loading');
+						}
+					);
+					return false;
+				});
+				
+				// compare versions action
+				this.find(':submit[name=action_compareversions]').bind('click', function(e) {
+					// validation: only allow selection of exactly two versions
+					var versions = self.find(':input[name=Versions[]]:checked');
+					if(versions.length != 2) {
+						alert(ss.i18n._t(
+							'CMSMain.VALIDATIONTWOVERSION',
+							'Please select two versions'
+						));
+						return false;
+					}
+					
+					// overloaded submission: refresh the right form instead
+					self.data('_clickedButton', this);
+					self._submit(e, true);
+					
+					return false;
+				})
+			},
+			
+			/**
+			 * @param {boolean} loadEditForm Determines if responses should show in current panel,
+			 *  or in the edit form (in the case of 'compare versions').
+			 */
+			_submit: function(e, loadEditForm) {
+				var self = this;
+				
+				// Don't submit with empty ID
+				if(!this.find(':input[name=ID]').val()) return false;
+				
+				var $button = (self.data('_clickedButton')) ? $(self.data('_clickedButton')) : this.find(':submit:first');
+				$button.addClass('loading');
+				
+				var data = this.serializeArray();
+				data.push({name:$button.attr('name'), value: $button.val()});
+				
+				if(loadEditForm) {
+					jQuery('#Form_EditForm').concrete('ss').loadForm(
+						this.attr('action'),
+						function(e) {
+							$button.removeClass('loading');
+						},
+						{data: data, type: 'POST'}
+					);
+				} else {
+					jQuery.ajax({
+						url: this.attr('action'),
+						data: data,
+						dataType: 'html',
+						success: function(data, status) {
+							self.replaceWith(data);
+						},
+						complete: function(xmlhttp, status) {
+							$button.removeClass('loading');
+						}
+					});
+				}
+				
 				
 				return false;
 			}

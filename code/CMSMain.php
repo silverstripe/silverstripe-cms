@@ -57,7 +57,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'getfilteredsubtree',
 		'batchactions',
 		'SearchTreeForm',
-		'ReportForm'
+		'ReportForm',
+		'LangForm',
+		'VersionsForm'
 	);
 	
 	public function init() {
@@ -644,6 +646,7 @@ JS;
 			)
 		);
 		$form->unsetValidator();
+		$form->setFormMethod('GET');
 		
 		return $form;
 	}
@@ -680,20 +683,71 @@ JS;
 		$form = $this->ReportForm();
 		return (Director::is_ajax()) ? $form->forTemplate() : $form;
 	}
+	
+	/**
+	 * @return Form
+	 */
+	function VersionsForm() {
+		$pageID = ($this->request->requestVar('ID')) ? $this->request->requestVar('ID') : $this->currentPageID();
+		$page = $this->getRecord($pageID);
+		if($page) {
+			$versions = $page->allVersions(
+				($this->request->requestVar('ShowUnpublished')) ? 
+				"" : "\"SiteTree\".\"WasPublished\" = 1"
+			);
+
+			// inject link to cms
+			if($versions) foreach($versions as $k => $version) {
+				$version->CMSLink = sprintf('%s/%s/%s',
+					$this->Link('getversion'),
+					$version->ID,
+					$version->Version
+				);
+			}
+			$vd = new ViewableData();
+			$versionsHtml = $vd->customise(
+				array('Versions'=>$versions)
+			)->renderWith('CMSMain_versions');
+		} else {
+			$versionsHtml = '';
+		}
+		
+		$form = new Form(
+			$this,
+			'VersionsForm',
+			new FieldSet(
+				new CheckboxField(
+					'ShowUnpublished',
+					_t('CMSMain_left.ss.SHOWUNPUB','Show unpublished versions')
+				),
+				new LiteralField('VersionsHtml', $versionsHtml),
+				new HiddenField('ID', false, $pageID),
+				new HiddenField('Locale', false, $this->Locale)
+			),
+			new FieldSet(
+				new FormAction(
+					'versions',
+					_t('CMSMain.BTNREFRESH','Refresh')
+				),
+				new FormAction(
+					'compareversions',  
+					_t('CMSMain.BTNCOMPAREVERSIONS','Compare Versions')
+				)
+			)
+		);
+		$form->loadDataFrom($this->request->requestVars());
+		$form->setFormMethod('GET');
+		$form->unsetValidator();
+		
+		return $form;
+	}
+	
 	/**
 	 * Get the versions of the current page
 	 */
 	function versions() {
-		$pageID = $this->urlParams['ID'];
-		$page = $this->getRecord($pageID);
-		if($page) {
-			$versions = $page->allVersions($_REQUEST['unpublished'] ? "" : "\"SiteTree\".\"WasPublished\" = 1");
-			return array(
-				'Versions' => $versions,
-			);
-		} else {
-			return sprintf(_t('CMSMain.VERSIONSNOPAGE',"Can't find page #%d",PR_LOW),$pageID);
-		}
+		$form = $this->VersionsForm();
+		return (Director::is_ajax()) ? $form->forTemplate() : $form;
 	}
 
 	/**
@@ -752,9 +806,17 @@ JS;
 		return $record;
 	}
 
+	/**
+	 * Supports both direct URL links (format: admin/getversion/<page-id>/<version>),
+	 * and through GET parameters: admin/getversion/?ID=<page-id>&Versions[]=<version>
+	 */
 	function getversion() {
-		$id = $this->urlParams['ID'];
-		$version = str_replace('&ajax=1','',$this->urlParams['OtherID']);
+		$id = ($this->request->param('ID')) ? 
+			$this->request->param('ID') : $this->request->requestVar('ID');
+		
+		$version = ($this->request->param('OtherID')) ? 
+			$this->request->param('OtherID') : $this->request->requestVar('Versions');
+		
 		$record = Versioned::get_version("SiteTree", $id, $version);
 		
 		if($record) {
@@ -817,28 +879,28 @@ JS;
 			$readonlyFields = $form->Fields()->makeReadonly();
 			$form->setFields($readonlyFields);
 
-			$templateData = $this->customise(array(
-				"EditForm" => $form
-			));
-
 			SSViewer::setOption('rewriteHashlinks', false);
 			
 			if(Director::is_ajax()) {
-				$result = $templateData->renderWith($this->class . '_right');
-				$parts = split('</?form[^>]*>', $result);
-				return $parts[sizeof($parts)-2];
+				return $form->formHtmlContent();
 			} else {
+				$templateData = $this->customise(array(
+					"EditForm" => $form
+				));
 				return $templateData->renderWith('LeftAndMain');
 			}
-			
-			
 		}
 	}
 
 	function compareversions() {
-		$id = (int)$this->urlParams['ID'];
-		$version1 = (int)$_REQUEST['From'];
-		$version2 = (int)$_REQUEST['To'];
+		$id = ($this->request->param('ID')) ? 
+			$this->request->param('ID') : $this->request->requestVar('ID');
+		
+		$versions = $this->request->requestVar('Versions');
+		$version1 = ($versions && isset($versions[0])) ? 
+			$versions[0] : $this->request->getVar('From');
+		$version2 = ($versions && isset($versions[1])) ? 
+			$versions[1] : $this->request->getVar('To');
 
 		if( $version1 > $version2 ) {
 			$toVersion = $version1;
@@ -847,6 +909,8 @@ JS;
 			$toVersion = $version2;
 			$fromVersion = $version1;
 		}
+		
+		if(!$toVersion || !$toVersion) return false;
 
 		$page = DataObject::get_by_id("SiteTree", $id);
 		if($page && !$page->canView()) return Security::permissionFailure($this);
@@ -899,22 +963,14 @@ JS;
 				$field->dontEscape = true;
 			}
 
-			return $this->sendFormToBrowser(array(
-				"EditForm" => $form
-			));
-		}
-	}
-
-	function sendFormToBrowser($templateData) {
-		if(Director::is_ajax()) {
-			SSViewer::setOption('rewriteHashlinks', false);
-			$result = $this->customise($templateData)->renderWith($this->class . '_right');
-			$parts = split('</?form[^>]*>', $result);
-			return $parts[sizeof($parts)-2];
-		} else {
-			return array(
-				"Right" => $this->customise($templateData)->renderWith($this->class . '_right'),
-			);
+			if(Director::is_ajax()) {
+				return $form->formHtmlContent();
+			} else {
+				$templateData = $this->customise(array(
+					"EditForm" => $form
+				));
+				return $templateData->renderWith('LeftAndMain');
+			}
 		}
 	}
 	
