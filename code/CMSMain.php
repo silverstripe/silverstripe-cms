@@ -28,7 +28,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	
 	static $allowed_actions = array(
 		'addmember',
-		'addpage',
+		'doAdd',
 		'buildbrokenlinks',
 		'compareversions',
 		'createtranslation',
@@ -404,7 +404,7 @@ JS;
 	// Data saving handlers
 
 
-	public function addpage($data, $form) {
+	public function doAdd($data, $form) {
 		$className = isset($data['PageType']) ? $data['PageType'] : "Page";
 		$parentID = isset($data['ParentID']) ? (int)$data['ParentID'] : 0;
 		$suffix = isset($data['Suffix']) ? "-" . $data['Suffix'] : null;
@@ -1029,7 +1029,7 @@ JS;
 		);
 		
 		$actions = new FieldSet(
-			new FormAction("addpage", _t('CMSMain.GO',"Go"))
+			new FormAction("doAdd", _t('CMSMain.GO',"Go"))
 		);
 
 		$form = new Form($this, "AddForm", $fields, $actions);
