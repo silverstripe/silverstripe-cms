@@ -116,7 +116,7 @@ $.fn.layout = function (opts) {
 		}
 	,	west: {
 			paneSelector:			"."+prefix+"west" // default = .ui-layout-west
-		,	size:					200
+		,	size:					260
 		,	resizerCursor:			"w-resize"
 		}
 	,	center: {
