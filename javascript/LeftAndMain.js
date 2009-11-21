@@ -105,17 +105,17 @@ var ss_MainLayout;
 					north: {
 						slidable: false,
 						resizable: false,
-						size: 35,
+						size: this.find('.ui-layout-north').height(),
 						togglerLength_open: 0
 					},
 					south: {
 						slidable: false,
 						resizable: false,
-						size: 23,
+						size: this.find('.ui-layout-south').height(),
 						togglerLength_open: 0
 					},
 					west: {
-						size: 225,
+						size: this.find('.ui-layout-west').width(),
 						fxName: "none"
 					},
 					east: {
@@ -125,7 +125,7 @@ var ss_MainLayout;
 						initHidden: true,
 						spacing_closed: 0,
 						fxName: "none",
-						size: 250
+						size: this.find('.ui-layout-east').width()
 					},
 					center: {}
 				}, savedLayoutSettings);

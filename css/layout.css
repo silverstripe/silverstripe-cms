@@ -57,6 +57,22 @@ body {
 	overflow: hidden !important;
 }
 
+.ui-layout-west {
+	width: 225px;
+}
+
+.ui-layout-north {
+	height: 35px;
+}
+
+.ui-layout-south {
+	height: 23px;
+}
+
+.ui-layout-east {
+	height: 250px;
+}
+
 /*
 *	RESIZER-BARS
 */
