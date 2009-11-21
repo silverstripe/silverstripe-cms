@@ -30,6 +30,11 @@ class LeftAndMain extends Controller {
 	
 	static $url_priority = 50;
 
+	/**
+	 * @var string A subclass of {@link DataObject}. 
+	 * Determines what is managed in this interface,
+	 * through {@link getEditForm()} and other logic.
+	 */
 	static $tree_class = null;
 
 	static $allowed_actions = array(

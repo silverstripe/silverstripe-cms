@@ -329,7 +329,7 @@ JS;
 			$fields->push($idField = new HiddenField("ID", false, $id));
 			$fields->push($liveURLField = new HiddenField("LiveURLSegment"));
 			$fields->push($stageURLField = new HiddenField("StageURLSegment"));
-			$fields->push($stageURLField = new HiddenField("TreeTitle", false, $record->TreeTitle));
+			$fields->push(new HiddenField("TreeTitle", false, $record->TreeTitle));
 
 			$fields->push(new HiddenField('Sort','', $record->Sort));
 
