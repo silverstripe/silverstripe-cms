@@ -17,7 +17,11 @@
 				
 				// whenever a new value is selected, reload the whole CMS in the new locale
 				this.find(':input[name=Locale]').bind('change', function(e) {
-					document.location = 'admin/?locale=' + $(e.target).val();
+					var url = document.location.href;
+					url += (url.indexOf('?') != -1) ? '&' : '?';
+					// TODO Replace existing locale GET params
+					url += 'locale=' + $(e.target).val();
+					document.location = url;
 					return false;
 				});
 			}
