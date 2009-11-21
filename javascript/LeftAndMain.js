@@ -13,6 +13,13 @@
 	 */
 	$('.LeftAndMain').concrete('ss', function($){
 		return/** @lends ss.EditMemberProfile */ {
+			
+			/**
+			 * Reference to jQuery.layout element
+			 * @type Object
+			 */
+			MainLayout: null,
+			
 			/**
 			 * @type Number Interval in which /Security/ping will be checked for a valid login session.
 			 */
@@ -24,6 +31,12 @@
 				// Remove loading screen
 				$('.ss-loading-screen').hide();
 				$(document).removeClass('stillLoading');
+				
+				// Layout
+				ss_MainLayout = this._setupLayout();
+				this.setMainLayout(ss_MainLayout);
+				layoutState.options.keys = "west.size,west.isClosed";
+				$(window).unload(function(){ layoutState.save('ss_MainLayout');});
 			
 				this._setupPinging();
 				this._setupButtons();
@@ -37,6 +50,9 @@
 					window[timerID] = setTimeout(function() {self._resizeChildren();}, 200);
 				});
 			
+				// If tab has no nested tabs, set overflow to auto
+				$(this).find('.tab').not(':has(.tab)').css('overflow', 'auto');
+			
 				// trigger resize whenever new tabs are shown
 				// @todo This is called multiple times when tabs are loaded
 				this.find('.ss-tabset').bind('tabsshow', function() {self._resizeChildren();});
@@ -44,6 +60,68 @@
 				$('#Form_EditForm').bind('loadnewpage', function() {self._resizeChildren();});
 				
 				this._super();
+			},
+			
+			/**
+			 * Initialize jQuery layout manager with the following panes:
+			 * - east: Tree, Page Version History, Site Reports
+			 * - center: Form
+			 * - west: "Insert Image", "Insert Link", "Insert Flash" panes
+			 * - north: CMS area menu bar
+			 * - south: "Page view", "profile" and "logout" links
+			 */
+			_setupLayout: function() {
+				var self = this;
+			
+				// layout containing the tree, CMS menu, the main form etc.
+				var savedLayoutSettings = layoutState.load('ss_MainLayout');
+				var layoutSettings = jQuery.extend({
+					defaults: {
+						// TODO Reactivate once we have localized values
+						togglerTip_open: '',
+						togglerTip_closed: '',
+						resizerTip: '',
+						sliderTip: '',
+						onresize: function() {self._resizeChildren();},
+						onopen: function() {self._resizeChildren();}
+					},
+					north: {
+						slidable: false,
+						resizable: false,
+						size: 35,
+						togglerLength_open: 0
+					},
+					south: {
+						slidable: false,
+						resizable: false,
+						size: 23,
+						togglerLength_open: 0
+					},
+					west: {
+						size: 225,
+						fxName: "none"
+					},
+					east: {
+						initClosed: true,
+						// multiple panels which are triggered through tinymce buttons,
+						// so a user shouldn't be able to toggle this panel manually
+						initHidden: true,
+						spacing_closed: 0,
+						fxName: "none",
+						size: 250
+					},
+					center: {}
+				}, savedLayoutSettings);
+				var layout = $('body').layout(layoutSettings);
+			
+				// Adjust tree accordion etc. in left panel to work correctly
+				// with jQuery.layout (see http://layout.jquery-dev.net/tips.html#Widget_Accordion)
+				this.find("#treepanes").accordion({
+					fillSpace: true,
+					animated: false
+				});
+			
+				return layout;
 			},
 
 			/**
@@ -105,6 +183,11 @@
 			 * to fit the boundary box provided by the layout manager
 			 */
 			_resizeChildren: function() {
+				$("#treepanes", this).accordion("resize");
+				$('#sitetree_and_tools', this).fitHeightToParent();
+				$('#contentPanel form', this).fitHeightToParent();
+				$('#contentPanel form fieldset', this).fitHeightToParent();
+				$('#contentPanel form fieldset .content', this).fitHeightToParent();
 				$('#Form_EditForm').fitHeightToParent();
 				$('#Form_EditForm fieldset', this).fitHeightToParent();
 				// Order of resizing is important: Outer to inner
