@@ -25,7 +25,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		'AddRecordForm',
 		'MemberForm',
 		'EditForm',
-		'deleteitems',
 	);
 
 	public function init() {
@@ -227,27 +226,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		return FormResponse::respond();
 	}
 	
-	/**
-	 * Delete a number of items
-	 */
-	public function deleteitems() {
-		$ids = split(' *, *', $_REQUEST['csvIDs']);
-
-		$script = "st = \$('sitetree'); \n";
-		foreach($ids as $id) {
-			if(is_numeric($id)) {
-				$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-				if($record && !$record->canDelete()) return Security::permissionFailure($this);
-				
-				DataObject::delete_by_id($this->stat('tree_class'), $id);
-				$script .= "node = st.getTreeNodeByIdx($id); if(node) node.parentTreeNode.removeTreeNode(node); $('Form_EditForm').closeIfSetTo($id); \n";
-			}
-		}
-		FormResponse::add($script);
-
-		return FormResponse::respond();
-	}
-
 	/**
 	 * Return the entire site tree as a nested set of ULs.
 	 * @return string Unordered list <UL> HTML
