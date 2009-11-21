@@ -282,8 +282,6 @@
 				if(this.hasClass('validationerror')) {
 					// TODO validation shouldnt need a special case
 					statusMessage(ss.i18n._t('ModelAdmin.VALIDATIONERROR', 'Validation Error'), 'bad');
-				} else {
-					statusMessage(_statusMessage, (xmlhttp.status >= 400) ? 'bad' : 'good');
 				}
 			}
 		});
