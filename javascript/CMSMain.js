@@ -5,13 +5,22 @@
 var ss_MainLayout;
 
 (function($) {
-	$('body.CMSMain').concrete('ss', function($){return{
+	
+	/**
+	 * @class Layout handling for the main CMS interface,
+	 * with tree on left and main edit form on the right.
+	 * @name ss.CMSMain
+	 */
+	$('body.CMSMain').concrete('ss', function($){return
+		/** @lends ss.CMSMain */
+		{
 
 		/**
 		 * Reference to jQuery.layout element
+		 * @type Object
 		 */
 		MainLayout: null,
-		
+
 		onmatch: function() {
 			var self = this;
 
@@ -107,9 +116,12 @@ var ss_MainLayout;
 	}});
 	
 	/**
-	 * CMS-specific form behaviour
+	 * @class CMS-specific form behaviour
+	 * @name ss.EditForm
 	 */
-	$('#Form_EditForm').concrete('ss', function($){return{
+	$('#Form_EditForm').concrete('ss', function($){return
+		/** @lends ss.EditForm */
+		{
 		onmatch: function() {
 			// Alert the user on change of page-type - this might have implications
 			// on the available form fields etc.
@@ -124,10 +136,13 @@ var ss_MainLayout;
 	}});
 	
 	/**
-	 * ParentType / ParentID field combination - mostly toggling between
+	 * @class ParentID field combination - mostly toggling between
 	 * the two radiobuttons and setting the hidden "ParentID" field
+	 * @name ss.EditForm.ParentType
 	 */
-	$('#Form_EditForm_ParentType').concrete('ss', function($){return{
+	$('#Form_EditForm_ParentType').concrete('ss', function($){return
+		/** @lends ss.EditForm.ParentType */
+		{
 		onmatch : function() {
 			var parentTypeRootEl = $('#Form_EditForm_ParentType_root');
 			var parentTypeSubpageEl = $('#Form_EditForm_ParentType_subpage');
@@ -156,10 +171,13 @@ var ss_MainLayout;
 	}});
 	
 	/**
-	 * Email containing the link to the archived version of the page.
+	 * @class Email containing the link to the archived version of the page.
 	 * Visible on readonly older versions of a specific page at the moment.
+	 * @name ss.Form_EditForm_action_email
 	 */
-	$('#Form_EditForm .Actions #Form_EditForm_action_email').concrete('ss', function($){return{
+	$('#Form_EditForm .Actions #Form_EditForm_action_email').concrete('ss', function($){return
+		/** @lends ss.Form_EditForm_action_email */
+		{
 		onclick: function(e) {
 			window.open(
 				'mailto:?subject=' 
@@ -174,10 +192,13 @@ var ss_MainLayout;
 	}});
 
 	/**
-	 * Open a printable representation of the form in a new window.
+	 * @class Open a printable representation of the form in a new window.
 	 * Used for readonly older versions of a specific page.
+	 * @name ss.Form_EditForm_action_print
 	 */
-	$('#Form_EditForm .Actions #Form_EditForm_action_print').concrete('ss', function($){return{
+	$('#Form_EditForm .Actions #Form_EditForm_action_print').concrete('ss', function($){return
+		/** @lends ss.Form_EditForm_action_print */
+		{
 		onclick: function(e) {
 			var printURL = $(this[0].form).attr('action').replace(/\?.*$/,'') 
 				+ '/printable/' 
@@ -191,9 +212,12 @@ var ss_MainLayout;
 	}});
 	
 	/**
-	 * A "rollback" to a specific version needs user confirmation.
+	 * @class A "rollback" to a specific version needs user confirmation.
+	 * @name ss.Form_EditForm_action_rollback
 	 */
-	$('#Form_EditForm .Actions #Form_EditForm_action_rollback').concrete('ss', function($){return{
+	$('#Form_EditForm .Actions #Form_EditForm_action_rollback').concrete('ss', function($){return
+		/** @lends ss.Form_EditForm_action_rollback */
+		{
 		onclick: function(e) {
 			// @todo i18n
 			return confirm("Do you really want to copy the published content to the stage site?");
@@ -201,9 +225,12 @@ var ss_MainLayout;
 	}});
 	
 	/**
-	 * All forms in the right content panel should have closeable jQuery UI style titles.
+	 * @class All forms in the right content panel should have closeable jQuery UI style titles.
+	 * @name ss.contentPanel.form
 	 */
-	$('#contentPanel form').concrete('ss', function($){return{
+	$('#contentPanel form').concrete('ss', function($){return
+		/** @lends ss.contentPanel.form */
+		{
 		onmatch: function() {
 		  // Style as title bar
 			this.find(':header:first').titlebar({
@@ -219,11 +246,14 @@ var ss_MainLayout;
 	}});
 	
 	/**
-	 * Control the site tree filter.
+	 * @class Control the site tree filter.
 	 * Toggles search form fields based on a dropdown selection,
 	 * similar to "Smart Search" criteria in iTunes.
+	 * @name ss.Form_SeachTreeForm
 	 */
-	$('#Form_SearchTreeForm').concrete('ss', function($) {return{
+	$('#Form_SearchTreeForm').concrete('ss', function($) {return
+		/** @lends ss.Form_SeachTreeForm */
+		{
 		
 		/**
 		 * @type DOMElement
@@ -268,6 +298,9 @@ var ss_MainLayout;
 			});
 		},
 		
+		/**
+		 * Filter tree based on selected criteria.
+		 */
 		_submitForm: function(e) {
 			var self = this;
 			var data = [];

@@ -1,19 +1,22 @@
 (function($) {
 
 	/**
-	 * Main LeftAndMain interface with some control
-	 * panel and an edit form.
+	 * Available Custom Events:
+	 * <ul>
+	 * <li>ajaxsubmit</li>
+	 * <li>validate</li>
+	 * <li>loadnewpage</li>
 	 * 
-	 * Events:
-	 * - beforeSave
-	 * - afterSave
-	 * - beforeValidate
-	 * - afterValidate
+	 * @class Main LeftAndMain interface with some control
+	 * panel and an edit form.
+	 * @name ss.LeftAndMain
 	 */
-	$('.LeftAndMain').concrete('ss', function($){return{
+	$('.LeftAndMain').concrete('ss', function($){return
+		/** @lends ss.EditMemberProfile */
+		{
 		
 		/**
-		 *
+		 * @type Number
 		 */
 		PingIntervalSeconds: 5*60,
 		
@@ -76,26 +79,19 @@
 	}});
 	
 	/**
-	 * Base edit form, provides ajaxified saving
+	 * @class Base edit form, provides ajaxified saving
 	 * and reloading itself through the ajax return values.
 	 * Takes care of resizing tabsets within the layout container.
+	 * @name ss.Form_EditForm
 	 */
-	$('#Form_EditForm').concrete('ss',function($){return{	
-		onmatch: function() {
-			var self = this;
-			
-			// artificially delay the resize event 200ms
-			// to avoid overlapping height changes in different onresize() methods
-			$(window).resize(function () {
-				var timerID = "timerLeftAndMainResize";
-				if (window[timerID]) clearTimeout(window[timerID]);
-				window[timerID] = setTimeout(function() {self._resizeChildren();}, 200);
-			});
+	$('#Form_EditForm').concrete('ss',function($){return
+		/** @lends ss.Form_EditForm */
+		{	
 		
-			// trigger resize whenever new tabs are shown
-			// @todo This is called multiple times when tabs are loaded
-			this.find('.ss-tabset').bind('tabsshow', function() {self._resizeChildren();});
-		},
+		/**
+		 * @type String HTML text to show when the form has been deleted.
+		 */
+		RemoveHtml: null,
 		
 		/**
 		 * Suppress submission unless it is handled through ajaxSubmit()
@@ -158,7 +154,9 @@
 		 * Hook in (optional) validation routines.
 		 * Currently clientside validation is not supported out of the box in the CMS.
 		 * 
-		 * @return boolean
+		 * @todo Placeholder implementation
+		 * 
+		 * @return {boolean}
 		 */
 		validate: function() {
 			this.trigger('beforeValidate');
@@ -194,30 +192,41 @@
 
 			Behaviour.apply(); // refreshes ComplexTableField
 			
-			// If there's a title field and it's got a "new XX" value, focus/select that first
-			// This is really a little too CMS-specific (as opposed to LeftAndMain), but the cleanup can happen after jQuery refactoring
-			if($('input#Form_EditForm_Title') && $('input#Form_EditForm_Title').value.match(/^new/i)) {
-	    		$('input#Form_EditForm_Title').select();
-			}
+			// focus input on first form element
+			this.find(':input:visible:first').focus();
+			
+			this.trigger('loadnewpage', {response: response});
 		}
 	}});
 	
 	/**
-	 * All buttons in the right CMS form go through here by default.
+	 * @class All buttons in the right CMS form go through here by default.
 	 * We need this onclick overloading because we can't get to the
 	 * clicked button from a form.onsubmit event.
+	 * @name ss.Form_EditForm.Actions.submit
 	 */
-	$('#Form_EditForm .Actions :submit').concrete('ss', function($){return{
+	$('#Form_EditForm .Actions :submit').concrete('ss', function($){return
+		/** @lends ss.Form_EditForm.Actions.submit */
+		{
 		onclick: function(e) {
 			$(this[0].form).ajaxSubmit(this);
 			return false;
 		}
 	}});
 	
-	$('#TreeActions').concrete('ss', function($){return{
+	/**
+	 * @class Container for tree actions like "create", "search", etc.
+	 * @name ss.TreeActions
+	 */
+	$('#TreeActions').concrete('ss', function($){return
+		/** @lends ss.TreeActions */
+		{
+			
+		/**
+		 * Setup "create", "search", "batch actions" layers above tree.
+		 * All tab contents are closed by default.
+		 */
 		onmatch: function() {
-			// Setup "create", "search", "batch actions" layers above tree.
-			// All tab contents are closed by default.
 			this.tabs({
 				collapsible: true,
 				selected: parseInt(jQuery.cookie('ui-tabs-TreeActions')) || null,
@@ -227,10 +236,13 @@
 	}});
 	
 	/**
-	 * Link for editing the profile for a logged-in member
+	 * @class Link for editing the profile for a logged-in member
 	 * through a modal dialog.
+	 * @name ss.EditMemberProfile
 	 */
-	$('a#EditMemberProfile').concrete('ss', function($){return{
+	$('a#EditMemberProfile').concrete('ss', function($){return
+		/** @lends ss.EditMemberProfile */
+		{
 		
 		onmatch: function() {
 			var self = this;
