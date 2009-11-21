@@ -1,4 +1,4 @@
-<div id="$id" class="$CSSClasses $extraClass field" href="$CurrentLink">
+<div id="$id" class="$CSSClasses $extraClass field dragdrop" href="$CurrentLink">
 	<div class="FileFilter filterBox">
 		$SearchForm
 	</div>

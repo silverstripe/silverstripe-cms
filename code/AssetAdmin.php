@@ -38,15 +38,10 @@ class AssetAdmin extends LeftAndMain {
 	static $allowed_actions = array(
 		'doAdd',
 		'AddForm',
-		'deletemarked',
-		'DeleteItemsForm',
 		'deleteUnusedThumbnails',
 		'doUpload',
-		'getfile',
 		'getsubtree',
-		'movemarked',
 		'save',
-		'savefile',
 		'uploadiframe',
 		'UploadForm',
 		'deleteUnusedThumbnails' => 'ADMIN',
@@ -324,74 +319,7 @@ HTML;
 		
 		return $form;
 	}
-	
-	/**
-	 * Perform the "move marked" action.
-	 * Called and returns in same way as 'save' function
-	 */
-	public function movemarked($urlParams, $form) {
-		if($_REQUEST['DestFolderID'] && (is_numeric($_REQUEST['DestFolderID']) || ($_REQUEST['DestFolderID']) == 'root')) {
-			$destFolderID = ($_REQUEST['DestFolderID'] == 'root') ? 0 : $_REQUEST['DestFolderID'];
-			$fileList = "'" . ereg_replace(' *, *',"','",trim(addslashes($_REQUEST['FileIDs']))) . "'";
-			$numFiles = 0;
-	
-			if($fileList != "''") {
-				$files = DataObject::get("File", "\"File\".\"ID\" IN ($fileList)");
-				if($files) {
-					foreach($files as $file) {
-						if($file instanceof Image) {
-							$file->deleteFormattedImages();
-						}
-						$file->ParentID = $destFolderID;
-						$file->write();
-						$numFiles++;
-					}
-				} else {
-					user_error("No files in $fileList could be found!", E_USER_ERROR);
-				}
-			}
-
-			$message = sprintf(_t('AssetAdmin.MOVEDX','Moved %s files'),$numFiles);
-			
-			FormResponse::status_message($message, "good");
-			FormResponse::add("$('Form_EditForm_Files').refresh();");
-
-			return FormResponse::respond();
-		}
-	}
 		
-	/**
-	 * Returns the content to be placed in Form_SubForm when editing a file.
-	 * Called using ajax.
-	 */
-	public function getfile() {
-		SSViewer::setOption('rewriteHashlinks', false);
-
-		// bdc: only try to return something if user clicked on an object
-		if (is_object($this->getSubForm($this->urlParams['ID']))) {
-			return $this->getSubForm($this->urlParams['ID'])->formHtmlContent();
-		}
-		else return null;
-	}
-	
-	/**
-	 * Action handler for the save button on the file subform.
-	 * Saves the file
-	 */
-	public function savefile($data, $form) {
-		$record = DataObject::get_by_id("File", $data['ID']);
-		$form->saveInto($record);
-		$record->write();
-		$title = Convert::raw2js($record->Title);
-		$name = Convert::raw2js($record->Name);
-		$saved = sprintf(_t('AssetAdmin.SAVEDFILE','Saved file %s'),"#$data[ID]");
-		echo <<<JS
-			statusMessage('$saved');
-			$('record-$data[ID]').getElementsByTagName('td')[1].innerHTML = "$title";
-			$('record-$data[ID]').getElementsByTagName('td')[2].innerHTML = "$name";
-JS;
-	}
-	
 	/**
 	 * Return the entire site tree as a nested UL.
 	 * @return string HTML for site tree

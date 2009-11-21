@@ -225,21 +225,27 @@ class AssetTableField extends ComplexTableField {
 	 * @return string HTML for search form
 	 */
 	function SearchForm() {
-		$searchFields = new FieldGroup(
-			new TextField('FileSearch', _t('MemberTableField.SEARCH', 'Search'), $this->searchingFor),
-			new HiddenField("ctf[ID]", '', $this->ID),
-			new HiddenField('FileFieldName', '', $this->name)
-		);
-
-		$actionFields = new LiteralField(
-			'FileFilterButton',
-			'<input type="submit" class="action" name="FileFilterButton" value="' . _t('MemberTableField.FILTER', 'Filter') . '" id="FileFilterButton"/>'
-		);
-		
 		$fieldContainer = new FieldGroup(
-			$searchFields,
-			$actionFields
+			new FieldGroup(
+				new TextField(
+					'FileSearch', 
+					_t('MemberTableField.SEARCH', 'Search'), 
+					$this->searchingFor
+				)
+			),
+			new FieldGroup(
+				$btnFilter = new InlineFormAction(
+					'FileFilterButton',
+					_t('MemberTableField.FILTER', 'Filter')
+				),
+				$btnClear = new InlineFormAction(
+					'FileFilterClearButton',
+					_t('AssetTableField.CLEAR', 'Clear')
+				)
+			)
 		);
+		$btnFilter->includeDefaultJS(false);
+		$btnClear->includeDefaultJS(false);
 
 		return $fieldContainer->FieldHolder();
 	}
@@ -300,8 +306,39 @@ class AssetTableField extends ComplexTableField {
 				$brokenPageList
 			)
 		);
+	}
+	
+	public function movemarked($request) {
+		$fileIDs = $request->requestVar($this->Name());
+		$folderId = $request->requestVar('DestFolderID');
+		$numFiles = 0;
 		
-		return $response->output();
+		if($folderId && (is_numeric($folderId) || ($folderId) == 'root')) {
+			if($folderId == 'root') $folderId = 0;
+	
+			if($fileIDs && count($fileIDs)) {
+				$files = DataObject::get(
+					"File", 
+					sprintf("\"File\".\"ID\" IN (%s)", Convert::raw2sql(implode(',', $fileIDs)))
+				);
+				if($files) {
+					foreach($files as $file) {
+						$file->ParentID = $folderId;
+						$file->write();
+						$numFiles++;
+					}
+				} 
+			}
+
+			$response = $this->form->Controller()->getResponse();
+			$response->addHeader(
+				'X-Status',
+				sprintf(
+					sprintf(_t('AssetAdmin.MOVEDX','Moved %s files'),$numFiles),
+					$numFiles
+				)
+			);
+		} 
 	}
 }
 

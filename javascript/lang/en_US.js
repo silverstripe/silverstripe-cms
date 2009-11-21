@@ -29,6 +29,7 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'CMSMAIN.ALERTCLASSNAME': 'The page type will be updated after the page is saved',
 		'CMSMAIN.URLSEGMENTVALIDATION': 'URLs can only be made up of letters, digits and hyphens.',
 		'AssetAdmin.BATCHACTIONSDELETECONFIRM': "Do you really want to delete %s folders?",
-		'AssetTableField.REALLYDELETE': 'Do you really want to delete the marked files?'
+		'AssetTableField.REALLYDELETE': 'Do you really want to delete the marked files?',
+		'AssetTableField.MOVING': 'Moving %s file(s)'
 	});
 }
