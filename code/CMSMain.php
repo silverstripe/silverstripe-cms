@@ -365,15 +365,12 @@ JS;
 			if ($fields == null) {
 				user_error("getCMSFields returned null on a '".get_class($record)."' object - it should return a FieldSet object. Perhaps you forgot to put a return statement at the end of your method?", E_USER_ERROR);
 			}
-			$fields->push($idField = new HiddenField("ID"));
+			$fields->push($idField = new HiddenField("ID", false, $id));
 			$fields->push($liveURLField = new HiddenField("LiveURLSegment"));
 			$fields->push($stageURLField = new HiddenField("StageURLSegment"));
 
-			/*if( substr($record->ID, 0, 3 ) == 'new' )*/
-			$fields->push(new HiddenField('Sort','', $record->Sort ));
+			$fields->push(new HiddenField('Sort','', $record->Sort));
 
-			$idField->setValue($id);
-			
 			if($record->ID && is_numeric( $record->ID ) ) {
 				$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree\".\"ID\" = $record->ID");
 				if($liveRecord) $liveURLField->setValue($liveRecord->AbsoluteLink());
