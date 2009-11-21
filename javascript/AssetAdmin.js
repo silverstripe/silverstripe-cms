@@ -283,5 +283,4 @@ jQuery(document).ready(function() {
 		Element.hide('Form_DeleteItemsForm');
 	}
 	
-	new CheckBoxRange($('Form_EditForm'), 'Files[]');
 });
