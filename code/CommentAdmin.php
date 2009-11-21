@@ -31,7 +31,8 @@ class CommentAdmin extends LeftAndMain {
 	}
 
 	public function showtable($params) {
-	    return $this->getLastFormIn($this->renderWith('CommentAdmin_right'));
+		$form = $this->getEditForm();
+		return $form->formHtmlContent();
 	}
 
 	public function Section() {

@@ -358,10 +358,6 @@ class LeftAndMain extends Controller {
 		if($form) return $form->formHtmlContent();
 		else return "";
 	}
-	public function getLastFormIn($html) {
-		$parts = split('</?form[^>]*>', $html);
-		return $parts[sizeof($parts)-2];
-	}
 
 	//------------------------------------------------------------------------------------------//
 	// Main UI components
