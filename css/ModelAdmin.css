@@ -146,3 +146,20 @@ form .message {
 	margin: .3em 0;
 	padding: 0.3em;
 }
+
+body.ModelAdmin .historyNav {
+	background: #aaa;
+	padding: 0 10px;
+	overflow: auto;
+}
+	body.ModelAdmin .historyNav a {
+		display: block;
+		color: white;
+		margin: 3px 0;
+	}
+	body.ModelAdmin .historyNav a.back {
+		float: left;
+	}
+	body.ModelAdmin .historyNav a.forward {
+		float: right;
+	}

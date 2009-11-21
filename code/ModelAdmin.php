@@ -149,6 +149,7 @@ abstract class ModelAdmin extends LeftAndMain {
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.tabs.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/jquery/jquery_improvements.js');
 		Requirements::javascript(CMS_DIR . '/javascript/ModelAdmin.js');
+		Requirements::javascript(CMS_DIR . '/javascript/ModelAdmin.History.js');
 	}
 	
 	/**

@@ -9,7 +9,7 @@
  * @todo alias the $ function instead of literal jQuery
  */
 (function($) {
-			
+				
 	////////////////////////////////////////////////////////////////// 
 	// Search form 
 	////////////////////////////////////////////////////////////////// 
@@ -43,9 +43,12 @@
 	$('#SearchForm_holder form').concrete({
 		onmatch: function() {
 			var self = this;
+			
 			this.bind('submit', function(e) {
 				// Import forms are processed without ajax
 				if(self.is('#Form_ImportForm')) return true;
+				
+				self.trigger('beforeSubmit');
 
 				$('#Form_EditForm').concrete('ss').loadForm(
 					self.attr('action'),
@@ -129,7 +132,7 @@
 			this.bind('click', function() {
 				var confirmed = confirm(ss.i18n._t('ModelAdmin.REALLYDELETE', 'Really delete?'));
 				if(!confirmed) {
-					$(this).removeClass('loading')
+					$(this).removeClass('loading');
 					return false;
 				}
 			});
