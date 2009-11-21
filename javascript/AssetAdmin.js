@@ -465,9 +465,3 @@ jQuery(document).ready(function() {
 	
 	new CheckBoxRange($('Form_EditForm'), 'Files[]');
 });
-
-function refreshAsset() {
-	frames[0].location.reload(0);
-	frames[1].location.reload(1);
-}
-
