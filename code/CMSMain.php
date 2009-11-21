@@ -50,7 +50,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'AddForm',
 		'SiteTreeAsUL',
 		'getshowdeletedsubtree',
-		'getfilteredsubtree',
 		'SearchTreeForm',
 		'ReportForm',
 		'LangForm',
@@ -132,30 +131,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Versioned::prepopulate_versionnumber_cache("SiteTree", "Stage");
 		Versioned::prepopulate_versionnumber_cache("SiteTree", "Live");
 
-		return $this->getSiteTreeFor("SiteTree");
+		return $this->getSiteTreeFor($this->stat('tree_class'));
 	}
 	
-	/**
-	 * Use a CMSSiteTreeFilter to only get certain nodes
-	 *
-	 * @return string
-	 */
-	public function getfilteredsubtree($data, $form) {
-		$params = $form->getData();
-		
-		// Get the tree
-		$tree = $this->getSiteTreeFor(
-			$this->stat('tree_class'), 
-			$data['ID'], 
-			null, 
-			array(new CMSMainMarkingFilter($params), 'mark')
-		);
-
-		// Trim off the outer tag
-		$tree = ereg_replace('^[ \t\r\n]*<ul[^>]*>','', $tree);
-		$tree = ereg_replace('</ul[^>]*>[ \t\r\n]*$','', $tree);
-		
-		return $tree;
+	protected function getMarkingFilter($params) {
+		return new CMSMainMarkingFilter($params);
 	}
 		
 	public function generateDataTreeHints() {
@@ -186,7 +166,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 
 	public function generateTreeStylingJS() {
-		$classes = ClassInfo::subclassesFor('SiteTree');
+		$classes = ClassInfo::subclassesFor($this->stat('tree_class'));
 		foreach($classes as $class) {
 			$obj = singleton($class);
 			if($obj instanceof HiddenClass) continue;
@@ -1114,7 +1094,7 @@ JS;
 					_t('CMSMain_left.ss.CLEAR', 'Clear')
 				),
 				new FormAction(
-					'getfilteredsubtree', 
+					'doSearchTree', 
 					_t('CMSMain_left.ss.SEARCH', 'Search')
 				)
 			)
@@ -1122,6 +1102,10 @@ JS;
 		$form->unsetValidator();
 		
 		return $form;
+	}
+	
+	function doSearchTree($data, $form) {
+		return $this->getsubtree($this->request);
 	}
 
 	function publishall() {
@@ -1357,24 +1341,12 @@ JS;
 	}
 }
 
-class CMSMainMarkingFilter {
-	
-	/**
-	 * @var array Request params (unsanitized)
-	 */
-	protected $params = array();
-	
-	/**
-	 * @param array $params Request params (unsanitized)
-	 */
-	function __construct($params = null) {
-		$this->ids = array();
-		$this->expanded = array();
-		$this->params = $params;
-		
+class CMSMainMarkingFilter extends LeftAndMainMarkingFilter{
+
+	protected function getQuery($params) {
 		$where = array();
 		
-		$SQL_params = Convert::raw2sql($this->params);
+		$SQL_params = Convert::raw2sql($params);
 		foreach($SQL_params as $name => $val) {
 			switch($name) {
 				// Match against URLSegment, Title, MenuTitle & Content
@@ -1402,38 +1374,13 @@ class CMSMainMarkingFilter {
 			}
 		}
 		
-		$where = empty($where) ? '' : 'WHERE (' . implode(') AND (',$where) . ')';
-
-		$parents = array();
-		
-		/* Do the actual search */
-		$res = DB::query('SELECT "ParentID", "ID" FROM "SiteTree" '.$where);
-		if (!$res) return;
-		
-		/* And keep a record of parents we don't need to get parents of themselves, as well as IDs to mark */
-		foreach($res as $row) {
-			if ($row['ParentID']) $parents[$row['ParentID']] = true;
-			$this->ids[$row['ID']] = true;
-		}
-		
-		/* We need to recurse up the tree, finding ParentIDs for each ID until we run out of parents */
-		while (!empty($parents)) {
-			$res = DB::query('SELECT "ParentID", "ID" FROM "SiteTree" WHERE "ID" in ('.implode(',',array_keys($parents)).')');
-			$parents = array();
-
-			foreach($res as $row) {
-				if ($row['ParentID']) $parents[$row['ParentID']] = true;
-				$this->ids[$row['ID']] = true;
-				$this->expanded[$row['ID']] = true;
-			}
-		}
+		return new SQLQuery(
+			array("ParentID", "ID"),
+			'SiteTree',
+			$where
+		);
 	}
-	
-	function mark($node) {
-		$id = $node->ID;
-		if(array_key_exists((int) $id, $this->expanded)) $node->markOpened();
-		return array_key_exists((int) $id, $this->ids) ? $this->ids[$id] : false;
-	}
+
 }
 
 ?>

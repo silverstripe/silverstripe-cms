@@ -81,7 +81,7 @@
 				});
 		
 				// Set new URL
-				$('#sitetree')[0].setCustomURL(this.attr('action') + '&action_getfilteredsubtree=1', data);
+				$('#sitetree')[0].setCustomURL(this.attr('action') + '&action_doSearchTree=1', data);
 
 				// Disable checkbox tree controls that currently don't work with search.
 				// @todo: Make them work together
@@ -91,7 +91,7 @@
 				// disable buttons to avoid multiple submission
 				//this.find(':submit').attr('disabled', true);
 		
-				this.find(':submit[name=action_getfilteredsubtree]').addClass('loading');
+				this.find(':submit[name=action_doSearchTree]').addClass('loading');
 		
 				this._reloadSitetree();
 

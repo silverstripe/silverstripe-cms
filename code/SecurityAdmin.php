@@ -183,34 +183,8 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		return FormResponse::respond();
 	}
 	
-	/**
-	 * Return the entire site tree as a nested set of ULs.
-	 * @return string Unordered list <UL> HTML
-	 */
-	public function SiteTreeAsUL() {
-		$obj = singleton($this->stat('tree_class'));
-		$obj->markPartialTree();
-		
-		if($p = $this->currentPage()) $obj->markToExpose($p);
-
-		// getChildrenAsUL is a flexible and complex way of traversing the tree
-		$siteTreeList = $obj->getChildrenAsUL(
-			'',
-			'"<li id=\"record-$child->ID\" class=\"$child->class " . ($child->Locked ? " nodelete" : "") . $child->markingClasses() . ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
-			'"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" >" . $child->TreeTitle . "</a>" ',
-			$this,
-			true
-		);	
-
-		// Wrap the root if needs be
-		$rootLink = $this->Link() . 'show/root';
-		$rootTitle = _t('SecurityAdmin.SGROUPS', 'Security Groups');
-		if(!isset($rootID)) {
-			$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-root\" class=\"Root\"><a href=\"$rootLink\"><strong>{$rootTitle}</strong></a>"
-			. $siteTreeList . "</li></ul>";
-		}
-							
-		return $siteTree;
+	function getCMSTreeTitle() {
+		return _t('SecurityAdmin.SGROUPS', 'Security Groups');
 	}
 
 	public function EditedMember() {

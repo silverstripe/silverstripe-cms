@@ -451,6 +451,10 @@ class LeftAndMain extends Controller {
 			return DataObject::get_by_id($className, $id);
 		}
 	}
+	
+	public function SiteTreeAsUL() {
+		return $this->getSiteTreeFor($this->stat('tree_class'));
+	}
 
 	/**
 	 * Get a site tree displaying the nodes under the given objects.
@@ -498,7 +502,6 @@ class LeftAndMain extends Controller {
 		);
 
 		// Wrap the root if needs be.
-
 		if(!$rootID) {
 			$rootLink = '#';
 			
@@ -518,14 +521,12 @@ class LeftAndMain extends Controller {
 	 * If ID = 0, then get the whole tree.
 	 */
 	public function getsubtree($request) {
-		// Get the tree
-		$minNodeCount = (is_numeric($request->getVar('minNodeCount'))) ? $request->getVar('minNodeCount') : NULL;
 		$tree = $this->getSiteTreeFor(
 			$this->stat('tree_class'), 
 			$request->getVar('ID'), 
 			null, 
-			null, 
-			$minNodeCount
+			array($this->getMarkingFilter($request->requestVars()), 'mark'), 
+			$request->getVar('minNodeCount')
 		);
 
 		// Trim off the outer tag
@@ -535,6 +536,14 @@ class LeftAndMain extends Controller {
 		return $tree;
 	}
 
+	/**
+	 * @param array $params
+	 * @return LeftAndMainMarkingFilter
+	 */
+	protected function getMarkingFilter($params) {
+		return new LeftAndMainMarkingFilter($params);
+	}
+	
 	/**
 	 * Save  handler
 	 */
@@ -1217,4 +1226,72 @@ JS;
 	
 }
 
+class LeftAndMainMarkingFilter {
+	
+	/**
+	 * @var array Request params (unsanitized)
+	 */
+	protected $params = array();
+	
+	/**
+	 * @param array $params Request params (unsanitized)
+	 */
+	function __construct($params = null) {
+		$this->ids = array();
+		$this->expanded = array();
+		$parents = array();
+		
+		$q = $this->getQuery($params);
+		$res = $q->execute();
+		if (!$res) return;
+		
+		// And keep a record of parents we don't need to get parents 
+		// of themselves, as well as IDs to mark
+		foreach($res as $row) {
+			if ($row['ParentID']) $parents[$row['ParentID']] = true;
+			$this->ids[$row['ID']] = true;
+		}
+		
+		// We need to recurse up the tree, 
+		// finding ParentIDs for each ID until we run out of parents
+		while (!empty($parents)) {
+			$res = DB::query('SELECT "ParentID", "ID" FROM "SiteTree" WHERE "ID" in ('.implode(',',array_keys($parents)).')');
+			$parents = array();
+
+			foreach($res as $row) {
+				if ($row['ParentID']) $parents[$row['ParentID']] = true;
+				$this->ids[$row['ID']] = true;
+				$this->expanded[$row['ID']] = true;
+			}
+		}
+	}
+	
+	protected function getQuery($params) {
+		$where = array();
+		
+		$SQL_params = Convert::raw2sql($params);
+		if(isset($SQL_params['ID'])) unset($SQL_params['ID']);
+		foreach($SQL_params as $name => $val) {
+			switch($name) {
+				default:
+					// Partial string match against a variety of fields 
+					if(!empty($val) && singleton("SiteTree")->hasDatabaseField($name)) {
+						$where[] = "\"$name\" LIKE '%$val%'";
+					}
+			}
+		}
+		
+		return new SQLQuery(
+			array("ParentID", "ID"),
+			'SiteTree',
+			$where
+		);
+	}
+	
+	function mark($node) {
+		$id = $node->ID;
+		if(array_key_exists((int) $id, $this->expanded)) $node->markOpened();
+		return array_key_exists((int) $id, $this->ids) ? $this->ids[$id] : false;
+	}
+}
 ?>

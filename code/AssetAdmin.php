@@ -255,58 +255,14 @@ HTML;
 			return singleton('File');
 		}
 	}
-		
-	/**
-	 * Return the entire site tree as a nested UL.
-	 * @return string HTML for site tree
-	 */
+	
 	public function SiteTreeAsUL() {
-		$obj = singleton('Folder');
-		$obj->setMarkingFilter('ClassName', ClassInfo::subclassesFor('Folder'));
-		$obj->markPartialTree(30, null, "ChildFolders");
-
-		if($p = $this->currentPage()) $obj->markToExpose($p);
-
-		// getChildrenAsUL is a flexible and complex way of traversing the tree
-		$siteTreeList = $obj->getChildrenAsUL(
-			'',
-			'"<li id=\"record-$child->ID\" class=\"$child->class" . $child->markingClasses() .  ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
-			'"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" class=\"" . ($child->hasChildFolders() ? " contents" : "") . "\" >" . $child->TreeTitle . "</a>" ',
-			$this,
-			true,
-			"ChildFolders"
-		);	
-
-		// Wrap the root if needs be
-		$rootLink = $this->Link() . 'show/root';
-		$baseUrl = Director::absoluteBaseURL() . "assets";
-		if(!isset($rootID)) {
-			$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-root\" class=\"Root\"><a href=\"$rootLink\"><strong>{$baseUrl}</strong></a>"
-			. $siteTreeList . "</li></ul>";
-		}
-
-		return $siteTree;
-	}
-
-	/**
-	 * Returns a subtree of items underneat the given folder.
-	 */
-	public function getsubtree() {
-		$obj = DataObject::get_by_id('Folder', $_REQUEST['ID']);
-		$obj->setMarkingFilter('ClassName', ClassInfo::subclassesFor('Folder'));
-		$obj->markPartialTree();
-
-		$results = $obj->getChildrenAsUL(
-			'',
-			'"<li id=\"record-$child->ID\" class=\"$child->class" . $child->markingClasses() .  ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
-			'"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" >" . $child->TreeTitle . "</a>" ',
-			$this,
-			true
-		);
-
-		return substr(trim($results), 4, -5);
+		return $this->getSiteTreeFor($this->stat('tree_class'), null, 'ChildFolders');
 	}
 	
+	public function getCMSTreeTitle() {
+		return Director::absoluteBaseURL() . "assets";
+	}
 
 	//------------------------------------------------------------------------------------------//
 
@@ -319,7 +275,8 @@ HTML;
 		$form = new Form(
 			$this,
 			'SyncForm',
-			new FieldSet(),
+			new FieldSet(
+			),
 			new FieldSet(
 				$btn = new FormAction('doSync', _t('FILESYSTEMSYNC','Look for new files'))
 			)
