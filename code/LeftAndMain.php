@@ -314,12 +314,11 @@ class LeftAndMain extends Controller {
 		);
 	}
 	
-	
 	/**
- 	* Returns the menu title for the given LeftAndMain subclass.
- 	* Implemented static so that we can get this value without instantiating an object.
- 	* Menu title is *not* internationalised.
- 	*/
+	 * Returns the menu title for the given LeftAndMain subclass.
+	 * Implemented static so that we can get this value without instantiating an object.
+	 * Menu title is *not* internationalised.
+	 */
 	static function menu_title_for_class($class) {
 		$title = eval("return $class::\$menu_title;");
 		if(!$title) $title = preg_replace('/Admin$/', '', $class);
@@ -353,8 +352,8 @@ class LeftAndMain extends Controller {
 	// Main UI components
 
 	/**
-	 * Returns the main menu of the CMS.  This is also used by init() to work out which sections the user
-	 * has access to.
+	 * Returns the main menu of the CMS.  This is also used by init() 
+	 * to work out which sections the user has access to.
 	 * 
 	 * @return DataObjectSet
 	 */
@@ -392,7 +391,8 @@ class LeftAndMain extends Controller {
 		
 			// already set in CMSMenu::populate_menu(), but from a static pre-controller
 			// context, so doesn't respect the current user locale in _t() calls - as a workaround,
-			// we simply call LeftAndMain::menu_title_for_class() again if we're dealing with a controller
+			// we simply call LeftAndMain::menu_title_for_class() again 
+			// if we're dealing with a controller
 			if($menuItem->controller) {
 				$defaultTitle = LeftAndMain::menu_title_for_class($menuItem->controller);
 				$title = _t("{$menuItem->controller}.MENUTITLE", $defaultTitle);
@@ -414,22 +414,21 @@ class LeftAndMain extends Controller {
 		return $menu;
 	}
 
-
 	public function CMSTopMenu() {
 		return $this->renderWith(array('CMSTopMenu_alternative','CMSTopMenu'));
 	}
 
-  /**
-   * Return a list of appropriate templates for this class, with the given suffix
-   */
-  protected function getTemplatesWithSuffix($suffix) {
-    $classes = array_reverse(ClassInfo::ancestry($this->class));
-    foreach($classes as $class) {
-      $templates[] = $class . $suffix;
-      if($class == 'LeftAndMain') break;
-    }
-    return $templates;
-  }
+	/**
+	 * Return a list of appropriate templates for this class, with the given suffix
+	 */
+	protected function getTemplatesWithSuffix($suffix) {
+		$classes = array_reverse(ClassInfo::ancestry($this->class));
+		foreach($classes as $class) {
+			$templates[] = $class . $suffix;
+			if($class == 'LeftAndMain') break;
+		}
+		return $templates;
+	}
 
 	public function Left() {
 		return $this->renderWith($this->getTemplatesWithSuffix('_left'));
@@ -447,12 +446,13 @@ class LeftAndMain extends Controller {
 	}
 
 	/**
-	 * Get a site tree displaying the nodes under the given objects
+	 * Get a site tree displaying the nodes under the given objects.
+	 * 
 	 * @param $className The class of the root object
 	 * @param $rootID The ID of the root object.  If this is null then a complete tree will be
-	 *                shown
-	 * @param $childrenMethod The method to call to get the children of the tree.  For example,
-	 *                        Children, AllChildrenIncludingDeleted, or AllHistoricalChildren
+	 *  shown
+	 * @param $childrenMethod The method to call to get the children of the tree. For example,
+	 *  Children, AllChildrenIncludingDeleted, or AllHistoricalChildren
 	 */
 	function getSiteTreeFor($className, $rootID = null, $childrenMethod = null, $filterFunction = null, $minNodeCount = 30) {
 		// Default childrenMethod
@@ -475,11 +475,12 @@ class LeftAndMain extends Controller {
 
 		// getChildrenAsUL is a flexible and complex way of traversing the tree
 		$titleEval = '
-					"<li id=\"record-$child->ID\" class=\"" . $child->CMSTreeClasses($extraArg) . "\">" .
-					"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" class=\"" . $child->CMSTreeClasses($extraArg) . "\" title=\"' . _t('LeftAndMain.PAGETYPE','Page type: ') . '".$child->class."\" >" . 
-					($child->TreeTitle) . 
-					"</a>"
-';
+			"<li id=\"record-$child->ID\" class=\"" . $child->CMSTreeClasses($extraArg) . "\">" .
+			"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" class=\"" . $child->CMSTreeClasses($extraArg) . "\" title=\"' 
+			. _t('LeftAndMain.PAGETYPE','Page type: ') 
+			. '".$child->class."\" >" . ($child->TreeTitle) . 
+			"</a>"
+		';
 		$siteTree = $obj->getChildrenAsUL(
 			"", 
 			$titleEval,
@@ -637,8 +638,8 @@ JS;
 	}
 	
 	/** 
-	 * Return a javascript snippet that that shows a single_instance_only page type in Create dropdownfield 
-	 * if there isn't any of its instance in the site tree
+	 * Return a javascript snippet that that shows a single_instance_only page type 
+	 * in Create dropdownfield if there isn't any of its instance in the site tree
 	 */
 	protected function showSingleInstanceOnlyInCreateFieldJS($deletedPage) {
 		$className = $deletedPage->class;
@@ -952,6 +953,12 @@ JS;
 	 * @param String $logoText The logo text
 	 */
 	static $application_link = "http://www.silverstripe.org/";
+	
+	/**
+	 * @param String $name
+	 * @param String $logoText
+	 * @param String $link (Optional)
+	 */
 	static function setApplicationName($name, $logoText = null, $link = null) {
 		self::$application_name = $name;
 		self::$application_logo_text = $logoText ? $logoText : $name;
@@ -973,6 +980,10 @@ JS;
 	function getApplicationLogoText() {
 		return self::$application_logo_text;
 	}
+	
+	/**
+	 * @return String
+	 */
 	function ApplicationLink() {
 		return self::$application_link;
 	}
