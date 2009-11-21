@@ -34,13 +34,17 @@
 	 * @license BSD License
 	 */
 	$.fn.changetracker = function(_options) {
-		if (this.length > 1){
-			this.each(function() { $(this).changetracker(_options); });
+		var self = this;
+
+		if(this.length > 1){
+			this.each(function(i, item) { 
+				this.changetracker(_options); 
+			});
 			return this;
 		}
-	
+		
 		this.defaults = {
-			fieldSelector: ':input:not(:submit),:select:not(:submit)',
+			fieldSelector: ':input:not(:submit)',
 			ignoreFieldSelector: "",
 			changedCssClass: 'changed'
 		};
@@ -48,15 +52,11 @@
 		var options = $.extend({}, this.defaults, _options);
 		
 		this.initialize = function() {
-			var self = this;
-			
 			// optional metadata plugin support
 			if ($.meta) options = $.extend({}, options, this.data());
 			
 			// setup original values
-			this.getFields().each(function() {
-				$(this).data('changetracker.origVal', $(this).val());
-			})
+			this.getFields()
 			.bind('change', function(e) {
 				var $field = $(e.target);
 				var origVal = $field.data('changetracker.origVal');
@@ -64,6 +64,9 @@
 					$field.addClass(options.changedCssClass);
 					self.addClass(options.changedCssClass);
 				}
+			})
+			.each(function() {
+				$(this).data('changetracker.origVal', $(this).val());
 			});
 		};
 			
@@ -71,9 +74,6 @@
 		 * Reset change state of all form fields and the form itself.
 		 */
 		this.reset = function() {
-			console.debug('reset called');
-			var self = this;
-			
 			this.getFields().each(function() {
 				self.resetField(this);
 			});
@@ -88,7 +88,7 @@
 		 * @param DOMElement field
 		 */
 		this.resetField = function(field) {
-			return $(field).data('changetracker', null);
+			return $(field).removeData('changetracker.origVal');
 		};
 		
 		/**
