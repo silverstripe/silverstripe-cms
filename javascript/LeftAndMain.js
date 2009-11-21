@@ -195,6 +195,9 @@ var ss_MainLayout;
 	
 	/**
 	 * @class Make all buttons "hoverable" with jQuery theming.
+	 * Also sets the clicked button on a form submission, making it available through
+	 * a new 'clickedButton' property on the form DOM element.
+	 * 
 	 * @name ss.LeftAndMain.Buttons
 	 */
 	$('.LeftAndMain :submit, .LeftAndMain button, .LeftAndMain :reset').concrete('ss', function($){
@@ -217,6 +220,14 @@ var ss_MainLayout;
 				})
 				.blur(function() {
 					$(this).removeClass('ui-state-focus');
+				})
+				.click(function() {
+					var form = this.form;
+					// forms don't natively store the button they've been triggered with
+					form.clickedButton = this;
+					// Reset the clicked button shortly after the onsubmit handlers
+					// have fired on the form
+					setTimeout(function() {form.clickedButton = null;}, 10);
 				});
 				
 				this._super();
