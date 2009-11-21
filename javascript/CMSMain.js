@@ -291,7 +291,7 @@ var ss_MainLayout;
 				.appendTo(this.find('fieldset:first'))
 				.bind('change', function(e) {self._addField(e);})
 			);
-			
+
 			this._setOptions();
 			
 		},
@@ -304,7 +304,7 @@ var ss_MainLayout;
 			
 			// add default option
 			// TODO i18n
-			this('<option value="0">Add Criteria</option>').appendTo(self.SelectEl())
+			jQuery('<option value="0">Add Criteria</option>').appendTo(self.SelectEl())
 			
 			// populate dropdown values from existing fields
 			this.find('.field').each(function() {
