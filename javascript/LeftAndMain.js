@@ -694,9 +694,6 @@ function hideLoading() {
 returnFalse = function() {
 	return false;
 }
-showResponseAsSuccessMessage = function(response) {
-	statusMessage(response.responseText, 'good');
-}
 
 /**
  * This function is called by prototype when it receives notification that the user was logged out.
