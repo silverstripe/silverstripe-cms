@@ -108,7 +108,7 @@ class LeftAndMain extends Controller {
 		CMSMenu::add_link(
 			'Help', 
 			_t('LeftAndMain.HELP', 'Help', PR_HIGH, 'Menu title'), 
-			'http://userhelp.silverstripe.com'
+			'http://userhelp.silverstripe.org'
 		);
 		
 		// set reading lang
