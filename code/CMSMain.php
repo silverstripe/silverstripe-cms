@@ -30,14 +30,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'addmember',
 		'addpage',
 		'buildbrokenlinks',
-		'canceldraftchangesdialog',
 		'compareversions',
 		'createtranslation',
 		'delete',
 		'deletefromlive',
 		'deleteitems',
 		'DeleteItemsForm',
-		'dialog',
 		'duplicate',
 		'duplicatewithchildren',
 		'getpagecount',
@@ -964,43 +962,6 @@ JS;
 				"Right" => $this->customise($templateData)->renderWith($this->class . '_right'),
 			);
 		}
-	}
-
-	function dialog() {
-		Requirements::clear();
-
-		$buttons = new DataObjectSet;
-		if($_REQUEST['Buttons']) foreach($_REQUEST['Buttons'] as $button) {
-			list($name, $title) = explode(',',$button,2);
-			$buttons->push(new ArrayData(array(
-				"Name" => $name,
-				"Title" => $title,
-			)));
-		}
-
-		return array(
-			"Message" => htmlentities($_REQUEST['Message']),
-			"Buttons" => $buttons,
-			"Modal" => $_REQUEST['Modal'] ? true : false,
-		);
-	}
-
-	function canceldraftchangesdialog() {
-		Requirements::clear();
-		Requirements::css(CMS_DIR . 'css/dialog.css');
-		Requirements::javascript(THIRDPARTY_DIR . '/prototype.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/behaviour.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/prototype_improvements.js');
-		Requirements::javascript(CMS_DIR . '/javascript/dialog.js');
-
-		$message = _t('CMSMain.COPYPUBTOSTAGE',"Do you really want to copy the published content to the stage site?");
-		$buttons = "<button name=\"OK\">" . _t('CMSMain.OK','OK') ."</button><button name=\"Cancel\">" . _t('CMSMain.CANCEL',"Cancel") . "</button>";
-
-		return $this->customise( array(
-			'Message' => $message,
-			'Buttons' => $buttons,
-			'DialogType' => 'alert'
-		))->renderWith('Dialog');
 	}
 	
 	/**
