@@ -55,17 +55,15 @@ TreeAPI.prototype = {
 		url = this.url(args); 
 		
 		var self = this;
-		new Ajax.Request(url, {
-			onSuccess: function(response){
-				self.innerHTML = response.responseText;
+		jQuery.get(
+			url, 
+			function(data, status){
+				self.innerHTML = data;
 				self.castAsTreeNode(self.firstChild);
-				if (options.onSuccess) options.onSuccess(response);
+				if (options.onSuccess) options.onSuccess(data);
 			},
-			onFailure: function(response){
-				errorMessage('error loading tree', response);
-				if (options.onFailure) options.onFailure(response);
-			}
-		});
+			'html'
+		);
 	},
 	
 	/**
