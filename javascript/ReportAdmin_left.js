@@ -23,6 +23,7 @@ SiteTree.prototype = {
 
 SiteTreeNode.prototype.onselect = function() {
 	$('sitetree').changeCurrentTo(this);
+	jQuery('#sitetree').trigger('selectionchanged');
 	if($('sitetree').notify('SelectionChanged', this)) {
 		this.getPageFromServer();
 	}

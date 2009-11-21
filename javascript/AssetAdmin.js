@@ -10,7 +10,7 @@ SiteTreeHandlers.showRecord_url = 'admin/assets/show/';
 SiteTreeHandlers.controller_url = 'admin/assets';
 
 var _HANDLER_FORMS = {
-	addpage : 'addpage_options',
+	addpage : 'Form_AddPageOptionsForm',
 	deletepage : 'Form_DeleteItemsForm',
 	sortitems : 'sortitems_options'
 };
@@ -268,8 +268,8 @@ addfolder.prototype = {
 	form_submit : function() {
 		var st = $('sitetree');
 
-		$('addpage_options').elements.ParentID.value = st.getIdxOf(st.firstSelected());		
-		Ajax.SubmitForm('addpage_options', null, {
+		$('Form_AddPageOptionsForm').elements.ParentID.value = st.getIdxOf(st.firstSelected());		
+		Ajax.SubmitForm('Form_AddPageOptionsForm', null, {
 			onSuccess : this.onSuccess,
 			onFailure : this.showAddPageError
 		});
