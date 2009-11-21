@@ -405,8 +405,13 @@ JS;
 			//  in the future, see http://open.silverstripe.com/ticket/2915 and http://open.silverstripe.com/ticket/3386
 			if($record->hasMethod('getCMSValidator')) {
 				$validator = $record->getCMSValidator();
+				// The clientside (mainly LeftAndMain*.js) rely on ajax responses
+				// which can be evaluated as javascript, hence we need
+				// to override any global changes to the validation handler.
+				$validator->setJavascriptValidationHandler('prototype');
+				$form->setValidator($validator);
 			} else {
-				$validator = new RequiredFields();
+				$form->unsetValidator();
 			}
 			
 			// The clientside (mainly LeftAndMain*.js) rely on ajax responses
