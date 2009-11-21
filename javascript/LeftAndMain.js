@@ -690,11 +690,6 @@ function hideLoading() {
 	if($('Loading')) $('Loading').style.display = 'none';
 	Element.removeClassName(document.body, 'stillLoading');
 }
-function baseHref() {
-	var baseTags = document.getElementsByTagName('base');
-	if(baseTags) return baseTags[0].href;
-	else return "";
-}
 
 returnFalse = function() {
 	return false;

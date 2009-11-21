@@ -265,7 +265,7 @@ TreeNodeAPI.prototype = {
 			parentClause = "&parentID=" + this.parentTreeNode.getIdx();
 		}
 
-		new Ajax.Request(baseHref() + 'admin/duplicate/' + this.getIdx() + '?ajax=1' + parentClause, {
+		new Ajax.Request(jQuery('base').attr('href') + 'admin/duplicate/' + this.getIdx() + '?ajax=1' + parentClause, {
 			method : 'get',
 			onSuccess : Ajax.Evaluator,
 			onFailure : function(response) {
@@ -274,7 +274,7 @@ TreeNodeAPI.prototype = {
 		}); 
 	},
 	duplicatePageWithChildren: function() {  
-		new Ajax.Request(baseHref() + 'admin/duplicatewithchildren/' + this.getIdx() + '?ajax=1', {
+		new Ajax.Request(jQuery('base').attr('href') + 'admin/duplicatewithchildren/' + this.getIdx() + '?ajax=1', {
 			method : 'get',
 			onSuccess : Ajax.Evaluator,
 			onFailure : function(response) {

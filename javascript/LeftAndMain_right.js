@@ -81,7 +81,7 @@ CMSForm.prototype = {
 		rightHTML = rightHTML.replace(/(<a[^>]+href *= *")#/g, '$1' + window.location.href.replace(/#.*$/,'') + '#');
 		
 		// Rewrite iframe links (for IE)
-		rightHTML = rightHTML.replace(/(<iframe[^>]*src=")([^"]+)("[^>]*>)/g, '$1' + baseHref() + '$2$3');
+		rightHTML = rightHTML.replace(/(<iframe[^>]*src=")([^"]+)("[^>]*>)/g, '$1' + jQuery('base').attr('href') + '$2$3');
 
 		// Note: TinyMCE coupling
 		tinymce_removeAll();

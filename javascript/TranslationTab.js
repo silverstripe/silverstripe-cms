@@ -6,7 +6,7 @@ Behaviour.register({
 			if(originalID && originalID.substr(0,3) == 'new') {
 				alert("You have to save a page before translating it");
 			} else {
-				var url = baseHref() + 'admin/' + this.name.substring(7) + '?ID=' + $('Form_EditForm_ID').value + '&newlang=' +
+				var url = jQuery('base').attr('href') + 'admin/' + this.name.substring(7) + '?ID=' + $('Form_EditForm_ID').value + '&newlang=' +
 				$('Form_EditForm_NewTransLang').value + '&ajax=1';
 				url += "&locale=" + $('Form_EditForm_Locale').value;
 				
