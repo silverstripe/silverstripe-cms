@@ -332,6 +332,9 @@ class LeftAndMain extends Controller {
 	}
 
 	public function show($request) {
+		// TODO Necessary for TableListField URLs to work properly
+		if($request->param('ID')) $this->setCurrentPageID($request->param('ID'));
+		
 		$form = $this->getEditForm($request->param('ID'));
 		
 		if(Director::is_ajax()) {
@@ -864,7 +867,7 @@ JS;
 	public function currentPageID() {
 		if($this->request->getVar('ID'))	{
 			return $this->request->getVar('ID');
-		} elseif ($this->request->param('ID')) {
+		} elseif ($this->request->param('ID') && is_numeric($this->request->param('ID'))) {
 			return $this->request->param('ID');
 		} elseif(Session::get("{$this->class}.currentPage")) {
 			return Session::get("{$this->class}.currentPage");
