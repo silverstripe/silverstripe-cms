@@ -745,6 +745,12 @@ JS;
 			echo sprintf(_t('CMSMain.ROLLEDBACKPUB',"Rolled back to published version. New version number is #%d"),$record->Version);
 		}
 	}
+	
+	function publish($urlParams, $form) {
+		$urlParams['publish'] = '1';
+		
+		return $this->save($urlParams, $form);
+	}
 
 	function unpublish() {
 		$SQL_id = Convert::raw2sql($_REQUEST['ID']);

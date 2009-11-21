@@ -317,20 +317,6 @@ CMSRightForm.prototype = {
 CMSForm.applyTo('#Form_SubForm');
 CMSRightForm.applyTo('#Form_EditForm', 'right');
 
-function action_save_right() {
-	_AJAX_LOADING = true;
-	$('Form_EditForm_action_save').value = ss.i18n._t('CMSMAIN.SAVING');
-	$('Form_EditForm_action_save').className = 'action loading';
-	$('Form_EditForm_action_save').stopLoading = function() {
-		if($('Form_EditForm_action_save') && $('Form_EditForm_action_save').className.indexOf('loading') != -1) {
-			$('Form_EditForm_action_save').value = 'Save';
-			Element.removeClassName($('Form_EditForm_action_save'), 'loading');
-		}
-	}	
-	
-	$('Form_EditForm').save(false);
-}
-
 /**
  * Handle auto-saving.  Detects if changes have been made, and if so save everything on the page.
  * If confirmation is true it will ask for confirmation.
