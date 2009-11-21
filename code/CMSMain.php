@@ -1353,23 +1353,51 @@ JS;
 	}
 	
 	/**
-     * Returns all languages with languages already used appearing first.
-     * Called by the SSViewer when rendering the template.
-     */
-    function LangSelector() {
-		$member = Member::currentUser(); 
-		$dropdown = new LanguageDropdownField(
-			'LangSelector', 
-			'Language', 
-			array(),
-			'SiteTree', 
-			'Locale-English',
-			singleton('SiteTree')
+	 * Returns a form with all languages with languages already used appearing first.
+	 * 
+	 * @return Form
+	 */
+	function LangForm() {
+		$member = Member::currentUser(); //check to see if the current user can switch langs or not
+		if(Permission::checkMember($member, 'VIEW_LANGS')) {
+			$field = new LanguageDropdownField(
+				'Locale', 
+				// TODO i18n
+				'Language', 
+				array(), 
+				'SiteTree', 
+				'Locale-English',
+				singleton('SiteTree')
+			);
+			$field->setValue(Translatable::get_current_locale());
+        } else {
+			// user doesn't have permission to switch langs 
+			// so just show a string displaying current language
+			$field = new LiteralField(
+				'Locale', 
+				i18n::get_locale_name( Translatable::get_current_locale())
+			);
+		}
+		
+		$form = new Form(
+			$this,
+			'LangForm',
+			new FieldSet(
+				$field
+			),
+			new FieldSet(
+				new FormAction('selectlang', _t('CMSMain_left.ss.GO','Go'))
+			)
 		);
-		$dropdown->setValue(Translatable::get_current_locale());
-		return $dropdown;
-    }
-
+		$form->unsetValidator();
+		
+		return $form;
+	}
+	
+	function selectlang($data, $form) {
+		return $this;
+	}
+	
 	/**
 	 * Determine if there are more than one languages in our site tree.
 	 * 

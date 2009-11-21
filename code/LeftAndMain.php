@@ -290,9 +290,6 @@ class LeftAndMain extends Controller {
 				'cms/javascript/CMSMain_left.js',
 				'cms/javascript/CMSMain_right.js',
 				'cms/javascript/SideTabs.js',
-				'cms/javascript/SideReports.js',
-				'cms/javascript/LangSelector.js',
-				'cms/javascript/TranslationTab.js',
 			)
 		);
 

@@ -490,3 +490,10 @@ form#SideReportForm label.left {
 	border-top: 1px solid #CCCCCC;
 	padding: 3px 0 3px 7px;
 }
+	#LangSelector_holder .Actions {
+		display: none;
+	}
+	#LangSelector_holder label.left {
+		margin-left: 0;
+		width: auto;
+	}

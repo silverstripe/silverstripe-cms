@@ -42,6 +42,6 @@
 
 			<% if IsTranslatableEnabled %>
 			<div id="LangSelector_holder">
-				Language: $LangSelector
+				$LangForm
 			</div>
 			<% end_if %>

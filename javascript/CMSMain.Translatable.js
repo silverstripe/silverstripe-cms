@@ -4,7 +4,7 @@
 	 * @class Dropdown with languages above CMS tree, causing a redirect upon translation
 	 * @name ss.CMSMain.LangSelector
 	 */
-	$('.CMSMain #LangSelector').concrete('ss', function($){
+	$('.CMSMain #Form_LangForm').concrete('ss', function($){
 		return/** @lends ss.CMSMain.LangSelector */{
 			onmatch: function() {
 				var self = this;
@@ -16,7 +16,7 @@
 				});
 				
 				// whenever a new value is selected, reload the whole CMS in the new locale
-				this.bind('change', function(e) {
+				this.find(':input[name=Locale]').bind('change', function(e) {
 					document.location = 'admin/?locale=' + $(e.target).val();
 					return false;
 				});
