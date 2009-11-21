@@ -185,10 +185,20 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/effects.drop.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/effects.scale.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/layout/jquery.layout.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/fitheighttoparent/jquery.fitheighttoparent.js');
 		// @todo Load separately so the CSS files can be inlined
 		Requirements::css(THIRDPARTY_DIR . '/jquery/themes/smoothness/ui.all.css');
 		
+		// concrete
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/concrete/jquery.class.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/concrete/jquery.selector.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/concrete/jquery.selector.specifity.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/concrete/jquery.selector.matches.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/concrete/jquery.dat.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/concrete/jquery.concrete.js');
+		
 		Requirements::javascript(THIRDPARTY_DIR . '/behaviour.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/livequery/jquery.livequery.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/core/jquery.ondemand.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/prototype_improvements.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/loader.js');
