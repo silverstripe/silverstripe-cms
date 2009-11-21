@@ -31,11 +31,15 @@
 				var self = this;
 				
 				this._setupChangeTracker();
+				
+				this.bind('submit', function(e) {
+				  return self._submit(e);
+				});
 
 				// Can't bind this through jQuery
 				window.onbeforeunload = function(e) {return self._checkChangeTracker(false);};
 				
-				$._super();
+				this._super();
 			},
 			
 			_setupChangeTracker: function() {
@@ -75,7 +79,8 @@
 			 * 
 			 * @param {Event} e
 			 */
-			onsubmit: function(e) {
+			_submit: function(e) {
+			  this.ajaxSubmit();
 				return false;
 			},
 	
@@ -158,7 +163,7 @@
 			 * @param {Function} callback (Optional) Called after the form content as been loaded
 			 * @param {ajaxOptions} Object literal merged into the jQuery.ajax() call (Optional)
 			 */
-			load: function(url, callback, ajaxOptions) {
+			loadForm: function(url, callback, ajaxOptions) {
 				var self = this;
 
 				// Alert when unsaved changes are present
@@ -171,9 +176,9 @@
 					complete: function(xmlhttp, status) {
 					  // TODO This should be using the plugin API
 						self.removeClass('changed');
-					  
+
 						self._loadResponse(xmlhttp.responseText, status, xmlhttp);
-						
+
 						if(callback) callback.apply(self, arguments);
 					}, 
 					dataType: 'html'
