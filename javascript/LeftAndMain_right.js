@@ -22,7 +22,6 @@ CMSForm.prototype = {
 	 * Processing called whenever a page is loaded in the right - including the initial one
 	 */
 	prepareForm : function() {
-		ajaxActionsAtTop(this.id, 'form_actions_' + this.formName, this.formName);
 	},
 	
 	/**
@@ -31,7 +30,6 @@ CMSForm.prototype = {
 	loadActionsFromString : function(actionHTML) {
 		var actionHolder = $('form_actions_' + this.formName);
 		actionHolder.innerHTML = actionHTML;
-		prepareAjaxActions(actionHolder, this.id, this.formName);
 	},
 
 	/**

@@ -10,7 +10,6 @@ Behaviour.register({
 		 * Processing called whenever a page is loaded in the right - including the initial one
 		 */
 		prepareForm : function() {
-			ajaxActionsAtTop('Form_EditForm', 'form_actions', 'right');
 		},
 		
 		/**

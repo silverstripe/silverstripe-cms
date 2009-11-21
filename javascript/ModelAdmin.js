@@ -399,9 +399,3 @@ function fixHeight_left() {
 	fitToParent('Search_holder',12);
 	fitToParent('ResultTable_holder',12);
 }
-
-function prepareAjaxActions(actions, formName, tabName) {
-	// @todo HACK Overwrites LeftAndMain.js version of this method to avoid double form actions
-	// (by new jQuery and legacy prototype) 
-	return false;
-}

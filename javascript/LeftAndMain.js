@@ -63,52 +63,6 @@ function unlockStatusMessage() {
 }
 
 /**
- * Move form actions to the top and make them ajax
- */
-function ajaxActionsAtTop(formName, actionHolderName, tabName) {
-	var actions = document.getElementsBySelector('#' + formName + ' .Actions')[0];
-	var holder;
-
-	if((holder = $(actionHolderName)) && holder != actions) {
-		holder.parentNode.removeChild(holder);
-	}
-
-	if(actions) {
-		actions.id = actionHolderName;
-		actions.className = 'ajaxActions';
-
-		$(tabName).appendChild(actions);
-		prepareAjaxActions(actions, formName, tabName);
-	}
-}
-
-/**
- * Prepare the ajax actions so that the buttons actually do something
- */
-function prepareAjaxActions(actions, formName, tabName) {
-	var i, button, list = actions.getElementsByTagName('input')
-	for (i=0;button=list[i];i++) {
-		button.ownerForm = $(formName);
-
-		button.onclick = function(e) {
-			if(!e) e = window.event;
-			// tries to call a custom method of the format "action_<youraction>_right"
-			if(window[this.name + '_' + tabName]) {
-				window[this.name + '_' + tabName](e);
-			} else {
-				statusMessage('...');
-				Ajax.SubmitForm(this.ownerForm, this.name, {
-					onSuccess: Ajax.Evaluator,
-					onFailure: ajaxErrorHandler
-				});
-			}
-			return false;
-		}
-		// behaveAs(button, StatusTitle);
-	}
-}
-
-/**
  * Submit the given form and evaluate the Ajax response.
  * Needs to be bound to an object with the following parameters to work:
  *  - form
