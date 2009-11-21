@@ -204,6 +204,7 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-selector/src/jquery.selector.matches.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-concrete/src/jquery.dat.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-concrete/src/jquery.concrete.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-live-extension/live-extension.js');
 		
 		// Required for TreeTools panel above tree
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/TabSet.js');
