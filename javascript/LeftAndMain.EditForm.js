@@ -6,10 +6,16 @@
 	 * Takes care of resizing tabsets within the layout container.
 	 * @name ss.Form_EditForm
 	 * @require jquery.changetracker
+	 * 
+	 * <h3>Events</h3>
+	 * - ajaxsubmit: Form is about to be submitted through ajax
+	 * - validate: Contains validation result
+	 * - removeform: A form is about to be removed from the DOM
+	 * - load: Form is about to be loaded through ajax
 	 */
 	$('#Form_EditForm').concrete('ss',function($){
 		return/** @lends ss.Form_EditForm */{	
-	
+			
 			/**
 			 * @type String HTML text to show when the form has been deleted.
 			 * @todo i18n
@@ -51,12 +57,16 @@
 			  
 				// @todo TinyMCE coupling
 				if(typeof tinyMCE != 'undefined') tinyMCE.triggerSave();
+				
+				// check for form changes
 				if(self.is('.changed')) {
 					var msg = ss.i18n._t('LeftAndMain.CONFIRMUNSAVED');
 					// returned string will trigger a confirm() dialog, 
 					// but only if the method is triggered by an event
 					return (doConfirm) ? confirm(msg) : msg;
 				}
+				
+				return null;
 			},
 	
 			/**
@@ -150,9 +160,11 @@
 			load: function(url, callback, ajaxOptions) {
 			  var self = this;
 			  
-			  // Alert when unsaved changes are present
-				if(!this._checkChangeTracker(true)) return false;
+				// Alert when unsaved changes are present
+				if(this._checkChangeTracker(true) == false) return false;
 				
+				this.trigger('load');
+
 				return jQuery.ajax(jQuery.extend({
 					url: url, 
 					complete: function(xmlhttp, status) {
@@ -170,13 +182,23 @@
 			/**
 			 * Remove everying inside the <form> tag
 			 * with a custom HTML fragment. Useful e.g. for deleting a page in the CMS.
+			 * Checks for unsaved changes before removing the form
 			 * 
-			 * @param {String} removeText Short note why the form has been removed, displayed in <p> tags.
+			 * @param {String} placeholderHtml Short note why the form has been removed, displayed in <p> tags.
 			 *  Falls back to the default RemoveText() option (Optional)
 			 */
-			removeForm: function(removeText) {
-				if(!removeText) removeText = this.RemoveText();
-				this.html('<p>' + removeText + '</p>');
+			removeForm: function(placeholderHtml) {
+				if(!placeholderHtml) placeholderHtml = this.PlaceholderHtml();
+				
+				// Alert when unsaved changes are present
+				if(this._checkChangeTracker(true) == false) return false;
+				
+				this.trigger('removeform');
+				
+				this.html(placeholderHtml);
+				
+				// TODO This should be using the plugin API
+				this.removeClass('changed');
 			},
 	
 			/**
