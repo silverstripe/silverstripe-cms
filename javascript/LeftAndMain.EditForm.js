@@ -171,8 +171,8 @@
 				
 				// hide existing form - shown again through _loadResponse()
 				this.addClass('loading');
-				
-				this.trigger('load');
+
+				this.trigger('load', {url: url});
 				
 				this.cleanup();
 
