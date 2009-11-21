@@ -27,6 +27,11 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		'EditForm'
 	);
 
+	/**
+	 * @var Array
+	 */
+	static $hidden_permissions = array();
+
 	public function init() {
 		parent::init();
 
@@ -72,6 +77,10 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			$readonlyFields = $form->Fields()->makeReadonly();
 			$form->setFields($readonlyFields);
 		}
+		
+		// Filter permissions
+		$permissionField = $form->Fields()->dataFieldByName('Permissions');
+		if($permissionField) $permissionField->setHiddenPermissions(self::$hidden_permissions);
 		
 		return $form;
 	}
@@ -278,15 +287,36 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	}
 	
 	/**
-	 * the permissions represented in the $codes will not appearing in the form
-	 * containning {@link PermissionCheckboxSetField} so as not to be checked / unchecked.
-	 * @param $codes array of permission code
-	 * @return void
+	 * The permissions represented in the $codes will not appearing in the form
+	 * containing {@link PermissionCheckboxSetField} so as not to be checked / unchecked.
+	 * 
+	 * @param $codes String|Array
 	 */
-	static function hide_permissions($codes){
-		foreach($codes as $code){
-			Permission::add_to_hidden_permissions($code);
-		}
+	static function add_hidden_permission($codes){
+		if(is_string($codes)) $codes = array($codes);
+		self::$hidden_permissions += $codes;
+	}
+	
+	/**
+	 * @param $codes String|Array
+	 */
+	static function remove_hidden_permission($codes){
+		if(is_string($codes)) $codes = array($codes);
+		self::$hidden_permissions = array_diff(self::$hidden_permissions, $codes);
+	}
+	
+	/**
+	 * @return Array
+	 */
+	static function get_hidden_permissions(){
+		return self::$hidden_permissions;
+	}
+	
+	/**
+	 * Clear all permissions previously hidden with {@link add_hidden_permission}
+	 */
+	static function clear_hidden_permissions(){
+		self::$hidden_permissions = array();
 	}
 }
 
