@@ -5,20 +5,18 @@
 var ss_MainLayout;
 
 (function($) {
-	$(function() {
-		// global ajax error handlers
-		$('.LeftAndMain').bind('ajaxComplete', function(e, xmlhttp, settings) {
-			var status = (xmlhttp.status >= 400) ? 'bad' : 'good';
-			var msg = (xmlhttp.getResponseHeader('X-Status')) ? xmlhttp.getResponseHeader('X-Status') : xmlhttp.statusText;
-			// Don't display standard '200 OK' messages
-			if(msg && msg != 'OK') statusMessage(msg, status);
-		});
-	});
-	
 	$.concrete('ss', function($){
 	
 		// setup jquery.concrete
 		$.concrete.warningLevel = $.concrete.WARN_LEVEL_BESTPRACTISE;
+	
+		// global ajax error handlers
+		$.ajaxSetup({
+			error: function(xmlhttp, status, error) {
+				var msg = (xmlhttp.getResponseHeader('X-Status')) ? xmlhttp.getResponseHeader('X-Status') : xmlhttp.statusText;
+				statusMessage(msg, 'bad');
+			}
+		});
 		
 			/**
 		 * Available Custom Events:
@@ -362,6 +360,7 @@ var ss_MainLayout;
 			onmatch: function() {
 				var self = this;
 				this.setForm($('#Form_EditForm'));
+
 				jQuery('#Form_EditForm').bind('loadnewpage delete', function(e) {self.refresh();});
 				self.refresh();
 				
