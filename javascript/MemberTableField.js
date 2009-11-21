@@ -277,3 +277,29 @@ MemberFilterButton.prototype = {
 Behaviour.register({
 	'#Form_EditForm div.MemberTableField table.data input.text' : AjaxMemberLookup
 });
+
+/**
+ * Post the given fields to the given url
+ */
+function ajaxSubmitFieldSet(href, fieldSet, extraData) {
+	// Build data
+	var i,field,data = "ajax=1";
+	for(i=0;field=fieldSet[i];i++) {
+		data += '&' + Form.Element.serialize(field);
+	}
+	if(extraData){
+		data += '&'+extraData;
+	}
+	// Send request
+	new Ajax.Request(href, {
+		method : 'post', postBody : data,
+		onSuccess : function(response) {
+			//alert(response.responseText);
+			Ajax.Evaluator(response);
+		},
+		onFailure : function(response) {
+			alert(response.responseText);
+			//errorMessage('Error: ', response);
+		}
+	});
+}
