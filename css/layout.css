@@ -189,6 +189,7 @@ body.stillLoading select {
 
 /** 3-PANEL LAYOUT **/
 .ss-cms-top-menu {
+	overflow: hidden;
 	font-size: 14px;
 	height: 33px;
 	background: #474855 url(../images/mainmenu/top-bg.gif) top left repeat-x;
