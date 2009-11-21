@@ -138,13 +138,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 *
 	 * @return string
 	 */
-	public function getfilteredsubtree($request) {
+	public function getfilteredsubtree($data, $form) {
 		$params = $form->getData();
 		
 		// Get the tree
 		$tree = $this->getSiteTreeFor(
 			$this->stat('tree_class'), 
-			$request->requestVar('ID'), 
+			$data['ID'], 
 			null, 
 			array(new CMSMainMarkingFilter($params), 'mark')
 		);
@@ -155,29 +155,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		return $tree;
 	}
-	
-	/**
-	 * Returns a list of batch actions
-	 */
-	function SiteTreeFilters() {
-		$filters = ClassInfo::subclassesFor('CMSSiteTreeFilter');
-		array_shift($filters);
-		$doSet = new DataObjectSet();
-		$doSet->push(new ArrayData(array(
-			'ClassName' => 'all',
-			'Title' => 'All items'
-		)));
-		foreach($filters as $filter) {
-			if (call_user_func(array($filter, 'showInList'))) {
-				$doSet->push(new ArrayData(array(
-					'ClassName' => $filter,
-					'Title' => call_user_func(array($filter, 'title'))
-				)));
-			}
-		}
-		return $doSet;
-	}
-	
+		
 	public function generateDataTreeHints() {
 		$classes = ClassInfo::subclassesFor( $this->stat('tree_class') );
 
@@ -1059,6 +1037,18 @@ JS;
 		array_unshift($pageTypes, 'All');
 		$pageTypes = array_combine($pageTypes, $pageTypes);
 		asort($pageTypes);
+		
+		// get all filter instances
+		$filters = ClassInfo::subclassesFor('CMSSiteTreeFilter');
+		$filterMap = array();
+		// remove base class
+		array_shift($filters);
+		// add filters to map
+		foreach($filters as $filter) {
+			if(!call_user_func(array($filter, 'showInList'))) continue;
+			
+			$filterMap[$filter] = call_user_func(array($filter, 'title'));
+		}
 				
 		$form = new Form(
 			$this,
@@ -1068,9 +1058,10 @@ JS;
 					'Title', 
 					_t('CMSMain.TITLEOPT', 'Title')
 				),
+				new DropdownField('filter', 'Type', $filterMap, null, null, 'Any'),
 				new TextField('Content', 'Text'),
 				new CalendarDateField('EditedSince', _t('CMSMain_left.ss.EDITEDSINCE','Edited Since')),
-				new DropdownField('ClassName', 'Page Type', $pageTypes, null, 'Any'),
+				new DropdownField('ClassName', 'Page Type', $pageTypes, null, null, 'Any'),
 				new TextField(
 					'MenuTitle', 
 					_t('CMSMain.MENUTITLEOPT', 'Navigation Label')
