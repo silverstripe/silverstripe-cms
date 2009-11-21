@@ -198,13 +198,7 @@ class LeftAndMain extends Controller {
 		Requirements::css(SAPPHIRE_DIR . '/thirdparty/jquery-ui-themes/smoothness/ui.all.css');
 		
 		// concrete
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-selector/src/jquery.class.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-selector/src/jquery.selector.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-selector/src/jquery.selector.specifity.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-selector/src/jquery.selector.matches.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-concrete/src/jquery.dat.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-concrete/src/jquery.concrete.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-live-extension/live-extension.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-concrete/dist/jquery.concrete-dist.js');
 		
 		// Required for TreeTools panel above tree
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/TabSet.js');
