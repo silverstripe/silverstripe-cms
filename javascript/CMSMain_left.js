@@ -189,7 +189,7 @@ batchactionsclass.prototype = {
 		batchActionGlobals.o1 = $('sitetree').observeMethod('SelectionChanged', batchActionGlobals.treeSelectionChanged);
 		batchActionGlobals.o2 = $(_HANDLER_FORMS.batchactions).observeMethod('Close', batchActionGlobals.popupClosed);
 	
-		addClass($('sitetree'),'multiselect');
+		jQuery('#sitetree').addClass('multiselect');
 
 		batchActionGlobals.selectedNodes = { };
 
@@ -250,7 +250,7 @@ batchActionGlobals = {
 	},
 	
 	popupClosed : function() {
-		removeClass($('sitetree'),'multiselect');
+		jQuery('#sitetree').removeClass('multiselect');
 		$('sitetree').stopObserving(batchActionGlobals.o1);
 		$(_HANDLER_FORMS.batchactions).stopObserving(batchActionGlobals.o2);
 

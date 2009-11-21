@@ -354,7 +354,7 @@ deletefolder = {
 			deletefolder.o1 = $('sitetree').observeMethod('SelectionChanged', deletefolder.treeSelectionChanged);
 			deletefolder.o2 = $('Form_DeleteItemsForm').observeMethod('Close', deletefolder.popupClosed);
 			
-			addClass($('sitetree'),'multiselect');
+			jQuery('#sitetree').addClass('multiselect');
 
 			deletefolder.selectedNodes = { };
 
@@ -387,7 +387,7 @@ deletefolder = {
 	},
 	
 	popupClosed : function() {
-		removeClass($('sitetree'),'multiselect');
+		jQuery('#sitetree').removeClass('multiselect');
 		$('sitetree').stopObserving(deletefolder.o1);
 		$('Form_DeleteItemsForm').stopObserving(deletefolder.o2);
 
@@ -489,7 +489,7 @@ Behaviour.register({
 /** 
  * Initialisation function to set everything up
  */
-appendLoader(function () {
+jQuery(document).ready(function() {
 	// Set up delete page
 	Observable.applyTo($('Form_DeleteItemsForm'));
 	if($('deletepage')) {

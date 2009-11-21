@@ -47,7 +47,7 @@ function reloadSiteTree() {
 	});
 }
 
-appendLoader(function () {
+jQuery(document).ready(function() {
 	if($('sitetree')) {
 		var selectedNode = $('sitetree').getElementsByTagName('li')[1];
 		selectedNode.onselect();

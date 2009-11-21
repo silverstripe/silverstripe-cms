@@ -50,7 +50,7 @@ var deletegroup = {
 			
 			deletegroup.o1 = $('sitetree').observeMethod('SelectionChanged', deletegroup.treeSelectionChanged);
 			deletegroup.o2 = $('deletegroup_options').observeMethod('Close', deletegroup.popupClosed);
-			addClass($('sitetree'),'multiselect');
+			jQuery('#sitetree').addClass('multiselect');
 
 			deletegroup.selectedNodes = { };
 			
@@ -87,7 +87,7 @@ var deletegroup = {
 	},
 	
 	popupClosed : function() {
-		removeClass($('sitetree'),'multiselect');
+		jQuery('#sitetree').removeClass('multiselect');
 		$('sitetree').stopObserving(deletegroup.o1);
 		$('deletegroup_options').stopObserving(deletegroup.o2);
 

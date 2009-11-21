@@ -37,7 +37,6 @@ class ImageEditor extends Controller {
 		Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/ImageEditor.js');
 		Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/DocumentBody.js');
 
-		Requirements::javascript(THIRDPARTY_DIR . '/loader.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/behaviour/behaviour.js');
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.js');
 		Requirements::css(CMS_DIR . 'css/ImageEditor/ImageEditor.css');

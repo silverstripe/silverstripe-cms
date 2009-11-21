@@ -209,7 +209,6 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-cookie/jquery.cookie.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/core/jquery.ondemand.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/prototype_improvements.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/loader.js');
 		Requirements::add_i18n_javascript(SAPPHIRE_DIR . '/javascript/lang');
 		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang');
 		
@@ -270,7 +269,6 @@ class LeftAndMain extends Controller {
 		Requirements::combine_files(
 			'assets/leftandmain.js',
 			array(
-				'jsparty/loader.js',
 				'sapphire/thirdparty/scriptaculous/effects.js',
 				'sapphire/thirdparty/scriptaculous/dragdrop.js',
 				'sapphire/thirdparty/scriptaculous/controls.js',
