@@ -1,25 +1,30 @@
 (function($) {
-	$('body.CMSMain').concrete({ss:{cmsMain:{
-		mainLayout: null,
+	$('body.CMSMain').concrete('ss.leftAndMain', {
+		MainLayout: null,
 		
 		onmatch: function() {
-			var $this = $(this);
-			this.mainLayout = this.ss().cmsMain()._setupLayout();
+			var self = this;
+
+			this.concrete("ss.leftAndMain").setMainLayout(this.concrete("ss.leftAndMain")._setupLayout());
 			
 			// artificially delay the resize event 200ms
 			// to avoid overlapping height changes in different onresize() methods
 			$(window).resize(function () {
 				var timerID = "timerCMSMainResize";
 				if (window[timerID]) clearTimeout(window[timerID]);
-				window[timerID] = setTimeout(function() {$this.ss().cmsMain()._resizeChildren();}, 200);
+				window[timerID] = setTimeout(function() {self.concrete("ss.leftAndMain")._resizeChildren();}, 200);
 			});
-			
-			this.ss().cmsMain()._resizeChildren();
+
+			this.concrete("ss.leftAndMain")._resizeChildren();
+
+			this._super();
 		},
 		
 		_resizeChildren: function() {
 			$("#treepanes").accordion("resize");
 			$('#sitetree_and_tools').fitHeightToParent();
+			
+			this._super();
 		},
 		
 		/**
@@ -31,7 +36,8 @@
 		 * - south: "Page view", "profile" and "logout" links
 		 */
 		_setupLayout: function() {
-			var $this = this;
+			var self = this;
+			
 			// layout containing the tree, CMS menu, the main form etc.
 			var layout = $('body').layout({
 				defaults: {
@@ -53,14 +59,14 @@
 					size: 20,
 					togglerLength_open: 0
 				},
-				east: {
-					initClosed: true,
-					fxName: "none"
-				},
 				west: {
 					size: 250,
-					onresize: function() {$this.ss().cmsMain()._resizeChildren();},
-					onopen: function() {$this.ss().cmsMain()._resizeChildren();},
+					onresize: function() {self.concrete()._resizeChildren();},
+					onopen: function() {self.concrete()._resizeChildren();},
+					fxName: "none"
+				},
+				east: {
+					initClosed: true,
 					fxName: "none"
 				},
 				center: {}
@@ -75,7 +81,7 @@
 			
 			return layout;
 		}
-	}}});
+	});
 	
 	/**
 	 * CMS-specific form behaviour

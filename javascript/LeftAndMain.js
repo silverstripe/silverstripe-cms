@@ -10,19 +10,21 @@
 	 * - beforeValidate
 	 * - afterValidate
 	 */
-	$('.LeftAndMain').concrete({ss:{leftAndMain:{
+	$('.LeftAndMain').concrete('ss.leftAndMain', {
+		PingIntervalSeconds: 5*60,
+		
 		onmatch: function() {
-			this.ss().leftAndMain()._setupPinging();
-			this.ss().leftAndMain()._setupButtons();
+			this.concrete("ss.leftAndMain")._setupPinging();
+			this.concrete("ss.leftAndMain")._setupButtons();
+
+			this._super();
 		},
 		
 		_setupPinging: function() {
-			var pingIntervalSeconds = 5*60;
-			
 			// setup pinging for login expiry
 			setInterval(function() {
 			    $.get("Security/ping");
-			}, pingIntervalSeconds * 1000);
+			}, this.PingIntervalSeconds() * 1000);
 		},
 		
 		/**
@@ -51,29 +53,30 @@
 				});
 			});
 		}
-	}}});
+	});
 	
 	/**
 	 * Base edit form, provides ajaxified saving
 	 * and reloading itself through the ajax return values.
 	 * Takes care of resizing tabsets within the layout container.
 	 */
-	$('#Form_EditForm').concrete({ss:{	
+	$('#Form_EditForm').concrete('ss.editForm',{	
 		onmatch: function() {
-			var $this = this;
+			var self = this;
+			
 			// artificially delay the resize event 200ms
 			// to avoid overlapping height changes in different onresize() methods
 			$(window).resize(function () {
 				var timerID = "timerLeftAndMainResize";
 				if (window[timerID]) clearTimeout(window[timerID]);
-				window[timerID] = setTimeout(function() {$this.ss()._resizeChildren();}, 200);
+				window[timerID] = setTimeout(function() {self.concrete('ss.editForm')._resizeChildren();}, 200);
 			});
 			
-			this.ss()._resizeChildren();
+			this.concrete('ss.editForm')._resizeChildren();
 		
 			// trigger resize whenever new tabs are shown
 			// @todo This is called multiple times when tabs are loaded
-			this.find('.ss-tabset').bind('tabsshow', function() {$this.ss()._resizeChildren();});
+			this.find('.ss-tabset').bind('tabsshow', function() {self.concrete('ss.editForm')._resizeChildren();});
 		},
 		
 		/**
@@ -101,7 +104,7 @@
 			if(typeof tinyMCE != 'undefined') tinyMCE.triggerSave();
 			
 			// validate if required
-			if(!this.ss().validate()) {
+			if(!this.validate()) {
 				this.trigger('validationError', [button]);
 				
 				// TODO Automatically switch to the tab/position of the first error
@@ -124,7 +127,7 @@
 					
 					$form.trigger('afterSubmit', [result]);
 					
-					$form.ss().loadNewPage();
+					$form.loadNewPage();
 				}, 
 				// @todo Currently all responses are assumed to be evaluated
 				'script'
@@ -194,7 +197,7 @@
 			$('fieldset > .ss-tabset > .tab > .ss-tabset', this).fitHeightToParent();
 			$('fieldset > .ss-tabset > .tab > .ss-tabset > .tab', this).fitHeightToParent();
 		}
-	}});
+	});
 	
 	/**
 	 * All buttons in the right CMS form go through here by default.
@@ -203,7 +206,7 @@
 	 */
 	$('#Form_EditForm .Actions :submit').concrete({
 		onclick: function(e) {
-			$(this[0].form).ss().ajaxSubmit(this);
+			$(this[0].form).ajaxSubmit(this);
 			return false;
 		}
 	});
@@ -228,6 +231,7 @@
 			return false;
 		}
 	});
+	
 	
 })(jQuery);
 
