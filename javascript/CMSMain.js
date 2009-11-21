@@ -124,6 +124,7 @@ var ss_MainLayout;
 	 */
 	$('#Form_EditForm').concrete('ss', function($){
 		return/** @lends ss.EditForm */{
+			/*
 			onmatch: function() {
 				// Alert the user on change of page-type - this might have implications
 				// on the available form fields etc.
@@ -132,7 +133,10 @@ var ss_MainLayout;
 						alert('The page type will be updated after the page is saved');
 					}
 				);
+
+				$._super();
 			}
+			*/
 		};
 	});
 	

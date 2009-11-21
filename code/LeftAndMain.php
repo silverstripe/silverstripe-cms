@@ -214,6 +214,7 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-livequery/jquery.livequery.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-cookie/jquery.cookie.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/jquery-ondemand/jquery.ondemand.js');
+		Requirements::javascript(CMS_DIR . '/javascript/jquery-changetracker/lib/jquery.changetracker.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/prototype_improvements.js');
 		Requirements::add_i18n_javascript(SAPPHIRE_DIR . '/javascript/lang');
 		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang');
@@ -227,7 +228,6 @@ class LeftAndMain extends Controller {
 		
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.js');
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain_left.js');
-		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain_right.js');
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.EditForm.js');
 	
 		Requirements::javascript(CMS_DIR . '/javascript/SideTabs.js');

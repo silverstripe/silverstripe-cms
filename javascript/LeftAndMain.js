@@ -293,25 +293,6 @@
 
 var _AJAX_LOADING = false;
 
-Behaviour.register({
-
-	'#MainMenu li' : {
-		onclick : function(event) {
-			LeftAndMain_window_unload(); // Confirm if there are unsaved changes
-			window.location.href = this.getElementsByTagName('a')[0].href;
-			Event.stop(event);
-		}
-	}
-
-});
-
-
-LeftAndMain_window_unload = function() {
-	window.exiting = true; // this is used by prototype
-	if(typeof autoSave == 'function') {
-		return autoSave(true);
-	}
-}
 
 // Event.observe(window, 'beforeunload', LeftAndMain_window_unload);
 
@@ -497,105 +478,6 @@ StatusTitle.prototype = {
 	}
 }
 */
-
-
-/**
- * ChangeTracker is a class that can be applied to forms to support change tracking on forms.
- */
-ChangeTracker = Class.create();
-ChangeTracker.prototype = {
-	initialize: function() {
-		this.resetElements();
-	},
-
-	/**
-	 * Reset all the 'changed field' data.
-	 */
-	resetElements: function(debug) {
-    var elements = Form.getElements(this);
-		var i, element;
-		for(i=0;element=elements[i];i++) {
-			// Initialise each element
-			if(element.resetChanged) {
-				element.resetChanged();
-			} else {
-				element.originalSerialized = Form.Element.serialize(element);
-			}
-		}
-	},
-
-	field_changed: function() {
-		// Something a value will go from 'undefined' to ''.  Ignore such changes
-		if((this.originalSerialized+'') == 'undefined') return Form.Element.serialize(this) ? true : false;
-		else return this.originalSerialized != Form.Element.serialize(this);
-	},
-
-	/**
-	 * Returns true if something in the form has been changed
-	 */
-	isChanged: function() {
-    	var elements = Form.getElements(this);
-		var i, element;
-		for(i=0;element=elements[i];i++) {
-		    // NOTE: TinyMCE coupling
-		    // Ignore mce-generated elements
-		    if(element.className.substr(0,3) == 'mce') continue;
-		    
-			if(!element.isChanged) element.isChanged = this.field_changed;
-			if(!this.changeDetection_fieldsToIgnore[element.name] && element.isChanged()) {
-				//console.log('Changed:'+ element.id + '(' + this.originalSerialized +')->('+Form.Element.serialize(element)+')' );
-				//console.log(element)
-
-				return true;
-			}
-		}
-		return false;
-	},
-
-	changeDetection_fieldsToIgnore : {
-		'Sort' : true
-	},
-
-	/**
-	 * Serialize only the fields to change.
-	 * You can specify the names of fields that must be included as arguments
-	 */
-	serializeChangedFields: function() {
-    var elements = Form.getElements(this);
-    var queryComponent, queryComponents = new Array();
-		var i, element;
-
-		var forceFields = {};
-		if(arguments) {for(var i=0;i<arguments.length;i++) forceFields[arguments[i]] = true;}
-
-		for(i=0;element=elements[i];i++) {
-			if(!element.name.match(/^action_(.+)$/i)) // For dropdown those 'action_xxx' fields.
-			{	if(!element.isChanged) element.isChanged = this.field_changed;
-				if(forceFields[element.name] || (element.isChanged()) || element.name.match(/\[.*\]/g) ) {
-	      		queryComponent = Form.Element.serialize(element);
-			    if (queryComponent)
-					queryComponents.push(queryComponent);
-			    } else {
-			    	// Used by the Sapphire code to preserve the form field value
-
-			    	if( element.name.match( '/\]$/' ) )
-			    		queryComponents.push(element.name.substring( 0, element.name.length - 1 ) + '_unchanged' + ']=1' );
-			    	else
-			    		queryComponents.push(element.name + '_unchanged=1');
-			    }
-			}
-	  }
-		//alert(queryComponents.join('&'));
-    return queryComponents.join('&');
-	},
-
-	/**
-	 * Serialize all the fields on the page
-	 */
-	serializeAllFields: function() {
-		return Form.serializeWithoutButtons(this);
-	}
-}
 
 function hideLoading() {
 	if($('Loading')) $('Loading').style.display = 'none';

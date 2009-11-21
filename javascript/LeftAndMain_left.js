@@ -202,7 +202,7 @@ TreeNodeAPI.prototype = {
 		if(this.getElementsByTagName('a')[0].href) {
 			_AJAX_LOADING = true;
 			if($('sitetree').notify('SelectionChanged', this)) {
-				autoSave(true, this.getPageFromServer.bind(this));
+				jQuery('#Form_EditForm').concrete('ss').ajaxSubmit(null, this.getPageFromServer.bind(this)); 
 			}
 		}
 	},

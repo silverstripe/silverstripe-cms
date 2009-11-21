@@ -5,6 +5,7 @@
 	 * and reloading itself through the ajax return values.
 	 * Takes care of resizing tabsets within the layout container.
 	 * @name ss.Form_EditForm
+	 * @require jquery.changetracker
 	 */
 	$('#Form_EditForm').concrete('ss',function($){
 		return/** @lends ss.Form_EditForm */{	
@@ -15,11 +16,44 @@
 			 */
 			RemoveText: 'Removed',
 			
+			/**
+			 * @type Object
+			 */
+			ChangeTrackerOptions: {},
+			
 			onmatch: function() {
+				this._setupChangeTracker();
+				
+				$._super();
+			},
+			
+			_setupChangeTracker: function() {
+				var self = this;
+				
 				// Don't bind any events here, as we dont replace the
 				// full <form> tag by any ajax updates they won't automatically reapply
+				this.changetracker(this.ChangeTrackerOptions());
 				
-				_super();
+				var autoSaveOnUnload = function(e) {
+					// @todo TinyMCE coupling
+					if(typeof tinyMCE != 'undefined') tinyMCE.triggerSave();
+					if(self.is('.changed') && confirm(ss.i18n._t('LeftAndMain.CONFIRMUNSAVED'))) {
+						// unloads can't be prevented, but we can delay it with a synchronous ajax request
+						self.ajaxSubmit(
+							self.find(':submit[name=action_save]'), 
+							null, 
+							{async: false}
+						);
+					}
+				};
+				
+				// use custom IE 'onbeforeunload' event, as it destroys the DOM
+				// before going into 'unload'
+				if(typeof window.onbeforeunload != 'undefined') {
+					window.onbeforeunload = autoSaveOnUnload;
+				} else {
+					$(window).unload(autoSaveOnUnload);
+				}
 			},
 	
 			/**
