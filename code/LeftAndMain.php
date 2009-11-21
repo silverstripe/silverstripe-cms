@@ -38,7 +38,6 @@ class LeftAndMain extends Controller {
 		'index',
 		'ajaxupdateparent',
 		'ajaxupdatesort',
-		'callPageMethod',
 		'getitem',
 		'getsubtree',
 		'myprofile',
@@ -1050,17 +1049,6 @@ JS;
 	 */
 	function MceRoot() {
 		return MCE_ROOT;
-	}
-
-	/**
-	 * Use this as an action handler for custom CMS buttons.
-	 */
-	function callPageMethod($data, $form) {
-		$methodName = $form->buttonClicked()->extraData();
-		$record = $this->currentPage();
-		if(!$record) return false;
-		
-		return $record->$methodName($data, $form);
 	}
 	
 	/**
