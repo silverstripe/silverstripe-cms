@@ -35,7 +35,8 @@ body {
 }
 
 /* Overflow is handled by tabsets inside the panel */
-.ui-layout-center {
+.ui-layout-center,
+.ui-layout-east {
 	overflow: hidden !important;
 }
 
@@ -487,15 +488,10 @@ iframe {
  * This is our new right hand pane for inserting images and links etc
  */
 #contentPanel {
-	background-color: #fff;
-	width: 205px;
-	position: absolute;
-	border: 1px solid #ACBBCC;
-	top: 45px;
-	padding: 0;
-	margin-right: 10px;
-	overflow: hidden;
 	font-size: 12px;
+}
+#contentPanel .content {
+	overflow: auto;
 }
 
 #contentPanel div,
@@ -523,13 +519,9 @@ iframe {
 	overflow-y: auto;	
 	margin-right: 0 !important;
 }
-
-#contentPanel fieldset {
-	padding: 5px;
-}
-#contentPanel h2 {
-	margin: -5px -5px 0 -5px;
-}
+	#contentPanel .ui-dialog {
+		width: auto;
+	}
 	#contentPanel .thumbnailstrip h2 {
 		font-size: 1.1em;
 		margin: 0;
@@ -549,7 +541,6 @@ iframe {
 	background:#E9E9E9 none repeat scroll 0%;
 	display:block;
 	padding:3px;
-	width:98%;
 }
 #contentPanel input.text {
 	border:1px solid #A7A7A7;
@@ -558,6 +549,10 @@ iframe {
 }
 #contentPanel #Dimensions div.middleColumn {
 	background: none;
+}
+
+#contentPanel form {
+	display: none;
 }
 
 /* Image height and width inputs. We need to position them in the right places */
@@ -613,7 +608,7 @@ iframe {
 	border: 2px solid #e4e3e3;
 }
 #contentPanel div.Actions {
-	margin: 2px 5px 0 0;
+	margin: 5px;
 	text-align: right;
 }
 #contentPanel #FolderImages a.selectedImage img,

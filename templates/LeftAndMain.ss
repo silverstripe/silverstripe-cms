@@ -23,7 +23,7 @@
 		$Right
 	</div>
 
-	<div class="ui-layout-east">
+	<div class="ui-layout-east" id="contentPanel">
 		<% control EditorToolbar %>
 			$ImageForm
 			$LinkForm

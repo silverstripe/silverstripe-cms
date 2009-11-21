@@ -480,3 +480,12 @@
 		position: relative;
 		overflow-x: hidden;
 	}
+
+/**
+ * "Insert Image" forms etc.
+ */
+#Form_EditorToolbarImageForm .field,
+#Form_EditorToolbarFlashForm .field,
+#Form_EditorToolbarLinkForm .field {
+	margin-left: 0;
+}

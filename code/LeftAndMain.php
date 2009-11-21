@@ -188,6 +188,7 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/effects.scale.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/layout/jquery.layout.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/fitheighttoparent/jquery.fitheighttoparent.js');
+		Requirements::javascript(CMS_DIR . '/javascript/ssui.core.js');
 		// @todo Load separately so the CSS files can be inlined
 		Requirements::css(THIRDPARTY_DIR . '/jquery/themes/smoothness/ui.all.css');
 		

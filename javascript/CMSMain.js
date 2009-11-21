@@ -1,28 +1,35 @@
 (function($) {
-	$('body.CMSMain').concrete('ss.leftAndMain', {
+	$('body.CMSMain').concrete('ss', function($){return{
+
+		/**
+		 * Reference to jQuery.layout element
+		 */
 		MainLayout: null,
 		
 		onmatch: function() {
 			var self = this;
 
-			this.concrete("ss.leftAndMain").setMainLayout(this.concrete("ss.leftAndMain")._setupLayout());
+			this.setMainLayout(this._setupLayout());
 			
 			// artificially delay the resize event 200ms
 			// to avoid overlapping height changes in different onresize() methods
 			$(window).resize(function () {
 				var timerID = "timerCMSMainResize";
 				if (window[timerID]) clearTimeout(window[timerID]);
-				window[timerID] = setTimeout(function() {self.concrete("ss.leftAndMain")._resizeChildren();}, 200);
+				window[timerID] = setTimeout(function() {self._resizeChildren();}, 200);
 			});
 
-			this.concrete("ss.leftAndMain")._resizeChildren();
+			this._resizeChildren();
 
 			this._super();
 		},
 		
 		_resizeChildren: function() {
-			$("#treepanes").accordion("resize");
-			$('#sitetree_and_tools').fitHeightToParent();
+			$("#treepanes", this).accordion("resize");
+			$('#sitetree_and_tools', this).fitHeightToParent();
+			$('#contentPanel form', this).fitHeightToParent();
+			$('#contentPanel form fieldset', this).fitHeightToParent();
+			$('#contentPanel form fieldset .content', this).fitHeightToParent();
 			
 			this._super();
 		},
@@ -45,7 +52,9 @@
 					togglerTip_open: '',
 					togglerTip_closed: '',
 					resizerTip: '',
-					sliderTip: ''
+					sliderTip: '',
+					onresize: function() {self._resizeChildren();},
+					onopen: function() {self._resizeChildren();},
 				},
 				north: {
 					slidable: false,
@@ -61,13 +70,12 @@
 				},
 				west: {
 					size: 250,
-					onresize: function() {self.concrete()._resizeChildren();},
-					onopen: function() {self.concrete()._resizeChildren();},
 					fxName: "none"
 				},
 				east: {
 					initClosed: true,
-					fxName: "none"
+					fxName: "none",
+					size: 250
 				},
 				center: {}
 			});
@@ -81,12 +89,12 @@
 			
 			return layout;
 		}
-	});
+	}});
 	
 	/**
 	 * CMS-specific form behaviour
 	 */
-	$('#Form_EditForm').concrete({
+	$('#Form_EditForm').concrete('ss', function($){return{
 		onmatch: function() {
 			// Alert the user on change of page-type - this might have implications
 			// on the available form fields etc.
@@ -98,13 +106,13 @@
 			
 			this.find(':input[name=ParentID]')
 		}
-	});
+	}});
 	
 	/**
 	 * ParentType / ParentID field combination - mostly toggling between
 	 * the two radiobuttons and setting the hidden "ParentID" field
 	 */
-	$('#Form_EditForm_ParentType').concrete({
+	$('#Form_EditForm_ParentType').concrete('ss', function($){return{
 		onmatch : function() {
 			var parentTypeRootEl = $('#Form_EditForm_ParentType_root');
 			var parentTypeSubpageEl = $('#Form_EditForm_ParentType_subpage');
@@ -130,13 +138,13 @@
 				$('#ParentID').show();
 			}
 		}
-	});
+	}});
 	
 	/**
 	 * Email containing the link to the archived version of the page.
 	 * Visible on readonly older versions of a specific page at the moment.
 	 */
-	$('#Form_EditForm .Actions #Form_EditForm_action_email').concrete({
+	$('#Form_EditForm .Actions #Form_EditForm_action_email').concrete('ss', function($){return{
 		onclick: function(e) {
 			window.open(
 				'mailto:?subject=' 
@@ -148,13 +156,13 @@
 			
 			return false;
 		}
-	});
+	}});
 
 	/**
 	 * Open a printable representation of the form in a new window.
 	 * Used for readonly older versions of a specific page.
 	 */
-	$('#Form_EditForm .Actions #Form_EditForm_action_print').concrete({
+	$('#Form_EditForm .Actions #Form_EditForm_action_print').concrete('ss', function($){return{
 		onclick: function(e) {
 			var printURL = $(this[0].form).attr('action').replace(/\?.*$/,'') 
 				+ '/printable/' 
@@ -165,21 +173,34 @@
 			
 			return false;
 		}
-	});
+	}});
 	
 	/**
 	 * A "rollback" to a specific version needs user confirmation.
 	 */
-	$('#Form_EditForm .Actions #Form_EditForm_action_rollback').concrete({
+	$('#Form_EditForm .Actions #Form_EditForm_action_rollback').concrete('ss', function($){return{
 		onclick: function(e) {
 			// @todo i18n
 			return confirm("Do you really want to copy the published content to the stage site?");
 		}
-	});
+	}});
+	
+	/**
+	 * All forms in the right content panel should have closeable jQuery UI style titles.
+	 */
+	$('#contentPanel form').concrete('ss', function($){return{
+		onmatch: function() {
+		  // Style as title bar
+			this.find(':header:first').titlebar({
+				closeButton:true
+			});
+			// The close button should close the east panel of the layout
+			this.find(':header:first .ui-dialog-titlebar-close').bind('click', function(e) {
+				$('body.CMSMain').concrete('ss').MainLayout().close('east');
+				
+				return false;
+			});
+		}
+	}});
 
 })(jQuery);
-
-jQuery(document).ready(function() {
-	// @todo remove
-	jQuery.concrete.triggerMatching();
-});

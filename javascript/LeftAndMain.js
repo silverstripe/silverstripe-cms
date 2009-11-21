@@ -10,12 +10,17 @@
 	 * - beforeValidate
 	 * - afterValidate
 	 */
-	$('.LeftAndMain').concrete('ss.leftAndMain', {
+	$('.LeftAndMain').concrete('ss', function($){return{
+		
+		/**
+		 *
+		 */
 		PingIntervalSeconds: 5*60,
 		
 		onmatch: function() {
-			this.concrete("ss.leftAndMain")._setupPinging();
-			this.concrete("ss.leftAndMain")._setupButtons();
+			this._setupPinging();
+			this._setupButtons();
+			this._resizeChildren();
 
 			this._super();
 		},
@@ -23,7 +28,7 @@
 		_setupPinging: function() {
 			// setup pinging for login expiry
 			setInterval(function() {
-			    $.get("Security/ping");
+			    jQuery.get("Security/ping");
 			}, this.PingIntervalSeconds() * 1000);
 		},
 		
@@ -52,15 +57,30 @@
 					$(this).removeClass('ui-state-focus');
 				});
 			});
+		},
+		
+		/**
+		 * Resize elements in center panel
+		 * to fit the boundary box provided by the layout manager
+		 */
+		_resizeChildren: function() {
+			$('#Form_EditForm').fitHeightToParent();
+			$('#Form_EditForm fieldset', this).fitHeightToParent();
+			// Order of resizing is important: Outer to inner
+			// TODO Only supports two levels of tabs at the moment
+			$('#Form_EditForm fieldset > .ss-tabset', this).fitHeightToParent();
+			$('#Form_EditForm fieldset > .ss-tabset > .tab', this).fitHeightToParent();
+			$('#Form_EditForm fieldset > .ss-tabset > .tab > .ss-tabset', this).fitHeightToParent();
+			$('#Form_EditForm fieldset > .ss-tabset > .tab > .ss-tabset > .tab', this).fitHeightToParent();
 		}
-	});
+	}});
 	
 	/**
 	 * Base edit form, provides ajaxified saving
 	 * and reloading itself through the ajax return values.
 	 * Takes care of resizing tabsets within the layout container.
 	 */
-	$('#Form_EditForm').concrete('ss.editForm',{	
+	$('#Form_EditForm').concrete('ss',function($){return{	
 		onmatch: function() {
 			var self = this;
 			
@@ -69,14 +89,12 @@
 			$(window).resize(function () {
 				var timerID = "timerLeftAndMainResize";
 				if (window[timerID]) clearTimeout(window[timerID]);
-				window[timerID] = setTimeout(function() {self.concrete('ss.editForm')._resizeChildren();}, 200);
+				window[timerID] = setTimeout(function() {self._resizeChildren();}, 200);
 			});
-			
-			this.concrete('ss.editForm')._resizeChildren();
 		
 			// trigger resize whenever new tabs are shown
 			// @todo This is called multiple times when tabs are loaded
-			this.find('.ss-tabset').bind('tabsshow', function() {self.concrete('ss.editForm')._resizeChildren();});
+			this.find('.ss-tabset').bind('tabsshow', function() {self._resizeChildren();});
 		},
 		
 		/**
@@ -181,37 +199,22 @@
 			if($('input#Form_EditForm_Title') && $('input#Form_EditForm_Title').value.match(/^new/i)) {
 	    		$('input#Form_EditForm_Title').select();
 			}
-		},
-		
-		/**
-		 * Resize elements in center panel
-		 * to fit the boundary box provided by the layout manager
-		 */
-		_resizeChildren: function() {
-			this.fitHeightToParent();
-			$('fieldset', this).fitHeightToParent();
-			// Order of resizing is important: Outer to inner
-			// TODO Only supports two levels of tabs at the moment
-			$('fieldset > .ss-tabset', this).fitHeightToParent();
-			$('fieldset > .ss-tabset > .tab', this).fitHeightToParent();
-			$('fieldset > .ss-tabset > .tab > .ss-tabset', this).fitHeightToParent();
-			$('fieldset > .ss-tabset > .tab > .ss-tabset > .tab', this).fitHeightToParent();
 		}
-	});
+	}});
 	
 	/**
 	 * All buttons in the right CMS form go through here by default.
 	 * We need this onclick overloading because we can't get to the
 	 * clicked button from a form.onsubmit event.
 	 */
-	$('#Form_EditForm .Actions :submit').concrete({
+	$('#Form_EditForm .Actions :submit').concrete('ss', function($){return{
 		onclick: function(e) {
 			$(this[0].form).ajaxSubmit(this);
 			return false;
 		}
-	});
+	}});
 	
-	$('#TreeActions').concrete({
+	$('#TreeActions').concrete('ss', function($){return{
 		onmatch: function() {
 			// setup "create", "search", "batch actions" layers above tree
 			this.tabs({
@@ -219,26 +222,21 @@
 				collapsible: true
 			});
 		}
-	});
+	}});
 	
 	/**
 	 * Link for editing the profile for a logged-in member
 	 * through a popup. Required "greybox" javascript library.
 	 */
-	$('#EditMemberProfile').concrete({
+	$('#EditMemberProfile').concrete('ss', function($){return{
 		onclick: function(e) {
 			GB_show('Edit Profile', this.attr('href'), 290, 500);
 			return false;
 		}
-	});
+	}});
 	
 	
 })(jQuery);
-
-jQuery(document).ready(function() {
-	// @todo remove
-	jQuery.concrete.triggerMatching();
-});
 
 
 
@@ -263,9 +261,7 @@ Behaviour.register({
 			window.location.href = this.getElementsByTagName('a')[0].href;
 			Event.stop(event);
 		}
-	},
-	
-	
+	}
 
 });
 
