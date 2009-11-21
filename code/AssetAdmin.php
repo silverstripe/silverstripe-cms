@@ -122,7 +122,7 @@ JS
 		Requirements::javascript(SAPPHIRE_DIR . "/javascript/prototype_improvements.js");
 		//Requirements::javascript(CMS_DIR . "/javascript/LeftAndMain.js");
 		Requirements::javascript(CMS_DIR . "/thirdparty/multifile/multifile.js");
-		Requirements::css(THIRDPARTY_DIR . "/multifile/multifile.css");
+		Requirements::css(CMS_DIR . "/thirdparty/multifile/multifile.css");
 		Requirements::css(CMS_DIR . "/css/typography.css");
 		Requirements::css(CMS_DIR . "/css/layout.css");
 		Requirements::css(CMS_DIR . "/css/cms_left.css");
@@ -196,15 +196,13 @@ JS
 		
 		$newFiles = array();
 		$fileSizeWarnings = '';
-		$uploadErrors = '';
-		$jsErrors = '';
+		$errorsArr = '';
 		$status = '';
 		$statusMessage = '';
 
 		foreach($processedFiles as $tmpFile) {
 			if($tmpFile['error'] == UPLOAD_ERR_NO_TMP_DIR) {
-				$status = 'bad';
-				$statusMessage = _t('AssetAdmin.NOTEMP', 'There is no temporary folder for uploads. Please set upload_tmp_dir in php.ini.');
+				$errorsArr[] = _t('AssetAdmin.NOTEMP', 'There is no temporary folder for uploads. Please set upload_tmp_dir in php.ini.');
 				break;
 			}
 		
@@ -221,14 +219,11 @@ JS
 					$valid = true;
 				} else {
 					$upload = new Upload();
-					$upload->setAllowedExtensions(self::$allowed_extensions);
+					$upload->setAllowedExtensions(array('gif'));
 					$upload->setAllowedMaxFileSize(self::$allowed_max_file_size);
 					$valid = $upload->validate($tmpFile);
 					if(!$valid) {
-						$errors = $upload->getErrors();
-						if($errors) foreach($errors as $error) {
-							$jsErrors .= "alert('" . Convert::raw2js($error) . "');";
-						}
+						$errorsArr = $upload->getErrors();
 					}
 				}
 				
@@ -236,12 +231,15 @@ JS
 				if($valid) $newFiles[] = $folder->addUploadToFolder($tmpFile);
 			}
 		}
-		
+
 		if($newFiles) {
 			$numFiles = sizeof($newFiles);
 			$statusMessage = sprintf(_t('AssetAdmin.UPLOADEDX',"Uploaded %s files"),$numFiles) ;
 			$status = "good";
-		} else if($status != 'bad') {
+		} else if($errorsArr) {
+			$statusMessage = implode('\n', $errorsArr);
+			$status = 'bad';
+		} else {
 			$statusMessage = _t('AssetAdmin.NOTHINGTOUPLOAD','There was nothing to upload');
 			$status = "";
 		}
@@ -256,19 +254,12 @@ JS
 			$fileNames[] = $fileObj->Name;
 		}
 		
-		$sFileIDs = implode(',', $fileIDs);
-		$sFileNames = implode(',', $fileNames);
-
+		// TODO Replace with clientside logic which doesn't have assumptions in the response
 		echo <<<HTML
 			<script type="text/javascript">
-			/* IDs: $sFileIDs */
-			/* Names: $sFileNames */
-			
-			var form = parent.document.getElementById('Form_EditForm');
-			form.getPageFromServer(form.elements.ID.value);
+			var url = parent.document.getElementById('sitetree').getTreeNodeByIdx( "{$folder->ID}" ).getElementsByTagName('a')[0].href;
+			parent.jQuery('#Form_EditForm').concrete('ss').loadForm(url);
 			parent.statusMessage("{$statusMessage}","{$status}");
-			$jsErrors
-			parent.document.getElementById('sitetree').getTreeNodeByIdx( "{$folder->ID}" ).getElementsByTagName('a')[0].className += ' contents';
 			</script>
 HTML;
 	}
