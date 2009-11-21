@@ -59,14 +59,6 @@
 }
 
 
-
-#Root_Content_set_Main div#Title,
-#Root_Content_set_Main div#MenuTitle {
-	float: left;
-	width: 50%;
-}
-
-
 .ui-layout-pane-center,
 .ui-layout-west {
 	background: none;
