@@ -20,6 +20,10 @@
 		
 			onmatch: function() {
 				var self = this;
+				
+				// Remove loading screen
+				$('ss-loading-screen').hide();
+				$(document).removeClass('stillLoading');
 			
 				this._setupPinging();
 				this._setupButtons();
@@ -288,11 +292,6 @@ var errorMessage = function(text) {
 
 function ajaxErrorHandler(response) {
 	errorMessage('Server Error', response);
-}
-
-function hideLoading() {
-	if($('Loading')) $('Loading').style.display = 'none';
-	Element.removeClassName(document.body, 'stillLoading');
 }
 
 returnFalse = function() {

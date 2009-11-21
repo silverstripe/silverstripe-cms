@@ -9,7 +9,7 @@
 </head>
 
 <body class="stillLoading $CSSClasses">
-	<div id="Loading" style="background: #FFF url($LoadingImage) 50% 50% no-repeat; position: absolute;z-index: 100000;height: 100%;width: 100%;margin: 0;padding: 0;z-index: 100000;position: absolute;"><% _t('LOADING','Loading...',PR_HIGH) %><noscript><h1><% _t('REQUIREJS','The CMS requires that you have JavaScript enabled.',PR_HIGH) %></h1></noscript></div>
+	<div class="ss-loading-screen" style="background: #FFF url($LoadingImage) 50% 50% no-repeat; position: absolute;z-index: 100000;height: 100%;width: 100%;margin: 0;padding: 0;z-index: 100000;position: absolute;"><% _t('LOADING','Loading...',PR_HIGH) %><noscript><p class="message notice"><% _t('REQUIREJS','The CMS requires that you have JavaScript enabled.',PR_HIGH) %></p></noscript></div>
 	
 	<div class="ui-layout-north ss-cms-top-menu">
 		$CMSTopMenu
