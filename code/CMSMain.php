@@ -34,8 +34,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'createtranslation',
 		'delete',
 		'deletefromlive',
-		'deleteitems',
-		'DeleteItemsForm',
 		'duplicate',
 		'duplicatewithchildren',
 		'getpagecount',
@@ -977,26 +975,6 @@ JS;
 	 */
 	function batchactions() {
 		return new CMSBatchActionHandler($this, 'batchactions');
-	}
-	/**
-	 * @return Form
-	 */
-	function DeleteItemsForm() {
-		$form = new Form(
-			$this,
-			'DeleteItemsForm',
-			new FieldSet(
-				new LiteralField('SelectedPagesNote',
-					sprintf('<p>%s</p>', _t('CMSMain_left.ss.SELECTPAGESACTIONS','Select the pages that you want to change &amp; then click an action:'))
-				),
-				new HiddenField('csvIDs')
-			),
-			new FieldSet(
-				new FormAction('deleteitems', _t('CMSMain_left.ss.DELETECONFIRM','Delete the selected pages'))
-			)
-		);
-		$form->addExtraClass('actionparams');
-		return $form;
 	}
 
 	function buildbrokenlinks() {

@@ -39,7 +39,6 @@ class LeftAndMain extends Controller {
 		'ajaxupdateparent',
 		'ajaxupdatesort',
 		'callPageMethod',
-		'deleteitems',
 		'getitem',
 		'getsubtree',
 		'myprofile',
@@ -785,32 +784,9 @@ JS;
 
 		return Convert::raw2json($statusUpdates);
 	}
-	
+
 	public function CanOrganiseSitetree() {
 		return !Permission::check('SITETREE_REORGANISE') && !Permission::check('ADMIN') ? false : true;
-	}
-
-	/**
-	 * Delete a number of items
-	 */
-	public function deleteitems() {
-		$ids = split(' *, *', $_REQUEST['csvIDs']);
-
-		$script = "st = \$('sitetree'); \n";
-		foreach($ids as $id) {
-			if(is_numeric($id)) {
-				$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-				if($record && !$record->canDelete()) return Security::permissionFailure($this);
-				
-				DataObject::delete_by_id($this->stat('tree_class'), $id);
-				$script .= "node = st.getTreeNodeByIdx($id); if(node) node.parentTreeNode.removeTreeNode(node); $('Form_EditForm').closeIfSetTo($id); \n";
-				
-				if ($id == $this->currentPageID()) FormResponse::add('CurrentPage.isDeleted = 1;');
-			}
-		}
-		FormResponse::add($script);
-
-		return FormResponse::respond();
 	}
 	
 	/**
