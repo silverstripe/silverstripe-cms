@@ -880,7 +880,7 @@ class ModelAdmin_RecordController extends Controller {
 				return $this->parentController->parentController->customise(array(
 					'Right' => $this->parentController->parentController->customise(array(
 						'EditForm' => $this->EditForm()
-					))->renderWith('ModelAdmin_right')
+					))->renderWith(array("{$this->class}_right",'LeftAndMain_right'))
 				))->renderWith(array('ModelAdmin','LeftAndMain'));
 				return ;
 			}
