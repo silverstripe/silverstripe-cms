@@ -261,6 +261,9 @@
 						this.removeForm();
 					}
 					
+					// @todo Coupling to avoid FOUC (concrete applies to late)
+					this.find('.ss-tabset').tabs();
+					
 					this._setupChangeTracker();
 				
 					// Optionally get the form attributes from embedded fields, see Form->formHtmlContent()
