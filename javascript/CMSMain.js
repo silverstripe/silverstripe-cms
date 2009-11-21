@@ -152,9 +152,13 @@
 		 * which creates a new page through #Form_EditForm and adds a new tree node.
 		 * @name ss.reports_holder
 		 */
-		$('#Form_ReportForm').concrete(/** @lends ss.reports_holder */{
+		$('#Form_SideReportsForm').concrete(/** @lends ss.reports_holder */{
+			ReportContainer: null,
+			
 			onmatch: function() {
 				var self = this;
+				
+				this.setReportContainer($('#SideReportsHolder'))
 					
 				// integrate with sitetree selection changes
 				// TODO Only trigger when report is visible
@@ -165,19 +169,6 @@
 			
 				// move submit button to the top
 				this.find('#ReportClass').after(this.find('.Actions'));
-			
-				// links in results
-				this.find('ul a').bind('click', function(e) {
-					var $link = $(this);
-					$link.addClass('loading');
-					jQuery('#Form_EditForm').concrete('ss').loadForm(
-						$(this).attr('href'),
-						function(e) {
-							$link.removeClass('loading');
-						}
-					);
-					return false;
-				});
 			
 				this._super();
 			},
@@ -198,7 +189,7 @@
 					dataType: 'html',
 					success: function(data, status) {
 						// replace current form
-						self.replaceWith(data);
+						self.getReportContainer().html(data);
 					},
 					complete: function(xmlhttp, status) {
 						button.removeClass('loading');
@@ -207,6 +198,51 @@
 			
 				return false;
 			}
+		});
+		
+		/**
+		 * All forms loaded via ajax from the Form_SideReports dropdown.
+		 */
+		$("#SideReportsHolder form").concrete({
+			onmatch: function() {
+				// links in results
+				this.find('ul a').live('click', function(e) {
+					var $link = $(this);
+					$link.addClass('loading');
+					jQuery('#Form_EditForm').concrete('ss').loadForm(
+						$(this).attr('href'),
+						function(e) {
+							$link.removeClass('loading');
+						}
+					);
+					return false;
+				});
+				
+				this._super();
+			},
+			
+			onsubmit: function() {
+				var self = this;
+
+				var button = this.find(':submit:first');
+				button.addClass('loading');
+			
+				jQuery.ajax({
+					url: this.attr('action'),
+					data: this.serializeArray(),
+					dataType: 'html',
+					success: function(data, status) {
+						// replace current form
+						self.html(data);
+					},
+					complete: function(xmlhttp, status) {
+						button.removeClass('loading');
+					}
+				});
+			
+				return false;
+			}
+			
 		});
 	
 		/**

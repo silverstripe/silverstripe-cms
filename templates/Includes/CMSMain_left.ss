@@ -32,6 +32,7 @@
 			<a href="#"><% _t('SITEREPORTS','Site Reports') %></a>
 		</h3>
 		<div class="listpane" id="reports_holder">
-			$ReportForm
+			$SideReportsForm
+			<div id="SideReportsHolder"></div>
 		</div>
 	</div>

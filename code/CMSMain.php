@@ -41,7 +41,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'restore',
 		'revert',
 		'rollback',
-		'sidereport',
+		'sidereports',
+		'SideReportsForm',
 		'submit',
 		'unpublish',
 		'versions',
@@ -654,83 +655,58 @@ JS;
 			Director::redirectBack();
 		}
 	}
-
-	/*
-	 * Return a dropdown for selecting reports
-	 * 
-	 * @return Form
-	 */
-	function ReportForm() {
-		$reports = ClassInfo::subclassesFor("SideReport");
-
+	
+	function sidereports() {
+		return new SideReportsHandler($this, 'sidereports');
+	}
+	
+	function SideReportsForm() {
+		$record = $this->currentPage();
+		$reports = $this->sidereports()->getReportClasses();
+		$options = array();
 		foreach($reports as $report) {
 			if($report != 'SideReport' && singleton($report)->canView()) {
 				$options[singleton($report)->group()][singleton($report)->sort()][$report] = singleton($report)->title();
 			}
 		}
-		
-		$id = $this->request->requestVar('ID');
-		$reportClass = $this->request->requestVar('ReportClass');
-		$report = ClassInfo::exists($reportClass) ? new $reportClass() : false;
-		$reportHtml = ($report) ? $report->getHTML() : false;
-		
-		$form = new Form(
-			$this,
-			'ReportForm',
-			new FieldSet(
-				new DropdownField(
-					"ReportClass", 
-					_t('CMSMain.REPORT', 'Report'),
-					$options,
-					$reportClass,
-					null,
-					_t('CMSMain.CHOOSEREPORT',"(Choose a report)")
-				),
-				new LiteralField('ReportHtml', $reportHtml),
-				new HiddenField('ID', false, $id),
-				new HiddenField('Locale', false, $this->Locale)
-			),
-			new FieldSet(
-				new FormAction('sidereport', _t('CMSMain_left.ss.GO','Go'))
-			)
-		);
-		$form->unsetValidator();
-		$form->setFormMethod('GET');
-		
-		return $form;
-	}
-	function ReportFormParameters() {
-		$reports = ClassInfo::subclassesFor("SideReport");
-
-		$forms = array();
-		foreach($reports as $report) {
-			if ($report != 'SideReport' && singleton($report)->canView()) {
-				if ($fieldset = singleton($report)->getParameterFields()) {
-					$formHtml = '';
-					foreach($fieldset as $field) {
-						$formHtml .= $field->FieldHolder();
-					}
-					$forms[$report] = $formHtml;
+		$finalOptions = array();
+		foreach($options as $group => $weights) {
+			ksort($weights);
+			foreach($weights as $weight => $reports) {
+				foreach($reports as $class => $report) {
+					$finalOptions[$group][$class] = $report;
 				}
 			}
 		}
-		$pageHtml = '';
-		foreach($forms as $class => $html) {
-			$pageHtml .= "<div id=\"SideReportForm_$class\" style=\"display:none\">$html</div>\n\n";
-		} 
-		return new LiteralField("ReportFormParameters", '<div id="SideReportForms" style="display:none">'.$pageHtml.'</div>');
+		$selectorField = new GroupedDropdownField(
+			"ReportClass", 
+			_t('CMSMain.REPORT', 'Report'),
+			$finalOptions
+		);
+		
+		$form = new Form(
+			$this,
+			'SideReportsForm',
+			new FieldSet(
+				$selectorField,
+				new HiddenField('ID', false, ($record) ? $record->ID : null),
+				new HiddenField('Locale', false, $this->Locale)
+			),
+			new FieldSet(
+				new FormAction('doShowSideReport', _t('CMSMain_left.ss.GO','Go'))
+			)
+		);
+		$form->unsetValidator();
+		
+		return $form;
 	}
 	
 	/**
-	 * Get the content for a side report.
-	 * 
-	 * @param Array $data
-	 * @param Form $form
-	 * @return String
+	 * @return Form
 	 */
-	function sidereport($data, $form) {
-		$form = $this->ReportForm();
-		return (Director::is_ajax()) ? $form->forTemplate() : $form;
+	function doShowSideReport($data, $form) {
+		$form = $this->sidereports()->getForm($data['ReportClass'], $data);
+		return $form->forTemplate();
 	}
 	
 	/**
