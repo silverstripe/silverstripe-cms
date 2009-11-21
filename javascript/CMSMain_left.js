@@ -4,42 +4,6 @@ SiteTreeHandlers.orderChanged_url = 'admin/ajaxupdatesort';
 SiteTreeHandlers.loadPage_url = 'admin/getitem';
 SiteTreeHandlers.loadTree_url = 'admin/getsubtree';
 
-SiteTreeFilter = Class.create();
-SiteTreeFilter.applyTo('#siteTreeFilterList');
-SiteTreeFilter.prototype = {
-	initialize: function () {
-	},
-	onchange : function() {
-		var value = this.options[this.selectedIndex].value;
-		
-		if(value != 'all') { 
-			$('sitetree').setCustomURL(SiteTreeHandlers.controller_url+'/getfilteredsubtree?filter='+escape(value));
-		} else {
-			$('sitetree').clearCustomURL();
-		}
-
-		// We can't update the tree while it's draggable; it gets b0rked.
-		var __makeDraggableAfterUpdate = false;
-		if($('sitetree').isDraggable) {
-			$('sitetree').stopBeingDraggable();
-			__makeDraggableAfterUpdate = true;
-		}
-	
-		var indicator = $('siteTreeFilterActionIndicator');
-		indicator.style.display = 'inline';
-	
-		$('sitetree').reload({
-			onSuccess: function() {
-				indicator.style.display = 'none';
-				if(__makeDraggableAfterUpdate) $('sitetree').makeDraggable();
-			},
-			onFailure: function(response) {
-				errorMessage('Could not update tree', response);
-			}
-		});
-	}
-}
-
 /**
  * Tree context menu
  */

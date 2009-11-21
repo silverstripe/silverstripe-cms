@@ -31,14 +31,6 @@
 				</div>
 			
 			</div>
-
-			<div class="checkboxAboveTree" style="border-bottom:none">
-				Show: <select id="siteTreeFilterList">
-					<% control SiteTreeFilters %>
-					<option value="$ClassName">$Title</option>
-					<% end_control %>
-				</select> <img id="siteTreeFilterActionIndicator" style="display:none" src="cms/images/network-save.gif">
-			</div>
 			
 			<div class="checkboxAboveTree">
 				<img id="checkboxActionIndicator" src="cms/images/network-save.gif">
