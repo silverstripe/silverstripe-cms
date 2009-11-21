@@ -4,7 +4,7 @@
 	 * @class Dropdown with languages above CMS tree, causing a redirect upon translation
 	 * @name ss.CMSMain.LangSelector
 	 */
-	$('.CMSMain #LangSelection').concrete('ss', function($){
+	$('.CMSMain #LangSelector').concrete('ss', function($){
 		return/** @lends ss.CMSMain.LangSelector */{
 			onmatch: function() {
 				var self = this;
