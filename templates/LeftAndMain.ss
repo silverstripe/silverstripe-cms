@@ -11,23 +11,19 @@
 <body class="stillLoading $CSSClasses">
 	<div id="Loading" style="background: #FFF url($LoadingImage) 50% 50% no-repeat; position: absolute;z-index: 100000;height: 100%;width: 100%;margin: 0;padding: 0;z-index: 100000;position: absolute;"><% _t('LOADING','Loading...',PR_HIGH) %><noscript><h1><% _t('REQUIREJS','The CMS requires that you have JavaScript enabled.',PR_HIGH) %></h1></noscript></div>
 	
-	<div id="top">
+	<div class="ui-layout-north ss-cms-top-menu">
 		$CMSTopMenu
 	</div>
 	
-	<div id="left" style="float:left">
+	<div class="ui-layout-west">
 		$Left
 	</div>
-	
-	<div id="separator" style="float:left">
-		&nbsp;
-	</div>
-	
-	<div class="right" id="right">
+		
+	<div class="ui-layout-center" id="right">
 		$Right
 	</div>
 
-	<div id="contentPanel" style="display:none;">
+	<div class="ui-layout-east">
 		<% control EditorToolbar %>
 			$ImageForm
 			$LinkForm
@@ -35,7 +31,7 @@
 		<% end_control %>
 	</div>
 	
-	<div id="bottom">
+	<div class="ui-layout-south ss-cms-bottom-bar">
 		<div class="holder">
 			<div id="logInStatus">
 				<a href="$ApplicationLink" title="<% _t('SSWEB','Silverstripe Website') %>">$ApplicationName</a>&nbsp;-&nbsp;

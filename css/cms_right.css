@@ -233,6 +233,12 @@
 	clear: left;
 }
 
+/* Overflow is handled by tabsets inside the panel */
+.ui-layout-center {
+	overflow: hidden !important;
+}
+
+
 /**
  * RHS Action Parameters boxes
  */

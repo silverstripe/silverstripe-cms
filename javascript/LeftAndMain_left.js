@@ -469,7 +469,6 @@ treeactions = {
 		if(li.selected) this.closeSelection(li, true);
 		else this.openSelection(li, true);
 
-		fixHeight_left();
 		return li.selected;
 	},
 	closeSelection : function(li, nested) {
@@ -480,8 +479,6 @@ treeactions = {
 		li.selected = false;
 		$(_HANDLER_FORMS[li.id]).notify('Close');
 		if(li.onclose) li.onclose();
-
-		if(typeof nested == 'undefined') fixHeight_left();
 	},
 	openSelection: function(li, nested) {
 		li = (li.tagName.toLowerCase() == 'button') ? li.parentNode : li;
@@ -495,18 +492,7 @@ treeactions = {
 		for(i=0;i<set.length;i++) if(li != set[i] && set[i].selected) {
 			this.closeSelection(set[i], true);
 		}
-		
-		if(typeof nested == 'undefined') fixHeight_left();
 	}
-}
-
-function fixHeight_left() {
-	if($('treepanes')) {
-		fitToParent('treepanes');
-		var st = $('treepanes');
-		if(st.resize) st.resize();
-	}
-	else fitToParent('sitetree_holder');
 }
 
 // Build the site tree

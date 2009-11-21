@@ -172,14 +172,26 @@ class LeftAndMain extends Controller {
 		}
 		
 		Requirements::javascript(THIRDPARTY_DIR . '/prototype.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery.js');
+		
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery-latest.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery_improvements.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.core.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.datepicker.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.draggable.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.droppable.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.accordion.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/effects.core.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/effects.slide.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/effects.drop.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/effects.scale.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/layout/jquery.layout.js');
+		// @todo Load separately so the CSS files can be inlined
+		Requirements::css(THIRDPARTY_DIR . '/jquery/themes/smoothness/ui.all.css');
+		
 		Requirements::javascript(THIRDPARTY_DIR . '/behaviour.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/livequery/jquery.livequery.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/core/jquery.ondemand.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/prototype_improvements.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/loader.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/layout_helpers.js');
 		Requirements::add_i18n_javascript(SAPPHIRE_DIR . '/javascript/lang');
 		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang');
 		
@@ -226,7 +238,7 @@ class LeftAndMain extends Controller {
 				'jsparty/prototype.js',
 				'jsparty/behaviour.js',
 				'jsparty/prototype_improvements.js',
-				'jsparty/jquery/jquery.js',
+				'jsparty/jquery/jquery-latest.js',
 				'jsparty/jquery/plugins/livequery/jquery.livequery.js',
 				'jsparty/jquery/plugins/effen/jquery.fn.js',
 				'sapphire/javascript/core/jquery.ondemand.js',
@@ -240,7 +252,6 @@ class LeftAndMain extends Controller {
 			'assets/leftandmain.js',
 			array(
 				'jsparty/loader.js',
-				'jsparty/layout_helpers.js',
 				'jsparty/scriptaculous/effects.js',
 				'jsparty/scriptaculous/dragdrop.js',
 				'jsparty/scriptaculous/controls.js',
@@ -250,8 +261,8 @@ class LeftAndMain extends Controller {
 				'cms/javascript/LeftAndMain_left.js',
 				'cms/javascript/LeftAndMain_right.js',
 				'jsparty/tree/tree.js',
-				'jsparty/tabstrip/tabstrip.js',
-				'jsparty/SWFUpload/swfupload.js',
+				'cms/javascript/TinyMCEImageEnhancement.js',
+				'sapphire/thirdparty/swfupload/SWFUpload.js',
 				'cms/javascript/Upload.js',
 				'cms/javascript/TinyMCEImageEnhancement.js',
 				'sapphire/javascript/TreeSelectorField.js',

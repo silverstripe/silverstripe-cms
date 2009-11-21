@@ -5,22 +5,110 @@
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-html {
-	height: 100%;
-	overflow: hidden;
-}
-
 body {
-	height: 100%;
 	background: #ccdef3;
 }
+
+/*
+ * Default Layout Theme
+ *
+ * Created for jquery.layout 
+ *
+ * Copyright (c) 2008 
+ *   Fabrizio Balliano (http://www.fabrizioballiano.net)
+ *   Kevin Dalman (http://allpro.net)
+ *
+ * Dual licensed under the GPL (http://www.gnu.org/licenses/gpl.html)
+ * and MIT (http://www.opensource.org/licenses/mit-license.php) licenses.
+ *
+ * Last Updated: 2009-03-04
+ * NOTE: For best code readability, view this with a fixed-space font and tabs equal to 4-chars
+ */
+
+/*
+*	PANES
+*/
+.ui-layout-pane { /* all 'panes' */
+	background:	#FFF; 
+	/*border:		1px solid #BBB;*/
+	overflow:	auto;
+}
+
+/*
+*	RESIZER-BARS
+*/
+.ui-layout-resizer	{ /* all 'resizer-bars' */
+	background: #DDD;
+	border: 1px solid #BBB;
+	border-width: 0;
+	opacity: 1; /* on-hover, show the resizer-bar normally */
+	filter: alpha(opacity=100);
+	}
+
+	.ui-layout-resizer-open:hover ,	/* hover-color to 'resize' */
+	.ui-layout-resizer-dragging {	/* resizer beging 'dragging' */
+		background: #EEE;
+	}
+	.ui-layout-resizer-dragging {	/* CLONED resizer being dragged */
+		border-left:  1px solid #BBB;
+		border-right: 1px solid #BBB;
+	}
+	.ui-layout-resizer-drag {	/* REAL resizer while resize in progress */
+	}
+
+	.ui-layout-resizer-closed:hover	{ /* hover-color to 'slide open' */
+		background: #EEE;
+	}
+	.ui-layout-resizer-sliding {	/* resizer when pane was 'slid open' */
+		opacity: 0.1; /* show only a slight shadow */
+		filter: alpha(opacity=10);
+		}
+		.ui-layout-resizer-sliding:hover {	/* sliding resizer - hover */
+			opacity: 1; /* on-hover, show the resizer-bar normally */
+			filter: alpha(opacity=100);
+		}
+		/* sliding resizer - add 'outside-border' to resizer on-hover */
+		.ui-layout-resizer-north-sliding:hover	{ border-bottom-width:	1px; }
+		.ui-layout-resizer-south-sliding:hover	{ border-top-width:		1px; }
+		.ui-layout-resizer-west-sliding:hover	{ border-right-width:	1px; }
+		.ui-layout-resizer-east-sliding:hover	{ border-left-width:	1px; }
+
+
+/*
+*	TOGGLER-BUTTONS
+*/
+.ui-layout-toggler {
+	color: #666;
+	/*border: 1px solid #BBB;*/ /* match pane-border */
+	background-color: #999;
+	}
+	.ui-layout-toggler:hover {
+		background-color: #FC6;
+	}
+	.ui-layout-toggler-north ,
+	.ui-layout-toggler-south {
+		border-width: 0 1px;
+	}
+	.ui-layout-toggler-west ,
+	.ui-layout-toggler-east {
+		border-width: 1px 0;
+	}
+	/* hide the toggler-button when the pane is 'slid open' */
+	.ui-layout-resizer-sliding  ui-layout-toggler {
+		display: none;
+	}
+	/*
+	*	style the text we put INSIDE the east/west togglers
+	*/
+	.ui-layout-toggler .content {
+		font: 30px bold Verdana, Arial, Helvetica, sans-serif;
+		padding-bottom: 0.35ex; /* to 'vertically center' text inside text-span */
+	}
+
 /**
  * Actions/Buttons
  */
 .ajaxActions {
-	position: absolute;
-	bottom: 5px;
-	right: 8px;
 	text-align: right;
 }
 
@@ -121,43 +209,11 @@ body.stillLoading select {
 }
 
 /** 3-PANEL LAYOUT **/
-#top {
+.ss-cms-top-menu {
 	font-size: 14px;
 	height: 33px;
 	background: #474855 url(../images/mainmenu/top-bg.gif) top left repeat-x;
 	color: #fff;
-	overflow: hidden;
-}
-#left {
-	position: absolute;
-	top: 45px;
-	left: 3px;
-	width: 205px;
-	height: 91%;
-	z-index: 50;
-	border: 1px solid #acbbcc;
-	background: #fff;
-}
-#right {
-	position: absolute;
-	left: 208px;
-	top: 45px;
-	height: 91%;
-	width: 600px;
-	overflow: auto;
-	z-index: 50;
-	border: 1px solid #acbbcc;
-	background: #eee;
-	margin-right: 3px;
-}
-
-#separator {
-	position: absolute;
-	top: 51px;
-	left: 205px;
-	height: 92%;
-	width: 3px;
-	cursor: e-resize;
 }
 
 /**
@@ -171,10 +227,6 @@ body.stillLoading select {
 	width: 18px;
 	display: block;
 }
-#separator.hidden {
-	display: none;
-}
-
 
 #left div.title, #right div.title {
 	border-top: 1px solid #77BBEE;
@@ -204,17 +256,17 @@ body.stillLoading select {
 }
 
 /** TOP PANEL **/
-#top #MainMenu {
+.ss-cms-top-menu #MainMenu {
 	margin: 0 0 0 6px;
 }
-#top #MainMenu li {
+.ss-cms-top-menu #MainMenu li {
 	margin: 0 4px;
 	float: left;
 	height: 33px;
 	cursor: pointer;
 }
 
-#top #MainMenu a {
+.ss-cms-top-menu #MainMenu a {
 	display: block;
 	height: 33px;
 	float: left;
@@ -227,28 +279,28 @@ body.stillLoading select {
 	color: #fff;
 	text-decoration: none;
 }
-	#top #MainMenu a:hover {
+	.ss-cms-top-menu #MainMenu a:hover {
 		text-decoration: none;
 		background: #6a7580 url(../images/mainmenu/hover.gif) repeat-x left top;
 	}
 
-#top #MainMenu .current {
+.ss-cms-top-menu #MainMenu .current {
 	background: #ccdef3 url(../images/mainmenu/current.gif) repeat-x left top;
 	border-bottom : none;
 }
-	#top #MainMenu .current a:hover {
+	.ss-cms-top-menu #MainMenu .current a:hover {
 		background: #cddef3 url(../images/mainmenu/currentHover.gif) repeat-x left top;
 	}
 
-#top #MainMenu .current a:link,
-#top #MainMenu .current a:visited {
+.ss-cms-top-menu #MainMenu .current a:link,
+.ss-cms-top-menu #MainMenu .current a:visited {
 	color : #2f383f;
 }
 
-#top #Logo {
+.ss-cms-top-menu #Logo {
 	float: right;
 }
-	#top #Logo a {
+	.ss-cms-top-menu #Logo a {
 		margin: 0;
 		display: block; 
 		font-size: 14px;
@@ -262,61 +314,54 @@ body.stillLoading select {
 		background: url(../images/mainmenu/logo.gif) right top no-repeat;
 		color: #fff;
 	}
-	html > body #top #Logo {
+	html > body .ss-cms-top-menu #Logo {
 		padding-bottom: 0;
 	}
 	
-#bottom {
+.ss-cms-bottom-bar {
 	width: 100%;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	height: 23px;
-	overflow: hidden;
 	background: #4d4e5a url(../images/textures/footerBg.gif) repeat-x left top;
 }
 
-#bottom .holder {
+.ss-cms-bottom-bar .holder {
 	text-align: center;
-	padding: 5px 6px 0 3px;
 	font-size: 10px;
 	color: #fff;
 }
 
-#bottom #logInStatus {
+.ss-cms-bottom-bar #logInStatus {
 	float: right;
 }
-	#bottom a {
+	.ss-cms-bottom-bar a {
 		color: #fff;
 		background: none;
 	}
-		#bottom a:hover {
+		.ss-cms-bottom-bar a:hover {
 			text-decoration: none;
 			color: #ccc;
 		}
-	#bottom #logInStatus #LogoutLink {
+	.ss-cms-bottom-bar #logInStatus #LogoutLink {
 		background: url(../images/logout.gif) no-repeat right top;
 		padding-right: 20px;
-		padding-bottom: 3px;
 	}
-#bottom #switchView {
+.ss-cms-bottom-bar #switchView {
 	float: left;
 }
-	#bottom #switchView a, #bottom #switchView span {
+	.ss-cms-bottom-bar #switchView a, .ss-cms-bottom-bar #switchView span {
 		background: none;
 		padding-left: 8px;
 		padding-right: 8px;
 		display: inline-block;
 		border-left: 1px solid #AAA;
 	}
-	#bottom #switchView span {
+	.ss-cms-bottom-bar #switchView span {
 		border-left: none;
 	}
-#bottom .bottomTabs a {
+.ss-cms-bottom-bar .bottomTabs a {
 	color: #fff;
 }
 
-#bottom .bottomTabs div.blank {
+.ss-cms-bottom-bar .bottomTabs div.blank {
 	display: block;
 	float: left;
 	cursor: pointer;
@@ -328,10 +373,10 @@ body.stillLoading select {
 	padding-left: 2px;
 	color: #fff;
 }
-#bottom .bottomTabs .current {
+.ss-cms-bottom-bar .bottomTabs .current {
 	color: #ccc;
 }
-	#bottom .bottomTabs a:hover {
+	.ss-cms-bottom-bar .bottomTabs a:hover {
 		color: #ccc;
 		text-decoration: none;
 	}

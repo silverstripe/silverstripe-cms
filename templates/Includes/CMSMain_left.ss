@@ -1,14 +1,10 @@
-<!-- <div class="title"><div style="background-image : url(cms/images/panels/MySite.png)">My Site</div></div> -->
-
 	<div id="treepanes">
-		<h2 id="heading_sitetree" class="selected">
-			<img id="sitetree_toggle_closed" src="sapphire/images/toggle-closed.gif" alt="+" style="display:none;" title="<% _t('OPENBOX','click to open this box') %>" />
-			<img id="sitetree_toggle_open" src="sapphire/images/toggle-open.gif" alt="-" title="<% _t('CLOSEBOX','click to close box') %>" />
-			<% _t('SITECONTENT TITLE','Site Content and Structure',PR_HIGH) %>
-		</h2>
+		<h3>
+			<a href="#"><% _t('SITECONTENT TITLE','Site Content and Structure',PR_HIGH) %></a>
+		</h3>
 		<div id="sitetree_holder">
 			<div id="TreeTools">
-				<ul id="TreeActions">
+				 <ul id="TreeActions">
 					<li class="action" id="addpage"><button><% _t('CREATE','Create',PR_HIGH) %></button></li>
 					<li class="action" id="search"><button><% _t('SEARCH','Search',PR_HIGH) %></button></li>
 					<li class="action" id="batchactions"><button><% _t('BATCHACTIONS','Batch Actions',PR_HIGH) %></button></li>
@@ -59,19 +55,18 @@
 							<% end_control %>
 						</select>
 						<div id="searchIndicator">&nbsp;</div>
-						<input type="submit" id="SiteTreeSearchClearButton" class="action" value="<% _t('CLEAR','Clear') %>" title="<% _t('CLEARTITLE','Clear the search and view all items') %>" />
-						<input type="submit" id="SiteTreeSearchButton" class="action" value="<% _t('SEARCH','Search') %>" title="<% _t('SEARCHTITLE','Search through URL, Title, Menu Title, &amp; Content') %>" />
+						<input type="submit" id="SiteTreeSearchClearButton" class="action" value="<% _t('CLEAR') %>" title="<% _t('CLEARTITLE','Clear the search and view all items') %>" />
+						<input type="submit" id="SiteTreeSearchButton" class="action" value="<% _t('SEARCH') %>" title="<% _t('SEARCHTITLE','Search through URL, Title, Menu Title, &amp; Content') %>" />
 					</div>
 				</div>
 				</form>
-			
-			$BatchActionParameters
+
 			<div id="batchactionsforms" style="display: none">
 				<form class="actionparams" style="border:0" id="batchactions_options" action="">
 					<p><% _t('SELECTPAGESACTIONS','Select the pages that you want to change &amp; then click an action:') %></p>
 
 					<input type="hidden" name="csvIDs" />
-					<div id="actionParams"></div>
+
 					<div>
 						<select id="choose_batch_action">
 							<% control BatchActionList %>
@@ -82,14 +77,13 @@
 					</div>
 				</form>
 			</div>
-			<div class="checkboxAboveTree noBottomBorder">
+			<div class="checkboxAboveTree" style="border-bottom:none">
 				Show: <select id="siteTreeFilterList">
 					<% control SiteTreeFilters %>
 					<option value="$ClassName">$Title</option>
 					<% end_control %>
 				</select> <img id="siteTreeFilterActionIndicator" style="display:none" src="cms/images/network-save.gif">
 			</div>
-			<% if CanOrganiseSitetree %>
 			<div class="checkboxAboveTree">
 				<img id="checkboxActionIndicator" src="cms/images/network-save.gif">
 				<div>
@@ -97,7 +91,7 @@
 					<label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
 				</div>
 			</div>
-			<% end_if %>
+
 			<% if IsTranslatableEnabled %>
 			<div id="LangSelector_holder">
 				Language: $LangSelector
@@ -108,16 +102,16 @@
 			<div id="sitetree_ul">
 				$SiteTreeAsUL
 			</div>
-		</div>
-
-		<div id="publication_key">
-			<% _t('KEY','Key:') %>
-			<ins style="cursor: help" title="<% _t('ADDEDNOTPUB','Added to the draft site and not published yet') %>"><% _t('NEW','new') %></ins>
-			<del style="cursor: help" title="<% _t('DELETEDSTILLLIVE','Deleted from the draft site but still on the live site') %>"><% _t('DEL','deleted') %></del>
-			<span style="cursor: help" title="<% _t('EDITEDNOTPUB','Edited on the draft site and not published yet') %>" class="modified"><% _t('CHANGED','changed') %></span>
-			<span style="cursor: help" title="<% _t('NOTINMENU','Excluded from navigation menus') %>" class="notinmenu"><% _t('HIDDEN','hidden') %></span>
 			
-		</div>		
+			<div id="publication_key">
+				<% _t('KEY','Key:') %>
+				<ins style="cursor: help" title="<% _t('ADDEDNOTPUB','Added to the draft site and not published yet') %>"><% _t('NEW','new') %></ins>
+				<del style="cursor: help" title="<% _t('DELETEDSTILLLIVE','Deleted from the draft site but still on the live site') %>"><% _t('DEL','deleted') %></del>
+				<span style="cursor: help" title="<% _t('EDITEDNOTPUB','Edited on the draft site and not published yet') %>" class="modified"><% _t('CHANGED','changed') %></span>
+				<span style="cursor: help" title="<% _t('NOTINMENU','Excluded from navigation menus') %>" class="notinmenu"><% _t('HIDDEN','hidden') %></span>
+
+			</div>
+		</div>	
 		
 		<!--
 		<div id="search_holder" style="display:none">
@@ -126,12 +120,10 @@
 		</div>
 		-->
 
-		<h2 id="heading_versions">
-			<img id="versions_toggle_closed" src="sapphire/images/toggle-closed.gif" alt="+" title="<% _t('OPENBOX') %>" />
-			<img id="versions_toggle_open" src="sapphire/images/toggle-open.gif" alt="-" style="display:none;" title="<% _t('CLOSEBOX') %>" /> 
-			<% _t('PAGEVERSIONH','Page Version History') %>
-		</h2>
-		<div class="listpane" id="versions_holder" style="display:none">
+		<h3>
+			<a href="#"><% _t('PAGEVERSIONH','Page Version History') %></a>
+		</h3>
+		<div id="versions_holder">
 			<p class="pane_actions" id="versions_actions">
 				
 				<span class="versionChoice">
@@ -147,17 +139,12 @@
 			</div>
 		</div>
 
-		<h2 id="heading_reports">
-			<img id="reports_toggle_closed" src="sapphire/images/toggle-closed.gif" alt="+" title="<% _t('OPENBOX') %>" />
-			<img id="reports_toggle_open" src="sapphire/images/toggle-open.gif" alt="-" style="display:none;" title="<% _t('CLOSEBOX') %>" /> 
-			<% _t('SITEREPORTS','Site Reports') %>
-		</h2>
-		$ReportFormParameters
-		<div class="listpane" id="reports_holder" style="display:none">
-			<p id="ReportSelector_holder">
-				$ReportSelector
-				<input class="action" type="submit" id="report_select_go" onclick="$('reports_holder').showreport();" value="<% _t('GO','Go') %>" />
-			</p>
-			<div class="unitBody"></div>
+		<h3>
+			<a href="#"><% _t('SITEREPORTS','Site Reports') %></a>
+		</h3>
+		<div class="listpane" id="reports_holder">
+			<p id="ReportSelector_holder">$ReportSelector <input class="action" type="submit" id="report_select_go" value="<% _t('GO','Go') %>" /></p>
+			<div class="unitBody">
+			</div>
 		</div>
 	</div>

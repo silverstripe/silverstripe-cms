@@ -196,6 +196,15 @@ ul.tree span.a span.modified,
 #treepanes {
 	background-color: #fff;
 }
+#treepanes .ui-accordion-content {
+	padding: 0;
+}
+.ui-layout-pane-west {
+	/* OVERRIDE 'default styles' */
+	padding: 0 !important;
+	overflow: hidden !important;
+}
+
 #treepanes h2 {
 	cursor: pointer;
 }
