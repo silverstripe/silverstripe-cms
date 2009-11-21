@@ -26,7 +26,6 @@ class CommentAdmin extends LeftAndMain {
 	public function init() {
 		parent::init();
 
-		Requirements::javascript(CMS_DIR . '/javascript/CommentAdmin_right.js');
 		Requirements::css(CMS_DIR . 'css/CommentAdmin.css');
 	}
 
