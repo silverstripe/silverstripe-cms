@@ -216,10 +216,11 @@
 	
 	$('#TreeActions').concrete('ss', function($){return{
 		onmatch: function() {
-			// setup "create", "search", "batch actions" layers above tree
+			// Setup "create", "search", "batch actions" layers above tree.
+			// All tab contents are closed by default.
 			this.tabs({
-				selected: null,
-				collapsible: true
+				collapsible: true,
+				selected: null
 			});
 		}
 	}});
@@ -233,8 +234,7 @@
 			GB_show('Edit Profile', this.attr('href'), 290, 500);
 			return false;
 		}
-	}});
-	
+	}});	
 	
 })(jQuery);
 
