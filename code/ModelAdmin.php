@@ -145,10 +145,8 @@ abstract class ModelAdmin extends LeftAndMain {
 		
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery/jquery.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-livequery/jquery.livequery.js');
-		//Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.core.js');
-		//Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.tabs.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/form/jquery.form.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/effen/jquery.fn.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.core.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.tabs.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/jquery/jquery_improvements.js');
 		Requirements::javascript(CMS_DIR . '/javascript/ModelAdmin.js');
 	}
@@ -606,25 +604,22 @@ class ModelAdmin_CollectionController extends Controller {
 		// Get the results form to be rendered
 		$resultsForm = $this->ResultsForm(array_merge($form->getData(), $request));
 		// Before rendering, let's get the total number of results returned
-		$tableField = $resultsForm->Fields()->fieldByName($this->modelClass);
+		$tableField = $resultsForm->Fields()->dataFieldByName($this->modelClass);
 		$numResults = $tableField->TotalCount();
 		
 		if($numResults) {
-			return new SS_HTTPResponse(
-				$resultsForm->forTemplate(), 
-				200, 
-				sprintf(
-					_t('ModelAdmin.FOUNDRESULTS',"Your search found %s matching items"), 
-					$numResults
-				)
+			$msg = sprintf(
+				_t('ModelAdmin.FOUNDRESULTS',"Your search found %s matching items"), 
+				$numResults
 			);
 		} else {
-			return new SS_HTTPResponse(
-				$resultsForm->forTemplate(), 
-				200, 
-				_t('ModelAdmin.NORESULTS',"Your search didn't return any matching items")
-			);
+			$msg = _t('ModelAdmin.NORESULTS',"Your search didn't return any matching items");
 		}
+		return new SS_HTTPResponse(
+			$resultsForm->formHtmlContent(), 
+			200, 
+			$msg
+		);
 	}
 	
 	/**
@@ -720,13 +715,14 @@ class ModelAdmin_CollectionController extends Controller {
 			$this,
 			'ResultsForm',
 			new FieldSet(
-				new HeaderField('SearchResultsHeader',_t('ModelAdmin.SEARCHRESULTS','Search Results'), 2),
-				$tf
+				new TabSet('Root',
+					new Tab('SearchResults',
+						_t('ModelAdmin.SEARCHRESULTS','Search Results'),
+						$tf
+					)
+				)
 			),
-			new FieldSet(
-				new FormAction("goBack", _t('ModelAdmin.GOBACK', "Back")),
-				new FormAction("goForward", _t('ModelAdmin.GOFORWARD', "Forward"))
-			)
+			new FieldSet()
 		);
 		
 		// Include the search criteria on the results form URL, but not dodgy variables like those below
@@ -750,7 +746,7 @@ class ModelAdmin_CollectionController extends Controller {
 	 */
 	function add($request) {
 		return new SS_HTTPResponse(
-			$this->AddForm()->forAjaxTemplate(), 
+			$this->AddForm()->formHtmlContent(), 
 			200, 
 			sprintf(
 				_t('ModelAdmin.ADDFORM', "Fill out this form to add a %s to the database."),
@@ -817,7 +813,7 @@ class ModelAdmin_CollectionController extends Controller {
 		if(Director::is_ajax()) {
 			$recordController = new ModelAdmin_RecordController($this, $request, $model->ID);
 			return new SS_HTTPResponse(
-				$recordController->EditForm()->forAjaxTemplate(), 
+				$recordController->EditForm()->formHtmlContent(), 
 				200, 
 				sprintf(
 					_t('ModelAdmin.LOADEDFOREDITING', "Loaded '%s' for editing."),
@@ -868,7 +864,7 @@ class ModelAdmin_RecordController extends Controller {
 		if ($this->currentRecord) {
 			if(Director::is_ajax()) {
 				return new SS_HTTPResponse(
-					$this->EditForm()->forAjaxTemplate(), 
+					$this->EditForm()->formHtmlContent(), 
 					200, 
 					sprintf(
 						_t('ModelAdmin.LOADEDFOREDITING', "Loaded '%s' for editing."),
@@ -911,8 +907,6 @@ class ModelAdmin_RecordController extends Controller {
 			$deleteAction->addExtraClass('delete');
 		}
 
-		$actions->insertFirst(new FormAction("goBack", _t('ModelAdmin.GOBACK', "Back")));
-		
 		$form = new Form($this, "EditForm", $fields, $actions, $validator);
 		$form->loadDataFrom($this->currentRecord);
 
@@ -937,7 +931,7 @@ class ModelAdmin_RecordController extends Controller {
 		}
 		
 		
-		// Behaviour switched on ajax.
+		// Behaviour switched on .
 		if(Director::is_ajax()) {
 			return $this->edit($request);
 		} else {
@@ -968,7 +962,7 @@ class ModelAdmin_RecordController extends Controller {
 	function view($request) {
 		if($this->currentRecord) {
 			$form = $this->ViewForm();
-			return $form->forAjaxTemplate();
+			return $form->formHtmlContent();
 		} else {
 			return _t('ModelAdmin.ITEMNOTFOUND');
 		}

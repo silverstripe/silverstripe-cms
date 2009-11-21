@@ -3,9 +3,8 @@
 	clear: both;
 }
 
-body.ModelAdmin #left {
-	width: 270px;
-	overflow: auto;
+body.ModelAdmin .ui-layout-west {
+	width: 280px;
 }
 
 body.ModelAdmin #Form_AddForm fieldset {
@@ -70,10 +69,6 @@ body.ModelAdmin #right{
 	overflow:auto !important;
 }
 
-body.ModelAdmin #right #ModelAdminPanel {
-	padding-bottom: 30px;
-}
-
 body.ModelAdmin #right table.results {
 	margin:6px;
 	padding:0;
@@ -117,16 +112,16 @@ body.ModelAdmin #statusMessage {
 
 /* Form */
 
-#LeftPane form {
+body.ModelAdmin .ui-layout-west form {
 	border-bottom: 2px solid #ddd;
 	padding-bottom: 10px;
 }
 
-#LeftPane #Form_ImportForm {
+body.ModelAdmin .ui-layout-west #Form_ImportForm {
 	border-bottom: none;
 }
 
-#LeftPane form .Actions {
+body.ModelAdmin .ui-layout-west form .Actions {
 	margin: 5px 0;
 }
 
@@ -137,11 +132,11 @@ body.ModelAdmin #right .ajaxActions {
 	bottom: 35px !important;
 }
 
-#LeftPane .tab {
+body.ModelAdmin .ui-layout-west .tab {
 	padding: 7px;
 }
 
-.tab h3 {
+body.ModelAdmin .tab h3 {
 	margin: 10px 0 5px 0;
 	font-size: 12px;
 }

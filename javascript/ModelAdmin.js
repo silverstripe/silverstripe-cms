@@ -9,49 +9,7 @@
  * @todo alias the $ function instead of literal jQuery
  */
 (function($) {
-$(document).ready(function() {
-	/**
-	 * Generic ajax error handler
-	 */
-	$('form').livequery('ajaxError', function (XMLHttpRequest, textStatus, errorThrown) {
-			$('input', this).removeClass('loading');
-			statusMessage(ss.i18n._t('ModelAdmin.ERROR', 'Error'), 'bad');
-	});
-	
-	/** 
-	 * Add class ajaxActions class to the parent of Add button of AddForm
-	 * so it float to the right
-	 */
-	$('#Form_AddForm_action_doCreate').livequery(function(){
-		$(this).parent().addClass('ajaxActions');
-	});
-	
-	/*
-	 * Highlight buttons on click
-	 */
-	$('input[type=submit]').livequery('click', function() {
-		$(this).addClass('loading');
-	});
-	
-	$("#right").scroll( function () {
-		positionActionArea();
-	});
-	
-	$(window).resize( function() {
-		positionActionArea();
-	});
-	
-	/*
-	 * Make the status message and ajax action button fixed 
-	 */
-	function positionActionArea() {
-		if ( $.browser.msie && $.browser.version.indexOf("6.", 0)==0 ) {
-			newTopValue = $("#right").scrollTop()+$(window).height()-139;
-			$('.ajaxActions').css('top', newTopValue);
-			$('#statusMessage').css('top', newTopValue);
-		}
-	}
-	
+			
 	////////////////////////////////////////////////////////////////// 
 	// Search form 
 	////////////////////////////////////////////////////////////////// 
@@ -59,329 +17,136 @@ $(document).ready(function() {
 	/**
 	 * If a dropdown is used to choose between the classes, it is handled by this code
 	 */
-	$('#ModelClassSelector select')
-		// Set up an onchange function to show the applicable form and hide all others
-		.change(function() {
-			var $selector = $(this);
-			$('option', this).each(function() {
-				var $form = $('#'+$(this).val());
-				if($selector.val() == $(this).val()) $form.show();
-				else $form.hide();
+	$('#ModelClassSelector select').concrete({
+		onmatch: function() {
+			// Set up an onchange function to show the applicable form and hide all others
+			this.bind('change', function(e) {
+				var $selector = $(this);
+				this.find('option').each(function() {
+					var $form = $('#'+$(this).val());
+					if($selector.val() == $(this).val()) $form.show();
+					else $form.hide();
+				});
 			});
-		})
-		// Initialise the form by calling this onchange event straight away
-		.change();
-
-	/**
-	 * Stores a jQuery reference to the last submitted search form.
-	 */
-	__lastSearch = null;
-
+			
+			// Initialise the form by calling this onchange event straight away
+			this.change();
+		}
+	});
 	/**
 	 * Submits a search filter query and attaches event handlers
 	 * to the response table, excluding the import form because 
 	 * file ($_FILES) submission doesn't work using AJAX 
 	 * 
-	 * Note: This is used for Form_CreateForm too
-	 * 
-	 * @todo use livequery to manage ResultTable click handlers
+	 * Note: This is used for Form_CreateForm and all Form_SearchForm_* variations
 	 */
-	$('#SearchForm_holder .tab form:not(#Form_ImportForm)').submit(function () {
-		var $form = $(this);
-	
-		// @todo TinyMCE coupling
-		jQuery('#Form_EditForm').concrete('ss').cleanup();
+	$('#SearchForm_holder form').concrete({
+		onmatch: function() {
+			var self = this;
+			this.bind('submit', function(e) {
+				// Import forms are processed without ajax
+				if(self.is('#Form_ImportForm')) return true;
 
-		$('#ModelAdminPanel').fn('startHistory', $(this).attr('action'), $(this).formToArray());
-		$('#ModelAdminPanel').load(
-			$(this).attr('action'), 
-			$(this).formToArray(), 
-			standardStatusHandler(function(result) {
-				if(!this.future || !this.future.length) {
-					$('#Form_EditForm_action_goForward, #Form_ResultsForm_action_goForward').hide();
-				}
-				if(!this.history || this.history.length <= 1) {
-					$('#Form_EditForm_action_goBack, #Form_ResultsForm_action_goBack').hide();
-				}
+				$('#Form_EditForm').concrete('ss').loadForm(
+					self.attr('action'),
+					null,
+					{data: self.serialize()}
+				);
 
-				$('#form_actions_right').remove();
-				Behaviour.apply();
-
-				if(window.onresize) window.onresize();
-				// Remove the loading indicators from the buttons
-				$('input[type=submit]', $form).removeClass('loading');
-			}, 
-			// Failure handler - we should still remove loading indicator
-			function () {
-				$('input[type=submit]', $form).removeClass('loading');
-			})
-		);
-			
-		return false;
-	});
-
-	/**
-	 * Clear search button
-	 */
-	$('#SearchForm_holder button[name=action_clearsearch]').click(function(e) {
-		$(this.form).resetForm();
-		return false;
+				return false;
+			});
+		}
 	});
 
 	/**
 	 * Column selection in search form
 	  */
-	$('a.form_frontend_function.toggle_result_assembly').click(function(){
-		var toggleElement = $(this).next();
-		toggleElement.toggle();
-		return false;
+	$('a.form_frontend_function.toggle_result_assembly').concrete({
+		onclick: function(e) {
+			var toggleElement = $(this).next();
+			toggleElement.toggle();
+			return false;
+		}
 	});
 	
-	$('a.form_frontend_function.tick_all_result_assembly').click(function(){
-		var resultAssembly = $(this).prevAll('div#ResultAssembly').find('ul li input');
-		resultAssembly.attr('checked', 'checked');
-		return false;
+	$('a.form_frontend_function.tick_all_result_assembly').concrete({
+		onclick: function(e) {
+			var resultAssembly = $(this).prevAll('div#ResultAssembly').find('ul li input');
+			resultAssembly.attr('checked', 'checked');
+			return false;
+		}
 	});
 	
-	$('a.form_frontend_function.untick_all_result_assembly').click(function(){
-		var resultAssembly = $(this).prevAll('div#ResultAssembly').find('ul li input');
-		resultAssembly.removeAttr('checked');
-		return false;
+	$('a.form_frontend_function.untick_all_result_assembly').concrete({
+		onclick: function(e) {
+			var resultAssembly = $(this).prevAll('div#ResultAssembly').find('ul li input');
+			resultAssembly.removeAttr('checked');
+			return false;
+		}
 	});
 
-	////////////////////////////////////////////////////////////////// 
-	// Results list 
-	////////////////////////////////////////////////////////////////// 
-	
 	/**
 	 * Table record handler for search result record
-	 * @todo: Shouldn't this be part of TableListField?
 	 */
-	$('#right #Form_ResultsForm tbody td a:not(.deletelink,.downloadlink)')
-		.livequery('click', function(){
-			$(this).parent().parent().addClass('loading');
-			var el = $(this);
-			$('#ModelAdminPanel').fn('addHistory', el.attr('href'));
-			$('#ModelAdminPanel').fn('loadForm', el.attr('href'));
-			return false;
-		});
+	$('form[name=Form_ResultsForm] tbody td a').concrete({
+		onmatch: function() {
+			// TODO Replace with concrete event handler
+			this.bind('click', function(e) {
+				if($(this).hasClass('deletelink downloadlink')) return true;
 
-	////////////////////////////////////////////////////////////////// 
-	// RHS detail form
-	////////////////////////////////////////////////////////////////// 
-
-	/**
-	 * RHS panel Back button
-	 */
-	$('#Form_EditForm_action_goBack, #Form_ResultsForm_action_goBack').livequery('click', function() {
-		$('#ModelAdminPanel').fn('goBack');
-		return false;
+				$('#Form_EditForm').concrete('ss').loadForm($(this).attr('href'));
+				return false;
+			});
+		}
 	});
 
 	/**
-	 * RHS panel Back button
+	 * Add object button
 	 */
-	$('#Form_ResultsForm_action_goForward').livequery('click', function() {
-		$('#ModelAdminPanel').fn('goForward');
-		return false;
-	});
-	
-	/**
-	 * RHS panel Save button 
-	 */
-	$('#right input[name=action_doSave],#right input[name=action_doCreate]').livequery('click', function(){
-		var form = $('#right form');
-		var formAction = form.attr('action') + '?' + $(this).fieldSerialize();
-		
-		// @todo TinyMCE coupling
-		if(typeof tinyMCE != 'undefined') tinyMCE.triggerSave();
-		
-		// Post the data to save
-		$.post(formAction, form.formToArray(), function(result){
-			// @todo TinyMCE coupling
-			jQuery('#Form_EditForm').concrete('ss').cleanup();
-			
-			$('#right #ModelAdminPanel').html(result);
-
-			if($('#right #ModelAdminPanel form').hasClass('validationerror')) {
-				statusMessage(ss.i18n._t('ModelAdmin.VALIDATIONERROR', 'Validation Error'), 'bad');
-			} else {
-				statusMessage(ss.i18n._t('ModelAdmin.SAVED', 'Saved'), 'good');
-			}
-
-			// TODO/SAM: It seems a bit of a hack to have to list all the little updaters here. 
-			// Is livequery a solution?
-			Behaviour.apply(); // refreshes ComplexTableField
-			if(window.onresize) window.onresize();
-		}, 'html');
-
-		return false;
+	$('#Form_ManagedModelsSelect').concrete({
+		onmatch: function() {
+			this.bind('submit', function(){
+				className = $('select option:selected', this).val();
+				requestPath = $(this).attr('action').replace('ManagedModelsSelect', className + '/add');
+				var $button = $(':submit', this);
+				$('#Form_EditForm').concrete('ss').loadForm(
+					requestPath,
+					function() {
+						$button.removeClass('loading');
+						$button = null;
+					}
+				);
+				return false;
+			});
+		}
 	});
 	
 	/**
 	 * RHS panel Delete button
 	 */
-	$('#right input[name=action_doDelete]').livequery('click', function(){
-		var confirmed = confirm(ss.i18n._t('ModelAdmin.REALLYDELETE', 'Really delete?'));
-		if(!confirmed) {
-			$(this).removeClass('loading')
-			return false;
+	$('#Form_EditForm input[name=action_doDelete]').concrete({
+		onmatch: function() {
+			this.bind('click', function() {
+				var confirmed = confirm(ss.i18n._t('ModelAdmin.REALLYDELETE', 'Really delete?'));
+				if(!confirmed) {
+					$(this).removeClass('loading')
+					return false;
+				}
+			});
 		}
-
-		var form = $('#right form');
-		var formAction = form.attr('action') + '?' + $(this).fieldSerialize();
-
-		// The POST actually handles the delete
-		$.post(formAction, form.formToArray(), function(result){
-			// On success, the panel is refreshed and a status message shown.
-			$('#right #ModelAdminPanel').html(result);
-			
-			statusMessage(ss.i18n._t('ModelAdmin.DELETED', 'Successfully deleted'));
-			$('#form_actions_right').remove();
-			
-			// To do - convert everything to jQuery so that this isn't needed
-			Behaviour.apply(); // refreshes ComplexTableField
-		});
-		
-		return false;
-	});
-
-		
-	////////////////////////////////////////////////////////////////// 
-	// Import/Add form 
-	////////////////////////////////////////////////////////////////// 
-
-	/**
-	 * Add object button
-	 */
-	$('#Form_ManagedModelsSelect').submit(function(){
-		className = $('select option:selected', this).val();
-		requestPath = $(this).attr('action').replace('ManagedModelsSelect', className + '/add');
-		var $button = $(':submit', this);
-		$('#ModelAdminPanel').fn(
-			'loadForm', 
-			requestPath,
-			function() {
-				$button.removeClass('loading');
-				$button = null;
-			}
-		);
-		$('#form_actions_right').remove();
-		return false;
 	});
 	
 	/**
 	 * Toggle import specifications
 	 */
-	$('.importSpec .details').hide();
-	$('.importSpec a.detailsLink').click(function() {
-		$('#' + $(this).attr('href').replace(/.*#/,'')).toggle();
-		return false;
-	});
-
-	////////////////////////////////////////////////////////////////// 
-	// Helper functions
-	////////////////////////////////////////////////////////////////// 
-	
-	$('#ModelAdminPanel').fn({
-		/**
-		 * Load a detail editing form into the main edit panel
-		 * @todo Convert everything to jQuery so that the built-in load method can be used with this instead
-		 */
-		loadForm: function(url, successCallback) {
-			// @todo TinyMCE coupling
-			jQuery('#Form_EditForm').concrete('ss').cleanup();
-	
-			$('#right #ModelAdminPanel').load(url, standardStatusHandler(function(result) {
-				if(typeof(successCallback) == 'function') successCallback.apply();
-				if(!this.future || !this.future.length) {
-					$('#Form_EditForm_action_goForward, #Form_ResultsForm_action_goForward').hide();
-				}
-				if(!this.history || this.history.length <= 1) {
-					$('#Form_EditForm_action_goBack, #Form_ResultsForm_action_goBack').hide();
-				}
-				
-				Behaviour.apply(); // refreshes ComplexTableField
-				if(window.onresize) window.onresize();
-			}));
-		},
-		
-		startHistory: function(url, data) {
-			this.history = [];
-			$(this).fn('addHistory', url, data);
-		},
-		
-		/**
-		 * Add an item to the history, to be accessed by goBack and goForward
-		 */
-		addHistory: function(url, data) {
-			// Combine data into URL
-			if(data) {
-				if(url.indexOf('?') == -1) url += '?' + $.param(data);
-				else url += '&' + $.param(data);
-			}
-			
-			// Add to history 
-			if(this.history == null) this.history = [];
-			this.history.push(url);
-			
-			// Reset future
-			this.future = [];
-		},
-		
-		goBack: function() {
-			if(this.history && this.history.length) {
-				if(this.future == null) this.future = [];
-				
-				var currentPage = this.history.pop();
-				var previousPage = this.history[this.history.length-1];
-				
-				this.future.push(currentPage);
-				$(this).fn('loadForm', previousPage);
-			}
-		},
-		
-		goForward: function() {
-			if(this.future && this.future.length) {
-				if(this.future == null) this.future = [];
-				
-				var nextPage = this.future.pop();
-				
-				this.history.push(nextPage);
-				$(this).fn('loadForm', nextPage);
-			}
+	$('.importSpec').concrete({
+		onmatch: function() {
+			this.hide();
+			this.find('a.detailsLink').click(function() {
+				$('#' + $(this).attr('href').replace(/.*#/,'')).toggle();
+				return false;
+			});
 		}
-
 	});
 	
-	/**
-	 * Standard SilverStripe status handler for ajax responses
-	 * It will generate a status message out of the response, and only call the callback for successful responses
-	 *
-	 * To use:
-	 *	Instead of passing your callback function as:
-	 *	   function(response) { ... }
-	 * 
-	 *	Pass it as this:
-	 *	   standardStatusHandler(function(response) { ... })
-	 */
-	function standardStatusHandler(callback, failureCallback) {
-		return function(response, status, xhr) {
-			// If the response is takne from $.ajax's complete handler, then swap the variables around
-			if(response.status) {
-				xhr = response;
-				response = xhr.responseText;
-			}
-
-			if(status == 'success') {
-				statusMessage(xhr.statusText, "good");
-				$(this).each(callback, [response, status, xhr]);
-			} else {
-				errorMessage(xhr.statusText);
-				if(failureCallback) $(this).each(failureCallback, [response, status, xhr]);
-			}
-		}
-	}
-	
-})
 })(jQuery);
