@@ -36,7 +36,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'deletefromlive',
 		'duplicate',
 		'duplicatewithchildren',
-		'getpagecount',
 		'getversion',
 		'publishall',
 		'restore',
@@ -1137,36 +1136,6 @@ JS;
 		$form->unsetValidator();
 		
 		return $form;
-	}
-
-	/**
-	 * Helper function to get page count
-	 */
-	function getpagecount() {
-		ini_set('max_execution_time', 0);
-		$excludePages = split(" *, *", $_GET['exclude']);
-
-		$pages = DataObject::get("SiteTree", "\"ParentID\" = 0");
-		foreach($pages as $page) $pageArr[] = $page;
-
-		while(list($i,$page) = each($pageArr)) {
-			if(!in_array($page->URLSegment, $excludePages)) {
-				if($children = $page->AllChildren()) {
-					foreach($children as $child) $pageArr[] = $child;
-				}
-
-
-				if(!$_GET['onlywithcontent'] || strlen(Convert::xml2raw($page->Content)) > 100) {
-					echo "<li>" . $page->Breadcrumbs(null, true) . "</li>";
-					$count++;
-				} else {
-					echo "<li style=\"color: #777\">" . $page->Breadcrumbs(null, true) . " - " . _t('CMSMain.NOCONTENT',"no content") . "</li>";
-				}
-
-			}
-		}
-
-		echo '<p>' . _t('CMSMain.TOTALPAGES',"Total pages: ") . "$count</p>";
 	}
 
 	function publishall() {
