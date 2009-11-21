@@ -11,6 +11,12 @@ html {
 
 body {
 	background: #ccdef3;
+	height: 100%;
+}
+
+.ss-loading-screen {
+	height: 100%;
+	overflow: hidden;
 }
 
 .ss-loading-screen p {
