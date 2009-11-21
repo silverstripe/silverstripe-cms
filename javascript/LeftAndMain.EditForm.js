@@ -253,7 +253,7 @@
 					// Prepare iframes for removal, otherwise we get loading bugs
 					this.find('iframe').each(function() {
 						this.contentWindow.location.href = 'about:blank';
-						this.remove();
+						$(this).remove();
 					});
 
 					// update form content
