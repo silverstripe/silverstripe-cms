@@ -17,13 +17,20 @@
 			}
 		);
 	});
+	
+	$.concrete('ss', function($){
+		$('#Form_EditForm .Actions #action_addmember').concrete({
+			onclick: function(e) {
+				// CAUTION: Assumes that a MemberTableField-instance is present as an editing form
+				var t = $('#Form_EditForm_Members');
+				t[0].openPopup(
+					null,
+					$('base').attr('href') + t.find('a.addlink').attr('href'),
+					t.find('table')[0]
+				);
+				return false;
+			}
+		});
+	});
+	
 }(jQuery));
-/**
- * CAUTION: Assumes that a MemberTableField-instance is present as an editing form
- */
-function action_addmember_right() {
-	var memberTableFields = document.getElementsBySelector('#Form_EditForm div.MemberTableField');
-	var tables = document.getElementsBySelector('#Form_EditForm div.MemberTableField table');
-	var addLinks = document.getElementsBySelector('#Form_EditForm div.MemberTableField a.addlink');
-	memberTableFields[0].openPopup(null,addLinks[0].href,tables[0]);
-}
