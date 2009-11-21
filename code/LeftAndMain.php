@@ -243,6 +243,8 @@ class LeftAndMain extends Controller {
 			Requirements::css($file[0], $file[1]);
 		}
 		
+		Requirements::css(CMS_DIR . '/css/unjquery.css');
+		
 		// Javascript combined files
 		Requirements::combine_files(
 			'assets/base.js',
