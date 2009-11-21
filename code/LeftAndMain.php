@@ -757,6 +757,18 @@ JS;
 				);
 			}
 			
+			// Add hidden fields which are required for saving the record
+			// and loading the UI state
+			if(!$fields->dataFieldByName('ClassName')) {
+				$fields->push(new HiddenField('ClassName'));
+			}
+			if(
+				Object::has_extension($this->stat('tree_class'), 'Hierarchy') 
+				&& !$fields->dataFieldByName('ParentID')
+			) {
+				$fields->push(new HiddenField('ParentID'));
+			}
+			
 			if($record->hasMethod('getAllCMSActions')) {
 				$actions = $record->getAllCMSActions();
 			} else {
