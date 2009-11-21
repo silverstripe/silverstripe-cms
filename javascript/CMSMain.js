@@ -28,6 +28,9 @@ var ss_MainLayout;
 				if (window[timerID]) clearTimeout(window[timerID]);
 				window[timerID] = setTimeout(function() {self._resizeChildren();}, 200);
 			});
+			
+			// If tab has no nested tabs, set overflow to auto
+			$(this).find('.tab').not(':has(.tab)').css('overflow', 'auto');
 
 			this._resizeChildren();
 
