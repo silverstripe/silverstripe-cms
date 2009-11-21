@@ -1,3 +1,9 @@
+/**
+ * @type jquery.layout Global variable so layout state management
+ * can pick it up.
+ */
+var ss_MainLayout;
+
 (function($) {
 	$('body.CMSMain').concrete('ss', function($){return{
 
@@ -9,7 +15,11 @@
 		onmatch: function() {
 			var self = this;
 
-			this.setMainLayout(this._setupLayout());
+			// Layout
+			ss_MainLayout = this._setupLayout();
+			this.setMainLayout(ss_MainLayout);
+			layoutState.options.keys = "west.size,west.isClosed";
+			$(window).unload(function(){ console.debug(layoutState);layoutState.save('ss_MainLayout') }); 
 			
 			// artificially delay the resize event 200ms
 			// to avoid overlapping height changes in different onresize() methods
@@ -46,7 +56,8 @@
 			var self = this;
 			
 			// layout containing the tree, CMS menu, the main form etc.
-			var layout = $('body').layout({
+			var savedLayoutSettings = layoutState.load('ss_MainLayout');
+			var layoutSettings = jQuery.extend({
 				defaults: {
 					// TODO Reactivate once we have localized values
 					togglerTip_open: '',
@@ -78,7 +89,8 @@
 					size: 250
 				},
 				center: {}
-			});
+			}, savedLayoutSettings);
+			var layout = $('body').layout(layoutSettings);
 			
 			// Adjust tree accordion etc. in left panel to work correctly
 			// with jQuery.layout (see http://layout.jquery-dev.net/tips.html#Widget_Accordion)
