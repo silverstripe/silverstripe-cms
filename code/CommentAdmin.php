@@ -56,13 +56,13 @@ class CommentAdmin extends LeftAndMain {
 		$section = $this->Section();
 
 		if($section == 'approved') {
-			$filter = "\"IsSpam\"=0 AND \"NeedsModeration\"=0";
+			$filter = "\"IsSpam\" = 0 AND \"NeedsModeration\" = 0";
 			$title = "<h2>". _t('CommentAdmin.APPROVEDCOMMENTS', 'Approved Comments')."</h2>";
 		} else if($section == 'unmoderated') {
-			$filter = '"NeedsModeration"';
+			$filter = '"NeedsModeration" = 1';
 			$title = "<h2>"._t('CommentAdmin.COMMENTSAWAITINGMODERATION', 'Comments Awaiting Moderation')."</h2>";
 		} else {
-			$filter = '"IsSpam"';
+			$filter = '"IsSpam" = 1';
 			$title = "<h2>"._t('CommentAdmin.SPAM', 'Spam')."</h2>";
 		}
 
@@ -147,7 +147,7 @@ JS;
 
 	function deleteall() {
 		$numComments = 0;
-		$spam = DataObject::get('PageComment', '"PageComment"."IsSpam"');
+		$spam = DataObject::get('PageComment', '"PageComment"."IsSpam" = 1');
 
 		if($spam) {
 			$numComments = $spam->Count();

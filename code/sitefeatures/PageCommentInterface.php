@@ -210,8 +210,8 @@ class PageCommentInterface extends RequestHandler {
 		$limit['start'] = isset($_GET['commentStart']) ? (int)$_GET['commentStart'] : 0;
 		$limit['limit'] = PageComment::$comments_per_page;
 		
-		$spamfilter = isset($_GET['showspam']) ? '' : "AND \"IsSpam\"=0";
-		$unmoderatedfilter = Permission::check('ADMIN') ? '' : "AND \"NeedsModeration\"=0";
+		$spamfilter = isset($_GET['showspam']) ? '' : "AND \"IsSpam\" = 0";
+		$unmoderatedfilter = Permission::check('ADMIN') ? '' : "AND \"NeedsModeration\" = 0";
 		$comments =  DataObject::get("PageComment", "\"ParentID\" = '" . Convert::raw2sql($this->page->ID) . "' $spamfilter $unmoderatedfilter", '"Created" DESC', "", $limit);
 		
 		if(is_null($comments)) {
