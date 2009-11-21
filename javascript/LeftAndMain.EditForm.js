@@ -155,6 +155,14 @@
 				});
 
 				this.html(html);
+				// Optionally get the form attributes from embedded fields, see Form->formHtmlContent()
+				for(var overrideAttr in {'action':true,'method':true,'enctype':true,'name':true}) {
+					var el = this.find(':input[name='+ '_form_' + overrideAttr + ']');
+					if(el) {
+						this.attr(overrideAttr, el.val());
+						el.remove();
+					}
+				}
 
 				if(this.hasClass('validationerror')) {
 					statusMessage(ss.i18n._t('ModelAdmin.VALIDATIONERROR', 'Validation Error'), 'bad');
