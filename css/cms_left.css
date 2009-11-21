@@ -13,7 +13,6 @@
 	padding: 1px;
 }
 #left form.actionparams select,
-#PageType,
 #ReportSelector_holder select {
 	width: 75%;
 }
