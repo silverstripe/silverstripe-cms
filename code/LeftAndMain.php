@@ -180,6 +180,7 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.core.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.datepicker.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.dialog.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.tabs.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.draggable.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.droppable.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.accordion.js');
@@ -187,6 +188,7 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/effects.slide.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/effects.drop.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/effects.scale.js');
+		
 		
 		Requirements::javascript(CMS_DIR . '/thirdparty/jquery-layout/jquery.layout.js');
 		Requirements::javascript(CMS_DIR . '/thirdparty/jquery-layout/jquery.layout.state.js');
@@ -204,6 +206,9 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-concrete/jquery.selector.matches.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-concrete/jquery.dat.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-concrete/jquery.concrete.js');
+		
+		// Required for TreeTools panel above tree
+		Requirements::javascript(SAPPHIRE_DIR . '/javascript/TabSet.js');
 		
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/behaviour/behaviour.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-livequery/jquery.livequery.js');
