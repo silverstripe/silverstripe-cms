@@ -5,6 +5,10 @@
  * @subpackage content
  */
 class WidgetAreaEditor extends FormField {
+	function __construct($name) {
+		parent::__construct($name);
+	}
+	
 	function FieldHolder() {
 		Requirements::css(CMS_DIR . '/css/WidgetAreaEditor.css');
 		Requirements::javascript(CMS_DIR . '/javascript/WidgetAreaEditor.js');
@@ -26,7 +30,7 @@ class WidgetAreaEditor extends FormField {
 	
 	function UsedWidgets() {
 		$relationName = $this->name;
-		$widgets = $this->form->getRecord()->getComponent($relationName)->Widgets();
+		$widgets = $this->form->getRecord()->getComponent($relationName)->Items();
 		return $widgets;
 	}
 	
@@ -48,7 +52,7 @@ class WidgetAreaEditor extends FormField {
 		
 		$record->$idName = $widgetarea->ID;
 	
-		$widgets = $widgetarea->Widgets();
+		$widgets = $widgetarea->Items();
 	
 		// store the field IDs and delete the missing fields
 		// alternatively, we could delete all the fields and re add them
