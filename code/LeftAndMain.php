@@ -500,7 +500,7 @@ class LeftAndMain extends Controller {
 		$titleEval = '
 					"<li id=\"record-$child->ID\" class=\"" . $child->CMSTreeClasses($extraArg) . "\">" .
 					"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" class=\"" . $child->CMSTreeClasses($extraArg) . "\" title=\"' . _t('LeftAndMain.PAGETYPE','Page type: ') . '".$child->class."\" >" . 
-					($child->TreeTitle()) . 
+					($child->TreeTitle) . 
 					"</a>"
 ';
 		$siteTree = $obj->getChildrenAsUL(
@@ -944,7 +944,7 @@ JS;
 					$movedNode->Status = "Saved (update)";
 					$movedNode->write();
 
-					$title = Convert::raw2js($movedNode->TreeTitle());
+					$title = Convert::raw2js($movedNode->TreeTitle);
 					$js .="$('sitetree').setNodeTitle($movedNode->ID, \"$title\");\n";
 
 				// Nodes that weren't "actually moved" shouldn't be registered as having been edited; do a direct SQL update instead

@@ -455,7 +455,7 @@ JS;
 		$siteTreeList = $obj->getChildrenAsUL(
 			'',
 			'"<li id=\"record-$child->ID\" class=\"$child->class" . $child->markingClasses() .  ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
-			'"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" class=\"" . ($child->hasChildFolders() ? " contents" : "") . "\" >" . $child->TreeTitle() . "</a>" ',
+			'"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" class=\"" . ($child->hasChildFolders() ? " contents" : "") . "\" >" . $child->TreeTitle . "</a>" ',
 			$this,
 			true,
 			"ChildFolders"
@@ -483,7 +483,7 @@ JS;
 		$results = $obj->getChildrenAsUL(
 			'',
 			'"<li id=\"record-$child->ID\" class=\"$child->class" . $child->markingClasses() .  ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
-			'"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" >" . $child->TreeTitle() . "</a>" ',
+			'"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" >" . $child->TreeTitle . "</a>" ',
 			$this,
 			true
 		);

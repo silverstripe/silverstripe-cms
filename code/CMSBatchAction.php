@@ -51,7 +51,7 @@ abstract class CMSBatchAction extends Object {
 			// Now make sure the tree title is appropriately updated
 			$publishedRecord = DataObject::get_by_id('SiteTree', $page->ID);
 			if ($publishedRecord) {
-				$JS_title = Convert::raw2js($publishedRecord->TreeTitle());
+				$JS_title = Convert::raw2js($publishedRecord->TreeTitle);
 				FormResponse::add("\$('sitetree').setNodeTitle($page->ID, '$JS_title');");
 			}
 			$page->destroy();
@@ -117,7 +117,7 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 			$liveRecord = Versioned::get_one_by_stage( 'SiteTree', 'Live', "\"SiteTree\".\"ID\"=$id");
 			if($liveRecord) {
 				$liveRecord->IsDeletedFromStage = true;
-				$title = Convert::raw2js($liveRecord->TreeTitle());
+				$title = Convert::raw2js($liveRecord->TreeTitle);
 				FormResponse::add("$('sitetree').setNodeTitle($id, '$title');");
 				FormResponse::add("$('Form_EditForm').reloadIfSetTo($id);");
 			} else {
@@ -162,7 +162,7 @@ class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 			$stageRecord = Versioned::get_one_by_stage( 'SiteTree', 'Stage', "\"SiteTree\".\"ID\"=$id");
 			if($stageRecord) {
 				$stageRecord->IsAddedToStage = true;
-				$title = Convert::raw2js($stageRecord->TreeTitle());
+				$title = Convert::raw2js($stageRecord->TreeTitle);
 				FormResponse::add("$('sitetree').setNodeTitle($id, '$title');");
 				FormResponse::add("$('Form_EditForm').reloadIfSetTo($id);");
 			} else {
