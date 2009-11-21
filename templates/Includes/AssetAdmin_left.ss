@@ -8,12 +8,12 @@
 
 				<ul>
 					<li>
-						<a href="#TreeActions-create">
+						<a href="#TreeActions-create" id="TreeActions-create-btn">
 							<% _t('CREATE','Create',PR_HIGH) %>
 						</a>
 					</li>
 					<li>
-						<a href="#TreeActions-delete">
+						<a href="#TreeActions-delete" id="TreeActions-delete-btn">
 							<% _t('DELETE','Delete',PR_HIGH) %>
 						</a>
 					</li>
