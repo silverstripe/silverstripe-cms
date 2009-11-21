@@ -313,6 +313,8 @@ JS;
 		// Include JavaScript to ensure HtmlEditorField works.
 		HtmlEditorField::include_js();
 		
+		if(!$id) $id = $this->currentPageID();
+
 		$record = ($id) ? $this->getRecord($id) : null;
 		if($record && !$record->canView()) return Security::permissionFailure($this);
 
