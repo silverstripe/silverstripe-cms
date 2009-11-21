@@ -208,9 +208,15 @@ TreeNodeAPI.prototype = {
 	},
 		
 	getPageFromServer : function() {
+		var self = this;
+		
+		this.addNodeClass('loading');
+		
 		jQuery('#Form_EditForm').concrete('ss').load(
 			jQuery(this).find('a').attr('href'),
 			function(response) {
+				self.removeNodeClass('loading');
+				
 				var pageID = jQuery(this).find(':input[name=ID]').val();
 				if(pageID) {
 					jQuery('#sitetree')[0].setCurrentByIdx(pageID);
