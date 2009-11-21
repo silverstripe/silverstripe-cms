@@ -539,3 +539,60 @@ ReorganiseAction.prototype = {
 		}
 	}
 }
+
+var _CURRENT_CONTEXT_MENU = null;
+
+/**
+ * Create a new context menu
+ * @param event The event object
+ * @param owner The DOM element that this context-menu was requested from
+ * @param menuItems A map of title -> method; context-menu operations to get called
+ */
+function createContextMenu(event, owner, menuItems) {
+	if(_CURRENT_CONTEXT_MENU) {
+		document.body.removeChild(_CURRENT_CONTEXT_MENU);
+		_CURRENT_CONTEXT_MENU = null;
+	}
+
+	var menu = document.createElement("ul");
+	menu.className = 'contextMenu';
+	menu.style.position = 'absolute';
+	menu.style.left = event.clientX + 'px';
+	menu.style.top = event.clientY + 'px';
+
+	var menuItemName, menuItemTag, menuATag;
+	for(menuItemName in menuItems) {
+		menuItemTag = document.createElement("li");
+
+		menuATag = document.createElement("a");
+		menuATag.href = "#";
+		menuATag.onclick = menuATag.oncontextmenu = contextmenu_onclick;
+		menuATag.innerHTML = menuItemName;
+		menuATag.handler = menuItems[menuItemName];
+		menuATag.owner = owner;
+
+		menuItemTag.appendChild(menuATag);
+		menu.appendChild(menuItemTag);
+	}
+
+	document.body.appendChild(menu);
+
+	document.body.onclick = contextmenu_close;
+
+	_CURRENT_CONTEXT_MENU = menu;
+
+	return menu;
+}
+
+function contextmenu_close() {
+	if(_CURRENT_CONTEXT_MENU) {
+		document.body.removeChild(_CURRENT_CONTEXT_MENU);
+		_CURRENT_CONTEXT_MENU = null;
+	}
+}
+
+function contextmenu_onclick() {
+	this.handler(this.owner);
+	contextmenu_close();
+	return false;
+}
