@@ -378,8 +378,10 @@ SiteTree.prototype = {
 			if(className) this.setNodeIcon(id, className);
 			
 		} else {
-			var node = this.getTreeNodeByIdx(origData.id);
-			if(node && node.parentTreeNode) node.parentTreeNode.removeTreeNode(node);
+			if(typeof eventData.origData != 'undefined') {
+				var node = this.getTreeNodeByIdx(eventData.origData.ID);
+				if(node && node.parentTreeNode) node.parentTreeNode.removeTreeNode(node);
+			}
 		}
 		
 	}
