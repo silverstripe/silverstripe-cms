@@ -54,7 +54,7 @@
 					resizerTip: '',
 					sliderTip: '',
 					onresize: function() {self._resizeChildren();},
-					onopen: function() {self._resizeChildren();},
+					onopen: function() {self._resizeChildren();}
 				},
 				north: {
 					slidable: false,
