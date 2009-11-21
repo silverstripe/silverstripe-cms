@@ -308,6 +308,7 @@
 				modal: true,
 				height: 300,
 				width: 500,
+				ghost: true,
 				resizeStop: function(e, ui) {
 					self._resize();
 					self._saveState();
