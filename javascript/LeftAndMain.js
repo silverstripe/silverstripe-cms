@@ -200,6 +200,19 @@
 			
 		},
 		
+		/**
+		 * Remove all the currently active TinyMCE editors.
+		 * Note: Everything that calls this externally has an inappropriate coupling to TinyMCE.
+		 */
+		cleanup: function() {
+			if((typeof tinymce != 'undefined') && tinymce.EditorManager) {
+				var id;
+				for(id in tinymce.EditorManager.editors) {
+					tinymce.EditorManager.editors[id].remove();
+				}
+				tinymce.EditorManager.editors = {};
+			}
+		},
 		
 		/**
 		 * @param {String} result Either HTML for straight insertion, or eval'ed JavaScript.
@@ -207,8 +220,7 @@
 		 *  but the old <form> tag itself stays intact.
 		 */
 		_loadResponse: function(response) {
-			// TinyMCE coupling
-			if(typeof tinymce_removeAll != 'undefined') tinymce_removeAll();
+			this.cleanup();
 			
 			var html = response;
 

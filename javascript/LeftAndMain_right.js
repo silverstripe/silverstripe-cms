@@ -38,7 +38,7 @@ CMSForm.prototype = {
 	closeIfSetTo: function(id) {
 		if(this.elements.ID && this.elements.ID.value == id) {
     		// Note: TinyMCE coupling
-			tinymce_removeAll();
+			jQuery('#Form_EditForm').concrete('ss').cleanup();
 			this.innerHTML = "<p>" + ss.i18n._t('LeftAndMain.PAGEWASDELETED') + "</p>";
 		}			
 	},
@@ -84,7 +84,7 @@ CMSForm.prototype = {
 		rightHTML = rightHTML.replace(/(<iframe[^>]*src=")([^"]+)("[^>]*>)/g, '$1' + jQuery('base').attr('href') + '$2$3');
 
 		// Note: TinyMCE coupling
-		tinymce_removeAll();
+		jQuery('#Form_EditForm').concrete('ss').cleanup();
 
 		// Prepare iframes for removal, otherwise we get loading bugs
 		var i, allIframes = this.getElementsByTagName('iframe');
@@ -421,20 +421,3 @@ StageLink.prototype = {
 StageLink.applyTo('#viewStageSite', '?stage=Stage', 'StageURLSegment');
 StageLink.applyTo('#viewLiveSite', '?stage=Live', 'LiveURLSegment');
 StageLink.applyTo('#viewArchivedSite', '', 'URLSegment');
-
-/**
- * Remove all the currently active TinyMCE editors.
- * Note: everything that calls this has an inappropriate coupling to TinyMCE.
- * Perhaps an observer pattern could be used, where TinyMCE listens to a onBeforeCMSPageLoad
- * event?
- */
-function tinymce_removeAll() {
-	if((typeof tinymce != 'undefined') && tinymce.EditorManager) {
-		var id;
-		for(id in tinymce.EditorManager.editors) {
-			tinymce.EditorManager.editors[id].remove();
-		}
-		tinymce.EditorManager.editors = {};
-	}
-		
-}

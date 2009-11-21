@@ -90,7 +90,7 @@ $(document).ready(function() {
 	    var $form = $(this);
 	
 		// @todo TinyMCE coupling
-		tinymce_removeAll();
+		jQuery('#Form_EditForm').concrete('ss').cleanup();
 
 		$('#ModelAdminPanel').fn('startHistory', $(this).attr('action'), $(this).formToArray());
 	    $('#ModelAdminPanel').load($(this).attr('action'), $(this).formToArray(), standardStatusHandler(function(result) {
@@ -204,7 +204,7 @@ $(document).ready(function() {
 		// Post the data to save
 		$.post(formAction, form.formToArray(), function(result){
 			// @todo TinyMCE coupling
-			tinymce_removeAll();
+			jQuery('#Form_EditForm').concrete('ss').cleanup();
 			
 			$('#right #ModelAdminPanel').html(result);
 
@@ -295,7 +295,7 @@ $(document).ready(function() {
          */
         loadForm: function(url, successCallback) {
 			// @todo TinyMCE coupling
-			tinymce_removeAll();
+			jQuery('#Form_EditForm').concrete('ss').cleanup();
 	
     	    $('#right #ModelAdminPanel').load(url, standardStatusHandler(function(result) {
 				if(typeof(successCallback) == 'function') successCallback.apply();

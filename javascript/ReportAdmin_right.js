@@ -71,7 +71,7 @@ Behaviour.register({
 			rightHTML = rightHTML.replace(/href *= *"#/g, 'href="' + window.location.href.replace(/#.*$/,'') + '#');
 
     		// Note: TinyMCE coupling
-			tinymce_removeAll();
+			jQuery('#Form_EditForm').concrete('ss').cleanup();
 
 			// Prepare iframes for removal, otherwise we get loading bugs
 			var i, allIframes = this.getElementsByTagName('iframe');
