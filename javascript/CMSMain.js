@@ -156,12 +156,12 @@
 	/**
 	 * @class Simple form with a page type dropdown
 	 * which creates a new page through #Form_EditForm and adds a new tree node.
-	 * @name ss.Form_AddPageOptionsForm
+	 * @name ss.Form_AddForm
 	 * @requires ss.i18n
 	 * @requires ss.Form_EditForm
 	 */
-	$('#Form_AddPageOptionsForm').concrete(function($) {
-	  return/** @lends ss.Form_AddPageOptionsForm */{
+	$('#Form_AddForm').concrete(function($) {
+	  return/** @lends ss.Form_AddForm */{
 			/**
 			 * @type DOMElement
 			 */

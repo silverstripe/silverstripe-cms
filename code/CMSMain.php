@@ -46,7 +46,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'unpublish',
 		'versions',
 		'EditForm',
-		'AddPageOptionsForm',
+		'AddForm',
 		'SiteTreeAsUL',
 		'getshowdeletedsubtree',
 		'getfilteredsubtree',
@@ -1015,7 +1015,7 @@ JS;
 		}
 	}
 
-	function AddPageOptionsForm() {
+	function AddForm() {
 		$pageTypes = array();
 
 		foreach( $this->PageTypes() as $arrayData ) {
@@ -1032,7 +1032,7 @@ JS;
 			new FormAction("addpage", _t('CMSMain.GO',"Go"))
 		);
 
-		$form = new Form($this, "AddPageOptionsForm", $fields, $actions);
+		$form = new Form($this, "AddForm", $fields, $actions);
 		
 		$form->addExtraClass('actionparams');
 		

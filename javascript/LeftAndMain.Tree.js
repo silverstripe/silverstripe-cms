@@ -11,7 +11,7 @@ SiteTreeHandlers.showRecord_url = 'admin/show/';
 SiteTreeHandlers.controller_url = 'admin';
 
 var _HANDLER_FORMS = {
-	addpage : 'Form_AddPageOptionsForm',
+	addpage : 'Form_AddForm',
 	batchactions : 'batchactionsforms',
 	search : 'search_options'
 };

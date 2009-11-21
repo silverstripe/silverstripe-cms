@@ -19,7 +19,7 @@
 				</ul>
 			
 				<div id="TreeActions-create">
-					$AddPageOptionsForm
+					$AddForm
 				</div>
 			
 				<div id="TreeActions-search">
