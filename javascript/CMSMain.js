@@ -122,9 +122,8 @@ var ss_MainLayout;
 	 * @class CMS-specific form behaviour
 	 * @name ss.EditForm
 	 */
-	$('#Form_EditForm').concrete('ss', function($){
+	$('.CMSMain #Form_EditForm').concrete('ss', function($){
 		return/** @lends ss.EditForm */{
-			/*
 			onmatch: function() {
 				// Alert the user on change of page-type - this might have implications
 				// on the available form fields etc.
@@ -134,9 +133,8 @@ var ss_MainLayout;
 					}
 				);
 
-				$._super();
+				this._super();
 			}
-			*/
 		};
 	});
 	
