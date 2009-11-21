@@ -139,34 +139,25 @@ var ss_MainLayout;
 	/**
 	 * @class ParentID field combination - mostly toggling between
 	 * the two radiobuttons and setting the hidden "ParentID" field
-	 * @name ss.EditForm.ParentType
+	 * @name ss.EditForm.parentTypeSelector
 	 */
-	$('#Form_EditForm_ParentType').concrete('ss', function($){
-		return/** @lends ss.EditForm.ParentType */{
+	$('#Form_EditForm .parentTypeSelector').concrete('ss', function($){
+		return/** @lends ss.EditForm.parentTypeSelector */{
 			onmatch : function() {
-				var parentTypeRootEl = $('#Form_EditForm_ParentType_root');
-				var parentTypeSubpageEl = $('#Form_EditForm_ParentType_subpage');
-				if(parentTypeRootEl) {
-					parentTypeRootEl.onclick = this._rootClick.bind(this);
-				}
-				if(parentTypeSubpageEl) {
-					parentTypeSubpageEl.onclick = this.showHide;
-				}
-				this.showHide();
+				var self = this;
+				
+				this.find(':input[name=ParentType]').bind('click', function(e) {self._toggleSelection(e);});
+				
+				this._toggleSelection();
 			},
-		
-			_rootClick : function() {
-				$('#Form_EditForm_ParentID').val(0);
-				this.showHide();
-			},
-		
-			showHide : function() {
-				var parentTypeRootEl = $('#Form_EditForm_ParentType_root');
-				if(parentTypeRootEl && parentTypeRootEl.checked) {
-					$('#ParentID').hide();
-				} else {
-					$('#ParentID').show();
-				}
+			
+			_toggleSelection: function(e) {
+				var selected = this.find(':input[name=ParentType]:checked').val();
+				// reset parent id if 'root' radiobutton is selected
+				if(selected == 'root') this.find(':input[name=ParentID]').val(0);
+				console.debug(selected);
+				// toggle tree dropdown based on selection
+				this.find('#ParentID').toggle(selected != 'root');
 			}
 		};
 	});

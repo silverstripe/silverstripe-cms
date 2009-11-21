@@ -67,6 +67,10 @@
 				border: none;
 				padding: 0;
 			}
+			
+			.right form .parentTypeSelector {
+				margin-left: 0;
+			}
 				
 	.right form .dropdown,
 	.right form .countrydropdown {
