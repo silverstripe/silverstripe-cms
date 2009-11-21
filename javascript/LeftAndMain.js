@@ -228,15 +228,91 @@
 	
 	/**
 	 * Link for editing the profile for a logged-in member
-	 * through a popup. Required "greybox" javascript library.
+	 * through a modal dialog.
 	 */
-	$('#EditMemberProfile').concrete('ss', function($){return{
-		onclick: function(e) {
-			GB_show('Edit Profile', this.attr('href'), 290, 500);
+	$('a#EditMemberProfile').concrete('ss', function($){return{
+		
+		onmatch: function() {
+			var self = this;
+			
+			this.bind('click', function(e) {return self._openPopup();});
+			
+			$('body').append(
+				'<div id="ss-ui-dialog">'
+				+ '<iframe id="ss-ui-dialog-iframe" '
+				+ 'marginWidth="0" marginHeight="0" frameBorder="0" scrolling="auto">'
+				+ '</iframe>'
+				+ '</div>'
+			);
+			
+			var cookieVal = (jQuery.cookie) ? JSON.parse(jQuery.cookie('ss-ui-dialog')) : false;
+			$("#ss-ui-dialog").dialog(jQuery.extend({
+				autoOpen: false,
+				bgiframe: true,
+				modal: true,
+				height: 300,
+				width: 500,
+				resizeStop: function(e, ui) {
+					self._resize();
+					self._saveState();
+				},
+				dragStop: function(e, ui) {
+					self._saveState();
+				},
+				// TODO i18n
+				title: 'Edit Profile'
+			}, cookieVal)).css('overflow', 'hidden');
+			
+			$('#ss-ui-dialog-iframe').bind('load', function(e) {self._resize();})
+		},
+		
+		_openPopup: function(e) {
+			$('#ss-ui-dialog-iframe').attr('src', this.attr('href'));
+			
+			$("#ss-ui-dialog").dialog('open');
+			
 			return false;
+		},
+		
+		_resize: function() {
+			var iframe = $('#ss-ui-dialog-iframe');
+			var container = $('#ss-ui-dialog');
+
+			iframe.attr('width', 
+				container.innerWidth() 
+				- parseFloat(container.css('paddingLeft'))
+				- parseFloat(container.css('paddingRight'))
+			);
+			iframe.attr('height', 
+				container.innerHeight()
+				- parseFloat(container.css('paddingTop')) 
+				- parseFloat(container.css('paddingBottom'))
+			);
+			
+			this._saveState();
+		},
+		
+		_saveState: function() {
+			var container = $('#ss-ui-dialog');
+			
+			// save size in cookie (optional)
+			if(jQuery.cookie && container.width() && container.height()) {
+				jQuery.cookie(
+					'ss-ui-dialog',
+					JSON.stringify({
+						width: parseInt(container.width()), 
+						height: parseInt(container.height()),
+						position: [
+							parseInt(container.offset().top),
+							parseInt(container.offset().left)
+						]
+					}),
+					{ expires: 30, path: '/'}
+				);
+			}
 		}
-	}});	
-	
+	}});
+		
 })(jQuery);
 
 

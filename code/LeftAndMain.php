@@ -179,6 +179,7 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/jquery_improvements.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.core.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.datepicker.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.dialog.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.draggable.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.droppable.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.accordion.js');
@@ -215,10 +216,6 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/scriptaculous/effects.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/scriptaculous/dragdrop.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/scriptaculous/controls.js');
-
-		Requirements::css(THIRDPARTY_DIR . '/greybox/greybox.css');
-		Requirements::javascript(THIRDPARTY_DIR . '/greybox/AmiJS.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/greybox/greybox.js');
 		
 		Requirements::javascript(THIRDPARTY_DIR . '/tree/tree.js');
 		Requirements::css(THIRDPARTY_DIR . '/tree/tree.css');
@@ -272,8 +269,6 @@ class LeftAndMain extends Controller {
 				'sapphire/thirdparty/scriptaculous/effects.js',
 				'sapphire/thirdparty/scriptaculous/dragdrop.js',
 				'sapphire/thirdparty/scriptaculous/controls.js',
-				'jsparty/greybox/AmiJS.js',
-				'jsparty/greybox/greybox.js',
 				'cms/javascript/LeftAndMain.js',
 				'cms/javascript/LeftAndMain_left.js',
 				'cms/javascript/LeftAndMain_right.js',
