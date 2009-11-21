@@ -70,21 +70,14 @@ class AssetAdmin extends LeftAndMain {
 	function init() {
 		parent::init();
 		
-		// needed for MemberTableField (Requirements not determined before Ajax-Call)
-		Requirements::css(SAPPHIRE_DIR . "/css/ComplexTableField.css");
 		// Create base folder if it doesnt exist already
 		if(!file_exists(ASSETS_PATH)) Filesystem::makeFolder(ASSETS_PATH);
 
 		Requirements::javascript(CMS_DIR . "/javascript/AssetAdmin.js");
-
 		Requirements::javascript(CMS_DIR . "/javascript/CMSMain_upload.js");
 		Requirements::javascript(CMS_DIR . "/javascript/Upload.js");
 		Requirements::javascript(CMS_DIR . "/thirdparty/swfupload/swfupload.js");
-		
-		Requirements::javascript(THIRDPARTY_DIR . "/greybox/AmiJS.js");
-		Requirements::javascript(THIRDPARTY_DIR . "/greybox/greybox.js");
-		Requirements::css(THIRDPARTY_DIR . "/greybox/greybox.css");
-		
+				
 		Requirements::css(CMS_DIR . "/css/AssetAdmin.css");
 
 		Requirements::customScript(<<<JS
