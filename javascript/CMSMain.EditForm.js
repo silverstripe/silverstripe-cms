@@ -1,20 +1,13 @@
 (function($) {
 	/**
-	 * @class CMS-specific form behaviour
-	 * @name ss.EditForm
+	 * Alert the user on change of page-type - this might have implications
+	 * on the available form fields etc.
+	 * @name ss.EditFormClassName
 	 */
-	$('.CMSMain #Form_EditForm').concrete('ss', function($){
-		return/** @lends ss.EditForm */{
-			onmatch: function() {
-				// Alert the user on change of page-type - this might have implications
-				// on the available form fields etc.
-				this.find(':input[name=ClassName]').bind('change',
-					function() {
-						alert('The page type will be updated after the page is saved');
-					}
-				);
-
-				this._super();
+	$('#Form_EditForm :input[name=ClassName]').concrete('ss', function($){
+		return/** @lends ss.EditFormClassName */{
+			onchange: function() {
+				alert(ss.i18n._t('CMSMAIN.ALERTCLASSNAME'));
 			}
 		};
 	});
@@ -28,7 +21,7 @@
 
 			FilterRegex: /[^A-Za-z0-9-]+/,
 
-			ValidationMessage: 'URLs can only be made up of letters, digits and hyphens.',
+			ValidationMessage: ss.i18n._t('CMSMAIN.URLSEGMENTVALIDATION'),
 
 			MaxLength: 50,
 		
