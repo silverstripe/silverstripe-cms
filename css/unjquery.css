@@ -139,7 +139,7 @@
 
 h2#Form_EditForm_WelcomeHeader,
 p#WelcomeMessage {	
-	margin: 1em 0 0 1em;
+	margin: 1em 0 0 25px;
 }
 
 .ui-layout-resizer {
