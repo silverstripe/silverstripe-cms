@@ -91,7 +91,7 @@ var ss_MainLayout;
 					togglerLength_open: 0
 				},
 				west: {
-					size: 250,
+					size: 225,
 					fxName: "none"
 				},
 				east: {
