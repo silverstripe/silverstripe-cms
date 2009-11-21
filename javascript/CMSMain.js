@@ -345,7 +345,7 @@
 				// integrate with sitetree selection changes
 				jQuery('#sitetree').bind('selectionchanged', function(e, data) {
 					self.find(':input[name=ID]').val(data.node.getIdx());
-					self.trigger('submit');
+					if(self.is(':visible')) self.trigger('submit');
 				});
 				
 				// refresh when field is selected
