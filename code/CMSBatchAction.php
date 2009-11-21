@@ -43,7 +43,7 @@ abstract class CMSBatchAction extends Object {
 	 *     }
 	 *  }
 	 */
-	public function batchaction(DataObjectSet $pages, $helperMethod, $successMessage) {
+	public function batchaction(DataObjectSet $pages, $helperMethod, $successMessage, $arguments = array()) {
 		$failures = 0;
 		$status = array('modified' => array(), 'error' => array());
 		
@@ -67,7 +67,7 @@ abstract class CMSBatchAction extends Object {
 
 		Controller::curr()->getResponse()->setStatusCode(
 			200, 
-			sprintf($successMessage, $pages->Count())
+			sprintf($successMessage, $pages->Count(), count($status['error']))
 		);
 
 		return Convert::raw2json($status);
