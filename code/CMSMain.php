@@ -1035,7 +1035,11 @@ JS;
 			new FormAction("addpage", _t('CMSMain.GO',"Go"))
 		);
 
-		return new Form($this, "AddPageOptionsForm", $fields, $actions);
+		$form = new Form($this, "AddPageOptionsForm", $fields, $actions);
+		
+		$form->addExtraClass('actionparams');
+		
+		return $form;
 	}
 	
 	/**
