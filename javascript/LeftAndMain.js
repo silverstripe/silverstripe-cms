@@ -1,4 +1,6 @@
 (function($) {
+	
+	$.concrete.warningLevel = $.concrete.WARN_LEVEL_BESTPRACTISE;
 
 	/**
 	 * Available Custom Events:
