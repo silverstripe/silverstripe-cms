@@ -485,3 +485,17 @@ div.filterBox {
 .autocompleteoptions {
 	background-color: white;
 }
+
+/**
+ * Tabs
+ */
+.right form .ss-tabset {
+	width: 100%;
+	/* Need this to stop tabs from disappearing sometimes */
+	position: relative;
+}
+
+	.right form .ss-tabset .tab {
+		position: relative;
+		overflow-x: hidden;
+	}
