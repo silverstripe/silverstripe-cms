@@ -83,6 +83,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.js');
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain_left.js');
 		
+		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.BatchActions.js');
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.Translatable.js');
 		
 		Requirements::css(CMS_DIR . '/css/CMSMain.css');
@@ -137,11 +138,16 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 *
 	 * @return string
 	 */
-	public function getfilteredsubtree($data, $form) {
+	public function getfilteredsubtree($request) {
 		$params = $form->getData();
 		
 		// Get the tree
-		$tree = $this->getSiteTreeFor($this->stat('tree_class'), $_REQUEST['ID'], null, array(new CMSMainMarkingFilter($params), 'mark'));
+		$tree = $this->getSiteTreeFor(
+			$this->stat('tree_class'), 
+			$request->requestVar('ID'), 
+			null, 
+			array(new CMSMainMarkingFilter($params), 'mark')
+		);
 
 		// Trim off the outer tag
 		$tree = ereg_replace('^[ \t\r\n]*<ul[^>]*>','', $tree);
@@ -1093,6 +1099,45 @@ JS;
 				)
 			)
 		);
+		$form->unsetValidator();
+		
+		return $form;
+	}
+	
+	/**
+	 * @return Form
+	 */
+	function BatchActionsForm() {
+		$actions = $this->batchactions()->batchActionList();
+		$actionsMap = array();
+		foreach($actions as $action) $actionsMap[$action->Link] = $action->Title;
+		
+		$form = new Form(
+			$this,
+			'BatchActionsForm',
+			new FieldSet(
+				new LiteralField(
+					'Intro',
+					sprintf('<p><small>%s</small></p>',
+						_t(
+							'CMSMain_left.ss.SELECTPAGESACTIONS',
+							'Select the pages that you want to change &amp; then click an action:'
+						)
+					)
+				),
+				new HiddenField('csvIDs'),
+				new DropdownField(
+					'Action',
+					false,
+					$actionsMap
+				)
+			),
+			new FieldSet(
+				// TODO i18n
+				new FormAction('submit', "Go")
+			)
+		);
+		$form->addExtraClass('actionparams');
 		$form->unsetValidator();
 		
 		return $form;

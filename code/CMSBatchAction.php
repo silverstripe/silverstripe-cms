@@ -1,7 +1,9 @@
 <?php
 
 /**
- * A class representing back actions 
+ * A class representing back actions.
+ * See cms/javascript/CMSMain.BatchActions.js on how to add custom javascript
+ * functionality.
  * 
  * <code>
  * CMSMain::register_batch_action('publishitems', new CMSBatchAction('doPublish', 
@@ -18,12 +20,6 @@ abstract class CMSBatchAction extends Object {
 	abstract function getActionTitle();
 	
 	/**
-	 * Get text to be shown while the action is being processed, of the form
-	 * "publishing pages".
-	 */
-	abstract function getDoingText();
-	
-	/**
 	 * Run this action for the given set of pages.
 	 * Return a set of status-updated JavaScript to return to the CMS.
 	 */
@@ -36,33 +32,45 @@ abstract class CMSBatchAction extends Object {
 	 * @param $pages The DataObjectSet of SiteTree objects to perform this batch action
 	 * on.
 	 * @param $helperMethod The method to call on each of those objects.
-	 * @para
+	 * @return JSON encoded map in the following format:
+	 *  {
+	 *     'modified': {
+	 *       3: {'TreeTitle': 'Page3'},
+	 *       5: {'TreeTitle': 'Page5'}
+	 *     },
+	 *     'deleted': {
+	 *       // all deleted pages
+	 *     }
+	 *  }
 	 */
-	public function batchaction(DataObjectSet $pages, $helperMethod, $successMessage, $arguments = array()) {
+	public function batchaction(DataObjectSet $pages, $helperMethod, $successMessage) {
 		$failures = 0;
+		$status = array('modified' => array(), 'error' => array());
 		
 		foreach($pages as $page) {
 			
 			// Perform the action
 			if (!call_user_func_array(array($page, $helperMethod), $arguments)) {
-				$failures++;
+				$status['error'][$page->ID] = '';
 			}
 			
 			// Now make sure the tree title is appropriately updated
 			$publishedRecord = DataObject::get_by_id('SiteTree', $page->ID);
 			if ($publishedRecord) {
-				$JS_title = Convert::raw2js($publishedRecord->TreeTitle);
-				FormResponse::add("\$('sitetree').setNodeTitle($page->ID, '$JS_title');");
+				$status['modified'][$publishedRecord->ID] = array(
+					'TreeTitle' => $publishedRecord->TreeTitle,
+				);
 			}
 			$page->destroy();
 			unset($page);
 		}
 
-		$message = sprintf($successMessage, $pages->Count()-$failures, $failures);
+		Controller::curr()->getResponse()->setStatusCode(
+			200, 
+			sprintf($successMessage, $pages->Count())
+		);
 
-		FormResponse::add('statusMessage("'.$message.'","good");');
-
-		return FormResponse::respond();
+		return Convert::raw2json($status);
 	}
 	
 	// if your batchaction has parameters, return a fieldset here
@@ -81,13 +89,28 @@ class CMSBatchAction_Publish extends CMSBatchAction {
 	function getActionTitle() {
 		return _t('CMSBatchActions.PUBLISH_PAGES', 'Publish');
 	}
-	function getDoingText() {
-		return _t('CMSBatchActions.PUBLISHING_PAGES', 'Publishing pages');
-	}
 
 	function run(DataObjectSet $pages) {
 		return $this->batchaction($pages, 'doPublish',
 			_t('CMSBatchActions.PUBLISHED_PAGES', 'Published %d pages, %d failures')
+		);
+	}
+}
+
+/**
+ * Un-publish items batch action.
+ * 
+ * @package cms
+ * @subpackage batchaction
+ */
+class CMSBatchAction_Unpublish extends CMSBatchAction {
+	function getActionTitle() {
+		return _t('CMSBatchActions.UNPUBLISH_PAGES', 'Un-publish');
+	}
+
+	function run(DataObjectSet $pages) {
+		return $this->batchaction($pages, 'doUnpublish',
+			_t('CMSBatchActions.UNPUBLISHED_PAGES', 'Un-published %d pages')
 		);
 	}
 }
@@ -102,36 +125,34 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 	function getActionTitle() {
 		return _t('CMSBatchActions.DELETE_DRAFT_PAGES', 'Delete from draft');
 	}
-	function getDoingText() {
-		return _t('CMSBatchActions.DELETING_DRAFT_PAGES', 'Deleting selected pages from draft');
-	}
 
 	function run(DataObjectSet $pages) {
+		$status = array(
+			'modified'=>array(),
+			'deleted'=>array()
+		);
+		
 		foreach($pages as $page) {
 			$id = $page->ID;
 			
 			// Perform the action
 			if($page->canDelete()) $page->delete();
 
-			// check to see if the record exists on the live site, if it doesn't remove the tree node
+			// check to see if the record exists on the live site, 
+			// if it doesn't remove the tree node
 			$liveRecord = Versioned::get_one_by_stage( 'SiteTree', 'Live', "\"SiteTree\".\"ID\"=$id");
 			if($liveRecord) {
 				$liveRecord->IsDeletedFromStage = true;
-				$title = Convert::raw2js($liveRecord->TreeTitle);
-				FormResponse::add("$('sitetree').setNodeTitle($id, '$title');");
-				FormResponse::add("$('Form_EditForm').reloadIfSetTo($id);");
+				$status['modified'][$liveRecord->ID] = array(
+					'TreeTitle' => $liveRecord->TreeTitle,
+				);
 			} else {
-				FormResponse::add("var node = $('sitetree').getTreeNodeByIdx('$id');");
-				FormResponse::add("if(node && node.parentTreeNode)	node.parentTreeNode.removeTreeNode(node);");
-				FormResponse::add("$('Form_EditForm').reloadIfSetTo($id);");
+				$status['deleted'][$id] = array();
 			}
 
 		}
 
-		$message = sprintf(_t('CMSBatchActions.DELETED_DRAFT_PAGES', 'Deleted %d pages from the draft site'), $pages->Count());
-		FormResponse::add('statusMessage("'.$message.'","good");');
-
-		return FormResponse::respond();
+		return Convert::raw2json($status);
 	}
 }
 
@@ -145,38 +166,33 @@ class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 	function getActionTitle() {
 		return _t('CMSBatchActions.DELETE_PAGES', 'Delete from published site');
 	}
-	function getDoingText() {
-		return _t('CMSBatchActions.DELETING_PAGES', 'Deleting selected pages from the published site');
-	}
 
 	function run(DataObjectSet $pages) {
-		$ids = $pages->column('ID');
-		$this->batchaction($pages, 'doUnpublish',
-			_t('CMSBatchActions.DELETED_PAGES', 'Deleted %d pages from the published site, %d failures')
+		$status = array(
+			'modified'=>array(),
+			'deleted'=>array()
 		);
 		
-		foreach($ids as $pageID) {
-			$id = $pageID;
+		foreach($pages as $page) {
+			$id = $page->ID;
+			
+			// Perform the action
+			if($page->canDelete()) $page->doDeleteFromLive();
 
 			// check to see if the record exists on the live site, if it doesn't remove the tree node
 			$stageRecord = Versioned::get_one_by_stage( 'SiteTree', 'Stage', "\"SiteTree\".\"ID\"=$id");
 			if($stageRecord) {
 				$stageRecord->IsAddedToStage = true;
-				$title = Convert::raw2js($stageRecord->TreeTitle);
-				FormResponse::add("$('sitetree').setNodeTitle($id, '$title');");
-				FormResponse::add("$('Form_EditForm').reloadIfSetTo($id);");
+				$status['modified'][$stageRecord->ID] = array(
+					'TreeTitle' => $stageRecord->TreeTitle,
+				);
 			} else {
-				FormResponse::add("var node = $('sitetree').getTreeNodeByIdx('$id');");
-				FormResponse::add("if(node && node.parentTreeNode)	node.parentTreeNode.removeTreeNode(node);");
-				FormResponse::add("$('Form_EditForm').reloadIfSetTo($id);");
+				$status['deleted'][$stageRecord->ID] = array();
 			}
 
 		}
 
-		$message = sprintf(_t('CMSBatchActions.DELETED_PAGES', 'Deleted %d pages from the published site'), $pages->Count());
-		FormResponse::add('statusMessage("'.$message.'","good");');
-
-		return FormResponse::respond();
+		return Convert::raw2json($status);
 	}
 }
 

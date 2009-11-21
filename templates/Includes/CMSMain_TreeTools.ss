@@ -27,20 +27,7 @@
 				</div>
 
 				<div id="TreeActions-batchactions">
-					<form class="actionparams" style="border:0" id="batchactions_options" action="">
-						<p><% _t('SELECTPAGESACTIONS','Select the pages that you want to change &amp; then click an action:') %></p>
-
-						<input type="hidden" name="csvIDs" />
-
-						<div>
-							<select id="choose_batch_action">
-								<% control BatchActionList %>
-								<option value="$Link" class="{doingText:'$DoingText'}">$Title</option>
-								<% end_control %>
-							</select>
-							<input id="batchactions_go" type="submit" class="action" value="Go" />
-						</div>
-					</form>
+					$BatchActionsForm
 				</div>
 			
 			</div>
