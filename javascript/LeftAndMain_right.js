@@ -409,7 +409,7 @@ StageLink.prototype = {
 		}
 	},
 	onclick : function() {
-		var w = window.open(this.href, windowName('site'));
+		var w = window.open(this.href);
 		w.focus();
 		return false;
 	},
@@ -421,16 +421,6 @@ StageLink.prototype = {
 StageLink.applyTo('#viewStageSite', '?stage=Stage', 'StageURLSegment');
 StageLink.applyTo('#viewLiveSite', '?stage=Live', 'LiveURLSegment');
 StageLink.applyTo('#viewArchivedSite', '', 'URLSegment');
-
-window.name = windowName('cms');
-
-/**
- * Return a unique window name that contains the URL
- */
-function windowName(suffix) {
-	var base = document.getElementsByTagName('base')[0].href.replace('~','').replace('http://','').replace(/\//g,'_').replace(/\./g,'_');
-	return base + suffix;
-}
 
 /**
  * Remove all the currently active TinyMCE editors.
