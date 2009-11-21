@@ -1,3 +1,9 @@
+/**
+ * @type jquery.layout Global variable so layout state management
+ * can pick it up.
+ */
+var ss_MainLayout;
+
 (function($) {
 	
 	// setup jquery.concrete
