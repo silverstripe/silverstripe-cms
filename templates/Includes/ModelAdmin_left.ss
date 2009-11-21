@@ -1,6 +1,3 @@
-<% require javascript(jsparty/tabstrip/tabstrip.js) %>
-<% require css(jsparty/tabstrip/tabstrip.css) %>
-
 <div id="LeftPane">
 	<div id="SearchForm_holder" class="leftbottom">		
 		<% if SearchClassSelector = tabs %>

@@ -97,9 +97,9 @@ class AssetAdmin extends LeftAndMain {
 		Requirements::customScript(<<<JS
 			_TREE_ICONS = {};
 			_TREE_ICONS['Folder'] = {
-					fileIcon: 'jsparty/tree/images/page-closedfolder.gif',
-					openFolderIcon: 'jsparty/tree/images/page-openfolder.gif',
-					closedFolderIcon: 'jsparty/tree/images/page-closedfolder.gif'
+					fileIcon: 'sapphire/javascript/tree/images/page-closedfolder.gif',
+					openFolderIcon: 'sapphire/javascript/tree/images/page-openfolder.gif',
+					closedFolderIcon: 'sapphire/javascript/tree/images/page-closedfolder.gif'
 			};
 JS
 		);

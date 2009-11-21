@@ -249,11 +249,10 @@ class LeftAndMain extends Controller {
 				'sapphire/javascript/prototype_improvements.js',
 				'sapphire/thirdparty/jquery/jquery.js',
 				'sapphire/thirdparty/jquery-livequery/jquery.livequery.js',
-				'jsparty/jquery/plugins/effen/jquery.fn.js',
 				'sapphire/javascript/jquery-ondemand/jquery.ondemand.js',
 				'sapphire/javascript/jquery_improvements.js',
-				'sapphire/jsparty/firebug-lite/firebug.js',
-				'sapphire/jsparty/firebug-lite/firebugx.js',
+				'sapphire/thirdparty/firebug-lite/firebug.js',
+				'sapphire/thirdparty/firebug-lite/firebugx.js',
 				'sapphire/javascript/i18n.js',
 			)
 		);
@@ -267,7 +266,7 @@ class LeftAndMain extends Controller {
 				'cms/javascript/LeftAndMain.js',
 				'cms/javascript/LeftAndMain_left.js',
 				'cms/javascript/LeftAndMain_right.js',
-				'jsparty/tree/tree.js',
+				'sapphire/javascript/tree/tree.js',
 				'cms/javascript/TinyMCEImageEnhancement.js',
 				'cms/thirdparty/swfupload/swfupload.js',
 				'cms/javascript/Upload.js',
@@ -899,7 +898,6 @@ JS;
 	 */
 	public function CMSVersion() {
 		$sapphireVersionFile = file_get_contents('../sapphire/silverstripe_version');
-		$jspartyVersionFile = file_get_contents('../jsparty/silverstripe_version');
 		$cmsVersionFile = file_get_contents('../cms/silverstripe_version');
 
 		if(strstr($sapphireVersionFile, "/sapphire/trunk")) {
@@ -909,13 +907,6 @@ JS;
 			$sapphireVersion = ($matches) ? $matches[1] : null;
 		}
 
-		if(strstr($jspartyVersionFile, "/jsparty/trunk")) {
-			$jspartyVersion = "trunk";
-		} else {
-			preg_match("/jsparty\/(?:(?:branches)|(?:tags))(?:\/rc)?\/([A-Za-z0-9._-]+)\/silverstripe_version/", $jspartyVersionFile, $matches);
-			$jspartyVersion = ($matches) ? $matches[1] : null;
-		}
-
 		if(strstr($cmsVersionFile, "/cms/trunk")) {
 			$cmsVersion = "trunk";
 		} else {
@@ -923,11 +914,7 @@ JS;
 			$cmsVersion = ($matches) ? $matches[1] : null;
 		}
 
-		if($sapphireVersion == $jspartyVersion && $jspartyVersion == $cmsVersion) {
-			return $sapphireVersion;
-		}	else {
-			return "cms: $cmsVersion, sapphire: $sapphireVersion, jsparty: $jspartyVersion";
-		}
+		return "cms: $cmsVersion, sapphire: $sapphireVersion";
 	}
 
 	/**
