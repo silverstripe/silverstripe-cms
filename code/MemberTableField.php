@@ -99,6 +99,7 @@ class MemberTableField extends ComplexTableField {
 	function FieldHolder() {
 		$ret = parent::FieldHolder();
 		
+		Requirements::javascript(SAPPHIRE_DIR . "/thirdparty/scriptaculous/controls.js");
 		Requirements::javascript(CMS_DIR . '/javascript/MemberTableField.js');
 		Requirements::javascript(CMS_DIR . "/javascript/MemberTableField_popup.js");
 		

@@ -17,11 +17,11 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	static $subitem_class = 'Member';
 	
 	static $allowed_actions = array(
-		'addgroup',
 		'addmember',
 		'autocomplete',
 		'removememberfromgroup',
 		'savemember',
+		'AddForm',
 		'AddRecordForm',
 		'MemberForm',
 		'EditForm',
@@ -31,53 +31,62 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	public function init() {
 		parent::init();
 
-		Requirements::javascript(SAPPHIRE_DIR . "/thirdparty/scriptaculous/controls.js");
-
-		// needed for MemberTableField (Requirements not determined before Ajax-Call)
-		Requirements::add_i18n_javascript(SAPPHIRE_DIR . '/javascript/lang');
-		Requirements::javascript(SAPPHIRE_DIR . "/javascript/TableListField.js");
-		Requirements::javascript(SAPPHIRE_DIR . "/javascript/TableField.js");
-		Requirements::javascript(SAPPHIRE_DIR . "/javascript/ComplexTableField.js");
-		Requirements::javascript(CMS_DIR . "/javascript/MemberTableField.js");
-		Requirements::css(THIRDPARTY_DIR . "/greybox/greybox.css");
-		Requirements::css(SAPPHIRE_DIR . "/css/ComplexTableField.css");
-
-		Requirements::javascript(CMS_DIR . '/javascript/SecurityAdmin_left.js');
-		Requirements::javascript(CMS_DIR . '/javascript/SecurityAdmin_right.js');
-		
-		Requirements::javascript(THIRDPARTY_DIR . "/greybox/AmiJS.js");
-		Requirements::javascript(THIRDPARTY_DIR . "/greybox/greybox.js");
+		Requirements::javascript(CMS_DIR . '/javascript/SecurityAdmin.js');
+		Requirements::javascript(CMS_DIR . '/javascript/SecurityAdmin.Tree.js');
+				
+		CMSBatchActionHandler::register('delete', 'SecurityAdmin_DeleteBatchAction', 'Group');
 	}
-
-	public function getEditForm($id = null) {
-		$record = null;
-		
-		if($id && $id != 'root') {
-			$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-		}
-		
-		if($record && !$record->canView()) return Security::permissionFailure($this);
-		
-		if($record) {
-			$fields = $record->getCMSFields();
-		
-			$actions = new FieldSet(
-				new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member')),
-				new FormAction('save',_t('SecurityAdmin.SAVE','Save'))
-			);
-
-			$form = new Form($this, "EditForm", $fields, $actions);
-			$form->loadDataFrom($record);
-		
-			if(!$record->canEdit()) {
-				$readonlyFields = $form->Fields()->makeReadonly();
-				$form->setFields($readonlyFields);
-			}
-		} else {
-			$form = $this->EmptyForm();
-		}
+	
+	function getEditForm($id = null) {
+		$form = parent::getEditForm($id);
+		$form->Actions()->insertBefore(
+			new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member')),
+			'action_save'
+		);
 		
 		return $form;
+	}
+	
+	/**
+	 * @return Form
+	 */
+	function AddForm() {
+		$class = $this->stat('tree_class');
+		
+		$typeMap = array('Folder' => singleton($class)->i18n_singular_name());
+		$typeField = new DropdownField('Type', false, $typeMap, 'Folder');
+		$form = new Form(
+			$this,
+			'AddForm',
+			new FieldSet(
+				new HiddenField('ParentID'),
+				$typeField->performReadonlyTransformation()
+			),
+			new FieldSet(
+				new FormAction('doAdd', _t('AssetAdmin_left.ss.GO','Go'))
+			)
+		);
+		$form->setValidator(null);
+		$form->addExtraClass('actionparams');
+		
+		return $form;
+	}
+	
+	/**
+	 * Add a new group and return its details suitable for ajax.
+	 */
+	public function doAdd($data, $form) {
+		$parentID = (isset($data['ParentID']) && is_numeric($data['ParentID'])) ? (int)$data['ParentID'] : 0;
+		
+		if(!singleton($this->stat('tree_class'))->canCreate()) return Security::permissionFailure($this);
+		
+		$record = Object::create($this->stat('tree_class'));
+		$record->Title = _t('SecurityAdmin.NEWGROUP',"New Group");
+		$record->ParentID = $parentID;
+		$record->write();
+
+		$form = $this->getEditForm($record->ID);
+		return $form->formHtmlContent();
 	}
 
 	public function AddRecordForm() {
@@ -269,18 +278,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		return $siteTree;
 	}
 
-	public function addgroup() {
-		if(!singleton($this->stat('tree_class'))->canCreate()) return Security::permissionFailure($this);
-		
-		$newGroup = Object::create($this->stat('tree_class'));
-		$newGroup->Title = _t('SecurityAdmin.NEWGROUP',"New Group");
-		$newGroup->Code = "new-group";
-		$newGroup->ParentID = (is_numeric($_REQUEST['ParentID'])) ? (int)$_REQUEST['ParentID'] : 0;
-		$newGroup->write();
-		
-		return $this->returnItemToUser($newGroup);
-	}
-
 	public function EditedMember() {
 		if(Session::get('currentMember')) return DataObject::get_by_id('Member', (int) Session::get('currentMember'));
 	}
@@ -315,4 +312,35 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	}
 }
 
+/**
+ * Delete multiple {@link Group} records. Usually used through the {@link SecurityAdmin} interface.
+ * 
+ * @package cms
+ * @subpackage batchactions
+ */
+class SecurityAdmin_DeleteBatchAction extends CMSBatchAction {
+	function getActionTitle() {
+		return _t('AssetAdmin_DeleteBatchAction.TITLE', 'Delete groups');
+	}
+
+	function run(DataObjectSet $records) {
+		$status = array(
+			'modified'=>array(),
+			'deleted'=>array()
+		);
+		
+		foreach($records as $record) {
+			// TODO Provide better feedback if permission was denied
+			if(!$record->canDelete()) continue;
+			
+			$id = $record->ID;
+			$record->delete();
+			$status['deleted'][$id] = array();
+			$record->destroy();
+			unset($record);
+		}
+
+		return Convert::raw2json($status);
+	}
+}
 ?>
