@@ -31,8 +31,6 @@ class LeftAndMain extends Controller {
 	static $url_priority = 50;
 
 	static $tree_class = null;
-	
-	static $ForceReload;
 
 	static $allowed_actions = array(
 		'index',
@@ -660,13 +658,6 @@ if (singleSingleOnlyOfThisPageType.length == 0) {
 	}
 }
 JS;
-	}
-
-	/**
-	 * Sets a static variable on this class which means the panel will be reloaded.
-	 */
-	static function ForceReload(){
-		self::$ForceReload = true;
 	}
 
 	/**
