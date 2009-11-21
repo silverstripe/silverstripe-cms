@@ -5,59 +5,58 @@
 var ss_MainLayout;
 
 (function($) {
+	$.concrete('ss', function($){
 	
-	// setup jquery.concrete
-	$.concrete.warningLevel = $.concrete.WARN_LEVEL_BESTPRACTISE;
+		// setup jquery.concrete
+		$.concrete.warningLevel = $.concrete.WARN_LEVEL_BESTPRACTISE;
 	
-	// global ajax error handlers
-	$.ajaxSetup({
-		error: function(xmlhttp, status, error) {
-			var msg = (xmlhttp.getResponseHeader('X-Status')) ? xmlhttp.getResponseHeader('X-Status') : xmlhttp.statusText;
-			statusMessage(msg, 'bad');
-		}
-	});
-
-	/**
-	 * Available Custom Events:
-	 * <ul>
-	 * <li>ajaxsubmit</li>
-	 * <li>validate</li>
-	 * <li>loadnewpage</li>
-	 * 
-	 * @class Main LeftAndMain interface with some control
-	 * panel and an edit form.
-	 * @name ss.LeftAndMain
-	 */
-	$('.LeftAndMain').concrete('ss', function($){
-		return/** @lends ss.EditMemberProfile */ {
-			
+		// global ajax error handlers
+		$.ajaxSetup({
+			error: function(xmlhttp, status, error) {
+				var msg = (xmlhttp.getResponseHeader('X-Status')) ? xmlhttp.getResponseHeader('X-Status') : xmlhttp.statusText;
+				statusMessage(msg, 'bad');
+			}
+		});
+		
+			/**
+		 * Available Custom Events:
+		 * <ul>
+		 * <li>ajaxsubmit</li>
+		 * <li>validate</li>
+		 * <li>loadnewpage</li>
+		 * 
+		 * @class Main LeftAndMain interface with some control
+		 * panel and an edit form.
+		 * @name ss.LeftAndMain
+		 */
+		$('.LeftAndMain').concrete(/** @lends ss.EditMemberProfile */{
 			/**
 			 * Reference to jQuery.layout element
 			 * @type Object
 			 */
 			MainLayout: null,
-			
+
 			/**
 			 * @type Number Interval in which /Security/ping will be checked for a valid login session.
 			 */
 			PingIntervalSeconds: 5*60,
-		
+
 			onmatch: function() {
 				var self = this;
-				
+
 				// Remove loading screen
 				$('.ss-loading-screen').hide();
 				$('body').removeClass('stillLoading');
-				
+
 				// Layout
 				ss_MainLayout = this._setupLayout();
 				this.setMainLayout(ss_MainLayout);
 				layoutState.options.keys = "west.size,west.isClosed";
 				$(window).unload(function(){ layoutState.save('ss_MainLayout');});
-			
+				
 				this._setupPinging();
 				this._resizeChildren();
-			
+
 				// HACK Delay resizing to give jquery-ui tabs a change their dimensions
 				// through dynamically added css classes
 				$(window).resize(function () {
@@ -67,10 +66,10 @@ var ss_MainLayout;
 						self._resizeChildren();
 					}, 200);
 				});
-			
+
 				// If tab has no nested tabs, set overflow to auto
 				$(this).find('.tab').not(':has(.tab)').css('overflow', 'auto');
-						
+
 				// @todo Doesn't resize properly if the response doesn't contain a tabset (see above)
 				$('#Form_EditForm').bind('loadnewpage', function() {
 					// HACK Delay resizing to give jquery-ui tabs a change their dimensions
@@ -81,10 +80,10 @@ var ss_MainLayout;
 						self._resizeChildren();
 					}, 200);
 				});
-				
+
 				this._super();
 			},
-			
+
 			/**
 			 * Initialize jQuery layout manager with the following panes:
 			 * - east: Tree, Page Version History, Site Reports
@@ -95,10 +94,10 @@ var ss_MainLayout;
 			 */
 			_setupLayout: function() {
 				var self = this;
-				
+
 				var widthEast = this.find('.ui-layout-east').width();
 				var widthWest = this.find('.ui-layout-west').width();
-			
+
 				// layout containing the tree, CMS menu, the main form etc.
 				var savedLayoutSettings = layoutState.load('ss_MainLayout');
 
@@ -139,14 +138,14 @@ var ss_MainLayout;
 					center: {}
 				}, savedLayoutSettings);
 				var layout = $('body').layout(layoutSettings);
-			
+
 				// Adjust tree accordion etc. in left panel to work correctly
 				// with jQuery.layout (see http://layout.jquery-dev.net/tips.html#Widget_Accordion)
 				this.find("#treepanes").accordion({
 					fillSpace: true,
 					animated: false
 				});
-			
+
 				return layout;
 			},
 
@@ -166,7 +165,7 @@ var ss_MainLayout;
 						}
 					}
 				};
-			
+
 				// setup pinging for login expiry
 				setInterval(function() {
 					jQuery.ajax({
@@ -174,12 +173,13 @@ var ss_MainLayout;
 						global: false,
 						complete: onSessionLost
 					});
-				}, this.PingIntervalSeconds() * 1000);
+				}, this.getPingIntervalSeconds() * 1000);
 			},
-		
+
 			/**
 			 * Resize elements in center panel
-			 * to fit the boundary box provided by the layout manager
+			 * to fit the boundary box provided by the layout manager.
+			 * TODO Replace with automated less ugly parent/sibling traversal
 			 */
 			_resizeChildren: function() {
 				$("#treepanes", this).accordion("resize");
@@ -196,18 +196,16 @@ var ss_MainLayout;
 				$('#Form_EditForm fieldset > .ss-tabset > .tab > .ss-tabset', this).fitHeightToParent();
 				$('#Form_EditForm fieldset > .ss-tabset > .tab > .ss-tabset > .tab', this).fitHeightToParent();
 			}
-		};
-	});
-	
-	/**
-	 * @class Make all buttons "hoverable" with jQuery theming.
-	 * Also sets the clicked button on a form submission, making it available through
-	 * a new 'clickedButton' property on the form DOM element.
-	 * 
-	 * @name ss.LeftAndMain.Buttons
-	 */
-	$('.LeftAndMain :submit, .LeftAndMain button, .LeftAndMain :reset').concrete('ss', function($){
-		return/** @lends ss.LeftAndMain.Buttons */{
+		});
+
+		/**
+		 * @class Make all buttons "hoverable" with jQuery theming.
+		 * Also sets the clicked button on a form submission, making it available through
+		 * a new 'clickedButton' property on the form DOM element.
+		 * 
+		 * @name ss.LeftAndMain.Buttons
+		 */
+		$('.LeftAndMain :submit, .LeftAndMain button, .LeftAndMain :reset').concrete(/** @lends ss.LeftAndMain.Buttons */{
 			onmatch: function() {
 				this.addClass(
 					'ui-state-default ' +
@@ -235,19 +233,16 @@ var ss_MainLayout;
 					// have fired on the form
 					setTimeout(function() {form.clickedButton = null;}, 10);
 				});
-				
+
 				this._super();
 			}
-		};
-	});
-	
-	/**
-	 * @class Container for tree actions like "create", "search", etc.
-	 * @name ss.TreeActions
-	 */
-	$('#TreeActions').concrete('ss', function($){
-		return/** @lends ss.TreeActions */{
-			
+		});
+
+		/**
+		 * @class Container for tree actions like "create", "search", etc.
+		 * @name ss.TreeActions
+		 */
+		$('#TreeActions').concrete(/** @lends ss.TreeActions */{
 			/**
 			 * Setup "create", "search", "batch actions" layers above tree.
 			 * All tab contents are closed by default.
@@ -259,22 +254,19 @@ var ss_MainLayout;
 					cookie: { expires: 30, path: '/', name: 'ui-tabs-TreeActions' }
 				});
 			}
-		};
-	});
-	
-	/**
-	 * @class Link for editing the profile for a logged-in member
-	 * through a modal dialog.
-	 * @name ss.EditMemberProfile
-	 */
-	$('a#EditMemberProfile').concrete('ss', function($){
-		return/** @lends ss.EditMemberProfile */{
-		
+		});
+
+		/**
+		 * @class Link for editing the profile for a logged-in member
+		 * through a modal dialog.
+		 * @name ss.EditMemberProfile
+		 */
+		$('a#EditMemberProfile').concrete(/** @lends ss.EditMemberProfile */{
 			onmatch: function() {
 				var self = this;
-			
+
 				this.bind('click', function(e) {return self._openPopup();});
-			
+
 				$('body').append(
 					'<div id="ss-ui-dialog">'
 					+ '<iframe id="ss-ui-dialog-iframe" '
@@ -282,7 +274,7 @@ var ss_MainLayout;
 					+ '</iframe>'
 					+ '</div>'
 				);
-			
+
 				var cookieVal = (jQuery.cookie) ? JSON.parse(jQuery.cookie('ss-ui-dialog')) : false;
 				$("#ss-ui-dialog").dialog(jQuery.extend({
 					autoOpen: false,
@@ -301,18 +293,18 @@ var ss_MainLayout;
 					// TODO i18n
 					title: 'Edit Profile'
 				}, cookieVal)).css('overflow', 'hidden');
-			
+
 				$('#ss-ui-dialog-iframe').bind('load', function(e) {self._resize();});
 			},
-		
+
 			_openPopup: function(e) {
 				$('#ss-ui-dialog-iframe').attr('src', this.attr('href'));
-			
+
 				$("#ss-ui-dialog").dialog('open');
-			
+
 				return false;
 			},
-		
+
 			_resize: function() {
 				var iframe = $('#ss-ui-dialog-iframe');
 				var container = $('#ss-ui-dialog');
@@ -327,13 +319,13 @@ var ss_MainLayout;
 					- parseFloat(container.css('paddingTop')) 
 					- parseFloat(container.css('paddingBottom'))
 				);
-			
+
 				this._saveState();
 			},
-		
+
 			_saveState: function() {
 				var container = $('#ss-ui-dialog');
-			
+
 				// save size in cookie (optional)
 				if(jQuery.cookie && container.width() && container.height()) {
 					jQuery.cookie(
@@ -350,60 +342,55 @@ var ss_MainLayout;
 					);
 				}
 			}
-		};
-	});
-	
-	/**
-	 * @class Links for viewing the currently loaded page
-	 * in different modes: 'live', 'stage' or 'archived'.
-	 * Automatically updates on loading a new page.
-	 * @name ss.switchViewLinks
-	 * @requires jquery.metadata
-	 */
-	$('#switchView a').concrete('ss', function($){
-		
-		return/** @lends ss.switchViewLinks */{
-			
+		});
+
+		/**
+		 * @class Links for viewing the currently loaded page
+		 * in different modes: 'live', 'stage' or 'archived'.
+		 * Automatically updates on loading a new page.
+		 * @name ss.switchViewLinks
+		 * @requires jquery.metadata
+		 */
+		$('#switchView a').concrete(/** @lends ss.switchViewLinks */{
 			/**
 			 * @type DOMElement
 			 */
 			Form: null,
-			
+
 			onmatch: function() {
 				var self = this;
 				this.setForm($('#Form_EditForm'));
-				
+
 				jQuery('#Form_EditForm').bind('loadnewpage delete', function(e) {self.refresh();});
 				self.refresh();
 			},
-			
+
 			/**
 			 * Parse new links based on the underlying form URLSegment,
 			 * preserving the ?stage URL parameters if necessary.
 			 */
 			refresh: function() {
 				// TODO Compatible with nested urls?
-				var urlSegment = this.Form().find(':input[name=URLSegment]').val();
+				var urlSegment = this.getForm().find(':input[name=URLSegment]').val();
 				if(urlSegment) {
-					var locale = this.Form().find(':input[name=Locale]').val();
+					var locale = this.getForm().find(':input[name=Locale]').val();
 					var url = urlSegment;
 					if(this.metadata().params) url += '?' + this.metadata().params;
 					if(locale) url += ((url.indexOf('?') > 0) ? '&' : '?') + "locale=" + locale;
 					this.attr('href', url);
 				} 
-				
+
 				// hide fields if no URLSegment is present
 				this.toggle((urlSegment));
 			},
-			
+
 			onclick: function(e) {
 				// Open in popup
 				window.open($(e.target).attr('href'));
 				return false;
 			}
-		};
+		});
 	});
-		
 }(jQuery));
 
 // Backwards compatibility

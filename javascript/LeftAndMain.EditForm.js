@@ -1,53 +1,48 @@
 (function($) {
+	$.concrete('ss', function($){
 
-	/**
-	 * @class Base edit form, provides ajaxified saving
-	 * and reloading itself through the ajax return values.
-	 * Takes care of resizing tabsets within the layout container.
-	 * @name ss.Form_EditForm
-	 * @require jquery.changetracker
-	 * 
-	 * <h3>Events</h3>
-	 * - ajaxsubmit: Form is about to be submitted through ajax
-	 * - validate: Contains validation result
-	 * - removeform: A form is about to be removed from the DOM
-	 * - load: Form is about to be loaded through ajax
-	 */
-	$('#Form_EditForm').concrete('ss',function($){
-		return/** @lends ss.Form_EditForm */{	
-			
+		/**
+		 * @class Base edit form, provides ajaxified saving
+		 * and reloading itself through the ajax return values.
+		 * Takes care of resizing tabsets within the layout container.
+		 * @name ss.Form_EditForm
+		 * @require jquery.changetracker
+		 * 
+		 * <h3>Events</h3>
+		 * - ajaxsubmit: Form is about to be submitted through ajax
+		 * - validate: Contains validation result
+		 * - removeform: A form is about to be removed from the DOM
+		 * - load: Form is about to be loaded through ajax
+		 */
+		$('#Form_EditForm').concrete(/** @lends ss.Form_EditForm */{	
 			/**
 			 * @type String HTML text to show when no form content is chosen.
 			 *  Will show inside the <form> tag.
 			 */
 			PlaceholderHtml: '',
-			
+		
 			/**
 			 * @type Object
 			 */
 			ChangeTrackerOptions: {},
-			
+		
 			onmatch: function() {
 				var self = this;
-				
+			
 				this._setupChangeTracker();
-				
-				this.bind('submit', function(e) {
-				  return self._submit(e);
-				});
 
 				// Can't bind this through jQuery
 				window.onbeforeunload = function(e) {return self._checkChangeTracker(false);};
-				
+			
 				this._super();
 			},
-			
+		
 			_setupChangeTracker: function() {
 				// Don't bind any events here, as we dont replace the
 				// full <form> tag by any ajax updates they won't automatically reapply
-				this.changetracker(this.ChangeTrackerOptions());
+				this.changetracker(this.getChangeTrackerOptions());
 			},
-			
+		
 			/**
 			 * Checks the jquery.changetracker plugin status for this form.
 			 * Usually bound to window.onbeforeunload.
@@ -58,10 +53,10 @@
 			 */
 			_checkChangeTracker: function(isUnloadEvent) {
 			  var self = this;
-			  
+		  
 				// @todo TinyMCE coupling
 				if(typeof tinyMCE != 'undefined') tinyMCE.triggerSave();
-				
+			
 				// check for form changes
 				if(self.is('.changed')) {
 					// returned string will trigger a confirm() dialog, 
@@ -73,17 +68,18 @@
 					}
 				}
 			},
-	
+
 			/**
 			 * Suppress submission unless it is handled through ajaxSubmit().
 			 * 
 			 * @param {Event} e
 			 */
-			_submit: function(e) {
+			onsubmit: function(e) {
 				this.ajaxSubmit();
+				
 				return false;
 			},
-	
+
 			/**
 			 * @param {DOMElement} button The pressed button (optional)
 			 * @param {Function} callback Called in complete() handler of jQuery.ajax()
@@ -92,20 +88,20 @@
 			 */
 			ajaxSubmit: function(button, callback, ajaxOptions, loadResponse) {
 				var self = this;
-			  
+		  
 				// look for save button
 				if(!button) button = this.find('.Actions :submit[name=action_save]');
 				// default to first button if none given - simulates browser behaviour
 				if(!button) button = this.find('.Actions :submit:first');
-		
+	
 				this.trigger('ajaxsubmit', {button: button});
-		
+	
 				// set button to "submitting" state
 				$(button).addClass('loading');
-		
+	
 				// @todo TinyMCE coupling
 				if(typeof tinyMCE != 'undefined') tinyMCE.triggerSave();
-		
+	
 				// validate if required
 				if(!this.validate()) {
 					// TODO Automatically switch to the tab/position of the first error
@@ -126,12 +122,12 @@
 					type: 'POST',
 					complete: function(xmlhttp, status) {
 						$(button).removeClass('loading');
-						
+					
 						// TODO This should be using the plugin API
 						self.removeClass('changed');
-						
+					
 						if(callback) callback(xmlhttp, status);
-						
+					
 						// pass along original form data to enable old/new comparisons
 						if(loadResponse !== false) {
 						  self._loadResponse(xmlhttp.responseText, status, xmlhttp, formData);
@@ -139,10 +135,10 @@
 					}, 
 					dataType: 'html'
 				}, ajaxOptions));
-		
+	
 				return false;
 			},
-	
+
 			/**
 			 * Hook in (optional) validation routines.
 			 * Currently clientside validation is not supported out of the box in the CMS.
@@ -154,10 +150,10 @@
 			validate: function() {
 				var isValid = true;
 				this.trigger('validate', {isValid: isValid});
-		
+	
 				return isValid;
 			},
-	
+
 			/**
 			 * @param {String} url
 			 * @param {Function} callback (Optional) Called after the form content as been loaded
@@ -168,12 +164,12 @@
 
 				// Alert when unsaved changes are present
 				if(this._checkChangeTracker(true) == false) return false;
-				
+			
 				// hide existing form - shown again through _loadResponse()
 				this.addClass('loading');
 
 				this.trigger('load', {url: url});
-				
+			
 				this.cleanup();
 
 				return jQuery.ajax(jQuery.extend({
@@ -183,7 +179,7 @@
 						self.removeClass('changed');
 
 						self._loadResponse(xmlhttp.responseText, status, xmlhttp);
-						
+					
 						self.removeClass('loading');
 
 						if(callback) callback.apply(self, arguments);
@@ -191,7 +187,7 @@
 					dataType: 'html'
 				}, ajaxOptions));
 			},
-	
+
 			/**
 			 * Remove everying inside the <form> tag
 			 * with a custom HTML fragment. Useful e.g. for deleting a page in the CMS.
@@ -201,19 +197,15 @@
 			 *  Falls back to the default RemoveText() option (Optional)
 			 */
 			removeForm: function(placeholderHtml) {
-				if(!placeholderHtml) placeholderHtml = this.PlaceholderHtml();
-				
+				if(!placeholderHtml) placeholderHtml = this.getPlaceholderHtml();
 				// Alert when unsaved changes are present
-				if(this._checkChangeTracker(true) == false) return false;
-				
+				if(this._checkChangeTracker(true) == false) return;
 				this.trigger('removeform');
-				
 				this.html(placeholderHtml);
-				
 				// TODO This should be using the plugin API
 				this.removeClass('changed');
 			},
-	
+
 			/**
 			 * Remove all the currently active TinyMCE editors.
 			 * Note: Everything that calls this externally has an inappropriate coupling to TinyMCE.
@@ -227,7 +219,7 @@
 					tinymce.EditorManager.editors = {};
 				}
 			},
-	
+
 			/**
 			 * @param {String} data Either HTML for straight insertion, or eval'ed JavaScript.
 			 *  If passed as HTML, it is assumed that everying inside the <form> tag is replaced,
@@ -241,7 +233,7 @@
 			_loadResponse: function(data, status, xmlhttp, origData) {
 				if(status == 'success') {
 					this.cleanup();
-					
+				
 					var html = data;
 
 					// Rewrite # links
@@ -262,12 +254,12 @@
 					} else {
 						this.removeForm();
 					}
-					
+				
 					// @todo Coupling to avoid FOUC (concrete applies to late)
 					this.find('.ss-tabset').tabs();
-					
-					this._setupChangeTracker();
 				
+					this._setupChangeTracker();
+			
 					// Optionally get the form attributes from embedded fields, see Form->formHtmlContent()
 					for(var overrideAttr in {'action':true,'method':true,'enctype':true,'name':true}) {
 						var el = this.find(':input[name='+ '_form_' + overrideAttr + ']');
@@ -276,7 +268,7 @@
 							el.remove();
 						}
 					}
-					
+				
 					Behaviour.apply(); // refreshes ComplexTableField
 
 					// focus input on first form element
@@ -294,45 +286,36 @@
 					statusMessage(_statusMessage, (xmlhttp.status >= 400) ? 'bad' : 'good');
 				}
 			}
-		};
-	});
+		});
 
-	/**
-	 * @class All buttons in the right CMS form go through here by default.
-	 * We need this onclick overloading because we can't get to the
-	 * clicked button from a form.onsubmit event.
-	 * @name ss.Form_EditForm.Actions.submit
-	 */
-	$('#Form_EditForm .Actions :submit').concrete('ss', function($){
-		return/** @lends ss.Form_EditForm.Actions.submit */{
-			onmatch: function() {
-				this.bind('click', this._onclick);
-				
-				this._super();
-			},
-			_onclick: function() {
+		/**
+		 * @class All buttons in the right CMS form go through here by default.
+		 * We need this onclick overloading because we can't get to the
+		 * clicked button from a form.onsubmit event.
+		 * @name ss.Form_EditForm.Actions.submit
+		 */
+		$('#Form_EditForm .Actions :submit').concrete(/** @lends ss.Form_EditForm.Actions.submit */{
+			onclick: function(e) {
 				jQuery('#Form_EditForm').concrete('ss').ajaxSubmit(this);
 				return false;
 			}
-		};
-	});
+		});
 	
-	/**
-	 * @class Add tinymce to HtmlEditorFields within the CMS.
-	 * @name ss.Form_EditForm.textarea.htmleditor
-	 */
-	$('#Form_EditForm textarea.htmleditor').concrete('ss', function($){
-		return/** @lends ss.Form_EditForm.Actions.submit */{
+		/**
+		 * @class Add tinymce to HtmlEditorFields within the CMS.
+		 * @name ss.Form_EditForm.textarea.htmleditor
+		 */
+		$('#Form_EditForm textarea.htmleditor').concrete(/** @lends ss.Form_EditForm.Actions.submit */{
 			onmatch : function() {
 				tinyMCE.execCommand("mceAddControl", true, this.attr('id'));
 				this.isChanged = function() {
 					return tinyMCE.getInstanceById(this.attr('id')).isDirty();
-				}
+				};
 				this.resetChanged = function() {
 					var inst = tinyMCE.getInstanceById(this.attr('id'));
 					if (inst) inst.startContent = tinymce.trim(inst.getContent({format : 'raw', no_events : 1}));
-				}
+				};
 			}
-		};
+		});
 	});
 }(jQuery));

@@ -1,43 +1,40 @@
 (function($) {
-	/**
-	 * Alert the user on change of page-type - this might have implications
-	 * on the available form fields etc.
-	 * @name ss.EditFormClassName
-	 */
-	$('#Form_EditForm :input[name=ClassName]').concrete('ss', function($){
-		return/** @lends ss.EditFormClassName */{
+	$.concrete('ss', function($){
+		/**
+		 * Alert the user on change of page-type - this might have implications
+		 * on the available form fields etc.
+		 * @name ss.EditFormClassName
+		 */
+		$('#Form_EditForm :input[name=ClassName]').concrete(/** @lends ss.EditFormClassName */{
 			onchange: function() {
 				alert(ss.i18n._t('CMSMAIN.ALERTCLASSNAME'));
 			}
-		};
-	});
+		});
 
-	/**
-	 * @class Input validation on the URLSegment field
-	 * @name ss.EditForm.URLSegment
-	 */
-	$('#Form_EditForm input[name=URLSegment]').concrete('ss', function($){
-		return/** @lends ss.EditForm.URLSegment */{
-
+		/**
+		 * @class Input validation on the URLSegment field
+		 * @name ss.EditForm.URLSegment
+		 */
+		$('#Form_EditForm input[name=URLSegment]').concrete(/** @lends ss.EditForm.URLSegment */{
 			FilterRegex: /[^A-Za-z0-9-]+/,
-
 			ValidationMessage: ss.i18n._t('CMSMAIN.URLSEGMENTVALIDATION'),
-
 			MaxLength: 50,
-		
+	
 			onmatch : function() {
 				var self = this;
-			
+		
 				// intercept change event, do our own writing
 				this.bind('change', function(e) {
 					if(!self.validate()) {
-						jQuery.noticeAdd(self.ValidationMessage());
+						jQuery.noticeAdd(self.getValidationMessage());
 					}
 					self.val(self.suggestValue(e.target.value));
 					return false;
 				});
+				
+				this._super();
 			},
-		
+	
 			/**
 			 * Return a value matching the criteria.
 			 * 
@@ -46,38 +43,37 @@
 			 */
 			suggestValue: function(val) {
 				// TODO Do we want to enforce lowercasing in URLs?
-				return val.substr(0, this.MaxLength()).replace(this.FilterRegex(), '').toLowerCase();
+				return val.substr(0, this.getMaxLength()).replace(this.getFilterRegex(), '').toLowerCase();
 			},
-		
+	
 			validate: function() {
 				return (
-					this.val().length > this.MaxLength()
-					|| this.val().match(this.FilterRegex())
+					this.val().length > this.getMaxLength()
+					|| this.val().match(this.getFilterRegex())
 				);
 			}
-		};
-	});
+		});
 
-	/**
-	 * @class Input validation on the Title field
-	 * @name ss.EditForm.Title
-	 */
-	$('#Form_EditForm input[name=Title]').concrete('ss', function($){
-		return/** @lends ss.EditForm.Title */{
-
+		/**
+		 * @class Input validation on the Title field
+		 * @name ss.EditForm.Title
+		 */
+		$('#Form_EditForm input[name=Title]').concrete(/** @lends ss.EditForm.Title */{
 			onmatch : function() {
 				var self = this;
-			
+		
 				this.bind('change', function(e) {
 					self.updateURLSegment(jQuery('#Form_EditForm input[name=URLSegment]'));
 					// TODO We should really user-confirm these changes
 					self.parents('form').find('input[name=MetaTitle], input[name=MenuTitle]').val(self.val());
 				});
+				
+				this._super();
 			},
-		
+	
 			updateURLSegment: function(field) {
 				if(!field || !field.length) return;
-			
+		
 				// TODO language/logic coupling
 				var isNew = this.val().indexOf("new") == 0;
 				var suggestion = field.concrete('ss').suggestValue(this.val());
@@ -97,24 +93,22 @@
 					field.val(suggestion);
 				}
 			}
-		};
-	});
+		});
 	
-	/**
-	 * @class ParentID field combination - mostly toggling between
-	 * the two radiobuttons and setting the hidden "ParentID" field
-	 * @name ss.EditForm.parentTypeSelector
-	 */
-	$('#Form_EditForm .parentTypeSelector').concrete('ss', function($){
-		return/** @lends ss.EditForm.parentTypeSelector */{
+		/**
+		 * @class ParentID field combination - mostly toggling between
+		 * the two radiobuttons and setting the hidden "ParentID" field
+		 * @name ss.EditForm.parentTypeSelector
+		 */
+		$('#Form_EditForm .parentTypeSelector').concrete(/** @lends ss.EditForm.parentTypeSelector */{
 			onmatch : function() {
 				var self = this;
-			
 				this.find(':input[name=ParentType]').bind('click', function(e) {self._toggleSelection(e);});
-			
 				this._toggleSelection();
+				
+				this._super();
 			},
-		
+	
 			_toggleSelection: function(e) {
 				var selected = this.find(':input[name=ParentType]:checked').val();
 				// reset parent id if 'root' radiobutton is selected
@@ -122,40 +116,38 @@
 				// toggle tree dropdown based on selection
 				this.find('#ParentID').toggle(selected != 'root');
 			}
-		};
-	});
+		});
 
-	/**
-	 * @class Toggle display of group dropdown in "access" tab,
-	 * based on selection of radiobuttons.
-	 * @name ss.Form_EditForm.Access
-	 */
-	$('#Form_EditForm #CanViewType, #Form_EditForm #CanEditType').concrete('ss', function($){
-		return/** @lends ss.Form_EditForm.Access */{
+		/**
+		 * @class Toggle display of group dropdown in "access" tab,
+		 * based on selection of radiobuttons.
+		 * @name ss.Form_EditForm.Access
+		 */
+		$('#Form_EditForm #CanViewType, #Form_EditForm #CanEditType').concrete(/** @lends ss.Form_EditForm.Access */{
 			onmatch: function() {
 				// TODO Decouple
 				var dropdown;
 				if(this.attr('id') == 'CanViewType') dropdown = $('#ViewerGroups');
 				else if(this.attr('id') == 'CanEditType') dropdown = $('#EditorGroups');
-			
+		
 				this.find('.optionset :input').bind('change', function(e) {
 					dropdown.toggle(e.target.value == 'OnlyTheseUsers');
 				});
-			
+		
 				// initial state
 				var currentVal = this.find('input[name=' + this.attr('id') + ']:checked').val();
 				dropdown.toggle(currentVal == 'OnlyTheseUsers');
+				
+				this._super();
 			}
-		};
-	});	
+		});	
 
-	/**
-	 * @class Email containing the link to the archived version of the page.
-	 * Visible on readonly older versions of a specific page at the moment.
-	 * @name ss.Form_EditForm_action_email
-	 */
-	$('#Form_EditForm .Actions #Form_EditForm_action_email').concrete('ss', function($){
-		return/** @lends ss.Form_EditForm_action_email */{
+		/**
+		 * @class Email containing the link to the archived version of the page.
+		 * Visible on readonly older versions of a specific page at the moment.
+		 * @name ss.Form_EditForm_action_email
+		 */
+		$('#Form_EditForm .Actions #Form_EditForm_action_email').concrete(/** @lends ss.Form_EditForm_action_email */{
 			onclick: function(e) {
 				window.open(
 					'mailto:?subject=' 
@@ -164,19 +156,17 @@
 						+ $(':input[name=ArchiveEmailMessage]', this[0].form).val(), 
 					'archiveemail' 
 				);
-		
+	
 				return false;
 			}
-		};
-	});
+		});
 
-	/**
-	 * @class Open a printable representation of the form in a new window.
-	 * Used for readonly older versions of a specific page.
-	 * @name ss.Form_EditForm_action_print
-	 */
-	$('#Form_EditForm .Actions #Form_EditForm_action_print').concrete('ss', function($){
-		return/** @lends ss.Form_EditForm_action_print */{
+		/**
+		 * @class Open a printable representation of the form in a new window.
+		 * Used for readonly older versions of a specific page.
+		 * @name ss.Form_EditForm_action_print
+		 */
+		$('#Form_EditForm .Actions #Form_EditForm_action_print').concrete(/** @lends ss.Form_EditForm_action_print */{
 			onclick: function(e) {
 				var printURL = $(this[0].form).attr('action').replace(/\?.*$/,'') 
 					+ '/printable/' 
@@ -184,22 +174,20 @@
 				if(printURL.substr(0,7) != 'http://') printURL = $('base').attr('href') + printURL;
 
 				window.open(printURL, 'printable');
-		
+	
 				return false;
 			}
-		};
-	});
+		});
 
-	/**
-	 * @class A "rollback" to a specific version needs user confirmation.
-	 * @name ss.Form_EditForm_action_rollback
-	 */
-	$('#Form_EditForm .Actions #Form_EditForm_action_rollback').concrete('ss', function($){
-		return/** @lends ss.Form_EditForm_action_rollback */{
+		/**
+		 * @class A "rollback" to a specific version needs user confirmation.
+		 * @name ss.Form_EditForm_action_rollback
+		 */
+		$('#Form_EditForm .Actions #Form_EditForm_action_rollback').concrete(/** @lends ss.Form_EditForm_action_rollback */{
 			onclick: function(e) {
 				// @todo i18n
 				return confirm("Do you really want to copy the published content to the stage site?");
 			}
-		};
+		});
 	});
 }(jQuery));

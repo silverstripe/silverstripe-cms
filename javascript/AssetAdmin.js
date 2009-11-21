@@ -16,11 +16,10 @@ var _HANDLER_FORMS = {
 };
 
 (function($) {
-
 	/**
 	 * Delete selected folders through "batch actions" tab.
 	 */
-	$(function() {
+	$(document).ready(function() {
 		$('#Form_BatchActionsForm').concrete('ss').register(
 			// TODO Hardcoding of base URL
 			'admin/assets/batchactions/delete', 
@@ -36,32 +35,26 @@ var _HANDLER_FORMS = {
 		);
 	});
 	
-	$('#Form_SyncForm').concrete('ss', function($) {
-		return {
-			onmatch: function() {
-				this.bind('submit', this._onsubmit);			
-				this._super();
-			},
-			_onsubmit: function(e) {
+	$.concrete('ss', function($){
+		$('#Form_SyncForm').concrete({
+			onsubmit: function(e) {
 				var button = jQuery(this).find(':submit:first');
 				button.addClass('loading');
 				$.get(
 					jQuery(this).attr('action'),
 					function() {
 						button.removeClass('loading');
-						
 						// reload current
 						var currNode = $('#sitetree')[0].firstSelected();
 						if(currNode) {
 						  var url = $(currNode).find('a').attr('href');
-        			$('#Form_EditForm').concrete('ss').loadForm(url);
+        			$('#Form_EditForm').loadForm(url);
 						}
-						
 					}
 				);
 				
 				return false;
 			}
-		};
+		});
 	});
 }(jQuery));
