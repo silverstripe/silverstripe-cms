@@ -390,26 +390,17 @@ div.filterBox {
 		font-size: 12px;
 	}
 	
-	div.filterBox div.field {
+	.right div.filterBox div.field {
 		margin-left: 0 !important;
 		padding: 0;
 		font-size: 12px;
 		display: inline;
 	}
 	
-	div.filterBox input,
-	div.filterBox select {
+	.right div.filterBox input,
+	.right div.filterBox select {
 		width: auto;
 	}
-
-
-/* Makes room for AJAX Action buttons */
-#right {
-	padding-bottom: 20px;
-	overflow: hidden;
-	/* HACK: any IE */
-	padding-bottom: expression('35px');
-}
 
 
 /**

@@ -113,9 +113,6 @@ body {
 /**
  * Actions/Buttons
  */
-.ajaxActions {
-	text-align: right;
-}
 
 #TreeActions {
 	float: left;
@@ -130,24 +127,6 @@ body {
 		color: #aaa;
 	}
 
-.ajaxActions input,
-.actions input,
-button.action,
-div.Actions input,
-input.action,
-li.action input,
-li.action button {
-	cursor: pointer;
-	background-image: url(../images/textures/ToolBar.png);
-	color: #333;
-	overflow: visible;
-	width: auto;
-	border-color: #CCCCCC rgb(153, 153, 153) rgb(153, 153, 153) rgb(204, 204, 204);
-	border-style: double;
-	margin-right: 2px;
-	padding: 2px 1px;
-	font-size: 11px;
-}
 	.ajaxActions input,
 	#TreeActions li.action input {
 		float: left;
@@ -163,24 +142,9 @@ li.action button {
 		border-color: #999999 rgb(204, 204, 204) rgb(204, 204, 204) rgb(153, 153, 153);
 	}
 
-	.ajaxActions input:hover,
-	div.Actions input:hover,
-	input.action:hover,
-	button.action:hover,
-	li.action input:hover,
-	li.action button:hover,
-	li.selected input,
-	li.selected button {
-		background: #fff;
-	}
-
 	.ajaxActions input.disabled,
 	input.disabled {
 		color: #666;
-	}
-	
-	input.disabled:hover {
-		background-image: url(../images/textures/ToolBar.png);
 	}
 	
 	input.action.loading, input.action.loading:hover {
