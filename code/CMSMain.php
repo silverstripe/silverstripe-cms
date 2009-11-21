@@ -226,11 +226,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			if(!Director::fileExists($closedFolderImage) || $option = "file") $closedFolderImage = $fileImage;
 
 			$js .= <<<JS
-				_TREE_ICONS['$class'] = {
-					fileIcon: '$fileImage',
-					openFolderIcon: '$openFolderImage',
-					closedFolderIcon: '$closedFolderImage'
-				};
+_TREE_ICONS['$class'] = {
+	fileIcon: '$fileImage',
+	openFolderIcon: '$openFolderImage',
+	closedFolderIcon: '$closedFolderImage'
+};
 
 JS;
 		}
@@ -352,6 +352,9 @@ JS;
 		}
 	}
 
+	/**
+	 * Calls {@link SiteTree->getCMSFields()}
+	 */
 	public function getEditForm($id) {
 		$record = $this->getRecord($id);
 
