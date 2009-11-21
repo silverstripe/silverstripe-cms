@@ -333,37 +333,57 @@
 		font-style: italic;
 	}
 
+
 /**
  * Status Messages
  */
-#statusMessage {
+.notice-wrap {
 	position: absolute;
 	z-index: 500;
 	bottom: 4px;
 	left: 10px;
-	text-align: left;
- 	padding: 2px 20px 2px 20px;
- 	font-size: 14px;
-	font-weight: bold; 	
-	color: #660;
+	z-index: 9999;
+	width: auto;
+}
+
+* html .notice-wrap {
+	position: absolute;		
+}
+
+.notice-item {
+	display: block;
+	position: relative;
+	width: auto;
 	background: #f4f3eb;
 	border: 1px solid #a9a67d;
-	margin: 0 !important;
+	margin-top: 6px;
+	padding: 2px 20px 2px 20px;
+	font-size: 14px;
+	font-weight: bold;
 	line-height: 1.5;
 }
-	#statusMessage.good {
-	 	padding: 2px 20px 2px 40px;
+
+.notice-item-close {
+	position: absolute;
+	font-family: Arial;
+	font-size: 12px;
+	font-weight: bold;
+	right: 6px;
+	top: 6px;
+	cursor: pointer;
+}
+
+	.notice-wrap .good {
+		padding-left: 40px;
 		color: #060;
 		background: #E2F9E3 url(../images/alert-good.gif) 7px 50% no-repeat;
 		border: 1px solid #8dd38d;
 	}
-	#statusMessage.bad {
- 		padding: 2px 20px 2px 40px;
-		border-color: #ff8e8e;
+	.notice-wrap .bad {
+		padding-left: 40px;
 		color: #c80700;
 		background: #ffe9e9 url(../images/alert-bad.gif) 7px 50% no-repeat;
-		max-height: 300px;
-		overflow: auto;
+		border: 1px solid #ff8e8e;
 	}
 
 /**

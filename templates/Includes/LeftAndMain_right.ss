@@ -12,4 +12,4 @@
 	</form>
 <% end_if %>
 
-<div id="statusMessage"></div>
+<div class="notice-wrap"></div>

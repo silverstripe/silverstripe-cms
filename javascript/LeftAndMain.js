@@ -38,7 +38,7 @@
 				this.find('.ss-tabset').bind('tabsshow', function() {self._resizeChildren();});
 			
 				$('#Form_EditForm').bind('loadnewpage', function() {self._resizeChildren();});
-
+				
 				this._super();
 			},
 
@@ -278,135 +278,12 @@
 		
 })(jQuery);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Event.observe(window, 'beforeunload', LeftAndMain_window_unload);
-
-/**
- * Unlock the locked status message.
- * Show a queued message, if one exists
- */
-function unlockStatusMessage() {
-	statusMessage.locked = false;
-	if(statusMessage.queued) {
-		statusMessage(
-			statusMessage.queued.msg,
-			statusMessage.queued.type,
-			statusMessage.queued.showNetworkActivity);
-
-		statusMessage.queued = null;
-	}
+// Backwards compatibility
+var statusMessage = function(text, type) {
+	jQuery.noticeAdd({text: text, type: type});
 }
-
-/**
- * Behaviour of the statuts message.
- */
-Behaviour.register({
-	'#statusMessage' : {
-		showMessage : function(message, type, waitTime, clearManually) {
-			if(this.fadeTimer) {
-				clearTimeout(this.fadeTimer);
-				this.fadeTimer = null;
-			}
-			if(this.currentEffect) {
-				this.currentEffect.cancel();
-				this.currentEffect = null;
-			}
-
-			this.innerHTML = message;
-			this.className = type;
-			Element.setOpacity(this, 1);
-
-			//this.style.position = 'absolute';
-			this.style.display = '';
-			this.style.visibility = '';
-
-			if(!clearManually) {
-				this.fade(0.5,waitTime ? waitTime : 5);
-			}
-		},
-		clearMessage : function(waitTime) {
-			this.fade(0.5, waitTime);
-		},
-		fade: function(fadeTime, waitTime) {
-			if(!fadeTime) fadeTime = 0.5;
-
-			// Wait a bit before fading
-			if(waitTime) {
-				this.fadeTimer = setTimeout((function() {
-					this.fade(fadeTime);
-				}).bind(this), waitTime * 1000);
-
-			// Fade straight away
-			} else {
-			 	this.currentEffect = new Effect.Opacity(this,
-				    { duration: 0.5,
-				      transition: Effect.Transitions.linear,
-				      from: 1.0, to: 0.0,
-				      afterFinish : this.afterFade.bind(this) });
-			}
-		},
-		afterFade : function() {
-			this.style.visibility = 'hidden';
-			this.style.display = 'none';
-			this.innerHTML = '';
-		}
-	}
-});
-
-/**
- * Show a status message.
- *
- * @param msg String
- * @param type String (optional) can be 'good' or 'bad'
- * @param clearManually boolean Don't automatically fade message.
- * @param container custom #statusMessage element to show message.
- */
-function statusMessage(msg, type, clearManually, container) {
-	var statusMessageEl = $('statusMessage');
-	if(container != null) statusMessageEl = container; 
-	if(statusMessageEl) {
-		if(msg) {
-			statusMessageEl.showMessage(msg, type, msg.length / 10, clearManually);
-		} else {
-			statusMessageEl.clearMessage();
-		}
-	}
-}
-
-function clearStatusMessage() {
-	$('statusMessage').clearMessage();
-}
-
-/**
- * Called when something goes wrong
- */
-function errorMessage(msg, fullMessage) {
-	// Show complex error for developers in the console
-	if(fullMessage) {
-		// Get the message from an Ajax response object
-		try {
-			if(typeof fullMessage == 'object') fullMessage = fullMessage.status + '//' + fullMessage.responseText;
-		} catch(er) {
-			fullMessage = "";
-		}
-		console.error(fullMessage);
-	}
-	
-	msg = msg.replace(/\n/g,'<br>');
-
-	$('statusMessage').showMessage(msg,'bad');
+var errorMessage = function(text) {
+	jQuery.noticeAdd({text: text, type: 'error'});
 }
 
 function ajaxErrorHandler(response) {
