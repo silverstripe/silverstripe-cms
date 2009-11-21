@@ -49,6 +49,14 @@ var _HANDLER_FORMS = {
 					jQuery(this).attr('action'),
 					function() {
 						button.removeClass('loading');
+						
+						// reload current
+						var currNode = $('#sitetree')[0].firstSelected();
+						if(currNode) {
+						  var url = $(currNode).find('a').attr('href');
+        			$('#Form_EditForm').concrete('ss').loadForm(url);
+						}
+						
 					}
 				);
 				
