@@ -458,43 +458,6 @@ SiteTreeNode.prototype = {
 	}	
 }
 
-/**
- * Action panel at the top of the left hand tree
- */
-treeactions = {
-	toggleSelection : function(li) {
-		li = (li.tagName.toLowerCase() == 'button') ? li.parentNode : li;
-
-		// Deselect
-		if(li.selected) this.closeSelection(li, true);
-		else this.openSelection(li, true);
-
-		return li.selected;
-	},
-	closeSelection : function(li, nested) {
-		li = (li.tagName.toLowerCase() == 'button') ? li.parentNode : li;
-
-		Element.hide(_HANDLER_FORMS[li.id]);
-		removeClass(li, 'selected');
-		li.selected = false;
-		$(_HANDLER_FORMS[li.id]).notify('Close');
-		if(li.onclose) li.onclose();
-	},
-	openSelection: function(li, nested) {
-		li = (li.tagName.toLowerCase() == 'button') ? li.parentNode : li;
-		
-		addClass(li, 'selected');
-		Element.show(_HANDLER_FORMS[li.id]);
-		li.selected = true;
-	
-		// Deselect siblings
-		var i, set = li.parentNode.getElementsByTagName('li');
-		for(i=0;i<set.length;i++) if(li != set[i] && set[i].selected) {
-			this.closeSelection(set[i], true);
-		}
-	}
-}
-
 // Build the site tree
 SiteTree.applyTo('#sitetree');
 

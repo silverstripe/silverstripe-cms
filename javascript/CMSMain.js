@@ -1,11 +1,25 @@
-var outerLayout;
-
 (function($) {
 	$('body.CMSMain').concrete({ss:{cmsMain:{
 		mainLayout: null,
 		
 		onmatch: function() {
+			var $this = $(this);
 			this.mainLayout = this.ss().cmsMain()._setupLayout();
+			
+			// artificially delay the resize event 200ms
+			// to avoid overlapping height changes in different onresize() methods
+			$(window).resize(function () {
+				var timerID = "timerCMSMainResize";
+				if (window[timerID]) clearTimeout(window[timerID]);
+				window[timerID] = setTimeout(function() {$this.ss().cmsMain()._resizeChildren();}, 200);
+			});
+			
+			this.ss().cmsMain()._resizeChildren();
+		},
+		
+		_resizeChildren: function() {
+			$("#treepanes").accordion("resize");
+			$('#sitetree_and_tools').fitHeightToParent();
 		},
 		
 		/**
@@ -17,6 +31,7 @@ var outerLayout;
 		 * - south: "Page view", "profile" and "logout" links
 		 */
 		_setupLayout: function() {
+			var $this = this;
 			// layout containing the tree, CMS menu, the main form etc.
 			var layout = $('body').layout({
 				defaults: {
@@ -44,8 +59,8 @@ var outerLayout;
 				},
 				west: {
 					size: 250,
-					onresize: function () { $("#treepanes").accordion("resize"); },
-					onopen: function () { $("#treepanes").accordion("resize"); },
+					onresize: function() {$this.ss().cmsMain()._resizeChildren();},
+					onopen: function() {$this.ss().cmsMain()._resizeChildren();},
 					fxName: "none"
 				},
 				center: {}
@@ -61,8 +76,10 @@ var outerLayout;
 			return layout;
 		}
 	}}});
-	
-	$('#Form_EditForm').concrete({
-		
-	})
+
 })(jQuery);
+
+jQuery(document).ready(function() {
+	// @todo remove
+	jQuery.concrete.triggerMatching();
+});

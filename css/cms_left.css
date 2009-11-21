@@ -155,7 +155,6 @@ ul.tree .deleted {
 	border-bottom: 1px solid #ccc;
 	background: #eee;
 	padding: 3px;
-	text-align: center;
 	font-weight: bold;
 }
 	#publication_key ins,
@@ -337,6 +336,10 @@ ul.tree span.a.Root span.c {
 	background: url(../../jsparty/tree/images/i-bottom.gif) no-repeat scroll 0 50%;
 }
 
+#sitetree_ul {
+	overflow: auto;
+}
+
 ul#sitetree.tree ul {
 	margin-left: 0;
 }
@@ -430,7 +433,6 @@ ul.tree span.untranslated a:visited {
 	padding: 5px 0 0 0;
 	overflow: hidden;
 	clear: left;
-	width: 100%;
 }
 	.checkboxAboveTree div {
 		clear: left;

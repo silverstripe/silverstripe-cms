@@ -64,10 +64,12 @@
 			// artificially delay the resize event 200ms
 			// to avoid overlapping height changes in different onresize() methods
 			$(window).resize(function () {
-				var timerID = "timerLayout_"+this.id;
+				var timerID = "timerLeftAndMainResize";
 				if (window[timerID]) clearTimeout(window[timerID]);
 				window[timerID] = setTimeout(function() {$this.ss()._resizeChildren();}, 200);
-			}).trigger('resize');
+			});
+			
+			this.ss()._resizeChildren();
 		
 			// trigger resize whenever new tabs are shown
 			// @todo This is called multiple times when tabs are loaded
@@ -194,12 +196,28 @@
 		}
 	}});
 	
+	/**
+	 * All buttons in the right CMS form go through here by default.
+	 * We need this onclick overloading because we can't get to the
+	 * clicked button from a form.onsubmit event.
+	 */
 	$('#Form_EditForm .Actions :submit').concrete({ss:{
 		onclick: function(e) {
 			$(this[0].form).ss().ajaxSubmit(this);
 			return false;
 		}
 	}});
+	
+	$('#TreeActions').concrete({
+		onmatch: function() {
+			// setup "create", "search", "batch actions" layers above tree
+			this.tabs({
+				selected: null,
+				collapsible: true
+			});
+		}
+	});
+	
 })(jQuery);
 
 jQuery(document).ready(function() {

@@ -113,33 +113,9 @@ body {
 /**
  * Actions/Buttons
  */
-
-#TreeActions {
-	float: left;
-	width: 100%;
-	padding-bottom: 5px;
-}
-	#TreeActions li {
-		float: left;
-	}
 	
 	#TreeActions button.disabled {
 		color: #aaa;
-	}
-
-	.ajaxActions input,
-	#TreeActions li.action input {
-		float: left;
-		height: 25px;
-		padding: 0 10px;
-		font-weight: bold;
-	}
-		#TreeActions li.action input {
-			font-weight: normal;
-		}
-	.ajaxActions input:active {
-		background: #F4F4F4 none repeat scroll 0%;
-		border-color: #999999 rgb(204, 204, 204) rgb(204, 204, 204) rgb(153, 153, 153);
 	}
 
 	.ajaxActions input.disabled,
@@ -188,7 +164,7 @@ body.stillLoading select {
 /**
  * Hidden left-hand panel
  */
-#left.hidden form, #left.hidden .title, #left.hidden #TreeActions {
+#left.hidden form, #left.hidden .title {
 	display: none;
 }
 
@@ -352,28 +328,14 @@ body.stillLoading select {
 
 
 /** LEFT PANEL **/
-#sitetree_holder {
-	height: 80%;
-	width: 100%;
-	overflow-y: auto;
-	overflow-x: hidden;
+#sitetree_and_tools {
+	overflow: auto;
 }
-	
+
 	#sitetree_holder #TreeTools {
-		float: left;
-		width: inherit;
 		background: #EEE;
 	}
-	#SearchBox {
-		float: left;
-		width: 100%;
-		margin: 0 0 5px 0;
-		padding-left: 5px;
-		position: relative;
-	}
 	#SearchControls {
-		float: left;
-		position: relative;
 		margin-top:2px;
 	}
 		#SearchControls label {
@@ -387,9 +349,6 @@ body.stillLoading select {
 		width: 16px;
 		height: 16px;
 		background: #EFEFEF url(../images/network-save.gif) no-repeat;
-		position: absolute;
-		left: 95px;
-		top: 2px;
 	}
 		#searchIndicator.loading {
 			display: block;
@@ -406,9 +365,6 @@ body.stillLoading select {
 	}
 	#sitetree_ul ul#sitetree {
 		padding: 0;
-	}
-	#sitetree {
-		width: 500px; /* IE's chocking right now */
 	}
 		html>body #sitetree {
 			width: auto;
