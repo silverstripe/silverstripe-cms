@@ -53,11 +53,11 @@
 			 * Checks the jquery.changetracker plugin status for this form.
 			 * Usually bound to window.onbeforeunload.
 			 * 
-			 * @param {boolean} doConfirm
+			 * @param {boolean} isUnloadEvent
 			 * @return Either a string with a confirmation message, or the result of a confirm() dialog,
-			 *  based on the doConfirm parameter.
+			 *  based on the isUnloadEvent parameter.
 			 */
-			_checkChangeTracker: function(doConfirm) {
+			_checkChangeTracker: function(isUnloadEvent) {
 			  var self = this;
 			  
 				// @todo TinyMCE coupling
@@ -65,13 +65,14 @@
 				
 				// check for form changes
 				if(self.is('.changed')) {
-					var msg = ss.i18n._t('LeftAndMain.CONFIRMUNSAVED');
 					// returned string will trigger a confirm() dialog, 
 					// but only if the method is triggered by an event
-					return (doConfirm) ? confirm(msg) : msg;
+					if(isUnloadEvent) {
+						return confirm(ss.i18n._t('LeftAndMain.CONFIRMUNSAVED'));
+					} else {
+						return ss.i18n._t('LeftAndMain.CONFIRMUNSAVEDSHORT');
+					}
 				}
-				
-				return null;
 			},
 	
 			/**
