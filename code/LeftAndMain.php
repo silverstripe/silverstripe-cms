@@ -343,16 +343,10 @@ class LeftAndMain extends Controller {
 		}
 	}
 
-
+	/**
+	 * @deprecated 2.4 Please use show()
+	 */
 	public function getitem() {
-		$this->setCurrentPageID($_REQUEST['ID']);
-		SSViewer::setOption('rewriteHashlinks', false);
-
-		if(isset($_REQUEST['ID']) && is_numeric($_REQUEST['ID'])) {
-			$record = DataObject::get_by_id($this->stat('tree_class'), $_REQUEST['ID']);
-			if($record && !$record->canView()) return Security::permissionFailure($this);
-		}
-
 		$form = $this->getEditForm();
 		if($form) return $form->formHtmlContent();
 		else return "";
