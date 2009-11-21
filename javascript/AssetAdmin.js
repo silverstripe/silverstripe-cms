@@ -10,132 +10,146 @@ SiteTreeHandlers.showRecord_url = 'admin/assets/show/';
 SiteTreeHandlers.controller_url = 'admin/assets';
 
 var _HANDLER_FORMS = {
-	addpage : 'Form_AddPageOptionsForm',
+	addpage : 'Form_AddForm',
 	deletepage : 'Form_DeleteItemsForm',
 	sortitems : 'sortitems_options'
 };
 
 (function($) {
 	/**
-	 * Overload the "Create" tab to execute action instead of
-	 * opening the tab content.
+	 * @class Simple form with a page type dropdown
+	 * which creates a new page through #Form_EditForm and adds a new tree node.
+	 * @name ss.Form_AddForm
+	 * @requires ss.i18n
+	 * @requires ss.Form_EditForm
 	 */
-	$('#TreeActions-create-btn').concrete('ss', function($) {
-		return {
+	$('#Form_AddForm').concrete(function($) {
+	  return/** @lends ss.Form_AddForm */{
+			/**
+			 * @type DOMElement
+			 */
+			Tree: null,
+			
+			/**
+			 * @type Array Internal counter to create unique page identifiers prior to ajax saving
+			 */
+			_NewPages: [],
+			
 			onmatch: function() {
-				this.bind('click', function(e) {
-					var form = $('form#addpage_options');
-					jQuery.post(
-						form.attr('action'),
-						form.serialize(),
-						function(data) {
+				var self = this;
+				
+				this.bind('submit', function(e) {
+				  return self._submit(e);
+				});
+				
+				Observable.applyTo(this[0]);
+				
+				var tree = jQuery('#sitetree')[0];
+				this.setTree(tree);
+			},
+			
+			_submit: function(e) {
+				var newPages = this._NewPages();
+				var tree = this.Tree();
+				var parentID = (tree.firstSelected()) ? tree.getIdxOf(tree.firstSelected()) : 0;
 
-						}
-					);
-					return false;
-				})
+				// TODO: Remove 'new-' code http://open.silverstripe.com/ticket/875
+				if(parentID && parentID.substr(0,3) == 'new') {
+					alert(ss.i18n._t('CMSMAIN.WARNINGSAVEPAGESBEFOREADDING'));
+				}
+				
+				if(tree.firstSelected() && jQuery(tree.firstSelected()).hasClass("nochildren")) {
+					alert(ss.i18n._t('CMSMAIN.CANTADDCHILDREN') );
+				} 
+				
+				// Optionally initalize the new pages tracker
+				if(!newPages[parentID] ) newPages[parentID] = 1;
+
+				// default to first button
+				var button = jQuery(this).find(':submit:first');
+				button.addClass('loading');
+				
+				// collect data and submit the form
+				var data = jQuery(this).serializeArray();
+				data.push({name:'Suffix',value:newPages[parentID]++});
+				data.push({name:button.attr('name'),value:button.val()});
+				jQuery('#Form_EditForm').concrete('ss').loadForm(
+					jQuery(this).attr('action'),
+					function() {
+						button.removeClass('loading');
+					},
+					{type: 'POST', data: data}
+				);
+				
+				this.set_NewPages(newPages);
+
+				return false;
 			}
 		};
 	});
-}(jQuery));
-
-
-/**
- * Add File Action
- */
-addfolder = Class.create();
-addfolder.applyTo('#addpage');
-addfolder.prototype = {
-	initialize: function () {
-		Observable.applyTo($(this.id + '_options'));
-		this.getElementsByTagName('button')[0].onclick = returnFalse;
-		$(this.id + '_options').onsubmit = this.form_submit;
-		
-	},
 	
-	onclick : function() {
-		statusMessage('Creating new folder...');
-		this.form_submit();
-/*		
-			if(treeactions.toggleSelection(this)) {
-			var selectedNode = $('sitetree').firstSelected();
-			
-			if(selectedNode) {
-				while(selectedNode.parentTreeNode && !selectedNode.hints.defaultChild) {
-					$('sitetree').changeCurrentTo(selectedNode.parentTreeNode);
-					selectedNode = selectedNode.parentTreeNode;
+	$('#Form_SyncForm').concrete('ss', function($) {
+		return {
+			onmatch: function() {
+				this.bind('submit', this._onsubmit);			
+				this._super();
+			},
+			_onsubmit: function(e) {
+				var button = jQuery(this).find(':submit:first');
+				button.addClass('loading');
+				$.get(
+					jQuery(this).attr('action'),
+					function() {
+						button.removeClass('loading');
+					}
+				);
+				
+				return false;
+			}
+		};
+	});
+	
+	$('#Form_DeleteItemsForm').concrete('ss', function($) {
+		return {
+			onmatch: function() {
+				$('#TreeActions').bind('tabsselect', function(e, ui) {
+					if($(ui.tab).attr('id') == 'TreeActions-delete-btn') {
+						
+					}
+				});
+			},
+			/**
+			 * @param {Boolean}
+			 */
+			toggleTree: function(bool) {
+				if(bool) {
+					deletefolder.o1 = $('sitetree').observeMethod('SelectionChanged', deletefolder.treeSelectionChanged);
+					deletefolder.o2 = $('Form_DeleteItemsForm').observeMethod('Close', deletefolder.popupClosed);
+
+					jQuery('#sitetree').addClass('multiselect');
+
+					deletefolder.selectedNodes = { };
+
+					var sel = $('sitetree').firstSelected()
+					if(sel) {
+						var selIdx = $('sitetree').getIdxOf(sel);
+						deletefolder.selectedNodes[selIdx] = true;
+						sel.removeNodeClass('current');
+						sel.addNodeClass('selected');		
+					}
 				}
 			}
-		}
-*/		
-		return false;
-	},
-
-	form_submit : function() {
-		var st = $('sitetree');
-
-		$('Form_AddPageOptionsForm').elements.ParentID.value = st.getIdxOf(st.firstSelected());		
-		Ajax.SubmitForm('Form_AddPageOptionsForm', null, {
-			onSuccess : this.onSuccess,
-			onFailure : this.showAddPageError
-		});
-		return false;
-	},
-	onSuccess: function(response) {
-		Ajax.Evaluator(response);
-		// Make it possible to drop files into the new folder
-		DropFileItem.applyTo('#sitetree li');
-	},
-	showAddPageError: function(response) {
-		errorMessage('Error adding folder', response);
-	}	
-}
-
-/**
- * Look for new files (FilesystemSync) action
- */
-FilesystemSyncClass = Class.create();
-FilesystemSyncClass.applyTo('#filesystemsync');
-FilesystemSyncClass.prototype = {
-	initialize: function () {
-		this.getElementsByTagName('button')[0].onclick = returnFalse;
-	},
-	
-	onclick : function() {
-		statusMessage('Looking for new files');
-        new Ajax.Request('dev/tasks/FilesystemSyncTask', {
-            onSuccess: function(t) {
-                statusMessage(t.responseText, "good");
-            },
-            onFailure: function(t) {
-                errorMessage("There was an error looking for new files");
-            }
-		});
-		return false;
-	}
-}
+			
+		};
+	});
+}(jQuery));
 
 /**
  * Delete folder action
  */
 deletefolder = {
 	button_onclick : function() {
-		if(treeactions.toggleSelection(this)) {
-			deletefolder.o1 = $('sitetree').observeMethod('SelectionChanged', deletefolder.treeSelectionChanged);
-			deletefolder.o2 = $('Form_DeleteItemsForm').observeMethod('Close', deletefolder.popupClosed);
-			
-			jQuery('#sitetree').addClass('multiselect');
-
-			deletefolder.selectedNodes = { };
-
-			var sel = $('sitetree').firstSelected()
-			if(sel) {
-				var selIdx = $('sitetree').getIdxOf(sel);
-				deletefolder.selectedNodes[selIdx] = true;
-				sel.removeNodeClass('current');
-				sel.addNodeClass('selected');		
-			}
-		}
+		
 		return false;
 	},
 

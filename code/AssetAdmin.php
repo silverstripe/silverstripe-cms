@@ -36,8 +36,8 @@ class AssetAdmin extends LeftAndMain {
 	public static $apply_restrictions_to_admin = false;
 	
 	static $allowed_actions = array(
-		'addfolder',
-		'deletefolder',
+		'doAdd',
+		'AddForm',
 		'deletemarked',
 		'DeleteItemsForm',
 		'deleteUnusedThumbnails',
@@ -50,7 +50,9 @@ class AssetAdmin extends LeftAndMain {
 		'savefile',
 		'uploadiframe',
 		'UploadForm',
-		'deleteUnusedThumbnails' => 'ADMIN'
+		'deleteUnusedThumbnails' => 'ADMIN',
+		'batchactions',
+		'BatchActionsForm'
 	);
 	
 	/**
@@ -105,6 +107,8 @@ class AssetAdmin extends LeftAndMain {
 			};
 JS
 		);
+		
+		CMSBatchActionHandler::register('delete', 'AssetAdmin_DeleteBatchAction', 'Folder');
 	}
 	
 	/**
@@ -507,9 +511,32 @@ JS;
 	// Data saving handlers
 
 	/**
+	 * @return Form
+	 */
+	function AddForm() {
+		$typeMap = array('Folder' => singleton('Folder')->i18n_singular_name());
+		$typeField = new DropdownField('Type', false, $typeMap, 'Folder');
+		$form = new Form(
+			$this,
+			'AddForm',
+			new FieldSet(
+				new HiddenField('ParentID'),
+				$typeField->performReadonlyTransformation()
+			),
+			new FieldSet(
+				new FormAction('doAdd', _t('AssetAdmin_left.ss.GO','Go'))
+			)
+		);
+		$form->setValidator(null);
+		$form->addExtraClass('actionparams');
+		
+		return $form;
+	}
+
+	/**
 	 * Add a new folder and return its details suitable for ajax.
 	 */
-	public function addfolder() {
+	public function doAdd() {
 		$parent = ($_REQUEST['ParentID'] && is_numeric($_REQUEST['ParentID'])) ? (int)$_REQUEST['ParentID'] : 0;
 		$name = (isset($_REQUEST['Name'])) ? basename($_REQUEST['Name']) : _t('AssetAdmin.NEWFOLDER',"NewFolder");
 		
@@ -552,63 +579,51 @@ JS;
 	}
 	
 	/**
-	 * @return Form
+	 * Batch Actions Handler
 	 */
-	function DeleteItemsForm() {
-		$form = new Form(
-			$this,
-			'DeleteItemsForm',
-			new FieldSet(
-				new LiteralField('SelectedPagesNote',
-					sprintf('<p>%s</p>', _t('AssetAdmin_left.ss.SELECTTODEL','Select the folders that you want to delete and then click the button below'))
-				),
-				new HiddenField('csvIDs')
-			),
-			new FieldSet(
-				new FormAction('deletefolder', _t('AssetAdmin_left.ss.DELFOLDERS','Delete the selected folders'))
-			)
-		);
-		$form->addExtraClass('actionparams');
-		
-		return $form;
+	function batchactions() {
+		return new CMSBatchActionHandler($this, 'batchactions', 'Folder');
 	}
 	
 	/**
-	 * Delete a folder
+	 * @return Form
 	 */
-	public function deletefolder() {
-		$script = '';
-		$ids = split(' *, *', $_REQUEST['csvIDs']);
-		$script = '';
+	function BatchActionsForm() {
+		$actions = $this->batchactions()->batchActionList();
+		$actionsMap = array();
+		foreach($actions as $action) $actionsMap[$action->Link] = $action->Title;
 		
-		if(!$ids) return false;
+		$form = new Form(
+			$this,
+			'BatchActionsForm',
+			new FieldSet(
+				new LiteralField(
+					'Intro',
+					sprintf('<p><small>%s</small></p>',
+						_t(
+							'CMSMain_left.ss.SELECTPAGESACTIONS',
+							'Select the pages that you want to change &amp; then click an action:'
+						)
+					)
+				),
+				new HiddenField('csvIDs'),
+				new DropdownField(
+					'Action',
+					false,
+					$actionsMap
+				)
+			),
+			new FieldSet(
+				// TODO i18n
+				new FormAction('submit', "Go")
+			)
+		);
+		$form->addExtraClass('actionparams');
+		$form->unsetValidator();
 		
-		foreach($ids as $id) {
-			if(is_numeric($id)) {
-				$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-				if($record) {
-					$record->delete();
-					$record->destroy();
-				}
-			}
-		}
-		
-		$size = sizeof($ids);
-		if($size > 1) {
-		  $message = $size.' '._t('AssetAdmin.FOLDERSDELETED', 'folders deleted.');
-		} else {
-		  $message = $size.' '._t('AssetAdmin.FOLDERDELETED', 'folder deleted.');
-		}
-
-		if(isset($brokenPageList)) {
-		  $message .= '  '._t('AssetAdmin.NOWBROKEN', 'The following pages now have broken links:').'<ul>'.addslashes($brokenPageList).'</ul>'.
-		    _t('AssetAdmin.NOWBROKEN2', 'Their owners have been emailed and they will fix up those pages.');			
-		}
-
-		$script .= "statusMessage('$message');";
-		echo $script;
+		return $form;
 	}
-	
+		
 	public function removefile(){
 		if($fileID = $this->urlParams['ID']) {
 			$file = DataObject::get_by_id('File', $fileID);
@@ -753,5 +768,39 @@ JS;
 		return array_diff($allThumbnails, $usedThumbnails);
 	}
 	
+}
+/**
+ * Delete multiple {@link Folder} records (and the associated filesystem nodes).
+ * Usually used through the {@link AssetAdmin} interface.
+ * 
+ * @package cms
+ * @subpackage batchactions
+ */
+class AssetAdmin_DeleteBatchAction extends CMSBatchAction {
+	function getActionTitle() {
+		// _t('AssetAdmin_left.ss.SELECTTODEL','Select the folders that you want to delete and then click the button below')
+		return _t('AssetAdmin_DeleteBatchAction.TITLE', 'Delete folders');
+	}
+
+	function run(DataObjectSet $records) {
+		$status = array(
+			'modified'=>array(),
+			'deleted'=>array()
+		);
+		
+		foreach($records as $record) {
+			$id = $record->ID;
+			
+			// Perform the action
+			if($record->canDelete()) $record->delete();
+
+			$status['deleted'][$id] = array();
+
+			$record->destroy();
+			unset($record);
+		}
+
+		return Convert::raw2json($status);
+	}
 }
 ?>

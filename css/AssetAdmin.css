@@ -22,3 +22,20 @@
 .DraggedHandle {
 	width: 30em !important;
 }
+form#Form_AddForm fieldset {
+	float: left;
+	margin-right: 1em;
+}
+form#Form_AddForm .field span.readonly {
+	background: none;
+	border: none;
+	margin: 0;
+	padding: 0;
+	width: auto;
+}
+
+#TreeActions-sync {
+	/* Same as .checkboxAboveTree */
+	border-top: 1px solid #CCCCCC;
+	padding: .5em;
+}
