@@ -36,13 +36,6 @@ Behaviour.register({
 
 });
 
-function isVisible(el) {
-	// if(typeof el.isVisible != 'undefined') return el.isVisible;
-	if(el.tagName == "body" || el.tagName == "BODY") return (el.isVisible = true);
-	else if(el.style.display == 'none') return (el.isVisible = false);
-	else return (el.isVisible = isVisible(el.parentNode));
-}
-
 
 LeftAndMain_window_unload = function() {
 	window.exiting = true; // this is used by prototype
