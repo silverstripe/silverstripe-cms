@@ -52,6 +52,8 @@ class LeftAndMain extends Controller {
 		'EditForm',
 		'BatchActionsForm',
 		'batchactions',
+		'AddForm',
+		'doAdd'
 	);
 	
 	/**
@@ -819,6 +821,7 @@ JS;
 		
 		return $form;
 	}	
+	
 	/**
 	 * Returns a placeholder form, used by {@link getEditForm()} if no record is selected.
 	 * Our javascript logic always requires a form to be present in the CMS interface.
@@ -848,6 +851,66 @@ JS;
 		$form->unsetValidator();
 		
 		return $form;
+	}
+	
+	/**
+	 * @return Form
+	 */
+	function AddForm() {
+		$class = $this->stat('tree_class');
+		
+		$typeMap = array($class => singleton($class)->i18n_singular_name());
+		$typeField = new DropdownField('Type', false, $typeMap, $class);
+		$form = new Form(
+			$this,
+			'AddForm',
+			new FieldSet(
+				new HiddenField('ParentID'),
+				$typeField->performReadonlyTransformation()
+			),
+			new FieldSet(
+				new FormAction('doAdd', _t('AssetAdmin_left.ss.GO','Go'))
+			)
+		);
+		$form->setValidator(null);
+		$form->addExtraClass('actionparams');
+		
+		return $form;
+	}
+	
+	/**
+	 * Add a new group and return its details suitable for ajax.
+	 */
+	public function doAdd($data, $form) {
+		$class = $this->stat('tree_class');
+		
+		// check create permissions
+		if(!singleton($class)->canCreate()) return Security::permissionFailure($this);
+		
+		// check addchildren permissions
+		if(
+			singleton($class)->hasDatabaseField('Hierarchy') 
+			&& isset($data['ParentID'])
+			&& is_numeric($data['ParentID'])
+		) {
+			$parentRecord = DataObject::get_by_id($class, $data['ParentID']);
+			if(
+				$parentRecord->hasMethod('canAddChildren') 
+				&& !$parentRecord->canAddChildren()
+			) return Security::permissionFailure($this);
+		}
+		
+		$record = Object::create($class);
+		$form->saveInto($record);
+		$record->write();
+
+		// Used in TinyMCE inline folder creation
+		if(isset($data['returnID'])) {
+			return $record->ID;
+		} else {
+			$form = $this->getEditForm($record->ID);
+			return $form->formHtmlContent();
+		}
 	}
 	
 	/**

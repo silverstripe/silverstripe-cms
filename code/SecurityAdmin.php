@@ -21,7 +21,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		'autocomplete',
 		'removememberfromgroup',
 		'savemember',
-		'AddForm',
 		'AddRecordForm',
 		'MemberForm',
 		'EditForm',
@@ -44,48 +43,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		);
 		
 		return $form;
-	}
-	
-	/**
-	 * @return Form
-	 */
-	function AddForm() {
-		$class = $this->stat('tree_class');
-		
-		$typeMap = array('Folder' => singleton($class)->i18n_singular_name());
-		$typeField = new DropdownField('Type', false, $typeMap, 'Folder');
-		$form = new Form(
-			$this,
-			'AddForm',
-			new FieldSet(
-				new HiddenField('ParentID'),
-				$typeField->performReadonlyTransformation()
-			),
-			new FieldSet(
-				new FormAction('doAdd', _t('AssetAdmin_left.ss.GO','Go'))
-			)
-		);
-		$form->setValidator(null);
-		$form->addExtraClass('actionparams');
-		
-		return $form;
-	}
-	
-	/**
-	 * Add a new group and return its details suitable for ajax.
-	 */
-	public function doAdd($data, $form) {
-		$parentID = (isset($data['ParentID']) && is_numeric($data['ParentID'])) ? (int)$data['ParentID'] : 0;
-		
-		if(!singleton($this->stat('tree_class'))->canCreate()) return Security::permissionFailure($this);
-		
-		$record = Object::create($this->stat('tree_class'));
-		$record->Title = _t('SecurityAdmin.NEWGROUP',"New Group");
-		$record->ParentID = $parentID;
-		$record->write();
-
-		$form = $this->getEditForm($record->ID);
-		return $form->formHtmlContent();
 	}
 
 	public function AddRecordForm() {

@@ -36,8 +36,6 @@ class AssetAdmin extends LeftAndMain {
 	public static $apply_restrictions_to_admin = false;
 	
 	static $allowed_actions = array(
-		'doAdd',
-		'AddForm',
 		'deleteUnusedThumbnails',
 		'doUpload',
 		'getsubtree',
@@ -313,65 +311,6 @@ HTML;
 	//------------------------------------------------------------------------------------------//
 
 	// Data saving handlers
-
-	/**
-	 * @return Form
-	 */
-	function AddForm() {
-		$typeMap = array('Folder' => singleton($this->stat('tree_class'))->i18n_singular_name());
-		$typeField = new DropdownField('Type', false, $typeMap, 'Folder');
-		$form = new Form(
-			$this,
-			'AddForm',
-			new FieldSet(
-				new HiddenField('ParentID'),
-				$typeField->performReadonlyTransformation()
-			),
-			new FieldSet(
-				new FormAction('doAdd', _t('AssetAdmin_left.ss.GO','Go'))
-			)
-		);
-		$form->setValidator(null);
-		$form->addExtraClass('actionparams');
-		
-		return $form;
-	}
-
-	/**
-	 * Add a new folder and return its details suitable for ajax.
-	 */
-	public function doAdd($data, $form) {
-		$parentID = (isset($data['ParentID']) && is_numeric($data['ParentID'])) ? (int)$data['ParentID'] : 0;
-		$name = (isset($data['Name'])) ? basename($data['Name']) : _t('AssetAdmin.NEWFOLDER',"NewFolder");
-		
-		if($parentID) {
-			$parentObj = DataObject::get_by_id('File', $parentID);
-			if(!$parentObj || !$parentObj->ID) $parentID = 0;
-		}
-		
-		// Get the folder to be created		
-		if(isset($parentObj->ID)) $filename = $parentObj->FullPath . $name;
-		else $filename = ASSETS_PATH . '/' . $name;
-
-		// Actually create
-		if(!file_exists(ASSETS_PATH)) {
-			mkdir(ASSETS_PATH);
-		}
-		
-		$p = new Folder();
-		$p->ParentID = $parentID;
-		$p->Name = $p->Title = basename($filename);		
-		$p->write();
-
-		// Used in TinyMCE inline folder creation
-		if(isset($data['returnID'])) {
-			return $p->ID;
-		} else {
-			$form = $this->getEditForm($p->ID);
-			return $form->formHtmlContent();
-		}
-		
-	}
 		
 	/**
 	 * @return Form
