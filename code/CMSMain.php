@@ -305,6 +305,13 @@ JS;
 			return $this->getNewItem($id);
 		}
 	}
+	
+	/**
+	 * @return Form
+	 */
+	function EditForm($request = null) {
+		return $this->getEditForm();
+	}
 
 	/**
 	 * Calls {@link SiteTree->getCMSFields()}

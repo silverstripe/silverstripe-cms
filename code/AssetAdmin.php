@@ -280,9 +280,18 @@ HTML;
 	}
 	
 	/**
+	 * @return Form
+	 */
+	function EditForm($request = null) {
+		return $this->getEditForm();
+	}
+	
+	/**
 	 * Return the form that displays the details of a folder, including a file list and fields for editing the folder name.
 	 */
 	function getEditForm($id = null) {
+		if(!$id) $id = $this->currentPageID();
+		
 		if($id && $id != "root") {
 			$record = DataObject::get_by_id("File", $id);
 		} else {

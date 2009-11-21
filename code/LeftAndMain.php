@@ -771,30 +771,24 @@ JS;
 	}
 	
 	/**
-	 * Uses {@link getEditForm()} to retrieve an edit form
-	 * based on the submitted data. Used for form submissions,
-	 * not for template rendering.
+	 * Retrieves an edit form, either for display, or to process submitted data.
+	 * Also used in the template rendered through {@link Right()} in the $EditForm placeholder.
 	 * 
-	 * @param HTTPRequest $request
-	 * @return Form
-	 */
-	function EditForm($request = null) {
-		return $this->getEditForm($request ? $request->requestVar('ID') : null);
-	}
-	
-	/**
-	 * Gets the edit form of a specific record. Will usually construct itself
-	 * from {@link DataObject->getCMSFields()} for the specific managed subclass
-	 * defined in {@link LeftAndMain::$tree_class}.
+	 * This is a "pseudo-abstract" methoed, usually connected to a {@link getEditForm()}
+	 * method in a concrete subclass. This method can accept a record identifier,
+	 * selected either in custom logic, or through {@link currentPageID()}. 
+	 * The form usually construct itself from {@link DataObject->getCMSFields()} 
+	 * for the specific managed subclass defined in {@link LeftAndMain::$tree_class}.
 	 * 
-	 * @param int $id ID of a record for {@link LeftAndMain::$tree_class} (Optional)
+	 * @param HTTPRequest $request Optionally contains an identifier for the
+	 *  record to load into the form.
 	 * @return Form Should return a form regardless wether a record has been found.
 	 *  Form might be readonly if the current user doesn't have the permission to edit
 	 *  the record.
 	 */
-	function getEditForm($id = null) {
-		die('getEditForm(): Not implemented');
-	} 
+	function EditForm($request = null) {
+		return $this->EmptyForm();
+	}
 	
 	/**
 	 * Returns a placeholder form, used by {@link getEditForm()} if no record is selected.
@@ -839,9 +833,9 @@ JS;
 	}
 
 	public function printable() {
-		$id = $_REQUEST['ID'] ? $_REQUEST['ID'] : $this->currentPageID();
-
-		if($id) $form = $this->getEditForm($id);
+		$form = $this->getEditForm($this->currentPageID());
+		if(!$form) return false;
+		
 		$form->transform(new PrintableTransformation());
 		$form->actions = null;
 
