@@ -338,6 +338,7 @@ ul.tree span.a.Root span.c {
 
 #sitetree_ul {
 	overflow: auto;
+	overflow-x: hidden;
 }
 
 ul#sitetree.tree ul {
