@@ -218,4 +218,8 @@ TinyMCEImageEnhancement.prototype = {
         return  $('Form_EditorToolbarImageForm_FolderID').value == '' ? 'root' : $('Form_EditorToolbarImageForm_FolderID').value;
     }
 }
-tinyMCEImageEnhancement = new TinyMCEImageEnhancement();
+var tinyMCEImageEnhancement;
+
+jQuery(function() {
+	tinyMCEImageEnhancement = new TinyMCEImageEnhancement();
+});
