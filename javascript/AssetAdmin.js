@@ -15,42 +15,6 @@ var _HANDLER_FORMS = {
 	sortitems : 'sortitems_options'
 };
 
-/**
- * Top-right actions
- */
-
-function action_upload_right(e) {
-	if(frames['AssetAdmin_upload'].document && frames['AssetAdmin_upload'].document.getElementById('Form_UploadForm')) {
-		// make sure at least one file is selected for upload
-		var values = "";
-		var inputs = $A(frames['AssetAdmin_upload'].document.getElementsByTagName("input"));
-		inputs.each(function(input) {
-			if(input.type == "file") values += input.value;
-		}.bind(this));
-		
-		if(values.length == 0) {
-			alert("Please select at least one file for uploading");
-			openTab("Root_Upload");
-		} else {
-			frames['AssetAdmin_upload'].document.getElementById('Form_UploadForm').submit();
-		}
-	}
-	Event.stop(e);
-	return false;
-}
-
-/**
- * Set up save folder name action
- */
-Behaviour.register( {
-	'#Form_EditForm_save': {
-		onclick : function() {
-			$('Form_EditForm').save(false, null, 'save', false);
-			return false;
-		}
-	}
-});
-
 MarkingPropertiesButton = Class.create();
 MarkingPropertiesButton.applyTo('#Form_EditForm_deletemarked', "Please select some files to delete!", 'deletemarked', 'Do you really want to delete the marked files?');
 
