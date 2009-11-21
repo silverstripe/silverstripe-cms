@@ -489,3 +489,11 @@
 #Form_EditorToolbarLinkForm .field {
 	margin-left: 0;
 }
+
+/**
+ * jQuery UI Datepicker - necessary because of custom
+ * z-indexing performed in jQuery.layout
+ */
+#ui-datepicker-div {
+	z-index: 1002;
+}
