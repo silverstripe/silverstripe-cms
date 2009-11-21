@@ -61,8 +61,8 @@ body.ModelAdmin #SearchForm_holder form div#ResultAssembly{
 		width: 45%;
 	}
 
-body.ModelAdmin #ResultTable_holder {
-	overflow:auto;
+body.ModelAdmin .resultsTable tbody td {
+	cursor: pointer;
 }
 
 body.ModelAdmin #right{

@@ -19,12 +19,12 @@
 	 */
 	$('#ModelClassSelector select').concrete({
 		onmatch: function() {
+			var self = this;
 			// Set up an onchange function to show the applicable form and hide all others
 			this.bind('change', function(e) {
-				var $selector = $(this);
-				this.find('option').each(function() {
+				self.find('option').each(function() {
 					var $form = $('#'+$(this).val());
-					if($selector.val() == $(this).val()) $form.show();
+					if(self.val() == $(this).val()) $form.show();
 					else $form.hide();
 				});
 			});
@@ -96,13 +96,13 @@
 	/**
 	 * Table record handler for search result record
 	 */
-	$('form[name=Form_ResultsForm] tbody td a').concrete({
+	$('.resultsTable tbody td').concrete({
 		onmatch: function() {
 			// TODO Replace with concrete event handler
 			this.bind('click', function(e) {
-				if($(this).hasClass('deletelink downloadlink')) return true;
-
-				$('#Form_EditForm').concrete('ss').loadForm($(this).attr('href'));
+				var firstLink = $(this).find('a[href]');
+				if(!firstLink) return;
+				$('#Form_EditForm').concrete('ss').loadForm(firstLink.attr('href'));
 				return false;
 			});
 		}

@@ -606,6 +606,7 @@ class ModelAdmin_CollectionController extends Controller {
 		$resultsForm = $this->ResultsForm(array_merge($form->getData(), $request));
 		// Before rendering, let's get the total number of results returned
 		$tableField = $resultsForm->Fields()->dataFieldByName($this->modelClass);
+		$tableField->addExtraClass('resultsTable');
 		$numResults = $tableField->TotalCount();
 		
 		if($numResults) {
