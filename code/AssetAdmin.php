@@ -79,7 +79,6 @@ class AssetAdmin extends LeftAndMain {
 		}
 
 		// needed for MemberTableField (Requirements not determined before Ajax-Call)
-		Requirements::css(THIRDPARTY_DIR . "/greybox/greybox.css");
 		Requirements::css(SAPPHIRE_DIR . "/css/ComplexTableField.css");
 
 		Requirements::javascript(CMS_DIR . "/javascript/AssetAdmin.js");
