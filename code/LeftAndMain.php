@@ -254,8 +254,8 @@ class LeftAndMain extends Controller {
 		Requirements::combine_files(
 			'assets/base.js',
 			array(
-				'sapphire/thirdparty/prototype.js',
-				'sapphire/thirdparty/behaviour.js',
+				'sapphire/thirdparty/prototype/prototype.js',
+				'sapphire/thirdparty/behaviour/behaviour.js',
 				'sapphire/javascript/prototype_improvements.js',
 				'sapphire/thirdparty/jquery/jquery.js',
 				'sapphire/thirdparty/jquery-livequery/jquery.livequery.js',
@@ -274,8 +274,6 @@ class LeftAndMain extends Controller {
 				'sapphire/thirdparty/scriptaculous/dragdrop.js',
 				'sapphire/thirdparty/scriptaculous/controls.js',
 				'cms/javascript/LeftAndMain.js',
-				'cms/javascript/LeftAndMain_left.js',
-				'cms/javascript/LeftAndMain_right.js',
 				'sapphire/javascript/tree/tree.js',
 				'cms/javascript/TinyMCEImageEnhancement.js',
 				'cms/thirdparty/swfupload/swfupload.js',
