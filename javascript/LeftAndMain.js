@@ -1,6 +1,15 @@
 (function($) {
 	
+	// setup jquery.concrete
 	$.concrete.warningLevel = $.concrete.WARN_LEVEL_BESTPRACTISE;
+	
+	// global ajax error handlers
+	$.ajaxSetup({
+		error: function(xmlhttp, status, error) {
+			var msg = (xmlhttp.getResponseHeader('X-Status')) ? xmlhttp.getResponseHeader('X-Status') : xmlhttp.statusText;
+			statusMessage(msg, 'bad');
+		}
+	});
 
 	/**
 	 * Available Custom Events:
