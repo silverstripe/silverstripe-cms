@@ -31,10 +31,13 @@
 	
 			/**
 			 * @param {DOMElement} button The pressed button (optional)
+			 * @param {Function} callback Called in complete() handler of jQuery.ajax()
 			 */
-			ajaxSubmit: function(button) {
+			ajaxSubmit: function(button, callback, ajaxOptions) {
+				// look for save button
+				if(!button) button = this.find('.Actions :submit[name=action_save]');
 				// default to first button if none given - simulates browser behaviour
-				if(!button) button = this.find(':submit:first');
+				if(!button) button = this.find('.Actions :submit:first');
 		
 				var self = this;
 		
@@ -60,18 +63,20 @@
 				var formData = this.serializeArray();
 				// add button action
 				formData.push({name: $(button).attr('name'), value:'1'});
-
-				$.ajax({
+				$.ajax($.extend({
 					url: this.attr('action'), 
 					data: formData,
 					type: 'POST',
 					complete: function(xmlhttp, status) {
 						$(button).removeClass('loading');
+						
+						if(callback) callback(xmlhttp, status);
+						
 						// pass along original form data to enable old/new comparisons
 						self._loadResponse(xmlhttp.responseText, status, xmlhttp, formData);
 					}, 
 					dataType: 'html'
-				});
+				}, ajaxOptions));
 		
 				return false;
 			},
