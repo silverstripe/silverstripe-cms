@@ -318,8 +318,6 @@ JS;
 		if($record && !$record->canView()) return Security::permissionFailure($this);
 
 		if($record) {
-			if($record->IsDeletedFromStage) $record->Status = _t('CMSMain.REMOVEDFD',"Removed from the draft site");
-
 			$fields = $record->getCMSFields($this);
 			if ($fields == null) {
 				user_error("getCMSFields returned null on a '".get_class($record)."' object - it should return a FieldSet object. Perhaps you forgot to put a return statement at the end of your method?", E_USER_ERROR);

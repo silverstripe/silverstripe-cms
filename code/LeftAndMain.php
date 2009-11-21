@@ -546,14 +546,11 @@ class LeftAndMain extends Controller {
 			$record = $this->getNewItem($SQL_id, false);
 		}
 		
+		// TODO Coupling to SiteTree
 		$record->HasBrokenLink = 0;
 		$record->HasBrokenFile = 0;
 
 		$record->writeWithoutVersion();
-
-		if(is_a($record, "Page")) {
-			$record->Status = ($record->Status == "New page" || $record->Status == "Saved (new)") ? "Saved (new)" : "Saved (update)";
-		}
 
 		// Update the class instance if necessary
 		if($data['ClassName'] != $record->ClassName) {
@@ -710,7 +707,6 @@ JS;
 			if($node && !$node->canEdit()) return Security::permissionFailure($this);
 			
 			$node->ParentID = $parentID;
-			$node->Status = "Saved (update)";
 			$node->write();
 			
 			$statusUpdates['modified'][$node->ID] = array(
@@ -763,7 +759,6 @@ JS;
 		foreach($request->requestVar('ID') as $id) {
 			if($id == $movedNode->ID) {
 				$movedNode->Sort = ++$counter;
-				$movedNode->Status = "Saved (update)";
 				$movedNode->write();
 				$statusUpdates['modified'][$movedNode->ID] = array(
 					'TreeTitle'=>$movedNode->TreeTitle
