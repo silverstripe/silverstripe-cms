@@ -348,7 +348,7 @@ var ss_MainLayout;
 		},
 		
 		_resetForm: function(e) {
-			this.find('.field :input').clearFields().not(':first').hide();
+			this.find('.field').clearFields().not(':first').hide();
 			
 			// Reset URL to default
 			$('#sitetree')[0].clearCustomURL();
