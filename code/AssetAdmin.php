@@ -141,6 +141,7 @@ JS
 		// see r54952 (originally committed in r42014)
 		$form = new Form($this,'UploadForm', new FieldSet(
 			new HiddenField("ID", "", $this->currentPageID()),
+			new HiddenField("FolderID", "", $this->currentPageID()),
 			// needed because the button-action is triggered outside the iframe
 			new HiddenField("action_doUpload", "", "1"), 
 			new FileField("Files[0]" , _t('AssetAdmin.CHOOSEFILE','Choose file: ')),
