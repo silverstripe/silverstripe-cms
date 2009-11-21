@@ -96,28 +96,6 @@ addpageclass.prototype = {
 		errorMessage(ss.i18n._t('CMSMAIN.ERRORADDINGPAGE'), response);
 	}
 }
-
-/**
- * Search button click action
- */
-searchclass = Class.create();
-searchclass.applyTo('#search');
-searchclass.prototype = {
-	initialize : function() {
-		Observable.applyTo($(_HANDLER_FORMS.search));
-	},
-	onclick : function() {
-		if(treeactions.toggleSelection(this)) {
-			this.o2 = $(_HANDLER_FORMS[this.id]).observeMethod('Close', this.popupClosed.bind(this));
-		}
-		return false;
-	},
-	popupClosed : function() {
-		$(_HANDLER_FORMS.search).stopObserving(this.o2);
-		batchActionGlobals.unfilterSiteTree();
-	}
-}
-
 SiteTreeFilter = Class.create();
 SiteTreeFilter.applyTo('#siteTreeFilterList');
 SiteTreeFilter.prototype = {
