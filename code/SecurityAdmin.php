@@ -48,12 +48,14 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		Requirements::javascript(THIRDPARTY_DIR . "/greybox/greybox.js");
 	}
 
-	public function getEditForm($id) {
+	public function getEditForm($id = null) {
 		$record = null;
 		
 		if($id && $id != 'root') {
 			$record = DataObject::get_by_id($this->stat('tree_class'), $id);
 		}
+		
+		if($record && !$record->canView()) return Security::permissionFailure($this);
 		
 		if($record) {
 			$fields = $record->getCMSFields();
@@ -71,12 +73,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 				$form->setFields($readonlyFields);
 			}
 		} else {
-			$form = new Form(
-				$this, 
-				"EditForm", 
-				new FieldSet(), 
-				new FieldSet()
-			);
+			$form = $this->EmptyForm();
 		}
 		
 		return $form;

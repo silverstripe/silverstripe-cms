@@ -35,11 +35,6 @@
 				// Can't bind this through jQuery
 				window.onbeforeunload = function(e) {return self._checkChangeTracker(false);};
 				
-				// set default placeholder if form has no children
-				this.setPlaceholderHtml(jQuery('.ss-cmsForm-welcomeMessage').html());
-				jQuery('.ss-cmsForm-welcomeMessage').remove();
-				if(!self.find('*').length) self.removeForm();
-				
 				$._super();
 			},
 			

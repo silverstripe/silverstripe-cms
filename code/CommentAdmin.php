@@ -52,7 +52,7 @@ class CommentAdmin extends LeftAndMain {
 		return $section;
 	}
 
-	public function EditForm() {
+	public function getEditForm($id = null) {
 		$section = $this->Section();
 
 		if($section == 'approved') {

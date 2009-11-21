@@ -327,8 +327,12 @@ JS;
 	/**
 	 * Calls {@link SiteTree->getCMSFields()}
 	 */
-	public function getEditForm($id) {
-		$record = $this->getRecord($id);
+	public function getEditForm($id = null) {
+		// Include JavaScript to ensure HtmlEditorField works.
+		HtmlEditorField::include_js();
+		
+		$record = ($id) ? $this->getRecord($id) : null;
+		if($record && !$record->canView()) return Security::permissionFailure($this);
 
 		if($record) {
 			if($record->IsDeletedFromStage) $record->Status = _t('CMSMain.REMOVEDFD',"Removed from the draft site");
@@ -401,18 +405,11 @@ JS;
 			$form->loadDataFrom($siteConfig);
 			return $form;
 		} else {
-			$form = new Form(
-				$this, 
-				"EditForm", 
-				new FieldSet(), 
-				new FieldSet()
-			);
+			$form = $this->EmptyForm();
 		}
 				
 		return $form;
 	}
-
-
 
 	//------------------------------------------------------------------------------------------//
 	// Data saving handlers

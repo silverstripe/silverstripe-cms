@@ -339,12 +339,16 @@ class LeftAndMain extends Controller {
 	}
 
 	public function show($request) {
+		$form = $this->getEditForm($request->param('ID'));
+		
 		if(Director::is_ajax()) {
 			SSViewer::setOption('rewriteHashlinks', false);
-			return $this->EditForm()->formHtmlContent();
+			return $form->formHtmlContent();
 		} else {
 			// Rendering is handled by template, which will call EditForm() eventually
-			return array();
+			return $this->customise(array(
+				'EditForm' => $form
+			))->renderWith($this->getViewer('show'));
 		}
 	}
 
@@ -358,8 +362,8 @@ class LeftAndMain extends Controller {
 			if($record && !$record->canView()) return Security::permissionFailure($this);
 		}
 
-		$form = $this->EditForm();
-		if ($form) return $form->formHtmlContent();
+		$form = $this->getEditForm();
+		if($form) return $form->formHtmlContent();
 		else return "";
 	}
 	public function getLastFormIn($html) {
@@ -815,21 +819,47 @@ JS;
 
 		return FormResponse::respond();
 	}
-
-	public function EditForm() {
-		// Include JavaScript to ensure HtmlEditorField works.
-		HtmlEditorField::include_js();
-		
-		if ($this->currentPageID() != 0) {
-			$record = $this->currentPage();
-			if(!$record) return false;
-			if($record && !$record->canView()) return Security::permissionFailure($this);
-		}
-		if ($this->hasMethod('getEditForm')) {
-			return $this->getEditForm($this->currentPageID());
-		}
-		
-		return false;
+	
+	/**
+	 * Gets the edit form of a specific record. Will usually construct itself
+	 * from {@link DataObject->getCMSFields()} for the specific managed subclass
+	 * defined in {@link LeftAndMain::$tree_class}.
+	 * 
+	 * @param int $id ID of a record for {@link LeftAndMain::$tree_class} (Optional)
+	 * @return Form Should return a form regardless wether a record has been found.
+	 *  Form might be readonly if the current user doesn't have the permission to edit
+	 *  the record.
+	 */
+	function getEditForm($id = null) {
+		die('getEditForm(): Not implemented');
+	} 
+	
+	/**
+	 * Returns a placeholder form, used by {@link getEditForm()} if no record is selected.
+	 * Our javascript logic always requires a form to be present in the CMS interface.
+	 * 
+	 * @return Form
+	 */
+	function EmptyForm() {
+		return new Form(
+			$this, 
+			"EditForm", 
+			new FieldSet(
+				new HeaderField(
+					'WelcomeHeader',
+					$this->getApplicationName()
+				),
+				new LiteralField(
+					'WelcomeText',
+					sprintf('<p>%s %s. %s</p>',
+						_t('LeftAndMain_right.ss.WELCOMETO','Welcome to'),
+						$this->getApplicationName(),
+						_t('CHOOSEPAGE','Please choose an item from the left.')
+					)
+				)
+			), 
+			new FieldSet()
+		);
 	}
 	
 	public function myprofile() {

@@ -282,12 +282,14 @@ HTML;
 	/**
 	 * Return the form that displays the details of a folder, including a file list and fields for editing the folder name.
 	 */
-	function getEditForm($id) {
+	function getEditForm($id = null) {
 		if($id && $id != "root") {
 			$record = DataObject::get_by_id("File", $id);
 		} else {
 			$record = singleton("Folder");
 		}
+		
+		if($record && !$record->canView()) return Security::permissionFailure($this);
 
 		if($record) {
 			$fields = $record->getCMSFields();
@@ -314,12 +316,7 @@ HTML;
 				$form->makeReadonly();
 			}
 		} else {
-			$form = new Form(
-				$this, 
-				"EditForm", 
-				new FieldSet(), 
-				new FieldSet()
-			);
+			$form = $this->EmptyForm();
 		}
 		
 		return $form;
