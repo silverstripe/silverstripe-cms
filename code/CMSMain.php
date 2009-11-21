@@ -56,7 +56,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'getshowdeletedsubtree',
 		'getfilteredsubtree',
 		'batchactions',
-		'SearchTreeForm'
+		'SearchTreeForm',
+		'ReportForm'
 	);
 	
 	public function init() {
@@ -605,28 +606,46 @@ JS;
 
 	/*
 	 * Return a dropdown for selecting reports
+	 * 
+	 * @return Form
 	 */
-	function ReportSelector() {
+	function ReportForm() {
 		$reports = ClassInfo::subclassesFor("SideReport");
 
-		// $options[""] = _t('CMSMain.CHOOSEREPORT',"(Choose a report)");
 		foreach($reports as $report) {
 			if($report != 'SideReport' && singleton($report)->canView()) {
 				$options[singleton($report)->group()][singleton($report)->sort()][$report] = singleton($report)->title();
 			}
 		}
 		
-		$finalOptions = array();
-		foreach($options as $group => $weights) {
-			ksort($weights);
-			foreach($weights as $weight => $reports) {
-				foreach($reports as $class => $report) {
-					$finalOptions[$group][$class] = $report;
-				}
-			}
-		}
+		$id = $this->request->requestVar('ID');
+		$reportClass = $this->request->requestVar('ReportClass');
+		$report = ClassInfo::exists($reportClass) ? new $reportClass() : false;
+		$reportHtml = ($report) ? $report->getHTML() : false;
 		
-		return new GroupedDropdownField("ReportSelector", _t('CMSMain.REPORT', 'Report'),$finalOptions);
+		$form = new Form(
+			$this,
+			'ReportForm',
+			new FieldSet(
+				new DropdownField(
+					"ReportClass", 
+					_t('CMSMain.REPORT', 'Report'),
+					$options,
+					$reportClass,
+					null,
+					_t('CMSMain.CHOOSEREPORT',"(Choose a report)")
+				),
+				new LiteralField('ReportHtml', $reportHtml),
+				new HiddenField('ID', false, $id),
+				new HiddenField('Locale', false, $this->Locale)
+			),
+			new FieldSet(
+				new FormAction('sidereport', _t('CMSMain_left.ss.GO','Go'))
+			)
+		);
+		$form->unsetValidator();
+		
+		return $form;
 	}
 	function ReportFormParameters() {
 		$reports = ClassInfo::subclassesFor("SideReport");
@@ -651,13 +670,15 @@ JS;
 	}
 	
 	/**
-	 * Get the content for a side report
+	 * Get the content for a side report.
+	 * 
+	 * @param Array $data
+	 * @param Form $form
+	 * @return String
 	 */
-	function sidereport() {
-		$reportClass = $this->urlParams['ID'];
-		$report = ClassInfo::exists($reportClass) ? new $reportClass() : false;
-		$report->setParams($this->request->requestVars());
-		return $report ? $report->getHTML() : false;
+	function sidereport($data, $form) {
+		$form = $this->ReportForm();
+		return (Director::is_ajax()) ? $form->forTemplate() : $form;
 	}
 	/**
 	 * Get the versions of the current page

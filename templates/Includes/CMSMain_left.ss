@@ -44,8 +44,6 @@
 			<a href="#"><% _t('SITEREPORTS','Site Reports') %></a>
 		</h3>
 		<div class="listpane" id="reports_holder">
-			<p id="ReportSelector_holder">$ReportSelector <input class="action" type="submit" id="report_select_go" value="<% _t('GO','Go') %>" /></p>
-			<div class="unitBody">
-			</div>
+			$ReportForm
 		</div>
 	</div>

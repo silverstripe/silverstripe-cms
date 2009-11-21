@@ -475,4 +475,70 @@ var ss_MainLayout;
 		};
 	});
 	
+	/**
+	 * @class Simple form with a page type dropdown
+	 * which creates a new page through #Form_EditForm and adds a new tree node.
+	 * @name ss.Form_AddPageOptionsForm
+	 * @requires ss.i18n
+	 * @requires ss.reports_holder
+	 */
+	$('#Form_ReportForm').concrete(function($) {
+	  return/** @lends ss.reports_holder */{
+			onmatch: function() {
+				var self = this;
+				
+				this.bind('submit', function(e) {
+					return self._submit(e);
+				});
+				
+				// integrate with sitetree selection changes
+				jQuery('#sitetree').bind('selectionchanged', function(e, data) {
+					self.find(':input[name=ID]').val(data.node.getIdx());
+					self.trigger('submit');
+				});
+				
+				// move submit button to the top
+				this.find('#ReportClass').after(this.find('.Actions'));
+				
+				// links in results
+				this.find('ul a').bind('click', function(e) {
+					var $link = $(this);
+					$link.addClass('loading');
+					jQuery('#Form_EditForm').concrete('ss').loadForm(
+						$(this).attr('href'),
+						function(e) {
+							$link.removeClass('loading');
+						}
+					);
+					return false;
+				});
+			},
+			
+			_submit: function(e) {
+				var self = this;
+				
+				// dont process if no report is selected
+				var reportClass = this.find(':input[name=ReportClass]').val();
+				if(!reportClass) return false;
+				
+				var button = this.find(':submit:first');
+				button.addClass('loading');
+				
+				jQuery.ajax({
+					url: this.attr('action'),
+					data: this.serializeArray(),
+					dataType: 'html',
+					success: function(data, status) {
+						// replace current form
+						self.replaceWith(data);
+					},
+					complete: function(xmlhttp, status) {
+						button.removeClass('loading');
+					}
+				});
+				
+				return false;
+			}
+		};
+	});
 })(jQuery);
