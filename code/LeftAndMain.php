@@ -846,11 +846,21 @@ JS;
 		);
 	}
 
+	/**
+	 * Identifier for the currently shown record,
+	 * in most cases a database ID. Inspects the following
+	 * sources (in this order):
+	 * - GET/POST parameter named 'ID'
+	 * - URL parameter named 'ID'
+	 * - Session value namespaced by classname, e.g. "CMSMain.currentPage"
+	 * 
+	 * @return int 
+	 */
 	public function currentPageID() {
-		if(isset($_REQUEST['ID']) && is_numeric($_REQUEST['ID']))	{
-			return $_REQUEST['ID'];
-		} elseif (isset($this->urlParams['ID']) && is_numeric($this->urlParams['ID'])) {
-			return $this->urlParams['ID'];
+		if($this->request->getVar('ID'))	{
+			return $this->request->getVar('ID');
+		} elseif ($this->request->param('ID')) {
+			return $this->request->param('ID');
 		} elseif(Session::get("{$this->class}.currentPage")) {
 			return Session::get("{$this->class}.currentPage");
 		} else {
@@ -858,16 +868,36 @@ JS;
 		}
 	}
 
+	/**
+	 * Forces the current page to be set in session,
+	 * which can be retrieved later through {@link currentPageID()}.
+	 * Keep in mind that setting an ID through GET/POST or
+	 * as a URL parameter will overrule this value.
+	 * 
+	 * @param int $id
+	 */
 	public function setCurrentPageID($id) {
 		Session::set("{$this->class}.currentPage", $id);
 	}
 
+	/**
+	 * Uses {@link getRecord()} and {@link currentPageID()}
+	 * to get the currently selected record.
+	 * 
+	 * @return DataObject
+	 */
 	public function currentPage() {
 		return $this->getRecord($this->currentPageID());
 	}
 
-	public function isCurrentPage(DataObject $page) {
-		return $page->ID == Session::get("{$this->class}.currentPage");
+	/**
+	 * Compares a given record to the currently selected one (if any).
+	 * Used for marking the current tree node.
+	 * 
+	 * @return boolean
+	 */
+	public function isCurrentPage(DataObject $record) {
+		return ($record->ID == $this->currentPageID());
 	}
 	
 	/**
