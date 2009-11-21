@@ -45,6 +45,8 @@ class LeftAndMain extends Controller {
 		'Member_ProfileForm',
 		'EditorToolbar',
 		'EditForm',
+		'BatchActionsForm',
+		'batchactions',
 	);
 	
 	/**
@@ -818,6 +820,52 @@ JS;
 			), 
 			new FieldSet()
 		);
+		$form->unsetValidator();
+		
+		return $form;
+	}
+	
+	/**
+	 * Batch Actions Handler
+	 */
+	function batchactions() {
+		return new CMSBatchActionHandler($this, 'batchactions', $this->stat('tree_class'));
+	}
+	
+	/**
+	 * @return Form
+	 */
+	function BatchActionsForm() {
+		$actions = $this->batchactions()->batchActionList();
+		$actionsMap = array();
+		foreach($actions as $action) $actionsMap[$action->Link] = $action->Title;
+		
+		$form = new Form(
+			$this,
+			'BatchActionsForm',
+			new FieldSet(
+				new LiteralField(
+					'Intro',
+					sprintf('<p><small>%s</small></p>',
+						_t(
+							'CMSMain_left.ss.SELECTPAGESACTIONS',
+							'Select the pages that you want to change &amp; then click an action:'
+						)
+					)
+				),
+				new HiddenField('csvIDs'),
+				new DropdownField(
+					'Action',
+					false,
+					$actionsMap
+				)
+			),
+			new FieldSet(
+				// TODO i18n
+				new FormAction('submit', "Go")
+			)
+		);
+		$form->addExtraClass('actionparams');
 		$form->unsetValidator();
 		
 		return $form;

@@ -77,9 +77,6 @@ class AssetAdmin extends LeftAndMain {
 		// needed for MemberTableField (Requirements not determined before Ajax-Call)
 		Requirements::css(SAPPHIRE_DIR . "/css/ComplexTableField.css");
 
-		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.BatchActions.js');
-
-		Requirements::javascript(CMS_DIR . "/javascript/AssetAdmin.DragDrop.js");
 		Requirements::javascript(CMS_DIR . "/javascript/AssetAdmin.js");
 
 		Requirements::javascript(CMS_DIR . "/javascript/CMSMain_upload.js");
@@ -433,52 +430,6 @@ HTML;
 			return $form->formHtmlContent();
 		}
 		
-	}
-	
-	/**
-	 * Batch Actions Handler
-	 */
-	function batchactions() {
-		return new CMSBatchActionHandler($this, 'batchactions', 'Folder');
-	}
-	
-	/**
-	 * @return Form
-	 */
-	function BatchActionsForm() {
-		$actions = $this->batchactions()->batchActionList();
-		$actionsMap = array();
-		foreach($actions as $action) $actionsMap[$action->Link] = $action->Title;
-		
-		$form = new Form(
-			$this,
-			'BatchActionsForm',
-			new FieldSet(
-				new LiteralField(
-					'Intro',
-					sprintf('<p><small>%s</small></p>',
-						_t(
-							'CMSMain_left.ss.SELECTPAGESACTIONS',
-							'Select the pages that you want to change &amp; then click an action:'
-						)
-					)
-				),
-				new HiddenField('csvIDs'),
-				new DropdownField(
-					'Action',
-					false,
-					$actionsMap
-				)
-			),
-			new FieldSet(
-				// TODO i18n
-				new FormAction('submit', "Go")
-			)
-		);
-		$form->addExtraClass('actionparams');
-		$form->unsetValidator();
-		
-		return $form;
 	}
 		
 	/**

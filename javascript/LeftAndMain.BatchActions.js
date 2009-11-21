@@ -157,15 +157,15 @@
 								// only if the current page was modified
 								selectedNode.selectTreeNode();
 							} else if(data.deleted[selectedNode.getIdx()]) {
-								$('#Form_EditForm').concrete('ss').removeForm();
+								jQuery('#Form_EditForm').concrete('ss').removeForm();
 							}
 						} else {
-							$('#Form_EditForm').concrete('ss').removeForm();
+							jQuery('#Form_EditForm').concrete('ss').removeForm();
 						}
 					
 						// close panel
 						// TODO Coupling with tabs
-						$('#TreeActions').tabs('select', -1);
+						jQuery('#TreeActions').tabs('select', -1);
 					},
 					dataType: 'json'
 				});
