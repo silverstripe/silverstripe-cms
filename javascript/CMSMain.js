@@ -155,7 +155,6 @@ var ss_MainLayout;
 				var selected = this.find(':input[name=ParentType]:checked').val();
 				// reset parent id if 'root' radiobutton is selected
 				if(selected == 'root') this.find(':input[name=ParentID]').val(0);
-				console.debug(selected);
 				// toggle tree dropdown based on selection
 				this.find('#ParentID').toggle(selected != 'root');
 			}
