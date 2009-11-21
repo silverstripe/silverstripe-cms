@@ -323,7 +323,7 @@ JS;
 	public function getEditForm($id = null) {
 		// Include JavaScript to ensure HtmlEditorField works.
 		HtmlEditorField::include_js();
-		
+
 		if(!$id) $id = $this->currentPageID();
 
 		$record = ($id) ? $this->getRecord($id) : null;

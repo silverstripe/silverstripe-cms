@@ -45,7 +45,6 @@ class AssetAdmin extends LeftAndMain {
 		'getfile',
 		'getsubtree',
 		'movemarked',
-		'removefile',
 		'save',
 		'savefile',
 		'uploadiframe',
@@ -110,7 +109,7 @@ JS
 		
 		CMSBatchActionHandler::register('delete', 'AssetAdmin_DeleteBatchAction', 'Folder');
 	}
-	
+		
 	/**
 	 * Show the content of the upload iframe.  The form is specified by a template.
 	 */
@@ -609,29 +608,6 @@ JS;
 		return $form;
 	}
 		
-	public function removefile(){
-		if($fileID = $this->urlParams['ID']) {
-			$file = DataObject::get_by_id('File', $fileID);
-			// Delete the temp verions of this file in assets/_resampled
-			if($file instanceof Image) {
-				$file->deleteFormattedImages();
-			}
-			$file->delete();
-			$file->destroy();
-			
-			if(Director::is_ajax()) {
-				echo <<<JS
-				$('Form_EditForm_Files').removeFile($fileID);
-				statusMessage('removed file', 'good');
-JS;
-			} else {
-				Director::redirectBack();
-			}
-		} else {
-			user_error("AssetAdmin::removefile: Bad parameters: File=$fileID", E_USER_ERROR);
-		}
-	}
-	
 	/**
 	 * @return Form
 	 */
