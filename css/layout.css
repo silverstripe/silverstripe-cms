@@ -380,7 +380,6 @@ body.stillLoading select {
 			display: none;
 		}
 		#SearchControls select#SiteTreeFilterAddCriteria {
-			width: 8.8em;
 			padding:1px 0; margin:0;
 		}
 	#searchIndicator {
