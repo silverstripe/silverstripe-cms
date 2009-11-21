@@ -83,6 +83,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.js');
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain_left.js');
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain_right.js');
+		
+		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.Translatable.js');
+		
+		Requirements::css(CMS_DIR . '/css/CMSMain.css');
 	}
 	
 	/**
@@ -1245,9 +1249,9 @@ JS;
 	/**
 	 * Create a new translation from an existing item, switch to this language and reload the tree.
 	 */
-	function createtranslation () {
-		$langCode = Convert::raw2sql($_REQUEST['newlang']);
-		$originalLangID = (int)$_REQUEST['ID'];
+	function createtranslation($request) {
+		$langCode = Convert::raw2sql($request->getVar('newlang'));
+		$originalLangID = (int)$request->getVar('ID');
 
 		$record = $this->getRecord($originalLangID);
 		
@@ -1267,8 +1271,8 @@ JS;
 			$translatedRecord->ID,
 			$langCode
 		);
-		FormResponse::add(sprintf('window.location.href = "%s";', $url));
-		return FormResponse::respond();
+		
+		return Director::redirect($url);
 	}
 
 	/**

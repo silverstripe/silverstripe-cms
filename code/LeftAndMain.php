@@ -231,8 +231,6 @@ class LeftAndMain extends Controller {
 	
 		Requirements::javascript(CMS_DIR . '/javascript/SideTabs.js');
 		Requirements::javascript(CMS_DIR . '/javascript/SideReports.js');
-		Requirements::javascript(CMS_DIR . '/javascript/LangSelector.js');
-		Requirements::javascript(CMS_DIR . '/javascript/TranslationTab.js');
 		
 		Requirements::themedCSS('typography');
 
