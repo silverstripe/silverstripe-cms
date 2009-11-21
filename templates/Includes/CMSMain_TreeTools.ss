@@ -1,4 +1,4 @@
-			<div id="TreeActions" class="ss-tabset">
+			<div id="TreeActions">
 				
 				<ul>
 					<li>
