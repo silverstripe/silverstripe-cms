@@ -453,32 +453,6 @@ function ajaxErrorHandler(response) {
 	errorMessage('Server Error', response);
 }
 
-/**
- * Applying StatusTitle to an element will mean that the title attribute is shown as a statusmessage
- * upon hover
- */
-/* Commenting out because on IE6, IE7, and Safari 3, the statusmessage becomes
- *  'null' on 2nd hover and because there is not room for long titles when
- *  action buttons are on the same line.
-StatusTitle = Class.create();
-StatusTitle.prototype = {
-	onmouseover : function() {
-		if(this.title) {
-			this.message = this.title;
-			this.title = null;
-		}
-		if(this.message) {
-			$('statusMessage').showMessage(this.message);
-		}
-	},
-	onmouseout : function() {
-		if(this.message) {
-			$('statusMessage').fade(0.3,1);
-		}
-	}
-}
-*/
-
 function hideLoading() {
 	if($('Loading')) $('Loading').style.display = 'none';
 	Element.removeClassName(document.body, 'stillLoading');
