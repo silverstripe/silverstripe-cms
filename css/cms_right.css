@@ -202,6 +202,11 @@
 		padding: .5em;
 		font-size: 11px;
 	}
+	
+	.right form.loading {
+		margin-left: -1000em;
+		margin-right: 1000em;
+	}
 
 /** 
  * Tinymce 

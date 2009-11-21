@@ -169,6 +169,9 @@
 				// Alert when unsaved changes are present
 				if(this._checkChangeTracker(true) == false) return false;
 				
+				// hide existing form - shown again through _loadResponse()
+				this.addClass('loading');
+				
 				this.trigger('load');
 
 				return jQuery.ajax(jQuery.extend({
@@ -178,6 +181,8 @@
 						self.removeClass('changed');
 
 						self._loadResponse(xmlhttp.responseText, status, xmlhttp);
+						
+						self.removeClass('loading');
 
 						if(callback) callback.apply(self, arguments);
 					}, 
