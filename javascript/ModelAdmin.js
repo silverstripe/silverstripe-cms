@@ -50,9 +50,14 @@
 				
 				self.trigger('beforeSubmit');
 
+				var btn = $(self[0].clickedButton);
+				btn.addClass('loading');
+
 				$('#Form_EditForm').concrete('ss').loadForm(
 					self.attr('action'),
-					null,
+					function() {
+						btn.removeClass('loading');
+					},
 					{data: self.serialize()}
 				);
 
