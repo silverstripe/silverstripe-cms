@@ -113,8 +113,8 @@ JS
 		Requirements::javascript(SAPPHIRE_DIR . "/thirdparty/prototype/prototype.js");
 		Requirements::javascript(SAPPHIRE_DIR . "/thirdparty/behaviour/behaviour.js");
 		Requirements::javascript(SAPPHIRE_DIR . "/javascript/prototype_improvements.js");
-		Requirements::javascript(CMS_DIR . "/javascript/LeftAndMain.js");
-		Requirements::javascript(THIRDPARTY_DIR . "/multifile/multifile.js");
+		//Requirements::javascript(CMS_DIR . "/javascript/LeftAndMain.js");
+		Requirements::javascript(CMS_DIR . "/thirdparty/multifile/multifile.js");
 		Requirements::css(THIRDPARTY_DIR . "/multifile/multifile.css");
 		Requirements::css(CMS_DIR . "/css/typography.css");
 		Requirements::css(CMS_DIR . "/css/layout.css");
