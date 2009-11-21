@@ -273,6 +273,7 @@ body.stillLoading select {
 	text-align: center;
 	font-size: 10px;
 	color: #fff;
+	padding: 5px 6px 0 3px;
 }
 
 .ss-cms-bottom-bar #logInStatus {

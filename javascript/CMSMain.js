@@ -99,6 +99,7 @@ var ss_MainLayout;
 						// multiple panels which are triggered through tinymce buttons,
 						// so a user shouldn't be able to toggle this panel manually
 						initHidden: true,
+						spacing_closed: 0,
 						fxName: "none",
 						size: 250
 					},
