@@ -8,12 +8,20 @@
 		return/** @lends ss.CMSMain.LangSelector */{
 			onmatch: function() {
 				var self = this;
+				
+				// monitor form loading for any locale changes
+				$('#Form_EditForm').bind('loadnewpage', function(e) {
+					var newLocale = $(this).find(':input[name=Locale]').val();
+					if(newLocale) self.val(newLocale);
+				});
+				
+				// whenever a new value is selected, reload the whole CMS in the new locale
 				this.bind('change', function(e) {
 					document.location = 'admin/?locale=' + $(e.target).val();
 					return false;
 				});
 			}
-		}
+		};
 	});
 	
 	/**
@@ -44,7 +52,7 @@
 					return false;
 				});
 			}
-		}
+		};
 	});
 	
 }(jQuery));
