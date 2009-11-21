@@ -19,7 +19,7 @@
 		$Left
 	</div>
 		
-	<div class="ui-layout-center" id="right">
+	<div class="ui-layout-center right" id="right">
 		$Right
 	</div>
 
