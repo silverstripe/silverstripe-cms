@@ -143,13 +143,13 @@ abstract class ModelAdmin extends LeftAndMain {
 		Requirements::css(CMS_DIR . '/css/ModelAdmin.css'); // standard layout formatting for management UI
 		Requirements::css(CMS_DIR . '/css/silverstripe.tabs.css'); // follows the jQuery UI theme conventions
 		
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/livequery/jquery.livequery.js');
-		//Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.core.js');
-		//Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.tabs.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery/jquery.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-livequery/jquery.livequery.js');
+		//Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.core.js');
+		//Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.tabs.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/form/jquery.form.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/effen/jquery.fn.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery_improvements.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/javascript/jquery/jquery_improvements.js');
 		Requirements::javascript(CMS_DIR . '/javascript/ModelAdmin.js');
 	}
 	

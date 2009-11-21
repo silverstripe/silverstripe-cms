@@ -113,5 +113,5 @@
 
 
 	// Adds the plugin class to the list of available TinyMCE plugins
-	tinymce.PluginManager.add("../../tinymce_ssbuttons", tinymce.plugins.SSButtons);
+	tinymce.PluginManager.add("../../../../cms/javascript/tinymce_ssbuttons", tinymce.plugins.SSButtons);
 })();

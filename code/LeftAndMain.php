@@ -166,51 +166,51 @@ class LeftAndMain extends Controller {
 			// Firebug is a useful console for debugging javascript
 			// Its available as a Firefox extension or a javascript library
 			// for easy inclusion in other browsers (just append ?debug_firebug=1 to the URL)
-			Requirements::javascript(THIRDPARTY_DIR . '/firebug/firebug-lite-compressed.js');
+			Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/firebug-lite/firebug.js');
 		} else {
 			// By default, we include fake-objects for all firebug calls
 			// to avoid javascript errors when referencing console.log() etc in javascript code
-			Requirements::javascript(THIRDPARTY_DIR . '/firebug/firebugx.js');
+			Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/firebug-lite/firebugx.js');
 		}
 		
-		Requirements::javascript(THIRDPARTY_DIR . '/prototype.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/prototype/prototype.js');
 		
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery-latest.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery_improvements.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.core.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.datepicker.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.draggable.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.droppable.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.accordion.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/effects.core.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/effects.slide.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/effects.drop.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/effects.scale.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/layout/jquery.layout.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/fitheighttoparent/jquery.fitheighttoparent.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery/jquery.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/javascript/jquery_improvements.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.core.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.datepicker.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.draggable.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.droppable.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.accordion.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/effects.core.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/effects.slide.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/effects.drop.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/effects.scale.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-layout/jquery.layout.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-fitheighttoparent/jquery.fitheighttoparent.js');
 		Requirements::javascript(CMS_DIR . '/javascript/ssui.core.js');
 		// @todo Load separately so the CSS files can be inlined
-		Requirements::css(THIRDPARTY_DIR . '/jquery/themes/smoothness/ui.all.css');
+		Requirements::css(SAPPHIRE_DIR . '/thirdparty/jquery-ui-themes/smoothness/ui.all.css');
 		
 		// concrete
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/concrete/jquery.class.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/concrete/jquery.selector.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/concrete/jquery.selector.specifity.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/concrete/jquery.selector.matches.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/concrete/jquery.dat.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/concrete/jquery.concrete.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-concrete/jquery.class.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-concrete/jquery.selector.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-concrete/jquery.selector.specifity.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-concrete/jquery.selector.matches.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-concrete/jquery.dat.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-concrete/jquery.concrete.js');
 		
-		Requirements::javascript(THIRDPARTY_DIR . '/behaviour.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/livequery/jquery.livequery.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/behaviour/behaviour.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-livequery/jquery.livequery.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/core/jquery.ondemand.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/prototype_improvements.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/javascript/prototype_improvements.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/loader.js');
 		Requirements::add_i18n_javascript(SAPPHIRE_DIR . '/javascript/lang');
 		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang');
 		
-		Requirements::javascript(THIRDPARTY_DIR . '/scriptaculous/effects.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/scriptaculous/dragdrop.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/scriptaculous/controls.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/scriptaculous/effects.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/scriptaculous/dragdrop.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/scriptaculous/controls.js');
 
 		Requirements::css(THIRDPARTY_DIR . '/greybox/greybox.css');
 		Requirements::javascript(THIRDPARTY_DIR . '/greybox/AmiJS.js');
@@ -248,15 +248,16 @@ class LeftAndMain extends Controller {
 		Requirements::combine_files(
 			'assets/base.js',
 			array(
-				'jsparty/prototype.js',
-				'jsparty/behaviour.js',
-				'jsparty/prototype_improvements.js',
-				'jsparty/jquery/jquery-latest.js',
-				'jsparty/jquery/plugins/livequery/jquery.livequery.js',
+				'sapphire/thirdparty/prototype.js',
+				'sapphire/thirdparty/behaviour.js',
+				'sapphire/javascript/prototype_improvements.js',
+				'sapphire/thirdparty/jquery/jquery.js',
+				'sapphire/thirdparty/jquery-livequery/jquery.livequery.js',
 				'jsparty/jquery/plugins/effen/jquery.fn.js',
 				'sapphire/javascript/core/jquery.ondemand.js',
-				'jsparty/jquery/jquery_improvements.js',
-				'jsparty/firebug/firebugx.js',
+				'sapphire/javascript/jquery_improvements.js',
+				'sapphire/jsparty/firebug-lite/firebug.js',
+				'sapphire/jsparty/firebug-lite/firebugx.js',
 				'sapphire/javascript/i18n.js',
 			)
 		);
@@ -265,9 +266,9 @@ class LeftAndMain extends Controller {
 			'assets/leftandmain.js',
 			array(
 				'jsparty/loader.js',
-				'jsparty/scriptaculous/effects.js',
-				'jsparty/scriptaculous/dragdrop.js',
-				'jsparty/scriptaculous/controls.js',
+				'sapphire/thirdparty/scriptaculous/effects.js',
+				'sapphire/thirdparty/scriptaculous/dragdrop.js',
+				'sapphire/thirdparty/scriptaculous/controls.js',
 				'jsparty/greybox/AmiJS.js',
 				'jsparty/greybox/greybox.js',
 				'cms/javascript/LeftAndMain.js',
@@ -275,7 +276,7 @@ class LeftAndMain extends Controller {
 				'cms/javascript/LeftAndMain_right.js',
 				'jsparty/tree/tree.js',
 				'cms/javascript/TinyMCEImageEnhancement.js',
-				'sapphire/thirdparty/swfupload/SWFUpload.js',
+				'sapphire/thirdparty/swfupload/swfupload.js',
 				'cms/javascript/Upload.js',
 				'cms/javascript/TinyMCEImageEnhancement.js',
 				'sapphire/javascript/TreeSelectorField.js',

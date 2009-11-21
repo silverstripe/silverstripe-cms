@@ -86,7 +86,7 @@ class AssetAdmin extends LeftAndMain {
 
 		Requirements::javascript(CMS_DIR . "/javascript/CMSMain_upload.js");
 		Requirements::javascript(CMS_DIR . "/javascript/Upload.js");
-		Requirements::javascript(THIRDPARTY_DIR . "/SWFUpload/swfupload.js");
+		Requirements::javascript(SAPPHIRE_DIR . "/thirdparty/swfupload/swfupload.js");
 		
 		Requirements::javascript(THIRDPARTY_DIR . "/greybox/AmiJS.js");
 		Requirements::javascript(THIRDPARTY_DIR . "/greybox/greybox.js");
@@ -111,10 +111,10 @@ JS
 	function uploadiframe() {
 		Requirements::clear();
 		
-		Requirements::javascript(THIRDPARTY_DIR . "/prototype.js");
+		Requirements::javascript(SAPPHIRE_DIR . "/thirdparty/prototype/prototype.js");
 		Requirements::javascript(THIRDPARTY_DIR . "/loader.js");
-		Requirements::javascript(THIRDPARTY_DIR . "/behaviour.js");
-		Requirements::javascript(THIRDPARTY_DIR . "/prototype_improvements.js");
+		Requirements::javascript(SAPPHIRE_DIR . "/thirdparty/behaviour/behaviour.js");
+		Requirements::javascript(SAPPHIRE_DIR . "/javascript/prototype_improvements.js");
 		Requirements::javascript(THIRDPARTY_DIR . "/layout_helpers.js");
 		Requirements::javascript(CMS_DIR . "/javascript/LeftAndMain.js");
 		Requirements::javascript(THIRDPARTY_DIR . "/multifile/multifile.js");

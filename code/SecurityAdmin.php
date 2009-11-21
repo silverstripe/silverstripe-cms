@@ -30,7 +30,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	public function init() {
 		parent::init();
 
-		Requirements::javascript(THIRDPARTY_DIR . "/scriptaculous/controls.js");
+		Requirements::javascript(SAPPHIRE_DIR . "/thirdparty/scriptaculous/controls.js");
 
 		// needed for MemberTableField (Requirements not determined before Ajax-Call)
 		Requirements::add_i18n_javascript(SAPPHIRE_DIR . '/javascript/lang');
