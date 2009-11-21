@@ -449,17 +449,9 @@ div.filterBox {
 	background: none;
 }
 
-.translatingMessage {
-	background: #F9F9E3;
-	border: 1px solid #CCCC99;
-	font-size: 12px;
-	padding: 3px;
-}
-
-.nonTranslating {
-	display: none;
-}
-
+/**
+ * Content Panel
+ */
 #contentPanel div.TreeDropdownField a.editLink {
 	float: left;
 	margin: 0px;
