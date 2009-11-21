@@ -173,6 +173,8 @@
 				this.addClass('loading');
 				
 				this.trigger('load');
+				
+				this.cleanup();
 
 				return jQuery.ajax(jQuery.extend({
 					url: url, 
@@ -303,16 +305,8 @@
 	 */
 	$('#Form_EditForm .Actions :submit').concrete('ss', function($){
 		return/** @lends ss.Form_EditForm.Actions.submit */{
-			onmatch: function() {
-			  var self = this;
-			  
-				// TODO Fix once concrete library is updated
-				this.bind('click', function(e) {return self.clickFake(e);});
-				
-				this._super();
-			},
-			clickFake: function(e) {
-				$(this[0].form).concrete('ss').ajaxSubmit(this);
+			onclick: function() {
+			  jQuery('#Form_EditForm').concrete('ss').ajaxSubmit(this);
 				return false;
 			}
 		};
