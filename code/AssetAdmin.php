@@ -303,6 +303,9 @@ HTML;
 
 		if($record) {
 			$fields = $record->getCMSFields();
+			// Required for file tree setup
+			if(!$fields->dataFieldByName('ParentID')) $fields->push(new HiddenField('ParentID'));
+			
 			$actions = new FieldSet();
 			
 			// Only show save button if not 'assets' folder
@@ -536,13 +539,13 @@ JS;
 	/**
 	 * Add a new folder and return its details suitable for ajax.
 	 */
-	public function doAdd() {
-		$parent = ($_REQUEST['ParentID'] && is_numeric($_REQUEST['ParentID'])) ? (int)$_REQUEST['ParentID'] : 0;
-		$name = (isset($_REQUEST['Name'])) ? basename($_REQUEST['Name']) : _t('AssetAdmin.NEWFOLDER',"NewFolder");
+	public function doAdd($data, $form) {
+		$parentID = (isset($data['ParentID']) && is_numeric($data['ParentID'])) ? (int)$data['ParentID'] : 0;
+		$name = (isset($data['Name'])) ? basename($data['Name']) : _t('AssetAdmin.NEWFOLDER',"NewFolder");
 		
-		if($parent) {
-			$parentObj = DataObject::get_by_id('File', $parent);
-			if(!$parentObj || !$parentObj->ID) $parent = 0;
+		if($parentID) {
+			$parentObj = DataObject::get_by_id('File', $parentID);
+			if(!$parentObj || !$parentObj->ID) $parentID = 0;
 		}
 		
 		// Get the folder to be created		
@@ -555,21 +558,12 @@ JS;
 		}
 		
 		$p = new Folder();
-		$p->ParentID = $parent;
-		$p->Name = $p->Title = basename($filename);
-		
-		// Ensure uniqueness		
-		$i = 2;
-		$baseFilename = substr($p->Filename, 0, -1) . '-';
-		while(file_exists($p->FullPath)) {
-			$p->Filename = $baseFilename . $i . '/';
-			$i++;
-		}
-		
+		$p->ParentID = $parentID;
+		$p->Name = $p->Title = basename($filename);		
 		$p->write();
 
 		// Used in TinyMCE inline folder creation
-		if(isset($_REQUEST['returnID'])) {
+		if(isset($data['returnID'])) {
 			return $p->ID;
 		} else {
 			$form = $this->getEditForm($p->ID);
