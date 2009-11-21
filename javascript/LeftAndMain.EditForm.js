@@ -13,7 +13,7 @@
 			 * @type String HTML text to show when the form has been deleted.
 			 * @todo i18n
 			 */
-			RemoveHtml: 'Removed',
+			RemoveText: 'Removed',
 			
 			onmatch: function() {
 				// Don't bind any events here, as we dont replace the
