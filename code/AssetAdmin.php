@@ -86,7 +86,7 @@ class AssetAdmin extends LeftAndMain {
 
 		Requirements::javascript(CMS_DIR . "/javascript/CMSMain_upload.js");
 		Requirements::javascript(CMS_DIR . "/javascript/Upload.js");
-		Requirements::javascript(SAPPHIRE_DIR . "/thirdparty/swfupload/swfupload.js");
+		Requirements::javascript(CMS_DIR . "/thirdparty/swfupload/swfupload.js");
 		
 		Requirements::javascript(THIRDPARTY_DIR . "/greybox/AmiJS.js");
 		Requirements::javascript(THIRDPARTY_DIR . "/greybox/greybox.js");
