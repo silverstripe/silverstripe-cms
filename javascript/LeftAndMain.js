@@ -22,7 +22,7 @@
 				var self = this;
 				
 				// Remove loading screen
-				$('ss-loading-screen').hide();
+				$('.ss-loading-screen').hide();
 				$(document).removeClass('stillLoading');
 			
 				this._setupPinging();
