@@ -195,7 +195,7 @@
 
 .right form .Actions {
 	text-align: right;
-	padding-top: 1em;
+	padding: 0.5em;
 }
 
 	.right form .Actions input {
