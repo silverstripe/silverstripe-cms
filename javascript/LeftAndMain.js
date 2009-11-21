@@ -37,7 +37,7 @@
 		 */
 		_setupButtons: function() {
 			// Initialize buttons
-			this.find(':submit, button').livequery(function() {
+			this.find(':submit, button, :reset').livequery(function() {
 				jQuery(this).addClass(
 					'ui-state-default ' +
 					'ui-corner-all'
