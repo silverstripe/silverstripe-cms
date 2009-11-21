@@ -766,35 +766,6 @@ function contextmenu_onclick() {
 }
 
 /**
- * Shows an ajax loading indicator.
- *
- * @param id String Identifier for the newly created image
- * @param container ID/DOM Element
- * @param imgSrc String (optional)
- * @param insertionType Object (optional) Prototype-style insertion-classes, defaults to Insertion.Bottom
- * @param displayType String (optional) "inline" or "block"
- */
-function showIndicator(id, container, imgSrc, insertionType, displayType) {
-	if(!id || !$(container)) return false;
-	if(!imgSrc) imgSrc = "cms/images/network-save.gif";
-	if(!displayType) displayType = "inline";
-	if(!insertionType) insertionType = Insertion.Bottom;
-
-	if(!$(id)) {
-		var html = '<img src="' + imgSrc + '" class="indicator ' + displayType + '" id="' + id + '" style="display: none" />';
-		new insertionType(container, html);
-	}
-
-	Effect.Appear(id);
-}
-
-function hideIndicator(id) {
-	Effect.Fade(id, {duration: 0.3});
-}
-
-
-
-/**
  * Find and enable TinyMCE on all htmleditor fields
  * Pulled in from old tinymce.template.js
  */
