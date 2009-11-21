@@ -214,23 +214,13 @@
 	width: auto;
 }
 
-/**
- * Tabs
- */
-.right form div.tab {
-	background: #fff;
-	clear: left;
-	overflow: auto;
-	border: 1px solid #aaa;
-	border-top: none;
-	position: relative;
-	top: 0;
-	padding: 10px;
+.right form fieldset {
+	height: 100%;
 }
 
-.right form div.tabset {
-	border: 1px solid #fff; /* Hack for FF1.5/Win Float-Bug */
-	clear: left;
+.right form .Actions {
+	text-align: right;
+	padding-top: 1em;
 }
 
 /* Overflow is handled by tabsets inside the panel */
