@@ -57,20 +57,21 @@
 				}
 
 				// get all data from the form
-				var data = this.serializeArray();
+				var formData = this.serializeArray();
 				// add button action
-				data.push({name: $(button).attr('name'), value:'1'});
-				$.post(
-					this.attr('action'), 
-					data,
-					function(response) {
+				formData.push({name: $(button).attr('name'), value:'1'});
+
+				$.ajax({
+					url: this.attr('action'), 
+					data: formData,
+					type: 'POST',
+					complete: function(xmlhttp, status) {
 						$(button).removeClass('loading');
-				
-						self._loadResponse(response);
+						// pass along original form data to enable old/new comparisons
+						self._loadResponse(xmlhttp.responseText, status, xmlhttp, formData);
 					}, 
-					// @todo Currently all responses are assumed to be evaluated
-					'script'
-				);
+					dataType: 'html'
+				});
 		
 				return false;
 			},
@@ -96,15 +97,14 @@
 			 */
 			load: function(url, callback) {
 				var self = this;
-				$.get(
-					url, 
-					function(response) {
-						self._loadResponse(response);
-						if(callback) callback.apply(self, [response]);
+				$.ajax({
+					url: url, 
+					complete: function(xmlhttp, status) {
+						self._loadResponse(xmlhttp.responseText, status, xmlhttp);
+						if(callback) callback.apply(self, arguments);
 					}, 
-					// @todo Currently all responses are assumed to be evaluated
-					'script'
-				);
+					dataType: 'html'
+				});
 			},
 	
 			/**
@@ -114,7 +114,8 @@
 			 * @param {String} removeText Short note why the form has been removed, displayed in <p> tags.
 			 *  Falls back to the default RemoveText() option (Optional)
 			 */
-			remove: function(removeText) {
+			removeForm: function(removeText) {
+				if(!removeText) removeText = this.RemoveText();
 				this.html('<p>' + removeText + '</p>');
 			},
 	
@@ -133,49 +134,65 @@
 			},
 	
 			/**
-			 * @param {String} result Either HTML for straight insertion, or eval'ed JavaScript.
+			 * @param {String} data Either HTML for straight insertion, or eval'ed JavaScript.
 			 *  If passed as HTML, it is assumed that everying inside the <form> tag is replaced,
 			 *  but the old <form> tag itself stays intact.
+			 * @param {String} status
+			 * @param {XMLHTTPRequest} xmlhttp
+			 * @param {Array} origData The original submitted data, useful to do comparisons of changed
+			 *  values in new form output, e.g. to detect a URLSegment being changed on the serverside.
+			 *  Array in jQuery serializeArray() notation.
 			 */
-			_loadResponse: function(response) {
-				this.cleanup();
-		
-				var html = response;
+			_loadResponse: function(data, status, xmlhttp, origData) {
+				if(status == 'success') {
+					this.cleanup();
+					
+					var html = data;
 
-				// Rewrite # links
-				html = html.replace(/(<a[^>]+href *= *")#/g, '$1' + window.location.href.replace(/#.*$/,'') + '#');
+					// Rewrite # links
+					html = html.replace(/(<a[^>]+href *= *")#/g, '$1' + window.location.href.replace(/#.*$/,'') + '#');
 
-				// Rewrite iframe links (for IE)
-				html = html.replace(/(<iframe[^>]*src=")([^"]+)("[^>]*>)/g, '$1' + $('base').attr('href') + '$2$3');
+					// Rewrite iframe links (for IE)
+					html = html.replace(/(<iframe[^>]*src=")([^"]+)("[^>]*>)/g, '$1' + $('base').attr('href') + '$2$3');
 
-				// Prepare iframes for removal, otherwise we get loading bugs
-				this.find('iframe').each(function() {
-					this.contentWindow.location.href = 'about:blank';
-					this.remove();
-				});
+					// Prepare iframes for removal, otherwise we get loading bugs
+					this.find('iframe').each(function() {
+						this.contentWindow.location.href = 'about:blank';
+						this.remove();
+					});
 
-				this.html(html);
-				// Optionally get the form attributes from embedded fields, see Form->formHtmlContent()
-				for(var overrideAttr in {'action':true,'method':true,'enctype':true,'name':true}) {
-					var el = this.find(':input[name='+ '_form_' + overrideAttr + ']');
-					if(el) {
-						this.attr(overrideAttr, el.val());
-						el.remove();
+					// update form content
+					if(html) {
+						this.html(html);
+					} else {
+						this.removeForm();
 					}
+				
+					// Optionally get the form attributes from embedded fields, see Form->formHtmlContent()
+					for(var overrideAttr in {'action':true,'method':true,'enctype':true,'name':true}) {
+						var el = this.find(':input[name='+ '_form_' + overrideAttr + ']');
+						if(el) {
+							this.attr(overrideAttr, el.val());
+							el.remove();
+						}
+					}
+					
+					Behaviour.apply(); // refreshes ComplexTableField
+
+					// focus input on first form element
+					this.find(':input:visible:first').focus();
+
+					this.trigger('loadnewpage', {data: data, origData: origData});
 				}
 
+				// set status message based on response
+				var _statusMessage = (xmlhttp.getResponseHeader('X-Status')) ? xmlhttp.getResponseHeader('X-Status') : xmlhttp.statusText;
 				if(this.hasClass('validationerror')) {
+					// TODO validation shouldnt need a special case
 					statusMessage(ss.i18n._t('ModelAdmin.VALIDATIONERROR', 'Validation Error'), 'bad');
 				} else {
-					statusMessage(ss.i18n._t('ModelAdmin.SAVED', 'Saved'), 'good');
+					statusMessage(_statusMessage, (xmlhttp.status >= 400) ? 'bad' : 'good');
 				}
-
-				Behaviour.apply(); // refreshes ComplexTableField
-		
-				// focus input on first form element
-				this.find(':input:visible:first').focus();
-		
-				this.trigger('loadnewpage', {response: response});
 			}
 		};
 	});
@@ -191,7 +208,7 @@
 			onmatch: function() {
 				var self = this;
 				// TODO Fix once concrete library is updated
-				this.bind('click', function(e) {self.clickFake(e);});
+				this.bind('click', function(e) {return self.clickFake(e);});
 			},
 			clickFake: function(e) {
 				$(this[0].form).concrete('ss').ajaxSubmit(this);
