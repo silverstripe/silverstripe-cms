@@ -376,6 +376,57 @@
 			}
 		}
 	}});
+	
+	/**
+	 * @class Links for viewing the currently loaded page
+	 * in different modes: 'live', 'stage' or 'archived'.
+	 * Automatically updates on loading a new page.
+	 * @name ss.switchViewLinks
+	 * @requires jquery.metadata
+	 */
+	$('#switchView a').concrete('ss', function($){
+		
+		return/** @lends ss.switchViewLinks */{
+			
+			/**
+			 * @type DOMElement
+			 */
+			Form: null,
+			
+			onmatch: function() {
+				var self = this;
+				this.setForm($('#Form_EditForm'));
+				
+				jQuery('#Form_EditForm').bind('loadnewpage delete', function(e) {self.refresh();});
+				self.refresh();
+			},
+			
+			/**
+			 * Parse new links based on the underlying form URLSegment,
+			 * preserving the ?stage URL parameters if necessary.
+			 */
+			refresh: function() {
+				// TODO Compatible with nested urls?
+				var urlSegment = this.Form().find(':input[name=URLSegment]').val();
+				if(urlSegment) {
+					var locale = this.Form().find(':input[name=Locale]').val();
+					var url = urlSegment;
+					if(this.metadata().params) url += '?' + this.metadata().params;
+					if(locale) url += ((url.indexOf('?') > 0) ? '&' : '?') + "locale=" + locale;
+					this.attr('href', url);
+				} 
+				
+				// hide fields if no URLSegment is present
+				this.toggle((urlSegment));
+			},
+			
+			onclick: function(e) {
+				// Open in popup
+				window.open($(e.target).attr('href'));
+				return false;
+			}
+		}
+	});
 		
 })(jQuery);
 
