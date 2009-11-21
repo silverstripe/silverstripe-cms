@@ -10,4 +10,4 @@
 	</form>
 <% end_if %>
 
-<p id="statusMessage" style="visibility:hidden"></p>
+<div id="statusMessage"></div>
