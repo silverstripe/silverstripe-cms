@@ -58,7 +58,7 @@ WidgetAreaEditorClass.prototype = {
 
 		// Ensure correct sort values are written when page is saved
 		// TODO Adjust to new event listeners
-		$('Form_EditForm').observeMethod('BeforeSave', this.beforeSave.bind(this));
+		jQuery('#Form_EditForm').bind('ajaxsubmit', this.beforeSave.bind(this));
 	},
 	
 	rewriteWidgetAreaAttributes: function() {
