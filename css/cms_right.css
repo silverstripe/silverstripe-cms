@@ -69,7 +69,12 @@
 			}
 			
 			.right form .parentTypeSelector {
-				margin-left: 0;
+				margin-left: 0 !important;
+			}
+			.right form .parentTypeSelector label.left {
+				float: none !important;
+				margin-left: 0 !important;
+				width: auto !important;
 			}
 				
 	.right form .dropdown,
