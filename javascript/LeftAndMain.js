@@ -328,41 +328,6 @@ StatusTitle.prototype = {
 }
 */
 
-/**
- * BaseForm is the base form class used in the CMS.
- */
-BaseForm = Class.create();
-BaseForm.prototype = {
-	intitialize: function() {
-		this.visible = this.style.display == 'none' ? false : true;
-
-		// Collect all the buttons and attach handlers
-		this.buttons = [];
-		var i,input,allInputs = this.getElementsByTagName('input');
-		for(i=0;input=allInputs[i];i++) {
-			if(input.type == 'button' || input.type == 'submit') {
-				this.buttons.push(input);
-				input.holder = this;
-				input.onclick = function() { return this.holder.buttonClicked(this); }
-			}
-		}
-	},
-	show: function() {
-		this.visible = true;
-		Element.hide(show);
-	},
-	hide: function() {
-		this.visible = false;
-		Element.hide(this);
-	},
-	isVisible: function() {
-		return this.visible;
-	},
-	buttonClicked: function(button) {
-		return true;
-	}
-}
-
 
 /**
  * ChangeTracker is a class that can be applied to forms to support change tracking on forms.
