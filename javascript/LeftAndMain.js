@@ -15,7 +15,7 @@
 		return/** @lends ss.EditMemberProfile */ {
 		
 		/**
-		 * @type Number
+		 * @type Number Interval in which /Security/ping will be checked for a valid login session.
 		 */
 		PingIntervalSeconds: 5*60,
 		
@@ -40,11 +40,32 @@
 
 			this._super();
 		},
-		
+
+		/**
+		 * This function is called by prototype when it receives notification that the user was logged out.
+		 * It uses /Security/ping for this purpose, which should return '1' if a valid user session exists.
+		 * It redirects back to the login form if the URL is either unreachable, or returns '0'.
+		 */
 		_setupPinging: function() {
+			var onSessionLost = function(response, type, XMLHttpRequest) {
+				if(XMLHttpRequest.status > 400 || response == 0) {
+					// TODO will pile up additional alerts when left unattended
+					if(window.open('Security/login')) {
+					    alert("Please log in and then try again");
+					} else {
+					    alert("Please enable pop-ups for this site");
+					}
+				}
+			};
+			
 			// setup pinging for login expiry
 			setInterval(function() {
-			    jQuery.get("Security/ping");
+				jQuery.ajax({
+					url: "Security/ping",
+					global: false,
+					error: onSessionLost,
+					success: onSessionLost
+				});
 			}, this.PingIntervalSeconds() * 1000);
 		},
 		
@@ -580,19 +601,6 @@ function hideLoading() {
 
 returnFalse = function() {
 	return false;
-}
-
-/**
- * This function is called by prototype when it receives notification that the user was logged out.
- * It redirects back to the login form.
- */
-function onSessionLost() {
-	w = window.open('Security/login');
-	if(w) {
-	    alert("Please log in and then try again");
-	} else {
-	    alert("Please enable pop-ups for this site");
-	}
 }
 
 var _CURRENT_CONTEXT_MENU = null;
