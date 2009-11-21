@@ -189,6 +189,11 @@
 	padding-top: 1em;
 }
 
+	.right form .Actions input {
+		padding: .5em;
+		font-size: 11px;
+	}
+
 /** 
  * Tinymce 
  */
