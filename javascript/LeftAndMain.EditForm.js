@@ -11,8 +11,16 @@
 	
 			/**
 			 * @type String HTML text to show when the form has been deleted.
+			 * @todo i18n
 			 */
-			RemoveHtml: null,
+			RemoveHtml: 'Removed',
+			
+			onmatch: function() {
+				// Don't bind any events here, as we dont replace the
+				// full <form> tag by any ajax updates they won't automatically reapply
+				
+				_super();
+			},
 	
 			/**
 			 * Suppress submission unless it is handled through ajaxSubmit()
@@ -103,10 +111,11 @@
 			 * Remove everying inside the <form> tag
 			 * with a custom HTML fragment. Useful e.g. for deleting a page in the CMS.
 			 * 
-			 * @param {String} removeText
+			 * @param {String} removeText Short note why the form has been removed, displayed in <p> tags.
+			 *  Falls back to the default RemoveText() option (Optional)
 			 */
-			remove: function(removeHTML) {
-		
+			remove: function(removeText) {
+				this.html('<p>' + removeText + '</p>');
 			},
 	
 			/**
