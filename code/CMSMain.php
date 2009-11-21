@@ -369,6 +369,10 @@ JS;
 				}
 			}
 			
+			$form = new Form($this, "EditForm", $fields, $actions);
+			$form->loadDataFrom($record);
+			$form->disableDefaultAction();
+			
 			// Add a default or custom validator.
 			// @todo Currently the default Validator.js implementation
 			//  adds javascript to the document body, meaning it won't
@@ -387,15 +391,6 @@ JS;
 			} else {
 				$form->unsetValidator();
 			}
-			
-			// The clientside (mainly LeftAndMain*.js) rely on ajax responses
-			// which can be evaluated as javascript, hence we need
-			// to override any global changes to the validation handler.
-			$validator->setJavascriptValidationHandler('prototype');
-			
-			$form = new Form($this, "EditForm", $fields, $actions, $validator);
-			$form->loadDataFrom($record);
-			$form->disableDefaultAction();
 
 			if(!$record->canEdit() || $record->IsDeletedFromStage) {
 				$readonlyFields = $form->Fields()->makeReadonly();
@@ -421,27 +416,29 @@ JS;
 	// Data saving handlers
 
 
-	public function addpage() {
-		$className = isset($_REQUEST['PageType']) ? $_REQUEST['PageType'] : "Page";
-		$parent = isset($_REQUEST['ParentID']) ? $_REQUEST['ParentID'] : 0;
-		$suffix = isset($_REQUEST['Suffix']) ? "-" . $_REQUEST['Suffix'] : null;
+	public function addpage($data, $form) {
+		$className = isset($data['PageType']) ? $data['PageType'] : "Page";
+		$parentID = isset($data['ParentID']) ? (int)$data['ParentID'] : 0;
+		$suffix = isset($data['Suffix']) ? "-" . $data['Suffix'] : null;
 
-		if(!$parent && isset($_REQUEST['Parent'])) {
-			$page = SiteTree::get_by_link($_REQUEST['Parent']);
-			if($page) $parent = $page->ID;
+		if(!$parentID && isset($data['Parent'])) {
+			$page = SiteTree:: get_by_link(Convert::raw2sql($data['Parent']));
+			if($page) $parentID = $page->ID;
 		}
 
-		if(is_numeric($parent)) $parentObj = DataObject::get_by_id("SiteTree", $parent);
-		if(!$parentObj || !$parentObj->ID) $parent = 0;
+		if(is_numeric($parentID)) $parentObj = DataObject::get_by_id("SiteTree", $parentID);
+		if(!$parentObj || !$parentObj->ID) $parentID = 0;
 		
 		if($parentObj && !$parentObj->canAddChildren()) return Security::permissionFailure($this);
 		if(!singleton($className)->canCreate()) return Security::permissionFailure($this);
 
 		$p = $this->getNewItem("new-$className-$parent".$suffix, false);
-		$p->Locale = $_REQUEST['Locale'];
+		$p->Locale = $data['Locale'];
 		$p->write();
-
-		return $this->returnItemToUser($p);
+		
+		$form = $this->getEditForm($p->ID);
+		
+		return $form->formHtmlContent();
 	}
 
 	/**
@@ -491,10 +488,9 @@ JS;
 	 * 
 	 * @see delete()
 	 */
-	public function deletefromlive($urlParams, $form) {
-		$id = $_REQUEST['ID'];
+	public function deletefromlive($data, $form) {
 		Versioned::reading_stage('Live');
-		$record = DataObject::get_by_id("SiteTree", $id);
+		$record = DataObject::get_by_id("SiteTree", $data['ID']);
 		if($record && !$record->canDelete()) return Security::permissionFailure($this);
 		
 		$descRemoved = '';
@@ -525,10 +521,17 @@ JS;
 			$descRemoved = '';
 		}
 
-		FormResponse::add($this->deleteTreeNodeJS($record));
-		FormResponse::status_message(sprintf(_t('CMSMain.REMOVED', 'Deleted \'%s\'%s from live site'), $record->Title, $descRemoved), 'good');
+		$this->response->addHeader(
+			'X-Status',
+			sprintf(
+				_t('CMSMain.REMOVED', 'Deleted \'%s\'%s from live site'), 
+				$record->Title, 
+				$descRemoved
+			)
+		);
 
-		return FormResponse::respond();
+		// nothing to return
+		return '';
 	}
 
 	/**
@@ -547,22 +550,37 @@ JS;
  	 * 
  	 * @uses SiteTree->doRevertToLive()
 	 */
-	public function revert($urlParams, $form) {
-		$id = (int)$_REQUEST['ID'];
-		$record = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree_Live\".\"ID\" = '{$id}'");
+	public function revert($data, $form) {
+		if(!isset($data['ID'])) return new HTTPResponse("Please pass an ID in the form content", 400);
+		
+		$restoredPage = Versioned::get_latest_version("SiteTree", $data['ID']);
+		if(!$restoredPage) 	return new HTTPResponse("SiteTree #$id not found", 400);
+		
+		$record = Versioned::get_one_by_stage(
+			'SiteTree', 
+			'Live', 
+			sprintf("\"SiteTree_Live\".\"ID\" = '%d'", (int)$data['ID'])
+		);
 
 		// a user can restore a page without publication rights, as it just adds a new draft state
 		// (this action should just be available when page has been "deleted from draft")
-		if(isset($record) && $record && !$record->canEdit()) return Security::permissionFailure($this);
+		if(isset($record) && $record && !$record->canEdit()) {
+			return Security::permissionFailure($this);
+		}
 
 		$record->doRevertToLive();
-
-		$title = Convert::raw2js($record->Title);
-		FormResponse::get_page($id);
-		FormResponse::add("$('sitetree').setNodeTitle($id, '$title');");
-		FormResponse::status_message(sprintf(_t('CMSMain.RESTORED',"Restored '%s' successfully",PR_MEDIUM,'Param %s is a title'),$title),'good');
-
-		return FormResponse::respond();
+		
+		$this->response->addHeader(
+			'X-Status',
+			sprintf(
+				_t('CMSMain.RESTORED',"Restored '%s' successfully",PR_MEDIUM,'Param %s is a title'),
+				$record->Title
+			)
+		);
+		
+		$form = $this->getEditForm($record->ID);
+		
+		return $form->formHtmlContent();
 	}
 	
 	/**
@@ -580,20 +598,23 @@ JS;
 		$recordID = $record->ID;
 		$record->delete();
 		
+		$this->response->addHeader(
+			'X-Status',
+			sprintf(
+				_t('CMSMain.REMOVEDPAGEFROMDRAFT',"Removed '%s' from the draft site"),
+				$record->Title
+			)
+		);
+		
 		if(Director::is_ajax()) {
 			// need a valid ID value even if the record doesn't have one in the database
 			// (its still present in the live tables)
-			$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree_Live\".\"ID\" = $recordID");
-			// if the page has never been published to live, we need to act the same way as in deletefromlive()
-			if($liveRecord) {
-				// the form is readonly now, so we need to refresh the representation
-				FormResponse::get_page($recordID);
-				return $this->tellBrowserAboutPublicationChange($liveRecord, sprintf(_t('CMSMain.REMOVEDPAGEFROMDRAFT',"Removed '%s' from the draft site"),$record->Title));
-			} else {
-				FormResponse::add($this->deleteTreeNodeJS($record));
-				FormResponse::status_message(sprintf(_t('CMSMain.REMOVEDPAGEFROMDRAFT',"Removed '%s' from the draft site"),$record->Title), 'good');
-				return FormResponse::respond();
-			}			
+			$liveRecord = Versioned::get_one_by_stage(
+				'SiteTree', 
+				'Live', 
+				"\"SiteTree_Live\".\"ID\" = $recordID"
+			);
+			return ($liveRecord) ? $form->formHtmlContent() : "";
 		} else {
 			Director::redirectBack();
 		}
@@ -674,65 +695,49 @@ JS;
 	/**
 	 * Roll a page back to a previous version
 	 */
-	function rollback() {
-		if(isset($_REQUEST['Version']) && (bool)$_REQUEST['Version']) {
-			$record = $this->performRollback($_REQUEST['ID'], $_REQUEST['Version']);
-			echo sprintf(_t('CMSMain.ROLLEDBACKVERSION',"Rolled back to version #%d.  New version number is #%d"),$_REQUEST['Version'],$record->Version);
+	function rollback($data, $form) {
+		if(isset($data['Version']) && (bool)$data['Version']) {
+			$record = $this->performRollback($data['ID'], $data['Version']);
+			$message = sprintf(
+			_t('CMSMain.ROLLEDBACKVERSION',"Rolled back to version #%d.  New version number is #%d"),
+			$data['Version'],
+			$record->Version
+		);
 		} else {
-			$record = $this->performRollback($_REQUEST['ID'], "Live");
-			echo sprintf(_t('CMSMain.ROLLEDBACKPUB',"Rolled back to published version. New version number is #%d"),$record->Version);
+			$record = $this->performRollback($data['ID'], "Live");
+			$message = sprintf(
+				_t('CMSMain.ROLLEDBACKPUB',"Rolled back to published version. New version number is #%d"),
+				$record->Version
+			);
 		}
+		
+		$this->response->addHeader('X-Status', $message);
+		
+		$form = $this->getEditForm($record->ID);
+		
+		return $form->formHtmlContent();
 	}
 	
-	function publish($urlParams, $form) {
-		$urlParams['publish'] = '1';
+	function publish($data, $form) {
+		$data['publish'] = '1';
 		
-		return $this->save($urlParams, $form);
+		return $this->save($data, $form);
 	}
 
-	function unpublish() {
-		$SQL_id = Convert::raw2sql($_REQUEST['ID']);
-
-		$page = DataObject::get_by_id("SiteTree", $SQL_id);
+	function unpublish($data, $form) {
+		$page = DataObject::get_by_id("SiteTree", $data['ID']);
 		if($page && !$page->canPublish()) return Security::permissionFailure($this);
 		
 		$page->doUnpublish();
 		
-		return $this->tellBrowserAboutPublicationChange($page, sprintf(_t('CMSMain.REMOVEDPAGE',"Removed '%s' from the published site"),$page->Title));
-	}
-	
-	/**
-	 * Return a few pieces of information about a change to a page
-	 *  - Send the new status message
-	 *  - Update the action buttons
-	 *  - Update the treenote
-	 *  - Send a status message
-	 */
-	function tellBrowserAboutPublicationChange($page, $statusMessage) {
-		$JS_title = Convert::raw2js($page->TreeTitle());
-
-		$JS_stageURL = $page->IsDeletedFromStage ? '' : Convert::raw2js($page->AbsoluteLink());
-		$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree\".\"ID\" = $page->ID");
-
-		$JS_liveURL = $liveRecord ? Convert::raw2js($liveRecord->AbsoluteLink()) : '';
-
-		FormResponse::add($this->getActionUpdateJS($page));
-		FormResponse::update_status($page->Status);
+		$this->response->addHeader(
+			'X-Status',
+			sprintf(_t('CMSMain.REMOVEDPAGE',"Removed '%s' from the published site"),$page->Title)
+		);
 		
-		if($JS_stageURL || $JS_liveURL) {
-			FormResponse::add("\$('sitetree').setNodeTitle($page->ID, '$JS_title');");
-		} else {
-			FormResponse::add("var node = $('sitetree').getTreeNodeByIdx('$page->ID');");
-			FormResponse::add("if(node && node.parentTreeNode) node.parentTreeNode.removeTreeNode(node);");
-			FormResponse::add("$('Form_EditForm').reloadIfSetTo($page->ID);");
-		}
+		$form->loadDataFrom($page);
 		
-		if($statusMessage) FormResponse::status_message($statusMessage, 'good');
-		FormResponse::add("$('Form_EditForm').elements.StageURLSegment.value = '$JS_stageURL';");
-		FormResponse::add("$('Form_EditForm').elements.LiveURLSegment.value = '$JS_liveURL';");
-		FormResponse::add("$('Form_EditForm').notify('PagePublished', $('Form_EditForm').elements.ID.value);");
-
-		return FormResponse::respond();
+		return $form->formHtmlContent();
 	}
 
 	function performRollback($id, $version) {
@@ -1085,6 +1090,7 @@ JS;
 				)
 			)
 		);
+		$form->unsetValidator();
 		
 		return $form;
 	}
@@ -1167,24 +1173,26 @@ JS;
 	/**
 	 * Restore a completely deleted page from the SiteTree_versions table.
 	 */
-	function restore() {
-		if(($id = $_REQUEST['ID']) && is_numeric($id)) {
-			$restoredPage = Versioned::get_latest_version("SiteTree", $id);
-			if($restoredPage) {
-				$restoredPage = $restoredPage->doRestoreToStage();
-
-				FormResponse::get_page($id);
-				$title = Convert::raw2js($restoredPage->TreeTitle());
-				FormResponse::add("$('sitetree').setNodeTitle($id, '$title');");
-				FormResponse::status_message(sprintf(_t('CMSMain.RESTORED',"Restored '%s' successfully",PR_MEDIUM,'Param %s is a title'),$title),'good');
-				return FormResponse::respond();
-
-			} else {
-				return new SS_HTTPResponse("SiteTree #$id not found", 400);
-			}
-		} else {
-			return new SS_HTTPResponse("Please pass an ID in the form content", 400);
+	function restore($data, $form) {
+		if(!isset($data['ID']) || !is_numeric($data['ID'])) {
+			return new HTTPResponse("Please pass an ID in the form content", 400);
 		}
+		
+		$restoredPage = Versioned::get_latest_version("SiteTree", $id);
+		if(!$restoredPage) 	return new HTTPResponse("SiteTree #$id not found", 400);
+		
+		$restoredPage = $restoredPage->doRestoreToStage();
+		
+		$this->response->addHeader(
+			'X-Status',
+			sprintf(
+				_t('CMSMain.RESTORED',"Restored '%s' successfully",PR_MEDIUM,'Param %s is a title'),
+				$restoredPage->TreeTitle
+			)
+		);
+		
+		$form = $this->getEditForm($id);
+		return $form->formHtmlContent();
 	}
 
 	function duplicate() {
@@ -1201,8 +1209,9 @@ JS;
 				$newPage->ParentID = $_GET['parentID'];
 				$newPage->write();
 			}
-
-			return $this->returnItemToUser($newPage);
+			
+			$form = $this->getEditForm($newPage->ID);
+			return $form->formHtmlContent();
 		} else {
 			user_error("CMSMain::duplicate() Bad ID: '$id'", E_USER_WARNING);
 		}
@@ -1217,13 +1226,12 @@ JS;
 
 			$newPage = $page->duplicateWithChildren();
 
-			return $this->returnItemToUser($newPage);
+			$form = $this->getEditForm($newPage->ID);
+			return $form->formHtmlContent();
 		} else {
 			user_error("CMSMain::duplicate() Bad ID: '$id'", E_USER_WARNING);
 		}
 	}
-	
-
 	
 	/**
 	 * Create a new translation from an existing item, switch to this language and reload the tree.

@@ -578,7 +578,6 @@ JS;
 			if(is_numeric($id)) {
 				$record = DataObject::get_by_id($this->stat('tree_class'), $id);
 				if($record) {
-					$script .= $this->deleteTreeNodeJS($record);
 					$record->delete();
 					$record->destroy();
 				}
