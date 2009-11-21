@@ -451,7 +451,12 @@ Behaviour.register({
 	
 	'#Form_EditForm_Files a.deletelink' : {
 		onclick : function(event) {
-			ajaxLink(this.href);
+			// Send request
+			new Ajax.Request(this.href + (this.href.indexOf("?") == -1 ? "?" : "&") + "ajax=1", {
+				method : 'get',
+				onSuccess : Ajax.Evaluator,
+				onFailure : ajaxErrorHandler
+			});
 			Event.stop(event);
 			return false;
 		}
