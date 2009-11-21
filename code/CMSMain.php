@@ -41,8 +41,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'getpagecount',
 		'getversion',
 		'publishall',
-		'publishitems',
-		'PublishItemsForm',
 		'restore',
 		'revert',
 		'rollback',
@@ -980,52 +978,6 @@ JS;
 	function batchactions() {
 		return new CMSBatchActionHandler($this, 'batchactions');
 	}
-	
-	/**
-	 * @return Form
-	 */
-	public function PublishItemsForm() {
-		$form = new Form(
-			$this,
-			'PublishItemsForm',
-			new FieldSet(
-				new HiddenField('csvIDs'),
-				new CheckboxField('ShowDrafts', _t('CMSMain_left.ss.SHOWONLYCHANGED','Show only changed pages'))
-			),
-			new FieldSet(
-				new FormAction('publishitems', _t('CMSMain_left.ss.PUBLISHCONFIRM','Publish the selected pages'))
-			)
-		);
-		$form->addExtraClass('actionparams');
-		return $form;
-	}
-
-	function BatchActionParameters() {
-		$batchActions = CMSBatchActionHandler::$batch_actions;
-
-		$forms = array();
-		foreach($batchActions as $urlSegment => $batchAction) {
-			if ($fieldset = singleton($batchAction)->getParameterFields()) {
-				$formHtml = '';
-				foreach($fieldset as $field) {
-					$formHtml .= $field->Field();
-				}
-				$forms[$urlSegment] = $formHtml;
-			}
-		}
-		$pageHtml = '';
-		foreach($forms as $urlSegment => $html) {
-			$pageHtml .= "<div class=\"params\" id=\"BatchActionParameters_$urlSegment\">$html</div>\n\n";
-		} 
-		return new LiteralField("BatchActionParameters", '<div id="BatchActionParameters" style="display:none">'.$pageHtml.'</div>');
-	}
-	/**
-	 * Returns a list of batch actions
-	 */
-	function BatchActionList() {
-		return $this->batchactions()->batchActionList();
-	}
-	
 	/**
 	 * @return Form
 	 */
