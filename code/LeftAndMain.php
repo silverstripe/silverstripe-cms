@@ -853,7 +853,7 @@ JS;
 	 * @return Form
 	 */
 	function EmptyForm() {
-		return new Form(
+		$form = new Form(
 			$this, 
 			"EditForm", 
 			new FieldSet(
@@ -872,6 +872,9 @@ JS;
 			), 
 			new FieldSet()
 		);
+		$form->unsetValidator();
+		
+		return $form;
 	}
 	
 	public function myprofile() {
