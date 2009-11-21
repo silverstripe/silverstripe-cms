@@ -19,16 +19,7 @@
 				</ul>
 			
 				<div id="TreeActions-create">
-					<% control AddPageOptionsForm %>
-					<form class="actionparams" id="$FormName" action="$FormAction">
-						<% control Fields %>
-						$FieldHolder
-						<% end_control %>
-						<div>
-							<input class="action" type="submit" value="<% _t('GO','Go') %>" />
-						</div>
-					</form>
-					<% end_control %>
+					$AddPageOptionsForm
 				</div>
 			
 				<div id="TreeActions-search">
