@@ -4,10 +4,22 @@
 		</h3>
 		<div id="sitetree_holder">
 			<div id="TreeTools">
-				 <ul id="TreeActions">
-					<li class="action" id="addpage"><button><% _t('CREATE','Create',PR_HIGH) %></button></li>
-					<li class="action" id="search"><button><% _t('SEARCH','Search',PR_HIGH) %></button></li>
-					<li class="action" id="batchactions"><button><% _t('BATCHACTIONS','Batch Actions',PR_HIGH) %></button></li>
+				 <ul id="TreeActions" class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+					<li id="addpage" class="action">
+						<button class="ss-ui-button" type="button">
+							<% _t('CREATE','Create',PR_HIGH) %>
+						</button>
+					</li>
+					<li id="search" class="action">
+						<button class="ss-ui-button" type="button">
+							<% _t('SEARCH','Search',PR_HIGH) %>
+						</button>
+					</li>
+					<li id="batchactions" class="action">
+						<button class="ss-ui-button" type="button">
+							<% _t('BATCHACTIONS','Batch Actions',PR_HIGH) %>
+						</button>
+					</li>
 				</ul>
 				<div style="clear:both;"></div>
 				<% control AddPageOptionsForm %>
