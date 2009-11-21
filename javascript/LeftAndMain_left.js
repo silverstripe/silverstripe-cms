@@ -63,7 +63,7 @@ TreeAPI.prototype = {
 			},
 			onFailure: function(response){
 				errorMessage('error loading tree', response);
-				if (options.onError) options.onError(response);
+				if (options.onFailure) options.onFailure(response);
 			}
 		});
 	},

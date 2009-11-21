@@ -208,17 +208,22 @@
 	
 	/**
 	 * Control the site tree filter.
+	 * Toggles search form fields based on a dropdown selection,
+	 * similar to "Smart Search" criteria in iTunes.
 	 */
-	$('#Form_SearchTreeForm').concrete('ss.searchTreeForm', function($) {return{
+	$('#Form_SearchTreeForm').concrete('ss', function($) {return{
 		
+		/**
+		 * @type DOMElement
+		 */
 		SelectEl: null,
 		
 		onmatch: function() {
 			var self = this;
 			
 			// TODO Cant bind to onsubmit/onreset directly because of IE6
-			this.bind('submit', function(e) {return self.submitForm(e);});
-			this.bind('reset', function(e) {return self.resetForm(e);});
+			this.bind('submit', function(e) {return self._submitForm(e);});
+			this.bind('reset', function(e) {return self._resetForm(e);});
 
 			// only the first field should be visible by default
 			this.find('.field').not(':first').hide();
@@ -226,7 +231,7 @@
 			// generate the field dropdown
 			this.setSelectEl($('<select name="options" class="options"></select>')
 				.appendTo(this.find('fieldset:first'))
-				.bind('change', function(e) {self.addField(e);})
+				.bind('change', function(e) {self._addField(e);})
 			);
 			
 			this._setOptions();
@@ -251,9 +256,10 @@
 			});
 		},
 		
-		submitForm: function(e) {
+		_submitForm: function(e) {
 			var self = this;
 			var data = [];
+			
 			// convert from jQuery object literals to hash map
 			$(this.serializeArray()).each(function(i, el) {
 				data[el.name] = el.value;
@@ -265,45 +271,36 @@
 			// Disable checkbox tree controls that currently don't work with search.
 			// @todo: Make them work together
 			if ($('#sitetree')[0].isDraggable) $('#sitetree')[0].stopBeingDraggable();
-			$('.checkboxAboveTree :checkbox').val(false).attr('disabled', true);
+			this.find('.checkboxAboveTree :checkbox').val(false).attr('disabled', true);
 			
 			// disable buttons to avoid multiple submission
 			//this.find(':submit').attr('disabled', true);
 			
 			this.find(':submit[name=action_getfilteredsubtree]').addClass('loading');
 			
-			$('#sitetree')[0].reload({
-				onSuccess :  function(response) {
-					console.debug(self);
-					console.debug(self.find(':submit'));
-					self.find(':submit').attr('disabled', false).removeClass('loading');
-					statusMessage('Filtered tree','good');
-				},
-				onFailure : function(response) {
-					self.find(':submit').attr('disabled', false).removeClass('loading');
-					errorMessage('Could not filter site tree<br />' + response.responseText);
-				}
-			});
+			this._reloadSitetree();
 			
 			return false;
 		},
 		
-		resetForm: function(e) {
-			this.find('.field').clearFields().not(':first').val('').hide();
+		_resetForm: function(e) {
+			this.find('.field :input').clearFields().not(':first').hide();
 			
 			// Reset URL to default
 			$('#sitetree')[0].clearCustomURL();
 
 			// Enable checkbox tree controls
-			$('.checkboxAboveTree :checkbox').attr('disabled', 'false');
+			this.find('.checkboxAboveTree :checkbox').attr('disabled', 'false');
 
 			// reset all options, some of the might be removed
 			this._setOptions();
 			
+			this._reloadSitetree();
+			
 			return false;
 		},
 		
-		addField: function(e) {
+		_addField: function(e) {
 			var $select = $(e.target);
 			// show formfield matching the option
 			this.find('#' + $select.val()).show();
@@ -315,6 +312,23 @@
 			$select.val(0);
 			
 			return false;
+		},
+		
+		_reloadSitetree: function() {
+			var self = this;
+			
+			$('#sitetree')[0].reload({
+				onSuccess :  function(response) {
+					self.find(':submit').attr('disabled', false).removeClass('loading');
+					self.find('.checkboxAboveTree :checkbox').attr('disabled', 'true');
+					statusMessage('Filtered tree','good');
+				},
+				onFailure : function(response) {
+					self.find(':submit').attr('disabled', false).removeClass('loading');
+					self.find('.checkboxAboveTree :checkbox').attr('disabled', 'true');
+					errorMessage('Could not filter site tree<br />' + response.responseText);
+				}
+			});
 		}
 	}});
 
