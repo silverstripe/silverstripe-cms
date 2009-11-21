@@ -80,7 +80,7 @@
 			 * @param {Event} e
 			 */
 			_submit: function(e) {
-			  this.ajaxSubmit();
+				this.ajaxSubmit();
 				return false;
 			},
 	
@@ -91,7 +91,7 @@
 			 * @param {boolean} loadResponse Render response through _loadResponse() (Default: true)
 			 */
 			ajaxSubmit: function(button, callback, ajaxOptions, loadResponse) {
-			  var self = this;
+				var self = this;
 			  
 				// look for save button
 				if(!button) button = this.find('.Actions :submit[name=action_save]');
