@@ -201,12 +201,12 @@
 	 * We need this onclick overloading because we can't get to the
 	 * clicked button from a form.onsubmit event.
 	 */
-	$('#Form_EditForm .Actions :submit').concrete({ss:{
+	$('#Form_EditForm .Actions :submit').concrete({
 		onclick: function(e) {
 			$(this[0].form).ss().ajaxSubmit(this);
 			return false;
 		}
-	}});
+	});
 	
 	$('#TreeActions').concrete({
 		onmatch: function() {
