@@ -79,7 +79,7 @@ var ss_MainLayout;
 				south: {
 					slidable: false,
 					resizable: false,
-					size: 20,
+					size: 23,
 					togglerLength_open: 0
 				},
 				west: {
