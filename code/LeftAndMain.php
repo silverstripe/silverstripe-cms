@@ -169,7 +169,9 @@ class LeftAndMain extends Controller {
 			Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/firebug-lite/firebugx.js');
 		}
 		
+		Requirements::javascript(SAPPHIRE_DIR . '/javascript/prototypefix/intro.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/prototype/prototype.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/javascript/prototypefix/outro.js');
 		
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery/jquery.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/jquery_improvements.js');
