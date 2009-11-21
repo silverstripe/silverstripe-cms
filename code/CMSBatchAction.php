@@ -187,7 +187,7 @@ class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 					'TreeTitle' => $stageRecord->TreeTitle,
 				);
 			} else {
-				$status['deleted'][$stageRecord->ID] = array();
+				$status['deleted'][$id] = array();
 			}
 
 		}
