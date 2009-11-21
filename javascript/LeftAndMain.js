@@ -1,3 +1,225 @@
+(function($) {
+
+	/**
+	 * Main LeftAndMain interface with some control
+	 * panel and an edit form.
+	 * 
+	 * Events:
+	 * - beforeSave
+	 * - afterSave
+	 * - beforeValidate
+	 * - afterValidate
+	 */
+	$('.LeftAndMain').concrete({ss:{leftAndMain:{
+		onmatch: function() {
+			this.ss().leftAndMain()._setupPinging();
+			this.ss().leftAndMain()._setupButtons();
+		},
+		
+		_setupPinging: function() {
+			var pingIntervalSeconds = 5*60;
+			
+			// setup pinging for login expiry
+			setInterval(function() {
+			    $.get("Security/ping");
+			}, pingIntervalSeconds * 1000);
+		},
+		
+		/**
+		 * Make all buttons "hoverable" with jQuery theming.
+		 */
+		_setupButtons: function() {
+			// Initialize buttons
+			this.find(':submit, button').livequery(function() {
+				jQuery(this).addClass(
+					'ui-state-default ' +
+					'ui-corner-all'
+				)
+				.hover(
+					function() {
+						$(this).addClass('ui-state-hover');
+					},
+					function() {
+						$(this).removeClass('ui-state-hover');
+					}
+				)
+				.focus(function() {
+					$(this).addClass('ui-state-focus');
+				})
+				.blur(function() {
+					$(this).removeClass('ui-state-focus');
+				});
+			});
+		}
+	}}});
+	
+	/**
+	 * Base edit form, provides ajaxified saving
+	 * and reloading itself through the ajax return values.
+	 * Takes care of resizing tabsets within the layout container.
+	 */
+	$('#Form_EditForm').concrete({ss:{	
+		onmatch: function() {
+			var $this = this;
+			// artificially delay the resize event 200ms
+			// to avoid overlapping height changes in different onresize() methods
+			$(window).resize(function () {
+				var timerID = "timerLayout_"+this.id;
+				if (window[timerID]) clearTimeout(window[timerID]);
+				window[timerID] = setTimeout(function() {$this.ss()._resizeChildren();}, 200);
+			}).trigger('resize');
+		
+			// trigger resize whenever new tabs are shown
+			// @todo This is called multiple times when tabs are loaded
+			this.find('.ss-tabset').bind('tabsshow', function() {$this.ss()._resizeChildren();});
+		},
+		
+		/**
+		 * Suppress submission unless it is handled through save()
+		 */
+		onsubmit: function(e) {
+			return false;
+		},
+		
+		/**
+		 * @param DOMElement button The pressed button (optiona)
+		 */
+		ajaxSubmit: function(button) {
+			// default to first button if none given - simulates browser behaviour
+			if(!button) button = this.find(':submit:first');
+			
+			var $form = this;
+			
+			this.trigger('beforeSubmit', [button]);
+			
+			// set button to "submitting" state
+			$(button).addClass('loading');
+			
+			// @todo TinyMCE coupling
+			if(typeof tinyMCE != 'undefined') tinyMCE.triggerSave();
+			
+			// validate if required
+			if(!this.ss().validate()) {
+				this.trigger('validationError', [button]);
+				
+				// TODO Automatically switch to the tab/position of the first error
+				statusMessage("Validation failed.", "bad");
+
+				if($('Form_EditForm_action_save') && $('Form_EditForm_action_save').stopLoading) $('Form_EditForm_action_save').stopLoading();
+
+				return false;
+			}
+
+			// get all data from the form
+			var data = this.serializeArray();
+			// add button action
+			data.push({name: $(button).attr('name'), value:'1'});
+			$.post(
+				this.attr('action'), 
+				data,
+				function(result) {
+					$(button).removeClass('loading');
+					
+					$form.trigger('afterSubmit', [result]);
+					
+					$form.ss().loadNewPage();
+				}, 
+				// @todo Currently all responses are assumed to be evaluated
+				'script'
+			);
+			
+			return false;
+		},
+		
+		/**
+		 * Hook in (optional) validation routines.
+		 * Currently clientside validation is not supported out of the box in the CMS.
+		 * 
+		 * @return boolean
+		 */
+		validate: function() {
+			this.trigger('beforeValidate');
+			var isValid = true;
+			this.trigger('afterValidate', [isValid]);
+			
+			return isValid;
+		},
+		
+		loadNewPage: function(result) {
+			// TinyMCE coupling
+			if(typeof tinymce_removeAll != 'undefined') tinymce_removeAll();
+
+			// Rewrite # links
+			result = result.replace(/(<a[^>]+href *= *")#/g, '$1' + window.location.href.replace(/#.*$/,'') + '#');
+
+			// Rewrite iframe links (for IE)
+			result = result.replace(/(<iframe[^>]*src=")([^"]+)("[^>]*>)/g, '$1' + $('base').attr('href') + '$2$3');
+
+			// Prepare iframes for removal, otherwise we get loading bugs
+			this.find('iframe').each(function() {
+				this.contentWindow.location.href = 'about:blank';
+				this.remove();
+			})
+
+			this.html(result);
+
+			if(this.hasClass('validationerror')) {
+				statusMessage(ss.i18n._t('ModelAdmin.VALIDATIONERROR', 'Validation Error'), 'bad');
+			} else {
+				statusMessage(ss.i18n._t('ModelAdmin.SAVED', 'Saved'), 'good');
+			}
+
+			Behaviour.apply(); // refreshes ComplexTableField
+			
+			// If there's a title field and it's got a "new XX" value, focus/select that first
+			// This is really a little too CMS-specific (as opposed to LeftAndMain), but the cleanup can happen after jQuery refactoring
+			if($('input#Form_EditForm_Title') && $('input#Form_EditForm_Title').value.match(/^new/i)) {
+	    		$('input#Form_EditForm_Title').select();
+			}
+		},
+		
+		/**
+		 * Resize elements in center panel
+		 * to fit the boundary box provided by the layout manager
+		 */
+		_resizeChildren: function() {
+			this.fitHeightToParent();
+			$('fieldset', this).fitHeightToParent();
+			// Order of resizing is important: Outer to inner
+			// TODO Only supports two levels of tabs at the moment
+			$('fieldset > .ss-tabset', this).fitHeightToParent();
+			$('fieldset > .ss-tabset > .tab', this).fitHeightToParent();
+			$('fieldset > .ss-tabset > .tab > .ss-tabset', this).fitHeightToParent();
+			$('fieldset > .ss-tabset > .tab > .ss-tabset > .tab', this).fitHeightToParent();
+		}
+	}});
+	
+	$('#Form_EditForm .Actions :submit').concrete({ss:{
+		onclick: function(e) {
+			$(this[0].form).ss().ajaxSubmit(this);
+			return false;
+		}
+	}});
+})(jQuery);
+
+jQuery(document).ready(function() {
+	// @todo remove
+	jQuery.concrete.triggerMatching();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _AJAX_LOADING = false;
 
 Behaviour.register({
@@ -442,9 +664,7 @@ function hideIndicator(id) {
 	Effect.Fade(id, {duration: 0.3});
 }
 
-setInterval(function() {
-		new Ajax.Request("Security/ping");
-}, 180*1000);
+
 
 /**
  * Find and enable TinyMCE on all htmleditor fields
