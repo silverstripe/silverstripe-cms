@@ -2,14 +2,10 @@
 	<h1>$ApplicationName</h1>
 	<p>
 		<% _t('WELCOMETO','Welcome to') %> $ApplicationName! 
-		<% _t('CHOOSEPAGE','Please choose a page from the left.') %>
+		<% _t('CHOOSEPAGE','Please choose an item from the left.') %>
 	</p>
 </div>
-<% if EditForm %>
-	$EditForm
-<% else %>
-	<form id="Form_EditForm" action="admin/EditForm" method="post" enctype="multipart/form-data">
-	</form>
-<% end_if %>
+
+$EditForm
 
 <div class="notice-wrap"></div>

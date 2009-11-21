@@ -55,21 +55,28 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			$record = DataObject::get_by_id($this->stat('tree_class'), $id);
 		}
 		
-		if(!$record) return false;
+		if($record) {
+			$fields = $record->getCMSFields();
 		
-		$fields = $record->getCMSFields();
-		
-		$actions = new FieldSet(
-			new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member')),
-			new FormAction('save',_t('SecurityAdmin.SAVE','Save'))
-		);
+			$actions = new FieldSet(
+				new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member')),
+				new FormAction('save',_t('SecurityAdmin.SAVE','Save'))
+			);
 
-		$form = new Form($this, "EditForm", $fields, $actions);
-		$form->loadDataFrom($record);
+			$form = new Form($this, "EditForm", $fields, $actions);
+			$form->loadDataFrom($record);
 		
-		if(!$record->canEdit()) {
-			$readonlyFields = $form->Fields()->makeReadonly();
-			$form->setFields($readonlyFields);
+			if(!$record->canEdit()) {
+				$readonlyFields = $form->Fields()->makeReadonly();
+				$form->setFields($readonlyFields);
+			}
+		} else {
+			$form = new Form(
+				$this, 
+				"EditForm", 
+				new FieldSet(), 
+				new FieldSet()
+			);
 		}
 		
 		return $form;

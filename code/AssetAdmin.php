@@ -313,9 +313,16 @@ HTML;
 			if(!$record->canEdit()) {
 				$form->makeReadonly();
 			}
-
-			return $form;
+		} else {
+			$form = new Form(
+				$this, 
+				"EditForm", 
+				new FieldSet(), 
+				new FieldSet()
+			);
 		}
+		
+		return $form;
 	}
 	
 	/**

@@ -395,18 +395,21 @@ JS;
 				$readonlyFields = $form->Fields()->makeReadonly();
 				$form->setFields($readonlyFields);
 			}
-
-			return $form;
-		} if ($id == 0) {
+		} elseif ($id == 0) {
 			$siteConfig = SiteConfig::current_site_config();
 			$form = new Form($this, "EditForm", $siteConfig->getFormFields(), $siteConfig->getFormActions());
 			$form->loadDataFrom($siteConfig);
 			return $form;
-		} else if($id) {
-			return new Form($this, "EditForm", new FieldSet(
-				new LabelField('PageDoesntExistLabel',_t('CMSMain.PAGENOTEXISTS',"This page doesn't exist"))), new FieldSet());
-
+		} else {
+			$form = new Form(
+				$this, 
+				"EditForm", 
+				new FieldSet(), 
+				new FieldSet()
+			);
 		}
+				
+		return $form;
 	}
 
 

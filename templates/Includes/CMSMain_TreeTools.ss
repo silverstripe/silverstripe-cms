@@ -2,17 +2,17 @@
 				
 				<ul>
 					<li>
-						<a href="#TreeActions-create">
+						<a href="#TreeActions-create" id="addpage">
 							<% _t('CREATE','Create',PR_HIGH) %>
 						</a>
 					</li>
 					<li>
-						<a href="#TreeActions-search">
+						<a href="#TreeActions-search" id="search">
 							<% _t('SEARCH','Search',PR_HIGH) %>
 						</a>
 					</li>
 					<li>
-						<a href="#TreeActions-batchactions">
+						<a href="#TreeActions-batchactions" id="batchactions">
 							<% _t('BATCHACTIONS','Batch Actions',PR_HIGH) %>
 						</a>
 					</li>
