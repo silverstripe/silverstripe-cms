@@ -291,9 +291,6 @@
 
 
 
-var _AJAX_LOADING = false;
-
-
 // Event.observe(window, 'beforeunload', LeftAndMain_window_unload);
 
 /**

@@ -201,7 +201,6 @@ TreeNodeAPI.prototype = {
 	selectTreeNode : function() {
 		var url = jQuery(this).find('a').attr('href');
 		if(url && url != '#') {
-			_AJAX_LOADING = true;
 			if($('sitetree').notify('SelectionChanged', this)) {
 		    this.getPageFromServer();
 			}
@@ -225,8 +224,6 @@ TreeNodeAPI.prototype = {
 		);
 		
 		if(xmlhttp) this.addNodeClass('loading');
-		
-		_AJAX_LOADING = false;
 	},
 	ajaxExpansion : function() {
 		this.addNodeClass('loading');

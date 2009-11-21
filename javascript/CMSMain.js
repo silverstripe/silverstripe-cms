@@ -139,6 +139,94 @@ var ss_MainLayout;
 	});
 	
 	/**
+	 * @class Input validation on the URLSegment field
+	 * @name ss.EditForm.URLSegment
+	 */
+	$('#Form_EditForm input[name=URLSegment]').concrete('ss', function($){
+		return/** @lends ss.EditForm.URLSegment */{
+
+			FilterRegex: /[^A-Za-z0-9-]+/,
+
+			ValidationMessage: 'URLs can only be made up of letters, digits and hyphens.',
+
+			MaxLength: 50,
+			
+			onmatch : function() {
+				var self = this;
+				
+				// intercept change event, do our own writing
+				this.bind('change', function(e) {
+					if(!self.validate()) {
+						jQuery.noticeAdd(self.ValidationMessage());
+					}
+					self.val(self.suggestValue(e.target.value));
+					return false;
+				});
+			},
+			
+			/**
+			 * Return a value matching the criteria.
+			 * 
+			 * @param {String} val
+			 * @return val
+			 */
+			suggestValue: function(val) {
+				// TODO Do we want to enforce lowercasing in URLs?
+				return val.substr(0, this.MaxLength()).replace(this.FilterRegex(), '').toLowerCase();
+			},
+			
+			validate: function() {
+				return (
+					this.val().length > this.MaxLength()
+					|| this.val().match(this.FilterRegex())
+				);
+			}
+		};
+	});
+	
+	/**
+	 * @class Input validation on the Title field
+	 * @name ss.EditForm.Title
+	 */
+	$('#Form_EditForm input[name=Title]').concrete('ss', function($){
+		return/** @lends ss.EditForm.Title */{
+
+			onmatch : function() {
+				var self = this;
+				
+				this.bind('change', function(e) {
+					self.updateURLSegment(jQuery('#Form_EditForm input[name=URLSegment]'));
+					// TODO We should really user-confirm these changes
+					self.parents('form').find('input[name=MetaTitle], input[name=MenuTitle]').val(self.val());
+				});
+			},
+			
+			updateURLSegment: function(field) {
+				if(!field || !field.length) return;
+				
+				// TODO language/logic coupling
+				var isNew = this.val().indexOf("new") == 0;
+				var suggestion = field.concrete('ss').suggestValue(this.val());
+				var confirmMessage = ss.i18n.sprintf(
+					ss.i18n._t(
+						'UPDATEURL.CONFIRM', 
+						'Would you like me to change the URL to:\n\n' 
+						+ '%s/\n\nClick Ok to change the URL, '
+						+ 'click Cancel to leave it as:\n\n%s'
+					),
+					suggestion,
+					field.val()
+				);
+
+				// don't ask for replacement if record is considered 'new' as defined by its title
+				if(isNew || (suggestion != field.val() && confirm(confirmMessage))) {
+					field.val(suggestion);
+				}
+			}
+		};
+	});
+		
+	/**
 	 * @class ParentID field combination - mostly toggling between
 	 * the two radiobuttons and setting the hidden "ParentID" field
 	 * @name ss.EditForm.parentTypeSelector
