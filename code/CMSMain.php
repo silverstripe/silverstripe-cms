@@ -197,7 +197,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 
 		// Put data hints into a script tag at the top
-		Requirements::customScript("siteTreeHints = " . $this->jsDeclaration($def) . ";");
+		Requirements::customScript("siteTreeHints = " . Convert::raw2json($def) . ";");
 	}
 
 	public function generateTreeStylingJS() {
@@ -236,33 +236,6 @@ JS;
 		}
 
 		Requirements::customScript($js);
-	}
-
-	/**
-	 * Return a javascript instanciation of this array
-	 */
-	protected function jsDeclaration($array) {
-		if(is_array($array)) {
-			$object = false;
-			foreach(array_keys($array) as $key) {
-				if(!is_numeric($key)) {
-					$object = true;
-					break;
-				}
-			}
-
-			if($object) {
-				foreach($array as $k => $v) {
-					$parts[] = "$k : " . $this->jsDeclaration($v);
-				}
-				return " {\n " . implode(", \n", $parts) . " }\n";
-			} else {
-				foreach($array as $part) $parts[] = $this->jsDeclaration($part);
-				return " [ " . implode(", ", $parts) . " ]\n";
-			}
-		} else {
-			return "'" . addslashes($array) . "'";
-		}
 	}
 
 	/**
