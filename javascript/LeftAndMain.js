@@ -643,24 +643,6 @@ ChangeTracker.prototype = {
 	}
 }
 
-/*
- * ModalForm provides a form with the functionality to prevent certian actions from occurring until
- * it's been closed.
- *
- * To use, You should run the blockEvent method as many times as needed.
- */
-ModalForm = Class.extend('BaseForm');
-ModalForm.prototype = {
-	/*
-	 * Prevent the given event from occurring on the given event while the form is open.
-	 * These must be CMS-created events, not built-in javascript events.
-	 * For example, form.blockEvent($('sitetree'), 'SelectionChanged')
-	 */
-	blockEvent: function(element, event) {
-		element.observeMethod(event, (function() { return !this.isVisible();}).bind(this) );
-	}
-}
-
 function hideLoading() {
 	if($('Loading')) $('Loading').style.display = 'none';
 	Element.removeClassName(document.body, 'stillLoading');
