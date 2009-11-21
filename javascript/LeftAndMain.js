@@ -30,7 +30,7 @@
 				
 				// Remove loading screen
 				$('.ss-loading-screen').hide();
-				$(document).removeClass('stillLoading');
+				$('body').removeClass('stillLoading');
 				
 				// Layout
 				ss_MainLayout = this._setupLayout();
