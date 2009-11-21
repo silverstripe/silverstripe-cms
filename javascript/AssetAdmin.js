@@ -16,6 +16,34 @@ var _HANDLER_FORMS = {
 };
 
 (function($) {
+	$('.AssetAdmin').concrete('ss', function($) {
+		return {
+			onmatch: function() {
+				
+				this._super();
+			}
+		};
+	});
+	
+	/**
+	 * Delete selected folders through "batch actions" tab.
+	 */
+	$('#Form_BatchActionsForm').concrete('ss').register(
+		'admin/assets/batchactions/delete', 
+		function(ids) {
+			var confirmed = confirm(
+				ss.i18n.sprintf(
+					ss.i18n._t(
+						'AssetAdmin.BATCHACTIONSDELETECONFIRM',
+						"Do you really want to delete %d folders?"
+					),
+					ids.length
+				)
+			);
+			return (confirmed) ? ids : false;
+		}
+	);
+	
 	/**
 	 * @class Simple form with a page type dropdown
 	 * which creates a new page through #Form_EditForm and adds a new tree node.

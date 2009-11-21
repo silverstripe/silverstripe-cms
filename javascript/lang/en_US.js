@@ -27,6 +27,7 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'LeftAndMain.CONFIRMUNSAVED': "Are you sure you want to navigate away from this page?\n\nWARNING: Your changes have not been saved.\n\nPress OK to continue, or Cancel to stay on the current page.",
 		'LeftAndMain.CONFIRMUNSAVEDSHORT': "WARNING: Your changes have not been saved.",
 		'CMSMAIN.ALERTCLASSNAME': 'The page type will be updated after the page is saved',
-		'CMSMAIN.URLSEGMENTVALIDATION': 'URLs can only be made up of letters, digits and hyphens.'
+		'CMSMAIN.URLSEGMENTVALIDATION': 'URLs can only be made up of letters, digits and hyphens.',
+		'AssetAdmin.BATCHACTIONSDELETECONFIRM': "Do you really want to delete %d folders?"
 	});
 }
