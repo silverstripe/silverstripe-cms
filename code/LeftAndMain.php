@@ -217,7 +217,6 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(CMS_DIR . '/thirdparty/jquery-notice/jquery.notice.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/jquery-ondemand/jquery.ondemand.js');
 		Requirements::javascript(CMS_DIR . '/javascript/jquery-changetracker/lib/jquery.changetracker.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/javascript/prototype_improvements.js');
 		Requirements::add_i18n_javascript(SAPPHIRE_DIR . '/javascript/lang');
 		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang');
 		
@@ -256,11 +255,9 @@ class LeftAndMain extends Controller {
 			array(
 				'sapphire/thirdparty/prototype/prototype.js',
 				'sapphire/thirdparty/behaviour/behaviour.js',
-				'sapphire/javascript/prototype_improvements.js',
 				'sapphire/thirdparty/jquery/jquery.js',
 				'sapphire/thirdparty/jquery-livequery/jquery.livequery.js',
 				'sapphire/javascript/jquery-ondemand/jquery.ondemand.js',
-				'sapphire/javascript/jquery_improvements.js',
 				'sapphire/thirdparty/firebug-lite/firebug.js',
 				'sapphire/thirdparty/firebug-lite/firebugx.js',
 				'sapphire/javascript/i18n.js',
