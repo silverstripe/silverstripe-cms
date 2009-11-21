@@ -228,6 +228,7 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.js');
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain_left.js');
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain_right.js');
+		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.EditForm.js');
 	
 		Requirements::javascript(CMS_DIR . '/javascript/SideTabs.js');
 		Requirements::javascript(CMS_DIR . '/javascript/SideReports.js');
