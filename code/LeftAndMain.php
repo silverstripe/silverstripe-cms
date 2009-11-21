@@ -821,6 +821,18 @@ JS;
 	}
 	
 	/**
+	 * Uses {@link getEditForm()} to retrieve an edit form
+	 * based on the submitted data. Used for form submissions,
+	 * not for template rendering.
+	 * 
+	 * @param HTTPRequest $request
+	 * @return Form
+	 */
+	function EditForm($request = null) {
+		return $this->getEditForm($request ? $request->requestVar('ID') : null);
+	}
+	
+	/**
 	 * Gets the edit form of a specific record. Will usually construct itself
 	 * from {@link DataObject->getCMSFields()} for the specific managed subclass
 	 * defined in {@link LeftAndMain::$tree_class}.
