@@ -492,6 +492,7 @@ class LeftAndMain extends Controller {
 			. '".$child->class."\" >" . ($child->TreeTitle) . 
 			"</a>"
 		';
+
 		$siteTree = $obj->getChildrenAsUL(
 			"", 
 			$titleEval,
@@ -525,7 +526,7 @@ class LeftAndMain extends Controller {
 			$this->stat('tree_class'), 
 			$request->getVar('ID'), 
 			null, 
-			array($this->getMarkingFilter($request->requestVars()), 'mark'), 
+			null, 
 			$request->getVar('minNodeCount')
 		);
 

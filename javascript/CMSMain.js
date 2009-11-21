@@ -99,7 +99,8 @@
 			},
 	
 			onreset: function(e) {
-				this.find('.field').clearFields().not(':first').hide();
+				this.find('.field :input').clearFields();
+				this.find('.field').not(':first').hide();
 		
 				// Reset URL to default
 				$('#sitetree')[0].clearCustomURL();

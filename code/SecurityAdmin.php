@@ -183,6 +183,11 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		return FormResponse::respond();
 	}
 	
+	function getSiteTreeFor($className, $rootID = null, $childrenMethod = null, $filterFunction = null, $minNodeCount = 30) {
+		if (!$childrenMethod) $childrenMethod = 'stageChildren';
+		return parent::getSiteTreeFor($className, $rootID, $childrenMethod, $filterFunction, $minNodeCount);
+	}
+	
 	function getCMSTreeTitle() {
 		return _t('SecurityAdmin.SGROUPS', 'Security Groups');
 	}
