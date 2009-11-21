@@ -17,10 +17,10 @@
 		return/** @lends ss.Form_EditForm */{	
 			
 			/**
-			 * @type String HTML text to show when the form has been deleted.
-			 * @todo i18n
+			 * @type String HTML text to show when no form content is chosen.
+			 *  Will show inside the <form> tag.
 			 */
-			RemoveText: 'Removed',
+			PlaceholderHtml: '',
 			
 			/**
 			 * @type Object
@@ -31,9 +31,14 @@
 				var self = this;
 				
 				this._setupChangeTracker();
-				
+
 				// Can't bind this through jQuery
 				window.onbeforeunload = function(e) {return self._checkChangeTracker(false);};
+				
+				// set default placeholder if form has no children
+				this.setPlaceholderHtml(jQuery('.ss-cmsForm-welcomeMessage').html());
+				jQuery('.ss-cmsForm-welcomeMessage').remove();
+				if(!self.find('*').length) self.removeForm();
 				
 				$._super();
 			},

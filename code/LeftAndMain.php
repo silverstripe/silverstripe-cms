@@ -511,7 +511,7 @@ class LeftAndMain extends Controller {
 		// Wrap the root if needs be.
 
 		if(!$rootID) {
-			$rootLink = $this->Link() . '0';
+			$rootLink = '#';
 			
 			// This lets us override the tree title with an extension
 			if($this->hasMethod('getCMSTreeTitle')) $treeTitle = $this->getCMSTreeTitle();

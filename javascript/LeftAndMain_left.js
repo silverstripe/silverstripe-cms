@@ -199,17 +199,19 @@ TreeAPI.prototype = {
 TreeNodeAPI = Class.create();
 TreeNodeAPI.prototype = {
 	selectTreeNode : function() {
-		if(this.getElementsByTagName('a')[0].href) {
+		var url = jQuery(this).find('a').attr('href');
+		if(url && url != '#') {
 			_AJAX_LOADING = true;
 			if($('sitetree').notify('SelectionChanged', this)) {
 		    this.getPageFromServer();
 			}
+		} else {
+			jQuery('#Form_EditForm').concrete('ss').removeForm();
 		}
 	},
 		
 	getPageFromServer : function() {
 		var self = this;
-		
 		var xmlhttp = jQuery('#Form_EditForm').concrete('ss').load(
 			jQuery(this).find('a').attr('href'),
 			function(response) {
