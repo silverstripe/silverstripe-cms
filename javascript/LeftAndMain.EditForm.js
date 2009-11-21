@@ -307,4 +307,23 @@
 			}
 		};
 	});
+	
+	/**
+	 * @class Add tinymce to HtmlEditorFields within the CMS.
+	 * @name ss.Form_EditForm.textarea.htmleditor
+	 */
+	$('#Form_EditForm textarea.htmleditor').concrete('ss', function($){
+		return/** @lends ss.Form_EditForm.Actions.submit */{
+			onmatch : function() {
+				tinyMCE.execCommand("mceAddControl", true, this.attr('id'));
+				this.isChanged = function() {
+					return tinyMCE.getInstanceById(this.attr('id')).isDirty();
+				}
+				this.resetChanged = function() {
+					var inst = tinyMCE.getInstanceById(this.attr('id'));
+					if (inst) inst.startContent = tinymce.trim(inst.getContent({format : 'raw', no_events : 1}));
+				}
+			}
+		};
+	});
 }(jQuery));

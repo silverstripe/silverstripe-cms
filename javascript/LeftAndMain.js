@@ -307,18 +307,3 @@ returnFalse = function() {
 function nullConverter(url) {
 	return url;
 }
-
-Behaviour.register({
-    'textarea.htmleditor' : {
-        initialize : function() {
-            tinyMCE.execCommand("mceAddControl", true, this.id);
-            this.isChanged = function() {
-                return tinyMCE.getInstanceById(this.id).isDirty();
-            }
-            this.resetChanged = function() {
-                inst = tinyMCE.getInstanceById(this.id);
-                if (inst) inst.startContent = tinymce.trim(inst.getContent({format : 'raw', no_events : 1}));
-            }
-        }
-    }
-});
