@@ -294,9 +294,6 @@ class LeftAndMain extends Controller {
 				'cms/javascript/SideReports.js',
 				'cms/javascript/LangSelector.js',
 				'cms/javascript/TranslationTab.js',
-				'jsparty/calendar/calendar.js',
-				'jsparty/calendar/lang/calendar-en.js',
-				'jsparty/calendar/calendar-setup.js',
 			)
 		);
 

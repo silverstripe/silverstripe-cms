@@ -384,25 +384,19 @@ ul.tree span.untranslated a:visited {
 	color: #ccc
 }
 
-#left form.actionparams div.SearchCriteria {
-	width: 28%;
-	overflow: hidden;
-	float: left;
-}
-
-#left form.actionparams input.SearchCriteria, #left form.actionparams #InputSiteTreeFilterClassName select {
+#Form_SearchTreeForm .field .middleColumn {
 	width: 60%;
 	float: left;
 	margin: 0;
 }
-#left form.actionparams #InputSiteTreeFilterDate .calendar {
-	margin-left: -96px;
-	width: 190px;
-	height: 141px;
+
+#Form_SearchTreeForm .field label {
+	margin-left: 0;
+	width: 28%;
 }
-/* IE7 fix: */
-#left form.actionparams #InputSiteTreeFilterDate table {
-	width: 70%;
+
+#Form_SearchTreeForm select.options {
+	clear: left;
 }
 
 /* Change detection CSS */

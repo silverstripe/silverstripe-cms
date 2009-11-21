@@ -205,5 +205,118 @@
 			});
 		}
 	}});
+	
+	/**
+	 * Control the site tree filter.
+	 */
+	$('#Form_SearchTreeForm').concrete('ss.searchTreeForm', function($) {return{
+		
+		SelectEl: null,
+		
+		onmatch: function() {
+			var self = this;
+			
+			// TODO Cant bind to onsubmit/onreset directly because of IE6
+			this.bind('submit', function(e) {return self.submitForm(e);});
+			this.bind('reset', function(e) {return self.resetForm(e);});
+
+			// only the first field should be visible by default
+			this.find('.field').not(':first').hide();
+
+			// generate the field dropdown
+			this.setSelectEl($('<select name="options" class="options"></select>')
+				.appendTo(this.find('fieldset:first'))
+				.bind('change', function(e) {self.addField(e);})
+			);
+			
+			this._setOptions();
+			
+		},
+		
+		_setOptions: function() {
+			var self = this;
+			
+			// reset existing elements
+			self.SelectEl().find('option').remove();
+			
+			// add default option
+			// TODO i18n
+			$('<option value="0">Add Criteria</option>').appendTo(self.SelectEl())
+			
+			// populate dropdown values from existing fields
+			this.find('.field').each(function() {
+				$('<option />').appendTo(self.SelectEl())
+					.val(this.id)
+					.text($(this).find('label').text());
+			});
+		},
+		
+		submitForm: function(e) {
+			var self = this;
+			var data = [];
+			// convert from jQuery object literals to hash map
+			$(this.serializeArray()).each(function(i, el) {
+				data[el.name] = el.value;
+			});
+			
+			// Set new URL
+			$('#sitetree')[0].setCustomURL(this.attr('action') + '&action_getfilteredsubtree=1', data);
+
+			// Disable checkbox tree controls that currently don't work with search.
+			// @todo: Make them work together
+			if ($('#sitetree')[0].isDraggable) $('#sitetree')[0].stopBeingDraggable();
+			$('.checkboxAboveTree :checkbox').val(false).attr('disabled', true);
+			
+			// disable buttons to avoid multiple submission
+			//this.find(':submit').attr('disabled', true);
+			
+			this.find(':submit[name=action_getfilteredsubtree]').addClass('loading');
+			
+			$('#sitetree')[0].reload({
+				onSuccess :  function(response) {
+					console.debug(self);
+					console.debug(self.find(':submit'));
+					self.find(':submit').attr('disabled', false).removeClass('loading');
+					statusMessage('Filtered tree','good');
+				},
+				onFailure : function(response) {
+					self.find(':submit').attr('disabled', false).removeClass('loading');
+					errorMessage('Could not filter site tree<br />' + response.responseText);
+				}
+			});
+			
+			return false;
+		},
+		
+		resetForm: function(e) {
+			this.find('.field').clearFields().not(':first').val('').hide();
+			
+			// Reset URL to default
+			$('#sitetree')[0].clearCustomURL();
+
+			// Enable checkbox tree controls
+			$('.checkboxAboveTree :checkbox').attr('disabled', 'false');
+
+			// reset all options, some of the might be removed
+			this._setOptions();
+			
+			return false;
+		},
+		
+		addField: function(e) {
+			var $select = $(e.target);
+			// show formfield matching the option
+			this.find('#' + $select.val()).show();
+			
+			// remove option from dropdown, each field should just exist once
+			this.find('option[value=' + $select.val() + ']').remove();
+			
+			// jump back to default entry
+			$select.val(0);
+			
+			return false;
+		}
+	}});
+
 
 })(jQuery);

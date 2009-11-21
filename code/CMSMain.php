@@ -55,30 +55,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'SiteTreeAsUL',
 		'getshowdeletedsubtree',
 		'getfilteredsubtree',
-		'batchactions'
+		'batchactions',
+		'SearchTreeForm'
 	);
-	
-	/**
-	 * SiteTree Columns that can be filtered using the the Site Tree Search button
-	 */
-	static $site_tree_filter_options = array(
-		'Title' => array('CMSMain.TITLE', 'Title'),
-		'MenuTitle' => array('CMSMain.MENUTITLE', 'Navigation Label'),
-		'ClassName' => array('CMSMain.PAGETYPE', 'Page Type'), 
-		'Status' => array('CMSMain.STATUS', 'Status'),
-		'MetaDescription' => array('CMSMain.METADESC', 'Description'),
-		'MetaKeywords' => array('CMSMain.METAKEYWORDS', 'Keywords')
-	);
-	
-	static function T_SiteTreeFilterOptions(){
-		return array(
-			'Title' => _t('CMSMain.TITLEOPT', 'Title', 0, 'The dropdown title in CMSMain left SiteTreeFilterOptions'),
-			'MenuTitle' => _t('CMSMain.MENUTITLEOPT', 'Navigation Label', 0, 'The dropdown title in CMSMain left SiteTreeFilterOptions'),
-			'Status' => _t('CMSMain.STATUSOPT', 'Status',  0, "The dropdown title in CMSMain left SiteTreeFilterOptions"), 
-			'MetaDescription' => _t('CMSMain.METADESCOPT', 'Description', 0, "The dropdown title in CMSMain left SiteTreeFilterOptions"), 
-			'MetaKeywords' => _t('CMSMain.METAKEYWORDSOPT', 'Keywords', 0, "The dropdown title in CMSMain left SiteTreeFilterOptions")
-		);
-	}
 	
 	public function init() {
 		parent::init();
@@ -155,15 +134,17 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 *
 	 * @return string
 	 */
-	public function getfilteredsubtree() {
-		// Sanity and security checks
-		if (!isset($_REQUEST['filter'])) die('No filter passed');
-		if (!ClassInfo::exists($_REQUEST['filter'])) die ('That filter class does not exist');
-		if (!is_subclass_of($_REQUEST['filter'], 'CMSSiteTreeFilter')) die ('That is not a valid filter');
+	public function getfilteredsubtree($data, $form) {
+		$params = $form->getData();
 		
-		// Do eeet!
-		$filter = new $_REQUEST['filter']();
-		return $filter->getTree();
+		// Get the tree
+		$tree = $this->getSiteTreeFor($this->stat('tree_class'), $_REQUEST['ID'], null, array(new CMSMainMarkingFilter($params), 'mark'));
+
+		// Trim off the outer tag
+		$tree = ereg_replace('^[ \t\r\n]*<ul[^>]*>','', $tree);
+		$tree = ereg_replace('</ul[^>]*>[ \t\r\n]*$','', $tree);
+		
+		return $tree;
 	}
 	
 	/**
@@ -188,32 +169,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return $doSet;
 	}
 	
-	/**
-	 * Returns the SiteTree columns that can be filtered using the the Site Tree Search button as a DataObjectSet
-	 */
-	public function SiteTreeFilterOptions() {
-		$filter_options = new DataObjectSet();
-		foreach(self::T_SiteTreeFilterOptions() as $key => $value) {
-   			$record = array(
-				'Column' => $key,
-				'Title' => $value,
-			);
-			$filter_options->push(new ArrayData($record));
-		}
-		return $filter_options;
-	}
-		public function SiteTreeFilterDateField() {
-			$dateField = new CalendarDateField('SiteTreeFilterDate');
-			return $dateField->Field();
-		}
-		public function SiteTreeFilterPageTypeField() {
-			$types = SiteTree::page_type_classes(); array_unshift($types, 'All');
-			$source = array_combine($types, $types);
-			asort($source);
-			$optionsetField = new DropdownField('ClassName', 'ClassName', $source, 'Any');
-			return $optionsetField->Field();
-		}	
-
 	public function generateDataTreeHints() {
 		$classes = ClassInfo::subclassesFor( $this->stat('tree_class') );
 
@@ -1095,6 +1050,61 @@ JS;
 
 		return new Form($this, "AddPageOptionsForm", $fields, $actions);
 	}
+	
+	/**
+	 * Form used to filter the sitetree. It can only be used via javascript for now.
+	 * 
+	 * @return Form
+	 */
+	function SearchTreeForm() {
+		// get all page types in a dropdown-compatible format
+		$pageTypes = SiteTree::page_type_classes(); 
+		array_unshift($pageTypes, 'All');
+		$pageTypes = array_combine($pageTypes, $pageTypes);
+		asort($pageTypes);
+				
+		$form = new Form(
+			$this,
+			'SearchTreeForm',
+			new FieldSet(
+				new TextField(
+					'Title', 
+					_t('CMSMain.TITLEOPT', 'Title')
+				),
+				new TextField('Content', 'Text'),
+				new CalendarDateField('EditedSince', _t('CMSMain_left.ss.EDITEDSINCE','Edited Since')),
+				new DropdownField('ClassName', 'Page Type', $pageTypes, null, 'Any'),
+				new TextField(
+					'MenuTitle', 
+					_t('CMSMain.MENUTITLEOPT', 'Navigation Label')
+				),
+				new TextField(
+					'Status',
+					_t('CMSMain.STATUSOPT', 'Status')
+				),
+				new TextField(
+					'MetaDescription',
+					_t('CMSMain.METADESCOPT', 'Description')
+				),
+				new TextField(
+					'MetaKeywords',
+					_t('CMSMain.METAKEYWORDSOPT', 'Keywords')
+				)
+			),
+			new FieldSet(
+				new ResetFormAction(
+					'clear', 
+					_t('CMSMain_left.ss.CLEAR', 'Clear')
+				),
+				new FormAction(
+					'getfilteredsubtree', 
+					_t('CMSMain_left.ss.SEARCH', 'Search')
+				)
+			)
+		);
+		
+		return $form;
+	}
 
 	/**
 	 * Helper function to get page count
@@ -1330,36 +1340,46 @@ JS;
 
 class CMSMainMarkingFilter {
 	
-	function __construct() {
+	/**
+	 * @var array Request params (unsanitized)
+	 */
+	protected $params = array();
+	
+	/**
+	 * @param array $params Request params (unsanitized)
+	 */
+	function __construct($params = null) {
 		$this->ids = array();
 		$this->expanded = array();
+		$this->params = $params;
 		
 		$where = array();
 		
-		// Match against URLSegment, Title, MenuTitle & Content
-		if (isset($_REQUEST['SiteTreeSearchTerm'])) {
-			$term = Convert::raw2sql($_REQUEST['SiteTreeSearchTerm']);
-			$where[] = "\"URLSegment\" LIKE '%$term%' OR \"Title\" LIKE '%$term%' OR \"MenuTitle\" LIKE '%$term%' OR \"Content\" LIKE '%$term%'";
-		}
-		
-		// Match against date
-		if (isset($_REQUEST['SiteTreeFilterDate'])) {
-			$date = $_REQUEST['SiteTreeFilterDate'];
-			$date = ((int)substr($date,6,4)) . '-' . ((int)substr($date,3,2)) . '-' . ((int)substr($date,0,2));
-			$where[] = "\"LastEdited\" > '$date'"; 
-		}
-		
-		// Match against exact ClassName
-		if (isset($_REQUEST['ClassName']) && $_REQUEST['ClassName'] != 'All') {
-			$klass = Convert::raw2sql($_REQUEST['ClassName']);
-			$where[] = "\"ClassName\" = '$klass'";
-		}
-		
-		// Partial string match against a variety of fields 
-		foreach (CMSMain::T_SiteTreeFilterOptions() as $key => $value) {
-			if (!empty($_REQUEST[$key])) {
-				$match = Convert::raw2sql($_REQUEST[$key]);
-				$where[] = "\"$key\" LIKE '%$match%'";
+		$SQL_params = Convert::raw2sql($this->params);
+		foreach($SQL_params as $name => $val) {
+			switch($name) {
+				// Match against URLSegment, Title, MenuTitle & Content
+				case 'SiteTreeSearchTerm':
+					$where[] = "\"URLSegment\" LIKE '%$val%' OR \"Title\" LIKE '%$val%' OR \"MenuTitle\" LIKE '%$val%' OR \"Content\" LIKE '%$val%'";
+					break;
+				// Match against date
+				case 'SiteTreeFilterDate':
+					$val = ((int)substr($val,6,4)) 
+						. '-' . ((int)substr($val,3,2)) 
+						. '-' . ((int)substr($val,0,2));
+					$where[] = "\"LastEdited\" > '$val'";
+					break;
+				// Match against exact ClassName
+				case 'ClassName':
+					if($val != 'All') {
+						$where[] = "\"ClassName\" = '$val'";
+					}
+					break;
+				default:
+					// Partial string match against a variety of fields 
+					if(!empty($val) && singleton("SiteTree")->hasDatabaseField($name)) {
+						$where[] = "\"$name\" LIKE '%$val%'";
+					}
 			}
 		}
 		
