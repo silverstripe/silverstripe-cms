@@ -58,23 +58,29 @@ var ss_MainLayout;
 				this._setupPinging();
 				this._resizeChildren();
 			
-				// artificially delay the resize event 200ms
-				// to avoid overlapping height changes in different onresize() methods
+				// HACK Delay resizing to give jquery-ui tabs a change their dimensions
+				// through dynamically added css classes
 				$(window).resize(function () {
 					var timerID = "timerLeftAndMainResize";
 					if (window[timerID]) clearTimeout(window[timerID]);
-					window[timerID] = setTimeout(function() {self._resizeChildren();}, 200);
+					window[timerID] = setTimeout(function() {
+						self._resizeChildren();
+					}, 200);
 				});
 			
 				// If tab has no nested tabs, set overflow to auto
 				$(this).find('.tab').not(':has(.tab)').css('overflow', 'auto');
-			
-				// trigger resize whenever new tabs are shown
-				// @todo This is called multiple times when tabs are loaded
-				this.find('.ss-tabset').live('tabsshow', function() {self._resizeChildren();});
-			
+						
 				// @todo Doesn't resize properly if the response doesn't contain a tabset (see above)
-				//$('#Form_EditForm').bind('loadnewpage', function() {self._resizeChildren();});
+				$('#Form_EditForm').bind('loadnewpage', function() {
+					// HACK Delay resizing to give jquery-ui tabs a change their dimensions
+					// through dynamically added css classes
+					var timerID = "timerLeftAndMainResize";
+					if (window[timerID]) clearTimeout(window[timerID]);
+					window[timerID] = setTimeout(function() {
+						self._resizeChildren();
+					}, 200);
+				});
 				
 				this._super();
 			},
