@@ -291,12 +291,7 @@ HTML;
 	function getEditForm($id = null) {
 		if(!$id) $id = $this->currentPageID();
 		
-		if($id && $id != "root") {
-			$record = DataObject::get_by_id("File", $id);
-		} else {
-			$record = singleton("Folder");
-		}
-		
+		$record = ($id && $id != "root") ? DataObject::get_by_id("File", $id) : null;		
 		if($record && !$record->canView()) return Security::permissionFailure($this);
 
 		if($record) {
@@ -542,14 +537,13 @@ JS;
 		}
 		
 		$p->write();
-		
-		mkdir($p->FullPath);
-		chmod($p->FullPath, Filesystem::$file_create_mask);
-		
+
+		// Used in TinyMCE inline folder creation
 		if(isset($_REQUEST['returnID'])) {
 			return $p->ID;
 		} else {
-			return $this->returnItemToUser($p);
+			$form = $this->getEditForm($p->ID);
+			return $form->formHtmlContent();
 		}
 		
 	}
