@@ -296,8 +296,8 @@ class SiteTreeTest extends SapphireTest {
 		Versioned::reading_stage('Live');
 		$deletedPage = Versioned::get_latest_version('SiteTree', $page2ID);
 		$deletedPage->doRestoreToStage();
-		$this->assertTrue(!Versioned::get_one_by_stage("Page", "Live", "\"SiteTree\".\"ID\" = " . $page2ID));
-	
+		$this->assertFalse((bool)Versioned::get_one_by_stage("Page", "Live", "\"SiteTree\".\"ID\" = " . $page2ID));
+
 		Versioned::reading_stage('Stage');
 		$requeriedPage = DataObject::get_by_id("Page", $page2ID);
 		$this->assertEquals('Products', $requeriedPage->Title);
@@ -385,9 +385,16 @@ class SiteTreeTest extends SapphireTest {
 		$pageStaffDuplicate->doPublish();
 		
 		$parentPage = $this->objFromFixture('Page', 'about');
+
 		$parentPage->doDeleteFromLive();
 		
 		Versioned::reading_stage('Live');
+		
+		// Confirm that none of the given pages exist
+		$this->assertEquals(array(), DataObject::get("Page")
+			->byIDs(array($pageAbout->ID, $pageStaff->ID, $pageStaffDuplicate->ID))
+			->column('URLSegment'));
+
 		$this->assertFalse(DataObject::get_by_id('Page', $pageAbout->ID));
 		$this->assertTrue(DataObject::get_by_id('Page', $pageStaff->ID) instanceof Page);
 		$this->assertTrue(DataObject::get_by_id('Page', $pageStaffDuplicate->ID) instanceof Page);
