@@ -65,7 +65,11 @@
 		
 				// add default option
 				// TODO i18n
-				jQuery('<option value="0">Add Criteria</option>').appendTo(self.getSelectEl());
+				jQuery(
+					'<option value="0">' + 
+					ss.i18n._t('CMSMAIN.AddSearchCriteria') + 
+					'</option>'
+				).appendTo(self.getSelectEl());
 		
 				// populate dropdown values from existing fields
 				this.find('.field').not(':visible').each(function() {

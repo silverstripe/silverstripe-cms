@@ -1063,8 +1063,11 @@ JS;
 			$this,
 			'SearchTreeForm',
 			new FieldSet(
-				// TODO i18n
-				$showDefaultFields[] = new DropdownField('FilterClass', 'Pages', $filterMap),
+				$showDefaultFields[] = new DropdownField(
+					'FilterClass', 
+					_t('CMSMain.SearchTreeFormPagesDropdown', 'Pages'), 
+					$filterMap
+				),
 				$showDefaultFields[] = new TextField(
 					'Title', 
 					_t('CMSMain.TITLEOPT', 'Title')
@@ -1291,8 +1294,7 @@ JS;
 		if(Permission::checkMember($member, 'VIEW_LANGS')) {
 			$field = new LanguageDropdownField(
 				'Locale', 
-				// TODO i18n
-				'Language', 
+				_t('CMSMAIN.LanguageDropdownLabel', 'Language'), 
 				array(), 
 				'SiteTree', 
 				'Locale-English',

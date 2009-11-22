@@ -115,8 +115,7 @@ class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter {
 	protected $childrenMethod = "AllHistoricalChildren";
 	
 	static function title() {
-		// TODO i18n
-		return "Deleted pages";
+		return _t('CMSSiteTreeFilter_DeletedPages.Title', "Deleted pages");
 	}
 	
 	function pagesIncluded() {
@@ -139,8 +138,7 @@ class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter {
 class CMSSiteTreeFilter_ChangedPages extends CMSSiteTreeFilter {
 	
 	static function title() {
-		// TODO i18n
-		return "Changed pages";
+		return _t('CMSSiteTreeFilter_ChangedPages.Title', "Changed pages");
 	}
 	
 	function pagesIncluded() {
@@ -166,8 +164,7 @@ class CMSSiteTreeFilter_ChangedPages extends CMSSiteTreeFilter {
 class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter {
 
 	static function title() {
-		// TODO i18n
-		return "All pages";
+		return _t('CMSSiteTreeFilter_Search.Title', "All pages");
 	}
 	
 	/**

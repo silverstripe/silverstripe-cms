@@ -31,6 +31,7 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'AssetAdmin.BATCHACTIONSDELETECONFIRM': "Do you really want to delete %s folders?",
 		'AssetTableField.REALLYDELETE': 'Do you really want to delete the marked files?',
 		'AssetTableField.MOVING': 'Moving %s file(s)',
-		'SecurityAdmin.BATCHACTIONSDELETECONFIRM': "Do you really want to delete %s groups?"
+		'SecurityAdmin.BATCHACTIONSDELETECONFIRM': "Do you really want to delete %s groups?",
+		'CMSMAIN.AddSearchCriteria': 'Add Criteria'
 	});
 }
