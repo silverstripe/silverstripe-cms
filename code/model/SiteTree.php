@@ -269,8 +269,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		);
 		
 		/// Fall back on a unique URLSegment for b/c.
-		if(!$sitetree && self::nested_urls() && $pages = DataObject::get('SiteTree', "\"URLSegment\" = '$URLSegment'")) {
-			return ($pages->Count() == 1) ? $pages->First() : null;
+		if(!$sitetree && self::nested_urls() && $page = DataObject::get('SiteTree', "\"URLSegment\" = '$URLSegment'")->First()) {
+			return $page;
 		}
 		
 		// Attempt to grab an alternative page from extensions.
@@ -1612,9 +1612,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if(is_callable('Subsite::disable_subsite_filter')) Subsite::disable_subsite_filter(true);
 		
 		// Content links
-		$items = $this->BackLinkTracking();
-		if(!$items) $items = new DataObjectSet();
-		else foreach($items as $item) $item->DependentLinkType = 'Content link';
+        $items = new DataObjectSet();
+
+        // We merge all into a regular DataObjectSet, because DataList doesn't support merge
+        if($contentLinks = $this->BackLinkTracking()) {
+            foreach($contentLinks as $item) $item->DependentLinkType = 'Content link';
+			$items->merge($contentLinks);
+        }
 		
 		// Virtual pages
 		if($includeVirtuals) {
@@ -1696,7 +1700,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		
 		$parentPageLinks = array();
 
-		if(isset($linkedPages)) {
+		if($linkedPages->Count() > 0) {
 			foreach($linkedPages as $linkedPage) {
 				$parentPage = $linkedPage->Parent;
 				if($parentPage) {

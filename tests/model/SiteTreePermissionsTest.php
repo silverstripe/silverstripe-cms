@@ -410,7 +410,6 @@ class SiteTreePermissionsTest extends FunctionalTest {
 		
 		$siteconfig->CanViewType = 'OnlyTheseUsers';
 		$siteconfig->ViewerGroups()->add($editorGroup);
-		$siteconfig->ViewerGroups()->write();
 		$siteconfig->write();
 		$this->assertTrue($page->canView($editor), 'Editors can view a page when set to inherit from the SiteConfig, and SiteConfig has canView set to OnlyTheseUsers');
 		$this->assertFalse($page->canView(FALSE), 'Anonymous can\'t view a page when set to inherit from the SiteConfig, and SiteConfig has canView set to OnlyTheseUsers');
@@ -432,7 +431,6 @@ class SiteTreePermissionsTest extends FunctionalTest {
 		
 		$siteconfig->CanEditType = 'OnlyTheseUsers';
 		$siteconfig->EditorGroups()->add($editorGroup);
-		$siteconfig->EditorGroups()->write();
 		$siteconfig->write();
 		$this->assertTrue($page->canEdit($editor), 'Editors can edit a page when set to inherit from the SiteConfig, and SiteConfig has canEdit set to OnlyTheseUsers');
 		$this->session()->inst_set('loggedInAs', null);
