@@ -32,13 +32,15 @@
 			
 			</div>
 			
-			<div class="checkboxAboveTree">
-				<img id="checkboxActionIndicator" src="cms/images/network-save.gif" />
-				<div>
-					<input type="checkbox" id="sortitems" />
-					<label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
+			<% if CanOrganiseSitetree %> 
+				<div class="checkboxAboveTree">
+					<img id="checkboxActionIndicator" src="cms/images/network-save.gif" />
+					<div>
+						<input type="checkbox" id="sortitems" />
+						<label for="sortitems"><% _t('ENABLEDRAGGING','Allow drag &amp; drop reordering', PR_HIGH) %></label>
+					</div>
 				</div>
-			</div>
+			<% end_if %> 
 
 			<% if IsTranslatableEnabled %>
 			<div id="LangSelector_holder">
