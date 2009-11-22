@@ -448,18 +448,22 @@ class LeftAndMain extends Controller {
 		}
 	}
 	
+	/**
+	 * @return String HTML
+	 */
 	public function SiteTreeAsUL() {
 		return $this->getSiteTreeFor($this->stat('tree_class'));
 	}
 
 	/**
-	 * Get a site tree displaying the nodes under the given objects.
+	 * Get a site tree HTML listing which displays the nodes under the given criteria.
 	 * 
 	 * @param $className The class of the root object
 	 * @param $rootID The ID of the root object.  If this is null then a complete tree will be
 	 *  shown
 	 * @param $childrenMethod The method to call to get the children of the tree. For example,
 	 *  Children, AllChildrenIncludingDeleted, or AllHistoricalChildren
+	 * @return String Nested <ul> list with links to each page
 	 */
 	function getSiteTreeFor($className, $rootID = null, $childrenMethod = null, $filterFunction = null, $minNodeCount = 30) {
 		// Default childrenMethod
@@ -518,27 +522,31 @@ class LeftAndMain extends Controller {
 	 * If ID = 0, then get the whole tree.
 	 */
 	public function getsubtree($request) {
-		$tree = $this->getSiteTreeFor(
+		if($filterClass = $request->requestVar('FilterClass')) {
+			if(!is_subclass_of($filterClass, 'CMSSiteTreeFilter')) {
+				throw new Exception(sprintf('Invalid filter class passed: %s', $filterClass));
+			}
+
+			$filter = new $filterClass($request->requestVars());
+		} else {
+			$filter = null;
+		}
+		
+		
+		$html = $this->getSiteTreeFor(
 			$this->stat('tree_class'), 
 			$request->getVar('ID'), 
 			null, 
-			null, 
-			$request->getVar('minNodeCount')
+			($filter) ? array($filter, 'isPageIncluded') : null, 
+			$request->getVar('minNodeCount'),
+			($filter) ? $filter->getChildrenMethod() : null
 		);
 
 		// Trim off the outer tag
-		$tree = ereg_replace('^[ \t\r\n]*<ul[^>]*>','', $tree);
-		$tree = ereg_replace('</ul[^>]*>[ \t\r\n]*$','', $tree);
+		$html = ereg_replace('^[ \t\r\n]*<ul[^>]*>','', $html);
+		$html = ereg_replace('</ul[^>]*>[ \t\r\n]*$','', $html);
 		
-		return $tree;
-	}
-
-	/**
-	 * @param array $params
-	 * @return LeftAndMainMarkingFilter
-	 */
-	protected function getMarkingFilter($params) {
-		return new LeftAndMainMarkingFilter($params);
+		return $html;
 	}
 	
 	/**

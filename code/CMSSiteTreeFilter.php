@@ -15,150 +15,208 @@
  */
 abstract class CMSSiteTreeFilter extends Object {
 
-	protected $ids = null;
-	protected $expanded = array();
+	/**
+	 * @var Array Search parameters, mostly properties on {@link SiteTree}.
+	 * Caution: Unescaped data.
+	 */
+	protected $params = array();
 	
-	static function showInList() {
-		return true;
-	}
-
-	function getTree() {
-		if(method_exists($this, 'pagesIncluded')) {
-			$this->populateIDs();
-		}
-
-		$leftAndMain = new LeftAndMain();
-		$tree = $leftAndMain->getSiteTreeFor('SiteTree', isset($_REQUEST['ID']) ? $_REQUEST['ID'] : 0, null, array($this, 'includeInTree'));
-
-		// Trim off the outer tag
-		$tree = ereg_replace('^[ \t\r\n]*<ul[^>]*>','', $tree);
-		$tree = ereg_replace('</ul[^>]*>[ \t\r\n]*$','', $tree);
-
-		return $tree;
+	/**
+	 * @var Array
+	 */
+	protected $_cache_ids = null;
+	
+	/**
+	 * @var Array
+	 */
+	protected $_cache_expanded = array();
+	
+	/**
+	 * @var String 
+	 */
+	protected $childrenMethod = null;
+		
+	function __construct($params = null) {
+		if($params) $this->params = $params;
+		
+		parent::__construct();
 	}
 	
 	/**
-	 * Populate $this->ids with the IDs of the pages returned by pagesIncluded(), also including
+	 * @return String Method on {@link Hierarchy} objects
+	 * which is used to traverse into children relationships.
+	 */
+	function getChildrenMethod() {
+		return $this->childrenMethod;
+	}
+	
+	/**
+	 * @return Array Map of Page IDs to their respective ParentID values.
+	 */
+	function pagesIncluded() {}
+	
+	/**
+	 * Populate the IDs of the pages returned by pagesIncluded(), also including
 	 * the necessary parent helper pages.
 	 */
 	protected function populateIDs() {
-		if($res = $this->pagesIncluded()) {
+		$parents = array();
+		$this->_cache_ids = array();
+		
+		if($pages = $this->pagesIncluded()) {
 			
-			/* And keep a record of parents we don't need to get parents of themselves, as well as IDs to mark */
-			foreach($res as $row) {
-				if ($row['ParentID']) $parents[$row['ParentID']] = true;
-				$this->ids[$row['ID']] = true;
+			// And keep a record of parents we don't need to get 
+			// parents of themselves, as well as IDs to mark
+			foreach($pages as $pageArr) {
+				$parents[$pageArr['ParentID']] = true;
+				$this->_cache_ids[$pageArr['ID']] = true;
 			}
 		
-		
-			while (!empty($parents)) {
-				$res = DB::query('SELECT "ParentID", "ID" FROM "SiteTree" WHERE "ID" in ('.implode(',',array_keys($parents)).')');
-				$parents = array();
+			if(!empty($parents)) {
+				$q = new SQLQuery();
+				$q->select(array('ID','ParentID'))
+					->from('SiteTree')
+					->where('"ID" in ('.implode(',',array_keys($parents)).')');
 
-				foreach($res as $row) {
+				foreach($q->execute() as $row) {
 					if ($row['ParentID']) $parents[$row['ParentID']] = true;
-					$this->ids[$row['ID']] = true;
-					$this->expanded[$row['ID']] = true;
+					$this->_cache_ids[$row['ID']] = true;
+					$this->_cache_expanded[$row['ID']] = true;
 				}
 			}
 		}
 	}
 	
 	/**
-	 * Returns true if the given page should be included in the tree.
+	 * Returns TRUE if the given page should be included in the tree.
+	 * Caution: Does NOT check view permissions on the page.
+	 * 
+	 * @param SiteTree $page
+	 * @return Boolean
 	 */
-	public function includeInTree($page) {
-		return isset($this->ids[$page->ID]) && $this->ids[$page->ID] ? true : false;
+	public function isPageIncluded($page) {
+		if($this->_cache_ids === NULL) $this->populateIDs();
+
+		return (isset($this->_cache_ids[$page->ID]) && $this->_cache_ids[$page->ID]);
 	}
 
 }
 
+/**
+ * Works a bit different than the other filters:
+ * Shows all pages *including* those deleted from stage and live.
+ * It does not filter out pages still existing in the different stages.
+ * 
+ * @package cms
+ * @subpackage content
+ */
 class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter {
+	
+	protected $childrenMethod = "AllHistoricalChildren";
+	
 	static function title() {
+		// TODO i18n
 		return "Deleted pages";
 	}
 	
-	function getTree() {
-		$leftAndMain = new LeftAndMain();
-		$tree = $leftAndMain->getSiteTreeFor('SiteTree', isset($_REQUEST['ID']) ? $_REQUEST['ID'] : 0, "AllHistoricalChildren");
-
-		// Trim off the outer tag
-		$tree = ereg_replace('^[ \t\r\n]*<ul[^>]*>','', $tree);
-		$tree = ereg_replace('</ul[^>]*>[ \t\r\n]*$','', $tree);
-
-		return $tree;
+	function pagesIncluded() {
+		$ids = array();
+		// TODO Not very memory efficient, but usually not very many deleted pages exist
+		$pages = Versioned::get_including_deleted('SiteTree');
+		if($pages) foreach($pages as $page) {
+			$ids[] = array('ID' => $page->ID, 'ParentID' => $page->ParentID);
+		}
+		return $ids;
 	}
 }
 
+/**
+ * Gets all pages which have changed on stage.
+ * 
+ * @package cms
+ * @subpackage content
+ */
 class CMSSiteTreeFilter_ChangedPages extends CMSSiteTreeFilter {
+	
 	static function title() {
+		// TODO i18n
 		return "Changed pages";
 	}
 	
 	function pagesIncluded() {
-		return DB::query('SELECT "ParentID", "ID" FROM "SiteTree" WHERE "Status" LIKE \'Saved%\'');
+		$ids = array();
+		$q = new SQLQuery();
+		$q->select(array('"SiteTree"."ID"','"SiteTree"."ParentID"'))
+			->from('SiteTree')
+			->leftJoin("SiteTree_Live", '"SiteTree_Live"."ID" = "SiteTree"."ID"')
+			->where('"SiteTree"."Version" > "SiteTree_Live"."Version"');
+
+		foreach($q->execute() as $row) {
+			$ids[] = array('ID'=>$row['ID'],'ParentID'=>$row['ParentID']);
+		}
+
+		return $ids;
 	}	
 }
 
+/**
+ * @package cms
+ * @subpackage content
+ */
 class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter {
-	public $data;
-	
-	
-	function __construct() {
-		$this->data = $_REQUEST;
-	}
-	
-	static function showInList() { return false; }
-	
+
 	static function title() {
-		return "Search";
+		// TODO i18n
+		return "All pages";
 	}
 	
 	/**
 	 * Retun an array of maps containing the keys, 'ID' and 'ParentID' for each page to be displayed
 	 * in the search.
+	 * 
+	 * @return Array
 	 */
 	function pagesIncluded() {
-		$data = $this->data;
-		
-		$this->ids = array();
-		$this->expanded = array();
-
+		$ids = array();
+		$q = new SQLQuery();
+		$q->select(array('ID','ParentID'))
+			->from('SiteTree');
 		$where = array();
 		
-		// Match against URLSegment, Title, MenuTitle & Content
-		if (isset($data['SiteTreeSearchTerm'])) {
-			$term = Convert::raw2sql($data['SiteTreeSearchTerm']);
-			$where[] = "\"URLSegment\" LIKE '%$term%' OR \"Title\" LIKE '%$term%' OR \"MenuTitle\" LIKE '%$term%' OR \"Content\" LIKE '%$term%'";
-		}
-		
-		// Match against date
-		if (isset($data['SiteTreeFilterDate'])) {
-			$date = $data['SiteTreeFilterDate'];
-			$date = ((int)substr($date,6,4)) . '-' . ((int)substr($date,3,2)) . '-' . ((int)substr($date,0,2));
-			$where[] = "\"LastEdited\" > '$date'"; 
-		}
-		
-		// Match against exact ClassName
-		if (isset($data['ClassName']) && $data['ClassName'] != 'All') {
-			$klass = Convert::raw2sql($data['ClassName']);
-			$where[] = "\"ClassName\" = '$klass'";
-		}
-		
-		// Partial string match against a variety of fields 
-		foreach (CMSMain::T_SiteTreeFilterOptions() as $key => $value) {
-			if (!empty($data[$key])) {
-				$match = Convert::raw2sql($data[$key]);
-				$where[] = "\"$key\" LIKE '%$match%'";
+		$SQL_params = Convert::raw2sql($this->params);
+		foreach($SQL_params as $name => $val) {
+			switch($name) {
+				// Match against URLSegment, Title, MenuTitle & Content
+				case 'SiteTreeSearchTerm':
+					$where[] = "\"URLSegment\" LIKE '%$val%' OR \"Title\" LIKE '%$val%' OR \"MenuTitle\" LIKE '%$val%' OR \"Content\" LIKE '%$val%'";
+					break;
+				// Match against date
+				case 'SiteTreeFilterDate':
+				 // TODO Date Parsing
+					$val = ((int)substr($val,6,4)) 
+						. '-' . ((int)substr($val,3,2)) 
+						. '-' . ((int)substr($val,0,2));
+					$where[] = "\"LastEdited\" > '$val'";
+					break;
+				// Match against exact ClassName
+				case 'ClassName':
+					if($val && $val != 'All') {
+						$where[] = "\"ClassName\" = '$val'";
+					}
+					break;
+				default:
+					// Partial string match against a variety of fields 
+					if(!empty($val) && singleton("SiteTree")->hasDatabaseField($name)) {
+						$where[] = "\"$name\" LIKE '%$val%'";
+					}
 			}
 		}
+		$q->where(empty($where) ? '' : '(' . implode(') AND (',$where) . ')');
 		
-		$where = empty($where) ? '' : 'WHERE (' . implode(') AND (',$where) . ')';
+		foreach($q->execute() as $row) {
+			$ids[] = array('ID'=>$row['ID'],'ParentID'=>$row['ParentID']);
+		}
 		
-		$parents = array();
-		
-		/* Do the actual search */
-		$res = DB::query('SELECT "ParentID", "ID" FROM "SiteTree" '.$where);
-		return $res;
+		return $ids;
 	}
 }

@@ -37,7 +37,7 @@
 				var self = this;
 
 				// only the first field should be visible by default
-				this.find('.field').not(':first').hide();
+				this.find('.field').not('.show-default').hide();
 
 				// generate the field dropdown
 				this.setSelectEl($('<select name="options" class="options"></select>')
@@ -46,6 +46,13 @@
 				);
 
 				this._setOptions();
+				
+				// special case: we can't use CMSSiteTreeFilter together with other options
+				this.find('select[name=FilterClass]').change(function(e) {
+					var others = self.find('.field').not($(this).parents('.field')).find(':input,:select');
+					if(e.target.value == 'CMSSiteTreeFilter_Search') others.removeAttr('disabled');
+					else others.attr('disabled','disabled');
+				})
 		
 				this._super();
 			},
@@ -61,7 +68,7 @@
 				jQuery('<option value="0">Add Criteria</option>').appendTo(self.getSelectEl());
 		
 				// populate dropdown values from existing fields
-				this.find('.field').each(function() {
+				this.find('.field').not(':visible').each(function() {
 					$('<option />').appendTo(self.getSelectEl())
 						.val(this.id)
 						.text($(this).find('label').text());
@@ -100,7 +107,7 @@
 	
 			onreset: function(e) {
 				this.find('.field :input').clearFields();
-				this.find('.field').not(':first').hide();
+				this.find('.field').not('.show-default').hide();
 		
 				// Reset URL to default
 				$('#sitetree')[0].clearCustomURL();

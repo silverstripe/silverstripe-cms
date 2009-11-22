@@ -133,11 +133,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		return $this->getSiteTreeFor($this->stat('tree_class'));
 	}
-	
-	protected function getMarkingFilter($params) {
-		return new CMSMainMarkingFilter($params);
-	}
-		
+			
 	public function generateDataTreeHints() {
 		$classes = ClassInfo::subclassesFor( $this->stat('tree_class') );
 
@@ -1055,20 +1051,24 @@ JS;
 		array_shift($filters);
 		// add filters to map
 		foreach($filters as $filter) {
-			if(!call_user_func(array($filter, 'showInList'))) continue;
-			
 			$filterMap[$filter] = call_user_func(array($filter, 'title'));
 		}
-				
+		// ensure that 'all pages' filter is on top position
+		uasort($filterMap, 
+			create_function('$a,$b', 'return ($a == "CMSSiteTreeFilter_Search") ? 1 : -1;')
+		);
+
+		$showDefaultFields = array();
 		$form = new Form(
 			$this,
 			'SearchTreeForm',
 			new FieldSet(
-				new TextField(
+				// TODO i18n
+				$showDefaultFields[] = new DropdownField('FilterClass', 'Pages', $filterMap),
+				$showDefaultFields[] = new TextField(
 					'Title', 
 					_t('CMSMain.TITLEOPT', 'Title')
 				),
-				new DropdownField('filter', 'Type', $filterMap, null, null, 'Any'),
 				new TextField('Content', 'Text'),
 				new CalendarDateField('EditedSince', _t('CMSMain_left.ss.EDITEDSINCE','Edited Since')),
 				new DropdownField('ClassName', 'Page Type', $pageTypes, null, null, 'Any'),
@@ -1100,7 +1100,11 @@ JS;
 				)
 			)
 		);
+		$form->setFormMethod('GET');
+		$form->disableSecurityToken();
 		$form->unsetValidator();
+		
+		foreach($showDefaultFields as $f) $f->addExtraClass('show-default');
 		
 		return $form;
 	}
@@ -1108,7 +1112,7 @@ JS;
 	function doSearchTree($data, $form) {
 		return $this->getsubtree($this->request);
 	}
-
+	
 	function publishall() {
 		ini_set("memory_limit", -1);
 		ini_set('max_execution_time', 0);
@@ -1340,48 +1344,6 @@ JS;
 	function IsTranslatableEnabled() {
 		return Object::has_extension('SiteTree', 'Translatable');
 	}
-}
-
-class CMSMainMarkingFilter extends LeftAndMainMarkingFilter{
-
-	protected function getQuery($params) {
-		$where = array();
-		
-		$SQL_params = Convert::raw2sql($params);
-		foreach($SQL_params as $name => $val) {
-			switch($name) {
-				// Match against URLSegment, Title, MenuTitle & Content
-				case 'SiteTreeSearchTerm':
-					$where[] = "\"URLSegment\" LIKE '%$val%' OR \"Title\" LIKE '%$val%' OR \"MenuTitle\" LIKE '%$val%' OR \"Content\" LIKE '%$val%'";
-					break;
-				// Match against date
-				case 'SiteTreeFilterDate':
-					$val = ((int)substr($val,6,4)) 
-						. '-' . ((int)substr($val,3,2)) 
-						. '-' . ((int)substr($val,0,2));
-					$where[] = "\"LastEdited\" > '$val'";
-					break;
-				// Match against exact ClassName
-				case 'ClassName':
-					if($val && $val != 'All') {
-						$where[] = "\"ClassName\" = '$val'";
-					}
-					break;
-				default:
-					// Partial string match against a variety of fields 
-					if(!empty($val) && singleton("SiteTree")->hasDatabaseField($name)) {
-						$where[] = "\"$name\" LIKE '%$val%'";
-					}
-			}
-		}
-		
-		return new SQLQuery(
-			array("ParentID", "ID"),
-			'SiteTree',
-			$where
-		);
-	}
-
 }
 
 ?>
