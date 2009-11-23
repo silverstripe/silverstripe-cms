@@ -231,9 +231,11 @@ class InstallRequirements {
 		if(!isset($_SERVER['argv']) || !$_SERVER['argv']) { 
 			$webserver = strip_tags(trim($_SERVER['SERVER_SIGNATURE']));
 			if(!$webserver) {
-				if(isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'], 'IIS') !== false) {
-					$pieces = explode('-', $_SERVER['SERVER_SOFTWARE']);
-					if(isset($pieces[1])) $webserver = $pieces[1];
+				if(isset($_SERVER['SERVER_SOFTWARE'])) {
+					if(strpos($_SERVER['SERVER_SOFTWARE'], 'IIS') !== false ||
+						strpos($_SERVER['SERVER_SOFTWARE'], 'Apache') !== false) {
+						$webserver = $_SERVER['SERVER_SOFTWARE'];
+					}
 				} else {
 					$webserver = "I can't tell what webserver you are running";
 				}
