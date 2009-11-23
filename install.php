@@ -15,6 +15,9 @@
  * It's also PHP4 syntax compatable
  */
 
+// speed up mysql_connect timeout if the server can't be found
+ini_set('mysql.connect_timeout', 5);
+
 ini_set('max_execution_time', 0);
 error_reporting(E_ALL ^ E_NOTICE);
 session_start();
@@ -148,16 +151,55 @@ class InstallRequirements {
 	 * Just check that the database configuration is okay
 	 */
 	function checkdatabase($databaseConfig) {
-			if($this->requireFunction('mysql_connect', array("PHP Configuration", "MySQL support", "MySQL support not included in PHP."))) {
-				$this->requireMySQLServer($databaseConfig['server'], array("MySQL Configuration", "Does the server exist", 
-					"I couldn't find a MySQL server on '$databaseConfig[server]'", $databaseConfig['server']));
-				if($this->requireMysqlConnection($databaseConfig['server'], $databaseConfig['username'], $databaseConfig['password'], 
-					array("MySQL Configuration", "Are the access credentials correct", "That username/password doesn't work"))) {
-					@$this->requireMySQLVersion("4.1", array("MySQL Configuration", "MySQL version at least 4.1", "MySQL version 4.1 is required, you only have ", "MySQL " . mysql_get_server_info()));
-					}
-				$this->requireDatabaseOrCreatePermissions($databaseConfig['server'], $databaseConfig['username'], $databaseConfig['password'], $databaseConfig['database'], 
-					array("MySQL Configuration", "Can I access/create the database", "I can't create new databases and the database '$databaseConfig[database]' doesn't exist"));
+		if($this->requireFunction(
+			'mysql_connect',
+			array(
+				"PHP Configuration",
+				"MySQL support",
+				"MySQL support not included in PHP.")
+			)
+		) {
+			if($this->requireMySQLServer(
+				$databaseConfig['server'],
+				array(
+					"MySQL Configuration",
+					"Does the server exist",
+					"I couldn't find a MySQL server on '$databaseConfig[server]'", $databaseConfig['server']
+				)
+			)) {
+				if($this->requireMysqlConnection(
+					$databaseConfig['server'],
+					$databaseConfig['username'],
+					$databaseConfig['password'], 
+					array(
+						"MySQL Configuration",
+						"Are the access credentials correct",
+						"That username/password doesn't work"
+					)
+				)) {
+					@$this->requireMySQLVersion(
+						"4.1",
+						array(
+							"MySQL Configuration",
+							"MySQL version at least 4.1",
+							"MySQL version 4.1 is required, you only have ",
+							"MySQL " . mysql_get_server_info()
+						)
+					);
+				}
+				$this->requireDatabaseOrCreatePermissions(
+					$databaseConfig['server'],
+					$databaseConfig['username'],
+					$databaseConfig['password'],
+					$databaseConfig['database'], 
+					array(
+						"MySQL Configuration",
+						"Can I access/create the database",
+						"I can't create new databases and the database '$databaseConfig[database]' doesn't exist"
+					)
+				);
 			}
+		}
 	}
 	
 	
