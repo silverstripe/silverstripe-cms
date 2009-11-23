@@ -163,7 +163,7 @@ class InstallRequirements {
 				$databaseConfig['server'],
 				array(
 					"MySQL Configuration",
-					"Does the server exist",
+					"MySQL server exists",
 					"I couldn't find a MySQL server on '$databaseConfig[server]'", $databaseConfig['server']
 				)
 			)) {
@@ -173,7 +173,7 @@ class InstallRequirements {
 					$databaseConfig['password'], 
 					array(
 						"MySQL Configuration",
-						"Are the access credentials correct",
+						"MySQL access credentials correct",
 						"That username/password doesn't work"
 					)
 				)) {
