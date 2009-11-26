@@ -48,7 +48,7 @@ abstract class SideReport extends Object {
 					if(is_string($fieldSource)) {
 						$val .= Convert::raw2xml($record->$fieldSource);
 					} else {
-						$val .= $record->val($fieldSource[0], $fieldSource[1]);
+						$val .= $record->XML_val($fieldSource[0], $fieldSource[1]);
 					}
 					
 					if(isset($fieldInfo['newline']) && $fieldInfo['newline']) $result .= "<br>";
