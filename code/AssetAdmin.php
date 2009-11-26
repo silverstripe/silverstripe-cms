@@ -127,9 +127,6 @@ JS
 		if(isset($data['ID']) && $data['ID'] != 'root') $folder = DataObject::get_by_id("Folder", $data['ID']);
 		else $folder = singleton('Folder');
 		
-		// Don't modify the output of the template, or it will become invalid
-		ContentNegotiator::disable();
-		
 		return array( 'CanUpload' => $folder->canEdit());
 	}
 	
