@@ -346,14 +346,6 @@ class LeftAndMain extends Controller {
 		$parts = split('</?form[^>]*>', $html);
 		return $parts[sizeof($parts)-2];
 	}
-	
-	/**
-	 * @deprecated Use CMSMenu::add_menu_item();
-	 */
-	static function add_menu_item($code, $menuTitle, $url, $controllerClass = null, $priority = -1) {
-		user_error("LeftAndMain::add_menu_item is deprecated; use CMSMenu::add_menu_item", E_USER_NOTICE);
-		return CMSMenu::add_menu_item($code, $menuTitle, $url, $controllerClass, $priority);
-	}
 
 	//------------------------------------------------------------------------------------------//
 	// Main UI components
