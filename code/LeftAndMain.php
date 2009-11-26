@@ -277,10 +277,6 @@ class LeftAndMain extends Controller {
 			)
 		);
 
-		// DEPRECATED 2.3: Use init()
-		$dummy = null;
-		$this->extend('augmentInit', $dummy);
-		
 		$dummy = null;
 		$this->extend('init', $dummy);
 	}
