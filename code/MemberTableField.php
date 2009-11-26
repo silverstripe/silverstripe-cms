@@ -68,10 +68,6 @@ class MemberTableField extends ComplexTableField {
 			$this->group = DataObject::get_by_id('Group', $_REQUEST['ctf'][$this->Name()]["ID"]);
 		}
 
-		foreach(self::$addedFields as $key => $value) {
-			$fieldList[$key] = $value;
-		}
-
 		if(!$hidePassword) {
 			$fieldList["SetPassword"] = "Password"; 
 		}
