@@ -989,9 +989,9 @@ JS;
 	function canceldraftchangesdialog() {
 		Requirements::clear();
 		Requirements::css(CMS_DIR . 'css/dialog.css');
-		Requirements::javascript(THIRDPARTY_DIR . '/prototype.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/behaviour.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/prototype_improvements.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/prototype/prototype.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/behaviour/behaviour.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/javascript/prototype_improvements.js');
 		Requirements::javascript(CMS_DIR . '/javascript/dialog.js');
 
 		$message = _t('CMSMain.COPYPUBTOSTAGE',"Do you really want to copy the published content to the stage site?");

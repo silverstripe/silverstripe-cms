@@ -164,23 +164,23 @@ class LeftAndMain extends Controller {
 			// Firebug is a useful console for debugging javascript
 			// Its available as a Firefox extension or a javascript library
 			// for easy inclusion in other browsers (just append ?debug_firebug=1 to the URL)
-			Requirements::javascript(THIRDPARTY_DIR . '/firebug/firebug-lite-compressed.js');
+			Requirements::javascript(THIRDPARTY_DIR . '/firebug-lite/firebug.js');
 		} else {
 			// By default, we include fake-objects for all firebug calls
 			// to avoid javascript errors when referencing console.log() etc in javascript code
-			Requirements::javascript(THIRDPARTY_DIR . '/firebug/firebugx.js');
+			Requirements::javascript(THIRDPARTY_DIR . '/firebug-lite/firebugx.js');
 		}
 		
-		Requirements::javascript(THIRDPARTY_DIR . '/prototype.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/prototype/prototype.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery_improvements.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/behaviour.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/plugins/livequery/jquery.livequery.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/javascript/jquery_improvements.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/behaviour/behaviour.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery-livequery/jquery.livequery.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/core/jquery.ondemand.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/prototype_improvements.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/loader.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/hover.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/layout_helpers.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/javascript/prototype_improvements.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/javascript/loader.js');
+		Requirements::javascript(CMS_DIR . '/javascript/hover.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/javascript/layout_helpers.js');
 		Requirements::add_i18n_javascript(SAPPHIRE_DIR . '/javascript/lang');
 		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang');
 		
@@ -192,7 +192,7 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(THIRDPARTY_DIR . '/greybox/AmiJS.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/greybox/greybox.js');
 		
-		Requirements::javascript(THIRDPARTY_DIR . '/tree/tree.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/javascript/tree/tree.js');
 		Requirements::css(THIRDPARTY_DIR . '/tree/tree.css');
 		
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.js');
@@ -224,56 +224,56 @@ class LeftAndMain extends Controller {
 		Requirements::combine_files(
 			'assets/base.js',
 			array(
-				'jsparty/prototype.js',
-				'jsparty/behaviour.js',
-				'jsparty/prototype_improvements.js',
-				'jsparty/jquery/jquery.js',
-				'jsparty/jquery/plugins/livequery/jquery.livequery.js',
-				'jsparty/jquery/plugins/effen/jquery.fn.js',
-				'sapphire/javascript/core/jquery.ondemand.js',
-				'jsparty/jquery/jquery_improvements.js',
-				'jsparty/firebug/firebugx.js',
-				'sapphire/javascript/i18n.js',
+				THIRDPARTY_DIR . '/prototype/prototype.js',
+				THIRDPARTY_DIR . '/behaviour/behaviour.js',
+				SAPPHIRE_DIR . '/javascript/prototype_improvements.js',
+				THIRDPARTY_DIR .'/jquery/jquery.js',
+				THIRDPARTY_DIR .'/jquery-livequery/jquery.livequery.js',
+				THIRDPARTY_DIR . '/jquery-effen/jquery.fn.js',
+				SAPPHIRE_DIR . '/javascript/core/jquery.ondemand.js',
+				SAPPHIRE_DIR . '/javascript/jquery_improvements.js',
+				THIRDPARTY_DIR . '/firebug-lite/firebugx.js',
+				SAPPHIRE_DIR . '/javascript/i18n.js',
 			)
 		);
 
 		Requirements::combine_files(
 			'assets/leftandmain.js',
 			array(
-				'jsparty/loader.js',
-				'jsparty/hover.js',
-				'jsparty/layout_helpers.js',
-				'jsparty/scriptaculous/effects.js',
-				'jsparty/scriptaculous/dragdrop.js',
-				'jsparty/scriptaculous/controls.js',
-				'jsparty/greybox/AmiJS.js',
-				'jsparty/greybox/greybox.js',
-				'cms/javascript/LeftAndMain.js',
-				'cms/javascript/LeftAndMain_left.js',
-				'cms/javascript/LeftAndMain_right.js',
-				'jsparty/tree/tree.js',
-				'jsparty/tabstrip/tabstrip.js',
-				'jsparty/SWFUpload/swfupload.js',
-				'cms/javascript/Upload.js',
-				'cms/javascript/TinyMCEImageEnhancement.js',
-				'sapphire/javascript/TreeSelectorField.js',
-		 		'cms/javascript/ThumbnailStripField.js',
+				SAPPHIRE_DIR . '/javascript/loader.js',
+				CMS_DIR . '/javascript/hover.js',
+				SAPPHIRE_DIR . '/javascript/layout_helpers.js',
+				THIRDPARTY_DIR . '/scriptaculous/effects.js',
+				THIRDPARTY_DIR . '/scriptaculous/dragdrop.js',
+				THIRDPARTY_DIR . '/scriptaculous/controls.js',
+				THIRDPARTY_DIR . '/greybox/AmiJS.js',
+				THIRDPARTY_DIR . '/greybox/greybox.js',
+				CMS_DIR . '/javascript/LeftAndMain.js',
+				CMS_DIR . '/javascript/LeftAndMain_left.js',
+				CMS_DIR . '/javascript/LeftAndMain_right.js',
+				SAPPHIRE_DIR . '/javascript/tree/tree.js',
+				THIRDPARTY_DIR . '/tabstrip/tabstrip.js',
+				CMS_DIR . '/thirdparty/swfupload/swfupload.js',
+				CMS_DIR . '/javascript/Upload.js',
+				CMS_DIR . '/javascript/TinyMCEImageEnhancement.js',
+				SAPPHIRE_DIR . '/javascript/TreeSelectorField.js',
+		 		CMS_DIR . '/javascript/ThumbnailStripField.js',
 			)
 		);
 
 		Requirements::combine_files(
 			'assets/cmsmain.js',
 			array(
-				'cms/javascript/CMSMain.js',
-				'cms/javascript/CMSMain_left.js',
-				'cms/javascript/CMSMain_right.js',
-				'cms/javascript/SideTabs.js',
-				'cms/javascript/SideReports.js',
-				'cms/javascript/LangSelector.js',
-				'cms/javascript/TranslationTab.js',
-				'jsparty/calendar/calendar.js',
-				'jsparty/calendar/lang/calendar-en.js',
-				'jsparty/calendar/calendar-setup.js',
+				CMS_DIR . '/javascript/CMSMain.js',
+				CMS_DIR . '/javascript/CMSMain_left.js',
+				CMS_DIR . '/javascript/CMSMain_right.js',
+				CMS_DIR . '/javascript/SideTabs.js',
+				CMS_DIR . '/javascript/SideReports.js',
+				CMS_DIR . '/javascript/LangSelector.js',
+				CMS_DIR . '/javascript/TranslationTab.js',
+				THIRDPARTY_DIR . '/calendar/calendar.js',
+				THIRDPARTY_DIR . '/calendar/lang/calendar-en.js',
+				THIRDPARTY_DIR . '/calendar/calendar-setup.js',
 			)
 		);
 
@@ -1073,7 +1073,6 @@ JS;
 	 */
 	public function CMSVersion() {
 		$sapphireVersionFile = file_get_contents('../sapphire/silverstripe_version');
-		$jspartyVersionFile = file_get_contents('../jsparty/silverstripe_version');
 		$cmsVersionFile = file_get_contents('../cms/silverstripe_version');
 
 		if(strstr($sapphireVersionFile, "/sapphire/trunk")) {
@@ -1083,13 +1082,6 @@ JS;
 			$sapphireVersion = ($matches) ? $matches[1] : null;
 		}
 
-		if(strstr($jspartyVersionFile, "/jsparty/trunk")) {
-			$jspartyVersion = "trunk";
-		} else {
-			preg_match("/jsparty\/(?:(?:branches)|(?:tags))(?:\/rc)?\/([A-Za-z0-9._-]+)\/silverstripe_version/", $jspartyVersionFile, $matches);
-			$jspartyVersion = ($matches) ? $matches[1] : null;
-		}
-
 		if(strstr($cmsVersionFile, "/cms/trunk")) {
 			$cmsVersion = "trunk";
 		} else {
@@ -1097,10 +1089,10 @@ JS;
 			$cmsVersion = ($matches) ? $matches[1] : null;
 		}
 
-		if($sapphireVersion == $jspartyVersion && $jspartyVersion == $cmsVersion) {
+		if($sapphireVersion == $cmsVersion) {
 			return $sapphireVersion;
 		}	else {
-			return "cms: $cmsVersion, sapphire: $sapphireVersion, jsparty: $jspartyVersion";
+			return "cms: $cmsVersion, sapphire: $sapphireVersion";
 		}
 	}
 

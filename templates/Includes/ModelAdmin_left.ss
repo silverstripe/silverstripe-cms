@@ -1,5 +1,5 @@
-<% require javascript(jsparty/tabstrip/tabstrip.js) %>
-<% require css(jsparty/tabstrip/tabstrip.css) %>
+<% require javascript(sapphire/thirdparty/tabstrip/tabstrip.js) %>
+<% require css(sapphire/thirdparty/tabstrip/tabstrip.css) %>
 
 <div id="LeftPane">
 	<div id="SearchForm_holder" class="leftbottom">		

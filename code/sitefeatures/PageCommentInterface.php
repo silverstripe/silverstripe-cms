@@ -188,8 +188,8 @@ class PageCommentInterface extends RequestHandler {
 		
 		// Shall We use AJAX?
 		if(self::$use_ajax_commenting) {
-			Requirements::javascript(THIRDPARTY_DIR . '/behaviour.js');
-			Requirements::javascript(THIRDPARTY_DIR . '/prototype.js');
+			Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/behaviour/behaviour.js');
+			Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/prototype/prototype.js');
 			Requirements::javascript(THIRDPARTY_DIR . '/scriptaculous/effects.js');
 			Requirements::javascript(CMS_DIR . '/javascript/PageCommentInterface.js');
 		}

@@ -22,7 +22,7 @@ class ImageEditor extends Controller {
 	*/ 
 	public function index() {
 		Requirements::clear();
-		Requirements::javascript(THIRDPARTY_DIR . '/prototype.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/prototype/prototype.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/scriptaculous/scriptaculous.js');
 		Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/Utils.js');
 		//Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/ImageHistory.js');
@@ -37,8 +37,8 @@ class ImageEditor extends Controller {
 		Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/ImageEditor.js');
 		Requirements::javascript(CMS_DIR . '/javascript/ImageEditor/DocumentBody.js');
 
-		Requirements::javascript(THIRDPARTY_DIR . '/loader.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/behaviour.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/javascript/loader.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/behaviour/behaviour.js');
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.js');
 		Requirements::css(CMS_DIR . 'css/ImageEditor/ImageEditor.css');
 

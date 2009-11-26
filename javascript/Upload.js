@@ -74,7 +74,7 @@ Upload.prototype = {
 				button_window_mode : "transparent",
 				button_width : this.buttonWidth,
 				button_height : this.buttonHeight,
-				flash_url : 'jsparty/SWFUpload/swfupload.swf',	// Relative to this file
+				flash_url : 'cms/thirdparty/swfupload/swfupload.swf',	// Relative to this file
 				swfupload_loaded_handler: this.buildUI.bind(this),
 				debug: false,
 				preserve_relative_urls: true
