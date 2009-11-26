@@ -220,7 +220,6 @@ class InstallRequirements {
 		$this->requireFile('mysite', array("File permissions", "mysite/ folder exists", "There's no mysite folder."));
 		$this->requireFile('sapphire', array("File permissions", "sapphire/ folder exists", "There's no sapphire folder."));
 		$this->requireFile('cms', array("File permissions", "cms/ folder exists", "There's no cms folder."));
-		$this->requireFile('jsparty', array("File permissions", "jsparty/ folder exists", "There's no jsparty folder."));
 		$this->requireWriteable('.htaccess', array("File permissions", "Is the .htaccess file writeable?", null));
 		$this->requireWriteable('mysite/_config.php', array("File permissions", "Is the mysite/_config.php file writeable?", null));
 		$this->requireWriteable('assets', array("File permissions", "Is the assets/ folder writeable?", null));
@@ -712,7 +711,7 @@ class Installer extends InstallRequirements {
 		<link rel="stylesheet" type="text/css" href="themes/blackcandy/css/typography.css" />
 		<link rel="stylesheet" type="text/css" href="themes/blackcandy/css/form.css" />
 		<link rel="stylesheet" type="text/css" href="sapphire/dev/install/install.css" />
-		<script src="jsparty/jquery/jquery.js"></script>
+		<script src="sapphire/thirdparty/jquery/jquery.js"></script>
 	</head>
 	<body>
 		<div id="BgContainer">
