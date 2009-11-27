@@ -237,7 +237,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		$siteTreeList = $obj->getChildrenAsUL(
 			'',
 			'"<li id=\"record-$child->ID\" class=\"$child->class " . ($child->Locked ? " nodelete" : "") . $child->markingClasses() . ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
-			'"<a href=\"" . Director::link(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" >" . $child->TreeTitle() . "</a>" ',
+			'"<a href=\"" . Controller::join_links(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" >" . $child->TreeTitle() . "</a>" ',
 			$this,
 			true
 		);	
