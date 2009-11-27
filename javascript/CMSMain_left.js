@@ -9,6 +9,7 @@ _NEW_PAGES = new Array();
 /**
  * Add page action
  */
+var addpageclass;
 addpageclass = Class.create();
 addpageclass.applyTo('#addpage');
 addpageclass.prototype = {
@@ -95,11 +96,12 @@ addpageclass.prototype = {
 	showAddPageError: function(response) {
 		errorMessage(ss.i18n._t('CMSMAIN.ERRORADDINGPAGE'), response);
 	}
-}
+};
 
 /**
  * Search button click action
  */
+var searchclass;
 searchclass = Class.create();
 searchclass.applyTo('#search');
 searchclass.prototype = {
@@ -118,7 +120,7 @@ searchclass.prototype = {
 	}
 }
 
-SiteTreeFilter = Class.create();
+var SiteTreeFilter = Class.create();
 SiteTreeFilter.applyTo('#siteTreeFilterList');
 SiteTreeFilter.prototype = {
 	initialize: function () {
@@ -156,7 +158,7 @@ SiteTreeFilter.prototype = {
 /**
  * Control the site tree filter
  */
-SiteTreeFilterForm = Class.create();
+var SiteTreeFilterForm = Class.create();
 SiteTreeFilterForm.applyTo('form#search_options');
 SiteTreeFilterForm.prototype = {
 	initialize: function() {
@@ -230,7 +232,7 @@ SiteTreeFilterForm.prototype = {
 /**
  * Add Criteria Drop-down onchange action which allows more criteria to be shown
  */
-SiteTreeFilterAddCriteria = Class.create();
+var SiteTreeFilterAddCriteria = Class.create();
 SiteTreeFilterAddCriteria.applyTo('#SiteTreeFilterAddCriteria');
 SiteTreeFilterAddCriteria.prototype = {
 	onchange : function() {
@@ -244,7 +246,7 @@ SiteTreeFilterAddCriteria.prototype = {
 /**
  * Batch Actions button click action
  */
-batchactionsclass = Class.create();
+var batchactionsclass = Class.create();
 batchactionsclass.applyTo('#batchactions');
 batchactionsclass.prototype = {
 	
@@ -415,7 +417,7 @@ Behaviour.register({
 /**
  * Publish selected pages action
  */
-publishpage = Class.create();
+var publishpage = Class.create();
 publishpage.applyTo('#batchactions_options');
 publishpage.prototype = {
 	onsubmit : function() {
@@ -457,12 +459,13 @@ publishpage.prototype = {
 
 		return false;
 	}
-}
+};
 
 
 /**
  * Delete selected pages action
  */
+var deletepage;
 deletepage = Class.create();
 deletepage.applyTo('#Form_DeleteItemsForm');
 deletepage.prototype = {
@@ -511,7 +514,7 @@ deletepage.prototype = {
 
 		return false;
 	}
-}
+};
 
 /**
  * Tree context menu
