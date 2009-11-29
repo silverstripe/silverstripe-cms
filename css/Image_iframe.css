@@ -58,7 +58,7 @@ h2 {
 
 
 /**
- * TreeDropdownField stying
+ * TreeDropdownField styling
  */
 .SelectionGroup div.TreeDropdownField {
 	width: 241px;
@@ -68,7 +68,7 @@ html>body div.TreeDropdownField {
 	position:relative;
 }
 
-.SelectionGroup div.TreeDropdownField span.items {
+.SelectionGroup div.TreeDropdownField .items {
 	display: block;
 	height: 100%;
 	border: 1px #7f9db9 solid;
@@ -78,6 +78,10 @@ html>body div.TreeDropdownField {
 	padding-top: 2px;
 	padding-bottom: 2px;
 	background-color: white;
+}
+
+.SelectionGroup div.TreeDropdownField input.items {
+	height: 19px;
 }
 
 .SelectionGroup div.TreeDropdownField div.tree_holder {

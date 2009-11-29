@@ -311,7 +311,7 @@
 		padding-bottom: 150px;
 
 	}
-	#right form.actionparams div.TreeDropdownField span.items {
+	#right form.actionparams div.TreeDropdownField .items {
 		width: 195px;
 	}
 
