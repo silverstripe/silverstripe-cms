@@ -42,7 +42,7 @@ HtmlEditorConfig::get('cms')->setOptions(array(
 ));
 
 
-HtmlEditorConfig::get('cms')->enablePlugins('media', '../../../../cms/tinymce_ssbuttons', 'fullscreen');
+HtmlEditorConfig::get('cms')->enablePlugins('media', '../../../../cms/javascript/tinymce_ssbuttons', 'fullscreen');
 			
 HtmlEditorConfig::get('cms')->insertButtonsBefore('formatselect', 'styleselect');
 HtmlEditorConfig::get('cms')->insertButtonsBefore('advcode', 'ssimage', 'ssflash', 'sslink', 'unlink', 'anchor', 'separator' );
