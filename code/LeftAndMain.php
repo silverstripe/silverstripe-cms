@@ -119,7 +119,7 @@ class LeftAndMain extends Controller {
 		);
 		
 		// set reading lang
-		if(Translatable::is_enabled() && !Director::is_ajax()) {
+		if(Object::has_extension('SiteTree', 'Translatable') && !Director::is_ajax()) {
 			Translatable::choose_site_locale(array_keys(Translatable::get_existing_content_languages('SiteTree')));
 		}
 

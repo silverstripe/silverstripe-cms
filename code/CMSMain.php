@@ -275,7 +275,7 @@ JS;
 			}
 
 			// Don't open a page from a different locale
-			if($record && Translatable::is_enabled() && $record->Locale && $record->Locale != Translatable::get_current_locale()) {
+			if($record && Object::has_extension('SiteTree', 'Translatable') && $record->Locale && $record->Locale != Translatable::get_current_locale()) {
 				$record = null;
 			}
 
