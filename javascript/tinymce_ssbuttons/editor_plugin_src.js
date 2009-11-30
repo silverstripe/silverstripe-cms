@@ -1,5 +1,5 @@
 (function() {
-	tinymce.PluginManager.requireLangPack("../../tinymce_ssbuttons");
+	tinymce.PluginManager.requireLangPack("../../../../cms/javascript/tinymce_ssbuttons");
 	var each = tinymce.each;
 
 	tinymce.create('tinymce.plugins.SSButtons', {
