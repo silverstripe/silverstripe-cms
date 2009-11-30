@@ -1,6 +1,9 @@
 (function() {
 	var each = tinymce.each;
 
+	/**
+	 * Load via: HtmlEditorConfig::get('cms')->enablePlugins(array('ssmacron', '../../../../cms/javascript/tinymce_ssmacron'))
+	 */
 	tinymce.create('tinymce.plugins.InsertMacron', {
 		getInfo : function() {
 			return {
@@ -36,5 +39,5 @@
 	});
 
 	// Adds the plugin class to the list of available TinyMCE plugins
-	tinymce.PluginManager.add("../../../../cms/javascript/tinymce_ssmacron", tinymce.plugins.InsertMacron);
+	tinymce.PluginManager.add("ssmacron", tinymce.plugins.InsertMacron);
 })();
