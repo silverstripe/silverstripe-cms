@@ -294,7 +294,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	 */
 	static function add_hidden_permission($codes){
 		if(is_string($codes)) $codes = array($codes);
-		self::$hidden_permissions += $codes;
+		self::$hidden_permissions = array_merge(self::$hidden_permissions, $codes);
 	}
 	
 	/**
