@@ -50,6 +50,6 @@ function reloadSiteTree() {
 appendLoader(function () {
 	if($('sitetree')) {
 		var selectedNode = $('sitetree').getElementsByTagName('li')[1];
-		selectedNode.onselect();
+		//selectedNode.onselect();
 	}
 });
