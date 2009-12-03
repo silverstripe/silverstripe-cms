@@ -164,7 +164,7 @@ Object.extend(Class, {
 var SubsDraggable = Class.create();
 
 SubsDraggable.prototype = Object.extend({}, Draggable.prototype);
-Class.superrise(SubsDraggable.prototype, ['initialize', 'startDrag', 'finishDrag'])
+Class.superrise(SubsDraggable.prototype, ['initialize', 'startDrag', 'finishDrag', 'endDrag'])
 Object.extend( SubsDraggable.prototype , {
 	initialize: function(event) {
 		this.super_initialize.apply(this, arguments);
@@ -197,6 +197,15 @@ Object.extend( SubsDraggable.prototype , {
 			this.element.appendChild(numFilesIndicator);
 		}
 		this.super_startDrag(event);
+	},
+	endDrag: function(event) {
+		this.super_endDrag(event);
+		// Remove any remaining orphaned NumFilesIndicator spans
+		// See ticket #4735
+		var elts = $$('.NumFilesIndicator')
+		if (elts) {
+			elts.each(function(x){ Element.remove(x); });
+		}
 	},
 	finishDrag: function(event, success) {
 		this.super_finishDrag(event, success);
@@ -348,7 +357,7 @@ FilesystemSyncClass.prototype = {
 /**
  * Delete folder action
  */
-deletefolder = {
+var deletefolder = {
 	button_onclick : function() {
 		if(treeactions.toggleSelection(this)) {
 			deletefolder.o1 = $('sitetree').observeMethod('SelectionChanged', deletefolder.treeSelectionChanged);
@@ -490,7 +499,15 @@ appendLoader(function () {
 	if($('deletepage')) {
 		$('deletepage').onclick = deletefolder.button_onclick;
 		$('deletepage').getElementsByTagName('button')[0].onclick = function() { return false; };
-		$('Form_DeleteItemsForm').onsubmit = deletefolder.form_submit;
+		// Prevent bug #4740, particularly with IE
+		Behaviour.register({
+			'#Form_DeleteItemsForm' : {
+				onsubmit: function(event) {
+					deletefolder.form_submit();
+					Event.stop(event);
+					}
+				}
+			});
 		Element.hide('Form_DeleteItemsForm');
 	}
 	
