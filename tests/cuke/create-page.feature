@@ -113,3 +113,5 @@ Feature: Page creation in the CMS
 		And I save the page
 		And I load the "Page Title" page
 		Then the "Navigation label" field is "Page Title"
+		Then I delete the current page
+		
