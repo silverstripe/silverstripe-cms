@@ -977,7 +977,6 @@ JS;
 				DataObject::delete_by_id($this->stat('tree_class'), $id);
 				$script .= "node = st.getTreeNodeByIdx($id); if(node) node.parentTreeNode.removeTreeNode(node); $('Form_EditForm').closeIfSetTo($id); \n";
 				
-				if ($id == $this->currentPageID()) FormResponse::add('CurrentPage.isDeleted = 1;');
 			}
 		}
 		FormResponse::add($script);
