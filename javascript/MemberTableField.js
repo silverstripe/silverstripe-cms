@@ -6,7 +6,9 @@
  */
  
 // no confirm message for removal from a group
-ComplexTableField.prototype.deleteConfirmMessage = null;
+if(ComplexTableField && ComplexTableField != undefined) {
+	ComplexTableField.prototype.deleteConfirmMessage = null;
+}
 
 /**
  * Auto-lookup on ajax fields
