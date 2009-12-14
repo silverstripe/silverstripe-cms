@@ -6,7 +6,7 @@
  */
  
 // no confirm message for removal from a group
-if(ComplexTableField && ComplexTableField != undefined) {
+if(typeof(ComplexTableField) != 'undefined') {
 	ComplexTableField.prototype.deleteConfirmMessage = null;
 }
 
