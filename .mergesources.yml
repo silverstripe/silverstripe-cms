@@ -6,13 +6,3 @@ trunk:
   sapphire: /open/modules/sapphire/trunk
   cms: /open/modules/cms/trunk
   jsparty: /open/modules/jsparty/trunk
-
-wcc:
-  sapphire: /modules/sapphire/branches/2.4-wcc
-  cms: /modules/cms/branches/2.4-wcc
-  jsparty: /modules/jsparty/branches/2.4-wcc
-
-wc:
-  sapphire: /modules/sapphire/branches/2.3.1-womenconf
-  cms: /modules/cms/branches/2.3.1-womenconf
-  jsparty: /modules/jsparty/branches/2.3.1-womenconf
