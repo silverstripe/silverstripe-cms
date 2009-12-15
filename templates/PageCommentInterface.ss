@@ -53,6 +53,9 @@
 			<p id="NoComments"><% _t('NOCOMMENTSYET','No one has commented on this page yet.') %></p>
 		<% end_if %>
 	</div>
+	<% if DeleteAllLink %>
+		<p id="DeleteComments"><a href="$DeleteAllLink">Delete all comments on this page</a></p>
+	<% end_if %>
 	<p id="CommentsRSSFeed">
 		<a class="commentrss" href="$CommentRssLink"><% _t('RSSFEEDCOMMENTS', 'RSS feed for comments on this page') %></a> | 
 		<a href="PageComment/rss" class="commentrss" title="<% _t('RSSVIEWALLCOMMENTS', 'View all Comments') %>"><% _t('RSSFEEDALLCOMMENTS', 'RSS feed for all comments') %></a>

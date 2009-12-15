@@ -228,6 +228,16 @@ class PageCommentInterface extends RequestHandler {
 		return Director::absoluteBaseURL() . "PageComment/rss?pageid=" . $this->page->ID;
 	}
 	
+	/**
+	 * A link to PageComment_Controller.deleteallcomments() which deletes all
+	 * comments on a page referenced by the url param pageid
+	 */
+	function DeleteAllLink() {
+		if(Permission::check('CMS_ACCESS_CMSMain')) {
+			return Director::absoluteBaseURL() . "PageComment/deleteallcomments?pageid=" . $this->page->ID;
+		}
+	}
+	
 }
 
 /**
