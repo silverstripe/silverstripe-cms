@@ -216,23 +216,6 @@
 		 * All forms loaded via ajax from the Form_SideReports dropdown.
 		 */
 		$("#SideReportsHolder form").concrete({
-			onmatch: function() {
-				// links in results
-				this.find('ul a').live('click', function(e) {
-					var $link = $(this);
-					$link.addClass('loading');
-					jQuery('#Form_EditForm').concrete('ss').loadForm(
-						$(this).attr('href'),
-						function(e) {
-							$link.removeClass('loading');
-						}
-					);
-					return false;
-				});
-				
-				this._super();
-			},
-			
 			onsubmit: function() {
 				var self = this;
 
@@ -255,6 +238,20 @@
 				return false;
 			}
 			
+		});
+		
+		$("#SideReportsHolder form ul a").concrete({
+			onclick: function() {
+				var $link = $(this);
+				$link.addClass('loading');
+				jQuery('#Form_EditForm').concrete('ss').loadForm(
+					$(this).attr('href'),
+					function(e) {
+						$link.removeClass('loading');
+					}
+				);
+				return false;
+			}
 		});
 	
 		/**
