@@ -176,6 +176,27 @@ class PageComment_Controller extends Controller {
 		$rss->outputToBrowser();
 	}
 	
+	/**
+	 * Deletes all comments on the page referenced by the url param pageid
+	 */
+	function deleteallcomments() {
+		if(Permission::check('CMS_ACCESS_CMSMain')) {
+			$pageId = $_REQUEST['pageid'];
+			if(preg_match('/^\d+$/', $pageId)) {
+				$comments = DataObject::get("PageComment", "ParentID = $pageId");
+				if($comments) foreach($comments as $c) {
+					$c->delete();
+				}
+			}
+		}
+		
+		if(Director::is_ajax()) {
+			echo "";
+		} else {
+			Director::redirectBack();
+		}
+	}
+	
 	function deletecomment() {
 		if(Permission::check('CMS_ACCESS_CMSMain')) {
 			$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);

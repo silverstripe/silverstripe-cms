@@ -1,0 +1,50 @@
+Member:
+   admin:
+      FirstName: admin
+
+Group:
+   admin:
+      Title: Admin
+      Members: =>Member.admin
+
+Permission:
+   admin:
+      Code: ADMIN
+      Group: =>Group.admin
+
+Page:
+    first:
+        Title: First page
+        URLSegment: first-page
+    second:
+        Title: Second page
+        URLSegment: second-page
+    third:
+        Title: Third page
+        URLSegment:third-page
+
+PageComment:
+    firstComA:
+        ParentID: =>Page.first
+        Name: FA
+        Comment: textFA
+    secondComA:
+        ParentID: =>Page.second
+        Name: SA
+        Comment: textSA
+    secondComB:
+        ParentID: =>Page.second
+        Name: SB
+        Comment: textSB
+    thirdComA:
+        ParentID: =>Page.third
+        Name: TA
+        Comment: textTA
+    thirdComB:
+        ParentID: =>Page.third
+        Name: TB
+        Comment: textTB
+    thirdComC:
+        ParentID: =>Page.third
+        Name: TC
+        Comment: textTC
