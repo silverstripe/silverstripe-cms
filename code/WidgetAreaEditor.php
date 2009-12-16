@@ -5,7 +5,21 @@
  * @subpackage content
  */
 class WidgetAreaEditor extends FormField {
-	function __construct($name) {
+	/**
+	 * 3 variables to hold titles for the template
+	 */
+	public $InUseTitle;
+	public $AvailableTitle;
+	public $ToAddTitle;
+
+	function __construct($name, $widgetClasses = array('Widget'), $maxWidgets = 0) {
+		$this->InUseTitle = _t('WidgetAreaEditor.ss', 'INUSE');
+		$this->AvailableTitle = _t('WidgetAreaEditor.ss', 'AVAILABLE');
+		$this->ToAddTitle = _t('WidgetAreaEditor.ss', 'TOADD');
+		$this->MaxWidgets = $maxWidgets;
+		
+		$this->widgetClasses = $widgetClasses;
+		
 		parent::__construct($name);
 	}
 	
@@ -17,12 +31,15 @@ class WidgetAreaEditor extends FormField {
 	}
 	
 	function AvailableWidgets() {
-		$classes = ClassInfo::subclassesFor('Widget');
-		array_shift($classes);
+		
 		$widgets= new DataObjectSet();
 		
-		foreach($classes as $class) {
-			$widgets->push(singleton($class));
+		foreach($this->widgetClasses as $widgetClass) {
+			$classes = ClassInfo::subclassesFor($widgetClass);
+			array_shift($classes);
+			foreach($classes as $class) {
+				$widgets->push(singleton($class));
+			}
 		}
 		
 		return $widgets;
