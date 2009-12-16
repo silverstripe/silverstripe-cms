@@ -240,6 +240,9 @@
 			
 		});
 		
+		/**
+		 * Register the onclick handler that loads the page into EditForm
+		 */
 		$("#SideReportsHolder form ul a").concrete({
 			onclick: function() {
 				var $link = $(this);
