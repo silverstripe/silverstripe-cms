@@ -37,11 +37,10 @@
 			
 				// if tab which contains this form is shown, make the tree selectable
 				$('#TreeActions').bind('tabsselect', function(e, ui) {
-					if($(ui.panel).attr('id') != 'TreeActions-batchactions') return;
-				
-					// if the panel is visible (meaning about to be closed),
+					// if we are selecting another tab, or the panel is visible (meaning about to be closed),
 					// disable tree selection and reset any values. Otherwise enable it.
-					if($(ui.panel).is(':visible')) {
+					if($(ui.panel).attr('id') != 'TreeActions-batchactions' || $(ui.panel).is(':visible')) {
+						// @TODO: this is unneccessarily fired also when switching between two other tabs
 						$(self.getTree()).removeClass('multiselect');
 					} else {
 						self._multiselectTransform();
