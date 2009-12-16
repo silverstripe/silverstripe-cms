@@ -5,8 +5,7 @@ WidgetAreaEditorClass.prototype = {
 		this.name = this.getAttribute('name');
 		this.rewriteWidgetAreaAttributes();
 		UsedWidget.applyToChildren($('usedWidgets-'+this.name), 'div.Widget');
-	
-		// Make available widgets draggable
+
 		var availableWidgets = $('availableWidgets-'+this.name).childNodes;
 		
 		for(var i = 0; i < availableWidgets.length; i++) {
@@ -114,8 +113,8 @@ WidgetAreaEditorClass.prototype = {
 		if ($('WidgetAreaEditor-'+holder).getAttribute('maxwidgets')) {
 			var maxCount = $('WidgetAreaEditor-'+holder).getAttribute('maxwidgets');
 			var count = $$('#usedWidgets-'+holder+' .Widget').length;
-			if (count > maxCount) {
-				alert('Sorry, you have reached the maximum number of widgets in this area');
+			if (count+1 > maxCount) {
+				alert(ss.i18n._t('WidgetAreaEditor.TOOMANY'));
 				return;
 			}
 		}
@@ -255,11 +254,4 @@ WidgetTreeDropdownField.prototype = {
 }
 
 WidgetTreeDropdownField.applyTo('div.usedWidgets .TreeDropdownField');
-
-// Loop over all WidgetAreas and fire 'em up
-var wAs = $$('.WidgetAreaEditor');
-for(var i = 0; i < wAs.length; i++) {
-	WidgetAreaEditorClass.applyTo('div#'+wAs[i].id);
-	
-}
-
+WidgetAreaEditorClass.applyTo('.WidgetAreaEditor');
