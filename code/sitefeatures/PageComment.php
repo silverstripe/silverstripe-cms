@@ -259,8 +259,6 @@ class PageComment_Controller extends Controller {
 				// if spam protection module exists
 				if(class_exists('SpamProtectorManager')) {
 					SpamProtectorManager::send_feedback($comment, 'ham');
-					$comment->setField('IsSpam', false);
-					$comment->write();
 				}
 				
 				if(SSAkismet::isEnabled()) {
@@ -272,9 +270,9 @@ class PageComment_Controller extends Controller {
 					} catch (Exception $e) {
 						// Akismet didn't work, most likely the service is down.
 					}
-					$comment->setField('IsSpam', false);
-					$comment->write();
 				}
+				$comment->setField('IsSpam', false);
+				$comment->write();
 			}
 		}
 		if(Director::is_ajax()) {
