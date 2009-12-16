@@ -25,7 +25,12 @@ class MathSpamProtection {
 			$v1 = Session::get("mathQuestionV1");
 			$v2 = Session::get("mathQuestionV2");
 		}
-		return "What is ".MathSpamProtection::digitToWord($v1)." plus ".MathSpamProtection::digitToWord($v2)."?";
+		
+		return sprintf(
+			_t('MathSpamProtection.WHATIS',"What is %s plus %s?"), 
+			MathSpamProtection::digitToWord($v1), 
+			MathSpamProtection::digitToWord($v2)
+		);
 	}
 	
 	/**
@@ -49,13 +54,29 @@ class MathSpamProtection {
 	 * Helper method for converting digits to their equivelant english words
 	 */
 	static function digitToWord($num){
-		$numbers = array("zero","one","two","three","four","five","six","seven","eight","nine",
-										"ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen");									
-			if($num < 0){
-				return "minus ".($numbers[-1*$num]);
-			}
-		//TODO: add checking or return null for bad value??
-			return $numbers[$num];
+		$numbers = array(_t('MathSpamProtection.ZERO', 'zero'),
+			_t('MathSpamProtection.ONE', 'one'),
+			_t('MathSpamProtection.TWO', 'two'),
+			_t('MathSpamProtection.THREE', 'three'),
+			_t('MathSpamProtection.FOUR', 'four'),
+			_t('MathSpamProtection.FIVE', 'five'),
+			_t('MathSpamProtection.SIX', 'six'),
+			_t('MathSpamProtection.SEVEN', 'seven'),
+			_t('MathSpamProtection.EIGHT', 'eight'),
+			_t('MathSpamProtection.NINE', 'nine'),
+			_t('MathSpamProtection.TEN', 'ten'),
+			_t('MathSpamProtection.ELEVEN', 'eleven'),
+			_t('MathSpamProtection.TWELVE', 'twelve'),
+			_t('MathSpamProtection.THIRTEEN', 'thirteen'),
+			_t('MathSpamProtection.FOURTEEN', 'fourteen'),
+			_t('MathSpamProtection.FIFTEEN', 'fifteen'),
+			_t('MathSpamProtection.SIXTEEN', 'sixteen'),
+			_t('MathSpamProtection.SEVENTEEN', 'seventeen'),
+			_t('MathSpamProtection.EIGHTEEN', 'eighteen'));			
+									
+			if($num < 0) return "minus ".($numbers[-1*$num]);
+						
+		return $numbers[$num];
 	}
 	
 	
@@ -68,4 +89,3 @@ class MathSpamProtection {
 	}
 
 }
-?>
