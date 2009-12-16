@@ -1,5 +1,5 @@
 (function() {
-	tinymce.PluginManager.requireLangPack("../../../../cms/javascript/tinymce_ssbuttons");
+	tinymce.PluginManager.requireLangPack("ssbuttons");
 	var each = tinymce.each;
 
 	tinymce.create('tinymce.plugins.SSButtons', {
@@ -113,5 +113,5 @@
 
 
 	// Adds the plugin class to the list of available TinyMCE plugins
-	tinymce.PluginManager.add("../../../../cms/javascript/tinymce_ssbuttons", tinymce.plugins.SSButtons);
+	tinymce.PluginManager.add("ssbuttons", tinymce.plugins.SSButtons);
 })();
