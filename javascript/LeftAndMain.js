@@ -26,6 +26,10 @@ DraggableSeparator.prototype = {
 		document.onmousemove = this.document_mousemove.bindAsEventListener(this);
 		document.onmouseup = this.document_mouseup.bindAsEventListener(this);
 
+		// MozUserSelect='none' prevents text-selection during drag, in firefox.
+		Element.setStyle($('right'), {MozUserSelect: 'none'});
+		Element.setStyle($('left'), {MozUserSelect: 'none'});
+		// onselectstart captured to prevent text-selection in IE
 		document.body.onselectstart = this.body_selectstart.bindAsEventListener(this);
 	},
 	document_mousemove : function(event) {
@@ -33,6 +37,9 @@ DraggableSeparator.prototype = {
 		fixRightWidth();
 	},
 	document_mouseup : function(e) {
+		// MozUserSelect='' re-enables text-selection in firefox.
+		Element.setStyle($('right'), {MozUserSelect: ''});
+		Element.setStyle($('left'), {MozUserSelect: ''});
 		document.onmousemove = null;
 	},
 
