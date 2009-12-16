@@ -160,6 +160,19 @@ class LeftAndMain extends Controller {
 
 		// Set the members html editor config
 		HtmlEditorConfig::set_active(Member::currentUser()->getHtmlEditorConfigForCMS());
+		
+		
+		// Set default values in the config if missing.  These things can't be defined in the config
+		// file because insufficient information exists when that is being processed
+		$htmlEditorConfig = HtmlEditorConfig::get_active();
+		if(!$htmlEditorConfig->getOption('content_css')) {
+			$cssFiles = 'cms/css/editor.css';
+			if(SSViewer::current_theme()) $cssFiles .= ', ' . THEMES_DIR . "/" . SSViewer::current_theme() . '/css/editor.css';
+			else if(project()) $cssFiles .= ', ' . project() . '/css/editor.css';
+
+			$htmlEditorConfig->setOption('content_css', $cssFiles);
+		}
+		
 
 		Requirements::css(CMS_DIR . '/css/typography.css');
 		Requirements::css(CMS_DIR . '/css/layout.css');
