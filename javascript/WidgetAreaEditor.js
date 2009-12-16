@@ -110,6 +110,17 @@ WidgetAreaEditorClass.prototype = {
 	},
 	
 	addWidget: function(className, holder) {
+		
+		if ($('WidgetAreaEditor-'+holder).getAttribute('maxwidgets')) {
+			var maxCount = $('WidgetAreaEditor-'+holder).getAttribute('maxwidgets');
+			var count = $$('#usedWidgets-'+holder+' .Widget').length;
+			if (count > maxCount) {
+				alert('Sorry, you have reached the maximum number of widgets in this area');
+				return;
+			}
+		}
+		
+		
 		this.name = holder;
 		new Ajax.Request('Widget_Controller/EditableSegment/' + className, {
 			onSuccess : $('usedWidgets-'+holder).parentNode.parentNode.insertWidgetEditor.bind(this)
@@ -165,7 +176,7 @@ WidgetAreaEditorClass.prototype = {
 		WidgetTreeDropdownField.applyTo('div.usedWidgets .TreeDropdownField');
 		
 		
-		Sortable.create('usedWidgets-SideBar', {
+		Sortable.create('usedWidgets-'+this.name, {
 			tag: 'div',
 			handle: 'handle',
 			containment: ['availableWidgets-'+this.name, 'usedWidgets-'+this.name],
