@@ -239,7 +239,7 @@ class PageComment_Controller extends Controller {
 			}
 		}
 		if(Director::is_ajax()) {
-			if(SSAkismet::getSaveSpam()) {
+			if(SSAkismet::isEnabled() && SSAkismet::getSaveSpam()) {
 				echo $comment->renderWith('PageCommentInterface_singlecomment');
 			} else {
 				echo '';
