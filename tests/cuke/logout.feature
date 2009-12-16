@@ -5,7 +5,7 @@ Feature: Log out
 	
 	Scenario: Log out from CMS
 		Given I log into the CMS as admin
-		And I click the "log out" link
+		And I click the "Log out" link
 		When I visit admin/
 		Then I see "Enter your username and password to access the CMS."
 		When I visit admin/assets/
