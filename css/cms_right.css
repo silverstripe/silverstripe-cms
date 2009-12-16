@@ -318,6 +318,10 @@
 		padding: 3px;
 		white-space: nowrap;
 	}
+	.autocomplete li.selected {
+		background: Highlight;
+		color: HighlightText;
+	}
 	.autocomplete .data {
 		display: none;
 	}
