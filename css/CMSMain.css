@@ -1,3 +1,7 @@
 .right form#Form_EditForm div.createTranslation {
 	margin-left: 0;
 }
+
+div#SideReportsHolder {
+	clear: left;
+}
