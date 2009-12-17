@@ -244,15 +244,18 @@
 		 * Register the onclick handler that loads the page into EditForm
 		 */
 		$("#SideReportsHolder form ul a").concrete({
-			onclick: function() {
-				var $link = $(this);
-				$link.addClass('loading');
-				jQuery('#Form_EditForm').concrete('ss').loadForm(
-					$(this).attr('href'),
-					function(e) {
-						$link.removeClass('loading');
-					}
-				);
+			onclick: function(e) {
+				if (e.button!=2) {
+					var $link = $(this);
+					$link.addClass('loading');
+					jQuery('#Form_EditForm').concrete('ss').loadForm(
+						$(this).attr('href'),
+						function(e) {
+							$link.removeClass('loading');
+						}
+					);
+				}
+				
 				return false;
 			}
 		});
