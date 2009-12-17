@@ -83,7 +83,8 @@ class LeftAndMain extends Controller {
 		}
 			
 		// Default security check for LeftAndMain sub-class permissions
-		if(!Permission::checkMember($member, "CMS_ACCESS_$this->class")) {
+		if(!Permission::checkMember($member, "CMS_ACCESS_$this->class") && 
+		   !Permission::checkMember($member, "CMS_ACCESS_LeftAndMain")) {
 			return false;
 		}
 		

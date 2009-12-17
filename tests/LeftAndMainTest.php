@@ -45,6 +45,7 @@ class LeftAndMainTest extends FunctionalTest {
 	function testCanView() {
 		$adminuser = $this->objFromFixture('Member', 'admin');
 		$assetsonlyuser = $this->objFromFixture('Member', 'assetsonlyuser');
+		$allcmssectionsuser = $this->objFromFixture('Member', 'allcmssectionsuser');
 		
 		// anonymous user
 		$this->session()->inst_set('loggedInAs', null);
@@ -62,6 +63,16 @@ class LeftAndMainTest extends FunctionalTest {
 			$menuItems->column('Code'),
 			array('AssetAdmin','Help'),
 			'Groups with limited access can only access the interfaces they have permissions for'
+		);
+		
+		// all cms sections user
+		$this->session()->inst_set('loggedInAs', $allcmssectionsuser->ID);
+		$menuItems = singleton('LeftAndMain')->MainMenu();
+		$requiredSections = array('CMSMain','AssetAdmin','CommentAdmin','SecurityAdmin','Help');
+		$this->assertEquals(
+			array_diff($requiredSections, $menuItems->column('Code')),
+			array(),
+			'Group with CMS_ACCESS_LeftAndMain permission can access all sections'
 		);
 		
 		// admin

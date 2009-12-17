@@ -17,6 +17,8 @@ Group:
       Title: Empty Group
    assetsonly:
       Title: assetsonly
+   allcmssections:
+      Title: allcmssections
 Member:
    admin:
       Email: admin@example.com
@@ -25,6 +27,9 @@ Member:
    assetsonlyuser:
       Email: assetsonlyuser@test.com
       Groups: =>Group.assetsonly
+   allcmssectionsuser:
+      Email: allcmssectionsuser@test.com
+      Groups: =>Group.allcmssections
 Permission:
    admin:
       Code: ADMIN
@@ -32,3 +37,6 @@ Permission:
    assetsonly:
       Code: CMS_ACCESS_AssetAdmin
       GroupID: =>Group.assetsonly
+   allcmssections:
+      Code: CMS_ACCESS_LeftAndMain
+      GroupID: =>Group.allcmssections
