@@ -383,7 +383,7 @@ body.stillLoading select {
 		clear: left;
 	}
 	#sitetree_ul ul#sitetree {
-		padding: 0;
+		padding: 0 0 5px;
 	}
 		html>body #sitetree {
 			width: auto;
