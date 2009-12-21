@@ -41,7 +41,14 @@ Upload.prototype = {
 		if(typeof params.button_width != 'undefined') this.buttonWidth = params.button_width;
 		if(typeof params.button_height != 'undefined') this.buttonHeight = params.button_height;
 		
-		this.onLoad();
+		try {
+			this.onLoad();
+		} catch (ex) {
+			// suppress the exception in case swfupload.js is loaded in a context that has no
+			// placeholder elements
+			if ( ex.indexOf('Could not find the placeholder element')==-1 )
+				throw ex;
+		}
 	},
 	
 	/**
