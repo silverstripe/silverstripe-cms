@@ -52,7 +52,7 @@ TreeAPI.prototype = {
 		var args = {ajax:1, ID:0};
 		if ($('LangSelector')) args.locale = $('LangSelector').value;
 		
-		url = this.url(args); 
+		var url = this.url(args);
 		
 		var self = this;
 		new Ajax.Request(url, {
