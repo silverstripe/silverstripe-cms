@@ -79,8 +79,10 @@
 			});
 
 			ed.onNodeChange.add(function(ed, o) {
-	    	    $('Form_EditorToolbarLinkForm').updateSelection(ed);
+	    	    if ($('Form_EditorToolbarLinkForm').updateSelection) {
+			    $('Form_EditorToolbarLinkForm').updateSelection(ed);
 			    $('Form_EditorToolbarLinkForm').respondToNodeChange(ed);
+		    }
 	        });
 	        ed.onKeyUp.add(function(ed, o) {
 	    	    $('Form_EditorToolbarLinkForm').updateSelection(ed);
