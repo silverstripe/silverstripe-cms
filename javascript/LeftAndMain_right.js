@@ -1,41 +1,3 @@
-/**
- * CMSLoadFunctions provides the ability to have 'onLoad' functions for pages
- * in the CMS.
- * These callbacks will be executed when a page has been loaded after clicking
- * on it in the left-hand Site Content Tree.
- * The usual document.ready functions won't work in this case as the page data
- * is loaded via AJAX.
- *
- * A function will not be added twice, even if add() is called twice.
- *
- * Usage:
- *	CMSLoadFunctions.add(function(){ ... });
- *
- */
-CMSLoadFunctions = {
-	add: function(fn) {
-		if (!this.load_functions) {
-			this.load_functions = [];
-		}
-		if (!(fn in this.load_functions)) {
-			this.load_functions.push(fn);
-		}
-	},
-
-	run: function() {
-		if (!this.load_functions) {
-			this.load_functions = [];
-			return;
-		}
-		for(var i=0; i < this.load_functions.length; i++) {
-			var fn = this.load_functions[i];
-			if(typeof(fn) == 'function') {
-				fn();
-			}
-		}
-	}
-};
-
 
 CMSForm = Class.extend('ChangeTracker').extend('Observable');
 CMSForm.prototype = {
@@ -300,8 +262,7 @@ CMSRightForm.prototype = {
 			}
 			statusMessage('');
 		}
-
-		CMSLoadFunctions.run();
+		
 		// must wait until the javascript has finished
 		document.body.style.cursor = 'default';
 		
