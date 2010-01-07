@@ -63,6 +63,9 @@ WidgetAreaEditorClass.prototype = {
 		this.name = this.getAttribute('name');
 
 		var monkeyWith = function(widgets, name) {
+			if (!widgets) {
+				return;
+			}
 			for(var i = 0; i < widgets.length; i++) {
 				widget = widgets[i];
 				if (!widget.getAttribute('rewritten') && (widget.id || widget.name)) {
