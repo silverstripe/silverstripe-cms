@@ -255,13 +255,13 @@ function unlockStatusMessage() {
  */
 function ajaxActionsAtTop(formName, actionHolderName, tabName) {
 	var actions = document.getElementsBySelector('#' + formName + ' .Actions')[0];
-	var holder;
-
-	if((holder = $(actionHolderName)) && holder != actions) {
-		holder.parentNode.removeChild(holder);
-	}
+	var holder = $(actionHolderName);
 
 	if(actions) {
+		if ( holder ) {
+			holder.parentNode.removeChild(holder);
+		}
+		
 		actions.id = actionHolderName;
 		actions.className = 'ajaxActions';
 
