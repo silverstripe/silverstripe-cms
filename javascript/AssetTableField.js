@@ -85,7 +85,7 @@ FileFilterButton.prototype = {
 			updateURL += ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : '');
 
 			// update the field
-			var field = form.getElementsByClassName('AssetTableField')[0];
+			var field = document.getElementsByClassName('AssetTableField')[0];
 			field.setAttribute('href', updateURL);
 			field.refresh();
 		} catch(er) {
