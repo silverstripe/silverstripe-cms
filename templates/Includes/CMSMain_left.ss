@@ -65,9 +65,10 @@
 				</div>
 				</form>
 			
-			$BatchActionParameters
 			<div id="batchactionsforms" style="display: none">
 				<form class="actionparams" style="border:0" id="batchactions_options" action="">
+					$BatchActionParameters
+				
 					<p><% _t('SELECTPAGESACTIONS','Select the pages that you want to change &amp; then click an action:') %></p>
 
 					<input type="hidden" name="csvIDs" />
