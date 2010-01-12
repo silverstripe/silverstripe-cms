@@ -328,10 +328,12 @@ class LeftAndMain extends Controller {
 		return $title;
 	}
 
-	public function show($params) {
+	public function show() {
+		$params = $this->getURLParams();
 		if($params['ID']) $this->setCurrentPageID($params['ID']);
-		if(isset($params['OtherID']))
+		if(isset($params['OtherID'])) {
 			Session::set('currentMember', $params['OtherID']);
+		}
 
 		if(Director::is_ajax()) {
 			SSViewer::setOption('rewriteHashlinks', false);
