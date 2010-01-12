@@ -118,7 +118,7 @@ searchclass.prototype = {
 		$(_HANDLER_FORMS.search).stopObserving(this.o2);
 		batchActionGlobals.unfilterSiteTree();
 	}
-}
+};
 
 var SiteTreeFilter = Class.create();
 SiteTreeFilter.applyTo('#siteTreeFilterList');
@@ -154,7 +154,7 @@ SiteTreeFilter.prototype = {
 			}
 		});
 	}
-}
+};
 /**
  * Control the site tree filter
  */
@@ -177,7 +177,7 @@ SiteTreeFilterForm.prototype = {
 			});
 			document.getElementsBySelector('.SearchCriteriaContainer', this).each(function(el){
 				Element.hide(el);
-			})
+			});
 		}
 		else {
 			Form.getElements(this).each(function(el){
@@ -199,7 +199,7 @@ SiteTreeFilterForm.prototype = {
 			if ($('sitetree').isDraggable) $('sitetree').stopBeingDraggable();
 			document.getElementsBySelector('.checkboxAboveTree input[type=checkbox]').each(function(el){
 				el.value = false; el.disabled = true;	
-			})
+			});
 		}
 		else {
 			// Reset URL to default
@@ -208,7 +208,7 @@ SiteTreeFilterForm.prototype = {
 			// Enable checkbox tree controls
 			document.getElementsBySelector('.checkboxAboveTree input[type=checkbox]').each(function(el){
 				el.disabled = false;	
-			})
+			});
 		}
 		
 		$('SiteTreeSearchButton').className = $('SiteTreeSearchClearButton').className = 'hidden';
@@ -227,7 +227,7 @@ SiteTreeFilterForm.prototype = {
 		
 		return false;
 	}
-}
+};
 
 /**
  * Add Criteria Drop-down onchange action which allows more criteria to be shown
@@ -241,7 +241,7 @@ SiteTreeFilterAddCriteria.prototype = {
 		// Element.show('Input' + this.value);
 		this.selectedIndex = 0; //reset selected criteria to prompt 
 	}
-}
+};
 
 /**
  * Batch Actions button click action
@@ -261,7 +261,7 @@ batchactionsclass.prototype = {
 	},
 	
 	actionChanged: function() {
-		var urlSegment = $('choose_batch_action').value.split('/').pop()
+		var urlSegment = $('choose_batch_action').value.split('/').pop();
 		if ($('BatchActionParameters_'+urlSegment)) {
 			jQuery('#actionParams').empty();
 			jQuery('#BatchActionParameters_'+urlSegment).appendTo('#actionParams');
@@ -297,7 +297,7 @@ batchactionsclass.prototype = {
 			}
 		}
 	}
-}
+};
 
 // batchActionGlobals is needed because calls to observeMethod doesn't seem to preserve instance variables so a Prototype can't be used
 batchActionGlobals = {
@@ -401,7 +401,7 @@ batchActionGlobals = {
 			});
 		}
 	}
-}
+};
 
 
 Behaviour.register({
