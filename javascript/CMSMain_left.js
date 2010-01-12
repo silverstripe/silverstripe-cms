@@ -263,13 +263,11 @@ batchactionsclass.prototype = {
 	actionChanged: function() {
 		var urlSegment = $('choose_batch_action').value.split('/').pop();
 		if ($('BatchActionParameters_'+urlSegment)) {
-			jQuery('#actionParams').empty();
-			jQuery('#BatchActionParameters_'+urlSegment).appendTo('#actionParams');
-			$('actionParams').style.display = 'block';
-			$('actionParams').style.padding = '4px';
+			jQuery('#BatchActionParameters .params').hide();
+			jQuery('#BatchActionParameters_'+urlSegment).show();
+			jQuery('#BatchActionParameters').show();
 		} else {
-			$('actionParams').innerHTML = '';
-			$('actionParams').style.display = 'none';
+			jQuery('#BatchActionParameters').hide();
 		}
 	},
 	
