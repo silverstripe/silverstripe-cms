@@ -18,6 +18,13 @@ AssetTableField.prototype = {
 				}
 			}
 		});
+		
+		var rules = {};
+		
+		// Assume that the delete link uses the deleteRecord method
+		rules['#'+this.id+' table.data a.deletelink'] = {onclick: this.deleteRecord.bind(this)};
+		
+		Behaviour.register('ComplexTableField_'+this.id,rules);
 	},
 	
 	// prevent submission of wrong form-button (FileFilterButton)
@@ -32,6 +39,54 @@ AssetTableField.prototype = {
 			Event.stop(event);
 			return false;
 		}
+	},
+	
+	
+	// Override deleteRecord function, so that we can give warning if there are
+	// links to this file. This  is mostly a copy paste from TableField.js
+	deleteRecord: function(e) {
+		var img = Event.element(e);
+		var link = Event.findElement(e,"a");
+		var row = Event.findElement(e,"tr");
+		
+		var linkCount = row.getElementsByClassName('linkCount')[0];
+		if(linkCount) linkCount = linkCount.innerHTML;
+		
+		var confirmMessage = ss.i18n._t('TABLEFIELD.DELETECONFIRMMESSAGE', 'Are you sure you want to delete this record?');
+		if(linkCount) confirmMessage += '\nThere are ' + linkCount + ' page(s) that use this file, please review the list of pages on the Links tab of the file before continuing.';
+		
+		// TODO ajaxErrorHandler and loading-image are dependent on cms, but formfield is in sapphire
+		var confirmed = confirm(confirmMessage);
+		if(confirmed)
+		{
+			img.setAttribute("src",'cms/images/network-save.gif'); // TODO doesn't work
+			new Ajax.Request(
+				link.getAttribute("href"),
+				{
+					method: 'post', 
+					postBody: 'forceajax=1' + ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : ''),
+					onComplete: function(){
+						Effect.Fade(
+							row,
+							{
+								afterFinish: function(obj) {
+									// remove row from DOM
+									obj.element.parentNode.removeChild(obj.element);
+									// recalculate summary if needed (assumes that TableListField.js is present)
+									// TODO Proper inheritance
+									if(this._summarise) this._summarise();
+									// custom callback
+									if(this.callback_deleteRecord) this.callback_deleteRecord(e);
+								}.bind(this)
+							}
+						);
+					}.bind(this),
+					onFailure: this.ajaxErrorHandler
+				}
+			);
+		}
+		
+		Event.stop(e);
 	}
 }
 
