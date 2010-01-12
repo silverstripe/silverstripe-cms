@@ -591,8 +591,9 @@ ChangeTracker.prototype = {
 		var i, element;
 		for(i=0;element=elements[i];i++) {
 		    // NOTE: TinyMCE coupling
-		    // Ignore mce-generated elements
+		    // Ignore mce-generated elements and elements without a name
 		    if(element.className.substr(0,3) == 'mce') continue;
+			if(!element.name) continue;
 		    
 			if(!element.isChanged) element.isChanged = this.field_changed;
 			if(!this.changeDetection_fieldsToIgnore[element.name] && element.isChanged()) {
