@@ -428,14 +428,6 @@ JS;
 				$actions = $record->getAllCMSActions();
 			} else {
 				$actions = $record->getCMSActions();
-				// add default actions if none are defined
-				if(!$actions || !$actions->Count()) {
-					if($record->canEdit()) {
-						$actions->push(new FormAction('save',_t('CMSMain.SAVE','Save')));
-						$actions->push($deleteAction = new FormAction('delete',_t('CMSMain.DELETE','Delete from the draft site')));
-						$deleteAction->addExtraClass('delete');
-					}
-				}
 			}
 			
 			// Add a default or custom validator.
