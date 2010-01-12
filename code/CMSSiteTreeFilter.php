@@ -75,7 +75,7 @@ abstract class CMSSiteTreeFilter extends Object {
 
 class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter {
 	static function title() {
-		return "Deleted pages";
+		return "All pages, including deleted";
 	}
 	
 	function getTree() {
