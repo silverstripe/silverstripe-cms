@@ -87,7 +87,7 @@ MarkingPropertiesButton.prototype = {
 		}
 		return false;
 	}
-}
+};
 
 
 // CheckBoxRange adapted from: http://jroller.com/page/rmcmahon?entry=checkboxrange_with_prototype
@@ -148,23 +148,23 @@ CheckBoxRange.prototype = {
 				break;
 		}
 	}
-}
+};
 
 // SubsDraggable adapted from http://dev.rubyonrails.org/ticket/5771
 
 // extentions for scriptaculous dragdrop.js
 Object.extend(Class, {
 	superrise: function(obj, names){
-		names.each( function(n){ obj['super_' + n] = obj[n] } )
+		names.each( function(n){ obj['super_' + n] = obj[n]; } );
 		return obj;
 	}
-})
+});
 
 // Draggable that allows substitution of draggable element
 var SubsDraggable = Class.create();
 
 SubsDraggable.prototype = Object.extend({}, Draggable.prototype);
-Class.superrise(SubsDraggable.prototype, ['initialize', 'startDrag', 'finishDrag', 'endDrag'])
+Class.superrise(SubsDraggable.prototype, ['initialize', 'startDrag', 'finishDrag', 'endDrag']);
 Object.extend( SubsDraggable.prototype , {
 	initialize: function(event) {
 		this.super_initialize.apply(this, arguments);
@@ -216,7 +216,7 @@ Object.extend( SubsDraggable.prototype , {
 			this._originalElement = null;
 		}
 	}
-})
+});
 // gets element that should be dragged instead of original element
 // returned element should be added to DOM tree, and will be deleted by dragdrop library
 function getDragElement(element){
@@ -238,7 +238,7 @@ DragFileItem.prototype = {
 	destroy: function() {
 		this.draggable = null;
 	}
-}
+};
 DragFileItem.applyTo('#Form_EditForm_Files tr td.dragfile');
 
 // Set up folder drop target
@@ -267,7 +267,7 @@ DropFileItem.prototype = {
 					if(checkboxes[i].checked) list += (list?',':'') + checkboxes[i].value;
 				}
 				$('Form_EditForm_FileIDs').value = list;
-				$('Form_EditForm').save(false, null, 'movemarked')
+				$('Form_EditForm').save(false, null, 'movemarked');
 			}
 		});
 	},
@@ -275,7 +275,7 @@ DropFileItem.prototype = {
 		this.droppable = null;
 		this.recordID = null;
 	}
-}
+};
 DropFileItem.applyTo('#sitetree li');
 
 
@@ -328,7 +328,7 @@ addfolder.prototype = {
 	showAddPageError: function(response) {
 		errorMessage('Error adding folder', response);
 	}	
-}
+};
 
 /**
  * Look for new files (FilesystemSync) action
@@ -352,7 +352,7 @@ FilesystemSyncClass.prototype = {
 		});
 		return false;
 	}
-}
+};
 
 /**
  * Delete folder action
@@ -367,7 +367,7 @@ var deletefolder = {
 
 			deletefolder.selectedNodes = { };
 
-			var sel = $('sitetree').firstSelected()
+			var sel = $('sitetree').firstSelected();
 			if(sel) {
 				var selIdx = $('sitetree').getIdxOf(sel);
 				deletefolder.selectedNodes[selIdx] = true;
@@ -411,7 +411,7 @@ var deletefolder = {
 		}
 	},
 
-	form_submit : function() {
+	form_submit : function(e) {
 		var csvIDs = "";
 		for(var idx in deletefolder.selectedNodes) {
 			var selectedNode = $('sitetree').getTreeNodeByIdx(idx);
@@ -438,7 +438,8 @@ var deletefolder = {
 		} else {
 			alert("Please select at least 1 page.");
 		}
-
+		
+		Event.stop(e);
 		return false;
 	},
 	
@@ -446,7 +447,7 @@ var deletefolder = {
 		Ajax.Evaluator(response);
 		treeactions.closeSelection($('deletepage'));
 	}
-}
+};
 
 Behaviour.register({
 	'#Form_EditForm_Files': {
