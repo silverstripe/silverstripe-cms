@@ -717,7 +717,7 @@ JS;
 			if( ($record->class != 'VirtualPage') && $originalURLSegment != $record->URLSegment) {
 				$message .= sprintf(_t('LeftAndMain.CHANGEDURL',"  Changed URL to '%s'"),$record->URLSegment);
 				FormResponse::add("\$('Form_EditForm').elements.URLSegment.value = \"$record->URLSegment\";");
-				FormResponse::add("\$('Form_EditForm_StageURLSegment').value = \"{$record->URLSegment}\";");
+				FormResponse::add("\$('Form_EditForm_StageURLSegment').value = \"" . $record->AbsoluteLink() . "\";");
 			}
 
 			// If the 'Save & Publish' button was clicked, also publish the page
