@@ -197,7 +197,10 @@ class AssetTableField extends ComplexTableField {
 		}
 
 		if($childData && $childData->hasMethod('BackLinkTracking')) {
+			if(class_exists('Subsite')) Subsite::disable_subsite_filter(true);
 			$links = $childData->BackLinkTracking();
+			if(class_exists('Subsite')) Subsite::disable_subsite_filter(false);
+
 			if($links->exists()) {
 				foreach($links as $link) {
 					$backlinks[] = "<li><a href=\"admin/show/$link->ID\">" . $link->Breadcrumbs(null,true). "</a></li>";
