@@ -69,7 +69,7 @@ class CMSBatchActionHandler extends RequestHandler {
 				if($pages) foreach($pages as $page) unset($idsFromLive[$page->ID]);
 				$idsFromLive = array_keys($idsFromLive);
 				
-				Debug::message("\"SiteTree\".\"ID\" IN (" . implode(", ", $idsFromLive) . ")");
+				// Debug::message("\"SiteTree\".\"ID\" IN (" . implode(", ", $idsFromLive) . ")");
 				$livePages = Versioned::get_by_stage('SiteTree', 'Live', "\"SiteTree\".\"ID\" IN (" . implode(", ", $idsFromLive) . ")");
 				if($pages) $pages->merge($livePages);
 				else $pages = $livePages;

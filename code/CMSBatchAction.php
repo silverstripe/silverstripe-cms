@@ -107,11 +107,14 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 	}
 
 	function run(DataObjectSet $pages) {
+		$failures = 0;
+		
 		foreach($pages as $page) {
 			$id = $page->ID;
 			
 			// Perform the action
 			if($page->canDelete()) $page->delete();
+			else $failures++;
 
 			// check to see if the record exists on the live site, if it doesn't remove the tree node
 			$liveRecord = Versioned::get_one_by_stage( 'SiteTree', 'Live', "\"SiteTree\".\"ID\"=$id");
@@ -130,7 +133,7 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 			unset($page);
 		}
 
-		$message = sprintf(_t('CMSBatchActions.DELETED_DRAFT_PAGES', 'Deleted %d pages from the draft site'), $pages->Count());
+		$message = sprintf(_t('CMSBatchActions.DELETED_DRAFT_PAGES', 'Deleted %d pages from the draft site'), $pages->Count()-$failures);
 		FormResponse::add('statusMessage("'.$message.'","good");');
 
 		return FormResponse::respond();
@@ -160,7 +163,7 @@ class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 		foreach($ids as $pageID) {
 			$id = $pageID;
 
-			// check to see if the record exists on the live site, if it doesn't remove the tree node
+			// check to see if the record exists on the stage site, if it doesn't remove the tree node
 			$stageRecord = Versioned::get_one_by_stage( 'SiteTree', 'Stage', "\"SiteTree\".\"ID\"=$id");
 			if($stageRecord) {
 				$stageRecord->IsAddedToStage = true;
@@ -173,11 +176,10 @@ class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 				FormResponse::add("$('Form_EditForm').reloadIfSetTo($id);");
 			}
 		}
-
-		$message = sprintf(_t('CMSBatchActions.DELETED_PAGES', 'Deleted %d pages from the published site'), $pages->Count());
-		FormResponse::add('statusMessage("'.$message.'","good");');
-
+		
 		return FormResponse::respond();
 	}
 }
+
+
 
