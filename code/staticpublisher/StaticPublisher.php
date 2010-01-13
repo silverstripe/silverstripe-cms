@@ -84,6 +84,7 @@ abstract class StaticPublisher extends DataObjectDecorator {
 	function onAfterUnpublish($page) {
 		if (self::$disable_realtime) return;
 		
+		// Get the affected URLs
 		if($this->owner->hasMethod('pagesAffectedByUnpublishing')) {
 			$urls = $this->owner->pagesAffectedByUnpublishing();
 			$urls = array_unique($urls);
@@ -91,7 +92,16 @@ abstract class StaticPublisher extends DataObjectDecorator {
 			$urls = array($this->owner->AbsoluteLink());
 		}
 		
-		$this->unpublishPages($urls);
+		$legalPages = $this->owner->allPagesToCache();
+		
+		$urlsToRepublish = array_intersect($urls, $legalPages);
+		$urlsToUnpublish = array_diff($urls, $legalPages);
+
+		Debug::dump($urlsToRepublish);
+		Debug::dump($urlsToUnpublish);
+
+		$this->unpublishPages($urlsToUnpublish);
+		$this->publishPages($urlsToRepublish);
 	}
 		
 	/**
