@@ -64,6 +64,46 @@ abstract class CMSBatchAction extends Object {
 
 		return FormResponse::respond();
 	}
+
+	
+
+	/**
+	 * Helper method for applicablePages() methods.  Acts as a skeleton implementation.
+	 * 
+	 * @param $ids The IDs passed to applicablePages
+	 * @param $methodName The canXXX() method to call on each page to check if the action is applicable
+	 * @param $checkStagePages Set to true if you want to check stage pages
+	 * @param $checkLivePages Set to true if you want to check live pages (e.g, for deleted-from-draft)
+	 */
+	function applicablePagesHelper($ids, $methodName, $checkStagePages = true, $checkLivePages = true) {
+		if(!is_array($ids)) user_error("Bad \$ids passed to applicablePagesHelper()", E_USER_WARNING);
+		if(!is_string($methodName)) user_error("Bad \$methodName passed to applicablePagesHelper()", E_USER_WARNING);
+		
+		$applicableIDs = array();
+		
+		$SQL_ids = implode(', ', array_filter($ids, 'is_numeric'));
+		$draftPages = DataObject::get("SiteTree", "\"SiteTree\".\"ID\" IN ($SQL_ids)");
+		
+		$onlyOnLive = array_fill_keys($ids, true);
+		if($checkStagePages) {
+			foreach($draftPages as $page) {
+				unset($onlyOnLive[$page->ID]);
+				if($page->$methodName()) $applicableIDs[] = $page->ID;
+			}
+		}
+		
+		// Get the pages that only exist on live (deleted from stage)
+		if($checkLivePages && $onlyOnLive) {
+			$SQL_ids = implode(', ', array_keys($onlyOnLive));
+			$livePages = Versioned::get_by_stage("SiteTree", "Live", "\"SiteTree\".\"ID\" IN ($SQL_ids)");
+		
+			if($livePages) foreach($livePages as $page) {
+				if($page->$methodName()) $applicableIDs[] = $page->ID;
+			}
+		}
+		
+		return $applicableIDs;
+	}
 	
 	// if your batchaction has parameters, return a fieldset here
 	function getParameterFields() {
@@ -89,6 +129,10 @@ class CMSBatchAction_Publish extends CMSBatchAction {
 		return $this->batchaction($pages, 'doPublish',
 			_t('CMSBatchActions.PUBLISHED_PAGES', 'Published %d pages, %d failures')
 		);
+	}
+
+	function applicablePages($ids) {
+		return $this->applicablePagesHelper($ids, 'canPublish', true, false);
 	}
 }
 
@@ -138,6 +182,10 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 
 		return FormResponse::respond();
 	}
+
+	function applicablePages($ids) {
+		return $this->applicablePagesHelper($ids, 'canDelete', true, false);
+	}
 }
 
 /**
@@ -178,6 +226,10 @@ class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 		}
 		
 		return FormResponse::respond();
+	}
+
+	function applicablePages($ids) {
+		return $this->applicablePagesHelper($ids, 'canDelete', false, true);
 	}
 }
 
