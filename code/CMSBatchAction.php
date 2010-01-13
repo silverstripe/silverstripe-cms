@@ -100,10 +100,10 @@ class CMSBatchAction_Publish extends CMSBatchAction {
  */
 class CMSBatchAction_Delete extends CMSBatchAction {
 	function getActionTitle() {
-		return _t('CMSBatchActions.DELETE_DRAFT_PAGES', 'Delete from draft');
+		return _t('CMSBatchActions.DELETE_DRAFT_PAGES', 'Delete from draft site');
 	}
 	function getDoingText() {
-		return _t('CMSBatchActions.DELETING_DRAFT_PAGES', 'Deleting selected pages from draft');
+		return _t('CMSBatchActions.DELETING_DRAFT_PAGES', 'Deleting selected pages from the draft site');
 	}
 
 	function run(DataObjectSet $pages) {
