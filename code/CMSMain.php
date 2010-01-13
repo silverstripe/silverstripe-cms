@@ -531,9 +531,6 @@ JS;
 			$newItem->Sort = DB::query("SELECT MAX(\"Sort\") FROM \"SiteTree\" WHERE \"ParentID\" = '" . Convert::raw2sql($parentID) . "'")->value() + 1;
 		}
 
-		if( Member::currentUser() )
-			$newItem->OwnerID = Member::currentUser()->ID;
-
 		if($setID) $newItem->ID = $id;
 
 		# Some modules like subsites add extra fields that need to be set when the new item is created
