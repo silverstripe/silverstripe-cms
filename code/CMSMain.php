@@ -1027,7 +1027,8 @@ JS;
 
 		$forms = array();
 		foreach($batchActions as $urlSegment => $batchAction) {
-			if ($fieldset = singleton($batchAction)->getParameterFields()) {
+			$SNG_action = singleton($batchAction);
+			if ($SNG_action->canView() && $fieldset = $SNG_action->getParameterFields()) {
 				$formHtml = '';
 				foreach($fieldset as $field) {
 					$formHtml .= $field->Field();
