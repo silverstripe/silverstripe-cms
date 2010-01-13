@@ -729,6 +729,7 @@ JS;
 	 */
 	function rollback() {
 		if(isset($_REQUEST['Version']) && (bool)$_REQUEST['Version']) {
+			$this->extend('onBeforeRollback', $_REQUEST['ID']);
 			$record = $this->performRollback($_REQUEST['ID'], $_REQUEST['Version']);
 			echo sprintf(_t('CMSMain.ROLLEDBACKVERSION',"Rolled back to version #%d.  New version number is #%d"),$_REQUEST['Version'],$record->Version);
 		} else {
@@ -890,6 +891,7 @@ JS;
 		if($page && !$page->canView()) return Security::permissionFailure($this);
 		
 		$record = $page->compareVersions($fromVersion, $toVersion);
+		
 		$fromVersionRecord = Versioned::get_version('SiteTree', $id, $fromVersion);
 		$toVersionRecord = Versioned::get_version('SiteTree', $id, $toVersion);
 		if(!$fromVersionRecord) user_error("Can't find version $fromVersion of page $id", E_USER_ERROR);
