@@ -44,9 +44,11 @@ abstract class CMSBatchAction extends Object {
 		foreach($pages as $page) {
 			
 			// Perform the action
-			if (!call_user_func_array(array($page, $helperMethod), $arguments)) {
+			if (call_user_func_array(array($page, $helperMethod), $arguments) === false) {
 				$failures++;
+				FormResponse::add("\$('sitetree').addNodeClassByIdx('$page->ID', 'failed');");
 			}
+				
 			
 			// Now make sure the tree title is appropriately updated
 			$publishedRecord = DataObject::get_by_id('SiteTree', $page->ID);

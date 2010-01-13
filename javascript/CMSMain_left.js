@@ -273,6 +273,9 @@ batchactionsclass.prototype = {
 			jQuery('#BatchActionParameters').hide();
 		}
 		
+		// Don't show actions that have failed from the previous execution
+		batchActionGlobals.removeFailures();
+		
 		batchActionGlobals.refreshSelected();
 	},
 	
@@ -407,7 +410,7 @@ batchActionGlobals = {
 			});
 		
 			// Post to the server to ask which pages can have this batch action applied
-			var applicablePagesURL = $('choose_batch_action').value + '/applicablepages?csvIDs=' + ids.join(',') + ',horse';
+			var applicablePagesURL = $('choose_batch_action').value + '/applicablepages?csvIDs=' + ids.join(',');
 			jQuery.getJSON(applicablePagesURL, function(applicableIDs) {
 				var i;
 				var applicableIDMap = {};
@@ -433,6 +436,27 @@ batchActionGlobals = {
 			});
 		}
 	},
+
+	/**
+	 * Deselect all nodes in the tree
+	 */
+	deselectAll : function() {
+		batchActionGlobals.selectedNodes = {}
+		jQuery('#sitetree').find('li').each(function() {
+			this.removeNodeClass('selected');
+			this.selected = false;
+		});
+	},
+
+	/**
+	 * Remove the indications of failed batch actions
+	 */
+	removeFailures : function() {
+		jQuery('#sitetree').find('li.failed').each(function() {
+			this.removeNodeClass('failed');
+		});
+	},
+	
 	unfilterSiteTree : function() {
 		// Reload the site tree if it has been filtered
 		if ($('SiteTreeIsFiltered').value == 1) {
@@ -495,12 +519,15 @@ publishpage.prototype = {
 			statusMessage(ingText);
 			$('batchactions_go').className = 'loading';
 			
+			// Don't show actions that have failed from the previous execution
+			batchActionGlobals.removeFailures();
+			
 			// Submit form
 			Ajax.SubmitForm(this, null, {
 				onSuccess :  function(response) {
 					Ajax.Evaluator(response);
 					$('batchactions_go').className = '';
-					treeactions.closeSelection($('batchactions'));
+					batchActionGlobals.deselectAll();
 				},
 				onFailure : function(response) {
 					errorMessage('Error ' + ingText, response);

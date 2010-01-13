@@ -132,6 +132,12 @@ TreeAPI.prototype = {
 			aTag.innerHTML = title;
 		});
 	},
+
+	addNodeClassByIdx : function(idx, className) {
+		this.performOnTreeNode(idx, function(treeNode) {
+			treeNode.addNodeClass(className);
+		});
+	},
 	
 	setNodeIcon: function(idx, oldClassName, newClassName) {
 		this.performOnTreeNode(idx, function(treeNode) {
