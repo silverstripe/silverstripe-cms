@@ -118,7 +118,7 @@ class FilesystemPublisher extends StaticPublisher {
 			$response = Director::test(str_replace('+', ' ', $url));
 			Requirements::clear();
 			
-			DataObject::flush_and_destroy_cache();
+			singleton('DataObject')->flushCache();
 
 			// Generate file content			
 			// PHP file caching will generate a simple script from a template
