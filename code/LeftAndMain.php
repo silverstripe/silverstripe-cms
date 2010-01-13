@@ -469,9 +469,10 @@ class LeftAndMain extends Controller {
 	 * @param $childrenMethod The method to call to get the children of the tree.  For example,
 	 *                        Children, AllChildrenIncludingDeleted, or AllHistoricalChildren
 	 */
-	function getSiteTreeFor($className, $rootID = null, $childrenMethod = null, $filterFunction = null, $minNodeCount = 30) {
-		// Default childrenMethod
+	function getSiteTreeFor($className, $rootID = null, $childrenMethod = null, $numChildrenMethod = null, $filterFunction = null, $minNodeCount = 30) {
+		// Default childrenMethod and numChildrenMethod
 		if (!$childrenMethod) $childrenMethod = 'AllChildrenIncludingDeleted';
+		if (!$numChildrenMethod) $numChildrenMethod = 'numChildren';
 		
 		// Get the tree root
 		$obj = $rootID ? $this->getRecord($rootID) : singleton($className);
@@ -479,7 +480,7 @@ class LeftAndMain extends Controller {
 		// Mark the nodes of the tree to return
 		if ($filterFunction) $obj->setMarkingFilterFunction($filterFunction);
 
-		$obj->markPartialTree($minNodeCount, $this, $childrenMethod);
+		$obj->markPartialTree($minNodeCount, $this, $childrenMethod, $numChildrenMethod);
 		
 		// Ensure current page is exposed
 		if($p = $this->currentPage()) $obj->markToExpose($p);
@@ -501,6 +502,7 @@ class LeftAndMain extends Controller {
 			$this, 
 			true, 
 			$childrenMethod,
+			$numChildrenMethod,
 			$minNodeCount
 		);
 
@@ -532,6 +534,7 @@ class LeftAndMain extends Controller {
 			$request->getVar('ID'), 
 			null, 
 			null, 
+			null,
 			$minNodeCount
 		);
 
