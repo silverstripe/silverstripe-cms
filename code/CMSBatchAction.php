@@ -133,7 +133,7 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 			unset($page);
 		}
 
-		$message = sprintf(_t('CMSBatchActions.DELETED_DRAFT_PAGES', 'Deleted %d pages from the draft site'), $pages->Count()-$failures);
+		$message = sprintf(_t('CMSBatchActions.DELETED_DRAFT_PAGES', 'Deleted %d pages from the draft site, %d failures'), $pages->Count()-$failures, $failures);
 		FormResponse::add('statusMessage("'.$message.'","good");');
 
 		return FormResponse::respond();
