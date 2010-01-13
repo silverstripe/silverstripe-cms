@@ -79,7 +79,7 @@ class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter {
 	}
 	
 	function getTree() {
-		$leftAndMain = new LeftAndMain();
+		$leftAndMain = new CMSMain();
 		$tree = $leftAndMain->getSiteTreeFor('SiteTree', isset($_REQUEST['ID']) ? $_REQUEST['ID'] : 0, "AllHistoricalChildren");
 
 		// Trim off the outer tag

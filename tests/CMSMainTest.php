@@ -36,7 +36,7 @@ class CMSMainTest extends FunctionalTest {
 		$response = Director::test("admin/cms/publishall", array('confirm' => 1), $this->session());
 		
 		$this->assertContains(
-			sprintf(_t('CMSMain.PUBPAGES',"Done: Published %d pages"), 5), 
+			sprintf(_t('CMSMain.PUBPAGES',"Done: Published %d pages"), 7), 
 			$response->getBody()
 		);
 		
@@ -155,5 +155,12 @@ class CMSMainTest extends FunctionalTest {
 		$this->assertType('Page', $newPage);
 		$this->assertEquals('5', $newPage->ParentID);
 
+	}
+	
+	function testDeletedPagesSiteTreeFilter() {
+		$id = $this->idFromFixture('Page', 'page3');
+		$this->logInWithPermssion('ADMIN');
+		$result = $this->get('admin/getfilteredsubtree?filter=CMSSiteTreeFilter_DeletedPages&ajax=1&ID=' . $id);
+		$this->assertEquals(200, $result->getStatusCode());
 	}
 }
