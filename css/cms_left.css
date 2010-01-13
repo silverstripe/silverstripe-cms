@@ -17,6 +17,11 @@
 #ReportSelector_holder select {
 	width: 75%;
 }
+	/* reset for a fieldtype that shouldn't have this width setting */
+	#left form.actionparams .dropdownpopup select {
+		width: auto;
+	}
+
 #PageType,
 #ReportSelector_holder select {
 	float: left;
