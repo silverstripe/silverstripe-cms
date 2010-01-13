@@ -231,10 +231,18 @@ TreeNodeAPI.prototype = {
 		url = this.tree.url(args); 
 		
 		new Ajax.Request(url, {
-			onSuccess : this.installSubtree.bind(this),
+			onSuccess : this.installSubtreeAndRefresh.bind(this),
 			onFailure : this.showSubtreeLoadingError
 		});
 	},
+	
+	installSubtreeAndRefresh : function(response){
+		this.installSubtree(response);
+		if(this.tree.className.indexOf('multiselect') != -1) {
+			batchActionGlobals.refreshSelected();
+		}
+	},
+	
 	showSubtreeLoadingError: function(response) { 
 		errorMessage('error loading subtree', response);
 	},

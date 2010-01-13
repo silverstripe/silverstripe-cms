@@ -148,6 +148,7 @@ SiteTreeFilter.prototype = {
 			onSuccess: function() {
 				indicator.style.display = 'none';
 				if(__makeDraggableAfterUpdate) $('sitetree').makeDraggable();
+				batchActionGlobals.refreshSelected();
 			},
 			onFailure: function(response) {
 				errorMessage('Could not update tree', response);
@@ -276,7 +277,7 @@ batchactionsclass.prototype = {
 		batchActionGlobals.o2 = $(_HANDLER_FORMS.batchactions).observeMethod('Close', batchActionGlobals.popupClosed);
 	
 		addClass($('sitetree'),'multiselect');
-
+	
 		batchActionGlobals.selectedNodes = { };
 
 		var selectedNode = $('sitetree').firstSelected();
@@ -301,7 +302,9 @@ batchactionsclass.prototype = {
 batchActionGlobals = {
 	selectedNodes: { },
 	// count Int - The number of nodes selected
-	count: { },
+	count: function() {
+		return batchActionGlobals.getIds().length;
+	},
 	// TODO: Remove 'new-' code http://open.silverstripe.com/ticket/875
 	newNodes: { },
 	treeSelectionChanged : function(selectedNode) {
@@ -337,6 +340,7 @@ batchActionGlobals = {
 	
 	popupClosed : function() {
 		removeClass($('sitetree'),'multiselect');
+
 		$('sitetree').stopObserving(batchActionGlobals.o1);
 		$(_HANDLER_FORMS.batchactions).stopObserving(batchActionGlobals.o2);
 
@@ -351,8 +355,8 @@ batchActionGlobals = {
 		}
 		batchActionGlobals.selectedNodes = { };
 	},
-
-	getCsvIds : function() {
+	
+	getIds: function() {
 		var csvIDs = new Array();
 		var st = $('sitetree');
 		batchActionGlobals.newNodes = new Array();
@@ -375,8 +379,17 @@ batchActionGlobals = {
 				}
 			}
 		}
-		batchActionGlobals.count=csvIDs.length;	
-		return (csvIDs.toString());
+		return csvIDs;
+	},
+	getCsvIds : function() {
+		return (batchActionGlobals.getIds().toString());
+	},
+	refreshSelected : function() {
+		var st = $('sitetree');
+		for(var idx in batchActionGlobals.selectedNodes) {
+			st.getTreeNodeByIdx(idx).addNodeClass('selected');
+			st.getTreeNodeByIdx(idx).selected = true;
+		}
 	},
 	unfilterSiteTree : function() {
 		// Reload the site tree if it has been filtered
@@ -427,7 +440,7 @@ publishpage.prototype = {
 			var ingText = optionParams.doingText;
 
 			// Confirmation
-			if(!confirm("You have " + batchActionGlobals.count + " pages selected.\n\nDo your really want to " + actionText.toLowerCase() + "?")) {
+			if(!confirm("You have " + batchActionGlobals.count() + " pages selected.\n\nDo your really want to " + actionText.toLowerCase() + "?")) {
 				return false;
 			}
 
@@ -470,11 +483,10 @@ deletepage.prototype = {
 	onsubmit : function() {
 		csvIDs = batchActionGlobals.getCsvIds();
 		if(csvIDs || batchActionGlobals.newNodes.length > 0) {
-			batchActionGlobals.count += batchActionGlobals.newNodes.length;
 			
 			if(confirm(ss.i18n.sprintf(
 				ss.i18n._t('CMSMAIN.REALLYDELETEPAGES'),
-				batchActionGlobals.count
+				batchActionGlobals.count()
 			))) {
 				this.elements.csvIDs.value = csvIDs;
 				
