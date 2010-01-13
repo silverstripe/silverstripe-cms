@@ -246,31 +246,6 @@ class AssetTableField extends ComplexTableField {
 
 		return $fieldContainer->FieldHolder();
 	}
-	
-	function handleItem($request) {
-		return new AssetTableField_ItemRequest($this, $request->param('ID'));
-	}
 }
 
-class AssetTableField_ItemRequest extends ComplexTableField_ItemRequest {
-	function saveComplexTableField($data, $form, $request) {
-		
-		if(!AssetAdmin::$apply_restrictions_to_admin && Permission::check('ADMIN')) {
-			if(!in_array(strtolower(pathinfo($data['Name'], PATHINFO_EXTENSION)), AssetAdmin::$allowed_extensions)) {
-				$form->sessionMessage(sprintf(
-					_t(
-						'File.INVALIDEXTENSION', 
-						'Extension is not allowed (valid: %s)',
-						PR_MEDIUM,
-						'Argument 1: Comma-separated list of valid extensions'
-					),
-					implode(',',AssetAdmin::$allowed_extensions)
-				), 'bad');
-				Director::redirectBack();
-				return;
-			}
-		}
-		return parent::saveComplexTableField($data, $form, $request);
-	}
-}
 ?>
