@@ -30,9 +30,26 @@ abstract class StaticPublisher extends DataObjectDecorator {
 		self::$echo_progress = (boolean)$progress;
 	}
 
+	/**
+	 * Called after a page is published.
+	 */
 	function onAfterPublish($original) {
+		$this->republish($original);
+	}
+	
+	/**
+	 * Called after link assets have been renamed, and the live site has been updated, without
+	 * an actual publish event.
+	 * 
+	 * Only called if the published content exists and has been modified.
+	 */
+	function onRenameLinkedAsset($original) {
+		$this->republish($original);
+	}
+	
+	function republish($original) {
 		if (self::$disable_realtime) return;
-		
+
 		$urls = array();
 		
 		if($this->owner->hasMethod('pagesAffectedByChanges')) {
