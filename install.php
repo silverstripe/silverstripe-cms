@@ -924,12 +924,11 @@ PHP
 		}
 	}
 	
-	
 	function createFile($filename, $content) {
 		$base = $this->getBaseDir();
 		$this->statusMessage("Creating $base$filename");
 
-		if((@$fh = fopen($base . $filename, 'w')) && fwrite($fh, $content) && fclose($fh)) {
+		if((@$fh = fopen($base . $filename, 'wb')) && fwrite($fh, $content) && fclose($fh)) {
 			return true;
 		} else {
 			$this->error("Couldn't write to file $base$filename");
