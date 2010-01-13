@@ -3,6 +3,11 @@
 class ModelAdminTest extends FunctionalTest {
 	static $fixture_file = 'cms/tests/ModelAdminTest.yml';
 	
+	protected $extraDataObjects = array(
+		'ModelAdminTest_Admin',
+		'ModelAdminTest_Contact',
+	);
+	
 	function testModelAdminOpens() {
 		$this->autoFollowRedirection = false;
 		$this->logInAs('admin');
@@ -19,7 +24,7 @@ class ModelAdminTest_Admin extends ModelAdmin implements TestOnly {
 	);
 }
 
-class ModelAdminTest_Contact extends DataObject {
+class ModelAdminTest_Contact extends DataObject implements TestOnly {
 	static $db = array(
 		"Name" => "Varchar",
 		"Phone" => "Varchar",
