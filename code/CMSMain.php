@@ -742,7 +742,8 @@ JS;
 		$SQL_id = Convert::raw2sql($_REQUEST['ID']);
 
 		$page = DataObject::get_by_id("SiteTree", $SQL_id);
-		if($page && !$page->canPublish()) return Security::permissionFailure($this);
+		
+		if($page && !$page->canDeleteFromLive()) return Security::permissionFailure($this);
 		
 		$page->doUnpublish();
 		
