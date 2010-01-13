@@ -402,7 +402,8 @@ batchActionGlobals = {
 				if(id) ids.push(id);
 				
 				// Disable the nodes while the ajax request is being processed
-				this.addNodeClass('nodelete');
+				this.removeNodeClass('nodelete');
+				this.addNodeClass('treeloading');
 			});
 		
 			// Post to the server to ask which pages can have this batch action applied
@@ -414,6 +415,8 @@ batchActionGlobals = {
 			
 				// Set a CSS class on each tree node indicating which can be batch-actioned and which can't
 				jQuery(rootNode).find('li').each(function() {
+					this.removeNodeClass('treeloading');
+
 					var id = parseInt(this.id.replace('record-',''));
 					if(id) {
 						if(applicableIDMap[id] === true) {

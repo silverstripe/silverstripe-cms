@@ -116,6 +116,9 @@ ul.tree.multiselect span.a span.b a {
 ul.tree.multiselect span.a.nodelete span.b a {
 	background-image: url(../images/tickbox-canttick.gif) !important;
 }
+ul.tree.multiselect span.a.treeloading span.b a {
+	background-image: url(../images/tickbox-greyedout.gif) !important;
+}
 
 
 ul.tree.multiselect span.a.selected span.b span.c a {
