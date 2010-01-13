@@ -852,6 +852,11 @@ if(node && node.parentTreeNode) node.parentTreeNode.removeTreeNode(node);
 $('Form_EditForm').closeIfSetTo($id);
 JS;
 		FormResponse::add($response);
+
+		// If we have that page selected currently, then clear that info from the session
+		if(Session::get("{$this->class}.currentPage") == $id) {
+			$this->setCurrentPageID(null);
+		}
 		
 		if ($this instanceof LeftAndMain) FormResponse::add($this->showSingleInstanceOnlyInCreateFieldJS($page));
 		return FormResponse::respond();
