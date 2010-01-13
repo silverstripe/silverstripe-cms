@@ -46,6 +46,9 @@ class WidgetAreaEditor extends FormField {
 	}
 	
 	function UsedWidgets() {
+		// Call class_exists() to load Widget.php earlier and avoid a segfault
+		class_exists('Widget');
+		
 		$relationName = $this->name;
 		$widgets = $this->form->getRecord()->getComponent($relationName)->Items();
 		return $widgets;
