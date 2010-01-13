@@ -561,12 +561,12 @@ JS;
 			$descendantsRemoved = 0;
 			foreach( $descendantIDs as $descID )
 				if( $descendant = DataObject::get_by_id('SiteTree', $descID) ) {
-					$descendant->delete();
+					$descendant->doDeleteFromLive();
 					$descendantsRemoved++;
 				}
 
 			// delete the record
-			$record->delete();
+			$record->doDeleteFromLive();
 		}
 
 		Versioned::reading_stage('Stage');
