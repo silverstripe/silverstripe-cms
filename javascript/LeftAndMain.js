@@ -213,8 +213,12 @@ window.onresize = function(init) {
 }
 
 appendLoader(function() {
-	document.body.style.overflow = 'hidden';
-	window.onresize(true);
+	// Only execute this code if it's actually called from the LeftAndMain interface
+	// JSMin/concatenation can get this file included in strange places
+	if(document.getElementById('left') && document.getElementById('right')) {
+		document.body.style.overflow = 'hidden';
+		window.onresize(true);
+	}
 });
 
 function isVisible(el) {
