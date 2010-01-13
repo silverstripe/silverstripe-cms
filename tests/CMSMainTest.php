@@ -39,11 +39,14 @@ class CMSMainTest extends FunctionalTest {
 			sprintf(_t('CMSMain.PUBPAGES',"Done: Published %d pages"), 5), 
 			$response->getBody()
 		);
-
-		$response = Director::test("admin/cms/batchactions/publish", array('csvIDs' => '1,2', 'ajax' => 1), $this->session());
 		
-		$this->assertContains('setNodeTitle(1, \'Page 1\');', $response->getBody());
-		$this->assertContains('setNodeTitle(2, \'Page 2\');', $response->getBody());
+		// Some modules (e.g., cmsworkflow) will remove this action
+		if(isset(CMSBatchActionHandler::$batch_actions['publish'])) {
+			$response = Director::test("admin/cms/batchactions/publish", array('csvIDs' => '1,2', 'ajax' => 1), $this->session());
+	
+			$this->assertContains('setNodeTitle(1, \'Page 1\');', $response->getBody());
+			$this->assertContains('setNodeTitle(2, \'Page 2\');', $response->getBody());
+		}
 		
 		$this->session()->clear('loggedInAs');
 		
@@ -123,8 +126,8 @@ class CMSMainTest extends FunctionalTest {
 		$this->assertType('SiteTree', $livePage);
 		$this->assertTrue($livePage->canDelete());
 
-		// Check that the 'delete from live' button exists as a simple way of checking that the correct page is returned.
-		$this->assertRegExp('/<input[^>]+type="submit"[^>]+name="action_deletefromlive"/i', $response->getBody());
+		// Check that the 'restore' button exists as a simple way of checking that the correct page is returned.
+		$this->assertRegExp('/<input[^>]+type="submit"[^>]+name="action_restore"/i', $response->getBody());
 	}
 	
 	/**
