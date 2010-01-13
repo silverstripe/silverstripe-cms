@@ -131,10 +131,9 @@ body.ModelAdmin #statusMessage {
 }
 
 body.ModelAdmin #right .ajaxActions {
-	position: fixed !important;
 	position: absolute;
-	right: 30px !important;
-	bottom: 35px !important;
+	right: 2px;
+	bottom: -25px;
 }
 
 #LeftPane .tab {
