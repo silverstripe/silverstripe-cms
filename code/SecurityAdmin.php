@@ -236,7 +236,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		// getChildrenAsUL is a flexible and complex way of traversing the tree
 		$siteTreeList = $obj->getChildrenAsUL(
 			'',
-			'"<li id=\"record-$child->ID\" class=\"$child->class " . ($child->Locked ? " nodelete" : "") . $child->markingClasses() . ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
+			'"<li id=\"record-$child->ID\" class=\"$child->class " . $child->markingClasses() . ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
 			'"<a href=\"" . Controller::join_links(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" >" . $child->TreeTitle() . "</a>" ',
 			$this,
 			true

@@ -239,7 +239,7 @@ TreeNodeAPI.prototype = {
 	installSubtreeAndRefresh : function(response){
 		this.installSubtree(response);
 		if(this.tree.className.indexOf('multiselect') != -1) {
-			batchActionGlobals.refreshSelected();
+			batchActionGlobals.refreshSelected(this);
 		}
 	},
 	

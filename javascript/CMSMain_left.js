@@ -257,11 +257,13 @@ batchactionsclass.prototype = {
 	onclick : function() {
 		if(treeactions.toggleSelection(this)) {
 			this.multiselectTransform();
+			this.actionChanged();
 		}
 		return false;
 	},
 	
 	actionChanged: function() {
+		// Show parameters form, if necessary
 		var urlSegment = $('choose_batch_action').value.split('/').pop();
 		if ($('BatchActionParameters_'+urlSegment)) {
 			jQuery('#BatchActionParameters .params').hide();
@@ -270,6 +272,8 @@ batchactionsclass.prototype = {
 		} else {
 			jQuery('#BatchActionParameters').hide();
 		}
+		
+		batchActionGlobals.refreshSelected();
 	},
 	
 	multiselectTransform : function() {
@@ -378,11 +382,52 @@ batchActionGlobals = {
 	getCsvIds : function() {
 		return (batchActionGlobals.getIds().toString());
 	},
-	refreshSelected : function() {
+	refreshSelected : function(rootNode) {
 		var st = $('sitetree');
+		
 		for(var idx in batchActionGlobals.selectedNodes) {
 			st.getTreeNodeByIdx(idx).addNodeClass('selected');
 			st.getTreeNodeByIdx(idx).selected = true;
+		}
+
+		// Default to refreshing the entire tree
+		if(rootNode == null) rootNode = st;
+
+		/// If batch actions is enabled, then enable/disable the appropriate tree fields
+		if($('batchactionsforms').style.display != 'none' && $('choose_batch_action').value) {
+			// Collect list of visible tree IDs 
+			var ids = [];
+			jQuery(rootNode).find('li').each(function() {
+				var id = parseInt(this.id.replace('record-',''));
+				if(id) ids.push(id);
+				
+				// Disable the nodes while the ajax request is being processed
+				this.addNodeClass('nodelete');
+			});
+		
+			// Post to the server to ask which pages can have this batch action applied
+			var applicablePagesURL = $('choose_batch_action').value + '/applicablepages?csvIDs=' + ids.join(',') + ',horse';
+			jQuery.getJSON(applicablePagesURL, function(applicableIDs) {
+				var i;
+				var applicableIDMap = {};
+				for(i=0;i<applicableIDs.length;i++) applicableIDMap[applicableIDs[i]] = true;
+			
+				// Set a CSS class on each tree node indicating which can be batch-actioned and which can't
+				jQuery(rootNode).find('li').each(function() {
+					var id = parseInt(this.id.replace('record-',''));
+					if(id) {
+						if(applicableIDMap[id] === true) {
+							this.removeNodeClass('nodelete');
+						} else {
+							// De-select the node if it's non-applicable
+							delete batchActionGlobals.selectedNodes[id];
+
+							this.removeNodeClass('selected');
+							this.addNodeClass('nodelete');
+						}
+					}
+				});
+			});
 		}
 	},
 	unfilterSiteTree : function() {
