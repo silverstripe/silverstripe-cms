@@ -122,10 +122,6 @@ ul.tree.multiselect span.a.selected span.b span.c a {
 	background-image: url(../images/tickbox-ticked.gif) !important;
 }
 
-ul.tree.multiselect li.selected ul span.a a {
-	background-image: url(../images/tickbox-greyticked.gif) !important;
-}
-
 /* Span-B: Plus/Minus icon */
 ul.tree.multiselect li.selected span.a.children span.b, 
 ul.tree.multiselect li.selected span.a.unexpanded span.b {

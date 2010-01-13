@@ -367,12 +367,6 @@ batchActionGlobals = {
 				if( idx.match(/^new-[a-z0-9A-Z\-]+$/) ) {
 					batchActionGlobals.newNodes.push( idx );
 				} else {
-					var i, item, childrenTopublish = st.getTreeNodeByIdx(idx).getElementsByTagName('li');
-					for(i=0;item=childrenTopublish[i];i++) {
-						if(csvIDs.indexOf(st.getIdxOf(childrenTopublish[i])) == -1) {
-							csvIDs.push(st.getIdxOf(childrenTopublish[i]));
-						}
-					}
 					if(csvIDs.indexOf(idx) == -1) {
 						csvIDs.push(idx);
 					}
