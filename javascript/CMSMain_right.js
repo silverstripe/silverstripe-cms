@@ -34,7 +34,15 @@ function action_rollback_right() {
 		}
 	}
 	
-	if(confirm("Do you really want to copy the published content to the stage site?")) {
+	if($('Form_EditForm').elements.Version && $('Form_EditForm').elements.Version.value) {
+		var message = "Do you really want to roll back to version #" 
+			+ $('Form_EditForm').elements.Version.value + " of this page?";
+			
+	} else {
+		var message = "Do you really want to copy the published content to the stage site?";
+	}
+	
+	if(confirm(message)) {
 		options.OK();
 	} else {
 		return false;
