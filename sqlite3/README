@@ -1,0 +1,57 @@
+SQLite3 Module
+==============
+
+Maintainer Contact
+------------------
+Andreas Piening (Nickname: apiening)
+<andreas (at) silverstripe (dot) com>
+
+
+Requirements
+------------
+SilverStripe 2.4 or newer
+
+
+Installation
+------------
+copy the sqlite3 folder to your project root so that it becomes a sibling of cms, sapphire and co
+add this to your _config.php
+
+	define('SS_DATABASE_CLASS','SQLite3Database');
+
+you are done!
+
+
+Config
+------
+you can set the path for storing your SQLite db file or make use of the :memory: feature like this:
+
+	$databaseConfig = array(
+		'path' => '/some/path',
+		'memory' => true,
+	);
+	
+make sure the webserver has sufficient privileges to write to that folder and that it is protected from external access.
+
+
+Tested stacks
+-------------
+OSX leopard, XAMP with PHP 5.3.0, SQLite3.6.3
+
+
+Open Issues
+-----------
+- SQLite3 may not work with certain modules as they are using custom SQL statements passed to the DB class directly ;(
+- the SQLite3 locking behavior has to be explored, this is constantly causing trouble
+- there is no real fulltext search yet and the build-in search engine is not ordering by relevance, check out fts3
+- needs testing on different stacks
+
+
+Things to note when using SQLite3
+---------------------------------
+- small, fast, zero configuration, single cross-platform disk file, comes with a CLI and In-Memory database feature
+- sometimes the only feasible solution when you don't have access to the usual DBMSs like MySQL
+- weakly and dynamically typed although this should have been caught in the adapter
+- does not fully implement SQL-92 standard, e.g. the ALTER TABLE syntax is limited to adding and renaming fields
+- references for sqlite are e.g. ADOBE (Photoshop Lightroom), Apple (Safari, Mail, iPod, iPhone) Mozilla (Firefox, Thunderbird), Google (Chrome)
+- if you are looking for a SQLite client for debugging, the SQLite plugin for firefox may be worth a try
