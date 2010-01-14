@@ -27,7 +27,7 @@ abstract class CMSSiteTreeFilter extends Object {
 			$this->populateIDs();
 		}
 
-		$leftAndMain = new CMSMain();
+		$leftAndMain = new LeftAndMain();
 		$tree = $leftAndMain->getSiteTreeFor('SiteTree', isset($_REQUEST['ID']) ? $_REQUEST['ID'] : 0, null, null, array($this, 'includeInTree'));
 
 		// Trim off the outer tag
