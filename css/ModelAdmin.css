@@ -123,6 +123,10 @@ body.ModelAdmin #right .ajaxActions {
 	bottom: 35px !important;
 }
 
+	body.ModelAdmin #Form_EditForm_action_goBack {
+		display: none; /* Hide the back button by default. Shown when addHistory is Triggered */
+	}
+
 .tab h3 {
 	margin-top: 10px;
 	font-size: 1.2em;

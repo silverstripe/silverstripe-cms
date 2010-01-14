@@ -10,6 +10,7 @@
  */
 (function($) {
 $(document).ready(function() {
+	
 	/** 
 	 * Add class ajaxActions class to the parent of Add button of AddForm
 	 * so it float to the right
@@ -81,6 +82,10 @@ $(document).ready(function() {
 	$('#SearchForm_holder .tab form:not(#Form_ImportForm)').submit(function () {
 	    var $form = $(this);
 
+		$('#right form textarea').each(function(){
+			tinyMCE.execCommand('mceRemoveControl', false, $(this).attr('id'));
+		});
+
 		$('#ModelAdminPanel').fn('startHistory', $(this).attr('action'), $(this).formToArray());
 	    $('#ModelAdminPanel').load($(this).attr('action'), $(this).formToArray(), standardStatusHandler(function(result) {
 			if(!this.future || !this.future.length) {
@@ -92,7 +97,7 @@ $(document).ready(function() {
 
     		$('#form_actions_right').remove();
     		Behaviour.apply();
-			console.log(window.onresize);
+
 			if(window.onresize) window.onresize();
     		// Remove the loading indicators from the buttons
     		$('input[type=submit]', $form).removeClass('loading');
@@ -149,16 +154,6 @@ $(document).ready(function() {
     		$('#ModelAdminPanel').fn('loadForm', el.attr('href'));
     		return false;
     	});
-    	/* this isn't being used currently; the real hover code is part of TableListField
-    	.hover(
-    	    function(){
-        		$(this).addClass('over').siblings().addClass('over')
-        	}, 
-        	function(){
-        		$(this).removeClass('over').siblings().removeClass('over')
-        	}
-        );
-        */
 
 	////////////////////////////////////////////////////////////////// 
 	// RHS detail form
@@ -183,21 +178,27 @@ $(document).ready(function() {
 	/**
 	 * RHS panel Save button 
 	 */
-	$('#right #form_actions_right input[name=action_doSave]').livequery('click', function(){
+	
+	$('#right #form_actions_right input[name=action_doSave], #right #form_actions_right input[name=action_doCreate]').livequery('click', function(){
 		var form = $('#right form');
 		var formAction = form.attr('action') + '?' + $(this).fieldSerialize();
-		
+
+		$('#right form textarea').each(function(){
+			tinyMCE.execCommand('mceRemoveControl', false, $(this).attr('id'));
+		});
+
 		// Post the data to save
 		$.post(formAction, form.formToArray(), function(result){
 			$('#right #ModelAdminPanel').html(result);
 			
 			statusMessage(ss.i18n._t('ModelAdmin.SAVED'));
 
-			// TODO/SAM: It seems a bit of a hack to have to list all the little updaters here. 
-			// Is livequery a solution?
-			Behaviour.apply(); // refreshes ComplexTableField
+			// refresh and reapply the JS to trigger textmate
+			Behaviour.apply();
+			
 			if(window.onresize) window.onresize();
 		}, 'html');
+		
 
 		return false;
 	});
@@ -211,6 +212,10 @@ $(document).ready(function() {
 			$(this).removeClass('loading')
 			return false;
 		}
+		
+		$('#right form textarea').each(function(){
+			tinyMCE.execCommand('mceRemoveControl', false, $(this).attr('id'));
+		});
 
 		var form = $('#right form');
 		var formAction = form.attr('action') + '?' + $(this).fieldSerialize();
@@ -275,12 +280,16 @@ $(document).ready(function() {
         loadForm: function(url, successCallback) {
     	    $('#right #ModelAdminPanel').load(url, standardStatusHandler(function(result) {
 				if(typeof(successCallback) == 'function') successCallback.apply();
-				if(!this.future || !this.future.length) {
-				    $('#Form_EditForm_action_goForward, #Form_ResultsForm_action_goForward').hide();
-			    }
-				if(!this.history || this.history.length <= 1) {
-				    $('#Form_EditForm_action_goBack, #Form_ResultsForm_action_goBack').hide();
-			    }
+				
+				var forward = $('#Form_EditForm_action_goForward, #Form_ResultsForm_action_goForward');
+				var back = $('#Form_EditForm_action_goBack, #Form_ResultsForm_action_goBack');
+				
+				if(!this.future || !this.future.length) forward.hide();
+				else forward.show();
+				
+				if(!this.history || this.history.length <= 1) back.hide();
+				else back.show();
+			    
 				
     			Behaviour.apply(); // refreshes ComplexTableField
 				if(window.onresize) window.onresize();
@@ -311,6 +320,10 @@ $(document).ready(function() {
     	},
     	
     	goBack: function() {
+			$('#right form textarea').each(function(){
+				tinyMCE.execCommand('mceRemoveControl', false, $(this).attr('id'));
+			});
+            
     	    if(this.history && this.history.length) {
         	    if(this.future == null) this.future = [];
         	    
@@ -320,9 +333,14 @@ $(document).ready(function() {
         	    this.future.push(currentPage);
         	    $(this).fn('loadForm', previousPage);
     	    }
+
     	},
     	
     	goForward: function() {
+			$('#right form textarea').each(function(){
+				tinyMCE.execCommand('mceRemoveControl', false, $(this).attr('id'));
+			});
+            
     	    if(this.future && this.future.length) {
         	    if(this.future == null) this.future = [];
         	    
