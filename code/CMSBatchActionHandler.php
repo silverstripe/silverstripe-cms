@@ -99,7 +99,7 @@ class CMSBatchActionHandler extends RequestHandler {
 			$applicableIDs = $ids;
 		}
 		
-		$response = new HTTPResponse(json_encode($applicableIDs));
+		$response = new SS_HTTPResponse(json_encode($applicableIDs));
 		$response->addHeader("Content-type", "application/json");
 		return $response;
 	}
