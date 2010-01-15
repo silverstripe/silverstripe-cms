@@ -150,16 +150,11 @@ class PageComment extends DataObject {
 		$url = $this->CommenterURL;
 		
 		if($url) {
-			if(substr($url, 0, 8) != 'https://') {
-				if(substr($url, 0, 7) != 'http://') {
-					$url = $this->CommenterURL = 'http://' . $url;
-				}
+			if(strtolower(substr($url, 0, 8)) != 'https://' && strtolower(substr($url, 0, 7)) != 'http://') { 
+				$this->CommenterURL = 'http://' . $url; 
 			}
 		}
-		
-		$this->CommenterURL = $url;
 	}
-	
 }
 
 
