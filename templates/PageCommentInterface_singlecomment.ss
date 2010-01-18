@@ -7,7 +7,7 @@
 </p>
 <p class="info">
 	<% if CommenterURL %>
-		<span><% _t('PBY','Posted by') %> <a href="$CommenterURL">$Name.XML</a>, $Created.Nice ($Created.Ago)</span>
+		<span><% _t('PBY','Posted by') %> <a href="$CommenterURL.ATT">$Name.XML</a>, $Created.Nice ($Created.Ago)</span>
 	<% else %>
 		<span><% _t('PBY','Posted by') %> $Name.XML, $Created.Nice ($Created.Ago)</span>
 	<% end_if %>
