@@ -167,6 +167,43 @@ abstract class ModelAdmin extends LeftAndMain {
 	static function get_page_length(){
 		return self::$page_length;
 	} 
+	
+	/**
+	 * Return the class name of the collection controller
+	 *
+	 * @param string $model model name to get the controller for
+	 * @return string the collection controller class
+	 */
+	function getCollectionControllerClass($model) {
+		$models = $this->getManagedModels();
+		
+		if(isset($models[$model]['collection_controller'])) {
+			$class = $models[$model]['collection_controller'];
+		} else {
+			$class = $this->stat('collection_controller_class');
+		}
+		
+		return $class;
+	}
+	
+	/**
+	 * Return the class name of the record controller
+	 *
+	 * @param string $model model name to get the controller for
+	 * @return string the record controller class
+	 */
+	function getRecordControllerClass($model) {
+		$models = $this->getManagedModels();
+		
+		if(isset($models[$model]['record_controller'])) {
+			$class = $models[$model]['record_controller'];
+		} else {
+			$class = $this->stat('record_controller_class');
+		}
+		
+		return $class;
+	}
+	
 	/**
 	 * Add mappings for generic form constructors to automatically delegate to a scaffolded form object.
 	 */
@@ -183,14 +220,7 @@ abstract class ModelAdmin extends LeftAndMain {
 	 * Base scaffolding method for returning a generic model instance.
 	 */
 	public function bindModelController($model, $request = null) {
-		$models = $this->getManagedModels();
-		
-		if(isset($models[$model]['collection_controller'])) {
-			$class = $models[$model]['collection_controller'];
-		} else {
-			$class = $this->stat('collection_controller_class');
-		}
-		
+		$class = $this->getCollectionControllerClass($model);	
 		return new $class($this, $model);
 	}
 	
@@ -312,7 +342,7 @@ class ModelAdmin_CollectionController extends Controller {
 	function getModelClass() {
 		return $this->modelClass;
 	}
-		
+	
 	/**
 	 * Delegate to different control flow, depending on whether the
 	 * URL parameter is a number (record id) or string (action).
@@ -336,15 +366,7 @@ class ModelAdmin_CollectionController extends Controller {
 	 * @return RecordController
 	 */
 	public function handleID($request) {
-		$models = $this->parentController->getManagedModels();
-		$model  = $this->getModelClass();
-		
-		if(isset($models[$model]['record_controller'])) {
-			$class = $models[$model]['record_controller'];
-		} else {
-			$class = $this->parentController->stat('record_controller_class');
-		}
-		
+		$class = $this->parentController->getRecordControllerClass($this->getModelClass());
 		return new $class($this, $request);
 	}
 	
@@ -816,7 +838,8 @@ class ModelAdmin_CollectionController extends Controller {
 		$model->write();
 		
 		if(Director::is_ajax()) {
-			$recordController = new ModelAdmin_RecordController($this, $request, $model->ID);
+			$class = $this->parentController->getRecordControllerClass($this->getModelClass());
+			$recordController = new $class($this, $request, $model->ID);
 			return new SS_HTTPResponse(
 				$recordController->EditForm()->forAjaxTemplate(), 
 				200, 
