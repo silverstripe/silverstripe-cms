@@ -383,6 +383,7 @@ class ModelAdmin_CollectionController extends Controller {
 		//$form->setFormAction(Controller::join_links($this->Link(), "search"));
 		$form->setFormMethod('get');
 		$form->setHTMLID("Form_SearchForm_" . $this->modelClass);
+		$form->disableSecurityToken();
 		$clearAction->useButtonTag = true;
 		$clearAction->addExtraClass('minorAction');
 
@@ -951,7 +952,7 @@ class ModelAdmin_RecordController extends Controller {
 	public function doDelete($data, $form, $request) {
 		if($this->currentRecord->canDelete(Member::currentUser())) {
 			$this->currentRecord->delete();
-			Director::redirect($this->parentController->Link());
+			Director::redirect($this->parentController->Link('SearchForm?action=search'));
 		}
 		else Director::redirectBack();
 		return;
