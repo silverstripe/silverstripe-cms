@@ -15,7 +15,7 @@ LangSelectorClass.prototype = {
 	onchange: function(e, val) {
 		if(this.value != _TRANSLATING_LANG) {
 			_TRANSLATING_LANG = this.value;
-			document.location = 'admin/?locale=' + this.value;
+			document.location = baseHref() + 'admin/?locale=' + this.value;
 		}
 	},
 
