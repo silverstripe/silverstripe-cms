@@ -205,7 +205,7 @@ class AssetTableField extends ComplexTableField {
 				foreach($links as $link) {
 					$backlinks[] = "<li><a href=\"admin/show/$link->ID\">" . $link->Breadcrumbs(null,true). "</a></li>";
 				}
-				$backlinks = "<div style=\"clear:left\">". _t('AssetTableField.PAGESLINKING','The following pages link to this file:') ."<ul>" . implode("",$backlinks) . "</ul>";
+				$backlinks = "<div style=\"clear:left\">". _t('AssetTableField.PAGESLINKING','The following pages link to this file:') ."<ul>" . implode("",$backlinks) . "</ul></div>";
 			}
 			if(!isset($backlinks)) $backlinks = "<p>". _t('AssetTableField.NOLINKS',"This file hasn't been linked to from any pages.") ."</p>";
 			$detailFormFields->addFieldToTab("BottomRoot.Links", new LiteralField("Backlinks", $backlinks));
