@@ -268,9 +268,6 @@ class LeftAndMain extends Controller {
 				CMS_DIR . '/javascript/LeftAndMain_right.js',
 				SAPPHIRE_DIR . '/javascript/tree/tree.js',
 				THIRDPARTY_DIR . '/tabstrip/tabstrip.js',
-				CMS_DIR . '/thirdparty/swfupload/swfupload.js',
-				CMS_DIR . '/javascript/Upload.js',
-				CMS_DIR . '/javascript/TinyMCEImageEnhancement.js',
 				SAPPHIRE_DIR . '/javascript/TreeSelectorField.js',
 		 		CMS_DIR . '/javascript/ThumbnailStripField.js',
 			)

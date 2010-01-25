@@ -490,3 +490,29 @@ div.filterBox {
 .autocompleteoptions {
 	background-color: white;
 }
+
+/**
+ * Upload Image (Image Toolbar)
+ */
+#Form_EditorToolbarImageForm .file,
+#Form_EditorToolbarImageForm #UploadFormResponse {
+	display: none;
+}
+
+.showUploadField {
+	font-size: 11px;
+	padding: 1px 3px;
+}
+	.showUploadField a {
+		display: none;
+	}
+	
+	#UploadFormResponse {
+		padding: 6px 0;
+		font-size: 12px;
+	}
+		#UploadFormResponse.loading
+		.loading#UploadFormResponse {
+			background: url(../../cms/images/network-save.gif) no-repeat left center;
+			padding-left: 20px;
+		}
