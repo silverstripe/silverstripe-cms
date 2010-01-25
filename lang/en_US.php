@@ -57,12 +57,12 @@ $lang['en_US']['AssetTableField.ss']['DELFILE'] = 'Delete this file';
 $lang['en_US']['AssetTableField.ss']['DRAGTOFOLDER'] = 'Drag to folder on left to move file';
 $lang['en_US']['AssetTableField.ss']['EDIT'] = 'Edit asset';
 $lang['en_US']['AssetTableField.ss']['SHOW'] = 'Show asset';
-$lang['en_US']['CMSBatchActions']['DELETED_PAGES'] = 'Deleted %d pages from the published site';
-$lang['en_US']['CMSBatchActions']['DELETE_PAGES'] = 'Delete from published site';
-$lang['en_US']['CMSBatchActions']['DELETING_PAGES'] = 'Deleting selected pages from the published site';
-$lang['en_US']['CMSBatchActions']['DELETED_DRAFT_PAGES'] = 'Deleted %d pages from the draft site';
+$lang['en_US']['CMSBatchActions']['DELETED_DRAFT_PAGES'] = 'Deleted %d pages from the draft site, %d failures';
+$lang['en_US']['CMSBatchActions']['DELETED_PAGES'] = 'Deleted %d pages from the published site, %d failures';
 $lang['en_US']['CMSBatchActions']['DELETE_DRAFT_PAGES'] = 'Delete from draft site';
+$lang['en_US']['CMSBatchActions']['DELETE_PAGES'] = 'Delete from published site';
 $lang['en_US']['CMSBatchActions']['DELETING_DRAFT_PAGES'] = 'Deleting selected pages from the draft site';
+$lang['en_US']['CMSBatchActions']['DELETING_PAGES'] = 'Deleting selected pages from the published site';
 $lang['en_US']['CMSBatchActions']['PUBLISHED_PAGES'] = 'Published %d pages, %d failures';
 $lang['en_US']['CMSBatchActions']['PUBLISHING_PAGES'] = 'Publishing pages';
 $lang['en_US']['CMSBatchActions']['PUBLISH_PAGES'] = 'Publish';
@@ -76,7 +76,6 @@ $lang['en_US']['CMSMain']['CANCEL'] = 'Cancel';
 $lang['en_US']['CMSMain']['CHOOSEREPORT'] = '(Choose a report)';
 $lang['en_US']['CMSMain']['COMPARINGV'] = 'Comparing versions %s and %s';
 $lang['en_US']['CMSMain']['COPYPUBTOSTAGE'] = 'Do you really want to copy the published content to the stage site?';
-$lang['en_US']['CMSMain']['DELETE'] = 'Delete from the draft site';
 $lang['en_US']['CMSMain']['DESCREMOVED'] = 'and %s descendants';
 $lang['en_US']['CMSMain']['EMAIL'] = 'Email';
 $lang['en_US']['CMSMain']['GO'] = 'Go';
@@ -96,7 +95,6 @@ $lang['en_US']['CMSMain']['NEW'] = array(
 $lang['en_US']['CMSMain']['NOCONTENT'] = 'no content';
 $lang['en_US']['CMSMain']['OK'] = 'OK';
 $lang['en_US']['CMSMain']['PAGENOTEXISTS'] = 'This page doesn\'t exist';
-$lang['en_US']['CMSMain']['PRINT'] = 'Print';
 $lang['en_US']['CMSMain']['PUBALLCONFIRM'] = array(
 	'Please publish every page in the site, copying content stage to live',
 	PR_LOW,
@@ -120,7 +118,6 @@ $lang['en_US']['CMSMain']['RESTORED'] = array(
 $lang['en_US']['CMSMain']['ROLLBACK'] = 'Roll back to this version';
 $lang['en_US']['CMSMain']['ROLLEDBACKPUB'] = 'Rolled back to published version. New version number is #%d';
 $lang['en_US']['CMSMain']['ROLLEDBACKVERSION'] = 'Rolled back to version #%d.  New version number is #%d';
-$lang['en_US']['CMSMain']['SAVE'] = 'Save';
 $lang['en_US']['CMSMain']['STATUSOPT'] = 'Status';
 $lang['en_US']['CMSMain']['TITLEOPT'] = 'Title';
 $lang['en_US']['CMSMain']['TOTALPAGES'] = 'Total pages: ';
@@ -299,6 +296,26 @@ $lang['en_US']['LeftAndMain.ss']['SSWEB'] = 'Silverstripe Website';
 $lang['en_US']['LeftAndMain.ss']['VIEWINDRAFT'] = 'View the Page in the Draft Site';
 $lang['en_US']['LeftAndMain.ss']['VIEWINPUBLISHED'] = 'View the Page in the Published Site';
 $lang['en_US']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Page view:';
+$lang['en_US']['MathSpamProtection']['EIGHT'] = 'eight';
+$lang['en_US']['MathSpamProtection']['EIGHTEEN'] = 'eighteen';
+$lang['en_US']['MathSpamProtection']['ELEVEN'] = 'eleven';
+$lang['en_US']['MathSpamProtection']['FIFTEEN'] = 'fifteen';
+$lang['en_US']['MathSpamProtection']['FIVE'] = 'five';
+$lang['en_US']['MathSpamProtection']['FOUR'] = 'four';
+$lang['en_US']['MathSpamProtection']['FOURTEEN'] = 'fourteen';
+$lang['en_US']['MathSpamProtection']['NINE'] = 'nine';
+$lang['en_US']['MathSpamProtection']['ONE'] = 'one';
+$lang['en_US']['MathSpamProtection']['SEVEN'] = 'seven';
+$lang['en_US']['MathSpamProtection']['SEVENTEEN'] = 'seventeen';
+$lang['en_US']['MathSpamProtection']['SIX'] = 'six';
+$lang['en_US']['MathSpamProtection']['SIXTEEN'] = 'sixteen';
+$lang['en_US']['MathSpamProtection']['TEN'] = 'ten';
+$lang['en_US']['MathSpamProtection']['THIRTEEN'] = 'thirteen';
+$lang['en_US']['MathSpamProtection']['THREE'] = 'three';
+$lang['en_US']['MathSpamProtection']['TWELVE'] = 'twelve';
+$lang['en_US']['MathSpamProtection']['TWO'] = 'two';
+$lang['en_US']['MathSpamProtection']['WHATIS'] = 'What is %s plus %s?';
+$lang['en_US']['MathSpamProtection']['ZERO'] = 'zero';
 $lang['en_US']['MemberList.ss']['FILTER'] = array(
 	'Filter',
 	50,
@@ -501,10 +518,8 @@ $lang['en_US']['ViewArchivedEmail.ss']['HAVEASKED'] = array(
 	30,
 	'Followed by a date'
 );
-$lang['en_US']['WidgetAreaEditor.ss']['AVAILABLE'] = 'Available Widgets';
-$lang['en_US']['WidgetAreaEditor.ss']['INUSE'] = 'Widgets currently used';
+$lang['en_US']['WidgetAreaEditor']['ss'] = 'TOADD';
 $lang['en_US']['WidgetAreaEditor.ss']['NOAVAIL'] = 'There are currently no widgets available.';
-$lang['en_US']['WidgetAreaEditor.ss']['TOADD'] = 'To add widgets, drag them from the left area to here.';
 $lang['en_US']['WidgetEditor.ss']['DELETE'] = 'Delete';
 
 ?>
