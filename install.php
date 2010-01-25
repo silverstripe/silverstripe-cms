@@ -860,16 +860,17 @@ PHP
 		$dbAdmin = new DatabaseAdmin();
 		$dbAdmin->init();
 		
-		$_REQUEST['username'] = $config['admin']['username'];
-		$_REQUEST['password'] = $config['admin']['password'];
 		$dbAdmin->doBuild(true);
 		
-		$adminmember = DataObject::get_one('Member',"\"Email\"= '".$_REQUEST['admin']['username']."'");
-		if($adminmember) {
-			$adminmember->FirstName = $_REQUEST['admin']['firstname'];
-			$adminmember->Surname = $_REQUEST['admin']['surname'];
-			$adminmember->write();
-		}
+		// Create default administrator user and group in database 
+		// (not using Security::setDefaultAdmin())
+		$adminMember = Security::findAnAdministrator();
+		$adminMember->Email = $config['admin']['username'];
+		$adminMember->Password = $config['admin']['password'];
+		$adminMember->PasswordEncryption = Security::get_password_encryption_algorithm();
+		$adminMember->FirstName = $config['admin']['firstname'];
+		$adminMember->Surname = $config['admin']['surname'];
+		$adminMember->write();
 		
 		// Syncing filesystem (so /assets/Uploads is available instantly, see ticket #2266)
 		FileSystem::sync();
