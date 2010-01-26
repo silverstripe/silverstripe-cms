@@ -20,6 +20,7 @@
 		<p><% _t('TOADD', 'To add widgets, click one on the left to add it here') %></p>
 		
 		<div class="usedWidgets" id="usedWidgets-$Name">
+			<div id="usedWidgetsStart-$Name"><!-- --></div>
 			<% if UsedWidgets %>
 				<% control UsedWidgets %>
 					$EditableSegment
