@@ -57,5 +57,10 @@ div.availableWidgets div.Widget h3 {
 	text-indent: 5px;
 	background: #000 url(../images/textures/obar-18.gif);
 	margin: 0;
-	cursor: move;
 }
+	div.usedWidgets div.Widget h3 {
+		cursor: move;
+	}
+	div.availableWidgets div.Widget h3 {
+		cursor: pointer;
+	}
