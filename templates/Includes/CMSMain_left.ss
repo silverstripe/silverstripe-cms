@@ -4,7 +4,7 @@
 		<h2 id="heading_sitetree" class="selected">
 			<img id="sitetree_toggle_closed" src="sapphire/images/toggle-closed.gif" alt="+" style="display:none;" title="<% _t('OPENBOX','click to open this box') %>" />
 			<img id="sitetree_toggle_open" src="sapphire/images/toggle-open.gif" alt="-" title="<% _t('CLOSEBOX','click to close box') %>" />
-			<% _t('SITECONTENT TITLE','Site Content and Structure',PR_HIGH) %>
+			<% _t('SITECONTENT TITLE','Page Tree',PR_HIGH) %>
 		</h2>
 		<div id="sitetree_holder">
 			<div id="TreeTools">
