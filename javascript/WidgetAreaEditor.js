@@ -14,16 +14,6 @@ WidgetAreaEditorClass.prototype = {
 			if (widget.nodeType == 1) {
 				// Gotta change their ID's because otherwise we get clashes between two tabs
 				widget.id = widget.id + '-'+this.name;
-				if(widget.id) {
-					// Clicking applies to the h3 element only, not the widget div itself
-					var header = widget.childNodes[1];
-					header.onclick = function(event) {
-						parts = event.currentTarget.parentNode.id.split('-');
-						var widgetArea = parts.pop();
-						var className = parts.pop();
-						$('WidgetAreaEditor-'+widgetArea).addWidget(className, widgetArea);
-					}
-				}
 			}
 		}
 	
@@ -247,6 +237,18 @@ UsedWidget.prototype = {
 		this.parentNode.parentNode.parentNode.deleteWidget(this);
 	}
 }
+
+AvailableWidgetHeader = Class.create();
+AvailableWidgetHeader.prototype = {
+	onclick: function(event) {
+		parts = this.parentNode.id.split('-');
+		var widgetArea = parts.pop();
+		var className = parts.pop();
+		$('WidgetAreaEditor-'+widgetArea).addWidget(className, widgetArea);
+	}
+}
+
+AvailableWidgetHeader.applyTo('div.availableWidgets .Widget h3');
 
 WidgetTreeDropdownField = Class.extend('TreeDropdownField');
 WidgetTreeDropdownField.prototype = {
