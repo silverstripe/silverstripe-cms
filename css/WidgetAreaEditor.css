@@ -55,12 +55,13 @@ div.availableWidgets div.Widget h3 {
 	color: #fff;
 	line-height: 1.8;
 	text-indent: 5px;
-	background: #000 url(../images/textures/obar-18.gif);
 	margin: 0;
 }
 	div.usedWidgets div.Widget h3 {
 		cursor: move;
+		background: #000 url(../images/handled-bg.png) right top;
 	}
 	div.availableWidgets div.Widget h3 {
 		cursor: pointer;
+		background: #000 url(../images/add-bg.png) right top;
 	}
