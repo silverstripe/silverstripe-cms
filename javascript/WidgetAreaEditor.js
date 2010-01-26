@@ -15,8 +15,10 @@ WidgetAreaEditorClass.prototype = {
 				// Gotta change their ID's because otherwise we get clashes between two tabs
 				widget.id = widget.id + '-'+this.name;
 				if(widget.id) {
-					widget.onclick = function(event) {
-						parts = event.currentTarget.id.split('-');
+					// Clicking applies to the h3 element only, not the widget div itself
+					var header = widget.childNodes[1];
+					header.onclick = function(event) {
+						parts = event.currentTarget.parentNode.id.split('-');
 						var widgetArea = parts.pop();
 						var className = parts.pop();
 						$('WidgetAreaEditor-'+widgetArea).addWidget(className, widgetArea);
@@ -166,10 +168,9 @@ WidgetAreaEditorClass.prototype = {
 		var usedWidgets = $('usedWidgets-'+this.name).childNodes;
 		
 		// Give the widget a unique id
-		widget = document.createElement('div');
-		widget.innerHTML = response.responseText.replace(/Widget\[0\]/gi, "Widget[new-" + (++$('usedWidgets-'+this.name).parentNode.parentNode.maxid) + "]");
-	
-		$('usedWidgetsStart-'+this.name).appendChild(widget.childNodes[0]);
+		widgetContent = response.responseText.replace(/Widget\[0\]/gi, "Widget[new-" + (++$('usedWidgets-'+this.name).parentNode.parentNode.maxid) + "]");
+		new Insertion.Top($('usedWidgets-'+this.name), widgetContent);
+		
 		$('usedWidgets-'+this.name).parentNode.parentNode.rewriteWidgetAreaAttributes();
 		UsedWidget.applyToChildren($('usedWidgets-'+this.name), 'div.Widget');
 		
