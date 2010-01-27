@@ -608,7 +608,7 @@ JS;
 			return FormResponse::respond();
 		}
 		
-		$form->dataFieldByName('Title')->value = $form->dataFieldByName('Name')->value;
+		$form->dataFieldByName('Name')->Value = $form->dataFieldByName('Title')->Value();
 		
 		return parent::save($urlParams, $form);
 	}
