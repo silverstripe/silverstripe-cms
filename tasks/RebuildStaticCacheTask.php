@@ -72,7 +72,7 @@ class RebuildStaticCacheTask extends Controller {
 			
 			if (FilesystemPublisher::$domain_based_caching) {
 				// Glob each dir, then glob each one of those
-				foreach(glob('../cache/*', GLOB_ONLYDIR) as $cacheDir) {
+				foreach(glob(BASE_PATH . '/cache/*', GLOB_ONLYDIR) as $cacheDir) {
 					foreach(glob($cacheDir.'/*') as $cacheFile) {
 						$searchCacheFile = trim(str_replace($cacheBaseDir, '', $cacheFile), '\/');
 						if (!in_array($searchCacheFile, $mappedUrls)) {
