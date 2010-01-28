@@ -13,10 +13,25 @@ var addpageclass;
 addpageclass = Class.create();
 addpageclass.applyTo('#addpage');
 addpageclass.prototype = {
+	originalValues: new Array(),
 	initialize: function () {
 		Observable.applyTo($(_HANDLER_FORMS[this.id]));
 		this.getElementsByTagName('button')[0].onclick = returnFalse;
 		$(_HANDLER_FORMS[this.id]).onsubmit = this.form_submit;
+		
+		// Save the original page types in to this object
+		if ($(_HANDLER_FORMS.addpage).elements.PageType) {
+			var options = $(_HANDLER_FORMS.addpage).elements.PageType.options;
+			for(var i = 0; i < options.length; i++) {
+				this.originalValues.push({
+					'value': options[i].value,
+					'label': options[i].innerHTML,
+				});
+			}
+		
+			var selectedNode = $('sitetree').firstSelected();
+			if(selectedNode) this.showApplicableChildrenPageTypes(selectedNode.hints);
+		}
 	},
 	
 	onclick : function() {
@@ -40,7 +55,39 @@ addpageclass.prototype = {
 		return false;
 	},
 	
+	// Reset the page types dropdown to its original state
+	resetPageTypeOptions: function() {
+		var select = $(_HANDLER_FORMS.addpage).elements.PageType;
+		while (select.childNodes.length >= 1) {	select.removeChild(select.firstChild); } 
+		for(var i = 0; i < this.originalValues.length; i++) {
+			var option = document.createElement('option');
+			option.value = this.originalValues[i].value;
+			option.innerHTML = this.originalValues[i].label;
+			select.appendChild(option);
+		}
+	},
+	
+	// Hide the <option> elements in the new page <select> unless
+	// they are in the allowChildren array of the selected tree node
+	showApplicableChildrenPageTypes: function(hints) {
+		this.resetPageTypeOptions();
+		if (typeof hints.allowedChildren != 'undefined') {
+			var select = $(_HANDLER_FORMS.addpage).elements.PageType;
+			
+			var toRemove = new Array();
+			for(var i = 0; i < select.options.length; i++) {
+				var itemFound = false;
+				for(var j = 0; j < hints.allowedChildren.length; j++) {
+					if (select.options[i].value == hints.allowedChildren[j]) { itemFound = true; break; }
+				}
+				if (!itemFound) toRemove.push(select.options[i]);
+			}
+			for(var i = 0; i < toRemove.length; i++) { select.removeChild(toRemove[i]); }
+		}
+	},
+	
 	treeSelectionChanged : function(selectedNode) {
+		this.showApplicableChildrenPageTypes(selectedNode.hints);
 		$(_HANDLER_FORMS.addpage).elements.PageType.value = selectedNode.hints.defaultChild;
 	},
 	
