@@ -25,7 +25,7 @@ addpageclass.prototype = {
 			for(var i = 0; i < options.length; i++) {
 				this.originalValues.push({
 					'value': options[i].value,
-					'label': options[i].innerHTML,
+					'label': options[i].innerHTML
 				});
 			}
 		
