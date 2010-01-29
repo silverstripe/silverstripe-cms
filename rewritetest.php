@@ -81,8 +81,6 @@ function createHtaccess() {
 RewriteEngine On
 RewriteBase $base
 
-RewriteCond %{REQUEST_URI} !(\.gif$)|(\.jpg$)|(\.png$)|(\.css$)|(\.js$) 
-
 RewriteCond %{REQUEST_URI} ^(.*)$
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule .* sapphire/main.php?url=%1&%{QUERY_STRING} [L]
@@ -113,8 +111,6 @@ function createHtaccessAlternative() {
 	$rewrite = <<<TEXT
 RewriteEngine On
 RewriteBase $base
-
-RewriteCond %{REQUEST_URI} !(\.gif$)|(\.jpg$)|(\.png$)|(\.css$)|(\.js$) 
 
 RewriteCond %{REQUEST_URI} ^(.*)$
 RewriteCond %{REQUEST_FILENAME} !-f
