@@ -25,6 +25,8 @@ Group:
       Title: assetsonly
    allcmssections:
       Title: allcmssections
+   rooteditusers:
+      Title: rooteditusers
 Member:
    admin:
       Email: admin@example.com
@@ -36,6 +38,9 @@ Member:
    allcmssectionsuser:
       Email: allcmssectionsuser@test.com
       Groups: =>Group.allcmssections
+   rootedituser:
+      Email: rootedituser@test.com
+      Groups: =>Group.rooteditusers
 Permission:
    admin:
       Code: ADMIN
@@ -46,3 +51,14 @@ Permission:
    allcmssections:
       Code: CMS_ACCESS_LeftAndMain
       GroupID: =>Group.allcmssections
+   allcmssections2:
+      Code: CMS_ACCESS_LeftAndMain
+      GroupID: =>Group.rooteditusers
+SiteConfig:
+   siteconfig1:
+      EditorGroups: =>Group.rooteditusers
+      CanCreateTopLevelType: 'OnlyTheseUsers'
+SiteConfig_CreateTopLevelGroups:
+   createtoplevelgroups1:
+      siteconfigid:  1
+      GroupID: =>Group.rooteditusers
