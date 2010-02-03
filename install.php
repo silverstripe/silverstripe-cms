@@ -532,7 +532,7 @@ class InstallRequirements {
 
 	function requireIISRewriteModule($moduleName, $testDetails) {
 		$this->testing($testDetails);
-		if(isset($_SERVER[$moduleName]) && $_SERVER[$moduleName] == 1) {
+		if(isset($_SERVER[$moduleName]) && $_SERVER[$moduleName]) {
 			return true;
 		} else {
 			$this->error($testDetails);
