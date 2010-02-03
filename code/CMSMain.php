@@ -1321,7 +1321,7 @@ JS;
 			'category' => _t('Permission.CMS_ACCESS_CATEGORY', 'CMS Access'),
 			'sort' => -100
 		);
-		
+
 		if (isset($perms['CMS_ACCESS_ModelAdmin'])) unset($perms['CMS_ACCESS_ModelAdmin']);
 		
 		return $perms;

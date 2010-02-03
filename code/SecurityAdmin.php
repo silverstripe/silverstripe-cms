@@ -57,6 +57,8 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	public function getEditForm($id) {
 		$record = null;
 		
+		if (($id == 'root' || $id == 0) && $this->hasMethod('getRootForm')) return $this->getRootForm($this, 'EditForm');
+		
 		if($id && $id != 'root') {
 			$record = DataObject::get_by_id($this->stat('tree_class'), $id);
 		}
