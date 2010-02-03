@@ -54,7 +54,7 @@ $fileName = dirname($_SERVER['SCRIPT_FILENAME']) . '/' . $url;
  * Very quickly pass through references to files
  */
 if($url && file_exists($fileName)) {
-	$fileURL = dirname($_SERVER['SCRIPT_NAME']) . '/' . $url;
+	$fileURL = (dirname($_SERVER['SCRIPT_NAME'])=='/'?'':dirname($_SERVER['SCRIPT_NAME'])) . '/' . $url;
 	header($_SERVER['SERVER_PROTOCOL'] . ' 301 Moved Permanently');
 	header("Location: $fileURL");
 	die();
