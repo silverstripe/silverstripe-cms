@@ -140,7 +140,7 @@ addpageclass.prototype = {
 		}
 		
 		return false;
-	},
+	}
 };
 
 /**
