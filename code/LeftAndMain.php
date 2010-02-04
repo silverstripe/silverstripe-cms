@@ -712,6 +712,15 @@ JS;
 				FormResponse::add("\$('Form_EditForm').elements.URLSegment.value = \"$record->URLSegment\";");
 				FormResponse::add("\$('Form_EditForm_StageURLSegment').value = \"" . $record->AbsoluteLink() . "\";");
 			}
+			
+			if($virtualPages = DataObject::get("VirtualPage", "CopyContentFromID = $record->ID")) {
+				foreach($virtualPages as $page) {
+					if($page->ID != $record->ID) {
+						$title = Convert::raw2js($page->TreeTitle());
+						FormResponse::add("$('sitetree').setNodeTitle($page->ID, \"$title\");");
+					}
+				}
+			}
 
 			// If the 'Save & Publish' button was clicked, also publish the page
 			if (isset($urlParams['publish']) && $urlParams['publish'] == 1) {

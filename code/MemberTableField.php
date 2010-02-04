@@ -385,9 +385,16 @@ class MemberTableField_ItemRequest extends ComplexTableField_ItemRequest {
 		if($this->ctf->Can('delete') !== true) {
 			return false;
 		}
-		
+
 		$groupID = $this->ctf->sourceID();
-		$this->dataObj()->Groups()->remove($groupID);
+		$group = DataObject::get_by_id('Group', $groupID);
+		
+		if ($group) {
+			foreach($group->getAllChildren() as $subGroup) {
+				$this->dataObj()->Groups()->remove($subGroup);
+			}
+			$this->dataObj()->Groups()->remove($groupID);
+		}
 	}
 	
 }
