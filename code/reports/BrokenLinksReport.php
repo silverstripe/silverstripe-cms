@@ -11,7 +11,7 @@ class BrokenLinksReport extends SSReport {
 		return _t('BrokenLinksReport.BROKENLINKS',"Broken links report");
 	}
 	function sourceRecords($params = null) {
-		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "(HasBrokenLink = 1 OR HasBrokenFile = 1)");
+		if (!isset($_REQUEST['CheckSite']) || $params['CheckSite'] == 'Published') $ret = Versioned::get_by_stage('SiteTree', 'Live', "(HasBrokenLink = 1 OR HasBrokenFile = 1)");
 		else $ret = DataObject::get('SiteTree', "(HasBrokenFile = 1 OR HasBrokenLink = 1)");
 		
 		$returnSet = new DataObjectSet();
@@ -59,7 +59,7 @@ class BrokenLinksReport extends SSReport {
 				'formatting' => '<a href=\"admin/show/$ID\" title=\"Edit page\">$value</a>'
 			),
 			"LastEdited" => array(
-				"title" => "Date ".(isset($_REQUEST['OnLive'])?'published':'last modified'),
+				"title" => "Date ".(isset($_REQUEST['CheckSite']) && ($_REQUEST['CheckSite'] == 'Draft')?'last modified':'published'),
 				'casting' => 'SSDatetime->Full'
 			),
 			"BrokenReason" => array(
@@ -75,7 +75,10 @@ class BrokenLinksReport extends SSReport {
 	}
 	function parameterFields() {
 		return new FieldSet(
-			new CheckboxField('OnLive', 'Check live site'),
+			new DropdownField('CheckSite', 'Check site', array(
+				'Published' => 'Published Site',
+				'Draft' => 'Draft Site'
+			)),
 			new DropdownField('Reason', 'Problem to check', array(
 				'' => 'Any',
 				'BROKENFILE' => 'Broken file',
