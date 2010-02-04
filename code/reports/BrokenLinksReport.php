@@ -102,8 +102,8 @@ class BrokenLinksReport extends SSReport {
 				'' => 'Any',
 				'BROKENFILE' => 'Broken file',
 				'BROKENLINK' => 'Broken link',
-				'VPBROKENLINK' => 'Virtual page pointing to invalid source',
-				'RPBROKENLINK' => 'Redirector page pointing to invalid destination',
+				'VPBROKENLINK' => 'Virtual page pointing to non-existent page',
+				'RPBROKENLINK' => 'Redirector page pointing to non-existent page',
 			))
 		);
 	}
