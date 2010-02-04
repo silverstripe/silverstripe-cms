@@ -171,7 +171,7 @@ class ReportAdmin extends LeftAndMain {
 				$ids[] = $obj->ID();
 			}
 		}
-		
+
 		if($id && in_array($id, $ids)) return $this->reportEditFormFor($id);
 		else return false;
 	}
@@ -197,12 +197,15 @@ class ReportAdmin extends LeftAndMain {
 		
 		$obj = new $reportClass();
 		if($obj) $fields = $obj->getCMSFields();
+		if($obj) $actions = $obj->getCMSActions();
 		
 		$idField = new HiddenField('ID');
 		$idField->setValue($id);
 		$fields->push($idField);
 		
 		$form = new Form($this, 'EditForm', $fields, $actions);
+
+		$form->loadDataFrom($_REQUEST);
 		
 		return $form;
 	}
@@ -227,6 +230,16 @@ class ReportAdmin extends LeftAndMain {
 		}
 		return false;
 	}
+	
+	public function updatereport() {
+		FormResponse::load_form($this->EditForm()->renderWith('Form'));
+		FormResponse::add("$('tab-Root_Report').onclick();");
+		return FormResponse::respond();
+	}
 }
+
+
+
+
 
 ?>
