@@ -10,9 +10,10 @@ class BrokenLinksReport extends SSReport {
 	function title() {
 		return _t('BrokenLinksReport.BROKENLINKS',"Broken links report");
 	}
-	function sourceRecords($params = null) {
-		if (!isset($_REQUEST['CheckSite']) || $params['CheckSite'] == 'Published') $ret = Versioned::get_by_stage('SiteTree', 'Live', "(HasBrokenLink = 1 OR HasBrokenFile = 1)");
-		else $ret = DataObject::get('SiteTree', "(HasBrokenFile = 1 OR HasBrokenLink = 1)");
+	function sourceRecords($params, $sort, $limit) {
+		if(!$sort || !in_array(preg_replace('/(\s+?)(A|DE)SC$/', '', $sort), array('Title','LastEdited'))) $sort = "LastEdited ASC";
+		if (!isset($_REQUEST['CheckSite']) || $params['CheckSite'] == 'Published') $ret = Versioned::get_by_stage('SiteTree', 'Live', "(HasBrokenLink = 1 OR HasBrokenFile = 1)", $sort);
+		else $ret = DataObject::get('SiteTree', "(HasBrokenFile = 1 OR HasBrokenLink = 1)", $sort);
 		
 		$returnSet = new DataObjectSet();
 		if ($ret) foreach($ret as $record) {
