@@ -488,7 +488,6 @@ class LeftAndMain extends Controller {
 		
 		// NOTE: SiteTree/CMSMain coupling :-(
 		SiteTree::prepopuplate_permission_cache('edit', $obj->markedNodeIDs());
-		SiteTree::prepopuplate_permission_cache('delete', $obj->markedNodeIDs());
 
 		// getChildrenAsUL is a flexible and complex way of traversing the tree
 		$titleEval = '
