@@ -373,6 +373,15 @@
 			max-height: 300px;
 			overflow: auto;
 		}
+		
+	.warningBox {
+		padding: 2px 20px 10px 20px;
+		border: 2px solid #ff8e8e;
+		color: #c80700;
+		background: #ffe9e9;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	}
 
 /**
  * TableField Subclasses
