@@ -6,7 +6,7 @@
  * @subpackage content
  */
 
-class BrokenLinksReport extends SSReport {
+class BrokenLinksReport extends SS_Report {
 	function title() {
 		return _t('BrokenLinksReport.BROKENLINKS',"Broken links report");
 	}

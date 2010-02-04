@@ -98,7 +98,7 @@ class SideReportView extends ViewableData {
  * 
  * This report wrapper will use sideReportColumns() for the report columns, instead of columns().
  */
-class SideReportWrapper extends SSReportWrapper {
+class SideReportWrapper extends SS_ReportWrapper {
 	function columns() {
 		if($this->baseReport->hasMethod('sideReportColumns')) {
 			return $this->baseReport->sideReportColumns();
@@ -168,7 +168,7 @@ class SideReport_RecentlyEdited extends SS_Report {
 	}
 }
 
-class SideReport_ToDo extends SideReport {
+class SideReport_ToDo extends SS_Report {
 	function title() {
 		return _t('SideReport.TODO',"Pages with To Do items");
 	}
@@ -178,17 +178,17 @@ class SideReport_ToDo extends SideReport {
 	function sort() {
 		return 0;
 	}
-	function records($params = null) {
+	function sourceRecords($params = null) {
 		return DataObject::get("SiteTree", "\"SiteTree\".\"ToDo\" IS NOT NULL AND \"SiteTree\".\"ToDo\" <> ''", "\"SiteTree\".\"LastEdited\" DESC");
 	}
-	function fieldsToShow() {
+	function columns() {
 		return array(
 			"Title" => array(
-				"source" => array("NestedTitle", array("2")),
+				"title" => "Title", // todo: use NestedTitle(2)
 				"link" => true,
 			),
 			"ToDo" => array(
-				"source" => "ToDo",
+				"title" => "ToDo",
 				"newline" => true,
 			), 
 		);
@@ -323,27 +323,6 @@ class SideReport_BrokenRedirectorPages extends SS_Report {
 	function parameterFields() {
 		return new FieldSet(
 			new CheckboxField('OnLive', 'Check live site')
-		);
-	}
-}
-
-class SideReport_ToDo extends SS_Report {
-	function title() {
-		return _t('SideReport.TODO',"To do");
-	}
-	function sourceRecords($params = null) {
-		return DataObject::get("SiteTree", "\"SiteTree\".\"ToDo\" IS NOT NULL AND \"SiteTree\".\"ToDo\" <> ''", "\"SiteTree\".\"LastEdited\" DESC");
-	}
-	function columns() {
-		return array(
-			"Title" => array(
-				"title" => "Title", // todo: use NestedTitle(2)
-				"link" => true,
-			),
-			"ToDo" => array(
-				"title" => "ToDo",
-				"newline" => true,
-			), 
 		);
 	}
 }

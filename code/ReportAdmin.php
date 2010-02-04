@@ -67,7 +67,7 @@ class ReportAdmin extends LeftAndMain {
 	 */
 	public function Reports() {
  		$output = new DataObjectSet();
-		foreach(SSReport::get_reports('ReportAdmin') as $report) {
+		foreach(SS_Report::get_reports('ReportAdmin') as $report) {
 			if($report->canView()) $output->push($report);
 		}
 		return $output;
@@ -129,7 +129,7 @@ class ReportAdmin extends LeftAndMain {
 	/**
 	 * Get the current report
 	 *
-	 * @return SSReport
+	 * @return SS_Report
 	 */
 	public function CurrentReport() {
 		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : Session::get('currentReport');
@@ -158,7 +158,7 @@ class ReportAdmin extends LeftAndMain {
 		$fields = new FieldSet();
 		$actions = new FieldSet();
 		
-		$reports = SSReport::get_reports('ReportAdmin');
+		$reports = SS_Report::get_reports('ReportAdmin');
 		$obj = $reports[$id];
 
 		if($obj) $fields = $obj->getCMSFields();
@@ -198,7 +198,7 @@ class ReportAdmin extends LeftAndMain {
 	 * @return boolean
 	 */
 	public static function has_reports() {
-		return sizeof(SSReport::get_reports('ReportAdmin')) > 0;
+		return sizeof(SS_Report::get_reports('ReportAdmin')) > 0;
 	}
 	
 	public function updatereport() {
