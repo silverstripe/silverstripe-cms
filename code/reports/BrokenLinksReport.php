@@ -22,7 +22,7 @@ class BrokenLinksReport extends SSReport {
 			} elseif($field == 'Subsite.Title') {
 				$join = 'LEFT JOIN "Subsite" ON "Subsite"."ID" = "SiteTree"."SubsiteID"';
 			} elseif($field == 'BrokenReason') {
-				$sort = "HasBrokenLink ASC, HasBrokenFile ASC";
+				$sort = "HasBrokenLink $direction, HasBrokenFile $direction";
 			}
 		}
 		
