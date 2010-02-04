@@ -170,6 +170,9 @@ SiteTreeFilter.applyTo('#siteTreeFilterList');
 SiteTreeFilter.prototype = {
 	initialize: function () {
 	},
+	reapplyIfNeeded: function() {
+		if(this.options[this.selectedIndex].value != 'all') this.onchange();
+	},
 	onchange : function() {
 		var value = this.options[this.selectedIndex].value;
 		
