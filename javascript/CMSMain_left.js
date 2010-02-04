@@ -128,21 +128,19 @@ addpageclass.prototype = {
 		
 			if( !_NEW_PAGES[parentID] )
 				_NEW_PAGES[parentID] = 1;
-		
+
 			var suffix = _NEW_PAGES[parentID]++;
 			Ajax.SubmitForm(_HANDLER_FORMS.addpage, "action_addpage", {
 				onSuccess : Ajax.Evaluator,
-				onFailure : this.showAddPageError,
+				onFailure : function(response) { if (response.status == 403) {
+					alert('You cannot add that page at that location.');
+				}},
 				extraData: '&Suffix=' + suffix
 			});
 		}
 		
 		return false;
 	},
-	
-	showAddPageError: function(response) {
-		errorMessage(ss.i18n._t('CMSMAIN.ERRORADDINGPAGE'), response);
-	}
 };
 
 /**
