@@ -3,9 +3,9 @@
 	
 	<p style="display: none;" class="message " id="Form_EditForm_error"/>
 	
-	<fieldset>
 
 		<div id="ScrollPanel">
+		<fieldset>
 			$FieldMap.ReportTitle.FieldHolder
 			$FieldMap.ReportDescription.FieldHolder
 		
@@ -37,9 +37,9 @@
 			
 			<% control HiddenFields %>$Field<% end_control %>
 			
+			</fieldset>
 		</div>
 			
 		
 		<div class="clear"><!-- --></div>
-	</fieldset>
 </form>
