@@ -11,6 +11,7 @@
 		
 			<!-- Filters -->
 			
+			<% if FieldMap.Filters.Children %>
 			<div style="border-bottom: 1px #AAA solid"><b>Filter by</b></div>
 			
 			<% control FieldMap.Filters %>
@@ -24,10 +25,13 @@
 			
 			<div id="action_updatereport" style="float: left; margin: 1px 10px 10px 0">
 			<br />
+			<% if FieldMap.action_updatereport %>
 			$FieldMap.action_updatereport.Field
+			<% end_if %>
 			</div>
 			
 			<div style="clear: both">&nbsp;</div>
+			<% end_if %>
 			
 			$FieldMap.ReportContent.FieldHolder
 			

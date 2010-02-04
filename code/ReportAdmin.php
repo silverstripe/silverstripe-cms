@@ -92,7 +92,7 @@ class ReportAdmin extends LeftAndMain {
 	 * @return unknown
 	 */
 	protected function showWithEditForm($params, $editForm) {
-		if(isset($params['ID'])) Session::set('currentPage', $params['ID']);
+		if(isset($params['ID'])) Session::set('currentReport', $params['ID']);
 		if(isset($params['OtherID'])) Session::set('currentOtherID', $params['OtherID']);
 		
 		if(Director::is_ajax()) {
@@ -116,7 +116,7 @@ class ReportAdmin extends LeftAndMain {
 	 * @return Form
 	 */
 	public function EditForm() {
-		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : Session::get('currentPage');
+		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : Session::get('currentReport');
 		
 		if($id) {
 			foreach($this->Reports() as $report) {
@@ -142,10 +142,9 @@ class ReportAdmin extends LeftAndMain {
 		$fields = new FieldSet();
 		$actions = new FieldSet();
 		
-		if(is_numeric($id)) $page = DataObject::get_by_id('SiteTree', $id);
-		$reportClass = is_object($page) ? 'SS_Report_' . $page->ClassName : $id;
-		
-		$obj = new $reportClass();
+		$reports = SSReport::get_reports('ReportAdmin');
+		$obj = $reports[$id];
+
 		if($obj) $fields = $obj->getCMSFields();
 		if($obj) $actions = $obj->getCMSActions();
 		
