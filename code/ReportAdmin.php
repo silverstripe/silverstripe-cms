@@ -205,7 +205,7 @@ class ReportAdmin extends LeftAndMain {
 		
 		$form = new Form($this, 'EditForm', $fields, $actions);
 
-		$form->loadDataFrom($_GET);
+		$form->loadDataFrom($_REQUEST);
 
 		// Include search criteria in the form action so that pagination works
 		$filteredCriteria = array_merge($_GET, $_POST);
