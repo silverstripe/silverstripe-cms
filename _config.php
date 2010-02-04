@@ -51,11 +51,11 @@ HtmlEditorConfig::get('cms')->removeButtons('tablecontrols');
 HtmlEditorConfig::get('cms')->addButtonsToLine(3, 'tablecontrols');
 
 // Register default side reports
-SSReport::register("SideReport", "SideReport_EmptyPages");
-SSReport::register("SideReport", "SideReport_RecentlyEdited");
-SSReport::register("SideReport", "SideReport_ToDo");
-if (class_exists('Subsite')) SSReport::register('ReportAdmin', 'SubsiteReportWrapper("BrokenLinksReport")',-20);
-else SSReport::register('ReportAdmin', 'BrokenLinksReport',-20);
+SS_Report::register("SideReport", "SideReport_EmptyPages");
+SS_Report::register("SideReport", "SideReport_RecentlyEdited");
+SS_Report::register("SideReport", "SideReport_ToDo");
+if (class_exists('Subsite')) SS_Report::register('ReportAdmin', 'SubsiteReportWrapper("BrokenLinksReport")',-20);
+else SS_Report::register('ReportAdmin', 'BrokenLinksReport',-20);
 
 
 ?>

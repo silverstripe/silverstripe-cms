@@ -10,7 +10,7 @@ class SSReportTest extends SapphireTest {
 	}
 }
 
-class SSReportTest_FakeTest extends SSReport implements TestOnly {
+class SSReportTest_FakeTest extends SS_Report implements TestOnly {
 	function title() {
 		return 'Report title';
 	}
