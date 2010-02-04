@@ -51,8 +51,8 @@ HtmlEditorConfig::get('cms')->removeButtons('tablecontrols');
 HtmlEditorConfig::get('cms')->addButtonsToLine(3, 'tablecontrols');
 
 // Register default side reports
-SSReport::register("SideReport", "SideReport_RecentlyEdited");
 SSReport::register("SideReport", "SideReport_EmptyPages");
+SSReport::register("SideReport", "SideReport_RecentlyEdited");
 SSReport::register("SideReport", "SideReport_ToDo");
 
 
