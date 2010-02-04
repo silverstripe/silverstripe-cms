@@ -537,8 +537,6 @@ Behaviour.register({
 	}
 });
 
-
-
 /**
  * Publish selected pages action
  */
@@ -550,42 +548,58 @@ publishpage.prototype = {
 		if(csvIDs) {		
 			var optionEl = $('choose_batch_action').options[$('choose_batch_action').selectedIndex];
 			var actionText = optionEl.text;
-			var optionParams = eval(optionEl.className);
-			var ingText = optionParams.doingText;
-
-			// Confirmation
-			if(!confirm("You have " + batchActionGlobals.count() + " pages selected.\n\nDo your really want to " + actionText.toLowerCase() + "?")) {
-				return false;
-			}
-
-			this.elements.csvIDs.value = csvIDs;
-
-			// Select form submission URL
-			this.action = $('choose_batch_action').value;
 			
-			// Loading indicator
-			statusMessage(ingText);
-			$('batchactions_go').className = 'loading';
-			
-			// Don't show actions that have failed from the previous execution
-			batchActionGlobals.removeFailures();
-			
-			// Submit form
-			Ajax.SubmitForm(this, null, {
-				onSuccess :  function(response) {
-					Ajax.Evaluator(response);
-					$('batchactions_go').className = '';
-					batchActionGlobals.deselectAll();
-				},
-				onFailure : function(response) {
-					errorMessage('Error ' + ingText, response);
+			var confirmationURL = $('choose_batch_action').value + '/confirmation?csvIDs=' + csvIDs;
+			jQuery.getJSON(confirmationURL, function(data) {
+				// If a custom alert has been provided, show that.
+				// otherwise, show the default one
+				if (data.alert) {
+					if (!confirm(data.content)) return false;
+				} else {
+					if(!confirm("You have " + batchActionGlobals.count() + " pages selected.\n\nDo your really want to " + actionText.toLowerCase() + "?")) {
+						return false;
+					}
 				}
+				
+				$('batchactions_options').submitform();
 			});
 		} else {
 			alert(ss.i18n._t('CMSMAIN.SELECTONEPAGE'));
 		}
 
 		return false;
+	},
+	
+	submitform: function() {
+		csvIDs = batchActionGlobals.getCsvIds();
+
+		var optionEl = $('choose_batch_action').options[$('choose_batch_action').selectedIndex];
+		var optionParams = eval(optionEl.className);
+		var ingText = optionParams.doingText;
+			
+		this.elements.csvIDs.value = csvIDs;
+
+		// Select form submission URL
+		this.action = $('choose_batch_action').value;
+
+		// Loading indicator
+		statusMessage(ingText);
+		$('batchactions_go').className = 'loading';
+
+		// Don't show actions that have failed from the previous execution
+		batchActionGlobals.removeFailures();
+
+		// Submit form
+		Ajax.SubmitForm(this, null, {
+			onSuccess :  function(response) {
+				Ajax.Evaluator(response);
+				$('batchactions_go').className = '';
+				batchActionGlobals.deselectAll();
+			},
+			onFailure : function(response) {
+				errorMessage('Error ' + ingText, response);
+			}
+		});
 	}
 };
 
