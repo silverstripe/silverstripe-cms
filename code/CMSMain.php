@@ -660,18 +660,18 @@ JS;
 			Director::redirectBack();
 		}
 	}
+	
+	function SideReports() {
+		return SSReport::get_reports('SideReport');
+	}
 
 	/*
 	 * Return a dropdown for selecting reports
 	 */
 	function ReportSelector() {
-		$reports = ClassInfo::subclassesFor("SideReport");
-
 		// $options[""] = _t('CMSMain.CHOOSEREPORT',"(Choose a report)");
-		foreach($reports as $report) {
-			if($report != 'SideReport' && singleton($report)->canView()) {
-				$options[singleton($report)->group()][singleton($report)->sort()][$report] = singleton($report)->title();
-			}
+		foreach($this->SideReports() as $report) {
+			if($report->canView()) $options[$report->ID()] = $report->title();
 		}
 		
 		$finalOptions = array();
@@ -687,17 +687,15 @@ JS;
 		return new GroupedDropdownField("ReportSelector", _t('CMSMain.REPORT', 'Report'),$finalOptions);
 	}
 	function ReportFormParameters() {
-		$reports = ClassInfo::subclassesFor("SideReport");
-
 		$forms = array();
-		foreach($reports as $report) {
-			if ($report != 'SideReport' && singleton($report)->canView()) {
-				if ($fieldset = singleton($report)->getParameterFields()) {
+		foreach($this->SideReports() as $report) {
+			if ($report->canView()) {
+				if ($fieldset = $report->parameterFields()) {
 					$formHtml = '';
 					foreach($fieldset as $field) {
 						$formHtml .= $field->FieldHolder();
 					}
-					$forms[$report] = $formHtml;
+					$forms[$report->ID()] = $formHtml;
 				}
 			}
 		}
@@ -713,10 +711,20 @@ JS;
 	 */
 	function sidereport() {
 		$reportClass = $this->urlParams['ID'];
-		$report = ClassInfo::exists($reportClass) ? new $reportClass() : false;
-		$report->setParams($this->request->requestVars());
-		return $report ? $report->getHTML() : false;
+		$reports = $this->SideReports();
+		if(isset($reports[$reportClass])) {
+			$report = $reports[$reportClass];
+			if($report) {
+				$view = new SideReportView($this, $report);
+				$view->setParameters($this->request->requestVars());
+				return $view->forTemplate();
+			} else {
+				return false;
+			}
+		}
 	}
+	
+	
 	/**
 	 * Get the versions of the current page
 	 */
