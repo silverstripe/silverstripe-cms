@@ -139,7 +139,7 @@ window.ontabschanged = function() {
 		return;
 
 	var fs = formEl.getElementsByTagName('fieldset')[0];
-	if(fs) fs.style.height = formEl.style.height;
+	if(fs && fs.parentNode == formEl) fs.style.height = formEl.style.height;
 
 	// var divs = document.getElementsBySelector('#Form_EditForm div');
 	/*for(i=0;i<divs.length;i++) {
