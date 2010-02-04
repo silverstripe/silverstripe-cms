@@ -11,6 +11,10 @@ Behaviour.register({
 		 */
 		prepareForm : function() {
 			ajaxActionsAtTop('Form_EditForm', 'form_actions', 'right');
+
+			// Custom code for reports section - link the search button to ajax
+			var updateReportButtonHolder = $('action_updatereport');
+			if(updateReportButtonHolder) prepareAjaxActions(updateReportButtonHolder, 'Form_EditForm');
 		},
 		
 		/**
@@ -107,7 +111,6 @@ Behaviour.register({
 			this.resetElements();
 				
 			window.ontabschanged();
-			
 		}
 	}
 });

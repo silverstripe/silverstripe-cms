@@ -214,6 +214,7 @@ class ReportAdmin extends LeftAndMain {
 		}
 
 		$form->setFormAction($this->Link() . '/EditForm?' . http_build_query($filteredCriteria));
+		$form->setTemplate('ReportAdminForm');
 		
 		return $form;
 	}
@@ -240,8 +241,7 @@ class ReportAdmin extends LeftAndMain {
 	}
 	
 	public function updatereport() {
-		FormResponse::load_form($this->EditForm()->renderWith('Form'));
-		FormResponse::add("$('tab-Root_Report').onclick();");
+		FormResponse::load_form($this->EditForm()->forTemplate());
 		return FormResponse::respond();
 	}
 }

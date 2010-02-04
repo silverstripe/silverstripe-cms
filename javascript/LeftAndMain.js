@@ -156,6 +156,11 @@ window.ontabschanged = function() {
 			fitToParent(_TAB_DIVS_ON_PAGE[i], 30);
 		}
 	}
+	
+	// Non-tab alternative
+	if($('ScrollPanel')) {
+		fitToParent('ScrollPanel', 0);
+	}
 }
 
 window.onresize = function(init) {

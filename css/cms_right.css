@@ -234,6 +234,19 @@
 }
 
 /**
+ * Non-tabbed scrolling area that can be used in place of tabs in LeftAndMAin
+ */
+.right #ScrollPanel {
+	background: #fff;
+	clear: left;
+	overflow: auto;
+	border: 1px solid #aaa;
+	position: relative;
+	top: 0;
+	padding: 10px;
+}
+
+/**
  * RHS Action Parameters boxes
  */
 #right form.actionparams {
