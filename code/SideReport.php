@@ -24,7 +24,7 @@ abstract class SideReport extends Object {
 		$records = $this->records();
 		$fieldsToShow = $this->fieldsToShow();
 		
-		if($records) {
+		if($records && count($records)) {
 			$result = "<ul class=\"$this->class\">\n";
 			
 			foreach($records as $record) {
