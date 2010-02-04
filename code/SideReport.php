@@ -60,6 +60,12 @@ class SideReportView extends ViewableData {
 		//	$val = $record->val($source[0], $source[1]);
 		//}
 		
+		// Casting, a la TableListField.  We're deep-calling a helper method on TableListField that
+		// should probably be pushed elsewhere...
+		if(!empty($info['casting'])) {
+			$val = TableListField::getCastedValue($val, $info['casting']);
+		}
+		
 		// Formatting, a la TableListField
 		if(!empty($info['formatting'])) {
 			$format = str_replace('$value', "__VAL__", $info['formatting']);
@@ -71,14 +77,34 @@ class SideReportView extends ViewableData {
 		$prefix = empty($info['newline']) ? "" : "<br>";
 
 		
-		$cssClass = ereg_replace('[^A-Za-z0-9]+','',$info['title']);
+		$classClause = "";
+		if(isset($info['title'])) {
+			$cssClass = ereg_replace('[^A-Za-z0-9]+','',$info['title']);
+			$classClause = "class=\"$cssClass\"";
+		}
+		
 		if(isset($info['link']) && $info['link']) {
 			$link = ($info['link'] === true) ? "admin/show/$record->ID" : $info['link'];
-			return $prefix . "<a class=\"$cssClass\" href=\"$link\">$val</a>";
+			return $prefix . "<a $classClause href=\"$link\">$val</a>";
 		} else {
-			return $prefix . "<span class=\"$cssClass\">$val</span>";
+			return $prefix . "<span $classClause>$val</span>";
 		}
 
+	}
+}
+
+/**
+ * A report wrapper that makes it easier to define slightly different behaviour for side-reports.
+ * 
+ * This report wrapper will use sideReportColumns() for the report columns, instead of columns().
+ */
+class SideReportWrapper extends SSReportWrapper {
+	function columns() {
+		if($this->baseReport->hasMethod('sideReportColumns')) {
+			return $this->baseReport->sideReportColumns();
+		} else {
+			return parent::columns();
+		}
 	}
 }
 
