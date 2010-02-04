@@ -671,7 +671,9 @@ JS;
 	function ReportSelector() {
 		// $options[""] = _t('CMSMain.CHOOSEREPORT',"(Choose a report)");
 		foreach($this->SideReports() as $report) {
-			if($report->canView()) $options[$report->ID()] = $report->title();
+			if($report->canView()) {
+			 	$options[$report->group()][$report->sort()][get_class($report)] = $report->title();
+			}
 		}
 		
 		$finalOptions = array();
