@@ -85,6 +85,9 @@ class CommentAdmin extends LeftAndMain {
 		$idField = new HiddenField('ID', '', $section);
 		$table = new CommentTableField($this, "Comments", "PageComment", $section, $tableFields, $popupFields, array($filter));
 		$table->setParentClass(false);
+		$table->setFieldCasting(array(
+			'Created' => 'SSDatetime->Nice'
+		));
 
 		$fields = new FieldSet(
 			new TabSet(	'Root',
