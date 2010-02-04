@@ -44,6 +44,11 @@ class RebuildStaticCacheTask extends Controller {
 		echo "Rebuilding cache.\nNOTE: Please ensure that this page ends with 'Done!' - if not, then something may have gone wrong.\n\n";
 		
 		$page = singleton('Page');
+		$cacheBaseDir = $page->getDestDir();
+		
+		if (file_exists($cacheBaseDir.'/lock') && !isset($_REQUEST['force'])) die("There already appears to be a publishing queue running. You can skip warning this by adding ?/&force to the URL.");
+		
+		touch($cacheBaseDir.'/lock');
 		
 		foreach($urls as $i => $url) {
 			if($url && !is_string($url)) {
@@ -68,8 +73,6 @@ class RebuildStaticCacheTask extends Controller {
 		if(!isset($_GET['urls']) && $start == 0 && file_exists("../cache")) {
 			echo "Removing stale cache files... \n";
 			flush();
-			$cacheBaseDir = $page->getDestDir();
-			
 			if (FilesystemPublisher::$domain_based_caching) {
 				// Glob each dir, then glob each one of those
 				foreach(glob(BASE_PATH . '/cache/*', GLOB_ONLYDIR) as $cacheDir) {
@@ -89,6 +92,9 @@ class RebuildStaticCacheTask extends Controller {
 		}
 		echo  "Rebuilding cache from " . sizeof($mappedUrls) . " urls...\n\n";
 		$page->extend('publishPages', $mappedUrls);
+		
+		if (file_exists($cacheBaseDir.'/lock')) unlink($cacheBaseDir.'/lock');
+		
 		echo "\n\n== Done! ==";
 	}
 	

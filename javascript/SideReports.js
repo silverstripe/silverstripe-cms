@@ -86,9 +86,11 @@ SideReportRecord.prototype = {
 	},
 	
 	onclick : function(event) {
-		Event.stop(event);
-		$('sitetree').loadingNode = $('sitetree').getTreeNodeByIdx( this.getID() );
-		$('Form_EditForm').getPageFromServer(this.getID());
+		if (!this.getAttribute('reloadCMS')) {
+			Event.stop(event);
+			$('sitetree').loadingNode = $('sitetree').getTreeNodeByIdx( this.getID() );
+			$('Form_EditForm').getPageFromServer(this.getID());
+		}
 	},
 	getID : function() {
 		if(this.href.match(/\/([^\/]+)$/)) return parseInt(RegExp.$1);
