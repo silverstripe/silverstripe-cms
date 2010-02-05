@@ -117,9 +117,9 @@ class CMSBatchActionHandler extends RequestHandler {
 		$ids = array_filter($ids);
 		
 		if($actionHandler->hasMethod('confirmationDialog')) {
-			$response = new HTTPResponse(json_encode($actionHandler->confirmationDialog($ids)));
+			$response = new SS_HTTPResponse(json_encode($actionHandler->confirmationDialog($ids)));
 		} else {
-			$response = new HTTPResponse(json_encode(array('alert' => false)));
+			$response = new SS_HTTPResponse(json_encode(array('alert' => false)));
 		}
 		
 		$response->addHeader("Content-type", "application/json");
