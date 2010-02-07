@@ -564,7 +564,7 @@ JS;
 		
 		// before deleting the records, get the descendants of this tree
 		if($record) {
-			$descendantIDs = $record->getDescendantIDList('SiteTree');
+			$descendantIDs = $record->getDescendantIDList();
 
 			// then delete them from the live site too
 			$descendantsRemoved = 0;
