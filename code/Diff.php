@@ -529,6 +529,8 @@ class _DiffEngine
  */
 class Diff
 {
+	public static $html_cleaner_class = null;
+
     var $edits;
 
     /**
@@ -660,6 +662,36 @@ class Diff
     
  
  
+ 	/**
+	 *  Attempt to clean invalid HTML, which messes up diffs.
+	 *  This checks for various methods and cleans code if possible.
+	 *
+	 *  NB: By default, only extremely simple tidying is performed,
+	 *  by passing through DomDocument::loadHTML and saveXML
+	 *  You will either need to install the php_tidy module
+	 *		See: http://www.php.net/manual/en/tidy.installation.php
+	 *		See also: http://htmlpurifier.org
+	 *
+	 * @param string $content HTML content
+	 * @param object $cleaner Optional instance of a HTMLCleaner class to
+	 * 	use, overriding self::$html_cleaner_class
+	 */
+	static function cleanHTML($content, $cleaner=null) {
+		if (!$cleaner)) {
+			if (class_exists(self::$html_cleaner_class)) {
+				$cleaner = new self::$html_cleaner_class;
+			}
+		}
+		if ($cleaner) {
+			$content = $cleaner->cleanHTML($content);
+		} else {
+			// At most basic level of cleaning, use DOMDocument to save valid XML.
+			$doc = new SS_HTMLValue($content);
+			$content = $doc->getContent();
+		}
+		return $content;
+	}
+
 	static function compareHTML($from, $to) {
 		// First split up the content into words and tags
 		$set1 = self::getHTMLChunks($from);
@@ -750,7 +782,7 @@ class Diff
 			}
 		}		
 		// echo "<p>" . htmlentities($content) . "</p>";
-		return $content;
+		return self::cleanHTML($content);
 	}
 	static function getHTMLChunks($content) {
 		$content = str_replace(array("&nbsp;","<", ">"),array(" "," <", "> "),$content);
