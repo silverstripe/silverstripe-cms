@@ -664,13 +664,10 @@ class Diff
  
  	/**
 	 *  Attempt to clean invalid HTML, which messes up diffs.
-	 *  This checks for various methods and cleans code if possible.
+	 *  This cleans code if possible, using an instance of HTMLCleaner
 	 *
 	 *  NB: By default, only extremely simple tidying is performed,
 	 *  by passing through DomDocument::loadHTML and saveXML
-	 *  You will either need to install the php_tidy module
-	 *		See: http://www.php.net/manual/en/tidy.installation.php
-	 *		See also: http://htmlpurifier.org
 	 *
 	 * @param string $content HTML content
 	 * @param object $cleaner Optional instance of a HTMLCleaner class to
