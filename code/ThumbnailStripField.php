@@ -112,7 +112,7 @@ class ThumbnailStripField extends FormField {
 		$folder = DataObject::get_by_id("Folder", (int) $_GET['folderID']);
 		
 		if($folder) {
-			$folderList = $folder->getDescendantIDList('Folder');
+			$folderList = $folder->getDescendantIDList();
 			array_unshift($folderList, $folder->ID);
 			
 			$whereSQL = "\"ParentID\" IN (" . implode(', ', $folderList) . ") AND \"Filename\" LIKE '%.swf'";
