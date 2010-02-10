@@ -33,20 +33,19 @@ if($majorVersion < 5) {
 $usingEnv = false;
 $envFiles = array('_ss_environment.php', '../_ss_environment.php', '../../_ss_environment.php');
 foreach($envFiles as $envFile) {
-        if(@file_exists($envFile)) {
-                include_once($envFile);
-                $usingEnv = true;				
-                break;
-        }
+	if(@file_exists($envFile)) {
+		include_once($envFile);
+		$usingEnv = true;
+		break;
+	}
 }
 
-
 // Load database config
-if(isset($_REQUEST['mysql'])) {
-	$databaseConfig = $_REQUEST['mysql'];
+if(isset($_REQUEST['db'])) {
+	$databaseConfig = $_REQUEST['db'];
 } else {
-	$_REQUEST['mysql'] = $databaseConfig = array(
-		"type" => "MySQLDatabase",
+	$_REQUEST['db'] = $databaseConfig = array(
+		"type" => defined('SS_DATABASE_CLASS') ? SS_DATABASE_CLASS : "MySQLDatabase",
 		"server" => defined('SS_DATABASE_SERVER') ? SS_DATABASE_SERVER : "localhost",
 		"username" => defined('SS_DATABASE_USERNAME') ? SS_DATABASE_USERNAME : "root",
 		"password" => defined('SS_DATABASE_PASSWORD') ? SS_DATABASE_PASSWORD : "",
@@ -58,8 +57,8 @@ if(isset($_REQUEST['admin'])) {
 	$adminConfig = $_REQUEST['admin'];
 } else {
 	$_REQUEST['admin'] = $adminConfig = array(
-		'username' => 'admin',
-		'password' => '',
+		'username' => defined('SS_DEFAULT_ADMIN_USERNAME') ? SS_DEFAULT_ADMIN_USERNAME : 'admin',
+		'password' => defined('SS_DEFAULT_ADMIN_PASSWORD') ? SS_DEFAULT_ADMIN_PASSWORD : 'password',
 		'firstname' => '',
 		'surname' => ''
 	);
@@ -115,6 +114,25 @@ if($installFromCli && ($req->hasErrors() || $dbReq->hasErrors())) {
 	exit(1);
 }
 
+// This is a mapping of module directory name to database class
+$otherDatabaseLocations = array(
+	'mssql' => array(
+		'class' => 'MSSQLDatabase',
+		'title' => 'SQL Server 2008'
+	),
+	'postgresql' => array(
+		'class' => 'PostgreSQLDatabase',
+		'title' => 'PostgreSQL'
+	)
+);
+
+// MySQL support comes out of the box with sapphire - others databases
+// live in their own module directories. We need to check the existance of them!
+$foundDatabaseClasses = array('MySQLDatabase' => 'MySQL');
+foreach($otherDatabaseLocations as $dir => $details) {
+	if(file_exists($dir)) $foundDatabaseClasses[$details['class']] = $details['title'];
+}
+
 if((isset($_REQUEST['go']) || $installFromCli) && !$req->hasErrors() && !$dbReq->hasErrors() && $adminConfig['username'] && $adminConfig['password']) {
 	// Confirm before reinstalling
 	if(!isset($_REQUEST['force_reinstall']) && !$installFromCli && $alreadyInstalled) {
@@ -124,8 +142,7 @@ if((isset($_REQUEST['go']) || $installFromCli) && !$req->hasErrors() && !$dbReq-
 		$inst = new Installer();
 		if($_REQUEST) $inst->install($_REQUEST);
 		else $inst->install(array(
-			'database' => $databaseConfig['type'],
-			'mysql' => $databaseConfig,
+			'db' => $databaseConfig,
 			'admin' => $adminConfig,
 		));
 	}
@@ -151,29 +168,27 @@ class InstallRequirements {
 	 * Just check that the database configuration is okay
 	 */
 	function checkdatabase($databaseConfig) {
-		if($this->requireFunction(
-			'mysql_connect',
+		if($this->requireDatabaseFunction(
+			$databaseConfig,
 			array(
-				"PHP Configuration",
-				"MySQL support",
-				"MySQL support not included in PHP.")
+				"Database Configuration",
+				"Database support",
+				"Database support not included in PHP.")
 			)
 		) {
-			if($this->requireMySQLServer(
-				$databaseConfig['server'],
+			if($this->requireDatabaseServer(
+				$databaseConfig,
 				array(
-					"MySQL Configuration",
-					"MySQL server exists",
-					"I couldn't find a MySQL server on '$databaseConfig[server]'", $databaseConfig['server']
+					"Database Configuration",
+					"Database server exists",
+					"I couldn't find a database server on '$databaseConfig[server]'", $databaseConfig['server']
 				)
 			)) {
-				if($this->requireMysqlConnection(
-					$databaseConfig['server'],
-					$databaseConfig['username'],
-					$databaseConfig['password'], 
+				if($this->requireDatabaseConnection(
+					$databaseConfig,
 					array(
-						"MySQL Configuration",
-						"MySQL access credentials correct",
+						"Database Configuration",
+						"Database access credentials correct",
 						"That username/password doesn't work"
 					)
 				)) {
@@ -188,12 +203,9 @@ class InstallRequirements {
 					);
 				}
 				$this->requireDatabaseOrCreatePermissions(
-					$databaseConfig['server'],
-					$databaseConfig['username'],
-					$databaseConfig['password'],
-					$databaseConfig['database'], 
+					$databaseConfig,
 					array(
-						"MySQL Configuration",
+						"Database Configuration",
 						"Can I access/create the database",
 						"I can't create new databases and the database '$databaseConfig[database]' doesn't exist"
 					)
@@ -341,7 +353,8 @@ class InstallRequirements {
 	function showTable($section = null) {
 		if($section) {
 			$tests = $this->tests[$section];
-			echo "<table class=\"testResults\" width=\"100%\">";
+			$id = strtolower(str_replace(' ', '_', $section));
+			echo "<table id=\"{$id}_results\" class=\"testResults\" width=\"100%\">";
 			foreach($tests as $test => $result) {
 				echo "<tr class=\"$result[0]\"><td>$test</td><td>" . nl2br(htmlentities($result[1])) . "</td></tr>";
 			}
@@ -540,36 +553,118 @@ class InstallRequirements {
 		}
 	}
 	
-	function requireMysqlConnection($server, $username, $password, $testDetails) {
+	function requireDatabaseFunction($databaseConfig, $testDetails) {
 		$this->testing($testDetails);
-		$conn = @mysql_connect($server, $username, $password);
+		$okay = false;
 		
-		if($conn) {
-			return true;
-			/*
-			if(mysql_query("CREATE DATABASE testing123")) {
-				mysql_query("DROP DATABASE testing123");
-				return true;
-			} else {
-				$testDetails[2] .= " (user '$username' doesn't have CREATE DATABASE permissions.)";
-				$this->error($testDetails);
+		if($databaseConfig['type'] == 'MySQLDatabase') {
+			if(function_exists('mysql_connect')) {
+				$okay = true;
 			}
-			*/
-		} else {
-			$testDetails[2] .= ": " . mysql_error();
+		} elseif($databaseConfig['type'] == 'MSSQLDatabase') {
+			if(function_exists('mssql_connect') || function_exists('sqlsrv_connect')) {
+				$okay = true;
+			}
+		} elseif($databaseConfig['type'] = 'PostgreSQLDatabase') {
+			if(function_exists('pg_connect')) {
+				$okay = true;
+			}
+		}
+		
+		if(!$okay) {
 			$this->error($testDetails);
+			return false;
+		} else {
+			return true;
 		}
 	}
 	
-	function requireMySQLServer($server, $testDetails) {
+	function requireDatabaseConnection($databaseConfig, $testDetails) {
 		$this->testing($testDetails);
-		$conn = @mysql_connect($server, null, null);
+		
+		if($databaseConfig['type'] == 'MySQLDatabase') {
+			$conn = @mysql_connect($databaseConfig['server'], $databaseConfig['username'], $databaseConfig['password']);
+			if($conn || mysql_errno() < 2000) {
+				return true;
+			} else {
+				$testDetails[2] .= ": " . mysql_error();
+				$this->error($testDetails);
+			}
+		} elseif($databaseConfig['type'] == 'MSSQLDatabase') {
+			if(function_exists('mssql_connect')) {
+				$conn = @mssql_connect($databaseConfig['server'], $databaseConfig['username'], $databaseConfig['password'], true);
+			} else {
+				$connectionInfo = array(
+					'UID' => $databaseConfig['username'],
+					'PWD' => $databaseConfig['password'],
+				);
+				$conn = @sqlsrv_connect($databaseConfig['server'], $connectionInfo);
+			}
+			
+			if($conn) {
+				return true;
+			} else {
+				$this->error($testDetails);
+			}
+		} elseif($databaseConfig['type'] == 'PostgreSQLDatabase') {
+			$username = $databaseConfig['username'] ? $databaseConfig['username'] : '';
+			$password = $databaseConfig['password'] ? $databaseConfig['password'] : '';
+			$server = $databaseConfig['server'];
+			$userPart = $username ? " user=$username" : '';
+			$passwordPart = $password ? " password=$password" : '';
+			$connstring = "host=$server port=5432 {$userPart}{$passwordPart}";
+			$conn = @pg_connect($connstring);
+			
+			if($conn) {
+				return true;
+			} else {
+				$this->error($testDetails);
+			}
+		}
+	}
+	
+	function requireDatabaseServer($databaseConfig, $testDetails) {
+		$this->testing($testDetails);
 
-		if($conn || mysql_errno() < 2000) {
-			return true;
-		} else {
-			$testDetails[2] .= ": " . mysql_error();
-			$this->error($testDetails);
+		if($databaseConfig['type'] == 'MySQLDatabase') {
+			$conn = @mysql_connect($databaseConfig['server'], null, null);
+			if($conn || mysql_errno() < 2000) {
+				return true;
+			} else {
+				$testDetails[2] .= ": " . mysql_error();
+				$this->error($testDetails);
+			}
+		} elseif($databaseConfig['type'] == 'MSSQLDatabase') {
+			if(function_exists('mssql_connect')) {
+				$conn = @mssql_connect($databaseConfig['server'], $databaseConfig['username'], $databaseConfig['password'], true);
+			} else {
+				$connectionInfo = array(
+					'UID' => $databaseConfig['username'],
+					'PWD' => $databaseConfig['password'],
+				);
+				$conn = @sqlsrv_connect($databaseConfig['server'], $connectionInfo);
+			}
+			
+			if($conn) {
+				return true;
+			} else {
+				$testDetails[2] .= ": SQL Server requires a valid username and password to determine if the server exists.";
+				$this->error($testDetails);
+			}
+		} elseif($databaseConfig['type'] == 'PostgreSQLDatabase') {
+			$username = $databaseConfig['username'] ? $databaseConfig['username'] : '';
+			$password = $databaseConfig['password'] ? $databaseConfig['password'] : '';
+			$server = $databaseConfig['server'];
+			$userPart = $username ? " user=$username" : '';
+			$passwordPart = $password ? " password=$password" : '';
+			$connstring = "host=$server port=5432 {$userPart}{$passwordPart}";
+			$conn = @pg_connect($connstring);
+			if($conn) {
+				return true;
+			} else {
+				$testDetails[2] .= ": PostgreSQL requires a valid username and password to determine if the server exists.";
+				$this->error($testDetails);
+			}
 		}
 	}
 	
@@ -595,31 +690,58 @@ class InstallRequirements {
 		}
 	}
 
-	
-	function requireDatabaseOrCreatePermissions($server, $username, $password, $database, $testDetails) {
+	function requireDatabaseOrCreatePermissions($databaseConfig, $testDetails) {
 		$this->testing($testDetails);
-		$conn = @mysql_connect($server, $username, $password);
+		$okay = '';
 		
-		if(@mysql_select_db($database)) {
-			$okay = "Database '$database' exists";
-			
-		} else {
-			if(@mysql_query("CREATE DATABASE testing123")) {
-				mysql_query("DROP DATABASE testing123");
-				$okay = "Able to create a new database";
-
+		if($databaseConfig['type'] == 'MySQLDatabase') {
+			$conn = @mysql_connect($databaseConfig['server'], $databaseConfig['username'], $databaseConfig['password']);
+			if(@mysql_select_db($databaseConfig['database'])) {
+				$okay = "Database '$database' exists";
 			} else {
-				$testDetails[2] .= " (user '$username' doesn't have CREATE DATABASE permissions.)";
-				$this->error($testDetails);
-				return;
+				if(@mysql_query("CREATE DATABASE testing123")) {
+					mysql_query("DROP DATABASE testing123");
+					$okay = "Able to create a new database";
+				}
+			}
+		} elseif($databaseConfig['type'] == 'MSSQLDatabase') {
+			if(@mysql_select_db($databaseConfig['database'])) {
+				$okay = "Database '$database' exists";
+			} else {
+				if(function_exists('mssql_connect') && @mssql_query("CREATE DATABASE testing123")) {
+					mssql_query("DROP DATABASE testing123");
+					$okay = "Able to create a new database";
+				} elseif(function_exists('sqlsrv_connect') && @sqlsrv_query("CREATE DATABASE testing123")) {
+					sqlsrv_query("DROP DATABASE testing123");
+					$okay = "Able to create a new database";
+				}
+			}
+		} elseif($databaseConfig['type'] == 'PostgreSQLDatabase') {
+			$database = $databaseConfig['database'];
+			
+			$dbExists = false;
+			$result = pg_query("SELECT datname FROM pg_database WHERE datname = '$database'");
+			if(pg_fetch_array($result)) $dbExists = true;
+			
+			if($dbExists) {
+				$okay = "Database '$database' exists";
+			} else {
+				if(@pg_query("CREATE DATABASE testing123")) {
+					pg_query("DROP DATABASE testing123");
+					$okay = "Able to create a new database";
+				}
 			}
 		}
 		
 		if($okay) {
 			$testDetails[3] = $okay;
 			$this->testing($testDetails);
+			return true;
+		} else {
+			$testDetails[2] .= " (user '$databaseConfig[username]' doesn't have CREATE DATABASE permissions.)";
+			$this->error($testDetails);
+			return false;
 		}
-
 	}
 	
 	function requireServerVariables($varNames, $errorMessage) {
@@ -750,7 +872,7 @@ class Installer extends InstallRequirements {
 			}
 			
 			$phpVersion = urlencode(phpversion());
-			$conn = @mysql_connect($config['mysql']['server'], null, null);
+			$conn = @mysql_connect($config['db']['server'], null, null);
 			$databaseVersion = urlencode('MySQL ' . mysql_get_server_info());
 			$webserver = urlencode($_SERVER['SERVER_SOFTWARE']);
 			
@@ -778,7 +900,7 @@ global \$project;
 \$project = 'mysite';
 
 global \$database;
-\$database = "{$config['mysql']['database']}";
+\$database = "{$config['db']['database']}";
 
 require_once("conf/ConfigureFromEnv.php");
 
@@ -800,7 +922,7 @@ PHP
 		
 			$devServers = $this->var_export_array_nokeys(explode("\n", $_POST['devsites']));
 		
-			$escapedPassword = addslashes($config['mysql']['password']);
+			$escapedPassword = addslashes($config['db']['password']);
 			$this->createFile("mysite/_config.php", <<<PHP
 <?php
 
@@ -809,11 +931,11 @@ global \$project;
 
 global \$databaseConfig;
 \$databaseConfig = array(
-	"type" => "$config[database]",
-	"server" => "{$config['mysql']['server']}", 
-	"username" => "{$config['mysql']['username']}", 
+	"type" => "{$config['db']['type']}",
+	"server" => "{$config['db']['server']}", 
+	"username" => "{$config['db']['username']}", 
 	"password" => '{$escapedPassword}', 
-	"database" => "{$config['mysql']['database']}",
+	"database" => "{$config['db']['database']}",
 );
 
 // Sites running on the following servers will be
