@@ -31,12 +31,22 @@ if($majorVersion < 5) {
 
 // Include environment files
 $usingEnv = false;
+$envFileExists = false;
 $envFiles = array('_ss_environment.php', '../_ss_environment.php', '../../_ss_environment.php');
 foreach($envFiles as $envFile) {
 	if(@file_exists($envFile)) {
 		include_once($envFile);
+		$envFileExists = true;
 		$usingEnv = true;
 		break;
+	}
+}
+
+if($envFileExists) {
+	if(!empty($_REQUEST['useEnv'])) {
+		$usingEnv = true;
+	} else {
+		$usingEnv = false;
 	}
 }
 
