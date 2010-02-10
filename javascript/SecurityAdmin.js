@@ -1,14 +1,30 @@
 (function($) {
 	
+	var refreshAfterImport = function(e) {
+		// Check for a message <div>, an indication that the form has been submitted.
+		var existingFormMessage = $($(this).contents()).find('.message');
+		if(existingFormMessage && existingFormMessage.html()) {
+			// Refresh member listing
+			var memberTableField = $(window.parent.document).find('#Form_EditForm_Members').get(0);
+			if(memberTableField) memberTableField.refresh();
+			
+			// Refresh tree
+			var tree = $(window.parent.document).find('#sitetree').get(0);
+			if(tree) tree.reload();
+		}
+	};
+	
 	/**
 	 * Refresh the member listing every time the import iframe is loaded,
 	 * which is most likely a form submission.
 	 */
 	$(window).bind('load', function(e) {
-		$('#MemberImportFormIframe').bind('load', function(e) {
-			// Check for a message <div>, an indication that the form has been submitted.
-			if($($(this).contents()).find('.message').length) {
-				$(window.parent.document).find('#Form_EditForm_Members').get(0).refresh();
+		$('#MemberImportFormIframe,#GroupImportFormIframe').concrete({
+			onmatch: function() {
+				this._super();
+				
+				// TODO concrete can't seem to bind to iframe load events
+				$(this).bind('load', refreshAfterImport);
 			}
 		});
 	})
