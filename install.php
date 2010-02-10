@@ -40,10 +40,16 @@ foreach($envFiles as $envFile) {
 	}
 }
 
+// This is used by the checkbox to select whether to prefer environment or not
+$shouldUseEnv = false;
+if(isset($_REQUEST['useEnv']) && $_REQUEST['useEnv']) {
+	$shouldUseEnv = true;
+}
+
 // Load database config
 if(isset($_REQUEST['db'])) {
 	// Disabled inputs don't submit anything - we need to use the environment (except the database name)
-	if($usingEnv) {
+	if($usingEnv && $shouldUseEnv) {
 		$_REQUEST['db'] = $databaseConfig = array(
 			"type" => defined('SS_DATABASE_CLASS') ? SS_DATABASE_CLASS : "MySQLDatabase",
 			"server" => defined('SS_DATABASE_SERVER') ? SS_DATABASE_SERVER : "localhost",
@@ -67,7 +73,7 @@ if(isset($_REQUEST['db'])) {
 
 if(isset($_REQUEST['admin'])) {
 	// Disabled inputs don't submit anything - we need to use the environment (except the database name)
-	if($usingEnv) {
+	if($usingEnv && $shouldUseEnv) {
 		$_REQUEST['admin'] = $adminConfig = array(
 			'username' => defined('SS_DEFAULT_ADMIN_USERNAME') ? SS_DEFAULT_ADMIN_USERNAME : 'admin',
 			'password' => defined('SS_DEFAULT_ADMIN_PASSWORD') ? SS_DEFAULT_ADMIN_PASSWORD : 'password',
