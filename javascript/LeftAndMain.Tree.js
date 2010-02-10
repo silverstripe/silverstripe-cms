@@ -75,7 +75,7 @@ TreeAPI.prototype = {
 			function(data, status){
 				self.innerHTML = data;
 				self.castAsTreeNode(self.firstChild);
-				if (options.onSuccess) options.onSuccess(data);
+				if (options && options.onSuccess) options.onSuccess(data);
 			},
 			'html'
 		);
