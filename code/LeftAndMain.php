@@ -513,7 +513,7 @@ class LeftAndMain extends Controller {
 
 		// Wrap the root if needs be.
 		if(!$rootID) {
-			$rootLink = '#';
+			$rootLink = $this->Link('show') . '/root';
 			
 			// This lets us override the tree title with an extension
 			if($this->hasMethod('getCMSTreeTitle')) $treeTitle = $this->getCMSTreeTitle();
@@ -820,11 +820,15 @@ JS;
 				$form->setFields($readonlyFields);
 			}
 		} else {
-			$form = $this->EmptyForm();
+			$form = $this->RootForm();
 		}
 		
 		return $form;
 	}	
+	
+	function RootForm() {
+		return $this->EmptyForm();
+	}
 	
 	/**
 	 * Returns a placeholder form, used by {@link getEditForm()} if no record is selected.
