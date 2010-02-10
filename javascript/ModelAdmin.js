@@ -33,6 +33,11 @@ $(document).ready(function() {
 	    $(this).addClass('loading');
 	});
 	
+	$('input[name=action_search]').livequery('click', function() {
+		$('#contentPanel').fn('closeRightPanel');
+	});
+	
+	
 	$("#right").scroll( function () {
 		positionActionArea();
 	});
@@ -88,7 +93,7 @@ $(document).ready(function() {
 	 */
 	$('#SearchForm_holder .tab form:not(#Form_ImportForm)').submit(function () {
 	    var $form = $(this);
-	
+		$('#contentPanel').fn('closeRightPanel');
 		// @todo TinyMCE coupling
 		tinymce_removeAll();
 
@@ -283,10 +288,27 @@ $(document).ready(function() {
 		$('#' + $(this).attr('href').replace(/.*#/,'')).toggle();
 		return false;
 	});
-
+	
+	
 	////////////////////////////////////////////////////////////////// 
 	// Helper functions
 	////////////////////////////////////////////////////////////////// 
+	
+	$('#contentPanel').fn({
+		/**
+		* Close TinyMCE image, link or flash panel.
+		* this function is called everytime a new search, back or add new DataObject are clicked
+		**/
+		closeRightPanel: function(){
+			if($('#contentPanel').is(':visible')) {
+				$('#contentPanel').hide();
+				$('#Form_EditorToolbarImageForm').hide();
+				$('#Form_EditorToolbarFlashForm').hide();
+				$('#Form_EditorToolbarLinkForm').hide();
+			}
+		}
+		
+	})
 	
     $('#ModelAdminPanel').fn({
         /**
@@ -296,7 +318,7 @@ $(document).ready(function() {
         loadForm: function(url, successCallback) {
 			// @todo TinyMCE coupling
 			tinymce_removeAll();
-	
+			$('#contentPanel').fn('closeRightPanel');
     	    $('#right #ModelAdminPanel').load(url, standardStatusHandler(function(result) {
 				if(typeof(successCallback) == 'function') successCallback.apply();
 				if(!this.future || !this.future.length) {
@@ -310,7 +332,9 @@ $(document).ready(function() {
 				if(window.onresize) window.onresize();
     		}));
     	},
+
     	
+		
     	startHistory: function(url, data) {
     	    this.history = [];
     	    $(this).fn('addHistory', url, data);
