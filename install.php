@@ -42,6 +42,11 @@ foreach($envFiles as $envFile) {
 
 // This is used by the checkbox to select whether to prefer environment or not
 $shouldUseEnv = false;
+
+if(!$_REQUEST) {
+	$shouldUseEnv = true;
+}
+
 if(isset($_REQUEST['useEnv']) && $_REQUEST['useEnv']) {
 	$shouldUseEnv = true;
 }
