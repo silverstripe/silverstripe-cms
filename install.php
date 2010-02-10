@@ -719,7 +719,7 @@ class InstallRequirements {
 		if($databaseConfig['type'] == 'MySQLDatabase') {
 			$conn = @mysql_connect($databaseConfig['server'], $databaseConfig['username'], $databaseConfig['password']);
 			if(@mysql_select_db($databaseConfig['database'])) {
-				$okay = "Database '$database' exists";
+				$okay = "Database '$databaseConfig[database]' exists";
 			} else {
 				if(@mysql_query("CREATE DATABASE testing123")) {
 					mysql_query("DROP DATABASE testing123");
@@ -728,7 +728,7 @@ class InstallRequirements {
 			}
 		} elseif($databaseConfig['type'] == 'MSSQLDatabase') {
 			if(@mysql_select_db($databaseConfig['database'])) {
-				$okay = "Database '$database' exists";
+				$okay = "Database '$databaseConfig[database]' exists";
 			} else {
 				if(function_exists('mssql_connect') && @mssql_query("CREATE DATABASE testing123")) {
 					mssql_query("DROP DATABASE testing123");
