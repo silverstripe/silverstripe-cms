@@ -42,7 +42,19 @@ foreach($envFiles as $envFile) {
 
 // Load database config
 if(isset($_REQUEST['db'])) {
-	$databaseConfig = $_REQUEST['db'];
+	// Disabled inputs don't submit anything - we need to use the environment (except the database name)
+	if($usingEnv) {
+		$_REQUEST['db'] = $databaseConfig = array(
+			"type" => defined('SS_DATABASE_CLASS') ? SS_DATABASE_CLASS : "MySQLDatabase",
+			"server" => defined('SS_DATABASE_SERVER') ? SS_DATABASE_SERVER : "localhost",
+			"username" => defined('SS_DATABASE_USERNAME') ? SS_DATABASE_USERNAME : "root",
+			"password" => defined('SS_DATABASE_PASSWORD') ? SS_DATABASE_PASSWORD : "",
+			"database" => $_REQUEST['db']['database'],
+		);
+	} else {
+		// Normal behaviour without the environment
+		$databaseConfig = $_REQUEST['db'];
+	}
 } else {
 	$_REQUEST['db'] = $databaseConfig = array(
 		"type" => defined('SS_DATABASE_CLASS') ? SS_DATABASE_CLASS : "MySQLDatabase",
@@ -54,7 +66,17 @@ if(isset($_REQUEST['db'])) {
 }
 
 if(isset($_REQUEST['admin'])) {
-	$adminConfig = $_REQUEST['admin'];
+	// Disabled inputs don't submit anything - we need to use the environment (except the database name)
+	if($usingEnv) {
+		$_REQUEST['admin'] = $adminConfig = array(
+			'username' => defined('SS_DEFAULT_ADMIN_USERNAME') ? SS_DEFAULT_ADMIN_USERNAME : 'admin',
+			'password' => defined('SS_DEFAULT_ADMIN_PASSWORD') ? SS_DEFAULT_ADMIN_PASSWORD : 'password',
+			'firstname' => $_REQUEST['admin']['firstname'],
+			'surname' => $_REQUEST['admin']['surname']
+		);
+	} else {
+		$adminConfig = $_REQUEST['admin'];
+	}
 } else {
 	$_REQUEST['admin'] = $adminConfig = array(
 		'username' => defined('SS_DEFAULT_ADMIN_USERNAME') ? SS_DEFAULT_ADMIN_USERNAME : 'admin',
