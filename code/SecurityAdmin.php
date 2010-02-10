@@ -24,6 +24,8 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		'AddRecordForm',
 		'MemberForm',
 		'EditForm',
+		'MemberImportForm',
+		'memberimport'
 	);
 
 	/**
@@ -42,6 +44,21 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	
 	function getEditForm($id = null) {
 		$form = parent::getEditForm($id);
+		$fields = $form->Fields();
+
+		if($fields->hasTabSet()) {
+			$fields->findOrMakeTab('Root.Import',_t('Group.IMPORTTABTITLE', 'Import'));
+			$fields->addFieldToTab('Root.Import', 
+				new LiteralField(
+					'MemberImportFormIframe', 
+					sprintf(
+						'<iframe src="%s" id="MemberImportFormIframe" width="100%%" height="400px" border="0"></iframe>',
+						$this->Link('memberimport')
+					)
+				)
+			);
+		}
+		
 		$form->Actions()->insertBefore(
 			new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member')),
 			'action_save'
@@ -50,6 +67,35 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		// Filter permissions
 		$permissionField = $form->Fields()->dataFieldByName('Permissions');
 		if($permissionField) $permissionField->setHiddenPermissions(self::$hidden_permissions);
+		
+		return $form;
+	}
+	
+	public function memberimport() {
+		Requirements::clear();
+		Requirements::css(SAPPHIRE_DIR . '/css/Form.css');
+		Requirements::css(CMS_DIR . '/css/typography.css');
+		Requirements::css(CMS_DIR . '/css/cms_right.css');
+		
+		Requirements::javascript(CMS_DIR . '/javascript/MemberImportForm.js');
+		
+		return $this->renderWith('BlankPage', array(
+			'Form' => $this->MemberImportForm()
+		));
+	}
+	
+	/**
+	 * @see SecurityAdmin_MemberImportForm
+	 * 
+	 * @return Form
+	 */
+	public function MemberImportForm() {
+		$group = $this->currentPage();
+		$form = new MemberImportForm(
+			$this,
+			'MemberImportForm'
+		);
+		$form->setGroup($group);
 		
 		return $form;
 	}

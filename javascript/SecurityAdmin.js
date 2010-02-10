@@ -1,4 +1,18 @@
 (function($) {
+	
+	/**
+	 * Refresh the member listing every time the import iframe is loaded,
+	 * which is most likely a form submission.
+	 */
+	$(window).bind('load', function(e) {
+		$('#MemberImportFormIframe').bind('load', function(e) {
+			// Check for a message <div>, an indication that the form has been submitted.
+			if($($(this).contents()).find('.message').length) {
+				$(window.parent.document).find('#Form_EditForm_Members').get(0).refresh();
+			}
+		});
+	})
+	
 	/**
 	 * Delete selected folders through "batch actions" tab.
 	 */
