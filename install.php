@@ -815,7 +815,7 @@ class Installer extends InstallRequirements {
 			$phpVersion = urlencode(phpversion());
 			
 			if($config['db']['type'] == 'MySQLDatabase') {
-				$conn = mysql_connect($config['db']['server'], null, null);
+				$conn = @mysql_connect($config['db']['server'], null, null);
 				$databaseVersion = urlencode('MySQLDatabase: ' . mysql_get_server_info());
 			} else {
 				$databaseVersion = $config['db']['type'];
