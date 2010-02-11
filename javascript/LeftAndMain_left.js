@@ -59,7 +59,7 @@ TreeAPI.prototype = {
 			onSuccess: function(response){
 				self.innerHTML = response.responseText;
 				self.castAsTreeNode(self.firstChild);
-				if (options.onSuccess) options.onSuccess(response);
+				if (options && options.onSuccess) options.onSuccess(response);
 			},
 			onFailure: function(response){
 				errorMessage('error loading tree', response);
