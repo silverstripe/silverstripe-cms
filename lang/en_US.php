@@ -207,6 +207,20 @@ $lang['en_US']['CommentTableField.ss']['SPAM'] = 'spam';
 $lang['en_US']['ComplexTableField']['CLOSEPOPUP'] = 'Close Popup';
 $lang['en_US']['ComplexTableField']['SUCCESSADD'] = 'Added %s %s %s';
 $lang['en_US']['Folder']['DELSELECTED'] = 'Delete selected files';
+$lang['en_US']['Group']['IMPORTTABTITLE'] = 'Import';
+$lang['en_US']['GroupImportForm']['Help1'] = '<p>Import one or more groups in <em>CSV</em> format (comma-separated values). <small><a href="#" class="toggle-advanced">Show advanced usage</a></small></p>';
+$lang['en_US']['GroupImportForm']['Help2'] = '<div class="advanced">
+	<h4>Advanced usage</h4>
+	<ul>
+	<li>Allowed columns: <em>%s</em></li>
+	<li>Existing groups are matched by their unique <em>Code</em> value, and updated with any new values from the imported file</li>
+	<li>Group hierarchies can be created by using a <em>ParentCode</em> column.</li>
+	<li>Permission codes can be assigned by the <em>PermissionCode</em> column. Existing permission codes are not cleared.</li>
+	</ul>
+</div>';
+$lang['en_US']['GroupImportForm']['ResultCreated'] = 'Created %d groups';
+$lang['en_US']['GroupImportForm']['ResultDeleted'] = 'Deleted %d groups';
+$lang['en_US']['GroupImportForm']['ResultUpdated'] = 'Updated %d groups';
 $lang['en_US']['ImageEditor.ss']['ACTIONS'] = 'actions';
 $lang['en_US']['ImageEditor.ss']['ADJUST'] = 'adjust';
 $lang['en_US']['ImageEditor.ss']['APPLY'] = 'apply';
@@ -274,6 +288,39 @@ $lang['en_US']['LeftAndMain.ss']['VIEWINDRAFT'] = 'View the Page in the Draft Si
 $lang['en_US']['LeftAndMain.ss']['VIEWINPUBLISHED'] = 'View the Page in the Published Site';
 $lang['en_US']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Page view:';
 $lang['en_US']['LeftAndMain_right.ss']['WELCOMETO'] = 'Welcome to';
+$lang['en_US']['MathSpamProtection']['EIGHT'] = 'eight';
+$lang['en_US']['MathSpamProtection']['EIGHTEEN'] = 'eighteen';
+$lang['en_US']['MathSpamProtection']['ELEVEN'] = 'eleven';
+$lang['en_US']['MathSpamProtection']['FIFTEEN'] = 'fifteen';
+$lang['en_US']['MathSpamProtection']['FIVE'] = 'five';
+$lang['en_US']['MathSpamProtection']['FOUR'] = 'four';
+$lang['en_US']['MathSpamProtection']['FOURTEEN'] = 'fourteen';
+$lang['en_US']['MathSpamProtection']['NINE'] = 'nine';
+$lang['en_US']['MathSpamProtection']['ONE'] = 'one';
+$lang['en_US']['MathSpamProtection']['SEVEN'] = 'seven';
+$lang['en_US']['MathSpamProtection']['SEVENTEEN'] = 'seventeen';
+$lang['en_US']['MathSpamProtection']['SIX'] = 'six';
+$lang['en_US']['MathSpamProtection']['SIXTEEN'] = 'sixteen';
+$lang['en_US']['MathSpamProtection']['TEN'] = 'ten';
+$lang['en_US']['MathSpamProtection']['THIRTEEN'] = 'thirteen';
+$lang['en_US']['MathSpamProtection']['THREE'] = 'three';
+$lang['en_US']['MathSpamProtection']['TWELVE'] = 'twelve';
+$lang['en_US']['MathSpamProtection']['TWO'] = 'two';
+$lang['en_US']['MathSpamProtection']['WHATIS'] = 'What is %s plus %s?';
+$lang['en_US']['MathSpamProtection']['ZERO'] = 'zero';
+$lang['en_US']['MemberImportForm']['Help1'] = '<p>Import members in <em>CSV format</em> (comma-separated values). <small><a href="#" class="toggle-advanced">Show advanced usage</a></small></p>';
+$lang['en_US']['MemberImportForm']['Help2'] = '<div class="advanced">
+	<h4>Advanced usage</h4>
+	<ul>
+	<li>Allowed columns: <em>%s</em></li>
+	<li>Existing members are matched by their unique <em>Code</em> property, and updated with any new values from the imported file.</li>
+	<li>Groups can be assigned by the <em>Groups</em> column. Groups are identified by their <em>Code</em> property, multiple groups can be separated by comma. Existing group memberships are not cleared.</li>
+	</ul>
+</div>';
+$lang['en_US']['MemberImportForm']['ResultCreated'] = 'Created %d members';
+$lang['en_US']['MemberImportForm']['ResultDeleted'] = 'Deleted %d members';
+$lang['en_US']['MemberImportForm']['ResultNone'] = 'No changes';
+$lang['en_US']['MemberImportForm']['ResultUpdated'] = 'Updated %d members';
 $lang['en_US']['MemberList.ss']['FILTER'] = array(
 	'Filter',
 	50,
@@ -416,6 +463,9 @@ $lang['en_US']['SecurityAdmin']['MENUTITLE'] = array(
 	'Menu title'
 );
 $lang['en_US']['SecurityAdmin']['SGROUPS'] = 'Security Groups';
+$lang['en_US']['SecurityAdmin']['TABIMPORT'] = 'Import';
+$lang['en_US']['SecurityAdmin_MemberImportForm']['BtnImport'] = 'Import';
+$lang['en_US']['SecurityAdmin_MemberImportForm']['FileFieldLabel'] = 'CSV File <small>(Allowed extensions: *.csv)</small>';
 $lang['en_US']['SecurityAdmin_left.ss']['BATCHACTIONS'] = array(
 	'Batch Actions',
 	PR_HIGH
