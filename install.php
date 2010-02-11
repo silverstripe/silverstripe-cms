@@ -908,8 +908,14 @@ class Installer extends InstallRequirements {
 			}
 			
 			$phpVersion = urlencode(phpversion());
-			$conn = @mysql_connect($config['db']['server'], null, null);
-			$databaseVersion = urlencode('MySQL ' . mysql_get_server_info());
+			
+			if($config['db']['type'] == 'MySQLDatabase') {
+				$conn = mysql_connect($config['db']['server'], null, null);
+				$databaseVersion = urlencode('MySQLDatabase: ' . mysql_get_server_info());
+			} else {
+				$databaseVersion = $config['db']['type'];
+			}
+			
 			$webserver = urlencode($_SERVER['SERVER_SOFTWARE']);
 			
 			$url = "http://ss2stat.silverstripe.com/Installation/add?SilverStripe=$silverstripe_version&PHP=$phpVersion&Database=$databaseVersion&WebServer=$webserver";
