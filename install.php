@@ -216,7 +216,7 @@ class InstallRequirements {
 	var $errors, $warnings, $tests;
 	
 	/**
-	 * Just check that the database configuration is okay
+	 * Just check that the database configuration is all good.
 	 */
 	function checkdatabase($databaseConfig) {
 		if($this->requireDatabaseFunctions(
@@ -629,7 +629,7 @@ class InstallRequirements {
 		$this->testing($testDetails);
 		$helper = $this->getDatabaseConfigurationHelper($databaseConfig['type']);
 		$result = $helper->requireDatabaseConnection($databaseConfig);
-		if($result['okay']) {
+		if($result['success']) {
 			return true;
 		} else {
 			$testDetails[2] .= ": " . $result['error'];
@@ -642,7 +642,7 @@ class InstallRequirements {
 		$this->testing($testDetails);
 		$helper = $this->getDatabaseConfigurationHelper($databaseConfig['type']);
 		$result = $helper->requireDatabaseServer($databaseConfig);
-		if($result['okay']) {
+		if($result['success']) {
 			return true;
 		} else {
 			$testDetails[2] .= ": " . $result['error'];
@@ -655,8 +655,8 @@ class InstallRequirements {
 		$this->testing($testDetails);
 		$helper = $this->getDatabaseConfigurationHelper($databaseConfig['type']);
 		$result = $helper->requireDatabaseOrCreatePermissions($databaseConfig);
-		if($result['okay']) {
-			if($result['existsAlready']) $testDetails[3] = "Database $databaseConfig[database] exists";
+		if($result['success']) {
+			if($result['alreadyExists']) $testDetails[3] = "Database $databaseConfig[database] exists";
 			else $testDetails[3] = "Able to create a new database";
 			$this->testing($testDetails);
 			return true;
