@@ -15,7 +15,27 @@ class MemberImportForm extends Form {
 	
 	function __construct($controller, $name, $fields = null, $actions = null, $validator = null) {
 		if(!$fields) {
+			$helpHtml = _t(
+				'MemberImportForm.Help1', 
+				'<p>Import members in <em>CSV format</em> (comma-separated values). <small><a href="#" class="toggle-advanced">Show advanced usage</a></small></p>'
+			);
+			$helpHtml .= _t(
+				'MemberImportForm.Help2', 
+'<div class="advanced">
+	<h4>Advanced usage</h4>
+	<ul>
+	<li>Allowed columns: <em>%s</em></li>
+	<li>Existing members are matched by their unique <em>Code</em> property, and updated with any new values from the imported file.</li>
+	<li>Groups can be assigned by the <em>Groups</em> column. Groups are identified by their <em>Code</em> property, multiple groups can be separated by comma. Existing group memberships are not cleared.</li>
+	</ul>
+</div>');
+			
+			$importer = new MemberCsvBulkLoader();
+			$importSpec = $importer->getImportSpec();
+			$helpHtml = sprintf($helpHtml, implode(', ', array_keys($importSpec['fields'])));
+			
 			$fields = new FieldSet(
+				new LiteralField('Help', $helpHtml),
 				$fileField = new FileField(
 					'CsvFile', 
 					_t(
@@ -35,6 +55,9 @@ class MemberImportForm extends Form {
 		
 		
 		parent::__construct($controller, $name, $fields, $actions, $validator);
+		
+		Requirements::javascript(CMS_DIR . '/javascript/MemberImportForm.js');
+		$this->addExtraClass('import-form');
 	}
 	
 	function doImport($data, $form) {

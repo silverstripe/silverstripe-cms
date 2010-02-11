@@ -2,6 +2,7 @@
 
 global $lang;
 
+$lang['en_US']['']['CHOOSEPAGE'] = 'Please choose an item from the left.';
 $lang['en_US']['AssetAdmin']['CHOOSEFILE'] = 'Choose file: ';
 $lang['en_US']['AssetAdmin']['DELETEDX'] = 'Deleted %s files.%s';
 $lang['en_US']['AssetAdmin']['FILESREADY'] = 'Files ready to upload:';
@@ -57,6 +58,7 @@ $lang['en_US']['AssetTableField.ss']['DELFILE'] = 'Delete this file';
 $lang['en_US']['AssetTableField.ss']['DRAGTOFOLDER'] = 'Drag to folder on left to move file';
 $lang['en_US']['AssetTableField.ss']['EDIT'] = 'Edit asset';
 $lang['en_US']['AssetTableField.ss']['SHOW'] = 'Show asset';
+$lang['en_US']['BrokenLinksReport']['BROKENLINKS'] = 'Broken links report';
 $lang['en_US']['CMSBatchActions']['DELETED_DRAFT_PAGES'] = 'Deleted %d pages from the draft site, %d failures';
 $lang['en_US']['CMSBatchActions']['DELETED_PAGES'] = 'Deleted %d pages from the published site, %d failures';
 $lang['en_US']['CMSBatchActions']['DELETE_DRAFT_PAGES'] = 'Delete from draft site';
@@ -69,7 +71,7 @@ $lang['en_US']['CMSBatchActions']['PUBLISH_PAGES'] = 'Publish';
 $lang['en_US']['CMSMain']['ACCESS'] = array(
 	'Access to %s',
 	PR_MEDIUM,
-	'Item in permission selection identifying the admin section, with title and classname. Example: Access to Files & Images'
+	'Item in permission selection identifying the admin section. Example: Access to \'Files & Images\''
 );
 $lang['en_US']['CMSMain']['ACCESSALLINTERFACES'] = 'Access to all CMS sections';
 $lang['en_US']['CMSMain']['CANCEL'] = 'Cancel';
@@ -226,6 +228,20 @@ $lang['en_US']['CommentTableField.ss']['NOITEMSFOUND'] = 'No items found';
 $lang['en_US']['CommentTableField.ss']['SPAM'] = 'spam';
 $lang['en_US']['ComplexTableField']['CLOSEPOPUP'] = 'Close Popup';
 $lang['en_US']['ComplexTableField']['SUCCESSADD'] = 'Added %s %s %s';
+$lang['en_US']['Group']['IMPORTTABTITLE'] = 'Import';
+$lang['en_US']['GroupImportForm']['Help1'] = '<p>Import one or more groups in <em>CSV</em> format (comma-separated values). <small><a href="#" class="toggle-advanced">Show advanced usage</a></small></p>';
+$lang['en_US']['GroupImportForm']['Help2'] = '<div class="advanced">
+	<h4>Advanced usage</h4>
+	<ul>
+	<li>Allowed columns: <em>%s</em></li>
+	<li>Existing groups are matched by their unique <em>Code</em> value, and updated with any new values from the imported file</li>
+	<li>Group hierarchies can be created by using a <em>ParentCode</em> column.</li>
+	<li>Permission codes can be assigned by the <em>PermissionCode</em> column. Existing permission codes are not cleared.</li>
+	</ul>
+</div>';
+$lang['en_US']['GroupImportForm']['ResultCreated'] = 'Created %d groups';
+$lang['en_US']['GroupImportForm']['ResultDeleted'] = 'Deleted %d groups';
+$lang['en_US']['GroupImportForm']['ResultUpdated'] = 'Updated %d groups';
 $lang['en_US']['ImageEditor.ss']['ACTIONS'] = 'actions';
 $lang['en_US']['ImageEditor.ss']['ADJUST'] = 'adjust';
 $lang['en_US']['ImageEditor.ss']['APPLY'] = 'apply';
@@ -263,11 +279,6 @@ $lang['en_US']['LeftAndMain']['PLEASESAVE'] = 'Please Save Page: This page could
 $lang['en_US']['LeftAndMain']['REQUESTERROR'] = 'Error in request';
 $lang['en_US']['LeftAndMain']['SAVED'] = 'saved';
 $lang['en_US']['LeftAndMain']['SAVEDUP'] = 'Saved';
-$lang['en_US']['LeftAndMain']['SITECONTENTLEFT'] = array(
-	'Site Content',
-	PR_HIGH,
-	'Root node on left'
-);
 $lang['en_US']['LeftAndMain']['STATUSPUBLISHEDSUCCESS'] = array(
 	'Published \'%s\' successfully',
 	PR_MEDIUM,
@@ -296,6 +307,7 @@ $lang['en_US']['LeftAndMain.ss']['SSWEB'] = 'Silverstripe Website';
 $lang['en_US']['LeftAndMain.ss']['VIEWINDRAFT'] = 'View the Page in the Draft Site';
 $lang['en_US']['LeftAndMain.ss']['VIEWINPUBLISHED'] = 'View the Page in the Published Site';
 $lang['en_US']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Page view:';
+$lang['en_US']['LeftAndMain_right.ss']['WELCOMETO'] = 'Welcome to';
 $lang['en_US']['MathSpamProtection']['EIGHT'] = 'eight';
 $lang['en_US']['MathSpamProtection']['EIGHTEEN'] = 'eighteen';
 $lang['en_US']['MathSpamProtection']['ELEVEN'] = 'eleven';
@@ -316,6 +328,19 @@ $lang['en_US']['MathSpamProtection']['TWELVE'] = 'twelve';
 $lang['en_US']['MathSpamProtection']['TWO'] = 'two';
 $lang['en_US']['MathSpamProtection']['WHATIS'] = 'What is %s plus %s?';
 $lang['en_US']['MathSpamProtection']['ZERO'] = 'zero';
+$lang['en_US']['MemberImportForm']['Help1'] = '<p>Import members in <em>CSV format</em> (comma-separated values). <small><a href="#" class="toggle-advanced">Show advanced usage</a></small></p>';
+$lang['en_US']['MemberImportForm']['Help2'] = '<div class="advanced">
+	<h4>Advanced usage</h4>
+	<ul>
+	<li>Allowed columns: <em>%s</em></li>
+	<li>Existing members are matched by their unique <em>Code</em> property, and updated with any new values from the imported file.</li>
+	<li>Groups can be assigned by the <em>Groups</em> column. Groups are identified by their <em>Code</em> property, multiple groups can be separated by comma. Existing group memberships are not cleared.</li>
+	</ul>
+</div>';
+$lang['en_US']['MemberImportForm']['ResultCreated'] = 'Created %d members';
+$lang['en_US']['MemberImportForm']['ResultDeleted'] = 'Deleted %d members';
+$lang['en_US']['MemberImportForm']['ResultNone'] = 'No changes';
+$lang['en_US']['MemberImportForm']['ResultUpdated'] = 'Updated %d members';
 $lang['en_US']['MemberList.ss']['FILTER'] = array(
 	'Filter',
 	50,
@@ -464,6 +489,9 @@ $lang['en_US']['SecurityAdmin']['MENUTITLE'] = array(
 $lang['en_US']['SecurityAdmin']['NEWGROUP'] = 'New Group';
 $lang['en_US']['SecurityAdmin']['SAVE'] = 'Save';
 $lang['en_US']['SecurityAdmin']['SGROUPS'] = 'Security Groups';
+$lang['en_US']['SecurityAdmin']['TABIMPORT'] = 'Import';
+$lang['en_US']['SecurityAdmin_MemberImportForm']['BtnImport'] = 'Import';
+$lang['en_US']['SecurityAdmin_MemberImportForm']['FileFieldLabel'] = 'CSV File <small>(Allowed extensions: *.csv)</small>';
 $lang['en_US']['SecurityAdmin_left.ss']['CREATE'] = 'Create';
 $lang['en_US']['SecurityAdmin_left.ss']['DEL'] = 'Delete';
 $lang['en_US']['SecurityAdmin_left.ss']['DELGROUPS'] = 'Delete the selected groups';
@@ -500,6 +528,9 @@ $lang['en_US']['StaticExporter']['BASEURL'] = 'Base URL';
 $lang['en_US']['StaticExporter']['EXPORTTO'] = 'Export to that folder';
 $lang['en_US']['StaticExporter']['FOLDEREXPORT'] = 'Folder to export to';
 $lang['en_US']['StaticExporter']['NAME'] = 'Static exporter';
+$lang['en_US']['TableListField.ss']['NOITEMSFOUND'] = 'No items found';
+$lang['en_US']['TableListField.ss']['SORTASC'] = 'Sort in ascending order';
+$lang['en_US']['TableListField.ss']['SORTDESC'] = 'Sort in descending order';
 $lang['en_US']['TableListField_PageControls.ss']['DISPLAYING'] = 'Displaying';
 $lang['en_US']['TableListField_PageControls.ss']['OF'] = 'of';
 $lang['en_US']['TableListField_PageControls.ss']['TO'] = 'to';
@@ -518,8 +549,12 @@ $lang['en_US']['ViewArchivedEmail.ss']['HAVEASKED'] = array(
 	30,
 	'Followed by a date'
 );
-$lang['en_US']['WidgetAreaEditor']['ss'] = 'TOADD';
+$lang['en_US']['WidgetAreaEditor.ss']['AVAILABLE'] = 'Available Widgets';
+$lang['en_US']['WidgetAreaEditor.ss']['AVAILWIDGETS'] = 'Click a widget title below to use it on this page.';
+$lang['en_US']['WidgetAreaEditor.ss']['INUSE'] = 'Widgets currently used';
 $lang['en_US']['WidgetAreaEditor.ss']['NOAVAIL'] = 'There are currently no widgets available.';
+$lang['en_US']['WidgetAreaEditor.ss']['TOSORT'] = 'To sort currently used widgets on this page, drag them up and down.';
+$lang['en_US']['WidgetDescription.ss']['CLICKTOADDWIDGET'] = 'Click to add this widget';
 $lang['en_US']['WidgetEditor.ss']['DELETE'] = 'Delete';
 
 ?>
