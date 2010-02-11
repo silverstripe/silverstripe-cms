@@ -49,7 +49,7 @@
 	});
 	
 	$.concrete('ss', function($){
-		$('#Form_EditForm .Actions #action_addmember').concrete({
+		$('#Form_EditForm .Actions #Form_EditForm_action_addmember').concrete({
 			onclick: function(e) {
 				// CAUTION: Assumes that a MemberTableField-instance is present as an editing form
 				var t = $('#Form_EditForm_Members');

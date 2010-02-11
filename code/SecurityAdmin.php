@@ -28,6 +28,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		'memberimport',
 		'GroupImportForm',
 		'groupimport',
+		'RootForm'
 	);
 
 	/**
@@ -64,9 +65,10 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			}
 		
 			$form->Actions()->insertBefore(
-				new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member')),
+				$actionAddMember = new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member')),
 				'action_save'
 			);
+			$actionAddMember->setForm($form);
 		
 			// Filter permissions
 			$permissionField = $form->Fields()->dataFieldByName('Permissions');
@@ -80,9 +82,27 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	 * @return FieldSet
 	 */
 	function RootForm() {
+		$memberList = new MemberTableField(
+			$this,
+			"Members"
+		);
+		// unset 'inlineadd' permission, we don't want inline addition
+		$memberList->setPermissions(array('show', 'edit', 'delete', 'add'));
+		
 		$fields = new FieldSet(
 			new TabSet(
 				'Root',
+				new Tab('Members', singleton('Member')->i18n_plural_name(),
+					$memberList,
+					new LiteralField('MembersCautionText', 
+						sprintf('<p class="caution-remove"><strong>%s</strong></p>',
+							_t(
+								'SecurityAdmin.MemberListCaution', 
+								'Caution: Removing members from this list will remove them from all groups and the database'
+							)
+						)
+					)
+				),
 				new Tab('Import', _t('SecurityAdmin.TABIMPORT', 'Import'),
 					new LiteralField(
 						'GroupImportFormIframe', 
@@ -96,11 +116,13 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			// necessary for tree node selection in LeftAndMain.EditForm.js
 			new HiddenField('ID', false, 0)
 		);
-		$actions = new FieldSet();
+		$actions = new FieldSet(
+			new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member'))
+		);
 		
 		$form = new Form(
 			$this,
-			'Form',
+			'EditForm',
 			$fields,
 			$actions
 		);
