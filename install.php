@@ -194,7 +194,7 @@ if((isset($_REQUEST['go']) || $installFromCli) && !$req->hasErrors() && !$dbReq-
  */
  
 class InstallRequirements {
-	var $errors, $warnings, $tests;
+	var $errors, $warnings, $tests, $dbConn;
 	
 	/**
 	 * Just check that the database configuration is okay
@@ -611,11 +611,15 @@ class InstallRequirements {
 		}
 	}
 	
+	/**
+	 * The established database connection is cached to $dbConn on the instance
+	 * of this class so various queries can be run via {@link requireDatabaseOrCreatePermissions())
+	 */
 	function requireDatabaseConnection($databaseConfig, $testDetails) {
 		$this->testing($testDetails);
 		
 		if($databaseConfig['type'] == 'MySQLDatabase') {
-			$conn = @mysql_connect($databaseConfig['server'], $databaseConfig['username'], $databaseConfig['password']);
+			$this->dbConn = $conn = @mysql_connect($databaseConfig['server'], $databaseConfig['username'], $databaseConfig['password']);
 			if($conn || mysql_errno() < 2000) {
 				return true;
 			} else {
@@ -624,13 +628,13 @@ class InstallRequirements {
 			}
 		} elseif($databaseConfig['type'] == 'MSSQLDatabase') {
 			if(function_exists('mssql_connect')) {
-				$conn = @mssql_connect($databaseConfig['server'], $databaseConfig['username'], $databaseConfig['password'], true);
+				$this->dbConn = $conn = @mssql_connect($databaseConfig['server'], $databaseConfig['username'], $databaseConfig['password'], true);
 			} else {
 				$connectionInfo = array(
 					'UID' => $databaseConfig['username'],
 					'PWD' => $databaseConfig['password'],
 				);
-				$conn = @sqlsrv_connect($databaseConfig['server'], $connectionInfo);
+				$this->dbConn = $conn = @sqlsrv_connect($databaseConfig['server'], $connectionInfo);
 			}
 			
 			if($conn) {
@@ -645,7 +649,7 @@ class InstallRequirements {
 			$userPart = $username ? " user=$username" : '';
 			$passwordPart = $password ? " password=$password" : '';
 			$connstring = "host=$server port=5432 {$userPart}{$passwordPart}";
-			$conn = @pg_connect($connstring);
+			$this->dbConn = $conn = @pg_connect($connstring);
 			
 			if($conn) {
 				return true;
@@ -709,7 +713,7 @@ class InstallRequirements {
 		} else {
 			list($majorRequested, $minorRequested) = explode('.', $version);
 			$result = mysql_query('SELECT VERSION()');
-			$row=mysql_fetch_row($result);
+			$row = mysql_fetch_row($result);
 			$version = ereg_replace("([A-Za-z-])", "", $row[0]);
 			list($majorHas, $minorHas) = explode('.', substr(trim($version), 0, 3));
 						
@@ -728,11 +732,11 @@ class InstallRequirements {
 		
 		if($databaseConfig['type'] == 'MySQLDatabase') {
 			$conn = @mysql_connect($databaseConfig['server'], $databaseConfig['username'], $databaseConfig['password']);
-			if(@mysql_select_db($databaseConfig['database'])) {
+			if(@mysql_select_db($databaseConfig['database'], $this->dbConn)) {
 				$okay = "Database '$databaseConfig[database]' exists";
 			} else {
-				if(@mysql_query("CREATE DATABASE testing123")) {
-					mysql_query("DROP DATABASE testing123");
+				if(@mysql_query("CREATE DATABASE testing123", $this->dbConn)) {
+					mysql_query("DROP DATABASE testing123", $this->dbConn);
 					$okay = "Able to create a new database";
 				}
 			}
@@ -740,11 +744,11 @@ class InstallRequirements {
 			if(@mysql_select_db($databaseConfig['database'])) {
 				$okay = "Database '$databaseConfig[database]' exists";
 			} else {
-				if(function_exists('mssql_connect') && @mssql_query("CREATE DATABASE testing123")) {
-					mssql_query("DROP DATABASE testing123");
+				if(function_exists('mssql_connect') && @mssql_query("CREATE DATABASE testing123", $this->dbConn)) {
+					mssql_query($this->dbConn, "DROP DATABASE testing123");
 					$okay = "Able to create a new database";
-				} elseif(function_exists('sqlsrv_connect') && @sqlsrv_query("CREATE DATABASE testing123")) {
-					sqlsrv_query("DROP DATABASE testing123");
+				} elseif(function_exists('sqlsrv_connect') && @sqlsrv_query($this->dbConn, "CREATE DATABASE testing123")) {
+					sqlsrv_query($this->dbConn, "DROP DATABASE testing123");
 					$okay = "Able to create a new database";
 				}
 			}
@@ -752,14 +756,14 @@ class InstallRequirements {
 			$database = $databaseConfig['database'];
 			
 			$dbExists = false;
-			$result = pg_query("SELECT datname FROM pg_database WHERE datname = '$database'");
+			$result = pg_query($this->dbConn, "SELECT datname FROM pg_database WHERE datname = '$database'");
 			if(pg_fetch_array($result)) $dbExists = true;
 			
 			if($dbExists) {
 				$okay = "Database '$database' exists";
 			} else {
-				if(@pg_query("CREATE DATABASE testing123")) {
-					pg_query("DROP DATABASE testing123");
+				if(@pg_query($this->dbConn, "CREATE DATABASE testing123")) {
+					pg_query($this->dbConn, "DROP DATABASE testing123");
 					$okay = "Able to create a new database";
 				}
 			}
