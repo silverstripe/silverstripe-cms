@@ -59,7 +59,12 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	public function getEditForm($id) {
 		$record = null;
 		
-		if (($id == 'root' || $id == 0) && $this->hasMethod('getRootForm')) return $this->getRootForm($this, 'EditForm');
+		if (($id == 'root' || $id == 0)) {
+			$form = $this->RootForm();
+			$this->extend('augmentRootForm', $form);
+			
+			return $form;
+		}
 		
 		if($id && $id != 'root') {
 			$record = DataObject::get_by_id($this->stat('tree_class'), $id);
@@ -77,20 +82,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		$form = new Form($this, "EditForm", $fields, $actions);
 		$form->loadDataFrom($record);
 		
-		$fields = $form->Fields();
-
-		if($fields->hasTabSet()) {
-			$fields->findOrMakeTab('Root.Import',_t('Group.IMPORTTABTITLE', 'Import'));
-			$fields->addFieldToTab('Root.Import', 
-				new LiteralField(
-					'MemberImportFormIframe', 
-					sprintf(
-						'<iframe src="%s" id="MemberImportFormIframe" width="100%%" height="400px" border="0"></iframe>',
-						$this->Link('memberimport')
-					)
-				)
-			);
-		}
+		
 		
 		if(!$record->canEdit()) {
 			$readonlyFields = $form->Fields()->makeReadonly();

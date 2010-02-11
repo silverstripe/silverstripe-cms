@@ -509,7 +509,7 @@ class LeftAndMain extends Controller {
 		// Wrap the root if needs be.
 
 		if(!$rootID) {
-			$rootLink = $this->Link() . '0';
+			$rootLink = $this->Link('show') . '/root';
 			
 			// This lets us override the tree title with an extension
 			if($this->hasMethod('getCMSTreeTitle') && $customTreeTitle = $this->getCMSTreeTitle()) {
@@ -939,9 +939,41 @@ JS;
 				
 			}
 		}
+
 		FormResponse::add($script);
 
 		return FormResponse::respond();
+	}
+		
+	/**
+	 * Returns a placeholder form, used by {@link getEditForm()} if no record is selected.
+	 * Our javascript logic always requires a form to be present in the CMS interface.
+	 * 
+	 * @return Form
+	 */
+	function EmptyForm() {
+		$form = new Form(
+			$this, 
+			"EditForm", 
+			new FieldSet(
+				new HeaderField(
+					'WelcomeHeader',
+					$this->getApplicationName()
+				),
+				new LiteralField(
+					'WelcomeText',
+					sprintf('<p id="WelcomeMessage">%s %s. %s</p>',
+						_t('LeftAndMain_right.ss.WELCOMETO','Welcome to'),
+						$this->getApplicationName(),
+						_t('CHOOSEPAGE','Please choose an item from the left.')
+					)
+				)
+			), 
+			new FieldSet()
+		);
+		$form->unsetValidator();
+		
+		return $form;
 	}
 
 	public function EditForm() {
