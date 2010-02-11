@@ -26,7 +26,9 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		'MemberForm',
 		'EditForm',
 		'MemberImportForm',
-		'memberimport'
+		'memberimport',
+		'GroupImportForm',
+		'groupimport',
 	);
 
 	/**
@@ -59,13 +61,37 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	public function getEditForm($id) {
 		$record = null;
 		
+		// Root form
 		if (($id == 'root' || $id == 0)) {
-			$form = $this->RootForm();
-			$this->extend('augmentRootForm', $form);
+			$fields = new FieldSet(
+				new TabSet(
+					'Root',
+					new Tab('Import', _t('SecurityAdmin.TABIMPORT', 'Import'),
+						new LiteralField(
+							'GroupImportFormIframe', 
+							sprintf(
+								'<iframe src="%s" id="GroupImportFormIframe" width="100%%" height="400px" border="0"></iframe>',
+								$this->Link('groupimport')
+							)
+						)
+					)
+				),
+				// necessary for tree node selection in LeftAndMain.EditForm.js
+				new HiddenField('ID', false, 0)
+			);
+
+			$actions = new FieldSet();
+
+			$form = new Form(
+				$this,
+				'EditForm',
+				$fields,
+				$actions
+			);
 			
 			return $form;
 		}
-		
+
 		if($id && $id != 'root') {
 			$record = DataObject::get_by_id($this->stat('tree_class'), $id);
 		}
@@ -74,15 +100,26 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		
 		$fields = $record->getCMSFields();
 		
+		if($fields->hasTabSet()) {
+			$fields->findOrMakeTab('Root.Import',_t('Group.IMPORTTABTITLE', 'Import'));
+			$fields->addFieldToTab('Root.Import', 
+				new LiteralField(
+					'MemberImportFormIframe', 
+					sprintf(
+						'<iframe src="%s" id="MemberImportFormIframe" width="100%%" height="400px" border="0"></iframe>',
+						$this->Link('memberimport')
+					)
+				)
+			);
+		}
+		
 		$actions = new FieldSet(
 			new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member')),
 			new FormAction('save',_t('SecurityAdmin.SAVE','Save'))
 		);
-
+		
 		$form = new Form($this, "EditForm", $fields, $actions);
 		$form->loadDataFrom($record);
-		
-		
 		
 		if(!$record->canEdit()) {
 			$readonlyFields = $form->Fields()->makeReadonly();
@@ -92,7 +129,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		// Filter permissions
 		$permissionField = $form->Fields()->dataFieldByName('Permissions');
 		if($permissionField) $permissionField->setHiddenPermissions(self::$hidden_permissions);
-		
+
 		return $form;
 	}
 	
@@ -121,6 +158,33 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			'MemberImportForm'
 		);
 		$form->setGroup($group);
+		
+		return $form;
+	}
+		
+	public function groupimport() {
+		Requirements::clear();
+		Requirements::css(SAPPHIRE_DIR . '/css/Form.css');
+		Requirements::css(CMS_DIR . '/css/typography.css');
+		Requirements::css(CMS_DIR . '/css/cms_right.css');
+		
+		Requirements::javascript(CMS_DIR . '/javascript/MemberImportForm.js');
+		
+		return $this->renderWith('BlankPage', array(
+			'Form' => $this->GroupImportForm()
+		));
+	}
+	
+	/**
+	 * @see SecurityAdmin_MemberImportForm
+	 * 
+	 * @return Form
+	 */
+	public function GroupImportForm() {
+		$form = new GroupImportForm(
+			$this,
+			'GroupImportForm'
+		);
 		
 		return $form;
 	}

@@ -457,6 +457,8 @@ JS;
 				$readonlyFields = $form->Fields()->makeReadonly();
 				$form->setFields($readonlyFields);
 			}
+			
+			$this->extend('updateEditForm', $form);
 
 			return $form;
 		} if ($id == 0) {
@@ -467,6 +469,9 @@ JS;
 			} 
 			$form = new Form($this, "EditForm", $fields, $siteConfig->getFormActions());
 			$form->loadDataFrom($siteConfig);
+			
+			$this->extend('updateEditForm', $form);
+			
 			return $form;
 		} else if($id) {
 			return new Form($this, "EditForm", new FieldSet(

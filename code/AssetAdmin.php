@@ -310,6 +310,8 @@ HTML;
 				$form->makeReadonly();
 			}
 
+			$this->extend('updateEditForm', $form);
+
 			return $form;
 		}
 	}
