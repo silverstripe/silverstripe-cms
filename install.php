@@ -50,7 +50,7 @@ if($envFileExists) {
 	}
 }
 
-// This is a listing of supported databases, so the installer knows about them
+// This is a listing of known external databases
 $otherDatabaseLocations = array(
 	'mssql' => array(
 		'class' => 'MSSQLDatabase',
@@ -70,8 +70,9 @@ $otherDatabaseLocations = array(
 	)
 );
 
-// MySQL support comes out of the box with sapphire - others databases
-// live in their own module directories. We need to check the existance of them!
+// MySQL support comes out of the box with sapphire. Other databases
+// live in their own module directories. Let's find out if there
+// are any installed and determine if they have a configuration helper.
 $foundDatabaseClasses = array('MySQLDatabase' => 'MySQL');
 include_once('sapphire/dev/install/DatabaseConfigurationHelper.php');
 include_once('sapphire/dev/install/MySQLDatabaseConfigurationHelper.php');
