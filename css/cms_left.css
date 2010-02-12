@@ -76,10 +76,6 @@ form.oneline fieldset {
 	font-weight: bold;
 }
 
-
-ul.tree span.a {
-	cursor: pointer;
-}
 .filefolderhover span.a, 
 ul.tree span.a.over,
 ul.tree .over > span.a {
@@ -90,56 +86,10 @@ ul.tree .over > span.a {
 	background-position: 100px 50%;
 }
 
-
-ul.tree span.a.current {
-	font-weight: bold;
-	background-color: #EEEEFF !important;
-	border-top: 1px #CCCCFF solid;
-	border-bottom: 1px #CCCCFF solid;	
-	/* these push the highlight out to the left of the window */
-	margin-left: -100px;
-	padding-left: 100px;
-	background-position: 100px 50%;
-	/*position: relative;*/
-}
-
-ul.tree span.a.loading span.b span.c a {
-	background-image: url(../images/network-save.gif) !important;
-	margin-left: -3px;
-	padding-left: 21px;
-	background-position : 2px 2px;
-}
-
-ul.tree.multiselect span.a span.b a {
-	background-image: url(../images/tickbox-unticked.gif) !important;
-}
-
-ul.tree.multiselect span.a.nodelete span.b a {
-	background-image: url(../images/tickbox-canttick.gif) !important;
-}
-
-
-ul.tree.multiselect span.a.selected span.b span.c a {
-	background-image: url(../images/tickbox-ticked.gif) !important;
-}
-
-ul.tree.multiselect li.selected ul span.a a {
-	background-image: url(../images/tickbox-greyticked.gif) !important;
-}
-
-/* Span-B: Plus/Minus icon */
-ul.tree.multiselect li.selected span.a.children span.b, 
-ul.tree.multiselect li.selected span.a.unexpanded span.b {
-	background-image: none;
-	cursor: default;
-}
-
-
 ul.tree span.a a.notinmenu, ul.tree span.a a.notinmenu *,
 #publication_key span.notinmenu {
 	color: #77A;
 }
-
 
 ul.tree span.a a.disabled {
 	color: #999;
@@ -152,7 +102,6 @@ ul.tree span.a a.disabled {
 		cursor: pointer;
 	}
 	
-
 ul.tree .deleted {
 	color: red;
 	text-decoration: line-through;
