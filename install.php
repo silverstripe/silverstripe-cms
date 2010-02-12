@@ -216,7 +216,9 @@ class InstallRequirements {
 	var $errors, $warnings, $tests;
 	
 	/**
-	 * Just check that the database configuration is all good.
+	 * Check the database configuration. These are done one after another
+	 * starting with checking the database function exists in PHP, and
+	 * continuing onto more difficult checks like database permissions.
 	 */
 	function checkdatabase($databaseConfig) {
 		if($this->requireDatabaseFunctions(
@@ -232,7 +234,8 @@ class InstallRequirements {
 				array(
 					"Database Configuration",
 					"Database server exists",
-					"I couldn't find a database server on '$databaseConfig[server]'", $databaseConfig['server']
+					"I couldn't find a database server on '$databaseConfig[server]'",
+					$databaseConfig['server']
 				)
 			)) {
 				if($this->requireDatabaseConnection(
@@ -243,28 +246,18 @@ class InstallRequirements {
 						"That username/password doesn't work"
 					)
 				)) {
-					@$this->requireMySQLVersion(
-						"4.1",
+					$this->requireDatabaseOrCreatePermissions(
+						$databaseConfig,
 						array(
-							"MySQL Configuration",
-							"MySQL version at least 4.1",
-							"MySQL version 4.1 is required, you only have ",
-							"MySQL " . mysql_get_server_info()
+							"Database Configuration",
+							"Can I access/create the database",
+							"I can't create new databases and the database '$databaseConfig[database]' doesn't exist"
 						)
 					);
 				}
-				$this->requireDatabaseOrCreatePermissions(
-					$databaseConfig,
-					array(
-						"Database Configuration",
-						"Can I access/create the database",
-						"I can't create new databases and the database '$databaseConfig[database]' doesn't exist"
-					)
-				);
 			}
 		}
 	}
-	
 	
 	/**
 	 * Check everything except the database
@@ -661,28 +654,6 @@ class InstallRequirements {
 			$testDetails[2] .= " (user '$databaseConfig[username]' doesn't have CREATE DATABASE permissions.)";
 			$this->error($testDetails);
 			return false;
-		}
-	}
-	
-	function requireMySQLVersion($version, $testDetails) {
-		$this->testing($testDetails);
-		
-		if(!mysql_get_server_info()) {
-			$testDetails[2] = 'Cannot determine the version of MySQL installed. Please ensure at least version 4.1 is installed.';
-			$this->warning($testDetails);
-		} else {
-			list($majorRequested, $minorRequested) = explode('.', $version);
-			$result = mysql_query('SELECT VERSION()');
-			$row = mysql_fetch_row($result);
-			$version = ereg_replace("([A-Za-z-])", "", $row[0]);
-			list($majorHas, $minorHas) = explode('.', substr(trim($version), 0, 3));
-						
-			if(($majorHas > $majorRequested) || ($majorHas == $majorRequested && $minorHas >= $minorRequested)) {
-				return true;
-			} else {
-				$testDetails[2] .= "{$majorHas}.{$minorHas}.";
-				$this->error($testDetails);
-			}
 		}
 	}
 	
