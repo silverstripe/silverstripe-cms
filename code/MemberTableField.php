@@ -414,6 +414,7 @@ class MemberTableField_Popup extends ComplexTableField_Popup {
 	function forTemplate() {
 		$ret = parent::forTemplate();
 		
+		Requirements::css(CMS_DIR . '/css/SecurityAdmin.css');
 		Requirements::javascript(CMS_DIR . '/javascript/MemberTableField.js');
 		Requirements::javascript(CMS_DIR . '/javascript/MemberTableField_popup.js');
 		
