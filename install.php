@@ -323,9 +323,6 @@ class InstallRequirements {
 		// Check for XML support
 		$this->requireFunction('xml_set_object', array("PHP Configuration", "XML support", "XML support not included in PHP."));
 		
-		// Check for MySQL support
-		$this->requireFunction('mysql_connect', array("PHP Configuration", "MySQL support", "MySQL support not included in PHP."));
-		
 		// Check for token_get_all
 		$this->requireFunction('token_get_all', array("PHP Configuration", "PHP Tokenizer", "PHP tokenizer support not included in PHP."));
 		
