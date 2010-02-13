@@ -993,9 +993,14 @@ PHP
 		
 		$rewrite = <<<TEXT
 <Files *.ss>
-Order deny,allow
-Deny from all
-Allow from 127.0.0.1
+	Order deny,allow
+	Deny from all
+	Allow from 127.0.0.1
+</Files>
+
+<Files web.config>
+	Order deny,allow
+	Deny from all
 </Files>
 
 RewriteEngine On
