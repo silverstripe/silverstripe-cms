@@ -865,6 +865,8 @@ global \$databaseConfig;
 // for a description of what dev mode does.
 Director::set_dev_servers($devServers);
 
+MySQLDatabase::set_connection_charset('utf8');
+
 // This line set's the current theme. More themes can be
 // downloaded from http://www.silverstripe.org/themes/
 SSViewer::set_theme('$theme');
