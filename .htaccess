@@ -5,6 +5,11 @@
 	Allow from 127.0.0.1
 </Files>
 
+<Files web.config>
+	Order deny,allow
+	Deny from all
+</Files>
+
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 	RewriteCond %{REQUEST_URI} ^(.*)$
