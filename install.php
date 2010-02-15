@@ -647,7 +647,12 @@ class InstallRequirements {
 			$this->testing($testDetails);
 			return true;
 		} else {
-			$testDetails[2] .= " (user '$databaseConfig[username]' doesn't have CREATE DATABASE permissions.)";
+			if(!@$result['cannotCreate']) {
+				$testDetails[2] .= ". Please create the database manually.";
+			} else {
+				$testDetails[2] .= " (user '$databaseConfig[username]' doesn't have CREATE DATABASE permissions.)";
+			}
+			
 			$this->error($testDetails);
 			return false;
 		}
