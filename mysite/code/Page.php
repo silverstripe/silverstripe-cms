@@ -8,13 +8,6 @@ class Page extends SiteTree {
 	public static $has_one = array(
 	);
 	
-	function allPagesToCache() {
-		$pages = DataObject::get('Page');
-		$urls = array();
-		foreach($pages as $page) $urls[] = $page->AbsoluteLink();
-		return $urls;
-	}
-	
 }
 
 class Page_Controller extends ContentController {
