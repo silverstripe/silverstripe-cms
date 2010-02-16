@@ -213,7 +213,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return $filter_options;
 	}
 		public function SiteTreeFilterDateField() {
-			$dateField = new CalendarDateField('SiteTreeFilterDate');
+			$dateField = new DateField('SiteTreeFilterDate');
+			$dateField->setConfig('showcalendar', true);
 			return $dateField->Field();
 		}
 		public function SiteTreeFilterPageTypeField() {
