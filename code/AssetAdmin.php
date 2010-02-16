@@ -102,6 +102,8 @@ JS
 		Requirements::javascript(CMS_DIR . "/javascript/LeftAndMain.js");
 		Requirements::javascript(CMS_DIR . "/thirdparty/multifile/multifile.js");
 		Requirements::css(CMS_DIR . "/thirdparty/multifile/multifile.css");
+		Requirements::javascript(SAPPHIRE_DIR . "/thirdparty/jquery/jquery.js");
+		Requirements::javascript(SAPPHIRE_DIR . "/javascript/jquery_improvements.js");
 		Requirements::css(CMS_DIR . "/css/typography.css");
 		Requirements::css(CMS_DIR . "/css/layout.css");
 		Requirements::css(CMS_DIR . "/css/cms_left.css");
@@ -111,6 +113,23 @@ JS
 		else $folder = singleton('Folder');
 		
 		return array( 'CanUpload' => $folder->canEdit());
+	}
+	
+	/**
+	 * @return String
+	 */
+	function UploadMetadataHtml() {
+		$fields = singleton('File')->uploadMetadataFields();
+
+		// Return HTML with markers for easy replacement
+		$fieldHtml = '';
+		foreach($fields as $field) $fieldHtml = $fieldHtml . $field->FieldHolder();
+		$fieldHtml = preg_replace('/(name|for|id)="(.+?)"/', '$1="$2[__X__]"', $fieldHtml);
+
+		// Icky hax to fix certain elements with fixed ids
+		$fieldHtml = preg_replace('/-([a-zA-Z0-9]+?)\[__X__\]/', '[__X__]-$1', $fieldHtml);
+
+		return $fieldHtml;
 	}
 	
 	/**
@@ -144,7 +163,6 @@ JS
 	 * It will save the uploaded files to /assets/ and create new File objects as required.
 	 */
 	function doUpload($data, $form) {
-		$processedFiles = array();
 		$newFiles = array();
 		$fileIDs = array();
 		$fileNames = array();
@@ -153,28 +171,35 @@ JS
 		$jsErrors = '';
 		$status = '';
 		$statusMessage = '';
+		$processedFiles = array();
+
+		foreach($data['Files'] as $param => $files) {
+			if(!is_array($files)) $files = array($files);
+			foreach($files as $key => $value) {
+				$processedFiles[$key][$param] = $value;
+			}
+		}
+		array_shift($processedFiles);
 		
-		if(!isset($data['Files'])) return Director::set_status_code("404");
-		
-		if(is_array($data['Files'])) {
-			foreach($data['Files'] as $param => $files) {
-				if(!is_array($files)) $files = array($files);
-				foreach($files as $key => $value) {
-					$processedFiles[$key][$param] = $value;
+		// Load POST data from arrays in to the correct dohickey.
+		$processedData = array();
+		foreach($data as $dataKey => $value) {
+			if ($dataKey == 'Files') continue;
+			if (is_array($value)) {
+				$i = 0;
+				foreach($value as $fileId => $dataValue) {
+					if (!isset($processedData[$i])) $processedData[$i] = array();
+					$processedData[$i][$dataKey] = $dataValue;
+					$i++;
 				}
 			}
-		} else {
-			$proccessedFiles[] = $data['Files'];
 		}
-		
-		// get the folder to upload to.
-		if(isset($data['FolderID']) && $data['FolderID'] && $data['FolderID'] != "root") {
-			$folder = DataObject::get_by_id('Folder', $data['FolderID']);
-		} else {
-			$folder = singleton('Folder');
-		}
-		
-		foreach($processedFiles as $tmpFile) {
+		$processedData = array_reverse($processedData);
+				
+		if($data['ID'] && $data['ID'] != 'root') $folder = DataObject::get_by_id("Folder", $data['ID']);
+		else $folder = singleton('Folder');
+
+		foreach($processedFiles as $filePostId => $tmpFile) {
 			if($tmpFile['error'] == UPLOAD_ERR_NO_TMP_DIR) {
 				$status = 'bad';
 				$statusMessage = _t('AssetAdmin.NOTEMP', 'There is no temporary folder for uploads. Please set upload_tmp_dir in php.ini.');
@@ -206,7 +231,19 @@ JS
 				}
 				
 				// move file to given folder
-				if($valid) $newFiles[] = $folder->addUploadToFolder($tmpFile);
+				if($valid) {
+					$newFile = $folder->addUploadToFolder($tmpFile);
+					
+					if (isset($processedData[$filePostId])) {
+						$fileObject = DataObject::get_by_id('File', $newFile);
+						$metadataForm = new Form($this, 'MetadataForm', $fileObject->uploadMetadataFields(), new FieldSet());
+						$metadataForm->loadDataFrom($processedData[$filePostId]);
+						$metadataForm->saveInto($fileObject);
+						$fileObject->write();
+					}
+					
+					$newFiles[] = $newFile;
+				}
 			}
 		}
 		

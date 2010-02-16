@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" style="overflow:auto">
 	<head>
 		<% base_tag %>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
@@ -21,6 +21,9 @@
 	<body>
 	<% if CanUpload %>
 		$UploadForm
+		<div id="metadataFormTemplate" style="display:none">
+			$UploadMetadataHtml
+		</div>
 	<% else %>
 		<% _t('PERMFAILED','You do not have permission to upload files into this folder.') %>
 	<% end_if %>
