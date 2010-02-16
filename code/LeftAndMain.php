@@ -301,6 +301,17 @@ class LeftAndMain extends Controller {
 		SSViewer::set_theme(null);
 	}
 
+	
+	/**
+	 * If this is set to true, the "switchView" context in the
+	 * template is shown, with links to the staging and publish site.
+	 *
+	 * @return boolean
+	 */
+	function ShowSwitchView() {
+		return false;
+	}
+
 	//------------------------------------------------------------------------------------------//
 	// Main controllers
 
