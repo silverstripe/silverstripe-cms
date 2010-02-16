@@ -712,7 +712,8 @@ JS;
 			}
 
 			// HACK: This should be turned into somethign more general
-			if( ($record->class == 'VirtualPage' && $originalURLSegment != $record->URLSegment) ||
+			// Removed virtualpage test as we need to draft/published links when url is changed
+			if( (/*$record->class == 'VirtualPage' &&*/ $originalURLSegment != $record->URLSegment) ||
 				($originalClass != $record->ClassName) || self::$ForceReload == true) {
 				FormResponse::add("$('Form_EditForm').getPageFromServer($record->ID);");
 			}
