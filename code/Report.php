@@ -169,10 +169,11 @@ class SS_Report extends ViewableData {
 	 */
 	function getCMSFields() {
 		$fields = new FieldSet(
-			new LiteralField('ReportTitle', "<h3>{$this->title()}</h3><p>All times are in the server timezone, unless otherwise specified</p>")
+			new LiteralField(
+				'ReportTitle', 
+				 "<h3>{$this->title()}</h3>"
+			)
 		);
-		
-		// $fields->push();
 		
 		if($this->description) $fields->push(
 			new LiteralField('ReportDescription', "<p>{$this->description}</p>"));
