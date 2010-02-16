@@ -361,7 +361,14 @@ class LeftAndMain extends Controller {
 		}
 
 		$form = $this->EditForm();
-		if ($form) return $form->formHtmlContent();
+		if ($form) {
+			$content =  $form->formHtmlContent();
+			if($this->ShowSwitchView()) {
+				$content .= '<div id="AjaxSwitchView">' . $this->SwitchView() . '</div>';
+			}
+			
+			return $content;
+		}
 		else return "";
 	}
 	public function getLastFormIn($html) {

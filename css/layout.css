@@ -276,7 +276,6 @@ body.stillLoading select {
 	bottom: 0;
 	left: 0;
 	height: 23px;
-	overflow: hidden;
 	background: #4d4e5a url(../images/textures/footerBg.gif) repeat-x left top;
 }
 

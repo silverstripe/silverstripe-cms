@@ -23,6 +23,13 @@ CMSForm.prototype = {
 	 */
 	prepareForm : function() {
 		ajaxActionsAtTop(this.id, 'form_actions_' + this.formName, this.formName);
+		
+		// Update the nav items down the bottom
+		if($('AjaxSwitchView')) {
+			$('SwitchView').innerHTML = $('AjaxSwitchView').innerHTML;
+			$('AjaxSwitchView').innerHTML = '';
+			Behaviour.apply('SwitchView'); // This is needed so calendar still works
+		}
 	},
 	
 	/**
@@ -394,49 +401,6 @@ function autoSave(confirmation, callAfter) {
 		if(__callAfter) __callAfter();
 	}
 }
-
-
-StageLink = Class.create();
-StageLink.prototype = {
-	initialize: function(getVars, urlField) {
-		this.getVars = getVars;
-		this.urlField = urlField;
-		
-		var boundNewPage = this.newPage.bind(this);
-		
-		$('Form_EditForm').observeMethod('PageLoaded', boundNewPage);
-		$('Form_EditForm').observeMethod('PageSaved', boundNewPage);
-		$('Form_EditForm').observeMethod('PagePublished', boundNewPage);
-		$('Form_EditForm').observeMethod('PageUnpublished', boundNewPage);
-
-		this.newPage();
-	},
-	newPage : function() {
-		var linkField = $('Form_EditForm').elements[this.urlField];
-		var linkVal = linkField ? linkField.value : null;
-		if(linkVal) {
-			if(this.id != 'viewArchivedSite') this.style.display = '';
-			this.href = linkVal + this.getVars;
-		} else {
-			if(this.id != 'viewArchivedSite') this.style.display = 'none';
-		}
-		if($('Form_EditForm_Locale')) {
-			this.href += "&locale=" + $('Form_EditForm_Locale').value;
-		}
-	},
-	onclick : function() {
-		var w = window.open(this.href, windowName('site'));
-		w.focus();
-		return false;
-	},
-	baseURL : function() {
-		return document.getElementsByTagName('base')[0].href;
-	}
-}
-
-StageLink.applyTo('#viewStageSite', '?stage=Stage', 'StageURLSegment');
-StageLink.applyTo('#viewLiveSite', '?stage=Live', 'LiveURLSegment');
-StageLink.applyTo('#viewArchivedSite', '', 'URLSegment');
 
 window.name = windowName('cms');
 
