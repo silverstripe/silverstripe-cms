@@ -7,9 +7,11 @@
  */
 
 class BrokenLinksReport extends SS_Report {
+
 	function title() {
 		return _t('BrokenLinksReport.BROKENLINKS',"Broken links report");
 	}
+	
 	function sourceRecords($params, $sort, $limit) {
 		$join = '';
 		$sortBrokenReason = false;
@@ -39,23 +41,23 @@ class BrokenLinksReport extends SS_Report {
 			
 			if ($isVirtualPage) {
 				if ($record->HasBrokenLink) {
-					$reason = "virtual page pointing to non-existent page";
+					$reason = _t('BrokenLinksReport.VirtualPageNonExistent', "virtual page pointing to non-existent page");
 					$reasonCodes = array("VPBROKENLINK");
 				}
 			} else if ($isRedirectorPage) {
 				if ($record->HasBrokenLink) {
-					$reason = "redirector page pointing to non-existent page";
+					$reason = _t('BrokenLinksReport.RedirectorNonExistent', "redirector page pointing to non-existent page");
 					$reasonCodes = array("RPBROKENLINK");
 				}
 			} else {
 				if ($record->HasBrokenLink && $record->HasBrokenFile) {
-					$reason = "has broken link and file";
+					$reason = _t('BrokenLinksReport.HasBrokenLinkAndFile', "has broken link and file");
 					$reasonCodes = array("BROKENFILE", "BROKENLINK");
 				} else if ($record->HasBrokenLink && !$record->HasBrokenFile) {
-					$reason = "has broken link";
+					$reason = _t('BrokenLinksReport.HasBrokenLink', "has broken link");
 					$reasonCodes = array("BROKENLINK");
 				} else if (!$record->HasBrokenLink && $record->HasBrokenFile) {
-					$reason = "has broken file";
+					$reason = _t('BrokenLinksReport.HasBrokenFile', "has broken file");
 					$reasonCodes = array("BROKENFILE");
 				}
 			}
@@ -72,20 +74,29 @@ class BrokenLinksReport extends SS_Report {
 		return $returnSet;
 	}
 	function columns() {
+		if(isset($_REQUEST['CheckSite']) && $_REQUEST['CheckSite'] == 'Draft') {
+			$dateTitle = _t('BrokenLinksReport.ColumnDateLastModified', 'Date last modified');
+		} else {
+			$dateTitle = _t('BrokenLinksReport.ColumnDateLastPublished', 'Date last published');
+		}
+		
 		$fields = array(
 			"Title" => array(
 				"title" => "Page name",
-				'formatting' => '<a href=\"admin/show/$ID\" title=\"Edit page\">$value</a>'
+				'formatting' => sprintf(
+					'<a href=\"admin/show/$ID\" title=\"%s\">$value</a>',
+					_t('BrokenLinksReport.HoverTitleEditPage', 'Edit page')
+				)
 			),
 			"LastEdited" => array(
-				"title" => "Date ".(isset($_REQUEST['CheckSite']) && ($_REQUEST['CheckSite'] == 'Draft')?'last modified':'published'),
+				"title" => $dateTitle,
 				'casting' => 'SSDatetime->Full'
 			),
 			"BrokenReason" => array(
-				"title" => "Problem type"
+				"title" => _t('BrokenLinksReport.ColumnProblemType', "Problem type")
 			),
 			'AbsoluteLink' => array(
-				'title' => 'URL',
+				'title' => _t('BrokenLinksReport.ColumnURL', 'URL'),
 				'formatting' => '$value " . ($AbsoluteLiveLink ? "<a target=\"_blank\" href=\"$AbsoluteLiveLink\">(live)</a>" : "") . " <a target=\"_blank\" href=\"$value?stage=Stage\">(draft)</a>'
 			)
 		);
@@ -95,16 +106,20 @@ class BrokenLinksReport extends SS_Report {
 	function parameterFields() {
 		return new FieldSet(
 			new DropdownField('CheckSite', 'Check site', array(
-				'Published' => 'Published Site',
-				'Draft' => 'Draft Site'
+				'Published' => _t('BrokenLinksReport.CheckSiteDropdownPublished', 'Published Site'),
+				'Draft' => _t('BrokenLinksReport.CheckSiteDropdownDraft', 'Draft Site')
 			)),
-			new DropdownField('Reason', 'Problem to check', array(
-				'' => 'Any',
-				'BROKENFILE' => 'Broken file',
-				'BROKENLINK' => 'Broken link',
-				'VPBROKENLINK' => 'Virtual page pointing to non-existent page',
-				'RPBROKENLINK' => 'Redirector page pointing to non-existent page',
-			))
+			new DropdownField(
+				'Reason', 
+				_t('BrokenLinksReport.ReasonDropdown', 'Problem to check'), 
+				array(
+					'' => 'Any',
+					'BROKENFILE' => _t('BrokenLinksReport.ReasonDropdownBROKENFILE', 'Broken file'),
+					'BROKENLINK' => _t('BrokenLinksReport.ReasonDropdownBROKENLINK', 'Broken link'),
+					'VPBROKENLINK' => _t('BrokenLinksReport.ReasonDropdownVPBROKENLINK', 'Virtual page pointing to non-existent page'),
+					'RPBROKENLINK' => _t('BrokenLinksReport.ReasonDropdownRPBROKENLINK', 'Redirector page pointing to non-existent page'),
+				)
+			)
 		);
 	}
 }

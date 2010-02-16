@@ -59,6 +59,23 @@ $lang['en_US']['AssetTableField.ss']['DRAGTOFOLDER'] = 'Drag to folder on left t
 $lang['en_US']['AssetTableField.ss']['EDIT'] = 'Edit asset';
 $lang['en_US']['AssetTableField.ss']['SHOW'] = 'Show asset';
 $lang['en_US']['BrokenLinksReport']['BROKENLINKS'] = 'Broken links report';
+$lang['en_US']['BrokenLinksReport']['CheckSiteDropdownDraft'] = 'Draft Site';
+$lang['en_US']['BrokenLinksReport']['CheckSiteDropdownPublished'] = 'Published Site';
+$lang['en_US']['BrokenLinksReport']['ColumnDateLastModified'] = 'Date last modified';
+$lang['en_US']['BrokenLinksReport']['ColumnDateLastPublished'] = 'Date last published';
+$lang['en_US']['BrokenLinksReport']['ColumnProblemType'] = 'Problem type';
+$lang['en_US']['BrokenLinksReport']['ColumnURL'] = 'URL';
+$lang['en_US']['BrokenLinksReport']['HasBrokenFile'] = 'has broken file';
+$lang['en_US']['BrokenLinksReport']['HasBrokenLink'] = 'has broken link';
+$lang['en_US']['BrokenLinksReport']['HasBrokenLinkAndFile'] = 'has broken link and file';
+$lang['en_US']['BrokenLinksReport']['HoverTitleEditPage'] = 'Edit page';
+$lang['en_US']['BrokenLinksReport']['ReasonDropdown'] = 'Problem to check';
+$lang['en_US']['BrokenLinksReport']['ReasonDropdownBROKENFILE'] = 'Broken file';
+$lang['en_US']['BrokenLinksReport']['ReasonDropdownBROKENLINK'] = 'Broken link';
+$lang['en_US']['BrokenLinksReport']['ReasonDropdownRPBROKENLINK'] = 'Redirector page pointing to non-existent page';
+$lang['en_US']['BrokenLinksReport']['ReasonDropdownVPBROKENLINK'] = 'Virtual page pointing to non-existent page';
+$lang['en_US']['BrokenLinksReport']['RedirectorNonExistent'] = 'redirector page pointing to non-existent page';
+$lang['en_US']['BrokenLinksReport']['VirtualPageNonExistent'] = 'virtual page pointing to non-existent page';
 $lang['en_US']['CMSBatchActions']['DELETED_DRAFT_PAGES'] = 'Deleted %d pages from the draft site, %d failures';
 $lang['en_US']['CMSBatchActions']['DELETED_PAGES'] = 'Deleted %d pages from the published site, %d failures';
 $lang['en_US']['CMSBatchActions']['DELETE_DRAFT_PAGES'] = 'Delete from draft site';
@@ -287,10 +304,6 @@ $lang['en_US']['LeftAndMain']['STATUSPUBLISHEDSUCCESS'] = array(
 $lang['en_US']['LeftAndMain']['STATUSTO'] = '  Status changed to \'%s\'';
 $lang['en_US']['LeftAndMain.ss']['APPVERSIONTEXT1'] = 'This is the';
 $lang['en_US']['LeftAndMain.ss']['APPVERSIONTEXT2'] = 'version that you are currently running, technically it\'s the CVS branch';
-$lang['en_US']['LeftAndMain.ss']['ARCHS'] = 'Archived Site';
-$lang['en_US']['LeftAndMain.ss']['DRAFTS'] = 'Draft Site';
-$lang['en_US']['LeftAndMain.ss']['EDIT'] = 'Edit';
-$lang['en_US']['LeftAndMain.ss']['EDITINCMS'] = 'Edit this page in the CMS';
 $lang['en_US']['LeftAndMain.ss']['EDITPROFILE'] = 'Profile';
 $lang['en_US']['LeftAndMain.ss']['LOADING'] = array(
 	'Loading...',
@@ -298,14 +311,11 @@ $lang['en_US']['LeftAndMain.ss']['LOADING'] = array(
 );
 $lang['en_US']['LeftAndMain.ss']['LOGGEDINAS'] = 'Logged in as';
 $lang['en_US']['LeftAndMain.ss']['LOGOUT'] = 'Log out';
-$lang['en_US']['LeftAndMain.ss']['PUBLIS'] = 'Published Site';
 $lang['en_US']['LeftAndMain.ss']['REQUIREJS'] = array(
 	'The CMS requires that you have JavaScript enabled.',
 	PR_HIGH
 );
 $lang['en_US']['LeftAndMain.ss']['SSWEB'] = 'Silverstripe Website';
-$lang['en_US']['LeftAndMain.ss']['VIEWINDRAFT'] = 'View the Page in the Draft Site';
-$lang['en_US']['LeftAndMain.ss']['VIEWINPUBLISHED'] = 'View the Page in the Published Site';
 $lang['en_US']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Page view:';
 $lang['en_US']['LeftAndMain_right.ss']['WELCOMETO'] = 'Welcome to';
 $lang['en_US']['MathSpamProtection']['EIGHT'] = 'eight';
@@ -516,8 +526,12 @@ $lang['en_US']['SideReport']['BROKENFILES'] = 'Pages with broken files';
 $lang['en_US']['SideReport']['BROKENLINKS'] = 'Pages with broken links';
 $lang['en_US']['SideReport']['BROKENREDIRECTORPAGES'] = 'RedirectorPages pointing to deleted pages';
 $lang['en_US']['SideReport']['BROKENVIRTUALPAGES'] = 'VirtualPages pointing to deleted pages';
+$lang['en_US']['SideReport']['BrokenLinksGroupTitle'] = 'Broken links reports';
+$lang['en_US']['SideReport']['ContentGroupTitle'] = 'Content reports';
 $lang['en_US']['SideReport']['EMPTYPAGES'] = 'Pages with no content';
 $lang['en_US']['SideReport']['LAST2WEEKS'] = 'Pages edited in the last 2 weeks';
+$lang['en_US']['SideReport']['OtherGroupTitle'] = 'Other';
+$lang['en_US']['SideReport']['ParameterLiveCheckbox'] = 'Check live site';
 $lang['en_US']['SideReport']['REPEMPTY'] = array(
 	'The %s report is empty.',
 	PR_MEDIUM,
