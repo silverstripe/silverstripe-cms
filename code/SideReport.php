@@ -235,7 +235,7 @@ class SideReport_BrokenLinks extends SS_Report {
 			),
 		);
 	}
-	function parameterFields() {
+	function getParameterFields() {
 		return new FieldSet(
 			new CheckboxField('OnLive', 'Check live site')
 		);
@@ -272,11 +272,13 @@ class SideReport_BrokenFiles extends SS_Report {
 			),
 		);
 	}
-	function parameterFields() {
+
+	function getParameterFields() {
 		return new FieldSet(
 			new CheckboxField('OnLive', 'Check live site')
 		);
 	}
+
 }
 
 class SideReport_BrokenVirtualPages extends SS_Report {
@@ -301,7 +303,8 @@ class SideReport_BrokenVirtualPages extends SS_Report {
 			),
 		);
 	}
-	function parameterFields() {
+
+	function getParameterFields() {
 		return new FieldSet(
 			new CheckboxField('OnLive', 'Check live site')
 		);
@@ -331,7 +334,8 @@ class SideReport_BrokenRedirectorPages extends SS_Report {
 			),
 		);
 	}
-	function parameterFields() {
+	
+	function getParameterFields() {
 		return new FieldSet(
 			new CheckboxField('OnLive', 'Check live site')
 		);
