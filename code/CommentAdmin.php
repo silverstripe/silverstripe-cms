@@ -285,7 +285,7 @@ JS;
 	 * Return the number of unmoderated comments
 	 */
 	function NumUnmoderated() {
-		return DB::query("SELECT COUNT(*) FROM \"PageComment\" WHERE \"IsSpam\"=0 AND \"NeedsModeration\"=0")->value();
+		return DB::query("SELECT COUNT(*) FROM \"PageComment\" WHERE \"IsSpam\"=0 AND \"NeedsModeration\"=1")->value();
 	}
 
 	/**
