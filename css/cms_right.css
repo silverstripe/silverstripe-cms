@@ -123,6 +123,7 @@
 	height: 21px;
 }
 
+
 .right form textarea,
 .right form input.text,
 .right form textarea.htmleditor {
@@ -212,6 +213,17 @@
 .right form .fieldgroup input, 
 .right form .fieldgroup select {
 	width: auto;
+}
+
+#right form .calendardate, .calendardate {
+	position: relative;
+}
+#right form .calendardate input, .calendardate input {
+	width: 8em;
+}
+
+#SiteTreeFilterDate {
+	width: 68px;
 }
 
 /**
