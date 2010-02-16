@@ -11,8 +11,10 @@ abstract class StaticPublisher extends DataObjectDecorator {
 	 */
 	static $echo_progress = false;
 	
-	// Realtime static publishing... the second a page
-	// is saved, it is written to the cache
+	/**
+	 * Realtime static publishing... the second a page
+    * is saved, it is written to the cache 
+	 */
 	// @todo this is currently disabled until template problems can be fixed
 	static $disable_realtime = true;
 	

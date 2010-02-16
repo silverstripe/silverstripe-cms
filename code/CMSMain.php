@@ -350,6 +350,13 @@ JS;
 		return $result;
 	}
 
+	/**
+	 * Save the current sites {@link SiteConfig} into the database
+	 *
+	 * @param array $data 
+	 * @param Form $form 
+	 * @return FormResponse
+	 */
 	function save_siteconfig($data, $form) {
 		$siteConfig = SiteConfig::current_site_config();
 		$form->saveInto($siteConfig);
@@ -693,6 +700,12 @@ JS;
 		
 		return new GroupedDropdownField("ReportSelector", _t('CMSMain.REPORT', 'Report'),$finalOptions);
 	}
+	
+	/**
+	 * Generate the parameter HTML for SideReports that have params
+	 *
+	 * @return LiteralField
+	 */
 	function ReportFormParameters() {
 		$forms = array();
 		foreach($this->SideReports() as $report) {
