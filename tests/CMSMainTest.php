@@ -106,6 +106,24 @@ class CMSMainTest extends FunctionalTest {
 			
 			$this->assertTrue($page->getCMSFields(null) instanceof FieldSet);
 		}
+	}
+	
+	function testCanPublishPageWithUnpublishedParentWithStrictHierarchyOff() {
+		$this->logInWithPermssion('ADMIN');
+		
+		SiteTree::enforce_strict_hierarchy(true);
+		$parentPage = $this->objFromFixture('Page','page3');
+		$childPage = $this->objFromFixture('Page','page1');
+		
+		$parentPage->doUnpublish();
+		$childPage->doUnpublish();
+
+		$this->assertContains(
+			'action_publish',
+			$childPage->getCMSActions()->column('Name'),
+			'Can publish a page with an unpublished parent with strict hierarchy off'
+		);
+		SiteTree::enforce_strict_hierarchy(false);
 	}	
 
 	/**
