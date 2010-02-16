@@ -111,7 +111,7 @@ class CMSMainTest extends FunctionalTest {
 	function testCanPublishPageWithUnpublishedParentWithStrictHierarchyOff() {
 		$this->logInWithPermssion('ADMIN');
 		
-		SiteTree::enforce_strict_hierarchy(true);
+		SiteTree::set_enforce_strict_hierarchy(true);
 		$parentPage = $this->objFromFixture('Page','page3');
 		$childPage = $this->objFromFixture('Page','page1');
 		
@@ -123,7 +123,7 @@ class CMSMainTest extends FunctionalTest {
 			$childPage->getCMSActions()->column('Name'),
 			'Can publish a page with an unpublished parent with strict hierarchy off'
 		);
-		SiteTree::enforce_strict_hierarchy(false);
+		SiteTree::set_enforce_strict_hierarchy(false);
 	}	
 
 	/**
