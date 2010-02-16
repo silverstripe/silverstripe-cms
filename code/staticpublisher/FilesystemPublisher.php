@@ -96,7 +96,7 @@ class FilesystemPublisher extends StaticPublisher {
 		$currentBaseURL = Director::baseURL();
 		if(self::$static_base_url) Director::setBaseURL(self::$static_base_url);
 		if($this->fileExtension == 'php') SSViewer::setOption('rewriteHashlinks', 'php'); 
-		if(StaticPublisher::echo_progress()) echo "Publishing to " . self::$static_base_url . "\n";		
+		if(StaticPublisher::echo_progress()) echo $this->class.": Publishing to " . self::$static_base_url . "\n";		
 		$files = array();
 		$i = 0;
 		$totalURLs = sizeof($urls);
