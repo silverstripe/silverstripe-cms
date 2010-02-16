@@ -116,7 +116,7 @@ class ReportAdmin extends LeftAndMain {
 	 * @return Form
 	 */
 	public function EditForm() {
-		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : Session::get('currentReport');
+		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : null;
 		
 		if($id) {
 			foreach($this->Reports() as $report) {
@@ -132,7 +132,7 @@ class ReportAdmin extends LeftAndMain {
 	 * @return SS_Report
 	 */
 	public function CurrentReport() {
-		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : Session::get('currentReport');
+		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : null;
 		
 		if($id) {
 			foreach($this->Reports() as $report) {
