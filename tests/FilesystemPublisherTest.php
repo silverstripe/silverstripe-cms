@@ -6,14 +6,21 @@
  * @subpackage tests
  */
 class FilesystemPublisherTest extends SapphireTest {
-	function setup() {
-		parent::setup();
+	
+	protected $usesDatabase = true;
+	
+	function setUp() {
+		parent::setUp();
+		
+		Object::add_extension("SiteTree", "FilesystemPublisher('../FilesystemPublisherTest-static-folder/')");
 		SiteTree::$write_homepage_map = false;
 	}
 	
-	function teardown() {
-		parent::teardown();
+	function tearDown() {
+		Object::remove_extension("SiteTree", "FilesystemPublisher");
 		SiteTree::$write_homepage_map = true;
+		
+		parent::tearDown();
 	}
 	
 	/**
@@ -32,7 +39,9 @@ class FilesystemPublisherTest extends SapphireTest {
 		$this->assertEquals($fsp->class, 'FilesystemPublisher');
 	}
 	
-	function testHomepageMapIsCorrect() {
+	function testHomepageMapIsWithStaticPublishing() {
+		$this->logInWithPermssion('ADMIN');
+		
 		$p1 = new Page();
 		$p1->URLSegment = strtolower(__CLASS__).'-page-1';
 		$p1->HomepageForDomain = '';
@@ -51,13 +60,15 @@ class FilesystemPublisherTest extends SapphireTest {
 		
 		$map = SiteTree::generate_homepage_domain_map();
 		
-		$validMap = array(
-			'domain1' => strtolower(__CLASS__).'-page-2',
-			'domain2' => strtolower(__CLASS__).'-page-3',
-			'domain3' => strtolower(__CLASS__).'-page-3',
+		$this->assertEquals(
+			$map, 
+			array(
+				'domain1' => strtolower(__CLASS__).'-page-2',
+				'domain2' => strtolower(__CLASS__).'-page-3',
+				'domain3' => strtolower(__CLASS__).'-page-3',
+			), 
+			'Homepage/domain map is correct when static publishing is enabled'
 		);
-		
-		$this->assertEquals($map, $validMap, 'Homepage/domain map is correct');
 	}
 	
 }
