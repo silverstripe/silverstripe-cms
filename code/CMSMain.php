@@ -390,7 +390,7 @@ JS;
 				singleton($treeClass)->flushCache();
 
 				$record = DataObject::get_one( $treeClass, "\"$treeClass\".\"ID\" = $id");
-				if($record) Versioned::reading_stage(null);
+				if($record) Versioned::set_reading_mode('');
 			}
 			
 			// Then, try getting a deleted record
