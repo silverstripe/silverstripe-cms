@@ -693,7 +693,7 @@ JS;
 		// $options[""] = _t('CMSMain.CHOOSEREPORT',"(Choose a report)");
 		foreach($this->SideReports() as $report) {
 			if($report->canView()) {
-			 	$options[$report->group()][$report->sort()][get_class($report)] = $report->title();
+			 	$options[$report->group()][$report->sort()][$report->ID()] = $report->title();
 			}
 		}
 		
