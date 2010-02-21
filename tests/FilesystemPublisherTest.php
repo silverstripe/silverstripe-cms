@@ -40,7 +40,7 @@ class FilesystemPublisherTest extends SapphireTest {
 	}
 	
 	function testHomepageMapIsWithStaticPublishing() {
-		$this->logInWithPermssion('ADMIN');
+		$this->logInWithPermission('ADMIN');
 		
 		$p1 = new Page();
 		$p1->URLSegment = strtolower(__CLASS__).'-page-1';

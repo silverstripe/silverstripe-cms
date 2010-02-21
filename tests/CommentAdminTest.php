@@ -27,7 +27,7 @@ class CommentAdminTest extends FunctionalTest {
 	
 	function testacceptmarked(){
 		$id = $this->idFromFixture('PageComment', 'Comment1');
-		$this->logInWithPermssion('ADMIN');
+		$this->logInWithPermission('ADMIN');
 		$result = $this->get('admin/comments/EditForm/field/Comments/item/2/delete');
 		$this->assertEquals(200, $result->getStatusCode());
 	}

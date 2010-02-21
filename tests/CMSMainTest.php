@@ -109,7 +109,7 @@ class CMSMainTest extends FunctionalTest {
 	}
 	
 	function testCanPublishPageWithUnpublishedParentWithStrictHierarchyOff() {
-		$this->logInWithPermssion('ADMIN');
+		$this->logInWithPermission('ADMIN');
 		
 		SiteTree::set_enforce_strict_hierarchy(true);
 		$parentPage = $this->objFromFixture('Page','page3');
@@ -177,7 +177,7 @@ class CMSMainTest extends FunctionalTest {
 	
 	function testDeletedPagesSiteTreeFilter() {
 		$id = $this->idFromFixture('Page', 'page3');
-		$this->logInWithPermssion('ADMIN');
+		$this->logInWithPermission('ADMIN');
 		$result = $this->get('admin/getfilteredsubtree?filter=CMSSiteTreeFilter_DeletedPages&ajax=1&ID=' . $id);
 		$this->assertEquals(200, $result->getStatusCode());
 	}
