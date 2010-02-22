@@ -20,13 +20,14 @@
 				if(this.is(':checked')) {
 					checkboxes.each(function() {
 						$(this).data('SecurityAdmin.oldChecked', $(this).attr('checked'));
+						$(this).data('SecurityAdmin.oldDisabled', $(this).attr('disabled'));
 						$(this).attr('disabled', 'disabled');
 						$(this).attr('checked', 'checked');
 					});
 				} else {
 					checkboxes.each(function() {
 						$(this).attr('checked', $(this).data('SecurityAdmin.oldChecked'));
-						$(this).attr('disabled', '');
+						$(this).attr('disabled', $(this).data('SecurityAdmin.oldDisabled'));
 					});
 				}
 			}
