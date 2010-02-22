@@ -308,15 +308,12 @@ class MemberTableField extends ComplexTableField {
 	function saveComplexTableField($data, $form, $params) {		
 		$className = $this->sourceClass();
 		$childData = new $className();
+		
+		// Needs to write before saveInto() to ensure the 'Groups' TreeMultiselectField saves
+		$childData->write();
+		
 		$form->saveInto($childData);
 		$childData->write();
-
-		// Only write group if no specific assignments have been set
-		if(isset($data['Groups']) && $data['Groups']) {
-			$childData->Groups()->setByIDList(explode(',', $data['Groups']));
-		} else {
-			$childData->Groups()->add($data['GroupID']);
-		}
 		
 		$closeLink = sprintf(
 			'<small><a href="' . $_SERVER['HTTP_REFERER'] . '" onclick="javascript:window.top.GB_hide(); return false;">(%s)</a></small>',
@@ -451,19 +448,6 @@ class MemberTableField_Item extends ComplexTableField_Item {
 }
 
 class MemberTableField_ItemRequest extends ComplexTableField_ItemRequest {
-
-	function saveComplexTableField($data, $form, $request) {
-		parent::saveComplexTableField($data, $form, $request);
-		
-		$childData = $this->dataObj();
-		
-		// Only write group if no specific assignments have been set
-		if(isset($data['Groups']) && $data['Groups']) {
-			$childData->Groups()->setByIDList(explode(',', $data['Groups']));
-		} else {
-			$childData->Groups()->add($data['GroupID']);
-		}
-	}
 
 	/**
 	 * Deleting an item from a member table field should just remove that member from the group
