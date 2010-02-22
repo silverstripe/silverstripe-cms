@@ -17,18 +17,14 @@ var _HANDLER_FORMS = {
 };
 
 (function($) {
-	/**
-	 * @class Tree panel.
-	 * @name ss.sitetree
-	 */
-	$('#sitetree').concrete('ss', function($){
-		return/** @lends ss.sitetree */{
-			onmatch: function() {
-				// make sure current ID of loaded form is actually selected in tree
-				var id = $('#Form_EditForm :input[name=ID]').val();
-				this[0].setCurrentByIdx(id);
-			}
-		};
+	$(window).bind('load', function(e) {
+		// behaviour.js load handlers need to be fired before this event, so we artificially delay it
+		setTimeout(function() {
+			// make sure current ID of loaded form is actually selected in tree
+			var tree = $('#sitetree')[0], id = $('#Form_EditForm :input[name=ID]').val();
+			if(!id) id = 0;
+			tree.setCurrentByIdx(id);
+		}, 200);
 	});
 }(jQuery));
 
@@ -233,9 +229,7 @@ TreeNodeAPI.prototype = {
 				self.removeNodeClass('loading');
 				
 				var pageID = jQuery(this).find(':input[name=ID]').val();
-				if(pageID) {
-					jQuery('#sitetree')[0].setCurrentByIdx(pageID);
-				}
+				jQuery('#sitetree')[0].setCurrentByIdx(pageID);
 			}
 		);
 		
