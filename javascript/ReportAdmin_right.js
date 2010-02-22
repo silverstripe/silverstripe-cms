@@ -1,6 +1,5 @@
-
 Behaviour.register({
-	'#Form_EditForm' : {
+	'body.ReportAdmin #Form_EditForm' : {
 		initialise : function() {
       		this.openTab = null;
 			this.prepareForm();
