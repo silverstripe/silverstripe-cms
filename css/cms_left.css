@@ -94,7 +94,7 @@ ul.tree span.a a.disabled {
 	color: #999;
 	cursor: pointer;
 }
-	ul.tree span.a a.disabled * {
+	ul.tree span.a a.disabled *, ul.tree span.a a.disabled.notinmenu *, ul.tree span.a a.disabled span.modified {
 		padding: 0;
 		background: none;
 		color: #999;
