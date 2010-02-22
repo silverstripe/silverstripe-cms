@@ -577,6 +577,7 @@ class InstallRequirements {
 	 */
 	function getDatabaseConfigurationHelper($databaseClass) {
 		$class = $databaseClass . 'ConfigurationHelper';
+		return (class_exists($class)) ? new $class() : new MySQLDatabaseConfigurationHelper();
 		return new $class();
 	}
 	
