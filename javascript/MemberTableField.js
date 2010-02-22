@@ -1,3 +1,39 @@
+(function($) {
+	$.concrete('ss', function($){
+		/**
+		 * Automatically check and disable all checkboxes if ADMIN permissions are selected.
+		 * As they're disabled, any changes won't be submitted (which is intended behaviour),
+		 * checking all boxes is purely presentational.
+		 */
+		$('#Permissions .checkbox[value=ADMIN]').concrete({
+			onmatch: function() {
+				this.toggleCheckboxes();
+
+				this._super();
+			},
+			onclick: function(e) {
+				this.toggleCheckboxes();
+			},
+			toggleCheckboxes: function() {
+				var self = this, checkboxes = this.parents('.field:eq(0)').find('.checkbox').not(this);
+				
+				if(this.is(':checked')) {
+					checkboxes.each(function() {
+						$(this).data('SecurityAdmin.oldChecked', $(this).attr('checked'));
+						$(this).attr('disabled', 'disabled');
+						$(this).attr('checked', 'checked');
+					});
+				} else {
+					checkboxes.each(function() {
+						$(this).attr('checked', $(this).data('SecurityAdmin.oldChecked'));
+						$(this).attr('disabled', '');
+					});
+				}
+			}
+		});
+	});
+}(jQuery));
+
 /**
  * Modified 2006-10-05, Ingo Schommer
  * This is more or less a copy of Member.js, with additions and changes
