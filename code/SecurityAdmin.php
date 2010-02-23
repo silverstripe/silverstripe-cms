@@ -47,7 +47,8 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	
 	function getEditForm($id = null) {
 		$form = parent::getEditForm($id);
-		
+
+		if(!$id) $id = $this->currentPageID();
 		if($id && is_numeric($id)) {
 			$fields = $form->Fields();
 
