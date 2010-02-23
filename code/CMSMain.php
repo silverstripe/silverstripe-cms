@@ -477,18 +477,8 @@ JS;
 			$this->extend('updateEditForm', $form);
 
 			return $form;
-		} if ($id == 0) {
-			$siteConfig = SiteConfig::current_site_config();
-			$fields = $siteConfig->getFormFields(); 
-			if(Object::has_extension('SiteConfig',"Translatable")){ 
-				$fields->push(new HiddenField('Locale','', $siteConfig->Locale ));       
-			} 
-			$form = new Form($this, "EditForm", $fields, $siteConfig->getFormActions());
-			$form->loadDataFrom($siteConfig);
-			
-			$this->extend('updateEditForm', $form);
-			
-			return $form;
+		} if ($id == 0 || $id == 'root') {
+			$form = $this->RootForm();
 		} else if($id) {
 			return new Form($this, "EditForm", new FieldSet(
 				new LabelField('PageDoesntExistLabel',_t('CMSMain.PAGENOTEXISTS',"This page doesn't exist"))), new FieldSet());
@@ -496,7 +486,22 @@ JS;
 		}
 	}
 
-
+	/**
+	 * @return Form
+	 */
+	function RootForm() {
+		$siteConfig = SiteConfig::current_site_config();
+		$fields = $siteConfig->getFormFields(); 
+		if(Object::has_extension('SiteConfig',"Translatable")){ 
+			$fields->push(new HiddenField('Locale','', $siteConfig->Locale ));       
+		} 
+		$form = new Form($this, "EditForm", $fields, $siteConfig->getFormActions());
+		$form->loadDataFrom($siteConfig);
+		
+		$this->extend('updateEditForm', $form);
+		
+		return $form;
+	}
 
 	//------------------------------------------------------------------------------------------//
 	// Data saving handlers

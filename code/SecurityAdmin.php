@@ -29,6 +29,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		'memberimport',
 		'GroupImportForm',
 		'groupimport',
+		'RootForm'
 	);
 
 	/**
@@ -57,82 +58,105 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		Requirements::javascript(THIRDPARTY_DIR . "/greybox/AmiJS.js");
 		Requirements::javascript(THIRDPARTY_DIR . "/greybox/greybox.js");
 	}
+	
+	function getEditForm($id = null) {
+		if(!$id) $id = $this->currentPageID();
 
-	public function getEditForm($id) {
-		$record = null;
+		if($id && $id != 'root') {
+			$record = DataObject::get_by_id($this->stat('tree_class'), $id);
+			if(!$record) return false;
+		}		
+
+		if($id && is_numeric($id)) {
+			$fields = $record->getCMSFields();
+
+			if($fields->hasTabSet()) {
+				$fields->findOrMakeTab('Root.Import',_t('Group.IMPORTTABTITLE', 'Import'));
+				$fields->addFieldToTab('Root.Import', 
+					new LiteralField(
+						'MemberImportFormIframe', 
+						sprintf(
+							'<iframe src="%s" id="MemberImportFormIframe" width="100%%" height="400px" border="0"></iframe>',
+							$this->Link('memberimport')
+						)
+					)
+				);
+			}
 		
-		// Root form
-		if (($id == 'root' || $id == 0)) {
-			$fields = new FieldSet(
-				new TabSet(
-					'Root',
-					new Tab('Import', _t('SecurityAdmin.TABIMPORT', 'Import'),
-						new LiteralField(
-							'GroupImportFormIframe', 
-							sprintf(
-								'<iframe src="%s" id="GroupImportFormIframe" width="100%%" height="400px" border="0"></iframe>',
-								$this->Link('groupimport')
+			$actions = new FieldSet(
+				new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member')),
+				new FormAction('save',_t('SecurityAdmin.SAVE','Save'))
+			);
+			
+			$form = new Form($this, "EditForm", $fields, $actions);
+			$form->loadDataFrom($record);
+
+			if(!$record->canEdit()) {
+				$readonlyFields = $form->Fields()->makeReadonly();
+				$form->setFields($readonlyFields);
+			}
+		
+			// Filter permissions
+			$permissionField = $form->Fields()->dataFieldByName('Permissions');
+			if($permissionField) $permissionField->setHiddenPermissions(self::$hidden_permissions);
+			
+			$this->extend('updateEditForm', $form);
+		} else {
+			$form = $this->RootForm();
+		}
+		
+		return $form;
+	}
+
+	/**
+	 * @return FieldSet
+	 */
+	function RootForm() {
+		$memberList = new MemberTableField(
+			$this,
+			"Members"
+		);
+		// unset 'inlineadd' permission, we don't want inline addition
+		$memberList->setPermissions(array('show', 'edit', 'delete', 'add'));
+		$memberList->setRelationAutoSetting(false);
+		
+		$fields = new FieldSet(
+			new TabSet(
+				'Root',
+				new Tab('Members', singleton('Member')->i18n_plural_name(),
+					$memberList,
+					new LiteralField('MembersCautionText', 
+						sprintf('<p class="caution-remove"><strong>%s</strong></p>',
+							_t(
+								'SecurityAdmin.MemberListCaution', 
+								'Caution: Removing members from this list will remove them from all groups and the database'
 							)
 						)
 					)
 				),
-				// necessary for tree node selection in LeftAndMain.EditForm.js
-				new HiddenField('ID', false, 0)
-			);
-
-			$actions = new FieldSet();
-
-			$form = new Form(
-				$this,
-				'EditForm',
-				$fields,
-				$actions
-			);
-			
-			$this->extend('updateEditForm', $form);
-			
-			return $form;
-		}
-
-		if($id && $id != 'root') {
-			$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-		}
-		
-		if(!$record) return false;
-		
-		$fields = $record->getCMSFields();
-		
-		if($fields->hasTabSet()) {
-			$fields->findOrMakeTab('Root.Import',_t('Group.IMPORTTABTITLE', 'Import'));
-			$fields->addFieldToTab('Root.Import', 
-				new LiteralField(
-					'MemberImportFormIframe', 
-					sprintf(
-						'<iframe src="%s" id="MemberImportFormIframe" width="100%%" height="400px" border="0"></iframe>',
-						$this->Link('memberimport')
+				new Tab('Import', _t('SecurityAdmin.TABIMPORT', 'Import'),
+					new LiteralField(
+						'GroupImportFormIframe', 
+						sprintf(
+							'<iframe src="%s" id="GroupImportFormIframe" width="100%%" height="400px" border="0"></iframe>',
+							$this->Link('groupimport')
+						)
 					)
 				)
-			);
-		}
-		
+			),
+			// necessary for tree node selection in LeftAndMain.EditForm.js
+			new HiddenField('ID', false, 0)
+		);
 		$actions = new FieldSet(
-			new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member')),
-			new FormAction('save',_t('SecurityAdmin.SAVE','Save'))
+			new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member'))
 		);
 		
-		$form = new Form($this, "EditForm", $fields, $actions);
-		$form->loadDataFrom($record);
-		
-		if(!$record->canEdit()) {
-			$readonlyFields = $form->Fields()->makeReadonly();
-			$form->setFields($readonlyFields);
-		}
-		
-		// Filter permissions
-		$permissionField = $form->Fields()->dataFieldByName('Permissions');
-		if($permissionField) $permissionField->setHiddenPermissions(self::$hidden_permissions);
-
-		$this->extend('updateEditForm', $form);
+		$form = new Form(
+			$this,
+			'EditForm',
+			$fields,
+			$actions
+		);
 
 		return $form;
 	}
