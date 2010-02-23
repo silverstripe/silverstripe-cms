@@ -103,9 +103,11 @@ class MemberTableField extends ComplexTableField {
 		}
 		
 		if($this->group) {
+			$groupIDs = array($this->group->ID);
+			if($this->group->AllChildren()) $groupIDs = array_merge($groupIDs, $this->group->AllChildren()->column('ID'));
 			$this->sourceFilter[] = sprintf(
 				'"Group_Members"."GroupID" IN (%s)', 
-				implode(',', array_merge($this->group->AllChildren()->column('ID'), array($this->group->ID)))
+				implode(',', $groupIDs)
 			);
 		}
 
