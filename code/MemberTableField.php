@@ -103,7 +103,10 @@ class MemberTableField extends ComplexTableField {
 		}
 		
 		if($this->group) {
-			$this->sourceFilter[] = sprintf('"Group_Members"."GroupID" = %d', $this->group->ID);
+			$this->sourceFilter[] = sprintf(
+				'"Group_Members"."GroupID" IN (%s)', 
+				implode(',', array_merge($this->group->AllChildren()->column('ID'), array($this->group->ID)))
+			);
 		}
 
 		$this->sourceJoin = " INNER JOIN \"Group_Members\" ON \"MemberID\"=\"Member\".\"ID\"";
