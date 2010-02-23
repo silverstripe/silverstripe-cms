@@ -15,7 +15,7 @@ class CommentAdminTest extends FunctionalTest {
 		
 		$comm = new CommentAdmin();
 		$resp = $comm->NumUnmoderated();
-		$this->assertEquals(1, $resp);
+		$this->assertEquals(2, $resp);
 	}
 	
 	function testNumSpam(){
@@ -25,11 +25,14 @@ class CommentAdminTest extends FunctionalTest {
 		$this->assertEquals(0, $resp);
 	}
 	
-	function testacceptmarked(){
-		$id = $this->idFromFixture('PageComment', 'Comment1');
+	function testdeletemarked(){
+		$comm = $this->objFromFixture('PageComment', 'Comment1');
+		$id = $comm->ID;
 		$this->logInWithPermission('ADMIN');
-		$result = $this->get('admin/comments/EditForm/field/Comments/item/2/delete');
-		$this->assertEquals(200, $result->getStatusCode());
+		$result = $this->get("admin/comments/EditForm/field/Comments/item/$id/delete");
+		$checkComm = DataObject::get_by_id('PageComment',$id);
+
+		$this->assertEquals(0, $checkComm->ID);
 	}
 	
 }

@@ -64,6 +64,7 @@ SiteConfig_CreateTopLevelGroups:
       GroupID: =>Group.rooteditusers
 PageComment:
     Comment1:
+        ID: 8
         Name: Person
         Comment: Very cool page
         NeedsModeration: 1
@@ -73,3 +74,8 @@ PageComment:
         Comment: I am a person
         NeedsModeration: 0
         EmailAddress: someone@somewhere.com
+    Comment3:
+        Name: Me
+        Comment: I like this comment
+        NeedsModeration: 1
+        EmailAddress: me@test.co.nz
