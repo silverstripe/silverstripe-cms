@@ -6,3 +6,9 @@
 #Form_EditForm_Permissions .Arg input {
 	text-align: right;
 }
+
+/* Ensure there's enough room in the tab for TreeMultiSelectField expansion */
+#MemberTableField_Popup_DetailForm #Groups,
+#MemberTableField_Popup_AddForm #Groups {
+	height: 250px;
+}
