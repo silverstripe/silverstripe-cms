@@ -17,12 +17,13 @@
 				</tr>
 			</thead>
 			<tfoot>
-				<% if can(add) %>
-				 <tr class="addtogrouprow">
-					<% if Markable %><td width="18">&nbsp;</dh><% end_if %>
-					$AddRecordForm.CellFields
-					<td class="actions" colspan="3">$AddRecordForm.CellActions</td>
-				</tr>
+				<% if Can(inlineadd) %>
+					<tr class="addtogrouprow">
+						<% if Markable %><td width="18">&nbsp;</dh><% end_if %>
+						$AddRecordForm.CellFields
+						<td class="actions" colspan="3">$AddRecordForm.CellActions</td>
+					</tr>
+				<% end_if %>
 				<tr style="display: none;">
 					<% if Markable %><td width="18">&nbsp;</td><% end_if %>
 					<td colspan="$ItemCount">
@@ -32,7 +33,6 @@
 					<% if Can(edit) %><td width="18">&nbsp;</td><% end_if %>
 					<% if Can(delete) %><td width="18">&nbsp;</td><% end_if %>
 				</tr>
-				<% end_if %>
 			</tfoot>
 			<tbody>
 				<% if Items %>

@@ -30,6 +30,8 @@ class MemberTableField extends ComplexTableField {
 
 	public $popupClass = 'MemberTableField_Popup';
 	
+	public $itemClass = 'MemberTableField_Item';
+	
 	static $data_class = 'Member';
 	
 	/**
@@ -37,6 +39,15 @@ class MemberTableField extends ComplexTableField {
 	 * @var int 
 	 */ 
 	public static $page_size = 20; 
+	
+	protected $permissions = array(
+		"add",
+		"edit",
+		"show",
+		"delete",
+		'inlineadd'
+		//"export",
+	);
 
 	/**
 	 * Constructor method for MemberTableField.
@@ -47,7 +58,7 @@ class MemberTableField extends ComplexTableField {
 	 * @param DataObjectSet $members Optional set of Members to set as the source items for this field
 	 * @param boolean $hidePassword Hide the password field or not in the summary?
 	 */
-	function __construct($controller, $name, $group, $members = null, $hidePassword = true) {
+	function __construct($controller, $name, $group = null, $members = null, $hidePassword = true) {
 		$sourceClass = self::$data_class;
 		$SNG_member = singleton($sourceClass);
 		$fieldList = $SNG_member->summaryFields();
@@ -64,7 +75,7 @@ class MemberTableField extends ComplexTableField {
 			} elseif(is_numeric($group)) {
 				$this->group = DataObject::get_by_id('Group', $group);
 			}
-		} else if(isset($_REQUEST['ctf']) && is_numeric($_REQUEST['ctf'][$this->Name()]["ID"])) {
+		} else if(isset($_REQUEST['ctf'][$this->Name()]["ID"]) && is_numeric($_REQUEST['ctf'][$this->Name()]["ID"])) {
 			$this->group = DataObject::get_by_id('Group', $_REQUEST['ctf'][$this->Name()]["ID"]);
 		}
 
@@ -76,7 +87,7 @@ class MemberTableField extends ComplexTableField {
 		
 		// @todo shouldn't this use $this->group? It's unclear exactly
 		// what group it should be customising the custom Member set with.
-		if($members) {
+		if($members && $group) {
 			$this->setCustomSourceItems($this->memberListWithGroupID($members, $group));
 		}
 
@@ -240,6 +251,17 @@ class MemberTableField extends ComplexTableField {
 		$this->group = $group;
 	}
 	
+	/**
+	 * @return Group
+	 */
+	function getGroup() {
+		return $this->group;
+	}
+	
+	function setController($controller) {
+		$this->controller = $controller;
+	}
+
 	function GetControllerName() {
 		return $this->controller->class;
 	}
@@ -329,6 +351,7 @@ class MemberTableField extends ComplexTableField {
 		$start = isset($_REQUEST['ctf'][$this->Name()]['start']) ? $_REQUEST['ctf'][$this->Name()]['start'] : 0; 
 		
 		$this->sourceItems = false;
+
 		if($this->group) {
 			$this->sourceItems = $this->group->Members( 
 				$this->pageSize, // limit 
@@ -336,6 +359,13 @@ class MemberTableField extends ComplexTableField {
 				$this->sourceFilter,
 				$this->sourceSort
 			);	
+		} else {
+			$this->sourceItems = DataObject::get(self::$data_class,
+				$this->sourceFilter,
+				$this->sourceSort,
+				null,
+				array('limit' => $this->pageSize, 'start' => $start)
+			);
 		}
 		// Because we are not used $this->upagedSourceItems any more, and the DataObjectSet is usually the source
 		// that a large member set runs out of memory. we disable it here.
@@ -377,6 +407,33 @@ class MemberTableField_Popup extends ComplexTableField_Popup {
 
 }
 
+class MemberTableField_Item extends ComplexTableField_Item {
+
+	function Actions() {
+		$actions = parent::Actions();
+		
+		foreach($actions as $action) {
+			if($action->Name == 'delete') {
+				if($this->parent->getGroup()) {
+					$action->TitleText = _t('MemberTableField.DeleteTitleText',
+						'Delete from this group',
+						PR_MEDIUM,
+						'Delete button hover text'
+					);
+				} else {
+					$action->TitleText = _t('MemberTableField.DeleteTitleTextDatabase',
+						'Delete from database and all groups',
+						PR_MEDIUM,
+						'Delete button hover text'
+					);
+				}
+			}
+		}
+
+		return $actions;
+	}
+}
+
 class MemberTableField_ItemRequest extends ComplexTableField_ItemRequest {
 	/**
 	 * Deleting an item from a member table field should just remove that member from the group
@@ -386,17 +443,21 @@ class MemberTableField_ItemRequest extends ComplexTableField_ItemRequest {
 			return false;
 		}
 
-		$groupID = $this->ctf->sourceID();
-		$group = DataObject::get_by_id('Group', $groupID);
-		
-		if ($group) {
+		// if a group limitation is set on the table, remove relation.
+		// otherwise remove the record from the database
+		if($this->ctf->getGroup()) {
+			$groupID = $this->ctf->sourceID();
+			$group = DataObject::get_by_id('Group', $groupID);
+			
+			// Remove from group and all child groups
 			foreach($group->getAllChildren() as $subGroup) {
 				$this->dataObj()->Groups()->remove($subGroup);
 			}
 			$this->dataObj()->Groups()->remove($groupID);
-		}
+		} else {
+			$this->dataObj()->delete();
+		}	
 	}
-	
 }
 
 ?>
