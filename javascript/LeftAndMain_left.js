@@ -16,6 +16,17 @@ var _HANDLER_FORMS = {
 	search : 'search_options'
 };
 
+(function($) {
+	$(window).bind('load', function(e) {
+		// behaviour.js load handlers need to be fired before this event, so we artificially delay it
+		setTimeout(function() {
+			// make sure current ID of loaded form is actually selected in tree
+			var tree = $('#sitetree')[0], id = $('#Form_EditForm :input[name=ID]').val();
+			if(!id) id = 0;
+			tree.setCurrentByIdx(id);
+		}, 200);
+	});
+}(jQuery));
 
 /**
  * Overload this with a real context menu if necessary
