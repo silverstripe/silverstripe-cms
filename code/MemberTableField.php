@@ -101,6 +101,10 @@ class MemberTableField extends ComplexTableField {
 			}
 			$this->sourceFilter[] = '(' . implode(' OR ', $searchFilters) . ')';
 		}
+		
+		if($this->group) {
+			$this->sourceFilter[] = sprintf('"Group_Members"."GroupID" = %d', $this->group->ID);
+		}
 
 		$this->sourceJoin = " INNER JOIN \"Group_Members\" ON \"MemberID\"=\"Member\".\"ID\"";
 		$this->setFieldListCsv($csvFieldList);
