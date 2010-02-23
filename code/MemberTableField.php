@@ -304,14 +304,19 @@ class MemberTableField extends ComplexTableField {
 	 *
 	 * @return string
 	 */
-	function saveComplexTableField($data, $form, $params) {
+	function saveComplexTableField($data, $form, $params) {		
 		$className = $this->sourceClass();
 		$childData = new $className();
 		
 		$form->saveInto($childData);
 		$childData->write();
 
-		$childData->Groups()->add($data['GroupID']);
+		// Only write group if no specific assignments have been set
+		if(isset($data['Groups']) && $data['Groups']) {
+			$childData->Groups()->setByIDList(explode(',', $data['Groups']));
+		} else {
+			$childData->Groups()->add($data['GroupID']);
+		}
 		
 		$closeLink = sprintf(
 			'<small><a href="' . $_SERVER['HTTP_REFERER'] . '" onclick="javascript:window.top.GB_hide(); return false;">(%s)</a></small>',
@@ -395,6 +400,16 @@ class MemberTableField extends ComplexTableField {
  * @subpackage security
  */
 class MemberTableField_Popup extends ComplexTableField_Popup {
+
+	function __construct($controller, $name, $fields, $validator, $readonly, $dataObject) {
+		$group = ($controller instanceof MemberTableField) ? $controller->getGroup() : $controller->getParent()->getGroup();
+		if($group) {
+			$groupsField = $fields->dataFieldByName('Groups');
+			if($groupsField) $groupsField->setValue($group->ID);
+		}
+		
+		parent::__construct($controller, $name, $fields, $validator, $readonly, $dataObject);
+	}
 	
 	function forTemplate() {
 		$ret = parent::forTemplate();
@@ -435,6 +450,20 @@ class MemberTableField_Item extends ComplexTableField_Item {
 }
 
 class MemberTableField_ItemRequest extends ComplexTableField_ItemRequest {
+
+	function saveComplexTableField($data, $form, $request) {
+		parent::saveComplexTableField($data, $form, $request);
+		
+		$childData = $this->dataObj();
+		
+		// Only write group if no specific assignments have been set
+		if(isset($data['Groups']) && $data['Groups']) {
+			$childData->Groups()->setByIDList(explode(',', $data['Groups']));
+		} else {
+			$childData->Groups()->add($data['GroupID']);
+		}
+	}
+
 	/**
 	 * Deleting an item from a member table field should just remove that member from the group
 	 */
@@ -457,6 +486,10 @@ class MemberTableField_ItemRequest extends ComplexTableField_ItemRequest {
 		} else {
 			$this->dataObj()->delete();
 		}	
+	}
+	
+	function getParent() {
+		return $this->ctf;
 	}
 }
 
