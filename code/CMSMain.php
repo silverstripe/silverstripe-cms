@@ -478,7 +478,7 @@ JS;
 
 			return $form;
 		} if ($id == 0 || $id == 'root') {
-			$form = $this->RootForm();
+			return $this->RootForm();
 		} else if($id) {
 			return new Form($this, "EditForm", new FieldSet(
 				new LabelField('PageDoesntExistLabel',_t('CMSMain.PAGENOTEXISTS',"This page doesn't exist"))), new FieldSet());
@@ -499,7 +499,7 @@ JS;
 		$form->loadDataFrom($siteConfig);
 		
 		$this->extend('updateEditForm', $form);
-		
+
 		return $form;
 	}
 
