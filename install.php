@@ -118,7 +118,7 @@ if(isset($_REQUEST['admin'])) {
 	if($usingEnv) {
 		$_REQUEST['admin'] = $adminConfig = array(
 			'username' => defined('SS_DEFAULT_ADMIN_USERNAME') ? SS_DEFAULT_ADMIN_USERNAME : 'admin',
-			'password' => defined('SS_DEFAULT_ADMIN_PASSWORD') ? SS_DEFAULT_ADMIN_PASSWORD : 'password',
+			'password' => defined('SS_DEFAULT_ADMIN_PASSWORD') ? SS_DEFAULT_ADMIN_PASSWORD : '',
 			'firstname' => $_REQUEST['admin']['firstname'],
 			'surname' => $_REQUEST['admin']['surname']
 		);
@@ -128,7 +128,7 @@ if(isset($_REQUEST['admin'])) {
 } else {
 	$_REQUEST['admin'] = $adminConfig = array(
 		'username' => defined('SS_DEFAULT_ADMIN_USERNAME') ? SS_DEFAULT_ADMIN_USERNAME : 'admin',
-		'password' => defined('SS_DEFAULT_ADMIN_PASSWORD') ? SS_DEFAULT_ADMIN_PASSWORD : 'password',
+		'password' => defined('SS_DEFAULT_ADMIN_PASSWORD') ? SS_DEFAULT_ADMIN_PASSWORD : '',
 		'firstname' => '',
 		'surname' => ''
 	);
@@ -171,6 +171,11 @@ if($req->hasErrors()) {
 if($databaseConfig) {
 	$dbReq = new InstallRequirements();
 	$dbReq->checkdatabase($databaseConfig);
+}
+
+if($adminConfig) {
+	$adminReq = new InstallRequirements();
+	$adminReq->checkAdminConfig($adminConfig);
 }
 
 // Actual processor
@@ -256,6 +261,15 @@ class InstallRequirements {
 					);
 				}
 			}
+		}
+	}
+	
+	function checkAdminConfig($adminConfig) {
+		if(!$adminConfig['username']) {
+			$this->error(array('', 'Please enter a username!'));
+		}
+		if(!$adminConfig['password']) {
+			$this->error(array('', 'Please enter a password!'));
 		}
 	}
 	
