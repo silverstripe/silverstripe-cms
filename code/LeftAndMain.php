@@ -1089,25 +1089,26 @@ JS;
 	public function CMSVersion() {
 		$sapphireVersionFile = file_get_contents(BASE_PATH . '/sapphire/silverstripe_version');
 		$cmsVersionFile = file_get_contents(BASE_PATH . '/cms/silverstripe_version');
-
-		if(strstr($sapphireVersionFile, "/sapphire/trunk")) {
-			$sapphireVersion = "trunk";
-		} else {
-			preg_match("/sapphire\/(?:(?:branches)|(?:tags))(?:\/rc)?\/([A-Za-z0-9._-]+)\/silverstripe_version/", $sapphireVersionFile, $matches);
-			$sapphireVersion = ($matches) ? $matches[1] : null;
-		}
-
-		if(strstr($cmsVersionFile, "/cms/trunk")) {
-			$cmsVersion = "trunk";
-		} else {
-			preg_match("/cms\/(?:(?:branches)|(?:tags))(?:\/rc)?\/([A-Za-z0-9._-]+)\/silverstripe_version/", $cmsVersionFile, $matches);
-			$cmsVersion = ($matches) ? $matches[1] : null;
-		}
+		
+		$sapphireVersion = $this->versionFromVersionFile($sapphireVersionFile);
+		$cmsVersion = $this->versionFromVersionFile($cmsVersionFile);
 
 		if($sapphireVersion == $cmsVersion) {
 			return $sapphireVersion;
 		}	else {
 			return "cms: $cmsVersion, sapphire: $sapphireVersion";
+		}
+	}
+	
+	/**
+	 * Return the version from the content of a silverstripe_version file
+	 */
+	public function versionFromVersionFile($fileContent) {
+		if(preg_match('/\/trunk\/silverstripe_version/', $fileContent)) {
+			return "trunk";
+		} else {
+			preg_match("/\/(?:branches|tags\/rc|tags\/beta|tags\/alpha|tags)\/([A-Za-z0-9._-]+)\/silverstripe_version/", $fileContent, $matches);
+			return ($matches) ? $matches[1] : null;
 		}
 	}
 	
