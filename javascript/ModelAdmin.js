@@ -23,7 +23,14 @@ $(document).ready(function() {
 	 * so it float to the right
 	 */
 	$('#Form_AddForm_action_doCreate').livequery(function(){
-		$(this).parent().addClass('ajaxActions');
+		if($(this)){
+			var parent = $(this).parent();
+			$("#right").append(parent);
+			
+			parent.addClass('ajaxActions');
+			parent.attr('id','form_actions_right');
+		}
+		
 	});
 	
     /*
@@ -35,6 +42,26 @@ $(document).ready(function() {
 	
 	$('input[name=action_search]').livequery('click', function() {
 		$('#contentPanel').fn('closeRightPanel');
+		if($('#Form_AddForm_action_doCreate')){
+			$('div[class=ajaxActions]').remove();
+		}
+	});
+	
+	/*
+	 * moves Forward button to the right and fixes it underneath result form.
+	*/
+	$('#Form_ResultsForm_action_goForward').livequery(function() {
+		$("#form_actions_right").append($(this));
+	});
+	
+	/*
+	 * we need an special case for results form since #ModelAdminPanel has overflow:hidden
+	 * it calculates the form height, gives it a padding and overflow auto, so we can scroll down.
+	*/
+	$('#Form_ResultsForm').livequery( function(){
+		var newModelAdminPanelHeight = $("#right").height()-$(".ajaxActions").height();
+		$('#Form_ResultsForm').height(newModelAdminPanelHeight);
+		$('#Form_ResultsForm').css('overflow','auto');
 	});
 	
 	
@@ -46,15 +73,22 @@ $(document).ready(function() {
 		positionActionArea();
 	});
 	
+	
 	/*
 	 * Make the status message and ajax action button fixed 
 	 */
 	function positionActionArea() {
+		var newModelAdminPanelHeight = $("#right").height()-$(".ajaxActions").height();
+		$('#ModelAdminPanel').height(newModelAdminPanelHeight);
+		$('#Form_ResultsForm').height(newModelAdminPanelHeight);
+		$('#ModelAdminPanel').css('padding-bottom','60px');
+		/*
 		if ( $.browser.msie && $.browser.version.indexOf("6.", 0)==0 ) {
 			newTopValue = $("#right").scrollTop()+$(window).height()-139;
 			$('.ajaxActions').css('top', newTopValue);
 			$('#statusMessage').css('top', newTopValue);
 		}
+		*/
 	}
 	
 	////////////////////////////////////////////////////////////////// 
@@ -326,6 +360,10 @@ $(document).ready(function() {
 			    }
 				if(!this.history || this.history.length <= 1) {
 				    $('#Form_EditForm_action_goBack, #Form_ResultsForm_action_goBack').hide();
+				
+					// we don't need save and delete button on result form
+					$('#Form_EditForm_action_doSave').hide();
+					$('#Form_EditForm_action_doDelete').hide();
 			    }
 				
     			Behaviour.apply(); // refreshes ComplexTableField

@@ -67,7 +67,8 @@ body.ModelAdmin #ResultTable_holder {
 }
 
 body.ModelAdmin #right{
-	overflow:auto !important;
+	overflow:hidden !important;
+	
 }
 
 body.ModelAdmin #right #ModelAdminPanel {
@@ -130,10 +131,15 @@ body.ModelAdmin #statusMessage {
 	margin: 5px 0;
 }
 
+body.ModelAdmin #right .Actions {
+	position:absolute;
+	bottom:4px;
+}
+
 body.ModelAdmin #right .ajaxActions {
-	position: absolute;
-	right: 2px;
-	bottom: -25px;
+	position:absolute;
+	bottom:4px;
+	height: 30px;
 }
 
 #LeftPane .tab {
