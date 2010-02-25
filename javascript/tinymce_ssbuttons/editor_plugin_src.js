@@ -83,6 +83,7 @@
 			    $('Form_EditorToolbarLinkForm').updateSelection(ed);
 			    $('Form_EditorToolbarLinkForm').respondToNodeChange(ed);
 		    }
+		    $('Form_EditorToolbarImageForm').respondToNodeChange(ed);
 	        });
 	        ed.onKeyUp.add(function(ed, o) {
 	    	    $('Form_EditorToolbarLinkForm').updateSelection(ed);
