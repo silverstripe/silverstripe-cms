@@ -1,8 +1,1 @@
-ROFL:ROFL:LOL:ROFL:ROFL
-           |
-  L   /---------
- LOL===       []\
-  L    \         \
-        \_________\
-          |     |
-       -------------/
+See http://doc.silverstripe.org
