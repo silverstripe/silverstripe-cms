@@ -55,6 +55,15 @@ class PageCommentInterface extends RequestHandler {
 	static $show_comments_when_disabled = true;
 	
 	/**
+	 * Define how you want to order page comments by. By default order by newest
+	 * to oldest. 
+	 * 
+	 * @var String - used as $orderby in DB query
+	 * @since 2.4 
+	 */
+	static $order_comments_by = "\"Created\" DESC";
+	
+	/**
 	 * Create a new page comment interface
 	 * @param controller The controller that the interface is used on
 	 * @param methodName The method to return this PageCommentInterface object
@@ -97,8 +106,19 @@ class PageCommentInterface extends RequestHandler {
 	static function set_show_comments_when_disabled($state) {
 		self::$show_comments_when_disabled = $state;
 	}
+	
+	/**
+	 * See {@link PageCommentInterface::$order_comments_by}
+	 *
+	 * @param String
+	 */
+	static function set_order_comments_by($order) {
+		self::$order_comments_by = $order;
+	}
+	
 	/**
 	 * See {@link PageCommentInterface::$use_ajax_commenting}
+	 *
 	 * @param bool
 	 */
 	static function set_use_ajax_commenting($state) {
@@ -212,7 +232,8 @@ class PageCommentInterface extends RequestHandler {
 		
 		$spamfilter = isset($_GET['showspam']) ? '' : "AND \"IsSpam\" = 0";
 		$unmoderatedfilter = Permission::check('ADMIN') ? '' : "AND \"NeedsModeration\" = 0";
-		$comments =  DataObject::get("PageComment", "\"ParentID\" = '" . Convert::raw2sql($this->page->ID) . "' $spamfilter $unmoderatedfilter", '"Created" DESC', "", $limit);
+		$order = self::$order_comments_by;
+		$comments =  DataObject::get("PageComment", "\"ParentID\" = '" . Convert::raw2sql($this->page->ID) . "' $spamfilter $unmoderatedfilter", $order, "", $limit);
 		
 		if(is_null($comments)) {
 			return;
