@@ -35,6 +35,7 @@ class AssetAdmin extends LeftAndMain {
 		'removefile',
 		'save',
 		'savefile',
+		'sync',
 		'uploadiframe',
 		'UploadForm',
 		'deleteUnusedThumbnails' => 'ADMIN'
@@ -479,6 +480,10 @@ HTML;
 			$('record-$data[ID]').getElementsByTagName('td')[1].innerHTML = "$title";
 			$('record-$data[ID]').getElementsByTagName('td')[2].innerHTML = "$name";
 JS;
+	}
+	
+	public function sync() {
+		echo Filesystem::sync();
 	}
 	
 	/**

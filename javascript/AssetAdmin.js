@@ -342,7 +342,7 @@ FilesystemSyncClass.prototype = {
 	
 	onclick : function() {
 		statusMessage('Looking for new files');
-        new Ajax.Request('dev/tasks/FilesystemSyncTask', {
+        new Ajax.Request('admin/assets/sync', {
             onSuccess: function(t) {
                 statusMessage(t.responseText, "good");
             },
