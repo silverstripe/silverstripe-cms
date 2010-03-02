@@ -374,6 +374,16 @@ $lang['en_US']['MemberList_Table.ss']['SN'] = 'Surname';
 $lang['en_US']['MemberTableField']['ADD'] = 'Add';
 $lang['en_US']['MemberTableField']['ADDEDTOGROUP'] = 'Added member to group';
 $lang['en_US']['MemberTableField']['ADDINGFIELD'] = 'Adding failed';
+$lang['en_US']['MemberTableField']['DeleteTitleText'] = array(
+	'Delete from this group',
+	PR_MEDIUM,
+	'Delete button hover text'
+);
+$lang['en_US']['MemberTableField']['DeleteTitleTextDatabase'] = array(
+	'Delete from database and all groups',
+	PR_MEDIUM,
+	'Delete button hover text'
+);
 $lang['en_US']['MemberTableField']['ERRORADDINGUSER'] = 'There was an error adding the user to the group: %s';
 $lang['en_US']['MemberTableField']['FILTER'] = 'Filter';
 $lang['en_US']['MemberTableField']['SEARCH'] = 'Search';
@@ -496,6 +506,7 @@ $lang['en_US']['SecurityAdmin']['MENUTITLE'] = array(
 	100,
 	'Menu title'
 );
+$lang['en_US']['SecurityAdmin']['MemberListCaution'] = 'Caution: Removing members from this list will remove them from all groups and the database';
 $lang['en_US']['SecurityAdmin']['NEWGROUP'] = 'New Group';
 $lang['en_US']['SecurityAdmin']['SAVE'] = 'Save';
 $lang['en_US']['SecurityAdmin']['SGROUPS'] = 'Security Groups';
