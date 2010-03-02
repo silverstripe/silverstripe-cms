@@ -163,4 +163,3 @@ function createFile($filename, $content) {
 	if(($fh = fopen($base . $filename, 'w')) && fwrite($fh, $content) && fclose($fh))
 		return true;
 }
-?>
