@@ -60,7 +60,7 @@ $otherDatabaseLocations = array(
 	'postgresql' => array(
 		'dir' => 'postgresql/code',
 		'class' => 'PostgreSQLDatabase',
-		'title' => 'PostgreSQL'
+		'title' => 'PostgreSQL 8.3+'
 	),
 	'sqlite3' => array(
 		'dir' => 'sqlite3/code',
@@ -75,7 +75,7 @@ $otherDatabaseLocations = array(
 );
 
 // MySQL support comes out of the box with sapphire
-$foundDatabaseClasses = array('MySQLDatabase' => 'MySQL');
+$foundDatabaseClasses = array('MySQLDatabase' => 'MySQL 4.1+');
 include_once('sapphire/dev/install/DatabaseConfigurationHelper.php');
 include_once('sapphire/dev/install/MySQLDatabaseConfigurationHelper.php');
 
