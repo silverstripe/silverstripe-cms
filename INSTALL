@@ -5,18 +5,15 @@ in your web browser (which in turn runs index.php).
 
 This will lead you through a web-based installation process.
 
-
 Server Requirements
   * PHP 5+
-  * MySQL 4.1+
-  * Apache or Lighttpd webserver (feel free to try with others)
-  * Details at http://doc.silverstripe.com/doku.php?id=server-requirements
-
+  * MySQL 4.1+ (other databases are supported - details here: http://doc.silverstripe.com/doku.php?id=server-requirements)
+  * Apache, IIS 7+ or Lighttpd webserver (feel free to try with others)
+  * More information on server requirements here: http://doc.silverstripe.com/doku.php?id=server-requirements
 
 General documentation, tutorials: 
   * Wiki: http://doc.silverstripe.com/
   * Tutorials: http://doc.silverstripe.com/doku.php?id=silverstripe-tutorial
-  
 
 Forum
   * http://www.silverstripe.com/silverstripe-forum/
