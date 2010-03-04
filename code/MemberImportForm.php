@@ -44,7 +44,7 @@ class MemberImportForm extends Form {
 					)
 				)
 			);
-			$fileField->setAllowedExtensions(array('csv'));
+			$fileField->getValidator()->setAllowedExtensions(array('csv'));
 		}
 		
 		if(!$actions) $actions = new FieldSet(
