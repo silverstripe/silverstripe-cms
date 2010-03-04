@@ -185,10 +185,10 @@ class PageComment_Controller extends Controller {
 			}
 		}
 		
-		if($this->isAjax()) {
+		if(Director::is_ajax()) {
 			echo "";
 		} else {
-			$this->redirectBack();
+			Director::redirectBack();
 		}
 	}
 	
@@ -200,10 +200,10 @@ class PageComment_Controller extends Controller {
 			}
 		}
 		
-		if($this->isAjax()) {
+		if(Director::is_ajax()) {
 			echo "";
 		} else {
-			$this->redirectBack();
+			Director::redirectBack();
 		}
 	}
 	
@@ -217,10 +217,10 @@ class PageComment_Controller extends Controller {
 			
 				// @todo Report to spamprotecter this is true
 			
-				if($this->isAjax()) {
+				if(Director::is_ajax()) {
 					echo $comment->renderWith('PageCommentInterface_singlecomment');
 				} else {
-					$this->redirectBack();
+					Director::redirectBack();
 				}
 			}
 		}
@@ -254,14 +254,14 @@ class PageComment_Controller extends Controller {
 				$comment->write();
 			}
 		}
-		if($this->isAjax()) {
+		if(Director::is_ajax()) {
 			if(SSAkismet::isEnabled() && SSAkismet::getSaveSpam()) {
 				echo $comment->renderWith('PageCommentInterface_singlecomment');
 			} else {
 				echo '';
 			}
 		} else {
-			$this->redirectBack();
+			Director::redirectBack();
 		}	
 	}
 	/**
@@ -291,10 +291,10 @@ class PageComment_Controller extends Controller {
 				$comment->write();
 			}
 		}
-		if($this->isAjax()) {
+		if(Director::is_ajax()) {
 			echo $comment->renderWith('PageCommentInterface_singlecomment');
 		} else {		
-			$this->redirectBack();
+			Director::redirectBack();
 		}
 	}
 	

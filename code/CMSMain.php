@@ -668,7 +668,7 @@ JS;
 		$recordID = $record->ID;
 		$record->delete();
 		
-		if($this->isAjax()) {
+		if(Director::is_ajax()) {
 			// need a valid ID value even if the record doesn't have one in the database
 			// (its still present in the live tables)
 			$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree_Live\".\"ID\" = $recordID");
@@ -683,7 +683,7 @@ JS;
 				return FormResponse::respond();
 			}			
 		} else {
-			$this->redirectBack();
+			Director::redirectBack();
 		}
 	}
 	
@@ -913,7 +913,7 @@ JS;
 
 			SSViewer::setOption('rewriteHashlinks', false);
 			
-			if($this->isAjax()) {
+			if(Director::is_ajax()) {
 				$result = $templateData->renderWith($this->class . '_right');
 				$parts = split('</?form[^>]*>', $result);
 				return $parts[sizeof($parts)-2];
@@ -997,7 +997,7 @@ JS;
 	}
 
 	function sendFormToBrowser($templateData) {
-		if($this->isAjax()) {
+		if(Director::is_ajax()) {
 			SSViewer::setOption('rewriteHashlinks', false);
 			$result = $this->customise($templateData)->renderWith($this->class . '_right');
 			$parts = split('</?form[^>]*>', $result);
