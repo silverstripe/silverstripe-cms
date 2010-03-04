@@ -113,7 +113,7 @@ class LeftAndMain extends Controller {
 		);
 		
 		// set reading lang
-		if(Object::has_extension('SiteTree', 'Translatable') && !Director::is_ajax()) {
+		if(Object::has_extension('SiteTree', 'Translatable') && !$this->isAjax()) {
 			Translatable::choose_site_locale(array_keys(Translatable::get_existing_content_languages('SiteTree')));
 		}
 
@@ -151,7 +151,7 @@ class LeftAndMain extends Controller {
 		if(Director::redirected_to()) return;
 
 		// Audit logging hook
-		if(empty($_REQUEST['executeForm']) && !Director::is_ajax()) $this->extend('accessedCMS');
+		if(empty($_REQUEST['executeForm']) && !$this->isAjax()) $this->extend('accessedCMS');
 
 		// Set the members html editor config
 		HtmlEditorConfig::set_active(Member::currentUser()->getHtmlEditorConfigForCMS());
@@ -352,10 +352,9 @@ class LeftAndMain extends Controller {
 			Session::set('currentMember', $params['OtherID']);
 		}
 
-		if(Director::is_ajax()) {
+		if($this->isAjax()) {
 			SSViewer::setOption('rewriteHashlinks', false);
 			return $this->EditForm()->formHtmlContent();
-
 		} else {
 			return array();
 		}
@@ -576,7 +575,7 @@ class LeftAndMain extends Controller {
 	 * and updates the tree via javascript.
 	 */
 	public function returnItemToUser($p) {
-		if(Director::is_ajax()) {
+		if($this->isAjax()) {
 			// Prepare the object for insertion.
 			$parentID = (int) $p->ParentID;
 			$id = $p->ID ? $p->ID : "new-$p->class-$p->ParentID";
@@ -670,7 +669,7 @@ JS;
 			$record->Status = ($record->Status == "New page" || $record->Status == "Saved (new)") ? "Saved (new)" : "Saved (update)";
 		}
 
-		if(Director::is_ajax()) {
+		if($this->isAjax()) {
 			if($SQL_id != $record->ID) {
 				FormResponse::add("$('sitetree').setNodeIdx(\"{$SQL_id}\", \"$record->ID\");");
 				FormResponse::add("$('Form_EditForm').elements.ID.value = \"$record->ID\";");

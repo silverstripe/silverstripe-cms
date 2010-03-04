@@ -95,7 +95,7 @@ class ReportAdmin extends LeftAndMain {
 		if(isset($params['ID'])) Session::set('currentReport', $params['ID']);
 		if(isset($params['OtherID'])) Session::set('currentOtherID', $params['OtherID']);
 		
-		if(Director::is_ajax()) {
+		if($this->isAjax()) {
 			SSViewer::setOption('rewriteHashlinks', false);
 			
 			$result = $this->customise(array(

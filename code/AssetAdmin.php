@@ -657,13 +657,13 @@ JS;
 			$file->delete();
 			$file->destroy();
 			
-			if(Director::is_ajax()) {
+			if($this->isAjax()) {
 				echo <<<JS
 				$('Form_EditForm_Files').removeFile($fileID);
 				statusMessage('removed file', 'good');
 JS;
 			} else {
-				Director::redirectBack();
+				$this->redirectBack();
 			}
 		} else {
 			user_error("AssetAdmin::removefile: Bad parameters: File=$fileID", E_USER_ERROR);
