@@ -145,7 +145,6 @@ if(file_exists('mysite/_config.php')) {
 	} else if(preg_match("/\\\$databaseConfig\s*=\s*[^\n\r]+[\n\r]/", file_get_contents("mysite/_config.php"), $parts)) {
 		$alreadyInstalled = true;
 	}
-	
 }
 
 if(file_exists('sapphire/silverstripe_version')) {
@@ -210,13 +209,12 @@ if((isset($_REQUEST['go']) || $installFromCli) && !$req->hasErrors() && !$dbReq-
 
 /**
  * This class checks requirements
- * Each of the requireXXX functions takes an argument which gives a user description of the test.  It's an array
- * of 3 parts:
+ * Each of the requireXXX functions takes an argument which gives a user description of the test.
+ * It's an array of 3 parts:
  *  $description[0] - The test catetgory
  *  $description[1] - The test title
  *  $description[2] - The test error to show, if it goes wrong
  */
- 
 class InstallRequirements {
 	var $errors, $warnings, $tests;
 	
@@ -272,12 +270,55 @@ class InstallRequirements {
 			$this->error(array('', 'Please enter a password!'));
 		}
 	}
+
+	/**
+	 * Check if the web server is IIS.
+	 * @return boolean
+	 */
+	function isIIS() {
+		if(isset($_SERVER['SERVER_SOFTWARE'])) {
+			if(strpos($_SERVER['SERVER_SOFTWARE'], 'IIS') !== false) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	function isApache() {
+		$webserver = strip_tags(trim(@$_SERVER['SERVER_SIGNATURE']));
+		if(!$webserver) {
+			if(isset($_SERVER['SERVER_SOFTWARE'])) {
+				if(strpos($_SERVER['SERVER_SOFTWARE'], 'Apache') !== false) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	function findWebserver() {
+		$webserver = strip_tags(trim(@$_SERVER['SERVER_SIGNATURE']));
+		if(!$webserver) {
+			if(isset($_SERVER['SERVER_SOFTWARE'])) {
+				if(strpos($_SERVER['SERVER_SOFTWARE'], 'IIS') !== false ||
+					strpos($_SERVER['SERVER_SOFTWARE'], 'Apache') !== false) {
+					$webserver = $_SERVER['SERVER_SOFTWARE'];
+				}
+			} else {
+				$webserver = "I can't tell what webserver you are running";
+			}
+		}
+		return $webserver;
+	}
 	
 	/**
 	 * Check everything except the database
 	 */
 	function check() {
 		$this->errors = null;
+		$isApache = $this->isApache();
+		$isIIS = $this->isIIS();
+		$webserver = $this->findWebserver();
 		
 		$this->requirePHPVersion('5.2.0', '5.0.4', array("PHP Configuration", "PHP5 installed", null, "PHP version " . phpversion()));
 
@@ -286,39 +327,35 @@ class InstallRequirements {
 			"Does the webserver know where files are stored?", 
 			"The webserver isn't letting me identify where files are stored.",
 			$this->getBaseDir()
-			));		
+		));
+		
 		$this->requireFile('mysite', array("File permissions", "mysite/ folder exists", "There's no mysite folder."));
 		$this->requireFile('sapphire', array("File permissions", "sapphire/ folder exists", "There's no sapphire folder."));
 		$this->requireFile('cms', array("File permissions", "cms/ folder exists", "There's no cms folder."));
-		$this->requireWriteable('.htaccess', array("File permissions", "Is the .htaccess file writeable?", null));
+		
+		if($isApache) {
+			$this->requireWriteable('.htaccess', array("File permissions", "Is the .htaccess file writeable?", null));
+		} elseif($isIIS) {
+			$this->requireWriteable('web.config', array("File permissions", "Is the web.config file writeable?", null));
+		}
+		
 		$this->requireWriteable('mysite/_config.php', array("File permissions", "Is the mysite/_config.php file writeable?", null));
 		$this->requireWriteable('assets', array("File permissions", "Is the assets/ folder writeable?", null));
 		
 		$this->requireTempFolder(array('File permissions', 'Is the temporary folder writeable?', null));
 		
 		// Check for web server, unless we're calling the installer from the command-line
-		if(!isset($_SERVER['argv']) || !$_SERVER['argv']) { 
-			$webserver = strip_tags(trim($_SERVER['SERVER_SIGNATURE']));
-			if(!$webserver) {
-				if(isset($_SERVER['SERVER_SOFTWARE'])) {
-					if(strpos($_SERVER['SERVER_SOFTWARE'], 'IIS') !== false ||
-						strpos($_SERVER['SERVER_SOFTWARE'], 'Apache') !== false) {
-						$webserver = $_SERVER['SERVER_SOFTWARE'];
-					}
-				} else {
-					$webserver = "I can't tell what webserver you are running";
-				}
-			}
-			
+		if(!isset($_SERVER['argv']) || !$_SERVER['argv']) {
 			$this->isRunningWebServer(array("Webserver Configuration", "Server software", "$webserver.  Without Apache I can't tell if mod_rewrite is enabled.", $webserver));
-			if(function_exists('apache_get_modules')) {
+			
+			if($isApache) {
 				$this->requireApacheModule('mod_rewrite', array("Webserver Configuration", "mod_rewrite enabled", "You need mod_rewrite to run SilverStripe CMS, but it is not enabled."));
-			} elseif(strpos($webserver, 'IIS/7') !== false) {
+			} elseif($isIIS) {
 				$this->requireIISRewriteModule('IIS_UrlRewriteModule', array("Webserver Configuration", "IIS URL Rewrite Module enabled", "You need to enable the IIS URL Rewrite Module, but it is not installed or enabled. Download it for IIS 7 from http://www.iis.net/expand/URLRewrite"));
 			} else {
 				$this->warning(array("Webserver Configuration", "URL rewrite enabled", "I can't tell whether any rewriting module is running.  You may need to configure a rewriting rule yourself."));
 			}
-		
+			
 			$this->requireServerVariables(array('SCRIPT_NAME','HTTP_HOST','SCRIPT_FILENAME'), array("Webserver config", "Recognised webserver", "You seem to be using an unsupported webserver.  The server variables SCRIPT_NAME, HTTP_HOST, SCRIPT_FILENAME need to be set."));
 		}
 		
@@ -479,22 +516,6 @@ class InstallRequirements {
 			$this->error($testDetails);
 		}
 	}
-	function requireNoFile($filename, $testDetails) {
-		$this->testing($testDetails);
-		$filename = $this->getBaseDir() . $filename;
-		if(file_exists($filename)) {
-			$testDetails[2] .= " (file '$filename' found)";
-			$this->error($testDetails);
-		}
-	}
-	function moveFileOutOfTheWay($filename, $testDetails) {
-		$this->testing($testDetails);
-		$filename = $this->getBaseDir() . $filename;
-		if(file_exists($filename)) {
-			if(file_exists("$filename.bak")) rm("$filename.bak");
-			rename($filename, "$filename.bak");
-		}
-	}
 	
 	function requireWriteable($filename, $testDetails) {
 		$this->testing($testDetails);
@@ -574,7 +595,7 @@ class InstallRequirements {
 		$this->testing($testDetails);
 		if(!in_array($moduleName, apache_get_modules())) $this->error($testDetails);
 	}
-
+	
 	function requireIISRewriteModule($moduleName, $testDetails) {
 		$this->testing($testDetails);
 		if(isset($_SERVER[$moduleName]) && $_SERVER[$moduleName]) {
@@ -669,7 +690,7 @@ class InstallRequirements {
 	
 	function isRunningWebServer($testDetails) {
 		$this->testing($testDetails);
-		if(function_exists('apache_get_modules') || stristr($_SERVER['SERVER_SIGNATURE'], 'Apache')) {
+		if(function_exists('apache_get_modules') || stristr(@$_SERVER['SERVER_SIGNATURE'], 'Apache')) {
 			return true;
 		} elseif(strpos($_SERVER['SERVER_SOFTWARE'], 'IIS') !== false) {
 			return true;
@@ -707,12 +728,11 @@ class InstallRequirements {
 
 		$this->tests[$section][$test] = array("error", $testDetails[2]);
 		$this->errors[] = $testDetails;
-
 	}
+	
 	function warning($testDetails) {
 		$section = $testDetails[0];
 		$test = $testDetails[1];
-
 
 		$this->tests[$section][$test] = array("warning", $testDetails[2]);
 		$this->warnings[] = $testDetails;
@@ -721,6 +741,7 @@ class InstallRequirements {
 	function hasErrors() {
 		return sizeof($this->errors);
 	}
+	
 	function hasWarnings() {
 		return sizeof($this->warnings);
 	}
@@ -766,6 +787,10 @@ class Installer extends InstallRequirements {
 			echo "SILVERSTRIPE COMMAND-LINE INSTALLATION\n\n";
 		}
 		
+		$webserver = $this->findWebserver();
+		$isIIS = $this->isIIS();
+		$isApache = $this->isApache();
+		
 		flush();
 		
 		if(isset($_POST['stats'])) {
@@ -789,8 +814,6 @@ class Installer extends InstallRequirements {
 			} else {
 				$databaseVersion = $config['db']['type'];
 			}
-			
-			$webserver = urlencode($_SERVER['SERVER_SOFTWARE']);
 			
 			$url = "http://ss2stat.silverstripe.com/Installation/add?SilverStripe=$silverstripe_version&PHP=$phpVersion&Database=$databaseVersion&WebServer=$webserver";
 			
@@ -874,9 +897,14 @@ PHP
 			);
 		}
 
-		$this->statusMessage("Setting up '.htaccess' file...");
-		
-		$this->createHtaccess();
+		// Write the appropriate web server configuration file
+		if($isApache) {
+			$this->statusMessage("Setting up '.htaccess' file...");
+			$this->createHtaccess();
+		} elseif($isIIS) {
+			$this->statusMessage("Setting up 'web.config' file...");
+			$this->createWebConfig();	
+		}
 
 		// Load the sapphire runtime
 		$_SERVER['SCRIPT_FILENAME'] = dirname(realpath($_SERVER['SCRIPT_FILENAME'])) . '/sapphire/main.php';
@@ -922,48 +950,13 @@ PHP
 		if(!$this->errors) {
 			if(isset($_SERVER['HTTP_HOST'])) {
 				$this->statusMessage("Checking that friendly URLs work...");
-				$this->checkModRewrite();
+				$this->checkRewrite();
 			} else {
 				echo "\n\nSilverStripe successfully installed\n";
 			}
 		}
 		
 		return $this->errors;
-	}
-	
-	function makeFolder($folder) {
-		$base = $this->getBaseDir();
-		if(!file_exists($base . $folder)) {
-			if(!mkdir($base . $folder, 02775)) {
-				$this->error("Couldn't create a folder called $base$folder");
-			} else {
-				chmod($base . $folder, 02775);
-			}
-		} 
-	}
-	
-	function renameFolder($oldName, $newName) {
-		if($oldName == $newName) return true;
-		
-		$base = $this->getBaseDir();
-		if(!rename($base . $oldName, $base . $newName)) {
-			$this->error("Couldn't rename $base$oldName to $base$newName");
-			return false;
-		} else {
-			return true;
-		}
-	}
-
-	function copyFolder($oldName, $newName) {
-		if($oldName == $newName) return true;
-		
-		$base = $this->getBaseDir();
-		if(!copyr($base . $oldName, $base . $newName)) {
-			$this->error("Couldn't rename $base$oldName to $base$newName");
-			return false;
-		} else {
-			return true;
-		}
 	}
 	
 	function writeToFile($filename, $content) {
@@ -1006,8 +999,7 @@ $baseClause
 RewriteCond %{REQUEST_URI} ^(.*)$
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule .* sapphire/main.php?url=%1&%{QUERY_STRING} [L]
-TEXT
-		;
+TEXT;
 		
 		if(file_exists('.htaccess')) {
 			$htaccess = file_get_contents('.htaccess');
@@ -1025,27 +1017,34 @@ TEXT
 		$this->writeToFile('.htaccess', $start . $rewrite . $end);
 	}
 	
-	function restoreHtaccess() {
-		$start = "### SILVERSTRIPE START ###\n";
-		$end= "\n### SILVERSTRIPE END ###";
+	/**
+	 * Writes basic configuration to the web.config for IIS
+	 * so that rewriting capability can be use.
+	 */
+	function createWebConfig() {
+		$content = <<<TEXT
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+	<system.webServer>
+		<rewrite>
+			<rules>
+				<rule name="SilverStripe Clean URLs" stopProcessing="true">
+					<match url="^(.*)$" />
+					<conditions>
+						<add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+					</conditions>
+					<action type="Rewrite" url="sapphire/main.php?url={R:1}" appendQueryString="true" />
+				</rule>
+			</rules>
+		</rewrite>
+	</system.webServer>
+</configuration>
+TEXT;
 		
-		if(file_exists('.htaccess')) {
-			$htaccess = file_get_contents('.htaccess');
-			
-			if(strpos($htaccess, '### SILVERSTRIPE START ###') === false && strpos($htaccess, '### SILVERSTRIPE END ###') === false) {
-				$htaccess .= "\n### SILVERSTRIPE START ###\n### SILVERSTRIPE END ###\n";
-			}
-		
-			if(strpos($htaccess, '### SILVERSTRIPE START ###') !== false && strpos($htaccess, '### SILVERSTRIPE END ###') !== false) {
-				$start = substr($htaccess, 0, strpos($htaccess, '### SILVERSTRIPE START ###')) . "### SILVERSTRIPE START ###\n";
-				$end = "\n" . substr($htaccess, strpos($htaccess, '### SILVERSTRIPE END ###'));
-			}
-		}
-		
-		$this->writeToFile('.htaccess', $start . $end);
+		$this->writeToFile('web.config', $content);
 	}
 	
-	function checkModRewrite() {
+	function checkRewrite() {
 		if(!isset($_SERVER['HTTP_HOST']) || !$_SERVER['HTTP_HOST']) {
 			$this->statusMessage("Installer seems to be called from command-line, we're going to assume that rewriting is working.");
 			return true;
@@ -1070,7 +1069,7 @@ TEXT
 						window.location = "home/successfullyinstalled?flush=1";
 					}, 2000);
 				} else {
-					$('#ModRewriteResult').html("Friendly URLs are not working.  This is most likely because mod_rewrite isn't configured"
+					$('#ModRewriteResult').html("Friendly URLs are not working.  This is most likely because a rewrite module isn't configured"
 						+ "correctly on your site.  Please check the following things in your Apache configuration; "
 						+ " you may need to get your web host or server administrator to do this for you:"
 						+ "<ul><li>mod_rewrite is enabled</li><li>AllowOverride All is set for your directory</li></ul>");
@@ -1105,80 +1104,4 @@ HTML;
 		else echo "$msg\n";
 		flush();
 	}
-}
-
-/**
- * Copy a file, or recursively copy a folder and its contents
- *
- * @author      Aidan Lister <aidan@php.net>
- * @version     1.0.1
- * @link        http://aidanlister.com/repos/v/function.copyr.php
- * @param       string   $source    Source path
- * @param       string   $dest      Destination path
- * @return      bool     Returns TRUE on success, FALSE on failure
- */
-function copyr($source, $dest)
-{
-    // Simple copy for a file
-    if (is_file($source)) {
-        return copy($source, $dest);
-    }
-
-    // Make destination directory
-    if (!is_dir($dest)) {
-        mkdir($dest);
-    }
-
-    // Loop through the folder
-    $dir = dir($source);
-    while (false !== $entry = $dir->read()) {
-        // Skip pointers
-        if ($entry == '.' || $entry == '..') {
-            continue;
-        }
-
-        // Deep copy directories
-        if ($dest !== "$source/$entry") {
-            copyr("$source/$entry", "$dest/$entry");
-        }
-    }
-
-    // Clean up
-    $dir->close();
-    return true;
-}
-
-function rm($fileglob)
-{
-   if (is_string($fileglob)) {
-       if (is_file($fileglob)) {
-           return unlink($fileglob);
-       } else if (is_dir($fileglob)) {
-           $ok = rm("$fileglob/*");
-           if (! $ok) {
-               return false;
-           }
-           return rmdir($fileglob);
-       } else {
-           $matching = glob($fileglob);
-           if ($matching === false) {
-               trigger_error(sprintf('No files match supplied glob %s', $fileglob), E_USER_WARNING);
-               return false;
-           }     
-           $rcs = array_map('rm', $matching);
-           if (in_array(false, $rcs)) {
-               return false;
-           }
-       }     
-   } else if (is_array($fileglob)) {
-       $rcs = array_map('rm', $fileglob);
-       if (in_array(false, $rcs)) {
-           return false;
-       }
-   } else {
-       trigger_error('Param #1 must be filename or glob pattern, or array of filenames or glob patterns', E_USER_ERROR);
-       return false;
-   }
-
-   return true;
 }
