@@ -241,7 +241,7 @@ class LeftAndMain extends Controller {
 
 		// Javascript combined files
 		Requirements::combine_files(
-			'_base.js',
+			'base.js',
 			array(
 				THIRDPARTY_DIR . '/prototype/prototype.js',
 				THIRDPARTY_DIR . '/behaviour/behaviour.js',
@@ -257,7 +257,7 @@ class LeftAndMain extends Controller {
 		);
 
 		Requirements::combine_files(
-			'_leftandmain.js',
+			'leftandmain.js',
 			array(
 				SAPPHIRE_DIR . '/javascript/loader.js',
 				CMS_DIR . '/javascript/hover.js',
@@ -278,7 +278,7 @@ class LeftAndMain extends Controller {
 		);
 
 		Requirements::combine_files(
-			'_cmsmain.js',
+			'cmsmain.js',
 			array(
 				CMS_DIR . '/javascript/CMSMain.js',
 				CMS_DIR . '/javascript/CMSMain_left.js',
