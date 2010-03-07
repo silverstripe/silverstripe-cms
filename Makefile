@@ -9,8 +9,6 @@ test:
 	$(MAKE) -C sapphire test
 
 getallmodules:
-	if [ -d ecommerce ]; then svn update ecommerce; else svn co http://svn.silverstripe.com/open/modules/ecommerce/trunk ecommerce; fi
-	if [ -d payment ]; then svn update payment; else svn co http://svn.silverstripe.com/open/modules/payment/trunk payment; fi
 	if [ -d subsites ]; then svn update subsites; else svn co http://svn.silverstripe.com/open/modules/subsites/trunk subsites; fi
 	if [ -d genericdataadmin ]; then svn update genericdataadmin; else svn co http://svn.silverstripe.com/open/modules/genericdataadmin/trunk genericdataadmin; fi
 	if [ -d forum ]; then svn update forum; else svn co http://svn.silverstripe.com/open/modules/forum/trunk forum; fi
