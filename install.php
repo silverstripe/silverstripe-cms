@@ -277,7 +277,7 @@ class InstallRequirements {
 	 */
 	function isIIS() {
 		if(isset($_SERVER['SERVER_SOFTWARE'])) {
-			if(strpos($_SERVER['SERVER_SOFTWARE'], 'IIS') !== false) {
+			if(strpos($_SERVER['SERVER_SOFTWARE'], 'IIS/7') !== false) {
 				return true;
 			}
 		}
@@ -300,7 +300,7 @@ class InstallRequirements {
 		$webserver = strip_tags(trim(@$_SERVER['SERVER_SIGNATURE']));
 		if(!$webserver) {
 			if(isset($_SERVER['SERVER_SOFTWARE'])) {
-				if(strpos($_SERVER['SERVER_SOFTWARE'], 'IIS') !== false ||
+				if(strpos($_SERVER['SERVER_SOFTWARE'], 'IIS/7') !== false ||
 					strpos($_SERVER['SERVER_SOFTWARE'], 'Apache') !== false) {
 					$webserver = $_SERVER['SERVER_SOFTWARE'];
 				}
