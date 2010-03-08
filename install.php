@@ -692,7 +692,7 @@ class InstallRequirements {
 		$this->testing($testDetails);
 		if(function_exists('apache_get_modules') || stristr(@$_SERVER['SERVER_SIGNATURE'], 'Apache')) {
 			return true;
-		} elseif(strpos($_SERVER['SERVER_SOFTWARE'], 'IIS') !== false) {
+		} elseif(strpos($_SERVER['SERVER_SOFTWARE'], 'IIS/7') !== false) {
 			return true;
 		} else {
 			$this->warning($testDetails);
