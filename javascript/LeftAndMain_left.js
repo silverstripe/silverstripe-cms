@@ -469,10 +469,15 @@ SiteTreeNode.prototype = {
 			new Ajax.Request(SiteTreeHandlers.orderChanged_url, {
 				method : 'post', 
 				postBody : parts.join('&') + '&CurrentlyOpenPageID=' + currentlyOpenPageID,
-				/*onSuccess : function(response) {
-					// statusMessage(response.responseText, 'good');
-				},*/
-				onSuccess: Ajax.Evaluator,
+				onSuccess : function(response) {
+					movedNode.removeNodeClass('loading');
+					if( $('sitetree').selected && $('sitetree').selected[0]){
+						var idx =  $('sitetree').selected[0].getIdx();
+						if(idx){
+							$('Form_EditForm').getPageFromServer(idx);
+						}
+					}
+				},
 				onFailure : function(response) {
 					errorMessage('error saving order', response);
 				}

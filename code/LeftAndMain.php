@@ -924,15 +924,6 @@ JS;
 					DB::query("UPDATE \"$className\" SET \"Sort\" = $counter WHERE \"ID\" = '$id'");
 				}
 			}
-			// Virtual pages require selected to be null if the page is the same.
-			FormResponse::add(
-				"if( $('sitetree').selected && $('sitetree').selected[0]){
-					var idx =  $('sitetree').selected[0].getIdx();
-					if(idx){
-						$('Form_EditForm').getPageFromServer(idx);
-					}
-				}\n" . $js
-			);
 			FormResponse::status_message(_t('LeftAndMain.SAVED'), 'good');
 		} else {
 			FormResponse::error(_t('LeftAndMain.REQUESTERROR',"Error in request"));
