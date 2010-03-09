@@ -656,6 +656,8 @@ JS;
 		$originalStatus = $record->Status;
 		$originalParentID = $record->ParentID;
 
+		$originalBrokenLinkValues = $record->HasBrokenLink.$record->HasBrokenFile;
+
 		$record->HasBrokenLink = 0;
 		$record->HasBrokenFile = 0;
 
@@ -727,6 +729,8 @@ JS;
 				FormResponse::add("if(\$('sitetree').setNodeParentID) \$('sitetree').setNodeParentID($record->ID, $record->ParentID);");
 			}
 
+			
+
 			$record->write();
 
 			if( ($record->class != 'VirtualPage') && $originalURLSegment != $record->URLSegment) {
@@ -742,6 +746,11 @@ JS;
 						FormResponse::add("$('sitetree').setNodeTitle($page->ID, \"$title\");");
 					}
 				}
+			}
+			
+			// If there has been a change in the broken link values, reload the page
+			if ($originalBrokenLinkValues != $record->HasBrokenLink.$record->HasBrokenFile) {
+				FormResponse::add("$('Form_EditForm').getPageFromServer($record->ID);");
 			}
 
 			// If the 'Save & Publish' button was clicked, also publish the page
