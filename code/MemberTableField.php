@@ -160,23 +160,40 @@ class MemberTableField extends ComplexTableField {
 	 */
 	function addtogroup() {
 		$data = $_REQUEST;
-		unset($data['ID']);
-		$ctfID = isset($data['ctf']) ? $data['ctf']['ID'] : null;
+		$groupID = (isset($data['ctf']['ID'])) ? $data['ctf']['ID'] : null;
 
-		if(!is_numeric($ctfID)) {
+		if(!is_numeric($groupID)) {
 			FormResponse::status_messsage(_t('MemberTableField.ADDINGFIELD', 'Adding failed'), 'bad');
+			return;
 		}
 
+		// Get existing record either by ID or unique identifier.
+		$identifierField = Member::get_unique_identifier_field();
 		$className = self::$data_class;
-		$record = new $className();
-
+		$record = null;
+		if(isset($data['ID']) && $data['ID']) {
+			$record = DataObject::get_by_id($className, $data['ID']);
+		} elseif(isset($data[$identifierField])) {
+			$record = DataObject::get_one(
+				$className, 
+				sprintf('"%s" = \'%s\'', $identifierField, $data[$identifierField])
+			);
+		} 
+			
+		// Fall back to creating a new record
+		if(!$record) $record = new $className();
+		
+		// Update an existing record, or populate a new one.
+		// If values on an existing (autocompleted) record have been changed,
+		// they will overwrite current data.
 		$record->update($data);
 		
+		// Validate record, mainly password restrictions.
+		// Note: Doesn't use Member_Validator
 		$valid = $record->validate();
-
 		if($valid->valid()) {
 			$record->write();
-			$record->Groups()->add($ctfID);
+			$record->Groups()->add($groupID);
 
 			$this->sourceItems();
 
