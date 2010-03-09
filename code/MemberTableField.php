@@ -171,9 +171,7 @@ class MemberTableField extends ComplexTableField {
 		$identifierField = Member::get_unique_identifier_field();
 		$className = self::$data_class;
 		$record = null;
-		if(isset($data['ID']) && $data['ID']) {
-			$record = DataObject::get_by_id($className, $data['ID']);
-		} elseif(isset($data[$identifierField])) {
+		if(isset($data[$identifierField])) {
 			$record = DataObject::get_one(
 				$className, 
 				sprintf('"%s" = \'%s\'', $identifierField, $data[$identifierField])
@@ -185,7 +183,10 @@ class MemberTableField extends ComplexTableField {
 		
 		// Update an existing record, or populate a new one.
 		// If values on an existing (autocompleted) record have been changed,
-		// they will overwrite current data.
+		// they will overwrite current data. We need to unset 'ID'
+		// record as it points to the group rather than the member record, and would
+		// cause the member to be written to a potentially existing record.
+		unset($data['ID']);
 		$record->update($data);
 		
 		// Validate record, mainly password restrictions.
