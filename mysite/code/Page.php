@@ -57,7 +57,7 @@ class Page_Controller extends ContentController {
 	/**
 	 * Process and render search results.
 	 * 
-	 * @param array $data The raw request data generated from post
+	 * @param array $data The raw request data submitted by user
 	 * @param SearchForm $form The form instance that was submitted
 	 * @param SS_HTTPRequest $request Request generated for this action
 	 */
