@@ -178,7 +178,7 @@ class PageComment_Controller extends Controller {
 		if(Permission::check('CMS_ACCESS_CMSMain')) {
 			$pageId = $_REQUEST['pageid'];
 			if(preg_match('/^\d+$/', $pageId)) {
-				$comments = DataObject::get("PageComment", "ParentID = $pageId");
+				$comments = DataObject::get("PageComment", "\"ParentID\" = $pageId");
 				if($comments) foreach($comments as $c) {
 					$c->delete();
 				}
