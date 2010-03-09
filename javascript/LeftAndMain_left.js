@@ -23,7 +23,7 @@ var _HANDLER_FORMS = {
 			// make sure current ID of loaded form is actually selected in tree
 			var tree = $('#sitetree')[0], id = $('#Form_EditForm :input[name=ID]').val();
 			if(!id) id = 0;
-			tree.setCurrentByIdx(id);
+			if(tree) tree.setCurrentByIdx(id);
 		}, 200);
 	});
 }(jQuery));
