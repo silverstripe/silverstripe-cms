@@ -86,11 +86,12 @@ $lang['en_US']['CMSBatchActions']['PUBLISHED_PAGES'] = 'Published %d pages, %d f
 $lang['en_US']['CMSBatchActions']['PUBLISHING_PAGES'] = 'Publishing pages';
 $lang['en_US']['CMSBatchActions']['PUBLISH_PAGES'] = 'Publish';
 $lang['en_US']['CMSMain']['ACCESS'] = array(
-	'Access to %s',
+	'Access to \'%s\' section',
 	PR_MEDIUM,
 	'Item in permission selection identifying the admin section. Example: Access to \'Files & Images\''
 );
 $lang['en_US']['CMSMain']['ACCESSALLINTERFACES'] = 'Access to all CMS sections';
+$lang['en_US']['CMSMain']['ACCESS_HELP'] = 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".';
 $lang['en_US']['CMSMain']['CANCEL'] = 'Cancel';
 $lang['en_US']['CMSMain']['CHOOSEREPORT'] = '(Choose a report)';
 $lang['en_US']['CMSMain']['COMPARINGV'] = 'Comparing versions %s and %s';
@@ -246,6 +247,7 @@ $lang['en_US']['CommentTableField.ss']['SPAM'] = 'spam';
 $lang['en_US']['ComplexTableField']['CLOSEPOPUP'] = 'Close Popup';
 $lang['en_US']['ComplexTableField']['SUCCESSADD'] = 'Added %s %s %s';
 $lang['en_US']['Group']['IMPORTTABTITLE'] = 'Import';
+$lang['en_US']['Group']['RolesAddEditLink'] = 'Add/edit roles';
 $lang['en_US']['GroupImportForm']['Help1'] = '<p>Import one or more groups in <em>CSV</em> format (comma-separated values). <small><a href="#" class="toggle-advanced">Show advanced usage</a></small></p>';
 $lang['en_US']['GroupImportForm']['Help2'] = '<div class="advanced">
 	<h4>Advanced usage</h4>
@@ -474,11 +476,6 @@ $lang['en_US']['PageCommentInterface_singlecomment.ss']['ISSPAM'] = 'this commen
 $lang['en_US']['PageCommentInterface_singlecomment.ss']['PBY'] = 'Posted by';
 $lang['en_US']['PageCommentInterface_singlecomment.ss']['REMCOM'] = 'remove this comment';
 $lang['en_US']['Permission']['CMS_ACCESS_CATEGORY'] = 'CMS Access';
-$lang['en_US']['PermissionRoleAdmin']['MENUTITLE'] = array(
-	'Roles',
-	100,
-	'Menu title'
-);
 $lang['en_US']['Permissions']['PERMISSIONS_CATEGORY'] = 'Roles and access permissions';
 $lang['en_US']['ReportAdmin']['MENUTITLE'] = array(
 	'Reports',
@@ -496,11 +493,12 @@ $lang['en_US']['ReportAdmin_right.ss']['WELCOME2'] = array(
 	'reporting section.  Please choose a specific report from the left.',
 	50
 );
+$lang['en_US']['SecurityAdmin']['ACCESS_HELP'] = 'Allow viewing, adding and editing users, as well as assigning permissions and roles to them.';
 $lang['en_US']['SecurityAdmin']['ADDMEMBER'] = 'Add Member';
 $lang['en_US']['SecurityAdmin']['APPLY_ROLES'] = 'Apply roles to groups';
-$lang['en_US']['SecurityAdmin']['APPLY_ROLES_HELP'] = 'Ability to edit the roles assigned to a group. Requires "Access to Security.".';
+$lang['en_US']['SecurityAdmin']['APPLY_ROLES_HELP'] = 'Ability to edit the roles assigned to a group. Requires the "Access to \'Security\' section" permission.';
 $lang['en_US']['SecurityAdmin']['EDITPERMISSIONS'] = 'Manage permissions for groups';
-$lang['en_US']['SecurityAdmin']['EDITPERMISSIONS_HELP'] = 'Ability to edit Permissions and IP Addresses for a group. Requires "Access to Security".';
+$lang['en_US']['SecurityAdmin']['EDITPERMISSIONS_HELP'] = 'Ability to edit Permissions and IP Addresses for a group. Requires the "Access to \'Security\' section" permission.';
 $lang['en_US']['SecurityAdmin']['MENUTITLE'] = array(
 	'Security',
 	100,
@@ -511,6 +509,7 @@ $lang['en_US']['SecurityAdmin']['NEWGROUP'] = 'New Group';
 $lang['en_US']['SecurityAdmin']['SAVE'] = 'Save';
 $lang['en_US']['SecurityAdmin']['SGROUPS'] = 'Security Groups';
 $lang['en_US']['SecurityAdmin']['TABIMPORT'] = 'Import';
+$lang['en_US']['SecurityAdmin']['TABROLES'] = 'Roles';
 $lang['en_US']['SecurityAdmin_MemberImportForm']['BtnImport'] = 'Import';
 $lang['en_US']['SecurityAdmin_MemberImportForm']['FileFieldLabel'] = 'CSV File <small>(Allowed extensions: *.csv)</small>';
 $lang['en_US']['SecurityAdmin_left.ss']['CREATE'] = 'Create';
