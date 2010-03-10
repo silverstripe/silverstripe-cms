@@ -169,12 +169,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 				'Roles',
 				'PermissionRole'
 			);
-			// Necessary to make Permission code checkboxes behave consistently
-			$rolesCTF->requirementsForPopupCallback = create_function(
-				'$popup', 
-				'Requirements::javascript(CMS_DIR . "/javascript/MemberTableField.js");'
-			);
-			
+
 			$rolesTab = $fields->findOrMakeTab('Root.Roles', _t('SecurityAdmin.TABROLES', 'Roles'));
 			$rolesTab->push(new LiteralField(
 				'RolesDescription', 
