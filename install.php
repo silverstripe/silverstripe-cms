@@ -50,8 +50,23 @@ if($envFileExists) {
 	}
 }
 
+include_once('sapphire/core/Object.php');
+include_once('sapphire/core/i18n.php');
 include_once('sapphire/dev/install/DatabaseConfigurationHelper.php');
 include_once('sapphire/dev/install/DatabaseAdapterRegistry.php');
+
+// Set default locale, but try and sniff from the user agent
+$locales = i18n::$common_locales;
+$defaultLocale = 'en_US';
+if (isset($_SERVER['HTTP_USER_AGENT'])) {
+	foreach($locales as $code => $details) {
+		$bits = explode('_', $code);
+		if (preg_match("/{$bits[0]}.{$bits[1]}/", $_SERVER['HTTP_USER_AGENT'])) {
+			$defaultLocale = $code;
+			break;
+		}
+	}
+}
 
 // Register the SilverStripe provided databases
 DatabaseAdapterRegistry::register(
@@ -832,6 +847,7 @@ class Installer extends InstallRequirements {
 			fclose($fh);
 		}
 		$theme = isset($_POST['template']) ? $_POST['template'] : 'blackcandy';
+		$locale = isset($_POST['locale']) ? $_POST['locale'] : 'en_US';
 		// Write the config file
 		global $usingEnv;
 		if($usingEnv) {
@@ -852,6 +868,9 @@ MySQLDatabase::set_connection_charset('utf8');
 // This line set's the current theme. More themes can be
 // downloaded from http://www.silverstripe.org/themes/
 SSViewer::set_theme('$theme');
+
+// Set the site locale
+i18n::set_locale($locale);
 
 // enable nested URLs for this site (e.g. page/sub-page/)
 SiteTree::enable_nested_urls();
@@ -891,6 +910,9 @@ MySQLDatabase::set_connection_charset('utf8');
 // This line set's the current theme. More themes can be
 // downloaded from http://www.silverstripe.org/themes/
 SSViewer::set_theme('$theme');
+
+// Set the site locale
+i18n::set_locale('$locale');
 
 // enable nested URLs for this site (e.g. page/sub-page/)
 SiteTree::enable_nested_urls();
