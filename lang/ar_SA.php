@@ -17,8 +17,6 @@ if(array_key_exists('ar_SA', $lang) && is_array($lang['ar_SA'])) {
 }
 
 $lang['ar_SA']['AssetAdmin']['CHOOSEFILE'] = 'اختر ملف';
-$lang['ar_SA']['AssetAdmin']['CONTENTMODBY'] = 'المحتوى قابل للتعديل بواسطة';
-$lang['ar_SA']['AssetAdmin']['CONTENTUSABLEBY'] = 'المحتوى قابل للستخدام بواسطة ';
 $lang['ar_SA']['AssetAdmin']['DELETEDX'] = 'ملفات محذوفة %s. %s';
 $lang['ar_SA']['AssetAdmin']['FILESREADY'] = 'ملفات جاهزة للرفع:';
 $lang['ar_SA']['AssetAdmin']['FOLDERDELETED'] = 'مجلد محذوف';
@@ -31,7 +29,6 @@ $lang['ar_SA']['AssetAdmin']['NOTEMP'] = 'لايوجد مجلد مؤقت للم�
 $lang['ar_SA']['AssetAdmin']['NOTHINGTOUPLOAD'] = 'لا يوجد ما يمكن رفعه';
 $lang['ar_SA']['AssetAdmin']['NOWBROKEN'] = 'الصفحات التالية تحتوي روابط معطوبة';
 $lang['ar_SA']['AssetAdmin']['NOWBROKEN2'] = 'تمت مراسلة الإدارة و سيتم تصليح الأخطاء في الصفحات';
-$lang['ar_SA']['AssetAdmin']['OWNER'] = 'المالك';
 $lang['ar_SA']['AssetAdmin']['SAVEDFILE'] = 'ملف محفوظ %s';
 $lang['ar_SA']['AssetAdmin']['SAVEFOLDERNAME'] = 'احفظ اسم المجلد';
 $lang['ar_SA']['AssetAdmin']['THUMBSDELETED'] = 'جميع المصغرات الغير مستخدمة تم حذفها';
@@ -41,6 +38,8 @@ $lang['ar_SA']['AssetAdmin_left.ss']['CREATE'] = 'إنشاء';
 $lang['ar_SA']['AssetAdmin_left.ss']['DELETE'] = 'حذف';
 $lang['ar_SA']['AssetAdmin_left.ss']['DELFOLDERS'] = 'احذف المجلدات المحددة';
 $lang['ar_SA']['AssetAdmin_left.ss']['ENABLEDRAGGING'] = 'السماح بتغيير الترتيب عن طريق الإمساك و الإفلات';
+$lang['ar_SA']['AssetAdmin_left.ss']['FILESYSTEMSYNC'] = 'إضافة ملفات أخرى';
+$lang['ar_SA']['AssetAdmin_left.ss']['FILESYSTEMSYNC_DESC'] = 'SilverStripe maintains its own database of the files &amp; images stored in your assets/ folder. Click this button to update that database, if files are added to the assets/ folder from outside SilverStripe, for example, if you have uploaded files via FTP.';
 $lang['ar_SA']['AssetAdmin_left.ss']['FOLDERS'] = 'مجلدات';
 $lang['ar_SA']['AssetAdmin_left.ss']['GO'] = 'اذهب';
 $lang['ar_SA']['AssetAdmin_left.ss']['SELECTTODEL'] = 'اختر الملجدات التي تريد حذفها ثم اضغط على الزر بالأسفل';
@@ -48,6 +47,7 @@ $lang['ar_SA']['AssetAdmin_left.ss']['TOREORG'] = 'لإعادة ترتيب ال�
 $lang['ar_SA']['AssetAdmin_right.ss']['CHOOSEPAGE'] = 'فضلاً اختر ضفحة من القائمة';
 $lang['ar_SA']['AssetAdmin_right.ss']['WELCOME'] = 'أهلاً بك في';
 $lang['ar_SA']['AssetAdmin_uploadiframe.ss']['PERMFAILED'] = 'لا تملك صلاحيات لرفع الملفات إلى هذا المجلد';
+$lang['ar_SA']['AssetAdmin_uploadiframe.ss']['TITLE'] = 'إطار رفع الصور';
 $lang['ar_SA']['AssetTableField']['CAPTION'] = 'العنوان';
 $lang['ar_SA']['AssetTableField']['CREATED'] = 'أول المرفوعات';
 $lang['ar_SA']['AssetTableField']['DIM'] = 'الأبعاد';
@@ -73,6 +73,15 @@ $lang['ar_SA']['AssetTableField']['SWFFILEOPTIONS'] = 'خيارات ملف ال�
 $lang['ar_SA']['AssetTableField']['TITLE'] = 'العنوان';
 $lang['ar_SA']['AssetTableField']['TYPE'] = 'النوع';
 $lang['ar_SA']['AssetTableField']['URL'] = 'الرابط';
+$lang['ar_SA']['CMSBatchActions']['DELETED_PAGES'] = '%d من الصفحات المحذوفة من الموقع المنشور';
+$lang['ar_SA']['CMSBatchActions']['DELETE_PAGES'] = 'حذف من الصفحة المنشورة';
+$lang['ar_SA']['CMSBatchActions']['DELETING_PAGES'] = 'حذف الصفحات المحددة من قائمة الصفحات المنشورة';
+$lang['ar_SA']['CMSBatchActions']['PUBLISHED_PAGES'] = '%d من الصفحات المنشورة';
+$lang['ar_SA']['CMSBatchActions']['PUBLISHING_PAGES'] = 'الصفحات المنشورة';
+$lang['ar_SA']['CMSBatchActions']['PUBLISH_PAGES'] = 'النشر';
+$lang['ar_SA']['CMSBatchActions']['UNPUBLISHED_PAGES'] = '%d من الصفحات غير المنشورة';
+$lang['ar_SA']['CMSBatchActions']['UNPUBLISHING_PAGES'] = 'صفحات غير منشورة';
+$lang['ar_SA']['CMSBatchActions']['UNPUBLISH_PAGES'] = 'غير منشور';
 $lang['ar_SA']['CMSLeft.ss']['DELPAGE'] = 'حذف صفحات ...';
 $lang['ar_SA']['CMSLeft.ss']['DELPAGES'] = 'احذف الصفحات المحددة';
 $lang['ar_SA']['CMSLeft.ss']['GO'] = 'اذهب';
@@ -86,12 +95,12 @@ $lang['ar_SA']['CMSMain']['CHOOSEREPORT'] = 'اختر تقرير';
 $lang['ar_SA']['CMSMain']['COMPARINGV'] = 'مقارنة الإصدارات %s و %s';
 $lang['ar_SA']['CMSMain']['COPYPUBTOSTAGE'] = 'هل ترغب فعلاً في نسخ المحتوى المنشور إلى الموقع ';
 $lang['ar_SA']['CMSMain']['DELETE'] = 'حذف من مسودة الموقع';
-$lang['ar_SA']['CMSMain']['DELETEFP'] = 'حذف من الموقع المنشور';
 $lang['ar_SA']['CMSMain']['DESCREMOVED'] = 'و %s أصول سابقة';
 $lang['ar_SA']['CMSMain']['EMAIL'] = 'البريد الإلكتروني';
 $lang['ar_SA']['CMSMain']['GO'] = 'اذهب';
 $lang['ar_SA']['CMSMain']['MENUTITLE'] = 'محتوى الموقع';
 $lang['ar_SA']['CMSMain']['MENUTITLE'] = 'محتوى الموقع';
+$lang['ar_SA']['CMSMain']['MENUTITLEOPT'] = 'Navigation Label';
 $lang['ar_SA']['CMSMain']['METADESCOPT'] = 'الوصف';
 $lang['ar_SA']['CMSMain']['METAKEYWORDSOPT'] = 'الكلمات المفتاحية';
 $lang['ar_SA']['CMSMain']['NEW'] = 'جديد';
@@ -119,7 +128,6 @@ $lang['ar_SA']['CMSMain']['REMOVEDFD'] = 'حذف من الموقع المسود�
 $lang['ar_SA']['CMSMain']['REMOVEDPAGE'] = 'إلغاء \'%s\' من الموقع المنشور';
 $lang['ar_SA']['CMSMain']['REMOVEDPAGEFROMDRAFT'] = '\'%s\' محذوف من مسودة الموقع';
 $lang['ar_SA']['CMSMain']['REPORT'] = 'التقرير';
-$lang['ar_SA']['CMSMain']['RESTORE'] = 'استعادة';
 $lang['ar_SA']['CMSMain']['RESTORED'] = 'تم تخزين \'%s\' بنجاح';
 $lang['ar_SA']['CMSMain']['ROLLBACK'] = 'عودة إلى هذا الإصدار';
 $lang['ar_SA']['CMSMain']['ROLLEDBACKPUB'] = 'عودة للإصدار المنشور . الإصدار الجديد يحمل الرقم #%d';
@@ -127,6 +135,7 @@ $lang['ar_SA']['CMSMain']['ROLLEDBACKVERSION'] = 'عودة للإصدار #%d. �
 $lang['ar_SA']['CMSMain']['SAVE'] = 'حفظ';
 $lang['ar_SA']['CMSMain']['SENTTO'] = 'تم الإرسال إلى %s %s للموافقة';
 $lang['ar_SA']['CMSMain']['STATUSOPT'] = 'الحالة';
+$lang['ar_SA']['CMSMain']['TITLEOPT'] = 'العنوان';
 $lang['ar_SA']['CMSMain']['TOTALPAGES'] = 'مجموع الصفحات';
 $lang['ar_SA']['CMSMain']['VERSIONSNOPAGE'] = 'لا يمكن إيجاد الصفحة رقم #%d';
 $lang['ar_SA']['CMSMain']['VIEWING'] = 'أنت الآن تشاهد الإصدار #%s. إنشاء  %s بواسطة %s';
@@ -139,8 +148,8 @@ $lang['ar_SA']['CMSMain_left.ss']['ADDEDNOTPUB'] = 'تمت الإضافة إلى
 $lang['ar_SA']['CMSMain_left.ss']['ADDSEARCHCRITERIA'] = 'أضف معيار ...';
 $lang['ar_SA']['CMSMain_left.ss']['BATCHACTIONS'] = 'الإجراءات';
 $lang['ar_SA']['CMSMain_left.ss']['CHANGED'] = 'تم التغيير';
+$lang['ar_SA']['CMSMain_left.ss']['CLEARTITLE'] = 'مسح كلمات البحث وعرض جميع العناصر';
 $lang['ar_SA']['CMSMain_left.ss']['CLOSEBOX'] = 'اضغط لإغلاق الصفحة';
-$lang['ar_SA']['CMSMain_left.ss']['COMMENTS'] = 'تعليقات';
 $lang['ar_SA']['CMSMain_left.ss']['COMPAREMODE'] = 'وضع المقارنة ( اضغط 2 للأسفل )';
 $lang['ar_SA']['CMSMain_left.ss']['CREATE'] = 'إنشاء';
 $lang['ar_SA']['CMSMain_left.ss']['DEL'] = 'محذوف';
@@ -150,8 +159,10 @@ $lang['ar_SA']['CMSMain_left.ss']['EDITEDNOTPUB'] = 'تم تعديلها في م
 $lang['ar_SA']['CMSMain_left.ss']['EDITEDSINCE'] = 'معدل منذ';
 $lang['ar_SA']['CMSMain_left.ss']['ENABLEDRAGGING'] = 'السماح بتغيير الترتيب عن طريق الإمساك و الإفلات';
 $lang['ar_SA']['CMSMain_left.ss']['GO'] = 'اذهب';
+$lang['ar_SA']['CMSMain_left.ss']['HIDDEN'] = 'مخفي';
 $lang['ar_SA']['CMSMain_left.ss']['KEY'] = 'الكلمة المفتاحية :';
 $lang['ar_SA']['CMSMain_left.ss']['NEW'] = 'جديد';
+$lang['ar_SA']['CMSMain_left.ss']['NOTINMENU'] = 'مستبعد من القائمة';
 $lang['ar_SA']['CMSMain_left.ss']['OPENBOX'] = 'اضغط لفتح هذا الصندوق';
 $lang['ar_SA']['CMSMain_left.ss']['PAGEVERSIONH'] = 'تاريخ إصدارات الصفحة';
 $lang['ar_SA']['CMSMain_left.ss']['PUBLISHCONFIRM'] = 'انشر الصفحات المختارة';
@@ -163,8 +174,6 @@ $lang['ar_SA']['CMSMain_left.ss']['SHOWONLYCHANGED'] = 'اعرض الصفحات 
 $lang['ar_SA']['CMSMain_left.ss']['SHOWUNPUB'] = 'إظهار الإصدارات الغير منشورة';
 $lang['ar_SA']['CMSMain_left.ss']['SITECONTENT TITLE'] = 'محتوى و هيكلة الموقع';
 $lang['ar_SA']['CMSMain_left.ss']['SITEREPORTS'] = 'تقارير الموقع';
-$lang['ar_SA']['CMSMain_left.ss']['TASKLIST'] = 'قائمة المهام';
-$lang['ar_SA']['CMSMain_left.ss']['WAITINGON'] = 'انتظار';
 $lang['ar_SA']['CMSMain_right.ss']['ANYMESSAGE'] = 'هل لديك أي رسالة للكاتب';
 $lang['ar_SA']['CMSMain_right.ss']['CHOOSEPAGE'] = 'فضلاً اختر صفحة من القائمة';
 $lang['ar_SA']['CMSMain_right.ss']['LOADING'] = 'تحميل ...';
@@ -186,6 +195,7 @@ $lang['ar_SA']['CommentAdmin']['APPROVED'] = 'التعليقات الموافق 
 $lang['ar_SA']['CommentAdmin']['APPROVEDCOMMENTS'] = 'تعليقات تمت الموافقة عليها';
 $lang['ar_SA']['CommentAdmin']['AUTHOR'] = 'الكاتب';
 $lang['ar_SA']['CommentAdmin']['COMMENT'] = 'التعليق';
+$lang['ar_SA']['CommentAdmin']['COMMENTERURL'] = 'الرابط';
 $lang['ar_SA']['CommentAdmin']['COMMENTS'] = 'التعليقات';
 $lang['ar_SA']['CommentAdmin']['COMMENTSAWAITINGMODERATION'] = 'تعليقات بانتظار موافقة الإدارة';
 $lang['ar_SA']['CommentAdmin']['DATEPOSTED'] = 'تدوين التاريخ';
@@ -247,6 +257,7 @@ $lang['ar_SA']['ImageEditor.ss']['SEPIA'] = 'Sepia';
 $lang['ar_SA']['ImageEditor.ss']['UNDO'] = 'تراجع';
 $lang['ar_SA']['ImageEditor.ss']['UNTITLED'] = 'مستند بدون عنوان';
 $lang['ar_SA']['ImageEditor.ss']['WIDTH'] = 'عرض';
+$lang['ar_SA']['LeftAndMain']['CANT_REORGANISE'] = 'لا تملك الصلاحية لتعديل شجرة الموقع. تعديلاتك لن يتم حفظها';
 $lang['ar_SA']['LeftAndMain']['CHANGEDURL'] = 'تم تغيير الرابط إلى \'%s\'';
 $lang['ar_SA']['LeftAndMain']['COMMENTS'] = 'التعليقات';
 $lang['ar_SA']['LeftAndMain']['FILESIMAGES'] = 'الملفات و الصور';
@@ -282,17 +293,6 @@ $lang['ar_SA']['LeftAndMain.ss']['VIEWPAGEIN'] = 'عرض الصفحة:';
 $lang['ar_SA']['LeftAndMain']['STATUSPUBLISHEDSUCCESS'] = 'تم نشر \'%s\' بنجاح';
 $lang['ar_SA']['LeftAndMain']['STATUSTO'] = 'تم تغيير الحالة إلى \'%s\'';
 $lang['ar_SA']['LeftAndMain']['TREESITECONTENT'] = 'محتوى الموقع';
-$lang['ar_SA']['MemberList']['ADD'] = 'إضافة';
-$lang['ar_SA']['MemberList']['ANYGROUP'] = 'أي مجموعة';
-$lang['ar_SA']['MemberList']['ASC'] = 'تصاعدي';
-$lang['ar_SA']['MemberList']['DESC'] = 'تنازلي';
-$lang['ar_SA']['MemberList']['EMAIL'] = 'البريد الإلكتروني';
-$lang['ar_SA']['MemberList']['FILTERBYG'] = 'تصفية بالمجموعة';
-$lang['ar_SA']['MemberList']['FN'] = 'الاسم الأول';
-$lang['ar_SA']['MemberList']['ORDERBY'] = 'ترتيب بواسطة';
-$lang['ar_SA']['MemberList']['PASSWD'] = 'الرقم السري';
-$lang['ar_SA']['MemberList']['SEARCH'] = 'بحث';
-$lang['ar_SA']['MemberList']['SN'] = 'اسم العائلة';
 $lang['ar_SA']['MemberList.ss']['FILTER'] = 'رشح';
 $lang['ar_SA']['MemberList_PageControls.ss']['DISPLAYING'] = 'عرض';
 $lang['ar_SA']['MemberList_PageControls.ss']['FIRSTMEMBERS'] = 'الأعضاء';
@@ -316,6 +316,7 @@ $lang['ar_SA']['MemberTableField']['ANYGROUP'] = 'أي مجموعة';
 $lang['ar_SA']['MemberTableField']['ASC'] = 'تصاعدي';
 $lang['ar_SA']['MemberTableField']['DESC'] = 'تنازلي';
 $lang['ar_SA']['MemberTableField']['EMAIL'] = 'البريد الإلكتروني';
+$lang['ar_SA']['MemberTableField']['ERRORADDINGUSER'] = 'هناك خطأ عند إضافة عضو جديد إلى المجموعة : %s';
 $lang['ar_SA']['MemberTableField']['FILTER'] = 'تصفية';
 $lang['ar_SA']['MemberTableField']['FILTERBYGROUP'] = 'تصفية بالمجموعة';
 $lang['ar_SA']['MemberTableField']['FIRSTNAME'] = 'الاسم الأول';
@@ -324,12 +325,12 @@ $lang['ar_SA']['MemberTableField']['SEARCH'] = 'بحث';
 $lang['ar_SA']['MemberTableField.ss']['ADDNEW'] = 'إضافة جديد';
 $lang['ar_SA']['MemberTableField.ss']['DELETEMEMBER'] = 'حذف هذا العضو';
 $lang['ar_SA']['MemberTableField.ss']['EDITMEMBER'] = 'تعديل هذا العضو';
+$lang['ar_SA']['MemberTableField.ss']['NOITEMSFOUND'] = 'لاتوجد نتائج';
 $lang['ar_SA']['MemberTableField.ss']['SHOWMEMBER'] = 'اعرض هذا العضو';
 $lang['ar_SA']['MemberTableField']['SURNAME'] = 'اسم العائلة';
 $lang['ar_SA']['ModelAdmin']['ADDBUTTON'] = 'إضافة';
 $lang['ar_SA']['ModelAdmin']['ADDFORM'] = 'أكمل هذا النموذج لإضافة  %s إلى قاعدة البيانات';
 $lang['ar_SA']['ModelAdmin']['CHOOSE_COLUMNS'] = 'اختر أعمدة النتائج';
-$lang['ar_SA']['ModelAdmin']['CLASSTYPE'] = 'النوع';
 $lang['ar_SA']['ModelAdmin']['CLEAR_SEARCH'] = 'تجديد البحث';
 $lang['ar_SA']['ModelAdmin']['CREATEBUTTON'] = 'إنشاء %s';
 $lang['ar_SA']['ModelAdmin']['DELETE'] = 'حذف';
@@ -345,6 +346,7 @@ $lang['ar_SA']['ModelAdmin']['NOCSVFILE'] = 'فضلاً استعرض ملف CSV 
 $lang['ar_SA']['ModelAdmin']['NOIMPORT'] = 'لايوجد شيء للاستيراد';
 $lang['ar_SA']['ModelAdmin']['NORESULTS'] = 'لا نتائج';
 $lang['ar_SA']['ModelAdmin']['SAVE'] = 'حفظ';
+$lang['ar_SA']['ModelAdmin']['SEARCHFOR'] = 'البحث عن :';
 $lang['ar_SA']['ModelAdmin']['SEARCHRESULTS'] = 'بحث النتائج';
 $lang['ar_SA']['ModelAdmin']['SELECTALL'] = 'تحديد الكل';
 $lang['ar_SA']['ModelAdmin']['SELECTNONE'] = 'غير محدد';
@@ -354,10 +356,12 @@ $lang['ar_SA']['ModelAdmin_ImportSpec.ss']['IMPORTSPECLINK'] = 'عرض مواص�
 $lang['ar_SA']['ModelAdmin_ImportSpec.ss']['IMPORTSPECRELATIONS'] = 'العلاقات';
 $lang['ar_SA']['ModelAdmin_ImportSpec.ss']['IMPORTSPECTITLE'] = 'مواصفات %s';
 $lang['ar_SA']['ModelAdmin_left.ss']['ADDLISTING'] = 'إضافة';
-$lang['ar_SA']['ModelAdmin_left.ss']['ADD_TAB_HEADER'] = 'إضافة';
 $lang['ar_SA']['ModelAdmin_left.ss']['IMPORT_TAB_HEADER'] = 'استيراد';
 $lang['ar_SA']['ModelAdmin_left.ss']['SEARCHLISTINGS'] = 'بحث';
 $lang['ar_SA']['ModelAdmin_right.ss']['WELCOME1'] = 'مرحباً بك في %s. فضلاً اختر أحد المدخلات من القائمة اليسرى';
+$lang['ar_SA']['ModelSidebar.ss']['ADDLISTING'] = 'إضافة';
+$lang['ar_SA']['ModelSidebar.ss']['IMPORT_TAB_HEADER'] = 'استيراد';
+$lang['ar_SA']['ModelSidebar.ss']['SEARCHLISTINGS'] = 'البحث';
 $lang['ar_SA']['PageComment']['Comment'] = 'التعليقات';
 $lang['ar_SA']['PageComment']['COMMENTBY'] = 'تم التعليق بواسطة \'%s\' على %s';
 $lang['ar_SA']['PageComment']['IsSpam'] = 'رسالة مزعجة ؟';
@@ -368,7 +372,11 @@ $lang['ar_SA']['PageComment']['SINGULARNAME'] = 'تعليق الصفحة';
 $lang['ar_SA']['PageCommentInterface']['COMMENTERURL'] = 'رابط موقعك';
 $lang['ar_SA']['PageCommentInterface']['POST'] = 'التدوينة';
 $lang['ar_SA']['PageCommentInterface']['SPAMQUESTION'] = 'سؤال الحماية من الرسائل المصاحبة: %s';
+$lang['ar_SA']['PageCommentInterface.ss']['COMMENTLOGINERROR'] = 'لا تستطيع كتابة التعليقات حتى تقوم بعملية التسجيل';
+$lang['ar_SA']['PageCommentInterface.ss']['COMMENTPERMISSIONERROR'] = 'يجب أن تملك مستوى الصلاحيات المناسب للقيام بالتعديل';
+$lang['ar_SA']['PageCommentInterface.ss']['COMMENTPOSTLOGIN'] = 'الدخول ';
 $lang['ar_SA']['PageCommentInterface.ss']['COMMENTS'] = 'التعليقات';
+$lang['ar_SA']['PageCommentInterface.ss']['COMMENTSDISABLED'] = 'إضافة التعليقات معطلة';
 $lang['ar_SA']['PageCommentInterface.ss']['NEXT'] = 'التالي';
 $lang['ar_SA']['PageCommentInterface.ss']['NOCOMMENTSYET'] = 'لايوجد أحد علق على هذه التدوينة';
 $lang['ar_SA']['PageCommentInterface.ss']['POSTCOM'] = 'نشر تعليقك';
@@ -417,7 +425,6 @@ $lang['ar_SA']['StaticExporter']['BASEURL'] = 'الرابط الأساسي';
 $lang['ar_SA']['StaticExporter']['EXPORTTO'] = 'تصدير إلى مجلد';
 $lang['ar_SA']['StaticExporter']['FOLDEREXPORT'] = 'مجلدات لتصديرها إلى';
 $lang['ar_SA']['StaticExporter']['NAME'] = 'المصدر الثابت Exporter';
-$lang['ar_SA']['StaticExporter']['ONETHATEXISTS'] = 'فضلاً حدد مجلداً موجوداً';
 $lang['ar_SA']['TableListField_PageControls.ss']['DISPLAYING'] = 'عرض';
 $lang['ar_SA']['TableListField_PageControls.ss']['OF'] = 'من';
 $lang['ar_SA']['TableListField_PageControls.ss']['TO'] = 'إلى';
@@ -425,12 +432,10 @@ $lang['ar_SA']['TableListField_PageControls.ss']['VIEWFIRST'] = 'عرض الأو
 $lang['ar_SA']['TableListField_PageControls.ss']['VIEWLAST'] = 'عرض الأخير';
 $lang['ar_SA']['TableListField_PageControls.ss']['VIEWNEXT'] = 'عرض التالي';
 $lang['ar_SA']['TableListField_PageControls.ss']['VIEWPREVIOUS'] = 'عرض السابق';
-$lang['ar_SA']['TaskList.ss']['BY'] = 'بواسطة';
 $lang['ar_SA']['ThumbnailStripField']['NOFLASHFOUND'] = 'لايوجد ملفات فلاش';
 $lang['ar_SA']['ThumbnailStripField']['NOFOLDERFLASHFOUND'] = 'لايوجد ملفات فلاش';
 $lang['ar_SA']['ThumbnailStripField']['NOFOLDERIMAGESFOUND'] = 'لايوجد صور';
 $lang['ar_SA']['ThumbnailStripField']['NOIMAGESFOUND'] = 'لم يتم العثور على الصور';
-$lang['ar_SA']['ThumbnailStripField']['NOTAFOLDER'] = 'هذا ليس مجلداً';
 $lang['ar_SA']['ThumbnailStripField.ss']['CHOOSEFOLDER'] = 'اختر مجلد أو ابحث بالأعلى';
 $lang['ar_SA']['ViewArchivedEmail.ss']['CANACCESS'] = 'يمكنك الدخول إلى أرشيف الموقع عن طريق الرابط التالي :';
 $lang['ar_SA']['ViewArchivedEmail.ss']['HAVEASKED'] = 'تم طلب مشاهدة محتوى الموقع في';
