@@ -180,7 +180,6 @@ JS
 				$processedFiles[$key][$param] = $value;
 			}
 		}
-		array_shift($processedFiles);
 		
 		// Load POST data from arrays in to the correct dohickey.
 		$processedData = array();
