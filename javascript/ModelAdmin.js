@@ -13,57 +13,61 @@ $(document).ready(function() {
 	/**
 	 * Generic ajax error handler
 	 */
-	$('form').livequery('ajaxError', function (XMLHttpRequest, textStatus, errorThrown) {
+	$('form').live('ajaxError', function (XMLHttpRequest, textStatus, errorThrown) {
 			$('input', this).removeClass('loading');
 			statusMessage(ss.i18n._t('ModelAdmin.ERROR', 'Error'), 'bad');
 	});
 	
-	/** 
-	 * Add class ajaxActions class to the parent of Add button of AddForm
-	 * so it float to the right
-	 */
-	$('#Form_AddForm_action_doCreate').livequery(function(){
-		if($(this)){
-			var parent = $(this).parent();
-			$("#right").append(parent);
-			
-			parent.addClass('ajaxActions');
-			parent.attr('id','form_actions_right');
+	// We're avoiding livequery initializers for now,
+	// to be replaced by jQuery.entwine.
+	Behaviour.register({
+		/** 
+		 * Add class ajaxActions class to the parent of Add button of AddForm
+		 * so it float to the right
+		 */
+		'#Form_AddForm_action_doCreate': {
+			initialize: function() {
+				var parent = $(this).parent();
+				$("#right").append(parent);
+
+				parent.addClass('ajaxActions');
+				parent.attr('id','form_actions_right');
+			}
+		},
+		/*
+		 * moves Forward button to the right and fixes it underneath result form.
+		*/
+		'#Form_ResultsForm_action_goForward': {
+			initialize: function() {
+				$("#form_actions_right").append($(this));
+			}
+		},
+		/*
+		 * we need an special case for results form since #ModelAdminPanel has overflow:hidden
+		 * it calculates the form height, gives it a padding and overflow auto, so we can scroll down.
+		*/
+		'#Form_ResultsForm': {
+			initialize: function(){
+				var newModelAdminPanelHeight = $("#right").height()-$(".ajaxActions").height();
+				$('#Form_ResultsForm').height(newModelAdminPanelHeight);
+				$('#Form_ResultsForm').css('overflow','auto');
+			}
 		}
-		
 	});
 	
-    /*
-     * Highlight buttons on click
-     */
-	$('input[type=submit]').livequery('click', function() {
+	/*
+	 * Highlight buttons on click
+	 */
+	$('input[type=submit]').live('click', function() {
 	    $(this).addClass('loading');
 	});
 	
-	$('input[name=action_search]').livequery('click', function() {
+	$('input[name=action_search]').live('click', function() {
 		$('#contentPanel').fn('closeRightPanel');
 		if($('#Form_AddForm_action_doCreate')){
 			$('div[class=ajaxActions]').remove();
 		}
 	});
-	
-	/*
-	 * moves Forward button to the right and fixes it underneath result form.
-	*/
-	$('#Form_ResultsForm_action_goForward').livequery(function() {
-		$("#form_actions_right").append($(this));
-	});
-	
-	/*
-	 * we need an special case for results form since #ModelAdminPanel has overflow:hidden
-	 * it calculates the form height, gives it a padding and overflow auto, so we can scroll down.
-	*/
-	$('#Form_ResultsForm').livequery( function(){
-		var newModelAdminPanelHeight = $("#right").height()-$(".ajaxActions").height();
-		$('#Form_ResultsForm').height(newModelAdminPanelHeight);
-		$('#Form_ResultsForm').css('overflow','auto');
-	});
-	
 	
 	$("#right").scroll( function () {
 		positionActionArea();
@@ -123,7 +127,7 @@ $(document).ready(function() {
 	 * 
 	 * Note: This is used for Form_CreateForm too
 	 * 
-	 * @todo use livequery to manage ResultTable click handlers
+	 * @todo use jQuery.live to manage ResultTable click handlers
 	 */
 	$('#SearchForm_holder .tab form:not(#Form_ImportForm)').submit(function () {
 	    var $form = $(this);
@@ -192,7 +196,7 @@ $(document).ready(function() {
 	 * @todo: Shouldn't this be part of TableListField?
 	 */
 	$('#right #Form_ResultsForm tbody td a:not(.deletelink,.downloadlink)')
-	    .livequery('click', function(){
+	    .live('click', function(){
 	        $(this).parent().parent().addClass('loading');
     		var el = $(this);
     		$('#ModelAdminPanel').fn('addHistory', el.attr('href'));
@@ -217,7 +221,7 @@ $(document).ready(function() {
     /**
      * RHS panel Back button
      */
-	$('#Form_EditForm_action_goBack, #Form_ResultsForm_action_goBack').livequery('click', function() {
+	$('#Form_EditForm_action_goBack, #Form_ResultsForm_action_goBack').live('click', function() {
 	    $('#ModelAdminPanel').fn('goBack');
 		return false;
 	});
@@ -225,7 +229,7 @@ $(document).ready(function() {
     /**
      * RHS panel Back button
      */
-	$('#Form_ResultsForm_action_goForward').livequery('click', function() {
+	$('#Form_ResultsForm_action_goForward').live('click', function() {
 	    $('#ModelAdminPanel').fn('goForward');
 		return false;
 	});
@@ -233,7 +237,7 @@ $(document).ready(function() {
 	/**
 	 * RHS panel Save button 
 	 */
-	$('#right input[name=action_doSave],#right input[name=action_doCreate]').livequery('click', function(){
+	$('#right input[name=action_doSave],#right input[name=action_doCreate]').live('click', function(){
 		var form = $('#right form');
 		var formAction = form.attr('action') + '?' + $(this).fieldSerialize();
 		
@@ -254,7 +258,7 @@ $(document).ready(function() {
 			}
 
 			// TODO/SAM: It seems a bit of a hack to have to list all the little updaters here. 
-			// Is livequery a solution?
+			// Is jQuery.live a solution?
 			Behaviour.apply(); // refreshes ComplexTableField
 			if(window.onresize) window.onresize();
 		}, 'html');
@@ -265,7 +269,7 @@ $(document).ready(function() {
 	/**
 	 * RHS panel Delete button
 	 */
-	$('#right input[name=action_doDelete]').livequery('click', function(){
+	$('#right input[name=action_doDelete]').live('click', function(){
 		var confirmed = confirm(ss.i18n._t('ModelAdmin.REALLYDELETE', 'Really delete?'));
 		if(!confirmed) {
 			$(this).removeClass('loading')

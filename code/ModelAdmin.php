@@ -144,9 +144,6 @@ abstract class ModelAdmin extends LeftAndMain {
 		Requirements::css(CMS_DIR . '/css/silverstripe.tabs.css'); // follows the jQuery UI theme conventions
 		
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery-livequery/jquery.livequery.js');
-		//Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.core.js');
-		//Requirements::javascript(THIRDPARTY_DIR . '/jquery/ui/ui.tabs.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery-form/jquery.form.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery-effen/jquery.fn.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/jquery_improvements.js');
