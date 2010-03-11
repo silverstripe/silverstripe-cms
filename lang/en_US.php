@@ -90,7 +90,7 @@ $lang['en_US']['CMSMain']['ACCESS'] = array(
 	PR_MEDIUM,
 	'Item in permission selection identifying the admin section. Example: Access to \'Files & Images\''
 );
-$lang['en_US']['CMSMain']['ACCESSALLINTERFACES'] = 'Access to all CMS sections';
+$lang['en_US']['CMSMain']['ACCESSALLINTERFACES'] = 'Overrules more specific access settings.';
 $lang['en_US']['CMSMain']['ACCESS_HELP'] = 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".';
 $lang['en_US']['CMSMain']['CANCEL'] = 'Cancel';
 $lang['en_US']['CMSMain']['CHOOSEREPORT'] = '(Choose a report)';
