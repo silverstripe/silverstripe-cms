@@ -4,9 +4,9 @@ global $project;
 $project = 'mysite';
 
 global $database;
-$database = "";
+$database = '';
 
-require_once("conf/ConfigureFromEnv.php");
+require_once('conf/ConfigureFromEnv.php');
 
 MySQLDatabase::set_connection_charset('utf8');
 
