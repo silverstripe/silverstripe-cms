@@ -949,6 +949,8 @@ PHP
 		$adminMember->PasswordEncryption = Security::get_password_encryption_algorithm();
 		$adminMember->FirstName = $config['admin']['firstname'];
 		$adminMember->Surname = $config['admin']['surname'];
+		
+		// @todo Exception thrown if database with admin already exists with same Email
 		try {
 			$adminMember->write();
 		} catch(Exception $e) {
