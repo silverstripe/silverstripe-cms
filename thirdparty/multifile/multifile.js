@@ -43,6 +43,26 @@
  
 // Modified by: Silverstripe Ltd. (changed naming of file-input-elements) 
 
+function ObservableObject() {
+    this.functions = [];
+}
+ObservableObject.prototype = {
+    subscribe : function(evt, fn) {
+        this.functions.push([evt, fn]);
+    },
+    unsubscribe : function(evt, fn) {
+        this.functions = this.fns.filter(function(el) {if (el !== [evt, fn]) return el;});
+    },
+    fire : function(evt, data, scope) {
+		scope = scope || window
+        this.functions.forEach(function(el) {
+			if (el[0] == evt) el[1].call(scope, data);
+		});
+    }
+};
+
+var MultiSelectorObserver = new ObservableObject();
+
 function MultiSelector( list_target, max, upload_button ){
 	
 	this.upload_button = upload_button;
@@ -130,6 +150,7 @@ function MultiSelector( list_target, max, upload_button ){
 	 * Add a new row to the list of files
 	 */
 	this.addListRow = function( element ){
+		var fileId = this.id -1; 
 
 		// Modified 2006-11-06 by Silverstripe Ltd.
 		var filenameMatches = element.value.match(/([^\/\\]+)$/);
@@ -137,6 +158,7 @@ function MultiSelector( list_target, max, upload_button ){
 		
 		// Row div
 		var new_row = document.createElement('div');
+		new_row.className = 'fileBox'; 
 
 		// Delete button
 		var new_row_button = document.createElement('input');
@@ -174,6 +196,8 @@ function MultiSelector( list_target, max, upload_button ){
 		// Set row value
 		// Modified 2006-11-06 by Silverstripe Ltd.
 		new_row.innerHTML = filename;
+		
+		MultiSelectorObserver.fire('onBeforeCreateRow', [fileId, new_row], this); 
 
 		// Add button
 		new_row.appendChild( new_row_button );
@@ -181,9 +205,21 @@ function MultiSelector( list_target, max, upload_button ){
 		// Add it to the list
 		this.list_target.appendChild( new_row );
 		
+		MultiSelectorObserver.fire('onAfterCreateRow', [fileId, new_row], this); 
+		
 		// Modified 2006-11-06 by Silverstripe Ltd.
 		window.ontabschanged();
 		
 	};
 
 };
+
+MultiSelectorObserver.subscribe('onBeforeCreateRow', function(data) {
+	if (jQuery('#metadataFormTemplate')) {
+		var parameters = jQuery('#metadataFormTemplate').clone(true);
+		parameters.get(0).id = '';
+		parameters.find(":input[name!='']").each(function(i) { this.name = this.name.replace(/__X__/g, data[0]); });
+		parameters.find(":input[id!='']").each(function(i) { this.id = this.id.replace(/__X__/g, data[0]); });
+		data[1].innerHTML = data[1].innerHTML + '<div id="MetadataFor-'+data[0]+'">'+parameters.html()+'</div>';
+	}
+});
