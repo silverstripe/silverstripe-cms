@@ -808,8 +808,6 @@ class Installer extends InstallRequirements {
 			
 			$phpVersion = urlencode(phpversion());
 			$encWebserver = urlencode($webserver);
-			$type = $config['db']['type'];
-			$dbConfig = $config['db'][$type];
 
 			if($type == 'MySQLDatabase') {
 				$conn = @mysql_connect($dbConfig['server'], null, null);
@@ -835,6 +833,9 @@ class Installer extends InstallRequirements {
 		}
 		$theme = isset($_POST['template']) ? $_POST['template'] : 'blackcandy';
 		$locale = isset($_POST['locale']) ? $_POST['locale'] : 'en_US';
+		$type = $config['db']['type'];
+		$dbConfig = $config['db'][$type];
+		
 		// Write the config file
 		global $usingEnv;
 		if($usingEnv) {
