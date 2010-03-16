@@ -21,9 +21,11 @@
 	<body>
 	<% if CanUpload %>
 		$UploadForm
-		<div id="metadataFormTemplate" style="display:none">
-			$UploadMetadataHtml
-		</div>
+		<% if UploadMetadataHtml %>
+			<div id="metadataFormTemplate" style="display:none">
+				$UploadMetadataHtml
+			</div>
+		<% end_if %>
 	<% else %>
 		<% _t('PERMFAILED','You do not have permission to upload files into this folder.') %>
 	<% end_if %>
