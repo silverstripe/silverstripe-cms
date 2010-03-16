@@ -53,12 +53,12 @@ ObservableObject.prototype = {
     unsubscribe : function(evt, fn) {
         this.functions = this.fns.filter(function(el) {if (el !== [evt, fn]) return el;});
     },
-    fire : function(evt, data, scope) {
-		scope = scope || window
-        this.functions.forEach(function(el) {
-			if (el[0] == evt) el[1].call(scope, data);
-		});
-    }
+		fire : function(evt, data, scope) {
+			scope = scope || window
+			jQuery(this.functions).each(function(el) {
+				if (el[0] == evt) el[1].call(scope, data);
+			});
+		}
 };
 
 var MultiSelectorObserver = new ObservableObject();
