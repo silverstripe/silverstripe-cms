@@ -594,7 +594,7 @@ class InstallRequirements {
 	}
 
 	function testApacheRewriteExists($moduleName = 'mod_rewrite') {
-		if(in_array($moduleName, apache_get_modules())) {
+		if(function_exists('apache_get_modules') && in_array($moduleName, apache_get_modules())) {
 			return true;
 		} else {
 			return false;
