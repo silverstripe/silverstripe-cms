@@ -115,8 +115,6 @@ if(isset($_REQUEST['admin'])) {
 		$_REQUEST['admin'] = $adminConfig = array(
 			'username' => defined('SS_DEFAULT_ADMIN_USERNAME') ? SS_DEFAULT_ADMIN_USERNAME : 'admin',
 			'password' => defined('SS_DEFAULT_ADMIN_PASSWORD') ? SS_DEFAULT_ADMIN_PASSWORD : '',
-			'firstname' => $_REQUEST['admin']['firstname'],
-			'surname' => $_REQUEST['admin']['surname']
 		);
 	} else {
 		$adminConfig = $_REQUEST['admin'];
@@ -125,8 +123,6 @@ if(isset($_REQUEST['admin'])) {
 	$_REQUEST['admin'] = $adminConfig = array(
 		'username' => defined('SS_DEFAULT_ADMIN_USERNAME') ? SS_DEFAULT_ADMIN_USERNAME : 'admin',
 		'password' => defined('SS_DEFAULT_ADMIN_PASSWORD') ? SS_DEFAULT_ADMIN_PASSWORD : '',
-		'firstname' => '',
-		'surname' => ''
 	);
 }
 
@@ -948,8 +944,6 @@ PHP
 		$adminMember->Email = $config['admin']['username'];
 		$adminMember->Password = $config['admin']['password'];
 		$adminMember->PasswordEncryption = Security::get_password_encryption_algorithm();
-		$adminMember->FirstName = $config['admin']['firstname'];
-		$adminMember->Surname = $config['admin']['surname'];
 		
 		// @todo Exception thrown if database with admin already exists with same Email
 		try {
