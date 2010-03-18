@@ -341,9 +341,9 @@ class InstallRequirements {
 			$this->isRunningWebServer(array("Webserver Configuration", "Server software", "Unknown web server", $webserver));
 			
 			if($isApache) {
-				$this->requireApacheModule('mod_rewrite', array("Webserver Configuration", "mod_rewrite enabled", "You need mod_rewrite to run SilverStripe CMS, but it is not enabled."));
+				$this->requireApacheRewriteModule('mod_rewrite', array("Webserver Configuration", "mod_rewrite enabled", "You need mod_rewrite to use friendly URLs with SilverStripe, but it is not enabled."));
 			} elseif($isIIS) {
-				$this->requireIISRewriteModule('IIS_UrlRewriteModule', array("Webserver Configuration", "IIS URL Rewrite Module enabled", "You need to enable the IIS URL Rewrite Module, but it is not installed or enabled. Download it for IIS 7 from http://www.iis.net/expand/URLRewrite"));
+				$this->requireIISRewriteModule('IIS_UrlRewriteModule', array("Webserver Configuration", "IIS URL Rewrite Module enabled", "You need to enable the IIS URL Rewrite Module to use friendly URLs with SilverStripe, but it is not installed or enabled. Download it for IIS 7 from http://www.iis.net/expand/URLRewrite"));
 			} else {
 				$this->warning(array("Webserver Configuration", "URL rewrite enabled", "I can't tell whether any rewriting module is running.  You may need to configure a rewriting rule yourself."));
 			}
@@ -585,15 +585,54 @@ class InstallRequirements {
 	
 	function requireApacheModule($moduleName, $testDetails) {
 		$this->testing($testDetails);
-		if(!in_array($moduleName, apache_get_modules())) $this->error($testDetails);
+		if(!in_array($moduleName, apache_get_modules())) {
+			$this->error($testDetails);
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	function testApacheRewriteExists($moduleName = 'mod_rewrite') {
+		if(in_array($moduleName, apache_get_modules())) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	function testIISRewriteModuleExists($moduleName = 'IIS_UrlRewriteModule') {
+		if(isset($_SERVER[$moduleName]) && $_SERVER[$moduleName]) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	function requireApacheRewriteModule($moduleName, $testDetails) {
+		$this->testing($testDetails);
+		if($this->testApacheRewriteExists()) {
+			return true;
+		} else {
+			$this->warning($testDetails);
+			return false;
+		}
+	}
+	
+	/**
+	 * Determines if the web server has any rewriting capability.
+	 * @return boolean
+	 */
+	function hasRewritingCapability() {
+		return ($this->testApacheRewriteExists() || $this->testIISRewriteModuleExists());
 	}
 	
 	function requireIISRewriteModule($moduleName, $testDetails) {
 		$this->testing($testDetails);
-		if(isset($_SERVER[$moduleName]) && $_SERVER[$moduleName]) {
+		if($this->testIISRewriteModuleExists()) {
 			return true;
 		} else {
-			$this->error($testDetails);
+			$this->warning($testDetails);
 			return false;
 		}
 	}
@@ -904,13 +943,15 @@ PHP
 			);
 		}
 
-		// Write the appropriate web server configuration file
-		if($isApache) {
-			$this->statusMessage("Setting up '.htaccess' file...");
-			$this->createHtaccess();
-		} elseif($isIIS) {
-			$this->statusMessage("Setting up 'web.config' file...");
-			$this->createWebConfig();	
+		// Write the appropriate web server configuration file for rewriting support
+		if($this->hasRewritingCapability()) {
+			if($isApache) {
+				$this->statusMessage("Setting up '.htaccess' file...");
+				$this->createHtaccess();
+			} elseif($isIIS) {
+				$this->statusMessage("Setting up 'web.config' file...");
+				$this->createWebConfig();	
+			}
 		}
 
 		// Load the sapphire runtime
@@ -958,11 +999,21 @@ PHP
 		$_SESSION['password'] = $config['admin']['password'];
 
 		if(!$this->errors) {
-			if(isset($_SERVER['HTTP_HOST'])) {
+			if(isset($_SERVER['HTTP_HOST']) && $this->hasRewritingCapability()) {
 				$this->statusMessage("Checking that friendly URLs work...");
 				$this->checkRewrite();
 			} else {
-				echo "\n\nSilverStripe successfully installed\n";
+				echo <<<HTML
+				<li>SilverStripe successfully installed; I am now redirecting you to your SilverStripe site...</li>
+				<script>
+					setTimeout(function() {
+						window.location = "index.php/home/successfullyinstalled?flush=1";
+					}, 2000);
+				</script>
+				<noscript>
+				<li><a href="index.php/home/successfullyinstalled?flush=1">Click here to access your site.</li>
+				</noscript>
+HTML;
 			}
 		}
 		
@@ -1003,12 +1054,14 @@ PHP
 	Deny from all
 </Files>
 
-RewriteEngine On
-$baseClause
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	$baseClause
 
-RewriteCond %{REQUEST_URI} ^(.*)$
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule .* sapphire/main.php?url=%1&%{QUERY_STRING} [L]
+	RewriteCond %{REQUEST_URI} ^(.*)$
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule .* sapphire/main.php?url=%1&%{QUERY_STRING} [L]
+</IfModule>
 TEXT;
 		
 		if(file_exists('.htaccess')) {
