@@ -309,12 +309,7 @@ VersionList.prototype = {
 			var url = 'admin/getversion/' + pageID + '/' + versionID;
 			if($('Form_EditForm_Locale')) url += "?locale=" + $('Form_EditForm_Locale').value;
 			$('Form_EditForm').loadURLFromServer(url);
-			$('viewArchivedSite').style.display = '';
-			$('viewArchivedSite').getVars = '?archiveDate=' + sourceEl.getElementsByTagName('td')[1].className;
-			
 		} else {
-			$('viewArchivedSite').style.display = 'none';
-
 			if(this.otherVersionID) {
 				sourceEl.select();
 				this.otherSourceEl.select(true);
@@ -342,7 +337,6 @@ VersionList.prototype = {
 		if(this.idLoaded) {
 			$('Form_EditForm').getPageFromServer(this.idLoaded);
 		}
-		$('viewArchivedSite').style.display = 'none';
 	}
 }
 
