@@ -118,8 +118,16 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return true;
 	}
 	
-	function SwitchView() {
-		if($page = $this->currentPage()) {
+	/**
+	 * Overloads the LeftAndMain::ShowView. Allows to pass a page as a parameter, so we are able
+	 * to switch view also for archived versions.
+	 */
+	function SwitchView($page = null) {
+		if(!$page) {
+			$page = $this->currentPage();
+		}
+		
+		if($page) {
 			$nav = SilverStripeNavigator::get_for_record($page);
 			Requirements::customScript("window.name = windowName('cms');");
 			return $nav['items'];
@@ -916,12 +924,14 @@ JS;
 			if(Director::is_ajax()) {
 				$result = $templateData->renderWith($this->class . '_right');
 				$parts = split('</?form[^>]*>', $result);
-				return $parts[sizeof($parts)-2];
+				$content = $parts[sizeof($parts)-2];
+				if($this->ShowSwitchView()) {
+					$content .= '<div id="AjaxSwitchView">' . $this->SwitchView($record) . '</div>';
+				}
+				return $content;
 			} else {
 				return $templateData->renderWith('LeftAndMain');
 			}
-			
-			
 		}
 	}
 
