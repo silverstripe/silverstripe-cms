@@ -217,13 +217,13 @@ Object.extend( SubsDraggable.prototype , {
 		}
 	}
 });
-// gets element that should be dragged instead of original element
-// returned element should be added to DOM tree, and will be deleted by dragdrop library
+// Creates drag element by copying the content into DIV wrapper (IE does not like TD outside of tables)
+// The drag element will be deleted by dragdrop library.
 function getDragElement(element){
-	var el = element.cloneNode(true);
-	el.id = '';
-	document.body.appendChild(el);
-	return el;
+	wrap = document.createElement('div');
+	wrap.innerHTML = element.innerHTML;
+	document.body.appendChild(wrap);
+	return wrap;
 }
 
 // Set up DRAG handle
