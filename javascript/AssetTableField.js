@@ -49,7 +49,7 @@ AssetTableField.prototype = {
 		var link = Event.findElement(e,"a");
 		var row = Event.findElement(e,"tr");
 		
-		var linkCount = row.getElementsByClassName('linkCount')[0];
+		var linkCount = document.getElementsByClassName('linkCount', row)[0];
 		if(linkCount) linkCount = linkCount.innerHTML;
 		
 		var confirmMessage = ss.i18n._t('TABLEFIELD.DELETECONFIRMMESSAGE', 'Are you sure you want to delete this record?');
