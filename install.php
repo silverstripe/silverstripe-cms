@@ -277,7 +277,7 @@ class InstallRequirements {
 	}
 	
 	function isApache() {
-		$signature = isset($_SERVER['SERVER_SIGNATURE'])
+		$signature = !empty($_SERVER['SERVER_SIGNATURE'])
 			? $_SERVER['SERVER_SIGNATURE']
 			: @$_SERVER['SERVER_SOFTWARE'];
 		
