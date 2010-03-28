@@ -132,7 +132,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			"Members"
 		);
 		// unset 'inlineadd' permission, we don't want inline addition
-		$memberList->setPermissions(array('show', 'edit', 'delete', 'add'));
+		$memberList->setPermissions(array('edit', 'delete', 'add'));
 		$memberList->setRelationAutoSetting(false);
 		
 		$fields = new FieldSet(
@@ -170,6 +170,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 				'Roles',
 				'PermissionRole'
 			);
+			$rolesCTF->setPermissions(array('edit', 'delete'));
 
 			$rolesTab = $fields->findOrMakeTab('Root.Roles', _t('SecurityAdmin.TABROLES', 'Roles'));
 			$rolesTab->push(new LiteralField(
