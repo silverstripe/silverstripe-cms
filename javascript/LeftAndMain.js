@@ -606,9 +606,6 @@ ChangeTracker.prototype = {
 		    
 			if(!element.isChanged) element.isChanged = this.field_changed;
 			if(!this.changeDetection_fieldsToIgnore[element.name] && element.isChanged()) {
-				//console.log('Changed:'+ element.id + '(' + this.originalSerialized +')->('+Form.Element.serialize(element)+')' );
-				//console.log(element)
-
 				return true;
 			}
 		}

@@ -63,18 +63,13 @@ WidgetAreaEditorClass.prototype = {
 				if (!widget.getAttribute('rewritten') && (widget.id || widget.name)) {
 					if (widget.id && widget.id.indexOf('Widget[') === 0) {
 						var newValue = widget.id.replace(/Widget\[/, 'Widget['+name+'][');
-						//console.log('Renaming '+widget.tagName+' ID '+widget.id+' to '+newValue);
 						widget.id = newValue;
 					}
 					if (widget.name && widget.name.indexOf('Widget[') === 0) {
 						var newValue = widget.name.replace(/Widget\[/, 'Widget['+name+'][');
-						//console.log('Renaming '+widget.tagName+' Name '+widget.name+' to '+newValue);
 						widget.name = newValue;
 					}
 					widget.setAttribute('rewritten', 'yes');
-				}
-				else {
-					//console.log('Skipping '+(widget.id ? widget.id : (widget.name ? widget.name : 'unknown '+widget.tagName)));
 				}
 			}
 		}
