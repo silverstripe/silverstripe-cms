@@ -380,6 +380,10 @@ JS;
 		$siteConfig->write();
 		FormResponse::status_message('Saved site configuration', "good");
 		FormResponse::add("$('Form_EditForm').resetElements();");
+
+		$title = Convert::raw2js($siteConfig->Title);
+		FormResponse::add("$('sitetree').setNodeTitle(0, \"$title\");");
+
 		return FormResponse::respond();
 	}
 	/**
