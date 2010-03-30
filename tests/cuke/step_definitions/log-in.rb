@@ -15,7 +15,7 @@ Given /log out$/ do
   Given "I visit Security/logout"
 end
 
-Given /fill out the log in form with user "(.*)" and password "(.*)"/ do |user, password|
+Given /fill out the log(?:\s*)in form with user "(.*)" and password "(.*)"/ do |user, password|
 	Given 'I visit Security/logout'
 	And 'I visit Security/login?BackURL=Security/login'
 	And "I put \"#{user}\" in the \"Email\" field"
