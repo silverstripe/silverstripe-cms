@@ -626,11 +626,10 @@ JS;
 	 * Delete a folder
 	 */
 	public function deletefolder() {
-		$script = '';
 		$ids = split(' *, *', $_REQUEST['csvIDs']);
-		$script = '';
 		
 		if(!$ids) return false;
+		$script = '';
 		
 		foreach($ids as $id) {
 			if(is_numeric($id)) {
@@ -649,12 +648,7 @@ JS;
 		} else {
 		  $message = $size.' '._t('AssetAdmin.FOLDERDELETED', 'folder deleted.');
 		}
-
-		if(isset($brokenPageList)) {
-		  $message .= '  '._t('AssetAdmin.NOWBROKEN', 'The following pages now have broken links:').'<ul>'.addslashes($brokenPageList).'</ul>'.
-		    _t('AssetAdmin.NOWBROKEN2', 'Their owners have been emailed and they will fix up those pages.');			
-		}
-
+		
 		$script .= "statusMessage('$message');";
 		echo $script;
 	}
