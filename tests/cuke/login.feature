@@ -12,10 +12,10 @@ Feature: Log in
 
 	Scenario: valid login
 		When I fill out the log in form with user "admin" and password "password"
-		Then I see "Your are logged in as"
+		Then I see "You're logged in as"
 
 	Scenario: no password login
-		When I fill out the log in form with user "admin" and password "password"
+		When I fill out the log in form with user "admin" and password ""
 		Then I see "That doesn't seem to be the right e-mail address or password."
 
 	Scenario: no user login
