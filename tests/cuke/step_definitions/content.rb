@@ -36,7 +36,7 @@ Given /I load the "(.*)" root-level page/ do |nav|
 end
 
 Given /I load the root node/ do
-  Given 'I click the "admin/0" link'
+  Given 'I click the "admin/show/root" link'
 end
 
 Given /create a new page$/i do

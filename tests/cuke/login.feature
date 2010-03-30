@@ -11,7 +11,7 @@ Feature: Log in
 		Then I am sent to Security/login
 
 	Scenario: valid login
-		When I fill out the log in form with user "admin" and password "password"
+		When I fill out the login form with user "admin" and password "password"
 		Then I see "You're logged in as"
 
 	Scenario: no password login
@@ -34,3 +34,6 @@ Feature: Log in
 		And I click the "Log in" button
 		Then I am sent to admin
 
+	Scenario: Re-login
+		Given I visit Security/logout
+		Then I log into the CMS as admin

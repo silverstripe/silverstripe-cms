@@ -2,7 +2,7 @@
 # Log in
 Given /log in as (.*)$/ do |user|
 	Given "I fill out the log in form with user \"#{user}\" and password \"password\""
-	And 'I see "Your are logged in as"'
+	And 'I see "You\'re logged in as"'
 end
 
 Given /log into the CMS as (.*)/ do |user|
