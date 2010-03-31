@@ -39,6 +39,7 @@
 			 * If showCommand isn't set, then this will simply hide panels
 			 */
 			function showSidePanel(showCommand, hideCommands) {
+				ed.ss_focus_bookmark = ed.selection.getBookmark();
 				hideCommands.each(function(command) { 
 					ed.controlManager.setActive(command,false);
 					Element.hide(forms[command]); 
