@@ -170,7 +170,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 				'Roles',
 				'PermissionRole'
 			);
-			$rolesCTF->setPermissions(array('edit', 'delete'));
+			$rolesCTF->setPermissions(array('add', 'edit', 'delete'));
 
 			$rolesTab = $fields->findOrMakeTab('Root.Roles', _t('SecurityAdmin.TABROLES', 'Roles'));
 			$rolesTab->push(new LiteralField(
