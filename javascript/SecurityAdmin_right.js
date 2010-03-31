@@ -9,28 +9,28 @@ function action_addmember_right() {
 }
 
 (function($) {
-	$(document).ready(function() {
-		var refreshAfterImport = function(e) {
-			// Check for a message <div>, an indication that the form has been submitted.
-			var existingFormMessage = $($(this).contents()).find('.message');
-			if(existingFormMessage && existingFormMessage.html()) {
-				// Refresh member listing
-				var memberTableField = $(window.parent.document).find('#Form_EditForm_Members').get(0);
-				if(memberTableField) memberTableField.refresh();
-
-				// Refresh tree
-				var tree = $(window.parent.document).find('#sitetree').get(0);
-				if(tree) tree.reload();
-			}
-		};
-
 		/**
 		 * Refresh the member listing every time the import iframe is loaded,
 		 * which is most likely a form submission.
 		 */
 		$('#MemberImportFormIframe,#GroupImportFormIframe').livequery(
 			'load',
-			refreshAfterImport
+			function(e) {
+				// Get iframe content
+				var doc = this.document || this.contentDocument || this.contentWindow && this.contentWindow.document || null;
+				if(!doc) return;
+				
+				// Check for a message <div>, an indication that the form has been submitted.
+				var existingFormMessage = $(doc.body).find('.message');
+				if(existingFormMessage && existingFormMessage.html()) {
+					// Refresh member listing
+					var memberTableField = $(window.parent.document).find('#Form_EditForm_Members').get(0);
+					if(memberTableField) memberTableField.refresh();
+				
+					// Refresh tree
+					var tree = $(window.parent.document).find('#sitetree').get(0);
+					if(tree) tree.reload();
+				}
+			}
 		);
-	})
 })(jQuery);
