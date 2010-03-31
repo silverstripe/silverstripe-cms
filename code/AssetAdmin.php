@@ -650,7 +650,8 @@ JS;
 		}
 		
 		$script .= "statusMessage('$message');";
-		echo $script;
+
+		return $script;
 	}
 	
 	public function removefile(){
@@ -662,7 +663,7 @@ JS;
 			}
 			$file->delete();
 			$file->destroy();
-			
+
 			if(Director::is_ajax()) {
 				echo <<<JS
 				$('Form_EditForm_Files').removeFile($fileID);

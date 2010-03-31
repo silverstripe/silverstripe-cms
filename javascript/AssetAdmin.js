@@ -432,7 +432,7 @@ var deletefolder = {
 					errorMessage('Error deleting pages', response);
 				}
 			});
-
+			
 			$('deletepage').getElementsByTagName('button')[0].onclick();
 			
 		} else {
@@ -506,7 +506,8 @@ appendLoader(function () {
 				onsubmit: function(event) {
 					deletefolder.form_submit();
 					Event.stop(event);
-					}
+					return false;
+				}
 				}
 			});
 		Element.hide('Form_DeleteItemsForm');
