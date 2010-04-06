@@ -84,7 +84,9 @@ foreach(DatabaseAdapterRegistry::get_adapters() as $class => $details) {
 
 // Load database config
 if(isset($_REQUEST['db'])) {
-	$type = (isset($_REQUEST['db']['type'])) ? $_REQUEST['db']['type'] : "MySQLDatabase";
+	if(isset($_REQUEST['db']['type'])) $type = $_REQUEST['db']['type'];
+	else $type = $_REQUEST['db']['type'] = defined('SS_DATABASE_CLASS') ? SS_DATABASE_CLASS : 'MySQLDatabase';
+
 	// Disabled inputs don't submit anything - we need to use the environment (except the database name)
 	if($usingEnv) {
 		$_REQUEST['db'][$type] = $databaseConfig = array(
@@ -94,6 +96,7 @@ if(isset($_REQUEST['db'])) {
 			"password" => defined('SS_DATABASE_PASSWORD') ? SS_DATABASE_PASSWORD : "",
 			"database" => $_REQUEST['db'][$type]['database'],
 		);
+		
 	} else {
 		// Normal behaviour without the environment
 		$databaseConfig = $_REQUEST['db'][$type];
@@ -901,10 +904,17 @@ class Installer extends InstallRequirements {
 		$locale = isset($_POST['locale']) ? $_POST['locale'] : 'en_US';
 		$type = $config['db']['type'];
 		$dbConfig = $config['db'][$type];
+		if(!$dbConfig) {
+			echo "<p style=\"color: red\">Bad config submitted</p><pre>";
+			print_r($config);
+			echo "</pre>";
+			die();
+		}
 		
 		// Write the config file
 		global $usingEnv;
 		if($usingEnv) {
+			
 			$this->statusMessage("Setting up 'mysite/_config.php' for use with _ss_environment.php...");
 			$this->writeToFile("mysite/_config.php", <<<PHP
 <?php
@@ -930,7 +940,6 @@ i18n::set_locale('$locale');
 SiteTree::enable_nested_urls();
 PHP
 			);
-
 			
 		} else {
 			$this->statusMessage("Setting up 'mysite/_config.php'...");
