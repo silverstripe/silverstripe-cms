@@ -340,6 +340,20 @@ function action_save_right() {
 	$('Form_EditForm').save(false);
 }
 
+function action_save_siteconfig_right() {
+	_AJAX_LOADING = true;
+	if(typeof tinyMCE != 'undefined') tinyMCE.triggerSave();
+	$('Form_EditForm_action_save_siteconfig').value = ss.i18n._t('CMSMAIN.SAVING');
+	$('Form_EditForm_action_save_siteconfig').className = 'action loading';
+
+	$('Form_EditForm').save(null, function() {
+		if($('Form_EditForm_action_save_siteconfig') && $('Form_EditForm_action_save_siteconfig').className.indexOf('loading') != -1) {
+			$('Form_EditForm_action_save_siteconfig').value = 'Save';
+			Element.removeClassName($('Form_EditForm_action_save_siteconfig'), 'loading');
+		}
+	}, 'save_siteconfig');
+}
+
 /**
  * Handle auto-saving.  Detects if changes have been made, and if so save everything on the page.
  * If confirmation is true it will ask for confirmation.
