@@ -12,8 +12,6 @@
 
 <IfModule mod_rewrite.c>
 	RewriteEngine On
-	RewriteBase /ss2.4
-
 	RewriteCond %{REQUEST_URI} ^(.*)$
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteRule .* sapphire/main.php?url=%1&%{QUERY_STRING} [L]
