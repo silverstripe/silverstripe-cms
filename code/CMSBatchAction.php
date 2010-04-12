@@ -44,7 +44,6 @@ abstract class CMSBatchAction extends Object {
 	 *  }
 	 */
 	public function batchaction(DataObjectSet $pages, $helperMethod, $successMessage, $arguments = array()) {
-		$failures = 0;
 		$status = array('modified' => array(), 'error' => array());
 		
 		foreach($pages as $page) {
@@ -129,7 +128,8 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 	function run(DataObjectSet $pages) {
 		$status = array(
 			'modified'=>array(),
-			'deleted'=>array()
+			'deleted'=>array(),
+			'error'=>array()
 		);
 		
 		foreach($pages as $page) {
@@ -137,6 +137,7 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 			
 			// Perform the action
 			if($page->canDelete()) $page->delete();
+			else $status['error'][$page->ID] = true;
 
 			// check to see if the record exists on the live site, 
 			// if it doesn't remove the tree node
@@ -179,7 +180,7 @@ class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 			// Perform the action
 			if($page->canDelete()) $page->doDeleteFromLive();
 
-			// check to see if the record exists on the live site, if it doesn't remove the tree node
+			// check to see if the record exists on the stage site, if it doesn't remove the tree node
 			$stageRecord = Versioned::get_one_by_stage( 'SiteTree', 'Stage', "\"SiteTree\".\"ID\"=$id");
 			if($stageRecord) {
 				$stageRecord->IsAddedToStage = true;
@@ -191,8 +192,15 @@ class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 			}
 
 		}
+<<<<<<< .working
 
 		return Convert::raw2json($status);
+=======
+		
+		return FormResponse::respond();
+>>>>>>> .merge-right.r96789
 	}
 }
+
+
 
