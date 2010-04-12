@@ -156,7 +156,7 @@ $lang['en_US']['CMSMain_left.ss']['SITECONTENT TITLE'] = array(
 	PR_HIGH
 );
 $lang['en_US']['CMSMain_left.ss']['SITEREPORTS'] = 'Site Reports';
-$lang['en_US']['CMSMain_versions.ss']['AUTHOR'] = 'Author';
+$lang['en_US']['CMSMain_versions.ss']['AUTHOR'] = 'User';
 $lang['en_US']['CMSMain_versions.ss']['NOTPUB'] = 'Not published';
 $lang['en_US']['CMSMain_versions.ss']['PUBR'] = 'Publisher';
 $lang['en_US']['CMSMain_versions.ss']['UNKNOWN'] = 'Unknown';

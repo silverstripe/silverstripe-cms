@@ -4,7 +4,7 @@
 		<td class="checkbox"></td>
 		<td>#</td>
 		<td><% _t('WHEN','When') %></td>
-		<td><% _t('AUTHOR','Author') %></td>
+		<td><% _t('AUTHOR','User') %></td>
 		<td><% _t('PUBR','Publisher') %></td>
 	</tr>
 	</thead>
