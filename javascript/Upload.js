@@ -5,7 +5,7 @@
 
 */
 
-Upload = Class.create();
+var Upload = Class.create();
 Upload.prototype = {
 	
 	/**
