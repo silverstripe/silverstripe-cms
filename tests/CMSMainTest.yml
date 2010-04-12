@@ -4,9 +4,15 @@ Page:
    page2:
       Title: Page 2
    page3:
-      Title: Page 2
+      Title: Page 3
+   page31:
+      Title: Page 3.1
+      Parent: =>Page.page3
+   page32:
+      Title: Page 3.2
+      Parent: =>Page.page3
    page4:
-      Title: Page 2
+      Title: Page 4
    home:
       Title: Home
       URLSegment: home
