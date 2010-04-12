@@ -192,15 +192,7 @@ class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 			}
 
 		}
-<<<<<<< .working
 
 		return Convert::raw2json($status);
-=======
-		
-		return FormResponse::respond();
->>>>>>> .merge-right.r96789
 	}
 }
-
-
-
