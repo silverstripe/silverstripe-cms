@@ -56,13 +56,13 @@
 					// Can't use $('contentPanel'), as its in a different window
 					window.parent.document.getElementById('contentPanel').style.display = "none";
 					// toggle layout panel
-					jQuery('body.CMSMain').concrete('ss').MainLayout().close('east');
+					jQuery('body.CMSMain').concrete('ss').getMainLayout().close('east');
 				} else {
 					ed.controlManager.setActive(showCommand, true);
 					window.parent.document.getElementById('contentPanel').style.display = "block";
 					// toggle layout panel
-					jQuery('body.CMSMain').concrete('ss').MainLayout().resizeAll();
-					jQuery('body.CMSMain').concrete('ss').MainLayout().open('east');
+					jQuery('body.CMSMain').concrete('ss').getMainLayout().resizeAll();
+					jQuery('body.CMSMain').concrete('ss').getMainLayout().open('east');
 				}
 			}
 

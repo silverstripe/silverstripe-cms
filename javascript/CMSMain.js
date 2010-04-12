@@ -13,7 +13,7 @@
 				});
 				// The close button should close the east panel of the layout
 				this.find(':header:first .ui-dialog-titlebar-close').bind('click', function(e) {
-					$('body.CMSMain').concrete('ss').MainLayout().close('east');
+					$('body.CMSMain').concrete('ss').getMainLayout().close('east');
 					return false;
 				});
 			
