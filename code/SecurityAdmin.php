@@ -330,9 +330,9 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		return FormResponse::respond();
 	}
 	
-	function getSiteTreeFor($className, $rootID = null, $childrenMethod = null, $filterFunction = null, $minNodeCount = 30) {
+	function getSiteTreeFor($className, $rootID = null, $childrenMethod = null, $numChildrenMethod = null, $filterFunction = null, $minNodeCount = 30) {
 		if (!$childrenMethod) $childrenMethod = 'stageChildren';
-		return parent::getSiteTreeFor($className, $rootID, $childrenMethod, $filterFunction, $minNodeCount);
+		return parent::getSiteTreeFor($className, $rootID, $childrenMethod, $numChildrenMethod, $filterFunction, $minNodeCount);
 	}
 	
 	function getCMSTreeTitle() {

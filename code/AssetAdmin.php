@@ -253,9 +253,9 @@ HTML;
 		return $this->getSiteTreeFor($this->stat('tree_class'), null, 'ChildFolders');
 	}
 	
-	function getSiteTreeFor($className, $rootID = null, $childrenMethod = null, $filterFunction = null, $minNodeCount = 30) {
+	function getSiteTreeFor($className, $rootID = null, $childrenMethod = null, $numChildrenMethod = null, $filterFunction = null, $minNodeCount = 30) {
 		if (!$childrenMethod) $childrenMethod = 'ChildFolders';
-		return parent::getSiteTreeFor($className, $rootID, $childrenMethod, $filterFunction, $minNodeCount);
+		return parent::getSiteTreeFor($className, $rootID, $childrenMethod, $numChildrenMethod, $filterFunction, $minNodeCount);
 	}
 	
 	public function getCMSTreeTitle() {
