@@ -304,6 +304,8 @@ JS;
 
 		if($record) {
 			$fields->push($idField = new HiddenField("ID", false, $id));
+			// Necessary for different subsites
+			$fields->push($liveURLField = new HiddenField("AbsoluteLink", false, $record->AbsoluteLink()));
 			$fields->push($liveURLField = new HiddenField("LiveURLSegment"));
 			$fields->push($stageURLField = new HiddenField("StageURLSegment"));
 			$fields->push(new HiddenField("TreeTitle", false, $record->TreeTitle));

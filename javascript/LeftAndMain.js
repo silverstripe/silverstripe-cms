@@ -373,7 +373,9 @@ var ss_MainLayout;
 			 */
 			refresh: function() {
 				// TODO Compatible with nested urls?
-				var urlSegment = this.getForm().find(':input[name=URLSegment]').val();
+				var urlSegment = this.getForm().find(':input[name=AbsoluteLink]').val();
+				if(!urlSegment) urlSegment = this.getForm().find(':input[name=URLSegment]').val();
+				
 				if(urlSegment) {
 					var locale = this.getForm().find(':input[name=Locale]').val();
 					var url = urlSegment;
