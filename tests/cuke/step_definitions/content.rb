@@ -45,8 +45,11 @@ end
 
 Given /create a new page using template \"(.*)\"/i do |type|
   Given 'I load the root node (ajax)'
+  puts "Clicking the create button"
   And 'I click the "Create" button'
+  puts "Selecting #{type} from PageType"
   And "I select \"#{type}\" from \"PageType\""
+  puts "done selecting"
   And 'I click the "Go" button (ajax)'
   And 'I click the "Create" button'
 end
