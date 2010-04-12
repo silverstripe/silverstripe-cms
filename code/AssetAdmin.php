@@ -147,6 +147,13 @@ JS
 	 */
 	function doUpload($data, $form) {
 		$processedFiles = array();
+		$newFiles = array();
+		$fileIDs = array();
+		$fileNames = array();
+		$fileSizeWarnings = '';
+		$errorsArr = '';
+		$status = '';
+		$statusMessage = '';
 		
 		if(!isset($data['Files'])) return Director::set_status_code("404");
 		
@@ -157,25 +164,17 @@ JS
 					$processedFiles[$key][$param] = $value;
 				}
 			}
-		}
-		else {
+		} else {
 			$proccessedFiles[] = $data['Files'];
 		}
 		
 		// get the folder to upload to.
 		if(isset($data['FolderID']) && $data['FolderID'] != "root") {
 			$folder = DataObject::get_by_id('Folder', $data['FolderID']);
-		}
-		else {
+		} else {
 			$folder = DataObject::get_one('Folder');
 		}
 		
-		$newFiles = array();
-		$fileSizeWarnings = '';
-		$errorsArr = '';
-		$status = '';
-		$statusMessage = '';
-
 		foreach($processedFiles as $tmpFile) {
 			if($tmpFile['error'] == UPLOAD_ERR_NO_TMP_DIR) {
 				$errorsArr[] = _t('AssetAdmin.NOTEMP', 'There is no temporary folder for uploads. Please set upload_tmp_dir in php.ini.');
@@ -210,7 +209,7 @@ JS
 
 		if($newFiles) {
 			$numFiles = sizeof($newFiles);
-			$statusMessage = sprintf(_t('AssetAdmin.UPLOADEDX',"Uploaded %s files"),$numFiles) ;
+			$statusMessage = sprintf(_t('AssetAdmin.UPLOADEDX',"Uploaded %s files"),$numFiles);
 			$status = "good";
 		} else if($errorsArr) {
 			$statusMessage = implode('\n', $errorsArr);
@@ -220,8 +219,6 @@ JS
 			$status = "";
 		}
 
-		$fileIDs = array();
-		$fileNames = array();
 		foreach($newFiles as $newFile) {
 			$fileIDs[] = $newFile;
 			$fileObj = DataObject::get_one('File', "\"File\".\"ID\"=$newFile");
