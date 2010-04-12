@@ -357,6 +357,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 				'help' => _t('SecurityAdmin.APPLY_ROLES_HELP', 'Ability to edit the roles assigned to a group. Requires "Access to Security.".'),
 				'sort' => 0
 			)
+			'APPLY_ROLES' => _t('SecurityAdmin.APPLY_ROLES', 'Apply roles to groups'),
 		);
 	}
 	
