@@ -156,10 +156,10 @@ JS
 		}
 		
 		// get the folder to upload to.
-		if(isset($data['FolderID']) && $data['FolderID'] != "root") {
+		if(isset($data['FolderID']) && $data['FolderID'] && $data['FolderID'] != "root") {
 			$folder = DataObject::get_by_id('Folder', $data['FolderID']);
 		} else {
-			$folder = DataObject::get_one('Folder');
+			$folder = singleton('Folder');
 		}
 		
 		foreach($processedFiles as $tmpFile) {
