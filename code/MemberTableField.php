@@ -349,7 +349,7 @@ class MemberTableField extends ComplexTableField {
 		$message = sprintf(
 			_t('ComplexTableField.SUCCESSADD', 'Added %s %s %s'),
 			$childData->singular_name(),
-			'<a href="' . $this->Link() . '">' . $childData->Title . '</a>',
+			'<a href="' . $this->Link() . '">' . htmlspecialchars($childData->Title, ENT_QUOTES) . '</a>',
 			$closeLink
 		);
 		$form->sessionMessage($message, 'good');
