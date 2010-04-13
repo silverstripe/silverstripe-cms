@@ -128,7 +128,7 @@ class CMSMainTest extends FunctionalTest {
 		$this->assertTrue($livePage->canDelete());
 
 		// Check that the 'restore' button exists as a simple way of checking that the correct page is returned.
-		$this->assertRegExp('/<input[^>]+type="submit"[^>]+name="action_restore"/i', $response->getBody());
+		$this->assertRegExp('/<input[^>]+type="submit"[^>]+name="action_(restore|revert)"/i', $response->getBody());
 	}
 	
 	/**
