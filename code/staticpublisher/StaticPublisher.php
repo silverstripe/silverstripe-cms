@@ -92,7 +92,7 @@ abstract class StaticPublisher extends DataObjectDecorator {
 			$urls = array($this->owner->AbsoluteLink());
 		}
 		
-		$legalPages = $this->owner->allPagesToCache();
+		$legalPages = singleton('Page')->allPagesToCache();
 		
 		$urlsToRepublish = array_intersect($urls, $legalPages);
 		$urlsToUnpublish = array_diff($urls, $legalPages);
