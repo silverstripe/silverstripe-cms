@@ -1023,6 +1023,8 @@ JS;
 			new DropdownField("PageType", "", $pageTypes, 'Page')
 		);
 		
+		$this->extend('updatePageOptions', $fields);
+		
 		$actions = new FieldSet(
 			new FormAction("doAdd", _t('CMSMain.GO',"Go"))
 		);
