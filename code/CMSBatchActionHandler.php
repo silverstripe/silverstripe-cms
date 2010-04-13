@@ -126,11 +126,13 @@ class CMSBatchActionHandler extends RequestHandler {
 		foreach($actions as $urlSegment => $action) {
 			$actionClass = $action['class'];
 			$actionObj = new $actionClass();
-			$actionDef = new ArrayData(array(
-				"Link" => Controller::join_links($this->Link(), $urlSegment),
-				"Title" => $actionObj->getActionTitle()
-			));
-			$actionList->push($actionDef);
+			if($actionObj->canView()) {
+				$actionDef = new ArrayData(array(
+					"Link" => Controller::join_links($this->Link(), $urlSegment),
+					"Title" => $actionObj->getActionTitle()
+				));
+				$actionList->push($actionDef);
+			}
 		}
 		
 		return $actionList;

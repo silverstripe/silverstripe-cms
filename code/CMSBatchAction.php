@@ -108,13 +108,20 @@ abstract class CMSBatchAction extends Object {
 				if($page->$methodName()) $applicableIDs[] = $page->ID;
 			}
 		}
-		
+
 		return $applicableIDs;
 	}
 	
 	// if your batchaction has parameters, return a fieldset here
 	function getParameterFields() {
 		return false;
+	}
+	
+	/**
+	 * If you wish to restrict the batch action to some users, overload this function.
+	 */
+	function canView() {
+		return true;
 	}
 }
 
