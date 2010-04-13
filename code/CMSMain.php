@@ -18,7 +18,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	// so that Director does not think they are actions of CMSMain
 	static $url_priority = 40;
 	
-	static $menu_title = 'Site Content';
+	static $menu_title = 'Pages';
 	
 	static $menu_priority = 10;
 	

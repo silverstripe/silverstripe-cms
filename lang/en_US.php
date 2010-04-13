@@ -77,7 +77,7 @@ $lang['en_US']['CMSMain']['DESCREMOVED'] = 'and %s descendants';
 $lang['en_US']['CMSMain']['EMAIL'] = 'Email';
 $lang['en_US']['CMSMain']['GO'] = 'Go';
 $lang['en_US']['CMSMain']['MENUTITLE'] = array(
-	'Site Content',
+	'Pages',
 	100,
 	'Menu title'
 );
@@ -154,7 +154,7 @@ $lang['en_US']['CMSMain_left.ss']['SEARCH'] = 'Search';
 $lang['en_US']['CMSMain_left.ss']['SELECTPAGESACTIONS'] = 'Select the pages that you want to change &amp; then click an action:';
 $lang['en_US']['CMSMain_left.ss']['SHOWUNPUB'] = 'Show unpublished versions';
 $lang['en_US']['CMSMain_left.ss']['SITECONTENT TITLE'] = array(
-	'Site Content and Structure',
+	'Page Tree',
 	PR_HIGH
 );
 $lang['en_US']['CMSMain_left.ss']['SITEREPORTS'] = 'Site Reports';

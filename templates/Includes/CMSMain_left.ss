@@ -1,6 +1,6 @@
 	<div id="treepanes">
 		<h3>
-			<a href="#"><% _t('SITECONTENT TITLE','Site Content and Structure',PR_HIGH) %></a>
+			<a href="#"><% _t('SITECONTENT TITLE','Page Tree',PR_HIGH) %></a>
 		</h3>
 		<div id="sitetree_holder">
 			<div id="sitetree_and_tools">
