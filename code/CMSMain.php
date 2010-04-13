@@ -787,7 +787,8 @@ JS;
 
 	function unpublish($data, $form) {
 		$page = DataObject::get_by_id("SiteTree", $data['ID']);
-		if($page && !$page->canPublish()) return Security::permissionFailure($this);
+		
+		if($page && !$page->canDeleteFromLive()) return Security::permissionFailure($this);
 		
 		$page->doUnpublish();
 		
