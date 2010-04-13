@@ -755,6 +755,8 @@ JS;
 	 * Roll a page back to a previous version
 	 */
 	function rollback($data, $form) {
+		$this->extend('onBeforeRollback', $data['ID']);
+		
 		if(isset($data['Version']) && (bool)$data['Version']) {
 			$record = $this->performRollback($data['ID'], $data['Version']);
 			$message = sprintf(
@@ -917,6 +919,7 @@ JS;
 		if($page && !$page->canView()) return Security::permissionFailure($this);
 		
 		$record = $page->compareVersions($fromVersion, $toVersion);
+		
 		$fromVersionRecord = Versioned::get_version('SiteTree', $id, $fromVersion);
 		$toVersionRecord = Versioned::get_version('SiteTree', $id, $toVersion);
 		if(!$fromVersionRecord) user_error("Can't find version $fromVersion of page $id", E_USER_ERROR);
