@@ -183,7 +183,7 @@ class FilesystemPublisher extends StaticPublisher {
 		if(self::$static_base_url) Director::setBaseURL($currentBaseURL); 
 		if($this->fileExtension == 'php') SSViewer::setOption('rewriteHashlinks', true); 
 
-		$base = "../$this->destFolder";
+		$base = BASE_PATH . "/$this->destFolder";
 		foreach($files as $file) {
 			Filesystem::makeFolder("$base/$file[Folder]");
 			
@@ -201,7 +201,7 @@ class FilesystemPublisher extends StaticPublisher {
 	 * Generate the templated content for a PHP script that can serve up the given piece of content with the given age and expiry
 	 */
 	protected function generatePHPCacheFile($content, $age, $lastModified) {
-		$template = file_get_contents('../cms/code/staticpublisher/CachedPHPPage.tmpl');
+		$template = file_get_contents(BASE_PATH . '/cms/code/staticpublisher/CachedPHPPage.tmpl');
 		return str_replace(
 				array('**MAX_AGE**', '**LAST_MODIFIED**', '**CONTENT**'),
 				array((int)$age, $lastModified, $content),
@@ -211,7 +211,7 @@ class FilesystemPublisher extends StaticPublisher {
 	 * Generate the templated content for a PHP script that can serve up a 301 redirect to the given destionation
 	 */
 	protected function generatePHPCacheRedirection($destination) {
-		$template = file_get_contents('../cms/code/staticpublisher/CachedPHPRedirection.tmpl');
+		$template = file_get_contents(BASE_PATH . '/cms/code/staticpublisher/CachedPHPRedirection.tmpl');
 		return str_replace(
 				array('**DESTINATION**'),
 				array($destination),
@@ -219,7 +219,7 @@ class FilesystemPublisher extends StaticPublisher {
 	}
 	
 	public function getDestDir() {
-		return '../'.$this->destFolder;
+		return BASE_PATH . '/' . $this->destFolder;
 	}
 	
 	/**
@@ -227,7 +227,7 @@ class FilesystemPublisher extends StaticPublisher {
 	 * Only returns cache files that will actually map to a URL, based on urlsToPaths.
 	 */
 	public function getExistingStaticCacheFiles() {
-		$cacheDir = '../'.$this->destFolder;
+		$cacheDir = BASE_PATH . '/' . $this->destFolder;
 
 		$urlMapper = array_flip($this->urlsToPaths($this->owner->allPagesToCache()));
 		
@@ -236,7 +236,7 @@ class FilesystemPublisher extends StaticPublisher {
 		// Glob each dir, then glob each one of those
 		foreach(glob("$cacheDir/*", GLOB_ONLYDIR) as $cacheDir) {
 			foreach(glob($cacheDir.'/*') as $cacheFile) {
-				$mapKey = str_replace("../cache/","",$cacheFile);
+				$mapKey = str_replace(BASE_PATH . "/cache/","",$cacheFile);
 				if(isset($urlMapper[$mapKey])) {
 					$url = $urlMapper[$mapKey];
 					$output[$url] = $cacheFile;
