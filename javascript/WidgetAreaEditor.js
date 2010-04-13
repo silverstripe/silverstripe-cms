@@ -170,13 +170,12 @@ WidgetAreaEditorClass.prototype = {
 		widget = document.createElement('div');
 		widget.innerHTML = response.responseText.replace(/Widget\[0\]/gi, "Widget[new-" + (++$('usedWidgets-'+this.name).parentNode.parentNode.maxid) + "]");
 	
-		$('usedWidgets-'+this.name).appendChild(widget.childNodes[0]);
+		$('usedWidgetsStart-'+this.name).appendChild(widget.childNodes[0]);
 		$('usedWidgets-'+this.name).parentNode.parentNode.rewriteWidgetAreaAttributes();
 		UsedWidget.applyToChildren($('usedWidgets-'+this.name), 'div.Widget');
 		
 		// Repply some common form controls
 		WidgetTreeDropdownField.applyTo('div.usedWidgets .TreeDropdownField');
-		
 		
 		Sortable.create('usedWidgets-'+this.name, {
 			tag: 'div',
