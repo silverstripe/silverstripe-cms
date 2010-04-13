@@ -122,7 +122,7 @@ class CMSBatchAction_Unpublish extends CMSBatchAction {
  */
 class CMSBatchAction_Delete extends CMSBatchAction {
 	function getActionTitle() {
-		return _t('CMSBatchActions.DELETE_DRAFT_PAGES', 'Delete from draft');
+		return _t('CMSBatchActions.DELETE_DRAFT_PAGES', 'Delete from draft site');
 	}
 
 	function run(DataObjectSet $pages) {
