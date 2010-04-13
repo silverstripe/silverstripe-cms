@@ -1263,7 +1263,7 @@ JS;
 					"Access to %s",
 					PR_MEDIUM,
 					"Item in permission selection identifying the admin section, with title and classname. Example: Access to Files & Images"
-				), $title),
+				), $title, null),
 				'category' => _t('Permission.CMS_ACCESS_CATEGORY', 'CMS Access')
 			);
 		}
