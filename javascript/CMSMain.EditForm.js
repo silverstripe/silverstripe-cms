@@ -186,7 +186,13 @@
 		$('#Form_EditForm .Actions #Form_EditForm_action_rollback').concrete(/** @lends ss.Form_EditForm_action_rollback */{
 			onclick: function(e) {
 				// @todo i18n
-				return confirm("Do you really want to copy the published content to the stage site?");
+				var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';
+				if(version) {
+					message = "Do you really want to roll back to version #" + version + " of this page?";
+				} else {
+					message = "Do you really want to copy the published content to the stage site?";
+				}
+				return confirm(message);
 			}
 		});
 	});
