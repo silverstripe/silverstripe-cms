@@ -1,6 +1,9 @@
-div.availableWidgetsHolder,
+div.availableWidgetsHolder {
+	width: 30%;
+}
+
 div.usedWidgetsHolder {
-	width: 49%;
+	width: 69%;
 }
 
 div.availableWidgetsHolder {
