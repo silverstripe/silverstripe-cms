@@ -63,5 +63,9 @@ div.availableWidgets div.Widget h3 {
 	}
 	div.availableWidgets div.Widget h3 {
 		cursor: pointer;
-		background: #000 url(../images/add-bg.png) right top;
+		color: #444;
+		background: #ccc url(../images/add-bg.png) right top;
 	}
+		div.availableWidgets div.Widget h3:hover {
+			background: #ccc url(../images/add-bg.png) right 21px;
+		}
