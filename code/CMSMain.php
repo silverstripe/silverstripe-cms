@@ -855,7 +855,6 @@ JS;
 
 			$actions = new FieldSet(
 				new FormAction("email", _t('CMSMain.EMAIL',"Email")),
-				new FormAction("print", _t('CMSMain.PRINT',"Print")),
 				new FormAction("rollback", _t('CMSMain.ROLLBACK',"Roll back to this version"))
 			);
 
