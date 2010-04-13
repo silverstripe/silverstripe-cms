@@ -22,19 +22,6 @@ class AssetAdmin extends LeftAndMain {
 	 */
 	public static $allowed_max_file_size;
 	
-	/**
-	 * @see Upload->allowedExtensions
-	 * @var array
-	 */
-	public static $allowed_extensions = array();
-	
-	/**
-	 * If this is true, then restrictions set in $allowed_max_file_size and
-	 * $allowed_extensions will be applied to users with admin privileges as
-	 * well.
-	 */
-	public static $apply_restrictions_to_admin = false;
-	
 	static $allowed_actions = array(
 		'deleteUnusedThumbnails',
 		'doUpload',
@@ -190,11 +177,11 @@ JS
 				}
 				
 				// validate files (only if not logged in as admin)
-				if(!self::$apply_restrictions_to_admin && Permission::check('ADMIN')) {
+				if(!File::$apply_restrictions_to_admin && Permission::check('ADMIN')) {
 					$valid = true;
 				} else {
 					$upload = new Upload();
-					$upload->setAllowedExtensions(array('gif'));
+					$upload->setAllowedExtensions(File::$allowed_extensions);
 					$upload->setAllowedMaxFileSize(self::$allowed_max_file_size);
 					$valid = $upload->validate($tmpFile);
 					if(!$valid) {
