@@ -589,54 +589,6 @@ class LeftAndMain extends Controller {
 		
 		return $form->formHtmlContent();
 	}
-	
-	/** 
-	 * Return a javascript snippet that hides a page type from Create dropdownfield 
-	 * if it's a single_instance_only page type and has been created in the site tree
-	 */
-	protected function hideSingleInstanceOnlyFromCreateFieldJS($createdPage) {
-		// Prepare variable to single_instance_only checking in javascript
-		$pageClassName = $createdPage->class;
-		$singleInstanceCSSClass = "";
-		$singleInstanceClassSelector = "." . $createdPage->stat('single_instance_only_css_class');
-		if ($createdPage->stat('single_instance_only')) {
-			$singleInstanceCSSClass = $createdPage->stat('single_instance_only_css_class');
-		}
-		
-		return <<<JS
-			// if the current page type that was created is single_instance_only, 
-			// hide it from the create dropdownlist afterward
-			singleSingleOnlyOfThisPageType = jQuery("#sitetree li.{$pageClassName}{$singleInstanceClassSelector}");
-			
-			if (singleSingleOnlyOfThisPageType.length > 0) {
-				jQuery("#" + _HANDLER_FORMS.addpage + " option[@value={$pageClassName}]").remove();
-			}
-JS;
-	}
-	
-	/** 
-	 * Return a javascript snippet that that shows a single_instance_only page type 
-	 * in Create dropdownfield if there isn't any of its instance in the site tree
-	 */
-	protected function showSingleInstanceOnlyInCreateFieldJS($deletedPage) {
-		$className = $deletedPage->class;
-		$singularName = $deletedPage->singular_name();
-		$singleInstanceClassSelector = "." . $deletedPage->stat('single_instance_only_css_class');
-		return <<<JS
-// show the hidden single_instance_only page type in the create dropdown field
-singleSingleOnlyOfThisPageType = jQuery("#sitetree li.{$className}{$singleInstanceClassSelector}");
-
-if (singleSingleOnlyOfThisPageType.length == 0) {	
-	if(jQuery("#" + _HANDLER_FORMS.addpage + " option[@value={$className}]").length == 0) {
-		jQuery("#" + _HANDLER_FORMS.addpage + " select option").each(function(){
-			if ("{$singularName}".toLowerCase() >= jQuery(this).val().toLowerCase()) {
-				jQuery("<option value=\"{$className}\">{$singularName}</option>").insertAfter(this);
-			}
-		});
-	}
-}
-JS;
-	}
 
 	/**
 	 * Ajax handler for updating the parent of a tree node

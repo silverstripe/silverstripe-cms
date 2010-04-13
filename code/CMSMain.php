@@ -383,20 +383,6 @@ JS;
 		$form->saveInto($record, true);
 		$record->write();
 		
-		// if changed to a single_instance_only page type
-		if ($record->stat('single_instance_only')) {
-			FormResponse::add("jQuery('#sitetree li.{$record->ClassName}').addClass('{$record->stat('single_instance_only_css_class')}');");
-			FormResponse::add($this->hideSingleInstanceOnlyFromCreateFieldJS($record));
-		}
-		else {
-			FormResponse::add("jQuery('#sitetree li.{$record->ClassName}').removeClass('{$record->stat('single_instance_only_css_class')}');");
-		}
-		// if chnaged from a single_instance_only page type
-		$sampleOriginalClassObject = new $data['ClassName']();
-		if($sampleOriginalClassObject->stat('single_instance_only')) {
-			FormResponse::add($this->showSingleInstanceOnlyInCreateFieldJS($sampleOriginalClassObject));
-		}
-
 		// If the 'Save & Publish' button was clicked, also publish the page
 		if (isset($data['publish']) && $data['publish'] == 1) {
 			$record->doPublish();
