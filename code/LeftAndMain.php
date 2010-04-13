@@ -125,7 +125,8 @@ class LeftAndMain extends Controller {
 		}
 
 		// Allow customisation of the access check by a decorator
-		if(!$this->canView()) {
+		// Also all the canView() check to execute Director::redirect()
+		if(!$this->canView() && !$this->response->isFinished()) {
 			// When access /admin/, we should try a redirect to another part of the admin rather than be locked out
 			$menu = $this->MainMenu();
 			foreach($menu as $candidate) {
@@ -152,7 +153,7 @@ class LeftAndMain extends Controller {
 
 			return Security::permissionFailure($this, $messageSet);
 		}
-
+		
 		// Don't continue if there's already been a redirection request.
 		if(Director::redirected_to()) return;
 
