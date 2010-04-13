@@ -9,7 +9,8 @@ class CMSBatchActionHandler extends RequestHandler {
 	static $batch_actions = array();
 	
 	static $url_handlers = array(
-		'$BatchAction' => 'handleAction'
+		'$BatchAction/applicablepages' => 'handleApplicablePages',
+		'$BatchAction' => 'handleAction',
 	);
 	
 	protected $parentController;
@@ -99,7 +100,6 @@ class CMSBatchActionHandler extends RequestHandler {
 						$this->recordClass,
 						implode(", ", $idsFromLive)
 					);
-					Debug::message($sql);
 					$livePages = Versioned::get_by_stage($this->recordClass, 'Live', $sql);
 					if($pages) $pages->merge($livePages);
 					else $pages = $livePages;
@@ -111,6 +111,28 @@ class CMSBatchActionHandler extends RequestHandler {
 		
 		return $actionHandler->run($pages);
 	} 
+
+	function handleApplicablePages($request) {
+		// Find the action handler
+		$actions = Object::get_static($this->class, 'batch_actions');
+		$actionClass = $actions[$request->param('BatchAction')];
+		$actionHandler = new $actionClass['class']();
+
+		// Sanitise ID list and query the database for apges
+		$ids = split(' *, *', trim($request->requestVar('csvIDs')));
+		foreach($ids as $k => $id) $ids[$k] = (int)$id;
+		$ids = array_filter($ids);
+		
+		if($actionHandler->hasMethod('applicablePages')) {
+			$applicableIDs = $actionHandler->applicablePages($ids);
+		} else {
+			$applicableIDs = $ids;
+		}
+		
+		$response = new SS_HTTPResponse(json_encode($applicableIDs));
+		$response->addHeader("Content-type", "application/json");
+		return $response;
+	}
 	
 	/**
 	 * Return a DataObjectSet of ArrayData objects containing the following pieces of info

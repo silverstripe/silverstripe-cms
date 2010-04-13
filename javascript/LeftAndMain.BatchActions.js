@@ -44,8 +44,8 @@
 						$(self.getTree()).removeClass('multiselect');
 					} else {
 						self._multiselectTransform();
+						self.serializeFromTree();
 					}
-				
 				});
 				
 				this._super();
@@ -85,34 +85,106 @@
 				return $('#TreeActions-batchactions').is(':visible');
 			},
 		
-			onsubmit: function(e) {
-				var ids = [];
-				var tree = this.getTree();
+			/**
+			 * Ajax callbacks determine which pages is selectable in a certain batch action.
+			 * 
+			 * @param {Object} rootNode
+			 */
+			refreshSelected : function(rootNode) {
+				var self = this, st = this.getTree(), ids = this.getIDs(), allIds = [];
+				// Default to refreshing the entire tree
+				if(rootNode == null) rootNode = st;
+
+				for(var idx in ids) {
+					$(st.getTreeNodeByIdx(idx)).addClass('selected').attr('selected', 'selected');
+				}
+
+				jQuery(rootNode).find('li').each(function() {
+					var id = parseInt(this.id.replace('record-',''), 10);
+					if(id) allIds.push(id);
+					
+					// Disable the nodes while the ajax request is being processed
+					$(this).removeClass('nodelete').addClass('treeloading');
+				});
+
+				// Post to the server to ask which pages can have this batch action applied
+				var applicablePagesURL = this.find(':input[name=Action]').val() + '/applicablepages/?csvIDs=' + allIds.join(',');
+				jQuery.getJSON(applicablePagesURL, function(applicableIDs) {
+					var i;
+					var applicableIDMap = {};
+					for(i=0;i<applicableIDs.length;i++) applicableIDMap[applicableIDs[i]] = true;
+
+					// Set a CSS class on each tree node indicating which can be batch-actioned and which can't
+					jQuery(rootNode).find('li').each(function() {
+						$(this).removeClass('treeloading');
+
+						var id = parseInt(this.id.replace('record-',''), 10);
+						if(id) {
+							if(applicableIDMap[id] === true) {
+								$(this).removeClass('nodelete');
+							} else {
+								// De-select the node if it's non-applicable
+								$(this).removeClass('selected').addClass('nodelete');
+							}
+						}
+					});
+					
+					self.serializeFromTree();
+				});
+			},
+			
+			serializeFromTree: function() {
+				var tree = this.getTree(), ids = [];
+				
 				// find all explicitly selected IDs
 				$(tree).find('li.selected').each(function() {
 					ids.push(tree.getIdxOf(this));
-					// find implicitly selected children
-					$(this).find('li').each(function() {
-						ids.push(tree.getIdxOf(this));
-					});
+					// // find implicitly selected children
+					// $(this).find('li').each(function() {
+					// 	ids.push(tree.getIdxOf(this));
+					// });
 				});
-			
-				// if no nodes are selected, return with an error
-				if(!ids || !ids.length) {
-					alert(ss.i18n._t('CMSMAIN.SELECTONEPAGE'));
-					return false;
-				}
-			
-				// apply callback, which might modify the IDs
-				var type = this.find(':input[name=Action]').val();
-				if(this.getActions()[type]) ids = this.getActions()[type].apply(this, [ids]);
 			
 				// if no IDs are selected, stop here. This is an implict way for the
 				// callback to cancel the actions
 				if(!ids || !ids.length) return false;
 
 				// write IDs to the hidden field
+				this.setIDs(ids);
+				
+				return true;
+			},
+			
+			/**
+			 * @param {Array} ids
+			 */
+			setIDs: function(ids) {
 				this.find(':input[name=csvIDs]').val(ids.join(','));
+			},
+			
+			/**
+			 * @return {Array}
+			 */
+			getIDs: function() {
+				return this.find(':input[name=csvIDs]').val().split(',');
+			},
+		
+			onsubmit: function(e) {
+				var ids = this.getIDs();
+				var tree = this.getTree();
+				
+				// if no nodes are selected, return with an error
+				if(!ids || !ids.length) {
+					alert(ss.i18n._t('CMSMAIN.SELECTONEPAGE'));
+					return false;
+				}
+				
+				// apply callback, which might modify the IDs
+				var type = this.find(':input[name=Action]').val();
+				if(this.getActions()[type]) ids = this.getActions()[type].apply(this, [ids]);
+			
+				// write (possibly modified) IDs back into to the hidden field
+				this.setIDs(ids);
 			
 				var button = this.find(':submit:first');
 				button.addClass('loading');
@@ -130,14 +202,16 @@
 						statusMessage(msg, (status == 'success') ? 'good' : 'bad');
 					},
 					success: function(data, status) {
+						var id;
+						
 						// TODO This should use a more common serialization in a new tree library
 						if(data.modified) {
-							for(var id in data.modified) {
+							for(id in data.modified) {
 								tree.setNodeTitle(id, data.modified[id]['TreeTitle']);
 							}
 						}
 						if(data.deleted) {
-							for(var id in data.deleted) {
+							for(id in data.deleted) {
 								var node = tree.getTreeNodeByIdx(id);
 								if(node && node.parentTreeNode)	node.parentTreeNode.removeTreeNode(node);
 							}
@@ -221,8 +295,16 @@
 						this.open();
 					});
 				}
+				
+				this.serializeFromTree();
 			}
 		});
+	});
+	
+	$('#Form_BatchActionsForm :select[name=Action]').entwine({
+		onchange: function(e) {
+			$(e.target.form).entwine('ss').refreshSelected();
+		}
 	});
 	
 	$(document).ready(function() {
