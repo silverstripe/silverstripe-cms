@@ -13,11 +13,7 @@ class WidgetAreaEditor extends FormField {
 	public $ToAddTitle;
 
 	function __construct($name, $widgetClasses = array('Widget'), $maxWidgets = 0) {
-		$this->InUseTitle = _t('WidgetAreaEditor.ss', 'INUSE');
-		$this->AvailableTitle = _t('WidgetAreaEditor.ss', 'AVAILABLE');
-		$this->ToAddTitle = _t('WidgetAreaEditor.ss', 'TOADD');
 		$this->MaxWidgets = $maxWidgets;
-		
 		$this->widgetClasses = $widgetClasses;
 		
 		parent::__construct($name);

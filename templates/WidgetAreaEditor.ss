@@ -1,7 +1,7 @@
 <div class="WidgetAreaEditor" id="WidgetAreaEditor-$Name" name="$Name"<% if MaxWidgets %> maxwidgets="$MaxWidgets"<% end_if %>>
 	<input type="hidden" id="$Name" name="$IdxField" value="$Value" />
 	<div class="availableWidgetsHolder">
-		<h2>$AvailableTitle</h2>
+		<h2><% _t('AVAILABLE', 'Available Widgets') %></h2>
 		<p>&nbsp;</p>
 		<div class="availableWidgets" id="availableWidgets-$Name">
 			<% if AvailableWidgets %>
@@ -16,8 +16,8 @@
 		</div>
 	</div>
 	<div class="usedWidgetsHolder">
-		<h2>$InUseTitle</h2>
-		<p>$ToAddTitle</p>
+		<h2><% _t('INUSE', 'Widgets currently used') %></h2>
+		<p><% _t('TOADD', 'To add widgets, click on the purple header on the left') %></p>
 		
 		<div class="usedWidgets" id="usedWidgets-$Name">
 			<% if UsedWidgets %>
