@@ -1,5 +1,5 @@
 (function($) {
-	$.concrete('ss', function($){
+	$.entwine('ss', function($){
 		/**
 		 * @class Simple form with a page type dropdown
 		 * which creates a new page through #Form_EditForm and adds a new tree node.
@@ -7,7 +7,7 @@
 		 * @requires ss.i18n
 		 * @requires ss.Form_EditForm
 		 */
-		$('#Form_AddForm').concrete(/** @lends ss.Form_AddForm */{
+		$('#Form_AddForm').entwine(/** @lends ss.Form_AddForm */{
 			/**
 			 * @type DOMElement
 			 */
@@ -58,7 +58,7 @@
 				data.push({name:'Suffix',value:newPages[parentID]++});
 				data.push({name:button.attr('name'),value:button.val()});
 				// TODO Should be set by hiddenfield already
-				jQuery('#Form_EditForm').concrete('ss').loadForm(
+				jQuery('#Form_EditForm').entwine('ss').loadForm(
 					jQuery(this).attr('action'),
 					function() {
 						button.removeClass('loading');

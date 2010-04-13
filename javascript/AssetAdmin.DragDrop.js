@@ -1,7 +1,7 @@
 (function($) {
-	$.concrete('ss', function($){
+	$.entwine('ss', function($){
 		
-		$('.AssetTableField.dragdrop').concrete({
+		$('.AssetTableField.dragdrop').entwine({
 			onmatch: function() {
 				var self = this;
 				$('#sitetree li').each(function() {
@@ -43,7 +43,7 @@
 			}
 		});
 		
-		$('.AssetTableField .dragfile').concrete({
+		$('.AssetTableField .dragfile').entwine({
 			onmatch: function() {
 				var self = this;
 				var container = this.parents('.AssetTableField');

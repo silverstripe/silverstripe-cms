@@ -20,7 +20,7 @@ var _HANDLER_FORMS = {
 	 * Delete selected folders through "batch actions" tab.
 	 */
 	$(document).ready(function() {
-		$('#Form_BatchActionsForm').concrete('ss').register(
+		$('#Form_BatchActionsForm').entwine('ss').register(
 			// TODO Hardcoding of base URL
 			'admin/assets/batchactions/delete', 
 			function(ids) {
@@ -35,8 +35,8 @@ var _HANDLER_FORMS = {
 		);
 	});
 	
-	$.concrete('ss', function($){
-		$('#Form_SyncForm').concrete({
+	$.entwine('ss', function($){
+		$('#Form_SyncForm').entwine({
 			onsubmit: function(e) {
 				var button = jQuery(this).find(':submit:first');
 				button.addClass('loading');

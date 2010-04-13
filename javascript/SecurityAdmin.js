@@ -19,11 +19,11 @@
 	 * which is most likely a form submission.
 	 */
 	$(window).bind('load', function(e) {
-		$('#MemberImportFormIframe,#GroupImportFormIframe').concrete({
+		$('#MemberImportFormIframe,#GroupImportFormIframe').entwine({
 			onmatch: function() {
 				this._super();
 				
-				// TODO concrete can't seem to bind to iframe load events
+				// TODO entwine can't seem to bind to iframe load events
 				$(this).bind('load', refreshAfterImport);
 			}
 		});
@@ -33,7 +33,7 @@
 	 * Delete selected folders through "batch actions" tab.
 	 */
 	$(document).ready(function() {
-		$('#Form_BatchActionsForm').concrete('ss').register(
+		$('#Form_BatchActionsForm').entwine('ss').register(
 			// TODO Hardcoding of base URL
 			'admin/security/batchactions/delete', 
 			function(ids) {
@@ -48,8 +48,8 @@
 		);
 	});
 	
-	$.concrete('ss', function($){
-		$('#Form_EditForm .Actions #Form_EditForm_action_addmember').concrete({
+	$.entwine('ss', function($){
+		$('#Form_EditForm .Actions #Form_EditForm_action_addmember').entwine({
 			onclick: function(e) {
 				// CAUTION: Assumes that a MemberTableField-instance is present as an editing form
 				var t = $('#Form_EditForm_Members');

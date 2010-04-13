@@ -5,10 +5,10 @@
 var ss_MainLayout;
 
 (function($) {
-	$.concrete('ss', function($){
+	$.entwine('ss', function($){
 	
-		// setup jquery.concrete
-		$.concrete.warningLevel = $.concrete.WARN_LEVEL_BESTPRACTISE;
+		// setup jquery.entwine
+		$.entwine.warningLevel = $.entwine.WARN_LEVEL_BESTPRACTISE;
 	
 		// global ajax error handlers
 		$.ajaxSetup({
@@ -29,7 +29,7 @@ var ss_MainLayout;
 		 * panel and an edit form.
 		 * @name ss.LeftAndMain
 		 */
-		$('.LeftAndMain').concrete(/** @lends ss.EditMemberProfile */{
+		$('.LeftAndMain').entwine(/** @lends ss.EditMemberProfile */{
 			/**
 			 * Reference to jQuery.layout element
 			 * @type Object
@@ -205,7 +205,7 @@ var ss_MainLayout;
 		 * 
 		 * @name ss.LeftAndMain.Buttons
 		 */
-		$('.LeftAndMain :submit, .LeftAndMain button, .LeftAndMain :reset').concrete(/** @lends ss.LeftAndMain.Buttons */{
+		$('.LeftAndMain :submit, .LeftAndMain button, .LeftAndMain :reset').entwine(/** @lends ss.LeftAndMain.Buttons */{
 			onmatch: function() {
 				this.addClass(
 					'ui-state-default ' +
@@ -242,7 +242,7 @@ var ss_MainLayout;
 		 * @class Container for tree actions like "create", "search", etc.
 		 * @name ss.TreeActions
 		 */
-		$('#TreeActions').concrete(/** @lends ss.TreeActions */{
+		$('#TreeActions').entwine(/** @lends ss.TreeActions */{
 			/**
 			 * Setup "create", "search", "batch actions" layers above tree.
 			 * All tab contents are closed by default.
@@ -261,7 +261,7 @@ var ss_MainLayout;
 		 * through a modal dialog.
 		 * @name ss.EditMemberProfile
 		 */
-		$('a#EditMemberProfile').concrete(/** @lends ss.EditMemberProfile */{
+		$('a#EditMemberProfile').entwine(/** @lends ss.EditMemberProfile */{
 			onmatch: function() {
 				var self = this;
 
@@ -351,7 +351,7 @@ var ss_MainLayout;
 		 * @name ss.switchViewLinks
 		 * @requires jquery.metadata
 		 */
-		$('#switchView a').concrete(/** @lends ss.switchViewLinks */{
+		$('#switchView a').entwine(/** @lends ss.switchViewLinks */{
 			/**
 			 * @type DOMElement
 			 */

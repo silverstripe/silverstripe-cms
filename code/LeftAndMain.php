@@ -221,8 +221,8 @@ class LeftAndMain extends Controller {
 		// @todo Load separately so the CSS files can be inlined
 		Requirements::css(SAPPHIRE_DIR . '/thirdparty/jquery-ui-themes/smoothness/ui.all.css');
 		
-		// concrete
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-concrete/dist/jquery.concrete-dist.js');
+		// entwine
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-entwine/dist/jquery.entwine-dist.js');
 		
 		// Required for TreeTools panel above tree
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/TabSet.js');
@@ -737,7 +737,7 @@ JS;
 	 * Also used in the template rendered through {@link Right()} in the $EditForm placeholder.
 	 * 
 	 * This is a "pseudo-abstract" methoed, usually connected to a {@link getEditForm()}
-	 * method in a concrete subclass. This method can accept a record identifier,
+	 * method in an entwine subclass. This method can accept a record identifier,
 	 * selected either in custom logic, or through {@link currentPageID()}. 
 	 * The form usually construct itself from {@link DataObject->getCMSFields()} 
 	 * for the specific managed subclass defined in {@link LeftAndMain::$tree_class}.

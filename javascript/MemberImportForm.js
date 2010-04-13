@@ -1,6 +1,6 @@
 (function($) {
-	$.concrete('ss', function($){
-		$('.import-form .advanced').concrete({
+	$.entwine('ss', function($){
+		$('.import-form .advanced').entwine({
 			onmatch: function() {
 				this._super();
 				
@@ -8,7 +8,7 @@
 			}
 		});
 		
-		$('.import-form a.toggle-advanced').concrete({
+		$('.import-form a.toggle-advanced').entwine({
 			onclick: function(e) {
 				this.parents('form:eq(0)').find('.advanced').toggle();
 				return false;

@@ -1,7 +1,7 @@
 (function($) {
-	$.concrete('ss', function($){
+	$.entwine('ss', function($){
 		
-		$('.AssetTableField').concrete({
+		$('.AssetTableField').entwine({
 			onmatch: function() {
 				var self = this;
 				
@@ -46,7 +46,7 @@
 		/**
 		 * Checkboxes used to batch delete files
 		 */
-		$('.AssetTableField :checkbox').concrete({
+		$('.AssetTableField :checkbox').entwine({
 			onchange: function() {
 				var container = this.parents('.AssetTableField');
 				var input = container.find('input#deletemarked');
@@ -62,7 +62,7 @@
 		 * Batch delete files marked by checkboxes in the table.
 		 * Refreshes the form field afterwards via ajax.
 		 */
-		$('.AssetTableField input#deletemarked').concrete({
+		$('.AssetTableField input#deletemarked').entwine({
 			onmatch: function() {
 				this.attr('disabled', 'disabled');
 				this._super();

@@ -1,5 +1,5 @@
 (function($) {
-	$.concrete('ss', function($){
+	$.entwine('ss', function($){
 
 		/**
 		 * @class Base edit form, provides ajaxified saving
@@ -14,7 +14,7 @@
 		 * - removeform: A form is about to be removed from the DOM
 		 * - load: Form is about to be loaded through ajax
 		 */
-		$('#Form_EditForm').concrete(/** @lends ss.Form_EditForm */{	
+		$('#Form_EditForm').entwine(/** @lends ss.Form_EditForm */{	
 			/**
 			 * @type String HTML text to show when no form content is chosen.
 			 *  Will show inside the <form> tag.
@@ -255,7 +255,7 @@
 						this.removeForm();
 					}
 				
-					// @todo Coupling to avoid FOUC (concrete applies to late)
+					// @todo Coupling to avoid FOUC (entwine applies to late)
 					this.find('.ss-tabset').tabs();
 				
 					this._setupChangeTracker();
@@ -292,9 +292,9 @@
 		 * clicked button from a form.onsubmit event.
 		 * @name ss.Form_EditForm.Actions.submit
 		 */
-		$('#Form_EditForm .Actions :submit').concrete(/** @lends ss.Form_EditForm.Actions.submit */{
+		$('#Form_EditForm .Actions :submit').entwine(/** @lends ss.Form_EditForm.Actions.submit */{
 			onclick: function(e) {
-				jQuery('#Form_EditForm').concrete('ss').ajaxSubmit(this);
+				jQuery('#Form_EditForm').entwine('ss').ajaxSubmit(this);
 				return false;
 			}
 		});
@@ -303,7 +303,7 @@
 		 * @class Add tinymce to HtmlEditorFields within the CMS.
 		 * @name ss.Form_EditForm.textarea.htmleditor
 		 */
-		$('#Form_EditForm textarea.htmleditor').concrete(/** @lends ss.Form_EditForm.Actions.submit */{
+		$('#Form_EditForm textarea.htmleditor').entwine(/** @lends ss.Form_EditForm.Actions.submit */{
 			onmatch : function() {
 				tinyMCE.execCommand("mceAddControl", true, this.attr('id'));
 				this.isChanged = function() {

@@ -9,7 +9,7 @@
  * @todo alias the $ function instead of literal jQuery
  */
 (function($) {
-	$.concrete('ss', function($){
+	$.entwine('ss', function($){
 
 		////////////////////////////////////////////////////////////////// 
 		// Search form 
@@ -18,7 +18,7 @@
 		/**
 		 * If a dropdown is used to choose between the classes, it is handled by this code
 		 */
-		$('#ModelClassSelector select').concrete({
+		$('#ModelClassSelector select').entwine({
 			onmatch: function() {
 				// Initialise the form by calling this onchange event straight away
 				this.change();
@@ -44,7 +44,7 @@
 		 * 
 		 * Note: This is used for Form_CreateForm and all Form_SearchForm_* variations
 		 */
-		$('#SearchForm_holder form').concrete({
+		$('#SearchForm_holder form').entwine({
 			onsubmit: function(e) {
 				// Import forms are processed without ajax
 				if(this.is('#Form_ImportForm')) return true;
@@ -69,7 +69,7 @@
 		/**
 		 * Column selection in search form
 		  */
-		$('a.form_frontend_function.toggle_result_assembly').concrete({
+		$('a.form_frontend_function.toggle_result_assembly').entwine({
 			onclick: function(e) {
 				var toggleElement = $(this).next();
 				toggleElement.toggle();
@@ -77,7 +77,7 @@
 			}
 		});
 	
-		$('a.form_frontend_function.tick_all_result_assembly').concrete({
+		$('a.form_frontend_function.tick_all_result_assembly').entwine({
 			onclick: function(e) {
 				var resultAssembly = $(this).prevAll('div#ResultAssembly').find('ul li input');
 				resultAssembly.attr('checked', 'checked');
@@ -85,7 +85,7 @@
 			}
 		});
 	
-		$('a.form_frontend_function.untick_all_result_assembly').concrete({
+		$('a.form_frontend_function.untick_all_result_assembly').entwine({
 			onclick: function(e) {
 				var resultAssembly = $(this).prevAll('div#ResultAssembly').find('ul li input');
 				resultAssembly.removeAttr('checked');
@@ -96,7 +96,7 @@
 		/**
 		 * Table record handler for search result record
 		 */
-		$('.resultsTable tbody td').concrete({
+		$('.resultsTable tbody td').entwine({
 			onclick: function(e) {
 				var firstLink = this.find('a[href]');
 				if(!firstLink) return;
@@ -108,7 +108,7 @@
 		/**
 		 * Add object button
 		 */
-		$('#Form_ManagedModelsSelect').concrete({
+		$('#Form_ManagedModelsSelect').entwine({
 			onsubmit: function(e) {
 				className = $('select option:selected', this).val();
 				requestPath = this.attr('action').replace('ManagedModelsSelect', className + '/add');
@@ -128,7 +128,7 @@
 		/**
 		 * RHS panel Delete button
 		 */
-		$('#Form_EditForm input[name=action_doDelete]').concrete({
+		$('#Form_EditForm input[name=action_doDelete]').entwine({
 			onclick: function(e) {
 				if(!confirm(ss.i18n._t('ModelAdmin.REALLYDELETE', 'Really delete?'))) {
 					this.removeClass('loading');
@@ -140,7 +140,7 @@
 		/**
 		 * Toggle import specifications
 		 */
-		$('.importSpec').concrete({
+		$('.importSpec').entwine({
 			onmatch: function() {
 				this.hide();
 				this.find('a.detailsLink').click(function() {

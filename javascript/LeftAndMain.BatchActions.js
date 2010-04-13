@@ -1,5 +1,5 @@
 (function($) {
-	$.concrete('ss', function($){
+	$.entwine('ss', function($){
 	
 		/**
 		 * @class Batch actions which take a bunch of selected pages,
@@ -12,7 +12,7 @@
 		 * - register: Called before an action is added.
 		 * - unregister: Called before an action is removed.
 		 */
-		$('#Form_BatchActionsForm').concrete(/** @lends ss.Form_BatchActionsForm */{
+		$('#Form_BatchActionsForm').entwine(/** @lends ss.Form_BatchActionsForm */{
 	
 			/**
 			 * @type {DOMElement}
@@ -156,10 +156,10 @@
 								// only if the current page was modified
 								selectedNode.selectTreeNode();
 							} else if(data.deleted[selectedNode.getIdx()]) {
-								jQuery('#Form_EditForm').concrete('ss').removeForm();
+								jQuery('#Form_EditForm').entwine('ss').removeForm();
 							}
 						} else {
-							jQuery('#Form_EditForm').concrete('ss').removeForm();
+							jQuery('#Form_EditForm').entwine('ss').removeForm();
 						}
 					
 						// close panel
@@ -229,7 +229,7 @@
 		/**
 		 * Publish selected pages action
 		 */
-		$('#Form_BatchActionsForm').concrete('ss').register('admin/batchactions/publish', function(ids) {
+		$('#Form_BatchActionsForm').entwine('ss').register('admin/batchactions/publish', function(ids) {
 			var confirmed = confirm(
 				"You have " + ids.length + " pages selected.\n\n"
 				+ "Do your really want to publish?"
@@ -240,7 +240,7 @@
 		/**
 		 * Unpublish selected pages action
 		 */
-		$('#Form_BatchActionsForm').concrete('ss').register('admin/batchactions/unpublish', function(ids) {
+		$('#Form_BatchActionsForm').entwine('ss').register('admin/batchactions/unpublish', function(ids) {
 			var confirmed = confirm(
 				"You have " + ids.length + " pages selected.\n\n"
 				+ "Do your really want to unpublish?"
@@ -251,7 +251,7 @@
 		/**
 		 * Delete selected pages action
 		 */
-		$('#Form_BatchActionsForm').concrete('ss').register('admin/batchactions/delete', function(ids) {
+		$('#Form_BatchActionsForm').entwine('ss').register('admin/batchactions/delete', function(ids) {
 			var confirmed = confirm(
 				"You have " + ids.length + " pages selected.\n\n"
 				+ "Do your really want to delete?"
@@ -262,7 +262,7 @@
 		/**
 		 * Delete selected pages from live action 
 		 */
-		$('#Form_BatchActionsForm').concrete('ss').register('admin/batchactions/deletefromlive', function(ids) {
+		$('#Form_BatchActionsForm').entwine('ss').register('admin/batchactions/deletefromlive', function(ids) {
 			var confirmed = confirm(
 				"You have " + ids.length + " pages selected.\n\n"
 				+ "Do your really want to delete these pages from live?"

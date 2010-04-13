@@ -1,11 +1,11 @@
 (function($) {
-	$.concrete('ss', function($){
+	$.entwine('ss', function($){
 	
 		/**
 		 * @class All forms in the right content panel should have closeable jQuery UI style titles.
 		 * @name ss.contentPanel.form
 		 */
-		$('#contentPanel form').concrete(/** @lends ss.contentPanel.form */{
+		$('#contentPanel form').entwine(/** @lends ss.contentPanel.form */{
 			onmatch: function() {
 			  // Style as title bar
 				this.find(':header:first').titlebar({
@@ -13,7 +13,7 @@
 				});
 				// The close button should close the east panel of the layout
 				this.find(':header:first .ui-dialog-titlebar-close').bind('click', function(e) {
-					$('body.CMSMain').concrete('ss').getMainLayout().close('east');
+					$('body.CMSMain').entwine('ss').getMainLayout().close('east');
 					return false;
 				});
 			
@@ -27,7 +27,7 @@
 		 * similar to "Smart Search" criteria in iTunes.
 		 * @name ss.Form_SeachTreeForm
 		 */
-		$('#Form_SearchTreeForm').concrete(/** @lends ss.Form_SeachTreeForm */{
+		$('#Form_SearchTreeForm').entwine(/** @lends ss.Form_SeachTreeForm */{
 			/**
 			 * @type DOMElement
 			 */
@@ -164,7 +164,7 @@
 		 * which creates a new page through #Form_EditForm and adds a new tree node.
 		 * @name ss.reports_holder
 		 */
-		$('#Form_SideReportsForm').concrete(/** @lends ss.reports_holder */{
+		$('#Form_SideReportsForm').entwine(/** @lends ss.reports_holder */{
 			ReportContainer: null,
 			
 			onmatch: function() {
@@ -215,7 +215,7 @@
 		/**
 		 * All forms loaded via ajax from the Form_SideReports dropdown.
 		 */
-		$("#SideReportsHolder form").concrete({
+		$("#SideReportsHolder form").entwine({
 			onsubmit: function() {
 				var self = this;
 
@@ -243,12 +243,12 @@
 		/**
 		 * Register the onclick handler that loads the page into EditForm
 		 */
-		$("#SideReportsHolder form ul a").concrete({
+		$("#SideReportsHolder form ul a").entwine({
 			onclick: function(e) {
 				if (e.button!=2) {
 					var $link = $(this);
 					$link.addClass('loading');
-					jQuery('#Form_EditForm').concrete('ss').loadForm(
+					jQuery('#Form_EditForm').entwine('ss').loadForm(
 						$(this).attr('href'),
 						function(e) {
 							$link.removeClass('loading');
@@ -265,7 +265,7 @@
 		 * @name ss.Form_VersionsForm
 		 * @requires ss.i18n
 		 */
-		$('#Form_VersionsForm').concrete(/** @lends ss.Form_VersionsForm */{
+		$('#Form_VersionsForm').entwine(/** @lends ss.Form_VersionsForm */{
 			onmatch: function() {
 				var self = this;
 			
@@ -309,7 +309,7 @@
 				
 					var link = $(this).siblings('.versionlink').find('a').attr('href');
 					td.addClass('loading');
-					jQuery('#Form_EditForm').concrete('ss').loadForm(
+					jQuery('#Form_EditForm').entwine('ss').loadForm(
 						link,
 						function(e) {
 							td.removeClass('loading');
@@ -357,7 +357,7 @@
 				data.push({name:$button.attr('name'), value: $button.val()});
 			
 				if(loadEditForm) {
-					jQuery('#Form_EditForm').concrete('ss').loadForm(
+					jQuery('#Form_EditForm').entwine('ss').loadForm(
 						this.attr('action'),
 						function(e) {
 							$button.removeClass('loading');

@@ -13,11 +13,11 @@ TreeContextMenu = {
 	},
 	'Duplicate page and children' : function(treeNode) {
 		// First save the page silently (without confirmation) and then duplicate the page.
-		jQuery('#Form_EditForm').concrete('ss').ajaxSubmit(null, treeNode.duplicatePageWithChildren.bind(treeNode)); 
+		jQuery('#Form_EditForm').entwine('ss').ajaxSubmit(null, treeNode.duplicatePageWithChildren.bind(treeNode)); 
 	},
 	'Duplicate just this page' : function(treeNode) {
 		// First save the page silently (without confirmation) and then duplicate the page.
-		jQuery('#Form_EditForm').concrete('ss').ajaxSubmit(null, treeNode.duplicatePageWithChildren.bind(treeNode)); 
+		jQuery('#Form_EditForm').entwine('ss').ajaxSubmit(null, treeNode.duplicatePageWithChildren.bind(treeNode)); 
 	},
 	'Sort sub-pages' : function(treeNode) {
 		var children = treeNode.treeNodeHolder().childTreeNodes();

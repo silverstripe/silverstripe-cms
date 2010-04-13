@@ -1,11 +1,11 @@
 (function($) {
-	$.concrete('ss', function($){
+	$.entwine('ss', function($){
 		/**
 		 * Alert the user on change of page-type - this might have implications
 		 * on the available form fields etc.
 		 * @name ss.EditFormClassName
 		 */
-		$('#Form_EditForm :input[name=ClassName]').concrete(/** @lends ss.EditFormClassName */{
+		$('#Form_EditForm :input[name=ClassName]').entwine(/** @lends ss.EditFormClassName */{
 			onchange: function() {
 				alert(ss.i18n._t('CMSMAIN.ALERTCLASSNAME'));
 			}
@@ -15,7 +15,7 @@
 		 * @class Input validation on the URLSegment field
 		 * @name ss.EditForm.URLSegment
 		 */
-		$('#Form_EditForm input[name=URLSegment]').concrete(/** @lends ss.EditForm.URLSegment */{
+		$('#Form_EditForm input[name=URLSegment]').entwine(/** @lends ss.EditForm.URLSegment */{
 			FilterRegex: /[^A-Za-z0-9-]+/,
 			ValidationMessage: ss.i18n._t('CMSMAIN.URLSEGMENTVALIDATION'),
 			MaxLength: 50,
@@ -58,7 +58,7 @@
 		 * @class Input validation on the Title field
 		 * @name ss.EditForm.Title
 		 */
-		$('#Form_EditForm input[name=Title]').concrete(/** @lends ss.EditForm.Title */{
+		$('#Form_EditForm input[name=Title]').entwine(/** @lends ss.EditForm.Title */{
 			onmatch : function() {
 				var self = this;
 		
@@ -76,7 +76,7 @@
 		
 				// TODO language/logic coupling
 				var isNew = this.val().indexOf("new") == 0;
-				var suggestion = field.concrete('ss').suggestValue(this.val());
+				var suggestion = field.entwine('ss').suggestValue(this.val());
 				var confirmMessage = ss.i18n.sprintf(
 					ss.i18n._t(
 						'UPDATEURL.CONFIRM', 
@@ -100,7 +100,7 @@
 		 * the two radiobuttons and setting the hidden "ParentID" field
 		 * @name ss.EditForm.parentTypeSelector
 		 */
-		$('#Form_EditForm .parentTypeSelector').concrete(/** @lends ss.EditForm.parentTypeSelector */{
+		$('#Form_EditForm .parentTypeSelector').entwine(/** @lends ss.EditForm.parentTypeSelector */{
 			onmatch : function() {
 				var self = this;
 				this.find(':input[name=ParentType]').bind('click', function(e) {self._toggleSelection(e);});
@@ -123,7 +123,7 @@
 		 * based on selection of radiobuttons.
 		 * @name ss.Form_EditForm.Access
 		 */
-		$('#Form_EditForm #CanViewType, #Form_EditForm #CanEditType').concrete(/** @lends ss.Form_EditForm.Access */{
+		$('#Form_EditForm #CanViewType, #Form_EditForm #CanEditType').entwine(/** @lends ss.Form_EditForm.Access */{
 			onmatch: function() {
 				// TODO Decouple
 				var dropdown;
@@ -147,7 +147,7 @@
 		 * Visible on readonly older versions of a specific page at the moment.
 		 * @name ss.Form_EditForm_action_email
 		 */
-		$('#Form_EditForm .Actions #Form_EditForm_action_email').concrete(/** @lends ss.Form_EditForm_action_email */{
+		$('#Form_EditForm .Actions #Form_EditForm_action_email').entwine(/** @lends ss.Form_EditForm_action_email */{
 			onclick: function(e) {
 				window.open(
 					'mailto:?subject=' 
@@ -166,7 +166,7 @@
 		 * Used for readonly older versions of a specific page.
 		 * @name ss.Form_EditForm_action_print
 		 */
-		$('#Form_EditForm .Actions #Form_EditForm_action_print').concrete(/** @lends ss.Form_EditForm_action_print */{
+		$('#Form_EditForm .Actions #Form_EditForm_action_print').entwine(/** @lends ss.Form_EditForm_action_print */{
 			onclick: function(e) {
 				var printURL = $(this[0].form).attr('action').replace(/\?.*$/,'') 
 					+ '/printable/' 
@@ -183,7 +183,7 @@
 		 * @class A "rollback" to a specific version needs user confirmation.
 		 * @name ss.Form_EditForm_action_rollback
 		 */
-		$('#Form_EditForm .Actions #Form_EditForm_action_rollback').concrete(/** @lends ss.Form_EditForm_action_rollback */{
+		$('#Form_EditForm .Actions #Form_EditForm_action_rollback').entwine(/** @lends ss.Form_EditForm_action_rollback */{
 			onclick: function(e) {
 				// @todo i18n
 				var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';

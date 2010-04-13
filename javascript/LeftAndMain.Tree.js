@@ -217,13 +217,13 @@ TreeNodeAPI.prototype = {
 		    this.getPageFromServer();
 			}
 		} else {
-			jQuery('#Form_EditForm').concrete('ss').removeForm();
+			jQuery('#Form_EditForm').entwine('ss').removeForm();
 		}
 	},
 		
 	getPageFromServer : function() {
 		var self = this;
-		var xmlhttp = jQuery('#Form_EditForm').concrete('ss').loadForm(
+		var xmlhttp = jQuery('#Form_EditForm').entwine('ss').loadForm(
 			jQuery(this).find('a').attr('href'),
 			function(response) {
 				self.removeNodeClass('loading');

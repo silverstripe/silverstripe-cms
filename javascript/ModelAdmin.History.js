@@ -1,5 +1,5 @@
 (function($) {
-	$.concrete('ss', function($){
+	$.entwine('ss', function($){
 		/**
 		 * A simple ajax browser history implementation tailored towards
 		 * navigating through search results and different forms loaded into
@@ -20,7 +20,7 @@
 		 * 
 		 * @name ss.ModelAdmin
 		 */
-		$('.ModelAdmin').concrete(/** @lends ss.ModelAdmin */ {
+		$('.ModelAdmin').entwine(/** @lends ss.ModelAdmin */ {
 			History: [],
 			Future: [],
 		
@@ -118,7 +118,7 @@
 		/**
 		 * A search action will cause the history to be reset.
 		 */
-		$('#SearchForm_holder form').concrete({
+		$('#SearchForm_holder form').entwine({
 			onmatch: function() {
 				var self = this;
 				this.bind('beforeSubmit', function(e) {
@@ -136,7 +136,7 @@
 		 * We have to apply this to the result table buttons instead of the
 		 * more generic form loading.
 		 */
-		$('form[name=Form_ResultsForm] tbody td a').concrete({
+		$('form[name=Form_ResultsForm] tbody td a').entwine({
 			onclick: function(e) {
 				$('.ModelAdmin').addHistory(this.attr('href'));
 			}

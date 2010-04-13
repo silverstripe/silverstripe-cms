@@ -1,11 +1,11 @@
 (function($) {
-	$.concrete('ss', function($){
+	$.entwine('ss', function($){
 	
 		/**
 		 * @class Dropdown with languages above CMS tree, causing a redirect upon translation
 		 * @name ss.CMSMain.LangSelector
 		 */
-		$('.CMSMain #Form_LangForm').concrete(/** @lends ss.CMSMain.LangSelector */{
+		$('.CMSMain #Form_LangForm').entwine(/** @lends ss.CMSMain.LangSelector */{
 			onmatch: function() {
 				var self = this;
 			
@@ -38,7 +38,7 @@
 		 * @name ss.CMSMain.createtranslation
 		 * @requires jquery.metadata
 		 */
-		$('.CMSMain .createTranslation').concrete(/** @lends ss.CMSMain.createtranslation */{
+		$('.CMSMain .createTranslation').entwine(/** @lends ss.CMSMain.createtranslation */{
 			onmatch: function() {
 				var self = this;
 			

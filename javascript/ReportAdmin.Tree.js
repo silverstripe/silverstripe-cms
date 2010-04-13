@@ -1,10 +1,10 @@
 (function($) {
-	$.concrete('ss', function($){
+	$.entwine('ss', function($){
 		/**
 		 * @class Tree panel.
 		 * @name ss.sitetree
 		 */
-		$('#sitetree').concrete(/** @lends ss.sitetree */{
+		$('#sitetree').entwine(/** @lends ss.sitetree */{
 			onmatch: function() {
 				// make sure current ID of loaded form is actually selected in tree
 				var id = $('#Form_EditForm :input[name=ID]').val();

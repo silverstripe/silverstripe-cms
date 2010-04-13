@@ -138,7 +138,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		Requirements::css(CMS_DIR . '/css/typography.css');
 		Requirements::css(CMS_DIR . '/css/cms_right.css');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery/jquery.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-concrete/dist/jquery.concrete-dist.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-entwine/dist/jquery.entwine-dist.js');
 		Requirements::css(CMS_DIR . '/css/MemberImportForm.css');
 		Requirements::javascript(CMS_DIR . '/javascript/MemberImportForm.js');
 		
@@ -169,7 +169,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		Requirements::css(CMS_DIR . '/css/typography.css');
 		Requirements::css(CMS_DIR . '/css/cms_right.css');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery/jquery.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-concrete/dist/jquery.concrete-dist.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-entwine/dist/jquery.entwine-dist.js');
 		Requirements::css(CMS_DIR . '/css/MemberImportForm.css');
 		Requirements::javascript(CMS_DIR . '/javascript/MemberImportForm.js');
 		

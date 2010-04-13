@@ -1,11 +1,11 @@
 (function($) {
-	$.concrete('ss', function($){
+	$.entwine('ss', function($){
 		/**
 		 * Automatically check and disable all checkboxes if ADMIN permissions are selected.
 		 * As they're disabled, any changes won't be submitted (which is intended behaviour),
 		 * checking all boxes is purely presentational.
 		 */
-		$('#Permissions .checkbox[value=ADMIN]').concrete({
+		$('#Permissions .checkbox[value=ADMIN]').entwine({
 			onmatch: function() {
 				this.toggleCheckboxes();
 
