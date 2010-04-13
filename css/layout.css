@@ -632,7 +632,31 @@ iframe {
 	display: inline;
 }
 
+#Form_EditorToolbarLinkForm .buttonRefresh {
+	display:block;
+	border:1px solid #F0F0EE; 
+	width:20px; height:20px;
+	float: left;
+}
+#Form_EditorToolbarLinkForm a.buttonRefreshHover {
+	border: 1px solid #0A246A; 
+	background-color:#B2BBD0;
+}
 
+#Form_EditorToolbarLinkForm a.
+.defaultSkin .mceButtonDisabled .mceIcon {opacity:0.3; -ms-filter:'alpha(opacity=30)'; filter:alpha(opacity=30)}
+
+#Form_EditorToolbarLinkForm a.buttonRefresh span {
+	display: block;
+	width: 20px;
+	height: 20px;
+	background: transparent url(../../cms/images/arrow_refresh.gif) no-repeat;
+}
+
+#Form_EditorToolbarLinkForm select.hasRefreshButton {
+	width: 160px;
+}
+	
 #Form_EditorToolbarImageForm_Width,
 #Form_EditorToolbarImageForm_Height,
 #Form_EditorToolbarFlashForm_Width,
