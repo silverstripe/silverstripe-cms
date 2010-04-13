@@ -97,9 +97,6 @@ abstract class StaticPublisher extends DataObjectDecorator {
 		$urlsToRepublish = array_intersect($urls, $legalPages);
 		$urlsToUnpublish = array_diff($urls, $legalPages);
 
-		Debug::dump($urlsToRepublish);
-		Debug::dump($urlsToUnpublish);
-
 		$this->unpublishPages($urlsToUnpublish);
 		$this->publishPages($urlsToRepublish);
 	}
