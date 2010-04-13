@@ -185,6 +185,9 @@
 			
 				// write (possibly modified) IDs back into to the hidden field
 				this.setIDs(ids);
+				
+				// Reset failure states
+				$(tree).find('li').removeClass('failed');
 			
 				var button = this.find(':submit:first');
 				button.addClass('loading');
@@ -216,10 +219,19 @@
 								if(node && node.parentTreeNode)	node.parentTreeNode.removeTreeNode(node);
 							}
 						}
+						if(data.error) {
+							for(id in data.error) {
+								var node = tree.getTreeNodeByIdx(id);
+								$(node).addClass('failed');
+							}
+						}
+						
+						// Deselect all nodes
+						$(tree).find('li').removeClass('selected');
 					
 						// reset selection state
 						// TODO Should unselect all selected nodes as well
-						jQuery(tree).removeClass('multiselect');
+						// jQuery(tree).removeClass('multiselect');
 					
 						// Check if current page still exists, and refresh it.
 						// Otherwise remove the current form
@@ -238,7 +250,7 @@
 					
 						// close panel
 						// TODO Coupling with tabs
-						jQuery('#TreeActions').tabs('select', -1);
+						// jQuery('#TreeActions').tabs('select', -1);
 					},
 					dataType: 'json'
 				});
@@ -256,8 +268,7 @@
 				// auto-select the current node
 				var node = this.getTree().firstSelected();
 				if(node){
-					node.removeNodeClass('current');
-					node.addNodeClass('selected');	
+					$(node).removeClass('current').addClass('selected');	
 					node.open();	
 
 					// Open all existing children, which might trigger further
@@ -277,12 +288,10 @@
 				if(!this._isActive()) return;
 			
 				if(node.selected) {
-					node.removeNodeClass('selected');
-					node.selected = false;
+					$(node).removeClass('selected').attr('selected', false);
 				} else {
 					// Select node
-					node.addNodeClass('selected');
-					node.selected = true;
+					$(node).addClass('selected').attr('selected', true);
 				
 					// Open node in order to allow proper selection of children
 					if($(node).hasClass('unexpanded')) {
