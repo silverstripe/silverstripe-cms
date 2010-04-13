@@ -221,6 +221,32 @@ class FilesystemPublisher extends StaticPublisher {
 	public function getDestDir() {
 		return '../'.$this->destFolder;
 	}
+	
+	/**
+	 * Return an array of all the existing static cache files, as a map of URL => file.
+	 * Only returns cache files that will actually map to a URL, based on urlsToPaths.
+	 */
+	public function getExistingStaticCacheFiles() {
+		$cacheDir = '../'.$this->destFolder;
+
+		$urlMapper = array_flip($this->urlsToPaths($this->owner->allPagesToCache()));
+		
+		$output = array();
+		
+		// Glob each dir, then glob each one of those
+		foreach(glob("$cacheDir/*", GLOB_ONLYDIR) as $cacheDir) {
+			foreach(glob($cacheDir.'/*') as $cacheFile) {
+				$mapKey = str_replace("../cache/","",$cacheFile);
+				if(isset($urlMapper[$mapKey])) {
+					$url = $urlMapper[$mapKey];
+					$output[$url] = $cacheFile;
+				}
+			}
+		}
+		
+		return $output;
+	}
+	
 }
 
 ?>
