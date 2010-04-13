@@ -333,7 +333,11 @@ JS;
 			}
 		} elseif ($id == 0) {
 			$siteConfig = SiteConfig::current_site_config();
-			$form = new Form($this, "EditForm", $siteConfig->getFormFields(), $siteConfig->getFormActions());
+			$fields = $siteConfig->getFormFields(); 
+			if(Object::has_extension('SiteConfig',"Translatable")){ 
+				$fields->push(new HiddenField('Locale','', $siteConfig->Locale ));       
+			} 
+			$form = new Form($this, "EditForm", $fields, $siteConfig->getFormActions());
 			$form->loadDataFrom($siteConfig);
 			return $form;
 		} else {
