@@ -49,15 +49,15 @@ class ThumbnailStripField extends FormField {
 
 			$whereSQL = '"ParentID" IN (' . implode(', ', $folderList) . ')';
 			if($searchText) $whereSQL .= " AND \"Filename\" LIKE '%$searchText%'";
-			
 			$images = DataObject::get('Image', $whereSQL, 'Title');
 			
 		} else {
+			$whereSQL = "\"ParentID\" = 0";
 			if($searchText) {
-				$whereSQL = "\"Filename\" LIKE '%$searchText%'";
-
-				$images = DataObject::get('Image', $whereSQL, 'Title');
+				$whereSQL = " AND \"Filename\" LIKE '%$searchText%'";
 			}
+			
+			$images = DataObject::get('Image', $whereSQL, 'Title');
 		}
 		
 		if($images) {
