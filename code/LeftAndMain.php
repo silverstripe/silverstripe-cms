@@ -287,9 +287,6 @@ class LeftAndMain extends Controller {
 				'sapphire/thirdparty/scriptaculous/controls.js',
 				'cms/javascript/LeftAndMain.js',
 				'sapphire/javascript/tree/tree.js',
-				'sapphire/thirdparty/swfupload/swfupload/swfupload.js',
-				'cms/javascript/Upload.js',
-				'cms/javascript/TinyMCEImageEnhancement.js',
 				'sapphire/javascript/TreeSelectorField.js',
 		 		'cms/javascript/ThumbnailStripField.js',
 			)

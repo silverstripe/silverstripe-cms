@@ -59,10 +59,6 @@ class AssetAdmin extends LeftAndMain {
 		if(!file_exists(ASSETS_PATH)) Filesystem::makeFolder(ASSETS_PATH);
 
 		Requirements::javascript(CMS_DIR . "/javascript/AssetAdmin.js");
-		Requirements::javascript(CMS_DIR . "/javascript/CMSMain_upload.js");
-		Requirements::javascript(CMS_DIR . "/javascript/Upload.js");
-		Requirements::javascript(SAPPHIRE_DIR . "/thirdparty/swfupload/swfupload/swfupload.js");
-				
 		Requirements::css(CMS_DIR . "/css/AssetAdmin.css");
 
 		Requirements::customScript(<<<JS
@@ -104,8 +100,6 @@ JS
 	 * Return the form object shown in the uploadiframe.
 	 */
 	function UploadForm() {
-		// disabled flash upload javascript (CMSMain_upload()) below,
-		// see r54952 (originally committed in r42014)
 		$form = new Form($this,'UploadForm', new FieldSet(
 			new HiddenField("ID", "", $this->currentPageID()),
 			new HiddenField("FolderID", "", $this->currentPageID()),
