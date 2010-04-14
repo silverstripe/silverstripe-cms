@@ -430,9 +430,11 @@ JS;
 			if($page) $parentID = $page->ID;
 		}
 
-		if(is_numeric($parentID)) $parentObj = DataObject::get_by_id("SiteTree", $parentID);
-		if(!$parentObj || !$parentObj->ID) $parentID = 0;
+		if(is_numeric($parentID) && $parentID > 0) $parentObj = DataObject::get_by_id("SiteTree", $parentID);
+		else $parentObj = null;
 		
+		if(!$parentObj || !$parentObj->ID) $parentID = 0;
+
 		if($parentObj) {
 			if(!$parentObj->canAddChildren()) return Security::permissionFailure($this);
 			if(!singleton($className)->canCreate()) return Security::permissionFailure($this);
@@ -441,13 +443,20 @@ JS;
 				return Security::permissionFailure($this);
 		}
 		
-		$p = $this->getNewItem("new-$className-$parentID".$suffix, false);
-		$p->Locale = $data['Locale'];
-		$p->write();
+		$record = $this->getNewItem("new-$className-$parentID".$suffix, false);
+		$record->Locale = $data['Locale'];
+		$record->write();
 		
-		$form = $this->getEditForm($p->ID);
+		$form = $this->getEditForm($record->ID);
 		
-		return $form->formHtmlContent();
+		if(isset($data['returnID'])) {
+			return $record->ID;
+		} else if(Director::is_ajax()) {
+			$form = $this->getEditForm($record->ID);
+			return $form->formHtmlContent();
+		} else {
+			return $this->redirect(Controller::join_links($this->Link('show'), $record->ID));
+		}
 	}
 
 	/**

@@ -883,9 +883,11 @@ class LeftAndMain extends Controller {
 		// Used in TinyMCE inline folder creation
 		if(isset($data['returnID'])) {
 			return $record->ID;
-		} else {
+		} else if(Director::is_ajax()) {
 			$form = $this->getEditForm($record->ID);
 			return $form->formHtmlContent();
+		} else {
+			return $this->redirect(Controller::join_links($this->Link('show'), $record->ID));
 		}
 	}
 	
@@ -971,7 +973,6 @@ class LeftAndMain extends Controller {
 	 * @return int 
 	 */
 	public function currentPageID() {
-		SS_Backtrace::backtrace();
 		if($this->request->getVar('ID'))	{
 			return $this->request->getVar('ID');
 		} elseif ($this->request->param('ID') && is_numeric($this->request->param('ID'))) {
