@@ -182,9 +182,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 			$fileImage = ($option == "folder") ? $icon . '-openfolder.gif' : $icon . '-file.gif';
 			$openFolderImage = $icon . '-openfolder.gif';
-			if(!Director::fileExists($openFolderImage) || $option = "file") $openFolderImage = $fileImage;
+			if(!Director::fileExists($openFolderImage) || $option == "file") $openFolderImage = $fileImage;
 			$closedFolderImage = $icon . '-closedfolder.gif';
-			if(!Director::fileExists($closedFolderImage) || $option = "file") $closedFolderImage = $fileImage;
+			if(!Director::fileExists($closedFolderImage) || $option == "file") $closedFolderImage = $fileImage;
 
 			$js .= <<<JS
 _TREE_ICONS['$class'] = {
