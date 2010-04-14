@@ -413,10 +413,10 @@ SiteTreeNode = Class.extend('TreeNode').extend('TreeNodeAPI');
 SiteTreeNode.prototype = {
 	initialize: function(options) {
 		this.TreeNode.initialize(options);
-
-		if(this.className && this.className.match(/ *([^ ]+)( +|$)/)) {
-			if((typeof siteTreeHints != 'undefined') && siteTreeHints[ RegExp.$1 ]) {
-				this.hints = siteTreeHints[ RegExp.$1 ];
+		if(this.className && this.className.match(/class\-([^\s]*)/)) {
+			var klass = RegExp.$1;
+			if(siteTreeHints && siteTreeHints[klass]) {
+				this.hints = siteTreeHints[klass];
 				this.dropperOptions = { 
 					accept : (this.hints.allowedChildren && (this.className.indexOf('nochildren') == -1))
 						 ? this.hints.allowedChildren : 'none' 

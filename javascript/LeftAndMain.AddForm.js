@@ -12,6 +12,11 @@
 			 * @type DOMElement
 			 */
 			Tree: null,
+			
+			/**
+			 * @type Array Map of <option> values to an object of "title" and "value"
+			 */
+			OrigOptions: null,
 	
 			/**
 			 * @type Array Internal counter to create unique page identifiers prior to ajax saving
@@ -19,15 +24,25 @@
 			NewPages: [],
 	
 			onmatch: function() {
-				var self = this;
+				var self = this, typeDropdown = this.find(':input[name=PageType]');
 		
 				Observable.applyTo(this[0]);
 		
 				var tree = jQuery('#sitetree')[0];
 				this.setTree(tree);
-				jQuery(tree).bind('selectionchanged', function(e, data) {self.treeSelectionChanged(e, data);});
-		
-				this.find(':input[name=PageType]').bind('change', this.typeDropdownChanged);
+				
+				// Event bindings
+				jQuery(tree).bind('selectionchanged', function(e, data) {self.refresh(data.node);});
+				typeDropdown.bind('change', function(e) {self.refresh();});
+				// TODO Bind on tree initialization to set dropdown for selected node
+				
+				// Store original page type options (they might get filtered to "allowed_children") later on
+				// TODO Better DOM element serialization (jQuery 1.4?)
+				var opts = {};
+				typeDropdown.find('option').each(function(el) {
+					opts[$(this).val()] = {html:$(this).html(), value: $(this).val()};
+				});
+				this.setOrigOptions(opts);
 				
 				this._super();
 			},
@@ -70,35 +85,54 @@
 
 				return false;
 			},
+			
+			refresh: function(selectedNode) {
+				// Note: Uses siteTreeHints global
+				var tree = this.getTree(), 
+					origOptions = this.getOrigOptions(), 
+					dropdown = this.find(':select[name=PageType]');
+				if(!selectedNode) selectedNode = tree.firstSelected();
 
-			treeSelectionChanged : function(e, data) {
-			  var selectedNode = data.node;
-	  
+				// Clear all existing <option> elements
+				// (IE doesn't allow setting display:none on these elements)
+				dropdown.find('option').remove();
+				
+				// Find allowed children through preferences on node or globally
+				var allowed = [];
+				if(selectedNode) {
+					if(selectedNode.hints && selectedNode.hints.allowedChildren) {
+						allowed = selectedNode.hints.allowedChildren;
+					} else {
+						// Fallback to globals
+						allowed = siteTreeHints['Root'].allowedChildren;
+					}
+					
+					// Re-add all allowed <option> to the dropdown
+					for(i=0;i<allowed.length;i++) {
+						var optProps = origOptions[allowed[i]];
+						if(optProps) dropdown.append($('<option value="' + optProps.value + '">' + optProps.html + '</option>'));
+					}
+				} else {
+					// No tree node selected, reset to original elements
+					$.each(origOptions, function(i, optProps) {
+						if(optProps) dropdown.append($('<option value="' + optProps.value + '">' + optProps.html + '</option>'));
+					});
+				}
+				
+				// TODO Re-select the currently selected element
+				
+				// Disable dropdown if no elements are selectable
+				if(allowed) dropdown.removeAttr('disabled');
+				else dropdown.attr('disabled', 'disabled');
+				
+				// Set default child (optional)
 				if(selectedNode.hints && selectedNode.hints.defaultChild) {
-					this.find(':input[name=PageType]').val(selectedNode.hints.defaultChild);
+					dropdown.val(selectedNode.hints.defaultChild);
 				}
 		
-				var parentID = this.getTree().getIdxOf(selectedNode);
+				// Set parent node (fallback to root)
+				var parentID = tree.getIdxOf(selectedNode);
 				this.find(':input[name=ParentID]').val(parentID ? parentID : 0);
-			},
-
-			typeDropdownChanged : function() {
-			  var tree = this.getTree();
-	  
-				// Don't do anything if we're already on an appropriate node
-				var sel = tree.firstSelected();
-				if(sel && sel.hints && sel.hints.allowedChildren) {
-					var allowed = sel.hints.allowedChildren;
-					for(i=0;i<allowed.length;i++) {
-						if(allowed[i] == this.value) return;
-					}
-				}
-
-				// Otherwise move to the default parent for that.
-				if(siteTreeHints && siteTreeHints[this.value] ) {
-					var newNode = tree.getTreeNodeByIdx(siteTreeHints[this.value].defaultParent);
-					if(newNode) tree.changeCurrentTo(newNode);
-				}
 			}
 		});
 	});
