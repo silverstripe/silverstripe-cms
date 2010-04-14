@@ -164,4 +164,24 @@ class CMSMainTest extends FunctionalTest {
 		$result = $this->get('admin/getsubtree?filter=CMSSiteTreeFilter_DeletedPages&ajax=1&ID=' . $id);
 		$this->assertEquals(200, $result->getStatusCode());
 	}
+	
+	function testCreationOfTopLevelPage(){
+		$cmsUser = $this->objFromFixture('Member', 'allcmssectionsuser');
+		$rootEditUser = $this->objFromFixture('Member', 'rootedituser');
+
+		// with insufficient permissions
+		$cmsUser->logIn();
+		$response = $this->post('admin/addpage', array('ParentID' => '0', 'PageType' => 'Page', 'Locale' => 'en_US'));
+		// should redirect, which is a permission error
+		$this->assertEquals(403, $response->getStatusCode(), 'Add TopLevel page must fail for normal user');
+
+		// with correct permissions
+		$rootEditUser->logIn();
+		$response = $this->post('admin/addpage', array('ParentID' => '0', 'PageType' => 'Page', 'Locale' => 'en_US'));
+		$this->assertEquals(302, $response->getStatusCode(), 'Must be a redirect on success');
+		$location=$response->getHeader('Location');
+		$this->assertContains('/show/',$location, 'Must redirect to /show/ the new page');
+		// TODO Logout
+		$this->session()->inst_set('loggedInAs', NULL);
+	}
 }

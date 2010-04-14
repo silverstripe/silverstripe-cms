@@ -433,9 +433,14 @@ JS;
 		if(is_numeric($parentID)) $parentObj = DataObject::get_by_id("SiteTree", $parentID);
 		if(!$parentObj || !$parentObj->ID) $parentID = 0;
 		
-		if($parentObj && !$parentObj->canAddChildren()) return Security::permissionFailure($this);
-		if(!singleton($className)->canCreate()) return Security::permissionFailure($this);
-
+		if($parentObj) {
+			if(!$parentObj->canAddChildren()) return Security::permissionFailure($this);
+			if(!singleton($className)->canCreate()) return Security::permissionFailure($this);
+		} else {
+			if(!SiteConfig::current_site_config()->canCreateTopLevel())
+				return Security::permissionFailure($this);
+		}
+		
 		$p = $this->getNewItem("new-$className-$parentID".$suffix, false);
 		$p->Locale = $data['Locale'];
 		$p->write();
