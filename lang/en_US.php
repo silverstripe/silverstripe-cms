@@ -173,6 +173,7 @@ $lang['en_US']['CMSMain_left.ss']['DELETECONFIRM'] = 'Delete the selected pages'
 $lang['en_US']['CMSMain_left.ss']['DELETEDSTILLLIVE'] = 'Deleted from the draft site but still on the live site';
 $lang['en_US']['CMSMain_left.ss']['EDITEDNOTPUB'] = 'Edited on the draft site and not published yet';
 $lang['en_US']['CMSMain_left.ss']['EDITEDSINCE'] = 'Edited Since';
+$lang['en_US']['CMSMain_left.ss']['SHOWITEMS'] = 'Show:';
 $lang['en_US']['CMSMain_left.ss']['ENABLEDRAGGING'] = array(
 	'Allow drag &amp; drop reordering',
 	PR_HIGH
@@ -202,6 +203,10 @@ $lang['en_US']['CMSMain_versions.ss']['NOTPUB'] = 'Not published';
 $lang['en_US']['CMSMain_versions.ss']['PUBR'] = 'Publisher';
 $lang['en_US']['CMSMain_versions.ss']['UNKNOWN'] = 'Unknown';
 $lang['en_US']['CMSMain_versions.ss']['WHEN'] = 'When';
+$lang['en_US']['CMSSiteTreeFilter']['ALL'] = 'All items';
+$lang['en_US']['CMSSiteTreeFilter']['DELETEDPAGES'] = 'All pages, including deleted';
+$lang['en_US']['CMSSiteTreeFilter']['CHANGEDPAGES'] = "Changed pages";
+$lang['en_US']['CMSSiteTreeFilter']['SEARCH'] = "Search";
 $lang['en_US']['CommentAdmin']['ACCEPT'] = 'Accept';
 $lang['en_US']['CommentAdmin']['APPROVED'] = 'Accepted %s comments.';
 $lang['en_US']['CommentAdmin']['APPROVEDCOMMENTS'] = 'Approved Comments';

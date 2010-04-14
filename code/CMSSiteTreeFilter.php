@@ -75,7 +75,7 @@ abstract class CMSSiteTreeFilter extends Object {
 
 class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter {
 	static function title() {
-		return "All pages, including deleted";
+		return _t('CMSSiteTreeFilter.DELETEDPAGES', "All pages, including deleted");
 	}
 	
 	function getTree() {
@@ -92,7 +92,7 @@ class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter {
 
 class CMSSiteTreeFilter_ChangedPages extends CMSSiteTreeFilter {
 	static function title() {
-		return "Changed pages";
+		return _t('CMSSiteTreeFilter.CHANGEDPAGES', "Changed pages");
 	}
 	
 	function pagesIncluded() {
@@ -111,7 +111,7 @@ class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter {
 	static function showInList() { return false; }
 	
 	static function title() {
-		return "Search";
+		return _t('CMSSiteTreeFilter.SEARCH', 'Search');
 	}
 	
 	/**

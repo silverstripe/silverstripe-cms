@@ -84,7 +84,7 @@
 				</form>
 			</div>
 			<div class="checkboxAboveTree noBottomBorder">
-				Show: <select id="siteTreeFilterList">
+				<% _t('SHOWITEMS', 'Show:') %> <select id="siteTreeFilterList">
 					<% control SiteTreeFilters %>
 					<option value="$ClassName">$Title</option>
 					<% end_control %>

@@ -193,7 +193,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$doSet = new DataObjectSet();
 		$doSet->push(new ArrayData(array(
 			'ClassName' => 'all',
-			'Title' => 'All items'
+			'Title' => _t('CMSSiteTreeFilter.ALL', 'All items')
 		)));
 		foreach($filters as $filter) {
 			if (call_user_func(array($filter, 'showInList'))) {
@@ -595,7 +595,7 @@ JS;
 		$id = $_REQUEST['ID'];
 		Versioned::reading_stage('Live');
 		$record = DataObject::get_by_id("SiteTree", $id);
-		if($record && !($record->canDelete() && $record->canDeleteFromLive())) return Security::permissionFailure($this);
+		if($record && !$record->canDelete()) return Security::permissionFailure($this);
 		
 		$descRemoved = '';
 		$descendantsRemoved = 0;
