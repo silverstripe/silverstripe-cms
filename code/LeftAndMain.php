@@ -622,6 +622,15 @@ class LeftAndMain extends Controller {
 				$statusUpdates['modified'][$node->ID] = array(
 					'TreeTitle'=>$node->TreeTitle
 				);
+				
+				// Update all dependent pages
+				if($virtualPages = DataObject::get("VirtualPage", "CopyContentFromID = $node->ID")) {
+					foreach($virtualPages as $virtualPage) {
+						$statusUpdates['modified'][$virtualPage->ID] = array(
+							'TreeTitle' => $virtualPage->TreeTitle()
+						);
+					}
+				}
 
 				$this->response->addHeader(
 					'X-Status',

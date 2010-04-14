@@ -483,12 +483,22 @@ class MemberTableField_ItemRequest extends ComplexTableField_ItemRequest {
 		if($this->ctf->Can('delete') !== true) {
 			return false;
 		}
+
+		$groupID = $this->ctf->sourceID();
+		$group = DataObject::get_by_id('Group', $groupID);
 		
 		// if a group limitation is set on the table, remove relation.
 		// otherwise remove the record from the database
 		if($this->ctf->getGroup()) {
 			$groupID = $this->ctf->sourceID();
+			
+			// Remove from direct group relationship
 			$this->dataObj()->Groups()->remove($groupID);
+			
+			// Remove from all child groups as well
+			foreach($group->getAllChildren() as $subGroup) {
+				$this->dataObj()->Groups()->remove($subGroup);
+			}
 		} else {
 			$this->dataObj()->delete();
 		}	
