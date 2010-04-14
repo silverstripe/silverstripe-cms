@@ -3,7 +3,7 @@ div.availableWidgetsHolder {
 }
 
 div.usedWidgetsHolder {
-	width: 69%;
+	width: 66%;
 }
 
 div.availableWidgetsHolder {
@@ -14,10 +14,6 @@ div.usedWidgetsHolder {
 	float: right;
 }
 
-div.usedWidgets {
-	border: 1px #CCC dotted;
-	padding: 5px;
-}
 .NoWidgets {
 	padding: 50px; /* Make this nice and big and easily 'droppable' */
 }
@@ -54,7 +50,7 @@ div.availableWidgets div.Widget h3 {
 	font-size: 12px;
 	color: #fff;
 	line-height: 1.8;
-	text-indent: 5px;
+	padding: 0 5px;
 	margin: 0;
 }
 	div.usedWidgets div.Widget h3 {
@@ -64,8 +60,9 @@ div.availableWidgets div.Widget h3 {
 	div.availableWidgets div.Widget h3 {
 		cursor: pointer;
 		color: #444;
-		background: #ccc url(../images/add-bg.png) right top;
+		padding-right: 25px;
+		background: #ccc url(../images/add-bg.png) right center;
 	}
 		div.availableWidgets div.Widget h3:hover {
-			background: #ccc url(../images/add-bg.png) right 21px;
+			background: #ccc url(../images/add-bg-hover.png) right center;
 		}
