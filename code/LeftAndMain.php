@@ -971,6 +971,7 @@ class LeftAndMain extends Controller {
 	 * @return int 
 	 */
 	public function currentPageID() {
+		SS_Backtrace::backtrace();
 		if($this->request->getVar('ID'))	{
 			return $this->request->getVar('ID');
 		} elseif ($this->request->param('ID') && is_numeric($this->request->param('ID'))) {
