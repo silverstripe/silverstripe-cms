@@ -106,6 +106,10 @@ class LeftAndMain extends Controller {
 		
 		SSViewer::setOption('rewriteHashlinks', false);
 		
+		// The user's theme shouldn't affect the CMS, if, for example, they have replaced
+		// TableListField.ss or Form.ss.
+		SSViewer::set_theme(null);
+		
 		// set language
 		$member = Member::currentUser();
 		if(!empty($member->Locale)) {
