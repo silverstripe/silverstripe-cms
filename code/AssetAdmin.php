@@ -200,6 +200,7 @@ JS
 			$status = "";
 		}
 
+		$fileObj = false;
 		foreach($newFiles as $newFile) {
 			$fileIDs[] = $newFile;
 			$fileObj = DataObject::get_one('File', "\"File\".\"ID\"=$newFile");
@@ -208,7 +209,27 @@ JS
 			$fileNames[] = $fileObj->Name;
 		}
 		
-		// TODO Replace with clientside logic which doesn't have assumptions in the response
+		// workaround for content editors image upload.Passing an extra hidden field
+		// in the content editors view of 'UploadMode' @see HtmlEditorField
+		// this will be refactored for 2.5
+		if(isset($data['UploadMode']) && $data['UploadMode'] == "CMSEditor" && $fileObj) {
+			// we can use $fileObj considering that the uploader in the cmseditor can only upload
+			// one file at a time. Once refactored to multiple files this is going to have to be changed
+			$width = (is_a($fileObj, 'Image')) ? $fileObj->getWidth() : '100';
+			$height = (is_a($fileObj, 'Image')) ? $fileObj->getHeight() : '100';
+			
+			$values = array(
+				'Filename' => $fileObj->Filename,
+				'Width' => $width,
+				'Height' => $height
+			);
+			
+			return Convert::raw2json($values);
+		}
+		
+		$sFileIDs = implode(',', $fileIDs);
+		$sFileNames = implode(',', $fileNames);
+
 		echo <<<HTML
 			<script type="text/javascript">
 			var url = parent.document.getElementById('sitetree').getTreeNodeByIdx( "{$folder->ID}" ).getElementsByTagName('a')[0].href;
