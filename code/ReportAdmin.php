@@ -160,9 +160,11 @@ class ReportAdmin extends LeftAndMain {
 		$idField->setValue($className);
 		$fields->push($idField);
 
-		$actions = new FieldSet();
+		$actions = $obj->getCMSActions();
 
 		$form = new Form($this, 'EditForm', $fields, $actions);
+		
+		$form->loadDataFrom($this->request->requestVars());
 
 		return $form;
 	}
