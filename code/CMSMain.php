@@ -297,8 +297,8 @@ JS;
 		
 		// TODO Duplicate record fetching (see parent implementation)
 		if(!$id) $id = $this->currentPageID();	
-		$record = ($id && $id != "root") ? DataObject::get_by_id($this->stat('tree_class'), $id) : null;
-		
+		$record = ($id && $id != "root") ? $this->getRecord($id) : null;
+
 		$fields = $form->Fields();
 		$actions = $form->Actions();
 
