@@ -70,7 +70,7 @@ class CMSMainTest extends FunctionalTest {
 		return;
 		$classes = ClassInfo::subclassesFor("SiteTree");
 		array_shift($classes);
-
+	
 		foreach($classes as $class) {
 			$page = new $class();
 			if($class instanceof TestOnly) continue;
@@ -87,7 +87,7 @@ class CMSMainTest extends FunctionalTest {
 			$this->get($page->URLSegment);
 		}
 	}
-
+	
 	/**
 	 * Test that getCMSFields works on each page type.
 	 * Mostly, this is just checking that the method doesn't return an error
@@ -95,11 +95,11 @@ class CMSMainTest extends FunctionalTest {
 	function testThatGetCMSFieldsWorksOnEveryPageType() {
 		$classes = ClassInfo::subclassesFor("SiteTree");
 		array_shift($classes);
-
+	
 		foreach($classes as $class) {
 			$page = new $class();
 			if($page instanceof TestOnly) continue;
-
+	
 			$page->Title = "Test $class page";
 			$page->write();
 			$page->flushCache();
@@ -108,13 +108,13 @@ class CMSMainTest extends FunctionalTest {
 			$this->assertTrue($page->getCMSFields(null) instanceof FieldSet);
 		}
 	}	
-
+	
 	/**
 	 * Test that a draft-deleted page can still be opened in the CMS
 	 */
 	function testDraftDeletedPageCanBeOpenedInCMS() {
 		$this->session()->inst_set('loggedInAs', $this->idFromFixture('Member', 'admin'));
-
+	
 		// Set up a page that is delete from live
 		$page = $this->objFromFixture('Page','page1');
 		$pageID = $page->ID;
@@ -122,11 +122,11 @@ class CMSMainTest extends FunctionalTest {
 		$page->delete();
 		
 		$response = $this->get('admin/cms/getitem?ID=' . $pageID . '&ajax=1');
-
+	
 		$livePage = Versioned::get_one_by_stage("SiteTree", "Live", "\"SiteTree\".\"ID\" = $pageID");
 		$this->assertType('SiteTree', $livePage);
 		$this->assertTrue($livePage->canDelete());
-
+	
 		// Check that the 'restore' button exists as a simple way of checking that the correct page is returned.
 		$this->assertRegExp('/<input[^>]+type="submit"[^>]+name="action_(restore|revert)"/i', $response->getBody());
 	}
@@ -142,7 +142,7 @@ class CMSMainTest extends FunctionalTest {
 		$page1->delete();
 		
 		$cmsMain = new CMSMain();
-
+	
 		// Bad calls
 		$this->assertNull($cmsMain->getRecord('0'));
 		$this->assertNull($cmsMain->getRecord('asdf'));
@@ -150,12 +150,12 @@ class CMSMainTest extends FunctionalTest {
 		// Pages that are on draft and aren't on draft should both work
 		$this->assertType('Page', $cmsMain->getRecord($page1ID));
 		$this->assertType('Page', $cmsMain->getRecord($this->idFromFixture('Page','page2')));
-
+	
 		// This functionality isn't actually used any more.
 		$newPage = $cmsMain->getRecord('new-Page-5');
 		$this->assertType('Page', $newPage);
 		$this->assertEquals('5', $newPage->ParentID);
-
+	
 	}
 	
 	function testDeletedPagesSiteTreeFilter() {
@@ -171,13 +171,23 @@ class CMSMainTest extends FunctionalTest {
 
 		// with insufficient permissions
 		$cmsUser->logIn();
-		$response = $this->post('admin/addpage', array('ParentID' => '0', 'PageType' => 'Page', 'Locale' => 'en_US'));
+		$this->get('admin');
+		$response = $this->submitForm(
+			'Form_AddForm', 
+			null,
+			array('ParentID' => '0', 'PageType' => 'Page', 'Locale' => 'en_US')
+		);
 		// should redirect, which is a permission error
 		$this->assertEquals(403, $response->getStatusCode(), 'Add TopLevel page must fail for normal user');
 
 		// with correct permissions
 		$rootEditUser->logIn();
-		$response = $this->post('admin/addpage', array('ParentID' => '0', 'PageType' => 'Page', 'Locale' => 'en_US'));
+		$this->get('admin');
+		$response = $this->submitForm(
+			'Form_AddForm', 
+			null,
+			array('ParentID' => '0', 'PageType' => 'Page', 'Locale' => 'en_US')
+		);
 		$this->assertEquals(302, $response->getStatusCode(), 'Must be a redirect on success');
 		$location=$response->getHeader('Location');
 		$this->assertContains('/show/',$location, 'Must redirect to /show/ the new page');
