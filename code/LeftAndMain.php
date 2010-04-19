@@ -618,7 +618,6 @@ JS;
 	 */
 	public function save($urlParams, $form) {
 		$className = $this->stat('tree_class');
-		$result = '';
 
 		$SQL_id = Convert::raw2sql($_REQUEST['ID']);
 		if(substr($SQL_id,0,3) != 'new') {
@@ -690,12 +689,12 @@ JS;
 
 			if($added = DataObjectLog::getAdded('SiteTree')) {
 				foreach($added as $page) {
-					if($page->ID != $record->ID) $result .= $this->addTreeNodeJS($page);
+					if($page->ID != $record->ID) FormResponse::add($this->addTreeNodeJS($page));
 				}
 			}
 			if($deleted = DataObjectLog::getDeleted('SiteTree')) {
 				foreach($deleted as $page) {
-					if($page->ID != $record->ID) $result .= $this->deleteTreeNodeJS($page);
+					if($page->ID != $record->ID) FormResponse::add($this->deleteTreeNodeJS($page));
 				}
 			}
 			if($changed = DataObjectLog::getChanged('SiteTree')) {
@@ -789,7 +788,7 @@ JS;
 				// BUGFIX: Changed icon only shows after Save button is clicked twice http://support.silverstripe.com/gsoc/ticket/76
 				$title = Convert::raw2js($record->TreeTitle());
 				FormResponse::add("$('sitetree').setNodeTitle(\"$record->ID\", \"$title\");");
-				$result .= $this->getActionUpdateJS($record);
+				FormResponse::add($this->getActionUpdateJS($record));
 				FormResponse::status_message($message, "good");
 				FormResponse::update_status($record->Status);
 
@@ -801,7 +800,9 @@ JS;
 	}
 
 	/**
-	 * Return a piece of javascript that will update the actions of the main form
+	 * Returns a javascript snippet that will update the actions of the main form
+	 * 
+	 * @return string
 	 */
 	public function getActionUpdateJS($record) {
 		// Get the new action buttons
@@ -812,13 +813,13 @@ JS;
 			$actionList .= $action->Field() . ' ';
 		}
 
-		FormResponse::add("$('Form_EditForm').loadActionsFromString('" . Convert::raw2js($actionList) . "');");
-
-		return FormResponse::respond();
+		return "$('Form_EditForm').loadActionsFromString('" . Convert::raw2js($actionList) . "');";
 	}
 
 	/**
-	 * Return JavaScript code to generate a tree node for the given page, if visible
+	 * Returns a javascript snippet to generate a tree node for the given page, if visible
+	 *
+	 * @return string
 	 */
 	public function addTreeNodeJS($page, $select = false) {
 		$parentID = (int)$page->ParentID;
@@ -829,11 +830,12 @@ var parentNode = $('sitetree').getTreeNodeByIdx($parentID);
 if(parentNode) parentNode.appendTreeNode(newNode);
 JS;
 		$response .= ($select ? "newNode.selectTreeNode();\n" : "") ;
-		FormResponse::add($response);
-		return FormResponse::respond();
+		return $response;
 	}
 	/**
-	 * Return JavaScript code to remove a tree node for the given page, if it exists.
+	 * Returns a javascript snippet to remove a tree node for the given page, if it exists.
+	 *
+	 * @return string
 	 */
 	public function deleteTreeNodeJS($page) {
 		$id = $page->ID ? $page->ID : $page->OldID;
@@ -842,14 +844,13 @@ var node = $('sitetree').getTreeNodeByIdx($id);
 if(node && node.parentTreeNode) node.parentTreeNode.removeTreeNode(node);
 $('Form_EditForm').closeIfSetTo($id);
 JS;
-		FormResponse::add($response);
 
 		// If we have that page selected currently, then clear that info from the session
 		if(Session::get("{$this->class}.currentPage") == $id) {
 			$this->setCurrentPageID(null);
 		}
 		
-		return FormResponse::respond();
+		return $response;
 	}
 
 	/**
