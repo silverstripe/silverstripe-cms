@@ -99,6 +99,14 @@ class FilesystemPublisher extends StaticPublisher {
 		increase_time_limit_to();
 		increase_memory_limit_to();
 		
+		// Set the appropriate theme for this publication batch.
+		// This may have been set explicitly via StaticPublisher::static_publisher_theme,
+		// or we can use the last non-null theme.
+		if(!StaticPublisher::static_publisher_theme())
+			SSViewer::set_theme(SSViewer::current_custom_theme());
+		else
+			SSViewer::set_theme(StaticPublisher::static_publisher_theme());
+			
 		$currentBaseURL = Director::baseURL();
 		if(self::$static_base_url) Director::setBaseURL(self::$static_base_url);
 		if($this->fileExtension == 'php') SSViewer::setOption('rewriteHashlinks', 'php'); 
