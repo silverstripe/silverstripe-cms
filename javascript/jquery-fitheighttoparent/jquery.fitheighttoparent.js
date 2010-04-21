@@ -23,6 +23,7 @@ jQuery.fn.extend({
 			if($this.is(':visible') && $this.parent().is(':visible')) {
 				
 				// we set overflow = hidden so that large children don't muck things up in IE6 box model
+				var origParentOverflow = $this.parent().css('overflow');
 				$this.parent().css('overflow', 'hidden');
 				
 				// get height from parent without any margins as a starting point,
@@ -47,6 +48,9 @@ jQuery.fn.extend({
 
 				// set new height
 				$this.height(height);
+				
+				// Reset overflow
+				$this.parent().css('overflow', origParentOverflow);
 			}
 		});
 	}
