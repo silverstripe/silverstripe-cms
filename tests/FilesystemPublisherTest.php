@@ -17,7 +17,7 @@ class FilesystemPublisherTest extends SapphireTest {
 	}
 	
 	function tearDown() {
-		Object::remove_extension("SiteTree", "FilesystemPublisher");
+		Object::remove_extension("SiteTree", "FilesystemPublisher('../FilesystemPublisherTest-static-folder/')");
 		SiteTree::$write_homepage_map = true;
 		
 		parent::tearDown();
