@@ -82,7 +82,7 @@ $(document).ready(function() {
 	$('#SearchForm_holder .tab form:not(#Form_ImportForm)').submit(function () {
 	    var $form = $(this);
 
-		$('#right form textarea').each(function(){
+		$('#right form textarea.htmleditor').each(function(){
 			tinyMCE.execCommand('mceRemoveControl', false, $(this).attr('id'));
 		});
 
