@@ -277,13 +277,19 @@ class PageCommentInterface_Form extends Form {
 		$comment->write();
 		
 		Cookie::set("PageCommentInterface_Comment", '');
+		
+		$moderationMsg = _t('PageCommentInterface_Form.AWAITINGMODERATION', "Your comment has been submitted and is now awaiting moderation.");
+		
 		if(Director::is_ajax()) {
 			if($comment->NeedsModeration){
-				echo _t('PageCommentInterface_Form.AWAITINGMODERATION', "Your comment has been submitted and is now awaiting moderation.");
+				echo $moderationMsg;
 			} else{
 				echo $comment->renderWith('PageCommentInterface_singlecomment');
 			}
 		} else {		
+			if($comment->NeedsModeration){
+				$this->sessionMessage($moderationMsg, 'good');
+			}
 			// since it is not ajax redirect user down to their comment since it has been posted
 			// get the pages url off the comments parent ID.
 			if($comment->ParentID) {
