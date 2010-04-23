@@ -13,6 +13,7 @@
  * - members of a provided group
  * - all members
  * - members based on a search-query
+ * 
  * @package cms
  * @subpackage security
  */
@@ -447,6 +448,10 @@ class MemberTableField_Popup extends ComplexTableField_Popup {
 
 }
 
+/**
+* @package cms
+* @subpackage security
+*/
 class MemberTableField_Item extends ComplexTableField_Item {
 
 	function Actions() {
@@ -473,6 +478,11 @@ class MemberTableField_Item extends ComplexTableField_Item {
 		return $actions;
 	}
 }
+
+/**
+* @package cms
+* @subpackage security
+*/
 
 class MemberTableField_ItemRequest extends ComplexTableField_ItemRequest {
 

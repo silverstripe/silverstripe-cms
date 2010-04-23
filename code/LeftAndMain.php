@@ -475,7 +475,7 @@ class LeftAndMain extends Controller {
 	 *  shown
 	 * @param $childrenMethod The method to call to get the children of the tree. For example,
 	 *  Children, AllChildrenIncludingDeleted, or AllHistoricalChildren
-	 * @return String Nested <ul> list with links to each page
+	 * @return String Nested unordered list with links to each page
 	 */
 	function getSiteTreeFor($className, $rootID = null, $childrenMethod = null, $numChildrenMethod = null, $filterFunction = null, $minNodeCount = 30) {
 		// Default childrenMethod and numChildrenMethod
@@ -1214,6 +1214,10 @@ class LeftAndMain extends Controller {
 	
 }
 
+/**
+ * @package cms
+ * @subpackage core
+ */
 class LeftAndMainMarkingFilter {
 	
 	/**

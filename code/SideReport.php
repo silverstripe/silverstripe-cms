@@ -2,6 +2,7 @@
 /**
  * Base class for the small reports that appear in the left hand site of the Site Content section of the CMS.
  * Create subclasses of this class to build new reports.
+ * 
  * @package cms
  * @subpackage content
  */
@@ -92,6 +93,7 @@ abstract class SideReport extends Object {
 
 /**
  * Content side-report listing empty pages
+ * 
  * @package cms
  * @subpackage content
  */
@@ -117,6 +119,7 @@ class SideReport_EmptyPages extends SideReport {
 
 /**
  * Content side-report listing recently editing pages.
+ * 
  * @package cms
  * @subpackage content
  */
@@ -141,6 +144,10 @@ class SideReport_RecentlyEdited extends SideReport {
 	}
 }
 
+/**
+* @package cms
+* @subpackage content
+*/
 class SideReport_ToDo extends SideReport {
 	function title() {
 		return _t('SideReport.TODO',"Pages with To Do items");
@@ -170,6 +177,7 @@ class SideReport_ToDo extends SideReport {
 
 /**
  * Content side-report listing pages with broken links
+ * 
  * @package cms
  * @subpackage content
  */
@@ -204,6 +212,7 @@ class SideReport_BrokenLinks extends SideReport {
 /**
  * Content side-report listing pages with broken files
  * or asset links
+ * 
  * @package cms
  * @subpackage content
  */
@@ -235,6 +244,10 @@ class SideReport_BrokenFiles extends SideReport {
 	}
 }
 
+/**
+* @package cms
+* @subpackage content
+*/
 class SideReport_BrokenVirtualPages extends SideReport {
 	function title() {
 		return _t('SideReport.BROKENVIRTUALPAGES', 'VirtualPages pointing to deleted pages');
@@ -261,6 +274,10 @@ class SideReport_BrokenVirtualPages extends SideReport {
 	}
 }
 
+/**
+* @package cms
+* @subpackage content
+*/
 class SideReport_BrokenRedirectorPages extends SideReport {
 	function title() {
 		return _t('SideReport.BROKENREDIRECTORPAGES', 'RedirectorPages pointing to deleted pages');

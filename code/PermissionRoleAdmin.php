@@ -2,6 +2,9 @@
 
 /**
  * Admin interface for Permission Roles.
+ * 
+ * @package cms
+ * @subpackage security
  */
 class PermissionRoleAdmin extends ModelAdmin {
 	static $managed_models = array(
@@ -17,6 +20,9 @@ class PermissionRoleAdmin extends ModelAdmin {
 
 /**
  * Customized controller for hiding permissions on AddForm
+ * 
+ * @package cms
+ * @subpackage security
  */
 class PermissionRoleAdmin_CollectionController extends ModelAdmin_CollectionController {
 	public function AddForm() {
@@ -31,6 +37,9 @@ class PermissionRoleAdmin_CollectionController extends ModelAdmin_CollectionCont
 
 /**
  * Customized controller for hiding permissions on EditForm
+ * 
+ * @package cms
+ * @subpackage security
  */
 class PermissionRoleAdmin_RecordController extends ModelAdmin_RecordController {
 	public function EditForm() {

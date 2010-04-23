@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package cms
+ * @subpackage assets
+ */
 class FilesystemSyncTask extends BuildTask {
 	
 	protected $title = "Sync Files & Images assets";

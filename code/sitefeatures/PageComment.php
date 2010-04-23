@@ -1,6 +1,7 @@
 <?php
 /**
  * Represents a single comment on a page
+ * 
  * @package cms
  * @subpackage comments
  */
@@ -158,6 +159,10 @@ class PageComment extends DataObject {
 }
 
 
+/**
+ * @package cms
+ * @subpackage comments
+ */
 class PageComment_Controller extends Controller {
 	function rss() {
 		$parentcheck = isset($_REQUEST['pageid']) ? "\"ParentID\" = " . (int) $_REQUEST['pageid'] : "\"ParentID\" > 0";
