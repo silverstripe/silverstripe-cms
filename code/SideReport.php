@@ -3,6 +3,7 @@
 /**
  * Renderer for showing SideReports in CMSMain
  * 
+ * 
  * @package cms
  * @subpackage content
  */
@@ -148,6 +149,7 @@ class SideReport_EmptyPages extends SS_Report {
 
 /**
  * Content side-report listing recently editing pages.
+ * 
  * @package cms
  * @subpackage content
  */
@@ -208,6 +210,7 @@ class SideReport_ToDo extends SS_Report {
 
 /**
  * Content side-report listing pages with broken links
+ * 
  * @package cms
  * @subpackage content
  */
@@ -245,6 +248,7 @@ class SideReport_BrokenLinks extends SS_Report {
 /**
  * Content side-report listing pages with broken files
  * or asset links
+ * 
  * @package cms
  * @subpackage content
  */
@@ -281,6 +285,10 @@ class SideReport_BrokenFiles extends SS_Report {
 
 }
 
+/**
+ * @package cms
+ * @subpackage content
+ */
 class SideReport_BrokenVirtualPages extends SS_Report {
 	function title() {
 		return _t('SideReport.BROKENVIRTUALPAGES', 'VirtualPages pointing to deleted pages');
@@ -311,6 +319,10 @@ class SideReport_BrokenVirtualPages extends SS_Report {
 	}
 }
 
+/**
+ * @package cms
+ * @subpackage content
+ */
 class SideReport_BrokenRedirectorPages extends SS_Report {
 	function title() {
 		return _t('SideReport.BROKENREDIRECTORPAGES', 'RedirectorPages pointing to deleted pages');
