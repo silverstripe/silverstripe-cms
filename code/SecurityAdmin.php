@@ -398,7 +398,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 
 	/**
 	 * Return the entire site tree as a nested set of ULs.
-	 * @return string Unordered list <UL> HTML
+	 * @return string Unordered list HTML
 	 */
 	public function SiteTreeAsUL() {
 		$obj = singleton($this->stat('tree_class'));

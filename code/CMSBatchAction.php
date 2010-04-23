@@ -36,7 +36,6 @@ abstract class CMSBatchAction extends Object {
 	 * @param $pages The DataObjectSet of SiteTree objects to perform this batch action
 	 * on.
 	 * @param $helperMethod The method to call on each of those objects.
-	 * @para
 	 */
 	public function batchaction(DataObjectSet $pages, $helperMethod, $successMessage, $arguments = array()) {
 		$failures = 0;

@@ -4,8 +4,7 @@
  * This class creates a 2-frame layout - left-tree and right-form - to sit beneath the main
  * admin menu.
  * 
- * @package cms
- * @subpackage content
+ar
  * @todo Create some base classes to contain the generic functionality that will be replicated.
  */
 class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionProvider {
@@ -1429,6 +1428,10 @@ JS;
 	}
 }
 
+/**
+ * @package cms
+ * @subpackage content
+ */
 class CMSMainMarkingFilter {
 	
 	function __construct() {

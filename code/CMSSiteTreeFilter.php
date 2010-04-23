@@ -73,6 +73,10 @@ abstract class CMSSiteTreeFilter extends Object {
 
 }
 
+/**
+ * @package cms
+ * @subpackage content
+ */
 class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter {
 	static function title() {
 		return _t('CMSSiteTreeFilter.DELETEDPAGES', "All pages, including deleted");
@@ -90,6 +94,10 @@ class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter {
 	}
 }
 
+/**
+ * @package cms
+ * @subpackage content
+ */
 class CMSSiteTreeFilter_ChangedPages extends CMSSiteTreeFilter {
 	static function title() {
 		return _t('CMSSiteTreeFilter.CHANGEDPAGES', "Changed pages");
@@ -100,6 +108,10 @@ class CMSSiteTreeFilter_ChangedPages extends CMSSiteTreeFilter {
 	}	
 }
 
+/**
+ * @package cms
+ * @subpackage content
+ */
 class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter {
 	public $data;
 	
