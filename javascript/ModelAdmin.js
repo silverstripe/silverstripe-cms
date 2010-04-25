@@ -183,7 +183,7 @@ $(document).ready(function() {
 		var form = $('#right form');
 		var formAction = form.attr('action') + '?' + $(this).fieldSerialize();
 
-		$('#right form textarea').each(function(){
+		$('#right form textarea.htmleditor').each(function(){
 			tinyMCE.execCommand('mceRemoveControl', false, $(this).attr('id'));
 		});
 
@@ -213,7 +213,7 @@ $(document).ready(function() {
 			return false;
 		}
 		
-		$('#right form textarea').each(function(){
+		$('#right form textarea.htmleditor').each(function(){
 			tinyMCE.execCommand('mceRemoveControl', false, $(this).attr('id'));
 		});
 
@@ -320,7 +320,7 @@ $(document).ready(function() {
     	},
     	
     	goBack: function() {
-			$('#right form textarea').each(function(){
+			$('#right form textarea.htmleditor').each(function(){
 				tinyMCE.execCommand('mceRemoveControl', false, $(this).attr('id'));
 			});
             
@@ -337,7 +337,7 @@ $(document).ready(function() {
     	},
     	
     	goForward: function() {
-			$('#right form textarea').each(function(){
+			$('#right form textarea.htmleditor').each(function(){
 				tinyMCE.execCommand('mceRemoveControl', false, $(this).attr('id'));
 			});
             
