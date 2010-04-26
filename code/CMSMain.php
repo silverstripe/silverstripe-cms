@@ -4,7 +4,8 @@
  * This class creates a 2-frame layout - left-tree and right-form - to sit beneath the main
  * admin menu.
  * 
-ar
+ * @package cms
+ * @subpackage content
  * @todo Create some base classes to contain the generic functionality that will be replicated.
  */
 class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionProvider {
@@ -411,9 +412,13 @@ JS;
 			}
 
 			// Don't open a page from a different locale
-			if($record && Object::has_extension('SiteTree', 'Translatable') && $record->Locale && $record->Locale != Translatable::get_current_locale()) {
+			/** The record's Locale is saved in database in 2.4, and not related with Session, we should check their locale matches the Translatable::get_current_locale,
+			 * 	as long as we all the HTTPRequest is init with right locale.
+			 *	This bit breaks the all FileIFrameField functions if the field is used in CMS and its relevent ajax calles, like loading the tree dropdown for TreeSelectorField. 
+			 */
+			/* if($record && Object::has_extension('SiteTree', 'Translatable') && $record->Locale && $record->Locale != Translatable::get_current_locale()) {
 				$record = null;
-			}
+			}*/
 
 			return $record;
 
