@@ -423,17 +423,17 @@ class ModelAdmin_CollectionController extends Controller {
 		}
 		
 		$buttonLabel = sprintf(_t('ModelAdmin.CREATEBUTTON', "Create '%s'", PR_MEDIUM, "Create a new instance from a model class"), singleton($modelName)->i18n_singular_name());
-		
-		$actions = new FieldSet(
-			$createButton = new FormAction('add', $buttonLabel)
-		);
-		
+
+		$form = new Form($this, "CreateForm",
+						new FieldSet(),
+						$createButton = new FormAction('add', $buttonLabel),
+						$validator = new RequiredFields()
+				);
+	
 		$createButton->dontEscape = true;
-		
-		$validator = new RequiredFields();
 		$validator->setJavascriptValidationHandler('none');
-		
-		return new Form($this, "CreateForm", new FieldSet(), $actions, $validator);	
+		$form->setHTMLID("Form_CreateForm_" . $this->modelClass);
+		return $form;
 	}
 	
 	/**
@@ -488,6 +488,7 @@ class ModelAdmin_CollectionController extends Controller {
 			$actions,
 			$validator
 		);
+		$form->setHTMLID("Form_ImportForm_" . $this->modelClass);
 		return $form;
 	}
 	
