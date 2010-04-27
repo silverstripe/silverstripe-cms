@@ -426,7 +426,7 @@ class ModelAdmin_CollectionController extends Controller {
 
 		$form = new Form($this, "CreateForm",
 						new FieldSet(),
-						$createButton = new FormAction('add', $buttonLabel),
+						new FieldSet($createButton = new FormAction('add', $buttonLabel)),
 						$validator = new RequiredFields()
 				);
 	
