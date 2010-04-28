@@ -152,7 +152,7 @@ class PageComment extends DataObject {
 class PageComment_Controller extends Controller {
 	function rss() {
 		$parentcheck = isset($_REQUEST['pageid']) ? "ParentID = " . (int) $_REQUEST['pageid'] : "ParentID > 0";
-		$comments = DataObject::get("PageComment", "$parentcheck AND IsSpam=0", "Created DESC", "", 10);
+		$comments = DataObject::get("PageComment", "$parentcheck AND IsSpam=0 AND NeedsModeration = 0", "Created DESC", "", 10);
 		if(!isset($comments)) {
 			$comments = new DataObjectSet();
 		}
