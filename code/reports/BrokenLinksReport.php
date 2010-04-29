@@ -29,9 +29,9 @@ class BrokenLinksReport extends SS_Report {
 				$sort = '';
 			}
 		}
-		
-		if (!isset($_REQUEST['CheckSite']) || $params['CheckSite'] == 'Published') $ret = Versioned::get_by_stage('SiteTree', 'Live', "(HasBrokenLink = 1 OR HasBrokenFile = 1)", $sort, $join, $limit);
-		else $ret = DataObject::get('SiteTree', "(HasBrokenFile = 1 OR HasBrokenLink = 1)", $sort, $join, $limit);
+		$q = DB::USE_ANSI_SQL ? '"' : '`';
+		if (!isset($_REQUEST['CheckSite']) || $params['CheckSite'] == 'Published') $ret = Versioned::get_by_stage('SiteTree', 'Live', "({$q}SiteTree{$q}.{$q}HasBrokenLink{$q} = 1 OR {$q}SiteTree{$q}.{$q}HasBrokenFile{$q} = 1)", $sort, $join, $limit);
+		else $ret = DataObject::get('SiteTree', "({$q}SiteTree{$q}.{$q}HasBrokenFile{$q} = 1 OR {$q}HasBrokenLink{$q} = 1)", $sort, $join, $limit);
 		
 		$returnSet = new DataObjectSet();
 		if ($ret) foreach($ret as $record) {
