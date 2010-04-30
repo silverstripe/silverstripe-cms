@@ -52,7 +52,6 @@ $lang['ar_SA']['AssetTableField']['CAPTION'] = 'العنوان';
 $lang['ar_SA']['AssetTableField']['CREATED'] = 'أول المرفوعات';
 $lang['ar_SA']['AssetTableField']['DIM'] = 'الأبعاد';
 $lang['ar_SA']['AssetTableField']['DIMLIMT'] = 'أبعاد محدودة في النافذة المنبثقة';
-$lang['ar_SA']['AssetTableField']['EDITIMAGE'] = 'تعديل الصورة';
 $lang['ar_SA']['AssetTableField']['FILENAME'] = 'اسم الملف';
 $lang['ar_SA']['AssetTableField']['GALLERYOPTIONS'] = 'خيارات معرض الصور';
 $lang['ar_SA']['AssetTableField']['IMAGE'] = 'الصورة';
@@ -82,12 +81,6 @@ $lang['ar_SA']['CMSBatchActions']['PUBLISH_PAGES'] = 'النشر';
 $lang['ar_SA']['CMSBatchActions']['UNPUBLISHED_PAGES'] = '%d من الصفحات غير المنشورة';
 $lang['ar_SA']['CMSBatchActions']['UNPUBLISHING_PAGES'] = 'صفحات غير منشورة';
 $lang['ar_SA']['CMSBatchActions']['UNPUBLISH_PAGES'] = 'غير منشور';
-$lang['ar_SA']['CMSLeft.ss']['DELPAGE'] = 'حذف صفحات ...';
-$lang['ar_SA']['CMSLeft.ss']['DELPAGES'] = 'احذف الصفحات المحددة';
-$lang['ar_SA']['CMSLeft.ss']['GO'] = 'اذهب';
-$lang['ar_SA']['CMSLeft.ss']['NEWPAGE'] = 'صفحة جديدة ...';
-$lang['ar_SA']['CMSLeft.ss']['SELECTPAGESDEL'] = 'اختر الملجدات التي تريد حذفها ثم اضغط على الزر بالأسفل';
-$lang['ar_SA']['CMSLeft.ss']['SITECONT'] = 'محتوى الموقع';
 $lang['ar_SA']['CMSMain']['ACCESS'] = 'الدخول إلى %s (%s)';
 $lang['ar_SA']['CMSMain']['ACCESSALLINTERFACES'] = 'الدخول إلى جميع واجهات إدارة المحتوى';
 $lang['ar_SA']['CMSMain']['CANCEL'] = 'إلغاء';
@@ -169,7 +162,6 @@ $lang['ar_SA']['CMSMain_left.ss']['PUBLISHCONFIRM'] = 'انشر الصفحات �
 $lang['ar_SA']['CMSMain_left.ss']['SEARCH'] = 'بحث';
 $lang['ar_SA']['CMSMain_left.ss']['SEARCHTITLE'] = 'ابحث في الروابط , العناوين ,عناوين القوائم , و المحتويات';
 $lang['ar_SA']['CMSMain_left.ss']['SELECTPAGESACTIONS'] = 'اختر الصفحات التي ترغب بتغييرها &amp; ثم اختر التنفيذ';
-$lang['ar_SA']['CMSMain_left.ss']['SELECTPAGESDUP'] = 'اختر الصفحة التي تريد تكرارها ومكان التكرار , متضمنة الصفحات الفرعية ';
 $lang['ar_SA']['CMSMain_left.ss']['SHOWONLYCHANGED'] = 'اعرض الصفحات المعدلة فقط';
 $lang['ar_SA']['CMSMain_left.ss']['SHOWUNPUB'] = 'إظهار الإصدارات الغير منشورة';
 $lang['ar_SA']['CMSMain_left.ss']['SITECONTENT TITLE'] = 'محتوى و هيكلة الموقع';
@@ -187,9 +179,6 @@ $lang['ar_SA']['CMSMain_versions.ss']['NOTPUB'] = 'غير منشور';
 $lang['ar_SA']['CMSMain_versions.ss']['PUBR'] = 'الناشر';
 $lang['ar_SA']['CMSMain_versions.ss']['UNKNOWN'] = 'غير معروف';
 $lang['ar_SA']['CMSMain_versions.ss']['WHEN'] = 'عند';
-$lang['ar_SA']['CMSRight.ss']['CHOOSEPAGE'] = 'فضلاً اختر صفحة من القائمة';
-$lang['ar_SA']['CMSRight.ss']['ECONTENT'] = 'تعديل المحتوى';
-$lang['ar_SA']['CMSRight.ss']['WELCOMETO'] = 'أهلاً بك في ';
 $lang['ar_SA']['CommentAdmin']['ACCEPT'] = 'موافقة';
 $lang['ar_SA']['CommentAdmin']['APPROVED'] = 'التعليقات الموافق عليها %s';
 $lang['ar_SA']['CommentAdmin']['APPROVEDCOMMENTS'] = 'تعليقات تمت الموافقة عليها';
