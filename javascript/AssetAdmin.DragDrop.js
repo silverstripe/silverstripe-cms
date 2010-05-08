@@ -1,6 +1,12 @@
+/**
+ * File: AssetAdmin.DragDrop.js
+ */
 (function($) {
 	$.entwine('ss', function($){
 		
+		/**
+		 * Class: .AssetTableField.dragdrop
+		 */
 		$('.AssetTableField.dragdrop').entwine({
 			onmatch: function() {
 				var self = this;
@@ -15,6 +21,8 @@
 				this._super();
 			},
 			/**
+			 * Function: drop
+			 * 
 			 * Take selected files and move them to a folder target in the tree.
 			 */
 			drop: function(e, ui) {
@@ -30,11 +38,15 @@
 					)
 				}
 			},
+			
 			/**
+			 * Function: getSelected
+			 * 
 			 * Get the IDs of all selected files in the table.
 			 * Used for drag'n'drop.
 			 * 
-			 * @return Array
+			 * Returns:
+			 *  Array
 			 */
 			getSelected: function() {
 				return this.find(':input[name=Files\[\]]:checked').map(function() {
@@ -44,6 +56,7 @@
 		});
 		
 		$('.AssetTableField .dragfile').entwine({
+			// Constructor: onmatch
 			onmatch: function() {
 				var self = this;
 				var container = this.parents('.AssetTableField');
@@ -64,6 +77,11 @@
 				this._super();
 			},
 			/**
+			 * Function: onmousedown
+			 * 
+			 * Parameters:
+			 * (Event) e
+			 * 
 			 * Automatically select the checkbox in the same table row
 			 * to signify that this element is moved, and hint that
 			 * all checkboxed elements will be moved along with it.

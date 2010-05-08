@@ -1,5 +1,11 @@
-WidgetAreaEditorClass = Class.create();
+/**
+ * File: WidgetAreaEditor.js
+ */
 
+/**
+ * Class: WidgetAreaEditorClass
+ */
+WidgetAreaEditorClass = Class.create();
 WidgetAreaEditorClass.prototype = {
 	initialize: function() {
 		this.name = this.getAttribute('name');
@@ -207,8 +213,10 @@ WidgetAreaEditorClass.prototype = {
 	}
 }
 
+/**
+ * Class: UsedWidget
+ */
 UsedWidget = Class.create();
-
 UsedWidget.prototype = {
 	initialize: function() {
 		// Call deleteWidget when delete button is pushed
@@ -239,6 +247,9 @@ UsedWidget.prototype = {
 	}
 }
 
+/**
+ * Class: AvailableWidgetHeader
+ */
 AvailableWidgetHeader = Class.create();
 AvailableWidgetHeader.prototype = {
 	onclick: function(event) {
@@ -248,15 +259,16 @@ AvailableWidgetHeader.prototype = {
 		$('WidgetAreaEditor-'+widgetArea).addWidget(className, widgetArea);
 	}
 }
-
 AvailableWidgetHeader.applyTo('div.availableWidgets .Widget h3');
 
+/**
+ * Class: WidgetTreeDropdownField
+ */
 WidgetTreeDropdownField = Class.extend('TreeDropdownField');
 WidgetTreeDropdownField.prototype = {
 	getName: function() {
 		return 'Widget_TDF_Endpoint';
 	}
 }
-
 WidgetTreeDropdownField.applyTo('div.usedWidgets .TreeDropdownField');
 WidgetAreaEditorClass.applyTo('.WidgetAreaEditor');

@@ -1,31 +1,41 @@
+/**
+ * File: LeftAndMain.EditForm.js
+ */
 (function($) {
 	$.entwine('ss', function($){
 
 		/**
-		 * @class Base edit form, provides ajaxified saving
+		 * Class: #Form_EditForm
+		 * 
+		 * Base edit form, provides ajaxified saving
 		 * and reloading itself through the ajax return values.
 		 * Takes care of resizing tabsets within the layout container.
 		 * @name ss.Form_EditForm
 		 * @require jquery.changetracker
 		 * 
-		 * <h3>Events</h3>
-		 * - ajaxsubmit: Form is about to be submitted through ajax
-		 * - validate: Contains validation result
-		 * - removeform: A form is about to be removed from the DOM
-		 * - load: Form is about to be loaded through ajax
+		 * Events:
+		 *  ajaxsubmit - Form is about to be submitted through ajax
+		 *  validate - Contains validation result
+		 *  removeform - A form is about to be removed from the DOM
+		 *  load - Form is about to be loaded through ajax
 		 */
 		$('#Form_EditForm').entwine(/** @lends ss.Form_EditForm */{	
 			/**
-			 * @type String HTML text to show when no form content is chosen.
-			 *  Will show inside the <form> tag.
+			 * Variable: PlaceholderHtml
+			 * (String_ HTML text to show when no form content is chosen.
+			 * Will show inside the <form> tag.
 			 */
 			PlaceholderHtml: '',
 		
 			/**
-			 * @type Object
+			 * Variable: ChangeTrackerOptions
+			 * (Object)
 			 */
 			ChangeTrackerOptions: {},
 		
+			/**
+			 * Constructor: onmatch
+			 */
 			onmatch: function() {
 				var self = this;
 			
@@ -37,6 +47,9 @@
 				this._super();
 			},
 		
+			/**
+			 * Function: _setupChangeTracker
+			 */
 			_setupChangeTracker: function() {
 				// Don't bind any events here, as we dont replace the
 				// full <form> tag by any ajax updates they won't automatically reapply
@@ -44,11 +57,16 @@
 			},
 		
 			/**
+			 * Function: _checkChangeTracker
+			 * 
 			 * Checks the jquery.changetracker plugin status for this form.
 			 * Usually bound to window.onbeforeunload.
 			 * 
-			 * @param {boolean} isUnloadEvent
-			 * @return Either a string with a confirmation message, or the result of a confirm() dialog,
+			 * Parameters:
+			 *  {boolean} isUnloadEvent - ..
+			 * 
+			 * Returns:
+			 *  (String) Either a string with a confirmation message, or the result of a confirm() dialog,
 			 *  based on the isUnloadEvent parameter.
 			 */
 			_checkChangeTracker: function(isUnloadEvent) {
@@ -70,9 +88,9 @@
 			},
 
 			/**
-			 * Suppress submission unless it is handled through ajaxSubmit().
+			 * Function: onsubmit
 			 * 
-			 * @param {Event} e
+			 * Suppress submission unless it is handled through ajaxSubmit().
 			 */
 			onsubmit: function(e) {
 				this.ajaxSubmit();
@@ -81,10 +99,16 @@
 			},
 
 			/**
-			 * @param {DOMElement} button The pressed button (optional)
-			 * @param {Function} callback Called in complete() handler of jQuery.ajax()
-			 * @param {Object} ajaxOptions Object literal to merge into $.ajax() call
-			 * @param {boolean} loadResponse Render response through _loadResponse() (Default: true)
+			 * Function: ajaxSubmit
+			 * 
+			 * Parameters:
+			 *  {DOMElement} button - The pressed button (optional)
+			 *  {Function} callback - Called in complete() handler of jQuery.ajax()
+			 *  {Object} ajaxOptions - Object literal to merge into $.ajax() call
+			 *  {boolean} loadResponse - Render response through _loadResponse() (Default: true)
+			 * 
+			 * Returns:
+			 *  (boolean)
 			 */
 			ajaxSubmit: function(button, callback, ajaxOptions, loadResponse) {
 				var self = this;
@@ -140,12 +164,16 @@
 			},
 
 			/**
+			 * Function: validate
+			 * 
 			 * Hook in (optional) validation routines.
 			 * Currently clientside validation is not supported out of the box in the CMS.
 			 * 
-			 * @todo Placeholder implementation
+			 * Todo:
+			 *  Placeholder implementation
 			 * 
-			 * @return {boolean}
+			 * Returns:
+			 *  {boolean}
 			 */
 			validate: function() {
 				var isValid = true;
@@ -155,9 +183,15 @@
 			},
 
 			/**
-			 * @param {String} url
-			 * @param {Function} callback (Optional) Called after the form content as been loaded
-			 * @param {ajaxOptions} Object literal merged into the jQuery.ajax() call (Optional)
+			 * Function: loadForm
+			 * 
+			 * Parameters:
+			 *  (String) url - ..
+			 *  (Function) callback - (Optional) Called after the form content as been loaded
+			 *  (Object) ajaxOptions - Object literal merged into the jQuery.ajax() call (Optional)
+			 * 
+			 * Returns:
+			 *  (XMLHTTPRequest)
 			 */
 			loadForm: function(url, callback, ajaxOptions) {
 				var self = this;
@@ -189,11 +223,14 @@
 			},
 
 			/**
+			 * Function: removeForm
+			 * 
 			 * Remove everying inside the <form> tag
 			 * with a custom HTML fragment. Useful e.g. for deleting a page in the CMS.
 			 * Checks for unsaved changes before removing the form
 			 * 
-			 * @param {String} placeholderHtml Short note why the form has been removed, displayed in <p> tags.
+			 * Parameters:
+			 *  {String} placeholderHtml - Short note why the form has been removed, displayed in <p> tags.
 			 *  Falls back to the default RemoveText() option (Optional)
 			 */
 			removeForm: function(placeholderHtml) {
@@ -207,6 +244,8 @@
 			},
 
 			/**
+			 * Function: cleanup
+			 * 
 			 * Remove all the currently active TinyMCE editors.
 			 * Note: Everything that calls this externally has an inappropriate coupling to TinyMCE.
 			 */
@@ -221,12 +260,15 @@
 			},
 
 			/**
-			 * @param {String} data Either HTML for straight insertion, or eval'ed JavaScript.
+			 * Function: _loadResponse
+			 * 
+			 * Parameters:
+			 *  {String} data - Either HTML for straight insertion, or eval'ed JavaScript.
 			 *  If passed as HTML, it is assumed that everying inside the <form> tag is replaced,
 			 *  but the old <form> tag itself stays intact.
-			 * @param {String} status
-			 * @param {XMLHTTPRequest} xmlhttp
-			 * @param {Array} origData The original submitted data, useful to do comparisons of changed
+			 *  {String} status
+			 *  {XMLHTTPRequest} xmlhttp - ..
+			 *  {Array} origData - The original submitted data, useful to do comparisons of changed
 			 *  values in new form output, e.g. to detect a URLSegment being changed on the serverside.
 			 *  Array in jQuery serializeArray() notation.
 			 */
@@ -287,12 +329,17 @@
 		});
 
 		/**
-		 * @class All buttons in the right CMS form go through here by default.
+		 * Class: #Form_EditForm .Actions :submit
+		 * 
+		 * All buttons in the right CMS form go through here by default.
 		 * We need this onclick overloading because we can't get to the
 		 * clicked button from a form.onsubmit event.
-		 * @name ss.Form_EditForm.Actions.submit
 		 */
-		$('#Form_EditForm .Actions :submit').entwine(/** @lends ss.Form_EditForm.Actions.submit */{
+		$('#Form_EditForm .Actions :submit').entwine({
+			
+			/**
+			 * Function: onclick
+			 */
 			onclick: function(e) {
 				jQuery('#Form_EditForm').entwine('ss').ajaxSubmit(this);
 				return false;
@@ -300,10 +347,15 @@
 		});
 	
 		/**
-		 * @class Add tinymce to HtmlEditorFields within the CMS.
-		 * @name ss.Form_EditForm.textarea.htmleditor
+		 * Class: #Form_EditForm textarea.htmleditor
+		 * 
+		 * Add tinymce to HtmlEditorFields within the CMS.
 		 */
-		$('#Form_EditForm textarea.htmleditor').entwine(/** @lends ss.Form_EditForm.Actions.submit */{
+		$('#Form_EditForm textarea.htmleditor').entwine({
+			
+			/**
+			 * Constructor: onmatch
+			 */
 			onmatch : function() {
 				tinyMCE.execCommand("mceAddControl", true, this.attr('id'));
 				this.isChanged = function() {

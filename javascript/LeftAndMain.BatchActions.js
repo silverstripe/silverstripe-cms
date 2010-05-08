@@ -1,31 +1,40 @@
+/**
+ * File: LeftAndMain.BatchActions.js
+ */
 (function($) {
 	$.entwine('ss', function($){
 	
 		/**
-		 * @class Batch actions which take a bunch of selected pages,
+		 * Class: #Form_BatchActionsForm
+		 * 
+		 * Batch actions which take a bunch of selected pages,
 		 * usually from the CMS tree implementation, and perform serverside
 		 * callbacks on the whole set. We make the tree selectable when the jQuery.UI tab
 		 * enclosing this form is opened.
-		 * @name ss.Form_BatchActionsForm
 		 * 
 		 * Events:
-		 * - register: Called before an action is added.
-		 * - unregister: Called before an action is removed.
+		 *  register - Called before an action is added.
+		 *  unregister - Called before an action is removed.
 		 */
-		$('#Form_BatchActionsForm').entwine(/** @lends ss.Form_BatchActionsForm */{
+		$('#Form_BatchActionsForm').entwine({
 	
 			/**
-			 * @type {DOMElement}
+			 * Variable: Tree 
+			 * (DOMElement)
 			 */
 			Tree: null,
 		
 			/**
-			 * @type {Array} Stores all actions that can be performed on the collected IDs as
+			 * Variable: Actions
+			 * (Array) Stores all actions that can be performed on the collected IDs as
 			 * function closures. This might trigger filtering of the selected IDs,
 			 * a confirmation message, etc.
 			 */
 			Actions: [],
 		
+			/**
+			 * Constructor: onmatch
+			 */
 			onmatch: function() {
 				var self = this;
 				
@@ -52,8 +61,12 @@
 			},
 		
 			/**
-			 * @param {String} type
-			 * @param {Function} callback
+			 * Function: register
+			 * 
+			 * Parameters:
+			 * 
+			 * 	(String) type - ...
+			 * 	(Function) callback - ...
 			 */
 			register: function(type, callback) {
 				this.trigger('register', {type: type, callback: callback});
@@ -63,9 +76,13 @@
 			},
 		
 			/**
+			 * Function: unregister
+			 * 
 			 * Remove an existing action.
 			 * 
-			 * @param {String} type
+			 * Parameters:
+			 * 
+			 *  {String} type
 			 */
 			unregister: function(type) {
 				this.trigger('unregister', {type: type});
@@ -76,19 +93,27 @@
 			},
 		
 			/**
+			 * Function: _isActive
+			 * 
 			 * Determines if we should allow and track tree selections.
 			 * 
-			 * @todo Too much coupling with tabset
-			 * @return boolean
+			 * Todo:
+			 *  Too much coupling with tabset
+			 * 
+			 * Returns:
+			 *  (boolean)
 			 */
 			_isActive: function() {
 				return $('#TreeActions-batchactions').is(':visible');
 			},
 		
 			/**
+			 * Function: refreshSelected
+			 * 
 			 * Ajax callbacks determine which pages is selectable in a certain batch action.
 			 * 
-			 * @param {Object} rootNode
+			 * Parameters:
+			 *  {Object} rootNode
 			 */
 			refreshSelected : function(rootNode) {
 				var self = this, st = this.getTree(), ids = this.getIDs(), allIds = [];
@@ -133,6 +158,12 @@
 				});
 			},
 			
+			/**
+			 * Function: serializeFromTree
+			 * 
+			 * Returns:
+			 *  (boolean)
+			 */
 			serializeFromTree: function() {
 				var tree = this.getTree(), ids = [];
 				
@@ -156,19 +187,31 @@
 			},
 			
 			/**
-			 * @param {Array} ids
+			 * Function: setIDS
+			 *  
+			 * Parameters:
+			 *  {Array} ids
 			 */
 			setIDs: function(ids) {
 				this.find(':input[name=csvIDs]').val(ids.join(','));
 			},
 			
 			/**
-			 * @return {Array}
+			 * Function: getIDS
+			 * 
+			 * Returns:
+			 *  {Array}
 			 */
 			getIDs: function() {
 				return this.find(':input[name=csvIDs]').val().split(',');
 			},
 		
+			/**
+			 * Function: onsubmit
+			 * 
+			 * Parameters:
+			 *  (Event) e
+			 */
 			onsubmit: function(e) {
 				var ids = this.getIDs();
 				var tree = this.getTree();
@@ -259,7 +302,10 @@
 			},
 
 			/**
-			 * @todo This is simulating MultiselectTree functionality, and shouldn't be necessary.
+			 * Function: _multiselectTransform
+			 * 
+			 * Todo:
+			 *  This is simulating MultiselectTree functionality, and shouldn't be necessary.
 			 */
 			_multiselectTransform : function() {
 				// make tree selectable
@@ -280,8 +326,12 @@
 			},
 		
 			/**
+			 * Function: _treeSelectionChanged
+			 * 
 			 * Only triggers if the field is considered 'active'.
-			 * @todo Most of this is basically simulating broken behaviour of the MultiselectTree mixin,
+			 * 
+			 * Todo:
+			 *  Most of this is basically simulating broken behaviour of the MultiselectTree mixin,
 			 *  and should be removed.
 			 */
 			_treeSelectionChanged: function(node) {
@@ -310,7 +360,17 @@
 		});
 	});
 	
+	/**
+	 * Class: #Form_BatchActionsForm :select[name=Action]
+	 */
 	$('#Form_BatchActionsForm :select[name=Action]').entwine({
+		
+		/**
+		 * Function: onchange
+		 * 
+		 * Parameters:
+		 *  (Event) e
+		 */
 		onchange: function(e) {
 			$(e.target.form).entwine('ss').refreshSelected();
 		}

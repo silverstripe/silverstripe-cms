@@ -1,11 +1,16 @@
+/**
+ * File: CMSMain.js
+ */
 (function($) {
 	$.entwine('ss', function($){
 	
 		/**
-		 * @class All forms in the right content panel should have closeable jQuery UI style titles.
-		 * @name ss.contentPanel.form
+		 * Class: #contentPanel form
+		 * 
+		 * All forms in the right content panel should have closeable jQuery UI style titles.
 		 */
-		$('#contentPanel form').entwine(/** @lends ss.contentPanel.form */{
+		$('#contentPanel form').entwine({
+			// Constructor: onmatch
 			onmatch: function() {
 			  // Style as title bar
 				this.find(':header:first').titlebar({
@@ -22,17 +27,22 @@
 		});
 	
 		/**
-		 * @class Control the site tree filter.
+		 * Class: #Form_SearchTreeForm
+		 * 
+		 * Control the site tree filter.
 		 * Toggles search form fields based on a dropdown selection,
 		 * similar to "Smart Search" criteria in iTunes.
-		 * @name ss.Form_SeachTreeForm
 		 */
-		$('#Form_SearchTreeForm').entwine(/** @lends ss.Form_SeachTreeForm */{
+		$('#Form_SearchTreeForm').entwine({
 			/**
-			 * @type DOMElement
+			 * Variable: SelectEl
+			 * {DOMElement}
 			 */
 			SelectEl: null,
 	
+			/**
+			 * Constructor: onmatch
+			 */
 			onmatch: function() {
 				var self = this;
 
@@ -57,6 +67,9 @@
 				this._super();
 			},
 	
+			/**
+			 * Function: _setOptions
+			 */
 			_setOptions: function() {
 				var self = this;
 		
@@ -80,6 +93,8 @@
 			},
 	
 			/**
+			 * Function: onsubmit
+			 * 
 			 * Filter tree based on selected criteria.
 			 */
 			onsubmit: function(e) {
@@ -108,7 +123,13 @@
 
 				return false;
 			},
-	
+		
+			/**
+			 * Function: onreset
+			 * 
+			 * Parameters:
+			 *  (Event) e
+			 */
 			onreset: function(e) {
 				this.find('.field :input').clearFields();
 				this.find('.field').not('.show-default').hide();
@@ -127,6 +148,12 @@
 				return false;
 			},
 	
+			/**
+			 * Function: _addField
+			 * 
+			 * Parameters:
+			 *  (Event) e
+			 */
 			_addField: function(e) {
 				var $select = $(e.target);
 				// show formfield matching the option
@@ -141,6 +168,9 @@
 				return false;
 			},
 	
+			/**
+			 * Function: _reloadSitetree
+			 */
 			_reloadSitetree: function() {
 				var self = this;
 		
@@ -160,13 +190,17 @@
 		});
 	
 		/**
-		 * @class Simple form with a page type dropdown
+		 * Class: Form_SideReportsForm
+		 * 
+		 * Simple form with a page type dropdown
 		 * which creates a new page through #Form_EditForm and adds a new tree node.
-		 * @name ss.reports_holder
 		 */
 		$('#Form_SideReportsForm').entwine(/** @lends ss.reports_holder */{
 			ReportContainer: null,
 			
+			/**
+			 * Constructor: onmatch
+			 */
 			onmatch: function() {
 				var self = this;
 				
@@ -185,6 +219,12 @@
 				this._super();
 			},
 		
+			/**
+			 * Function: onsubmit
+			 * 
+			 * Parameters:
+			 *  (Event) e
+			 */
 			onsubmit: function(e) {
 				var self = this;
 			
@@ -213,9 +253,15 @@
 		});
 		
 		/**
+		 * Class: #SideReportsHolder form
+		 * 
 		 * All forms loaded via ajax from the Form_SideReports dropdown.
 		 */
 		$("#SideReportsHolder form").entwine({
+			
+			/**
+			 * Function: onsubmit
+			 */
 			onsubmit: function() {
 				var self = this;
 
@@ -244,6 +290,10 @@
 		 * Register the onclick handler that loads the page into EditForm
 		 */
 		$("#SideReportsHolder form ul a").entwine({
+			
+			/**
+			 * Function: onclick
+			 */
 			onclick: function(e) {
 				if (e.button!=2) {
 					var $link = $(this);
@@ -261,11 +311,11 @@
 		});
 	
 		/**
-		 * @class Simple form showing versions of a specific page.
-		 * @name ss.Form_VersionsForm
-		 * @requires ss.i18n
+		 * Class: #Form_VersionsForm
+		 * 
+		 * Simple form showing versions of a specific page.
 		 */
-		$('#Form_VersionsForm').entwine(/** @lends ss.Form_VersionsForm */{
+		$('#Form_VersionsForm').entwine({
 			onmatch: function() {
 				var self = this;
 			
@@ -341,8 +391,11 @@
 			},
 		
 			/**
-			 * @param {boolean} loadEditForm Determines if responses should show in current panel,
-			 *  or in the edit form (in the case of 'compare versions').
+			 * Function: _submit
+			 * 
+			 * Parameters:
+			 *  (bool) loadEditForm - Determines if responses should show in current panel,
+			 *   or in the edit form (in the case of 'compare versions').
 			 */
 			_submit: function(loadEditForm) {
 				var self = this;

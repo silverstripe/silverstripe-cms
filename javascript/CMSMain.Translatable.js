@@ -1,11 +1,18 @@
+/**
+ * File: CMSMain.Translatable.js
+ */
 (function($) {
 	$.entwine('ss', function($){
 	
 		/**
-		 * @class Dropdown with languages above CMS tree, causing a redirect upon translation
-		 * @name ss.CMSMain.LangSelector
+		 * Class: .CMSMain #Form_LangForm
+		 * 
+		 * Dropdown with languages above CMS tree, causing a redirect upon translation
 		 */
-		$('.CMSMain #Form_LangForm').entwine(/** @lends ss.CMSMain.LangSelector */{
+		$('.CMSMain #Form_LangForm').entwine({
+			/**
+			 * Constructor: onmatch
+			 */
 			onmatch: function() {
 				var self = this;
 			
@@ -30,15 +37,22 @@
 		});
 	
 		/**
+		 * Class: .CMSMain .createTranslation
+		 * 
 		 * Loads /admin/createtranslation, which will create the new record,
 		 * and redirect to an edit form.
 		 * 
-		 * @class Dropdown in "Translation" tab in CMS forms, with button to 
+		 * Dropdown in "Translation" tab in CMS forms, with button to 
 		 * trigger translating the currently loaded record.
-		 * @name ss.CMSMain.createtranslation
-		 * @requires jquery.metadata
+		 * 
+		 * Requires:
+		 *  jquery.metadata
 		 */
-		$('.CMSMain .createTranslation').entwine(/** @lends ss.CMSMain.createtranslation */{
+		$('.CMSMain .createTranslation').entwine({
+			
+			/**
+			 * Constructor: onmatch
+			 */
 			onmatch: function() {
 				var self = this;
 			

@@ -1,12 +1,12 @@
+/**
+ * File: CMSMain.Tree.js
+ */
 if(typeof SiteTreeHandlers == 'undefined') SiteTreeHandlers = {};
 SiteTreeHandlers.parentChanged_url = 'admin/ajaxupdateparent';
 SiteTreeHandlers.orderChanged_url = 'admin/ajaxupdatesort';
 SiteTreeHandlers.loadPage_url = 'admin/getitem';
 SiteTreeHandlers.loadTree_url = 'admin/getsubtree';
 
-/**
- * Tree context menu
- */
 TreeContextMenu = {
 	'Edit this page' : function(treeNode) {
 		treeNode.selectTreeNode();

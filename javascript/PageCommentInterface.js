@@ -1,9 +1,13 @@
 /**
- * Ajax to support the comment posting system
+ * File: PageCommentInterface.js
  */
 
+/**
+ * Class: PageCommentInterface
+ * 
+ * Ajax to support the comment posting system
+ */
 PageCommentInterface = Class.create();
-
 PageCommentInterface.prototype = {
 	initialize: function() {
 		Behaviour.register({

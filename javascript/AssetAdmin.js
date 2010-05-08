@@ -1,4 +1,8 @@
 /**
+ * File: AssetAdmin.js
+ */
+
+/**
  * Configuration for the left hand tree
  */
 if(typeof SiteTreeHandlers == 'undefined') SiteTreeHandlers = {};
@@ -36,7 +40,18 @@ var _HANDLER_FORMS = {
 	});
 	
 	$.entwine('ss', function($){
+		
+		/**
+		 * Class: #Form_SyncForm
+		 */
 		$('#Form_SyncForm').entwine({
+			
+			/**
+			 * Function: onsubmit
+			 * 
+			 * Parameters:
+			 *  (Event) e
+			 */
 			onsubmit: function(e) {
 				var button = jQuery(this).find(':submit:first');
 				button.addClass('loading');

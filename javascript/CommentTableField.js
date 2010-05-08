@@ -1,5 +1,16 @@
+/**
+ * File: CommentTableField.js
+ */
+
+/**
+ * Class: CommentTableField
+ */
 CommentTableField = Class.create();
 CommentTableField.prototype = {
+	
+	/**
+	 * Constructor: initialize
+	 */
 	initialize: function() {
 		var rules = {};
 		
@@ -35,6 +46,9 @@ CommentTableField.prototype = {
 		Behaviour.register(rules);
 	},
 	
+	/**
+	 * Function: removeRowAfterAjax
+	 */
 	removeRowAfterAjax: function(e) {
 		var img = Event.element(e);
 		var link = Event.findElement(e,"a");
@@ -55,7 +69,14 @@ CommentTableField.prototype = {
 		Event.stop(e);
 	},
 	
-	// prevent submission of wrong form-button (CommentFilterButton)
+	/**
+	 * Function: prepareSearch
+	 * 
+	 * prevent submission of wrong form-button (CommentFilterButton)
+	 * 
+	 * Parameters:
+	 *  (Event) e
+	 */
 	prepareSearch: function(e) {
 		// IE6 doesnt send an event-object with onkeypress
 		var event = (e) ? e : window.event;
@@ -72,9 +93,16 @@ CommentTableField.prototype = {
 
 CommentTableField.applyTo('div.CommentTableField');
 
+/**
+ * Class: CommentFilterButton
+ */
 CommentFilterButton = Class.create();
 CommentFilterButton.applyTo('#CommentFilterButton');
 CommentFilterButton.prototype = {
+	
+	/**
+	 * Constructor: initialize
+	 */
 	initialize: function() {
 		this.inputFields = new Array();
 		
@@ -99,10 +127,22 @@ CommentFilterButton.prototype = {
 		}
 	},
 	
+	/**
+	 * Function: isChanged
+	 * 
+	 * Returns:
+	 *  (boolean)
+	 */
 	isChanged: function() {
 		return false;
 	},
 	
+	/**
+	 * Function: onclick
+	 * 
+	 * Parameters:
+	 *  (Event) e
+	 */
 	onclick: function(e) {
 	    try {
     	    var form = Event.findElement(e,"form");

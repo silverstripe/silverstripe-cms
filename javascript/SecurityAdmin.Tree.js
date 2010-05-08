@@ -1,4 +1,6 @@
 /**
+ * File: SecurityAdmin.Tree.js
+ * 
  * Configuration for the left hand tree
  */
 if(typeof SiteTreeHandlers == 'undefined') SiteTreeHandlers = {};

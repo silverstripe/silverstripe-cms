@@ -1,28 +1,40 @@
+/**
+ * File: LeftAndMain.AddForm.js
+ */
 (function($) {
 	$.entwine('ss', function($){
 		/**
-		 * @class Simple form with a page type dropdown
+		 * Class: #Form_AddForm
+		 * 
+		 * Simple form with a page type dropdown
 		 * which creates a new page through #Form_EditForm and adds a new tree node.
-		 * @name ss.Form_AddForm
-		 * @requires ss.i18n
-		 * @requires ss.Form_EditForm
+		 * 
+		 * Requires:
+		 *  ss.i18n
+		 *  #Form_EditForm
 		 */
-		$('#Form_AddForm').entwine(/** @lends ss.Form_AddForm */{
+		$('#Form_AddForm').entwine({
 			/**
-			 * @type DOMElement
+			 * Variable: Tree
+			 * (DOMElement)
 			 */
 			Tree: null,
 			
 			/**
-			 * @type Array Map of <option> values to an object of "title" and "value"
+			 * Variable: OrigOptions 
+			 * (Array) Map of <option> values to an object of "title" and "value"
 			 */
 			OrigOptions: null,
 	
 			/**
-			 * @type Array Internal counter to create unique page identifiers prior to ajax saving
+			 * Variable: NewPages 
+			 * (Array) Internal counter to create unique page identifiers prior to ajax saving
 			 */
 			NewPages: [],
 	
+			/**
+			 * Constructor: onmatch
+			 */
 			onmatch: function() {
 				var self = this, typeDropdown = this.find(':input[name=PageType]');
 		
@@ -47,6 +59,12 @@
 				this._super();
 			},
 	
+			/**
+			 * Function: onsubmit
+			 * 
+			 * Parameters:
+			 *  (Event) e
+			 */
 			onsubmit: function(e) {
 				var newPages = this.getNewPages();
 				var tree = this.getTree();
@@ -86,6 +104,12 @@
 				return false;
 			},
 			
+			/**
+			 * Function: refresh
+			 * 
+			 * Parameters:
+			 *  (DOMElement) selectedNode
+			 */
 			refresh: function(selectedNode) {
 				// Note: Uses siteTreeHints global
 				var tree = this.getTree(), 

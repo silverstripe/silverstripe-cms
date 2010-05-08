@@ -1,3 +1,10 @@
+/**
+ * File: MemberTableField_popup.js
+ */
+
+/**
+ * Class: MemberTableFieldPopupForm
+ */
 MemberTableFieldPopupForm = Class.extend("ComplexTableFieldPopupForm");
 MemberTableFieldPopupForm.prototype = {
 	initialize: function() {

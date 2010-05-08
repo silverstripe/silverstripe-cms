@@ -1,25 +1,44 @@
 (function($) {
 	$.entwine('ss', function($){
 		/**
-		 * Alert the user on change of page-type - this might have implications
+		 * Class: #Form_EditForm :input[name=ClassName]
+		 * Alert the user on change of page-type. This might have implications
 		 * on the available form fields etc.
-		 * @name ss.EditFormClassName
 		 */
-		$('#Form_EditForm :input[name=ClassName]').entwine(/** @lends ss.EditFormClassName */{
+		$('#Form_EditForm :input[name=ClassName]').entwine({
+			// Function: onchange
 			onchange: function() {
 				alert(ss.i18n._t('CMSMAIN.ALERTCLASSNAME'));
 			}
 		});
 
 		/**
-		 * @class Input validation on the URLSegment field
-		 * @name ss.EditForm.URLSegment
+		* Class: #Form_EditForm input[name=URLSegment]
+		* 
+		 * Input validation on the URLSegment field
 		 */
-		$('#Form_EditForm input[name=URLSegment]').entwine(/** @lends ss.EditForm.URLSegment */{
+		$('#Form_EditForm input[name=URLSegment]').entwine({
+			/**
+			 * Property: FilterRegex
+			 * Regex
+			 */
 			FilterRegex: /[^A-Za-z0-9-]+/,
+
+			/**
+			 * Property: ValidationMessage
+			 * String
+			 */
 			ValidationMessage: ss.i18n._t('CMSMAIN.URLSEGMENTVALIDATION'),
+			
+			/**
+			 * Property: MaxLength
+			 * Int
+			 */
 			MaxLength: 50,
 	
+			/**
+			 * Constructor: onmatch
+			 */
 			onmatch : function() {
 				var self = this;
 		
@@ -36,16 +55,27 @@
 			},
 	
 			/**
+			 * Function: suggestValue
+			 *  
 			 * Return a value matching the criteria.
 			 * 
-			 * @param {String} val
-			 * @return val
+			 * Parameters:
+			 *  (String) val
+			 * 
+			 * Returns:
+			 *  String
 			 */
 			suggestValue: function(val) {
 				// TODO Do we want to enforce lowercasing in URLs?
 				return val.substr(0, this.getMaxLength()).replace(this.getFilterRegex(), '').toLowerCase();
 			},
 	
+			/**
+			 * Function: validate
+			 * 
+			 * Returns:
+			 *  Boolean
+			 */
 			validate: function() {
 				return (
 					this.val().length > this.getMaxLength()
@@ -55,10 +85,12 @@
 		});
 
 		/**
-		 * @class Input validation on the Title field
-		 * @name ss.EditForm.Title
+		 * Class: #Form_EditForm input[name=Title]
+		 * 
+		 * Input validation on the Title field
 		 */
-		$('#Form_EditForm input[name=Title]').entwine(/** @lends ss.EditForm.Title */{
+		$('#Form_EditForm input[name=Title]').entwine({
+			// Constructor: onmatch
 			onmatch : function() {
 				var self = this;
 		
@@ -71,6 +103,12 @@
 				this._super();
 			},
 	
+			/**
+			 * Function: updateURLSegment
+			 * 
+			 * Parameters:
+			 *  (DOMElement) field
+			 */
 			updateURLSegment: function(field) {
 				if(!field || !field.length) return;
 		
@@ -96,11 +134,13 @@
 		});
 	
 		/**
-		 * @class ParentID field combination - mostly toggling between
+		 * Class: #Form_EditForm .parentTypeSelector
+		 * 
+		 * ParentID field combination - mostly toggling between
 		 * the two radiobuttons and setting the hidden "ParentID" field
-		 * @name ss.EditForm.parentTypeSelector
 		 */
-		$('#Form_EditForm .parentTypeSelector').entwine(/** @lends ss.EditForm.parentTypeSelector */{
+		$('#Form_EditForm .parentTypeSelector').entwine({
+			// Constructor: onmatch
 			onmatch : function() {
 				var self = this;
 				this.find(':input[name=ParentType]').bind('click', function(e) {self._toggleSelection(e);});
@@ -109,6 +149,12 @@
 				this._super();
 			},
 	
+			/**
+			 * Function: _toggleSelection
+			 * 
+			 * Parameters:
+			 *  (Event) e
+			 */
 			_toggleSelection: function(e) {
 				var selected = this.find(':input[name=ParentType]:checked').val();
 				// reset parent id if 'root' radiobutton is selected
@@ -119,11 +165,13 @@
 		});
 
 		/**
-		 * @class Toggle display of group dropdown in "access" tab,
+		 * Class: #Form_EditForm #CanViewType, #Form_EditForm #CanEditType
+		 * 
+		 * Toggle display of group dropdown in "access" tab,
 		 * based on selection of radiobuttons.
-		 * @name ss.Form_EditForm.Access
 		 */
-		$('#Form_EditForm #CanViewType, #Form_EditForm #CanEditType').entwine(/** @lends ss.Form_EditForm.Access */{
+		$('#Form_EditForm #CanViewType, #Form_EditForm #CanEditType').entwine({
+			// Constructor: onmatch
 			onmatch: function() {
 				// TODO Decouple
 				var dropdown;
@@ -143,11 +191,18 @@
 		});	
 
 		/**
-		 * @class Email containing the link to the archived version of the page.
+		 * Class: #Form_EditForm .Actions #Form_EditForm_action_email
+		 * 
+		 * Email containing the link to the archived version of the page.
 		 * Visible on readonly older versions of a specific page at the moment.
-		 * @name ss.Form_EditForm_action_email
 		 */
-		$('#Form_EditForm .Actions #Form_EditForm_action_email').entwine(/** @lends ss.Form_EditForm_action_email */{
+		$('#Form_EditForm .Actions #Form_EditForm_action_email').entwine({
+			/**
+			 * Function: onclick
+			 * 
+			 * Parameters:
+			 *  (Event) e
+			 */
 			onclick: function(e) {
 				window.open(
 					'mailto:?subject=' 
@@ -162,11 +217,18 @@
 		});
 
 		/**
-		 * @class Open a printable representation of the form in a new window.
+		 * Class: #Form_EditForm .Actions #Form_EditForm_action_print
+		 * 
+		 * Open a printable representation of the form in a new window.
 		 * Used for readonly older versions of a specific page.
-		 * @name ss.Form_EditForm_action_print
 		 */
-		$('#Form_EditForm .Actions #Form_EditForm_action_print').entwine(/** @lends ss.Form_EditForm_action_print */{
+		$('#Form_EditForm .Actions #Form_EditForm_action_print').entwine({
+			/**
+			 * Function: onclick
+			 * 
+			 * Parameters:
+			 *  (Event) e
+			 */
 			onclick: function(e) {
 				var printURL = $(this[0].form).attr('action').replace(/\?.*$/,'') 
 					+ '/printable/' 
@@ -180,10 +242,18 @@
 		});
 
 		/**
-		 * @class A "rollback" to a specific version needs user confirmation.
-		 * @name ss.Form_EditForm_action_rollback
+		 * Class: #Form_EditForm .Actions #Form_EditForm_action_rollback
+		 * 
+		 * A "rollback" to a specific version needs user confirmation.
 		 */
-		$('#Form_EditForm .Actions #Form_EditForm_action_rollback').entwine(/** @lends ss.Form_EditForm_action_rollback */{
+		$('#Form_EditForm .Actions #Form_EditForm_action_rollback').entwine({
+			
+			/**
+			 * Function: onclick
+			 * 
+			 * Parameters:
+			 *  (Event) e
+			 */
 			onclick: function(e) {
 				// @todo i18n
 				var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';

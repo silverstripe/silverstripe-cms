@@ -1,3 +1,6 @@
+/**
+ * File: SecurityAdmin.js
+ */
 (function($) {
 	
 	var refreshAfterImport = function(e) {
@@ -49,7 +52,11 @@
 	});
 	
 	$.entwine('ss', function($){
+		/**
+		 * Class: #Form_EditForm .Actions #Form_EditForm_action_addmember
+		 */
 		$('#Form_EditForm .Actions #Form_EditForm_action_addmember').entwine({
+			// Function: onclick
 			onclick: function(e) {
 				// CAUTION: Assumes that a MemberTableField-instance is present as an editing form
 				var t = $('#Form_EditForm_Members');

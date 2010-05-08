@@ -1,6 +1,11 @@
+/**
+ * File: ModelAdmin.History.js
+ */
 (function($) {
 	$.entwine('ss', function($){
 		/**
+		 * Class: .ModelAdmin
+		 * 
 		 * A simple ajax browser history implementation tailored towards
 		 * navigating through search results and different forms loaded into
 		 * the ModelAdmin right panels. The logic listens to search and form loading
@@ -15,13 +20,20 @@
 		 * - historyGoFoward
 		 * - historyGoBack
 		 * 
-		 * @todo Switch tab state when re-displaying search forms
-		 * @todo Reload search parameters into forms
-		 * 
-		 * @name ss.ModelAdmin
+		 * Todo:
+		 *  Switch tab state when re-displaying search forms
+		 *  Reload search parameters into forms
 		 */
-		$('.ModelAdmin').entwine(/** @lends ss.ModelAdmin */ {
+		$('.ModelAdmin').entwine({
+			
+			/**
+			 * Variable: History
+			 */
 			History: [],
+			
+			/**
+			 * Variable: Future
+			 */
 			Future: [],
 		
 			onmatch: function() {
@@ -48,11 +60,21 @@
 				});
 			},
 		
+			/**
+			 * Function: redraw
+			 */
 			redraw: function() {
 				this.find('.historyNav .forward').toggle(Boolean(this.getFuture().length > 0));
 				this.find('.historyNav .back').toggle(Boolean(this.getHistory().length > 1));
 			},
 		
+			/**
+			 * Function: startHistory
+			 * 
+			 * Parameters:
+			 *  (String) url - ...
+			 *  (Object) data - ...
+			 */
 			startHistory: function(url, data) {
 				this.trigger('historyStart', {url: url, data: data});
 			
@@ -78,7 +100,10 @@
 			
 				this.redraw();
 			},
-
+			
+			/**
+			 * Function: goBack
+			 */
 			goBack: function() {
 				if(this.getHistory() && this.getHistory().length) {
 					if(this.getFuture() == null) this.setFuture([]);
@@ -97,6 +122,9 @@
 				}
 			},
 
+			/**
+			 * Function: goForward
+			 */
 			goForward: function() {
 				if(this.getFuture() && this.getFuture().length) {
 					if(this.getFuture() == null) this.setFuture([]);
@@ -116,6 +144,8 @@
 		});
 	
 		/**
+		 * Class: #SearchForm_holder form
+		 * 
 		 * A search action will cause the history to be reset.
 		 */
 		$('#SearchForm_holder form').entwine({
@@ -133,6 +163,8 @@
 		});
 	
 		/**
+		 * Class: form[name=Form_ResultsForm] tbody td a
+		 * 
 		 * We have to apply this to the result table buttons instead of the
 		 * more generic form loading.
 		 */

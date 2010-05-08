@@ -1,6 +1,10 @@
 /**
- * @type jquery.layout Global variable so layout state management
- * can pick it up.
+ * File: LeftAndMain.js
+ */
+
+/**
+ * Variable: ss_MainLayout
+ * jquery.layout Global variable so layout state management can pick it up.
  */
 var ss_MainLayout;
 
@@ -18,29 +22,32 @@ var ss_MainLayout;
 			}
 		});
 		
-			/**
-		 * Available Custom Events:
-		 * <ul>
-		 * <li>ajaxsubmit</li>
-		 * <li>validate</li>
-		 * <li>loadnewpage</li>
+		/**
+		 * Class: .LeftAndMain
 		 * 
-		 * @class Main LeftAndMain interface with some control
-		 * panel and an edit form.
-		 * @name ss.LeftAndMain
+		 * Main LeftAndMain interface with some control panel and an edit form.
+		 * 
+		 * Events:
+		 *  ajaxsubmit - ...
+		 *  validate - ...
+		 *  loadnewpage - ...
 		 */
-		$('.LeftAndMain').entwine(/** @lends ss.EditMemberProfile */{
+		$('.LeftAndMain').entwine({
 			/**
-			 * Reference to jQuery.layout element
-			 * @type Object
+			 * Variable: MainLayout
+			 * (Object) Reference to jQuery.layout element
 			 */
 			MainLayout: null,
 
 			/**
-			 * @type Number Interval in which /Security/ping will be checked for a valid login session.
+			 * Variable: PingIntervalSeconds
+			 * (Number) Interval in which /Security/ping will be checked for a valid login session.
 			 */
 			PingIntervalSeconds: 5*60,
 
+			/**
+			 * Constructor: onmatch
+			 */
 			onmatch: function() {
 				var self = this;
 
@@ -85,6 +92,8 @@ var ss_MainLayout;
 			},
 
 			/**
+			 * Function: _setupLayout
+			 * 
 			 * Initialize jQuery layout manager with the following panes:
 			 * - east: Tree, Page Version History, Site Reports
 			 * - center: Form
@@ -150,6 +159,8 @@ var ss_MainLayout;
 			},
 
 			/**
+			 * Function: _setupPinging
+			 * 
 			 * This function is called by prototype when it receives notification that the user was logged out.
 			 * It uses /Security/ping for this purpose, which should return '1' if a valid user session exists.
 			 * It redirects back to the login form if the URL is either unreachable, or returns '0'.
@@ -177,9 +188,13 @@ var ss_MainLayout;
 			},
 
 			/**
+			 * Function: _resizeChildren
+			 * 
 			 * Resize elements in center panel
 			 * to fit the boundary box provided by the layout manager.
-			 * TODO Replace with automated less ugly parent/sibling traversal
+			 * 
+			 * Todo:
+			 *  Replace with automated less ugly parent/sibling traversal
 			 */
 			_resizeChildren: function() {
 				$("#treepanes", this).accordion("resize");
@@ -199,13 +214,17 @@ var ss_MainLayout;
 		});
 
 		/**
-		 * @class Make all buttons "hoverable" with jQuery theming.
+		 * Class: .LeftAndMain :submit, .LeftAndMain button, .LeftAndMain :reset
+		 * 
+		 * Make all buttons "hoverable" with jQuery theming.
 		 * Also sets the clicked button on a form submission, making it available through
 		 * a new 'clickedButton' property on the form DOM element.
-		 * 
-		 * @name ss.LeftAndMain.Buttons
 		 */
-		$('.LeftAndMain :submit, .LeftAndMain button, .LeftAndMain :reset').entwine(/** @lends ss.LeftAndMain.Buttons */{
+		$('.LeftAndMain :submit, .LeftAndMain button, .LeftAndMain :reset').entwine({
+			
+			/**
+			 * Constructor: onmatch
+			 */
 			onmatch: function() {
 				this.addClass(
 					'ui-state-default ' +
@@ -239,11 +258,14 @@ var ss_MainLayout;
 		});
 
 		/**
-		 * @class Container for tree actions like "create", "search", etc.
-		 * @name ss.TreeActions
+		 * Class: #TreeActions
+		 * 
+		 * Container for tree actions like "create", "search", etc.
 		 */
-		$('#TreeActions').entwine(/** @lends ss.TreeActions */{
+		$('#TreeActions').entwine({
 			/**
+			 * Constructor: onmatch
+			 * 
 			 * Setup "create", "search", "batch actions" layers above tree.
 			 * All tab contents are closed by default.
 			 */
@@ -257,11 +279,15 @@ var ss_MainLayout;
 		});
 
 		/**
-		 * @class Link for editing the profile for a logged-in member
-		 * through a modal dialog.
-		 * @name ss.EditMemberProfile
+		 * Class: a#EditMemberProfile
+		 * 
+		 * Link for editing the profile for a logged-in member through a modal dialog.
 		 */
-		$('a#EditMemberProfile').entwine(/** @lends ss.EditMemberProfile */{
+		$('a#EditMemberProfile').entwine({
+			
+			/**
+			 * Constructor: onmatch
+			 */
 			onmatch: function() {
 				var self = this;
 
@@ -297,6 +323,9 @@ var ss_MainLayout;
 				$('#ss-ui-dialog-iframe').bind('load', function(e) {self._resize();});
 			},
 
+			/**
+			 * Function: _openPopup
+			 */
 			_openPopup: function(e) {
 				$('#ss-ui-dialog-iframe').attr('src', this.attr('href'));
 
@@ -305,6 +334,9 @@ var ss_MainLayout;
 				return false;
 			},
 
+			/**
+			 * Function: _resize
+			 */
 			_resize: function() {
 				var iframe = $('#ss-ui-dialog-iframe');
 				var container = $('#ss-ui-dialog');
@@ -323,6 +355,9 @@ var ss_MainLayout;
 				this._saveState();
 			},
 
+			/**
+			 * Function: _saveState
+			 */
 			_saveState: function() {
 				var container = $('#ss-ui-dialog');
 
@@ -345,18 +380,25 @@ var ss_MainLayout;
 		});
 
 		/**
-		 * @class Links for viewing the currently loaded page
+		 * Class: #switchView a
+		 * 
+		 * Links for viewing the currently loaded page
 		 * in different modes: 'live', 'stage' or 'archived'.
 		 * Automatically updates on loading a new page.
-		 * @name ss.switchViewLinks
-		 * @requires jquery.metadata
+		 * 
+		 * Requires:
+		 *  jquery.metadata
 		 */
-		$('#switchView a').entwine(/** @lends ss.switchViewLinks */{
+		$('#switchView a').entwine({
 			/**
-			 * @type DOMElement
+			 * Variable: Form
+			 * (DOMElement)
 			 */
 			Form: null,
 
+			/**
+			 * Constructor: onmatch
+			 */
 			onmatch: function() {
 				var self = this;
 				this.setForm($('#Form_EditForm'));
@@ -368,6 +410,8 @@ var ss_MainLayout;
 			},
 
 			/**
+			 * Function: refresh
+			 * 
 			 * Parse new links based on the underlying form URLSegment,
 			 * preserving the ?stage URL parameters if necessary.
 			 */
@@ -388,6 +432,9 @@ var ss_MainLayout;
 				this.toggle((urlSegment));
 			},
 
+			/**
+			 * Function: onclick
+			 */
 			onclick: function(e) {
 				// Open in popup
 				window.open($(e.target).attr('href'));

@@ -1,10 +1,14 @@
+/**
+ * File: ReportAdmin.Tree.js
+ */
 (function($) {
 	$.entwine('ss', function($){
 		/**
-		 * @class Tree panel.
-		 * @name ss.sitetree
+		 * Class: #sitetree
+		 * 
+		 * Tree panel.
 		 */
-		$('#sitetree').entwine(/** @lends ss.sitetree */{
+		$('#sitetree').entwine({
 			onmatch: function() {
 				// make sure current ID of loaded form is actually selected in tree
 				var id = $('#Form_EditForm :input[name=ID]').val();

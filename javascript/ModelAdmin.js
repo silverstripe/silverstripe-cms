@@ -1,4 +1,8 @@
 /**
+ * File: ModelAdmin.js
+ */
+
+/**
  * Javascript handlers for generic model admin.
  * 
  * Most of the work being done here is intercepting clicks on form submits,
@@ -16,6 +20,8 @@
 		////////////////////////////////////////////////////////////////// 
 	
 		/**
+		 * Class: #ModelClassSelector select
+		 * 
 		 * If a dropdown is used to choose between the classes, it is handled by this code
 		 */
 		$('#ModelClassSelector select').entwine({
@@ -27,6 +33,8 @@
 			},
 			
 			/**
+			 * Function: onchange
+			 * 
 			 * Set up an onchange function to show the applicable form and hide all others
 			 */
 			onchange: function(e) {
@@ -37,7 +45,10 @@
 				});
 			}
 		});
+		
 		/**
+		 * Class: #SearchForm_holder form
+		 * 
 		 * Submits a search filter query and attaches event handlers
 		 * to the response table, excluding the import form because 
 		 * file ($_FILES) submission doesn't work using AJAX 
@@ -45,6 +56,10 @@
 		 * Note: This is used for Form_CreateForm and all Form_SearchForm_* variations
 		 */
 		$('#SearchForm_holder form').entwine({
+			
+			/**
+			 * Function: onsubmit
+			 */
 			onsubmit: function(e) {
 				// Import forms are processed without ajax
 				if(this.is('#Form_ImportForm')) return true;
@@ -67,9 +82,15 @@
 		});
 
 		/**
+		 * Class: a.form_frontend_function.toggle_result_assembly
+		 * 
 		 * Column selection in search form
 		  */
 		$('a.form_frontend_function.toggle_result_assembly').entwine({
+			
+			/**
+			 * Function: onclick
+			 */
 			onclick: function(e) {
 				var toggleElement = $(this).next();
 				toggleElement.toggle();
@@ -77,7 +98,13 @@
 			}
 		});
 	
+		/**
+		 * Class: a.form_frontend_function.tick_all_result_assembly
+		 */
 		$('a.form_frontend_function.tick_all_result_assembly').entwine({
+			/**
+			 * Function: onclick
+			 */
 			onclick: function(e) {
 				var resultAssembly = $(this).prevAll('div#ResultAssembly').find('ul li input');
 				resultAssembly.attr('checked', 'checked');
@@ -94,9 +121,14 @@
 		});
 
 		/**
+		 * Class: .resultsTable tbody td
+		 * 
 		 * Table record handler for search result record
 		 */
 		$('.resultsTable tbody td').entwine({
+			/**
+			 * Function: onclick
+			 */
 			onclick: function(e) {
 				var firstLink = this.find('a[href]');
 				if(!firstLink) return;
@@ -106,9 +138,14 @@
 		});
 
 		/**
+		 * Class: #Form_ManagedModelsSelect
+		 * 
 		 * Add object button
 		 */
 		$('#Form_ManagedModelsSelect').entwine({
+			/**
+			 * Function: onsubmit
+			 */
 			onsubmit: function(e) {
 				className = $('select option:selected', this).val();
 				requestPath = this.attr('action').replace('ManagedModelsSelect', className + '/add');
@@ -126,9 +163,12 @@
 		});
 	
 		/**
+		 * Class: #Form_EditForm input[name=action_doDelete]
+		 * 
 		 * RHS panel Delete button
 		 */
 		$('#Form_EditForm input[name=action_doDelete]').entwine({
+			// Function: onclick
 			onclick: function(e) {
 				if(!confirm(ss.i18n._t('ModelAdmin.REALLYDELETE', 'Really delete?'))) {
 					this.removeClass('loading');
@@ -138,6 +178,8 @@
 		});
 	
 		/**
+		 * Class: .importSpec
+		 * 
 		 * Toggle import specifications
 		 */
 		$('.importSpec').entwine({

@@ -1,7 +1,14 @@
+/**
+ * File: AssetTableField.js
+ */
 (function($) {
 	$.entwine('ss', function($){
 		
+		/**
+		 * Class: .AssetTableField
+		 */
 		$('.AssetTableField').entwine({
+			// Constructor: onmatch
 			onmatch: function() {
 				var self = this;
 				
@@ -30,6 +37,12 @@
 				this._super();
 			},
 			
+			/**
+			 * Function: refresh
+			 * 
+			 * Parameters:
+			 * (Function) callback
+			 */
 			refresh: function(callback) {
 				var self = this;
 				this.load(
@@ -44,9 +57,12 @@
 		});
 		
 		/**
+		 * Class: .AssetTableField :checkbox
+		 * 
 		 * Checkboxes used to batch delete files
 		 */
 		$('.AssetTableField :checkbox').entwine({
+			// Function: onchange
 			onchange: function() {
 				var container = this.parents('.AssetTableField');
 				var input = container.find('input#deletemarked');
@@ -59,14 +75,24 @@
 		})
 		
 		/**
+		 * Class: .AssetTableField input#deletemarked
+		 * 
 		 * Batch delete files marked by checkboxes in the table.
 		 * Refreshes the form field afterwards via ajax.
 		 */
 		$('.AssetTableField input#deletemarked').entwine({
+			// Constructor: onmatch
 			onmatch: function() {
 				this.attr('disabled', 'disabled');
 				this._super();
 			},
+			
+			/**
+			 * Function: onclick
+			 * 
+			 * Parameters:
+			 * (Event) e
+			 */
 			onclick: function(e) {
 				if(!confirm(ss.i18n._t('AssetTableField.REALLYDELETE'))) return false;
 				

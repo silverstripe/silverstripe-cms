@@ -1,4 +1,8 @@
 /**
+ * File: LeftAndMain.Tree.js
+ */
+
+/**
  * LeftAndMain_left.js
  * Code for supporting the left-hand panel of all the 2-pane admin windows
  * This includes code for the action panel at the top, and the draggable, ajax-linked tree.
@@ -34,6 +38,8 @@ var _HANDLER_FORMS = {
 var TreeContextMenu = null;
 
 /**
+ * Class: TreeAPI
+ * 
  * Extra methods for the tree when used in the LHS of the CMS
  */
 TreeAPI = Class.create();
