@@ -48,7 +48,7 @@
 			<div id="switchView" class="bottomTabs">
 				<% if ShowSwitchView %>
 					<div class="blank"> <% _t('VIEWPAGEIN','Page view:') %> </div>
-					<span id="SwitchView">$SwitchView</div>
+					<span id="SwitchView">$SwitchView</span>
 				<% end_if %>
 			</div>
 		</div>
