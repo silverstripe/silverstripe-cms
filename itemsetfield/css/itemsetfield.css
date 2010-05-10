@@ -1,0 +1,10 @@
+.item-set-field ul { border-top: 1px solid #eee; margin-bottom: 1em; }
+.item-set-field li { overflow: hidden; padding: 0.2em; vertical-align: middle; min-height: 20px; font-size: 11px; border-bottom: 1px solid #eee; }
+.item-set-field li.odd { background: white; }
+.item-set-field li.even { background: #F8F8F8; }
+.item-set-field .item-set-field-item-actions { float: right; }
+
+.item-set-dialog a { font-size: 12px; }
+
+.item-set-field dl dt { height: 0; overflow: visible; }
+.item-set-field dl dd { margin-left: 100px; }
