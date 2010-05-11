@@ -129,7 +129,7 @@ $(document).ready(function() {
 	 * 
 	 * @todo use jQuery.live to manage ResultTable click handlers
 	 */
-	$('#SearchForm_holder .tab form:not(#Form_ImportForm)').submit(function () {
+	$('#SearchForm_holder .tab form:not([id^=Form_ImportForm])').submit(function () {
 	    var $form = $(this);
 		$('#contentPanel').fn('closeRightPanel');
 		// @todo TinyMCE coupling
