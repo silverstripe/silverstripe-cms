@@ -860,7 +860,7 @@ class Installer extends InstallRequirements {
 			?>
 <html>
 	<head>
-		<title>PHP 5 is required</title>
+		<title>Installing SilverStripe...</title>
 		<link rel="stylesheet" type="text/css" href="themes/blackcandy/css/layout.css" />
 		<link rel="stylesheet" type="text/css" href="themes/blackcandy/css/typography.css" />
 		<link rel="stylesheet" type="text/css" href="themes/blackcandy/css/form.css" />
