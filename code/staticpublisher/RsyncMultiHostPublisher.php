@@ -53,6 +53,8 @@ class RsyncMultiHostPublisher extends FilesystemPublisher {
 			$rsyncOutput = `cd $base; rsync -av -e ssh --exclude /.htaccess --exclude /web.config --exclude '*.php' --exclude '*.svn' --exclude '*.git' --exclude '*~' $extraArg --delete . $target`;
 			// Then transfer "safe" PHP from the cache/ directory
 			$rsyncOutput .= `cd $base; rsync -av -e ssh --exclude '*.svn' --exclude '*~' $extraArg --delete cache $target`;
+			// Transfer sapphire/static-main.php to the target
+			$rsyncOutput .= `cd $base; rsync -av -e ssh --delete sapphire/static-main.php $target/sapphire`;
 			if(StaticPublisher::echo_progress()) echo $rsyncOutput;
 		}
 	}
