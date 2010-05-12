@@ -236,22 +236,31 @@ class InstallRequirements {
 					$databaseConfig['server']
 				)
 			)) {
-				if($this->requireDatabaseConnection(
+				if($this->requireDatabaseVersion(
 					$databaseConfig,
 					array(
-						"Database Configuration",
-						"Database access credentials correct",
-						"That username/password doesn't work"
+						"Database Version",
+						"Database server meets required version",
+						"Database does not meet the required version"
 					)
 				)) {
-					$this->requireDatabaseOrCreatePermissions(
+					if($this->requireDatabaseConnection(
 						$databaseConfig,
 						array(
 							"Database Configuration",
-							"Can I access/create the database",
-							"I can't create new databases and the database '$databaseConfig[database]' doesn't exist"
+							"Database access credentials correct",
+							"That username/password doesn't work"
 						)
-					);
+					)) {
+						$this->requireDatabaseOrCreatePermissions(
+							$databaseConfig,
+							array(
+								"Database Configuration",
+								"Can I access/create the database",
+								"I can't create new databases and the database '$databaseConfig[database]' doesn't exist"
+							)
+						);
+					}
 				}
 			}
 		}
@@ -716,7 +725,24 @@ class InstallRequirements {
 			return false;
 		}
 	}
-	
+
+	function requireDatabaseVersion($databaseConfig, $testDetails) {
+		$this->testing($testDetails);
+		$helper = $this->getDatabaseConfigurationHelper($databaseConfig['type']);
+		if(method_exists($helper, 'requireDatabaseVersion')) {
+			$result = $helper->requireDatabaseVersion($databaseConfig);
+			if($result['success']) {
+				return true;
+			} else {
+				$testDetails[2] .= ": " . $result['error'];
+				$this->error($testDetails);
+				return false;
+			}
+		}
+		// Skipped test because this database has no required version
+		return true;
+	}
+
 	function requireDatabaseServer($databaseConfig, $testDetails) {
 		$this->testing($testDetails);
 		$helper = $this->getDatabaseConfigurationHelper($databaseConfig['type']);
