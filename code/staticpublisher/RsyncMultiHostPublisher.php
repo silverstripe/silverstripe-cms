@@ -15,6 +15,8 @@ class RsyncMultiHostPublisher extends FilesystemPublisher {
 	 */
 	protected static $targets = array();
 	
+	protected static $excluded_folders = array();
+	
 	/**
 	 * Set the targets to publish to.
 	 * If target is an scp-style remote path, no password is accepted - we assume key-based authentication to be set up on the application server
@@ -25,6 +27,14 @@ class RsyncMultiHostPublisher extends FilesystemPublisher {
 	static function set_targets($targets) {
 		self::$targets = $targets;
 	}
+	
+	/**
+	 * Specify folders to exclude from the rsync
+	 * For example, you could exclude assets.
+	 */
+	static function set_excluded_folders($folders) {
+		self::$excluded_folders = $folders;
+	}
 
 	function publishPages($urls) {
 		parent::publishPages($urls);
@@ -33,11 +43,16 @@ class RsyncMultiHostPublisher extends FilesystemPublisher {
 		// Get variable that can turn off the rsync component of publication 
 		if(isset($_GET['norsync']) && $_GET['norsync']) return;
 		
+		$extraArg = "";
+		if(self::$excluded_folders) foreach(self::$excluded_folders as $folder) {
+			$extraArg .= " --exclude " . escapeshellarg($folder);
+		}
+		
 		foreach(self::$targets as $target) {
 			// Transfer non-PHP content from everything to the target; that will ensure that we have all the JS/CSS/etc
-			$rsyncOutput = `cd $base; rsync -av -e ssh --exclude /.htaccess --exclude '*.php' --exclude '*.svn' --exclude '*~' --delete . $target`;
+			$rsyncOutput = `cd $base; rsync -av -e ssh --exclude /.htaccess --exclude /web.config --exclude '*.php' --exclude '*.svn' --exclude '*.git' --exclude '*~' $extraArg --delete . $target`;
 			// Then transfer "safe" PHP from the cache/ directory
-			$rsyncOutput .= `cd $base; rsync -av -e ssh --exclude '*.svn' --exclude '*~' --delete cache $target`;
+			$rsyncOutput .= `cd $base; rsync -av -e ssh --exclude '*.svn' --exclude '*~' $extraArg --delete cache $target`;
 			if(StaticPublisher::echo_progress()) echo $rsyncOutput;
 		}
 	}
