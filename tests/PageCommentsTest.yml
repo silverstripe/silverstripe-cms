@@ -1,27 +1,36 @@
 Member:
-   admin:
+   commentadmin:
       FirstName: admin
+   visitor:
+      FirstName: visitor
 
 Group:
-   admin:
+   commentadmins:
       Title: Admin
-      Members: =>Member.admin
+      Members: =>Member.commentadmin
 
 Permission:
    admin:
-      Code: ADMIN
-      Group: =>Group.admin
+      Code: CMS_ACCESS_CommentAdmin
+      Group: =>Group.commentadmins
 
 Page:
     first:
         Title: First page
         URLSegment: first-page
+        ProvideComments: 1
     second:
         Title: Second page
         URLSegment: second-page
+        ProvideComments: 1
     third:
         Title: Third page
         URLSegment:third-page
+        ProvideComments: 1
+    pageNoComments:
+        Title: No comments
+        URLSegment: no-comments
+        ProvideComments: 0
 
 PageComment:
     firstComA:
@@ -48,3 +57,6 @@ PageComment:
         ParentID: =>Page.third
         Name: TC
         Comment: textTC
+    disabledCom:
+        ParentID: =>Page.pageNoComments
+        Name: Disabled

@@ -231,7 +231,7 @@ class PageCommentInterface extends RequestHandler {
 		$limit['limit'] = PageComment::$comments_per_page;
 		
 		$spamfilter = isset($_GET['showspam']) ? '' : "AND \"IsSpam\" = 0";
-		$unmoderatedfilter = Permission::check('ADMIN') ? '' : "AND \"NeedsModeration\" = 0";
+		$unmoderatedfilter = Permission::check('CMS_ACCESS_CommentAdmin') ? '' : "AND \"NeedsModeration\" = 0";
 		$order = self::$order_comments_by;
 		$comments =  DataObject::get("PageComment", "\"ParentID\" = '" . Convert::raw2sql($this->page->ID) . "' $spamfilter $unmoderatedfilter", $order, "", $limit);
 		
@@ -254,7 +254,7 @@ class PageCommentInterface extends RequestHandler {
 	 * comments on a page referenced by the url param pageid
 	 */
 	function DeleteAllLink() {
-		if(Permission::check('CMS_ACCESS_CMSMain')) {
+		if(Permission::check('CMS_ACCESS_CommentAdmin')) {
 			return Director::absoluteBaseURL() . "PageComment/deleteallcomments?pageid=" . $this->page->ID;
 		}
 	}
