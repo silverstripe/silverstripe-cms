@@ -456,6 +456,7 @@ $lang['en_US']['PageComment']['SINGULARNAME'] = array(
 	'Singular name of the object, used in dropdowns and to generally identify a single object in the interface'
 );
 $lang['en_US']['PageCommentInterface']['COMMENTERURL'] = 'Your website URL';
+$lang['en_US']['PageCommentInterface']['DELETEALLCOMMENTS'] = 'Delete all comments on this page';
 $lang['en_US']['PageCommentInterface']['POST'] = 'Post';
 $lang['en_US']['PageCommentInterface']['SPAMQUESTION'] = 'Spam protection question: %s';
 $lang['en_US']['PageCommentInterface']['YOURCOMMENT'] = 'Comments';

@@ -54,7 +54,9 @@
 		<% end_if %>
 	</div>
 	<% if DeleteAllLink %>
-		<p id="DeleteComments"><a href="$DeleteAllLink">Delete all comments on this page</a></p>
+		<p id="DeleteComments"><a href="$DeleteAllLink">
+			<% _t('PageCommentInterface.DELETEALLCOMMENTS','Delete all comments on this page' %>
+		</a></p>
 	<% end_if %>
 	<p id="CommentsRSSFeed">
 		<a class="commentrss" href="$CommentRssLink"><% _t('RSSFEEDCOMMENTS', 'RSS feed for comments on this page') %></a> | 
