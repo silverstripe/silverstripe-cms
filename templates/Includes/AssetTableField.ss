@@ -48,7 +48,7 @@
 				<tr class="notfound"> 
 					<td>&nbsp;</td> 
 					<% if Markable %><td width="18">&nbsp;</td><% end_if %> 
-					<td colspan="$Headings.Count"><i>No $NamePlural found</i></td> 
+					<td colspan="$Headings.Count"><i><% sprintf(_t('AssetTableField.NODATAFOUND', 'No %s found'),$NamePlural) %></i></td> 
 					<% if Can(show) %><td width="18">&nbsp;</td><% end_if %> 
 					<% if Can(edit) %><td width="18">&nbsp;</td><% end_if %> 
 					<% if Can(delete) %><td width="18">&nbsp;</td><% end_if %> 

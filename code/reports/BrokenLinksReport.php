@@ -82,7 +82,7 @@ class BrokenLinksReport extends SS_Report {
 		
 		$fields = array(
 			"Title" => array(
-				"title" => "Page name",
+				"title" => _t('BrokenLinksReport.PageName', 'Page name'),
 				'formatting' => sprintf(
 					'<a href=\"admin/show/$ID\" title=\"%s\">$value</a>',
 					_t('BrokenLinksReport.HoverTitleEditPage', 'Edit page')
@@ -105,7 +105,7 @@ class BrokenLinksReport extends SS_Report {
 	}
 	function parameterFields() {
 		return new FieldSet(
-			new DropdownField('CheckSite', 'Check site', array(
+			new DropdownField('CheckSite', _t('BrokenLinksReport.CheckSite','Check site'), array(
 				'Published' => _t('BrokenLinksReport.CheckSiteDropdownPublished', 'Published Site'),
 				'Draft' => _t('BrokenLinksReport.CheckSiteDropdownDraft', 'Draft Site')
 			)),
@@ -113,7 +113,7 @@ class BrokenLinksReport extends SS_Report {
 				'Reason', 
 				_t('BrokenLinksReport.ReasonDropdown', 'Problem to check'), 
 				array(
-					'' => 'Any',
+					'' => _t('BrokenLinksReport.Any', 'Any'),
 					'BROKENFILE' => _t('BrokenLinksReport.ReasonDropdownBROKENFILE', 'Broken file'),
 					'BROKENLINK' => _t('BrokenLinksReport.ReasonDropdownBROKENLINK', 'Broken link'),
 					'VPBROKENLINK' => _t('BrokenLinksReport.ReasonDropdownVPBROKENLINK', 'Virtual page pointing to non-existent page'),

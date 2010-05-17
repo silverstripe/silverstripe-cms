@@ -12,7 +12,7 @@
 			<!-- Filters -->
 			
 			<% if FieldMap.Filters.Children %>
-			<div style="border-bottom: 1px #AAA solid"><b>Filter by</b></div>
+			<div style="border-bottom: 1px #AAA solid"><b><% _t('ReportAdminForm.FILTERBY', 'Filter by') %></b></div>
 			
 			<% control FieldMap.Filters %>
 			<% control Children %>
