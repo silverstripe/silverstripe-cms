@@ -136,7 +136,7 @@ abstract class StaticPublisher extends DataObjectDecorator {
 			$matches = $xContent->xpath($xlink);
 			if($matches) foreach($matches as $item) {
 				$url = $item . '';
-				if($assetsOnly && substr($url,0,7) != 'assets/') continue;
+				if($assetsOnly && substr($url,0,7) != ASSETS_DIR . '/') continue;
 
 				$urls[] = $url;
 			}
