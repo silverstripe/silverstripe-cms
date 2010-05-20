@@ -17,6 +17,12 @@ class CommentTableField extends ComplexTableField {
 		
 		$this->Markable = true;
 		
+		// Note: These keys have special behaviour associated through TableListField.js
+		$this->selectOptions = array(
+			'all' => _t('TableListField.ALL', 'All'),
+			'none' => _t('TableListField.NONE', 'None')
+		);
+		
 		// search
 		$search = isset($_REQUEST['CommentSearch']) ? Convert::raw2sql($_REQUEST['CommentSearch']) : null;
 		if(!empty($_REQUEST['CommentSearch'])) {
