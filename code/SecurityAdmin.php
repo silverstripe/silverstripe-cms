@@ -42,6 +42,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 
 		Requirements::javascript(CMS_DIR . '/javascript/hover.js');
 		Requirements::javascript(THIRDPARTY_DIR . "/scriptaculous/controls.js");
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery-livequery/jquery.livequery.js');
 
 		// needed for MemberTableField (Requirements not determined before Ajax-Call)
 		Requirements::add_i18n_javascript(SAPPHIRE_DIR . '/javascript/lang');
