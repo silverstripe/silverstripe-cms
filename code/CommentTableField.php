@@ -19,8 +19,8 @@ class CommentTableField extends ComplexTableField {
 		
 		// Note: These keys have special behaviour associated through TableListField.js
 		$this->selectOptions = array(
-			'all' => _t('TableListField.ALL', 'All'),
-			'none' => _t('TableListField.NONE', 'None')
+			'all' => _t('CommentTableField.SELECTALL', 'All'),
+			'none' => _t('CommentTableField.SELECTNONE', 'None')
 		);
 		
 		// search

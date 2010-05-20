@@ -216,7 +216,6 @@ $lang['en_US']['CommentAdmin']['APPROVEDCOMMENTS'] = 'Approved Comments';
 $lang['en_US']['CommentAdmin']['AUTHOR'] = 'Author';
 $lang['en_US']['CommentAdmin']['COMMENT'] = 'Comment';
 $lang['en_US']['CommentAdmin']['COMMENTERURL'] = 'URL';
-$lang['en_US']['CommentAdmin']['COMMENTS'] = 'Comments';
 $lang['en_US']['CommentAdmin']['COMMENTSAWAITINGMODERATION'] = 'Comments Awaiting Moderation';
 $lang['en_US']['CommentAdmin']['DATEPOSTED'] = 'Date Posted';
 $lang['en_US']['CommentAdmin']['DELETE'] = 'Delete';
@@ -437,6 +436,7 @@ $lang['en_US']['PageComment']['SINGULARNAME'] = array(
 	'Singular name of the object, used in dropdowns and to generally identify a single object in the interface'
 );
 $lang['en_US']['PageCommentInterface']['COMMENTERURL'] = 'Your website URL';
+$lang['en_US']['PageCommentInterface']['DELETEALLCOMMENTS'] = 'Delete all comments on this page';
 $lang['en_US']['PageCommentInterface']['POST'] = 'Post';
 $lang['en_US']['PageCommentInterface']['SPAMQUESTION'] = 'Spam protection question: %s';
 $lang['en_US']['PageCommentInterface']['YOURCOMMENT'] = 'Comments';
@@ -540,6 +540,8 @@ $lang['en_US']['StaticExporter']['BASEURL'] = 'Base URL';
 $lang['en_US']['StaticExporter']['EXPORTTO'] = 'Export to that folder';
 $lang['en_US']['StaticExporter']['FOLDEREXPORT'] = 'Folder to export to';
 $lang['en_US']['StaticExporter']['NAME'] = 'Static exporter';
+$lang['en_US']['TableListField']['ALL'] = 'All';
+$lang['en_US']['TableListField']['NONE'] = 'None';
 $lang['en_US']['TableListField.ss']['NOITEMSFOUND'] = 'No items found';
 $lang['en_US']['TableListField.ss']['SORTASC'] = 'Sort in ascending order';
 $lang['en_US']['TableListField.ss']['SORTDESC'] = 'Sort in descending order';
