@@ -58,9 +58,10 @@ $(document).ready(function() {
 	/*
 	 * Highlight buttons on click
 	 */
-	$('input[type=submit]').live('click', function() {
+	$('#form_actions_right input[type=submit], #left input[type=submit]').live('click', function() {
 	    $(this).addClass('loading');
 	});
+
 	
 	$('input[name=action_search]').live('click', function() {
 		$('#contentPanel').fn('closeRightPanel');
@@ -134,7 +135,7 @@ $(document).ready(function() {
 		$('#contentPanel').fn('closeRightPanel');
 		// @todo TinyMCE coupling
 		tinymce_removeAll();
-
+		
 		$('#ModelAdminPanel').fn('startHistory', $(this).attr('action'), $(this).formToArray());
 	    $('#ModelAdminPanel').load($(this).attr('action'), $(this).formToArray(), standardStatusHandler(function(result) {
 			if(!this.future || !this.future.length) {
@@ -152,6 +153,7 @@ $(document).ready(function() {
     		$('input[type=submit]', $form).removeClass('loading');
 	    }, 
 	    // Failure handler - we should still remove loading indicator
+	
 	    function () {
     		$('input[type=submit]', $form).removeClass('loading');
 	    }));
