@@ -421,7 +421,7 @@ SiteTreeNode.prototype = {
 		this.TreeNode.initialize(options);
 		if(this.className && this.className.match(/class\-([^\s]*)/)) {
 			var klass = RegExp.$1;
-			if(siteTreeHints && siteTreeHints[klass]) {
+			if(typeof siteTreeHints != 'undefined' && siteTreeHints[klass]) {
 				this.hints = siteTreeHints[klass];
 				this.dropperOptions = { 
 					accept : (this.hints.allowedChildren && (this.className.indexOf('nochildren') == -1))
