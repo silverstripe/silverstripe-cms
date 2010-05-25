@@ -1,0 +1,41 @@
+<form $FormAttributes>
+
+	
+	<p style="display: none;" class="message " id="Form_EditForm_error"/>
+	
+	<fieldset>
+
+		<div id="ScrollPanel">
+			$FieldMap.ReportTitle.FieldHolder
+			$FieldMap.ReportDescription.FieldHolder
+		
+			<!-- Filters -->
+			
+			<div style="border-bottom: 1px #AAA solid"><b>Filter by</b></div>
+			
+			<% control FieldMap.Filters %>
+			<% control Children %>
+			<div style="float: left; margin: 5px 10px 10px 0; height: 35px">
+				<label for="$ID" style="font-weight: bold; display: block">$Title</label>
+				$Field
+			</div>
+			<% end_control %>
+			<% end_control %>
+			
+			<div id="action_updatereport" style="float: left; margin: 1px 10px 10px 0">
+			<br />
+			$FieldMap.action_updatereport.Field
+			</div>
+			
+			<div style="clear: both">&nbsp;</div>
+			
+			$FieldMap.ReportContent.FieldHolder
+			
+			<% control HiddenFields %>$Field<% end_control %>
+			
+		</div>
+			
+		
+		<div class="clear"><!-- --></div>
+	</fieldset>
+</form>
