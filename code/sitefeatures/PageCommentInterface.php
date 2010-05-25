@@ -343,17 +343,19 @@ class PageCommentInterface_Form extends Form {
 			if($comment->NeedsModeration){
 				$this->sessionMessage($moderationMsg, 'good');
 			}
-			// since it is not ajax redirect user down to their comment since it has been posted
-			// get the pages url off the comments parent ID.
+			
 			if($comment->ParentID) {
 				$page = DataObject::get_by_id("Page", $comment->ParentID);
 				if($page) {
-					// Redirect to the actual post on the page.
-					return Director::redirect($page->Link() . '#PageComment_' . $comment->ID);
+					// if it needs moderation then it won't appear in the list. Therefore
+					// we need to link to the comment holder rather than the individual comment
+					$url = ($comment->NeedsModeration) ? $page->Link() . '#PageComments_holder' : $page->Link() . '#PageComment_' . $comment->ID;
+					
+					return Director::redirect($url);
 				}
 			}
-
-			return Director::redirectBack(); // worst case, just go back to the page
+			
+			return Director::redirectBack();
 		}
 	}
 }
