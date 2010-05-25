@@ -123,8 +123,9 @@ class ReportAdmin extends LeftAndMain {
 	 */
 	public function EditForm($request = null) {
 		$className = Session::get('currentPage');
-		$requestId = $request ? $request->requestVar('ID') : null;
-		
+		$requestId = $this->getRequest()->requestVar('ID');
+		if(!$requestId) $requestId = $this->getRequest()->latestParam('ID');
+
 		if ( $requestId )
 			return $this->getEditForm($requestId);
 		
@@ -163,7 +164,7 @@ class ReportAdmin extends LeftAndMain {
 		$actions = $obj->getCMSActions();
 
 		$form = new Form($this, 'EditForm', $fields, $actions);
-		
+		$form->setTemplate('ReportAdminForm');
 		$form->loadDataFrom($this->request->requestVars());
 
 		return $form;
