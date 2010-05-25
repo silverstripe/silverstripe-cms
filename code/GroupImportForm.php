@@ -45,7 +45,7 @@ class GroupImportForm extends Form {
 					)
 				)
 			);
-			$fileField->setAllowedExtensions(array('csv'));
+			$fileField->getValidator()->setAllowedExtensions(array('csv'));
 		}
 		
 		if(!$actions) $actions = new FieldSet(
