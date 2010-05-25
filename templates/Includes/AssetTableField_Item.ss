@@ -1,6 +1,7 @@
 <tr id="record-$Parent.id-$ID"<% if HighlightClasses %> class="$HighlightClasses"<% end_if %>>
 	<td class="dragfile" id="drag-$Parent.Name-$ID">
 		<img id="drag-img-$Parent.Name-$ID" alt="Drag" title="<% _t('DRAGTOFOLDER','Drag to folder on left to move file') %>" src="sapphire/images/drag.gif" />
+		<span class="linkCount" style="display: none;">$BackLinkTrackingCount</span>
 	</div>
 	<% if Markable %><td class="markingcheckbox">$MarkingCheckbox</td><% end_if %>
 	<% control Fields %>
