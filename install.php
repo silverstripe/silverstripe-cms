@@ -919,7 +919,7 @@ class Installer extends InstallRequirements {
 			$dbType = $config['db']['type'];
 			
 			// Try to determine the database version from the helper
-			$databaseVersion = '';
+			$databaseVersion = $config['db']['type'];
 			$helper = $this->getDatabaseConfigurationHelper($dbType);
 			if($helper && method_exists($helper, 'getDatabaseVersion')) {
 				$databaseVersion = urlencode($dbType . ': ' . $helper->getDatabaseVersion($config['db'][$dbType]));
