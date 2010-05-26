@@ -916,12 +916,13 @@ class Installer extends InstallRequirements {
 			
 			$phpVersion = urlencode(phpversion());
 			$encWebserver = urlencode($webserver);
-
-			if($config['db']['type'] == 'MySQLDatabase') {
-				$conn = @mysql_connect($dbConfig['server'], null, null);
-				$databaseVersion = urlencode('MySQLDatabase: ' . mysql_get_server_info());
-			} else {
-				$databaseVersion = $config['db']['type'];
+			$dbType = $config['db']['type'];
+			
+			// Try to determine the database version from the helper
+			$databaseVersion = '';
+			$helper = $this->getDatabaseConfigurationHelper($dbType);
+			if($helper && method_exists($helper, 'getDatabaseVersion')) {
+				$databaseVersion = urlencode($dbType . ': ' . $helper->getDatabaseVersion($config['db'][$dbType]));
 			}
 			
 			$url = "http://ss2stat.silverstripe.com/Installation/add?SilverStripe=$silverstripe_version&PHP=$phpVersion&Database=$databaseVersion&WebServer=$encWebserver";
