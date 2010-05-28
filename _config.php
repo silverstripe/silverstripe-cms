@@ -50,5 +50,13 @@ HtmlEditorConfig::get('cms')->insertButtonsAfter ('advcode', 'fullscreen', 'sepa
 HtmlEditorConfig::get('cms')->removeButtons('tablecontrols');
 HtmlEditorConfig::get('cms')->addButtonsToLine(3, 'tablecontrols');
 
+// Register default side reports
+SS_Report::register("SideReport", "SideReport_ToDo");
+SS_Report::register("SideReport", "SideReport_BrokenRedirectorPages");
+SS_Report::register("SideReport", "SideReport_BrokenVirtualPages");
+SS_Report::register("SideReport", "SideReport_BrokenFiles");
+SS_Report::register("SideReport", "SideReport_BrokenLinks");
+SS_Report::register("SideReport", "SideReport_RecentlyEdited");
+SS_Report::register("SideReport", "SideReport_EmptyPages");
 
 ?>

@@ -635,19 +635,25 @@ JS;
 		}
 	}
 	
-	function sidereports() {
-		return new SideReportsHandler($this, 'sidereports');
+	/**
+	 * @return Array
+	 */
+	function SideReports() {
+		return SSReport::get_reports('SideReport');
 	}
 	
+	/**
+	 * @return Form
+	 */
 	function SideReportsForm() {
 		$record = $this->currentPage();
-		$reports = $this->sidereports()->getReportClasses();
-		$options = array();
-		foreach($reports as $report) {
-			if($report != 'SideReport' && singleton($report)->canView()) {
-				$options[singleton($report)->group()][singleton($report)->sort()][$report] = singleton($report)->title();
+		
+		foreach($this->SideReports() as $report) {
+			if($report->canView()) {
+			 	$options[$report->group()][$report->sort()][$report->ID()] = $report->title();
 			}
 		}
+		
 		$finalOptions = array();
 		foreach($options as $group => $weights) {
 			ksort($weights);
@@ -657,11 +663,8 @@ JS;
 				}
 			}
 		}
-		$selectorField = new GroupedDropdownField(
-			"ReportClass", 
-			false,
-			$finalOptions
-		);
+		
+		$selectorField = new GroupedDropdownField("ReportClass", _t('CMSMain.REPORT', 'Report'),$finalOptions);
 		
 		$form = new Form(
 			$this,
@@ -684,11 +687,21 @@ JS;
 	/**
 	 * @return Form
 	 */
-	function doShowSideReport($data, $form) {
-		$form = $this->sidereports()->getForm($data['ReportClass'], $data);
-		return $form->forTemplate();
+	function doShowSideReport() {
+		$reportClass = $this->urlParams['ID'];
+		$reports = $this->SideReports();
+		if(isset($reports[$reportClass])) {
+			$report = $reports[$reportClass];
+			if($report) {
+				$view = new SideReportView($this, $report);
+				$view->setParameters($this->request->requestVars());
+				return $view->forTemplate();
+			} else {
+				return false;
+			}
+		}
 	}
-	
+
 	/**
 	 * @return Form
 	 */
