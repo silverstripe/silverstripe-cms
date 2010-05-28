@@ -44,7 +44,7 @@
 			<% if Items %>
 			<% control Items %>
 				<tr id="record-$Parent.id-$ID"<% if HighlightClasses %> class="$HighlightClasses"<% end_if %>>
-					<% if Markable %><td width="18" class="$SelectionTags">$MarkingCheckbox</td><% end_if %>
+					<% if Markable %><td width="18" class="$SelectOptionClasses">$MarkingCheckbox</td><% end_if %>
 					<% control Fields %>
 					<td class="$Title">$Value</td>
 					<% end_control %>

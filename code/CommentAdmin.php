@@ -89,6 +89,7 @@ class CommentAdmin extends LeftAndMain {
 
 		$idField = new HiddenField('ID', '', $section);
 		$table = new CommentTableField($this, "Comments", "PageComment", $section, $tableFields, $popupFields, array($filter), 'Created DESC');
+		
 		$table->setParentClass(false);
 		$table->setFieldCasting(array(
 			'Created' => 'SSDatetime->Full',
@@ -96,7 +97,9 @@ class CommentAdmin extends LeftAndMain {
 		));
 		
 		$table->setPageSize(self::get_comments_per_page());
-
+		$table->addSelectOptions(array('all'=>'All', 'none'=>'None'));
+		$table->Markable = true;
+		
 		$fields = new FieldSet(
 			new LiteralField("Title", $title),
 			$idField,
