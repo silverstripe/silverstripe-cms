@@ -4,7 +4,7 @@
 	</div>
 	<% if Print %><% else %>
 		<% if Markable %>
-			<% include TableListField_SelectControls %>
+			<% include TableListField_SelectOptions %>
 		<% end_if %>
 		<% include TableListField_PageControls %>
 	<% end_if %>
