@@ -674,7 +674,7 @@ class Diff
 	 * 	use, overriding self::$html_cleaner_class
 	 */
 	static function cleanHTML($content, $cleaner=null) {
-		if (!$cleaner)) {
+		if (!$cleaner) {
 			if (class_exists(self::$html_cleaner_class)) {
 				$cleaner = new self::$html_cleaner_class;
 			}
