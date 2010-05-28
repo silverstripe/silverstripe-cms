@@ -8,7 +8,7 @@
 
 class BrokenLinksReport extends SS_Report {
 	function title() {
-		return _t('BrokenLinksReport.BROKENLINKS',"Pages with broken links");
+		return _t('BrokenLinksReport.BROKENLINKS',"Broken links report");
 	}
 	function sourceRecords($params = null) {
 		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "(HasBrokenLink = 1 OR HasBrokenFile = 1)");
@@ -22,12 +22,12 @@ class BrokenLinksReport extends SS_Report {
 			
 			if ($isVirtualPage) {
 				if ($record->HasBrokenLink) {
-					$reason = "virtual page pointing to non-existant page";
+					$reason = "virtual page pointing to non-existent page";
 					$reasonCodes = array("VPBROKENLINK");
 				}
 			} else if ($isRedirectorPage) {
 				if ($record->HasBrokenLink) {
-					$reason = "redirector page pointing to non-existant page";
+					$reason = "redirector page pointing to non-existent page";
 					$reasonCodes = array("RPBROKENLINK");
 				}
 			} else {
@@ -44,7 +44,7 @@ class BrokenLinksReport extends SS_Report {
 			}
 			
 			if ($reason) {
-				if ($params['Reason'] && !in_array($params['Reason'], $reasonCodes)) continue;
+				if (isset($params['Reason']) && $params['Reason'] && !in_array($params['Reason'], $reasonCodes)) continue;
 				$record->BrokenReason = $reason;
 				$returnSet->push($record);
 			}
@@ -58,11 +58,15 @@ class BrokenLinksReport extends SS_Report {
 				"title" => "Title",
 				'formatting' => '<a href=\"admin/show/$ID\" title=\"Edit page\">$value</a>'
 			),
+			"LastEdited" => array(
+				"title" => "Date ".(isset($_REQUEST['OnLive'])?'published':'last modified'),
+				'casting' => 'SSDatetime->Full'
+			),
 			"BrokenReason" => array(
-				"title" => "Reason"
+				"title" => "Problem type"
 			),
 			'AbsoluteLink' => array(
-				'title' => 'Links',
+				'title' => 'URL',
 				'formatting' => '$value " . ($AbsoluteLiveLink ? "<a href=\"$AbsoluteLiveLink\">(live)</a>" : "") . " <a href=\"$value?stage=Stage\">(draft)</a>'
 			)
 		);
