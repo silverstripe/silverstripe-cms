@@ -12,6 +12,7 @@ class BrokenLinksReport extends SS_Report {
 	}
 	function sourceRecords($params, $sort, $limit) {
 		$join = '';
+		$sortBrokenReason = false;
 		if($sort) {
 			$parts = explode(' ', $sort);
 			$field = $parts[0];
@@ -22,7 +23,8 @@ class BrokenLinksReport extends SS_Report {
 			} elseif($field == 'Subsite.Title') {
 				$join = 'LEFT JOIN "Subsite" ON "Subsite"."ID" = "SiteTree"."SubsiteID"';
 			} elseif($field == 'BrokenReason') {
-				$sort = "HasBrokenLink $direction, HasBrokenFile $direction";
+				$sortBrokenReason = true;
+				$sort = '';
 			}
 		}
 		
@@ -65,7 +67,7 @@ class BrokenLinksReport extends SS_Report {
 			}
 		}
 		
-		//if ($sort) $returnSet->sort($sort);
+		if($sortBrokenReason) $returnSet->sort('BrokenReason', $direction);
 		
 		return $returnSet;
 	}
