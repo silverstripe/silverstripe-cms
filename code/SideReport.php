@@ -6,6 +6,9 @@
  * 
  * @package cms
  * @subpackage content
+ * 
+ * @package cms
+ * @subpackage content
  */
 class SideReportView extends ViewableData {
 	protected $controller, $report;
@@ -101,6 +104,9 @@ class SideReportView extends ViewableData {
  * A report wrapper that makes it easier to define slightly different behaviour for side-reports.
  * 
  * This report wrapper will use sideReportColumns() for the report columns, instead of columns().
+ * 
+ * @package cms
+ * @subpackage content
  */
 class SideReportWrapper extends SS_ReportWrapper {
 	function columns() {
@@ -174,6 +180,10 @@ class SideReport_RecentlyEdited extends SS_Report {
 	}
 }
 
+/**
+ * @package cms
+ * @subpackage content
+ */
 class SideReport_ToDo extends SS_Report {
 	function title() {
 		return _t('SideReport.TODO',"Pages with To Do items");
