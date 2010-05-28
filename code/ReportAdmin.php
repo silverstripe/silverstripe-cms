@@ -36,37 +36,6 @@ class ReportAdmin extends LeftAndMain {
 	}
 	
 	/**
-	* Returns an array of all the reports classnames that could be shown on this site 
-	* to any user. Base class is not included in the response.
-	* It does not perform filtering based on canView(). 
-	*
-	* @return An array of report class-names, i.e.:
-	*         array("AllOrdersReport","CurrentOrdersReport","UnprintedOrderReport")
-	*/
-	public function getReportClassNames() {
-
-		$baseClass  = 'SS_Report';		
-		$response   = array();
-		
-		// get all sub-classnames (incl. base classname).
-		$classNames = ClassInfo::subclassesFor( $baseClass );
-		
-		// drop base className
-		$classNames = array_diff($classNames, array($baseClass));
-		
-		// drop report classes, which are not initiatable.
-		foreach($classNames as $className) {
-			
-			// Remove abstract classes
-			$classReflection = new ReflectionClass($className);
-			if($classReflection->isInstantiable() ) {
-				$response[] = $className;
-			}			
-		}
-		return $response;
-	}
-	
-	/**
 	 * Does the parent permission checks, but also
 	 * makes sure that instantiatable subclasses of
 	 * {@link Report} exist. By default, the CMS doesn't
@@ -76,23 +45,16 @@ class ReportAdmin extends LeftAndMain {
 	 * @return boolean
 	 */
 	function canView($member = null) {
-		if(!$member && $member !== FALSE) {
-			$member = Member::currentUser();
-		}
+		if(!$member && $member !== FALSE) $member = Member::currentUser();
 		
 		if(!parent::canView($member)) return false;
 		
 		$hasViewableSubclasses = false;
-		$subClasses = array_values( $this->getReportClassNames() );
-
-		foreach($subClasses as $subclass) {
-
-			if(singleton($subclass)->canView()) {
-				$hasViewableSubclasses = true;
-			}
-				
+		foreach($this->Reports() as $report) {
+			if($report->canView($member)) return true;
 		}
-		return $hasViewableSubclasses;
+		
+		return false;
 	}
 	
 	/**
@@ -102,36 +64,7 @@ class ReportAdmin extends LeftAndMain {
 	 * @return DataObjectSet
 	 */
 	public function Reports() {
-		$processedReports = array();
-		$subClasses = $this->getReportClassNames();
-		
-		if($subClasses) {
-			foreach($subClasses as $subClass) {
-				$processedReports[] = new $subClass();
-			}
-		}
-		$reports = new DataObjectSet($processedReports);
-		
-		return $reports;
-	}
-	
-	/**
-	 * Get EditForm for the class specified in request or in session variable
-	 *
-	 * @param HTTPRequest
-	 * @return Form
-	 */
-	public function EditForm($request = null) {
-		$className = Session::get('currentPage');
-		$requestId = $this->getRequest()->requestVar('ID');
-		if(!$requestId) $requestId = $this->getRequest()->latestParam('ID');
-
-		if ( $requestId )
-			return $this->getEditForm($requestId);
-		
-		// $className can be null
-		return $this->getEditForm($className);
-
+		return new DataObjectSet(SS_Report::get_reports('ReportAdmin'));
 	}
 	
 	/**
@@ -146,24 +79,35 @@ class ReportAdmin extends LeftAndMain {
 			return $form = $this->EmptyForm();
 		}
 		
-		if (!class_exists($className)) {
-			die("$className does not exist");
+		Session::set('currentPage', $className);
+		
+		$fields = new FieldSet();
+		$actions = new FieldSet();
+		
+		$reports = SS_Report::get_reports('ReportAdmin');
+		if(!isset($reports[$className])) return false;
+
+		$report = $reports[$className];		
+		if(!$report || !$report->canView()) return Security::permissionFailure($this);
+
+		$fields = $report->getCMSFields();
+		$actions = $report->getCMSActions();
+		
+		$idField = new HiddenField('ID');
+		$idField->setValue($id);
+		$fields->push($idField);
+		
+		$form = new Form($this, 'EditForm', $fields, $actions);
+
+		// Include search criteria in the form action so that pagination works
+		$filteredCriteria = array_merge($_GET, $_POST);
+		foreach(array('ID','url','ajax','ctf','update','action_updatereport','SecurityID') as $notAParam) {
+			unset($filteredCriteria[$notAParam]);
 		}
 
-		Session::set('currentPage', $className);
-
-		$obj = new $className();
-		if(!$obj->canView()) return Security::permissionFailure($this);
-
-		$fields = $obj->getCMSFields();
-
-		$idField = new HiddenField('ID');
-		$idField->setValue($className);
-		$fields->push($idField);
-
-		$actions = $obj->getCMSActions();
-
-		$form = new Form($this, 'EditForm', $fields, $actions);
+		$formLink = $this->Link() . '/EditForm';
+		if($filteredCriteria) $formLink .= '?' . http_build_query($filteredCriteria);
+		$form->setFormAction($formLink);
 		$form->setTemplate('ReportAdminForm');
 		$form->loadDataFrom($this->request->requestVars());
 
@@ -182,13 +126,7 @@ class ReportAdmin extends LeftAndMain {
 	 * @return boolean
 	 */
 	public static function has_reports() {
-		$subClasses = $this->getReportClassNames();
-		if($subClasses) {
-			foreach($subClasses as $subClass) {
-				return true;
-			}
-		}
-		return false;
+		return sizeof(SS_Report::get_reports('ReportAdmin')) > 0;
 	}
 }
 
