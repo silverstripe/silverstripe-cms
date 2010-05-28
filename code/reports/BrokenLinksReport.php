@@ -11,12 +11,8 @@ class BrokenLinksReport extends SS_Report {
 		return _t('BrokenLinksReport.BROKENLINKS',"Pages with broken links");
 	}
 	function sourceRecords($params = null) {
-		// Get class names for page types that are not virtual pages or redirector pages
-		$classes = array_diff(ClassInfo::subclassesFor('SiteTree'), ClassInfo::subclassesFor('VirtualPage'), ClassInfo::subclassesFor('RedirectorPage'));
-		$classNames = "'".join("','", $classes)."'";
-		
-		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "ClassName IN ($classNames) AND (HasBrokenLink = 1 OR HasBrokenFile = 1)");
-		else $ret = DataObject::get('SiteTree', "ClassName IN ($classNames) AND (HasBrokenFile = 1 OR HasBrokenLink = 1)");
+		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "(HasBrokenLink = 1 OR HasBrokenFile = 1)");
+		else $ret = DataObject::get('SiteTree', "(HasBrokenFile = 1 OR HasBrokenLink = 1)");
 		
 		$returnSet = new DataObjectSet();
 		if ($ret) foreach($ret as $record) {
@@ -26,7 +22,7 @@ class BrokenLinksReport extends SS_Report {
 			
 			if ($isVirtualPage) {
 				if ($record->HasBrokenLink) {
-					$reason = "redirector page pointing to non-existant page";
+					$reason = "virtual page pointing to non-existant page";
 					$reasonCodes = array("VPBROKENLINK");
 				}
 			} else if ($isRedirectorPage) {
