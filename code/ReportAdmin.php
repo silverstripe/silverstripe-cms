@@ -72,6 +72,22 @@ class ReportAdmin extends LeftAndMain {
 	}
 	
 	/**
+	 * Get the current report
+	 *
+	 * @return SSReport
+	 */
+	public function CurrentReport() {
+		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : Session::get('currentReport');
+		
+		if($id) {
+			foreach($this->Reports() as $report) {
+				if($id == $report->ID()) return $report;
+			}
+		}
+		return false;
+	}
+	
+	/**
 	 * Return a Form instance with fields for the
 	 * particular report currently viewed.
 	 * 
