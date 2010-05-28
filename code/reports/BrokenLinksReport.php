@@ -11,9 +11,8 @@ class BrokenLinksReport extends SS_Report {
 		return _t('BrokenLinksReport.BROKENLINKS',"Broken links report");
 	}
 	function sourceRecords($params, $sort, $limit) {
-		if(!$sort || !in_array(preg_replace('/(\s+?)(A|DE)SC$/', '', $sort), array('Title','LastEdited'))) $sort = "LastEdited ASC";
-		if (!isset($_REQUEST['CheckSite']) || $params['CheckSite'] == 'Published') $ret = Versioned::get_by_stage('SiteTree', 'Live', "(HasBrokenLink = 1 OR HasBrokenFile = 1)", $sort);
-		else $ret = DataObject::get('SiteTree', "(HasBrokenFile = 1 OR HasBrokenLink = 1)", $sort);
+		if (!isset($_REQUEST['CheckSite']) || $params['CheckSite'] == 'Published') $ret = Versioned::get_by_stage('SiteTree', 'Live', "(HasBrokenLink = 1 OR HasBrokenFile = 1)");
+		else $ret = DataObject::get('SiteTree', "(HasBrokenFile = 1 OR HasBrokenLink = 1)");
 		
 		$returnSet = new DataObjectSet();
 		if ($ret) foreach($ret as $record) {
@@ -50,6 +49,8 @@ class BrokenLinksReport extends SS_Report {
 				$returnSet->push($record);
 			}
 		}
+		
+		if ($sort) $returnSet->sort($sort);
 		
 		return $returnSet;
 	}
