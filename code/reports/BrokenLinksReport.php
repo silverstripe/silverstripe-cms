@@ -11,8 +11,23 @@ class BrokenLinksReport extends SS_Report {
 		return _t('BrokenLinksReport.BROKENLINKS',"Broken links report");
 	}
 	function sourceRecords($params, $sort, $limit) {
-		if (!isset($_REQUEST['CheckSite']) || $params['CheckSite'] == 'Published') $ret = Versioned::get_by_stage('SiteTree', 'Live', "(HasBrokenLink = 1 OR HasBrokenFile = 1)");
-		else $ret = DataObject::get('SiteTree', "(HasBrokenFile = 1 OR HasBrokenLink = 1)");
+		$join = '';
+		if($sort) {
+			$parts = explode(' ', $sort);
+			$field = $parts[0];
+			$direction = $parts[1];
+			
+			if($field == 'AbsoluteLink') {
+				$sort = 'URLSegment ' . $direction;
+			}
+			
+			if($field == 'Subsite.Title') {
+				$join = 'LEFT JOIN "Subsite" ON "Subsite"."ID" = "SiteTree"."SubsiteID"';
+			}
+		}
+		
+		if (!isset($_REQUEST['CheckSite']) || $params['CheckSite'] == 'Published') $ret = Versioned::get_by_stage('SiteTree', 'Live', "(HasBrokenLink = 1 OR HasBrokenFile = 1)", $sort, $join, $limit);
+		else $ret = DataObject::get('SiteTree', "(HasBrokenFile = 1 OR HasBrokenLink = 1)", $sort, $join, $limit);
 		
 		$returnSet = new DataObjectSet();
 		if ($ret) foreach($ret as $record) {
@@ -50,7 +65,7 @@ class BrokenLinksReport extends SS_Report {
 			}
 		}
 		
-		if ($sort) $returnSet->sort($sort);
+		//if ($sort) $returnSet->sort($sort);
 		
 		return $returnSet;
 	}
