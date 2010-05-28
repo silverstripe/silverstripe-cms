@@ -74,7 +74,7 @@ class ReportAdmin extends LeftAndMain {
 	/**
 	 * Get the current report
 	 *
-	 * @return SSReport
+	 * @return SS_Report
 	 */
 	public function CurrentReport() {
 		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : Session::get('currentReport');

@@ -35,7 +35,7 @@
  * Showing reports to the user
  * ===========================
  * 
- * Right now, all subclasses of SSReport will be shown in the ReportAdmin.  However, we are planning
+ * Right now, all subclasses of SS_Report will be shown in the ReportAdmin.  However, we are planning
  * on adding an explicit registration mechanism, so that you can decide which reports go in the
  * report admin, and which go elsewhere (such as the side panel in the CMS).
  * 
@@ -44,7 +44,7 @@
  */
 class SS_Report extends ViewableData {
 	/**
-	 * Report registry populated by {@link SSReport::register()}
+	 * Report registry populated by {@link SS_Report::register()}
 	 */
 	private static $registered_reports = array();
 
@@ -107,7 +107,7 @@ class SS_Report extends ViewableData {
 	 */
 	function sourceQuery($params) {
 		if($this->hasMethod('sourceRecords')) {
-			$query = new SSReport_FakeQuery($this, 'sourceRecords', $params);
+			$query = new SS_Report_FakeQuery($this, 'sourceRecords', $params);
 			$query->setSortColumnMethod('sortColumns');
 			return $query;
 		} else {
@@ -163,7 +163,7 @@ class SS_Report extends ViewableData {
 	 * data objects.
 	 *
 	 * @uses getReportField() to render a table, or similar field for the report. This
-	 * method should be defined on the SSReport subclasses.
+	 * method should be defined on the SS_Report subclasses.
 	 *
 	 * @return FieldSet
 	 */
@@ -296,8 +296,8 @@ class SS_Report extends ViewableData {
 	 * The default value is zero.
 	 */
 	static function register($list, $reportClass, $priority = 0) {
-		if(strpos($reportClass, '(') === false && (!class_exists($reportClass) || !is_subclass_of($reportClass,'SSReport'))) {
-			user_error("SSReport::register(): '$reportClass' is not a subclass of SSReport", E_USER_WARNING);
+		if(strpos($reportClass, '(') === false && (!class_exists($reportClass) || !is_subclass_of($reportClass,'SS_Report'))) {
+			user_error("SS_Report::register(): '$reportClass' is not a subclass of SS_Report", E_USER_WARNING);
 			return;
 		}
 		
@@ -312,8 +312,8 @@ class SS_Report extends ViewableData {
 	}
 	
 	/**
-	 * Return the SSReport objects making up the given list.
-	 * @return An array of SSReport objects
+	 * Return the SS_Report objects making up the given list.
+	 * @return An array of SS_Report objects
 	 */
 	static function get_reports($list) {
 		$output = array();
@@ -349,17 +349,17 @@ class SS_Report extends ViewableData {
  * Use it like this:
  * 
  *     function sourceQuery($params) {
- *         return new SSReport_FakeQuery($this, 'sourceRecords', $params)
+ *         return new SS_Report_FakeQuery($this, 'sourceRecords', $params)
  *     }
  *     function sourceRecords($params, $sort, $limit) {
  *         // Do some stuff
  *         // Return a DataObjectSet of actual objects.
  *     }
  * 
- * This object is used by the default implementation of sourceQuery() on SSReport, to make use of
+ * This object is used by the default implementation of sourceQuery() on SS_Report, to make use of
  * a sourceReords() method if one exists.
  */
-class SSReport_FakeQuery extends SQLQuery {
+class SS_Report_FakeQuery extends SQLQuery {
 	public $orderby;
 	public $limit;
 	
@@ -410,20 +410,20 @@ class SSReport_FakeQuery extends SQLQuery {
 }
 
 /**
- * SSReportWrapper is a base class for creating report wappers.
+ * SS_ReportWrapper is a base class for creating report wappers.
  * 
  * Wrappers encapsulate an existing report to alter their behaviour - they are implementations of
  * the standard GoF decorator pattern.
  * 
  * This base class ensure that, by default, wrappers behave in the same way as the report that is
  * being wrapped.  You should override any methods that need to behave differently in your subclass
- * of SSReportWrapper.
+ * of SS_ReportWrapper.
  * 
  * It also makes calls to 2 empty methods that you can override {@link beforeQuery()} and
  * {@link afterQuery()}
  */
 
-abstract class SSReportWrapper extends SSReport {
+abstract class SS_ReportWrapper extends SS_Report {
 	protected $baseReport;
 
 	function __construct($baseReport) {

@@ -639,7 +639,7 @@ JS;
 	 * @return Array
 	 */
 	function SideReports() {
-		return SSReport::get_reports('SideReport');
+		return SS_Report::get_reports('SideReport');
 	}
 	
 	/**
