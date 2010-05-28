@@ -31,9 +31,9 @@ class SideReportTest extends SapphireTest {
 		$r = new SideReport_RecentlyEdited();
 		
 		// check if contains only elements not older than $daysAgo days
-		$this->assertNotNull($r->records());
-		$this->assertContains($after->ID, $r->records()->column('ID'));
-		$this->assertNotContains($before->ID, $r->records()->column('ID'));
+		$this->assertNotNull($r->records(array()));
+		$this->assertContains($after->ID, $r->records(array())->column('ID'));
+		$this->assertNotContains($before->ID, $r->records(array())->column('ID'));
 		
 		SS_DateTime::clear_mock_now();
 	}
