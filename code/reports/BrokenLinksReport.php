@@ -57,7 +57,7 @@ class BrokenLinksReport extends SS_Report {
 	function columns() {
 		$fields = array(
 			"Title" => array(
-				"title" => "Title",
+				"title" => "Page name",
 				'formatting' => '<a href=\"admin/show/$ID\" title=\"Edit page\">$value</a>'
 			),
 			"LastEdited" => array(
