@@ -19,10 +19,10 @@ class BrokenLinksReport extends SS_Report {
 			
 			if($field == 'AbsoluteLink') {
 				$sort = 'URLSegment ' . $direction;
-			}
-			
-			if($field == 'Subsite.Title') {
+			} elseif($field == 'Subsite.Title') {
 				$join = 'LEFT JOIN "Subsite" ON "Subsite"."ID" = "SiteTree"."SubsiteID"';
+			} elseif($field == 'BrokenReason') {
+				$sort = "HasBrokenLink ASC, HasBrokenFile ASC";
 			}
 		}
 		
