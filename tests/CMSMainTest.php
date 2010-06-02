@@ -47,6 +47,11 @@ class CMSMainTest extends FunctionalTest {
 			$this->assertContains('setNodeTitle(1, \'Page 1\');', $response->getBody());
 			$this->assertContains('setNodeTitle(2, \'Page 2\');', $response->getBody());
 		}
+
+		// Get the latest version of Page 1 
+		$latestID = DB::query('select max("Version") from "Page_versions" where "RecordID"=1')->value(); 
+		$dsCount = DB::query('select count("Version") from "Page_versions" where "RecordID"=1 and "Version"=' . $latestID)->value(); 
+		$this->assertEquals(1, $dsCount, "Published page has no duplicate version records: it has " . $dsCount . " for version " . $latestID); 
 		
 		$this->session()->clear('loggedInAs');
 		
