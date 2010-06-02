@@ -36,7 +36,7 @@ class CMSMainTest extends FunctionalTest {
 		$response = Director::test("admin/cms/publishall", array('confirm' => 1), $this->session());
 		
 		$this->assertContains(
-			sprintf(_t('CMSMain.PUBPAGES',"Done: Published %d pages"), 7), 
+			sprintf(_t('CMSMain.PUBPAGES',"Done: Published %d pages"), 8), 
 			$response->getBody()
 		);
 		
@@ -48,9 +48,10 @@ class CMSMainTest extends FunctionalTest {
 			$this->assertContains('setNodeTitle(2, \'Page 2\');', $response->getBody());
 		}
 
-		// Get the latest version of Page 1 
-		$latestID = DB::query('select max("Version") from "Page_versions" where "RecordID"=1')->value(); 
-		$dsCount = DB::query('select count("Version") from "Page_versions" where "RecordID"=1 and "Version"=' . $latestID)->value(); 
+		// Get the latest version of the redirector page 
+		$pageID = $this->idFromFixture('RedirectorPage', 'page5');
+		$latestID = DB::query('select max("Version") from "RedirectorPage_versions" where "RecordID"=' . $pageID)->value(); 
+		$dsCount = DB::query('select count("Version") from "RedirectorPage_versions" where "RecordID"=' . $pageID . ' and "Version"=' . $latestID)->value(); 
 		$this->assertEquals(1, $dsCount, "Published page has no duplicate version records: it has " . $dsCount . " for version " . $latestID); 
 		
 		$this->session()->clear('loggedInAs');
