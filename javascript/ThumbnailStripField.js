@@ -34,9 +34,11 @@ ThumbnailStripField.prototype = {
 					
 					timeout = setTimeout(function() {
 						var searchText = searchField.value;
-						
-						$('Flash').ajaxGetFiles(null, searchText);
-						$('FolderImages').ajaxGetFiles(null, searchText);
+						var folderID = null;
+						if (parentField && parentField.inputTag) 
+							folderID = parentField.inputTag.value
+						$('Flash').ajaxGetFiles(folderID, searchText);
+						$('FolderImages').ajaxGetFiles(folderID, searchText);
 					}, 500);
 				});
 			}
