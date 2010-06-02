@@ -513,6 +513,9 @@ JS;
 		if(Object::has_extension('SiteConfig',"Translatable")){ 
 			$fields->push(new HiddenField('Locale','', $siteConfig->Locale ));       
 		} 
+		
+		$fields->push(new HiddenField('ID', '', $siteConfig->ID)); 
+		
 		$form = new Form($this, "EditForm", $fields, $siteConfig->getCMSActions());
 		$form->loadDataFrom($siteConfig);
 		
