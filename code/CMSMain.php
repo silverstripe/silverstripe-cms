@@ -566,10 +566,10 @@ JS;
  	 * @uses SiteTree->doRevertToLive()
 	 */
 	public function revert($data, $form) {
-		if(!isset($data['ID'])) return new HTTPResponse("Please pass an ID in the form content", 400);
+		if(!isset($data['ID'])) return new SS_HTTPResponse("Please pass an ID in the form content", 400);
 		
 		$restoredPage = Versioned::get_latest_version("SiteTree", $data['ID']);
-		if(!$restoredPage) 	return new HTTPResponse("SiteTree #$id not found", 400);
+		if(!$restoredPage) 	return new SS_HTTPResponse("SiteTree #$id not found", 400);
 		
 		$record = Versioned::get_one_by_stage(
 			'SiteTree', 
@@ -1187,12 +1187,12 @@ JS;
 	 */
 	function restore($data, $form) {
 		if(!isset($data['ID']) || !is_numeric($data['ID'])) {
-			return new HTTPResponse("Please pass an ID in the form content", 400);
+			return new SS_HTTPResponse("Please pass an ID in the form content", 400);
 		}
 		
 		$id = (int)$data['ID'];
 		$restoredPage = Versioned::get_latest_version("SiteTree", $id);
-		if(!$restoredPage) 	return new HTTPResponse("SiteTree #$id not found", 400);
+		if(!$restoredPage) 	return new SS_HTTPResponse("SiteTree #$id not found", 400);
 		
 		$restoredPage = $restoredPage->doRestoreToStage();
 		
