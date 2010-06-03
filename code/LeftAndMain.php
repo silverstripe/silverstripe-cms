@@ -352,11 +352,17 @@ class LeftAndMain extends Controller {
 		if(Director::is_ajax()) {
 			SSViewer::setOption('rewriteHashlinks', false);
 			$form = $this->getEditForm($request->param('ID'));
-			return $form->formHtmlContent();
+			$content = $form->formHtmlContent();
 		} else {
 			// Rendering is handled by template, which will call EditForm() eventually
-			return $this->renderWith($this->getViewer('show'));
+			$content = $this->renderWith($this->getViewer('show'));
 		}
+		
+		if($this->ShowSwitchView()) {
+			$content .= '<div id="AjaxSwitchView">' . $this->SwitchView() . '</div>';
+		}
+		
+		return $content;
 	}
 
 	/**
@@ -364,8 +370,7 @@ class LeftAndMain extends Controller {
 	 */
 	public function getitem($request) {
 		$form = $this->getEditForm($request->getVar('ID'));
-		if($form) return $form->formHtmlContent();
-		else return "";
+		return $form->formHtmlContent();
 	}
 
 	//------------------------------------------------------------------------------------------//

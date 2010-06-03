@@ -47,10 +47,7 @@
 			<div id="switchView" class="bottomTabs">
 				<% if ShowSwitchView %>
 					<div class="blank"> <% _t('VIEWPAGEIN','Page view:') %> </div>
-					<span class="current" title="<% _t('EDITINCMS', 'Edit this page in the CMS') %>"><% _t('EDIT','Edit') %></span>
-					<a id="viewStageSite" title="<% _t('VIEWINDRAFT', 'View the Page in the Draft Site') %>" href="home/?stage=Stage" class="{params:'stage=Stage'}"><% _t('DRAFTS','Draft Site') %></a>
-				    <a id="viewLiveSite" title="<% _t('VIEWINPUBLISHED', 'View the Page in the Published Site') %>" href="home/?stage=Live"  class="{params:'stage=Live'}"><% _t('PUBLIS','Published Site') %></a>
-				<a style="display: none; margin-left: 20px;" id="viewArchivedSite" href="home/"><% _t('ARCHS','Archived Site') %></a>
+					<span id="SwitchView">$SwitchView</span>
 				<% end_if %>
 			</div>
 		</div>

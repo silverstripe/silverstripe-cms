@@ -99,6 +99,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	function ShowSwitchView() {
 		return true;
 	}
+	
+	function SwitchView() {
+		if($page = $this->currentPage()) {
+			$nav = SilverStripeNavigator::get_for_record($page);
+			return $nav['items'];
+		}
+	}
 
 	//------------------------------------------------------------------------------------------//
 	// Main controllers

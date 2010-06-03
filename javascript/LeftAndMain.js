@@ -378,60 +378,37 @@ var ss_MainLayout;
 				}
 			}
 		});
+		
+		/**
+		 * Class: #switchView a
+		 * 
+		 * Updates the different stage links which are generated through 
+		 * the SilverStripeNavigator class on the serverside each time a form record
+		 * is reloaded.
+		 */
+		$('#switchView').entwine({
+			onmatch: function() {
+				this._super();
+				
+				$('#Form_EditForm').bind('load delete', function(e) {
+					var updatedSwitchView = $('#AjaxSwitchView');
+					console.debug(updatedSwitchView.html());
+					$('#SwitchView').html(updatedSwitchView.html());
+					updatedSwitchView.remove();
+				});
+			}
+		});
 
 		/**
 		 * Class: #switchView a
 		 * 
 		 * Links for viewing the currently loaded page
 		 * in different modes: 'live', 'stage' or 'archived'.
-		 * Automatically updates on loading a new page.
 		 * 
 		 * Requires:
 		 *  jquery.metadata
 		 */
 		$('#switchView a').entwine({
-			/**
-			 * Variable: Form
-			 * (DOMElement)
-			 */
-			Form: null,
-
-			/**
-			 * Constructor: onmatch
-			 */
-			onmatch: function() {
-				var self = this;
-				this.setForm($('#Form_EditForm'));
-
-				jQuery('#Form_EditForm').bind('loadnewpage delete', function(e) {self.refresh();});
-				self.refresh();
-				
-				this._super();
-			},
-
-			/**
-			 * Function: refresh
-			 * 
-			 * Parse new links based on the underlying form URLSegment,
-			 * preserving the ?stage URL parameters if necessary.
-			 */
-			refresh: function() {
-				// TODO Compatible with nested urls?
-				var urlSegment = this.getForm().find(':input[name=AbsoluteLink]').val();
-				if(!urlSegment) urlSegment = this.getForm().find(':input[name=URLSegment]').val();
-				
-				if(urlSegment) {
-					var locale = this.getForm().find(':input[name=Locale]').val();
-					var url = urlSegment;
-					if(this.metadata().params) url += '?' + this.metadata().params;
-					if(locale) url += ((url.indexOf('?') > 0) ? '&' : '?') + "locale=" + locale;
-					this.attr('href', url);
-				} 
-
-				// hide fields if no URLSegment is present
-				this.toggle((urlSegment));
-			},
-
 			/**
 			 * Function: onclick
 			 */
