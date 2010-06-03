@@ -103,7 +103,7 @@ Behaviour.register({
 		}
 	},
 
-	'#Menu-help' : {
+	'#Menu-Help' : {
 		onclick : function() {
 			var w = window.open(this.getElementsByTagName('a')[0].href, 'help');
 			w.focus();
