@@ -249,6 +249,10 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.AddForm.js');
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.BatchActions.js');
 		
+		// navigator
+		Requirements::css(SAPPHIRE_DIR . '/css/SilverStripeNavigator.css');
+		Requirements::javascript(SAPPHIRE_DIR . '/javascript/SilverStripeNavigator.js');
+		
 		Requirements::themedCSS('typography');
 
 		foreach (self::$extra_requirements['javascript'] as $file) {
@@ -1057,6 +1061,16 @@ class LeftAndMain extends Controller {
 		}
 
 		return "cms: $cmsVersion, sapphire: $sapphireVersion";
+	}
+	
+	/**
+	 * @return array
+	 */
+	function SwitchView() { 
+		if($page = $this->currentPage()) { 
+			$nav = SilverStripeNavigator::get_for_record($page); 
+			return $nav['items']; 
+		} 
 	}
 
 	/**
