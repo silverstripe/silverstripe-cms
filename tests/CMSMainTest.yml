@@ -62,3 +62,14 @@ SiteConfig_CreateTopLevelGroups:
    createtoplevelgroups1:
       siteconfigid:  1
       GroupID: =>Group.rooteditusers
+PageComment:
+    Comment1:
+        Name: Person
+        Comment: Very cool page
+        NeedsModeration: 1
+        EmailAddress: person@server.com
+    Comment2:
+        Name: Someone
+        Comment: I am a person
+        NeedsModeration: 0
+        EmailAddress: someone@somewhere.com
