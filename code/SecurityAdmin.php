@@ -76,6 +76,8 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			if($permissionField) $permissionField->setHiddenPermissions(self::$hidden_permissions);
 		}
 		
+		$this->extend('updateEditForm', $form);
+		
 		return $form;
 	}
 	
@@ -128,6 +130,8 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			$fields,
 			$actions
 		);
+		
+		$this->extend('updateEditForm', $form);
 
 		return $form;
 	}
