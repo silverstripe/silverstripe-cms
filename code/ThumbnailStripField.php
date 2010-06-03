@@ -22,6 +22,9 @@ class ThumbnailStripField extends FormField {
 	}
 	
 	function FieldHolder() {
+		Requirements::javascript(THIRDPARTY_DIR . '/prototype/prototype.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/behaviour/behaviour.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/javascript/prototype_improvements.js');
 		Requirements::javascript(CMS_DIR . '/javascript/ThumbnailStripField.js');
 		return $this->renderWith('ThumbnailStripField');
 	}
