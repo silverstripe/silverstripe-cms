@@ -241,6 +241,13 @@ JS;
 		return $result;
 	}
 
+	/**
+	 * Save the current sites {@link SiteConfig} into the database
+	 *
+	 * @param array $data 
+	 * @param Form $form 
+	 * @return FormResponse
+	 */
 	function save_siteconfig($data, $form) {
 		$siteConfig = SiteConfig::current_site_config();
 		$form->saveInto($siteConfig);
