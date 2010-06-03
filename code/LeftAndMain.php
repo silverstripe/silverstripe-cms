@@ -624,7 +624,7 @@ class LeftAndMain extends Controller {
 				);
 				
 				// Update all dependent pages
-				if($virtualPages = DataObject::get("VirtualPage", "CopyContentFromID = $node->ID")) {
+				if($virtualPages = DataObject::get("VirtualPage", "\"CopyContentFromID\" = $node->ID")) {
 					foreach($virtualPages as $virtualPage) {
 						$statusUpdates['modified'][$virtualPage->ID] = array(
 							'TreeTitle' => $virtualPage->TreeTitle()
