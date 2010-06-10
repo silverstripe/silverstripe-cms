@@ -48,6 +48,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'restore',
 		'revert',
 		'rollback',
+		'RootForm',
 		'sidereport',
 		'submit',
 		'unpublish',
@@ -516,7 +517,8 @@ JS;
 		
 		$fields->push(new HiddenField('ID', '', $siteConfig->ID)); 
 		
-		$form = new Form($this, "EditForm", $fields, $siteConfig->getCMSActions());
+		$form = new Form($this, 'RootForm', $fields, $siteConfig->getCMSActions());
+		$form->setHTMLID('Form_EditForm');
 		$form->loadDataFrom($siteConfig);
 		
 		$this->extend('updateEditForm', $form);
