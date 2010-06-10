@@ -421,7 +421,9 @@ HTML;
 		if($fileList != "''") {
 			$files = DataObject::get("File", "\"File\".\"ID\" IN ($fileList)");
 			if($files) {
+				$brokenPages = array();
 				foreach($files as $file) {
+					$brokenPages = array_merge($brokenPages, $file->BackLinkTracking()->toArray());
 					if($file instanceof Image) {
 						$file->deleteFormattedImages();
 					}
@@ -431,13 +433,12 @@ HTML;
 					$file->delete();
 					$numFiles++;
 				}
-				if($brokenPages = Notifications::getItems('BrokenLink')) {
+				if($brokenPages) {
 					$brokenPageList = "  ". _t('AssetAdmin.NOWBROKEN', 'These pages now have broken links:') . '</ul>';
 					foreach($brokenPages as $brokenPage) {
 						$brokenPageList .= "<li style=&quot;font-size: 65%&quot;>" . $brokenPage->Breadcrumbs(3, true) . '</li>';
 					}
 					$brokenPageList .= '</ul>';
-					Notifications::notifyByEmail("BrokenLink", "Page_BrokenLinkEmail");
 				} else {
 					$brokenPageList = '';
 				}
