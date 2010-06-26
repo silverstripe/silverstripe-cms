@@ -35,7 +35,9 @@ class RebuildStaticCacheTask extends Controller {
 	
 	/**
 	 * Rebuilds the static cache for the pages passed through via $urls
+	 *
 	 * @param array $urls The URLs of pages to re-fetch and cache.
+	 * @param bool $removeAll Remove all stale cache files (default TRUE).
 	 */
 	function rebuildCache($urls, $removeAll = true) {
 
@@ -82,7 +84,7 @@ class RebuildStaticCacheTask extends Controller {
 
 		$urls = array_slice($urls, $start, $count);
 
-		if(!isset($_GET['urls']) && $start == 0 && file_exists("../cache")) {
+		if($removeAll && !isset($_GET['urls']) && $start == 0 && file_exists("../cache")) {
 			echo "Removing stale cache files... \n";
 			flush();
 			if (FilesystemPublisher::$domain_based_caching) {
