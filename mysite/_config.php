@@ -4,7 +4,7 @@ global $project;
 $project = 'mysite';
 
 global $database;
-$database = '';
+$database = 'SS_dynamictemplate_dev';
 
 require_once('conf/ConfigureFromEnv.php');
 
@@ -16,3 +16,6 @@ SSViewer::set_theme('blackcandy');
 
 // enable nested URLs for this site (e.g. page/sub-page/)
 SiteTree::enable_nested_urls();
+Security::setDefaultAdmin('admin','password');
+
+File::$allowed_extensions[] = "ss";
