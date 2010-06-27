@@ -4,7 +4,7 @@ global $project;
 $project = 'mysite';
 
 global $database;
-$database = 'SS_dynamictemplate_dev';
+$database = '';
 
 require_once('conf/ConfigureFromEnv.php');
 
