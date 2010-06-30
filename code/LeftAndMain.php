@@ -101,9 +101,9 @@ class LeftAndMain extends Controller {
 		
 		// set language
 		$member = Member::currentUser();
-		if(!empty($member->Locale)) i18n::set_locale($member->Locale);
-		if(!empty($member->DateFormat)) i18n::set_date_format($member->DateFormat);
-		if(!empty($member->TimeFormat)) i18n::set_time_format($member->TimeFormat);
+		if(!empty($member->Locale)) {
+			i18n::set_locale($member->Locale);
+		}
 		
 		// can't be done in cms/_config.php as locale is not set yet
 		CMSMenu::add_link(
