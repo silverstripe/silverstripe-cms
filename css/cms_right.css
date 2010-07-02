@@ -29,9 +29,7 @@
 	.right form .text,
 	.right form .field span.readonly,
 	.right form .field span.readonly i,
-	.right form div.TableListField table i,
-	.right form .calendardate input,
-	.right form .dropdowntime input {
+	.right form div.TableListField table i {
 		font-size: 12px;
 	}
 		.right form .field span.readonly {
@@ -81,12 +79,16 @@
 			.right form .countrydropdown select option {
 				font-size: 12px;
 			}
+			
 	.right form .field .middleColumn {
 		display: block;
 		background: #e9e9e9;
 		padding: 3px;
 		width: 97%;
 	}
+		.right form .field .middleColumn .middleColumn {
+			padding: 0;
+		}
 	.right form .field.image .middleColumn,
 	.right form .field.simpleimagefield_disabled .middleColumn {
 		padding-bottom:0;
@@ -117,6 +119,21 @@
 	width: 96%;
 }
 
+.right form .datetime .date, 
+.right form .datetime .time {
+	float: left;
+	clear: none;
+	width: auto;
+}		
+
+	.right form .datetime .middleColumn {
+		width: auto;
+	}
+
+	.right form .datetime .date input, 
+	.right form .datetime .time input{
+		width: auto;
+	}
 
 .right form textarea,
 .right form input.text,
@@ -207,13 +224,6 @@
 .right form .fieldgroup input, 
 .right form .fieldgroup select {
 	width: auto;
-}
-
-#right form .calendardate, .calendardate {
-	position: relative;
-}
-#right form .calendardate input, .calendardate input {
-	width: 8em;
 }
 
 #SiteTreeFilterDate {
