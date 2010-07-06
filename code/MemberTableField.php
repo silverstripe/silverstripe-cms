@@ -355,7 +355,6 @@ class MemberTableField extends ComplexTableField {
 			$form->saveInto($childData);
 			$childData->write();
 		} catch(ValidationException $e) {
-			var_dump($e->getResult());
 			$form->sessionMessage($e->getResult()->message(), 'bad');
 			return Director::redirectBack();
 		}
