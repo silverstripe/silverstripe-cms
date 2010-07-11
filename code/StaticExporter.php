@@ -4,8 +4,16 @@
  * It creates a huge number of folders each containing an index.html file.
  * This preserves the URL naming format.
  * 
- * Requirements: Unix Filesystem supporting symlinking.
- * Doesn't work on Windows.
+ * Requirements: Unix Filesystem supporting symlinking. Doesn't work on Windows.
+ * 
+ * <b>Usage</b>
+ * 
+ * The exporter can only be invoked through a URL. Usage on commandline (through [sake](sake)) is not possible at the moment, as we're sending a file to the browser for download.
+ * 
+ * <pre>http://localhost/StaticExporter/export</pre>
+ * 
+ * Specify a custom baseurl in case you want to deploy the static HTML pages on a different host:
+ * <pre>http://localhost/StaticExporter/export?baseurl=http://example.com</pre>
  * 
  * @see StaticPublisher
  * 

@@ -1,7 +1,10 @@
 <?php
 /**
- * The object manages the main CMS menu.
- * See {@link LeftAndMain::init()} for example usage.
+ * The object manages the main CMS menu. See {@link LeftAndMain::init()} for example usage.
+ * 
+ * The menu will be automatically populated with menu items for subclasses of {@link LeftAndMain}. 
+ * That is, for each class in the CMS that creates an administration panel, a CMS menu item will be created. 
+ * The default configuration will also include a 'help' link to the SilverStripe user documentation.
  * 
  * @package cms
  * @subpackage content
