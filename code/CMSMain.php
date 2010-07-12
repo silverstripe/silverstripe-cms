@@ -223,7 +223,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 		public function SiteTreeFilterDateField() {
 			$dateField = new DateField('SiteTreeFilterDate');
-			$dateField->setConfig('showcalendar', true);
+			
+			// TODO Enabling this means we load jQuery UI by default in the CMS,
+			// which is a pretty big performance hit in 2.4 (where the library isn't used for other parts
+			// of the interface).
+			// $dateField->setConfig('showcalendar', true);
+			
 			return $dateField->Field();
 		}
 		public function SiteTreeFilterPageTypeField() {
