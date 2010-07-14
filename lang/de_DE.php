@@ -16,6 +16,7 @@ if(array_key_exists('de_DE', $lang) && is_array($lang['de_DE'])) {
 	$lang['de_DE'] = $lang['en_US'];
 }
 
+$lang['de_DE']['']['CHOOSEPAGE'] = 'Bitte wählen Sie links einen Eintrag aus.';
 $lang['de_DE']['AssetAdmin']['CHOOSEFILE'] = 'Datei auswählen:';
 $lang['de_DE']['AssetAdmin']['DELETEDX'] = '%s Dateien gelöscht';
 $lang['de_DE']['AssetAdmin']['FILESREADY'] = 'Dateien bereit zum hochladen:';
@@ -72,8 +73,29 @@ $lang['de_DE']['AssetTableField']['SWFFILEOPTIONS'] = 'SWF Datei Optionen';
 $lang['de_DE']['AssetTableField']['TITLE'] = 'Titel';
 $lang['de_DE']['AssetTableField']['TYPE'] = 'Typ';
 $lang['de_DE']['AssetTableField']['URL'] = 'URL';
+$lang['de_DE']['BrokenLinksReport']['BROKENLINKS'] = 'Defekte Links';
+$lang['de_DE']['BrokenLinksReport']['CheckSiteDropdownDraft'] = 'Vorschau-Site';
+$lang['de_DE']['BrokenLinksReport']['CheckSiteDropdownPublished'] = 'Veröffentlichte Site';
+$lang['de_DE']['BrokenLinksReport']['ColumnDateLastModified'] = 'Zuletzt geändert';
+$lang['de_DE']['BrokenLinksReport']['ColumnDateLastPublished'] = 'Zuletzt veröffentlicht';
+$lang['de_DE']['BrokenLinksReport']['ColumnProblemType'] = 'Problemtyp';
+$lang['de_DE']['BrokenLinksReport']['ColumnURL'] = 'URL';
+$lang['de_DE']['BrokenLinksReport']['HasBrokenFile'] = 'Defekter Dateilink';
+$lang['de_DE']['BrokenLinksReport']['HasBrokenLink'] = 'Defekter Link';
+$lang['de_DE']['BrokenLinksReport']['HasBrokenLinkAndFile'] = 'Defekter Link und defekter Dateilink';
+$lang['de_DE']['BrokenLinksReport']['HoverTitleEditPage'] = 'Seite editieren';
+$lang['de_DE']['BrokenLinksReport']['ReasonDropdown'] = 'Zu überprüfendes Problem';
+$lang['de_DE']['BrokenLinksReport']['ReasonDropdownBROKENFILE'] = 'Defekter Dateilink';
+$lang['de_DE']['BrokenLinksReport']['ReasonDropdownBROKENLINK'] = 'Defekter Link';
+$lang['de_DE']['BrokenLinksReport']['ReasonDropdownRPBROKENLINK'] = 'Weiterleitungen, die auf eine nicht vorhandene Seite verweisen';
+$lang['de_DE']['BrokenLinksReport']['ReasonDropdownVPBROKENLINK'] = 'Virtuelle Seiten, die auf eine nicht vorhandene Seite verweisen';
+$lang['de_DE']['BrokenLinksReport']['RedirectorNonExistent'] = 'Weiterleitung, die auf eine nicht vorhandene Seite verweist';
+$lang['de_DE']['BrokenLinksReport']['VirtualPageNonExistent'] = 'Virtuelle Seite, die auf eine nicht vorhandene Seite verweist';
+$lang['de_DE']['CMSBatchActions']['DELETED_DRAFT_PAGES'] = '%d Seiten von der Entwurfsansicht gelöscht, %d fehlgeschlagen';
 $lang['de_DE']['CMSBatchActions']['DELETED_PAGES'] = '%d Seiten von der veröffentlichten Site gelöscht.';
+$lang['de_DE']['CMSBatchActions']['DELETE_DRAFT_PAGES'] = 'Von der Entwurfsansicht löschen';
 $lang['de_DE']['CMSBatchActions']['DELETE_PAGES'] = 'Von veröffentlichter Site löschen';
+$lang['de_DE']['CMSBatchActions']['DELETING_DRAFT_PAGES'] = 'Lösche ausgewählte Seiten von der Entwurfsansicht';
 $lang['de_DE']['CMSBatchActions']['DELETING_PAGES'] = 'Ausgewählte Seiten werden von der veröffentlichten Site gelöscht.';
 $lang['de_DE']['CMSBatchActions']['PUBLISHED_PAGES'] = '%d Seiten veröffentlicht';
 $lang['de_DE']['CMSBatchActions']['PUBLISHING_PAGES'] = 'Veröffentliche Seiten';
@@ -83,6 +105,8 @@ $lang['de_DE']['CMSBatchActions']['UNPUBLISHING_PAGES'] = 'Veröffentlichung wir
 $lang['de_DE']['CMSBatchActions']['UNPUBLISH_PAGES'] = 'Veröffentlichung zurücknehmen';
 $lang['de_DE']['CMSMain']['ACCESS'] = 'Zugriff auf %s im CMS';
 $lang['de_DE']['CMSMain']['ACCESSALLINTERFACES'] = 'Zugriff auf alle CMS Schnittstellen';
+$lang['de_DE']['CMSMain']['ACCESSALLINTERFACESHELP'] = 'Hebt alle bereichspezifischen Berechtigungen auf.';
+$lang['de_DE']['CMSMain']['ACCESS_HELP'] = 'Seiteninhalt im CMS anzeigen. Anzeige- und Bearbeitungsberechtigungen können sowohl seitenspezifische als auch über die globalen Inhaltsberechtigungen gesetzt werden.';
 $lang['de_DE']['CMSMain']['CANCEL'] = 'Abbrechen';
 $lang['de_DE']['CMSMain']['CHOOSEREPORT'] = '(Report wählen)';
 $lang['de_DE']['CMSMain']['COMPARINGV'] = 'Sie vergleichen Versionen #%d und #%d';
@@ -139,6 +163,7 @@ $lang['de_DE']['CMSMain_left.ss']['ADDEDNOTPUB'] = 'Als Entwurf gespeichert, noc
 $lang['de_DE']['CMSMain_left.ss']['ADDSEARCHCRITERIA'] = 'Kriterien hinzufügen';
 $lang['de_DE']['CMSMain_left.ss']['BATCHACTIONS'] = 'Batch-Aktionen';
 $lang['de_DE']['CMSMain_left.ss']['CHANGED'] = 'geändert';
+$lang['de_DE']['CMSMain_left.ss']['CLEAR'] = 'leeren';
 $lang['de_DE']['CMSMain_left.ss']['CLEARTITLE'] = 'Suche löschen und alle Inhalte anzeigen';
 $lang['de_DE']['CMSMain_left.ss']['CLOSEBOX'] = 'Hier klicken, um Box zu schließen';
 $lang['de_DE']['CMSMain_left.ss']['COMPAREMODE'] = 'Vergleichsmodus (paarweise auswählen)';
@@ -160,6 +185,7 @@ $lang['de_DE']['CMSMain_left.ss']['PUBLISHCONFIRM'] = 'Veröffentliche die marki
 $lang['de_DE']['CMSMain_left.ss']['SEARCH'] = 'Suche';
 $lang['de_DE']['CMSMain_left.ss']['SEARCHTITLE'] = 'Durchsuche URL, Titel, Menü Titel &amp; Inhalt';
 $lang['de_DE']['CMSMain_left.ss']['SELECTPAGESACTIONS'] = 'Markieren Sie die Seiten die Sie ändern möchten und wählen dann eine der Aktionen:';
+$lang['de_DE']['CMSMain_left.ss']['SHOWITEMS'] = 'Zeige:';
 $lang['de_DE']['CMSMain_left.ss']['SHOWONLYCHANGED'] = 'Zeige nur veränderte Seiten';
 $lang['de_DE']['CMSMain_left.ss']['SHOWUNPUB'] = 'Zeige unveröffentlichte Versionen';
 $lang['de_DE']['CMSMain_left.ss']['SITECONTENT TITLE'] = 'Seitenbaum';
@@ -177,6 +203,8 @@ $lang['de_DE']['CMSMain_versions.ss']['NOTPUB'] = 'Nicht veröffentlicht';
 $lang['de_DE']['CMSMain_versions.ss']['PUBR'] = 'Veröffentlicher';
 $lang['de_DE']['CMSMain_versions.ss']['UNKNOWN'] = 'Unbekannt';
 $lang['de_DE']['CMSMain_versions.ss']['WHEN'] = 'Wann';
+$lang['de_DE']['CMSSiteTreeFilter']['ALL'] = 'Alle Seiten';
+$lang['de_DE']['CMSSiteTreeFilter']['DELETEDPAGES'] = 'Alle Seiten, einschließlich gelöschter';
 $lang['de_DE']['CommentAdmin']['ACCEPT'] = 'Akzeptiert';
 $lang['de_DE']['CommentAdmin']['APPROVED'] = '%s Kommentare akzeptiert.';
 $lang['de_DE']['CommentAdmin']['APPROVEDCOMMENTS'] = 'Überprüfte Kommentare';
@@ -221,6 +249,21 @@ $lang['de_DE']['CommentTableField.ss']['NOITEMSFOUND'] = 'Keine Einträge gefund
 $lang['de_DE']['CommentTableField.ss']['SPAM'] = 'Spam';
 $lang['de_DE']['ComplexTableField']['CLOSEPOPUP'] = 'Popup schließen';
 $lang['de_DE']['ComplexTableField']['SUCCESSADD'] = 'Hinzugefügt %s %s %s';
+$lang['de_DE']['Group']['IMPORTTABTITLE'] = 'Import';
+$lang['de_DE']['Group']['RolesAddEditLink'] = 'Rollen hinzufügen/editieren';
+$lang['de_DE']['GroupImportForm']['Help1'] = '<p>Eine oder mehrere Gruppen im <em>CSV</em>-Format (kommaseparierte Werte) importieren. <small><a href="#" class="toggle-advanced">Erweiterte Nutzung</a></small></p>';
+$lang['de_DE']['GroupImportForm']['Help2'] = '<div class="advanced">
+<h4>Erweiterte Nutzung</h4>
+<ul>
+<li>Gültige Spalten: <em>%s</em></li>
+<li>Vorhandene Gruppen werden über ihren eindeutigen <em>Code</em> ermittelt und mit den Werten aus der importierten Datei aktualisiert.</li>
+<li>Gruppen-Hierarchien können über die <em>ParentCode</em> Spalte definiert werden.</li>
+<li>Berechtigungscodes können über die Splate <em>PermissionCode</em> zugewiesen werden, vorhandene Berechtigungen werden nicht gelöscht.</li>
+</ul>
+</div>';
+$lang['de_DE']['GroupImportForm']['ResultCreated'] = '%d Gruppen erstellt';
+$lang['de_DE']['GroupImportForm']['ResultDeleted'] = '%d Gruppen gelöscht';
+$lang['de_DE']['GroupImportForm']['ResultUpdated'] = '%d Gruppen aktualisiert';
 $lang['de_DE']['ImageEditor.ss']['ACTIONS'] = 'Aktionen';
 $lang['de_DE']['ImageEditor.ss']['ADJUST'] = 'anpassen';
 $lang['de_DE']['ImageEditor.ss']['APPLY'] = 'Übernehmen';
@@ -279,11 +322,40 @@ $lang['de_DE']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Seitenansicht:';
 $lang['de_DE']['LeftAndMain']['STATUSPUBLISHEDSUCCESS'] = '\'%s\' erfolgreich veröffentlicht';
 $lang['de_DE']['LeftAndMain']['STATUSTO'] = 'Status geändert: \'%s\'';
 $lang['de_DE']['LeftAndMain']['TREESITECONTENT'] = 'Seiteninhalt';
+$lang['de_DE']['LeftAndMain_right.ss']['WELCOMETO'] = 'Willkommen zu';
+$lang['de_DE']['MathSpamProtection']['EIGHT'] = 'acht';
+$lang['de_DE']['MathSpamProtection']['EIGHTEEN'] = 'achtzehn';
+$lang['de_DE']['MathSpamProtection']['ELEVEN'] = 'elf';
+$lang['de_DE']['MathSpamProtection']['FIFTEEN'] = 'fünfzehn';
+$lang['de_DE']['MathSpamProtection']['FIVE'] = 'fünf';
+$lang['de_DE']['MathSpamProtection']['FOUR'] = 'vier';
+$lang['de_DE']['MathSpamProtection']['FOURTEEN'] = 'vierzehn';
+$lang['de_DE']['MathSpamProtection']['NINE'] = 'neun';
+$lang['de_DE']['MathSpamProtection']['ONE'] = 'ein';
+$lang['de_DE']['MathSpamProtection']['SEVEN'] = 'sieben';
+$lang['de_DE']['MathSpamProtection']['SEVENTEEN'] = 'siebzehn';
+$lang['de_DE']['MathSpamProtection']['SIX'] = 'sechs';
+$lang['de_DE']['MathSpamProtection']['SIXTEEN'] = 'sechzehn';
+$lang['de_DE']['MathSpamProtection']['TEN'] = 'zehn';
+$lang['de_DE']['MathSpamProtection']['THIRTEEN'] = 'dreizehn';
+$lang['de_DE']['MathSpamProtection']['THREE'] = 'drei';
 $lang['de_DE']['MathSpamProtection']['TWELVE'] = 'zwölf';
 $lang['de_DE']['MathSpamProtection']['TWO'] = 'zwei';
 $lang['de_DE']['MathSpamProtection']['WHATIS'] = 'Was gibt %s plus %s ?';
 $lang['de_DE']['MathSpamProtection']['ZERO'] = 'null';
+$lang['de_DE']['MemberImportForm']['Help1'] = '<p>Mitglieder im <em>CSV</em>-Format (kommaseparierte Werte) importieren. <small><a href="#" class="toggle-advanced">Erweiterte Nutzung</a></small></p>';
+$lang['de_DE']['MemberImportForm']['Help2'] = '<div class="advanced">
+<h4>Advanced usage</h4>
+<ul>
+<li>Gültige Spalten: <em>%s</em></li>
+<li>Vorhandene Mitglieder werden über ihren eindeutigen <em>Code</em> ermittelt und mit den Werten aus der importierten Datei aktualisiert.</li>
+<li>Gruppen können über die Spalte <em>Gruppen</em> zugewiesen werden. Gruppen werden über ihren eindeutigen <em>Code</em> ermittelt, mehrere Gruppen können durch ein Komma getrennt werden. Vorhandene Gruppenzugehörigkeiten werden nicht gelöscht.</li>
+</ul>
+</div>';
+$lang['de_DE']['MemberImportForm']['ResultCreated'] = '%d Mitglieder erstellt';
+$lang['de_DE']['MemberImportForm']['ResultDeleted'] = '%d Mitglieder gelöscht';
 $lang['de_DE']['MemberImportForm']['ResultNone'] = 'Keine Änderungen';
+$lang['de_DE']['MemberImportForm']['ResultUpdated'] = '%d Mitglieder aktualisiert';
 $lang['de_DE']['MemberList.ss']['FILTER'] = 'filtern';
 $lang['de_DE']['MemberList_PageControls.ss']['DISPLAYING'] = 'Anzeigen';
 $lang['de_DE']['MemberList_PageControls.ss']['FIRSTMEMBERS'] = 'Mitglieder';
@@ -388,18 +460,27 @@ $lang['de_DE']['PageCommentInterface_singlecomment.ss']['ISNTSPAM'] = 'dieser Ko
 $lang['de_DE']['PageCommentInterface_singlecomment.ss']['ISSPAM'] = 'dieser Kommentar ist Spam';
 $lang['de_DE']['PageCommentInterface_singlecomment.ss']['PBY'] = 'Erstellt von';
 $lang['de_DE']['PageCommentInterface_singlecomment.ss']['REMCOM'] = 'entferne diesen Kommentar';
+$lang['de_DE']['Permission']['CMS_ACCESS_CATEGORY'] = 'CMS Zugriff';
+$lang['de_DE']['Permissions']['PERMISSIONS_CATEGORY'] = 'Rollen und Zugriffsberechtigungen';
 $lang['de_DE']['ReportAdmin']['MENUTITLE'] = 'Berichte';
 $lang['de_DE']['ReportAdmin_left.ss']['REPORTS'] = 'Berichte';
 $lang['de_DE']['ReportAdmin_right.ss']['WELCOME1'] = 'Willkommen bei der';
 $lang['de_DE']['ReportAdmin_right.ss']['WELCOME2'] = 'Berichtebereich. Bitte wählen Sie einen Bericht auf der linken Seite.';
 $lang['de_DE']['ReportAdmin_SiteTree.ss']['REPORTS'] = 'Berichte';
+$lang['de_DE']['SecurityAdmin']['ACCESS_HELP'] = 'Benutzer hinzufügen, anzeigen und editieren sowie diesen Berechtigungen und Rollen zuweisen.';
 $lang['de_DE']['SecurityAdmin']['ADDMEMBER'] = 'Mitglied hinzufügen';
+$lang['de_DE']['SecurityAdmin']['APPLY_ROLES'] = 'Rollen zu Gruppen zuweisen';
+$lang['de_DE']['SecurityAdmin']['APPLY_ROLES_HELP'] = 'Möglichkeit die Zuweisungen von Rollen zu Gruppen zu editieren. Erfordert Zugriff auf den Bereich "Sicherheit".';
 $lang['de_DE']['SecurityAdmin']['EDITPERMISSIONS'] = 'Bearbeiten der Rechte und IP-Adressen für jede Gruppe';
+$lang['de_DE']['SecurityAdmin']['EDITPERMISSIONS_HELP'] = 'Möglichkeit Berechtigungen und IP-Adressen einer Gruppen zu editieren. Erfordert Zugriff auf den Bereich "Sicherheit".';
+$lang['de_DE']['SecurityAdmin']['MemberListCaution'] = 'Achtung: Das Entfernen von Mitgliedern aus dieser Liste löscht diese auch aus der Datenbank sowie die entsprechenden Gruppenzuweisungen.';
 $lang['de_DE']['SecurityAdmin']['MENUTITLE'] = 'Sicherheit';
 $lang['de_DE']['SecurityAdmin']['MENUTITLE'] = 'Sicherheit';
 $lang['de_DE']['SecurityAdmin']['NEWGROUP'] = 'Neue Gruppe';
 $lang['de_DE']['SecurityAdmin']['SAVE'] = 'Speichern';
 $lang['de_DE']['SecurityAdmin']['SGROUPS'] = 'Sicherheitsgruppen';
+$lang['de_DE']['SecurityAdmin']['TABIMPORT'] = 'Import';
+$lang['de_DE']['SecurityAdmin']['TABROLES'] = 'Rollen';
 $lang['de_DE']['SecurityAdmin_left.ss']['CREATE'] = 'Erstellen';
 $lang['de_DE']['SecurityAdmin_left.ss']['DEL'] = 'Löschen';
 $lang['de_DE']['SecurityAdmin_left.ss']['DELGROUPS'] = 'Lösche die markierten Gruppen';
@@ -408,16 +489,29 @@ $lang['de_DE']['SecurityAdmin_left.ss']['GO'] = 'Los';
 $lang['de_DE']['SecurityAdmin_left.ss']['SECGROUPS'] = 'Sicherheitsgruppen';
 $lang['de_DE']['SecurityAdmin_left.ss']['SELECT'] = 'Markieren Sie die Seiten, die Sie löschen wollen und klicken Sie danach auf die Schaltfläche';
 $lang['de_DE']['SecurityAdmin_left.ss']['TOREORG'] = 'Um Ihre Seiten neu zu ordnen, ziehen Sie die Seiten an die gewünschte Stelle.';
+$lang['de_DE']['SecurityAdmin_MemberImportForm']['BtnImport'] = 'Import';
+$lang['de_DE']['SecurityAdmin_MemberImportForm']['FileFieldLabel'] = 'CSV Datei <small>(Erlaubte Dateierweiterung: *.csv)</small>';
 $lang['de_DE']['SecurityAdmin_right.ss']['WELCOME1'] = 'Willkommen bei dem';
 $lang['de_DE']['SecurityAdmin_right.ss']['WELCOME2'] = 'Sicherheitsadministrationsbereich. Bitte wählen Sie eine Gruppe auf der linken Seite.';
+$lang['de_DE']['SideReport']['BROKENFILES'] = 'Seiten mit defekten Links';
+$lang['de_DE']['SideReport']['BROKENLINKS'] = 'Seiten mit defekten Links';
+$lang['de_DE']['SideReport']['BrokenLinksGroupTitle'] = 'Defekte Links';
+$lang['de_DE']['SideReport']['BROKENREDIRECTORPAGES'] = 'Weiterleitungen, die auf gelöschte Seiten verweisen';
+$lang['de_DE']['SideReport']['BROKENVIRTUALPAGES'] = 'Virtuelle Seiten, die auf gelöschte Seiten verweisen';
+$lang['de_DE']['SideReport']['ContentGroupTitle'] = 'Inhaltsberichte';
 $lang['de_DE']['SideReport']['EMPTYPAGES'] = 'Leere Seiten';
 $lang['de_DE']['SideReport']['LAST2WEEKS'] = 'Seiten die in den letzten zwei Wochen hinzugefügt wurden';
+$lang['de_DE']['SideReport']['OtherGroupTitle'] = 'andere';
+$lang['de_DE']['SideReport']['ParameterLiveCheckbox'] = 'Veröffentlichte Seite überprüfen';
 $lang['de_DE']['SideReport']['REPEMPTY'] = 'Der %s -Bericht ist leer';
 $lang['de_DE']['SideReport']['TODO'] = 'zu tun';
 $lang['de_DE']['StaticExporter']['BASEURL'] = 'Ausgangs URL';
 $lang['de_DE']['StaticExporter']['EXPORTTO'] = 'Exportieren in diesen Ordner';
 $lang['de_DE']['StaticExporter']['FOLDEREXPORT'] = 'Ordner zum exportieren';
 $lang['de_DE']['StaticExporter']['NAME'] = 'statischer Exporter';
+$lang['de_DE']['TableListField.ss']['NOITEMSFOUND'] = 'Keine Einträge gefunden';
+$lang['de_DE']['TableListField.ss']['SORTASC'] = 'Aufsteigend sortieren';
+$lang['de_DE']['TableListField.ss']['SORTDESC'] = 'Absteigend sortieren';
 $lang['de_DE']['TableListField_PageControls.ss']['DISPLAYING'] = 'Zeige';
 $lang['de_DE']['TableListField_PageControls.ss']['OF'] = 'von';
 $lang['de_DE']['TableListField_PageControls.ss']['TO'] = 'bis';
@@ -434,9 +528,12 @@ $lang['de_DE']['ViewArchivedEmail.ss']['CANACCESS'] = 'Sie können unter folgend
 $lang['de_DE']['ViewArchivedEmail.ss']['HAVEASKED'] = 'Sie haben darum gebeten, den Inhalt unserer Seite zu sehen, am';
 $lang['de_DE']['WaitingOn.ss']['ATO'] = 'zugewiesen an';
 $lang['de_DE']['WidgetAreaEditor.ss']['AVAILABLE'] = 'Verfügbare Widgets';
+$lang['de_DE']['WidgetAreaEditor.ss']['AVAILWIDGETS'] = 'Klicken Sie auf den Titel eines Widgets um diese für diese Seite zu verwenden.';
 $lang['de_DE']['WidgetAreaEditor.ss']['INUSE'] = 'Zur Zeit genutzte Widgets';
 $lang['de_DE']['WidgetAreaEditor.ss']['NOAVAIL'] = 'Zur Zeit sind keine Widgets verfügbar.';
 $lang['de_DE']['WidgetAreaEditor.ss']['TOADD'] = 'Um ein Widget hinzuzufügen, klicken Sie es an und ziehen es hier her.';
+$lang['de_DE']['WidgetAreaEditor.ss']['TOSORT'] = 'Bereits eingebundene Widgets können per Drag&Drap umsortiert werden.';
+$lang['de_DE']['WidgetDescription.ss']['CLICKTOADDWIDGET'] = 'Klick Sie hier um das Widget hinzuzufünge';
 $lang['de_DE']['WidgetEditor.ss']['DELETE'] = 'Gelöscht';
 
 ?>

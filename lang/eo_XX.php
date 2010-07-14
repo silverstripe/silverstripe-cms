@@ -16,6 +16,7 @@ if(array_key_exists('eo_XX', $lang) && is_array($lang['eo_XX'])) {
 	$lang['eo_XX'] = $lang['en_US'];
 }
 
+$lang['eo_XX']['']['CHOOSEPAGE'] = 'Bonvolu elekti eron maldekstre';
 $lang['eo_XX']['AssetAdmin']['CHOOSEFILE'] = 'Elekti dosieron:';
 $lang['eo_XX']['AssetAdmin']['DELETEDX'] = 'Forigis %s dosierojn.%s';
 $lang['eo_XX']['AssetAdmin']['FILESREADY'] = 'Dosieroj pretaj por alŝutiĝi:';
@@ -72,8 +73,29 @@ $lang['eo_XX']['AssetTableField']['SWFFILEOPTIONS'] = 'Agordoj de SWF-dosieroj';
 $lang['eo_XX']['AssetTableField']['TITLE'] = 'Titolo';
 $lang['eo_XX']['AssetTableField']['TYPE'] = 'Tipo';
 $lang['eo_XX']['AssetTableField']['URL'] = 'URL';
+$lang['eo_XX']['BrokenLinksReport']['BROKENLINKS'] = 'Raporto pri rompitaj ligiloj';
+$lang['eo_XX']['BrokenLinksReport']['CheckSiteDropdownDraft'] = 'Malneta retejo';
+$lang['eo_XX']['BrokenLinksReport']['CheckSiteDropdownPublished'] = 'Publika retejo';
+$lang['eo_XX']['BrokenLinksReport']['ColumnDateLastModified'] = 'Dato de lasta modifo';
+$lang['eo_XX']['BrokenLinksReport']['ColumnDateLastPublished'] = 'Dato de lasta publikigo';
+$lang['eo_XX']['BrokenLinksReport']['ColumnProblemType'] = 'Problemtipo';
+$lang['eo_XX']['BrokenLinksReport']['ColumnURL'] = 'URL';
+$lang['eo_XX']['BrokenLinksReport']['HasBrokenFile'] = 'havas rompitan dosieron';
+$lang['eo_XX']['BrokenLinksReport']['HasBrokenLink'] = 'havas rompitan ligilon';
+$lang['eo_XX']['BrokenLinksReport']['HasBrokenLinkAndFile'] = 'havas rompitan ligilon kaj dosieron';
+$lang['eo_XX']['BrokenLinksReport']['HoverTitleEditPage'] = 'Redakti paĝon';
+$lang['eo_XX']['BrokenLinksReport']['ReasonDropdown'] = 'Problemo kontrolota';
+$lang['eo_XX']['BrokenLinksReport']['ReasonDropdownBROKENFILE'] = 'Rompita dosiero';
+$lang['eo_XX']['BrokenLinksReport']['ReasonDropdownBROKENLINK'] = 'Rompita ligilo';
+$lang['eo_XX']['BrokenLinksReport']['ReasonDropdownRPBROKENLINK'] = 'Alidirekta paĝo direktanta al neekzistanta paĝo';
+$lang['eo_XX']['BrokenLinksReport']['ReasonDropdownVPBROKENLINK'] = 'Virtuala paĝo direktanta al neekzistanta paĝo';
+$lang['eo_XX']['BrokenLinksReport']['RedirectorNonExistent'] = 'alidirekta paĝo direktanta al neekzistanta paĝo';
+$lang['eo_XX']['BrokenLinksReport']['VirtualPageNonExistent'] = 'virtuala paĝo direktanta al neekzistanta paĝo';
+$lang['eo_XX']['CMSBatchActions']['DELETED_DRAFT_PAGES'] = 'Forigis %d paĝojn el la malneta retejo; %d malsukcesis';
 $lang['eo_XX']['CMSBatchActions']['DELETED_PAGES'] = 'Forigis %d paĝojn el la publikigita retejo';
+$lang['eo_XX']['CMSBatchActions']['DELETE_DRAFT_PAGES'] = 'Forigi el malneta retejo';
 $lang['eo_XX']['CMSBatchActions']['DELETE_PAGES'] = 'Forigi el publikigita retejo.';
+$lang['eo_XX']['CMSBatchActions']['DELETING_DRAFT_PAGES'] = 'Forigas elektitajn paĝojn el la malneta retejo';
 $lang['eo_XX']['CMSBatchActions']['DELETING_PAGES'] = 'Forigas elektitajn paĝojn el la publikigita retejo.';
 $lang['eo_XX']['CMSBatchActions']['PUBLISHED_PAGES'] = 'Publikigis %d paĝojn';
 $lang['eo_XX']['CMSBatchActions']['PUBLISHING_PAGES'] = 'Publikigas paĝojn';
@@ -81,8 +103,10 @@ $lang['eo_XX']['CMSBatchActions']['PUBLISH_PAGES'] = 'Publikigi';
 $lang['eo_XX']['CMSBatchActions']['UNPUBLISHED_PAGES'] = 'Malpublikigis %d paĝojn';
 $lang['eo_XX']['CMSBatchActions']['UNPUBLISHING_PAGES'] = 'Malpublikigas paĝojn';
 $lang['eo_XX']['CMSBatchActions']['UNPUBLISH_PAGES'] = 'Malpublikigi';
-$lang['eo_XX']['CMSMain']['ACCESS'] = 'Aliro al \'%s\' (%s)';
+$lang['eo_XX']['CMSMain']['ACCESS'] = 'Aliro al sekcio \'%s\'';
 $lang['eo_XX']['CMSMain']['ACCESSALLINTERFACES'] = 'Aliro al ĉiuj interfacoj de CMS';
+$lang['eo_XX']['CMSMain']['ACCESSALLINTERFACESHELP'] = 'Nuligas pli specifajn alirajn agordojn.';
+$lang['eo_XX']['CMSMain']['ACCESS_HELP'] = 'Permesi vidigi la sekcion kiu enhavas paĝarbon kaj enhavon. Vidigaj kaj redaktaj permesoj estas trakteblaj per paĝspecifaj fallistoj, kaj ankaŭ la apartaj "Enhavaj permesoj".';
 $lang['eo_XX']['CMSMain']['CANCEL'] = 'Rezigni';
 $lang['eo_XX']['CMSMain']['CHOOSEREPORT'] = '(Elektu raporton)';
 $lang['eo_XX']['CMSMain']['COMPARINGV'] = 'Vi komparas versiojn #%d kaj #%d';
@@ -92,7 +116,7 @@ $lang['eo_XX']['CMSMain']['DESCREMOVED'] = 'kaj %s posteuloj';
 $lang['eo_XX']['CMSMain']['EMAIL'] = 'Retpoŝto';
 $lang['eo_XX']['CMSMain']['GO'] = 'Ek';
 $lang['eo_XX']['CMSMain']['MENUTITLE'] = 'Enhavo de Retejo';
-$lang['eo_XX']['CMSMain']['MENUTITLE'] = 'Enhavo de Retejo';
+$lang['eo_XX']['CMSMain']['MENUTITLE'] = 'Paĝoj';
 $lang['eo_XX']['CMSMain']['MENUTITLEOPT'] = 'Naviga Etikedo';
 $lang['eo_XX']['CMSMain']['METADESCOPT'] = 'Priskribo';
 $lang['eo_XX']['CMSMain']['METAKEYWORDSOPT'] = 'Ŝlosilvortoj';
@@ -139,6 +163,7 @@ $lang['eo_XX']['CMSMain_left.ss']['ADDEDNOTPUB'] = 'Enmetita en la projektan ret
 $lang['eo_XX']['CMSMain_left.ss']['ADDSEARCHCRITERIA'] = 'Enmetu Kriteriojn...';
 $lang['eo_XX']['CMSMain_left.ss']['BATCHACTIONS'] = 'Staplaj Agoj';
 $lang['eo_XX']['CMSMain_left.ss']['CHANGED'] = 'ŝanĝita';
+$lang['eo_XX']['CMSMain_left.ss']['CLEAR'] = 'Vakigi';
 $lang['eo_XX']['CMSMain_left.ss']['CLEARTITLE'] = 'Vakigi la serĉon kaj vidigi ĉiujn erojn';
 $lang['eo_XX']['CMSMain_left.ss']['CLOSEBOX'] = 'alklaku por fermi kadron';
 $lang['eo_XX']['CMSMain_left.ss']['COMPAREMODE'] = 'Kompara reĝimo (alklaku je 2 malsupre)';
@@ -160,9 +185,10 @@ $lang['eo_XX']['CMSMain_left.ss']['PUBLISHCONFIRM'] = 'Eldoni la elektitajn paĝ
 $lang['eo_XX']['CMSMain_left.ss']['SEARCH'] = 'Serĉi';
 $lang['eo_XX']['CMSMain_left.ss']['SEARCHTITLE'] = 'Serĉu tra URL, Titolo, Menua Titolo, kaj Enhavo';
 $lang['eo_XX']['CMSMain_left.ss']['SELECTPAGESACTIONS'] = 'Elektu la paĝojn ŝanĝotajn kaj alklaku agon:';
+$lang['eo_XX']['CMSMain_left.ss']['SHOWITEMS'] = 'Vidigi:';
 $lang['eo_XX']['CMSMain_left.ss']['SHOWONLYCHANGED'] = 'Montru nur ŝanĝitajn paĝojn';
 $lang['eo_XX']['CMSMain_left.ss']['SHOWUNPUB'] = 'Montri nepublikigitajn versiojn';
-$lang['eo_XX']['CMSMain_left.ss']['SITECONTENT TITLE'] = 'Enhavo kaj Strukturo de Retejo ';
+$lang['eo_XX']['CMSMain_left.ss']['SITECONTENT TITLE'] = 'Paĝa arbo';
 $lang['eo_XX']['CMSMain_left.ss']['SITEREPORTS'] = 'Raportoj de Retejo';
 $lang['eo_XX']['CMSMain_right.ss']['ANYMESSAGE'] = 'Ĉu vi havas mesaĝon por via redaktoro?';
 $lang['eo_XX']['CMSMain_right.ss']['CHOOSEPAGE'] = 'Bonvolu elekti paĝon maldekstre.';
@@ -177,6 +203,8 @@ $lang['eo_XX']['CMSMain_versions.ss']['NOTPUB'] = 'Ne eldonita';
 $lang['eo_XX']['CMSMain_versions.ss']['PUBR'] = 'Eldonejo';
 $lang['eo_XX']['CMSMain_versions.ss']['UNKNOWN'] = 'Nekonata';
 $lang['eo_XX']['CMSMain_versions.ss']['WHEN'] = 'Kiam';
+$lang['eo_XX']['CMSSiteTreeFilter']['ALL'] = 'Ĉiuj eroj';
+$lang['eo_XX']['CMSSiteTreeFilter']['DELETEDPAGES'] = 'Ĉiuj paĝoj, inkluzive forigitajn';
 $lang['eo_XX']['CommentAdmin']['ACCEPT'] = 'Akcepti';
 $lang['eo_XX']['CommentAdmin']['APPROVED'] = 'Akceptis %s komentojn.';
 $lang['eo_XX']['CommentAdmin']['APPROVEDCOMMENTS'] = 'Aprobitaj Komentoj';
@@ -221,6 +249,21 @@ $lang['eo_XX']['CommentTableField.ss']['NOITEMSFOUND'] = 'Ne trovis erojn';
 $lang['eo_XX']['CommentTableField.ss']['SPAM'] = 'spamo';
 $lang['eo_XX']['ComplexTableField']['CLOSEPOPUP'] = 'Fermi Ŝprucfenestron';
 $lang['eo_XX']['ComplexTableField']['SUCCESSADD'] = 'Enmetis %s %s %s';
+$lang['eo_XX']['Group']['IMPORTTABTITLE'] = 'Importi';
+$lang['eo_XX']['Group']['RolesAddEditLink'] = 'Aldoni/redakti rolojn';
+$lang['eo_XX']['GroupImportForm']['Help1'] = '<p>Importi unu aŭ pliaj grupojn en formato <em>CSV</em> (perkome disigitaj valoroj values). <small><a href="#" class="toggle-advanced">Vidigi spertulan uzadon</a></small></p>';
+$lang['eo_XX']['GroupImportForm']['Help2'] = '<div class="advanced">
+<h4>Spertula uzado</h4>
+<ul>
+<li>Permesitaj kolumnoj: <em>%s</em></li>
+<li>Ekzistantaj grupoj estas kongrueblaj laŭ ili unika <em>Koda</em> valoro, kaj aktualigeblaj per eventualaj novaj valoroj el la importita dosiero</li>
+<li>Grupaj hierarkioj estas kreeblaj per kolumno <em>PatroKodo</em>.</li>
+<li>Permkodoj estas agordeblaj per kolumno <em>PermisKodo</em>. Ekzistantaj permiskodoj ne vakiĝos.</li>
+</ul>
+</div>';
+$lang['eo_XX']['GroupImportForm']['ResultCreated'] = 'Kreis %d grupojn';
+$lang['eo_XX']['GroupImportForm']['ResultDeleted'] = 'Forigis %d grupojn';
+$lang['eo_XX']['GroupImportForm']['ResultUpdated'] = 'Aktualigis %d grupojn';
 $lang['eo_XX']['ImageEditor.ss']['ACTIONS'] = 'agoj';
 $lang['eo_XX']['ImageEditor.ss']['ADJUST'] = 'ĝustigi';
 $lang['eo_XX']['ImageEditor.ss']['APPLY'] = 'apliki';
@@ -279,6 +322,40 @@ $lang['eo_XX']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Paĝa vido:';
 $lang['eo_XX']['LeftAndMain']['STATUSPUBLISHEDSUCCESS'] = '\'%s\' sukcese publikigita';
 $lang['eo_XX']['LeftAndMain']['STATUSTO'] = 'Stato ŝanĝiĝis al \'%s\'';
 $lang['eo_XX']['LeftAndMain']['TREESITECONTENT'] = 'Enhavo de Retejo';
+$lang['eo_XX']['LeftAndMain_right.ss']['WELCOMETO'] = 'Bonvenon al';
+$lang['eo_XX']['MathSpamProtection']['EIGHT'] = 'ok';
+$lang['eo_XX']['MathSpamProtection']['EIGHTEEN'] = 'dekok';
+$lang['eo_XX']['MathSpamProtection']['ELEVEN'] = 'dekunu';
+$lang['eo_XX']['MathSpamProtection']['FIFTEEN'] = 'dekkvin';
+$lang['eo_XX']['MathSpamProtection']['FIVE'] = 'kvin';
+$lang['eo_XX']['MathSpamProtection']['FOUR'] = 'kvar';
+$lang['eo_XX']['MathSpamProtection']['FOURTEEN'] = 'dekkvar';
+$lang['eo_XX']['MathSpamProtection']['NINE'] = 'naŭ';
+$lang['eo_XX']['MathSpamProtection']['ONE'] = 'unu';
+$lang['eo_XX']['MathSpamProtection']['SEVEN'] = 'sep';
+$lang['eo_XX']['MathSpamProtection']['SEVENTEEN'] = 'deksep';
+$lang['eo_XX']['MathSpamProtection']['SIX'] = 'ses';
+$lang['eo_XX']['MathSpamProtection']['SIXTEEN'] = 'dekses';
+$lang['eo_XX']['MathSpamProtection']['TEN'] = 'dek';
+$lang['eo_XX']['MathSpamProtection']['THIRTEEN'] = 'dektri';
+$lang['eo_XX']['MathSpamProtection']['THREE'] = 'tri';
+$lang['eo_XX']['MathSpamProtection']['TWELVE'] = 'dekdu';
+$lang['eo_XX']['MathSpamProtection']['TWO'] = 'du';
+$lang['eo_XX']['MathSpamProtection']['WHATIS'] = 'Kiom estas %s plus %s?';
+$lang['eo_XX']['MathSpamProtection']['ZERO'] = 'nul';
+$lang['eo_XX']['MemberImportForm']['Help1'] = '<p>Gravaj membroj en <em>CSV-formato</em> (perkome disigitaj valoroj ). <small><a href="#" class="toggle-advanced">Vidigi spertulan uzadon</a></small></p>';
+$lang['eo_XX']['MemberImportForm']['Help2'] = '<div class="advanced">
+<h4>Spertula uzado</h4>
+<ul>
+<li>Permesitaj kolumnoj: <em>%s</em></li>
+<li>Kongruas ekzistantajn membrojn laŭ ilia unika agordo <em>Kodo</em>, kaj aktualigas ilin laŭ eventualaj novaj valoroj el la importita dosiero.</li>
+<li>Povas agordi grupojn laŭ la kolumno <em>Grupoj</em>. Identigas grupojn laŭ ilia agordo <em>Kodo</em>, povas apartigi pluroblan grupon per komoj. Ne vakigas ekzistantajn grupojn.</li>
+</ul>
+</div>';
+$lang['eo_XX']['MemberImportForm']['ResultCreated'] = 'Kreis %d membrojn';
+$lang['eo_XX']['MemberImportForm']['ResultDeleted'] = 'Forigis %d membrojn';
+$lang['eo_XX']['MemberImportForm']['ResultNone'] = 'Neniu ŝanĝo';
+$lang['eo_XX']['MemberImportForm']['ResultUpdated'] = 'Aktualigis %d membrojn';
 $lang['eo_XX']['MemberList.ss']['FILTER'] = 'Filtrilo';
 $lang['eo_XX']['MemberList_PageControls.ss']['DISPLAYING'] = 'Vidigi';
 $lang['eo_XX']['MemberList_PageControls.ss']['FIRSTMEMBERS'] = 'membroj';
@@ -300,6 +377,8 @@ $lang['eo_XX']['MemberTableField']['ADDEDTOGROUP'] = 'Enmetis membron en grupon'
 $lang['eo_XX']['MemberTableField']['ADDINGFIELD'] = 'Malsukcesis aldoni';
 $lang['eo_XX']['MemberTableField']['ANYGROUP'] = 'Ajna grupo';
 $lang['eo_XX']['MemberTableField']['ASC'] = 'Kreske';
+$lang['eo_XX']['MemberTableField']['DeleteTitleText'] = 'Forigi el ĉi tiu grupo';
+$lang['eo_XX']['MemberTableField']['DeleteTitleTextDatabase'] = 'Forigi el datumbazo kaj ĉiuj grupoj';
 $lang['eo_XX']['MemberTableField']['DESC'] = 'Malkreske';
 $lang['eo_XX']['MemberTableField']['EMAIL'] = 'Retpoŝto';
 $lang['eo_XX']['MemberTableField']['ERRORADDINGUSER'] = 'Eraro okazis aldonante la uzanton al la grupo: %s';
@@ -381,18 +460,27 @@ $lang['eo_XX']['PageCommentInterface_singlecomment.ss']['ISNTSPAM'] = 'ĉi tiu k
 $lang['eo_XX']['PageCommentInterface_singlecomment.ss']['ISSPAM'] = 'ĉi tiu komento estas spamo';
 $lang['eo_XX']['PageCommentInterface_singlecomment.ss']['PBY'] = 'Sendita de';
 $lang['eo_XX']['PageCommentInterface_singlecomment.ss']['REMCOM'] = 'forigu ĉi tiun komenton';
+$lang['eo_XX']['Permission']['CMS_ACCESS_CATEGORY'] = 'CMS-aliro';
+$lang['eo_XX']['Permissions']['PERMISSIONS_CATEGORY'] = 'Roloj kaj aliraj permesoj';
 $lang['eo_XX']['ReportAdmin']['MENUTITLE'] = 'Raportoj';
 $lang['eo_XX']['ReportAdmin_left.ss']['REPORTS'] = 'Raportoj';
 $lang['eo_XX']['ReportAdmin_right.ss']['WELCOME1'] = 'Bonvenon al la';
 $lang['eo_XX']['ReportAdmin_right.ss']['WELCOME2'] = 'raporta sekcio. Bonvolu elekti specifan raporton maldekstre.';
 $lang['eo_XX']['ReportAdmin_SiteTree.ss']['REPORTS'] = 'Raportoj';
+$lang['eo_XX']['SecurityAdmin']['ACCESS_HELP'] = 'Permesi vidigi, enmeti kaj redakti uzantojn, aldone al agordi permesojn kaj rolojn al ili.';
 $lang['eo_XX']['SecurityAdmin']['ADDMEMBER'] = 'Enmeti Membron';
+$lang['eo_XX']['SecurityAdmin']['APPLY_ROLES'] = 'Apliki roloj al grupoj';
+$lang['eo_XX']['SecurityAdmin']['APPLY_ROLES_HELP'] = 'Eblo redakti la rolojn agorditajn al grupo. Bezonas la permesilon "Aliro al sekcio \'Sekureco\'"';
 $lang['eo_XX']['SecurityAdmin']['EDITPERMISSIONS'] = 'Agordi permesojn kaj IP-adresojn ĉe ĉiu grupo';
+$lang['eo_XX']['SecurityAdmin']['EDITPERMISSIONS_HELP'] = 'Eblo redakti Permesojn kaj IP-adresojn por grupo. Bezonas la permesilon "Aliro al sekcio \'Sekureco\'"';
+$lang['eo_XX']['SecurityAdmin']['MemberListCaution'] = 'Averto: forigi membrojn el ĉi tiu listo forigos ilin el ĉiuj grupoj kaj la datumbazo.';
 $lang['eo_XX']['SecurityAdmin']['MENUTITLE'] = 'Sekureco';
 $lang['eo_XX']['SecurityAdmin']['MENUTITLE'] = 'Sekureco';
 $lang['eo_XX']['SecurityAdmin']['NEWGROUP'] = 'Nova Grupo';
 $lang['eo_XX']['SecurityAdmin']['SAVE'] = 'Konservi';
 $lang['eo_XX']['SecurityAdmin']['SGROUPS'] = 'Grupoj de sekureco';
+$lang['eo_XX']['SecurityAdmin']['TABIMPORT'] = 'Importi';
+$lang['eo_XX']['SecurityAdmin']['TABROLES'] = 'Roloj';
 $lang['eo_XX']['SecurityAdmin_left.ss']['CREATE'] = 'Krei';
 $lang['eo_XX']['SecurityAdmin_left.ss']['DEL'] = 'Forigi';
 $lang['eo_XX']['SecurityAdmin_left.ss']['DELGROUPS'] = 'Forigu la elektitajn grupojn';
@@ -401,16 +489,29 @@ $lang['eo_XX']['SecurityAdmin_left.ss']['GO'] = 'Ek';
 $lang['eo_XX']['SecurityAdmin_left.ss']['SECGROUPS'] = 'Sekurecaj Grupoj';
 $lang['eo_XX']['SecurityAdmin_left.ss']['SELECT'] = 'Elektu la paĝojn forigotajn kaj poste alklaku la butonon sube';
 $lang['eo_XX']['SecurityAdmin_left.ss']['TOREORG'] = 'Por reorganizi vian retejon, ŝovu la paĝojn laŭ deziro.';
+$lang['eo_XX']['SecurityAdmin_MemberImportForm']['BtnImport'] = 'Importi';
+$lang['eo_XX']['SecurityAdmin_MemberImportForm']['FileFieldLabel'] = 'CSV-dosiero <small>(Permesitaj sufiksoj: *.csv)</small>';
 $lang['eo_XX']['SecurityAdmin_right.ss']['WELCOME1'] = 'Bonvenon al la';
 $lang['eo_XX']['SecurityAdmin_right.ss']['WELCOME2'] = 'sekcio por mastrumi sekurecon. Bonvolu elekti grupon maldekstre.';
+$lang['eo_XX']['SideReport']['BROKENFILES'] = 'Paĝoj kun rompitaj dosieroj';
+$lang['eo_XX']['SideReport']['BROKENLINKS'] = 'Paĝoj kun rompitaj ligiloj';
+$lang['eo_XX']['SideReport']['BrokenLinksGroupTitle'] = 'Raporto pri rompitaj ligiloj';
+$lang['eo_XX']['SideReport']['BROKENREDIRECTORPAGES'] = 'RedirektoPaĝoj indikantaj forigitajn paĝojn';
+$lang['eo_XX']['SideReport']['BROKENVIRTUALPAGES'] = 'VirtualajPaĝoj indikantaj forigitajn paĝojn';
+$lang['eo_XX']['SideReport']['ContentGroupTitle'] = 'Raporto pri enhavo';
 $lang['eo_XX']['SideReport']['EMPTYPAGES'] = 'Malplenaj paĝoj';
 $lang['eo_XX']['SideReport']['LAST2WEEKS'] = 'Paĝoj redaktitaj dum la lastaj 2 semajnoj';
+$lang['eo_XX']['SideReport']['OtherGroupTitle'] = 'Alia';
+$lang['eo_XX']['SideReport']['ParameterLiveCheckbox'] = 'Kontroli publikan retejon';
 $lang['eo_XX']['SideReport']['REPEMPTY'] = 'La raporto %s estas malplena.';
 $lang['eo_XX']['SideReport']['TODO'] = 'Farota';
 $lang['eo_XX']['StaticExporter']['BASEURL'] = 'Baza URL';
 $lang['eo_XX']['StaticExporter']['EXPORTTO'] = 'Eksporti al tiu dosierujo';
 $lang['eo_XX']['StaticExporter']['FOLDEREXPORT'] = 'Dosierujo al kiu eksporti';
 $lang['eo_XX']['StaticExporter']['NAME'] = 'Statika eksportilo';
+$lang['eo_XX']['TableListField.ss']['NOITEMSFOUND'] = 'Ne trovis eron';
+$lang['eo_XX']['TableListField.ss']['SORTASC'] = 'Ordigi kreskante';
+$lang['eo_XX']['TableListField.ss']['SORTDESC'] = 'Ordigi malkreskante';
 $lang['eo_XX']['TableListField_PageControls.ss']['DISPLAYING'] = 'Vidigas';
 $lang['eo_XX']['TableListField_PageControls.ss']['OF'] = 'de';
 $lang['eo_XX']['TableListField_PageControls.ss']['TO'] = 'al';
@@ -427,9 +528,12 @@ $lang['eo_XX']['ViewArchivedEmail.ss']['CANACCESS'] = 'Vi povas aliri la enarkiv
 $lang['eo_XX']['ViewArchivedEmail.ss']['HAVEASKED'] = 'Vi petis vidi la enhavon de nia retejo je';
 $lang['eo_XX']['WaitingOn.ss']['ATO'] = 'taksita al';
 $lang['eo_XX']['WidgetAreaEditor.ss']['AVAILABLE'] = 'Disponeblaj Fenestraĵoj';
+$lang['eo_XX']['WidgetAreaEditor.ss']['AVAILWIDGETS'] = 'Alklaku fenestraĵan titolon sube por uzi ĝin en ĉi tiu paĝo.';
 $lang['eo_XX']['WidgetAreaEditor.ss']['INUSE'] = 'Fenestraĵoj nun uzataj';
 $lang['eo_XX']['WidgetAreaEditor.ss']['NOAVAIL'] = 'Neniu fenestraĵo estas disponebla.';
 $lang['eo_XX']['WidgetAreaEditor.ss']['TOADD'] = 'Por enmeti fenestraĵojn, ŝovu ilin ĉi tien el la maldekstra zono.';
+$lang['eo_XX']['WidgetAreaEditor.ss']['TOSORT'] = 'Por ordigi aktuale uzatajn fenestraĵojn en ĉi tiu paĝo, ŝovu ilin supren kaj malsupren.';
+$lang['eo_XX']['WidgetDescription.ss']['CLICKTOADDWIDGET'] = 'Alklaku por aldoni ĉi tiun fenestraĵon';
 $lang['eo_XX']['WidgetEditor.ss']['DELETE'] = 'Forigi';
 
 ?>

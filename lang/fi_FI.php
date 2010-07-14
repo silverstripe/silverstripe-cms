@@ -238,6 +238,7 @@ $lang['fi_FI']['LeftAndMain.ss']['SSWEB'] = 'Silverstripe-verkkosivusto';
 $lang['fi_FI']['LeftAndMain.ss']['VIEWINDRAFT'] = 'Näytä tämä sivu luonnossivustolla';
 $lang['fi_FI']['LeftAndMain.ss']['VIEWINPUBLISHED'] = 'Näytä tämä sivu julkaistulla sivustolla';
 $lang['fi_FI']['LeftAndMain.ss']['VIEWPAGEIN'] = 'Sivun katselu:';
+$lang['fi_FI']['LeftAndMain']['STATUSPUBLISHEDSUCCESS'] = '\'%s\' julkaistiin onnistuneesti';
 $lang['fi_FI']['LeftAndMain']['STATUSTO'] = 'Tila vaihdettiin tilaksi %s';
 $lang['fi_FI']['LeftAndMain']['TREESITECONTENT'] = 'Sivuston sisältö';
 $lang['fi_FI']['MemberList.ss']['FILTER'] = 'Suodata';
