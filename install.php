@@ -1003,15 +1003,6 @@ global \$databaseConfig;
 	"path" => '{$dbConfig['path']}',
 );
 
-// Sites running on the following servers will be
-// run in development mode. See
-// http://doc.silverstripe.org/doku.php?id=configuration
-// for a description of what dev mode does.
-Director::set_dev_servers(array(
-	'localhost',
-	'127.0.0.1'
-));
-
 MySQLDatabase::set_connection_charset('utf8');
 
 // This line set's the current theme. More themes can be
