@@ -192,7 +192,7 @@ if($installFromCli && ($req->hasErrors() || $dbReq->hasErrors())) {
 
 if((isset($_REQUEST['go']) || $installFromCli) && !$req->hasErrors() && !$dbReq->hasErrors() && $adminConfig['username'] && $adminConfig['password']) {
 	// Confirm before reinstalling
-	if(!isset($_REQUEST['force_reinstall']) && !$installFromCli && $alreadyInstalled) {
+	if(!$installFromCli && $alreadyInstalled) {
 		include('sapphire/dev/install/config-form.html');
 		
 	} else {
@@ -570,12 +570,15 @@ class InstallRequirements {
 		$this->testing($testDetails);
 		$filename = $this->getBaseDir() . str_replace("/", DIRECTORY_SEPARATOR,$filename);
 		
-		if(!is_writeable($filename)) {
+		if(file_exists($filename)) $isWriteable = is_writeable($filename);
+		else $isWriteable = is_writeable(dirname($filename));
+		
+		if(!$isWriteable) {
 			if(function_exists('posix_getgroups')) {
 				$userID = posix_geteuid();
 				$user = posix_getpwuid($userID);
 
-				$currentOwnerID = fileowner($filename);
+				$currentOwnerID = fileowner(file_exists($filename) ? $filename : dirname($filename) );
 				$currentOwner = posix_getpwuid($currentOwnerID);
 
 				$testDetails[2] .= "User '$user[name]' needs to be able to write to this file:\n$filename\n\nThe file is currently owned by '$currentOwner[name]'.  ";
