@@ -311,10 +311,10 @@ JS
 			/* Names: $sFileNames */
 			
 			var form = parent.document.getElementById('Form_EditForm');
-			form.getPageFromServer(form.elements.ID.value);
 			parent.statusMessage("{$statusMessage}","{$status}");
 			$jsErrors
 			parent.document.getElementById('sitetree').getTreeNodeByIdx( "{$folder->ID}" ).getElementsByTagName('a')[0].className += ' contents';
+			form.getPageFromServer(form.elements.ID.value);
 			</script>
 HTML;
 	}
