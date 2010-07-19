@@ -332,7 +332,9 @@ class MemberTableField extends ComplexTableField {
 		// Set default groups - also implemented in MemberTableField_Popup::__construct()
 		if($this->group) {
 			$groupsField = $form->Fields()->dataFieldByName('Groups');
-			if($groupsField) $groupsField->setValue($this->group->ID);
+			// TODO Needs to be a string value (not int) because of TreeMultiselectField->getItems(),
+			// see http://open.silverstripe.org/ticket/5836
+			if($groupsField) $groupsField->setValue((string)$this->group->ID);
 		}
 		
 		return $form;
