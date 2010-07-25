@@ -25,7 +25,7 @@ CMSForm.prototype = {
 		ajaxActionsAtTop(this.id, 'form_actions_' + this.formName, this.formName);
 		
 		// Update the nav items down the bottom
-		if($('AjaxSwitchView')) {
+		if($('SwitchView') && $('AjaxSwitchView')) {
 			$('SwitchView').innerHTML = $('AjaxSwitchView').innerHTML;
 			$('AjaxSwitchView').innerHTML = '';
 			Behaviour.apply('SwitchView'); // This is needed so calendar still works
