@@ -180,6 +180,8 @@ $lang['en_US']['CMSMain_left.ss']['ENABLEDRAGGING'] = array(
 	'Allow drag &amp; drop reordering',
 	PR_HIGH
 );
+$lang['en_US']['CMSMain_left.ss']['FILTERLABELPAGETYPE'] = 'Page type';
+$lang['en_US']['CMSMain_left.ss']['FILTERLABELTEXT'] = 'Text';
 $lang['en_US']['CMSMain_left.ss']['GO'] = 'Go';
 $lang['en_US']['CMSMain_left.ss']['HIDDEN'] = 'hidden';
 $lang['en_US']['CMSMain_left.ss']['KEY'] = 'Key:';
@@ -242,6 +244,8 @@ $lang['en_US']['CommentAdmin_right.ss']['WELCOME1'] = 'Welcome to the';
 $lang['en_US']['CommentAdmin_right.ss']['WELCOME2'] = 'comment management. Please select a folder in the tree on the left.';
 $lang['en_US']['CommentTableField']['FILTER'] = 'Filter';
 $lang['en_US']['CommentTableField']['SEARCH'] = 'Search';
+$lang['en_US']['CommentTableField']['SELECTALL'] = 'All';
+$lang['en_US']['CommentTableField']['SELECTNONE'] = 'None';
 $lang['en_US']['CommentTableField.ss']['APPROVE'] = 'approve';
 $lang['en_US']['CommentTableField.ss']['APPROVECOMMENT'] = 'Approve this comment';
 $lang['en_US']['CommentTableField.ss']['DELETE'] = 'delete';
@@ -540,8 +544,7 @@ $lang['en_US']['StaticExporter']['BASEURL'] = 'Base URL';
 $lang['en_US']['StaticExporter']['EXPORTTO'] = 'Export to that folder';
 $lang['en_US']['StaticExporter']['FOLDEREXPORT'] = 'Folder to export to';
 $lang['en_US']['StaticExporter']['NAME'] = 'Static exporter';
-$lang['en_US']['TableListField']['ALL'] = 'All';
-$lang['en_US']['TableListField']['NONE'] = 'None';
+$lang['en_US']['TableListField']['SELECT'] = 'Select:';
 $lang['en_US']['TableListField.ss']['NOITEMSFOUND'] = 'No items found';
 $lang['en_US']['TableListField.ss']['SORTASC'] = 'Sort in ascending order';
 $lang['en_US']['TableListField.ss']['SORTDESC'] = 'Sort in descending order';

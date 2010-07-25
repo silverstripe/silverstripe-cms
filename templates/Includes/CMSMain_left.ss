@@ -29,7 +29,7 @@
 					<input type="hidden" id="SiteTreeIsFiltered" value="0" />
 					
 					<div id="SearchBox">
-						<div class="SearchCriteria">Text:</div>
+						<div class="SearchCriteria"><% _t('FILTERLABELTEXT', 'Text') %>:</div>
 						<input type="text" id="SiteTreeSearchTerm" class='SearchCriteria' name="SiteTreeSearchTerm" />
 					</div>
 					
@@ -38,7 +38,7 @@
 						<div id="InputSiteTreeFilterDate">$SiteTreeFilterDateField</div>
 					</div>
 					<div id='ContainerSiteTreeFilterClassName' class='SearchCriteriaContainer' style="display:none">
-						<div id="TextSiteTreeFilterClassName" class="SearchCriteria">Page type: </div>
+						<div id="TextSiteTreeFilterClassName" class="SearchCriteria"><% _t('FILTERLABELPAGETYPE', 'Page type') %>: </div>
 						<div id="InputSiteTreeFilterClassName">$SiteTreeFilterPageTypeField</div>
 					</div>
 
@@ -53,7 +53,7 @@
 						<select id="SiteTreeFilterAddCriteria">
 							<option value=""><% _t('ADDSEARCHCRITERIA','Add Criteria') %></option>
 							<option value="SiteTreeFilterDate"><% _t('EDITEDSINCE','Edited Since') %></option>
-							<option value="SiteTreeFilterClassName">Page type</option>
+							<option value="SiteTreeFilterClassName"><% _t('FILTERLABELPAGETYPE', 'Page type') %></option>
 							<% control SiteTreeFilterOptions %>
 		        				<option value="$Column">$Title</option>
 							<% end_control %>
