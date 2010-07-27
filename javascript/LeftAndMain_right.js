@@ -151,6 +151,9 @@ CMSForm.prototype = {
 	 * Save the contens of the form, by submitting it and resetting is changed checker
 	 * on success.
 	 *
+         * @param ifChanged boolean     if true, only save changed fields
+         * @param callAfter function (optional) callback function to run after the AJAX request.
+         * @param action string   (optional, default is 'save') action to call via AJAX.
 	 * @param publish boolean (optional) whether to publish in addition to saving
 	 */
 	save: function(ifChanged, callAfter, action, publish) {
