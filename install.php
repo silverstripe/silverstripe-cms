@@ -277,40 +277,34 @@ class InstallRequirements {
 	 * @return boolean
 	 */
 	function isIIS() {
-		if(isset($_SERVER['SERVER_SOFTWARE'])) {
-			if(strpos($_SERVER['SERVER_SOFTWARE'], 'IIS/7') !== false) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	function isApache() {
-		$signature = !empty($_SERVER['SERVER_SIGNATURE'])
-			? $_SERVER['SERVER_SIGNATURE']
-			: @$_SERVER['SERVER_SOFTWARE'];
-		
-		$signature = strip_tags(trim($signature));
-		if($signature && strpos($signature, 'Apache') !== false) {
+		if(strpos($this->findWebserver(), 'IIS/7') !== false) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	function findWebserver() {
-		$webserver = strip_tags(trim(@$_SERVER['SERVER_SIGNATURE']));
-		if(!$webserver) {
-			if(isset($_SERVER['SERVER_SOFTWARE'])) {
-				if(strpos($_SERVER['SERVER_SOFTWARE'], 'IIS/7') !== false ||
-					strpos($_SERVER['SERVER_SOFTWARE'], 'Apache') !== false) {
-					$webserver = $_SERVER['SERVER_SOFTWARE'];
-				}
-			} else {
-				$webserver = "I can't tell what webserver you are running";
-			}
+	function isApache() {
+		if(strpos($this->findWebserver(), 'Apache') !== false) {
+			return true;
+		} else {
+			return false;
 		}
-		return $webserver;
+	}
+
+	/**
+	 * Find the webserver software running on the PHP host.
+	 * @return string Server software ("Unknown" if not able to find)
+	 */
+	function findWebserver() {
+		// Try finding from SERVER_SIGNATURE or SERVER_SOFTWARE
+		$webserver = @$_SERVER['SERVER_SIGNATURE'];
+		if(!$webserver) $webserver = @$_SERVER['SERVER_SOFTWARE'];
+
+		// If we still can't find it, this is a completely unknown server
+		if(!$webserver) $webserver = 'Unknown';
+
+		return strip_tags(trim($webserver));
 	}
 	
 	/**
@@ -915,7 +909,7 @@ class Installer extends InstallRequirements {
 			if(isset($_SESSION['StatsID']) && $_SESSION['StatsID']) {
 				$url .= '&ID=' . $_SESSION['StatsID'];
 			}
-			
+
 			@$_SESSION['StatsID'] = file_get_contents($url);
 		}
 		
