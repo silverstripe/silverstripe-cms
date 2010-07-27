@@ -294,17 +294,15 @@ class InstallRequirements {
 
 	/**
 	 * Find the webserver software running on the PHP host.
-	 * @return string Server software ("Unknown" if not able to find)
+	 * @return string|boolean Server software or boolean FALSE
 	 */
 	function findWebserver() {
 		// Try finding from SERVER_SIGNATURE or SERVER_SOFTWARE
 		$webserver = @$_SERVER['SERVER_SIGNATURE'];
 		if(!$webserver) $webserver = @$_SERVER['SERVER_SOFTWARE'];
 
-		// If we still can't find it, this is a completely unknown server
-		if(!$webserver) $webserver = 'Unknown';
-
-		return strip_tags(trim($webserver));
+		if($webserver) return strip_tags(trim($webserver));
+		else return false;
 	}
 	
 	/**
@@ -779,19 +777,16 @@ class InstallRequirements {
 			$this->error($testDetails);
 		}
 	}
-	
+
 	function isRunningWebServer($testDetails) {
 		$this->testing($testDetails);
-		if(function_exists('apache_get_modules') || stristr(@$_SERVER['SERVER_SIGNATURE'], 'Apache')) {
-			return true;
-		} elseif(strpos($_SERVER['SERVER_SOFTWARE'], 'IIS/7') !== false) {
+		if($testDetails[3]) {
 			return true;
 		} else {
 			$this->warning($testDetails);
 			return false;
 		}
 	}
-
 
 	// Must be PHP4 compatible
 	var $baseDir;
