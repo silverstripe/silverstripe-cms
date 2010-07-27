@@ -338,7 +338,7 @@ class InstallRequirements {
 		
 		$this->requireTempFolder(array('File permissions', 'Is the temporary folder writeable?', null));
 		
-		$this->isRunningWebServer(array("Webserver Configuration", "Server software", "Unknown web server", $webserver));
+		$this->isRunningWebServer(array("Webserver Configuration", "Server software", "Unknown", $webserver));
 		
 		if($isApache) {
 			$this->requireApacheRewriteModule('mod_rewrite', array("Webserver Configuration", "URL rewriting support", "You need mod_rewrite to use friendly URLs with SilverStripe, but it is not enabled."));
