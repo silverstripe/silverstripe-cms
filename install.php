@@ -1213,7 +1213,7 @@ HTML;
 	 * Show an installation status message.
 	 */
 	function statusMessage($msg) {
-		if(isset($_SERVER['HTTP_HOST'])) echo "<li>$msg</li>\n";
+		echo "<li>$msg</li>\n";
 		flush();
 	}
 }
