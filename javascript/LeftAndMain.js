@@ -392,9 +392,10 @@ var ss_MainLayout;
 				
 				$('#Form_EditForm').bind('load delete', function(e) {
 					var updatedSwitchView = $('#AjaxSwitchView');
-					console.debug(updatedSwitchView.html());
-					$('#SwitchView').html(updatedSwitchView.html());
-					updatedSwitchView.remove();
+					if(updatedSwitchView.length) {
+						$('#SwitchView').html(updatedSwitchView.html());
+						updatedSwitchView.remove();
+					}
 				});
 			}
 		});
