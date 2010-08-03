@@ -69,7 +69,6 @@ var ss_MainLayout;
 					var timerID = "timerLeftAndMainResize";
 					if (window[timerID]) clearTimeout(window[timerID]);
 					window[timerID] = setTimeout(function() {
-						console.debug(self._resizeChildren);
 						self._resizeChildren();
 					}, 200);
 				});

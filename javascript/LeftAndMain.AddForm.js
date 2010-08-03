@@ -128,7 +128,7 @@
 						allowed = selectedNode.hints.allowedChildren;
 					} else {
 						// Fallback to globals
-						allowed = siteTreeHints['Root'].allowedChildren;
+						allowed = (typeof siteTreeHints !== 'undefined') ? siteTreeHints['Root'].allowedChildren : [];
 					}
 					
 					// Re-add all allowed <option> to the dropdown
