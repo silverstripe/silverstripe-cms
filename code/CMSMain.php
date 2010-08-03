@@ -259,9 +259,10 @@ JS;
 		$siteConfig = SiteConfig::current_site_config();
 		$form->saveInto($siteConfig);
 		$siteConfig->write();
-		FormResponse::status_message('Saved site configuration', "good");
-		FormResponse::add("$('Form_EditForm').resetElements();");
-		return FormResponse::respond();
+		
+		$this->response->addHeader('X-Status', _t('LeftAndMain.SAVEDUP'));
+	
+		return $form->formHtmlContent();
 	}
 	/**
 	 * Get a database record to be managed by the CMS
