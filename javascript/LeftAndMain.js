@@ -62,7 +62,6 @@ var ss_MainLayout;
 				$(window).unload(function(){ layoutState.save('ss_MainLayout');});
 				
 				this._setupPinging();
-				this._resizeChildren();
 
 				// HACK Delay resizing to give jquery-ui tabs a change their dimensions
 				// through dynamically added css classes
@@ -70,9 +69,11 @@ var ss_MainLayout;
 					var timerID = "timerLeftAndMainResize";
 					if (window[timerID]) clearTimeout(window[timerID]);
 					window[timerID] = setTimeout(function() {
+						console.debug(self._resizeChildren);
 						self._resizeChildren();
 					}, 200);
 				});
+				$(window).resize();
 
 				// If tab has no nested tabs, set overflow to auto
 				$(this).find('.tab').not(':has(.tab)').css('overflow', 'auto');
