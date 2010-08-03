@@ -348,7 +348,7 @@
 				});
 			
 				// move submit button to the top
-				this.find('#ReportClass').after(this.find('.Actions'));
+				// this.find('#ReportClass').after(this.find('.Actions'));
 			
 				// links in results
 				this.find('td').bind('click', function(e) {
