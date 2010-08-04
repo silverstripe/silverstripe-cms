@@ -523,19 +523,18 @@ class ModelAdmin_CollectionController extends Controller {
 	 * @param SS_HTTPRequest $request
 	 */
 	function import($data, $form, $request) {
-		
+
 		$modelName = $data['ClassName'];
-		
+
 		if(!$this->showImportForm() || (is_array($this->showImportForm()) && !in_array($modelName,$this->showImportForm()))) return false;
 		$importers = $this->parentController->getModelImporters();
 		$importerClass = $importers[$modelName];
-		
+
 		$loader = new $importerClass($data['ClassName']);
-		
+
 		// File wasn't properly uploaded, show a reminder to the user
 		if(
 			empty($_FILES['_CsvFile']['tmp_name']) ||
-			array_search($_FILES['_CsvFile']['type'], array('text/csv', 'text/plain')) === false ||
 			file_get_contents($_FILES['_CsvFile']['tmp_name']) == ''
 		) {
 			$form->sessionMessage(_t('ModelAdmin.NOCSVFILE', 'Please browse for a CSV file to import'), 'good');
@@ -543,14 +542,14 @@ class ModelAdmin_CollectionController extends Controller {
 			return false;
 		}
 
-		if (!empty($data['EmptyBeforeImport']) && $data['EmptyBeforeImport']) { //clear database before import 	
+		if (!empty($data['EmptyBeforeImport']) && $data['EmptyBeforeImport']) { //clear database before import
 			$loader->deleteExistingRecords = true;
 		}
 		$results = $loader->load($_FILES['_CsvFile']['tmp_name']);
 
 		$message = '';
 		if($results->CreatedCount()) $message .= sprintf(
-			_t('ModelAdmin.IMPORTEDRECORDS', "Imported %s records."), 
+			_t('ModelAdmin.IMPORTEDRECORDS', "Imported %s records."),
 			$results->CreatedCount()
 		);
 		if($results->UpdatedCount()) $message .= sprintf(
@@ -562,10 +561,11 @@ class ModelAdmin_CollectionController extends Controller {
 			$results->DeletedCount()
 		);
 		if(!$results->CreatedCount() && !$results->UpdatedCount()) $message .= _t('ModelAdmin.NOIMPORT', "Nothing to import");
-		
+
 		$form->sessionMessage($message, 'good');
 		Director::redirectBack();
 	}
+	
 	
 	/**
 	 * Return the columns available in the column selection field.
