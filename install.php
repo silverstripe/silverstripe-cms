@@ -229,8 +229,8 @@ class InstallRequirements {
 				array(
 					"Database Configuration",
 					"Database server",
-					"I couldn't find a database server on '$databaseConfig[server]'",
-					$databaseConfig['server']
+					$databaseConfig['type'] == 'SQLiteDatabase' ? "I couldn't write to path '$databaseConfig[path]'" : "I couldn't find a database server on '$databaseConfig[server]'",
+					$databaseConfig['type'] == 'SQLiteDatabase' ? $databaseConfig['path'] : $databaseConfig['server']
 				)
 			)) {
 				if($this->requireDatabaseConnection(
