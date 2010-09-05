@@ -515,17 +515,15 @@ JS;
 	 */
 	function RootForm() {
 		$siteConfig = SiteConfig::current_site_config();
-		$fields = $siteConfig->getCMSFields(); 
-		if(Object::has_extension('SiteConfig',"Translatable")){ 
-			$fields->push(new HiddenField('Locale','', $siteConfig->Locale ));       
-		} 
-		
-		$fields->push(new HiddenField('ID', '', $siteConfig->ID)); 
-		
+		$fields = $siteConfig->getCMSFields();
+		if(Object::has_extension('SiteConfig',"Translatable")) {
+			$fields->push(new HiddenField('Locale','', $siteConfig->Locale));
+		}
+
 		$form = new Form($this, 'RootForm', $fields, $siteConfig->getCMSActions());
 		$form->setHTMLID('Form_EditForm');
 		$form->loadDataFrom($siteConfig);
-		
+
 		$this->extend('updateEditForm', $form);
 
 		return $form;
