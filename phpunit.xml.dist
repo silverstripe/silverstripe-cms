@@ -1,0 +1,38 @@
+<!-- 
+	Usage: 
+	 - "phpunit": Runs all tests in all folders
+	 - "phpunit sapphire/tests/": Run all tests of the sapphire module
+	 - "phpunit sapphire/tests/filesystem": Run all filesystem tests within the sapphire module
+	 - "phpunit sapphire/tests/filesystem/FolderTest.php": Run a single test
+	 - "phpunit <dash><dash>coverage-html assets/": Generate coverage report (replace <dash> with "-", requires xdebug)
+	
+	See http://www.phpunit.de/manual/current/en/textui.html for more commandline options.
+	Note: Doesn't regard _manifest_exclude flags in folders.
+	
+	Customize these settings by creating your own "phpunit.xml".
+	
+	See sapphire/dev/TestRunner.php for an alternative way to run unit tests
+	through the "sake" CLI tool.
+-->
+<phpunit 
+	bootstrap="/sapphire/tests/bootstrap.php"
+	colors="true"
+>
+	<testsuite name="Default">
+		<directory>./</directory>
+	</testsuite>
+	
+	<filter>
+		<blacklist>
+			<directory suffix=".php">sapphire/dev/</directory>
+			<directory suffix=".php">sapphire/thirdparty/</directory>
+			<directory suffix=".php">cms/thirdparty/</directory>
+			<file>sapphire/tests/PhpSyntaxTest.php</file>
+		</blacklist>
+	</filter>
+	
+	<listeners>
+		<listener class="SS_TestListener" file="sapphire/dev/TestListener.php">
+		</listener>
+	</listeners>
+</phpunit>
