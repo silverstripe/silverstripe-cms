@@ -35,4 +35,11 @@
 		<listener class="SS_TestListener" file="sapphire/dev/TestListener.php">
 		</listener>
 	</listeners>
+	
+	<groups>
+		<exclude>
+			<group>sanitychecks</group>
+		</exclude>
+	</groups>
+	
 </phpunit>
