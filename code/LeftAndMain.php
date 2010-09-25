@@ -298,6 +298,7 @@ class LeftAndMain extends Controller {
 				THIRDPARTY_DIR . '/calendar/calendar.js',
 				THIRDPARTY_DIR . '/calendar/lang/calendar-en.js',
 				THIRDPARTY_DIR . '/calendar/calendar-setup.js',
+				CMS_DIR . "/javascript/SitetreeAccess.js",
 			)
 		);
 
