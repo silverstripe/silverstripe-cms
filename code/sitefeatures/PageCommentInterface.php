@@ -266,7 +266,6 @@ class PageCommentInterface extends RequestHandler {
  */
 class PageCommentInterface_Form extends Form {
 	function postcomment($data) {
-		Debug::show($data);
 		Cookie::set("PageCommentInterface_Data", serialize($data));
 
 		// Spam filtering
