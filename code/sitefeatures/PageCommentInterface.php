@@ -194,8 +194,7 @@ class PageCommentInterface extends RequestHandler {
 		$fields->push(new TextareaField("Comment", _t('PageCommentInterface.YOURCOMMENT', "Comments")));
 		
 		$form = new PageCommentInterface_Form($this, "PostCommentForm", $fields, new FieldSet(
-			new FormAction("postcomment", _t('PageCommentInterface.POST', 'Post'))
-		));
+			new FormAction("postcomment", _t('PageCommentInterface.POST', 'Post'))), new RequiredFields('Name', 'Comment'));
 		
 		// Set it so the user gets redirected back down to the form upon form fail
 		$form->setRedirectToFormOnValidationError(true);
