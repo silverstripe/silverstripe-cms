@@ -221,6 +221,8 @@ class PageCommentInterface extends RequestHandler {
 			"CommenterURL" => Cookie::get("PageCommentInterface_CommenterURL")	
 		));
 		
+		$this->extend('updatePageCommentForm', $form);
+		
 		return $form;
 	}
 	
