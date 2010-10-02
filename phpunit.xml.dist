@@ -6,13 +6,11 @@
 	 - "phpunit sapphire/tests/filesystem/FolderTest.php": Run a single test
 	 - "phpunit <dash><dash>coverage-html assets/": Generate coverage report (replace <dash> with "-", requires xdebug)
 	
-	See http://www.phpunit.de/manual/current/en/textui.html for more commandline options.
-	Note: Doesn't regard _manifest_exclude flags in folders.
-	
-	Customize these settings by creating your own "phpunit.xml".
-	
-	See sapphire/dev/TestRunner.php for an alternative way to run unit tests
-	through the "sake" CLI tool.
+	Further information:
+	- http://www.phpunit.de/manual/current/en/textui.html for more commandline options.
+	- http://github.com/chillu/silverstripe-doc-restructuring/blob/master/master/cms/docs/en/howto/phpunit-configuration.md
+	  for more information on configuration and execution options.
+	- sapphire/dev/TestRunner.php for an alternative way to run unit tests through the "sake" CLI tool.
 -->
 <phpunit 
 	bootstrap="/sapphire/tests/bootstrap.php"
