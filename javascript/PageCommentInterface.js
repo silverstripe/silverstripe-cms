@@ -62,40 +62,39 @@ PageCommentInterface.prototype = {
 			Ajax.SubmitForm(form, "action_postcomment", {
 				onSuccess : function(response) {
 					
-								// Create an Ajax request to regenerate the spam protection question
-			//need to check if there is actually a spam question to change first
-			if(form.elements.Math){
-				new Ajax.Request(document.getElementsByTagName('base')[0].href+'PageCommentInterface_Controller/newspamquestion', {
-					onSuccess: loadSpamQuestion,
-					onFailure: Ajax.Evaluator
-				});
-			}
-					
-						if(response.responseText != "spamprotectionfailed"){
-									__newComment.className ="even";
-							// Load the response into the new <li>
-							__newComment.innerHTML = response.responseText;
-							Behaviour.apply(__newComment);
-							
-							// Flash it using Scriptaculous
-							new Effect.Highlight(__newComment, { endcolor: '#e9e9e9' } );
-							if(response.responseText.match('<b>Spam detected!!</b>')) {
-								__newComment.className = 'spam';
-							}
-						
-						}else{
-							__newComment.innerHTML = "";
-							Behaviour.apply(__newComment);
-							message.style.display = '';
-							message.innerHTML = "You got the spam question wrong.";
-							
-						}
-						
-						
-					},
-					onFailure : function(response) {
-						alert(response.responseText);
+					// Create an Ajax request to regenerate the spam protection question
+					//need to check if there is actually a spam question to change first
+					if(form.elements.Math){
+						new Ajax.Request(document.getElementsByTagName('base')[0].href+'PageCommentInterface_Controller/newspamquestion', {
+							onSuccess: loadSpamQuestion,
+							onFailure: Ajax.Evaluator
+						});
 					}
+					
+					if(response.responseText != "spamprotectionfailed"){
+								__newComment.className ="even";
+						// Load the response into the new <li>
+						__newComment.innerHTML = response.responseText;
+						Behaviour.apply(__newComment);
+						
+						// Flash it using Scriptaculous
+						new Effect.Highlight(__newComment, { endcolor: '#e9e9e9' } );
+						if(response.responseText.match('<b>Spam detected!!</b>')) {
+							__newComment.className = 'spam';
+						}
+					
+					} else {
+						__newComment.innerHTML = "";
+						Behaviour.apply(__newComment);
+						message.style.display = '';
+						message.innerHTML = "You got the spam question wrong.";
+						
+					}
+					
+				},
+				onFailure : function(response) {
+					alert(response.responseText);
+				}
 			});
 		} else {
 			message.style.display = '';
@@ -115,20 +114,20 @@ PageCommentInterface.prototype = {
 		
 		new Ajax.Request(this.href + '?ajax=1', {
 			onSuccess : function(response) {
-					// Clear our wee status message
-					__comment.getElementsByTagName('span')[0].innerHTML = "Removing...";
+				// Clear our wee status message
+				__comment.getElementsByTagName('span')[0].innerHTML = "Removing...";
 
-					// Remove it using Scriptaculous
-					new Effect.Highlight(__comment, { 
-						startcolor: '#cc9999' , endcolor: '#e9e9e9', duration: 0.5,
-						afterFinish : function () { 
-							var commentList = __comment.parentNode;
-							commentList.removeChild(__comment);
-							if(!commentList.firstChild) {
-								$('CommentHolder').innerHTML = "<p id=\"NoComments\">No one has commented on this page yet.</p>";
-							}
+				// Remove it using Scriptaculous
+				new Effect.Highlight(__comment, { 
+					startcolor: '#cc9999' , endcolor: '#e9e9e9', duration: 0.5,
+					afterFinish : function () { 
+						var commentList = __comment.parentNode;
+						commentList.removeChild(__comment);
+						if(!commentList.firstChild) {
+							$('CommentHolder').innerHTML = "<p id=\"NoComments\">No one has commented on this page yet.</p>";
 						}
-					} );
+					}
+				} );
 			},
 			
 			onFailure : function(response) {
