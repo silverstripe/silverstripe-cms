@@ -517,13 +517,11 @@ class ModelAdmin_CollectionController extends Controller {
 			Director::redirectBack();
 			return false;
 		}
-		
-		$results = $loader->load($_FILES['_CsvFile']['tmp_name']);
+
 		if (!empty($data['EmptyBeforeImport']) && $data['EmptyBeforeImport']) { //clear database before import 
-			$results = $loader->load($_FILES['_CsvFile']['tmp_name'], '512M', true);                 
-		} else {        //normal import without clearing 
-			$results = $loader->load($_FILES['_CsvFile']['tmp_name']); 
+			$loader->deleteExistingRecords = true;
 		}
+		$results = $loader->load($_FILES['_CsvFile']['tmp_name']);
 		
 		$message = '';
 		if($results->CreatedCount()) $message .= sprintf(
