@@ -202,7 +202,7 @@ class PageCommentInterface extends RequestHandler {
 		
 		// Optional Spam Protection.
 		if(class_exists('SpamProtectorManager')) {
-			SpamProtectorManager::update_form($form, null, array('Name', 'CommenterURL', 'Comment'));
+			SpamProtectorManager::update_form($form, null, array('Name' => 'author_name', 'CommenterURL' => 'author_url', 'Comment' => 'post_body'));
 			self::set_use_ajax_commenting(false);
 		}
 		
