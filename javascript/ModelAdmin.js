@@ -18,7 +18,7 @@
 		////////////////////////////////////////////////////////////////// 
 		// Search form 
 		////////////////////////////////////////////////////////////////// 
-	
+
 		/**
 		 * Class: #ModelClassSelector select
 		 * 
@@ -63,6 +63,8 @@
 			onsubmit: function(e) {
 				// Import forms are processed without ajax
 				if(this.is('#Form_ImportForm')) return true;
+				
+				$('#contentPanel').closeRightPanel();
 			
 				this.trigger('beforeSubmit');
 
@@ -119,7 +121,8 @@
 				return false;
 			}
 		});
-
+	
+	
 		/**
 		 * Class: .resultsTable tbody td
 		 * 
@@ -193,6 +196,21 @@
 				this._super();
 			}
 		});
+
+		$('#contentPanel').entwine({
+			/**
+			* Close TinyMCE image, link or flash panel.
+			* this function is called everytime a new search, back or add new DataObject are clicked
+			**/
+			closeRightPanel: function(){
+				if($('#contentPanel').is(':visible')) {
+					$('#contentPanel').hide();
+					$('#Form_EditorToolbarImageForm').hide();
+					$('#Form_EditorToolbarFlashForm').hide();
+					$('#Form_EditorToolbarLinkForm').hide();
+				}
+			}
 		
+		});
 	});
 })(jQuery);
