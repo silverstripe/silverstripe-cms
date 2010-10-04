@@ -161,7 +161,6 @@ JS
 				$processedFiles[$key][$param] = $value;
 			}
 		}
-		array_shift($processedFiles);
 		
 		// Load POST data from arrays in to the correct dohickey.
 		$processedData = array();
@@ -178,7 +177,7 @@ JS
 		}
 		$processedData = array_reverse($processedData);
 				
-		if($data['ID'] && $data['ID'] != 'root') $folder = DataObject::get_by_id("Folder", $data['ID']);
+		if($data['FolderID'] && $data['FolderID'] != '') $folder = DataObject::get_by_id("Folder", $data['FolderID']);
 		else $folder = singleton('Folder');
 
 		foreach($processedFiles as $filePostId => $tmpFile) {

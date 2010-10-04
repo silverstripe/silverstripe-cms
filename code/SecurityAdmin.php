@@ -63,6 +63,20 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 						)
 					)
 				);
+				
+				$fields->addFieldToTab(
+					'Root.Roles',
+					new LiteralField(
+						'RolesAddEditLink', 
+						sprintf(
+							'<p class="add-role"><a href="%s">%s</a></p>',
+							$this->Link('show/root'),
+							// TODO This should include #Root_Roles to switch directly to the tab,
+							// but tabstrip.js doesn't display tabs when directly adressed through a URL pragma
+							_t('Group.RolesAddEditLink', 'Add/edit roles')
+						)
+					)
+				);
 			}
 		
 			$form->Actions()->insertBefore(
@@ -120,6 +134,28 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			// necessary for tree node selection in LeftAndMain.EditForm.js
 			new HiddenField('ID', false, 0)
 		);
+
+		// Add roles editing interface
+		if(Permission::check('APPLY_ROLES')) {
+			$rolesCTF = new ComplexTableField(
+				$this,
+				'Roles',
+				'PermissionRole'
+			);
+			// Necessary to make Permission code checkboxes behave consistently
+			$rolesCTF->requirementsForPopupCallback = create_function(
+				'$popup', 
+				'Requirements::javascript(CMS_DIR . "/javascript/MemberTableField.js");'
+			);
+			
+			$rolesTab = $fields->findOrMakeTab('Root.Roles', _t('SecurityAdmin.TABROLES', 'Roles'));
+			$rolesTab->push(new LiteralField(
+				'RolesDescription', 
+				''
+			));
+			$rolesTab->push($rolesCTF);
+		}
+
 		$actions = new FieldSet(
 			new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member'))
 		);
