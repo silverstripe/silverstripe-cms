@@ -87,7 +87,7 @@ class MemberImportForm extends Form {
 	
 		$this->sessionMessage($msg, 'good');
 		
-		$this->controller->redirectBack();
+		Director::redirectBack();
 	}
 	
 	/**

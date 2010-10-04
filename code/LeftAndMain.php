@@ -120,7 +120,7 @@ class LeftAndMain extends Controller {
 		);
 		
 		// set reading lang
-		if(Object::has_extension('SiteTree', 'Translatable') && !$this->isAjax()) {
+		if(Object::has_extension('SiteTree', 'Translatable') && !Director::is_ajax()) {
 			Translatable::choose_site_locale(array_keys(Translatable::get_existing_content_languages('SiteTree')));
 		}
 
@@ -158,7 +158,7 @@ class LeftAndMain extends Controller {
 		if(Director::redirected_to()) return;
 
 		// Audit logging hook
-		if(empty($_REQUEST['executeForm']) && !$this->isAjax()) $this->extend('accessedCMS');
+		if(empty($_REQUEST['executeForm']) && !Director::is_ajax()) $this->extend('accessedCMS');
 
 		// Set the members html editor config
 		HtmlEditorConfig::set_active(Member::currentUser()->getHtmlEditorConfigForCMS());
@@ -360,7 +360,7 @@ class LeftAndMain extends Controller {
 		// TODO Necessary for TableListField URLs to work properly
 		if($request->param('ID')) $this->setCurrentPageID($request->param('ID'));
 		
-		if($this->isAjax()) {
+		if(Director::is_ajax()) {
 			SSViewer::setOption('rewriteHashlinks', false);
 			$form = $this->getEditForm($request->param('ID'));
 			$content = $form->formHtmlContent();

@@ -647,7 +647,7 @@ JS;
 			);
 			return ($liveRecord) ? $form->formHtmlContent() : "";
 		} else {
-			$this->redirectBack();
+			Director::redirectBack();
 		}
 	}
 	
@@ -917,7 +917,7 @@ JS;
 
 			SSViewer::setOption('rewriteHashlinks', false);
 			
-			if($this->isAjax()) {
+			if(Director::is_ajax()) {
 				return $form->formHtmlContent();
 			} else {
 				$templateData = $this->customise(array(
