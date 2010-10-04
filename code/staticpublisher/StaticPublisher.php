@@ -15,8 +15,7 @@ abstract class StaticPublisher extends DataObjectDecorator {
 	 * Realtime static publishing... the second a page
     * is saved, it is written to the cache 
 	 */
-	// @todo this is currently disabled until template problems can be fixed
-	static $disable_realtime = true;
+	static $disable_realtime = false;
 	
 	abstract function publishPages($pages);
 	abstract function unpublishPages($pages);
