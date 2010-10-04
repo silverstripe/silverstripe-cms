@@ -1,7 +1,9 @@
 <?php
-
 /**
  * Base class for HTML cleaning classes.
+ * 
+ * @package sapphire
+ * @subpackage misc
  */
 abstract class HTMLCleaner  extends Object {
 	/**

@@ -421,8 +421,10 @@ class SS_Report_FakeQuery extends SQLQuery {
  * 
  * It also makes calls to 2 empty methods that you can override {@link beforeQuery()} and
  * {@link afterQuery()}
+ * 
+ * @package cms
+ * @subpackage reports
  */
-
 abstract class SS_ReportWrapper extends SS_Report {
 	protected $baseReport;
 
