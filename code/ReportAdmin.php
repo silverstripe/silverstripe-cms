@@ -77,7 +77,7 @@ class ReportAdmin extends LeftAndMain {
 	 * @return SS_Report
 	 */
 	public function CurrentReport() {
-		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : Session::get('currentReport');
+		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : ($this->getRequest()->latestParam('Action') == 'EditForm') ? Session::get('currentReport') : null;
 		
 		if($id) {
 			foreach($this->Reports() as $report) {
