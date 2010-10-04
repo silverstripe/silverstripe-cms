@@ -69,14 +69,14 @@
 	margin-top: 5px;
 }
 
-#Form_UploadForm_FilesList div {
+#Form_UploadForm_FilesList .fileBox {
 	width: auto;
 	border: 1px solid #F1EFE2;
 	padding: 5px;
 	margin-bottom: 5px;
 }
 
-#Form_UploadForm_FilesList div .delete:hover {
+#Form_UploadForm_FilesList .fileBox .delete:hover {
 	background: red;
 	font-weight: bold;
 }

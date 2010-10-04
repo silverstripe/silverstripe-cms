@@ -35,6 +35,15 @@ class AssetAdmin extends LeftAndMain {
 	);
 	
 	/**
+	 * @var boolean Enables upload of additional textual information
+	 * alongside each file (through multifile.js), which makes
+	 * batch changes easier.
+	 * 
+	 * CAUTION: This is an unstable API which might change.
+	 */
+	public static $metadata_upload_enabled = true;
+	
+	/**
 	 * Return fake-ID "root" if no ID is found (needed to upload files into the root-folder)
 	 */
 	public function currentPageID() {
@@ -99,9 +108,13 @@ JS
 	}
 	
 	/**
+	 * Needs to be enabled through {@link AssetAdmin::$metadata_upload_enabled}
+	 * 
 	 * @return String
 	 */
 	function UploadMetadataHtml() {
+		if(!self::$metadata_upload_enabled) return;
+		
 		$fields = singleton('File')->uploadMetadataFields();
 
 		// Return HTML with markers for easy replacement
@@ -217,7 +230,7 @@ JS
 				if($valid) {
 					$newFile = $folder->addUploadToFolder($tmpFile);
 					
-					if (isset($processedData[$filePostId])) {
+					if(self::$metadata_upload_enabled && isset($processedData[$filePostId])) {
 						$fileObject = DataObject::get_by_id('File', $newFile);
 						$metadataForm = new Form($this, 'MetadataForm', $fileObject->uploadMetadataFields(), new FieldSet());
 						$metadataForm->loadDataFrom($processedData[$filePostId]);

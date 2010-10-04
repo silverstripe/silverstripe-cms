@@ -215,7 +215,7 @@ function MultiSelector( list_target, max, upload_button ){
 };
 
 MultiSelectorObserver.subscribe('onBeforeCreateRow', function(data) {
-	if (jQuery('#metadataFormTemplate')) {
+	if (jQuery('#metadataFormTemplate').length) {
 		var parameters = jQuery('#metadataFormTemplate').clone(true);
 		parameters.get(0).id = '';
 		parameters.find(":input[name!='']").each(function(i) { this.name = this.name.replace(/__X__/g, data[0]); });
