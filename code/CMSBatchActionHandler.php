@@ -10,6 +10,7 @@ class CMSBatchActionHandler extends RequestHandler {
 	
 	static $url_handlers = array(
 		'$BatchAction/applicablepages' => 'handleApplicablePages',
+		'$BatchAction/confirmation' => 'handleConfirmation',
 		'$BatchAction' => 'handleAction',
 	);
 	
@@ -130,6 +131,27 @@ class CMSBatchActionHandler extends RequestHandler {
 		}
 		
 		$response = new SS_HTTPResponse(json_encode($applicableIDs));
+		$response->addHeader("Content-type", "application/json");
+		return $response;
+	}
+	
+	function handleConfirmation($request) {
+		// Find the action handler
+		$actions = Object::get_static($this->class, 'batch_actions');
+		$actionClass = $actions[$request->param('BatchAction')];
+		$actionHandler = new $actionClass();
+
+		// Sanitise ID list and query the database for apges
+		$ids = split(' *, *', trim($request->requestVar('csvIDs')));
+		foreach($ids as $k => $id) $ids[$k] = (int)$id;
+		$ids = array_filter($ids);
+		
+		if($actionHandler->hasMethod('confirmationDialog')) {
+			$response = new HTTPResponse(json_encode($actionHandler->confirmationDialog($ids)));
+		} else {
+			$response = new HTTPResponse(json_encode(array('alert' => false)));
+		}
+		
 		$response->addHeader("Content-type", "application/json");
 		return $response;
 	}
