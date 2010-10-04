@@ -41,7 +41,7 @@ class AssetAdmin extends LeftAndMain {
 	 * 
 	 * CAUTION: This is an unstable API which might change.
 	 */
-	public static $metadata_upload_enabled = true;
+	public static $metadata_upload_enabled = false;
 	
 	/**
 	 * Return fake-ID "root" if no ID is found (needed to upload files into the root-folder)
