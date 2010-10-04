@@ -349,11 +349,11 @@ JS;
 			}
 		} elseif ($id == 0) {
 			$siteConfig = SiteConfig::current_site_config();
-			$fields = $siteConfig->getFormFields(); 
+			$fields = $siteConfig->getCMSFields(); 
 			if(Object::has_extension('SiteConfig',"Translatable")){ 
 				$fields->push(new HiddenField('Locale','', $siteConfig->Locale ));       
 			} 
-			$form = new Form($this, "EditForm", $fields, $siteConfig->getFormActions());
+			$form = new Form($this, "EditForm", $fields, $siteConfig->getCMSActions());
 			$form->loadDataFrom($siteConfig);
 			return $form;
 		} else {
