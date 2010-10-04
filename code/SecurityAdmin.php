@@ -105,7 +105,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			"Members"
 		);
 		// unset 'inlineadd' permission, we don't want inline addition
-		$memberList->setPermissions(array('show', 'edit', 'delete', 'add'));
+		$memberList->setPermissions(array('edit', 'delete', 'add'));
 		$memberList->setRelationAutoSetting(false);
 		
 		$fields = new FieldSet(
