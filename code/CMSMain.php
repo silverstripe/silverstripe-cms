@@ -141,7 +141,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		return $this->getSiteTreeFor($this->stat('tree_class'));
 	}
-			
+
 	public function generateDataTreeHints() {
 		$classes = ClassInfo::subclassesFor( $this->stat('tree_class') );
 
@@ -522,7 +522,7 @@ JS;
 	public function deletefromlive($data, $form) {
 		Versioned::reading_stage('Live');
 		$record = DataObject::get_by_id("SiteTree", $data['ID']);
-		if($record && !($record->canDelete() && $record->canDeleteFromLive())) return Security::permissionFailure($this);
+		if($record && !$record->canDelete()) return Security::permissionFailure($this);
 		
 		$descRemoved = '';
 		$descendantsRemoved = 0;
