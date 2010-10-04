@@ -367,7 +367,7 @@ class MemberTableField extends ComplexTableField {
 		);
 		$form->sessionMessage($message, 'good');
 
-		Director::redirectBack();		
+		$this->controller->redirectBack();
 	}	
 	
 	/**

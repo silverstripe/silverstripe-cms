@@ -301,8 +301,8 @@ class PageCommentInterface_Form extends Form {
 		//check if spam question was right.
 		if(MathSpamProtection::isEnabled()){
 			if(!MathSpamProtection::correctAnswer($data['Math'])){
-				if(!Director::is_ajax()) {				
-					Director::redirectBack();
+				if(!$this->controller->isAjax()) {
+					$this->controller->redirectBack();
 				}
 				return "spamprotectionfailed"; //used by javascript for checking if the spam question was wrong
 			}
@@ -330,7 +330,7 @@ class PageCommentInterface_Form extends Form {
 		$comment->write();
 		
 		Cookie::set("PageCommentInterface_Comment", '');
-		if(Director::is_ajax()) {
+		if($this->controller->isAjax()) {
 			if($comment->NeedsModeration){
 				echo _t('PageCommentInterface_Form.AWAITINGMODERATION', "Your comment has been submitted and is now awaiting moderation.");
 			} else{
@@ -347,7 +347,7 @@ class PageCommentInterface_Form extends Form {
 				}
 			}
 
-			return Director::redirectBack(); // worst case, just go back to the page
+			return $this->controller->redirectBack(); // worst case, just go back to the page
 		}
 	}
 }
@@ -362,7 +362,7 @@ class PageCommentInterface_Controller extends ContentController {
 	}
 	
 	function newspamquestion() {
-		if(Director::is_ajax()) {
+		if($this->isAjax()) {
 			echo Convert::raw2xml(sprintf(_t('PageCommentInterface_Controller.SPAMQUESTION', "Spam protection question: %s"),MathSpamProtection::getMathQuestion()));
 		}
 	}
