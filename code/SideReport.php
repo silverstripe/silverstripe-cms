@@ -138,7 +138,7 @@ class SideReport_EmptyPages extends SS_Report {
 		return 100;
 	}
 	function sourceRecords($params = null) {
-		return DataObject::get("SiteTree", "\"Content\" = '' OR \"Content\" IS NULL OR \"Content\" LIKE '<p></p>' OR \"Content\" LIKE '<p>&nbsp;</p>'", '"Title"');
+		return DataObject::get("SiteTree", "\"ClassName\" != 'RedirectorPage' AND (\"Content\" = '' OR \"Content\" IS NULL OR \"Content\" LIKE '<p></p>' OR \"Content\" LIKE '<p>&nbsp;</p>')", '"Title"');
 	}
 	function columns() {
 		return array(
