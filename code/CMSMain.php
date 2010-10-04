@@ -103,6 +103,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	function SwitchView() {
 		if($page = $this->currentPage()) {
 			$nav = SilverStripeNavigator::get_for_record($page);
+			Requirements::customScript("window.name = windowName('cms');");
 			return $nav['items'];
 		}
 	}
