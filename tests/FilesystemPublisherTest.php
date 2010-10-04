@@ -71,4 +71,36 @@ class FilesystemPublisherTest extends SapphireTest {
 		);
 	}
 	
+	/*
+	 * These are a few simple tests to check that we will be retrieving the correct theme when we need it
+	 * StaticPublishing needs to be able to retrieve a non-null theme at the time publishPages() is called.
+	 */
+	function testStaticPublisherTheme(){
+		
+		//This will be the name of the default theme of this particular project
+		$default_theme=SSViewer::current_theme();
+		
+		$p1 = new Page();
+		$p1->URLSegment = strtolower(__CLASS__).'-page-1';
+		$p1->HomepageForDomain = '';
+		$p1->write();
+		$p1->doPublish();
+		
+		$current_theme=SSViewer::current_custom_theme();
+		$this->assertEquals($current_theme, $default_theme, 'After a standard publication, the theme is correct');
+		
+		//The CMS sometimes sets the theme to null.  Check that the $current_custom_theme is still the default
+		SSViewer::set_theme(null);
+		$current_theme=SSViewer::current_custom_theme();
+		$this->assertEquals($current_theme, $default_theme, 'After a setting the theme to null, the default theme is correct');
+		
+		//We can set the static_publishing theme to something completely different:
+		//Static publishing will use this one instead of the current_custom_theme if it is not false
+		StaticPublisher::set_static_publisher_theme('otherTheme');
+		$current_theme=StaticPublisher::static_publisher_theme();
+		$this->assertNotEquals($current_theme, $default_theme, 'The static publisher theme overrides the custom theme');
+		
+		
+	}
+	
 }

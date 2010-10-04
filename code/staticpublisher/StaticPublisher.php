@@ -17,6 +17,13 @@ abstract class StaticPublisher extends DataObjectDecorator {
 	 */
 	static $disable_realtime = false;
 	
+	/*
+	 * This is the current static publishing theme, which can be set at any point
+	 * If it's not set, then the last non-null theme, set via SSViewer::set_theme() is used
+	 * The obvious place to set this is in _config.php
+	 */
+	static $static_publisher_theme=false;
+	
 	abstract function publishPages($pages);
 	abstract function unpublishPages($pages);
 	
@@ -132,6 +139,14 @@ abstract class StaticPublisher extends DataObjectDecorator {
 		}
 		
 		return $urls;		
+	}
+	
+	function set_static_publisher_theme($theme){
+		self::$static_publisher_theme=$theme;
+	}
+	
+	function static_publisher_theme(){
+		return self::$static_publisher_theme;
 	}
 }
 
