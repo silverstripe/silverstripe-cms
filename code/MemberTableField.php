@@ -352,8 +352,14 @@ class MemberTableField extends ComplexTableField {
 		// Needs to write before saveInto() to ensure the 'Groups' TreeMultiselectField saves
 		$childData->write();
 		
-		$form->saveInto($childData);
-		$childData->write();
+		try {
+			$form->saveInto($childData);
+			$childData->write();
+		} catch(ValidationException $e) {
+			var_dump($e->getResult());
+			$form->sessionMessage($e->getResult()->message(), 'bad');
+			return Director::redirectBack();
+		}
 		
 		$closeLink = sprintf(
 			'<small><a href="' . $_SERVER['HTTP_REFERER'] . '" onclick="javascript:window.top.GB_hide(); return false;">(%s)</a></small>',
