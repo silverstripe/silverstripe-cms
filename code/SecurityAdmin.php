@@ -124,6 +124,8 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member'))
 		);
 		
+		$this->extend('updateRootFormFields', $fields, $actions);
+		
 		$form = new Form(
 			$this,
 			'EditForm',
