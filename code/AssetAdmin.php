@@ -199,9 +199,15 @@ JS
 				if(!File::$apply_restrictions_to_admin && Permission::check('ADMIN')) {
 					$valid = true;
 				} else {
+					
+					// Set up the validator instance with rules
+					$validator = new Upload_Validator();
+					$validator->setAllowedExtensions(File::$allowed_extensions);
+					$validator->setAllowedMaxFileSize(self::$allowed_max_file_size);
+					
+					// Do the upload validation with the rules
 					$upload = new Upload();
-					$upload->setAllowedExtensions(File::$allowed_extensions);
-					$upload->setAllowedMaxFileSize(self::$allowed_max_file_size);
+					$upload->setValidator($validator);
 					$valid = $upload->validate($tmpFile);
 					if(!$valid) {
 						$errorsArr = $upload->getErrors();
