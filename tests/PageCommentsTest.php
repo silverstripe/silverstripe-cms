@@ -16,15 +16,15 @@ class PageCommentsTest extends FunctionalTest {
 			null, $this->session());
 		Director::test('second-page', null, $this->session());
 		
-		$secondComments = DataObject::get('PageComment', 'ParentID = '.$second->ID);
+		$secondComments = DataObject::get('PageComment', '"ParentID" = '.$second->ID);
 		$this->assertNull($secondComments);
 		
 		$first = $this->objFromFixture('Page', 'first');
-		$firstComments = DataObject::get('PageComment', 'ParentID = '.$first->ID);
+		$firstComments = DataObject::get('PageComment', '"ParentID" = '.$first->ID);
 		$this->assertNotNull($firstComments);
 		
 		$third = $this->objFromFixture('Page', 'third');
-		$thirdComments = DataObject::get('PageComment', 'ParentID = '.$third->ID);
+		$thirdComments = DataObject::get('PageComment', '"ParentID" = '.$third->ID);
 		$this->assertEquals($thirdComments->Count(), 3);
 	}
 	
