@@ -318,7 +318,6 @@ class SS_Report extends ViewableData {
 	 */
 	static function get_reports($list) {
 		$output = array();
-
 		if(isset(self::$registered_reports[$list])) {
 			$listItems = self::$registered_reports[$list];
 
@@ -496,6 +495,14 @@ abstract class SS_ReportWrapper extends SS_Report {
 
 	function title() {
 		return $this->baseReport->title();
+	}
+	
+	function group() {
+		return $this->baseReport->hasMethod('group') ? $this->baseReport->group() : 'Group';
+	}
+	
+	function sort() {
+		return $this->baseReport->hasMethod('sort') ? $this->baseReport->sort() : 0;
 	}
 
 	function description() {
