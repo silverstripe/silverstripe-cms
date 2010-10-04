@@ -49,7 +49,13 @@ class FilesystemPublisher extends StaticPublisher {
 		foreach($urls as $url) {
 			$urlParts = @parse_url($url);
 			$urlParts['path'] = isset($urlParts['path']) ? $urlParts['path'] : '';
-			$urlSegment = preg_replace('/[^a-zA-Z0-9]/si', '_', trim($urlParts['path'], '/'));
+			// perform similar transformations to SiteTree::generateURLSegment()
+			$urlSegment = $urlParts['path'];
+			$urlSegment = str_replace('&amp;','-and-',$urlSegment);
+			$urlSegment = str_replace('&','-and-',$urlSegment);
+			$urlSegment = ereg_replace('[^A-Za-z0-9\/-]+','-',$urlSegment);
+			$urlSegment = ereg_replace('-+','-',$urlSegment);
+			$urlSegment = trim($urlSegment, '/');
 
 			$filename = $urlSegment ? "$urlSegment.$this->fileExtension" : "index.$this->fileExtension";
 
@@ -113,7 +119,7 @@ class FilesystemPublisher extends StaticPublisher {
 				echo " * Publishing page $i/$totalURLs: $url\n";
 				flush();
 			}
-			
+
 			Requirements::clear();
 			$response = Director::test(str_replace('+', ' ', $url));
 			Requirements::clear();
