@@ -169,7 +169,17 @@ class LeftAndMain extends Controller {
 		$htmlEditorConfig = HtmlEditorConfig::get_active();
 		if(!$htmlEditorConfig->getOption('content_css')) {
 			$cssFiles = 'cms/css/editor.css';
-			if(SSViewer::current_theme()) $cssFiles .= ', ' . THEMES_DIR . "/" . SSViewer::current_theme() . '/css/editor.css';
+			
+			// Use theme from the site config
+			if(($config = SiteConfig::current_site_config()) && $config->Theme) {
+				$theme = $config->Theme;
+			} elseif(SSViewer::current_theme()) {
+				$theme = SSViewer::current_theme();
+			} else {
+				$theme = false;
+			}
+			
+			if($theme) $cssFiles .= ', ' . THEMES_DIR . "/{$theme}/css/editor.css";
 			else if(project()) $cssFiles .= ', ' . project() . '/css/editor.css';
 
 			$htmlEditorConfig->setOption('content_css', $cssFiles);
@@ -252,7 +262,7 @@ class LeftAndMain extends Controller {
 		// navigator
 		Requirements::css(SAPPHIRE_DIR . '/css/SilverStripeNavigator.css');
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/SilverStripeNavigator.js');
-		
+
 		Requirements::themedCSS('typography');
 
 		foreach (self::$extra_requirements['javascript'] as $file) {
