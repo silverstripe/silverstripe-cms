@@ -264,7 +264,7 @@ class LeftAndMain extends Controller {
 		}
 		
 		foreach (self::$extra_requirements['themedcss'] as $file) {
-			Requirements::css($file[0], $file[1]);
+			Requirements::themedCSS($file[0], $file[1]);
 		}
 		
 		Requirements::css(CMS_DIR . '/css/unjquery.css');
