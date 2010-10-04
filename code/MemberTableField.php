@@ -326,6 +326,18 @@ class MemberTableField extends ComplexTableField {
 			)
 		);
 	}
+	
+	function AddForm() {
+		$form = parent::AddForm();
+		
+		// Set default groups - also implemented in MemberTableField_Popup::__construct()
+		if($this->group) {
+			$groupsField = $form->Fields()->dataFieldByName('Groups');
+			if($groupsField) $groupsField->setValue($this->group->ID);
+		}
+		
+		return $form;
+	}
 
 	/**
 	 * Same behaviour as parent class, but adds the
@@ -428,6 +440,7 @@ class MemberTableField_Popup extends ComplexTableField_Popup {
 
 	function __construct($controller, $name, $fields, $validator, $readonly, $dataObject) {
 		$group = ($controller instanceof MemberTableField) ? $controller->getGroup() : $controller->getParent()->getGroup();
+		// Set default groups - also implemented in AddForm()
 		if($group) {
 			$groupsField = $fields->dataFieldByName('Groups');
 			if($groupsField) $groupsField->setValue($group->ID);
