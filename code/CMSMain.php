@@ -1313,7 +1313,7 @@ JS;
 		$perms["CMS_ACCESS_LeftAndMain"] = array(
 			'name' => _t('CMSMain.ACCESSALLINTERFACES', 'Access to all CMS sections'),
 			'category' => _t('Permission.CMS_ACCESS_CATEGORY', 'CMS Access'),
-			'help' => _t('CMSMain.ACCESSALLINTERFACES', 'Overrules more specific access settings.'),
+			'help' => _t('CMSMain.ACCESSALLINTERFACESHELP', 'Overrules more specific access settings.'),
 			'sort' => -100
 		);
 		
