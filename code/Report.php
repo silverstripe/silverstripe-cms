@@ -482,7 +482,7 @@ abstract class SS_ReportWrapper extends SS_Report {
 
 	}
 
-	function sourceRecords($params, $sort, $limit) {
+	function sourceRecords($params = array(), $sort = null, $limit = null) {
 		$this->beforeQuery($params);
 		$records = $this->baseReport->sourceRecords($params, $sort, $limit);
 		$this->afterQuery();
