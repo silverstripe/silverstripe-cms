@@ -21,7 +21,7 @@ class SideReportView extends ViewableData {
 	}
 	
 	function group() {
-		return 'Other';
+		return _t('SideReport.OtherGroupTitle', "Other");
 	}
 	
 	function sort() {
@@ -132,7 +132,7 @@ class SideReport_EmptyPages extends SS_Report {
 	}
 
 	function group() {
-		return "Content reports";
+		return _t('SideReport.ContentGroupTitle', "Content reports");
 	}
 	function sort() {
 		return 100;
@@ -161,7 +161,7 @@ class SideReport_RecentlyEdited extends SS_Report {
 		return _t('SideReport.LAST2WEEKS',"Pages edited in the last 2 weeks");
 	}
 	function group() {
-		return "Content reports";
+		return _t('SideReport.ContentGroupTitle', "Content reports");
 	}
 	function sort() {
 		return 200;
@@ -189,7 +189,7 @@ class SideReport_ToDo extends SS_Report {
 		return _t('SideReport.TODO',"Pages with To Do items");
 	}
 	function group() {
-		return "Content reports";
+		return _t('SideReport.ContentGroupTitle', "Content reports");
 	}
 	function sort() {
 		return 0;
@@ -222,7 +222,7 @@ class SideReport_BrokenLinks extends SS_Report {
 		return _t('SideReport.BROKENLINKS',"Pages with broken links");
 	}
 	function group() {
-		return "Broken links reports";
+		return _t('SideReport.BrokenLinksGroupTitle', "Broken links reports");
 	}
 	function sourceRecords($params = null) {
 		// Get class names for page types that are not virtual pages or redirector pages
@@ -243,7 +243,7 @@ class SideReport_BrokenLinks extends SS_Report {
 	}
 	function parameterFields() {
 		return new FieldSet(
-			new CheckboxField('OnLive', 'Check live site')
+			new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))
 		);
 	}
 }
@@ -260,7 +260,7 @@ class SideReport_BrokenFiles extends SS_Report {
 		return _t('SideReport.BROKENFILES',"Pages with broken files");
 	}
 	function group() {
-		return "Broken links reports";
+		return _t('SideReport.BrokenLinksGroupTitle', "Broken links reports");
 	}
 	function sourceRecords($params = null) {
 		// Get class names for page types that are not virtual pages or redirector pages
@@ -281,7 +281,7 @@ class SideReport_BrokenFiles extends SS_Report {
 	}
 	function parameterFields() {
 		return new FieldSet(
-			new CheckboxField('OnLive', 'Check live site')
+			new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))
 		);
 	}
 }
@@ -295,7 +295,7 @@ class SideReport_BrokenVirtualPages extends SS_Report {
 		return _t('SideReport.BROKENVIRTUALPAGES', 'VirtualPages pointing to deleted pages');
 	}
 	function group() {
-		return "Broken links reports";
+		return _t('SideReport.BrokenLinksGroupTitle', "Broken links reports");
 	}
 	function sourceRecords($params = null) {
 		$classNames = "'".join("','", ClassInfo::subclassesFor('VirtualPage'))."'";
@@ -314,7 +314,7 @@ class SideReport_BrokenVirtualPages extends SS_Report {
 	}
 	function parameterFields() {
 		return new FieldSet(
-			new CheckboxField('OnLive', 'Check live site')
+			new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))
 		);
 	}
 }
@@ -328,7 +328,7 @@ class SideReport_BrokenRedirectorPages extends SS_Report {
 		return _t('SideReport.BROKENREDIRECTORPAGES', 'RedirectorPages pointing to deleted pages');
 	}
 	function group() {
-		return "Broken links reports";
+		return _t('SideReport.BrokenLinksGroupTitle', "Broken links reports");
 	}
 	function sourceRecords($params = null) {
 		$classNames = "'".join("','", ClassInfo::subclassesFor('RedirectorPage'))."'";
@@ -348,7 +348,7 @@ class SideReport_BrokenRedirectorPages extends SS_Report {
 	}
 	function parameterFields() {
 		return new FieldSet(
-			new CheckboxField('OnLive', 'Check live site')
+			new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))
 		);
 	}
 }
