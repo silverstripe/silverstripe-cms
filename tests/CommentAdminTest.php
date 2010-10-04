@@ -32,7 +32,7 @@ class CommentAdminTest extends FunctionalTest {
 		$result = $this->get("admin/comments/EditForm/field/Comments/item/$id/delete");
 		$checkComm = DataObject::get_by_id('PageComment',$id);
 
-		$this->assertNull($checkComm);
+		$this->assertFalse($checkComm);
 	}
 	
 }
