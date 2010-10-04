@@ -515,7 +515,7 @@ class LeftAndMain extends Controller {
 		if($p = $this->currentPage()) $obj->markToExpose($p);
 		
 		// NOTE: SiteTree/CMSMain coupling :-(
-		SiteTree::prepopuplate_permission_cache('CanEditType', $obj->markedNodeIDs());
+		SiteTree::prepopuplate_permission_cache('CanEditType', $obj->markedNodeIDs(), 'SiteTree::can_edit_multiple');
 
 		// getChildrenAsUL is a flexible and complex way of traversing the tree
 		$titleEval = '
