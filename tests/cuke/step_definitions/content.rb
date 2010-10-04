@@ -10,6 +10,7 @@ end
 
 Given /a "(.*)" page called "(.*)" as a child of "(.*)"/i do |type, title, parent|
     Given "I click the \"#{parent}\" link"
+    And 'I wait 2s'
     And 'I click the "Create" button'
     And "I select \"#{type}\" from \"PageType\""
     And 'I click the "Go" button'
@@ -20,7 +21,8 @@ end
 
 Given /^a top\-level "(.*)" page called "(.*)"$/i do |type,title|
   Given "I click the \"Site Content\" link"
-  And "I create a page "
+  And "I create a new page "
+  And "I click on the \"Main\" tab"
   And "I put \"#{title}\" in the \"Title\" field"
   And "I click \"Save\""
 end
@@ -43,13 +45,17 @@ Given /create a new page$/i do
   Given "I create a new page using template \"Page\""
 end
 
+Given /create a new page called "(.*)"$/i do |title|
+  Given "I create a new page using template \"Page\""
+  And "I click on the \"Main\" tab"
+  And "I put \"#{title}\" in the \"Page name\" field"
+  And "I click the \"Save\" button"
+end
+
 Given /create a new page using template \"(.*)\"/i do |type|
   Given 'I load the root node (ajax)'
-  puts "Clicking the create button"
   And 'I click the "Create" button'
-  puts "Selecting #{type} from PageType"
   And "I select \"#{type}\" from \"PageType\""
-  puts "done selecting"
   And 'I click the "Go" button (ajax)'
   And 'I click the "Create" button'
 end
@@ -65,7 +71,7 @@ end
 
 ## ASSERTIONS
 
-Given /There are ([0-9]+) root pages with navigation label "(.*)"/i do |count, nav|
+Given /There (?:are|is) ([0-9]+) root pages? with navigation label "(.*)"/i do |count, nav|
   @browser.elements_by_xpath("//ul[@id='sitetree']/li/ul/li//a[.='#{nav}']").count.should == count.to_i
 end
 
