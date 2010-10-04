@@ -522,7 +522,7 @@ JS;
 	public function deletefromlive($data, $form) {
 		Versioned::reading_stage('Live');
 		$record = DataObject::get_by_id("SiteTree", $data['ID']);
-		if($record && !$record->canDelete()) return Security::permissionFailure($this);
+		if($record && !($record->canDelete() && $record->canDeleteFromLive())) return Security::permissionFailure($this);
 		
 		$descRemoved = '';
 		$descendantsRemoved = 0;
