@@ -92,7 +92,7 @@ class CommentAdmin extends LeftAndMain {
 		
 		$table->setParentClass(false);
 		$table->setFieldCasting(array(
-			'Created' => 'SSDatetime->Full',
+			'Created' => 'SS_Datetime->Full',
 			'Comment' => array('HTMLText->LimitCharacters', 150)
 		));
 		
