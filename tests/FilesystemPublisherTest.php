@@ -22,26 +22,16 @@ class FilesystemPublisherTest extends SapphireTest {
 	}
 	
 	function tearDown() {
+		parent::tearDown();
+
 		Object::remove_extension("SiteTree", "FilesystemPublisher('assets/FilesystemPublisherTest-static-folder/')");
 		SiteTree::$write_homepage_map = true;
-		
-		$basePath = '../assets/FilesystemPublisherTest-static-folder';
-		if(file_exists($basePath)) {
-			$dir = opendir($basePath);;
-			while($file = readdir($dir)) {
-				$path = Director::baseFolder() . '/assets/FilesystemPublisherTest-static-folder/' . $file;
-				if(is_dir($path)) continue;
-				else {
-					unlink($path);
-				}
-			}
-			closedir($dir);
-			rmdir($basePath);
-		}
-		
+
 		FilesystemPublisher::$domain_based_caching = $this->orig['domain_based_caching'];
-		
-		parent::tearDown();
+
+		if(file_exists(BASE_PATH . '/assets/FilesystemPublisherTest-static-folder')) {
+			Filesystem::removeFolder(BASE_PATH . '/assets/FilesystemPublisherTest-static-folder');
+		}
 	}
 	
 	function testUrlsToPathsWithRelativeUrls() {
