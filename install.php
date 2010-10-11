@@ -221,9 +221,9 @@ class InstallRequirements {
 			array(
 				"Database Configuration",
 				"Database support",
-				"Database support in PHP")
+				"Database support in PHP"
 			)
-		) {
+		)) {
 			if($this->requireDatabaseServer(
 				$databaseConfig,
 				array(
@@ -246,7 +246,8 @@ class InstallRequirements {
 						array(
 							"Database Configuration",
 							"Database server meets required version",
-							""
+							'',
+							$this->getDatabaseTypeNice($databaseConfig['type']) . ' ' . $this->getDatabaseConfigurationHelper($databaseConfig['type'])->getDatabaseVersion($databaseConfig)
 						)
 					)) {
 						$this->requireDatabaseOrCreatePermissions(
@@ -683,7 +684,11 @@ class InstallRequirements {
 			return false;
 		}
 	}
-	
+
+	function getDatabaseTypeNice($databaseClass) {
+		return substr($databaseClass, 0, -8);
+	}
+
 	/**
 	 * Get an instance of a helper class for the specific database.
 	 * @param string $databaseClass e.g. MySQLDatabase or MSSQLDatabase
