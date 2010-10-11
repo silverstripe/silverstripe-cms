@@ -34,6 +34,10 @@ class LeftAndMain extends Controller {
 	
 	static $ForceReload;
 
+	/**
+	* The url used for the link in the Help tab in the backend
+	* Value can be overwritten if required in _config.php
+	*/
 	static $help_link = 'http://userhelp.silverstripe.org';
 
 	static $allowed_actions = array(
