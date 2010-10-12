@@ -19,6 +19,7 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'CMSMAIN.RESTORING': 'Obnovovanie...',
 		'CMSMAIN.ERRORREVERTING': 'Chyba prevádzania na živý obsah',
 		'CMSMAIN.SAVING' : 'ukladanie...',
+		'CMSMAIN.SELECTMOREPAGES' : "Máte vybraté %s stránok.\n\nSkutočne ich chcete?",
 		'ModelAdmin.SAVED': "Uložené",
 		'ModelAdmin.REALLYDELETE': "Skutočně chcete zmazať?",
 		'ModelAdmin.DELETED': "Zmazané",

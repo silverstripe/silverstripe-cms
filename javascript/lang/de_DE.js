@@ -19,6 +19,7 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'CMSMAIN.RESTORING': 'Wiederherstellen...',
 		'CMSMAIN.ERRORREVERTING': 'Fehler beim Wiederherstellen des Live-Inhaltes',
 		'CMSMAIN.SAVING' : 'Sichern...',
+		'CMSMAIN.SELECTMOREPAGES' : "Sie haben %s Seiten ausgewählt.\n\nWollen Sie wirklich diese Aktion durchführen?",
 		'ModelAdmin.SAVED': "Gespeichert",
 		'ModelAdmin.REALLYDELETE': "Wirklich löschen?",
 		'ModelAdmin.DELETED': "Gelöscht",

@@ -556,7 +556,7 @@ publishpage.prototype = {
 				if (data.alert) {
 					if (!confirm(data.content)) return false;
 				} else {
-					if(!confirm("You have " + batchActionGlobals.count() + " pages selected.\n\nDo your really want to " + actionText.toLowerCase() + "?")) {
+					if(!confirm(ss.i18n.sprintf(ss.i18n._t('CMSMAIN.SELECTMOREPAGES'), batchActionGlobals.count()))) { 
 						return false;
 					}
 				}
