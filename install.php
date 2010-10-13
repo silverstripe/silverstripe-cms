@@ -150,7 +150,7 @@ class InstallRequirements {
 	function checkdatabase($databaseConfig) {
 			if($this->requireFunction('mysql_connect', array("PHP Configuration", "MySQL support", "MySQL support not included in PHP."))) {
 				$this->requireMySQLServer($databaseConfig['server'], array("MySQL Configuration", "Does the server exist", 
-					"Can't find the a MySQL server on '$databaseConfig[server]'", $databaseConfig['server']));
+					"I couldn't find a MySQL server on '$databaseConfig[server]'", $databaseConfig['server']));
 				if($this->requireMysqlConnection($databaseConfig['server'], $databaseConfig['username'], $databaseConfig['password'], 
 					array("MySQL Configuration", "Are the access credentials correct", "That username/password doesn't work"))) {
 					@$this->requireMySQLVersion("4.1", array("MySQL Configuration", "MySQL version at least 4.1", "MySQL version 4.1 is required, you only have ", "MySQL " . mysql_get_server_info()));
