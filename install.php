@@ -73,17 +73,6 @@ DatabaseAdapterRegistry::register(
 	function_exists('pg_query'),
 	null,
 	'The <a href="http://php.net/pgsql">pgsql</a> PHP extension is not available. Please install or enable it and refresh this page.');
-DatabaseAdapterRegistry::register(
-	'SQLitePDODatabase',
-	'SQLite PDO',
-	'sqlite3/code/SQLitePDODatabaseConfigurationHelper.php',
-	in_array('sqlite', PDO::getAvailableDrivers()));
-DatabaseAdapterRegistry::register(
-	'SQLite3Database',
-	'SQLite 3',
-	'sqlite3/code/SQLite3DatabaseConfigurationHelper.php',
-	class_exists('SQLite3'),
-	'');
 
 // Discover any 3rd party ones
 DatabaseAdapterRegistry::autodiscover();
