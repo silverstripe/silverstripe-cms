@@ -73,21 +73,26 @@ DatabaseAdapterRegistry::register(
 	'MySQLDatabase',
 	'MySQL 4.1+',
 	'sapphire/dev/install/MySQLDatabaseConfigurationHelper.php',
-	function_exists('mysql_connect'));
+	function_exists('mysql_connect')
+);
+
 DatabaseAdapterRegistry::register(
 	'MSSQLDatabase',
 	'SQL Server 2008',
 	'mssql/code/MSSQLDatabaseConfigurationHelper.php',
 	function_exists('mssql_connect') || function_exists('sqlsrv_connect'),
 	null,
-	'Neither the <a href="http://php.net/mssql">mssql</a> or <a href="http://www.microsoft.com/sqlserver/2005/en/us/PHP-Driver.aspx">sqlsrv</a> PHP extensions are available. Please install or enable one of them and refresh this page.');
+	'Neither the <a href="http://php.net/mssql">mssql</a> or <a href="http://www.microsoft.com/sqlserver/2005/en/us/PHP-Driver.aspx">sqlsrv</a> PHP extensions are available. Please install or enable one of them and refresh this page.'
+);
+
 DatabaseAdapterRegistry::register(
 	'PostgreSQLDatabase',
 	'PostgreSQL 8.3+',
 	'postgresql/code/PostgreSQLDatabaseConfigurationHelper.php',
 	function_exists('pg_query'),
 	null,
-	'The <a href="http://php.net/pgsql">pgsql</a> PHP extension is not available. Please install or enable it and refresh this page.');
+	'The <a href="http://php.net/pgsql">pgsql</a> PHP extension is not available. Please install or enable it and refresh this page.'
+);
 DatabaseAdapterRegistry::register(
 	'SQLite3Database',
 	'SQLite 3.3+',
