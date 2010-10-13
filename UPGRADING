@@ -4,7 +4,7 @@ and updating your database-schema.
   - Backup your database
   - Backup your webroot
   - Download the new release and uncompress it to a temporary folder
-  - With these folders: cms, sapphire, jsparty and auth_openid
+  - With these folders: cms, sapphire, googlesitemaps
       - Delete your existing folders
       - Extract and replace folders from your download (leave modules
         and your custom directories alone)
