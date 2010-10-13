@@ -949,7 +949,10 @@ PHP
 		$adminMember->PasswordEncryption = Security::get_password_encryption_algorithm();
 		$adminMember->FirstName = $config['admin']['firstname'];
 		$adminMember->Surname = $config['admin']['surname'];
-		$adminMember->write();
+		try {
+			$adminMember->write();
+		} catch(Exception $e) {
+		}
 		
 		// Syncing filesystem (so /assets/Uploads is available instantly, see ticket #2266)
 		Filesystem::sync();
