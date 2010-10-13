@@ -410,25 +410,6 @@ class InstallRequirements {
 		}
 	}
 	
-	function showInstallStatus() {
-		if($this->warnings) {
-			echo "I have installed SilverStripe CMS, however, you should note the following:";
-			foreach($this->warnings as $warning) {
-				echo "<li>" . htmlentities($warning) . "</li>";
-			}
-		} else {
-			if(isset($_SERVER['HTTP_HOST'])) {
-				?>
-				<p>I have installed SilverStripe CMS successfully!</p>
-				<p><a href="./admin/" target="_blank">Open the CMS tool</a><br />
-				<a href="./" target="_blank">Open the site</a></p>
-				<?php
-			} else {
-				echo "\nSilverStripe successfully installed\n";
-			}
-		}
-	}
-	
 	function requireFunction($funcName, $testDetails) {
 		$this->testing($testDetails);
 		if(!function_exists($funcName)) $this->error($testDetails);
