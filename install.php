@@ -283,13 +283,7 @@ class InstallRequirements {
 		$this->requireFile('mysite', array("File permissions", "mysite/ folder exists", "There's no mysite folder."));
 		$this->requireFile('sapphire', array("File permissions", "sapphire/ folder exists", "There's no sapphire folder."));
 		$this->requireFile('cms', array("File permissions", "cms/ folder exists", "There's no cms folder."));
-		
-		
-		// Special case: IIS 7 and 7.5 don't need an .htaccess file, so it shouldn't have to be writable
-		if(!(isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'], 'IIS/7') !== false)) {
-			$this->requireWriteable('.htaccess', array("File permissions", "Is the .htaccess file writeable?", null));
-		}
-		
+		$this->requireWriteable('.htaccess', array("File permissions", "Is the .htaccess file writeable?", null));
 		$this->requireWriteable('mysite/_config.php', array("File permissions", "Is the mysite/_config.php file writeable?", null));
 		$this->requireWriteable('assets', array("File permissions", "Is the assets/ folder writeable?", null));
 		
