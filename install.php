@@ -928,14 +928,17 @@ class Installer extends InstallRequirements {
 		}
 		
 		if(file_exists('mysite/_config.php')) {
-			unlink('mysite/_config.php');
+			// Truncate the contents of _config instead of deleting it - we can't re-create it because Windows handles permissions slightly
+			// differently to UNIX based filesystems - it takes the permissions from the parent directory instead of retaining them
+			$fh = fopen('mysite/_config.php', 'wb');
+			fclose($fh);
 		}
 		$theme = isset($_POST['template']) ? $_POST['template'] : 'blackcandy';
 		// Write the config file
 		global $usingEnv;
 		if($usingEnv) {
-			$this->statusMessage("Creating 'mysite/_config.php' for use with _ss_environment.php...");
-			$this->createFile("mysite/_config.php", <<<PHP
+			$this->statusMessage("Setting up 'mysite/_config.php' for use with _ss_environment.php...");
+			$this->writeToFile("mysite/_config.php", <<<PHP
 <?php
 
 global \$project;
@@ -960,12 +963,12 @@ PHP
 
 			
 		} else {
-			$this->statusMessage("Creating 'mysite/_config.php'...");
+			$this->statusMessage("Setting up 'mysite/_config.php'...");
 		
 			$devServers = $this->var_export_array_nokeys(explode("\n", $_POST['devsites']));
 		
 			$escapedPassword = addslashes($config['db']['password']);
-			$this->createFile("mysite/_config.php", <<<PHP
+			$this->writeToFile("mysite/_config.php", <<<PHP
 <?php
 
 global \$project;
@@ -997,7 +1000,7 @@ PHP
 			);
 		}
 
-		$this->statusMessage("Creating '.htaccess' file...");
+		$this->statusMessage("Setting up '.htaccess' file...");
 		
 		$this->createHtaccess();
 
@@ -1089,9 +1092,9 @@ PHP
 		}
 	}
 	
-	function createFile($filename, $content) {
+	function writeToFile($filename, $content) {
 		$base = $this->getBaseDir();
-		$this->statusMessage("Creating $base$filename");
+		$this->statusMessage("Setting up $base$filename");
 
 		if((@$fh = fopen($base . $filename, 'wb')) && fwrite($fh, $content) && fclose($fh)) {
 			return true;
@@ -1140,7 +1143,7 @@ TEXT
 			}
 		}
 		
-		$this->createFile('.htaccess', $start . $rewrite . $end);
+		$this->writeToFile('.htaccess', $start . $rewrite . $end);
 	}
 	
 	function restoreHtaccess() {
@@ -1160,7 +1163,7 @@ TEXT
 			}
 		}
 		
-		$this->createFile('.htaccess', $start . $end);
+		$this->writeToFile('.htaccess', $start . $end);
 	}
 	
 	function checkModRewrite() {
