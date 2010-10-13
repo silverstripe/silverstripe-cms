@@ -84,21 +84,23 @@ foreach(DatabaseAdapterRegistry::get_adapters() as $class => $details) {
 
 // Load database config
 if(isset($_REQUEST['db'])) {
+	$type = (isset($_REQUEST['db']['type'])) ? $_REQUEST['db']['type'] : "MySQLDatabase";
 	// Disabled inputs don't submit anything - we need to use the environment (except the database name)
 	if($usingEnv) {
-		$_REQUEST['db'] = $databaseConfig = array(
-			"type" => defined('SS_DATABASE_CLASS') ? SS_DATABASE_CLASS : "MySQLDatabase",
+		$_REQUEST['db'][$type] = $databaseConfig = array(
+			"type" => defined('SS_DATABASE_CLASS') ? SS_DATABASE_CLASS : $type,
 			"server" => defined('SS_DATABASE_SERVER') ? SS_DATABASE_SERVER : "localhost",
 			"username" => defined('SS_DATABASE_USERNAME') ? SS_DATABASE_USERNAME : "root",
 			"password" => defined('SS_DATABASE_PASSWORD') ? SS_DATABASE_PASSWORD : "",
-			"database" => $_REQUEST['db']['database'],
+			"database" => $_REQUEST['db'][$type]['database'],
 		);
 	} else {
 		// Normal behaviour without the environment
-		$databaseConfig = $_REQUEST['db'];
+		$databaseConfig = $_REQUEST['db'][$type];
+		$databaseConfig['type'] = $type;
 	}
 } else {
-	$_REQUEST['db'] = $databaseConfig = array(
+	$_REQUEST['db'][$type] = $databaseConfig = array(
 		"type" => defined('SS_DATABASE_CLASS') ? SS_DATABASE_CLASS : "MySQLDatabase",
 		"server" => defined('SS_DATABASE_SERVER') ? SS_DATABASE_SERVER : "localhost",
 		"username" => defined('SS_DATABASE_USERNAME') ? SS_DATABASE_USERNAME : "root",
@@ -628,7 +630,7 @@ class InstallRequirements {
 	
 	function requireDatabaseConnection($databaseConfig, $testDetails) {
 		$this->testing($testDetails);
-		$helper = $this->getDatabaseConfigurationHelper($databaseConfig['type']);
+		$helper = $this->getDatabaseConfigurationHelper($databaseConfig['type']);		
 		$result = $helper->requireDatabaseConnection($databaseConfig);
 		if($result['success']) {
 			return true;
@@ -806,12 +808,13 @@ class Installer extends InstallRequirements {
 			
 			$phpVersion = urlencode(phpversion());
 			$encWebserver = urlencode($webserver);
-			
-			if($config['db']['type'] == 'MySQLDatabase') {
-				$conn = @mysql_connect($config['db']['server'], null, null);
+			$type = $config['db']['type'];
+
+			if($type == 'MySQLDatabase') {
+				$conn = @mysql_connect($config['db'][$type]['server'], null, null);
 				$databaseVersion = urlencode('MySQLDatabase: ' . mysql_get_server_info());
 			} else {
-				$databaseVersion = $config['db']['type'];
+				$databaseVersion = $type;
 			}
 			
 			$url = "http://ss2stat.silverstripe.com/Installation/add?SilverStripe=$silverstripe_version&PHP=$phpVersion&Database=$databaseVersion&WebServer=$encWebserver";
@@ -842,7 +845,7 @@ global \$project;
 \$project = 'mysite';
 
 global \$database;
-\$database = '{$config['db']['database']}';
+\$database = '{$config['db'][$type]['database']}';
 
 require_once('conf/ConfigureFromEnv.php');
 
@@ -865,8 +868,8 @@ PHP
 			$this->statusMessage("Setting up 'mysite/_config.php'...");
 		
 			$devServers = $this->var_export_array_nokeys(explode("\n", $_POST['devsites']));
-		
-			$escapedPassword = addslashes($config['db']['password']);
+
+			$escapedPassword = addslashes($config['db'][$type]['password']);
 			$this->writeToFile("mysite/_config.php", <<<PHP
 <?php
 
@@ -875,11 +878,12 @@ global \$project;
 
 global \$databaseConfig;
 \$databaseConfig = array(
-	"type" => '{$config['db']['type']}',
-	"server" => '{$config['db']['server']}', 
-	"username" => '{$config['db']['username']}', 
+	"type" => '{$type}',
+	"server" => '{$config['db'][$type]['server']}', 
+	"username" => '{$config['db'][$type]['username']}', 
 	"password" => '{$escapedPassword}', 
-	"database" => '{$config['db']['database']}',
+	"database" => '{$config['db'][$type]['database']}',
+	"path" => '{$config['db'][$type]['path']}',
 );
 
 // Sites running on the following servers will be
