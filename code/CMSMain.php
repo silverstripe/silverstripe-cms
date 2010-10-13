@@ -1306,10 +1306,10 @@ JS;
 
 		foreach($classes as $i => $class) {
 			$title = _t("{$class}.MENUTITLE", LeftAndMain::menu_title_for_class($class));
-	        $perms["CMS_ACCESS_" . $class] = array(
+			$perms["CMS_ACCESS_" . $class] = array(
 				'name' => sprintf(_t(
 					'CMSMain.ACCESS', 
-					"Access to %s",
+					"Access to '%s' section",
 					PR_MEDIUM,
 					"Item in permission selection identifying the admin section. Example: Access to 'Files & Images'"
 				), $title, null),
@@ -1322,7 +1322,16 @@ JS;
 			'help' => _t('CMSMain.ACCESSALLINTERFACESHELP', 'Overrules more specific access settings.'),
 			'sort' => -100
 		);
-		
+
+		$perms['CMS_ACCESS_CMSMain']['help'] = _t(
+			'CMSMain.ACCESS_HELP',
+			'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
+		);
+		$perms['CMS_ACCESS_SecurityAdmin']['help'] = _t(
+			'SecurityAdmin.ACCESS_HELP',
+			'Allow viewing, adding and editing users, as well as assigning permissions and roles to them.'
+		);
+
 		if (isset($perms['CMS_ACCESS_ModelAdmin'])) unset($perms['CMS_ACCESS_ModelAdmin']);
 
 		return $perms;
