@@ -50,41 +50,52 @@ if($envFileExists) {
 	}
 }
 
-// This is a listing of known external databases
-$otherDatabaseLocations = array(
-	'mssql' => array(
-		'dir' => 'mssql/code',
-		'class' => 'MSSQLDatabase',
-		'title' => 'SQL Server 2008'
-	),
-	'postgresql' => array(
-		'dir' => 'postgresql/code',
-		'class' => 'PostgreSQLDatabase',
-		'title' => 'PostgreSQL 8.3+'
-	),
-	'sqlite3' => array(
-		'dir' => 'sqlite3/code',
-		'class' => 'SQLite3Database',
-		'title' => 'SQLite 3'
-	),
-	'sqlitepdo' => array(
-		'dir' => 'sqlite3/code',
-		'class' => 'SQLitePDODatabase',
-		'title' => 'SQLite PDO'
-	)
-);
-
-// MySQL support comes out of the box with sapphire
-$foundDatabaseClasses = array('MySQLDatabase' => 'MySQL 4.1+');
 include_once('sapphire/dev/install/DatabaseConfigurationHelper.php');
-include_once('sapphire/dev/install/MySQLDatabaseConfigurationHelper.php');
+include_once('sapphire/dev/install/DatabaseAdapterRegistry.php');
 
-// Determine which external database modules are installed
-foreach($otherDatabaseLocations as $details) {
-	$helperPath = $details['dir'] . '/' . $details['class'] . 'ConfigurationHelper.php';
-	if(file_exists($helperPath)) {
-		$foundDatabaseClasses[$details['class']] = $details['title'];
-		include_once($helperPath);
+// Register the SilverStripe provided databases
+DatabaseAdapterRegistry::register(
+	'MySQLDatabase',
+	'MySQL 4.1+',
+	'sapphire/dev/install/MySQLDatabaseConfigurationHelper.php',
+	function_exists('mysql_connect'));
+DatabaseAdapterRegistry::register(
+	'MSSQLDatabase',
+	'SQL Server 2008',
+	'mssql/code/MSSQLDatabaseConfigurationHelper.php',
+	function_exists('mssql_connect') || function_exists('sqlsrv_connect'),
+	null,
+	'Neither the <a href="http://php.net/mssql">mssql</a> or <a href="http://www.microsoft.com/sqlserver/2005/en/us/PHP-Driver.aspx">sqlsrv</a> PHP extensions are available. Please install or enable one of them and refresh this page.');
+DatabaseAdapterRegistry::register(
+	'PostgreSQLDatabase',
+	'PostgreSQL 8.3+',
+	'postgresql/code/PostgreSQLDatabaseConfigurationHelper.php',
+	function_exists('pg_query'),
+	null,
+	'The <a href="http://php.net/pgsql">pgsql</a> PHP extension is not available. Please install or enable it and refresh this page.');
+DatabaseAdapterRegistry::register(
+	'SQLitePDODatabase',
+	'SQLite PDO',
+	'sqlite3/code/SQLitePDODatabaseConfigurationHelper.php',
+	in_array('sqlite', PDO::getAvailableDrivers()));
+DatabaseAdapterRegistry::register(
+	'SQLite3Database',
+	'SQLite 3',
+	'sqlite3/code/SQLite3DatabaseConfigurationHelper.php',
+	class_exists('SQLite3'),
+	'');
+
+// Discover any 3rd party ones
+DatabaseAdapterRegistry::autodiscover();
+
+// Determine which external database modules are USABLE
+foreach(DatabaseAdapterRegistry::adapters() as $class => $details) {
+	$databaseClasses[$class] = $details;
+	if(file_exists($details['helperPath'])) {
+		$databaseClasses[$class]['hasModule'] = true;
+		include_once($details['helperPath']);
+	} else {
+		$databaseClasses[$class]['hasModule'] = false;
 	}
 }
 
