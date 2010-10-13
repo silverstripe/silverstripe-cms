@@ -346,7 +346,7 @@ class InstallRequirements {
 		
 		// Check for web server, unless we're calling the installer from the command-line
 		if(!isset($_SERVER['argv']) || !$_SERVER['argv']) {
-			$this->isRunningWebServer(array("Webserver Configuration", "Server software", "$webserver.  Without Apache I can't tell if mod_rewrite is enabled.", $webserver));
+			$this->isRunningWebServer(array("Webserver Configuration", "Server software", "Unknown web server", $webserver));
 			
 			if($isApache) {
 				$this->requireApacheModule('mod_rewrite', array("Webserver Configuration", "mod_rewrite enabled", "You need mod_rewrite to run SilverStripe CMS, but it is not enabled."));
