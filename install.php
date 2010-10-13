@@ -882,7 +882,7 @@ MySQLDatabase::set_connection_charset('utf8');
 SSViewer::set_theme('$theme');
 
 // Set the site locale
-i18n::set_locale($locale);
+i18n::set_locale('$locale');
 
 // enable nested URLs for this site (e.g. page/sub-page/)
 SiteTree::enable_nested_urls();
