@@ -320,7 +320,7 @@ class InstallRequirements {
 		$isIIS = $this->isIIS();
 		$webserver = $this->findWebserver();
 		
-		$this->requirePHPVersion('5.2.0', '5.0.4', array("PHP Configuration", "PHP5 installed", null, "PHP version " . phpversion()));
+		$this->requirePHPVersion('5.2.0', '5.1.0', array("PHP Configuration", "PHP5 installed", null, "PHP version " . phpversion()));
 
 		// Check that we can identify the root folder successfully
 		$this->requireFile('sapphire/dev/install/config-form.html', array("File permissions", 
