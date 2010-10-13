@@ -807,6 +807,7 @@ class Installer extends InstallRequirements {
 			}
 			
 			$phpVersion = urlencode(phpversion());
+			$encWebserver = urlencode($webserver);
 			
 			if($config['db']['type'] == 'MySQLDatabase') {
 				$conn = @mysql_connect($config['db']['server'], null, null);
@@ -815,7 +816,7 @@ class Installer extends InstallRequirements {
 				$databaseVersion = $config['db']['type'];
 			}
 			
-			$url = "http://ss2stat.silverstripe.com/Installation/add?SilverStripe=$silverstripe_version&PHP=$phpVersion&Database=$databaseVersion&WebServer=$webserver";
+			$url = "http://ss2stat.silverstripe.com/Installation/add?SilverStripe=$silverstripe_version&PHP=$phpVersion&Database=$databaseVersion&WebServer=$encWebserver";
 			
 			if(isset($_SESSION['StatsID']) && $_SESSION['StatsID']) {
 				$url .= '&ID=' . $_SESSION['StatsID'];
