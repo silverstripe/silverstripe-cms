@@ -244,7 +244,7 @@ class InstallRequirements {
 			if(function_exists('apache_get_modules')) {
 				$this->requireApacheModule('mod_rewrite', array("Webserver Configuration", "mod_rewrite enabled", "You need mod_rewrite to run SilverStripe CMS, but it is not enabled."));
 			} elseif(strpos($webserver, 'IIS') !== false) {
-				$this->requireIISRewriteModule('IIS_UrlRewriteModule', array("Webserver Configuration", "IIS URL Rewrite Module enabled", "You need to enable the IIS URL Rewrite Module, but it is not installed or enabled."));
+				$this->requireIISRewriteModule('IIS_UrlRewriteModule', array("Webserver Configuration", "IIS URL Rewrite Module enabled", "You need to enable the IIS URL Rewrite Module, but it is not installed or enabled. Download it for IIS 7 from http://www.iis.net/expand/URLRewrite"));
 			} else {
 				$this->warning(array("Webserver Configuration", "URL rewrite enabled", "I can't tell whether any rewriting module is running.  You may need to configure a rewriting rule yourself."));
 			}
