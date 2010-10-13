@@ -53,31 +53,35 @@ if($envFileExists) {
 // This is a listing of known external databases
 $otherDatabaseLocations = array(
 	'mssql' => array(
+		'dir' => 'mssql/code',
 		'class' => 'MSSQLDatabase',
 		'title' => 'SQL Server 2008'
 	),
 	'postgresql' => array(
+		'dir' => 'postgresql/code',
 		'class' => 'PostgreSQLDatabase',
 		'title' => 'PostgreSQL'
 	),
 	'sqlite3' => array(
+		'dir' => 'sqlite3/code',
 		'class' => 'SQLite3Database',
 		'title' => 'SQLite 3'
 	),
 	'sqlitepdo' => array(
+		'dir' => 'sqlite3/code',
 		'class' => 'SQLitePDODatabase',
 		'title' => 'SQLite PDO'
 	)
 );
 
-// MySQL support comes out of the box with sapphire. Other databases
-// live in their own module directories. Let's find out if there
-// are any installed and determine if they have a configuration helper.
+// MySQL support comes out of the box with sapphire
 $foundDatabaseClasses = array('MySQLDatabase' => 'MySQL');
 include_once('sapphire/dev/install/DatabaseConfigurationHelper.php');
 include_once('sapphire/dev/install/MySQLDatabaseConfigurationHelper.php');
-foreach($otherDatabaseLocations as $dir => $details) {
-	$helperPath = $dir . '/code/' . $details['class'] . 'ConfigurationHelper.php';
+
+// Determine which external database modules are installed
+foreach($otherDatabaseLocations as $details) {
+	$helperPath = $details['dir'] . '/' . $details['class'] . 'ConfigurationHelper.php';
 	if(file_exists($helperPath)) {
 		$foundDatabaseClasses[$details['class']] = $details['title'];
 		include_once($helperPath);
@@ -616,6 +620,7 @@ class InstallRequirements {
 		if($result) {
 			return true;
 		} else {
+			$this->error($testDetails);
 			return false;
 		}
 	}
@@ -625,7 +630,6 @@ class InstallRequirements {
 		$helper = $this->getDatabaseConfigurationHelper($databaseConfig['type']);
 		$result = $helper->requireDatabaseConnection($databaseConfig);
 		if($result['okay']) {
-			$result['connection'];
 			return true;
 		} else {
 			$testDetails[2] .= ": " . $result['error'];
