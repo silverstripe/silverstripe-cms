@@ -620,7 +620,7 @@ class InstallRequirements {
 		
 		if($databaseConfig['type'] == 'MySQLDatabase') {
 			$this->dbConn = $conn = @mysql_connect($databaseConfig['server'], $databaseConfig['username'], $databaseConfig['password']);
-			if($conn || mysql_errno() < 2000) {
+			if($conn) {
 				return true;
 			} else {
 				$testDetails[2] .= ": " . mysql_error();
