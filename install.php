@@ -842,9 +842,9 @@ global \$project;
 \$project = 'mysite';
 
 global \$database;
-\$database = "{$config['db']['database']}";
+\$database = '{$config['db']['database']}';
 
-require_once("conf/ConfigureFromEnv.php");
+require_once('conf/ConfigureFromEnv.php');
 
 MySQLDatabase::set_connection_charset('utf8');
 
@@ -875,11 +875,11 @@ global \$project;
 
 global \$databaseConfig;
 \$databaseConfig = array(
-	"type" => "{$config['db']['type']}",
-	"server" => "{$config['db']['server']}", 
-	"username" => "{$config['db']['username']}", 
+	"type" => '{$config['db']['type']}',
+	"server" => '{$config['db']['server']}', 
+	"username" => '{$config['db']['username']}', 
 	"password" => '{$escapedPassword}', 
-	"database" => "{$config['db']['database']}",
+	"database" => '{$config['db']['database']}',
 );
 
 // Sites running on the following servers will be
