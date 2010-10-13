@@ -322,10 +322,6 @@ class InstallRequirements {
 		
 		// Check memory allocation
 		$this->requireMemory(32*1024*1024, 64*1024*1024, array("PHP Configuration", "Memory allocated (PHP config option 'memory_limit')", "SilverStripe needs a minimum of 32M allocated to PHP, but recommends 64M.", ini_get("memory_limit")));
-
-		// Check that troublesome classes don't exist
-		$badClasses = array('Query', 'HTTPResponse');
-		$this->requireNoClasses($badClasses, array("PHP Configuration", "Check that certain classes haven't been defined by PHP plugins", "Your version of PHP has defined some classes that conflict with SilverStripe's"));
 			
 		return $this->errors;
 	}
