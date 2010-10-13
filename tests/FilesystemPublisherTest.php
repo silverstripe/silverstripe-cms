@@ -78,6 +78,7 @@ class FilesystemPublisherTest extends SapphireTest {
 	}
 	
 	function testUrlsToPathsWithDomainBasedCaching() {
+		$origDomainBasedCaching = FilesystemPublisher::$domain_based_caching;
 		FilesystemPublisher::$domain_based_caching = true;
 		
 		$fsp = new FilesystemPublisher('.', 'html');
@@ -102,6 +103,8 @@ class FilesystemPublisherTest extends SapphireTest {
 			array($url => 'domain2.com/parent/child.html'),
 			'Nested URLsegment path mapping'
 		);
+		
+		FilesystemPublisher::$domain_based_caching = $origDomainBasedCaching;
 	}
 	
 	/**
