@@ -12,7 +12,7 @@ and updating your database-schema.
         you can undo the installation, and ensures if the new release has no
         longer contains some files, these files won’t be left behind, which otherwise
         could cause bugs.
-      - Visit http://your.silverstripe.site/db/build?flush=1 (This adds new
+      - Visit http://your.silverstripe.site/dev/build (This adds new
         fields/tables to the database, and empties your template cache)
   - Check if any modules (e.g. blog or forum) in your installation are compatible
     and need to be upgraded as well
