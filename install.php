@@ -1057,7 +1057,6 @@ HTML;
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 	$baseClause
-
 	RewriteCond %{REQUEST_URI} ^(.*)$
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteRule .* sapphire/main.php?url=%1&%{QUERY_STRING} [L]
