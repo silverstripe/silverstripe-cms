@@ -809,9 +809,10 @@ class Installer extends InstallRequirements {
 			$phpVersion = urlencode(phpversion());
 			$encWebserver = urlencode($webserver);
 			$type = $config['db']['type'];
+			$dbConfig = $config['db'][$type];
 
 			if($type == 'MySQLDatabase') {
-				$conn = @mysql_connect($config['db'][$type]['server'], null, null);
+				$conn = @mysql_connect($dbConfig['server'], null, null);
 				$databaseVersion = urlencode('MySQLDatabase: ' . mysql_get_server_info());
 			} else {
 				$databaseVersion = $type;
@@ -845,7 +846,7 @@ global \$project;
 \$project = 'mysite';
 
 global \$database;
-\$database = '{$config['db'][$type]['database']}';
+\$database = '{$dbConfig['database']}';
 
 require_once('conf/ConfigureFromEnv.php');
 
@@ -866,10 +867,9 @@ PHP
 			
 		} else {
 			$this->statusMessage("Setting up 'mysite/_config.php'...");
-		
-			$devServers = $this->var_export_array_nokeys(explode("\n", $_POST['devsites']));
 
-			$escapedPassword = addslashes($config['db'][$type]['password']);
+			$devServers = $this->var_export_array_nokeys(explode("\n", $_POST['devsites']));
+			$escapedPassword = addslashes($dbConfig['password']);
 			$this->writeToFile("mysite/_config.php", <<<PHP
 <?php
 
@@ -879,11 +879,11 @@ global \$project;
 global \$databaseConfig;
 \$databaseConfig = array(
 	"type" => '{$type}',
-	"server" => '{$config['db'][$type]['server']}', 
-	"username" => '{$config['db'][$type]['username']}', 
+	"server" => '{$dbConfig['server']}', 
+	"username" => '{$dbConfig['username']}', 
 	"password" => '{$escapedPassword}', 
-	"database" => '{$config['db'][$type]['database']}',
-	"path" => '{$config['db'][$type]['path']}',
+	"database" => '{$dbConfig['database']}',
+	"path" => '{$dbConfig['path']}',
 );
 
 // Sites running on the following servers will be
