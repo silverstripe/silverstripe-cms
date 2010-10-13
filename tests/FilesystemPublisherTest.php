@@ -9,18 +9,99 @@ class FilesystemPublisherTest extends SapphireTest {
 	
 	protected $usesDatabase = true;
 	
+	protected $orig = array();
+	
 	function setUp() {
 		parent::setUp();
 		
 		Object::add_extension("SiteTree", "FilesystemPublisher('../FilesystemPublisherTest-static-folder/')");
 		SiteTree::$write_homepage_map = false;
+		
+		$this->orig['domain_based_caching'] = FilesystemPublisher::$domain_based_caching;
+		FilesystemPublisher::$domain_based_caching = false;
 	}
 	
 	function tearDown() {
 		Object::remove_extension("SiteTree", "FilesystemPublisher('../FilesystemPublisherTest-static-folder/')");
 		SiteTree::$write_homepage_map = true;
 		
+		FilesystemPublisher::$domain_based_caching = $this->orig['domain_based_caching'];
+		
 		parent::tearDown();
+	}
+	
+	function testUrlsToPathsWithRelativeUrls() {
+		$fsp = new FilesystemPublisher('.', 'html');
+		
+		$this->assertEquals(
+			$fsp->urlsToPaths(array('/')),
+			array('/' => './index.html'),
+			'Root URL path mapping'
+		);
+		
+		$this->assertEquals(
+			$fsp->urlsToPaths(array('about-us')),
+			array('about-us' => './about-us.html'),
+			'URLsegment path mapping'
+		);
+		
+		$this->assertEquals(
+			$fsp->urlsToPaths(array('parent/child')),
+			array('parent/child' => 'parent/child.html'),
+			'Nested URLsegment path mapping'
+		);
+	}
+	
+	function testUrlsToPathsWithAbsoluteUrls() {
+		$fsp = new FilesystemPublisher('.', 'html');
+		
+		$url = Director::absoluteBaseUrl();
+		$this->assertEquals(
+			$fsp->urlsToPaths(array($url)),
+			array($url => './index.html'),
+			'Root URL path mapping'
+		);
+		
+		$url = Director::absoluteBaseUrl() . 'about-us';
+		$this->assertEquals(
+			$fsp->urlsToPaths(array($url)),
+			array($url => './about-us.html'),
+			'URLsegment path mapping'
+		);
+		
+		$url = Director::absoluteBaseUrl() . 'parent/child';
+		$this->assertEquals(
+			$fsp->urlsToPaths(array($url)),
+			array($url => 'parent/child.html'),
+			'Nested URLsegment path mapping'
+		);
+	}
+	
+	function testUrlsToPathsWithDomainBasedCaching() {
+		FilesystemPublisher::$domain_based_caching = true;
+		
+		$fsp = new FilesystemPublisher('.', 'html');
+		
+		$url = 'http://domain1.com/';
+		$this->assertEquals(
+			$fsp->urlsToPaths(array($url)),
+			array($url => 'domain1.com/index.html'),
+			'Root URL path mapping'
+		);
+		
+		$url = 'http://domain1.com/about-us';
+		$this->assertEquals(
+			$fsp->urlsToPaths(array($url)),
+			array($url => 'domain1.com/about-us.html'),
+			'URLsegment path mapping'
+		);
+		
+		$url = 'http://domain2.com/parent/child';
+		$this->assertEquals(
+			$fsp->urlsToPaths(array($url)),
+			array($url => 'domain2.com/parent/child.html'),
+			'Nested URLsegment path mapping'
+		);
 	}
 	
 	/**
