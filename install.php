@@ -952,7 +952,7 @@ PHP
 		$adminMember->write();
 		
 		// Syncing filesystem (so /assets/Uploads is available instantly, see ticket #2266)
-		FileSystem::sync();
+		Filesystem::sync();
 		
 		$_SESSION['username'] = $config['admin']['username'];
 		$_SESSION['password'] = $config['admin']['password'];
