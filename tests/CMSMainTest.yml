@@ -60,7 +60,7 @@ SiteConfig:
       CanCreateTopLevelType: 'OnlyTheseUsers'
 SiteConfig_CreateTopLevelGroups:
    createtoplevelgroups1:
-      SiteConfigID:  1
+      SiteConfigID:  =>SiteConfig.siteconfig1
       GroupID: =>Group.rooteditusers
 PageComment:
     Comment1:
