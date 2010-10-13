@@ -229,15 +229,22 @@ class InstallRequirements {
 		// Check for web server, unless we're calling the installer from the command-line
 		if(!isset($_SERVER['argv']) || !$_SERVER['argv']) { 
 			$webserver = strip_tags(trim($_SERVER['SERVER_SIGNATURE']));
-			if($webserver == '') {
-				$webserver = "I can't tell what webserver you are running";
+			if(!$webserver) {
+				if(isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'], 'IIS') !== false) {
+					$pieces = explode('-', $_SERVER['SERVER_SOFTWARE']);
+					if(isset($pieces[1])) $webserver = $pieces[1];
+				} else {
+					$webserver = "I can't tell what webserver you are running";
+				}
 			}
-		
-			$this->isRunningApache(array("Webserver Configuration", "Server software", "$webserver.  Without Apache I can't tell if mod_rewrite is enabled.", $webserver));
+			
+			$this->isRunningWebServer(array("Webserver Configuration", "Server software", "$webserver.  Without Apache I can't tell if mod_rewrite is enabled.", $webserver));
 			if(function_exists('apache_get_modules')) {
 				$this->requireApacheModule('mod_rewrite', array("Webserver Configuration", "mod_rewrite enabled", "You need mod_rewrite to run SilverStripe CMS, but it is not enabled."));
+			} elseif(strpos($webserver, 'IIS') !== false) {
+				$this->requireIISRewriteModule('IIS_UrlRewriteModule', array("Webserver Configuration", "IIS URL Rewrite Module enabled", "You need to enable the IIS URL Rewrite Module, but it is not installed or enabled."));
 			} else {
-				$this->warning(array("Webserver Configuration", "mod_rewrite enabled", "I can't tell whether mod_rewrite is running.  You may need to configure a rewriting rule yourself."));
+				$this->warning(array("Webserver Configuration", "URL rewrite enabled", "I can't tell whether any rewriting module is running.  You may need to configure a rewriting rule yourself."));
 			}
 		
 			$this->requireServerVariables(array('SCRIPT_NAME','HTTP_HOST','SCRIPT_FILENAME'), array("Webserver config", "Recognised webserver", "You seem to be using an unsupported webserver.  The server variables SCRIPT_NAME, HTTP_HOST, SCRIPT_FILENAME need to be set."));
@@ -520,7 +527,17 @@ class InstallRequirements {
 		$this->testing($testDetails);
 		if(!in_array($moduleName, apache_get_modules())) $this->error($testDetails);
 	}
-		
+
+	function requireIISRewriteModule($moduleName, $testDetails) {
+		$this->testing($testDetails);
+		if(isset($_SERVER[$moduleName]) && $_SERVER[$moduleName] == 1) {
+			return true;
+		} else {
+			$this->error($testDetails);
+			return false;
+		}
+	}
+	
 	function requireMysqlConnection($server, $username, $password, $testDetails) {
 		$this->testing($testDetails);
 		$conn = @mysql_connect($server, $username, $password);
@@ -616,13 +633,16 @@ class InstallRequirements {
 		}
 	}
 	
-	function isRunningApache($testDetails) {
+	function isRunningWebServer($testDetails) {
 		$this->testing($testDetails);
-		if(function_exists('apache_get_modules') || stristr($_SERVER['SERVER_SIGNATURE'], 'Apache'))
+		if(function_exists('apache_get_modules') || stristr($_SERVER['SERVER_SIGNATURE'], 'Apache')) {
 			return true;
-		
-		$this->warning($testDetails);
-		return false;
+		} elseif(strpos($_SERVER['SERVER_SOFTWARE'], 'IIS') !== false) {
+			return true;
+		} else {
+			$this->warning($testDetails);
+			return false;
+		}
 	}
 
 
