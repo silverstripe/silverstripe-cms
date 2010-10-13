@@ -362,6 +362,7 @@ class InstallRequirements {
 		
 		// Check for XML support
 		$this->requireFunction('xml_set_object', array("PHP Configuration", "XML support", "XML support not included in PHP."));
+		$this->requireClass('DOMDocument', array("PHP Configuration", "DOM/XML support", "DOM/XML support not included in PHP."));
 		
 		// Check for token_get_all
 		$this->requireFunction('token_get_all', array("PHP Configuration", "PHP Tokenizer", "PHP tokenizer support not included in PHP."));
@@ -492,7 +493,13 @@ class InstallRequirements {
 		if(!function_exists($funcName)) $this->error($testDetails);
 		else return true;
 	}
-	
+
+	function requireClass($className, $testDetails) {
+		$this->testing($testDetails);
+		if(!class_exists($className)) $this->error($testDetails);
+		else return false;
+	}
+
 	/**
 	 * Require that the given class doesn't exist
 	 */
