@@ -83,7 +83,7 @@ class GroupImportForm extends Form {
 	
 		$this->sessionMessage($msg, 'good');
 		
-		Director::redirectBack();
+		$this->redirectBack();
 	}
 	
 }

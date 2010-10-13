@@ -120,7 +120,7 @@ class LeftAndMain extends Controller {
 		);
 		
 		// set reading lang
-		if(Object::has_extension('SiteTree', 'Translatable') && !Director::is_ajax()) {
+		if(Object::has_extension('SiteTree', 'Translatable') && !$this->isAjax()) {
 			Translatable::choose_site_locale(array_keys(Translatable::get_existing_content_languages('SiteTree')));
 		}
 
@@ -158,7 +158,7 @@ class LeftAndMain extends Controller {
 		if(Director::redirected_to()) return;
 
 		// Audit logging hook
-		if(empty($_REQUEST['executeForm']) && !Director::is_ajax()) $this->extend('accessedCMS');
+		if(empty($_REQUEST['executeForm']) && !$this->isAjax()) $this->extend('accessedCMS');
 
 		// Set the members html editor config
 		HtmlEditorConfig::set_active(Member::currentUser()->getHtmlEditorConfigForCMS());
@@ -370,7 +370,7 @@ class LeftAndMain extends Controller {
 		// TODO Necessary for TableListField URLs to work properly
 		if($request->param('ID')) $this->setCurrentPageID($request->param('ID'));
 		
-		if(Director::is_ajax()) {
+		if($this->isAjax()) {
 			SSViewer::setOption('rewriteHashlinks', false);
 			$form = $this->getEditForm($request->param('ID'));
 			$content = $form->formHtmlContent();
@@ -913,7 +913,7 @@ class LeftAndMain extends Controller {
 		// Used in TinyMCE inline folder creation
 		if(isset($data['returnID'])) {
 			return $record->ID;
-		} else if(Director::is_ajax()) {
+		} else if($this->isAjax()) {
 			$form = $this->getEditForm($record->ID);
 			return $form->formHtmlContent();
 		} else {

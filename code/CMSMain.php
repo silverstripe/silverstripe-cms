@@ -643,7 +643,7 @@ JS;
 			)
 		);
 		
-		if(Director::is_ajax()) {
+		if($this->isAjax()) {
 			// need a valid ID value even if the record doesn't have one in the database
 			// (its still present in the live tables)
 			$liveRecord = Versioned::get_one_by_stage(
@@ -653,7 +653,7 @@ JS;
 			);
 			return ($liveRecord) ? $form->formHtmlContent() : "";
 		} else {
-			Director::redirectBack();
+			$this->redirectBack();
 		}
 	}
 	
@@ -923,7 +923,7 @@ JS;
 
 			SSViewer::setOption('rewriteHashlinks', false);
 			
-			if(Director::is_ajax()) {
+			if($this->isAjax()) {
 				return $form->formHtmlContent();
 			} else {
 				$templateData = $this->customise(array(
@@ -1006,7 +1006,7 @@ JS;
 				$field->dontEscape = true;
 			}
 
-			if(Director::is_ajax()) {
+			if($this->isAjax()) {
 				return $form->formHtmlContent();
 			} else {
 				$templateData = $this->customise(array(

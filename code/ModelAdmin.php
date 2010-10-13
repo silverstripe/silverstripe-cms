@@ -515,7 +515,7 @@ class ModelAdmin_CollectionController extends Controller {
 		// File wasn't properly uploaded, show a reminder to the user
 		if(empty($_FILES['_CsvFile']['tmp_name'])) {
 			$form->sessionMessage(_t('ModelAdmin.NOCSVFILE', 'Please browse for a CSV file to import'), 'good');
-			Director::redirectBack();
+			$this->redirectBack();
 			return false;
 		}
 
@@ -540,7 +540,7 @@ class ModelAdmin_CollectionController extends Controller {
 		if(!$results->CreatedCount() && !$results->UpdatedCount()) $message .= _t('ModelAdmin.NOIMPORT', "Nothing to import");
 		
 		$form->sessionMessage($message, 'good');
-		Director::redirectBack();
+		$this->redirectBack();
 	}
 	
 	/**
@@ -833,7 +833,7 @@ class ModelAdmin_CollectionController extends Controller {
 		$form->saveInto($model);
 		$model->write();
 		
-		if(Director::is_ajax()) {
+		if($this->isAjax()) {
 			$class = $this->parentController->getRecordControllerClass($this->getModelClass());
 			$recordController = new $class($this, $request, $model->ID);
 			return new SS_HTTPResponse(
@@ -886,7 +886,7 @@ class ModelAdmin_RecordController extends Controller {
 	 */
 	function edit($request) {
 		if ($this->currentRecord) {
-			if(Director::is_ajax()) {
+			if($this->isAjax()) {
 				return new SS_HTTPResponse(
 					$this->EditForm()->formHtmlContent(), 
 					200, 
@@ -956,10 +956,10 @@ class ModelAdmin_RecordController extends Controller {
 		
 		
 		// Behaviour switched on .
-		if(Director::is_ajax()) {
+		if($this->parentController->isAjax()) {
 			return $this->edit($request);
 		} else {
-			Director::redirectBack();
+			$this->parentController->redirectBack();
 		}
 	}	
 	
@@ -970,8 +970,9 @@ class ModelAdmin_RecordController extends Controller {
 		if($this->currentRecord->canDelete(Member::currentUser())) {
 			$this->currentRecord->delete();
 			Director::redirect($this->parentController->Link('SearchForm?action=search'));
+		} else {
+			$this->parentController->redirectBack();
 		}
-		else Director::redirectBack();
 		return;
 	}
 	
