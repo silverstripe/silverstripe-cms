@@ -10,7 +10,7 @@ and updating your database-schema.
         and your custom directories alone)
       - Moving your current folders (rather than installing on top) means
         you can undo the installation, and ensures if the new release has no
-        longer contains some files, these files won’t be left behind, which otherwise
+        longer contains some files, these files won't be left behind, which otherwise
         could cause bugs.
       - Visit http://your.silverstripe.site/dev/build (This adds new
         fields/tables to the database, and empties your template cache)
