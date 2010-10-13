@@ -57,11 +57,11 @@ include_once('sapphire/dev/install/DatabaseAdapterRegistry.php');
 
 // Set default locale, but try and sniff from the user agent
 $locales = i18n::$common_locales;
-$defaultLocale = 'en_US';
-if (isset($_SERVER['HTTP_USER_AGENT'])) {
+$defaultLocale = i18n::get_locale();
+if(isset($_SERVER['HTTP_USER_AGENT'])) {
 	foreach($locales as $code => $details) {
 		$bits = explode('_', $code);
-		if (preg_match("/{$bits[0]}.{$bits[1]}/", $_SERVER['HTTP_USER_AGENT'])) {
+		if(preg_match("/{$bits[0]}.{$bits[1]}/", $_SERVER['HTTP_USER_AGENT'])) {
 			$defaultLocale = $code;
 			break;
 		}
