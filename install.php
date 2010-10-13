@@ -638,7 +638,11 @@ class InstallRequirements {
 	 * @param string $databaseClass e.g. MySQLDatabase or MSSQLDatabase
 	 */
 	function getDatabaseConfigurationHelper($databaseClass) {
-		$class = $databaseClass . 'ConfigurationHelper';
+		$adapters = DatabaseAdapterRegistry::adapters();
+		if(isset($adapters[$databaseClass])) {
+			$helperPath = $adapters[$databaseClass]['helperPath'];
+			$class = str_replace('.php', '', basename($helperPath));
+		}
 		return (class_exists($class)) ? new $class() : new MySQLDatabaseConfigurationHelper();
 		return new $class();
 	}
