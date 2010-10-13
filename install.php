@@ -221,7 +221,8 @@ class InstallRequirements {
 			array(
 				"Database Configuration",
 				"Database support",
-				"Database support in PHP"
+				"Database support in PHP",
+				$this->getDatabaseTypeNice($databaseConfig['type'])
 			)
 		)) {
 			if($this->requireDatabaseServer(
@@ -247,7 +248,7 @@ class InstallRequirements {
 							"Database Configuration",
 							"Database server meets required version",
 							'',
-							$this->getDatabaseTypeNice($databaseConfig['type']) . ' ' . $this->getDatabaseConfigurationHelper($databaseConfig['type'])->getDatabaseVersion($databaseConfig)
+							'Version ' . $this->getDatabaseConfigurationHelper($databaseConfig['type'])->getDatabaseVersion($databaseConfig)
 						)
 					)) {
 						$this->requireDatabaseOrCreatePermissions(
