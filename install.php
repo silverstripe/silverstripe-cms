@@ -277,15 +277,16 @@ class InstallRequirements {
 	}
 	
 	function isApache() {
-		$webserver = strip_tags(trim(@$_SERVER['SERVER_SIGNATURE']));
-		if(!$webserver) {
-			if(isset($_SERVER['SERVER_SOFTWARE'])) {
-				if(strpos($_SERVER['SERVER_SOFTWARE'], 'Apache') !== false) {
-					return true;
-				}
-			}
+		$signature = isset($_SERVER['SERVER_SIGNATURE'])
+			? $_SERVER['SERVER_SIGNATURE']
+			: @$_SERVER['SERVER_SOFTWARE'];
+		
+		$signature = strip_tags(trim($signature));
+		if($signature && strpos($signature, 'Apache') !== false) {
+			return true;
+		} else {
+			return false;
 		}
-		return false;
 	}
 
 	function findWebserver() {
