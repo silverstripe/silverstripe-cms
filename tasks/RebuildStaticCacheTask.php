@@ -46,6 +46,10 @@ class RebuildStaticCacheTask extends Controller {
 		$page = singleton('Page');
 		$cacheBaseDir = $page->getDestDir();
 		
+		if(!file_exists($cacheBaseDir)) {
+			mkdir($cacheBaseDir);
+		}
+		
 		if (file_exists($cacheBaseDir.'/lock') && !isset($_REQUEST['force'])) die("There already appears to be a publishing queue running. You can skip warning this by adding ?/&force to the URL.");
 		
 		touch($cacheBaseDir.'/lock');
