@@ -442,12 +442,42 @@ class InstallRequirements {
 			
 		} else {
 			foreach($this->tests as $section => $tests) {
-				echo "<h5>$section</h5>";
-				echo "<table class=\"testResults\">";
+				$failedRequirements = 0;
+				$warningRequirements = 0;
+				
+				$output = "";
 				
 				foreach($tests as $test => $result) {
-					echo "<tr class=\"$result[0]\"><td>$test</td><td>" . nl2br(htmlentities($result[1])) . "</td></tr>";
+					if(isset($result['0'])) {
+						switch($result['0']) {
+							case 'error':
+								$failedRequirements++;
+								break;
+							case 'warning':
+								$warningRequirements++;
+								break;
+						}
+					}
+					$output .= "<tr class=\"$result[0]\"><td>$test</td><td>" . nl2br(htmlentities($result[1])) . "</td></tr>";
 				}
+				$className = "good";
+				$text = "All Requirements Pass";
+				$pluralWarnings = ($warningRequirements == 1) ? 'Warning' : 'Warnings';
+				
+				if($failedRequirements > 0) {
+					$className = "error";
+					$pluralWarnings = ($warningRequirements == 1) ? 'Warning' : 'Warnings';
+					
+					$text = $failedRequirements . ' Failed and '. $warningRequirements . ' '. $pluralWarnings;
+				}
+				else if($warningRequirements > 0) {
+					$className = "warning";
+					$text = "All Requirements Pass but ". $warningRequirements . ' '. $pluralWarnings;
+				}
+				
+				echo "<h5 class='requirement $className'>$section <a href='#'>See All Requirements</a> <span>$text</span></h5>";
+				echo "<table class=\"testResults\">";
+				echo $output;
 				echo "</table>";
 			}		
 		}
@@ -903,8 +933,6 @@ PHP
 			
 		} else {
 			$this->statusMessage("Setting up 'mysite/_config.php'...");
-
-			$devServers = $this->var_export_array_nokeys(explode("\n", $_POST['devsites']));
 			$escapedPassword = addslashes($dbConfig['password']);
 			$this->writeToFile("mysite/_config.php", <<<PHP
 <?php
@@ -926,7 +954,10 @@ global \$databaseConfig;
 // run in development mode. See
 // http://doc.silverstripe.org/doku.php?id=configuration
 // for a description of what dev mode does.
-Director::set_dev_servers($devServers);
+Director::set_dev_servers(array(
+	'localhost',
+	'127.0.0.1'
+));
 
 MySQLDatabase::set_connection_charset('utf8');
 
