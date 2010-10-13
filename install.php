@@ -283,7 +283,13 @@ class InstallRequirements {
 		$this->requireFile('mysite', array("File permissions", "mysite/ folder exists", "There's no mysite folder."));
 		$this->requireFile('sapphire', array("File permissions", "sapphire/ folder exists", "There's no sapphire folder."));
 		$this->requireFile('cms', array("File permissions", "cms/ folder exists", "There's no cms folder."));
-		$this->requireWriteable('.htaccess', array("File permissions", "Is the .htaccess file writeable?", null));
+		
+		
+		// Special case: IIS 7 and 7.5 don't need an .htaccess file, so it shouldn't have to be writable
+		if(!(isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'], 'IIS/7') !== false)) {
+			$this->requireWriteable('.htaccess', array("File permissions", "Is the .htaccess file writeable?", null));
+		}
+		
 		$this->requireWriteable('mysite/_config.php', array("File permissions", "Is the mysite/_config.php file writeable?", null));
 		$this->requireWriteable('assets', array("File permissions", "Is the assets/ folder writeable?", null));
 		
@@ -306,7 +312,7 @@ class InstallRequirements {
 			$this->isRunningWebServer(array("Webserver Configuration", "Server software", "$webserver.  Without Apache I can't tell if mod_rewrite is enabled.", $webserver));
 			if(function_exists('apache_get_modules')) {
 				$this->requireApacheModule('mod_rewrite', array("Webserver Configuration", "mod_rewrite enabled", "You need mod_rewrite to run SilverStripe CMS, but it is not enabled."));
-			} elseif(strpos($webserver, 'IIS') !== false) {
+			} elseif(strpos($webserver, 'IIS/7') !== false) {
 				$this->requireIISRewriteModule('IIS_UrlRewriteModule', array("Webserver Configuration", "IIS URL Rewrite Module enabled", "You need to enable the IIS URL Rewrite Module, but it is not installed or enabled. Download it for IIS 7 from http://www.iis.net/expand/URLRewrite"));
 			} else {
 				$this->warning(array("Webserver Configuration", "URL rewrite enabled", "I can't tell whether any rewriting module is running.  You may need to configure a rewriting rule yourself."));
