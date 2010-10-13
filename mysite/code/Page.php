@@ -1,17 +1,15 @@
 <?php
-
 class Page extends SiteTree {
-	
+
 	public static $db = array(
 	);
-	
+
 	public static $has_one = array(
 	);
-	
-}
 
+}
 class Page_Controller extends ContentController {
-	
+
 	/**
 	 * An array of actions that can be accessed via a request. Each array element should be an action name, and the
 	 * permissions or conditions required to allow the user to access it.
@@ -30,46 +28,46 @@ class Page_Controller extends ContentController {
 	public static $allowed_actions = array (
 		'SearchForm'
 	);
-	
+
 	public function init() {
 		parent::init();
 
 		// Note: you should use SS template require tags inside your templates 
 		// instead of putting Requirements calls here.  However these are 
 		// included so that our older themes still work
-		Requirements::themedCSS("layout"); 
-		Requirements::themedCSS("typography"); 
-		Requirements::themedCSS("form"); 
+		Requirements::themedCSS('layout'); 
+		Requirements::themedCSS('typography'); 
+		Requirements::themedCSS('form'); 
 	}
-	
+
 	/**
-	 * Site search form 
-	 */ 
+	 * Site search form
+	 */
 	function SearchForm() {
 		$searchText = isset($_REQUEST['Search']) ? $_REQUEST['Search'] : 'Search';
 		$fields = new FieldSet(
-	      	new TextField("Search", "", $searchText)
-	  	);
+			new TextField('Search', '', $searchText)
+		);
 		$actions = new FieldSet(
-	      	new FormAction('results', 'Search')
-	  	);
-
-	  	return new SearchForm($this, "SearchForm", $fields, $actions);
+			new FormAction('results', 'Search')
+		);
+		return new SearchForm($this, 'SearchForm', $fields, $actions);
 	}
-	
+
 	/**
-	 * Process and render search results
+	 * Process and render search results.
+	 * 
+	 * @param array $data The raw request data generated from post
+	 * @param SearchForm $form The form instance that was submitted
+	 * @param SS_HTTPRequest $request Request generated for this action
 	 */
-	function results($data, $form){
-	  	$data = array(
-	     	'Results' => $form->getResults(),
-	     	'Query' => $form->getSearchQuery(),
-	      	'Title' => 'Search Results'
-	  	);
-
-	  	return $this->customise($data)->renderWith(array('Page_results', 'Page'));
+	function results($data, $form, $request) {
+		$data = array(
+			'Results' => $form->getResults(),
+			'Query' => $form->getSearchQuery(),
+			'Title' => 'Search Results'
+		);
+		return $this->customise($data)->renderWith(array('Page_results', 'Page'));
 	}
-	
-}
 
-?>
+}
