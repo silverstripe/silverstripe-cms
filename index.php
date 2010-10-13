@@ -60,12 +60,4 @@ if($url && file_exists($fileName)) {
 	die();
 }
 
-// For linux
-$_SERVER['SCRIPT_FILENAME'] = str_replace('/index.php','/sapphire/main.php', $_SERVER['SCRIPT_FILENAME']);
-$_SERVER['SCRIPT_NAME'] = str_replace('/index.php','/sapphire/main.php', $_SERVER['SCRIPT_NAME']);
-// And for windows
-$_SERVER['SCRIPT_FILENAME'] = str_replace('\\index.php','\\sapphire\\main.php', $_SERVER['SCRIPT_FILENAME']);
-$_SERVER['SCRIPT_NAME'] = str_replace('\\index.php','\\sapphire\\main.php', $_SERVER['SCRIPT_NAME']);
-
-chdir('sapphire');
 require_once('sapphire/main.php');
