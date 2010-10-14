@@ -981,9 +981,9 @@ global \$project;
 global \$databaseConfig;
 \$databaseConfig = array(
 	"type" => '{$type}',
-	"server" => '{$dbConfig['server']}', 
-	"username" => '{$dbConfig['username']}', 
-	"password" => '{$escapedPassword}', 
+	"server" => '{$dbConfig['server']}',
+	"username" => '{$dbConfig['username']}',
+	"password" => '{$escapedPassword}',
 	"database" => '{$dbConfig['database']}',
 	"path" => '{$dbConfig['path']}',
 );
