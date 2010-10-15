@@ -1128,7 +1128,7 @@ JS;
 					_t('CMSMain.TITLEOPT', 'Title')
 				),
 				new TextField('Content', 'Text'),
-				new CalendarDateField('EditedSince', _t('CMSMain_left.ss.EDITEDSINCE','Edited Since')),
+				new DateField('EditedSince', _t('CMSMain_left.ss.EDITEDSINCE','Edited Since')),
 				new DropdownField('ClassName', 'Page Type', $pageTypes, null, null, 'Any'),
 				new TextField(
 					'MenuTitle', 
