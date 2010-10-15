@@ -2,7 +2,12 @@
 	<div class="CommentFilter filterBox">
 		$SearchForm
 	</div>
-	<% include TableListField_PageControls %>
+	<% if Print %><% else %>
+		<% if Markable %>
+			<% include TableListField_SelectControls %>
+		<% end_if %>
+		<% include TableListField_PageControls %>
+	<% end_if %>
 	<table class="data">
 		<thead>
 			<tr>
@@ -39,9 +44,9 @@
 			<% if Items %>
 			<% control Items %>
 				<tr id="record-$Parent.id-$ID"<% if HighlightClasses %> class="$HighlightClasses"<% end_if %>>
-					<% if Markable %><td width="18" class="markingcheckbox">$MarkingCheckbox</td><% end_if %>
+					<% if Markable %><td width="18" class="$SelectionTags">$MarkingCheckbox</td><% end_if %>
 					<% control Fields %>
-					<td>$Value</td>
+					<td class="$Title">$Value</td>
 					<% end_control %>
 					<% if Can(edit) %>
 						<td width="18"><a class="popuplink editlink" href="$EditLink" target="_blank"><img src="cms/images/edit.gif" alt="<% _t('EDIT', 'edit') %>" /></a></td>
