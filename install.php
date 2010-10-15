@@ -239,7 +239,7 @@ class InstallRequirements {
 				if($this->requireDatabaseVersion(
 					$databaseConfig,
 					array(
-						"Database Version",
+						"Database Configuration",
 						"Database server meets required version",
 						"Database does not meet the required version"
 					)
