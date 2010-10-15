@@ -60,7 +60,7 @@ class PageComment extends DataObject {
 	}
 
 	function DeleteLink() {
-		return (Permission::check('CMS_ACCESS_CMSMain')) ? "PageComment_Controller/deletecomment/$this->ID" : false;
+		return ($this->canDelete()) ? "PageComment_Controller/deletecomment/$this->ID" : false;
 	}
 	
 	function CommentTextWithLinks() {
@@ -70,15 +70,15 @@ class PageComment extends DataObject {
 	}
 	
 	function SpamLink() {
-		return (Permission::check('CMS_ACCESS_CMSMain') && !$this->IsSpam) ? "PageComment_Controller/reportspam/$this->ID" : false;
+		return ($this->canEdit() && !$this->IsSpam) ? "PageComment_Controller/reportspam/$this->ID" : false;
 	}
 	
 	function HamLink() {
-		return (Permission::check('CMS_ACCESS_CMSMain') && $this->IsSpam) ? "PageComment_Controller/reportham/$this->ID" : false;
+		return ($this->canEdit() && $this->IsSpam) ? "PageComment_Controller/reportham/$this->ID" : false;
 	}
 	
 	function ApproveLink() {
-		return (Permission::check('CMS_ACCESS_CMSMain') && $this->NeedsModeration) ? "PageComment_Controller/approve/$this->ID" : false;
+		return ($this->canEdit() && $this->NeedsModeration) ? "PageComment_Controller/approve/$this->ID" : false;
 	}
 	
 	function SpamClass() {
@@ -156,6 +156,77 @@ class PageComment extends DataObject {
 			}
 		}
 	}
+	
+	/**
+	 * This always returns true, and should be handled by {@link PageCommentInterface->CanPostComment()}.
+	 * 
+	 * @todo Integrate with PageCommentInterface::$comments_require_permission and $comments_require_login
+	 * 
+	 * @param Member $member
+	 * @return Boolean
+	 */
+	function canCreate($member = null) {
+		return true;
+	}
+	
+	/**
+	 * Checks for association with a page,
+	 * and {@link SiteTree->ProvidePermission} flag being set to TRUE.
+	 * Note: There's an additional layer of permission control
+	 * in {@link PageCommentInterface}.
+	 * 
+	 * @param Member $member
+	 * @return Boolean
+	 */
+	function canView($member = null) {
+		if(!$member) $member = Member::currentUser();
+		
+		// Standard mechanism for accepting permission changes from decorators
+		$extended = $this->extendedCan('canView', $member);
+		if($extended !== null) return $extended;
+		
+		$page = $this->Parent();
+		return (
+			($page && $page->ProvideComments)
+			|| (bool)Permission::checkMember($member, 'CMS_ACCESS_CommentAdmin')
+		);
+	}
+	
+	/**
+	 * Checks for "CMS_ACCESS_CommentAdmin" permission codes
+	 * and {@link canView()}. 
+	 * 
+	 * @param Member $member
+	 * @return Boolean
+	 */
+	function canEdit($member = null) {
+		if(!$member) $member = Member::currentUser();
+		
+		// Standard mechanism for accepting permission changes from decorators
+		$extended = $this->extendedCan('canEdit', $member);
+		if($extended !== null) return $extended;
+		
+		if(!$this->canView($member)) return false;
+		
+		return (bool)Permission::checkMember($member, 'CMS_ACCESS_CommentAdmin');
+	}
+	
+	/**
+	 * Checks for "CMS_ACCESS_CommentAdmin" permission codes
+	 * and {@link canEdit()}.
+	 * 
+	 * @param Member $member
+	 * @return Boolean
+	 */
+	function canDelete($member = null) {
+		if(!$member) $member = Member::currentUser();
+		
+		// Standard mechanism for accepting permission changes from decorators
+		$extended = $this->extendedCan('canDelete', $member);
+		if($extended !== null) return $extended;
+		
+		return $this->canEdit($member);
+	}
 }
 
 
@@ -180,13 +251,11 @@ class PageComment_Controller extends Controller {
 	 * Deletes all comments on the page referenced by the url param pageid
 	 */
 	function deleteallcomments() {
-		if(Permission::check('CMS_ACCESS_CMSMain')) {
-			$pageId = $_REQUEST['pageid'];
-			if(preg_match('/^\d+$/', $pageId)) {
-				$comments = DataObject::get("PageComment", "\"ParentID\" = $pageId");
-				if($comments) foreach($comments as $c) {
-					$c->delete();
-				}
+		$pageId = $_REQUEST['pageid'];
+		if(preg_match('/^\d+$/', $pageId)) {
+			$comments = DataObject::get("PageComment", "\"ParentID\" = $pageId");
+			if($comments) foreach($comments as $c) {
+				if($c->canDelete()) $c->delete();
 			}
 		}
 		
@@ -198,11 +267,9 @@ class PageComment_Controller extends Controller {
 	}
 	
 	function deletecomment() {
-		if(Permission::check('CMS_ACCESS_CMSMain')) {
-			$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
-			if($comment) {
-				$comment->delete();
-			}
+		$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
+		if($comment && $comment->canDelete()) {
+			$comment->delete();
 		}
 		
 		if($this->isAjax()) {
@@ -213,51 +280,45 @@ class PageComment_Controller extends Controller {
 	}
 	
 	function approve() {
-		if(Permission::check('CMS_ACCESS_CMSMain')) {
-			$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
+		$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
 
-			if($comment) {
-				$comment->NeedsModeration = false;
-				$comment->write();
-			
-				// @todo Report to spamprotecter this is true
-			
-				if($this->isAjax()) {
-					echo $comment->renderWith('PageCommentInterface_singlecomment');
-				} else {
-					$this->redirectBack();
-				}
+		if($comment && $comment->canEdit()) {
+			$comment->NeedsModeration = false;
+			$comment->write();
+		
+			// @todo Report to spamprotecter this is true
+		
+			if($this->isAjax()) {
+				echo $comment->renderWith('PageCommentInterface_singlecomment');
+			} else {
+				Director::redirectBack();
 			}
 		}
 	}
 	
 	function reportspam() {
 		$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
-		if($comment) {
-			// check they have access
-			if(Permission::check('CMS_ACCESS_CMSMain')) {
-				
-				// if spam protection module exists
-				if(class_exists('SpamProtectorManager')) {
-					SpamProtectorManager::send_feedback($comment, 'spam');
-				}
-				
-				// If Akismet is enabled
-				else if(SSAkismet::isEnabled()) {
-					try {
-						$akismet = new SSAkismet();
-						$akismet->setCommentAuthor($comment->getField('Name'));
-						$akismet->setCommentContent($comment->getField('Comment'));
-						$akismet->submitSpam();
-					} catch (Exception $e) {
-						// Akismet didn't work, most likely the service is down.
-					}
-				}
-				
-				$comment->IsSpam = true;
-				$comment->NeedsModeration = false;
-				$comment->write();
+		if($comment && $comment->canEdit()) {
+			// if spam protection module exists
+			if(class_exists('SpamProtectorManager')) {
+				SpamProtectorManager::send_feedback($comment, 'spam');
 			}
+			
+			// If Akismet is enabled
+			else if(SSAkismet::isEnabled()) {
+				try {
+					$akismet = new SSAkismet();
+					$akismet->setCommentAuthor($comment->getField('Name'));
+					$akismet->setCommentContent($comment->getField('Comment'));
+					$akismet->submitSpam();
+				} catch (Exception $e) {
+					// Akismet didn't work, most likely the service is down.
+				}
+			}
+			
+			$comment->IsSpam = true;
+			$comment->NeedsModeration = false;
+			$comment->write();
 		}
 		if($this->isAjax()) {
 			if(SSAkismet::isEnabled() && SSAkismet::getSaveSpam()) {
@@ -274,27 +335,24 @@ class PageComment_Controller extends Controller {
 	 */
 	function reportham() {
 		$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
-		if($comment) {
-			if(Permission::check('CMS_ACCESS_CMSMain')) {
-					
-				// if spam protection module exists
-				if(class_exists('SpamProtectorManager')) {
-					SpamProtectorManager::send_feedback($comment, 'ham');
-				}
-				
-				if(SSAkismet::isEnabled()) {
-					try {
-						$akismet = new SSAkismet();
-						$akismet->setCommentAuthor($comment->getField('Name'));
-						$akismet->setCommentContent($comment->getField('Comment'));
-						$akismet->submitHam();
-					} catch (Exception $e) {
-						// Akismet didn't work, most likely the service is down.
-					}
-				}
-				$comment->setField('IsSpam', false);
-				$comment->write();
+		if($comment && $comment->canEdit()) {
+			// if spam protection module exists
+			if(class_exists('SpamProtectorManager')) {
+				SpamProtectorManager::send_feedback($comment, 'ham');
 			}
+			
+			if(SSAkismet::isEnabled()) {
+				try {
+					$akismet = new SSAkismet();
+					$akismet->setCommentAuthor($comment->getField('Name'));
+					$akismet->setCommentContent($comment->getField('Comment'));
+					$akismet->submitHam();
+				} catch (Exception $e) {
+					// Akismet didn't work, most likely the service is down.
+				}
+			}
+			$comment->setField('IsSpam', false);
+			$comment->write();
 		}
 		if($this->isAjax()) {
 			echo $comment->renderWith('PageCommentInterface_singlecomment');

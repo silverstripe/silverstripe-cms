@@ -28,7 +28,7 @@ class CommentAdminTest extends FunctionalTest {
 	function testdeletemarked(){
 		$comm = $this->objFromFixture('PageComment', 'Comment1');
 		$id = $comm->ID;
-		$this->logInWithPermission('ADMIN');
+		$this->logInWithPermission('CMS_ACCESS_CommentAdmin');
 		$result = $this->get("admin/comments/EditForm/field/Comments/item/$id/delete");
 		$checkComm = DataObject::get_by_id('PageComment',$id);
 
