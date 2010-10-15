@@ -3,6 +3,9 @@
 		$SearchForm
 	</div>
 	<div id="MemberList"> 
+		<% if Markable %>
+			<% include TableListField_SelectOptions %>
+		<% end_if %>
 		<% include TableListField_PageControls %>
 		<table class="data">
 			<thead>

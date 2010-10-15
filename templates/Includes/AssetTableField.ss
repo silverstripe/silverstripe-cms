@@ -2,6 +2,9 @@
 	<div class="FileFilter filterBox">
 		$SearchForm
 	</div>
+	<% if Markable %>
+		<% include TableListField_SelectOptions %>
+	<% end_if %>
 	<% include TableListField_PageControls %>
 	<table class="data">
 		<thead>
