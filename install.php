@@ -236,20 +236,20 @@ class InstallRequirements {
 					$databaseConfig['server']
 				)
 			)) {
-				if($this->requireDatabaseVersion(
+				if($this->requireDatabaseConnection(
 					$databaseConfig,
 					array(
 						"Database Configuration",
-						"Database server meets required version",
-						"Database does not meet the required version"
+						"Database access credentials correct",
+						"That username/password doesn't work"
 					)
 				)) {
-					if($this->requireDatabaseConnection(
+					if($this->requireDatabaseVersion(
 						$databaseConfig,
 						array(
 							"Database Configuration",
-							"Database access credentials correct",
-							"That username/password doesn't work"
+							"Database server meets required version",
+							"Database does not meet the required version"
 						)
 					)) {
 						$this->requireDatabaseOrCreatePermissions(
@@ -734,7 +734,7 @@ class InstallRequirements {
 				return true;
 			} else {
 				$testDetails[2] .= ": " . $result['error'];
-				$this->error($testDetails);
+				$this->warning($testDetails);
 				return false;
 			}
 		}
