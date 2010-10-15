@@ -84,11 +84,13 @@ class ThumbnailStripField extends FormField {
 			
 		} else {
 			if (!self::$use_legacy_image_search) {
-			    $whereSQL = "\"ParentID\" = 0 AND ";
+			    $whereSQL = "\"ParentID\" = 0";
 			} else {
 			    $whereSQL = '';
 			}
+			
 			if($searchText) {
+				if (!empty($whereSQL)) $whereSQL .= " AND";
 				$whereSQL .= " \"Filename\" LIKE '%$searchText%'";
 			}
 			
