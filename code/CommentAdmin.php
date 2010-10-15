@@ -24,15 +24,14 @@ class CommentAdmin extends LeftAndMain {
 	);
 	
 	/**
-	 * the number of comments per page for the {@see CommentTable} in this admin
-	 * defaulted 20.
+	 * @var int The number of comments per page for the {@link CommentTable} in this admin.
 	 */
 	static $comments_per_page = '20';
 
 	public function init() {
 		parent::init();
 
-		Requirements::css(CMS_DIR . 'css/CommentAdmin.css');
+		Requirements::css(CMS_DIR . '/css/CommentAdmin.css');
 	}
 
 	public function showtable($params) {
@@ -301,19 +300,15 @@ JS;
 	}
 	
 	/**
-	 * Set CommentAdmin::comments_per_page
 	 * @param $num int
-	 */
-	
+	 */	
 	function set_comments_per_page($num){
 		self::$comments_per_page = $num;
 	}
 	
 	/**
-	 * Get CommentAdmin::comments_per_page
 	 * @return int
 	 */
-	
 	function get_comments_per_page(){
 		return self::$comments_per_page;
 	}
