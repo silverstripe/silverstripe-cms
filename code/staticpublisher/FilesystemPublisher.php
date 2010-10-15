@@ -181,6 +181,7 @@ class FilesystemPublisher extends StaticPublisher {
 
 			Requirements::clear();
 			
+			if($url == "") $url = "/";
 			if(Director::is_relative_url($url)) $url = Director::absoluteURL($url);
 			$response = Director::test(str_replace('+', ' ', $url));
 			
