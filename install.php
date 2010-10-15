@@ -1119,6 +1119,9 @@ HTML;
 	Deny from all
 </Files>
 
+ErrorDocument 404 /assets/error-404.html
+ErrorDocument 500 /assets/error-500.html
+
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 	$baseClause
