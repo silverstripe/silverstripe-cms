@@ -256,7 +256,7 @@ class InstallRequirements {
 						array(
 							"Database Configuration",
 							"Database server meets required version",
-							"Database does not meet the required version"
+							""
 						)
 					)) {
 						$this->requireDatabaseOrCreatePermissions(
@@ -740,7 +740,7 @@ class InstallRequirements {
 			if($result['success']) {
 				return true;
 			} else {
-				$testDetails[2] .= ": " . $result['error'];
+				$testDetails[2] .= $result['error'];
 				$this->warning($testDetails);
 				return false;
 			}
