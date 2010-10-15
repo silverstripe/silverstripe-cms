@@ -86,7 +86,8 @@ class CommentAdmin extends LeftAndMain {
 		$table = new CommentTableField($this, "Comments", "PageComment", $section, $tableFields, $popupFields, array($filter), 'Created DESC');
 		$table->setParentClass(false);
 		$table->setFieldCasting(array(
-			'Created' => 'SSDatetime->Full'
+			'Created' => 'SSDatetime->Full',
+			'Comment' => array('HTMLText->LimitCharacters', 150)
 		));
 
 		$fields = new FieldSet(
