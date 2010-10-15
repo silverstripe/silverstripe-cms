@@ -901,7 +901,7 @@ class Installer extends InstallRequirements {
 		
 		flush();
 		
-		if(isset($_POST['stats'])) {
+		if(isset($config['stats'])) {
 			if(file_exists('sapphire/silverstripe_version')) {
 				$sapphireVersionFile = file_get_contents('sapphire/silverstripe_version');
 				if(strstr($sapphireVersionFile, "/sapphire/trunk")) {
@@ -917,11 +917,11 @@ class Installer extends InstallRequirements {
 			$phpVersion = urlencode(phpversion());
 			$encWebserver = urlencode($webserver);
 
-			if($type == 'MySQLDatabase') {
+			if($config['db']['type'] == 'MySQLDatabase') {
 				$conn = @mysql_connect($dbConfig['server'], null, null);
 				$databaseVersion = urlencode('MySQLDatabase: ' . mysql_get_server_info());
 			} else {
-				$databaseVersion = $type;
+				$databaseVersion = $config['db']['type'];
 			}
 			
 			$url = "http://ss2stat.silverstripe.com/Installation/add?SilverStripe=$silverstripe_version&PHP=$phpVersion&Database=$databaseVersion&WebServer=$encWebserver";
