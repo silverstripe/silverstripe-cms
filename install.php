@@ -1122,6 +1122,10 @@ HTML;
 ErrorDocument 404 /assets/error-404.html
 ErrorDocument 500 /assets/error-500.html
 
+<IfModule mod_alias.c>
+	RedirectMatch 403 /silverstripe-cache(/|$)
+</IfModule>
+
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 	$baseClause
@@ -1156,6 +1160,13 @@ TEXT;
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
 	<system.webServer>
+		<security>
+			<requestFiltering>
+				<hiddenSegments applyToWebDAV="false">
+					<add segment="silverstripe-cache" />
+				</hiddenSegments>
+			</requestFiltering>
+		</security>
 		<rewrite>
 			<rules>
 				<rule name="SilverStripe Clean URLs" stopProcessing="true">
