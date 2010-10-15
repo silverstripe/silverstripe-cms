@@ -10,11 +10,28 @@ class ThumbnailStripField extends FormField {
 	protected $parentField;
 	protected $updateMethod;
 
+	/**
+	 * If this is enabled, then ommitting a folderID when calling getimages will search ALL folders.
+	 * This is the legacy behaviour.
+	 *
+	 * The new behaviour is to only search the root folder if a folderID is ommitted.
+	 *
+	 * @var boolean
+	 */
 	protected static $use_legacy_image_search = false;
 
+	/**
+	 * setter for ThumbnailStripField::use_legacy_image_search
+	 * @param boolean $enable
+	 */
 	public static function set_use_legacy_image_search($enable) {
 	    self::$use_legacy_image_search = $enable;
 	}
+	
+	/**
+	 * getter for ThumbnailStripField::use_legacy_image_search
+	 * @return boolean
+	 */
 	public static function get_use_legacy_image_search() {
 	    return self::$use_legacy_image_search;
 	}
@@ -45,6 +62,8 @@ class ThumbnailStripField extends FormField {
 	/**
 	 * Populate the Thumbnail strip field, by looking for a folder, 
 	 * and the descendants of this folder.
+	 *
+	 * @see ThumbnailStripField::use_legacy_image_search
 	 */
 	function getimages() {
 		$result = '';
