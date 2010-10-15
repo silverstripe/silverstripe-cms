@@ -31,6 +31,8 @@ class CMSMainTest extends FunctionalTest {
 	 * @todo Test the results of a publication better
 	 */
 	function testPublish() {
+		$page1 = $this->objFromFixture('Page', "page1");
+		$page2 = $this->objFromFixture('Page', "page2");
 		$this->session()->inst_set('loggedInAs', $this->idFromFixture('Member', 'admin'));
 		
 		$response = Director::test("admin/cms/publishall", array('confirm' => 1), $this->session());
@@ -42,7 +44,7 @@ class CMSMainTest extends FunctionalTest {
 	
 		// Some modules (e.g., cmsworkflow) will remove this action
 		if(isset(CMSBatchActionHandler::$batch_actions['publish'])) {
-			$response = Director::test("admin/cms/batchactions/publish", array('csvIDs' => '1,2', 'ajax' => 1), $this->session());
+			$response = Director::test("admin/cms/batchactions/publish", array('csvIDs' => implode(',', array($page1->ID, $page2->ID)), 'ajax' => 1), $this->session());
 	
 			$responseData = Convert::json2array($response->getBody());
 			$this->assertTrue(property_exists($responseData['modified'], '1'));
