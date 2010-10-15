@@ -1238,7 +1238,7 @@ HTML;
 	 * The output differs depending on whether this is CLI or web based
 	 */
 	function statusMessage($msg) {
-		if(isset($_SERVER['HTTP_HOST'])) echo "<li>$msg</li>\n";
+		echo "<li>$msg</li>\n";
 		else echo "$msg\n";
 		flush();
 	}
