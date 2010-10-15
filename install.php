@@ -231,14 +231,14 @@ class InstallRequirements {
 			array(
 				"Database Configuration",
 				"Database support",
-				"Database support not included in PHP.")
+				"Database support in PHP")
 			)
 		) {
 			if($this->requireDatabaseServer(
 				$databaseConfig,
 				array(
 					"Database Configuration",
-					"Database server exists",
+					"Database server",
 					"I couldn't find a database server on '$databaseConfig[server]'",
 					$databaseConfig['server']
 				)
@@ -341,9 +341,9 @@ class InstallRequirements {
 			$this->getBaseDir()
 		));
 		
-		$this->requireFile('mysite', array("File permissions", "mysite/ folder exists", "There's no mysite folder."));
-		$this->requireFile('sapphire', array("File permissions", "sapphire/ folder exists", "There's no sapphire folder."));
-		$this->requireFile('cms', array("File permissions", "cms/ folder exists", "There's no cms folder."));
+		$this->requireFile('mysite', array("File permissions", "mysite/ folder exists?", "There's no mysite folder."));
+		$this->requireFile('sapphire', array("File permissions", "sapphire/ folder exists?", "There's no sapphire folder."));
+		$this->requireFile('cms', array("File permissions", "cms/ folder exists?", "There's no cms folder."));
 		
 		if($isApache) {
 			$this->requireWriteable('.htaccess', array("File permissions", "Is the .htaccess file writeable?", null));
@@ -767,7 +767,7 @@ class InstallRequirements {
 		$helper = $this->getDatabaseConfigurationHelper($databaseConfig['type']);
 		$result = $helper->requireDatabaseOrCreatePermissions($databaseConfig);
 		if($result['success']) {
-			if($result['alreadyExists']) $testDetails[3] = "Database $databaseConfig[database] exists";
+			if($result['alreadyExists']) $testDetails[3] = "Database $databaseConfig[database]";
 			else $testDetails[3] = "Able to create a new database";
 			$this->testing($testDetails);
 			return true;
