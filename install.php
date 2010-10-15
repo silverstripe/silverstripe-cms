@@ -698,7 +698,6 @@ class InstallRequirements {
 			$class = str_replace('.php', '', basename($helperPath));
 		}
 		return (class_exists($class)) ? new $class() : new MySQLDatabaseConfigurationHelper();
-		return new $class();
 	}
 	
 	function requireDatabaseFunctions($databaseConfig, $testDetails) {
