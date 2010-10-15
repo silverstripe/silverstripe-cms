@@ -2,8 +2,23 @@
 ## General rules for the SilverStripe CMS as a whole.  They mostly have to do with the LeftAndMain
 ## interface
 
+# Match general CMS tabs, ModelAdmin needs another system
 Given /I click on the "([^\"]*)" tab/ do |tab|
-  Given "I click the \"tab-Root_Content_set_#{tab}\" link"
+	found = nil
+	links = @salad.browser.links()
+	links.each {|link|
+		if /^tab-.+/.match(link.id) then
+			if link.innerText == tab or /^tab-.*#{tab}(_set)?/.match(link.id) then
+				found = link
+				break
+			end
+		end
+	}
+	if found then
+		Given "I click the \"#{found.id}\" link"
+	else
+		fail("Could not find the \"#{tab}\" tab")
+	end
 end
 
 Given /I wait for a status message/ do

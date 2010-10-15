@@ -2,7 +2,7 @@
 	<% if SearchClassSelector = tabs %>
 		<ul>
 			<% control ModelForms %>
-				<li class="$FirstLast"><a href="#{$Form.Name}_$ClassName">$Title</a></li>
+				 <li class="$FirstLast"><a id="tab-ModelAdmin_$Title.HTMLATT" href="#{$Form.Name}_$ClassName">$Title</a></li>
 			<% end_control %>
 		</ul>
 	<% end_if %>
