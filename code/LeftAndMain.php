@@ -307,14 +307,6 @@ class LeftAndMain extends Controller {
 			)
 		);
 
-		Requirements::combine_files(
-			'cmsmain.js',
-			array(
-				'cms/javascript/CMSMain_left.js',
-				'cms/javascript/CMSMain_right.js',
-			)
-		);
-
 		$dummy = null;
 		$this->extend('init', $dummy);
 
