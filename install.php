@@ -164,7 +164,7 @@ if($req->hasErrors()) {
 
 if($databaseConfig) {
 	$dbReq = new InstallRequirements();
-	$dbReq->checkdatabase($databaseConfig);
+	$dbReq->checkDatabase($databaseConfig);
 }
 
 if($adminConfig) {
@@ -218,7 +218,7 @@ class InstallRequirements {
 	 * starting with checking the database function exists in PHP, and
 	 * continuing onto more difficult checks like database permissions.
 	 */
-	function checkdatabase($databaseConfig) {
+	function checkDatabase($databaseConfig) {
 		if($this->requireDatabaseFunctions(
 			$databaseConfig,
 			array(
