@@ -78,3 +78,8 @@ PageComment:
         Comment: I like this comment
         NeedsModeration: 1
         EmailAddress: me@test.co.nz
+RedirectorPage:
+   page5:
+      Title: Page 5
+      RedirectionType: External
+      ExternalURL: http://www.google.com
