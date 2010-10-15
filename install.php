@@ -103,8 +103,9 @@ if(isset($_REQUEST['db'])) {
 		$databaseConfig['type'] = $type;
 	}
 } else {
+	$type = $_REQUEST['db']['type'] = defined('SS_DATABASE_CLASS') ? SS_DATABASE_CLASS : 'MySQLDatabase';
 	$_REQUEST['db'][$type] = $databaseConfig = array(
-		"type" => defined('SS_DATABASE_CLASS') ? SS_DATABASE_CLASS : "MySQLDatabase",
+		"type" => $type,
 		"server" => defined('SS_DATABASE_SERVER') ? SS_DATABASE_SERVER : "localhost",
 		"username" => defined('SS_DATABASE_USERNAME') ? SS_DATABASE_USERNAME : "root",
 		"password" => defined('SS_DATABASE_PASSWORD') ? SS_DATABASE_PASSWORD : "",
