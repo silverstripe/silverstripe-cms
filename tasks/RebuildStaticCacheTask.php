@@ -54,13 +54,16 @@ class RebuildStaticCacheTask extends Controller {
 		
 		touch($cacheBaseDir.'/lock');
 		
+		// Note: Similiar to StaticPublisher->republish()
 		foreach($urls as $i => $url) {
 			if($url && !is_string($url)) {
 				user_error("Bad URL: " . var_export($url, true), E_USER_WARNING);
 				continue;
 			}
 
-			if(substr($url,-1) == '/') $url = substr($url,0,-1);
+			// Remove leading slashes from all URLs (apart from the homepage)
+			if(substr($url,-1) == '/' && $url != '/') $url = substr($url,0,-1);
+			
 			$urls[$i] = $url;
 		}
 		$urls = array_unique($urls);
