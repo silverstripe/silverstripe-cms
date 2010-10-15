@@ -87,6 +87,9 @@ class ThumbnailStripField extends FormField {
 			    $whereSQL = "\"ParentID\" = 0";
 			} else {
 			    $whereSQL = '';
+
+				// Prevent image search queries all images in the site initially when the page is loaded
+				if(empty($searchText)) $whereSQL = "\"ParentID\" = 0";
 			}
 			
 			if($searchText) {
@@ -125,7 +128,8 @@ class ThumbnailStripField extends FormField {
 				}
 			}
 			$result .= '</ul>';
-		} else {
+		} 
+		else {
 			if($folder) {
 				$result = '<h2>' . _t('ThumbnailStripField.NOFOLDERIMAGESFOUND', 'No images found in') . ' ' . $folder->Title . '</h2>';
 			} else {
