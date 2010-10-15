@@ -9,6 +9,15 @@
 class ThumbnailStripField extends FormField {
 	protected $parentField;
 	protected $updateMethod;
+
+	protected static $use_legacy_image_search = false;
+
+	public static function set_use_legacy_image_search($enable) {
+	    self::$use_legacy_image_search = $enable;
+	}
+	public static function get_use_legacy_image_search() {
+	    return self::$use_legacy_image_search;
+	}
 	
 	function __construct($name, $parentField, $updateMethod = "getimages") {
 		$this->parentField = $parentField;
@@ -55,9 +64,13 @@ class ThumbnailStripField extends FormField {
 			$images = DataObject::get('Image', $whereSQL, 'Title');
 			
 		} else {
-			$whereSQL = "\"ParentID\" = 0";
+			if (!self::$use_legacy_image_search) {
+			    $whereSQL = "\"ParentID\" = 0 AND ";
+			} else {
+			    $whereSQL = '';
+			}
 			if($searchText) {
-				$whereSQL .= " AND \"Filename\" LIKE '%$searchText%'";
+				$whereSQL .= " \"Filename\" LIKE '%$searchText%'";
 			}
 			
 			$images = DataObject::get('Image', $whereSQL, 'Title');
