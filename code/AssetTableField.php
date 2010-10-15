@@ -72,7 +72,6 @@ class AssetTableField extends ComplexTableField {
 		$ret = parent::FieldHolder();
 		
 		Requirements::javascript(CMS_DIR . '/javascript/AssetTableField.js');
-		Requirements::javascript('cms/javascript/ImageEditor/Activator.js');
 
 		return $ret;
 	}
