@@ -38,11 +38,16 @@ class RebuildStaticCacheTask extends Controller {
 	 * @param array $urls The URLs of pages to re-fetch and cache.
 	 */
 	function rebuildCache($urls, $removeAll = true) {
-		if(!is_array($urls)) return; // $urls must be an array
+
+		if(!is_array($urls)) {
+			// $urls must be an array	
+			user_error("Rebuild cache must be passed an array of urls. Make sure your allPagesToCache function returns an array", E_USER_ERROR);
+			return;
+		}; 
 		
 		if(!Director::is_cli()) echo "<pre>\n";
 		echo "Rebuilding cache.\nNOTE: Please ensure that this page ends with 'Done!' - if not, then something may have gone wrong.\n\n";
-		
+
 		$page = singleton('Page');
 		$cacheBaseDir = $page->getDestDir();
 		
