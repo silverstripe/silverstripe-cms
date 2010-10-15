@@ -281,11 +281,13 @@ class AssetTableField extends ComplexTableField {
 				sprintf("\"File\".\"ID\" IN (%s)", Convert::raw2sql(implode(',', $fileIDs)))
 			);
 			if($files) {
+				$brokenPages = array();
 				foreach($files as $file) {
+					$brokenPages = array_merge($brokenPages, $file->BackLinkTracking()->toArray());
 					$file->delete();
 					$numFiles++;
 				}
-				if($brokenPages = Notifications::getItems('BrokenLink')) {
+				if($brokenPages) {
 					$brokenPageList = "  ". _t('AssetAdmin.NOWBROKEN', 'These pages now have broken links:') . '<ul>';
 					foreach($brokenPages as $brokenPage) {
 						$brokenPageList .= "<li style=&quot;font-size: 65%&quot;>" . $brokenPage->Breadcrumbs(3, true) . '</li>';
