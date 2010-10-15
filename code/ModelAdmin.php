@@ -535,7 +535,11 @@ class ModelAdmin_CollectionController extends Controller {
 		$loader = new $importerClass($data['ClassName']);
 		
 		// File wasn't properly uploaded, show a reminder to the user
-		if(empty($_FILES['_CsvFile']['tmp_name']) || $_FILES['_CsvFile']['type'] != 'text/csv' || file_get_contents($_FILES['_CsvFile']['tmp_name']) == '') {
+		if(
+			empty($_FILES['_CsvFile']['tmp_name']) ||
+			array_search($_FILES['_CsvFile']['type'], array('text/csv', 'text/plain')) === false ||
+			file_get_contents($_FILES['_CsvFile']['tmp_name']) == ''
+		) {
 			$form->sessionMessage(_t('ModelAdmin.NOCSVFILE', 'Please browse for a CSV file to import'), 'good');
 			$this->redirectBack();
 			return false;
