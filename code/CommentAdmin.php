@@ -22,6 +22,12 @@ class CommentAdmin extends LeftAndMain {
 		'EditForm',
 		'unmoderated'
 	);
+	
+	/**
+	 * the number of comments per page for the {@see CommentTable} in this admin
+	 * defaulted 20.
+	 */
+	static $comments_per_page = '20';
 
 	public function init() {
 		parent::init();
@@ -89,15 +95,13 @@ class CommentAdmin extends LeftAndMain {
 			'Created' => 'SSDatetime->Full',
 			'Comment' => array('HTMLText->LimitCharacters', 150)
 		));
+		
+		$table->setPageSize(self::get_comments_per_page());
 
 		$fields = new FieldSet(
-			new TabSet(	'Root',
-				new Tab(_t('CommentAdmin.COMMENTS', 'Comments'),
-					new LiteralField("Title", $title),
-					$idField,
-					$table
-				)
-			)
+			new LiteralField("Title", $title),
+			$idField,
+			$table
 		);
 
 		$actions = new FieldSet();
@@ -294,6 +298,24 @@ JS;
 	 */
 	function NumSpam() {
 		return DB::query("SELECT COUNT(*) FROM \"PageComment\" WHERE \"IsSpam\"=1")->value();
+	}
+	
+	/**
+	 * Set CommentAdmin::comments_per_page
+	 * @param $num int
+	 */
+	
+	function set_comments_per_page($num){
+		self::$comments_per_page = $num;
+	}
+	
+	/**
+	 * Get CommentAdmin::comments_per_page
+	 * @return int
+	 */
+	
+	function get_comments_per_page(){
+		return self::$comments_per_page;
 	}
 }
 

@@ -16,7 +16,6 @@ class CommentTableField extends ComplexTableField {
 		parent::__construct($controller, $name, $sourceClass, $fieldList, $detailFormFields, $sourceFilter, $sourceSort, $sourceJoin);
 		
 		$this->Markable = true;
-		$this->setPageSize(15);
 		
 		// search
 		$search = isset($_REQUEST['CommentSearch']) ? Convert::raw2sql($_REQUEST['CommentSearch']) : null;
