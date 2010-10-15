@@ -128,19 +128,32 @@
 	width: 96%;
 }
 
-.right form .datetime .date, 
+.time .timeIcon,
+.datetime .timeIcon {
+	margin-left: 2px;
+}
+
+.right form .date input.month,
+.right form .date input.day,
+.right form .date input.year {
+	width: auto;
+}
+
+.right form .datetime .clear {
+	clear: both;
+}
+
+.right form .datetime .date,
 .right form .datetime .time {
 	float: left;
 	clear: none;
 	width: auto;
-}		
-
-	.right form .datetime .middleColumn {
+}
+	.right form .datetime .middleColumn .middleColumn {
 		width: auto;
 	}
-
-	.right form .datetime .date input, 
-	.right form .datetime .time input{
+	.right form .datetime .date input,
+	.right form .datetime .time input {
 		width: auto;
 	}
 
