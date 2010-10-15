@@ -308,7 +308,7 @@ class SS_Report extends ViewableData {
 	/**
 	 * Unregister a report, removing it from the list
 	 */
-	static function unregister($list, $identifier) {
+	static function unregister($list, $reportClass) {
 		unset(self::$registered_reports[$list][$reportClass]);
 	}
 	
