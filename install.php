@@ -158,6 +158,13 @@ if(file_exists('sapphire/silverstripe_version')) {
 $req = new InstallRequirements();
 $req->check();
 
+$webserverConfigFile = '';
+if($req->isIIS()) {
+	$webserverConfigFile = 'web.config';
+} else {
+	$webserverConfigFile = '.htaccess';
+}
+
 if($req->hasErrors()) {
 	$hasErrorOtherThanDatabase = true;
 }
