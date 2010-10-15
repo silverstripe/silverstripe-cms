@@ -13,7 +13,7 @@ class RsyncMultiHostPublisher extends FilesystemPublisher {
 	/**
 	 * Array of rsync targets to publish to.  These can either be local file names, or scp-style targets, in the form "user@server:path"
 	 */
-	static $targets;
+	protected static $targets = array();
 	
 	/**
 	 * Set the targets to publish to.
