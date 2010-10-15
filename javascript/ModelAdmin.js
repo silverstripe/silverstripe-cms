@@ -62,7 +62,7 @@
 			 */
 			onsubmit: function(e) {
 				// Import forms are processed without ajax
-				if(this.is('#Form_ImportForm')) return true;
+				if(this.is('form[id^=Form_ImportForm])')) return true;
 				
 				$('#contentPanel').closeRightPanel();
 			
