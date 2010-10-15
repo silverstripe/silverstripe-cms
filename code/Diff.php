@@ -686,6 +686,10 @@ class Diff
 			$doc = new SS_HTMLValue($content);
 			$content = $doc->getContent();
 		}
+
+		// Remove empty <ins /> and <del /> tags because browsers hate them
+		$content = preg_replace('/<(ins|del)[^>]*\/>/','', $content);
+
 		return $content;
 	}
 
