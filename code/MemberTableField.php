@@ -177,6 +177,8 @@ class MemberTableField extends ComplexTableField {
 				$className, 
 				sprintf('"%s" = \'%s\'', $identifierField, $data[$identifierField])
 			);
+			
+			if($record && !$record->canEdit()) return $this->httpError('401');
 		} 
 			
 		// Fall back to creating a new record
