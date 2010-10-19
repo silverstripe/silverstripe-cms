@@ -37,6 +37,8 @@ class LeftAndMain extends Controller {
 	 */
 	static $tree_class = null;
 
+	static $help_link = 'http://userhelp.silverstripe.org';
+
 	static $allowed_actions = array(
 		'index',
 		'ajaxupdateparent',
@@ -116,7 +118,7 @@ class LeftAndMain extends Controller {
 		CMSMenu::add_link(
 			'Help', 
 			_t('LeftAndMain.HELP', 'Help', PR_HIGH, 'Menu title'), 
-			'http://userhelp.silverstripe.org'
+			self::$help_link
 		);
 		
 		// set reading lang
