@@ -259,7 +259,9 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		if($matches) {
 			$result .= "<ul>";
 			foreach($matches as $match) {
-				if(!$match->canView()) continue;
+				// If the current user doesnt have permissions on the target user,
+				// he's not allowed to add it to a group either: Don't include it in the suggestions.
+				if(!$match->canView() || !$match->canEdit()) continue;
 
 				$data = $match->FirstName;
 				$data .= ",$match->Surname";
