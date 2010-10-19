@@ -169,6 +169,7 @@ class LeftAndMain extends Controller {
 		// Set default values in the config if missing.  These things can't be defined in the config
 		// file because insufficient information exists when that is being processed
 		$htmlEditorConfig = HtmlEditorConfig::get_active();
+		$htmlEditorConfig->setOption('language', i18n::get_tinymce_lang());
 		if(!$htmlEditorConfig->getOption('content_css')) {
 			$cssFiles = 'cms/css/editor.css';
 			

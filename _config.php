@@ -21,7 +21,6 @@ HtmlEditorConfig::get('cms')->setOptions(array(
 	'friendly_name' => 'Default CMS',
 	'priority' => '50',
 	'mode' => 'none',
-	'language' => i18n::get_tinymce_lang(),
 
 	'body_class' => 'typography',
 	'document_base_url' => Director::absoluteBaseURL(),
