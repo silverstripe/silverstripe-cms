@@ -90,7 +90,7 @@ class BrokenLinksReport extends SS_Report {
 			),
 			"LastEdited" => array(
 				"title" => $dateTitle,
-				'casting' => 'SSDatetime->Full'
+				'casting' => 'SS_Datetime->Full'
 			),
 			"BrokenReason" => array(
 				"title" => _t('BrokenLinksReport.ColumnProblemType', "Problem type")
