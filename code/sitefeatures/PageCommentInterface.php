@@ -218,7 +218,6 @@ class PageCommentInterface extends RequestHandler {
 		
 		// Load the users data from a cookie
 		if($cookie = Cookie::get("PageCommentInterface_Data")) {
-			Debug::show(unserialize($cookie));
 			$form->loadDataFrom(unserialize($cookie));
 		}
 
