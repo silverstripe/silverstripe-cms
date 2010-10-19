@@ -19,6 +19,7 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'CMSMAIN.RESTORING': 'Obnovování...',
 		'CMSMAIN.ERRORREVERTING': 'Chyba převádění na živý obsah',
 		'CMSMAIN.SAVING' : 'ukládání...',
+		'CMSMAIN.SELECTMOREPAGES' : "Máte vybráno %s stránek.\n\nSkutečně je chcete?",
 		'ModelAdmin.SAVED': "Uloženo",
 		'ModelAdmin.REALLYDELETE': "Skutečně chcete smazat?",
 		'ModelAdmin.DELETED': "Smazáno",

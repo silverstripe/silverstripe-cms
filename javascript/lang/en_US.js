@@ -19,6 +19,7 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'CMSMAIN.RESTORING': 'Restoring...',
 		'CMSMAIN.ERRORREVERTING': 'Error reverting to live content',
 		'CMSMAIN.SAVING' : 'saving...',
+		'CMSMAIN.SELECTMOREPAGES' : "You have %s pages selected.\n\nDo you really want to perform this action?",
 		'ModelAdmin.SAVED': "Saved",
 		'ModelAdmin.REALLYDELETE': "Do you really want to delete?",
 		'ModelAdmin.DELETED': "Deleted",
