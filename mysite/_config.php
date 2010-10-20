@@ -4,9 +4,9 @@ global $project;
 $project = 'mysite';
 
 global $database;
-$database = "SS_phpinstaller_trunk";
+$database = '';
 
-require_once("conf/ConfigureFromEnv.php");
+require_once('conf/ConfigureFromEnv.php');
 
 MySQLDatabase::set_connection_charset('utf8');
 
@@ -17,5 +17,3 @@ SSViewer::set_theme('blackcandy');
 // enable nested URLs for this site (e.g. page/sub-page/)
 SiteTree::enable_nested_urls();
 
-Security::setDefaultAdmin('admin', 'password');
-?>
