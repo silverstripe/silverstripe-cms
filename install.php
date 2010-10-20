@@ -1256,7 +1256,6 @@ HTML;
 	 */
 	function statusMessage($msg) {
 		echo "<li>$msg</li>\n";
-		else echo "$msg\n";
 		flush();
 	}
 }
