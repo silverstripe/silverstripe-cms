@@ -5,31 +5,8 @@ $project = 'mysite';
 
 global $database;
 $database = '';
-//require_once('conf/ConfigureFromEnv.php');
 
-Director::set_environment_type("dev");
-global $databaseConfig;
-
-/*
-$databaseConfig = array(
-	'type' => 'PostgreSQLDatabase',
-	'server' => 'localhost',
-	'username' => 'postgres',
-	'password' => 'postgres',
-	'database' => 'SS_24modules'
-);
-
-*/
-
-$databaseConfig = array(
-	"type" => 'SQLiteDatabase',
-	"server" => '', 
-	"username" => '', 
-	"password" => '', 
-	"database" => '24modules',
-	"path" => ASSETS_PATH .'/.db',
-);
-
+require_once('conf/ConfigureFromEnv.php');
 
 MySQLDatabase::set_connection_charset('utf8');
 
@@ -39,5 +16,3 @@ SSViewer::set_theme('blackcandy');
 
 // enable nested URLs for this site (e.g. page/sub-page/)
 SiteTree::enable_nested_urls();
-
-Security::setDefaultAdmin('username', 'password');

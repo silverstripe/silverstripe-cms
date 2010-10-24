@@ -2,7 +2,6 @@
 class Page extends SiteTree {
 
 	public static $db = array(
-		'Test' => 'Boolean'
 	);
 
 	public static $has_one = array(
@@ -31,15 +30,12 @@ class Page_Controller extends ContentController {
 
 	public function init() {
 		parent::init();
-		Validator::set_javascript_validation_handler('none');
+
 		// Note: you should use SS template require tags inside your templates 
 		// instead of putting Requirements calls here.  However these are 
 		// included so that our older themes still work
-		Requirements::javascript('sapphire/thirdparty/jquery/jquery.js');
-	
 		Requirements::themedCSS('layout'); 
 		Requirements::themedCSS('typography'); 
 		Requirements::themedCSS('form'); 
-
 	}
 }
