@@ -5,4 +5,8 @@ trunk:
   .: /open/phpinstaller/trunk
   sapphire: /open/modules/sapphire/trunk
   cms: /open/modules/cms/trunk
-  jsparty: /open/modules/jsparty/trunk
+
+sscom:
+ sapphire: /modules/sapphire/branches/2.4-sscom
+ cms: /modules/cms/branches/2.4-sscom
+
