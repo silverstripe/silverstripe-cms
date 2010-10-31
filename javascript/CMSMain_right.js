@@ -35,11 +35,12 @@ function action_rollback_right() {
 	}
 	
 	if($('Form_EditForm').elements.Version && $('Form_EditForm').elements.Version.value) {
-		var message = "Do you really want to roll back to version #" 
-			+ $('Form_EditForm').elements.Version.value + " of this page?";
-			
+		var message = ss.i18n.sprintf(
+			ss.i18n._t('CMSMAIN.RollbackConfirmation'),
+			$('Form_EditForm').elements.Version.value
+		);
 	} else {
-		var message = "Do you really want to copy the published content to the stage site?";
+		var message = ss.i18n._t('CMSMAIN.CopyPublishedConfirmation');
 	}
 	
 	if(confirm(message)) {
@@ -91,7 +92,7 @@ Behaviour.register({
 Behaviour.register({
 	'select#Form_EditForm_ClassName' : {
 		onchange: function() {
-			alert('The page type will be updated after the page is saved');
+			alert(ss.i18n._t('CMSMAIN.PageTypeSaveAlert'));
 		}
 	},
 
