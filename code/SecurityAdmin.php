@@ -381,24 +381,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		return FormResponse::respond();
 	}
 
-	public function removememberfromgroup() {
-		$groupID = $this->urlParams['ID'];
-		$memberID = $this->urlParams['OtherID'];
-		if(is_numeric($groupID) && is_numeric($memberID)) {
-			$member = DataObject::get_by_id('Member', (int) $memberID);
-
-			if(!$member->canDelete()) return Security::permissionFailure($this);
-
-			$member->Groups()->remove((int)$groupID);
-
-			FormResponse::add("reloadMemberTableField();");
-		} else {
-			user_error("SecurityAdmin::removememberfromgroup: Bad parameters: Group=$groupID, Member=$memberID", E_USER_ERROR);
-		}
-
-		return FormResponse::respond();
-	}
-
 	/**
 	 * Return the entire site tree as a nested set of ULs.
 	 * @return string Unordered list HTML
@@ -429,7 +411,10 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		return $siteTree;
 	}
 
-	public function addgroup() {
+	public function addgroup($request) {
+		// Protect against CSRF on destructive action
+		if(!Form::get_security_token()->checkRequest($request)) return $this->httpError(400);
+		
 		if(!singleton($this->stat('tree_class'))->canCreate()) return Security::permissionFailure($this);
 		
 		$newGroup = Object::create($this->stat('tree_class'));
