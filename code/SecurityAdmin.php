@@ -23,7 +23,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		'removememberfromgroup',
 		'savemember',
 		'AddRecordForm',
-		'MemberForm',
 		'EditForm'
 	);
 
@@ -104,66 +103,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			$result .= "</ul>";
 			return $result;
 		}
-	}
-
-	public function MemberForm() {
-		$id = $_REQUEST['ID'] ? $_REQUEST['ID'] : Session::get('currentMember');
-		if($id) return $this->getMemberForm($id);
-	}
-
-	public function getMemberForm($id) {
-		if($id && $id != 'new') $record = DataObject::get_by_id('Member', (int) $id);
-		if($record || $id == 'new') {
-			$fields = new FieldSet(
-				new HiddenField('MemberListBaseGroup', '', $this->currentPageID() )
-			);
-
-			if($extraFields = $record->getCMSFields()) {
-				foreach($extraFields as $extra) {
-					$fields->push( $extra );
-				}
-			}
-
-			$fields->push($idField = new HiddenField('ID'));
-			$fields->push($groupIDField = new HiddenField('GroupID'));
-
-			$actions = new FieldSet();
-			$actions->push(new FormAction('savemember', _t('SecurityAdmin.SAVE')));
-
-			$form = new Form($this, 'MemberForm', $fields, $actions);
-			if($record) $form->loadDataFrom($record);
-
-			$idField->setValue($id);
-			$groupIDField->setValue($this->currentPageID());
-
-			return $form;
-		}
-	}
-
-	function savemember() {
-		$data = $_REQUEST;
-		$className = $this->stat('subitem_class');
-
-		$id = $_REQUEST['ID'];
-		if($id == 'new') $id = null;
-
-		if($id) {
-			$record = DataObject::get_by_id($className, $id);
-			if($record && !$record->canEdit()) return Security::permissionFailure($this);
-		} else {
-			if(!singleton($this->stat('subitem_class'))->canCreate()) return Security::permissionFailure($this);
-			$record = new $className();
-		}
-
-		$record->update($data);
-		$record->ID = $id;
-		$record->write();
-
-		$record->Groups()->add($data['GroupID']);
-
-		FormResponse::add("reloadMemberTableField();");
-
-		return FormResponse::respond();
 	}
 
 	function addmember($className=null) {

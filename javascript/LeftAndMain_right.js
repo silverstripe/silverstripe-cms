@@ -245,7 +245,6 @@ CMSRightForm.prototype = {
 		this.loadNewPage(response.responseText);
 		
 		var subform;
-		if(subform = $('Form_MemberForm')) subform.close();
 		if(subform = $('Form_SubForm')) subform.close();
 		
 		if(this.elements.ID) {
@@ -343,7 +342,6 @@ function autoSave(confirmation, callAfter) {
 	var __forms = []
 	if($('Form_EditForm')) __forms.push($('Form_EditForm'));
 	if($('Form_SubForm')) __forms.push($('Form_SubForm'));
-	if($('Form_MemberForm')) __forms.push($('Form_MemberForm'));
 	
 	var __somethingHasChanged = false;
 	var __callAfter = callAfter;
