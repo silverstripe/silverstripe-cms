@@ -492,7 +492,10 @@ JS;
 	/**
 	 * Add a new folder and return its details suitable for ajax.
 	 */
-	public function addfolder() {
+	public function addfolder($request) {
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		
 		$parent = ($_REQUEST['ParentID'] && is_numeric($_REQUEST['ParentID'])) ? (int)$_REQUEST['ParentID'] : 0;
 		$name = (isset($_REQUEST['Name'])) ? basename($_REQUEST['Name']) : _t('AssetAdmin.NEWFOLDER',"NewFolder");
 		
@@ -536,7 +539,7 @@ JS;
 	/**
 	 * Delete a folder
 	 */
-	public function deletefolder() {
+	public function deletefolder($data, $ofmr) {
 		$script = '';
 		$ids = split(' *, *', $_REQUEST['csvIDs']);
 		$script = '';
@@ -567,7 +570,10 @@ JS;
 		echo $script;
 	}
 	
-	public function removefile(){
+	public function removefile($request){
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		
 		if($fileID = $this->urlParams['ID']) {
 			$file = DataObject::get_by_id('File', $fileID);
 			// Delete the temp verions of this file in assets/_resampled
@@ -612,7 +618,10 @@ JS;
 	 * Removes all unused thumbnails from the file store
 	 * and returns the status of the process to the user.
 	 */
-	public function deleteunusedthumbnails() {
+	public function deleteunusedthumbnails($request) {
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		
 		$count = 0;
 		$thumbnails = $this->getUnusedThumbnails();
 		

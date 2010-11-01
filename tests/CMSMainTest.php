@@ -7,16 +7,24 @@ class CMSMainTest extends FunctionalTest {
 	 * @todo Test the results of a publication better
 	 */
 	function testPublish() {
+		$page1 = $this->objFromFixture('Page', "page1");
+		$page2 = $this->objFromFixture('Page', "page2");
 		$this->session()->inst_set('loggedInAs', $this->idFromFixture('Member', 'admin'));
 		
-		$response = Director::test("admin/cms/publishall", array('confirm' => 1), $this->session());
+		$response = $this->get("admin/cms/publishall?confirm=1");
 		
 		$this->assertContains(
 			sprintf(_t('CMSMain.PUBPAGES',"Done: Published %d pages"), 5), 
 			$response->getBody()
 		);
 
-		$response = Director::test("admin/cms/batchactions/publish", array('csvIDs' => '1,2', 'ajax' => 1), $this->session());
+		$response = $this->post(
+			"admin/cms/batchactions/publish", 
+			array(
+				'csvIDs' => implode(',', array($page1->ID, $page2->ID)), 
+				'ajax' => 1
+			)
+		);
 		
 		$this->assertContains('setNodeTitle(1, \'Page 1\');', $response->getBody());
 		$this->assertContains('setNodeTitle(2, \'Page 2\');', $response->getBody());
@@ -126,4 +134,5 @@ class CMSMainTest extends FunctionalTest {
 		$this->assertEquals('5', $newPage->ParentID);
 
 	}
+
 }

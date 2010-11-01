@@ -42,7 +42,7 @@ class PageComment extends DataObject {
 	 * @return string link to this comment.
 	 */
 	function Link() {
-		return $this->Parent()->Link() . '#PageComment_'. $this->ID;
+		return Controller::join_links($this->Parent()->Link(), '#PageComment_'. $this->ID);
 	}
 	
 	function ParsedBBCode(){
@@ -51,19 +51,39 @@ class PageComment extends DataObject {
 	}
 
 	function DeleteLink() {
-		return (Permission::check('CMS_ACCESS_CMSMain')) ? "PageComment_Controller/deletecomment/$this->ID" : false;
+		if(Permission::check('CMS_ACCESS_CMSMain')) {
+			$token = SecurityToken::inst();
+			return $token->addToUrl("PageComment_Controller/deletecomment/$this->ID");
+		} else {
+			return false;
+		}
 	}
 	
 	function SpamLink() {
-		return (Permission::check('CMS_ACCESS_CMSMain') && !$this->IsSpam) ? "PageComment_Controller/reportspam/$this->ID" : false;
+		if(Permission::check('CMS_ACCESS_CMSMain') && !$this->IsSpam) {
+			$token = SecurityToken::inst();
+			return $token->addToUrl("PageComment_Controller/reportspam/$this->ID");
+		} else {
+			return false;
+		}
 	}
 	
 	function HamLink() {
-		return (Permission::check('CMS_ACCESS_CMSMain') && $this->IsSpam) ? "PageComment_Controller/reportham/$this->ID" : false;
+		if(Permission::check('CMS_ACCESS_CMSMain') && $this->IsSpam) {
+			$token = SecurityToken::inst();
+			return $token->addToUrl("PageComment_Controller/reportham/$this->ID");
+		} else {
+			return false;
+		}
 	}
 	
 	function ApproveLink() {
-		return (Permission::check('CMS_ACCESS_CMSMain') && $this->NeedsModeration) ? "PageComment_Controller/approve/$this->ID" : false;
+		if(Permission::check('CMS_ACCESS_CMSMain') && $this->NeedsModeration) {
+			$token = SecurityToken::inst();
+			return $token->addToUrl("PageComment_Controller/approve/$this->ID");
+		} else {
+			return false;
+		}
 	}
 	
 	function SpamClass() {
@@ -161,9 +181,13 @@ class PageComment_Controller extends Controller {
 		$rss->outputToBrowser();
 	}
 	
-	function deletecomment() {
+	function deletecomment($request) {
+		// Protect against CSRF on destructive action
+		$token = SecurityToken::inst();
+		if(!$token->checkRequest($request)) return $this->httpError(400);
+		
 		if(Permission::check('CMS_ACCESS_CMSMain')) {
-			$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
+			$comment = DataObject::get_by_id("PageComment", $request->param('ID'));
 			if($comment) {
 				$comment->delete();
 			}
@@ -176,27 +200,34 @@ class PageComment_Controller extends Controller {
 		}
 	}
 	
-	function approve() {
+	function approve($request) {
+		// Protect against CSRF on destructive action
+		$token = SecurityToken::inst();
+		if(!$token->checkRequest($request)) return $this->httpError(400);
+		
 		if(Permission::check('CMS_ACCESS_CMSMain')) {
-			$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
-
+			$comment = DataObject::get_by_id("PageComment", $request->param('ID'));
 			if($comment) {
 				$comment->NeedsModeration = false;
 				$comment->write();
-			
+		
 				// @todo Report to spamprotecter this is true
-			
+		
 				if(Director::is_ajax()) {
 					echo $comment->renderWith('PageCommentInterface_singlecomment');
 				} else {
 					Director::redirectBack();
 				}
 			}
-		}
+		}		
 	}
 	
-	function reportspam() {
-		$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
+	function reportspam($request) {
+		// Protect against CSRF on destructive action
+		$token = SecurityToken::inst();
+		if(!$token->checkRequest($request)) return $this->httpError(400);
+		
+		$comment = DataObject::get_by_id("PageComment", $request->param('ID'));
 		if($comment) {
 			// check they have access
 			if(Permission::check('CMS_ACCESS_CMSMain')) {
@@ -236,8 +267,12 @@ class PageComment_Controller extends Controller {
 	/**
 	 * Report a Spam Comment as valid comment (not spam)
 	 */
-	function reportham() {
-		$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
+	function reportham($request) {
+		// Protect against CSRF on destructive action
+		$token = SecurityToken::inst();
+		if(!$token->checkRequest($request)) return $this->httpError(400);
+		
+		$comment = DataObject::get_by_id("PageComment", $request->param('ID'));
 		if($comment) {
 			if(Permission::check('CMS_ACCESS_CMSMain')) {
 					

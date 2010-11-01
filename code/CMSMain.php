@@ -436,7 +436,10 @@ JS;
 	// Data saving handlers
 
 
-	public function addpage() {
+	public function addpage($data, $form) {
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($this->request)) return $this->httpError(400);
+		
 		$className = isset($_REQUEST['PageType']) ? $_REQUEST['PageType'] : "Page";
 		$parent = isset($_REQUEST['ParentID']) ? $_REQUEST['ParentID'] : 0;
 		$suffix = isset($_REQUEST['Suffix']) ? "-" . $_REQUEST['Suffix'] : null;
@@ -447,6 +450,7 @@ JS;
 		}
 
 		if(is_numeric($parent)) $parentObj = DataObject::get_by_id("SiteTree", $parent);
+		else $parentObj = null;
 		if(!$parentObj || !$parentObj->ID) $parent = 0;
 		
 		if($parentObj && !$parentObj->canAddChildren()) return Security::permissionFailure($this);
@@ -650,7 +654,7 @@ JS;
 	/**
 	 * Roll a page back to a previous version
 	 */
-	function rollback() {
+	function rollback($data, $form) {
 		if(isset($_REQUEST['Version']) && (bool)$_REQUEST['Version']) {
 			$record = $this->performRollback($_REQUEST['ID'], $_REQUEST['Version']);
 			echo sprintf(_t('CMSMain.ROLLEDBACKVERSION',"Rolled back to version #%d.  New version number is #%d"),$_REQUEST['Version'],$record->Version);
@@ -660,7 +664,7 @@ JS;
 		}
 	}
 
-	function unpublish() {
+	function unpublish($data, $form) {
 		$SQL_id = Convert::raw2sql($_REQUEST['ID']);
 
 		$page = DataObject::get_by_id("SiteTree", $SQL_id);
@@ -928,7 +932,10 @@ JS;
 		return $this->batchactions()->batchActionList();
 	}
 
-	function buildbrokenlinks() {
+	function buildbrokenlinks($request) {
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		
 		if($this->urlParams['ID']) {
 			$newPageSet[] = DataObject::get_by_id("Page", $this->urlParams['ID']);
 		} else {
@@ -1010,13 +1017,16 @@ JS;
 		echo '<p>' . _t('CMSMain.TOTALPAGES',"Total pages: ") . "$count</p>";
 	}
 
-	function publishall() {
+	function publishall($request) {
 		ini_set("memory_limit", -1);
 		ini_set('max_execution_time', 0);
 		
 		$response = "";
 
 		if(isset($this->requestParams['confirm'])) {
+			// Protect against CSRF on destructive action
+			if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+			
 			$start = 0;
 			$pages = DataObject::get("SiteTree", "", "", "", "$start,30");
 			$count = 0;
@@ -1041,14 +1051,16 @@ JS;
 			$response .= sprintf(_t('CMSMain.PUBPAGES',"Done: Published %d pages"), $count);
 
 		} else {
+			$token = SecurityToken::inst();
 			$response .= '<h1>' . _t('CMSMain.PUBALLFUN','"Publish All" functionality') . '</h1>
 				<p>' . _t('CMSMain.PUBALLFUN2', 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It\'s
 				intended to be used after there have been massive edits of the content, such as when the site was
 				first built.') . '</p>
 				<form method="post" action="publishall">
 					<input type="submit" name="confirm" value="'
-					. _t('CMSMain.PUBALLCONFIRM',"Please publish every page in the site, copying content stage to live",PR_LOW,'Confirmation button') .'" />
-				</form>';
+					. _t('CMSMain.PUBALLCONFIRM',"Please publish every page in the site, copying content stage to live",PR_LOW,'Confirmation button') .'" />'
+					. $token->getFormField()->FieldHolder() .
+				'</form>';
 		}
 		
 		return $response;
@@ -1057,7 +1069,7 @@ JS;
 	/**
 	 * Restore a completely deleted page from the SiteTree_versions table.
 	 */
-	function restore() {
+	function restore($data, $form) {
 		if(($id = $_REQUEST['ID']) && is_numeric($id)) {
 			$restoredPage = Versioned::get_latest_version("SiteTree", $id);
 			if($restoredPage) {
@@ -1077,7 +1089,10 @@ JS;
 		}
 	}
 
-	function duplicate() {
+	function duplicate($request) {
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
 			$page = DataObject::get_by_id("SiteTree", $id);
 			if($page && !$page->canEdit()) return Security::permissionFailure($this);
@@ -1096,7 +1111,10 @@ JS;
 		}
 	}
 
-	function duplicatewithchildren() {
+	function duplicatewithchildren($request) {
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
 			$page = DataObject::get_by_id("SiteTree", $id);
 			if($page && !$page->canEdit()) return Security::permissionFailure($this);
@@ -1114,7 +1132,10 @@ JS;
 	/**
 	 * Create a new translation from an existing item, switch to this language and reload the tree.
 	 */
-	function createtranslation () {
+	function createtranslation($request) {
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		
 		$langCode = Convert::raw2sql($_REQUEST['newlang']);
 		$originalLangID = (int)$_REQUEST['ID'];
 

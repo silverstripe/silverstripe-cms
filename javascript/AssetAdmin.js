@@ -481,7 +481,8 @@ Behaviour.register({
                 method: 'get',
                 onSuccess: function(t) {
                     eval(t.responseText);
-                }
+                },
+								parameters: {"SecurityID": ($('SecurityID')) ? $('SecurityID').value : null}
             };
             new Ajax.Request('admin/assets/deleteunusedthumbnails',options);
         }

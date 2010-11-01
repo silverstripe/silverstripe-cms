@@ -152,7 +152,12 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		return $siteTree;
 	}
 
-	public function addgroup() {
+	public function addgroup($request) {
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		
+		if(!singleton($this->stat('tree_class'))->canCreate()) return Security::permissionFailure($this);
+		
 		$newGroup = Object::create($this->stat('tree_class'));
 		$newGroup->Title = _t('SecurityAdmin.NEWGROUP',"New Group");
 		$newGroup->Code = "new-group";

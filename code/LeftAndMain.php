@@ -772,7 +772,10 @@ JS;
 	/**
 	 * Ajax handler for updating the parent of a tree node
 	 */
-	public function ajaxupdateparent() {
+	public function ajaxupdateparent($request) {
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		
 		$id = $_REQUEST['ID'];
 		$parentID = $_REQUEST['ParentID'];
 		if($parentID == 'root'){
@@ -816,7 +819,10 @@ JS;
 	 * $_GET[ID]: An array of node ids in the correct order
 	 * $_GET[MovedNodeID]: The node that actually got moved
 	 */
-	public function ajaxupdatesort() {
+	public function ajaxupdatesort($request) {
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		
 		$className = $this->stat('tree_class');
 		$counter = 0;
 		$js = '';
@@ -863,7 +869,10 @@ JS;
 	/**
 	 * Delete a number of items
 	 */
-	public function deleteitems() {
+	public function deleteitems($request) {
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		
 		$ids = split(' *, *', $_REQUEST['csvIDs']);
 
 		$script = "st = \$('sitetree'); \n";

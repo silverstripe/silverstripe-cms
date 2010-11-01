@@ -52,6 +52,9 @@ class CMSBatchActionHandler extends RequestHandler {
 			Director::redirectBack();
 			return;
 		}
+		
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
 
 		$actions = Object::get_static($this->class, 'batch_actions');
 		$actionClass = $actions[$request->param('BatchAction')];
