@@ -27,7 +27,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	static $subitem_class = "Member";
 	
 	static $allowed_actions = array(
-		'addmember',
 		'addpage',
 		'buildbrokenlinks',
 		'canceldraftchangesdialog',

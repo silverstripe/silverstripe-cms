@@ -18,7 +18,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	
 	static $allowed_actions = array(
 		'addgroup',
-		'addmember',
 		'autocomplete',
 		'removememberfromgroup',
 		'savemember',
@@ -356,25 +355,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		$record->write();
 
 		$record->Groups()->add($data['GroupID']);
-
-		FormResponse::add("reloadMemberTableField();");
-
-		return FormResponse::respond();
-	}
-
-	function addmember($className=null) {
-		$data = $_REQUEST;
-		unset($data['ID']);
-		if($className == null) $className = $this->stat('subitem_class');
-
-		if(!singleton($this->stat('subitem_class'))->canCreate()) return Security::permissionFailure($this);
-
-		$record = new $className();
-
-		$record->update($data);
-		$record->write();
-		
-		if($data['GroupID']) $record->Groups()->add((int)$data['GroupID']);
 
 		FormResponse::add("reloadMemberTableField();");
 
