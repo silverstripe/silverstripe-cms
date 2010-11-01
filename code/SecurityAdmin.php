@@ -327,7 +327,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 
 	public function addgroup($request) {
 		// Protect against CSRF on destructive action
-		if(!Form::get_security_token()->checkRequest($request)) return $this->httpError(400);
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
 		
 		if(!singleton($this->stat('tree_class'))->canCreate()) return Security::permissionFailure($this);
 		

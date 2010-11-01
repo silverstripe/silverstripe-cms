@@ -42,7 +42,7 @@
 						<% end_if %>
 						<% if Can(delete) %>
 						<td width="18" class="action">
-							<a class="deletelink" href="admin/assets/removefile/$ID" title="<% _t('DELFILE', 'Delete this file') %>"><img src="cms/images/delete.gif" alt="<% _t('DELFILE', 'Delete this file') %>" title="<% _t('DELFILE','Delete this file') %>" /></a>
+							<a class="deletelink" href="admin/assets/removefile/$ID/?SecurityID=$SecurityID" title="<% _t('DELFILE', 'Delete this file') %>"><img src="cms/images/delete.gif" alt="<% _t('DELFILE', 'Delete this file') %>" title="<% _t('DELFILE','Delete this file') %>" /></a>
 						</td>
 						<% end_if %>
 					</tr>

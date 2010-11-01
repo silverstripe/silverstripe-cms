@@ -85,6 +85,10 @@ class CommentTableField extends ComplexTableField {
 		
 		return $fieldContainer->FieldHolder();
 	}
+	
+	function handleItem($request) {
+		return new CommentTableField_ItemRequest($this, $request->param('ID'));
+	}
 }
 
 /**
@@ -93,6 +97,7 @@ class CommentTableField extends ComplexTableField {
  * @subpackage comments
  */
 class CommentTableField_Item extends ComplexTableField_Item {
+	
 	function HasSpamButton() {
 		return $this->parent()->HasSpamButton();
 	}
@@ -104,6 +109,51 @@ class CommentTableField_Item extends ComplexTableField_Item {
 	function HasHamButton() {
 		return $this->parent()->HasHamButton();
 	}
+	
+	/**
+	 * @return String
+	 */
+	function SpamLink() {
+		return Controller::join_links($this->Link(), "pagecommentaction", 'reportspam', $this->ID);
+	}
+	
+	/**
+	 * @return String
+	 */
+	function HamLink() {
+		return Controller::join_links($this->Link(), "pagecommentaction", 'reportham', $this->ID);
+	}
+	
+	/**
+	 * @return String
+	 */
+	function ApproveLink() {
+		return Controller::join_links($this->Link(), "pagecommentaction", 'approve', $this->ID);
+	}
 }
 
+/**
+ * @package cms
+ * @subpackage comments
+ */
+class CommentTableField_ItemRequest extends ComplexTableField_ItemRequest {
+	
+	static $url_handlers = array(
+		'pagecommentaction/$Action/$ID' => 'handlePageCommentAction',
+	);
+	
+	/**
+	 * @param SS_HTTPRequest $request
+	 * @return SS_HTTPResponse
+	 */
+	function handlePageCommentAction($request) {
+		$action = $request->param('Action');
+		$whitelist = array('approve', 'reportspam', 'reportham');
+		if(!in_array($action, $whitelist)) $this->httpError(403);
+		
+		$c = new PageComment_Controller($request);
+		$c->init();
+		return $c->$action($request);
+	}
+}
 ?>

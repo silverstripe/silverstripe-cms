@@ -29,7 +29,7 @@ class CommentAdminTest extends FunctionalTest {
 		$comm = $this->objFromFixture('PageComment', 'Comment1');
 		$id = $comm->ID;
 		$this->logInWithPermission('CMS_ACCESS_CommentAdmin');
-		$result = $this->get("admin/comments/EditForm/field/Comments/item/$id/delete");
+		$response = $this->get("admin/comments/EditForm/field/Comments/item/$id/delete");
 		$checkComm = DataObject::get_by_id('PageComment',$id);
 
 		$this->assertFalse($checkComm);

@@ -8,6 +8,7 @@
 	<div style="clear:both;"></div>
 	<form class="actionparams" id="addgroup_options" style="display: none" action="admin/security/addgroup">
 		<input type="hidden" name="ParentID" />
+		<input type="hidden" name="SecurityID" value="$SecurityID" />
 		<input class="action" type="submit" value="<% _t('GO','Go') %>" />
 	</form>
 	
@@ -15,6 +16,7 @@
 		<p><% _t('SELECT','Select the pages that you want to delete and then click the button below') %></p>
 		
 		<input type="hidden" name="csvIDs" />
+		<input type="hidden" name="SecurityID" value="$SecurityID" />
 		<input type="submit" value="<% _t('DELGROUPS','Delete the selected groups') %>" class="action delete" />
 	</form>
 	

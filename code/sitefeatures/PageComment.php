@@ -60,7 +60,10 @@ class PageComment extends DataObject {
 	}
 
 	function DeleteLink() {
-		return ($this->canDelete()) ? "PageComment_Controller/deletecomment/$this->ID" : false;
+		$token = SecurityToken::inst();
+		$link = $token->addToUrl("PageComment_Controller/deletecomment/$this->ID");
+		
+		return ($this->canDelete()) ? $link : false;
 	}
 	
 	function CommentTextWithLinks() {
@@ -70,15 +73,21 @@ class PageComment extends DataObject {
 	}
 	
 	function SpamLink() {
-		return ($this->canEdit() && !$this->IsSpam) ? "PageComment_Controller/reportspam/$this->ID" : false;
+		$token = SecurityToken::inst();
+		$link = $token->addToUrl("PageComment_Controller/reportspam/$this->ID");
+		return ($this->canEdit() && !$this->IsSpam) ? $link : false;
 	}
 	
 	function HamLink() {
-		return ($this->canEdit() && $this->IsSpam) ? "PageComment_Controller/reportham/$this->ID" : false;
+		$token = SecurityToken::inst();
+		$link = $token->addToUrl("PageComment_Controller/reportham/$this->ID");
+		return ($this->canEdit() && $this->IsSpam) ? $link : false;
 	}
 	
 	function ApproveLink() {
-		return ($this->canEdit() && $this->NeedsModeration) ? "PageComment_Controller/approve/$this->ID" : false;
+		$token = SecurityToken::inst();
+		$link = $token->addToUrl("PageComment_Controller/approve/$this->ID");
+		return ($this->canEdit() && $this->NeedsModeration) ? $link : false;
 	}
 	
 	function SpamClass() {
@@ -250,10 +259,14 @@ class PageComment_Controller extends Controller {
 	/**
 	 * Deletes all comments on the page referenced by the url param pageid
 	 */
-	function deleteallcomments() {
-		$pageId = $_REQUEST['pageid'];
+	function deleteallcomments($request) {
+		// Protect against CSRF on destructive action
+		$token = SecurityToken::inst();
+		if(!$token->checkRequest($request)) return $this->httpError(400);
+		
+		$pageId = $request->requestVar('pageid');
 		if(preg_match('/^\d+$/', $pageId)) {
-			$comments = DataObject::get("PageComment", "\"ParentID\" = $pageId");
+			$comments = DataObject::get("PageComment", sprintf("\"ParentID\" = %d", (int)$pageId));
 			if($comments) foreach($comments as $c) {
 				if($c->canDelete()) $c->delete();
 			}
@@ -266,8 +279,12 @@ class PageComment_Controller extends Controller {
 		}
 	}
 	
-	function deletecomment() {
-		$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
+	function deletecomment($request) {
+		// Protect against CSRF on destructive action
+		$token = SecurityToken::inst();
+		if(!$token->checkRequest($request)) return $this->httpError(400);
+		
+		$comment = DataObject::get_by_id("PageComment", $request->param('ID'));
 		if($comment && $comment->canDelete()) {
 			$comment->delete();
 		}
@@ -279,8 +296,12 @@ class PageComment_Controller extends Controller {
 		}
 	}
 	
-	function approve() {
-		$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
+	function approve($request) {
+		// Protect against CSRF on destructive action
+		$token = SecurityToken::inst();
+		if(!$token->checkRequest($request)) return $this->httpError(400);
+		
+		$comment = DataObject::get_by_id("PageComment", $request->param('ID'));
 
 		if($comment && $comment->canEdit()) {
 			$comment->NeedsModeration = false;
@@ -296,8 +317,12 @@ class PageComment_Controller extends Controller {
 		}
 	}
 	
-	function reportspam() {
-		$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
+	function reportspam($request) {
+		// Protect against CSRF on destructive action
+		$token = SecurityToken::inst();
+		if(!$token->checkRequest($request)) return $this->httpError(400);
+		
+		$comment = DataObject::get_by_id("PageComment", $request->param('ID'));
 		if($comment && $comment->canEdit()) {
 			// if spam protection module exists
 			if(class_exists('SpamProtectorManager')) {
@@ -334,8 +359,12 @@ class PageComment_Controller extends Controller {
 	/**
 	 * Report a Spam Comment as valid comment (not spam)
 	 */
-	function reportham() {
-		$comment = DataObject::get_by_id("PageComment", $this->urlParams['ID']);
+	function reportham($request) {
+		// Protect against CSRF on destructive action
+		$token = SecurityToken::inst();
+		if(!$token->checkRequest($request)) return $this->httpError(400);
+		
+		$comment = DataObject::get_by_id("PageComment", $request->param('ID'));
 		if($comment && $comment->canEdit()) {
 			// if spam protection module exists
 			if(class_exists('SpamProtectorManager')) {

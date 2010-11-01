@@ -13,6 +13,7 @@
 			<form class="actionparams" id="addpage_options" style="display: none" action="admin/assets/addfolder">
 				<div>
 				<input type="hidden" name="ParentID" />
+				<input type="hidden" name="SecurityID" value="$SecurityID" />
 				<input class="action" type="submit" value="<% _t('GO','Go') %>" />
 				</div>
 			</form>

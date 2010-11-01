@@ -72,6 +72,7 @@
 					<p><% _t('SELECTPAGESACTIONS','Select the pages that you want to change &amp; then click an action:') %></p>
 
 					<input type="hidden" name="csvIDs" />
+					<input type="hidden" name="SecurityID" value="$SecurityID" />
 					<div id="actionParams"></div>
 					<div>
 						<select id="choose_batch_action">

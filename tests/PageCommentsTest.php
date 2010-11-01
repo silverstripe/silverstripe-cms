@@ -4,6 +4,8 @@ class PageCommentsTest extends FunctionalTest {
 	
 	static $fixture_file = 'cms/tests/PageCommentsTest.yml';
 	
+	static $use_draft_site = true;
+	
 	function testCanView() {
 		$visitor = $this->objFromFixture('Member', 'visitor');
 		$admin = $this->objFromFixture('Member', 'commentadmin');
@@ -51,8 +53,11 @@ class PageCommentsTest extends FunctionalTest {
 		
 		$firstComment = $this->objFromFixture('PageComment', 'firstComA');
 		$firstCommentID = $firstComment->ID;
-		Director::test($firstPage->RelativeLink(), null, $this->session());
-		Director::test('PageComment/deletecomment/'.$firstComment->ID, null, $this->session());
+		$response = $this->get($firstPage->RelativeLink());
+		$token = SecurityToken::inst();
+		$url = sprintf('PageComment/deletecomment/%d/', $firstComment->ID);
+		$url = $token->addToUrl($url);
+		$response = $this->get($url);
 		
 		$this->assertFalse(DataObject::get_by_id('PageComment', $firstCommentID));
 	}
@@ -62,11 +67,13 @@ class PageCommentsTest extends FunctionalTest {
 		$this->autoFollowRedirection = false;
 		$this->logInAs('commentadmin');
 		
-		Director::test('second-page', null, $this->session());
-		Director::test('PageComment/deleteallcomments?pageid='.$second->ID,
-			null, $this->session());
-		Director::test('second-page', null, $this->session());
-		
+		$response = $this->get($second->RelativeLink());
+		$token = SecurityToken::inst();
+		$url = sprintf('PageComment/deleteallcomments?pageid=%d', $second->ID);
+		$url = $token->addToUrl($url);
+		$response = $this->get($url);
+		$response = $this->get($second->RelativeLink());
+
 		$secondComments = DataObject::get('PageComment', '"ParentID" = '.$second->ID);
 		$this->assertNull($secondComments);
 		

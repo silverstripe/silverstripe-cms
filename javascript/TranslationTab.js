@@ -9,6 +9,7 @@ Behaviour.register({
 				var url = baseHref() + 'admin/' + this.name.substring(7) + '?ID=' + $('Form_EditForm_ID').value + '&newlang=' +
 				$('Form_EditForm_NewTransLang').value + '&ajax=1';
 				url += "&locale=" + $('Form_EditForm_Locale').value;
+				url += "&SecurityID=" + $$('input[name=SecurityID]')[0].value;
 				
 				new Ajax.Request( url, {
 					onSuccess: Ajax.Evaluator,
