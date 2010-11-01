@@ -183,20 +183,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		return FormResponse::respond();
 	}
 
-	public function removememberfromgroup() {
-		$groupID = $this->urlParams['ID'];
-		$memberID = $this->urlParams['OtherID'];
-		if(is_numeric($groupID) && is_numeric($memberID)) {
-			$member = DataObject::get_by_id('Member', (int) $memberID);
-			$member->Groups()->remove((int)$groupID);
-			FormResponse::add("reloadMemberTableField();");
-		} else {
-			user_error("SecurityAdmin::removememberfromgroup: Bad parameters: Group=$groupID, Member=$memberID", E_USER_ERROR);
-		}
-
-		return FormResponse::respond();
-	}
-
 	/**
 	 * Return the entire site tree as a nested set of ULs.
 	 * @return string Unordered list <UL> HTML
