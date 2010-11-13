@@ -58,7 +58,7 @@ TreeAPI.prototype = {
 	},
 	
 	reload: function(options) {
-		this.innerHTML = 'Loading...';
+		this.innerHTML =  ss.i18n._t('LOADING', 'loading...'); 
 
 		var args = {ajax:1, ID:0};
 		if ($('LangSelector')) args.locale = $('LangSelector').value;
@@ -227,7 +227,7 @@ TreeNodeAPI.prototype = {
 	ajaxExpansion : function() {
 		this.addNodeClass('loading');
 		var ul = this.treeNodeHolder(false);
-		ul.innerHTML = 'loading...';
+		ul.innerHTML = ss.i18n._t('LOADING', 'loading...'); 
 		
 		// Any attempts to add children to this page should, in fact, cue them up for insertion later
 		ul.cuedNewNodes = [];

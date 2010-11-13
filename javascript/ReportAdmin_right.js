@@ -28,7 +28,7 @@ Behaviour.register({
 				
 				if(treeNode) treeNode.addNodeClass('loading');
 				
-				statusMessage("loading...");
+				statusMessage(ss.i18n._t('LOADING', 'loading...')); 
 
 				var requestURL = 'admin/reports/show/' + id;
 				new Ajax.Request(requestURL, {

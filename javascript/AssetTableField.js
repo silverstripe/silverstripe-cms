@@ -53,8 +53,8 @@ AssetTableField.prototype = {
 		if(linkCount) linkCount = linkCount.innerHTML;
 		
 		var confirmMessage = ss.i18n._t('TABLEFIELD.DELETECONFIRMMESSAGE', 'Are you sure you want to delete this record?');
-		if(linkCount) confirmMessage += '\nThere are ' + linkCount + ' page(s) that use this file, please review the list of pages on the Links tab of the file before continuing.';
-		
+		if(linkCount>0) confirmMessage += ss.i18n.sprintf(ss.i18n._t('TABLEFIELD.DELETECONFIRMMESSAGEV2','\nThere are %s page(s) that use this file, please review the list of pages on the Links tab of the file before continuing.'),linkCount);
+
 		// TODO ajaxErrorHandler and loading-image are dependent on cms, but formfield is in sapphire
 		var confirmed = confirm(confirmMessage);
 		if(confirmed)

@@ -309,7 +309,7 @@ CMSRightForm.prototype = {
 			  url += '&locale='+lang;
 			}
 
-			statusMessage("loading...");
+			statusMessage(ss.i18n._t('LOADING', 'loading...')); 
 			this.loadURLFromServer(url);
 		} else {
 			throw("getPageFromServer: Bad page ID: " + id);

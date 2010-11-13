@@ -29,7 +29,7 @@ function action_upload_right(e) {
 		}.bind(this));
 		
 		if(values.length == 0) {
-			alert("Please select at least one file for uploading");
+			alert(ss.i18n._t('TABLEFIELD.SELECTUPLOAD', 'Please select at least one file for uploading.')); 
 			openTab("Root_Upload");
 		} else {
 			frames['AssetAdmin_upload'].document.getElementById('Form_UploadForm').submit();
@@ -70,7 +70,7 @@ MarkingPropertiesButton.prototype = {
 		}
 		
 		if(list == "") {
-			alert(this.noneCheckedError);
+			alert(ss.i18n._t('TABLEFIELD.SELECTDELETE', 'Please select some files to delete!')); 
 			return false;
 			
 		} else {
@@ -79,7 +79,7 @@ MarkingPropertiesButton.prototype = {
 		// If there is a confirmation message, show it before submitting
 		if('' != this.confirmMessage) {
 			// Only submit if OK button is clicked
-			if (confirm(this.confirmMessage)) {
+			if (confirm(ss.i18n._t('TABLEFIELD.CONFIRMDELETEV2', 'Do you really want to delete the marked files?'))) { 
 				$('Form_EditForm').save(false, null, this.action);
 			}
 		} else {
@@ -293,7 +293,7 @@ addfolder.prototype = {
 	},
 	
 	onclick : function() {
-		statusMessage('Creating new folder...');
+		statusMessage(ss.i18n._t('CMSMAIN.CREATINGFOLDER', 'Creating new folder...')); 
 		this.form_submit();
 /*		
 			if(treeactions.toggleSelection(this)) {
@@ -424,7 +424,7 @@ var deletefolder = {
 		if(csvIDs) {
 			$('Form_DeleteItemsForm').elements.csvIDs.value = csvIDs;
 			
-			statusMessage('deleting pages');
+			statusMessage(ss.i18n._t('CMSMAIN.DELETINGFOLDERS', 'Deleting folders...')); 
 
 			Ajax.SubmitForm('Form_DeleteItemsForm', null, {
 				onSuccess : deletefolder.submit_success,

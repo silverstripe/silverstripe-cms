@@ -29,6 +29,13 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'WidgetAreaEditor.TOOMANY': 'Sorry, you have reached the maximum number of widgets in this area',
 		'CMSMAIN.RollbackConfirmation': 'Do you really want to roll back to version #%s of this page?',
 		'CMSMAIN.CopyPublishedConfirmation': 'Do you really want to copy the published content to the stage site?',
-		'CMSMAIN.PageTypeSaveAlert': 'The page type will be updated after the page is saved'
+		'CMSMAIN.PageTypeSaveAlert': 'The page type will be updated after the page is saved',
+		'LOADING': 'loading...',
+		'TABLEFIELD.DELETECONFIRMMESSAGEV2': '\nThere are %s page(s) that use this file, please review the list of pages on the Links tab of the file before continuing.',
+		'TABLEFIELD.SELECTUPLOAD': 'Please select at least one file for uploading.',
+		'TABLEFIELD.SELECTDELETE': 'Please select some files to delete!',
+		'TABLEFIELD.CONFIRMDELETEV2': 'Do you really want to delete the marked files?',
+		'CMSMAIN.CREATINGFOLDER': 'Creating new folder...',
+		'CMSMAIN.DELETINGFOLDERS': 'Deleting folders...'
 	});
 }

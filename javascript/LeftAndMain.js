@@ -384,7 +384,7 @@ function ajaxLink(href) {
  * Load a URL into the given form
  */
 function ajaxLoadPage() {
-	statusMessage('loading...', 2, true);
+	statusMessage(ss.i18n._t('LOADING', 'loading...'),2,true);
 	new Ajax.Request(this.URL + '&ajax=1', {
 		method : 'get',
 		onSuccess : ajaxLoadPage_success.bind(this)
