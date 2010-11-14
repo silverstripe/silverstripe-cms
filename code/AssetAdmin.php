@@ -629,7 +629,7 @@ JS;
 	/**
 	 * Delete a folder
 	 */
-	public function deletefolder($data, $ofmr) {
+	public function deletefolder($data, $form) {
 		$ids = split(' *, *', $_REQUEST['csvIDs']);
 		
 		if(!$ids) return false;
