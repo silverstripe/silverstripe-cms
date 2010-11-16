@@ -28,6 +28,7 @@ Deny from all
 # Replace the handler with the default plaintext handler
 AddHandler default-handler php phtml php3 php4 php5 inc
 
-# Turn the PHP engine off
-php_flag engine off
-
+<IfModule mod_php5.c>
+	# Turn the PHP engine off
+	php_flag engine off
+</IfModule>
