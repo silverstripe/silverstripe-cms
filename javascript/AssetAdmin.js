@@ -342,13 +342,25 @@ FilesystemSyncClass.prototype = {
 	
 	onclick : function() {
 		statusMessage('Looking for new files');
-        new Ajax.Request('admin/assets/sync', {
-            onSuccess: function(t) {
-                statusMessage(t.responseText, "good");
-            },
-            onFailure: function(t) {
-                errorMessage("There was an error looking for new files");
-            }
+		new Ajax.Request('admin/assets/sync', {
+			onSuccess: function(t) {
+				statusMessage(t.responseText, "good");
+				
+				// Refresh asset tree
+				new Ajax.Request('admin/assets/SitetreeAsUL', {
+					onSuccess: function(t) {
+						Element.replace($('sitetree'), t.responseText);
+						SiteTree.applyTo('#sitetree');
+						
+						// Reload the right panel
+						var sel = $('sitetree').firstSelected();
+						if(sel !== undefined) sel.selectTreeNode();
+					}
+				});
+         },
+			onFailure: function(t) {
+				errorMessage("There was an error looking for new files");
+			}
 		});
 		return false;
 	}

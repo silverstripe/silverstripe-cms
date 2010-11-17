@@ -38,7 +38,8 @@ class AssetAdmin extends LeftAndMain {
 		'sync',
 		'uploadiframe',
 		'UploadForm',
-		'deleteUnusedThumbnails' => 'ADMIN'
+		'deleteUnusedThumbnails' => 'ADMIN',
+		'SitetreeAsUL'
 	);
 	
 	/**
