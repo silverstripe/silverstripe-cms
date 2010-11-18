@@ -659,6 +659,8 @@ class InstallRequirements {
 	function testApacheRewriteExists($moduleName = 'mod_rewrite') {
 		if(function_exists('apache_get_modules') && in_array($moduleName, apache_get_modules())) {
 			return true;
+		} elseif(isset($_SERVER['HTTP_MOD_REWRITE']) && $_SERVER['HTTP_MOD_REWRITE'] == 'On') {
+			return true;
 		} else {
 			return false;
 		}
@@ -1224,17 +1226,19 @@ TEXT;
 						window.location = "home/successfullyinstalled?flush=1";
 					}, 2000);
 				} else {
-					$('#ModRewriteResult').html("Friendly URLs are not working.  This is most likely because a rewrite module isn't configured"
-						+ "correctly on your site.  Please check the following things in your Apache configuration; "
-						+ " you may need to get your web host or server administrator to do this for you:"
-						+ "<ul><li>mod_rewrite is enabled</li><li>AllowOverride All is set for your directory</li></ul>");
+					$('#ModRewriteResult').html("Friendly URLs are not working. This is most likely because a rewrite module isn't configured "
+						+ "correctly on your site. You may need to get your web host or server administrator to do this for you: "
+						+ "<ul>"
+						+ "<li><strong>mod_rewrite</strong> or other rewrite module is enabled on your web server</li>"
+						+ "<li><strong>AllowOverride All</strong> is set for the directory where SilverStripe is installed</li>"
+						+ "</ul>");
 				}
 			}
 		});
 	}
 </script>
 <noscript>
-<li><a href="home/successfullyinstalled?flush=1">Click here to check friendly URLs are working.  If you get a 404 then something is wrong.</li>
+	<li><a href="home/successfullyinstalled?flush=1">Click here</a> to check friendly URLs are working. If you get a 404 then something is wrong.</li>
 </noscript>
 HTML;
 	}
