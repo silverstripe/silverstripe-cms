@@ -338,7 +338,7 @@ class InstallRequirements {
 		$this->requireWriteable('mysite/_config.php', array("File permissions", "Is the mysite/_config.php file writeable?", null));
 		$this->requireWriteable('assets', array("File permissions", "Is the assets/ folder writeable?", null));
 		
-		$this->requireTempFolder(array('File permissions', 'Is the temporary directory writeable?', null));
+		$this->requireTempFolder(array('File permissions', 'Is the temporary directory writeable?', null, $this->getTempFolder()));
 		
 		$this->isRunningWebServer(array("Webserver Configuration", "Server software", "Unknown", $webserver));
 		
@@ -612,39 +612,51 @@ class InstallRequirements {
 			$this->error($testDetails);
 		}
 	}
-	
+
+	function getTempFolder() {
+		if(file_exists($this->getBaseDir() . 'silverstripe-cache')) {
+			$sysTmp = $this->getBaseDir();
+		} elseif(function_exists('sys_get_temp_dir')) {
+			$sysTmp = sys_get_temp_dir();
+		} elseif(isset($_ENV['TMP'])) {
+			$sysTmp = $_ENV['TMP'];
+		} else {
+			@$tmpFile = tempnam('adfadsfdas', '');
+			@unlink($tmpFile);
+			$sysTmp = dirname($tmpFile);
+		}
+
+	    $worked = true;
+	    $ssTmp = $sysTmp . DIRECTORY_SEPARATOR . 'silverstripe-cache';
+
+		if(!@file_exists($ssTmp)) {
+			@$worked = mkdir($ssTmp);
+
+			if(!$worked) {
+				$ssTmp = dirname($_SERVER['SCRIPT_FILENAME']) . DIRECTORY_SEPARATOR . 'silverstripe-cache';
+				$worked = true;
+				if(!@file_exists($ssTmp)) {
+					@$worked = mkdir($ssTmp);
+				}
+			}
+		}
+
+		if($worked) return $ssTmp;
+		else return false;
+	}
+
 	function requireTempFolder($testDetails) {
 		$this->testing($testDetails);
-		
-		if(function_exists('sys_get_temp_dir')) {
-	        $sysTmp = sys_get_temp_dir();
-	    } elseif(isset($_ENV['TMP'])) {
-			$sysTmp = $_ENV['TMP'];    	
-	    } else {
-	        @$tmpFile = tempnam('adfadsfdas','');
-	        @unlink($tmpFile);
-	        $sysTmp = dirname($tmpFile);
-	    }
-	    
-	    $worked = true;
-	    $ssTmp = "$sysTmp/silverstripe-cache";
-	    
-	    if(!@file_exists($ssTmp)) {
-	    	@$worked = mkdir($ssTmp);
-	    	
-	    	if(!$worked) {
-		    	$ssTmp = dirname($_SERVER['SCRIPT_FILENAME']) . "/silverstripe-cache";
-		    	$worked = true;
-		    	if(!@file_exists($ssTmp)) {
-		    		@$worked = mkdir($ssTmp);
-		    	}
-		    	if(!$worked) {
-		    		$testDetails[2] = "Permission problem gaining access to a temp directory. " .
-		    			"Please create a folder named silverstripe-cache in the base directory "  .
-		    			"of the installation and ensure it has the adequate permissions";
-		    		$this->error($testDetails);
-		    	}
-		    }
+
+		$tempFolder = $this->getTempFolder();
+		if(!$tempFolder) {
+			$testDetails[2] = "Permission problem gaining access to a temp directory. " .
+				"Please create a folder named silverstripe-cache in the base directory " .
+				"of the installation and ensure it has the adequate permissions";
+			$this->error($testDetails);
+	    } elseif(!is_writable($tempFolder)) {
+			$testDetails[2] = "$tempFolder is not writable by the webserver. Please ensure appropriate permissions have been set";
+			$this->error($testDetails);
 		}
 	}
 	
