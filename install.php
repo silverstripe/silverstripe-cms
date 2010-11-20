@@ -342,7 +342,7 @@ class InstallRequirements {
 		$this->requireTempFolder(array('File permissions', 'Is a temporary directory available?', null, $tempFolder));
 		if($tempFolder) {
 			// in addition to the temp folder being available, check it is writable
-			$this->requireWriteable($tempFolder, array("File permissions", sprintf("Is the temporary directory writeable?", $this->getTempFolder()), null), true);
+			$this->requireWriteable($tempFolder, array("File permissions", sprintf("Is the temporary directory writeable?", $tempFolder), null), true);
 		}
 
 		$this->isRunningWebServer(array("Webserver Configuration", "Server software", "Unknown", $webserver));
