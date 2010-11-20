@@ -336,10 +336,15 @@ class InstallRequirements {
 		}
 		
 		$this->requireWriteable('mysite/_config.php', array("File permissions", "Is the mysite/_config.php file writeable?", null));
-		$this->requireWriteable('assets', array("File permissions", "Is the assets/ folder writeable?", null));
+		$this->requireWriteable('assets', array("File permissions", "Is the assets/ directory writeable?", null));
 		
-		$this->requireTempFolder(array('File permissions', 'Is the temporary directory writeable?', null, $this->getTempFolder()));
-		
+		$tempFolder = $this->getTempFolder();
+		$this->requireTempFolder(array('File permissions', 'Is a temporary directory available?', null, $tempFolder));
+		if($tempFolder) {
+			// in addition to the temp folder being available, check it is writable
+			$this->requireWriteable($tempFolder, array("File permissions", sprintf("Is the temporary directory writeable?", $this->getTempFolder()), null), true);
+		}
+
 		$this->isRunningWebServer(array("Webserver Configuration", "Server software", "Unknown", $webserver));
 		
 		if($isApache) {
@@ -571,9 +576,14 @@ class InstallRequirements {
 		}
 	}
 	
-	function requireWriteable($filename, $testDetails) {
+	function requireWriteable($filename, $testDetails, $absolute = false) {
 		$this->testing($testDetails);
-		$filename = $this->getBaseDir() . str_replace("/", DIRECTORY_SEPARATOR,$filename);
+
+		if($absolute) {
+			$filename = str_replace('/', DIRECTORY_SEPARATOR, $filename);
+		} else {
+			$filename = $this->getBaseDir() . str_replace('/', DIRECTORY_SEPARATOR, $filename);
+		}
 		
 		if(file_exists($filename)) $isWriteable = is_writeable($filename);
 		else $isWriteable = is_writeable(dirname($filename));
@@ -654,10 +664,7 @@ class InstallRequirements {
 				"Please create a folder named silverstripe-cache in the base directory " .
 				"of the installation and ensure it has the adequate permissions";
 			$this->error($testDetails);
-	    } elseif(!is_writable($tempFolder)) {
-			$testDetails[2] = "$tempFolder is not writable by the webserver. Please ensure appropriate permissions have been set";
-			$this->error($testDetails);
-		}
+	    }
 	}
 	
 	function requireApacheModule($moduleName, $testDetails) {
