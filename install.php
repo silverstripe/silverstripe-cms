@@ -603,6 +603,7 @@ class InstallRequirements {
 				} else {
 					
 					$groups = posix_getgroups();
+					$groupList = array();
 					foreach($groups as $group) {
 						$groupInfo = posix_getgrgid($group);
 						if(in_array($currentOwner['name'], $groupInfo['members'])) $groupList[] = $groupInfo['name'];
