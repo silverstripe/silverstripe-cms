@@ -325,9 +325,9 @@ class InstallRequirements {
 			$this->getBaseDir()
 		));
 		
-		$this->requireFile('mysite', array("File permissions", "mysite/ folder exists?", "There's no mysite folder."));
-		$this->requireFile('sapphire', array("File permissions", "sapphire/ folder exists?", "There's no sapphire folder."));
-		$this->requireFile('cms', array("File permissions", "cms/ folder exists?", "There's no cms folder."));
+		$this->requireModule('mysite', array("File permissions", "mysite/ directory exists?"));
+		$this->requireModule('sapphire', array("File permissions", "sapphire/ directory exists?"));
+		$this->requireModule('cms', array("File permissions", "cms/ directory exists?"));
 		
 		if($isApache) {
 			$this->requireWriteable('.htaccess', array("File permissions", "Is the .htaccess file writeable?", null));
@@ -338,7 +338,7 @@ class InstallRequirements {
 		$this->requireWriteable('mysite/_config.php', array("File permissions", "Is the mysite/_config.php file writeable?", null));
 		$this->requireWriteable('assets', array("File permissions", "Is the assets/ folder writeable?", null));
 		
-		$this->requireTempFolder(array('File permissions', 'Is the temporary folder writeable?', null));
+		$this->requireTempFolder(array('File permissions', 'Is the temporary directory writeable?', null));
 		
 		$this->isRunningWebServer(array("Webserver Configuration", "Server software", "Unknown", $webserver));
 		
@@ -545,7 +545,23 @@ class InstallRequirements {
 		
 		return true;
 	}
-	
+
+	/**
+	 * The same as {@link requireFile()} but does additional checks
+	 * to ensure the module directory is intact.
+	 */
+	function requireModule($dirname, $testDetails) {
+		$this->testing($testDetails);
+		$path = $this->getBaseDir() . $dirname;
+		if(!file_exists($path)) {
+			$testDetails[2] .= " Directory '$path' not found. Please make sure you have uploaded the SilverStripe files to your webserver correctly.";
+			$this->error($testDetails);
+		} elseif(!file_exists($path . '/_config.php')) {
+			$testDetails[2] .= " Directory '$path' exists, but is missing files. Please make sure you have uploaded the SilverStripe files to your webserver correctly.";
+			$this->error($testDetails);
+		}
+	}
+
 	function requireFile($filename, $testDetails) {
 		$this->testing($testDetails);
 		$filename = $this->getBaseDir() . $filename;
@@ -623,8 +639,8 @@ class InstallRequirements {
 		    		@$worked = mkdir($ssTmp);
 		    	}
 		    	if(!$worked) {
-		    		$testDetails[2] = "Permission problem gaining access to a temp folder. " .
-		    			"Please create a folder named silverstripe-cache in the base folder "  .
+		    		$testDetails[2] = "Permission problem gaining access to a temp directory. " .
+		    			"Please create a folder named silverstripe-cache in the base directory "  .
 		    			"of the installation and ensure it has the adequate permissions";
 		    		$this->error($testDetails);
 		    	}
