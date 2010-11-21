@@ -336,9 +336,9 @@ class InstallRequirements {
 			$this->getBaseDir()
 		));
 		
-		$this->requireFile('mysite', array("File permissions", "mysite/ folder exists?", "There's no mysite folder."));
-		$this->requireFile('sapphire', array("File permissions", "sapphire/ folder exists?", "There's no sapphire folder."));
-		$this->requireFile('cms', array("File permissions", "cms/ folder exists?", "There's no cms folder."));
+		$this->requireModule('mysite', array("File permissions", "mysite/ directory exists?"));
+		$this->requireModule('sapphire', array("File permissions", "sapphire/ directory exists?"));
+		$this->requireModule('cms', array("File permissions", "cms/ directory exists?"));
 		
 		if($isApache) {
 			$this->requireWriteable('.htaccess', array("File permissions", "Is the .htaccess file writeable?", null));
@@ -347,10 +347,15 @@ class InstallRequirements {
 		}
 		
 		$this->requireWriteable('mysite/_config.php', array("File permissions", "Is the mysite/_config.php file writeable?", null));
-		$this->requireWriteable('assets', array("File permissions", "Is the assets/ folder writeable?", null));
+		$this->requireWriteable('assets', array("File permissions", "Is the assets/ directory writeable?", null));
 		
-		$this->requireTempFolder(array('File permissions', 'Is the temporary folder writeable?', null));
-		
+		$tempFolder = $this->getTempFolder();
+		$this->requireTempFolder(array('File permissions', 'Is a temporary directory available?', null, $tempFolder));
+		if($tempFolder) {
+			// in addition to the temp folder being available, check it is writable
+			$this->requireWriteable($tempFolder, array("File permissions", sprintf("Is the temporary directory writeable?", $tempFolder), null), true);
+		}
+
 		// Check for web server, unless we're calling the installer from the command-line
 		if(!isset($_SERVER['argv']) || !$_SERVER['argv']) {
 			$this->isRunningWebServer(array("Webserver Configuration", "Server software", "Unknown", $webserver));
@@ -559,7 +564,23 @@ class InstallRequirements {
 		
 		return true;
 	}
-	
+
+	/**
+	 * The same as {@link requireFile()} but does additional checks
+	 * to ensure the module directory is intact.
+	 */
+	function requireModule($dirname, $testDetails) {
+		$this->testing($testDetails);
+		$path = $this->getBaseDir() . $dirname;
+		if(!file_exists($path)) {
+			$testDetails[2] .= " Directory '$path' not found. Please make sure you have uploaded the SilverStripe files to your webserver correctly.";
+			$this->error($testDetails);
+		} elseif(!file_exists($path . '/_config.php')) {
+			$testDetails[2] .= " Directory '$path' exists, but is missing files. Please make sure you have uploaded the SilverStripe files to your webserver correctly.";
+			$this->error($testDetails);
+		}
+	}
+
 	function requireFile($filename, $testDetails) {
 		$this->testing($testDetails);
 		$filename = $this->getBaseDir() . $filename;
@@ -569,9 +590,14 @@ class InstallRequirements {
 		}
 	}
 	
-	function requireWriteable($filename, $testDetails) {
+	function requireWriteable($filename, $testDetails, $absolute = false) {
 		$this->testing($testDetails);
-		$filename = $this->getBaseDir() . str_replace("/", DIRECTORY_SEPARATOR,$filename);
+
+		if($absolute) {
+			$filename = str_replace('/', DIRECTORY_SEPARATOR, $filename);
+		} else {
+			$filename = $this->getBaseDir() . str_replace('/', DIRECTORY_SEPARATOR, $filename);
+		}
 		
 		if(file_exists($filename)) $isWriteable = is_writeable($filename);
 		else $isWriteable = is_writeable(dirname($filename));
@@ -591,6 +617,7 @@ class InstallRequirements {
 				} else {
 					
 					$groups = posix_getgroups();
+					$groupList = array();
 					foreach($groups as $group) {
 						$groupInfo = posix_getgrgid($group);
 						if(in_array($currentOwner['name'], $groupInfo['members'])) $groupList[] = $groupInfo['name'];
@@ -610,40 +637,49 @@ class InstallRequirements {
 			$this->error($testDetails);
 		}
 	}
-	
+
+	function getTempFolder() {
+		if(file_exists($this->getBaseDir() . 'silverstripe-cache')) {
+			$sysTmp = $this->getBaseDir();
+		} elseif(function_exists('sys_get_temp_dir')) {
+			$sysTmp = sys_get_temp_dir();
+		} elseif(isset($_ENV['TMP'])) {
+			$sysTmp = $_ENV['TMP'];
+		} else {
+			@$tmpFile = tempnam('adfadsfdas', '');
+			@unlink($tmpFile);
+			$sysTmp = dirname($tmpFile);
+		}
+
+	    $worked = true;
+	    $ssTmp = $sysTmp . DIRECTORY_SEPARATOR . 'silverstripe-cache';
+
+		if(!@file_exists($ssTmp)) {
+			@$worked = mkdir($ssTmp);
+
+			if(!$worked) {
+				$ssTmp = dirname($_SERVER['SCRIPT_FILENAME']) . DIRECTORY_SEPARATOR . 'silverstripe-cache';
+				$worked = true;
+				if(!@file_exists($ssTmp)) {
+					@$worked = mkdir($ssTmp);
+				}
+			}
+		}
+
+		if($worked) return $ssTmp;
+		else return false;
+	}
+
 	function requireTempFolder($testDetails) {
 		$this->testing($testDetails);
-		
-		if(function_exists('sys_get_temp_dir')) {
-	        $sysTmp = sys_get_temp_dir();
-	    } elseif(isset($_ENV['TMP'])) {
-			$sysTmp = $_ENV['TMP'];    	
-	    } else {
-	        @$tmpFile = tempnam('adfadsfdas','');
-	        @unlink($tmpFile);
-	        $sysTmp = dirname($tmpFile);
+
+		$tempFolder = $this->getTempFolder();
+		if(!$tempFolder) {
+			$testDetails[2] = "Permission problem gaining access to a temp directory. " .
+				"Please create a folder named silverstripe-cache in the base directory " .
+				"of the installation and ensure it has the adequate permissions";
+			$this->error($testDetails);
 	    }
-	    
-	    $worked = true;
-	    $ssTmp = "$sysTmp/silverstripe-cache";
-	    
-	    if(!@file_exists($ssTmp)) {
-	    	@$worked = mkdir($ssTmp);
-	    	
-	    	if(!$worked) {
-		    	$ssTmp = dirname($_SERVER['SCRIPT_FILENAME']) . "/silverstripe-cache";
-		    	$worked = true;
-		    	if(!@file_exists($ssTmp)) {
-		    		@$worked = mkdir($ssTmp);
-		    	}
-		    	if(!$worked) {
-		    		$testDetails[2] = "Permission problem gaining access to a temp folder. " .
-		    			"Please create a folder named silverstripe-cache in the base folder "  .
-		    			"of the installation and ensure it has the adequate permissions";
-		    		$this->error($testDetails);
-		    	}
-		    }
-		}
 	}
 	
 	function requireApacheModule($moduleName, $testDetails) {
@@ -1143,6 +1179,7 @@ ErrorDocument 500 /assets/error-500.html
 </IfModule>
 
 <IfModule mod_rewrite.c>
+	SetEnv HTTP_MOD_REWRITE On
 	RewriteEngine On
 	$baseClause
 	RewriteCond %{REQUEST_URI} ^(.*)$
