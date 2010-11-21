@@ -1160,6 +1160,7 @@ ErrorDocument 500 /assets/error-500.html
 </IfModule>
 
 <IfModule mod_rewrite.c>
+	SetEnv HTTP_MOD_REWRITE On
 	RewriteEngine On
 	$baseClause
 	RewriteCond %{REQUEST_URI} ^(.*)$
