@@ -10,6 +10,7 @@ var siteTreeAccessHandler = function(canField, groupsField) {
 		},
 		onclick: function() {
 			$(groupsField).style.display = (this.value == 'OnlyTheseUsers') ? 'block' : 'none';
+			$(groupsField).style.visibility = (this.value == 'OnlyTheseUsers') ? 'visible' : 'hidden';
 		}
 	}
 	return output;
