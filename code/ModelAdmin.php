@@ -913,14 +913,15 @@ class ModelAdmin_RecordController extends Controller {
 	function edit($request) {
 		if ($this->currentRecord) {
 			if($this->isAjax()) {
-				return new SS_HTTPResponse(
-					$this->EditForm()->formHtmlContent(), 
+				$this->response->setBody($this->EditForm()->formHtmlContent());
+				$this->response->setStatusCode(
 					200, 
 					sprintf(
 						_t('ModelAdmin.LOADEDFOREDITING', "Loaded '%s' for editing."),
 						$this->currentRecord->Title
 					)
 				);
+				return $this->response;
 			} else {
 				// This is really quite ugly; to fix will require a change in the way that customise() works. :-(
 				return $this->parentController->parentController->customise(array(
@@ -928,7 +929,6 @@ class ModelAdmin_RecordController extends Controller {
 						'EditForm' => $this->EditForm()
 					))->renderWith(array("{$this->class}_right",'LeftAndMain_right'))
 				))->renderWith(array('ModelAdmin','LeftAndMain'));
-				return ;
 			}
 		} else {
 			return _t('ModelAdmin.ITEMNOTFOUND', "I can't find that item");
