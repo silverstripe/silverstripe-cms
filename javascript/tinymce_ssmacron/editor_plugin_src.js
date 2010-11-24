@@ -2,7 +2,9 @@
 	var each = tinymce.each;
 
 	/**
-	 * Load via: HtmlEditorConfig::get('cms')->enablePlugins(array('ssmacron', '../../../../cms/javascript/tinymce_ssmacron'))
+	 * Load via: 
+	 * HtmlEditorConfig::get('cms')->enablePlugins(array('ssmacron', '../../../../cms/javascript/tinymce_ssmacron'))
+	 * HtmlEditorConfig::get('cms')->insertButtonsAfter ('advcode', 'ssmacron');
 	 */
 	tinymce.create('tinymce.plugins.InsertMacron', {
 		getInfo : function() {
@@ -35,6 +37,7 @@
 	        cmd : 'mceInsertMacron',
 	        image : url + '/img/macron.png'
 	      });
+	      
 		}
 	});
 
