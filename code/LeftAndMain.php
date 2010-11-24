@@ -1211,8 +1211,16 @@ class LeftAndMain extends Controller {
 		return self::$loading_image;
 	}
 	
+	/**
+	 * Combines an optional background image and additional CSS styles,
+	 * set through {@link setLogo()}.
+	 * 
+	 * @return String CSS attribute
+	 */
 	function LogoStyle() {
-		return "background: url(" . self::$application_logo . ") no-repeat; " . self::$application_logo_style;
+		$attr = self::$application_logo_style;
+		if(self::$application_logo) $attr .= "background: url(" . self::$application_logo . ") no-repeat; ";
+		return $attr;
 	}
 
 	/**
