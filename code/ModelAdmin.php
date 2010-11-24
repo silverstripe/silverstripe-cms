@@ -947,13 +947,17 @@ class ModelAdmin_RecordController extends Controller {
 		
 		$actions = $this->currentRecord->getCMSActions();
 		if($this->currentRecord->canEdit(Member::currentUser())){
-			$actions->push(new FormAction("doSave", _t('ModelAdmin.SAVE', "Save")));
+			if(!$actions->fieldByName('action_doSave') && !$actions->fieldByName('action_save')) {
+				$actions->push(new FormAction("doSave", _t('ModelAdmin.SAVE', "Save")));
+			}
 		}else{
 			$fields = $fields->makeReadonly();
 		}
 		
 		if($this->currentRecord->canDelete(Member::currentUser())) {
-			$actions->insertFirst($deleteAction = new FormAction('doDelete', _t('ModelAdmin.DELETE', 'Delete')));
+			if(!$actions->fieldByName('action_doDelete')) {
+				$actions->insertFirst($deleteAction = new FormAction('doDelete', _t('ModelAdmin.DELETE', 'Delete')));
+			}
 			$deleteAction->addExtraClass('delete');
 		}
 
