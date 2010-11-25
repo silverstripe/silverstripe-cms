@@ -254,7 +254,8 @@ class PageCommentInterface extends RequestHandler {
 	 */
 	function DeleteAllLink() {
 		if(Permission::check('CMS_ACCESS_CommentAdmin')) {
-			return Director::absoluteBaseURL() . "PageComment/deleteallcomments?pageid=" . $this->page->ID;
+			$token = SecurityToken::inst();
+			return $token->addToUrl(Director::absoluteBaseURL() . "PageComment/deleteallcomments?pageid=" . $this->page->ID);
 		}
 	}
 	
