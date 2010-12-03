@@ -200,12 +200,6 @@ JS
 			}
 		
 			if($tmpFile['tmp_name']) {
-				// Workaround open_basedir problems
-				if(ini_get("open_basedir")) {
-					$newtmp = TEMP_FOLDER . '/' . $tmpFile['name'];
-					move_uploaded_file($tmpFile['tmp_name'], $newtmp);
-					$tmpFile['tmp_name'] = $newtmp;
-				}
 				
 				// validate files (only if not logged in as admin)
 				if(!File::$apply_restrictions_to_admin && Permission::check('ADMIN')) {
