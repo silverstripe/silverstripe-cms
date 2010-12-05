@@ -391,7 +391,11 @@ class InstallRequirements {
 		
 		// Check for hash support
 		$this->requireFunction('hash', array('PHP Configuration', 'hash support', 'hash support not included in PHP.'));
-		
+
+		if(version_compare(PHP_VERSION, '5.3.0', '>=')) {
+			$this->requireDateTimezone(array('PHP Configuration', 'date.timezone set and valid', 'date.timezone option in php.ini must be set in PHP 5.3.0+', ini_get('date.timezone')));
+		}
+
 		// Check memory allocation
 		$this->requireMemory(32*1024*1024, 64*1024*1024, array("PHP Configuration", "Memory allocated (PHP config option 'memory_limit')", "SilverStripe needs a minimum of 32M allocated to PHP, but recommends 64M.", ini_get("memory_limit")));
 			
@@ -407,7 +411,15 @@ class InstallRequirements {
 			$this->warning($testDetails);
 		}
 	}
-	
+
+	function requireDateTimezone($testDetails) {
+		$this->testing($testDetails);
+		$result = ini_get('date.timezone') && in_array(ini_get('date.timezone'), timezone_identifiers_list());
+		if(!$result) {
+			$this->error($testDetails);
+		}
+	}
+
 	function requireMemory($min, $recommended, $testDetails) {
 		$_SESSION['forcemem'] = false;
 		
