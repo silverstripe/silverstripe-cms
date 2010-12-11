@@ -62,22 +62,6 @@ SiteConfig_CreateTopLevelGroups:
    createtoplevelgroups1:
       SiteConfigID:  =>SiteConfig.siteconfig1
       GroupID: =>Group.rooteditusers
-PageComment:
-    Comment1:
-        Name: Person
-        Comment: Very cool page
-        NeedsModeration: 1
-        EmailAddress: person@server.com
-    Comment2:
-        Name: Someone
-        Comment: I am a person
-        NeedsModeration: 0
-        EmailAddress: someone@somewhere.com
-    Comment3:
-        Name: Me
-        Comment: I like this comment
-        NeedsModeration: 1
-        EmailAddress: me@test.co.nz
 RedirectorPage:
    page5:
       Title: Page 5

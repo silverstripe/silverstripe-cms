@@ -10,7 +10,6 @@ Director::addRules(50, array(
 	'admin/help//$Action/$ID' => 'CMSHelp',
 	'admin/bulkload//$Action/$ID/$OtherID' => 'BulkLoaderAdmin',
 	'admin/cms//$Action/$ID/$OtherID' => 'CMSMain', 
-	'PageComment//$Action/$ID' => 'PageComment_Controller',
 	'dev/buildcache/$Action' => 'RebuildStaticCacheTask',
 ));
 
