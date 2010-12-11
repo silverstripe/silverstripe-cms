@@ -366,7 +366,7 @@ ul.tree span.untranslated a:visited {
 
 #right del, #right del *{
 	background-color: #FF9999;
-	text-decoration: strikethough;
+	text-decoration: line-through;
 }
 
 #sitetree a.contents {
