@@ -382,6 +382,8 @@ class InstallRequirements {
 			$this->requireDateTimezone(array('PHP Configuration', 'date.timezone set and valid', 'date.timezone option in php.ini must be set in PHP 5.3.0+', ini_get('date.timezone')));
 		}
 
+		$this->suggestPHPSetting('asp_tags', array(''), array('PHP Configuration', 'asp_tags option turned off', 'This should be turned off as it can cause issues with SilverStripe'));
+
 		// Check memory allocation
 		$this->requireMemory(32*1024*1024, 64*1024*1024, array("PHP Configuration", "Memory allocated (PHP config option 'memory_limit')", "SilverStripe needs a minimum of 32M allocated to PHP, but recommends 64M.", ini_get("memory_limit")));
 			
