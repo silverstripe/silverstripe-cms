@@ -87,7 +87,7 @@ class LeftAndMainTest extends FunctionalTest {
 		// all cms sections user
 		$this->session()->inst_set('loggedInAs', $allcmssectionsuser->ID);
 		$menuItems = singleton('LeftAndMain')->MainMenu();
-		$requiredSections = array('CMSMain','AssetAdmin','CommentAdmin','SecurityAdmin','Help');
+		$requiredSections = array('CMSMain','AssetAdmin','SecurityAdmin','Help');
 		$this->assertEquals(
 			array_diff($requiredSections, $menuItems->column('Code')),
 			array(),
