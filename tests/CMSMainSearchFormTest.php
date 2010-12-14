@@ -11,7 +11,7 @@ class CMSMainSearchTreeFormTest extends FunctionalTest {
 		$response = $this->get(
 			'admin/SearchTreeForm/?' .
 			http_build_query(array(
-				'Title' => 'Page 1',
+				'Title' => 'Page 10',
 				'FilterClass' => 'CMSSiteTreeFilter_Search',
 				'action_doSearchTree' => true
 			))
