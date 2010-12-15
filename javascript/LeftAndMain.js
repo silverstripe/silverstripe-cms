@@ -390,7 +390,7 @@ var ss_MainLayout;
 			onmatch: function() {
 				this._super();
 				
-				$('#Form_EditForm').bind('load delete', function(e) {
+				$('#Form_EditForm').bind('loadnewpage delete', function(e) {
 					var updatedSwitchView = $('#AjaxSwitchView');
 					if(updatedSwitchView.length) {
 						$('#SwitchView').html(updatedSwitchView.html());
