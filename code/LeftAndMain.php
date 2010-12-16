@@ -109,7 +109,8 @@ class LeftAndMain extends Controller {
 	 */
 	function init() {
 		parent::init();
-		
+var_dump('init');		
+var_dump($this->request);
 		SSViewer::setOption('rewriteHashlinks', false);
 		
 		// set language
@@ -1002,6 +1003,7 @@ class LeftAndMain extends Controller {
 	 * @return int 
 	 */
 	public function currentPageID() {
+		if(!$this->request) SS_Backtrace::backtrace();
 		if($this->request->getVar('ID'))	{
 			return $this->request->getVar('ID');
 		} elseif ($this->request->param('ID') && is_numeric($this->request->param('ID'))) {

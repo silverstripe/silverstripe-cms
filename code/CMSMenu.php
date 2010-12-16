@@ -206,7 +206,13 @@ class CMSMenu extends Object implements IteratorAggregate, i18nEntityProvider
 		if($allMenuItems) foreach($allMenuItems as $code => $menuItem) {
 			// exclude all items which have a controller to perform permission
 			// checks on
-			if($menuItem->controller && !singleton($menuItem->controller)->canView($member)) continue;
+			if($menuItem->controller) {
+				$controllerObj = singleton($menuItem->controller);
+				// Necessary for canView() to have request data available,
+				// e.g. to check permissions against LeftAndMain->currentPage()
+				$controllerObj->setRequest(Controller::curr()->getRequest());
+				if(!$controllerObj->canView($member)) continue;
+			}
 			
 			$viewableMenuItems[$code] = $menuItem;
 		}
