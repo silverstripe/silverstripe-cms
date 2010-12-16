@@ -64,10 +64,13 @@ abstract class CMSBatchAction extends Object {
 			unset($page);
 		}
 
-		Controller::curr()->getResponse()->setStatusCode(
-			200, 
-			sprintf($successMessage, $pages->Count(), count($status['error']))
-		);
+		$response = Controller::curr()->getResponse();
+		if($response) {
+			$response->setStatusCode(
+				200, 
+				sprintf($successMessage, $pages->Count(), count($status['error']))
+			);
+		}
 
 		return Convert::raw2json($status);
 	}
