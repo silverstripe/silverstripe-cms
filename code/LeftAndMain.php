@@ -1198,7 +1198,12 @@ class LeftAndMain extends Controller {
 		self::$application_logo_text = '';
 	}
 	
-	protected static $loading_image = 'cms/images/loading.gif';
+	/**
+	 * The height of the image should be around 164px to avoid the overlaping between the image and loading animation graphic.
+	 * If the given image's height is significantly larger or smaller, adjust the loading animation's top offset in 
+	 * positionLoadingSpinner() in LeftAndMain.js
+	 */
+	protected static $loading_image = 'cms/images/logo.gif';
 	
 	/**
 	 * Set the image shown when the CMS is loading.

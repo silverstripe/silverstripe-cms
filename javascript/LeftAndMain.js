@@ -10,6 +10,20 @@ var ss_MainLayout;
 
 (function($) {
 	$.entwine('ss', function($){
+		
+		$('.nojs-warning').hide();
+		
+		/**
+		 * Position the loading spinner animation below the ss logo
+		 */ 
+		var positionLoadingSpinner = function() {
+			var offset = 120; // offset from the ss logo
+			var spinner = $('.ss-loading-screen .loading-animation'); 
+			var top = ($(window).height() - spinner.height()) / 2;
+			spinner.css('top', top + offset);
+			spinner.show();
+		}
+		$(window).bind('resize', positionLoadingSpinner).trigger('resize');
 	
 		// setup jquery.entwine
 		$.entwine.warningLevel = $.entwine.WARN_LEVEL_BESTPRACTISE;
@@ -54,6 +68,7 @@ var ss_MainLayout;
 				// Remove loading screen
 				$('.ss-loading-screen').hide();
 				$('body').removeClass('stillLoading');
+				$(window).unbind('resize', positionLoadingSpinner);
 
 				// Layout
 				ss_MainLayout = this._setupLayout();

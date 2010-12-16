@@ -9,7 +9,12 @@
 </head>
 
 <body class="stillLoading $CSSClasses">
-	<div class="ss-loading-screen" style="background: #FFF url($LoadingImage) 50% 50% no-repeat; position: absolute;z-index: 100000;height: 100%;width: 100%;margin: 0;padding: 0;z-index: 100000;position: absolute;"><% _t('LOADING','Loading...',PR_HIGH) %><noscript><p class="message notice"><% _t('REQUIREJS','The CMS requires that you have JavaScript enabled.',PR_HIGH) %></p></noscript></div>
+	<div class="ss-loading-screen">
+		<div class="loading-logo" style="background-image: url($LoadingImage);">
+			<img class="loading-animation" src="cms/images/spinner.gif" alt="<% _t('LOADING','Loading...',PR_HIGH) %>" />
+			<p class="nojs-warning"><span class="message notice"><% _t('REQUIREJS','The CMS requires that you have JavaScript enabled.',PR_HIGH) %></span></p>
+		</div>
+	</div>
 	
 	<div class="ui-layout-north ss-cms-top-menu">
 		$CMSTopMenu
