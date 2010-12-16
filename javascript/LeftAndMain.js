@@ -10,9 +10,6 @@ var ss_MainLayout;
 
 (function($) {
 	$.entwine('ss', function($){
-		
-		$('.nojs-warning').hide();
-		
 		/**
 		 * Position the loading spinner animation below the ss logo
 		 */ 
