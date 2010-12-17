@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Special request handler for admin/batchaction
  *  
@@ -6,6 +7,7 @@
  * @subpackage batchaction
  */
 class CMSBatchActionHandler extends RequestHandler {
+	
 	static $batch_actions = array();
 	
 	static $url_handlers = array(
@@ -80,6 +82,8 @@ class CMSBatchActionHandler extends RequestHandler {
 		foreach($ids as $k => $v) if(!is_numeric($v)) unset($ids[$k]);
 		
 		if($ids) {
+			if(Object::has_extension('SiteTree','Translatable')) Translatable::disable_locale_filter();
+			
 			$pages = DataObject::get(
 				$this->recordClass, 
 				sprintf(
@@ -88,6 +92,8 @@ class CMSBatchActionHandler extends RequestHandler {
 					implode(", ", $ids)
 				)
 			);
+			
+			if(Object::has_extension('SiteTree','Translatable')) Translatable::enable_locale_filter();
 			
 			if(Object::has_extension($this->recordClass, 'Versioned')) {
 				// If we didn't query all the pages, then find the rest on the live site
