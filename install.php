@@ -575,7 +575,7 @@ class InstallRequirements {
 		if(!file_exists($path)) {
 			$testDetails[2] .= " Directory '$path' not found. Please make sure you have uploaded the SilverStripe files to your webserver correctly.";
 			$this->error($testDetails);
-		} elseif(!file_exists($path . '/_config.php')) {
+		} elseif(!file_exists($path . '/_config.php') && $dirname != 'mysite') {
 			$testDetails[2] .= " Directory '$path' exists, but is missing files. Please make sure you have uploaded the SilverStripe files to your webserver correctly.";
 			$this->error($testDetails);
 		}
