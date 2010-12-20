@@ -45,8 +45,6 @@ class AssetAdmin extends LeftAndMain {
 		'getsubtree',
 		'movemarked',
 		'removefile',
-		'save',
-		'savefile',
 		'uploadiframe',
 		'UploadForm',
 		'deleteUnusedThumbnails' => 'ADMIN'
