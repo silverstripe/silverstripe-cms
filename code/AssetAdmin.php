@@ -23,10 +23,8 @@ class AssetAdmin extends LeftAndMain {
 	public static $allowed_max_file_size;
 	
 	static $allowed_actions = array(
-		'deleteUnusedThumbnails',
 		'doUpload',
 		'getsubtree',
-		'save',
 		'uploadiframe',
 		'UploadForm',
 		'deleteUnusedThumbnails' => 'ADMIN',

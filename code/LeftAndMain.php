@@ -51,7 +51,6 @@ class LeftAndMain extends Controller {
 		'getsubtree',
 		'myprofile',
 		'printable',
-		'save',
 		'show',
 		'Member_ProfileForm',
 		'EditorToolbar',
@@ -59,7 +58,6 @@ class LeftAndMain extends Controller {
 		'BatchActionsForm',
 		'batchactions',
 		'AddForm',
-		'doAdd'
 	);
 	
 	/**
