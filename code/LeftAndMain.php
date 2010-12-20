@@ -50,7 +50,6 @@ class LeftAndMain extends Controller {
 		'getsubtree',
 		'myprofile',
 		'printable',
-		'save',
 		'show',
 		'Member_ProfileForm',
 		'EditorToolbar',
