@@ -51,7 +51,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'SiteTreeAsUL',
 		'getshowdeletedsubtree',
 		'getfilteredsubtree',
-		'batchactions'
+		'batchactions',
+		'rollback', // see http://open.silverstripe.org/ticket/6291
 	);
 	
 	/**
