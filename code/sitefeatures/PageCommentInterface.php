@@ -216,8 +216,13 @@ class PageCommentInterface extends RequestHandler {
 		$this->extend('updatePageCommentForm', $form);
 		
 		// Load the users data from a cookie
-		if($cookie = Cookie::get("PageCommentInterface_Data")) {
-			$form->loadDataFrom(unserialize($cookie));
+		$cookie = Cookie::get('PageCommentInterface_Data');
+		if($cookie) {
+			$visibleFields = array();
+			foreach($fields as $field) {
+				if(!$field instanceof HiddenField) $visibleFields[] = $field->Name();
+			}
+			$form->loadDataFrom(unserialize($cookie), false, $visibleFields);
 		}
 
 		return $form;
