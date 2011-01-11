@@ -186,9 +186,22 @@ class CMSMainTest extends FunctionalTest {
 		$newPage = $cmsMain->getRecord('new-Page-5');
 		$this->assertType('Page', $newPage);
 		$this->assertEquals('5', $newPage->ParentID);
-
 	}
-	
+
+	function testGetVersionRecord() {
+		$cmsMain = new CMSMain();
+		$page1 = $this->objFromFixture('Page', 'page1');
+		$page1->Content = 'this is the old content';
+		$page1->write();
+		$page1->Content = 'this is new content (new version)';
+		$page1->write();
+		$versionID = DB::query('SELECT "Version" FROM "SiteTree_versions" WHERE "Content" = \'this is the old content\'')->value();
+		$_REQUEST['Version'] = $versionID;
+		$this->assertEquals($cmsMain->getRecord($page1->ID)->Version, $versionID);
+		$this->assertEquals($cmsMain->getRecord($page1->ID)->Content, 'this is the old content');
+		unset($_REQUEST['Version']);
+	}
+
 	function testDeletedPagesSiteTreeFilter() {
 		$id = $this->idFromFixture('Page', 'page3');
 		$this->logInWithPermission('ADMIN');
