@@ -67,7 +67,7 @@ class MemberTableFieldTest extends SapphireTest {
 		$this->assertNotContains($member1->ID, $group1->Members()->column('ID'),
 			'Member relation to group is removed'
 		);
-		$this->assertType(
+		$this->assertInstanceOf(
 			'DataObject',
 			DataObject::get_by_id('Member', $member1->ID),
 			'Member record still exists'

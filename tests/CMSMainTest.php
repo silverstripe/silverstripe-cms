@@ -150,7 +150,7 @@ class CMSMainTest extends FunctionalTest {
 		$response = $this->get('admin/cms/getitem?ID=' . $pageID . '&ajax=1');
 	
 		$livePage = Versioned::get_one_by_stage("SiteTree", "Live", "\"SiteTree\".\"ID\" = $pageID");
-		$this->assertType('SiteTree', $livePage);
+		$this->assertInstanceOf('SiteTree', $livePage);
 		$this->assertTrue($livePage->canDelete());
 	
 		// Check that the 'restore' button exists as a simple way of checking that the correct page is returned.
@@ -174,12 +174,12 @@ class CMSMainTest extends FunctionalTest {
 		$this->assertNull($cmsMain->getRecord('asdf'));
 		
 		// Pages that are on draft and aren't on draft should both work
-		$this->assertType('Page', $cmsMain->getRecord($page1ID));
-		$this->assertType('Page', $cmsMain->getRecord($this->idFromFixture('Page','page2')));
+		$this->assertInstanceOf('Page', $cmsMain->getRecord($page1ID));
+		$this->assertInstanceOf('Page', $cmsMain->getRecord($this->idFromFixture('Page','page2')));
 	
 		// This functionality isn't actually used any more.
 		$newPage = $cmsMain->getRecord('new-Page-5');
-		$this->assertType('Page', $newPage);
+		$this->assertInstanceOf('Page', $newPage);
 		$this->assertEquals('5', $newPage->ParentID);
 	
 	}
