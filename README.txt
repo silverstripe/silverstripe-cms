@@ -1,1 +1,0 @@
-See http://doc.silverstripe.org
