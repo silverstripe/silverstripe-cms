@@ -283,5 +283,153 @@ div.pageComments {
 		text-decoration:underline;
 	}
 
+#BrowserPoll {
+	width: 200px;
+	float: right;
+	margin-right: 20px;
+	margin-top: 20px;
+}
+#BrowserPoll h2 {
+	color:#0083C8;
+	font-size:1.2em;
+}
+#BrowserPoll ul {
+	margin: 0;	
+}
+#BrowserPoll li {
+	list-style-type: none;
+	margin: 0;
+}
+#BrowserPoll .browser {
+	color:#333;
+	line-height:1.5em;
+	font-size:1.1em;
+}
+#BrowserPoll .bar {
+	background-color: #015581;
+}
+#BrowserPoll form {
+	width:100%;
+}
+	#BrowserPoll form fieldset{
+		border:0;
+	}
+		#BrowserPoll .message {
+			color:red;
+			background:#ddd;
+			border:1px solid #ccc;
+			padding:5px;
+			margin:5px;
+		}
+		#BrowserPoll span.message {
+			width: 100%;
+		}
+		#BrowserPoll form div {
+			margin-top:10px;
+			width:100%;
+		}
+		#BrowserPoll form label {
+			font-size:1.1em;
+			color:#333;
+		}
+			#BrowserPoll form label.left {
+				float:left;
+			}
+			#BrowserPoll form label.FormHeading {
+				font-size:1.3em;
+				color:#ff7200;
+				font-weight:bold;
+			}
+		#BrowserPoll form input.text,
+		#BrowserPoll form textarea,
+		#BrowserPoll form select {
+			width:100%;
+			color:#000;
+			background:#f8f8f8;
+			border:1px solid #aaa;
+			padding:3px;
+		}
 		
+		#BrowserPoll form input.numeric {
+			width:20px;
+			background:#f0f0f0;
+			border:1px solid #aaa;
+			padding:3px;
+			color:#000;
+			margin-right:4px;
+		}
+		#BrowserPoll form input.year {
+			width:35px;
+		}
+		#BrowserPoll form p.Actions {
+			text-align:right;
+			padding:0 22px 15px 0;
+		}
+			#BrowserPoll form p.Actions input {
+				padding:2px;
+			}
+		#BrowserPoll form ul.optionset {
+			padding-top: 15px;
+			padding-left: 15px;
+		}
+			#BrowserPoll form ul.optionset li {
+				list-style-type: none;
+			}
 
+#Header form {
+	float:right;
+	width:160px;
+	margin:25px 25px 0px 25px;
+}
+	#Header form * {
+		display:inline !important;
+	}
+	#Header form div {
+	}
+	#Header form input.text {
+		width:110px;
+		color:#000;
+		background:#f0f0f0;
+		border:1px solid #aaa;
+		padding:3px;
+	}
+	#Header form input.action {
+		font-weight:bold;
+	}
+
+.searchResults h2 {
+	font-size:2.2em;
+	font-weight:normal;
+	color:#0083C8;
+	margin-bottom:15px;
+}
+.searchResults p.searchQuery {
+	color:#333;
+	margin-bottom:10px;
+}
+
+.searchResults ul#SearchResults li {
+	margin-bottom:20px;
+}
+	ul#SearchResults p {
+		font-size:1.1em;
+		font-weight:normal;
+		line-height:2em;
+		color:#333;
+	}
+	ul#SearchResults a.searchResultHeader {
+		font-size:1.3em;
+		font-weight:bold;
+		color:#0083C8;
+		text-decoration:none;
+		margin:20px 0 8px 0;
+		padding-left:20px;
+		background:url(../images/treeicons/search-file.gif) no-repeat left center;
+	}
+		ul#SearchResults a {
+			text-decoration:none;
+			color:#0083C8;
+		}
+		ul#SearchResults a:hover {
+		border-bottom:1px dotted #0083C8;
+		}
