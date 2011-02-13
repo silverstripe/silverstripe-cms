@@ -57,7 +57,7 @@ class LeftAndMain extends Controller {
 		'EditForm',
 		'BatchActionsForm',
 		'batchactions',
-		'AddForm',
+		'AddForm'
 	);
 	
 	/**

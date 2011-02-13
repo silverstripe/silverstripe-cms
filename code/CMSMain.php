@@ -46,7 +46,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'SearchTreeForm',
 		'ReportForm',
 		'LangForm',
-		'VersionsForm'
+		'VersionsForm',
+		'unpublish'
 	);
 	
 	public function init() {

@@ -6,6 +6,12 @@
  * @todo Make this use the Task interface once it gets merged back into trunk
  */ 
 class RebuildStaticCacheTask extends Controller {
+	
+	static $allowed_actions = array(
+		'index',
+		'show'
+	);
+	
 	function init() {
 		parent::init();
 		
