@@ -16,7 +16,7 @@ class SecurityAdminTest extends FunctionalTest {
 		/* Then load the export page */
 		$this->get('admin/security/EditForm/field/Members/export');
 		$lines = preg_split('/\n/', $this->content());
-		
+
 		$this->assertEquals(count($lines), 3, "Export with members has one content row");
 		$this->assertRegExp('/"","","admin@example.com"/', $lines[1], "Member values are correctly exported");
 	}
@@ -29,7 +29,7 @@ class SecurityAdminTest extends FunctionalTest {
 		$this->assertRegExp('/<input[^>]+id="Form_EditForm_Title"[^>]+value="Empty Group"[^>]*>/',$this->content());
 		
 		/* Then load the export page */
-		$this->get('admin/security//EditForm/field/Members/export');
+		$this->get('admin/security/EditForm/field/Members/export');
 		$lines = preg_split('/\n/', $this->content());
 		
 		$this->assertEquals(count($lines), 2, "Empty export only has header fields and an empty row");

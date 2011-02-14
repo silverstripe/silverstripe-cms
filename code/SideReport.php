@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Base class for the small reports that appear in the left hand site of the Site Content section of the CMS.
- * Create subclasses of this class to build new reports.
+ * Renderer for showing SideReports in CMSMain
+ * 
  * 
  * @package cms
  * @subpackage content
@@ -241,7 +241,7 @@ class SideReport_BrokenLinks extends SS_Report {
 			),
 		);
 	}
-	function parameterFields() {
+	function getParameterFields() {
 		return new FieldSet(
 			new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))
 		);
@@ -279,7 +279,8 @@ class SideReport_BrokenFiles extends SS_Report {
 			),
 		);
 	}
-	function parameterFields() {
+
+	function getParameterFields() {
 		return new FieldSet(
 			new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))
 		);
@@ -287,9 +288,9 @@ class SideReport_BrokenFiles extends SS_Report {
 }
 
 /**
-* @package cms
-* @subpackage content
-*/
+ * @package cms
+ * @subpackage content
+ */
 class SideReport_BrokenVirtualPages extends SS_Report {
 	function title() {
 		return _t('SideReport.BROKENVIRTUALPAGES', 'VirtualPages pointing to deleted pages');
@@ -312,7 +313,8 @@ class SideReport_BrokenVirtualPages extends SS_Report {
 			),
 		);
 	}
-	function parameterFields() {
+
+	function getParameterFields() {
 		return new FieldSet(
 			new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))
 		);
@@ -320,9 +322,9 @@ class SideReport_BrokenVirtualPages extends SS_Report {
 }
 
 /**
-* @package cms
-* @subpackage content
-*/
+ * @package cms
+ * @subpackage content
+ */
 class SideReport_BrokenRedirectorPages extends SS_Report {
 	function title() {
 		return _t('SideReport.BROKENREDIRECTORPAGES', 'RedirectorPages pointing to deleted pages');
@@ -346,7 +348,8 @@ class SideReport_BrokenRedirectorPages extends SS_Report {
 			),
 		);
 	}
-	function parameterFields() {
+	
+	function getParameterFields() {
 		return new FieldSet(
 			new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))
 		);

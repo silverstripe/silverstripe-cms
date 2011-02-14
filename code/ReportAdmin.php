@@ -24,6 +24,9 @@ class ReportAdmin extends LeftAndMain {
 	public function init() {
 		parent::init();
 		
+		Requirements::javascript(CMS_DIR . '/javascript/ReportAdmin_left.js');
+		Requirements::javascript(CMS_DIR . '/javascript/ReportAdmin_right.js');
+
 		Requirements::css(CMS_DIR . '/css/ReportAdmin.css');		
 		
 		// Set custom options for TinyMCE specific to ReportAdmin
@@ -32,7 +35,6 @@ class ReportAdmin extends LeftAndMain {
 		
 		// Always block the HtmlEditorField.js otherwise it will be sent with an ajax request
 		Requirements::block(SAPPHIRE_DIR . '/javascript/HtmlEditorField.js');
-		Requirements::javascript(CMS_DIR . '/javascript/ReportAdmin.Tree.js');
 	}
 	
 	/**
@@ -72,6 +74,60 @@ class ReportAdmin extends LeftAndMain {
 	}
 	
 	/**
+	 * Show a report based on the URL query string.
+	 *
+	 * @param SS_HTTPRequest $request The HTTP request object
+	 */
+	public function show($request) {
+		$params = $request->allParams();
+		
+		return $this->showWithEditForm($params, $this->reportEditFormFor($params['ID']));	
+	}
+
+	/**
+	 * @TODO What does this do?
+	 *
+	 * @param unknown_type $params
+	 * @param unknown_type $editForm
+	 * @return unknown
+	 */
+	protected function showWithEditForm($params, $editForm) {
+		if(isset($params['ID'])) Session::set('currentReport', $params['ID']);
+		if(isset($params['OtherID'])) Session::set('currentOtherID', $params['OtherID']);
+		
+		if(Director::is_ajax()) {
+			SSViewer::setOption('rewriteHashlinks', false);
+			
+			$result = $this->customise(array(
+				'EditForm' => $editForm
+			))->renderWith($this->getTemplatesWithSuffix('_right'));
+						
+			return $this->getLastFormIn($result);
+		}
+		
+		return array();
+	}
+	
+	/**
+	 * For the current report that the user is viewing,
+	 * return a Form instance with the fields for that
+	 * report.
+	 *
+	 * @return Form
+	 */
+	public function EditForm() {
+		// Return the report if the ID is sent by request, or we're specifically asking for the edit form
+		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : ($this->getRequest()->latestParam('Action') == 'EditForm') ? Session::get('currentReport') : null;
+		
+		if($id) {
+			foreach($this->Reports() as $report) {
+				if($id == $report->ID()) return $this->reportEditFormFor($id);
+			}
+		}
+		return false;
+	}
+	
+	/**
 	 * Get the current report
 	 *
 	 * @return SS_Report
@@ -91,33 +147,31 @@ class ReportAdmin extends LeftAndMain {
 	 * Return a Form instance with fields for the
 	 * particular report currently viewed.
 	 * 
-	 * @param string $className Class of the report to fetch
+	 * @TODO Dealing with multiple data types for the
+	 * $id parameter is confusing. Ideally, it should
+	 * deal with only one.
+	 *
+	 * @param id|string $id The ID of the report, or class name
 	 * @return Form
 	 */
-	public function getEditForm($className = null) {
-		if (!$className) {
-			return $form = $this->EmptyForm();
-		}
-		
-		Session::set('currentPage', $className);
-		
+	public function reportEditFormFor($id) {
+		$page = false;
 		$fields = new FieldSet();
 		$actions = new FieldSet();
 		
 		$reports = SS_Report::get_reports('ReportAdmin');
-		if(!isset($reports[$className])) return false;
+		$obj = $reports[$id];
 
-		$report = $reports[$className];		
-		if(!$report || !$report->canView()) return Security::permissionFailure($this);
-
-		$fields = $report->getCMSFields();
-		$actions = $report->getCMSActions();
+		if($obj) $fields = $obj->getCMSFields();
+		if($obj) $actions = $obj->getCMSActions();
 		
 		$idField = new HiddenField('ID');
 		$idField->setValue($id);
 		$fields->push($idField);
 		
 		$form = new Form($this, 'EditForm', $fields, $actions);
+
+		$form->loadDataFrom($_REQUEST);
 
 		// Include search criteria in the form action so that pagination works
 		$filteredCriteria = array_merge($_GET, $_POST);
@@ -129,11 +183,10 @@ class ReportAdmin extends LeftAndMain {
 		if($filteredCriteria) $formLink .= '?' . http_build_query($filteredCriteria);
 		$form->setFormAction($formLink);
 		$form->setTemplate('ReportAdminForm');
-		$form->loadDataFrom($this->request->requestVars());
-
+		
 		return $form;
 	}
-
+	
 	/**
 	 * Determine if we have reports and need
 	 * to display the "Reports" main menu item
@@ -148,6 +201,15 @@ class ReportAdmin extends LeftAndMain {
 	public static function has_reports() {
 		return sizeof(SS_Report::get_reports('ReportAdmin')) > 0;
 	}
+	
+	public function updatereport() {
+		FormResponse::load_form($this->EditForm()->forTemplate());
+		return FormResponse::respond();
+	}
 }
+
+
+
+
 
 ?>

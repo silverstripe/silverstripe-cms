@@ -27,27 +27,52 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	static $subitem_class = "Member";
 	
 	static $allowed_actions = array(
-		'addmember',
+		'addpage',
 		'buildbrokenlinks',
 		'compareversions',
 		'createtranslation',
+		'deleteitems',
+		'DeleteItemsForm',
+		'dialog',
 		'duplicate',
 		'duplicatewithchildren',
 		'getversion',
 		'publishall',
-		'sidereports',
-		'SideReportsForm',
+		'publishitems',
+		'PublishItemsForm',
+		'RootForm',
+		'sidereport',
 		'submit',
 		'versions',
 		'EditForm',
 		'AddForm',
 		'SiteTreeAsUL',
 		'getshowdeletedsubtree',
-		'SearchTreeForm',
-		'ReportForm',
-		'LangForm',
-		'VersionsForm'
+		'getfilteredsubtree',
+		'batchactions',
 	);
+	
+	/**
+	 * SiteTree Columns that can be filtered using the the Site Tree Search button
+	 */
+	static $site_tree_filter_options = array(
+		'Title' => array('CMSMain.TITLE', 'Title'),
+		'MenuTitle' => array('CMSMain.MENUTITLE', 'Navigation Label'),
+		'ClassName' => array('CMSMain.PAGETYPE', 'Page Type'), 
+		'Status' => array('CMSMain.STATUS', 'Status'),
+		'MetaDescription' => array('CMSMain.METADESC', 'Description'),
+		'MetaKeywords' => array('CMSMain.METAKEYWORDS', 'Keywords')
+	);
+	
+	static function T_SiteTreeFilterOptions(){
+		return array(
+			'Title' => _t('CMSMain.TITLEOPT', 'Title', 0, 'The dropdown title in CMSMain left SiteTreeFilterOptions'),
+			'MenuTitle' => _t('CMSMain.MENUTITLEOPT', 'Navigation Label', 0, 'The dropdown title in CMSMain left SiteTreeFilterOptions'),
+			'Status' => _t('CMSMain.STATUSOPT', 'Status',  0, "The dropdown title in CMSMain left SiteTreeFilterOptions"), 
+			'MetaDescription' => _t('CMSMain.METADESCOPT', 'Description', 0, "The dropdown title in CMSMain left SiteTreeFilterOptions"), 
+			'MetaKeywords' => _t('CMSMain.METAKEYWORDSOPT', 'Keywords', 0, "The dropdown title in CMSMain left SiteTreeFilterOptions")
+		);
+	}
 	
 	public function init() {
 		parent::init();
@@ -141,6 +166,76 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		return $this->getSiteTreeFor($this->stat('tree_class'));
 	}
+	
+	/**
+	 * Use a CMSSiteTreeFilter to only get certain nodes
+	 *
+	 * @return string
+	 */
+	public function getfilteredsubtree() {
+		// Sanity and security checks
+		if (!isset($_REQUEST['filter'])) die('No filter passed');
+		if (!ClassInfo::exists($_REQUEST['filter'])) die ('That filter class does not exist');
+		if (!is_subclass_of($_REQUEST['filter'], 'CMSSiteTreeFilter')) die ('That is not a valid filter');
+		
+		// Do eeet!
+		$filter = new $_REQUEST['filter']();
+		return $filter->getTree();
+	}
+	
+	/**
+	 * Returns a list of batch actions
+	 */
+	function SiteTreeFilters() {
+		$filters = ClassInfo::subclassesFor('CMSSiteTreeFilter');
+		array_shift($filters);
+		$doSet = new DataObjectSet();
+		$doSet->push(new ArrayData(array(
+			'ClassName' => 'all',
+			'Title' => _t('CMSSiteTreeFilter.ALL', 'All items')
+		)));
+		foreach($filters as $filter) {
+			if (call_user_func(array($filter, 'showInList'))) {
+				$doSet->push(new ArrayData(array(
+					'ClassName' => $filter,
+					'Title' => call_user_func(array($filter, 'title'))
+				)));
+			}
+		}
+		return $doSet;
+	}
+	
+	/**
+	 * Returns the SiteTree columns that can be filtered using the the Site Tree Search button as a DataObjectSet
+	 */
+	public function SiteTreeFilterOptions() {
+		$filter_options = new DataObjectSet();
+		foreach(self::T_SiteTreeFilterOptions() as $key => $value) {
+   			$record = array(
+				'Column' => $key,
+				'Title' => $value,
+			);
+			$filter_options->push(new ArrayData($record));
+		}
+		return $filter_options;
+	}
+		public function SiteTreeFilterDateField() {
+			$dateField = new DateField('SiteTreeFilterDate');
+			
+			// TODO Enabling this means we load jQuery UI by default in the CMS,
+			// which is a pretty big performance hit in 2.4 (where the library isn't used for other parts
+			// of the interface).
+			// $dateField->setConfig('showcalendar', true);
+			
+			return $dateField->Field();
+		}
+		public function SiteTreeFilterPageTypeField() {
+			$types = SiteTree::page_type_classes(); array_unshift($types, 'All');
+			$source = array_combine($types, $types);
+			asort($source);
+			$optionsetField = new DropdownField('ClassName', 'ClassName', $source, 'Any');
+			return $optionsetField->Field();
+		}	
 
 	public function generateDataTreeHints() {
 		$classes = ClassInfo::subclassesFor( $this->stat('tree_class') );
@@ -195,11 +290,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			if(!Director::fileExists($closedFolderImage) || $option == "file") $closedFolderImage = $fileImage;
 
 			$js .= <<<JS
-_TREE_ICONS['$class'] = {
-	fileIcon: '$fileImage',
-	openFolderIcon: '$openFolderImage',
-	closedFolderIcon: '$closedFolderImage'
-};
+				_TREE_ICONS['$class'] = {
+					fileIcon: '$fileImage',
+					openFolderIcon: '$openFolderImage',
+					closedFolderIcon: '$closedFolderImage'
+				};
 
 JS;
 		}
@@ -269,11 +364,15 @@ JS;
 	 * Get a database record to be managed by the CMS
 	 */
  	public function getRecord($id) {
-
 		$treeClass = $this->stat('tree_class');
 
 		if($id && is_numeric($id)) {
-			$record = DataObject::get_one( $treeClass, "\"$treeClass\".\"ID\" = $id");
+			$version = isset($_REQUEST['Version']) ? $_REQUEST['Version'] : null;
+			if(is_numeric($version)) {
+				$record = Versioned::get_version($treeClass, $id, $version);
+			} else {
+				$record = DataObject::get_one($treeClass, "\"$treeClass\".\"ID\" = $id");
+			}
 
 			// Then, try getting a record from the live site
 			if(!$record) {
@@ -343,29 +442,69 @@ JS;
 				$stageURLField->setValue($record->AbsoluteLink());
 			}
 			
-			$deleteAction = new FormAction(
-				'delete',
-				_t('CMSMain.DELETE','Delete from the draft site')
-			);
-			$deleteAction->addExtraClass('delete');
-			$actions->insertBefore($deleteAction, 'action_save');
-			
-			if($record->IsDeletedFromStage) {
-				$form->makeReadonly();
+			// getAllCMSActions can be used to completely redefine the action list
+			if($record->hasMethod('getAllCMSActions')) {
+				$actions = $record->getAllCMSActions();
+			} else {
+				$actions = $record->getCMSActions();
 			}
-		} elseif ($id == 0) {
-			$siteConfig = SiteConfig::current_site_config();
-			$fields = $siteConfig->getCMSFields(); 
-			if(Object::has_extension('SiteConfig',"Translatable")){ 
-				$fields->push(new HiddenField('Locale','', $siteConfig->Locale ));       
-			} 
-			$form = new Form($this, "EditForm", $fields, $siteConfig->getCMSActions());
-			$form->loadDataFrom($siteConfig);
+			
+			// Add a default or custom validator.
+			// @todo Currently the default Validator.js implementation
+			//  adds javascript to the document body, meaning it won't
+			//  be included properly if the associated fields are loaded
+			//  through ajax. This means only serverside validation
+			//  will kick in for pages+validation loaded through ajax.
+			//  This will be solved by using less obtrusive javascript validation
+			//  in the future, see http://open.silverstripe.com/ticket/2915 and http://open.silverstripe.com/ticket/3386
+			if($record->hasMethod('getCMSValidator')) {
+				$validator = $record->getCMSValidator();
+			} else {
+				$validator = new RequiredFields();
+			}
+			
+			// The clientside (mainly LeftAndMain*.js) rely on ajax responses
+			// which can be evaluated as javascript, hence we need
+			// to override any global changes to the validation handler.
+			$validator->setJavascriptValidationHandler('prototype');
+			
+			$form = new Form($this, "EditForm", $fields, $actions, $validator);
+			$form->loadDataFrom($record);
+			$form->disableDefaultAction();
+
+			if(!$record->canEdit() || $record->IsDeletedFromStage) {
+				$readonlyFields = $form->Fields()->makeReadonly();
+				$form->setFields($readonlyFields);
+			}
+			
+			$this->extend('updateEditForm', $form);
+
 			return $form;
-		} else {
-			$form = $this->EmptyForm();
+		} if ($id == 0 || $id == 'root') {
+			return $this->RootForm();
+		} else if($id) {
+			return new Form($this, "EditForm", new FieldSet(
+				new LabelField('PageDoesntExistLabel',_t('CMSMain.PAGENOTEXISTS',"This page doesn't exist"))), new FieldSet());
+
 		}
-				
+	}
+
+	/**
+	 * @return Form
+	 */
+	function RootForm() {
+		$siteConfig = SiteConfig::current_site_config();
+		$fields = $siteConfig->getCMSFields();
+		if(Object::has_extension('SiteConfig',"Translatable")) {
+			$fields->push(new HiddenField('Locale','', $siteConfig->Locale));
+		}
+
+		$form = new Form($this, 'RootForm', $fields, $siteConfig->getCMSActions());
+		$form->setHTMLID('Form_EditForm');
+		$form->loadDataFrom($siteConfig);
+
+		$this->extend('updateEditForm', $form);
+
 		return $form;
 	}
 
@@ -707,6 +846,31 @@ JS;
 	}
 	
 	/**
+	 * Generate the parameter HTML for SideReports that have params
+	 *
+	 * @return LiteralField
+	 */
+	function ReportFormParameters() {
+		$forms = array();
+		foreach($this->SideReports() as $report) {
+			if ($report->canView()) {
+				if ($fieldset = $report->parameterFields()) {
+					$formHtml = '';
+					foreach($fieldset as $field) {
+						$formHtml .= $field->FieldHolder();
+					}
+					$forms[$report->ID()] = $formHtml;
+				}
+			}
+		}
+		$pageHtml = '';
+		foreach($forms as $class => $html) {
+			$pageHtml .= "<div id=\"SideReportForm_$class\" style=\"display:none\">$html</div>\n\n";
+		} 
+		return new LiteralField("ReportFormParameters", '<div id="SideReportForms" style="display:none">'.$pageHtml.'</div>');
+	}
+	
+	/**
 	 * @return Form
 	 */
 	function doShowSideReport() {
@@ -892,10 +1056,7 @@ JS;
 				'Root'
 			);
 
-			$actions = new FieldSet(
-				new FormAction("email", _t('CMSMain.EMAIL',"Email")),
-				new FormAction("rollback", _t('CMSMain.ROLLBACK',"Roll back to this version"))
-			);
+			$actions = $record->getCMSActions();
 
 			// encode the message to appear in the body of the email
 			$archiveURL = Director::absoluteBaseURL() . $record->URLSegment . '?archiveDate=' . $record->obj('LastEdited')->URLDatetime();
@@ -921,18 +1082,21 @@ JS;
 			$readonlyFields = $form->Fields()->makeReadonly();
 			$form->setFields($readonlyFields);
 
+			$templateData = $this->customise(array(
+				"EditForm" => $form
+			));
+
 			SSViewer::setOption('rewriteHashlinks', false);
 			
-			if($this->isAjax()) {
-				$content = $form->formHtmlContent();
+			if(Director::is_ajax()) {
+				$result = $templateData->renderWith($this->class . '_right');
+				$parts = split('</?form[^>]*>', $result);
+				$content = $parts[sizeof($parts)-2];
 				if($this->ShowSwitchView()) {
 					$content .= '<div id="AjaxSwitchView">' . $this->SwitchView($record) . '</div>';
 				}
 				return $content;
 			} else {
-				$templateData = $this->customise(array(
-					"EditForm" => $form
-				));
 				return $templateData->renderWith('LeftAndMain');
 			}
 		}
@@ -1017,11 +1181,61 @@ JS;
 					"EditForm" => $form
 				));
 				return $templateData->renderWith('LeftAndMain');
-			}
+			}	
 		}
 	}
 
-	function buildbrokenlinks() {
+	function sendFormToBrowser($templateData) {
+		if(Director::is_ajax()) {
+			SSViewer::setOption('rewriteHashlinks', false);
+			$result = $this->customise($templateData)->renderWith($this->class . '_right');
+			$parts = split('</?form[^>]*>', $result);
+			return $parts[sizeof($parts)-2];
+		} else {
+			return array(
+				"Right" => $this->customise($templateData)->renderWith($this->class . '_right'),
+			);
+		}
+	}
+
+	/**
+	 * Batch Actions Handler
+	 */
+	function batchactions() {
+		return new CMSBatchActionHandler($this, 'batchactions');
+	}
+	
+	function BatchActionParameters() {
+		$batchActions = CMSBatchActionHandler::$batch_actions;
+
+		$forms = array();
+		foreach($batchActions as $urlSegment => $batchAction) {
+			$SNG_action = singleton($batchAction);
+			if ($SNG_action->canView() && $fieldset = $SNG_action->getParameterFields()) {
+				$formHtml = '';
+				foreach($fieldset as $field) {
+					$formHtml .= $field->Field();
+				}
+				$forms[$urlSegment] = $formHtml;
+			}
+		}
+		$pageHtml = '';
+		foreach($forms as $urlSegment => $html) {
+			$pageHtml .= "<div class=\"params\" id=\"BatchActionParameters_$urlSegment\">$html</div>\n\n";
+		} 
+		return new LiteralField("BatchActionParameters", '<div id="BatchActionParameters" style="display:none">'.$pageHtml.'</div>');
+	}
+	/**
+	 * Returns a list of batch actions
+	 */
+	function BatchActionList() {
+		return $this->batchactions()->batchActionList();
+	}
+	
+	function buildbrokenlinks($request) {
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		
 		if($this->urlParams['ID']) {
 			$newPageSet[] = DataObject::get_by_id("Page", $this->urlParams['ID']);
 		} else {
@@ -1080,96 +1294,45 @@ JS;
 	}
 	
 	/**
-	 * Form used to filter the sitetree. It can only be used via javascript for now.
-	 * 
-	 * @return Form
+	 * Helper function to get page count
 	 */
-	function SearchTreeForm() {
-		// get all page types in a dropdown-compatible format
-		$pageTypes = SiteTree::page_type_classes(); 
-		array_unshift($pageTypes, 'All');
-		$pageTypes = array_combine($pageTypes, $pageTypes);
-		asort($pageTypes);
-		
-		// get all filter instances
-		$filters = ClassInfo::subclassesFor('CMSSiteTreeFilter');
-		$filterMap = array();
-		// remove base class
-		array_shift($filters);
-		// add filters to map
-		foreach($filters as $filter) {
-			$filterMap[$filter] = call_user_func(array($filter, 'title'));
-		}
-		// ensure that 'all pages' filter is on top position
-		uasort($filterMap, 
-			create_function('$a,$b', 'return ($a == "CMSSiteTreeFilter_Search") ? 1 : -1;')
-		);
+	function getpagecount() {
+		ini_set('max_execution_time', 0);
+		$excludePages = split(" *, *", $_GET['exclude']);
 
-		$showDefaultFields = array();
-		$form = new Form(
-			$this,
-			'SearchTreeForm',
-			new FieldSet(
-				$showDefaultFields[] = new DropdownField(
-					'FilterClass', 
-					_t('CMSMain.SearchTreeFormPagesDropdown', 'Pages'), 
-					$filterMap
-				),
-				$showDefaultFields[] = new TextField(
-					'Title', 
-					_t('CMSMain.TITLEOPT', 'Title')
-				),
-				new TextField('Content', 'Text'),
-				new DateField('EditedSince', _t('CMSMain_left.ss.EDITEDSINCE','Edited Since')),
-				new DropdownField('ClassName', 'Page Type', $pageTypes, null, null, 'Any'),
-				new TextField(
-					'MenuTitle', 
-					_t('CMSMain.MENUTITLEOPT', 'Navigation Label')
-				),
-				new TextField(
-					'Status',
-					_t('CMSMain.STATUSOPT', 'Status')
-				),
-				new TextField(
-					'MetaDescription',
-					_t('CMSMain.METADESCOPT', 'Description')
-				),
-				new TextField(
-					'MetaKeywords',
-					_t('CMSMain.METAKEYWORDSOPT', 'Keywords')
-				)
-			),
-			new FieldSet(
-				new ResetFormAction(
-					'clear', 
-					_t('CMSMain_left.ss.CLEAR', 'Clear')
-				),
-				new FormAction(
-					'doSearchTree', 
-					_t('CMSMain_left.ss.SEARCH', 'Search')
-				)
-			)
-		);
-		$form->setFormMethod('GET');
-		$form->disableSecurityToken();
-		$form->unsetValidator();
-		
-		foreach($showDefaultFields as $f) $f->addExtraClass('show-default');
-		
-		return $form;
+		$pages = DataObject::get("SiteTree", "\"ParentID\" = 0");
+		foreach($pages as $page) $pageArr[] = $page;
+
+		while(list($i,$page) = each($pageArr)) {
+			if(!in_array($page->URLSegment, $excludePages)) {
+				if($children = $page->AllChildren()) {
+					foreach($children as $child) $pageArr[] = $child;
+				}
+
+
+				if(!$_GET['onlywithcontent'] || strlen(Convert::xml2raw($page->Content)) > 100) {
+					echo "<li>" . $page->Breadcrumbs(null, true) . "</li>";
+					$count++;
+				} else {
+					echo "<li style=\"color: #777\">" . $page->Breadcrumbs(null, true) . " - " . _t('CMSMain.NOCONTENT',"no content") . "</li>";
+				}
+
+			}
+		}
+
+		echo '<p>' . _t('CMSMain.TOTALPAGES',"Total pages: ") . "$count</p>";
 	}
-	
-	function doSearchTree($data, $form) {
-		return $this->getsubtree($this->request);
-	}
-	
-	function publishall() {
+
+	function publishall($request) {
 		ini_set("memory_limit", -1);
 		ini_set('max_execution_time', 0);
 		
 		$response = "";
 
 		if(isset($this->requestParams['confirm'])) {
+			// Protect against CSRF on destructive action
+			if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+			
 			$start = 0;
 			$pages = DataObject::get("SiteTree", "", "", "", "$start,30");
 			$count = 0;
@@ -1193,14 +1356,20 @@ JS;
 			$response .= sprintf(_t('CMSMain.PUBPAGES',"Done: Published %d pages"), $count);
 
 		} else {
+			$token = SecurityToken::inst();
+			$fields = new FieldSet();
+			$token->updateFieldSet($fields);
+			$tokenField = $fields->First();
+			$tokenHtml = ($tokenField) ? $tokenField->FieldHolder() : '';
 			$response .= '<h1>' . _t('CMSMain.PUBALLFUN','"Publish All" functionality') . '</h1>
 				<p>' . _t('CMSMain.PUBALLFUN2', 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It\'s
 				intended to be used after there have been massive edits of the content, such as when the site was
 				first built.') . '</p>
 				<form method="post" action="publishall">
 					<input type="submit" name="confirm" value="'
-					. _t('CMSMain.PUBALLCONFIRM',"Please publish every page in the site, copying content stage to live",PR_LOW,'Confirmation button') .'" />
-				</form>';
+					. _t('CMSMain.PUBALLCONFIRM',"Please publish every page in the site, copying content stage to live",PR_LOW,'Confirmation button') .'" />'
+					. $tokenHtml .
+				'</form>';
 		}
 		
 		return $response;
@@ -1232,7 +1401,10 @@ JS;
 		return $form->formHtmlContent();
 	}
 
-	function duplicate() {
+	function duplicate($request) {
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
 			$page = DataObject::get_by_id("SiteTree", $id);
 			if($page && (!$page->canEdit() || !$page->canCreate())) {
@@ -1254,7 +1426,10 @@ JS;
 		}
 	}
 
-	function duplicatewithchildren() {
+	function duplicatewithchildren($request) {
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
 			$page = DataObject::get_by_id("SiteTree", $id);
 			if($page && (!$page->canEdit() || !$page->canCreate())) {
@@ -1274,6 +1449,9 @@ JS;
 	 * Create a new translation from an existing item, switch to this language and reload the tree.
 	 */
 	function createtranslation($request) {
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		
 		$langCode = Convert::raw2sql($request->getVar('newlang'));
 		$originalLangID = (int)$request->getVar('ID');
 
@@ -1400,6 +1578,79 @@ JS;
 	 */
 	function IsTranslatableEnabled() {
 		return Object::has_extension('SiteTree', 'Translatable');
+	}
+}
+
+/**
+ * @package cms
+ * @subpackage content
+ */
+class CMSMainMarkingFilter {
+	
+	function __construct() {
+		$this->ids = array();
+		$this->expanded = array();
+		
+		$where = array();
+		
+		// Match against URLSegment, Title, MenuTitle & Content
+		if (isset($_REQUEST['SiteTreeSearchTerm'])) {
+			$term = Convert::raw2sql($_REQUEST['SiteTreeSearchTerm']);
+			$where[] = "\"URLSegment\" LIKE '%$term%' OR \"Title\" LIKE '%$term%' OR \"MenuTitle\" LIKE '%$term%' OR \"Content\" LIKE '%$term%'";
+		}
+		
+		// Match against date
+		if (isset($_REQUEST['SiteTreeFilterDate'])) {
+			$date = $_REQUEST['SiteTreeFilterDate'];
+			$date = ((int)substr($date,6,4)) . '-' . ((int)substr($date,3,2)) . '-' . ((int)substr($date,0,2));
+			$where[] = "\"LastEdited\" > '$date'"; 
+		}
+		
+		// Match against exact ClassName
+		if (isset($_REQUEST['ClassName']) && $_REQUEST['ClassName'] != 'All') {
+			$klass = Convert::raw2sql($_REQUEST['ClassName']);
+			$where[] = "\"ClassName\" = '$klass'";
+		}
+		
+		// Partial string match against a variety of fields 
+		foreach (CMSMain::T_SiteTreeFilterOptions() as $key => $value) {
+			if (!empty($_REQUEST[$key])) {
+				$match = Convert::raw2sql($_REQUEST[$key]);
+				$where[] = "\"$key\" LIKE '%$match%'";
+			}
+		}
+		
+		$where = empty($where) ? '' : 'WHERE (' . implode(') AND (',$where) . ')';
+		
+		$parents = array();
+		
+		/* Do the actual search */
+		$res = DB::query('SELECT "ParentID", "ID" FROM "SiteTree" '.$where);
+		if (!$res) return;
+		
+		/* And keep a record of parents we don't need to get parents of themselves, as well as IDs to mark */
+		foreach($res as $row) {
+			if ($row['ParentID']) $parents[$row['ParentID']] = true;
+			$this->ids[$row['ID']] = true;
+		}
+		
+		/* We need to recurse up the tree, finding ParentIDs for each ID until we run out of parents */
+		while (!empty($parents)) {
+			$res = DB::query('SELECT "ParentID", "ID" FROM "SiteTree" WHERE "ID" in ('.implode(',',array_keys($parents)).')');
+			$parents = array();
+
+			foreach($res as $row) {
+				if ($row['ParentID']) $parents[$row['ParentID']] = true;
+				$this->ids[$row['ID']] = true;
+				$this->expanded[$row['ID']] = true;
+			}
+		}
+	}
+	
+	function mark($node) {
+		$id = $node->ID;
+		if(array_key_exists((int) $id, $this->expanded)) $node->markOpened();
+		return array_key_exists((int) $id, $this->ids) ? $this->ids[$id] : false;
 	}
 }
 

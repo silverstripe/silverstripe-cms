@@ -235,6 +235,10 @@
 		margin-right: 1000em;
 	}
 
+#SiteTreeFilterDate {
+	width: 68px;
+}
+
 /** 
  * Tinymce 
  */
@@ -277,6 +281,19 @@
 	.right form .mceEditor select.mceNativeListBox {
 		background: #fff;
 	}
+
+/**
+ * Non-tabbed scrolling area that can be used in place of tabs in LeftAndMAin
+ */
+.right #ScrollPanel {
+	background: #fff;
+	clear: left;
+	overflow: auto;
+	border: 1px solid #aaa;
+	position: relative;
+	top: 0;
+	padding: 10px;
+}
 
 /**
  * RHS Action Parameters boxes 
@@ -335,14 +352,13 @@
 		width: 220px;
 		padding-bottom: 150px;
 
-	}
-	#right form.actionparams div.TreeDropdownField .items {
-		width: 195px;
-	}
-
-	#right form.actionparams div.TreeDropdownField div.tree_holder {
-		width: 214px;
-	}
+}
+#right form.actionparams div.TreeDropdownField .items {
+	width: 195px;
+}
+#right form.actionparams div.TreeDropdownField div.tree_holder {
+	width: 214px;
+}
 
 /**
  * Autocomplete

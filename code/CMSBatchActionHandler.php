@@ -72,6 +72,9 @@ class CMSBatchActionHandler extends RequestHandler {
 			$this->parentController->redirectBack();
 			return;
 		}
+		
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
 
 		$actions = $this->batchActions();
 		$actionClass = $actions[$request->param('BatchAction')]['class'];
@@ -153,9 +156,9 @@ class CMSBatchActionHandler extends RequestHandler {
 		$ids = array_filter($ids);
 		
 		if($actionHandler->hasMethod('confirmationDialog')) {
-			$response = new HTTPResponse(json_encode($actionHandler->confirmationDialog($ids)));
+			$response = new SS_HTTPResponse(json_encode($actionHandler->confirmationDialog($ids)));
 		} else {
-			$response = new HTTPResponse(json_encode(array('alert' => false)));
+			$response = new SS_HTTPResponse(json_encode(array('alert' => false)));
 		}
 		
 		$response->addHeader("Content-type", "application/json");
@@ -179,7 +182,8 @@ class CMSBatchActionHandler extends RequestHandler {
 			if($actionObj->canView()) {
 				$actionDef = new ArrayData(array(
 					"Link" => Controller::join_links($this->Link(), $urlSegment),
-					"Title" => $actionObj->getActionTitle()
+					"Title" => $actionObj->getActionTitle(),
+					"DoingText" => $actionObj->getDoingText(),
 				));
 				$actionList->push($actionDef);
 			}

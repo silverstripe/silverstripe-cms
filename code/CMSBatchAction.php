@@ -114,6 +114,7 @@ abstract class CMSBatchAction extends Object {
 
 		return $applicableIDs;
 	}
+
 	
 	// if your batchaction has parameters, return a fieldset here
 	function getParameterFields() {
@@ -178,6 +179,9 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 	function getActionTitle() {
 		return _t('CMSBatchActions.DELETE_DRAFT_PAGES', 'Delete from draft site');
 	}
+	function getDoingText() {
+		return _t('CMSBatchActions.DELETING_DRAFT_PAGES', 'Deleting selected pages from the draft site');
+	}
 
 	function run(DataObjectSet $pages) {
 		$status = array(
@@ -224,6 +228,9 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 	function getActionTitle() {
 		return _t('CMSBatchActions.DELETE_PAGES', 'Delete from published site');
+	}
+	function getDoingText() {
+		return _t('CMSBatchActions.DELETING_PAGES', 'Deleting selected pages from the published site');
 	}
 
 	function run(DataObjectSet $pages) {

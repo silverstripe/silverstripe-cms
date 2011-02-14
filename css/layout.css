@@ -221,6 +221,10 @@ form#Form_EditForm fieldset, form#Form_AddForm fieldset {
 	height: 100%;
 	border: none;
 }
+form#Form_EditForm #ScrollPanel fieldset, form#Form_AddForm #ScrollPanel fieldset {
+	height: auto;
+}
+
 body.stillLoading select {
 	display: none;
 }

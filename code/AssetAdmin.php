@@ -23,13 +23,21 @@ class AssetAdmin extends LeftAndMain {
 	public static $allowed_max_file_size;
 	
 	static $allowed_actions = array(
+		'addfolder',
+		'deletefolder',
+		'deletemarked',
+		'DeleteItemsForm',
 		'doUpload',
 		'getsubtree',
+		'movemarked',
+		'removefile',
+		'savefile',
+		'sync',
 		'uploadiframe',
 		'UploadForm',
 		'deleteUnusedThumbnails' => 'ADMIN',
 		'batchactions',
-		'BatchActionsForm'
+		'BatchActionsForm',
 	);
 	
 	/**
@@ -298,22 +306,198 @@ HTML;
 		}
 	}
 	
-	public function SiteTreeAsUL() {
-		return $this->getSiteTreeFor($this->stat('tree_class'), null, 'ChildFolders');
+	/**
+	 * Return the form that displays the details of a folder, including a file list and fields for editing the folder name.
+	 */
+	function getEditForm($id) {
+		if($id && $id != "root") {
+			$record = DataObject::get_by_id("File", $id);
+		} else {
+			$record = singleton("Folder");
+		}
+
+		if($record) {
+			$fields = $record->getCMSFields();
+			$actions = new FieldSet();
+			
+			// Only show save button if not 'assets' folder
+			if($record->canEdit() && $id != 'root') {
+				$actions = new FieldSet(
+					new FormAction('save',_t('AssetAdmin.SAVEFOLDERNAME','Save folder name'))
+				);
+			}
+			
+			$form = new Form($this, "EditForm", $fields, $actions);
+			if($record->ID) {
+				$form->loadDataFrom($record);
+			} else {
+				$form->loadDataFrom(array(
+					"ID" => "root",
+					"URL" => Director::absoluteBaseURL() . 'assets/',
+				));
+			}
+			
+			if(!$record->canEdit()) {
+				$form->makeReadonly();
+			}
+
+			$this->extend('updateEditForm', $form);
+
+			return $form;
+		}
 	}
 	
 	function getSiteTreeFor($className, $rootID = null, $childrenMethod = null, $numChildrenMethod = null, $filterFunction = null, $minNodeCount = 30) {
 		if (!$childrenMethod) $childrenMethod = 'ChildFolders';
 		return parent::getSiteTreeFor($className, $rootID, $childrenMethod, $numChildrenMethod, $filterFunction, $minNodeCount);
 	}
+
+	/**
+	 * Perform the "delete marked" action.
+	 * Called and returns in same way as 'save' function
+	 */
+	public function deletemarked($urlParams, $form) {
+		$fileList = "'" . ereg_replace(' *, *',"','",trim(addslashes($_REQUEST['FileIDs']))) . "'";
+		$numFiles = 0;
+		$folderID = 0;
+		$deleteList = '';
+		$brokenPageList = '';
+
+		if($fileList != "''") {
+			$files = DataObject::get("File", "\"File\".\"ID\" IN ($fileList)");
+			if($files) {
+				$brokenPages = array();
+				foreach($files as $file) {
+					$brokenPages = array_merge($brokenPages, $file->BackLinkTracking()->toArray());
+					if($file instanceof Image) {
+						$file->deleteFormattedImages();
+					}
+					if(!$folderID) {
+						$folderID = $file->ParentID;
+					}
+					$file->delete();
+					$numFiles++;
+				}
+				if($brokenPages) {
+					$brokenPageList = "  ". _t('AssetAdmin.NOWBROKEN', 'These pages now have broken links:') . '</ul>';
+					foreach($brokenPages as $brokenPage) {
+						$brokenPageList .= "<li style=&quot;font-size: 65%&quot;>" . $brokenPage->Breadcrumbs(3, true) . '</li>';
+					}
+					$brokenPageList .= '</ul>';
+				} else {
+					$brokenPageList = '';
+				}
+				
+				$deleteList = '';
+				if($folderID) {
+					$remaining = DB::query("SELECT COUNT(*) FROM \"File\" WHERE \"ParentID\" = $folderID")->value();
+					if(!$remaining) $deleteList .= "Element.removeClassName(\$('sitetree').getTreeNodeByIdx('$folderID').getElementsByTagName('a')[0],'contents');";
+				}
+			} else {
+				user_error("No files in $fileList could be found!", E_USER_ERROR);
+			}
+		}
+		
+		$message = sprintf(_t('AssetAdmin.DELETEDX',"Deleted %s files.%s"),$numFiles,$brokenPageList) ;
+		
+		FormResponse::add($deleteList);
+		FormResponse::status_message($message, "good");
+		FormResponse::add("$('Form_EditForm').getPageFromServer($('Form_EditForm_ID').value)");
+		
+		return FormResponse::respond();	
+	}
 	
 	public function getCMSTreeTitle() {
 		return Director::absoluteBaseURL() . "assets";
 	}
+	
+	/**
+	 * Action handler for the save button on the file subform.
+	 * Saves the file
+	 */
+	public function savefile($data, $form) {
+		$record = DataObject::get_by_id("File", $data['ID']);
+		$form->saveInto($record);
+		$record->write();
+		$title = Convert::raw2js($record->Title);
+		$name = Convert::raw2js($record->Name);
+		$saved = sprintf(_t('AssetAdmin.SAVEDFILE','Saved file %s'),"#$data[ID]");
+		echo <<<JS
+			statusMessage('$saved');
+			$('record-$data[ID]').getElementsByTagName('td')[1].innerHTML = "$title";
+			$('record-$data[ID]').getElementsByTagName('td')[2].innerHTML = "$name";
+JS;
+	}
+	
+	public function sync() {
+		echo Filesystem::sync();
+	}
+	
+	/**
+	 * Return the entire site tree as a nested UL.
+	 * @return string HTML for site tree
+	 */
+	public function SiteTreeAsUL() {
+		$obj = singleton('Folder');
+		$obj->setMarkingFilter('ClassName', ClassInfo::subclassesFor('Folder'));
+		$obj->markPartialTree(30, null, "ChildFolders");
+
+		if($p = $this->currentPage()) $obj->markToExpose($p);
+
+		// getChildrenAsUL is a flexible and complex way of traversing the tree
+		$siteTreeList = $obj->getChildrenAsUL(
+			'',
+			'"<li id=\"record-$child->ID\" class=\"$child->class" . $child->markingClasses() .  ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
+			'"<a href=\"" . Controller::join_links(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" class=\"" . ($child->hasChildFolders() ? " contents" : "") . "\" >" . $child->TreeTitle() . "</a>" ',
+			$this,
+			true,
+			"ChildFolders"
+		);	
+
+		// Wrap the root if needs be
+		$rootLink = $this->Link() . 'show/root';
+		$baseUrl = Director::absoluteBaseURL() . "assets";
+		if(!isset($rootID)) {
+			$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-root\" class=\"Root\"><a href=\"$rootLink\"><strong>{$baseUrl}</strong></a>"
+			. $siteTreeList . "</li></ul>";
+		}
+
+		return $siteTree;
+	}
+
+	/**
+	 * Returns a subtree of items underneat the given folder.
+	 */
+	public function getsubtree() {
+		$obj = DataObject::get_by_id('Folder', $_REQUEST['ID']);
+		$obj->setMarkingFilter('ClassName', ClassInfo::subclassesFor('Folder'));
+		$obj->markPartialTree();
+
+		$results = $obj->getChildrenAsUL(
+			'',
+			'"<li id=\"record-$child->ID\" class=\"$child->class" . $child->markingClasses() .  ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
+			'"<a href=\"" . Controller::join_links(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" >" . $child->TreeTitle() . "</a>" ',
+			$this,
+			true
+		);
+
+		return substr(trim($results), 4, -5);
+	}
+	
 
 	//------------------------------------------------------------------------------------------//
 
 	// Data saving handlers
+
+	/**
+	 * Add a new folder and return its details suitable for ajax.
+	 */
+	public function addfolder($request) {
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		
+		$parent = ($_REQUEST['ParentID'] && is_numeric($_REQUEST['ParentID'])) ? (int)$_REQUEST['ParentID'] : 0;
+		$name = (isset($_REQUEST['Name'])) ? basename($_REQUEST['Name']) : _t('AssetAdmin.NEWFOLDER',"NewFolder");
 		
 	/**
 	 * @return Form
@@ -335,7 +519,77 @@ HTML;
 		
 		return $form;
 	}
+	
+	/**
+	 * Delete a folder
+	 */
+	public function deletefolder($data, $form) {
+		$ids = split(' *, *', $_REQUEST['csvIDs']);
 		
+		if(!$ids) return false;
+		$script = '';
+		
+		foreach($ids as $id) {
+			if(is_numeric($id)) {
+				$record = DataObject::get_by_id($this->stat('tree_class'), $id);
+				if($record) {
+					$script .= $this->deleteTreeNodeJS($record);
+					$record->delete();
+					$record->destroy();
+				}
+			}
+		}
+		
+		$size = sizeof($ids);
+		if($size > 1) {
+		  $message = $size.' '._t('AssetAdmin.FOLDERSDELETED', 'folders deleted.');
+		} else {
+		  $message = $size.' '._t('AssetAdmin.FOLDERDELETED', 'folder deleted.');
+		}
+		
+		$script .= "statusMessage('$message');";
+
+		return $script;
+	}
+	
+	public function removefile($request){
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		
+		if($fileID = $this->urlParams['ID']) {
+			$file = DataObject::get_by_id('File', $fileID);
+			// Delete the temp verions of this file in assets/_resampled
+			if($file instanceof Image) {
+				$file->deleteFormattedImages();
+			}
+			$file->delete();
+			$file->destroy();
+
+			if(Director::is_ajax()) {
+				echo <<<JS
+				$('Form_EditForm_Files').removeFile($fileID);
+				statusMessage('removed file', 'good');
+JS;
+			} else {
+				Director::redirectBack();
+			}
+		} else {
+			user_error("AssetAdmin::removefile: Bad parameters: File=$fileID", E_USER_ERROR);
+		}
+	}
+	
+	public function save($urlParams, $form) {
+		// Don't save the root folder - there's no database record
+		if($_REQUEST['ID'] == 'root') {
+			FormResponse::status_message('Saved', 'good');
+			return FormResponse::respond();
+		}
+		
+		$form->dataFieldByName('Name')->Value = $form->dataFieldByName('Title')->Value();
+		
+		return parent::save($urlParams, $form);
+	}
+	
 	/**
      * #################################
      *        Garbage collection.
@@ -346,7 +600,10 @@ HTML;
 	 * Removes all unused thumbnails from the file store
 	 * and returns the status of the process to the user.
 	 */
-	public function deleteunusedthumbnails() {
+	public function deleteunusedthumbnails($request) {
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		
 		$count = 0;
 		$thumbnails = $this->getUnusedThumbnails();
 		

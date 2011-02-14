@@ -132,7 +132,7 @@ class MemberTableField extends ComplexTableField {
 	}
 
 	function AddLink() {
-		return $this->Link() . '/add';
+		return Controller::join_links($this->Link(), 'add');
 	}
 
 	function SearchForm() {
@@ -160,6 +160,10 @@ class MemberTableField extends ComplexTableField {
 	 * Add existing member to group rather than creating a new member
 	 */
 	function addtogroup() {
+		// Protect against CSRF on destructive action
+		$token = $this->getForm()->getSecurityToken();
+		if(!$token->checkRequest($this->controller->getRequest())) return $this->httpError(400);
+
 		$data = $_REQUEST;
 		$groupID = (isset($data['ctf']['ID'])) ? $data['ctf']['ID'] : null;
 
@@ -230,6 +234,11 @@ class MemberTableField extends ComplexTableField {
 	 * Remove member from group rather than from the database
 	 */
 	function delete() {
+		// Protect against CSRF on destructive action
+		$token = $this->getForm()->getSecurityToken();
+		// TODO Not sure how this is called, using $_REQUEST to be on the safe side
+		if(!$token->check($_REQUEST['SecurityID'])) return $this->httpError(400);
+		
 		$groupID = Convert::raw2sql($_REQUEST['ctf']['ID']);
 		$memberID = Convert::raw2sql($_REQUEST['ctf']['childID']);
 		if(is_numeric($groupID) && is_numeric($memberID)) {
@@ -511,26 +520,26 @@ class MemberTableField_ItemRequest extends ComplexTableField_ItemRequest {
 	/**
 	 * Deleting an item from a member table field should just remove that member from the group
 	 */
-	function delete() {
+	function delete($request) {
+		// Protect against CSRF on destructive action
+		$token = $this->ctf->getForm()->getSecurityToken();
+		if(!$token->checkRequest($request)) return $this->httpError('400');
+		
 		if($this->ctf->Can('delete') !== true) {
 			return false;
 		}
 
-		$groupID = $this->ctf->sourceID();
-		$group = DataObject::get_by_id('Group', $groupID);
-		
 		// if a group limitation is set on the table, remove relation.
 		// otherwise remove the record from the database
 		if($this->ctf->getGroup()) {
 			$groupID = $this->ctf->sourceID();
+			$group = DataObject::get_by_id('Group', $groupID);
 			
-			// Remove from direct group relationship
-			$this->dataObj()->Groups()->remove($groupID);
-			
-			// Remove from all child groups as well
+			// Remove from group and all child groups
 			foreach($group->getAllChildren() as $subGroup) {
 				$this->dataObj()->Groups()->remove($subGroup);
 			}
+			$this->dataObj()->Groups()->remove($groupID);
 		} else {
 			$this->dataObj()->delete();
 		}	

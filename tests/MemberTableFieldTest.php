@@ -1,6 +1,13 @@
 <?php
-class MemberTableFieldTest extends SapphireTest {
+/**
+ * @package cms
+ * @subpackage tests
+ */
+
+class MemberTableFieldTest extends FunctionalTest {
+	
 	static $fixture_file = 'cms/tests/MemberTableFieldTest.yml';
+	
 	
 	function testLimitsToMembersInGroup() {
 		$member1 = $this->objFromFixture('Member', 'member1');
@@ -54,14 +61,12 @@ class MemberTableFieldTest extends SapphireTest {
 		$member1 = $this->objFromFixture('Member', 'member1');
 		$group1 = $this->objFromFixture('Group', 'group1');
 		
-		$tf = new MemberTableField(
-			$this,
-			"Members",
-			$group1
-		);
-		$tfItem = new MemberTableField_ItemRequest($tf, $member1->ID);
-		$tfItem->delete();
-
+		$response = $this->get('MemberTableFieldTest_Controller');
+		$token = SecurityToken::inst();
+		$url = sprintf('MemberTableFieldTest_Controller/Form/field/Members/item/%d/delete/?usetestmanifest=1', $member1->ID);
+		$url = $token->addToUrl($url);
+		$response = $this->get($url);
+		
 		$group1->flushCache();
 		
 		$this->assertNotContains($member1->ID, $group1->Members()->column('ID'),
@@ -79,14 +84,12 @@ class MemberTableFieldTest extends SapphireTest {
 		$member1ID = $member1->ID;
 		$group1 = $this->objFromFixture('Group', 'group1');
 		
-		$tf = new MemberTableField(
-			$this,
-			"Members"
-			// no group assignment
-		);
-		$tfItem = new MemberTableField_ItemRequest($tf, $member1->ID);
-		$tfItem->delete();
-
+		$response = $this->get('MemberTableFieldTest_Controller');
+		$token = SecurityToken::inst();
+		$url = sprintf('MemberTableFieldTest_Controller/FormNoGroup/field/Members/item/%d/delete/?usetestmanifest=1', $member1->ID);
+		$url = $token->addToUrl($url);
+		$response = $this->get($url);
+		
 		$group1->flushCache();
 		
 		$this->assertNotContains($member1->ID, $group1->Members()->column('ID'),
@@ -98,4 +101,39 @@ class MemberTableFieldTest extends SapphireTest {
 			'Member record is removed from database'
 		);
 	}
+}
+
+class MemberTableFieldTest_Controller extends Controller implements TestOnly {
+	
+	protected $template = 'BlankPage';
+	
+	function Link($action = null) {
+		return Controller::join_links('MemberTableFieldTest_Controller', $action);
+	}
+	
+	function Form() {
+		$group1 = DataObject::get_one('Group', '"Code" = \'group1\'');
+		return new Form(
+			$this,
+			'FormNoGroup',
+			new FieldSet(new MemberTableField($this, "Members", $group1)),
+			new FieldSet(new FormAction('submit'))
+		);
+	}
+
+	function FormNoGroup() {
+		$tf = new MemberTableField(
+			$this,
+			"Members"
+			// no group
+		);
+		
+		return new Form(
+			$this,
+			'FormNoGroup',
+			new FieldSet(new MemberTableField($this, "Members")),
+			new FieldSet(new FormAction('submit'))
+		);
+	}
+	
 }

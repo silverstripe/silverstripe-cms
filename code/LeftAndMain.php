@@ -36,6 +36,8 @@ class LeftAndMain extends Controller {
 	 * through {@link getEditForm()} and other logic.
 	 */
 	static $tree_class = null;
+	
+	static $ForceReload;
 
 	/**
 	* The url used for the link in the Help tab in the backend
@@ -55,9 +57,6 @@ class LeftAndMain extends Controller {
 		'Member_ProfileForm',
 		'EditorToolbar',
 		'EditForm',
-		'BatchActionsForm',
-		'batchactions',
-		'AddForm',
 	);
 	
 	/**

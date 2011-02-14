@@ -69,7 +69,8 @@ body.ModelAdmin .resultsTable tbody td {
 }
 
 body.ModelAdmin #right{
-	overflow:auto !important;
+	overflow:hidden !important;
+	
 }
 
 body.ModelAdmin #right table.results {
@@ -128,11 +129,15 @@ body.ModelAdmin .ui-layout-west form .Actions {
 	margin: 5px 0;
 }
 
+body.ModelAdmin #right .Actions {
+	position:absolute;
+	bottom:4px;
+}
+
 body.ModelAdmin #right .ajaxActions {
-	position: fixed !important;
-	position: absolute;
-	right: 30px !important;
-	bottom: 35px !important;
+	position:absolute;
+	bottom:4px;
+	height: 30px;
 }
 
 body.ModelAdmin .ui-layout-west .tab {

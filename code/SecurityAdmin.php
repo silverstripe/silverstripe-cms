@@ -17,12 +17,11 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	static $subitem_class = 'Member';
 	
 	static $allowed_actions = array(
-		'addmember',
+		'addgroup',
 		'autocomplete',
 		'removememberfromgroup',
 		'savemember',
 		'AddRecordForm',
-		'MemberForm',
 		'EditForm',
 		'MemberImportForm',
 		'memberimport',
@@ -39,18 +38,36 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	public function init() {
 		parent::init();
 
-		Requirements::javascript(CMS_DIR . '/javascript/SecurityAdmin.js');
-		Requirements::javascript(CMS_DIR . '/javascript/SecurityAdmin.Tree.js');
-				
-		CMSBatchActionHandler::register('delete', 'SecurityAdmin_DeleteBatchAction', 'Group');
+		Requirements::javascript(CMS_DIR . '/javascript/hover.js');
+		Requirements::javascript(THIRDPARTY_DIR . "/scriptaculous/controls.js");
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery-livequery/jquery.livequery.js');
+
+		// needed for MemberTableField (Requirements not determined before Ajax-Call)
+		Requirements::add_i18n_javascript(SAPPHIRE_DIR . '/javascript/lang');
+		Requirements::javascript(SAPPHIRE_DIR . "/javascript/TableListField.js");
+		Requirements::javascript(SAPPHIRE_DIR . "/javascript/TableField.js");
+		Requirements::javascript(SAPPHIRE_DIR . "/javascript/ComplexTableField.js");
+		Requirements::javascript(CMS_DIR . "/javascript/MemberTableField.js");
+		Requirements::css(THIRDPARTY_DIR . "/greybox/greybox.css");
+		Requirements::css(SAPPHIRE_DIR . "/css/ComplexTableField.css");
+
+		Requirements::javascript(CMS_DIR . '/javascript/SecurityAdmin_left.js');
+		Requirements::javascript(CMS_DIR . '/javascript/SecurityAdmin_right.js');
+		
+		Requirements::javascript(THIRDPARTY_DIR . "/greybox/AmiJS.js");
+		Requirements::javascript(THIRDPARTY_DIR . "/greybox/greybox.js");
 	}
 	
 	function getEditForm($id = null) {
-		$form = parent::getEditForm($id);
-
 		if(!$id) $id = $this->currentPageID();
+
+		if($id && $id != 'root') {
+			$record = DataObject::get_by_id($this->stat('tree_class'), $id);
+			if(!$record) return false;
+		}		
+
 		if($id && is_numeric($id)) {
-			$fields = $form->Fields();
+			$fields = $record->getCMSFields();
 
 			if($fields->hasTabSet()) {
 				$fields->findOrMakeTab('Root.Import',_t('Group.IMPORTTABTITLE', 'Import'));
@@ -80,22 +97,31 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 				}
 			}
 		
-			$form->Actions()->insertBefore(
-				$actionAddMember = new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member')),
-				'action_save'
+			$actions = new FieldSet(
+				new FormAction('addmember',_t('SecurityAdmin.ADDMEMBER','Add Member')),
+				new FormAction('save',_t('SecurityAdmin.SAVE','Save'))
 			);
-			$actionAddMember->setForm($form);
+			
+			$form = new Form($this, "EditForm", $fields, $actions);
+			$form->loadDataFrom($record);
+
+			if(!$record->canEdit()) {
+				$readonlyFields = $form->Fields()->makeReadonly();
+				$form->setFields($readonlyFields);
+			}
 		
 			// Filter permissions
 			$permissionField = $form->Fields()->dataFieldByName('Permissions');
 			if($permissionField) $permissionField->setHiddenPermissions(self::$hidden_permissions);
+			
+			$this->extend('updateEditForm', $form);
+		} else {
+			$form = $this->RootForm();
 		}
-		
-		$this->extend('updateEditForm', $form);
 		
 		return $form;
 	}
-	
+
 	/**
 	 * @return FieldSet
 	 */
@@ -143,12 +169,8 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 				'Roles',
 				'PermissionRole'
 			);
-			// Necessary to make Permission code checkboxes behave consistently
-			$rolesCTF->requirementsForPopupCallback = create_function(
-				'$popup', 
-				'Requirements::javascript(CMS_DIR . "/javascript/MemberTableField.js");'
-			);
-			
+			$rolesCTF->setPermissions(array('add', 'edit', 'delete'));
+
 			$rolesTab = $fields->findOrMakeTab('Root.Roles', _t('SecurityAdmin.TABROLES', 'Roles'));
 			$rolesTab->push(new LiteralField(
 				'RolesDescription', 
@@ -170,8 +192,6 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			$actions
 		);
 		
-		$this->extend('updateEditForm', $form);
-
 		return $form;
 	}
 	
@@ -180,8 +200,9 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		Requirements::css(SAPPHIRE_DIR . '/css/Form.css');
 		Requirements::css(CMS_DIR . '/css/typography.css');
 		Requirements::css(CMS_DIR . '/css/cms_right.css');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery/jquery.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-entwine/dist/jquery.entwine-dist.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery-livequery/jquery.livequery.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/javascript/jquery_improvements.js');
 		Requirements::css(CMS_DIR . '/css/MemberImportForm.css');
 		Requirements::javascript(CMS_DIR . '/javascript/MemberImportForm.js');
 		
@@ -211,8 +232,9 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		Requirements::css(SAPPHIRE_DIR . '/css/Form.css');
 		Requirements::css(CMS_DIR . '/css/typography.css');
 		Requirements::css(CMS_DIR . '/css/cms_right.css');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery/jquery.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-entwine/dist/jquery.entwine-dist.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery.js');
+		Requirements::javascript(THIRDPARTY_DIR . '/jquery-livequery/jquery.livequery.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/javascript/jquery_improvements.js');
 		Requirements::css(CMS_DIR . '/css/MemberImportForm.css');
 		Requirements::javascript(CMS_DIR . '/javascript/MemberImportForm.js');
 		
@@ -273,115 +295,49 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		}
 	}
 
-	public function MemberForm() {
-		$id = $_REQUEST['ID'] ? $_REQUEST['ID'] : Session::get('currentMember');
-		if($id) return $this->getMemberForm($id);
-	}
-
-	public function getMemberForm($id) {
-		if($id && $id != 'new') $record = DataObject::get_by_id('Member', (int) $id);
-		if($record || $id == 'new') {
-			$fields = new FieldSet(
-				new HiddenField('MemberListBaseGroup', '', $this->currentPageID() )
-			);
-
-			if($extraFields = $record->getCMSFields()) {
-				foreach($extraFields as $extra) {
-					$fields->push( $extra );
-				}
-			}
-
-			$fields->push($idField = new HiddenField('ID'));
-			$fields->push($groupIDField = new HiddenField('GroupID'));
-
-			$actions = new FieldSet();
-			$actions->push(new FormAction('savemember', _t('SecurityAdmin.SAVE', 'Save')));
-
-			$form = new Form($this, 'MemberForm', $fields, $actions);
-			if($record) $form->loadDataFrom($record);
-
-			$idField->setValue($id);
-			$groupIDField->setValue($this->currentPageID());
-			
-			if($record && !$record->canEdit()) {
-				$readonlyFields = $form->Fields()->makeReadonly();
-				$form->setFields($readonlyFields);
-			}
-
-			return $form;
-		}
-	}
-
-	function savemember() {
-		$data = $_REQUEST;
-		$className = $this->stat('subitem_class');
-
-		$id = $_REQUEST['ID'];
-		if($id == 'new') $id = null;
-
-		if($id) {
-			$record = DataObject::get_by_id($className, $id);
-			if($record && !$record->canEdit()) return Security::permissionFailure($this);
-		} else {
-			if(!singleton($this->stat('subitem_class'))->canCreate()) return Security::permissionFailure($this);
-			$record = new $className();
-		}
-
-		$record->update($data);
-		$record->ID = $id;
-		$record->write();
-
-		$record->Groups()->add($data['GroupID']);
-
-		FormResponse::add("reloadMemberTableField();");
-
-		return FormResponse::respond();
-	}
-
-	function addmember($className=null) {
-		$data = $_REQUEST;
-		unset($data['ID']);
-		if($className == null) $className = $this->stat('subitem_class');
-
-		if(!singleton($this->stat('subitem_class'))->canCreate()) return Security::permissionFailure($this);
-
-		$record = new $className();
-
-		$record->update($data);
-		$record->write();
+	/**
+	 * Return the entire site tree as a nested set of ULs.
+	 * @return string Unordered list HTML
+	 */
+	public function SiteTreeAsUL() {
+		$obj = singleton($this->stat('tree_class'));
+		$obj->markPartialTree();
 		
-		if($data['GroupID']) $record->Groups()->add((int)$data['GroupID']);
+		if($p = $this->currentPage()) $obj->markToExpose($p);
 
-		FormResponse::add("reloadMemberTableField();");
+		// getChildrenAsUL is a flexible and complex way of traversing the tree
+		$siteTreeList = $obj->getChildrenAsUL(
+			'',
+			'"<li id=\"record-$child->ID\" class=\"$child->class " . $child->markingClasses() . ($extraArg->isCurrentPage($child) ? " current" : "") . "\">" . ' .
+			'"<a href=\"" . Controller::join_links(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" >" . $child->TreeTitle() . "</a>" ',
+			$this,
+			true
+		);	
 
-		return FormResponse::respond();
-	}
-
-	public function removememberfromgroup() {
-		$groupID = $this->urlParams['ID'];
-		$memberID = $this->urlParams['OtherID'];
-		if(is_numeric($groupID) && is_numeric($memberID)) {
-			$member = DataObject::get_by_id('Member', (int) $memberID);
-
-			if(!$member->canDelete()) return Security::permissionFailure($this);
-
-			$member->Groups()->remove((int)$groupID);
-
-			FormResponse::add("reloadMemberTableField();");
-		} else {
-			user_error("SecurityAdmin::removememberfromgroup: Bad parameters: Group=$groupID, Member=$memberID", E_USER_ERROR);
+		// Wrap the root if needs be
+		$rootLink = $this->Link() . 'show/root';
+		$rootTitle = _t('SecurityAdmin.SGROUPS', 'Security Groups');
+		if(!isset($rootID)) {
+			$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-root\" class=\"Root\"><a href=\"$rootLink\"><strong>{$rootTitle}</strong></a>"
+			. $siteTreeList . "</li></ul>";
 		}
+							
+		return $siteTree;
+	}
 
-		return FormResponse::respond();
-	}
-	
-	function getSiteTreeFor($className, $rootID = null, $childrenMethod = null, $numChildrenMethod = null, $filterFunction = null, $minNodeCount = 30) {
-		if (!$childrenMethod) $childrenMethod = 'stageChildren';
-		return parent::getSiteTreeFor($className, $rootID, $childrenMethod, $numChildrenMethod, $filterFunction, $minNodeCount);
-	}
-	
-	function getCMSTreeTitle() {
-		return _t('SecurityAdmin.SGROUPS', 'Security Groups');
+	public function addgroup($request) {
+		// Protect against CSRF on destructive action
+		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
+		
+		if(!singleton($this->stat('tree_class'))->canCreate()) return Security::permissionFailure($this);
+		
+		$newGroup = Object::create($this->stat('tree_class'));
+		$newGroup->Title = _t('SecurityAdmin.NEWGROUP',"New Group");
+		$newGroup->Code = "new-group";
+		$newGroup->ParentID = (is_numeric($_REQUEST['ParentID'])) ? (int)$_REQUEST['ParentID'] : 0;
+		$newGroup->write();
+		
+		return $this->returnItemToUser($newGroup);
 	}
 
 	public function EditedMember() {
