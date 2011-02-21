@@ -46,6 +46,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'versions',
 		'EditForm',
 		'AddForm',
+		'SearchTreeForm',
 		'SiteTreeAsUL',
 		'getshowdeletedsubtree',
 		'getfilteredsubtree',
@@ -1292,7 +1293,91 @@ JS;
 		
 		return $form;
 	}
+
+	/**
+	 * Form used to filter the sitetree. It can only be used via javascript for now.
+	 * 
+	 * @return Form
+	 */
+	function SearchTreeForm() {
+		// get all page types in a dropdown-compatible format
+		$pageTypes = SiteTree::page_type_classes(); 
+		array_unshift($pageTypes, 'All');
+		$pageTypes = array_combine($pageTypes, $pageTypes);
+		asort($pageTypes);
+		
+		// get all filter instances
+		$filters = ClassInfo::subclassesFor('CMSSiteTreeFilter');
+		$filterMap = array();
+		// remove base class
+		array_shift($filters);
+		// add filters to map
+		foreach($filters as $filter) {
+			$filterMap[$filter] = call_user_func(array($filter, 'title'));
+		}
+		// ensure that 'all pages' filter is on top position
+		uasort($filterMap, 
+			create_function('$a,$b', 'return ($a == "CMSSiteTreeFilter_Search") ? 1 : -1;')
+		);
+
+		$showDefaultFields = array();
+		$form = new Form(
+			$this,
+			'SearchTreeForm',
+			new FieldSet(
+				$showDefaultFields[] = new DropdownField(
+					'FilterClass', 
+					_t('CMSMain.SearchTreeFormPagesDropdown', 'Pages'), 
+					$filterMap
+				),
+				$showDefaultFields[] = new TextField(
+					'Title', 
+					_t('CMSMain.TITLEOPT', 'Title')
+				),
+				new TextField('Content', 'Text'),
+				new DateField('EditedSince', _t('CMSMain_left.ss.EDITEDSINCE','Edited Since')),
+				new DropdownField('ClassName', 'Page Type', $pageTypes, null, null, 'Any'),
+				new TextField(
+					'MenuTitle', 
+					_t('CMSMain.MENUTITLEOPT', 'Navigation Label')
+				),
+				new TextField(
+					'Status',
+					_t('CMSMain.STATUSOPT', 'Status')
+				),
+				new TextField(
+					'MetaDescription',
+					_t('CMSMain.METADESCOPT', 'Description')
+				),
+				new TextField(
+					'MetaKeywords',
+					_t('CMSMain.METAKEYWORDSOPT', 'Keywords')
+				)
+			),
+			new FieldSet(
+				new ResetFormAction(
+					'clear', 
+					_t('CMSMain_left.ss.CLEAR', 'Clear')
+				),
+				new FormAction(
+					'doSearchTree', 
+					_t('CMSMain_left.ss.SEARCH', 'Search')
+				)
+			)
+		);
+		$form->setFormMethod('GET');
+		$form->disableSecurityToken();
+		$form->unsetValidator();
+		
+		foreach($showDefaultFields as $f) $f->addExtraClass('show-default');
+		
+		return $form;
+	}
 	
+	function doSearchTree($data, $form) {
+		return $this->getsubtree($this->request);
+	}
+		
 	/**
 	 * Helper function to get page count
 	 */

@@ -139,6 +139,9 @@ class CMSBatchAction_Publish extends CMSBatchAction {
 	function getActionTitle() {
 		return _t('CMSBatchActions.PUBLISH_PAGES', 'Publish');
 	}
+	function getDoingText() {
+		return _t('CMSBatchActions.PUBLISHING_PAGES', 'Publishing selected pages');
+	}
 
 	function run(DataObjectSet $pages) {
 		return $this->batchaction($pages, 'doPublish',
@@ -160,6 +163,9 @@ class CMSBatchAction_Publish extends CMSBatchAction {
 class CMSBatchAction_Unpublish extends CMSBatchAction {
 	function getActionTitle() {
 		return _t('CMSBatchActions.UNPUBLISH_PAGES', 'Un-publish');
+	}
+	function getDoingText() {
+		return _t('CMSBatchActions.UNPUBLISHING_PAGES', 'Un-publishing selected pages');
 	}
 
 	function run(DataObjectSet $pages) {

@@ -309,7 +309,7 @@ HTML;
 	/**
 	 * Return the form that displays the details of a folder, including a file list and fields for editing the folder name.
 	 */
-	function getEditForm($id) {
+	function getEditForm($id = null) {
 		if($id && $id != "root") {
 			$record = DataObject::get_by_id("File", $id);
 		} else {
@@ -498,6 +498,7 @@ JS;
 		
 		$parent = ($_REQUEST['ParentID'] && is_numeric($_REQUEST['ParentID'])) ? (int)$_REQUEST['ParentID'] : 0;
 		$name = (isset($_REQUEST['Name'])) ? basename($_REQUEST['Name']) : _t('AssetAdmin.NEWFOLDER',"NewFolder");
+	}
 		
 	/**
 	 * @return Form
