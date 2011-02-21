@@ -184,8 +184,8 @@ class LeftAndMain extends Controller {
 				$theme = false;
 			}
 			
-			if($theme) $cssFiles .= ', ' . THEMES_DIR . "/{$theme}/css/editor.css";
-			else if(project()) $cssFiles .= ', ' . project() . '/css/editor.css';
+			if($theme) $cssFiles .= ',' . THEMES_DIR . "/{$theme}/css/editor.css";
+			else if(project()) $cssFiles .= ',' . project() . '/css/editor.css';
 
 			$htmlEditorConfig->setOption('content_css', $cssFiles);
 		}
