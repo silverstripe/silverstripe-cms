@@ -67,7 +67,7 @@ abstract class ModelAdmin extends LeftAndMain {
 		'renderimportform',
 		'handleList',
 		'handleItem',
-		'ImportForm'
+		'ImportForm',
 	);
 	
 	/**
@@ -892,7 +892,12 @@ class ModelAdmin_RecordController extends Controller {
 	protected $parentController;
 	protected $currentRecord;
 	
-	static $allowed_actions = array('edit', 'view', 'EditForm', 'ViewForm');
+	static $allowed_actions = array(
+		'edit', 
+		'view', 
+		'EditForm', 
+		'ViewForm',
+	);
 	
 	function __construct($parentController, $request, $recordID = null) {
 		$this->parentController = $parentController;

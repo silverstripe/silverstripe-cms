@@ -28,7 +28,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		'memberimport',
 		'GroupImportForm',
 		'groupimport',
-		'RootForm'
+		'RootForm',
 	);
 
 	/**

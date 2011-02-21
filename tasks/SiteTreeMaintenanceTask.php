@@ -5,7 +5,7 @@
  */
 class SiteTreeMaintenanceTask extends Controller {
 	static $allowed_actions = array(
-		'*' => 'ADMIN'
+		'*' => 'ADMIN',
 	);
 	
 	function makelinksunique() {

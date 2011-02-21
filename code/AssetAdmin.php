@@ -29,7 +29,7 @@ class AssetAdmin extends LeftAndMain {
 		'UploadForm',
 		'deleteUnusedThumbnails' => 'ADMIN',
 		'batchactions',
-		'BatchActionsForm'
+		'BatchActionsForm',
 	);
 	
 	/**

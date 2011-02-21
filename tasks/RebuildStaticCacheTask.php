@@ -9,7 +9,7 @@ class RebuildStaticCacheTask extends Controller {
 	
 	static $allowed_actions = array(
 		'index',
-		'show'
+		'show',
 	);
 	
 	function init() {

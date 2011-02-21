@@ -24,7 +24,7 @@ class StaticExporter extends Controller {
 	
 	static $allowed_actions = array(
 		'index',
-		'export'
+		'export',
 	);
 	
 	function init() {
