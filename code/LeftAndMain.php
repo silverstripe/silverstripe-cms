@@ -213,17 +213,17 @@ class LeftAndMain extends Controller {
 		
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery/jquery.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/jquery_improvements.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.core.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.datepicker.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.dialog.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.tabs.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.draggable.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.droppable.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/ui.accordion.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/effects.core.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/effects.slide.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/effects.drop.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/effects.scale.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.ui.core.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.ui.datepicker.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.ui.dialog.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.ui.tabs.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.ui.draggable.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.ui.droppable.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.ui.accordion.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.effects.core.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.effects.slide.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.effects.drop.js');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.effects.scale.js');
 		
 		
 		Requirements::javascript(CMS_DIR . '/thirdparty/jquery-layout/jquery.layout.js');
@@ -234,7 +234,7 @@ class LeftAndMain extends Controller {
 		
 		Requirements::javascript(CMS_DIR . '/javascript/ssui.core.js');
 		// @todo Load separately so the CSS files can be inlined
-		Requirements::css(SAPPHIRE_DIR . '/thirdparty/jquery-ui-themes/smoothness/ui.all.css');
+		Requirements::css(SAPPHIRE_DIR . '/thirdparty/jquery-ui-themes/smoothness/jquery.ui.all.css');
 		
 		// entwine
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-entwine/dist/jquery.entwine-dist.js');
