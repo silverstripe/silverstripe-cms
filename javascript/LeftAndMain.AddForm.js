@@ -114,7 +114,7 @@
 				// Note: Uses siteTreeHints global
 				var tree = this.getTree(), 
 					origOptions = this.getOrigOptions(), 
-					dropdown = this.find(':select[name=PageType]');
+					dropdown = this.find('select[name=PageType]');
 				if(!selectedNode) selectedNode = tree.firstSelected();
 
 				// Clear all existing <option> elements

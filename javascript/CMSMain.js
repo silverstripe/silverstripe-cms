@@ -59,7 +59,7 @@
 				
 				// special case: we can't use CMSSiteTreeFilter together with other options
 				this.find('select[name=FilterClass]').change(function(e) {
-					var others = self.find('.field').not($(this).parents('.field')).find(':input,:select');
+					var others = self.find('.field').not($(this).parents('.field')).find(':input,select');
 					if(e.target.value == 'CMSSiteTreeFilter_Search') others.removeAttr('disabled');
 					else others.attr('disabled','disabled');
 				})

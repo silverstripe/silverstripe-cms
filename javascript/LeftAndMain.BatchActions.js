@@ -363,7 +363,7 @@
 	/**
 	 * Class: #Form_BatchActionsForm :select[name=Action]
 	 */
-	$('#Form_BatchActionsForm :select[name=Action]').entwine({
+	$('#Form_BatchActionsForm select[name=Action]').entwine({
 		
 		/**
 		 * Function: onchange
