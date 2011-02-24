@@ -42,6 +42,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'PublishItemsForm',
 		'RootForm',
 		'sidereport',
+		'SideReportsForm',
 		'submit',
 		'versions',
 		'EditForm',
