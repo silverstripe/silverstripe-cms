@@ -213,19 +213,9 @@ class LeftAndMain extends Controller {
 		
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery/jquery.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/jquery_improvements.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.ui.core.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.ui.datepicker.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.ui.dialog.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.ui.tabs.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.ui.draggable.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.ui.droppable.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.ui.accordion.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.effects.core.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.effects.slide.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.effects.drop.js');
-		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery.effects.scale.js');
-		
-		
+
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-ui/jquery-ui.js');  //import all of jquery ui
+
 		Requirements::javascript(CMS_DIR . '/thirdparty/jquery-layout/jquery.layout.js');
 		Requirements::javascript(CMS_DIR . '/thirdparty/jquery-layout/jquery.layout.state.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/json-js/json2.js');
@@ -292,6 +282,7 @@ class LeftAndMain extends Controller {
 				'sapphire/thirdparty/jquery/jquery.js',
 				'sapphire/thirdparty/jquery-livequery/jquery.livequery.js',
 				'sapphire/javascript/jquery-ondemand/jquery.ondemand.js',
+				'sapphire/thirdparty/jquery-ui/jquery-ui.js',
 				'sapphire/thirdparty/firebug-lite/firebug.js',
 				'sapphire/thirdparty/firebug-lite/firebugx.js',
 				'sapphire/javascript/i18n.js',
