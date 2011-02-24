@@ -1,6 +1,6 @@
 (function($) {
 	$.widget("ssui.titlebar", {
-		_init: function() {
+		_create: function() {
 			this.originalTitle = this.element.attr('title');
 
 			var self = this;
@@ -8,7 +8,7 @@
 
 			var title = options.title || this.originalTitle || '&nbsp;';
 			var titleId = $.ui.dialog.getTitleId(this.element);
-			
+
 			this.element.parent().addClass('ui-dialog');
 
 			var uiDialogTitlebar = this.element.
@@ -18,8 +18,8 @@
 					'ui-corner-all ' +
 					'ui-helper-clearfix'
 				);
-				
-				// By default, the 
+
+				// By default, the
 
 				if(options.closeButton) {
 					var uiDialogTitlebarClose = $('<a href="#"/>')
@@ -46,7 +46,7 @@
 							ev.stopPropagation();
 						})
 						.appendTo(uiDialogTitlebar);
-				
+
 					var uiDialogTitlebarCloseText = (this.uiDialogTitlebarCloseText = $('<span/>'))
 						.addClass(
 							'ui-icon ' +
@@ -55,13 +55,13 @@
 						.text(options.closeText)
 						.appendTo(uiDialogTitlebarClose);
 				}
-				
+
 				var uiDialogTitle = $('<span/>')
 					.addClass('ui-dialog-title')
 					.attr('id', titleId)
 					.html(title)
 					.prependTo(uiDialogTitlebar);
-				
+
 				uiDialogTitlebar.find("*").add(uiDialogTitlebar).disableSelection();
 		},
 
@@ -78,7 +78,7 @@
 	
 	$.extend($.ssui.titlebar, {
 		version: "0.0.1",
-		defaults: {
+		options: {
 			title: '',
 			closeButton: false,
 			closeText: 'close'
