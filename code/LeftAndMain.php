@@ -204,11 +204,7 @@ class LeftAndMain extends Controller {
 			// Its available as a Firefox extension or a javascript library
 			// for easy inclusion in other browsers (just append ?debug_firebug=1 to the URL)
 			Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/firebug-lite/firebug.js');
-		} else {
-			// By default, we include fake-objects for all firebug calls
-			// to avoid javascript errors when referencing console.log() etc in javascript code
-			Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/firebug-lite/firebugx.js');
-		}
+		} 
 		
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/prototypefix/intro.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/prototype/prototype.js');
@@ -286,8 +282,6 @@ class LeftAndMain extends Controller {
 				'sapphire/thirdparty/jquery-livequery/jquery.livequery.js',
 				'sapphire/javascript/jquery-ondemand/jquery.ondemand.js',
 				'sapphire/thirdparty/jquery-ui/jquery-ui.js',
-				'sapphire/thirdparty/firebug-lite/firebug.js',
-				'sapphire/thirdparty/firebug-lite/firebugx.js',
 				'sapphire/javascript/i18n.js',
 			)
 		);
