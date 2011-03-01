@@ -237,6 +237,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery-livequery/jquery.livequery.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/jquery_improvements.js');
 		Requirements::css(CMS_DIR . '/css/MemberImportForm.css');
+		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-entwine/dist/jquery.entwine-dist.js');
 		Requirements::javascript(CMS_DIR . '/javascript/MemberImportForm.js');
 		
 		return $this->renderWith('BlankPage', array(
