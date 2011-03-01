@@ -970,7 +970,7 @@ class LeftAndMain extends Controller {
 		if(!$form) return false;
 		
 		$form->transform(new PrintableTransformation());
-		$form->actions = null;
+		$form->setActions(null);
 
 		Requirements::clear();
 		Requirements::css(CMS_DIR . '/css/LeftAndMain_printable.css');
