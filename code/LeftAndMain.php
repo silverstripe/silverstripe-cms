@@ -578,8 +578,8 @@ class LeftAndMain extends Controller {
 		);
 
 		// Trim off the outer tag
-		$html = ereg_replace('^[ \t\r\n]*<ul[^>]*>','', $html);
-		$html = ereg_replace('</ul[^>]*>[ \t\r\n]*$','', $html);
+		$html = preg_replace('/^[\s\t\r\n]*<ul[^>]*>/','', $html);
+		$html = preg_replace('/<\/ul[^>]*>[\s\t\r\n]*$/','', $html);
 		
 		return $html;
 	}
