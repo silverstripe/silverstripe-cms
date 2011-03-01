@@ -4,42 +4,67 @@
 
 (function($) {
   $(document).ready(function() {
-		$('#sitetree_ul').jstree({
-			'core': {
-				'initially_open': ['record-0']
-			},
-			'html_data': {
-				// TODO Hack to avoid ajax load on init, see http://code.google.com/p/jstree/issues/detail?id=911
-				'data': $('#sitetree_ul').html(),
-				'ajax': {
-					'url': 'admin/getsubtree',
-					'data': function(node) {
-						return { ID : $(node).data("id") ? $(node).data("id") : 0 , ajax: 1};
+		var treeContainer = $('#sitetree_ul');
+		treeContainer
+			.jstree({
+				'core': {
+					'initially_open': ['record-0']
+				},
+				'html_data': {
+					// TODO Hack to avoid ajax load on init, see http://code.google.com/p/jstree/issues/detail?id=911
+					'data': treeContainer.html(),
+					'ajax': {
+						'url': 'admin/getsubtree',
+						'data': function(node) {
+							return { ID : $(node).data("id") ? $(node).data("id") : 0 , ajax: 1};
+						}
 					}
+				},
+				'ui': {
+					"select_limit" : 1,
+					'initially_select': [treeContainer.find('.current').attr('id')]
+				},
+				'plugins': ['themes', 'html_data', 'ui', 'dnd']
+			})
+			// .bind('before.jstree', function(e, data) {
+			// 	if(data.func == 'drag_start') {
+			// 		// Only allow drag'n'drop if it has been specifically enabled
+			// 		return $('input[id=sortitems]').is(':checked');
+			// 	}
+			// })
+			// TODO Move to EditForm logic
+			.bind('select_node.jstree', function(e, data) {
+				var node = data.rslt.obj, loadedNodeID = $('#Form_EditForm :input[name=ID]').val()
+				
+				// Don't allow reloading of currently selected node,
+				// mainly to avoid doing an ajax request on initial page load
+				if($(node).data('id') == loadedNodeID) return;
+				
+				var url = $(node).find('a:first').attr('href');
+				if(url && url != '#') {
+					var xmlhttp = $('#Form_EditForm').entwine('ss').loadForm(
+						url,
+						function(response) {}
+					);
+				} else {
+					$('#Form_EditForm').entwine('ss').removeForm();
 				}
-			},
-			'ui': {
-				"select_limit" : 1,
-				'initially_select': [$('#sitetree_ul').find('.current').attr('id')]
-			},
-			'plugins': ['themes', 'html_data', 'ui']
-		});
-		
-		$('#sitetree_ul').bind('select_node.jstree', function(e, data) {
-			var node = data.rslt.obj;
-			var url = $(node).find('a:first').attr('href');
-			if(url && url != '#') {
-				var xmlhttp = $('#Form_EditForm').entwine('ss').loadForm(
-					url,
-					function(response) {}
-				);
-		
-				// TODO Mark node as loading
-				// if(xmlhttp) this.addNodeClass('loading');
-			} else {
-				jQuery('#Form_EditForm').entwine('ss').removeForm();
-			}
-		});
+			})
+			.bind('move_node.jstree', function(e, data) {
+				var movedNode = data.rslt.o, newParentNode = data.rslt.np, oldParentNode = data.inst._get_parent(movedNode);
+				var siblingIDs = $.map($(movedNode).siblings().andSelf(), function(el) {
+					return $(el).data('id');
+				});
+				
+				$.ajax({
+					'url': 'admin/savetreenode',
+					'data': {
+						ID: $(movedNode).data('id'), 
+						ParentID: $(newParentNode).data('id') || 0,
+						SiblingIDs: siblingIDs
+					}
+				});
+			});
 		
   });
 
