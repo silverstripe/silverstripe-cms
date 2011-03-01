@@ -546,7 +546,7 @@ class LeftAndMain extends Controller {
 				$treeTitle =  $siteConfig->Title;
 			}
 			
-			$html = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-0\" class=\"Root nodelete\"><a href=\"$rootLink\"><strong>$treeTitle</strong></a>"
+			$html = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-0\" data-id=\"0\"class=\"Root nodelete\"><a href=\"$rootLink\"><strong>$treeTitle</strong></a>"
 				. $html . "</li></ul>";
 		}
 
