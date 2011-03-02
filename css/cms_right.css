@@ -242,13 +242,6 @@
 /** 
  * Tinymce 
  */
-/* Ensure icons in toolbar float and adjust to smaller widths */
-.right table.mceToolbar, 
-.right tr.mceFirst .mceToolbar tr td, 
-.right tr.mceLast .mceToolbar tr td { 
-	float: left; 
-}
-
 .right form .mceEditor select.mceNativeListBox { 
 	background: #fff; 
 	padding-top: 2px;
