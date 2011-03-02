@@ -55,17 +55,15 @@ CommentTableField.prototype = {
 		var row = Event.findElement(e,"tr");
 		
 		img.setAttribute("src",'cms/images/network-save.gif'); // TODO doesn't work in Firefox1.5+
-		new Ajax.Request(
-			link.getAttribute("href"),
-			{
-				method: 'post', 
-				postBody: 'forceajax=1',
-				onComplete: function(){
-					Effect.Fade(row);
-				}.bind(this),
-				onFailure: function(response) {errorMessage('Server Error', response);}
-			}
-		);
+		jQuery.ajax({
+			'url': link.getAttribute("href")
+			'method': 'post', 
+			'data': 'forceajax=1',
+			'success': function(){
+				Effect.Fade(row);
+			},
+			'error': function(response) {errorMessage('Server Error', response);}
+		});
 		Event.stop(e);
 	},
 	

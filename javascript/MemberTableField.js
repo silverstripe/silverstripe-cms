@@ -341,13 +341,15 @@ function ajaxSubmitFieldSet(href, fieldSet, extraData) {
 		data += '&'+extraData;
 	}
 	// Send request
-	new Ajax.Request(href, {
-		method : 'post', postBody : data,
-		onSuccess : function(response) {
+	jQuery.ajax({
+		'url': href, 
+		'method' : 'post', 
+		'data' : data,
+		'success' : function(response) {
 			//alert(response.responseText);
 			Ajax.Evaluator(response);
 		},
-		onFailure : function(response) {
+		'error' : function(response) {
 			alert(response.responseText);
 			//errorMessage('Error: ', response);
 		}

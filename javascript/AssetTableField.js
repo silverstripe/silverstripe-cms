@@ -127,6 +127,7 @@ AssetTableField.prototype = {
 		var img = Event.element(e);
 		var link = Event.findElement(e,"a");
 		var row = Event.findElement(e,"tr");
+		var self = this;
 		
 		var linkCount = row.getElementsByClassName('linkCount')[0];
 		if(linkCount) linkCount = linkCount.innerHTML;
@@ -139,30 +140,28 @@ AssetTableField.prototype = {
 		if(confirmed)
 		{
 			img.setAttribute("src",'cms/images/network-save.gif'); // TODO doesn't work
-			new Ajax.Request(
-				link.getAttribute("href"),
-				{
-					method: 'post', 
-					postBody: 'forceajax=1' + ($('SecurityID') ? '&SecurityID=' + $('SecurityID').value : ''),
-					onComplete: function(){
-						Effect.Fade(
-							row,
-							{
-								afterFinish: function(obj) {
-									// remove row from DOM
-									obj.element.parentNode.removeChild(obj.element);
-									// recalculate summary if needed (assumes that TableListField.js is present)
-									// TODO Proper inheritance
-									if(this._summarise) this._summarise();
-									// custom callback
-									if(this.callback_deleteRecord) this.callback_deleteRecord(e);
-								}.bind(this)
+			jQuery.ajax({
+				'url': link.getAttribute("href"),
+				'method': 'post', 
+				'data': {'forceajax': 1, 'SecurityID': $('SecurityID') ? $('SecurityID').value : null},
+				'success': function(){
+					Effect.Fade(
+						row,
+						{
+							afterFinish: function(obj) {
+								// remove row from DOM
+								obj.element.parentNode.removeChild(obj.element);
+								// recalculate summary if needed (assumes that TableListField.js is present)
+								// TODO Proper inheritance
+								if(self._summarise) self._summarise();
+								// custom callback
+								if(self.callback_deleteRecord) self.callback_deleteRecord(e);
 							}
-						);
-					}.bind(this),
-					onFailure: this.ajaxErrorHandler
-				}
-			);
+						}
+					);
+				},
+				'error': this.ajaxErrorHandler
+			});
 		}
 		
 		Event.stop(e);

@@ -122,12 +122,14 @@ WidgetAreaEditorClass.prototype = {
 		
 		
 		this.name = holder;
-		new Ajax.Request('Widget_Controller/EditableSegment/' + className, {
-			onSuccess : $('usedWidgets-'+holder).parentNode.parentNode.insertWidgetEditor.bind(this)
+		jQuery.ajax({
+			'url': 'Widget_Controller/EditableSegment/' + className, 
+			'success' : $('usedWidgets-'+holder).parentNode.parentNode.insertWidgetEditor.bind(this)
 		});
 	},
 
 	updateWidgets: function() {
+		var self = this;
 
 		// Gotta get the name of the current dohickey based off the ID
 		this.name = this.element.id.split('-').pop();
@@ -149,8 +151,11 @@ WidgetAreaEditorClass.prototype = {
 				var wIdArray = widget.id.split('-');
 				wIdArray.pop();
 
-				new Ajax.Request('Widget_Controller/EditableSegment/' + wIdArray.join('-'), {
-					onSuccess : $('usedWidgets-'+this.name).parentNode.parentNode.insertWidgetEditor.bind(this)
+				jQuery.ajax({
+					'url': 'Widget_Controller/EditableSegment/' + wIdArray.join('-'),
+					'success' : function() {
+						$('usedWidgets-'+self.name).parentNode.parentNode.insertWidgetEditor();
+					}
 				});
 			}
 		}
