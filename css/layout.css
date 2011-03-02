@@ -566,31 +566,7 @@ iframe {
 #contentPanel p#TargetBlank {
 	margin-left: 0;
 }
-#contentPanel div.TreeDropdownField {
-	width: 180px;
-}
-#contentPanel div.TreeDropdownField span.items {
-	width: 155px;
-	background: #fff;
-	font-size: 12px;
-	border:1px solid #A7A7A7;
-	border-right: none;
-	overflow: hidden;
-	height: 15px;
-}
-#contentPanel div.TreeDropdownField input.items {
-	float: left;
-	width: 155px;
-	background: #fff;
-	font-size: 12px;
-	border:1px solid #A7A7A7;
-	border-right: none;
-	height: 19px;
-	overflow: hidden;
-}
-#contentPanel div.TreeDropdownField a {
-		overflow: visible;
-	}
+
 #contentPanel .thumbnailstrip {
 	border: none;
 	width: 190px;

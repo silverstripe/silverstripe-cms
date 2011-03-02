@@ -513,14 +513,6 @@
 	background: none;
 }
 
-/**
- * Content Panel
- */
-#contentPanel div.TreeDropdownField a.editLink {
-	float: left;
-	margin: 0px;
-	outline: 0;
-}
 #contentPanel div.tree_holder {
 	width: 184px;
 	height: 260px;
