@@ -513,15 +513,6 @@
 	background: none;
 }
 
-#contentPanel div.tree_holder {
-	width: 184px;
-	height: 260px;
-	/* Keep a scrollbar in the RHS tree dropdowns, in case the content is too wide for the column */
-	overflow-x: scroll;
-}
-#contentPanel ul.tree a {
-	padding-left: 20px;
-}
 #contentPanel h2 img {
 	float: right;
 	margin-right: 2px;

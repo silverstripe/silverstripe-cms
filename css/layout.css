@@ -420,26 +420,17 @@ body.stillLoading select {
 			display: none;
 		}
 	
-	#sitetree_ul, ul#sitetree {
-		padding: 3px 0 0 3px;
-		clear: left;
-	}
-	#sitetree_ul ul#sitetree {
-		padding: 0 0 5px;
-	}
-		html>body #sitetree {
-			width: auto;
-		}
-		#left #TreeActions,
-		#left .checkboxAboveTree {
-			background: #EEE;
-			padding: 5px;
-			float: left;
-			width: 95%;
-		}
-		#left .checkboxAboveTree {
-			border-bottom: 1px solid #CCC;
-		}
+#left #TreeActions,
+#left .checkboxAboveTree {
+	background: #EEE;
+	padding: 5px;
+	float: left;
+	width: 95%;
+}
+#left .checkboxAboveTree {
+	border-bottom: 1px solid #CCC;
+}
+
 #TreeTools label {
 	display: block;
 	padding-top: 2px;
@@ -538,11 +529,6 @@ li.spacer {
 .thumbnailstrip li {
 	float: left;
 	margin-right: 4px;
-}
-
-/* CMS specific icons for the tree */
-ul.tree li.Root span.Root span.c a {
-	background: url(../../cms/images/treeicons/root.png) no-repeat !important;
 }
 
 /* Misc Styling */

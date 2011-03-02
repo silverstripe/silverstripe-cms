@@ -81,37 +81,6 @@ form.oneline fieldset {
 	font-weight: bold;
 }
 
-.filefolderhover span.a, 
-ul.tree span.a.over,
-ul.tree .over > span.a {
-	background-color: #FFFFBB !important;
-	/* these push the highlight out to the left of the window */
-	margin-left: -100px;
-	padding-left: 100px;
-	background-position: 100px 50%;
-}
-
-ul.tree span.a a.notinmenu, ul.tree span.a a.notinmenu *,
-#publication_key span.notinmenu {
-	color: #77A;
-}
-
-ul.tree span.a a.disabled {
-	color: #999;
-	cursor: pointer;
-}
-	ul.tree span.a a.disabled *, ul.tree span.a a.disabled.notinmenu *, ul.tree span.a a.disabled span.modified {
-		padding: 0;
-		background: none;
-		color: #999;
-		cursor: pointer;
-	}
-	
-ul.tree .deleted {
-	color: red;
-	text-decoration: line-through;
-}
-
 #publication_key {
 	border-bottom: 1px solid #ccc;
 	background: #eee;
@@ -124,29 +93,27 @@ ul.tree .deleted {
 		margin: 0 5px;
 		font-weight: normal;
 	}
+	#publication_key span.notinmenu {
+		color: #77A;
+	}
+	/* Created on stage, never published */
+	#publication_key ins {
+		color: orange;
+		text-decoration : none;
+	}
+	/* Deleted on stage */
+	#publication_key del {
+		color: red;
+	}
+	/* Deleted on stage & live (when show deleted pages is active) */
+	#publication_key del.deletedOnLive {
+		color: #700;
+	}
 
-/* Created on stage, never published */
-ul.tree span.a a ins, ul.tree span.a a.notinmenu ins,
-#publication_key ins {
-	color: orange;
-	text-decoration : none;
-}
-/* Deleted on stage */
-ul.tree span.a a del, ul.tree span.a a.notinmenu del,
-#publication_key del {
-	color: red;
-}
-/* Deleted on stage & live (when show deleted pages is active) */
-ul.tree span.a a del, ul.tree span.a a.notinmenu del.deletedOnLive, 
-#publication_key del.deletedOnLive {
-	color: #700;
-}
-
-ul.tree span.a span.modified,
-#publication_key span.modified {
-	color: green;
-	text-decoration : none;
-}
+	#publication_key span.modified {
+		color: green;
+		text-decoration : none;
+	}
 
 #left {
 	background-color: #eee;
@@ -275,38 +242,6 @@ ul.tree span.a span.modified,
 .SideReport_RecentlyEdited li a:hover {
 	background-color: #FFFFBB;
 }
-
-/**
- * Change the styling of the root tree node
- */
-ul.tree span.a.Root, 
-ul.tree span.a.last.Root, 
-ul.tree span.a.children.Root {
-	background-image: none;
-}
-ul.tree span.a.Root span.c, 
-ul.tree span.a.last.Root span.c, 
-ul.tree span.a.children.Root span.c {
-	margin: 0;
-}
-
-ul.tree span.a.Root span.c {
-	background: url(../../sapphire/javascript/tree/images/i-bottom.gif) no-repeat scroll 0 50%;
-}
-
-#sitetree_ul {
-	overflow: auto;
-	overflow-x: hidden;
-}
-
-ul#sitetree.tree ul {
-	margin-left: 0;
-}
-ul#sitetree.tree ul ul {
-	padding-left: 16px;
-	background: url(../../sapphire/javascript/tree/images/i-repeater.gif) repeat-y scroll 0 50%;
-}
-
 
 /* This applies to both the LHS context menu and the TinyMCE context menu */
 .contextMenu {
