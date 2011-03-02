@@ -29,7 +29,8 @@ ThumbnailStripField.prototype = {
 			// HACK: This is hard-coded to only work with TreeDropdownFields
 			var parentField = $(RegExp.$1).parentNode;
 			if(parentField) {
-				parentField.observeMethod('Change', this.ajaxGetFiles.bind(this));
+				// TODO Fix observing in IE7/IE8
+				// parentField.observeMethod('Change', this.ajaxGetFiles.bind(this));
 			}
 			
 			var searchField = $$('#' + this.updateMethod + 'Search input')[0];		
@@ -58,11 +59,7 @@ ThumbnailStripField.prototype = {
 		this.innerHTML = '<h2>Loading...</h2>';
 		var ajaxURL = this.helperURLBase() + '&methodName=' + this.updateMethod + '&folderID=' + folderID + '&searchText=' + searchText + securityID + '&cacheKillerDate=' + parseInt((new Date()).getTime()) + '&cacheKillerRand=' + parseInt(10000 * Math.random());
 
-		new Ajax.Updater(this, ajaxURL, {
-			method : 'get', 
-			onComplete : callback,
-			onFailure : function(response) { errorMessage("Error getting files", response); }
-		});
+		jQuery(this).load(ajaxURL, callback);
 	},
 
 	reapplyBehaviour: function() {
