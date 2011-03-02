@@ -45,8 +45,7 @@ class LeftAndMain extends Controller {
 
 	static $allowed_actions = array(
 		'index',
-		'ajaxupdateparent',
-		'ajaxupdatesort',
+		'savetreenode',
 		'getitem',
 		'getsubtree',
 		'myprofile',
@@ -614,9 +613,18 @@ class LeftAndMain extends Controller {
 	}
 
 	/**
-	 * Ajax handler for updating the parent of a tree node
+	 * Update the position and parent of a tree node.
+	 * Only saves the node if changes were made.
+	 * 
+	 * Required data: 
+	 * - 'ID': The moved node
+	 * - 'ParentID': New parent relation of the moved node (0 for root)
+	 * - 'SiblingIDs': Array of all sibling nodes to the moved node (incl. the node itself).
+	 *   In case of a 'ParentID' change, relates to the new siblings under the new parent.
+	 * 
+	 * @return SS_HTTPResponse JSON string with a 
 	 */
-	public function ajaxupdateparent($request) {
+	public function savetreenode($request) {
 		if (!Permission::check('SITETREE_REORGANISE') && !Permission::check('ADMIN')) {
 			$this->response->setStatusCode(
 				403,
@@ -625,88 +633,68 @@ class LeftAndMain extends Controller {
 			return;
 		}
 
+		$className = $this->stat('tree_class');		
+		$statusUpdates = array('modified'=>array());
 		$id = $request->requestVar('ID');
 		$parentID = $request->requestVar('ParentID');
+		$siblingIDs = $request->requestVar('SiblingIDs');
 		$statusUpdates = array('modified'=>array());
-
-		if(is_numeric($id) && is_numeric($parentID) && $id != $parentID) {
-			$node = DataObject::get_by_id($this->stat('tree_class'), $id);
-			if($node){
-				if($node && !$node->canEdit()) return Security::permissionFailure($this);
-			
-				$node->ParentID = $parentID;
-				$node->write();
-			
-				$statusUpdates['modified'][$node->ID] = array(
-					'TreeTitle'=>$node->TreeTitle
-				);
-				
-				// Update all dependent pages
-				if($virtualPages = DataObject::get("VirtualPage", "\"CopyContentFromID\" = $node->ID")) {
-					foreach($virtualPages as $virtualPage) {
-						$statusUpdates['modified'][$virtualPage->ID] = array(
-							'TreeTitle' => $virtualPage->TreeTitle()
-						);
-					}
-				}
-
-				$this->response->addHeader(
-					'X-Status',
-					_t('LeftAndMain.SAVED','saved')
-				);
-			}else{
-				$this->response->setStatusCode(
-					500,
-					_t(
-						'LeftAndMain.PLEASESAVE',
-						"Please Save Page: This page could not be upated because it hasn't been saved yet."
-					)
-				);
-			}
-		}
+		if(!is_numeric($id) || !is_numeric($parentID)) throw new InvalidArgumentException();
 		
-		return Convert::raw2json($statusUpdates);
-	}
-
-	/**
-	 * Ajax handler for updating the order of a number of tree nodes
-	 * $_GET[ID]: An array of node ids in the correct order
-	 * $_GET[MovedNodeID]: The node that actually got moved
-	 */
-	public function ajaxupdatesort($request) {
-		if (!Permission::check('SITETREE_REORGANISE') && !Permission::check('ADMIN')) {
+		$node = DataObject::get_by_id($className, $id);
+		if($node && !$node->canEdit()) return Security::permissionFailure($this);
+		
+		if(!$node) {
 			$this->response->setStatusCode(
-				403,
-				_t('LeftAndMain.CANT_REORGANISE',"You do not have permission to rearange the site tree. Your change was not saved.")
+				500,
+				_t(
+					'LeftAndMain.PLEASESAVE',
+					"Please Save Page: This page could not be upated because it hasn't been saved yet."
+				)
 			);
 			return;
 		}
 
-		$className = $this->stat('tree_class');
-		$counter = 0;
-		$statusUpdates = array('modified'=>array());
-
-		if(!is_array($request->requestVar('ID'))) return false;
-		
-		//Sorting root
-		if($request->requestVar('MovedNodeID')==0){ 
-			$movedNode = DataObject::get($className, "\"ParentID\"=0");				
-		}else{
-			$movedNode = DataObject::get_by_id($className, $request->requestVar('MovedNodeID'));
-		}
-		foreach($request->requestVar('ID') as $id) {
-			if($id == $movedNode->ID) {
-				$movedNode->Sort = ++$counter;
-				$movedNode->write();
-				$statusUpdates['modified'][$movedNode->ID] = array(
-					'TreeTitle'=>$movedNode->TreeTitle
-				);
-			} else if(is_numeric($id)) {
-				// Nodes that weren't "actually moved" shouldn't be registered as 
-				// having been edited; do a direct SQL update instead
-				++$counter;
-				DB::query("UPDATE \"$className\" SET \"Sort\" = $counter WHERE \"ID\" = '$id'");
+		// Update hierarchy (only if ParentID changed)
+		if($node->ParentID != $parentID) {
+			$node->ParentID = (int)$parentID;
+			$node->write();
+			
+			$statusUpdates['modified'][$node->ID] = array(
+				'TreeTitle'=>$node->TreeTitle
+			);
+			
+			// Update all dependent pages
+			if($virtualPages = DataObject::get("VirtualPage", "\"CopyContentFromID\" = $node->ID")) {
+				foreach($virtualPages as $virtualPage) {
+					$statusUpdates['modified'][$virtualPage->ID] = array(
+						'TreeTitle' => $virtualPage->TreeTitle()
+					);
+				}
 			}
+
+			$this->response->addHeader('X-Status', _t('LeftAndMain.SAVED','saved'));
+		}
+		
+		// Update sorting
+		if(is_array($siblingIDs)) {
+			$counter = 0;
+			foreach($siblingIDs as $id) {
+				if($id == $node->ID) {
+					$node->Sort = ++$counter;
+					$node->write();
+					$statusUpdates['modified'][$node->ID] = array(
+						'TreeTitle' => $node->TreeTitle
+					);
+				} else if(is_numeric($id)) {
+					// Nodes that weren't "actually moved" shouldn't be registered as 
+					// having been edited; do a direct SQL update instead
+					++$counter;
+					DB::query(sprintf("UPDATE \"%s\" SET \"Sort\" = %d WHERE \"ID\" = '%d'", $className, $counter, $id));
+				}
+			}
+			
+			$this->response->addHeader('X-Status', _t('LeftAndMain.SAVED','saved'));
 		}
 
 		return Convert::raw2json($statusUpdates);

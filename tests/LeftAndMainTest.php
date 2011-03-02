@@ -14,6 +14,67 @@ class LeftAndMainTest extends FunctionalTest {
 		CMSMenu::populate_menu();
 	}
 	
+	public function testSaveTreeNodeSorting() {	
+		$this->loginWithPermission('ADMIN');
+		
+		$rootPages = DataObject::get('SiteTree', '"ParentID" = 0'); // implicitly sorted
+		$siblingIDs = $rootPages->column('ID');
+		$page1 = $rootPages->offsetGet(0);
+		$page2 = $rootPages->offsetGet(1);
+		$page3 = $rootPages->offsetGet(2);
+		
+		// Move page2 before page1
+		$siblingIDs[0] = $page2->ID;
+		$siblingIDs[1] = $page1->ID;
+		$data = array(
+			'SiblingIDs' => $siblingIDs,
+			'ID' => $page2->ID,
+			'ParentID' => 0
+		);
+
+		$response = $this->post('admin/savetreenode', $data);
+		$this->assertEquals(200, $response->getStatusCode());
+		$page1 = DataObject::get_by_id('SiteTree', $page1->ID, false);
+		$page2 = DataObject::get_by_id('SiteTree', $page2->ID, false);
+		$page3 = DataObject::get_by_id('SiteTree', $page3->ID, false);
+		
+		$this->assertEquals(2, $page1->Sort, 'Page1 is sorted after Page2');
+		$this->assertEquals(1, $page2->Sort, 'Page2 is sorted before Page1');
+		$this->assertEquals(3, $page3->Sort, 'Sort order for other pages is unaffected');
+	}
+	
+	public function testSaveTreeNodeParentID() {
+		$this->loginWithPermission('ADMIN');
+
+		$page1 = $this->objFromFixture('Page', 'page1');
+		$page2 = $this->objFromFixture('Page', 'page2');
+		$page3 = $this->objFromFixture('Page', 'page3');
+		$page31 = $this->objFromFixture('Page', 'page31');
+		$page32 = $this->objFromFixture('Page', 'page32');
+
+		// Move page2 into page3, between page3.1 and page 3.2
+		$siblingIDs = array(
+			$page31->ID,
+			$page2->ID,
+			$page32->ID
+		);
+		$data = array(
+			'SiblingIDs' => $siblingIDs,
+			'ID' => $page2->ID,
+			'ParentID' => $page3->ID
+		);
+		$response = $this->post('admin/savetreenode', $data);
+		$this->assertEquals(200, $response->getStatusCode());
+		$page2 = DataObject::get_by_id('SiteTree', $page2->ID, false);
+		$page31 = DataObject::get_by_id('SiteTree', $page31->ID, false);
+		$page32 = DataObject::get_by_id('SiteTree', $page32->ID, false);
+
+		$this->assertEquals($page3->ID, $page2->ParentID, 'Moved page gets new parent');
+		$this->assertEquals(1, $page31->Sort, 'Children pages before insertaion are unaffected');
+		$this->assertEquals(2, $page2->Sort, 'Moved page is correctly sorted');
+		$this->assertEquals(3, $page32->Sort, 'Children pages after insertion are resorted');
+	}
+	
 	/**
 	 * Test that CMS versions can be interpreted appropriately
 	 */
