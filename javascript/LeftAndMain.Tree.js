@@ -8,7 +8,8 @@
 		treeContainer
 			.jstree({
 				'core': {
-					'initially_open': ['record-0']
+					'initially_open': ['record-0'],
+					'animation': 0
 				},
 				'html_data': {
 					// TODO Hack to avoid ajax load on init, see http://code.google.com/p/jstree/issues/detail?id=911
