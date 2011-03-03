@@ -25,7 +25,28 @@
 					"select_limit" : 1,
 					'initially_select': [treeContainer.find('.current').attr('id')]
 				},
-				'plugins': ['themes', 'html_data', 'ui', 'dnd']
+				 "crrm": {
+					'move': {
+						// Check if a node is allowed to be moved.
+						// Caution: Runs on every drag over a new node
+						'check_move': function(data) {
+							var movedNode = $(data.o), newParent = $(data.np), 
+								isMovedOntoContainer = data.ot.get_container()[0] == data.np[0];
+							var isAllowed = (
+								// Don't allow moving the root node
+								movedNode.data('id') != 0 
+								// Only allow moving node inside the root container, not before/after it
+								&& (!isMovedOntoContainer || data.p == 'inside')
+							);
+							return isAllowed;
+						}
+					}
+				},
+				'dnd': {
+					"drop_target" : false,
+					"drag_target" : false
+				},
+				'plugins': ['themes', 'html_data', 'ui', 'dnd', 'crrm']
 			})
 			// .bind('before.jstree', function(e, data) {
 			// 	if(data.func == 'drag_start') {
