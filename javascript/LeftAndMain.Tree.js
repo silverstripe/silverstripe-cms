@@ -48,12 +48,15 @@
 				},
 				'plugins': ['themes', 'html_data', 'ui', 'dnd', 'crrm']
 			})
-			// .bind('before.jstree', function(e, data) {
-			// 	if(data.func == 'drag_start') {
-			// 		// Only allow drag'n'drop if it has been specifically enabled
-			// 		return $('input[id=sortitems]').is(':checked');
-			// 	}
-			// })
+			.bind('before.jstree', function(e, data) {
+				if(data.func == 'start_drag') {
+					// Only allow drag'n'drop if it has been specifically enabled
+					if(!$('input[id=sortitems]').is(':checked')) {
+						e.stopImmediatePropagation();
+						return false;
+					}
+				}
+			})
 			// TODO Move to EditForm logic
 			.bind('select_node.jstree', function(e, data) {
 				var node = data.rslt.obj, loadedNodeID = $('#Form_EditForm :input[name=ID]').val()
