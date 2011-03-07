@@ -39,7 +39,6 @@ var layoutState = {
 	}
 
 ,	save: function (layoutName, keys, opts) {
-	console.log('save');
 		var
 			o = jQuery.extend( {}, this.options, opts||{} )
 		,	layout = window[ layoutName || o.layoutName ]
