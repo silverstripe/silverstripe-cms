@@ -3,7 +3,6 @@
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <meta http-equiv="Content-language" content="$i18nLocale" />
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <% base_tag %>
 <title>$ApplicationName | $SectionTitle</title>
 </head>
