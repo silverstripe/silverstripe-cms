@@ -275,6 +275,7 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 		$fieldName = $this->urlParams['ID'];
 		$fieldVal = $_REQUEST[$fieldName];
 		$result = '';
+		$uidField = Member::get_unique_identifier_field();
 
 		// Make sure we only autocomplete on keys that actually exist, and that we don't autocomplete on password
 		if(!singleton($this->stat('subitem_class'))->hasDatabaseField($fieldName)  || $fieldName == 'Password') return;
@@ -286,11 +287,17 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 				// If the current user doesnt have permissions on the target user,
 				// he's not allowed to add it to a group either: Don't include it in the suggestions.
 				if(!$match->canView() || !$match->canEdit()) continue;
-
-				$data = $match->FirstName;
-				$data .= ",$match->Surname";
-				$data .= ",$match->Email";
-				$result .= "<li>" . $match->$fieldName . "<span class=\"informal\">($match->FirstName $match->Surname, $match->Email)</span><span class=\"informal data\">$data</span></li>";
+				
+				$data = array();
+				foreach($match->summaryFields() as $k => $v) {
+					$data[$k] = $match->$k;
+				}
+				$result .= sprintf(
+					'<li data-fields="%s">%s <span class="informal">(%s)</span></li>',
+					Convert::raw2att(Convert::raw2json($data)),
+					$match->$fieldName,
+					implode(',', array_values($data))
+				);
 			}
 			$result .= "</ul>";
 			return $result;
