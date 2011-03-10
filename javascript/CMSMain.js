@@ -208,8 +208,9 @@
 					
 				// integrate with sitetree selection changes
 				// TODO Only trigger when report is visible
-				jQuery('#sitetree').bind('selectionchanged', function(e, data) {
-					self.find(':input[name=ID]').val(data.node.getIdx());
+				jQuery('#sitetree_ul').bind('select_node.jstree', function(e, data) {
+					var node = data.rslt.obj;
+					self.find(':input[name=ID]').val(node ? $(node).data('id') : null);
 					self.trigger('submit');
 				});
 			
@@ -329,8 +330,9 @@
 				});
 			
 				// integrate with sitetree selection changes
-				jQuery('#sitetree').bind('selectionchanged', function(e, data) {
-					self.find(':input[name=ID]').val(data.node.getIdx());
+				jQuery('#sitetree_ul').bind('select_node.jstree', function(e, data) {
+					var node = data.rslt.obj;
+					self.find(':input[name=ID]').val(node ? $(node).data('id') : null);
 					if(self.is(':visible')) self.trigger('submit');
 				});
 			

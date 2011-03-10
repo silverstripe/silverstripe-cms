@@ -40,8 +40,8 @@
 				
 				this.setTree($('#sitetree')[0]);
 			
-				$(this.getTree()).bind('selectionchanged', function(e, data) {
-					self._treeSelectionChanged(data.node);
+				$(this.getTree()).bind('select_node.jstree', function(e, data) {
+					self._treeSelectionChanged(data.rslt.obj);
 				});
 			
 				// if tab which contains this form is shown, make the tree selectable
