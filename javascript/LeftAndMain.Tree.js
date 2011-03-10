@@ -77,7 +77,11 @@
 								"drop_target" : false,
 								"drag_target" : false
 							},
-							'plugins': ['html_data', 'ui', 'dnd', 'crrm']
+							'themes': {
+								'theme': 'apple'
+							},
+							// 'plugins': ['html_data', 'ui', 'dnd', 'crrm', 'themeroller']
+							'plugins': ['html_data', 'ui', 'dnd', 'crrm', 'themes']
 						})
 						.bind('before.jstree', function(e, data) {
 							if(data.func == 'start_drag') {

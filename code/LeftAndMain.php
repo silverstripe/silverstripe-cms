@@ -243,7 +243,7 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/scriptaculous/controls.js');
 		
 		Requirements::javascript(THIRDPARTY_DIR . '/jstree/jquery.jstree.js');
-		Requirements::css(THIRDPARTY_DIR . '/jstree/themes/default/style.css');
+		Requirements::css(THIRDPARTY_DIR . '/jstree/themes/apple/style.css');
 		
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.js');
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.Tree.js');
