@@ -15,7 +15,7 @@
 					// TODO Hack to avoid ajax load on init, see http://code.google.com/p/jstree/issues/detail?id=911
 					'data': treeContainer.html(),
 					'ajax': {
-						'url': 'admin/getsubtree',
+						'url': treeContainer.data('url-tree'),
 						'data': function(node) {
 							return { ID : $(node).data("id") ? $(node).data("id") : 0 , ajax: 1};
 						}
@@ -82,7 +82,7 @@
 				});
 				
 				$.ajax({
-					'url': 'admin/savetreenode',
+					'url': treeContainer.data('url-savetreenode'),
 					'data': {
 						ID: $(movedNode).data('id'), 
 						ParentID: $(newParentNode).data('id') || 0,

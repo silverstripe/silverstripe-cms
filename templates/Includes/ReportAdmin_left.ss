@@ -10,7 +10,7 @@
 	</h3>
 	<div id="sitetree_holder">
 		<div id="sitetree_and_tools">
-			<div id="sitetree_ul">
+			<div id="sitetree_ul" data-url-tree="$Link(getsubtree)" data-url-savetreenode="$Link(savetreenode)">
 				<% include ReportAdmin_SiteTree %>
 			</div>
 		</div>
