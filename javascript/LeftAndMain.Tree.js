@@ -44,7 +44,6 @@
 							},
 							'html_data': {
 								// TODO Hack to avoid ajax load on init, see http://code.google.com/p/jstree/issues/detail?id=911
-								'data': this.html(),
 								'ajax': {
 									'url': this.data('url-tree'),
 									'data': function(node) {
