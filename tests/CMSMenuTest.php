@@ -16,7 +16,7 @@ class CMSMenuTest extends SapphireTest implements TestOnly {
 		CMSMenu::add_controller('CMSMain');
 		$menuItems = CMSMenu::get_menu_items();
 		$menuItem = $menuItems['CMSMain'];
-		$this->assertInstanceOf('CMSMenuItem', $menuItem, 'Controller menu item is of class CMSMenuItem');
+		$this->assertType('CMSMenuItem', $menuItem, 'Controller menu item is of class CMSMenuItem');
 		$this->assertEquals($menuItem->url, singleton('CMSMain')->Link(), 'Controller menu item has the correct link');
 		$this->assertEquals($menuItem->controller, 'CMSMain', 'Controller menu item has the correct controller class');
 		$this->assertEquals($menuItem->priority, singleton('CMSMain')->stat('menu_priority'), 'Controller menu item has the correct priority');				
@@ -26,7 +26,7 @@ class CMSMenuTest extends SapphireTest implements TestOnly {
 		CMSMenu::add_link('LinkCode', 'link title', 'http://www.example.com');
 		$menuItems = CMSMenu::get_menu_items();
 		$menuItem = $menuItems['LinkCode'];
-		$this->assertInstanceOf('CMSMenuItem', $menuItem, 'Link menu item is of class CMSMenuItem');
+		$this->assertType('CMSMenuItem', $menuItem, 'Link menu item is of class CMSMenuItem');
 		$this->assertEquals($menuItem->title, 'link title', 'Link menu item has the correct title');
 		$this->assertEquals($menuItem->url,'http://www.example.com', 'Link menu item has the correct link');
 		$this->assertNull($menuItem->controller, 'Link menu item has no controller class');
@@ -53,7 +53,7 @@ class CMSMenuTest extends SapphireTest implements TestOnly {
 		CMSMenu::clear_menu();
 		CMSMenu::populate_menu();
 		$menuItem = CMSMenu::get_menu_item('CMSMain');
-		$this->assertInstanceOf('CMSMenuItem', $menuItem, 'CMSMain menu item exists');
+		$this->assertType('CMSMenuItem', $menuItem, 'CMSMain menu item exists');
 		$this->assertEquals($menuItem->url, singleton('CMSMain')->Link(), 'Menu item has the correct link');
 		$this->assertEquals($menuItem->controller, 'CMSMain', 'Menu item has the correct controller class');
 		$this->assertEquals(

@@ -72,7 +72,7 @@ class MemberTableFieldTest extends FunctionalTest {
 		$this->assertNotContains($member1->ID, $group1->Members()->column('ID'),
 			'Member relation to group is removed'
 		);
-		$this->assertInstanceOf(
+		$this->assertType(
 			'DataObject',
 			DataObject::get_by_id('Member', $member1->ID),
 			'Member record still exists'
