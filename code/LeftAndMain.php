@@ -37,8 +37,6 @@ class LeftAndMain extends Controller {
 	 */
 	static $tree_class = null;
 	
-	static $ForceReload;
-
 	/**
 	* The url used for the link in the Help tab in the backend
 	* Value can be overwritten if required in _config.php
@@ -57,6 +55,11 @@ class LeftAndMain extends Controller {
 		'Member_ProfileForm',
 		'EditorToolbar',
 		'EditForm',
+		'RootForm',
+		'AddForm',
+		'batchactions',
+		'BatchActionsForm',
+		'Member_ProfileForm',
 	);
 	
 	/**

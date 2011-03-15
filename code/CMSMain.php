@@ -45,6 +45,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'SideReportsForm',
 		'submit',
 		'versions',
+		'VersionsForm',
 		'EditForm',
 		'AddForm',
 		'SearchTreeForm',
@@ -875,8 +876,8 @@ JS;
 	/**
 	 * @return Form
 	 */
-	function doShowSideReport() {
-		$reportClass = $this->urlParams['ID'];
+	function doShowSideReport($data, $form) {
+		$reportClass = (isset($data['ReportClass'])) ? $data['ReportClass'] : $this->urlParams['ID'];
 		$reports = $this->SideReports();
 		if(isset($reports[$reportClass])) {
 			$report = $reports[$reportClass];
@@ -1091,7 +1092,7 @@ JS;
 			SSViewer::setOption('rewriteHashlinks', false);
 			
 			if(Director::is_ajax()) {
-				$result = $templateData->renderWith($this->class . '_right');
+				$result = $templateData->renderWith(array($this->class . '_right', 'LeftAndMain_right'));
 				$parts = split('</?form[^>]*>', $result);
 				$content = $parts[sizeof($parts)-2];
 				if($this->ShowSwitchView()) {
