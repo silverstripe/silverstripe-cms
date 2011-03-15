@@ -135,6 +135,12 @@
 
 					return false;
 				}
+				
+				// save tab selections in order to reconstruct them later
+				var selectedTabs = [];
+				this.find('.ss-tabset').each(function(i, el) {
+					if($(el).attr('id')) selectedTabs.push({id:$(el).attr('id'), selected:$(el).tabs('option', 'selected')});
+				});
 
 				// get all data from the form
 				var formData = this.serializeArray();
@@ -156,6 +162,11 @@
 						if(loadResponse !== false) {
 						  self._loadResponse(xmlhttp.responseText, status, xmlhttp, formData);
 						}
+						
+						// re-select previously saved tabs
+						$.each(selectedTabs, function(i, selectedTab) {
+							self.find('#' + selectedTab.id).tabs('select', selectedTab.selected);
+						});
 					}, 
 					dataType: 'html'
 				}, ajaxOptions));
