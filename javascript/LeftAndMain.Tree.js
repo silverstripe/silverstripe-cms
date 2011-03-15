@@ -116,7 +116,7 @@
 							});
 
 							$.ajax({
-								'url': this.data('url-savetreenode'),
+								'url': self.data('url-savetreenode'),
 								'data': {
 									ID: $(movedNode).data('id'), 
 									ParentID: $(newParentNode).data('id') || 0,
