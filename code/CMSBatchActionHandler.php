@@ -170,7 +170,6 @@ class CMSBatchActionHandler extends RequestHandler {
 	 * about each batch action:
 	 *  - Link
 	 *  - Title
-	 *  - DoingText
 	 */
 	function batchActionList() {
 		$actions = $this->batchActions();
@@ -183,7 +182,6 @@ class CMSBatchActionHandler extends RequestHandler {
 				$actionDef = new ArrayData(array(
 					"Link" => Controller::join_links($this->Link(), $urlSegment),
 					"Title" => $actionObj->getActionTitle(),
-					"DoingText" => $actionObj->getDoingText(),
 				));
 				$actionList->push($actionDef);
 			}

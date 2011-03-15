@@ -510,9 +510,6 @@ class AssetAdmin_DeleteBatchAction extends CMSBatchAction {
 		// _t('AssetAdmin_left.ss.SELECTTODEL','Select the folders that you want to delete and then click the button below')
 		return _t('AssetAdmin_DeleteBatchAction.TITLE', 'Delete folders');
 	}
-	function getDoingText() {
-		return _t('AssetAdmin_DeletingBatchAction.TITLE', 'Deleting folders');
-	}
 
 	function run(DataObjectSet $records) {
 		$status = array(

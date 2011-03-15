@@ -139,9 +139,6 @@ class CMSBatchAction_Publish extends CMSBatchAction {
 	function getActionTitle() {
 		return _t('CMSBatchActions.PUBLISH_PAGES', 'Publish');
 	}
-	function getDoingText() {
-		return _t('CMSBatchActions.PUBLISHING_PAGES', 'Publishing selected pages');
-	}
 
 	function run(DataObjectSet $pages) {
 		return $this->batchaction($pages, 'doPublish',
@@ -164,9 +161,6 @@ class CMSBatchAction_Unpublish extends CMSBatchAction {
 	function getActionTitle() {
 		return _t('CMSBatchActions.UNPUBLISH_PAGES', 'Un-publish');
 	}
-	function getDoingText() {
-		return _t('CMSBatchActions.UNPUBLISHING_PAGES', 'Un-publishing selected pages');
-	}
 
 	function run(DataObjectSet $pages) {
 		return $this->batchaction($pages, 'doUnpublish',
@@ -184,9 +178,6 @@ class CMSBatchAction_Unpublish extends CMSBatchAction {
 class CMSBatchAction_Delete extends CMSBatchAction {
 	function getActionTitle() {
 		return _t('CMSBatchActions.DELETE_DRAFT_PAGES', 'Delete from draft site');
-	}
-	function getDoingText() {
-		return _t('CMSBatchActions.DELETING_DRAFT_PAGES', 'Deleting selected pages from the draft site');
 	}
 
 	function run(DataObjectSet $pages) {
@@ -234,9 +225,6 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 	function getActionTitle() {
 		return _t('CMSBatchActions.DELETE_PAGES', 'Delete from published site');
-	}
-	function getDoingText() {
-		return _t('CMSBatchActions.DELETING_PAGES', 'Deleting selected pages from the published site');
 	}
 
 	function run(DataObjectSet $pages) {
