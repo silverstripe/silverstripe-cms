@@ -2,23 +2,6 @@
  * File: AssetAdmin.js
  */
 
-/**
- * Configuration for the left hand tree
- */
-if(typeof SiteTreeHandlers == 'undefined') SiteTreeHandlers = {};
-SiteTreeHandlers.parentChanged_url = 'admin/assets/ajaxupdateparent';
-SiteTreeHandlers.orderChanged_url = 'admin/assets/ajaxupdatesort';
-SiteTreeHandlers.loadPage_url = 'admin/assets/getitem';
-SiteTreeHandlers.loadTree_url = 'admin/assets/getsubtree';
-SiteTreeHandlers.showRecord_url = 'admin/assets/show/';
-SiteTreeHandlers.controller_url = 'admin/assets';
-
-var _HANDLER_FORMS = {
-	addpage : 'Form_AddForm',
-	deletepage : 'Form_DeleteItemsForm',
-	sortitems : 'sortitems_options'
-};
-
 (function($) {
 	/**
 	 * Delete selected folders through "batch actions" tab.
@@ -55,9 +38,10 @@ var _HANDLER_FORMS = {
 			onsubmit: function(e) {
 				var button = jQuery(this).find(':submit:first');
 				button.addClass('loading');
-				$.get(
-					jQuery(this).attr('action'),
-					function() {
+				$.ajax({
+					url: jQuery(this).attr('action'),
+					data: this.serializeArray(),
+					success: function() {
 						button.removeClass('loading');
 						// reload current form and tree
 						var currNode = $('#sitetree')[0].firstSelected();
@@ -70,7 +54,7 @@ var _HANDLER_FORMS = {
 							// TODO Reset current tree node
 						}});
 					}
-				);
+				});
 				
 				return false;
 			}

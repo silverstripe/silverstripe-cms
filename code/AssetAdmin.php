@@ -30,7 +30,6 @@ class AssetAdmin extends LeftAndMain {
 		'movemarked',
 		'removefile',
 		'savefile',
-		'sync',
 		'uploadiframe',
 		'UploadForm',
 		'deleteUnusedThumbnails' => 'ADMIN',
@@ -399,10 +398,13 @@ HTML;
 		);
 		$form->addExtraClass('actionparams');
 		$form->setFormMethod('GET');
-		$form->setFormAction('dev/tasks/FilesystemSyncTask');
 		$btn->describe(_t('AssetAdmin_left.ss.FILESYSTEMSYNC_DESC', 'SilverStripe maintains its own database of the files &amp; images stored in your assets/ folder.  Click this button to update that database, if files are added to the assets/ folder from outside SilverStripe, for example, if you have uploaded files via FTP.'));
 		
 		return $form;
+	}
+	
+	function doSync($data, $form) {
+		return Filesystem::sync();
 	}
 	
 	/**
