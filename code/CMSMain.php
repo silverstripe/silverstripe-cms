@@ -1174,6 +1174,7 @@ JS;
 				"ID" => $id,
 				"Version" => $fromVersion,
 			));
+			$form->addExtraClass('compare');
 			
 			// comparison views shouldn't be editable
 			$readonlyFields = $form->Fields()->makeReadonly();

@@ -294,12 +294,12 @@ ul.tree span.untranslated a:visited {
 }
 
 /* Change detection CSS */
-#right ins, #right ins * {
+#right .compare ins, #right .compare ins * {
 	background-color: #99EE66;
 	text-decoration: none;
 }
 
-#right del, #right del *{
+#right .compare del, #right .compare del *{
 	background-color: #FF9999;
 	text-decoration: line-through;
 }
