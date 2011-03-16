@@ -1001,8 +1001,8 @@ class LeftAndMain extends Controller {
 	 * @return int 
 	 */
 	public function currentPageID() {
-		if($this->request->getVar('ID'))	{
-			return $this->request->getVar('ID');
+		if($this->request->requestVar('ID'))	{
+			return $this->request->requestVar('ID');
 		} elseif ($this->request->param('ID') && is_numeric($this->request->param('ID'))) {
 			return $this->request->param('ID');
 		} elseif(Session::get("{$this->class}.currentPage")) {
