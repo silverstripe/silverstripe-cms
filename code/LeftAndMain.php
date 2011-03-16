@@ -474,10 +474,14 @@ class LeftAndMain extends Controller {
 		return $this->renderWith($this->getTemplatesWithSuffix('_right'));
 	}
 
-	public function getRecord($id, $className = null) {
-		if($id && is_numeric($id)) {
-			if(!$className) $className = $this->stat('tree_class');
+	public function getRecord($id) {
+		$className = $this->stat('tree_class');
+		if($id instanceof $className) {
+			return $id;
+		} else if(is_numeric($id)) {
 			return DataObject::get_by_id($className, $id);
+		} else {
+			return false;
 		}
 	}
 	
@@ -743,9 +747,13 @@ class LeftAndMain extends Controller {
 
 	public function getEditForm($id = null) {
 		if(!$id) $id = $this->currentPageID();
-
-		$record = ($id && $id != "root") ? $this->getRecord($id) : null;
-		if($record && !$record->canView()) return Security::permissionFailure($this);
+		
+		if(is_object($id)) {
+			$record = $id;
+		} else {
+			$record = ($id && $id != "root") ? $this->getRecord($id) : null;
+			if($record && !$record->canView()) return Security::permissionFailure($this);
+		}
 
 		if($record) {
 			$fields = $record->getCMSFields();

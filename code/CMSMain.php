@@ -369,7 +369,9 @@ JS;
  	public function getRecord($id) {
 		$treeClass = $this->stat('tree_class');
 
-		if($id && is_numeric($id)) {
+		if($id instanceof $treeClass) {
+			return $id;
+		} else if($id && is_numeric($id)) {
 			$version = isset($_REQUEST['Version']) ? $_REQUEST['Version'] : null;
 			if(is_numeric($version)) {
 				$record = Versioned::get_version($treeClass, $id, $version);
@@ -417,11 +419,12 @@ JS;
 		// Include JavaScript to ensure HtmlEditorField works.
 		HtmlEditorField::include_js();
 
+		if(!$id) $id = $this->currentPageID();
 		$form = parent::getEditForm($id);
 		
 		// TODO Duplicate record fetching (see parent implementation)
-		if(!$id) $id = $this->currentPageID();	
-		$record = ($id && $id != "root") ? $this->getRecord($id) : null;
+		$record = $this->getRecord($id);
+		if($record && !$record->canView()) return Security::permissionFailure($this);
 
 		$fields = $form->Fields();
 		$actions = $form->Actions();

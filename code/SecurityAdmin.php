@@ -42,8 +42,13 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	}
 	
 	function getEditForm($id = null) {
+		// TODO Duplicate record fetching (see parent implementation)
 		if(!$id) $id = $this->currentPageID();
-		$record = ($id && $id != "root") ? $this->getRecord($id) : null;
+		$form = parent::getEditForm($id);
+		
+		// TODO Duplicate record fetching (see parent implementation)
+		$record = $this->getRecord($id);
+		if($record && !$record->canView()) return Security::permissionFailure($this);
 		
 		if($id && is_numeric($id)) {
 			$form = parent::getEditForm($id);
