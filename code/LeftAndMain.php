@@ -614,7 +614,7 @@ class LeftAndMain extends Controller {
 		$this->response->addHeader('X-Status', _t('LeftAndMain.SAVEDUP'));
 		
 		// write process might've changed the record, so we reload before returning
-		$form->loadDataFrom($record);
+		$form = $this->getEditForm($record->ID);
 		
 		return $form->formHtmlContent();
 	}

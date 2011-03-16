@@ -490,8 +490,8 @@ JS;
 			return $this->RootForm();
 		} else if($id) {
 			return new Form($this, "EditForm", new FieldSet(
-				new LabelField('PageDoesntExistLabel',_t('CMSMain.PAGENOTEXISTS',"This page doesn't exist"))), new FieldSet());
-
+				new LabelField('PageDoesntExistLabel',_t('CMSMain.PAGENOTEXISTS',"This page doesn't exist"))), new FieldSet()
+			);
 		}
 	}
 
@@ -574,13 +574,14 @@ JS;
 					$publishedRecord->Title
 				)
 			);
-			
-			$form->loadDataFrom($publishedRecord);
+		
+			// Reload form, data and actions might have changed
+			$form = $this->getEditForm($publishedRecord->ID);
 		} else {
 			$this->response->addHeader('X-Status', _t('LeftAndMain.SAVEDUP'));
 			
-			// write process might've changed the record, so we reload before returning
-			$form->loadDataFrom($record);
+			// Reload form, data and actions might have changed
+			$form = $this->getEditForm($record->ID);
 		}
 		
 		return $form->formHtmlContent();
@@ -995,18 +996,20 @@ JS;
 	}
 
 	function unpublish($data, $form) {
-		$page = DataObject::get_by_id("SiteTree", $data['ID']);
+		$className = $this->stat('tree_class');
+		$record = DataObject::get_by_id($className, $data['ID']);
 		
-		if($page && !$page->canDeleteFromLive()) return Security::permissionFailure($this);
+		if($record && !$record->canDeleteFromLive()) return Security::permissionFailure($this);
 		
-		$page->doUnpublish();
+		$record->doUnpublish();
 		
 		$this->response->addHeader(
 			'X-Status',
-			sprintf(_t('CMSMain.REMOVEDPAGE',"Removed '%s' from the published site"),$page->Title)
+			sprintf(_t('CMSMain.REMOVEDPAGE',"Removed '%s' from the published site"),$record->Title)
 		);
 		
-		$form->loadDataFrom($page);
+		// Reload form, data and actions might have changed
+		$form = $this->getEditForm($record->ID);
 		
 		return $form->formHtmlContent();
 	}
@@ -1487,7 +1490,9 @@ JS;
 			)
 		);
 		
-		$form = $this->getEditForm($id);
+		// Reload form, data and actions might have changed
+		$form = $this->getEditForm($restoredPage->ID);
+		
 		return $form->formHtmlContent();
 	}
 
@@ -1509,7 +1514,9 @@ JS;
 				$newPage->write();
 			}
 			
+			// Reload form, data and actions might have changed
 			$form = $this->getEditForm($newPage->ID);
+			
 			return $form->formHtmlContent();
 		} else {
 			user_error("CMSMain::duplicate() Bad ID: '$id'", E_USER_WARNING);
@@ -1528,7 +1535,9 @@ JS;
 
 			$newPage = $page->duplicateWithChildren();
 
+			// Reload form, data and actions might have changed
 			$form = $this->getEditForm($newPage->ID);
+			
 			return $form->formHtmlContent();
 		} else {
 			user_error("CMSMain::duplicate() Bad ID: '$id'", E_USER_WARNING);
