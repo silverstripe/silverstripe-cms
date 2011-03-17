@@ -44,13 +44,7 @@
 								'html_titles': true
 							},
 							'html_data': {
-								// TODO Hack to avoid ajax load on init, see http://code.google.com/p/jstree/issues/detail?id=911
-								'ajax': {
-									'url': this.data('url-tree'),
-									'data': function(node) {
-										return { ID : $(node).data("id") ? $(node).data("id") : 0 , ajax: 1};
-									}
-								}
+								// 'ajax' will be set on 'loaded.jstree' event
 							},
 							'ui': {
 								"select_limit" : 1,
@@ -82,6 +76,19 @@
 							},
 							// 'plugins': ['html_data', 'ui', 'dnd', 'crrm', 'themeroller']
 							'plugins': ['html_data', 'ui', 'dnd', 'crrm', 'themes']
+						})
+						.bind('loaded.jstree', function(e, data) {
+							// Add ajax settings after init period to avoid unnecessary initial ajax load
+							// of existing tree in DOM - see load_node_html()
+							data.inst._set_settings({'html_data': {'ajax': {
+								'url': self.data('url-tree'),
+								'data': function(node) {
+									return $.extend(
+										self.data('searchparams') || {}, 
+										{ ID : $(node).data("id") ? $(node).data("id") : 0 , ajax: 1}
+									);
+								}
+							}}});
 						})
 						.bind('before.jstree', function(e, data) {
 							if(data.func == 'start_drag') {
