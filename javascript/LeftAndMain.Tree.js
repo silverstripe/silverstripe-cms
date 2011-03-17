@@ -36,6 +36,7 @@
 				 * @todo When new edit form is loaded, automatically: Select matching node, set correct parent,
 				 *  update icon and title
 				 */
+				var self = this;
 					this
 						.jstree({
 							'core': {
@@ -83,17 +84,19 @@
 							data.inst._set_settings({'html_data': {'ajax': {
 								'url': self.data('url-tree'),
 								'data': function(node) {
-									return $.extend(
-										self.data('searchparams') || {}, 
-										{ ID : $(node).data("id") ? $(node).data("id") : 0 , ajax: 1}
-									);
+									var params = self.data('searchparams') || [];
+									// Avoid duplication of parameters
+									params = $.grep(params, function(n, i) {return (n.name != 'ID' && n.name != 'value');});
+									params.push({name: 'ID', value: $(node).data("id") ? $(node).data("id") : 0});
+									params.push({name: 'ajax', value: 1});
+									return params;
 								}
 							}}});
 						})
 						.bind('before.jstree', function(e, data) {
 							if(data.func == 'start_drag') {
-								// Only allow drag'n'drop if it has been specifically enabled
-								if(!$('input[id=sortitems]').is(':checked')) {
+								// Only allow drag'n'drop if it has been specifically enabled, or the tree is in search mode
+								if(!$('input[id=sortitems]').is(':checked') || self.data('searchparams')) {
 									e.stopImmediatePropagation();
 									return false;
 								}
@@ -133,10 +136,23 @@
 							});
 						});
 					
-					var self = this;
 					$('#Form_EditForm').bind('loadnewpage', function(e, data) {
 						self._onLoadNewPage(e, data);
 					});
+			},
+			
+			/**
+			 * Function:
+			 *  search
+			 * 
+			 * Parameters:
+			 *  (Object) data Pass empty data to cancel search
+			 *  (Function) callback Success callback
+			 */
+			search: function(params, callback) {
+				if(params) this.data('searchparams', params);
+				else this.removeData('searchparams');
+				this.jstree('refresh', -1, callback);
 			},
 			
 			/**

@@ -106,20 +106,15 @@
 					data[el.name] = el.value;
 				});
 		
-				// Set new URL
-				$('#sitetree')[0].setCustomURL(this.attr('action') + '&action_doSearchTree=1', data);
-
 				// Disable checkbox tree controls that currently don't work with search.
-				// @todo: Make them work together
-				if ($('#sitetree')[0].isDraggable) $('#sitetree')[0].stopBeingDraggable();
-				this.find('.checkboxAboveTree :checkbox').val(false).attr('disabled', true);
-		
+				this.find('.checkboxAboveTree :checkbox').attr('disabled', 'disabled');
+				
 				// disable buttons to avoid multiple submission
 				//this.find(':submit').attr('disabled', true);
 		
 				this.find(':submit[name=action_doSearchTree]').addClass('loading');
 		
-				this._reloadSitetree();
+				this._reloadSitetree(this.serializeArray());
 
 				return false;
 			},
@@ -134,9 +129,6 @@
 				this.find('.field :input').clearFields();
 				this.find('.field').not('.show-default').hide();
 		
-				// Reset URL to default
-				$('#sitetree')[0].clearCustomURL();
-
 				// Enable checkbox tree controls
 				this.find('.checkboxAboveTree :checkbox').attr('disabled', 'false');
 
@@ -171,21 +163,22 @@
 			/**
 			 * Function: _reloadSitetree
 			 */
-			_reloadSitetree: function() {
+			_reloadSitetree: function(params) {
 				var self = this;
 		
-				$('#sitetree')[0].reload({
-					onSuccess :  function(response) {
+				$('#sitetree_ul').search(
+					params,
+					function() {
 						self.find(':submit').attr('disabled', false).removeClass('loading');
 						self.find('.checkboxAboveTree :checkbox').attr('disabled', 'true');
 						statusMessage('Filtered tree','good');
 					},
-					onFailure : function(response) {
+					function() {
 						self.find(':submit').attr('disabled', false).removeClass('loading');
 						self.find('.checkboxAboveTree :checkbox').attr('disabled', 'true');
 						errorMessage('Could not filter site tree<br />' + response.responseText);
 					}
-				});
+				);		
 			}
 		});
 	
