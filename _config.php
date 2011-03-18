@@ -49,3 +49,9 @@ SS_Report::register("SideReport", "SideReport_RecentlyEdited");
 SS_Report::register("SideReport", "SideReport_ToDo");
 if (class_exists('SubsiteReportWrapper')) SS_Report::register('ReportAdmin', 'SubsiteReportWrapper("BrokenLinksReport")',-20);
 else SS_Report::register('ReportAdmin', 'BrokenLinksReport',-20);
+
+
+/**
+ * Register the default internal shortcodes.
+ */
+ShortcodeParser::get('default')->register('sitetree_link', array('SiteTree', 'link_shortcode_handler'));
