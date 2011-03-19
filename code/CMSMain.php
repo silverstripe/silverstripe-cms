@@ -1342,9 +1342,16 @@ JS;
 					'Title', 
 					_t('CMSMain.TITLEOPT', 'Title')
 				),
-				new TextField('Content', 'Text'),
+				new TextField('Content', _t('CMSMain.TEXTOPT','Text', PR_MEDIUM, 'Text field for fulltext search in page content')),
 				new DateField('EditedSince', _t('CMSMain_left.ss.EDITEDSINCE','Edited Since')),
-				new DropdownField('ClassName', 'Page Type', $pageTypes, null, null, 'Any'),
+				new DropdownField(
+					'ClassName', 
+					_t('CMSMain.PAGETYPEOPT','Page Type', PR_MEDIUM, 'Dropdown for limiting search to a page type'), 
+					$pageTypes, 
+					null, 
+					null, 
+					_t('CMSMain.PAGETYPEANYOPT','Any')
+				),
 				new TextField(
 					'MenuTitle', 
 					_t('CMSMain.MENUTITLEOPT', 'Navigation Label')
