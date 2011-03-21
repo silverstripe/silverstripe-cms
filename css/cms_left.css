@@ -295,6 +295,10 @@ ul.tree span.untranslated a:visited {
 	color: #ccc
 }
 
+#sitetree_ul li.disabled a {
+	color: #aaa;
+}
+
 #Form_SearchTreeForm .field .middleColumn {
 	width: 60%;
 	float: left;

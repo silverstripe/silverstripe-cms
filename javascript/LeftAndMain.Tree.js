@@ -11,8 +11,6 @@
 				this._super();
 				
 				/**
-				 * @todo Selectable tree with multiselect (toggled via "Batch Actions" panel)
-				 * @todo Fix initial, unnecessary html_data replacement of existing tree (see below)
 				 * @todo Icon and page type hover support
 				 * @todo Sorting of sub nodes (originally placed in context menu)
 				 * @todo Refresh after language <select> change (with Translatable enabled)
@@ -76,7 +74,10 @@
 								'theme': 'apple'
 							},
 							// 'plugins': ['html_data', 'ui', 'dnd', 'crrm', 'themeroller']
-							'plugins': ['html_data', 'ui', 'dnd', 'crrm', 'themes']
+							'plugins': [
+								'html_data', 'ui', 'dnd', 'crrm', 'themes', 
+								'checkbox' // checkboxes are hidden unless .multiple is set
+							]
 						})
 						.bind('loaded.jstree', function(e, data) {
 							// Add ajax settings after init period to avoid unnecessary initial ajax load
@@ -92,6 +93,9 @@
 									return params;
 								}
 							}}});
+							
+							// Only show checkboxes with .multiple class
+							data.inst.hide_checkboxes();
 						})
 						.bind('before.jstree', function(e, data) {
 							if(data.func == 'start_drag') {
@@ -101,10 +105,21 @@
 									return false;
 								}
 							}
+							
+							if($.inArray(data.func, ['check_node', 'uncheck_node'])) {
+								var node = $(data.args[0]).parents('li:first');
+								if(node.hasClass('disabled')) {
+									e.stopImmediatePropagation();
+									return false;
+								}
+							}
 						})
 						// TODO Move to EditForm logic
 						.bind('select_node.jstree', function(e, data) {
 							var node = data.rslt.obj, loadedNodeID = $('#Form_EditForm :input[name=ID]').val()
+							
+							// Don't allow checking disabled nodes
+							if($(node).hasClass('disabled')) return false;
 
 							// Don't allow reloading of currently selected node,
 							// mainly to avoid doing an ajax request on initial page load
@@ -153,6 +168,19 @@
 				if(params) this.data('searchparams', params);
 				else this.removeData('searchparams');
 				this.jstree('refresh', -1, callback);
+			},
+			
+			/**
+			 * Function: getNodeByID
+			 * 
+			 * Parameters:
+			 *  (Int) id 
+			 * 
+			 * Returns
+			 *  DOMElement
+			 */
+			getNodeByID: function(id) {
+				return this.jstree('get_node', this.find('*[data-id='+id+']'));
 			},
 			
 			/**
@@ -221,6 +249,51 @@
 
 		 	}
 		});
+	});
+	
+	$('#sitetree_ul.multiple').entwine({
+		onmatch: function() {
+			this._super();
+			
+			this.jstree('show_checkboxes');
+		},
+		onunmatch: function() {
+			this._super();
+			
+			this.jstree('hide_checkboxes');
+		},
+		/**
+		 * Function: getSelectedIDs
+		 * 
+		 * Returns:
+		 * 	(Array)
+		 */
+		getSelectedIDs: function() {
+			return $.map($(this).jstree('get_checked'), function(el, i) {return $(el).data('id');});
+		},
+	});
+	
+	$('#sitetree_ul li').entwine({
+		
+		/**
+		 * Function: setEnabled
+		 * 
+		 * Parameters:
+		 * 	(bool)
+		 */
+		setEnabled: function(bool) {
+			this.toggleClass('disabled', !(bool));
+		},
+		
+		/**
+		 * Function: getID
+		 * 
+		 * Returns:
+		 * 	(Number)
+		 */
+		getID: function() {
+			return this.data('id');
+		}
 	});
 
 }(jQuery));
