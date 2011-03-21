@@ -21,17 +21,18 @@ ThumbnailStripField.prototype = {
 	updateMethod: 'getimages',
 	
 	initialize: function() {
+		var self = this;
+		
 		try {
 			this.updateMethod = this.className.match(/updatemethod=([^ ]+)/)[1];
 		} catch(err) {}	
 		
 		if(this.className.match(/parent=([^ ]+)/)) {
 			// HACK: This is hard-coded to only work with TreeDropdownFields
-			var parentField = $(RegExp.$1).parentNode;
-			if(parentField) {
-				// TODO Fix observing in IE7/IE8
-				// parentField.observeMethod('Change', this.ajaxGetFiles.bind(this));
-			}
+			var inputField = $(RegExp.$1), parentField = inputField.parentNode;
+			if(parentField) jQuery(parentField).bind('change', function() {
+				self.ajaxGetFiles(jQuery(inputField).val());
+			});
 			
 			var searchField = $$('#' + this.updateMethod + 'Search input')[0];		
 			var timeout = undefined;
