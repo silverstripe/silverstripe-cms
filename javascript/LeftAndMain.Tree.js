@@ -232,14 +232,17 @@
 								self.jstree('select_node', newNode);
 							}
 						);
+						// set current tree element
+			 			this.jstree('select_node', node);
 		 			}
 
 					// TODO Fix node parent setting
 		 			// // set correct parent (only if it has changed)
 		 			// if(parentID) this.setNodeParentID(id, jQuery(e.target.ParentID).val());
 
-		 			// set current tree element
-		 			this.jstree('select_node', node);
+					// TODO Fix doubleup when replacing page form with root form, reloads the old form over the root
+		 			// set current tree element regardless of wether the item was new
+		 			// this.jstree('select_node', node);
 		 		} else {
 		 			if(typeof eventData.origData != 'undefined') {
 		 				var node = this.find('li[data-id='+eventData.origData.ID+']');
