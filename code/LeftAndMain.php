@@ -252,8 +252,8 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.BatchActions.js');
 		
 		// navigator
-		Requirements::css(SAPPHIRE_DIR . '/css/SilverStripeNavigator.css');
-		Requirements::javascript(SAPPHIRE_DIR . '/javascript/SilverStripeNavigator.js');
+		Requirements::css(CMS_DIR . '/css/SilverStripeNavigator.css');
+		Requirements::javascript(CMS_DIR . '/javascript/SilverStripeNavigator.js');
 
 		Requirements::themedCSS('typography');
 
