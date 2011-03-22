@@ -1,7 +1,7 @@
 <?php
 
 class VirtualPageTest extends SapphireTest {
-	static $fixture_file = 'sapphire/tests/model/VirtualPageTest.yml';
+	static $fixture_file = 'cms/tests/VirtualPageTest.yml';
 	
 	/**
 	 * Test that, after you update the source page of a virtual page, all the virtual pages

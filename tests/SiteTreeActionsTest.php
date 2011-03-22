@@ -9,7 +9,7 @@
  * - action_rollback
  * - action_revert
  * 
- * @package sapphire
+ * @package cms
  * @subpackage tests
  */
 class SiteTreeActionsTest extends FunctionalTest {

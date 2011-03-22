@@ -27,12 +27,12 @@
  * 
  * @author Ingo Schommer (<firstname>@silverstripe.com), SilverStripe Ltd.
  * 
- * @package sapphire
+ * @package cms
  * @subpackage tests
  */
 class RemoveOrphanedPagesTaskTest extends FunctionalTest {
 	
-	static $fixture_file = 'sapphire/tests/tasks/RemoveOrphanedPagesTaskTest.yml';
+	static $fixture_file = 'cms/tests/RemoveOrphanedPagesTaskTest.yml';
 	
 	static $use_draft_site = false;
 	

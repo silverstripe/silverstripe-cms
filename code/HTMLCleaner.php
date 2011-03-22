@@ -2,7 +2,7 @@
 /**
  * Base class for HTML cleaning classes.
  * 
- * @package sapphire
+ * @package cms
  * @subpackage misc
  */
 abstract class HTMLCleaner  extends Object {

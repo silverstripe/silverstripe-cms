@@ -5,7 +5,7 @@
  */
 class ErrorPageTest extends FunctionalTest {
 	
-	static $fixture_file = 'sapphire/tests/ErrorPageTest.yml';
+	static $fixture_file = 'cms/tests/ErrorPageTest.yml';
 	
 	protected $orig = array();
 	

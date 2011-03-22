@@ -1,6 +1,6 @@
 <?php
 /**
- * @package sapphire
+ * @package cms
  * @subpackage filesystem
  */
 class Folder_UnusedAssetsField extends CompositeField {

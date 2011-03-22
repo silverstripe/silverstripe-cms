@@ -1,6 +1,6 @@
 <?php
 /**
- * @package sapphire
+ * @package cms
  * @subpackage tests
  * 
  * Note: Most of the permission-related SiteConfig tests are located in 

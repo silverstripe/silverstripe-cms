@@ -1,6 +1,6 @@
 <?php
 /**
- * @package sapphire
+ * @package cms
  * @subpackage tests
  */
 class ContentControllerPermissionTest extends FunctionalTest {

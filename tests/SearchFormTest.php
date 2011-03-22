@@ -1,6 +1,6 @@
 <?php
 /**
- * @package sapphire
+ * @package cms
  * @subpackage testing
  * 
  * @todo Fix unpublished pages check in testPublishedPagesMatchedByTitle()
@@ -8,7 +8,7 @@
  */
 class SearchFormTest extends FunctionalTest {
 	
-	static $fixture_file = 'sapphire/tests/search/SearchFormTest.yml';
+	static $fixture_file = 'cms/tests/SearchFormTest.yml';
 	
 	protected $mockController;
 	

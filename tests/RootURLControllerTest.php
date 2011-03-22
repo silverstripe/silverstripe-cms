@@ -1,10 +1,10 @@
 <?php
 /**
- * @package sapphire
+ * @package cms
  * @subpackage tests
  */
 class RootURLControllerTest extends SapphireTest {
-	static $fixture_file = 'sapphire/tests/control/RootURLControllerTest.yml';
+	static $fixture_file = 'cms/tests/RootURLControllerTest.yml';
 	
 	function testHomepageForDomain() {
 		$originalHost = $_SERVER['HTTP_HOST'];

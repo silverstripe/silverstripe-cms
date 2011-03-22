@@ -1,11 +1,11 @@
 <?php
 /**
- * @package sapphire
+ * @package cms
  * @subpackage tests
  */
 class ContentControllerTest extends FunctionalTest {
 	
-	public static $fixture_file = 'sapphire/tests/control/ContentControllerTest.yml';
+	public static $fixture_file = 'cms/tests/ContentControllerTest.yml';
 	
 	public static $use_draft_site = true;
 	

@@ -1,10 +1,10 @@
 <?php
 /**
- * @package sapphire
+ * @package cms
  * @subpackage tests
  */
 class WidgetControllerTest extends FunctionalTest {
-	static $fixture_file = 'sapphire/tests/widgets/WidgetControllerTest.yml';
+	static $fixture_file = 'cms/tests/WidgetControllerTest.yml';
 
 	protected $extraDataObjects = array(
 		'WidgetControllerTestPage',
@@ -50,7 +50,7 @@ class WidgetControllerTest extends FunctionalTest {
 }
 
 /**
- * @package sapphire
+ * @package cms
  * @subpackage tests
  */
 class WidgetControllerTest_Widget extends Widget implements TestOnly {
@@ -60,7 +60,7 @@ class WidgetControllerTest_Widget extends Widget implements TestOnly {
 }
 
 /**
- * @package sapphire
+ * @package cms
  * @subpackage tests
  */
 class WidgetControllerTest_Widget_Controller extends Widget_Controller implements TestOnly {

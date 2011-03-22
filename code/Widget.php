@@ -7,7 +7,7 @@
  * You can use forms in widgets by implementing a {@link Widget_Controller}.
  * See {@link Widget_Controller} for more information.
  * 
- * @package sapphire
+ * @package cms
  * @subpackage widgets
  */
 class Widget extends DataObject {
@@ -140,7 +140,7 @@ class Widget extends DataObject {
  * because the logic is implemented in {@link ContentController->handleWidget()}.
  * Copy this logic and the URL rules to enable it for other controllers.
  * 
- * @package sapphire
+ * @package cms
  * @subpackage widgets
  */
 class Widget_Controller extends Controller {
@@ -222,7 +222,7 @@ class Widget_Controller extends Controller {
 }
 
 /**
- * @package sapphire
+ * @package cms
  * @subpackage widgets
  */
 class Widget_TreeDropdownField extends TreeDropdownField {

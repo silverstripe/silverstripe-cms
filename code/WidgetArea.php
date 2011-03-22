@@ -1,7 +1,7 @@
 <?php
 /**
  * Represents a set of widgets shown on a page.
- * @package sapphire
+ * @package cms
  * @subpackage widgets
  */
 class WidgetArea extends DataObject {

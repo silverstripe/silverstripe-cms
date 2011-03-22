@@ -1,13 +1,13 @@
 <?php
 /**
- * @package sapphire
+ * @package cms
  * @subpackage tests
  */
 class ModelAsControllerTest extends FunctionalTest {
 	
 	protected $usesDatabase = true;
 	
-	static $fixture_file = 'sapphire/tests/ModelAsControllerTest.yml';
+	static $fixture_file = 'cms/tests/ModelAsControllerTest.yml';
 	
 	protected $autoFollowRedirection = false;
 

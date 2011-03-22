@@ -1,7 +1,7 @@
 <?php
 /**
  * This interface lets us set up objects that will tell us what the current page is.
- * @package sapphire
+ * @package cms
  * @subpackage model
  */
 interface CurrentPageIdentifier {

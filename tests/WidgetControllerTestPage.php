@@ -1,6 +1,6 @@
 <?php
 /**
- * @package sapphire
+ * @package cms
  * @subpackage tests
  */
 class WidgetControllerTestPage extends Page implements TestOnly {
@@ -10,7 +10,7 @@ class WidgetControllerTestPage extends Page implements TestOnly {
 }
 
 /**
- * @package sapphire
+ * @package cms
  * @subpackage tests
  */
 class WidgetControllerTestPage_Controller extends Page_Controller implements TestOnly {
