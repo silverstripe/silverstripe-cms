@@ -88,7 +88,7 @@ class ModelAsController extends Controller implements NestedController {
 		}
 
 		// Find page by link, regardless of current locale settings
-		Translatable::disable_locale_filter();
+		if(class_exists('Translatable')) Translatable::disable_locale_filter();
 		$sitetree = DataObject::get_one(
 			'SiteTree', 
 			sprintf(
@@ -97,7 +97,7 @@ class ModelAsController extends Controller implements NestedController {
 				(SiteTree::nested_urls() ? 'AND "ParentID" = 0' : null)
 			)
 		);
-		Translatable::enable_locale_filter();
+		if(class_exists('Translatable')) Translatable::enable_locale_filter();
 		
 		if(!$sitetree) {
 			// If a root page has been renamed, redirect to the new location.
@@ -133,7 +133,7 @@ class ModelAsController extends Controller implements NestedController {
 		}
 		
 		// Enforce current locale setting to the loaded SiteTree object
-		if($sitetree->Locale) Translatable::set_current_locale($sitetree->Locale);
+		if(class_exists('Translatable') && $sitetree->Locale) Translatable::set_current_locale($sitetree->Locale);
 		
 		if(isset($_REQUEST['debug'])) {
 			Debug::message("Using record #$sitetree->ID of type $sitetree->class with link {$sitetree->Link()}");

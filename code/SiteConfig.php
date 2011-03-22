@@ -81,7 +81,7 @@ class SiteConfig extends DataObject implements PermissionProvider {
 		// Translatable doesn't handle updateCMSFields on DataObjects,  
 		// so add it here to save the current Locale,  
 		// because onBeforeWrite does not work. 
-		if(Object::has_extension('SiteConfig',"Translatable")){ 
+		if(class_exists('Translatable') && Object::has_extension('SiteConfig',"Translatable")){ 
 			$fields->push(new HiddenField("Locale"));  
 		}
 
@@ -151,7 +151,7 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	 * @return SiteConfig
 	 */
 	static function current_site_config($locale = null) {
-		if(Object::has_extension('SiteConfig',"Translatable")){
+		if(class_exists('Translatable') && Object::has_extension('SiteConfig',"Translatable")){
 			$locale = isset($locale) ? $locale : Translatable::get_current_locale();
 			$siteConfig = Translatable::get_one_by_locale('SiteConfig', $locale);
 		} else {
@@ -184,13 +184,13 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	 * @return SiteConfig
 	 */
 	static function make_site_config($locale = null) {
-		if(!$locale) $locale = Translatable::get_current_locale();
+		if(class_exists('Translatable') && !$locale) $locale = Translatable::get_current_locale();
 		
 		$siteConfig = new SiteConfig();
 		$siteConfig->Title = _t('SiteConfig.SITENAMEDEFAULT',"Your Site Name");
 		$siteConfig->Tagline = _t('SiteConfig.TAGLINEDEFAULT',"your tagline here");
 
-		if($siteConfig->hasExtension('Translatable')){
+		if(class_exists('Translatable') && $siteConfig->hasExtension('Translatable')){
 			$defaultConfig = DataObject::get_one('SiteConfig');
 			if($defaultConfig){
 				$siteConfig->Title = $defaultConfig->Title;

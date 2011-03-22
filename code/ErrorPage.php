@@ -39,7 +39,10 @@ class ErrorPage extends Page {
 		}
 		
 		// then fall back on a cached version
-		$cachedPath = self::get_filepath_for_errorcode($statusCode, Translatable::get_current_locale());
+		$cachedPath = self::get_filepath_for_errorcode(
+			$statusCode, 
+			class_exists('Translatable') ? Translatable::get_current_locale() : null
+		);
 		
 		if(file_exists($cachedPath)) {
 			$response = new SS_HTTPResponse();	
@@ -234,7 +237,7 @@ class ErrorPage extends Page {
 		if (singleton('ErrorPage')->hasMethod('alternateFilepathForErrorcode')) {
 			return singleton('ErrorPage')-> alternateFilepathForErrorcode($statusCode, $locale);
 		}
-		if(singleton('SiteTree')->hasExtension('Translatable') && $locale && $locale != Translatable::default_locale()) {
+		if(class_exists('Translatable') && singleton('SiteTree')->hasExtension('Translatable') && $locale && $locale != Translatable::default_locale()) {
 			return self::$static_filepath . "/error-{$statusCode}-{$locale}.html";
 		} else {
 			return self::$static_filepath . "/error-{$statusCode}.html";

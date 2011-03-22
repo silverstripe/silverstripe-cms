@@ -20,16 +20,18 @@ class SiteTreeTest extends SapphireTest {
 		self::kill_temp_db();
 
 		// store old defaults	
-		self::$origTranslatableSettings['has_extension'] = singleton('SiteTree')->hasExtension('Translatable');
-		self::$origTranslatableSettings['default_locale'] = Translatable::default_locale();
+		if(class_exists('Translatable')) {
+			self::$origTranslatableSettings['has_extension'] = singleton('SiteTree')->hasExtension('Translatable');
+			self::$origTranslatableSettings['default_locale'] = Translatable::default_locale();
+			
+			// overwrite locale
+			Translatable::set_default_locale("en_US");
 
-		// overwrite locale
-		Translatable::set_default_locale("en_US");
-
-		// refresh the decorated statics - different fields in $db with Translatable enabled
-		if(self::$origTranslatableSettings['has_extension']) {
-			Object::remove_extension('SiteTree', 'Translatable');
-			Object::remove_extension('SiteConfig', 'Translatable');
+			// refresh the decorated statics - different fields in $db with Translatable enabled
+			if(self::$origTranslatableSettings['has_extension']) {
+				Object::remove_extension('SiteTree', 'Translatable');
+				Object::remove_extension('SiteConfig', 'Translatable');
+			}
 		}
 
 		// recreate database with new settings
@@ -40,14 +42,16 @@ class SiteTreeTest extends SapphireTest {
 	}
 	
 	static function tear_down_once() {
-		if(self::$origTranslatableSettings['has_extension']) {
-			Object::add_extension('SiteTree', 'Translatable');
-			Object::add_extension('SiteConfig', 'Translatable');
-		}
+		if(class_exists('Translatable')) {
+			if(self::$origTranslatableSettings['has_extension']) {
+				Object::add_extension('SiteTree', 'Translatable');
+				Object::add_extension('SiteConfig', 'Translatable');
+			}
 			
 
-		Translatable::set_default_locale(self::$origTranslatableSettings['default_locale']);
-		Translatable::set_current_locale(self::$origTranslatableSettings['default_locale']);
+			Translatable::set_default_locale(self::$origTranslatableSettings['default_locale']);
+			Translatable::set_current_locale(self::$origTranslatableSettings['default_locale']);
+		}
 		
 		self::kill_temp_db();
 		self::create_temp_db();

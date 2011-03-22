@@ -42,7 +42,7 @@ class SearchForm extends Form {
 			));
 		}
 		
-		if(singleton('SiteTree')->hasExtension('Translatable')) {
+		if(class_exists('Translatable') && singleton('SiteTree')->hasExtension('Translatable')) {
 			$fields->push(new HiddenField('locale', 'locale', Translatable::get_current_locale()));
 		}
 		
@@ -101,7 +101,7 @@ class SearchForm extends Form {
 		if(!isset($data) || !is_array($data)) $data = $_REQUEST;
 		
 		// set language (if present)
-		if(singleton('SiteTree')->hasExtension('Translatable') && isset($data['locale'])) {
+		if(class_exists('Translatable') && singleton('SiteTree')->hasExtension('Translatable') && isset($data['locale'])) {
 			$origLocale = Translatable::get_current_locale();
 			Translatable::set_current_locale($data['locale']);
 		}
@@ -137,7 +137,7 @@ class SearchForm extends Form {
 		}
 		
 		// reset locale
-		if(singleton('SiteTree')->hasExtension('Translatable') && isset($data['locale'])) {
+		if(class_exists('Translatable') && singleton('SiteTree')->hasExtension('Translatable') && isset($data['locale'])) {
 			Translatable::set_current_locale($origLocale);
 		}
 

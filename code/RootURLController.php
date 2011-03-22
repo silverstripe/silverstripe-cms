@@ -40,7 +40,8 @@ class RootURLController extends Controller {
 			
 			if(!self::$cached_homepage_link) {
 				if (
-					Object::has_extension('SiteTree', 'Translatable')
+					class_exists('Translatable')
+					&& Object::has_extension('SiteTree', 'Translatable')
 					&& $link = Translatable::get_homepage_link_by_locale(Translatable::get_current_locale())
 				) {
 					self::$cached_homepage_link = $link;
@@ -72,7 +73,7 @@ class RootURLController extends Controller {
 	public static function should_be_on_root(SiteTree $page) {
 		if(!self::$is_at_root && self::get_homepage_link() == trim($page->RelativeLink(true), '/')) {
 			return !(
-				$page->hasExtension('Translatable') && $page->Locale && $page->Locale != Translatable::default_locale()
+				class_exists('Translatable') && $page->hasExtension('Translatable') && $page->Locale && $page->Locale != Translatable::default_locale()
 			);
 		}
 		

@@ -142,12 +142,12 @@ class ContentController extends Controller {
 		// nested URL.
 		if($action && SiteTree::nested_urls() && !$this->hasAction($action)) {
 			// See ModelAdController->getNestedController() for similar logic
-			Translatable::disable_locale_filter();
+			if(class_exists('Translatable')) Translatable::disable_locale_filter();
 			// look for a page with this URLSegment
 			$child = DataObject::get_one('SiteTree', sprintf (
 				"\"ParentID\" = %s AND \"URLSegment\" = '%s'", $this->ID, Convert::raw2sql($action)
 			));
-			Translatable::enable_locale_filter();
+			if(class_exists('Translatable')) Translatable::enable_locale_filter();
 			
 			// if we can't find a page with this URLSegment try to find one that used to have 
 			// that URLSegment but changed. See ModelAsController->getNestedController() for similiar logic.
@@ -185,12 +185,14 @@ class ContentController extends Controller {
 			// If a specific locale is requested, and it doesn't match the page found by URLSegment,
 			// look for a translation and redirect (see #5001). Only happens on the last child in
 			// a potentially nested URL chain.
-			if($request->getVar('locale') && $this->dataRecord && $this->dataRecord->Locale != $request->getVar('locale')) {
-				$translation = $this->dataRecord->getTranslation($request->getVar('locale'));
-				if($translation) {
-					$response = new SS_HTTPResponse();
-					$response->redirect($translation->Link(), 301);
-					throw new SS_HTTPResponse_Exception($response);
+			if(class_exists('Translatable')) {
+				if($request->getVar('locale') && $this->dataRecord && $this->dataRecord->Locale != $request->getVar('locale')) {
+					$translation = $this->dataRecord->getTranslation($request->getVar('locale'));
+					if($translation) {
+						$response = new SS_HTTPResponse();
+						$response->redirect($translation->Link(), 301);
+						throw new SS_HTTPResponse_Exception($response);
+					}
 				}
 			}
 			
@@ -415,7 +417,7 @@ HTML;
 	function ContentLocale() {
 		if($this->dataRecord && $this->dataRecord->hasExtension('Translatable')) {
 			$locale = $this->dataRecord->Locale;
-		} elseif(Object::has_extension('SiteTree', 'Translatable')) {
+		} elseif(class_exists('Translatable') && Object::has_extension('SiteTree', 'Translatable')) {
 			$locale = Translatable::get_current_locale();
 		} else {
 			$locale = i18n::get_locale();

@@ -412,7 +412,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		// is on the root level.
 		if(!$action && $base == RootURLController::get_homepage_link() && !$this->ParentID) {
 			$base = null;
-			if($this->hasExtension('Translatable') && $this->Locale != Translatable::default_locale()){ 
+			if(class_exists('Translatable') && $this->hasExtension('Translatable') && $this->Locale != Translatable::default_locale()){ 
 				$base = $this->URLSegment; 
 			}
 		}
@@ -976,7 +976,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 		if($altConfig) {
 			return $altConfig;
-		} elseif($this->hasExtension('Translatable')) {
+		} elseif(class_exists('Translatable') && $this->hasExtension('Translatable')) {
 			 return SiteConfig::current_site_config($this->Locale);
 		} else {
 			return SiteConfig::current_site_config();
