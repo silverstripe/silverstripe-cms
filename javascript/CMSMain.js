@@ -62,7 +62,12 @@
 					var others = self.find('.field').not($(this).parents('.field')).find(':input,select');
 					if(e.target.value == 'CMSSiteTreeFilter_Search') others.removeAttr('disabled');
 					else others.attr('disabled','disabled');
-				})
+				});
+				
+				// Reset binding through entwine doesn't work in IE
+				this.bind('reset', function(e) {
+					self._onreset(e);
+				});
 		
 				this._super();
 			},
@@ -125,7 +130,7 @@
 			 * Parameters:
 			 *  (Event) e
 			 */
-			onreset: function(e) {
+			_onreset: function(e) {
 				this.find('.field :input').clearFields();
 				this.find('.field').not('.show-default').hide();
 		
