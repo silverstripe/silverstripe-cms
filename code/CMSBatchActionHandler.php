@@ -138,8 +138,8 @@ class CMSBatchActionHandler extends RequestHandler {
 		} else {
 			$applicableIDs = $ids;
 		}
-		
-		$response = new SS_HTTPResponse(json_encode($applicableIDs));
+
+		$response = new SS_HTTPResponse(Convert::raw2json(array_values($applicableIDs)));
 		$response->addHeader("Content-type", "application/json");
 		return $response;
 	}
