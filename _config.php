@@ -13,6 +13,10 @@ Director::addRules(50, array(
 	'dev/buildcache/$Action' => 'RebuildStaticCacheTask',
 ));
 
+Director::addRules(1, array(
+	'$URLSegment//$Action/$ID/$OtherID' => 'ModelAsController',
+));
+
 CMSMenu::add_director_rules();
 
 // Default CMS HTMLEditorConfig
