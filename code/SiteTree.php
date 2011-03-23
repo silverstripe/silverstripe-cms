@@ -2136,17 +2136,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 	
 	/**
-	 * Roll the draft version of this page to match the published page.
-	 * Caution: Doesn't overwrite the object properties with the rolled back version.
-	 * 
-	 * @param $version Either the string 'Live' or a version number
-	 */
-	function doRollbackTo($version) {
-		$this->publish($version, "Stage", true);
-		$this->writeWithoutVersion();
-	}
-	
-	/**
 	 * Revert the draft changes: replace the draft content with the content on live
 	 */
 	function doRevertToLive() {
