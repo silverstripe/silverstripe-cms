@@ -785,6 +785,13 @@ JS;
 	}
 	
 	/**
+	 * Return the CMS's HTML-editor toolbar
+	 */
+	public function EditorToolbar() {
+		return Object::create('HtmlEditorField_Toolbar', $this, "EditorToolbar");
+	}
+	
+	/**
 	 * @return Array
 	 */
 	function SideReports() {
