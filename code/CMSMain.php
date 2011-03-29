@@ -30,7 +30,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'addpage',
 		'buildbrokenlinks',
 		'compareversions',
-		'createtranslation',
 		'deleteitems',
 		'DeleteItemsForm',
 		'dialog',
@@ -78,31 +77,22 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 	
 	public function init() {
-		parent::init();
-		
-		// Locale" attribute is either explicitly added by LeftAndMain Javascript logic,
-		// or implied on a translated record (see {@link Translatable->updateCMSFields()}).
-		// $Lang serves as a "context" which can be inspected by Translatable - hence it
-		// has the same name as the database property on Translatable.
-		if($this->getRequest()->requestVar("Locale")) {
-			$this->Locale = $this->getRequest()->requestVar("Locale");
-		} elseif($this->getRequest()->requestVar("locale")) {
-			$this->Locale = $this->getRequest()->requestVar("locale");
-		} else {
-			$this->Locale = Translatable::default_locale();
+		// set reading lang
+		if(Object::has_extension('SiteTree', 'Translatable') && !$this->isAjax()) {
+			Translatable::choose_site_locale(array_keys(Translatable::get_existing_content_languages('SiteTree')));
 		}
-		Translatable::set_current_locale($this->Locale);
 		
-		// collect languages for TinyMCE spellchecker plugin.
-		// see http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/spellchecker
-		$langName = i18n::get_locale_name($this->Locale);
-		HtmlEditorConfig::get('cms')->setOption('spellchecker_languages', "+{$langName}={$this->Locale}");
+		parent::init();
 				
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.js');
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.EditForm.js');
-		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.Translatable.js');
+		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang');
 		
 		Requirements::css(CMS_DIR . '/css/CMSMain.css');
+		
+		// navigator
+		Requirements::css(CMS_DIR . '/css/SilverStripeNavigator.css');
+		Requirements::javascript(CMS_DIR . '/javascript/SilverStripeNavigator.js');
 		
 		CMSBatchActionHandler::register('publish', 'CMSBatchAction_Publish');
 		CMSBatchActionHandler::register('unpublish', 'CMSBatchAction_Unpublish');
@@ -500,9 +490,6 @@ JS;
 	function RootForm() {
 		$siteConfig = SiteConfig::current_site_config();
 		$fields = $siteConfig->getCMSFields();
-		if(Object::has_extension('SiteConfig',"Translatable")) {
-			$fields->push(new HiddenField('Locale','', $siteConfig->Locale));
-		}
 
 		$form = new Form($this, 'RootForm', $fields, $siteConfig->getCMSActions());
 		$form->setHTMLID('Form_EditForm');
@@ -611,7 +598,7 @@ JS;
 		}
 		
 		$record = $this->getNewItem("new-$className-$parentID".$suffix, false);
-		$record->Locale = $data['Locale'];
+		if(class_exists('Translatable') && $record->hasExtension('Translatable')) $record->Locale = $data['Locale'];
 		$record->write();
 		
 		$form = $this->getEditForm($record->ID);
@@ -803,6 +790,13 @@ JS;
 	}
 	
 	/**
+	 * Return the CMS's HTML-editor toolbar
+	 */
+	public function EditorToolbar() {
+		return Object::create('HtmlEditorField_Toolbar', $this, "EditorToolbar");
+	}
+	
+	/**
 	 * @return Array
 	 */
 	function SideReports() {
@@ -847,6 +841,8 @@ JS;
 		);
 		$form->unsetValidator();
 		$form->addExtraClass('oneline');
+		
+		$this->extend('updateSideReportsForm', $form);
 		
 		return $form;
 	}
@@ -1285,7 +1281,6 @@ JS;
 		
 		$fields = new FieldSet(
 			new HiddenField("ParentID"),
-			new HiddenField("Locale", 'Locale', Translatable::get_current_locale()),
 			new DropdownField("PageType", "", $pageTypes, 'Page')
 		);
 		
@@ -1550,38 +1545,6 @@ JS;
 			user_error("CMSMain::duplicate() Bad ID: '$id'", E_USER_WARNING);
 		}
 	}
-	
-	/**
-	 * Create a new translation from an existing item, switch to this language and reload the tree.
-	 */
-	function createtranslation($request) {
-		// Protect against CSRF on destructive action
-		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
-		
-		$langCode = Convert::raw2sql($request->getVar('newlang'));
-		$originalLangID = (int)$request->getVar('ID');
-
-		$record = $this->getRecord($originalLangID);
-		
-		$this->Locale = $langCode;
-		Translatable::set_current_locale($langCode);
-		
-		// Create a new record in the database - this is different
-		// to the usual "create page" pattern of storing the record
-		// in-memory until a "save" is performed by the user, mainly
-		// to simplify things a bit.
-		// @todo Allow in-memory creation of translations that don't persist in the database before the user requests it
-		$translatedRecord = $record->createTranslation($langCode);
-
-		$url = sprintf(
-			"%s/%d/?locale=%s", 
-			$this->Link('show'),
-			$translatedRecord->ID,
-			$langCode
-		);
-		
-		return Director::redirect($url);
-	}
 
 	/**
 	 * Provide the permission codes used by LeftAndMain.
@@ -1622,69 +1585,7 @@ JS;
 
 		return $perms;
 	}
-	
-	/**
-	 * Returns a form with all languages with languages already used appearing first.
-	 * 
-	 * @return Form
-	 */
-	function LangForm() {
-		$member = Member::currentUser(); //check to see if the current user can switch langs or not
-		if(Permission::checkMember($member, 'VIEW_LANGS')) {
-			$field = new LanguageDropdownField(
-				'Locale', 
-				_t('CMSMAIN.LanguageDropdownLabel', 'Language'), 
-				array(), 
-				'SiteTree', 
-				'Locale-English',
-				singleton('SiteTree')
-			);
-			$field->setValue(Translatable::get_current_locale());
-        } else {
-			// user doesn't have permission to switch langs 
-			// so just show a string displaying current language
-			$field = new LiteralField(
-				'Locale', 
-				i18n::get_locale_name( Translatable::get_current_locale())
-			);
-		}
-		
-		$form = new Form(
-			$this,
-			'LangForm',
-			new FieldSet(
-				$field
-			),
-			new FieldSet(
-				new FormAction('selectlang', _t('CMSMain_left.ss.GO','Go'))
-			)
-		);
-		$form->unsetValidator();
-		
-		return $form;
-	}
-	
-	function selectlang($data, $form) {
-		return $this;
-	}
-	
-	/**
-	 * Determine if there are more than one languages in our site tree.
-	 * 
-	 * @return boolean
-	 */
-	function MultipleLanguages() {
-		$langs = Translatable::get_existing_content_languages('SiteTree');
 
-		return (count($langs) > 1);
-	}
-	
-	/**
-	 * @return boolean
-	 */
-	function IsTranslatableEnabled() {
-		return Object::has_extension('SiteTree', 'Translatable');
-	}
 }
 
 /**
