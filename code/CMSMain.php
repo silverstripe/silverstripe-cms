@@ -77,6 +77,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 	
 	public function init() {
+		// set reading lang
+		if(Object::has_extension('SiteTree', 'Translatable') && !$this->isAjax()) {
+			Translatable::choose_site_locale(array_keys(Translatable::get_existing_content_languages('SiteTree')));
+		}
+		
 		parent::init();
 				
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.js');
