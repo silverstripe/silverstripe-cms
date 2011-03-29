@@ -1545,6 +1545,23 @@ JS;
 			user_error("CMSMain::duplicate() Bad ID: '$id'", E_USER_WARNING);
 		}
 	}
+	
+	/**
+	 * Return the version number of this application.
+	 * Uses the subversion path information in <mymodule>/silverstripe_version
+	 * (automacially replaced $URL$ placeholder).
+	 * 
+	 * @return string
+	 */
+	public function CMSVersion() {
+		$sapphireVersionFile = file_get_contents(BASE_PATH . '/sapphire/silverstripe_version');
+		$cmsVersionFile = file_get_contents(BASE_PATH . '/cms/silverstripe_version');
+		
+		$sapphireVersion = $this->versionFromVersionFile($sapphireVersionFile);
+		$cmsVersion = $this->versionFromVersionFile($cmsVersionFile);
+
+		return "cms: $cmsVersion, sapphire: $sapphireVersion";
+	}
 
 	/**
 	 * Provide the permission codes used by LeftAndMain.
