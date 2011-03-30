@@ -389,11 +389,6 @@ class SiteTreeTest extends SapphireTest {
 		$parentPage->doDeleteFromLive();
 		
 		Versioned::reading_stage('Live');
-		
-		// Confirm that none of the given pages exist
-		$this->assertEquals(array(), DataObject::get("Page")
-			->byIDs(array($pageAbout->ID, $pageStaff->ID, $pageStaffDuplicate->ID))
-			->column('URLSegment'));
 
 		$this->assertFalse(DataObject::get_by_id('Page', $pageAbout->ID));
 		$this->assertTrue(DataObject::get_by_id('Page', $pageStaff->ID) instanceof Page);
