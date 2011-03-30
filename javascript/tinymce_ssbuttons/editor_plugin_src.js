@@ -55,15 +55,10 @@
 				if(!showForm || showForm.style.display == "none") {
 					ed.controlManager.setActive(showCommand, false);
 					// Can't use $('contentPanel'), as its in a different window
-					window.parent.document.getElementById('contentPanel').style.display = "none";
-					// toggle layout panel
-					jQuery('body.CMSMain').entwine('ss').getMainLayout().close('east');
+					jQuery('#contentPanel', window.parent).hide();
 				} else {
 					ed.controlManager.setActive(showCommand, true);
-					window.parent.document.getElementById('contentPanel').style.display = "block";
-					// toggle layout panel
-					jQuery('body.CMSMain').entwine('ss').getMainLayout().resizeAll();
-					jQuery('body.CMSMain').entwine('ss').getMainLayout().open('east');
+					jQuery('#contentPanel', window.parent).show();
 				}
 			}
 

@@ -63,7 +63,6 @@
 				
 				this.draggable({
 					zIndex: 4000,
-					//stack: {group: '.ui-layout-west'},
 					appendTo: 'body',
 					helper: function() {
 						return $(
