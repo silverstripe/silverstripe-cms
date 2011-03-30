@@ -31,17 +31,23 @@ class SiteTreeFileExtension extends DataExtension {
 	 * Updates link tracking.
 	 */
 	function onAfterDelete() {
-		$brokenPages = $this->owner->BackLinkTracking();
-		if($brokenPages) {
+	    // We query the explicit ID list, because BackLinkTracking will get modified after the stage
+	    // site does its thing
+		$brokenPageIDs = $this->owner->BackLinkTracking()->column("ID");
+		if($brokenPageIDs) {
 			$origStage = Versioned::current_stage();
 
 			// This will syncLinkTracking on draft
 			Versioned::reading_stage('Stage');
+			$brokenPages = DataObject::get('SiteTree')->byIDs($brokenPageIDs);
 			foreach($brokenPages as $brokenPage) $brokenPage->write();
 
 			// This will syncLinkTracking on published
 			Versioned::reading_stage('Live');
-			foreach($brokenPages as $brokenPage) $brokenPage->write();
+			$liveBrokenPages = DataObject::get('SiteTree')->byIDs($brokenPageIDs);
+			foreach($liveBrokenPages as $brokenPage) {
+			    $brokenPage->write();
+		    }
 
 			Versioned::reading_stage($origStage);
 		}
