@@ -522,7 +522,7 @@ class SiteTreeTest extends SapphireTest {
 		$processedContent = trim($diff->Content);
 		$processedContent = preg_replace('/\s*</','<',$processedContent);
 		$processedContent = preg_replace('/>\s*/','>',$processedContent);
-		$this->assertEquals("<ins><p>This is a test</p></ins>", $processedContent);
+		$this->assertEquals("<ins><p><ins>This is a test</ins></p></ins>", $processedContent);
 		
 	}
 
