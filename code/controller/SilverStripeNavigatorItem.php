@@ -159,7 +159,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 			return "<a class=\"current\">". _t('ContentController.ARCHIVEDSITE', 'Archived Site') ."</a>";
 		} else {
 			// Display the archive link if the page currently displayed in the CMS is other version than live and draft
-			$currentDraft = Versioned::get_one_by_stage('SiteTree', 'Draft', '"SiteTree"."ID" = ' . $page->ID);
+			$currentDraft = Versioned::get_one_by_stage('SiteTree', 'Stage', '"SiteTree"."ID" = ' . $page->ID);
 			$currentLive = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree"."ID" = ' . $page->ID);
 			if(
 				(!$currentDraft || ($currentDraft && $page->Version != $currentDraft->Version)) 
