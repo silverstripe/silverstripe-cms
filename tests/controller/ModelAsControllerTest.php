@@ -7,7 +7,7 @@ class ModelAsControllerTest extends FunctionalTest {
 	
 	protected $usesDatabase = true;
 	
-	static $fixture_file = 'cms/tests/ModelAsControllerTest.yml';
+	static $fixture_file = 'ModelAsControllerTest.yml';
 	
 	protected $autoFollowRedirection = false;
 

@@ -1,7 +1,7 @@
 <?php
 class CMSMainSearchTreeFormTest extends FunctionalTest {
 	
-	static $fixture_file = 'cms/tests/CMSMainTest.yml';
+	static $fixture_file = '../controller/CMSMainTest.yml';
 	
 	protected $autoFollowRedirection = false;
 	

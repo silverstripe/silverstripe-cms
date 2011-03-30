@@ -7,7 +7,7 @@
  * @todo Test canCreate()
  */
 class SiteTreePermissionsTest extends FunctionalTest {
-	static $fixture_file = "cms/tests/SiteTreePermissionsTest.yml";
+	static $fixture_file = "SiteTreePermissionsTest.yml";
 	
 	protected $illegalExtensions = array(
 		'SiteTree' => array('SiteTreeSubsites')

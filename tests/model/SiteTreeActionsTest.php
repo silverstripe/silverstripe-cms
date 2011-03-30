@@ -14,7 +14,7 @@
  */
 class SiteTreeActionsTest extends FunctionalTest {
 
-	static $fixture_file = 'cms/tests/SiteTreeActionsTest.yml';
+	static $fixture_file = 'SiteTreeActionsTest.yml';
 	
 	static function set_up_once() {
 		SiteTreeTest::set_up_once();

@@ -4,7 +4,7 @@
  * @subpackage tests
  */
 class SiteTreeBrokenLinksTest extends SapphireTest {
-	static $fixture_file = 'cms/tests/SiteTreeBrokenLinksTest.yml';
+	static $fixture_file = 'SiteTreeBrokenLinksTest.yml';
 	
 	static function set_up_once() {
 		SiteTreeTest::set_up_once();

@@ -4,7 +4,7 @@
  * Tests link tracking to files and images.
  */
 class FileLinkTrackingTest extends SapphireTest {
-	static $fixture_file = "cms/tests/FileLinkTrackingTest.yml";
+	static $fixture_file = "FileLinkTrackingTest.yml";
 	
 	function setUp() {
 		parent::setUp();

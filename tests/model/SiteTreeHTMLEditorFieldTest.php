@@ -1,6 +1,6 @@
 <?php
 class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
-	public static $fixture_file = 'cms/tests/SiteTreeHtmlEditorFieldTest.yml';
+	public static $fixture_file = 'SiteTreeHtmlEditorFieldTest.yml';
 
 	public static $use_draft_site = true;
 

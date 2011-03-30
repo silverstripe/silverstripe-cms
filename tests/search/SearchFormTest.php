@@ -8,7 +8,7 @@
  */
 class SearchFormTest extends FunctionalTest {
 	
-	static $fixture_file = 'cms/tests/SearchFormTest.yml';
+	static $fixture_file = 'SearchFormTest.yml';
 	
 	protected $mockController;
 	

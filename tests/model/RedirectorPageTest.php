@@ -1,7 +1,7 @@
 <?php
 
 class RedirectorPageTest extends FunctionalTest {
-	static $fixture_file = 'cms/tests/RedirectorPageTest.yml';
+	static $fixture_file = 'RedirectorPageTest.yml';
 	static $use_draft_site = true;
 	
 	function testGoodRedirectors() {

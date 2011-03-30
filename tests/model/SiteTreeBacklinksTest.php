@@ -1,7 +1,7 @@
 <?php
 
 class SiteTreeBacklinksTest extends SapphireTest {
-	static $fixture_file = "cms/tests/SiteTreeBacklinksTest.yml";
+	static $fixture_file = "SiteTreeBacklinksTest.yml";
 
 	protected $requiredExtensions = array(
 		'SiteTree' => array('SiteTreeBacklinksTest_DOD'),

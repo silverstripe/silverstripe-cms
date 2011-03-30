@@ -5,7 +5,7 @@
  */
 class ContentControllerTest extends FunctionalTest {
 	
-	public static $fixture_file = 'cms/tests/ContentControllerTest.yml';
+	public static $fixture_file = 'ContentControllerTest.yml';
 	
 	public static $use_draft_site = true;
 	

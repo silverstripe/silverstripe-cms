@@ -32,7 +32,7 @@
  */
 class RemoveOrphanedPagesTaskTest extends FunctionalTest {
 	
-	static $fixture_file = 'cms/tests/RemoveOrphanedPagesTaskTest.yml';
+	static $fixture_file = 'RemoveOrphanedPagesTaskTest.yml';
 	
 	static $use_draft_site = false;
 	

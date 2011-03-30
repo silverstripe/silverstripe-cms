@@ -4,7 +4,7 @@
  * @subpackage tests
  */
 class WidgetControllerTest extends FunctionalTest {
-	static $fixture_file = 'cms/tests/WidgetControllerTest.yml';
+	static $fixture_file = 'WidgetControllerTest.yml';
 
 	protected $extraDataObjects = array(
 		'WidgetControllerTestPage',

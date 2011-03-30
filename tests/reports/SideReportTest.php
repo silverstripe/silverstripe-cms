@@ -5,7 +5,9 @@
  */
 
 class SideReportTest extends SapphireTest {
-	static $fixture_file = 'cms/tests/SideReportTest.yml';
+
+	static $fixture_file = 'SideReportTest.yml';
+
 	static $daysAgo = 14;
 	
 	function setUp() {

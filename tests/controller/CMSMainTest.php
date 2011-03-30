@@ -4,7 +4,7 @@
  * @subpackage tests
  */
 class CMSMainTest extends FunctionalTest {
-	static $fixture_file = 'cms/tests/CMSMainTest.yml';
+	static $fixture_file = 'CMSMainTest.yml';
 	
 	protected $autoFollowRedirection = false;
 	

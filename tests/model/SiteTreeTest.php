@@ -4,7 +4,7 @@
  * @subpackage tests
  */
 class SiteTreeTest extends SapphireTest {
-	static $fixture_file = 'cms/tests/SiteTreeTest.yml';
+	static $fixture_file = 'SiteTreeTest.yml';
 	
 	protected $illegalExtensions = array(
 		'SiteTree' => array('SiteTreeSubsites')
