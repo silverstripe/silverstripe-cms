@@ -16,14 +16,16 @@ $template = array(
 		'project' => 'silverstripe-cms',
 		'branch' => SAPPHIRE_CURRENT_BRANCH
 	)),
-	'themes/blackcandy' => new SvnRepo(array(
-		'repo' => 'http://svn.silverstripe.com/open/themes/blackcandy',
-		'branch' => 'trunk',
+	'themes/blackcandy' => new GithubSparse(array(
+		'user' => 'silverstripe-themes', 
+		'project' => 'silverstripe-blackcandy',
+		'branch' => SAPPHIRE_CURRENT_BRANCH,
 		'subdir' => 'blackcandy'
 	)),
-	'themes/blackcandy_blog' => new SvnRepo(array(
-		'repo' => 'http://svn.silverstripe.com/open/themes/blackcandy',
-		'branch' => 'trunk',
+	'themes/blackcandy_blog' => new GithubSparse(array(
+		'user' => 'silverstripe-themes', 
+		'project' => 'silverstripe-blackcandy',
+		'branch' => SAPPHIRE_CURRENT_BRANCH,
 		'subdir' => 'blackcandy_blog'
 	))
 );

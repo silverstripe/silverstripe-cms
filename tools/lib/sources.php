@@ -75,6 +75,38 @@ class Github extends GitRepo {
 	}
 }
 
+class GithubSparse extends Github {
+	function piston($out) {
+		$this->export($out);
+		if (Git::isGITRepo()) Git::add($out);
+	}
+	
+	function canPiston() {
+		$data = $this->data;
+		echo "WARNING: Sparse import of directory {$data['subdir']} from {$this->repoURL()} will be flat, not pistoned\n";
+		return $this->canExport();
+	}
+	
+	function checkout($out) {
+		$this->export($out);
+	}
+	
+	function canCheckout() {
+		$data = $this->data;
+		echo "WARNING: Sparse import of directory {$data['subdir']} from {$this->repoURL()} will be flat, not checked out\n";
+		return $this->canExport();
+	}
+	
+	function export($out) {
+		$data = $this->data;
+		
+		$tmp = tempnam(sys_get_temp_dir(), 'phpinstaller-') . '.zip';
+		
+		HTTP::get("https://github.com/{$data['user']}/{$data['project']}/zipball/{$data['branch']}", $tmp);
+		Zip::import($tmp, $out, 1, $data['subdir']);		
+	}
+}
+
 class SvnRepo {
 	function __construct($data) {
 		$this->data = $data;

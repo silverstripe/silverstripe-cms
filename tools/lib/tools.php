@@ -65,6 +65,10 @@ class GIT {
 		return is_dir('.git');
 	}
 	
+	static function add($dir) {
+		`git add $dir`;
+	}
+	
 	static function ignore($dir) {
 		$hndl = fopen('.gitignore', 'a');
 		fwrite($hfnl, $dir."\n");
@@ -94,7 +98,7 @@ class Zip {
 		return class_exists('ZipArchive');
 	}
 	
-	static function import($src, $dest, $skipdirs = 0) {
+	static function import($src, $dest, $skipdirs = 0, $subdir = null) {
 		$zip = new ZipArchive;
 		$res = $zip->open($src);
 		if ($res === TRUE) {
@@ -115,11 +119,21 @@ class Zip {
 						array_unshift($parts, basename($name));
 						$name = dirname($name);
 					}
-			
-					// We only need to move the very next level after the skipdirs level
-					if (count($parts) != $skipdirs+1) continue;
 					
-					$dstname = $parts[$skipdirs];
+					if ($subdir) {
+						// We only need to move the level after the level after the skipdirs level, presuming that level after the skipdirs level == $subdir
+						if (count($parts) != $skipdirs+2) continue;
+						if ($parts[$skipdirs] != $subdir) continue;
+						
+						$dstname = $parts[$skipdirs+1];
+					}
+					else {
+						// We only need to move the very next level after the skipdirs level
+						if (count($parts) != $skipdirs+1) continue;
+					
+						$dstname = $parts[$skipdirs];
+					}
+					
 					rename($tmpdir.'/'.$srcname, $dest.'/'.$dstname);
 				}
 			}
