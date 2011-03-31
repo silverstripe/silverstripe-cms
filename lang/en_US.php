@@ -8,7 +8,7 @@ $lang['en_US']['AssetAdmin']['CHOOSEFILE'] = 'Choose file: ';
 $lang['en_US']['AssetAdmin']['DELETEDX'] = 'Deleted %s file(s) %s';
 $lang['en_US']['AssetAdmin']['FILESREADY'] = 'Files ready to upload:';
 $lang['en_US']['AssetAdmin']['MENUTITLE'] = array(
-	'Files & Images',
+	'Files',
 	100,
 	'Menu title'
 );
@@ -105,7 +105,7 @@ $lang['en_US']['CMSMain']['DESCREMOVED'] = 'and %s descendants';
 $lang['en_US']['CMSMain']['EMAIL'] = 'Email';
 $lang['en_US']['CMSMain']['GO'] = 'Go';
 $lang['en_US']['CMSMain']['MENUTITLE'] = array(
-	'Pages',
+	'Edit Page',
 	100,
 	'Menu title'
 );
@@ -474,7 +474,7 @@ $lang['en_US']['SecurityAdmin']['APPLY_ROLES_HELP'] = 'Ability to edit the roles
 $lang['en_US']['SecurityAdmin']['EDITPERMISSIONS'] = 'Manage permissions for groups';
 $lang['en_US']['SecurityAdmin']['EDITPERMISSIONS_HELP'] = 'Ability to edit Permissions and IP Addresses for a group. Requires "Access to Security".';
 $lang['en_US']['SecurityAdmin']['MENUTITLE'] = array(
-	'Security',
+	'Users',
 	100,
 	'Menu title'
 );

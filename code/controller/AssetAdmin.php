@@ -12,7 +12,7 @@ class AssetAdmin extends LeftAndMain {
 	
 	static $url_rule = '/$Action/$ID';
 	
-	static $menu_title = 'Files & Images';
+	static $menu_title = 'Files';
 
 	public static $tree_class = 'Folder';
 	
