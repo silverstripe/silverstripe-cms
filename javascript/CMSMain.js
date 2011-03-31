@@ -169,7 +169,7 @@
 		 * Class: Form_SideReportsForm
 		 * 
 		 * Simple form with a page type dropdown
-		 * which creates a new page through #Form_EditForm and adds a new tree node.
+		 * which creates a new page through .cms-edit-form and adds a new tree node.
 		 */
 		$('#Form_SideReportsForm').entwine(/** @lends ss.reports_holder */{
 			ReportContainer: null,
@@ -275,7 +275,7 @@
 				if (e.button!=2) {
 					var $link = $(this);
 					$link.addClass('loading');
-					jQuery('#Form_EditForm').entwine('ss').loadForm(
+					jQuery('.cms-edit-form').entwine('ss').loadForm(
 						$(this).attr('href'),
 						function(e) {
 							$link.removeClass('loading');
@@ -337,7 +337,7 @@
 				
 					var link = $(this).siblings('.versionlink').find('a').attr('href');
 					td.addClass('loading');
-					jQuery('#Form_EditForm').entwine('ss').loadForm(
+					jQuery('.cms-edit-form').entwine('ss').loadForm(
 						link,
 						function(e) {
 							td.removeClass('loading');
@@ -388,7 +388,7 @@
 				data.push({name:$button.attr('name'), value: $button.val()});
 			
 				if(loadEditForm) {
-					jQuery('#Form_EditForm').entwine('ss').loadForm(
+					jQuery('.cms-edit-form').entwine('ss').loadForm(
 						this.attr('action'),
 						function(e) {
 							$button.removeClass('loading');

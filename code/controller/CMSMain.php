@@ -462,6 +462,11 @@ JS;
 			$form = new Form($this, "EditForm", $fields, $actions, $validator);
 			$form->loadDataFrom($record);
 			$form->disableDefaultAction();
+			$form->addExtraClass('cms-edit-form');
+			$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
+			// TODO Can't merge $FormAttributes in template at the moment
+			$form->addExtraClass('cms-content center ss-tabset');
+			if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 
 			if(!$record->canEdit() || $record->IsDeletedFromStage) {
 				$readonlyFields = $form->Fields()->makeReadonly();
@@ -488,8 +493,14 @@ JS;
 		$fields = $siteConfig->getCMSFields();
 
 		$form = new Form($this, 'RootForm', $fields, $siteConfig->getCMSActions());
+		$form->addExtraClass('root-form');
+		$form->addExtraClass('cms-edit-form');
+		// TODO Can't merge $FormAttributes in template at the moment
+		$form->addExtraClass('cms-content center ss-tabset');
+		if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 		$form->setHTMLID('Form_EditForm');
 		$form->loadDataFrom($siteConfig);
+		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 
 		$this->extend('updateEditForm', $form);
 

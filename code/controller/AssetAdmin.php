@@ -285,7 +285,7 @@ JS
 // 		echo <<<HTML
 // 			<script type="text/javascript">
 // 			var url = parent.document.getElementById('sitetree').getTreeNodeByIdx( "{$folder->ID}" ).getElementsByTagName('a')[0].href;
-// 			parent.jQuery('#Form_EditForm').entwine('ss').loadForm(url);
+// 			parent.jQuery('.cms-edit-form').entwine('ss').loadForm(url);
 // 			parent.statusMessage("{$statusMessage}","{$status}");
 // 			</script>
 // HTML;

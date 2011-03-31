@@ -25,11 +25,11 @@ CommentTableField.prototype = {
 		rules['#'+this.id+' table.data a.hamlink'] = {
 			onclick: this.removeRowAfterAjax.bind(this)
 		};
-		rules['#Form_EditForm div.CommentFilter input'] = {
+		rules['.edit-form div.CommentFilter input'] = {
 				onkeypress : this.prepareSearch.bind(this)
 		};
 		
-		rules['#Form_EditForm'] = {
+		rules['.edit-form'] = {
 			changeDetection_fieldsToIgnore : {
 				'ctf[start]' : true,
 				'ctf[ID]' : true,
