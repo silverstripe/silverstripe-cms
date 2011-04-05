@@ -9,22 +9,24 @@
 		 * 
 		 * All forms in the right content panel should have closeable jQuery UI style titles.
 		 */
-		$('#contentPanel form').entwine({
-			// Constructor: onmatch
-			onmatch: function() {
-			  // Style as title bar
-				this.find(':header:first').titlebar({
-					closeButton:true
-				});
-				// The close button should close the east panel of the layout
-				this.find(':header:first .ui-dialog-titlebar-close').bind('click', function(e) {
-					$('body.CMSMain').entwine('ss').getMainLayout().close('east');
-					return false;
-				});
-			
-				this._super();
-			}
-		});
+		// TODO Change to modal dialog, jQuery UI update somehow messed up the button positioning,
+		// they're no longer clickable
+		// $('#contentPanel form').entwine({
+		// 	// Constructor: onmatch
+		// 	onmatch: function() {
+		// 	  // Style as title bar
+		// 		this.find(':header:first').titlebar({
+		// 			closeButton:true
+		// 		});
+		// 		// The close button should close the east panel of the layout
+		// 		this.find(':header:first .ui-dialog-titlebar-close').bind('click', function(e) {
+		// 			$('body.CMSMain').entwine('ss').getMainLayout().close('east');
+		// 			return false;
+		// 		});
+		// 	
+		// 		this._super();
+		// 	}
+		// });
 	
 		/**
 		 * Class: #Form_SearchTreeForm
