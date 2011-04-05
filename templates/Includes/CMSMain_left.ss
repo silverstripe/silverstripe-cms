@@ -7,7 +7,7 @@
 				<div id="TreeTools">
 					 <% include CMSMain_TreeTools %>
 				</div>
-				<div id="sitetree_ul" data-url-tree="$Link(getsubtree)" data-url-savetreenode="$Link(savetreenode)" class="jstree jstree-apple">
+				<div id="sitetree" data-url-tree="$Link(getsubtree)" data-url-savetreenode="$Link(savetreenode)" class="jstree jstree-apple">
 					$SiteTreeAsUL
 				</div>
 			</div>
