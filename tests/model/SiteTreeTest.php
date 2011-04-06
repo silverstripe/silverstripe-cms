@@ -509,11 +509,18 @@ class SiteTreeTest extends SapphireTest {
 	}
 	
 	function testCompareVersions() {
+		// Necessary to avoid
+		$oldCleanerClass = Diff::$html_cleaner_class;
+		Diff::$html_cleaner_class = 'SiteTreeTest_NullHtmlCleaner';
+		
 		$page = new Page();
 		$page->write();
 		$this->assertEquals(1, $page->Version);
-		
-		$page->Content = "<p>This is a test</p>";
+
+		// Use inline element to avoid double wrapping applied to
+		// blocklevel elements depending on HTMLCleaner implementation:
+		// <ins><p> gets converted to <ins><p><inst>
+		$page->Content = "<span>This is a test</span>";
 		$page->write();
 		$this->assertEquals(2, $page->Version);
 		
@@ -522,8 +529,9 @@ class SiteTreeTest extends SapphireTest {
 		$processedContent = trim($diff->Content);
 		$processedContent = preg_replace('/\s*</','<',$processedContent);
 		$processedContent = preg_replace('/>\s*/','>',$processedContent);
-		$this->assertEquals("<ins><p><ins>This is a test</ins></p></ins>", $processedContent);
+		$this->assertEquals("<ins><span>This is a test</span></ins>", $processedContent);
 		
+		Diff::$html_cleaner_class = $oldCleanerClass;
 	}
 
 	function testAuthorIDAndPublisherIDFilledOutOnPublish() {
@@ -759,4 +767,8 @@ class SiteTreeTest_Conflicted_Controller extends Page_Controller implements Test
 	 
 }
 
-/**#@-*/
+class SiteTreeTest_NullHtmlCleaner extends HTMLCleaner {
+	function cleanHTML($html) {
+		return $html;
+	}
+}
