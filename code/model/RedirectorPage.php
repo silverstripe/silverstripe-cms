@@ -7,7 +7,7 @@
  */
 class RedirectorPage extends Page {
 	
-	static $icon = array("cms/images/treeicons/page-shortcut","file");
+	static $icon = "cms/images/treeicons/page-shortcut-file.gif";
 	
 	static $description = 'Redirects to a different internal page';
 	

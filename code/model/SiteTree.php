@@ -128,28 +128,26 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	*/
 	static $can_create = true;
 
+	/**
+	 * @see CMSMain::generateTreeStylingCSS()
+	 */ 
+	static $page_states = array('readonly'); 
 
 	/**
-	 * Icon to use in the CMS
-	 *
-	 * This should be the base filename.  The suffixes -file.gif,
-	 * -openfolder.gif and -closedfolder.gif will be appended to the base name
-	 * that you provide there.
-	 * If you prefer, you can pass an array:
-	 * array("sapphire\javascript\tree\images\page", $option).
-	 * $option can be either "file" or "folder" to force the icon to always
-	 * be a file or folder, regardless of whether the page has children or not
-	 *
-	 * @var string|array
+	 * Icon to use in the CMS page tree. This should be the full filename, relative to the webroot.
+	 * Also supports custom CSS rule contents (applied to the correct selector for the tree UI implementation).
+	 * 
+	 * @see CMSMain::generateTreeStylingCSS()
+	 * 
+	 * @var string
 	 */
-	static $icon = array("sapphire/javascript/tree/images/page", "file");
+	static $icon = null;
 	
 	/**
 	 * @var String Description of the class functionality, typically shown to a user
 	 * when selecting which page type to create. Translated through {@link provideI18nEntities()}.
 	 */
 	static $description = 'Generic content page';
-
 
 	static $extensions = array(
 		"Hierarchy",

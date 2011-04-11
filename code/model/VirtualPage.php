@@ -7,7 +7,7 @@
 */
 class VirtualPage extends Page {
 	
-	static $icon = array("cms/images/treeicons/page-shortcut-gold","file");
+	static $icon = "cms/images/treeicons/page-shortcut-gold-file.gif";
 	
 	static $description = 'Displays the content of another page';
 	

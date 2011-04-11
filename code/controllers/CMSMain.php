@@ -137,13 +137,23 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * Return the entire site tree as a nested set of ULs
 	 */
 	public function SiteTreeAsUL() {
-		$this->generateTreeStylingJS();
+		$html = '';
+
+		// Include custom CSS for tree icons inline, as the tree might be loaded
+		// via Ajax, in which case we can't inject it into the HTML header easily through the HTTP response.
+		$css = $this->generateTreeStylingCSS();
+		if($this->isAjax()) {
+			$html .= "<style type=\"text/css\">\n" . $css . "</style>\n";				
+		} else {
+			Requirements::customCSS($css);
+		}
 
 		// Pre-cache sitetree version numbers for querying efficiency
 		Versioned::prepopulate_versionnumber_cache("SiteTree", "Stage");
 		Versioned::prepopulate_versionnumber_cache("SiteTree", "Live");
+		$html .= $this->getSiteTreeFor($this->stat('tree_class'));
 
-		return $this->getSiteTreeFor($this->stat('tree_class'));
+		return $html;
 	}
 	
 	function SearchForm() {
@@ -257,43 +267,52 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		return Convert::raw2xml(Convert::raw2json($def));
 	}
-
-	public function generateTreeStylingJS() {
-		$classes = ClassInfo::subclassesFor($this->stat('tree_class'));
+	
+	/**
+	 * Include CSS for page icons. We're not using the JSTree 'types' option
+	 * because it causes too much performance overhead just to add some icons.
+	 * 
+	 * @return String CSS 
+	 */
+	function generateTreeStylingCSS() {
+		$css = ''; 
+		
+		$classes = ClassInfo::subclassesFor('SiteTree'); 
 		foreach($classes as $class) {
-			$obj = singleton($class);
-			if($obj instanceof HiddenClass) continue;
-			if($icon = $obj->stat('icon')) $iconInfo[$class] = $icon;
+			$obj = singleton($class); 
+			$iconSpec = $obj->stat('icon'); 
+
+			if(!$iconSpec) continue;
+
+			// Legacy support: We no longer need separate icon definitions for folders etc.
+			$iconFile = (is_array($iconSpec)) ? $iconSpec[0] : $iconSpec;
+
+			// Legacy support: Add file extension if none exists
+			if(!pathinfo($iconFile, PATHINFO_EXTENSION)) $iconFile .= '-file.gif';
+
+			$iconPathInfo = pathinfo($iconFile); 
+			
+			// Base filename 
+			$baseFilename = $iconPathInfo['dirname'] . '/' . $iconPathInfo['filename'];
+			$fileExtension = $iconPathInfo['extension'];
+
+			if(Director::fileExists($iconFile)) {
+				$css .= sprintf(
+					"li.class-%s > a .jstree-pageicon { background: transparent url('%s') 0 0 no-repeat; }\n",
+					$class, $iconFile
+				);	
+			} else {
+				// Support for more sophisticated rules, e.g. sprited icons
+				$css .= sprintf(
+					"li.class-%s > a .jstree-pageicon { %s }\n",
+					$class, $iconFile
+				);
+			}
+			
+
 		}
-		$iconInfo['BrokenLink'] = 'cms/images/treeicons/brokenlink';
 
-
-		$js = "var _TREE_ICONS = [];\n";
-
-
-		foreach($iconInfo as $class => $icon) {
-			// SiteTree::$icon can be set to array($icon, $option)
-			// $option can be "file" or "folder" to force the icon to always be the file or the folder form
-			$option = null;
-			if(is_array($icon)) list($icon, $option) = $icon;
-
-			$fileImage = ($option == "folder") ? $icon . '-openfolder.gif' : $icon . '-file.gif';
-			$openFolderImage = $icon . '-openfolder.gif';
-			if(!Director::fileExists($openFolderImage) || $option == "file") $openFolderImage = $fileImage;
-			$closedFolderImage = $icon . '-closedfolder.gif';
-			if(!Director::fileExists($closedFolderImage) || $option == "file") $closedFolderImage = $fileImage;
-
-			$js .= <<<JS
-				_TREE_ICONS['$class'] = {
-					fileIcon: '$fileImage',
-					openFolderIcon: '$openFolderImage',
-					closedFolderIcon: '$closedFolderImage'
-				};
-
-JS;
-		}
-
-		Requirements::customScript($js);
+		return $css;
 	}
 
 	/**
