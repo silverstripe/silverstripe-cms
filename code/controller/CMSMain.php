@@ -150,7 +150,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 */
 	public function SiteTreeAsUL() {
 		$this->generateDataTreeHints();
-		$this->generateTreeStylingJS();
+		$this->generateTreeStylingCSS();
 
 		// Pre-cache sitetree version numbers for querying efficiency
 		Versioned::prepopulate_versionnumber_cache("SiteTree", "Stage");
@@ -254,6 +254,32 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		// Put data hints into a script tag at the top
 		Requirements::customScript("siteTreeHints = " . Convert::raw2json($def) . ";");
+	}
+	
+	/**
+	 * TODO: Class for open folder and close folder
+	 * TODO: Remove generateTreeStylingJS() when this method is complete
+	 * @return void 
+	 */
+	function generateTreeStylingCSS() {
+		// replacements: page class, image url
+		$cssIconTemplate = "#sitetree_ul .class-%s a .jstree-icon { background: url('%s') no-repeat }\n";
+		$css = ''; 
+		
+		$classes = ClassInfo::subclassesFor('SiteTree'); 
+		foreach($classes as $class) {
+			$obj = singleton($class); 
+			$iconProp = $obj->stat('icon'); 
+			if(!is_array($iconProp)) {
+				$iconProp = array($iconProp);
+			}
+			
+			list($icon, $option) = $iconProp;
+			$fileImage = $icon . '-' . $option . '.png'; 
+			$css .= sprintf($cssIconTemplate, $class, $fileImage);
+		}
+
+		Requirements::customCSS($css); 
 	}
 
 	public function generateTreeStylingJS() {
