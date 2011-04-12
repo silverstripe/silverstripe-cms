@@ -269,14 +269,22 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$classes = ClassInfo::subclassesFor('SiteTree'); 
 		foreach($classes as $class) {
 			$obj = singleton($class); 
-			$iconProp = $obj->stat('icon'); 
-			if(!is_array($iconProp)) {
-				$iconProp = array($iconProp);
-			}
+			$iconFile = $obj->stat('icon'); 
+			$iconPathInfo = pathinfo($iconFile); 
 			
-			list($icon, $option) = $iconProp;
-			$fileImage = $icon . '-' . $option . '.png'; 
-			$css .= sprintf($cssIconTemplate, $class, $fileImage);
+			// Base filename 
+			$baseFilename = $iconPathInfo['dirname'] . '/' . $iconPathInfo['filename'];
+			$fileExtension = $iconPathInfo['extension'];
+			$css .= sprintf($cssIconTemplate, $class, $iconFile) . "\n";
+
+			$pageStates = array('readonly', 'draft'); 
+			foreach($pageStates as $state) {
+				$filename = $baseFilename . '-' . $state . '.' . $fileExtension; 
+				
+				if(Director::fileExists	($fileName)) {
+					$css .= sprintf($cssIconTemplate, $class . '.' . $state, $filename) . "\n";
+				}	
+			}
 		}
 
 		Requirements::customCSS($css); 

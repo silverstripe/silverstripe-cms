@@ -134,17 +134,16 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * Icon to use in the CMS
 	 *
-	 * This should be the base filename.  The suffixes -file.gif,
-	 * -openfolder.gif and -closedfolder.gif will be appended to the base name
-	 * that you provide there.
-	 * If you prefer, you can pass an array:
-	 * array("sapphire\javascript\tree\images\page", $option).
-	 * $option can be either "file" or "folder" to force the icon to always
-	 * be a file or folder, regardless of whether the page has children or not
-	 *
-	 * @var string|array
+	 * This should be the full filename, including file extention. CMSMain will look for other files 
+	 * in the same folder that correspond to the states the page in the the same folder. 
+	 * For example, if the full file path is 'dir/page.png' then the readonly state would be 'dir/page-readonly.png'. If those files are not found the default one will be used instead. 
+	 * 
+	 * Paget states: 
+	 * - readonly
+	 * 
+	 * @var string
 	 */
-	static $icon = array("sapphire/javascript/tree/images/page", "file");
+	static $icon = "sapphire/javascript/tree/images/page.png";
 
 
 	static $extensions = array(
