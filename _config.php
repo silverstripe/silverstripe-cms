@@ -29,4 +29,4 @@ else SS_Report::register('ReportAdmin', 'BrokenLinksReport',-20);
  */
 ShortcodeParser::get('default')->register('sitetree_link', array('SiteTree', 'link_shortcode_handler'));
 
-Object::add_extension('File', 'SiteTreeFileDecorator');
+Object::add_extension('File', 'SiteTreeFileExtension');

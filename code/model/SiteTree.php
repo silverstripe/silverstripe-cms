@@ -234,8 +234,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * If you have enabled {@link SiteTree::nested_urls()} on this site, then you can use a nested link such as
 	 * "about-us/staff/", and this function will traverse down the URL chain and grab the appropriate link.
 	 *
-	 * Note that if no model can be found, this method will fall over to a decorated alternateGetByLink method provided
-	 * by a decorator attached to {@link SiteTree}
+	 * Note that if no model can be found, this method will fall over to a extended alternateGetByLink method provided
+	 * by a extension attached to {@link SiteTree}
 	 *
 	 * @param string $link
 	 * @param bool $cache
@@ -261,7 +261,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			return ($pages->Count() == 1) ? $pages->First() : null;
 		}
 		
-		// Attempt to grab an alternative page from decorators.
+		// Attempt to grab an alternative page from extensions.
 		if(!$sitetree) {
 			$parentID = self::nested_urls() ? 0 : null;
 			
@@ -668,7 +668,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 *
 	 * Returns true if the member is allowed to do the given action.
 	 *
-	 * @uses DataObjectDecorator->can()
+	 * @uses DataExtension->can()
 	 *
 	 * If a page is set to inherit, but has no parent, it inherits from
 	 * {@link SiteConfig}
@@ -707,11 +707,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * application.
 	 * 
 	 * Denies permission if any of the following conditions is TRUE:
-	 * - alternateCanAddChildren() on a decorator returns FALSE
+	 * - alternateCanAddChildren() on a extension returns FALSE
 	 * - canEdit() is not granted
 	 * - There are no classes defined in {@link $allowed_children}
 	 * 
-	 * @uses SiteTreeDecorator->canAddChildren()
+	 * @uses SiteTreeExtension->canAddChildren()
 	 * @uses canEdit()
 	 * @uses $allowed_children
 	 *
@@ -724,7 +724,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		if($member && Permission::checkMember($member, "ADMIN")) return true;
 		
-		// Standard mechanism for accepting permission changes from decorators
+		// Standard mechanism for accepting permission changes from extensions
 		$extended = $this->extendedCan('canAddChildren', $member);
 		if($extended !== null) return $extended;
 		
@@ -738,12 +738,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * application.
 	 * 
 	 * Denies permission if any of the following conditions is TRUE:
-	 * - canView() on any decorator returns FALSE
+	 * - canView() on any extension returns FALSE
 	 * - "CanViewType" directive is set to "Inherit" and any parent page return false for canView()
 	 * - "CanViewType" directive is set to "LoggedInUsers" and no user is logged in
 	 * - "CanViewType" directive is set to "OnlyTheseUsers" and user is not in the given groups
 	 *
-	 * @uses DataObjectDecorator->canView()
+	 * @uses DataExtension->canView()
 	 * @uses ViewerGroups()
 	 *
 	 * @return boolean True if the current user can view this page.
@@ -756,7 +756,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		// admin override
 		if($member && Permission::checkMember($member, array("ADMIN", "SITETREE_VIEW_ALL"))) return true;
 
-		// Standard mechanism for accepting permission changes from decorators
+		// Standard mechanism for accepting permission changes from extensions
 		$extended = $this->extendedCan('canView', $member);
 		if($extended !== null) return $extended;
 		
@@ -813,12 +813,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * application.
 	 * 
 	 * Denies permission if any of the following conditions is TRUE:
-	 * - canDelete() returns FALSE on any decorator
+	 * - canDelete() returns FALSE on any extension
 	 * - canEdit() returns FALSE
 	 * - any descendant page returns FALSE for canDelete()
 	 * 
 	 * @uses canDelete()
-	 * @uses DataObjectDecorator->canDelete()
+	 * @uses SiteTreeExtension->canDelete()
 	 * @uses canEdit()
 	 *
 	 * @param Member $member
@@ -833,7 +833,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			return true;
 		}
 		
-		// Standard mechanism for accepting permission changes from decorators
+		// Standard mechanism for accepting permission changes from extensions
 		$extended = $this->extendedCan('canDelete', $memberID);
 		if($extended !== null) return $extended;
 		
@@ -856,13 +856,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * application.
 	 * 
 	 * Denies permission if any of the following conditions is TRUE:
-	 * - canCreate() returns FALSE on any decorator
+	 * - canCreate() returns FALSE on any extension
 	 * - $can_create is set to FALSE and the site is not in "dev mode"
 	 * 
 	 * Use {@link canAddChildren()} to control behaviour of creating children under this page.
 	 * 
 	 * @uses $can_create
-	 * @uses DataObjectDecorator->canCreate()
+	 * @uses DataExtension->canCreate()
 	 *
 	 * @param Member $member
 	 * @return boolean True if the current user can create pages on this class.
@@ -874,7 +874,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		if($member && Permission::checkMember($member, "ADMIN")) return true;
 		
-		// Standard mechanism for accepting permission changes from decorators
+		// Standard mechanism for accepting permission changes from extensions
 		$extended = $this->extendedCan('canCreate', $member);
 		if($extended !== null) return $extended;
 		
@@ -888,7 +888,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * application.
 	 * 
 	 * Denies permission if any of the following conditions is TRUE:
-	 * - canEdit() on any decorator returns FALSE
+	 * - canEdit() on any extension returns FALSE
 	 * - canView() return false
 	 * - "CanEditType" directive is set to "Inherit" and any parent page return false for canEdit()
 	 * - "CanEditType" directive is set to "LoggedInUsers" and no user is logged in or doesn't have the CMS_Access_CMSMAIN permission code
@@ -896,7 +896,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * 
 	 * @uses canView()
 	 * @uses EditorGroups()
-	 * @uses DataObjectDecorator->canEdit()
+	 * @uses DataExtension->canEdit()
 	 *
 	 * @param Member $member Set to FALSE if you want to explicitly test permissions without a valid user (useful for unit tests)
 	 * @return boolean True if the current user can edit this page.
@@ -908,7 +908,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		
 		if($memberID && Permission::checkMember($memberID, array("ADMIN", "SITETREE_EDIT_ALL"))) return true;
 		
-		// Standard mechanism for accepting permission changes from decorators
+		// Standard mechanism for accepting permission changes from extensions
 		$extended = $this->extendedCan('canEdit', $memberID);
 		if($extended !== null) return $extended;
 
@@ -937,10 +937,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * application.
 	 * 
 	 * Denies permission if any of the following conditions is TRUE:
-	 * - canPublish() on any decorator returns FALSE
+	 * - canPublish() on any extension returns FALSE
 	 * - canEdit() returns FALSE
 	 * 
-	 * @uses SiteTreeDecorator->canPublish()
+	 * @uses SiteTreeExtension->canPublish()
 	 *
 	 * @param Member $member
 	 * @return boolean True if the current user can publish this page.
@@ -950,7 +950,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		
 		if($member && Permission::checkMember($member, "ADMIN")) return true;
 
-		// Standard mechanism for accepting permission changes from decorators
+		// Standard mechanism for accepting permission changes from extensions
 		$extended = $this->extendedCan('canPublish', $member);
 		if($extended !== null) return $extended;
 
@@ -959,7 +959,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 	
 	public function canDeleteFromLive($member = null) {
-		// Standard mechanism for accepting permission changes from decorators
+		// Standard mechanism for accepting permission changes from extensions
 		$extended = $this->extendedCan('canDeleteFromLive', $member);
 		if($extended !==null) return $extended;
 
@@ -1512,7 +1512,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * If {@link Extension}s wish to alter URL segment generation, they can do so by defining
 	 * updateURLSegment(&$url, $title).  $url will be passed by reference and should be modified.
 	 * $title will contain the title that was originally used as the source of this generated URL.
-	 * This lets decorators either start from scratch, or incrementally modify the generated URL.
+	 * This lets extensions either start from scratch, or incrementally modify the generated URL.
 	 * 
 	 * @param string $title Page title.
 	 * @return string Generated url segment
@@ -1524,7 +1524,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$t = "page-$this->ID";
 		}
 		
-		// Hook for decorators
+		// Hook for extensions
 		$this->extend('updateURLSegment', $t, $title);
 		
 		return $t;
@@ -1952,7 +1952,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$actions->push(new FormAction('email', _t('CMSMain.EMAIL', 'Email')));
 			$actions->push(new FormAction('rollback', _t('CMSMain.ROLLBACK', 'Roll back to this version')));
 
-			// getCMSActions() can be extended with updateCMSActions() on a decorator
+			// getCMSActions() can be extended with updateCMSActions() on a extension
 			$this->extend('updateCMSActions', $actions);
 
 			return $actions;
@@ -2006,7 +2006,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$actions->push(new FormAction('publish', _t('SiteTree.BUTTONSAVEPUBLISH', 'Save and Publish')));
 		}
 		
-		// getCMSActions() can be extended with updateCMSActions() on a decorator
+		// getCMSActions() can be extended with updateCMSActions() on a extension
 		$this->extend('updateCMSActions', $actions);
 		
 		return $actions;
@@ -2015,8 +2015,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * Publish this page.
 	 * 
-	 * @uses SiteTreeDecorator->onBeforePublish()
-	 * @uses SiteTreeDecorator->onAfterPublish()
+	 * @uses SiteTreeExtension->onBeforePublish()
+	 * @uses SiteTreeExtension->onAfterPublish()
 	 */
 	function doPublish() {
 		if (!$this->canPublish()) return false;
@@ -2024,7 +2024,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$original = Versioned::get_one_by_stage("SiteTree", "Live", "\"SiteTree\".\"ID\" = $this->ID");
 		if(!$original) $original = new SiteTree();
 
-		// Handle activities undertaken by decorators
+		// Handle activities undertaken by extensions
 		$this->invokeWithExtensions('onBeforePublish', $original);
 		//$this->PublishedByID = Member::currentUser()->ID;
 		$this->write();
@@ -2062,7 +2062,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			} else { if (file_exists(BASE_PATH.'/'.ASSETS_DIR.'/_homepage-map.php')) unlink(BASE_PATH.'/'.ASSETS_DIR.'/_homepage-map.php'); }
 		}
 		
-		// Handle activities undertaken by decorators
+		// Handle activities undertaken by extensions
 		$this->invokeWithExtensions('onAfterPublish', $original);
 		
 		return true;
@@ -2082,8 +2082,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * Unpublish this page - remove it from the live site
 	 * 
-	 * @uses SiteTreeDecorator->onBeforeUnpublish()
-	 * @uses SiteTreeDecorator->onAfterUnpublish()
+	 * @uses SiteTreeExtension->onBeforeUnpublish()
+	 * @uses SiteTreeExtension->onAfterUnpublish()
 	 */
 	function doUnpublish() {
 		if(!$this->canDeleteFromLive()) return false;
@@ -2500,7 +2500,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * Stops extendCMSFields() being called on getCMSFields().
 	 * This is useful when you need access to fields added by subclasses
-	 * of SiteTree in a decorator. Call before calling parent::getCMSFields(),
+	 * of SiteTree in a extension. Call before calling parent::getCMSFields(),
 	 * and reenable afterwards.
 	 */
 	public static function disableCMSFieldsExtensions() {

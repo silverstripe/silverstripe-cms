@@ -27,7 +27,7 @@ class SiteTreeTest extends SapphireTest {
 			// overwrite locale
 			Translatable::set_default_locale("en_US");
 
-			// refresh the decorated statics - different fields in $db with Translatable enabled
+			// refresh the extended statics - different fields in $db with Translatable enabled
 			if(self::$origTranslatableSettings['has_extension']) {
 				Object::remove_extension('SiteTree', 'Translatable');
 				Object::remove_extension('SiteConfig', 'Translatable');

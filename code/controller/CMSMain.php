@@ -614,7 +614,7 @@ JS;
 	}
 
 	/**
-	 * @uses LeftAndMainDecorator->augmentNewSiteTreeItem()
+	 * @uses LeftAndMainExtension->augmentNewSiteTreeItem()
 	 */
 	public function getNewItem($id, $setID = true) {
 		list($dummy, $className, $parentID, $suffix) = array_pad(explode('-',$id),4,null);
