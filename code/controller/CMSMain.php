@@ -139,7 +139,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * Return the entire site tree as a nested set of ULs
 	 */
 	public function SiteTreeAsUL() {
-		$this->generateDataTreeHints();
 		$this->generateTreeStylingJS();
 
 		// Pre-cache sitetree version numbers for querying efficiency
@@ -213,27 +212,43 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return $this->getsubtree($this->request);
 	}
 
-	public function generateDataTreeHints() {
-		$classes = ClassInfo::subclassesFor( $this->stat('tree_class') );
+	/**
+	 * Create serialized JSON string with site tree hints data to be injected into
+	 * 'data-hints' attribute of root node of jsTree.
+	 * 
+	 * @return String Serialized JSON
+	 */
+	public function SiteTreeHints() {
+	  $classes = ClassInfo::subclassesFor( $this->stat('tree_class') );
 
 		$def['Root'] = array();
+		$def['Root']['disallowedChildren'] = array();
+		$def['Root']['disallowedParents'] = array();
 
 		foreach($classes as $class) {
 			$obj = singleton($class);
 			if($obj instanceof HiddenClass) continue;
-
+			
 			$allowedChildren = $obj->allowedChildren();
-			if($allowedChildren != "none")  $def[$class]['allowedChildren'] = $allowedChildren;
-			$def[$class]['defaultChild'] = $obj->defaultChild();
-			$def[$class]['defaultParent'] = isset(SiteTree::get_by_link($obj->defaultParent())->ID) ? SiteTree::get_by_link($obj->defaultParent())->ID : null;
-
-			if($obj->stat('can_be_root')) {
-				$def['Root']['allowedChildren'][] = $class;
+			//SiteTree::allowedChildren() returns null rather than an empty array if SiteTree::allowed_chldren == 'none'
+			if ($allowedChildren == null) $allowedChildren = array();
+			$def[$class]['disallowedChildren'] = array_keys(array_diff($classes, $allowedChildren));
+			
+			$defaultChild = $obj->defaultChild();
+			if ($defaultChild != 'Page' && $defaultChild != null) $def[$class]['defaultChild'] = $defaultChild;
+			
+			$defaultParent = isset(SiteTree::get_by_link($obj->defaultParent())->ID) ? SiteTree::get_by_link($obj->defaultParent())->ID : null;
+			if ($defaultParent != 1 && $defaultParent != null)  $def[$class]['defaultParent'] = $defaultParent;
+			
+		  if(is_array($def[$class]['disallowedChildren'])) foreach($def[$class]['disallowedChildren'] as $disallowedChild) {
+				$def[$disallowedChild]['disallowedParents'][] = $class;
 			}
+			
+			//Are any classes allowed to be parents of root?
+			$def['Root']['disallowedParents'][] = $class;
 		}
 
-		// Put data hints into a script tag at the top
-		Requirements::customScript("siteTreeHints = " . Convert::raw2json($def) . ";");
+		return Convert::raw2xml(Convert::raw2json($def));
 	}
 
 	public function generateTreeStylingJS() {

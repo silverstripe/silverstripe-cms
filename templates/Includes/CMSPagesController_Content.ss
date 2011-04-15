@@ -34,7 +34,7 @@
 				<% include CMSPagesController_ContentToolbar %>
 			</div>
 			
-			<div class="cms-tree" data-url-tree="$Link(getsubtree)" data-url-savetreenode="$Link(savetreenode)">
+			<div class="cms-tree" data-url-tree="$Link(getsubtree)" data-url-savetreenode="$Link(savetreenode)" data-hints="$SiteTreeHints">
 				$SiteTreeAsUL
 			</div>
 			
