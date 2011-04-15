@@ -26,6 +26,8 @@ class ErrorPage extends Page {
 	
 	protected static $static_filepath = ASSETS_PATH;
 	
+	public function canAddChildren($member = null) { return false; }
+	
 	/**
 	 * Get a {@link SS_HTTPResponse} to response to a HTTP error code if an {@link ErrorPage} for that code is present.
 	 *
