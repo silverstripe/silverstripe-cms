@@ -19,7 +19,6 @@ Director::addRules(1, array(
 // Register default side reports
 SS_Report::register("SideReport", "SideReport_EmptyPages");
 SS_Report::register("SideReport", "SideReport_RecentlyEdited");
-SS_Report::register("SideReport", "SideReport_ToDo");
 if (class_exists('SubsiteReportWrapper')) SS_Report::register('ReportAdmin', 'SubsiteReportWrapper("BrokenLinksReport")',-20);
 else SS_Report::register('ReportAdmin', 'BrokenLinksReport',-20);
 

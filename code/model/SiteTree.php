@@ -77,9 +77,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		"ReportClass" => "Varchar",
 		"CanViewType" => "Enum('Anyone, LoggedInUsers, OnlyTheseUsers, Inherit', 'Inherit')",
 		"CanEditType" => "Enum('LoggedInUsers, OnlyTheseUsers, Inherit', 'Inherit')",
-
-		// Simple task tracking
-		"ToDo" => "Text",
 	);
 
 	static $indexes = array(
@@ -1806,10 +1803,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						_t('SiteTree.HOMEPAGEFORDOMAIN', "Domain(s)", PR_MEDIUM, 'Listing domains that should be used as homepage')
 					)
 				),
-				$tabToDo = new Tab(_t('SiteTree.TABTODO', 'To-do') . ($this->ToDo ? '**' : ''),
-					new LiteralField("ToDoHelp", _t('SiteTree.TODOHELP', "<p>You can use this to keep track of work that needs to be done to the content of your site.  To see all your pages with to do information, open the 'Site Reports' window on the left and select 'To Do'</p>")),
-					new TextareaField("ToDo", "", 10)
-				),
 				$tabDependent = new Tab('Dependent',
 					$dependentNote,
 					$dependentTable
@@ -1930,7 +1923,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$labels['HomepageForDomain'] = _t('SiteTree.HomepageForDomain', 'Hompage for this domain');
 		$labels['CanViewType'] = _t('SiteTree.Viewers', 'Viewers Groups');
 		$labels['CanEditType'] = _t('SiteTree.Editors', 'Editors Groups');
-		$labels['ToDo'] = _t('SiteTree.ToDo', 'Todo Notes');
 		$labels['Comments'] = _t('SiteTree.Comments', 'Comments');
 		$labels['LinkChangeNote'] = _t (
 			'SiteTree.LINKCHANGENOTE', 'Changing this page\'s link will also affect the links of all child pages.'
