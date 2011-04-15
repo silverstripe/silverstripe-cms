@@ -252,7 +252,7 @@ class SiteTreeBacklinksTest_DOD extends DataExtension implements TestOnly {
 	}
 	
 	function updateCMSFields(&$fields) {
-		$fields->addFieldToTab("Root.Content.Main", new HTMLEditorField("ExtraContent"));
+		$fields->addFieldToTab("Root.Content", new HTMLEditorField("ExtraContent"));
 	}
 }
 ?>

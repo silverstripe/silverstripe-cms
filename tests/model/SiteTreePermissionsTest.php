@@ -150,7 +150,7 @@ class SiteTreePermissionsTest extends FunctionalTest {
 		
 		$subadminuser = $this->objFromFixture('Member', 'subadmin');
 		$this->session()->inst_set('loggedInAs', $subadminuser->ID);
-		$fields = $page->getCMSFields();
+		$fields = $page->getSettingsFields();
 		$this->assertFalse(
 			$fields->dataFieldByName('CanViewType')->isReadonly(),
 			'Users with SITETREE_GRANT_ACCESS permission can change "view" permissions in cms fields'
@@ -162,7 +162,7 @@ class SiteTreePermissionsTest extends FunctionalTest {
 		
 		$editoruser = $this->objFromFixture('Member', 'editor');
 		$this->session()->inst_set('loggedInAs', $editoruser->ID);
-		$fields = $page->getCMSFields();
+		$fields = $page->getSettingsFields();
 		$this->assertTrue(
 			$fields->dataFieldByName('CanViewType')->isReadonly(),
 			'Users without SITETREE_GRANT_ACCESS permission cannot change "view" permissions in cms fields'

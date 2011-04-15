@@ -1667,11 +1667,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
-	 * Returns a FieldSet with which to create the CMS editing form.
+	 * Returns a FieldSet with which to create the main editing form.
 	 *
 	 * You can override this in your child classes to add extra fields - first
 	 * get the parent fields using parent::getCMSFields(), then use
 	 * addFieldToTab() on the FieldSet.
+	 * 
+	 * See {@link getSettingsFields()} for a different set of fields
+	 * concerned with configuration aspects on the record, e.g. access control
 	 *
 	 * @return FieldSet The fields to be displayed in the CMS.
 	 */
@@ -1747,35 +1750,70 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			));
 		}
 		
-		// Lay out the fields
 		$fields = new FieldSet(
 			$rootTab = new TabSet("Root",
-				$tabContent = new TabSet('Content',
-					$tabMain = new Tab('Main',
-						new TextField("Title", $this->fieldLabel('Title')),
-						new TextField("MenuTitle", $this->fieldLabel('MenuTitle')),
-						new HtmlEditorField("Content", _t('SiteTree.HTMLEDITORTITLE', "Content", PR_MEDIUM, 'HTML editor title'))
-					),
-					$tabMeta = new Tab('Metadata',
-						new FieldGroup(_t('SiteTree.URL', "URL"),
-							new LabelField('BaseUrlLabel',Controller::join_links (
-								Director::absoluteBaseURL(),
-								(self::nested_urls() && $this->ParentID ? $this->Parent()->RelativeLink(true) : null)
-							)),
-							new TextField("URLSegment","URLSegment"),
-							new LabelField('TrailingSlashLabel',"/")
-						),
-						new LiteralField('LinkChangeNote', self::nested_urls() && count($this->Children()) ?
-							'<p>' . $this->fieldLabel('LinkChangeNote'). '</p>' : null
-						),
-						new HeaderField('MetaTagsHeader',$this->fieldLabel('MetaTagsHeader')),
-						new TextField("MetaTitle", $this->fieldLabel('MetaTitle')),
-						new TextareaField("MetaKeywords", $this->fieldLabel('MetaKeywords'), 1),
-						new TextareaField("MetaDescription", $this->fieldLabel('MetaDescription')),
-						new TextareaField("ExtraMeta",$this->fieldLabel('ExtraMeta'))
-					)
+				$tabMain = new Tab('Main',
+					new TextField("Title", $this->fieldLabel('Title')),
+					new TextField("MenuTitle", $this->fieldLabel('MenuTitle')),
+					new HtmlEditorField("Content", _t('SiteTree.HTMLEDITORTITLE', "Content", PR_MEDIUM, 'HTML editor title'))
 				),
-				$tabBehaviour = new Tab('Behaviour',
+				$tabMeta = new Tab('Metadata',
+					new FieldGroup(_t('SiteTree.URL', "URL"),
+						new LabelField('BaseUrlLabel',Controller::join_links (
+							Director::absoluteBaseURL(),
+							(self::nested_urls() && $this->ParentID ? $this->Parent()->RelativeLink(true) : null)
+						)),
+						new TextField("URLSegment","URLSegment"),
+						new LabelField('TrailingSlashLabel',"/")
+					),
+					new LiteralField('LinkChangeNote', self::nested_urls() && count($this->Children()) ?
+						'<p>' . $this->fieldLabel('LinkChangeNote'). '</p>' : null
+					),
+					new HeaderField('MetaTagsHeader',$this->fieldLabel('MetaTagsHeader')),
+					new TextField("MetaTitle", $this->fieldLabel('MetaTitle')),
+					new TextareaField("MetaKeywords", $this->fieldLabel('MetaKeywords'), 1),
+					new TextareaField("MetaDescription", $this->fieldLabel('MetaDescription')),
+					new TextareaField("ExtraMeta",$this->fieldLabel('ExtraMeta'))
+				),
+				$tabDependent = new Tab('Dependent',
+					$dependentNote,
+					$dependentTable
+				)
+			)
+		);
+		
+		// Conditional dependent pages tab
+		if($dependentPagesCount) $tabDependent->setTitle(_t('SiteTree.TABDEPENDENT', "Dependent pages") . " ($dependentPagesCount)");
+		else $fields->removeFieldFromTab('Root', 'Dependent');
+		
+		$tabMain->setTitle(_t('SiteTree.TABCONTENT', "Content"));
+		$tabMeta->setTitle(_t('SiteTree.TABMETA', "Metadata"));
+
+		if(file_exists(BASE_PATH . '/install.php')) {
+			$fields->addFieldToTab("Root.Main", new LiteralField("InstallWarningHeader", 
+				"<p class=\"message warning\">" . _t("SiteTree.REMOVE_INSTALL_WARNING", 
+				"Warning: You should remove install.php from this SilverStripe install for security reasons.")
+				. "</p>"), "Title");
+		}
+
+		
+		if(self::$runCMSFieldsExtensions) {
+			$this->extend('updateCMSFields', $fields);
+		}
+
+		return $fields;
+	}
+	
+	/**
+	 * Returns fields related to configuration aspects on this record, e.g. access control.
+	 * See {@link getCMSFields()} for content-related fields.
+	 * 
+	 * @return FieldSet
+	 */
+	function getSettingsFields() {
+		$fields = new FieldSet(
+			$rootTab = new TabSet("Root",
+				$tabBehaviour = new Tab('Settings',
 					new DropdownField(
 						"ClassName", 
 						$this->fieldLabel('ClassName'), 
@@ -1803,10 +1841,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						_t('SiteTree.HOMEPAGEFORDOMAIN', "Domain(s)", PR_MEDIUM, 'Listing domains that should be used as homepage')
 					)
 				),
-				$tabDependent = new Tab('Dependent',
-					$dependentNote,
-					$dependentTable
-				),
 				$tabAccess = new Tab('Access',
 					new HeaderField('WhoCanViewHeader',_t('SiteTree.ACCESSHEADER', "Who can view this page?"), 2),
 					$viewersOptionsField = new OptionsetField(
@@ -1823,17 +1857,15 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				)
 			)
 		);
-
-
+		
 		/*
 		 * This filter ensures that the ParentID dropdown selection does not show this node,
 		 * or its descendents, as this causes vanishing bugs.
 		 */
 		$parentIDField->setFilterFunction(create_function('$node', "return \$node->ID != {$this->ID};"));
 		
-		// Conditional dependent pages tab
-		if($dependentPagesCount) $tabDependent->setTitle(_t('SiteTree.TABDEPENDENT', "Dependent pages") . " ($dependentPagesCount)");
-		else $fields->removeFieldFromTab('Root', 'Dependent');
+		$tabBehaviour->setTitle(_t('SiteTree.TABBEHAVIOUR', "Behavior"));
+		$tabAccess->setTitle(_t('SiteTree.TABACCESS', "Access"));
 		
 		// Make page location fields read-only if the user doesn't have the appropriate permission
 		if(!Permission::check("SITETREE_REORGANISE")) {
@@ -1874,24 +1906,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			}
 		}
 		
-		$tabContent->setTitle(_t('SiteTree.TABCONTENT', "Content"));
-		$tabMain->setTitle(_t('SiteTree.TABMAIN', "Main"));
-		$tabMeta->setTitle(_t('SiteTree.TABMETA', "Metadata"));
-		$tabBehaviour->setTitle(_t('SiteTree.TABBEHAVIOUR', "Behavior"));
-		$tabAccess->setTitle(_t('SiteTree.TABACCESS', "Access"));
-
-		if(file_exists(BASE_PATH . '/install.php')) {
-			$fields->addFieldToTab("Root.Content.Main", new LiteralField("InstallWarningHeader", 
-				"<p class=\"message warning\">" . _t("SiteTree.REMOVE_INSTALL_WARNING", 
-				"Warning: You should remove install.php from this SilverStripe install for security reasons.")
-				. "</p>"), "Title");
-		}
-
-		
 		if(self::$runCMSFieldsExtensions) {
-			$this->extend('updateCMSFields', $fields);
+			$this->extend('updateSettingsFields', $fields);
 		}
-
+		
 		return $fields;
 	}
 	
