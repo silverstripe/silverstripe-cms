@@ -255,6 +255,39 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// Put data hints into a script tag at the top
 		Requirements::customScript("siteTreeHints = " . Convert::raw2json($def) . ";");
 	}
+	
+	/**
+	 * Create serialized JSON string with site tree hints data to be injected into
+	 * 'data-hints' attribute of root node of jsTree.
+	 * 
+	 * @return String Serialized JSON
+	 */
+	public function SiteTreeHints() {
+	  $classes = ClassInfo::subclassesFor( $this->stat('tree_class') );
+
+		$def['Root'] = array();
+
+		foreach($classes as $class) {
+			$obj = singleton($class);
+			if($obj instanceof HiddenClass) continue;
+
+			$allowedChildren = $obj->allowedChildren();
+			if($allowedChildren != "none")  $def[$class]['allowedChildren'] = $allowedChildren;
+			$def[$class]['defaultChild'] = $obj->defaultChild();
+			$def[$class]['defaultParent'] = isset(SiteTree::get_by_link($obj->defaultParent())->ID) ? SiteTree::get_by_link($obj->defaultParent())->ID : null;
+
+			if(is_array($allowedChildren)) foreach($allowedChildren as $allowedChild) {
+				$def[$allowedChild]['allowedParents'][] = $class;
+			}
+
+			if($obj->stat('can_be_root')) {
+				$def['Root']['allowedChildren'][] = $class;
+			}
+		}
+
+		//Replace double quotes with single quotes
+		return str_replace('"', "'", Convert::raw2json($def));
+	}
 
 	public function generateTreeStylingJS() {
 		$classes = ClassInfo::subclassesFor($this->stat('tree_class'));
