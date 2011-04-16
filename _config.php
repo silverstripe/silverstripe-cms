@@ -29,3 +29,7 @@ else SS_Report::register('ReportAdmin', 'BrokenLinksReport',-20);
 ShortcodeParser::get('default')->register('sitetree_link', array('SiteTree', 'link_shortcode_handler'));
 
 Object::add_extension('File', 'SiteTreeFileExtension');
+
+// TODO Remove once we can configure CMSMenu through static, nested configuration files
+CMSMenu::remove_menu_item('CMSPageEditController');
+CMSMenu::remove_menu_item('CMSPageSettingsController');
