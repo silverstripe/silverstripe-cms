@@ -398,9 +398,11 @@ JS;
 	}
 	
 	/**
-	 * Calls {@link SiteTree->getCMSFields()}
+	 * @param Int $id
+	 * @param FieldSet $fields
+	 * @return Form
 	 */
-	public function getEditForm($id = null) {
+	public function getEditForm($id = null, $fields = null) {
 		// Include JavaScript to ensure HtmlEditorField works.
 		HtmlEditorField::include_js();
 
@@ -411,7 +413,7 @@ JS;
 		$record = $this->getRecord($id);
 		if($record && !$record->canView()) return Security::permissionFailure($this);
 
-		$fields = $form->Fields();
+		if(!$fields) $fields = $form->Fields();
 		$actions = $form->Actions();
 
 		if($record) {
@@ -533,7 +535,7 @@ JS;
 		$record->writeWithoutVersion();
 
 		// Update the class instance if necessary
-		if($data['ClassName'] != $record->ClassName) {
+		if(isset($data['ClassName']) && $data['ClassName'] != $record->ClassName) {
 			$newClassName = $record->ClassName;
 			// The records originally saved attribute was overwritten by $form->saveInto($record) before.
 			// This is necessary for newClassInstance() to work as expected, and trigger change detection
@@ -544,7 +546,7 @@ JS;
 		}
 
 		// save form data into record
-		$form->saveInto($record, true);
+		$form->saveInto($record);
 		$record->write();
 		
 		// If the 'Save & Publish' button was clicked, also publish the page
@@ -552,8 +554,10 @@ JS;
 			$record->doPublish();
 			
 			// Update classname with original and get new instance (see above for explanation)
-			$record->setClassName($data['ClassName']);
-			$publishedRecord = $record->newClassInstance($record->ClassName);
+			if(isset($data['ClassName'])) {
+				$record->setClassName($data['ClassName']);
+				$publishedRecord = $record->newClassInstance($record->ClassName);
+			}
 			
 			$this->response->addHeader(
 				'X-Status',
@@ -564,12 +568,12 @@ JS;
 						PR_MEDIUM,
 						'Status message after publishing a page, showing the page title'
 					),
-					$publishedRecord->Title
+					$record->Title
 				)
 			);
 		
 			// Reload form, data and actions might have changed
-			$form = $this->getEditForm($publishedRecord->ID);
+			$form = $this->getEditForm($record->ID);
 		} else {
 			$this->response->addHeader('X-Status', _t('LeftAndMain.SAVEDUP'));
 			
