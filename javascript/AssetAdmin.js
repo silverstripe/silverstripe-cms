@@ -44,13 +44,13 @@
 					success: function() {
 						button.removeClass('loading');
 						// reload current form and tree
-						var currNode = $('#sitetree')[0].firstSelected();
+						var currNode = $('.cms-tree')[0].firstSelected();
 						if(currNode) {
 						  var url = $(currNode).find('a').attr('href');
         			$('.cms-edit-form').loadForm(url);
 						}
-						$('#sitetree')[0].setCustomURL('admin/assets/getsubtree');
-						$('#sitetree')[0].reload({onSuccess: function() {
+						$('.cms-tree')[0].setCustomURL('admin/assets/getsubtree');
+						$('.cms-tree')[0].reload({onSuccess: function() {
 							// TODO Reset current tree node
 						}});
 					}
