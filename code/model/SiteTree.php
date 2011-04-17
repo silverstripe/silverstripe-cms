@@ -1982,6 +1982,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$unpublish = FormAction::create('unpublish', _t('SiteTree.BUTTONUNPUBLISH', 'Unpublish'), 'delete');
 			$unpublish->describe(_t('SiteTree.BUTTONUNPUBLISHDESC', 'Remove this page from the published site'));
 			$unpublish->addExtraClass('delete');
+			$unpublish->addExtraClass('ss-ui-action-destructive');
 			$actions->push($unpublish);
 		}
 
@@ -2002,7 +2003,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					$actions->push(new FormAction('revert',_t('CMSMain.RESTORE','Restore')));
 					if($this->canDelete() && $this->canDeleteFromLive()) {
 						// "delete from live"
-						$actions->push(new FormAction('deletefromlive',_t('CMSMain.DELETEFP','Delete from the published site')));
+						$actions->push($deleteFromLiveAction = new FormAction('deletefromlive',_t('CMSMain.DELETEFP','Delete from the published site')));
+						$deleteFromLiveAction->addExtraClass('ss-ui-action-destructive');
 					}
 				} else {
 					// "restore"
@@ -2013,6 +2015,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					// "delete"
 					$actions->push($deleteAction = new FormAction('delete',_t('CMSMain.DELETE','Delete from the draft site')));
 					$deleteAction->addExtraClass('delete');
+					$deleteAction->addExtraClass('ss-ui-action-destructive');
 				}
 			
 				// "save"
@@ -2022,7 +2025,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		if($this->canPublish() && !$this->IsDeletedFromStage) {
 			// "publish"
-			$actions->push(new FormAction('publish', _t('SiteTree.BUTTONSAVEPUBLISH', 'Save and Publish')));
+			$actions->push($publishAction = new FormAction('publish', _t('SiteTree.BUTTONSAVEPUBLISH', 'Save and Publish')));
+			$publishAction->addExtraClass('ss-ui-action-constructive');
 		}
 		
 		// getCMSActions() can be extended with updateCMSActions() on a extension
