@@ -291,6 +291,13 @@ JS
 // HTML;
 	}
 	
+	function AddForm() {
+		$form = parent::AddForm();
+		$form->Actions()->fieldByName('action_doAdd')->setTitle(_t('AssetAdmin.ActionAdd', 'Add folder'));
+		
+		return $form;
+	}
+	
 	/**
 	 * Add a new group and return its details suitable for ajax.
 	 * 
