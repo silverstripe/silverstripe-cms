@@ -292,8 +292,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
       $def['Root']['disallowedParents'][] = $class;
 		}
 
-		//Replace double quotes with single quotes
-		return str_replace('"', "'", Convert::raw2json($def));
+		return Convert::raw2xml(Convert::raw2json($def));
 	}
 
 	public function generateTreeStylingJS() {
