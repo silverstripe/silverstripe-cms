@@ -12,7 +12,7 @@
 /**
  * SilverStripe CMS Installer
  * This installer doesn't use any of the fancy Sapphire stuff in case it's unsupported.
- * It's also PHP4 syntax compatable
+ * It's also PHP4 syntax compatible
  */
 
 // speed up mysql_connect timeout if the server can't be found
