@@ -392,6 +392,12 @@ class InstallRequirements {
 		// Check for hash support
 		$this->requireFunction('hash', array('PHP Configuration', 'hash support', 'hash support not included in PHP.'));
 
+		// Check for Reflection support
+		$this->requireClass('ReflectionClass', array('PHP Configuration', 'Reflection support', 'Reflection support not included in PHP.'));
+
+		// Check for Standard PHP Library (SPL) support
+		$this->requireFunction('spl_classes', array('PHP Configuration', 'SPL support', 'Standard PHP Library (SPL) not included in PHP.'));
+
 		if(version_compare(PHP_VERSION, '5.3.0', '>=')) {
 			$this->requireDateTimezone(array('PHP Configuration', 'date.timezone set and valid', 'date.timezone option in php.ini must be set in PHP 5.3.0+', ini_get('date.timezone')));
 		}
