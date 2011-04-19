@@ -21,6 +21,8 @@ class ReportAdmin extends LeftAndMain {
 	
 	static $template_path = null; // defaults to (project)/templates/email
 	
+	static $tree_class = 'SS_Report';
+	
 	public function init() {
 		parent::init();
 
@@ -32,7 +34,6 @@ class ReportAdmin extends LeftAndMain {
 
 		// Always block the HtmlEditorField.js otherwise it will be sent with an ajax request
 		Requirements::block(SAPPHIRE_DIR . '/javascript/HtmlEditorField.js');
-		Requirements::javascript(CMS_DIR . '/javascript/ReportAdmin.Tree.js');
 	}
 
 	/**
@@ -57,6 +58,12 @@ class ReportAdmin extends LeftAndMain {
 		return false;
 	}
 
+	function currentPageID() {
+		$id = parent::currentPageID();
+		$reports = SS_Report::get_reports('ReportAdmin');
+		return (isset($reports[$id])) ? $reports[$id] : null;
+	}
+
 	/**
 	 * Return a DataObjectSet of SS_Report subclasses
 	 * that are available for use.
@@ -69,74 +76,6 @@ class ReportAdmin extends LeftAndMain {
 			if($report->canView()) $output->push($report);
 		}
 		return $output;
-	}
-
-	/**
-	 * Get EditForm for the class specified in request or in session variable
-	 *
-	 * @return Form
-	 */
-	public function EditForm($request = null) {
-		$className = Session::get('currentPage');
-		$requestId = $request ? $request->requestVar('ID') : null;
-
-		if ( $requestId )
-			return $this->getEditForm($requestId);
-
-		// $className can be null
-		return $this->getEditForm($className);
-
-	}
-
-	/**
-	 * Return a Form instance with fields for the
-	 * particular report currently viewed.
-	 *
-	 * @param string $className Class of the report to fetch
-	 * @return Form
-	 */
-	public function getEditForm($className = null) {
-		if (!$className) {
-			return $form = $this->EmptyForm();
-		}
-
-
-		if (!class_exists($className)) {
-			die("$className does not exist");
-		}
-
-		Session::set('currentPage', $className);
-
-		$obj = new $className();
-		if(!$obj->canView()) return Security::permissionFailure($this);
-
-		$fields = $obj->getCMSFields();
-
-		$idField = new HiddenField('ID');
-		$idField->setValue($className);
-		$fields->push($idField);
-
-		$actions = new FieldSet();
-
-		$form = new Form($this, 'EditForm', $fields, $actions);
-
-		return $form;
-	}
-
-	/**
-	 * Get the current report
-	 *
-	 * @return SS_Report
-	 */
-	public function CurrentReport() {
-		$id = isset($_REQUEST['ID']) ? $_REQUEST['ID'] : ($this->getRequest()->latestParam('Action') == 'EditForm') ? Session::get('currentReport') : null;
-
-		if($id) {
-			foreach($this->Reports() as $report) {
-				if($id == $report->ID()) return $report;
-			}
-		}
-		return false;
 	}
 
 	/**
@@ -159,9 +98,5 @@ class ReportAdmin extends LeftAndMain {
 		return FormResponse::respond();
 	}
 }
-
-
-
-
 
 ?>
