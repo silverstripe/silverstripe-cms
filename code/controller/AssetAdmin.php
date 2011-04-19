@@ -308,10 +308,10 @@ JS
 		
 		// check create permissions
 		if(!singleton($class)->canCreate()) return Security::permissionFailure($this);
-		
+
 		// check addchildren permissions
 		if(
-			singleton($class)->hasDatabaseField('Hierarchy') 
+			singleton($class)->hasExtension('Hierarchy') 
 			&& isset($data['ParentID'])
 			&& is_numeric($data['ParentID'])
 		) {
