@@ -88,7 +88,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.EditForm.js');
 		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang');
 		
-		// Requirements::css(CMS_DIR . '/css/CMSMain.css');
+		Requirements::css(CMS_DIR . '/css/CMSMain.css');
 		
 		// navigator
 		// Requirements::css(CMS_DIR . '/css/SilverStripeNavigator.css');
