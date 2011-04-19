@@ -1842,16 +1842,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					)
 				),
 				$tabAccess = new Tab('Access',
-					new HeaderField('WhoCanViewHeader',_t('SiteTree.ACCESSHEADER', "Who can view this page?"), 2),
 					$viewersOptionsField = new OptionsetField(
 						"CanViewType", 
-						""
+						_t('SiteTree.ACCESSHEADER', "Who can view this page?")
 					),
 					$viewerGroupsField = new TreeMultiselectField("ViewerGroups", $this->fieldLabel('ViewerGroups')),
-					new HeaderField('WhoCanEditHeader',_t('SiteTree.EDITHEADER', "Who can edit this page?"), 2),
 					$editorsOptionsField = new OptionsetField(
 						"CanEditType", 
-						""
+						_t('SiteTree.EDITHEADER', "Who can edit this page?")
 					),
 					$editorGroupsField = new TreeMultiselectField("EditorGroups", $this->fieldLabel('EditorGroups'))
 				)

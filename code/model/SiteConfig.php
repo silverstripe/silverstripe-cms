@@ -52,19 +52,16 @@ class SiteConfig extends DataObject implements PermissionProvider {
 					new DropdownField("Theme", _t('SiteConfig.THEME', 'Theme'), $this->getAvailableThemes(), '', null, _t('SiteConfig.DEFAULTTHEME', '(Use default theme)'))
 				),
 				$tabAccess = new Tab('Access',
-					new HeaderField('WhoCanViewHeader', _t('SiteConfig.VIEWHEADER', "Who can view pages on this site?"), 2),
-					$viewersOptionsField = new OptionsetField("CanViewType"),
+					$viewersOptionsField = new OptionsetField("CanViewType", _t('SiteConfig.VIEWHEADER', "Who can view pages on this site?")),
 					$viewerGroupsField = new TreeMultiselectField("ViewerGroups", _t('SiteTree.VIEWERGROUPS', "Viewer Groups")),
-					new HeaderField('WhoCanEditHeader', _t('SiteConfig.EDITHEADER', "Who can edit pages on this site?"), 2),
-					$editorsOptionsField = new OptionsetField("CanEditType"),
+					$editorsOptionsField = new OptionsetField("CanEditType", _t('SiteConfig.EDITHEADER', "Who can edit pages on this site?")),
 					$editorGroupsField = new TreeMultiselectField("EditorGroups", _t('SiteTree.EDITORGROUPS', "Editor Groups")),
-					new HeaderField('WhoCanCreateTopLevelHeader', _t('SiteConfig.TOPLEVELCREATE', "Who can create pages in the root of the site?"), 2),
-					$topLevelCreatorsOptionsField = new OptionsetField("CanCreateTopLevelType"),
+					$topLevelCreatorsOptionsField = new OptionsetField("CanCreateTopLevelType", _t('SiteConfig.TOPLEVELCREATE', "Who can create pages in the root of the site?")),
 					$topLevelCreatorsGroupsField = new TreeMultiselectField("CreateTopLevelGroups", _t('SiteTree.TOPLEVELCREATORGROUPS', "Top level creators"))
 				)
 			)
 		);
-		
+
 		$viewersOptionsSource = array();
 		$viewersOptionsSource["Anyone"] = _t('SiteTree.ACCESSANYONE', "Anyone");
 		$viewersOptionsSource["LoggedInUsers"] = _t('SiteTree.ACCESSLOGGEDIN', "Logged-in users");
