@@ -50,7 +50,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'SearchForm',
 		'SiteTreeAsUL',
 		'getshowdeletedsubtree',
-		'getfilteredsubtree',
 		'batchactions',
 	);
 	
