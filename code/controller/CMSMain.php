@@ -851,7 +851,6 @@ JS;
 			)
 		);
 		$form->unsetValidator();
-		$form->addExtraClass('oneline');
 		
 		$this->extend('updateSideReportsForm', $form);
 		
@@ -1302,8 +1301,6 @@ JS;
 		);
 
 		$form = new Form($this, "AddForm", $fields, $actions);
-		$form->addExtraClass('actionparams');
-		$form->addExtraClass('oneline');
 		
 		return $form;
 	}

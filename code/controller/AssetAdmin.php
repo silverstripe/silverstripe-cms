@@ -404,7 +404,6 @@ JS
 				$btn = new FormAction('doSync', _t('FILESYSTEMSYNC','Look for new files'))
 			)
 		);
-		$form->addExtraClass('actionparams');
 		$form->setFormMethod('GET');
 		$btn->describe(_t('AssetAdmin_left.ss.FILESYSTEMSYNC_DESC', 'SilverStripe maintains its own database of the files &amp; images stored in your assets/ folder.  Click this button to update that database, if files are added to the assets/ folder from outside SilverStripe, for example, if you have uploaded files via FTP.'));
 		
