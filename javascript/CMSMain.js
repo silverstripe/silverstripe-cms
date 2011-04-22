@@ -5,18 +5,13 @@
 	$.entwine('ss', function($){
 	
 		/**
-		 * Class: #Form_SearchTreeForm
+		 * Class: #Form_SearchForm
 		 * 
 		 * Control the site tree filter.
 		 * Toggles search form fields based on a dropdown selection,
 		 * similar to "Smart Search" criteria in iTunes.
 		 */
-		$('#Form_SearchTreeForm').entwine({
-			/**
-			 * Variable: SelectEl
-			 * {DOMElement}
-			 */
-			SelectEl: null,
+		$('#Form_SearchForm').entwine({
 	
 			/**
 			 * Constructor: onmatch
@@ -24,55 +19,12 @@
 			onmatch: function() {
 				var self = this;
 
-				// only the first field should be visible by default
-				this.find('.field').not('.show-default').hide();
-
-				// generate the field dropdown
-				this.setSelectEl($('<select name="options" class="options"></select>')
-					.appendTo(this.find('fieldset:first'))
-					.bind('change', function(e) {self._addField(e);})
-				);
-
-				this._setOptions();
-				
-				// special case: we can't use CMSSiteTreeFilter together with other options
-				this.find('select[name=FilterClass]').change(function(e) {
-					var others = self.find('.field').not($(this).parents('.field')).find(':input,select');
-					if(e.target.value == 'CMSSiteTreeFilter_Search') others.removeAttr('disabled');
-					else others.attr('disabled','disabled');
-				});
-				
 				// Reset binding through entwine doesn't work in IE
 				this.bind('reset', function(e) {
 					self._onreset(e);
 				});
 		
 				this._super();
-			},
-	
-			/**
-			 * Function: _setOptions
-			 */
-			_setOptions: function() {
-				var self = this;
-		
-				// reset existing elements
-				self.getSelectEl().find('option').remove();
-		
-				// add default option
-				// TODO i18n
-				jQuery(
-					'<option value="0">' + 
-					ss.i18n._t('CMSMAIN.AddSearchCriteria') + 
-					'</option>'
-				).appendTo(self.getSelectEl());
-		
-				// populate dropdown values from existing fields
-				this.find('.field').not(':visible').each(function() {
-					$('<option />').appendTo(self.getSelectEl())
-						.val(this.id)
-						.text($(this).find('label').text());
-				});
 			},
 	
 			/**
@@ -89,10 +41,10 @@
 					data[el.name] = el.value;
 				});
 		
-				// Disable checkbox tree controls that currently don't work with search.
+				// TODO Disable checkbox tree controls that currently don't work with search.
 				this.find('.checkboxAboveTree :checkbox').attr('disabled', 'disabled');
 				
-				// disable buttons to avoid multiple submission
+				// TODO disable buttons to avoid multiple submission
 				//this.find(':submit').attr('disabled', true);
 		
 				this.find(':submit[name=action_doSearchTree]').addClass('loading');
@@ -109,36 +61,10 @@
 			 *  (Event) e
 			 */
 			_onreset: function(e) {
-				this.find('.field :input').clearFields();
-				this.find('.field').not('.show-default').hide();
-		
-				// Enable checkbox tree controls
+				// TODO Enable checkbox tree controls
 				this.find('.checkboxAboveTree :checkbox').attr('disabled', 'false');
 
-				// reset all options, some of the might be removed
-				this._setOptions();
-		
 				this._reloadSitetree();
-		
-				return false;
-			},
-	
-			/**
-			 * Function: _addField
-			 * 
-			 * Parameters:
-			 *  (Event) e
-			 */
-			_addField: function(e) {
-				var $select = $(e.target);
-				// show formfield matching the option
-				this.find('#' + $select.val()).show();
-		
-				// remove option from dropdown, each field should just exist once
-				this.find('option[value=' + $select.val() + ']').remove();
-		
-				// jump back to default entry
-				$select.val(0);
 		
 				return false;
 			},

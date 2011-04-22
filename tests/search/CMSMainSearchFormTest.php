@@ -1,5 +1,5 @@
 <?php
-class CMSMainSearchTreeFormTest extends FunctionalTest {
+class CMSMainSearchFormTest extends FunctionalTest {
 	
 	static $fixture_file = '../controller/CMSMainTest.yml';
 	
@@ -9,11 +9,11 @@ class CMSMainSearchTreeFormTest extends FunctionalTest {
 		$this->session()->inst_set('loggedInAs', $this->idFromFixture('Member', 'admin'));
 
 		$response = $this->get(
-			'admin/SearchTreeForm/?' .
+			'admin/SearchForm/?' .
 			http_build_query(array(
 				'Title' => 'Page 10',
 				'FilterClass' => 'CMSSiteTreeFilter_Search',
-				'action_doSearchTree' => true
+				'action_doSearch' => true
 			))
 		);
 

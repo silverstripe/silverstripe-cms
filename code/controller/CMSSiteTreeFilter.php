@@ -184,16 +184,15 @@ class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter {
 		foreach($SQL_params as $name => $val) {
 			switch($name) {
 				// Match against URLSegment, Title, MenuTitle & Content
-				case 'SiteTreeSearchTerm':
+				case 'Term':
 					$where[] = "\"URLSegment\" LIKE '%$val%' OR \"Title\" LIKE '%$val%' OR \"MenuTitle\" LIKE '%$val%' OR \"Content\" LIKE '%$val%'";
 					break;
 				// Match against date
-				case 'SiteTreeFilterDate':
-				 // TODO Date Parsing
-					$val = ((int)substr($val,6,4)) 
-						. '-' . ((int)substr($val,3,2)) 
-						. '-' . ((int)substr($val,0,2));
-					$where[] = "\"LastEdited\" > '$val'";
+				case 'LastEditedFrom':
+					if($val) $where[] = "\"LastEdited\" >= '$val'";
+					break;
+				case 'LastEditedTo':
+					if($val) $where[] = "\"LastEdited\" <= '$val'";
 					break;
 				// Match against exact ClassName
 				case 'ClassName':
@@ -209,7 +208,7 @@ class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter {
 			}
 		}
 		$q->where(empty($where) ? '' : '(' . implode(') AND (',$where) . ')');
-		
+
 		foreach($q->execute() as $row) {
 			$ids[] = array('ID'=>$row['ID'],'ParentID'=>$row['ParentID']);
 		}
