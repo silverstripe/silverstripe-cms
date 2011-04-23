@@ -30,26 +30,20 @@
 		
 		<div id="cms-content-treeview">
 			
-			<div class="cms-tree-tools">
-				<span><% _t("TreeTools.DisplayLabel","Display:") %></span>
-				<% if CanOrganiseSitetree %> 
-				<div class="checkboxAboveTree">
-					<input type="radio" name="view-mode" value="draggable" id="view-mode-draggable" />
-					<label for="view-mode-draggable"><% _t("ENABLEDRAGGING","Drag'n'drop") %></label>
-				</div>
-				<% end_if %>
-				<div>
-					<input type="radio" name="view-mode" value="multiselect" id="view-mode-multiselect" />
-					<label for="view-mode-multiselect"><% _t("MULTISELECT","Multi-selection") %></label>
-				</div>
-			</div>
-			
-			<div id="TreeActions-batchactions">
-				$BatchActionsForm
+			<div class="cms-content-toolbar">
+				<% include CMSPagesController_ContentToolbar %>
 			</div>
 			
 			<div class="cms-tree" data-url-tree="$Link(getsubtree)" data-url-savetreenode="$Link(savetreenode)">
 				$SiteTreeAsUL
+			</div>
+			
+			<div class="cms-content-toolbar">
+				<% include CMSPagesController_ContentToolbar %>
+			</div>
+
+			<div class="ss-dialog cms-page-add-form-dialog" id="cms-page-add-form" title="<% _t('CMSMain.ChoosePageType', 'Choose a page type') %>">
+				$AddForm
 			</div>
 
 		</div>

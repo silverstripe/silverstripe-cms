@@ -63,6 +63,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.js');
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.EditForm.js');
+		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.AddForm.js');
 		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang');
 		
 		Requirements::css(CMS_DIR . '/css/CMSMain.css');
@@ -281,17 +282,17 @@ JS;
 
 			$addAction = $instance->i18n_singular_name();
 			
-			// if we're in translation mode, the link between the translated pagetype
-			// title and the actual classname might not be obvious, so we add it in parantheses
-			// Example: class "RedirectorPage" has the title "Weiterleitung" in German,
-			// so it shows up as "Weiterleitung (RedirectorPage)"
-			if(i18n::get_locale() != 'en_US') {
-				$addAction .= " ({$class})";
-			}
-
+			// Get description
+			$description = _t($class . 'DESCRIPTION');
+			if(!$description) $description = $instance->uninherited('description');
+			if($class == 'Page' && !$description) $description = singleton('SiteTree')->uninherited('description');
+			
 			$result->push(new ArrayData(array(
 				'ClassName' => $class,
 				'AddAction' => $addAction,
+				'Description' => $description,
+				// TODO Sprite support
+				'IconURL' => $instance->stat('icon')
 			)));
 		}
 		
@@ -1250,24 +1251,38 @@ JS;
 		}
 	}
 
+	/**
+	 * @return Form
+	 */
 	function AddForm() {
+		$record = $this->currentPage();
+		
 		$pageTypes = array();
-
-		foreach( $this->PageTypes() as $arrayData ) {
-			$pageTypes[$arrayData->getField('ClassName')] = $arrayData->getField('AddAction');
+		foreach($this->PageTypes() as $type) {
+			$html = sprintf('<span class="icon class-%s"></span><strong class="title">%s</strong><span class="description">%s</span>',
+				$type->getField('ClassName'),
+				$type->getField('AddAction'),
+				$type->getField('Description')
+			);
+			$pageTypes[$type->getField('ClassName')] = $html;
 		}
 		
 		$fields = new FieldSet(
-			new HiddenField("ParentID"),
-			new DropdownField("PageType", "", $pageTypes, 'Page')
+			// new HiddenField("ParentID", false, ($this->parentRecord) ? $this->parentRecord->ID : null),
+			$parentField = new TreeDropdownField("ParentID", _t('CMSMain.AddFormParentLabel', 'Parent page'), 'SiteTree'),
+			new OptionsetField("PageType", "", $pageTypes, 'Page')
 		);
+		$parentField->setValue(($record) ? $record->ID : null);
+		
+		$actions = new FieldSet(
+			// $resetAction = new ResetFormAction('doCancel', _t('CMSMain.Cancel', 'Cancel')),
+			$createAction = new FormAction("doAdd", _t('CMSMain.Create',"Create"))
+		);
+		// $resetAction->addExtraClass('ss-ui-action-destructive');
+		$createAction->addExtraClass('ss-ui-action-constructive');
 		
 		$this->extend('updatePageOptions', $fields);
 		
-		$actions = new FieldSet(
-			new FormAction("doAdd", _t('CMSMain.GO',"Go"))
-		);
-
 		$form = new Form($this, "AddForm", $fields, $actions);
 		
 		return $form;
