@@ -9,6 +9,8 @@ class VirtualPage extends Page {
 	
 	static $icon = array("cms/images/treeicons/page-shortcut-gold","file");
 	
+	static $description = 'Displays the content of another page';
+	
 	public static $virtualFields;
 	
 	static $has_one = array(

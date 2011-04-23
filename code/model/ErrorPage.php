@@ -24,6 +24,8 @@ class ErrorPage extends Page {
 	
 	static $icon = array("sapphire/javascript/tree/images/page", "file");
 	
+	static $description = 'Custom content for different error cases (e.g. "Page not found")';
+	
 	protected static $static_filepath = ASSETS_PATH;
 	
 	public function canAddChildren($member = null) { return false; }

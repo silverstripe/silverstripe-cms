@@ -9,6 +9,8 @@ class RedirectorPage extends Page {
 	
 	static $icon = array("cms/images/treeicons/page-shortcut","file");
 	
+	static $description = 'Redirects to a different internal page';
+	
 	static $db = array(
 		"RedirectionType" => "Enum('Internal,External','Internal')",
 		"ExternalURL" => "Varchar(2083)" // 2083 is the maximum length of a URL in Internet Explorer.

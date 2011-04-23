@@ -142,6 +142,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @var string|array
 	 */
 	static $icon = array("sapphire/javascript/tree/images/page", "file");
+	
+	/**
+	 * @var String Description of the class functionality, typically shown to a user
+	 * when selecting which page type to create. Translated through {@link provideI18nEntities()}.
+	 */
+	static $description = 'Generic content page';
 
 
 	static $extensions = array(
@@ -2589,6 +2595,17 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		
 		if(isset($entities['Page.SINGULARNAME'])) $entities['Page.SINGULARNAME'][3] = 'sapphire';
 		if(isset($entities['Page.PLURALNAME'])) $entities['Page.PLURALNAME'][3] = 'sapphire';		
+
+		$types = self::page_type_classes();
+		foreach($types as $type) {
+			$inst = singleton($type);
+			$entities[$type . '.DESCRIPTION'] = array(
+				$inst->stat('description'),
+				PR_MEDIUM,
+				'Description of the page type (shown in the "add page" dialog)'
+			);
+		}
+		
 
 		return $entities;
 	}
