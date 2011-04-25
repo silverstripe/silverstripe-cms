@@ -72,6 +72,18 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// Requirements::css(CMS_DIR . '/css/SilverStripeNavigator.css');
 		Requirements::javascript(CMS_DIR . '/javascript/SilverStripeNavigator.js');
 		
+		Requirements::combine_files(
+			'cmsmain.js',
+			array(
+				CMS_DIR . '/javascript/CMSMain.js',
+				CMS_DIR . '/javascript/CMSMain.EditForm.js',
+				CMS_DIR . '/javascript/CMSMain.AddForm.js',
+				CMS_DIR . '/javascript/SilverStripeNavigator.js'
+			)
+		);
+		
+		HtmlEditorField::include_js();
+		
 		CMSBatchActionHandler::register('publish', 'CMSBatchAction_Publish');
 		CMSBatchActionHandler::register('unpublish', 'CMSBatchAction_Unpublish');
 		CMSBatchActionHandler::register('delete', 'CMSBatchAction_Delete');
@@ -372,9 +384,6 @@ JS;
 	 * @return Form
 	 */
 	public function getEditForm($id = null, $fields = null) {
-		// Include JavaScript to ensure HtmlEditorField works.
-		HtmlEditorField::include_js();
-
 		if(!$id) $id = $this->currentPageID();
 		$form = parent::getEditForm($id);
 		
