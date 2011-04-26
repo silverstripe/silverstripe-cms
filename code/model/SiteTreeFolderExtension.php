@@ -1,5 +1,5 @@
 <?php
-class SiteTreeFolderDecorator extends DataObjectDecorator {
+class SiteTreeFolderExtension extends DataExtension {
 	
 	function updateCMSFields(&$fields) {
 		// TODO commenting out unused files tab till bugs are fixed

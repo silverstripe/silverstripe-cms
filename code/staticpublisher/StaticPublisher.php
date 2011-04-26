@@ -3,7 +3,7 @@
  * @package cms
  * @subpackage publishers
  */
-abstract class StaticPublisher extends DataObjectDecorator {
+abstract class StaticPublisher extends DataExtension {
 	/**
 	 * Defines whether to output information about publishing or not. By 
 	 * default, this is off, and should be turned on when you want debugging 

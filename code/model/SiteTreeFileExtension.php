@@ -3,7 +3,7 @@
  * @package cms
  * @subpackage model
  */
-class SiteTreeFileDecorator extends DataObjectDecorator {
+class SiteTreeFileExtension extends DataExtension {
 	
 	function extraStatics() {
 		return array(
