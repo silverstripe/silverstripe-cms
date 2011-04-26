@@ -1,0 +1,12 @@
+# Use this file to define which git repositories the "phing changlog" task will include when generating
+# a changelog.md file.
+#
+# Any paths not mentioned here will be excluded from the changelog. The script will ignore any paths that are not git
+# repositories, or are otherwise invalid.
+#
+# Leave the <from-commit> <to-commit> fields blank to include all commits.
+#
+# <path> <from-commit> <to-commit>
+. 2.4.4-rc1 2.4.5
+sapphire 2.4.4-rc1 2.4.5
+cms 2.4.4-rc1 2.4.5

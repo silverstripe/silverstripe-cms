@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Installation instructions:
+
+sudo pear install phing
+sudo pear install VersionControl_Git-0.4.4
+phing tag -Dtagname=2.4.6
+
+-->
+
+<project name="silverstripe-installer" default="tag" phingVersion="2.4.5">
+
+	<!-- Load in the custom tasks -->
+	<taskdef name="findRepos" classname="tools.FindRepositoriesTask" classpath="${project.basedir}" />
+	<taskdef name="ssmodules" classname="tools.LoadModulesTask" classpath="${project.basedir}" />
+	<taskdef name="sschanglog" classname="tools.CreateChangelog" classpath="${project.basedir}" />
+
+	<property name="basedir" value="." override="true" />
+	<property name="dependent-modules-file" value="dependent-modules" override="true" />
+	<property name="changelog-definitions-file" value="changelog-definitions" override="true" />
+	<property name="ni_build" value="false" override="true"/>   <!-- Prompt if local changes would be overwritten by update -->
+	<property name="changelogFile" value="changelog.md" override="true"/>
+	<property name="changelogSort" value="type" override="true"/>
+
+	<available file="${dependent-modules-file}" property="dependent-modules-file-exists" />
+	<available file="${changelog-definition-file}" property="changelog-definition-file-exists" />
+
+	<target name="help">
+		<echo>
+SilverStripe Project Build
+------------------------------------
+
+This build file contains targets to assist in creating new SilverStripe builds and releases.
+
+Important targets
+
+* changelog - Create a changelog.md file with the changes specified in changelog.ini
+* tag - Creates a new git tag in all the nested working copies (optionally pushes the created tag)
+* update-package - Creates a package that excludes several diretories that can be used for extracting over the top of existing installs
+		</echo>
+	</target>
+
+	<target name="gitRepositories">
+		<findRepos TargetDir="${basedir}" />
+	</target>
+
+	<!-- find the git binary and set it -->
+	<target name="gitBinary">
+		<exec command="which git" outputProperty="gitPath1" />
+	</target>
+
+	<!-- Tag a git repo with a specific tag (in $tagname) -->
+	<target name="tagTask" if="tagname,reponame,gitPath1">
+		<gittag
+			repository="${reponame}"
+			name="${tagname}"
+			gitPath="${gitPath1}"
+			force="true" />     <!-- allow overwrite of existing tags-->
+		<echo msg="git tag '${tagname}' added to '${reponame}' git repository" />
+	</target>
+
+	<!-- Push all local tags -->
+	<target name="pushTask" if="reponame,gitPath1">
+		<gitpush
+			repository="${reponame}"
+			tags="true"
+			gitPath="${gitPath1}" />
+		<echo msg="pushed all tags to '${reponame}' git repository" />
+	</target>
+
+	<!-- Checkout the specified tag on all working copies -->
+	<target name="checkoutTask" if="reponame,gitPath1,tagname">
+		<gitcheckout
+			repository="${reponame}"
+			branchname="${tagname}"
+			gitPath="${gitPath1}" />
+		<echo msg="checked out ${tagname} tag/branch in '${reponame}' git repository" />
+	</target>
+
+	<target name="archiveTask" if="archivetype,basedir,archivename">
+		<!-- create tar archive -->
+		<if>
+			<equals arg1="${archivetype}" arg2="tar.gz" casesensitive="false" trim="true"/>
+			<then>
+				<tar destfile="${basedir}/${archivename}" compression="gzip">
+					<fileset dir="${basedir}">
+						<include name="**/**" />
+						<exclude name="mysite/local.conf.php" />
+						<exclude name="mysite/db.conf.php" />
+						<exclude name="mysite/*.log" />
+						<exclude name="**/.svn/**" />
+						<exclude name="**/.git/**" />
+						<exclude name="**/.project" />  <!-- remove eclipse configuration file -->
+						<exclude name="**/.buildpath" />
+						<exclude name="**/.settings" />
+						<exclude name="**/.idea/**" />  <!-- remove phpstorm configuration file -->
+					</fileset>
+				</tar>
+			</then>
+		</if>
+
+		<!-- create zip archive -->
+		<if>
+			<equals arg1="${archivetype}" arg2="zip" casesensitive="false" trim="true"/>
+			<then>
+				<zip destfile="${basedir}/${archivename}">
+					<fileset dir="${basedir}">
+						<include name="**/**" />
+						<exclude name="mysite/local.conf.php" />
+						<exclude name="mysite/db.conf.php" />
+						<exclude name="mysite/*.log" />
+						<exclude name="**/.svn/**" />
+						<exclude name="**/.git/**" />
+						<exclude name="**/.project" />
+						<exclude name="**/.buildpath" />
+						<exclude name="**/.settings" />
+						<exclude name="**/.idea/**" />
+					</fileset>
+				</zip>
+			</then>
+		</if>
+	</target>
+
+	<target name="createDependentModulesFile" unless="dependent-modules-file-exists">
+		<copy file="${dependent-modules-file}.default" tofile="${dependent-modules-file}" />
+	</target>
+
+	<target name="createChangelogDefinitionsFile" unless="changelog-definitions-file-exists">
+		<copy file="${changelog-definitions-file}.default" tofile="${changelog-definitions-file}" />
+	</target>
+
+
+	<!-- tags all git repositories in the current directory with a tag name -->
+	<target name="tag" if="basedir" depends="gitRepositories,gitBinary">
+		<if>
+			<isset property="tagname"/>
+			<then>
+				<echo msg="Using '${tagname}' tag"/>
+			</then>
+			<else>
+				<input propertyName="tagname" promptChar=":">Please enter the name of the tag</input>
+				<echo msg="Using '${tagname}' tag"/>
+			</else>
+		</if>
+
+		<!-- find all git repos and run the tagTask on them -->
+		<foreach list="${GitReposList}" param="reponame" target="tagTask" />
+
+		<input propertyName="pushToOrigin" defaultValue="no" validArgs="yes,no" promptChar=":">Push local tags to origin?</input>
+		<if>
+			<equals arg1="${pushToOrigin}" arg2="yes" casesensitive="false" trim="true"/>
+			<then>
+				<phingCall target="push" />
+			</then>
+		</if>
+	</target>
+
+	<!-- Pushes all local tags to origin -->
+	<target name="push" if="basedir" depends="gitRepositories,gitBinary">
+		<foreach list="${GitReposList}" param="reponame" target="pushTask" />
+	</target>
+
+	<!-- Switches all working copies to the specified tag or branch -->
+	<target name="checkout" if="basedir" depends="gitRepositories,gitBinary">
+		<if>
+			<isset property="tagname"/>
+			<then>
+				<echo msg="Using '${tagname}' tag/branch"/>
+			</then>
+			<else>
+				<input propertyName="tagname" defaultValue="HEAD" promptChar=":">Please enter the name of the tag or branch you wish to checkout</input>
+				<echo msg="Using '${tagname}' tag/branch"/>
+			</else>
+		</if>
+
+		<!-- find all git repos and run the checkoutTask on them -->
+		<foreach list="${GitReposList}" param="reponame" target="checkoutTask" />
+	</target>
+
+	<!-- Creates a gzip archive from the current folder (removes any version control files) -->
+	<target name="archive" if="basedir">
+		<if>
+			<isset property="archivetype"/>
+			<then>
+				<echo msg="Creating '${archivetype}' archive"/>
+			</then>
+			<else>
+				<input propertyName="archivetype" defaultValue="tar.gz" validArgs="tar.gz,zip" promptChar=":">Please choose archive format</input>
+				<echo msg="Creating '${archivetype}' archive"/>
+			</else>
+		</if>
+
+		<if>
+			<isset property="archivename"/>
+			<then>
+				<echo msg="Creating '${archivename}' archive"/>
+			</then>
+			<else>
+				<input propertyName="archivename" defaultValue="archive.${archivetype}" promptChar=":">Please enter a name for the archive</input>
+				<echo msg="Creating '${archivename}' archive"/>
+			</else>
+		</if>
+
+		<!-- check if file exists -->
+		<available file="${${basedir}/${archivename}}" property="afileexists" />
+		<if>
+			<istrue value="${afileexists}"/>
+			<then>
+				<echo msg="File ${basedir}/${archivename} already exists. Aborting."/>
+			</then>
+			<else><!-- File exists, we can continue building the archive -->
+				<phingCall target="archiveTask" />
+		
+				<echo msg="Created archive in: ${basedir}/${archivename}" />
+			</else>
+		</if>
+
+	</target>
+
+	<!-- Load modules where sensitive dependency exists -->
+	<target name="update_modules" depends="createDependentModulesFile">
+		<ssmodules file="${basedir}/${dependent-modules-file}" noninteractive="${ni_build}"/>
+	</target>
+
+	<!-- Add a new module to the system. Run from the commandline, you can pass
+	in the details of the module as phing add_module -Dmodule=blog -Dmodurl=http://path/to/svn	-->
+	<target name="add_module">
+		<if>
+			<isset property="modurl"/>
+			<then>
+				<echo msg="Downloading module from '${modurl}'"/>
+			</then>
+			<else>
+				<input propertyName="modurl" promptChar=":">Please enter the module's git or svn URL</input>
+				<echo msg="Downloading module from '${modurl}'"/>
+			</else>
+		</if>
+
+		<if>
+			<isset property="module"/>
+			<then>
+				<echo msg="Creating new '${module}' module"/>
+			</then>
+			<else>
+				<input propertyName="module" promptChar=":">Please enter the module's name (i.e. the folder to module should be created in)</input>
+				<echo msg="Creating new '${module}' module"/>
+			</else>
+		</if>
+
+		<ssmodules name="${module}" url="${modurl}" />
+	</target>
+
+	<!-- Create a changelog of git changes based on the  -->
+	<target name="changelog" depends="createChangelogDefinitionsFile" if="basedir,changelogFile,changelogSort">
+		<sschanglog definitions="${changelog-definitions-file}" baseDir="${basedir}" sort="${changelogSort}"/>
+
+		<if>
+			<isset property="changelogOutput"/>
+			<then>
+				<echo msg="${changelogOutput}" file="${changelogFile}" append="false" />
+				<echo msg="Changelog written to '${changelogFile}' file"  />
+			</then>
+			<else>
+				<echo msg="There was a problem generating commits"/>
+			</else>
+		</if>
+	</target>
+
+</project>
