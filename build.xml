@@ -4,7 +4,7 @@
 
 sudo pear install phing
 sudo pear install VersionControl_Git-0.4.4
-phing tag -Dtagname=2.4.6
+phing help
 
 -->
 
@@ -32,12 +32,35 @@ SilverStripe Project Build
 
 This build file contains targets to assist in creating new SilverStripe builds and releases.
 
-Important targets
+Important targets:
 
-* changelog - Create a changelog.md file with the changes specified in changelog.ini
+* archive - Creates a tar.gz or zip file from the current source, removing version control specific files
+* checkout - Switches all working copies to the specified tag or branch
 * tag - Creates a new git tag in all the nested working copies (optionally pushes the created tag)
-* update-package - Creates a package that excludes several diretories that can be used for extracting over the top of existing installs
-		</echo>
+* pushtags - Pushes all local tags to their respective origin repositories
+* update_modules - Checks out repositories defined in the 'dependent-modules' file into the current directory
+* add_module - Checks out a module at a specific repository URL
+* changelog - Create a changelog.md file from the repositories specified in the 'changelog-definitions' file
+
+
+Options:
+
+-Dbasedir = . (the base directory to operate on)
+-Ddependent-modules-file = dependent-modules (the file of dependent modules to use when updating modules)
+-Dchangelog-definitions-file = changelog-definitions (the file of changelog-definitions to use when generating the changelog)
+-DchangelogFile = changelog.md (the filename of the created changelog file)
+-DchangelogSort = type (sort the changelog file by commit type)
+-Dni_build = false (non-interactive build, overwrite local changes without prompting)
+
+-Dmodurl (the URL of a single module to load when using add_modules)
+-Dmodule (the name of the module directory to create the module in when using add_modules)
+
+-Darchivetype (the type of archive to use zip or tar.giz)
+-Darchivename (the name of the created archive file)
+
+-Dtagname (the name of the tag/branch to check out or to create as a new tag)
+-DincludeBaseDir (whether or not to include the base dir in a git checkout operation)
+</echo>
 	</target>
 
 	<target name="gitRepositories">
@@ -150,13 +173,13 @@ Important targets
 		<if>
 			<equals arg1="${pushToOrigin}" arg2="yes" casesensitive="false" trim="true"/>
 			<then>
-				<phingCall target="push" />
+				<phingCall target="pushtags" />
 			</then>
 		</if>
 	</target>
 
 	<!-- Pushes all local tags to origin -->
-	<target name="push" if="basedir" depends="gitRepositories,gitBinary">
+	<target name="pushtags" if="basedir" depends="gitRepositories,gitBinary">
 		<foreach list="${GitReposList}" param="reponame" target="pushTask" />
 	</target>
 
