@@ -227,6 +227,15 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	public static function set_create_default_pages($option = true) {
 		self::$create_default_pages = $option;
 	}
+
+	/**
+	 * Return true if default pages should be created on /dev/build.
+	 *
+	 * @return bool
+	 */
+	public static function get_create_default_pages() {
+		return self::$create_default_pages;
+	}
 	
 	/**
 	 * Fetches the {@link SiteTree} object that maps to a link.
@@ -1291,7 +1300,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		parent::requireDefaultRecords();
 		
 		// default pages
-		if($this->class == 'SiteTree' && self::$create_default_pages) {
+		if($this->class == 'SiteTree' && self::get_create_default_pages()) {
 			if(!SiteTree::get_by_link('home')) {
 				$homepage = new Page();
 				$homepage->Title = _t('SiteTree.DEFAULTHOMETITLE', 'Home');
