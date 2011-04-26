@@ -242,7 +242,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 
 }
 
-class SiteTreeBacklinksTest_DOD extends DataObjectDecorator implements TestOnly {
+class SiteTreeBacklinksTest_DOD extends DataExtension implements TestOnly {
 	function extraStatics() {
 		return array(
 			'db' => array(

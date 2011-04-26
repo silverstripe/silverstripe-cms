@@ -1,31 +1,17 @@
 <?php
 /**
- * Plug-ins for additional functionality in your SiteTree classes.
- * 
- * @package cms
+ * @package    cms
  * @subpackage model
+ * @deprecated 3.0 Use {@link SiteTreeExtension}.
  */
-abstract class SiteTreeDecorator extends DataObjectDecorator {
+abstract class SiteTreeDecorator extends SiteTreeExtension {
 
-	function onBeforePublish(&$original) {
-	}
-
-	function onAfterPublish(&$original) {
-	}
-	
-	function onBeforeUnpublish() {
-	}
-	
-	function onAfterUnpublish() {
-	}
-	
-	function canAddChildren($member) {
-	}
-	
-	function canPublish($member) {
-		
+	public function __construct() {
+		user_error(
+			'SiteTreeDecorator is deprecated, please use SiteTreeExtension instead.',
+			E_USER_NOTICE
+		);
+		parent::__construct();
 	}
 
 }
-
-?>
