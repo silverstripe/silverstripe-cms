@@ -19,7 +19,7 @@ class CreateChangelog extends SilverStripeBuildTask {
 	}
 
 	public function setBaseDir($base) {
-		$this->baseDir = $base;
+		$this->baseDir = realpath($base);
 	}
 
 	public function setSort($sort) {
@@ -33,24 +33,30 @@ class CreateChangelog extends SilverStripeBuildTask {
 	/**
 	 * Checks is a folder is a version control repository
 	 */
-	protected function isRepository($dir, $filter) {
-		$dir = realpath($dir);
+	protected function isRepository($dir_path, $filter) {
+		$dir = $dir_path;
 
-		// open this directory
-		if ($handle = opendir($dir)) {
+		if (file_exists($dir)) {
+			// open this directory
+			if ($handle = opendir($dir)) {
 
-			// get each file
-			while (false !== ($file = readdir($handle))) {
-				if ($file == $filter && is_dir($file))  {
-					if ($filter == '.git') {    //extra check for git repos
-						if (file_exists($dir.'/'.$file.'/HEAD')) {
-							return true;   //$dir is a git repository
+				// get each file
+				while (false !== ($file = readdir($handle))) {
+					if ($file == $filter && is_dir($file))  {
+						if ($filter == '.git') {    //extra check for git repos
+							if (file_exists($dir.'/'.$file.'/HEAD')) {
+								return true;   //$dir is a git repository
+							}
+						} else {    //return true for .svn repos
+							return true;
 						}
-					} else {    //return true for .svn repos
-						return true;
 					}
 				}
+
+				echo "Folder '$dir' is not a $filter repository\n";
 			}
+		} else {
+			echo "Folder '$dir' does not exist\n";
 		}
 
 		return false;
@@ -70,7 +76,12 @@ class CreateChangelog extends SilverStripeBuildTask {
 		elseif ($from) $range = " $from..HEAD";
 		else $range = "";
 
-		$log = $this->exec("git log --pretty=tformat:\"%s (%aN) [%h]\"{$range} {$path}", true);    //return output of command
+		chdir("$this->baseDir/$path");  //switch to the module's path
+
+		$log = $this->exec("git log --pretty=tformat:\"%s (%aN) [%h]\"{$range}", true);    //return output of command
+
+		chdir($this->baseDir);  //switch the working directory back
+
 		return $log;
 	}
 
@@ -206,13 +217,10 @@ class CreateChangelog extends SilverStripeBuildTask {
 		//and generate markdown (add list to beginning of each item)
 		$output = "";
 		foreach($mergedLog as $logMessage) {
-			$firstCharacter = substr($logMessage,0,1);
-			if ($firstCharacter != "#" && $firstCharacter != "") $output .= "- $logMessage\n";
+			$firstTwoCharacters = substr($logMessage,0,2);
+			if ($firstTwoCharacters != "# " && $firstTwoCharacters != "") $output .= "- $logMessage\n";
 			else $output .= "$logMessage\n";
 		}
-
-
-
 
 		$this->project->setProperty('changelogOutput',$output);
 	}
