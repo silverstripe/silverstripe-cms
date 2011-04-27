@@ -37,7 +37,7 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	
 	/**
 	 * Get the fields that are sent to the CMS. In
-	 * your decorators: updateCMSFields(&$fields)
+	 * your extensions: updateCMSFields($fields)
 	 *
 	 * @return Fieldset
 	 */
@@ -125,7 +125,7 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	
 	/**
 	 * Get the actions that are sent to the CMS. In
-	 * your decorators: updateEditFormActions(&$actions)
+	 * your extensions: updateEditFormActions($actions)
 	 *
 	 * @return Fieldset
 	 */
