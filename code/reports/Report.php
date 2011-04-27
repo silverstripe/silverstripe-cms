@@ -199,7 +199,7 @@ class SS_Report extends ViewableData {
 	}
 	
 	function getCMSActions() {
-		// getCMSActions() can be extended with updateCMSActions() on a decorator
+		// getCMSActions() can be extended with updateCMSActions() on a extension
 		$actions = new FieldSet();
 		$this->extend('updateCMSActions', $actions);
 		return $actions;
