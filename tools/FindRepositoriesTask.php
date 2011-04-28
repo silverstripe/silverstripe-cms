@@ -6,14 +6,17 @@
  *
  */
 class FindRepositoriesTask extends Task {
-	private $items = null;
+
 	private $targetDir = null;
-	private $copy = false;
-	private $sourceDir = null;
+	private $includeTarget = true;
 
 
 	public function setTargetDir($targetDir) {
 		$this->targetDir = $targetDir;
+	}
+
+	public function setIncludeTarget($includeTarget) {
+		$this->includeTarget = $includeTarget;
 	}
 
 	/**
@@ -55,7 +58,19 @@ class FindRepositoriesTask extends Task {
 
 		$gitDirs = array();
 		$this->recursiveListDirFilter($this->targetDir, $gitDirs, '.git');
-		$this->project->setProperty('GitReposList',implode(',',$gitDirs));
+
+		$gitDirsOutput = array();
+		if (!$this->includeTarget) { //don't include the target dir
+			foreach($gitDirs as $dir) {
+				if ($dir != $this->targetDir && $dir != realpath($this->targetDir)) {
+					$gitDirsOutput[] = $dir;
+				}
+			}
+		} else {
+			$gitDirsOutput = $gitDirs;
+		}
+
+		$this->project->setProperty('GitReposList',implode(',',$gitDirsOutput));
 	}
 }
 

@@ -14,6 +14,7 @@ phing help
 	<taskdef name="findRepos" classname="tools.FindRepositoriesTask" classpath="${project.basedir}" />
 	<taskdef name="ssmodules" classname="tools.LoadModulesTask" classpath="${project.basedir}" />
 	<taskdef name="sschanglog" classname="tools.CreateChangelog" classpath="${project.basedir}" />
+	<taskdef name="gitstash" classname="tools.GitStashTask" classpath="${project.basedir}" />
 
 	<property name="basedir" value="." override="true" />
 	<property name="dependent-modules-file" value="dependent-modules" override="true" />
@@ -21,7 +22,7 @@ phing help
 	<property name="ni_build" value="false" override="true"/>   <!-- Prompt if local changes would be overwritten by update -->
 	<property name="changelogFile" value="changelog.md" override="true"/>
 	<property name="changelogSort" value="type" override="true"/>
-
+	
 	<available file="${dependent-modules-file}" property="dependent-modules-file-exists" />
 	<available file="${changelog-definition-file}" property="changelog-definition-file-exists" />
 
@@ -93,10 +94,16 @@ Options:
 
 	<!-- Checkout the specified tag on all working copies -->
 	<target name="checkoutTask" if="reponame,gitPath1,tagname">
+		<echo msg="checking out ${reponame}"/>
+		<gitstash repository="${reponame}" gitPath="${gitPath1}" />
+
 		<gitcheckout
 			repository="${reponame}"
 			branchname="${tagname}"
 			gitPath="${gitPath1}" />
+
+		<gitstash repository="${reponame}" gitPath="${gitPath1}" pop="true" />
+
 		<echo msg="checked out ${tagname} tag/branch in '${reponame}' git repository" />
 	</target>
 
@@ -194,6 +201,24 @@ Options:
 				<input propertyName="tagname" defaultValue="HEAD" promptChar=":">Please enter the name of the tag or branch you wish to checkout</input>
 				<echo msg="Using '${tagname}' tag/branch"/>
 			</else>
+		</if>
+
+		<if>
+			<isset property="includeBaseDir"/>
+			<then>
+				<echo msg="Including BaseDir in checkout: ${includeBaseDir}"/>
+			</then>
+			<else>
+				<input propertyName="includeBaseDir" validArgs="yes,no" promptChar=":">Include the base dir '${basedir}' in checkout?</input>
+				<echo msg="Including BaseDir in checkout: ${includeBaseDir}"/>
+			</else>
+		</if>
+
+		<if>
+			<isfalse value="${includeBaseDir}"/>
+			<then><!-- get a list of git repos without the base dir -->
+				<findRepos TargetDir="${basedir}" includeTarget="${includeBaseDir}"/>
+			</then>
 		</if>
 
 		<!-- find all git repos and run the checkoutTask on them -->
