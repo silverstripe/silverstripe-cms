@@ -1269,6 +1269,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if($this->ExtraMeta) { 
 			$tags .= $this->ExtraMeta . "\n";
 		} 
+		
+		if(Permission::check('CMS_ACCESS_CMSMain')) $tags .= "<meta name='x-page-id' content='{$this->ID}' />\n";
 
 		$this->extend('MetaTags', $tags);
 
