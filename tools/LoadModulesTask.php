@@ -102,8 +102,6 @@ class LoadModulesTask extends SilverStripeBuildTask {
 				$this->loadModule($moduleName, $url, $devBuild, $storeLocally, $usePiston);
 			}
 		}
-
-		$this->devBuild();
 	}
 
 	/**
