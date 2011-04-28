@@ -158,7 +158,7 @@ class LoadModulesTask extends SilverStripeBuildTask {
 			if (!$storeLocally && !$usePiston && file_exists('.gitignore')) {
 				$gitIgnore = file_get_contents('.gitignore');
 				if (strpos($gitIgnore, $moduleName) === false) {
-					$this->task->exec("echo $$moduleName >> .gitignore");
+					$this->callingTask->exec("echo $$moduleName >> .gitignore");
 				}
 			}
 		} else {
@@ -274,7 +274,7 @@ class LoadModulesTask_Loader {
 	/**
 	 * @var SilverStripeBuildTask
 	 */
-	protected $task;
+	protected $callingTask;
 	
 	/**
 	 * @var string
@@ -302,8 +302,8 @@ class LoadModulesTask_Loader {
 	 * @param String
 	 * @param String
 	 */
-	function __construct($task, $name, $url, $branch = null) {
-		$this->task = $task;
+	function __construct($callingTask, $name, $url, $branch = null) {
+		$this->callingTask = $callingTask;
 		$this->name = $name;
 		$this->url = $url;
 		$this->branch = $branch;
@@ -339,7 +339,7 @@ class LoadModulesTask_GitLoader extends LoadModulesTask_Loader {
 	function checkout($storeLocally = false) {
 		$branch = $this->branch;
 		$currentDir = getcwd();
-		$this->task->exec("git clone $this->url $this->name");
+		$this->callingTask->exec("git clone $this->url $this->name");
 		
 		if ($branch != 'master') {
 			// check if we're also hooking onto a revision
@@ -350,11 +350,11 @@ class LoadModulesTask_GitLoader extends LoadModulesTask_Loader {
 			}
 			// need to make sure we've pulled from the correct branch also
 			if ($branch != 'master') {
-				$this->task->exec("cd $this->name && git checkout -f -b $branch --track origin/$branch && cd \"$currentDir\"");
+				$this->callingTask->exec("cd $this->name && git checkout -f -b $branch --track origin/$branch && cd \"$currentDir\"");
 			}
 
 			if ($commitId) {
-				$this->task->exec("cd $this->name && git checkout $commitId && cd \"$currentDir\"");
+				$this->callingTask->exec("cd $this->name && git checkout $commitId && cd \"$currentDir\"");
 			}
 		}
 		
@@ -364,7 +364,7 @@ class LoadModulesTask_GitLoader extends LoadModulesTask_Loader {
 	function getModifiedFiles() {
 		$currentDir = getcwd();
 		$statCmd = "git diff --name-status";
-		return trim($this->task->exec("cd $this->name && $statCmd && cd \"$currentDir\"", true));
+		return trim($this->callingTask->exec("cd $this->name && $statCmd && cd \"$currentDir\"", true));
 	}
 	
 	function update($overwrite = true) {
@@ -377,14 +377,14 @@ class LoadModulesTask_GitLoader extends LoadModulesTask_Loader {
 			$branch = substr($branch, 0, strpos($branch, LoadModulesTask::MODULE_SEPARATOR));
 		}
 
-		$currentBranch = trim($this->task->exec("cd $moduleName && git branch && cd \"$currentDir\"", true));
+		$currentBranch = trim($this->callingTask->exec("cd $moduleName && git branch && cd \"$currentDir\"", true));
 
 		$overwriteOpt = $overwrite ? '-f' : '';
 
-		$this->task->exec("cd $this->name && git checkout $overwriteOpt $branch && git pull origin $branch && cd \"$currentDir\"");
+		$this->callingTask->exec("cd $this->name && git checkout $overwriteOpt $branch && git pull origin $branch && cd \"$currentDir\"");
 
 		if ($commitId) {
-			$this->task->exec("cd $this->name && git pull && git checkout $commitId && cd \"$currentDir\"");
+			$this->callingTask->exec("cd $this->name && git pull && git checkout $commitId && cd \"$currentDir\"");
 		}
 	}
 	
@@ -399,7 +399,7 @@ class LoadModulesTask_SubversionLoader extends LoadModulesTask_Loader {
 		}
 		
 		$cmd = ($storeLocally) ? 'export' : 'co';
-		$this->task->exec("svn $cmd $revision $this->url $this->name");
+		$this->callingTask->exec("svn $cmd $revision $this->url $this->name");
 	}
 	
 	function update($overwrite = true) {
@@ -411,21 +411,21 @@ class LoadModulesTask_SubversionLoader extends LoadModulesTask_Loader {
 			$revision = " --revision $branch ";
 		}
 
-		echo $this->task->exec("svn up $revision $this->name");
+		echo $this->callingTask->exec("svn up $revision $this->name");
 	}
 	
 	function getModifiedFiles() {
 		$currentDir = getcwd();
 		$statCmd = "svn stat";
-		return trim($this->task->exec("cd $this->module && $statCmd && cd \"$currentDir\"", true));
+		return trim($this->callingTask->exec("cd $this->module && $statCmd && cd \"$currentDir\"", true));
 	}
 	
 }
 
 class LoadModulesTask_PistonLoader extends LoadModulesTask_Loader {
 	
-	function __construct($task, $name, $url, $branch = null) {
-		parent::__construct($task, $name, $url, $branch);
+	function __construct($callingTask, $name, $url, $branch = null) {
+		parent::__construct($callingTask, $name, $url, $branch);
 		
 		if(strpos($branch, ':') !== FALSE) {
 			throw new BuildException(sprintf('Git tags not supported by piston'));
@@ -436,18 +436,18 @@ class LoadModulesTask_PistonLoader extends LoadModulesTask_Loader {
 		$currentDir = getcwd();		
 		$revision = ($this->branch != 'master') ? " --commit $this->branch " : '';
 		$overwriteOpts = ($overwrite) ? '--force' : '';
-		echo $this->task->exec("piston update $overwriteOpts $revision $this->name");
+		echo $this->callingTask->exec("piston update $overwriteOpts $revision $this->name");
 		
-		$this->task->log(sprintf('Updated "$this->name" via piston, please don\'t forget to commit any changes'));
+		$this->callingTask->log(sprintf('Updated "$this->name" via piston, please don\'t forget to commit any changes'));
 	}
 	
 	function checkout($storeLocally = false) {
 		$git = strrpos($this->url, '.git') == (strlen($this->url) - 4);
 		$revision = ($this->branch != 'master') ? " --commit $this->branch " : '';
 		$type = ($git) ? 'git' : 'subversion';
-		$this->task->exec("piston import --repository-type $type $revision $this->url $this->name");
+		$this->callingTask->exec("piston import --repository-type $type $revision $this->url $this->name");
 		
-		$this->task->log(sprintf('Created "$this->name" via piston, please don\'t forget to commit any changes'));
+		$this->callingTask->log(sprintf('Created "$this->name" via piston, please don\'t forget to commit any changes'));
 	}
 	
 	/**
