@@ -410,7 +410,7 @@ JS;
 			}
 			
 			if(!$record->IsDeletedFromStage) {
-				$stageURLField->setValue($record->AbsoluteLink());
+				$stageURLField->setValue(Controller::join_links($record->AbsoluteLink(), '?Stage=stage'));
 			}
 			
 			// getAllCMSActions can be used to completely redefine the action list
@@ -441,6 +441,7 @@ JS;
 			
 			$form = new Form($this, "EditForm", $fields, $actions, $validator);
 			$form->loadDataFrom($record);
+			$stageURLField->setValue(Controller::join_links($record->getStageURLSegment(), '?Stage=stage'));
 			$form->disableDefaultAction();
 			$form->addExtraClass('cms-edit-form');
 			$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
