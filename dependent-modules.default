@@ -8,6 +8,10 @@
 # A specific git branch or SVN revision can be added in by specifying after the local
 # foldername, separated by a colon. By default, the 'master' branch of a git repository is used. 
 #
+# Using the "piston" flag will strip versioning information, but keep metadata in the working copy
+# to update from version control later on, and merge in potential local changes.
+# See http://piston.rubyforge.org for details.
+#
 # It is recommended to have sqlite3 and cms first with [run_dev_build] set to "false".
 # Having this set to 'false' prevents the execution of the dev/build process, meaning it can be
 # deferred until all dependencies are in place, specifically the sapphire module. List

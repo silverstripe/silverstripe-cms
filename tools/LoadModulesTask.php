@@ -3,7 +3,8 @@
 include_once dirname(__FILE__) . '/SilverStripeBuildTask.php';
 
 /**
- * A phing task to load modules from a specific URL via SVN or git checkouts
+ * A phing task to load modules from a specific URL via SVN, git checkout, or
+ * through the "piston" binary (http://piston.rubyforge.org).
  *
  * Passes commands directly to the commandline to actually perform the
  * svn checkout/updates, so you must have these on your path when this
@@ -85,35 +86,40 @@ class LoadModulesTask extends SilverStripeBuildTask {
 				}
 
 				$moduleName = trim($bits[0], '/');
-				$svnUrl = trim($bits[1], '/');
+				$url = trim($bits[1], '/');
 				$storeLocally = false;
-				
+				$usePiston = false;
 				if (isset($bits[2])) {
 					$devBuild = $bits[2] == 'true';
 					$storeLocally = $bits[2] == 'local';
+					$usePiston = $bits[2] == 'piston';
 					if (isset($bits[3])) {
 						$storeLocally = $bits[3] == 'local';
+						$usePiston = $bits[3] == 'piston';
 					}
 				}
-
-				$this->loadModule($moduleName, $svnUrl, $devBuild, $storeLocally);
+				
+				$this->loadModule($moduleName, $url, $devBuild, $storeLocally, $usePiston);
 			}
 		}
+
+		$this->devBuild();
 	}
 
 	/**
 	 * Actually load the module!
 	 *
 	 * @param String $moduleName
-	 * @param String $svnUrl
+	 * @param String $url
 	 * @param boolean $devBuild
 	 * 			Do we run a dev/build?
 	 * @param boolean $storeLocally
 	 *			Should we store the module locally, for it to be included in 
 	 *			the local project's repository?
+	 * @param boolean $usePiston Same as $storeLocally, but retain versioning metadata in piston.
 	 */
-	protected function loadModule($moduleName, $svnUrl, $devBuild = false, $storeLocally=false) {
-		$git = strrpos($svnUrl, '.git') == (strlen($svnUrl) - 4);
+	protected function loadModule($moduleName, $url, $devBuild = false, $storeLocally=false, $usePiston=false) {
+		$git = strrpos($url, '.git') == (strlen($url) - 4);
 		$branch = 'master';
 		$cmd = '';
 		
@@ -129,83 +135,64 @@ class LoadModulesTask extends SilverStripeBuildTask {
 			// backwards compatibility
 			$md['store'] = false;
 		}
+		
+		// create loader
+		if($usePiston) {
+			$loader = new LoadModulesTask_PistonLoader($this, $moduleName, $url, $branch);
+		} elseif($git) {
+			$loader = new LoadModulesTask_GitLoader($this, $moduleName, $url, $branch);
+		} else {
+			$loader = new LoadModulesTask_SubversionLoader($this, $moduleName, $url, $branch);
+		}
 
 		// check the module out if it doesn't exist
-		$currentDir = trim(`pwd`," \n");
 		if (!file_exists($moduleName)) {
-			echo "Check out $moduleName from $svnUrl\n";
-			// check whether it's git or svn
-			if ($git) {
-				$this->exec("git clone $svnUrl $moduleName");
-				if ($branch != 'master') {
-					// check if we're also hooking onto a revision
-					$commitId = null;
-					if (strpos($branch, self::MODULE_SEPARATOR) > 0) {
-						$commitId = substr($branch, strpos($branch, self::MODULE_SEPARATOR) + 1);
-						$branch = substr($branch, 0, strpos($branch, self::MODULE_SEPARATOR));
-					}
-					// need to make sure we've pulled from the correct branch also
-					$currentDir = trim(`pwd`," \n");
-					if ($branch != 'master') {
-						$this->exec("cd $moduleName && git checkout -f -b $branch --track origin/$branch && cd \"$currentDir\"");
-					}
+			$this->log("Check out $moduleName from $url");
+			
+			// Create new working copy
+			$loader->checkout($storeLocally);
 
-					if ($commitId) {
-						$this->exec("cd $moduleName && git checkout $commitId && cd \"$currentDir\"");
-					}
-				}
-				
-				if ($storeLocally) {
-					rrmdir("$moduleName/.git");
-				}
-			} else {
-				$revision = '';
-				if ($branch != 'master') {
-					$revision = " --revision $branch ";
-				}
-				
-				$cmd = 'co';
-				if ($storeLocally) {
-					$cmd = 'export';
-				}
-
-				$this->exec("svn $cmd $revision $svnUrl $moduleName");
-			}
-
-			// make sure to append it to the .gitignore file
-			if (!$storeLocally && file_exists('.gitignore')) {
+			// Ignore locally added modules from base working copy.
+			// Only applies when this base contains versioning information.
+			// Note: This is specific to the base working copy, not the module itself.
+			if (!$storeLocally && !$usePiston && file_exists('.gitignore')) {
 				$gitIgnore = file_get_contents('.gitignore');
 				if (strpos($gitIgnore, $moduleName) === false) {
-					$this->exec("echo $moduleName >> .gitignore");
+					$this->task->exec("echo $$moduleName >> .gitignore");
 				}
 			}
 		} else {
-			echo "Updating $moduleName $branch from $svnUrl\n";
+			$this->log("Updating $moduleName $branch from $url");
 			
+			// Check for modifications
+			// TODO Shows all files as modified when switching repository types or branches'
 			$overwrite = true;
-			if (!$storeLocally) {
-				$statCmd = $git ? "git diff --name-status" : "svn status";
-				$mods = trim($this->exec("cd $moduleName && $statCmd && cd \"$currentDir\"", true));
-				if (strlen($mods) && !$storeLocally) {
-					$this->log("The following files are locally modified");
-					echo "\n $mods\n\n";
-					if (!$this->nonInteractive) {
-						$overwrite = strtolower(trim($this->getInput("Overwrite local changes? [y/N]")));
-						$overwrite = $overwrite == 'y';
-					} 
-				}
+			$mods = $loader->getModifiedFiles();
+			if (strlen($mods) && !$storeLocally) {
+				$this->log("The following files are locally modified");
+				$this->log($mods);
+				if (!$this->nonInteractive) {
+					$overwrite = strtolower(trim($this->getInput("Overwrite local changes? [y/N]")));
+					$overwrite = $overwrite == 'y';
+				} 
 			}
-			
+
 			// get the metadata and make sure it's not the same
+			// TODO Doesn't handle switch from git to svn repositories
 			if ($md && isset($md[$moduleName]) && isset($md[$moduleName]['url'])) {
-				if ($md[$moduleName]['url'] != $svnUrl || $md[$moduleName]['store'] != $storeLocally) {
+				if (
+					$md[$moduleName]['url'] != $url 
+					|| $md[$moduleName]['store'] != $storeLocally
+					|| $md[$moduleName]['piston'] != $usePiston
+				) {
 					if ($overwrite) {
 					// delete the directory and reload the module
-						echo "Deleting $moduleName and reloading\n";
+						$this->log("Deleting $moduleName and reloading");
 						unset($md[$moduleName]);
 						$this->writeMetadata($md);
 						rrmdir($moduleName, true);
-						$this->loadModule($originalName, $svnUrl, $devBuild, $storeLocally);
+						// TODO Doesn't handle changes between svn/git/piston
+						$loader->checkout($storeLocally);
 						return;
 					} else {
 						throw new Exception("You have chosen not to overwrite changes, but also want to change your " .
@@ -213,49 +200,22 @@ class LoadModulesTask extends SilverStripeBuildTask {
 					}
 				}
 			}
-
-			if (!$storeLocally) {
-				if ($git) {
-					$commitId = null;
-					if (strpos($branch, self::MODULE_SEPARATOR) > 0) {
-						$commitId = substr($branch, strpos($branch, self::MODULE_SEPARATOR) + 1);
-						$branch = substr($branch, 0, strpos($branch, self::MODULE_SEPARATOR));
-					}
-
-					$currentDir = trim(`pwd`," \n");
-
-					$currentBranch = trim($this->exec("cd $moduleName && git branch && cd \"$currentDir\"", true));
-
-					$overwriteOpt = $overwrite ? '-f' : '';
-
-					$this->exec("cd $moduleName && git checkout $overwriteOpt $branch && git pull origin $branch && cd \"$currentDir\"");
-
-					if ($commitId) {
-						$this->exec("cd $moduleName && git pull && git checkout $commitId && cd \"$currentDir\"");
-					}
-				} else {
-					$revision = '';
-					if ($branch != 'master') {
-						$revision = " --revision $branch ";
-					}
-
-					echo $this->exec("svn up $revision $moduleName");
-				}
-			}
+			
+			// Update existing versioned copy
+			$loader->update($overwrite);
 		}
 
+		// Write new metadata
 		$metadata = array(
-			'url' => $svnUrl,
+			'url' => $url,
 			'store' => $storeLocally,
+			'piston' => $usePiston,
 			'branch' => str_replace($moduleName, '', $originalName),
 		);
-
 		$md[$moduleName] = $metadata;
 		$this->writeMetadata($md);
 		
-		
-		
-		// make sure to remove from the .gitignore file - don't need to do it EVERY 
+		// Make sure to remove from the .gitignore file - don't need to do it EVERY 
 		// run, but it's better than munging code up above
 		if ($storeLocally && file_exists('.gitignore')) {
 			$gitIgnore = file('.gitignore');
@@ -267,13 +227,10 @@ class LoadModulesTask extends SilverStripeBuildTask {
 				}
 				$newIgnore[] = $line;
 			}
-
 			file_put_contents('.gitignore', implode("\n", $newIgnore));
 		}
-
-		if ($devBuild) {
-			$this->devBuild();
-		}
+		
+		if ($devBuild) $this->devBuild();
 	}
 	
 	protected function loadMetadata() {
@@ -292,6 +249,7 @@ class LoadModulesTask extends SilverStripeBuildTask {
 		file_put_contents($metadataFile, serialize($md));
 	}
 
+
 }
 
 if (!function_exists('rrmdir')) {
@@ -308,5 +266,194 @@ if (!function_exists('rrmdir')) {
 			reset($objects);
 			rmdir($dir);
 		}
+	}
+}
+
+class LoadModulesTask_Loader {
+	
+	/**
+	 * @var SilverStripeBuildTask
+	 */
+	protected $task;
+	
+	/**
+	 * @var string
+	 */
+	protected $url;
+	
+	/**
+	 * @var string
+	 */
+	protected $name;
+	
+	/**
+	 * @var string
+	 */
+	protected $branch;
+	
+	/**
+	 * @var boolean
+	 */
+	protected $nonInteractive = false;
+	
+	/**
+	 * @param SilverStripeBuildTask Phing crashes when extending the loader from SilverStripeBuildTask
+	 * @param String
+	 * @param String
+	 * @param String
+	 */
+	function __construct($task, $name, $url, $branch = null) {
+		$this->task = $task;
+		$this->name = $name;
+		$this->url = $url;
+		$this->branch = $branch;
+	}
+	
+	/**
+	 * Check out a new working copy.
+	 * Call {@link storeLocally()} afterwards to remove versioning information
+	 * from the working copy.
+	 */
+	function checkout($storeLocally = false) {
+		// noop
+	}
+	
+	/**
+	 * Update an existing working copy
+	 */
+	function update($overwrite = true) {
+		// noop
+	}
+	
+	/**
+	 * @return array
+	 */
+	function getModifiedFiles() {
+		// noop
+	}
+	
+}
+
+class LoadModulesTask_GitLoader extends LoadModulesTask_Loader {
+	
+	function checkout($storeLocally = false) {
+		$branch = $this->branch;
+		$currentDir = getcwd();
+		$this->task->exec("git clone $this->url $this->name");
+		
+		if ($branch != 'master') {
+			// check if we're also hooking onto a revision
+			$commitId = null;
+			if (strpos($this->branch, LoadModulesTask::MODULE_SEPARATOR) > 0) {
+				$commitId = substr($branch, strpos($branch, LoadModulesTask::MODULE_SEPARATOR) + 1);
+				$branch = substr($branch, 0, strpos($branch, LoadModulesTask::MODULE_SEPARATOR));
+			}
+			// need to make sure we've pulled from the correct branch also
+			if ($branch != 'master') {
+				$this->task->exec("cd $this->name && git checkout -f -b $branch --track origin/$branch && cd \"$currentDir\"");
+			}
+
+			if ($commitId) {
+				$this->task->exec("cd $this->name && git checkout $commitId && cd \"$currentDir\"");
+			}
+		}
+		
+		if($storeLocally) rrmdir("$this->name/.git");
+	}
+	
+	function getModifiedFiles() {
+		$currentDir = getcwd();
+		$statCmd = "git diff --name-status";
+		return trim($this->task->exec("cd $this->name && $statCmd && cd \"$currentDir\"", true));
+	}
+	
+	function update($overwrite = true) {
+		$branch = $this->branch;
+		$currentDir = getcwd();
+
+		$commitId = null;
+		if (strpos($branch, LoadModulesTask::MODULE_SEPARATOR) > 0) {
+			$commitId = substr($branch, strpos($branch, LoadModulesTask::MODULE_SEPARATOR) + 1);
+			$branch = substr($branch, 0, strpos($branch, LoadModulesTask::MODULE_SEPARATOR));
+		}
+
+		$currentBranch = trim($this->task->exec("cd $moduleName && git branch && cd \"$currentDir\"", true));
+
+		$overwriteOpt = $overwrite ? '-f' : '';
+
+		$this->task->exec("cd $this->name && git checkout $overwriteOpt $branch && git pull origin $branch && cd \"$currentDir\"");
+
+		if ($commitId) {
+			$this->task->exec("cd $this->name && git pull && git checkout $commitId && cd \"$currentDir\"");
+		}
+	}
+	
+}
+
+class LoadModulesTask_SubversionLoader extends LoadModulesTask_Loader {
+	
+	function checkout($storeLocally = false) {
+		$revision = '';
+		if ($this->branch != 'master') {
+			$revision = " --revision $this->branch ";
+		}
+		
+		$cmd = ($storeLocally) ? 'export' : 'co';
+		$this->task->exec("svn $cmd $revision $this->url $this->name");
+	}
+	
+	function update($overwrite = true) {
+		$branch = $this->branch;
+		$currentDir = getcwd();
+		
+		$revision = '';
+		if ($branch != 'master') {
+			$revision = " --revision $branch ";
+		}
+
+		echo $this->task->exec("svn up $revision $this->name");
+	}
+	
+	function getModifiedFiles() {
+		$currentDir = getcwd();
+		$statCmd = "svn stat";
+		return trim($this->task->exec("cd $this->module && $statCmd && cd \"$currentDir\"", true));
+	}
+	
+}
+
+class LoadModulesTask_PistonLoader extends LoadModulesTask_Loader {
+	
+	function __construct($task, $name, $url, $branch = null) {
+		parent::__construct($task, $name, $url, $branch);
+		
+		if(strpos($branch, ':') !== FALSE) {
+			throw new BuildException(sprintf('Git tags not supported by piston'));
+		}
+	}
+	
+	function update($overwrite = true) {
+		$currentDir = getcwd();		
+		$revision = ($this->branch != 'master') ? " --commit $this->branch " : '';
+		$overwriteOpts = ($overwrite) ? '--force' : '';
+		echo $this->task->exec("piston update $overwriteOpts $revision $this->name");
+		
+		$this->task->log(sprintf('Updated "$this->name" via piston, please don\'t forget to commit any changes'));
+	}
+	
+	function checkout($storeLocally = false) {
+		$git = strrpos($this->url, '.git') == (strlen($this->url) - 4);
+		$revision = ($this->branch != 'master') ? " --commit $this->branch " : '';
+		$type = ($git) ? 'git' : 'subversion';
+		$this->task->exec("piston import --repository-type $type $revision $this->url $this->name");
+		
+		$this->task->log(sprintf('Created "$this->name" via piston, please don\'t forget to commit any changes'));
+	}
+	
+	/**
+	 * @todo Check base working copy if not dealing with flattened directory.
+	 */
+	function getModifiedFiles() {
+		return '';
 	}
 }

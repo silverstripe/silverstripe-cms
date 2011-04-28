@@ -29,7 +29,7 @@ TEXT;
 		}
 	}
 
-	protected function cleanEnv() {
+	function cleanEnv() {
 		if ($this->cleanupEnv) {
 			$envFile = dirname(dirname(__FILE__)).'/_ss_environment.php';
 			if (file_exists($envFile)) {
@@ -38,7 +38,7 @@ TEXT;
 		}
 	}
 
-	protected function devBuild() {
+	function devBuild() {
 		if (file_exists('sapphire/cli-script.php')) {
 			$this->log("Running dev/build");
 			$this->exec('php sapphire/cli-script.php dev/build');
@@ -52,7 +52,7 @@ TEXT;
 	 * @param string $prompt
 	 * @return string
 	 */
-	protected function getInput($prompt) {
+	function getInput($prompt) {
 		require_once 'phing/input/InputRequest.php';
 		$request = new InputRequest($prompt);
         $request->setPromptChar(':');
@@ -62,7 +62,7 @@ TEXT;
 		return $value;
 	}
 
-	protected function exec($cmd, $returnContent = false, $ignoreError = false) {
+	function exec($cmd, $returnContent = false, $ignoreError = false) {
 		$ret = null;
 		$return = null;
 		if ($returnContent) {
