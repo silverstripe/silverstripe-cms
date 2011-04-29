@@ -130,21 +130,24 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	*/
 	static $can_create = true;
 
+	/**
+	 * @see CMSMain::generateTreeStylingCSS()
+	 */ 
+	static $page_states = array('readonly'); 
 
 	/**
 	 * Icon to use in the CMS
 	 *
-	 * This should be the full filename, including file extention. CMSMain will look for other files 
+	 * This should be the full filename, including file extention. CMS will look for other files 
 	 * in the same folder that correspond to the states the page in the the same folder. 
 	 * For example, if the full file path is 'dir/page.png' then the readonly state would be 'dir/page-readonly.png'. If those files are not found the default one will be used instead. 
 	 * 
-	 * Paget states: 
-	 * - readonly
+	 * @see SiteTree::$page_states
+	 * @see CMSMain::generateTreeStylingCSS()
 	 * 
 	 * @var string
 	 */
 	static $icon = "sapphire/javascript/tree/images/page.png";
-
 
 	static $extensions = array(
 		"Hierarchy",

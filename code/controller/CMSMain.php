@@ -257,8 +257,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 	
 	/**
-	 * TODO: Class for open folder and close folder
-	 * TODO: Remove generateTreeStylingJS() when this method is complete
+	 * Include CSS for page icons
+	 * 
 	 * @return void 
 	 */
 	function generateTreeStylingCSS() {
@@ -277,7 +277,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$fileExtension = $iconPathInfo['extension'];
 			$css .= sprintf($cssIconTemplate, $class, $iconFile) . "\n";
 
-			$pageStates = array('readonly', 'draft'); 
+			$pageStates = $obj->stat('page_states'); 
 			foreach($pageStates as $state) {
 				$filename = $baseFilename . '-' . $state . '.' . $fileExtension; 
 				
@@ -288,44 +288,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 
 		Requirements::customCSS($css); 
-	}
-
-	public function generateTreeStylingJS() {
-		$classes = ClassInfo::subclassesFor($this->stat('tree_class'));
-		foreach($classes as $class) {
-			$obj = singleton($class);
-			if($obj instanceof HiddenClass) continue;
-			if($icon = $obj->stat('icon')) $iconInfo[$class] = $icon;
-		}
-		$iconInfo['BrokenLink'] = 'cms/images/treeicons/brokenlink';
-
-
-		$js = "var _TREE_ICONS = [];\n";
-
-
-		foreach($iconInfo as $class => $icon) {
-			// SiteTree::$icon can be set to array($icon, $option)
-			// $option can be "file" or "folder" to force the icon to always be the file or the folder form
-			$option = null;
-			if(is_array($icon)) list($icon, $option) = $icon;
-
-			$fileImage = ($option == "folder") ? $icon . '-openfolder.gif' : $icon . '-file.gif';
-			$openFolderImage = $icon . '-openfolder.gif';
-			if(!Director::fileExists($openFolderImage) || $option == "file") $openFolderImage = $fileImage;
-			$closedFolderImage = $icon . '-closedfolder.gif';
-			if(!Director::fileExists($closedFolderImage) || $option == "file") $closedFolderImage = $fileImage;
-
-			$js .= <<<JS
-				_TREE_ICONS['$class'] = {
-					fileIcon: '$fileImage',
-					openFolderIcon: '$openFolderImage',
-					closedFolderIcon: '$closedFolderImage'
-				};
-
-JS;
-		}
-
-		Requirements::customScript($js);
 	}
 
 	/**
