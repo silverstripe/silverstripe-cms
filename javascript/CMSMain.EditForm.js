@@ -173,21 +173,22 @@
 		 * Toggle display of group dropdown in "access" tab,
 		 * based on selection of radiobuttons.
 		 */
-		$('.cms-edit-form #CanViewType, .cms-edit-form #CanEditType').entwine({
+		$('.cms-edit-form #CanViewType, .cms-edit-form #CanEditType, .cms-edit-form #CanCreateTopLevelType').entwine({
 			// Constructor: onmatch
 			onmatch: function() {
 				// TODO Decouple
 				var dropdown;
 				if(this.attr('id') == 'CanViewType') dropdown = $('#ViewerGroups');
 				else if(this.attr('id') == 'CanEditType') dropdown = $('#EditorGroups');
+				else if(this.attr('id') == 'CanCreateTopLevelType') dropdown = $('#CreateTopLevelGroups');
 		
 				this.find('.optionset :input').bind('change', function(e) {
-					dropdown.toggle(e.target.value == 'OnlyTheseUsers');
+					dropdown[e.target.value == 'OnlyTheseUsers' ? 'show' : 'hide']();
 				});
 		
 				// initial state
 				var currentVal = this.find('input[name=' + this.attr('id') + ']:checked').val();
-				dropdown.toggle(currentVal == 'OnlyTheseUsers');
+				dropdown[currentVal == 'OnlyTheseUsers' ? 'show' : 'hide']();
 				
 				this._super();
 			}
