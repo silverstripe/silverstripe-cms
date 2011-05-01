@@ -172,8 +172,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		$fields = new FieldSet(
 			new TextField('Term', _t('CMSSearch.FILTERLABELTEXT', 'Content')),
-			$dateFrom = new DateField('LastEditedFrom', _t('CMSSearch.FilterDateFrom', 'from')),
-			$dateTo = new DateField('LastEditedTo', _t('CMSSearch.FilterDateFrom', 'to')),
+			$dateGroup = new FieldGroup(
+				$dateFrom = new DateField('LastEditedFrom', _t('CMSSearch.FilterDateFrom', 'from')),
+				$dateTo = new DateField('LastEditedTo', _t('CMSSearch.FilterDateFrom', 'to'))
+			),
 			new DropdownField(
 				'FilterClass', 
 				_t('CMSMain.SearchTreeFormPagesDropdown', 'Pages'), 
@@ -189,6 +191,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			)
 			// new TextField('MetaTags', _t('CMSMain.SearchMetaTags', 'Meta tags'))
 		);
+		$dateGroup->subfieldParam = 'FieldHolder';
 		$dateFrom->setConfig('showcalendar', true);
 		$dateTo->setConfig('showcalendar', true);
 
