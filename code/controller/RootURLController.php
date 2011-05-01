@@ -91,8 +91,9 @@ class RootURLController extends Controller {
 	 * @param SS_HTTPRequest $request
 	 * @return SS_HTTPResponse
 	 */
-	public function handleRequest(SS_HTTPRequest $request) {
+	public function handleRequest(SS_HTTPRequest $request, DataModel $model) {
 		self::$is_at_root = true;
+		$this->setModel($model);
 		
 		$this->pushCurrent();
 		$this->init();
@@ -109,7 +110,7 @@ class RootURLController extends Controller {
 		$request->match('$URLSegment//$Action', true);
 		
 		$controller = new ModelAsController();
-		$result     = $controller->handleRequest($request);
+		$result     = $controller->handleRequest($request, $model);
 		
 		$this->popCurrent();
 		return $result;
