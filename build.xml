@@ -20,7 +20,6 @@ phing help
 	<property name="dependent-modules-file" value="dependent-modules" override="true" />
 	<property name="changelog-definitions-file" value="changelog-definitions" override="true" />
 	<property name="ni_build" value="false" override="true"/>   <!-- Prompt if local changes would be overwritten by update -->
-	<property name="changelogFile" value="changelog.md" override="true"/>
 	<property name="changelogSort" value="type" override="true"/>
 	
 	<available file="${dependent-modules-file}" property="dependent-modules-file-exists" />
@@ -49,7 +48,6 @@ Options:
 -Dbasedir = . (the base directory to operate on)
 -Ddependent-modules-file = dependent-modules (the file of dependent modules to use when updating modules)
 -Dchangelog-definitions-file = changelog-definitions (the file of changelog-definitions to use when generating the changelog)
--DchangelogFile = changelog.md (the filename of the created changelog file)
 -DchangelogSort = type (sort the changelog file by commit type)
 -Dni_build = false (non-interactive build, overwrite local changes without prompting)
 
@@ -299,19 +297,9 @@ Options:
 	</target>
 
 	<!-- Create a changelog of git changes based on the  -->
-	<target name="changelog" depends="createChangelogDefinitionsFile" if="basedir,changelogFile,changelogSort">
+	<target name="changelog" depends="createChangelogDefinitionsFile" if="basedir,changelogSort">
 		<sschanglog definitions="${changelog-definitions-file}" baseDir="${basedir}" sort="${changelogSort}"/>
-
-		<if>
-			<isset property="changelogOutput"/>
-			<then>
-				<echo msg="${changelogOutput}" file="${changelogFile}" append="false" />
-				<echo msg="Changelog written to '${changelogFile}' file"  />
-			</then>
-			<else>
-				<echo msg="There was a problem generating commits"/>
-			</else>
-		</if>
+		<echo msg="${changelogOutput}"  />
 	</target>
 
 </project>

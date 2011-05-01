@@ -13,6 +13,33 @@ class CreateChangelog extends SilverStripeBuildTask {
 	protected $baseDir = null;
 	protected $sort = 'type';
 	protected $filter = null;
+	
+	/**
+	 * Order of the array keys determines order of the lists.
+	 */
+	public $types = array(
+		'API Changes' => array('/^API CHANGE:?/i','/^APICHANGE?:?/i'),
+		'Features and Enhancements' => array('/^(ENHANCEMENT|ENHNACEMENT):?/i', '/^FEATURE:?/i'),
+		'Bugfixes' => array('/^(BUGFIX|BUGFUX):?/i','/^BUG FIX:?/i'),
+		'Minor changes' => array('/^MINOR:?/i'),
+		'Other' => array('/^[^A-Z][^A-Z][^A-Z]/') // dirty trick: check for uppercase characters
+	);
+	
+	public $commitUrls = array(
+		'.' => 'https://github.com/silverstripe/silverstripe-installer/commit/%s',
+		'sapphire' => 'https://github.com/silverstripe/sapphire/commit/%s',
+		'cms' => 'https://github.com/silverstripe/silverstripe-cms/commit/%s',
+		'themes/blackcandy' => 'https://github.com/silverstripe-themes/silverstripe-blackcandy/commit/%s',
+	);
+	
+	public $ignoreRules = array(
+		'/^Merge/',
+		'/^Blocked revisions/',
+		'/^Initialized merge tracking /',
+		'/^Created (branches|tags)/',
+		'/^NOTFORMERGE/',
+		'/^\s*$/'
+	);
 
 	public function setDefinitions($definitions) {
 		$this->definitions  = $definitions;
@@ -78,64 +105,74 @@ class CreateChangelog extends SilverStripeBuildTask {
 
 		chdir("$this->baseDir/$path");  //switch to the module's path
 
-		$log = $this->exec("git log --pretty=tformat:\"%s (%aN) [%h]\"{$range}", true);    //return output of command
+		// Internal serialization format, ideally this would be JSON but we can't escape characters in git logs.
+		$log = $this->exec("git log --pretty=tformat:\"message:%s|||author:%aN|||abbrevhash:%h|||hash:%H|||date:%ad|||timestamp:%at\" --date=short {$range}", true);
 
 		chdir($this->baseDir);  //switch the working directory back
 
 		return $log;
 	}
-
+		
 	/** Sort by the first two letters of the commit string.
 	 *  Put any commits without BUGFIX, ENHANCEMENT, etc. at the end of the list
 	 */
-	static function sortByType($a, $b) {
-		if (strlen($a) >= 2) $a = substr($a,0,2);
-		if (strlen($b) >= 2) $b = substr($b,0,2);
+	function sortByType($commits) {
+		$groupedByType = array();
+		
+		// sort by timestamp
+		usort($commits, function($a, $b) {
+			if($a['timestamp'] == $b['timestamp']) return 0;
+			else return ($a['timestamp'] > $b['timestamp']) ? -1 : 1;
+		});
 
-		if (empty($b)) return -1;   //put them at the end of the commit list
-		if (is_numeric($b)) return -1;
-		if (self::islower($b)) return -1;
-		if (!self::isupper($b)) return -1;
-
-		if (empty($a)) return +1;
-		if (self::islower($a)) return +1;
-		if (!self::isupper($a)) return +1;
-
-
-        if ($a == $b) {
-            return 0;
-        }
-        return ($a > $b) ? +1 : -1;
-	}
-
-	/** BETTER SORTING FUNCTION: Sort by the first two letters of the commit string.
-	 *  Put any commits without BUGFIX, ENHANCEMENT, etc. at the end of the list
-	 */
-	static function sortByType2($array) {
-		$bugfixes = array();
-		$enhancements = array();
-		$apichanges = array();
-		$features = array();
-		$minors = array();
-		$others = array();
-
-		foreach($array as $ele) {
-			if (strlen($ele) >= 2) $ele1 = substr($ele,0,2); else $ele1 = $ele;
-
-			if ($ele1 == "BU") $bugfixes[] = $ele;
-			elseif ($ele1 == "EN") $enhancements[] = $ele;
-			elseif ($ele1 == "AP") $apichanges[] = $ele;
-			elseif ($ele1 == "FE") $features[] = $ele;
-			elseif ($ele1 == "MI") $minors[] = $ele;
-			elseif ($ele1 == "") ; //discard empty commit messages
-			else $others[] = $ele;
+		foreach($commits as $k => $commit) {
+			// TODO
+			// skip ignored revisions
+			// if(in_array($commit['changeset'], $this->ignorerevisions)) continue;
+			
+			// Remove email addresses
+			$commit['message'] = preg_replace('/(<?[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}>?)/mi', '', $commit['message']);
+			
+			// Condense git-style "From:" messages (remove preceding newline)
+			if(preg_match('/^From\:/mi', $commit['message'])) {
+				$commit['message'] = preg_replace('/\n\n^(From\:)/mi', ' $1', $commit['message']);
+			}
+			
+			$matched = false;
+			foreach($this->types as $name => $rules) {
+				if(!isset($groupedByType[$name])) $groupedByType[$name] = array();
+				foreach($rules as $rule) {
+					if(!$matched && preg_match($rule, $commit['message'])) {
+						// @todo The fallback rule on other can't be replaced, as it doesn't match a full prefix
+						$commit['message'] = ($name != 'Other') ? trim(preg_replace($rule, '', $commit['message'])) : $commit['message'];
+						$groupedByType[$name][] = $commit;
+						$matched = true;
+					}
+				}
+			}
+			if(!$matched) {
+				if(!isset($groupedByType['Other'])) $groupedByType['Other'] = array();
+				$groupedByType['Other'][] = $commit;
+			}
+			
 		}
+		
+		// // remove all categories which should be ignored
+		// if($this->categoryIgnore) foreach($this->categoryIgnore as $categoryIgnore) {
+		// 	if(isset($groupedByType[$categoryIgnore])) unset($groupedByType[$categoryIgnore]);
+		// }
 
-		return array_merge(array("# API Changes"), $apichanges,
-		                   array("","# Features & Enhancements"), $features, $enhancements,
-		                   array("","# Bugfixes"),$bugfixes,
-		                   array("","# Minors"), $minors,
-		                   array("","# Others"), $others);
+		return $groupedByType;
+	}
+	
+	function commitToArray($commit) {
+		$arr = array();
+		$parts = explode('|||', $commit);
+		foreach($parts as $part) {
+			preg_match('/(.*)\:(.*)/', $part, $matches);
+			$arr[$matches[1]] = $matches[2];
+		}
+		return $arr;
 	}
 
 	static function isupper($i) {
@@ -146,6 +183,8 @@ class CreateChangelog extends SilverStripeBuildTask {
 	}
 
 	public function main() {
+		error_reporting(E_ALL);
+		
 		chdir($this->baseDir);  //change current working directory
 
 		//parse the definitions file
@@ -178,48 +217,77 @@ class CreateChangelog extends SilverStripeBuildTask {
 			//TODO: for svn support use the isSvnRepo() method to add repos to the svnRepos array
 		}
 
-		//run git log (with author information)
+		//run git log
 		$log = array();
 		foreach($gitRepos as $path => $range) {
+			$logForPath = array();
 			if (!empty($range)) {
 				$from = (isset($range[0])) ? $range[0] : null;
 				$to = (isset($range[1])) ? $range[1] : null;
-				$log[$path] = $this->gitLog($path, $from, $to);
+				$logForPath = explode("\n", $this->gitLog($path, $from, $to));
 			} else {
-				$log[$path] = $this->gitLog($path);
+				$logForPath = explode("\n", $this->gitLog($path));
+			}
+			foreach($logForPath as $commit) {
+				$commitArr = $this->commitToArray($commit);
+				$commitArr['path'] = $path;
+				// Avoid duplicates by keying on hash
+				$log[$commitArr['hash']] = $commitArr;
 			}
 		}
 
-		//merge all the changelogs together
-		$mergedLog = array();
-		foreach($log as $path => $commitsString) {
-			foreach(explode("\n",$commitsString) as $commit) {  //array from newlines
-				$mergedLog[] = $commit;
+		// Remove ignored commits
+		foreach($log as $k => $commit) {
+			$ignore = false;
+			foreach($this->ignoreRules as $ignoreRule) {
+				if(preg_match($ignoreRule, $commit['message'])) {
+					unset($log[$k]);
+					continue;
+				}
 			}
 		}
-
 
 		//sort the output (based on params), grouping
-		if ($this->sort == 'type') {    //sort by type, i.e. first two letters
-			$mergedLog = $this->sortByType2($mergedLog);
+		if ($this->sort == 'type') {
+			$groupedLog = $this->sortByType($log);
 		} else {
 			//leave as sorted by default order
+			$groupedLog = array('All' => $log);
 		}
 
 		//filter out commits we don't want
-		if ($this->filter) {
-			foreach($mergedLog as $key => $item) {
-				if (preg_match($this->filter, $item)) unset($mergedLog[$key]);
-			}
-		}
+		// if ($this->filter) {
+		// 	foreach($groupedLog as $key => $item) {
+		// 		if (preg_match($this->filter, $item)) unset($groupedLog[$key]);
+		// 	}
+		// }
 
 		//convert to string
 		//and generate markdown (add list to beginning of each item)
-		$output = "";
-		foreach($mergedLog as $logMessage) {
-			$firstTwoCharacters = substr($logMessage,0,2);
-			if ($firstTwoCharacters != "# " && $firstTwoCharacters != "") $output .= "- $logMessage\n";
-			else $output .= "$logMessage\n";
+		$output = "\n";
+		foreach($groupedLog as $groupName => $commits) {
+			
+			$output .= "\n### $groupName\n\n";
+			
+			foreach($commits as $commit) {
+				if(isset($this->commitUrls[$commit['path']])) {
+					$hash = sprintf('[%s](%s)', 
+						$commit['abbrevhash'],
+						sprintf($this->commitUrls[$commit['path']], $commit['abbrevhash'])
+					);
+				} else {
+					$hash = sprintf('[%s]', $commit['abbrevhash']);
+				}
+				$commitStr = sprintf('%s %s %s (%s)',
+					$commit['date'],
+					$hash,
+					// Avoid rendering HTML in markdown
+					str_replace(array('<', '>'), array('&lt;', '&gt;'), $commit['message']),
+					$commit['author']
+				);
+				// $commitStr = sprintf($this->exec("git log --pretty=tformat:\"%s\" --date=short {$hash}^..{$hash}", true), $this->gitLogFormat);
+				$output .= " * $commitStr\n";
+			}
 		}
 
 		$this->project->setProperty('changelogOutput',$output);
