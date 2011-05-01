@@ -7,7 +7,15 @@ class CMSPageEditController extends CMSMain {
 	
 	function getEditForm($id = null, $fields = null) {
 		$record = $this->getRecord($id ? $id : $this->currentPageID());
-		return parent::getEditForm($record, ($record) ? $record->getCMSFields() : null);
+		$form = parent::getEditForm($record, ($record) ? $record->getCMSFields() : null);
+		
+		// TODO Replace with preview button
+		$form->Fields()->addFieldToTab(
+			'Root.Main', 
+			new LiteralField('SwitchView', sprintf('<div class="cms-switch-view field"><label>Preview:</label><div class="middleColumn">%s</div></div>', $this->SwitchView()))
+		);
+		
+		return $form;
 	}
 	
 }
