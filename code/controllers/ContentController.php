@@ -133,9 +133,10 @@ class ContentController extends Controller {
 	 *
 	 * @return SS_HTTPResponse
 	 */
-	public function handleRequest(SS_HTTPRequest $request) {		
+	public function handleRequest(SS_HTTPRequest $request, DataModel $model) {
 		$child  = null;
 		$action = $request->param('Action');
+		$this->setModel($model);
 		
 		// If nested URLs are enabled, and there is no action handler for the current request then attempt to pass
 		// control to a child controller. This allows for the creation of chains of controllers which correspond to a
@@ -144,9 +145,9 @@ class ContentController extends Controller {
 			// See ModelAdController->getNestedController() for similar logic
 			if(class_exists('Translatable')) Translatable::disable_locale_filter();
 			// look for a page with this URLSegment
-			$child = DataObject::get_one('SiteTree', sprintf (
+			$child = $this->model->SiteTree->where(sprintf (
 				"\"ParentID\" = %s AND \"URLSegment\" = '%s'", $this->ID, Convert::raw2sql($action)
-			));
+			))->First();
 			if(class_exists('Translatable')) Translatable::enable_locale_filter();
 			
 			// if we can't find a page with this URLSegment try to find one that used to have 
@@ -180,7 +181,7 @@ class ContentController extends Controller {
 			$request->shiftAllParams();
 			$request->shift();
 			
-			$response = ModelAsController::controller_for($child)->handleRequest($request);
+			$response = ModelAsController::controller_for($child)->handleRequest($request, $model);
 		} else {
 			// If a specific locale is requested, and it doesn't match the page found by URLSegment,
 			// look for a translation and redirect (see #5001). Only happens on the last child in
@@ -197,7 +198,7 @@ class ContentController extends Controller {
 			}
 			
 			Director::set_current_page($this->data());
-			$response = parent::handleRequest($request);
+			$response = parent::handleRequest($request, $model);
 			Director::set_current_page(null);
 		}
 		
