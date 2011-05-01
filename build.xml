@@ -247,19 +247,8 @@ Options:
 			</else>
 		</if>
 
-		<!-- check if file exists -->
-		<available file="${${basedir}/${archivename}}" property="afileexists" />
-		<if>
-			<istrue value="${afileexists}"/>
-			<then>
-				<echo msg="File ${basedir}/${archivename} already exists. Aborting."/>
-			</then>
-			<else><!-- File exists, we can continue building the archive -->
-				<phingCall target="archiveTask" />
-		
-				<echo msg="Created archive in: ${basedir}/${archivename}" />
-			</else>
-		</if>
+		<phingCall target="archiveTask" />
+		<echo msg="Created archive in: ${basedir}/${archivename}" />
 
 	</target>
 
