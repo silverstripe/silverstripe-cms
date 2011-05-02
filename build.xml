@@ -105,23 +105,34 @@ Options:
 		<echo msg="checked out ${tagname} tag/branch in '${reponame}' git repository" />
 	</target>
 
-	<target name="archiveTask" if="archivetype,basedir,archivename">
+	<!-- Archives the base folder as a *.tar.gz or *.zip, without version information -->
+	<target name="archiveTask" if="archivetype,basedir,archivename,archivefilename">
+		<!-- Copy into a new folder, and tar the whole folder in order to avoid toplevel extracts -->
+		<php function="sys_get_temp_dir" returnProperty="systmp" />
+		<property name="tmp" value="${systmp}/archiveTask/" />
+		
+		<copy todir="${tmp}/${archivename}">
+			<fileset dir="${basedir}">
+				<include name="**/**" />
+				<exclude name="mysite/local.conf.php" />
+				<exclude name="mysite/db.conf.php" />
+				<exclude name="mysite/*.log" />
+				<exclude name="**/.svn/**" />
+				<exclude name="**/.git/**" />
+				<exclude name="**/.project" />  <!-- remove eclipse configuration file -->
+				<exclude name="**/.buildpath" />
+				<exclude name="**/.settings" />
+				<exclude name="**/.idea/**" />  <!-- remove phpstorm configuration file -->
+			</fileset>
+		</copy>
+		
 		<!-- create tar archive -->
 		<if>
 			<equals arg1="${archivetype}" arg2="tar.gz" casesensitive="false" trim="true"/>
 			<then>
-				<tar destfile="${basedir}/${archivename}" compression="gzip">
-					<fileset dir="${basedir}">
+				<tar destfile="${basedir}/${archivefilename}" compression="gzip">
+					<fileset dir="${tmp}">
 						<include name="**/**" />
-						<exclude name="mysite/local.conf.php" />
-						<exclude name="mysite/db.conf.php" />
-						<exclude name="mysite/*.log" />
-						<exclude name="**/.svn/**" />
-						<exclude name="**/.git/**" />
-						<exclude name="**/.project" />  <!-- remove eclipse configuration file -->
-						<exclude name="**/.buildpath" />
-						<exclude name="**/.settings" />
-						<exclude name="**/.idea/**" />  <!-- remove phpstorm configuration file -->
 					</fileset>
 				</tar>
 			</then>
@@ -131,22 +142,16 @@ Options:
 		<if>
 			<equals arg1="${archivetype}" arg2="zip" casesensitive="false" trim="true"/>
 			<then>
-				<zip destfile="${basedir}/${archivename}">
-					<fileset dir="${basedir}">
+				<zip destfile="${basedir}/${archivefilename}">
+					<fileset dir="${tmp}">
 						<include name="**/**" />
-						<exclude name="mysite/local.conf.php" />
-						<exclude name="mysite/db.conf.php" />
-						<exclude name="mysite/*.log" />
-						<exclude name="**/.svn/**" />
-						<exclude name="**/.git/**" />
-						<exclude name="**/.project" />
-						<exclude name="**/.buildpath" />
-						<exclude name="**/.settings" />
-						<exclude name="**/.idea/**" />
 					</fileset>
 				</zip>
 			</then>
 		</if>
+		
+		<delete dir="${tmp}" />
+		
 	</target>
 
 	<target name="createDependentModulesFile" unless="dependent-modules-file-exists">
@@ -242,7 +247,8 @@ Options:
 				<echo msg="Creating '${archivename}' archive"/>
 			</then>
 			<else>
-				<input propertyName="archivename" defaultValue="archive.${archivetype}" promptChar=":">Please enter a name for the archive</input>
+				<input propertyName="archivename" defaultValue="archive" promptChar=":">Please enter a name for the archive (without extension)</input>
+				<property name="archivefilename" value="${archivename}.${archivetype}" />
 				<echo msg="Creating '${archivename}' archive"/>
 			</else>
 		</if>
