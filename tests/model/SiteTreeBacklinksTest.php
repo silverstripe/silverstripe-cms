@@ -33,7 +33,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		
 		// assert backlink to page 2 doesn't exist
 		$page2 = $this->objFromFixture('Page', 'page2');
-		$this->assertFalse($page1->BackLinkTracking()->containsIDs(array($page2->ID)), 'Assert backlink to page 2 doesn\'t exist');
+		$this->assertNotContains($page2->ID, $page1->BackLinkTracking()->column('ID'), 'Assert backlink to page 2 doesn\'t exist');
 		
 		// add hyperlink to page 1 on page 2
 		$page2->Content .= '<p><a href="[sitetree_link id='.$page1->ID.']">Testing page 1 link</a></p>';
@@ -43,7 +43,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		$page1 = $this->objFromFixture('Page', 'page1');
 		
 		// assert backlink to page 2 exists
-		$this->assertTrue($page1->BackLinkTracking()->containsIDs(array($page2->ID)), 'Assert backlink to page 2 exists');
+		$this->assertContains($page2->ID, $page1->BackLinkTracking()->column('ID'), 'Assert backlink to page 2 exists');
 	}
 	
 	function testRemovingLinkFromPageRemovesBacklink() {
@@ -52,7 +52,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		
 		// assert backlink to page 3 exits
 		$page3 = $this->objFromFixture('Page', 'page3');
-		$this->assertTrue($page1->BackLinkTracking()->containsIDs(array($page3->ID)), 'Assert backlink to page 3 exists');
+		$this->assertContains($page3->ID, $page1->BackLinkTracking()->column('ID'), 'Assert backlink to page 3 exists');
 		
 		// remove hyperlink to page 1
 		$page3->Content = '<p>No links anymore!</p>';
@@ -62,7 +62,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		$page1 = $this->objFromFixture('Page', 'page1');
 		
 		// assert backlink to page 3 exists
-		$this->assertFalse($page1->BackLinkTracking()->containsIDs(array($page3->ID)), 'Assert backlink to page 3 doesn\'t exist');
+		$this->assertNotContains($page3->ID, $page1->BackLinkTracking()->column('ID'), 'Assert backlink to page 3 doesn\'t exist');
 	}
 
 	function testChangingUrlOnDraftSiteRewritesLink() {
@@ -71,7 +71,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		
 		// assert backlink to page 3 exists
 		$page3 = $this->objFromFixture('Page', 'page3');
-		$this->assertTrue($page1->BackLinkTracking()->containsIDs(array($page3->ID)), 'Assert backlink to page 3 exists');
+		$this->assertContains($page3->ID, $page1->BackLinkTracking()->column('ID'), 'Assert backlink to page 3 exists');
 		
 		// assert hyperlink to page 1's current url exists on page 3
 		$links = HTTP::getLinksIn($page3->obj('Content')->forTemplate());
@@ -101,7 +101,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		$page3live = Versioned::get_one_by_stage('Page', 'Live', '"SiteTree"."ID" = ' . $page3->ID);
 		
 		// assert backlink to page 3 exists
-		$this->assertTrue($page1live->BackLinkTracking()->containsIDs(array($page3live->ID)), 'Assert backlink to page 3 exists');
+		$this->assertContains($page3live->ID, $page1live->BackLinkTracking()->column('ID'), 'Assert backlink to page 3 exists');
 		
 		// assert hyperlink to page 1's current url exists on page 3
 		$links = HTTP::getLinksIn($page3live->obj('Content')->forTemplate());
@@ -202,7 +202,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		$page2->doPublish();
 		
 		// assert backlink to page 2 doesn't exist
-		$this->assertFalse($page1->BackLinkTracking()->containsIDs(array($page2->ID)), 'Assert backlink to page 2 doesn\'t exist');
+		$this->assertNotContains($page2->ID, $page1->BackLinkTracking()->column('ID'), 'Assert backlink to page 2 doesn\'t exist');
 		
 		// add hyperlink to page 1 on page 2
 		$page2->ExtraContent .= '<p><a href="[sitetree_link id='.$page1->ID.']">Testing page 1 link</a></p>';
@@ -210,7 +210,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		$page2->doPublish();
 
 		// assert backlink to page 2 exists
-		$this->assertTrue($page1->BackLinkTracking()->containsIDs(array($page2->ID)), 'Assert backlink to page 2 exists');
+		$this->assertContains($page2->ID, $page1->BackLinkTracking()->column('ID'), 'Assert backlink to page 2 exists');
 
 		// update page1 url
 		$page1 = $this->objFromFixture('Page', 'page1');
@@ -237,7 +237,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		$page2->write();
 
 		// assert backlink to page 2 no longer exists
-		$this->assertFalse($page1->BackLinkTracking()->containsIDs(array($page2->ID)), 'Assert backlink to page 2 has been removed');
+		$this->assertNotContains($page2->ID, $page1->BackLinkTracking()->column('ID'), 'Assert backlink to page 2 has been removed');
 	}
 
 }
