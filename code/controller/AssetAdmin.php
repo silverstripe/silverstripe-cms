@@ -520,7 +520,7 @@ class AssetAdmin_DeleteBatchAction extends CMSBatchAction {
 		return _t('AssetAdmin_DeleteBatchAction.TITLE', 'Delete folders');
 	}
 
-	function run(DataObjectSet $records) {
+	function run(SS_List $records) {
 		$status = array(
 			'modified'=>array(),
 			'deleted'=>array()

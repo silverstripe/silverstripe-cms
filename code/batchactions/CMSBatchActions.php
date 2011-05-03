@@ -10,7 +10,7 @@ class CMSBatchAction_Publish extends CMSBatchAction {
 		return _t('CMSBatchActions.PUBLISH_PAGES', 'Publish');
 	}
 
-	function run(DataObjectSet $pages) {
+	function run(SS_List $pages) {
 		return $this->batchaction($pages, 'doPublish',
 			_t('CMSBatchActions.PUBLISHED_PAGES', 'Published %d pages, %d failures')
 		);
@@ -32,7 +32,7 @@ class CMSBatchAction_Unpublish extends CMSBatchAction {
 		return _t('CMSBatchActions.UNPUBLISH_PAGES', 'Un-publish');
 	}
 
-	function run(DataObjectSet $pages) {
+	function run(SS_List $pages) {
 		return $this->batchaction($pages, 'doUnpublish',
 			_t('CMSBatchActions.UNPUBLISHED_PAGES', 'Un-published %d pages')
 		);
@@ -50,7 +50,7 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 		return _t('CMSBatchActions.DELETE_DRAFT_PAGES', 'Delete from draft site');
 	}
 
-	function run(DataObjectSet $pages) {
+	function run(SS_List $pages) {
 		$status = array(
 			'modified'=>array(),
 			'deleted'=>array(),
@@ -98,7 +98,7 @@ class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 	}
 
 
-	function run(DataObjectSet $pages) {
+	function run(SS_List $pages) {
 		$status = array(
 			'modified'=>array(),
 			'deleted'=>array()
