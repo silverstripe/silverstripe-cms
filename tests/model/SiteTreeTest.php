@@ -188,9 +188,9 @@ class SiteTreeTest extends SapphireTest {
 		/* If we create a new SiteTree object with ID = 0 */
 		$obj = new SiteTree();
 		/* Then its children should be the top-level pages */
-		$stageChildren = $obj->stageChildren()->toDropDownMap('ID','Title');
-		$liveChildren = $obj->liveChildren()->toDropDownMap('ID','Title');
-		$allChildren = $obj->AllChildrenIncludingDeleted()->toDropDownMap('ID','Title');
+		$stageChildren = $obj->stageChildren()->map('ID','Title');
+		$liveChildren = $obj->liveChildren()->map('ID','Title');
+		$allChildren = $obj->AllChildrenIncludingDeleted()->map('ID','Title');
 		
 		$this->assertContains('Home', $stageChildren);
 		$this->assertContains('Products', $stageChildren);
