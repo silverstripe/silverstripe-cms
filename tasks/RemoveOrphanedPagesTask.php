@@ -325,7 +325,7 @@ in the other stage:<br />
 		$filter .= ($filter) ? ' AND ' : '';
 		$filter .= sprintf("\"%s\".\"ParentID\" != 0 AND \"Parents\".\"ID\" IS NULL", $class);
 		
-		$orphans = new DataObjectSet();
+		$orphans = new ArrayList();
 		foreach(array('Stage', 'Live') as $stage) {
 			$joinByStage = $join;
 			$table = $class;

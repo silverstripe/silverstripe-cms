@@ -28,7 +28,7 @@ class WidgetAreaEditor extends FormField {
 	
 	function AvailableWidgets() {
 		
-		$widgets= new DataObjectSet();
+		$widgets= new ArrayList();
 		
 		foreach($this->widgetClasses as $widgetClass) {
 			$classes = ClassInfo::subclassesFor($widgetClass);

@@ -22,6 +22,6 @@ class SSReportTest_FakeTest extends SS_Report implements TestOnly {
 		);
 	}
 	function sourceRecords($params, $sort, $limit) {
-		return new DataObjectSet();
+		return new ArrayList();
 	}
 }
