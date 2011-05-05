@@ -33,7 +33,7 @@ class BrokenLinksReport extends SS_Report {
 		if (!isset($_REQUEST['CheckSite']) || $params['CheckSite'] == 'Published') $ret = Versioned::get_by_stage('SiteTree', 'Live', "({$q}SiteTree{$q}.{$q}HasBrokenLink{$q} = 1 OR {$q}SiteTree{$q}.{$q}HasBrokenFile{$q} = 1)", $sort, $join, $limit);
 		else $ret = DataObject::get('SiteTree', "({$q}SiteTree{$q}.{$q}HasBrokenFile{$q} = 1 OR {$q}HasBrokenLink{$q} = 1)", $sort, $join, $limit);
 		
-		$returnSet = new DataObjectSet();
+		$returnSet = new ArrayList();
 		if ($ret) foreach($ret as $record) {
 			$reason = false;
 			$isRedirectorPage = in_array($record->ClassName, ClassInfo::subclassesFor('RedirectorPage'));

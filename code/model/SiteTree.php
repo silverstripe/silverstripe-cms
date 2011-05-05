@@ -1618,7 +1618,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if(is_callable('Subsite::disable_subsite_filter')) Subsite::disable_subsite_filter(true);
 		
 		// Content links
-        $items = new DataObjectSet();
+        $items = new ArrayList();
 
         // We merge all into a regular DataObjectSet, because DataList doesn't support merge
         if($contentLinks = $this->BackLinkTracking()) {

@@ -71,7 +71,7 @@ class ReportAdmin extends LeftAndMain {
 	 * @return DataObjectSet
 	 */
 	public function Reports() {
- 		$output = new DataObjectSet();
+ 		$output = new ArrayList();
 		foreach(SS_Report::get_reports('ReportAdmin') as $report) {
 			if($report->canView()) $output->push($report);
 		}

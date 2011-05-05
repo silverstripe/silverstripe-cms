@@ -314,7 +314,7 @@ class ContentController extends Controller {
 			}
 		}
 
-		return new DataObjectSet($visible);
+		return new ArrayList($visible);
 	}
 
 	public function Menu($level) {
