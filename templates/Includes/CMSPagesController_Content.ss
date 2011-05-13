@@ -20,9 +20,13 @@
 		</div>
 	</div>
 
-	<div class="cms-content-tools west">
+	<div class="cms-content-tools west cms-panel" data-expandOnClick="true">
+		
+		<h3 class="cms-panel-header">Filter</h3>
 	
-		$SearchForm
+		<div class="cms-panel-content">
+			$SearchForm
+		</div>
 		
 	</div>
 
