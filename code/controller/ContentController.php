@@ -120,6 +120,12 @@ class ContentController extends Controller {
 				return Security::permissionFailure($this, sprintf($message, Controller::join_links($link, "?stage=Live")));
 			}
 		}
+		
+		// Redirect to admin UI if user is logged in
+		if($this->URLSegment != 'Security' && Permission::check('CMS_ACCESS_CMSMain') && !$this->request->getVar('cms-preview-disabled')) {
+			$cmsController = singleton('CMSPageEditController');
+			return Director::redirect(Controller::join_links($cmsController->Link('show'), $this->dataRecord->ID, '?cms-preview-expanded=1'));
+		}
 
 		// Use theme from the site config
 		if(($config = SiteConfig::current_site_config()) && $config->Theme) {
