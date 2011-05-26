@@ -33,3 +33,5 @@ Object::add_extension('File', 'SiteTreeFileExtension');
 // TODO Remove once we can configure CMSMenu through static, nested configuration files
 CMSMenu::remove_menu_item('CMSPageEditController');
 CMSMenu::remove_menu_item('CMSPageSettingsController');
+CMSMenu::remove_menu_item('CMSPageHistoryController');
+CMSMenu::remove_menu_item('CMSPageReportsController');

@@ -35,10 +35,10 @@
 			$EditForm
 		</div>
 		<div id="cms-content-treeview">
-			...
+			<i>Not implemented yet</i>
 		</div>
 		<div id="cms-content-galleryview">
-			...
+			<i>Not implemented yet</i>
 		</div>
 	</div>
 	

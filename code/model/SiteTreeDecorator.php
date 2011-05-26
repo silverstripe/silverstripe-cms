@@ -7,10 +7,11 @@
 abstract class SiteTreeDecorator extends SiteTreeExtension {
 
 	public function __construct() {
-		user_error(
-			'SiteTreeDecorator is deprecated, please use SiteTreeExtension instead.',
-			E_USER_NOTICE
-		);
+		// TODO Re-enable before we release 3.0 beta, for now it "breaks" too many modules
+		// user_error(
+		// 			'SiteTreeDecorator is deprecated, please use SiteTreeExtension instead.',
+		// 			E_USER_NOTICE
+		// 		);
 		parent::__construct();
 	}
 

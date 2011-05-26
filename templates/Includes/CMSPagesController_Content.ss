@@ -34,14 +34,10 @@
 				<% include CMSPagesController_ContentToolbar %>
 			</div>
 			
-			<div class="cms-tree" data-url-tree="$Link(getsubtree)" data-url-savetreenode="$Link(savetreenode)">
+			<div class="cms-tree" data-url-tree="$Link(getsubtree)" data-url-savetreenode="$Link(savetreenode)" data-hints="$SiteTreeHints">
 				$SiteTreeAsUL
 			</div>
 			
-			<div class="cms-content-toolbar">
-				<% include CMSPagesController_ContentToolbar %>
-			</div>
-
 			<div class="ss-dialog cms-page-add-form-dialog" id="cms-page-add-form" title="<% _t('CMSMain.ChoosePageType', 'Choose a page type') %>">
 				$AddForm
 			</div>
@@ -49,11 +45,11 @@
 		</div>
 		
 		<div id="cms-content-listview">
-			...
+			<i>Not implemented yet</i>
 		</div>
 		
 		<div id="cms-content-galleryview">
-			...
+			<i>Not implemented yet</i>
 		</div>
 		
 	</div>
