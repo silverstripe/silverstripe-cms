@@ -445,8 +445,8 @@ HTML;
 		
 		$title = new Varchar("Title");
 		$content = new HTMLText("Content");
-		$username = Session::get('username');
-		$password = Session::get('password');
+		$username = Convert::raw2xml(Session::get('username'));
+		$password = Convert::raw2xml(Session::get('password'));
 		$title->setValue("Installation Successful");
 		global $project;
 		$tutorialOnly = ($project == 'tutorial') ? "<p>This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at <a href=\"http://doc.silverstripe.org/doku.php?id=tutorials\">our new tutorials</a>.</p>" : '';
@@ -474,8 +474,8 @@ HTML
 		$title = new Varchar("Title");
 		$content = new HTMLText("Content");
 		$tempcontent = '';
-		$username = Session::get('username');
-		$password = Session::get('password');
+		$username = Convert::raw2xml(Session::get('username'));
+		$password = Convert::raw2xml(Session::get('password'));
 
 		// We can't delete index.php as it might be necessary for URL routing without mod_rewrite.
 		// There's no safe way to detect usage of mod_rewrite across webservers,
