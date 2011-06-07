@@ -358,7 +358,7 @@ JS
 			return $record->ID;
 		} else if($this->isAjax()) {
 			$form = $this->getEditForm($record->ID);
-			return $form->formHtmlContent();
+			return $form->forTemplate();
 		} else {
 			return $this->redirect(Controller::join_links($this->Link('show'), $record->ID));
 		}
