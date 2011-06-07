@@ -13,8 +13,12 @@ class CMSPagesController extends CMSMain {
 	}
 	
 	function show($request) {
-		$c = new CMSPageEditController();
-		return $this->redirect(Controller::join_links($c->Link('show'), $request->param('ID')));
+		if($request->param('ID')) {
+			$c = new CMSPageEditController();
+			return $this->redirect(Controller::join_links($c->Link('show'), $request->param('ID')));
+		} else {
+			return parent::show($request);
+		}
 	}
 	
 }
