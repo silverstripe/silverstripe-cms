@@ -154,6 +154,7 @@ $lang['en_US']['CMSMain']['VIEWING'] = array(
 	PR_MEDIUM,
 	'Version number is a linked string, created is a relative time (e.g. 2 days ago), by a specific author'
 );
+$lang['en_US']['CMSMain']['SAVEDSITECONFIGURATION'] = 'Saved site configuration';
 $lang['en_US']['CMSMain_dialog.ss']['BUTTONNOTFOUND'] = 'Couldn\'t find the button name';
 $lang['en_US']['CMSMain_dialog.ss']['NOLINKED'] = 'Can\'t find window.linkedObject to send the button click back to the main window';
 $lang['en_US']['CMSMain_left.ss']['ADDEDNOTPUB'] = 'Added to the draft site and not published yet';
