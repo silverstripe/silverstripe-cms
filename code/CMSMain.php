@@ -377,7 +377,7 @@ JS;
 		$siteConfig = SiteConfig::current_site_config();
 		$form->saveInto($siteConfig);
 		$siteConfig->write();
-		FormResponse::status_message('Saved site configuration', "good");
+		FormResponse::status_message(_t('CMSMain.SAVEDSITECONFIGURATION', 'Saved site configuration'), "good");
 		FormResponse::add("$('Form_EditForm').resetElements();");
 
 		$title = Convert::raw2js($siteConfig->Title);
