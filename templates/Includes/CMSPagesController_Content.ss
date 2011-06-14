@@ -30,7 +30,7 @@
 		
 		<div id="cms-content-treeview">
 			
-			<div class="cms-content-toolbar">
+			<div class="cms-content-toolbar clearfix">
 				<% include CMSPagesController_ContentToolbar %>
 			</div>
 			
