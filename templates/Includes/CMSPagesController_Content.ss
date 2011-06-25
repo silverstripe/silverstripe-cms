@@ -28,6 +28,7 @@
 			$SearchForm
 		</div>
 		
+		
 	</div>
 
 	<div class="cms-content-fields center ui-widget-content">
