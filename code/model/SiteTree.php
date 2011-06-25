@@ -2412,13 +2412,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		} elseif($this->IsAddedToStage) {
 			$tag = "ins title=\"" . _t('SiteTree.ADDEDTODRAFT', 'Added to draft site') . "\"";
 		} elseif($this->IsModifiedOnStage) {
-			$tag = "span title=\"" . _t('SiteTree.MODIFIEDONDRAFT', 'Modified on draft site') . "\" class=\"modified\"";
+			$tag = "span title=\"" . _t('SiteTree.MODIFIEDONDRAFT', 'Modified on draft site') . "\" class=\"status modified\"";
 		} else {
 			$tag = '';
 		}
 
 		$text = Convert::raw2xml(str_replace(array("\n","\r"),"",$this->MenuTitle));
-		return ($tag) ? "<$tag>" . $text . "</" . strtok($tag,' ') . ">" : $text;
+		return ($tag) ? "<span class=\"jstree-pageicon\"></span>"."<$tag>" . $text . "</" . strtok($tag,' ') . ">" : "<span class=\"jstree-pageicon\"></span>". $text;
 	}
 
 	/**
