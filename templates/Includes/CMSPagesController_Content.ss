@@ -24,6 +24,7 @@
 	
 		$SearchForm
 		
+		
 	</div>
 
 	<div class="cms-content-form center ui-widget-content">
@@ -37,6 +38,18 @@
 			<div class="cms-tree" data-url-tree="$Link(getsubtree)" data-url-savetreenode="$Link(savetreenode)" data-hints="$SiteTreeHints">
 				$SiteTreeAsUL
 			</div>
+			
+			<!-- Empty template code used for duplicating batch tree action list -->
+			<div class="cms-tree-action-list" id="cmsTreeActionListTemplate">
+				<a href="" class="cms-tree-action-list-menu-trigger">Perform Action</a>
+				<ul class="cms-tree-action-list-batchactions">
+						<li class="unpublish"><a href="javascript:onClick=alert('Not implemented yet')">Unpublish</a></li>
+						<li class="add"><a href="javascript:onClick=alert('Not implemented yet')">Add page</a></li>
+						<li class="edit"><a href="javascript:onClick=alert('Not implemented yet')">Edit page</a></li>
+						<li class="delete"><a href="javascript:onClick=alert('Not implemented yet')">Move to trash</a></li>
+				</ul>
+			</div>
+			<!-- /end -->
 			
 			<div class="ss-dialog cms-page-add-form-dialog" id="cms-page-add-form" title="<% _t('CMSMain.ChoosePageType', 'Choose a page type') %>">
 				$AddForm
