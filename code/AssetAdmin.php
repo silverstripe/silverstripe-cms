@@ -118,9 +118,10 @@ JS
 		Requirements::css(CMS_DIR . "/css/cms_left.css");
 		Requirements::css(CMS_DIR . "/css/cms_right.css");
 		
-		if(isset($data['ID']) && $data['ID'] != 'root') $folder = DataObject::get_by_id("Folder", $data['ID']);
+		$id = (int) $this->request->param('ID');
+		if($id) $folder = DataObject::get_by_id("Folder", $id);
 		else $folder = singleton('Folder');
-		
+
 		return array( 'CanUpload' => $folder->canEdit());
 	}
 	
