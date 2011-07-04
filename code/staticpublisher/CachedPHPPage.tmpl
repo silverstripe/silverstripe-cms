@@ -3,7 +3,6 @@
 /**
  * This is a system-generated PHP script that performs header management for the statically cached content given below.
  */
-
 define('MAX_AGE', '**MAX_AGE**');
 define('LAST_MODIFIED', '**LAST_MODIFIED**');
 
@@ -23,6 +22,6 @@ if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
 		exit;
 	}
 }
-
+header('Content-Type: **CONTENT_TYPE_HEADER**');
 ?>
 **CONTENT**

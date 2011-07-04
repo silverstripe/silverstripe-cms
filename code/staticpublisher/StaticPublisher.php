@@ -63,13 +63,8 @@ abstract class StaticPublisher extends DataExtension {
 		
 		if($this->owner->hasMethod('pagesAffectedByChanges')) {
 			$urls = $this->owner->pagesAffectedByChanges($original);
-		} else {
-			$pages = Versioned::get_by_stage('SiteTree', 'Live', '', '', '', 10);
-			if($pages) {
-				foreach($pages as $page) {
-					$urls[] = $page->AbsoluteLink();
-				}
-			}
+		} elseif( $this->owner->isPublished() ) {
+            $urls[] = $original->AbsoluteLink();
 		}
 		
 		// Note: Similiar to RebuildStaticCacheTask->rebuildCache()

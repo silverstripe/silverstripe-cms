@@ -138,146 +138,219 @@ class FilesystemPublisher extends StaticPublisher {
 		}
 	}
 	
-	function publishPages($urls) { 
-		// Do we need to map these?
-		// Detect a numerically indexed arrays
-		if (is_numeric(join('', array_keys($urls)))) $urls = $this->urlsToPaths($urls);
+	/**
+	 *
+	 * @param array $urls 
+	 */
+	public function publishPages($urls) { 
 		
-		// This can be quite memory hungry and time-consuming
-		// @todo - Make a more memory efficient publisher
 		increase_time_limit_to();
 		increase_memory_limit_to();
 		
-		// Set the appropriate theme for this publication batch.
-		// This may have been set explicitly via StaticPublisher::static_publisher_theme,
-		// or we can use the last non-null theme.
-		if(!StaticPublisher::static_publisher_theme())
-			SSViewer::set_theme(SSViewer::current_custom_theme());
-		else
-			SSViewer::set_theme(StaticPublisher::static_publisher_theme());
+		if( !StaticPublisher::static_publisher_theme() ) {
+			SSViewer::set_theme( SSViewer::current_custom_theme() );
+		} else {
+			SSViewer::set_theme( StaticPublisher::static_publisher_theme() );
+		}
 			
 		$currentBaseURL = Director::baseURL();
-		if(self::$static_base_url) Director::setBaseURL(self::$static_base_url);
-		if($this->fileExtension == 'php') SSViewer::setOption('rewriteHashlinks', 'php'); 
-		if(StaticPublisher::echo_progress()) echo $this->class.": Publishing to " . self::$static_base_url . "\n";		
-		$files = array();
-		$i = 0;
-		$totalURLs = sizeof($urls);
-
+		
+		if( self::$static_base_url ) {
+			Director::setBaseURL( self::$static_base_url );
+		}
+		
+		if( $this->fileExtension == 'php' ) {
+			SSViewer::setOption( 'rewriteHashlinks', 'php' );
+		}
+		
+		if( StaticPublisher::echo_progress() ) {
+			echo $this->class.": Publishing to " . self::$static_base_url . PHP_EOL;
+		}
+		
+		// Detect a numerically indexed arrays
+		if ( is_numeric( join( '', array_keys( $urls ) ) ) ) {
+			$urls = $this->urlsToPaths( $urls );
+		}
+		
+		$totalURLs = count( $urls );
+		
+		if( self::$static_base_url ) {
+			Director::setBaseURL( self::$static_base_url );
+		}
+		
+		$pagesProcessed = 0;
 		foreach($urls as $url => $path) {
-			
-			if(self::$static_base_url) Director::setBaseURL(self::$static_base_url);
-			$i++;
-
-			if($url && !is_string($url)) {
-				user_error("Bad url:" . var_export($url,true), E_USER_WARNING);
-				continue;
-			}
-			
-			if(StaticPublisher::echo_progress()) {
-				echo " * Publishing page $i/$totalURLs: $url\n";
+			if( StaticPublisher::echo_progress() ) {
+				echo ' * Publishing page ' . ++$pagesProcessed . '/' . $totalURLs . ': ' . $url . PHP_EOL ;
 				flush();
 			}
-
-			Requirements::clear();
+			$this->generateAndSaveStaticCacheFile( $url, $path );
 			
-			if($url == "") $url = "/";
-			if(Director::is_relative_url($url)) $url = Director::absoluteURL($url);
-			$response = Director::test(str_replace('+', ' ', $url));
-			
-			Requirements::clear();
-			
-			
-			
-			singleton('DataObject')->flushCache();
-
-			// Generate file content			
-			// PHP file caching will generate a simple script from a template
-			if($this->fileExtension == 'php') {
-				if(is_object($response)) {
-					if($response->getStatusCode() == '301' || $response->getStatusCode() == '302') {
-						$content = $this->generatePHPCacheRedirection($response->getHeader('Location'));
-					} else {
-						$content = $this->generatePHPCacheFile($response->getBody(), HTTP::get_cache_age(), date('Y-m-d H:i:s'));
-					}
-				} else {
-					$content = $this->generatePHPCacheFile($response . '', HTTP::get_cache_age(), date('Y-m-d H:i:s'));
-				}
-				
-			// HTML file caching generally just creates a simple file
-			} else {
-				if(is_object($response)) {
-					if($response->getStatusCode() == '301' || $response->getStatusCode() == '302') {
-						$absoluteURL = Director::absoluteURL($response->getHeader('Location'));
-						$content = "<meta http-equiv=\"refresh\" content=\"2; URL=$absoluteURL\">";
-					} else {
-						$content = $response->getBody();
-					}
-				} else {
-					$content = $response . '';
-				}
-			}
-			
-			$files[] = array(
-				'Content' => $content,
-				'Folder' => dirname($path).'/',
-				'Filename' => basename($path),
-			);
-			
-			// Add externals
-			/*
-			$externals = $this->externalReferencesFor($content);
-			if($externals) foreach($externals as $external) {
-				// Skip absolute URLs
-				if(preg_match('/^[a-zA-Z]+:\/\//', $external)) continue;
-				// Drop querystring parameters
-				$external = strtok($external, '?');
-				
-				if(file_exists("../" . $external)) {
-					// Break into folder and filename
-					if(preg_match('/^(.*\/)([^\/]+)$/', $external, $matches)) {
-						$files[$external] = array(
-							"Copy" => "../$external",
-							"Folder" => $matches[1],
-							"Filename" => $matches[2],
-						);
-					
-					} else {
-						user_error("Can't parse external: $external", E_USER_WARNING);
-					}
-				} else {
-					$missingFiles[$external] = true;
-				}
-			}*/
+		}
+	}
+	
+	/**
+     * Does the meat of fetching the page with Director::test() and also saves
+     * the fetched content to disk.
+	 *
+	 * @param string $url
+	 * @param string $path 
+	 */
+	protected function generateAndSaveStaticCacheFile( $url, $path ) {
+		
+		$url = $this->URLSanitation( $url );
+		
+		if( $url === false ) {
+			continue;
 		}
 
-		if(self::$static_base_url) Director::setBaseURL($currentBaseURL); 
-		if($this->fileExtension == 'php') SSViewer::setOption('rewriteHashlinks', true); 
+		Requirements::clear();
+		$response = Director::test( str_replace( '+', ' ', $url ) );
+		Requirements::clear();
 
-		$base = BASE_PATH . "/$this->destFolder";
-		foreach($files as $file) {
-			Filesystem::makeFolder("$base/$file[Folder]");
-			
-			if(isset($file['Content'])) {
-				$fh = fopen("$base/$file[Folder]$file[Filename]", "w");
-				fwrite($fh, $file['Content']);
-				fclose($fh);
-			} else if(isset($file['Copy'])) {
-				copy($file['Copy'], "$base/$file[Folder]$file[Filename]");
+		singleton( 'DataObject' )->flushCache();
+
+		$content = $this->getContent( $this->fileExtension, $response );
+
+		if( self::$static_base_url ) {
+			Director::setBaseURL($currentBaseURL); 
+		}
+
+		if( $this->fileExtension == 'php' ) {
+			SSViewer::setOption( 'rewriteHashlinks', true );
+		}
+
+		$this->writeContentToCacheFile( $this->destFolder, dirname($path), basename($path), $content );
+	}
+	
+	/**
+	 * Generate file content			
+	 * PHP file caching will generate a simple script from a template
+	 *
+	 * @param string $fileExtension
+	 * @param SS_HTTPResponse||string $response
+	 * @return string 
+	 */
+	protected function getContent( $fileExtension, $response ) {
+		if($this->fileExtension == 'php') {
+			return $this->getContentForPHPCacheFile( $response );
+		} else {
+			return $this->getContentForHTMLCacheFile( $response );
+		} 
+	}
+	
+	/**
+	 * Returns content meant for putting in a dynamic PHP cache file
+	 *
+	 * @param SS_HTTPResponse||string $response
+	 * @return string 
+	 */
+	protected function getContentForPHPCacheFile( $response ) {
+		if( !is_object( $response ) ) {
+			return $this->generatePHPCacheFile( $response . '', HTTP::get_cache_age(), date( 'Y-m-d H:i:s' ) );
+		}
+		if( in_array( $response->getStatusCode(), array( 301, 302 ) ) ) {
+			return $this->generatePHPCacheRedirection( $response->getHeader( 'Location' ) );
+		} else {
+			return $this->generatePHPCacheFile( $response->getBody(), HTTP::get_cache_age(), date( 'Y-m-d H:i:s' ), $response->getHeader('Content-Type') );
+		}
+	}
+	
+	/**
+	 * Returns content meant for putting in a non-dynamic cache file
+	 *
+	 * @param SS_HTTPResponse||string $response
+	 * @return string 
+	 */
+	protected function getContentForHTMLCacheFile( $response ) {
+		if( !is_object( $response ) ) {
+			return $response . '';
+		}
+		
+		if( in_array( $response->getStatusCode(), array( 301, 302 ) ) ) {
+			$absoluteURL = Director::absoluteURL( $response->getHeader( 'Location' ) );
+			return "<meta http-equiv=\"refresh\" content=\"2; URL=$absoluteURL\">";
+		} else {
+			return $response->getBody();
+		}
+	}
+
+	/**
+	 * Writes a file to the disk with content in an atomic behaviour
+	 * 
+	 * @param string $cacheFolder - the cachefolder, e.g: 'cache'
+	 * @param string $folder - the folder inside the $cacheFolder
+	 * @param type $filename - the cachefile's name
+	 * @param type $content - the content of the file
+	 * @return void
+	 */
+	protected function writeContentToCacheFile( $cacheFolder, $folder, $filename,  $content = '' ) {
+		
+		if( $folder == '.' ) {
+			$folder = '';
+		}
+        
+        if( $folder ) {
+            $folder .= '/';
+        }
+		
+		$fullfilename = BASE_PATH . '/' . $cacheFolder . '/' . $folder . $filename;
+		
+		Filesystem::makeFolder( dirname( $fullfilename ) );
+		if( !$content ) {
+			return;
+		}
+		
+		$fh = fopen( $fullfilename , "w" );
+		
+		if( flock( $fh, LOCK_EX ) ) {
+			fwrite( $fh, $content );
+			flock( $fh, LOCK_UN );
+		} else {
+			if( StaticPublisher::echo_progress() ) {
+				echo PHP_EOL.' *** Couldn\'t get an exclusive file lock on ' . $fullfilename . PHP_EOL . PHP_EOL;
 			}
 		}
+		
+		fclose( $fh );
+	}
+	
+	/**
+	 * Sanitizes the url so that a Director::test can understand it
+	 *
+	 * @param string $url
+	 * @return false || string
+	 */
+	protected function URLSanitation( $url ) {
+		if( $url == "" ) {
+			$url = "/";
+		}
+        
+		if( $url && !is_string( $url ) ) {
+			if( StaticPublisher::echo_progress() ) {
+				echo " * Bad url: " . var_export( $url, true ) . PHP_EOL . '    - Skipping it'.PHP_EOL;
+			}
+			return false;
+		}
+
+		if( Director::is_relative_url( $url ) ) {
+			$url = Director::absoluteURL( $url );
+		}
+		return $url;
 	}
 	
 	/**
 	 * Generate the templated content for a PHP script that can serve up the given piece of content with the given age and expiry
 	 */
-	protected function generatePHPCacheFile($content, $age, $lastModified) {
-		$template = file_get_contents(BASE_PATH . '/cms/code/staticpublisher/CachedPHPPage.tmpl');
+	protected function generatePHPCacheFile($content, $age, $lastModified, $mimeType = 'text/html; charset="utf-8"' ) {
+		$template = file_get_contents( BASE_PATH . '/cms/code/staticpublisher/CachedPHPPage.tmpl' );
 		return str_replace(
-				array('**MAX_AGE**', '**LAST_MODIFIED**', '**CONTENT**'),
-				array((int)$age, $lastModified, $content),
-				$template);
+			array( '**MAX_AGE**', '**LAST_MODIFIED**', '**CONTENT**', '**CONTENT_TYPE_HEADER**' ),
+			array((int)$age, $lastModified, $content, $mimeType ),
+			$template
+		);
 	}
+	
 	/**
 	 * Generate the templated content for a PHP script that can serve up a 301 redirect to the given destionation
 	 */
@@ -319,5 +392,3 @@ class FilesystemPublisher extends StaticPublisher {
 	}
 	
 }
-
-?>
