@@ -21,4 +21,13 @@ class CMSPagesController extends CMSMain {
 		}
 	}
 	
+	function Link($action = null) {
+		// Special case: All show links should redirect to the page edit interface instead (mostly from tree nodes)
+		if(preg_match('/^show/', $action)) {
+			return singleton('CMSPageEditController')->Link($action);
+		} else {
+			return parent::Link($action);
+		}
+	}
+	
 }
