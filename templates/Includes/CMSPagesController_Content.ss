@@ -1,4 +1,4 @@
-<div class="cms-content center ss-tabset" data-layout="{type: 'border'}">
+<div class="cms-content center ss-tabset $BaseCSSClasses" data-layout="{type: 'border'}">
 
 	<div class="cms-content-header north">
 		<div>
@@ -30,7 +30,7 @@
 		
 	</div>
 
-	<div class="cms-content-form center ui-widget-content">
+	<div class="cms-content-fields center ui-widget-content">
 		
 		<div id="cms-content-treeview">
 			
