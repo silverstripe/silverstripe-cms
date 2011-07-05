@@ -1,4 +1,4 @@
-<div class="cms-content center ss-tabset" data-layout="{type: 'border'}">
+<div class="cms-content center ss-tabset $BaseCSSClasses" data-layout="{type: 'border'}">
 
 	<div class="cms-content-header north">
 		<div>
@@ -35,7 +35,7 @@
 		
 	</div>
 
-	<div class="cms-content-form center">
+	<div class="cms-content-fields center">
 		<div id="cms-content-listview">
 			$EditForm
 		</div>
