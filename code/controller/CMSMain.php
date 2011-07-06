@@ -497,6 +497,19 @@ JS;
 
 		return $form;
 	}
+	
+	public function currentPageID() {
+		$id = parent::currentPageID();
+		
+		// Fall back to homepage record
+		if(!$id) {
+			$homepageSegment = RootURLController::get_homepage_link();
+			$homepageRecord = DataObject::get_one('SiteTree', sprintf('"URLSegment" = \'%s\'', $homepageSegment));
+			if($homepageRecord) $id = $homepageRecord->ID;
+		}
+		
+		return $id;
+	}
 
 	//------------------------------------------------------------------------------------------//
 	// Data saving handlers
