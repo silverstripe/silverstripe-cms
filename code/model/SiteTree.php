@@ -1987,7 +1987,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			// "unpublish"
 			$unpublish = FormAction::create('unpublish', _t('SiteTree.BUTTONUNPUBLISH', 'Unpublish'), 'delete');
 			$unpublish->describe(_t('SiteTree.BUTTONUNPUBLISHDESC', 'Remove this page from the published site'));
-			$unpublish->addExtraClass('delete');
+			$unpublish->addExtraClass('unpublish');
 			$unpublish->addExtraClass('ss-ui-action-destructive');
 			$actions->push($unpublish);
 		}
@@ -2025,7 +2025,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				}
 			
 				// "save"
-				$actions->push(new FormAction('save',_t('CMSMain.SAVE','Save')));
+				$actions->push($saveDraftAction = new FormAction('save',_t('CMSMain.SAVE','Save Draft')));
+				$saveDraftAction->addExtraClass('save-draft');
 			}
 		}
 
