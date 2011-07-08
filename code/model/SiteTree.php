@@ -1987,7 +1987,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			// "unpublish"
 			$unpublish = FormAction::create('unpublish', _t('SiteTree.BUTTONUNPUBLISH', 'Unpublish'), 'delete');
 			$unpublish->describe(_t('SiteTree.BUTTONUNPUBLISHDESC', 'Remove this page from the published site'));
-			$unpublish->addExtraClass('delete');
+			$unpublish->addExtraClass('unpublish');
 			$unpublish->addExtraClass('ss-ui-action-destructive');
 			$actions->push($unpublish);
 		}
@@ -2025,7 +2025,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				}
 			
 				// "save"
-				$actions->push(new FormAction('save',_t('CMSMain.SAVE','Save')));
+				$actions->push($saveDraftAction = new FormAction('save',_t('CMSMain.SAVE','Save Draft')));
+				$saveDraftAction->addExtraClass('save-draft');
 			}
 		}
 
@@ -2411,13 +2412,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		} elseif($this->IsAddedToStage) {
 			$tag = "ins title=\"" . _t('SiteTree.ADDEDTODRAFT', 'Added to draft site') . "\"";
 		} elseif($this->IsModifiedOnStage) {
-			$tag = "span title=\"" . _t('SiteTree.MODIFIEDONDRAFT', 'Modified on draft site') . "\" class=\"modified\"";
+			$tag = "span title=\"" . _t('SiteTree.MODIFIEDONDRAFT', 'Modified on draft site') . "\" class=\"status modified\"";
 		} else {
 			$tag = '';
 		}
 
 		$text = Convert::raw2xml(str_replace(array("\n","\r"),"",$this->MenuTitle));
-		return ($tag) ? "<$tag>" . $text . "</" . strtok($tag,' ') . ">" : $text;
+		return ($tag) ? "<span class=\"jstree-pageicon\"></span>"."<$tag>" . $text . "</" . strtok($tag,' ') . ">" : "<span class=\"jstree-pageicon\"></span>". $text;
 	}
 
 	/**

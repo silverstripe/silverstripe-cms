@@ -345,7 +345,7 @@ JS;
 		
 		$this->response->addHeader('X-Status', _t('LeftAndMain.SAVEDUP'));
 	
-		return $form->formHtmlContent();
+		return $form->forTemplate();
 	}
 	/**
 	 * Get a database record to be managed by the CMS
@@ -438,14 +438,6 @@ JS;
 				$actions = $record->getCMSActions();
 			}
 			
-			// Add a default or custom validator.
-			// @todo Currently the default Validator.js implementation
-			//  adds javascript to the document body, meaning it won't
-			//  be included properly if the associated fields are loaded
-			//  through ajax. This means only serverside validation
-			//  will kick in for pages+validation loaded through ajax.
-			//  This will be solved by using less obtrusive javascript validation
-			//  in the future, see http://open.silverstripe.com/ticket/2915 and http://open.silverstripe.com/ticket/3386
 			if($record->hasMethod('getCMSValidator')) {
 				$validator = $record->getCMSValidator();
 			} else {
@@ -464,7 +456,7 @@ JS;
 			$form->addExtraClass('cms-edit-form');
 			$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 			// TODO Can't merge $FormAttributes in template at the moment
-			$form->addExtraClass('cms-content center ss-tabset');
+			$form->addExtraClass('cms-content center ss-tabset ' . $this->BaseCSSClasses());
 			if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 
 			if(!$record->canEdit() || $record->IsDeletedFromStage) {
@@ -504,6 +496,19 @@ JS;
 		$this->extend('updateEditForm', $form);
 
 		return $form;
+	}
+	
+	public function currentPageID() {
+		$id = parent::currentPageID();
+		
+		// Fall back to homepage record
+		if(!$id) {
+			$homepageSegment = RootURLController::get_homepage_link();
+			$homepageRecord = DataObject::get_one('SiteTree', sprintf('"URLSegment" = \'%s\'', $homepageSegment));
+			if($homepageRecord) $id = $homepageRecord->ID;
+		}
+		
+		return $id;
 	}
 
 	//------------------------------------------------------------------------------------------//
@@ -578,7 +583,7 @@ JS;
 			$form = $this->getEditForm($record->ID);
 		}
 		
-		return $form->formHtmlContent();
+		return $form->forTemplate();
 	}
 
 
@@ -615,7 +620,7 @@ JS;
 			return $record->ID;
 		} else if(Director::is_ajax()) {
 			$form = $this->getEditForm($record->ID);
-			return $form->formHtmlContent();
+			return $form->forTemplate();
 		} else {
 			return $this->redirect(Controller::join_links($this->Link('show'), $record->ID));
 		}
@@ -757,7 +762,7 @@ JS;
 		
 		$form = $this->getEditForm($record->ID);
 		
-		return $form->formHtmlContent();
+		return $form->forTemplate();
 	}
 	
 	/**
@@ -791,7 +796,7 @@ JS;
 				'Live', 
 				"\"SiteTree_Live\".\"ID\" = $recordID"
 			);
-			return ($liveRecord) ? $form->formHtmlContent() : "";
+			return ($liveRecord) ? $form->forTemplate() : "";
 		} else {
 			$this->redirectBack();
 		}
@@ -988,7 +993,7 @@ JS;
 		
 		$form = $this->getEditForm($record->ID);
 		
-		return $form->formHtmlContent();
+		return $form->forTemplate();
 	}
 	
 	function publish($data, $form) {
@@ -1013,7 +1018,7 @@ JS;
 		// Reload form, data and actions might have changed
 		$form = $this->getEditForm($record->ID);
 		
-		return $form->formHtmlContent();
+		return $form->forTemplate();
 	}
 
 	function performRollback($id, $version) {
@@ -1187,7 +1192,7 @@ JS;
 			}
 
 			if($this->isAjax()) {
-				return $form->formHtmlContent();
+				return $form->forTemplate();
 			} else {
 				$templateData = $this->customise(array(
 					"EditForm" => $form
@@ -1426,7 +1431,7 @@ JS;
 		// Reload form, data and actions might have changed
 		$form = $this->getEditForm($restoredPage->ID);
 		
-		return $form->formHtmlContent();
+		return $form->forTemplate();
 	}
 
 	function duplicate($request) {
@@ -1450,7 +1455,7 @@ JS;
 			// Reload form, data and actions might have changed
 			$form = $this->getEditForm($newPage->ID);
 			
-			return $form->formHtmlContent();
+			return $form->forTemplate();
 		} else {
 			user_error("CMSMain::duplicate() Bad ID: '$id'", E_USER_WARNING);
 		}
@@ -1471,7 +1476,7 @@ JS;
 			// Reload form, data and actions might have changed
 			$form = $this->getEditForm($newPage->ID);
 			
-			return $form->formHtmlContent();
+			return $form->forTemplate();
 		} else {
 			user_error("CMSMain::duplicate() Bad ID: '$id'", E_USER_WARNING);
 		}
