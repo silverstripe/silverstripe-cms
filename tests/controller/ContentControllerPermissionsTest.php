@@ -3,7 +3,7 @@
  * @package cms
  * @subpackage tests
  */
-class ContentControllerPermissionTest extends FunctionalTest {
+class ContentControllerPermissionsTest extends FunctionalTest {
 	
 	protected $usesDatabase = true;
 	
@@ -29,9 +29,7 @@ class ContentControllerPermissionTest extends FunctionalTest {
 		$this->logInWithPermission('CMS_ACCESS_CMSMain');
 		
 		$response = $this->get('/testpage/?stage=Stage');
-		$this->assertEquals($response->getStatusCode(), 302, 'Redirects to page view in CMS when logged in for draft stage');
-		$this->assertNotContains('Security/login', $response->getHeader('Location'));
-		$this->assertContains('admin/page/edit/show/' . $page->ID, $response->getHeader('Location'));
+		$this->assertEquals($response->getStatusCode(), 200, 'Doesnt redirect to login, but shows page for authenticated user');
 	}
 	
 	
