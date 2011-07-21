@@ -3,6 +3,7 @@
  * Utility class representing links to different views of a record
  * for CMS authors, usually for {@link SiteTree} objects with "stage" and "live" links.
  * Useful both in the CMS and alongside the page template (for logged in authors).
+ * The class can be used for any {@link DataObject} subclass implementing the {@link CMSPreviewable} interface.
  * 
  * New item types can be defined by extending the {@link SilverStripeNavigatorItem} class,
  * for example the "cmsworkflow" module defines a new "future state" item with a date selector
@@ -11,7 +12,7 @@
  * @package cms
  * @subpackage content
  */
-class SilverStripeNavigator {
+class SilverStripeNavigator extends ViewableData {
 	
 	/**
 	 * @var DataObject
@@ -22,6 +23,10 @@ class SilverStripeNavigator {
 	 * @param DataObject
 	 */
 	function __construct($record) {
+		if(!in_array('CMSPreviewable', class_implements($record))) {
+			throw new InvalidArgumentException('SilverStripeNavigator: Record of type %s doesn\'t implement CMSPreviewable', get_class($record));
+		}
+		
 		$this->record = $record;
 	}
 
@@ -29,7 +34,7 @@ class SilverStripeNavigator {
 	 * @return DataObjectSet of SilverStripeNavigatorItem
 	 */
 	function getItems() {
-		$items = '';
+		$items = array();
 	
 		$classes = ClassInfo::subclassesFor('SilverStripeNavigatorItem');
 		array_shift($classes);
@@ -53,7 +58,7 @@ class SilverStripeNavigator {
 			$items[$priority] = $item;
 		}
 		ksort($items);
-		
+
 		return new DataObjectSet($items);
 	}
 	
@@ -65,7 +70,7 @@ class SilverStripeNavigator {
 	}
 
 	/**
-	 * @param SiteTree $record
+	 * @param DataObject $record
 	 * @return Array template data
 	 */
 	static function get_for_record($record) {
@@ -89,7 +94,8 @@ class SilverStripeNavigator {
 
 /**
  * Navigator items are links that appear in the $SilverStripeNavigator bar.
- * To add an item, extends this class.
+ * To add an item, extend this class - it will be automatically picked up.
+ * When instanciating items manually, please ensure to call {@link canView()}.
  * 
  * @package cms
  * @subpackage content
@@ -111,9 +117,17 @@ class SilverStripeNavigatorItem extends ViewableData {
 	/**
 	 * @return String HTML, mostly a link - but can be more complex as well.
 	 * For example, a "future state" item might show a date selector.
-	 * Hence there's no getLink() method.
 	 */
 	function getHTML() {}
+	
+	/**
+	 * Optional link to a specific view of this record.
+	 * Not all items are simple links, please use {@link getHTML()}
+	 * to represent an item in markup unless you know what you're doing.
+	 * 
+	 * @return String
+	 */
+	function getLink() {}
 	
 	/**
 	 * @return String
@@ -135,7 +149,18 @@ class SilverStripeNavigatorItem extends ViewableData {
 	}
 	
 	/**
-	 * Filters items based on member permissions or other criteria.
+	 * As items might convey different record states like a "stage" or "live" table,
+	 * an item can be active (showing the record in this state).
+	 * 
+	 * @return boolean
+	 */
+	function isActive() {
+		return false;
+	}
+	
+	/**
+	 * Filters items based on member permissions or other criteria,
+	 * such as if a state is generally available for the current record.
 	 * 
 	 * @param Member
 	 * @return Boolean
@@ -153,20 +178,24 @@ class SilverStripeNavigatorItem_CMSLink extends SilverStripeNavigatorItem {
 	static $priority = 10;	
 	
 	function getHTML() {
-		if(is_a(Controller::curr(), 'CMSMain')) {
-			return '<a class="current">CMS</a>';
-		} else {
-			$cmsLink = 'admin/show/' . $this->record->ID;
-			$cmsLink = "<a href=\"$cmsLink\">". _t('ContentController.CMS', 'CMS') ."</a>";
-	
-			return $cmsLink;
-		}
+		return sprintf(
+			'<a href="%s">%s</a>',
+			$this->record->CMSEditLink(),
+			_t('ContentController.CMS', 'CMS')
+		);
 	}
 	
 	function getLink() {
-		if(is_a(Controller::curr(), 'CMSMain')) {
-			return Controller::curr()->AbsoluteLink('show') . $this->record->ID;
-		}
+		return $this->record->CMSEditLink();
+	}
+	
+	function isActive() {
+		return (Controller::curr() instanceof CMSMain);
+	}
+	
+	function canView() {
+		// Don't show in CMS
+		return !(Controller::curr() instanceof CMSMain);
 	}
 
 }
@@ -179,27 +208,39 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
 	static $priority = 20;
 
 	function getHTML() {
-		if(Versioned::current_stage() == 'Stage' && !(ClassInfo::exists('SiteTreeFutureState') && SiteTreeFutureState::get_future_datetime())) {
-			return "<a class=\"current\">". _t('ContentController.DRAFTSITE', 'Draft Site') ."</a>";
-		} else {
-			$draftPage = Versioned::get_one_by_stage('SiteTree', 'Stage', '"SiteTree"."ID" = ' . $this->record->ID);
-			if($draftPage) {
-				$this->recordLink = Controller::join_links($draftPage->AbsoluteLink(), "?stage=Stage");
-				return "<a href=\"$this->recordLink\">". _t('ContentController.DRAFTSITE', 'Draft Site') ."</a>";
-			}
+		$draftPage = $this->getDraftPage();
+		if($draftPage) {
+			$this->recordLink = Controller::join_links($draftPage->AbsoluteLink(), "?stage=Stage");
+			return "<a href=\"$this->recordLink\">". _t('ContentController.DRAFTSITE', 'Draft Site') ."</a>";
 		}
 	}
 	
 	function getMessage() {
-		if(Versioned::current_stage() == 'Stage') {
-			return "<div id=\"SilverStripeNavigatorMessage\" title=\"". _t('ContentControl.NOTEWONTBESHOWN', 'Note: this message will not be shown to your visitors') ."\">".  _t('ContentController.DRAFTSITE', 'Draft Site') ."</div>";
-		}
+		return "<div id=\"SilverStripeNavigatorMessage\" title=\"". _t('ContentControl.NOTEWONTBESHOWN', 'Note: this message will not be shown to your visitors') ."\">".  _t('ContentController.DRAFTSITE', 'Draft Site') ."</div>";
 	}
 	
 	function getLink() {
-		if(Versioned::current_stage() == 'Stage') {
-			return Controller::join_links($this->record->AbsoluteLink(), '?stage=Stage');
-		}
+		return Controller::join_links($this->record->AbsoluteLink(), '?stage=Stage');
+	}
+	
+	function canView() {
+		return ($this->record->hasExtension('Versioned') && $this->getDraftPage());
+	}
+	
+	function isActive() {
+		return (
+			Versioned::current_stage() == 'Stage' 
+			&& !(ClassInfo::exists('SiteTreeFutureState') && SiteTreeFutureState::get_future_datetime())
+		);
+	}
+	
+	protected function getDraftPage() {
+		$baseTable = ClassInfo::baseDataClass($this->record->class);
+		return Versioned::get_one_by_stage(
+			$baseTable, 
+			'Stage', 
+			sprintf('"%s"."ID" = %d', $baseTable, $this->record->ID)
+		);
 	}
 }
 
@@ -211,27 +252,36 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem {
 	static $priority = 30;
 
 	function getHTML() {
-		if(Versioned::current_stage() == 'Live') {
-			return "<a class=\"current\">". _t('ContentController.PUBLISHEDSITE', 'Published Site') ."</a>";
-		} else {
-			$livePage = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree"."ID" = ' . $this->record->ID);
-			if($livePage) {
-				$this->recordLink = Controller::join_links($livePage->AbsoluteLink(), "?stage=Live");
-				return "<a href=\"$this->recordLink\">". _t('ContentController.PUBLISHEDSITE', 'Published Site') ."</a>";
-			}
+		$livePage = $this->getLivePage();
+		if($livePage) {
+			$this->recordLink = Controller::join_links($livePage->AbsoluteLink(), "?stage=Live");
+			return "<a href=\"$this->recordLink\">". _t('ContentController.PUBLISHEDSITE', 'Published Site') ."</a>";
 		}
 	}
 	
 	function getMessage() {
-		if(Versioned::current_stage() == 'Live') {
-			return "<div id=\"SilverStripeNavigatorMessage\" title=\"". _t('ContentControl.NOTEWONTBESHOWN', 'Note: this message will not be shown to your visitors') ."\">".  _t('ContentController.PUBLISHEDSITE', 'Published Site') ."</div>";
-		}
+		return "<div id=\"SilverStripeNavigatorMessage\" title=\"". _t('ContentControl.NOTEWONTBESHOWN', 'Note: this message will not be shown to your visitors') ."\">".  _t('ContentController.PUBLISHEDSITE', 'Published Site') ."</div>";
 	}
 	
 	function getLink() {
-		if(Versioned::current_stage() == 'Live') {
-			return Controller::join_links($this->record->AbsoluteLink(), '?stage=Live');
-		}
+		return Controller::join_links($this->record->AbsoluteLink(), '?stage=Live');
+	}
+	
+	function canView() {
+		return ($this->record->hasExtension('Versioned') && $this->getLivePage());
+	}
+	
+	function isActive() {
+		return (!Versioned::current_stage() || Versioned::current_stage() == 'Live');
+	}
+	
+	protected function getLivePage() {
+		$baseTable = ClassInfo::baseDataClass($this->record->class);
+		return Versioned::get_one_by_stage(
+			$baseTable, 
+			'Live', 
+			sprintf('"%s"."ID" = %d', $baseTable, $this->record->ID)
+		);
 	}
 }
 
@@ -243,34 +293,51 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 	static $priority = 40;
 
 	function getHTML() {
-		if(Versioned::current_archived_date()) {
-			return "<a class=\"current\">". _t('ContentController.ARCHIVEDSITE', 'Archived Site') ."</a>";
-		} else {
-			// Display the archive link if the page currently displayed in the CMS is other version than live and draft
-			$currentDraft = Versioned::get_one_by_stage('SiteTree', 'Draft', '"SiteTree"."ID" = ' . $this->record->ID);
-			$currentLive = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree"."ID" = ' . $this->record->ID);
-			if(
-				(!$currentDraft || ($currentDraft && $this->record->Version != $currentDraft->Version)) 
-				&& (!$currentLive || ($currentLive && $this->record->Version != $currentLive->Version))
-			) {
-				$this->recordLink = $this->record->AbsoluteLink();
-				return "<a href=\"$this->recordLink?archiveDate={$this->record->LastEdited}\" target=\"_blank\">". _t('ContentController.ARCHIVEDSITE', 'Archived Site') ."</a>";
-			}
-		}
+			$this->recordLink = $this->record->AbsoluteLink();
+			return "<a href=\"$this->recordLink?archiveDate={$this->record->LastEdited}\" target=\"_blank\">". _t('ContentController.ARCHIVEDSITE', 'Archived Site') ."</a>";
 	}
 	
 	function getMessage() {
-		if($date = Versioned::current_archived_date()) {
-			$dateObj = Object::create('Datetime');
-			$dateObj->setValue($date);
-			return "<div id=\"SilverStripeNavigatorMessage\" title=\"". _t('ContentControl.NOTEWONTBESHOWN', 'Note: this message will not be shown to your visitors') ."\">". _t('ContentController.ARCHIVEDSITEFROM', 'Archived site from') ."<br>" . $dateObj->Nice() . "</div>";
-		}
+		$dateObj = Object::create('Datetime');
+		$dateObj->setValue($date);
+		return "<div id=\"SilverStripeNavigatorMessage\" title=\"". _t('ContentControl.NOTEWONTBESHOWN', 'Note: this message will not be shown to your visitors') ."\">". _t('ContentController.ARCHIVEDSITEFROM', 'Archived site from') ."<br>" . $dateObj->Nice() . "</div>";
 	}
 	
 	function getLink() {
-		if($date = Versioned::current_archived_date()) {
-			return $this->record->AbsoluteLink() . '?archiveDate=' . $date;
-		}
+		return $this->record->AbsoluteLink() . '?archiveDate=' . $date;
+	}
+	
+	function canView() {
+		return ($this->record->hasExtension('Versioned') && $this->isArchived());
+	}
+	
+	function isActive() {
+		return (Versioned::current_archived_date());
+	}
+	
+	/**
+	 * Counts as "archived" if the current record is a different version from both live and draft.
+	 * 
+	 * @return boolean
+	 */
+	function isArchived() {
+		if(!$this->record->hasExtension('Versioned')) return false;
+		
+		$baseTable = ClassInfo::baseDataClass($this->record->class);
+		$currentDraft = Versioned::get_one_by_stage(
+			$baseTable, 
+			'Stage', 
+			sprintf('"%s"."ID" = %d', $baseTable, $this->record->ID)
+		);
+		$currentLive = Versioned::get_one_by_stage(
+			$baseTable, 
+			'Live', 
+			sprintf('"%s"."ID" = %d', $baseTable, $this->record->ID)
+		);
+		return (
+			(!$currentDraft || ($currentDraft && $this->record->Version != $currentDraft->Version)) 
+			&& (!$currentLive || ($currentLive && $this->record->Version != $currentLive->Version))
+		);
 	}
 }
 
