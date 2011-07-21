@@ -7,7 +7,7 @@
  * In addition, it contains a number of static methods for querying the site tree.
  * @package cms
  */
-class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvider {
+class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvider,CMSPreviewable {
 
 	/**
 	 * Indicates what kind of children this page type can have.
@@ -451,6 +451,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			return $link;
 			
 		}
+	}
+	
+	/**
+	 * @return String
+	 */
+	function CMSEditLink() {
+		return Controller::join_links(singleton('CMSPageEditController')->Link('show'), $this->ID);
 	}
 	
 		
@@ -1270,7 +1277,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$tags .= $this->ExtraMeta . "\n";
 		} 
 		
-		if(Permission::check('CMS_ACCESS_CMSMain')) $tags .= "<meta name='x-page-id' content='{$this->ID}' />\n";
+		if(Permission::check('CMS_ACCESS_CMSMain') && in_array('CMSPreviewable', class_implements($this))) {
+			$tags .= "<meta name=\"x-page-id\" content=\"{$this->ID}\" />\n";
+			$tags .= "<meta name=\"x-cms-edit-link\" content=\"" . $this->CMSEditLink() . "\" />\n";
+		}
 
 		$this->extend('MetaTags', $tags);
 
