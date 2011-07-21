@@ -121,12 +121,6 @@ class ContentController extends Controller {
 			}
 		}
 		
-		// Redirect to admin UI if user is logged in
-		if($this->URLSegment != 'Security' && Permission::check('CMS_ACCESS_CMSMain') && !$this->request->getVar('cms-preview-disabled')) {
-			$cmsController = singleton('CMSPageEditController');
-			return Director::redirect(Controller::join_links($cmsController->Link('show'), $this->dataRecord->ID, '?cms-preview-expanded=1'));
-		}
-
 		// Use theme from the site config
 		if(($config = SiteConfig::current_site_config()) && $config->Theme) {
 			SSViewer::set_theme($config->Theme);
@@ -344,9 +338,7 @@ class ContentController extends Controller {
 		if(Director::isDev() || Permission::check('CMS_ACCESS_CMSMain') || Permission::check('VIEW_DRAFT_CONTENT')) {			
 			if($this->dataRecord) {
 				Requirements::css(CMS_DIR . '/css/SilverStripeNavigator.css');
-				Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/behaviour/behaviour.js');
 				Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery/jquery.js');
-				Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/jquery-livequery/jquery.livequery.js');
 				Requirements::javascript(CMS_DIR . '/javascript/SilverStripeNavigator.js');
 				
 				$return = $nav = SilverStripeNavigator::get_for_record($this->dataRecord);

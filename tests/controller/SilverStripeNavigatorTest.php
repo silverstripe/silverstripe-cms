@@ -14,7 +14,7 @@ class SilverStripeNavigatorTest extends SapphireTest {
 		
 		$items = $navigator->getItems();
 		$classes = array_map('get_class', $items->toArray());
-		$this->assertContains('SilverStripeNavigatorItem_LiveLink', $classes,
+		$this->assertContains('SilverStripeNavigatorItem_StageLink', $classes,
 			'Adds default classes'
 		);
 		

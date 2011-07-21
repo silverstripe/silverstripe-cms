@@ -62,9 +62,7 @@ class SiteTreePermissionsTest extends FunctionalTest {
 		$this->assertEquals($response->getStatusCode(), '404');
 		
 		$response = $this->get($page->URLSegment . '?stage=Stage');
-		$this->assertEquals($response->getStatusCode(), '302');
-		$this->assertNotContains('Security/login', $response->getHeader('Location'));
-		$this->assertContains('admin/page/edit/show/' . $page->ID, $response->getHeader('Location'));
+		$this->assertEquals($response->getStatusCode(), '200');
 		
 		$response = $this->get($page->URLSegment . '?stage=');
 		$this->assertEquals($response->getStatusCode(), '404');
@@ -333,10 +331,9 @@ class SiteTreePermissionsTest extends FunctionalTest {
 		$response = $this->get($childPage->RelativeLink());
 		$this->assertEquals(
 			$response->getStatusCode(),
-			302,
+			200,
 			'Authenticated members can view a page marked as "Viewable by these groups" if theyre in the listed groups by inherited permission'
 		);
-		$this->assertContains('admin/page/edit/show/' . $childPage->ID, $response->getHeader('Location'));
 		$this->session()->inst_set('loggedInAs', null);
 	}
 	
