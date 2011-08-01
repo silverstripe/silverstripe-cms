@@ -1758,6 +1758,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			));
 		}
 		
+		$baseLink = Controller::join_links (
+			Director::absoluteBaseURL(),
+			(self::nested_urls() && $this->ParentID ? $this->Parent()->RelativeLink(true) : null)
+		);
+		
+		$url = (strlen($baseLink) > 36) ? "..." .substr($baseLink, -32) : $baseLink;
+		$urlHelper = sprintf("<span>%s</span>", $url);
+		
 		$fields = new FieldSet(
 			$rootTab = new TabSet("Root",
 				$tabMain = new Tab('Main',
@@ -1766,14 +1774,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					new HtmlEditorField("Content", _t('SiteTree.HTMLEDITORTITLE', "Content", PR_MEDIUM, 'HTML editor title'))
 				),
 				$tabMeta = new Tab('Metadata',
-					new FieldGroup(_t('SiteTree.URL', "URL"),
-						new LabelField('BaseUrlLabel',Controller::join_links (
-							Director::absoluteBaseURL(),
-							(self::nested_urls() && $this->ParentID ? $this->Parent()->RelativeLink(true) : null)
-						)),
-						new TextField("URLSegment","URLSegment"),
-						new LabelField('TrailingSlashLabel',"/")
-					),
+					new TextField("URLSegment", $this->fieldLabel('URLSegment') . $urlHelper),
 					new LiteralField('LinkChangeNote', self::nested_urls() && count($this->Children()) ?
 						'<p>' . $this->fieldLabel('LinkChangeNote'). '</p>' : null
 					),
