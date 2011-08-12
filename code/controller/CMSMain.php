@@ -431,6 +431,13 @@ JS;
 				$stageURLField->setValue(Controller::join_links($record->AbsoluteLink(), '?Stage=stage'));
 			}
 			
+			// Added in-line to the form, but plucked into different view by LeftAndMain.Preview.js upon load
+			if(in_array('CMSPreviewable', class_implements($record)) && !$fields->fieldByName('SilverStripeNavigator')) {
+				$navField = new LiteralField('SilverStripeNavigator', $this->getSilverStripeNavigator());
+				$navField->setAllowHTML(true);
+				$fields->push($navField);
+			}
+			
 			// getAllCMSActions can be used to completely redefine the action list
 			if($record->hasMethod('getAllCMSActions')) {
 				$actions = $record->getAllCMSActions();
