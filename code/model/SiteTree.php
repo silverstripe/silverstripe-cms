@@ -2020,7 +2020,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					$actions->push(new FormAction('revert',_t('CMSMain.RESTORE','Restore')));
 					if($this->canDelete() && $this->canDeleteFromLive()) {
 						// "delete from live"
-						$actions->push($deleteFromLiveAction = new FormAction('deletefromlive',_t('CMSMain.DELETEFP','Delete from the published site')));
+						$actions->push($deleteFromLiveAction = new FormAction('deletefromlive',_t('CMSMain.DELETEFP','Delete')));
 						$deleteFromLiveAction->addExtraClass('ss-ui-action-destructive');
 					}
 				} else {
@@ -2030,20 +2030,20 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			} else {
 				if($this->canDelete()) {
 					// "delete"
-					$actions->push($deleteAction = new FormAction('delete',_t('CMSMain.DELETE','Delete from the draft site')));
+					$actions->push($deleteAction = new FormAction('delete',_t('CMSMain.DELETE','Delete draft')));
 					$deleteAction->addExtraClass('delete');
 					$deleteAction->addExtraClass('ss-ui-action-destructive');
 				}
 			
 				// "save"
-				$actions->push($saveDraftAction = new FormAction('save',_t('CMSMain.SAVE','Save Draft')));
+				$actions->push($saveDraftAction = new FormAction('save',_t('CMSMain.SAVEDRAFT','Save Draft')));
 				$saveDraftAction->addExtraClass('save-draft');
 			}
 		}
 
 		if($this->canPublish() && !$this->IsDeletedFromStage) {
 			// "publish"
-			$actions->push($publishAction = new FormAction('publish', _t('SiteTree.BUTTONSAVEPUBLISH', 'Save and Publish')));
+			$actions->push($publishAction = new FormAction('publish', _t('SiteTree.BUTTONSAVEPUBLISH', 'Save & Publish')));
 			$publishAction->addExtraClass('ss-ui-action-constructive');
 		}
 		
