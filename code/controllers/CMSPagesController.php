@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * @package cms
+ */
 class CMSPagesController extends CMSMain {
 	
 	static $url_segment = 'pages';
@@ -16,18 +20,18 @@ class CMSPagesController extends CMSMain {
 		if($request->param('ID')) {
 			$c = new CMSPageEditController();
 			return $this->redirect(Controller::join_links($c->Link('show'), $request->param('ID')));
-		} else {
-			return parent::show($request);
 		}
+		
+		return parent::show($request);
 	}
 	
 	function Link($action = null) {
 		// Special case: All show links should redirect to the page edit interface instead (mostly from tree nodes)
 		if(preg_match('/^show/', $action)) {
 			return singleton('CMSPageEditController')->Link($action);
-		} else {
-			return parent::Link($action);
 		}
+		
+		return parent::Link($action);
 	}
 	
 }
