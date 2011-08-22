@@ -289,14 +289,21 @@ function prepareAjaxActions(actions, formName, tabName) {
 
 		button.onclick = function(e) {
 			if(!e) e = window.event;
+			
 			// tries to call a custom method of the format "action_<youraction>_right"
 			if(window[this.name + '_' + tabName]) {
 				window[this.name + '_' + tabName](e);
 			} else {
+				var btn = jQuery(this);
+				// disable button to avoid double submission
+				btn.attr('disabled', 'disabled').addClass('loading');
 				statusMessage('...');
 				Ajax.SubmitForm(this.ownerForm, this.name, {
 					onSuccess: Ajax.Evaluator,
-					onFailure: ajaxErrorHandler
+					onFailure: function() {
+						btn.removeAttr('disabled').removeClass('loading');
+						ajaxErrorHandler.apply(arguments);
+					}
 				});
 			}
 			return false;

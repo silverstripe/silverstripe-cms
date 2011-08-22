@@ -330,14 +330,13 @@ CMSRightForm.applyTo('#Form_EditForm', 'right');
 
 function action_save_right() {
 	_AJAX_LOADING = true;
-	$('Form_EditForm_action_save').value = ss.i18n._t('CMSMAIN.SAVING');
-	$('Form_EditForm_action_save').className = 'action loading';
-	$('Form_EditForm_action_save').stopLoading = function() {
-		if($('Form_EditForm_action_save') && $('Form_EditForm_action_save').className.indexOf('loading') != -1) {
-			$('Form_EditForm_action_save').value = 'Save';
-			Element.removeClassName($('Form_EditForm_action_save'), 'loading');
-		}
-	}	
+
+	// Don't need to restore the button state after ajax success because the form is replaced completely
+	var btn = jQuery('#Form_EditForm_action_save');
+	btn.val(ss.i18n._t('CMSMAIN.SAVING')).addClass('loading').attr('disabled', 'disabled');
+	btn[0].stopLoading = function() {
+		btn.val('Save').removeClass('loading').removeAttr('disabled');
+	};
 	
 	$('Form_EditForm').save(false);
 }
