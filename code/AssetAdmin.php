@@ -483,6 +483,8 @@ HTML;
 	 */
 	public function savefile($data, $form) {
 		$record = DataObject::get_by_id("File", $data['ID']);
+		if(!$record) return $this->httpError(400);
+		
 		$form->saveInto($record);
 		$record->write();
 		$title = Convert::raw2js($record->Title);
@@ -536,6 +538,8 @@ JS;
 	 */
 	public function getsubtree() {
 		$obj = DataObject::get_by_id('Folder', $_REQUEST['ID']);
+		if(!$obj) return false;
+		
 		$obj->setMarkingFilter('ClassName', ClassInfo::subclassesFor('Folder'));
 		$obj->markPartialTree();
 
@@ -664,6 +668,8 @@ JS;
 		
 		if($fileID = $this->urlParams['ID']) {
 			$file = DataObject::get_by_id('File', $fileID);
+			if(!$file) return $this->httpError(400);
+			
 			// Delete the temp verions of this file in assets/_resampled
 			if($file instanceof Image) {
 				$file->deleteFormattedImages();
