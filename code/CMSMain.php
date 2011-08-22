@@ -1167,8 +1167,6 @@ JS;
 			$page->HasBrokenLink = 0;
 			$page->HasBrokenFile = 0;
 
-			$lastUsage = (memory_get_usage() - $lastPoint);
-			$lastPoint = memory_get_usage();
 			$content->setValue($page->Content);
 			$content->saveInto($page);
 
@@ -1209,7 +1207,11 @@ JS;
 	 * Helper function to get page count
 	 */
 	function getpagecount() {
-		ini_set('max_execution_time', 0);
+		if(!Permission::check('ADMIN')) return Security::permissionFailure($this);
+		
+		increase_time_limit_to();
+		increase_memory_limit_to();
+		
 		$excludePages = split(" *, *", $_GET['exclude']);
 
 		$pages = DataObject::get("SiteTree", "\"ParentID\" = 0");
@@ -1236,8 +1238,10 @@ JS;
 	}
 
 	function publishall($request) {
-		ini_set("memory_limit", -1);
-		ini_set('max_execution_time', 0);
+		if(!Permission::check('ADMIN')) return Security::permissionFailure($this);
+		
+		increase_time_limit_to();
+		increase_memory_limit_to();
 		
 		$response = "";
 
