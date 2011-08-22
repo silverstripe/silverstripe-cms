@@ -665,10 +665,11 @@ JS;
 	public function revert($urlParams, $form) {
 		$id = (int)$_REQUEST['ID'];
 		$record = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree_Live\".\"ID\" = '{$id}'");
+		if(!$record) return $this->httpError(400);
 
 		// a user can restore a page without publication rights, as it just adds a new draft state
 		// (this action should just be available when page has been "deleted from draft")
-		if(isset($record) && $record && !$record->canEdit()) return Security::permissionFailure($this);
+		if(!$record->canEdit()) return Security::permissionFailure($this);
 
 		$record->doRevertToLive();
 
@@ -689,7 +690,8 @@ JS;
 			"SiteTree", 
 			sprintf("\"SiteTree\".\"ID\" = %d", Convert::raw2sql($data['ID']))
 		);
-		if($record && !$record->canDelete()) return Security::permissionFailure();
+		if(!$record) return $this->httpError(400);
+		if(!$record->canDelete()) return Security::permissionFailure();
 		
 		// save ID and delete record
 		$recordID = $record->ID;
@@ -792,14 +794,12 @@ JS;
 	function versions() {
 		$pageID = $this->urlParams['ID'];
 		$page = $this->getRecord($pageID);
-		if($page) {
-			$versions = $page->allVersions($_REQUEST['unpublished'] ? "" : "\"SiteTree\".\"WasPublished\" = 1");
-			return array(
-				'Versions' => $versions,
-			);
-		} else {
-			return sprintf(_t('CMSMain.VERSIONSNOPAGE',"Can't find page #%d",PR_LOW),$pageID);
-		}
+		if(!$page) return $this->httpError(400);
+		
+		$versions = $page->allVersions($_REQUEST['unpublished'] ? "" : "\"SiteTree\".\"WasPublished\" = 1");
+		return array(
+			'Versions' => $versions,
+		);
 	}
 
 	/**
@@ -820,8 +820,8 @@ JS;
 		$SQL_id = Convert::raw2sql($_REQUEST['ID']);
 
 		$page = DataObject::get_by_id("SiteTree", $SQL_id);
-		
-		if($page && !$page->canDeleteFromLive()) return Security::permissionFailure($this);
+		if(!$page) return $this->httpError(400);
+		if(!$page->canDeleteFromLive()) return Security::permissionFailure($this);
 		
 		$page->doUnpublish();
 		
@@ -864,7 +864,8 @@ JS;
 
 	function performRollback($id, $version) {
 		$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-		if($record && !$record->canEdit()) return Security::permissionFailure($this);
+		if(!$record) return $this->httpError(400);
+		if(!$record->canEdit()) return Security::permissionFailure($this);
 		
 		$record->doRollbackTo($version);
 		return $record;
@@ -965,7 +966,8 @@ JS;
 		}
 
 		$page = DataObject::get_by_id("SiteTree", $id);
-		if($page && !$page->canView()) return Security::permissionFailure($this);
+		if(!$page) return $this->httpError(400);
+		if(!$page->canView()) return Security::permissionFailure($this);
 		
 		$record = $page->compareVersions($fromVersion, $toVersion);
 		
@@ -1314,9 +1316,8 @@ JS;
 		
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
 			$page = DataObject::get_by_id("SiteTree", $id);
-			if($page && (!$page->canEdit() || !$page->canCreate())) {
-				return Security::permissionFailure($this);
-			}
+			if(!$page) return $this->httpError(400);
+			if(!$page->canEdit() || !$page->canCreate()) return Security::permissionFailure($this);
 
 			$newPage = $page->duplicate();
 			
@@ -1338,9 +1339,8 @@ JS;
 		
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
 			$page = DataObject::get_by_id("SiteTree", $id);
-			if($page && (!$page->canEdit() || !$page->canCreate())) {
-				return Security::permissionFailure($this);
-			}
+			if(!$page) return $this->httpError(400);
+			if(!$page->canEdit() || !$page->canCreate()) return Security::permissionFailure($this);
 
 			$newPage = $page->duplicateWithChildren();
 
