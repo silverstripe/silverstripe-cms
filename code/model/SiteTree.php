@@ -1758,6 +1758,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			));
 		}
 		
+		$baseLink = Controller::join_links (
+			Director::absoluteBaseURL(),
+			(self::nested_urls() && $this->ParentID ? $this->Parent()->RelativeLink(true) : null)
+		);
+		
+		$url = (strlen($baseLink) > 36) ? "..." .substr($baseLink, -32) : $baseLink;
+		$urlHelper = sprintf("<span>%s</span>", $url);
+		
 		$fields = new FieldSet(
 			$rootTab = new TabSet("Root",
 				$tabMain = new Tab('Main',
@@ -1766,14 +1774,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					new HtmlEditorField("Content", _t('SiteTree.HTMLEDITORTITLE', "Content", PR_MEDIUM, 'HTML editor title'))
 				),
 				$tabMeta = new Tab('Metadata',
-					new FieldGroup(_t('SiteTree.URL', "URL"),
-						new LabelField('BaseUrlLabel',Controller::join_links (
-							Director::absoluteBaseURL(),
-							(self::nested_urls() && $this->ParentID ? $this->Parent()->RelativeLink(true) : null)
-						)),
-						new TextField("URLSegment","URLSegment"),
-						new LabelField('TrailingSlashLabel',"/")
-					),
+					new TextField("URLSegment", $this->fieldLabel('URLSegment') . $urlHelper),
 					new LiteralField('LinkChangeNote', self::nested_urls() && count($this->Children()) ?
 						'<p>' . $this->fieldLabel('LinkChangeNote'). '</p>' : null
 					),
@@ -1987,7 +1988,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			// "unpublish"
 			$unpublish = FormAction::create('unpublish', _t('SiteTree.BUTTONUNPUBLISH', 'Unpublish'), 'delete');
 			$unpublish->describe(_t('SiteTree.BUTTONUNPUBLISHDESC', 'Remove this page from the published site'));
-			$unpublish->addExtraClass('delete');
+			$unpublish->addExtraClass('unpublish');
 			$unpublish->addExtraClass('ss-ui-action-destructive');
 			$actions->push($unpublish);
 		}
@@ -2025,7 +2026,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				}
 			
 				// "save"
-				$actions->push(new FormAction('save',_t('CMSMain.SAVE','Save')));
+				$actions->push($saveDraftAction = new FormAction('save',_t('CMSMain.SAVE','Save Draft')));
+				$saveDraftAction->addExtraClass('save-draft');
 			}
 		}
 
@@ -2411,13 +2413,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		} elseif($this->IsAddedToStage) {
 			$tag = "ins title=\"" . _t('SiteTree.ADDEDTODRAFT', 'Added to draft site') . "\"";
 		} elseif($this->IsModifiedOnStage) {
-			$tag = "span title=\"" . _t('SiteTree.MODIFIEDONDRAFT', 'Modified on draft site') . "\" class=\"modified\"";
+			$tag = "span title=\"" . _t('SiteTree.MODIFIEDONDRAFT', 'Modified on draft site') . "\" class=\"status modified\"";
 		} else {
 			$tag = '';
 		}
 
 		$text = Convert::raw2xml(str_replace(array("\n","\r"),"",$this->MenuTitle));
-		return ($tag) ? "<$tag>" . $text . "</" . strtok($tag,' ') . ">" : $text;
+		return ($tag) ? "<span class=\"jstree-pageicon\"></span>"."<$tag>" . $text . "</" . strtok($tag,' ') . ">" : "<span class=\"jstree-pageicon\"></span>". $text;
 	}
 
 	/**

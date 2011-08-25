@@ -198,22 +198,22 @@ class CMSMainTest extends FunctionalTest {
 		// with insufficient permissions
 		$cmsUser->logIn();
 		$this->get('admin/pages');
-		$response = $this->submitForm(
-			'Form_AddForm', 
-			null,
-			array('ParentID' => '0', 'ClassName' => 'Page', 'Locale' => 'en_US')
+		$response = $this->post(
+			'admin/pages/AddForm', 
+			array('ParentID' => '0', 'ClassName' => 'Page', 'Locale' => 'en_US', 'action_doAdd' => 1)
 		);
 		// should redirect, which is a permission error
 		$this->assertEquals(403, $response->getStatusCode(), 'Add TopLevel page must fail for normal user');
 
 		// with correct permissions
 		$rootEditUser->logIn();
-		$this->get('admin/pages/');
-		$response = $this->submitForm(
-			'Form_AddForm', 
-			null,
-			array('ParentID' => '0', 'ClassName' => 'Page', 'Locale' => 'en_US')
+		$response = $this->get('admin/pages/');
+
+		$response = $this->post(
+			'admin/pages/AddForm', 
+			array('ParentID' => '0', 'ClassName' => 'Page', 'Locale' => 'en_US', 'action_doAdd' => 1)
 		);
+
 		$this->assertEquals(302, $response->getStatusCode(), 'Must be a redirect on success');
 		$location=$response->getHeader('Location');
 		$this->assertContains('/show/',$location, 'Must redirect to /show/ the new page');

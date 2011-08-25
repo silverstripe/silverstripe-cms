@@ -47,7 +47,7 @@
 						var currNode = $('.cms-tree')[0].firstSelected();
 						if(currNode) {
 						  var url = $(currNode).find('a').attr('href');
-        			$('.cms-edit-form').loadForm(url);
+        			$('.cms-content').loadForm(url);
 						}
 						$('.cms-tree')[0].setCustomURL('admin/assets/getsubtree');
 						$('.cms-tree')[0].reload({onSuccess: function() {
