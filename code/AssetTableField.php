@@ -149,6 +149,10 @@ class AssetTableField extends ComplexTableField {
 			return null;
 		}
 		
+		if(!$childData instanceof File) {
+			throw new InvalidArgumentException(sprintf('$childData is of class "%s", subclass of "File" expected', get_class($childData)));
+		}
+		
 		if($childData->ParentID) {
 			$folder = DataObject::get_by_id('File', $childData->ParentID );
 		} else {
@@ -200,10 +204,15 @@ class AssetTableField extends ComplexTableField {
 			$links = $childData->BackLinkTracking();
 			if(class_exists('Subsite')) Subsite::disable_subsite_filter(false);
 
+			$linkArray = array();
 			if($links && $links->exists()) {
 				$backlinks = array();
 				foreach($links as $link) {
-					$backlinks[] = "<li><a href=\"admin/show/$link->ID\">" . $link->Breadcrumbs(null,true). "</a></li>";
+					// Avoid duplicates
+					if (!in_array($link->ID, $linkArray)) {
+						$backlinks[] = "<li><a href=\"admin/show/$link->ID\">" . $link->Breadcrumbs(null,true). "</a></li>";
+						$linkArray[] = $link->ID;
+					}
 				}
 				$backlinks = "<div style=\"clear:left\">". _t('AssetTableField.PAGESLINKING','The following pages link to this file:') ."<ul>" . implode("",$backlinks) . "</ul></div>";
 			}
