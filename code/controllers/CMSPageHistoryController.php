@@ -22,18 +22,18 @@ class CMSPageHistoryController extends CMSMain {
 	);
 	
 	/**
-	 * @var array
+	 * @return array
 	 */
 	function version() {
 		return array(
 			'EditForm' => $this->ShowVersionForm(
-				$this->request->param('ID')
+				$this->request->param('VersionID')
 			)
 		);
 	}
 	
 	/**
-	 * @var array
+	 * @return array
 	 */
 	function compare() {
 		return array(
@@ -43,9 +43,9 @@ class CMSPageHistoryController extends CMSMain {
 			)
 		);
 	}
-	
+
 	/**
-	 * Returns the read only version of the edit form. Detaches {@link FormAction} 
+	 * Returns the read only version of the edit form. Detaches all {@link FormAction} 
 	 * instances attached since only action relates to revert.
 	 *
 	 * Permission checking is done at the {@link CMSMain::getEditForm()} level.
@@ -53,44 +53,93 @@ class CMSPageHistoryController extends CMSMain {
 	 * @param int $id ID of the record to show
 	 * @param array $fields optional
 	 * @param int $versionID
+	 * @param int $compare Compare mode
+	 *
+	 * @return Form
 	 */
-	function getEditForm($id = null, $fields = null, $versionID = null) {
+	function getEditForm($id = null, $fields = null, $versionID = null, $compareID = null) {
+		if(!$id) $id = $this->currentPageID();
+		
 		$record = $this->getRecord($id, $versionID);
+		$versionID = ($record) ? $record->Version : $versionID;
 		
 		$form = parent::getEditForm($record, ($record) ? $record->getCMSFields() : null);
 
+		$form->setActions(new FieldSet(
+			$revert = new FormAction('doRevert', _t('CMSPageHistoryController.REVERTTOTHISVERSION', 'Revert to this version'))
+		));
+		
 		$fields = $form->Fields();
 		$fields->removeByName("Status");
 		$fields->push(new HiddenField("ID"));
 		$fields->push(new HiddenField("Version"));
 		
 		$fields = $fields->makeReadonly();
-		
+
 		foreach($fields->dataFields() as $field) {
 			$field->dontEscape = true;
+			$field->reserveNL = true;
 		}
 		
-		$form->setFields($fields->makeReadonly());
+		$link = Controller::join_links(
+			$this->Link('version'),
+			$id
+		);
 		
-		// attach additional information
+		$view = _t('CMSPageHistoryController.VIEW',"view");
+		
+		if($compareID) {
+			$message = sprintf(
+				_t('CMSPageHistoryController.COMPARINGVERSION',"Comparing versions %s and %s."),
+				sprintf('%s (<a href="%s">%s</a>)', $versionID, Controller::join_links($link, $versionID), $view),
+				sprintf('%s (<a href="%s">%s</a>)', $compareID, Controller::join_links($link, $compareID), $view)
+			);
+			
+			$revert->setReadonly(true);
+		}
+		else {
+			$message = sprintf(
+				_t('CMSPageHistoryController.VIEWINGVERSION',"Currently viewing version %s."),
+				sprintf('%s (<a href="%s">%s</a>)', 
+					$versionID, 
+					Controller::join_links($link, $versionID),
+					$view
+				)
+			);
+		}
+		
+		$fields->addFieldToTab('Root.Main', 
+			new LiteralField('CurrentlyViewingMessage', $this->customise(array(
+				'Content' => $message,
+				'Classes' => 'notice'
+			))->renderWith(array('CMSMain_notice'))),
+			"Title"
+		);
+
+
+		$form->setFields($fields->makeReadonly());
 		$form->loadDataFrom(array(
 			"ID" => $id,
 			"Version" => $versionID,
 		));
 		
-		$form->setActions(new FieldSet(
-			$revert = new FormAction('doRevert', _t('CMSPageHistoryController.REVERTTOTHISVERSION', 'Revert to this version'))
-		));
+		if(($record && $record->isLatestVersion())) {
+			$revert->setReadonly(true);
+		}
 		
 		$form->removeExtraClass('cms-content');
 
 		return $form;
 	}
 	
+	
 	/**
-	 * Compare version selection form. Displays a list of previous versions
-	 * and options for selecting filters on the version
-	 * 
+	 * Version select form. Main interface between selecting versions to view 
+	 * and comparing multiple versions.
+	 *  
+	 * Because we can reload the page directly to a compare view (history/compare/1/2/3)
+	 * this form has to adapt to those parameters as well. 
+	 *
 	 * @return Form
 	 */
 	function VersionsForm() {
@@ -98,16 +147,34 @@ class CMSPageHistoryController extends CMSMain {
 		$page = $this->getRecord($id);
 		$versionsHtml = '';
 
+		$action = $this->request->param('Action');
+		$versionID = $this->request->param('VersionID');
+		$otherVersionID = $this->request->param('OtherVersionID');
+		
+		$showUnpublishedChecked = 0;
+		$compareModeChecked = ($action == "compare");
+
 		if($page) {
 			$versions = $page->allVersions();
 
 			if($versions) {
 				foreach($versions as $k => $version) {
+					$active = false;
+					
+					if($version->Version == $versionID || $version->Version == $otherVersionID) {
+						$active = true;
+						
+						if(!$version->WasPublished) {
+							$showUnpublishedChecked = 1;
+						}
+					}
 					$version->CMSLink = sprintf('%s/%s/%s',
 						$this->Link('version'),
 						$version->ID,
 						$version->Version
 					);
+
+					$version->Active = ($active);
 				}
 			}
 			
@@ -117,18 +184,20 @@ class CMSPageHistoryController extends CMSMain {
 				'Versions' => $versions
 			))->renderWith('CMSPageHistoryController_versions');
 		}
-		
+
 		$form = new Form(
 			$this,
 			'VersionsForm',
 			new FieldSet(
 				new CheckboxField(
 					'ShowUnpublished',
-					_t('CMSPageHistoryController.SHOWUNPUBLISHED','Show unpublished versions')
+					_t('CMSPageHistoryController.SHOWUNPUBLISHED','Show unpublished versions'),
+					$showUnpublishedChecked
 				),
 				new CheckboxField(
 					'CompareMode',
-					_t('CMSPageHistoryController.COMPAREMODE', 'Compare mode')
+					_t('CMSPageHistoryController.COMPAREMODE', 'Compare mode'),
+					$compareModeChecked
 				),
 				new LiteralField('VersionsHtml', $versionsHtml),
 				new HiddenField('ID', false, $id)
@@ -236,7 +305,7 @@ class CMSPageHistoryController extends CMSMain {
 	 */
 	function ShowVersionForm($versionID = null) {
 		if(!$versionID) return null;
-		
+
 		$id = $this->currentPageID();
 		$form = $this->getEditForm($id, null, $versionID);
 
@@ -278,7 +347,7 @@ class CMSPageHistoryController extends CMSMain {
 		}
 
 		if($record) {
-			$form = $this->getEditForm($id, null, null);
+			$form = $this->getEditForm($id, null, null, true);
 			$form->setActions(new FieldSet());
 			$form->loadDataFrom($record);
 			

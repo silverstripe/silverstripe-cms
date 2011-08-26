@@ -10,8 +10,8 @@
 	
 	<tbody>
 		<% control Versions %>
-		<tr id="page-$RecordID-version-$Version" class="$EvenOdd $PublishedClass<% if not WasPublished %> ui-helper-hidden<% end_if %>" data-published="<% if WasPublished %>true<% else %>false<% end_if %>"data-link="$CMSLink">
-			<td class="ui-helper-hidden"><input type="checkbox" name="Versions[]" id="cms-_$Version" value="$Version" /></td>
+		<tr id="page-$RecordID-version-$Version" class="$EvenOdd $PublishedClass<% if not WasPublished %><% if not Active %> ui-helper-hidden<% end_if %><% end_if %><% if Active %> active<% end_if %>" data-published="<% if WasPublished %>true<% else %>false<% end_if %>"data-link="$CMSLink">
+			<td class="ui-helper-hidden"><input type="checkbox" name="Versions[]" id="cms-_$Version" value="$Version"<% if Active %> checked="checked"<% end_if %> /></td>
 			<% control LastEdited %>
 				<td class="last-edited first-column" title="$Ago - $Nice">$Nice</td>
 			<% end_control %>

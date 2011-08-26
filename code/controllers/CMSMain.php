@@ -358,12 +358,10 @@ JS;
 		if($id instanceof $treeClass) {
 			return $id;
 		} else if($id && is_numeric($id)) {
-			$versionID = null;
-			
 			if(isset($_REQUEST['Version'])) $versionID = (int) $_REQUEST['Version'];
 
-			if($versionID && is_int($version)) {
-				$record = Versioned::get_version($treeClass, $id, $version);
+			if($versionID) {
+				$record = Versioned::get_version($treeClass, $id, $versionID);
 			} else {
 				$record = DataObject::get_one($treeClass, "\"$treeClass\".\"ID\" = $id");
 			}

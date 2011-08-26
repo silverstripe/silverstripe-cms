@@ -70,7 +70,7 @@
 					url = 'admin/page/history/version/'+ [id,to].join('/') + "/";
 				}
 				
-				// we can access this comparsion directly in the url.
+				// we can access this comparsion directly in the url
 				window.History.pushState({selector: '.cms-content-fields form:first'}, '', url);
 				
 				var data = this.serializeArray();
