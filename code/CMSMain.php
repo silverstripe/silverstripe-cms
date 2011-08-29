@@ -557,7 +557,13 @@ JS;
 
 		$p = $this->getNewItem("new-$className-$parent".$suffix, false);
 		$p->Locale = $_REQUEST['Locale'];
-		$p->write();
+		try {
+			$p->write();
+		} catch(ValidationException $e) {
+			$msgs = implode('. ', $e->getResult()->messageList());
+			return $this->httpError(403, sprintf(_t("CMSMain.SaveFailed", "Saving failed: %s"), $msgs));
+		}
+		
 
 		return $this->returnItemToUser($p);
 	}

@@ -741,9 +741,13 @@ JS;
 				FormResponse::add("if(\$('sitetree').setNodeParentID) \$('sitetree').setNodeParentID($record->ID, $record->ParentID);");
 			}
 
+			try {
+				$record->write();
+			} catch(ValidationException $e) {
+				$msgs = implode('. ', $e->getResult()->messageList());
+				return $this->httpError(403, sprintf(_t("CMSMain.SaveFailed", "Saving failed: %s"), $msgs));
+			}
 			
-
-			$record->write();
 
 			if( ($record->class != 'VirtualPage') && $originalURLSegment != $record->URLSegment) {
 				$message .= sprintf(_t('LeftAndMain.CHANGEDURL',"  Changed URL to '%s'"),$record->URLSegment);

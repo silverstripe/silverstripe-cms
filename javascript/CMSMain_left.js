@@ -132,9 +132,9 @@ addpageclass.prototype = {
 			var suffix = _NEW_PAGES[parentID]++;
 			Ajax.SubmitForm(_HANDLER_FORMS.addpage, "action_addpage", {
 				onSuccess : Ajax.Evaluator,
-				onFailure : function(response) { if (response.status == 403) {
-					alert('You cannot add that page at that location.');
-				}},
+				onFailure : function(response) { 
+					statusMessage(response.responseText, 'bad');
+				},
 				extraData: '&Suffix=' + suffix
 			});
 		}
