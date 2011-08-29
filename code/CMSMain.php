@@ -310,6 +310,7 @@ JS;
 				}
 			}
 
+			$parts = array();
 			if($object) {
 				foreach($array as $k => $v) {
 					$parts[] = "$k : " . $this->jsDeclaration($v);
