@@ -209,8 +209,12 @@ JS
 		}
 		$processedData = array_reverse($processedData);
 				
-		if($data['FolderID'] && $data['FolderID'] != '') $folder = DataObject::get_by_id("Folder", $data['FolderID']);
-		else $folder = singleton('Folder');
+		if($data['FolderID'] && $data['FolderID'] != '') {
+			$folder = DataObject::get_by_id("Folder", $data['FolderID']);
+			if(!$folder) throw new InvalidArgumentException(sprintf("Folder #%d doesn't exist", (int)$data['FolderID']));
+		} else {
+			$folder = singleton('Folder');
+		}
 
 		foreach($processedFiles as $filePostId => $tmpFile) {
 			if($tmpFile['error'] == UPLOAD_ERR_NO_TMP_DIR) {
