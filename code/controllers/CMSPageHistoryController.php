@@ -13,7 +13,6 @@ class CMSPageHistoryController extends CMSMain {
 	
 	static $allowed_actions = array(
 		'VersionsForm',
-		'version',
 		'compare'
 	);
 	
@@ -24,7 +23,7 @@ class CMSPageHistoryController extends CMSMain {
 	/**
 	 * @return array
 	 */
-	function version() {
+	function show() {
 		return array(
 			'EditForm' => $this->ShowVersionForm(
 				$this->request->param('VersionID')
@@ -42,6 +41,16 @@ class CMSPageHistoryController extends CMSMain {
 				$this->request->param('OtherVersionID')
 			)
 		);
+	}
+	
+	/**
+	 * @return array
+	 */
+	function rollback() {
+		return $this->doRollback(array(
+			'ID' => $this->currentPageID(),
+			'Version' => $this->request->param('VersionID')
+		), null);
 	}
 
 	/**
@@ -81,14 +90,14 @@ class CMSPageHistoryController extends CMSMain {
 			$field->reserveNL = true;
 		}
 		
-		$link = Controller::join_links(
-			$this->Link('version'),
-			$id
-		);
-		
-		$view = _t('CMSPageHistoryController.VIEW',"view");
-		
 		if($compareID) {
+			$link = Controller::join_links(
+				$this->Link('version'),
+				$id
+			);
+
+			$view = _t('CMSPageHistoryController.VIEW',"view");
+			
 			$message = sprintf(
 				_t('CMSPageHistoryController.COMPARINGVERSION',"Comparing versions %s and %s."),
 				sprintf('%s (<a href="%s">%s</a>)', $versionID, Controller::join_links($link, $versionID), $view),
@@ -99,12 +108,7 @@ class CMSPageHistoryController extends CMSMain {
 		}
 		else {
 			$message = sprintf(
-				_t('CMSPageHistoryController.VIEWINGVERSION',"Currently viewing version %s."),
-				sprintf('%s (<a href="%s">%s</a>)', 
-					$versionID, 
-					Controller::join_links($link, $versionID),
-					$view
-				)
+				_t('CMSPageHistoryController.VIEWINGVERSION',"Currently viewing version %s."), $versionID
 			);
 		}
 		
@@ -169,7 +173,7 @@ class CMSPageHistoryController extends CMSMain {
 						}
 					}
 					$version->CMSLink = sprintf('%s/%s/%s',
-						$this->Link('version'),
+						$this->Link('show'),
 						$version->ID,
 						$version->Version
 					);
@@ -200,7 +204,7 @@ class CMSPageHistoryController extends CMSMain {
 					$compareModeChecked
 				),
 				new LiteralField('VersionsHtml', $versionsHtml),
-				new HiddenField('ID', false, $id)
+				$hiddenID = new HiddenField('ID', false, "")
 			),
 			new FieldSet(
 				new FormAction(
@@ -213,6 +217,7 @@ class CMSPageHistoryController extends CMSMain {
 		);
 		
 		$form->loadDataFrom($this->request->requestVars());
+		$hiddenID->setValue($id);
 		$form->unsetValidator();
 		
 		return $form;
@@ -297,7 +302,54 @@ class CMSPageHistoryController extends CMSMain {
 	 * @return html
 	 */
 	function doRollback($data, $form) {
-		//
+		$this->extend('onBeforeRollback', $data['ID']);
+		$id = (isset($data['ID'])) ? (int) $data['ID'] : null;
+		$version = (isset($data['Version'])) ? (int) $data['Version'] : null;
+		
+		if(isset($data['Version']) && (bool)$data['Version']) {
+			$record = $this->performRollback($data['ID'], $data['Version']);
+			$message = sprintf(
+			_t('CMSMain.ROLLEDBACKVERSION',"Rolled back to version #%d.  New version number is #%d"),
+			$data['Version'],
+			$record->Version
+		);
+		} else {
+			$record = $this->performRollback($data['ID'], "Live");
+			$message = sprintf(
+				_t('CMSMain.ROLLEDBACKPUB',"Rolled back to published version. New version number is #%d"),
+				$record->Version
+			);
+		}
+		
+		if($this->isAjax()) {
+			$this->response->addHeader('X-Status', $message);
+			$form = $this->getEditForm($record->ID);
+		
+			return $form->forTemplate();
+		}
+
+		return array(
+			'EditForm' => $this->customise(array(
+				'Message' => $message,
+				'Status' => 'success'
+			))->renderWith('CMSMain_notice')
+		);
+	}
+	
+	/**
+	 * Performs a rollback of the a given 
+	 *
+	 * @param int $id record ID
+	 * @param int $version version ID to rollback to
+	 */
+	function performRollback($id, $version) {
+		$record = DataObject::get_by_id($this->stat('tree_class'), $id);
+		
+		if($record && !$record->canEdit()) return Security::permissionFailure($this);
+		
+		$record->doRollbackTo($version);
+		
+		return $record;
 	}
 
 	/**
@@ -360,32 +412,5 @@ class CMSPageHistoryController extends CMSMain {
 			
 			return $form;
 		}
-	}
-
-	/**
-	 * Roll a page back to a previous version
-	 */
-	function rollback($data, $form) {
-		$this->extend('onBeforeRollback', $data['ID']);
-		
-		if(isset($data['Version']) && (bool)$data['Version']) {
-			$record = $this->performRollback($data['ID'], $data['Version']);
-			$message = sprintf(
-			_t('CMSMain.ROLLEDBACKVERSION',"Rolled back to version #%d.  New version number is #%d"),
-			$data['Version'],
-			$record->Version
-		);
-		} else {
-			$record = $this->performRollback($data['ID'], "Live");
-			$message = sprintf(
-				_t('CMSMain.ROLLEDBACKPUB',"Rolled back to published version. New version number is #%d"),
-				$record->Version
-			);
-		}
-		
-		$this->response->addHeader('X-Status', $message);
-		$form = $this->getEditForm($record->ID);
-		
-		return $form->forTemplate();
 	}
 }

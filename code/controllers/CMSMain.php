@@ -937,14 +937,6 @@ JS;
 		return $form->forTemplate();
 	}
 
-	function performRollback($id, $version) {
-		$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-		if($record && !$record->canEdit()) return Security::permissionFailure($this);
-		
-		$record->doRollbackTo($version);
-		return $record;
-	}
-
 	function sendFormToBrowser($templateData) {
 		if(Director::is_ajax()) {
 			SSViewer::setOption('rewriteHashlinks', false);

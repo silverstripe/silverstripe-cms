@@ -44,6 +44,9 @@
 			 *
 			 * Submits either the compare versions form or the view single form
 			 * display based on whether we have two or 1 option selected
+			 *
+			 * Todo:
+			 *		Handle coupling to admin url 
 			 */
 			onsubmit: function(e, d) {
 				var id, self = this;
@@ -51,7 +54,7 @@
 	
 				if(!id) return false;
 
-				var button, url, selected, to, from, compare;
+				var button, url, selected, to, from, compare, data;
 				
 				compare = (this.find(":input[name=CompareMode]").is(":checked"));
 				selected = this.find("table input[type=checkbox]").filter(":checked");
@@ -67,14 +70,12 @@
 				else {
 					to = selected.eq(0).val();
 					button = this.find(':submit[name=action_doShowVersion]');
-					url = 'admin/page/history/version/'+ [id,to].join('/') + "/";
+					url = 'admin/page/history/show/'+ [id,to].join('/') + "/";
 				}
 				
-				// we can access this comparsion directly in the url
 				window.History.pushState({selector: '.cms-content-fields form:first'}, '', url);
 				
-				var data = this.serializeArray();
-				
+				data = this.serializeArray();
 				data.push({
 					name: button.attr('name'), value: button.val()
 				});
