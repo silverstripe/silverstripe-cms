@@ -75,7 +75,7 @@ class CMSPageHistoryController extends CMSMain {
 		$form = parent::getEditForm($record, ($record) ? $record->getCMSFields() : null);
 
 		$form->setActions(new FieldSet(
-			$revert = new FormAction('doRevert', _t('CMSPageHistoryController.REVERTTOTHISVERSION', 'Revert to this version'))
+			$revert = new FormAction('doRollback', _t('CMSPageHistoryController.REVERTTOTHISVERSION', 'Revert to this version'))
 		));
 		
 		$fields = $form->Fields();
@@ -120,7 +120,6 @@ class CMSPageHistoryController extends CMSMain {
 			"Title"
 		);
 
-
 		$form->setFields($fields->makeReadonly());
 		$form->loadDataFrom(array(
 			"ID" => $id,
@@ -160,7 +159,8 @@ class CMSPageHistoryController extends CMSMain {
 
 		if($page) {
 			$versions = $page->allVersions();
-
+			$versionID = (!$versionID) ? $page->Version : $versionID;
+			
 			if($versions) {
 				foreach($versions as $k => $version) {
 					$active = false;
@@ -303,6 +303,7 @@ class CMSPageHistoryController extends CMSMain {
 	 */
 	function doRollback($data, $form) {
 		$this->extend('onBeforeRollback', $data['ID']);
+		
 		$id = (isset($data['ID'])) ? (int) $data['ID'] : null;
 		$version = (isset($data['Version'])) ? (int) $data['Version'] : null;
 		

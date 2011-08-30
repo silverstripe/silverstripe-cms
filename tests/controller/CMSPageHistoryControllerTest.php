@@ -41,11 +41,48 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
 	}
 	
 	function testGetEditForm() {
+		$controller = new CMSPageHistoryController();
+		
+		// should get the latest version which we cannot rollback to
+		$form = $controller->getEditForm($this->page->ID);
+	
+		$this->assertTrue($form->Actions()->dataFieldByName('action_doRollback')->isReadonly());
 
+		$this->assertEquals($this->page->ID, $form->dataFieldByName('ID')->Value());
+		$this->assertEquals($this->versionPublishCheck2, $form->dataFieldByName('Version')->Value());
+
+		$this->assertContains(
+			sprintf("Currently viewing version %s.", $this->versionPublishCheck2),
+			$form->Fields()->fieldByName('Root.Main.CurrentlyViewingMessage')->getContent()
+		);
+		
+		// edit form with a given version
+		$form = $controller->getEditForm($this->page->ID, null, $this->versionPublishCheck);
+		$this->assertFalse($form->Actions()->dataFieldByName('action_doRollback')->isReadonly());
+
+		$this->assertEquals($this->page->ID, $form->dataFieldByName('ID')->Value());
+		$this->assertEquals($this->versionPublishCheck, $form->dataFieldByName('Version')->Value());
+		$this->assertContains(
+			sprintf("Currently viewing version %s.", $this->versionPublishCheck),
+			$form->Fields()->fieldByName('Root.Main.CurrentlyViewingMessage')->getContent()
+		);
+		
+		// check that compare mode updates the message
+		$form = $controller->getEditForm($this->page->ID, null, $this->versionPublishCheck, $this->versionPublishCheck2);
+		$this->assertContains(
+			sprintf("Comparing versions %s", $this->versionPublishCheck),
+			$form->Fields()->fieldByName('Root.Main.CurrentlyViewingMessage')->getContent()
+		);
+		
+		$this->assertContains(
+			sprintf("and %s", $this->versionPublishCheck2),
+			$form->Fields()->fieldByName('Root.Main.CurrentlyViewingMessage')->getContent()
+		);
 	}
 
 	/**
-	 * @todo should be less tied to cms theme
+	 * @todo should be less tied to cms theme.
+	 * @todo check highlighting for comparing pages.
 	 */
 	function testVersionsForm() {
 		$history = $this->get('admin/page/history/show/'. $this->page->ID);
@@ -82,21 +119,9 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
 			$this->assertContains($expected[$i]['status'], (string) $tr->attributes()->class);
 			$i++;
 		}
-	}
-
-	function testDoForm() {
 		
-	}
-	
-	function testCompareForm() {
-		
-	}
-	
-	function testRevertForm() {
-		
-	}
-	
-	function testIsCompareMode() {
-		
+		// test highlighting
+		$this->assertContains('active', (string) $rows[0]->attributes()->class);
+		$this->assertThat((string) $rows[1]->attributes()->class, $this->logicalNot($this->stringContains('active')));
 	}
 }
