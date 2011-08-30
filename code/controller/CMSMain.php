@@ -169,7 +169,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			create_function('$a,$b', 'return ($a == "CMSSiteTreeFilter_Search") ? 1 : -1;')
 		);
 		
-		$fields = new FieldSet(
+		$fields = new FieldList(
 			new TextField('Term', _t('CMSSearch.FILTERLABELTEXT', 'Content')),
 			$dateGroup = new FieldGroup(
 				$dateFrom = new DateField('LastEditedFrom', _t('CMSSearch.FilterDateFrom', 'from')),
@@ -194,7 +194,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$dateFrom->setConfig('showcalendar', true);
 		$dateTo->setConfig('showcalendar', true);
 
-		$actions = new FieldSet(
+		$actions = new FieldList(
 			$resetAction = new ResetFormAction('clear', _t('CMSMain_left.ss.CLEAR', 'Clear')),
 			$searchAction = new FormAction('doSearch',  _t('CMSMain_left.ss.SEARCH', 'Search'))
 		);
@@ -398,7 +398,7 @@ JS;
 	
 	/**
 	 * @param Int $id
-	 * @param FieldSet $fields
+	 * @param FieldList $fields
 	 * @return Form
 	 */
 	public function getEditForm($id = null, $fields = null) {
@@ -477,8 +477,8 @@ JS;
 		} if ($id == 0 || $id == 'root') {
 			return $this->RootForm();
 		} else if($id) {
-			return new Form($this, "EditForm", new FieldSet(
-				new LabelField('PageDoesntExistLabel',_t('CMSMain.PAGENOTEXISTS',"This page doesn't exist"))), new FieldSet()
+			return new Form($this, "EditForm", new FieldList(
+				new LabelField('PageDoesntExistLabel',_t('CMSMain.PAGENOTEXISTS',"This page doesn't exist"))), new FieldList()
 			);
 		}
 	}
@@ -850,12 +850,12 @@ JS;
 		$form = new Form(
 			$this,
 			'SideReportsForm',
-			new FieldSet(
+			new FieldList(
 				$selectorField,
 				new HiddenField('ID', false, ($record) ? $record->ID : null),
 				new HiddenField('Locale', false, $this->Locale)
 			),
-			new FieldSet(
+			new FieldList(
 				new FormAction('doShowSideReport', _t('CMSMain_left.ss.GO','Go'))
 			)
 		);
@@ -940,7 +940,7 @@ JS;
 		$form = new Form(
 			$this,
 			'VersionsForm',
-			new FieldSet(
+			new FieldList(
 				new CheckboxField(
 					'ShowUnpublished',
 					_t('CMSMain_left.ss.SHOWUNPUB','Show unpublished versions')
@@ -949,7 +949,7 @@ JS;
 				new HiddenField('ID', false, $pageID),
 				new HiddenField('Locale', false, $this->Locale)
 			),
-			new FieldSet(
+			new FieldList(
 				new FormAction(
 					'versions',
 					_t('CMSMain.BTNREFRESH','Refresh')
@@ -1180,7 +1180,7 @@ JS;
 				"Root"
 			);
 
-			$actions = new FieldSet();
+			$actions = new FieldList();
 
 			$form = new Form($this, "EditForm", $fields, $actions);
 			$form->loadDataFrom($record);
@@ -1307,7 +1307,7 @@ JS;
 			$pageTypes[$type->getField('ClassName')] = $html;
 		}
 		
-		$fields = new FieldSet(
+		$fields = new FieldList(
 			// new HiddenField("ParentID", false, ($this->parentRecord) ? $this->parentRecord->ID : null),
 			// TODO Should be part of the form attribute, but not possible in current form API
 			$hintsField = new LiteralField('Hints', sprintf('<span class="hints" data-hints="%s"></span>', $this->SiteTreeHints())),
@@ -1316,7 +1316,7 @@ JS;
 		);
 		$parentField->setValue(($record) ? $record->ID : null);
 		
-		$actions = new FieldSet(
+		$actions = new FieldList(
 			// $resetAction = new ResetFormAction('doCancel', _t('CMSMain.Cancel', 'Cancel')),
 			$createAction = new FormAction("doAdd", _t('CMSMain.Create',"Create"))
 		);
@@ -1395,8 +1395,8 @@ JS;
 
 		} else {
 			$token = SecurityToken::inst();
-			$fields = new FieldSet();
-			$token->updateFieldSet($fields);
+			$fields = new FieldList();
+			$token->updateFieldList($fields);
 			$tokenField = $fields->First();
 			$tokenHtml = ($tokenField) ? $tokenField->FieldHolder() : '';
 			$response .= '<h1>' . _t('CMSMain.PUBALLFUN','"Publish All" functionality') . '</h1>

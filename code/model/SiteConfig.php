@@ -39,12 +39,12 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	 * Get the fields that are sent to the CMS. In
 	 * your extensions: updateCMSFields($fields)
 	 *
-	 * @return Fieldset
+	 * @return FieldList
 	 */
 	function getCMSFields() {
 		Requirements::javascript(CMS_DIR . "/javascript/SitetreeAccess.js");
 
-		$fields = new FieldSet(
+		$fields = new FieldList(
 			new TabSet("Root",
 				$tabMain = new Tab('Main',
 					$titleField = new TextField("Title", _t('SiteConfig.SITETITLE', "Site title")),
@@ -124,15 +124,15 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	 * Get the actions that are sent to the CMS. In
 	 * your extensions: updateEditFormActions($actions)
 	 *
-	 * @return Fieldset
+	 * @return FieldList
 	 */
 	function getCMSActions() {
 		if (Permission::check('ADMIN') || Permission::check('EDIT_SITECONFIG')) {
-			$actions = new FieldSet(
+			$actions = new FieldList(
 				new FormAction('save_siteconfig', _t('CMSMain.SAVE','Save'))
 			);
 		} else {
-			$actions = new FieldSet();
+			$actions = new FieldList();
 		}
 		
 		$this->extend('updateCMSActions', $actions);
