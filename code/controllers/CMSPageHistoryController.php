@@ -160,7 +160,7 @@ class CMSPageHistoryController extends CMSMain {
 		if($page) {
 			$versions = $page->allVersions();
 			$versionID = (!$versionID) ? $page->Version : $versionID;
-			
+
 			if($versions) {
 				foreach($versions as $k => $version) {
 					$active = false;
@@ -168,15 +168,8 @@ class CMSPageHistoryController extends CMSMain {
 					if($version->Version == $versionID || $version->Version == $otherVersionID) {
 						$active = true;
 						
-						if(!$version->WasPublished) {
-							$showUnpublishedChecked = 1;
-						}
+						if(!$version->WasPublished) $showUnpublishedChecked = 1;
 					}
-					$version->CMSLink = sprintf('%s/%s/%s',
-						$this->Link('show'),
-						$version->ID,
-						$version->Version
-					);
 
 					$version->Active = ($active);
 				}
