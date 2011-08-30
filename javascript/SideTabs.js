@@ -337,6 +337,10 @@ VersionList.prototype = {
 		if(this.idLoaded) {
 			$('Form_EditForm').getPageFromServer(this.idLoaded);
 		}
+	},
+	// reset after new page is loaded... is called from LeftAndMain_right.js 
+	reset : function() { 
+		this.otherVersionID = undefined; 
 	}
 }
 

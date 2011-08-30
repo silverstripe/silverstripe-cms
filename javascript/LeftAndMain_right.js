@@ -83,8 +83,10 @@ CMSForm.prototype = {
 	 * @param evalResponse boolean (optional)
 	 */
 	loadNewPage : function(formContent, response, evalResponse) {
-		//alert('here: ' + formContent);
 		var rightHTML = formContent;
+		
+		// reset the version view history 
+		if($('versions_holder')) $('versions_holder').reset();
 		
 		// Rewrite # links
 		rightHTML = rightHTML.replace(/(<a[^>]+href *= *")#/g, '$1' + window.location.href.replace(/#.*$/,'') + '#');
