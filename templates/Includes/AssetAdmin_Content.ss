@@ -1,4 +1,4 @@
-<div class="cms-content center ss-tabset" data-layout="{type: 'border'}">
+<div class="cms-content center ss-tabset $BaseCSSClasses" data-layout="{type: 'border'}">
 
 	<div class="cms-content-header north">
 		<div>
@@ -20,17 +20,22 @@
 	</div>
 
 
-	<div class="cms-content-tools west">
-		<div class="cms-content-tools-actions ui-widget-content">
-			$AddForm
+	<div class="cms-content-tools cms-panel west" data-expandOnClick="true">
+		
+		<h3 class="cms-panel-header"></h3>
+	
+		<div class="cms-panel-content">
+			<div class="cms-content-tools-actions ui-widget-content">
+				$AddForm
+			</div>
+			<div class="cms-tree" data-url-tree="$Link(getsubtree)" data-url-savetreenode="$Link(savetreenode)">
+				$SiteTreeAsUL
+			</div>
 		</div>
 		
-		<div class="cms-tree" data-url-tree="$Link(getsubtree)" data-url-savetreenode="$Link(savetreenode)">
-			$SiteTreeAsUL
-		</div>
 	</div>
 
-	<div class="cms-content-form center">
+	<div class="cms-content-fields center">
 		<div id="cms-content-listview">
 			$EditForm
 		</div>

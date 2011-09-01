@@ -201,8 +201,9 @@
 				if (e.button!=2) {
 					var $link = $(this);
 					$link.addClass('loading');
-					jQuery('.cms-edit-form').entwine('ss').loadForm(
+					jQuery('.cms-content').entwine('ss').loadForm(
 						$(this).attr('href'),
+						null,
 						function(e) {
 							$link.removeClass('loading');
 						}
@@ -263,8 +264,9 @@
 				
 					var link = $(this).siblings('.versionlink').find('a').attr('href');
 					td.addClass('loading');
-					jQuery('.cms-edit-form').entwine('ss').loadForm(
+					jQuery('.cms-content').entwine('ss').loadForm(
 						link,
+						null,
 						function(e) {
 							td.removeClass('loading');
 						}
@@ -314,8 +316,9 @@
 				data.push({name:$button.attr('name'), value: $button.val()});
 			
 				if(loadEditForm) {
-					jQuery('.cms-edit-form').entwine('ss').loadForm(
+					jQuery('.cms-content').entwine('ss').loadForm(
 						this.attr('action'),
+						null,
 						function(e) {
 							$button.removeClass('loading');
 						},

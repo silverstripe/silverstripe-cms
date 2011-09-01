@@ -11,7 +11,7 @@ class AdvancedSearchForm extends SearchForm {
 	 */
 	function __construct($controller, $name, $fields = null, $actions = null) {
 		if(!$fields) {
-			$fields = new FieldSet(
+			$fields = new FieldList(
 				$searchBy = new CompositeField(
 					new HeaderField('SearchByHeader',_t('AdvancedSearchForm.SEARCHBY', 'SEARCH BY')),
 					new TextField("+", _t('AdvancedSearchForm.ALLWORDS', 'All Words')),
@@ -44,7 +44,7 @@ class AdvancedSearchForm extends SearchForm {
 		}
 		
 		if(!$actions) {
-			$actions = new FieldSet(
+			$actions = new FieldList(
 				new FormAction("results", _t('AdvancedSearchForm.GO', 'Go'))
 			);
 		}

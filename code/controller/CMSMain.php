@@ -169,7 +169,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			create_function('$a,$b', 'return ($a == "CMSSiteTreeFilter_Search") ? 1 : -1;')
 		);
 		
-		$fields = new FieldSet(
+		$fields = new FieldList(
 			new TextField('Term', _t('CMSSearch.FILTERLABELTEXT', 'Content')),
 			$dateGroup = new FieldGroup(
 				$dateFrom = new DateField('LastEditedFrom', _t('CMSSearch.FilterDateFrom', 'from')),
@@ -194,7 +194,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$dateFrom->setConfig('showcalendar', true);
 		$dateTo->setConfig('showcalendar', true);
 
-		$actions = new FieldSet(
+		$actions = new FieldList(
 			$resetAction = new ResetFormAction('clear', _t('CMSMain_left.ss.CLEAR', 'Clear')),
 			$searchAction = new FormAction('doSearch',  _t('CMSMain_left.ss.SEARCH', 'Search'))
 		);
@@ -345,7 +345,7 @@ JS;
 		
 		$this->response->addHeader('X-Status', _t('LeftAndMain.SAVEDUP'));
 	
-		return $form->formHtmlContent();
+		return $form->forTemplate();
 	}
 	/**
 	 * Get a database record to be managed by the CMS
@@ -398,7 +398,7 @@ JS;
 	
 	/**
 	 * @param Int $id
-	 * @param FieldSet $fields
+	 * @param FieldList $fields
 	 * @return Form
 	 */
 	public function getEditForm($id = null, $fields = null) {
@@ -431,6 +431,13 @@ JS;
 				$stageURLField->setValue(Controller::join_links($record->AbsoluteLink(), '?Stage=stage'));
 			}
 			
+			// Added in-line to the form, but plucked into different view by LeftAndMain.Preview.js upon load
+			if(in_array('CMSPreviewable', class_implements($record)) && !$fields->fieldByName('SilverStripeNavigator')) {
+				$navField = new LiteralField('SilverStripeNavigator', $this->getSilverStripeNavigator());
+				$navField->setAllowHTML(true);
+				$fields->push($navField);
+			}
+			
 			// getAllCMSActions can be used to completely redefine the action list
 			if($record->hasMethod('getAllCMSActions')) {
 				$actions = $record->getAllCMSActions();
@@ -438,14 +445,6 @@ JS;
 				$actions = $record->getCMSActions();
 			}
 			
-			// Add a default or custom validator.
-			// @todo Currently the default Validator.js implementation
-			//  adds javascript to the document body, meaning it won't
-			//  be included properly if the associated fields are loaded
-			//  through ajax. This means only serverside validation
-			//  will kick in for pages+validation loaded through ajax.
-			//  This will be solved by using less obtrusive javascript validation
-			//  in the future, see http://open.silverstripe.com/ticket/2915 and http://open.silverstripe.com/ticket/3386
 			if($record->hasMethod('getCMSValidator')) {
 				$validator = $record->getCMSValidator();
 			} else {
@@ -464,7 +463,7 @@ JS;
 			$form->addExtraClass('cms-edit-form');
 			$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 			// TODO Can't merge $FormAttributes in template at the moment
-			$form->addExtraClass('cms-content center ss-tabset');
+			$form->addExtraClass('cms-content center ss-tabset ' . $this->BaseCSSClasses());
 			if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 
 			if(!$record->canEdit() || $record->IsDeletedFromStage) {
@@ -478,8 +477,8 @@ JS;
 		} if ($id == 0 || $id == 'root') {
 			return $this->RootForm();
 		} else if($id) {
-			return new Form($this, "EditForm", new FieldSet(
-				new LabelField('PageDoesntExistLabel',_t('CMSMain.PAGENOTEXISTS',"This page doesn't exist"))), new FieldSet()
+			return new Form($this, "EditForm", new FieldList(
+				new LabelField('PageDoesntExistLabel',_t('CMSMain.PAGENOTEXISTS',"This page doesn't exist"))), new FieldList()
 			);
 		}
 	}
@@ -504,6 +503,19 @@ JS;
 		$this->extend('updateEditForm', $form);
 
 		return $form;
+	}
+	
+	public function currentPageID() {
+		$id = parent::currentPageID();
+		
+		// Fall back to homepage record
+		if(!$id) {
+			$homepageSegment = RootURLController::get_homepage_link();
+			$homepageRecord = DataObject::get_one('SiteTree', sprintf('"URLSegment" = \'%s\'', $homepageSegment));
+			if($homepageRecord) $id = $homepageRecord->ID;
+		}
+		
+		return $id;
 	}
 
 	//------------------------------------------------------------------------------------------//
@@ -578,7 +590,7 @@ JS;
 			$form = $this->getEditForm($record->ID);
 		}
 		
-		return $form->formHtmlContent();
+		return $form->forTemplate();
 	}
 
 
@@ -615,7 +627,7 @@ JS;
 			return $record->ID;
 		} else if(Director::is_ajax()) {
 			$form = $this->getEditForm($record->ID);
-			return $form->formHtmlContent();
+			return $form->forTemplate();
 		} else {
 			return $this->redirect(Controller::join_links($this->Link('show'), $record->ID));
 		}
@@ -757,7 +769,7 @@ JS;
 		
 		$form = $this->getEditForm($record->ID);
 		
-		return $form->formHtmlContent();
+		return $form->forTemplate();
 	}
 	
 	/**
@@ -791,7 +803,7 @@ JS;
 				'Live', 
 				"\"SiteTree_Live\".\"ID\" = $recordID"
 			);
-			return ($liveRecord) ? $form->formHtmlContent() : "";
+			return ($liveRecord) ? $form->forTemplate() : "";
 		} else {
 			$this->redirectBack();
 		}
@@ -838,12 +850,12 @@ JS;
 		$form = new Form(
 			$this,
 			'SideReportsForm',
-			new FieldSet(
+			new FieldList(
 				$selectorField,
 				new HiddenField('ID', false, ($record) ? $record->ID : null),
 				new HiddenField('Locale', false, $this->Locale)
 			),
-			new FieldSet(
+			new FieldList(
 				new FormAction('doShowSideReport', _t('CMSMain_left.ss.GO','Go'))
 			)
 		);
@@ -928,7 +940,7 @@ JS;
 		$form = new Form(
 			$this,
 			'VersionsForm',
-			new FieldSet(
+			new FieldList(
 				new CheckboxField(
 					'ShowUnpublished',
 					_t('CMSMain_left.ss.SHOWUNPUB','Show unpublished versions')
@@ -937,7 +949,7 @@ JS;
 				new HiddenField('ID', false, $pageID),
 				new HiddenField('Locale', false, $this->Locale)
 			),
-			new FieldSet(
+			new FieldList(
 				new FormAction(
 					'versions',
 					_t('CMSMain.BTNREFRESH','Refresh')
@@ -988,7 +1000,7 @@ JS;
 		
 		$form = $this->getEditForm($record->ID);
 		
-		return $form->formHtmlContent();
+		return $form->forTemplate();
 	}
 	
 	function publish($data, $form) {
@@ -1013,7 +1025,7 @@ JS;
 		// Reload form, data and actions might have changed
 		$form = $this->getEditForm($record->ID);
 		
-		return $form->formHtmlContent();
+		return $form->forTemplate();
 	}
 
 	function performRollback($id, $version) {
@@ -1168,7 +1180,7 @@ JS;
 				"Root"
 			);
 
-			$actions = new FieldSet();
+			$actions = new FieldList();
 
 			$form = new Form($this, "EditForm", $fields, $actions);
 			$form->loadDataFrom($record);
@@ -1187,7 +1199,7 @@ JS;
 			}
 
 			if($this->isAjax()) {
-				return $form->formHtmlContent();
+				return $form->forTemplate();
 			} else {
 				$templateData = $this->customise(array(
 					"EditForm" => $form
@@ -1295,7 +1307,7 @@ JS;
 			$pageTypes[$type->getField('ClassName')] = $html;
 		}
 		
-		$fields = new FieldSet(
+		$fields = new FieldList(
 			// new HiddenField("ParentID", false, ($this->parentRecord) ? $this->parentRecord->ID : null),
 			// TODO Should be part of the form attribute, but not possible in current form API
 			$hintsField = new LiteralField('Hints', sprintf('<span class="hints" data-hints="%s"></span>', $this->SiteTreeHints())),
@@ -1304,7 +1316,7 @@ JS;
 		);
 		$parentField->setValue(($record) ? $record->ID : null);
 		
-		$actions = new FieldSet(
+		$actions = new FieldList(
 			// $resetAction = new ResetFormAction('doCancel', _t('CMSMain.Cancel', 'Cancel')),
 			$createAction = new FormAction("doAdd", _t('CMSMain.Create',"Create"))
 		);
@@ -1383,8 +1395,8 @@ JS;
 
 		} else {
 			$token = SecurityToken::inst();
-			$fields = new FieldSet();
-			$token->updateFieldSet($fields);
+			$fields = new FieldList();
+			$token->updateFieldList($fields);
 			$tokenField = $fields->First();
 			$tokenHtml = ($tokenField) ? $tokenField->FieldHolder() : '';
 			$response .= '<h1>' . _t('CMSMain.PUBALLFUN','"Publish All" functionality') . '</h1>
@@ -1426,7 +1438,7 @@ JS;
 		// Reload form, data and actions might have changed
 		$form = $this->getEditForm($restoredPage->ID);
 		
-		return $form->formHtmlContent();
+		return $form->forTemplate();
 	}
 
 	function duplicate($request) {
@@ -1450,7 +1462,7 @@ JS;
 			// Reload form, data and actions might have changed
 			$form = $this->getEditForm($newPage->ID);
 			
-			return $form->formHtmlContent();
+			return $form->forTemplate();
 		} else {
 			user_error("CMSMain::duplicate() Bad ID: '$id'", E_USER_WARNING);
 		}
@@ -1471,7 +1483,7 @@ JS;
 			// Reload form, data and actions might have changed
 			$form = $this->getEditForm($newPage->ID);
 			
-			return $form->formHtmlContent();
+			return $form->forTemplate();
 		} else {
 			user_error("CMSMain::duplicate() Bad ID: '$id'", E_USER_WARNING);
 		}

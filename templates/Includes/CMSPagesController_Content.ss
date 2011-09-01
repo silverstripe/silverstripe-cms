@@ -1,4 +1,4 @@
-<div class="cms-content center ss-tabset" data-layout="{type: 'border'}">
+<div class="cms-content center ss-tabset $BaseCSSClasses" data-layout="{type: 'border'}">
 
 	<div class="cms-content-header north">
 		<div>
@@ -20,13 +20,18 @@
 		</div>
 	</div>
 
-	<div class="cms-content-tools west">
+	<div class="cms-content-tools west cms-panel" data-expandOnClick="true">
+		
+		<h3 class="cms-panel-header">Filter</h3>
 	
-		$SearchForm
+		<div class="cms-panel-content">
+			$SearchForm
+		</div>
+		
 		
 	</div>
 
-	<div class="cms-content-form center ui-widget-content">
+	<div class="cms-content-fields center ui-widget-content">
 		
 		<div id="cms-content-treeview">
 			

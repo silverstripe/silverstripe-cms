@@ -165,10 +165,10 @@ class SS_Report extends ViewableData {
 	 * @uses getReportField() to render a table, or similar field for the report. This
 	 * method should be defined on the SS_Report subclasses.
 	 *
-	 * @return FieldSet
+	 * @return FieldList
 	 */
 	function getCMSFields() {
-		$fields = new FieldSet(
+		$fields = new FieldList(
 			new LiteralField(
 				'ReportTitle', 
 				 "<h3>{$this->title()}</h3>"
@@ -200,7 +200,7 @@ class SS_Report extends ViewableData {
 	
 	function getCMSActions() {
 		// getCMSActions() can be extended with updateCMSActions() on a extension
-		$actions = new FieldSet();
+		$actions = new FieldList();
 		$this->extend('updateCMSActions', $actions);
 		return $actions;
 	}

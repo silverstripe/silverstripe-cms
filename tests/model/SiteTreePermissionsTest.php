@@ -54,6 +54,7 @@ class SiteTreePermissionsTest extends FunctionalTest {
 		// should be prompted for a login
 		$response = $this->get($page->URLSegment . '?stage=Stage');
 		$this->assertEquals($response->getStatusCode(), '302');
+		$this->assertContains('Security/login', $response->getHeader('Location'));
 		
 		$this->logInWithPermission('ADMIN');
 		

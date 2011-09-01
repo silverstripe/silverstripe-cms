@@ -7,7 +7,7 @@
  * In addition, it contains a number of static methods for querying the site tree.
  * @package cms
  */
-class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvider {
+class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvider,CMSPreviewable {
 
 	/**
 	 * Indicates what kind of children this page type can have.
@@ -178,7 +178,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	private static $nested_urls = false;
 	
 	/**
-	 * @see SiteTree::set_create_defaultpages()
+	 * @see SiteTree::set_create_default_pages()
 	*/
 	private static $create_default_pages = true;
 	
@@ -453,6 +453,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 	}
 	
+	/**
+	 * @return String
+	 */
+	function CMSEditLink() {
+		return Controller::join_links(singleton('CMSPageEditController')->Link('show'), $this->ID);
+	}
+	
 		
 	/**
 	 * Return a CSS identifier generated from this page's link.
@@ -480,7 +487,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 */
 	public function isSection() {
 		return $this->isCurrent() || (
-			Director::get_current_page() instanceof SiteTree && in_array($this->ID, Director::get_current_page()->getAncestors()->column())
+			Director::get_current_page() instanceof SiteTree && in_array($this->ID, Director::get_current_page()->getAncestors()->column('ID'))
 		);
 	}
 	
@@ -1270,7 +1277,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$tags .= $this->ExtraMeta . "\n";
 		} 
 		
-		if(Permission::check('CMS_ACCESS_CMSMain')) $tags .= "<meta name='x-page-id' content='{$this->ID}' />\n";
+		if(Permission::check('CMS_ACCESS_CMSMain') && in_array('CMSPreviewable', class_implements($this))) {
+			$tags .= "<meta name=\"x-page-id\" content=\"{$this->ID}\" />\n";
+			$tags .= "<meta name=\"x-cms-edit-link\" content=\"" . $this->CMSEditLink() . "\" />\n";
+		}
 
 		$this->extend('MetaTags', $tags);
 
@@ -1684,7 +1694,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * See {@link getSettingsFields()} for a different set of fields
 	 * concerned with configuration aspects on the record, e.g. access control
 	 *
-	 * @return FieldSet The fields to be displayed in the CMS.
+	 * @return FieldList The fields to be displayed in the CMS.
 	 */
 	function getCMSFields() {
 		require_once("forms/Form.php");
@@ -1758,7 +1768,15 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			));
 		}
 		
-		$fields = new FieldSet(
+		$baseLink = Controller::join_links (
+			Director::absoluteBaseURL(),
+			(self::nested_urls() && $this->ParentID ? $this->Parent()->RelativeLink(true) : null)
+		);
+		
+		$url = (strlen($baseLink) > 36) ? "..." .substr($baseLink, -32) : $baseLink;
+		$urlHelper = sprintf("<span>%s</span>", $url);
+		
+		$fields = new FieldList(
 			$rootTab = new TabSet("Root",
 				$tabMain = new Tab('Main',
 					new TextField("Title", $this->fieldLabel('Title')),
@@ -1766,14 +1784,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					new HtmlEditorField("Content", _t('SiteTree.HTMLEDITORTITLE', "Content", PR_MEDIUM, 'HTML editor title'))
 				),
 				$tabMeta = new Tab('Metadata',
-					new FieldGroup(_t('SiteTree.URL', "URL"),
-						new LabelField('BaseUrlLabel',Controller::join_links (
-							Director::absoluteBaseURL(),
-							(self::nested_urls() && $this->ParentID ? $this->Parent()->RelativeLink(true) : null)
-						)),
-						new TextField("URLSegment","URLSegment"),
-						new LabelField('TrailingSlashLabel',"/")
-					),
+					new TextField("URLSegment", $this->fieldLabel('URLSegment') . $urlHelper),
 					new LiteralField('LinkChangeNote', self::nested_urls() && count($this->Children()) ?
 						'<p>' . $this->fieldLabel('LinkChangeNote'). '</p>' : null
 					),
@@ -1816,10 +1827,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * Returns fields related to configuration aspects on this record, e.g. access control.
 	 * See {@link getCMSFields()} for content-related fields.
 	 * 
-	 * @return FieldSet
-	 */
+	 * @return FieldList	 */
 	function getSettingsFields() {
-		$fields = new FieldSet(
+		$fields = new FieldList(
 			$rootTab = new TabSet("Root",
 				$tabBehaviour = new Tab('Settings',
 					new DropdownField(
@@ -1966,10 +1976,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 	/**
 	 * Get the actions available in the CMS for this page - eg Save, Publish.
-	 * @return FieldSet The available actions for this page.
+	 * @return FFieldListThe available actions for this page.
 	 */
 	function getCMSActions() {
-		$actions = new FieldSet();
+		$actions = new FieldList();
 
 		// "readonly"/viewing version that isn't the current version of the record
 		$stageOrLiveRecord = Versioned::get_one_by_stage($this->class, Versioned::current_stage(), sprintf('"SiteTree"."ID" = %d', $this->ID));
@@ -1987,7 +1997,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			// "unpublish"
 			$unpublish = FormAction::create('unpublish', _t('SiteTree.BUTTONUNPUBLISH', 'Unpublish'), 'delete');
 			$unpublish->describe(_t('SiteTree.BUTTONUNPUBLISHDESC', 'Remove this page from the published site'));
-			$unpublish->addExtraClass('delete');
+			$unpublish->addExtraClass('unpublish');
 			$unpublish->addExtraClass('ss-ui-action-destructive');
 			$actions->push($unpublish);
 		}
@@ -2009,7 +2019,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					$actions->push(new FormAction('revert',_t('CMSMain.RESTORE','Restore')));
 					if($this->canDelete() && $this->canDeleteFromLive()) {
 						// "delete from live"
-						$actions->push($deleteFromLiveAction = new FormAction('deletefromlive',_t('CMSMain.DELETEFP','Delete from the published site')));
+						$actions->push($deleteFromLiveAction = new FormAction('deletefromlive',_t('CMSMain.DELETEFP','Delete')));
 						$deleteFromLiveAction->addExtraClass('ss-ui-action-destructive');
 					}
 				} else {
@@ -2019,19 +2029,20 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			} else {
 				if($this->canDelete()) {
 					// "delete"
-					$actions->push($deleteAction = new FormAction('delete',_t('CMSMain.DELETE','Delete from the draft site')));
+					$actions->push($deleteAction = new FormAction('delete',_t('CMSMain.DELETE','Delete draft')));
 					$deleteAction->addExtraClass('delete');
 					$deleteAction->addExtraClass('ss-ui-action-destructive');
 				}
 			
 				// "save"
-				$actions->push(new FormAction('save',_t('CMSMain.SAVE','Save')));
+				$actions->push($saveDraftAction = new FormAction('save',_t('CMSMain.SAVEDRAFT','Save Draft')));
+				$saveDraftAction->addExtraClass('save-draft');
 			}
 		}
 
 		if($this->canPublish() && !$this->IsDeletedFromStage) {
 			// "publish"
-			$actions->push($publishAction = new FormAction('publish', _t('SiteTree.BUTTONSAVEPUBLISH', 'Save and Publish')));
+			$actions->push($publishAction = new FormAction('publish', _t('SiteTree.BUTTONSAVEPUBLISH', 'Save & Publish')));
 			$publishAction->addExtraClass('ss-ui-action-constructive');
 		}
 		
@@ -2411,13 +2422,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		} elseif($this->IsAddedToStage) {
 			$tag = "ins title=\"" . _t('SiteTree.ADDEDTODRAFT', 'Added to draft site') . "\"";
 		} elseif($this->IsModifiedOnStage) {
-			$tag = "span title=\"" . _t('SiteTree.MODIFIEDONDRAFT', 'Modified on draft site') . "\" class=\"modified\"";
+			$tag = "span title=\"" . _t('SiteTree.MODIFIEDONDRAFT', 'Modified on draft site') . "\" class=\"status modified\"";
 		} else {
 			$tag = '';
 		}
 
 		$text = Convert::raw2xml(str_replace(array("\n","\r"),"",$this->MenuTitle));
-		return ($tag) ? "<$tag>" . $text . "</" . strtok($tag,' ') . ">" : $text;
+		return ($tag) ? "<span class=\"jstree-pageicon\"></span>"."<$tag>" . $text . "</" . strtok($tag,' ') . ">" : "<span class=\"jstree-pageicon\"></span>". $text;
 	}
 
 	/**

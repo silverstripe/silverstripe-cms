@@ -69,7 +69,7 @@ in the other stage:<br />
 	}
 	
 	function Form() {
-		$fields = new FieldSet();
+		$fields = new FieldList();
 		$source = array();
 		
 		$fields->push(new HeaderField(
@@ -167,7 +167,7 @@ in the other stage:<br />
 			$this,
 			'Form',
 			$fields,
-			new FieldSet(
+			new FieldList(
 				new FormAction('doSubmit', _t('RemoveOrphanedPagesTask.BUTTONRUN', 'Run'))
 			)
 		);
