@@ -201,7 +201,7 @@ class CMSPageHistoryController extends CMSMain {
 				),
 				new CheckboxField(
 					'CompareMode',
-					_t('CMSPageHistoryController.COMPAREMODE', 'Compare mode'),
+					_t('CMSPageHistoryController.COMPAREMODE', 'Compare mode (select two)'),
 					$compareModeChecked
 				),
 				new LiteralField('VersionsHtml', $versionsHtml),
