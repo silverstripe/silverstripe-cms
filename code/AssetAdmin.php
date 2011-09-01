@@ -255,17 +255,17 @@ JS
 				
 				// move file to given folder
 				if($valid) {
-					$newFile = $folder->addUploadToFolder($tmpFile);
-					
-					if(self::$metadata_upload_enabled && isset($processedData[$filePostId])) {
-						$fileObject = DataObject::get_by_id('File', $newFile);
-						$metadataForm = new Form($this, 'MetadataForm', $fileObject->uploadMetadataFields(), new FieldSet());
-						$metadataForm->loadDataFrom($processedData[$filePostId]);
-						$metadataForm->saveInto($fileObject);
-						$fileObject->write();
+					if($newFile = $folder->addUploadToFolder($tmpFile)) {
+						if(self::$metadata_upload_enabled && isset($processedData[$filePostId])) {
+							$fileObject = DataObject::get_by_id('File', $newFile);
+							$metadataForm = new Form($this, 'MetadataForm', $fileObject->uploadMetadataFields(), new FieldSet());
+							$metadataForm->loadDataFrom($processedData[$filePostId]);
+							$metadataForm->saveInto($fileObject);
+							$fileObject->write();
+						}
+
+						$newFiles[] = $newFile;
 					}
-					
-					$newFiles[] = $newFile;
 				}
 			}
 		}
