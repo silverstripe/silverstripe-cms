@@ -357,9 +357,12 @@ JS;
 
 		if($id instanceof $treeClass) {
 			return $id;
-		} else if($id && is_numeric($id)) {
-			if(isset($_REQUEST['Version'])) $versionID = (int) $_REQUEST['Version'];
-
+		} 
+		else if($id && is_numeric($id)) {
+			if($this->request->getVar('Version')) {
+				$versionID = (int) $this->request->getVar('Version');
+			}
+			
 			if($versionID) {
 				$record = Versioned::get_version($treeClass, $id, $versionID);
 			} else {
