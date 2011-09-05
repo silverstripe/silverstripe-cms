@@ -51,6 +51,8 @@ DraggableSeparator.prototype = {
 
 function fixRightWidth() {
 	if(!$('right')) return;
+	
+	var contentPanel = jQuery('#contentPanel');
 
 	// Absolutely position all the elements
 	var sep = getDimension($('left'),'width') + getDimension($('left'),'left');
@@ -62,10 +64,21 @@ function fixRightWidth() {
 	var leftWidth = parseInt($('left').offsetWidth);
 	var sepWidth = parseInt($('separator').offsetWidth - 8);
 	var rightWidth = bodyWidth - leftWidth - sepWidth -18;
+	// hardcoded to avoid confusion when flipping between scrollbar widths
+	var contentPanelDefaultWidth = 205; 
 	
 	// Extra pane in right for insert image/flash/link things
-	if($('contentPanel') && $('contentPanel').style.display != "none") {
-		rightWidth -= 210;
+	if(contentPanel.is(':visible')) {
+		rightWidth -= contentPanelDefaultWidth - sepWidth;
+		if(contentPanel.hasScrollbar()) {
+			rightWidth -= jQuery.getScrollbarWidth();
+			contentPanel.width(contentPanelDefaultWidth + jQuery.getScrollbarWidth());
+		} else {
+			contentPanel.width(contentPanelDefaultWidth);
+		}
+		// Always set the contained element to the original width (excluding potential scrollbar widths)
+		contentPanel.children('form:visible').width(contentPanelDefaultWidth);
+		
 		$('contentPanel').style.left = leftWidth + sepWidth + rightWidth + sepWidth + 23 + 'px';
 	}
 
@@ -189,27 +202,7 @@ window.onresize = function(init) {
 
 	if(typeof fitToParent == 'function') {
 		if($('Form_EditForm')) fitToParent('Form_EditForm', 4);
-		if($('Form_AddForm')) fitToParent('Form_AddForm', 4);
-		
-		if($('Form_EditorToolbarImageForm') && $('Form_EditorToolbarImageForm').style.display == "block") {
-			fitToParent('Form_EditorToolbarImageForm', 5);
-			fitToParent($('Form_EditorToolbarImageForm').getElementsByTagName('fieldset')[0]);
-			if(navigator.appName == "Microsoft Internet Explorer") {
-				fitToParent('Image');
-			} else {
-				fitToParent('Image', 250);
-			}
-		}
-		if($('Form_EditorToolbarFlashForm') && $('Form_EditorToolbarFlashForm').style.display == "block") {
-			fitToParent('Form_EditorToolbarFlashForm', 5);
-			fitToParent($('Form_EditorToolbarFlashForm').getElementsByTagName('fieldset')[0]);
-			if(navigator.appName == "Microsoft Internet Explorer") {
-				fitToParent('Flash');
-			} else {
-				fitToParent('Flash', 130);
-			}
-		}
-	
+		if($('Form_AddForm')) fitToParent('Form_AddForm', 4);	
 	}
 	if(typeof fixHeight_left == 'function') fixHeight_left();
 	if(typeof fixRightWidth == 'function') fixRightWidth();
@@ -899,6 +892,17 @@ function nullConverter(url) {
 	return url;
 }
 
+(function($) {
+	$.fn.hasScrollbar = function(dir) {
+		var fn = (dir == 'x') ? 'scrollLeft' : 'scrollTop';
+		var origScroll = this[fn]();
+		this[fn](1); // do a fake scroll 
+		var hasScrollbar = (this[fn]() !== 0); // did it have any effect?
+		this[fn](origScroll); // scroll back
+		return hasScrollbar;
+	};
+})(jQuery);
+
 Behaviour.register({
     'textarea.htmleditor' : {
         initialize : function() {
@@ -914,4 +918,4 @@ Behaviour.register({
 			}
         }
     }
-})
+});
