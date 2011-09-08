@@ -222,7 +222,7 @@ class PageCommentInterface extends RequestHandler {
 			foreach($fields as $field) {
 				if(!$field instanceof HiddenField) $visibleFields[] = $field->Name();
 			}
-			$form->loadDataFrom(unserialize($cookie), false, $visibleFields);
+			$form->loadDataFrom(Convert::json2array($cookie), false, $visibleFields);
 		}
 
 		return $form;
@@ -272,7 +272,7 @@ class PageCommentInterface extends RequestHandler {
  */
 class PageCommentInterface_Form extends Form {
 	function postcomment($data) {
-		Cookie::set("PageCommentInterface_Data", serialize($data));
+		Cookie::set("PageCommentInterface_Data", Convert::raw2json($data));
 
 		// Spam filtering
 		if(SSAkismet::isEnabled()) {
@@ -333,7 +333,7 @@ class PageCommentInterface_Form extends Form {
 		$comment->write();
 		
 		unset($data['Comment']);
-		Cookie::set("PageCommentInterface_Data", serialize($data));
+		Cookie::set("PageCommentInterface_Data", Convert::raw2json($data));
 		
 		$moderationMsg = _t('PageCommentInterface_Form.AWAITINGMODERATION', "Your comment has been submitted and is now awaiting moderation.");
 		
