@@ -1011,15 +1011,20 @@ JS;
 			$actions = new FieldSet();
 
 			$form = new Form($this, "EditForm", $fields, $actions);
+			
+			// Comparison views shouldn't be editable.
+			// Its important to convert fields *before* loading data,
+			// as the comparison output is HTML and not valid values for the various field types
+			$readonlyFields = $form->Fields()->makeReadonly();
+			$form->setFields($readonlyFields);
+			
 			$form->loadDataFrom($record);
 			$form->loadDataFrom(array(
 				"ID" => $id,
 				"Version" => $fromVersion,
 			));
 			
-			// comparison views shouldn't be editable
-			$readonlyFields = $form->Fields()->makeReadonly();
-			$form->setFields($readonlyFields);
+			
 			
 			foreach($form->Fields()->dataFields() as $field) {
 				$field->dontEscape = true;
