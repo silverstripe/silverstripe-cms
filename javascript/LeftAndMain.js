@@ -653,7 +653,7 @@ ChangeTracker.prototype = {
 	 * Serialize all the fields on the page
 	 */
 	serializeAllFields: function() {
-		return Form.serializeWithoutButtons(this);
+		return jQuery(this).serialize();
 	}
 }
 
