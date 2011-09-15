@@ -194,6 +194,13 @@ class AssetTableField extends ComplexTableField {
 				)
 			);
 		}
+		
+		if(!($childData instanceof Folder)) {
+			$mainTab->addFieldToTab(
+				'BottomRoot.Main', 
+				new CheckboxField("ShowInSearch", $childData->fieldLabel('ShowInSearch'))
+			);
+		}
 
 		if($childData && $childData->hasMethod('BackLinkTracking')) {
 			if(class_exists('Subsite')) Subsite::disable_subsite_filter(true);
