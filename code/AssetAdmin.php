@@ -315,7 +315,7 @@ HTML;
 	public function movemarked($urlParams, $form) {
 		if($_REQUEST['DestFolderID'] && (is_numeric($_REQUEST['DestFolderID']) || ($_REQUEST['DestFolderID']) == 'root')) {
 			$destFolderID = ($_REQUEST['DestFolderID'] == 'root') ? 0 : $_REQUEST['DestFolderID'];
-			$fileList = "'" . ereg_replace(' *, *',"','",trim(addslashes($_REQUEST['FileIDs']))) . "'";
+			$fileList = "'" . ereg_replace(' *, *',"','",trim(Convert::raw2sql($_REQUEST['FileIDs']))) . "'";
 			$numFiles = 0;
 	
 			if($fileList != "''") {
@@ -350,7 +350,7 @@ HTML;
 	 * Called and returns in same way as 'save' function
 	 */
 	public function deletemarked($urlParams, $form) {
-		$fileList = "'" . ereg_replace(' *, *',"','",trim(addslashes($_REQUEST['FileIDs']))) . "'";
+		$fileList = "'" . ereg_replace(' *, *',"','",trim(Convert::raw2sql($_REQUEST['FileIDs']))) . "'";
 		$numFiles = 0;
 		$folderID = 0;
 		$deleteList = '';
@@ -560,7 +560,7 @@ JS;
 		}
 
 		if(isset($brokenPageList)) {
-		  $message .= '  '._t('AssetAdmin.NOWBROKEN', 'The following pages now have broken links:').'<ul>'.addslashes($brokenPageList).'</ul>'.
+		  $message .= '  '._t('AssetAdmin.NOWBROKEN', 'The following pages now have broken links:').'<ul>'.Convert::raw2xml($brokenPageList).'</ul>'.
 		    _t('AssetAdmin.NOWBROKEN2', 'Their owners have been emailed and they will fix up those pages.');
 		}
 
