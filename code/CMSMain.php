@@ -225,7 +225,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			return $dateField->Field();
 		}
 		public function SiteTreeFilterPageTypeField() {
-			$types = SiteTree::page_type_classes(); array_unshift($types, 'All');
+			$types = SiteTree::page_type_classes(); array_unshift($types, 'Any');
 			$source = array_combine($types, $types);
 			asort($source);
 			$optionsetField = new DropdownField('ClassName', 'ClassName', $source, 'Any');
