@@ -23,24 +23,32 @@ class CMSPageHistoryController extends CMSMain {
 	/**
 	 * @return array
 	 */
-	function show() {
-		return array(
-			'EditForm' => $this->ShowVersionForm(
-				$this->request->param('VersionID')
-			)
+	function show($request) {
+		$form = $this->ShowVersionForm(
+			$request->param('VersionID')
 		);
+		if($this->isAjax()) {
+				$content = $form->forTemplate();
+		} else {
+			$content = $this->customise(array('EditForm' => $form))->renderWith($this->getViewer('show'));
+		}
+		return $content;
 	}
 	
 	/**
 	 * @return array
 	 */
-	function compare() {
-		return array(
-			'EditForm' => $this->CompareVersionsForm(
-				$this->request->param('VersionID'), 
-				$this->request->param('OtherVersionID')
-			)
+	function compare($request) {
+		$form = $this->CompareVersionsForm(
+			$request->param('VersionID'), 
+			$request->param('OtherVersionID')
 		);
+		if($this->isAjax()) {
+			$content = $form->forTemplate();
+		} else {
+			$content = $this->customise(array('EditForm' => $form))->renderWith($this->getViewer('show'));
+		}
+		return $content;
 	}
 	
 	/**
@@ -92,7 +100,7 @@ class CMSPageHistoryController extends CMSMain {
 		
 		if($compareID) {
 			$link = Controller::join_links(
-				$this->Link('version'),
+				$this->Link('show'),
 				$id
 			);
 
