@@ -73,16 +73,7 @@
 					url = 'admin/page/history/show/'+ [id,to].join('/') + "/";
 				}
 				
-				window.History.pushState({selector: '.cms-content-fields form:first'}, '', url);
-				
-				data = this.serializeArray();
-				data.push({
-					name: button.attr('name'), value: button.val()
-				});
-				
-				$('.cms-content').loadForm(this.attr('action'), null, function() {}, {
-					data: data, type: this.attr('method')
-				});
+				window.History.pushState({selector: '.cms-edit-form'}, '', url);
 				
 				return false;
 			}
