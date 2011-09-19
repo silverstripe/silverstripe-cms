@@ -1,11 +1,12 @@
 <?php
 /**
  * The main "content" area of the CMS.
+ *
  * This class creates a 2-frame layout - left-tree and right-form - to sit beneath the main
  * admin menu.
  * 
  * @package cms
- * @subpackage content
+ * @subpackage controller
  * @todo Create some base classes to contain the generic functionality that will be replicated.
  */
 class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionProvider {
@@ -29,13 +30,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	static $allowed_actions = array(
 		'addpage',
 		'buildbrokenlinks',
-		'compareversions',
 		'deleteitems',
 		'DeleteItemsForm',
 		'dialog',
 		'duplicate',
 		'duplicatewithchildren',
-		'getversion',
 		'publishall',
 		'publishitems',
 		'PublishItemsForm',
@@ -43,8 +42,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'sidereport',
 		'SideReportsForm',
 		'submit',
-		'versions',
-		'VersionsForm',
 		'EditForm',
 		'AddForm',
 		'SearchForm',
@@ -78,6 +75,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				CMS_DIR . '/javascript/CMSMain.js',
 				CMS_DIR . '/javascript/CMSMain.EditForm.js',
 				CMS_DIR . '/javascript/CMSMain.AddForm.js',
+				CMS_DIR . '/javascript/CMSPageHistoryController.js',
 				CMS_DIR . '/javascript/SilverStripeNavigator.js'
 			)
 		);
@@ -172,12 +170,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$fields = new FieldSet(
 			new TextField('Term', _t('CMSSearch.FILTERLABELTEXT', 'Content')),
 			$dateGroup = new FieldGroup(
-				$dateFrom = new DateField('LastEditedFrom', _t('CMSSearch.FilterDateFrom', 'from')),
-				$dateTo = new DateField('LastEditedTo', _t('CMSSearch.FilterDateFrom', 'to'))
+				$dateFrom = new DateField('LastEditedFrom', _t('CMSSearch.FILTERDATEFROM', 'From')),
+				$dateTo = new DateField('LastEditedTo', _t('CMSSearch.FILTERDATETO', 'To'))
 			),
 			new DropdownField(
 				'FilterClass', 
-				_t('CMSMain.SearchTreeFormPagesDropdown', 'Pages'), 
+				_t('CMSMain.PAGES', 'Pages'), 
 				$filterMap
 			),
 			new DropdownField(
@@ -347,18 +345,23 @@ JS;
 	
 		return $form->forTemplate();
 	}
+	
 	/**
-	 * Get a database record to be managed by the CMS
+	 * Get a database record to be managed by the CMS.
+	 *
+	 * @param int $id Record ID
+	 * @param int $versionID optional Version id of the given record
 	 */
- 	public function getRecord($id) {
+ 	public function getRecord($id, $versionID = null) {
 		$treeClass = $this->stat('tree_class');
 
 		if($id instanceof $treeClass) {
 			return $id;
 		} else if($id && is_numeric($id)) {
-			$version = isset($_REQUEST['Version']) ? $_REQUEST['Version'] : null;
-			if(is_numeric($version)) {
-				$record = Versioned::get_version($treeClass, $id, $version);
+			if(isset($_REQUEST['Version'])) $versionID = (int) $_REQUEST['Version'];
+
+			if($versionID) {
+				$record = Versioned::get_version($treeClass, $id, $versionID);
 			} else {
 				$record = DataObject::get_one($treeClass, "\"$treeClass\".\"ID\" = $id");
 			}
@@ -470,7 +473,7 @@ JS;
 				$readonlyFields = $form->Fields()->makeReadonly();
 				$form->setFields($readonlyFields);
 			}
-			
+
 			$this->extend('updateEditForm', $form);
 
 			return $form;
@@ -909,100 +912,6 @@ JS;
 		}
 	}
 
-	/**
-	 * @return Form
-	 */
-	function VersionsForm() {
-		$pageID = ($this->request->requestVar('ID')) ? $this->request->requestVar('ID') : $this->currentPageID();
-		$page = $this->getRecord($pageID);
-		if($page) {
-			$versions = $page->allVersions(
-				($this->request->requestVar('ShowUnpublished')) ? 
-				"" : "\"SiteTree\".\"WasPublished\" = 1"
-			);
-
-			// inject link to cms
-			if($versions) foreach($versions as $k => $version) {
-				$version->CMSLink = sprintf('%s/%s/%s',
-					$this->Link('getversion'),
-					$version->ID,
-					$version->Version
-				);
-			}
-			$vd = new ViewableData();
-			$versionsHtml = $vd->customise(
-				array('Versions'=>$versions)
-			)->renderWith('CMSMain_versions');
-		} else {
-			$versionsHtml = '';
-		}
-		
-		$form = new Form(
-			$this,
-			'VersionsForm',
-			new FieldSet(
-				new CheckboxField(
-					'ShowUnpublished',
-					_t('CMSMain_left.ss.SHOWUNPUB','Show unpublished versions')
-				),
-				new LiteralField('VersionsHtml', $versionsHtml),
-				new HiddenField('ID', false, $pageID),
-				new HiddenField('Locale', false, $this->Locale)
-			),
-			new FieldSet(
-				new FormAction(
-					'versions',
-					_t('CMSMain.BTNREFRESH','Refresh')
-				),
-				new FormAction(
-					'compareversions',  
-					_t('CMSMain.BTNCOMPAREVERSIONS','Compare Versions')
-				)
-			)
-		);
-		$form->loadDataFrom($this->request->requestVars());
-		$form->setFormMethod('GET');
-		$form->unsetValidator();
-		
-		return $form;
-	}
-	
-	/**
-	 * Get the versions of the current page
-	 */
-	function versions() {
-		$form = $this->VersionsForm();
-		return (Director::is_ajax()) ? $form->forTemplate() : $form;
-	}
-
-	/**
-	 * Roll a page back to a previous version
-	 */
-	function rollback($data, $form) {
-		$this->extend('onBeforeRollback', $data['ID']);
-		
-		if(isset($data['Version']) && (bool)$data['Version']) {
-			$record = $this->performRollback($data['ID'], $data['Version']);
-			$message = sprintf(
-			_t('CMSMain.ROLLEDBACKVERSION',"Rolled back to version #%d.  New version number is #%d"),
-			$data['Version'],
-			$record->Version
-		);
-		} else {
-			$record = $this->performRollback($data['ID'], "Live");
-			$message = sprintf(
-				_t('CMSMain.ROLLEDBACKPUB',"Rolled back to published version. New version number is #%d"),
-				$record->Version
-			);
-		}
-		
-		$this->response->addHeader('X-Status', $message);
-		
-		$form = $this->getEditForm($record->ID);
-		
-		return $form->forTemplate();
-	}
-	
 	function publish($data, $form) {
 		$data['publish'] = '1';
 		
@@ -1026,187 +935,6 @@ JS;
 		$form = $this->getEditForm($record->ID);
 		
 		return $form->forTemplate();
-	}
-
-	function performRollback($id, $version) {
-		$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-		if($record && !$record->canEdit()) return Security::permissionFailure($this);
-		
-		$record->doRollbackTo($version);
-		return $record;
-	}
-
-	/**
-	 * Supports both direct URL links (format: admin/getversion/<page-id>/<version>),
-	 * and through GET parameters: admin/getversion/?ID=<page-id>&Versions[]=<version>
-	 */
-	function getversion() {
-		$id = ($this->request->param('ID')) ? 
-			$this->request->param('ID') : $this->request->requestVar('ID');
-		
-		$version = ($this->request->param('OtherID')) ? 
-			$this->request->param('OtherID') : $this->request->requestVar('Versions');
-		
-		$record = Versioned::get_version("SiteTree", $id, $version);
-		
-		if($record) {
-			if($record && !$record->canView()) return Security::permissionFailure($this);
-			$fields = $record->getCMSFields($this);
-			$fields->removeByName("Status");
-
-			$fields->push(new HiddenField("ID"));
-			$fields->push(new HiddenField("Version"));
-			
-			$versionAuthor = DataObject::get_by_id('Member', $record->AuthorID);
-			if(!$versionAuthor) $versionAuthor = new ArrayData(array('Title' => 'Unknown author'));
-			$fields->insertBefore(
-				new LiteralField(
-					'YouAreViewingHeader', 
-					'<p class="message notice">' .
-					sprintf(
-						_t(
-							'CMSMain.VIEWING',
-							"You are viewing version #%s, created %s by %s",
-							PR_MEDIUM,
-							'Version number is a linked string, created is a relative time (e.g. 2 days ago), by a specific author'
-						),
-						"<a href=\"admin/getversion/$record->ID/$version\" title=\"" . ($versionAuthor ? $versionAuthor->Title : '') . "\">$version</a>", 
-						$record->obj('LastEdited')->Ago(),
-						($versionAuthor ? $versionAuthor->Title : '')
-					) .
-					'</p>'
-				),
-				'Root'
-			);
-
-			$actions = $record->getCMSActions();
-
-			// encode the message to appear in the body of the email
-			$archiveURL = Director::absoluteBaseURL() . $record->URLSegment . '?archiveDate=' . $record->obj('LastEdited')->URLDatetime();
-			
-			// Ensure that source file comments are disabled
-			SSViewer::set_source_file_comments(false);
-			
-			$archiveEmailMessage = urlencode( $this->customise( array( 'ArchiveDate' => $record->obj('LastEdited'), 'ArchiveURL' => $archiveURL ) )->renderWith( 'ViewArchivedEmail' ) );
-			$archiveEmailMessage = preg_replace( '/\+/', '%20', $archiveEmailMessage );
-
-			$fields->push( new HiddenField( 'ArchiveEmailMessage', '', $archiveEmailMessage ) );
-			$fields->push( new HiddenField( 'ArchiveEmailSubject', '', preg_replace( '/\+/', '%20', urlencode( 'Archived version of ' . $record->Title ) ) ) );
-			$fields->push( new HiddenField( 'ArchiveURL', '', $archiveURL ) );
-
-			$form = new Form($this, "EditForm", $fields, $actions);
-			$form->loadDataFrom($record);
-			$form->loadDataFrom(array(
-				"ID" => $id,
-				"Version" => $version,
-			));
-			
-			// historical version shouldn't be editable
-			$readonlyFields = $form->Fields()->makeReadonly();
-			$form->setFields($readonlyFields);
-
-			$templateData = $this->customise(array(
-				"EditForm" => $form
-			));
-
-			SSViewer::setOption('rewriteHashlinks', false);
-			
-			if(Director::is_ajax()) {
-				$result = $templateData->renderWith(array($this->class . '_right', 'LeftAndMain_right'));
-				$parts = split('</?form[^>]*>', $result);
-				$content = $parts[sizeof($parts)-2];
-				if($this->ShowSwitchView()) {
-					$content .= '<div id="AjaxSwitchView">' . $this->SwitchView($record) . '</div>';
-				}
-				return $content;
-			} else {
-				return $templateData->renderWith('LeftAndMain');
-			}
-		}
-	}
-
-	function compareversions() {
-		$id = ($this->request->param('ID')) ? 
-			$this->request->param('ID') : $this->request->requestVar('ID');
-		
-		$versions = $this->request->requestVar('Versions');
-		$version1 = ($versions && isset($versions[0])) ? 
-			$versions[0] : $this->request->getVar('From');
-		$version2 = ($versions && isset($versions[1])) ? 
-			$versions[1] : $this->request->getVar('To');
-
-		if( $version1 > $version2 ) {
-			$toVersion = $version1;
-			$fromVersion = $version2;
-		} else {
-			$toVersion = $version2;
-			$fromVersion = $version1;
-		}
-		
-		if(!$toVersion || !$toVersion) return false;
-
-		$page = DataObject::get_by_id("SiteTree", $id);
-		if($page && !$page->canView()) return Security::permissionFailure($this);
-		
-		$record = $page->compareVersions($fromVersion, $toVersion);
-		
-		$fromVersionRecord = Versioned::get_version('SiteTree', $id, $fromVersion);
-		$toVersionRecord = Versioned::get_version('SiteTree', $id, $toVersion);
-		if(!$fromVersionRecord) user_error("Can't find version $fromVersion of page $id", E_USER_ERROR);
-		if(!$toVersionRecord) user_error("Can't find version $toVersion of page $id", E_USER_ERROR);
-		
-		if($record) {
-			$fromDateNice = $fromVersionRecord->obj('LastEdited')->Ago();
-			$toDateNice = $toVersionRecord->obj('LastEdited')->Ago();
-			$fromAuthor = DataObject::get_by_id('Member', $fromVersionRecord->AuthorID);
-			if(!$fromAuthor) $fromAuthor = new ArrayData(array('Title' => 'Unknown author'));
-			$toAuthor = DataObject::get_by_id('Member', $toVersionRecord->AuthorID);
-			if(!$toAuthor) $toAuthor = new ArrayData(array('Title' => 'Unknown author'));
-
-			$fields = $record->getCMSFields($this);
-			$fields->push(new HiddenField("ID"));
-			$fields->push(new HiddenField("Version"));
-			$fields->insertBefore(
-				new LiteralField(
-					'YouAreComparingHeader',
-					'<p class="message notice">' . 
-					sprintf(
-						_t('CMSMain.COMPARINGV',"Comparing versions %s and %s"),
-						"<a href=\"admin/getversion/$id/$fromVersionRecord->Version\" title=\"$fromAuthor->Title\">$fromVersionRecord->Version</a> <small>($fromDateNice)</small>",
-						"<a href=\"admin/getversion/$id/$toVersionRecord->Version\" title=\"$toAuthor->Title\">$toVersionRecord->Version</a> <small>($toDateNice)</small>"
-					) .
-					'</p>'
-				), 
-				"Root"
-			);
-
-			$actions = new FieldSet();
-
-			$form = new Form($this, "EditForm", $fields, $actions);
-			$form->loadDataFrom($record);
-			$form->loadDataFrom(array(
-				"ID" => $id,
-				"Version" => $fromVersion,
-			));
-			$form->addExtraClass('compare');
-			
-			// comparison views shouldn't be editable
-			$readonlyFields = $form->Fields()->makeReadonly();
-			$form->setFields($readonlyFields);
-			
-			foreach($form->Fields()->dataFields() as $field) {
-				$field->dontEscape = true;
-			}
-
-			if($this->isAjax()) {
-				return $form->forTemplate();
-			} else {
-				$templateData = $this->customise(array(
-					"EditForm" => $form
-				));
-				return $templateData->renderWith('LeftAndMain');
-			}	
-		}
 	}
 
 	function sendFormToBrowser($templateData) {

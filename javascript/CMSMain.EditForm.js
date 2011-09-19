@@ -195,32 +195,6 @@
 		});	
 
 		/**
-		 * Class: .cms-edit-form .Actions #Form_EditForm_action_email
-		 * 
-		 * Email containing the link to the archived version of the page.
-		 * Visible on readonly older versions of a specific page at the moment.
-		 */
-		$('.cms-edit-form .Actions #Form_EditForm_action_email').entwine({
-			/**
-			 * Function: onclick
-			 * 
-			 * Parameters:
-			 *  (Event) e
-			 */
-			onclick: function(e) {
-				window.open(
-					'mailto:?subject=' 
-						+ $('input[name=ArchiveEmailSubject]', this[0].form).val() 
-						+ '&body=' 
-						+ $(':input[name=ArchiveEmailMessage]', this[0].form).val(), 
-					'archiveemail' 
-				);
-	
-				return false;
-			}
-		});
-
-		/**
 		 * Class: .cms-edit-form .Actions #Form_EditForm_action_print
 		 * 
 		 * Open a printable representation of the form in a new window.
