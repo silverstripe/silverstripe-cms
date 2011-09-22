@@ -175,8 +175,8 @@ class SS_Report extends ViewableData {
 			)
 		);
 		
-		if($this->description) $fields->push(
-			new LiteralField('ReportDescription', "<p>{$this->description}</p>"));
+		if($this->description()) $fields->push(
+			new LiteralField('ReportDescription', "<p>" . $this->description() . "</p>"));
 			
 		// Add search fields is available
 		if($params = $this->parameterFields()) {
@@ -508,7 +508,7 @@ abstract class SS_ReportWrapper extends SS_Report {
 	}
 
 	function description() {
-		return $this->baseReport->title();
+		return $this->baseReport->description();
 	}
 
 	function canView() {
