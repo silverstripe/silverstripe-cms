@@ -1,0 +1,8 @@
+--- 
+format: 1
+handler: 
+  commit: d04ef8794e8459cd65529efa3e623a9f3764d142
+  branch: master
+lock: false
+repository_class: Piston::Git::Repository
+repository_url: https://github.com/brandonaaron/jquery-getscrollbarwidth.git

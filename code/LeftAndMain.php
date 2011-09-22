@@ -281,6 +281,7 @@ class LeftAndMain extends Controller {
 				THIRDPARTY_DIR . '/scriptaculous/controls.js',
 				THIRDPARTY_DIR . '/greybox/AmiJS.js',
 				THIRDPARTY_DIR . '/greybox/greybox.js',
+				CMS_DIR . '/thirdparty/jquery-getscrollbarwidth/jquery.getscrollbarwidth.js',
 				CMS_DIR . '/javascript/LeftAndMain.js',
 				CMS_DIR . '/javascript/LeftAndMain_left.js',
 				CMS_DIR . '/javascript/LeftAndMain_right.js',
