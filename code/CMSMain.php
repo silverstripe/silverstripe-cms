@@ -617,6 +617,8 @@ JS;
 		$id = $_REQUEST['ID'];
 		Versioned::reading_stage('Live');
 		$record = DataObject::get_by_id("SiteTree", $id);
+
+		if(!$record || !$record->ID) throw new HTTPResponse_Exception("Bad record ID #$id", 404);
 		if($record && !($record->canDelete() && $record->canDeleteFromLive())) return Security::permissionFailure($this);
 		
 		$descRemoved = '';
@@ -697,7 +699,10 @@ JS;
 			"SiteTree", 
 			sprintf("\"SiteTree\".\"ID\" = %d", Convert::raw2sql($data['ID']))
 		);
-		if(!$record) return $this->httpError(400);
+		
+		// Non-existent record
+		if(!$record || !$record->ID) throw new HTTPResponse_Exception("Bad record ID #$id", 404);
+		
 		if(!$record->canDelete()) return Security::permissionFailure();
 		
 		// save ID and delete record
