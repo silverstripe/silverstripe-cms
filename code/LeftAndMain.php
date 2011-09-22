@@ -847,6 +847,9 @@ JS;
 	 * @return string
 	 */
 	public function deleteTreeNodeJS($page) {
+		// Silently skip if $page isn't a record
+		if (!$page || (!isset($page->ID) && !isset($page->OldID))) return false;
+		
 		$id = $page->ID ? $page->ID : $page->OldID;
 		$response = <<<JS
 var node = $('sitetree').getTreeNodeByIdx($id);
