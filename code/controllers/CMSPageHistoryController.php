@@ -82,7 +82,7 @@ class CMSPageHistoryController extends CMSMain {
 		
 		$form = parent::getEditForm($record, ($record) ? $record->getCMSFields() : null);
 
-		$form->setActions(new FieldSet(
+		$form->setActions(new FieldList(
 			$revert = new FormAction('doRollback', _t('CMSPageHistoryController.REVERTTOTHISVERSION', 'Revert to this version'))
 		));
 		
@@ -193,7 +193,7 @@ class CMSPageHistoryController extends CMSMain {
 		$form = new Form(
 			$this,
 			'VersionsForm',
-			new FieldSet(
+			new FieldList(
 				new CheckboxField(
 					'ShowUnpublished',
 					_t('CMSPageHistoryController.SHOWUNPUBLISHED','Show unpublished versions'),
@@ -207,7 +207,7 @@ class CMSPageHistoryController extends CMSMain {
 				new LiteralField('VersionsHtml', $versionsHtml),
 				$hiddenID = new HiddenField('ID', false, "")
 			),
-			new FieldSet(
+			new FieldList(
 				new FormAction(
 					'doCompare', _t('CMSPageHistoryController.COMPAREVERSIONS','Compare Versions')
 				),
@@ -408,7 +408,7 @@ class CMSPageHistoryController extends CMSMain {
 
 		if($record) {
 			$form = $this->getEditForm($id, null, null, true);
-			$form->setActions(new FieldSet());
+			$form->setActions(new FieldList());
 			$form->loadDataFrom($record);
 			
 			$form->loadDataFrom(array(

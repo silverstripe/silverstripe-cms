@@ -68,10 +68,10 @@ class WidgetControllerTest_Widget_Controller extends Widget_Controller implement
 		$widgetform = new Form(
 			$this, 
 			'Form', 
-			new FieldSet(
+			new FieldList(
 				new TextField('TestValue')
 			), 
-			new FieldSet(
+			new FieldList(
 				new FormAction('doAction')
 			)
 		);
