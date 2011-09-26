@@ -9,28 +9,24 @@
 			$FieldMap.ReportTitle.FieldHolder
 			$FieldMap.ReportDescription.FieldHolder
 		
-			<!-- Filters -->
-			
 			<% if FieldMap.Filters.Children %>
-			<div style="border-bottom: 1px #AAA solid"><b><% _t('ReportAdminForm.FILTERBY', 'Filter by') %></b></div>
+				<h4><% _t('ReportAdminForm.FILTERBY', 'Filter by') %></h4>
 			
-			<% control FieldMap.Filters %>
-			<% control Children %>
-			<div style="float: left; margin: 5px 10px 10px 0; height: 35px">
-				<label for="$ID" style="font-weight: bold; display: block">$Title</label>
-				$Field
-			</div>
-			<% end_control %>
-			<% end_control %>
+				<div class="filters">
+					<% control FieldMap.Filters %>
+						<% control Children %>
+							$FieldHolder
+						<% end_control %>
+					<% end_control %>
+				</div>
 			
-			<div id="action_updatereport" style="float: left; margin: 1px 10px 10px 0">
-			<br />
-			<% if FieldMap.action_updatereport %>
-			$FieldMap.action_updatereport.Field
-			<% end_if %>
-			</div>
+				<div id="action_updatereport">
+					<% if FieldMap.action_updatereport %>
+						$FieldMap.action_updatereport.Field
+					<% end_if %>
+				</div>
 			
-			<div style="clear: both">&nbsp;</div>
+				<div style="clear: both">&nbsp;</div>
 			<% end_if %>
 			
 			$FieldMap.ReportContent.FieldHolder
