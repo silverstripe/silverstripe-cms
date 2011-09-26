@@ -29,7 +29,7 @@ class WidgetArea extends DataObject {
 	 * @return DataObjectSet Collection of {@link Widget_Controller}
 	 */
 	function WidgetControllers() {
-		$controllers = new DataObjectSet();
+		$controllers = new ArrayList();
 
 		foreach($this->ItemsToRender() as $widget) {
 			// find controller

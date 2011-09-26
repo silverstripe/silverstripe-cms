@@ -296,7 +296,7 @@ JS;
 	public function PageTypes() {
 		$classes = SiteTree::page_type_classes();
 
-		$result = new DataObjectSet();
+		$result = new ArrayList();
 
 		foreach($classes as $class) {
 			$instance = singleton($class);

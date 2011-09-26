@@ -188,9 +188,9 @@ class SiteTreeTest extends SapphireTest {
 		/* If we create a new SiteTree object with ID = 0 */
 		$obj = new SiteTree();
 		/* Then its children should be the top-level pages */
-		$stageChildren = $obj->stageChildren()->toDropDownMap('ID','Title');
-		$liveChildren = $obj->liveChildren()->toDropDownMap('ID','Title');
-		$allChildren = $obj->AllChildrenIncludingDeleted()->toDropDownMap('ID','Title');
+		$stageChildren = $obj->stageChildren()->map('ID','Title');
+		$liveChildren = $obj->liveChildren()->map('ID','Title');
+		$allChildren = $obj->AllChildrenIncludingDeleted()->map('ID','Title');
 		
 		$this->assertContains('Home', $stageChildren);
 		$this->assertContains('Products', $stageChildren);
@@ -296,8 +296,8 @@ class SiteTreeTest extends SapphireTest {
 		Versioned::reading_stage('Live');
 		$deletedPage = Versioned::get_latest_version('SiteTree', $page2ID);
 		$deletedPage->doRestoreToStage();
-		$this->assertTrue(!Versioned::get_one_by_stage("Page", "Live", "\"SiteTree\".\"ID\" = " . $page2ID));
-	
+		$this->assertFalse((bool)Versioned::get_one_by_stage("Page", "Live", "\"SiteTree\".\"ID\" = " . $page2ID));
+
 		Versioned::reading_stage('Stage');
 		$requeriedPage = DataObject::get_by_id("Page", $page2ID);
 		$this->assertEquals('Products', $requeriedPage->Title);
@@ -385,9 +385,11 @@ class SiteTreeTest extends SapphireTest {
 		$pageStaffDuplicate->doPublish();
 		
 		$parentPage = $this->objFromFixture('Page', 'about');
+
 		$parentPage->doDeleteFromLive();
 		
 		Versioned::reading_stage('Live');
+
 		$this->assertFalse(DataObject::get_by_id('Page', $pageAbout->ID));
 		$this->assertTrue(DataObject::get_by_id('Page', $pageStaff->ID) instanceof Page);
 		$this->assertTrue(DataObject::get_by_id('Page', $pageStaffDuplicate->ID) instanceof Page);

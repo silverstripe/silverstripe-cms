@@ -272,8 +272,14 @@ class VirtualPageTest extends SapphireTest {
 		
 		// Unpublish the source page, confirm that the virtual page has also been unpublished
 		$p->doUnpublish();
+
+        // The draft VP still has the CopyContentFromID link
+		$vp->flushCache();
+		$vp = DataObject::get_by_id('SiteTree', $vp->ID);
+		$this->assertEquals($p->ID, $vp->CopyContentFromID);
+
 		$vpLive = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree"."ID" = ' . $vp->ID);
-		$this->assertFalse($vpLive);
+		$this->assertNull($vpLive);
 		
 		// Delete from draft, confirm that the virtual page has a broken link on the draft site
 		$p->delete();
@@ -307,7 +313,7 @@ class VirtualPageTest extends SapphireTest {
 		$pLive = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree"."ID" = ' . $pID);
 		$this->assertTrue($pLive->doDeleteFromLive());
 		$vpLive = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree"."ID" = ' . $vp->ID);
-		$this->assertFalse($vpLive);
+		$this->assertNull($vpLive);
 		
 		// Delete from draft, confirm that the virtual page has a broken link on the draft site
 		$pLive->delete();
