@@ -18,8 +18,8 @@ class FilesystemSyncTask extends BuildTask {
 		} else {
 			$folderID = null;
 		}
-		
-		echo Filesystem::sync($folderID);
+
+		echo Filesystem::sync($folderID, !($request->getVar('skipSyncLinkTracking'))) . "\n";
 	}
 	
 }
