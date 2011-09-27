@@ -1126,7 +1126,7 @@ JS;
 			if ($SNG_action->canView() && $fieldset = $SNG_action->getParameterFields()) {
 				$formHtml = '';
 				foreach($fieldset as $field) {
-					$formHtml .= $field->Field();
+					$formHtml .= $field->FieldHolder();
 				}
 				$forms[$urlSegment] = $formHtml;
 			}

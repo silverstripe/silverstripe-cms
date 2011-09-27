@@ -422,6 +422,10 @@ body.stillLoading select {
 #TreeTools #batchactionsforms {
 	padding: 0 5px 7px 5px;
 }
+
+	#TreeTools #batchactionsforms label {
+		display: none;
+	}
 	#TreeTools select {
 		margin-left: 2px;
 	}

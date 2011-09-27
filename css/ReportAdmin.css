@@ -54,6 +54,11 @@
 }
 
 .ReportAdmin .filters .field.datetime .field.date,
-.ReportAdmin .filters .field.datetime .field.time {
+.ReportAdmin .filters .field.datetime .field.time,
+.ReportAdmin .filters .field.datetime .field.dropdown {
 	float: left;
+}
+
+.ReportAdmin .filters .field.datetime select {
+	width: 14em;
 }
