@@ -1694,7 +1694,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * See {@link getSettingsFields()} for a different set of fields
 	 * concerned with configuration aspects on the record, e.g. access control
 	 *
-	 * @return FieldSet The fields to be displayed in the CMS.
+	 * @return FieldList The fields to be displayed in the CMS.
 	 */
 	function getCMSFields() {
 		require_once("forms/Form.php");
@@ -1776,7 +1776,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$url = (strlen($baseLink) > 36) ? "..." .substr($baseLink, -32) : $baseLink;
 		$urlHelper = sprintf("<span>%s</span>", $url);
 		
-		$fields = new FieldSet(
+		$fields = new FieldList(
 			$rootTab = new TabSet("Root",
 				$tabMain = new Tab('Main',
 					new TextField("Title", $this->fieldLabel('Title')),
@@ -1827,10 +1827,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * Returns fields related to configuration aspects on this record, e.g. access control.
 	 * See {@link getCMSFields()} for content-related fields.
 	 * 
-	 * @return FieldSet
+	 * @return FieldList
 	 */
 	function getSettingsFields() {
-		$fields = new FieldSet(
+		$fields = new FieldList(
 			$rootTab = new TabSet("Root",
 				$tabBehaviour = new Tab('Settings',
 					new DropdownField(
@@ -1977,10 +1977,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 	/**
 	 * Get the actions available in the CMS for this page - eg Save, Publish.
-	 * @return FieldSet The available actions for this page.
+	 * @return FieldList The available actions for this page.
 	 */
 	function getCMSActions() {
-		$actions = new FieldSet();
+		$actions = new FieldList();
 
 		// "readonly"/viewing version that isn't the current version of the record
 		$stageOrLiveRecord = Versioned::get_one_by_stage($this->class, Versioned::current_stage(), sprintf('"SiteTree"."ID" = %d', $this->ID));

@@ -113,7 +113,7 @@ class CMSMainTest extends FunctionalTest {
 			$page->flushCache();
 			$page = DataObject::get_by_id("SiteTree", $page->ID);
 			
-			$this->assertTrue($page->getCMSFields(null) instanceof FieldSet);
+			$this->assertTrue($page->getCMSFields(null) instanceof FieldList, 'Expecting that '.get_class($page).'::getCMSFields return a FieldList, but got '.get_class($page->getCMSFields(null)));
 		}
 	}
 	

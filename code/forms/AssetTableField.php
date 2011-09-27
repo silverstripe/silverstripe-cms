@@ -160,7 +160,7 @@ class AssetTableField extends ComplexTableField {
 		$urlLink .= "<span class='readonly'><a href='{$childData->Link()}'>{$childData->RelativeLink()}</a></span>";
 		$urlLink .= "</div>";
 		
-		$detailFormFields = new FieldSet(
+		$detailFormFields = new FieldList(
 			new TabSet("BottomRoot",
 				$mainTab = new Tab('Main',
 					new TextField("Title", _t('AssetTableField.TITLE','Title')),

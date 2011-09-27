@@ -135,7 +135,7 @@ JS
 	 * Return the form object shown in the uploadiframe.
 	 */
 	function UploadForm() {
-		$form = new Form($this,'UploadForm', new FieldSet(
+		$form = new Form($this,'UploadForm', new FieldList(
 			new HiddenField("ID", "", $this->currentPageID()),
 			new HiddenField("FolderID", "", $this->currentPageID()),
 			// needed because the button-action is triggered outside the iframe
@@ -148,7 +148,7 @@ JS
 				<p>" . _t('AssetAdmin.FILESREADY','Files ready to upload:') ."</p>
 				<div id=\"Form_UploadForm_FilesList\"></div>
 			")
-		), new FieldSet(
+		), new FieldList(
 		));
 		
 		// Makes ajax easier
@@ -229,7 +229,7 @@ JS
 					
 					if(self::$metadata_upload_enabled && isset($processedData[$filePostId])) {
 						$fileObject = DataObject::get_by_id('File', $newFile);
-						$metadataForm = new Form($this, 'MetadataForm', $fileObject->uploadMetadataFields(), new FieldSet());
+						$metadataForm = new Form($this, 'MetadataForm', $fileObject->uploadMetadataFields(), new FieldList());
 						$metadataForm->loadDataFrom($processedData[$filePostId]);
 						$metadataForm->saveInto($fileObject);
 						$fileObject->write();
@@ -399,9 +399,9 @@ JS
 		$form = new Form(
 			$this,
 			'SyncForm',
-			new FieldSet(
+			new FieldList(
 			),
-			new FieldSet(
+			new FieldList(
 				$btn = new FormAction('doSync', _t('FILESYSTEMSYNC','Look for new files'))
 			)
 		);

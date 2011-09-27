@@ -59,7 +59,7 @@ class SilverStripeNavigator extends ViewableData {
 		}
 		ksort($items);
 
-		return new DataObjectSet($items);
+		return new ArrayList($items);
 	}
 	
 	/**
