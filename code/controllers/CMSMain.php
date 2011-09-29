@@ -1040,7 +1040,7 @@ JS;
 			// TODO Should be part of the form attribute, but not possible in current form API
 			$hintsField = new LiteralField('Hints', sprintf('<span class="hints" data-hints="%s"></span>', $this->SiteTreeHints())),
 			$parentField = new TreeDropdownField("ParentID", _t('CMSMain.AddFormParentLabel', 'Parent page'), 'SiteTree'),
-			new OptionsetField("PageType", "", $pageTypes, 'Page')
+			new OptionsetField("PageType", _t('CMSMain.PageType', 'Page type'), $pageTypes, 'Page')
 		);
 		$parentField->setValue(($record) ? $record->ID : null);
 		
