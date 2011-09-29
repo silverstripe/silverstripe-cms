@@ -1041,9 +1041,9 @@ JS;
 			// TODO Should be part of the form attribute, but not possible in current form API
 			$hintsField = new LiteralField('Hints', sprintf('<span class="hints" data-hints="%s"></span>', $this->SiteTreeHints())),
 			$label1 = new LabelField("1", _t('CMSMain.1', '1').$labelTriangle),
-			$parentField = new TreeDropdownField("ParentID", _t('CMSMain.AddFormParentLabel', 'Parent page'), 'SiteTree'),
+			$parentField = new TreeDropdownField("ParentID", _t('CMSMain.AddFormParentLabel', 'Choose parent'), 'SiteTree'),
 			$label2 = new LabelField("1", _t('CMSMain.2', '2').$labelTriangle),
-			new OptionsetField("PageType", _t('CMSMain.PageType', 'Page type'), $pageTypes, 'Page')
+			new OptionsetField("PageType", _t('CMSMain.ChoosePageType', 'Choose page type'), $pageTypes, 'Page')
 		);
 		$label1->addExtraClass("numeric-label");
 		$label1->setAllowHTML(true);
