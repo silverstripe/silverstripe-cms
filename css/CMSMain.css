@@ -6,27 +6,3 @@
 #cms-page-history-versions tr.loading td:hover { cursor: none; }
 /* line 27, ../scss/CMSMain.scss */
 #cms-page-history-versions td:hover { cursor: pointer; }
-
-/** ------------------------------------------------------------------
-* Add Page pop-up Section.
-* ----------------------------------------------------------------- */
-/* line 38, ../scss/CMSMain.scss */
-#cms-page-add-form { background: url("../../sapphire/admin/images/textures/bg_cms_main_content.png") repeat scroll left top #f0f3f4; /* Labels for all the sections of the pop-up form */ /* Exception for a label that is inline with the selector dropdown box */ }
-/* line 42, ../scss/CMSMain.scss */
-#cms-page-add-form #PageType .middleColumn { margin: 0; padding: 0; }
-/* line 46, ../scss/CMSMain.scss */
-#cms-page-add-form #PageType .middleColumn .optionset li { width: 100%; }
-/* line 54, ../scss/CMSMain.scss */
-#cms-page-add-form #PageType li.selected { background-color: rgba(255, 255, 153, 0.5); /*background-color: #FFFF99;*/ }
-/* line 61, ../scss/CMSMain.scss */
-#cms-page-add-form .field label.left { font-size: 14px; font-weight: bold; width: 100%; float: none; color: #5f6160; }
-/* line 71, ../scss/CMSMain.scss */
-#cms-page-add-form #ParentID label.left { padding: 8px 0 8px 0; float: right !important; }
-/* line 77, ../scss/CMSMain.scss */
-#cms-page-add-form .Actions { float: right; margin: 0; }
-
-/** ------------------------------------------------------------------
-* Titlebar for pop-up dialog.
-* ----------------------------------------------------------------- */
-/* line 89, ../scss/CMSMain.scss */
-.ui-dialog-titlebar.ui-widget-header { font-size: 14px; background-color: #b0bec7; padding: 8px 8px 6px 16px; border-bottom: 2px solid #8399a7; border-radius: 4px 4px 0 0; background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ced7dc), color-stop(100%, #92a5b2)); background-image: -webkit-linear-gradient(#ced7dc, #92a5b2); background-image: -moz-linear-gradient(#ced7dc, #92a5b2); background-image: -o-linear-gradient(#ced7dc, #92a5b2); background-image: -ms-linear-gradient(#ced7dc, #92a5b2); background-image: linear-gradient(#ced7dc, #92a5b2); }
