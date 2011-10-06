@@ -3,6 +3,11 @@
 class VirtualPageTest extends SapphireTest {
 	static $fixture_file = 'VirtualPageTest.yml';
 	
+	protected $extraDataObjects = array(
+		'VirtualPageTest_ClassA',
+		'VirtualPageTest_ClassB',
+	);
+	
 	/**
 	 * Test that, after you update the source page of a virtual page, all the virtual pages
 	 * are updated
@@ -321,4 +326,49 @@ class VirtualPageTest extends SapphireTest {
 		$vp = DataObject::get_by_id('SiteTree', $vp->ID);
 		$this->assertEquals(1, $vp->HasBrokenLink);
 	}	
+	
+	/**
+	 * Base functionality tested in {@link SiteTreeTest->testAllowedChildrenValidation()}.
+	 */
+	function testAllowedChildrenLimitedOnVirtualPages() {
+		$classA = new SiteTreeTest_ClassA();
+		$classA->write();
+		$classB = new SiteTreeTest_ClassB();
+		$classB->write();
+		$classBVirtual = new VirtualPage();
+		$classBVirtual->CopyContentFromID = $classB->ID;
+		$classBVirtual->write();
+		$classC = new SiteTreeTest_ClassC();
+		$classC->write();
+		$classCVirtual = new VirtualPage();
+		$classCVirtual->CopyContentFromID = $classC->ID;
+		$classCVirtual->write();
+		
+		$classBVirtual->ParentID = $classA->ID;
+		$valid = $classBVirtual->validate();
+		$this->assertTrue($valid->valid(), "Does allow child linked to virtual page type allowed by parent");
+		
+		$classCVirtual->ParentID = $classA->ID;
+		$valid = $classCVirtual->validate();
+		$this->assertFalse($valid->valid(), "Doesn't allow child linked to virtual page type disallowed by parent");
+	}
+}
+
+class VirtualPageTest_ClassA extends Page implements TestOnly {
+	
+	static $db = array(
+		'MyInitiallyCopiedField' => 'Text',
+		'MyVirtualField' => 'Text',
+		'MyNonVirtualField' => 'Text',
+	);
+	
+	static $allowed_children = array('VirtualPageTest_ClassB');
+}
+
+class VirtualPageTest_ClassB extends Page implements TestOnly {
+	static $allowed_children = array('VirtualPageTest_ClassC'); 
+}
+
+class VirtualPageTest_ClassC extends Page implements TestOnly {
+	static $allowed_children = array();
 }
