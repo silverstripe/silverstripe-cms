@@ -14,6 +14,27 @@ class SiteTreeFileExtension extends DataExtension {
 	}
 	
 	/**
+	 * Extend through {@link updateBackLinkTracking()} in your own {@link Extension}.
+	 * 
+	 * @return ComponentSet
+	 */
+	function BackLinkTracking($filter = "", $sort = "", $join = "", $limit = "") {
+		if(class_exists("Subsite")){
+			$rememberSubsiteFilter = Subsite::$disable_subsite_filter;
+			Subsite::disable_subsite_filter(true);
+		}
+		
+		$links = $this->owner->getManyManyComponents('BackLinkTracking', $filter, $sort, $join, $limit);
+		$this->owner->extend('updateBackLinkTracking', $links);
+		
+		if(class_exists("Subsite")){
+			Subsite::disable_subsite_filter($rememberSubsiteFilter);
+		}
+		
+		return $links;
+	}
+	
+	/**
 	 * @todo Unnecessary shortcut for AssetTableField, coupled with cms module.
 	 * 
 	 * @return Integer
