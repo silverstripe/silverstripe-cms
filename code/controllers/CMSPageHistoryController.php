@@ -409,14 +409,23 @@ class CMSPageHistoryController extends CMSMain {
 		if($record) {
 			$form = $this->getEditForm($id, null, null, true);
 			$form->setActions(new FieldSet());
-			$form->loadDataFrom($record);
+			$form->addExtraClass('compare');
 			
+			// Comparison views shouldn't be editable.
+			// Its important to convert fields *before* loading data,
+			// as the comparison output is HTML and not valid values for the various field types
+			$readonlyFields = $form->Fields()->makeReadonly();
+			$form->setFields($readonlyFields);
+			
+			$form->loadDataFrom($record);
 			$form->loadDataFrom(array(
 				"ID" => $id,
 				"Version" => $fromVersion,
 			));
 			
-			$form->addExtraClass('compare');
+			foreach($form->Fields()->dataFields() as $field) {
+				$field->dontEscape = true;
+			}
 			
 			return $form;
 		}
