@@ -991,6 +991,9 @@ JS;
 		// Protect against CSRF on destructive action
 		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
 		
+		increase_time_limit_to();
+		increase_memory_limit_to();
+		
 		if($this->urlParams['ID']) {
 			$newPageSet[] = DataObject::get_by_id("Page", $this->urlParams['ID']);
 		} else {
