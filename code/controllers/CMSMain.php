@@ -538,6 +538,7 @@ JS;
 		if(substr($SQL_id,0,3) != 'new') {
 			$record = DataObject::get_by_id($className, $SQL_id);
 			if($record && !$record->canEdit()) return Security::permissionFailure($this);
+			if(!$record || !$record->ID) throw new HTTPResponse_Exception("Bad record ID #$SQL_id", 404);
 		} else {
 			if(!singleton($this->stat('tree_class'))->canCreate()) return Security::permissionFailure($this);
 			$record = $this->getNewItem($SQL_id, false);
@@ -748,7 +749,8 @@ JS;
 	public function revert($data, $form) {
 		if(!isset($data['ID'])) return new SS_HTTPResponse("Please pass an ID in the form content", 400);
 		
-		$restoredPage = Versioned::get_latest_version("SiteTree", $data['ID']);
+		$id = $data['ID'];
+		$restoredPage = Versioned::get_latest_version("SiteTree", $id);
 		if(!$restoredPage) 	return new SS_HTTPResponse("SiteTree #$id not found", 400);
 		
 		$record = Versioned::get_one_by_stage(
@@ -759,9 +761,8 @@ JS;
 
 		// a user can restore a page without publication rights, as it just adds a new draft state
 		// (this action should just be available when page has been "deleted from draft")
-		if(isset($record) && $record && !$record->canEdit()) {
-			return Security::permissionFailure($this);
-		}
+		if($record && !$record->canEdit()) return Security::permissionFailure($this);
+		if(!$record || !$record->ID) throw new HTTPResponse_Exception("Bad record ID #$id", 404);
 
 		$record->doRevertToLive();
 		
@@ -783,11 +784,13 @@ JS;
 	 * @see deletefromlive()
 	 */
 	public function delete($data, $form) {
+		$id = Convert::raw2sql($data['ID']);
 		$record = DataObject::get_one(
 			"SiteTree", 
-			sprintf("\"SiteTree\".\"ID\" = %d", Convert::raw2sql($data['ID']))
+			sprintf("\"SiteTree\".\"ID\" = %d", $id)
 		);
 		if($record && !$record->canDelete()) return Security::permissionFailure();
+		if(!$record || !$record->ID) throw new HTTPResponse_Exception("Bad record ID #$id", 404);
 		
 		// save ID and delete record
 		$recordID = $record->ID;
@@ -926,6 +929,7 @@ JS;
 		$record = DataObject::get_by_id($className, $data['ID']);
 		
 		if($record && !$record->canDeleteFromLive()) return Security::permissionFailure($this);
+		if(!$record || !$record->ID) throw new HTTPResponse_Exception("Bad record ID #" . (int)$data['ID'], 404);
 		
 		$record->doUnpublish();
 		
@@ -1185,9 +1189,8 @@ JS;
 		
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
 			$page = DataObject::get_by_id("SiteTree", $id);
-			if($page && (!$page->canEdit() || !$page->canCreate())) {
-				return Security::permissionFailure($this);
-			}
+			if($page && (!$page->canEdit() || !$page->canCreate())) return Security::permissionFailure($this);
+			if(!$page || !$page->ID) throw new HTTPResponse_Exception("Bad record ID #$id", 404);
 
 			$newPage = $page->duplicate();
 			
@@ -1212,9 +1215,8 @@ JS;
 		
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
 			$page = DataObject::get_by_id("SiteTree", $id);
-			if($page && (!$page->canEdit() || !$page->canCreate())) {
-				return Security::permissionFailure($this);
-			}
+			if($page && (!$page->canEdit() || !$page->canCreate())) return Security::permissionFailure($this);
+			if(!$page || !$page->ID) throw new HTTPResponse_Exception("Bad record ID #$id", 404);
 
 			$newPage = $page->duplicateWithChildren();
 
