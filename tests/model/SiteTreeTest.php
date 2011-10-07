@@ -825,6 +825,23 @@ class SiteTreeTest extends SapphireTest {
 		$valid = $classCext->validate();
 		$this->assertFalse($valid->valid(), "Doesnt allow child where only parent class is allowed on parent node, and asterisk prefixing is used");
 	}
+	
+	function testClassDropdown() {
+		$sitetree = new SiteTree();
+		$method = new ReflectionMethod($sitetree, 'getClassDropdown');
+		$method->setAccessible(true);
+
+		Session::set("loggedInAs", null);
+		$this->assertArrayNotHasKey('SiteTreeTest_ClassA', $method->invoke($sitetree));
+		
+		$this->loginWithPermission('ADMIN');
+		$this->assertArrayHasKey('SiteTreeTest_ClassA', $method->invoke($sitetree));
+		
+		$this->loginWithPermission('CMS_ACCESS_CMSMain');
+		$this->assertArrayHasKey('SiteTreeTest_ClassA', $method->invoke($sitetree));
+		
+		Session::set("loggedInAs", null);
+	}
 }
 
 /**#@+
