@@ -1042,14 +1042,22 @@ JS;
 			);
 			$pageTypes[$type->getField('ClassName')] = $html;
 		}
-		
+
+		$labelTriangle = '<span class="label-triangle"></span>';
 		$fields = new FieldSet(
 			// new HiddenField("ParentID", false, ($this->parentRecord) ? $this->parentRecord->ID : null),
 			// TODO Should be part of the form attribute, but not possible in current form API
 			$hintsField = new LiteralField('Hints', sprintf('<span class="hints" data-hints="%s"></span>', $this->SiteTreeHints())),
-			$parentField = new TreeDropdownField("ParentID", _t('CMSMain.AddFormParentLabel', 'Parent page'), 'SiteTree'),
-			new OptionsetField("PageType", "", $pageTypes, 'Page')
+			$label1 = new LabelField("1", _t('CMSMain.1', '1').$labelTriangle),
+			$parentField = new TreeDropdownField("ParentID", _t('CMSMain.AddFormParentLabel', 'Choose parent'), 'SiteTree'),
+			$label2 = new LabelField("1", _t('CMSMain.2', '2').$labelTriangle),
+			new OptionsetField("PageType", _t('CMSMain.ChoosePageType', 'Choose page type'), $pageTypes, 'Page')
 		);
+		$label1->addExtraClass("numeric-label");
+		$label1->setAllowHTML(true);
+		$label2->addExtraClass("numeric-label");
+		$label2->setAllowHTML(true);
+
 		$parentField->setValue(($record) ? $record->ID : null);
 		
 		$actions = new FieldSet(
