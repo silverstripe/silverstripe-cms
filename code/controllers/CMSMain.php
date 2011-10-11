@@ -57,21 +57,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 		
 		parent::init();
-				
-		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.js');
-		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.EditForm.js');
-		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.AddForm.js');
-		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang');
 		
 		Requirements::css(CMS_DIR . '/css/CMSMain.css');
-		
-		// navigator
-		// Requirements::css(CMS_DIR . '/css/SilverStripeNavigator.css');
-		Requirements::javascript(CMS_DIR . '/javascript/SilverStripeNavigator.js');
 		
 		Requirements::combine_files(
 			'cmsmain.js',
 			array(
+				CMS_DIR . '/javascript/ThumbnailStripField.js',
 				CMS_DIR . '/javascript/CMSMain.js',
 				CMS_DIR . '/javascript/CMSMain.EditForm.js',
 				CMS_DIR . '/javascript/CMSMain.AddForm.js',
@@ -79,6 +71,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				CMS_DIR . '/javascript/SilverStripeNavigator.js'
 			)
 		);
+		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang');
 		
 		HtmlEditorField::include_js();
 		
