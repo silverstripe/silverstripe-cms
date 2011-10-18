@@ -263,7 +263,7 @@ Options:
 				<echo msg="Creating '${archivename}' archive"/>
 			</then>
 			<else>
-				<input propertyName="archivename" defaultValue="archive" promptChar=":">Please enter a name for the archive (without extension)</input>
+				<input propertyName="archivename" defaultValue="SilverStripe-vX.Y.Z" promptChar=":">Please enter a name for the archive (without extension)</input>
 				<property name="archivefilename" value="${archivename}.${archivetype}" />
 				<echo msg="Creating '${archivename}' archive"/>
 			</else>
