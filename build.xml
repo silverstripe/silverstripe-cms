@@ -125,6 +125,8 @@ Options:
 				<exclude name="**/.settings" />
 				<exclude name="**/.idea/**" />  <!-- remove phpstorm configuration file -->
 				<exclude name="tools/**" />
+				<exclude name="cms/docs/**" />
+				<exclude name="sapphire/docs/**" />
 				<exclude name="build.xml" />
 				<exclude name="dependent-modules*" />
 				<exclude name="changelog-definitions*" />
