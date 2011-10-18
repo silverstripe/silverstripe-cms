@@ -114,20 +114,26 @@ Options:
 		<copy todir="${tmp}/${archivename}">
 			<fileset dir="${basedir}">
 				<include name="**/**" />
+				<exclude name="assets/**" />
 				<exclude name="mysite/local.conf.php" />
 				<exclude name="mysite/db.conf.php" />
-				<exclude name="mysite/*.log" />
+				<exclude name="**/*.log" />
 				<exclude name="**/.svn/**" />
 				<exclude name="**/.git/**" />
 				<exclude name="**/.project" />  <!-- remove eclipse configuration file -->
 				<exclude name="**/.buildpath" />
 				<exclude name="**/.settings" />
 				<exclude name="**/.idea/**" />  <!-- remove phpstorm configuration file -->
-				<exclude name="tools" />
+				<exclude name="tools/**" />
 				<exclude name="build.xml" />
 				<exclude name="dependent-modules*" />
 				<exclude name="changelog-definitions*" />
 				<exclude name="_ss_environment.php" />
+			</fileset>
+			<fileset dir="${basedir}">
+				<include name="assets/Uploads" />
+				<include name="assets/.htaccess" />
+				<include name="assets/web.config" />
 			</fileset>
 		</copy>
 		
