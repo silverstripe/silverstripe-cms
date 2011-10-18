@@ -137,6 +137,11 @@ Options:
 			</fileset>
 		</copy>
 		
+		<!-- TODO Remove once we figured out how to nest git repositories for themes -->
+		<move file="${tmp}/${archivename}/themes/blackcandy/blackcandy_blog" todir="${tmp}/${archivename}/themes" />
+		<move file="${tmp}/${archivename}/themes/blackcandy/blackcandy_calendar" todir="${tmp}/${archivename}/themes" />
+		<move file="${tmp}/${archivename}/themes/blackcandy/blackcandy" todir="${tmp}/${archivename}/themes" />
+		
 		<!-- create tar archive -->
 		<if>
 			<equals arg1="${archivetype}" arg2="tar.gz" casesensitive="false" trim="true"/>
