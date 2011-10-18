@@ -123,6 +123,11 @@ Options:
 				<exclude name="**/.buildpath" />
 				<exclude name="**/.settings" />
 				<exclude name="**/.idea/**" />  <!-- remove phpstorm configuration file -->
+				<exclude name="tools" />
+				<exclude name="build.xml" />
+				<exclude name="dependent-modules*" />
+				<exclude name="changelog-definitions*" />
+				<exclude name="_ss_environment.php" />
 			</fileset>
 		</copy>
 		
