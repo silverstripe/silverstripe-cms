@@ -169,9 +169,10 @@ class CreateChangelog extends SilverStripeBuildTask {
 		$arr = array();
 		$parts = explode('|||', $commit);
 		foreach($parts as $part) {
-			preg_match('/(.*)\:(.*)/', $part, $matches);
+			preg_match('/([^:]*)\:(.*)/', $part, $matches);
 			$arr[$matches[1]] = $matches[2];
 		}
+		
 		return $arr;
 	}
 
@@ -229,6 +230,7 @@ class CreateChangelog extends SilverStripeBuildTask {
 				$logForPath = explode("\n", $this->gitLog($path));
 			}
 			foreach($logForPath as $commit) {
+				if(!$commit) continue;
 				$commitArr = $this->commitToArray($commit);
 				$commitArr['path'] = $path;
 				// Avoid duplicates by keying on hash
@@ -266,6 +268,7 @@ class CreateChangelog extends SilverStripeBuildTask {
 		//and generate markdown (add list to beginning of each item)
 		$output = "\n";
 		foreach($groupedLog as $groupName => $commits) {
+			if(!$commits) continue;
 			
 			$output .= "\n### $groupName\n\n";
 			
