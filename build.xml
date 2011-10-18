@@ -146,7 +146,7 @@ Options:
 		<if>
 			<equals arg1="${archivetype}" arg2="tar.gz" casesensitive="false" trim="true"/>
 			<then>
-				<tar destfile="${basedir}/${archivefilename}" compression="gzip">
+				<tar destfile="${basedir}/../${archivefilename}" compression="gzip">
 					<fileset dir="${tmp}">
 						<include name="**/**" />
 					</fileset>
@@ -158,7 +158,7 @@ Options:
 		<if>
 			<equals arg1="${archivetype}" arg2="zip" casesensitive="false" trim="true"/>
 			<then>
-				<zip destfile="${basedir}/${archivefilename}">
+				<zip destfile="${basedir}/../${archivefilename}">
 					<fileset dir="${tmp}">
 						<include name="**/**" />
 					</fileset>
