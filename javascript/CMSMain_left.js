@@ -661,30 +661,38 @@ deletepage.prototype = {
  * Tree context menu
  */
 TreeContextMenu = {
-	'Edit this page' : function(treeNode) {
-		treeNode.selectTreeNode();
-	},
-	'Duplicate page and children' : function(treeNode) {
-		// First save the page silently (without confirmation) and then duplicate the page.
-		autoSave(false, treeNode.duplicatePageWithChildren.bind(treeNode)); 
-	},
-	'Duplicate just this page' : function(treeNode) {
-		// First save the page silently (without confirmation) and then duplicate the page.
-		autoSave(false, treeNode.duplicatePage.bind(treeNode)); 
-	},
-	'Sort sub-pages' : function(treeNode) {
-		var children = treeNode.treeNodeHolder().childTreeNodes();
-		var sortedChildren = children.sort(function(a, b) {
-			var titleA = a.aTag.innerHTML.replace(/<[^>]*>/g,'');
-			var titleB = b.aTag.innerHTML.replace(/<[^>]*>/g,'');
-			return titleA < titleB ? -1 : (titleA > titleB ? 1 : 0);
-		});
-		
-		var i,child;
-		for(i=0;child=sortedChildren[i];i++) {
-			treeNode.appendTreeNode(child);
-		}
-		
-		treeNode.onOrderChanged(sortedChildren,treeNode);
+	/**
+	 * Init lazy loads menu items, so that i18n can be used.
+	 * 
+	 * It removes itself at the end, so that init isn't in the menu ;)
+	 */
+	init: function () { 
+			this[ss.i18n._t('CMSMAIN.EDITTHISPAGE','Edit this page')] = function(treeNode) {
+					treeNode.selectTreeNode();
+			};
+			this[ss.i18n._t('CMSMAIN.DUPLICATEPAGECHILDREN','Duplicate page and children')] = function(treeNode) {
+					// First save the page silently (without confirmation) and then duplicate the page.
+					autoSave(false, treeNode.duplicatePageWithChildren.bind(treeNode)); 
+			};
+			this[ss.i18n._t('CMSMAIN.DUPLICATEPAGE','Duplicate just this page')] = function(treeNode) {
+					// First save the page silently (without confirmation) and then duplicate the page.
+					autoSave(false, treeNode.duplicatePage.bind(treeNode)); 
+			};
+			this[ss.i18n._t('CMSMAIN.SORTSUB','Sort sub-pages')] = function(treeNode) {
+					var children = treeNode.treeNodeHolder().childTreeNodes();
+					var sortedChildren = children.sort(function(a, b) {
+						var titleA = a.aTag.innerHTML.replace(/<[^>]*>/g,'');
+						var titleB = b.aTag.innerHTML.replace(/<[^>]*>/g,'');
+						return titleA < titleB ? -1 : (titleA > titleB ? 1 : 0);
+					});
+					
+					var i,child;
+					for(i=0;child=sortedChildren[i];i++) {
+						treeNode.appendTreeNode(child);
+					}
+					
+					treeNode.onOrderChanged(sortedChildren,treeNode);
+			};
+			delete this.init;
 	}
 };

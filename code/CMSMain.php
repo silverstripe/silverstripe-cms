@@ -582,7 +582,7 @@ JS;
 		    	$id = $id . $suffix;
 	    }
 
-		$newItem->Title = _t('CMSMain.NEW',"New ",PR_MEDIUM,'"New " followed by a className').$className;
+		$newItem->Title = _t('CMSMain.NEW',"New ",PR_MEDIUM,'"New " followed by a className'). _t($className.'.SINGULARNAME', $className);
 		$newItem->URLSegment = "new-" . strtolower($className);
 		$newItem->ClassName = $className;
 		$newItem->ParentID = $parentID;
