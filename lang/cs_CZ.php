@@ -155,6 +155,7 @@ $lang['cs_CZ']['CMSMain']['VIEWING'] = 'Prohlížíte verzi #%s, vytvořenou %s 
 $lang['cs_CZ']['CMSMain']['VISITRESTORE'] = 'navštívit restorepage/(ID)';
 $lang['cs_CZ']['CMSMain']['WAITINGON'] = 'Čekáte na jiné lidi, než dokončí práci na těchto <b>%d</b> stránkách.';
 $lang['cs_CZ']['CMSMain']['WORKTODO'] = 'Máte na těchto <b>%d</b> stránkách práci k udělání.';
+$lang['cs_CZ']['CMSMain']['SAVEDSITECONFIGURATION'] = 'Nastavení stránky uloženo';
 $lang['cs_CZ']['CMSMain_dialog.ss']['BUTTONNOTFOUND'] = 'Systém nemůže nelézt jméno tlačítka';
 $lang['cs_CZ']['CMSMain_dialog.ss']['NOLINKED'] = 'Nemůžete najít objekt window.linkedObject pro zaslání kliknutí na tlačítko zpět do hlavního okna.';
 $lang['cs_CZ']['CMSMain_left.ss']['ADDEDNOTPUB'] = 'Přidáno do konceptů, ale ještě nezveřejněno';

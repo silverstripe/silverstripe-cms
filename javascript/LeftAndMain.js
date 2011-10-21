@@ -7,6 +7,13 @@ if(typeof(jQuery) != 'undefined') {
 		$(document).ready(function() {
 			window.onresize(true);
 		});
+
+		//Turn off autocomplete to fix the access tab randomly switching radio buttons in Firefox when refresh the page
+		// with an anchor tag in the URL. E.g: /admin#Root_Access
+		//Autocomplete in the CMS also causes strangeness in other browsers, so this turns it off for all browsers.
+		//see the following for demo and explanation of the Firefox bug:
+		//  http://www.ryancramer.com/journal/entries/radio_buttons_firefox/
+		$("#Form_EditForm").attr("autocomplete", "off");
 	})(jQuery);
 }
 
