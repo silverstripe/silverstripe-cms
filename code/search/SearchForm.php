@@ -31,13 +31,13 @@ class SearchForm extends Form {
 	 * 
 	 * @param Controller $controller
 	 * @param string $name The name of the form (used in URL addressing)
-	 * @param FieldSet $fields Optional, defaults to a single field named "Search". Search logic needs to be customized
+	 * @param FieldList $fields Optional, defaults to a single field named "Search". Search logic needs to be customized
 	 *  if fields are added to the form.
-	 * @param FieldSet $actions Optional, defaults to a single field named "Go".
+	 * @param FieldList $actions Optional, defaults to a single field named "Go".
 	 */
 	function __construct($controller, $name, $fields = null, $actions = null) {
 		if(!$fields) {
-			$fields = new FieldSet(
+			$fields = new FieldList(
 				new TextField('Search', _t('SearchForm.SEARCH', 'Search')
 			));
 		}
@@ -47,7 +47,7 @@ class SearchForm extends Form {
 		}
 		
 		if(!$actions) {
-			$actions = new FieldSet(
+			$actions = new FieldList(
 				new FormAction("getResults", _t('SearchForm.GO', 'Go'))
 			);
 		}

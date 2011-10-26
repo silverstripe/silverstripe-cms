@@ -104,7 +104,7 @@ class BrokenLinksReport extends SS_Report {
 		return $fields;
 	}
 	function parameterFields() {
-		return new FieldSet(
+		return new FieldList(
 			new DropdownField('CheckSite', _t('BrokenLinksReport.CheckSite','Check site'), array(
 				'Published' => _t('BrokenLinksReport.CheckSiteDropdownPublished', 'Published Site'),
 				'Draft' => _t('BrokenLinksReport.CheckSiteDropdownDraft', 'Draft Site')
