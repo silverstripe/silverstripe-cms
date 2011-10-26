@@ -65,10 +65,10 @@ class ReportAdmin extends LeftAndMain {
 	}
 
 	/**
-	 * Return a DataObjectSet of SS_Report subclasses
+	 * Return a SS_List of SS_Report subclasses
 	 * that are available for use.
 	 *
-	 * @return DataObjectSet
+	 * @return SS_List
 	 */
 	public function Reports() {
  		$output = new ArrayList();

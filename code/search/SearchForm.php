@@ -94,7 +94,7 @@ class SearchForm extends Form {
 	 * 
 	 * @param int $pageLength DEPRECATED 2.3 Use SearchForm->pageLength
 	 * @param array $data Request data as an associative array. Should contain at least a key 'Search' with all searched keywords.
-	 * @return DataObjectSet
+	 * @return SS_List
 	 */
 	public function getResults($pageLength = null, $data = null){
 	 	// legacy usage: $data was defaulting to $_REQUEST, parameter not passed in doc.silverstripe.org tutorials

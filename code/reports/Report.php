@@ -353,7 +353,7 @@ class SS_Report extends ViewableData {
  *     }
  *     function sourceRecords($params, $sort, $limit) {
  *         // Do some stuff
- *         // Return a DataObjectSet of actual objects.
+ *         // Return a SS_List of actual objects.
  *     }
  * 
  * This object is used by the default implementation of sourceQuery() on SS_Report, to make use of
