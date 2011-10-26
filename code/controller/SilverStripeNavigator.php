@@ -31,7 +31,7 @@ class SilverStripeNavigator extends ViewableData {
 	}
 
 	/**
-	 * @return DataObjectSet of SilverStripeNavigatorItem
+	 * @return SS_List of SilverStripeNavigatorItem
 	 */
 	function getItems() {
 		$items = array();
@@ -59,7 +59,7 @@ class SilverStripeNavigator extends ViewableData {
 		}
 		ksort($items);
 
-		return new DataObjectSet($items);
+		return new ArrayList($items);
 	}
 	
 	/**

@@ -319,7 +319,7 @@ in the other stage:<br />
 	 * @param string $sort
 	 * @param string $join
 	 * @param int|array $limit
-	 * @return DataObjectSet
+	 * @return SS_List
 	 */
 	function getOrphanedPages($class = 'SiteTree', $filter = '', $sort = null, $join = null, $limit = null) {
 		$filter .= ($filter) ? ' AND ' : '';

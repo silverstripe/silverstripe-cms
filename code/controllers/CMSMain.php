@@ -284,7 +284,7 @@ JS;
 	 * Populates an array of classes in the CMS
 	 * which allows the user to change the page type.
 	 *
-	 * @return DataObjectSet
+	 * @return SS_List
 	 */
 	public function PageTypes() {
 		$classes = SiteTree::page_type_classes();

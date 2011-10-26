@@ -9,7 +9,7 @@
  * 
  *  {@link title()}: Return the title - i18n is your responsibility
  *  {@link description()}: Return the description - i18n is your responsibility
- *  {@link sourceQuery()}: Return a DataObjectSet of the search results
+ *  {@link sourceQuery()}: Return a SS_List of the search results
  *  {@link columns()}: Return information about the columns in this report.
  *  {@link parameterFields()}: Return a FieldList of the fields that can be used to filter this
  *  report.
@@ -116,7 +116,7 @@ class SS_Report extends ViewableData {
 	}
 	
 	/**
-	 * Return a DataObjectSet records for this report.
+	 * Return a SS_List records for this report.
 	 */
 	function records($params) {
 		if($this->hasMethod('sourceRecords')) return $this->sourceRecords($params, null, null);

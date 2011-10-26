@@ -1670,7 +1670,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		// Content links
         $items = new ArrayList();
 
-        // We merge all into a regular DataObjectSet, because DataList doesn't support merge
+        // We merge all into a regular SS_List, because DataList doesn't support merge
         if($contentLinks = $this->BackLinkTracking()) {
             foreach($contentLinks as $item) $item->DependentLinkType = 'Content link';
 			$items->merge($contentLinks);
