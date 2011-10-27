@@ -41,7 +41,7 @@
 				$SiteTreeAsUL
 			</div>
 			
-			<div class="ss-dialog cms-page-add-form-dialog" id="cms-page-add-form" title="<% _t('CMSMain.ChoosePageType', 'Choose a page type') %>">
+			<div class="ss-dialog cms-page-add-form-dialog" id="cms-page-add-form" title="<% _t('CMSMain.AddNew', 'Add new page') %>">
 				$AddForm
 			</div>
 

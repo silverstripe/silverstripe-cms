@@ -57,21 +57,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 		
 		parent::init();
-				
-		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.js');
-		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.EditForm.js');
-		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.AddForm.js');
-		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang');
 		
 		Requirements::css(CMS_DIR . '/css/CMSMain.css');
-		
-		// navigator
-		// Requirements::css(CMS_DIR . '/css/SilverStripeNavigator.css');
-		Requirements::javascript(CMS_DIR . '/javascript/SilverStripeNavigator.js');
 		
 		Requirements::combine_files(
 			'cmsmain.js',
 			array(
+				CMS_DIR . '/javascript/ThumbnailStripField.js',
 				CMS_DIR . '/javascript/CMSMain.js',
 				CMS_DIR . '/javascript/CMSMain.EditForm.js',
 				CMS_DIR . '/javascript/CMSMain.AddForm.js',
@@ -79,6 +71,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				CMS_DIR . '/javascript/SilverStripeNavigator.js'
 			)
 		);
+		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang');
 		
 		HtmlEditorField::include_js();
 		
@@ -1042,14 +1035,22 @@ JS;
 			);
 			$pageTypes[$type->getField('ClassName')] = $html;
 		}
-		
+
+		$labelTriangle = '<span class="label-triangle"></span>';
 		$fields = new FieldSet(
 			// new HiddenField("ParentID", false, ($this->parentRecord) ? $this->parentRecord->ID : null),
 			// TODO Should be part of the form attribute, but not possible in current form API
 			$hintsField = new LiteralField('Hints', sprintf('<span class="hints" data-hints="%s"></span>', $this->SiteTreeHints())),
-			$parentField = new TreeDropdownField("ParentID", _t('CMSMain.AddFormParentLabel', 'Parent page'), 'SiteTree'),
-			new OptionsetField("PageType", "", $pageTypes, 'Page')
+			$label1 = new LabelField("1", _t('CMSMain.1', '1').$labelTriangle),
+			$parentField = new TreeDropdownField("ParentID", _t('CMSMain.AddFormParentLabel', 'Choose parent'), 'SiteTree'),
+			$label2 = new LabelField("1", _t('CMSMain.2', '2').$labelTriangle),
+			new OptionsetField("PageType", _t('CMSMain.ChoosePageType', 'Choose page type'), $pageTypes, 'Page')
 		);
+		$label1->addExtraClass("numeric-label");
+		$label1->setAllowHTML(true);
+		$label2->addExtraClass("numeric-label");
+		$label2->setAllowHTML(true);
+
 		$parentField->setValue(($record) ? $record->ID : null);
 		
 		$actions = new FieldSet(

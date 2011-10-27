@@ -243,5 +243,32 @@
 				return confirm(message);
 			}
 		});
+
+		/**
+		 * Class: .cms-edit-form.CMSPageSettingsController input[name="ParentType"]:checked
+		 *
+		 * Showing the "Page location" "Parent page" chooser only when the "Sub-page underneath a parent page"
+		 * radio button is selected
+		 */
+		$('.cms-edit-form.CMSPageSettingsController input[name="ParentType"]:checked').entwine({
+
+			/**
+			 * Function: onclick
+			 *
+			 * Parameters:
+			 *  (Event) e
+			 */
+			onchange: function(e) {
+				var parentTreeDropDown = $('.cms-edit-form.CMSPageSettingsController #ParentID');
+
+				if (e.target.id == 'Form_EditForm_ParentType_root') parentTreeDropDown.slideUp();
+			    else parentTreeDropDown.slideDown();
+			}
+		});
+
+		//trigger an initial change event to do the initial hiding of the element, if necessary
+		if ($('.cms-edit-form.CMSPageSettingsController input[name="ParentType"]:checked').attr('id') == 'Form_EditForm_ParentType_root') {
+			$('.cms-edit-form.CMSPageSettingsController #ParentID').hide(); //quick hide on first run
+		}
 	});
 }(jQuery));
