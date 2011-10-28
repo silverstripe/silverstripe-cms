@@ -267,14 +267,14 @@ Options:
 			</then>
 			<else>
 				<input propertyName="archivename" defaultValue="SilverStripe-vX.Y.Z" promptChar=":">Please enter a name for the archive (without extension)</input>
-				<property name="archivefilename" value="${archivename}.${archivetype}" />
 				<echo msg="Creating '${archivename}' archive"/>
 			</else>
 		</if>
 
+		<property name="archivefilename" value="${archivename}.${archivetype}" />
+
 		<phingCall target="archiveTask" />
 		<echo msg="Created archive in: ${basedir}/${archivename}" />
-
 	</target>
 
 	<!-- Load modules where sensitive dependency exists -->
