@@ -398,6 +398,7 @@ HTML;
 	 * templates directly in the template.
 	 */
 	function LangAttributes() {
+		Deprecation::notice('2.5', 'Use ContentLocale() instead and write attribute names suitable to XHTML/HTML instead.');
 		$locale = $this->ContentLocale();
 		return "xml:lang=\"$locale\" lang=\"$locale\"";	
 	}

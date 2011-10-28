@@ -2464,6 +2464,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @deprecated 3.0 Use getTreeTitle()
 	 */
 	function TreeTitle() {
+		Deprecation::notice('3.0', 'Use getTreeTitle() instead.');
 		return $this->getTreeTitle();
 	}
 
