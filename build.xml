@@ -21,7 +21,9 @@ phing help
 	<property name="changelog-definitions-file" value="changelog-definitions" override="true" />
 	<property name="ni_build" value="false" override="true"/>   <!-- Prompt if local changes would be overwritten by update -->
 	<property name="changelogSort" value="type" override="true"/>
-	
+
+	<property name="archivedest" value="${basedir}/../" />
+
 	<available file="${dependent-modules-file}" property="dependent-modules-file-exists" />
 	<available file="${changelog-definition-file}" property="changelog-definition-file-exists" />
 
@@ -56,6 +58,7 @@ Options:
 
 -Darchivetype (the type of archive to use zip or tar.giz)
 -Darchivename (the name of the created archive file)
+-Darchivedest (the destination directory to put the archive)
 
 -Dtagname (the name of the tag/branch to check out or to create as a new tag)
 -DincludeBaseDir (whether or not to include the base dir in a git checkout operation)
@@ -149,7 +152,7 @@ Options:
 		<if>
 			<equals arg1="${archivetype}" arg2="tar.gz" casesensitive="false" trim="true"/>
 			<then>
-				<tar destfile="${basedir}/../${archivefilename}" compression="gzip">
+				<tar destfile="${archivedest}/${archivefilename}" compression="gzip">
 					<fileset dir="${tmp}">
 						<include name="**/**" />
 					</fileset>
@@ -161,7 +164,7 @@ Options:
 		<if>
 			<equals arg1="${archivetype}" arg2="zip" casesensitive="false" trim="true"/>
 			<then>
-				<zip destfile="${basedir}/../${archivefilename}">
+				<zip destfile="${archivedest}/${archivefilename}">
 					<fileset dir="${tmp}">
 						<include name="**/**" />
 					</fileset>
