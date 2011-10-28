@@ -139,12 +139,12 @@ Options:
 				<include name="assets/web.config" />
 			</fileset>
 		</copy>
-		
+
 		<!-- TODO Remove once we figured out how to nest git repositories for themes -->
-		<move file="${tmp}/${archivename}/themes/blackcandy/blackcandy_blog" todir="${tmp}/${archivename}/themes" />
-		<move file="${tmp}/${archivename}/themes/blackcandy/blackcandy_calendar" todir="${tmp}/${archivename}/themes" />
-		<move file="${tmp}/${archivename}/themes/blackcandy/blackcandy" todir="${tmp}/${archivename}/themes" />
-		
+		<move file="${tmp}/${archivename}/themes/blackcandy/blackcandy_blog" todir="${tmp}/${archivename}/themes" haltonerror='false' />
+		<move file="${tmp}/${archivename}/themes/blackcandy/blackcandy_calendar" todir="${tmp}/${archivename}/themes" haltonerror='false' />
+		<move file="${tmp}/${archivename}/themes/blackcandy/blackcandy" todir="${tmp}/${archivename}/themes" haltonerror='false' />
+
 		<!-- create tar archive -->
 		<if>
 			<equals arg1="${archivetype}" arg2="tar.gz" casesensitive="false" trim="true"/>
