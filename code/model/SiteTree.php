@@ -1096,13 +1096,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				);
 				
 				// Get the uninherited permissions
-				$uninheritedPermissions = Versioned::get_by_stage("SiteTree", $stage, "(\"$typeField\" = 'LoggedInUsers' OR
-					(\"$typeField\" = 'OnlyTheseUsers' AND \"$groupJoinTable\".\"SiteTreeID\" IS NOT NULL))
-					AND \"SiteTree\".\"ID\" IN ($SQL_idList)",
-					"",
-					"LEFT JOIN \"$groupJoinTable\" 
-					ON \"$groupJoinTable\".\"SiteTreeID\" = \"SiteTree\".\"ID\"
-					AND \"$groupJoinTable\".\"GroupID\" IN ($SQL_groupList)");
+				$uninheritedPermissions = Versioned::get_by_stage("SiteTree", $stage)
+					->where("(\"$typeField\" = 'LoggedInUsers' OR
+						(\"$typeField\" = 'OnlyTheseUsers' AND \"$groupJoinTable\".\"SiteTreeID\" IS NOT NULL))
+						AND \"SiteTree\".\"ID\" IN ($SQL_idList)")
+					->leftJoin($groupJoinTable, "\"$groupJoinTable\".\"SiteTreeID\" = \"SiteTree\".\"ID\" AND \"$groupJoinTable\".\"GroupID\" IN ($SQL_groupList)");
 				
 				if($uninheritedPermissions) {
 					// Set all the relevant items in $result to true
