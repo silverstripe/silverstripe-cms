@@ -200,10 +200,7 @@ class AssetTableField extends ComplexTableField {
 		}
 		
 		if(!($childData instanceof Folder)) {
-			$mainTab->addFieldToTab(
-				'BottomRoot.Main', 
-				new CheckboxField("ShowInSearch", $childData->fieldLabel('ShowInSearch'))
-			);
+			$mainTab->push(new CheckboxField("ShowInSearch", $childData->fieldLabel('ShowInSearch')));
 		}
 
 		if($childData && $childData->hasMethod('BackLinkTracking')) {
