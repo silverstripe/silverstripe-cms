@@ -66,7 +66,6 @@
 		$(".cms-add-form #PageType li").entwine({
 			setSelected: function(bool) {
 				this.toggleClass('selected', bool);
-				this.find('input').attr('checked', bool ? 'checked' : null);
 			},
 			setEnabled: function(bool) {
 				$(this).toggleClass('disabled', bool);
