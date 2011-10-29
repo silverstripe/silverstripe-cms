@@ -285,7 +285,7 @@ class AssetTableField extends ComplexTableField {
 	 * @return string HTML
 	 */
 	public function deletemarked($request) {
-		$fileIDs = $request->requestVar($this->Name());
+		$fileIDs = $request->requestVar($this->getName());
 		$numFiles = 0;
 		$brokenPageList = '';
 
@@ -327,7 +327,7 @@ class AssetTableField extends ComplexTableField {
 	}
 	
 	public function movemarked($request) {
-		$fileIDs = $request->requestVar($this->Name());
+		$fileIDs = $request->requestVar($this->getName());
 		$folderId = $request->requestVar('DestFolderID');
 		$numFiles = 0;
 		
