@@ -42,7 +42,7 @@
 				var hints = this.find('.hints').data('hints'), 
 					metadata = this.find('#ParentID .TreeDropdownField').data('metadata'),
 					id = this.find('#ParentID .TreeDropdownField').getValue(),
-					newClassName = metadata[0].ClassName,
+					newClassName = metadata.ClassName,
 					disallowedChildren = hints[newClassName ? newClassName : 'Root'].disallowedChildren || [],
 					defaultChildClass = hints[newClassName ? newClassName : 'Root'].defaultChild || null;
 				
@@ -66,7 +66,6 @@
 		$(".cms-add-form #PageType li").entwine({
 			setSelected: function(bool) {
 				this.toggleClass('selected', bool);
-				this.find('input').attr('checked', bool ? 'checked' : null);
 			},
 			setEnabled: function(bool) {
 				$(this).toggleClass('disabled', bool);

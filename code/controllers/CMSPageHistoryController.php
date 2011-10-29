@@ -24,12 +24,11 @@ class CMSPageHistoryController extends CMSMain {
 	 * @return array
 	 */
 	function show($request) {
-		$form = $this->ShowVersionForm(
-			$request->param('VersionID')
-		);
+		$form = $this->ShowVersionForm($request->param('VersionID'));
 		
-		if($form && $this->isAjax()) {
-				$content = $form->forTemplate();
+		if($this->isAjax()) {
+			if($form) $content = $form->forTemplate();
+			else $content = $this->renderWith($this->getTemplatesWithSuffix('_Content'));
 		} else {
 			$content = $this->customise(array('EditForm' => $form))->renderWith($this->getViewer('show'));
 		}
@@ -83,7 +82,7 @@ class CMSPageHistoryController extends CMSMain {
 		
 		$form = parent::getEditForm($record, ($record) ? $record->getCMSFields() : null);
 
-		$form->setActions(new FieldSet(
+		$form->setActions(new FieldList(
 			$revert = new FormAction('doRollback', _t('CMSPageHistoryController.REVERTTOTHISVERSION', 'Revert to this version'))
 		));
 		
@@ -194,7 +193,7 @@ class CMSPageHistoryController extends CMSMain {
 		$form = new Form(
 			$this,
 			'VersionsForm',
-			new FieldSet(
+			new FieldList(
 				new CheckboxField(
 					'ShowUnpublished',
 					_t('CMSPageHistoryController.SHOWUNPUBLISHED','Show unpublished versions'),
@@ -208,7 +207,7 @@ class CMSPageHistoryController extends CMSMain {
 				new LiteralField('VersionsHtml', $versionsHtml),
 				$hiddenID = new HiddenField('ID', false, "")
 			),
-			new FieldSet(
+			new FieldList(
 				new FormAction(
 					'doCompare', _t('CMSPageHistoryController.COMPAREVERSIONS','Compare Versions')
 				),
@@ -409,7 +408,7 @@ class CMSPageHistoryController extends CMSMain {
 
 		if($record) {
 			$form = $this->getEditForm($id, null, null, true);
-			$form->setActions(new FieldSet());
+			$form->setActions(new FieldList());
 			$form->addExtraClass('compare');
 			
 			// Comparison views shouldn't be editable.

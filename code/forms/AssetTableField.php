@@ -164,7 +164,7 @@ class AssetTableField extends ComplexTableField {
 		$urlLink .= "<span class='readonly'><a href='{$childData->Link()}'>{$childData->RelativeLink()}</a></span>";
 		$urlLink .= "</div>";
 		
-		$detailFormFields = new FieldSet(
+		$detailFormFields = new FieldList(
 			new TabSet("BottomRoot",
 				$mainTab = new Tab('Main',
 					new TextField("Title", _t('AssetTableField.TITLE','Title')),
@@ -200,10 +200,7 @@ class AssetTableField extends ComplexTableField {
 		}
 		
 		if(!($childData instanceof Folder)) {
-			$mainTab->addFieldToTab(
-				'BottomRoot.Main', 
-				new CheckboxField("ShowInSearch", $childData->fieldLabel('ShowInSearch'))
-			);
+			$mainTab->push(new CheckboxField("ShowInSearch", $childData->fieldLabel('ShowInSearch')));
 		}
 
 		if($childData && $childData->hasMethod('BackLinkTracking')) {
@@ -288,7 +285,7 @@ class AssetTableField extends ComplexTableField {
 	 * @return string HTML
 	 */
 	public function deletemarked($request) {
-		$fileIDs = $request->requestVar($this->Name());
+		$fileIDs = $request->requestVar($this->getName());
 		$numFiles = 0;
 		$brokenPageList = '';
 
@@ -330,7 +327,7 @@ class AssetTableField extends ComplexTableField {
 	}
 	
 	public function movemarked($request) {
-		$fileIDs = $request->requestVar($this->Name());
+		$fileIDs = $request->requestVar($this->getName());
 		$folderId = $request->requestVar('DestFolderID');
 		$numFiles = 0;
 		

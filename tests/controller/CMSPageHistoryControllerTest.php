@@ -94,7 +94,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
 		$hidden = $form[0]->xpath("fieldset/input[@type='hidden']");
 		
 		$this->assertThat($hidden, $this->logicalNot($this->isNull()), 'Hidden ID field exists');
-		$this->assertEquals(4, (int) $hidden[0]->attributes()->value);
+		$this->assertEquals($this->page->ID, (int) $hidden[0]->attributes()->value);
 		
 		// ensure that all the versions are present in the table and displayed
 		$rows = $form[0]->xpath("fieldset/table/tbody/tr");

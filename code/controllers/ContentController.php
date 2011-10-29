@@ -65,7 +65,7 @@ class ContentController extends Controller {
 	 * Return the children of a given page. The parent reference can either be a page link or an ID.
 	 *
 	 * @param string|int $parentRef
-	 * @return DataObjectSet
+	 * @return SS_List
 	 */
 	public function ChildrenOf($parentRef) {
 		$parent = SiteTree::get_by_link($parentRef);
@@ -78,7 +78,7 @@ class ContentController extends Controller {
 	}
 	
 	/**
-	 * @return DataObjectSet
+	 * @return SS_List
 	 */
 	public function Page($link) {
 		return SiteTree::get_by_link($link);
@@ -283,7 +283,7 @@ class ContentController extends Controller {
 
 	/**
 	 * Returns a fixed navigation menu of the given level.
-	 * @return DataObjectSet
+	 * @return SS_List
 	 */
 	public function getMenu($level = 1) {
 		if($level == 1) {
@@ -398,6 +398,7 @@ HTML;
 	 * templates directly in the template.
 	 */
 	function LangAttributes() {
+		Deprecation::notice('2.5', 'Use ContentLocale() instead and write attribute names suitable to XHTML/HTML instead.');
 		$locale = $this->ContentLocale();
 		return "xml:lang=\"$locale\" lang=\"$locale\"";	
 	}

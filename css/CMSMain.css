@@ -1,8 +1,8 @@
 /** Style  custom to the CMSMain admin interface. CMSMain extends the built in  sapphire admin section styles. As much as possible we want to use those  built in styles. If anything in this file can be implemented in a generic  way then it should be include in the admin scss files.  @package cms */
 /** ------------------------------------------------------------------ Page History Section. ----------------------------------------------------------------- */
-/* line 15, ../scss/CMSMain.scss */
 #cms-page-history-versions tr.loading { color: #999; }
-/* line 20, ../scss/CMSMain.scss */
 #cms-page-history-versions tr.loading td:hover { cursor: none; }
-/* line 27, ../scss/CMSMain.scss */
 #cms-page-history-versions td:hover { cursor: pointer; }
+
+.CMSPageHistoryController ins { background-color: #DFD; padding: 2px; text-decoration: none; }
+.CMSPageHistoryController del { background-color: #FDD; padding: 2px; color: #ff4444; }

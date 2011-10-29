@@ -39,10 +39,10 @@ class StaticExporter extends Controller {
 	}
 	
 	function StaticExportForm() {
-		return new Form($this, 'StaticExportForm', new FieldSet(
+		return new Form($this, 'StaticExportForm', new FieldList(
 			// new TextField('folder', _t('StaticExporter.FOLDEREXPORT','Folder to export to')),
 			new TextField('baseurl', _t('StaticExporter.BASEURL','Base URL'))
-		), new FieldSet(
+		), new FieldList(
 			new FormAction('export', _t('StaticExporter.EXPORTTO','Export to that folder'))
 		));
 	}

@@ -34,4 +34,8 @@ class CMSPagesController extends CMSMain {
 		return parent::Link($action);
 	}
 	
+	function PreviewLink() {
+		return false;
+	}
+	
 }
