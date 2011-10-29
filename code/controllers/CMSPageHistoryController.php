@@ -27,7 +27,8 @@ class CMSPageHistoryController extends CMSMain {
 		$form = $this->ShowVersionForm(
 			$request->param('VersionID')
 		);
-		if($this->isAjax()) {
+		
+		if($form && $this->isAjax()) {
 				$content = $form->forTemplate();
 		} else {
 			$content = $this->customise(array('EditForm' => $form))->renderWith($this->getViewer('show'));
