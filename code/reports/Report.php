@@ -9,9 +9,9 @@
  * 
  *  {@link title()}: Return the title - i18n is your responsibility
  *  {@link description()}: Return the description - i18n is your responsibility
- *  {@link sourceQuery()}: Return a DataObjectSet of the search results
+ *  {@link sourceQuery()}: Return a SS_List of the search results
  *  {@link columns()}: Return information about the columns in this report.
- *  {@link parameterFields()}: Return a FieldSet of the fields that can be used to filter this
+ *  {@link parameterFields()}: Return a FieldList of the fields that can be used to filter this
  *  report.
  * 
  * If you can't express your report as a query, you can implement the this method instead:
@@ -29,7 +29,7 @@
  * 
  * {@link getReportField()}: Return a FormField in the place where your report's TableListField
  * usually appears.
- * {@link getCMSFields()}: Return the FieldSet representing the complete right-hand area of the 
+ * {@link getCMSFields()}: Return the FieldList representing the complete right-hand area of the 
  * report, including the title, description, parameter fields, and results.
  * 
  * Showing reports to the user
@@ -94,7 +94,7 @@ class SS_Report extends ViewableData {
 	}
 	
 	/**
-	 * Return a FieldSet specifying the search criteria for this report.
+	 * Return a FieldList specifying the search criteria for this report.
 	 * 
 	 * Override this method to define search criteria.
 	 */
@@ -116,7 +116,7 @@ class SS_Report extends ViewableData {
 	}
 	
 	/**
-	 * Return a DataObjectSet records for this report.
+	 * Return a SS_List records for this report.
 	 */
 	function records($params) {
 		if($this->hasMethod('sourceRecords')) return $this->sourceRecords($params, null, null);
@@ -158,17 +158,17 @@ class SS_Report extends ViewableData {
 
 
 	/**
-	 * Returns a FieldSet with which to create the CMS editing form.
+	 * Returns a FieldList with which to create the CMS editing form.
 	 * You can use the extend() method of FieldSet to create customised forms for your other
 	 * data objects.
 	 *
 	 * @uses getReportField() to render a table, or similar field for the report. This
 	 * method should be defined on the SS_Report subclasses.
 	 *
-	 * @return FieldSet
+	 * @return FieldList
 	 */
 	function getCMSFields() {
-		$fields = new FieldSet(
+		$fields = new FieldList(
 			new LiteralField(
 				'ReportTitle', 
 				 "<h3>{$this->title()}</h3>"
@@ -200,7 +200,7 @@ class SS_Report extends ViewableData {
 	
 	function getCMSActions() {
 		// getCMSActions() can be extended with updateCMSActions() on a extension
-		$actions = new FieldSet();
+		$actions = new FieldList();
 		$this->extend('updateCMSActions', $actions);
 		return $actions;
 	}
@@ -353,7 +353,7 @@ class SS_Report extends ViewableData {
  *     }
  *     function sourceRecords($params, $sort, $limit) {
  *         // Do some stuff
- *         // Return a DataObjectSet of actual objects.
+ *         // Return a SS_List of actual objects.
  *     }
  * 
  * This object is used by the default implementation of sourceQuery() on SS_Report, to make use of

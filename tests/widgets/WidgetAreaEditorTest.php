@@ -461,7 +461,7 @@ class WidgetAreaEditorTest_TestWidget extends Widget implements TestOnly {
 		'Title' => 'Varchar'
 	);
 	public function getCMSFields() {
-		$fields = new FieldSet();
+		$fields = new FieldList();
 		$fields->push(new TextField('Title'));
 		return $fields;
 	}
