@@ -4,7 +4,7 @@
  ************************************************************************************
  **                                                                                **
  **  If you can read this text in your browser then you don't have PHP installed.  **
- **  Please install PHP 5.0 or higher, preferably PHP 5.2.                         **
+ **  Please install PHP 5.2 or higher, preferably PHP 5.3.                         **
  **                                                                                **
  ************************************************************************************
  ************************************************************************************/
