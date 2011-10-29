@@ -21,9 +21,9 @@
 
 
 	<div class="cms-content-tools cms-panel west cms-panel-layout" data-expandOnClick="true" data-layout="{type: 'border'}">
-		<h3 class="cms-panel-header north"></h3>
-	
 		<div class="cms-panel-content center">
+			<h3 class="cms-panel-header north"></h3>
+			
 			<div class="cms-content-tools-actions ui-widget-content">
 				$AddForm
 			</div>
