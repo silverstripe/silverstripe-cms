@@ -23,6 +23,11 @@ ErrorDocument 500 /assets/error-500.html
 
 	RewriteCond %{REQUEST_URI} ^(.*)$
 	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteRule .* sapphire/main.php?url=%1 [QSA,L]
+	RewriteRule .* sapphire/main.php?url=%1 [QSA]
+
+	RewriteCond %{REQUEST_URI} ^(.*)/sapphire/main.php$
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule . %1/install.php? [R,L]
+
 </IfModule>
 ### SILVERSTRIPE END ###
