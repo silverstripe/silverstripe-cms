@@ -121,6 +121,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	);
 
 	static $default_sort = "\"Sort\"";
+	
+	static $create_table_options = array(
+		'MySQLDatabase' => 'ENGINE=MyISAM'
+	);
 
 	/**
 	 * If this is false, the class cannot be created in the CMS.
