@@ -1200,7 +1200,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				$children = $childRecords->map("ID", "ParentID");
 
 				// Find out the children that can be deleted
-				$deletableChildren = self::can_delete_multiple(array_keys($children), $memberID);
+				$deletableChildren = self::can_delete_multiple($children->keys(), $memberID);
 				
 				// Get a list of all the parents that have no undeletable children
 				$deletableParents = array_fill_keys($editableIDs, true);
@@ -1212,7 +1212,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				$deletableParents = array_keys($deletableParents);
 
 				// Also get the $ids that don't have children
-				$parents = array_unique($children);
+				$parents = array_unique($children->values());
 				$deletableLeafNodes = array_diff($editableIDs, $parents);
 
 				// Combine the two
