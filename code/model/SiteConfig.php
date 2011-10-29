@@ -39,7 +39,7 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	 * Get the fields that are sent to the CMS. In
 	 * your extensions: updateCMSFields($fields)
 	 *
-	 * @return Fieldset
+	 * @return FieldList
 	 */
 	function getCMSFields() {
 		Requirements::javascript(CMS_DIR . "/javascript/SitetreeAccess.js");

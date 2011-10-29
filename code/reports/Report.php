@@ -159,7 +159,7 @@ class SS_Report extends ViewableData {
 
 	/**
 	 * Returns a FieldList with which to create the CMS editing form.
-	 * You can use the extend() method of FieldSet to create customised forms for your other
+	 * You can use the extend() method of FieldList to create customised forms for your other
 	 * data objects.
 	 *
 	 * @uses getReportField() to render a table, or similar field for the report. This
