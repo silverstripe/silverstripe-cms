@@ -10,4 +10,8 @@ class CMSSettingsController extends CMSMain {
 		return $this->RootForm();
 	}
 	
+	function PreviewLink() {
+		return false;
+	}
+	
 }

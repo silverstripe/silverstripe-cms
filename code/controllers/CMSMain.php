@@ -125,6 +125,15 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			"$action"
 		);
 	}
+	
+	/**
+	 * @return string
+	 */
+	public function PreviewLink() {
+		$record = $this->getRecord($this->currentPageID());
+		$baseLink = ($record && $record instanceof Page) ? $record->Link('?stage=Stage') : Director::absoluteBaseURL();
+		return $baseLink;
+	}
 
 	/**
 	 * Return the entire site tree as a nested set of ULs
