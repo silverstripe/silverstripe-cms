@@ -24,12 +24,11 @@ class CMSPageHistoryController extends CMSMain {
 	 * @return array
 	 */
 	function show($request) {
-		$form = $this->ShowVersionForm(
-			$request->param('VersionID')
-		);
+		$form = $this->ShowVersionForm($request->param('VersionID'));
 		
-		if($form && $this->isAjax()) {
-				$content = $form->forTemplate();
+		if($this->isAjax()) {
+			if($form) $content = $form->forTemplate();
+			else $content = $this->renderWith($this->getTemplatesWithSuffix('_Content'));
 		} else {
 			$content = $this->customise(array('EditForm' => $form))->renderWith($this->getViewer('show'));
 		}
