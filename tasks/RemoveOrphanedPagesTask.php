@@ -69,7 +69,7 @@ in the other stage:<br />
 	}
 	
 	function Form() {
-		$fields = new FieldSet();
+		$fields = new FieldList();
 		$source = array();
 		
 		$fields->push(new HeaderField(
@@ -167,7 +167,7 @@ in the other stage:<br />
 			$this,
 			'Form',
 			$fields,
-			new FieldSet(
+			new FieldList(
 				new FormAction('doSubmit', _t('RemoveOrphanedPagesTask.BUTTONRUN', 'Run'))
 			)
 		);
@@ -319,7 +319,7 @@ in the other stage:<br />
 	 * @param string $sort
 	 * @param string $join
 	 * @param int|array $limit
-	 * @return DataObjectSet
+	 * @return SS_List
 	 */
 	function getOrphanedPages($class = 'SiteTree', $filter = '', $sort = null, $join = null, $limit = null) {
 		$filter .= ($filter) ? ' AND ' : '';

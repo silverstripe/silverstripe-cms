@@ -8,7 +8,7 @@ class Folder_UnusedAssetsField extends CompositeField {
 	
 	public function __construct($folder) {
 		$this->folder = $folder;
-		parent::__construct(new FieldSet());
+		parent::__construct(new FieldList());
 	}
 		
 	public function getChildren() {
@@ -16,7 +16,7 @@ class Folder_UnusedAssetsField extends CompositeField {
 			$inlineFormAction = new InlineFormAction("delete_unused_thumbnails", _t('Folder.DELETEUNUSEDTHUMBNAILS', 'Delete unused thumbnails'));
 			$inlineFormAction->includeDefaultJS(false) ;
 
-			$this->children = new FieldSet(
+			$this->children = new FieldList(
 				new LiteralField( "UnusedAssets", "<h2>"._t('Folder.UNUSEDFILESTITLE', 'Unused files')."</h2>" ),
 				$this->getAssetList(),
 				new FieldGroup(

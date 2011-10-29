@@ -21,10 +21,10 @@ class ContentControllerSearchExtension extends Extension {
 			$searchText = $this->owner->request->getVar('Search');
 		}
 
-		$fields = new FieldSet(
+		$fields = new FieldList(
 			new TextField('Search', false, $searchText)
 		);
-		$actions = new FieldSet(
+		$actions = new FieldList(
 			new FormAction('results', _t('SearchForm.GO', 'Go'))
 		);
 		$form = new SearchForm($this->owner, 'SearchForm', $fields, $actions);

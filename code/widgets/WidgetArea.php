@@ -26,7 +26,7 @@ class WidgetArea extends DataObject {
 	 * it easier to access and process form logic
 	 * and actions stored in {@link Widget_Controller}.
 	 * 
-	 * @return DataObjectSet Collection of {@link Widget_Controller}
+	 * @return SS_List Collection of {@link Widget_Controller}
 	 */
 	function WidgetControllers() {
 		$controllers = new ArrayList();
