@@ -42,7 +42,7 @@
 				var hints = this.find('.hints').data('hints'), 
 					metadata = this.find('#ParentID .TreeDropdownField').data('metadata'),
 					id = this.find('#ParentID .TreeDropdownField').getValue(),
-					newClassName = metadata[0].ClassName,
+					newClassName = metadata.ClassName,
 					disallowedChildren = hints[newClassName ? newClassName : 'Root'].disallowedChildren || [],
 					defaultChildClass = hints[newClassName ? newClassName : 'Root'].defaultChild || null;
 				
