@@ -12,18 +12,6 @@ class SearchFormTest extends FunctionalTest {
 	
 	protected $mockController;
 	
-	protected $requiredExtensions = array(
-		"SiteTree" => array(
-			"FulltextSearchable('Title,MenuTitle,Content,MetaTitle,MetaDescription,MetaKeywords')",
-		),
-		"File" => array(
-			"FulltextSearchable('Filename,Title,Content')",
-		),
-		"ContentController" => array(
-			"ContentControllerSearchExtension",
-		),
-	);
-	
 	function waitUntilIndexingFinished() {
 		$db = DB::getConn();
 		if (method_exists($db, 'waitUntilIndexingFinished')) DB::getConn()->waitUntilIndexingFinished();
@@ -34,7 +22,7 @@ class SearchFormTest extends FunctionalTest {
 		if(is_a(DB::getConn(), 'PostgreSQLDatabase')) {
 			self::kill_temp_db();
 		}
-		
+		FulltextSearchable::enable();
 		parent::setUpOnce();
 	}
 	
