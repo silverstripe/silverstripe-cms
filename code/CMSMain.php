@@ -701,7 +701,7 @@ JS;
 		);
 		
 		// Non-existent record
-		if(!$record || !$record->ID) throw new HTTPResponse_Exception("Bad record ID #$id", 404);
+		if(!$record || !$record->ID) throw new SS_HTTPResponse_Exception("Bad record ID #{$data['ID']}", 404);
 		
 		if(!$record->canDelete()) return Security::permissionFailure();
 		
