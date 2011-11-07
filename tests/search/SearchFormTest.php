@@ -5,8 +5,10 @@
  * 
  * @todo Fix unpublished pages check in testPublishedPagesMatchedByTitle()
  * @todo All tests run on unpublished pages at the moment, due to the searchform not distinguishing between them
+ * 
+ * Because this manipulates the test database in severe ways, I've renamed the test to force it to run last...
  */
-class SearchFormTest extends FunctionalTest {
+class ZZZSearchFormTest extends FunctionalTest {
 	
 	static $fixture_file = 'SearchFormTest.yml';
 	
@@ -19,10 +21,11 @@ class SearchFormTest extends FunctionalTest {
 	
 	function setUpOnce() {
 		// HACK Postgres doesn't refresh TSearch indexes when the schema changes after CREATE TABLE
-		if(is_a(DB::getConn(), 'PostgreSQLDatabase')) {
-			self::kill_temp_db();
-		}
+		// MySQL will need a different table type
+		self::kill_temp_db();
 		FulltextSearchable::enable();
+		self::create_temp_db();
+		$this->resetDBSchema(true);
 		parent::setUpOnce();
 	}
 	
