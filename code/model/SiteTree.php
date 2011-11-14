@@ -1385,15 +1385,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if((!$this->URLSegment || $this->URLSegment == 'new-page') && $this->Title) {
 			$this->URLSegment = $this->generateURLSegment($this->Title);
 		} else if($this->isChanged('URLSegment')) {
-			// Make sure the URLSegment is valid for use in a URL
-			$segment = ereg_replace('[^A-Za-z0-9]+','-',$this->URLSegment);
-			$segment = ereg_replace('-+','-',$segment);
-			
+			$filter = Object::create('URLPathFilter');
+			$this->URLSegment = $filter->filter($this->URLSegment);
 			// If after sanitising there is no URLSegment, give it a reasonable default
-			if(!$segment) {
-				$segment = "page-$this->ID";
-			}
-			$this->URLSegment = $segment;
+			if(!$this->URLSegment) $this->URLSegment = "page-$this->ID";
 		}
 		
 		// Ensure that this object has a non-conflicting URLSegment value.
@@ -1583,11 +1578,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string Generated url segment
 	 */
 	function generateURLSegment($title){
-		$t = Convert::raw2url($title);
+		$filter = Object::create('URLPathFilter');
+		$t = $filter->filter($title);
 		
-		if(!$t || $t == '-' || $t == '-1') {
-			$t = "page-$this->ID";
-		}
+		// Fallback to generic page name if path is empty (= no valid, convertable characters)
+		if(!$t || $t == '-' || $t == '-1') $t = "page-$this->ID";
 		
 		// Hook for extensions
 		$this->extend('updateURLSegment', $t, $title);
