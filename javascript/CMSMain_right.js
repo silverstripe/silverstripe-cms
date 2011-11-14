@@ -139,5 +139,24 @@ Behaviour.register({
 				Element.show('ParentID');
 			}
 		}
+	},
+	
+	'#Form_EditForm_URLSegment' : {
+		onchange: function(e) {
+			var $this = jQuery(this);
+			
+			if(!$this.val()) return;
+			
+			$this.attr('disabled', 'disabled').parents('.field:first').addClass('loading');
+			var oldVal = $this.val();
+			jQuery.get(
+				$this.parents('form:first').attr('action') + 
+					'/field/URLSegment/suggest/?value=' + encodeURIComponent($this.val()),
+				function(data) {
+					$this.removeAttr('disabled').parents('.field:first').removeClass('loading');
+					$this.val(decodeURIComponent(data.value));
+				}
+			);
+		}
 	}
 });
