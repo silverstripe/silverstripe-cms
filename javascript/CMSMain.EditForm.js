@@ -21,23 +21,6 @@
 		 * Input validation on the URLSegment field
 		 */
 		$('.cms-edit-form input[name=URLSegment]').entwine({
-			/**
-			 * Property: FilterRegex
-			 * Regex
-			 */
-			FilterRegex: /[^A-Za-z0-9-]+/,
-
-			/**
-			 * Property: ValidationMessage
-			 * String
-			 */
-			ValidationMessage: ss.i18n._t('CMSMAIN.URLSEGMENTVALIDATION'),
-			
-			/**
-			 * Property: MaxLength
-			 * Int
-			 */
-			MaxLength: 50,
 	
 			/**
 			 * Constructor: onmatch
@@ -47,42 +30,41 @@
 		
 				// intercept change event, do our own writing
 				this.bind('change', function(e) {
-					if(!self.validate()) {
-						jQuery.noticeAdd(self.getValidationMessage());
-					}
-					self.val(self.suggestValue(e.target.value));
-					return false;
+					if(!self.val()) return;
+					
+					self.attr('disabled', 'disabled').parents('.field:first').addClass('loading');
+					var oldVal = self.val();
+					self.suggest(oldVal, function(data) {
+						self.removeAttr('disabled').parents('.field:first').removeClass('loading');
+						var newVal = decodeURIComponent(data.value);
+						self.val(newVal);
+						
+						if(oldVal != newVal) {
+							jQuery.noticeAdd(ss.i18n._t('The URL has been changed'));
+						}
+					});
+					
 				});
 				
 				this._super();
 			},
 	
 			/**
-			 * Function: suggestValue
+			 * Function: suggest
 			 *  
 			 * Return a value matching the criteria.
 			 * 
 			 * Parameters:
 			 *  (String) val
-			 * 
-			 * Returns:
-			 *  String
+			 *  (Function) callback
 			 */
-			suggestValue: function(val) {
-				// TODO Do we want to enforce lowercasing in URLs?
-				return val.substr(0, this.getMaxLength()).replace(this.getFilterRegex(), '').toLowerCase();
-			},
-	
-			/**
-			 * Function: validate
-			 * 
-			 * Returns:
-			 *  Boolean
-			 */
-			validate: function() {
-				return (
-					this.val().length > this.getMaxLength()
-					|| this.val().match(this.getFilterRegex())
+			suggest: function(val, callback) {
+				$.get(
+					this.parents('form:first').attr('action') + 
+						'/field/URLSegment/suggest/?value=' + encodeURIComponent(this.val()),
+					function(data) {
+						callback.apply(this, arguments);
+					}
 				);
 			}
 		});
@@ -114,24 +96,21 @@
 			 */
 			updateURLSegment: function(field) {
 				if(!field || !field.length) return;
+				
+				// TODO The new URL value is determined asynchronously,
+				// which means we need to come up with an alternative system
+				// to ask user permission to change it.
 		
 				// TODO language/logic coupling
 				var isNew = this.val().indexOf("new") == 0;
-				var suggestion = field.entwine('ss').suggestValue(this.val());
-				var confirmMessage = ss.i18n.sprintf(
-					ss.i18n._t(
-						'UPDATEURL.CONFIRM', 
-						'Would you like me to change the URL to:\n\n' 
-						+ '%s/\n\nClick Ok to change the URL, '
-						+ 'click Cancel to leave it as:\n\n%s'
-					),
-					suggestion,
-					field.val()
+				var confirmMessage = ss.i18n._t(
+					'UPDATEURL.CONFIRMSIMPLE', 
+					'Do you want to update the URL from your new page title?'
 				);
 
 				// don't ask for replacement if record is considered 'new' as defined by its title
-				if(isNew || (suggestion != field.val() && confirm(confirmMessage))) {
-					field.val(suggestion);
+				if(isNew || confirm(confirmMessage)) {
+					field.val(this.val()).trigger('change');
 				}
 			}
 		});
