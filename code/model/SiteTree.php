@@ -1385,7 +1385,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if((!$this->URLSegment || $this->URLSegment == 'new-page') && $this->Title) {
 			$this->URLSegment = $this->generateURLSegment($this->Title);
 		} else if($this->isChanged('URLSegment')) {
-			$filter = Object::create('URLPathFilter');
+			$filter = Object::create('URLSegmentFilter');
 			$this->URLSegment = $filter->filter($this->URLSegment);
 			// If after sanitising there is no URLSegment, give it a reasonable default
 			if(!$this->URLSegment) $this->URLSegment = "page-$this->ID";
@@ -1578,7 +1578,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string Generated url segment
 	 */
 	function generateURLSegment($title){
-		$filter = Object::create('URLPathFilter');
+		$filter = Object::create('URLSegmentFilter');
 		$t = $filter->filter($title);
 		
 		// Fallback to generic page name if path is empty (= no valid, convertable characters)
@@ -1828,7 +1828,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					new HtmlEditorField("Content", _t('SiteTree.HTMLEDITORTITLE', "Content", PR_MEDIUM, 'HTML editor title'))
 				),
 				$tabMeta = new Tab('Metadata',
-					new TextField("URLSegment", $this->fieldLabel('URLSegment') . $urlHelper),
+					new SiteTreeURLSegmentField("URLSegment", $this->fieldLabel('URLSegment') . $urlHelper),
 					new LiteralField('LinkChangeNote', self::nested_urls() && count($this->Children()) ?
 						'<p>' . $this->fieldLabel('LinkChangeNote'). '</p>' : null
 					),
