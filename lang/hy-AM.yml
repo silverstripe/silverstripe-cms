@@ -1,0 +1,14 @@
+hy-AM:
+  AssetAdmin:
+  AssetAdmin_left.ss:
+  CMSMain:
+    NEW: "Նոր"
+    RESTORED: "Հաջող վերակառուցեց '%s'"
+  CMSMain_left.ss:
+    SEARCH: "Որոնել"
+  LeftAndMain:
+  SecurityAdmin:
+  SideReport:
+    REPEMPTY: "%s զեկույցը դատարկ է:"
+  SiteTree:
+    HTMLEDITORTITLE: "Բովանդակություն"

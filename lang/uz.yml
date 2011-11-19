@@ -1,0 +1,25 @@
+uz:
+  AssetAdmin:
+  CMSMain:
+    EMAIL: "Email"
+    NEW: "Yangi"
+    NOCONTENT: "hech nima yoq"
+    PAGENOTEXISTS: "Bu sahifa mavjud emas."
+    PUBALLCONFIRM: "Iltimos, saytdagi bor hamma sahifalarni chop eting. "
+    PUBALLFUN: "\"Hammasi chop etish\" funktsiyasi"
+    PUBALLFUN2: "Bu tugmani bosish bilan siz saytda bor bo'lgan hamma sahifalar chop etgan bo'lasiz."
+    PUBPAGES: "Tayyor: %d ta sahifa chop etildi"
+    RESTORED: "'%s' qayta tiklandi"
+    ROLLEDBACKVERSION: "Orga versiyaga qaytarildi #%d. Yangi versiya #%d"
+    SAVE: "Saqlash"
+    TOTALPAGES: "Jami sahifalar:"
+  CMSMain_left.ss:
+    SEARCH: "Qidiruv"
+  LeftAndMain:
+  SecurityAdmin:
+  SideReport:
+    REPEMPTY: "%s hisobot bo'm bo'sh"
+  SiteTree:
+    HOMEPAGEFORDOMAIN: "Domainlar"
+    HTMLEDITORTITLE: "Material"
+    PAGETYPE: "Sahifa turi"

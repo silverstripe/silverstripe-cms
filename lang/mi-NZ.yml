@@ -1,0 +1,33 @@
+mi-NZ:
+  AssetAdmin:
+  AssetAdmin_left.ss:
+  AssetTableField:
+    DIM: "Nuinga"
+    OWNER: "Kaiūmanga"
+    SIZE: "Nuinga"
+    TITLE: "Ingoa "
+    TYPE: "Tūmomo "
+  CMSMain:
+    EMAIL: "Īmēra"
+    NEW: "he ____ hōu"
+    NOCONTENT: "Korekau he kiko."
+    PAGENOTEXISTS: "kāore tēnei rārangi e tīari"
+    PUBALLCONFIRM: "Whakaputaina koa i ia whārangi i te pae me te tārua i te content stage kia ora ai."
+    PUBALLFUN: "Te taumahinga \"Whakaputaina Katoatia\""
+    PUBALLFUN2: "Ko te pēhi i tēnei pātene he taurite ki te haere ki ia whārangi me te pēhi i te \"whakaputaina\". Ko te tikanga, ka whakamahia tēnei pātene i muri ake i te mahi whakatikatika kua maha ngā tinihanga, pērā i te wā i hangaia tuatahi mai te pae. "
+    PUBPAGES: "Kua oti: %d ngā whārangi kua whakaputaina."
+    REMOVEDPAGE: "Kua tangohia mai te '%s' i te pae kua oti kē te tā."
+    RESTORED: "i whakaora pai ai te '%s'"
+    ROLLBACK: "Hoki whakamuri ki tēnei putanga."
+    ROLLEDBACKPUB: "I hoki whakamuri atu ki te putanga i tāngia. Ko te tau putanga hou ko te #%d."
+    ROLLEDBACKVERSION: "I hoki whakamuri atu ki te putanga #%d. Ko te tau putanga hou ko te #%d."
+    SAVE: "tiakina"
+    TOTALPAGES: "Te katoa o ngā whārangi:"
+  CMSMain_left.ss:
+    SEARCH: "Rapunga"
+  LeftAndMain:
+  SecurityAdmin:
+  SiteTree:
+    HOMEPAGEFORDOMAIN: "Rohe; Nga Rohe"
+    HTMLEDITORTITLE: "Kai"
+    PAGETYPE: "Tūmomo wharangi "

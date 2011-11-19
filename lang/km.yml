@@ -1,0 +1,46 @@
+km:
+  AssetAdmin:
+  AssetAdmin_left.ss:
+  CMSMain:
+    ACCESS: "ចូលទៅកាន់ផ្នែក '%s'"
+    EMAIL: "អ៊ីមែល​"
+    NEW: "ថ្មី"
+    PAGENOTEXISTS: "ទំព័រនេះមិនមានទេ"
+    REMOVEDPAGE: "ទំព័រ '%s' បានដកចេញពីគេហទំព័រ"
+    RESTORED: "'%s\" បានដាក់ចូលវិញ"
+    ROLLEDBACKPUB: "ត្រលប់ទៅកាន់ទំព័រធ្វើរួច។ សេរីថ្មីគឺ #%d"
+    ROLLEDBACKVERSION: "ត្រលប់ទៅកាន់សេរី #%d. លេខសេរីថ្មីគឺ #%d"
+    SAVE: "រក្សា​ទុក​"
+  CMSMain_left.ss:
+    SEARCH: "ស្វែងរក"
+  ContentController:
+    DRAFT_SITE_ACCESS_RESTRICTION: "ដើម្បីមើលទំព័រប្រៀងសូម ចូលកាន់ប្រព័ន្ធគ្រប់គ្រងដោយប្រើយឈ្មោះ និងពាក្យសំងាត់របស់អ្នក សូមចុចត្រនេះ <a href=\"%s\"> ដើម្បីត្រលប់ទៅ កាន់ទំព័ររួចរាល់។</a>"
+  ErrorPage:
+    PLURALNAME: "ទំព័រមានបញ្ហា"
+    SINGULARNAME: "ទំព័រមានបញ្ហា"
+  LeftAndMain:
+  RedirectorPage:
+    PLURALNAME: "ទំព័រភ្ជាប់ផ្ទាល់"
+    SINGULARNAME: "ទំព័រភ្ជាប់ផ្ទាល់"
+  SecurityAdmin:
+  SideReport:
+    REPEMPTY: "របាយការណ៍ %s ទទេ"
+  SiteTree:
+    CHANGETO: "ផ្លាស់ប្តូរទៅ \"%s\""
+    Content: "មាតិការ"
+    HOMEPAGEFORDOMAIN: "ដូមេន"
+    HTMLEDITORTITLE: "អត្ថបទ"
+    PAGETYPE: "ប្រភេទទំព័រ"
+    PLURALNAME: "សម្ព័ន្ធទំព័រ"
+    SINGULARNAME: "សម្ព័ន្ធទំព័រ"
+    URLSegment: "កំណាត់ URL"
+    has_one_Parent: "ទំព័រមេ"
+  VirtualPage:
+    PLURALNAME: "ទំព័រដូច"
+    SINGULARNAME: "ទំព័រដូច"
+  Widget:
+    PLURALNAME: "វីហ្គេត"
+    SINGULARNAME: "វីហ្គេត"
+  WidgetArea:
+    PLURALNAME: "ទីតាំវីហ្គេត"
+    SINGULARNAME: "ទីតាំវីហ្គេត"

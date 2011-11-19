@@ -1,0 +1,11 @@
+vi-US:
+  AssetAdmin:
+  AssetAdmin_left.ss:
+  CMSMain:
+    NEW: "Mới"
+  CMSMain_left.ss:
+    SEARCH: "Tìm kiếm"
+  ErrorPage:
+    PLURALNAME: "Trang báo lỗi"
+    SINGULARNAME: "Trang báo lỗi"
+  LeftAndMain:

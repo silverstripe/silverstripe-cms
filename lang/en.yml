@@ -1,0 +1,463 @@
+en:
+  AdvancedSearchForm:
+    ALLWORDS: "All Words"
+    ATLEAST: "At Least One Of the Words"
+    EXACT: "Exact Phrase"
+    FROM: "From"
+    GO: "Go"
+    LASTUPDATED: "Last Updated"
+    LASTUPDATEDHEADER: "LAST UPDATED"
+    PAGETITLE: "Page Title"
+    RELEVANCE: "Relevance"
+    SEARCHBY: "SEARCH BY"
+    SORTBY: "SORT RESULTS BY"
+    TO: "To"
+    WITHOUT: "Without the Words"
+  AssetAdmin:
+    ActionAdd: "Add folder"
+    CHOOSEFILE: "Choose file: "
+    DELETEDX: "Deleted %s file(s) %s"
+    FILESREADY: "Files ready to upload:"
+    GalleryView: "Gallery View"
+    ListView: "List View"
+    MOVEDX: "Moved %s files"
+    NEWFOLDER: "NewFolder"
+    NOTEMP: "There is no temporary folder for uploads. Please set upload_tmp_dir in php.ini."
+    NOTHINGTOUPLOAD: "There was nothing to upload"
+    NOWBROKEN: "These pages now have broken links:"
+    THUMBSDELETED: "%s unused thumbnails have been deleted"
+    Title: "Find &amp; Organize"
+    TreeView: "Tree View"
+    UPLOAD: "Upload Files Listed Below"
+    UPLOADEDX: "Uploaded %s files"
+  AssetAdmin_DeleteBatchAction:
+    TITLE: "Delete folders"
+  AssetAdmin_left.ss:
+    FILESYSTEMSYNC_DESC: "SilverStripe maintains its own database of the files &amp; images stored in your assets/ folder.  Click this button to update that database, if files are added to the assets/ folder from outside SilverStripe, for example, if you have uploaded files via FTP."
+    SELECTTODEL: "Select the folders that you want to delete and then click the button below"
+  AssetAdmin_uploadiframe.ss:
+    PERMFAILED: "You do not have permission to upload files into this folder."
+    TITLE: "Image Uploading Iframe"
+  AssetTableField:
+    CLEAR: "Clear"
+    CREATED: "First uploaded"
+    DIM: "Dimensions"
+    FILENAME: "Filename"
+    IMAGE: "Image"
+    LASTEDIT: "Last changed"
+    MAIN: "Main"
+    NODATAFOUND: "No %s found"
+    NOLINKS: "This file hasn't been linked to from any pages."
+    OWNER: "Owner"
+    PAGESLINKING: "The following pages link to this file:"
+    SIZE: "Size"
+    TITLE: "Title"
+    TYPE: "Type"
+    URL: "URL"
+  AssetTableField_Item.ss:
+    DRAGTOFOLDER: "Drag to folder on left to move file"
+  BrokenLinksReport:
+    Any: "Any"
+    BROKENLINKS: "Broken links report"
+    CheckSite: "Check site"
+    CheckSiteDropdownDraft: "Draft Site"
+    CheckSiteDropdownPublished: "Published Site"
+    ColumnDateLastModified: "Date last modified"
+    ColumnDateLastPublished: "Date last published"
+    ColumnProblemType: "Problem type"
+    ColumnURL: "URL"
+    HasBrokenFile: "has broken file"
+    HasBrokenLink: "has broken link"
+    HasBrokenLinkAndFile: "has broken link and file"
+    HoverTitleEditPage: "Edit page"
+    PageName: "Page name"
+    ReasonDropdown: "Problem to check"
+    ReasonDropdownBROKENFILE: "Broken file"
+    ReasonDropdownBROKENLINK: "Broken link"
+    ReasonDropdownRPBROKENLINK: "Redirector page pointing to non-existent page"
+    ReasonDropdownVPBROKENLINK: "Virtual page pointing to non-existent page"
+    RedirectorNonExistent: "redirector page pointing to non-existent page"
+    VirtualPageNonExistent: "virtual page pointing to non-existent page"
+  CMSBatchActions:
+    DELETE_DRAFT_PAGES: "Delete from draft site"
+    DELETE_PAGES: "Delete from published site"
+    PUBLISHED_PAGES: "Published %d pages, %d failures"
+    PUBLISH_PAGES: "Publish"
+    UNPUBLISHED_PAGES: "Un-published %d pages"
+    UNPUBLISH_PAGES: "Un-publish"
+  CMSMain:
+    # Item in permission selection identifying the admin section. Example: Access to 'Files & Images'
+    ACCESS: "Access to '%s' section"
+    ACCESSALLINTERFACES: "Access to all CMS sections"
+    ACCESSALLINTERFACESHELP: "Overrules more specific access settings."
+    ACCESS_HELP: "Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate \"Content permissions\"."
+    AddFormParentLabel: "Choose parent"
+    AddNew: "Add new page"
+    AddNewButton: "Add new"
+    Cancel: "Cancel"
+    ChoosePageType: "Choose page type"
+    Create: "Create"
+    DELETE: "Delete draft"
+    DELETEFP: "Delete"
+    DESCREMOVED: "and %s descendants"
+    EMAIL: "Email"
+    # "New " followed by a className
+    NEW: "New "
+    NOCONTENT: "no content"
+    PAGENOTEXISTS: "This page doesn't exist"
+    PAGES: "Pages"
+    PAGETYPEANYOPT: "Any"
+    # Dropdown for limiting search to a page type
+    PAGETYPEOPT: "Page Type"
+    # Confirmation button
+    PUBALLCONFIRM: "Please publish every page in the site, copying content stage to live"
+    PUBALLFUN: "\"Publish All\" functionality"
+    PUBALLFUN2: |
+                 Pressing this button will do the equivalent of going to every page and pressing "publish".  It's
+                 				intended to be used after there have been massive edits of the content, such as when the site was
+                 				first built.    PUBPAGES: "Done: Published %d pages"
+    REMOVED: "Deleted '%s'%s from live site"
+    REMOVEDPAGE: "Removed '%s' from the published site"
+    REMOVEDPAGEFROMDRAFT: "Removed '%s' from the draft site"
+    REPORT: "Report"
+    RESTORE: "Restore"
+    # Param %s is a title
+    RESTORED: "Restored '%s' successfully"
+    ROLLBACK: "Roll back to this version"
+    ROLLEDBACKPUB: "Rolled back to published version. New version number is #%d"
+    ROLLEDBACKVERSION: "Rolled back to version #%d.  New version number is #%d"
+    SAVE: "Save"
+    SAVEDRAFT: "Save Draft"
+    SearchMetaTags: "Meta tags"
+    TOTALPAGES: "Total pages: "
+    1: "1"
+    2: "2"
+  CMSMain_left.ss:
+    CLEAR: "Clear"
+    GO: "Go"
+    SEARCH: "Search"
+  CMSPageHistoryController:
+    COMPAREMODE: "Compare mode (select two)"
+    COMPAREVERSIONS: "Compare Versions"
+    COMPARINGVERSION: "Comparing versions %s and %s."
+    History: "History"
+    REVERTTOTHISVERSION: "Revert to this version"
+    SHOWUNPUBLISHED: "Show unpublished versions"
+    SHOWVERSION: "Show Version"
+    VIEW: "view"
+    VIEWINGVERSION: "Currently viewing version %s."
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: "Author"
+    NOTPUBLISHED: "Not published"
+    PUBLISHER: "Publisher"
+    UNKNOWN: "Unknown"
+    WHEN: "When"
+  CMSPagesController:
+    GalleryView: "Gallery View"
+    ListView: "List View"
+    Title: "Edit & Organize"
+    TreeView: "Tree View"
+  CMSPagesController_Content.ss:
+    FILTER: "Filter"
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: "Drag'n'drop"
+    MULTISELECT: "Multi-selection"
+  CMSSearch:
+    FILTERDATEFROM: "From"
+    FILTERDATETO: "To"
+    FILTERLABELTEXT: "Content"
+  CMSSiteTreeFilter_ChangedPages:
+    Title: "Changed pages"
+  CMSSiteTreeFilter_DeletedPages:
+    Title: "All pages, including deleted"
+  CMSSiteTreeFilter_Search:
+    Title: "All pages"
+  ContentControl:
+    NOTEWONTBESHOWN: "Note: this message will not be shown to your visitors"
+  ContentController:
+    ARCHIVEDSITE: "Archived Site"
+    ARCHIVEDSITEFROM: "Archived site from"
+    CMS: "CMS"
+    DRAFTSITE: "Draft Site"
+    DRAFT_SITE_ACCESS_RESTRICTION: "You must log in with your CMS password in order to view the draft or archived content.  <a href=\"%s\">Click here to go back to the published site.</a>"
+    LOGGEDINAS: "Logged in as"
+    LOGIN: "Login"
+    LOGOUT: "Log out"
+    NOTLOGGEDIN: "Not logged in"
+    PUBLISHEDSITE: "Published Site"
+    VIEWPAGEIN: "View Page in:"
+  ErrorPage:
+    CODE: "Error code"
+    DEFAULTERRORPAGECONTENT: "<p>Sorry, it seems you were trying to access a page that doesn't exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>"
+    DEFAULTERRORPAGETITLE: "Page not found"
+    DEFAULTSERVERERRORPAGECONTENT: "<p>Sorry, there was a problem with handling your request.</p>"
+    DEFAULTSERVERERRORPAGETITLE: "Server error"
+    # Description of the page type (shown in the "add page" dialog)
+    DESCRIPTION: "Custom content for different error cases (e.g. \"Page not found\")"
+    ERRORFILEPROBLEM: "Error opening file \"%s\" for writing. Please check file permissions."
+    # Pural name of the object, used in dropdowns and to generally identify a collection of this object in the interface
+    PLURALNAME: "Error Pags"
+    # Singular name of the object, used in dropdowns and to generally identify a single object in the interface
+    SINGULARNAME: "Error Page"
+    400: "400 - Bad Request"
+    401: "401 - Unauthorized"
+    403: "403 - Forbidden"
+    404: "404 - Not Found"
+    405: "405 - Method Not Allowed"
+    406: "406 - Not Acceptable"
+    407: "407 - Proxy Authentication Required"
+    408: "408 - Request Timeout"
+    409: "409 - Conflict"
+    410: "410 - Gone"
+    411: "411 - Length Required"
+    412: "412 - Precondition Failed"
+    413: "413 - Request Entity Too Large"
+    414: "414 - Request-URI Too Long"
+    415: "415 - Unsupported Media Type"
+    416: "416 - Request Range Not Satisfiable"
+    417: "417 - Expectation Failed"
+    500: "500 - Internal Server Error"
+    501: "501 - Not Implemented"
+    502: "502 - Bad Gateway"
+    503: "503 - Service Unavailable"
+    504: "504 - Gateway Timeout"
+    505: "505 - HTTP Version Not Supported"
+  Folder:
+    DELETEUNUSEDTHUMBNAILS: "Delete unused thumbnails"
+    DELSELECTED: "Delete selected files"
+    FILENAME: "Filename"
+    TITLE: "Title"
+    UNUSEDFILESTAB: "Unused files"
+    UNUSEDFILESTITLE: "Unused files"
+    UNUSEDTHUMBNAILSTITLE: "Unused thumbnails"
+    VIEWASSET: "View Asset"
+  LeftAndMain:
+    # Status message after publishing a page, showing the page title
+    STATUSPUBLISHEDSUCCESS: "Published '%s' successfully"
+  MemberTableField:
+    FILTER: "Filter"
+    SEARCH: "Search"
+  Page:
+    # Description of the page type (shown in the "add page" dialog)
+    DESCRIPTION: "Generic content page"
+  Permission:
+    CMS_ACCESS_CATEGORY: "CMS Access"
+  Permissions:
+    CONTENT_CATEGORY: "Content permissions"
+    PERMISSIONS_CATEGORY: "Roles and access permissions"
+  RedirectorPage:
+    # Description of the page type (shown in the "add page" dialog)
+    DESCRIPTION: "Redirects to a different internal page"
+    HASBEENSETUP: "A redirector page has been set up without anywhere to redirect to."
+    HEADER: "This page will redirect users to another page"
+    OTHERURL: "Other website URL"
+    # Pural name of the object, used in dropdowns and to generally identify a collection of this object in the interface
+    PLURALNAME: "Redirector Pags"
+    REDIRECTTO: "Redirect to"
+    REDIRECTTOEXTERNAL: "Another website"
+    REDIRECTTOPAGE: "A page on your website"
+    # Singular name of the object, used in dropdowns and to generally identify a single object in the interface
+    SINGULARNAME: "Redirector Page"
+    YOURPAGE: "Page on your website"
+  ReportAdminForm:
+    FILTERBY: "Filter by"
+  ReportAdmin_Content.ss:
+    REPORTS: "Reports"
+  SearchForm:
+    GO: "Go"
+    SEARCH: "Search"
+    SearchResults: "Search Results"
+  SecurityAdmin:
+    ACCESS_HELP: "Allow viewing, adding and editing users, as well as assigning permissions and roles to them."
+  SideReport:
+    BROKENFILES: "Pages with broken files"
+    BROKENLINKS: "Pages with broken links"
+    BROKENREDIRECTORPAGES: "RedirectorPages pointing to deleted pages"
+    BROKENVIRTUALPAGES: "VirtualPages pointing to deleted pages"
+    BrokenLinksGroupTitle: "Broken links reports"
+    ContentGroupTitle: "Content reports"
+    EMPTYPAGES: "Pages with no content"
+    LAST2WEEKS: "Pages edited in the last 2 weeks"
+    OtherGroupTitle: "Other"
+    ParameterLiveCheckbox: "Check live site"
+    # %s is a report title
+    REPEMPTY: "The %s report is empty."
+  SilverStripeNavigatorLink:
+    ShareInstructions: "To share a this to this page, copy and paste the link below."
+    ShareLink: "Share link"
+  SilverStripeNavigatorLinkl:
+    CloseLink: "Close"
+  SiteConfig:
+    DEFAULTTHEME: "(Use default theme)"
+    EDITHEADER: "Who can edit pages on this site?"
+    EDIT_PERMISSION: "Manage site configuration"
+    EDIT_PERMISSION_HELP: "Ability to edit global access settings/top-level page permissions."
+    # Pural name of the object, used in dropdowns and to generally identify a collection of this object in the interface
+    PLURALNAME: "Site Configs"
+    # Singular name of the object, used in dropdowns and to generally identify a single object in the interface
+    SINGULARNAME: "Site Config"
+    SITENAMEDEFAULT: "Your Site Name"
+    SITETAGLINE: "Site Tagline/Slogan"
+    SITETITLE: "Site title"
+    TABACCESS: "Access"
+    TABMAIN: "Main"
+    TAGLINEDEFAULT: "your tagline here"
+    THEME: "Theme"
+    TOPLEVELCREATE: "Who can create pages in the root of the site?"
+    VIEWHEADER: "Who can view pages on this site?"
+  SiteTree:
+    ACCESSANYONE: "Anyone"
+    ACCESSHEADER: "Who can view this page?"
+    ACCESSLOGGEDIN: "Logged-in users"
+    ACCESSONLYTHESE: "Only these people (choose from list)"
+    ADDEDTODRAFT: "Added to draft site"
+    ALLOWCOMMENTS: "Allow comments on this page?"
+    APPEARSVIRTUALPAGES: "This content also appears on the virtual pages in the %s sections."
+    BUTTONCANCELDRAFT: "Cancel draft changes"
+    BUTTONCANCELDRAFTDESC: "Delete your draft and revert to the currently published page"
+    BUTTONSAVEPUBLISH: "Save & Publish"
+    BUTTONUNPUBLISH: "Unpublish"
+    BUTTONUNPUBLISHDESC: "Remove this page from the published site"
+    # Pagetype selection dropdown with class names
+    CHANGETO: "Change to \"%s\""
+    Comments: "Comments"
+    # Main HTML Content for a page
+    Content: "Content"
+    DEFAULTABOUTCONTENT: "<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>"
+    DEFAULTABOUTTITLE: "About Us"
+    DEFAULTCONTACTCONTENT: "<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>"
+    DEFAULTCONTACTTITLE: "Contact Us"
+    DEFAULTHOMECONTENT: "<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href=\"admin/\">the CMS</a>. You can now access the <a href=\"http://doc.silverstripe.org\">developer documentation</a>, or begin <a href=\"http://doc.silverstripe.org/doku.php?id=tutorials\">the tutorials.</a></p>"
+    DEFAULTHOMETITLE: "Home"
+    DELETEDPAGE: "Deleted page"
+    DEPENDENT_NOTE: "The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links."
+    DependtPageColumnLinkType: "Link type"
+    DependtPageColumnURL: "URL"
+    EDITANYONE: "Anyone who can log-in to the CMS"
+    EDITHEADER: "Who can edit this page?"
+    EDITONLYTHESE: "Only these people (choose from list)"
+    EDITORGROUPS: "Editor Groups"
+    EDIT_ALL_DESCRIPTION: "Edit any page"
+    EDIT_ALL_HELP: "Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the \"Access to Site Content\" permission"
+    Editors: "Editors Groups"
+    HASBROKENLINKS: "This page has broken links."
+    # Listing domains that should be used as homepage
+    HOMEPAGEFORDOMAIN: "Domain(s)"
+    # HTML editor title
+    HTMLEDITORTITLE: "Content"
+    HomepageForDomain: "Hompage for this domain"
+    INHERIT: "Inherit from parent page"
+    LINKCHANGENOTE: "Changing this page's link will also affect the links of all child pages."
+    MENUTITLE: "Navigation label"
+    METADESC: "Description"
+    METAEXTRA: "Custom Meta Tags"
+    METAHEADER: "Search Engine Meta-tags"
+    METAKEYWORDS: "Keywords"
+    METATITLE: "Title"
+    MODIFIEDONDRAFT: "Modified on draft site"
+    NOTEUSEASHOMEPAGE: |
+                        Use this page as the 'home page' for the following domains: 
+                        							(separate multiple domains with commas)    PAGELOCATION: "Page location"
+    PAGETITLE: "Page name"
+    # Classname of a page object
+    PAGETYPE: "Page type"
+    PARENTID: "Parent page"
+    PARENTTYPE: "Page location"
+    PARENTTYPE_ROOT: "Top-level page"
+    PARENTTYPE_SUBPAGE: "Sub-page underneath a parent page (choose below)"
+    PERMISSION_GRANTACCESS_DESCRIPTION: "Manage access rights for content"
+    PERMISSION_GRANTACCESS_HELP: "Allow setting of page-specific access restrictions in the \"Pages\" section."
+    # Pural name of the object, used in dropdowns and to generally identify a collection of this object in the interface
+    PLURALNAME: "Site Tres"
+    # First argument is a class name
+    PageTypeNotAllowed: "Page type \"%s\" not allowed as child of this parent page"
+    REMOVEDFROMDRAFT: "Removed from draft site"
+    REMOVE_INSTALL_WARNING: "Warning: You should remove install.php from this SilverStripe install for security reasons."
+    REORGANISE_DESCRIPTION: "Change site structure"
+    REORGANISE_HELP: "Rearrange pages in the site tree through drag&drop."
+    SHOWINMENUS: "Show in menus?"
+    SHOWINSEARCH: "Show in search?"
+    # Singular name of the object, used in dropdowns and to generally identify a single object in the interface
+    SINGULARNAME: "Site Tree"
+    TABACCESS: "Access"
+    TABBEHAVIOUR: "Behavior"
+    TABCONTENT: "Content"
+    TABDEPENDENT: "Dependent pages"
+    TABMETA: "Metadata"
+    TOPLEVEL: "Site Content (Top Level)"
+    TOPLEVELCREATORGROUPS: "Top level creators"
+    # URL for this page
+    URLSegment: "URL Segment"
+    VIEWERGROUPS: "Viewer Groups"
+    VIEW_ALL_DESCRIPTION: "View any page"
+    VIEW_ALL_HELP: "Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the \"Access to Site Content\" permission"
+    VIEW_DRAFT_CONTENT: "View draft content"
+    VIEW_DRAFT_CONTENT_HELP: "Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access."
+    Viewers: "Viewers Groups"
+    # The parent page in the site hierarchy
+    has_one_Parent: "Parent Page"
+    many_many_BackLinkTracking: "Backlink Tracking"
+    many_many_ImageTracking: "Image Tracking"
+    many_many_LinkTracking: "Link Tracking"
+  StaticExporter:
+    BASEURL: "Base URL"
+    EXPORTTO: "Export to that folder"
+    FOLDEREXPORT: "Folder to export to"
+    NAME: "Static exporter"
+  TableListField:
+    SELECT: "Select:"
+  TableListField.ss:
+    NOITEMSFOUND: "No items found"
+    SORTASC: "Sort in ascending order"
+    SORTDESC: "Sort in descending order"
+  TableListField_PageControls.ss:
+    DISPLAYING: "Displaying"
+    OF: "of"
+    TO: "to"
+    VIEWFIRST: "View first"
+    VIEWLAST: "View last"
+    VIEWNEXT: "View next"
+    VIEWPREVIOUS: "View previous"
+  ThumbnailStripField:
+    NOFLASHFOUND: "No flash files found"
+    NOFOLDERFLASHFOUND: "No flash files found in"
+    NOFOLDERIMAGESFOUND: "No images found in"
+    NOIMAGESFOUND: "No images found"
+  ThumbnailStripField.ss:
+    CHOOSEFOLDER: "(Choose a folder or search above)"
+  TreeTools:
+    DisplayLabel: "Display:"
+  ViewArchivedEmail.ss:
+    CANACCESS: "You can access the archived site at this link:"
+    # Followed by a date
+    HAVEASKED: "You have asked to view the content of our site on"
+  VirtualPage:
+    CHOOSE: "Choose a page to link to"
+    # Description of the page type (shown in the "add page" dialog)
+    DESCRIPTION: "Displays the content of another page"
+    EDITCONTENT: "click here to edit the content"
+    HEADER: "This is a virtual page"
+    # Pural name of the object, used in dropdowns and to generally identify a collection of this object in the interface
+    PLURALNAME: "Virtual Pags"
+    # Singular name of the object, used in dropdowns and to generally identify a single object in the interface
+    SINGULARNAME: "Virtual Page"
+  Widget:
+    # Pural name of the object, used in dropdowns and to generally identify a collection of this object in the interface
+    PLURALNAME: "Widgets"
+    # Singular name of the object, used in dropdowns and to generally identify a single object in the interface
+    SINGULARNAME: "Widget"
+  WidgetArea:
+    # Pural name of the object, used in dropdowns and to generally identify a collection of this object in the interface
+    PLURALNAME: "Widget Areas"
+    # Singular name of the object, used in dropdowns and to generally identify a single object in the interface
+    SINGULARNAME: "Widget Area"
+  WidgetAreaEditor.ss:
+    AVAILABLE: "Available Widgets"
+    AVAILWIDGETS: "Click a widget title below to use it on this page."
+    INUSE: "Widgets currently used"
+    NOAVAIL: "There are currently no widgets available."
+    TOSORT: "To sort currently used widgets on this page, drag them up and down."
+  WidgetDescription.ss:
+    CLICKTOADDWIDGET: "Click to add this widget"
+  WidgetEditor.ss:
+    DELETE: "Delete"
