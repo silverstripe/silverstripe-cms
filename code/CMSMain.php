@@ -1048,7 +1048,7 @@ JS;
 		}
 
 		return array(
-			"Message" => htmlentities($_REQUEST['Message']),
+			"Message" => htmlentities($_REQUEST['Message'], ENT_COMPAT, 'UTF-8'),
 			"Buttons" => $buttons,
 			"Modal" => $_REQUEST['Modal'] ? true : false,
 		);
