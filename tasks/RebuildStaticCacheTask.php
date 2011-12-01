@@ -85,7 +85,7 @@ class RebuildStaticCacheTask extends Controller {
 		$urls = array_slice($urls, $start, $count);
 
 		if($removeAll && !isset($_GET['urls']) && $start == 0 && file_exists("../cache")) {
-			echo "Removing stale cache files... \n";
+			echo "Removing stale cache files & folders... \n";
 			flush();
 			if (FilesystemPublisher::$domain_based_caching) {
 				// Glob each dir, then glob each one of those
@@ -94,7 +94,11 @@ class RebuildStaticCacheTask extends Controller {
 						$searchCacheFile = trim(str_replace($cacheBaseDir, '', $cacheFile), '\/');
 						if (!in_array($searchCacheFile, $mappedUrls)) {
 							echo " * Deleting $cacheFile\n";
-							@unlink($cacheFile);
+							if (is_dir($cacheFile)) {
+								self::rrmdir($cacheFile);
+							}else{
+								@unlink($cacheFile);
+							}
 						}
 					}
 				}
@@ -118,4 +122,23 @@ class RebuildStaticCacheTask extends Controller {
 		print_r($urls);
 		echo "\n</pre>";
 	}
+	
+	static function rrmdir($dir) { 
+		if (is_dir($dir)) {
+			$objects = scandir($dir);
+			foreach ($objects as $object){
+				if ($object != "." && $object != ".."){
+					$cacheFile=$dir."/".$object;
+					if (is_dir($cacheFile)){
+						self::rrmdir($cacheFile);
+					}else{
+						@unlink($cacheFile);
+					}
+				}
+			}
+			reset($objects);
+			@rmdir($dir);
+		}
+	}
+	
 }
