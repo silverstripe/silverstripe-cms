@@ -73,8 +73,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		);
 		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang');
 		
-		HtmlEditorField::include_js();
-		
 		CMSBatchActionHandler::register('publish', 'CMSBatchAction_Publish');
 		CMSBatchActionHandler::register('unpublish', 'CMSBatchAction_Unpublish');
 		CMSBatchActionHandler::register('delete', 'CMSBatchAction_Delete');
