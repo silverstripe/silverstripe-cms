@@ -2470,12 +2470,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	function getTreeTitle() {
 		if($this->IsDeletedFromStage) {
 			if($this->ExistsOnLive) {
-				$tag ="del title=\"" . _t('SiteTree.REMOVEDFROMDRAFT', 'Removed from draft site') . "\"";
+				$tag ="span class=\"del\" title=\"" . _t('SiteTree.REMOVEDFROMDRAFT', 'Removed from draft site') . "\"";
 			} else {
-				$tag ="del class=\"deletedOnLive\" title=\"" . _t('SiteTree.DELETEDPAGE', 'Deleted page') . "\"";
+				$tag ="span class=\"del\" class=\"deletedOnLive\" title=\"" . _t('SiteTree.DELETEDPAGE', 'Deleted page') . "\"";
 			}
 		} elseif($this->IsAddedToStage) {
-			$tag = "ins title=\"" . _t('SiteTree.ADDEDTODRAFT', 'Added to draft site') . "\"";
+			$tag = "span class=\"ins\" title=\"" . _t('SiteTree.ADDEDTODRAFT', 'Added to draft site') . "\"";
 		} elseif($this->IsModifiedOnStage) {
 			$tag = "span title=\"" . _t('SiteTree.MODIFIEDONDRAFT', 'Modified on draft site') . "\" class=\"status modified\"";
 		} else {
