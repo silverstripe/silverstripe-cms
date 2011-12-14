@@ -457,11 +457,6 @@ JS;
 				$validator = new RequiredFields();
 			}
 			
-			// The clientside (mainly LeftAndMain*.js) rely on ajax responses
-			// which can be evaluated as javascript, hence we need
-			// to override any global changes to the validation handler.
-			$validator->setJavascriptValidationHandler('prototype');
-			
 			$form = new Form($this, "EditForm", $fields, $actions, $validator);
 			$form->loadDataFrom($record);
 			$stageURLField->setValue(Controller::join_links($record->getStageURLSegment(), '?Stage=stage'));
