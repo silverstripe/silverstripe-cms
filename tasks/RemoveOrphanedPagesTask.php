@@ -330,19 +330,14 @@ in the other stage:<br />
 			$joinByStage = $join;
 			$table = $class;
 			$table .= ($stage == 'Live') ? '_Live' : '';
-			$joinByStage .= sprintf(
-				"LEFT JOIN \"%s\" AS \"Parents\" ON \"%s\".\"ParentID\" = \"Parents\".\"ID\"",
-				$table,
-				$table
-			);
 			$stageOrphans = Versioned::get_by_stage(
 				$class,
 				$stage,
 				$filter,
 				$sort,
-				$joinByStage,
+				null,
 				$limit
-			);
+			)->leftJoin($table, "\"$table\".\"ParentID\" = \"Parents\".\"ID\"", "Parents");
 			$orphans->merge($stageOrphans);
 		}
 		

@@ -73,8 +73,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		);
 		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang');
 		
-		HtmlEditorField::include_js();
-		
 		CMSBatchActionHandler::register('publish', 'CMSBatchAction_Publish');
 		CMSBatchActionHandler::register('unpublish', 'CMSBatchAction_Unpublish');
 		CMSBatchActionHandler::register('delete', 'CMSBatchAction_Delete');
@@ -458,11 +456,6 @@ JS;
 			} else {
 				$validator = new RequiredFields();
 			}
-			
-			// The clientside (mainly LeftAndMain*.js) rely on ajax responses
-			// which can be evaluated as javascript, hence we need
-			// to override any global changes to the validation handler.
-			$validator->setJavascriptValidationHandler('prototype');
 			
 			$form = new Form($this, "EditForm", $fields, $actions, $validator);
 			$form->loadDataFrom($record);

@@ -72,10 +72,8 @@
 					button = this.find(':submit[name=action_doShowVersion]');
 					url = ss.i18n.sprintf(metadata['link-tmpl-show'], id,to);
 				}
-				
-				window.History.pushState({selector: '.cms-edit-form'}, '', url);
-				
-				return false;
+
+				$('.cms-container').loadPanel(url, '', {selector: '.cms-edit-form'});
 			}
 		});
 
