@@ -10,19 +10,21 @@ class FileLinkTrackingTest extends SapphireTest {
 		parent::setUp();
 		$this->logInWithPermission('ADMIN');
 		
-		$fh = fopen(Director::baseFolder() . '/assets/testscript-test-file.pdf', "w");
+		if(!file_exists(ASSETS_PATH)) mkdir(ASSETS_PATH);
+		$fh = fopen(ASSETS_PATH . '/testscript-test-file.pdf', "w");
 		fwrite($fh, str_repeat('x',1000000));
 		fclose($fh);
 	}
+
 	function tearDown() {
 		parent::tearDown();
 		$testFiles = array(
-			'/assets/testscript-test-file.pdf',
-			'/assets/renamed-test-file.pdf',
-			'/assets/renamed-test-file-second-time.pdf',
+			'/testscript-test-file.pdf',
+			'/renamed-test-file.pdf',
+			'/renamed-test-file-second-time.pdf',
 		);
 		foreach($testFiles as $file) {
-			if(file_exists(Director::baseFolder().$file)) unlink(Director::baseFolder().$file);
+			if(file_exists(ASSETS_PATH . $file)) unlink(ASSETS_PATH . $file);
 		}
 	}
 	
