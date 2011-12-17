@@ -80,12 +80,22 @@
 				var self = this;
 		
 				this.bind('change', function(e) {
+					self.updatePageTitleHeading();
 					self.updateURLSegment(jQuery('.cms-edit-form input[name=URLSegment]'));
 					// TODO We should really user-confirm these changes
 					self.parents('form').find('input[name=MetaTitle], input[name=MenuTitle]').val(self.val());
 				});
 				
 				this._super();
+			},
+			
+			/**
+			 * Function: updatePageTitleHeading
+			 * 
+			 * Update the page title heading when page title changes
+			 */
+			updatePageTitleHeading: function() {
+				$('#page-title-heading').html(this.val());
 			},
 	
 			/**
