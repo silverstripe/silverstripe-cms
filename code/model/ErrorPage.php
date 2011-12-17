@@ -133,7 +133,7 @@ class ErrorPage extends Page {
 		$fields = parent::getCMSFields();
 		
 		$fields->addFieldToTab(
-			"Root.Content", 
+			"Root.Main", 
 			new DropdownField(
 				"ErrorCode",
 				$this->fieldLabel('ErrorCode'),

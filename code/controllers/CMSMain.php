@@ -225,24 +225,33 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		foreach($classes as $class) {
 			$obj = singleton($class);
+			
 			if($obj instanceof HiddenClass) continue;
 			
 			$allowedChildren = $obj->allowedChildren();
-			//SiteTree::allowedChildren() returns null rather than an empty array if SiteTree::allowed_chldren == 'none'
-			if ($allowedChildren == null) $allowedChildren = array();
+			
+			// SiteTree::allowedChildren() returns null rather than an empty array if SiteTree::allowed_chldren == 'none'
+			if($allowedChildren == null) $allowedChildren = array();
+			
 			$def[$class]['disallowedChildren'] = array_keys(array_diff($classes, $allowedChildren));
 			
 			$defaultChild = $obj->defaultChild();
-			if ($defaultChild != 'Page' && $defaultChild != null) $def[$class]['defaultChild'] = $defaultChild;
 			
-			$defaultParent = isset(SiteTree::get_by_link($obj->defaultParent())->ID) ? SiteTree::get_by_link($obj->defaultParent())->ID : null;
+			if($defaultChild != 'Page' && $defaultChild != null) 
+				$def[$class]['defaultChild'] = $defaultChild;
+			
+			$id = SiteTree::get_by_link($obj->defaultParent())->ID;
+			$defaultParent = $id ? SiteTree::get_by_link($obj->defaultParent())->ID : null;
+			
 			if ($defaultParent != 1 && $defaultParent != null)  $def[$class]['defaultParent'] = $defaultParent;
 			
-		  if(is_array($def[$class]['disallowedChildren'])) foreach($def[$class]['disallowedChildren'] as $disallowedChild) {
-				$def[$disallowedChild]['disallowedParents'][] = $class;
+			if(is_array($def[$class]['disallowedChildren'])) {
+				foreach($def[$class]['disallowedChildren'] as $disallowedChild) {
+					$def[$disallowedChild]['disallowedParents'][] = $class;
+				}
 			}
 			
-			//Are any classes allowed to be parents of root?
+			// Are any classes allowed to be parents of root?
 			$def['Root']['disallowedParents'][] = $class;
 		}
 

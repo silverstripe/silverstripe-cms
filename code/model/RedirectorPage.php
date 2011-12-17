@@ -128,7 +128,7 @@ class RedirectorPage extends Page {
 		$fields->removeByName('MetaDescription');
 		$fields->removeByName('ExtraMeta');
 		
-		$fields->addFieldsToTab('Root.Content',
+		$fields->addFieldsToTab('Root.Main',
 			array(
 				new HeaderField('RedirectorDescHeader',_t('RedirectorPage.HEADER', "This page will redirect users to another page")),
 				new OptionsetField(
