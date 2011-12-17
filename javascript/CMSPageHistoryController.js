@@ -49,7 +49,10 @@
 			 *		Handle coupling to admin url 
 			 */
 			onsubmit: function(e, d) {
+				e.preventDefault();
+				
 				var id, self = this;
+				
 				id = this.find(':input[name=ID]').val();
 	
 				if(!id) return false;
@@ -59,6 +62,7 @@
 				metadata = this.metadata({type: 'class'}); 
 				compare = (this.find(":input[name=CompareMode]").is(":checked"));
 				selected = this.find("table input[type=checkbox]").filter(":checked");
+				
 				if(compare) {
 					if(selected.length != 2) return false;
 					
@@ -72,7 +76,7 @@
 					button = this.find(':submit[name=action_doShowVersion]');
 					url = ss.i18n.sprintf(metadata['link-tmpl-show'], id,to);
 				}
-
+				
 				$('.cms-container').loadPanel(url, '', {selector: '.cms-edit-form'});
 			}
 		});
