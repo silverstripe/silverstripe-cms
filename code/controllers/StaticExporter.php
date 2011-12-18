@@ -21,6 +21,12 @@
  * @subpackage export
  */
 class StaticExporter extends Controller {
+
+	static $allowed_actions = array(
+		'index', 
+		'export', 
+	);
+
 	function init() {
 		parent::init();
 		
