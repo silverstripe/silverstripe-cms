@@ -11,3 +11,5 @@ javascripts_dir = "javascript"
 output_style = :compact
 # To enable relative paths to assets via compass helper functions. Uncomment:
 # relative_assets = true
+
+asset_cache_buster = :none
