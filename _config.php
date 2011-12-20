@@ -35,3 +35,4 @@ CMSMenu::remove_menu_item('CMSPageEditController');
 CMSMenu::remove_menu_item('CMSPageSettingsController');
 CMSMenu::remove_menu_item('CMSPageHistoryController');
 CMSMenu::remove_menu_item('CMSPageReportsController');
+CMSMenu::remove_menu_item('CMSPageAddController');

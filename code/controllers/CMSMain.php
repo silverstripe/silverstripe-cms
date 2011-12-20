@@ -653,13 +653,16 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		$form = $this->getEditForm($record->ID);
 		
+		$link = Controller::join_links(singleton('CMSPageEditController')->Link('show'), $record->ID);
+		$this->getResponse()->addHeader('X-ControllerURL', $link);
+		
 		if(isset($data['returnID'])) {
 			return $record->ID;
 		} else if(Director::is_ajax()) {
 			$form = $this->getEditForm($record->ID);
 			return $form->forTemplate();
 		} else {
-			return $this->redirect(Controller::join_links($this->Link('show'), $record->ID));
+			return $this->redirect($link);
 		}
 	}
 
