@@ -48,8 +48,8 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
 	
 		$this->assertTrue($form->Actions()->dataFieldByName('action_doRollback')->isReadonly());
 
-		$this->assertEquals($this->page->ID, $form->dataFieldByName('ID')->Value());
-		$this->assertEquals($this->versionPublishCheck2, $form->dataFieldByName('Version')->Value());
+		$this->assertEquals($this->page->ID, $form->Fields()->dataFieldByName('ID')->Value());
+		$this->assertEquals($this->versionPublishCheck2, $form->Fields()->dataFieldByName('Version')->Value());
 
 		$this->assertContains(
 			sprintf("Currently viewing version %s.", $this->versionPublishCheck2),
@@ -60,8 +60,8 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
 		$form = $controller->getEditForm($this->page->ID, null, $this->versionPublishCheck);
 		$this->assertFalse($form->Actions()->dataFieldByName('action_doRollback')->isReadonly());
 
-		$this->assertEquals($this->page->ID, $form->dataFieldByName('ID')->Value());
-		$this->assertEquals($this->versionPublishCheck, $form->dataFieldByName('Version')->Value());
+		$this->assertEquals($this->page->ID, $form->Fields()->dataFieldByName('ID')->Value());
+		$this->assertEquals($this->versionPublishCheck, $form->Fields()->dataFieldByName('Version')->Value());
 		$this->assertContains(
 			sprintf("Currently viewing version %s.", $this->versionPublishCheck),
 			$form->Fields()->fieldByName('Root.Main.CurrentlyViewingMessage')->getContent()
