@@ -251,9 +251,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				$def[$class]['defaultChild'] = $defaultChild;
 			
 			$defaultParent = $obj->defaultParent();
+			if(SiteTree::get_by_link($defaultParent)) {
 			$id = $defaultParent ? SiteTree::get_by_link($defaultParent)->ID : null;
 			$defaultParent = $id ? SiteTree::get_by_link($obj->defaultParent())->ID : null;
-			
+			}
 			if ($defaultParent != 1 && $defaultParent != null)  $def[$class]['defaultParent'] = $defaultParent;
 			
 			if(is_array($def[$class]['disallowedChildren'])) {
