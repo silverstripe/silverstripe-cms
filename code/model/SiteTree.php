@@ -2465,22 +2465,23 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string
 	 */
 	function getTreeTitle() {
+		$text = Convert::raw2xml(str_replace(array("\n","\r"),"",$this->MenuTitle));
 		if($this->IsDeletedFromStage) {
 			if($this->ExistsOnLive) {
-				$tag ="span class=\"del\" title=\"" . _t('SiteTree.REMOVEDFROMDRAFT', 'Removed from draft site') . "\"";
+				$tag ="<span class=\"del item\" title=\"" . _t('SiteTree.REMOVEDFROMDRAFT', 'Removed from draft site') . "\" >{$text}</span> <span class=\"badge removedfromdraft\">" .  _t('SiteTree.REMOVEDFROMDRAFT', 'Removed from draft site') . "</span>";
 			} else {
-				$tag ="span class=\"del\" class=\"deletedOnLive\" title=\"" . _t('SiteTree.DELETEDPAGE', 'Deleted page') . "\"";
+				$tag ="<span class=\"del item\" title=\"" . _t('SiteTree.DELETEDPAGE', 'Deleted page') . "\">{$text}</span> <span class=\"badge deletedonlive\">". _t('SiteTree.DELETEDPAGE', 'Deleted page') . "</span>";
 			}
 		} elseif($this->IsAddedToStage) {
-			$tag = "span class=\"ins\" title=\"" . _t('SiteTree.ADDEDTODRAFT', 'Added to draft site') . "\"";
+			$tag = "<span class=\"ins item\" title=\"" . _t('SiteTree.ADDEDTODRAFT', 'Added to draft site') . "\">{$text}</span> <span class=\"badge addedtodraft\">". _t('SiteTree.ADDEDTODRAFT', 'Added to draft site') . "</span>";
 		} elseif($this->IsModifiedOnStage) {
-			$tag = "span title=\"" . _t('SiteTree.MODIFIEDONDRAFT', 'Modified on draft site') . "\" class=\"status modified\"";
+			$tag = "<span title=\"" . _t('SiteTree.MODIFIEDONDRAFT', 'Modified on draft site') . "\" class=\"ins item\">{$text}</span> <span class=\"badge modified\">" . _t('SiteTree.MODIFIEDONDRAFT', 'Modified on draft site') . "</span>";
 		} else {
 			$tag = '';
 		}
 
-		$text = Convert::raw2xml(str_replace(array("\n","\r"),"",$this->MenuTitle));
-		return ($tag) ? "<span class=\"jstree-pageicon\"></span>"."<$tag>" . $text . "</" . strtok($tag,' ') . ">" : "<span class=\"jstree-pageicon\"></span>". $text;
+
+		return ($tag) ? "<span class=\"jstree-pageicon\"></span>". $tag : "<span class=\"jstree-pageicon\"></span>". $text;
 	}
 
 	/**
