@@ -2468,14 +2468,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$text = Convert::raw2xml(str_replace(array("\n","\r"),"",$this->MenuTitle));
 		if($this->IsDeletedFromStage) {
 			if($this->ExistsOnLive) {
-				$tag ="<span class=\"del item\" title=\"" . _t('SiteTree.REMOVEDFROMDRAFT', 'Removed from draft site') . "\" >{$text}</span> <span class=\"badge removedfromdraft\">" .  _t('SiteTree.REMOVEDFROMDRAFT', 'Removed from draft site') . "</span>";
+				$tag ="<span class=\"del item\" title=\"" . _t('SiteTree.REMOVEDFROMDRAFTSHORT', 'Removed from draft') . "\" >{$text}</span> <span class=\"badge removedfromdraft\">" .  _t('SiteTree.REMOVEDFROMDRAFTSHORT', 'Removed from draft') . "</span>";
 			} else {
-				$tag ="<span class=\"del item\" title=\"" . _t('SiteTree.DELETEDPAGE', 'Deleted page') . "\">{$text}</span> <span class=\"badge deletedonlive\">". _t('SiteTree.DELETEDPAGE', 'Deleted page') . "</span>";
+				$tag ="<span class=\"del item\" title=\"" . _t('SiteTree.DELETEDPAGESHORT', 'Deleted') . "\">{$text}</span> <span class=\"badge deletedonlive\">". _t('SiteTree.DELETEDPAGESHORT', 'Deleted') . "</span>";
 			}
 		} elseif($this->IsAddedToStage) {
-			$tag = "<span class=\"ins item\" title=\"" . _t('SiteTree.ADDEDTODRAFT', 'Added to draft site') . "\">{$text}</span> <span class=\"badge addedtodraft\">". _t('SiteTree.ADDEDTODRAFT', 'Added to draft site') . "</span>";
+			$tag = "<span class=\"ins item\" title=\"" . _t('SiteTree.ADDEDTODRAFTSHORT', 'New') . "\">{$text}</span> <span class=\"badge addedtodraft\">". _t('SiteTree.ADDEDTODRAFTSHORT', 'New') . "</span>";
 		} elseif($this->IsModifiedOnStage) {
-			$tag = "<span title=\"" . _t('SiteTree.MODIFIEDONDRAFT', 'Modified on draft site') . "\" class=\"ins item\">{$text}</span> <span class=\"badge modified\">" . _t('SiteTree.MODIFIEDONDRAFT', 'Modified on draft site') . "</span>";
+			$tag = "<span title=\"" . _t('SiteTree.MODIFIEDONDRAFTSHORT', 'Modified') . "\" class=\"ins item\">{$text}</span> <span class=\"badge modified\">" . _t('SiteTree.MODIFIEDONDRAFTSHORT', 'Modified') . "</span>";
 		} else {
 			$tag = '';
 		}
