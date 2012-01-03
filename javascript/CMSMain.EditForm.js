@@ -247,11 +247,11 @@
 			 * Parameters:
 			 *  (Event) e
 			 */
-			onchange: function(e) {
+			onclick: function(e) {
 				var parentTreeDropDown = $('.cms-edit-form.CMSPageSettingsController #ParentID');
 
 				if (e.target.id == 'Form_EditForm_ParentType_root') parentTreeDropDown.slideUp();
-			    else parentTreeDropDown.slideDown();
+			  else parentTreeDropDown.slideDown();
 			}
 		});
 
