@@ -1096,7 +1096,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$this->extend('updatePageOptions', $fields);
 		
 		$form = new Form($this, "AddForm", $fields, $actions);
-		$form->addExtraClass('cms-add-form');
+		$form->addExtraClass('cms-add-form stacked');
 		
 		return $form;
 	}

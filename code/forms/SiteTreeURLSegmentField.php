@@ -39,4 +39,8 @@ class SiteTreeURLSegmentField extends TextField {
 		$idField = $this->getForm()->dataFieldByName('ID');
 		return ($idField && $idField->Value()) ? DataObject::get_by_id('SiteTree', $idField->Value()) : singleton('SiteTree');
 	}
+
+	function Type() {
+		return 'text sitetreeurlsegment';
+	}
 }

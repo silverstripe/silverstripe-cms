@@ -1822,7 +1822,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				$tabMain = new Tab('Main',
 					new TextField("Title", $this->fieldLabel('Title')),
 					new TextField("MenuTitle", $this->fieldLabel('MenuTitle')),
-					new HtmlEditorField("Content", _t('SiteTree.HTMLEDITORTITLE', "Content", PR_MEDIUM, 'HTML editor title'))
+					$htmlField = new HtmlEditorField("Content", _t('SiteTree.HTMLEDITORTITLE', "Content", PR_MEDIUM, 'HTML editor title'))
 				),
 				$tabMeta = new Tab('Metadata',
 					new SiteTreeURLSegmentField("URLSegment", $this->fieldLabel('URLSegment') . $urlHelper),
@@ -1841,6 +1841,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				)
 			)
 		);
+		$htmlField->addExtraClass('stacked');
 		
 		// Conditional dependent pages tab
 		if($dependentPagesCount) $tabDependent->setTitle(_t('SiteTree.TABDEPENDENT', "Dependent pages") . " ($dependentPagesCount)");
