@@ -63,7 +63,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Requirements::combine_files(
 			'cmsmain.js',
 			array(
-				CMS_DIR . '/javascript/ThumbnailStripField.js',
+				// CMS_DIR . '/javascript/ThumbnailStripField.js',
 				CMS_DIR . '/javascript/CMSMain.js',
 				CMS_DIR . '/javascript/CMSMain.EditForm.js',
 				CMS_DIR . '/javascript/CMSMain.AddForm.js',
@@ -842,13 +842,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		} else {
 			$this->redirectBack();
 		}
-	}
-	
-	/**
-	 * Return the CMS's HTML-editor toolbar
-	 */
-	public function EditorToolbar() {
-		return Object::create('HtmlEditorField_Toolbar', $this, "EditorToolbar");
 	}
 	
 	/**
