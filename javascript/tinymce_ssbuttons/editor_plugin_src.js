@@ -20,14 +20,13 @@
 			};
 		},
 
-
 		init : function(ed, url) {
 			ed.addButton('sslink', {title : ed.getLang('tinymce_ssbuttons.insertlink'), cmd : 'sslink', 'class' : 'mce_link'}); 
 			ed.addButton('ssimage', {title : ed.getLang('tinymce_ssbuttons.insertimage'), cmd : 'ssimage', 'class' : 'mce_image'}); 
 			ed.addButton('ssflash', {title : ed.getLang('tinymce_ssbuttons.insertflash'), cmd : 'ssflash', 'class' : 'mce_flash', 'image': url + '/img/flash.gif'}); 
 
 			ed.addCommand("sslink", function(ed) {
-				jQuery('#Form_EditorToolbarLinkForm')[0].open();
+				jQuery('#Form_EditorToolbarLinkForm').entwine('ss').open();
 			});
 
 			ed.addCommand("ssimage", function(ed) {
@@ -39,14 +38,11 @@
 			});
 			
 			ed.onNodeChange.add(function(ed, o) {
-				if ($('Form_EditorToolbarLinkForm').updateSelection) {
-					$('Form_EditorToolbarLinkForm').updateSelection(ed);
-					$('Form_EditorToolbarLinkForm').respondToNodeChange(ed);
-				}
+				jQuery('Form_EditorToolbarLinkForm').entwine('ss').updateSelection();
+				jQuery('Form_EditorToolbarLinkForm').entwine('ss').respondToNodeChange();
 			});
 		}
 	});
-
 
 	// Adds the plugin class to the list of available TinyMCE plugins
 	tinymce.PluginManager.add("ssbuttons", tinymce.plugins.SSButtons);
