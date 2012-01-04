@@ -1795,10 +1795,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$dependentNote = new LiteralField('DependentNote', '<p>' . _t('SiteTree.DEPENDENT_NOTE', 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.') . '</p>');
 			$dependentTable = new TableListField(
 				'DependentPages',
-				'SiteTree',
+				$this->DependentPages(),
 				$dependentColumns
 			);
-			$dependentTable->setCustomSourceItems($this->DependentPages());
 			$dependentTable->setFieldFormatting(array(
 				'Title' => '<a href=\"admin/show/$ID\">$Title</a>',
 				'AbsoluteLink' => '<a href=\"$value\">$value</a>',
