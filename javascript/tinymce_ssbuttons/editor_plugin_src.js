@@ -37,8 +37,10 @@
 				jQuery('#Form_EditorToolbarFlashForm')[0].open();
 			});
 			
-			ed.onNodeChange.add(function(ed, o) {
-				jQuery('Form_EditorToolbarLinkForm').entwine('ss').updateSelection();
+			ed.onNodeChange.add(function(ed, cm, n, co) {
+				cm.setDisabled('sslink', co && n.nodeName != 'A');
+				cm.setActive('sslink', n.nodeName == 'A' && !n.name);
+				
 				jQuery('Form_EditorToolbarLinkForm').entwine('ss').respondToNodeChange();
 			});
 		}
