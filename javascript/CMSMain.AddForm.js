@@ -32,6 +32,7 @@
 				this.find('#ParentID .TreeDropdownField').bind('change', function() {
 					self.updateTypeList();
 				});
+				this.updateTypeList();
 			},
 			
 			/**
@@ -42,7 +43,7 @@
 				var hints = this.find('.hints').data('hints'), 
 					metadata = this.find('#ParentID .TreeDropdownField').data('metadata'),
 					id = this.find('#ParentID .TreeDropdownField').getValue(),
-					newClassName = metadata.ClassName,
+					newClassName = metadata ? metadata.ClassName : null,
 					disallowedChildren = hints[newClassName ? newClassName : 'Root'].disallowedChildren || [],
 					defaultChildClass = hints[newClassName ? newClassName : 'Root'].defaultChild || null;
 				
@@ -64,12 +65,20 @@
 		});
 		
 		$(".cms-add-form #PageType li").entwine({
+			onclick: function() {
+				this.setSelected(true);
+			},
 			setSelected: function(bool) {
 				this.toggleClass('selected', bool);
+				if(bool) {
+					this.siblings().setSelected(false);
+					this.find('input').attr('checked', 'checked');
+				}
 			},
 			setEnabled: function(bool) {
-				$(this).toggleClass('disabled', bool);
-				$(this).find('input').attr('disabled', bool ? '' : 'disabled');
+				$(this).toggleClass('disabled', !bool);
+				if(!bool) $(this).find('input').attr('disabled',  'disabled').removeAttr('checked');
+				else $(this).find('input').removeAttr('disabled');
 			}
 		});
 	

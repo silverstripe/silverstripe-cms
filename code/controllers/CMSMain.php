@@ -230,7 +230,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	  $classes = ClassInfo::subclassesFor( $this->stat('tree_class') );
 
 		$def['Root'] = array();
-		$def['Root']['disallowedChildren'] = array();
 		$def['Root']['disallowedParents'] = array();
 
 		foreach($classes as $class) {
@@ -242,8 +241,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			
 			// SiteTree::allowedChildren() returns null rather than an empty array if SiteTree::allowed_chldren == 'none'
 			if($allowedChildren == null) $allowedChildren = array();
-			
-			$def[$class]['disallowedChildren'] = array_keys(array_diff($classes, $allowedChildren));
+			$allowedChildren = array_keys(array_diff($classes, $allowedChildren));
+			if($allowedChildren) $def[$class]['disallowedChildren'] = $allowedChildren;
 			
 			$defaultChild = $obj->defaultChild();
 			
@@ -255,7 +254,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			
 			if ($defaultParent != 1 && $defaultParent != null)  $def[$class]['defaultParent'] = $defaultParent;
 			
-			if(is_array($def[$class]['disallowedChildren'])) {
+			if(isset($def[$class]['disallowedChildren'])) {
 				foreach($def[$class]['disallowedChildren'] as $disallowedChild) {
 					$def[$disallowedChild]['disallowedParents'][] = $class;
 				}
