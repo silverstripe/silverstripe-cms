@@ -1085,7 +1085,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			)
 		);
 		$parentField->setShowSearch(true);
-		$parentField->setValue(($record) ? $record->ID : null);
+
+		// CMSMain->currentPageID() automatically sets the homepage,
+		// which we need to counteract in the default selection (which should default to root, ID=0)
+		$homepageSegment = RootURLController::get_homepage_link();
+		if($record && $record->URLSegment != $homepageSegment) {
+			$parentField->setValue($record->ID);	
+		}
 		
 		$actions = new FieldList(
 			// $resetAction = new ResetFormAction('doCancel', _t('CMSMain.Cancel', 'Cancel')),
