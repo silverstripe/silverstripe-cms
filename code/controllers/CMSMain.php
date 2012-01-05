@@ -1061,6 +1061,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			);
 			$pageTypes[$type->getField('ClassName')] = $html;
 		}
+		// Ensure generic page type shows on top
+		if(isset($pageTypes['Page'])) {
+			$pageTitle = $pageTypes['Page'];
+			$pageTypes = array_merge(array('Page' => $pageTitle), $pageTypes);
+		}
 
 		$numericLabelTmpl = '<span class="step-label"><span class="flyout">%d</span><span class="arrow"></span><span class="title">%s</span></span>';
 		$fields = new FieldList(
@@ -1079,6 +1084,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				'Page'
 			)
 		);
+		$parentField->setShowSearch(true);
 		$parentField->setValue(($record) ? $record->ID : null);
 		
 		$actions = new FieldList(
