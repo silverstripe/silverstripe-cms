@@ -62,17 +62,20 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		Requirements::combine_files(
 			'cmsmain.js',
-			array(
-				// CMS_DIR . '/javascript/ThumbnailStripField.js',
-				CMS_DIR . '/javascript/CMSMain.js',
-				CMS_DIR . '/javascript/CMSMain.EditForm.js',
-				CMS_DIR . '/javascript/CMSMain.AddForm.js',
-				CMS_DIR . '/javascript/CMSPageHistoryController.js',
-				CMS_DIR . '/javascript/SilverStripeNavigator.js'
+			array_merge(
+				array(
+					// CMS_DIR . '/javascript/ThumbnailStripField.js',
+					CMS_DIR . '/javascript/CMSMain.js',
+					CMS_DIR . '/javascript/CMSMain.EditForm.js',
+					CMS_DIR . '/javascript/CMSMain.AddForm.js',
+					CMS_DIR . '/javascript/CMSPageHistoryController.js',
+					CMS_DIR . '/javascript/CMSPagesController.Tree.js',
+					CMS_DIR . '/javascript/SilverStripeNavigator.js'
+				),
+				Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang', true, true)
 			)
 		);
-		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang');
-		
+
 		CMSBatchActionHandler::register('publish', 'CMSBatchAction_Publish');
 		CMSBatchActionHandler::register('unpublish', 'CMSBatchAction_Unpublish');
 		CMSBatchActionHandler::register('delete', 'CMSBatchAction_Delete');
