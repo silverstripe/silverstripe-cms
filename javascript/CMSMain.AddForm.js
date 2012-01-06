@@ -69,10 +69,11 @@
 				this.setSelected(true);
 			},
 			setSelected: function(bool) {
+				var input = this.find('input');
 				this.toggleClass('selected', bool);
-				if(bool) {
+				if(bool && !input.is(':disabled')) {
 					this.siblings().setSelected(false);
-					this.find('input').attr('checked', 'checked');
+					input.attr('checked', 'checked');
 				}
 			},
 			setEnabled: function(bool) {
