@@ -44,8 +44,11 @@
 					metadata = this.find('#ParentID .TreeDropdownField').data('metadata'),
 					id = this.find('#ParentID .TreeDropdownField').getValue(),
 					newClassName = metadata ? metadata.ClassName : null,
-					disallowedChildren = hints[newClassName ? newClassName : 'Root'].disallowedChildren || [],
-					defaultChildClass = hints[newClassName ? newClassName : 'Root'].defaultChild || null;
+					hintKey = newClassName ? newClassName : 'Root',
+					hint = (typeof hints[hintKey] != 'undefined') ? hints[key] : null;
+				
+				var disallowedChildren = (hint && typeof hint.disallowedChildren != 'undefined') ? hint.disallowedChildren : [],
+					defaultChildClass = (hint && typeof hint.defaultChild != 'undefined') ? hint.defaultChild : null;
 				
 				// Limit selection
 				this.find('#PageType li').each(function() {
