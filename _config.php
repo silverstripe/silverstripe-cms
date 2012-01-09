@@ -9,6 +9,7 @@ Director::addRules(50, array(
 	'' => 'RootURLController',
 	'admin/bulkload//$Action/$ID/$OtherID' => 'BulkLoaderAdmin',
 	'admin/cms//$Action/$ID/$OtherID' => 'CMSMain', 
+	'admin/asset//$Action/$ID/$OtherID' => 'AssetAdmin', 
 	'dev/buildcache/$Action' => 'RebuildStaticCacheTask',
 ));
 
@@ -36,3 +37,4 @@ CMSMenu::remove_menu_item('CMSPageSettingsController');
 CMSMenu::remove_menu_item('CMSPageHistoryController');
 CMSMenu::remove_menu_item('CMSPageReportsController');
 CMSMenu::remove_menu_item('CMSPageAddController');
+CMSMenu::remove_menu_item('CMSFileAddController');
