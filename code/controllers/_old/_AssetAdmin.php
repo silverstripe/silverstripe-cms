@@ -7,12 +7,9 @@
  * @subpackage assets
  */
 class AssetAdmin extends LeftAndMain {
-
-	static $url_segment = 'assets';
-	
-	static $url_rule = '/$Action/$ID';
-	
-	static $menu_title = 'Files';
+	#static $url_segment = 'assets';
+	#static $url_rule = '/$Action/$ID';
+	#static $menu_title = 'Files';
 
 	public static $tree_class = 'Folder';
 	

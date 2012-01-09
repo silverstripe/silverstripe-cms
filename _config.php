@@ -9,6 +9,7 @@ Director::addRules(50, array(
 	'' => 'RootURLController',
 	'admin/bulkload//$Action/$ID/$OtherID' => 'BulkLoaderAdmin',
 	'admin/cms//$Action/$ID/$OtherID' => 'CMSMain', 
+	'admin/asset//$Action/$ID/$OtherID' => 'CMSAsset', 
 	'dev/buildcache/$Action' => 'RebuildStaticCacheTask',
 ));
 
