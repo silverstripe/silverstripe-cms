@@ -86,6 +86,15 @@ JS
 	}
 		
 	/**
+	 * Return the root 'asset' folder CMSFields
+	 * 
+	 * @return FieldList
+	 */
+	public function RootForm() {
+		return $this->getEditForm(singleton('Folder'));
+	}
+	
+	/**
 	 * Show the content of the upload iframe.  The form is specified by a template.
 	 */
 	function uploadiframe() {
