@@ -202,8 +202,11 @@ JS
 		}
 		$processedData = array_reverse($processedData);
 				
-		if($data['FolderID'] && $data['FolderID'] != '') $folder = DataObject::get_by_id("Folder", $data['FolderID']);
-		else $folder = singleton('Folder');
+		if(isset($data['FolderID']) && is_numeric($data['FolderID'])) {
+			$folder = DataObject::get_by_id("Folder", $data['FolderID']);
+		} else {
+			$folder = singleton('Folder');
+		}
 
 		foreach($processedFiles as $filePostId => $tmpFile) {
 			if($tmpFile['error'] == UPLOAD_ERR_NO_TMP_DIR) {
