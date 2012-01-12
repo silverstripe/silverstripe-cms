@@ -206,7 +206,15 @@ CMSForm.prototype = {
 			postBody: data,
 			onSuccess : success,
 			onFailure : function(response) {
-				errorMessage('Error saving content', response);
+				var msg;
+				// Only show plain responses, and trim them to avoid long stack traces
+				if(response.getResponseHeader('Content-Type', 'text/plain')) {
+					msg = response.responseText;
+				} else {
+					msg = 'Error saving content';
+				}
+				if(msg.length > 300) msg = longMsg.substr(0,300) + '...';
+				errorMessage(msg);
 				if($('Form_EditForm_action_save') && $('Form_EditForm_action_save').stopLoading) $('Form_EditForm_action_save').stopLoading();
 				_AJAX_LOADING = false;
 			}
