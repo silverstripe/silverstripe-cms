@@ -422,6 +422,15 @@ SiteTreeNode.prototype = {
 			alert("You can't add children to that node");
 			return false;
 		}
+
+		// Special case for VirtualPage: Check that original page type is an allowed child
+		if(Element.hasClassName(node, 'VirtualPage') && node.className.match(/VirtualPage-([^\s]*)/)) {
+			var nodeClass = RegExp.$1
+			if(nodeClass && newParent.hints.allowedChildren.indexOf(nodeClass) == -1) {
+				alert("You can't move a virtual page with an original type of '" + nodeClass + '" here');
+				return false;
+			}
+		}
 		
 		var currentlyOpenPageID = 0;
 		if($('Form_EditForm').elements.ID) currentlyOpenPageID = $('Form_EditForm').elements.ID.value;
