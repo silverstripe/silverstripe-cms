@@ -22,15 +22,13 @@ class AssetAdmin extends LeftAndMain {
 	 */
 	public static $allowed_max_file_size;
 	
-	static $allowed_actions = array(
+	public static $allowed_actions = array(
 		'addfolder',
 		'DeleteItemsForm',
 		'getsubtree',
 		'movemarked',
 		'removefile',
 		'savefile',
-		'upload',
-		'UploadForm',
 		'deleteUnusedThumbnails' => 'ADMIN',
 		'SyncForm',
 	);
@@ -53,7 +51,7 @@ class AssetAdmin extends LeftAndMain {
 	/**
 	 * Set up the controller, in particular, re-sync the File database with the assets folder./
 	 */
-	function init() {
+	public function init() {
 		parent::init();
 		
 		// Create base folder if it doesnt exist already
@@ -75,35 +73,7 @@ JS
 		CMSBatchActionHandler::register('delete', 'AssetAdmin_DeleteBatchAction', 'Folder');
 	}
 	
-	function upload($request) {
-		$formHtml = $this->customise(array(
-			'EditForm' => $this->UploadForm()
-		))->renderWith(array('AssetAdmin_UploadContent'));
-		if($this->isAjax()) {
-			return $formHtml;
-		} else {
-			return $this->customise(array(
-				'Content' => $formHtml
-			))->renderWith(array('AssetAdmin', 'LeftAndMain'));
-		}
-		
-	}
-	
-	/**
-	 * @return Form
-	 */
-	function UploadForm() {
-		$form = new AssetUploadForm($this, 'UploadForm');
-		if($fileIDs = $this->request->getVar('FileIDs')) {
-			$fileIDs = explode(',', $fileIDs);
-			$form->setFiles(DataList::create('File')->byIDs(Convert::raw2sql($fileIDs)));
-		}
-		
-		// TODO Set current folder
-		return $form;
-	}
-	
-	function AddForm() {
+	public function AddForm() {
 		$form = parent::AddForm();
 		$form->Actions()->fieldByName('action_doAdd')->setTitle(_t('AssetAdmin.ActionAdd', 'Add folder'));
 		
@@ -206,7 +176,7 @@ JS
 	/**
 	 * @return Form
 	 */
-	function SyncForm() {
+	public function SyncForm() {
 		$form = new Form(
 			$this,
 			'SyncForm',
@@ -222,7 +192,7 @@ JS
 		return $form;
 	}
 	
-	function doSync($data, $form) {
+	public function doSync($data, $form) {
 		return Filesystem::sync();
 	}
 	
@@ -327,12 +297,12 @@ JS
  * @subpackage batchactions
  */
 class AssetAdmin_DeleteBatchAction extends CMSBatchAction {
-	function getActionTitle() {
+	public function getActionTitle() {
 		// _t('AssetAdmin_left.ss.SELECTTODEL','Select the folders that you want to delete and then click the button below')
 		return _t('AssetAdmin_DeleteBatchAction.TITLE', 'Delete folders');
 	}
 
-	function run(SS_List $records) {
+	public function run(SS_List $records) {
 		$status = array(
 			'modified'=>array(),
 			'deleted'=>array()
