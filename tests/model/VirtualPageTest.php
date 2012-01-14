@@ -6,6 +6,7 @@ class VirtualPageTest extends SapphireTest {
 	protected $extraDataObjects = array(
 		'VirtualPageTest_ClassA',
 		'VirtualPageTest_ClassB',
+		'VirtualPageTest_NotRoot',
 	);
 	
 	/**
@@ -466,6 +467,33 @@ class VirtualPageTest extends SapphireTest {
 			'write() on original page does increment version on related VirtualPage'
 		);
 	}
+
+	function testCanBeRoot() {
+		$page = new SiteTree();
+		$page->ParentID = 0;
+		$page->write();
+
+		$notRootPage = new VirtualPageTest_NotRoot();
+		// we don't want the original on root, but rather the VirtualPage pointing to it
+		$notRootPage->ParentID = $page->ID; 
+		$notRootPage->write();
+
+		$virtual = new VirtualPage();
+		$virtual->CopyContentFromID = $page->ID;
+		$virtual->write();
+
+		$virtual = DataObject::get_by_id('VirtualPage', $virtual->ID, false);
+		$virtual->CopyContentFromID = $notRootPage->ID;
+		$isDetected = false;
+		try {
+			$virtual->write();
+		} catch(ValidationException $e) {
+			$this->assertContains('is not allowed on the root level', $e->getMessage());
+			$isDetected = true;
+		} 
+
+		if(!$isDetected) $this->fail('Fails validation with $can_be_root=false');
+	}
 }
 
 class VirtualPageTest_ClassA extends Page implements TestOnly {
@@ -485,4 +513,8 @@ class VirtualPageTest_ClassB extends Page implements TestOnly {
 
 class VirtualPageTest_ClassC extends Page implements TestOnly {
 	static $allowed_children = array();
+}
+
+class VirtualPageTest_NotRoot extends Page implements TestOnly {
+	static $can_be_root = false;
 }
