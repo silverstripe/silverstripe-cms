@@ -45,7 +45,7 @@
 					id = this.find('#ParentID .TreeDropdownField').getValue(),
 					newClassName = metadata ? metadata.ClassName : null,
 					hintKey = newClassName ? newClassName : 'Root',
-					hint = (typeof hints[hintKey] != 'undefined') ? hints[key] : null;
+					hint = (typeof hints[hintKey] != 'undefined') ? hints[hintKey] : null;
 				
 				var disallowedChildren = (hint && typeof hint.disallowedChildren != 'undefined') ? hint.disallowedChildren : [],
 					defaultChildClass = (hint && typeof hint.defaultChild != 'undefined') ? hint.defaultChild : null;
