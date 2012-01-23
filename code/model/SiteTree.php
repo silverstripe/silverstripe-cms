@@ -1009,7 +1009,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @param $batchCallBack The function/static method to call to calculate permissions.  Defaults
 	 * to 'SiteTree::can_(permission)_multiple'
 	 */
-	static function prepopuplate_permission_cache($permission = 'CanEditType', $ids, $batchCallback = null) {
+	static function prepopulate_permission_cache($permission = 'CanEditType', $ids, $batchCallback = null) {
 		if(!$batchCallback) $batchCallback = "SiteTree::can_{$permission}_multiple";
 		
 		//PHP 5.1 requires an array rather than a string for the call_user_func function
@@ -1018,7 +1018,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if(is_callable($batchCallback)) {
 			call_user_func($batchCallback, $ids, Member::currentUserID(), false);
 		} else {
-			user_error("SiteTree::prepopuplate_permission_cache can't calculate '$permission' "
+			user_error("SiteTree::prepopulate_permission_cache can't calculate '$permission' "
 				. "with callback '$batchCallback'", E_USER_WARNING);
 		}
 	}
