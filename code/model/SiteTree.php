@@ -2038,7 +2038,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 */
 	function getCMSActions() {
 		$actions = new FieldList();
-
+		
 		// "readonly"/viewing version that isn't the current version of the record
 		$stageOrLiveRecord = Versioned::get_one_by_stage($this->class, Versioned::current_stage(), sprintf('"SiteTree"."ID" = %d', $this->ID));
 		if($stageOrLiveRecord && $stageOrLiveRecord->Version != $this->Version) {
@@ -2057,6 +2057,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$unpublish->describe(_t('SiteTree.BUTTONUNPUBLISHDESC', 'Remove this page from the published site'));
 			$unpublish->addExtraClass('unpublish');
 			$unpublish->addExtraClass('ss-ui-action-destructive');
+			$unpublish->setAttribute('buttonset', 'minoractions');
 			$actions->push($unpublish);
 		}
 
@@ -2066,6 +2067,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				$rollback = FormAction::create('rollback', _t('SiteTree.BUTTONCANCELDRAFT', 'Cancel draft changes'), 'delete');
 				$rollback->describe(_t('SiteTree.BUTTONCANCELDRAFTDESC', 'Delete your draft and revert to the currently published page'));
 				$rollback->addExtraClass('delete');
+				$rollback->setAttribute('buttonset', 'minoractions');
 				$actions->push($rollback);
 			}
 		}
@@ -2079,6 +2081,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						// "delete from live"
 						$actions->push($deleteFromLiveAction = new FormAction('deletefromlive',_t('CMSMain.DELETEFP','Delete')));
 						$deleteFromLiveAction->addExtraClass('ss-ui-action-destructive');
+						$deleteFromLiveAction->setAttribute('buttonset', 'minoractions');
 					}
 				} else {
 					// "restore"
@@ -2090,11 +2093,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					$actions->push($deleteAction = new FormAction('delete',_t('CMSMain.DELETE','Delete draft')));
 					$deleteAction->addExtraClass('delete');
 					$deleteAction->addExtraClass('ss-ui-action-destructive');
+					$deleteAction->setAttribute('buttonset', 'minoractions');
 				}
 			
 				// "save"
 				$actions->push($saveDraftAction = new FormAction('save',_t('CMSMain.SAVEDRAFT','Save Draft')));
 				$saveDraftAction->addExtraClass('save-draft');
+				$saveDraftAction->setAttribute('buttonset', 'minoractions');
 			}
 		}
 
