@@ -1000,7 +1000,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
-	 * @deprecated 3.0 Use prepopulate_permission_cache() instead
+	 * @deprecated 3.0 Use prepopulate_permission_cache() instead (without the extraneous "p" in "prepopulate")
 	 */
 	static function prepopuplate_permission_cache($permission = 'CanEditType', $ids, $batchCallback = null) {
 		Deprecation::notice("3.0", "Use prepopulate_permission_cache instead.");
