@@ -62,7 +62,7 @@ class CMSMainTest extends FunctionalTest {
 		//$this->assertRegexp('/Done: Published 4 pages/', $response->getBody())
 			
 		/*
-		$response = Director::test("admin/publishitems", array(
+		$response = Director::test("admin/page/publishitems", array(
 			'ID' => ''
 			'Title' => ''
 			'action_publish' => 'Save and publish',
@@ -187,7 +187,7 @@ class CMSMainTest extends FunctionalTest {
 	function testDeletedPagesSiteTreeFilter() {
 		$id = $this->idFromFixture('Page', 'page3');
 		$this->logInWithPermission('ADMIN');
-		$result = $this->get('admin/getsubtree?filter=CMSSiteTreeFilter_DeletedPages&ajax=1&ID=' . $id);
+		$result = $this->get('admin/pages/getsubtree?filter=CMSSiteTreeFilter_DeletedPages&ajax=1&ID=' . $id);
 		$this->assertEquals(200, $result->getStatusCode());
 	}
 	

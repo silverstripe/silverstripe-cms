@@ -13,6 +13,11 @@ Director::addRules(50, array(
 	'dev/buildcache/$Action' => 'RebuildStaticCacheTask',
 ));
 
+// Default to "pages" view unless a URLSegment within /admin is specified
+Director::addRules(20, array(
+	'admin//$action/$ID/$OtherID' => '->admin/pages'
+));
+
 Director::addRules(1, array(
 	'$URLSegment//$Action/$ID/$OtherID' => 'ModelAsController',
 ));

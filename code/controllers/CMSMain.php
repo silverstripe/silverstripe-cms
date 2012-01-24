@@ -11,7 +11,7 @@
  */
 class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionProvider {
 	
-	static $url_segment = '';
+	static $url_segment = 'page';
 	
 	static $url_rule = '/$Action/$ID/$OtherID';
 	
