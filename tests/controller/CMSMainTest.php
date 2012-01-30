@@ -107,6 +107,7 @@ class CMSMainTest extends FunctionalTest {
 		foreach($classes as $class) {
 			$page = new $class();
 			if($page instanceof TestOnly) continue;
+			if(!$page->stat('can_be_root')) continue;
 	
 			$page->Title = "Test $class page";
 			$page->write();
