@@ -95,7 +95,7 @@
 			 * Update the page title heading when page title changes
 			 */
 			updatePageTitleHeading: function() {
-				$('#page-title-heading').html(this.val());
+				$('#page-title-heading').text(this.val());
 			},
 	
 			/**
