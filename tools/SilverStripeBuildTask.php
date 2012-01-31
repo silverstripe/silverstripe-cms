@@ -11,11 +11,6 @@ All code covered by the BSD license located at http://silverstripe.org/bsd-licen
  */
 abstract class SilverStripeBuildTask extends Task {
 	
-	/**
-	 * @var boolean
-	 */
-	protected $verbose = false;
-
 	protected $cleanupEnv = false;
 	
 	protected function configureEnvFile() {
@@ -72,7 +67,7 @@ TEXT;
 		$ret = null;
 		$return = null;
 		
-		if($this->verbose) $this->log($cmd);
+		$this->log($cmd, Project::MSG_VERBOSE);
 		
 		if ($returnContent) {
 			$ret = shell_exec($cmd);

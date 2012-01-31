@@ -103,6 +103,8 @@ class CreateChangelog extends SilverStripeBuildTask {
 		elseif ($from) $range = " $from..HEAD";
 		else $range = "";
 
+		$this->log(sprintf('Changing to directory "%s"', $path), Project::MSG_INFO);
+
 		chdir("$this->baseDir/$path");  //switch to the module's path
 
 		// Internal serialization format, ideally this would be JSON but we can't escape characters in git logs.
