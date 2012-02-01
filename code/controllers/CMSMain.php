@@ -1275,18 +1275,20 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	/**
 	 * Return the version number of this application.
 	 * Uses the subversion path information in <mymodule>/silverstripe_version
-	 * (automacially replaced $URL$ placeholder).
+	 * (automacially replaced by build scripts).
 	 * 
 	 * @return string
 	 */
 	public function CMSVersion() {
-		$sapphireVersionFile = file_get_contents(BASE_PATH . '/sapphire/silverstripe_version');
-		$cmsVersionFile = file_get_contents(BASE_PATH . '/cms/silverstripe_version');
-		
-		$sapphireVersion = $this->versionFromVersionFile($sapphireVersionFile);
-		$cmsVersion = $this->versionFromVersionFile($cmsVersionFile);
-
-		return "cms: $cmsVersion, sapphire: $sapphireVersion";
+		$cmsVersion = file_get_contents(BASE_PATH . '/cms/silverstripe_version');
+		if(!$cmsVersion) $cmsVersion = _t('LeftAndMain.VersionUnknown');
+		$sapphireVersion = file_get_contents(BASE_PATH . '/cms/silverstripe_version');
+		if(!$sapphireVersion) $sapphireVersion = _t('LeftAndMain.VersionUnknown');
+		return sprintf(
+			"cms: %s, sapphire: %s",
+			$cmsVersion,
+			$sapphireVersion
+		);
 	}
 
 	/**
