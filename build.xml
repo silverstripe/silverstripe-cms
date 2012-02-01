@@ -183,6 +183,12 @@ Options:
 	</target>
 
 	<target name="archive" if="basedir" description="Creates a gzip archive from the current folder (removes any version control files)">
+
+		<if>
+			<not><isset property="version"/></not>
+			<then><input propertyName="version" defaultValue="x.y.z" promptChar=":">Please choose a version</input></then>
+		</if>
+
 		<if>
 			<isset property="archivetype"/>
 			<then>
@@ -200,7 +206,7 @@ Options:
 				<echo msg="Creating '${archivename}' archive"/>
 			</then>
 			<else>
-				<input propertyName="archivename" defaultValue="SilverStripe-vX.Y.Z" promptChar=":">Please enter a name for the archive (without extension)</input>
+				<input propertyName="archivename" defaultValue="SilverStripe-v${version}" promptChar=":">Please enter a name for the archive (without extension)</input>
 				<echo msg="Creating '${archivename}' archive"/>
 			</else>
 		</if>
