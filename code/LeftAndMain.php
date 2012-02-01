@@ -1120,9 +1120,8 @@ JS;
 	 */
 	public function CMSVersion() {
 		$cmsVersion = file_get_contents(BASE_PATH . '/cms/silverstripe_version');
-		if(!$cmsVersion) $cmsVersion = _t('LeftAndMain.VersionUnknown');
 		$sapphireVersion = file_get_contents(BASE_PATH . '/sapphire/silverstripe_version');
-		if(!$sapphireVersion) $sapphireVersion = _t('LeftAndMain.VersionUnknown');
+		if(!$cmsVersion || !$sapphireVersion) return;
 
 		if($cmsVersion == $sapphireVersion) {
 			return $sapphireVersion;
