@@ -21,12 +21,22 @@ class CMSFileAddController extends AssetAdmin {
 	 * @todo what template is used here? AssetAdmin_UploadContent.ss doesn't seem to be used anymore
 	 */
 	public function getEditForm() {
-		$UploadField = Object::create('UploadField', 'AssetUploadField', '')->performAssetUploadFieldTransformation();
-		if ($this->currentPage()->exists() && $this->currentPage()->getFilename())
-			$UploadField->setFolderName($this->currentPage()->getFilename());
-		$form = new Form($this, 'getEditForm', new FieldList($UploadField), new FieldList());
+		Requirements::css(SAPPHIRE_DIR . '/css/AssetUploadField.css');
+
+		$uploadField = Object::create('UploadField', 'AssetUploadField', '');
+		$uploadField->setConfig('previewMaxWidth', 40);
+		$uploadField->setConfig('previewMaxHeight', 30);
+		$uploadField->addExtraClass('ss-assetuploadfield');
+		$uploadField->removeExtraClass('ss-uploadfield');
+		$uploadField->setTemplate('AssetUploadField');
+		if ($this->currentPage()->exists() && $this->currentPage()->getFilename()) {
+			$uploadField->setFolderName($this->currentPage()->getFilename());
+		}
+
+		$form = new Form($this, 'getEditForm', new FieldList($uploadField), new FieldList());
 		$form->addExtraClass('cms-content center cms-edit-form ' . $this->BaseCSSClasses());
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
+
 		return $form;
 	}
 
