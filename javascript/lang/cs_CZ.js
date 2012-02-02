@@ -26,6 +26,15 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'ModelAdmin.REALLYDELETE': "Skutečně chcete smazat?",
 		'ModelAdmin.DELETED': "Smazáno",
 		'LeftAndMain.PAGEWASDELETED': "Tato stránka byla smazána. Pro editaci stránky, vyberte ji vlevo.",
-		'LeftAndMain.CONFIRMUNSAVED': "Určitě chcete opustit navigaci z této stránky?\n\nUPOZORNĚNÍ: Vaše změny nebyly uloženy.\n\nStlačte OK pro pokračovat, nebo Cancel, zůstanete na této stránce."
+		'LeftAndMain.CONFIRMUNSAVED': "Určitě chcete opustit navigaci z této stránky?\n\nUPOZORNĚNÍ: Vaše změny nebyly uloženy.\n\nStlačte OK pro pokračovat, nebo Cancel, zůstanete na této stránce.",
+		'WidgetAreaEditor.TOOMANY': 'Dosažen limit doplňků pro tuto oblast',
+		'CMSMAIN.RollbackConfirmation': 'Opravdu chcete vrátit stav této stránky na verzi #%s?',
+		'CMSMAIN.CopyPublishedConfirmation': 'Opravdu chcete zkopírovat publikovaný obsah do konceptu stránky?',
+		'CMSMAIN.PageTypeSaveAlert': 'Typ stránky bude změněn po jejím uložení.',
+		'LOADING': 'načítání...',
+		'TABLEFIELD.DELETECONFIRMMESSAGEV2': '\nExistuje %s stránek, které tento soubor používají, zkontrolujte jejich seznam na záložce odkazy, než budete pokračovat.',
+		'TABLEFIELD.SELECTUPLOAD': 'Vyberte, prosím, alespoň jeden soubor k narhární.',
+		'TABLEFIELD.SELECTDELETE': 'Vyberte soubory ke smazání!',
+		'TABLEFIELD.CONFIRMDELETEV2': 'Opravdu chcete smazat označené soubory?'
 	});
 }
