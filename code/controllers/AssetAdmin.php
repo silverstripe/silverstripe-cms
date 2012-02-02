@@ -22,28 +22,16 @@ class AssetAdmin extends LeftAndMain {
 	 */
 	public static $allowed_max_file_size;
 	
-	static $allowed_actions = array(
+	public static $allowed_actions = array(
 		'addfolder',
 		'DeleteItemsForm',
-		'doUpload',
 		'getsubtree',
 		'movemarked',
 		'removefile',
 		'savefile',
-		'uploadiframe',
-		'UploadForm',
 		'deleteUnusedThumbnails' => 'ADMIN',
 		'SyncForm',
 	);
-	
-	/**
-	 * @var boolean Enables upload of additional textual information
-	 * alongside each file (through multifile.js), which makes
-	 * batch changes easier.
-	 * 
-	 * CAUTION: This is an unstable API which might change.
-	 */
-	public static $metadata_upload_enabled = false;
 	
 	/**
 	 * Return fake-ID "root" if no ID is found (needed to upload files into the root-folder)
@@ -63,7 +51,7 @@ class AssetAdmin extends LeftAndMain {
 	/**
 	 * Set up the controller, in particular, re-sync the File database with the assets folder./
 	 */
-	function init() {
+	public function init() {
 		parent::init();
 		
 		// Create base folder if it doesnt exist already
@@ -84,227 +72,8 @@ JS
 		
 		CMSBatchActionHandler::register('delete', 'AssetAdmin_DeleteBatchAction', 'Folder');
 	}
-		
-	/**
-	 * Return the root 'asset' folder CMSFields
-	 * 
-	 * @return FieldList
-	 */
-	public function RootForm() {
-		return $this->getEditForm(singleton('Folder'));
-	}
 	
-	/**
-	 * Show the content of the upload iframe.  The form is specified by a template.
-	 */
-	function uploadiframe() {
-		Requirements::clear();
-		
-		Requirements::javascript(SAPPHIRE_DIR . "/thirdparty/prototype/prototype.js");
-		Requirements::javascript(SAPPHIRE_DIR . "/thirdparty/behaviour/behaviour.js");
-		//Requirements::javascript(CMS_DIR . "/javascript/LeftAndMain.js");
-		Requirements::javascript(CMS_DIR . "/thirdparty/multifile/multifile.js");
-		Requirements::css(CMS_DIR . "/thirdparty/multifile/multifile.css");
-		Requirements::javascript(SAPPHIRE_DIR . "/thirdparty/jquery/jquery.js");
-		Requirements::javascript(SAPPHIRE_DIR . "/javascript/jquery_improvements.js");
-		Requirements::css(CMS_DIR . "/css/typography.css");
-		Requirements::css(CMS_DIR . "/css/layout.css");
-		Requirements::css(CMS_DIR . "/css/cms_left.css");
-		Requirements::css(CMS_DIR . "/css/cms_right.css");
-		
-		$id = (int) $this->request->param('ID');
-		if($id) $folder = DataObject::get_by_id("Folder", $id);
-		else $folder = singleton('Folder');
-		
-		return array( 'CanUpload' => $folder->canEdit());
-	}
-	
-	/**
-	 * Needs to be enabled through {@link AssetAdmin::$metadata_upload_enabled}
-	 * 
-	 * @return String
-	 */
-	function UploadMetadataHtml() {
-		if(!self::$metadata_upload_enabled) return;
-		
-		$fields = singleton('File')->uploadMetadataFields();
-
-		// Return HTML with markers for easy replacement
-		$fieldHtml = '';
-		foreach($fields as $field) $fieldHtml = $fieldHtml . $field->FieldHolder();
-		$fieldHtml = preg_replace('/(name|for|id)="(.+?)"/', '$1="$2[__X__]"', $fieldHtml);
-
-		// Icky hax to fix certain elements with fixed ids
-		$fieldHtml = preg_replace('/-([a-zA-Z0-9]+?)\[__X__\]/', '[__X__]-$1', $fieldHtml);
-
-		return $fieldHtml;
-	}
-	
-	/**
-	 * Return the form object shown in the uploadiframe.
-	 */
-	function UploadForm() {
-		$form = new Form($this,'UploadForm', new FieldList(
-			new HiddenField("ID", "", $this->currentPageID()),
-			new HiddenField("FolderID", "", $this->currentPageID()),
-			// needed because the button-action is triggered outside the iframe
-			new HiddenField("action_doUpload", "", "1"), 
-			new FileField("Files[0]" , _t('AssetAdmin.CHOOSEFILE','Choose file: ')),
-			new LiteralField('UploadButton',"
-				<input type=\"submit\" value=\"". _t('AssetAdmin.UPLOAD', 'Upload Files Listed Below'). "\" name=\"action_upload\" id=\"Form_UploadForm_action_upload\" class=\"action\" />
-			"),
-			new LiteralField('MultifileCode',"
-				<p>" . _t('AssetAdmin.FILESREADY','Files ready to upload:') ."</p>
-				<div id=\"Form_UploadForm_FilesList\"></div>
-			")
-		), new FieldList(
-		));
-		
-		// Makes ajax easier
-		$form->disableSecurityToken();
-		
-		return $form;
-	}
-	
-	/**
-	 * This method processes the results of the UploadForm.
-	 * It will save the uploaded files to /assets/ and create new File objects as required.
-	 */
-	function doUpload($data, $form) {
-		$newFiles = array();
-		$fileIDs = array();
-		$fileNames = array();
-		$fileSizeWarnings = '';
-		$errorsArr = '';
-		$status = '';
-		$statusMessage = '';
-		$processedFiles = array();
-
-		foreach($data['Files'] as $param => $files) {
-			if(!is_array($files)) $files = array($files);
-			foreach($files as $key => $value) {
-				$processedFiles[$key][$param] = $value;
-			}
-		}
-		
-		// Load POST data from arrays in to the correct dohickey.
-		$processedData = array();
-		foreach($data as $dataKey => $value) {
-			if ($dataKey == 'Files') continue;
-			if (is_array($value)) {
-				$i = 0;
-				foreach($value as $fileId => $dataValue) {
-					if (!isset($processedData[$i])) $processedData[$i] = array();
-					$processedData[$i][$dataKey] = $dataValue;
-					$i++;
-				}
-			}
-		}
-		$processedData = array_reverse($processedData);
-				
-		if(isset($data['FolderID']) && is_numeric($data['FolderID'])) {
-			$folder = DataObject::get_by_id("Folder", $data['FolderID']);
-		} else {
-			$folder = singleton('Folder');
-		}
-
-		foreach($processedFiles as $filePostId => $tmpFile) {
-			if($tmpFile['error'] == UPLOAD_ERR_NO_TMP_DIR) {
-				$errorsArr[] = _t('AssetAdmin.NOTEMP', 'There is no temporary folder for uploads. Please set upload_tmp_dir in php.ini.');
-				break;
-			}
-		
-			if($tmpFile['tmp_name']) {
-				
-				// validate files (only if not logged in as admin)
-				if(!File::$apply_restrictions_to_admin && Permission::check('ADMIN')) {
-					$valid = true;
-				} else {
-					
-					// Set up the validator instance with rules
-					$validator = new Upload_Validator();
-					$validator->setAllowedExtensions(File::$allowed_extensions);
-					$validator->setAllowedMaxFileSize(self::$allowed_max_file_size);
-					
-					// Do the upload validation with the rules
-					$upload = new Upload();
-					$upload->setValidator($validator);
-					$valid = $upload->validate($tmpFile);
-					if(!$valid) {
-						$errorsArr = $upload->getErrors();
-					}
-				}
-				
-				// move file to given folder
-				if($valid) {
-					if($newFile = $folder->addUploadToFolder($tmpFile)) {
-						if(self::$metadata_upload_enabled && isset($processedData[$filePostId])) {
-							$fileObject = DataObject::get_by_id('File', $newFile);
-							$metadataForm = new Form($this, 'MetadataForm', $fileObject->uploadMetadataFields(), new FieldList());
-							$metadataForm->loadDataFrom($processedData[$filePostId]);
-							$metadataForm->saveInto($fileObject);
-							$fileObject->write();
-						}
-
-						$newFiles[] = $newFile;
-					}
-				}
-			}
-		}
-
-		if($newFiles) {
-			$numFiles = sizeof($newFiles);
-			$statusMessage = sprintf(_t('AssetAdmin.UPLOADEDX',"Uploaded %s files"),$numFiles);
-			$status = "good";
-		} else if($errorsArr) {
-			$statusMessage = implode('\n', $errorsArr);
-			$status = 'bad';
-		} else {
-			$statusMessage = _t('AssetAdmin.NOTHINGTOUPLOAD','There was nothing to upload');
-			$status = "";
-		}
-
-		$fileObj = false;
-		foreach($newFiles as $newFile) {
-			$fileIDs[] = $newFile;
-			$fileObj = DataObject::get_one('File', "\"File\".\"ID\"=$newFile");
-			// notify file object after uploading
-			if (method_exists($fileObj, 'onAfterUpload')) $fileObj->onAfterUpload();
-			$fileNames[] = $fileObj->Name;
-		}
-		
-		// workaround for content editors image upload.Passing an extra hidden field
-		// in the content editors view of 'UploadMode' @see HtmlEditorField
-		// this will be refactored for 2.5
-		if(isset($data['UploadMode']) && $data['UploadMode'] == "CMSEditor" && $fileObj) {
-			// we can use $fileObj considering that the uploader in the cmseditor can only upload
-			// one file at a time. Once refactored to multiple files this is going to have to be changed
-			$width = (is_a($fileObj, 'Image')) ? $fileObj->getWidth() : '100';
-			$height = (is_a($fileObj, 'Image')) ? $fileObj->getHeight() : '100';
-			
-			$values = array(
-				'Filename' => $fileObj->Filename,
-				'Width' => $width,
-				'Height' => $height
-			);
-			
-			return Convert::raw2json($values);
-		}
-		
-		$sFileIDs = implode(',', $fileIDs);
-		$sFileNames = implode(',', $fileNames);
-
-		// TODO Will be replaced by new upload mechanism, refresh disabled for now
-// 		echo <<<HTML
-// 			<script type="text/javascript">
-// 			var url = parent.document.getElementById('sitetree').getTreeNodeByIdx( "{$folder->ID}" ).getElementsByTagName('a')[0].href;
-// 			parent.jQuery('.cms-edit-form').entwine('ss').loadForm(url);
-// 			parent.statusMessage("{$statusMessage}","{$status}");
-// 			</script>
-// HTML;
-	}
-	
-	function AddForm() {
+	public function AddForm() {
 		$form = parent::AddForm();
 		$form->Actions()->fieldByName('action_doAdd')->setTitle(_t('AssetAdmin.ActionAdd', 'Add folder'));
 		
@@ -407,7 +176,7 @@ JS
 	/**
 	 * @return Form
 	 */
-	function SyncForm() {
+	public function SyncForm() {
 		$form = new Form(
 			$this,
 			'SyncForm',
@@ -423,7 +192,7 @@ JS
 		return $form;
 	}
 	
-	function doSync($data, $form) {
+	public function doSync($data, $form) {
 		return Filesystem::sync();
 	}
 	
@@ -528,12 +297,12 @@ JS
  * @subpackage batchactions
  */
 class AssetAdmin_DeleteBatchAction extends CMSBatchAction {
-	function getActionTitle() {
+	public function getActionTitle() {
 		// _t('AssetAdmin_left.ss.SELECTTODEL','Select the folders that you want to delete and then click the button below')
 		return _t('AssetAdmin_DeleteBatchAction.TITLE', 'Delete folders');
 	}
 
-	function run(SS_List $records) {
+	public function run(SS_List $records) {
 		$status = array(
 			'modified'=>array(),
 			'deleted'=>array()
