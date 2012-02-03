@@ -63,7 +63,7 @@ class MemberTableField extends ComplexTableField {
 		$sourceClass = self::$data_class;
 		$SNG_member = singleton($sourceClass);
 		$fieldList = $SNG_member->summaryFields();
-		$memberDbFields = $SNG_member->db();
+		$memberDbFields = DataObject::database_fields('Member');
 		$csvFieldList = array();
 
 		foreach($memberDbFields as $field => $dbFieldType) {
