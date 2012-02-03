@@ -1328,11 +1328,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		
 		// default pages
 		if($this->class == 'SiteTree' && self::get_create_default_pages()) {
-			if(!SiteTree::get_by_link('home')) {
+			if(!SiteTree::get_by_link(RootURLController::get_default_homepage_link())) {
 				$homepage = new Page();
 				$homepage->Title = _t('SiteTree.DEFAULTHOMETITLE', 'Home');
 				$homepage->Content = _t('SiteTree.DEFAULTHOMECONTENT', '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>');
-				$homepage->URLSegment = 'home';
+				$homepage->URLSegment = RootURLController::get_default_homepage_link();
 				$homepage->Sort = 1;
 				$homepage->write();
 				$homepage->publish('Stage', 'Live');
