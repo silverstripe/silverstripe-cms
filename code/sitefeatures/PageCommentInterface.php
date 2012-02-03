@@ -205,6 +205,19 @@ class PageCommentInterface extends RequestHandler {
 			self::set_use_ajax_commenting(false);
 		}
 		
+		// Add note about moderated comments
+		if(PageComment::moderationEnabled()) {
+			$fields->push(
+				new LiteralField(
+					'ModerationNote', 
+					sprintf(
+						'<p class="moderationMessage"><small>%s</small></p>', 
+						_t('PageCommentInterface.ModerationEnabledNote', 'Note: Comments are moderated and won\'t show until they are approved')
+					)
+				)
+			);
+		}
+		
 		// Shall We use AJAX?
 		if(self::$use_ajax_commenting) {
 			Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/behaviour/behaviour.js');

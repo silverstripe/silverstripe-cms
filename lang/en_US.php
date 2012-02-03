@@ -442,6 +442,7 @@ $lang['en_US']['PageComment']['SINGULARNAME'] = array(
 );
 $lang['en_US']['PageCommentInterface']['COMMENTERURL'] = 'Your website URL';
 $lang['en_US']['PageCommentInterface']['DELETEALLCOMMENTS'] = 'Delete all comments on this page';
+$lang['en_US']['PageCommentInterface']['ModerationEnabledNote'] = 'Note: Comments are moderated and won\'t show until they are approved';
 $lang['en_US']['PageCommentInterface']['POST'] = 'Post';
 $lang['en_US']['PageCommentInterface']['SPAMQUESTION'] = 'Spam protection question: %s';
 $lang['en_US']['PageCommentInterface']['YOURCOMMENT'] = 'Comments';
