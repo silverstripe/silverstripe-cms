@@ -458,7 +458,7 @@ batchActionGlobals = {
 			});
 		
 			// Post to the server to ask which pages can have this batch action applied
-			var applicablePagesURL = $('choose_batch_action').value + '/applicablepages?csvIDs=' + ids.join(',');
+			var applicablePagesURL = $('choose_batch_action').value + '/applicablepages?csvIDs=' + ids.join(',') + "&locale=" + $('batchactions_options_locale').value;
 			jQuery.getJSON(applicablePagesURL, function(applicableIDs) {
 				var i;
 				var applicableIDMap = {};
