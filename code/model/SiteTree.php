@@ -1,10 +1,16 @@
 <?php
 /**
  * Basic data-object representing all pages within the site tree.
- * This data-object takes care of the heirachy.  All page types that live within the heirachy
- * should inherit from this.
- *
+ * This data-object takes care of the heirachy. All page types that live within the hierarchy should inherit from this.
  * In addition, it contains a number of static methods for querying the site tree.
+ * 
+ * <h2>URLs</h2>
+ * A page is identified during request handling via its "URLSegment" database column. 
+ * As pages can be nested, the full path of a URL might contain multiple segments.
+ * Each segment is stored in its filtered representation (through {@link URLSegmentFilter}).
+ * The full path is constructed via {@link Link()}, {@link RelativeLink()} and {@link AbsoluteLink()}.
+ * You can allow these segments to contain multibyte characters through {@link URLSegmentFilter::$default_allow_multibyte}.
+ * 
  * @package cms
  */
 class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvider,CMSPreviewable {
