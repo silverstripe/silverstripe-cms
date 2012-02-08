@@ -23,25 +23,19 @@
 		init : function(ed, url) {
 			ed.addButton('sslink', {title : ed.getLang('tinymce_ssbuttons.insertlink'), cmd : 'sslink', 'class' : 'mce_link'}); 
 			ed.addButton('ssimage', {title : ed.getLang('tinymce_ssbuttons.insertimage'), cmd : 'ssimage', 'class' : 'mce_image'}); 
-			ed.addButton('ssflash', {title : ed.getLang('tinymce_ssbuttons.insertflash'), cmd : 'ssflash', 'class' : 'mce_flash', 'image': url + '/img/flash.gif'}); 
 
 			ed.addCommand("sslink", function(ed) {
 				jQuery('#Form_EditorToolbarLinkForm').entwine('ss').open();
 			});
 
 			ed.addCommand("ssimage", function(ed) {
-				jQuery('#Form_EditorToolbarImageForm')[0].open();
-			});
-
-			ed.addCommand("ssflash", function(ed) {
-				jQuery('#Form_EditorToolbarFlashForm')[0].open();
+				jQuery('#Form_EditorToolbarMediaForm').entwine('ss').open();
 			});
 			
+			// Disable link button when no link is selected
 			ed.onNodeChange.add(function(ed, cm, n, co) {
 				cm.setDisabled('sslink', co && n.nodeName != 'A');
 				cm.setActive('sslink', n.nodeName == 'A' && !n.name);
-				
-				jQuery('Form_EditorToolbarLinkForm').entwine('ss').respondToNodeChange();
 			});
 		}
 	});
