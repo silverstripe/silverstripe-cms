@@ -251,6 +251,7 @@ $(document).ready(function() {
 			// @todo TinyMCE coupling
 			tinymce_removeAll();
 			
+			$('#form_actions_right').remove();
 			$('#right #ModelAdminPanel').html(result);
 
 			if($('#right #ModelAdminPanel form').hasClass('validationerror')) {
