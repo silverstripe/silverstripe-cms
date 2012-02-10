@@ -64,7 +64,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			'cmsmain.js',
 			array_merge(
 				array(
-					// CMS_DIR . '/javascript/ThumbnailStripField.js',
 					CMS_DIR . '/javascript/CMSMain.js',
 					CMS_DIR . '/javascript/CMSMain.EditForm.js',
 					CMS_DIR . '/javascript/CMSMain.AddForm.js',
