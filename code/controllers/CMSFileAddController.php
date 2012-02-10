@@ -20,7 +20,7 @@ class CMSFileAddController extends AssetAdmin {
 	 * @return Form
 	 * @todo what template is used here? AssetAdmin_UploadContent.ss doesn't seem to be used anymore
 	 */
-	public function getEditForm() {
+	public function getEditForm($id = null, $fields = null) {
 		Requirements::javascript(SAPPHIRE_DIR . '/javascript/AssetUploadField.js');
 		Requirements::css(SAPPHIRE_DIR . '/css/AssetUploadField.css');
 
