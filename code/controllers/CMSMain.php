@@ -464,7 +464,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			}
 			
 			if(!$record->IsDeletedFromStage) {
-				$stageURLField->setValue(Controller::join_links($record->AbsoluteLink(), '?Stage=stage'));
+				$stageURLField->setValue(Controller::join_links($record->AbsoluteLink(), '?stage=Stage'));
 			}
 			
 			// Added in-line to the form, but plucked into different view by LeftAndMain.Preview.js upon load
@@ -489,7 +489,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			
 			$form = new Form($this, "EditForm", $fields, $actions, $validator);
 			$form->loadDataFrom($record);
-			$stageURLField->setValue(Controller::join_links($record->getStageURLSegment(), '?Stage=stage'));
+			$stageURLField->setValue(Controller::join_links($record->getStageURLSegment(), '?stage=Stage'));
 			$form->disableDefaultAction();
 			$form->addExtraClass('cms-edit-form');
 			$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
