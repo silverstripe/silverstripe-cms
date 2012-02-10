@@ -4,10 +4,6 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 
 	public static $use_draft_site = true;
 
-	protected $requiredExtensions = array(
-		'HtmlEditorField_Toolbar' => array('HtmlEditorFieldTest_DummyImageFormFieldExtension')
-	);
-
 	public function testLinkTracking() {
 		$sitetree = $this->objFromFixture('SiteTree', 'home');
 		$editor   = new HtmlEditorField('Content');
