@@ -136,6 +136,9 @@
 			onmatch : function() {
 				var self = this;
 				this.find(':input[name=ParentType]').bind('click', function(e) {self._toggleSelection(e);});
+				this.find('.TreeDropdownField').bind('change', function(e) {self._changeParentId(e);});
+				
+				this._changeParentId();
 				this._toggleSelection();
 				
 				this._super();
@@ -151,8 +154,22 @@
 				var selected = this.find(':input[name=ParentType]:checked').val();
 				// reset parent id if 'root' radiobutton is selected
 				if(selected == 'root') this.find(':input[name=ParentID]').val(0);
+				// otherwise use the old value
+				else this.find(':input[name=ParentID]').val(this.find('#Form_EditForm_ParentType_subpage').data('parentIdValue'));
 				// toggle tree dropdown based on selection
 				this.find('#ParentID').toggle(selected != 'root');
+			},
+			
+			/**
+			 * Function: _changeParentId
+			 * 
+			 * Parameters:
+			 *  (Event) e
+			 */
+			_changeParentId: function(e) {
+				var value = this.find(':input[name=ParentID]').val();
+				// set a data attribute so we know what to use in _toggleSelection
+				this.find('#Form_EditForm_ParentType_subpage').data('parentIdValue', value);
 			}
 		});
 
