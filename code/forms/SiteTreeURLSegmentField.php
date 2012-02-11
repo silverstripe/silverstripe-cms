@@ -12,6 +12,14 @@
  */
 class SiteTreeURLSegmentField extends TextField {
 	
+	protected $template = 'SiteTreeURLSegmentField';
+	
+	/** @var String */
+	protected $helpText;
+	
+	/** @var String */
+	protected $urlPrefix;
+	
 	static $allowed_actions = array(
 		'suggest'
 	);
@@ -39,8 +47,40 @@ class SiteTreeURLSegmentField extends TextField {
 		$idField = $this->getForm()->dataFieldByName('ID');
 		return ($idField && $idField->Value()) ? DataObject::get_by_id('SiteTree', $idField->Value()) : singleton('SiteTree');
 	}
+	
+	/**
+	 * @param string the secondary text to show
+	 */
+	function setHelpText($string){
+		$this->helpText = $string; 
+	}
+	
+	/**
+	 * @return string the secondary text to show in the template
+	 */
+	function getHelpText(){
+		return $this->helpText;
+	
+	}
+	
+	/**
+	 * @param the url that prefixes the page url segment field
+	 */
+	function setURLPrefix($url){
+		$this->urlPrefix = $url;
+	}
+	
+	/**
+	 * @return the url prefixes the page url segment field to show in template
+	 */
+	function getURLPrefix(){
+		return $this->urlPrefix;
+	}
+	
 
 	function Type() {
 		return 'text sitetreeurlsegment';
 	}
+	
+	
 }

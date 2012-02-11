@@ -1830,8 +1830,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			(self::nested_urls() && $this->ParentID ? $this->Parent()->RelativeLink(true) : null)
 		);
 		
+		
+		
 		$url = (strlen($baseLink) > 36) ? "..." .substr($baseLink, -32) : $baseLink;
-		$urlHelper = sprintf("<span>%s</span>", $url);
+		$urlsegment = new SiteTreeURLSegmentField("URLSegment", $this->fieldLabel('URLSegment'));
+		$urlsegment->setURLPrefix($url);
+		$urlsegment->setHelpText(self::nested_urls() && count($this->Children()) ? $this->fieldLabel('LinkChangeNote'): false);
 		
 		$fields = new FieldList(
 			$rootTab = new TabSet("Root",
@@ -1841,10 +1845,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					$htmlField = new HtmlEditorField("Content", _t('SiteTree.HTMLEDITORTITLE', "Content", PR_MEDIUM, 'HTML editor title'))
 				),
 				$tabMeta = new Tab('Metadata',
-					new SiteTreeURLSegmentField("URLSegment", $this->fieldLabel('URLSegment') . $urlHelper),
-					new LiteralField('LinkChangeNote', self::nested_urls() && count($this->Children()) ?
-						'<p>' . $this->fieldLabel('LinkChangeNote'). '</p>' : null
-					),
+					$urlsegment,
 					new HeaderField('MetaTagsHeader',$this->fieldLabel('MetaTagsHeader')),
 					new TextField("MetaTitle", $this->fieldLabel('MetaTitle')),
 					new TextareaField("MetaKeywords", $this->fieldLabel('MetaKeywords'), 1),
@@ -1880,6 +1881,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		return $fields;
 	}
+	
 	
 	/**
 	 * Returns fields related to configuration aspects on this record, e.g. access control.
