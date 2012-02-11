@@ -563,7 +563,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		if(substr($SQL_id,0,3) != 'new') {
 			$record = DataObject::get_by_id($className, $SQL_id);
 			if($record && !$record->canEdit()) return Security::permissionFailure($this);
-			if(!$record || !$record->ID) throw new HTTPResponse_Exception("Bad record ID #$SQL_id", 404);
+			if(!$record || !$record->ID) throw new SS_HTTPResponse_Exception("Bad record ID #$SQL_id", 404);
 		} else {
 			if(!singleton($this->stat('tree_class'))->canCreate()) return Security::permissionFailure($this);
 			$record = $this->getNewItem($SQL_id, false);
@@ -777,7 +777,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function revert($data, $form) {
 		if(!isset($data['ID'])) return new SS_HTTPResponse("Please pass an ID in the form content", 400);
 		
-		$id = $data['ID'];
+		$id = (int) $data['ID'];
 		$restoredPage = Versioned::get_latest_version("SiteTree", $id);
 		if(!$restoredPage) 	return new SS_HTTPResponse("SiteTree #$id not found", 400);
 		
@@ -790,7 +790,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// a user can restore a page without publication rights, as it just adds a new draft state
 		// (this action should just be available when page has been "deleted from draft")
 		if($record && !$record->canEdit()) return Security::permissionFailure($this);
-		if(!$record || !$record->ID) throw new HTTPResponse_Exception("Bad record ID #$id", 404);
+		if(!$record || !$record->ID) throw new SS_HTTPResponse_Exception("Bad record ID #$id", 404);
 
 		$record->doRevertToLive();
 		
@@ -818,7 +818,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			sprintf("\"SiteTree\".\"ID\" = %d", $id)
 		);
 		if($record && !$record->canDelete()) return Security::permissionFailure();
-		if(!$record || !$record->ID) throw new HTTPResponse_Exception("Bad record ID #$id", 404);
+		if(!$record || !$record->ID) throw new SS_HTTPResponse_Exception("Bad record ID #$id", 404);
 		
 		// save ID and delete record
 		$recordID = $record->ID;
@@ -950,7 +950,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$record = DataObject::get_by_id($className, $data['ID']);
 		
 		if($record && !$record->canDeleteFromLive()) return Security::permissionFailure($this);
-		if(!$record || !$record->ID) throw new HTTPResponse_Exception("Bad record ID #" . (int)$data['ID'], 404);
+		if(!$record || !$record->ID) throw new SS_HTTPResponse_Exception("Bad record ID #" . (int)$data['ID'], 404);
 		
 		$record->doUnpublish();
 		
@@ -1233,7 +1233,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
 			$page = DataObject::get_by_id("SiteTree", $id);
 			if($page && (!$page->canEdit() || !$page->canCreate())) return Security::permissionFailure($this);
-			if(!$page || !$page->ID) throw new HTTPResponse_Exception("Bad record ID #$id", 404);
+			if(!$page || !$page->ID) throw new SS_HTTPResponse_Exception("Bad record ID #$id", 404);
 
 			$newPage = $page->duplicate();
 			
@@ -1259,7 +1259,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
 			$page = DataObject::get_by_id("SiteTree", $id);
 			if($page && (!$page->canEdit() || !$page->canCreate())) return Security::permissionFailure($this);
-			if(!$page || !$page->ID) throw new HTTPResponse_Exception("Bad record ID #$id", 404);
+			if(!$page || !$page->ID) throw new SS_HTTPResponse_Exception("Bad record ID #$id", 404);
 
 			$newPage = $page->duplicateWithChildren();
 
