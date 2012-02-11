@@ -37,5 +37,4 @@ class CMSPagesController extends CMSMain {
 	function PreviewLink() {
 		return false;
 	}
-	
 }
