@@ -1902,13 +1902,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						$this->fieldLabel('ClassName'), 
 						$this->getClassDropdown()
 					),
-					
-					new OptionsetField("ParentType", _t("SiteTree.PAGELOCATION", "Page location"), array(
-						"root" => _t("SiteTree.PARENTTYPE_ROOT", "Top-level page"),
-						"subpage" => _t("SiteTree.PARENTTYPE_SUBPAGE", "Sub-page underneath a parent page (choose below)"),
-					)),
-					$parentIDField = new TreeDropdownField("ParentID", $this->fieldLabel('ParentID'), 'SiteTree', 'ID', 'MenuTitle'),
-					
+					$parentTypeSelector = new CompositeField(
+						new OptionsetField("ParentType", _t("SiteTree.PAGELOCATION", "Page location"), array(
+							"root" => _t("SiteTree.PARENTTYPE_ROOT", "Top-level page"),
+							"subpage" => _t("SiteTree.PARENTTYPE_SUBPAGE", "Sub-page underneath a parent page (choose below)"),
+						)),
+						$parentIDField = new TreeDropdownField("ParentID", $this->fieldLabel('ParentID'), 'SiteTree', 'ID', 'MenuTitle')
+					),
 					new CheckboxField("ShowInMenus", $this->fieldLabel('ShowInMenus')),
 					new CheckboxField("ShowInSearch", $this->fieldLabel('ShowInSearch')),
 					new LiteralField(
@@ -1944,6 +1944,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		 * or its descendents, as this causes vanishing bugs.
 		 */
 		$parentIDField->setFilterFunction(create_function('$node', "return \$node->ID != {$this->ID};"));
+		$parentTypeSelector->addExtraClass('parentTypeSelector');
 		
 		$tabBehaviour->setTitle(_t('SiteTree.TABBEHAVIOUR', "Behavior"));
 		$tabAccess->setTitle(_t('SiteTree.TABACCESS', "Access"));
@@ -2717,5 +2718,3 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 }
-
-?>
