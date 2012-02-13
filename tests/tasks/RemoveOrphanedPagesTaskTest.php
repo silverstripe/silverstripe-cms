@@ -102,4 +102,3 @@ class RemoveOrphanedPagesTaskTest extends FunctionalTest {
 	}
 	
 }
-?>

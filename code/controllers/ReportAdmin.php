@@ -99,4 +99,3 @@ class ReportAdmin extends LeftAndMain {
 	}
 }
 
-?>

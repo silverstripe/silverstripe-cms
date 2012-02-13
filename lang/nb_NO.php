@@ -403,4 +403,3 @@ $lang['nb_NO']['WidgetAreaEditor.ss']['NOAVAIL'] = 'Det er ingen tilgjengelige w
 $lang['nb_NO']['WidgetAreaEditor.ss']['TOADD'] = 'For å legge til widgets, dra fra venstre område hit.';
 $lang['nb_NO']['WidgetEditor.ss']['DELETE'] = 'Slett';
 
-?>

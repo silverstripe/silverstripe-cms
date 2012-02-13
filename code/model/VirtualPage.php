@@ -483,4 +483,4 @@ class VirtualPage_Controller extends Page_Controller {
 	}
 }
 
-?>
+

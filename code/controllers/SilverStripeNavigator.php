@@ -343,4 +343,3 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 	}
 }
 
-?>

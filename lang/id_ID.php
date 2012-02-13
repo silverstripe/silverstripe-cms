@@ -399,4 +399,3 @@ $lang['id_ID']['WidgetAreaEditor.ss']['NOAVAIL'] = 'Tidak ada widget yang tersed
 $lang['id_ID']['WidgetAreaEditor.ss']['TOADD'] = 'Untuk menambah widget, tarik dari bagian di kiri ke sini.';
 $lang['id_ID']['WidgetEditor.ss']['DELETE'] = 'Hapus';
 
-?>

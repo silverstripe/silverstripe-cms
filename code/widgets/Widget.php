@@ -230,4 +230,3 @@ class Widget_TreeDropdownField extends TreeDropdownField {
 	function Field() {}
 }
 
-?>

@@ -441,4 +441,3 @@ class SiteTreePermissionsTest extends FunctionalTest {
 	}
 	
 }
-?>

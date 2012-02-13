@@ -315,4 +315,3 @@ $lang['ms_MY']['ViewArchivedEmail.ss']['CANACCESS'] = 'Lihat laman yang telah di
 $lang['ms_MY']['ViewArchivedEmail.ss']['HAVEASKED'] = 'Anda berhajat untuk melihat kandungan laman kami pada';
 $lang['ms_MY']['WaitingOn.ss']['ATO'] = 'ditugaskan kepada';
 
-?>

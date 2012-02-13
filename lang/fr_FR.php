@@ -403,4 +403,3 @@ $lang['fr_FR']['WidgetAreaEditor.ss']['NOAVAIL'] = 'Actuellement aucun gadget di
 $lang['fr_FR']['WidgetAreaEditor.ss']['TOADD'] = 'Pour ajouter un gadget, effectuez un glisser-déposer de la zone de gauche à ici.';
 $lang['fr_FR']['WidgetEditor.ss']['DELETE'] = 'Supprimer';
 
-?>

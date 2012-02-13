@@ -418,4 +418,3 @@ $lang['ru_RU']['WidgetAreaEditor.ss']['NOAVAIL'] = 'В данный момент
 $lang['ru_RU']['WidgetAreaEditor.ss']['TOADD'] = 'Для добавления виджетов перетащите их сюда слева.';
 $lang['ru_RU']['WidgetEditor.ss']['DELETE'] = 'Удалить';
 
-?>

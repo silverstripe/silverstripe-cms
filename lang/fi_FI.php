@@ -351,4 +351,3 @@ $lang['fi_FI']['WidgetAreaEditor.ss']['NOAVAIL'] = 'Widgettejä ei tällä hetke
 $lang['fi_FI']['WidgetAreaEditor.ss']['TOADD'] = 'Lisätäksesi widgettejä vedä ne vasemmalta alueelta tähän.';
 $lang['fi_FI']['WidgetEditor.ss']['DELETE'] = 'Poista';
 
-?>

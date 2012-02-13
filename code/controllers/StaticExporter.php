@@ -112,4 +112,3 @@ class StaticExporter extends Controller {
 	
 }
 
-?>

@@ -360,4 +360,4 @@ class AssetTableField extends ComplexTableField {
 	}
 }
 
-?>
+

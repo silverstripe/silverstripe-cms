@@ -536,4 +536,3 @@ $lang['de_DE']['WidgetAreaEditor.ss']['TOSORT'] = 'Bereits eingebundene Widgets 
 $lang['de_DE']['WidgetDescription.ss']['CLICKTOADDWIDGET'] = 'Klick Sie hier um das Widget hinzuzufünge';
 $lang['de_DE']['WidgetEditor.ss']['DELETE'] = 'Gelöscht';
 
-?>

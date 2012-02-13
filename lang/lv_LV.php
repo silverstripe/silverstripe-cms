@@ -536,4 +536,3 @@ $lang['lv_LV']['WidgetAreaEditor.ss']['TOSORT'] = 'Lai sakārtotu šajā lapā �
 $lang['lv_LV']['WidgetDescription.ss']['CLICKTOADDWIDGET'] = 'Klikšķiniet, lai pievienotu logrīku';
 $lang['lv_LV']['WidgetEditor.ss']['DELETE'] = 'Dzēst';
 
-?>

@@ -536,4 +536,3 @@ $lang['eo_XX']['WidgetAreaEditor.ss']['TOSORT'] = 'Por ordigi aktuale uzatajn fe
 $lang['eo_XX']['WidgetDescription.ss']['CLICKTOADDWIDGET'] = 'Alklaku por aldoni ĉi tiun fenestraĵon';
 $lang['eo_XX']['WidgetEditor.ss']['DELETE'] = 'Forigi';
 
-?>

@@ -434,4 +434,3 @@ $lang['it_IT']['WidgetAreaEditor.ss']['NOAVAIL'] = 'Non ci sono widgets disponib
 $lang['it_IT']['WidgetAreaEditor.ss']['TOADD'] = 'Per aggiungere dei widgets, trascinarli dall\'area di sinistra fin qui.';
 $lang['it_IT']['WidgetEditor.ss']['DELETE'] = 'Cancella';
 
-?>

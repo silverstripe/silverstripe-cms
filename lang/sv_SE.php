@@ -431,4 +431,3 @@ $lang['sv_SE']['WidgetAreaEditor.ss']['NOAVAIL'] = 'För närvarande finns inga 
 $lang['sv_SE']['WidgetAreaEditor.ss']['TOADD'] = 'För att lägga till widgets, dra dem hit från fältet till vänster.';
 $lang['sv_SE']['WidgetEditor.ss']['DELETE'] = 'Ta bort';
 
-?>
