@@ -214,4 +214,3 @@ class ZZZSearchFormTest extends FunctionalTest {
 		);
 	}
 }
-?>

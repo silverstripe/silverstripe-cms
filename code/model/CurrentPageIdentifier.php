@@ -19,4 +19,3 @@ interface CurrentPageIdentifier {
 	function isCurrentPage(DataObject $page);
 }
 
-?>

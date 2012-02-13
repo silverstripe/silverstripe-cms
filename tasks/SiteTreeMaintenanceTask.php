@@ -26,4 +26,3 @@ class SiteTreeMaintenanceTask extends Controller {
 		}
 	}
 }
-?>

@@ -18,4 +18,3 @@ class FileList extends TableListField {
 	}
 }
 
-?>
