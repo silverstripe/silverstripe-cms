@@ -413,4 +413,3 @@ $lang['ja_JP']['WidgetAreaEditor.ss']['TOADD'] = 'ウィジェットを加える
 $lang['ja_JP']['WidgetDescription.ss']['CLICKTOADDWIDGET'] = 'ウィジェットを追加する';
 $lang['ja_JP']['WidgetEditor.ss']['DELETE'] = '削除';
 
-?>

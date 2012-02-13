@@ -435,4 +435,3 @@ $lang['ar_SA']['WidgetAreaEditor.ss']['NOAVAIL'] = 'حالياً لا يوجد W
 $lang['ar_SA']['WidgetAreaEditor.ss']['TOADD'] = 'لإضافة Widgets, قم بإدراجها من القائمة اليسرى إلى هنا';
 $lang['ar_SA']['WidgetEditor.ss']['DELETE'] = 'حذف';
 
-?>

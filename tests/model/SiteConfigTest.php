@@ -36,4 +36,3 @@ class SiteConfigTest extends SapphireTest {
 	}
 	
 }
-?>

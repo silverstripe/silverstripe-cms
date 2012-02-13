@@ -342,4 +342,3 @@ $lang['bg_BG']['WidgetAreaEditor.ss']['NOAVAIL'] = 'В момента няма �
 $lang['bg_BG']['WidgetAreaEditor.ss']['TOADD'] = 'За да добавите widgets, плъзнете ги от лявата страна тук.';
 $lang['bg_BG']['WidgetEditor.ss']['DELETE'] = 'Изтрий';
 
-?>

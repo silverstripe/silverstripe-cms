@@ -154,4 +154,3 @@ abstract class StaticPublisher extends DataExtension {
 	}
 }
 
-?>

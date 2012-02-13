@@ -346,4 +346,3 @@ in the other stage:<br />
 		return $orphans;
 	}
 }
-?>

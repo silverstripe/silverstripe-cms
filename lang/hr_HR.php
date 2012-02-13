@@ -237,4 +237,3 @@ $lang['hr_HR']['ViewArchivedEmail.ss']['CANACCESS'] = 'Na slijedećem linku mož
 $lang['hr_HR']['ViewArchivedEmail.ss']['HAVEASKED'] = 'Zatražili ste sadržaj naše stranice ';
 $lang['hr_HR']['WaitingOn.ss']['ATO'] = 'dodijeljeno ';
 
-?>

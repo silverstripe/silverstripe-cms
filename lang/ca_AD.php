@@ -393,4 +393,3 @@ $lang['ca_AD']['WidgetAreaEditor.ss']['NOAVAIL'] = 'Actualment no hi ha ginys di
 $lang['ca_AD']['WidgetAreaEditor.ss']['TOADD'] = 'Per a afegir ginys, arrossegueu-los des de l\'esquerra a aquí.';
 $lang['ca_AD']['WidgetEditor.ss']['DELETE'] = 'Suprimeix';
 
-?>

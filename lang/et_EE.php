@@ -403,4 +403,3 @@ $lang['et_EE']['WidgetAreaEditor.ss']['NOAVAIL'] = 'Ühtegi vidinat ei ole antud
 $lang['et_EE']['WidgetAreaEditor.ss']['TOADD'] = 'Vidinate lisamiseks lohista need vasakust lahtrist siia.';
 $lang['et_EE']['WidgetEditor.ss']['DELETE'] = 'Kustuta';
 
-?>

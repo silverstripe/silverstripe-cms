@@ -70,4 +70,3 @@ class WidgetArea extends DataObject {
 	}
 }
 
-?>

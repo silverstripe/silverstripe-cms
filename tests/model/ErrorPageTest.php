@@ -61,4 +61,3 @@ class ErrorPageTest extends FunctionalTest {
 	}
 	
 }
-?>

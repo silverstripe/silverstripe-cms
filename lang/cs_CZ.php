@@ -514,4 +514,3 @@ $lang['cs_CZ']['WidgetAreaEditor.ss']['TOSORT'] = 'Pro pořadí právě použív
 $lang['cs_CZ']['WidgetDescription.ss']['CLICKTOADDWIDGET'] = 'Klikněte k přidání tohoto widgetu';
 $lang['cs_CZ']['WidgetEditor.ss']['DELETE'] = 'Odstranit';
 
-?>

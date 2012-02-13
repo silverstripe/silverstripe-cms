@@ -219,4 +219,3 @@ $lang['ne_NP']['ViewArchivedEmail.ss']['CANACCESS'] = 'तपाईंले arc
 $lang['ne_NP']['ViewArchivedEmail.ss']['HAVEASKED'] = 'तपाईंले हाम्रो साइटको सामाग्री यसमा हेन खोजनु भयो';
 $lang['ne_NP']['WaitingOn.ss']['ATO'] = 'यस्लाई गराइएको   ';
 
-?>

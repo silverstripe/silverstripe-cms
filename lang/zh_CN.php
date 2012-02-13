@@ -282,4 +282,3 @@ $lang['zh_CN']['ViewArchivedEmail.ss']['CANACCESS'] = '您可通过这个链接�
 $lang['zh_CN']['ViewArchivedEmail.ss']['HAVEASKED'] = '在%s,您要求浏览我们网站';
 $lang['zh_CN']['WaitingOn.ss']['ATO'] = '分配给';
 
-?>

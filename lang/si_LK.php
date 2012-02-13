@@ -312,4 +312,3 @@ $lang['si_LK']['WidgetAreaEditor.ss']['NOAVAIL'] = 'මෙම මොහොතේ
 $lang['si_LK']['WidgetAreaEditor.ss']['TOADD'] = 'විජට්ස් එක් කිරීමට වම් කොටසින් මෙතනට drag කරන්න';
 $lang['si_LK']['WidgetEditor.ss']['DELETE'] = 'මකන්න';
 
-?>

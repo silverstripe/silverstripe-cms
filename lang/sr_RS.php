@@ -319,4 +319,3 @@ $lang['sr_RS']['WidgetAreaEditor.ss']['INUSE'] = 'Виџети који се т�
 $lang['sr_RS']['WidgetAreaEditor.ss']['NOAVAIL'] = 'Тренутно нема доступних виџета.';
 $lang['sr_RS']['WidgetEditor.ss']['DELETE'] = 'Обриши';
 
-?>

@@ -323,4 +323,4 @@ class AssetAdmin_DeleteBatchAction extends CMSBatchAction {
 		return Convert::raw2json($status);
 	}
 }
-?>
+

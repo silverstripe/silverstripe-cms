@@ -445,4 +445,3 @@ $lang['da_DK']['WidgetAreaEditor.ss']['NOAVAIL'] = 'Der er ingen widgets tilgæn
 $lang['da_DK']['WidgetAreaEditor.ss']['TOADD'] = 'Træk en Widget til dette areal for at tilføje den';
 $lang['da_DK']['WidgetEditor.ss']['DELETE'] = 'Slet';
 
-?>

@@ -403,4 +403,3 @@ $lang['es_MX']['WidgetAreaEditor.ss']['NOAVAIL'] = 'Actualmente no disponemos de
 $lang['es_MX']['WidgetAreaEditor.ss']['TOADD'] = 'Para agregar reproductores, arrástralo del área izquierda hasta aquí.';
 $lang['es_MX']['WidgetEditor.ss']['DELETE'] = 'Eliminar';
 
-?>

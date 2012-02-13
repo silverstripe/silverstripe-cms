@@ -86,4 +86,3 @@ class WidgetControllerTest_Widget_Controller extends Widget_Controller implement
 		);
 	}
 }
-?>

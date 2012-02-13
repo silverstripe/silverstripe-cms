@@ -255,4 +255,4 @@ class SiteTreeBacklinksTest_DOD extends DataExtension implements TestOnly {
 		$fields->addFieldToTab("Root.Content", new HTMLEditorField("ExtraContent"));
 	}
 }
-?>
+

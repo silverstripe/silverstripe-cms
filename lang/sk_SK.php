@@ -530,4 +530,3 @@ $lang['sk_SK']['WidgetAreaEditor.ss']['TOSORT'] = 'Pre usporiadanie momentálne 
 $lang['sk_SK']['WidgetDescription.ss']['CLICKTOADDWIDGET'] = 'Stlačťe pre pridanie pomôcky';
 $lang['sk_SK']['WidgetEditor.ss']['DELETE'] = 'Vymazať';
 
-?>

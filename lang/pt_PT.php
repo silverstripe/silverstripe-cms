@@ -313,4 +313,3 @@ $lang['pt_PT']['WidgetAreaEditor.ss']['NOAVAIL'] = 'NÃ£o existem widgets disponÃ
 $lang['pt_PT']['WidgetAreaEditor.ss']['TOADD'] = 'Para adicionar widgets, arraste-os para aqui.';
 $lang['pt_PT']['WidgetEditor.ss']['DELETE'] = 'Apagar';
 
-?>

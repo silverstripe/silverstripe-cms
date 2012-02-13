@@ -503,4 +503,3 @@ $lang['pl_PL']['WidgetAreaEditor.ss']['NOAVAIL'] = 'Aktualnie nie są dostępne 
 $lang['pl_PL']['WidgetAreaEditor.ss']['TOADD'] = 'Aby dodać widgety, przeciągnij je z lewej strony tutaj';
 $lang['pl_PL']['WidgetEditor.ss']['DELETE'] = 'Usuń';
 
-?>

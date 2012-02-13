@@ -405,4 +405,3 @@ $lang['en_GB']['WidgetAreaEditor.ss']['NOAVAIL'] = 'There are currently no widge
 $lang['en_GB']['WidgetAreaEditor.ss']['TOADD'] = 'To add widgets, drag them from the left area to here.';
 $lang['en_GB']['WidgetEditor.ss']['DELETE'] = 'Delete';
 
-?>

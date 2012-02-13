@@ -432,4 +432,3 @@ $lang['lt_LT']['WidgetAreaEditor.ss']['NOAVAIL'] = 'Nėra galimų widgets';
 $lang['lt_LT']['WidgetAreaEditor.ss']['TOADD'] = 'Norėdami pridėti widgets, tempkite juos iš kairės pusės į čia.';
 $lang['lt_LT']['WidgetEditor.ss']['DELETE'] = 'Ištrinti';
 
-?>

@@ -403,4 +403,3 @@ $lang['tr_TR']['WidgetAreaEditor.ss']['NOAVAIL'] = 'Şu anda herhangi bir widget
 $lang['tr_TR']['WidgetAreaEditor.ss']['TOADD'] = 'Widget ları eklemek için, sol taraftan bu alana sürükleyiniz';
 $lang['tr_TR']['WidgetEditor.ss']['DELETE'] = 'Sil';
 
-?>
