@@ -396,4 +396,3 @@ $lang['hu_HU']['WidgetAreaEditor.ss']['NOAVAIL'] = 'Nincs elérhető eszköz.';
 $lang['hu_HU']['WidgetAreaEditor.ss']['TOADD'] = 'Eszközök hozzáadásához húzza őket ide a bal oldalról.';
 $lang['hu_HU']['WidgetEditor.ss']['DELETE'] = 'Törlés';
 
-?>

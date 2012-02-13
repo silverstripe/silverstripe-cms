@@ -432,4 +432,3 @@ $lang['nl_NL']['WidgetAreaEditor.ss']['NOAVAIL'] = 'Er zijn momenteel geen widge
 $lang['nl_NL']['WidgetAreaEditor.ss']['TOADD'] = 'Om widgets toe te voegen, sleep ze van de linkerkant naar hier.';
 $lang['nl_NL']['WidgetEditor.ss']['DELETE'] = 'Verwijder';
 
-?>

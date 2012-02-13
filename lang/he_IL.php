@@ -406,4 +406,3 @@ $lang['he_IL']['WidgetAreaEditor.ss']['NOAVAIL'] = 'לא קיימים וויג\'
 $lang['he_IL']['WidgetAreaEditor.ss']['TOADD'] = 'על מנת להוסיף וויג\'טים, יש לגרור אותם מהעמודה מימין לכאן';
 $lang['he_IL']['WidgetEditor.ss']['DELETE'] = 'מחק';
 
-?>

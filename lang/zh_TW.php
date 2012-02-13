@@ -220,4 +220,3 @@ $lang['zh_TW']['ViewArchivedEmail.ss']['CANACCESS'] = '您可以利用哲格連�
 $lang['zh_TW']['ViewArchivedEmail.ss']['HAVEASKED'] = '您要瀏覽這一天的網站內容：';
 $lang['zh_TW']['WaitingOn.ss']['ATO'] = '配給';
 
-?>

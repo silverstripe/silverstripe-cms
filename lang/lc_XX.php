@@ -229,4 +229,3 @@ $lang['lc_XX']['ViewArchivedEmail.ss']['CANACCESS'] = 'U CAN ACCES TEH ARCHIVD S
 $lang['lc_XX']['ViewArchivedEmail.ss']['HAVEASKED'] = 'YOUZ HAVE ASKED 2 VIEW TEH CONTENT OV OUR SITE ON';
 $lang['lc_XX']['WaitingOn.ss']['ATO'] = 'ASSIGND 2';
 
-?>
