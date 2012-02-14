@@ -41,21 +41,12 @@ class Folder_UnusedAssetsField extends CompositeField {
 	/**
      * Creates table for displaying unused files.
      *
-     * @returns AssetTableField
+     * @return GridField
      */
 	protected function getAssetList() {
 		$where = $this->folder->getUnusedFilesListFilter();
-        $assetList = new AssetTableField(
-            $this->folder,
-            "AssetList",
-            "File", 
-			array("Title" => _t('Folder.TITLE', "Title"), "LinkedURL" => _t('Folder.FILENAME', "Filename")), 
-            "",
-            $where
-        );
-		$assetList->setPopupCaption(_t('Folder.VIEWASSET', "View Asset"));
-        $assetList->setPermissions(array("show","delete"));
-        $assetList->Markable = false;
-        return $assetList;
+		$files = DataList::create('File')->where($where);
+		$field = new GridField('AssetList', false, $files);
+		return $field;
 	}
 }
