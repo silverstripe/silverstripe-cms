@@ -507,7 +507,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$form->addExtraClass('cms-edit-form');
 			$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 			// TODO Can't merge $FormAttributes in template at the moment
-			$form->addExtraClass('cms-content center ss-tabset ' . $this->BaseCSSClasses());
+			$form->addExtraClass('center ss-tabset ' . $this->BaseCSSClasses());
 			if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 
 			if(!$record->canEdit() || $record->IsDeletedFromStage) {
