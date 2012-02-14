@@ -37,4 +37,8 @@ class CMSPagesController extends CMSMain {
 	function PreviewLink() {
 		return false;
 	}
+
+	public function currentPageID() {
+		return false;
+	}
 }
