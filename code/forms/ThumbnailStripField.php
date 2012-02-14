@@ -9,6 +9,19 @@
 class ThumbnailStripField extends FormField {
 	protected $parentField;
 	protected $updateMethod;
+	
+	/**
+	 * Make default image width & height configurable
+	 * @param int $size
+	 */
+	protected static $default_image_width = 600;
+	public static function set_default_image_width($size = 600) {
+	    self::$default_image_width = $size;
+	}
+	protected static $default_image_height = 600;
+	public static function set_default_image_height($size = 600) {
+	    self::$default_image_height = $size;
+	}
 
 	/**
 	 * If this is enabled, then ommitting a folderID when calling getimages will search ALL folders.
@@ -106,17 +119,17 @@ class ThumbnailStripField extends FormField {
 				$thumbnail = $image->getFormattedImage('StripThumbnail');
 				
 				if ($thumbnail instanceof Image_Cached) {       //Hack here...
-					// Constrain the output image to a 600x600 square.  This is passed to the destwidth/destheight in the class, which are then used to
+					// Constrain the output image to a widthxheight square.  This is passed to the destwidth/destheight in the class, which are then used to
 					// set width & height properties on the <img> tag inserted into the CMS.  Resampling is done after save
 					$width = $image->Width;
 					$height = $image->Height;
-					if($width > 600) {
-						$height *= (600 / $width);
-						$width = 600;
+					if($width > self::$default_image_width) {
+						$height *= (self::$default_image_width / $width);
+						$width = self::$default_image_width;
 					}
-					if($height > 600) {
-						$width *= (600 / $height);
-						$height = 600;
+					if($height > self::$default_image_height) {
+						$width *= (self::$default_image_height / $height);
+						$height = self::$default_image_height;
 					}
 					
 					$result .= 
