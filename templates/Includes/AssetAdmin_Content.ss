@@ -2,7 +2,9 @@
 
 	<div class="cms-content-header north">
 		<div>
-			<h2><% _t('AssetAdmin.Title', 'Find &amp; Organize') %></h2>
+			<h2>
+				<% include CMSBreadcrumbs %>
+			</h2>
 			<div class="cms-content-header-tabs">
 				<ul>
 					<li>

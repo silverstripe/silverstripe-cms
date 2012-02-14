@@ -221,4 +221,23 @@ class CMSMainTest extends FunctionalTest {
 		// TODO Logout
 		$this->session()->inst_set('loggedInAs', NULL);
 	}
+
+	function testBreadcrumbs() {
+		$page3 = $this->objFromFixture('Page', 'page3');		
+		$page31 = $this->objFromFixture('Page', 'page31');		
+		$adminuser = $this->objFromFixture('Member', 'admin');
+		$this->session()->inst_set('loggedInAs', $adminuser->ID);
+
+		$response = $this->get('admin/page/edit/show/' . $page31->ID);
+		$parser = new CSSContentParser($response->getBody());
+		$crumbs = $parser->getBySelector('#page-title-heading .crumb');
+
+		$this->assertNotNull($crumbs);
+		$this->assertEquals(3, count($crumbs));
+		$this->assertEquals('Pages', (string)$crumbs[0]);
+		$this->assertEquals('Page 3', (string)$crumbs[1]);
+		$this->assertEquals('Page 3.1', (string)$crumbs[2]);
+
+		$this->session()->inst_set('loggedInAs', null);
+	}
 }
