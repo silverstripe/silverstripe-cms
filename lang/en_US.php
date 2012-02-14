@@ -430,7 +430,7 @@ $lang['en_US']['SiteTree']['TABMETA'] = 'Metadata';
 $lang['en_US']['SiteTree']['TOPLEVEL'] = 'Site Content (Top Level)';
 $lang['en_US']['SiteTree']['TOPLEVELCREATORGROUPS'] = 'Top level creators';
 $lang['en_US']['SiteTree']['URLSegment'] = array(
-	'URL Segment',
+	'URL',
 	PR_MEDIUM,
 	'URL for this page'
 );
