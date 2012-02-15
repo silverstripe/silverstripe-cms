@@ -72,6 +72,36 @@ JS
 		
 		CMSBatchActionHandler::register('delete', 'AssetAdmin_DeleteBatchAction', 'Folder');
 	}
+
+	public function getEditForm($id = null, $fields = null) {
+		$form = parent::getEditForm($id, $fields);
+
+		$fields = $form->Fields();
+		$fields->findOrMakeTab('Root.TreeView', _t('AssetAdmin.TreeView', 'Tree View'));
+		$fields->addFieldToTab('Root.TreeView',
+			// TODO Replace with lazy loading on client to avoid performance hit of rendering potentially unused views
+			new LiteralField(
+				'Tree',
+				FormField::createTag(
+					'div', 
+					array(
+						'class' => 'cms-tree', 
+						'data-url' => $this->Link('getsubtree'), 
+						'data-url-savetreenode' => $this->Link('savetreenode')
+					),
+					$this->SiteTreeAsUL()
+				)
+			)
+		);
+
+		$form->addExtraClass('cms-edit-form');
+		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
+		// TODO Can't merge $FormAttributes in template at the moment
+		$form->addExtraClass('center ss-tabset ' . $this->BaseCSSClasses());
+		if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
+
+		return $form;
+	}
 	
 	public function AddForm() {
 		$form = parent::AddForm();

@@ -35,11 +35,14 @@ class CMSFileAddController extends AssetAdmin {
 		}
 
 		$form = new Form($this, 'getEditForm', new FieldList($uploadField), new FieldList());
-		$form->addExtraClass('cms-content center cms-edit-form ' . $this->BaseCSSClasses());
+		$form->addExtraClass('center cms-edit-form ' . $this->BaseCSSClasses());
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 
 		return $form;
 	}
 
+	function Tools() {
+		return false;
+	}
 
 }
