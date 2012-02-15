@@ -144,6 +144,13 @@ JS
 			return $this->redirect(Controller::join_links($this->Link('show'), $record->ID));
 		}
 	}
+	
+	function EditForm($request = null) {
+		$form = parent::EditForm($request);
+		// This is for the layout manager
+		$form->addExtraClass("center");
+		return $form;
+	}
 
 	/**
 	 * Custom currentPage() method to handle opening the 'root' folder

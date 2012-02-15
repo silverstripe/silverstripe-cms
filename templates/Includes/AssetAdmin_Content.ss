@@ -7,15 +7,11 @@
 			</h2>
 			<div class="cms-content-header-tabs">
 				<ul>
+          <% loop EditForm.FieldMap.Root.Children %>
 					<li>
-						<a href="#cms-content-listview"><% _t('AssetAdmin.ListView', 'List View') %></a>
+						<a href="#cms-content-$Name">$Title</a>
 					</li>
-					<li>
-						<a href="#cms-content-galleryview"><% _t('AssetAdmin.GalleryView', 'Gallery View') %></a>
-					</li>
-					<li>
-						<a href="#cms-content-treeview"><% _t('AssetAdmin.TreeView', 'Tree View') %></a>
-					</li>
+  				<% end_loop %>
 				</ul>
 			</div>
 		</div>
@@ -35,17 +31,25 @@
 		</div>
 		
 	</div>
-
-	<div class="cms-content-fields center">
-		<div id="cms-content-listview">
-			$EditForm
+	
+	<% with EditForm %>
+	<form $FormAttributes>
+	<div class="cms-content-fields">
+	  <% loop FieldMap.Root.Children %>
+		<div id="cms-content-$Name">
+			<fieldset>
+			<% if Tabs %>
+			$FieldHolder
+			<% else %>
+			<% loop Fields %>
+			$FieldHolder
+			<% end_loop %>
+			<% end_if %>
+			</fieldset>
 		</div>
-		<div id="cms-content-treeview">
-			<i>Not implemented yet</i>
-		</div>
-		<div id="cms-content-galleryview">
-			<i>Not implemented yet</i>
-		</div>
+		<% end_loop %>
 	</div>
+	</form>
+	<% end_with %>
 	
 </div>
