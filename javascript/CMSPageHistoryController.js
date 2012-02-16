@@ -57,9 +57,8 @@
 	
 				if(!id) return false;
 
-				var button, url, selected, to, from, compare, data, metadata;
+				var button, url, selected, to, from, compare, data;
 				
-				metadata = this.metadata({type: 'class'}); 
 				compare = (this.find(":input[name=CompareMode]").is(":checked"));
 				selected = this.find("table input[type=checkbox]").filter(":checked");
 				
@@ -69,12 +68,12 @@
 					to = selected.eq(0).val();
 					from = selected.eq(1).val();
 					button = this.find(':submit[name=action_doCompare]');
-					url = ss.i18n.sprintf(metadata['link-tmpl-compare'], id,from,to);
+					url = ss.i18n.sprintf(this.data('linkTmplCompare'), id,from,to);
 				}
 				else {
 					to = selected.eq(0).val();
 					button = this.find(':submit[name=action_doShowVersion]');
-					url = ss.i18n.sprintf(metadata['link-tmpl-show'], id,to);
+					url = ss.i18n.sprintf(this.data('linkTmplShow'), id,to);
 				}
 				
 				$('.cms-container').loadPanel(url, '', {selector: '.cms-edit-form'});

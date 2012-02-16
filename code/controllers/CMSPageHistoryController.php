@@ -221,11 +221,10 @@ class CMSPageHistoryController extends CMSMain {
 		$hiddenID->setValue($id);
 		$form->unsetValidator();
 		
-		$form->addExtraClass('cms-versions-form'); // placeholder, necessary for $.metadata() to work
-		$form->addExtraClass(Convert::raw2json(array(
-			'link-tmpl-compare' => Controller::join_links($this->Link('compare'), '%s', '%s', '%s'),
-			'link-tmpl-show' => Controller::join_links($this->Link('show'), '%s', '%s'),
-		)));
+		$form
+			->addExtraClass('cms-versions-form') // placeholder, necessary for $.metadata() to work
+			->setAttribute('data-link-tmpl-compare', Controller::join_links($this->Link('compare'), '%s', '%s', '%s'))
+			->setAttribute('data-link-tmpl-show', Controller::join_links($this->Link('show'), '%s', '%s'));
 		
 		return $form;
 	}
