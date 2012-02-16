@@ -83,7 +83,7 @@ class CMSPageHistoryController extends CMSMain {
 		$form = parent::getEditForm($record, ($record) ? $record->getCMSFields() : null);
 
 		$form->setActions(new FieldList(
-			$revert = new FormAction('doRollback', _t('CMSPageHistoryController.REVERTTOTHISVERSION', 'Revert to this version'))
+			$revert = FormAction::create('doRollback', _t('CMSPageHistoryController.REVERTTOTHISVERSION', 'Revert to this version'))->setUseButtonTag(true)
 		));
 		
 		$fields = $form->Fields();
@@ -190,31 +190,38 @@ class CMSPageHistoryController extends CMSMain {
 			))->renderWith('CMSPageHistoryController_versions');
 		}
 
+		$fields = new FieldList(
+			new CheckboxField(
+				'ShowUnpublished',
+				_t('CMSPageHistoryController.SHOWUNPUBLISHED','Show unpublished versions'),
+				$showUnpublishedChecked
+			),
+			new CheckboxField(
+				'CompareMode',
+				_t('CMSPageHistoryController.COMPAREMODE', 'Compare mode (select two)'),
+				$compareModeChecked
+			),
+			new LiteralField('VersionsHtml', $versionsHtml),
+			$hiddenID = new HiddenField('ID', false, "")
+		);
+
+		$actions = new FieldList(
+			new FormAction(
+				'doCompare', _t('CMSPageHistoryController.COMPAREVERSIONS','Compare Versions')
+			),
+			new FormAction(
+				'doShowVersion', _t('CMSPageHistoryController.SHOWVERSION','Show Version') 
+			)
+		);
+
+		// Use <button> to allow full jQuery UI styling
+		foreach($actions->dataFields() as $action) $action->setUseButtonTag(true);
+
 		$form = new Form(
 			$this,
 			'VersionsForm',
-			new FieldList(
-				new CheckboxField(
-					'ShowUnpublished',
-					_t('CMSPageHistoryController.SHOWUNPUBLISHED','Show unpublished versions'),
-					$showUnpublishedChecked
-				),
-				new CheckboxField(
-					'CompareMode',
-					_t('CMSPageHistoryController.COMPAREMODE', 'Compare mode (select two)'),
-					$compareModeChecked
-				),
-				new LiteralField('VersionsHtml', $versionsHtml),
-				$hiddenID = new HiddenField('ID', false, "")
-			),
-			new FieldList(
-				new FormAction(
-					'doCompare', _t('CMSPageHistoryController.COMPAREVERSIONS','Compare Versions')
-				),
-				new FormAction(
-					'doShowVersion', _t('CMSPageHistoryController.SHOWVERSION','Show Version') 
-				)
-			)
+			$fields,
+			$actions
 		);
 		
 		$form->loadDataFrom($this->request->requestVars());

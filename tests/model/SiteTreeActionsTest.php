@@ -39,15 +39,15 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$page->write();
 		$page->doPublish();
 	
-		$actionsArr = $page->getCMSActions()->column('Name');
+		$actions = $page->getCMSActions();
 	
-		$this->assertNotContains('action_save',$actionsArr);
-		$this->assertNotContains('action_publish',$actionsArr);
-		$this->assertNotContains('action_unpublish',$actionsArr);
-		$this->assertNotContains('action_delete',$actionsArr);
-		$this->assertNotContains('action_deletefromlive',$actionsArr);
-		$this->assertNotContains('action_rollback',$actionsArr);
-		$this->assertNotContains('action_revert',$actionsArr);
+		$this->assertNull($actions->dataFieldByName('action_save'));
+		$this->assertNull($actions->dataFieldByName('action_publish'));
+		$this->assertNull($actions->dataFieldByName('action_unpublish'));
+		$this->assertNull($actions->dataFieldByName('action_delete'));
+		$this->assertNull($actions->dataFieldByName('action_deletefromlive'));
+		$this->assertNull($actions->dataFieldByName('action_rollback'));
+		$this->assertNull($actions->dataFieldByName('action_revert'));
 	}
 	
 	function testActionsNoDeletePublishedRecord() {
@@ -70,13 +70,13 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$editor = $this->objFromFixture('Member', 'cmsnodeleteeditor');
 		$this->session()->inst_set('loggedInAs', $editor->ID);
 
-		$actionsArr = $page->getCMSActions()->column('Name');
-		$this->assertNotContains('action_deletefromlive',$actionsArr);
+		$actions = $page->getCMSActions();
+		$this->assertNull($actions->dataFieldByName('action_deletefromlive'));
 
 		// Check that someone with the right permission can delete the page
  		$this->objFromFixture('Member', 'cmseditor')->logIn();
-		$actionsArr = $page->getCMSActions()->column('Name');
-		$this->assertContains('action_deletefromlive',$actionsArr);
+		$actions = $page->getCMSActions();
+		$this->assertNotNull($actions->dataFieldByName('action_deletefromlive'));
 	}
 
 	function testActionsPublishedRecord() {
@@ -90,15 +90,15 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$page->write();
 		$page->doPublish();
 
-		$actionsArr = $page->getCMSActions()->column('Name');
+		$actions = $page->getCMSActions();
 	
-		$this->assertContains('action_save',$actionsArr);
-		$this->assertContains('action_publish',$actionsArr);
-		$this->assertContains('action_unpublish',$actionsArr);
-		$this->assertContains('action_delete',$actionsArr);
-		$this->assertNotContains('action_deletefromlive',$actionsArr);
-		$this->assertNotContains('action_rollback',$actionsArr);
-		$this->assertNotContains('action_revert',$actionsArr);
+		$this->assertNotNull($actions->dataFieldByName('action_save'));
+		$this->assertNotNull($actions->dataFieldByName('action_publish'));
+		$this->assertNotNull($actions->dataFieldByName('action_unpublish'));
+		$this->assertNotNull($actions->dataFieldByName('action_delete'));
+		$this->assertNull($actions->dataFieldByName('action_deletefromlive'));
+		$this->assertNull($actions->dataFieldByName('action_rollback'));
+		$this->assertNull($actions->dataFieldByName('action_revert'));
 	}
 	
 	function testActionsDeletedFromStageRecord() {
@@ -118,15 +118,15 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$page = Versioned::get_one_by_stage("SiteTree", "Live", "\"SiteTree\".\"ID\" = $pageID");
 		$this->assertType('SiteTree', $page);
 		
-		$actionsArr = $page->getCMSActions()->column('Name');
+		$actions = $page->getCMSActions();
 		
-		$this->assertNotContains('action_save',$actionsArr);
-		$this->assertNotContains('action_publish',$actionsArr);
-		$this->assertNotContains('action_unpublish',$actionsArr);
-		$this->assertNotContains('action_delete',$actionsArr);
-		$this->assertContains('action_deletefromlive',$actionsArr);
-		$this->assertNotContains('action_rollback',$actionsArr);
-		$this->assertContains('action_revert',$actionsArr);
+		$this->assertNull($actions->dataFieldByName('action_save'));
+		$this->assertNull($actions->dataFieldByName('action_publish'));
+		$this->assertNull($actions->dataFieldByName('action_unpublish'));
+		$this->assertNull($actions->dataFieldByName('action_delete'));
+		$this->assertNotNull($actions->dataFieldByName('action_deletefromlive'));
+		$this->assertNull($actions->dataFieldByName('action_rollback'));
+		$this->assertNotNull($actions->dataFieldByName('action_revert'));
 	}
 	
 	function testActionsChangedOnStageRecord() {
@@ -143,15 +143,14 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$page->write();
 		$page->flushCache();
 		
-		$actionsArr = $page->getCMSActions()->column('Name');
-		
-		$this->assertContains('action_save',$actionsArr);
-		$this->assertContains('action_publish',$actionsArr);
-		$this->assertContains('action_unpublish',$actionsArr);
-		$this->assertContains('action_delete',$actionsArr);
-		$this->assertNotContains('action_deletefromlive',$actionsArr);
-		$this->assertContains('action_rollback',$actionsArr);
-		$this->assertNotContains('action_revert',$actionsArr);
+		$actions = $page->getCMSActions();
+		$this->assertNotNull($actions->dataFieldByName('action_save'));
+		$this->assertNotNull($actions->dataFieldByName('action_publish'));
+		$this->assertNotNull($actions->dataFieldByName('action_unpublish'));
+		$this->assertNotNull($actions->dataFieldByName('action_delete'));
+		$this->assertNull($actions->dataFieldByName('action_deletefromlive'));
+		$this->assertNotNull($actions->dataFieldByName('action_rollback'));
+		$this->assertNull($actions->dataFieldByName('action_revert'));
 	}
 
 	function testActionsViewingOldVersion() {
@@ -164,13 +163,13 @@ class SiteTreeActionsTest extends FunctionalTest {
 		// Looking at the old version, the ability to rollback to that version is available
 		$version = DB::query('SELECT "Version" FROM "SiteTree_versions" WHERE "Content" = \'test page first version\'')->value();
 		$old = Versioned::get_version('Page', $p->ID, $version);
-		$actions = $old->getCMSActions()->column('Name');
-		$this->assertNotContains('action_save', $actions);
-		$this->assertNotContains('action_publish', $actions);
-		$this->assertNotContains('action_unpublish', $actions);
-		$this->assertNotContains('action_delete', $actions);
-		$this->assertContains('action_email', $actions);
-		$this->assertContains('action_rollback', $actions);
+		$actions = $old->getCMSActions();
+		$this->assertNull($actions->dataFieldByName('action_save'));
+		$this->assertNull($actions->dataFieldByName('action_publish'));
+		$this->assertNull($actions->dataFieldByName('action_unpublish'));
+		$this->assertNull($actions->dataFieldByName('action_delete'));
+		$this->assertNotNull($actions->dataFieldByName('action_email'));
+		$this->assertNotNull($actions->dataFieldByName('action_rollback'));
 	}
 
 }

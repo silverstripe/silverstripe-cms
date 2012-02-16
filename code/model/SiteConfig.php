@@ -129,13 +129,13 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	function getCMSActions() {
 		if (Permission::check('ADMIN') || Permission::check('EDIT_SITECONFIG')) {
 			$actions = new FieldList(
-				$saveAction = new FormAction('save_siteconfig', _t('CMSMain.SAVE','Save'))
+				FormAction::create('save_siteconfig', _t('CMSMain.SAVE','Save'))
+					->addExtraClass('ss-ui-action-constructive')->setAttribute('data-icon', 'accept')
 			);
 		} else {
 			$actions = new FieldList();
 		}
 		
-		$saveAction->addExtraClass('ss-ui-action-constructive');
 		$this->extend('updateCMSActions', $actions);
 		
 		return $actions;

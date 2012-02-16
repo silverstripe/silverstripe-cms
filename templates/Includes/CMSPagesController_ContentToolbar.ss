@@ -13,7 +13,7 @@
 </div>
 
 <div class="cms-actions-row">
-	<a class="ss-ui-button ss-ui-action-constructive icon-add" href="#cms-page-add-form"><% _t('CMSMain.AddNewButton', 'Add new') %></a>
+	<a class="ss-ui-button ss-ui-action-constructive" data-icon="add" href="#cms-page-add-form"><% _t('CMSMain.AddNewButton', 'Add new') %></a>
 </div>
 
 <div class="cms-content-batchactions">

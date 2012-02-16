@@ -2041,13 +2041,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return FieldList The available actions for this page.
 	 */
 	function getCMSActions() {
-		$actions = new FieldList();
-		
+		$minorActions = Object::create('CompositeField')->setTag('fieldset')->addExtraClass('ss-ui-buttonset');
+		$actions = new FieldList($minorActions);
+
 		// "readonly"/viewing version that isn't the current version of the record
 		$stageOrLiveRecord = Versioned::get_one_by_stage($this->class, Versioned::current_stage(), sprintf('"SiteTree"."ID" = %d', $this->ID));
 		if($stageOrLiveRecord && $stageOrLiveRecord->Version != $this->Version) {
-			$actions->push(new FormAction('email', _t('CMSMain.EMAIL', 'Email')));
-			$actions->push(new FormAction('rollback', _t('CMSMain.ROLLBACK', 'Roll back to this version')));
+			$minorActions->push(FormAction::create('email', _t('CMSMain.EMAIL', 'Email')));
+			$minorActions->push(FormAction::create('rollback', _t('CMSMain.ROLLBACK', 'Roll back to this version')));
 
 			// getCMSActions() can be extended with updateCMSActions() on a extension
 			$this->extend('updateCMSActions', $actions);
@@ -2057,22 +2058,21 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		if($this->isPublished() && $this->canPublish() && !$this->IsDeletedFromStage && $this->canDeleteFromLive()) {
 			// "unpublish"
-			$unpublish = FormAction::create('unpublish', _t('SiteTree.BUTTONUNPUBLISH', 'Unpublish'), 'delete');
-			$unpublish->describe(_t('SiteTree.BUTTONUNPUBLISHDESC', 'Remove this page from the published site'));
-			$unpublish->addExtraClass('unpublish');
-			$unpublish->addExtraClass('ss-ui-action-destructive');
-			$unpublish->setAttribute('buttonset', 'minoractions');
-			$actions->push($unpublish);
+			$minorActions->push(
+				FormAction::create('unpublish', _t('SiteTree.BUTTONUNPUBLISH', 'Unpublish'), 'delete')
+					->describe(_t('SiteTree.BUTTONUNPUBLISHDESC', 'Remove this page from the published site'))
+					->addExtraClass('ss-ui-action-destructive')->setAttribute('data-icon', 'unpublish')
+			);
 		}
 
 		if($this->stagesDiffer('Stage', 'Live') && !$this->IsDeletedFromStage) {
 			if($this->isPublished() && $this->canEdit())	{
 				// "rollback"
-				$rollback = FormAction::create('rollback', _t('SiteTree.BUTTONCANCELDRAFT', 'Cancel draft changes'), 'delete');
-				$rollback->describe(_t('SiteTree.BUTTONCANCELDRAFTDESC', 'Delete your draft and revert to the currently published page'));
-				$rollback->addExtraClass('delete');
-				$rollback->setAttribute('buttonset', 'minoractions');
-				$actions->push($rollback);
+				$minorActions->push(
+					FormAction::create('rollback', _t('SiteTree.BUTTONCANCELDRAFT', 'Cancel draft changes'), 'delete')
+						->describe(_t('SiteTree.BUTTONCANCELDRAFTDESC', 'Delete your draft and revert to the currently published page'))
+						->addExtraClass('delete')->setAttribute('data-icon', 'delete')
+				);
 			}
 		}
 
@@ -2080,37 +2080,41 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			if($this->IsDeletedFromStage) {
 				if($this->ExistsOnLive) {
 					// "restore"
-					$actions->push(new FormAction('revert',_t('CMSMain.RESTORE','Restore')));
+					$minorActions->push(FormAction::create('revert',_t('CMSMain.RESTORE','Restore')));
 					if($this->canDelete() && $this->canDeleteFromLive()) {
 						// "delete from live"
-						$actions->push($deleteFromLiveAction = new FormAction('deletefromlive',_t('CMSMain.DELETEFP','Delete')));
-						$deleteFromLiveAction->addExtraClass('ss-ui-action-destructive');
-						$deleteFromLiveAction->setAttribute('buttonset', 'minoractions');
+						$minorActions->push(
+							FormAction::create('deletefromlive',_t('CMSMain.DELETEFP','Delete'))->addExtraClass('ss-ui-action-destructive')
+						);
 					}
 				} else {
 					// "restore"
-					$actions->push(new FormAction('restore',_t('CMSMain.RESTORE','Restore')));
+					$minorActions->push(
+						FormAction::create('restore',_t('CMSMain.RESTORE','Restore'))->setAttribute('data-icon', 'decline')
+					);
 				}
 			} else {
 				if($this->canDelete()) {
 					// "delete"
-					$actions->push($deleteAction = new FormAction('delete',_t('CMSMain.DELETE','Delete draft')));
-					$deleteAction->addExtraClass('delete');
-					$deleteAction->addExtraClass('ss-ui-action-destructive');
-					$deleteAction->setAttribute('buttonset', 'minoractions');
+					$minorActions->push(
+						FormAction::create('delete',_t('CMSMain.DELETE','Delete draft'))->addExtraClass('delete ss-ui-action-destructive')
+							->setAttribute('data-icon', 'decline')
+					);
 				}
 			
 				// "save"
-				$actions->push($saveDraftAction = new FormAction('save',_t('CMSMain.SAVEDRAFT','Save Draft')));
-				$saveDraftAction->addExtraClass('save-draft');
-				$saveDraftAction->setAttribute('buttonset', 'minoractions');
+				$minorActions->push(
+					FormAction::create('save',_t('CMSMain.SAVEDRAFT','Save Draft'))->setAttribute('data-icon', 'addpage')
+				);
 			}
 		}
 
 		if($this->canPublish() && !$this->IsDeletedFromStage) {
 			// "publish"
-			$actions->push($publishAction = new FormAction('publish', _t('SiteTree.BUTTONSAVEPUBLISH', 'Save & Publish')));
-			$publishAction->addExtraClass('ss-ui-action-constructive');
+			$actions->push(
+				FormAction::create('publish', _t('SiteTree.BUTTONSAVEPUBLISH', 'Save & Publish'))
+					->addExtraClass('ss-ui-action-constructive')->setAttribute('data-icon', 'accept')
+			);
 		}
 		
 		// getCMSActions() can be extended with updateCMSActions() on a extension

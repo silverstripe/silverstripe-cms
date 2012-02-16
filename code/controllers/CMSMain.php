@@ -205,10 +205,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$dateTo->setConfig('showcalendar', true);
 
 		$actions = new FieldList(
-			$resetAction = new ResetFormAction('clear', _t('CMSMain_left.ss.CLEAR', 'Clear')),
-			$searchAction = new FormAction('doSearch',  _t('CMSMain_left.ss.SEARCH', 'Search'))
+			Object::create('ResetFormAction', 'clear', _t('CMSMain_left.ss.CLEAR', 'Clear'))
+				->addExtraClass('ss-ui-action-minor'),
+			FormAction::create('doSearch',  _t('CMSMain_left.ss.SEARCH', 'Search'))
 		);
-		$resetAction->addExtraClass('ss-ui-action-minor');
+
+		// Use <button> to allow full jQuery UI styling
+		foreach($actions->dataFields() as $action) $action->setUseButtonTag(true);
 		
 		$form = new Form($this, 'SearchForm', $fields, $actions);
 		$form->setFormMethod('GET');
@@ -493,6 +496,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			} else {
 				$actions = $record->getCMSActions();
 			}
+
+			// Use <button> to allow full jQuery UI styling
+			$actionsFlattened = $actions->dataFields();
+			if($actionsFlattened) foreach($actionsFlattened as $action) $action->setUseButtonTag(true);
 			
 			if($record->hasMethod('getCMSValidator')) {
 				$validator = $record->getCMSValidator();
@@ -534,7 +541,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$siteConfig = SiteConfig::current_site_config();
 		$fields = $siteConfig->getCMSFields();
 
-		$form = new Form($this, 'RootForm', $fields, $siteConfig->getCMSActions());
+		$actions = $siteConfig->getCMSActions();
+		$form = new Form($this, 'RootForm', $fields, $actions);
 		$form->addExtraClass('root-form');
 		$form->addExtraClass('cms-edit-form');
 		// TODO Can't merge $FormAttributes in template at the moment
@@ -543,6 +551,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$form->setHTMLID('Form_EditForm');
 		$form->loadDataFrom($siteConfig);
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
+
+		// Use <button> to allow full jQuery UI styling
+		foreach($actions->dataFields() as $action) $action->setUseButtonTag(true);
 
 		$this->extend('updateEditForm', $form);
 
@@ -899,7 +910,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				new HiddenField('Locale', false, $this->Locale)
 			),
 			new FieldList(
-				new FormAction('doShowSideReport', _t('CMSMain_left.ss.GO','Go'))
+				FormAction::create('doShowSideReport', _t('CMSMain_left.ss.GO','Go'))->setUseButtonTag(true)
 			)
 		);
 		$form->unsetValidator();
@@ -1110,10 +1121,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		$actions = new FieldList(
 			// $resetAction = new ResetFormAction('doCancel', _t('CMSMain.Cancel', 'Cancel')),
-			$createAction = new FormAction("doAdd", _t('CMSMain.Create',"Create"))
+			FormAction::create("doAdd", _t('CMSMain.Create',"Create"))
+				->addExtraClass('ss-ui-action-constructive')->setAttribute('data-icon', 'accept')
+				->setUseButtonTag(true)
 		);
-		// $resetAction->addExtraClass('ss-ui-action-destructive');
-		$createAction->addExtraClass('ss-ui-action-constructive');
 		
 		$this->extend('updatePageOptions', $fields);
 		
