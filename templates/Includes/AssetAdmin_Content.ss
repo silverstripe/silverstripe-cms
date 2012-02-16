@@ -8,13 +8,13 @@
 			<div class="cms-content-header-tabs">
 				<ul>
 					<li>
-						<a href="#cms-content-listview"><% _t('AssetAdmin.ListView', 'List View') %></a>
+						<a href="#cms-content-listview" class="content-listview"><% _t('AssetAdmin.ListView', 'List View') %></a>
 					</li>
 					<li>
-						<a href="#cms-content-galleryview"><% _t('AssetAdmin.GalleryView', 'Gallery View') %></a>
+						<a href="#cms-content-galleryview" class="content-galleryview"><% _t('AssetAdmin.GalleryView', 'Gallery View') %></a>
 					</li>
 					<li>
-						<a href="#cms-content-treeview"><% _t('AssetAdmin.TreeView', 'Tree View') %></a>
+						<a href="#cms-content-treeview" class="content-treeview"><% _t('AssetAdmin.TreeView', 'Tree View') %></a>
 					</li>
 				</ul>
 			</div>
