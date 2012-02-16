@@ -9,13 +9,13 @@
 			<div class="cms-content-header-tabs">
 				<ul>
 					<li>
-						<a href="#cms-content-treeview"><% _t('CMSPagesController.TreeView', 'Tree View') %></a>
+						<a href="#cms-content-treeview" class="content-treeview"><% _t('CMSPagesController.TreeView', 'Tree View') %></a>
 					</li>
 					<li>
-						<a href="#cms-content-galleryview"><% _t('CMSPagesController.GalleryView', 'Gallery View') %></a>
+						<a href="#cms-content-galleryview" class="content-galleryview"><% _t('CMSPagesController.GalleryView', 'Gallery View') %></a>
 					</li>
 					<li>
-						<a href="#cms-content-listview"><% _t('CMSPagesController.ListView', 'List View') %></a>
+						<a href="#cms-content-listview" class="content-listview"><% _t('CMSPagesController.ListView', 'List View') %></a>
 					</li>
 				</ul>
 			</div>
