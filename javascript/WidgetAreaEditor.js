@@ -1,3 +1,6 @@
+// Shortcut-function (until we update to Prototye v1.5)
+if(typeof $$ != "Function") $$ = document.getElementsBySelector;
+
 /**
  * File: WidgetAreaEditor.js
  */
@@ -10,9 +13,9 @@ WidgetAreaEditorClass.prototype = {
 	initialize: function() {
 		this.name = this.getAttribute('name');
 		this.rewriteWidgetAreaAttributes();
-		UsedWidget.applyToChildren($('usedWidgets-'+this.name), 'div.Widget');
+		UsedWidget.applyToChildren(document.getElementById('usedWidgets-'+this.name), 'div.Widget');
 
-		var availableWidgets = $('availableWidgets-'+this.name).childNodes;
+		var availableWidgets = document.getElementById('availableWidgets-'+this.name).childNodes;
 		
 		for(var i = 0; i < availableWidgets.length; i++) {
 			var widget = availableWidgets[i];
@@ -42,7 +45,7 @@ WidgetAreaEditorClass.prototype = {
 		// Figure out maxid, this is used when creating new widgets
 		this.maxid = 0;
 		
-		var usedWidgets = $('usedWidgets-'+this.name).childNodes;
+		var usedWidgets = document.getElementById('usedWidgets-'+this.name).childNodes;
 		for(var i = 0; i < usedWidgets.length; i++) {
 			var widget = usedWidgets[i];
 			if(widget.id) {
@@ -92,7 +95,7 @@ WidgetAreaEditorClass.prototype = {
 	
 	beforeSave: function() {
 		// Ensure correct sort values are written when page is saved
-		var usedWidgets = $('usedWidgets-'+this.name);
+		var usedWidgets = document.getElementById('usedWidgets-'+this.name);
 		
 		if(usedWidgets) {
 			this.sortWidgets();
@@ -111,8 +114,8 @@ WidgetAreaEditorClass.prototype = {
 	
 	addWidget: function(className, holder) {
 		
-		if ($('WidgetAreaEditor-'+holder).getAttribute('maxwidgets')) {
-			var maxCount = $('WidgetAreaEditor-'+holder).getAttribute('maxwidgets');
+		if (document.getElementById('WidgetAreaEditor-'+holder).getAttribute('maxwidgets')) {
+			var maxCount = document.getElementById('WidgetAreaEditor-'+holder).getAttribute('maxwidgets');
 			var count = $$('#usedWidgets-'+holder+' .Widget').length;
 			if (count+1 > maxCount) {
 				alert(ss.i18n._t('WidgetAreaEditor.TOOMANY'));
@@ -124,7 +127,7 @@ WidgetAreaEditorClass.prototype = {
 		this.name = holder;
 		jQuery.ajax({
 			'url': 'Widget_Controller/EditableSegment/' + className, 
-			'success' : $('usedWidgets-'+holder).parentNode.parentNode.insertWidgetEditor.bind(this)
+			'success' : document.getElementById('usedWidgets-'+holder).parentNode.parentNode.insertWidgetEditor.bind(this)
 		});
 	},
 
@@ -143,7 +146,7 @@ WidgetAreaEditorClass.prototype = {
 		// This is called when an available widgets is dragged over to used widgets.
 		// It inserts the editor form into the new used widget
 
-		var usedWidgets = $('usedWidgets-'+this.name).childNodes;
+		var usedWidgets = document.getElementById('usedWidgets-'+this.name).childNodes;
 		for(var i = 0; i < usedWidgets.length; i++) {
 			var widget = usedWidgets[i];
 			if(widget.id && (widget.id.indexOf("Widget[") != 0) && (widget.id != 'NoWidgets-'+this.name)) {
@@ -154,7 +157,7 @@ WidgetAreaEditorClass.prototype = {
 				jQuery.ajax({
 					'url': 'Widget_Controller/EditableSegment/' + wIdArray.join('-'),
 					'success' : function() {
-						$('usedWidgets-'+self.name).parentNode.parentNode.insertWidgetEditor();
+						document.getElementById('usedWidgets-'+self.name).parentNode.parentNode.insertWidgetEditor();
 					}
 				});
 			}
@@ -163,18 +166,18 @@ WidgetAreaEditorClass.prototype = {
 	
 	insertWidgetEditor: function(response) {
 		// Remove placeholder text
-		if($('NoWidgets-'+this.name)) {
-			$('usedWidgets-'+this.name).removeChild($('NoWidgets-'+this.name));
+		if(document.getElementById('NoWidgets-'+this.name)) {
+			document.getElementById('usedWidgets-'+this.name).removeChild(document.getElementById('NoWidgets-'+this.name));
 		}
 
-		var usedWidgets = $('usedWidgets-'+this.name).childNodes;
+		var usedWidgets = document.getElementById('usedWidgets-'+this.name).childNodes;
 		
 		// Give the widget a unique id
-		widgetContent = response.responseText.replace(/Widget\[0\]/gi, "Widget[new-" + (++$('usedWidgets-'+this.name).parentNode.parentNode.maxid) + "]");
-		new Insertion.Top($('usedWidgets-'+this.name), widgetContent);
+		widgetContent = response.responseText.replace(/Widget\[0\]/gi, "Widget[new-" + (++document.getElementById('usedWidgets-'+this.name).parentNode.parentNode.maxid) + "]");
+		new Insertion.Top(document.getElementById('usedWidgets-'+this.name), widgetContent);
 		
-		$('usedWidgets-'+this.name).parentNode.parentNode.rewriteWidgetAreaAttributes();
-		UsedWidget.applyToChildren($('usedWidgets-'+this.name), 'div.Widget');
+		document.getElementById('usedWidgets-'+this.name).parentNode.parentNode.rewriteWidgetAreaAttributes();
+		UsedWidget.applyToChildren(document.getElementById('usedWidgets-'+this.name), 'div.Widget');
 		
 		// Repply some common form controls
 		WidgetTreeDropdownField.applyTo('div.usedWidgets .TreeDropdownField');
@@ -183,13 +186,13 @@ WidgetAreaEditorClass.prototype = {
 			tag: 'div',
 			handle: 'handle',
 			containment: ['availableWidgets-'+this.name, 'usedWidgets-'+this.name],
-			onUpdate: $('usedWidgets-'+this.name).parentNode.parentNode.updateWidgets
+			onUpdate: document.getElementById('usedWidgets-'+this.name).parentNode.parentNode.updateWidgets
 		});
 	},
 	
 	sortWidgets: function() {
 		// Order the sort by the order the widgets are in the list
-		var usedWidgets = $('usedWidgets-'+this.name);
+		var usedWidgets = document.getElementById('usedWidgets-'+this.name);
 		
 		if(usedWidgets) {
 			widgets = usedWidgets.childNodes;
@@ -213,7 +216,7 @@ WidgetAreaEditorClass.prototype = {
 	
 	deleteWidget: function(widgetToRemove) {
 		// Remove a widget from the used widgets column
-		$('usedWidgets-'+this.name).removeChild(widgetToRemove);
+		document.getElementById('usedWidgets-'+this.name).removeChild(widgetToRemove);
 		// TODO ... re-create NoWidgets div?
 	}
 }
@@ -261,7 +264,7 @@ AvailableWidgetHeader.prototype = {
 		parts = this.parentNode.id.split('-');
 		var widgetArea = parts.pop();
 		var className = parts.pop();
-		$('WidgetAreaEditor-'+widgetArea).addWidget(className, widgetArea);
+		document.getElementById('WidgetAreaEditor-'+widgetArea).addWidget(className, widgetArea);
 	}
 }
 AvailableWidgetHeader.applyTo('div.availableWidgets .Widget h3');
