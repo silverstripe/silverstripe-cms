@@ -1,4 +1,4 @@
-<div class="cms-content-tools west">
+<div class="cms-content-tools west" id="cms-content-tools-ReportAdmin">
 	
 	<ul class="ui-widget-content">
 	<% control Reports %>
