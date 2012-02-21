@@ -23,6 +23,17 @@
 	});
 	
 	$.entwine('ss', function($){
+
+		$('#Form_EditForm_File .ss-gridfield-item').entwine({
+			onclick: function(e) {
+				var grid = this.closest('fieldset.ss-gridfield');
+				if(this.data('class') == 'Folder') {
+					var url = grid.data('urlFolderTemplate').replace('%s', this.data('id'));
+					$('.cms-container').loadPanel(url);
+					e.preventDefault();
+				}
+			}
+		});
 		
 		/**
 		 * Class: #Form_SyncForm
@@ -47,7 +58,7 @@
 						var currNode = $('.cms-tree')[0].firstSelected();
 						if(currNode) {
 						  var url = $(currNode).find('a').attr('href');
-        			$('.cms-content').loadForm(url);
+							$('.cms-content').loadForm(url);
 						}
 						$('.cms-tree')[0].setCustomURL('admin/assets/getsubtree');
 						$('.cms-tree')[0].reload({onSuccess: function() {
