@@ -31,6 +31,7 @@ class AssetAdmin extends LeftAndMain {
 		'savefile',
 		'deleteUnusedThumbnails' => 'ADMIN',
 		'SyncForm',
+		'filter',
 	);
 	
 	/**
@@ -101,6 +102,40 @@ JS
 		if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 
 		return $form;
+	}
+	
+	/**
+	 * Returns a form for filtering of files and assets gridfield
+	 *
+	 * @return Form
+	 * @see AssetAdmin.js
+	 */
+	public function FilterForm() {
+		$fields = new FieldList();
+		// Below is the filters that this field should filter on
+		$fields->push(new TextField('Title'));
+		$fields->push(new TextField('ClassName','Type'));
+		
+		$actions = new FieldList();
+		$actions->push(new FormAction('doFilter', 'Filter'));
+		$actions->push(new ResetFormAction('doResetFilter', 'Clear Filter'));
+		
+		$form = new Form($this, 'filter', $fields, $actions);
+		$form->addExtraClass('cms-filter-form');
+		// This have to match data-name attribute on the gridfield so that the javascript selectors work
+		$form->setAttribute('data-gridfield', 'File');
+		return $form;
+	}
+
+	/**
+	 * If this method get's called, it means that javascript didn't hook into to the submit on
+	 * FilterForm and we can currently not do a Filter without javascript.
+	 *
+	 * @param SS_HTTPRequest $data
+	 * @throws SS_HTTPResponse_Exception
+	 */
+	public function filter(SS_HTTPRequest $data) {
+		throw new SS_HTTPResponse_Exception('Filterpanel doesn\'t work without javascript enabled.');
 	}
 	
 	public function AddForm() {
