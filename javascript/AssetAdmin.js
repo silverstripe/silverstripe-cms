@@ -26,7 +26,7 @@
 
 		$('#Form_EditForm_File .ss-gridfield-item').entwine({
 			onclick: function(e) {
-				var grid = this.closest('fieldset.ss-gridfield');
+				var grid = this.closest('.ss-gridfield');
 				if(this.data('class') == 'Folder') {
 					var url = grid.data('urlFolderTemplate').replace('%s', this.data('id'));
 					$('.cms-container').loadPanel(url);
