@@ -1,4 +1,4 @@
-<div class="cms-content-tools west cms-panel cms-panel-layout" data-expandOnClick="true" data-layout="{type: 'border'}" id="cms-content-tools-CMSPageEditController">
+<div class="cms-content-tools west cms-panel cms-panel-layout" data-expandOnClick="true" data-layout-type="border" id="cms-content-tools-CMSPageEditController">
 	<div class="cms-content-header cms-panel-header north">
 		<h2><% _t('CMSPageEditController.Title','Pages') %></h2>
 	</div>

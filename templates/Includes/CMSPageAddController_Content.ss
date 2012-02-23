@@ -1,5 +1,5 @@
 <% with AddForm %>
-	<form $FormAttributes data-layout="{type: 'border'}">
+	<form $FormAttributes data-layout-type="border">
 
 		<div class="cms-content-header north">
 			<div>

@@ -1,4 +1,4 @@
-<div class="cms-content center ss-tabset $BaseCSSClasses" data-layout="{type: 'border'}">
+<div class="cms-content center ss-tabset $BaseCSSClasses" data-layout-type="border">
 
 	<div class="cms-content-header north">
 		<div>
@@ -24,7 +24,7 @@
 
 	$Tools
 
-	<div class="cms-content-fields center ui-widget-content">
+	<div class="cms-content-fields center ui-widget-content cms-panel-padded">
 		
 		<div id="cms-content-treeview">
 			

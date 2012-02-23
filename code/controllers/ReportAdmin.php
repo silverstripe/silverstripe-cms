@@ -26,7 +26,7 @@ class ReportAdmin extends LeftAndMain {
 	public function init() {
 		parent::init();
 
-		Requirements::css(CMS_DIR . '/css/ReportAdmin.css');
+		Requirements::css(CMS_DIR . '/css/screen.css');
 
 		// Set custom options for TinyMCE specific to ReportAdmin
 		HtmlEditorConfig::get('cms')->setOption('ContentCSS', project() . '/css/editor.css');
