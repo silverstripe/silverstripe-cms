@@ -24,7 +24,7 @@
 
 	$Tools
 
-	<div class="cms-content-fields center ui-widget-content">
+	<div class="cms-content-fields center ui-widget-content cms-panel-padded">
 		
 		<div id="cms-content-treeview">
 			
