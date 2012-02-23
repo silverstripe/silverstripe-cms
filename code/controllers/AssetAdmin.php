@@ -57,7 +57,7 @@ class AssetAdmin extends LeftAndMain {
 
 		Requirements::javascript(CMS_DIR . "/javascript/AssetAdmin.js");
 		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang', false, true);
-		Requirements::css(CMS_DIR . "/css/AssetAdmin.css");
+		Requirements::css(CMS_DIR . "/css/screen.css");
 
 		Requirements::customScript(<<<JS
 			_TREE_ICONS = {};
