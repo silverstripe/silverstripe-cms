@@ -41,8 +41,6 @@ class AssetAdmin extends LeftAndMain {
 			return $_REQUEST['ID'];
 		} elseif (is_numeric($this->urlParams['ID'])) {
 			return $this->urlParams['ID'];
-		} elseif(is_numeric(Session::get("{$this->class}.currentPage"))) {
-			return Session::get("{$this->class}.currentPage");
 		} else {
 			return "root";
 		}
@@ -58,6 +56,7 @@ class AssetAdmin extends LeftAndMain {
 		if(!file_exists(ASSETS_PATH)) Filesystem::makeFolder(ASSETS_PATH);
 
 		Requirements::javascript(CMS_DIR . "/javascript/AssetAdmin.js");
+		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang', false, true);
 		Requirements::css(CMS_DIR . "/css/AssetAdmin.css");
 
 		Requirements::customScript(<<<JS
@@ -176,7 +175,7 @@ JS
 					'div', 
 					array(
 						'class' => 'cms-tree', 
-						'data-url' => $this->Link('getsubtree'), 
+						'data-url-tree' => $this->Link('getsubtree'), 
 						'data-url-savetreenode' => $this->Link('savetreenode')
 					),
 					$this->SiteTreeAsUL()
@@ -195,10 +194,38 @@ JS
 
 		return $form;
 	}
+
+	public function addfolder($request) {
+		$obj = $this->customise(array(
+			'EditForm' => $this->AddForm()
+		));
+
+		if($this->isAjax()) {
+			// Rendering is handled by template, which will call EditForm() eventually
+			$content = $obj->renderWith($this->getTemplatesWithSuffix('_Content'));
+		} else {
+			$content = $obj->renderWith($this->getViewer('show'));
+		}
+
+		return $content;
+	}
 	
 	public function AddForm() {
 		$form = parent::AddForm();
-		$form->Actions()->fieldByName('action_doAdd')->setTitle(_t('AssetAdmin.ActionAdd', 'Add folder'));
+		$folder = singleton('Folder');
+
+		$form->Actions()->fieldByName('action_doAdd')
+			->setTitle(_t('AssetAdmin.ActionAdd', 'Add folder'))
+			->setAttribute('data-icon', 'accept');
+		
+		$fields = $folder->getCMSFields();
+		$fields->replaceField('Name', new TextField("Name", _t('File.Name')));
+		$fields->dataFieldByName('ParentID')->setValue($this->request->getVar('ParentID'));
+		$form->setFields($fields);
+
+		$form->addExtraClass('cms-edit-form');
+		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
+		$form->addExtraClass('center ' . $this->BaseCSSClasses());
 		
 		return $form;
 	}
@@ -226,7 +253,7 @@ JS
 				&& !$parentRecord->canAddChildren()
 			) return Security::permissionFailure($this);
 		}
-		
+
 		$parent = (isset($data['ParentID']) && is_numeric($data['ParentID'])) ? (int)$data['ParentID'] : 0;
 		$name = (isset($data['Name'])) ? basename($data['Name']) : _t('AssetAdmin.NEWFOLDER',"NewFolder");
 		if(!isset($parentRecord) || !$parentRecord->ID) $parent = 0;
@@ -242,7 +269,8 @@ JS
 		
 		$record = new Folder();
 		$record->ParentID = $parent;
-		
+		$record->Name = $record->Title = basename($filename);
+
 		// Ensure uniqueness		
 		$i = 2;
 		$baseFilename = substr($record->Filename, 0, -1) . '-';
@@ -257,10 +285,9 @@ JS
 		mkdir($record->FullPath);
 		chmod($record->FullPath, Filesystem::$file_create_mask);
 
-		// Used in TinyMCE inline folder creation
-		if(isset($data['returnID'])) {
-			return $record->ID;
-		} else if($this->isAjax()) {
+		if($this->isAjax()) {
+			$link = Controller::join_links($this->Link('show'), $record->ID);
+			$this->getResponse()->addHeader('X-ControllerURL', $link);
 			$form = $this->getEditForm($record->ID);
 			return $form->forTemplate();
 		} else {
