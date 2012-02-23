@@ -75,10 +75,100 @@ JS
 
 	public function getEditForm($id = null, $fields = null) {
 		$form = parent::getEditForm($id, $fields);
-
+		$folder = ($id && is_numeric($id)) ? DataObject::get_by_id('Folder', $id, false) : $this->currentPage();
 		$fields = $form->Fields();
-		$fields->findOrMakeTab('Root.TreeView', _t('AssetAdmin.TreeView', 'Tree View'));
-		$fields->addFieldToTab('Root.TreeView',
+
+		$fields->push(new HiddenField('ID', false, $folder->ID));
+
+		// File listing
+		$gridFieldConfig = GridFieldConfig::create()->addComponents(
+			new GridFieldSortableHeader(),
+			new GridFieldFilter(),
+			new GridFieldDefaultColumns(),
+			new GridFieldPaginator(10),
+			new GridFieldAction_Delete(),
+			new GridFieldAction_Edit(),
+			$gridFieldForm = new GridFieldPopupForms(Controller::curr(), 'EditForm')
+		);
+		$gridFieldForm->setTemplate('CMSGridFieldPopupForms');
+		$files = DataList::create('File')
+			->filter('ParentID', $folder->ID)
+			->sort('(CASE WHEN "ClassName" = \'Folder\' THEN 0 ELSE 1 END)');	
+		$gridField = new GridField('File','Files', $files, $gridFieldConfig);
+		$gridField->setDisplayFields(array(
+			'StripThumbnail' => '',
+			// 'Parent.FileName' => 'Folder',
+			'Title' => _t('File.Name'),
+			'Created' => _t('AssetAdmin.CREATED', 'Date'),
+			'Size' => _t('AssetAdmin.SIZE', 'Size'),
+		));
+		$gridField->setFieldCasting(array(
+			'Created' => 'Date->Nice'
+		));
+		$gridField->setAttribute(
+			'data-url-folder-template', 
+			Controller::join_links($this->Link('show'), '%s')
+		);
+
+		if($folder->canCreate()) {
+			$uploadBtn = new LiteralField(
+				'UploadButton', 
+				sprintf(
+					'<a class="ss-ui-button ss-ui-action-constructive cms-panel-link" data-target-panel=".cms-content" data-icon="drive-upload" href="%s">%s</a>',
+					Controller::join_links(singleton('CMSFileAddController')->Link(), '?ID=' . $folder->ID),
+					_t('Folder.UploadFilesButton', 'Upload')
+				)
+			);	
+		} else {
+			$uploadBtn = null;
+		}
+
+		if(!$folder->hasMethod('canAddChildren') || ($folder->hasMethod('canAddChildren') && $folder->canAddChildren())) {
+			// TODO Will most likely be replaced by GridField logic
+			$addFolderBtn = new LiteralField(
+				'AddFolderButton', 
+				sprintf(
+					'<a class="ss-ui-button ss-ui-action-constructive cms-panel-link cms-page-add-button" data-icon="add" href="%s">%s</a>',
+					Controller::join_links($this->Link('addfolder'), '?ParentID=' . $folder->ID),
+					_t('Folder.AddFolderButton', 'Add folder')
+				)
+			);
+		} else {
+			$addFolderBtn = '';
+		}
+		
+		// Move existing fields to a "details" tab, unless they've already been tabbed out through extensions.
+		// Required to keep Folder->getCMSFields() simple and reuseable,
+		// without any dependencies into AssetAdmin (e.g. useful for "add folder" views).
+		if(!$fields->hasTabset()) {
+			$tabs = new TabSet('Root', 
+				$tabList = new Tab('ListView', _t('AssetAdmin.ListView', 'List View')),
+				$tabTree = new Tab('TreeView', _t('AssetAdmin.TreeView', 'Tree View'))
+			);
+			if($fields->Count() && $folder->exists()) {
+				$tabs->push($tabDetails = new Tab('DetailsView', _t('AssetAdmin.DetailsView', 'Details')));
+				foreach($fields as $field) {
+					$fields->removeByName($field->Name());
+					$tabDetails->push($field);
+				}
+			}
+			$fields->push($tabs);
+		}
+		
+		// List view
+		$fields->addFieldsToTab('Root.ListView', array(
+			$actionsComposite = Object::create('CompositeField',
+				Object::create('CompositeField',
+					$uploadBtn,
+					$addFolderBtn
+				)->addExtraClass('cms-actions-row')
+			)->addExtraClass('cms-content-toolbar field'),
+			$gridField
+		));
+		
+		// Tree view
+		$fields->addFieldsToTab('Root.TreeView', array(
+			clone $actionsComposite,
 			// TODO Replace with lazy loading on client to avoid performance hit of rendering potentially unused views
 			new LiteralField(
 				'Tree',
@@ -92,13 +182,16 @@ JS
 					$this->SiteTreeAsUL()
 				)
 			)
-		);
+		));
 
+		$fields->setForm($form);
 		$form->addExtraClass('cms-edit-form');
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 		// TODO Can't merge $FormAttributes in template at the moment
 		$form->addExtraClass('center ss-tabset ' . $this->BaseCSSClasses());
-		if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
+		$form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
+
+		$this->extend('updateEditForm', $form);
 
 		return $form;
 	}
