@@ -34,6 +34,7 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'AssetTableField.MOVING': 'Moving %s file(s)',
 		'SecurityAdmin.BATCHACTIONSDELETECONFIRM': "Do you really want to delete %s groups?",
 		'CMSMAIN.AddSearchCriteria': 'Add Criteria',
-		'WidgetAreaEditor.TOOMANY': 'Sorry, you have reached the maximum number of widgets in this area'
+		'WidgetAreaEditor.TOOMANY': 'Sorry, you have reached the maximum number of widgets in this area',
+		'AssetAdmin.ConfirmDelete': 'Do you really want to delete this folder and all contained files?'
 	});
 }
