@@ -301,9 +301,10 @@ JS
 	public function currentPage() {
 		$id = $this->currentPageID();
 		if($id && is_numeric($id)) {
-			return DataObject::get_by_id('File', $id);
-		} else if($id == 'root') {
-			return singleton('File');
+			return DataObject::get_by_id('Folder', $id);
+		} else {
+			// ID is either '0' or 'root'
+			return singleton('Folder');
 		}
 	}
 	
