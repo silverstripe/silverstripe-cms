@@ -88,15 +88,14 @@ JS
 			new GridFieldPaginator(10),
 			new GridFieldAction_Delete(),
 			new GridFieldAction_Edit(),
-			$gridFieldForm = new GridFieldPopupForms(Controller::curr(), 'EditForm')
+			new GridFieldPopupForms()
 		);
-		$gridFieldForm->setTemplate('CMSGridFieldPopupForms');
 		$files = DataList::create('File')
 			->filter('ParentID', $folder->ID)
 			->sort('(CASE WHEN "ClassName" = \'Folder\' THEN 0 ELSE 1 END)');	
 		$gridField = new GridField('File','Files', $files, $gridFieldConfig);
 		$gridField->setDisplayFields(array(
-			'StripThumbnail' => '',
+			// 'StripThumbnail' => '',
 			// 'Parent.FileName' => 'Folder',
 			'Title' => _t('File.Name'),
 			'Created' => _t('AssetAdmin.CREATED', 'Date'),
