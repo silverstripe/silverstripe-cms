@@ -31,7 +31,10 @@
 		$('#Form_EditForm_File .ss-gridfield-item').entwine({
 			onclick: function(e) {
 				// Let actions do their own thing
-				if($(e.target).is('.action')) return;
+				if($(e.target).is('.action')) {
+					this._super();
+					return;
+				}
 
 				var grid = this.closest('.ss-gridfield');
 				if(this.data('class') == 'Folder') {
