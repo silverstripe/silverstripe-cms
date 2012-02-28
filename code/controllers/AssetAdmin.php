@@ -38,10 +38,12 @@ class AssetAdmin extends LeftAndMain {
 	 * Return fake-ID "root" if no ID is found (needed to upload files into the root-folder)
 	 */
 	public function currentPageID() {
-		if(isset($_REQUEST['ID']) && is_numeric($_REQUEST['ID']))	{
-			return $_REQUEST['ID'];
+		if($this->request->requestVar('ID'))	{
+			return $this->request->requestVar('ID');
 		} elseif (is_numeric($this->urlParams['ID'])) {
 			return $this->urlParams['ID'];
+		} elseif(Session::get("{$this->class}.currentPage")) {
+			return Session::get("{$this->class}.currentPage");
 		} else {
 			return "root";
 		}
@@ -473,6 +475,18 @@ JS
 		}
 		
 		return array_diff($allThumbnails, $usedThumbnails);
+	}
+
+	/**
+	 * @return ArrayList
+	 */
+	public function Breadcrumbs($unlinked = false) {
+		$items = parent::Breadcrumbs($unlinked);
+
+		// The root element should explicitly point to the root node
+		$items[0]->Link = Controller::join_links($this->Link('show'), 'root');
+
+		return $items;
 	}
 	
 }
