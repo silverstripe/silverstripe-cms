@@ -476,6 +476,18 @@ JS
 		
 		return array_diff($allThumbnails, $usedThumbnails);
 	}
+
+	/**
+	 * @return ArrayList
+	 */
+	public function Breadcrumbs($unlinked = false) {
+		$items = parent::Breadcrumbs($unlinked);
+
+		// The root element should explicitly point to the root node
+		$items[0]->Link = Controller::join_links($this->Link('show'), 'root');
+
+		return $items;
+	}
 	
 }
 /**
