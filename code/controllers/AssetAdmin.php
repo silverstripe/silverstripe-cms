@@ -38,10 +38,12 @@ class AssetAdmin extends LeftAndMain {
 	 * Return fake-ID "root" if no ID is found (needed to upload files into the root-folder)
 	 */
 	public function currentPageID() {
-		if(isset($_REQUEST['ID']) && is_numeric($_REQUEST['ID']))	{
-			return $_REQUEST['ID'];
+		if($this->request->requestVar('ID'))	{
+			return $this->request->requestVar('ID');
 		} elseif (is_numeric($this->urlParams['ID'])) {
 			return $this->urlParams['ID'];
+		} elseif(Session::get("{$this->class}.currentPage")) {
+			return Session::get("{$this->class}.currentPage");
 		} else {
 			return "root";
 		}
