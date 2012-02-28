@@ -57,6 +57,7 @@ class AssetAdmin extends LeftAndMain {
 		if(!file_exists(ASSETS_PATH)) Filesystem::makeFolder(ASSETS_PATH);
 
 		Requirements::javascript(CMS_DIR . "/javascript/AssetAdmin.js");
+		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.GridField.js');
 		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang', false, true);
 		Requirements::css(CMS_DIR . "/css/screen.css");
 
