@@ -32,7 +32,7 @@
 			onclick: function(e) {
 				// Let actions do their own thing
 				if($(e.target).is('.action')) {
-					this._super();
+					this._super(e);
 					return;
 				}
 
@@ -40,7 +40,7 @@
 				if(this.data('class') == 'Folder') {
 					var url = grid.data('urlFolderTemplate').replace('%s', this.data('id'));
 					$('.cms-container').loadPanel(url);
-					e.preventDefault();
+					return false;
 				}
 			}
 		});

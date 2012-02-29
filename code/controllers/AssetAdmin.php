@@ -88,9 +88,9 @@ JS
 			new GridFieldSortableHeader(),
 			new GridFieldFilter(),
 			new GridFieldDefaultColumns(),
-			new GridFieldPaginator(10),
-			new GridFieldAction_Delete(),
+			new GridFieldPaginator(15),
 			new GridFieldAction_Edit(),
+			new GridFieldAction_Delete(),
 			new GridFieldPopupForms()
 		);
 		$files = DataList::create('File')
