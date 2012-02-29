@@ -225,9 +225,11 @@ JS
 		$fields->push(new TextField('Title'));
 		$fields->push(new TextField('ClassName','Type'));
 		
-		$actions = new FieldList();
-		$actions->push(new FormAction('doFilter', 'Filter'));
-		$actions->push(new ResetFormAction('doResetFilter', 'Clear Filter'));
+		$actions = new FieldList(
+			Object::create('ResetFormAction', 'clear', _t('CMSMain_left.ss.CLEAR', 'Clear'))
+				->addExtraClass('ss-ui-action-minor'),
+			FormAction::create('doSearch',  _t('CMSMain_left.ss.SEARCH', 'Search'))
+		);
 		
 		$form = new Form($this, 'filter', $fields, $actions);
 		$form->addExtraClass('cms-filter-form');
