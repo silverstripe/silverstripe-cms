@@ -96,6 +96,21 @@ class VirtualPage extends Page {
 	function ContentSource() {
 		return $this->CopyContentFrom();
 	}
+
+	/**
+	 * For VirtualPage, add a canonical link tag linking to the original page
+	 * See TRAC #6828 & http://support.google.com/webmasters/bin/answer.py?hl=en&answer=139394
+	 *
+	 * @param boolean $includeTitle Show default <title>-tag, set to false for custom templating
+	 * @return string The XHTML metatags
+	 */
+	public function MetaTags($includeTitle = true) {
+		$tags = parent::MetaTags($includeTitle);
+		if ($this->CopyContentFrom()->ID) {
+			$tags .= "<link rel=\"canonical\" href=\"{$this->CopyContentFrom()->Link()}\" />\n";
+		}
+		return $tags;
+	}
 	
 	function allowedChildren() {
 		if($this->CopyContentFrom()) {
