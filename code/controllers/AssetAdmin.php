@@ -76,6 +76,40 @@ JS
 		CMSBatchActionHandler::register('delete', 'AssetAdmin_DeleteBatchAction', 'Folder');
 	}
 
+	/**
+	 * Returns the files and subfolders contained in the currently selected folder,
+	 * defaulting to the root node. Doubles as search results, if any search parameters
+	 * are set through {@link SearchForm()}.
+	 * 
+	 * @return SS_List
+	 */
+	public function getList() {
+		$folder = $this->currentPage();
+		$context = $this->getSearchContext();
+		$params = $this->request->requestVar('q');
+		$list = $context->getResults($params);
+
+		// Always show folders at the top		
+		$list->sort('(CASE WHEN "File"."ClassName" = \'Folder\' THEN 0 ELSE 1 END)');
+
+		// If a search is conducted, check for the "current folder" limitation.
+		// Otherwise limit by the current folder as denoted by the URL.
+		if(!$params || @$params['CurrentFolderOnly']) {
+			$list->filter('ParentID', $folder->ID);
+		}
+
+		// Category filter
+		if(isset($params['AppCategory'])) {
+			$exts = File::$app_categories[$params['AppCategory']];
+			$categorySQLs = array();
+			foreach($exts as $ext) $categorySQLs[] = '"File"."Name" LIKE \'%.' . $ext . '\'';
+			// TODO Use DataList->filterAny() once OR connectives are implemented properly
+			$list->where('(' . implode(' OR ', $categorySQLs) . ')');
+		}
+
+		return $list;
+	}
+
 	public function getEditForm($id = null, $fields = null) {
 		$form = parent::getEditForm($id, $fields);
 		$folder = ($id && is_numeric($id)) ? DataObject::get_by_id('Folder', $id, false) : $this->currentPage();
@@ -86,19 +120,15 @@ JS
 		// File listing
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
 			new GridFieldSortableHeader(),
-			new GridFieldFilter(),
 			new GridFieldDefaultColumns(),
 			new GridFieldPaginator(15),
 			new GridFieldAction_Edit(),
 			new GridFieldAction_Delete(),
 			new GridFieldPopupForms()
 		);
-		$files = DataList::create('File')
-			->filter('ParentID', $folder->ID)
-			->sort('(CASE WHEN "ClassName" = \'Folder\' THEN 0 ELSE 1 END)');	
-		$gridField = new GridField('File','Files', $files, $gridFieldConfig);
+		$gridField = new GridField('File','Files', $this->getList(), $gridFieldConfig);
 		$gridField->setDisplayFields(array(
-			// 'StripThumbnail' => '',
+			'StripThumbnail' => '',
 			// 'Parent.FileName' => 'Folder',
 			'Title' => _t('File.Name'),
 			'Created' => _t('AssetAdmin.CREATED', 'Date'),
@@ -212,19 +242,52 @@ JS
 
 		return $content;
 	}
+
+	public function getSearchContext() {
+		$context = singleton('File')->getDefaultSearchContext();
+		
+		// Namespace fields, for easier detection if a search is present
+		foreach($context->getFields() as $field) $field->setName(sprintf('q[%s]', $field->getName()));
+		foreach($context->getFilters() as $filter) $filter->setFullName(sprintf('q[%s]', $filter->getFullName()));
+
+		// Customize fields		
+		$appCategories = array(
+			'image' => _t('AssetAdmin.AppCategoryImage', 'Image'),
+			'audio' => _t('AssetAdmin.AppCategoryAudio', 'Audio'),
+			'mov' => _t('AssetAdmin.AppCategoryVideo', 'Video'),
+			'flash' => _t('AssetAdmin.AppCategoryFlash', 'Flash', PR_MEDIUM, 'The fileformat'),
+			'zip' => _t('AssetAdmin.AppCategoryArchive', 'Archive', PR_MEDIUM, 'A collection of files'),
+		);
+		$context->addField(
+			new DropdownField(
+				'q[AppCategory]',
+				_t('AssetAdmin.Filetype', 'File type'),
+				$appCategories,
+				null,
+				null,
+				' '
+			)
+		);
+		$context->addField(
+			new CheckboxField('q[CurrentFolderOnly]' ,_t('AssetAdmin.CurrentFolderOnly', 'Limit to current folder?'))
+		);
+		$context->getFields()->removeByName('q[Title]');
+
+		return $context;
+	}
 	
 	/**
-	 * Returns a form for filtering of files and assets gridfield
+	 * Returns a form for filtering of files and assets gridfield.
+	 * Result filtering takes place in {@link getList()}.
 	 *
 	 * @return Form
 	 * @see AssetAdmin.js
 	 */
-	public function FilterForm() {
-		$fields = new FieldList();
-		// Below is the filters that this field should filter on
-		$fields->push(new TextField('Title'));
-		$fields->push(new TextField('ClassName','Type'));
-		
+	public function SearchForm() {
+		$folder = $this->currentPage();
+		$context = $this->getSearchContext();
+
+		$fields = $context->getSearchFields();
 		$actions = new FieldList(
 			Object::create('ResetFormAction', 'clear', _t('CMSMain_left.ss.CLEAR', 'Clear'))
 				->addExtraClass('ss-ui-action-minor'),
@@ -232,21 +295,14 @@ JS
 		);
 		
 		$form = new Form($this, 'filter', $fields, $actions);
-		$form->addExtraClass('cms-filter-form');
+		$form->setFormMethod('GET');
+		$form->setFormAction(Controller::join_links($this->Link('show'), $folder->ID ? $folder->ID : 'root'));
+		$form->addExtraClass('cms-search-form');
+		$form->loadDataFrom($this->request->getVars());
+		$form->disableSecurityToken();
 		// This have to match data-name attribute on the gridfield so that the javascript selectors work
 		$form->setAttribute('data-gridfield', 'File');
 		return $form;
-	}
-
-	/**
-	 * If this method get's called, it means that javascript didn't hook into to the submit on
-	 * FilterForm and we can currently not do a Filter without javascript.
-	 *
-	 * @param SS_HTTPRequest $data
-	 * @throws SS_HTTPResponse_Exception
-	 */
-	public function filter(SS_HTTPRequest $data) {
-		throw new SS_HTTPResponse_Exception('Filterpanel doesn\'t work without javascript enabled.');
 	}
 	
 	public function AddForm() {
@@ -487,6 +543,18 @@ JS
 
 		// The root element should explicitly point to the root node
 		$items[0]->Link = Controller::join_links($this->Link('show'), 'root');
+
+		// If a search is in progress, don't show the path
+		if($this->request->requestVar('q')) {
+			$items = $items->getRange(0, 1);
+			$items->push(new ArrayData(array(
+				'Title' => _t('LeftAndMain.SearchResults', 'Search Results'),
+				'Link' => Controller::join_links($this->Link(), '?' . http_build_query(array('q' => $this->request->requestVar('q'))))
+			)));
+		}
+
+		// TODO Remove once ViewableData->First()/Last() is fixed
+		foreach($items as $i => $item) $item->iteratorProperties($i, $items->Count());
 
 		return $items;
 	}
