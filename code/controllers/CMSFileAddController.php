@@ -33,13 +33,19 @@ class CMSFileAddController extends AssetAdmin {
 		$uploadField->removeExtraClass('ss-uploadfield');
 		$uploadField->setTemplate('AssetUploadField');
 		if ($folder->exists() && $folder->getFilename()) {
-			$uploadField->setFolderName($this->currentPage()->getFilename());
+			// The Upload class expects a folder relative *within* assets/
+			$path = preg_replace('/^' . ASSETS_DIR . '\//', '', $folder->getFilename());
+			$uploadField->setFolderName($path);
 		}
 
-		$form = new Form($this, 'getEditForm', new FieldList($uploadField), new FieldList());
+		$form = new Form(
+			$this, 
+			'getEditForm', 
+			new FieldList($uploadField, new HiddenField('ID')), 
+			new FieldList()
+		);
 		$form->addExtraClass('center cms-edit-form ' . $this->BaseCSSClasses());
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
-
 		$form->Fields()->push(
 			new LiteralField(
 				'BackLink',
@@ -50,6 +56,7 @@ class CMSFileAddController extends AssetAdmin {
 				)
 			)
 		);
+		$form->loadDataFrom($folder);
 
 		return $form;
 	}
