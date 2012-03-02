@@ -80,7 +80,6 @@
 					function() {
 						self.find(':submit').attr('disabled', false).removeClass('loading');
 						self.find('.checkboxAboveTree :checkbox').attr('disabled', 'true');
-						statusMessage('Filtered tree','good');
 					},
 					function() {
 						self.find(':submit').attr('disabled', false).removeClass('loading');
