@@ -1890,6 +1890,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return FieldList
 	 */
 	function getSettingsFields() {
+		$groupsMap = DataList::create('Group')->map('ID', 'Breadcrumbs')->toArray();
+		asort($groupsMap);
+		
 		$fields = new FieldList(
 			$rootTab = new TabSet("Root",
 				$tabBehaviour = new Tab('Settings',
@@ -1925,12 +1928,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						"CanViewType", 
 						_t('SiteTree.ACCESSHEADER', "Who can view this page?")
 					),
-					$viewerGroupsField = new TreeMultiselectField("ViewerGroups", $this->fieldLabel('ViewerGroups')),
+					$viewerGroupsField = Object::create('ListboxField', "ViewerGroups", _t('SiteTree.VIEWERGROUPS', "Viewer Groups"))
+						->setMultiple(true)->setSource($groupsMap),
 					$editorsOptionsField = new OptionsetField(
 						"CanEditType", 
 						_t('SiteTree.EDITHEADER', "Who can edit this page?")
 					),
-					$editorGroupsField = new TreeMultiselectField("EditorGroups", $this->fieldLabel('EditorGroups'))
+					$editorGroupsField = Object::create('ListboxField', "EditorGroups", _t('SiteTree.EDITORGROUPS', "Editor Groups"))
+						->setMultiple(true)->setSource($groupsMap)
 				)
 			)
 		);
