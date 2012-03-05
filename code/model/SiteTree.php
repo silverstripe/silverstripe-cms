@@ -2660,7 +2660,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				'name' => _t('SiteTree.EDIT_ALL_DESCRIPTION', 'Edit any page'),
 				'category' => _t('Permissions.CONTENT_CATEGORY', 'Content permissions'),
 				'sort' => -50,
-				'help' => _t('SiteTree.EDIT_ALL_HELP', 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission')
+				'help' => _t('SiteTree.EDIT_ALL_HELP', 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to \'Pages\' section" permission')
 			),
 			'SITETREE_REORGANISE' => array(
 				'name' => _t('SiteTree.REORGANISE_DESCRIPTION', 'Change site structure'),

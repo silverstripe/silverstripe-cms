@@ -553,7 +553,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 
 		// Use <button> to allow full jQuery UI styling
-		foreach($actions->dataFields() as $action) $action->setUseButtonTag(true);
+		$actions = $actions->dataFields();
+		if($actions) foreach($actions as $action) $action->setUseButtonTag(true);
 
 		$this->extend('updateEditForm', $form);
 
@@ -1315,44 +1316,19 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		);
 	}
 
-	/**
-	 * Provide the permission codes used by LeftAndMain.
-	 * Can't put it on LeftAndMain since that's an abstract base class.
-	 */
 	function providePermissions() {
-		$classes = ClassInfo::subclassesFor('LeftAndMain');
-
-		foreach($classes as $i => $class) {
-			$title = _t("{$class}.MENUTITLE", LeftAndMain::menu_title_for_class($class));
-			$perms["CMS_ACCESS_" . $class] = array(
-				'name' => sprintf(_t(
-					'CMSMain.ACCESS', 
-					"Access to '%s' section",
-					PR_MEDIUM,
-					"Item in permission selection identifying the admin section. Example: Access to 'Files & Images'"
-				), $title, null),
-				'category' => _t('Permission.CMS_ACCESS_CATEGORY', 'CMS Access')
-			);
-		}
-		$perms["CMS_ACCESS_LeftAndMain"] = array(
-			'name' => _t('CMSMain.ACCESSALLINTERFACES', 'Access to all CMS sections'),
-			'category' => _t('Permission.CMS_ACCESS_CATEGORY', 'CMS Access'),
-			'help' => _t('CMSMain.ACCESSALLINTERFACESHELP', 'Overrules more specific access settings.'),
-			'sort' => -100
+		$title = _t("CMSPagesController.MENUTITLE", LeftAndMain::menu_title_for_class('CMSPagesController'));
+		return array(
+			"CMS_ACCESS_CMSMain" => array(
+				'name' => sprintf(_t('CMSMain.ACCESS', "Access to '%s' section"), $title),
+				'category' => _t('Permission.CMS_ACCESS_CATEGORY', 'CMS Access'),
+				'help' => _t(
+					'CMSMain.ACCESS_HELP',
+					'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
+				),
+				'sort' => -99 // below "CMS_ACCESS_LeftAndMain", but above everything else
+			)
 		);
-
-		$perms['CMS_ACCESS_CMSMain']['help'] = _t(
-			'CMSMain.ACCESS_HELP',
-			'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
-		);
-		$perms['CMS_ACCESS_SecurityAdmin']['help'] = _t(
-			'SecurityAdmin.ACCESS_HELP',
-			'Allow viewing, adding and editing users, as well as assigning permissions and roles to them.'
-		);
-
-		if (isset($perms['CMS_ACCESS_ModelAdmin'])) unset($perms['CMS_ACCESS_ModelAdmin']);
-
-		return $perms;
 	}
 
 }

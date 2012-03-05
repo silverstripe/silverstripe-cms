@@ -6,7 +6,7 @@
  * @package cms
  * @subpackage assets
  */
-class AssetAdmin extends LeftAndMain {
+class AssetAdmin extends LeftAndMain implements PermissionProvider{
 
 	static $url_segment = 'assets';
 	
@@ -557,6 +557,16 @@ JS
 		foreach($items as $i => $item) $item->iteratorProperties($i, $items->Count());
 
 		return $items;
+	}
+
+	function providePermissions() {
+		$title = _t("AssetAdmin.MENUTITLE", LeftAndMain::menu_title_for_class($this->class));
+		return array(
+			"CMS_ACCESS_AssetAdmin" => array(
+				'name' => sprintf(_t('CMSMain.ACCESS', "Access to '%s' section"), $title),
+				'category' => _t('Permission.CMS_ACCESS_CATEGORY', 'CMS Access')
+			)
+		);
 	}
 	
 }

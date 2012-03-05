@@ -2,8 +2,8 @@
 class CMSFileAddController extends AssetAdmin {
 
 	static $url_segment = 'assets/add';
-
 	static $url_priority = 60;
+	static $required_permission_codes = 'CMS_ACCESS_AssetAdmin';
 	
 //	public function upload($request) {
 //		$formHtml = $this->renderWith(array('AssetAdmin_UploadContent'));

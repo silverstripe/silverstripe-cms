@@ -10,6 +10,7 @@ class CMSPageHistoryController extends CMSMain {
 	static $url_rule = '/$Action/$ID/$VersionID/$OtherVersionID';
 	static $url_priority = 42;
 	static $menu_title = 'History';
+	static $required_permission_codes = 'CMS_ACCESS_CMSMain';
 	
 	static $allowed_actions = array(
 		'VersionsForm',
