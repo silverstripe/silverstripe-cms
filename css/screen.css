@@ -11,6 +11,7 @@
 .CMSPageHistoryController del { background-color: #FDD; padding: 2px; color: #ff4444; }
 
 .cms .AssetAdmin #Form_EditForm_File td { padding-top: 0; padding-bottom: 0; }
+.cms .AssetAdmin #Form_EditForm_File td.bottom-all { padding: 0.7em; }
 .cms .AssetAdmin #Form_EditForm_File td.col-StripThumbnail { padding: 0; width: 32px; height: 32px; display: block; }
 .cms .AssetAdmin #Form_EditForm_File td.col-StripThumbnail img { width: 32px; height: 32px; }
 .cms .AssetAdmin #Form_EditForm_File tr[data-class=Folder] td.col-StripThumbnail { background: transparent url(../../sapphire/admin/images/sprites-32x32/blue-folder-horizontal.png) no-repeat top left; }

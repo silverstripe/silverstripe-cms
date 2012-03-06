@@ -4,6 +4,9 @@
 			// Taken care of by minimum image sizes
 			padding-top: 0;
 			padding-bottom: 0;
+			&.bottom-all {
+				padding:0.7em;
+			}
 		}
 		td.col-StripThumbnail {
 			padding: 0;
