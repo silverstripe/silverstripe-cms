@@ -30,7 +30,7 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 		'removefile',
 		'savefile',
 		'deleteUnusedThumbnails' => 'ADMIN',
-		'SyncForm',
+		'doSync',
 		'filter',
 	);
 	
@@ -168,6 +168,19 @@ JS
 		} else {
 			$addFolderBtn = '';
 		}
+
+		if($folder->canEdit()) {
+			$syncButton = new LiteralField(
+				'SyncButton',
+				sprintf(
+					'<a class="ss-ui-button ss-ui-action cms-link-ajax" data-icon="" href="%s">%s</a>',
+					$this->Link('doSync'),
+					_t('FILESYSTEMSYNC','Sync files')
+				)
+			);
+		} else {
+			$syncButton = null;
+		}
 		
 		// Move existing fields to a "details" tab, unless they've already been tabbed out through extensions.
 		// Required to keep Folder->getCMSFields() simple and reuseable,
@@ -186,13 +199,14 @@ JS
 			}
 			$fields->push($tabs);
 		}
-		
+
 		// List view
 		$fields->addFieldsToTab('Root.ListView', array(
 			$actionsComposite = Object::create('CompositeField',
 				Object::create('CompositeField',
 					$uploadBtn,
-					$addFolderBtn
+					$addFolderBtn,
+					$syncButton //TODO: add this into a batch actions menu as in https://github.com/silverstripe/silverstripe-design/raw/master/Design/ss3-ui_files-manager-list-view.jpg
 				)->addExtraClass('cms-actions-row')
 			)->addExtraClass('cms-content-toolbar field'),
 			$gridField
@@ -419,28 +433,15 @@ JS
 	//------------------------------------------------------------------------------------------//
 
 	// Data saving handlers
+
 	/**
-	 * @return Form
+	 * Can be queried with an ajax request to trigger the filesystem sync. It returns a FormResponse status message
+	 * to display in the CMS
 	 */
-	public function SyncForm() {
-		$form = new Form(
-			$this,
-			'SyncForm',
-			new FieldList(
-			),
-			new FieldList(
-				FormAction::create('doSync', _t('FILESYSTEMSYNC','Look for new files'))
-					->describe(_t('AssetAdmin_left.ss.FILESYSTEMSYNC_DESC', 'SilverStripe maintains its own database of the files &amp; images stored in your assets/ folder.  Click this button to update that database, if files are added to the assets/ folder from outside SilverStripe, for example, if you have uploaded files via FTP.'))
-					->setUseButtonTag(true)
-			)
-		);
-		$form->setFormMethod('GET');
-		
-		return $form;
-	}
-	
-	public function doSync($data, $form) {
-		return Filesystem::sync();
+	public function doSync() {
+		$message = Filesystem::sync();
+		FormResponse::status_message($message, 'good');
+		echo FormResponse::respond();
 	}
 	
 	/**
