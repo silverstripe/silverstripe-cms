@@ -173,7 +173,8 @@ JS
 			$syncButton = new LiteralField(
 				'SyncButton',
 				sprintf(
-					'<a class="ss-ui-button ss-ui-action cms-link-ajax" data-icon="" href="%s">%s</a>',
+					'<a class="ss-ui-button ss-ui-action cms-link-ajax" title="%s" href="%s">%s</a>',
+					_t('AssetAdmin.FILESYSTEMSYNCTITLE', 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'),
 					$this->Link('doSync'),
 					_t('FILESYSTEMSYNC','Sync files')
 				)
