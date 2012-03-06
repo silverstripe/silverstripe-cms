@@ -1,0 +1,31 @@
+.cms .AssetAdmin {
+	#Form_EditForm_File {
+		td {
+			// Taken care of by minimum image sizes
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+		td.col-StripThumbnail {
+			padding: 0;
+			width: 32px;
+			height: 32px;
+			display: block;
+
+			img {
+				width: 32px;
+				height: 32px;
+			}
+		}
+		// TODO Figure out how to share sprites and SCSS rules between sapphire/admin/scss and cms/scss
+		tr[data-class=Folder] {
+			td.col-StripThumbnail {
+				background: transparent url(../../sapphire/admin/images/sprites-32x32/blue-folder-horizontal.png) no-repeat top left;
+			}
+		}
+		tr[data-class=File] {
+			td.col-StripThumbnail {
+				background: transparent url(../../sapphire/admin/images/sprites-32x32/blue-document.png) no-repeat top left;
+			}
+		}
+	}
+} 

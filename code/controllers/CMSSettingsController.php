@@ -13,5 +13,14 @@ class CMSSettingsController extends CMSMain {
 	function PreviewLink() {
 		return false;
 	}
+
+	function Breadcrumbs() {
+		return new ArrayList(array(
+			new ArrayData(array(
+				'Title' => $this->SectionTitle(),
+				'Link' => false
+			))
+		));
+	}
 	
 }
