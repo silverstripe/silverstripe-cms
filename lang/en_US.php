@@ -374,11 +374,10 @@ $lang['en_US']['SiteTree']['HomepageForDomain'] = 'Hompage for this domain';
 $lang['en_US']['SiteTree']['INHERIT'] = 'Inherit from parent page';
 $lang['en_US']['SiteTree']['LINKCHANGENOTE'] = 'Changing this page\'s link will also affect the links of all child pages.';
 $lang['en_US']['SiteTree']['MENUTITLE'] = 'Navigation label';
-$lang['en_US']['SiteTree']['METADESC'] = 'Description';
+$lang['en_US']['SiteTree']['METADESC'] = 'Meta Description';
 $lang['en_US']['SiteTree']['METAEXTRA'] = 'Custom Meta Tags';
-$lang['en_US']['SiteTree']['METAHEADER'] = 'Search Engine Meta-tags';
-$lang['en_US']['SiteTree']['METAKEYWORDS'] = 'Keywords';
-$lang['en_US']['SiteTree']['METATITLE'] = 'Title';
+$lang['en_US']['SiteTree']['METAKEYWORDS'] = 'Meta Keywords';
+$lang['en_US']['SiteTree']['METATITLE'] = 'Meta Title';
 $lang['en_US']['SiteTree']['MODIFIEDONDRAFT'] = 'Modified on draft site';
 $lang['en_US']['SiteTree']['NOTEUSEASHOMEPAGE'] = 'Use this page as the \'home page\' for the following domains: 
 							(separate multiple domains with commas)';

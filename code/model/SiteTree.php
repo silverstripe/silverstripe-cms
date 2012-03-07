@@ -1846,7 +1846,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				),
 				$tabMeta = new Tab('Metadata',
 					$urlsegment,
-					new HeaderField('MetaTagsHeader',$this->fieldLabel('MetaTagsHeader')),
 					new TextField("MetaTitle", $this->fieldLabel('MetaTitle')),
 					new TextareaField("MetaKeywords", $this->fieldLabel('MetaKeywords'), 1),
 					new TextareaField("MetaDescription", $this->fieldLabel('MetaDescription')),
@@ -2006,10 +2005,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		
 		$labels['Title'] = _t('SiteTree.PAGETITLE', "Page name");
 		$labels['MenuTitle'] = _t('SiteTree.MENUTITLE', "Navigation label");
-		$labels['MetaTagsHeader'] = _t('SiteTree.METAHEADER', "Search Engine Meta-tags");
-		$labels['MetaTitle'] = _t('SiteTree.METATITLE', "Title");
-		$labels['MetaDescription'] = _t('SiteTree.METADESC', "Description");
-		$labels['MetaKeywords'] = _t('SiteTree.METAKEYWORDS', "Keywords");
+		$labels['MetaTitle'] = _t('SiteTree.METATITLE', "Meta Title");
+		$labels['MetaDescription'] = _t('SiteTree.METADESC', "Meta Description");
+		$labels['MetaKeywords'] = _t('SiteTree.METAKEYWORDS', "Meta Keywords");
 		$labels['ExtraMeta'] = _t('SiteTree.METAEXTRA', "Custom Meta Tags");
 		$labels['ClassName'] = _t('SiteTree.PAGETYPE', "Page type", PR_MEDIUM, 'Classname of a page object');
 		$labels['ParentType'] = _t('SiteTree.PARENTTYPE', "Page location", PR_MEDIUM);
