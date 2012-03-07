@@ -10,6 +10,9 @@
 .CMSPageHistoryController ins { background-color: #DFD; padding: 2px; text-decoration: none; }
 .CMSPageHistoryController del { background-color: #FDD; padding: 2px; color: #ff4444; }
 
+.cms .AssetAdmin .cms-content-toolbar .cms-page-add-button { background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f3f3f3), color-stop(100%, #d9d9d9)); background-image: -webkit-linear-gradient(#f3f3f3, #d9d9d9); background-image: -moz-linear-gradient(#f3f3f3, #d9d9d9); background-image: -o-linear-gradient(#f3f3f3, #d9d9d9); background-image: -ms-linear-gradient(#f3f3f3, #d9d9d9); background-image: linear-gradient(#f3f3f3, #d9d9d9); border-color: #c0c0c2; }
+.cms .AssetAdmin .cms-content-toolbar .cms-page-add-button span.btn-icon-add { height: 17px; }
+.cms .AssetAdmin .cms-content-toolbar .cms-page-add-button span.ui-button-text { color: #393939; text-shadow: white 0 1px 1px; }
 .cms .AssetAdmin #Form_EditForm_File td { padding-top: 0; padding-bottom: 0; }
 .cms .AssetAdmin #Form_EditForm_File td.bottom-all { padding: 0.7em; }
 .cms .AssetAdmin #Form_EditForm_File td.col-StripThumbnail { padding: 0; width: 32px; height: 32px; display: block; }

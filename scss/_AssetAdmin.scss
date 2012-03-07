@@ -1,4 +1,17 @@
 .cms .AssetAdmin {
+	.cms-content-toolbar {
+		.cms-page-add-button {
+			@include background-image (linear-gradient(lighten(#e6e6e6, 5%), darken(#e6e6e6, 5%)));
+			border-color:#c0c0c2;
+			span.btn-icon-add {
+				height:17px;
+			}
+			span.ui-button-text {
+				color:#393939;
+				text-shadow: white 0 1px 1px;
+			}
+		}
+	}	
 	#Form_EditForm_File {
 		td {
 			// Taken care of by minimum image sizes
