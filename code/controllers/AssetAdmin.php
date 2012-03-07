@@ -191,6 +191,8 @@ JS
 				$tabList = new Tab('ListView', _t('AssetAdmin.ListView', 'List View')),
 				$tabTree = new Tab('TreeView', _t('AssetAdmin.TreeView', 'Tree View'))
 			);
+			$tabList->addExtraClass("content-listview");
+			$tabTree->addExtraClass("content-treeview");
 			if($fields->Count() && $folder->exists()) {
 				$tabs->push($tabDetails = new Tab('DetailsView', _t('AssetAdmin.DetailsView', 'Details')));
 				foreach($fields as $field) {
