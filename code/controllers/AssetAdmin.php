@@ -160,7 +160,7 @@ JS
 			$addFolderBtn = new LiteralField(
 				'AddFolderButton', 
 				sprintf(
-					'<a class="ss-ui-button ss-ui-action-constructive cms-panel-link cms-page-add-button" data-icon="add" href="%s">%s</a>',
+					'<a class="ss-ui-button ss-ui-action-constructive cms-panel-link" data-icon="add" href="%s">%s</a>',
 					Controller::join_links($this->Link('addfolder'), '?ParentID=' . $folder->ID),
 					_t('Folder.AddFolderButton', 'Add folder')
 				)
