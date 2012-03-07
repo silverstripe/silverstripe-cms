@@ -195,6 +195,7 @@ JS
 			$tabTree->addExtraClass("content-treeview");
 			if($fields->Count() && $folder->exists()) {
 				$tabs->push($tabDetails = new Tab('DetailsView', _t('AssetAdmin.DetailsView', 'Details')));
+				$tabDetails->addExtraClass("content-galleryview");
 				foreach($fields as $field) {
 					$fields->removeByName($field->Name());
 					$tabDetails->push($field);
