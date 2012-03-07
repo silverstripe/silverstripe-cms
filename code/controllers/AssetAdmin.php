@@ -235,10 +235,9 @@ JS
 		));
 
 		$fields->setForm($form);
-		$form->addExtraClass('cms-edit-form');
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 		// TODO Can't merge $FormAttributes in template at the moment
-		$form->addExtraClass('center ss-tabset ' . $this->BaseCSSClasses());
+		$form->addExtraClass('cms-edit-form cms-panel-padded center ' . $this->BaseCSSClasses());
 		$form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 
 		$this->extend('updateEditForm', $form);
