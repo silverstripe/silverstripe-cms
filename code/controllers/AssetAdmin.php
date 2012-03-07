@@ -546,8 +546,14 @@ JS
 	public function Breadcrumbs($unlinked = false) {
 		$items = parent::Breadcrumbs($unlinked);
 
-		// The root element should explicitly point to the root node
-		$items[0]->Link = Controller::join_links($this->Link('show'), 'root');
+		// The root element should explicitly point to the root node.
+		// Used in CMSFileAddController subclass as well, so specifically link to AssetAdmin
+		$items[0]->Link = Controller::join_links(singleton('AssetAdmin')->Link('show'), 'root');
+
+		// HACK Force linkage to AssetAdmin, even when current controller is CMSFileAddController
+		foreach($items as $item) {
+			if($item->Link) $item->Link = str_replace('assets/add/show/', 'assets/show/', $item->Link);
+		}
 
 		// If a search is in progress, don't show the path
 		if($this->request->requestVar('q')) {
