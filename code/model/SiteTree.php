@@ -2063,7 +2063,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			// "unpublish"
 			$minorActions->push(
 				FormAction::create('unpublish', _t('SiteTree.BUTTONUNPUBLISH', 'Unpublish'), 'delete')
-					->setDescription(_t('SiteTree.BUTTONUNPUBLISHDESC', 'Remove this page from the published site'))
+					->setButtonContent(_t('SiteTree.BUTTONUNPUBLISHDESC', 'Remove this page from the published site'))
 					->addExtraClass('ss-ui-action-destructive')->setAttribute('data-icon', 'unpublish')
 			);
 		}
@@ -2073,7 +2073,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				// "rollback"
 				$minorActions->push(
 					FormAction::create('rollback', _t('SiteTree.BUTTONCANCELDRAFT', 'Cancel draft changes'), 'delete')
-						->setDescription(_t('SiteTree.BUTTONCANCELDRAFTDESC', 'Delete your draft and revert to the currently published page'))
+						->setButtonContent(_t('SiteTree.BUTTONCANCELDRAFTDESC', 'Delete your draft and revert to the currently published page'))
 						->addExtraClass('delete')->setAttribute('data-icon', 'delete')
 				);
 			}
