@@ -82,6 +82,8 @@ class CMSPageHistoryController extends CMSMain {
 		$versionID = ($record) ? $record->Version : $versionID;
 		
 		$form = parent::getEditForm($record, ($record) ? $record->getCMSFields() : null);
+		// Respect permission failures from parent implementation
+		if(!($form instanceof Form)) return $form;
 
 		$form->setActions(new FieldList(
 			$revert = FormAction::create('doRollback', _t('CMSPageHistoryController.REVERTTOTHISVERSION', 'Revert to this version'))->setUseButtonTag(true)
