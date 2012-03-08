@@ -2,8 +2,8 @@
 class CMSFileAddController extends AssetAdmin {
 
 	static $url_segment = 'assets/add';
-
 	static $url_priority = 60;
+	static $required_permission_codes = 'CMS_ACCESS_AssetAdmin';
 	
 //	public function upload($request) {
 //		$formHtml = $this->renderWith(array('AssetAdmin_UploadContent'));
@@ -16,6 +16,11 @@ class CMSFileAddController extends AssetAdmin {
 //		}
 //	}
 	
+	public function Content() {
+		// Disable AssetAdmin layout including the search panel
+		return $this->renderWith('LeftAndMain_Content');
+	}
+
 	/**
 	 * @return Form
 	 * @todo what template is used here? AssetAdmin_UploadContent.ss doesn't seem to be used anymore
@@ -45,7 +50,8 @@ class CMSFileAddController extends AssetAdmin {
 			new FieldList()
 		);
 		$form->addExtraClass('center cms-edit-form ' . $this->BaseCSSClasses());
-		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
+		// Don't use AssetAdmin_EditForm, as it assumes a different panel structure
+		$form->setTemplate('LeftAndMain_EditForm');
 		$form->Fields()->push(
 			new LiteralField(
 				'BackLink',
@@ -61,6 +67,9 @@ class CMSFileAddController extends AssetAdmin {
 		return $form;
 	}
 
+	/**
+	 * Disable AssetAdmin search panel
+	 */
 	function Tools() {
 		return false;
 	}

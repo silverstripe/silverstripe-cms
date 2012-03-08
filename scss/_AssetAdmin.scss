@@ -1,9 +1,68 @@
 .cms .AssetAdmin {
+	.cms-content-header-tabs {
+		.ui-tabs-nav {
+			li {
+				a {
+					font-weight: bold;
+					line-height: 16px;
+					padding: 12px 20px 11px;
+					text-indent:-9999em;
+
+					&.content-treeview {
+						background:url(../images/content-header-tabs-sprite.png) no-repeat 2px 0px;
+					}
+					&.content-galleryview {
+						background:url(../images/content-header-tabs-sprite.png) no-repeat -87px 0px;
+					}
+					&.content-listview {
+						background:url(../images/content-header-tabs-sprite.png) no-repeat -38px 0px;
+					}
+				}
+			}
+			
+			.ui-state-active, 
+			.ui-widget-content .ui-state-active, 
+			.ui-widget-header .ui-state-active {
+				border: {
+					top:none;
+				}
+		
+				a {
+					&.content-treeview {
+						background:url(../images/content-header-tabs-sprite.png) no-repeat 2px -40px;
+					}
+					&.content-galleryview {
+						background:url(../images/content-header-tabs-sprite.png) no-repeat -87px -40px;
+					}
+					&.content-listview {
+						background:url(../images/content-header-tabs-sprite.png) no-repeat -38px -40px;
+					}
+				}
+			}
+		}
+	}
+
+	.cms-content-toolbar {
+		.cms-page-add-button {
+			@include background-image (linear-gradient(lighten(#e6e6e6, 5%), darken(#e6e6e6, 5%)));
+			border-color:#c0c0c2;
+			span.btn-icon-add {
+				height:17px;
+			}
+			span.ui-button-text {
+				color:#393939;
+				text-shadow: white 0 1px 1px;
+			}
+		}
+	}	
 	#Form_EditForm_File {
 		td {
 			// Taken care of by minimum image sizes
 			padding-top: 0;
 			padding-bottom: 0;
+			&.bottom-all {
+				padding:0.7em;
+			}
 		}
 		td.col-StripThumbnail {
 			padding: 0;
@@ -29,3 +88,4 @@
 		}
 	}
 } 
+	

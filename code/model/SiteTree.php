@@ -1846,7 +1846,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				),
 				$tabMeta = new Tab('Metadata',
 					$urlsegment,
-					new HeaderField('MetaTagsHeader',$this->fieldLabel('MetaTagsHeader')),
 					new TextField("MetaTitle", $this->fieldLabel('MetaTitle')),
 					new TextareaField("MetaKeywords", $this->fieldLabel('MetaKeywords'), 1),
 					new TextareaField("MetaDescription", $this->fieldLabel('MetaDescription')),
@@ -1890,6 +1889,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return FieldList
 	 */
 	function getSettingsFields() {
+		$groupsMap = DataList::create('Group')->map('ID', 'Breadcrumbs')->toArray();
+		asort($groupsMap);
+		
 		$fields = new FieldList(
 			$rootTab = new TabSet("Root",
 				$tabBehaviour = new Tab('Settings',
@@ -1925,12 +1927,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						"CanViewType", 
 						_t('SiteTree.ACCESSHEADER', "Who can view this page?")
 					),
-					$viewerGroupsField = new TreeMultiselectField("ViewerGroups", $this->fieldLabel('ViewerGroups')),
+					$viewerGroupsField = Object::create('ListboxField', "ViewerGroups", _t('SiteTree.VIEWERGROUPS', "Viewer Groups"))
+						->setMultiple(true)->setSource($groupsMap),
 					$editorsOptionsField = new OptionsetField(
 						"CanEditType", 
 						_t('SiteTree.EDITHEADER', "Who can edit this page?")
 					),
-					$editorGroupsField = new TreeMultiselectField("EditorGroups", $this->fieldLabel('EditorGroups'))
+					$editorGroupsField = Object::create('ListboxField', "EditorGroups", _t('SiteTree.EDITORGROUPS', "Editor Groups"))
+						->setMultiple(true)->setSource($groupsMap)
 				)
 			)
 		);
@@ -2001,10 +2005,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		
 		$labels['Title'] = _t('SiteTree.PAGETITLE', "Page name");
 		$labels['MenuTitle'] = _t('SiteTree.MENUTITLE', "Navigation label");
-		$labels['MetaTagsHeader'] = _t('SiteTree.METAHEADER', "Search Engine Meta-tags");
-		$labels['MetaTitle'] = _t('SiteTree.METATITLE', "Title");
-		$labels['MetaDescription'] = _t('SiteTree.METADESC', "Description");
-		$labels['MetaKeywords'] = _t('SiteTree.METAKEYWORDS', "Keywords");
+		$labels['MetaTitle'] = _t('SiteTree.METATITLE', "Meta Title");
+		$labels['MetaDescription'] = _t('SiteTree.METADESC', "Meta Description");
+		$labels['MetaKeywords'] = _t('SiteTree.METAKEYWORDS', "Meta Keywords");
 		$labels['ExtraMeta'] = _t('SiteTree.METAEXTRA', "Custom Meta Tags");
 		$labels['ClassName'] = _t('SiteTree.PAGETYPE', "Page type", PR_MEDIUM, 'Classname of a page object');
 		$labels['ParentType'] = _t('SiteTree.PARENTTYPE', "Page location", PR_MEDIUM);
@@ -2060,7 +2063,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			// "unpublish"
 			$minorActions->push(
 				FormAction::create('unpublish', _t('SiteTree.BUTTONUNPUBLISH', 'Unpublish'), 'delete')
-					->describe(_t('SiteTree.BUTTONUNPUBLISHDESC', 'Remove this page from the published site'))
+					->setDescription(_t('SiteTree.BUTTONUNPUBLISHDESC', 'Remove this page from the published site'))
 					->addExtraClass('ss-ui-action-destructive')->setAttribute('data-icon', 'unpublish')
 			);
 		}
@@ -2070,7 +2073,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				// "rollback"
 				$minorActions->push(
 					FormAction::create('rollback', _t('SiteTree.BUTTONCANCELDRAFT', 'Cancel draft changes'), 'delete')
-						->describe(_t('SiteTree.BUTTONCANCELDRAFTDESC', 'Delete your draft and revert to the currently published page'))
+						->setDescription(_t('SiteTree.BUTTONCANCELDRAFTDESC', 'Delete your draft and revert to the currently published page'))
 						->addExtraClass('delete')->setAttribute('data-icon', 'delete')
 				);
 			}
@@ -2655,7 +2658,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				'name' => _t('SiteTree.EDIT_ALL_DESCRIPTION', 'Edit any page'),
 				'category' => _t('Permissions.CONTENT_CATEGORY', 'Content permissions'),
 				'sort' => -50,
-				'help' => _t('SiteTree.EDIT_ALL_HELP', 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission')
+				'help' => _t('SiteTree.EDIT_ALL_HELP', 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to \'Pages\' section" permission')
 			),
 			'SITETREE_REORGANISE' => array(
 				'name' => _t('SiteTree.REORGANISE_DESCRIPTION', 'Change site structure'),
