@@ -38,7 +38,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'publishall',
 		'publishitems',
 		'PublishItemsForm',
-		'RootForm',
 		'sidereport',
 		'SideReportsForm',
 		'submit',
@@ -525,39 +524,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$this->extend('updateEditForm', $form);
 
 			return $form;
-		} if ($id == 0 || $id == 'root') {
-			return $this->RootForm();
 		} else if($id) {
 			return new Form($this, "EditForm", new FieldList(
 				new LabelField('PageDoesntExistLabel',_t('CMSMain.PAGENOTEXISTS',"This page doesn't exist"))), new FieldList()
 			);
 		}
-	}
-
-	/**
-	 * @return Form
-	 */
-	function RootForm() {
-		$siteConfig = SiteConfig::current_site_config();
-		$fields = $siteConfig->getCMSFields();
-
-		$actions = $siteConfig->getCMSActions();
-		$form = new Form($this, 'RootForm', $fields, $actions);
-		$form->addExtraClass('root-form');
-		$form->addExtraClass('cms-edit-form');
-		// TODO Can't merge $FormAttributes in template at the moment
-		$form->addExtraClass('cms-content center ss-tabset');
-		if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
-		$form->setHTMLID('Form_EditForm');
-		$form->loadDataFrom($siteConfig);
-		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
-
-		// Use <button> to allow full jQuery UI styling
-		foreach($actions->dataFields() as $action) $action->setUseButtonTag(true);
-
-		$this->extend('updateEditForm', $form);
-
-		return $form;
 	}
 	
 	public function currentPageID() {
@@ -1315,44 +1286,19 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		);
 	}
 
-	/**
-	 * Provide the permission codes used by LeftAndMain.
-	 * Can't put it on LeftAndMain since that's an abstract base class.
-	 */
 	function providePermissions() {
-		$classes = ClassInfo::subclassesFor('LeftAndMain');
-
-		foreach($classes as $i => $class) {
-			$title = _t("{$class}.MENUTITLE", LeftAndMain::menu_title_for_class($class));
-			$perms["CMS_ACCESS_" . $class] = array(
-				'name' => sprintf(_t(
-					'CMSMain.ACCESS', 
-					"Access to '%s' section",
-					PR_MEDIUM,
-					"Item in permission selection identifying the admin section. Example: Access to 'Files & Images'"
-				), $title, null),
-				'category' => _t('Permission.CMS_ACCESS_CATEGORY', 'CMS Access')
-			);
-		}
-		$perms["CMS_ACCESS_LeftAndMain"] = array(
-			'name' => _t('CMSMain.ACCESSALLINTERFACES', 'Access to all CMS sections'),
-			'category' => _t('Permission.CMS_ACCESS_CATEGORY', 'CMS Access'),
-			'help' => _t('CMSMain.ACCESSALLINTERFACESHELP', 'Overrules more specific access settings.'),
-			'sort' => -100
+		$title = _t("CMSPagesController.MENUTITLE", LeftAndMain::menu_title_for_class('CMSPagesController'));
+		return array(
+			"CMS_ACCESS_CMSMain" => array(
+				'name' => sprintf(_t('CMSMain.ACCESS', "Access to '%s' section"), $title),
+				'category' => _t('Permission.CMS_ACCESS_CATEGORY', 'CMS Access'),
+				'help' => _t(
+					'CMSMain.ACCESS_HELP',
+					'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
+				),
+				'sort' => -99 // below "CMS_ACCESS_LeftAndMain", but above everything else
+			)
 		);
-
-		$perms['CMS_ACCESS_CMSMain']['help'] = _t(
-			'CMSMain.ACCESS_HELP',
-			'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
-		);
-		$perms['CMS_ACCESS_SecurityAdmin']['help'] = _t(
-			'SecurityAdmin.ACCESS_HELP',
-			'Allow viewing, adding and editing users, as well as assigning permissions and roles to them.'
-		);
-
-		if (isset($perms['CMS_ACCESS_ModelAdmin'])) unset($perms['CMS_ACCESS_ModelAdmin']);
-
-		return $perms;
 	}
 
 }

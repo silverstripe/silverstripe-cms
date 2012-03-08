@@ -28,10 +28,10 @@
 		 * Load folder detail view via controller methods
 		 * rather than built-in GridField view (which is only geared towards showing files).
 		 */
-		$('#Form_EditForm_File .ss-gridfield-item').entwine({
+		$('.AssetAdmin.cms-edit-form .ss-gridfield-item').entwine({
 			onclick: function(e) {
 				// Let actions do their own thing
-				if($(e.target).is('.action')) {
+				if($(e.target).closest('.action').length) {
 					this._super(e);
 					return;
 				}
@@ -45,10 +45,36 @@
 			}
 		});
 
-		$('.cms-edit-form :submit[name=action_delete]').entwine({
+		$('.AssetAdmin.cms-edit-form .action.gridfield-button-delete').entwine({
+			onclick: function(e) {
+				if(!confirm(ss.i18n._t('AssetAdmin.ConfirmDelete'))) return false;
+				
+				this.getGridField().reload({data: [{name: this.attr('name'), value: this.val()}]});
+				e.preventDefault();
+				return false;
+			}
+		});
+
+		$('.AssetAdmin.cms-edit-form :submit[name=action_delete]').entwine({
 			onclick: function(e) {
 				if(!confirm(ss.i18n._t('AssetAdmin.ConfirmDelete'))) return false;
 				else this._super(e);
+			}
+		});
+
+		/**
+		 * Prompt for a new foldername, rather than using dedicated form.
+		 * Better usability, but less flexibility in terms of inputs and validation.
+		 * Mainly necessary because AssetAdmin->AddForm() returns don't play nicely
+		 * with the nested AssetAdmin->EditForm() DOM structures.
+		 */
+		$('.AssetAdmin .cms-add-folder-link').entwine({
+			onclick: function(e) {
+				var name = prompt(ss.i18n._t('Folder.Name'));
+				if(!name) return false;
+
+				this.closest('.cms-container').loadPanel(this.data('url') + '&Name=' + name);
+				return false;
 			}
 		});
 

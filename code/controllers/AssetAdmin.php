@@ -6,7 +6,7 @@
  * @package cms
  * @subpackage assets
  */
-class AssetAdmin extends LeftAndMain {
+class AssetAdmin extends LeftAndMain implements PermissionProvider{
 
 	static $url_segment = 'assets';
 	
@@ -30,7 +30,7 @@ class AssetAdmin extends LeftAndMain {
 		'removefile',
 		'savefile',
 		'deleteUnusedThumbnails' => 'ADMIN',
-		'SyncForm',
+		'doSync',
 		'filter',
 	);
 	
@@ -122,8 +122,8 @@ JS
 			new GridFieldSortableHeader(),
 			new GridFieldDefaultColumns(),
 			new GridFieldPaginator(15),
-			new GridFieldAction_Edit(),
-			new GridFieldAction_Delete(),
+			new GridFieldDeleteAction(),
+			new GridFieldEditAction(),
 			new GridFieldPopupForms()
 		);
 		$gridField = new GridField('File','Files', $this->getList(), $gridFieldConfig);
@@ -160,13 +160,32 @@ JS
 			$addFolderBtn = new LiteralField(
 				'AddFolderButton', 
 				sprintf(
-					'<a class="ss-ui-button ss-ui-action-constructive cms-panel-link cms-page-add-button" data-icon="add" href="%s">%s</a>',
+					'<a class="ss-ui-button ss-ui-action-constructive cms-add-folder-link" data-icon="add" data-url="%s" href="%s">%s</a>',
+					Controller::join_links($this->Link('AddForm'), '?' . http_build_query(array(
+						'action_doAdd' => 1,
+						'ParentID' => $folder->ID,
+						'SecurityID' => $form->getSecurityToken()->getValue()
+					))),
 					Controller::join_links($this->Link('addfolder'), '?ParentID=' . $folder->ID),
 					_t('Folder.AddFolderButton', 'Add folder')
 				)
 			);
 		} else {
 			$addFolderBtn = '';
+		}
+
+		if($folder->canEdit()) {
+			$syncButton = new LiteralField(
+				'SyncButton',
+				sprintf(
+					'<a class="ss-ui-button ss-ui-action cms-link-ajax" title="%s" href="%s">%s</a>',
+					_t('AssetAdmin.FILESYSTEMSYNCTITLE', 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'),
+					$this->Link('doSync'),
+					_t('FILESYSTEMSYNC','Sync files')
+				)
+			);
+		} else {
+			$syncButton = null;
 		}
 		
 		// Move existing fields to a "details" tab, unless they've already been tabbed out through extensions.
@@ -177,8 +196,11 @@ JS
 				$tabList = new Tab('ListView', _t('AssetAdmin.ListView', 'List View')),
 				$tabTree = new Tab('TreeView', _t('AssetAdmin.TreeView', 'Tree View'))
 			);
+			$tabList->addExtraClass("content-listview");
+			$tabTree->addExtraClass("content-treeview");
 			if($fields->Count() && $folder->exists()) {
 				$tabs->push($tabDetails = new Tab('DetailsView', _t('AssetAdmin.DetailsView', 'Details')));
+				$tabDetails->addExtraClass("content-galleryview");
 				foreach($fields as $field) {
 					$fields->removeByName($field->Name());
 					$tabDetails->push($field);
@@ -186,13 +208,14 @@ JS
 			}
 			$fields->push($tabs);
 		}
-		
+
 		// List view
 		$fields->addFieldsToTab('Root.ListView', array(
 			$actionsComposite = Object::create('CompositeField',
 				Object::create('CompositeField',
 					$uploadBtn,
-					$addFolderBtn
+					$addFolderBtn,
+					$syncButton //TODO: add this into a batch actions menu as in https://github.com/silverstripe/silverstripe-design/raw/master/Design/ss3-ui_files-manager-list-view.jpg
 				)->addExtraClass('cms-actions-row')
 			)->addExtraClass('cms-content-toolbar field'),
 			$gridField
@@ -217,10 +240,9 @@ JS
 		));
 
 		$fields->setForm($form);
-		$form->addExtraClass('cms-edit-form');
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 		// TODO Can't merge $FormAttributes in template at the moment
-		$form->addExtraClass('center ss-tabset ' . $this->BaseCSSClasses());
+		$form->addExtraClass('cms-edit-form cms-panel-padded center ' . $this->BaseCSSClasses());
 		$form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 
 		$this->extend('updateEditForm', $form);
@@ -318,9 +340,9 @@ JS
 		$fields->dataFieldByName('ParentID')->setValue($this->request->getVar('ParentID'));
 		$form->setFields($fields);
 
-		$form->addExtraClass('cms-edit-form');
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
-		$form->addExtraClass('center ' . $this->BaseCSSClasses());
+		// TODO Can't merge $FormAttributes in template at the moment
+		$form->addExtraClass('cms-add-form cms-edit-form cms-panel-padded center ' . $this->BaseCSSClasses());
 		
 		return $form;
 	}
@@ -341,20 +363,23 @@ JS
 			singleton($class)->hasExtension('Hierarchy') 
 			&& isset($data['ParentID'])
 			&& is_numeric($data['ParentID'])
+			&& $data['ParentID']
 		) {
 			$parentRecord = DataObject::get_by_id($class, $data['ParentID']);
 			if(
 				$parentRecord->hasMethod('canAddChildren') 
 				&& !$parentRecord->canAddChildren()
 			) return Security::permissionFailure($this);
+		} else {
+			$parentRecord = null;
 		}
 
 		$parent = (isset($data['ParentID']) && is_numeric($data['ParentID'])) ? (int)$data['ParentID'] : 0;
 		$name = (isset($data['Name'])) ? basename($data['Name']) : _t('AssetAdmin.NEWFOLDER',"NewFolder");
-		if(!isset($parentRecord) || !$parentRecord->ID) $parent = 0;
+		if(!$parentRecord || !$parentRecord->ID) $parent = 0;
 		
 		// Get the folder to be created		
-		if(isset($parentRecord->ID)) $filename = $parentRecord->FullPath . $name;
+		if($parentRecord && $parentRecord->ID) $filename = $parentRecord->FullPath . $name;
 		else $filename = ASSETS_PATH . '/' . $name;
 
 		// Actually create
@@ -380,14 +405,10 @@ JS
 		mkdir($record->FullPath);
 		chmod($record->FullPath, Filesystem::$file_create_mask);
 
-		if($this->isAjax()) {
-			$link = Controller::join_links($this->Link('show'), $record->ID);
-			$this->getResponse()->addHeader('X-ControllerURL', $link);
-			$form = $this->getEditForm($record->ID);
-			return $form->forTemplate();
-		} else {
-			return $this->redirect(Controller::join_links($this->Link('show'), $record->ID));
-		}
+		$parentID = $parentRecord ? $parentRecord->ID : 'root';
+		$link = Controller::join_links($this->Link('show'), $parentID);
+		$this->getResponse()->addHeader('X-ControllerURL', $link);
+		return $this->redirect($link);
 	}
 
 	/**
@@ -419,28 +440,15 @@ JS
 	//------------------------------------------------------------------------------------------//
 
 	// Data saving handlers
+
 	/**
-	 * @return Form
+	 * Can be queried with an ajax request to trigger the filesystem sync. It returns a FormResponse status message
+	 * to display in the CMS
 	 */
-	public function SyncForm() {
-		$form = new Form(
-			$this,
-			'SyncForm',
-			new FieldList(
-			),
-			new FieldList(
-				FormAction::create('doSync', _t('FILESYSTEMSYNC','Look for new files'))
-					->describe(_t('AssetAdmin_left.ss.FILESYSTEMSYNC_DESC', 'SilverStripe maintains its own database of the files &amp; images stored in your assets/ folder.  Click this button to update that database, if files are added to the assets/ folder from outside SilverStripe, for example, if you have uploaded files via FTP.'))
-					->setUseButtonTag(true)
-			)
-		);
-		$form->setFormMethod('GET');
-		
-		return $form;
-	}
-	
-	public function doSync($data, $form) {
-		return Filesystem::sync();
+	public function doSync() {
+		$message = Filesystem::sync();
+		FormResponse::status_message($message, 'good');
+		echo FormResponse::respond();
 	}
 	
 	/**
@@ -541,9 +549,6 @@ JS
 	public function Breadcrumbs($unlinked = false) {
 		$items = parent::Breadcrumbs($unlinked);
 
-		// The root element should explicitly point to the root node
-		$items[0]->Link = Controller::join_links($this->Link('show'), 'root');
-
 		// If a search is in progress, don't show the path
 		if($this->request->requestVar('q')) {
 			$items = $items->getRange(0, 1);
@@ -553,7 +558,25 @@ JS
 			)));
 		}
 
+		// If we're adding a folder, note that in breadcrumbs as well
+		if($this->request->param('Action') == 'addfolder') {
+			$items->push(new ArrayData(array(
+				'Title' => _t('Folder.AddFolderButton', 'Add folder'),
+				'Link' => false
+			)));
+		}
+
 		return $items;
+	}
+
+	function providePermissions() {
+		$title = _t("AssetAdmin.MENUTITLE", LeftAndMain::menu_title_for_class($this->class));
+		return array(
+			"CMS_ACCESS_AssetAdmin" => array(
+				'name' => sprintf(_t('CMSMain.ACCESS', "Access to '%s' section"), $title),
+				'category' => _t('Permission.CMS_ACCESS_CATEGORY', 'CMS Access')
+			)
+		);
 	}
 	
 }
