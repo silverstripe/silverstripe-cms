@@ -123,8 +123,8 @@ JS
 			new GridFieldDefaultColumns(),
 			new GridFieldPaginator(15),
 			new GridFieldDeleteAction(),
-			new GridFieldEditAction(),
-			new GridFieldPopupForms()
+			new GridFieldEditButton(),
+			new GridFieldDetailForm()
 		);
 		$gridField = new GridField('File','Files', $this->getList(), $gridFieldConfig);
 		$gridField->setDisplayFields(array(
