@@ -23,7 +23,8 @@ class CMSFileAddController extends LeftAndMain {
 	 */
 	public function currentPage() {
 		$id = $this->currentPageID();
-		if($id && is_numeric($id)) {
+
+		if($id && is_numeric($id) && $id > 0) {
 			return DataObject::get_by_id('Folder', $id);
 		} else {
 			// ID is either '0' or 'root'
@@ -35,14 +36,14 @@ class CMSFileAddController extends LeftAndMain {
 	 * Return fake-ID "root" if no ID is found (needed to upload files into the root-folder)
 	 */
 	public function currentPageID() {
-		if($this->request->requestVar('ID'))	{
+		if(is_numeric($this->request->requestVar('ID')))	{
 			return $this->request->requestVar('ID');
 		} elseif (is_numeric($this->urlParams['ID'])) {
 			return $this->urlParams['ID'];
 		} elseif(Session::get("{$this->class}.currentPage")) {
 			return Session::get("{$this->class}.currentPage");
 		} else {
-			return "root";
+			return 0;
 		}
 	}
 
@@ -62,10 +63,13 @@ class CMSFileAddController extends LeftAndMain {
 		$uploadField->addExtraClass('ss-assetuploadfield');
 		$uploadField->removeExtraClass('ss-uploadfield');
 		$uploadField->setTemplate('AssetUploadField');
+
 		if ($folder->exists() && $folder->getFilename()) {
 			// The Upload class expects a folder relative *within* assets/
 			$path = preg_replace('/^' . ASSETS_DIR . '\//', '', $folder->getFilename());
 			$uploadField->setFolderName($path);
+		} else {
+			$uploadField->setFolderName(ASSETS_DIR);
 		}
 
 		$form = new Form(
@@ -99,8 +103,15 @@ class CMSFileAddController extends LeftAndMain {
 		$items = parent::Breadcrumbs($unlinked);
 
 		// The root element should explicitly point to the root node.
-		// Used in CMSFileAddController subclass as well, so specifically link to AssetAdmin
-		$items[0]->Link = Controller::join_links(singleton('AssetAdmin')->Link('show'), 'root');
+		$items[0]->Link = Controller::join_links(singleton('AssetAdmin')->Link('show'), 0);
+
+		// Enforce linkage of hierarchy to AssetAdmin
+		foreach($items as $item) {
+			$baselink = $this->Link('show');
+			if(strpos($item->Link, $baselink) !== false) {
+				$item->Link = str_replace($baselink, singleton('AssetAdmin')->Link('show'), $item->Link);
+			}
+		}
 
 		$items->push(new ArrayData(array(
 			'Title' => _t('AssetAdmin.Upload', 'Upload'),

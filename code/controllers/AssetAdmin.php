@@ -38,14 +38,14 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 	 * Return fake-ID "root" if no ID is found (needed to upload files into the root-folder)
 	 */
 	public function currentPageID() {
-		if($this->request->requestVar('ID'))	{
+		if(is_numeric($this->request->requestVar('ID')))	{
 			return $this->request->requestVar('ID');
 		} elseif (is_numeric($this->urlParams['ID'])) {
 			return $this->urlParams['ID'];
 		} elseif(Session::get("{$this->class}.currentPage")) {
 			return Session::get("{$this->class}.currentPage");
 		} else {
-			return "root";
+			return 0;
 		}
 	}
 
@@ -318,7 +318,7 @@ JS
 		
 		$form = new Form($this, 'filter', $fields, $actions);
 		$form->setFormMethod('GET');
-		$form->setFormAction(Controller::join_links($this->Link('show'), $folder->ID ? $folder->ID : 'root'));
+		$form->setFormAction(Controller::join_links($this->Link('show'), $folder->ID));
 		$form->addExtraClass('cms-search-form');
 		$form->loadDataFrom($this->request->getVars());
 		$form->disableSecurityToken();
@@ -405,8 +405,7 @@ JS
 		mkdir($record->FullPath);
 		chmod($record->FullPath, Filesystem::$file_create_mask);
 
-		$parentID = $parentRecord ? $parentRecord->ID : 'root';
-		$link = Controller::join_links($this->Link('show'), $parentID);
+		$link = Controller::join_links($this->Link('show'), $parentRecord->ID);
 		$this->getResponse()->addHeader('X-ControllerURL', $link);
 		return $this->redirect($link);
 	}
@@ -416,10 +415,9 @@ JS
 	 */
 	public function currentPage() {
 		$id = $this->currentPageID();
-		if($id && is_numeric($id)) {
+		if($id && is_numeric($id) && $id > 0) {
 			return DataObject::get_by_id('Folder', $id);
 		} else {
-			// ID is either '0' or 'root'
 			return singleton('Folder');
 		}
 	}
@@ -548,6 +546,10 @@ JS
 	 */
 	public function Breadcrumbs($unlinked = false) {
 		$items = parent::Breadcrumbs($unlinked);
+
+		// The root element should explicitly point to the root node.
+		// Uses session state for current record otherwise.
+		$items[0]->Link = Controller::join_links(singleton('AssetAdmin')->Link('show'), 0);
 
 		// If a search is in progress, don't show the path
 		if($this->request->requestVar('q')) {
