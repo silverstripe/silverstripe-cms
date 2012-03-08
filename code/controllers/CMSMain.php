@@ -38,7 +38,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'publishall',
 		'publishitems',
 		'PublishItemsForm',
-		'RootForm',
 		'sidereport',
 		'SideReportsForm',
 		'submit',
@@ -525,40 +524,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$this->extend('updateEditForm', $form);
 
 			return $form;
-		} if ($id == 0 || $id == 'root') {
-			return $this->RootForm();
 		} else if($id) {
 			return new Form($this, "EditForm", new FieldList(
 				new LabelField('PageDoesntExistLabel',_t('CMSMain.PAGENOTEXISTS',"This page doesn't exist"))), new FieldList()
 			);
 		}
-	}
-
-	/**
-	 * @return Form
-	 */
-	function RootForm() {
-		$siteConfig = SiteConfig::current_site_config();
-		$fields = $siteConfig->getCMSFields();
-
-		$actions = $siteConfig->getCMSActions();
-		$form = new Form($this, 'RootForm', $fields, $actions);
-		$form->addExtraClass('root-form');
-		$form->addExtraClass('cms-edit-form');
-		// TODO Can't merge $FormAttributes in template at the moment
-		$form->addExtraClass('cms-content center ss-tabset');
-		if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
-		$form->setHTMLID('Form_EditForm');
-		$form->loadDataFrom($siteConfig);
-		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
-
-		// Use <button> to allow full jQuery UI styling
-		$actions = $actions->dataFields();
-		if($actions) foreach($actions as $action) $action->setUseButtonTag(true);
-
-		$this->extend('updateEditForm', $form);
-
-		return $form;
 	}
 	
 	public function currentPageID() {
