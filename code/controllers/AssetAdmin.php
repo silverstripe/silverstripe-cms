@@ -160,7 +160,12 @@ JS
 			$addFolderBtn = new LiteralField(
 				'AddFolderButton', 
 				sprintf(
-					'<a class="ss-ui-button ss-ui-action-constructive cms-panel-link" data-icon="add" href="%s">%s</a>',
+					'<a class="ss-ui-button ss-ui-action-constructive cms-add-folder-link" data-icon="add" data-url="%s" href="%s">%s</a>',
+					Controller::join_links($this->Link('AddForm'), '?' . http_build_query(array(
+						'action_doAdd' => 1,
+						'ParentID' => $folder->ID,
+						'SecurityID' => $form->getSecurityToken()->getValue()
+					))),
 					Controller::join_links($this->Link('addfolder'), '?ParentID=' . $folder->ID),
 					_t('Folder.AddFolderButton', 'Add folder')
 				)
@@ -335,9 +340,9 @@ JS
 		$fields->dataFieldByName('ParentID')->setValue($this->request->getVar('ParentID'));
 		$form->setFields($fields);
 
-		$form->addExtraClass('cms-edit-form');
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
-		$form->addExtraClass('center ' . $this->BaseCSSClasses());
+		// TODO Can't merge $FormAttributes in template at the moment
+		$form->addExtraClass('cms-add-form cms-edit-form cms-panel-padded center ' . $this->BaseCSSClasses());
 		
 		return $form;
 	}
@@ -358,20 +363,23 @@ JS
 			singleton($class)->hasExtension('Hierarchy') 
 			&& isset($data['ParentID'])
 			&& is_numeric($data['ParentID'])
+			&& $data['ParentID']
 		) {
 			$parentRecord = DataObject::get_by_id($class, $data['ParentID']);
 			if(
 				$parentRecord->hasMethod('canAddChildren') 
 				&& !$parentRecord->canAddChildren()
 			) return Security::permissionFailure($this);
+		} else {
+			$parentRecord = null;
 		}
 
 		$parent = (isset($data['ParentID']) && is_numeric($data['ParentID'])) ? (int)$data['ParentID'] : 0;
 		$name = (isset($data['Name'])) ? basename($data['Name']) : _t('AssetAdmin.NEWFOLDER',"NewFolder");
-		if(!isset($parentRecord) || !$parentRecord->ID) $parent = 0;
+		if(!$parentRecord || !$parentRecord->ID) $parent = 0;
 		
 		// Get the folder to be created		
-		if(isset($parentRecord->ID)) $filename = $parentRecord->FullPath . $name;
+		if($parentRecord && $parentRecord->ID) $filename = $parentRecord->FullPath . $name;
 		else $filename = ASSETS_PATH . '/' . $name;
 
 		// Actually create
@@ -397,14 +405,10 @@ JS
 		mkdir($record->FullPath);
 		chmod($record->FullPath, Filesystem::$file_create_mask);
 
-		if($this->isAjax()) {
-			$link = Controller::join_links($this->Link('show'), $record->ID);
-			$this->getResponse()->addHeader('X-ControllerURL', $link);
-			$form = $this->getEditForm($record->ID);
-			return $form->forTemplate();
-		} else {
-			return $this->redirect(Controller::join_links($this->Link('show'), $record->ID));
-		}
+		$parentID = $parentRecord ? $parentRecord->ID : 'root';
+		$link = Controller::join_links($this->Link('show'), $parentID);
+		$this->getResponse()->addHeader('X-ControllerURL', $link);
+		return $this->redirect($link);
 	}
 
 	/**
@@ -560,6 +564,14 @@ JS
 			$items->push(new ArrayData(array(
 				'Title' => _t('LeftAndMain.SearchResults', 'Search Results'),
 				'Link' => Controller::join_links($this->Link(), '?' . http_build_query(array('q' => $this->request->requestVar('q'))))
+			)));
+		}
+
+		// If we're adding a folder, note that in breadcrumbs as well
+		if($this->request->param('Action') == 'addfolder') {
+			$items->push(new ArrayData(array(
+				'Title' => _t('Folder.AddFolderButton', 'Add folder'),
+				'Link' => false
 			)));
 		}
 

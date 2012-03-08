@@ -53,6 +53,22 @@
 		});
 
 		/**
+		 * Prompt for a new foldername, rather than using dedicated form.
+		 * Better usability, but less flexibility in terms of inputs and validation.
+		 * Mainly necessary because AssetAdmin->AddForm() returns don't play nicely
+		 * with the nested AssetAdmin->EditForm() DOM structures.
+		 */
+		$('.AssetAdmin .cms-add-folder-link').entwine({
+			onclick: function(e) {
+				var name = prompt(ss.i18n._t('Folder.Name'));
+				if(!name) return false;
+
+				this.closest('.cms-container').loadPanel(this.data('url') + '&Name=' + name);
+				return false;
+			}
+		});
+
+		/**
 		 * Class: #Form_SyncForm
 		 */
 		$('#Form_SyncForm').entwine({
