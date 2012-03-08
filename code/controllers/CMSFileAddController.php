@@ -1,9 +1,11 @@
 <?php
-class CMSFileAddController extends AssetAdmin {
+class CMSFileAddController extends LeftAndMain {
 
 	static $url_segment = 'assets/add';
 	static $url_priority = 60;
 	static $required_permission_codes = 'CMS_ACCESS_AssetAdmin';
+	static $menu_title = 'Files';
+	public static $tree_class = 'Folder';
 	
 //	public function upload($request) {
 //		$formHtml = $this->renderWith(array('AssetAdmin_UploadContent'));
@@ -15,10 +17,33 @@ class CMSFileAddController extends AssetAdmin {
 //			))->renderWith(array('AssetAdmin', 'LeftAndMain'));
 //		}
 //	}
-	
-	public function Content() {
-		// Disable AssetAdmin layout including the search panel
-		return $this->renderWith('LeftAndMain_Content');
+
+	/**
+	 * Custom currentPage() method to handle opening the 'root' folder
+	 */
+	public function currentPage() {
+		$id = $this->currentPageID();
+		if($id && is_numeric($id)) {
+			return DataObject::get_by_id('Folder', $id);
+		} else {
+			// ID is either '0' or 'root'
+			return singleton('Folder');
+		}
+	}
+
+	/**
+	 * Return fake-ID "root" if no ID is found (needed to upload files into the root-folder)
+	 */
+	public function currentPageID() {
+		if($this->request->requestVar('ID'))	{
+			return $this->request->requestVar('ID');
+		} elseif (is_numeric($this->urlParams['ID'])) {
+			return $this->urlParams['ID'];
+		} elseif(Session::get("{$this->class}.currentPage")) {
+			return Session::get("{$this->class}.currentPage");
+		} else {
+			return "root";
+		}
 	}
 
 	/**
@@ -51,7 +76,7 @@ class CMSFileAddController extends AssetAdmin {
 		);
 		$form->addExtraClass('center cms-edit-form ' . $this->BaseCSSClasses());
 		// Don't use AssetAdmin_EditForm, as it assumes a different panel structure
-		$form->setTemplate('LeftAndMain_EditForm');
+		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 		$form->Fields()->push(
 			new LiteralField(
 				'BackLink',
@@ -68,10 +93,21 @@ class CMSFileAddController extends AssetAdmin {
 	}
 
 	/**
-	 * Disable AssetAdmin search panel
+	 * @return ArrayList
 	 */
-	function Tools() {
-		return false;
+	public function Breadcrumbs($unlinked = false) {
+		$items = parent::Breadcrumbs($unlinked);
+
+		// The root element should explicitly point to the root node.
+		// Used in CMSFileAddController subclass as well, so specifically link to AssetAdmin
+		$items[0]->Link = Controller::join_links(singleton('AssetAdmin')->Link('show'), 'root');
+
+		$items->push(new ArrayData(array(
+			'Title' => _t('AssetAdmin.Upload', 'Upload'),
+			'Link' => $this->Link()
+		)));
+		
+		return $items;
 	}
 
 }
