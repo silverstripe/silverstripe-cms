@@ -39,6 +39,10 @@ class CMSPagesController extends CMSMain {
 		return false;
 	}
 
+	function AddLink() {
+		return singleton("CMSPageAddController")->Link();
+	}
+
 	public function currentPageID() {
 		return false;
 	}
