@@ -868,19 +868,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return $form->forTemplate();
 	}
 
-	function sendFormToBrowser($templateData) {
-		if(Director::is_ajax()) {
-			SSViewer::setOption('rewriteHashlinks', false);
-			$result = $this->customise($templateData)->renderWith($this->class . '_right');
-			$parts = split('</?form[^>]*>', $result);
-			return $parts[sizeof($parts)-2];
-		} else {
-			return array(
-				"Right" => $this->customise($templateData)->renderWith($this->class . '_right'),
-			);
-		}
-	}
-
 	/**
 	 * Batch Actions Handler
 	 */
