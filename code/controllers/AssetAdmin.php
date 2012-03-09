@@ -120,7 +120,7 @@ JS
 		// File listing
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
 			new GridFieldSortableHeader(),
-			new GridFieldDefaultColumns(),
+			new GridFieldDataColumns(),
 			new GridFieldPaginator(15),
 			new GridFieldDeleteAction(),
 			new GridFieldEditButton(),
