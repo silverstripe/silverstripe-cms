@@ -198,9 +198,9 @@ class CMSMainTest extends FunctionalTest {
 
 		// with insufficient permissions
 		$cmsUser->logIn();
-		$this->get('admin/pages');
+		$this->get('admin/page/add');
 		$response = $this->post(
-			'admin/pages/AddForm', 
+			'admin/page/add/AddForm', 
 			array('ParentID' => '0', 'ClassName' => 'Page', 'Locale' => 'en_US', 'action_doAdd' => 1)
 		);
 		// should redirect, which is a permission error
@@ -208,10 +208,10 @@ class CMSMainTest extends FunctionalTest {
 
 		// with correct permissions
 		$rootEditUser->logIn();
-		$response = $this->get('admin/pages/');
+		$response = $this->get('admin/page/add');
 
 		$response = $this->post(
-			'admin/pages/AddForm', 
+			'admin/page/add/AddForm', 
 			array('ParentID' => '0', 'ClassName' => 'Page', 'Locale' => 'en_US', 'action_doAdd' => 1)
 		);
 

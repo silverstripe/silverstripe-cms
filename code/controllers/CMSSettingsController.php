@@ -32,6 +32,23 @@ class CMSSettingsController extends CMSMain {
 
 		return $form;
 	}
+
+	/**
+	 * Save the current sites {@link SiteConfig} into the database
+	 *
+	 * @param array $data 
+	 * @param Form $form 
+	 * @return String
+	 */
+	function save_siteconfig($data, $form) {
+		$siteConfig = SiteConfig::current_site_config();
+		$form->saveInto($siteConfig);
+		$siteConfig->write();
+		
+		$this->response->addHeader('X-Status', _t('LeftAndMain.SAVEDUP'));
+	
+		return $form->forTemplate();
+	}
 	
 	function PreviewLink() {
 		return false;

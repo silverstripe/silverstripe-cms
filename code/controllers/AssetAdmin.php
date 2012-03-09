@@ -328,21 +328,23 @@ JS
 	}
 	
 	public function AddForm() {
-		$form = parent::AddForm();
 		$folder = singleton('Folder');
-
-		$form->Actions()->fieldByName('action_doAdd')
-			->setTitle(_t('AssetAdmin.ActionAdd', 'Add folder'))
-			->setAttribute('data-icon', 'accept');
-		
-		$fields = $folder->getCMSFields();
-		$fields->replaceField('Name', new TextField("Name", _t('File.Name')));
-		$fields->dataFieldByName('ParentID')->setValue($this->request->getVar('ParentID'));
-		$form->setFields($fields);
-
+		$form = new Form(
+			$this,
+			'AddForm',
+			new FieldList(
+				new TextField("Name", _t('File.Name')),
+				new HiddenField('ParentID', false, $this->request->getVar('ParentID'))
+			),
+			new FieldList(
+				FormAction::create('doAdd', _t('AssetAdmin_left.ss.GO','Go'))
+					->addExtraClass('ss-ui-action-constructive')->setAttribute('data-icon', 'accept')
+					->setTitle(_t('AssetAdmin.ActionAdd', 'Add folder'))
+			)
+		);
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 		// TODO Can't merge $FormAttributes in template at the moment
-		$form->addExtraClass('cms-add-form cms-edit-form cms-panel-padded center ' . $this->BaseCSSClasses());
+		$form->addExtraClass('add-form cms-add-form cms-edit-form cms-panel-padded center ' . $this->BaseCSSClasses());
 		
 		return $form;
 	}
