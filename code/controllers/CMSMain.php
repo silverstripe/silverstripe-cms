@@ -620,10 +620,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return $form->forTemplate();
 	}
 
-
 	public function doAdd($data, $form) {
 		$className = isset($data['PageType']) ? $data['PageType'] : "Page";
+		$parentMode = isset($data['ParentModeField']) ? $data['ParentModeField'] : "top";
 		$parentID = isset($data['ParentID']) ? (int)$data['ParentID'] : 0;
+
+		if ($parentMode == "top") $parentID = 0;
+
 		$suffix = isset($data['Suffix']) ? "-" . $data['Suffix'] : null;
 
 		if(!$parentID && isset($data['Parent'])) {
@@ -1069,10 +1072,17 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			// new HiddenField("ParentID", false, ($this->parentRecord) ? $this->parentRecord->ID : null),
 			// TODO Should be part of the form attribute, but not possible in current form API
 			$hintsField = new LiteralField('Hints', sprintf('<span class="hints" data-hints="%s"></span>', $this->SiteTreeHints())),
-			$parentField = new TreeDropdownField(
-				"ParentID", 
-				sprintf($numericLabelTmpl, 1, _t('CMSMain.AddFormParentLabel', 'Choose parent')), 
-				'SiteTree'
+			new LiteralField('PageModeHeader', sprintf($numericLabelTmpl, 1, _t('CMSMain.ChoosePageParentMode', 'Choose where to create this page'))),
+			$parentModeField = new SelectionGroup(
+				"ParentModeField",
+				array(
+					"top//Top level" => null, //new LiteralField("Dummy", ''),
+					"child//Under another page" => $parentField = new TreeDropdownField(
+						"ParentID", 
+						"",
+						'SiteTree'
+					)
+				)
 			),
 			$typeField = new OptionsetField(
 				"PageType", 
@@ -1082,6 +1092,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			)
 		);
 		$parentField->setShowSearch(true);
+
+		$parentModeField->setValue("child");
 
 		// CMSMain->currentPageID() automatically sets the homepage,
 		// which we need to counteract in the default selection (which should default to root, ID=0)
