@@ -47,7 +47,13 @@
 
 		$('.AssetAdmin.cms-edit-form .action.gridfield-button-delete').entwine({
 			onclick: function(e) {
-				if(!confirm(ss.i18n._t('AssetAdmin.ConfirmDelete'))) return false;
+				var msg;
+				if(this.closest('.ss-gridfield-item').data('class') == 'Folder') {
+					msg = ss.i18n._t('AssetAdmin.ConfirmDelete');
+				} else {
+					msg = ss.i18n._t('TABLEFIELD.DELETECONFIRMMESSAGE');
+				} 
+				if(!confirm(msg)) return false;	
 				
 				this.getGridField().reload({data: [{name: this.attr('name'), value: this.val()}]});
 				e.preventDefault();
@@ -57,7 +63,7 @@
 
 		$('.AssetAdmin.cms-edit-form :submit[name=action_delete]').entwine({
 			onclick: function(e) {
-				if(!confirm(ss.i18n._t('AssetAdmin.ConfirmDelete'))) return false;
+				if(!confirm(ss.i18n._t('AssetAdmin.ConfirmDelete'))) return false;	
 				else this._super(e);
 			}
 		});
