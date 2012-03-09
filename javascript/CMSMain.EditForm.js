@@ -189,7 +189,15 @@
 				else if(this.attr('id') == 'CanCreateTopLevelType') dropdown = $('#CreateTopLevelGroups');
 		
 				this.find('.optionset :input').bind('change', function(e) {
-					dropdown[e.target.value == 'OnlyTheseUsers' ? 'show' : 'hide']();
+					var wrapper = $(this).closest('.middleColumn').parent('div');
+					if(e.target.value == 'OnlyTheseUsers') {
+						wrapper.addClass('remove-splitter');
+						dropdown['show']();
+					}
+					else {
+						wrapper.removeClass('remove-splitter');
+						dropdown['hide']();	
+					}
 				});
 		
 				// initial state
