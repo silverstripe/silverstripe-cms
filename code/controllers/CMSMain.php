@@ -38,8 +38,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'publishall',
 		'publishitems',
 		'PublishItemsForm',
-		'sidereport',
-		'SideReportsForm',
 		'submit',
 		'EditForm',
 		'AddForm',
@@ -841,99 +839,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			return ($liveRecord) ? $form->forTemplate() : "";
 		} else {
 			$this->redirectBack();
-		}
-	}
-	
-	/**
-	 * @return Array
-	 */
-	function SideReports() {
-		return SS_Report::get_reports('SideReport');
-	}
-	
-	/**
-	 * @return Form
-	 */
-	function SideReportsForm() {
-		$record = $this->currentPage();
-		
-		foreach($this->SideReports() as $report) {
-			if($report->canView()) {
-			 	$options[$report->group()][$report->sort()][$report->ID()] = $report->title();
-			}
-		}
-		
-		$finalOptions = array();
-		foreach($options as $group => $weights) {
-			ksort($weights);
-			foreach($weights as $weight => $reports) {
-				foreach($reports as $class => $report) {
-					$finalOptions[$group][$class] = $report;
-				}
-			}
-		}
-		
-		$selectorField = new GroupedDropdownField("ReportClass", _t('CMSMain.REPORT', 'Report'),$finalOptions);
-		
-		$form = new Form(
-			$this,
-			'SideReportsForm',
-			new FieldList(
-				$selectorField,
-				new HiddenField('ID', false, ($record) ? $record->ID : null),
-				new HiddenField('Locale', false, $this->Locale)
-			),
-			new FieldList(
-				FormAction::create('doShowSideReport', _t('CMSMain_left.ss.GO','Go'))->setUseButtonTag(true)
-			)
-		);
-		$form->unsetValidator();
-		
-		$this->extend('updateSideReportsForm', $form);
-		
-		return $form;
-	}
-	
-	/**
-	 * Generate the parameter HTML for SideReports that have params
-	 *
-	 * @return LiteralField
-	 */
-	function ReportFormParameters() {
-		$forms = array();
-		foreach($this->SideReports() as $report) {
-			if ($report->canView()) {
-				if ($fieldset = $report->parameterFields()) {
-					$formHtml = '';
-					foreach($fieldset as $field) {
-						$formHtml .= $field->FieldHolder();
-					}
-					$forms[$report->ID()] = $formHtml;
-				}
-			}
-		}
-		$pageHtml = '';
-		foreach($forms as $class => $html) {
-			$pageHtml .= "<div id=\"SideReportForm_$class\" style=\"display:none\">$html</div>\n\n";
-		} 
-		return new LiteralField("ReportFormParameters", '<div id="SideReportForms" style="display:none">'.$pageHtml.'</div>');
-	}
-	
-	/**
-	 * @return Form
-	 */
-	function doShowSideReport($data, $form) {
-		$reportClass = (isset($data['ReportClass'])) ? $data['ReportClass'] : $this->urlParams['ID'];
-		$reports = $this->SideReports();
-		if(isset($reports[$reportClass])) {
-			$report = $reports[$reportClass];
-			if($report) {
-				$view = new SideReportView($this, $report);
-				$view->setParameters($this->request->requestVars());
-				return $view->forTemplate();
-			} else {
-				return false;
-			}
 		}
 	}
 
