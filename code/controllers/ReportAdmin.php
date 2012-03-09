@@ -94,8 +94,8 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 	}
 	
 	public function updatereport() {
-		FormResponse::load_form($this->EditForm()->forTemplate());
-		return FormResponse::respond();
+		// FormResponse::load_form($this->EditForm()->forTemplate());
+		// return FormResponse::respond();
 	}
 
 	function providePermissions() {

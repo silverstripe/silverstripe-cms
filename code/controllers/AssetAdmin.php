@@ -445,8 +445,8 @@ JS
 	 */
 	public function doSync() {
 		$message = Filesystem::sync();
-		FormResponse::status_message($message, 'good');
-		echo FormResponse::respond();
+		$this->response->addHeader('X-Status', $message);
+		return;
 	}
 	
 	/**
@@ -474,8 +474,8 @@ JS
 		}
 		
 		$message = sprintf(_t('AssetAdmin.THUMBSDELETED', '%s unused thumbnails have been deleted'), $count);
-		FormResponse::status_message($message, 'good');
-		echo FormResponse::respond();
+		$this->response->addHeader('X-Status', $message);
+		return;
 	}
 	
 	/**
