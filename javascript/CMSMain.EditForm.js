@@ -32,10 +32,10 @@
 				this.bind('change', function(e) {
 					if(!self.val()) return;
 					
-					self.attr('disabled', 'disabled').parents('.field:first').addClass('loading');
+					self.addClass('disabled').parents('.field:first').addClass('loading');
 					var oldVal = self.val();
 					self.suggest(oldVal, function(data) {
-						self.removeAttr('disabled').parents('.field:first').removeClass('loading');
+						self.removeClass('disabled').parents('.field:first').removeClass('loading');
 						var newVal = decodeURIComponent(data.value);
 						self.val(newVal);
 						
