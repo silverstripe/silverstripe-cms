@@ -553,7 +553,7 @@ JS
 
 		// If a search is in progress, don't show the path
 		if($this->request->requestVar('q')) {
-			$items = $items->getRange(0, 1);
+			$items = $items->limit(1);
 			$items->push(new ArrayData(array(
 				'Title' => _t('LeftAndMain.SearchResults', 'Search Results'),
 				'Link' => Controller::join_links($this->Link(), '?' . http_build_query(array('q' => $this->request->requestVar('q'))))
