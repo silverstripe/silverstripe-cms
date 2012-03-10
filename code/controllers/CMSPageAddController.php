@@ -33,16 +33,21 @@ class CMSPageAddController extends CMSMain {
 		}
 
 		$numericLabelTmpl = '<span class="step-label"><span class="flyout">%d</span><span class="arrow"></span><span class="title">%s</span></span>';
+
+		$topTitle = _t('CMSPageAddController.ParentMode_top', 'Top level');
+		$childTitle = _t('CMSPageAddController.ParentMode_child', 'Under another page');
+
 		$fields = new FieldList(
 			// new HiddenField("ParentID", false, ($this->parentRecord) ? $this->parentRecord->ID : null),
 			// TODO Should be part of the form attribute, but not possible in current form API
 			$hintsField = new LiteralField('Hints', sprintf('<span class="hints" data-hints="%s"></span>', $this->SiteTreeHints())),
 			new LiteralField('PageModeHeader', sprintf($numericLabelTmpl, 1, _t('CMSMain.ChoosePageParentMode', 'Choose where to create this page'))),
+			
 			$parentModeField = new SelectionGroup(
 				"ParentModeField",
 				array(
-					"top//Top level" => null, //new LiteralField("Dummy", ''),
-					"child//Under another page" => $parentField = new TreeDropdownField(
+					"top//$topTitle" => null, //new LiteralField("Dummy", ''),
+					"child//$childTitle" => $parentField = new TreeDropdownField(
 						"ParentID", 
 						"",
 						'SiteTree'
