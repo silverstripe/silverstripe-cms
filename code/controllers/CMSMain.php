@@ -687,8 +687,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			)
 		);
 
-		// nothing to return
-		return '';
+		// Redirect to pages overview
+		return $this->redirect(singleton('CMSPagesController')->Link());
 	}
 
 	/**
@@ -764,16 +764,20 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				$record->Title
 			)
 		);
+
+		// need a valid ID value even if the record doesn't have one in the database
+		// (its still present in the live tables)
+		$liveRecord = Versioned::get_one_by_stage(
+			'SiteTree', 
+			'Live', 
+			"\"SiteTree_Live\".\"ID\" = $recordID"
+		);
+		// If no live record exists, redirect to pages list
+		if(!$liveRecord) return $this->redirect(singleton('CMSPagesController')->Link());
 		
 		if($this->isAjax()) {
-			// need a valid ID value even if the record doesn't have one in the database
-			// (its still present in the live tables)
-			$liveRecord = Versioned::get_one_by_stage(
-				'SiteTree', 
-				'Live', 
-				"\"SiteTree_Live\".\"ID\" = $recordID"
-			);
-			return ($liveRecord) ? $form->forTemplate() : "";
+			$form = $this->getEditForm($liveRecord->ID);
+			return $form->forTemplate();
 		} else {
 			$this->redirectBack();
 		}
