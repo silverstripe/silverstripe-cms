@@ -443,6 +443,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$actions = $form->Actions();
 
 		if($record) {
+			$deletedFromStage = $record->IsDeletedFromStage;
+			$deleteFromLive = !$record->ExistsOnLive;
+
 			$fields->push($idField = new HiddenField("ID", false, $id));
 			// Necessary for different subsites
 			$fields->push($liveURLField = new HiddenField("AbsoluteLink", false, $record->AbsoluteLink()));
@@ -457,7 +460,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				if($liveRecord) $liveURLField->setValue($liveRecord->AbsoluteLink());
 			}
 			
-			if(!$record->IsDeletedFromStage) {
+			if(!$deletedFromStage) {
 				$stageURLField->setValue(Controller::join_links($record->AbsoluteLink(), '?stage=Stage'));
 			}
 			
@@ -495,7 +498,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$form->addExtraClass('center ss-tabset ' . $this->BaseCSSClasses());
 			if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 
-			if(!$record->canEdit() || $record->IsDeletedFromStage) {
+			if(!$record->canEdit() || $deletedFromStage) {
 				$readonlyFields = $form->Fields()->makeReadonly();
 				$form->setFields($readonlyFields);
 			}
@@ -652,6 +655,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		$descRemoved = '';
 		$descendantsRemoved = 0;
+		$recordTitle = $record->Title;
+		$recordID = $record->ID;
 		
 		// before deleting the records, get the descendants of this tree
 		if($record) {
@@ -678,17 +683,17 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$descRemoved = '';
 		}
 
-		$this->response->addHeader(
-			'X-Status',
+		$form->sessionMessage(
 			sprintf(
 				_t('CMSMain.REMOVED', 'Deleted \'%s\'%s from live site'), 
-				$record->Title, 
+				$recordTitle, 
 				$descRemoved
-			)
+			),
+			'good'
 		);
 
-		// Redirect to pages overview
-		return $this->redirect(singleton('CMSPagesController')->Link());
+		// Even if the record has been deleted from stage and live, it can be viewed in "archive mode"
+		return $this->redirect(Controller::join_links($this->Link('show'), $recordID));
 	}
 
 	/**
@@ -756,31 +761,17 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// save ID and delete record
 		$recordID = $record->ID;
 		$record->delete();
-		
-		$this->response->addHeader(
-			'X-Status',
+
+		$form->sessionMessage(
 			sprintf(
 				_t('CMSMain.REMOVEDPAGEFROMDRAFT',"Removed '%s' from the draft site"),
 				$record->Title
-			)
+			),
+			'good'
 		);
 
-		// need a valid ID value even if the record doesn't have one in the database
-		// (its still present in the live tables)
-		$liveRecord = Versioned::get_one_by_stage(
-			'SiteTree', 
-			'Live', 
-			"\"SiteTree_Live\".\"ID\" = $recordID"
-		);
-		// If no live record exists, redirect to pages list
-		if(!$liveRecord) return $this->redirect(singleton('CMSPagesController')->Link());
-		
-		if($this->isAjax()) {
-			$form = $this->getEditForm($liveRecord->ID);
-			return $form->forTemplate();
-		} else {
-			$this->redirectBack();
-		}
+		// Even if the record has been deleted from stage and live, it can be viewed in "archive mode"
+		return $this->redirect(Controller::join_links($this->Link('show'), $recordID));
 	}
 
 	function publish($data, $form) {
