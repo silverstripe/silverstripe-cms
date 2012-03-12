@@ -63,8 +63,8 @@ class CMSPageAddController extends CMSPageEditController {
 			)
 		);
 		$parentField->setShowSearch(true);
-
-		$parentModeField->setValue("child");
+		$parentModeField->setValue($this->request->getVar('ParentID') ? 'child' : 'top');
+		$parentModeField->addExtraClass('parent-mode');
 
 		// CMSMain->currentPageID() automatically sets the homepage,
 		// which we need to counteract in the default selection (which should default to root, ID=0)
