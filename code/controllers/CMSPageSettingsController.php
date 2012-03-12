@@ -15,4 +15,11 @@ class CMSPageSettingsController extends CMSMain {
 		
 		return parent::getEditForm($record, ($record) ? $record->getSettingsFields() : null);
 	}
+
+	public function Breadcrumbs($unlinked = false) {
+		$crumbs = parent::Breadcrumbs($unlinked);
+		// Remove "root" element, as its already shown in the tree panel
+		$crumbs->shift();
+		return $crumbs;
+	}
 }

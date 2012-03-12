@@ -439,4 +439,11 @@ class CMSPageHistoryController extends CMSMain {
 			return $form;
 		}
 	}
+
+	public function Breadcrumbs($unlinked = false) {
+		$crumbs = parent::Breadcrumbs($unlinked);
+		// Remove "root" element, as its already shown in the tree panel
+		$crumbs->shift();
+		return $crumbs;
+	}
 }
