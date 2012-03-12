@@ -8,7 +8,8 @@ class CMSPageAddController extends CMSPageEditController {
 	static $required_permission_codes = 'CMS_ACCESS_CMSMain';
 
 	static $allowed_actions = array(
-		'AddForm'
+		'AddForm',
+		'doAdd',
 	);
 
 	/**
