@@ -407,9 +407,7 @@ JS
 		mkdir($record->FullPath);
 		chmod($record->FullPath, Filesystem::$file_create_mask);
 
-		$link = Controller::join_links($this->Link('show'), $parentRecord->ID);
-		$this->getResponse()->addHeader('X-ControllerURL', $link);
-		return $this->redirect($link);
+		return $this->redirect(Controller::join_links($this->Link('show'), $parentRecord->ID));
 	}
 
 	/**

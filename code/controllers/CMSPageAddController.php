@@ -126,14 +126,7 @@ class CMSPageAddController extends CMSPageEditController {
 		$editController = singleton('CMSPageEditController');
 		$editController->setCurrentPageID($record->ID);
 		
-		$link = Controller::join_links(singleton('CMSPageEditController')->Link('show'), $record->ID);
-		$this->getResponse()->addHeader('X-ControllerURL', $link);
-		
-		if(Director::is_ajax()) {
-			return $editController->renderWith(array_pop($editController->getTemplatesWithSuffix('_Content')));
-		} else {
-			return $this->redirect($link);
-		}
+		return $this->redirect(Controller::join_links(singleton('CMSPageEditController')->Link('show'), $record->ID));
 	}
 
 }
