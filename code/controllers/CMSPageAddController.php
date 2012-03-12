@@ -123,14 +123,14 @@ class CMSPageAddController extends CMSPageEditController {
 		$record = $this->getNewItem("new-$className-$parentID".$suffix, false);
 		if(class_exists('Translatable') && $record->hasExtension('Translatable')) $record->Locale = $data['Locale'];
 		$record->write();
-		
-		$this->setCurrentPageID($record->ID);
+		$editController = singleton('CMSPageEditController');
+		$editController->setCurrentPageID($record->ID);
 		
 		$link = Controller::join_links(singleton('CMSPageEditController')->Link('show'), $record->ID);
 		$this->getResponse()->addHeader('X-ControllerURL', $link);
 		
 		if(Director::is_ajax()) {
-			return $this->renderWith(array_pop($this->getTemplatesWithSuffix('_Content')));
+			return $editController->renderWith(array_pop($editController->getTemplatesWithSuffix('_Content')));
 		} else {
 			return $this->redirect($link);
 		}
