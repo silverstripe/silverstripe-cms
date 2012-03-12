@@ -1,5 +1,5 @@
 <?php
-class CMSPageAddController extends CMSMain {
+class CMSPageAddController extends CMSPageEditController {
 
 	static $url_segment = 'page/add';
 	static $url_rule = '/$Action/$ID/$OtherID';
@@ -123,14 +123,13 @@ class CMSPageAddController extends CMSMain {
 		if(class_exists('Translatable') && $record->hasExtension('Translatable')) $record->Locale = $data['Locale'];
 		$record->write();
 		
-		$form = $this->getEditForm($record->ID);
+		$this->setCurrentPageID($record->ID);
 		
 		$link = Controller::join_links(singleton('CMSPageEditController')->Link('show'), $record->ID);
 		$this->getResponse()->addHeader('X-ControllerURL', $link);
 		
 		if(Director::is_ajax()) {
-			$form = $this->getEditForm($record->ID);
-			return $form->forTemplate();
+			return $this->renderWith(array_pop($this->getTemplatesWithSuffix('_Content')));
 		} else {
 			return $this->redirect($link);
 		}
