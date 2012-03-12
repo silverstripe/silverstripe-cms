@@ -11,12 +11,14 @@
 					<li>
 						<a href="#cms-content-treeview" class="content-treeview"><% _t('CMSPagesController.TreeView', 'Tree View') %></a>
 					</li>
+					<!--
 					<li>
 						<a href="#cms-content-galleryview" class="content-galleryview"><% _t('CMSPagesController.GalleryView', 'Gallery View') %></a>
 					</li>
 					<li>
 						<a href="#cms-content-listview" class="content-listview"><% _t('CMSPagesController.ListView', 'List View') %></a>
 					</li>
+					-->
 				</ul>
 			</div>
 		</div>
@@ -41,7 +43,8 @@
 			</div>
 
 		</div>
-		
+
+		<!--		
 		<div id="cms-content-listview">
 			<i>Not implemented yet</i>
 		</div>
@@ -49,6 +52,7 @@
 		<div id="cms-content-galleryview">
 			<i>Not implemented yet</i>
 		</div>
+		-->
 		
 	</div>
 	
