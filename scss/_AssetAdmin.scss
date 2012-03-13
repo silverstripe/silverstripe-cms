@@ -1,9 +1,15 @@
 .cms .AssetAdmin {
 	.cms-content-fields {
-			overflow:hidden; //removes scrolling from filter panel
-			.cms-edit-form.AssetAdmin {
-				overflow-y:auto; //adds scrolling only to the datagrid 
+		overflow:hidden; //removes scrolling from filter panel
+		.cms-edit-form.AssetAdmin {
+			overflow-y:auto; //adds scrolling only to the datagrid 
+		}
+		.cms-content-tools .cms-panel-content {
+			overflow:hidden; //removes scollbar from search field in filter
+			.cms-search-form {
+				height:100%; //increases height of search form to accomodate dropdown
 			}
+		}	
 	}
 	.cms-content-header-tabs {
 		.ui-tabs-nav {
