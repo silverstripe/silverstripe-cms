@@ -337,20 +337,8 @@ class CMSPageHistoryController extends CMSMain {
 				$record->Version
 			);
 		}
-		
-		if($this->isAjax()) {
-			$this->response->addHeader('X-Status', $message);
-			$form = $this->getEditForm($record->ID);
-		
-			return $form->forTemplate();
-		}
 
-		return array(
-			'EditForm' => $this->customise(array(
-				'Message' => $message,
-				'Status' => 'success'
-			))->renderWith('CMSMain_notice')
-		);
+		return $this->redirect(Controller::join_links(singleton('CMSPageEditController')->Link('show'), $record->ID));
 	}
 	
 	/**
