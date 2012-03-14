@@ -15,7 +15,6 @@ class FilesystemPublisherTest extends SapphireTest {
 		parent::setUp();
 		
 		Object::add_extension("SiteTree", "FilesystemPublisher('assets/FilesystemPublisherTest-static-folder/')");
-		SiteTree::$write_homepage_map = false;
 		
 		$this->orig['domain_based_caching'] = FilesystemPublisher::$domain_based_caching;
 		FilesystemPublisher::$domain_based_caching = false;
@@ -25,7 +24,6 @@ class FilesystemPublisherTest extends SapphireTest {
 		parent::tearDown();
 
 		Object::remove_extension("SiteTree", "FilesystemPublisher('assets/FilesystemPublisherTest-static-folder/')");
-		SiteTree::$write_homepage_map = true;
 
 		FilesystemPublisher::$domain_based_caching = $this->orig['domain_based_caching'];
 
@@ -125,38 +123,6 @@ class FilesystemPublisherTest extends SapphireTest {
 	function testHasCalledParentConstructor() {
 		$fsp = new FilesystemPublisher('.', '.html');
 		$this->assertEquals($fsp->class, 'FilesystemPublisher');
-	}
-	
-	function testHomepageMapIsWithStaticPublishing() {
-		$this->logInWithPermission('ADMIN');
-		
-		$p1 = new Page();
-		$p1->URLSegment = strtolower(__CLASS__).'-page-1';
-		$p1->HomepageForDomain = '';
-		$p1->write();
-		$p1->doPublish();
-		$p2 = new Page();
-		$p2->URLSegment = strtolower(__CLASS__).'-page-2';
-		$p2->HomepageForDomain = 'domain1';
-		$p2->write();
-		$p2->doPublish();
-		$p3 = new Page();
-		$p3->URLSegment = strtolower(__CLASS__).'-page-3';
-		$p3->HomepageForDomain = 'domain2,domain3';
-		$p3->write();
-		$p3->doPublish();
-		
-		$map = SiteTree::generate_homepage_domain_map();
-		
-		$this->assertEquals(
-			$map, 
-			array(
-				'domain1' => strtolower(__CLASS__).'-page-2',
-				'domain2' => strtolower(__CLASS__).'-page-3',
-				'domain3' => strtolower(__CLASS__).'-page-3',
-			), 
-			'Homepage/domain map is correct when static publishing is enabled'
-		);
 	}
 	
 	/*

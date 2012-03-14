@@ -360,17 +360,11 @@ $lang['en_US']['SiteTree']['EDIT_ALL_DESCRIPTION'] = 'Edit any page';
 $lang['en_US']['SiteTree']['EDIT_ALL_HELP'] = 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to \'Pages\' section" permission';
 $lang['en_US']['SiteTree']['Editors'] = 'Editors Groups';
 $lang['en_US']['SiteTree']['HASBROKENLINKS'] = 'This page has broken links.';
-$lang['en_US']['SiteTree']['HOMEPAGEFORDOMAIN'] = array(
-	'Domain(s)',
-	PR_MEDIUM,
-	'Listing domains that should be used as homepage'
-);
 $lang['en_US']['SiteTree']['HTMLEDITORTITLE'] = array(
 	'Content',
 	PR_MEDIUM,
 	'HTML editor title'
 );
-$lang['en_US']['SiteTree']['HomepageForDomain'] = 'Hompage for this domain';
 $lang['en_US']['SiteTree']['INHERIT'] = 'Inherit from parent page';
 $lang['en_US']['SiteTree']['LINKCHANGENOTE'] = 'Changing this page\'s link will also affect the links of all child pages.';
 $lang['en_US']['SiteTree']['MENUTITLE'] = 'Navigation label';

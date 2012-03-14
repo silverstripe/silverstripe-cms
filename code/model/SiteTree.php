@@ -71,7 +71,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		"ExtraMeta" => "HTMLText",
 		"ShowInMenus" => "Boolean",
 		"ShowInSearch" => "Boolean",
-		"HomepageForDomain" => "Varchar(100)",
 		"Sort" => "Int",
 		"HasBrokenFile" => "Boolean",
 		"HasBrokenLink" => "Boolean",
@@ -153,11 +152,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		"Hierarchy",
 		"Versioned('Stage', 'Live')",
 	);
-	
-	/**
-	 * Whether or not to write the homepage map for static publisher
-	 */
-	public static $write_homepage_map = true;
 	
 	static $searchable_fields = array(
 		'Title',
@@ -1908,19 +1902,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						$parentIDField = new TreeDropdownField("ParentID", $this->fieldLabel('ParentID'), 'SiteTree', 'ID', 'MenuTitle')
 					),
 					new CheckboxField("ShowInMenus", $this->fieldLabel('ShowInMenus')),
-					new CheckboxField("ShowInSearch", $this->fieldLabel('ShowInSearch')),
-					new LiteralField(
-						"HomepageForDomainInfo", 
-						"<p>" . 
-							_t('SiteTree.NOTEUSEASHOMEPAGE', 
-							"Use this page as the 'home page' for the following domains: 
-							(separate multiple domains with commas)") .
-						"</p>"
-					),
-					new TextField(
-						"HomepageForDomain",
-						_t('SiteTree.HOMEPAGEFORDOMAIN', "Domain(s)", PR_MEDIUM, 'Listing domains that should be used as homepage')
-					)
+					new CheckboxField("ShowInSearch", $this->fieldLabel('ShowInSearch'))
 				),
 				$tabAccess = new Tab('Access',
 					$viewersOptionsField = new OptionsetField(
@@ -2019,7 +2001,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$labels['EditorGroups'] = _t('SiteTree.EDITORGROUPS', "Editor Groups");
 		$labels['URLSegment'] = _t('SiteTree.URLSegment', 'URL Segment', PR_MEDIUM, 'URL for this page');
 		$labels['Content'] = _t('SiteTree.Content', 'Content', PR_MEDIUM, 'Main HTML Content for a page');
-		$labels['HomepageForDomain'] = _t('SiteTree.HomepageForDomain', 'Hompage for this domain');
 		$labels['CanViewType'] = _t('SiteTree.Viewers', 'Viewers Groups');
 		$labels['CanEditType'] = _t('SiteTree.Editors', 'Editors Groups');
 		$labels['Comments'] = _t('SiteTree.Comments', 'Comments');
@@ -2165,32 +2146,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 		Versioned::set_reading_mode($origMode);
 		
-		// Check to write CMS homepage map.
-		$usingStaticPublishing = false;
-		foreach(ClassInfo::subclassesFor('StaticPublisher') as $class) if ($this->hasExtension($class)) $usingStaticPublishing = true;
-
-		// NOTE: if you change the path here, you must also change it in sapphire/static-main.php
-		if (self::$write_homepage_map) {
-			if ($usingStaticPublishing && $map = SiteTree::generate_homepage_domain_map()) {
-				@file_put_contents(BASE_PATH.'/'.ASSETS_DIR.'/_homepage-map.php', "<?php\n\$homepageMap = ".var_export($map, true)."; ?>");
-			} else { if (file_exists(BASE_PATH.'/'.ASSETS_DIR.'/_homepage-map.php')) unlink(BASE_PATH.'/'.ASSETS_DIR.'/_homepage-map.php'); }
-		}
-		
 		// Handle activities undertaken by extensions
 		$this->invokeWithExtensions('onAfterPublish', $original);
 		
 		return true;
-	}
-	
-	static function generate_homepage_domain_map() {
-		$domainSpecificHomepages = Versioned::get_by_stage('Page', 'Live', "\"HomepageForDomain\" != ''", "\"URLSegment\" ASC");
-		if (!$domainSpecificHomepages) return false;
-		
-		$map = array();
-		foreach($domainSpecificHomepages->map('URLSegment', 'HomepageForDomain') as $url => $domains) {
-			foreach(explode(',', $domains) as $domain) $map[$domain] = $url;
-		}
-		return $map;
 	}
 	
 	/**
