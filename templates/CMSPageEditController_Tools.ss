@@ -4,7 +4,7 @@
 	</div>
 	
 	<div class="cms-panel-content center">
-		<div class="cms-tree" data-url-tree="$Link(getsubtree)">
+		<div class="cms-tree" data-url-tree="$Link(getsubtree)" data-hints="$SiteTreeHints">
 			$SiteTreeAsUL
 		</div>
 	</div>
