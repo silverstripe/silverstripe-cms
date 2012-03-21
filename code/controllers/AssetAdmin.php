@@ -85,12 +85,16 @@ JS
 	 */
 	public function getList() {
 		$folder = $this->currentPage();
-		$context = $this->getSearchContext();
 		$params = $this->request->requestVar('q');
-		$list = $context->getResults($params);
+		$list = DataList::create('File');
 
 		// Always show folders at the top		
 		$list->sort('(CASE WHEN "File"."ClassName" = \'Folder\' THEN 0 ELSE 1 END)');
+
+		if(isset($params['Name'])) {
+			$sql_title = Convert::raw2sql($params['Name']);
+			$list->where('("File"."Title" LIKE \'%' . $sql_title . '%\' OR "File"."Filename" LIKE \'%' . $sql_title . '%\')');
+		}
 
 		// If a search is conducted, check for the "current folder" limitation.
 		// Otherwise limit by the current folder as denoted by the URL.
@@ -264,39 +268,6 @@ JS
 
 		return $content;
 	}
-
-	public function getSearchContext() {
-		$context = singleton('File')->getDefaultSearchContext();
-		
-		// Namespace fields, for easier detection if a search is present
-		foreach($context->getFields() as $field) $field->setName(sprintf('q[%s]', $field->getName()));
-		foreach($context->getFilters() as $filter) $filter->setFullName(sprintf('q[%s]', $filter->getFullName()));
-
-		// Customize fields		
-		$appCategories = array(
-			'image' => _t('AssetAdmin.AppCategoryImage', 'Image'),
-			'audio' => _t('AssetAdmin.AppCategoryAudio', 'Audio'),
-			'mov' => _t('AssetAdmin.AppCategoryVideo', 'Video'),
-			'flash' => _t('AssetAdmin.AppCategoryFlash', 'Flash', PR_MEDIUM, 'The fileformat'),
-			'zip' => _t('AssetAdmin.AppCategoryArchive', 'Archive', PR_MEDIUM, 'A collection of files'),
-		);
-		$context->addField(
-			new DropdownField(
-				'q[AppCategory]',
-				_t('AssetAdmin.Filetype', 'File type'),
-				$appCategories,
-				null,
-				null,
-				' '
-			)
-		);
-		$context->addField(
-			new CheckboxField('q[CurrentFolderOnly]' ,_t('AssetAdmin.CurrentFolderOnly', 'Limit to current folder?'))
-		);
-		$context->getFields()->removeByName('q[Title]');
-
-		return $context;
-	}
 	
 	/**
 	 * Returns a form for filtering of files and assets gridfield.
@@ -307,9 +278,29 @@ JS
 	 */
 	public function SearchForm() {
 		$folder = $this->currentPage();
-		$context = $this->getSearchContext();
 
-		$fields = $context->getSearchFields();
+		$appCategories = array(
+			'image' => _t('AssetAdmin.AppCategoryImage', 'Image'),
+			'audio' => _t('AssetAdmin.AppCategoryAudio', 'Audio'),
+			'mov' => _t('AssetAdmin.AppCategoryVideo', 'Video'),
+			'flash' => _t('AssetAdmin.AppCategoryFlash', 'Flash', PR_MEDIUM, 'The fileformat'),
+			'zip' => _t('AssetAdmin.AppCategoryArchive', 'Archive', PR_MEDIUM, 'A collection of files'),
+		);
+		$categoryField = new DropdownField(
+			'q[AppCategory]',
+			_t('AssetAdmin.Filetype', 'File type'),
+			$appCategories,
+			null,
+			null,
+			' '
+		);
+
+		$fields = new FieldList(
+			new TextField('q[Name]', 'Name'),
+			$categoryField,
+			new CheckboxField('q[CurrentFolderOnly]' ,_t('AssetAdmin.CurrentFolderOnly', 'Limit to current folder?'))
+		);
+
 		$actions = new FieldList(
 			Object::create('ResetFormAction', 'clear', _t('CMSMain_left.ss.CLEAR', 'Clear'))
 				->addExtraClass('ss-ui-action-minor'),
