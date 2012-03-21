@@ -3,7 +3,7 @@
 
 		<div class="cms-content-header north">
 			<div>
-				<h2><% _t('CMSAddPageController.Title','Add pages') %></h2>
+				<h2><% _t('CMSAddPageController.Title','Add page') %></h2>
 			</div>
 		</div>
 
