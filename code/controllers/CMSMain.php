@@ -601,10 +601,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$form = $this->getEditForm($record->ID);
 		}
 		
-		return $form->forTemplate();
+		return $this->handleFragmentResponse($form);
 	}
-
-	
 
 	/**
 	 * @uses LeftAndMainExtension->augmentNewSiteTreeItem()
@@ -744,7 +742,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		$form = $this->getEditForm($record->ID);
 		
-		return $form->forTemplate();
+		return $this->handleFragmentResponse($form);
 	}
 	
 	/**
@@ -799,7 +797,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// Reload form, data and actions might have changed
 		$form = $this->getEditForm($record->ID);
 		
-		return $form->forTemplate();
+		return $this->handleFragmentResponse($form);
 	}
 
 	/**
@@ -951,7 +949,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// Reload form, data and actions might have changed
 		$form = $this->getEditForm($restoredPage->ID);
 		
-		return $form->forTemplate();
+		return $this->handleFragmentResponse($form);
 	}
 
 	function duplicate($request) {
@@ -974,7 +972,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			// Reload form, data and actions might have changed
 			$form = $this->getEditForm($newPage->ID);
 			
-			return $form->forTemplate();
+			return $this->handleFragmentResponse($form);
 		} else {
 			user_error("CMSMain::duplicate() Bad ID: '$id'", E_USER_WARNING);
 		}
@@ -994,7 +992,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			// Reload form, data and actions might have changed
 			$form = $this->getEditForm($newPage->ID);
 			
-			return $form->forTemplate();
+			return $this->handleFragmentResponse($form);
 		} else {
 			user_error("CMSMain::duplicate() Bad ID: '$id'", E_USER_WARNING);
 		}
