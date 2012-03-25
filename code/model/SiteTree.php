@@ -1378,8 +1378,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$this->URLSegment = $segment;
 		}
 		
-		DataObject::set_context_obj($this);
-		
 		// Ensure that this object has a non-conflicting URLSegment value.
 		$count = 2;
 		while(!$this->validURLSegment()) {
@@ -1387,8 +1385,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$count++;
 		}
 		
-		DataObject::set_context_obj(null);
-
 		$this->syncLinkTracking();
 
 		// Check to see if we've only altered fields that shouldn't affect versioning
