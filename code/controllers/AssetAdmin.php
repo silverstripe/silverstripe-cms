@@ -407,7 +407,11 @@ JS
 		mkdir($record->FullPath);
 		chmod($record->FullPath, Filesystem::$file_create_mask);
 
-		return $this->redirect(Controller::join_links($this->Link('show'), $parentRecord->ID));
+		if($parentRecord) {
+			return $this->redirect(Controller::join_links($this->Link('show'), $parentRecord->ID));
+		} else {
+			return $this->redirect($this->Link());
+		}
 	}
 
 	/**
