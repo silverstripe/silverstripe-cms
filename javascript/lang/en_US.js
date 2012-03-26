@@ -36,7 +36,7 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'CMSMAIN.AddSearchCriteria': 'Add Criteria',
 		'WidgetAreaEditor.TOOMANY': 'Sorry, you have reached the maximum number of widgets in this area',
 		'AssetAdmin.ConfirmDelete': 'Do you really want to delete this folder and all contained files?',
-		'Folder.Name': 'Foldername',
+		'Folder.Name': 'Folder name',
 		'Tree.AddSubPage': 'Add new page here',
 		'Tree.EditPage': 'Edit'
 	});
