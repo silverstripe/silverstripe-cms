@@ -73,9 +73,13 @@ class CMSFileAddController extends LeftAndMain {
 		}
 
 		$form = new Form(
-			$this, 
-			'getEditForm', 
-			new FieldList($uploadField, new HiddenField('ID')), 
+			$this,
+			'getEditForm',
+			new FieldList(
+				$uploadField,
+				new LiteralField('AllowedExtensions', sprintf('<p>Allowed extensions: %s</p>', implode('</em>, <em>', $uploadField->getValidator()->getAllowedExtensions()))),
+				new HiddenField('ID')
+			),
 			new FieldList()
 		);
 		$form->addExtraClass('center cms-edit-form ' . $this->BaseCSSClasses());
