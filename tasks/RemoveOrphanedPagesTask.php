@@ -106,7 +106,7 @@ in the other stage:<br />
 				$orphan->ID,
 				$orphan->Title,
 				$orphan->ID,
-				DBField::create('Date', $orphan->LastEdited)->Nice(),
+				DBField::create_field('Date', $orphan->LastEdited)->Nice(),
 				($latestAuthor) ? $latestAuthor->Title : 'unknown',
 				($liveRecord) ? 'is published' : 'not published'
 			);
