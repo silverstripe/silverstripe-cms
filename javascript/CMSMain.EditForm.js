@@ -40,7 +40,11 @@
 						self.val(newVal);
 						
 						if(oldVal != newVal) {
-							jQuery.noticeAdd(ss.i18n._t('The URL has been changed'));
+							var confirmMessage = ss.i18n.sprintf(
+								ss.i18n._t('UPDATEURL.CONFIRMURLCHANGED', 'The URL has been changed to\n"%s'), 
+								data.value
+							);
+							jQuery.noticeAdd({'text':confirmMessage});
 						}
 					});
 					
