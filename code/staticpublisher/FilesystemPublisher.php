@@ -102,8 +102,8 @@ class FilesystemPublisher extends StaticPublisher {
 			// perform similar transformations to SiteTree::generateURLSegment()
 			$urlSegment = str_replace('&amp;','-and-',$urlSegment);
 			$urlSegment = str_replace('&','-and-',$urlSegment);
-			$urlSegment = ereg_replace('[^A-Za-z0-9\/-]+','-',$urlSegment);
-			$urlSegment = ereg_replace('-+','-',$urlSegment);
+			$urlSegment = preg_replace('/[^A-Za-z0-9\/-]+/', '-', $urlSegment);
+			$urlSegment = preg_replace('/-+/', '-', $urlSegment);
 			$urlSegment = trim($urlSegment, '/');
 
 			$filename = $urlSegment ? "$urlSegment.$this->fileExtension" : "index.$this->fileExtension";
