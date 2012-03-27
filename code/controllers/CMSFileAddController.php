@@ -72,10 +72,24 @@ class CMSFileAddController extends LeftAndMain {
 			$uploadField->setFolderName(ASSETS_DIR);
 		}
 
+		$exts = $uploadField->getValidator()->getAllowedExtensions();
+		asort($exts);
+
 		$form = new Form(
-			$this, 
-			'getEditForm', 
-			new FieldList($uploadField, new HiddenField('ID')), 
+			$this,
+			'getEditForm',
+			new FieldList(
+				$uploadField,
+				new LiteralField(
+					'AllowedExtensions',
+					sprintf(
+						'<p>%s: %s</p>',
+						_t('AssetAdmin.ALLOWEDEXTS', 'Allowed extensions'),
+						implode('<em>, </em>', $exts)
+					)
+				),
+				new HiddenField('ID')
+			),
 			new FieldList()
 		);
 		$form->addExtraClass('center cms-edit-form ' . $this->BaseCSSClasses());
