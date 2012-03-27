@@ -41,7 +41,7 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	 *
 	 * @return FieldList
 	 */
-	function getCMSFields() {
+	function getCMSFields($params = null) {
 		Requirements::javascript(CMS_DIR . "/javascript/SitetreeAccess.js");
 
 		$groupsMap = DataList::create('Group')->map('ID', 'Breadcrumbs')->toArray();

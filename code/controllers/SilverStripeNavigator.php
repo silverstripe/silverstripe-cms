@@ -193,7 +193,7 @@ class SilverStripeNavigatorItem_CMSLink extends SilverStripeNavigatorItem {
 		return (Controller::curr() instanceof CMSMain);
 	}
 	
-	function canView() {
+	function canView($member = null) {
 		// Don't show in CMS
 		return !(Controller::curr() instanceof CMSMain);
 	}
@@ -223,7 +223,7 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
 		return Controller::join_links($this->record->AbsoluteLink(), '?stage=Stage');
 	}
 	
-	function canView() {
+	function canView($member = null) {
 		return ($this->record->hasExtension('Versioned') && $this->getDraftPage());
 	}
 	
@@ -267,7 +267,7 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem {
 		return Controller::join_links($this->record->AbsoluteLink(), '?stage=Live');
 	}
 	
-	function canView() {
+	function canView($member = null) {
 		return ($this->record->hasExtension('Versioned') && $this->getLivePage());
 	}
 	
@@ -309,7 +309,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 		return $this->record->AbsoluteLink() . '?archiveDate=' . $date;
 	}
 	
-	function canView() {
+	function canView($member = null) {
 		return ($this->record->hasExtension('Versioned') && $this->isArchived());
 	}
 	

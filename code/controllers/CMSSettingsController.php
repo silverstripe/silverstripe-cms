@@ -9,7 +9,7 @@ class CMSSettingsController extends CMSMain {
 		/**
 	 * @return Form
 	 */
-	function getEditForm($id = null) {
+	function getEditForm($id = null, $fields = null) {
 		$siteConfig = SiteConfig::current_site_config();
 		$fields = $siteConfig->getCMSFields();
 
@@ -54,7 +54,7 @@ class CMSSettingsController extends CMSMain {
 		return false;
 	}
 
-	function Breadcrumbs() {
+	function Breadcrumbs($unlinked = false) {
 		return new ArrayList(array(
 			new ArrayData(array(
 				'Title' => $this->SectionTitle(),

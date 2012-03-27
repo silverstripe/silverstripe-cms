@@ -1013,9 +1013,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	static function prepopulate_permission_cache($permission = 'CanEditType', $ids, $batchCallback = null) {
 		if(!$batchCallback) $batchCallback = "SiteTree::can_{$permission}_multiple";
 		
-		//PHP 5.1 requires an array rather than a string for the call_user_func function
-		$batchCallback=explode('::', $batchCallback);
-		
 		if(is_callable($batchCallback)) {
 			call_user_func($batchCallback, $ids, Member::currentUserID(), false);
 		} else {
@@ -1754,7 +1751,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 *
 	 * @return FieldList The fields to be displayed in the CMS.
 	 */
-	function getCMSFields() {
+	function getCMSFields($params = null) {
 		require_once("forms/Form.php");
 		// Status / message
 		// Create a status message for multiple parents
