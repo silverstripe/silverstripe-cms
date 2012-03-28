@@ -2450,7 +2450,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
-	 * TitleWithStatus will return the title in an <ins>, <del> or
+	 * getTreeTitle will return the title in an <ins>, <del> or
 	 * <span class=\"modified\"> tag depending on its publication status.
 	 *
 	 * @return string
