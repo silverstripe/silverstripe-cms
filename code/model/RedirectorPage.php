@@ -115,7 +115,7 @@ class RedirectorPage extends Page {
 		}
 	}
 
-	function getCMSFields() {
+	function getCMSFields($params = null) {
 		Requirements::javascript(SAPPHIRE_DIR . "/javascript/RedirectorPage.js");
 		
 		$fields = parent::getCMSFields();

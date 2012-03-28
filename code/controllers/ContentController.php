@@ -133,7 +133,7 @@ class ContentController extends Controller {
 	 *
 	 * @return SS_HTTPResponse
 	 */
-	public function handleRequest(SS_HTTPRequest $request, DataModel $model) {
+	public function handleRequest(SS_HTTPRequest $request, DataModel $model = null) {
 		$child  = null;
 		$action = $request->param('Action');
 		$this->setModel($model);

@@ -104,7 +104,7 @@ class RootURLController extends Controller {
 	 * @param SS_HTTPRequest $request
 	 * @return SS_HTTPResponse
 	 */
-	public function handleRequest(SS_HTTPRequest $request, DataModel $model) {
+	public function handleRequest(SS_HTTPRequest $request, DataModel $model = null) {
 		self::$is_at_root = true;
 		$this->setModel($model);
 		

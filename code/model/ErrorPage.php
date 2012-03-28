@@ -127,8 +127,8 @@ class ErrorPage extends Page {
 		}
 	}
 
-	function getCMSFields() {
-		$fields = parent::getCMSFields();
+	function getCMSFields($params = null) {
+		$fields = parent::getCMSFields($params);
 		
 		$fields->addFieldToTab(
 			"Root.Main", 
