@@ -1,13 +1,6 @@
 <?php
 class SiteTreeFolderExtension extends DataExtension {
-	
-	function updateCMSFields(&$fields) {
-		// TODO commenting out unused files tab till bugs are fixed
-		// $fields->push(new Tab("UnusedFiles", _t('Folder.UNUSEDFILESTAB', "Unused files"),
-		// 	new Folder_UnusedAssetsField($this)
-		// ));
-	}
-	
+
 	/**
      * Looks for files used in system and create where clause which contains all ID's of files.
      * 

@@ -5,7 +5,7 @@
  */
 class SiteTreeFileExtension extends DataExtension {
 	
-	function extraStatics() {
+	function extraStatics($class = null, $extension = null) {
 		return array(
 			'belongs_many_many' => array(
 				"BackLinkTracking" => "SiteTree",
