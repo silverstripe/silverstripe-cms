@@ -16,17 +16,11 @@ $template = array(
 		'project' => 'silverstripe-cms',
 		'branch' => SAPPHIRE_CURRENT_BRANCH
 	)),
-	'themes/blackcandy' => new GithubSparse(array(
+	'themes/simple' => new GithubSparse(array(
 		'user' => 'silverstripe-themes', 
-		'project' => 'silverstripe-blackcandy',
+		'project' => 'silverstripe-simple',
 		'branch' => SAPPHIRE_CURRENT_BRANCH,
-		'subdir' => 'blackcandy'
-	)),
-	'themes/blackcandy_blog' => new GithubSparse(array(
-		'user' => 'silverstripe-themes', 
-		'project' => 'silverstripe-blackcandy',
-		'branch' => SAPPHIRE_CURRENT_BRANCH,
-		'subdir' => 'blackcandy_blog'
+		'subdir' => ''
 	))
 );
 
