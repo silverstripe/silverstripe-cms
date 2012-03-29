@@ -875,10 +875,6 @@ class SiteTreeTest extends SapphireTest {
 		$treeTitle = $node->getTreeTitle();
 		$this->assertStringMatchesFormat('%stitle="Will be offline"%s', $treeTitle);
 		$this->assertStringMatchesFormat('%sclass="%Sofflinescheduled%S"%s', $treeTitle);
-		
-		$treeTitle = $node->getTreeTitle($withStageStatus = false);
-		$this->assertNotContains('Will be offline', $treeTitle);
-		$this->assertNotContains('offlinescheduled', $treeTitle);
 	}
 	
 	function testModifyStatusFlagByDecoration(){
@@ -888,10 +884,6 @@ class SiteTreeTest extends SapphireTest {
 		$treeTitle = $node->getTreeTitle();
 		$this->assertStringMatchesFormat('%stitle="Will be offline"%s', $treeTitle);
 		$this->assertStringMatchesFormat('%sclass="%Sofflinescheduled%S"%s', $treeTitle);
-		
-		$treeTitle = $node->getTreeTitle($withStageStatus = false);
-		$this->assertNotContains('Will be offline', $treeTitle);
-		$this->assertNotContains('offlinescheduled', $treeTitle);
 		
 		DataObject::remove_extension('SiteTree', 'SiteTreeTest_StageStatusDecorate');
 	}

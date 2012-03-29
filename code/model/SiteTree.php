@@ -2497,31 +2497,25 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
-	 * getTreeTitle will return tree title with an empty <span> with the class 
-	 * 'jstree-pageicon' in front, eg. <span class="jstree-pageicon"></span>My Page
-	 *
-	 * If withStageStatus is true (by default), the tree title will be also wrapped
-	 * into additional two <span> tags depending on its stage status, eg.
+	 * getTreeTitle will return three <span> html DOM elements, an empty <span> with
+	 * the class 'jstree-pageicon' in front, following by a <span> wrapping around its
+	 * MenutTitle, then following by a <span> indicating its publication status. eg.
 	 * <span class="jstree-pageicon"></span>
 	 * <span class="item" title="Deleted">My Page</span>
 	 * <span class="badge deletedonlive">Deleted/span>
 	 *
-	 * @param boolean $withStageStatus default as true
 	 * @return string a html string ready to be directly used in a template
 	 */
-	function getTreeTitle($withStageStatus = true) {
+	function getTreeTitle() {
 		$treeTitle = Convert::raw2xml(str_replace(array("\n","\r"),"",$this->MenuTitle));
 		
-		if($withStageStatus){
-			$statusClass = $this->getStatusClass();
-			
-			if($statusClass){
-				$flags = $this->getStatusFlags();
-				if(isset($flags[$statusClass]) && $flags[$statusClass]){
-					$flag =  $flags[$statusClass];
-					$treeTitle = "<span class=\"item\" title=\"$flag\">$treeTitle</span>".
-						"<span class=\"badge $statusClass\">$flag</span>";
-				}
+		$statusClass = $this->getStatusClass();
+		if($statusClass){
+			$flags = $this->getStatusFlags();
+			if(isset($flags[$statusClass]) && $flags[$statusClass]){
+				$flag =  $flags[$statusClass];
+				$treeTitle = "<span class=\"item\" title=\"$flag\">$treeTitle</span>".
+					"<span class=\"badge $statusClass\">$flag</span>";
 			}
 		}
 		
