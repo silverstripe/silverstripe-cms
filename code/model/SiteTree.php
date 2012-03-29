@@ -2442,6 +2442,53 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 	
 	/**
+	 * getStatusClass return a stylesheet-recognizable class depending on its
+	 * stage status, eg 'deletedonlive'.
+	 * 
+	 * @uses SiteTree::updateStatusClass($statusClass) to alter the class string
+	 * @return string
+	 */
+	  
+	function getStatusClass(){
+		if($this->IsDeletedFromStage) {
+			if($this->ExistsOnLive) {
+				$statusClass = 'removedfromdraft';
+			}else{
+				$statusClass = 'deletedonlive';
+			}
+		}else if($this->IsAddedToStage) {
+			$statusClass = 'addedtodraft';
+		}else if($this->IsModifiedOnStage) {
+			$statusClass = 'modified';
+		}
+
+		$this->extend('updateStatusClass', $statusClass);
+		
+		return $statusClass;
+	}
+	
+	/**
+	 * getStatusFlags return array of maps between statusClass and statusTitle
+	 * eg. "deletedonlive" => "Deleted"
+	 * 
+	 * @uses SiteTree::updateStatusFlags($flags) to alter the map
+	 * @return array
+	 */
+	function getStatusFlags() {
+		$flags = array(
+			"removedfromdraft" =>  _t('SiteTree.REMOVEDFROMDRAFTSHORT', 'Removed from draft'),
+			"deletedonlive" => _t('SiteTree.DELETEDPAGESHORT', 'Deleted'),
+			"addedtodraft" => _t('SiteTree.ADDEDTODRAFTSHORT', 'New'),
+			"modified" => _t('SiteTree.MODIFIEDONDRAFTSHORT', 'Modified'),
+		);
+		
+		$this->extend('updateStatusFlags', $flags);
+		
+		return $flags;
+	}
+
+	
+	/**
 	 * @deprecated 3.0 Use getTreeTitle()
 	 */
 	function TreeTitle() {
@@ -2450,29 +2497,35 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
-	 * getTreeTitle will return the title in an <ins>, <del> or
-	 * <span class=\"modified\"> tag depending on its publication status.
+	 * getTreeTitle will return tree title with an empty <span> with the class 
+	 * 'jstree-pageicon' in front, eg. <span class="jstree-pageicon"></span>My Page
 	 *
-	 * @return string
+	 * If withStageStatus is true (by default), the tree title will be also wrapped
+	 * into additional two <span> tags depending on its stage status, eg.
+	 * <span class="jstree-pageicon"></span>
+	 * <span class="item" title="Deleted">My Page</span>
+	 * <span class="badge deletedonlive">Deleted/span>
+	 *
+	 * @param boolean $withStageStatus default as true
+	 * @return string a html string ready to be directly used in a template
 	 */
-	function getTreeTitle() {
-		$text = Convert::raw2xml(str_replace(array("\n","\r"),"",$this->MenuTitle));
-		if($this->IsDeletedFromStage) {
-			if($this->ExistsOnLive) {
-				$tag ="<span class=\"del item\" title=\"" . _t('SiteTree.REMOVEDFROMDRAFTSHORT', 'Removed from draft') . "\" >{$text}</span> <span class=\"badge removedfromdraft\">" .  _t('SiteTree.REMOVEDFROMDRAFTSHORT', 'Removed from draft') . "</span>";
-			} else {
-				$tag ="<span class=\"del item\" title=\"" . _t('SiteTree.DELETEDPAGESHORT', 'Deleted') . "\">{$text}</span> <span class=\"badge deletedonlive\">". _t('SiteTree.DELETEDPAGESHORT', 'Deleted') . "</span>";
+	function getTreeTitle($withStageStatus = true) {
+		$treeTitle = Convert::raw2xml(str_replace(array("\n","\r"),"",$this->MenuTitle));
+		
+		if($withStageStatus){
+			$statusClass = $this->getStatusClass();
+			
+			if($statusClass){
+				$flags = $this->getStatusFlags();
+				if(isset($flags[$statusClass]) && $flags[$statusClass]){
+					$flag =  $flags[$statusClass];
+					$treeTitle = "<span class=\"item\" title=\"$flag\">$treeTitle</span>".
+						"<span class=\"badge $statusClass\">$flag</span>";
+				}
 			}
-		} elseif($this->IsAddedToStage) {
-			$tag = "<span class=\"ins item\" title=\"" . _t('SiteTree.ADDEDTODRAFTSHORT', 'New') . "\">{$text}</span> <span class=\"badge addedtodraft\">". _t('SiteTree.ADDEDTODRAFTSHORT', 'New') . "</span>";
-		} elseif($this->IsModifiedOnStage) {
-			$tag = "<span title=\"" . _t('SiteTree.MODIFIEDONDRAFTSHORT', 'Modified') . "\" class=\"ins item\">{$text}</span> <span class=\"badge modified\">" . _t('SiteTree.MODIFIEDONDRAFTSHORT', 'Modified') . "</span>";
-		} else {
-			$tag = '';
 		}
-
-
-		return ($tag) ? "<span class=\"jstree-pageicon\"></span>". $tag : "<span class=\"jstree-pageicon\"></span>". $text;
+		
+		return "<span class=\"jstree-pageicon\"></span>".$treeTitle;
 	}
 
 	/**

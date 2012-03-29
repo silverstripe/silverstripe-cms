@@ -17,6 +17,8 @@ class SiteTreeTest extends SapphireTest {
 		'SiteTreeTest_ClassD',
 		'SiteTreeTest_ClassCext',
 		'SiteTreeTest_NotRoot',
+		'SiteTreeTest_StageStatusInherit',
+		'SiteTreeTest_StageStatusDecorate',
 	);
 	
 	/**
@@ -866,7 +868,34 @@ class SiteTreeTest extends SapphireTest {
 		} 
 
 		if(!$isDetected) $this->fail('Fails validation with $can_be_root=false');
+	}	
+	function testModifyStatusFlagByInheritance(){
+		$node = new SiteTreeTest_StageStatusInherit();
+		
+		$treeTitle = $node->getTreeTitle();
+		$this->assertStringMatchesFormat('%stitle="Will be offline"%s', $treeTitle);
+		$this->assertStringMatchesFormat('%sclass="%Sofflinescheduled%S"%s', $treeTitle);
+		
+		$treeTitle = $node->getTreeTitle($withStageStatus = false);
+		$this->assertNotContains('Will be offline', $treeTitle);
+		$this->assertNotContains('offlinescheduled', $treeTitle);
 	}
+	
+	function testModifyStatusFlagByDecoration(){
+		DataObject::add_extension('SiteTree', 'SiteTreeTest_StageStatusDecorate');
+		
+		$node = new SiteTree();
+		$treeTitle = $node->getTreeTitle();
+		$this->assertStringMatchesFormat('%stitle="Will be offline"%s', $treeTitle);
+		$this->assertStringMatchesFormat('%sclass="%Sofflinescheduled%S"%s', $treeTitle);
+		
+		$treeTitle = $node->getTreeTitle($withStageStatus = false);
+		$this->assertNotContains('Will be offline', $treeTitle);
+		$this->assertNotContains('offlinescheduled', $treeTitle);
+		
+		DataObject::remove_extension('SiteTree', 'SiteTreeTest_StageStatusDecorate');
+	}
+	
 }
 
 /**#@+
@@ -928,4 +957,26 @@ class SiteTreeTest_ClassCext extends SiteTreeTest_ClassC implements TestOnly {
 
 class SiteTreeTest_NotRoot extends Page implements TestOnly {
 	static $can_be_root = false;
+}
+
+class SiteTreeTest_StageStatusInherit extends SiteTree implements TestOnly {
+	function getStatusClass(){
+		return 'offlinescheduled';
+	}
+	
+	function getStatusFlags(){
+		$flags = parent::getStatusFlags();
+		$flags['offlinescheduled'] = "Will be offline";
+		return $flags;
+	}
+}
+
+class SiteTreeTest_StageStatusDecorate extends DataExtension implements TestOnly {
+	function updateStatusClass(&$statusClass){
+		$statusClass = 'offlinescheduled';
+	}
+	
+	function updateStatusFlags(&$flags){
+		$flags['offlinescheduled'] = "Will be offline";
+	}
 }
