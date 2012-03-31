@@ -47,8 +47,8 @@ class CMSMainTest extends FunctionalTest {
 			$response = Director::test("admin/cms/batchactions/publish", array('csvIDs' => implode(',', array($page1->ID, $page2->ID)), 'ajax' => 1), $this->session());
 	
 			$responseData = Convert::json2array($response->getBody());
-			$this->assertTrue(property_exists($responseData['modified'], $page1->ID));
-			$this->assertTrue(property_exists($responseData['modified'], $page2->ID));
+			$this->assertArrayHasKey($page1->ID, $responseData['modified']);
+			$this->assertArrayHasKey($page2->ID, $responseData['modified']);
 		}
 
 		// Get the latest version of the redirector page 
