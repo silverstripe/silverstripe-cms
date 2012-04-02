@@ -873,8 +873,8 @@ class SiteTreeTest extends SapphireTest {
 		$node = new SiteTreeTest_StageStatusInherit();
 		
 		$treeTitle = $node->getTreeTitle();
-		$this->assertStringMatchesFormat('%stitle="Will be offline"%s', $treeTitle);
-		$this->assertStringMatchesFormat('%sclass="%Sofflinescheduled%S"%s', $treeTitle);
+		$this->assertStringMatchesFormat('%stitle="Inherited"%s', $treeTitle);
+		$this->assertStringMatchesFormat('%sclass="%Sinherited%S"%s', $treeTitle);
 	}
 	
 	function testModifyStatusFlagByDecoration(){
@@ -882,8 +882,8 @@ class SiteTreeTest extends SapphireTest {
 		
 		$node = new SiteTree();
 		$treeTitle = $node->getTreeTitle();
-		$this->assertStringMatchesFormat('%stitle="Will be offline"%s', $treeTitle);
-		$this->assertStringMatchesFormat('%sclass="%Sofflinescheduled%S"%s', $treeTitle);
+		$this->assertStringMatchesFormat('%stitle="Extended"%s', $treeTitle);
+		$this->assertStringMatchesFormat('%sclass="%Sextended%S"%s', $treeTitle);
 		
 		DataObject::remove_extension('SiteTree', 'SiteTreeTest_StageStatusDecorate');
 	}
@@ -953,22 +953,22 @@ class SiteTreeTest_NotRoot extends Page implements TestOnly {
 
 class SiteTreeTest_StageStatusInherit extends SiteTree implements TestOnly {
 	function getStatusClass(){
-		return 'offlinescheduled';
+		return 'inherited';
 	}
 	
 	function getStatusFlags(){
 		$flags = parent::getStatusFlags();
-		$flags['offlinescheduled'] = "Will be offline";
+		$flags['inherited'] = "Inherited";
 		return $flags;
 	}
 }
 
 class SiteTreeTest_StageStatusDecorate extends DataExtension implements TestOnly {
 	function updateStatusClass(&$statusClass){
-		$statusClass = 'offlinescheduled';
+		$statusClass = 'extended';
 	}
 	
 	function updateStatusFlags(&$flags){
-		$flags['offlinescheduled'] = "Will be offline";
+		$flags['extended'] = "Extended";
 	}
 }
