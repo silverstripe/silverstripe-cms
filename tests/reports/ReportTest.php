@@ -20,8 +20,8 @@ class ReportTest extends SapphireTest {
 		}
 		$this->assertContains('ReportTest_FakeTest',$reportNames,'ReportTest_FakeTest is in reports list');
 
-		//excluse one report
-		SS_Report::excludeReport('ReportTest_FakeTest');
+		//exclude one report
+		SS_Report::add_excluded_reports('ReportTest_FakeTest');
 
 		$reports = SS_Report::get_reports();
 		$reportNames = array();
@@ -29,6 +29,17 @@ class ReportTest extends SapphireTest {
 			$reportNames[] = $report->class;
 		}
 		$this->assertNotContains('ReportTest_FakeTest',$reportNames,'ReportTest_FakeTest is NOT in reports list');
+
+		//exclude two reports
+		SS_Report::add_excluded_reports(array('ReportTest_FakeTest','ReportTest_FakeTest2'));
+
+		$reports = SS_Report::get_reports();
+		$reportNames = array();
+		foreach($reports as $report) {
+			$reportNames[] = $report->class;
+		}
+		$this->assertNotContains('ReportTest_FakeTest',$reportNames,'ReportTest_FakeTest is NOT in reports list');
+		$this->assertNotContains('ReportTest_FakeTest2',$reportNames,'ReportTest_FakeTest2 is NOT in reports list');
 	}
 }
 

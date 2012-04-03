@@ -147,6 +147,7 @@ class SS_Report extends ViewableData {
 	 * The default value is zero.
 	 */
 	static function register($list, $reportClass, $priority = 0) {
+		Deprecation::notice('3.0', 'All subclasses of SS_Report now appear in the report admin, no need to register');
 	}
 
 	/**
@@ -154,21 +155,37 @@ class SS_Report extends ViewableData {
 	 * All subclasses of SS_Report now appear in the report admin, no need to register or unregister.
 	 */
 	static function unregister($list, $reportClass) {
-		self::excludeReport($reportClass);
+		self::add_excluded_reports($reportClass);
 	}
 
 	/**
-	 * Exclude a certain report class from the list of Reports in the CMS
-	 * @static
-	 * @param $reportClass
+	 * Exclude certain reports classes from the list of Reports in the CMS
+	 * @param $reportClass Can be either a string with the report classname or an array of reports classnames
 	 */
-	static function excludeReport($reportClass) {
-		self::$excluded_reports[] = $reportClass;   //add to the excluded reports, so this report doesn't get used
+	static function add_excluded_reports($reportClass) {
+		if (is_array($reportClass)) {
+			self::$excluded_reports = array_merge(self::$excluded_reports, $reportClass);
+		} else {
+			if (is_string($reportClass)) {
+				//add to the excluded reports, so this report doesn't get used
+				self::$excluded_reports[] = $reportClass;
+			}
+		}
+	}
+
+
+	/**
+	 * Return an array of excluded reports. That is, reports that will not be included in
+	 * the list of reports in report admin in the CMS.
+	 * @return array
+	 */
+	static function get_excluded_reports() {
+		return self::$excluded_reports;
 	}
 
 	/**
 	 * Return the SS_Report objects making up the given list.
-	 * @return An array of SS_Report objects
+	 * @return ArrayList an arraylist of SS_Report objects
 	 */
 	static function get_reports() {
 		$reports = ClassInfo::subclassesFor(get_called_class());
