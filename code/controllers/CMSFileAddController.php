@@ -57,7 +57,7 @@ class CMSFileAddController extends LeftAndMain {
 
 		$folder = $this->currentPage();
 
-		$uploadField = Object::create('UploadField', 'AssetUploadField', '');
+		$uploadField = UploadField::create('AssetUploadField', '');
 		$uploadField->setConfig('previewMaxWidth', 40);
 		$uploadField->setConfig('previewMaxHeight', 30);
 		$uploadField->addExtraClass('ss-assetuploadfield');

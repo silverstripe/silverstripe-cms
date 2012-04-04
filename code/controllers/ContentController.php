@@ -376,7 +376,7 @@ HTML;
 		} else {
 			if($date = Versioned::current_archived_date()) {
 				Requirements::css(CMS_DIR . '/css/SilverStripeNavigator.css');
-				$dateObj = Object::create('Datetime', $date, null);
+				$dateObj = Datetime::create($date, null);
 				// $dateObj->setVal($date);
 				return "<div id=\"SilverStripeNavigatorMessage\">". _t('ContentController.ARCHIVEDSITEFROM') ."<br>" . $dateObj->Nice() . "</div>";
 			}

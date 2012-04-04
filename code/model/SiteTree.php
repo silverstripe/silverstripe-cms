@@ -1374,7 +1374,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if((!$this->URLSegment || $this->URLSegment == 'new-page') && $this->Title) {
 			$this->URLSegment = $this->generateURLSegment($this->Title);
 		} else if($this->isChanged('URLSegment')) {
-			$filter = Object::create('URLSegmentFilter');
+			$filter = URLSegmentFilter::create();
 			$this->URLSegment = $filter->filter($this->URLSegment);
 			// If after sanitising there is no URLSegment, give it a reasonable default
 			if(!$this->URLSegment) $this->URLSegment = "page-$this->ID";
@@ -1583,7 +1583,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string Generated url segment
 	 */
 	function generateURLSegment($title){
-		$filter = Object::create('URLSegmentFilter');
+		$filter = URLSegmentFilter::create();
 		$t = $filter->filter($title);
 		
 		// Fallback to generic page name if path is empty (= no valid, convertable characters)
@@ -1906,13 +1906,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						"CanViewType", 
 						_t('SiteTree.ACCESSHEADER', "Who can view this page?")
 					),
-					$viewerGroupsField = Object::create('ListboxField', "ViewerGroups", _t('SiteTree.VIEWERGROUPS', "Viewer Groups"))
+					$viewerGroupsField = ListboxField::create("ViewerGroups", _t('SiteTree.VIEWERGROUPS', "Viewer Groups"))
 						->setMultiple(true)->setSource($groupsMap),
 					$editorsOptionsField = new OptionsetField(
 						"CanEditType", 
 						_t('SiteTree.EDITHEADER', "Who can edit this page?")
 					),
-					$editorGroupsField = Object::create('ListboxField', "EditorGroups", _t('SiteTree.EDITORGROUPS', "Editor Groups"))
+					$editorGroupsField = ListboxField::create("EditorGroups", _t('SiteTree.EDITORGROUPS', "Editor Groups"))
 						->setMultiple(true)->setSource($groupsMap)
 				)
 			)
@@ -2022,7 +2022,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return FieldList The available actions for this page.
 	 */
 	function getCMSActions() {
-		$minorActions = Object::create('CompositeField')->setTag('fieldset')->addExtraClass('ss-ui-buttonset');
+		$minorActions = CompositeField::create()->setTag('fieldset')->addExtraClass('ss-ui-buttonset');
 		$actions = new FieldList($minorActions);
 
 		// "readonly"/viewing version that isn't the current version of the record

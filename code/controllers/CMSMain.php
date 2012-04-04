@@ -200,7 +200,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$dateTo->setConfig('showcalendar', true);
 
 		$actions = new FieldList(
-			Object::create('ResetFormAction', 'clear', _t('CMSMain_left.ss.CLEAR', 'Clear'))
+			ResetFormAction::create('clear', _t('CMSMain_left.ss.CLEAR', 'Clear'))
 				->addExtraClass('ss-ui-action-minor'),
 			FormAction::create('doSearch',  _t('CMSMain_left.ss.SEARCH', 'Search'))
 		);
