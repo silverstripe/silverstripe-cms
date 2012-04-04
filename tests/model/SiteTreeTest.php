@@ -17,6 +17,7 @@ class SiteTreeTest extends SapphireTest {
 		'SiteTreeTest_ClassD',
 		'SiteTreeTest_ClassCext',
 		'SiteTreeTest_NotRoot',
+		'SiteTreeTest_StageStatusInherit',
 	);
 	
 	/**
@@ -866,7 +867,15 @@ class SiteTreeTest extends SapphireTest {
 		} 
 
 		if(!$isDetected) $this->fail('Fails validation with $can_be_root=false');
+	}	
+
+	function testModifyStatusFlagByInheritance(){
+		$node = new SiteTreeTest_StageStatusInherit();
+		$treeTitle = $node->getTreeTitle();
+		$this->assertContains('InheritedTitle', $treeTitle);
+		$this->assertContains('inherited-class', $treeTitle);
 	}
+	
 }
 
 /**#@+
@@ -928,4 +937,12 @@ class SiteTreeTest_ClassCext extends SiteTreeTest_ClassC implements TestOnly {
 
 class SiteTreeTest_NotRoot extends Page implements TestOnly {
 	static $can_be_root = false;
+}
+
+class SiteTreeTest_StageStatusInherit extends SiteTree implements TestOnly {
+	function getStatusFlags(){
+		$flags = parent::getStatusFlags();
+		$flags['inherited-class'] = "InheritedTitle";
+		return $flags;
+	}
 }

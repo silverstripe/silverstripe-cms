@@ -2439,6 +2439,36 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 	
 	/**
+	 * A flag provides the user with additional data about the current page status,
+	 * for example a "removed from draft" status. Each page can have more than one status flag.
+	 * Returns a map of a unique key to a (localized) title for the flag.
+	 * The unique key can be reused as a CSS class.
+	 * Use the 'updateStatusFlags' extension point to customize the flags.
+	 * Example: "deletedonlive" => "Deleted"
+	 * 
+	 * @return array
+	 */
+	function getStatusFlags() {
+		$flags = array();
+		if($this->IsDeletedFromStage) {
+			if($this->ExistsOnLive) {
+				$flags['removedfromdraft'] = _t('SiteTree.REMOVEDFROMDRAFTSHORT', 'Removed from draft');
+			} else {
+				$flags['deletedonlive'] = _t('SiteTree.DELETEDPAGESHORT', 'Deleted');
+			}
+		} else if($this->IsAddedToStage) {
+			$flags['addedtodraft'] = _t('SiteTree.ADDEDTODRAFTSHORT', 'New');
+		} else if($this->IsModifiedOnStage) {
+			$flags['modified'] = _t('SiteTree.MODIFIEDONDRAFTSHORT', 'Modified');
+		}
+
+		$this->extend('updateStatusFlags', $flags);
+		
+		return $flags;
+	}
+
+	
+	/**
 	 * @deprecated 3.0 Use getTreeTitle()
 	 */
 	function TreeTitle() {
@@ -2447,29 +2477,27 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
-	 * TitleWithStatus will return the title in an <ins>, <del> or
-	 * <span class=\"modified\"> tag depending on its publication status.
+	 * getTreeTitle will return three <span> html DOM elements, an empty <span> with
+	 * the class 'jstree-pageicon' in front, following by a <span> wrapping around its
+	 * MenutTitle, then following by a <span> indicating its publication status. 
 	 *
-	 * @return string
+	 * @return string a html string ready to be directly used in a template
 	 */
 	function getTreeTitle() {
-		$text = Convert::raw2xml(str_replace(array("\n","\r"),"",$this->MenuTitle));
-		if($this->IsDeletedFromStage) {
-			if($this->ExistsOnLive) {
-				$tag ="<span class=\"del item\" title=\"" . _t('SiteTree.REMOVEDFROMDRAFTSHORT', 'Removed from draft') . "\" >{$text}</span> <span class=\"badge removedfromdraft\">" .  _t('SiteTree.REMOVEDFROMDRAFTSHORT', 'Removed from draft') . "</span>";
-			} else {
-				$tag ="<span class=\"del item\" title=\"" . _t('SiteTree.DELETEDPAGESHORT', 'Deleted') . "\">{$text}</span> <span class=\"badge deletedonlive\">". _t('SiteTree.DELETEDPAGESHORT', 'Deleted') . "</span>";
-			}
-		} elseif($this->IsAddedToStage) {
-			$tag = "<span class=\"ins item\" title=\"" . _t('SiteTree.ADDEDTODRAFTSHORT', 'New') . "\">{$text}</span> <span class=\"badge addedtodraft\">". _t('SiteTree.ADDEDTODRAFTSHORT', 'New') . "</span>";
-		} elseif($this->IsModifiedOnStage) {
-			$tag = "<span title=\"" . _t('SiteTree.MODIFIEDONDRAFTSHORT', 'Modified') . "\" class=\"ins item\">{$text}</span> <span class=\"badge modified\">" . _t('SiteTree.MODIFIEDONDRAFTSHORT', 'Modified') . "</span>";
-		} else {
-			$tag = '';
+		$flags = $this->getStatusFlags();
+		$treeTitle = sprintf(
+			"<span class=\"jstree-pageicon\"></span><span class=\"item\">%s</span>",
+			Convert::raw2xml(str_replace(array("\n","\r"),"",$this->MenuTitle))
+		);
+		foreach($flags as $class => $title) {
+			$treeTitle .= sprintf(
+				"<span class=\"badge %s\">%s</span>",
+				Convert::raw2xml($class),
+				Convert::raw2xml($title)
+			);
 		}
-
-
-		return ($tag) ? "<span class=\"jstree-pageicon\"></span>". $tag : "<span class=\"jstree-pageicon\"></span>". $text;
+		
+		return $treeTitle;
 	}
 
 	/**
