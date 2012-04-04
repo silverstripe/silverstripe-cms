@@ -58,9 +58,9 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 		return false;
 	}
 
-	function currentPageID() {
+	function currentReport() {
 		$id = parent::currentPageID();
-		$reports = SS_Report::get_reports('ReportAdmin');
+		$reports = SS_Report::get_reports();
 		return (isset($reports[$id])) ? $reports[$id] : null;
 	}
 
@@ -72,7 +72,7 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 	 */
 	public function Reports() {
  		$output = new ArrayList();
-		foreach(SS_Report::get_reports('ReportAdmin') as $report) {
+		foreach(SS_Report::get_reports() as $report) {
 			if($report->canView()) $output->push($report);
 		}
 		return $output;
@@ -90,7 +90,7 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 	 * @return boolean
 	 */
 	public static function has_reports() {
-		return sizeof(SS_Report::get_reports('ReportAdmin')) > 0;
+		return sizeof(SS_Report::get_reports()) > 0;
 	}
 	
 	public function updatereport() {
@@ -106,6 +106,68 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 				'category' => _t('Permission.CMS_ACCESS_CATEGORY', 'CMS Access')
 			)
 		);
+	}
+
+	public function getEditForm($id = null, $fields = null) {
+		$fields = new FieldList();
+		
+		$report = $this->currentReport();
+
+		if($report) {
+			// List all reports
+			$gridFieldConfig = GridFieldConfig::create()->addComponents(
+				new GridFieldToolbarHeader(),
+				new GridFieldSortableHeader(),
+				new GridFieldDataColumns(),
+				new GridFieldPaginator(),
+				new GridFieldPrintButton(),
+				new GridFieldExportButton()
+			);
+			$gridField = new GridField('Report',$report->title(), $report->sourceRecords(array(), null, null), $gridFieldConfig);
+			$displayFields = array();
+			$fieldCasting = array();
+			$fieldFormatting = array();
+			
+			// Parse the column information
+			foreach($report->columns() as $source => $info) {
+				if(is_string($info)) $info = array('title' => $info);
+				
+				if(isset($info['formatting'])) $fieldFormatting[$source] = $info['formatting'];
+				if(isset($info['csvFormatting'])) $csvFieldFormatting[$source] = $info['csvFormatting'];
+				if(isset($info['casting'])) $fieldCasting[$source] = $info['casting'];
+
+				$displayFields[$source] = isset($info['title']) ? $info['title'] : $source;
+			}
+			$gridField->setDisplayFields($displayFields);
+			$gridField->setFieldCasting($fieldCasting);
+			$gridField->setFieldFormatting($fieldFormatting);
+
+			$fields->push($gridField);
+		} else {
+			// List all reports
+			$gridFieldConfig = GridFieldConfig::create()->addComponents(
+				new GridFieldToolbarHeader(),
+				new GridFieldSortableHeader(),
+				new GridFieldDataColumns()
+			);
+			$gridField = new GridField('Reports','Reports', $this->Reports(), $gridFieldConfig);
+			$gridField->setDisplayFields(array(
+				'title' => 'Title',
+				'description' => 'Description'
+			));
+			$gridField->setFieldFormatting(array(
+				'title' => '<a href=\"$Link\">$value</a>'
+			));
+			$fields->push($gridField);
+		}
+
+		$actions = new FieldList();
+		$form = new Form($this, "EditForm", $fields, $actions);
+		$form->addExtraClass('cms-edit-form cms-panel-padded center ' . $this->BaseCSSClasses());
+
+		$this->extend('updateEditForm', $form);
+
+		return $form;
 	}
 }
 

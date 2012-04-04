@@ -134,6 +134,10 @@ class SS_Report extends ViewableData {
 		return $this->dataClass;
 	}
 
+	function getLink() {
+		return 'admin/reports/show/' . $this->class;
+	}
+
 
 
 	/**
@@ -197,7 +201,7 @@ class SS_Report extends ViewableData {
 				if (in_array($report, self::$excluded_reports)) continue;   //don't use the SS_Report superclass
 				$reportObj = new $report;
 				if (method_exists($reportObj,'sort')) $reportObj->sort = $reportObj->sort();  //use the sort method to specify the sort field
-				$reportsArray[] = $reportObj;
+				$reportsArray[$report] = $reportObj;
 			}
 		}
 
