@@ -202,7 +202,7 @@ JS
 				$tabs->push($tabDetails = new Tab('DetailsView', _t('AssetAdmin.DetailsView', 'Details')));
 				$tabDetails->addExtraClass("content-galleryview");
 				foreach($fields as $field) {
-					$fields->removeByName($field->Name());
+					$fields->removeByName($field->getName());
 					$tabDetails->push($field);
 				}
 			}
