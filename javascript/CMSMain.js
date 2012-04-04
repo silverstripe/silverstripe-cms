@@ -138,6 +138,7 @@
 				button.addClass('loading');
 			
 				jQuery.ajax({
+					headers: {"X-Get-Fragment" : "CurrentForm"},
 					url: this.attr('action'),
 					data: this.serializeArray(),
 					dataType: 'html',
