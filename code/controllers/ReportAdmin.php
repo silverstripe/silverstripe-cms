@@ -128,6 +128,13 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 		);
 	}
 
+	/**
+	 * Reports don't need an editor toolbar. This empty method is necessary, otherwise the report page thinks it is
+	 * a SiteTree page and returns unnecessary controls in a cms-editor-dialogs div
+	 */
+	public function EditorToolbar() {
+	}
+
 	public function getEditForm($id = null, $fields = null) {
 		$fields = new FieldList();
 		
