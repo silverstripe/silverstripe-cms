@@ -42,7 +42,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'SearchForm',
 		'SiteTreeAsUL',
 		'getshowdeletedsubtree',
-		'batchactions',
+		'batchactions'
 	);
 	
 	public function init() {
@@ -241,11 +241,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * @return String Serialized JSON
 	 */
 	public function SiteTreeHints() {
-	  $classes = ClassInfo::subclassesFor( $this->stat('tree_class') );
+	 	$classes = ClassInfo::subclassesFor( $this->stat('tree_class') );
 
 		$def['Root'] = array();
 		$def['Root']['disallowedParents'] = array();
-
+ 		$def['SecurityID'] = SecurityToken::getSecurityID();
 		foreach($classes as $class) {
 			$obj = singleton($class);
 			
@@ -255,6 +255,26 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			
 			// SiteTree::allowedChildren() returns null rather than an empty array if SiteTree::allowed_chldren == 'none'
 			if($allowedChildren == null) $allowedChildren = array();
+			
+			// Exclude SiteTree from possible Children
+			$possibleChildren = array_diff($allowedChildren, array("SiteTree"));
+
+			// Find i18n - names and build allowed children array
+			foreach($possibleChildren as $child) {
+				$instance = singleton($child);
+				
+				if($instance instanceof HiddenClass) continue;
+
+				if(!$instance->canCreate()) continue;
+
+				// skip this type if it is restricted
+				if($instance->stat('need_permission') && !$this->can(singleton($class)->stat('need_permission'))) continue;
+
+				$title = $instance->i18n_singular_name();
+
+				$def[$class]['allowedChildren'][] = array("pagetype" => $child, "pagename" => $title);
+			}
+
 			$allowedChildren = array_keys(array_diff($classes, $allowedChildren));
 			if($allowedChildren) $def[$class]['disallowedChildren'] = $allowedChildren;
 			
@@ -264,6 +284,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				$def[$class]['defaultChild'] = $defaultChild;
 			
 			$defaultParent = $obj->defaultParent();
+
 			$parent = SiteTree::get_by_link($defaultParent);
 			
 			$id = $parent ? $parent->id : null;
@@ -368,7 +389,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 		
 		$result->sort('AddAction');
-		
 		return $result;
 	}
 

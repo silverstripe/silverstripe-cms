@@ -89,7 +89,7 @@ class CMSPageAddController extends CMSPageEditController {
 		if($parentID = $this->request->getVar('ParentID')) {
 			$form->Fields()->dataFieldByName('ParentID')->setValue((int)$parentID);
 		}
-		
+
 		return $form;
 	}
 
