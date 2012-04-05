@@ -591,20 +591,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 					$record->Title
 				)
 			);
-		
-			// Reload form, data and actions might have changed
-			$form = $this->getEditForm($record->ID);
 		} else {
 			$this->response->addHeader('X-Status', _t('LeftAndMain.SAVEDUP'));
-			
-			// Reload form, data and actions might have changed
-			$form = $this->getEditForm($record->ID);
 		}
-		
-		return $form->forTemplate();
-	}
 
-	
+		return $this->getResponseNegotiator()->respond($this->request);
+	}
 
 	/**
 	 * @uses LeftAndMainExtension->augmentNewSiteTreeItem()
@@ -742,9 +734,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			)
 		);
 		
-		$form = $this->getEditForm($record->ID);
-		
-		return $form->forTemplate();
+		return $this->getResponseNegotiator()->respond($this->request);
 	}
 	
 	/**
@@ -796,10 +786,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			sprintf(_t('CMSMain.REMOVEDPAGE',"Removed '%s' from the published site"),$record->Title)
 		);
 		
-		// Reload form, data and actions might have changed
-		$form = $this->getEditForm($record->ID);
-		
-		return $form->forTemplate();
+		return $this->getResponseNegotiator()->respond($this->request);
 	}
 
 	/**
@@ -948,10 +935,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			)
 		);
 		
-		// Reload form, data and actions might have changed
-		$form = $this->getEditForm($restoredPage->ID);
-		
-		return $form->forTemplate();
+		return $this->getResponseNegotiator()->respond($this->request);
 	}
 
 	function duplicate($request) {
