@@ -524,7 +524,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * 
 	 * @return SS_List
 	 */
-	public function getList() {
+	public function getList(&$filterOnOff) {
 		$list = new DataList($this->stat('tree_class'));
 		
 		$request = $this->request;
@@ -535,26 +535,51 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				throw new Exception(sprintf('Invalid filter class passed: %s', $filterClass));
 			}
 			$filter = new $filterClass($request->requestVars());
+			$filterOn = true;
 			foreach($pages=$filter->pagesIncluded() as $pageMap){
 				$ids[] = $pageMap['ID'];
 			}
+			if(count($ids)) $list->where('"'.$this->stat('tree_class').'"."ID" IN ('.implode(",", $ids).')');
+		}else{
+			$list->filter("ParentID", 0);
 		}
-		
-		if(count($ids)) $list->where('"'.$this->stat('tree_class').'"."ID" IN ('.implode(",", $ids).')');
+
 		return $list;
 	}
 	
 	public function getListView(){
-		$list = $this->getList();
+		$filterOn = false;
+		$list = $this->getList($filterOn);
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
 			new GridFieldSortableHeader(),
 			new GridFieldDataColumns(),
 			new GridFieldPaginator(15),
 			new GridFieldEditButton(),
-			new GridFieldDeleteAction(),
 			new GridFieldDetailForm()
 		);
 		$gridField = new GridField('Page','Pages', $list, $gridFieldConfig);
+		
+		if($filterOn){
+			$gridField->setDisplayFields(array(
+				'getTreeTitle' => _t('SiteTree.PAGETITLE', 'Page Title'),
+				'Created' => _t('SiteTree.CREATED', 'Date Created'),
+				'LastEdited' => _t('SiteTree.LASTUPDATED', 'Last Updated'),
+			));
+		}else{
+			$gridField->setDisplayFields(array(
+				'listChildrenLink' => "",
+				'getTreeTitle' => _t('SiteTree.PAGETITLE', 'Page Title'),
+				'Created' => _t('SiteTree.CREATED', 'Date Created'),
+				'LastEdited' => _t('SiteTree.LASTUPDATED', 'Last Updated'),
+			));
+		}
+		
+		$gridField->setFieldCasting(array(
+			'Created' => 'Date->Ago',
+			'LastEdited' => 'Date->Ago',
+			
+		));
+		
 		$listview = new Form(
 			$this,
 			'ListView',
@@ -563,6 +588,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		);
 
 		$this->extend('updateListView', $listview);
+		
 		$listview->disableSecurityToken();
 		return $listview;
 	}
@@ -586,6 +612,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 		
 		return $id;
+	}
+	
+	public function listchildren(){
+		if(Director::is_ajax()){
+			return $this;
+		}else{
+			
+		}
 	}
 
 	//------------------------------------------------------------------------------------------//
