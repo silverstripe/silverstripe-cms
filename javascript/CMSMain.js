@@ -48,8 +48,10 @@
 				//this.find(':submit').attr('disabled', true);
 		
 				this.find(':submit[name=action_doSearchTree]').addClass('loading');
-		
-				this._reloadSitetree(this.serializeArray());
+				
+				var params = this.serializeArray();
+				this._reloadSitetree(params);
+				this._reloadListview(params)
 
 				return false;
 			},
@@ -87,6 +89,28 @@
 						errorMessage('Could not filter site tree<br />' + response.responseText);
 					}
 				);		
+			},
+			
+			_reloadListview: function(params){
+				$('.cms-list').refresh(params);
+				
+			}
+		});
+		
+		$('#cms-content-listview .cms-list').entwine({
+			refresh: function(params){
+				var self = this;
+				
+				$.ajax({
+					url: this.data('url-list'),
+					data: params,
+					success: function(data, status, xhr) {
+						self.html(data);
+					},
+					error: function(xhr, status, e) {
+						errorMessage(e);
+					}
+				});
 			}
 		});
 	

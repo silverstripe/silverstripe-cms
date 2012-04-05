@@ -43,6 +43,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'SiteTreeAsUL',
 		'getshowdeletedsubtree',
 		'batchactions',
+		'ListView',
+		'getListView',
 	);
 	
 	public function init() {
@@ -434,6 +436,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * @return Form
 	 */
 	public function getEditForm($id = null, $fields = null) {
+
 		if(!$id) $id = $this->currentPageID();
 		$form = parent::getEditForm($id);
 		
@@ -506,13 +509,70 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			}
 
 			$this->extend('updateEditForm', $form);
-
 			return $form;
 		} else if($id) {
 			return new Form($this, "EditForm", new FieldList(
 				new LabelField('PageDoesntExistLabel',_t('CMSMain.PAGENOTEXISTS',"This page doesn't exist"))), new FieldList()
 			);
 		}
+	}
+	
+	/**
+	 * Returns the files and subfolders contained in the currently selected folder,
+	 * defaulting to the root node. Doubles as search results, if any search parameters
+	 * are set through {@link SearchForm()}.
+	 * 
+	 * @return SS_List
+	 */
+	public function getList() {//return 'haha';
+		$list = new DataList($this->stat('tree_class'));
+		
+		$request = $this->request;
+		$filter = null;
+		if($filterClass = $request->requestVar('FilterClass')){
+			if(!is_subclass_of($filterClass, 'CMSSiteTreeFilter')) {
+				throw new Exception(sprintf('Invalid filter class passed: %s', $filterClass));
+			}
+			$filter = new $filterClass($request->requestVars());
+			$ids = array();
+			foreach($pages=$filter->pagesIncluded() as $pageMap){
+				$ids[] = $pageMap['ID'];
+			}
+		}
+		
+		if(count($ids)) $list->where('"'.$this->stat('tree_class').'"."ID" IN ('.implode(",", $ids).')');
+		return $list;
+	}
+	
+	public function getListView(){
+		$list = $this->getList();
+		$gridFieldConfig = GridFieldConfig::create()->addComponents(
+			new GridFieldSortableHeader(),
+			new GridFieldDataColumns(),
+			new GridFieldPaginator(15),
+			new GridFieldEditButton(),
+			new GridFieldDeleteAction(),
+			new GridFieldDetailForm()
+		);
+		$gridField = new GridField('Page','Pages', $list, $gridFieldConfig);
+		$listview = new Form(
+			$this,
+			'ListView',
+			new FieldList($gridField),
+			new FieldList()
+		);
+
+		$this->extend('updateListView', $listview);
+		$listview->disableSecurityToken();
+		return $listview;
+	}
+	
+	public function getListViewHTML(){
+		return $this->getListView()->forTemplate();
+	}
+	
+	public function ListView() {
+		return $this->getListView();
 	}
 	
 	public function currentPageID() {
