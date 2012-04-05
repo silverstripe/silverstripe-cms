@@ -47,7 +47,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	
 	public function init() {
 		// set reading lang
-		if(Object::has_extension('SiteTree', 'Translatable') && !$this->isAjax()) {
+		if(Object::has_extension('SiteTree', 'Translatable') && !$this->request->isAjax()) {
 			Translatable::choose_site_locale(array_keys(Translatable::get_existing_content_languages('SiteTree')));
 		}
 		
@@ -139,7 +139,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// Include custom CSS for tree icons inline, as the tree might be loaded
 		// via Ajax, in which case we can't inject it into the HTML header easily through the HTTP response.
 		$css = $this->generateTreeStylingCSS();
-		if($this->isAjax()) {
+		if($this->request->isAjax()) {
 			$html .= "<style type=\"text/css\">\n" . $css . "</style>\n";				
 		} else {
 			Requirements::customCSS($css);

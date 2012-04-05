@@ -9,7 +9,7 @@ class CMSFileAddController extends LeftAndMain {
 	
 //	public function upload($request) {
 //		$formHtml = $this->renderWith(array('AssetAdmin_UploadContent'));
-//		if($this->isAjax()) {
+//		if($request->isAjax()) {
 //			return $formHtml;
 //		} else {
 //			return $this->customise(array(

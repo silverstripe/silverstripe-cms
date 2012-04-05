@@ -255,7 +255,7 @@ JS
 			'EditForm' => $this->AddForm()
 		));
 
-		if($this->isAjax()) {
+		if($request->isAjax()) {
 			// Rendering is handled by template, which will call EditForm() eventually
 			$content = $obj->renderWith($this->getTemplatesWithSuffix('_Content'));
 		} else {

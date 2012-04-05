@@ -27,7 +27,7 @@ class CMSPageHistoryController extends CMSMain {
 	function show($request) {
 		$form = $this->ShowVersionForm($request->param('VersionID'));
 		
-		if($this->isAjax()) {
+		if($request->isAjax()) {
 			if($form) $content = $form->forTemplate();
 			else $content = $this->renderWith($this->getTemplatesWithSuffix('_Content'));
 		} else {
@@ -44,7 +44,7 @@ class CMSPageHistoryController extends CMSMain {
 			$request->param('VersionID'), 
 			$request->param('OtherVersionID')
 		);
-		if($this->isAjax()) {
+		if($request->isAjax()) {
 			$content = $form->forTemplate();
 		} else {
 			$content = $this->customise(array('EditForm' => $form))->renderWith($this->getViewer('show'));
@@ -258,7 +258,7 @@ class CMSPageHistoryController extends CMSMain {
 		$form = $this->CompareVersionsForm($version1, $version2);
 
 		// javascript solution, render into template
-		if($this->isAjax()) {
+		if($this->request->isAjax()) {
 			return $this->customise(array(
 				"EditForm" => $form
 			))->renderWith(array(
@@ -293,7 +293,7 @@ class CMSPageHistoryController extends CMSMain {
 		
 		if(!$versionID) return;
 		
-		if($this->isAjax()) {
+		if($request->isAjax()) {
 			return $this->customise(array(
 				"EditForm" => $this->ShowVersionForm($versionID)
 			))->renderWith(array(
