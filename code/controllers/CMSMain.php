@@ -42,7 +42,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'SearchForm',
 		'SiteTreeAsUL',
 		'getshowdeletedsubtree',
-		'batchactions',
+		'batchactions'
 	);
 	
 	public function init() {
@@ -242,10 +242,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 */
 	public function SiteTreeHints() {
 	 	$classes = ClassInfo::subclassesFor( $this->stat('tree_class') );
+		//Debug::show(SecurityToken::getValue());
 
 		$def['Root'] = array();
 		$def['Root']['disallowedParents'] = array();
-
+ 		$def['SecurityID'] = SecurityToken::getSecurityID();
 		foreach($classes as $class) {
 			$obj = singleton($class);
 			
@@ -272,7 +273,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 				$title = $instance->i18n_singular_name();
 
-				$def[$class]['allowedChildren'][] = array("ssclass" => $child, "ssname" => $title);
+				$def[$class]['allowedChildren'][] = array("pagetype" => $child, "pagename" => $title);
 			}
 
 			$allowedChildren = array_keys(array_diff($classes, $allowedChildren));

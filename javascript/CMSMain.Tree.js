@@ -9,18 +9,24 @@
 				config.contextmenu = {
 					'items': function(node) {
 						// Build a list for allowed children as submenu entries
-						var ssclass = node.data('ssclass');
+						var pagetype = node.data('pagetype');
 						var id = node.data('id');
 
 						var allowedChildren = new Object;
-						$(hints[ssclass].allowedChildren).each(
+						$(hints[pagetype].allowedChildren).each(
 							function(key, val){
 								allowedChildren["allowedchildren-" + key ] = {
-									'label': '<span class="jstree-pageicon"></span>' + val.ssname,
-									'_class': 'class-' + val.ssclass,
+									'label': '<span class="jstree-pageicon"></span>' + val.pagename,
+									'_class': 'class-' + val.pagetype,
 									'action': function(obj) {
 										// TODO Fix hardcoding of link
-										$('.cms-container').loadPanel('admin/page/add/?ParentID=' + id + '&Type=' + val.ssclass);
+										$('.cms-container').loadPanel('admin/page/add/doAdd'
+											+ '?ParentID=' + id 
+											+ '&PageType=' + val.pagetype 
+											+ '&ParentModeField=child'
+											+ '&SecurityID=' + hints.SecurityID
+											+ '&POST=action_doAdd'
+										);
 									}
 								};
 							}

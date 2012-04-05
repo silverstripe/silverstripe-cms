@@ -16,18 +16,6 @@ class CMSPageAddController extends CMSPageEditController {
 	 * @return Form
 	 */
 	function AddForm() {
-		// If request send from rightclick-submenu, directly add Page
-		if(($pageType = $this->request->getVar('Type')) && ($parentID = $this->request->getVar('ParentID'))) {
-			$data = array(
-				"PageType" => (string)$pageType,
-				"ParentID" => $parentID,
-				"ParentModeField" => "child"
-			);
-			$this->doAdd($data, null);
-			return;
-		}
-
-
 		$record = $this->currentPage();
 		
 		$pageTypes = array();
