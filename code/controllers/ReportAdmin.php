@@ -99,10 +99,23 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 	public static function has_reports() {
 		return sizeof(SS_Report::get_reports()) > 0;
 	}
-	
-	public function updatereport() {
-		// FormResponse::load_form($this->EditForm()->forTemplate());
-		// return FormResponse::respond();
+
+	/**
+	 * Returns the Breadcrumbs for the ReportAdmin
+	 * @return ArrayList
+	 */
+	public function Breadcrumbs() {
+		$items = parent::Breadcrumbs();
+
+		if ($this->reportObject) {
+			//build breadcrumb trail to the current report
+			$items->push(new ArrayData(array(
+					'Title' => $this->reportObject->title(),
+					'Link' => Controller::join_links($this->Link(), '?' . http_build_query(array('q' => $this->request->requestVar('q'))))
+				)));
+		}
+
+		return $items;
 	}
 
 	function providePermissions() {
