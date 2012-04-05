@@ -22,9 +22,22 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 	static $template_path = null; // defaults to (project)/templates/email
 	
 	static $tree_class = 'SS_Report';
+
+	/**
+	 * Variable that describes which report we are currently viewing based on the URL (gets set in init method)
+	 * @var String
+	 */
+	protected $reportClass;
+
+	protected $reportObject;
 	
 	public function init() {
 		parent::init();
+
+		//set the report we are currently viewing from the URL
+		$this->reportClass = (isset($this->urlParams['ID'])) ? $this->urlParams['ID'] : null;
+		$allReports = SS_Report::get_reports();
+		$this->reportObject = (isset($allReports[$this->reportClass])) ? $allReports[$this->reportClass] : null;
 
 		Requirements::css(CMS_DIR . '/css/screen.css');
 
@@ -56,12 +69,6 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 		}
 
 		return false;
-	}
-
-	function currentReport() {
-		$id = parent::currentPageID();
-		$reports = SS_Report::get_reports();
-		return (isset($reports[$id])) ? $reports[$id] : null;
 	}
 
 	/**
@@ -111,7 +118,7 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 	public function getEditForm($id = null, $fields = null) {
 		$fields = new FieldList();
 		
-		$report = $this->currentReport();
+		$report = $this->reportObject;
 
 		if($report) {
 			// List all reports
