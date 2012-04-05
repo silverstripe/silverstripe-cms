@@ -524,7 +524,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * 
 	 * @return SS_List
 	 */
-	public function getList() {//return 'haha';
+	public function getList() {
 		$list = new DataList($this->stat('tree_class'));
 		
 		$request = $this->request;
