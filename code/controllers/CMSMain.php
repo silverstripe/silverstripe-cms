@@ -242,7 +242,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 */
 	public function SiteTreeHints() {
 	 	$classes = ClassInfo::subclassesFor( $this->stat('tree_class') );
-		//Debug::show(SecurityToken::getValue());
 
 		$def['Root'] = array();
 		$def['Root']['disallowedParents'] = array();
