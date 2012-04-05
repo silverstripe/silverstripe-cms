@@ -529,12 +529,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		$request = $this->request;
 		$filter = null;
+		$ids = array();
 		if($filterClass = $request->requestVar('FilterClass')){
 			if(!is_subclass_of($filterClass, 'CMSSiteTreeFilter')) {
 				throw new Exception(sprintf('Invalid filter class passed: %s', $filterClass));
 			}
 			$filter = new $filterClass($request->requestVars());
-			$ids = array();
 			foreach($pages=$filter->pagesIncluded() as $pageMap){
 				$ids[] = $pageMap['ID'];
 			}
