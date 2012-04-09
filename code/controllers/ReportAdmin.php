@@ -170,6 +170,11 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 				if(isset($info['csvFormatting'])) $csvFieldFormatting[$source] = $info['csvFormatting'];
 				if(isset($info['casting'])) $fieldCasting[$source] = $info['casting'];
 
+				if(isset($info['link']) && $info['link']) {
+					$link = singleton('CMSPageEditController')->Link('show');
+					$fieldFormatting[$source] = '<a href=\"' . $link . '/$ID\">$value</a>';
+				}
+
 				$displayFields[$source] = isset($info['title']) ? $info['title'] : $source;
 			}
 			$gridField->setDisplayFields($displayFields);
