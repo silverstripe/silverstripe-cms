@@ -193,7 +193,7 @@ class SilverStripeNavigatorItem_CMSLink extends SilverStripeNavigatorItem {
 		return (Controller::curr() instanceof CMSMain);
 	}
 	
-	function canView() {
+	function canView($member = null) {
 		// Don't show in CMS
 		return !(Controller::curr() instanceof CMSMain);
 	}
@@ -223,7 +223,7 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
 		return Controller::join_links($this->record->AbsoluteLink(), '?stage=Stage');
 	}
 	
-	function canView() {
+	function canView($member = null) {
 		return ($this->record->hasExtension('Versioned') && $this->getDraftPage());
 	}
 	
@@ -267,7 +267,7 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem {
 		return Controller::join_links($this->record->AbsoluteLink(), '?stage=Live');
 	}
 	
-	function canView() {
+	function canView($member = null) {
 		return ($this->record->hasExtension('Versioned') && $this->getLivePage());
 	}
 	
@@ -299,7 +299,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 	
 	function getMessage() {
 		if($date = Versioned::current_archived_date()) {
-			$dateObj = Object::create('Datetime');
+			$dateObj = Datetime::create();
 			$dateObj->setValue($date);
 			return "<div id=\"SilverStripeNavigatorMessage\" title=\"". _t('ContentControl.NOTEWONTBESHOWN', 'Note: this message will not be shown to your visitors') ."\">". _t('ContentController.ARCHIVEDSITEFROM', 'Archived site from') ."<br>" . $dateObj->Nice() . "</div>";
 		}
@@ -309,7 +309,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 		return $this->record->AbsoluteLink() . '?archiveDate=' . $date;
 	}
 	
-	function canView() {
+	function canView($member = null) {
 		return ($this->record->hasExtension('Versioned') && $this->isArchived());
 	}
 	

@@ -22,6 +22,8 @@ class ErrorPage extends Page {
 		"ShowInSearch" => 0
 	);
 	
+	static $allowed_children = array();
+
 	static $description = 'Custom content for different error cases (e.g. "Page not found")';
 	
 	protected static $static_filepath = ASSETS_PATH;
@@ -50,7 +52,7 @@ class ErrorPage extends Page {
 			$response = new SS_HTTPResponse();	
 			
 			$response->setStatusCode($statusCode);
-			$response->setBody(file_get_contents($cachedPath));
+			$response->setBody(file_get_contents($cachedPath));	
 			
 			return $response;
 		}
@@ -127,8 +129,8 @@ class ErrorPage extends Page {
 		}
 	}
 
-	function getCMSFields() {
-		$fields = parent::getCMSFields();
+	function getCMSFields($params = null) {
+		$fields = parent::getCMSFields($params);
 		
 		$fields->addFieldToTab(
 			"Root.Main", 

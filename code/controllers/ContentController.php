@@ -133,7 +133,7 @@ class ContentController extends Controller {
 	 *
 	 * @return SS_HTTPResponse
 	 */
-	public function handleRequest(SS_HTTPRequest $request, DataModel $model) {
+	public function handleRequest(SS_HTTPRequest $request, DataModel $model = null) {
 		$child  = null;
 		$action = $request->param('Action');
 		$this->setModel($model);
@@ -376,7 +376,7 @@ HTML;
 		} else {
 			if($date = Versioned::current_archived_date()) {
 				Requirements::css(CMS_DIR . '/css/SilverStripeNavigator.css');
-				$dateObj = Object::create('Datetime', $date, null);
+				$dateObj = Datetime::create($date, null);
 				// $dateObj->setVal($date);
 				return "<div id=\"SilverStripeNavigatorMessage\">". _t('ContentController.ARCHIVEDSITEFROM') ."<br>" . $dateObj->Nice() . "</div>";
 			}

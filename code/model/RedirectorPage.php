@@ -27,6 +27,8 @@ class RedirectorPage extends Page {
 	static $many_many = array(
 	);
 	
+	static $allowed_children = array();
+
 	/**
 	 * Returns this page if the redirect is external, otherwise
 	 * returns the target page.
@@ -115,7 +117,7 @@ class RedirectorPage extends Page {
 		}
 	}
 
-	function getCMSFields() {
+	function getCMSFields($params = null) {
 		Requirements::javascript(SAPPHIRE_DIR . "/javascript/RedirectorPage.js");
 		
 		$fields = parent::getCMSFields();

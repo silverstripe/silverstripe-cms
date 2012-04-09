@@ -49,7 +49,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	
 	public function init() {
 		// set reading lang
-		if(Object::has_extension('SiteTree', 'Translatable') && !$this->isAjax()) {
+		if(Object::has_extension('SiteTree', 'Translatable') && !$this->request->isAjax()) {
 			Translatable::choose_site_locale(array_keys(Translatable::get_existing_content_languages('SiteTree')));
 		}
 		
@@ -141,7 +141,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// Include custom CSS for tree icons inline, as the tree might be loaded
 		// via Ajax, in which case we can't inject it into the HTML header easily through the HTTP response.
 		$css = $this->generateTreeStylingCSS();
-		if($this->isAjax()) {
+		if($this->request->isAjax()) {
 			$html .= "<style type=\"text/css\">\n" . $css . "</style>\n";				
 		} else {
 			Requirements::customCSS($css);
@@ -202,7 +202,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$dateTo->setConfig('showcalendar', true);
 
 		$actions = new FieldList(
-			Object::create('ResetFormAction', 'clear', _t('CMSMain_left.ss.CLEAR', 'Clear'))
+			ResetFormAction::create('clear', _t('CMSMain_left.ss.CLEAR', 'Clear'))
 				->addExtraClass('ss-ui-action-minor'),
 			FormAction::create('doSearch',  _t('CMSMain_left.ss.SEARCH', 'Search'))
 		);
@@ -243,7 +243,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * @return String Serialized JSON
 	 */
 	public function SiteTreeHints() {
-	  $classes = ClassInfo::subclassesFor( $this->stat('tree_class') );
+	 	$classes = ClassInfo::subclassesFor( $this->stat('tree_class') );
 
 		$def['Root'] = array();
 		$def['Root']['disallowedParents'] = array();
@@ -257,6 +257,26 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			
 			// SiteTree::allowedChildren() returns null rather than an empty array if SiteTree::allowed_chldren == 'none'
 			if($allowedChildren == null) $allowedChildren = array();
+			
+			// Exclude SiteTree from possible Children
+			$possibleChildren = array_diff($allowedChildren, array("SiteTree"));
+
+			// Find i18n - names and build allowed children array
+			foreach($possibleChildren as $child) {
+				$instance = singleton($child);
+				
+				if($instance instanceof HiddenClass) continue;
+
+				if(!$instance->canCreate()) continue;
+
+				// skip this type if it is restricted
+				if($instance->stat('need_permission') && !$this->can(singleton($class)->stat('need_permission'))) continue;
+
+				$title = $instance->i18n_singular_name();
+
+				$def[$class]['allowedChildren'][] = array("ssclass" => $child, "ssname" => $title);
+			}
+
 			$allowedChildren = array_keys(array_diff($classes, $allowedChildren));
 			if($allowedChildren) $def[$class]['disallowedChildren'] = $allowedChildren;
 			
@@ -266,6 +286,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				$def[$class]['defaultChild'] = $defaultChild;
 			
 			$defaultParent = $obj->defaultParent();
+
 			$parent = SiteTree::get_by_link($defaultParent);
 			
 			$id = $parent ? $parent->id : null;
@@ -370,7 +391,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 		
 		$result->sort('AddAction');
-		
 		return $result;
 	}
 
@@ -685,20 +705,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 					$record->Title
 				)
 			);
-		
-			// Reload form, data and actions might have changed
-			$form = $this->getEditForm($record->ID);
 		} else {
 			$this->response->addHeader('X-Status', _t('LeftAndMain.SAVEDUP'));
-			
-			// Reload form, data and actions might have changed
-			$form = $this->getEditForm($record->ID);
 		}
-		
-		return $form->forTemplate();
-	}
 
-	
+		return $this->getResponseNegotiator()->respond($this->request);
+	}
 
 	/**
 	 * @uses LeftAndMainExtension->augmentNewSiteTreeItem()
@@ -836,9 +848,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			)
 		);
 		
-		$form = $this->getEditForm($record->ID);
-		
-		return $form->forTemplate();
+		return $this->getResponseNegotiator()->respond($this->request);
 	}
 	
 	/**
@@ -890,10 +900,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			sprintf(_t('CMSMain.REMOVEDPAGE',"Removed '%s' from the published site"),$record->Title)
 		);
 		
-		// Reload form, data and actions might have changed
-		$form = $this->getEditForm($record->ID);
-		
-		return $form->forTemplate();
+		return $this->getResponseNegotiator()->respond($this->request);
 	}
 
 	/**
@@ -1042,10 +1049,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			)
 		);
 		
-		// Reload form, data and actions might have changed
-		$form = $this->getEditForm($restoredPage->ID);
-		
-		return $form->forTemplate();
+		return $this->getResponseNegotiator()->respond($this->request);
 	}
 
 	function duplicate($request) {

@@ -243,7 +243,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 }
 
 class SiteTreeBacklinksTest_DOD extends DataExtension implements TestOnly {
-	function extraStatics() {
+	function extraStatics($class = null, $extension = null) {
 		return array(
 			'db' => array(
 				'ExtraContent' => 'HTMLText',
@@ -251,7 +251,7 @@ class SiteTreeBacklinksTest_DOD extends DataExtension implements TestOnly {
 		);
 	}
 	
-	function updateCMSFields(&$fields) {
+	function updateCMSFields(FieldList $fields) {
 		$fields->addFieldToTab("Root.Content", new HTMLEditorField("ExtraContent"));
 	}
 }

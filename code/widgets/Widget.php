@@ -34,7 +34,7 @@ class Widget extends DataObject {
 	static $cmsTitle = "Name of this widget";
 	static $description = "Description of what this widget does.";
 	
-	function getCMSFields() {
+	function getCMSFields($params = null) {
 		$fields = new FieldList();
 		$this->extend('updateCMSFields', $fields);
 		return $fields;
@@ -226,7 +226,7 @@ class Widget_Controller extends Controller {
  * @subpackage widgets
  */
 class Widget_TreeDropdownField extends TreeDropdownField {
-	function FieldHolder() {}
-	function Field() {}
+	function FieldHolder($properties = array()) {}
+	function Field($properties = array()) {}
 }
 

@@ -376,11 +376,11 @@ class SS_Report_FakeQuery extends SQLQuery {
 		$this->sortColMethod = $sortColMethod;
 	}
 
-	function limit($limit) {
+	function limit($limit, $offset = 0) {
 		$this->limit = $limit;
 	}
 	
-	function unlimitedRowCount() {
+	function unlimitedRowCount($column = null) {
 		$source = $this->obj->{$this->method}($this->params, null, null);
 		return $source ? $source->Count() : 0;
 	}
@@ -509,8 +509,8 @@ abstract class SS_ReportWrapper extends SS_Report {
 		return $this->baseReport->description();
 	}
 
-	function canView() {
-		return $this->baseReport->canView();
+	function canView($member = null) {
+		return $this->baseReport->canView($member);
 	}
 	
 }

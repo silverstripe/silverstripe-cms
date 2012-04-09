@@ -211,8 +211,8 @@ JS
 
 		// List view
 		$fields->addFieldsToTab('Root.ListView', array(
-			$actionsComposite = Object::create('CompositeField',
-				Object::create('CompositeField',
+			$actionsComposite = CompositeField::create(
+				CompositeField::create(
 					$uploadBtn,
 					$addFolderBtn,
 					$syncButton //TODO: add this into a batch actions menu as in https://github.com/silverstripe/silverstripe-design/raw/master/Design/ss3-ui_files-manager-list-view.jpg
@@ -255,7 +255,7 @@ JS
 			'EditForm' => $this->AddForm()
 		));
 
-		if($this->isAjax()) {
+		if($request->isAjax()) {
 			// Rendering is handled by template, which will call EditForm() eventually
 			$content = $obj->renderWith($this->getTemplatesWithSuffix('_Content'));
 		} else {
@@ -311,7 +311,7 @@ JS
 
 		$fields = $context->getSearchFields();
 		$actions = new FieldList(
-			Object::create('ResetFormAction', 'clear', _t('CMSMain_left.ss.CLEAR', 'Clear'))
+			ResetFormAction::create('clear', _t('CMSMain_left.ss.CLEAR', 'Clear'))
 				->addExtraClass('ss-ui-action-minor'),
 			FormAction::create('doSearch',  _t('CMSMain_left.ss.SEARCH', 'Search'))
 		);

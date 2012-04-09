@@ -1007,9 +1007,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	static function prepopulate_permission_cache($permission = 'CanEditType', $ids, $batchCallback = null) {
 		if(!$batchCallback) $batchCallback = "SiteTree::can_{$permission}_multiple";
 		
-		//PHP 5.1 requires an array rather than a string for the call_user_func function
-		$batchCallback=explode('::', $batchCallback);
-		
 		if(is_callable($batchCallback)) {
 			call_user_func($batchCallback, $ids, Member::currentUserID(), false);
 		} else {
@@ -1377,7 +1374,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if((!$this->URLSegment || $this->URLSegment == 'new-page') && $this->Title) {
 			$this->URLSegment = $this->generateURLSegment($this->Title);
 		} else if($this->isChanged('URLSegment')) {
-			$filter = Object::create('URLSegmentFilter');
+			$filter = URLSegmentFilter::create();
 			$this->URLSegment = $filter->filter($this->URLSegment);
 			// If after sanitising there is no URLSegment, give it a reasonable default
 			if(!$this->URLSegment) $this->URLSegment = "page-$this->ID";
@@ -1586,7 +1583,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string Generated url segment
 	 */
 	function generateURLSegment($title){
-		$filter = Object::create('URLSegmentFilter');
+		$filter = URLSegmentFilter::create();
 		$t = $filter->filter($title);
 		
 		// Fallback to generic page name if path is empty (= no valid, convertable characters)
@@ -1748,7 +1745,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 *
 	 * @return FieldList The fields to be displayed in the CMS.
 	 */
-	function getCMSFields() {
+	function getCMSFields($params = null) {
 		require_once("forms/Form.php");
 		// Status / message
 		// Create a status message for multiple parents
@@ -1909,13 +1906,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						"CanViewType", 
 						_t('SiteTree.ACCESSHEADER', "Who can view this page?")
 					),
-					$viewerGroupsField = Object::create('ListboxField', "ViewerGroups", _t('SiteTree.VIEWERGROUPS', "Viewer Groups"))
+					$viewerGroupsField = ListboxField::create("ViewerGroups", _t('SiteTree.VIEWERGROUPS', "Viewer Groups"))
 						->setMultiple(true)->setSource($groupsMap),
 					$editorsOptionsField = new OptionsetField(
 						"CanEditType", 
 						_t('SiteTree.EDITHEADER', "Who can edit this page?")
 					),
-					$editorGroupsField = Object::create('ListboxField', "EditorGroups", _t('SiteTree.EDITORGROUPS', "Editor Groups"))
+					$editorGroupsField = ListboxField::create("EditorGroups", _t('SiteTree.EDITORGROUPS', "Editor Groups"))
 						->setMultiple(true)->setSource($groupsMap)
 				)
 			)
@@ -2025,7 +2022,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return FieldList The available actions for this page.
 	 */
 	function getCMSActions() {
-		$minorActions = Object::create('CompositeField')->setTag('fieldset')->addExtraClass('ss-ui-buttonset');
+		$minorActions = CompositeField::create()->setTag('fieldset')->addExtraClass('ss-ui-buttonset');
 		$actions = new FieldList($minorActions);
 
 		// "readonly"/viewing version that isn't the current version of the record
@@ -2442,6 +2439,36 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 	
 	/**
+	 * A flag provides the user with additional data about the current page status,
+	 * for example a "removed from draft" status. Each page can have more than one status flag.
+	 * Returns a map of a unique key to a (localized) title for the flag.
+	 * The unique key can be reused as a CSS class.
+	 * Use the 'updateStatusFlags' extension point to customize the flags.
+	 * Example: "deletedonlive" => "Deleted"
+	 * 
+	 * @return array
+	 */
+	function getStatusFlags() {
+		$flags = array();
+		if($this->IsDeletedFromStage) {
+			if($this->ExistsOnLive) {
+				$flags['removedfromdraft'] = _t('SiteTree.REMOVEDFROMDRAFTSHORT', 'Removed from draft');
+			} else {
+				$flags['deletedonlive'] = _t('SiteTree.DELETEDPAGESHORT', 'Deleted');
+			}
+		} else if($this->IsAddedToStage) {
+			$flags['addedtodraft'] = _t('SiteTree.ADDEDTODRAFTSHORT', 'New');
+		} else if($this->IsModifiedOnStage) {
+			$flags['modified'] = _t('SiteTree.MODIFIEDONDRAFTSHORT', 'Modified');
+		}
+
+		$this->extend('updateStatusFlags', $flags);
+		
+		return $flags;
+	}
+
+	
+	/**
 	 * @deprecated 3.0 Use getTreeTitle()
 	 */
 	function TreeTitle() {
@@ -2457,29 +2484,27 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
-	 * TitleWithStatus will return the title in an <ins>, <del> or
-	 * <span class=\"modified\"> tag depending on its publication status.
+	 * getTreeTitle will return three <span> html DOM elements, an empty <span> with
+	 * the class 'jstree-pageicon' in front, following by a <span> wrapping around its
+	 * MenutTitle, then following by a <span> indicating its publication status. 
 	 *
-	 * @return string
+	 * @return string a html string ready to be directly used in a template
 	 */
 	function getTreeTitle() {
-		$text = Convert::raw2xml(str_replace(array("\n","\r"),"",$this->MenuTitle));
-		if($this->IsDeletedFromStage) {
-			if($this->ExistsOnLive) {
-				$tag ="<span class=\"del item\" title=\"" . _t('SiteTree.REMOVEDFROMDRAFTSHORT', 'Removed from draft') . "\" >{$text}</span> <span class=\"badge removedfromdraft\">" .  _t('SiteTree.REMOVEDFROMDRAFTSHORT', 'Removed from draft') . "</span>";
-			} else {
-				$tag ="<span class=\"del item\" title=\"" . _t('SiteTree.DELETEDPAGESHORT', 'Deleted') . "\">{$text}</span> <span class=\"badge deletedonlive\">". _t('SiteTree.DELETEDPAGESHORT', 'Deleted') . "</span>";
-			}
-		} elseif($this->IsAddedToStage) {
-			$tag = "<span class=\"ins item\" title=\"" . _t('SiteTree.ADDEDTODRAFTSHORT', 'New') . "\">{$text}</span> <span class=\"badge addedtodraft\">". _t('SiteTree.ADDEDTODRAFTSHORT', 'New') . "</span>";
-		} elseif($this->IsModifiedOnStage) {
-			$tag = "<span title=\"" . _t('SiteTree.MODIFIEDONDRAFTSHORT', 'Modified') . "\" class=\"ins item\">{$text}</span> <span class=\"badge modified\">" . _t('SiteTree.MODIFIEDONDRAFTSHORT', 'Modified') . "</span>";
-		} else {
-			$tag = '';
+		$flags = $this->getStatusFlags();
+		$treeTitle = sprintf(
+			"<span class=\"jstree-pageicon\"></span><span class=\"item\">%s</span>",
+			Convert::raw2xml(str_replace(array("\n","\r"),"",$this->MenuTitle))
+		);
+		foreach($flags as $class => $title) {
+			$treeTitle .= sprintf(
+				"<span class=\"badge %s\">%s</span>",
+				Convert::raw2xml($class),
+				Convert::raw2xml($title)
+			);
 		}
-
-
-		return ($tag) ? "<span class=\"jstree-pageicon\"></span>". $tag : "<span class=\"jstree-pageicon\"></span>". $text;
+		
+		return $treeTitle;
 	}
 
 	/**

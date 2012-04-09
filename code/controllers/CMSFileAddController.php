@@ -9,7 +9,7 @@ class CMSFileAddController extends LeftAndMain {
 	
 //	public function upload($request) {
 //		$formHtml = $this->renderWith(array('AssetAdmin_UploadContent'));
-//		if($this->isAjax()) {
+//		if($request->isAjax()) {
 //			return $formHtml;
 //		} else {
 //			return $this->customise(array(
@@ -57,7 +57,7 @@ class CMSFileAddController extends LeftAndMain {
 
 		$folder = $this->currentPage();
 
-		$uploadField = Object::create('UploadField', 'AssetUploadField', '');
+		$uploadField = UploadField::create('AssetUploadField', '');
 		$uploadField->setConfig('previewMaxWidth', 40);
 		$uploadField->setConfig('previewMaxHeight', 30);
 		$uploadField->addExtraClass('ss-assetuploadfield');
