@@ -134,8 +134,13 @@ class SS_Report extends ViewableData {
 		return $this->dataClass;
 	}
 
-	function getLink() {
-		return 'admin/reports/show/' . $this->class;
+	function getLink($action = null) {
+		return Controller::join_links(
+			'admin/reports/',
+			"$this->class",
+			'/', // trailing slash needed if $action is null!
+			"$action"
+		);
 	}
 
 

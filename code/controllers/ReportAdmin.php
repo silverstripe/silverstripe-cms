@@ -15,13 +15,17 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 	
 	static $url_segment = 'reports';
 	
-	static $url_rule = '/$Action/$ID';
+	static $url_rule = '/$ReportClass/$Action';
 	
 	static $menu_title = 'Reports';	
 	
 	static $template_path = null; // defaults to (project)/templates/email
 	
 	static $tree_class = 'SS_Report';
+
+	public static $url_handlers = array(
+		'$ReportClass/$Action' => 'handleAction'
+	);
 
 	/**
 	 * Variable that describes which report we are currently viewing based on the URL (gets set in init method)
@@ -35,7 +39,7 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 		parent::init();
 
 		//set the report we are currently viewing from the URL
-		$this->reportClass = (isset($this->urlParams['ID'])) ? $this->urlParams['ID'] : null;
+		$this->reportClass = (isset($this->urlParams['ReportClass'])) ? $this->urlParams['ReportClass'] : null;
 		$allReports = SS_Report::get_reports();
 		$this->reportObject = (isset($allReports[$this->reportClass])) ? $allReports[$this->reportClass] : null;
 
@@ -116,6 +120,16 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 		}
 
 		return $items;
+	}
+
+	/**
+	 * Returns the link to the report admin section, or the specific report that is currently displayed
+	 * @return String
+	 */
+	public function Link($action = null) {
+		$link = parent::Link($action);
+		if ($this->reportObject) $link = $this->reportObject->getLink($action);
+		return $link;
 	}
 
 	function providePermissions() {
