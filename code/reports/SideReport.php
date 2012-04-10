@@ -86,7 +86,7 @@ class SideReportView extends ViewableData {
 		
 		$classClause = "";
 		if(isset($info['title'])) {
-			$cssClass = ereg_replace('[^A-Za-z0-9]+','',$info['title']);
+			$cssClass = preg_replace('/[^A-Za-z0-9]+/', '', $info['title']);
 			$classClause = "class=\"$cssClass\"";
 		}
 		
