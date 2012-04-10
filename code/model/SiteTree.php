@@ -2230,7 +2230,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$oldStage = Versioned::current_stage();
 		Versioned::reading_stage('Stage');
 		$this->forceChange();
-		$this->writeWithoutVersion();
+		$this->write();
 		
 		$result = DataObject::get_by_id($this->class, $this->ID);
 
