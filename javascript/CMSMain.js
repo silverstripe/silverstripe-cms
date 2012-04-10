@@ -115,7 +115,7 @@
 			replace: function(url){
 				if(window.History.enabled) {
 					var container = $('.cms-container')
-					container.loadPanel(url, '', {selector: '.cms-list'});
+					container.loadPanel(url, '', {selector: '.cms-list form'});
 				} else {
 					window.location = $.path.makeUrlAbsolute(url, $('base').attr('href'));
 				}
