@@ -603,7 +603,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		));
 
 		$gridField->setFieldFormatting(array(
-			'getTreeTitle' => '<a href=\"admin/page/edit/show/$ID\">$value</a>'
+			'getTreeTitle' => '<a class=\"cms-panel-link\" href=\"admin/page/edit/show/$ID\">$value</a>'
 		));
 		
 		$listview = new Form(
