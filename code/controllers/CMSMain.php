@@ -578,9 +578,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
 			new GridFieldSortableHeader(),
 			new GridFieldDataColumns(),
-			new GridFieldPaginator(15),
-			new GridFieldEditButton(),
-			new GridFieldDetailForm()
+			new GridFieldPaginator(15)
 		);
 		$gridField = new GridField('Page','Pages', $list, $gridFieldConfig);
 		
@@ -602,7 +600,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$gridField->setFieldCasting(array(
 			'Created' => 'Date->Ago',
 			'LastEdited' => 'Date->Ago',
-			
+		));
+
+		$gridField->setFieldFormatting(array(
+			'getTreeTitle' => '<a href=\"admin/page/edit/show/$ID\">$value</a>'
 		));
 		
 		$listview = new Form(
