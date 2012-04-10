@@ -45,6 +45,10 @@
 		</div>
 	
 		<div id="cms-content-listview">
+			<div class="cms-content-toolbar">
+				<% include CMSPagesController_ContentToolActions %>
+			</div>
+			
 			<div class="cms-list" data-url-list="$Link(getListViewHTML)">
 				$ListView
 			</div>
