@@ -110,6 +110,10 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 	 */
 	public function Breadcrumbs() {
 		$items = parent::Breadcrumbs();
+		
+		// The root element should explicitly point to the root node.
+		// Uses session state for current record otherwise.
+		$items[0]->Link = singleton('ReportAdmin')->Link();
 
 		if ($this->reportObject) {
 			//build breadcrumb trail to the current report
