@@ -251,14 +251,16 @@
 			 *  (Event) e
 			 */
 			onclick: function(e) {
-				// @todo i18n
 				var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';
 				if(version) {
-					message = "Do you really want to roll back to version #" + version + " of this page?";
+					message = ss.i18n.sprintf(
+						ss.i18n._t('CMSMAIN.STAGEDROLLBACK', 'Do you really want to roll back to version #%s of this page?'),
+						version
+					);
 				} else {
-					message = "Do you really want to copy the published content to the stage site?";
+					message = ss.i18n._t('CMSMAIN.COPYPUBTOSTAGE', 'Do you really want to copy the published content to the draft site?');
 				}
-				return confirm(message);
+				return confirm(message) ? this._super(e) : false;
 			}
 		});
 
