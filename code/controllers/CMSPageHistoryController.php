@@ -53,16 +53,6 @@ class CMSPageHistoryController extends CMSMain {
 	}
 	
 	/**
-	 * @return array
-	 */
-	function rollback() {
-		return $this->doRollback(array(
-			'ID' => $this->currentPageID(),
-			'Version' => $this->request->param('VersionID')
-		), null);
-	}
-
-	/**
 	 * Returns the read only version of the edit form. Detaches all {@link FormAction} 
 	 * instances attached since only action relates to revert.
 	 *
@@ -307,54 +297,6 @@ class CMSPageHistoryController extends CMSMain {
 			$this->Link('version'),
 			$versionID
 		));
-	}
-	
-	/**
-	 * Rolls a site back to a given version ID
-	 *
-	 * @param array
-	 * @param Form
-	 *
-	 * @return html
-	 */
-	function doRollback($data, $form) {
-		$this->extend('onBeforeRollback', $data['ID']);
-		
-		$id = (isset($data['ID'])) ? (int) $data['ID'] : null;
-		$version = (isset($data['Version'])) ? (int) $data['Version'] : null;
-		
-		if(isset($data['Version']) && (bool)$data['Version']) {
-			$record = $this->performRollback($data['ID'], $data['Version']);
-			$message = sprintf(
-			_t('CMSMain.ROLLEDBACKVERSION',"Rolled back to version #%d.  New version number is #%d"),
-			$data['Version'],
-			$record->Version
-		);
-		} else {
-			$record = $this->performRollback($data['ID'], "Live");
-			$message = sprintf(
-				_t('CMSMain.ROLLEDBACKPUB',"Rolled back to published version. New version number is #%d"),
-				$record->Version
-			);
-		}
-
-		return $this->redirect(Controller::join_links(singleton('CMSPageEditController')->Link('show'), $record->ID));
-	}
-	
-	/**
-	 * Performs a rollback of the a given 
-	 *
-	 * @param int $id record ID
-	 * @param int $version version ID to rollback to
-	 */
-	function performRollback($id, $version) {
-		$record = DataObject::get_by_id($this->stat('tree_class'), $id);
-		
-		if($record && !$record->canEdit()) return Security::permissionFailure($this);
-		
-		$record->doRollbackTo($version);
-		
-		return $record;
 	}
 
 	/**

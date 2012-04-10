@@ -810,6 +810,57 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 
 	/**
+	 * @return array
+	 */
+	function rollback() {
+		return $this->doRollback(array(
+			'ID' => $this->currentPageID(),
+			'Version' => $this->request->param('VersionID')
+		), null);
+	}
+
+	/**
+	 * Rolls a site back to a given version ID
+	 *
+	 * @param array
+	 * @param Form
+	 *
+	 * @return html
+	 */
+	function doRollback($data, $form) {
+		$this->extend('onBeforeRollback', $data['ID']);
+		
+		$id = (isset($data['ID'])) ? (int) $data['ID'] : null;
+		$version = (isset($data['Version'])) ? (int) $data['Version'] : null;
+
+		$record = DataObject::get_by_id($this->stat('tree_class'), $id);
+		if($record && !$record->canEdit()) return Security::permissionFailure($this);
+		
+		if($version) {
+			$record->doRollbackTo($version);
+			$message = sprintf(
+				_t('CMSMain.ROLLEDBACKVERSION',"Rolled back to version #%d.  New version number is #%d"),
+				$data['Version'],
+				$record->Version
+			);
+		} else {
+			$record->doRollbackTo('Live');
+			$message = sprintf(
+				_t('CMSMain.ROLLEDBACKPUB',"Rolled back to published version. New version number is #%d"),
+				$record->Version
+			);
+		}
+
+		$this->response->addHeader('X-Status', $message);
+		
+		// Can be used in different contexts: In normal page edit view, in which case the redirect won't have any effect.
+		// Or in history view, in which case a revert causes the CMS to re-load the edit view.
+		$url = Controller::join_links(singleton('CMSPageEditController')->Link('show'), $record->ID);
+		$this->response->addHeader('X-ControllerURL', $url);
+		return $this->getResponseNegotiator()->respond($this->request);
+	}
+
+	/**
 	 * Batch Actions Handler
 	 */
 	function batchactions() {
