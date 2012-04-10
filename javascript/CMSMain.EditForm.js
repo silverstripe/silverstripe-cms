@@ -254,11 +254,18 @@
 				// @todo i18n
 				var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';
 				if(version) {
-					message = "Do you really want to roll back to version #" + version + " of this page?";
+					message = ss.i18n.sprintf(
+						ss.i18n._t('CMSMain.RollbackToVersion'), 
+						version
+					);
 				} else {
-					message = "Do you really want to copy the published content to the stage site?";
+					message = ss.i18n._t('CMSMain.ConfirmRestoreFromLive');
 				}
-				return confirm(message);
+				if(confirm(message)) {
+					return this._super(e);
+				} else {
+					return false;
+				}
 			}
 		});
 

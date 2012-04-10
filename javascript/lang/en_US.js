@@ -38,6 +38,8 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'AssetAdmin.ConfirmDelete': 'Do you really want to delete this folder and all contained files?',
 		'Folder.Name': 'Folder name',
 		'Tree.AddSubPage': 'Add new page here',
-		'Tree.EditPage': 'Edit'
+		'Tree.EditPage': 'Edit',
+		'CMSMain.ConfirmRestoreFromLive': "Do you really want to copy the published content to the draft site?",
+		'CMSMain.RollbackToVersion': "Do you really want to roll back to version #%s of this page?"
 	});
 }
