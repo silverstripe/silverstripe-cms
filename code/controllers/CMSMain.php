@@ -45,6 +45,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'batchactions',
 		'ListView',
 		'getListView',
+		'listchildren',
 	);
 	
 	public function init() {
@@ -561,7 +562,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			}
 			if(count($ids)) $list->where('"'.$this->stat('tree_class').'"."ID" IN ('.implode(",", $ids).')');
 		}else{
-			$list->filter("ParentID", 0);
+			$parentID = 0;
+			if($this->urlParams['Action'] == 'listchildren' && $this->urlParams['ID']){
+				$parentID = $this->urlParams['ID'];
+			}
+			$list->filter("ParentID", $parentID);
 		}
 
 		return $list;
@@ -636,9 +641,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	
 	public function listchildren(){
 		if(Director::is_ajax()){
-			return $this;
+			return $this->getListViewHTML();
 		}else{
-			
+			return $this;
 		}
 	}
 

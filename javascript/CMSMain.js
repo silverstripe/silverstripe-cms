@@ -111,6 +111,23 @@
 						errorMessage(e);
 					}
 				});
+			},
+			replace: function(url){
+				if(window.History.enabled) {
+					var container = $('.cms-container')
+					container.loadPanel(url, '', {selector: '.cms-list'});
+				} else {
+					window.location = $.path.makeUrlAbsolute(url, $('base').attr('href'));
+				}
+			}
+		});
+		
+		$('.cms-list .list-children-link').entwine({
+			onclick: function(e) {
+				this.closest('.cms-list').replace(this.attr('href'));
+				e.preventDefault();
+				return false;
+
 			}
 		});
 	
