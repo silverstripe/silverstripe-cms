@@ -67,7 +67,7 @@
 				
 				var params = this.serializeArray();
 				this._reloadSitetree(params);
-				this._reloadListview(params)
+				this._reloadListview(params);
 
 				return false;
 			},
