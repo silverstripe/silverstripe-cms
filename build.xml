@@ -246,11 +246,6 @@ Options:
 			</fileset>
 		</copy>
 
-		<!-- TODO Remove once we figured out how to nest git repositories for themes -->
-		<move file="${tmp}/${archivename}/themes/blackcandy/blackcandy_blog" todir="${tmp}/${archivename}/themes" haltonerror='false' />
-		<move file="${tmp}/${archivename}/themes/blackcandy/blackcandy_calendar" todir="${tmp}/${archivename}/themes" haltonerror='false' />
-		<move file="${tmp}/${archivename}/themes/blackcandy/blackcandy" todir="${tmp}/${archivename}/themes" haltonerror='false' />
-
 		<!-- Write version info to the core folders (shouldn't be in version control) -->
 		<echo msg="${version}" file="${tmp}/${archivename}/sapphire/silverstripe_version" />
 		<echo msg="${version}" file="${tmp}/${archivename}/cms/silverstripe_version" />
