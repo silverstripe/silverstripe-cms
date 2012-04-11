@@ -26,7 +26,15 @@ abstract class StaticPublisher extends DataExtension {
 	
 	abstract function publishPages($pages);
 	abstract function unpublishPages($pages);
+
+	static function set_static_publisher_theme($theme){
+		self::$static_publisher_theme=$theme;
+	}
 	
+	static function static_publisher_theme(){
+		return self::$static_publisher_theme;
+	}
+
 	static function echo_progress() {
 		return (boolean)self::$echo_progress;
 	}
@@ -144,13 +152,6 @@ abstract class StaticPublisher extends DataExtension {
 		
 		return $urls;		
 	}
-	
-	function set_static_publisher_theme($theme){
-		self::$static_publisher_theme=$theme;
-	}
-	
-	function static_publisher_theme(){
-		return self::$static_publisher_theme;
-	}
+
 }
 
