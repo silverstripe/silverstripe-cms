@@ -7,7 +7,8 @@
 		$('#pages-controller-cms-content').entwine({
 			/**
 			 * we need to check if the current url contains a sub url 'listchildren' and 
-			 * assign a cookie accordingly so the default selected tab is defined on initail
+			 * select its list view if it does, otherwise use the default tabs() call which is
+			 * using cookie options
 			 */
 			redrawTabs: function() {
 				if(window.location.href.match(/listchildren/)){
