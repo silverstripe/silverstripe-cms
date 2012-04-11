@@ -1,4 +1,3 @@
-
 <?php
 /**
  * The main "content" area of the CMS.
