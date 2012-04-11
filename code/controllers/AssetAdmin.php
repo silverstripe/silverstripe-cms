@@ -311,9 +311,9 @@ JS
 
 		$fields = $context->getSearchFields();
 		$actions = new FieldList(
-			Object::create('ResetFormAction', 'clear', _t('CMSMain_left.ss.CLEAR', 'Clear'))
-				->addExtraClass('ss-ui-action-minor'),
-			FormAction::create('doSearch',  _t('CMSMain_left.ss.SEARCH', 'Search'))
+			FormAction::create('doSearch',  _t('CMSMain_left.ss.APPLY FILTER', 'Apply Filter'))
+			->addExtraClass('ss-ui-action-constructive'),
+			Object::create('ResetFormAction', 'clear', _t('CMSMain_left.ss.RESET', 'Reset'))
 		);
 		
 		$form = new Form($this, 'filter', $fields, $actions);
