@@ -185,7 +185,7 @@ class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter {
 			switch($name) {
 				// Match against URLSegment, Title, MenuTitle & Content
 				case 'Term':
-					$where[] = "\"URLSegment\" LIKE '%$val%' OR \"Title\" LIKE '%$val%' OR \"MenuTitle\" LIKE '%$val%' OR \"Content\" LIKE '%$val%'";
+					if($val) $where[] = "\"URLSegment\" LIKE '%$val%' OR \"Title\" LIKE '%$val%' OR \"MenuTitle\" LIKE '%$val%' OR \"Content\" LIKE '%$val%'";
 					break;
 				// Match against date
 				case 'LastEditedFrom':
