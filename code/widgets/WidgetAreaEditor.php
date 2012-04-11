@@ -61,7 +61,7 @@ class WidgetAreaEditor extends FormField {
 		return $this->form->getRecord()->getComponent($relationName)->ID;
 	}
 	
-	function saveInto(DataObject $record) {
+	function saveInto(DataObjectInterface $record) {
 		$name = $this->name;
 		$idName = $name . "ID";
 
