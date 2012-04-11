@@ -90,7 +90,7 @@ JS
 		$list = $context->getResults($params);
 
 		// Always show folders at the top		
-		$list->sort('(CASE WHEN "File"."ClassName" = \'Folder\' THEN 0 ELSE 1 END)');
+		$list->sort('(CASE WHEN "File"."ClassName" = \'Folder\' THEN 0 ELSE 1 END), "Name"');
 
 		// If a search is conducted, check for the "current folder" limitation.
 		// Otherwise limit by the current folder as denoted by the URL.
