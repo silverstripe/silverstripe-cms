@@ -86,8 +86,20 @@ JS
 	public function getList() {
 		$folder = $this->currentPage();
 		$context = $this->getSearchContext();
+		// Overwrite name filter to search both Name and Title attributes
+		$context->removeFilterByName('Name');
 		$params = $this->request->requestVar('q');
 		$list = $context->getResults($params);
+
+		// Re-add previously removed "Name" filter as combined filter
+		// TODO Replace with composite SearchFilter once that API exists
+		if(isset($params['Name'])) {
+			$list->where(sprintf(
+				'"Name" LIKE \'%%%s%%\' OR "Title" LIKE \'%%%s%%\'',
+				Convert::raw2sql($params['Name']),
+				Convert::raw2sql($params['Name'])
+			));
+		}
 
 		// Always show folders at the top		
 		$list->sort('(CASE WHEN "File"."ClassName" = \'Folder\' THEN 0 ELSE 1 END), "Name"');
