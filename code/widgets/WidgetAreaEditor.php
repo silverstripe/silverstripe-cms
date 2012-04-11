@@ -19,7 +19,7 @@ class WidgetAreaEditor extends FormField {
 		parent::__construct($name);
 	}
 	
-	function FieldHolder() {
+	function FieldHolder($properties = array()) {
 		Requirements::css(CMS_DIR . '/css/WidgetAreaEditor.css');
 		Requirements::javascript(THIRDPARTY_DIR . "/prototype/prototype.js");
 		Requirements::javascript(THIRDPARTY_DIR . '/behaviour/behaviour.js');

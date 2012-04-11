@@ -29,7 +29,7 @@ class Folder_UnusedAssetsField extends CompositeField {
 		return $this->children;
 	}
 	
-	public function FieldHolder() {
+	public function FieldHolder($properties = array()) {
 		$output = "";
 		foreach($this->getChildren() as $child) {
 			$output .= $child->FieldHolder();
