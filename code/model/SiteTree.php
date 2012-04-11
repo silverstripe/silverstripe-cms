@@ -2475,6 +2475,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		Deprecation::notice('3.0', 'Use getTreeTitle() instead.');
 		return $this->getTreeTitle();
 	}
+	
+	function listChildrenLink(){
+		if($num = $this->numChildren()){
+			$link = singleton('CMSPagesController')->Link('listchildren')."/".$this->ID;
+			return '<a href="'.$link.'" class="list-children-link">'.$num.'</a>';
+		}
+	}
 
 	/**
 	 * getTreeTitle will return three <span> html DOM elements, an empty <span> with

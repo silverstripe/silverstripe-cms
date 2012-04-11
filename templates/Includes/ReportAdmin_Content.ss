@@ -1,13 +1,28 @@
-<div class="cms-content center $BaseCSSClasses" data-layout-type="border">
+<div class="cms-content center ss-tabset $BaseCSSClasses" data-layout-type="border">
 
 	<div class="cms-content-header north">
-		<h2><% _t('REPORTS','Reports') %></h2>
+		<div>
+			<% control EditForm %>
+				<% if Backlink %>
+					<a class="backlink ss-ui-button cms-panel-link" data-icon="back" href="$Backlink">
+						<% _t('Back', 'Back') %>
+					</a>
+				<% end_if %>
+
+				<h2 id="page-title-heading">
+				<% control Controller %>
+					<% include CMSBreadcrumbs %>
+				<% end_control %>
+				</h2>
+			<% end_control %>
+		
+		</div>
 	</div>
 
-	$Tools
-
-	<div class="cms-content-fields center ui-widget-content">
+	<div class="cms-content-fields center ui-widget-content" data-layout-type="border">
+		
 		$EditForm
+		
 	</div>
 	
 </div>

@@ -35,19 +35,13 @@
  * Showing reports to the user
  * ===========================
  * 
- * Right now, all subclasses of SS_Report will be shown in the ReportAdmin.  However, we are planning
- * on adding an explicit registration mechanism, so that you can decide which reports go in the
- * report admin, and which go elsewhere (such as the side panel in the CMS).
+ * Right now, all subclasses of SS_Report will be shown in the ReportAdmin. In SS3 there is only
+ * one place where reports can go, so this class is greatly simplifed from from its version in SS2.
  * 
  * @package cms
  * @subpackage reports
  */
 class SS_Report extends ViewableData {
-	/**
-	 * Report registry populated by {@link SS_Report::register()}
-	 */
-	private static $registered_reports = array();
-
 	/**
 	 * This is the title of the report,
 	 * used by the ReportAdmin templates.
@@ -70,6 +64,22 @@ class SS_Report extends ViewableData {
 	 * Set by overriding in your subclass.
 	 */
 	protected $dataClass = 'SiteTree';
+
+	/**
+	 * A field that specifies the sort order of this report
+	 * @var int
+	 */
+	protected $sort = 0;
+
+	/**
+	 * Reports which should not be collected and returned in get_reports
+	 * @var array
+	 */
+	public static $excluded_reports = array(
+		'SS_Report',
+		'SS_ReportWrapper',
+		'SideReportWrapper'
+	);
 	
 	/**
 	 * Return the title of this report.
@@ -94,21 +104,11 @@ class SS_Report extends ViewableData {
 	}
 	
 	/**
-	 * Return a FieldList specifying the search criteria for this report.
-	 * 
-	 * Override this method to define search criteria.
-	 */
-	function parameterFields() {
-		return null;
-	}
-
-	/**
 	 * Return the {@link SQLQuery} that provides your report data.
 	 */
 	function sourceQuery($params) {
 		if($this->hasMethod('sourceRecords')) {
 			$query = new SS_Report_FakeQuery($this, 'sourceRecords', $params);
-			$query->setSortColumnMethod('sortColumns');
 			return $query;
 		} else {
 			user_error("Please override sourceQuery()/sourceRecords() and columns() or, if necessary, override getReportField()", E_USER_ERROR);
@@ -126,35 +126,100 @@ class SS_Report extends ViewableData {
 		}
 	}
 
-	/**
-	 * Return an map of columns for your report.
-	 *  - The map keys will be the source columns for your report (in TableListField dot syntax)
-	 *  - The values can either be a string (the column title), or a map containing the following
-	 *    column parameters:
-	 *    - title: The column title
-	 *    - formatting: A formatting string passed to {@link TableListField::setFieldFormatting()}
-	 */
-	function columns() {
-		user_error("Please override sourceQuery() and columns() or, if necessary, override getReportField()", E_USER_ERROR);
-	}
-	
-	function sortColumns() {
-		return array_keys($this->columns());
-	}
-	
-	/**
-	 * Return the number of records in this report with no filters applied.
-	 */
-	function count() {
-		return (int)$this->sourceQuery(array())->unlimitedRowCount();
-	}
-	
+
 	/**
 	 * Return the data class for this report
 	 */
 	function dataClass() {
 		return $this->dataClass;
 	}
+
+	function getLink($action = null) {
+		return Controller::join_links(
+			'admin/reports/',
+			"$this->class",
+			'/', // trailing slash needed if $action is null!
+			"$action"
+		);
+	}
+
+
+
+	/**
+	 * @deprecated 3.0
+	 * All subclasses of SS_Report now appear in the report admin, no need to register or unregister.
+	 *
+	 * Register a report.
+	 * @param $list The list to add the report to: "ReportAdmin" or "SideReports"
+	 * @param $reportClass The class of the report to add.
+	 * @param $priority The priority.  Higher numbers will appear furhter up in the reports list.
+	 * The default value is zero.
+	 */
+	static function register($list, $reportClass, $priority = 0) {
+		Deprecation::notice('3.0', 'All subclasses of SS_Report now appear in the report admin, no need to register');
+	}
+
+	/**
+	 * @deprecated 3.0
+	 * All subclasses of SS_Report now appear in the report admin, no need to register or unregister.
+	 */
+	static function unregister($list, $reportClass) {
+		self::add_excluded_reports($reportClass);
+	}
+
+	/**
+	 * Exclude certain reports classes from the list of Reports in the CMS
+	 * @param $reportClass Can be either a string with the report classname or an array of reports classnames
+	 */
+	static function add_excluded_reports($reportClass) {
+		if (is_array($reportClass)) {
+			self::$excluded_reports = array_merge(self::$excluded_reports, $reportClass);
+		} else {
+			if (is_string($reportClass)) {
+				//add to the excluded reports, so this report doesn't get used
+				self::$excluded_reports[] = $reportClass;
+			}
+		}
+	}
+
+
+	/**
+	 * Return an array of excluded reports. That is, reports that will not be included in
+	 * the list of reports in report admin in the CMS.
+	 * @return array
+	 */
+	static function get_excluded_reports() {
+		return self::$excluded_reports;
+	}
+
+	/**
+	 * Return the SS_Report objects making up the given list.
+	 * @return ArrayList an arraylist of SS_Report objects
+	 */
+	static function get_reports() {
+		$reports = ClassInfo::subclassesFor(get_called_class());
+
+		$reportsArray = array();
+		if ($reports && count($reports) > 0) {
+			//collect reports into array with an attribute for 'sort'
+			foreach($reports as $report) {
+				if (in_array($report, self::$excluded_reports)) continue;   //don't use the SS_Report superclass
+				$reportObj = new $report;
+				if (method_exists($reportObj,'sort')) $reportObj->sort = $reportObj->sort();  //use the sort method to specify the sort field
+				$reportsArray[$report] = $reportObj;
+			}
+		}
+
+		//convert array into ArrayList
+		$list = ArrayList::create($reportsArray);
+
+		//sort
+		$list->sort('sort');
+
+		return $list;
+	}
+
+	/////////////////////// UI METHODS ///////////////////////
 
 
 	/**
@@ -273,72 +338,10 @@ class SS_Report extends ViewableData {
 	 * @return string
 	 */
 	function TreeTitle() {
-		return $this->title();/* . ' (' . $this->count() . ')'; - this is too slow atm */
+		return $this->title();
 	}
 	
-	/**
-	 * Return the ID of this Report class.
-	 * Because it doesn't have a number, we
-	 * use the class name as the ID.
-	 *
-	 * @return string
-	 */
-	function ID() {
-		return $this->class;
-	}
-	
-	/////////////////////////////////////////////////////////////////////////////////////////////
-	
-	/**
-	 * Register a report.
-	 * @param $list The list to add the report to: "ReportAdmin" or "SideReports"
-	 * @param $reportClass The class of the report to add.
-	 * @param $priority The priority.  Higher numbers will appear furhter up in the reports list.
-	 * The default value is zero.
-	 */
-	static function register($list, $reportClass, $priority = 0) {
-		if(strpos($reportClass, '(') === false && (!class_exists($reportClass) || !is_subclass_of($reportClass,'SS_Report'))) {
-			user_error("SS_Report::register(): '$reportClass' is not a subclass of SS_Report", E_USER_WARNING);
-			return;
-		}
-		
-		self::$registered_reports[$list][$reportClass] = $priority;
-	}
-	
-	/**
-	 * Unregister a report, removing it from the list
-	 */
-	static function unregister($list, $reportClass) {
-		unset(self::$registered_reports[$list][$reportClass]);
-	}
-	
-	/**
-	 * Return the SS_Report objects making up the given list.
-	 * @return An array of SS_Report objects
-	 */
-	static function get_reports($list) {
-		$output = array();
-		if(isset(self::$registered_reports[$list])) {
-			$listItems = self::$registered_reports[$list];
 
-			// Sort by priority, preserving internal order of items with the same priority
-			$groupedItems = array();
-			foreach($listItems as $k => $v) {
-				$groupedItems[$v][] = $k;
-			}
-			krsort($groupedItems);
-			$sortedListItems = call_user_func_array('array_merge', $groupedItems);
-			
-			foreach($sortedListItems as $report) {
-				if(strpos($report,'(') === false) $reportObj = new $report;
-				else $reportObj = eval("return new $report;");
-
-				$output[$reportObj->ID()] = $reportObj;
-			} 
-		}
-		
-		return $output;
-	}
 
 }
 
@@ -370,7 +373,7 @@ class SS_Report_FakeQuery extends SQLQuery {
 		$this->method = $method;
 		$this->params = $params;
 	}
-	
+
 	/**
 	 * Provide a method that will return a list of columns that can be used to sort.
 	 */

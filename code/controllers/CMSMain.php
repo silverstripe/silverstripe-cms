@@ -44,6 +44,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'SiteTreeAsUL',
 		'getshowdeletedsubtree',
 		'batchactions',
+		'ListView',
+		'getListView',
+		'listchildren',
 	);
 	
 	public function init() {
@@ -157,7 +160,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	function SearchForm() {
 		// get all page types in a dropdown-compatible format
 		$pageTypes = SiteTree::page_type_classes(); 
-		array_unshift($pageTypes, _t('CMSMain.PAGETYPEANYOPT','Any'));
 		$pageTypes = array_combine($pageTypes, $pageTypes);
 		asort($pageTypes);
 		
@@ -456,6 +458,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * @return Form
 	 */
 	public function getEditForm($id = null, $fields = null) {
+
 		if(!$id) $id = $this->currentPageID();
 		$form = parent::getEditForm($id);
 		
@@ -528,13 +531,101 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			}
 
 			$this->extend('updateEditForm', $form);
-
 			return $form;
 		} else if($id) {
 			return new Form($this, "EditForm", new FieldList(
 				new LabelField('PageDoesntExistLabel',_t('CMSMain.PAGENOTEXISTS',"This page doesn't exist"))), new FieldList()
 			);
 		}
+	}
+	
+	/**
+	 * Returns the pages meet a certain criteria as {@see CMSSiteTreeFilter} or the subpages of a parent page
+	 * defaulting to no filter and show all pages in first level.
+	 * Doubles as search results, if any search parameters are set through {@link SearchForm()}.
+	 * 
+	 * @return SS_List
+	 */
+	public function getList(&$filterOn) {
+		$list = new DataList($this->stat('tree_class'));
+		
+		$request = $this->request;
+		$filter = null;
+		$ids = array();
+		if($filterClass = $request->requestVar('FilterClass')){
+			if(!is_subclass_of($filterClass, 'CMSSiteTreeFilter')) {
+				throw new Exception(sprintf('Invalid filter class passed: %s', $filterClass));
+			}
+			$filter = new $filterClass($request->requestVars());
+			$filterOn = true;
+			foreach($pages=$filter->pagesIncluded() as $pageMap){
+				$ids[] = $pageMap['ID'];
+			}
+			if(count($ids)) $list->where('"'.$this->stat('tree_class').'"."ID" IN ('.implode(",", $ids).')');
+		}else{
+			$parentID = 0;
+			if($this->urlParams['Action'] == 'listchildren' && $this->urlParams['ID']){
+				$parentID = $this->urlParams['ID'];
+			}
+			$list->filter("ParentID", $parentID);
+		}
+
+		return $list;
+	}
+	
+	public function getListView(){
+		$filterOn = false;
+		$list = $this->getList($filterOn);
+		$gridFieldConfig = GridFieldConfig::create()->addComponents(
+			new GridFieldSortableHeader(),
+			new GridFieldDataColumns(),
+			new GridFieldPaginator(15)
+		);
+		$gridField = new GridField('Page','Pages', $list, $gridFieldConfig);
+		
+		if($filterOn){
+			$gridField->setDisplayFields(array(
+				'getTreeTitle' => _t('SiteTree.PAGETITLE', 'Page Title'),
+				'Created' => _t('SiteTree.CREATED', 'Date Created'),
+				'LastEdited' => _t('SiteTree.LASTUPDATED', 'Last Updated'),
+			));
+		}else{
+			$gridField->setDisplayFields(array(
+				'listChildrenLink' => "",
+				'getTreeTitle' => _t('SiteTree.PAGETITLE', 'Page Title'),
+				'Created' => _t('SiteTree.CREATED', 'Date Created'),
+				'LastEdited' => _t('SiteTree.LASTUPDATED', 'Last Updated'),
+			));
+		}
+		
+		$gridField->setFieldCasting(array(
+			'Created' => 'Date->Ago',
+			'LastEdited' => 'Date->Ago',
+		));
+
+		$gridField->setFieldFormatting(array(
+			'getTreeTitle' => '<a class=\"cms-panel-link\" href=\"admin/page/edit/show/$ID\">$value</a>'
+		));
+		
+		$listview = new Form(
+			$this,
+			'ListView',
+			new FieldList($gridField),
+			new FieldList()
+		);
+
+		$this->extend('updateListView', $listview);
+		
+		$listview->disableSecurityToken();
+		return $listview;
+	}
+	
+	public function getListViewHTML(){
+		return $this->getListView()->forTemplate();
+	}
+	
+	public function ListView() {
+		return $this->getListView();
 	}
 	
 	public function currentPageID() {
@@ -548,6 +639,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 		
 		return $id;
+	}
+	
+	public function listchildren(){
+		if(Director::is_ajax()){
+			return $this->getListViewHTML();
+		}else{
+			return $this;
+		}
 	}
 
 	//------------------------------------------------------------------------------------------//

@@ -15,16 +15,33 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 	
 	static $url_segment = 'reports';
 	
-	static $url_rule = '/$Action/$ID';
+	static $url_rule = '/$ReportClass/$Action';
 	
 	static $menu_title = 'Reports';	
 	
 	static $template_path = null; // defaults to (project)/templates/email
 	
 	static $tree_class = 'SS_Report';
+
+	public static $url_handlers = array(
+		'$ReportClass/$Action' => 'handleAction'
+	);
+
+	/**
+	 * Variable that describes which report we are currently viewing based on the URL (gets set in init method)
+	 * @var String
+	 */
+	protected $reportClass;
+
+	protected $reportObject;
 	
 	public function init() {
 		parent::init();
+
+		//set the report we are currently viewing from the URL
+		$this->reportClass = (isset($this->urlParams['ReportClass'])) ? $this->urlParams['ReportClass'] : null;
+		$allReports = SS_Report::get_reports();
+		$this->reportObject = (isset($allReports[$this->reportClass])) ? $allReports[$this->reportClass] : null;
 
 		Requirements::css(CMS_DIR . '/css/screen.css');
 
@@ -58,12 +75,6 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 		return false;
 	}
 
-	function currentPageID() {
-		$id = parent::currentPageID();
-		$reports = SS_Report::get_reports('ReportAdmin');
-		return (isset($reports[$id])) ? $reports[$id] : null;
-	}
-
 	/**
 	 * Return a SS_List of SS_Report subclasses
 	 * that are available for use.
@@ -72,7 +83,7 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 	 */
 	public function Reports() {
  		$output = new ArrayList();
-		foreach(SS_Report::get_reports('ReportAdmin') as $report) {
+		foreach(SS_Report::get_reports() as $report) {
 			if($report->canView()) $output->push($report);
 		}
 		return $output;
@@ -90,12 +101,39 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 	 * @return boolean
 	 */
 	public static function has_reports() {
-		return sizeof(SS_Report::get_reports('ReportAdmin')) > 0;
+		return sizeof(SS_Report::get_reports()) > 0;
 	}
-	
-	public function updatereport() {
-		// FormResponse::load_form($this->EditForm()->forTemplate());
-		// return FormResponse::respond();
+
+	/**
+	 * Returns the Breadcrumbs for the ReportAdmin
+	 * @return ArrayList
+	 */
+	public function Breadcrumbs() {
+		$items = parent::Breadcrumbs();
+		
+		// The root element should explicitly point to the root node.
+		// Uses session state for current record otherwise.
+		$items[0]->Link = singleton('ReportAdmin')->Link();
+
+		if ($this->reportObject) {
+			//build breadcrumb trail to the current report
+			$items->push(new ArrayData(array(
+					'Title' => $this->reportObject->title(),
+					'Link' => Controller::join_links($this->Link(), '?' . http_build_query(array('q' => $this->request->requestVar('q'))))
+				)));
+		}
+
+		return $items;
+	}
+
+	/**
+	 * Returns the link to the report admin section, or the specific report that is currently displayed
+	 * @return String
+	 */
+	public function Link($action = null) {
+		$link = parent::Link($action);
+		if ($this->reportObject) $link = $this->reportObject->getLink($action);
+		return $link;
 	}
 
 	function providePermissions() {
@@ -106,6 +144,75 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 				'category' => _t('Permission.CMS_ACCESS_CATEGORY', 'CMS Access')
 			)
 		);
+	}
+
+	public function getEditForm($id = null, $fields = null) {
+		$fields = new FieldList();
+		
+		$report = $this->reportObject;
+
+		if($report) {
+			// List all reports
+			$gridFieldConfig = GridFieldConfig::create()->addComponents(
+				new GridFieldToolbarHeader(),
+				new GridFieldSortableHeader(),
+				new GridFieldDataColumns(),
+				new GridFieldPaginator(),
+				new GridFieldPrintButton(),
+				new GridFieldExportButton()
+			);
+			$gridField = new GridField('Report',$report->title(), $report->sourceRecords(array(), null, null), $gridFieldConfig);
+			$displayFields = array();
+			$fieldCasting = array();
+			$fieldFormatting = array();
+			
+			// Parse the column information
+			foreach($report->columns() as $source => $info) {
+				if(is_string($info)) $info = array('title' => $info);
+				
+				if(isset($info['formatting'])) $fieldFormatting[$source] = $info['formatting'];
+				if(isset($info['csvFormatting'])) $csvFieldFormatting[$source] = $info['csvFormatting'];
+				if(isset($info['casting'])) $fieldCasting[$source] = $info['casting'];
+
+				if(isset($info['link']) && $info['link']) {
+					$link = singleton('CMSPageEditController')->Link('show');
+					$fieldFormatting[$source] = '<a href=\"' . $link . '/$ID\">$value</a>';
+				}
+
+				$displayFields[$source] = isset($info['title']) ? $info['title'] : $source;
+			}
+			$gridField->setDisplayFields($displayFields);
+			$gridField->setFieldCasting($fieldCasting);
+			$gridField->setFieldFormatting($fieldFormatting);
+
+			$fields->push($gridField);
+		} else {
+			// List all reports
+			$gridFieldConfig = GridFieldConfig::create()->addComponents(
+				new GridFieldToolbarHeader(),
+				new GridFieldSortableHeader(),
+				new GridFieldDataColumns(),
+				new GridFieldPaginator()
+			);
+			$gridField = new GridField('Reports','Reports', $this->Reports(), $gridFieldConfig);
+			$gridField->setDisplayFields(array(
+				'title' => 'Title',
+				'description' => 'Description'
+			));
+			$gridField->setFieldFormatting(array(
+				'title' => '<a href=\"$Link\">$value</a>'
+			));
+			$gridField->addExtraClass('all-reports-gridfield');
+			$fields->push($gridField);
+		}
+
+		$actions = new FieldList();
+		$form = new Form($this, "EditForm", $fields, $actions);
+		$form->addExtraClass('cms-edit-form cms-panel-padded center ' . $this->BaseCSSClasses());
+
+		$this->extend('updateEditForm', $form);
+
+		return $form;
 	}
 }
 

@@ -29,13 +29,6 @@ Director::addRules(1, array(
 	'$URLSegment//$Action/$ID/$OtherID' => 'ModelAsController',
 ));
 
-// Register default side reports
-SS_Report::register("SideReport", "SideReport_EmptyPages");
-SS_Report::register("SideReport", "SideReport_RecentlyEdited");
-if (class_exists('SubsiteReportWrapper')) SS_Report::register('ReportAdmin', 'SubsiteReportWrapper("BrokenLinksReport")',-20);
-else SS_Report::register('ReportAdmin', 'BrokenLinksReport',-20);
-
-
 /**
  * Register the default internal shortcodes.
  */
