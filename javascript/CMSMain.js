@@ -82,8 +82,11 @@
 				// TODO Enable checkbox tree controls
 				this.find('.checkboxAboveTree :checkbox').attr('disabled', 'false');
 
+				this.resetForm();
+				//the dropdown field wont be reset due to it is applied to chosen.js so need to treated specially
+				this.find('.field.dropdown select').val('').trigger("liszt:updated");
 				this._reloadSitetree();
-		
+				this._reloadListview();
 				return false;
 			},
 	
