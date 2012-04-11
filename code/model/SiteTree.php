@@ -122,7 +122,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	static $default_sort = "\"Sort\"";
 
 	/**
-	 * If this is false, the class cannot be created in the CMS.
+	 * If this is false, the class cannot be created in the CMS by regular content authors, only by ADMINs.
 	 * @var boolean
 	*/
 	static $can_create = true;
