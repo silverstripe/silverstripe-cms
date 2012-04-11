@@ -1,5 +1,12 @@
 (function() {
-	tinymce.PluginManager.requireLangPack("ssbuttons");
+
+	// TinyMCE will stop loading if it encounters non-existent external script file
+	// when included through tiny_mce_gzip.php. Only load the external lang package if it is available.
+	var availableLangs = ['en', 'de'];
+	if(jQuery.inArray(tinymce.settings.language, availableLangs) != -1) {
+		tinymce.PluginManager.requireLangPack("ssbuttons");
+	}
+
 	var each = tinymce.each;
 
 	tinymce.create('tinymce.plugins.SSButtons', {
