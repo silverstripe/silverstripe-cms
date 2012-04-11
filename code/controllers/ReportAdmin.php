@@ -108,8 +108,8 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 	 * Returns the Breadcrumbs for the ReportAdmin
 	 * @return ArrayList
 	 */
-	public function Breadcrumbs() {
-		$items = parent::Breadcrumbs();
+	public function Breadcrumbs($unlinked = false) {
+		$items = parent::Breadcrumbs($unlinked);
 		
 		// The root element should explicitly point to the root node.
 		// Uses session state for current record otherwise.
