@@ -104,7 +104,7 @@ class ModelAsController extends Controller implements NestedController {
 			// If a root page has been renamed, redirect to the new location.
 			// See ContentController->handleRequest() for similiar logic.
 			$redirect = self::find_old_page($URLSegment);
-			if($redirect = self::find_old_page($URLSegment)) {
+			if($redirect) {
 				$params = $request->getVars();
 				if(isset($params['url'])) unset($params['url']);
 				$this->response = new SS_HTTPResponse();
