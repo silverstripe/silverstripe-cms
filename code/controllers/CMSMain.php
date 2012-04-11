@@ -539,13 +539,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 	
 	/**
-	 * Returns the files and subfolders contained in the currently selected folder,
-	 * defaulting to the root node. Doubles as search results, if any search parameters
-	 * are set through {@link SearchForm()}.
+	 * Returns the pages meet a certain criteria as {@see CMSSiteTreeFilter} or the subpages of a parent page
+	 * defaulting to no filter and show all pages in first level.
+	 * Doubles as search results, if any search parameters are set through {@link SearchForm()}.
 	 * 
 	 * @return SS_List
 	 */
-	public function getList(&$filterOnOff) {
+	public function getList(&$filterOn) {
 		$list = new DataList($this->stat('tree_class'));
 		
 		$request = $this->request;
