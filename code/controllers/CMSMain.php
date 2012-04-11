@@ -1,3 +1,4 @@
+
 <?php
 /**
  * The main "content" area of the CMS.
@@ -177,6 +178,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$fields = new FieldList(
 			new TextField('Term', _t('CMSSearch.FILTERLABELTEXT', 'Content')),
 			$dateGroup = new FieldGroup(
+				new HeaderField('Date', _t('CMSSearch.FILTERDATEHEADING', 'Date'), 4),
 				$dateFrom = new DateField('LastEditedFrom', _t('CMSSearch.FILTERDATEFROM', 'From')),
 				$dateTo = new DateField('LastEditedTo', _t('CMSSearch.FILTERDATETO', 'To'))
 			),
@@ -200,9 +202,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$dateTo->setConfig('showcalendar', true);
 
 		$actions = new FieldList(
-			ResetFormAction::create('clear', _t('CMSMain_left.ss.CLEAR', 'Clear'))
-				->addExtraClass('ss-ui-action-minor'),
-			FormAction::create('doSearch',  _t('CMSMain_left.ss.SEARCH', 'Search'))
+			FormAction::create('doSearch',  _t('CMSMain_left.ss.APPLY FILTER', 'Apply Filter'))
+			->addExtraClass('ss-ui-action-constructive'),
+			Object::create('ResetFormAction', 'clear', _t('CMSMain_left.ss.RESET', 'Reset'))
 		);
 
 		// Use <button> to allow full jQuery UI styling
