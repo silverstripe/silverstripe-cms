@@ -3,6 +3,21 @@
  */
 (function($) {
 	$.entwine('ss', function($){
+		
+		$('#pages-controller-cms-content').entwine({
+			/**
+			 * we need to check if the current url contains a sub url 'listchildren' and 
+			 * assign a cookie accordingly so the default selected tab is defined on initail
+			 */
+			redrawTabs: function() {
+				if(window.location.href.match(/listchildren/)){
+					this.rewriteHashlinks();
+					this.tabs({ selected: 1 }); 
+				}else{
+					this._super();
+				}
+			}
+		});
 	
 		/**
 		 * Class: #Form_SearchForm
