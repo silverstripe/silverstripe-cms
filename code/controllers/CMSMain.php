@@ -791,6 +791,17 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		return $this->save($data, $form);
 	}
+	
+	/**
+	 * Roll a page back to a previous version. This is handled by CMSPageHistoryController so we
+	 * pass it on to that controller.
+	 */
+	function rollback($data, $form) {
+		$controller = new CMSPageHistoryController();
+		$controller->doRollback($data, $form);
+
+		return $this->getResponseNegotiator()->respond($this->request);
+	}
 
 	function unpublish($data, $form) {
 		$className = $this->stat('tree_class');
