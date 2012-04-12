@@ -192,12 +192,11 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 				new GridFieldToolbarHeader(),
 				new GridFieldSortableHeader(),
 				new GridFieldDataColumns(),
-				new GridFieldPaginator()
+				new GridFieldFooter()
 			);
 			$gridField = new GridField('Reports','Reports', $this->Reports(), $gridFieldConfig);
 			$gridField->setDisplayFields(array(
 				'title' => 'Title',
-				'description' => 'Description'
 			));
 			$gridField->setFieldFormatting(array(
 				'title' => '<a href=\"$Link\">$value</a>'
