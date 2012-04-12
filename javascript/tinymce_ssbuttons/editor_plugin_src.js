@@ -32,11 +32,11 @@
 			ed.addButton('ssimage', {title : ed.getLang('tinymce_ssbuttons.insertimage'), cmd : 'ssimage', 'class' : 'mce_image'}); 
 
 			ed.addCommand("sslink", function(ed) {
-				jQuery('#Form_EditorToolbarLinkForm').entwine('ss').open();
+				jQuery('#' + this.id).entwine('ss').openLinkDialog();
 			});
 
 			ed.addCommand("ssimage", function(ed) {
-				jQuery('#Form_EditorToolbarMediaForm').entwine('ss').open();
+				jQuery('#' + this.id).entwine('ss').openMediaDialog();
 			});
 			
 			// Disable link button when no link is selected
