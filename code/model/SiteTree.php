@@ -2682,8 +2682,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	function provideI18nEntities() {
 		$entities = parent::provideI18nEntities();
 		
-		if(isset($entities['Page.SINGULARNAME'])) $entities['Page.SINGULARNAME'][3] = 'sapphire';
-		if(isset($entities['Page.PLURALNAME'])) $entities['Page.PLURALNAME'][3] = 'sapphire';		
+		if(isset($entities['Page.SINGULARNAME'])) $entities['Page.SINGULARNAME'][3] = FRAMEWORK_DIR;
+		if(isset($entities['Page.PLURALNAME'])) $entities['Page.PLURALNAME'][3] = FRAMEWORK_DIR;		
 
 		$types = self::page_type_classes();
 		foreach($types as $type) {

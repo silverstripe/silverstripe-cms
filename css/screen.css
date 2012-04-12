@@ -1,7 +1,7 @@
 /** This file is the central collection of included modules, links to custom SCSS files, and any global SCSS variable definitions.  DO NOT ADD stylesheet rules to this file directly!  Note: By prefixing files with an underscore, they won't create individual CSS files. */
 /** ----------------------------- Core Compass Libraries ------------------------------ */
 /** ----------------------------- CMS Components ------------------------------ */
-/** Style  custom to the CMSMain admin interface. CMSMain extends the built in  sapphire admin section styles. As much as possible we want to use those  built in styles. If anything in this file can be implemented in a generic  way then it should be include in the admin scss files.  @package cms */
+/** Style  custom to the CMSMain admin interface. CMSMain extends the built in SilverStripe admin section styles. As much as possible we want to use those  built in styles. If anything in this file can be implemented in a generic  way then it should be include in the admin scss files.  @package cms */
 /** ------------------------------------------------------------------ Page History Section. ----------------------------------------------------------------- */
 #cms-page-history-versions tr.loading { color: #999; }
 #cms-page-history-versions tr.loading td:hover { cursor: none; }
@@ -29,5 +29,5 @@
 .cms .AssetAdmin #Form_EditForm_File td.bottom-all { padding: 0.7em; }
 .cms .AssetAdmin #Form_EditForm_File td.col-StripThumbnail { padding: 0; width: 32px; height: 32px; display: block; }
 .cms .AssetAdmin #Form_EditForm_File td.col-StripThumbnail img { width: 32px; height: 32px; }
-.cms .AssetAdmin #Form_EditForm_File tr[data-class=Folder] td.col-StripThumbnail { background: transparent url(../../sapphire/admin/images/sprites-32x32/blue-folder-horizontal.png) no-repeat top left; }
-.cms .AssetAdmin #Form_EditForm_File tr[data-class=File] td.col-StripThumbnail { background: transparent url(../../sapphire/admin/images/sprites-32x32/blue-document.png) no-repeat top left; }
+.cms .AssetAdmin #Form_EditForm_File tr[data-class=Folder] td.col-StripThumbnail { background: transparent url(../images/treeicons/blue-folder-horizontal.png) no-repeat top left; }
+.cms .AssetAdmin #Form_EditForm_File tr[data-class=File] td.col-StripThumbnail { background: transparent url(../images/treeicons/blue-document.png) no-repeat top left; }

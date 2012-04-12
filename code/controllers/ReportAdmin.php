@@ -50,7 +50,7 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 		HtmlEditorConfig::get('cms')->setOption('Lang', i18n::get_tinymce_lang());
 
 		// Always block the HtmlEditorField.js otherwise it will be sent with an ajax request
-		Requirements::block(SAPPHIRE_DIR . '/javascript/HtmlEditorField.js');
+		Requirements::block(FRAMEWORK_DIR . '/javascript/HtmlEditorField.js');
 	}
 
 	/**

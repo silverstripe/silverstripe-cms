@@ -133,7 +133,7 @@ class Widget extends DataObject {
  * within a {@link ContentController}.
  * 
  * ## Forms
- * You can add forms like in any other sapphire controller.
+ * You can add forms like in any other SilverStripe controller.
  * If you need access to the widget from within a form,
  * you can use `$this->controller->getWidget()` inside the form logic.
  * Note: Widget controllers currently only work on {@link Page} objects,

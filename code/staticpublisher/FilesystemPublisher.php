@@ -50,7 +50,7 @@ class FilesystemPublisher extends StaticPublisher {
 	
 	/**
 	 * @param $destFolder The folder to save the cached site into.
-	 *   This needs to be set in sapphire/static-main.php as well through the {@link $cacheBaseDir} variable.
+	 *   This needs to be set in framework/static-main.php as well through the {@link $cacheBaseDir} variable.
 	 * @param $fileExtension  The file extension to use, e.g 'html'.  
 	 *   If omitted, then each page will be placed in its own directory, 
 	 *   with the filename 'index.html'.  If you set the extension to PHP, then a simple PHP script will
@@ -69,7 +69,7 @@ class FilesystemPublisher extends StaticPublisher {
 	/**
 	 * Transforms relative or absolute URLs to their static path equivalent.
 	 * This needs to be the same logic that's used to look up these paths through
-	 * sapphire/static-main.php. Does not include the {@link $destFolder} prefix.
+	 * framework/static-main.php. Does not include the {@link $destFolder} prefix.
 	 * Replaces various special characters in the resulting filename similar to {@link SiteTree::generateURLSegment()}.
 	 * 
 	 * Examples (without $domain_based_caching):
