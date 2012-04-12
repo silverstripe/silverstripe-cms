@@ -83,7 +83,7 @@ RewriteBase $base
 
 RewriteCond %{REQUEST_URI} ^(.*)$
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule .* sapphire/main.php?url=%1&%{QUERY_STRING} [L]
+RewriteRule .* framework/main.php?url=%1&%{QUERY_STRING} [L]
 TEXT
 	;
 	
@@ -114,7 +114,7 @@ RewriteBase $base
 
 RewriteCond %{REQUEST_URI} ^(.*)$
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule .* $_SERVER[DOCUMENT_ROOT]/sapphire/main.php?url=%1&%{QUERY_STRING} [L]
+RewriteRule .* $_SERVER[DOCUMENT_ROOT]/framework/main.php?url=%1&%{QUERY_STRING} [L]
 TEXT
 	;
 	

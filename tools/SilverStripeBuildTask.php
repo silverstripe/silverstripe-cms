@@ -40,9 +40,9 @@ TEXT;
 	}
 
 	function devBuild() {
-		if (file_exists('sapphire/cli-script.php')) {
+		if (file_exists('framework/cli-script.php')) {
 			$this->log("Running dev/build");
-			$this->exec('php sapphire/cli-script.php dev/build');
+			$this->exec('php framework/cli-script.php dev/build');
 		}
 	}
 	

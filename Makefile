@@ -6,7 +6,7 @@
 #
 
 test:
-	$(MAKE) QUERYSTRING="$(QUERYSTRING)" -C sapphire test
+	$(MAKE) QUERYSTRING="$(QUERYSTRING)" -C framework test
 
 getallmodules:
 	if [ -d subsites ]; then svn update subsites; else svn co http://svn.silverstripe.com/open/modules/subsites/trunk subsites; fi

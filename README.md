@@ -2,22 +2,22 @@
 
 Base project folder for a SilverStripe ([http://silverstripe.org](http://silverstripe.org)) installation. Requires additional modules to function:
 
- * [`sapphire`](http://github.com/silverstripe/sapphire): Module including the base framework
+ * [`framework`](http://github.com/silverstripe/sapphire): Module including the base framework
  * [`cms`](http://github.com/silverstripe/silverstripe-cms): Module including a Content Management System
  * `themes/blackcandy` (optional)
 
 ## Server Requirements ##
 
-See [doc.silverstripe.org](http://doc.silverstripe.org/sapphire/en/installation/server-requirements)
+See [doc.silverstripe.org](http://doc.silverstripe.org/framework/en/installation/server-requirements)
 
 ## Installation ##
 
-See [installation on different platforms](http://doc.silverstripe.org/sapphire/en/installation/),
-and [installation from source](http://doc.silverstripe.org/sapphire/en/installation/from-source).
+See [installation on different platforms](http://doc.silverstripe.org/framework/en/installation/),
+and [installation from source](http://doc.silverstripe.org/framework/en/installation/from-source).
 
 ## Links ##
 
- * [Changelogs](http://doc.silverstripe.org/sapphire/en/changelogs/)
+ * [Changelogs](http://doc.silverstripe.org/framework/en/changelogs/)
  * [Bugtracker](http://open.silverstripe.org)
  * [Forums](http://silverstripe.org/forums)
  * [Developer Mailinglist](https://groups.google.com/forum/#!forum/silverstripe-dev)

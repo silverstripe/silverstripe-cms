@@ -27,7 +27,7 @@ class CreateChangelog extends SilverStripeBuildTask {
 	
 	public $commitUrls = array(
 		'.' => 'https://github.com/silverstripe/silverstripe-installer/commit/%s',
-		'sapphire' => 'https://github.com/silverstripe/sapphire/commit/%s',
+		'framework' => 'https://github.com/silverstripe/sapphire/commit/%s',
 		'cms' => 'https://github.com/silverstripe/silverstripe-cms/commit/%s',
 		'themes/blackcandy' => 'https://github.com/silverstripe-themes/silverstripe-blackcandy/commit/%s',
 	);
@@ -204,9 +204,9 @@ class CreateChangelog extends SilverStripeBuildTask {
 			if (count($bits) == 1) {
 				$repos[$bits[0]] = "";
 			} elseif (count($bits) == 2) {
-				$repos[$bits[0]] = array($bits[1], null);    //sapphire => array(from => HEAD)
+				$repos[$bits[0]] = array($bits[1], null);    //framework => array(from => HEAD)
 			} elseif (count($bits) == 3) {
-				$repos[$bits[0]] = array($bits[1],$bits[2]);    //sapphire => array(from => to)
+				$repos[$bits[0]] = array($bits[1],$bits[2]);    //framework => array(from => to)
 			} else {
 				continue;
 			}

@@ -233,7 +233,7 @@ Options:
 				<exclude name="tools/**" />
 				<exclude name="**/tests/**" />
 				<exclude name="cms/docs/**" />
-				<exclude name="sapphire/docs/**" />
+				<exclude name="framework/docs/**" />
 				<exclude name="build.xml" />
 				<exclude name="dependent-modules*" />
 				<exclude name="changelog-definitions*" />
@@ -247,7 +247,7 @@ Options:
 		</copy>
 
 		<!-- Write version info to the core folders (shouldn't be in version control) -->
-		<echo msg="${version}" file="${tmp}/${archivename}/sapphire/silverstripe_version" />
+		<echo msg="${version}" file="${tmp}/${archivename}/framework/silverstripe_version" />
 		<echo msg="${version}" file="${tmp}/${archivename}/cms/silverstripe_version" />
 
 		<!-- create tar archive -->

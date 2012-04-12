@@ -8,5 +8,5 @@
 #
 # <path> <from-commit> <to-commit>
 . 2.4.4-rc1 2.4.5
-sapphire 2.4.4-rc1 2.4.5
+framework 2.4.4-rc1 2.4.5
 cms 2.4.4-rc1 2.4.5

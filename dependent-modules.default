@@ -14,7 +14,7 @@
 #
 # It is recommended to have sqlite3 and cms first with [run_dev_build] set to "false".
 # Having this set to 'false' prevents the execution of the dev/build process, meaning it can be
-# deferred until all dependencies are in place, specifically the sapphire module. List
+# deferred until all dependencies are in place, specifically the framework module. List
 # all additional modules after that. 
 #
 # Examples
@@ -24,7 +24,7 @@
 
 
 cms:master:2.4.5 git://github.com/silverstripe/silverstripe-cms.git
-sapphire:master:2.4.5 git://github.com/silverstripe/sapphire.git
+framework:master:2.4.5 git://github.com/silverstripe/sapphire.git
 
 
 

@@ -9,5 +9,5 @@
  ************************************************************************************
  ************************************************************************************/
 
-if (!file_exists('sapphire') || !file_exists('sapphire/_config.php')) include "install-sapphiremissing.html";
-else include('./sapphire/dev/install/install.php');
+if (!file_exists('framework') || !file_exists('framework/_config.php')) include "install-frameworkmissing.html";
+else include('./framework/dev/install/install.php');
