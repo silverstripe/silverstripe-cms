@@ -185,6 +185,7 @@ $lang['pl_PL']['CMSMain_left.ss']['SHOWONLYCHANGED'] = 'Pokaż tylko zmienione s
 $lang['pl_PL']['CMSMain_left.ss']['SHOWUNPUB'] = 'pokaż nieopublikowane wersje';
 $lang['pl_PL']['CMSMain_left.ss']['SITECONTENT TITLE'] = 'Zawartość i struktura strony';
 $lang['pl_PL']['CMSMain_left.ss']['SITEREPORTS'] = 'Raporty strony';
+$lang['pl_PL']['CMSMain_left.ss']['SHOW_DELETED_PAGES'] = 'Pokaż usunięte strony';
 $lang['pl_PL']['CMSMain_right.ss']['ANYMESSAGE'] = 'Czy masz jakieś wiadomości do edytowania? ';
 $lang['pl_PL']['CMSMain_right.ss']['CHOOSEPAGE'] = 'Proszę wybrać stronę po lewej';
 $lang['pl_PL']['CMSMain_right.ss']['LOADING'] = 'wczytuję...';
