@@ -233,13 +233,14 @@ JS
 			$gridField
 		));
 		
+		$treeField = new LiteralField('Tree', '');
 		// Tree view
 		$fields->addFieldsToTab('Root.TreeView', array(
 			clone $actionsComposite,
 			// TODO Replace with lazy loading on client to avoid performance hit of rendering potentially unused views
 			new LiteralField(
 				'Tree',
-				FormField::createTag(
+				$treeField->createTag(
 					'div', 
 					array(
 						'class' => 'cms-tree', 
