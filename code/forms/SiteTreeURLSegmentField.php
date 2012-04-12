@@ -78,4 +78,5 @@ class SiteTreeURLSegmentField extends TextField {
 	function Type() {
 		return 'text sitetreeurlsegment';
 	}
+
 }
