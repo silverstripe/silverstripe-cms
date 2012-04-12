@@ -1163,12 +1163,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * @return string
 	 */
 	public function CMSVersion() {
-		$cmsVersion = file_get_contents(BASE_PATH . '/cms/silverstripe_version');
+		$cmsVersion = file_get_contents(CMS_PATH . '/silverstripe_version');
 		if(!$cmsVersion) $cmsVersion = _t('LeftAndMain.VersionUnknown');
-		$sapphireVersion = file_get_contents(BASE_PATH . '/cms/silverstripe_version');
+		$sapphireVersion = file_get_contents(CMS_PATH . '/silverstripe_version');
 		if(!$sapphireVersion) $sapphireVersion = _t('LeftAndMain.VersionUnknown');
 		return sprintf(
-			"cms: %s, sapphire: %s",
+			"cms: %s, framework: %s",
 			$cmsVersion,
 			$sapphireVersion
 		);

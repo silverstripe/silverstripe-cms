@@ -39,6 +39,7 @@ class RsyncMultiHostPublisher extends FilesystemPublisher {
 	function publishPages($urls) {
 		parent::publishPages($urls);
 		$base = Director::baseFolder();
+		$framework = FRAMEWORK_DIR;
 
 		// Get variable that can turn off the rsync component of publication 
 		if(isset($_GET['norsync']) && $_GET['norsync']) return;
@@ -53,8 +54,8 @@ class RsyncMultiHostPublisher extends FilesystemPublisher {
 			$rsyncOutput = `cd $base; rsync -av -e ssh --exclude /.htaccess --exclude /web.config --exclude '*.php' --exclude '*.svn' --exclude '*.git' --exclude '*~' $extraArg --delete . $target`;
 			// Then transfer "safe" PHP from the cache/ directory
 			$rsyncOutput .= `cd $base; rsync -av -e ssh --exclude '*.svn' --exclude '*~' $extraArg --delete cache $target`;
-			// Transfer sapphire/static-main.php to the target
-			$rsyncOutput .= `cd $base; rsync -av -e ssh --delete sapphire/static-main.php $target/sapphire`;
+			// Transfer framework/static-main.php to the target
+			$rsyncOutput .= `cd $base; rsync -av -e ssh --delete $framework/static-main.php $target/$framework`;
 			if(StaticPublisher::echo_progress()) echo $rsyncOutput;
 		}
 	}
