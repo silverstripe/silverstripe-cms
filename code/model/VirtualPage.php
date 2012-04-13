@@ -165,8 +165,8 @@ class VirtualPage extends Page {
 	/**
 	 * Generate the CMS fields from the fields from the original page.
 	 */
-	function getCMSFields($cms = null) {
-		$fields = parent::getCMSFields($cms);
+	function getCMSFields() {
+		$fields = parent::getCMSFields();
 		
 		// Setup the linking to the original page.
 		$copyContentFromField = new TreeDropdownField(

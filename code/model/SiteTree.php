@@ -1745,7 +1745,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 *
 	 * @return FieldList The fields to be displayed in the CMS.
 	 */
-	function getCMSFields($params = null) {
+	function getCMSFields() {
 		require_once("forms/Form.php");
 		// Status / message
 		// Create a status message for multiple parents

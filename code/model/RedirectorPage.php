@@ -117,7 +117,7 @@ class RedirectorPage extends Page {
 		}
 	}
 
-	function getCMSFields($params = null) {
+	function getCMSFields() {
 		Requirements::javascript(CMS_DIR . '/javascript/RedirectorPage.js');
 		
 		$fields = parent::getCMSFields();
