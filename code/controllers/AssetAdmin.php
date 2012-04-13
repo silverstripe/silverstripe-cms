@@ -62,13 +62,13 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.GridField.js');
 		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang', false, true);
 		Requirements::css(CMS_DIR . "/css/screen.css");
-
+		$frameworkDir = FRAMEWORK_DIR;
 		Requirements::customScript(<<<JS
 			_TREE_ICONS = {};
 			_TREE_ICONS['Folder'] = {
-					fileIcon: 'sapphire/javascript/tree/images/page-closedfolder.gif',
-					openFolderIcon: 'sapphire/javascript/tree/images/page-openfolder.gif',
-					closedFolderIcon: 'sapphire/javascript/tree/images/page-closedfolder.gif'
+					fileIcon: '$frameworkDir/javascript/tree/images/page-closedfolder.gif',
+					openFolderIcon: '$frameworkDir/javascript/tree/images/page-openfolder.gif',
+					closedFolderIcon: '$frameworkDir/javascript/tree/images/page-closedfolder.gif'
 			};
 JS
 		);
