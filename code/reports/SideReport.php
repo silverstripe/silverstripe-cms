@@ -51,7 +51,7 @@ class SideReportView extends ViewableData {
 		} else {
 			$result = "<p class=\"message notice\">" . 
 				sprintf(
-					_t('SideReport.REPEMPTY','The %s report is empty.',PR_MEDIUM,'%s is a report title'),
+					_t('SideReport.REPEMPTY','The %s report is empty.','%s is a report title'),
 					$this->report->title()
 				) 
 				. "</p>";

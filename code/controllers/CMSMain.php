@@ -190,7 +190,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			),
 			new DropdownField(
 				'ClassName', 
-				_t('CMSMain.PAGETYPEOPT','Page Type', PR_MEDIUM, 'Dropdown for limiting search to a page type'), 
+				_t('CMSMain.PAGETYPEOPT','Page Type', 'Dropdown for limiting search to a page type'), 
 				$pageTypes, 
 				null, 
 				null, 
@@ -710,7 +710,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 					_t(
 						'LeftAndMain.STATUSPUBLISHEDSUCCESS', 
 						"Published '%s' successfully",
-						PR_MEDIUM,
 						'Status message after publishing a page, showing the page title'
 					),
 					$record->Title
@@ -743,7 +742,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		    	$id = $id . $suffix;
 	    }
 
-		$newItem->Title = _t('CMSMain.NEW',"New ",PR_MEDIUM,'"New " followed by a className').$className;
+		$newItem->Title = _t('CMSMain.NEW',"New ",'"New " followed by a className').$className;
 		$newItem->URLSegment = "new-" . strtolower($className);
 		$newItem->ClassName = $className;
 		$newItem->ParentID = $parentID;
@@ -854,7 +853,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$this->response->addHeader(
 			'X-Status',
 			sprintf(
-				_t('CMSMain.RESTORED',"Restored '%s' successfully",PR_MEDIUM,'Param %s is a title'),
+				_t('CMSMain.RESTORED',"Restored '%s' successfully",'Param %s is a title'),
 				$record->Title
 			)
 		);
@@ -1081,7 +1080,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				first built.') . '</p>
 				<form method="post" action="publishall">
 					<input type="submit" name="confirm" value="'
-					. _t('CMSMain.PUBALLCONFIRM',"Please publish every page in the site, copying content stage to live",PR_LOW,'Confirmation button') .'" />'
+					. _t('CMSMain.PUBALLCONFIRM',"Please publish every page in the site, copying content stage to live",'Confirmation button') .'" />'
 					. $tokenHtml .
 				'</form>';
 		}
@@ -1106,7 +1105,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$this->response->addHeader(
 			'X-Status',
 			sprintf(
-				_t('CMSMain.RESTORED',"Restored '%s' successfully",PR_MEDIUM,'Param %s is a title'),
+				_t('CMSMain.RESTORED',"Restored '%s' successfully",'Param %s is a title'),
 				$restoredPage->TreeTitle
 			)
 		);

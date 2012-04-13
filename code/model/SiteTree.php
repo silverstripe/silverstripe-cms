@@ -1499,7 +1499,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						_t(
 							'SiteTree.PageTypeNotAllowed', 
 							'Page type "%s" not allowed as child of this parent page', 
-							PR_MEDIUM,
+							
 							'First argument is a class name'
 						),
 						$subject->i18n_singular_name()
@@ -1516,7 +1516,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					_t(
 						'SiteTree.PageTypNotAllowedOnRoot', 
 						'Page type "%s" is not allowed on the root level', 
-						PR_MEDIUM,
+						
 						'First argument is a class name'
 					),
 					$this->i18n_singular_name()
@@ -1838,7 +1838,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				$tabMain = new Tab('Main',
 					new TextField("Title", $this->fieldLabel('Title')),
 					new TextField("MenuTitle", $this->fieldLabel('MenuTitle')),
-					$htmlField = new HtmlEditorField("Content", _t('SiteTree.HTMLEDITORTITLE', "Content", PR_MEDIUM, 'HTML editor title'))
+					$htmlField = new HtmlEditorField("Content", _t('SiteTree.HTMLEDITORTITLE', "Content", 'HTML editor title'))
 				),
 				$tabMeta = new Tab('Metadata',
 					$urlsegment,
@@ -1998,16 +1998,16 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$labels['MetaDescription'] = _t('SiteTree.METADESC', "Meta Description");
 			$labels['MetaKeywords'] = _t('SiteTree.METAKEYWORDS', "Meta Keywords");
 			$labels['ExtraMeta'] = _t('SiteTree.METAEXTRA', "Custom Meta Tags");
-			$labels['ClassName'] = _t('SiteTree.PAGETYPE', "Page type", PR_MEDIUM, 'Classname of a page object');
-			$labels['ParentType'] = _t('SiteTree.PARENTTYPE', "Page location", PR_MEDIUM);
-			$labels['ParentID'] = _t('SiteTree.PARENTID', "Parent page", PR_MEDIUM);
+			$labels['ClassName'] = _t('SiteTree.PAGETYPE', "Page type", 'Classname of a page object');
+			$labels['ParentType'] = _t('SiteTree.PARENTTYPE', "Page location");
+			$labels['ParentID'] = _t('SiteTree.PARENTID', "Parent page");
 			$labels['ShowInMenus'] =_t('SiteTree.SHOWINMENUS', "Show in menus?");
 			$labels['ShowInSearch'] = _t('SiteTree.SHOWINSEARCH', "Show in search?");
 			$labels['ProvideComments'] = _t('SiteTree.ALLOWCOMMENTS', "Allow comments on this page?");
 			$labels['ViewerGroups'] = _t('SiteTree.VIEWERGROUPS', "Viewer Groups");
 			$labels['EditorGroups'] = _t('SiteTree.EDITORGROUPS', "Editor Groups");
-			$labels['URLSegment'] = _t('SiteTree.URLSegment', 'URL Segment', PR_MEDIUM, 'URL for this page');
-			$labels['Content'] = _t('SiteTree.Content', 'Content', PR_MEDIUM, 'Main HTML Content for a page');
+			$labels['URLSegment'] = _t('SiteTree.URLSegment', 'URL Segment', 'URL for this page');
+			$labels['Content'] = _t('SiteTree.Content', 'Content', 'Main HTML Content for a page');
 			$labels['CanViewType'] = _t('SiteTree.Viewers', 'Viewers Groups');
 			$labels['CanEditType'] = _t('SiteTree.Editors', 'Editors Groups');
 			$labels['Comments'] = _t('SiteTree.Comments', 'Comments');
@@ -2017,7 +2017,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			);
 			
 			if($includerelations){
-				$labels['Parent'] = _t('SiteTree.has_one_Parent', 'Parent Page', PR_MEDIUM, 'The parent page in the site hierarchy');
+				$labels['Parent'] = _t('SiteTree.has_one_Parent', 'Parent Page', 'The parent page in the site hierarchy');
 				$labels['LinkTracking'] = _t('SiteTree.many_many_LinkTracking', 'Link Tracking');
 				$labels['ImageTracking'] = _t('SiteTree.many_many_ImageTracking', 'Image Tracking');
 				$labels['BackLinkTracking'] = _t('SiteTree.many_many_BackLinkTracking', 'Backlink Tracking');
@@ -2332,7 +2332,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				$translation = _t(
 					'SiteTree.CHANGETO', 
 					'Change to "%s"', 
-					PR_MEDIUM,
+					
 					"Pagetype selection dropdown with class names"
 				);
 
@@ -2704,7 +2704,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$inst = singleton($type);
 			$entities[$type . '.DESCRIPTION'] = array(
 				$inst->stat('description'),
-				PR_MEDIUM,
+				
 				'Description of the page type (shown in the "add page" dialog)'
 			);
 		}
