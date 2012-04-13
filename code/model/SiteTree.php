@@ -17,6 +17,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * class is allowed - no subclasses. Otherwise, the class and all its
 	 * subclasses are allowed.
 	 * To control allowed children on root level (no parent), use {@link $can_be_root}.
+	 * 
+	 * Note that this setting is cached when used in the CMS, use the "flush" query parameter to clear it.
 	 *
 	 * @var array
 	 */
@@ -24,6 +26,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 	/**
 	 * The default child class for this page.
+	 * Note: Value might be cached, see {@link $allowed_chilren}.
 	 *
 	 * @var string
 	 */
@@ -31,6 +34,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 	/**
 	 * The default parent class for this page.
+	 * Note: Value might be cached, see {@link $allowed_chilren}.
 	 *
 	 * @var string
 	 */
@@ -38,14 +42,15 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 	/**
 	 * Controls whether a page can be in the root of the site tree.
+	 * Note: Value might be cached, see {@link $allowed_chilren}.
 	 *
 	 * @var bool
 	 */
 	static $can_be_root = true;
 
 	/**
-	 * List of permission codes a user can have to allow a user to create a
-	 * page of this type.
+	 * List of permission codes a user can have to allow a user to create a page of this type.
+	 * Note: Value might be cached, see {@link $allowed_chilren}.
 	 *
 	 * @var array
 	 */

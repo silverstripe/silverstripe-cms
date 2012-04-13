@@ -244,67 +244,72 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * @return String Serialized JSON
 	 */
 	public function SiteTreeHints() {
+		$json = '';
+
 	 	$classes = ClassInfo::subclassesFor( $this->stat('tree_class') );
 
-		$def['Root'] = array();
-		$def['Root']['disallowedParents'] = array();
+	 	$cacheCanCreate = array();
+	 	foreach($classes as $class) $cacheCanCreate[$class] = singleton($class)->canCreate();
 
-		foreach($classes as $class) {
-			$obj = singleton($class);
-			
-			if($obj instanceof HiddenClass) continue;
-			
-			$allowedChildren = $obj->allowedChildren();
-			
-			// SiteTree::allowedChildren() returns null rather than an empty array if SiteTree::allowed_chldren == 'none'
-			if($allowedChildren == null) $allowedChildren = array();
-			
-			// Exclude SiteTree from possible Children
-			$possibleChildren = array_diff($allowedChildren, array("SiteTree"));
+	 	// Generate basic cache key. Too complex to encompass all variations
+	 	$cache = SS_Cache::factory('CMSMain_SiteTreeHints');
+	 	$cacheKey = md5(implode('_', array(Member::currentUserID(), implode(',', $cacheCanCreate), implode(',', $classes))));
+	 	if($this->request->getVar('flush')) $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+	 	$json = $cache->load($cacheKey);
+	 	if(!$json) {
+			$def['Root'] = array();
+			$def['Root']['disallowedParents'] = array();
 
-			// Find i18n - names and build allowed children array
-			foreach($possibleChildren as $child) {
-				$instance = singleton($child);
+			foreach($classes as $class) {
+				$obj = singleton($class);
+				if($obj instanceof HiddenClass) continue;
 				
-				if($instance instanceof HiddenClass) continue;
+				$allowedChildren = $obj->allowedChildren();
+				
+				// SiteTree::allowedChildren() returns null rather than an empty array if SiteTree::allowed_chldren == 'none'
+				if($allowedChildren == null) $allowedChildren = array();
+				
+				// Exclude SiteTree from possible Children
+				$possibleChildren = array_diff($allowedChildren, array("SiteTree"));
 
-				if(!$instance->canCreate()) continue;
+				// Find i18n - names and build allowed children array
+				foreach($possibleChildren as $child) {
+					$instance = singleton($child);
+					
+					if($instance instanceof HiddenClass) continue;
 
-				// skip this type if it is restricted
-				if($instance->stat('need_permission') && !$this->can(singleton($class)->stat('need_permission'))) continue;
+					if(!$cacheCanCreate[$child]) continue;
 
-				$title = $instance->i18n_singular_name();
+					// skip this type if it is restricted
+					if($instance->stat('need_permission') && !$this->can(singleton($class)->stat('need_permission'))) continue;
 
-				$def[$class]['allowedChildren'][] = array("ssclass" => $child, "ssname" => $title);
-			}
+					$title = $instance->i18n_singular_name();
 
-			$allowedChildren = array_keys(array_diff($classes, $allowedChildren));
-			if($allowedChildren) $def[$class]['disallowedChildren'] = $allowedChildren;
-			
-			$defaultChild = $obj->defaultChild();
-			
-			if($defaultChild != 'Page' && $defaultChild != null) 
-				$def[$class]['defaultChild'] = $defaultChild;
-			
-			$defaultParent = $obj->defaultParent();
-
-			$parent = SiteTree::get_by_link($defaultParent);
-			
-			$id = $parent ? $parent->id : null;
-			
-			if ($defaultParent != 1 && $defaultParent != null)  $def[$class]['defaultParent'] = $defaultParent;
-			
-			if(isset($def[$class]['disallowedChildren'])) {
-				foreach($def[$class]['disallowedChildren'] as $disallowedChild) {
-					$def[$disallowedChild]['disallowedParents'][] = $class;
+					$def[$class]['allowedChildren'][] = array("ssclass" => $child, "ssname" => $title);
 				}
-			}
-			
-			// Are any classes allowed to be parents of root?
-			$def['Root']['disallowedParents'][] = $class;
-		}
 
-		return Convert::raw2xml(Convert::raw2json($def));
+				$allowedChildren = array_keys(array_diff($classes, $allowedChildren));
+				if($allowedChildren) $def[$class]['disallowedChildren'] = $allowedChildren;
+				$defaultChild = $obj->defaultChild();
+				if($defaultChild != 'Page' && $defaultChild != null) $def[$class]['defaultChild'] = $defaultChild;
+				$defaultParent = $obj->defaultParent();
+				$parent = SiteTree::get_by_link($defaultParent);
+				$id = $parent ? $parent->id : null;
+				if ($defaultParent != 1 && $defaultParent != null)  $def[$class]['defaultParent'] = $defaultParent;
+				if(isset($def[$class]['disallowedChildren'])) {
+					foreach($def[$class]['disallowedChildren'] as $disallowedChild) {
+						$def[$disallowedChild]['disallowedParents'][] = $class;
+					}
+				}
+				
+				// Are any classes allowed to be parents of root?
+				$def['Root']['disallowedParents'][] = $class;
+			}
+
+			$json = Convert::raw2xml(Convert::raw2json($def));
+			$cache->save($json, $cacheKey);
+		}
+		return $json;
 	}
 	
 	/**
