@@ -1984,40 +1984,44 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * 
 	 */
 	function fieldLabels($includerelations = true) {
-		$labels = parent::fieldLabels($includerelations);
-		
-		$labels['Title'] = _t('SiteTree.PAGETITLE', "Page name");
-		$labels['MenuTitle'] = _t('SiteTree.MENUTITLE', "Navigation label");
-		$labels['MetaTitle'] = _t('SiteTree.METATITLE', "Meta Title");
-		$labels['MetaDescription'] = _t('SiteTree.METADESC', "Meta Description");
-		$labels['MetaKeywords'] = _t('SiteTree.METAKEYWORDS', "Meta Keywords");
-		$labels['ExtraMeta'] = _t('SiteTree.METAEXTRA', "Custom Meta Tags");
-		$labels['ClassName'] = _t('SiteTree.PAGETYPE', "Page type", PR_MEDIUM, 'Classname of a page object');
-		$labels['ParentType'] = _t('SiteTree.PARENTTYPE', "Page location", PR_MEDIUM);
-		$labels['ParentID'] = _t('SiteTree.PARENTID', "Parent page", PR_MEDIUM);
-		$labels['ShowInMenus'] =_t('SiteTree.SHOWINMENUS', "Show in menus?");
-		$labels['ShowInSearch'] = _t('SiteTree.SHOWINSEARCH', "Show in search?");
-		$labels['ProvideComments'] = _t('SiteTree.ALLOWCOMMENTS', "Allow comments on this page?");
-		$labels['ViewerGroups'] = _t('SiteTree.VIEWERGROUPS', "Viewer Groups");
-		$labels['EditorGroups'] = _t('SiteTree.EDITORGROUPS', "Editor Groups");
-		$labels['URLSegment'] = _t('SiteTree.URLSegment', 'URL Segment', PR_MEDIUM, 'URL for this page');
-		$labels['Content'] = _t('SiteTree.Content', 'Content', PR_MEDIUM, 'Main HTML Content for a page');
-		$labels['CanViewType'] = _t('SiteTree.Viewers', 'Viewers Groups');
-		$labels['CanEditType'] = _t('SiteTree.Editors', 'Editors Groups');
-		$labels['Comments'] = _t('SiteTree.Comments', 'Comments');
-		$labels['Visibility'] = _t('SiteTree.Visibility', 'Visibility');
-		$labels['LinkChangeNote'] = _t (
-			'SiteTree.LINKCHANGENOTE', 'Changing this page\'s link will also affect the links of all child pages.'
-		);
-		
-		if($includerelations){
-			$labels['Parent'] = _t('SiteTree.has_one_Parent', 'Parent Page', PR_MEDIUM, 'The parent page in the site hierarchy');
-			$labels['LinkTracking'] = _t('SiteTree.many_many_LinkTracking', 'Link Tracking');
-			$labels['ImageTracking'] = _t('SiteTree.many_many_ImageTracking', 'Image Tracking');
-			$labels['BackLinkTracking'] = _t('SiteTree.many_many_BackLinkTracking', 'Backlink Tracking');
+		$cacheKey = $this->class . '_' . $includerelations;
+		if(!isset(self::$_cache_field_labels[$cacheKey])) {
+			$labels = parent::fieldLabels($includerelations);
+			$labels['Title'] = _t('SiteTree.PAGETITLE', "Page name");
+			$labels['MenuTitle'] = _t('SiteTree.MENUTITLE', "Navigation label");
+			$labels['MetaTitle'] = _t('SiteTree.METATITLE', "Meta Title");
+			$labels['MetaDescription'] = _t('SiteTree.METADESC', "Meta Description");
+			$labels['MetaKeywords'] = _t('SiteTree.METAKEYWORDS', "Meta Keywords");
+			$labels['ExtraMeta'] = _t('SiteTree.METAEXTRA', "Custom Meta Tags");
+			$labels['ClassName'] = _t('SiteTree.PAGETYPE', "Page type", PR_MEDIUM, 'Classname of a page object');
+			$labels['ParentType'] = _t('SiteTree.PARENTTYPE', "Page location", PR_MEDIUM);
+			$labels['ParentID'] = _t('SiteTree.PARENTID', "Parent page", PR_MEDIUM);
+			$labels['ShowInMenus'] =_t('SiteTree.SHOWINMENUS', "Show in menus?");
+			$labels['ShowInSearch'] = _t('SiteTree.SHOWINSEARCH', "Show in search?");
+			$labels['ProvideComments'] = _t('SiteTree.ALLOWCOMMENTS', "Allow comments on this page?");
+			$labels['ViewerGroups'] = _t('SiteTree.VIEWERGROUPS', "Viewer Groups");
+			$labels['EditorGroups'] = _t('SiteTree.EDITORGROUPS', "Editor Groups");
+			$labels['URLSegment'] = _t('SiteTree.URLSegment', 'URL Segment', PR_MEDIUM, 'URL for this page');
+			$labels['Content'] = _t('SiteTree.Content', 'Content', PR_MEDIUM, 'Main HTML Content for a page');
+			$labels['CanViewType'] = _t('SiteTree.Viewers', 'Viewers Groups');
+			$labels['CanEditType'] = _t('SiteTree.Editors', 'Editors Groups');
+			$labels['Comments'] = _t('SiteTree.Comments', 'Comments');
+			$labels['Visibility'] = _t('SiteTree.Visibility', 'Visibility');
+			$labels['LinkChangeNote'] = _t (
+				'SiteTree.LINKCHANGENOTE', 'Changing this page\'s link will also affect the links of all child pages.'
+			);
+			
+			if($includerelations){
+				$labels['Parent'] = _t('SiteTree.has_one_Parent', 'Parent Page', PR_MEDIUM, 'The parent page in the site hierarchy');
+				$labels['LinkTracking'] = _t('SiteTree.many_many_LinkTracking', 'Link Tracking');
+				$labels['ImageTracking'] = _t('SiteTree.many_many_ImageTracking', 'Image Tracking');
+				$labels['BackLinkTracking'] = _t('SiteTree.many_many_BackLinkTracking', 'Backlink Tracking');
+			}
+
+			self::$_cache_field_labels[$cacheKey] = $labels;
 		}
-				
-		return $labels;
+
+		return self::$_cache_field_labels[$cacheKey];
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
