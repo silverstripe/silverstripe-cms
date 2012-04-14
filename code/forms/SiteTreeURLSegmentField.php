@@ -1,24 +1,21 @@
 <?php
-/**
- * @package cms
- * @subpackage forms
- */
 
 /**
  * Used to edit the SiteTree->URLSegment property, and suggest input based on the serverside rules
  * defined through {@link SiteTree->generateURLSegment()} and {@link URLSegmentFilter}.
  * 
  * Note: The actual conversion for saving the value takes place in the model layer.
+ *
+ * @package cms
+ * @subpackage forms
  */
+
 class SiteTreeURLSegmentField extends TextField {
 	
-	protected $template = 'SiteTreeURLSegmentField';
-	
-	/** @var String */
-	protected $helpText;
-	
-	/** @var String */
-	protected $urlPrefix;
+	/** 
+	 * @var string 
+	 */
+	protected $helpText, $urlPrefix;
 	
 	static $allowed_actions = array(
 		'suggest'
@@ -81,6 +78,4 @@ class SiteTreeURLSegmentField extends TextField {
 	function Type() {
 		return 'text sitetreeurlsegment';
 	}
-	
-	
 }
