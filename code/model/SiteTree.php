@@ -1898,8 +1898,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						)),
 						$parentIDField = new TreeDropdownField("ParentID", $this->fieldLabel('ParentID'), 'SiteTree', 'ID', 'MenuTitle')
 					),
-					new CheckboxField("ShowInMenus", $this->fieldLabel('ShowInMenus')),
-					new CheckboxField("ShowInSearch", $this->fieldLabel('ShowInSearch'))
+					$visibility = new FieldGroup(
+						new CheckboxField("ShowInMenus", $this->fieldLabel('ShowInMenus')),
+						new CheckboxField("ShowInSearch", $this->fieldLabel('ShowInSearch'))
+					)
 				),
 				$tabAccess = new Tab('Access',
 					$viewersOptionsField = new OptionsetField(
@@ -1917,6 +1919,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				)
 			)
 		);
+		
+		$visibility->setTitle($this->fieldLabel('Visibility'));
 		
 		/*
 		 * This filter ensures that the ParentID dropdown selection does not show this node,
@@ -2001,6 +2005,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$labels['CanViewType'] = _t('SiteTree.Viewers', 'Viewers Groups');
 		$labels['CanEditType'] = _t('SiteTree.Editors', 'Editors Groups');
 		$labels['Comments'] = _t('SiteTree.Comments', 'Comments');
+		$labels['Visibility'] = _t('SiteTree.Visibility', 'Visibility');
 		$labels['LinkChangeNote'] = _t (
 			'SiteTree.LINKCHANGENOTE', 'Changing this page\'s link will also affect the links of all child pages.'
 		);
