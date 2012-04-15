@@ -290,8 +290,8 @@ JS
 			'image' => _t('AssetAdmin.AppCategoryImage', 'Image'),
 			'audio' => _t('AssetAdmin.AppCategoryAudio', 'Audio'),
 			'mov' => _t('AssetAdmin.AppCategoryVideo', 'Video'),
-			'flash' => _t('AssetAdmin.AppCategoryFlash', 'Flash', PR_MEDIUM, 'The fileformat'),
-			'zip' => _t('AssetAdmin.AppCategoryArchive', 'Archive', PR_MEDIUM, 'A collection of files'),
+			'flash' => _t('AssetAdmin.AppCategoryFlash', 'Flash', 'The fileformat'),
+			'zip' => _t('AssetAdmin.AppCategoryArchive', 'Archive', 'A collection of files'),
 		);
 		$context->addField(
 			new DropdownField(

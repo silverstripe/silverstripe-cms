@@ -1,0 +1,68 @@
+th:
+  AssetAdmin:
+    CHOOSEFILE: "เลือกไฟล์"
+    FILESREADY: "ไฟล์พร้อมสำหรับอัปโหลด"
+    MOVEDX: "ย้าย %s ไฟล์"
+    NOTHINGTOUPLOAD: "ไม่มีไฟล์สำหรับอัปโหลด"
+    UPLOAD: "อัปโหลดไฟล์ที่แสดงรายการด้านล่าง"
+    UPLOADEDX: "อัปโหลด %s ไฟล์"
+  AssetAdmin_left.ss:
+  AssetAdmin_uploadiframe.ss:
+    PERMFAILED: "คุณไม่มีสิทธิ์ในการอัปโหลดไฟล์เข้าสู่โฟลเดอร์นี้"
+  AssetTableField:
+    DIM: "ความสูงความยาว"
+    FILENAME: "ชื่อไฟล์"
+    LASTEDIT: "เปลี่ยนแปลงล่าสุด"
+    OWNER: "เจ้าของ"
+    SIZE: "ขนาด"
+    TITLE: "ชื่อเรื่อง"
+    TYPE: "ชนิด"
+  CMSMain:
+    ACCESS: "เข้าถึงส่วน '%s'"
+    EMAIL: "อีเมล์"
+    NEW: "ข่าว"
+    NOCONTENT: "ไม่มีเนื้อหา"
+    PAGENOTEXISTS: "ไม่มีหน้านี้อยู่"
+    PUBPAGES: "เผยแพร่ %d หน้า"
+    RESTORED: "การเรียกคืน สำเร็จ"
+    SAVE: "บันทึก"
+    TOTALPAGES: "เอกสารทั้งหมด"
+  CMSMain_left.ss:
+    GO: "ไป"
+    SEARCH: "ค้นหา"
+  LeftAndMain:
+    STATUSPUBLISHEDSUCCESS: "เผยแพร่ '%s' สำเร็จ"
+  MemberTableField:
+  RedirectorPage:
+    PLURALNAME: "ส่งต่อไปหน้า"
+    SINGULARNAME: "ส่งต่อไปหน้า"
+  SecurityAdmin:
+  SideReport:
+    REPEMPTY: "รายงาน ว่างเปล่า"
+  SiteTree:
+    ACCESSANYONE: "ทุกคน"
+    ACCESSHEADER: "ใครบ้างสามารถดูหน้านี้ได้?"
+    ACCESSLOGGEDIN: "ผู้ใช้งานที่ล็อกอินเข้าใช้งาน"
+    ACCESSONLYTHESE: "บุคคลอื่น (เลือกจากรายการ)"
+    ALLOWCOMMENTS: "อนุญาตให้แสดงความเห็นในหน้านีหรือไม่?"
+    BUTTONSAVEPUBLISH: "บันทึกและเผยแพร่"
+    BUTTONUNPUBLISH: "ไม่เผยแพร่"
+    CHANGETO: "เปลี่ยนเป็น \"%s\""
+    Content: "เนื้อหา"
+    EDITANYONE: "ทุกคนที่ล็อกอินสู่ CMS"
+    EDITHEADER: "ใครสามารถแก้ไขหน้านี้ได้?"
+    EDITONLYTHESE: "บุคคลเหล่านี้ (เลือกจากรายการ)"
+    HOMEPAGEFORDOMAIN: "ขอบเขต"
+    HTMLEDITORTITLE: "เนื้อหา"
+    METADESC: "รายละเอียด"
+    METATITLE: "ชื่อเรื่อง"
+    PAGETYPE: "ประเภท เอกสาร"
+    PLURALNAME: "โครงสร้างไซต์"
+    SHOWINSEARCH: "แสดงในผลลัพธ์ของการค้นหาหรือไม่?"
+    SINGULARNAME: "โครงสร้างไซต์"
+    TABACCESS: "เข้าถึง"
+    TABCONTENT: "เนื้อหา"
+    URLSegment: "URL Segment"
+  Widget:
+    PLURALNAME: "วิดเจ็ท"
+    SINGULARNAME: "วิดเจ็ท"

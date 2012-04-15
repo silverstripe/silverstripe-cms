@@ -1,0 +1,12 @@
+kxm:
+  AssetAdmin:
+  AssetAdmin_left.ss:
+  CMSMain:
+    NEW: "ថ្មី"
+    RESTORED: "បានដាក់ '%s'  វិញរួចរាល់"
+  CMSMain_left.ss:
+    SEARCH: "ស្វែងរក"
+  LeftAndMain:
+  SecurityAdmin:
+  SideReport:
+    REPEMPTY: " មិនមាន %s​ របាយការណ៍"
