@@ -1,4 +1,4 @@
-zh-CN:
+zh_CN:
   AssetAdmin:
     CHOOSEFILE: "选择文件"
     DELETEDX: "删除%s个文件。"
