@@ -304,7 +304,7 @@ class VirtualPage extends Page {
 					_t(
 						'VirtualPage.PageTypNotAllowedOnRoot', 
 						'Original page type "%s" is not allowed on the root level for this virtual page', 
-						PR_MEDIUM,
+						
 						'First argument is a class name'
 					),
 					$orig->i18n_singular_name()

@@ -1,0 +1,13 @@
+mn:
+  AssetAdmin:
+  CMSMain:
+    NEW: "Шинэ"
+    RESTORED: "'%s' амжилттай сэргээгдлээ."
+  CMSMain_left.ss:
+    SEARCH: "Хайлт"
+  LeftAndMain:
+  SecurityAdmin:
+  SiteTree:
+    HOMEPAGEFORDOMAIN: "Домэйн(ууд)"
+    HTMLEDITORTITLE: "Агуулга"
+    PAGETYPE: "Хуудасны төрөл"

@@ -1,0 +1,23 @@
+el:
+  AssetAdmin:
+    CHOOSEFILE: "Επιλογή αρχείου"
+    FILESREADY: "Αρχεία έτοιμα για μεταφόρτωση:"
+    NOTHINGTOUPLOAD: "Δεν υπάρχει κάτι για μεταφόρτωση"
+    UPLOAD: "Μεταφόρτωση Αρχείων της παρακάτω λίστας"
+    UPLOADEDX: "Μεταφορτώθηκαν %s αρχεία"
+  CMSMain:
+    EMAIL: "Email"
+    NEW: "Νέα"
+    SAVE: "Αποθήκευση"
+    TOTALPAGES: "Σύνολο σελίδων:"
+  CMSMain_left.ss:
+    SEARCH: "Αναζήτηση"
+  LeftAndMain:
+  SecurityAdmin:
+  SideReport:
+    REPEMPTY: "Η %s αναφορά είναι κενή."
+  SiteTree:
+    HTMLEDITORTITLE: "Περιεχόμενο"
+    PAGETYPE: "Τύπος Σελίδας"
+  ViewArchivedEmail.ss:
+    HAVEASKED: "Επιθυμείται να εμφανιστεί το περιεχόμενο του ιστοχώρου σας την "

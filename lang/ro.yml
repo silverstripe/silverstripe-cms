@@ -1,0 +1,91 @@
+ro:
+  AssetAdmin:
+    CHOOSEFILE: "Alege fişier "
+    DELETEDX: "%s fişiere şterse. %s"
+    FILESREADY: "Fişiere gata de a fi încărcate:"
+    MOVEDX: "%s fişiere mutate"
+    NEWFOLDER: "DosarNou"
+    NOTHINGTOUPLOAD: "Nu a fost nimic de încărcat"
+    NOWBROKEN: "Următoarele pagini au legături rupte:"
+    UPLOAD: "Încarcă Fişierele Listate Mai Jos"
+    UPLOADEDX: "%s fişiere încărcate"
+  AssetAdmin_left.ss:
+  AssetAdmin_uploadiframe.ss:
+    PERMFAILED: "Nu aveţi permisiunea să încărcaţi fişiere în acest dosar."
+  AssetTableField:
+    DIM: "Dimensiuni"
+    FILENAME: "Nume fişier "
+    NOLINKS: "Nici o pagină nu conţine legături spre acest fişier."
+    OWNER: "ProprietarNici"
+    PAGESLINKING: "Următoarele pagini au legătură spre acest fişier"
+    SIZE: "Mărime "
+    TITLE: "Titlu"
+    TYPE: "Tip"
+  CMSMain:
+    EMAIL: "Email"
+    NEW: "Nou"
+    NOCONTENT: "fără conţinut"
+    PAGENOTEXISTS: "Pagina nu exista"
+    PUBALLCONFIRM: "Te rog publică fiecare pagină din site, copiind stadiul către live. "
+    PUBPAGES: "Gata: %d pagini publicate"
+    REMOVEDPAGE: "Şters '%s' din site-ul publicat"
+    RESTORED: "'%s' a fost restaurat cu succes"
+    ROLLBACK: "Intoarcere la acesta versiune"
+    ROLLEDBACKPUB: "Intoarcere la versiunea publicata. Numarul noii versiuni e #%d"
+    ROLLEDBACKVERSION: "Intoarcere la versiunea #%d. Numarul noii versiuni e #%d"
+    SAVE: "Salvează"
+    TOTALPAGES: "Total pagini:"
+  CMSMain_left.ss:
+    SEARCH: "Căutare"
+  ErrorPage:
+    PLURALNAME: "Pagini de Eroare"
+    SINGULARNAME: "Pagina de Eroare"
+  LeftAndMain:
+  MemberTableField:
+  RedirectorPage:
+    PLURALNAME: "Redirector Pagini"
+    SINGULARNAME: "Redirector Pagina"
+  SecurityAdmin:
+  SideReport:
+    EMPTYPAGES: "Pagini goale"
+    LAST2WEEKS: "Pagini editate in ultimele 2 săptămâni"
+    REPEMPTY: "Raportul %s e gol."
+  SiteTree:
+    ACCESSANYONE: "Oricine"
+    ACCESSHEADER: "Cine poate vizualiza această pagină pe site-ul meu?"
+    ACCESSLOGGEDIN: "Utilizatorii autentificaţi"
+    ACCESSONLYTHESE: "Doar aceste persoane (selectează din listă)"
+    ALLOWCOMMENTS: "Acceptă comentarii în aceasta pagină? "
+    BUTTONSAVEPUBLISH: "Salvează si Publică "
+    CHANGETO: "Schimbat cu \"%s\""
+    Content: "Continut"
+    EDITONLYTHESE: "Doar aceste persoane (selectează din listă)"
+    HOMEPAGEFORDOMAIN: "Domeniu(i)"
+    HTMLEDITORTITLE: "Continut"
+    METADESC: "Descriere"
+    METAKEYWORDS: "Cuvinte cheie"
+    METATITLE: "Titlu"
+    PAGETITLE: "Nume pagină"
+    PAGETYPE: "Tipul paginii"
+    SHOWINMENUS: "Afişează in meniu?"
+    TABACCESS: "Acces"
+    TABBEHAVIOUR: "Comportament"
+    TABCONTENT: "Conţinut "
+    URLSegment: "Segment URL"
+    has_one_Parent: "Pagina Parinte"
+  StaticExporter:
+    BASEURL: "URL Bază"
+    FOLDEREXPORT: "Dosarul în care doriţi să exportaţi"
+  ViewArchivedEmail.ss:
+    CANACCESS: "Puteţi accesa site-ul arhivat la adresa:"
+    HAVEASKED: "Vi s-a cerut să vedeţi conţinutul site-ului nostru pe data de"
+  VirtualPage:
+    EDITCONTENT: "click aici pentru a edita conţinutul"
+    HEADER: "Aceasta este o pagină virtuală "
+    SINGULARNAME: "Pagina Virtuala"
+  Widget:
+    PLURALNAME: "Widget-uri"
+    SINGULARNAME: "Widget"
+  WidgetArea:
+    PLURALNAME: "Zone Widget"
+    SINGULARNAME: "Zona Widget"

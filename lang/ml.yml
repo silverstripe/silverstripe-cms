@@ -1,0 +1,9 @@
+ml:
+  AssetAdmin:
+    UPLOADEDX: "%s "
+  AssetTableField:
+    SIZE: "വലിപ്പം"
+  CMSMain:
+    NEW: "പുതിയത്"
+    PAGENOTEXISTS: "ഈ പേജ് നിലവിലില്ല"
+  LeftAndMain:
