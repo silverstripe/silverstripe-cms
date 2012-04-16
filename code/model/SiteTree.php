@@ -2490,13 +2490,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		return $this->getTreeTitle();
 	}
 	
-	function listChildrenLink(){
-		if($num = $this->numChildren()){
-			$link = singleton('CMSPagesController')->Link('listchildren')."/".$this->ID;
-			return '<a href="'.$link.'" class="list-children-link">'.$num.'</a>';
-		}
-	}
-
 	/**
 	 * getTreeTitle will return three <span> html DOM elements, an empty <span> with
 	 * the class 'jstree-pageicon' in front, following by a <span> wrapping around its

@@ -9,10 +9,10 @@
 			<div class="cms-content-header-tabs">
 				<ul>
 					<li>
-						<a href="#cms-content-treeview" class="content-treeview"><% _t('CMSPagesController.TreeView', 'Tree View') %></a>
+						<a href="#cms-content-treeview" class="content-treeview cms-panel-link" data-href="$LinkTreeView"><% _t('CMSPagesController.TreeView', 'Tree View') %></a>
 					</li>
 					<li>
-						<a href="#cms-content-listview" class="content-listview"><% _t('CMSPagesController.ListView', 'List View') %></a>
+						<a href="#cms-content-listview" class="content-listview cms-panel-link"  data-href="$LinkListView"><% _t('CMSPagesController.ListView', 'List View') %></a>
 					</li>
 					<!--
 					<li>
@@ -28,30 +28,12 @@
 
 	<div class="cms-content-fields center ui-widget-content cms-panel-padded">
 		
-		<div id="cms-content-treeview">
-			
-			<div class="cms-content-toolbar">
-				<% include CMSPagesController_ContentToolbar %>
-			</div>
-			
-			<div class="cms-tree" data-url-tree="$Link(getsubtree)" data-url-savetreenode="$Link(savetreenode)" data-hints="$SiteTreeHints">
-				$SiteTreeAsUL
-			</div>
-			
-			<div class="ss-dialog cms-page-add-form-dialog cms-dialog-content" id="cms-page-add-form" title="<% _t('CMSMain.AddNew', 'Add new page') %>">
-				$AddForm
-			</div>
-
+		<div class="cms-content-view cms-panel-deferred" id="cms-content-treeview" data-url="$LinkTreeView">
+			<%-- Lazy-loaded via ajax --%>
 		</div>
 	
-		<div id="cms-content-listview">
-			<div class="cms-content-toolbar">
-				<% include CMSPagesController_ContentToolActions %>
-			</div>
-			
-			<div class="cms-list" data-url-list="$Link(getListViewHTML)">
-				$ListView
-			</div>
+		<div class="cms-content-view cms-panel-deferred" id="cms-content-listview" data-url="$LinkListView">
+			<%-- Lazy-loaded via ajax --%>
 		</div>
 		<!--
 		<div id="cms-content-galleryview">

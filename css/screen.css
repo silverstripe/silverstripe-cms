@@ -1,7 +1,7 @@
 /** This file is the central collection of included modules, links to custom SCSS files, and any global SCSS variable definitions.  DO NOT ADD stylesheet rules to this file directly!  Note: By prefixing files with an underscore, they won't create individual CSS files. */
 /** ----------------------------- Core Compass Libraries ------------------------------ */
 /** ----------------------------- CMS Components ------------------------------ */
-/** Style  custom to the CMSMain admin interface. CMSMain extends the built in SilverStripe admin section styles. As much as possible we want to use those  built in styles. If anything in this file can be implemented in a generic  way then it should be include in the admin scss files.  @package cms */
+/** Style  custom to the CMSMain admin interface. CMSMain extends the built in  SilverStripe admin section styles. As much as possible we want to use those  built in styles. If anything in this file can be implemented in a generic  way then it should be include in the admin scss files.  @package cms */
 /** ------------------------------------------------------------------ Page History Section. ----------------------------------------------------------------- */
 #cms-page-history-versions tr.loading { color: #999; }
 #cms-page-history-versions tr.loading td:hover { cursor: none; }
@@ -9,6 +9,13 @@
 
 .CMSPageHistoryController ins { background-color: #DFD; padding: 2px; text-decoration: none; }
 .CMSPageHistoryController del { background-color: #FDD; padding: 2px; color: #ff4444; }
+
+/** -------------------------------------------- Tree View (collapsed for sidebar) -------------------------------------------- */
+#cms-content-treeview .cms-tree-expand-trigger { display: none; }
+
+.cms-content-tools #cms-content-treeview .cms-tree-view-modes, .cms-content-tools #cms-content-treeview .cms-content-batchactions { display: none; }
+.cms-content-tools #cms-content-treeview .cms-tree-expand-trigger { display: inline-block; }
+.cms-content-tools #cms-content-treeview .cms-tree .badge, .cms-content-tools #cms-content-treeview .cms-tree a > .jstree-icon { display: none; }
 
 .cms .AssetAdmin .cms-content-fields { overflow: hidden; }
 .cms .AssetAdmin .cms-content-fields .cms-edit-form.AssetAdmin { overflow-y: auto; }

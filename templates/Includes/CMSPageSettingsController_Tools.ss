@@ -1,1 +1,0 @@
-<% include CMSPageEditController_Tools %>

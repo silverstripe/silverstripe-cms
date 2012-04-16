@@ -11,13 +11,13 @@
  */
 class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionProvider {
 	
-	static $url_segment = 'page';
+	static $url_segment = 'pages';
 	
 	static $url_rule = '/$Action/$ID/$OtherID';
 	
 	// Maintain a lower priority than other administration sections
 	// so that Director does not think they are actions of CMSMain
-	static $url_priority = 40;
+	static $url_priority = 39;
 	
 	static $menu_title = 'Edit Page';
 	
@@ -43,9 +43,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'SiteTreeAsUL',
 		'getshowdeletedsubtree',
 		'batchactions',
-		'ListView',
-		'getListView',
-		'listchildren',
+		'treeview',
+		'listview',
+		'ListViewForm',
 	);
 	
 	public function init() {
@@ -78,7 +78,24 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		CMSBatchActionHandler::register('delete', 'CMSBatchAction_Delete');
 		CMSBatchActionHandler::register('deletefromlive', 'CMSBatchAction_DeleteFromLive');
 	}
-	
+
+	function index($request) {
+		// In case we're not showing a specific record, explicitly remove any session state,
+		// to avoid it being highlighted in the tree, and causing an edit form to show.
+		if(!$request->param('Action')) $this->setCurrentPageId(null);
+
+		return parent::index($request);
+	}
+
+	protected function getResponseNegotiator() {
+		$negotiator = parent::getResponseNegotiator();
+		$controller = $this;
+		$negotiator->setCallback('ListViewForm', function() use(&$controller) {
+			return $controller->ListViewForm()->forTemplate();
+		});
+		return $negotiator;
+	}
+
 	/**
 	 * If this is set to true, the "switchView" context in the
 	 * template is shown, with links to the staging and publish site.
@@ -123,6 +140,62 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			"$action"
 		);
 	}
+
+	public function LinkPages() {
+		return singleton('CMSPagesController')->Link();
+	}
+
+	public function LinkTreeView() {
+		return $this->LinkWithSearch(singleton('CMSMain')->Link('treeview'));
+	}
+
+	public function LinkListView() {
+		return $this->LinkWithSearch(singleton('CMSMain')->Link('listview'));
+	}
+
+	public function LinkGalleryView() {
+		return $this->LinkWithSearch(singleton('CMSMain')->Link('galleryview'));
+	}
+
+	public function LinkPageEdit() {
+		if($id = $this->currentPageID()) {
+			return $this->LinkWithSearch(
+				Controller::join_links(singleton('CMSPageEditController')->Link('show'), $id)
+			);
+		}
+	}
+
+	public function LinkPageSettings() {
+		if($id = $this->currentPageID()) {
+			return $this->LinkWithSearch(
+				Controller::join_links(singleton('CMSPageSettingsController')->Link('show'), $id)
+			);
+		}
+	}
+
+	public function LinkPageHistory() {
+		if($id = $this->currentPageID()) {
+			return $this->LinkWithSearch(
+				Controller::join_links(singleton('CMSPageHistoryController')->Link('show'), $id)
+			);
+		}
+	}
+
+	protected function LinkWithSearch($link) {
+		// Whitelist to avoid side effects
+		$params = array(
+			'q' => (array)$this->request->getVar('q'),
+			'ParentID' => $this->request->getVar('ParentID')
+		);
+		return Controller::join_links(
+			$link,
+			array_filter(array_values($params)) ? '?' . http_build_query($params) : null
+		);
+	}
+
+	function LinkPageAdd() {
+		return singleton("CMSPageAddController")->Link();
+	}
 	
 	/**
 	 * @return string
@@ -155,6 +228,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		return $html;
 	}
+
+	/**
+	 * @return boolean
+	 */
+	public function TreeIsFiltered() {
+		return $this->request->getVar('q');
+	}
 	
 	function SearchForm() {
 		// get all page types in a dropdown-compatible format
@@ -177,19 +257,19 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		);
 		
 		$fields = new FieldList(
-			new TextField('Term', _t('CMSSearch.FILTERLABELTEXT', 'Content')),
+			new TextField('q[Term]', _t('CMSSearch.FILTERLABELTEXT', 'Content')),
 			$dateGroup = new FieldGroup(
-				new HeaderField('Date', _t('CMSSearch.FILTERDATEHEADING', 'Date'), 4),
-				$dateFrom = new DateField('LastEditedFrom', _t('CMSSearch.FILTERDATEFROM', 'From')),
-				$dateTo = new DateField('LastEditedTo', _t('CMSSearch.FILTERDATETO', 'To'))
+				new HeaderField('q[Date]', _t('CMSSearch.FILTERDATEHEADING', 'Date'), 4),
+				$dateFrom = new DateField('q[LastEditedFrom]', _t('CMSSearch.FILTERDATEFROM', 'From')),
+				$dateTo = new DateField('q[LastEditedTo]', _t('CMSSearch.FILTERDATETO', 'To'))
 			),
 			new DropdownField(
-				'FilterClass', 
+				'q[FilterClass]', 
 				_t('CMSMain.PAGES', 'Pages'), 
 				$filterMap
 			),
 			new DropdownField(
-				'ClassName', 
+				'q[ClassName]', 
 				_t('CMSMain.PAGETYPEOPT','Page Type', 'Dropdown for limiting search to a page type'), 
 				$pageTypes, 
 				null, 
@@ -211,11 +291,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// Use <button> to allow full jQuery UI styling
 		foreach($actions->dataFields() as $action) $action->setUseButtonTag(true);
 		
-		$form = new Form($this, 'SearchForm', $fields, $actions);
-		$form->setFormMethod('GET');
-		$form->disableSecurityToken();
-		$form->unsetValidator();
-		
+		$form = Form::create($this, 'SearchForm', $fields, $actions)
+			->addExtraClass('cms-search-form')
+			->setFormMethod('GET')
+			->setFormAction($this->Link())
+			->disableSecurityToken()
+			->unsetValidator();
+		$form->loadDataFrom($this->request->getVars());
+
 		return $form;
 	}
 	
@@ -527,7 +610,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 			// TODO Can't merge $FormAttributes in template at the moment
 			$form->addExtraClass('center ss-tabset ' . $this->BaseCSSClasses());
-			if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
+			// if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 
 			if(!$record->canEdit() || $deletedFromStage) {
 				$readonlyFields = $form->Fields()->makeReadonly();
@@ -542,44 +625,51 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			);
 		}
 	}
+
+	/**
+	 * @return String HTML
+	 */
+	public function treeview($request) {
+		return $this->renderWith($this->getTemplatesWithSuffix('_TreeView'));
+	}
+
+	public function listview($request) {
+		return $this->renderWith($this->getTemplatesWithSuffix('_ListView'));
+	}
 	
 	/**
 	 * Returns the pages meet a certain criteria as {@see CMSSiteTreeFilter} or the subpages of a parent page
 	 * defaulting to no filter and show all pages in first level.
 	 * Doubles as search results, if any search parameters are set through {@link SearchForm()}.
 	 * 
+	 * @param Array Search filter criteria
+	 * @param Int Optional parent node to filter on (can't be combined with other search criteria)
 	 * @return SS_List
 	 */
-	public function getList(&$filterOn) {
+	public function getList($params, $parentID = 0) {
 		$list = new DataList($this->stat('tree_class'));
-		
-		$request = $this->request;
 		$filter = null;
 		$ids = array();
-		if($filterClass = $request->requestVar('FilterClass')){
+		if(isset($params['FilterClass']) && $filterClass = $params['FilterClass']){
 			if(!is_subclass_of($filterClass, 'CMSSiteTreeFilter')) {
 				throw new Exception(sprintf('Invalid filter class passed: %s', $filterClass));
 			}
-			$filter = new $filterClass($request->requestVars());
+			$filter = new $filterClass($params);
 			$filterOn = true;
 			foreach($pages=$filter->pagesIncluded() as $pageMap){
 				$ids[] = $pageMap['ID'];
 			}
 			if(count($ids)) $list->where('"'.$this->stat('tree_class').'"."ID" IN ('.implode(",", $ids).')');
-		}else{
-			$parentID = 0;
-			if($this->urlParams['Action'] == 'listchildren' && $this->urlParams['ID']){
-				$parentID = $this->urlParams['ID'];
-			}
-			$list->filter("ParentID", $parentID);
+		} else {
+			$list->filter("ParentID", is_numeric($parentID) ? $parentID : 0);
 		}
 
 		return $list;
 	}
 	
-	public function getListView(){
-		$filterOn = false;
-		$list = $this->getList($filterOn);
+	public function ListViewForm(){
+		$params = $this->request->requestVar('q');
+		$list = $this->getList($params, $this->request->requestVar('ParentID'));
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
 			new GridFieldSortableHeader(),
 			new GridFieldDataColumns(),
@@ -587,7 +677,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		);
 		$gridField = new GridField('Page','Pages', $list, $gridFieldConfig);
 		
-		if($filterOn){
+		// Don't allow navigating into children nodes on filtered lists
+		if($params){
 			$gridField->setDisplayFields(array(
 				'getTreeTitle' => _t('SiteTree.PAGETITLE', 'Page Title'),
 				'Created' => _t('SiteTree.CREATED', 'Date Created'),
@@ -607,13 +698,26 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			'LastEdited' => 'Date->Ago',
 		));
 
+		$controller = $this;
 		$gridField->setFieldFormatting(array(
-			'getTreeTitle' => '<a class=\"cms-panel-link\" href=\"admin/page/edit/show/$ID\">$value</a>'
+			'listChildrenLink' => function(&$item) use($controller) {
+				$num = $item->numChildren();
+				if($num) {
+					return sprintf(
+						'<a class="cms-panel-link list-children-link" data-pjax="ListViewForm" data-target-panel="#Form_ListViewForm" href="%s?ParentID=%d&view=list">%s</a>',
+						$controller->Link(),
+						$item->ID,
+						$num
+					);	
+				}
+			},
+			'getTreeTitle' => '<a class=\"cms-panel-link\" href=\"' . 
+				singleton('CMSPageEditController')->Link('show') . '/$ID\">$value</a>'
 		));
 		
 		$listview = new Form(
 			$this,
-			'ListView',
+			'ListViewForm',
 			new FieldList($gridField),
 			new FieldList()
 		);
@@ -622,14 +726,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		$listview->disableSecurityToken();
 		return $listview;
-	}
-	
-	public function getListViewHTML(){
-		return $this->getListView()->forTemplate();
-	}
-	
-	public function ListView() {
-		return $this->getListView();
 	}
 	
 	public function currentPageID() {
@@ -645,14 +741,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return $id;
 	}
 	
-	public function listchildren(){
-		if(Director::is_ajax()){
-			return $this->getListViewHTML();
-		}else{
-			return $this;
-		}
-	}
-
 	//------------------------------------------------------------------------------------------//
 	// Data saving handlers
 

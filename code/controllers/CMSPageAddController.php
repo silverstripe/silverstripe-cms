@@ -1,7 +1,7 @@
 <?php
 class CMSPageAddController extends CMSPageEditController {
 
-	static $url_segment = 'page/add';
+	static $url_segment = 'pages/add';
 	static $url_rule = '/$Action/$ID/$OtherID';
 	static $url_priority = 42;
 	static $menu_title = 'Add page';

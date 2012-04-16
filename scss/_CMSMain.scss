@@ -43,3 +43,31 @@
 		color: darken(#FDD, 30%);
 	}
 }
+
+/** --------------------------------------------
+ * Tree View (collapsed for sidebar)
+ * -------------------------------------------- */
+#cms-content-treeview {
+	.cms-tree-expand-trigger {
+		display: none; // Don't show trigger in expanded mode
+	}
+}
+
+.cms-content-tools { // Hide certain elements when shown in "sidebar mode"
+	#cms-content-treeview {
+		.cms-tree-view-modes,
+		.cms-content-batchactions {
+			display: none;
+		}
+		.cms-tree-expand-trigger {
+			display: inline-block; 
+		}
+
+		.cms-tree {
+			.badge,
+			a > .jstree-icon {
+				display: none;
+			}
+		}
+	}
+}

@@ -6,7 +6,7 @@
  */
 class CMSPageHistoryController extends CMSMain {
 
-	static $url_segment = 'page/history';
+	static $url_segment = 'pages/history';
 	static $url_rule = '/$Action/$ID/$VersionID/$OtherVersionID';
 	static $url_priority = 42;
 	static $menu_title = 'History';
@@ -370,10 +370,4 @@ class CMSPageHistoryController extends CMSMain {
 		}
 	}
 
-	public function Breadcrumbs($unlinked = false) {
-		$crumbs = parent::Breadcrumbs($unlinked);
-		// Remove "root" element, as its already shown in the tree panel
-		$crumbs->shift();
-		return $crumbs;
-	}
 }
