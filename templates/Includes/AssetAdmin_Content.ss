@@ -1,4 +1,4 @@
-<div class="cms-content center ss-tabset $BaseCSSClasses" data-layout-type="border">
+<div class="cms-content center cms-tabset $BaseCSSClasses" data-layout-type="border">
 
 	<div class="cms-content-header north">
 		<div>
