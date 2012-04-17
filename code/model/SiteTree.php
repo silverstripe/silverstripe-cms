@@ -2531,20 +2531,15 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * Return the CSS classes to apply to this node in the CMS tree
 	 *
-	 * @param Controller $controller The controller object that the tree
-	 *                               appears on
 	 * @return string
 	 */
-	function CMSTreeClasses($controller) {
+	function CMSTreeClasses() {
 		$classes = sprintf('class-%s', $this->class);
 		if($this->HasBrokenFile || $this->HasBrokenLink)
 			$classes .= " BrokenLink";
 
 		if(!$this->canAddChildren())
 			$classes .= " nochildren";
-
-		if($controller->isCurrentPage($this))
-			$classes .= " current";
 
 		if(!$this->canEdit() && !$this->canAddChildren()) 
 			$classes .= " disabled";
