@@ -55,12 +55,27 @@
 
 .cms-content-tools { // Hide certain elements when shown in "sidebar mode"
 	#cms-content-treeview {
+		.cms-content-toolbar {
+			border-bottom:none;
+			box-shadow:none;
+			margin-bottom:8px;
+			.cms-page-add-button {
+				margin-top:8px;
+			}
+		}
 		.cms-tree-view-modes,
 		.cms-content-batchactions {
 			display: none;
 		}
 		.cms-tree-expand-trigger {
-			display: inline-block; 
+			display: inline-block;
+			margin:0 0 2px 0;
+			position:absolute;
+			top:8px;
+			right:4px;
+			span.ui-button-text{
+					padding-right:8px;
+			}
 		}
 
 		.cms-tree {
