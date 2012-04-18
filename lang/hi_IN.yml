@@ -1,8 +1,0 @@
-hi_IN:
-  CMSMain:
-    NEW: "नया"
-    PAGENOTEXISTS: "यह पृष नहीं है"
-    RESTORED: " %s बछा सफलता से"
-    ROLLEDBACKPUB: "पिछला पुबलिष  वषन | नया वषन नुमबेर है #%d"
-    ROLLEDBACKVERSION: "वापस वषन #%d हो गया | नया वषन का नुमबेर #%d है"
-    SAVE: "बचाओ"

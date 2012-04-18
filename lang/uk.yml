@@ -1,35 +1,9 @@
 uk:
   AssetAdmin:
-    CHOOSEFILE: "Вибрати файл"
-    DELETEDX: "Видалено %s файли(ів).%s"
-    FILESREADY: "Файли, готові для завантаження:"
-    MOVEDX: "Переміщено %s файли(ів)"
     NEWFOLDER: "Нова Тека"
-    NOTEMP: "Немає папки для тимчасового збереження завантажень. Будь-ласка, встановіть upload_tmp_dir в php.ini."
-    NOTHINGTOUPLOAD: "Не було нічого для завантаження"
-    NOWBROKEN: "На цих сторінках в даний час не працюють деякі посилання:"
     THUMBSDELETED: "%s не використовуваних картинок було видалено"
-    UPLOAD: "Завантажити файли, наведені нижче"
-    UPLOADEDX: "Завантажено %s файли(ів)"
   AssetAdmin_left.ss:
-    SELECTTODEL: "Виберіть теки для видалення та натисність кнопку нижче"
-  AssetAdmin_uploadiframe.ss:
-    PERMFAILED: "Ви не маєте прав для завантаження файлів у цю теку."
-  AssetTableField:
-    CREATED: "Вперше завантажено"
-    DIM: "Виміри"
-    FILENAME: "Ім'я файлу"
-    IMAGE: "Зображення"
-    LASTEDIT: "Востаннє змінено"
-    MAIN: "Головна"
-    NODATAFOUND: "%s не знайдено"
-    NOLINKS: "На цей файл не посилається жодна сторінка."
-    OWNER: "Власник"
-    PAGESLINKING: "Наведені сторінки посилаються на цю сторінку:"
-    SIZE: "Розмір"
-    TITLE: "Назва"
-    TYPE: "Тип"
-    URL: "URL"
+    GO: "Уперед"
   BrokenLinksReport:
     Any: "Будь-який"
     PageName: "Назва сторінки"
@@ -39,7 +13,6 @@ uk:
     DESCREMOVED: "і %s нащадків"
     EMAIL: "Електронна пошта"
     NEW: "Нове"
-    NOCONTENT: "без вмісту"
     PAGENOTEXISTS: "Ця сторінка не існує"
     PUBALLCONFIRM: "Будь ласка, опублікуйте кожну сторінку. Для цього перенесіть проміжний варіант до існуючого."
     PUBALLFUN: "Дія \"Опублікувати все\""
@@ -48,16 +21,12 @@ uk:
     REMOVED: "Видалено '%s'%s з публічного сайту"
     REMOVEDPAGE: "Видалено '%s' з опублікованого."
     REMOVEDPAGEFROMDRAFT: "Видалено '%s' з чорнового сайту"
-    REPORT: "Звіт"
     RESTORED: "'%s' успішно відновлено"
     ROLLBACK: "Повернутися до цієї версії"
     ROLLEDBACKPUB: "Повернено опубліковану версію. Нова версія - #%d"
     ROLLEDBACKVERSION: "Повернено версію #%d. Нова версія - #%d"
     SAVE: "Зберегти"
-    TOTALPAGES: "Усі сторінки:"
   CMSMain_left.ss:
-    GO: "Уперед"
-    SEARCH: "Пошук"
   ContentController:
     DRAFT_SITE_ACCESS_RESTRICTION: "Ви повинні увійти у систему для перегляду чернетки даного матеріалу. <a href=\"%s\">Натсиніть для переходу на опублікований матеріал.</a>"
     LOGGEDINAS: "Залогований як "
@@ -69,33 +38,23 @@ uk:
   ErrorPage:
     CODE: "Код помилки"
     ERRORFILEPROBLEM: "Помилка при записі в файл \"%s\""
-    PLURALNAME: "Сторінка помилки"
-    SINGULARNAME: "Сторінка помилки"
   LeftAndMain:
     STATUSPUBLISHEDSUCCESS: "Успішно опубліковано '%s'"
-  MemberTableField:
-    FILTER: "Фільтр"
-    SEARCH: "Пошук"
   RedirectorPage:
     HASBEENSETUP: "Сторінка перенаправлення була встановлена без указання цілі перенаправлення"
     HEADER: "Ця сторінка перенаправляє користувачів на іншу сторінку"
     OTHERURL: "URL іншого сайту"
-    PLURALNAME: "Сторінки переадресації"
     REDIRECTTO: "Перенапралено на"
     REDIRECTTOEXTERNAL: "Інший сайт"
     REDIRECTTOPAGE: "Сторінку на Вашому сайті"
-    SINGULARNAME: "Сторінка переадресації"
     YOURPAGE: "Сторінки на Вашому сайті"
   ReportAdminForm:
     FILTERBY: "Фільтр по"
-  SecurityAdmin:
   SideReport:
     EMPTYPAGES: "Порожні сторінки"
     LAST2WEEKS: "Сторінки, відредаговані за останні два тижні"
     REPEMPTY: "Звіт %s порожній."
   SiteConfig:
-    PLURALNAME: "Налаштування сайту"
-    SINGULARNAME: "Налаштування сайту"
     TABACCESS: "Доступ"
     TABMAIN: "Головна"
   SiteTree:
@@ -103,7 +62,6 @@ uk:
     ACCESSHEADER: "Хто може переглядати цю сторінку?"
     ACCESSLOGGEDIN: "Тільки ті, що увійшли"
     ACCESSONLYTHESE: "Тільки ці люди (виберіть зі списку)"
-    ADDEDTODRAFT: "Додано то чернеток"
     ALLOWCOMMENTS: "Дозволити коментувати на цій сторінці?"
     APPEARSVIRTUALPAGES: "Цей вміст також трапляється на віртуальних сторінках у розділах %s."
     BUTTONCANCELDRAFT: "Відмінити зміни чернетки"
@@ -121,26 +79,19 @@ uk:
     EDITONLYTHESE: "Тільки ці люди (виберіть зі списку)"
     Editors: "Групи редакторів"
     HASBROKENLINKS: "Ця сторінка має зламані посилання."
-    HOMEPAGEFORDOMAIN: "Домен(и)"
     HTMLEDITORTITLE: "Вміст"
-    HomepageForDomain: "Домашня сторінка для цього домена"
     INHERIT: "Наслідувати з батьківської сторінки"
     MENUTITLE: "Мітка навігації"
     METADESC: "Опис"
     METAEXTRA: "Власні Мета-теги"
-    METAHEADER: "Мета-теги для пошукових систем"
     METAKEYWORDS: "Ключові вирази"
     METATITLE: "Назва"
-    MODIFIEDONDRAFT: "Змінено у чернетках"
-    NOTEUSEASHOMEPAGE: |
-                        Використовувати цю сторінку як 'домашню сторінку' для наступних доменів: 
-                        (розділяйте домени за допомогою ком)    PAGETITLE: "Назва сторінки"
+    PAGETITLE: "Назва сторінки"
     PAGETYPE: "Тип сторінки"
     PARENTID: "Батьківська сторінка"
     PARENTTYPE: "Розміщення сторінки"
     PERMISSION_GRANTACCESS_DESCRIPTION: "Керувати правами доступу до контенту"
     PLURALNAME: "Дерево сайту"
-    REMOVEDFROMDRAFT: "Видалено з чернеток"
     SHOWINMENUS: "Показувати у навігації?"
     SHOWINSEARCH: "Показувати у пошуку?"
     SINGULARNAME: "Дерево сайту"
@@ -155,13 +106,8 @@ uk:
   StaticExporter:
     BASEURL: "Основний URL"
     EXPORTTO: "Експортувати до наведеної теки"
-    FOLDEREXPORT: "Тека, у яку експортувати"
     NAME: "Статичний експортер"
   TableListField:
-  ThumbnailStripField:
-    NOIMAGESFOUND: "Зображень не знайдено"
-  ThumbnailStripField.ss:
-    CHOOSEFOLDER: "(оберіть теку зверху)"
   ViewArchivedEmail.ss:
     CANACCESS: "Ви можете перейти до архівного сайту за посиланням:"
     HAVEASKED: "Ви надіслали запит на перегляд вмісту нашої сторінки"
@@ -171,12 +117,6 @@ uk:
     HEADER: "Це віртуальна сторінка"
     PLURALNAME: "Віртуальні сторінки"
     SINGULARNAME: "Віртуальна сторінка"
-  Widget:
-    PLURALNAME: "Віджети"
-    SINGULARNAME: "Віджет"
-  WidgetArea:
-    PLURALNAME: "Області віджетів"
-    SINGULARNAME: "Область віджетів"
   WidgetAreaEditor.ss:
     AVAILABLE: "Доступні віджети"
     INUSE: "Віджети що використовуються"

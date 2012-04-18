@@ -1,41 +1,15 @@
 zh_CN:
   AssetAdmin:
-    CHOOSEFILE: "选择文件"
-    DELETEDX: "删除%s个文件。"
-    FILESREADY: "已经可以上传的文件："
-    MOVEDX: "移动%s个文件"
     NEWFOLDER: "新建文件夹"
-    NOTEMP: "没有临时文件夹提供上传文件的保存。请在 php.ini 里设置 upload_tmp_dir。"
-    NOTHINGTOUPLOAD: "没有文件可以上传"
-    NOWBROKEN: "这些网页有失效的链接："
     THUMBSDELETED: "所有未使用的缩略图已经删除。"
-    UPLOAD: "上传下列文件"
-    UPLOADEDX: "已上传%s个文件"
   AssetAdmin_left.ss:
-    SELECTTODEL: "选择您想要删除的文件夹，然后点击下面的按钮"
-  AssetAdmin_uploadiframe.ss:
-    PERMFAILED: "您没有上传文件到该文件夹的权限。"
-  AssetTableField:
-    CREATED: "第一次被上传"
-    DIM: "尺寸"
-    FILENAME: "文件名"
-    IMAGE: "图片"
-    LASTEDIT: "上一次被更改"
-    MAIN: "内容"
-    NOLINKS: "该文件没有被任何网页链接。"
-    OWNER: "拥有者"
-    PAGESLINKING: "下列网页链接到该文件："
-    SIZE: "大小"
-    TITLE: "文件名称"
-    TYPE: "类型"
-    URL: "URL"
+    GO: "执行"
   CMSMain:
     ACCESS: "在 CMS 访问 %s"
     DELETE: "从测试网站中删除"
     DESCREMOVED: "连同 %s 子项"
     EMAIL: "电子邮件"
     NEW: "新建的"
-    NOCONTENT: "没有内容"
     PAGENOTEXISTS: "该网页不存在"
     PUBALLCONFIRM: "请发布该站的每一网页，这样，预备发布站上的内容就会复制到正式发布站上"
     PUBALLFUN: "“全部发布“功能"
@@ -44,24 +18,17 @@ zh_CN:
     REMOVED: "已从正式网站删除 '%s'%s "
     REMOVEDPAGE: "从正式发布站删除网页“%s\""
     REMOVEDPAGEFROMDRAFT: "已从测试站点删除 '%s'"
-    REPORT: "报告"
     RESTORED: "“%s“恢复成功"
     ROLLBACK: "恢复到这一版本"
     ROLLEDBACKPUB: "回复到已正式发布的版本。新的版本号为#%d"
     ROLLEDBACKVERSION: "回复到#%d版本。新的版本号为#%d"
     SAVE: "保存"
-    TOTALPAGES: "总页数："
   CMSMain_left.ss:
-    GO: "执行"
-    SEARCH: "搜索"
   ContentController:
     DRAFT_SITE_ACCESS_RESTRICTION: "您必需用您的CMS密码来登录，才可浏览预备发布或已归档内容。<a href=\"%s\">点击这里可回到正式发布站<a>"
   ErrorPage:
     CODE: "错误代码"
-    PLURALNAME: "错误页面"
-    SINGULARNAME: "错误页面"
   LeftAndMain:
-  MemberTableField:
   RedirectorPage:
     HASBEENSETUP: "重导网页被生成，却没有什么地方由它来重导。"
     HEADER: "该页会将用户重新导向另一网页"
@@ -70,7 +37,6 @@ zh_CN:
     REDIRECTTOEXTERNAL: "另一网站"
     REDIRECTTOPAGE: "您网站中的一个网页"
     YOURPAGE: "您网站中的网页"
-  SecurityAdmin:
   SideReport:
     EMPTYPAGES: "空白页"
     LAST2WEEKS: "在过去2周内编辑过的网页"
@@ -80,7 +46,6 @@ zh_CN:
     ACCESSHEADER: "在我的网站上，谁可以浏览此页？"
     ACCESSLOGGEDIN: "已登录的用户"
     ACCESSONLYTHESE: "只有这些人（请从下列清单中选择）"
-    ADDEDTODRAFT: "新加到预备发布站"
     ALLOWCOMMENTS: "是否允许对次页进行评论？"
     APPEARSVIRTUALPAGES: "这一内容也会出现在虚拟网页的%s部分。"
     BUTTONCANCELDRAFT: "取消草稿的改动"
@@ -93,19 +58,14 @@ zh_CN:
     EDITHEADER: "谁能在CMS中编辑此页？"
     EDITONLYTHESE: "只有这些人（请从下列清单中选择）"
     HASBROKENLINKS: "该页有失效链接。"
-    HOMEPAGEFORDOMAIN: "域名"
     HTMLEDITORTITLE: "内容"
     MENUTITLE: "导航标签"
     METADESC: "网页描述标签"
     METAEXTRA: "自定义Meta标签"
-    METAHEADER: "搜索引擎Meta标签"
     METAKEYWORDS: "网页关键词标签"
     METATITLE: "Title标签"
-    MODIFIEDONDRAFT: "在预备发布站已修改"
-    NOTEUSEASHOMEPAGE: "对下列域名，将此页用作主页（用逗号分割多重域名）"
     PAGETITLE: "网页名称"
     PAGETYPE: "网页类型"
-    REMOVEDFROMDRAFT: "从预备发布站删除"
     SHOWINMENUS: "是否出现在菜单中？"
     SHOWINSEARCH: "是否包括在搜索结果中？"
     TABACCESS: "权限"
@@ -116,10 +76,7 @@ zh_CN:
   StaticExporter:
     BASEURL: "基本URL"
     EXPORTTO: "导出到该文件夹"
-    FOLDEREXPORT: "导出文件夹"
     NAME: "网站静态拷贝导出器"
-  ThumbnailStripField.ss:
-    CHOOSEFOLDER: "（选择上面的一个文件夹）"
   ViewArchivedEmail.ss:
     CANACCESS: "您可通过这个链接进入已归挡的网页："
     HAVEASKED: "在%s,您要求浏览我们网站"

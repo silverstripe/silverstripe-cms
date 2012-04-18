@@ -1,43 +1,16 @@
 hu:
   AssetAdmin:
-    CHOOSEFILE: "Válassz fájlt"
-    DELETEDX: "%s fájl törölve. %s"
-    FILESREADY: "Feltöltésre készen álló fájlok:"
-    MOVEDX: "%s fájl áthelyezve."
     NEWFOLDER: "Új mappa"
-    NOTEMP: "A feltöltések számára nincs ideiglenes mappa. Kérjük, állítsa be az \"upload_tmp_dir\" értékét a php.ini-ben."
-    NOTHINGTOUPLOAD: "Nem volt semmi, amit fel lehetett volna tölteni."
-    NOWBROKEN: "Ezen oldalak linkjei hibásak lettek: "
     THUMBSDELETED: "Minden nem használt miniatűr törölve lett"
-    UPLOAD: "Alább felsorolt fájlok feltöltése"
-    UPLOADEDX: "%s fájl feltöltve."
   AssetAdmin_left.ss:
-    SELECTTODEL: "Válaszd ki a mappákat, amiket törölni szeretnél, majd kattints a lenti gombra."
-  AssetAdmin_uploadiframe.ss:
-    PERMFAILED: "Nincs jogosultságod fájlokat feltölteni ebbe a mappába."
-  AssetTableField:
-    CREATED: "Először feltöltve"
-    DIM: "Képméret"
-    FILENAME: "Fájlnév"
-    IMAGE: "Kép"
-    LASTEDIT: "Utoljára változott"
-    MAIN: "Elsődleges"
-    NOLINKS: "Ezen fájlra nem mutat link egy oldalról sem."
-    OWNER: "Tulajdonos"
-    PAGESLINKING: "A következő oldalak mutatanak erre a fájlra: "
-    SIZE: "Méret"
-    TITLE: "Cím"
-    TYPE: "Típus"
-    URL: "URL"
+    GO: "Mehet"
   CMSMain:
     ACCESS: "'%s' elérése (%s)"
-    ACCESSALLINTERFACES: "Elérés minden CMS interfészhez"
     DELETE: "Törlés a vázlat oldalról"
     DELETEFP: "Törlés a publikus oldalról"
     DESCREMOVED: "és %s leszármazott"
     EMAIL: "E-mail"
     NEW: "Új"
-    NOCONTENT: "nincs tartalom"
     PAGENOTEXISTS: "Ez az oldal nem létezik."
     PUBALLCONFIRM: "Minden oldal publikálása, fázistartalmak kitevése"
     PUBALLFUN: "\"Összes publikálása\" funkció"
@@ -46,28 +19,19 @@ hu:
     REMOVED: "'%s' törölve az éles oldalról"
     REMOVEDPAGE: "„%s” törlésre került a publikált oldalról."
     REMOVEDPAGEFROMDRAFT: "'%s' törlése a piszkozatoldalról"
-    REPORT: "Jelentés"
     RESTORE: "Visszaállítás"
     RESTORED: "'%s' sikeresen visszaállításra került."
     ROLLBACK: "Visszaállítás ehhez a verzióhoz"
     ROLLEDBACKPUB: "Visszaállítva a publikált verzióhoz. Az új verziószám #%d."
     ROLLEDBACKVERSION: "Visszaálítva a #%d verzióra. Az új verziószám #%d."
     SAVE: "Mentés"
-    TOTALPAGES: "Oldalak száma:"
   CMSMain_left.ss:
-    GO: "Mehet"
-    SEARCH: "Keresés"
   ContentController:
     DRAFT_SITE_ACCESS_RESTRICTION: "Be kell jelentkezned a CMS jelszavaddal, hogy megtekinthesd a piszkozatot vagy az archivált tartalmat. <a href=\"%s\">A publikált oldalra való visszatéréshez kattints ide.</a>"
   ErrorPage:
     CODE: "Hibakód"
-    PLURALNAME: "Hiba Oldalak"
-    SINGULARNAME: "Hiba Oldal"
   LeftAndMain:
     STATUSPUBLISHEDSUCCESS: "'%s' sikeresen publikálva"
-  MemberTableField:
-    FILTER: "Szűrés"
-    SEARCH: "Keresés"
   RedirectorPage:
     HASBEENSETUP: "Egy átirányító oldal került létrehozásra, anélkül hogy lenne hova átirányítania."
     HEADER: "Ez az oldal egy másik oldalra fogja írányítani a felhasználókat"
@@ -76,7 +40,6 @@ hu:
     REDIRECTTOEXTERNAL: "Egy másik weboldal"
     REDIRECTTOPAGE: "Egy oldal a weblapodon"
     YOURPAGE: "Oldal a weblapodon"
-  SecurityAdmin:
   SideReport:
     EMPTYPAGES: "Üres oldalak"
     LAST2WEEKS: "Elmúlt 2 héten belül szerkesztett oldalak"
@@ -86,7 +49,6 @@ hu:
     ACCESSHEADER: "Ki láthatja ezt az oldalt a weblapon?"
     ACCESSLOGGEDIN: "Bejelentkezett felhasználók"
     ACCESSONLYTHESE: "Csak ezen emberek (válassz a listából)"
-    ADDEDTODRAFT: "Hozzáadva a piszkozatoldalhoz."
     ALLOWCOMMENTS: "A megjegyzések engedélyezve legyenek az oldalon?"
     APPEARSVIRTUALPAGES: "Ez a tartalom megjelenik a virtuális oldalakon is a %s szekcióban"
     BUTTONCANCELDRAFT: "Piszkozaton végzett változtatások visszavonása"
@@ -100,19 +62,14 @@ hu:
     EDITHEADER: "Ki szerkesztheti ezt a CMS-ben?"
     EDITONLYTHESE: "Csak ezek az emberek (válassz a listából)"
     HASBROKENLINKS: "Ez az oldal hibás linkeket tartalmaz."
-    HOMEPAGEFORDOMAIN: "Domain(ek)"
     HTMLEDITORTITLE: "Tartalom"
     MENUTITLE: "Navigációs cimke"
     METADESC: "Leírás"
     METAEXTRA: "Saját meta címkék"
-    METAHEADER: "Keresőmotor meta címkék"
     METAKEYWORDS: "Kulcsszavak"
     METATITLE: "Cím"
-    MODIFIEDONDRAFT: "Megváltoztava a piszkozatoldalon."
-    NOTEUSEASHOMEPAGE: "Ezen oldal használata kezdőlapként a következő domaineken (több domain esetén válaszd el őket vesszővel)"
     PAGETITLE: "Az oldal neve"
     PAGETYPE: "Oldal típusa"
-    REMOVEDFROMDRAFT: "Törölve a piszkozatoldalról."
     SHOWINMENUS: "Látható legyen a menükben?"
     SHOWINSEARCH: "Látható legyen a keresésben?"
     TABACCESS: "Hozzáférés"
@@ -125,21 +82,12 @@ hu:
   StaticExporter:
     BASEURL: "Alap URL"
     EXPORTTO: "Exportálás abba a mappába"
-    FOLDEREXPORT: "Exportálás célmappája"
     NAME: "Statikus exportáló"
   TableListField_PageControls.ss:
-    DISPLAYING: "Bemutatás"
     VIEWFIRST: "Első mutatása"
     VIEWLAST: "Utolsó mutatása"
     VIEWNEXT: "Következő mutatása"
     VIEWPREVIOUS: "Előző mutatása"
-  ThumbnailStripField:
-    NOFLASHFOUND: "Nincs Flash állomány"
-    NOFOLDERFLASHFOUND: "Nincs Flash állomány itt:"
-    NOFOLDERIMAGESFOUND: "Nincs kép itt:"
-    NOIMAGESFOUND: "Nincs kép"
-  ThumbnailStripField.ss:
-    CHOOSEFOLDER: "(Válassz egy mappát felülről)"
   ViewArchivedEmail.ss:
     CANACCESS: "Az archivált oldalt elérheted ezen a linken:"
     HAVEASKED: "Azt kérted, hogy megnézhesd a honlapunk tartalmát ekkor:"
@@ -148,9 +96,6 @@ hu:
     EDITCONTENT: "kattints ide a tartalom szerkesztéséhez"
     HEADER: "Ez egy virtuális oldal"
     SINGULARNAME: "Virtuális Oldal"
-  Widget:
-    PLURALNAME: "Minialkalmazások"
-    SINGULARNAME: "Minialkalmazás"
   WidgetAreaEditor.ss:
     AVAILABLE: "Elérhető eszközök"
     INUSE: "Aktuálisan használt eszközök"

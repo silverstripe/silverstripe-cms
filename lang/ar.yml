@@ -1,51 +1,9 @@
 ar:
-  AdvancedSearchForm:
-    ALLWORDS: "جميع الكلمات"
-    ATLEAST: "على الأقل كلمة واحدة"
-    EXACT: "مطابقة العبارة"
-    FROM: "من"
-    GO: "اذهب"
-    LASTUPDATED: "آخر تحديث"
-    LASTUPDATEDHEADER: "آخر تحديث"
-    PAGETITLE: "عنوان الصفحة"
-    RELEVANCE: "العلاقة"
-    SEARCHBY: "البحث بواسطة"
-    SORTBY: "ترتيب النتائج بواسطة"
-    TO: "إلى"
-    WITHOUT: "بدون الكلمات"
   AssetAdmin:
-    CHOOSEFILE: "اخترملف :"
-    DELETEDX: "ملفات محذوفة %s. %s"
-    FILESREADY: "ملفات جاهزة للرفع:"
-    MOVEDX: "نقل الملفات %s"
     NEWFOLDER: "مجلد جديد"
-    NOTEMP: "لايوجد مجلد مؤقت للمرفوعات. فضلأً حدد upload_tmp_dir في php.ini"
-    NOTHINGTOUPLOAD: "لا يوجد ما يمكن رفعه"
-    NOWBROKEN: "الصفحات التالية تحتوي روابط معطوبة"
     THUMBSDELETED: "جميع المصغرات الغير مستخدمة تم حذفها"
-    UPLOAD: "رفع الملفات التالية"
-    UPLOADEDX: "الملفات التي تم رفعها %s"
   AssetAdmin_left.ss:
-    FILESYSTEMSYNC_DESC: "SilverStripe يحافظ على قاعدة البيانات الخاصة بها من الملفات والصور المخزنة في الأصول الخاصة بك / مجلد. فوق هذا الزر لتحديث قاعدة البيانات ، إذا تم إضافة الملفات إلى الأصول / مجلد من SilverStripe خارج، على سبيل المثال، إذا كان لديك تم الرفع الملفات عن طريق بروتوكول نقل الملفات."
-    SELECTTODEL: "اختر الملجدات التي تريد حذفها ثم اضغط على الزر بالأسفل"
-  AssetAdmin_uploadiframe.ss:
-    PERMFAILED: "لا تملك صلاحيات لرفع الملفات إلى هذا المجلد"
-    TITLE: "إطار رفع الصور"
-  AssetTableField:
-    CREATED: "أول المرفوعات"
-    DIM: "الأبعاد"
-    FILENAME: "اسم الملف"
-    IMAGE: "الصورة"
-    LASTEDIT: "آخر التعديلات"
-    MAIN: "الرئيسة"
-    NODATAFOUND: "لا توجد %s"
-    NOLINKS: "هذا الملف لا يملك روابط من أي صفحة"
-    OWNER: "المالك"
-    PAGESLINKING: "الصفحات التالية تربط بهذا املف"
-    SIZE: "الحجم"
-    TITLE: "العنوان"
-    TYPE: "النوع"
-    URL: "الرابط"
+    GO: "اذهب"
   BrokenLinksReport:
     Any: "أي"
     BROKENLINKS: "تقرير الروابط المكسورة"
@@ -77,37 +35,30 @@ ar:
     UNPUBLISH_PAGES: "غير منشور"
   CMSMain:
     ACCESS: "الدخول إلى %s (%s)"
-    ACCESSALLINTERFACES: "الدخول إلى جميع واجهات إدارة المحتوى"
-    ACCESSALLINTERFACESHELP: "ينقض أكثر من توصيف الوصول المحدد"
     ACCESS_HELP: "سماح بعرض لقسم يحتوي على صفحة الشجرة والمحتوى. يمكن التعامل معها عرض وتحرير الأذونات من خلال القائمه المنسدله للروابط محددة صفحة، فضلا عن فصل \"أذونات المحتوى\"."
     DELETE: "حذف من مسودة الموقع"
     DELETEFP: "حذف من الموقع المنشور"
     DESCREMOVED: "و %s أصول سابقة"
     EMAIL: "البريد الإلكتروني"
     NEW: "جديد"
-    NOCONTENT: "لا يوجد محتوى"
     PAGENOTEXISTS: "هذه الصفحة غير موجودة"
     PUBALLCONFIRM: "فضلاً قم بنشر كل صفحة من صفحات الموقع"
     PUBALLFUN: "\"نشر الجميع\"خاصية "
     PUBALLFUN2: |
                  الضغط على هذا الزر يعني الذهاب لكل صفحة و نشرها.  It's
                  intended to be used after there have been massive edits of the content, such as when the site was
-                 first built.    PUBPAGES: "تمت العملية : تم نشر %d صفحات"
+                 first built.
+    PUBPAGES: "تمت العملية : تم نشر %d صفحات"
     REMOVED: "'%s'%s محذوفة من الموقع المباشر"
     REMOVEDPAGE: "إلغاء '%s' من الموقع المنشور"
     REMOVEDPAGEFROMDRAFT: "'%s' محذوف من مسودة الموقع"
-    REPORT: "التقرير"
     RESTORE: "تخزين"
     RESTORED: "تم تخزين '%s' بنجاح"
     ROLLBACK: "عودة إلى هذا الإصدار"
     ROLLEDBACKPUB: "عودة للإصدار المنشور . الإصدار الجديد يحمل الرقم #%d"
     ROLLEDBACKVERSION: "عودة للإصدار #%d. الإصدار الجديد يحمل الرقم #%d"
     SAVE: "حفظ"
-    TOTALPAGES: "مجموع الصفحات"
   CMSMain_left.ss:
-    CLEAR: "مسح"
-    GO: "اذهب"
-    SEARCH: "بحث"
   ContentControl:
     NOTEWONTBESHOWN: "تنبيه: هذه الرسالة لن يتم عرضها لزوار موقعك"
   ContentController:
@@ -127,8 +78,6 @@ ar:
     DEFAULTERRORPAGECONTENT: "<p>عذراً ، يبدو أنك تحاول الدخول إلى صفحة غير موجودة.</p><p>فضلاً تأكد من الرابط و أعد محاولة الدخول مرة أخرى.</p>"
     DEFAULTERRORPAGETITLE: "الصفحة غير موجودة"
     ERRORFILEPROBLEM: "خطأ في فتح الملف \"%s\" للكتابة. الرجاء مراجعة أذونات الملف."
-    PLURALNAME: "صفحات الخطأ"
-    SINGULARNAME: "صفحة الخطأ"
     400: "400 - طلب خاطئ"
     401: "401 - غير مصرح"
     403: "403 - ممنوع"
@@ -154,18 +103,10 @@ ar:
     505: "505 - إصدار HTTP  غير مدعوم"
   Folder:
     DELETEUNUSEDTHUMBNAILS: "حذف المصغرات غير المستخدمة"
-    DELSELECTED: "حذف الملفات المحددة"
-    FILENAME: "اسم الملف"
-    TITLE: "العنوان"
-    UNUSEDFILESTAB: "الملفات غير المستخدمة"
     UNUSEDFILESTITLE: "الملفات غير المستخدمة"
     UNUSEDTHUMBNAILSTITLE: "المصغرات غير المستخدمة"
-    VIEWASSET: "عرض الأصل"
   LeftAndMain:
     STATUSPUBLISHEDSUCCESS: "تم نشر '%s' بنجاح"
-  MemberTableField:
-    FILTER: "تصفية"
-    SEARCH: "بحث"
   Permission:
     CMS_ACCESS_CATEGORY: "الوصل لنظام إدارة المحتوى"
   Permissions:
@@ -175,11 +116,9 @@ ar:
     HASBEENSETUP: "صفحة التحويل تم تهيئتها بدون تحديد وجهة التحويل"
     HEADER: "هذه الصفحة سوف تقوم بتحويل الأعضاء إلى صفحة أخرى"
     OTHERURL: "رابط موقع آخر"
-    PLURALNAME: "صفحات التحويل"
     REDIRECTTO: "تحويل إلى"
     REDIRECTTOEXTERNAL: "موقع آخر"
     REDIRECTTOPAGE: "صفحة في موقعك الشخصي"
-    SINGULARNAME: "صفحة التحويل"
     YOURPAGE: "صفحة في موقعك الشخصي"
   ReportAdminForm:
     FILTERBY: "فرز عبر"
@@ -187,8 +126,6 @@ ar:
     GO: "اذهب"
     SEARCH: "بحث"
     SearchResults: "نتائج البحث"
-  SecurityAdmin:
-    ACCESS_HELP: "السماح بعرض واضافة وتعديلات المستخدمين ، فضلا عن تعيين أذونات والقواعد لهم."
   SideReport:
     BROKENFILES: "صفحات مع ملفات مكسورة"
     BROKENLINKS: "صفحات مع روباط مكسورة"
@@ -212,8 +149,7 @@ ar:
     EDIT_PERMISSION: "إدارة إعدادات الموقع"
     EDIT_PERMISSION_HELP: |
                            القدرة على تحرير إعدادات الوصول العالمي / أذونات صفحة المستوى الأعلى.
-                               PLURALNAME: "إعدادات الموقع"
-    SINGULARNAME: "إعداد الموقع"
+                           
     SITENAMEDEFAULT: "اسم عنوان موقعك"
     SITETAGLINE: "علامة / شعار الموقع"
     SITETITLE: "عنوان الموقع"
@@ -228,7 +164,6 @@ ar:
     ACCESSHEADER: "من يستطيع مشاهدة هذه الصفحة ؟"
     ACCESSLOGGEDIN: "الأعضاء المسجلين"
     ACCESSONLYTHESE: "فقط هؤلاء الأشخاص ( اختر من القائمة)"
-    ADDEDTODRAFT: "مضاف إلى مسودة الموقع"
     ALLOWCOMMENTS: "السماح بالتعليقات في هذه الصفحة ؟"
     APPEARSVIRTUALPAGES: "هذا المحتوى يظهر كذلك في الصفحات الافتراضية في هذا الأقسام %s"
     BUTTONCANCELDRAFT: "إلغاء التغييرات في المسودة"
@@ -245,7 +180,6 @@ ar:
     DEFAULTCONTACTTITLE: "اتصل بنا"
     DEFAULTHOMECONTENT: "<p>أهلاً بك في  SilverStripe! هذه هي الصفحة الرئيسة.يمكنك تعديل الصفحة عن طريق  <a href=\"admin/\">نظام إدارة المحتوى</a>.يمكنك الآن الدخول إلى  <a href=\"http://doc.silverstripe.com\">مستندات المطورين</a>, أو الدخول إلى  <a href=\"http://doc.silverstripe.com/doku.php?id=tutorials\">الدروس التعليمية.</a></p>"
     DEFAULTHOMETITLE: "الرئيسة"
-    DELETEDPAGE: "صفحة محذوفة"
     DEPENDENT_NOTE: "الصفحات التالية تعتمد على هذه الصفحة. وهذا يشمل صفحات الظاهري، وصفحات معيد التوجيه، والصفحات التي تحتوي على روابط المحتوى."
     DependtPageColumnLinkType: "نوع الرابط"
     DependtPageColumnURL: "رابط"
@@ -257,19 +191,14 @@ ar:
     EDIT_ALL_HELP: "القدرة على تحرير أي صفحة على الموقع ، بغض النظر عن الإعدادات على علامة تبويب الوصول. يتطلب تصريح \"الوصول إلى محتوى الموقع\" "
     Editors: "مجموعات المحررين"
     HASBROKENLINKS: "هذه الصفحة تحتوي على روابط معطوبة"
-    HOMEPAGEFORDOMAIN: "نطاق/ نطاقات"
     HTMLEDITORTITLE: "محتوى"
-    HomepageForDomain: "الصفحة الرئيسة لهذا العنوان"
     INHERIT: "استيراد من الصفحة المرجعية"
     LINKCHANGENOTE: "تغيير هذا وصلة رابط الصفحة سوف تؤثر أيضًا على الوصلات لجميع صفحات الفرعية."
     MENUTITLE: "القائمة"
     METADESC: "الوصف"
     METAEXTRA: "تخصيص Meta Tags"
-    METAHEADER: "Meta-tags محركات البحث"
     METAKEYWORDS: "الكلمات المفتاحية"
     METATITLE: "العنوان"
-    MODIFIEDONDRAFT: "معدل في مسودة الموقع"
-    NOTEUSEASHOMEPAGE: "استخدم هذه الصفحة كصفحة رئيسة للنطاقات التالية: (افصل بين النطاقات بفاصلة)"
     PAGELOCATION: "موقع الضفحة"
     PAGETITLE: "اسم الصفحة"
     PAGETYPE: "نوع الصفحة"
@@ -280,11 +209,11 @@ ar:
     PERMISSION_GRANTACCESS_DESCRIPTION: "التحكم في المجموعات التي لها صلاحية الدخول أو التعديل على صفحات محددة"
     PERMISSION_GRANTACCESS_HELP: "السماح بضع القيود على الوصول صفحة محددة في قسم \"الصفحات\"."
     PLURALNAME: "هياكل الموقع"
-    REMOVEDFROMDRAFT: "محذوف من مسودة الموقع"
     REORGANISE_DESCRIPTION: "Can reorganise the site tree"
     REORGANISE_HELP: |
                       إعادة ترتيب الصفحات في  شجرة الموقع من خلال السحب والإسقاط.
-                          SHOWINMENUS: "عرض في قوائم ؟"
+                      
+    SHOWINMENUS: "عرض في قوائم ؟"
     SHOWINSEARCH: "عرض في البحث ؟"
     SINGULARNAME: "هيكلة الموقع"
     TABACCESS: "الدخول"
@@ -308,29 +237,17 @@ ar:
   StaticExporter:
     BASEURL: "الرابط الأساسي"
     EXPORTTO: "تصدير إلى مجلد"
-    FOLDEREXPORT: "مجلدات لتصديرها إلى"
     NAME: "المصدر الثابت Exporter"
   TableListField:
     SELECT: "اختيار"
   TableListField.ss:
-    NOITEMSFOUND: "لم يتم العثور على عناصر"
     SORTASC: "ترتيب تصاعدي"
     SORTDESC: "ترتيب تنازلي"
   TableListField_PageControls.ss:
-    DISPLAYING: "العرض"
-    OF: "من"
-    TO: "إلى"
     VIEWFIRST: "عرض الأول"
     VIEWLAST: "عرض الأخير"
     VIEWNEXT: "عرض التالي"
     VIEWPREVIOUS: "عرض السابق"
-  ThumbnailStripField:
-    NOFLASHFOUND: "لايوجد ملفات فلاش"
-    NOFOLDERFLASHFOUND: "لايوجد ملفات فلاش"
-    NOFOLDERIMAGESFOUND: "لايوجد صور"
-    NOIMAGESFOUND: "لم يتم العثور على الصور"
-  ThumbnailStripField.ss:
-    CHOOSEFOLDER: "اختر مجلد أو ابحث بالأعلى"
   ViewArchivedEmail.ss:
     CANACCESS: "يمكنك الدخول إلى أرشيف الموقع عن طريق الرابط التالي :"
     HAVEASKED: "تم طلب مشاهدة محتوى الموقع في"
@@ -340,12 +257,6 @@ ar:
     HEADER: "هذه صفحة افتراضية"
     PLURALNAME: "الصفحات الافتراضية"
     SINGULARNAME: "الصفحة الافتراضية"
-  Widget:
-    PLURALNAME: "الملحقات"
-    SINGULARNAME: "الملحق"
-  WidgetArea:
-    PLURALNAME: "مناطق الملحقات"
-    SINGULARNAME: "مساحة الإضافات"
   WidgetAreaEditor.ss:
     AVAILABLE: "توفير Widgets"
     AVAILWIDGETS: "انقر على عنوان التطبيق المصغر أدناه لاستخدامها في هذه الصفحة."

@@ -1,16 +1,10 @@
 mi_NZ:
   AssetAdmin:
   AssetAdmin_left.ss:
-  AssetTableField:
-    DIM: "Nuinga"
-    OWNER: "Kaiūmanga"
-    SIZE: "Nuinga"
-    TITLE: "Ingoa "
-    TYPE: "Tūmomo "
+    GO: "Haere"
   CMSMain:
     EMAIL: "Īmēra"
     NEW: "he ____ hōu"
-    NOCONTENT: "Korekau he kiko."
     PAGENOTEXISTS: "kāore tēnei rārangi e tīari"
     PUBALLCONFIRM: "Whakaputaina koa i ia whārangi i te pae me te tārua i te content stage kia ora ai."
     PUBALLFUN: "Te taumahinga \"Whakaputaina Katoatia\""
@@ -22,12 +16,8 @@ mi_NZ:
     ROLLEDBACKPUB: "I hoki whakamuri atu ki te putanga i tāngia. Ko te tau putanga hou ko te #%d."
     ROLLEDBACKVERSION: "I hoki whakamuri atu ki te putanga #%d. Ko te tau putanga hou ko te #%d."
     SAVE: "tiakina"
-    TOTALPAGES: "Te katoa o ngā whārangi:"
   CMSMain_left.ss:
-    SEARCH: "Rapunga"
   LeftAndMain:
-  SecurityAdmin:
   SiteTree:
-    HOMEPAGEFORDOMAIN: "Rohe; Nga Rohe"
     HTMLEDITORTITLE: "Kai"
     PAGETYPE: "Tūmomo wharangi "

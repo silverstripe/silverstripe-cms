@@ -1,54 +1,8 @@
 ne:
-  AssetAdmin:
-    CHOOSEFILE: "फाइल छान्नुहोस्"
-    DELETEDX: "%s फाइलहरु फालियो । %s"
-    FILESREADY: "उप्लोओद हुन तयार फाइलहरु:"
-    MOVEDX: "%s फाइलहरु सारीयो"
-    NEWFOLDER: "नयाँ फोल्डर"
-    NOTHINGTOUPLOAD: "उप्लोओद गर्न केही पनी छैन"
-    NOWBROKEN: "पजेहरुमा टुटेका लिन्कहरु छन् :"
-    UPLOAD: "तल भएका फाइलहरु उप्लोओद गर्नुस्"
-    UPLOADEDX: "%s फाइलहरु उप्लोओद गरियो"
-  AssetAdmin_left.ss:
-    SELECTTODEL: "तपाईंले हटाउन खोज्न्नु भएको फोल्डरहरु छन्नुहोस् र तलको बटन थिचुनुहोस्"
-  AssetAdmin_uploadiframe.ss:
-    PERMFAILED: "तपाईंसँग यो फोल्डरमा फाइलहरु हल्ने अधिकार छैन "
-  AssetTableField:
-    CREATED: "पहिला यतिमा उप्लोओद गरियो"
-    DIM: "आयाम "
-    FILENAME: "फाइलको नाम"
-    LASTEDIT: "अन्तिम पटक परिवर्तन यतिमा गरियो"
-    NOLINKS: "फाइल कुनैपनी पेजसँग लिन्क गरिएको छैन "
-    OWNER: "मालिक"
-    PAGESLINKING: "तलको पेजले यो फाइलसँग लिन्क गर्छ:"
-    SIZE: "मात्रा"
-    TITLE: "शिषक"
-    TYPE: "किसिम"
-  CMSMain:
-    EMAIL: "ईमेल"
-    NEW: "नयाँ"
-    NOCONTENT: "सामाग्री छैन"
-    PAGENOTEXISTS: "यो पेज छैन । "
-    PUBALLCONFIRM: "कृपया प्रत्यक पेजलाई प्रकाशित गर्नुहोस् ,सामाग्रीलाई स्टेजबाट लाईभमा"
-    PUBALLFUN: "\"सबै प्रकाशित गर्\" functionality"
-    PUBALLFUN2: "यो बटन थिचे,प्रतेक पेजमा गएर \"प्रकाशित\" थिचे बराबर हुन्छ । यो ठुला पजेहरु मिलौनकोलागी बनाईएको हो,जस्तौ पेज नयाँ बनाएको बेलामा ।  "
-    PUBPAGES: "भयो: प्रकाशित %d पेजहरु"
-    REMOVEDPAGE: "'%s'लाई प्रकाशित साईटबाट हटाइयो ।"
-    RESTORED: "'%s' लाइ सफलतापूर्वक पुनर्स्थापना गरियो"
-    ROLLBACK: "यो संस्करणमा पुन जाने"
-    ROLLEDBACKPUB: "प्रकाशित संस्करणमा गइयो ।  नयाँ संस्करण नम्बर #%d हो ।"
-    ROLLEDBACKVERSION: "पहिलको संस्करण #%d मा गइयो । नयाँ संस्करण नम्बर #%d हो ।"
-    SAVE: "सेभ गर्नुस्"
-    TOTALPAGES: "जम्मा पेजहरु:"
-  CMSMain_left.ss:
-    GO: "जाउ"
-    SEARCH: "खोज"
   ContentController:
     DRAFT_SITE_ACCESS_RESTRICTION: "यदि तपाईं draft अथवा archived सामाग्री हेर्न चाहानुहुन्छ भन्ने आफ्नो CMSको पासओडले भित्र जानुपर्छ । <a href=\"%s\">प्रकाशित साईटमा जान यहाँ थिचु्नुहोस् ।  </a>"
   ErrorPage:
     CODE: "त्रुटी सङ्केत "
-  LeftAndMain:
-  MemberTableField:
   RedirectorPage:
     HASBEENSETUP: "कुनै पनि पुनर्निर्देशनबिना नै एउटा पुनर्निदेशन पृष्ठ सेटअप गरियो । "
     HEADER: "यो पेजले प्रयोगकतालाई अर्को पेजमा लैजान्छ"
@@ -57,17 +11,11 @@ ne:
     REDIRECTTOEXTERNAL: "अर्को वेबसाईट"
     REDIRECTTOPAGE: "तपाईंको वेबसाईटमा एउटा पेज"
     YOURPAGE: "तपाईंको वेबसाईटमा एउटा पेज"
-  SecurityAdmin:
-  SideReport:
-    EMPTYPAGES: "खाली पेजहरु"
-    LAST2WEEKS: "पेज अन्तिम २ हप्प्तमा मिलइएको थियो  "
-    REPEMPTY: "%s रिपोट खाली छ ।"
   SiteTree:
     ACCESSANYONE: "जोकोहिले"
     ACCESSHEADER: "मेरो सईटमा कसले यो पजे हेर्न सक्छ ? "
     ACCESSLOGGEDIN: "भित्र छिरेक प्रयोगकर्तहरु"
     ACCESSONLYTHESE: "यि मान्छे मात्र (लिस्टबाट छान्)"
-    ADDEDTODRAFT: "द्राफ्ट्र साईटबाट राखियो"
     ALLOWCOMMENTS: "यो पजेमा प्रतिक्रिया लेखन् दिनुहोस् ?"
     APPEARSVIRTUALPAGES: "यो सामाग्री %s सेक्सनको virtual पेजहरुमा पर्छ जस्तो देखिन्छ । "
     BUTTONCANCELDRAFT: "द्राफ्ट्रमा भएका परिवर्तनहरु क्यान्सिल गर्नुहोस् "
@@ -79,19 +27,14 @@ ne:
     EDITHEADER: "कसले यो CMS भित्र मिलाउन सक्छ ?"
     EDITONLYTHESE: "यि मान्छे मात्र (लिस्टबाट छान्)"
     HASBROKENLINKS: "यो पजेमा टुटेका लिन्कहरु छन् ।"
-    HOMEPAGEFORDOMAIN: "डोमेन(हरु)"
     HTMLEDITORTITLE: "सामाग्री"
     MENUTITLE: "अबलोकन नाम "
     METADESC: "विवरण"
     METAEXTRA: "Custom Meta Tags"
-    METAHEADER: "खोज्ने ईन्जिन Meta-tags"
     METAKEYWORDS: "किवर्डहरु "
     METATITLE: "शिषक"
-    MODIFIEDONDRAFT: "द्राफ्ट्र साईटबाट परिवर्तनहरु लाईयो"
-    NOTEUSEASHOMEPAGE: "तलको डोमेनलाई यो पेज गृह पृष्ठको रुपमा प्रयोग गरनुहोस् : (धेरै डोमेनहरुलाई अल्पबिरामले छुट्याउनुहोस्)"
     PAGETITLE: "पेजको नाम"
     PAGETYPE: "पेज किसिम"
-    REMOVEDFROMDRAFT: "द्राफ्ट्र साईटबाट हटाइयो"
     SHOWINMENUS: "मेनुमा देखाउनुहोस् ? "
     SHOWINSEARCH: "खोजिमा देखाउनुहोस् ?"
     TABACCESS: "अधिकार"
@@ -99,16 +42,6 @@ ne:
     TABCONTENT: "सामाग्री"
     TABMETA: "Meta-data"
     TOPLEVEL: "साईट सामाग्री (उच्च स्तान)"
-  StaticExporter:
-    BASEURL: "बेस यू.र्.ल्"
-    EXPORTTO: "त्यो फोल्डरमा निर्यात गर्नुहोस् "
-    FOLDEREXPORT: "फोल्डर आयत गने "
-    NAME: "स्टाटिक एक्स्प्लोरेर"
-  ThumbnailStripField.ss:
-    CHOOSEFOLDER: "(माथिबाट एउटा फोल्डर छन्नुहोस्)"
-  ViewArchivedEmail.ss:
-    CANACCESS: "तपाईंले archived साईट यो लिन्कमा भेट्न सक्नुहुन्छ:"
-    HAVEASKED: "तपाईंले हाम्रो साइटको सामाग्री यसमा हेन खोजनु भयो"
   VirtualPage:
     CHOOSE: "लिन्क गर्न पेज छानुहोस् "
     EDITCONTENT: "सामाग्री मिलाउन यहाँ थिचुन्नुहोस्"

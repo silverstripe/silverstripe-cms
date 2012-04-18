@@ -1,34 +1,12 @@
 hr:
   AssetAdmin:
-    CHOOSEFILE: "Odaberite datoteku"
-    DELETEDX: "Obrisano %s datoteka. %s"
-    FILESREADY: "Datoteke spremne za upload:"
-    MOVEDX: "Premješteno %s datoteka"
     NEWFOLDER: "Novi direktorij"
-    NOTHINGTOUPLOAD: "Nema ništa za upload"
-    NOWBROKEN: "Stranica ima pogrešne linkove:"
-    UPLOAD: "Uploadaj izlistane datoteke "
-    UPLOADEDX: "Uploadano %s datoteka"
   AssetAdmin_left.ss:
-    SELECTTODEL: "Označite direktorije koje želite obrisati te kliknite gumb ispod"
-  AssetAdmin_uploadiframe.ss:
-    PERMFAILED: "Nemate dozvolu za upload datoteka u ovaj direktorij"
-  AssetTableField:
-    CREATED: "Uploadano"
-    DIM: "Dimenzije"
-    FILENAME: "Ime datoteke"
-    LASTEDIT: "Zadnja promjena"
-    NOLINKS: "Datoteka nije vezana na nijednu stranicu"
-    OWNER: "Vlasnik"
-    PAGESLINKING: "Slijedeće stranice vezane su na ovu datoteku:"
-    SIZE: "Veličina"
-    TITLE: "Naslov"
-    TYPE: "Tip"
+    GO: "Idi"
   CMSMain:
     ACCESS: "Pristup u '%s' (%s)"
     EMAIL: "Email"
     NEW: "Nova"
-    NOCONTENT: "nema sadržaja"
     PAGENOTEXISTS: "Stranica ne postoji"
     PUBALLCONFIRM: "Molim objavi svaku stranicu, kopirajući sadržaj"
     PUBALLFUN: "\"Objavi sve\""
@@ -40,18 +18,12 @@ hr:
     ROLLEDBACKPUB: "Vraćen na objavljenu verziju. Novi broj verzije je #%d"
     ROLLEDBACKVERSION: "Vraćen na verziju #%d. Novi broj verzije je #%d"
     SAVE: "Snimi"
-    TOTALPAGES: "Ukupno stranica:"
   CMSMain_left.ss:
-    GO: "Idi"
-    SEARCH: "Traži"
   ContentController:
     DRAFT_SITE_ACCESS_RESTRICTION: "Morate biti prijavljeni sa vašom CMS zaporkom kako bi ste mogli vidjeti privremeni ili arhivirani sadržaj. <a href=\"%s\">Kliknite kako bi ste se vratili na objavljen dio stranice</a>"
   ErrorPage:
     CODE: "Error code"
-    PLURALNAME: "Stranice Grešaka"
-    SINGULARNAME: "Stranica Greške"
   LeftAndMain:
-  MemberTableField:
   RedirectorPage:
     HASBEENSETUP: "Stranica za preusjeravanje nema postavljenog preusmjeravanja"
     HEADER: "Ova stranica preusmjeriti će korisnike na drugu stranicu"
@@ -60,7 +32,6 @@ hr:
     REDIRECTTOEXTERNAL: "Drugi web"
     REDIRECTTOPAGE: "Stranicu na Vašom webu"
     YOURPAGE: "Stranica na Vašem webu"
-  SecurityAdmin:
   SideReport:
     EMPTYPAGES: "Prazne stranice"
     LAST2WEEKS: "Stranice mijenjane u zadnja 2 tjedna"
@@ -70,7 +41,6 @@ hr:
     ACCESSHEADER: "Tko može pregledavati ovu stranicu?"
     ACCESSLOGGEDIN: "Samo prijavljeni korisnici"
     ACCESSONLYTHESE: "Samo slijedeći korisnici (odaberite s popisa)"
-    ADDEDTODRAFT: "Dodano privremenoj stranici"
     ALLOWCOMMENTS: "Dozvoli komentare na stranici"
     APPEARSVIRTUALPAGES: "Ovaj sadržaj pojavljuje se i na virtualnim stranicama u %s sekcijama"
     BUTTONCANCELDRAFT: "Otkaži promjene na privremenoj stranici (draft)"
@@ -84,26 +54,22 @@ hr:
     EDITHEADER: "Tko može uređivati unutar CMSa?"
     EDITONLYTHESE: "Samo slijedeći korisnici (odaberite s popisa)"
     HASBROKENLINKS: "Ova stranica ima pogrešne linkove"
-    HOMEPAGEFORDOMAIN: "Domena"
     HTMLEDITORTITLE: "Sadržaj"
     MENUTITLE: "Oznaka navigacije"
     METADESC: "Opis"
     METAEXTRA: "Podešeni Meta Tagovi"
-    METAHEADER: "Meta-tagovi za pretraživače"
     METAKEYWORDS: "Ključne riječi"
     METATITLE: "Naslov"
-    MODIFIEDONDRAFT: "Promjenjeno na privremenoj stranici"
-    NOTEUSEASHOMEPAGE: "Koristi ovu stranicu kao početnu za slijedeće domene: (domene odvojite zarezom)"
     PAGETITLE: "Ime stranice"
     PAGETYPE: "Vrsta stranice"
     PLURALNAME: "Stranična stabla"
-    REMOVEDFROMDRAFT: "Obrisano sa privremene stranice"
     SHOWINMENUS: "Pokaži u izbornicima?"
     SHOWINSEARCH: "Pokaži u tražilici?"
     SINGULARNAME: "Stranično stablo"
     TABACCESS: |
                 Pristup
-                    TABBEHAVIOUR: "Karakteristike"
+                
+    TABBEHAVIOUR: "Karakteristike"
     TABCONTENT: "Sadržaj"
     TABMETA: "Meta-data"
     TOPLEVEL: "Sadržaj stranice (Top Level)"
@@ -112,18 +78,12 @@ hr:
   StaticExporter:
     BASEURL: "Osnovni URL"
     EXPORTTO: "Izvezi u taj direktorij"
-    FOLDEREXPORT: "Direktorij za izvoz na"
     NAME: "Statični exporter"
   TableListField_PageControls.ss:
-    DISPLAYING: "Prikazujem"
-    OF: "od"
-    TO: "do"
     VIEWFIRST: "Pogledaj prvi"
     VIEWLAST: "Pogledaj zadnji"
     VIEWNEXT: "Pogledaj slijedeći"
     VIEWPREVIOUS: "Pogledaj prethodni"
-  ThumbnailStripField.ss:
-    CHOOSEFOLDER: "(Odaberite direktorij)"
   ViewArchivedEmail.ss:
     CANACCESS: "Na slijedećem linku možete pristupiti arhiviranoj stranici:"
     HAVEASKED: "Zatražili ste sadržaj naše stranice "
@@ -133,9 +93,3 @@ hr:
     HEADER: "Ovo je virtualna stranica"
     PLURALNAME: "Virtualne stranice"
     SINGULARNAME: "Virtualna stranica"
-  Widget:
-    PLURALNAME: "Widgeti"
-    SINGULARNAME: "Widget"
-  WidgetArea:
-    PLURALNAME: "Prostori za Widgete"
-    SINGULARNAME: "Prostor za Widget"

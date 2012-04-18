@@ -1,47 +1,12 @@
 sr:
-  AdvancedSearchForm:
-    FROM: "Од"
-    GO: "Иди"
-    LASTUPDATED: "Датуму ажурирања"
-    PAGETITLE: "Наслову стране"
-    RELEVANCE: "Релевантности"
-    SEARCHBY: "ТРАЖИ ПО"
-    SORTBY: "СОРТИРАЈ РЕЗУЛТАТЕ ПО"
-    TO: "До"
-    WITHOUT: "без речи"
   AssetAdmin:
-    CHOOSEFILE: "Изаберите датотеку"
-    DELETEDX: "Обрисано %s датотека. %s"
-    FILESREADY: "Датотеке спремне за достављање:"
-    MOVEDX: "Премештено %s датотека"
     NEWFOLDER: "Нова фасцикла"
-    NOTHINGTOUPLOAD: "Нема датотека за достављање"
-    NOWBROKEN: "Ове стране сада имају неисправне линкове:"
     THUMBSDELETED: "Сви некоришћени умањени прикази су обрисани"
-    UPLOAD: "Достави датотеке приказане испод"
-    UPLOADEDX: "Достављено %s датотека"
   AssetAdmin_left.ss:
-    SELECTTODEL: "Изаберите фасцикле које желите да избришете и кликните на дугме"
-  AssetAdmin_uploadiframe.ss:
-    PERMFAILED: "Немате дозволу да достављате датотеке у ову фасциклу."
-  AssetTableField:
-    CREATED: "Прво достављено"
-    DIM: "Димензије"
-    FILENAME: "Име датотеке"
-    IMAGE: "Слика"
-    LASTEDIT: "Последње промењено"
-    MAIN: "Опште"
-    NOLINKS: "На ову датотеку не показује ниједна страна."
-    OWNER: "Власник"
-    PAGESLINKING: "Следеће стране показују на ову датотеку:"
-    SIZE: "Величина"
-    TITLE: "Наслов"
-    TYPE: "Тип"
-    URL: "URL"
+    GO: "Иди"
   CMSMain:
     EMAIL: "Е-пошта"
     NEW: "Нова "
-    NOCONTENT: "нема садржаја"
     PAGENOTEXISTS: "Ова страна не постоји"
     PUBALLCONFIRM: "Објавите сваку страну на овом сајту копирањем садржај на жив сајт."
     PUBALLFUN: "Функција „Објави све“ "
@@ -53,16 +18,12 @@ sr:
     ROLLEDBACKPUB: "Враћено на објављену еврзију. Број нове верзије је #%d"
     ROLLEDBACKVERSION: "Враћено на верзију #%d. Број нове верзије је #%d."
     SAVE: "Сачувај"
-    TOTALPAGES: "Укупно страна:"
   CMSMain_left.ss:
-    GO: "Иди"
-    SEARCH: "Претрага"
   ContentController:
     DRAFT_SITE_ACCESS_RESTRICTION: "Морате да се пријавите својом лозинком на CMS да бисте приступили нацртима или архивираном садржају. <a href=\"%s\">Кликните овде да бисте се вратили на завршен сајт.</a>"
   ErrorPage:
     CODE: "Код грешке"
     DEFAULTERRORPAGETITLE: "Страница није пронађена"
-    SINGULARNAME: "Greška Stranice"
     400: "400 - Лош захтев"
     403: "403 - Забрањено"
     404: "404 - Није пронађено"
@@ -74,13 +35,7 @@ sr:
     505: "505 - HTTP верзија није подржана"
   Folder:
     DELETEUNUSEDTHUMBNAILS: "Обриши некоришћене умањене приказе"
-    DELSELECTED: "Обриши изабране датотеке"
-    FILENAME: "Име датотеке"
-    TITLE: "Наслов"
   LeftAndMain:
-  MemberTableField:
-    FILTER: "Филтер"
-    SEARCH: "Претрага"
   RedirectorPage:
     HASBEENSETUP: "Страница за преусмеравање је постављена без параметра за преусмеравање"
     HEADER: "Ова страна ће преусмерити кориснике на другу страну"
@@ -91,7 +46,6 @@ sr:
     YOURPAGE: "Страница на вашем сајту"
   SearchForm:
     SEARCH: "Претрага"
-  SecurityAdmin:
   SideReport:
     EMPTYPAGES: "Празне стране"
     LAST2WEEKS: "Стране мењане у задње две недеље"
@@ -101,7 +55,6 @@ sr:
     ACCESSHEADER: "Ко може да види ову страну на мом сајту?"
     ACCESSLOGGEDIN: "Пријављени корисници"
     ACCESSONLYTHESE: "Само ови људи (изаберите са списка)"
-    ADDEDTODRAFT: "Додато сајту са нацртима"
     ALLOWCOMMENTS: "Дозволити коментаре на овој страни?"
     APPEARSVIRTUALPAGES: "Овај садржај се такође приказује на виртуалним страницама у %s секција."
     BUTTONCANCELDRAFT: "Откажи промене на нацрту"
@@ -117,20 +70,14 @@ sr:
     EDITHEADER: "Ко може да мења ову страницу у CMS-у?"
     EDITONLYTHESE: "Само ови људи (изаберите са списка)"
     HASBROKENLINKS: "Ова страна има неважеће линкове."
-    HOMEPAGEFORDOMAIN: "Домен(и)"
     HTMLEDITORTITLE: "Садржај"
     MENUTITLE: "Натпис за навигацију"
     METADESC: "Опис"
     METAEXTRA: "Прилагођени мета тагови"
-    METAHEADER: "Мета тагови за претраживаче"
     METAKEYWORDS: "Кључне речи"
     METATITLE: "Наслов"
-    MODIFIEDONDRAFT: "Промењено на сајту са нацртима"
-    NOTEUSEASHOMEPAGE: |
-                        Користи ову страницу као 'почетну' за следеће домене:
-                        (одвојите домене зарезима)    PAGETITLE: "Име стране"
+    PAGETITLE: "Име стране"
     PAGETYPE: "Тип стране"
-    REMOVEDFROMDRAFT: "Уклоњено са сајта са нацртима"
     SHOWINMENUS: "Приказати у менијима?"
     SHOWINSEARCH: "Приказати у претрази?"
     TABACCESS: "Приступ"
@@ -141,18 +88,10 @@ sr:
   StaticExporter:
     BASEURL: "Основни URL"
     EXPORTTO: "Извези у ову фасциклу"
-    FOLDEREXPORT: "Фасцикла за извожење"
     NAME: "Извези статичне садржаје"
   TableListField_PageControls.ss:
-    DISPLAYING: "Приказујем"
-    OF: "од"
-    TO: "до"
     VIEWNEXT: "Погледај следеће"
     VIEWPREVIOUS: "Погледај претходно"
-  ThumbnailStripField:
-    NOIMAGESFOUND: "Нема пронађених слика у"
-  ThumbnailStripField.ss:
-    CHOOSEFOLDER: "(изаберите фасциклу)"
   ViewArchivedEmail.ss:
     CANACCESS: "Можете да приступите архивираном садржају на овом линку:"
     HAVEASKED: "Замољени сте да погледате садржај овог сајта"
