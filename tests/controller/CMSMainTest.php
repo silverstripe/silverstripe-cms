@@ -62,7 +62,7 @@ class CMSMainTest extends FunctionalTest {
 		//$this->assertRegexp('/Done: Published 4 pages/', $response->getBody())
 			
 		/*
-		$response = Director::test("admin/page/publishitems", array(
+		$response = Director::test("admin/pages/publishitems", array(
 			'ID' => ''
 			'Title' => ''
 			'action_publish' => 'Save and publish',
@@ -198,9 +198,9 @@ class CMSMainTest extends FunctionalTest {
 
 		// with insufficient permissions
 		$cmsUser->logIn();
-		$this->get('admin/page/add');
+		$this->get('admin/pages/add');
 		$response = $this->post(
-			'admin/page/add/AddForm', 
+			'admin/pages/add/AddForm', 
 			array('ParentID' => '0', 'ClassName' => 'Page', 'Locale' => 'en_US', 'action_doAdd' => 1)
 		);
 		// should redirect, which is a permission error
@@ -208,10 +208,10 @@ class CMSMainTest extends FunctionalTest {
 
 		// with correct permissions
 		$rootEditUser->logIn();
-		$response = $this->get('admin/page/add');
+		$response = $this->get('admin/pages/add');
 
 		$response = $this->post(
-			'admin/page/add/AddForm', 
+			'admin/pages/add/AddForm', 
 			array('ParentID' => '0', 'ClassName' => 'Page', 'Locale' => 'en_US', 'action_doAdd' => 1)
 		);
 

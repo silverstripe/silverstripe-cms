@@ -20,7 +20,7 @@
 									'_class': 'class-' + val.ssclass,
 									'action': function(obj) {
 										// TODO Fix hardcoding of link
-										$('.cms-container').loadPanel('admin/page/add/?ParentID=' + id + '&Type=' + val.ssclass);
+										$('.cms-container').loadPanel('admin/pages/add/?ParentID=' + id + '&Type=' + val.ssclass);
 									}
 								};
 							}
@@ -31,7 +31,7 @@
 									'label': ss.i18n._t('Tree.EditPage'),
 									'action': function(obj) {
 										// TODO Fix hardcoding of link
-										$('.cms-container').loadPanel('admin/page/add/show/' + obj.data('id'));
+										$('.cms-container').loadPanel('admin/pages/add/show/' + obj.data('id'));
 									}
 								}
 							};
@@ -41,7 +41,7 @@
 									'label': ss.i18n._t('Tree.AddSubPage'),
 									'action': function(obj) {
 										// TODO Fix hardcoding of link
-										$('.cms-container').loadPanel('admin/page/add/?ParentID=' + obj.data('id'));
+										$('.cms-container').loadPanel('admin/pages/add/?ParentID=' + obj.data('id'));
 									},
 									'submenu': allowedChildren
 								};

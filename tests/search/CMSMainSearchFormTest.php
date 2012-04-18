@@ -9,7 +9,7 @@ class CMSMainSearchFormTest extends FunctionalTest {
 		$this->session()->inst_set('loggedInAs', $this->idFromFixture('Member', 'admin'));
 
 		$response = $this->get(
-			'admin/page/SearchForm/?' .
+			'admin/pages/SearchForm/?' .
 			http_build_query(array(
 				'Title' => 'Page 10',
 				'FilterClass' => 'CMSSiteTreeFilter_Search',

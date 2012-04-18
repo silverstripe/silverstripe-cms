@@ -85,7 +85,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
 	 * @todo check highlighting for comparing pages.
 	 */
 	function testVersionsForm() {
-		$history = $this->get('admin/page/history/show/'. $this->page->ID);
+		$history = $this->get('admin/pages/history/show/'. $this->page->ID);
 		$form = $this->cssParser()->getBySelector("#Form_VersionsForm");
 		
 		$this->assertEquals(1, count($form));
@@ -102,7 +102,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
 	}
 	
 	function testVersionsFormTableContainsInformation() {
-		$history = $this->get('admin/page/history/show/'. $this->page->ID);
+		$history = $this->get('admin/pages/history/show/'. $this->page->ID);
 		$form = $this->cssParser()->getBySelector("#Form_VersionsForm");
 		$rows = $form[0]->xpath("fieldset/table/tbody/tr");
 		
@@ -127,7 +127,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
 	}
 	
 	function testVersionsFormSelectsUnpublishedCheckbox() {
-		$history = $this->get('admin/page/history/show/'. $this->page->ID);
+		$history = $this->get('admin/pages/history/show/'. $this->page->ID);
 		$checkbox = $this->cssParser()->getBySelector("#Form_VersionsForm #ShowUnpublished input");
 
 		$this->assertThat($checkbox[0], $this->logicalNot($this->isNull()));
@@ -136,7 +136,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
 		$this->assertThat($checked, $this->logicalNot($this->stringContains('checked')));
 		
 		// viewing an unpublished
-		$history = $this->get('admin/page/history/show/'.$this->page->ID .'/'.$this->versionUnpublishedCheck);
+		$history = $this->get('admin/pages/history/show/'.$this->page->ID .'/'.$this->versionUnpublishedCheck);
 		$checkbox = $this->cssParser()->getBySelector("#Form_VersionsForm #ShowUnpublished input");
 
 		$this->assertThat($checkbox[0], $this->logicalNot($this->isNull()));
