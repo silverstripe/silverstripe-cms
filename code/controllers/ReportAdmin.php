@@ -162,6 +162,7 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 				new GridFieldExportButton()
 			);
 			$gridField = new GridField('Report',$report->title(), $report->sourceRecords(array(), null, null), $gridFieldConfig);
+			$columns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
 			$displayFields = array();
 			$fieldCasting = array();
 			$fieldFormatting = array();
@@ -181,9 +182,9 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 
 				$displayFields[$source] = isset($info['title']) ? $info['title'] : $source;
 			}
-			$gridField->setDisplayFields($displayFields);
-			$gridField->setFieldCasting($fieldCasting);
-			$gridField->setFieldFormatting($fieldFormatting);
+			$columns->setDisplayFields($displayFields);
+			$columns->setFieldCasting($fieldCasting);
+			$columns->setFieldFormatting($fieldFormatting);
 
 			$fields->push($gridField);
 		} else {
@@ -195,10 +196,11 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 				new GridFieldFooter()
 			);
 			$gridField = new GridField('Reports','Reports', $this->Reports(), $gridFieldConfig);
-			$gridField->setDisplayFields(array(
+			$columns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
+			$columns->setDisplayFields(array(
 				'title' => 'Title',
 			));
-			$gridField->setFieldFormatting(array(
+			$columns->setFieldFormatting(array(
 				'title' => '<a href=\"$Link\" class=\"cms-panel-link\">$value</a>'
 			));
 			$gridField->addExtraClass('all-reports-gridfield');
