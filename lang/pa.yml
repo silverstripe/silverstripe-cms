@@ -1,60 +1,11 @@
 pa:
-  AssetAdmin:
-    CHOOSEFILE: "ਫਾਈਲ ਚੁਣੋੋੋੋ"
-    DELETEDX: "%s ਫਾਈਲਾਂ ਕੱਟੀਆ. %s"
-    FILESREADY: "ਫਾਈਲਾਂ ਅੱਪਲੋੋਡਡ ਲਈ ਿਤਆਰ ਹਨ।"
-    MOVEDX: |
-             ਹਟਾਈਆ %s ਫਾਈਲ਼ਾ	ਂ
-                 NEWFOLDER: "ਨਵਾਂ ਫੋਲਡਰ"
-    NOTHINGTOUPLOAD: "There was nothing to upload"
-    NOWBROKEN: "ਇਹਨਾ ਪੰਿਨਆਂ ਉੱਤੇ ਹੁਣ ਖ਼ਰਾਬ ਜੋੜ ਹਨ।"
-    UPLOAD: "ਹੇਠਾ ਦਰਜ ਅੱਪਲੋਡ ਕਰੋ"
-    UPLOADEDX: "%s ਫਾਈਲਾਂ ਅੱਪਲੋੋਡਡ"
-  AssetAdmin_left.ss:
-    SELECTTODEL: "Select the folders that you want to delete and then click the button below"
-  AssetAdmin_uploadiframe.ss:
-    PERMFAILED: "You do not have permission to upload files into this folder."
-  AssetTableField:
-    CREATED: "ਪਹਿਲਾਂ  ਅੱਪਲੋਡਡ"
-    DIM: "Dimensions"
-    FILENAME: "ਫਾਈਲ ਦਾ ਨਾਮ "
-    LASTEDIT: "ਆਖਰੀ ਤਬਦੀਲੀ	"
-    NOLINKS: "This file hasn't been linked to from any pages."
-    OWNER: "ਮਾਲਕ"
-    PAGESLINKING: "The following pages link to this file:"
-    SIZE: "ਸਾਈਜ਼"
-    TITLE: "ਟਾਈਟਲ"
-    TYPE: "ਿਕਸਮ"
-  CMSMain:
-    EMAIL: "ਈਮੇਲ"
-    NEW: "ਨਵਾਂ"
-    NOCONTENT: "ਕੋਈ ਸਮਾਨ ਨਹੀ ਹੈ"
-    PAGENOTEXISTS: "ਇਹ ਪੰਨਾ ਨਹੀ ਹੈ"
-    PUBALLCONFIRM: |
-                    ਿਕ੍ਰਪਾ ਕਰਕੇ ਵੈੱਬ-ਸਾਈਟ ਦਾ ਹਰੇਕ ਪੰਨਾ ਛਾਪੋ, ਸਮਾਨ ਨੰੂ  ਿਜ਼ੰਓੁਦਾ ਕਰ ਰਹੇ ਹਾ
-                        PUBALLFUN: "\" ਸਾਰ ਛਾਪੋ \" ਕਾਰਜਕਰਨੀਂ"
-    PUBALLFUN2: |
-                 Pressing this button will do the equivalent of going to every page and pressing "publish". It's
-                 intended to be used after there have been massive edits of the content, such as when the site was
-                 first built.    PUBPAGES: "ਕੰਮ ਕੀਤਾ : ਛਾਪੋ %d ਪੰਨੇ "
-    REMOVEDPAGE: "'%s' ਨੰੂ ਛਾਪੀ ਹੋਈ ਸਾਈਟ ਤੋਂ ਉਤਾਿਰਆ"
-    RESTORED: "ਬਹਾਲੀ '%s' ਕਾਮਯਾਬ।"
-    ROLLBACK: "Roll back to this version"
-    ROLLEDBACKPUB: "Rolled back to published version. New version number is #%d"
-    ROLLEDBACKVERSION: "Rolled back to version #%d. New version number is #%d"
-    SAVE: "ਬਚਾ"
-    TOTALPAGES: "ਸਾਰੇ ਪੰਨੇ "
-  CMSMain_left.ss:
-    GO: "ਜਾਓ "
-    SEARCH: "ਖੋਜ"
   ContentController:
     DRAFT_SITE_ACCESS_RESTRICTION: |
                                     ਕੱਚੀ ਜਾਂ ਪੁਰਾਣੀ ਸਾਈਟ ਦੇਖਣ ਲਈ ਤੁਹਾਨੰੂ ਜ਼ਰੂਰ ਆਪਣੇ CMS ਪਾਸਵਰਡ ਨਾਲ ਲੋਿਗਨ ਕਰਨੀ ਪਵੇਗੀ।
                                     <a href="%s">ਛਾਪੀ ਹੋਈ ਸਾਈਟ ਤੇ ਜਾਨ ਲਈ ਇੱਥੇ ਕਿਲੱਕ ਕਰੋ।</a>
-                                      ErrorPage:
+                                    
+  ErrorPage:
     CODE: "Error code"
-  LeftAndMain:
-  MemberTableField:
   RedirectorPage:
     HASBEENSETUP: "A redirector page has been set up without anywhere to redirect to."
     HEADER: "This page will redirect users to another page"
@@ -63,17 +14,11 @@ pa:
     REDIRECTTOEXTERNAL: "ਦੂਸਰੀ ਵੈੱਬ-ਸਾਈਟ "
     REDIRECTTOPAGE: "ਇੱਕ ਪੰਨਾ ਤੁਹਾਡੀ ਵੈੱਬ-ਸਾਈਟ ਤੇ "
     YOURPAGE: "ਇੱਕ ਪੰਨਾ ਤੁਹਾਡੀ ਵੈੱਬ-ਸਾਈਟ ਤੇ "
-  SecurityAdmin:
-  SideReport:
-    EMPTYPAGES: "ਖ਼ਾਲੀ ਪੰਨੇ"
-    LAST2WEEKS: "Pages edited in the last 2 weeks"
-    REPEMPTY: " %s ਰੀਪੋਰਟ ਖ਼ਾਲੀ ਹੈ।"
   SiteTree:
     ACCESSANYONE: "ਕੋਈ ਵੀ	"
     ACCESSHEADER: "Who can view this page on my site?"
     ACCESSLOGGEDIN: "Logged-in users"
     ACCESSONLYTHESE: "Only these people (choose from list)"
-    ADDEDTODRAFT: "ਕੱਚੀ ਸਾਈਟ ਨਾਲ ਜੋਿੜਆ"
     ALLOWCOMMENTS: "ਇਸ ਪੰਨੇ ਤੇ ਿਟੱਪਣੀਆਂ ਦੀ ਇਜਾਜ਼ਤ ਹੈ।"
     APPEARSVIRTUALPAGES: "This content also appears on the virtual pages in the %s sections"
     BUTTONCANCELDRAFT: "ਕੱਚੀਆ ਤਬਦੀਲੀਆਂ ਨੰੂ ਰੱਦ ਕਰੋ"
@@ -85,20 +30,14 @@ pa:
     EDITHEADER: "Who can edit this inside the CMS?"
     EDITONLYTHESE: "Only these people (choose from list)"
     HASBROKENLINKS: "This page has broken links."
-    HOMEPAGEFORDOMAIN: "ਡੋਮੇਨ (ਾ)"
     HTMLEDITORTITLE: "ਸਮਾਨ"
     MENUTITLE: "Navigation label"
     METADESC: "ਵਰਣਨ"
     METAEXTRA: "Custom Meta Tags"
-    METAHEADER: "Search Engine Meta-tags"
     METAKEYWORDS: "Keywords"
     METATITLE: "ਟਾਈਟਲ"
-    MODIFIEDONDRAFT: "Modified on draft site"
-    NOTEUSEASHOMEPAGE: |
-                        Use this page as the 'home page' for the following domains:
-                        (separate multiple domains with commas)    PAGETITLE: "ਪੰਨੇ ਦਾ ਨਾਂ	"
+    PAGETITLE: "ਪੰਨੇ ਦਾ ਨਾਂ	"
     PAGETYPE: "ਸਫ਼ੇ ਦੀ ਿਕਸਮ  "
-    REMOVEDFROMDRAFT: "ਕੱਚੀ ਸਾਈਟ ਤੋਂ ਉਤਾਿਰਆ"
     SHOWINMENUS: "menus ਿਵੱਚ ਿਦਖਾਉ?"
     SHOWINSEARCH: "search ਿਵੱਚ ਿਦਖਾਉ?"
     TABACCESS: "Access"
@@ -106,16 +45,6 @@ pa:
     TABCONTENT: "ਸਮਾਨ "
     TABMETA: "Meta-data"
     TOPLEVEL: "ਸਾਈਟ ਦਾ ਸਮਾਨ (Top Level)"
-  StaticExporter:
-    BASEURL: "Base URL"
-    EXPORTTO: "ਉਹ ਫੋਲਡਰ ਤੇ ਭੇਜੋ"
-    FOLDEREXPORT: "Folder to export to"
-    NAME: "Static exporter"
-  ThumbnailStripField.ss:
-    CHOOSEFOLDER: "(Choose a folder above)"
-  ViewArchivedEmail.ss:
-    CANACCESS: "You can access the archived site at this link:"
-    HAVEASKED: "ਤੁਸੀ ਸਾਡੀ ਵੈੱਬ-ਸਾਈਟ ਦਾ ਸਮਾਨ ਦੇਖਣ ਲਈ ਿਕਹਾ ਸੀ। ਤਾਰੀਖ਼ ਸੀ "
   VirtualPage:
     CHOOSE: "Choose a page to link to"
     EDITCONTENT: "ਸਮਾਨ ਐਿਡਟ ਕਰਨ ਲਈ ਇੱਥ ਕਿਲੱਕ ਕਰੋ"

@@ -1,44 +1,7 @@
 ast:
-  AssetAdmin:
-  AssetAdmin_left.ss:
-  CMSMain:
-    ACCESS: "Accesu a la estaya '%s'"
-    EMAIL: "Corréu"
-    NEW: "Nuevu"
-    NOCONTENT: "ensin conteníu"
-    PAGENOTEXISTS: "Esta páxina nun esiste"
-    PUBALLCONFIRM: "Por favor, asoleya toles páxines del sitiu, copiando'l conteníu en pruebes al sitiu activu"
-    PUBALLFUN: "Función \"Asoleyar too\""
-    PUBALLFUN2: "Calcar esti botón ye l'equivalente de dir a cada páxina y calcar \"espublizar\". Ta pensao pa usar dempués de facer ediciones masives del conteníu, como cuando se construyó'l sitiu pola primer vegada."
-    PUBPAGES: "Fecho: Asoleyaes %d páxines"
-    REMOVEDPAGE: "Desaniciáu '%s' del sitiu asoleyáu"
-    RESTORED: "Se restauró '%s' correutamente"
-    ROLLBACK: "Devolver a esta versión"
-    ROLLEDBACKPUB: "Devueltu a la versión asoleyada. El nuevu númberu de versión ye #%d"
-    ROLLEDBACKVERSION: "Devueltu a la versión #%d. El nuevu númberu de versión ye #%d"
-    SAVE: "Guardar"
-    TOTALPAGES: "Páxines en total:"
-  CMSMain_left.ss:
-    SEARCH: "Guetar"
-  ErrorPage:
-    PLURALNAME: "Páxines d'error"
-    SINGULARNAME: "Páxina d'error"
-  LeftAndMain:
-    STATUSPUBLISHEDSUCCESS: "S'espublizó '%s' correutamente"
-  MemberTableField:
-  RedirectorPage:
-    PLURALNAME: "Páxines del redireutor"
-    SINGULARNAME: "Páxina del redireutor"
-  SecurityAdmin:
-  SideReport:
-    REPEMPTY: "L'informe %s ta baleru."
-  SiteConfig:
-    PLURALNAME: "Configuraciones del sitiu"
-    SINGULARNAME: "Configuración del sitiu"
   SiteTree:
     CHANGETO: "Camudar a \"%s\""
     Content: "Conteníu"
-    HOMEPAGEFORDOMAIN: "Dominiu(os)"
     HTMLEDITORTITLE: "Conteníu"
     PAGETYPE: "Triba de páxina"
     PARENTID: "Páxina padre"
@@ -47,14 +10,6 @@ ast:
     SINGULARNAME: "Árbol del sitiu"
     URLSegment: "Segmentu URL"
     has_one_Parent: "Páxina padre"
-  ViewArchivedEmail.ss:
-    HAVEASKED: "Pidisti ver el conteníu del nuesu sitiu el"
   VirtualPage:
     PLURALNAME: "Páxines virtuales"
     SINGULARNAME: "Páxina virtual"
-  Widget:
-    PLURALNAME: "Widgets"
-    SINGULARNAME: "Widget"
-  WidgetArea:
-    PLURALNAME: "Estayes del widget"
-    SINGULARNAME: "Estaya del widget"

@@ -1,55 +1,15 @@
 bs:
-  AdvancedSearchForm:
-    ALLWORDS: "Sve riječi"
-    ATLEAST: "Jedna od navedenih riječi"
-    EXACT: "Određeni izraz"
-    FROM: "Od"
-    GO: "Idi"
-    LASTUPDATED: "Datumu ažuriranja"
-    LASTUPDATEDHEADER: "DATUM AŽURIRANJA"
-    PAGETITLE: "Naslovu stranice"
-    RELEVANCE: "Važnosti"
-    SEARCHBY: "KRITERIJ PRETRAGE"
-    SORTBY: "SORTIRAJ REZULTATE PO"
-    TO: "Do"
-    WITHOUT: "Bez riječi"
   AssetAdmin:
-    CHOOSEFILE: "Izaberite datoteku"
-    DELETEDX: "Izbrisano %s datoteka.%s"
-    FILESREADY: "Datoteke spremne za postavljanje na server:"
-    MOVEDX: "Premješteno %s datoteka"
     NEWFOLDER: "NoviDirektorij"
-    NOTEMP: "Ne postoji privremeni direktorij za postavljanje datoteka. Molimo, postavite upload_tmp_dir u datoteci php.ini."
-    NOTHINGTOUPLOAD: "Nema datoteka za postavljanje server"
-    NOWBROKEN: "Slijedeće stranice trenutno imaju neispravne linkove:"
     THUMBSDELETED: "Sve neiskorištene umanjene slike su izbrisane"
-    UPLOAD: "Datoteke prikazane ispod postavi na server"
-    UPLOADEDX: "Postavljeno %s datoteka"
   AssetAdmin_left.ss:
-    SELECTTODEL: "Izaberite direktorije koje želite izbrisati i kliknite na tipku ispod"
-  AssetAdmin_uploadiframe.ss:
-    PERMFAILED: "Nemate dozvolu da postavljate datoteke u ovaj direktorij."
-  AssetTableField:
-    CREATED: "Prvo postavljeno"
-    DIM: "Dimenzije"
-    FILENAME: "Ime datoteke"
-    IMAGE: "Slika"
-    LASTEDIT: "Zadnja promjena"
-    MAIN: "Glavno"
-    NOLINKS: "Ova datoteka nije vezana za nijednu stranicu."
-    OWNER: "Vlasnik"
-    PAGESLINKING: "Slijedeće stranice su vezane za ovu datoteku:"
-    SIZE: "Veličina"
-    TITLE: "Naslov"
-    TYPE: "Tip"
-    URL: "URL"
+    GO: "Idi"
   CMSMain:
     ACCESS: "Pristup do %s u CMS-u"
     DELETE: "Izbriši sa privremenog nacrta stranice"
     DESCREMOVED: "i %s potomci"
     EMAIL: "E-mail"
     NEW: "Nova"
-    NOCONTENT: "nema sadržaja"
     PAGENOTEXISTS: "Ova stranica ne postoji"
     PUBALLCONFIRM: "Molimo, objavite svaku stavku na ovoj stranici, kopiranjem sadržaja na aktivnu stranicu"
     PUBALLFUN: "Funkcija \"Objavi sve\""
@@ -58,16 +18,12 @@ bs:
     REMOVED: "Izbrisano '%s'%s sa aktivne stranice"
     REMOVEDPAGE: "Stavka '%s' je uklonjena sa objavljene stranice"
     REMOVEDPAGEFROMDRAFT: "Uklonjeno '%s' sa privremenog nacrta stranice"
-    REPORT: "Izvještaj"
     RESTORED: "'%s' je uspješno vraćen"
     ROLLBACK: "Vrati na ovo izdanje"
     ROLLEDBACKPUB: "Vraćeno na objavljeno izdanje. Novi broj izdanja je #%d"
     ROLLEDBACKVERSION: "Vraćeno na izdanje #%d. Broj novog izdanja je #%d."
     SAVE: "Snimi"
-    TOTALPAGES: "Ukupno stranica:"
   CMSMain_left.ss:
-    GO: "Idi"
-    SEARCH: "Pretraga"
   ContentController:
     DRAFT_SITE_ACCESS_RESTRICTION: "Morate se prijaviti sa Vašom CMS šifrom kako biste pregledali privremeni ili arhivirani sadržaj. <a href=\"%s\">Kliknite ovdje da biste se vratili na objavljenu stranicu.</a>"
   ErrorPage:
@@ -99,17 +55,9 @@ bs:
     505: "505 - HTTP izdanje nije podržano"
   Folder:
     DELETEUNUSEDTHUMBNAILS: "Izbriši neiskorištene sličice"
-    DELSELECTED: "Izbriši izabrane datoteke"
-    FILENAME: "Ime datoteke"
-    TITLE: "Naslov"
-    UNUSEDFILESTAB: "Neiskorištene datoteke"
     UNUSEDFILESTITLE: "Neiskorištene datoteke"
     UNUSEDTHUMBNAILSTITLE: "Neiskorištene sličice"
-    VIEWASSET: "Pregledaj aktivu"
   LeftAndMain:
-  MemberTableField:
-    FILTER: "Filter"
-    SEARCH: "Pretraga"
   RedirectorPage:
     HASBEENSETUP: "Stranica za preusmjeravanje je podešena bez odredišta."
     HEADER: "Ova stranica će preusmjeriti korisnike na drugu stranicu"
@@ -121,7 +69,6 @@ bs:
   SearchForm:
     GO: "Idi"
     SEARCH: "Pretraga"
-  SecurityAdmin:
   SideReport:
     EMPTYPAGES: "Prazne stranice"
     LAST2WEEKS: "Izmjenjene stranice u posljednje 2 sedmice"
@@ -131,7 +78,6 @@ bs:
     ACCESSHEADER: "Ko može pregledati ovu stavku na mojoj stranici?"
     ACCESSLOGGEDIN: "Prijavljeni korisnici"
     ACCESSONLYTHESE: "Samo ovi korisnici (izaberite sa popisa)"
-    ADDEDTODRAFT: "Dodano na privremeni nacrt stranice"
     ALLOWCOMMENTS: "Dozvoli komentare na ovoj stranici?"
     APPEARSVIRTUALPAGES: "Ovaj sadržaj se također prikazuje na virtualnim stranicama u %s odjelima."
     BUTTONCANCELDRAFT: "Poništi promjene privremenog nacrta stranice"
@@ -150,19 +96,14 @@ bs:
     EDITHEADER: "Ko može izmijeniti ovu stavku unutar CMS-a?"
     EDITONLYTHESE: "Samo ovi korisnici (izaberite sa popisa)"
     HASBROKENLINKS: "Ova stranica ima neispravnih linkova."
-    HOMEPAGEFORDOMAIN: "Domen(i):"
     HTMLEDITORTITLE: "Sadržaj"
     MENUTITLE: "Oznaka navigacije"
     METADESC: "Opis"
     METAEXTRA: "Prilagođene Meta oznake"
-    METAHEADER: "Meta-oznake za pretraživač"
     METAKEYWORDS: "Ključne riječi"
     METATITLE: "Naslov"
-    MODIFIEDONDRAFT: "Izmjenjeno na privremenom nacrtu stranice"
-    NOTEUSEASHOMEPAGE: "Koristi ovu stranicu kao 'početnu' za slijedeće domene: (odvojite domene zarezom)"
     PAGETITLE: "Ime stranice"
     PAGETYPE: "Tip stranice"
-    REMOVEDFROMDRAFT: "Uklonjeno sa privremenog nacrta stranice"
     SHOWINMENUS: "Prikaži u izbornicima?"
     SHOWINSEARCH: "Prikaži u pretrazi?"
     TABACCESS: "Pristup"
@@ -173,15 +114,7 @@ bs:
   StaticExporter:
     BASEURL: "Osnovni URL"
     EXPORTTO: "Izvezi u ovaj direktorij"
-    FOLDEREXPORT: "Direktorij za izvoz"
     NAME: "Izvezi statični sadržaj"
-  TableListField_PageControls.ss:
-    OF: "od"
-    TO: "do"
-  ThumbnailStripField:
-    NOIMAGESFOUND: "Nema pronađenih slika u"
-  ThumbnailStripField.ss:
-    CHOOSEFOLDER: "(Izaberite direktorij iznad)"
   ViewArchivedEmail.ss:
     CANACCESS: "Arhiviranoj stranici možete pristupiti korištenjem ovog linka:"
     HAVEASKED: "Zahtjevali ste pregled sadržaja naše stranice na"

@@ -3,7 +3,6 @@ uz:
   CMSMain:
     EMAIL: "Email"
     NEW: "Yangi"
-    NOCONTENT: "hech nima yoq"
     PAGENOTEXISTS: "Bu sahifa mavjud emas."
     PUBALLCONFIRM: "Iltimos, saytdagi bor hamma sahifalarni chop eting. "
     PUBALLFUN: "\"Hammasi chop etish\" funktsiyasi"
@@ -12,14 +11,7 @@ uz:
     RESTORED: "'%s' qayta tiklandi"
     ROLLEDBACKVERSION: "Orga versiyaga qaytarildi #%d. Yangi versiya #%d"
     SAVE: "Saqlash"
-    TOTALPAGES: "Jami sahifalar:"
   CMSMain_left.ss:
-    SEARCH: "Qidiruv"
   LeftAndMain:
-  SecurityAdmin:
   SideReport:
     REPEMPTY: "%s hisobot bo'm bo'sh"
-  SiteTree:
-    HOMEPAGEFORDOMAIN: "Domainlar"
-    HTMLEDITORTITLE: "Material"
-    PAGETYPE: "Sahifa turi"

@@ -1,61 +1,40 @@
 af:
-  AdvancedSearchForm:
-    ALLWORDS: "All Words"
-    ATLEAST: "At Least One Of the Words"
-    EXACT: "Exact Phrase"
-    FROM: "From"
-    GO: "Go"
-    LASTUPDATED: "Last Updated"
-    LASTUPDATEDHEADER: "LAST UPDATED"
-    PAGETITLE: "Page Title"
-    RELEVANCE: "Relevance"
-    SEARCHBY: "SEARCH BY"
-    SORTBY: "SORT RESULTS BY"
-    TO: "To"
-    WITHOUT: "Without the Words"
   AssetAdmin:
+    ADDFILES: "Add Files"
+    ALLOWEDEXTS: "Allowed extensions"
     ActionAdd: "Add folder"
-    CHOOSEFILE: "Kies lêer:"
-    DELETEDX: "Deleted %s file(s) %s"
-    FILESREADY: "Lêers klaar opgelaai:"
-    GalleryView: "Gallery View"
+    # A collection of files
+    AppCategoryArchive: "Archive"
+    AppCategoryAudio: "Audio"
+    # The fileformat
+    AppCategoryFlash: "Flash"
+    AppCategoryImage: "Image"
+    AppCategoryVideo: "Video"
+    BackToFolder: "Back to folder"
+    CREATED: "Date"
+    CurrentFolderOnly: "Limit to current folder?"
+    DetailsView: "Details"
+    FILESYSTEMSYNCTITLE: "Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP."
+    FROMTHEINTERNET: "From the internet"
+    FROMYOURCOMPUTER: "From your computer"
+    Filetype: "File type"
     ListView: "List View"
-    MOVEDX: "Moved %s files"
     NEWFOLDER: "NewFolder"
-    NOTEMP: "There is no temporary folder for uploads. Please set upload_tmp_dir in php.ini."
-    NOTHINGTOUPLOAD: "Daar was niks om op te laai nie"
-    NOWBROKEN: "These pages now have broken links:"
-    THUMBSDELETED: "%s ongebruikte miniatuur prentjies was verwyder"
-    Title: "Find &amp; Organize"
-    TreeView: "Tree View"
-    UPLOAD: "Laai Lêers Hier Onder Gelys Op"
-    UPLOADEDX: "Opgelaaide %s lêers"
-  AssetAdmin_DeleteBatchAction:
-    TITLE: "Delete groups"
-  AssetAdmin_left.ss:
-    FILESYSTEMSYNC_DESC: "SilverStripe maintains its own database of the files &amp; images stored in your assets/ folder.  Click this button to update that database, if files are added to the assets/ folder from outside SilverStripe, for example, if you have uploaded files via FTP."
-    SELECTTODEL: "Select the folders that you want to delete and then click the button below"
-  AssetAdmin_uploadiframe.ss:
-    PERMFAILED: "You do not have permission to upload files into this folder."
-    TITLE: "Image Uploading Iframe"
-  AssetTableField:
-    CLEAR: "Clear"
-    CREATED: "First uploaded"
-    DIM: "Dimensions"
-    FILENAME: "Filename"
-    IMAGE: "Prent"
-    LASTEDIT: "Last changed"
-    MAIN: "Hoof"
-    NODATAFOUND: "No %s found"
-    NOLINKS: "This file hasn't been linked to from any pages."
-    OWNER: "Owner"
-    PAGESLINKING: "The following pages link to this file:"
     SIZE: "Size"
-    TITLE: "Title"
-    TYPE: "Type"
-    URL: "URL"
-  AssetTableField_Item.ss:
-    DRAGTOFOLDER: "Drag to folder on left to move file"
+    THUMBSDELETED: "%s ongebruikte miniatuur prentjies was verwyder"
+    TreeView: "Tree View"
+    Upload: "Upload"
+  AssetAdmin_DeleteBatchAction:
+    TITLE: "Delete folders"
+  AssetAdmin_Tools.ss:
+    FILTER: "Filter"
+  AssetAdmin_left.ss:
+    GO: "Go"
+  BackLink_Button.ss:
+    Back: "Back"
+  BasicFieldsTestPage:
+    # Description of the page type (shown in the "add page" dialog)
+    DESCRIPTION: "Generic content page"
   BrokenLinksReport:
     Any: "Any"
     BROKENLINKS: "Broken links report"
@@ -78,22 +57,20 @@ af:
     ReasonDropdownVPBROKENLINK: "Virtual page pointing to non-existent page"
     RedirectorNonExistent: "redirector page pointing to non-existent page"
     VirtualPageNonExistent: "virtual page pointing to non-existent page"
+  CMSAddPageController:
+    Title: "Add page"
   CMSBatchActions:
     DELETE_DRAFT_PAGES: "Delete from draft site"
     DELETE_PAGES: "Delete from published site"
-    PUBLISHED_PAGES: "published %d pages"
+    PUBLISHED_PAGES: "Published %d pages, %d failures"
     PUBLISH_PAGES: "Publish"
     UNPUBLISHED_PAGES: "Un-published %d pages"
     UNPUBLISH_PAGES: "Un-publish"
   CMSMain:
     ACCESS: "Toegang tot '%s' afdeling"
-    ACCESSALLINTERFACES: "Access to all CMS sections"
-    ACCESSALLINTERFACESHELP: "Overrules more specific access settings."
     ACCESS_HELP: "Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate \"Content permissions\"."
-    AddFormParentLabel: "Choose parent"
-    AddNew: "Add new page"
     AddNewButton: "Add new"
-    Cancel: "Cancel"
+    ChoosePageParentMode: "Choose where to create this page"
     ChoosePageType: "Choose page type"
     Create: "Create"
     DELETE: "Delete draft"
@@ -101,7 +78,6 @@ af:
     DESCREMOVED: "and %s descendants"
     EMAIL: "Epos"
     NEW: "Nuut"
-    NOCONTENT: "no content"
     PAGENOTEXISTS: "Hierdie bladsy bestaan nie"
     PAGES: "Pages"
     PAGETYPEANYOPT: "Any"
@@ -112,11 +88,11 @@ af:
     PUBALLFUN2: |
                  Pressing this button will do the equivalent of going to every page and pressing "publish".  It's
                  				intended to be used after there have been massive edits of the content, such as when the site was
-                 				first built.    PUBPAGES: "Done: Published %d pages"
+                 				first built.
+    PUBPAGES: "Done: Published %d pages"
     REMOVED: "Het '%s'%s verwyder van lewendige werf"
     REMOVEDPAGE: "'%s' verwyder uit die gepubliseerde werf"
     REMOVEDPAGEFROMDRAFT: "Removed '%s' from the draft site"
-    REPORT: "Verslag"
     RESTORE: "Restore"
     RESTORED: "Herstel '%s' suksesvol"
     ROLLBACK: "Rol terug na hierdie weergawe"
@@ -124,14 +100,14 @@ af:
     ROLLEDBACKVERSION: "Terug na weergawe #%d gerol. Nuwe weergawe is #%d"
     SAVE: "Save"
     SAVEDRAFT: "Save Draft"
-    SearchMetaTags: "Meta tags"
-    TOTALPAGES: "Total pages: "
-    1: "1"
-    2: "2"
   CMSMain_left.ss:
-    CLEAR: "Clear"
-    GO: "Go"
-    SEARCH: "Soek"
+    APPLY FILTER: "Apply Filter"
+    RESET: "Reset"
+  CMSPageAddController:
+    ParentMode_child: "Under another page"
+    ParentMode_top: "Top level"
+  CMSPageEditController:
+    Title: "Pages"
   CMSPageHistoryController:
     COMPAREMODE: "Compare mode (select two)"
     COMPAREVERSIONS: "Compare Versions"
@@ -151,15 +127,16 @@ af:
   CMSPagesController:
     GalleryView: "Gallery View"
     ListView: "List View"
-    Title: "Edit & Organize"
+    MENUTITLE: "CMSPagesController"
     TreeView: "Tree View"
-  CMSPagesController_Content.ss:
-    FILTER: "Filter"
   CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: "Drag'n'drop"
     MULTISELECT: "Multi-selection"
+  CMSPagesController_Tools.ss:
+    FILTER: "Filter"
   CMSSearch:
     FILTERDATEFROM: "From"
+    FILTERDATEHEADING: "Date"
     FILTERDATETO: "To"
     FILTERLABELTEXT: "Content"
   CMSSiteTreeFilter_ChangedPages:
@@ -191,8 +168,6 @@ af:
     # Description of the page type (shown in the "add page" dialog)
     DESCRIPTION: "Custom content for different error cases (e.g. \"Page not found\")"
     ERRORFILEPROBLEM: "Error opening file \"%s\" for writing. Please check file permissions."
-    PLURALNAME: "Fout Bladsye"
-    SINGULARNAME: "Fout Bladsy"
     400: "400 - Bad Request"
     401: "401 - Unauthorized"
     403: "403 - Forbidden"
@@ -217,19 +192,34 @@ af:
     504: "504 - Gateway Timeout"
     505: "505 - HTTP Weergawe Nie Ondersteun"
   Folder:
+    AddFolderButton: "Add folder"
     DELETEUNUSEDTHUMBNAILS: "Verwyder ongebruikte miniatuur prente"
-    DELSELECTED: "Verwyder gekiesde lêers"
-    FILENAME: "Lêernaam"
-    TITLE: "Titel"
-    UNUSEDFILESTAB: "Ongebruikte lêers"
     UNUSEDFILESTITLE: "Ongebruikte lêers"
     UNUSEDTHUMBNAILSTITLE: "Ongebruikte miniatuur prente"
-    VIEWASSET: "Wys Bate"
+    UploadFilesButton: "Upload"
+  GridFieldTestPage:
+    # Description of the page type (shown in the "add page" dialog)
+    DESCRIPTION: "Generic content page"
   LeftAndMain:
+    PreviewButton: "Preview"
     STATUSPUBLISHEDSUCCESS: "'%s' Suksesvol Gepubliseer"
-  MemberTableField:
-    FILTER: "Filter"
-    SEARCH: "Search"
+    SearchResults: "Search Results"
+    VersionUnknown: "Unknown"
+  LegacyTableFieldsTestPage:
+    # Description of the page type (shown in the "add page" dialog)
+    DESCRIPTION: "Generic content page"
+  MyNonRootPage:
+    # Description of the page type (shown in the "add page" dialog)
+    DESCRIPTION: "Generic content page"
+  MyOtherPage:
+    # Description of the page type (shown in the "add page" dialog)
+    DESCRIPTION: "Generic content page"
+  MyPage:
+    # Description of the page type (shown in the "add page" dialog)
+    DESCRIPTION: "Generic content page"
+  MyRandomPage:
+    # Description of the page type (shown in the "add page" dialog)
+    DESCRIPTION: "Generic content page"
   Page:
     # Description of the page type (shown in the "add page" dialog)
     DESCRIPTION: "Generic content page"
@@ -244,22 +234,19 @@ af:
     HASBEENSETUP: "A redirector page has been set up without anywhere to redirect to."
     HEADER: "This page will redirect users to another page"
     OTHERURL: "Other website URL"
-    PLURALNAME: "Aanstuur Bladsye"
     REDIRECTTO: "Redirect to"
     REDIRECTTOEXTERNAL: "Another website"
     REDIRECTTOPAGE: "A page on your website"
-    SINGULARNAME: "Aanstuur Bladsy"
     YOURPAGE: "Page on your website"
+  RelationFieldsTestPage:
+    # Description of the page type (shown in the "add page" dialog)
+    DESCRIPTION: "Generic content page"
   ReportAdminForm:
     FILTERBY: "Filter by"
-  ReportAdmin_Content.ss:
-    REPORTS: "Reports"
   SearchForm:
     GO: "Go"
     SEARCH: "Search"
     SearchResults: "Search Results"
-  SecurityAdmin:
-    ACCESS_HELP: "Laat toe wys, byvoeging en verandering van gebruikers, so wel as die toekenning van permissies en rolle aan hulle."
   SideReport:
     BROKENFILES: "Bladsye met gebreekte lêers"
     BROKENLINKS: "Bladsye met gebreekte skakels"
@@ -282,8 +269,6 @@ af:
     EDITHEADER: "Who can edit pages on this site?"
     EDIT_PERMISSION: "Manage site configuration"
     EDIT_PERMISSION_HELP: "Ability to edit global access settings/top-level page permissions."
-    PLURALNAME: "Werf Konfigurasies"
-    SINGULARNAME: "Werf Konfigurasie"
     SITENAMEDEFAULT: "Your Site Name"
     SITETAGLINE: "Site Tagline/Slogan"
     SITETITLE: "Site title"
@@ -298,7 +283,7 @@ af:
     ACCESSHEADER: "Wie mag hierdie bladsy sien?"
     ACCESSLOGGEDIN: "Ingetekende gebruikers"
     ACCESSONLYTHESE: "Slegs hierdie mense (kies uit lys)"
-    ADDEDTODRAFT: "Added to draft site"
+    ADDEDTODRAFTSHORT: "New"
     ALLOWCOMMENTS: "Laat aanmerkings toe op hierdie bladsy?"
     APPEARSVIRTUALPAGES: "This content also appears on the virtual pages in the %s sections."
     BUTTONCANCELDRAFT: "Cancel draft changes"
@@ -307,6 +292,7 @@ af:
     BUTTONUNPUBLISH: "Onpubliseer"
     BUTTONUNPUBLISHDESC: "Verwyder hierdie bladsy van die gepubliseerde werf"
     CHANGETO: "Verander tot \"%s\""
+    CREATED: "Date Created"
     Comments: "Comments"
     Content: "Inhoud"
     DEFAULTABOUTCONTENT: "<p>U kan hierdie bladsy invul met u eie inhoud, of dit verwyder en u eie bladsye skep.<br /></p>"
@@ -315,7 +301,7 @@ af:
     DEFAULTCONTACTTITLE: "Kontak Ons"
     DEFAULTHOMECONTENT: "<p>Welkom by SilverStripe! Hierdie is die standaard huis-blad. U kan hierdie blad verander deur <a href=\"admin\">the IBS</a> oop te maak. U het nou toegang tot die <a href=\"http://doc.silverstripe.org\">ontwikkelaars dokumentasie</a>, of kan die <a href=\"http://doc.silverstripe.org/doku.php?id=tutorials\">die tutoriale</a> begin.</p>"
     DEFAULTHOMETITLE: "Huis"
-    DELETEDPAGE: "Verwyderde bladsy"
+    DELETEDPAGESHORT: "Deleted"
     DEPENDENT_NOTE: "The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links."
     DependtPageColumnLinkType: "Link type"
     DependtPageColumnURL: "URL"
@@ -324,24 +310,20 @@ af:
     EDITONLYTHESE: "Slegs hierdie mense (kies uit lys)"
     EDITORGROUPS: "Editor Groups"
     EDIT_ALL_DESCRIPTION: "Verander enige bladsy"
-    EDIT_ALL_HELP: "Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the \"Access to Site Content\" permission"
+    EDIT_ALL_HELP: "Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the \"Access to 'Pages' section\" permission"
     Editors: "Editors Groups"
     HASBROKENLINKS: "This page has broken links."
-    HOMEPAGEFORDOMAIN: "Domein(e)"
     HTMLEDITORTITLE: "Inhoud"
-    HomepageForDomain: "Hompage for this domain"
     INHERIT: "Inherit from parent page"
+    LASTUPDATED: "Last Updated"
     LINKCHANGENOTE: "Changing this page's link will also affect the links of all child pages."
     MENUTITLE: "Navigation label"
-    METADESC: "Description"
+    METADESC: "Meta Description"
     METAEXTRA: "Custom Meta Tags"
-    METAHEADER: "Search Engine Meta-tags"
-    METAKEYWORDS: "Keywords"
-    METATITLE: "Title"
-    MODIFIEDONDRAFT: "Modified on draft site"
-    NOTEUSEASHOMEPAGE: |
-                        Use this page as the 'home page' for the following domains: 
-                        							(separate multiple domains with commas)    PAGELOCATION: "Page location"
+    METAKEYWORDS: "Meta Keywords"
+    METATITLE: "Meta Title"
+    MODIFIEDONDRAFTSHORT: "Modified"
+    PAGELOCATION: "Page location"
     PAGETITLE: "Page name"
     PAGETYPE: "Blaai soort"
     PARENTID: "Ouer Bladsy"
@@ -352,8 +334,10 @@ af:
     PERMISSION_GRANTACCESS_HELP: "Allow setting of page-specific access restrictions in the \"Pages\" section."
     PLURALNAME: "Werf Vertakking"
     # First argument is a class name
+    PageTypNotAllowedOnRoot: "Page type \"%s\" is not allowed on the root level"
+    # First argument is a class name
     PageTypeNotAllowed: "Page type \"%s\" not allowed as child of this parent page"
-    REMOVEDFROMDRAFT: "Removed from draft site"
+    REMOVEDFROMDRAFTSHORT: "Removed from draft"
     REMOVE_INSTALL_WARNING: "Warning: You should remove install.php from this SilverStripe install for security reasons."
     REORGANISE_DESCRIPTION: "Verander werf struktuur"
     REORGANISE_HELP: "Rearrange pages in the site tree through drag&drop."
@@ -374,6 +358,7 @@ af:
     VIEW_DRAFT_CONTENT: "View draft content"
     VIEW_DRAFT_CONTENT_HELP: "Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access."
     Viewers: "Viewers Groups"
+    Visibility: "Visibility"
     has_one_Parent: "Ouer Bladsy"
     many_many_BackLinkTracking: "Backlink Tracking"
     many_many_ImageTracking: "Image Tracking"
@@ -381,29 +366,23 @@ af:
   StaticExporter:
     BASEURL: "Base URL"
     EXPORTTO: "Export to that folder"
-    FOLDEREXPORT: "Folder to export to"
     NAME: "Static exporter"
   TableListField:
     SELECT: "Select:"
   TableListField.ss:
-    NOITEMSFOUND: "Geen items gevind"
     SORTASC: "Sorteer in stygende orde"
     SORTDESC: "Sorteer in dalende orde"
   TableListField_PageControls.ss:
-    DISPLAYING: "Wys huidiglik"
-    OF: "van"
-    TO: "na"
     VIEWFIRST: "Wys eerste"
     VIEWLAST: "Wys laaste"
     VIEWNEXT: "Wys volgende"
     VIEWPREVIOUS: "Wys vorige"
-  ThumbnailStripField:
-    NOFLASHFOUND: "No flash files found"
-    NOFOLDERFLASHFOUND: "No flash files found in"
-    NOFOLDERIMAGESFOUND: "No images found in"
-    NOIMAGESFOUND: "No images found"
-  ThumbnailStripField.ss:
-    CHOOSEFOLDER: "(Choose a folder or search above)"
+  TestFileUploadPage:
+    # Description of the page type (shown in the "add page" dialog)
+    DESCRIPTION: "Generic content page"
+  TestPage:
+    # Description of the page type (shown in the "add page" dialog)
+    DESCRIPTION: "Generic content page"
   TreeTools:
     DisplayLabel: "Display:"
   ViewArchivedEmail.ss:
@@ -416,17 +395,9 @@ af:
     EDITCONTENT: "kliek hier om die inhoud te verander"
     HEADER: "Hierdie is 'n virtuele bladsy"
     PLURALNAME: "Wesenlik Bladsye"
+    # First argument is a class name
+    PageTypNotAllowedOnRoot: "Original page type \"%s\" is not allowed on the root level for this virtual page"
     SINGULARNAME: "Virtuele Bladsy"
-  Widget:
-    # Pural name of the object, used in dropdowns and to generally identify a collection of this object in the interface
-    PLURALNAME: "Widgets"
-    # Singular name of the object, used in dropdowns and to generally identify a single object in the interface
-    SINGULARNAME: "Widget"
-  WidgetArea:
-    # Pural name of the object, used in dropdowns and to generally identify a collection of this object in the interface
-    PLURALNAME: "Widget Areas"
-    # Singular name of the object, used in dropdowns and to generally identify a single object in the interface
-    SINGULARNAME: "Widget Area"
   WidgetAreaEditor.ss:
     AVAILABLE: "Available Widgets"
     AVAILWIDGETS: "Click a widget title below to use it on this page."
@@ -437,3 +408,5 @@ af:
     CLICKTOADDWIDGET: "Click to add this widget"
   WidgetEditor.ss:
     DELETE: "Delete"
+  cms:
+    FILESYSTEMSYNC: "Sync files"
