@@ -50,7 +50,7 @@ class CMSSettingsController extends CMSMain {
 		return $form->forTemplate();
 	}
 	
-	function PreviewLink() {
+	function LinkPreview() {
 		return false;
 	}
 

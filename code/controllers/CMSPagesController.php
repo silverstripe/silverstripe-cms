@@ -11,7 +11,7 @@ class CMSPagesController extends CMSMain {
 	static $menu_title = 'Pages';	
 	static $required_permission_codes = 'CMS_ACCESS_CMSMain';
 
-	function PreviewLink() {
+	function LinkPreview() {
 		return false;
 	}
 

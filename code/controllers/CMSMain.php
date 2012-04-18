@@ -200,7 +200,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	/**
 	 * @return string
 	 */
-	public function PreviewLink() {
+	public function LinkPreview() {
 		$record = $this->getRecord($this->currentPageID());
 		$baseLink = ($record && $record instanceof Page) ? $record->Link('?stage=Stage') : Director::absoluteBaseURL();
 		return $baseLink;

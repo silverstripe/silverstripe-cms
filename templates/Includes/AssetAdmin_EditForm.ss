@@ -19,8 +19,8 @@
 		<% control Actions %>
 			$Field
 		<% end_control %>
-		<% if CurrentPage.PreviewLink %>
-		<a href="$CurrentPage.PreviewLink" class="cms-preview-toggle-link ss-ui-button" data-icon="preview">
+		<% if CurrentPage.LinkPreview %>
+		<a href="$CurrentPage.LinkPreview" class="cms-preview-toggle-link ss-ui-button" data-icon="preview">
 			<% _t('LeftAndMain.PreviewButton', 'Preview') %> &raquo;
 		</a>
 		<% end_if %>
