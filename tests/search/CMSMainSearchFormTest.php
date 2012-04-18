@@ -11,12 +11,14 @@ class CMSMainSearchFormTest extends FunctionalTest {
 		$response = $this->get(
 			'admin/pages/SearchForm/?' .
 			http_build_query(array(
-				'Title' => 'Page 10',
-				'FilterClass' => 'CMSSiteTreeFilter_Search',
+				'q' => array(
+					'Title' => 'Page 10',
+					'FilterClass' => 'CMSSiteTreeFilter_Search',
+				),
 				'action_doSearch' => true
 			))
 		);
-
+		
 		$titles = $this->getPageTitles();
 		$this->assertEquals(count($titles), 1);
 		// For some reason the title gets split into two lines

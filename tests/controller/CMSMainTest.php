@@ -228,14 +228,14 @@ class CMSMainTest extends FunctionalTest {
 		$adminuser = $this->objFromFixture('Member', 'admin');
 		$this->session()->inst_set('loggedInAs', $adminuser->ID);
 
-		$response = $this->get('admin/page/edit/show/' . $page31->ID);
+		$response = $this->get('admin/pages/edit/show/' . $page31->ID);
 		$parser = new CSSContentParser($response->getBody());
-		$crumbs = $parser->getBySelector('#page-title-heading .crumb');
+		$crumbs = $parser->getBySelector('.breadcrumbs-wrapper .crumb');
 
 		$this->assertNotNull($crumbs);
-		$this->assertEquals(2, count($crumbs));
-		$this->assertEquals('Page 3', (string)$crumbs[0]);
-		$this->assertEquals('Page 3.1', (string)$crumbs[1]);
+		$this->assertEquals(3, count($crumbs));
+		$this->assertEquals('Page 3', (string)$crumbs[1]);
+		$this->assertEquals('Page 3.1', (string)$crumbs[2]);
 
 		$this->session()->inst_set('loggedInAs', null);
 	}
