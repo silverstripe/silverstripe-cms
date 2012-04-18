@@ -1859,7 +1859,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if($dependentPagesCount) $tabDependent->setTitle(_t('SiteTree.TABDEPENDENT', "Dependent pages") . " ($dependentPagesCount)");
 		else $fields->removeFieldFromTab('Root', 'Dependent');
 		
-		$tabMain->setTitle(_t('SiteTree.TABCONTENT', "Content"));
+		$tabMain->setTitle(_t('SiteTree.TABCONTENT', "Main Content"));
 		$tabMeta->setTitle(_t('SiteTree.TABMETA', "Metadata"));
 
 		if(file_exists(BASE_PATH . '/install.php')) {
