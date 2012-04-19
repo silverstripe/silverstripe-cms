@@ -676,7 +676,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			new GridFieldPaginator(15)
 		);
 		$gridField = new GridField('Page','Pages', $list, $gridFieldConfig);
-		
+		$columns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
+
 		// Don't allow navigating into children nodes on filtered lists
 		if($params){
 			$gridField->setDisplayFields(array(
@@ -685,7 +686,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				'LastEdited' => _t('SiteTree.LASTUPDATED', 'Last Updated'),
 			));
 		}else{
-			$gridField->setDisplayFields(array(
+			$columns->setDisplayFields(array(
 				'listChildrenLink' => "",
 				'getTreeTitle' => _t('SiteTree.PAGETITLE', 'Page Title'),
 				'Created' => _t('SiteTree.CREATED', 'Date Created'),
@@ -693,13 +694,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			));
 		}
 		
-		$gridField->setFieldCasting(array(
+		$columns->setFieldCasting(array(
 			'Created' => 'Date->Ago',
 			'LastEdited' => 'Date->Ago',
 		));
 
 		$controller = $this;
-		$gridField->setFieldFormatting(array(
+		$columns->setFieldFormatting(array(
 			'listChildrenLink' => function(&$item) use($controller) {
 				$num = $item->numChildren();
 				if($num) {
