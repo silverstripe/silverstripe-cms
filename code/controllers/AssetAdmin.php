@@ -139,14 +139,15 @@ JS
 			new GridFieldDetailForm()
 		);
 		$gridField = new GridField('File','Files', $this->getList(), $gridFieldConfig);
-		$gridField->setDisplayFields(array(
+		$columns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
+		$columns->setDisplayFields(array(
 			'StripThumbnail' => '',
 			// 'Parent.FileName' => 'Folder',
 			'Title' => _t('File.Name'),
 			'Created' => _t('AssetAdmin.CREATED', 'Date'),
 			'Size' => _t('AssetAdmin.SIZE', 'Size'),
 		));
-		$gridField->setFieldCasting(array(
+		$columns->setFieldCasting(array(
 			'Created' => 'Date->Nice'
 		));
 		$gridField->setAttribute(
