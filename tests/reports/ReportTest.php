@@ -41,6 +41,17 @@ class ReportTest extends SapphireTest {
 		$this->assertNotContains('ReportTest_FakeTest',$reportNames,'ReportTest_FakeTest is NOT in reports list');
 		$this->assertNotContains('ReportTest_FakeTest2',$reportNames,'ReportTest_FakeTest2 is NOT in reports list');
 	}
+
+	function testAbstractClassesAreExcluded() {
+		$reports = SS_Report::get_reports();
+		$reportNames = array();
+		foreach($reports as $report) {
+			$reportNames[] = $report->class;
+		}
+		$this->assertNotContains('ReportTest_FakeTest_Abstract',
+			$reportNames,
+			'ReportTest_FakeTest_Abstract is NOT in reports list as it is abstract');
+	}
 }
 
 class ReportTest_FakeTest extends SS_Report implements TestOnly {
@@ -83,3 +94,24 @@ class ReportTest_FakeTest2 extends SS_Report implements TestOnly {
 		return 98;
 	}
 }
+
+abstract class ReportTest_FakeTest_Abstract extends SS_Report implements TestOnly {
+	function title() {
+		return 'Report title Abstract';
+	}
+	function columns() {
+		return array(
+			"Title" => array(
+				"title" => "Page Title Abstract"
+			)
+		);
+	}
+	function sourceRecords($params, $sort, $limit) {
+		return new ArrayList();
+	}
+
+	function sort() {
+		return 5;
+	}
+}
+
