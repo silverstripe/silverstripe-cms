@@ -14,17 +14,6 @@
  *  {@link parameterFields()}: Return a FieldList of the fields that can be used to filter this
  *  report.
  * 
- * If you can't express your report as a query, you can implement the this method instead:
- * 
- *     // Return an array of fields that can be used to sort the data
- *     public function sourceRecords($params, $sort, $limit) { ... }
- * 
- * The $sort value will be set to the corresponding key of the columns() array.  If you wish to
- * make only a subset of the columns sortable, then you can override `sortColumns()` to return a
- * subset of the array keys.
- * 
- * Note that this implementation is less efficient and should only be used when necessary.
- * 
  * If you wish to modify the report in more extreme ways, you could overload these methods instead.
  * 
  * {@link getReportField()}: Return a FormField in the place where your report's TableListField
@@ -204,6 +193,9 @@ class SS_Report extends ViewableData {
 			//collect reports into array with an attribute for 'sort'
 			foreach($reports as $report) {
 				if (in_array($report, self::$excluded_reports)) continue;   //don't use the SS_Report superclass
+				$reflectionClass = new ReflectionClass($report);
+				if ($reflectionClass->isAbstract()) continue;   //don't use abstract classes
+
 				$reportObj = new $report;
 				if (method_exists($reportObj,'sort')) $reportObj->sort = $reportObj->sort();  //use the sort method to specify the sort field
 				$reportsArray[$report] = $reportObj;
