@@ -251,7 +251,6 @@
 			 *  (Event) e
 			 */
 			onclick: function(e) {
-				// @todo i18n
 				var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';
 				if(version) {
 					message = ss.i18n.sprintf(
