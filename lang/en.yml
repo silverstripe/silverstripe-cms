@@ -338,7 +338,7 @@ en:
     PARENTID: "Parent page"
     PARENTTYPE: "Page location"
     PARENTTYPE_ROOT: "Top-level page"
-    PARENTTYPE_SUBPAGE: "Sub-page underneath a parent page (choose below)"
+    PARENTTYPE_SUBPAGE: "Sub-page underneath a parent page"
     PERMISSION_GRANTACCESS_DESCRIPTION: "Manage access rights for content"
     PERMISSION_GRANTACCESS_HELP: "Allow setting of page-specific access restrictions in the \"Pages\" section."
     # Pural name of the object, used in dropdowns and to generally identify a collection of this object in the interface

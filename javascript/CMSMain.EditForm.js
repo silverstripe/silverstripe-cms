@@ -275,7 +275,10 @@
 		 * radio button is selected
 		 */
 		$('.cms-edit-form.CMSPageSettingsController input[name="ParentType"]:checked').entwine({
-
+			onmatch: function() {
+				this.onclick();
+				this._super();
+			},
 			/**
 			 * Function: onclick
 			 *
@@ -286,7 +289,7 @@
 				var parentTreeDropDown = $('.cms-edit-form.CMSPageSettingsController #ParentID');
 
 				if (e.target.id == 'Form_EditForm_ParentType_root') parentTreeDropDown.slideUp();
-			  else parentTreeDropDown.slideDown();
+				else parentTreeDropDown.slideDown();
 			}
 		});
 
