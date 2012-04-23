@@ -276,20 +276,16 @@
 		 */
 		$('.cms-edit-form.CMSPageSettingsController input[name="ParentType"]:checked').entwine({
 			onmatch: function() {
-				this.onclick();
+				this.redraw();
 				this._super();
 			},
-			/**
-			 * Function: onclick
-			 *
-			 * Parameters:
-			 *  (Event) e
-			 */
-			onclick: function(e) {
-				var parentTreeDropDown = $('.cms-edit-form.CMSPageSettingsController #ParentID');
-
-				if (e.target.id == 'Form_EditForm_ParentType_root') parentTreeDropDown.slideUp();
-				else parentTreeDropDown.slideDown();
+			redraw: function() {
+				var treeField = $('.cms-edit-form.CMSPageSettingsController #ParentID');
+				if ($(this).attr('id') == 'Form_EditForm_ParentType_root') treeField.slideUp();
+				else treeField.slideDown();
+			},
+			onclick: function() {
+				this.redraw();
 			}
 		});
 
