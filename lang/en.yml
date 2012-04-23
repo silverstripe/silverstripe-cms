@@ -130,7 +130,7 @@ en:
   CMSPagesController:
     GalleryView: "Gallery View"
     ListView: "List View"
-    MENUTITLE: "CMSPagesController"
+    MENUTITLE: "Pages"
     TreeView: "Tree View"
   CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: "Drag'n'drop"
