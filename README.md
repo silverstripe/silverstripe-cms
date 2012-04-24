@@ -4,7 +4,7 @@ Base project folder for a SilverStripe ([http://silverstripe.org](http://silvers
 
  * [`framework`](http://github.com/silverstripe/sapphire): Module including the base framework
  * [`cms`](http://github.com/silverstripe/silverstripe-cms): Module including a Content Management System
- * `themes/blackcandy` (optional)
+ * `themes/simple` (optional)
 
 ## Server Requirements ##
 
