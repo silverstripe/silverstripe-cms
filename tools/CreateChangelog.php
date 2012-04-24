@@ -29,7 +29,7 @@ class CreateChangelog extends SilverStripeBuildTask {
 		'.' => 'https://github.com/silverstripe/silverstripe-installer/commit/%s',
 		'framework' => 'https://github.com/silverstripe/sapphire/commit/%s',
 		'cms' => 'https://github.com/silverstripe/silverstripe-cms/commit/%s',
-		'themes/blackcandy' => 'https://github.com/silverstripe-themes/silverstripe-blackcandy/commit/%s',
+		'themes/simple' => 'https://github.com/silverstripe-themes/silverstripe-simple/commit/%s',
 	);
 	
 	public $ignoreRules = array(

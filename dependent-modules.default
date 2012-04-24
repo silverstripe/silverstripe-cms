@@ -25,7 +25,7 @@
 
 cms:master git://github.com/silverstripe/silverstripe-cms.git
 framework:master git://github.com/silverstripe/sapphire.git
-
+themes/simple git://github.com/silverstripe-themes/silverstripe-simple.git
 
 
 # The following are the some other modules you might like to import
