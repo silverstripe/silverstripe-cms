@@ -67,6 +67,18 @@
 			}
 		}
 	}	
+
+	#Root_TreeView {
+		.cms-tree ul .class-Folder a span.text span.jstree-foldericon {
+			background: url(../images/blue-folder-horizontal.png) no-repeat;
+			width:16px;
+			height:16px;
+			float:left;
+			display:block;
+			margin-right:4px;
+		}
+	}
+
 	#Form_EditForm_File {
 		td {
 			// Taken care of by minimum image sizes
