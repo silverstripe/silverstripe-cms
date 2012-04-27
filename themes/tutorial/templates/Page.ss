@@ -1,7 +1,9 @@
 <!doctype html>
-<html>
+<html lang="en">
 	<head>
 		<% base_tag %>
+		<meta charset="utf-8">
+		<title></title>
 		<link rel="stylesheet" type="text/css" href="tutorial/css/layout.css" />
 		<link rel="stylesheet" type="text/css" href="tutorial/css/typography.css" />
 		<link rel="stylesheet" type="text/css" href="tutorial/css/form.css" />
