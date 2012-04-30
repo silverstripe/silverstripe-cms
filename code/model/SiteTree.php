@@ -1806,19 +1806,16 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			if(class_exists('Subsite')) $dependentColumns['Subsite.Title'] = singleton('Subsite')->i18n_singular_name();
 			
 			$dependentNote = new LiteralField('DependentNote', '<p>' . _t('SiteTree.DEPENDENT_NOTE', 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.') . '</p>');
-			$dependentTable = new TableListField(
+			$dependentTable = GridField::create(
 				'DependentPages',
-				$this->DependentPages(),
-				$dependentColumns
+				false,
+				$this->DependentPages()
 			);
-			$dependentTable->setFieldFormatting(array(
+			$dependentTable->getConfig()->getComponentByType('GridFieldDataColumns')
+				->setFieldFormatting(array(
 				'Title' => '<a href=\"admin/show/$ID\">$Title</a>',
 				'AbsoluteLink' => '<a href=\"$value\">$value</a>',
-			));
-			$dependentTable->setPermissions(array(
-				'show',
-				'export'
-			));
+				));
 		}
 		
 		$baseLink = Controller::join_links (
