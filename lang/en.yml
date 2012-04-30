@@ -271,7 +271,7 @@ en:
     ACCESSHEADER: 'Who can view this page?'
     ACCESSLOGGEDIN: 'Logged-in users'
     ACCESSONLYTHESE: 'Only these people (choose from list)'
-    ADDEDTODRAFTSHORT: New
+    ADDEDTODRAFTSHORT: Draft
     ALLOWCOMMENTS: 'Allow comments on this page?'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the %s sections.'
     BUTTONCANCELDRAFT: 'Cancel draft changes'

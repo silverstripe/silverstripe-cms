@@ -2458,7 +2458,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * Returns a map of a unique key to a (localized) title for the flag.
 	 * The unique key can be reused as a CSS class.
 	 * Use the 'updateStatusFlags' extension point to customize the flags.
-	 * Example: "deletedonlive" => "Deleted"
+	 * 
+	 * Example (simple): 
+	 * "deletedonlive" => "Deleted"
+	 * 
+	 * Example (with optional title attribute): 
+	 * "deletedonlive" => array('text' => "Deleted", 'title' => 'This page has been deleted')
 	 * 
 	 * @return array
 	 */
@@ -2466,14 +2471,26 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$flags = array();
 		if($this->IsDeletedFromStage) {
 			if($this->ExistsOnLive) {
-				$flags['removedfromdraft'] = _t('SiteTree.REMOVEDFROMDRAFTSHORT', 'Removed from draft');
+				$flags['removedfromdraft'] = array(
+					'text' => _t('SiteTree.REMOVEDFROMDRAFTSHORT', 'Removed from draft'),
+					'title' => _t('SiteTree.REMOVEDFROMDRAFTHELP', 'Page is published, but has been deleted from draft'),
+				);
 			} else {
-				$flags['deletedonlive'] = _t('SiteTree.DELETEDPAGESHORT', 'Deleted');
+				$flags['deletedonlive'] = array(
+					'text' => _t('SiteTree.DELETEDPAGESHORT', 'Deleted'),
+					'title' => _t('SiteTree.DELETEDPAGEHELP', 'Page is no longer published'),
+				);
 			}
 		} else if($this->IsAddedToStage) {
-			$flags['addedtodraft'] = _t('SiteTree.ADDEDTODRAFTSHORT', 'New');
+			$flags['addedtodraft'] = array(
+				'text' => _t('SiteTree.ADDEDTODRAFTSHORT', 'Draft'),
+				'title' => _t('SiteTree.ADDEDTODRAFTHELP', "Page has not been published yet")
+			);
 		} else if($this->IsModifiedOnStage) {
-			$flags['modified'] = _t('SiteTree.MODIFIEDONDRAFTSHORT', 'Modified');
+			$flags['modified'] = array(
+				'text' => _t('SiteTree.MODIFIEDONDRAFTSHORT', 'Modified'),
+				'title' => _t('SiteTree.MODIFIEDONDRAFTHELP', 'Page has unpublished changes'),
+			);
 		}
 
 		$this->extend('updateStatusFlags', $flags);
@@ -2503,11 +2520,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			"<span class=\"jstree-pageicon\"></span><span class=\"item\">%s</span>",
 			Convert::raw2xml(str_replace(array("\n","\r"),"",$this->MenuTitle))
 		);
-		foreach($flags as $class => $title) {
+		foreach($flags as $class => $data) {
+			if(is_string($data)) $data = array('text' => $data);
 			$treeTitle .= sprintf(
-				"<span class=\"badge %s\">%s</span>",
+				"<span class=\"badge %s\"%s>%s</span>",
 				Convert::raw2xml($class),
-				Convert::raw2xml($title)
+				(isset($data['title'])) ? sprintf(' title="%s"', Convert::raw2xml($data['title'])) : '',
+				Convert::raw2xml($data['text'])
 			);
 		}
 		
