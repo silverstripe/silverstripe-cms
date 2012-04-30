@@ -20,7 +20,7 @@
 	</div>
 	<% end_if %>
 
-	<div class="cms-tree" data-url-tree="$Link(getsubtree)" data-url-savetreenode="$Link(savetreenode)" data-hints="$SiteTreeHints">
+	<div class="cms-tree" data-url-tree="$Link(getsubtree)" data-url-savetreenode="$Link(savetreenode)" data-url-addpage="{$LinkPageAdd}AddForm/?action_doAdd=1&amp;ParentID=%s&amp;PageType=%s&amp;SecurityID=$SecurityID" data-url-editpage="$LinkPageEdit('%s')" data-hints="$SiteTreeHints">
 		$SiteTreeAsUL
 	</div>
 </div>

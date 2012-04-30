@@ -157,12 +157,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return $this->LinkWithSearch(singleton('CMSMain')->Link('galleryview'));
 	}
 
-	public function LinkPageEdit() {
-		if($id = $this->currentPageID()) {
-			return $this->LinkWithSearch(
-				Controller::join_links(singleton('CMSPageEditController')->Link('show'), $id)
-			);
-		}
+	public function LinkPageEdit($id = null) {
+		if(!$id) $id = $this->currentPageID();
+		return $this->LinkWithSearch(
+			Controller::join_links(singleton('CMSPageEditController')->Link('show'), $id)
+		);
 	}
 
 	public function LinkPageSettings() {
