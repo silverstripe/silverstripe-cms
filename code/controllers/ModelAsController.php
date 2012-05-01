@@ -38,7 +38,7 @@ class ModelAsController extends Controller implements NestedController {
 	 */
 	public function handleRequest(SS_HTTPRequest $request, DataModel $model) {
 		$this->request = $request;
-		$this->setModel($model);
+		$this->setDataModel($model);
 		
 		$this->pushCurrent();
 

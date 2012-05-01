@@ -136,7 +136,7 @@ class ContentController extends Controller {
 	public function handleRequest(SS_HTTPRequest $request, DataModel $model = null) {
 		$child  = null;
 		$action = $request->param('Action');
-		$this->setModel($model);
+		$this->setDataModel($model);
 		
 		// If nested URLs are enabled, and there is no action handler for the current request then attempt to pass
 		// control to a child controller. This allows for the creation of chains of controllers which correspond to a
