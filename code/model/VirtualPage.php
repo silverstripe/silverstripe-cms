@@ -69,11 +69,12 @@ class VirtualPage extends Page {
 	 * @return SiteTree Returns the linked page, or failing that, a new object.
 	 */
 	function CopyContentFrom() {
-		if(empty($this->record['CopyContentFromID'])) return new SiteTree();
+		$copyContentFromID = $this->CopyContentFromID;
+		if(!$copyContentFromID) return new SiteTree();
 		
 		if(!isset($this->components['CopyContentFrom'])) {
 			$this->components['CopyContentFrom'] = DataObject::get_by_id("SiteTree", 
-				$this->record['CopyContentFromID']);
+				$copyContentFromID);
 
 			// Don't let VirtualPages point to other VirtualPages
 			if($this->components['CopyContentFrom'] instanceof VirtualPage) {
@@ -89,7 +90,7 @@ class VirtualPage extends Page {
 		return $this->components['CopyContentFrom'] ? $this->components['CopyContentFrom'] : new SiteTree();
 	}
 	function setCopyContentFromID($val) {
-		if(DataObject::get_by_id('SiteTree', $val) instanceof VirtualPage) $val = 0;
+		if($val && DataObject::get_by_id('SiteTree', $val) instanceof VirtualPage) $val = 0;
 		return $this->setField("CopyContentFromID", $val);
 	}
  
