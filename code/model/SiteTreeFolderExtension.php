@@ -28,7 +28,7 @@ class SiteTreeFolderExtension extends DataExtension {
 					$fieldName = $relName .'ID';
 					$query = singleton($className)->extendedSQL("$fieldName > 0");
 					$query->distinct = true;
-					$query->select = array($fieldName);
+					$query->select(array($fieldName));
 					$usedFiles = array_merge($usedFiles, $query->execute()->column());
 
 				} elseif($joinClass == 'Folder') {
