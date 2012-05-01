@@ -666,7 +666,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return $list;
 	}
 	
-	public function ListViewForm(){
+	public function ListViewForm() {
 		$params = $this->request->requestVar('q');
 		$list = $this->getList($params, $this->request->requestVar('ParentID'));
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
@@ -678,21 +678,17 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$columns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
 
 		// Don't allow navigating into children nodes on filtered lists
-		if($params){
-			$gridField->setDisplayFields(array(
-				'getTreeTitle' => _t('SiteTree.PAGETITLE', 'Page Title'),
-				'Created' => _t('SiteTree.CREATED', 'Date Created'),
-				'LastEdited' => _t('SiteTree.LASTUPDATED', 'Last Updated'),
-			));
-		}else{
-			$columns->setDisplayFields(array(
-				'listChildrenLink' => "",
-				'getTreeTitle' => _t('SiteTree.PAGETITLE', 'Page Title'),
-				'Created' => _t('SiteTree.CREATED', 'Date Created'),
-				'LastEdited' => _t('SiteTree.LASTUPDATED', 'Last Updated'),
-			));
+		$fields = array(
+			'getTreeTitle' => _t('SiteTree.PAGETITLE', 'Page Title'),
+			'Created' => _t('SiteTree.CREATED', 'Date Created'),
+			'LastEdited' => _t('SiteTree.LASTUPDATED', 'Last Updated'),
+		);
+
+		if($params) {
+			$fields = array_merge(array('listChildrenLink' => ''), $fields);
 		}
-		
+
+		$columns->setDisplayFields($fields);
 		$columns->setFieldCasting(array(
 			'Created' => 'Date->Ago',
 			'LastEdited' => 'Date->Ago',
@@ -708,7 +704,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 						$controller->Link(),
 						$item->ID,
 						$num
-					);	
+					);
 				}
 			},
 			'getTreeTitle' => '<a class=\"cms-panel-link\" href=\"' . 
