@@ -790,13 +790,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			
 			$this->response->addHeader(
 				'X-Status',
-				sprintf(
-					_t(
-						'LeftAndMain.STATUSPUBLISHEDSUCCESS', 
-						"Published '%s' successfully",
-						'Status message after publishing a page, showing the page title'
-					),
-					$record->Title
+				_t(
+					'LeftAndMain.STATUSPUBLISHEDSUCCESS', 
+					"Published '{title}' successfully",
+					'Status message after publishing a page, showing the page title',
+					array('title' => $record->Title)
 				)
 			);
 		} else {
@@ -880,16 +878,16 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		if(isset($descendantsRemoved)) {
 			$descRemoved = " and $descendantsRemoved descendants";
-			$descRemoved = sprintf(' '._t('CMSMain.DESCREMOVED', 'and %s descendants'), $descendantsRemoved);
+			$descRemoved = ' ' . _t('CMSMain.DESCREMOVED', 'and {count} descendants', array('count' => $descendantsRemoved));
 		} else {
 			$descRemoved = '';
 		}
 
 		$form->sessionMessage(
-			sprintf(
-				_t('CMSMain.REMOVED', 'Deleted \'%s\'%s from live site'), 
-				$recordTitle, 
-				$descRemoved
+			_t(
+				'CMSMain.REMOVED', 
+				'Deleted \'{title}\'{additionalinfo} from live site', 
+				array('title' => $recordTitle, 'additionalinfo' => $descRemoved)
 			),
 			'good'
 		);
@@ -936,9 +934,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		$this->response->addHeader(
 			'X-Status',
-			sprintf(
-				_t('CMSMain.RESTORED',"Restored '%s' successfully",'Param %s is a title'),
-				$record->Title
+			_t(
+				'CMSMain.RESTORED',
+				"Restored '{title}' successfully",
+				'Param %s is a title',
+				array('title' => $record->Title)
 			)
 		);
 		
@@ -963,10 +963,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$record->delete();
 
 		$form->sessionMessage(
-			sprintf(
-				_t('CMSMain.REMOVEDPAGEFROMDRAFT',"Removed '%s' from the draft site"),
-				$record->Title
-			),
+			_t('CMSMain.REMOVEDPAGEFROMDRAFT',"Removed '{title}' from the draft site", array('title' => $record->Title)),
 			'good'
 		);
 
@@ -991,7 +988,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		$this->response->addHeader(
 			'X-Status',
-			sprintf(_t('CMSMain.REMOVEDPAGE',"Removed '%s' from the published site"),$record->Title)
+			_t('CMSMain.REMOVEDPAGE',"Removed '{title}' from the published site", array('title' => $record->Title))
 		);
 		
 		return $this->getResponseNegotiator()->respond($this->request);
@@ -1026,16 +1023,16 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		if($version) {
 			$record->doRollbackTo($version);
-			$message = sprintf(
-				_t('CMSMain.ROLLEDBACKVERSION',"Rolled back to version #%d.  New version number is #%d"),
-				$data['Version'],
-				$record->Version
+			$message = _t(
+				'CMSMain.ROLLEDBACKVERSION',
+				"Rolled back to version #%d.  New version number is #%d",
+				array('version' => $data['Version'], 'versionnew' => $record->Version)
 			);
 		} else {
 			$record->doRollbackTo('Live');
-			$message = sprintf(
-				_t('CMSMain.ROLLEDBACKPUB',"Rolled back to published version. New version number is #%d"),
-				$record->Version
+			$message = _t(
+				'CMSMain.ROLLEDBACKPUB',"Rolled back to published version. New version number is #{version}",
+				array('version' => $record->Version)
 			);
 		}
 
@@ -1150,7 +1147,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 					break;
 				}
 			}
-			$response .= sprintf(_t('CMSMain.PUBPAGES',"Done: Published %d pages"), $count);
+			$response .= _t('CMSMain.PUBPAGES',"Done: Published {count} pages", array('count' => $count));
 
 		} else {
 			$token = SecurityToken::inst();
@@ -1188,9 +1185,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		$this->response->addHeader(
 			'X-Status',
-			sprintf(
-				_t('CMSMain.RESTORED',"Restored '%s' successfully",'Param %s is a title'),
-				$restoredPage->TreeTitle
+			_t(
+				'CMSMain.RESTORED',
+				"Restored '{title}' successfully", 
+				array('title' => $restoredPage->TreeTitle)
 			)
 		);
 		
@@ -1268,7 +1266,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$title = _t("CMSPagesController.MENUTITLE", LeftAndMain::menu_title_for_class('CMSPagesController'));
 		return array(
 			"CMS_ACCESS_CMSMain" => array(
-				'name' => sprintf(_t('CMSMain.ACCESS', "Access to '%s' section"), $title),
+				'name' => _t('CMSMain.ACCESS', "Access to '{title}' section", array('title' => $title)),
 				'category' => _t('Permission.CMS_ACCESS_CATEGORY', 'CMS Access'),
 				'help' => _t(
 					'CMSMain.ACCESS_HELP',

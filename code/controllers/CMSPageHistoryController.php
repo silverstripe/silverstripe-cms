@@ -99,17 +99,22 @@ class CMSPageHistoryController extends CMSMain {
 
 			$view = _t('CMSPageHistoryController.VIEW',"view");
 			
-			$message = sprintf(
-				_t('CMSPageHistoryController.COMPARINGVERSION',"Comparing versions %s and %s."),
-				sprintf('%s (<a href="%s">%s</a>)', $versionID, Controller::join_links($link, $versionID), $view),
-				sprintf('%s (<a href="%s">%s</a>)', $compareID, Controller::join_links($link, $compareID), $view)
+			$message = _t(
+				'CMSPageHistoryController.COMPARINGVERSION',
+				"Comparing versions {version1} and {version2}.",
+				array(
+					'version1' => sprintf('%s (<a href="%s">%s</a>)', $versionID, Controller::join_links($link, $versionID), $view),
+					'version2' => sprintf('%s (<a href="%s">%s</a>)', $compareID, Controller::join_links($link, $compareID), $view)
+				)
 			);
 			
 			$revert->setReadonly(true);
 		}
 		else {
-			$message = sprintf(
-				_t('CMSPageHistoryController.VIEWINGVERSION',"Currently viewing version %s."), $versionID
+			$message = _t(
+				'CMSPageHistoryController.VIEWINGVERSION',
+				"Currently viewing version {version}.", 
+				array('version' => $versionID)
 			);
 		}
 		
