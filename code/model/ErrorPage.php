@@ -204,12 +204,10 @@ class ErrorPage extends Page {
 			fwrite($fh, $errorContent);
 			fclose($fh);
 		} else {
-			$fileErrorText = sprintf(
-				_t(
-					"ErrorPage.ERRORFILEPROBLEM",
-					"Error opening file \"%s\" for writing. Please check file permissions."
-				),
-				$errorFile
+			$fileErrorText = _t(
+				"ErrorPage.ERRORFILEPROBLEM",
+				"Error opening file \"{filename}\" for writing. Please check file permissions.",
+				array('filename' => $errorFile)
 			);
 			$this->response->addHeader('X-Status', $fileErrorText);
 			return $this->httpError(405);

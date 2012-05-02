@@ -140,7 +140,7 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 		$title = _t("ReportAdmin.MENUTITLE", LeftAndMain::menu_title_for_class($this->class));
 		return array(
 			"CMS_ACCESS_ReportAdmin" => array(
-				'name' => sprintf(_t('CMSMain.ACCESS', "Access to '%s' section"), $title),
+				'name' => _t('CMSMain.ACCESS', "Access to '{title}' section", array('title' => $title)),
 				'category' => _t('Permission.CMS_ACCESS_CATEGORY', 'CMS Access')
 			)
 		);

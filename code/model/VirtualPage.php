@@ -301,14 +301,10 @@ class VirtualPage extends Page {
 		$orig = $this->CopyContentFrom();
 		if(!$orig->stat('can_be_root') && !$this->ParentID) {
 			$result->error(
-				sprintf(
-					_t(
-						'VirtualPage.PageTypNotAllowedOnRoot', 
-						'Original page type "%s" is not allowed on the root level for this virtual page', 
-						
-						'First argument is a class name'
-					),
-					$orig->i18n_singular_name()
+				_t(
+					'VirtualPage.PageTypNotAllowedOnRoot', 
+					'Original page type "{type}" is not allowed on the root level for this virtual page', 
+					array('type' => $orig->i18n_singular_name())
 				),
 				'CAN_BE_ROOT_VIRTUAL'
 			);

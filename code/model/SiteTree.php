@@ -1495,14 +1495,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			if($subject->ID && !in_array($subject->ClassName, $allowed)) {
 				
 				$result->error(
-					sprintf(
-						_t(
-							'SiteTree.PageTypeNotAllowed', 
-							'Page type "%s" not allowed as child of this parent page', 
-							
-							'First argument is a class name'
-						),
-						$subject->i18n_singular_name()
+					_t(
+						'SiteTree.PageTypeNotAllowed', 
+						'Page type "{type}" not allowed as child of this parent page', 
+						array('type' => $subject->i18n_singular_name())
 					),
 					'ALLOWED_CHILDREN'
 				);
@@ -1512,14 +1508,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		// "Can be root" validation
 		if(!$this->stat('can_be_root') && !$this->ParentID) {
 			$result->error(
-				sprintf(
-					_t(
-						'SiteTree.PageTypNotAllowedOnRoot', 
-						'Page type "%s" is not allowed on the root level', 
-						
-						'First argument is a class name'
-					),
-					$this->i18n_singular_name()
+				_t(
+					'SiteTree.PageTypNotAllowedOnRoot', 
+					'Page type "{type}" is not allowed on the root level', 
+					array('type' => $this->i18n_singular_name())
 				),
 				'CAN_BE_ROOT'
 			);
@@ -1781,9 +1773,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						. $parentList;
 				}
 
-				$statusMessage[] = sprintf(
-					_t('SiteTree.APPEARSVIRTUALPAGES', "This content also appears on the virtual pages in the %s sections."),
-					$parentList
+				$statusMessage[] = _t(
+					'SiteTree.APPEARSVIRTUALPAGES', 
+					"This content also appears on the virtual pages in the {title} sections.",
+					array('title' => $parentList)
 				);
 			}
 		}
