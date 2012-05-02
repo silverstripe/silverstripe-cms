@@ -253,6 +253,21 @@ JS
 			)
 		));
 
+		// Move actions to "details" tab (they don't make sense on list/tree view)
+		$actions = $form->Actions();
+		$saveBtn = $actions->fieldByName('action_save');
+		$deleteBtn = $actions->fieldByName('action_delete');
+		if(($saveBtn || $deleteBtn) && $fields->fieldByName('Root.DetailsView')) {
+			$actions->removeByName('action_save');
+			$actions->removeByName('action_delete');
+			$fields->addFieldToTab(
+				'Root.DetailsView', 
+				CompositeField::create($saveBtn,$deleteBtn)->addExtraClass('Actions')
+			);
+		}
+		
+
+
 		$fields->setForm($form);
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 		// TODO Can't merge $FormAttributes in template at the moment
