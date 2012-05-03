@@ -195,7 +195,7 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 				new GridFieldDataColumns(),
 				new GridFieldFooter()
 			);
-			$gridField = new GridField('Reports','Reports', $this->Reports(), $gridFieldConfig);
+			$gridField = new GridField('Reports',false, $this->Reports(), $gridFieldConfig);
 			$columns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
 			$columns->setDisplayFields(array(
 				'title' => 'Title',
