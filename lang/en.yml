@@ -33,6 +33,8 @@ en:
     Back: Back
   BasicFieldsTestPage:
     DESCRIPTION: 'Generic content page'
+  BigFamilyPage:
+    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Any
     BROKENLINKS: 'Broken links report'
@@ -279,6 +281,7 @@ en:
     ACCESSHEADER: 'Who can view this page?'
     ACCESSLOGGEDIN: 'Logged-in users'
     ACCESSONLYTHESE: 'Only these people (choose from list)'
+    ADDEDTODRAFTHELP: 'Page has not been published yet'
     ADDEDTODRAFTSHORT: Draft
     ALLOWCOMMENTS: 'Allow comments on this page?'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the %s sections.'
@@ -297,6 +300,7 @@ en:
     DEFAULTCONTACTTITLE: 'Contact Us'
     DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
     DEFAULTHOMETITLE: Home
+    DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Deleted
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
     DependtPageColumnLinkType: 'Link type'
@@ -318,6 +322,7 @@ en:
     METAEXTRA: 'Custom Meta Tags'
     METAKEYWORDS: 'Meta Keywords'
     METATITLE: 'Meta Title'
+    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
     PAGELOCATION: 'Page location'
     PAGETITLE: 'Page name'
@@ -331,6 +336,7 @@ en:
     PLURALNAME: 'Site Tres'
     PageTypNotAllowedOnRoot: 'Page type "%s" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "%s" not allowed as child of this parent page'
+    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
     REMOVEDFROMDRAFTSHORT: 'Removed from draft'
     REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
     REORGANISE_DESCRIPTION: 'Change site structure'
