@@ -7,6 +7,7 @@
 
 				<h2 id="page-title-heading">
 				<% control Controller %>
+					<% include CMSSectionIcon %>
 					<% include CMSBreadcrumbs %>
 				<% end_control %>
 				</h2>
