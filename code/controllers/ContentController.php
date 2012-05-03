@@ -443,28 +443,16 @@ HTML;
 			@file_get_contents($url);
 		}
 		
-		$title = new Varchar("Title");
-		$content = new HTMLText("Content");
-		$username = Convert::raw2xml(Session::get('username'));
-		$password = Convert::raw2xml(Session::get('password'));
-		$title->setValue("Installation Successful");
 		global $project;
-		$tutorialOnly = ($project == 'tutorial') ? "<p>This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at <a href=\"http://doc.silverstripe.org/doku.php?id=tutorials\">our new tutorials</a>.</p>" : '';
-		$content->setValue(<<<HTML
-			<p style="margin: 1em 0"><b>Congratulations, SilverStripe has been successfully installed.</b></p>
-			
-			$tutorialOnly
-			<p>You can start editing your site's content by opening <a href="admin/">the CMS</a>. <br />
-				&nbsp; &nbsp; Email: $username<br />
-				&nbsp; &nbsp; Password: $password<br />
-			</p>
-			<div style="background:#fcf8f2; border-radius:4px; border: 1px solid #ffc28b; padding:5px; margin:5px;"><img src="cms/images/dialogs/alert.gif" style="border: none; margin-right: 10px; float: left; height:48px; width:48px" /><p style="color: #cb6a1c; margin-bottom:0;">For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="home/deleteinstallfiles" style="text-align: center;">Click here to delete the install files.</a></p></div>
-HTML
-);
-
+		$data = new ArrayData(array(
+			'Project' => Convert::raw2xml($project),
+			'Username' => Convert::raw2xml(Session::get('username')),
+			'Password' => Convert::raw2xml(Session::get('password')),
+		));
+		
 		return array(
-			"Title" => $title,
-			"Content" => $content,
+			"Title" => DBField::create_field('Varchar', "Title", "Installation Successful"),
+			"Content" => $data->renderWith('Install_successfullyinstalled'),
 		);
 	}
 
@@ -472,10 +460,7 @@ HTML
 		if(!Permission::check("ADMIN")) return Security::permissionFailure($this);
 		
 		$title = new Varchar("Title");
-		$content = new HTMLText("Content");
-		$tempcontent = '';
-		$username = Convert::raw2xml(Session::get('username'));
-		$password = Convert::raw2xml(Session::get('password'));
+		$content = new HTMLText('Content');
 
 		// We can't delete index.php as it might be necessary for URL routing without mod_rewrite.
 		// There's no safe way to detect usage of mod_rewrite across webservers,
@@ -487,39 +472,23 @@ HTML
 			'index.html'
 		);
 
+		$unsuccessful = new ArrayList();
 		foreach($installfiles as $installfile) {
 			if(file_exists(BASE_PATH . '/' . $installfile)) {
 				@unlink(BASE_PATH . '/' . $installfile);
 			}
 
 			if(file_exists(BASE_PATH . '/' . $installfile)) {
-				$unsuccessful[] = $installfile;
+				$unsuccessful->push(new ArrayData(array('File' => $installfile)));
 			}
 		}
 
-		if(isset($unsuccessful)) {
-			$title->setValue("Unable to delete installation files");
-			$tempcontent = "<p style=\"margin: 1em 0\">Unable to delete installation files. Please delete the files below manually:</p><ul>";
-			foreach($unsuccessful as $unsuccessfulFile) {
-				$tempcontent .= "<li>$unsuccessfulFile</li>";
-			}
-			$tempcontent .= "</ul>";
-		} else {
-			$title->setValue("Deleted installation files");
-			$tempcontent = <<<HTML
-<p style="margin: 1em 0">Installation files have been successfully deleted.</p>
-HTML
-			;
-		}
-
-		$tempcontent .= <<<HTML
-			<p style="margin: 1em 0">You can start editing your site's content by opening <a href="admin/">the CMS</a>. <br />
-				&nbsp; &nbsp; Email: $username<br />
-				&nbsp; &nbsp; Password: $password<br />
-			</p>
-HTML
-		;
-		$content->setValue($tempcontent);
+		$data = new ArrayData(array(
+			'Username' => Convert::raw2xml(Session::get('username')),
+			'Password' => Convert::raw2xml(Session::get('password')),
+			'UnsuccessfulFiles' => $unsuccessful
+		));
+		$content->setValue($data->renderWith('Install_deleteinstallfiles'));
 
 		return array(
 			"Title" => $title,
