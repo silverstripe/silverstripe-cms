@@ -555,8 +555,10 @@ class LeftAndMain extends Controller {
 				$siteConfig = SiteConfig::current_site_config();
 				$treeTitle =  $siteConfig->Title;
 			}
+
+			$treeTitle_XML = Convert::raw2xml($treeTitle);
 			
-			$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-0\" class=\"Root nodelete\"><a href=\"$rootLink\"><strong>$treeTitle</strong></a>"
+			$siteTree = "<ul id=\"sitetree\" class=\"tree unformatted\"><li id=\"record-0\" class=\"Root nodelete\"><a href=\"$rootLink\"><strong>$treeTitle_XML</strong></a>"
 				. $siteTree . "</li></ul>";
 		}
 
