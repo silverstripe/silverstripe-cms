@@ -25,6 +25,19 @@
 				el.siblings().setSelected(false);
 			}
 		});
+
+		/**
+		 * Reset the parent node selection if the type is
+		 * set back to "toplevel page", to avoid submitting inconsistent state.
+		 */
+		$(".cms-add-form .parent-mode :input").entwine({
+			onclick: function(e) {
+				if(this.val() == 'top') {
+					var parentField = this.closest('form').find('#ParentID .TreeDropdownField');
+					parentField.setValue('');
+				}
+			}
+		});
 		
 		$(".cms-add-form").entwine({
 			onmatch: function() {

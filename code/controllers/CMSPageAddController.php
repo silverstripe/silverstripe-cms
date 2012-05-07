@@ -97,10 +97,7 @@ class CMSPageAddController extends CMSPageEditController {
 
 	public function doAdd($data, $form) {
 		$className = isset($data['PageType']) ? $data['PageType'] : "Page";
-		$parentMode = isset($data['ParentModeField']) ? $data['ParentModeField'] : "top";
 		$parentID = isset($data['ParentID']) ? (int)$data['ParentID'] : 0;
-
-		if ($parentMode == "top") $parentID = 0;
 
 		$suffix = isset($data['Suffix']) ? "-" . $data['Suffix'] : null;
 
