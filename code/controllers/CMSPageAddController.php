@@ -51,7 +51,9 @@ class CMSPageAddController extends CMSPageEditController {
 					"child//$childTitle" => $parentField = new TreeDropdownField(
 						"ParentID", 
 						"",
-						'SiteTree'
+						'SiteTree',
+						'ID',
+						'TreeTitle'
 					)
 				)
 			),
