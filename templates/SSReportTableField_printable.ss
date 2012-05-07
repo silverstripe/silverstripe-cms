@@ -6,7 +6,7 @@
 <title>Print</title>
 </head>
 
-<!-- <body onload="window.print();"> -->
+<%-- <body onload="window.print();"> --%>
 <body>
 	<% control Form.Controller %>
 		<h1 style="margin-bottom: 0">$CurrentReport.Title</h1>
