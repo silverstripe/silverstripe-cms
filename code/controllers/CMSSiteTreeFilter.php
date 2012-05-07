@@ -74,9 +74,9 @@ abstract class CMSSiteTreeFilter extends Object {
 		
 			if(!empty($parents)) {
 				$q = new SQLQuery();
-				$q->select(array('"ID"','"ParentID"'))
-					->from('"SiteTree"')
-					->where('"ID" in ('.implode(',',array_keys($parents)).')');
+				$q->setSelect(array('"ID"','"ParentID"'))
+					->setFrom('"SiteTree"')
+					->setWhere('"ID" in ('.implode(',',array_keys($parents)).')');
 
 				foreach($q->execute() as $row) {
 					if ($row['ParentID']) $parents[$row['ParentID']] = true;
@@ -144,10 +144,10 @@ class CMSSiteTreeFilter_ChangedPages extends CMSSiteTreeFilter {
 	function pagesIncluded() {
 		$ids = array();
 		$q = new SQLQuery();
-		$q->select(array('"SiteTree"."ID"','"SiteTree"."ParentID"'))
-			->from('"SiteTree"')
-			->leftJoin('SiteTree_Live', '"SiteTree_Live"."ID" = "SiteTree"."ID"')
-			->where('"SiteTree"."Version" > "SiteTree_Live"."Version"');
+		$q->setSelect(array('"SiteTree"."ID"','"SiteTree"."ParentID"'))
+			->setFrom('"SiteTree"')
+			->addLeftJoin('SiteTree_Live', '"SiteTree_Live"."ID" = "SiteTree"."ID"')
+			->setWhere('"SiteTree"."Version" > "SiteTree_Live"."Version"');
 
 		foreach($q->execute() as $row) {
 			$ids[] = array('ID'=>$row['ID'],'ParentID'=>$row['ParentID']);
@@ -176,8 +176,8 @@ class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter {
 	function pagesIncluded() {
 		$ids = array();
 		$q = new SQLQuery();
-		$q->select(array('"ID"','"ParentID"'))
-			->from('"SiteTree"');
+		$q->setSelect(array('"ID"','"ParentID"'))
+			->setFrom('"SiteTree"');
 		$where = array();
 		
 		$SQL_params = Convert::raw2sql($this->params);
@@ -207,7 +207,7 @@ class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter {
 					}
 			}
 		}
-		$q->where(empty($where) ? '' : '(' . implode(') AND (',$where) . ')');
+		$q->setWhere(empty($where) ? '' : '(' . implode(') AND (',$where) . ')');
 
 		foreach($q->execute() as $row) {
 			$ids[] = array('ID'=>$row['ID'],'ParentID'=>$row['ParentID']);
