@@ -119,6 +119,12 @@ class SilverStripeNavigatorItem extends ViewableData {
 	 * For example, a "future state" item might show a date selector.
 	 */
 	function getHTML() {}
+
+	/**
+	* @return String
+	* Text displayed in watermark
+	*/
+	function getWatermark() {}
 	
 	/**
 	 * Optional link to a specific view of this record.
@@ -214,6 +220,10 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
 			return "<a href=\"$this->recordLink\">". _t('ContentController.DRAFTSITE', 'Draft Site') ."</a>";
 		}
 	}
+
+	function getWatermark() {
+		return _t('ContentController.DRAFTSITE');
+	}
 	
 	function getMessage() {
 		return "<div id=\"SilverStripeNavigatorMessage\" title=\"". _t('ContentControl.NOTEWONTBESHOWN', 'Note: this message will not be shown to your visitors') ."\">".  _t('ContentController.DRAFTSITE', 'Draft Site') ."</div>";
@@ -257,6 +267,10 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem {
 			$this->recordLink = Controller::join_links($livePage->AbsoluteLink(), "?stage=Live");
 			return "<a href=\"$this->recordLink\">". _t('ContentController.PUBLISHEDSITE', 'Published Site') ."</a>";
 		}
+	}
+
+	function getWatermark() {
+		return _t('ContentController.PUBLISHEDSITE');
 	}
 	
 	function getMessage() {
