@@ -8,18 +8,18 @@
 				config.contextmenu = {
 					'items': function(node) {
 						// Build a list for allowed children as submenu entries
-						var ssclass = node.data('ssclass');
+						var pagetype = node.data('pagetype');
 						var id = node.data('id');
 
 						var allowedChildren = new Object;
-						$(hints[ssclass].allowedChildren).each(
+						$(hints[pagetype].allowedChildren).each(
 							function(key, val){
 								allowedChildren["allowedchildren-" + key ] = {
 									'label': '<span class="jstree-pageicon"></span>' + val.ssname,
-									'_class': 'class-' + val.ssclass,
+									'_class': 'class-' + val.pagetype,
 									'action': function(obj) {
 										$('.cms-container').loadPanel(ss.i18n.sprintf(
-											self.data('urlAddpage'), id, val.ssclass
+											self.data('urlAddpage'), id, val.pagetype
 										));
 									}
 								};
