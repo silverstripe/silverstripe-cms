@@ -18,7 +18,7 @@ class CMSSettingsController extends CMSMain {
 		$form->addExtraClass('root-form');
 		$form->addExtraClass('cms-edit-form');
 		// TODO Can't merge $FormAttributes in template at the moment
-		$form->addExtraClass('cms-content center ss-tabset');
+		$form->addExtraClass('cms-content center ss-tabset cms-panel-padded');
 		if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 		$form->setHTMLID('Form_EditForm');
 		$form->loadDataFrom($siteConfig);
