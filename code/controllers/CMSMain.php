@@ -888,17 +888,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$descRemoved = '';
 		}
 
-		$form->sessionMessage(
-			_t(
-				'CMSMain.REMOVED', 
-				'Deleted \'{title}\'{additionalinfo} from live site', 
-				array('title' => $recordTitle, 'additionalinfo' => $descRemoved)
-			),
-			'good'
+		$this->response->addHeader(
+			'X-Status',
+			sprintf(_t('CMSMain.REMOVED', 'Deleted \'%s\'%s from live site'), $recordTitle, $descRemoved)
 		);
-
+		
 		// Even if the record has been deleted from stage and live, it can be viewed in "archive mode"
-		return $this->redirect(Controller::join_links($this->Link('show'), $recordID));
+		return $this->getResponseNegotiator()->respond($this->request);
 	}
 
 	/**
@@ -967,13 +963,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$recordID = $record->ID;
 		$record->delete();
 
-		$form->sessionMessage(
-			_t('CMSMain.REMOVEDPAGEFROMDRAFT',"Removed '{title}' from the draft site", array('title' => $record->Title)),
-			'good'
+		$this->response->addHeader(
+			'X-Status',
+			sprintf(_t('CMSMain.REMOVEDPAGEFROMDRAFT',"Removed '%s' from the draft site"), $record->Title)
 		);
-
+		
 		// Even if the record has been deleted from stage and live, it can be viewed in "archive mode"
-		return $this->redirect(Controller::join_links($this->Link('show'), $recordID));
+		return $this->getResponseNegotiator()->respond($this->request);
 	}
 
 	function publish($data, $form) {
