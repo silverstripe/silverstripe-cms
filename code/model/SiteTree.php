@@ -1384,7 +1384,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		// If there is no URLSegment set, generate one from Title
 		if((!$this->URLSegment || $this->URLSegment == 'new-page') && $this->Title) {
 			$this->URLSegment = $this->generateURLSegment($this->Title);
-		} else if($this->isChanged('URLSegment')) {
+		} else if($this->isChanged('URLSegment', 2)) {
+			// Do a strict check on change level, to avoid double encoding caused by
+			// bogus changes through forceChange()
 			$filter = URLSegmentFilter::create();
 			$this->URLSegment = $filter->filter($this->URLSegment);
 			// If after sanitising there is no URLSegment, give it a reasonable default
