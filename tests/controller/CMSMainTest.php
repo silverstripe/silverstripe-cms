@@ -38,7 +38,7 @@ class CMSMainTest extends FunctionalTest {
 		$response = $this->get("admin/cms/publishall?confirm=1");
 
 		$this->assertContains(
-			_t('CMSMain.PUBPAGES', 'Done: Published %d pages', '', array('count' => 30)),
+			'Done: Published 30 pages',
 			$response->getBody()
 		);
 	
