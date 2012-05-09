@@ -36,9 +36,9 @@ class CMSMainTest extends FunctionalTest {
 		$this->session()->inst_set('loggedInAs', $this->idFromFixture('Member', 'admin'));
 		
 		$response = $this->get("admin/cms/publishall?confirm=1");
-		
+
 		$this->assertContains(
-			sprintf(_t('CMSMain.PUBPAGES',"Done: Published %d pages"), 30), 
+			_t('CMSMain.PUBPAGES', 'Done: Published %d pages', '', array('count' => 30)),
 			$response->getBody()
 		);
 	
