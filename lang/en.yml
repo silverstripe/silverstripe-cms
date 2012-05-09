@@ -19,7 +19,7 @@ en:
     ListView: 'List View'
     NEWFOLDER: NewFolder
     SIZE: Size
-    THUMBSDELETED: '%s unused thumbnails have been deleted'
+    THUMBSDELETED: '{count} unused thumbnails have been deleted'
     TreeView: 'Tree View'
     Upload: Upload
     MENUTITLE: Files
@@ -67,7 +67,7 @@ en:
     UNPUBLISHED_PAGES: 'Un-published %d pages'
     UNPUBLISH_PAGES: Un-publish
   CMSMain:
-    ACCESS: 'Access to ''%s'' section'
+    ACCESS: 'Access to ''{title}'' section'
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
     AddNew: 'Add new page'
     AddNewButton: 'Add new'
@@ -76,7 +76,7 @@ en:
     Create: Create
     DELETE: 'Delete draft'
     DELETEFP: Delete
-    DESCREMOVED: 'and %s descendants'
+    DESCREMOVED: 'and {count} descendants'
     EMAIL: Email
     NEW: 'New '
     PAGENOTEXISTS: 'This page doesn''t exist'
@@ -86,14 +86,14 @@ en:
     PUBALLCONFIRM: 'Please publish every page in the site, copying content stage to live'
     PUBALLFUN: '"Publish All" functionality'
     PUBALLFUN2: "Pressing this button will do the equivalent of going to every page and pressing \"publish\".  It's\n				intended to be used after there have been massive edits of the content, such as when the site was\n				first built."
-    PUBPAGES: 'Done: Published %d pages'
-    REMOVED: 'Deleted ''%s''%s from live site'
-    REMOVEDPAGE: 'Removed ''%s'' from the published site'
-    REMOVEDPAGEFROMDRAFT: 'Removed ''%s'' from the draft site'
+    PUBPAGES: 'Done: Published {count} pages'
+    REMOVED: 'Deleted ''{title}''{additionalinfo} from live site'
+    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
+    REMOVEDPAGEFROMDRAFT: 'Removed ''{title}'' from the draft site'
     RESTORE: Restore
-    RESTORED: 'Restored ''%s'' successfully'
+    RESTORED: 'Restored ''{title}'' successfully'
     ROLLBACK: 'Roll back to this version'
-    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #%d'
+    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
     ROLLEDBACKVERSION: 'Rolled back to version #%d.  New version number is #%d'
     SAVE: Save
     SAVEDRAFT: 'Save Draft'
@@ -111,12 +111,12 @@ en:
   CMSPageHistoryController:
     COMPAREMODE: 'Compare mode (select two)'
     COMPAREVERSIONS: 'Compare Versions'
-    COMPARINGVERSION: 'Comparing versions %s and %s.'
+    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
     REVERTTOTHISVERSION: 'Revert to this version'
     SHOWUNPUBLISHED: 'Show unpublished versions'
     SHOWVERSION: 'Show Version'
     VIEW: view
-    VIEWINGVERSION: 'Currently viewing version %s.'
+    VIEWINGVERSION: 'Currently viewing version {version}.'
     MENUTITLE: History
   CMSPageHistoryController_versions.ss:
     AUTHOR: Author
@@ -197,7 +197,7 @@ en:
     DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Server error'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
-    ERRORFILEPROBLEM: 'Error opening file "%s" for writing. Please check file permissions.'
+    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
   Folder:
     AddFolderButton: 'Add folder'
     DELETEUNUSEDTHUMBNAILS: 'Delete unused thumbnails'
@@ -208,7 +208,7 @@ en:
     DESCRIPTION: 'Generic content page'
   LeftAndMain:
     PreviewButton: Preview
-    STATUSPUBLISHEDSUCCESS: 'Published ''%s'' successfully'
+    STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: 'Search Results'
     VersionUnknown: Unknown
   LegacyTableFieldsTestPage:
@@ -256,7 +256,7 @@ en:
     LAST2WEEKS: 'Pages edited in the last 2 weeks'
     OtherGroupTitle: Other
     ParameterLiveCheckbox: 'Check live site'
-    REPEMPTY: 'The %s report is empty.'
+    REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigatorLink:
     ShareInstructions: 'To share a this to this page, copy and paste the link below.'
     ShareLink: 'Share link'
@@ -284,7 +284,7 @@ en:
     ADDEDTODRAFTHELP: 'Page has not been published yet'
     ADDEDTODRAFTSHORT: Draft
     ALLOWCOMMENTS: 'Allow comments on this page?'
-    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the %s sections.'
+    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: 'Cancel draft changes'
     BUTTONCANCELDRAFTDESC: 'Delete your draft and revert to the currently published page'
     BUTTONSAVEPUBLISH: 'Save & Publish'
@@ -334,8 +334,8 @@ en:
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
     PLURALNAME: 'Site Tres'
-    PageTypNotAllowedOnRoot: 'Page type "%s" is not allowed on the root level'
-    PageTypeNotAllowed: 'Page type "%s" not allowed as child of this parent page'
+    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
+    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
     REMOVEDFROMDRAFTSHORT: 'Removed from draft'
     REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
@@ -392,7 +392,7 @@ en:
     EDITCONTENT: 'click here to edit the content'
     HEADER: 'This is a virtual page'
     PLURALNAME: 'Virtual Pags'
-    PageTypNotAllowedOnRoot: 'Original page type "%s" is not allowed on the root level for this virtual page'
+    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtual Page'
   cms:
     FILESYSTEMSYNC: 'Sync files'
