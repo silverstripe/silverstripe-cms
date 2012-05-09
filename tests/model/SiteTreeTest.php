@@ -720,6 +720,26 @@ class SiteTreeTest extends SapphireTest {
 		$sitetree->URLSegment = 'valid';
 		$this->assertTrue($sitetree->validURLSegment(), 'Valid URLSegment values are allowed');
 	}
+
+	public function testURLSegmentMultiByte() {
+		$origAllow = URLSegmentFilter::$default_allow_multibyte;
+		URLSegmentFilter::$default_allow_multibyte = true;
+		$sitetree = new SiteTree();
+		$sitetree->write();
+
+		$sitetree->URLSegment = 'brötchen';
+		$sitetree->write();
+		$sitetree = DataObject::get_by_id('SiteTree', $sitetree->ID, false);
+		$this->assertEquals($sitetree->URLSegment, rawurlencode('brötchen'));
+
+		$sitetree->publish('Stage', 'Live');
+		$sitetree = DataObject::get_by_id('SiteTree', $sitetree->ID, false);
+		$this->assertEquals($sitetree->URLSegment, rawurlencode('brötchen'));
+		$sitetreeLive = Versioned::get_one_by_stage('SiteTree', 'Live', '"SiteTree"."ID" = ' .$sitetree->ID, false);
+		$this->assertEquals($sitetreeLive->URLSegment, rawurlencode('brötchen'));
+
+		URLSegmentFilter::$default_allow_multibyte = $origAllow;
+	}
 	
 	public function testVersionsAreCreated() {
 		$p = new Page();

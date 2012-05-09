@@ -87,14 +87,14 @@ class ModelAsController extends Controller implements NestedController {
 		if(!$URLSegment = $request->param('URLSegment')) {
 			throw new Exception('ModelAsController->getNestedController(): was not passed a URLSegment value.');
 		}
-
+		
 		// Find page by link, regardless of current locale settings
 		if(class_exists('Translatable')) Translatable::disable_locale_filter();
 		$sitetree = DataObject::get_one(
 			'SiteTree', 
 			sprintf(
 				'"URLSegment" = \'%s\' %s', 
-				Convert::raw2sql($URLSegment), 
+				Convert::raw2sql(rawurlencode($URLSegment)), 
 				(SiteTree::nested_urls() ? 'AND "ParentID" = 0' : null)
 			)
 		);
@@ -149,7 +149,7 @@ class ModelAsController extends Controller implements NestedController {
 	 * @return SiteTree
 	 */
 	static function find_old_page($URLSegment,$parentID = 0, $ignoreNestedURLs = false) {
-		$URLSegment = Convert::raw2sql($URLSegment);
+		$URLSegment = Convert::raw2sql(rawurlencode($URLSegment));
 		
 		$useParentIDFilter = SiteTree::nested_urls() && $parentID;
 				
