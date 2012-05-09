@@ -1,4 +1,8 @@
 <!-- 
+	PHPUnit configuration for SilverStripe
+
+	Requires PHPUnit 3.6+
+
 	Usage: 
 	 - "phpunit": Runs all tests in all folders
 	 - "phpunit framework/tests/": Run all tests of the framework module
@@ -12,14 +16,12 @@
 	  for more information on configuration and execution options.
 	- framework/dev/TestRunner.php for an alternative way to run unit tests through the "sake" CLI tool.
 -->
-<phpunit 
-	bootstrap="framework/tests/bootstrap.php"
-	colors="true"
->
+<phpunit bootstrap="framework/tests/bootstrap.php" colors="true">
 	<testsuite name="Default">
 		<directory>./</directory>
+		<exclude>framework/thirdparty/</exclude>
 	</testsuite>
-	
+
 	<filter>
 		<blacklist>
 			<directory suffix=".php">framework/dev/</directory>
@@ -28,16 +30,15 @@
 			<file>framework/tests/PhpSyntaxTest.php</file>
 		</blacklist>
 	</filter>
-	
+
 	<listeners>
 		<listener class="SS_TestListener" file="framework/dev/TestListener.php">
 		</listener>
 	</listeners>
-	
+
 	<groups>
 		<exclude>
 			<group>sanitychecks</group>
 		</exclude>
 	</groups>
-	
 </phpunit>
