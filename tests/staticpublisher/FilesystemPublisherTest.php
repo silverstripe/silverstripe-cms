@@ -78,7 +78,7 @@ class FilesystemPublisherTest extends SapphireTest {
 			'Nested URLsegment path mapping'
 		);
 	}
-	
+
 	function testUrlsToPathsWithDomainBasedCaching() {
 		$origDomainBasedCaching = FilesystemPublisher::$domain_based_caching;
 		FilesystemPublisher::$domain_based_caching = true;

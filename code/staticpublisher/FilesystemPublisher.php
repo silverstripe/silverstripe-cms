@@ -70,7 +70,11 @@ class FilesystemPublisher extends StaticPublisher {
 	 * Transforms relative or absolute URLs to their static path equivalent.
 	 * This needs to be the same logic that's used to look up these paths through
 	 * framework/static-main.php. Does not include the {@link $destFolder} prefix.
-	 * Replaces various special characters in the resulting filename similar to {@link SiteTree::generateURLSegment()}.
+	 * 
+	 * URL filtering will have already taken place for direct SiteTree links via SiteTree->generateURLSegment()).
+	 * For all other links (e.g. custom controller actions), we assume that they're pre-sanitized
+	 * to suit the filesystem needs, as its impossible to sanitize them without risking to break
+	 * the underlying naming assumptions in URL routing (e.g. controller method names).
 	 * 
 	 * Examples (without $domain_based_caching):
 	 *  - http://mysite.com/mywebroot/ => /index.html (assuming your webroot is in a subfolder)
@@ -89,21 +93,21 @@ class FilesystemPublisher extends StaticPublisher {
 	function urlsToPaths($urls) {
 		$mappedUrls = array();
 		foreach($urls as $url) {
+
+			// parse_url() is not multibyte safe, see https://bugs.php.net/bug.php?id=52923.
+			// We assume that the URL hsa been correctly encoded either on storage (for SiteTree->URLSegment),
+			// or through URL collection (for controller method names etc.).
 			$urlParts = @parse_url($url);
 			
 			// Remove base folders from the URL if webroot is hosted in a subfolder (same as static-main.php)
 			$path = isset($urlParts['path']) ? $urlParts['path'] : '';
-			if(substr(strtolower($path), 0, strlen(BASE_URL)) == strtolower(BASE_URL)) {
-				$urlSegment = substr($path, strlen(BASE_URL));
+			if(mb_substr(mb_strtolower($path), 0, mb_strlen(BASE_URL)) == mb_strtolower(BASE_URL)) {
+				$urlSegment = mb_substr($path, mb_strlen(BASE_URL));
 			} else {
 				$urlSegment = $path;
 			}
 
-			// perform similar transformations to SiteTree::generateURLSegment()
-			$urlSegment = str_replace('&amp;','-and-',$urlSegment);
-			$urlSegment = str_replace('&','-and-',$urlSegment);
-			$urlSegment = preg_replace('/[^A-Za-z0-9\/-]+/', '-', $urlSegment);
-			$urlSegment = preg_replace('/-+/', '-', $urlSegment);
+			// Normalize URLs
 			$urlSegment = trim($urlSegment, '/');
 
 			$filename = $urlSegment ? "$urlSegment.$this->fileExtension" : "index.$this->fileExtension";
