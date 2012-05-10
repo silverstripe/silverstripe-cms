@@ -9,18 +9,18 @@
 		
 			<div class="cms-content-header-tabs">
 				<ul>
-					<li <% if class == 'CMSPageEditController' %>class="ui-state-selected"<% end_if %>>
-						<a href="$LinkPageEdit" class="content-treeview cms-panel-link" title="Form_EditForm">
+					<li class="content-treeview<% if class == 'CMSPageEditController' %> ui-state-selected<% end_if %>">
+						<a href="$LinkPageEdit" class="cms-panel-link" title="Form_EditForm">
 							<% _t('CMSMain.TabContent', 'Content') %>
 						</a>
 					</li>
-					<li <% if class == 'CMSPageSettingsController' %>class="ui-state-selected"<% end_if %>>
-						<a href="$LinkPageSettings" class="content-listview cms-panel-link" title="Form_EditForm">
+					<li class="content-listview<% if class == 'CMSPageSettingsController' %> ui-state-selected<% end_if %>">
+						<a href="$LinkPageSettings" class="cms-panel-link" title="Form_EditForm">
 							<% _t('CMSMain.TabSettings', 'Settings') %>
 						</a>
 					</li>
-					<li <% if class == 'CMSPageHistoryController' %>class="ui-state-selected"<% end_if %>>
-						<a href="$LinkPageHistory" class="content-listview cms-panel-link" title="Form_EditForm">
+					<li class="content-listview<% if class == 'CMSPageHistoryController' %> ui-state-selected<% end_if %>">
+						<a href="$LinkPageHistory" class="cms-panel-link" title="Form_EditForm">
 							<% _t('CMSMain.TabHistory', 'History') %>
 						</a>
 					</li>
