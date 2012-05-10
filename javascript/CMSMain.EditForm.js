@@ -27,30 +27,117 @@
 			 */
 			onmatch : function() {
 				var self = this;
-		
-				// intercept change event, do our own writing
-				this.bind('change', function(e) {
-					if(!self.val()) return;
-					
-					self.addClass('disabled').parents('.field:first').addClass('loading');
-					var oldVal = self.val();
-					self.suggest(oldVal, function(data) {
-						self.removeClass('disabled').parents('.field:first').removeClass('loading');
-						var newVal = decodeURIComponent(data.value);
-						self.val(newVal);
-						
-						if(oldVal != newVal) {
-							var confirmMessage = ss.i18n.sprintf(
-								ss.i18n._t('UPDATEURL.CONFIRMURLCHANGED', 'The URL has been changed to\n"%s'), 
-								data.value
-							);
-							jQuery.noticeAdd({'text':confirmMessage});
-						}
-					});
-					
-				});
+				
+				// add elements and actions for editing
+				self._addActions();
+				// toggle
+				self.edit();
+				// set width of input field
+				self._autoInputWidth();
 				
 				this._super();
+			},
+			
+			/**
+			 * Function: edit
+			 *  
+			 * Toggles the edit state of the field
+			 * 
+			 * Return URLSegemnt val()
+			 * 
+			 * Parameters:
+			 *  (Bool) external (optional)
+			 */
+			edit: function(external) {
+				
+				var self = this,
+					holder = $('#URLSegmentHolder'),
+					edit = $('#Form_EditForm_URLSegment_Edit'),
+					update = $('#Form_EditForm_URLSegment_Update'),
+					cancel = $('#Form_EditForm_URLSegment_Cancel');
+				
+				// transfer current value to holder
+				holder.text(self.val());
+				
+				// toggle elements
+				if (self.is(':visible')) {
+					update.hide();
+					cancel.hide();
+					self.hide();
+					holder.show();
+					edit.show();
+				} else {
+					edit.hide();
+					holder.hide();
+					self.show();
+					update.show();
+					cancel.show();
+				}
+				
+				// field updated from another fields value
+				// reset to original state
+				if (external) {
+					self.edit();
+				}
+				
+				return self.val();
+			},
+			
+			/**
+			 * Function: update
+			 *  
+			 * Commits the change of the URLSegment to the field
+			 * Optional: pass in another element to use its value
+			 * to update the URLSegment (ex. from Title)
+			 * 
+			 * Parameters:
+			 *  (jQuery Wrapped DOM element) field (optional)
+			 */
+			update: function(field) {
+				
+				var self = this,
+					holder = $('#URLSegmentHolder'),
+					currentVal = holder.text(),
+					updateVal,
+					external = null;
+				
+				if (field && field.val() != "") {
+					updateVal = field.val();
+					external = true;
+				} else {
+					updateVal = self.val();
+				}
+				
+				if (currentVal != updateVal) {
+					
+					self.suggest(updateVal, function(data) {
+						var newVal = decodeURIComponent(data.value);
+						self.val(newVal);
+						self.edit(external);
+					});
+					
+				} else {
+					
+					self.edit();
+				}
+			},
+			
+			/**
+			 * Function: cancel
+			 *  
+			 * Cancels any changes to the field
+			 *
+			 * Return URLSegemnt val()
+			 *
+			 */
+			cancel: function() {
+				
+				var self = this,
+					holder = $('#URLSegmentHolder');
+					self.val(holder.text());
+					self.edit();
+					
+				return self.val();
 			},
 	
 			/**
@@ -63,13 +150,89 @@
 			 *  (Function) callback
 			 */
 			suggest: function(val, callback) {
+				
 				$.get(
 					this.parents('form:first').attr('action') + 
-						'/field/URLSegment/suggest/?value=' + encodeURIComponent(this.val()),
+						'/field/URLSegment/suggest/?value=' + encodeURIComponent(val),
 					function(data) {
 						callback.apply(this, arguments);
 					}
 				);
+				
+			},
+			
+			/**
+			 * Function: _addActions
+			 *  
+			 * Utility to add edit buttons and actions
+			 * 
+			 */
+			_addActions: function() {
+				
+				var self = this,
+					holder,
+					editAction,
+					updateAction,
+					cancelAction;
+					
+				// element to display non-editable text
+				holder = $('<span />', {
+					'id': 'URLSegmentHolder'
+				});
+				
+				// edit button
+				editAction = $('<button />', {
+					'id': 'Form_EditForm_URLSegment_Edit',
+					'class': 'ss-ui-button',
+					'text': 'Edit',
+					'click': function(e) {
+					 	e.preventDefault();
+						self.edit();
+					}
+				});
+				
+				// update button
+				updateAction = $('<button />', {
+					'id': 'Form_EditForm_URLSegment_Update',
+					'text': 'OK',
+					'click': function(e) {
+						e.preventDefault();
+						self.update();
+					}
+				});
+				
+				// cancel button
+				cancelAction = $('<a />', {
+					'id': 'Form_EditForm_URLSegment_Cancel',
+					'href': '#',
+					'text': 'cancel',
+					'click': function(e) {
+						e.preventDefault();
+						self.cancel();
+					}
+				});
+				
+				// insert elements
+				holder.insertAfter('.URLPrefix');
+				editAction.insertAfter(self);
+				cancelAction.insertAfter(self);
+				updateAction.insertAfter(self);
+			},
+			
+			/**
+			 * Function: _autoInputWidth
+			 *
+			 * Sets the width of input so it lines up with the other fields
+			 *
+			 */
+			_autoInputWidth: function() {
+				var self = this,
+					prefix_width,
+					new_width;
+
+				prefix_width = $('.URLPrefix').width();
+				new_width = ((self.width() + 9) - prefix_width);
+				self.width(new_width);
 			}
 		});
 
@@ -82,12 +245,20 @@
 			// Constructor: onmatch
 			onmatch : function() {
 				var self = this;
+				
+				var URLSegment = $('.cms-edit-form input[name=URLSegment]');
+				var LiveURLSegment = $('.cms-edit-form input[name=LiveURLSegment]');
 		
 				this.bind('change', function(e) {
-					self.updatePageTitleHeading();
-					self.updateURLSegment(jQuery('.cms-edit-form input[name=URLSegment]'));
-					// TODO We should really user-confirm these changes
-					self.parents('form').find('input[name=MetaTitle], input[name=MenuTitle]').val(self.val());
+					// Criteria for defining a "new" page
+					if ( (URLSegment.val().indexOf("new") == 0) && LiveURLSegment.val() == "" ) {
+						self.updatePageTitleHeading();
+						self.parents('form').find('input[name=MetaTitle], input[name=MenuTitle]').val(self.val());
+						// update the URLSegment
+						URLSegment.update(self);
+					} else {
+						return;
+					}
 				});
 				
 				this._super();
@@ -100,32 +271,6 @@
 			 */
 			updatePageTitleHeading: function() {
 				$('#page-title-heading').text(this.val());
-			},
-	
-			/**
-			 * Function: updateURLSegment
-			 * 
-			 * Parameters:
-			 *  (DOMElement) field
-			 */
-			updateURLSegment: function(field) {
-				if(!field || !field.length) return;
-				
-				// TODO The new URL value is determined asynchronously,
-				// which means we need to come up with an alternative system
-				// to ask user permission to change it.
-		
-				// TODO language/logic coupling
-				var isNew = this.val().indexOf("new") == 0;
-				var confirmMessage = ss.i18n._t(
-					'UPDATEURL.CONFIRMSIMPLE', 
-					'Do you want to update the URL from your new page title?'
-				);
-
-				// don't ask for replacement if record is considered 'new' as defined by its title
-				if(isNew || confirm(confirmMessage)) {
-					field.val(this.val()).trigger('change');
-				}
 			}
 		});
 	

@@ -3,42 +3,91 @@
 /** ----------------------------- CMS Components ------------------------------ */
 /** Style  custom to the CMSMain admin interface. CMSMain extends the built in  SilverStripe admin section styles. As much as possible we want to use those  built in styles. If anything in this file can be implemented in a generic  way then it should be include in the admin scss files.  @package cms */
 /** ------------------------------------------------------------------ Page History Section. ----------------------------------------------------------------- */
+/* line 15, ../scss/_CMSMain.scss */
 #cms-page-history-versions tr.loading { color: #999; }
+/* line 20, ../scss/_CMSMain.scss */
 #cms-page-history-versions tr.loading td:hover { cursor: none; }
+/* line 27, ../scss/_CMSMain.scss */
 #cms-page-history-versions td:hover { cursor: pointer; }
 
+/* line 34, ../scss/_CMSMain.scss */
 .CMSPageHistoryController ins { background-color: #DFD; padding: 2px; text-decoration: none; }
+/* line 40, ../scss/_CMSMain.scss */
 .CMSPageHistoryController del { background-color: #FDD; padding: 2px; color: #ff4444; }
 
 /** -------------------------------------------- Tree View (collapsed for sidebar) -------------------------------------------- */
+/* line 51, ../scss/_CMSMain.scss */
 #cms-content-treeview .cms-tree-expand-trigger { display: none; }
 
+/* line 58, ../scss/_CMSMain.scss */
 .cms-content-tools #cms-content-treeview .cms-content-toolbar { border-bottom: none; box-shadow: none; margin-bottom: 8px; }
+/* line 62, ../scss/_CMSMain.scss */
 .cms-content-tools #cms-content-treeview .cms-content-toolbar .cms-page-add-button { margin-top: 8px; }
+/* line 67, ../scss/_CMSMain.scss */
 .cms-content-tools #cms-content-treeview .cms-tree-view-modes, .cms-content-tools #cms-content-treeview .cms-content-batchactions { display: none; }
+/* line 70, ../scss/_CMSMain.scss */
 .cms-content-tools #cms-content-treeview .cms-tree-expand-trigger { display: inline-block; margin: 0 0 2px 0; position: absolute; top: 8px; right: 4px; }
+/* line 76, ../scss/_CMSMain.scss */
 .cms-content-tools #cms-content-treeview .cms-tree-expand-trigger span.ui-button-text { padding-right: 8px; }
+/* line 83, ../scss/_CMSMain.scss */
 .cms-content-tools #cms-content-treeview .cms-tree .badge, .cms-content-tools #cms-content-treeview .cms-tree a > .jstree-icon { display: none; }
 
+/** ------------------------------------------------------------------ URLSegment field ----------------------------------------------------------------- */
+/* line 94, ../scss/_CMSMain.scss */
+.URLPrefix, .URLSegmentHolder { padding-top: 8px; display: inline-block; }
+
+/* line 99, ../scss/_CMSMain.scss */
+.URLPrefix { color: #777; }
+
+/* line 103, ../scss/_CMSMain.scss */
+#Form_EditForm_URLSegment { margin-left: 7px; }
+/* line 106, ../scss/_CMSMain.scss */
+#Form_EditForm_URLSegment.disabled { color: #444; padding-left: 0px; margin-left: 0px; background: none; border-color: transparent; }
+
+/* line 117, ../scss/_CMSMain.scss */
+#Form_EditForm_URLSegment_Cancel, #Form_EditForm_URLSegment_Update, #Form_EditForm_URLSegment_Edit { margin-left: 7px; }
+
+/* line 2, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin .cms-content-fields { overflow: hidden; }
+/* line 4, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin .cms-content-fields .cms-edit-form.AssetAdmin { overflow-y: auto; }
+/* line 7, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin .cms-content-fields .cms-content-tools .cms-panel-content { overflow: hidden; }
+/* line 9, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin .cms-content-fields .cms-content-tools .cms-panel-content .cms-search-form { height: 100%; }
+/* line 17, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav li a { font-weight: bold; line-height: 16px; padding: 12px 20px 12px; text-indent: -9999em; }
+/* line 23, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav li a.content-treeview { background: url(../images/content-header-tabs-sprite.png) no-repeat 2px 0px; }
+/* line 26, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav li a.content-galleryview { background: url(../images/content-header-tabs-sprite.png) no-repeat -160px 0px; }
+/* line 29, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav li a.content-listview { background: url(../images/content-header-tabs-sprite.png) no-repeat -39px 0px; }
+/* line 37, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav .ui-state-active, .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav .ui-widget-content .ui-state-active, .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav .ui-widget-header .ui-state-active { border-top: none; }
+/* line 43, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav .ui-state-active a.content-treeview, .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav .ui-widget-content .ui-state-active a.content-treeview, .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav .ui-widget-header .ui-state-active a.content-treeview { background: url(../images/content-header-tabs-sprite.png) no-repeat 1px -40px; }
+/* line 46, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav .ui-state-active a.content-galleryview, .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav .ui-widget-content .ui-state-active a.content-galleryview, .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav .ui-widget-header .ui-state-active a.content-galleryview { background: url(../images/content-header-tabs-sprite.png) no-repeat -161px -40px; }
+/* line 49, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav .ui-state-active a.content-listview, .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav .ui-widget-content .ui-state-active a.content-listview, .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav .ui-widget-header .ui-state-active a.content-listview { background: url(../images/content-header-tabs-sprite.png) no-repeat -38px -40px; }
+/* line 58, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin .cms-content-toolbar .cms-page-add-button { background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f3f3f3), color-stop(100%, #d9d9d9)); background-image: -webkit-linear-gradient(#f3f3f3, #d9d9d9); background-image: -moz-linear-gradient(#f3f3f3, #d9d9d9); background-image: -o-linear-gradient(#f3f3f3, #d9d9d9); background-image: -ms-linear-gradient(#f3f3f3, #d9d9d9); background-image: linear-gradient(#f3f3f3, #d9d9d9); border-color: #c0c0c2; }
+/* line 61, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin .cms-content-toolbar .cms-page-add-button span.btn-icon-add { height: 17px; }
+/* line 64, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin .cms-content-toolbar .cms-page-add-button span.ui-button-text { color: #393939; text-shadow: white 0 1px 1px; }
+/* line 72, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin #Root_TreeView .cms-tree ul .class-Folder a span.text span.jstree-foldericon { background: url(../images/blue-folder-horizontal.png) no-repeat; width: 16px; height: 16px; float: left; display: block; margin-right: 4px; }
+/* line 83, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin #Form_EditForm_File td { padding-top: 0; padding-bottom: 0; }
+/* line 87, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin #Form_EditForm_File td.bottom-all { padding: 0.7em; }
+/* line 91, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin #Form_EditForm_File td.col-StripThumbnail { padding: 0; width: 32px; height: 32px; display: block; }
+/* line 97, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin #Form_EditForm_File td.col-StripThumbnail img { width: 32px; height: 32px; }
+/* line 103, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin #Form_EditForm_File tr[data-class=Folder] td.col-StripThumbnail { background: transparent url(../images/treeicons/blue-folder-horizontal.png) no-repeat top left; }
+/* line 108, ../scss/_AssetAdmin.scss */
 .cms .AssetAdmin #Form_EditForm_File tr[data-class=File] td.col-StripThumbnail { background: transparent url(../images/treeicons/blue-document.png) no-repeat top left; }
