@@ -168,6 +168,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		'Title',
 		'Content',
 	);
+
+	static $field_labels = array(
+		'URLSegment' => 'URL'
+	);
 	
 	/**
 	 * @see SiteTree::nested_urls()
@@ -1829,7 +1833,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$url = (strlen($baseLink) > 36) ? "..." .substr($baseLink, -32) : $baseLink;
 		$urlsegment = new SiteTreeURLSegmentField("URLSegment", $this->fieldLabel('URLSegment'));
 		$urlsegment->setURLPrefix($url);
-		$urlsegment->setHelpText(self::nested_urls() && count($this->Children()) ? $this->fieldLabel('LinkChangeNote'): false);
+		$helpText = (self::nested_urls() && count($this->Children())) ? $this->fieldLabel('LinkChangeNote') : '';
+		if(!URLSegmentFilter::$default_allow_multibyte) {
+			$helpText .= $helpText ? '<br />' : '';
+			$helpText .= _t('SiteTreeURLSegmentField.HelpChars', ' Special characters are automatically converted or removed.');
+		}
+		$urlsegment->setHelpText($helpText);
 		
 		$fields = new FieldList(
 			$rootTab = new TabSet("Root",

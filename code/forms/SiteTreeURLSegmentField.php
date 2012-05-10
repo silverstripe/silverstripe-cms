@@ -20,6 +20,11 @@ class SiteTreeURLSegmentField extends TextField {
 	static $allowed_actions = array(
 		'suggest'
 	);
+
+	function Field($properties = array()) {
+		Requirements::javascript(CMS_DIR . '/javascript/SiteTreeURLSegmentField.js');
+		return parent::Field($properties);
+	}
 	
 	function suggest($request) {
 		if(!$request->getVar('value')) return $this->httpError(405);
@@ -76,7 +81,7 @@ class SiteTreeURLSegmentField extends TextField {
 	
 
 	function Type() {
-		return 'text sitetreeurlsegment';
+		return 'text urlsegment';
 	}
 
 }

@@ -67,7 +67,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 					CMS_DIR . '/javascript/CMSMain.AddForm.js',
 					CMS_DIR . '/javascript/CMSPageHistoryController.js',
 					CMS_DIR . '/javascript/CMSMain.Tree.js',
-					CMS_DIR . '/javascript/SilverStripeNavigator.js'
+					CMS_DIR . '/javascript/SilverStripeNavigator.js',
+					CMS_DIR . '/javascript/SiteTreeURLSegmentField.js'
 				),
 				Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang', true, true)
 			)

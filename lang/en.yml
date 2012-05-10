@@ -351,7 +351,7 @@ en:
     TABMETA: Metadata
     TOPLEVEL: 'Site Content (Top Level)'
     TOPLEVELCREATORGROUPS: 'Top level creators'
-    URLSegment: 'URL Segment'
+    URLSegment: 'URL'
     VIEWERGROUPS: 'Viewer Groups'
     VIEW_ALL_DESCRIPTION: 'View any page'
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
