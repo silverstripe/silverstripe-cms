@@ -20,6 +20,16 @@
 .cms-content-tools #cms-content-treeview .cms-tree-expand-trigger span.ui-button-text { padding-right: 8px; }
 .cms-content-tools #cms-content-treeview .cms-tree .badge, .cms-content-tools #cms-content-treeview .cms-tree a > .jstree-icon { display: none; }
 
+/** ------------------------------------------------------------------ URLSegment field ----------------------------------------------------------------- */
+.URLPrefix, .URLSegmentHolder { padding-top: 8px; display: inline-block; }
+
+.URLPrefix { color: #777; }
+
+#Form_EditForm_URLSegment { margin-left: 7px; }
+#Form_EditForm_URLSegment.disabled { color: #444; padding-left: 0px; margin-left: 0px; background: none; border-color: transparent; }
+
+#Form_EditForm_URLSegment_Cancel, #Form_EditForm_URLSegment_Update, #Form_EditForm_URLSegment_Edit { margin-left: 7px; }
+
 .cms .AssetAdmin .cms-content-fields { overflow: hidden; }
 .cms .AssetAdmin .cms-content-fields .cms-edit-form.AssetAdmin { overflow-y: auto; }
 .cms .AssetAdmin .cms-content-fields .cms-content-tools .cms-panel-content { overflow: hidden; }
