@@ -34,7 +34,7 @@
 						self.updatePageTitleHeading();
 						self.parents('form').find('input[name=MetaTitle], input[name=MenuTitle]').val(self.val());
 						// update the URLSegment
-						URLSegment.closest('.urlsegment').update(self);
+						URLSegment.closest('.field.urlsegment').update(self);
 					} else {
 						return;
 					}
