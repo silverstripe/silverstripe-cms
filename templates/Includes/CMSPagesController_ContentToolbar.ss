@@ -2,7 +2,7 @@
 	<span><% _t("TreeTools.DisplayLabel","Display:") %></span>
 	<% if CanOrganiseSitetree %> 
 	<div class="checkboxAboveTree">
-		<input type="radio" name="view-mode" class="view-mode" value="draggable" id="view-mode-draggable" />
+		<input type="radio" name="view-mode" class="view-mode" value="draggable" id="view-mode-draggable" checked="checked" />
 		<label for="view-mode-draggable"><% _t("ENABLEDRAGGING","Drag'n'drop") %></label>
 	</div>
 	<% end_if %>
