@@ -6,3 +6,4 @@ silverstripe-cache
 .project
 .settings
 .idea
+.DS_Store
