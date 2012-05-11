@@ -26,9 +26,9 @@
 			 * Return URLSegemnt val()
 			 * 
 			 * Parameters:
-			 *  (Bool) external (optional)
+			 *  (DOMElement) other (optional)
 			 */
-			edit: function(external) {
+			edit: function(other) {
 				
 				var field = this.find(':text'),
 					holder = this.find('.preview'),
@@ -59,7 +59,7 @@
 				
 				// field updated from another fields value
 				// reset to original state
-				if (external) this.edit();
+				if (other) this.edit();
 				
 				return field.val();
 			},
@@ -78,11 +78,10 @@
 					holder = this.find('.preview'),
 					currentVal = holder.text(),
 					updateVal,
-					external = null;
+					other = arguments[0];
 				
-				if (field && field.val() !== "") {
-					updateVal = field.val();
-					external = true;
+				if (other && other.val() !== "") {
+					updateVal = other.val();
 				} else {
 					updateVal = field.val();
 				}
@@ -91,7 +90,7 @@
 					self.suggest(updateVal, function(data) {
 						var newVal = decodeURIComponent(data.value);
 						field.val(newVal);
-						self.edit(external);
+						self.edit(other);
 					});
 				} else {
 					self.edit();
@@ -201,7 +200,7 @@
 			 */
 			_autoInputWidth: function() {
 				var field = this.find(':text');
-				field.width((field.width() + 9) - this.find('.prefix').width());
+				field.width((field.width() + 15) - this.find('.prefix').width());
 			}
 		});
 	});
