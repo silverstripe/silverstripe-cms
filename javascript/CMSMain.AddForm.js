@@ -46,6 +46,7 @@
 					self.updateTypeList();
 				});
 				this.updateTypeList();
+				this._super();
 			},
 			
 			/**
