@@ -1846,9 +1846,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					new TextField("Title", $this->fieldLabel('Title')),
 					$urlsegment,
 					new TextField("MenuTitle", $this->fieldLabel('MenuTitle')),
-					$htmlField = new HtmlEditorField("Content", _t('SiteTree.HTMLEDITORTITLE', "Content", 'HTML editor title'))
-				),
-				$tabMeta = new Tab('Metadata',
+					$htmlField = new HtmlEditorField("Content", _t('SiteTree.HTMLEDITORTITLE', "Content", 'HTML editor title')),
 					new TextField("MetaTitle", $this->fieldLabel('MetaTitle')),
 					new TextareaField("MetaKeywords", $this->fieldLabel('MetaKeywords'), 1),
 					new TextareaField("MetaDescription", $this->fieldLabel('MetaDescription')),
@@ -1867,7 +1865,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		else $fields->removeFieldFromTab('Root', 'Dependent');
 		
 		$tabMain->setTitle(_t('SiteTree.TABCONTENT', "Main Content"));
-		$tabMeta->setTitle(_t('SiteTree.TABMETA', "Metadata"));
 
 		if(file_exists(BASE_PATH . '/install.php')) {
 			$fields->addFieldToTab("Root.Main", new LiteralField("InstallWarningHeader", 
@@ -1876,6 +1873,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				. "</p>"), "Title");
 		}
 
+		// Backwards compat: Rewrite nested "Content" tabs to toplevel
+		$fields->setTabPathRewrites(array(
+			'/^Root\.Content\.Main$/' => 'Root.Main',
+			'/^Root\.Content\.([^.]+)$/' => 'Root.\\1',
+		));
 		
 		if(self::$runCMSFieldsExtensions) {
 			$this->extend('updateCMSFields', $fields);
@@ -1913,9 +1915,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					$visibility = new FieldGroup(
 						new CheckboxField("ShowInMenus", $this->fieldLabel('ShowInMenus')),
 						new CheckboxField("ShowInSearch", $this->fieldLabel('ShowInSearch'))
-					)
-				),
-				$tabAccess = new Tab('Access',
+					),
 					$viewersOptionsField = new OptionsetField(
 						"CanViewType", 
 						_t('SiteTree.ACCESSHEADER', "Who can view this page?")
@@ -1942,7 +1942,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$parentTypeSelector->addExtraClass('parentTypeSelector');
 		
 		$tabBehaviour->setTitle(_t('SiteTree.TABBEHAVIOUR', "Behavior"));
-		$tabAccess->setTitle(_t('SiteTree.TABACCESS', "Access"));
 		
 		// Make page location fields read-only if the user doesn't have the appropriate permission
 		if(!Permission::check("SITETREE_REORGANISE")) {
