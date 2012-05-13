@@ -6,6 +6,9 @@
 				if(self.attr('checked')) this.toggle();
 				this._super();
 			},
+			onunmatch: function() {
+				this._super();
+			},
 			onclick: function() {
 				this.toggle();
 			},

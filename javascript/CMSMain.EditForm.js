@@ -45,6 +45,9 @@
 				
 				this._super();
 			},
+			onunmatch: function() {
+				this._super();
+			},
 			
 			/**
 			 * Function: updateRelatedFields
@@ -132,6 +135,9 @@
 				
 				this._super();
 			},
+			onunmatch: function() {
+				this._super();
+			},
 	
 			/**
 			 * Function: _toggleSelection
@@ -193,6 +199,9 @@
 				var currentVal = this.find('input[name=' + this.attr('id') + ']:checked').val();
 				dropdown[currentVal == 'OnlyTheseUsers' ? 'show' : 'hide']();
 				
+				this._super();
+			},
+			onunmatch: function() {
 				this._super();
 			}
 		});	
@@ -262,6 +271,9 @@
 		$('.cms-edit-form.CMSPageSettingsController input[name="ParentType"]:checked').entwine({
 			onmatch: function() {
 				this.redraw();
+				this._super();
+			},
+			onunmatch: function() {
 				this._super();
 			},
 			redraw: function() {

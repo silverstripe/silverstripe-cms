@@ -11,12 +11,18 @@
 					ghost: true
 				});
 				this._super();
+			},
+			onunmatch: function() {
+				this._super();
 			}
 		});
 	
 		$('.cms-page-add-form-dialog input[name=PageType]').entwine({
 			onmatch: function() {
 				if(this.is(':checked')) this.trigger('click');
+				this._super();
+			},
+			onunmatch: function() {
 				this._super();
 			},
 			onclick: function() {
@@ -46,6 +52,9 @@
 					self.updateTypeList();
 				});
 				this.updateTypeList();
+				this._super();
+			},
+			onunmatch: function() {
 				this._super();
 			},
 			
