@@ -26,9 +26,9 @@
 			 * Return URLSegemnt val()
 			 * 
 			 * Parameters:
-			 *  (DOMElement) other (optional)
+			 *  (Bool) auto (optional, triggers a second toggle)
 			 */
-			edit: function(other) {
+			edit: function(auto) {
 				
 				var field = this.find(':text'),
 					holder = this.find('.preview'),
@@ -59,7 +59,7 @@
 				
 				// field updated from another fields value
 				// reset to original state
-				if (other) this.edit();
+				if (auto) this.edit();
 				
 				return field.val();
 			},
@@ -68,8 +68,8 @@
 			 * Function: update
 			 *  
 			 * Commits the change of the URLSegment to the field
-			 * Optional: pass in another element to use its value
-			 * to update the URLSegment (ex. from Title)
+			 * Optional: pass in (String)
+			 * to update the URLSegment
 			 */
 			update: function() {
 				
@@ -78,10 +78,10 @@
 					holder = this.find('.preview'),
 					currentVal = holder.text(),
 					updateVal,
-					other = arguments[0];
+					title = arguments[0];
 				
-				if (other && other.val() !== "") {
-					updateVal = other.val();
+				if (title && title !== "") {
+					updateVal = title;
 				} else {
 					updateVal = field.val();
 				}
@@ -90,7 +90,7 @@
 					self.suggest(updateVal, function(data) {
 						var newVal = decodeURIComponent(data.value);
 						field.val(newVal);
-						self.edit(other);
+						self.edit(title);
 					});
 				} else {
 					self.edit();
