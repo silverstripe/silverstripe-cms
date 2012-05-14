@@ -25,31 +25,92 @@
 			onmatch : function() {
 				var self = this;
 				
-				var URLSegment = $('.cms-edit-form input[name=URLSegment]');
-				var LiveURLSegment = $('.cms-edit-form input[name=LiveURLSegment]');
+				var form = self.parents('form');
+				var url_segment = $('.field.urlsegment', form).find(':text');
+				var live_url_segment = $('input[name=LiveURLSegment]', form);
+				
+				self._addActions();
 		
 				this.bind('change', function(e) {
+					var title = self.val();
 					// Criteria for defining a "new" page
-					if ( (URLSegment.val().indexOf("new") == 0) && LiveURLSegment.val() == "" ) {
-						self.updatePageTitleHeading();
-						self.parents('form').find('input[name=MetaTitle], input[name=MenuTitle]').val(self.val());
-						// update the URLSegment
-						URLSegment.closest('.field.urlsegment').update(self);
+					if ( (url_segment.val().indexOf("new") == 0) && live_url_segment.val() == "" ) {
+						self.updateRelatedFields(title);
+						self.updateURLSegment(title);
 					} else {
-						return;
+						$('.update', self.parent()).show();
 					}
+					self.updatePanelLabels(title);
 				});
 				
 				this._super();
 			},
 			
 			/**
-			 * Function: updatePageTitleHeading
+			 * Function: updateRelatedFields
 			 * 
-			 * Update the page title heading when page title changes
+			 * Update the related fields
+			 * (String) title
 			 */
-			updatePageTitleHeading: function() {
-				$('#page-title-heading').text(this.val());
+			updateRelatedFields: function(title) {
+				var form = this.parents('form');
+				form.find('input[name=MetaTitle], input[name=MenuTitle]').val(title);
+			},
+			
+			/**
+			 * Function: updateURLSegment
+			 * 
+			 * Update the URLSegment
+			 * (String) title
+			 */
+			updateURLSegment: function(title) {
+				var url_segment_field = $('.field.urlsegment', this.parents('form'));
+				var updateURLFromTitle = $('.update', this.parent());
+				url_segment_field.update(title);
+				if (updateURLFromTitle.is(':visible')) {
+					updateURLFromTitle.hide();
+				}
+			},
+			
+			/**
+			 * Function: updatePanelLabels
+			 * 
+			 * Update the breadcrumb and tree
+			 * (String) title
+			 */
+			updatePanelLabels: function(title) {
+				var pageID = $('.cms-edit-form input[name=ID]').val();
+				var panelCrumb = $('span.cms-panel-link.crumb');
+				var treeItem = $('.item', $('.cms-tree').find("[data-id='" + pageID + "']"));
+				if (title && title != "") {
+					panelCrumb.text(title);
+					treeItem.text(title);
+				}
+			},
+			
+			/**
+			 * Function: _addActions
+			 *  
+			 * Utility to add update from title action
+			 * 
+			 */
+			_addActions: function() {
+				var self = this;
+				var	updateURLFromTitle;
+				
+				// update button
+				updateURLFromTitle = $('<button />', {
+					'class': 'update ss-ui-button-small',
+					'text': 'Update URL',
+					'click': function(e) {
+						e.preventDefault();
+						self.updateURLSegment(self.val());
+					}
+				});
+				
+				// insert elements
+				updateURLFromTitle.insertAfter(self);
+				updateURLFromTitle.hide();
 			}
 		});
 	
