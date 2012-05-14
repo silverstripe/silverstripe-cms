@@ -478,7 +478,7 @@ JS
 	 */
 	public function doSync() {
 		$message = Filesystem::sync();
-		$this->response->addHeader('X-Status', $message);
+		$this->response->addHeader('X-Status', rawurlencode($message));
 		
 		return;
 	}
@@ -512,7 +512,7 @@ JS
 			'{count} unused thumbnails have been deleted', 
 			array('count' => $count)
 		);
-		$this->response->addHeader('X-Status', $message);
+		$this->response->addHeader('X-Status', rawurlencode($message));
 		return;
 	}
 	

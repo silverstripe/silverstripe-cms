@@ -796,15 +796,15 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			
 			$this->response->addHeader(
 				'X-Status',
-				_t(
+				rawurlencode(_t(
 					'LeftAndMain.STATUSPUBLISHEDSUCCESS', 
 					"Published '{title}' successfully",
 					'Status message after publishing a page, showing the page title',
 					array('title' => $record->Title)
-				)
+				))
 			);
 		} else {
-			$this->response->addHeader('X-Status', _t('LeftAndMain.SAVEDUP'));
+			$this->response->addHeader('X-Status', rawurlencode(_t('LeftAndMain.SAVEDUP')));
 		}
 
 		return $this->getResponseNegotiator()->respond($this->request);
@@ -891,7 +891,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		$this->response->addHeader(
 			'X-Status',
-			sprintf(_t('CMSMain.REMOVED', 'Deleted \'%s\'%s from live site'), $recordTitle, $descRemoved)
+			rawurlencode(sprintf(_t('CMSMain.REMOVED', 'Deleted \'%s\'%s from live site'), $recordTitle, $descRemoved))
 		);
 		
 		// Even if the record has been deleted from stage and live, it can be viewed in "archive mode"
@@ -936,12 +936,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		$this->response->addHeader(
 			'X-Status',
-			_t(
+			rawurlencode(_t(
 				'CMSMain.RESTORED',
 				"Restored '{title}' successfully",
 				'Param %s is a title',
 				array('title' => $record->Title)
-			)
+			))
 		);
 		
 		return $this->getResponseNegotiator()->respond($this->request);
@@ -966,7 +966,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		$this->response->addHeader(
 			'X-Status',
-			sprintf(_t('CMSMain.REMOVEDPAGEFROMDRAFT',"Removed '%s' from the draft site"), $record->Title)
+			rawurlencode(sprintf(_t('CMSMain.REMOVEDPAGEFROMDRAFT',"Removed '%s' from the draft site"), $record->Title))
 		);
 		
 		// Even if the record has been deleted from stage and live, it can be viewed in "archive mode"
@@ -990,7 +990,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		$this->response->addHeader(
 			'X-Status',
-			_t('CMSMain.REMOVEDPAGE',"Removed '{title}' from the published site", array('title' => $record->Title))
+			rawurlencode(_t('CMSMain.REMOVEDPAGE',"Removed '{title}' from the published site", array('title' => $record->Title)))
 		);
 		
 		return $this->getResponseNegotiator()->respond($this->request);
@@ -1038,7 +1038,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			);
 		}
 
-		$this->response->addHeader('X-Status', $message);
+		$this->response->addHeader('X-Status', rawurlencode($message));
 		
 		// Can be used in different contexts: In normal page edit view, in which case the redirect won't have any effect.
 		// Or in history view, in which case a revert causes the CMS to re-load the edit view.
@@ -1187,11 +1187,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		$this->response->addHeader(
 			'X-Status',
-			_t(
+			rawurlencode(_t(
 				'CMSMain.RESTORED',
 				"Restored '{title}' successfully", 
 				array('title' => $restoredPage->TreeTitle)
-			)
+			))
 		);
 		
 		return $this->getResponseNegotiator()->respond($this->request);

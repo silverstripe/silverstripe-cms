@@ -209,7 +209,7 @@ class ErrorPage extends Page {
 				"Error opening file \"{filename}\" for writing. Please check file permissions.",
 				array('filename' => $errorFile)
 			);
-			$this->response->addHeader('X-Status', $fileErrorText);
+			$this->response->addHeader('X-Status', rawurlencode($fileErrorText));
 			return $this->httpError(405);
 		}
 	}

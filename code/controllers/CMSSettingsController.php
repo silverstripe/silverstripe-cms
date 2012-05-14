@@ -45,7 +45,7 @@ class CMSSettingsController extends CMSMain {
 		$form->saveInto($siteConfig);
 		$siteConfig->write();
 		
-		$this->response->addHeader('X-Status', _t('LeftAndMain.SAVEDUP'));
+		$this->response->addHeader('X-Status', rawurlencode(_t('LeftAndMain.SAVEDUP')));
 	
 		return $form->forTemplate();
 	}
