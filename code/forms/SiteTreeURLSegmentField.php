@@ -21,6 +21,10 @@ class SiteTreeURLSegmentField extends TextField {
 		'suggest'
 	);
 
+	function Value() {
+		return rawurldecode($this->value);
+	}
+
 	function Field($properties = array()) {
 		Requirements::javascript(CMS_DIR . '/javascript/SiteTreeURLSegmentField.js');
 		return parent::Field($properties);
