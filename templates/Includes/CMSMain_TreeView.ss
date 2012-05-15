@@ -10,6 +10,8 @@
 	<% _t('CMSMain.EditTree', 'Edit Tree') %>
 </button>
 
+$ExtraTreeTools
+
 <div class="center">
 	<% if TreeIsFiltered %>
 	<div class="cms-tree-filtered">

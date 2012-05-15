@@ -134,16 +134,22 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * @return string
 	 */
 	public function Link($action = null) {
-		return Controller::join_links(
+		$link = Controller::join_links(
 			$this->stat('url_base', true),
 			$this->stat('url_segment', true), // in case we want to change the segment
 			'/', // trailing slash needed if $action is null!
 			"$action"
 		);
+		$this->extend('updateLink', $link);
+		return $link;
 	}
 
 	public function LinkPages() {
 		return singleton('CMSPagesController')->Link();
+	}
+
+	public function LinkPagesWithSearch() {
+		return $this->LinkWithSearch($this->LinkPages());
 	}
 
 	public function LinkTreeView() {
@@ -187,10 +193,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			'q' => (array)$this->request->getVar('q'),
 			'ParentID' => $this->request->getVar('ParentID')
 		);
-		return Controller::join_links(
+		$link = Controller::join_links(
 			$link,
 			array_filter(array_values($params)) ? '?' . http_build_query($params) : null
 		);
+		$this->extend('updateLinkWithSearch', $link);
+		return $link;
 	}
 
 	function LinkPageAdd() {
@@ -226,6 +234,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Versioned::prepopulate_versionnumber_cache("SiteTree", "Live");
 		$html .= $this->getSiteTreeFor($this->stat('tree_class'));
 
+		$this->extend('updateSiteTreeAsUL', $html);
+
 		return $html;
 	}
 
@@ -234,6 +244,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 */
 	public function TreeIsFiltered() {
 		return $this->request->getVar('q');
+	}
+
+	public function ExtraTreeTools() {
+		$html = '';
+		$this->extend('updateExtraTreeTools', $html);
+		return $html;
 	}
 	
 	function SearchForm() {
