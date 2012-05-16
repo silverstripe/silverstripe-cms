@@ -981,10 +981,13 @@ class Installer extends InstallRequirements {
 			$fh = fopen('mysite/_config.php', 'wb');
 			fclose($fh);
 		}
-		$theme = isset($_POST['template']) ? $_POST['template'] : 'blackcandy';
-		$locale = isset($_POST['locale']) ? $_POST['locale'] : 'en_US';
-		$type = $config['db']['type'];
+		
+		// Escape user input for safe insertion into PHP file
+		$theme = isset($_POST['template']) ? addcslashes($_POST['template'], "\'") : 'blackcandy';
+		$locale = isset($_POST['locale']) ? addcslashes($_POST['locale'], "\'") : 'en_US';
+		$type = addcslashes($config['db']['type'], "\'");
 		$dbConfig = $config['db'][$type];
+		$dbConfig = array_map(create_function('$v', 'return addcslashes($v, "\\\'");'), $dbConfig);
 		if(!$dbConfig) {
 			echo "<p style=\"color: red\">Bad config submitted</p><pre>";
 			print_r($config);
