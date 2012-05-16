@@ -126,11 +126,13 @@ JS
 		$form = parent::getEditForm($id, $fields);
 		$folder = ($id && is_numeric($id)) ? DataObject::get_by_id('Folder', $id, false) : $this->currentPage();
 		$fields = $form->Fields();
-
+		$title = ($folder && $folder->exists()) ? $folder->Title : _t('AssetAdmin.FILES', 'Files');
 		$fields->push(new HiddenField('ID', false, $folder->ID));
 
 		// File listing
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
+			new GridFieldToolbarHeader(),
+			new GridFieldFilterHeader(),
 			new GridFieldSortableHeader(),
 			new GridFieldDataColumns(),
 			new GridFieldPaginator(15),
@@ -138,7 +140,8 @@ JS
 			new GridFieldDeleteAction(),
 			new GridFieldDetailForm()
 		);
-		$gridField = new GridField('File','Files', $this->getList(), $gridFieldConfig);
+
+		$gridField = new GridField('File', $title, $this->getList(), $gridFieldConfig);
 		$columns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
 		$columns->setDisplayFields(array(
 			'StripThumbnail' => '',
