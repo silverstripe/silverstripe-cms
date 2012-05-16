@@ -7,7 +7,7 @@
 <% end_if %>
 
 <p>
-	<%t ContentController.StartEditing 'You can start editing your site\'s content by opening <a href="{link}">the CMS</a>.' link="admin/" %> 
+	<%t ContentController.StartEditing 'You can start editing your site’s content by opening <a href="{link}">the CMS</a>.' link="admin/" %> 
 	<br />
 	&nbsp; &nbsp; <%t ContentController.Email "Email" %>: $Username<br />
 	&nbsp; &nbsp; <%t ContentController.Password "Password" %>: $Password<br />
