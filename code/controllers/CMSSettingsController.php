@@ -1,5 +1,5 @@
 <?php
-class CMSSettingsController extends CMSMain {
+class CMSSettingsController extends LeftAndMain {
 
 	static $url_segment = 'settings';
 	static $url_rule = '/$Action/$ID/$OtherID';
@@ -16,9 +16,9 @@ class CMSSettingsController extends CMSMain {
 		$actions = $siteConfig->getCMSActions();
 		$form = new Form($this, 'EditForm', $fields, $actions);
 		$form->addExtraClass('root-form');
-		$form->addExtraClass('cms-edit-form');
-		// TODO Can't merge $FormAttributes in template at the moment
-		$form->addExtraClass('cms-content center ss-tabset cms-panel-padded');
+
+		$form->addExtraClass('cms-edit-form cms-panel-padded center');
+
 		if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 		$form->setHTMLID('Form_EditForm');
 		$form->loadDataFrom($siteConfig);
@@ -32,6 +32,7 @@ class CMSSettingsController extends CMSMain {
 
 		return $form;
 	}
+
 
 	/**
 	 * Save the current sites {@link SiteConfig} into the database
