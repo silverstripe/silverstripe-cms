@@ -65,7 +65,7 @@
 				text-shadow: white 0 1px 1px;
 			}
 		}
-	}	
+	}
 
 	#Root_TreeView {
 		.cms-tree ul .class-Folder a span.text span.jstree-foldericon {
@@ -78,6 +78,8 @@
 		}
 	}
 
+
+
 	#Form_EditForm_File {
 		td {
 			// Taken care of by minimum image sizes
@@ -88,10 +90,9 @@
 			}
 		}
 		td.col-StripThumbnail {
-			padding: 0;
+			padding: 1px 3px;
 			width: 32px;
 			height: 32px;
-			display: block;
 
 			img {
 				width: 32px;
@@ -100,12 +101,21 @@
 		}
 		tr[data-class=Folder] {
 			td.col-StripThumbnail {
-				background: transparent url(../images/treeicons/blue-folder-horizontal.png) no-repeat top left;
+				background: transparent url(../images/treeicons/blue-folder-horizontal.png) no-repeat center;
 			}
 		}
 		tr[data-class=File] {
 			td.col-StripThumbnail {
-				background: transparent url(../images/treeicons/blue-document.png) no-repeat top left;
+				background: transparent url(../images/treeicons/blue-document.png) no-repeat center;
+			}
+		}
+		.folder-back {
+			background: url(../images/up_level.png) no-repeat;
+			height: 22px;
+			width: 23px;
+			margin: 3px 9px 4px 5px;
+			&:hover {
+				background: url(../images/up_level-hover.png) no-repeat;
 			}
 		}
 	}
