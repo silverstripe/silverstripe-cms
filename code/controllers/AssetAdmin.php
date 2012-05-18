@@ -131,7 +131,7 @@ JS
 
 		// File listing
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
-			new GridFieldToolbarHeader(),
+			new AssetAdminGridFieldToolbarHeader(),
 			new GridFieldFilterHeader(),
 			new GridFieldSortableHeader(),
 			new GridFieldDataColumns(),

@@ -46,7 +46,9 @@
 .cms .AssetAdmin #Root_TreeView .cms-tree ul .class-Folder a span.text span.jstree-foldericon { background: url(../images/blue-folder-horizontal.png) no-repeat; width: 16px; height: 16px; float: left; display: block; margin-right: 4px; }
 .cms .AssetAdmin #Form_EditForm_File td { padding-top: 0; padding-bottom: 0; }
 .cms .AssetAdmin #Form_EditForm_File td.bottom-all { padding: 0.7em; }
-.cms .AssetAdmin #Form_EditForm_File td.col-StripThumbnail { padding: 0; width: 32px; height: 32px; display: block; }
+.cms .AssetAdmin #Form_EditForm_File td.col-StripThumbnail { padding: 1px 3px; width: 32px; height: 32px; }
 .cms .AssetAdmin #Form_EditForm_File td.col-StripThumbnail img { width: 32px; height: 32px; }
-.cms .AssetAdmin #Form_EditForm_File tr[data-class=Folder] td.col-StripThumbnail { background: transparent url(../images/treeicons/blue-folder-horizontal.png) no-repeat top left; }
-.cms .AssetAdmin #Form_EditForm_File tr[data-class=File] td.col-StripThumbnail { background: transparent url(../images/treeicons/blue-document.png) no-repeat top left; }
+.cms .AssetAdmin #Form_EditForm_File tr[data-class=Folder] td.col-StripThumbnail { background: transparent url(../images/treeicons/blue-folder-horizontal.png) no-repeat center; }
+.cms .AssetAdmin #Form_EditForm_File tr[data-class=File] td.col-StripThumbnail { background: transparent url(../images/treeicons/blue-document.png) no-repeat center; }
+.cms .AssetAdmin #Form_EditForm_File .folder-back { background: url(../images/up_level.png) no-repeat; height: 22px; width: 23px; margin: 3px 9px 4px 5px; }
+.cms .AssetAdmin #Form_EditForm_File .folder-back:hover { background: url(../images/up_level-hover.png) no-repeat; }
