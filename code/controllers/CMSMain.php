@@ -820,7 +820,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				))
 			);
 		} else {
-			$this->response->addHeader('X-Status', rawurlencode(_t('LeftAndMain.SAVEDUP')));
+			$this->response->addHeader('X-Status', rawurlencode(_t('LeftAndMain.SAVEDUP', 'Saved.')));
 		}
 
 		return $this->getResponseNegotiator()->respond($this->request);
