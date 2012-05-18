@@ -13,11 +13,11 @@
 				<h4><% _t('ReportAdminForm.FILTERBY', 'Filter by') %></h4>
 			
 				<div class="filters">
-					<% control FieldMap.Filters %>
-						<% control Children %>
+					<% loop FieldMap.Filters %>
+						<% loop Children %>
 							$FieldHolder
-						<% end_control %>
-					<% end_control %>
+						<% end_loop %>
+					<% end_loop %>
 				</div>
 			
 				<div id="action_updatereport">
@@ -31,7 +31,7 @@
 			
 			$FieldMap.ReportContent.FieldHolder
 			
-			<% control HiddenFields %>$Field<% end_control %>
+			<% loop HiddenFields %>$Field<% end_loop %>
 			
 			</fieldset>
 		</div>

@@ -2,27 +2,27 @@
 
 	<div class="cms-content-header north">
 		<div>
-			<% control EditForm %>
+			<% with EditForm %>
 				<% include BackLink_Button %>
 
 				<h2 id="page-title-heading">
-				<% control Controller %>
+				<% with Controller %>
 					<% include CMSSectionIcon %>
 					<% include CMSBreadcrumbs %>
-				<% end_control %>
+				<% end_with %>
 				</h2>
 				<% if Fields.hasTabset %>
 					<% with Fields.fieldByName('Root') %>
 					<div class="cms-content-header-tabs">
 						<ul>
-						<% control Tabs %>
+						<% loop Tabs %>
 							<li<% if extraClass %> class="$extraClass"<% end_if %>><a href="#$id">$Title</a></li>
-						<% end_control %>
+						<% end_loop %>
 						</ul>
 					</div>
 					<% end_with %>
 				<% end_if %>
-			<% end_control %>
+			<% end_with %>
 		
 		</div>
 	</div>
