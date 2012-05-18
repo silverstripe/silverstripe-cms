@@ -2,7 +2,7 @@
  * File: ReportAdmin.Tree.js
  */
 (function($) {
-	$.entwine('ss', function($){
+	$.entwine('ss.tree', function($){
 		/**
 		 * Class: .cms-tree
 		 * 

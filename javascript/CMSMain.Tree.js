@@ -1,6 +1,6 @@
 (function($) {
 
-	$.entwine('ss', function($){
+	$.entwine('ss.tree', function($){
 		$('.cms-tree').entwine({
 			getTreeConfig: function() {
 				var self = this, config = this._super(), hints = this.getHints();
@@ -18,7 +18,7 @@
 									'label': '<span class="jstree-pageicon"></span>' + val.ssname,
 									'_class': 'class-' + val.pagetype,
 									'action': function(obj) {
-										$('.cms-container').loadPanel(ss.i18n.sprintf(
+										$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
 											self.data('urlAddpage'), id, val.pagetype
 										));
 									}
@@ -30,7 +30,7 @@
 								'edit': {
 									'label': ss.i18n._t('Tree.EditPage'),
 									'action': function(obj) {
-										$('.cms-container').loadPanel(ss.i18n.sprintf(
+										$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
 											self.data('urlEditpage'), obj.data('id')
 										));
 									}
@@ -41,7 +41,7 @@
 							menuitems['addsubpage'] = {
 									'label': ss.i18n._t('Tree.AddSubPage'),
 									'action': function(obj) {
-										$('.cms-container').loadPanel(ss.i18n.sprintf(
+										$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
 											self.data('urlAddpage'), id, 'Page'
 										));
 									},
