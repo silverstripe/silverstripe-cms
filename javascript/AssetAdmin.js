@@ -3,26 +3,25 @@
  */
 
 (function($) {
-	/**
-	 * Delete selected folders through "batch actions" tab.
-	 */
-	$(document).ready(function() {
-		$('#Form_BatchActionsForm').entwine('ss').register(
-			// TODO Hardcoding of base URL
-			'admin/assets/batchactions/delete', 
-			function(ids) {
-				var confirmed = confirm(
-					ss.i18n.sprintf(
-						ss.i18n._t('AssetAdmin.BATCHACTIONSDELETECONFIRM'),
-						ids.length
-					)
-				);
-				return (confirmed) ? ids : false;
-			}
-		);
-	});
-	
 	$.entwine('ss', function($){
+		/**
+		 * Delete selected folders through "batch actions" tab.
+		 */
+		$(document).ready(function() {
+			$('#Form_BatchActionsForm').register(
+				// TODO Hardcoding of base URL
+				'admin/assets/batchactions/delete', 
+				function(ids) {
+					var confirmed = confirm(
+						ss.i18n.sprintf(
+							ss.i18n._t('AssetAdmin.BATCHACTIONSDELETECONFIRM'),
+							ids.length
+						)
+					);
+					return (confirmed) ? ids : false;
+				}
+			);
+		});
 
 		/**
 		 * Load folder detail view via controller methods

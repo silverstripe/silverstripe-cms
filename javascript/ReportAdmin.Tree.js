@@ -2,7 +2,7 @@
  * File: ReportAdmin.Tree.js
  */
 (function($) {
-	$.entwine('ss', function($){
+	$.entwine('ss.tree', function($){
 		/**
 		 * Class: .cms-tree
 		 * 
@@ -14,6 +14,9 @@
 				var id = $('.cms-edit-form :input[name=ID]').val();
 				if (id) this[0].setCurrentByIdx(id);
 				
+				this._super();
+			},
+			onunmatch: function() {
 				this._super();
 			}
 		});
