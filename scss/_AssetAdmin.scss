@@ -88,10 +88,9 @@
 			}
 		}
 		td.col-StripThumbnail {
-			padding: 0;
+			padding: 1px 5px;
 			width: 32px;
 			height: 32px;
-			display: block;
 
 			img {
 				width: 32px;
@@ -100,12 +99,12 @@
 		}
 		tr[data-class=Folder] {
 			td.col-StripThumbnail {
-				background: transparent url(../images/treeicons/blue-folder-horizontal.png) no-repeat top left;
+				background: transparent url(../images/treeicons/blue-folder-horizontal.png) no-repeat center;
 			}
 		}
 		tr[data-class=File] {
 			td.col-StripThumbnail {
-				background: transparent url(../images/treeicons/blue-document.png) no-repeat top left;
+				background: transparent url(../images/treeicons/blue-document.png) no-repeat center;
 			}
 		}
 	}
