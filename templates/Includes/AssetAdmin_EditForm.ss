@@ -8,17 +8,17 @@
 
 	<fieldset>
 		<% if Legend %><legend>$Legend</legend><% end_if %> 
-		<% control Fields %>
+		<% loop Fields %>
 			$FieldHolder
-		<% end_control %>
+		<% end_loop %>
 		<div class="clear"><!-- --></div>
 	</fieldset>
 
 	<% if Actions %>
 	<div class="Actions">
-		<% control Actions %>
+		<% loop Actions %>
 			$Field
-		<% end_control %>
+		<% end_loop %>
 		<% if CurrentPage.LinkPreview %>
 		<a href="$CurrentPage.LinkPreview" class="cms-preview-toggle-link ss-ui-button" data-icon="preview">
 			<% _t('LeftAndMain.PreviewButton', 'Preview') %> &raquo;

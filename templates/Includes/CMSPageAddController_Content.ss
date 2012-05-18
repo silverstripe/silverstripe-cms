@@ -17,18 +17,18 @@
 
 			<fieldset>
 				<% if Legend %><legend>$Legend</legend><% end_if %> 
-				<% control Fields %>
+				<% loop Fields %>
 					$FieldHolder
-				<% end_control %>
+				<% end_loop %>
 			</fieldset>
 		</div>
 
 		<div class="cms-content-actions south">
 			<% if Actions %>
 			<div class="Actions">
-				<% control Actions %>
+				<% loop Actions %>
 					$Field
-				<% end_control %>
+				<% end_loop %>
 			</div>
 			<% end_if %>
 		</div>
