@@ -2,16 +2,16 @@
 
 	<div class="cms-content-header north">
 		<div>
-			<% control EditForm %>
+			<% with EditForm %>
 				<% include BackLink_Button %>
 
 				<h2 id="page-title-heading">
-				<% control Controller %>
+				<% with Controller %>
 					<% include CMSSectionIcon %>
 					<% include CMSBreadcrumbs %>
-				<% end_control %>
+				<% end_with %>
 				</h2>
-			<% end_control %>
+			<% end_with %>
 		
 		</div>
 	</div>

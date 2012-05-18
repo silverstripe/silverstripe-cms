@@ -4,9 +4,9 @@
 	</p>
 
 	<ul>
-		<% control UnsuccessfulFiles %>
+		<% loop UnsuccessfulFiles %>
 		<li>$File</li>
-		<% end_control %>
+		<% end_loop %>
 	</ul>
 <% else %>
 	<p style="margin: 1em 0">

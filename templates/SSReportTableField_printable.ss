@@ -8,19 +8,19 @@
 
 <%-- <body onload="window.print();"> --%>
 <body>
-	<% control Form.Controller %>
+	<% with Form.Controller %>
 		<h1 style="margin-bottom: 0">$CurrentReport.Title</h1>
-		<% control CurrentReport.getCmsFields %>
+		<% with CurrentReport.getCmsFields %>
 			<% if Name == Filters %>
 				<h2 style="margin-bottom: 0; margin-top: 0;">Filters</h2>
 				<ul style="margin-top: 0">
-				<% control FieldSet %>
+				<% loop FieldSet %>
 					<li>$Title = $performReadonlyTransformation.Field</li>
-				<% end_control %>
+				<% end_loop %>
 				</ul>
 			<% end_if %>
-		<% end_control %>
-	<% end_control %>
+		<% end_with %>
+	<% end_with %>
 	<% include TableListField %>
 </body>
 </html>
