@@ -1,0 +1,7 @@
+---
+Name: modelascontrollerroutes
+Before: '*'
+---
+Director:
+  rules:
+    '$URLSegment//$Action/$ID/$OtherID': 'ModelAsController'
