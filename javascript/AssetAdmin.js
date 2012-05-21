@@ -8,7 +8,7 @@
 		 * Delete selected folders through "batch actions" tab.
 		 */
 		$(document).ready(function() {
-			$('#Form_BatchActionsForm').register(
+			$('#Form_BatchActionsForm').entwine('.ss.tree').register(
 				// TODO Hardcoding of base URL
 				'admin/assets/batchactions/delete', 
 				function(ids) {
