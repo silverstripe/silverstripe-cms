@@ -35,7 +35,7 @@ class CMSMainTest extends FunctionalTest {
 		$page2 = $this->objFromFixture('Page', "page2");
 		$this->session()->inst_set('loggedInAs', $this->idFromFixture('Member', 'admin'));
 		
-		$response = $this->get("admin/cms/publishall?confirm=1");
+		$response = $this->get('admin/pages/publishall?confirm=1');
 
 		$this->assertContains(
 			'Done: Published 30 pages',
