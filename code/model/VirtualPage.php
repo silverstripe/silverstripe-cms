@@ -195,8 +195,8 @@ class VirtualPage extends Page {
 		$fields->addFieldToTab("Root.Main", $copyContentFromField, "Title");
 		
 		// Create links back to the original object in the CMS
-		if($this->CopyContentFrom()->ID) {
-			$linkToContent = "<a class=\"cmsEditlink\" href=\"admin/show/$this->CopyContentFromID\">" . 
+		if($this->CopyContentFrom()->exists()) {
+			$linkToContent = "<a class=\"cmsEditlink\" href=\"admin/pages/edit/show/$this->CopyContentFromID\">" . 
 				_t('VirtualPage.EDITCONTENT', 'click here to edit the content') . "</a>";
 			$fields->addFieldToTab("Root.Main", 
 				$linkToContentLabelField = new LabelField('VirtualPageContentLinkLabel', $linkToContent), 
