@@ -44,8 +44,7 @@ class CMSMainTest extends FunctionalTest {
 	
 		// Some modules (e.g., cmsworkflow) will remove this action
 		if(isset(CMSBatchActionHandler::$batch_actions['publish'])) {
-			$response = Director::test("admin/cms/batchactions/publish", array('csvIDs' => implode(',', array($page1->ID, $page2->ID)), 'ajax' => 1), $this->session());
-	
+			$response = Director::test('admin/pages/batchactions/publish', array('csvIDs' => implode(',', array($page1->ID, $page2->ID)), 'ajax' => 1), $this->session());
 			$responseData = Convert::json2array($response->getBody());
 			$this->assertArrayHasKey($page1->ID, $responseData['modified']);
 			$this->assertArrayHasKey($page2->ID, $responseData['modified']);
@@ -148,7 +147,7 @@ class CMSMainTest extends FunctionalTest {
 		$page->doPublish();
 		$page->delete();
 		
-		$response = $this->get('admin/cms/getitem?ID=' . $pageID . '&ajax=1');
+		$response = $this->get('admin/pages/edit/show/' . $pageID);
 	
 		$livePage = Versioned::get_one_by_stage("SiteTree", "Live", "\"SiteTree\".\"ID\" = $pageID");
 		$this->assertInstanceOf('SiteTree', $livePage);
