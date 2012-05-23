@@ -280,23 +280,21 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				$dateTo = new DateField('q[LastEditedTo]', _t('CMSSearch.FILTERDATETO', 'To'))
 			),
 			new DropdownField(
-				'q[FilterClass]', 
-				_t('CMSMain.PAGES', 'Pages'), 
+				'q[FilterClass]',
+				_t('CMSMain.PAGES', 'Pages'),
 				$filterMap
 			),
-			new DropdownField(
-				'q[ClassName]', 
-				_t('CMSMain.PAGETYPEOPT','Page Type', 'Dropdown for limiting search to a page type'), 
-				$pageTypes, 
-				null, 
-				null, 
-				_t('CMSMain.PAGETYPEANYOPT','Any')
+			$classDropdown = new DropdownField(
+				'q[ClassName]',
+				_t('CMSMain.PAGETYPEOPT','Page Type', 'Dropdown for limiting search to a page type'),
+				$pageTypes
 			)
 			// new TextField('MetaTags', _t('CMSMain.SearchMetaTags', 'Meta tags'))
 		);
 		$dateGroup->subfieldParam = 'FieldHolder';
 		$dateFrom->setConfig('showcalendar', true);
 		$dateTo->setConfig('showcalendar', true);
+		$classDropdown->setEmptyString(_t('CMSMain.PAGETYPEANYOPT','Any'));
 
 		$actions = new FieldList(
 			FormAction::create('doSearch',  _t('CMSMain_left.ss.APPLY FILTER', 'Apply Filter'))

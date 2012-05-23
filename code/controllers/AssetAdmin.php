@@ -304,7 +304,7 @@ JS
 		foreach($context->getFields() as $field) $field->setName(sprintf('q[%s]', $field->getName()));
 		foreach($context->getFilters() as $filter) $filter->setFullName(sprintf('q[%s]', $filter->getFullName()));
 
-		// Customize fields		
+		// Customize fields
 		$appCategories = array(
 			'image' => _t('AssetAdmin.AppCategoryImage', 'Image'),
 			'audio' => _t('AssetAdmin.AppCategoryAudio', 'Audio'),
@@ -313,17 +313,17 @@ JS
 			'zip' => _t('AssetAdmin.AppCategoryArchive', 'Archive', 'A collection of files'),
 		);
 		$context->addField(
-			new DropdownField(
+			$typeDropdown = new DropdownField(
 				'q[AppCategory]',
 				_t('AssetAdmin.Filetype', 'File type'),
-				$appCategories,
-				null,
-				null,
-				' '
+				$appCategories
 			)
 		);
+
+		$typeDropdown->setEmptyString(' ');
+
 		$context->addField(
-			new CheckboxField('q[CurrentFolderOnly]' ,_t('AssetAdmin.CurrentFolderOnly', 'Limit to current folder?'))
+			new CheckboxField('q[CurrentFolderOnly]', _t('AssetAdmin.CurrentFolderOnly', 'Limit to current folder?'))
 		);
 		$context->getFields()->removeByName('q[Title]');
 
