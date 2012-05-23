@@ -168,7 +168,7 @@ class RedirectorPage extends Page {
 class RedirectorPage_Controller extends Page_Controller {
 	function init() {
 		if($link = $this->redirectionLink()) {
-			Director::redirect($link, 301);
+			$this->redirect($link, 301);
 		}
 
 		parent::init();
