@@ -90,19 +90,19 @@ class ContentController extends Controller {
 		// If we've accessed the homepage as /home/, then we should redirect to /.
 		if($this->dataRecord && $this->dataRecord instanceof SiteTree
 			 	&& RootURLController::should_be_on_root($this->dataRecord) && (!isset($this->urlParams['Action']) || !$this->urlParams['Action'] ) 
-				&& !$_POST && !$_FILES && !Director::redirected_to() ) {
+				&& !$_POST && !$_FILES && !$this->redirectedTo() ) {
 			$getVars = $_GET;
 			unset($getVars['url']);
 			if($getVars) $url = "?" . http_build_query($getVars);
 			else $url = "";
-			Director::redirect($url, 301);
+			$this->redirect($url, 301);
 			return;
 		}
 		
 		if($this->dataRecord) $this->dataRecord->extend('contentcontrollerInit', $this);
 		else singleton('SiteTree')->extend('contentcontrollerInit', $this);
 
-		if(Director::redirected_to()) return;
+		if($this->redirectedTo()) return;
 
 		// Check page permissions
 		if($this->dataRecord && $this->URLSegment != 'Security' && !$this->dataRecord->canView()) {

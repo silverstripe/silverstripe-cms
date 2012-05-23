@@ -273,7 +273,7 @@ class ErrorPage_Controller extends Page_Controller {
 
 		$action = $this->request->param('Action');
 		if(!$action || $action == 'index') {
-			Director::set_status_code($this->failover->ErrorCode ? $this->failover->ErrorCode : 404); 
+			$this->getResponse()->setStatusCode($this->failover->ErrorCode ? $this->failover->ErrorCode : 404);
 		}
 		
 	}
