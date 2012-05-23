@@ -4,15 +4,11 @@
  * @subpackage model
  */
 class SiteTreeFileExtension extends DataExtension {
-	
-	function extraStatics($class = null, $extension = null) {
-		return array(
-			'belongs_many_many' => array(
-				"BackLinkTracking" => "SiteTree",
-			)
-		);
-	}
-	
+
+	public static $belongs_many_many = array(
+		'BackLinkTracking' => 'SiteTree'
+	);
+
 	/**
 	 * Extend through {@link updateBackLinkTracking()} in your own {@link Extension}.
 	 * 
