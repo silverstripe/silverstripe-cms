@@ -11,7 +11,7 @@
 				</h2>
 				<% if Fields.hasTabset %>
 					<% with Fields.fieldByName('Root') %>
-					<div class="cms-tabset cms-content-header-tabs ss-ui-tabs-nav">
+					<div class="cms-content-header-tabs">
 						<ul>
 						<% loop Tabs %>
 							<li<% if extraClass %> class="$extraClass"<% end_if %>><a href="#$id">$Title</a></li>
