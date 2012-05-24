@@ -7,6 +7,7 @@
 				config.plugins.push('contextmenu');
 				config.contextmenu = {
 					'items': function(node) {
+						
 						// Build a list for allowed children as submenu entries
 						var pagetype = node.data('pagetype');
 						var id = node.data('id');
@@ -16,10 +17,10 @@
 							function(key, val){
 								allowedChildren["allowedchildren-" + key ] = {
 									'label': '<span class="jstree-pageicon"></span>' + val.ssname,
-									'_class': 'class-' + val.pagetype,
+									'_class': 'class-' + val.ssclass,
 									'action': function(obj) {
 										$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
-											self.data('urlAddpage'), id, val.pagetype
+											self.data('urlAddpage'), id, val.ssclass
 										));
 									}
 								};
