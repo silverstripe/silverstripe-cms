@@ -52,7 +52,7 @@ class SiteConfig extends DataObject implements PermissionProvider {
 				$tabMain = new Tab('Main',
 					$titleField = new TextField("Title", _t('SiteConfig.SITETITLE', "Site title")),
 					$taglineField = new TextField("Tagline", _t('SiteConfig.SITETAGLINE', "Site Tagline/Slogan")),
-					new DropdownField("Theme", _t('SiteConfig.THEME', 'Theme'), $this->getAvailableThemes(), '', null, _t('SiteConfig.DEFAULTTHEME', '(Use default theme)'))
+					$themeDropdownField = new DropdownField("Theme", _t('SiteConfig.THEME', 'Theme'), $this->getAvailableThemes())
 				),
 				$tabAccess = new Tab('Access',
 					$viewersOptionsField = new OptionsetField("CanViewType", _t('SiteConfig.VIEWHEADER', "Who can view pages on this site?")),
@@ -68,6 +68,8 @@ class SiteConfig extends DataObject implements PermissionProvider {
 			)
 		);
 
+		$themeDropdownField->setEmptyString(_t('SiteConfig.DEFAULTTHEME', '(Use default theme)'));
+
 		$viewersOptionsSource = array();
 		$viewersOptionsSource["Anyone"] = _t('SiteTree.ACCESSANYONE', "Anyone");
 		$viewersOptionsSource["LoggedInUsers"] = _t('SiteTree.ACCESSLOGGEDIN', "Logged-in users");
@@ -81,11 +83,11 @@ class SiteConfig extends DataObject implements PermissionProvider {
 		
 		$topLevelCreatorsOptionsField->setSource($editorsOptionsSource);
 		
-		// Translatable doesn't handle updateCMSFields on DataObjects,  
-		// so add it here to save the current Locale,  
-		// because onBeforeWrite does not work. 
+		// Translatable doesn't handle updateCMSFields on DataObjects,
+		// so add it here to save the current Locale,
+		// because onBeforeWrite does not work.
 		if(class_exists('Translatable') && Object::has_extension('SiteConfig',"Translatable")){ 
-			$fields->push(new HiddenField("Locale"));  
+			$fields->push(new HiddenField("Locale"));
 		}
 
 		if (!Permission::check('EDIT_SITECONFIG')) {
