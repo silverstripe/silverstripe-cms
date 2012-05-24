@@ -12,6 +12,7 @@ en:
     CREATED: Date
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
+    FILES: Files
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'From the internet'
     FROMYOURCOMPUTER: 'From your computer'
@@ -32,8 +33,6 @@ en:
   BackLink_Button.ss:
     Back: Back
   BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  BigFamilyPage:
     DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Any
@@ -87,9 +86,9 @@ en:
     PUBALLFUN: '"Publish All" functionality'
     PUBALLFUN2: "Pressing this button will do the equivalent of going to every page and pressing \"publish\".  It's\n				intended to be used after there have been massive edits of the content, such as when the site was\n				first built."
     PUBPAGES: 'Done: Published {count} pages'
-    REMOVED: 'Deleted ''{title}''{additionalinfo} from live site'
+    REMOVED: 'Deleted ''%s''%s from live site'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
-    REMOVEDPAGEFROMDRAFT: 'Removed ''{title}'' from the draft site'
+    REMOVEDPAGEFROMDRAFT: 'Removed ''%s'' from the draft site'
     RESTORE: Restore
     RESTORED: 'Restored ''{title}'' successfully'
     ROLLBACK: 'Roll back to this version'
@@ -208,18 +207,11 @@ en:
     DESCRIPTION: 'Generic content page'
   LeftAndMain:
     PreviewButton: Preview
+    SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: 'Search Results'
     VersionUnknown: Unknown
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  MyNonRootPage:
-    DESCRIPTION: 'Generic content page'
-  MyOtherPage:
-    DESCRIPTION: 'Generic content page'
-  MyPage:
-    DESCRIPTION: 'Generic content page'
-  MyRandomPage:
     DESCRIPTION: 'Generic content page'
   Page:
     DESCRIPTION: 'Generic content page'
@@ -267,6 +259,8 @@ en:
     EDITHEADER: 'Who can edit pages on this site?'
     EDIT_PERMISSION: 'Manage site configuration'
     EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Your Site Name'
     SITETAGLINE: 'Site Tagline/Slogan'
     SITETITLE: 'Site title'
@@ -344,14 +338,12 @@ en:
     SHOWINMENUS: 'Show in menus?'
     SHOWINSEARCH: 'Show in search?'
     SINGULARNAME: 'Site Tree'
-    TABACCESS: Access
     TABBEHAVIOUR: Behavior
     TABCONTENT: 'Main Content'
     TABDEPENDENT: 'Dependent pages'
-    TABMETA: Metadata
     TOPLEVEL: 'Site Content (Top Level)'
     TOPLEVELCREATORGROUPS: 'Top level creators'
-    URLSegment: 'URL'
+    URLSegment: 'URL Segment'
     VIEWERGROUPS: 'Viewer Groups'
     VIEW_ALL_DESCRIPTION: 'View any page'
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
@@ -363,6 +355,8 @@ en:
     many_many_BackLinkTracking: 'Backlink Tracking'
     many_many_ImageTracking: 'Image Tracking'
     many_many_LinkTracking: 'Link Tracking'
+  SiteTreeURLSegmentField:
+    HelpChars: ' Special characters are automatically converted or removed.'
   StaticExporter:
     BASEURL: 'Base URL'
     EXPORTTO: 'Export to that folder'
