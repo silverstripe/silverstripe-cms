@@ -45,7 +45,7 @@ class Folder_UnusedAssetsField extends CompositeField {
      */
 	protected function getAssetList() {
 		$where = $this->folder->getUnusedFilesListFilter();
-		$files = DataList::create('File')->where($where);
+		$files = File::get()->where($where);
 		$field = new GridField('AssetList', false, $files);
 		return $field;
 	}

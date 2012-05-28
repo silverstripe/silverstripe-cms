@@ -1894,7 +1894,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return FieldList
 	 */
 	function getSettingsFields() {
-		$groupsMap = DataList::create('Group')->map('ID', 'Breadcrumbs')->toArray();
+		$groupsMap = Group::get()->map('ID', 'Breadcrumbs')->toArray();
 		asort($groupsMap);
 		
 		$fields = new FieldList(
