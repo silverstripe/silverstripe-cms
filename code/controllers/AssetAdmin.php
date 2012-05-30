@@ -162,7 +162,7 @@ JS
 			$uploadBtn = new LiteralField(
 				'UploadButton', 
 				sprintf(
-					'<a class="ss-ui-button ss-ui-action-constructive cms-panel-link" data-target-panel=".cms-content" data-icon="drive-upload" href="%s">%s</a>',
+					'<a class="ss-ui-button ss-ui-action-constructive cms-panel-link" data-pjax-target="Content" data-icon="drive-upload" href="%s">%s</a>',
 					Controller::join_links(singleton('CMSFileAddController')->Link(), '?ID=' . $folder->ID),
 					_t('Folder.UploadFilesButton', 'Upload')
 				)
@@ -275,6 +275,7 @@ JS
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 		// TODO Can't merge $FormAttributes in template at the moment
 		$form->addExtraClass('cms-edit-form cms-panel-padded center ' . $this->BaseCSSClasses());
+		$form->setAttribute('data-pjax-fragment', 'CurrentForm');
 		$form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 
 		$this->extend('updateEditForm', $form);
