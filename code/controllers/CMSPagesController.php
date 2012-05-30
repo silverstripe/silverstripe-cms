@@ -16,6 +16,13 @@ class CMSPagesController extends CMSMain {
 	}
 
 	/**
+	 * @return String
+	 */
+	public function ViewState() {
+		return $this->request->getVar('view');
+	}
+
+	/**
 	 * Doesn't deal with a single record, and we need
 	 * to avoid session state from previous record edits leaking in here.
 	 */
