@@ -704,7 +704,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			'LastEdited' => _t('SiteTree.LASTUPDATED', 'Last Updated'),
 		);
 
-		if($params) {
+		if(!$params) {
 			$fields = array_merge(array('listChildrenLink' => ''), $fields);
 		}
 
