@@ -24,7 +24,7 @@ class ModelAsController extends Controller implements NestedController {
 			$controller = $controller . '_' . ucfirst($action);
 		}
 		
-		return class_exists($controller) ? new $controller($sitetree) : $sitetree;
+		return class_exists($controller) ? Injector::inst()->create($controller, $sitetree) : $sitetree;
 	}
 	
 	public function init() {
