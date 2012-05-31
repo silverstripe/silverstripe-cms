@@ -72,6 +72,33 @@ class ErrorPage extends Page {
 			if(!file_exists(ASSETS_PATH)) {
 				mkdir(ASSETS_PATH);
 			}
+
+			$forbiddenErrorPage = DataObject::get_one('ErrorPage', "\"ErrorCode\" = '403'");
+			$forbiddenErrorPageExists = ($forbiddenErrorPage && $forbiddenErrorPage->exists()) ? true : false;
+			$forbiddenErrorPagePath = self::get_filepath_for_errorcode(403);
+			if(!($forbiddenErrorPageExists && file_exists($forbiddenErrorPagePath))) {
+				if(!$forbiddenErrorPageExists) {
+					$forbiddenErrorPage = new ErrorPage();
+					$forbiddenErrorPage->ErrorCode = 403;
+					$forbiddenErrorPage->Title = _t('ErrorPage.DEFAULTFORBIDDENPAGETITLE', 'Forbidden');
+					$forbiddenErrorPage->Content = _t('ErrorPage.DEFAULTFORBIDDENPAGECONTENT', '<p>Sorry, you are not allowed to access this page or file.</p>');
+					$forbiddenErrorPage->write();
+					$forbiddenErrorPage->publish('Stage', 'Live');
+				}
+
+				// Ensure a static error page is created from latest error page content
+				$response = Director::test(Director::makeRelative($forbiddenErrorPage->Link()));
+				if($fh = fopen($forbiddenErrorPagePath, 'w')) {
+					$written = fwrite($fh, $response->getBody());
+					fclose($fh);
+				}
+
+				if($written) {
+					DB::alteration_message('403 error page created', 'created');
+				} else {
+					DB::alteration_message(sprintf('403 error page could not be created at %s. Please check permissions', $forbiddenErrorPagePath), 'error');
+				}
+			}
 	
 			$pageNotFoundErrorPage = DataObject::get_one('ErrorPage', "\"ErrorCode\" = '404'");
 			$pageNotFoundErrorPageExists = ($pageNotFoundErrorPage && $pageNotFoundErrorPage->exists()) ? true : false;
