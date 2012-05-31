@@ -156,7 +156,7 @@ class LoadModulesTask extends SilverStripeBuildTask {
 			if (!$storeLocally && !$usePiston && file_exists('.gitignore')) {
 				$gitIgnore = file_get_contents('.gitignore');
 				if (strpos($gitIgnore, $moduleName) === false) {
-					$this->exec("echo $$moduleName >> .gitignore");
+					$this->exec("echo $moduleName >> .gitignore");
 				}
 			}
 		} else {
