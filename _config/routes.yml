@@ -5,3 +5,10 @@ Before: '*'
 Director:
   rules:
     '$URLSegment//$Action/$ID/$OtherID': 'ModelAsController'
+---
+Name: legacycmsroutes
+After: '*'
+---
+Director:
+  rules:
+    'admin/cms': '->admin/pages'
