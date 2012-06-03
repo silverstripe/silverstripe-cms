@@ -111,8 +111,16 @@
 	
 		$(".cms-page-add-button").entwine({
 			onclick: function(e) {
-				$('.cms-page-add-form-dialog').dialog('open');
+				var selected = $('.cms-tree').jstree('get_selected'),
+					parentId = selected ? $(selected[0]).data('id') : null,
+					data = {selector: this.data('targetPanel'),pjax: this.data('pjax')},
+					url = parentId ? ss.i18n.sprintf(this.data('urlAddpage'), parentId) : this.attr('href');
+
+				$('.cms-container').loadPanel(url, null, data);
 				e.preventDefault();
+
+				// $('.cms-page-add-form-dialog').dialog('open');
+				// e.preventDefault();
 			}
 		});
 	});
