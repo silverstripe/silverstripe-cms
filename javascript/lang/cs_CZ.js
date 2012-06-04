@@ -7,7 +7,6 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'CMSMAIN.ERRORADDINGPAGE' : 'Chyba při přidání stránky',
 		'CMSMAIN.FILTEREDTREE' : 'Filtrovaná struktura k zobrazení pouze zmeněných stránek',
 		'CMSMAIN.ERRORFILTERPAGES' : 'Není možno filtrovat strukturu k zobrazení pouze zmeněných stránek<br />%s',
-		'CMSMAIN.ERRORUNFILTER' : 'Není možno filtrovat strukturu webu<br />%s',
 		'CMSMAIN.ERRORUNFILTER' : 'Nefiltrovaná struktura',
 		'CMSMAIN.PUBLISHINGPAGES' : 'Zveřejňování stránek...',
 		'CMSMAIN.SELECTONEPAGE' : "Prosím, vyberte nejméně 1 stránku.",
@@ -19,11 +18,6 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'CMSMAIN.RESTORING': 'Obnovování...',
 		'CMSMAIN.ERRORREVERTING': 'Chyba převádění na živý obsah',
 		'CMSMAIN.SAVING' : 'ukládání...',
-		'CMSMAIN.SELECTMOREPAGES' : "Máte vybráno %s stránek.\n\nSkutečně je chcete?",
-		'ModelAdmin.SAVED': "Uloženo",
-		'ModelAdmin.REALLYDELETE': "Skutečně chcete smazat?",
-		'ModelAdmin.DELETED': "Smazáno",
-		'LeftAndMain.PAGEWASDELETED': "Tato stránka byla smazána. Pro editaci stránky, vyberte ji vlevo.",
-		'LeftAndMain.CONFIRMUNSAVED': "Určitě chcete opustit navigaci z této stránky?\n\nUPOZORNĚNÍ: Vaše změny nebyly uloženy.\n\nStlačte OK pro pokračovat, nebo Cancel, zůstanete na této stránce."
+		'CMSMAIN.SELECTMOREPAGES' : "Máte vybráno %s stránek.\n\nSkutečně je chcete?"
 	});
 }

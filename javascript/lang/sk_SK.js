@@ -8,7 +8,6 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'CMSMAIN.FILTEREDTREE' : 'Filtrovaná štruktúra k zobrazeniu iba zmenených stránok',
 		'CMSMAIN.ERRORFILTERPAGES' : 'Nie je možné filtrovať štruktúru k zobrazeniu iba zmenených stránok<br />%s',
 		'CMSMAIN.ERRORUNFILTER' : 'Nie je možné filtrovať štruktúru webu<br />%s',
-		'CMSMAIN.ERRORUNFILTER' : 'Nefiltrovaná štruktúra',
 		'CMSMAIN.PUBLISHINGPAGES' : 'Zverejňovanie stránok...',
 		'CMSMAIN.SELECTONEPAGE' : "Prosím, vyberte najmenej 1 stránku.",
 		'CMSMAIN.ERRORPUBLISHING' : 'Chyba pri zverejňovaní stránok',
@@ -19,11 +18,6 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'CMSMAIN.RESTORING': 'Obnovovanie...',
 		'CMSMAIN.ERRORREVERTING': 'Chyba prevádzania na živý obsah',
 		'CMSMAIN.SAVING' : 'ukladanie...',
-		'CMSMAIN.SELECTMOREPAGES' : "Máte vybraté %s stránok.\n\nSkutočne ich chcete?",
-		'ModelAdmin.SAVED': "Uložené",
-		'ModelAdmin.REALLYDELETE': "Skutočně chcete zmazať?",
-		'ModelAdmin.DELETED': "Zmazané",
-		'LeftAndMain.PAGEWASDELETED': "Táto stránka bola zmazaná. Pre editáciu stránky, vyberte ju vľavo.",
-		'LeftAndMain.CONFIRMUNSAVED': "Určite chcete opustiť navigáciu z tejto stránky?\n\nUPOZORNENIE: Vaše zmeny neboli uložené.\n\nStlačte OK pre pokračovať, alebo Cancel, ostanete na teto stránke."
+		'CMSMAIN.SELECTMOREPAGES' : "Máte vybraté %s stránok.\n\nSkutočne ich chcete?"
 	});
 }

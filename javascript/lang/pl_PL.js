@@ -8,7 +8,6 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'CMSMAIN.FILTEREDTREE' : 'Drzewo filtrowane pokazujące tylko zmienione strony',
 		'CMSMAIN.ERRORFILTERPAGES' : 'Nie można było filtrować drzewa<br />%s',
 		'CMSMAIN.ERRORUNFILTER' : 'Nie można było cofnąć filtrowania drzewa<br />%s',
-		'CMSMAIN.ERRORUNFILTER' : 'Cofnięto filtrowanie drzewa',
 		'CMSMAIN.PUBLISHINGPAGES' : 'Publikacja strony...',
 		'CMSMAIN.SELECTONEPAGE' : "Proszę wybrać przynajmniej jedną stronę",
 		'CMSMAIN.ERRORPUBLISHING' : 'Błąd podczas publikacji stron',
@@ -18,10 +17,6 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'CMSMAIN.PUBLISHING' : 'Publikacja...',
 		'CMSMAIN.RESTORING': 'Odzyskiwanie...',
 		'CMSMAIN.ERRORREVERTING': 'Błąd podczas powrotu do opublikowanej strony',
-		'CMSMAIN.SAVING' : 'Zapisywanie...',
-		'ModelAdmin.SAVED': "Zapisano",
-		'ModelAdmin.REALLYDELETE': "Napewno usunąć?",
-		'ModelAdmin.DELETED': "Usunięto",
-		'LeftAndMain.PAGEWASDELETED': "Ta strona została usunięta."
+		'CMSMAIN.SAVING' : 'Zapisywanie...'
 	});
 }
