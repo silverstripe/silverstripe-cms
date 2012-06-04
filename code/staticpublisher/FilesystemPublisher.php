@@ -56,7 +56,7 @@ class FilesystemPublisher extends StaticPublisher {
 	 *   with the filename 'index.html'.  If you set the extension to PHP, then a simple PHP script will
 	 *   be generated that can do appropriate cache & redirect header negotation.
 	 */
-	function __construct($destFolder, $fileExtension = null) {
+	function __construct($destFolder = 'cache', $fileExtension = null) {
 		// Remove trailing slash from folder
 		if(substr($destFolder, -1) == '/') $destFolder = substr($destFolder, 0, -1);
 		
