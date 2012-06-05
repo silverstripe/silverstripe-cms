@@ -91,6 +91,13 @@ JS
 		$params = $this->request->requestVar('q');
 		$list = $context->getResults($params);
 
+		// Don't filter list when a detail view is requested,
+		// to avoid edge cases where the filtered list wouldn't contain the requested
+		// record due to faulty session state (current folder not always encoded in URL, see #7408).
+		if($this->request->param('ID') == 'field') {
+			return $list;
+		}
+
 		// Re-add previously removed "Name" filter as combined filter
 		// TODO Replace with composite SearchFilter once that API exists
 		if(isset($params['Name'])) {
