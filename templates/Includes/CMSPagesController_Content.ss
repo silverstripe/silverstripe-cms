@@ -33,7 +33,7 @@
 			<%-- Lazy-loaded via ajax --%>
 		</div>
 	
-		<div class="cms-content-view cms-panel-deferred" id="cms-content-listview" data-url="$LinkListView">
+		<div class="cms-content-view cms-panel-deferred" id="cms-content-listview" data-url="$LinkListView" data-deferred-no-cache="true">
 			<%-- Lazy-loaded via ajax --%>
 		</div>
 		<!--
