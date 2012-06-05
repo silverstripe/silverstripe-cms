@@ -625,6 +625,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			// TODO Can't merge $FormAttributes in template at the moment
 			$form->addExtraClass('center ss-tabset ' . $this->BaseCSSClasses());
 			// if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
+			$form->setAttribute('data-pjax-fragment', 'CurrentForm');
 
 			if(!$record->canEdit() || $deletedFromStage) {
 				$readonlyFields = $form->Fields()->makeReadonly();
@@ -720,7 +721,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				$num = $item->numChildren();
 				if($num) {
 					return sprintf(
-						'<a class="cms-panel-link list-children-link" data-pjax="ListViewForm" data-target-panel="#Form_ListViewForm" href="%s?ParentID=%d&view=list">%s</a>',
+						'<a class="cms-panel-link list-children-link" data-pjax-target="ListViewForm,Breadcrumbs" href="%s?ParentID=%d&view=list">%s</a>',
 						$controller->Link(),
 						$item->ID,
 						$num
@@ -737,6 +738,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			new FieldList($gridField),
 			new FieldList()
 		);
+		$listview->setAttribute('data-pjax-fragment', 'ListViewForm');
 
 		$this->extend('updateListView', $listview);
 		
