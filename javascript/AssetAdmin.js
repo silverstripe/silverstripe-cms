@@ -41,6 +41,8 @@
 					$('.cms-container').loadPanel(url);
 					return false;
 				}
+
+				this._super(e);
 			}
 		});
 
