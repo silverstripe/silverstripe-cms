@@ -2,7 +2,7 @@
 	<form $FormAttributes data-layout-type="border">
 
 		<div class="cms-content-header north">
-			<div>
+			<div class="cms-content-header-info">
 				<h2><% _t('CMSAddPageController.Title','Add page') %></h2>
 			</div>
 		</div>
