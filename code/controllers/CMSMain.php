@@ -57,6 +57,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		parent::init();
 		
 		Requirements::css(CMS_DIR . '/css/screen.css');
+		Requirements::customCSS($this->generateTreeStylingCSS());
 		
 		Requirements::combine_files(
 			'cmsmain.js',
@@ -218,21 +219,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * Return the entire site tree as a nested set of ULs
 	 */
 	public function SiteTreeAsUL() {
-		$html = '';
-
-		// Include custom CSS for tree icons inline, as the tree might be loaded
-		// via Ajax, in which case we can't inject it into the HTML header easily through the HTTP response.
-		$css = $this->generateTreeStylingCSS();
-		if($this->request->isAjax()) {
-			$html .= "<style type=\"text/css\">\n" . $css . "</style>\n";				
-		} else {
-			Requirements::customCSS($css);
-		}
-
 		// Pre-cache sitetree version numbers for querying efficiency
 		Versioned::prepopulate_versionnumber_cache("SiteTree", "Stage");
 		Versioned::prepopulate_versionnumber_cache("SiteTree", "Live");
-		$html .= $this->getSiteTreeFor($this->stat('tree_class'));
+		$html = $this->getSiteTreeFor($this->stat('tree_class'));
 
 		$this->extend('updateSiteTreeAsUL', $html);
 
