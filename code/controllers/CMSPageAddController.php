@@ -118,10 +118,17 @@ class CMSPageAddController extends CMSPageEditController {
 			if(!SiteConfig::current_site_config()->canCreateTopLevel())
 				return Security::permissionFailure($this);
 		}
-		
+
 		$record = $this->getNewItem("new-$className-$parentID".$suffix, false);
 		if(class_exists('Translatable') && $record->hasExtension('Translatable')) $record->Locale = $data['Locale'];
-		$record->write();
+
+		try {
+			$record->write();
+		} catch(ValidationException $ex) {
+			$form->sessionMessage($ex->getResult()->message(), 'bad');
+			return $this->getResponseNegotiator()->respond($this->request);
+		}
+
 		$editController = singleton('CMSPageEditController');
 		$editController->setCurrentPageID($record->ID);
 
