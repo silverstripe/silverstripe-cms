@@ -53,7 +53,8 @@
 	}
 }
 
-.cms-content-tools { // Hide certain elements when shown in "sidebar mode"
+// Hide certain elements when shown in "sidebar mode"
+.cms-content-tools { 
 	#cms-content-treeview {
 		.cms-content-toolbar {
 			border-bottom:none;
@@ -79,9 +80,15 @@
 		}
 
 		.cms-tree {
+			// Hide badges and drag icons to save space
 			.badge,
 			a > .jstree-icon {
 				display: none;
+			}
+
+			// Show badge on hovered node
+			a:hover > .text > .badge {
+				display: inline-block;
 			}
 		}
 	}
