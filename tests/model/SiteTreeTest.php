@@ -956,8 +956,8 @@ class SiteTreeTest_NotRoot extends Page implements TestOnly {
 }
 
 class SiteTreeTest_StageStatusInherit extends SiteTree implements TestOnly {
-	function getStatusFlags(){
-		$flags = parent::getStatusFlags();
+	function getStatusFlags($cached = true){
+		$flags = parent::getStatusFlags($cached);
 		$flags['inherited-class'] = "InheritedTitle";
 		return $flags;
 	}

@@ -195,11 +195,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * See {@link batch_permission_check()} for details.
 	 */
 	public static $cache_permissions = array();
-	
+
 	/**
 	 * @var boolean
 	 */
 	protected static $enforce_strict_hierarchy = true;
+
+	protected $_cache_statusFlags = null;
 	
 	/**
 	 * Determines if the system should avoid orphaned pages
@@ -1493,6 +1495,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		
 		parent::onAfterDelete();
 	}
+
+	function flushCache($persistent = true) {
+		parent::flushCache($persistent);
+		$this->_cache_statusFlags = null;
+	}
 	
 	function validate() {
 		$result = parent::validate();
@@ -2469,38 +2476,43 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * 
 	 * Example (with optional title attribute): 
 	 * "deletedonlive" => array('text' => "Deleted", 'title' => 'This page has been deleted')
-	 * 
+	 *
+	 * @param Boolean $cached
 	 * @return array
 	 */
-	function getStatusFlags() {
-		$flags = array();
-		if($this->IsDeletedFromStage) {
-			if($this->ExistsOnLive) {
-				$flags['removedfromdraft'] = array(
-					'text' => _t('SiteTree.REMOVEDFROMDRAFTSHORT', 'Removed from draft'),
-					'title' => _t('SiteTree.REMOVEDFROMDRAFTHELP', 'Page is published, but has been deleted from draft'),
+	function getStatusFlags($cached = true) {
+		if(!$this->_cache_statusFlags || !$cached) {
+			$flags = array();
+			if($this->IsDeletedFromStage) {
+				if($this->ExistsOnLive) {
+					$flags['removedfromdraft'] = array(
+						'text' => _t('SiteTree.REMOVEDFROMDRAFTSHORT', 'Removed from draft'),
+						'title' => _t('SiteTree.REMOVEDFROMDRAFTHELP', 'Page is published, but has been deleted from draft'),
+					);
+				} else {
+					$flags['deletedonlive'] = array(
+						'text' => _t('SiteTree.DELETEDPAGESHORT', 'Deleted'),
+						'title' => _t('SiteTree.DELETEDPAGEHELP', 'Page is no longer published'),
+					);
+				}
+			} else if($this->IsAddedToStage) {
+				$flags['addedtodraft'] = array(
+					'text' => _t('SiteTree.ADDEDTODRAFTSHORT', 'Draft'),
+					'title' => _t('SiteTree.ADDEDTODRAFTHELP', "Page has not been published yet")
 				);
-			} else {
-				$flags['deletedonlive'] = array(
-					'text' => _t('SiteTree.DELETEDPAGESHORT', 'Deleted'),
-					'title' => _t('SiteTree.DELETEDPAGEHELP', 'Page is no longer published'),
+			} else if($this->IsModifiedOnStage) {
+				$flags['modified'] = array(
+					'text' => _t('SiteTree.MODIFIEDONDRAFTSHORT', 'Modified'),
+					'title' => _t('SiteTree.MODIFIEDONDRAFTHELP', 'Page has unpublished changes'),
 				);
 			}
-		} else if($this->IsAddedToStage) {
-			$flags['addedtodraft'] = array(
-				'text' => _t('SiteTree.ADDEDTODRAFTSHORT', 'Draft'),
-				'title' => _t('SiteTree.ADDEDTODRAFTHELP', "Page has not been published yet")
-			);
-		} else if($this->IsModifiedOnStage) {
-			$flags['modified'] = array(
-				'text' => _t('SiteTree.MODIFIEDONDRAFTSHORT', 'Modified'),
-				'title' => _t('SiteTree.MODIFIEDONDRAFTHELP', 'Page has unpublished changes'),
-			);
-		}
 
-		$this->extend('updateStatusFlags', $flags);
+			$this->extend('updateStatusFlags', $flags);
+
+			$this->_cache_statusFlags = $flags;
+		}
 		
-		return $flags;
+		return $this->_cache_statusFlags;
 	}
 
 	
