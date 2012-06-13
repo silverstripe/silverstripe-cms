@@ -57,7 +57,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		parent::init();
 		
 		Requirements::css(CMS_DIR . '/css/screen.css');
-		Requirements::customCSS($this->generateTreeStylingCSS());
+		Requirements::customCSS($this->generatePageIconsCss());
 		
 		Requirements::combine_files(
 			'cmsmain.js',
@@ -405,7 +405,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * 
 	 * @return String CSS 
 	 */
-	function generateTreeStylingCSS() {
+	public function generatePageIconsCss() {
 		$css = ''; 
 		
 		$classes = ClassInfo::subclassesFor('SiteTree'); 
@@ -427,20 +427,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$baseFilename = $iconPathInfo['dirname'] . '/' . $iconPathInfo['filename'];
 			$fileExtension = $iconPathInfo['extension'];
 
+			$selector = ".page-icon.class-$class, li.class-$class > a .jstree-pageicon";
+
 			if(Director::fileExists($iconFile)) {
-				$css .= sprintf(
-					"li.class-%s > a .jstree-pageicon { background: transparent url('%s') 0 0 no-repeat; }\n",
-					$class, $iconFile
-				);	
+				$css .= "$selector { background: transparent url('$iconFile') 0 0 no-repeat; }\n";
 			} else {
 				// Support for more sophisticated rules, e.g. sprited icons
-				$css .= sprintf(
-					"li.class-%s > a .jstree-pageicon { %s }\n",
-					$class, $iconFile
-				);
+				$css .= "$selector { $iconFile }\n";
 			}
-			
-
 		}
 
 		return $css;

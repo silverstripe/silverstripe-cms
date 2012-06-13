@@ -6,9 +6,7 @@
 * @package cms
 */
 class VirtualPage extends Page {
-	
-	static $icon = "cms/images/treeicons/page-shortcut-gold-file.gif";
-	
+
 	static $description = 'Displays the content of another page';
 	
 	public static $virtualFields;
