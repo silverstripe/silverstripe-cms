@@ -6,9 +6,7 @@
  * @subpackage content
  */
 class RedirectorPage extends Page {
-	
-	static $icon = "cms/images/treeicons/page-shortcut-file.gif";
-	
+
 	static $description = 'Redirects to a different internal page';
 	
 	static $db = array(

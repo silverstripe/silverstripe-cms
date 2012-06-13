@@ -14,7 +14,6 @@
 #cms-content-treeview .cms-tree-expand-trigger { display: none; }
 
 .cms-content-tools #cms-content-treeview .cms-content-toolbar { border-bottom: none; box-shadow: none; margin-bottom: 8px; }
-.cms-content-tools #cms-content-treeview .cms-content-toolbar .cms-page-add-button { margin-top: 8px; }
 .cms-content-tools #cms-content-treeview .cms-tree-view-modes, .cms-content-tools #cms-content-treeview .cms-content-batchactions { display: none; }
 .cms-content-tools #cms-content-treeview .cms-tree-expand-trigger { display: inline-block; margin: 0 0 2px 0; position: absolute; top: 8px; right: 4px; }
 .cms-content-tools #cms-content-treeview .cms-tree-expand-trigger span.ui-button-text { padding-right: 8px; }
