@@ -26,6 +26,7 @@
 .field.urlsegment .prefix, .field.urlsegment .preview { padding-top: 8px; display: inline-block; }
 .field.urlsegment .prefix { color: #777; }
 .field.urlsegment .cancel, .field.urlsegment .update, .field.urlsegment .edit { margin-left: 7px; }
+.field.urlsegment .help { margin-left: 0; }
 
 #Form_EditForm #Title .update { margin-left: 7px; }
 
