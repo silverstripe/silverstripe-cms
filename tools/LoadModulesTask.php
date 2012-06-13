@@ -119,7 +119,6 @@ class LoadModulesTask extends SilverStripeBuildTask {
 	protected function loadModule($moduleName, $url, $devBuild = false, $storeLocally=false, $usePiston=false) {
 		$git = strrpos($url, '.git') == (strlen($url) - 4);
 		$branch = 'master';
-		$cmd = '';
 		
 		$originalName = $moduleName;
 
@@ -365,24 +364,42 @@ class LoadModulesTask_GitLoader extends LoadModulesTask_Loader {
 		return trim($this->callingTask->exec("cd $this->name && $statCmd && cd \"$currentDir\"", true));
 	}
 	
-	function update($overwrite = true) {
+	/**
+	 *
+	 * @param boolean $overwrite 
+	 */
+	public function update($overwrite = true) {
 		$branch = $this->branch;
 		$currentDir = getcwd();
 
 		$commitId = null;
-		if (strpos($branch, LoadModulesTask::MODULE_SEPARATOR) > 0) {
+		// Extract the branch and the commit to use for the update
+		if(strpos($branch, LoadModulesTask::MODULE_SEPARATOR) > 0) {
 			$commitId = substr($branch, strpos($branch, LoadModulesTask::MODULE_SEPARATOR) + 1);
 			$branch = substr($branch, 0, strpos($branch, LoadModulesTask::MODULE_SEPARATOR));
 		}
 
-		$currentBranch = trim($this->callingTask->exec("cd $moduleName && git branch && cd \"$currentDir\"", true));
-
+		// Finds the current checked out branch
+		$cliBranches = trim($this->callingTask->exec("cd $this->name && git branch && cd \"$currentDir\"", true));
+		$currentBranch = 'master';
+		foreach(explode(PHP_EOL, $cliBranches) as $cliBranch) {
+			if(strstr($cliBranch, '* ') !== false) {
+				$currentBranch = str_replace('* ', '', $cliBranch);
+				break;
+			}
+		}
+		
 		$overwriteOpt = $overwrite ? '-f' : '';
 
-		$this->callingTask->exec("cd $this->name && git checkout $overwriteOpt $branch && git pull origin $branch && cd \"$currentDir\"");
-
+		// We are already on the target branch, don't checkout it again
+		if($currentBranch == $branch) {
+			$this->callingTask->exec("cd $this->name && git pull origin $branch && cd \"$currentDir\"");
+		} else {
+			$this->callingTask->exec("cd $this->name && git checkout $overwriteOpt $branch && git pull origin $branch && cd \"$currentDir\"");
+		}
+		
 		if ($commitId) {
-			$this->callingTask->exec("cd $this->name && git pull && git checkout $commitId && cd \"$currentDir\"");
+			$this->callingTask->exec("cd $this->name && git checkout $commitId && cd \"$currentDir\"");
 		}
 	}
 	
