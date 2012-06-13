@@ -1,37 +1,5 @@
 (function($) {
 	$.entwine('ss', function($){
-		$('.cms-page-add-form-dialog').entwine({
-			onmatch: function() {
-				this.dialog({
-					autoOpen: false,
-					bgiframe: true,
-					modal: true,
-					height: 400,
-					width: 600,
-					ghost: true
-				});
-				this._super();
-			},
-			onunmatch: function() {
-				this._super();
-			}
-		});
-	
-		$('.cms-page-add-form-dialog input[name=PageType]').entwine({
-			onmatch: function() {
-				if(this.is(':checked')) this.trigger('click');
-				this._super();
-			},
-			onunmatch: function() {
-				this._super();
-			},
-			onclick: function() {
-				var el = this.parents('li:first');
-				el.setSelected(true);
-				el.siblings().setSelected(false);
-			}
-		});
-
 		/**
 		 * Reset the parent node selection if the type is
 		 * set back to "toplevel page", to avoid submitting inconsistent state.
