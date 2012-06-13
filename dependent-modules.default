@@ -30,7 +30,7 @@ themes/simple git://github.com/silverstripe-themes/silverstripe-simple.git
 
 # The following are the some other modules you might like to import
 
-# sqlite3:master:1.1.0 git://github.com/smindel/silverstripe-sqlite3.git
+# sqlite3:master git://github.com/silverstripe-labs/silverstripe-sqlite3.git
 # userforms:master:0.3.0 git://github.com/silverstripe/silverstripe-userforms.git
 # securefiles http://svn.polemic.net.nz/silverstripe/modules/SecureFiles/tags/0.30/
 
