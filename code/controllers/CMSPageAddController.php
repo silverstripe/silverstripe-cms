@@ -64,7 +64,9 @@ class CMSPageAddController extends CMSPageEditController {
 				'Page'
 			)
 		);
-		$parentField->setShowSearch(true);
+		// TODO Re-enable search once it allows for HTML title display, 
+		// see http://open.silverstripe.org/ticket/7455
+		// $parentField->setShowSearch(true);
 		$parentModeField->setValue($this->request->getVar('ParentID') ? 'child' : 'top');
 		$parentModeField->addExtraClass('parent-mode');
 
