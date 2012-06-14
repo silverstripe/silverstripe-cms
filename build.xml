@@ -2,8 +2,9 @@
 
 <!-- Installation instructions:
 
-sudo pear install phing
-sudo pear install VersionControl_Git-0.4.4
+sudo pear channel-discover pear.phing.info
+sudo pear install phing/phing
+sudo pear install pear/VersionControl_Git-0.4.4
 phing help
 
 -->
