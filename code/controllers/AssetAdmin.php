@@ -462,7 +462,7 @@ JS
 		if($id && is_numeric($id) && $id > 0) {
 			return DataObject::get_by_id('Folder', $id);
 		} else {
-			return singleton('Folder');
+			return new Folder();
 		}
 	}
 	
