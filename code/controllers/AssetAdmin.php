@@ -135,7 +135,7 @@ JS
 		$folder = ($id && is_numeric($id)) ? DataObject::get_by_id('Folder', $id, false) : $this->currentPage();
 		$fields = $form->Fields();
 		$title = ($folder && $folder->exists()) ? $folder->Title : _t('AssetAdmin.FILES', 'Files');
-		$fields->push(new HiddenField('ID', false, $folder->ID));
+		$fields->push(new HiddenField('ID', false, $folder ? $folder->ID : null));
 
 		// File listing
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
