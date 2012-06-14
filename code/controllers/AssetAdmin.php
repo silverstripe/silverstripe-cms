@@ -24,6 +24,7 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 	
 	public static $allowed_actions = array(
 		'addfolder',
+		'delete',
 		'DeleteItemsForm',
 		'getsubtree',
 		'movemarked',
@@ -303,6 +304,21 @@ JS
 		}
 
 		return $content;
+	}
+
+	public function delete($data, $form) {
+		$className = $this->stat('tree_class');
+		
+		$record = DataObject::get_by_id($className, Convert::raw2sql($data['ID']));
+		if($record && !$record->canDelete()) return Security::permissionFailure();
+		if(!$record || !$record->ID) throw new HTTPResponse_Exception("Bad record ID #" . (int)$data['ID'], 404);
+		$parentID = $record->ParentID;
+		$record->delete();
+		$this->setCurrentPageID(null);
+
+		$this->response->addHeader('X-Status', rawurlencode(_t('LeftAndMain.DELETED', 'Deleted.')));
+		$this->response->addHeader('X-Pjax', 'Content');
+		return $this->redirect(Controller::join_links($this->Link('show'), $parentID ? $parentID : 0));
 	}
 
 	public function getSearchContext() {
