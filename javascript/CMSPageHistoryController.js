@@ -79,7 +79,7 @@
 					url = ss.i18n.sprintf(this.data('linkTmplShow'), id,to);
 				}
 				
-				$('.cms-container').loadPanel(url, '', {selector: '.cms-edit-form'});
+				$('.cms-container').loadPanel(url, '', {pjax: 'CurrentForm'});
 			}
 		});
 

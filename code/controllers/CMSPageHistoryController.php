@@ -20,6 +20,20 @@ class CMSPageHistoryController extends CMSMain {
 	public static $url_handlers = array(
 		'$Action/$ID/$VersionID/$OtherVersionID' => 'handleAction'
 	);
+
+	public function getResponseNegotiator() {
+		$negotiator = parent::getResponseNegotiator();
+		$controller = $this;
+		$negotiator->setCallback('CurrentForm', function() use(&$controller) {
+			$form = $controller->ShowVersionForm($controller->getRequest()->param('VersionID'));
+			if($form) return $form->forTemplate();
+			else return $controller->renderWith($controller->getTemplatesWithSuffix('_Content'));
+		});
+		$negotiator->setCallback('default', function() use(&$controller) {
+			return $controller->renderWith($controller->getViewer('show'));
+		});
+		return $negotiator;
+	}
 	
 	/**
 	 * @return array
@@ -27,13 +41,16 @@ class CMSPageHistoryController extends CMSMain {
 	function show($request) {
 		$form = $this->ShowVersionForm($request->param('VersionID'));
 		
-		if($request->isAjax()) {
-			if($form) $content = $form->forTemplate();
-			else $content = $this->renderWith($this->getTemplatesWithSuffix('_Content'));
-		} else {
-			$content = $this->customise(array('EditForm' => $form))->renderWith($this->getViewer('show'));
-		}
-		return $content;
+		$negotiator = $this->getResponseNegotiator();
+		$controller = $this;
+		$negotiator->setCallback('CurrentForm', function() use(&$controller, &$form) {
+			return $form ? $form->forTemplate() : $controller->renderWith($controller->getTemplatesWithSuffix('_Content'));
+		});
+		$negotiator->setCallback('default', function() use(&$controller, &$form) {
+			return $controller->customise(array('EditForm' => $form))->renderWith($controller->getViewer('show'));
+		});
+
+		return $negotiator->respond($request);
 	}
 	
 	/**
@@ -44,12 +61,17 @@ class CMSPageHistoryController extends CMSMain {
 			$request->param('VersionID'), 
 			$request->param('OtherVersionID')
 		);
-		if($request->isAjax()) {
-			$content = $form->forTemplate();
-		} else {
-			$content = $this->customise(array('EditForm' => $form))->renderWith($this->getViewer('show'));
-		}
-		return $content;
+
+		$negotiator = $this->getResponseNegotiator();
+		$controller = $this;
+		$negotiator->setCallback('CurrentForm', function() use(&$controller, &$form) {
+			return $form ? $form->forTemplate() : $controller->renderWith($controller->getTemplatesWithSuffix('_Content'));
+		});
+		$negotiator->setCallback('default', function() use(&$controller, &$form) {
+			return $controller->customise(array('EditForm' => $form))->renderWith($controller->getViewer('show'));
+		});
+
+		return $negotiator->respond($request);
 	}
 	
 	/**
