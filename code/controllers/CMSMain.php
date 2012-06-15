@@ -477,7 +477,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			)));
 		}
 		
-		$result->sort('AddAction');
+		$result = $result->sort('AddAction');
 		return $result;
 	}
 
@@ -658,9 +658,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			foreach($pages=$filter->pagesIncluded() as $pageMap){
 				$ids[] = $pageMap['ID'];
 			}
-			if(count($ids)) $list->where('"'.$this->stat('tree_class').'"."ID" IN ('.implode(",", $ids).')');
+			if(count($ids)) $list = $list->where('"'.$this->stat('tree_class').'"."ID" IN ('.implode(",", $ids).')');
 		} else {
-			$list->filter("ParentID", is_numeric($parentID) ? $parentID : 0);
+			$list = $list->filter("ParentID", is_numeric($parentID) ? $parentID : 0);
 		}
 
 		return $list;

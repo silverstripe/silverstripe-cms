@@ -102,7 +102,7 @@ JS
 		// Re-add previously removed "Name" filter as combined filter
 		// TODO Replace with composite SearchFilter once that API exists
 		if(isset($params['Name'])) {
-			$list->where(sprintf(
+			$list = $list->where(sprintf(
 				'"Name" LIKE \'%%%s%%\' OR "Title" LIKE \'%%%s%%\'',
 				Convert::raw2sql($params['Name']),
 				Convert::raw2sql($params['Name'])
@@ -110,12 +110,12 @@ JS
 		}
 
 		// Always show folders at the top		
-		$list->sort('(CASE WHEN "File"."ClassName" = \'Folder\' THEN 0 ELSE 1 END), "Name"');
+		$list = $list->sort('(CASE WHEN "File"."ClassName" = \'Folder\' THEN 0 ELSE 1 END), "Name"');
 
 		// If a search is conducted, check for the "current folder" limitation.
 		// Otherwise limit by the current folder as denoted by the URL.
 		if(!$params || @$params['CurrentFolderOnly']) {
-			$list->filter('ParentID', $folder->ID);
+			$list = $list->filter('ParentID', $folder->ID);
 		}
 
 		// Category filter
@@ -124,7 +124,7 @@ JS
 			$categorySQLs = array();
 			foreach($exts as $ext) $categorySQLs[] = '"File"."Name" LIKE \'%.' . $ext . '\'';
 			// TODO Use DataList->filterAny() once OR connectives are implemented properly
-			$list->where('(' . implode(' OR ', $categorySQLs) . ')');
+			$list = $list->where('(' . implode(' OR ', $categorySQLs) . ')');
 		}
 
 		return $list;

@@ -206,7 +206,7 @@ class SS_Report extends ViewableData {
 		$list = ArrayList::create($reportsArray);
 
 		//sort
-		$list->sort('sort');
+		$list = $list->sort('sort');
 
 		return $list;
 	}

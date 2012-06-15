@@ -69,7 +69,7 @@ class BrokenLinksReport extends SS_Report {
 			}
 		}
 		
-		if($sortBrokenReason) $returnSet->sort('BrokenReason', $direction);
+		if($sortBrokenReason) $returnSet = $returnSet->sort('BrokenReason', $direction);
 		
 		return $returnSet;
 	}
