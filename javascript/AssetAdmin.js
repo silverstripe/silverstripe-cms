@@ -7,6 +7,7 @@
 		/**
 		 * Delete selected folders through "batch actions" tab.
 		 */
+		/* assets don't currently have batch actions; disabling for now
 		$(document).ready(function() {
 			$('#Form_BatchActionsForm').entwine('.ss.tree').register(
 				// TODO Hardcoding of base URL
@@ -22,6 +23,7 @@
 				}
 			);
 		});
+		*/
 
 		/**
 		 * Load folder detail view via controller methods
