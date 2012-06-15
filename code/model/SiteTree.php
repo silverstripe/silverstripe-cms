@@ -2337,27 +2337,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 			$pageTypeName = $instance->i18n_singular_name();
 
-			if($class == $this->class) {
-				$currentClass = $class;
-				$result[$class] = $pageTypeName;
-			} else {
-				$translation = _t(
-					'SiteTree.CHANGETO', 
-					'Change to "%s"', 
-					
-					"Pagetype selection dropdown with class names"
-				);
-
-				// @todo legacy fix to avoid empty classname dropdowns when translation doesn't include %s
-				if(strpos($translation, '%s') !== FALSE) {
-					$result[$class] = sprintf(
-						$translation, 
-						$pageTypeName
-					);
-				} else {
-					$result[$class] = "{$translation} \"{$pageTypeName}\"";
-				}
-			}
+			$currentClass = $class;
+			$result[$class] = $pageTypeName;
 
 			// if we're in translation mode, the link between the translated pagetype
 			// title and the actual classname might not be obvious, so we add it in parantheses
