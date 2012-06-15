@@ -701,8 +701,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		$controller = $this;
 		$columns->setFieldFormatting(array(
-			'listChildrenLink' => function(&$item) use($controller) {
-				$num = $item->numChildren();
+			'listChildrenLink' => function($value, &$item) use($controller) {
+				$num = $item ? $item->numChildren() : null;
 				if($num) {
 					return sprintf(
 						'<a class="cms-panel-link list-children-link" data-pjax-target="ListViewForm,Breadcrumbs" href="%s?ParentID=%d&view=list">%s</a>',
@@ -712,8 +712,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 					);
 				}
 			},
-			'getTreeTitle' => '<a class=\"cms-panel-link\" href=\"' . 
-				singleton('CMSPageEditController')->Link('show') . '/$ID\">$value</a>'
+			'getTreeTitle' => function($value, &$item) use($controller) {
+				return '<a class="cms-panel-link" href="' . $controller->Link('show') . '/' . $item->ID . '">' . $item->TreeTitle . '</a>';
+			}
 		));
 		
 		$listview = new Form(
