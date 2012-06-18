@@ -23,7 +23,7 @@ phing help
 	<property name="ni_build" value="false" override="true"/>   <!-- Prompt if local changes would be overwritten by update -->
 	<property name="changelogSort" value="type" override="true"/>
 
-	<property name="archivedest" value="${basedir}/../" />
+	<property name="archivedest" value="." />
 
 	<available file="${dependent-modules-file}" property="dependent-modules-file-exists" />
 	<available file="${changelog-definition-file}" property="changelog-definition-file-exists" />
@@ -57,7 +57,6 @@ Options:
 -Dmodurl (the URL of a single module to load when using add_modules)
 -Dmodule (the name of the module directory to create the module in when using add_modules)
 
--Darchivetype (the type of archive to use zip or tar.giz)
 -Darchivename (the name of the created archive file)
 -Darchivedest (the destination directory to put the archive)
 
@@ -191,34 +190,22 @@ Options:
 		</if>
 
 		<if>
-			<isset property="archivetype"/>
-			<then>
-				<echo msg="Creating '${archivetype}' archive"/>
-			</then>
-			<else>
-				<input propertyName="archivetype" defaultValue="tar.gz" validArgs="tar.gz,zip" promptChar=":">Please choose archive format</input>
-				<echo msg="Creating '${archivetype}' archive"/>
-			</else>
-		</if>
-
-		<if>
 			<isset property="archivename"/>
 			<then>
 				<echo msg="Creating '${archivename}' archive"/>
 			</then>
 			<else>
-				<input propertyName="archivename" defaultValue="SilverStripe-v${version}" promptChar=":">Please enter a name for the archive (without extension)</input>
-				<echo msg="Creating '${archivename}' archive"/>
+				<property name="archivename" value="SilverStripe" />
 			</else>
 		</if>
 
-		<property name="archivefilename" value="${archivename}.${archivetype}" />
-
 		<!-- Copy into a new folder, and tar the whole folder in order to avoid toplevel extracts -->
 		<php function="sys_get_temp_dir" returnProperty="systmp" />
-		<property name="tmp" value="${systmp}/archiveTask/" />
 
-		<copy todir="${tmp}/${archivename}">
+		<property name="tmp" value="${systmp}/archiveTask/" />
+		<delete dir="${tmp}" failonerror="false" quiet="true" />
+
+		<copy todir="${tmp}/${archivename}-cms-v${version}">
 			<fileset dir="${basedir}">
 				<include name="**/**" />
 				<exclude name="assets/**" />
@@ -239,6 +226,41 @@ Options:
 				<exclude name="dependent-modules*" />
 				<exclude name="changelog-definitions*" />
 				<exclude name="_ss_environment.php" />
+				<exclude name="*.tar.gz" />
+				<exclude name="*.zip" />
+
+			</fileset>
+			<fileset dir="${basedir}">
+				<include name="assets/Uploads" />
+				<include name="assets/.htaccess" />
+				<include name="assets/web.config" />
+			</fileset>
+		</copy>
+		<copy todir="${tmp}/${archivename}-framework-v${version}">
+			<fileset dir="${basedir}">
+				<include name="**/**" />
+				<exclude name="assets/**" />
+				<exclude name="mysite/local.conf.php" />
+				<exclude name="mysite/db.conf.php" />
+				<exclude name="**/*.log" />
+				<exclude name="**/.svn/**" />
+				<exclude name="**/.git/**" />
+				<exclude name="**/.project" />  <!-- remove eclipse configuration file -->
+				<exclude name="**/.buildpath" />
+				<exclude name="**/.settings" />
+				<exclude name="**/.idea/**" />  <!-- remove phpstorm configuration file -->
+				<exclude name="tools/**" />
+				<exclude name="**/tests/**" />
+				<exclude name="cms/docs/**" />
+				<exclude name="framework/docs/**" />
+				<exclude name="build.xml" />
+				<exclude name="dependent-modules*" />
+				<exclude name="changelog-definitions*" />
+				<exclude name="_ss_environment.php" />
+				<exclude name="*.tar.gz" />
+				<exclude name="*.zip" />
+
+				<exclude name="cms/**" />
 			</fileset>
 			<fileset dir="${basedir}">
 				<include name="assets/Uploads" />
@@ -247,38 +269,75 @@ Options:
 			</fileset>
 		</copy>
 
+
 		<!-- Write version info to the core folders (shouldn't be in version control) -->
-		<echo msg="${version}" file="${tmp}/${archivename}/framework/silverstripe_version" />
-		<echo msg="${version}" file="${tmp}/${archivename}/cms/silverstripe_version" />
+		<echo msg="${version}" file="${tmp}/${archivename}-cms-v${version}/framework/silverstripe_version" />
+		<echo msg="${version}" file="${tmp}/${archivename}-cms-v${version}/cms/silverstripe_version" />
+		<echo msg="${version}" file="${tmp}/${archivename}-cms-v${version}/framework/silverstripe_version" />
 
-		<!-- create tar archive -->
-		<if>
-			<equals arg1="${archivetype}" arg2="tar.gz" casesensitive="false" trim="true"/>
-			<then>
-				<tar destfile="${archivedest}/${archivefilename}" compression="gzip">
-					<fileset dir="${tmp}">
-						<include name="**/**" />
-					</fileset>
-				</tar>
-			</then>
-		</if>
-
-		<!-- create zip archive -->
-		<if>
-			<equals arg1="${archivetype}" arg2="zip" casesensitive="false" trim="true"/>
-			<then>
-				<zip destfile="${archivedest}/${archivefilename}">
-					<fileset dir="${tmp}">
-						<include name="**/**" />
-					</fileset>
-				</zip>
-			</then>
-		</if>
+		<!-- remove any pre-existing archives -->
+		<delete file="${archivedest}/${archivename}-cms-v${version}.tar.gz" failonerror="false" quiet="true" />
+		<delete file="${archivedest}/${archivename}-cms-v${version}.zip" failonerror="false" quiet="true" />
+		<delete file="${archivedest}/${archivename}-framework-v${version}.tar.gz" failonerror="false" quiet="true" />
+		<delete file="${archivedest}/${archivename}-framework-v${version}.zip" failonerror="false" quiet="true" />
 		
-		<delete dir="${tmp}" />
+		<!-- create tar archive - CMS -->
+		<tar destfile="${archivedest}/${archivename}-cms-v${version}.tar.gz" compression="gzip">
+			<fileset dir="${tmp}">
+				<include name="${archivename}-cms-v${version}/**" />
+			</fileset>
+		</tar>
 
-		<echo msg="Created archive in: ${basedir}/${archivename}" />
+		<!-- create zip archive - CMS -->
+		<zip destfile="${archivedest}/${archivename}-cms-v${version}.zip">
+			<fileset dir="${tmp}">
+				<include name="${archivename}-cms-v${version}/**" />
+			</fileset>
+		</zip>
+		
+		<!-- create tar archive - Framework -->
+		<tar destfile="${archivedest}/${archivename}-framework-v${version}.tar.gz" compression="gzip">
+			<fileset dir="${tmp}">
+				<include name="${archivename}-framework-v${version}/**" />
+			</fileset>
+		</tar>
+
+		<!-- create zip archive - Framework -->
+		<zip destfile="${archivedest}/${archivename}-framework-v${version}.zip">
+			<fileset dir="${tmp}">
+				<include name="${archivename}-framework-v${version}/**" />
+			</fileset>
+		</zip>
+
+		<!-- clear the temp file -->
+		<delete file="${tmp}" failonerror="false" quiet="true" />
+
+		<echo msg="Created archive: ${archivedest}/${archivename}-cms-v${version}.tar.gz" />
+		<echo msg="##teamcity[publishArtifacts '${archivename}-cms-v${version}.tar.gz']" />
+
+		<echo msg="Created archive: ${archivedest}/${archivename}-cms-v${version}.zip" />
+		<echo msg="##teamcity[publishArtifacts '${archivename}-cms-v${version}.zip']" />
+
+		<echo msg="Created archive: ${archivedest}/${archivename}-framework-v${version}.tar.gz" />
+		<echo msg="##teamcity[publishArtifacts '${archivename}-framework-v${version}.tar.gz']" />
+
+		<echo msg="Created archive: ${archivedest}/${archivename}-framework-v${version}.tar.gz" />
+		<echo msg="##teamcity[publishArtifacts '${archivename}-framework-v${version}.zip']" />
 	</target>
+	
+	<target name="upload-release">
+		<property name="release_dest" value="qa-servers@homer:/sites/ssorg-v2/www/assets/releases/" />
+		<exec command="scp -P 2222 SilverStripe-*.tar.gz ${release_dest}" />
+		<exec command="scp -P 2222 SilverStripe-*.zip ${release_dest}" />
+	</target>
+
+	<target name="upload-nightly">
+		<property name="nightly_dest" value="qa-servers@homer:/sites/ssorg-v2/www/assets/nightlies/" />
+		<exec command="scp -P 2222 SilverStripe-*.tar.gz ${nightly_dest}" />
+		<exec command="scp -P 2222 SilverStripe-*.zip ${nightly_dest}" />
+	</target>
+	
+	
 
 	<!-- Load modules where sensitive dependency exists -->
 	<target name="update_modules" depends="createDependentModulesFile">
