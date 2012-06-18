@@ -326,9 +326,28 @@ Options:
 	</target>
 	
 	<target name="upload-release">
-		<property name="release_dest" value="qa-servers@homer:/sites/ssorg-v2/www/assets/releases/" />
-		<exec command="scp -P 2222 SilverStripe-*.tar.gz ${release_dest}" />
-		<exec command="scp -P 2222 SilverStripe-*.zip ${release_dest}" />
+		<if>
+			<not><isset property="version"/></not>
+			<then><input propertyName="version" defaultValue="x.y.z" promptChar=":">Please choose a version</input></then>
+		</if>
+
+		<property name="release_dest" value="homer:/sites/ssorg-v2/www/assets/releases/" />
+		<property name="release_url" value="http://silverstripe.org/assets/releases/" />
+		<property name="release_notify_list" value="all@silverstripe.com,everyone@silverstripe.com.au" />
+	
+		<exec command="scp -P 2222 SilverStripe-cms-v${version}.tar.gz SilverStripe-framework-v${version}.tar.gz SilverStripe-cms-v${version}.zip SilverStripe-framework-v${version}.zip ${release_dest}" checkreturn="true" logoutput="true" />
+
+		<mail from="reports@silverstripe.com" tolist="${release_notify_list}" subject="SilverStripe ${version} has been uploaded">A new SilverStripe release is ready, and although it hasn't been publicly announced yet, is available at the following locations:
+			
+${release_url}SilverStripe-cms-v${version}.tar.gz
+${release_url}SilverStripe-framework-v${version}.tar.gz
+${release_url}SilverStripe-cms-v${version}.zip
+${release_url}SilverStripe-framework-v${version}.zip
+
+Thanks,
+Your friendly automated release script.
+</mail>
+		
 	</target>
 
 	<target name="upload-nightly">
