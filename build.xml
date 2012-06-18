@@ -331,7 +331,7 @@ Options:
 			<then><input propertyName="version" defaultValue="x.y.z" promptChar=":">Please choose a version</input></then>
 		</if>
 
-		<property name="release_dest" value="homer:/sites/ssorg-v2/www/assets/releases/" />
+		<property name="release_dest" value="qa-servers@homer:/sites/ssorg-v2/www/assets/releases/" />
 		<property name="release_url" value="http://silverstripe.org/assets/releases/" />
 		<property name="release_notify_list" value="all@silverstripe.com,everyone@silverstripe.com.au" />
 	
