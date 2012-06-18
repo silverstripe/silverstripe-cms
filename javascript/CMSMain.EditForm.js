@@ -41,7 +41,7 @@
 						} else {
 							$('.update', self.parent()).show();
 						}
-						self.updatePanelLabels(title);
+						self.updateBreadcrumbLabel(title);
 					});
 				}
 
@@ -78,18 +78,16 @@
 			},
 			
 			/**
-			 * Function: updatePanelLabels
+			 * Function: updateBreadcrumbLabel
 			 * 
-			 * Update the breadcrumb and tree
+			 * Update the breadcrumb
 			 * (String) title
 			 */
-			updatePanelLabels: function(title) {
+			updateBreadcrumbLabel: function(title) {
 				var pageID = $('.cms-edit-form input[name=ID]').val();
 				var panelCrumb = $('span.cms-panel-link.crumb');
-				var treeItem = $('.item', $('.cms-tree').find("[data-id='" + pageID + "']"));
 				if (title && title != "") {
 					panelCrumb.text(title);
-					treeItem.text(title);
 				}
 			},
 			
@@ -117,6 +115,31 @@
 				updateURLFromTitle.insertAfter(self);
 				updateURLFromTitle.hide();
 			}
+		});
+
+		/**
+		 * MenuTitle
+		 */
+		$('.cms-edit-form input[name=MenuTitle]').entwine({
+			onchange: function() {
+				var menuTitle = this.val();
+				this.updateTreeLabel(menuTitle);
+			},
+
+			/**
+			 * Function: updatePanelLabels
+			 * 
+			 * Update the tree
+			 * (String) title
+			 */
+			updateTreeLabel: function(title) {
+				var pageID = $('.cms-edit-form input[name=ID]').val();
+				var treeItem = $('.item', $('.cms-tree').find("[data-id='" + pageID + "']"));
+				if (title && title != "") {
+					treeItem.text(title);
+				}
+			}
+
 		});
 	
 		/**
