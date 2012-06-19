@@ -2438,7 +2438,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @param string $value
 	 */
 	function setMenuTitle($value) {
-		if($value == $this->getField("Title")) {
+		if($value == $this->getField("Title") && $value == $this->getField("MenuTitle")) {
 			$this->setField("MenuTitle", null);
 		} else {
 			$this->setField("MenuTitle", $value);
