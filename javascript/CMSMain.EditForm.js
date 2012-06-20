@@ -134,7 +134,9 @@
 			 */
 			updateTreeLabel: function(title) {
 				var pageID = $('.cms-edit-form input[name=ID]').val();
-				var treeItem = $('.item', $('.cms-tree').find("[data-id='" + pageID + "']"));
+
+				// only update immediate text element, we don't want to update all the nested ones
+				var treeItem = $('.item:first', $('.cms-tree').find("[data-id='" + pageID + "']"));
 				if (title && title != "") {
 					treeItem.text(title);
 				}
