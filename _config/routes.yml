@@ -4,6 +4,7 @@ Before: '*'
 ---
 Director:
   rules:
+    '': 'RootURLController'
     '$URLSegment//$Action/$ID/$OtherID': 'ModelAsController'
 ---
 Name: legacycmsroutes
