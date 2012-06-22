@@ -24,6 +24,8 @@
 			// Constructor: onmatch
 			onmatch : function() {
 				var self = this;
+
+				self.data('OrigVal', self.val());
 				
 				var form = self.parents('form');
 				var url_segment = $('.field.urlsegment', form).find(':text');
@@ -33,14 +35,18 @@
 
 				if(url_segment.length > 0) {
 					this.bind('change', function(e) {
+						var origTitle = self.data('OrigVal');
 						var title = self.val();
+						self.data('OrigVal', title);
+
 						// Criteria for defining a "new" page
 						if ((url_segment.val().indexOf('new') == 0) && live_url_segment.val() == '') {
-							self.updateRelatedFields(title);
 							self.updateURLSegment(title);
 						} else {
 							$('.update', self.parent()).show();
 						}
+
+						self.updateRelatedFields(title, origTitle);
 						self.updateBreadcrumbLabel(title);
 					});
 				}
@@ -54,12 +60,20 @@
 			/**
 			 * Function: updateRelatedFields
 			 * 
-			 * Update the related fields
-			 * (String) title
+			 * Update the related fields if appropriate
+			 * (String) title The new title
+			 * (Stirng) origTitle The original title
 			 */
-			updateRelatedFields: function(title) {
-				var form = this.parents('form');
-				form.find('input[name=MetaTitle], input[name=MenuTitle]').val(title);
+			updateRelatedFields: function(title, origTitle) {
+				// Update these fields only if their value was originally the same as the title
+				this.parents('form').find('input[name=MetaTitle], input[name=MenuTitle]').each(function() {
+					var $this = $(this);
+					if($this.val() == origTitle) {
+						$this.val(title);
+						// Onchange bubbling didn't work in IE8, so .trigger('change') couldn't be used
+						if($this.updatedRelatedFields) $this.updatedRelatedFields();
+					}
+				});
 			},
 			
 			/**
@@ -122,6 +136,13 @@
 		 */
 		$('.cms-edit-form input[name=MenuTitle]').entwine({
 			onchange: function() {
+				this.updatedRelatedFields();
+			},
+
+			/**
+			 * Same as the onchange handler but callable as a method
+			 */
+			updatedRelatedFields: function() {
 				var menuTitle = this.val();
 				this.updateTreeLabel(menuTitle);
 			},
