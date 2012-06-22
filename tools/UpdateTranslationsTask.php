@@ -8,7 +8,7 @@
  */
 class UpdateTranslationsTask extends SilverStripeBuildTask {
 
-	static $url_translations = 'https://api.getlocalization.com/%s/api/translations/zip/';
+	static $url_translations = 'https://www.getlocalization.com/%s/api/translations/zip/';
 
 	/**
 	 * Absolute path to module base (not lang folder)
