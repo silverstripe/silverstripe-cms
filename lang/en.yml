@@ -30,6 +30,9 @@ en:
     FILTER: Filter
   AssetAdmin_left.ss:
     GO: Go
+  AssetTableField:
+    BACKLINKCOUNT: 'Used on:'
+    PAGES: page(s)
   BackLink_Button.ss:
     Back: Back
   BasicFieldsTestPage:
@@ -59,6 +62,8 @@ en:
   CMSAddPageController:
     Title: 'Add page'
   CMSBatchActions:
+    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
+    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
     DELETE_DRAFT_PAGES: 'Delete from draft site'
     DELETE_PAGES: 'Delete from published site'
     PUBLISHED_PAGES: 'Published %d pages, %d failures'
