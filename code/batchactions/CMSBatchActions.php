@@ -78,7 +78,7 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 
 		}
 
-		return Convert::raw2json($status);
+		return $this->response(_t('CMSBatchActions.DELETED_DRAFT_PAGES', 'Deleted %d pages from draft site, %d failures'), $status);
 	}
 
 	function applicablePages($ids) {
@@ -123,7 +123,7 @@ class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 
 		}
 
-		return Convert::raw2json($status);
+		return $this->response(_t('CMSBatchActions.DELETED_PAGES', 'Deleted %d pages from published site, %d failures'), $status);
 	}
 
 	function applicablePages($ids) {
