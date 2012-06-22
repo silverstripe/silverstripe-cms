@@ -30,6 +30,9 @@ en:
     FILTER: Filter
   AssetAdmin_left.ss:
     GO: Go
+  AssetTableField:
+    BACKLINKCOUNT: 'Used on:'
+    PAGES: page(s)
   BackLink_Button.ss:
     Back: Back
   BasicFieldsTestPage:
@@ -61,6 +64,8 @@ en:
   CMSAddPageController:
     Title: 'Add page'
   CMSBatchActions:
+    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
+    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
     DELETE_DRAFT_PAGES: 'Delete from draft site'
     DELETE_PAGES: 'Delete from published site'
     PUBLISHED_PAGES: 'Published %d pages, %d failures'
@@ -86,7 +91,7 @@ en:
     PAGETYPEOPT: 'Page Type'
     PUBALLCONFIRM: 'Please publish every page in the site, copying content stage to live'
     PUBALLFUN: '"Publish All" functionality'
-    PUBALLFUN2: "Pressing this button will do the equivalent of going to every page and pressing "publish".  It's\n\t\t\t\tintended to be used after there have been massive edits of the content, such as when the site was\n\t\t\t\tfirst built."
+    PUBALLFUN2: "Pressing this button will do the equivalent of going to every page and pressing \"publish\".  It's\n				intended to be used after there have been massive edits of the content, such as when the site was\n				first built."
     PUBPAGES: 'Done: Published {count} pages'
     PageAdded: 'Successfully created page'
     REMOVED: 'Deleted ''%s''%s from live site'
