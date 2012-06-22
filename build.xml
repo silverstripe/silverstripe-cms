@@ -16,6 +16,7 @@ phing help
 	<taskdef name="ssmodules" classname="tools.LoadModulesTask" classpath="${project.basedir}" />
 	<taskdef name="sschanglog" classname="tools.CreateChangelog" classpath="${project.basedir}" />
 	<taskdef name="gitstash" classname="tools.GitStashTask" classpath="${project.basedir}" />
+	<taskdef name="updateTranslationsTask" classname="tools.UpdateTranslationsTask" classpath="${project.basedir}" />
 
 	<property name="basedir" value="." override="true" />
 	<property name="dependent-modules-file" value="dependent-modules" override="true" />
@@ -28,22 +29,19 @@ phing help
 	<available file="${dependent-modules-file}" property="dependent-modules-file-exists" />
 	<available file="${changelog-definition-file}" property="changelog-definition-file-exists" />
 
+	<!-- 
+		=================================================================
+		Helper Targets
+		=================================================================
+	-->
+
 	<target name="help">
 		<echo>
 SilverStripe Project Build
 ------------------------------------
 
 This build file contains targets to assist in creating new SilverStripe builds and releases.
-
-Important targets:
-
-* archive - Creates a tar.gz or zip file from the current source, removing version control specific files
-* checkout - Switches all working copies to the specified tag or branch
-* tag - Creates a new git tag in all the nested working copies (optionally pushes the created tag)
-* pushtags - Pushes all local tags to their respective origin repositories
-* update_modules - Checks out repositories defined in the 'dependent-modules' file into the current directory
-* add_module - Checks out a module at a specific repository URL
-* changelog - Create a changelog.md file from the repositories specified in the 'changelog-definitions' file
+Run "phing -l" to get a full list of available targets.
 
 
 Options:
@@ -65,17 +63,16 @@ Options:
 </echo>
 	</target>
 
-	<target name="gitRepositories">
+	<target name="_gitRepositories">
 		<findRepos TargetDir="${basedir}" />
 	</target>
 
-	<!-- find the git binary and set it -->
-	<target name="gitBinary">
+	<target name="_gitBinary" description="find the git binary and set it">
 		<exec command="which git" outputProperty="gitPath1" />
 	</target>
 
-	<!-- Tag a git repo with a specific tag (in $tagname) -->
-	<target name="tagTask" if="tagname,reponame,gitPath1">
+	<target name="_tagTask" if="tagname,reponame,gitPath1"
+		description="Tag a git repo with a specific tag.">
 		<gittag
 			repository="${reponame}"
 			name="${tagname}"
@@ -84,21 +81,21 @@ Options:
 		<echo msg="git tag '${tagname}' added to '${reponame}' git repository" />
 	</target>
 
-	<!-- Push all local tags -->
-	<target name="pushTask" if="reponame,gitPath1">
-		<gitpush
+	<target name="_pushTask" if="reponame,gitPath1"
+		description="Push all local tags">
+		<ssgitpush
 			repository="${reponame}"
 			tags="true"
 			gitPath="${gitPath1}" />
 		<echo msg="pushed all tags to '${reponame}' git repository" />
 	</target>
 
-	<!-- Checkout the specified tag on all working copies -->
-	<target name="checkoutTask" if="reponame,gitPath1,tagname">
+	<target name="_checkoutTask" if="reponame,gitPath1,tagname"
+		description="Checkout the specified tag on all working copies">
 		<echo msg="checking out ${reponame}"/>
 		<gitstash repository="${reponame}" gitPath="${gitPath1}" />
 
-		<gitcheckout
+		<ssgitcheckout
 			repository="${reponame}"
 			branchname="${tagname}"
 			gitPath="${gitPath1}" />
@@ -108,17 +105,23 @@ Options:
 		<echo msg="checked out ${tagname} tag/branch in '${reponame}' git repository" />
 	</target>
 
-	<target name="createDependentModulesFile" unless="dependent-modules-file-exists">
+	<target name="_createDependentModulesFile" unless="dependent-modules-file-exists">
 		<copy file="${dependent-modules-file}.default" tofile="${dependent-modules-file}" />
 	</target>
 
-	<target name="createChangelogDefinitionsFile" unless="changelog-definitions-file-exists">
+	<target name="_createChangelogDefinitionsFile" unless="changelog-definitions-file-exists">
 		<copy file="${changelog-definitions-file}.default" tofile="${changelog-definitions-file}" />
 	</target>
 
+	<!-- 
+		=================================================================
+		Main Targets
+		=================================================================
+	-->
 
-	<!-- tags all git repositories in the current directory with a tag name -->
-	<target name="tag" if="basedir" depends="gitRepositories,gitBinary">
+	<target name="tag" if="basedir" 
+		description="Creates a new git tag in all the nested working copies (optionally pushes the created tag)"
+		depends="_gitRepositories,_gitBinary">
 		<if>
 			<isset property="tagname"/>
 			<then>
@@ -131,7 +134,7 @@ Options:
 		</if>
 
 		<!-- find all git repos and run the tagTask on them -->
-		<foreach list="${GitReposList}" param="reponame" target="tagTask" />
+		<foreach list="${GitReposList}" param="reponame" target="_tagTask" />
 
 		<input propertyName="pushToOrigin" defaultValue="no" validArgs="yes,no" promptChar=":">Push local tags to origin?</input>
 		<if>
@@ -142,13 +145,15 @@ Options:
 		</if>
 	</target>
 
-	<!-- Pushes all local tags to origin -->
-	<target name="pushtags" if="basedir" depends="gitRepositories,gitBinary">
-		<foreach list="${GitReposList}" param="reponame" target="pushTask" />
+	<target name="pushtags" if="basedir" 
+		description="Pushes all local tags to their respective origin repositories"
+		depends="_gitRepositories,_gitBinary">
+		<foreach list="${GitReposList}" param="reponame" target="_pushTask" />
 	</target>
 
-	<!-- Switches all working copies to the specified tag or branch -->
-	<target name="checkout" if="basedir" depends="gitRepositories,gitBinary">
+	<target name="checkout" if="basedir" 
+		description="Switches all working copies to the specified tag or branch"
+		depends="_gitRepositories,_gitBinary">
 		<if>
 			<isset property="tagname"/>
 			<then>
@@ -179,7 +184,7 @@ Options:
 		</if>
 
 		<!-- find all git repos and run the checkoutTask on them -->
-		<foreach list="${GitReposList}" param="reponame" target="checkoutTask" />
+		<foreach list="${GitReposList}" param="reponame" target="_checkoutTask" />
 	</target>
 
 	<target name="archive" if="basedir" description="Creates a gzip archive from the current folder (removes any version control files)">
@@ -325,7 +330,8 @@ Options:
 		<echo msg="##teamcity[publishArtifacts '${archivename}-framework-v${version}.zip']" />
 	</target>
 	
-	<target name="upload-release">
+	<target name="upload-release"
+		description="Uploads archives previously created through 'ping archive' to a public webhost, and notifies a group of people of the new release. Requires working public key auth on the release destination.">
 		<if>
 			<not><isset property="version"/></not>
 			<then><input propertyName="version" defaultValue="x.y.z" promptChar=":">Please choose a version</input></then>
@@ -350,7 +356,8 @@ Your friendly automated release script.
 		
 	</target>
 
-	<target name="upload-nightly">
+	<target name="upload-nightly"
+		description="Uploads archives previously created through 'phing archive' to a public webhost">
 		<property name="nightly_dest" value="qa-servers@homer:/sites/ssorg-v2/www/assets/nightlies/" />
 		<exec command="scp -P 2222 SilverStripe-*.tar.gz ${nightly_dest}" />
 		<exec command="scp -P 2222 SilverStripe-*.zip ${nightly_dest}" />
@@ -358,14 +365,13 @@ Your friendly automated release script.
 	
 	
 
-	<!-- Load modules where sensitive dependency exists -->
-	<target name="update_modules" depends="createDependentModulesFile">
+	<target name="update_modules" 
+		description="Checks out repositories defined in the 'dependent-modules' file into the current directory"
+		depends="_createDependentModulesFile">
 		<ssmodules file="${basedir}/${dependent-modules-file}" noninteractive="${ni_build}"/>
 	</target>
 
-	<!-- Add a new module to the system. Run from the commandline, you can pass
-	in the details of the module as phing add_module -Dmodule=blog -Dmodurl=http://path/to/svn	-->
-	<target name="add_module">
+	<target name="add_module" description="Checks out a module at a specific repository URL. Usage: phing add_module -Dmodule=blog -Dmodurl=http://path/to/svn.">
 		<if>
 			<isset property="modurl"/>
 			<then>
@@ -391,10 +397,77 @@ Your friendly automated release script.
 		<ssmodules name="${module}" url="${modurl}" />
 	</target>
 
-	<!-- Create a changelog of git changes based on the  -->
-	<target name="changelog" depends="createChangelogDefinitionsFile" if="basedir,changelogSort">
+	<target name="changelog" 
+		description="Create a changelog.md file from the repositories specified in the 'changelog-definitions' file"
+		depends="_createChangelogDefinitionsFile" 
+		if="basedir,changelogSort">
 		<sschanglog definitions="${changelog-definitions-file}" baseDir="${basedir}" sort="${changelogSort}"/>
 		<echo msg="${changelogOutput}"  />
+	</target>
+
+	<target name="translations-staging-setup">
+		<exec command="git checkout master" dir="${module}" checkreturn="true" />
+		<exec command="git fetch origin" dir="${module}" checkreturn="true" />
+		<exec command="git branch -D translation-staging" dir="${module}" checkreturn="true" />
+		<exec command="git branch --track translation-staging origin/translation-staging" dir="${module}" checkreturn="true" />
+		<exec command="git checkout translation-staging" dir="${module}" checkreturn="true" />
+	</target>
+
+	<target name="translations-staging-teardown">
+		<exec command="git checkout master" dir="${module}" checkreturn="true" />
+	</target>
+
+	<target name="translations-update-git-masterfile" 
+		description="Collect translation on a module, commit them into a specialized branch and push to the origin repository."
+		depends="translations-staging-setup">
+		<exec command="git merge origin/master" dir="${module}" checkreturn="true" />
+		<exec command="php framework/cli-script.php dev/tasks/i18nTextCollectorTask" passthru="true" />		
+		<exec command="git status --short" dir="${module}" outputProperty="git.status.${module}" />
+		<if>
+			<istrue value="${git.status.${module}}" />
+			<then>
+				<exec command="git add lang/*" dir="${module}" passthru="true" checkreturn="true" />
+				<exec command="git commit -m 'MINOR Updated translations master'" dir="${module}" passthru="true" checkreturn="true" />
+				<exec command="git merge --force origin/master" dir="${module}" checkreturn="true" />
+			</then>
+		</if>
+	</target>
+
+	<target name="translations-update-gl-masterfile" 
+		description="Pushes translation master files to getlocalization.com"
+		depends="translations-staging-setup">
+		<exec command="curl --fail --form file=@${module}/lang/en.yml --form name='lang/en.yml' --user ${getlocalization.${module}.user}:${getlocalization.${module}.password} https://api.getlocalization.com/${getlocalization.${module}.project}/api/update-master/" passthru="true" checkreturn="true" /> 
+		<exec command="git checkout master" dir="${module}" checkreturn="true" />
+	</target>
+
+	<target name="translations-update-gl-contribs" description="Update translations in working copy from getlocalization.com, and commit changes to a specialized branch and push to origin repository. Note: The API requests can take a couple of minutes."
+		depends="translations-staging-setup">
+		<exec command="git stash" dir="${module}" checkreturn="true" />
+		<updateTranslationsTask 
+			glProductName="${getlocalization.${module}.project}" 
+			glUser="${getlocalization.${module}.user}"
+			glPassword="${getlocalization.${module}.password}"
+			modulePath="${module}" 
+		/>
+		<exec command="git status --short" dir="${module}" outputProperty="git.status.${module}" />
+		<if>
+			<istrue value="${git.status.${module}}" />
+			<then>
+				<exec command="git add lang/*" dir="${module}" passthru="true" checkreturn="true" />
+				<exec command="git add javascript/lang/*" dir="${module}" passthru="true" checkreturn="true" />
+				<exec command="git commit -m 'MINOR Updated translations'" dir="${module}" passthru="true" checkreturn="true" />
+				<exec command="git push origin/translation-staging" dir="${module}" checkreturn="true" />
+			</then>
+		</if>
+		<exec command="git checkout master" dir="${module}" checkreturn="true" />
+		<exec command="git stash pop" dir="${module}" checkreturn="true" />
+	</target>
+
+	<target name="translations-sync" 
+		description="Wrapper task to handle updating translations and master files, using the getlocalization.com API, committing to a specialized branch in the working copy and pushing to the origin repository.">
+		<foreach list="cms" param="module" target="translations-update-git-masterfile" />
+		<foreach list="cms" param="module" target="translations-update-gl-masterfile" />
+		<foreach list="cms" param="module" target="translations-update-gl-contribs" />
 	</target>
 
 </project>
