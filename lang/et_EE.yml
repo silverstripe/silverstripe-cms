@@ -1,153 +1,408 @@
-et_EE:
-  AssetAdmin:
-    NEWFOLDER: "Uus kaust"
-    THUMBSDELETED: "Kõik kasutamata pisipildid on kustutatud."
-  AssetAdmin_left.ss:
-    GO: "Mine"
-  CMSMain:
-    ACCESS: "Ligipääs jaotisele %s"
-    DELETE: "Kustuta mustand"
-    DELETEFP: "Kustuta avaldatud leht"
-    DESCREMOVED: "ja %s järeltulijat"
-    EMAIL: "E-post"
-    NEW: "Uus"
-    PAGENOTEXISTS: "Antud lehekülge ei eksisteeri"
-    PUBALLCONFIRM: "Palun avaldage iga leht selles saidis"
-    PUBALLFUN: "\"Avalda Kõik\" funktsionaalsus"
-    PUBALLFUN2: "Sellele nupule vajutamine on sama, kui käia igal lehel ja vajutada igal lehel \"Avalda\" nuppu. Nuppu on soovitatav kasutada, kui oled muutnud mitmeid lehti - see salvestab igal lehel toimunud muudatused."
-    PUBPAGES: "Tehtud: %d lehekülge avaldatud"
-    REMOVED: "'%s'%s kustutatud päris lehelt"
-    REMOVEDPAGE: "'%s' eemaldati avalikult lehelt"
-    REMOVEDPAGEFROMDRAFT: "'%s' eemaldatud visandi lehelt"
-    RESTORE: "Taasta"
-    RESTORED: "'%s' taastati edukalt"
-    ROLLBACK: "Pööra tagasi sellesse versiooni"
-    ROLLEDBACKPUB: "Taastatud avaldatud versioon. Uue versiooni number on #%d"
-    ROLLEDBACKVERSION: "Taastatud versioon #%d. Uue versiooni number on #%d"
-    SAVE: "Salvesta"
-  CMSMain_left.ss:
-  ContentController:
-    DRAFT_SITE_ACCESS_RESTRICTION: "Pead olema sisse logitud oma sisuhalduse parooliga, et vaadata mustandeid ja arhiveeritud sisu. <a href=\"%s\">Vajuta siia, et minna tagasi avaldatud lehe juurde.</a>"
-  ErrorPage:
-    CODE: "Veakood"
-    DEFAULTERRORPAGECONTENT: "<p>Vabandust aga tundub, et proovid ligipääseda lehele mida pole olemas.</p><p>Palun kontrolli uuesti aadressi kuhu proovid ligi pääseda.</p>"
-    DEFAULTERRORPAGETITLE: "Lehekülge ei leitud"
-    400: "400 - Halb päring"
-    401: "401 - Volitamata ligipääs"
-    403: "403 - Keelatud"
-    404: "404 - Ei leitud"
-    405: "405 -  Meetod pole lubatud"
-    406: "406 - Ligipääs puudub"
-    407: "407 - Proxy tuvastus vajalik"
-    408: "408 - Palve aegunud"
-    409: "409 - Konflikt"
-    410: "410 - Kustutatud"
-    411: "411 - Distants vajalik"
-    412: "412 - Eeltingimused täitmata"
-    413: "413 -  Palve käsklus liiga suur"
-    414: "414 - soovitud URL liiga pikk"
-    415: "415 - Ebasoovitav meedia tüüp"
-    416: "416 - Päring rahuldamata"
-    417: "417 - Eeldus puudub"
-    500: "500 - Serveri viga"
-    501: "501 - Rakendus puudub"
-    502: "502 - Halb sissepääsutee"
-    503: "503 - Teenus puudub"
-    504: "504 - Sissepääsutee aegmaas"
-    505: "505 - HTTP versioon ei ole kasutusel"
-  Folder:
-    DELETEUNUSEDTHUMBNAILS: "Kustuta kasutamata väikepildid"
-    UNUSEDFILESTITLE: "Kasutamata failid"
-    UNUSEDTHUMBNAILSTITLE: "Kasutamata väikepildid"
-  LeftAndMain:
-    STATUSPUBLISHEDSUCCESS: "'%s' edukalt avaldatud"
-  RedirectorPage:
-    HASBEENSETUP: "Suunav lehekülg seati üles ilma, et ta kuhugile suunaks."
-    HEADER: "See lehekülg suunab kasutajad teisele leheküljele"
-    OTHERURL: "Teise veebisaidi URL"
-    REDIRECTTO: "Suuna ümber"
-    REDIRECTTOEXTERNAL: "Teisele veebisaidile"
-    REDIRECTTOPAGE: "Leheküljele sinu veebisaidil"
-    YOURPAGE: "Lehekülg sinu veebisaidil"
+et-EE:
+  CMSSearch:
+    FILTERDATEFROM: From
+    FILTERDATEHEADING: Date
+    FILTERLABELTEXT: Content
+    FILTERDATETO: To
   SearchForm:
-    GO: "Mine"
-    SEARCH: "Otsi"
-  SideReport:
-    EMPTYPAGES: "Tühjad leheküljed"
-    LAST2WEEKS: "Viimase kahe nädala jooksul muudetud leheküljed"
-    REPEMPTY: "%s aruanne on tühi."
-  SiteTree:
-    ACCESSANYONE: "Igaüks"
-    ACCESSHEADER: "Kes tohib seda lehekülge minu veebisaidil vaadata?"
-    ACCESSLOGGEDIN: "Sisse logitud kasutajad"
-    ACCESSONLYTHESE: "Ainult järgnevad isikud (vali nimekirjast)"
-    ALLOWCOMMENTS: "Luba kommentaare sellel lehel?"
-    APPEARSVIRTUALPAGES: "See sisu avaneb samuti virtuaal lehtedel %s seksioonis"
-    BUTTONCANCELDRAFT: "Tühista visandi muudatused"
-    BUTTONCANCELDRAFTDESC: "Kustuta oma visand ja pöördu tagasi hetkel avaldatud lehekülje kujule"
-    BUTTONSAVEPUBLISH: "Salvesta ja avalda"
-    BUTTONUNPUBLISH: "Võta maha"
-    BUTTONUNPUBLISHDESC: "Eemalda see lehekülg avalikult saidilt"
-    CHANGETO: "Määra tüübiks \"%s\""
-    Comments: "Komentaarid"
-    Content: "Sisu"
-    DEFAULTABOUTCONTENT: "<p>Saad selle lehe sisu muuta või selle lehe kustutada.<br /></p>"
-    DEFAULTABOUTTITLE: "Meist"
-    DEFAULTCONTACTCONTENT: "<p>võid selle lehe sisu muuta või selle ära kustutada.<br /></p>"
-    DEFAULTCONTACTTITLE: "Kontakt"
-    DEFAULTHOMECONTENT: "<p>Tere tulemast kasutama SilverStripe! sisuhaldust, see on algne avaleht.<br>Saad seda muuta <a href=\"admin/\">Sisuhalduse lehel</a>. <br>Abiks on ka <a href=\"http://doc.silverstripe.com\">Sisuhalduse dokumentatsioon</a> või <a href=\"http://doc.silverstripe.com/doku.php?id=tutorials\">õppetus leht.</a></p>"
-    DEFAULTHOMETITLE: "Avaleht"
-    EDITANYONE: "Igaüks, kes sisuhaldussüsteemi sisse võib logida"
-    EDITHEADER: "Kes tohib seda sisuhaldussüsteemi kaudu muuta?"
-    EDITONLYTHESE: "Ainult järgnevad isikud (vali nimekirjast)"
-    Editors: "Toimetajate gruppid"
-    HASBROKENLINKS: "Sellel lehel on katkiseid linke."
-    HTMLEDITORTITLE: "Sisu"
-    INHERIT: "Päring vanemalt lehelt"
-    MENUTITLE: "Navigatsiooni silt"
-    METADESC: "Kirjeldus"
-    METAEXTRA: "Kohandatud metamärgendid"
-    METAKEYWORDS: "Märksõnad"
-    METATITLE: "Pealkiri"
-    PAGETITLE: "Lehekülje nimi"
-    PAGETYPE: "Lehe tüüp"
-    PERMISSION_GRANTACCESS_DESCRIPTION: "Kontroli millised gruppid saavad ligipääsu ja võimaluse muuta mingeid lehti"
-    PLURALNAME: "Sisukorrad"
-    SHOWINMENUS: "Näita menüüdes?"
-    SHOWINSEARCH: "Näita otsingus?"
-    SINGULARNAME: "Sisukord"
-    TABACCESS: "Ligipääs"
-    TABBEHAVIOUR: "Käitumine"
-    TABCONTENT: "Sisu"
-    TABMETA: "Meta-andmed"
-    TOPLEVEL: "Lehe sisu (kõrgeim tase)"
-    URLSegment: "URL-i jagu"
-    Viewers: "Vaatajate gruppid"
-    has_one_Parent: "Vanem leht"
-    many_many_BackLinkTracking: "Tagasilingi jälgimine"
-    many_many_ImageTracking: "Pildi jälgimine"
-    many_many_LinkTracking: "Lingi jälgimine"
+    GO: Mine
+    SEARCH: Otsi
+    SearchResults: 'Search Results'
   StaticExporter:
-    BASEURL: "Baas-URL"
-    EXPORTTO: "Ekspordi sellesse kausta"
-    NAME: "Staatiline eksportija"
-  TableListField_PageControls.ss:
-    VIEWFIRST: "Vaata esimest"
-    VIEWLAST: "Vaata viimast"
-    VIEWNEXT: "Vaata järgmist"
-    VIEWPREVIOUS: "Vaata eelmist"
-  ViewArchivedEmail.ss:
-    CANACCESS: "Arhiveeritud lehele pääsed ligi selle lingi kaudu:"
-    HAVEASKED: "Soovid vaadata meie lehe sisu kuupäeval"
+    EXPORTTO: 'Ekspordi sellesse kausta'
+    BASEURL: Baas-URL
+    NAME: 'Staatiline eksportija'
+  LeftAndMain:
+    VersionUnknown: Unknown
+    STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
+    DELETED: Deleted.
+    SearchResults: 'Search Results'
+    PreviewButton: Preview
+    SAVEDUP: Saved.
+  CMSPagesController:
+    ListView: 'List View'
+    TreeView: 'Tree View'
+    MENUTITLE: Pages
+    GalleryView: 'Gallery View'
+  MyRandomPage:
+    DESCRIPTION: 'Generic content page'
+  CMSSettingsController:
+    MENUTITLE: Settings
+    PUBLISHER: Publisher
+    NOTPUBLISHED: 'Not published'
+    WHEN: When
+    AUTHOR: Author
+    UNKNOWN: Unknown
+  CMSSiteTreeFilter_Search:
+    Title: 'All pages'
+  CMSPageSettingsController:
+    MENUTITLE: 'Edit Page'
+  CMSPageHistoryController:
+    VIEWINGVERSION: 'Currently viewing version {version}.'
+    MENUTITLE: History
+    COMPAREVERSIONS: 'Compare Versions'
+    COMPAREMODE: 'Compare mode (select two)'
+    REVERTTOTHISVERSION: 'Revert to this version'
+    SHOWVERSION: 'Show Version'
+    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
+    SHOWUNPUBLISHED: 'Show unpublished versions'
+    VIEW: view
   VirtualPage:
-    CHOOSE: "Vali leht millega linkida"
-    EDITCONTENT: "Vajuta siia et sisu muuta"
-    HEADER: "See on virtuaalne leht"
-    PLURALNAME: "Suunavad lehed"
-    SINGULARNAME: "Suunav leht"
-  WidgetAreaEditor.ss:
-    AVAILABLE: "Saadaval olevad vidinad"
-    INUSE: "Kasutusel olevad vidinad"
-    NOAVAIL: "Ühtegi vidinat ei ole antud hetkel saadaval."
-  WidgetEditor.ss:
-    DELETE: "Kustuta"
+    EDITCONTENT: 'Vajuta siia et sisu muuta'
+    HEADER: 'See on virtuaalne leht'
+    PLURALNAME: 'Suunavad lehed'
+    SINGULARNAME: 'Suunav leht'
+    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
+    DESCRIPTION: 'Displays the content of another page'
+    CHOOSE: 'Vali leht millega linkida'
+  RedirectorPage:
+    OTHERURL: 'Teise veebisaidi URL'
+    DESCRIPTION: 'Redirects to a different internal page'
+    REDIRECTTOEXTERNAL: 'Teisele veebisaidile'
+    REDIRECTTO: 'Suuna ümber'
+    YOURPAGE: 'Lehekülg sinu veebisaidil'
+    HEADER: 'See lehekülg suunab kasutajad teisele leheküljele'
+    REDIRECTTOPAGE: 'Leheküljele sinu veebisaidil'
+    HASBEENSETUP: 'Suunav lehekülg seati üles ilma, et ta kuhugile suunaks.'
+  Folder:
+    UploadFilesButton: Upload
+    AddFolderButton: 'Add folder'
+    UNUSEDFILESTITLE: 'Kasutamata failid'
+    UNUSEDTHUMBNAILSTITLE: 'Kasutamata väikepildid'
+    DELETEUNUSEDTHUMBNAILS: 'Kustuta kasutamata väikepildid'
+  SilverStripeNavigatorLink:
+    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
+    ShareLink: 'Share link'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'All pages, including deleted'
+  SilverStripeNavigatorLinkl:
+    CloseLink: Close
+  ContentControl:
+    NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
+  SiteTree:
+    DependtPageColumnLinkType: 'Link type'
+    DEFAULTABOUTTITLE: Meist
+    VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
+    EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
+    REMOVEDFROMDRAFTSHORT: 'Removed from draft'
+    EDITONLYTHESE: 'Ainult järgnevad isikud (vali nimekirjast)'
+    Editors: 'Toimetajate gruppid'
+    Comments: Komentaarid
+    TOPLEVEL: 'Lehe sisu (kõrgeim tase)'
+    PARENTID: 'Parent page'
+    PAGELOCATION: 'Page location'
+    METAKEYWORDS: Märksõnad
+    LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
+    PAGETITLE: 'Lehekülje nimi'
+    BUTTONUNPUBLISHDESC: 'Eemalda see lehekülg avalikult saidilt'
+    DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    EDIT_ALL_DESCRIPTION: 'Edit any page'
+    DEFAULTHOMETITLE: Avaleht
+    PARENTTYPE: 'Page location'
+    ACCESSHEADER: 'Kes tohib seda lehekülge minu veebisaidil vaadata?'
+    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
+    SHOWINSEARCH: 'Näita otsingus?'
+    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Kontroli millised gruppid saavad ligipääsu ja võimaluse muuta mingeid lehti'
+    VIEWERGROUPS: 'Viewer Groups'
+    ACCESSONLYTHESE: 'Ainult järgnevad isikud (vali nimekirjast)'
+    CREATED: 'Date Created'
+    INHERIT: 'Päring vanemalt lehelt'
+    URLSegment: 'URL-i jagu'
+    SINGULARNAME: Sisukord
+    VIEW_DRAFT_CONTENT: 'View draft content'
+    TOPLEVELCREATORGROUPS: 'Top level creators'
+    REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
+    DEFAULTABOUTCONTENT: '<p>Saad selle lehe sisu muuta või selle lehe kustutada.<br /></p>'
+    PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
+    PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
+    TABBEHAVIOUR: Käitumine
+    SHOWINMENUS: 'Näita menüüdes?'
+    BUTTONCANCELDRAFT: 'Tühista visandi muudatused'
+    many_many_BackLinkTracking: 'Tagasilingi jälgimine'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
+    PLURALNAME: Sisukorrad
+    TABDEPENDENT: 'Dependent pages'
+    ACCESSLOGGEDIN: 'Sisse logitud kasutajad'
+    METADESC: Kirjeldus
+    MENUTITLE: 'Navigatsiooni silt'
+    Content: Sisu
+    DELETEDPAGEHELP: 'Page is no longer published'
+    DependtPageColumnURL: URL
+    REORGANISE_DESCRIPTION: 'Change site structure'
+    DEFAULTCONTACTCONTENT: '<p>võid selle lehe sisu muuta või selle ära kustutada.<br /></p>'
+    BUTTONCANCELDRAFTDESC: 'Kustuta oma visand ja pöördu tagasi hetkel avaldatud lehekülje kujule'
+    EDITHEADER: 'Kes tohib seda sisuhaldussüsteemi kaudu muuta?'
+    EDITANYONE: 'Igaüks, kes sisuhaldussüsteemi sisse võib logida'
+    REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
+    DEFAULTCONTACTTITLE: Kontakt
+    many_many_LinkTracking: 'Lingi jälgimine'
+    Visibility: Visibility
+    MODIFIEDONDRAFTSHORT: Modified
+    PAGETYPE: 'Lehe tüüp'
+    many_many_ImageTracking: 'Pildi jälgimine'
+    HTMLEDITORTITLE: Sisu
+    ACCESSANYONE: Igaüks
+    PARENTTYPE_ROOT: 'Top-level page'
+    ALLOWCOMMENTS: 'Luba kommentaare sellel lehel?'
+    LASTUPDATED: 'Last Updated'
+    METAEXTRA: 'Kohandatud metamärgendid'
+    HASBROKENLINKS: 'Sellel lehel on katkiseid linke.'
+    DEFAULTHOMECONTENT: '<p>Tere tulemast kasutama SilverStripe! sisuhaldust, see on algne avaleht.<br>Saad seda muuta <a href="admin/">Sisuhalduse lehel</a>. <br>Abiks on ka <a href="http://doc.silverstripe.com">Sisuhalduse dokumentatsioon</a> või <a href="http://doc.silverstripe.com/doku.php?id=tutorials">õppetus leht.</a></p>'
+    VIEW_ALL_DESCRIPTION: 'View any page'
+    TABCONTENT: Sisu
+    Viewers: 'Vaatajate gruppid'
+    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
+    ADDEDTODRAFTHELP: 'Page has not been published yet'
+    BUTTONUNPUBLISH: 'Võta maha'
+    METATITLE: Pealkiri
+    ADDEDTODRAFTSHORT: Draft
+    has_one_Parent: 'Vanem leht'
+    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
+    BUTTONSAVEPUBLISH: 'Salvesta ja avalda'
+    DELETEDPAGESHORT: Deleted
+    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
+    EDITORGROUPS: 'Editor Groups'
+    Back: Back
+  BasicFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+  CMSBatchActions:
+    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
+    DELETE_PAGES: 'Delete from published site'
+    DELETE_DRAFT_PAGES: 'Delete from draft site'
+    UNPUBLISHED_PAGES: 'Un-published %d pages'
+    UNPUBLISH_PAGES: Un-publish
+    PUBLISHED_PAGES: 'Published %d pages, %d failures'
+    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
+    PUBLISH_PAGES: Publish
+  MyPage:
+    DESCRIPTION: 'Generic content page'
+  ErrorPage:
+    CODE: Veakood
+    DEFAULTERRORPAGECONTENT: '<p>Vabandust aga tundub, et proovid ligipääseda lehele mida pole olemas.</p><p>Palun kontrolli uuesti aadressi kuhu proovid ligi pääseda.</p>'
+    DEFAULTERRORPAGETITLE: 'Lehekülge ei leitud'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Server error'
+    400: '400 - Halb päring'
+    401: '401 - Volitamata ligipääs'
+    403: '403 - Keelatud'
+    404: '404 - Ei leitud'
+    405: '405 -  Meetod pole lubatud'
+    406: '406 - Ligipääs puudub'
+    407: '407 - Proxy tuvastus vajalik'
+    408: '408 - Palve aegunud'
+    409: '409 - Konflikt'
+    410: '410 - Kustutatud'
+    411: '411 - Distants vajalik'
+    412: '412 - Eeltingimused täitmata'
+    413: '413 -  Palve käsklus liiga suur'
+    414: '414 - soovitud URL liiga pikk'
+    415: '415 - Ebasoovitav meedia tüüp'
+    416: '416 - Päring rahuldamata'
+    417: '417 - Eeldus puudub'
+    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
+    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    500: '500 - Serveri viga'
+    501: '501 - Rakendus puudub'
+    502: '502 - Halb sissepääsutee'
+    503: '503 - Teenus puudub'
+    504: '504 - Sissepääsutee aegmaas'
+    505: '505 - HTTP versioon ei ole kasutusel'
+  AssetAdmin:
+    FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
+    DetailsView: Details
+    CREATED: Date
+    MENUTITLE: Files
+    FROMTHEINTERNET: 'From the internet'
+    BackToFolder: 'Back to folder'
+    Upload: Upload
+    NEWFOLDER: 'Uus kaust'
+    CurrentFolderOnly: 'Limit to current folder?'
+    ADDFILES: 'Add Files'
+    THUMBSDELETED: '{count} unused thumbnails have been deleted'
+    SIZE: Size
+    FILES: Files
+    TreeView: 'Tree View'
+    AppCategoryVideo: Video
+    AppCategoryAudio: Audio
+    Filetype: 'File type'
+    AppCategoryArchive: Archive
+    ActionAdd: 'Add folder'
+    AppCategoryFlash: Flash
+    FROMYOURCOMPUTER: 'From your computer'
+    ListView: 'List View'
+    AppCategoryImage: Image
+    ALLOWEDEXTS: 'Allowed extensions'
+  RelationFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+    FILTER: Filter
+  Permissions:
+    CONTENT_CATEGORY: 'Content permissions'
+    PERMISSIONS_CATEGORY: 'Roles and access permissions'
+  BrokenLinksReport:
+    HasBrokenFile: 'has broken file'
+    ReasonDropdownBROKENFILE: 'Broken file'
+    ColumnDateLastPublished: 'Date last published'
+    ColumnURL: URL
+    CheckSiteDropdownPublished: 'Published Site'
+    HasBrokenLinkAndFile: 'has broken link and file'
+    ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
+    ColumnDateLastModified: 'Date last modified'
+    PageName: 'Page name'
+    ReasonDropdown: 'Problem to check'
+    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
+    ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
+    HasBrokenLink: 'has broken link'
+    CheckSite: 'Check site'
+    HoverTitleEditPage: 'Edit page'
+    ReasonDropdownBROKENLINK: 'Broken link'
+    Any: Any
+    BROKENLINKS: 'Broken links report'
+    RedirectorNonExistent: 'redirector page pointing to non-existent page'
+    ColumnProblemType: 'Problem type'
+    CheckSiteDropdownDraft: 'Draft Site'
+    SORTASC: 'Sort in ascending order'
+    SORTDESC: 'Sort in descending order'
+  MyOtherPage:
+    DESCRIPTION: 'Generic content page'
+  CMSPageAddController:
+    ParentMode_top: 'Top level'
+    MENUTITLE: 'Add page'
+    ParentMode_child: 'Under another page'
+  TestPage:
+    DESCRIPTION: 'Generic content page'
+  ReportAdminForm:
+    FILTERBY: 'Filter by'
+  CMSAddPageController:
+    Title: 'Add page'
+  GridFieldTestPage:
+    DESCRIPTION: 'Generic content page'
+  TableListField:
+    SELECT: 'Select:'
+    FILTER: Filter
+  ContentController:
+    DRAFTSITE: 'Draft Site'
+    InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
+    LOGOUT: 'Log out'
+    LOGGEDINAS: 'Logged in as'
+    LOGIN: Login
+    CMS: CMS
+    Email: Email
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    InstallFilesDeleted: 'Installation files have been successfully deleted.'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Pead olema sisse logitud oma sisuhalduse parooliga, et vaadata mustandeid ja arhiveeritud sisu. <a href="%s">Vajuta siia, et minna tagasi avaldatud lehe juurde.</a>'
+    NOTLOGGEDIN: 'Not logged in'
+    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    PUBLISHEDSITE: 'Published Site'
+    ARCHIVEDSITEFROM: 'Archived site from'
+    ARCHIVEDSITE: 'Archived Site'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
+    Password: Password
+    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
+    VIEWPAGEIN: 'View Page in:'
+  CMSPageEditController:
+    MENUTITLE: 'Edit Page'
+  Page:
+    DESCRIPTION: 'Generic content page'
+  SiteTreeURLSegmentField:
+    HelpChars: ' Special characters are automatically converted or removed.'
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Changed pages'
+    ENABLEDRAGGING: 'Drag''n''drop'
+    MULTISELECT: Multi-selection
+    GO: Mine
+    VIEWPREVIOUS: 'Vaata eelmist'
+    VIEWNEXT: 'Vaata järgmist'
+    VIEWFIRST: 'Vaata esimest'
+    VIEWLAST: 'Vaata viimast'
+  BigFamilyPage:
+    DESCRIPTION: 'Generic content page'
+  TreeTools:
+    DisplayLabel: 'Display:'
+  SiteConfig:
+    SITENAMEDEFAULT: 'Your Site Name'
+    SITETITLE: 'Site title'
+    TAGLINEDEFAULT: 'your tagline here'
+    EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
+    EDIT_PERMISSION: 'Manage site configuration'
+    VIEWHEADER: 'Who can view pages on this site?'
+    TOPLEVELCREATE: 'Who can create pages in the root of the site?'
+    TABMAIN: Main
+    EDITHEADER: 'Who can edit pages on this site?'
+    THEME: Theme
+    TABACCESS: Access
+    DEFAULTTHEME: '(Use default theme)'
+    SITETAGLINE: 'Site Tagline/Slogan'
+  CMSMain:
+    ChoosePageType: 'Choose page type'
+    PAGENOTEXISTS: 'Antud lehekülge ei eksisteeri'
+    Create: Create
+    PUBALLFUN: '"Avalda Kõik" funktsionaalsus'
+    ChoosePageParentMode: 'Choose where to create this page'
+    NEW: Uus
+    EMAIL: E-post
+    REMOVEDPAGEFROMDRAFT: '''%s'' eemaldatud visandi lehelt'
+    ROLLEDBACKVERSION: 'Taastatud versioon #%d. Uue versiooni number on #%d'
+    TabContent: Content
+    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
+    TabSettings: Settings
+    ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
+    SAVEDRAFT: 'Save Draft'
+    TabHistory: History
+    ROLLBACK: 'Pööra tagasi sellesse versiooni'
+    AddNewButton: 'Add new'
+    AddNew: 'Add new page'
+    MENUTITLE: 'Edit Page'
+    PUBALLFUN2: 'Sellele nupule vajutamine on sama, kui käia igal lehel ja vajutada igal lehel "Avalda" nuppu. Nuppu on soovitatav kasutada, kui oled muutnud mitmeid lehti - see salvestab igal lehel toimunud muudatused.'
+    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
+    PUBALLCONFIRM: 'Palun avaldage iga leht selles saidis'
+    PAGETYPEANYOPT: Any
+    PageAdded: 'Successfully created page'
+    DESCREMOVED: 'and {count} descendants'
+    DELETEFP: 'Kustuta avaldatud leht'
+    RESTORE: Taasta
+    REMOVED: '''%s''%s kustutatud päris lehelt'
+    ACCESS: 'Access to ''{title}'' section'
+    PAGETYPEOPT: 'Page Type'
+    PUBPAGES: 'Done: Published {count} pages'
+    SAVE: Salvesta
+    PAGES: Pages
+    RESTORED: 'Restored ''{title}'' successfully'
+    DELETE: 'Kustuta mustand'
+  SideReport:
+    EMPTYPAGES: 'Tühjad leheküljed'
+    ParameterLiveCheckbox: 'Check live site'
+    REPEMPTY: 'The {title} report is empty.'
+    BROKENLINKS: 'Pages with broken links'
+    LAST2WEEKS: 'Viimase kahe nädala jooksul muudetud leheküljed'
+    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
+    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
+    BrokenLinksGroupTitle: 'Broken links reports'
+    BROKENFILES: 'Pages with broken files'
+    OtherGroupTitle: Other
+    ContentGroupTitle: 'Content reports'
+  CMSFileAddController:
+    MENUTITLE: Files
+  MyNonRootPage:
+    DESCRIPTION: 'Generic content page'
+    CANACCESS: 'Arhiveeritud lehele pääsed ligi selle lingi kaudu:'
+    HAVEASKED: 'Soovid vaadata meie lehe sisu kuupäeval'
+  LegacyTableFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+  TestFileUploadPage:
+    DESCRIPTION: 'Generic content page'
+  AssetTableField:
+    PAGES: page(s)
+    BACKLINKCOUNT: 'Used on:'
+  ReportAdmin:
+    MENUTITLE: Reports
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Delete folders'
+  cms:
+    FILESYSTEMSYNC: 'Sync files'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'CMS Access'
+  PackageManagerPage:
+    DESCRIPTION: 'Generic content page'
+    RESET: Reset
+  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'

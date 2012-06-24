@@ -1,107 +1,408 @@
 sr:
   AssetAdmin:
-    NEWFOLDER: "Нова фасцикла"
-    THUMBSDELETED: "Сви некоришћени умањени прикази су обрисани"
-  AssetAdmin_left.ss:
-    GO: "Иди"
+    ADDFILES: 'Add Files'
+    ALLOWEDEXTS: 'Allowed extensions'
+    ActionAdd: 'Add folder'
+    AppCategoryArchive: Archive
+    AppCategoryAudio: Audio
+    AppCategoryFlash: Flash
+    AppCategoryImage: Image
+    AppCategoryVideo: Video
+    BackToFolder: 'Back to folder'
+    CREATED: Date
+    CurrentFolderOnly: 'Limit to current folder?'
+    DetailsView: Details
+    FILES: Files
+    FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
+    FROMTHEINTERNET: 'From the internet'
+    FROMYOURCOMPUTER: 'From your computer'
+    Filetype: 'File type'
+    ListView: 'List View'
+    MENUTITLE: Files
+    NEWFOLDER: 'Нова фасцикла'
+    SIZE: Size
+    THUMBSDELETED: '{count} unused thumbnails have been deleted'
+    TreeView: 'Tree View'
+    Upload: Upload
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Delete folders'
+  AssetTableField:
+    BACKLINKCOUNT: 'Used on:'
+    PAGES: page(s)
+  BasicFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+  BigFamilyPage:
+    DESCRIPTION: 'Generic content page'
+  BrokenLinksReport:
+    Any: Any
+    BROKENLINKS: 'Broken links report'
+    CheckSite: 'Check site'
+    CheckSiteDropdownDraft: 'Draft Site'
+    CheckSiteDropdownPublished: 'Published Site'
+    ColumnDateLastModified: 'Date last modified'
+    ColumnDateLastPublished: 'Date last published'
+    ColumnProblemType: 'Problem type'
+    ColumnURL: URL
+    HasBrokenFile: 'has broken file'
+    HasBrokenLink: 'has broken link'
+    HasBrokenLinkAndFile: 'has broken link and file'
+    HoverTitleEditPage: 'Edit page'
+    PageName: 'Page name'
+    ReasonDropdown: 'Problem to check'
+    ReasonDropdownBROKENFILE: 'Broken file'
+    ReasonDropdownBROKENLINK: 'Broken link'
+    ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
+    ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
+    RedirectorNonExistent: 'redirector page pointing to non-existent page'
+    SORTASC: 'Sort in ascending order'
+    SORTDESC: 'Sort in descending order'
+    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
+  CMSAddPageController:
+    Title: 'Add page'
+  CMSBatchActions:
+    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
+    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
+    DELETE_DRAFT_PAGES: 'Delete from draft site'
+    DELETE_PAGES: 'Delete from published site'
+    PUBLISHED_PAGES: 'Published %d pages, %d failures'
+    PUBLISH_PAGES: Publish
+    UNPUBLISHED_PAGES: 'Un-published %d pages'
+    UNPUBLISH_PAGES: Un-publish
+  CMSFileAddController:
+    MENUTITLE: Files
   CMSMain:
-    EMAIL: "Е-пошта"
-    NEW: "Нова "
-    PAGENOTEXISTS: "Ова страна не постоји"
-    PUBALLCONFIRM: "Објавите сваку страну на овом сајту копирањем садржај на жив сајт."
-    PUBALLFUN: "Функција „Објави све“ "
-    PUBALLFUN2: "Притиском на ово дугме постићи ћете исто што и одласком на сваку страну и притискањем дугмета „објави“ . Намењена је за коришћене након великих измена садржаја као када се сајт први пут објављује."
-    PUBPAGES: "Завршено: Објављено %d страна"
-    REMOVEDPAGE: "Страна '%s' је уклоњена са објављеног сајта"
-    RESTORED: "'%s' је успешно враћен"
-    ROLLBACK: "Врати се на ову верзију"
-    ROLLEDBACKPUB: "Враћено на објављену еврзију. Број нове верзије је #%d"
-    ROLLEDBACKVERSION: "Враћено на верзију #%d. Број нове верзије је #%d."
-    SAVE: "Сачувај"
-  CMSMain_left.ss:
+    ACCESS: 'Access to ''{title}'' section'
+    ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
+    AddNew: 'Add new page'
+    AddNewButton: 'Add new'
+    ChoosePageParentMode: 'Choose where to create this page'
+    ChoosePageType: 'Choose page type'
+    Create: Create
+    DELETE: 'Delete draft'
+    DELETEFP: Delete
+    DESCREMOVED: 'and {count} descendants'
+    EMAIL: Е-пошта
+    MENUTITLE: 'Edit Page'
+    NEW: 'Нова '
+    PAGENOTEXISTS: 'Ова страна не постоји'
+    PAGES: Pages
+    PAGETYPEANYOPT: Any
+    PAGETYPEOPT: 'Page Type'
+    PUBALLCONFIRM: 'Објавите сваку страну на овом сајту копирањем садржај на жив сајт.'
+    PUBALLFUN: 'Функција „Објави све“ '
+    PUBALLFUN2: 'Притиском на ово дугме постићи ћете исто што и одласком на сваку страну и притискањем дугмета „објави“ . Намењена је за коришћене након великих измена садржаја као када се сајт први пут објављује.'
+    PUBPAGES: 'Done: Published {count} pages'
+    PageAdded: 'Successfully created page'
+    REMOVED: 'Deleted ''%s''%s from live site'
+    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
+    REMOVEDPAGEFROMDRAFT: 'Removed ''%s'' from the draft site'
+    RESTORE: Restore
+    RESTORED: 'Restored ''{title}'' successfully'
+    ROLLBACK: 'Врати се на ову верзију'
+    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
+    ROLLEDBACKVERSION: 'Враћено на верзију #%d. Број нове верзије је #%d.'
+    SAVE: Сачувај
+    SAVEDRAFT: 'Save Draft'
+    TabContent: Content
+    TabHistory: History
+    TabSettings: Settings
+  CMSPageAddController:
+    MENUTITLE: 'Add page'
+    ParentMode_child: 'Under another page'
+    ParentMode_top: 'Top level'
+  CMSPageEditController:
+    MENUTITLE: 'Edit Page'
+  CMSPageHistoryController:
+    COMPAREMODE: 'Compare mode (select two)'
+    COMPAREVERSIONS: 'Compare Versions'
+    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
+    MENUTITLE: History
+    REVERTTOTHISVERSION: 'Revert to this version'
+    SHOWUNPUBLISHED: 'Show unpublished versions'
+    SHOWVERSION: 'Show Version'
+    VIEW: view
+    VIEWINGVERSION: 'Currently viewing version {version}.'
+  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  CMSPageSettingsController:
+    MENUTITLE: 'Edit Page'
+  CMSPagesController:
+    GalleryView: 'Gallery View'
+    ListView: 'List View'
+    MENUTITLE: Pages
+    TreeView: 'Tree View'
+  CMSSearch:
+    FILTERDATEFROM: From
+    FILTERDATEHEADING: Date
+    FILTERDATETO: To
+    FILTERLABELTEXT: Content
+  CMSSettingsController:
+    AUTHOR: Author
+    MENUTITLE: Settings
+    NOTPUBLISHED: 'Not published'
+    PUBLISHER: Publisher
+    UNKNOWN: Unknown
+    WHEN: When
+  CMSSiteTreeFilter_ChangedPages:
+    ENABLEDRAGGING: 'Drag''n''drop'
+    GO: Иди
+    MULTISELECT: Multi-selection
+    Title: 'Changed pages'
+    VIEWFIRST: 'View first'
+    VIEWLAST: 'View last'
+    VIEWNEXT: 'Погледај следеће'
+    VIEWPREVIOUS: 'Погледај претходно'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'All pages, including deleted'
+  CMSSiteTreeFilter_Search:
+    Title: 'All pages'
+  ContentControl:
+    NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
   ContentController:
-    DRAFT_SITE_ACCESS_RESTRICTION: "Морате да се пријавите својом лозинком на CMS да бисте приступили нацртима или архивираном садржају. <a href=\"%s\">Кликните овде да бисте се вратили на завршен сајт.</a>"
+    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITEFROM: 'Archived site from'
+    CMS: CMS
+    DRAFTSITE: 'Draft Site'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Морате да се пријавите својом лозинком на CMS да бисте приступили нацртима или архивираном садржају. <a href="%s">Кликните овде да бисте се вратили на завршен сајт.</a>'
+    Email: Email
+    InstallFilesDeleted: 'Installation files have been successfully deleted.'
+    InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    LOGGEDINAS: 'Logged in as'
+    LOGIN: Login
+    LOGOUT: 'Log out'
+    NOTLOGGEDIN: 'Not logged in'
+    PUBLISHEDSITE: 'Published Site'
+    Password: Password
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
+    VIEWPAGEIN: 'View Page in:'
   ErrorPage:
-    CODE: "Код грешке"
-    DEFAULTERRORPAGETITLE: "Страница није пронађена"
-    400: "400 - Лош захтев"
-    403: "403 - Забрањено"
-    404: "404 - Није пронађено"
-    405: "405 - Метода није дозвољена"
-    406: "406 - није прихватљиво"
-    500: "500 - Интерна грешка у серверу"
-    501: "501 - Није имплементирано"
-    503: "503 - Сервис није доступан"
-    505: "505 - HTTP верзија није подржана"
+    CODE: 'Код грешке'
+    DEFAULTERRORPAGECONTENT: '<p>Sorry, it seems you were trying to access a page that doesn''t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>'
+    DEFAULTERRORPAGETITLE: 'Страница није пронађена'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Server error'
+    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
+    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    400: '400 - Лош захтев'
+    401: '401 - Unauthorized'
+    403: '403 - Забрањено'
+    404: '404 - Није пронађено'
+    405: '405 - Метода није дозвољена'
+    406: '406 - није прихватљиво'
+    407: '407 - Proxy Authentication Required'
+    408: '408 - Request Timeout'
+    409: '409 - Conflict'
+    410: '410 - Gone'
+    411: '411 - Length Required'
+    412: '412 - Precondition Failed'
+    413: '413 - Request Entity Too Large'
+    414: '414 - Request-URI Too Long'
+    415: '415 - Unsupported Media Type'
+    416: '416 - Request Range Not Satisfiable'
+    417: '417 - Expectation Failed'
+    500: '500 - Интерна грешка у серверу'
+    501: '501 - Није имплементирано'
+    502: '502 - Bad Gateway'
+    503: '503 - Сервис није доступан'
+    504: '504 - Gateway Timeout'
+    505: '505 - HTTP верзија није подржана'
   Folder:
-    DELETEUNUSEDTHUMBNAILS: "Обриши некоришћене умањене приказе"
+    AddFolderButton: 'Add folder'
+    DELETEUNUSEDTHUMBNAILS: 'Обриши некоришћене умањене приказе'
+    UNUSEDFILESTITLE: 'Unused files'
+    UNUSEDTHUMBNAILSTITLE: 'Unused thumbnails'
+    UploadFilesButton: Upload
+  GridFieldTestPage:
+    DESCRIPTION: 'Generic content page'
   LeftAndMain:
+    DELETED: Deleted.
+    PreviewButton: Preview
+    SAVEDUP: Saved.
+    STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
+    SearchResults: 'Search Results'
+    VersionUnknown: Unknown
+  LegacyTableFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+  MyNonRootPage:
+    CANACCESS: 'Можете да приступите архивираном садржају на овом линку:'
+    DESCRIPTION: 'Generic content page'
+    HAVEASKED: 'Замољени сте да погледате садржај овог сајта'
+  MyOtherPage:
+    DESCRIPTION: 'Generic content page'
+  MyPage:
+    DESCRIPTION: 'Generic content page'
+  MyRandomPage:
+    DESCRIPTION: 'Generic content page'
+  PackageManagerPage:
+    DESCRIPTION: 'Generic content page'
+    RESET: Reset
+  Page:
+    DESCRIPTION: 'Generic content page'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'CMS Access'
+  Permissions:
+    CONTENT_CATEGORY: 'Content permissions'
+    PERMISSIONS_CATEGORY: 'Roles and access permissions'
   RedirectorPage:
-    HASBEENSETUP: "Страница за преусмеравање је постављена без параметра за преусмеравање"
-    HEADER: "Ова страна ће преусмерити кориснике на другу страну"
-    OTHERURL: "URL другог сајта"
-    REDIRECTTO: "Преусмери на"
-    REDIRECTTOEXTERNAL: "други сајт"
-    REDIRECTTOPAGE: "страницу на вашем сајту"
-    YOURPAGE: "Страница на вашем сајту"
+    DESCRIPTION: 'Redirects to a different internal page'
+    HASBEENSETUP: 'Страница за преусмеравање је постављена без параметра за преусмеравање'
+    HEADER: 'Ова страна ће преусмерити кориснике на другу страну'
+    OTHERURL: 'URL другог сајта'
+    REDIRECTTO: 'Преусмери на'
+    REDIRECTTOEXTERNAL: 'други сајт'
+    REDIRECTTOPAGE: 'страницу на вашем сајту'
+    YOURPAGE: 'Страница на вашем сајту'
+  RelationFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+    FILTER: Filter
+  ReportAdmin:
+    MENUTITLE: Reports
+  ReportAdminForm:
+    FILTERBY: 'Filter by'
   SearchForm:
-    SEARCH: "Претрага"
+    GO: Go
+    SEARCH: Претрага
+    SearchResults: 'Search Results'
   SideReport:
-    EMPTYPAGES: "Празне стране"
-    LAST2WEEKS: "Стране мењане у задње две недеље"
-    REPEMPTY: "Извештај %s је празан."
+    BROKENFILES: 'Pages with broken files'
+    BROKENLINKS: 'Pages with broken links'
+    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
+    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
+    BrokenLinksGroupTitle: 'Broken links reports'
+    ContentGroupTitle: 'Content reports'
+    EMPTYPAGES: 'Празне стране'
+    LAST2WEEKS: 'Стране мењане у задње две недеље'
+    OtherGroupTitle: Other
+    ParameterLiveCheckbox: 'Check live site'
+    REPEMPTY: 'The {title} report is empty.'
+  SilverStripeNavigatorLink:
+    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
+    ShareLink: 'Share link'
+  SilverStripeNavigatorLinkl:
+    CloseLink: Close
+  SiteConfig:
+    DEFAULTTHEME: '(Use default theme)'
+    EDITHEADER: 'Who can edit pages on this site?'
+    EDIT_PERMISSION: 'Manage site configuration'
+    EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
+    SITENAMEDEFAULT: 'Your Site Name'
+    SITETAGLINE: 'Site Tagline/Slogan'
+    SITETITLE: 'Site title'
+    TABACCESS: Access
+    TABMAIN: Main
+    TAGLINEDEFAULT: 'your tagline here'
+    THEME: Theme
+    TOPLEVELCREATE: 'Who can create pages in the root of the site?'
+    VIEWHEADER: 'Who can view pages on this site?'
   SiteTree:
-    ACCESSANYONE: "Свако"
-    ACCESSHEADER: "Ко може да види ову страну на мом сајту?"
-    ACCESSLOGGEDIN: "Пријављени корисници"
-    ACCESSONLYTHESE: "Само ови људи (изаберите са списка)"
-    ALLOWCOMMENTS: "Дозволити коментаре на овој страни?"
-    APPEARSVIRTUALPAGES: "Овај садржај се такође приказује на виртуалним страницама у %s секција."
-    BUTTONCANCELDRAFT: "Откажи промене на нацрту"
-    BUTTONCANCELDRAFTDESC: "Избришите свој нацрт и вратите се на тренутно објављену страну"
-    BUTTONSAVEPUBLISH: "Сачувај и објави"
-    BUTTONUNPUBLISH: "Повуци објављивање"
-    BUTTONUNPUBLISHDESC: "Уклони ову страну са живог сајта"
-    CHANGETO: "Промени у"
-    DEFAULTABOUTTITLE: "О нама"
-    DEFAULTCONTACTTITLE: "Контактирајте нас"
-    DEFAULTHOMETITLE: "Почетна"
-    EDITANYONE: "Свако ко може да се пријави на CMS"
-    EDITHEADER: "Ко може да мења ову страницу у CMS-у?"
-    EDITONLYTHESE: "Само ови људи (изаберите са списка)"
-    HASBROKENLINKS: "Ова страна има неважеће линкове."
-    HTMLEDITORTITLE: "Садржај"
-    MENUTITLE: "Натпис за навигацију"
-    METADESC: "Опис"
-    METAEXTRA: "Прилагођени мета тагови"
-    METAKEYWORDS: "Кључне речи"
-    METATITLE: "Наслов"
-    PAGETITLE: "Име стране"
-    PAGETYPE: "Тип стране"
-    SHOWINMENUS: "Приказати у менијима?"
-    SHOWINSEARCH: "Приказати у претрази?"
-    TABACCESS: "Приступ"
-    TABBEHAVIOUR: "Понашање"
-    TABCONTENT: "Садржај"
-    TABMETA: "Мета подаци"
-    TOPLEVEL: "Садржај сајта (главни ниво)"
+    ACCESSANYONE: Свако
+    ACCESSHEADER: 'Ко може да види ову страну на мом сајту?'
+    ACCESSLOGGEDIN: 'Пријављени корисници'
+    ACCESSONLYTHESE: 'Само ови људи (изаберите са списка)'
+    ADDEDTODRAFTHELP: 'Page has not been published yet'
+    ADDEDTODRAFTSHORT: Draft
+    ALLOWCOMMENTS: 'Дозволити коментаре на овој страни?'
+    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+    BUTTONCANCELDRAFT: 'Откажи промене на нацрту'
+    BUTTONCANCELDRAFTDESC: 'Избришите свој нацрт и вратите се на тренутно објављену страну'
+    BUTTONSAVEPUBLISH: 'Сачувај и објави'
+    BUTTONUNPUBLISH: 'Повуци објављивање'
+    BUTTONUNPUBLISHDESC: 'Уклони ову страну са живог сајта'
+    Back: Back
+    CREATED: 'Date Created'
+    Comments: Comments
+    Content: Content
+    DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
+    DEFAULTABOUTTITLE: 'О нама'
+    DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
+    DEFAULTCONTACTTITLE: 'Контактирајте нас'
+    DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
+    DEFAULTHOMETITLE: Почетна
+    DELETEDPAGEHELP: 'Page is no longer published'
+    DELETEDPAGESHORT: Deleted
+    DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DependtPageColumnLinkType: 'Link type'
+    DependtPageColumnURL: URL
+    EDITANYONE: 'Свако ко може да се пријави на CMS'
+    EDITHEADER: 'Ко може да мења ову страницу у CMS-у?'
+    EDITONLYTHESE: 'Само ови људи (изаберите са списка)'
+    EDITORGROUPS: 'Editor Groups'
+    EDIT_ALL_DESCRIPTION: 'Edit any page'
+    EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
+    Editors: 'Editors Groups'
+    HASBROKENLINKS: 'Ова страна има неважеће линкове.'
+    HTMLEDITORTITLE: Садржај
+    INHERIT: 'Inherit from parent page'
+    LASTUPDATED: 'Last Updated'
+    LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
+    MENUTITLE: 'Натпис за навигацију'
+    METADESC: Опис
+    METAEXTRA: 'Прилагођени мета тагови'
+    METAKEYWORDS: 'Кључне речи'
+    METATITLE: Наслов
+    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
+    MODIFIEDONDRAFTSHORT: Modified
+    PAGELOCATION: 'Page location'
+    PAGETITLE: 'Име стране'
+    PAGETYPE: 'Тип стране'
+    PARENTID: 'Parent page'
+    PARENTTYPE: 'Page location'
+    PARENTTYPE_ROOT: 'Top-level page'
+    PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
+    PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
+    PLURALNAME: 'Site Tres'
+    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
+    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
+    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
+    REMOVEDFROMDRAFTSHORT: 'Removed from draft'
+    REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
+    REORGANISE_DESCRIPTION: 'Change site structure'
+    REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
+    SHOWINMENUS: 'Приказати у менијима?'
+    SHOWINSEARCH: 'Приказати у претрази?'
+    SINGULARNAME: 'Site Tree'
+    TABBEHAVIOUR: Понашање
+    TABCONTENT: Садржај
+    TABDEPENDENT: 'Dependent pages'
+    TOPLEVEL: 'Садржај сајта (главни ниво)'
+    TOPLEVELCREATORGROUPS: 'Top level creators'
+    URLSegment: 'URL Segment'
+    VIEWERGROUPS: 'Viewer Groups'
+    VIEW_ALL_DESCRIPTION: 'View any page'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
+    VIEW_DRAFT_CONTENT: 'View draft content'
+    VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
+    Viewers: 'Viewers Groups'
+    Visibility: Visibility
+    has_one_Parent: 'Parent Page'
+    many_many_BackLinkTracking: 'Backlink Tracking'
+    many_many_ImageTracking: 'Image Tracking'
+    many_many_LinkTracking: 'Link Tracking'
+  SiteTreeURLSegmentField:
+    HelpChars: ' Special characters are automatically converted or removed.'
   StaticExporter:
-    BASEURL: "Основни URL"
-    EXPORTTO: "Извези у ову фасциклу"
-    NAME: "Извези статичне садржаје"
-  TableListField_PageControls.ss:
-    VIEWNEXT: "Погледај следеће"
-    VIEWPREVIOUS: "Погледај претходно"
-  ViewArchivedEmail.ss:
-    CANACCESS: "Можете да приступите архивираном садржају на овом линку:"
-    HAVEASKED: "Замољени сте да погледате садржај овог сајта"
+    BASEURL: 'Основни URL'
+    EXPORTTO: 'Извези у ову фасциклу'
+    NAME: 'Извези статичне садржаје'
+  TableListField:
+    FILTER: Filter
+    SELECT: 'Select:'
+  TestFileUploadPage:
+    DESCRIPTION: 'Generic content page'
+  TestPage:
+    DESCRIPTION: 'Generic content page'
+  TreeTools:
+    DisplayLabel: 'Display:'
   VirtualPage:
-    CHOOSE: "Изаберите страну коју желите да повежете"
-    EDITCONTENT: "кликните овде да бисте променили садржај"
-    HEADER: "Ово је виртуална страна"
-  WidgetAreaEditor.ss:
-    AVAILABLE: "Доступни виџети"
-    INUSE: "Виџети који се тренутно користе"
-    NOAVAIL: "Тренутно нема доступних виџета."
-  WidgetEditor.ss:
-    DELETE: "Обриши"
+    CHOOSE: 'Изаберите страну коју желите да повежете'
+    DESCRIPTION: 'Displays the content of another page'
+    EDITCONTENT: 'кликните овде да бисте променили садржај'
+    HEADER: 'Ово је виртуална страна'
+    PLURALNAME: 'Virtual Pags'
+    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
+    SINGULARNAME: 'Virtual Page'
+  cms:
+    FILESYSTEMSYNC: 'Sync files'

@@ -1,4 +1,4 @@
-ms:
+ko:
   AssetAdmin:
     ADDFILES: 'Add Files'
     ALLOWEDEXTS: 'Allowed extensions'
@@ -147,10 +147,10 @@ ms:
     GO: Go
     MULTISELECT: Multi-selection
     Title: 'Changed pages'
-    VIEWFIRST: 'Lihat pertama'
-    VIEWLAST: 'Lihat terakhir'
-    VIEWNEXT: 'Lihat berikut'
-    VIEWPREVIOUS: 'Lihat dahulu'
+    VIEWFIRST: 'View first'
+    VIEWLAST: 'View last'
+    VIEWNEXT: 'View next'
+    VIEWPREVIOUS: 'View previous'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
@@ -162,7 +162,7 @@ ms:
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
     DRAFTSITE: 'Draft Site'
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Anda pertu mendaftar masuk dengan kata aluan CMS anda untuk melihat draf atau kandungan diarkib. <a href="%s">Klik sini untuk kembali ke tapak tertebit.</a>'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'You must log in with your CMS password in order to view the draft or archived content.  <a href="%s">Click here to go back to the published site.</a>'
     Email: Email
     InstallFilesDeleted: 'Installation files have been successfully deleted.'
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
@@ -178,9 +178,9 @@ ms:
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'View Page in:'
   ErrorPage:
-    CODE: 'Kod kesilapan'
-    DEFAULTERRORPAGECONTENT: '<p>Minta maaf, rupa-rupanya anda ingin mencapai halaman yang tidak wujud</p><p>Sila semak ejaan URL yang anda ingin mencapai dan cuba semula</p>'
-    DEFAULTERRORPAGETITLE: 'Halaman tidak wujud'
+    CODE: 'Error code'
+    DEFAULTERRORPAGECONTENT: '<p>Sorry, it seems you were trying to access a page that doesn''t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>'
+    DEFAULTERRORPAGETITLE: 'Page not found'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Server error'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
@@ -201,7 +201,7 @@ ms:
     414: '414 - Request-URI Too Long'
     415: '415 - Unsupported Media Type'
     416: '416 - Request Range Not Satisfiable'
-    417: '417 - kegagalan expectation'
+    417: '417 - Expectation Failed'
     500: '500 - Internal Server Error'
     501: '501 - Not Implemented'
     502: '502 - Bad Gateway'
@@ -210,9 +210,9 @@ ms:
     505: '505 - HTTP Version Not Supported'
   Folder:
     AddFolderButton: 'Add folder'
-    DELETEUNUSEDTHUMBNAILS: 'Hapuskan thumbnail yang tidak digunakan'
-    UNUSEDFILESTITLE: 'Fail-fail yang tidak digunakan'
-    UNUSEDTHUMBNAILSTITLE: 'Thumbnail yang tidak digunakan'
+    DELETEUNUSEDTHUMBNAILS: 'Delete unused thumbnails'
+    UNUSEDFILESTITLE: 'Unused files'
+    UNUSEDTHUMBNAILSTITLE: 'Unused thumbnails'
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
@@ -247,13 +247,13 @@ ms:
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
   RedirectorPage:
     DESCRIPTION: 'Redirects to a different internal page'
-    HASBEENSETUP: 'Mukasurat pengalih destinasi dihasilkan tanpa menyatakan destinasi alihan.'
-    HEADER: 'Mukasurat ini akan mengalih pengguna ke mukasurat lain'
-    OTHERURL: 'URL laman web lain'
-    REDIRECTTO: 'Alihkan ke'
-    REDIRECTTOEXTERNAL: 'Laman web lain'
-    REDIRECTTOPAGE: 'Tambah halaman ke laman anda'
-    YOURPAGE: 'Halaman di laman anda'
+    HASBEENSETUP: 'A redirector page has been set up without anywhere to redirect to.'
+    HEADER: 'This page will redirect users to another page'
+    OTHERURL: 'Other website URL'
+    REDIRECTTO: 'Redirect to'
+    REDIRECTTOEXTERNAL: 'Another website'
+    REDIRECTTOPAGE: 'A page on your website'
+    YOURPAGE: 'Page on your website'
   RelationFieldsTestPage:
     DESCRIPTION: 'Generic content page'
     FILTER: Filter
@@ -297,63 +297,63 @@ ms:
     TOPLEVELCREATE: 'Who can create pages in the root of the site?'
     VIEWHEADER: 'Who can view pages on this site?'
   SiteTree:
-    ACCESSANYONE: 'Sesiapa sahaja'
-    ACCESSHEADER: 'Siapa yang boleh melihat mukasurat ini?'
-    ACCESSLOGGEDIN: 'Pengguna berdaftar masuk'
-    ACCESSONLYTHESE: 'Hanya pengguna berikut (pilih dari senarai)'
+    ACCESSANYONE: Anyone
+    ACCESSHEADER: 'Who can view this page?'
+    ACCESSLOGGEDIN: 'Logged-in users'
+    ACCESSONLYTHESE: 'Only these people (choose from list)'
     ADDEDTODRAFTHELP: 'Page has not been published yet'
     ADDEDTODRAFTSHORT: Draft
-    ALLOWCOMMENTS: 'Terima komen untuk mukasurat ini?'
+    ALLOWCOMMENTS: 'Allow comments on this page?'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
-    BUTTONCANCELDRAFT: 'Batalkan perubahan ke atas draf'
-    BUTTONCANCELDRAFTDESC: 'Hapus draf dan kembalikan ke mukasurat asal yang telah diterbitkan'
-    BUTTONSAVEPUBLISH: 'SImpan & terbitkan'
-    BUTTONUNPUBLISH: 'Tidak diterbitkan'
-    BUTTONUNPUBLISHDESC: 'Hapus mukasurat ini dari laman sebenar'
+    BUTTONCANCELDRAFT: 'Cancel draft changes'
+    BUTTONCANCELDRAFTDESC: 'Delete your draft and revert to the currently published page'
+    BUTTONSAVEPUBLISH: 'Save & Publish'
+    BUTTONUNPUBLISH: Unpublish
+    BUTTONUNPUBLISHDESC: 'Remove this page from the published site'
     Back: Back
     CREATED: 'Date Created'
     Comments: Comments
-    Content: Kandungan
-    DEFAULTABOUTCONTENT: '<p>Anda bole isikan kandungan anda sendiri ke dalam mukasurat ini. atau padamkannya dan hasilkan mukasurat yang baru untuk menggantikannya.<br /></p>'
-    DEFAULTABOUTTITLE: 'Tentang Kami'
-    DEFAULTCONTACTCONTENT: '<p>Anda bole isikan kandungan anda sendiri ke dalam mukasurat ini. atau padamkannya dan hasilkan mukasurat yang baru untuk menggantikannya.<br /></p>'
-    DEFAULTCONTACTTITLE: 'Hubungi Kami'
-    DEFAULTHOMECONTENT: '<p>Selamat datang ke laman SilverStripe! Ini adalah laman utama yang asal. Anda boleh menyunting mukasurat ini dengan menggunakan <a href="admin/">CMS yang disediakan</a>. Untuk bantuan, sila lawati <a href="http://doc.silverstripe.com">dukumentasi pembangun perisian</a>, atau mula menggunakan <a href="http://doc.silverstripe.com/doku.php?id=tutorials">dokumen tutorial.</a></p>'
-    DEFAULTHOMETITLE: Utama
+    Content: Content
+    DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
+    DEFAULTABOUTTITLE: 'About Us'
+    DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
+    DEFAULTCONTACTTITLE: 'Contact Us'
+    DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
+    DEFAULTHOMETITLE: Home
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Deleted
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
-    EDITANYONE: 'Sesiapa sahaja yang boleh mendaftar masuk ke CMS'
-    EDITHEADER: 'Siapa yang boleh melakukan penyuntingan menggunakan CMS?'
-    EDITONLYTHESE: 'Hanya pengguna berikut (pilih dari senarai)'
+    EDITANYONE: 'Anyone who can log-in to the CMS'
+    EDITHEADER: 'Who can edit this page?'
+    EDITONLYTHESE: 'Only these people (choose from list)'
     EDITORGROUPS: 'Editor Groups'
     EDIT_ALL_DESCRIPTION: 'Edit any page'
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     Editors: 'Editors Groups'
-    HASBROKENLINKS: 'Mukasurat ini mengandungi pautan bermasalah.'
-    HTMLEDITORTITLE: Kandungan
+    HASBROKENLINKS: 'This page has broken links.'
+    HTMLEDITORTITLE: Content
     INHERIT: 'Inherit from parent page'
     LASTUPDATED: 'Last Updated'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
-    MENUTITLE: 'Label navigasi'
-    METADESC: Keterangan
-    METAEXTRA: 'Label-meta khas'
-    METAKEYWORDS: Katakunci
-    METATITLE: Tajuk
+    MENUTITLE: 'Navigation label'
+    METADESC: 'Meta Description'
+    METAEXTRA: 'Custom Meta Tags'
+    METAKEYWORDS: 'Meta Keywords'
+    METATITLE: 'Meta Title'
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
     PAGELOCATION: 'Page location'
-    PAGETITLE: 'Nama halaman'
-    PAGETYPE: 'Jenis halaman'
+    PAGETITLE: 'Page name'
+    PAGETYPE: 'Page type'
     PARENTID: 'Parent page'
     PARENTTYPE: 'Page location'
     PARENTTYPE_ROOT: 'Top-level page'
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: 'Pokok-pokok Halaman'
+    PLURALNAME: 'Site Tres'
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -361,15 +361,15 @@ ms:
     REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
     REORGANISE_DESCRIPTION: 'Change site structure'
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
-    SHOWINMENUS: 'Paparkan di menu?'
-    SHOWINSEARCH: 'Paparkan di carian?'
-    SINGULARNAME: 'Pokok Halaman'
-    TABBEHAVIOUR: Perilaku
-    TABCONTENT: Kandungan
+    SHOWINMENUS: 'Show in menus?'
+    SHOWINSEARCH: 'Show in search?'
+    SINGULARNAME: 'Site Tree'
+    TABBEHAVIOUR: Behavior
+    TABCONTENT: 'Main Content'
     TABDEPENDENT: 'Dependent pages'
-    TOPLEVEL: 'Kandungan Laman (Peringkat Atas)'
+    TOPLEVEL: 'Site Content (Top Level)'
     TOPLEVELCREATORGROUPS: 'Top level creators'
-    URLSegment: 'Segmen URL'
+    URLSegment: 'URL Segment'
     VIEWERGROUPS: 'Viewer Groups'
     VIEW_ALL_DESCRIPTION: 'View any page'
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
@@ -377,7 +377,7 @@ ms:
     VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
     Viewers: 'Viewers Groups'
     Visibility: Visibility
-    has_one_Parent: 'Halaman Induk'
+    has_one_Parent: 'Parent Page'
     many_many_BackLinkTracking: 'Backlink Tracking'
     many_many_ImageTracking: 'Image Tracking'
     many_many_LinkTracking: 'Link Tracking'
@@ -397,12 +397,12 @@ ms:
   TreeTools:
     DisplayLabel: 'Display:'
   VirtualPage:
-    CHOOSE: 'Pilih mukasurat yang ingin di pautkan'
+    CHOOSE: 'Choose a page to link to'
     DESCRIPTION: 'Displays the content of another page'
-    EDITCONTENT: 'klik di sini untuk menyunting kandungan'
-    HEADER: 'Ini adalah mukasurat maya'
-    PLURALNAME: 'Halaman-halaman Maya'
+    EDITCONTENT: 'click here to edit the content'
+    HEADER: 'This is a virtual page'
+    PLURALNAME: 'Virtual Pags'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
-    SINGULARNAME: 'Halaman Maya'
+    SINGULARNAME: 'Virtual Page'
   cms:
     FILESYSTEMSYNC: 'Sync files'

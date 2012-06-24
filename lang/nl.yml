@@ -1,262 +1,408 @@
 nl:
   AssetAdmin:
-    NEWFOLDER: "Nieuwe Map"
-    THUMBSDELETED: "Alle ongebruikte miniatuur afbeeldingen zijn verwijderd"
-  AssetAdmin_left.ss:
-    GO: "Doen"
+    ADDFILES: 'Add Files'
+    ALLOWEDEXTS: 'Allowed extensions'
+    ActionAdd: 'Add folder'
+    AppCategoryArchive: Archive
+    AppCategoryAudio: Audio
+    AppCategoryFlash: Flash
+    AppCategoryImage: Afbeelding
+    AppCategoryVideo: Video
+    BackToFolder: 'Back to folder'
+    CREATED: Date
+    CurrentFolderOnly: 'Limit to current folder?'
+    DetailsView: Details
+    FILES: Files
+    FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
+    FROMTHEINTERNET: 'From the internet'
+    FROMYOURCOMPUTER: 'From your computer'
+    Filetype: 'File type'
+    ListView: 'List View'
+    MENUTITLE: Files
+    NEWFOLDER: 'Nieuwe Map'
+    SIZE: Size
+    THUMBSDELETED: '{count} unused thumbnails have been deleted'
+    TreeView: 'Tree View'
+    Upload: Upload
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Delete folders'
+  AssetTableField:
+    BACKLINKCOUNT: 'Used on:'
+    PAGES: page(s)
+  BasicFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+  BigFamilyPage:
+    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
-    Any: "Alles"
-    BROKENLINKS: "Verbroken verwijzingen rapportage"
-    CheckSite: "Controleer site"
-    CheckSiteDropdownDraft: "Concept Site"
-    CheckSiteDropdownPublished: "Gepubliceerde Site"
-    ColumnDateLastModified: "Laatste wijzigingsdatum"
-    ColumnDateLastPublished: "Laatste publicatiedatum"
-    ColumnProblemType: "Probleem type"
-    ColumnURL: "URL"
-    HasBrokenFile: "heeft verbroken bestand"
-    HasBrokenLink: "heeft verbroken link"
-    HasBrokenLinkAndFile: "heeft verbroken link en bestand"
-    HoverTitleEditPage: "Wijzig pagina"
-    PageName: "Paginanaam"
-    ReasonDropdown: "Te controleren probleem"
-    ReasonDropdownBROKENFILE: "Verbroken bestand"
-    ReasonDropdownBROKENLINK: "Verbroken link"
-    ReasonDropdownRPBROKENLINK: "Verwijzingspagina wijst naar niet bestaande pagina"
-    ReasonDropdownVPBROKENLINK: "Virtuele pagina verwijst naar niet bestaande pagina"
-    RedirectorNonExistent: "verwijzingspagina wijst naar niet bestaande pagina"
-    VirtualPageNonExistent: "virtuele pagina verwijst naar niet bestaande pagina"
+    Any: Alles
+    BROKENLINKS: 'Verbroken verwijzingen rapportage'
+    CheckSite: 'Controleer site'
+    CheckSiteDropdownDraft: 'Concept Site'
+    CheckSiteDropdownPublished: 'Gepubliceerde Site'
+    ColumnDateLastModified: 'Laatste wijzigingsdatum'
+    ColumnDateLastPublished: 'Laatste publicatiedatum'
+    ColumnProblemType: 'Probleem type'
+    ColumnURL: URL
+    HasBrokenFile: 'heeft verbroken bestand'
+    HasBrokenLink: 'heeft verbroken link'
+    HasBrokenLinkAndFile: 'heeft verbroken link en bestand'
+    HoverTitleEditPage: 'Wijzig pagina'
+    PageName: Paginanaam
+    ReasonDropdown: 'Te controleren probleem'
+    ReasonDropdownBROKENFILE: 'Verbroken bestand'
+    ReasonDropdownBROKENLINK: 'Verbroken link'
+    ReasonDropdownRPBROKENLINK: 'Verwijzingspagina wijst naar niet bestaande pagina'
+    ReasonDropdownVPBROKENLINK: 'Virtuele pagina verwijst naar niet bestaande pagina'
+    RedirectorNonExistent: 'verwijzingspagina wijst naar niet bestaande pagina'
+    SORTASC: 'Sorteer op oplopende volgorde'
+    SORTDESC: 'Sorteer op aflopende volgorde'
+    VirtualPageNonExistent: 'virtuele pagina verwijst naar niet bestaande pagina'
+  CMSAddPageController:
+    Title: 'Add page'
   CMSBatchActions:
-    DELETE_DRAFT_PAGES: "Verwijder van concept site"
-    DELETE_PAGES: "Verwijder van gepubliceerde site"
-    PUBLISHED_PAGES: "%d pagina's gepubliceerd"
-    PUBLISH_PAGES: "Publiceer"
-    UNPUBLISHED_PAGES: "Publicatie van %d pagina's ingetrokken"
-    UNPUBLISH_PAGES: "Publicatie intrekken"
+    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
+    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
+    DELETE_DRAFT_PAGES: 'Verwijder van concept site'
+    DELETE_PAGES: 'Verwijder van gepubliceerde site'
+    PUBLISHED_PAGES: '%d pagina''s gepubliceerd'
+    PUBLISH_PAGES: Publiceer
+    UNPUBLISHED_PAGES: 'Publicatie van %d pagina''s ingetrokken'
+    UNPUBLISH_PAGES: 'Publicatie intrekken'
+  CMSFileAddController:
+    MENUTITLE: Files
   CMSMain:
-    ACCESS: "Toegang tot '%s'"
-    ACCESS_HELP: "Bevoegdheid voor bekijken van pagina tak en inhoudssecties. Bekijk- en bewerkingstoestemmingen kunnen worden toegekend door pagina specifieke menu's en het aparte \"Inhoudsmachtigingen\"."
-    DELETE: "Verwijder van de ontwerp webpagina"
-    DELETEFP: "Verwijder van de gepubliceerde webpagina"
-    DESCREMOVED: "en %s nakomelingen"
-    EMAIL: "Email"
-    NEW: "Nieuw"
-    PAGENOTEXISTS: "Deze pagina bestaat niet"
-    PUBALLCONFIRM: "Publiceer elke pagina van de site waarbij de inhoud van de concept site gekopieerd wordt naar de live site."
-    PUBALLFUN: "\"Publiceer Alles\" functionaliteit"
-    PUBALLFUN2: "Op deze knop klikken heeft hetzelfde resultaat als alle pagina's apart publiceren. Hij is bedoeld om een groot aantal wijzigingen in een keer te publiceren."
-    PUBPAGES: "Klaar: %d pagina's gepubliceerd"
-    REMOVED: "Verwijderde '%s'%s van live site"
-    REMOVEDPAGE: "'%s' verwijderd uit de gepubliceerde site"
-    REMOVEDPAGEFROMDRAFT: "Verwijderde '%s' uit de concept-site"
-    RESTORE: "Herstel"
-    RESTORED: "Herstellen van '%s' is succesvol verlopen."
-    ROLLBACK: "Terugzetten naar deze versie"
-    ROLLEDBACKPUB: "Teruggezet naar de gepubliceerde versie. Het nieuwe versie nummer is #%d"
-    ROLLEDBACKVERSION: "Teruggezet naar versie #%d. Het nieuwe versie nummer is #%d"
-    SAVE: "Opslaan"
-  CMSMain_left.ss:
+    ACCESS: 'Access to ''{title}'' section'
+    ACCESS_HELP: 'Bevoegdheid voor bekijken van pagina tak en inhoudssecties. Bekijk- en bewerkingstoestemmingen kunnen worden toegekend door pagina specifieke menu''s en het aparte "Inhoudsmachtigingen".'
+    AddNew: 'Add new page'
+    AddNewButton: 'Add new'
+    ChoosePageParentMode: 'Choose where to create this page'
+    ChoosePageType: 'Choose page type'
+    Create: Create
+    DELETE: 'Verwijder van de ontwerp webpagina'
+    DELETEFP: 'Verwijder van de gepubliceerde webpagina'
+    DESCREMOVED: 'and {count} descendants'
+    EMAIL: Email
+    MENUTITLE: 'Edit Page'
+    NEW: Nieuw
+    PAGENOTEXISTS: 'Deze pagina bestaat niet'
+    PAGES: Pages
+    PAGETYPEANYOPT: Elke
+    PAGETYPEOPT: 'Page Type'
+    PUBALLCONFIRM: 'Publiceer elke pagina van de site waarbij de inhoud van de concept site gekopieerd wordt naar de live site.'
+    PUBALLFUN: '"Publiceer Alles" functionaliteit'
+    PUBALLFUN2: 'Op deze knop klikken heeft hetzelfde resultaat als alle pagina''s apart publiceren. Hij is bedoeld om een groot aantal wijzigingen in een keer te publiceren.'
+    PUBPAGES: 'Done: Published {count} pages'
+    PageAdded: 'Successfully created page'
+    REMOVED: 'Verwijderde ''%s''%s van live site'
+    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
+    REMOVEDPAGEFROMDRAFT: 'Verwijderde ''%s'' uit de concept-site'
+    RESTORE: Herstel
+    RESTORED: 'Restored ''{title}'' successfully'
+    ROLLBACK: 'Terugzetten naar deze versie'
+    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
+    ROLLEDBACKVERSION: 'Teruggezet naar versie #%d. Het nieuwe versie nummer is #%d'
+    SAVE: Opslaan
+    SAVEDRAFT: 'Save Draft'
+    TabContent: Content
+    TabHistory: Geschiedenis
+    TabSettings: Settings
+  CMSPageAddController:
+    MENUTITLE: 'Add page'
+    ParentMode_child: 'Under another page'
+    ParentMode_top: 'Top level'
+  CMSPageEditController:
+    MENUTITLE: 'Edit Page'
+  CMSPageHistoryController:
+    COMPAREMODE: 'Compare mode (select two)'
+    COMPAREVERSIONS: 'Vergelijk Versies'
+    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
+    MENUTITLE: Geschiedenis
+    REVERTTOTHISVERSION: 'Revert to this version'
+    SHOWUNPUBLISHED: 'Toon nog niet gepubliceerde versies'
+    SHOWVERSION: 'Toon Versie'
+    VIEW: toon
+    VIEWINGVERSION: 'Currently viewing version {version}.'
+  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  CMSPageSettingsController:
+    MENUTITLE: 'Edit Page'
+  CMSPagesController:
+    GalleryView: 'Gallery View'
+    ListView: 'List View'
+    MENUTITLE: Pages
+    TreeView: 'Tree View'
+  CMSSearch:
+    FILTERDATEFROM: From
+    FILTERDATEHEADING: Date
+    FILTERDATETO: To
+    FILTERLABELTEXT: 'Hoofd Inhoud'
+  CMSSettingsController:
+    AUTHOR: Author
+    MENUTITLE: Settings
+    NOTPUBLISHED: 'Not published'
+    PUBLISHER: Publisher
+    UNKNOWN: Unknown
+    WHEN: When
+  CMSSiteTreeFilter_ChangedPages:
+    ENABLEDRAGGING: 'Drag''n''drop'
+    GO: Doen
+    MULTISELECT: Multi-selection
+    Title: 'Changed pages'
+    VIEWFIRST: 'Bekijk eerste'
+    VIEWLAST: 'Bekijk laatste'
+    VIEWNEXT: 'Toon volgende'
+    VIEWPREVIOUS: 'Bekijk vorige'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'All pages, including deleted'
+  CMSSiteTreeFilter_Search:
+    Title: 'All pages'
   ContentControl:
-    NOTEWONTBESHOWN: "N.B. : Dit bericht is niet zichtbaar voor bezoekers"
+    NOTEWONTBESHOWN: 'N.B. : Dit bericht is niet zichtbaar voor bezoekers'
   ContentController:
-    ARCHIVEDSITE: "Gearchiveerde site"
-    ARCHIVEDSITEFROM: "Gearchiveerde site van"
-    CMS: "CMS"
-    DRAFTSITE: "Concept site"
-    DRAFT_SITE_ACCESS_RESTRICTION: "U moet inloggen met Uw CMS wachtwoord om die inhoud te kunnen zien. <a href=\"%s\">Klik hier</a> om terug te keren naar de gepubliceerde site."
-    LOGGEDINAS: "Ingelogd als"
-    LOGIN: "Inloggen"
-    LOGOUT: "Uitloggen"
-    NOTLOGGEDIN: "Niet ingelogd"
-    PUBLISHEDSITE: "Gepubliceerde site"
-    VIEWPAGEIN: "Bekijk pagina in:"
+    ARCHIVEDSITE: 'Gearchiveerde site'
+    ARCHIVEDSITEFROM: 'Gearchiveerde site van'
+    CMS: CMS
+    DRAFTSITE: 'Concept site'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'U moet inloggen met Uw CMS wachtwoord om die inhoud te kunnen zien. <a href="%s">Klik hier</a> om terug te keren naar de gepubliceerde site.'
+    Email: Email
+    InstallFilesDeleted: 'Installation files have been successfully deleted.'
+    InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    LOGGEDINAS: 'Ingelogd als'
+    LOGIN: Inloggen
+    LOGOUT: Uitloggen
+    NOTLOGGEDIN: 'Niet ingelogd'
+    PUBLISHEDSITE: 'Gepubliceerde site'
+    Password: Password
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
+    VIEWPAGEIN: 'Bekijk pagina in:'
   ErrorPage:
-    CODE: "Foutcode"
-    DEFAULTERRORPAGECONTENT: "<p>Sorry, maar de pagina die je zocht lijkt niet te bestaan.</p><p>Gelieve de spelling van de url te controleren en het opnieuw te proberen.</p>"
-    DEFAULTERRORPAGETITLE: "Pagina niet gevonden"
-    ERRORFILEPROBLEM: "Fout bij het openen van bestand \"%s\" voor bewerking. Controleer de bestandsrechten."
-    400: "400 - Foute Vraag"
-    401: "401 - Geen toestemming"
-    403: "403 - Geen toegang"
-    404: "404 - Niet gevonden"
-    405: "405- Methode niet toegestaan"
-    406: "406 - Niet toegankelijk"
-    407: "407 - Proxy Auhenticatie Vereist"
-    408: "408 - Vraag verlopen"
-    409: "409 - Conflict"
-    410: "410 - Verdwenen"
-    411: "411 - Lengte vereist"
-    412: "412 - Voorwaarde gefaald"
-    413: "413 - Vraag eenheid te groot"
-    414: "414 - Aanvraag-URI Te Lang"
-    415: "415 - Niet ondersteund Media Type"
-    416: "416 - Aanvraag Bereik Niet Toereikend"
-    417: "417 - Verwachting Mislukt"
-    500: "500 - Interne Server Fout"
-    501: "501 -  Niet geïmplementeerd"
-    502: "502 - Slechte Gateway"
-    503: "503 - Service niet beschikbaar"
-    504: "504 - Gateway Timeout"
-    505: "505 - HTTP Versie Niet Ondersteund"
+    CODE: Foutcode
+    DEFAULTERRORPAGECONTENT: '<p>Sorry, maar de pagina die je zocht lijkt niet te bestaan.</p><p>Gelieve de spelling van de url te controleren en het opnieuw te proberen.</p>'
+    DEFAULTERRORPAGETITLE: 'Pagina niet gevonden'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Server Fout'
+    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
+    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    400: '400 - Foute Vraag'
+    401: '401 - Geen toestemming'
+    403: '403 - Geen toegang'
+    404: '404 - Niet gevonden'
+    405: '405- Methode niet toegestaan'
+    406: '406 - Niet toegankelijk'
+    407: '407 - Proxy Auhenticatie Vereist'
+    408: '408 - Vraag verlopen'
+    409: '409 - Conflict'
+    410: '410 - Verdwenen'
+    411: '411 - Lengte vereist'
+    412: '412 - Voorwaarde gefaald'
+    413: '413 - Vraag eenheid te groot'
+    414: '414 - Aanvraag-URI Te Lang'
+    415: '415 - Niet ondersteund Media Type'
+    416: '416 - Aanvraag Bereik Niet Toereikend'
+    417: '417 - Verwachting Mislukt'
+    500: '500 - Interne Server Fout'
+    501: '501 -  Niet geïmplementeerd'
+    502: '502 - Slechte Gateway'
+    503: '503 - Service niet beschikbaar'
+    504: '504 - Gateway Timeout'
+    505: '505 - HTTP Versie Niet Ondersteund'
   Folder:
-    DELETEUNUSEDTHUMBNAILS: "Verwijder niet gebruikte thumbnails"
-    UNUSEDFILESTITLE: "Ongebruikte bestanden"
-    UNUSEDTHUMBNAILSTITLE: "Ongebruikte miniatuur afbeeldingen"
+    AddFolderButton: 'Add folder'
+    DELETEUNUSEDTHUMBNAILS: 'Verwijder niet gebruikte thumbnails'
+    UNUSEDFILESTITLE: 'Ongebruikte bestanden'
+    UNUSEDTHUMBNAILSTITLE: 'Ongebruikte miniatuur afbeeldingen'
+    UploadFilesButton: Upload
+  GridFieldTestPage:
+    DESCRIPTION: 'Generic content page'
   LeftAndMain:
-    STATUSPUBLISHEDSUCCESS: "'%s' is succesvol gepubliceerd "
+    DELETED: Deleted.
+    PreviewButton: Voorbeeld
+    SAVEDUP: Saved.
+    STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
+    SearchResults: 'Search Results'
+    VersionUnknown: Unknown
+  LegacyTableFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+  MyNonRootPage:
+    CANACCESS: 'U kunt de gearchiveerde site bekijken via deze link:'
+    DESCRIPTION: 'Generic content page'
+    HAVEASKED: 'U heeft de inhoud van onze site opgevraagd op'
+  MyOtherPage:
+    DESCRIPTION: 'Generic content page'
+  MyPage:
+    DESCRIPTION: 'Generic content page'
+  MyRandomPage:
+    DESCRIPTION: 'Generic content page'
+  PackageManagerPage:
+    DESCRIPTION: 'Generic content page'
+    RESET: Reset
+  Page:
+    DESCRIPTION: 'Generic content page'
   Permission:
-    CMS_ACCESS_CATEGORY: "CMS Toegang"
+    CMS_ACCESS_CATEGORY: 'CMS Toegang'
   Permissions:
-    CONTENT_CATEGORY: "Inhoudsrechten"
-    PERMISSIONS_CATEGORY: "Rollen en toegangsrechten"
+    CONTENT_CATEGORY: Inhoudsrechten
+    PERMISSIONS_CATEGORY: 'Rollen en toegangsrechten'
   RedirectorPage:
-    HASBEENSETUP: "Er is een verwijs pagina opgezet zonder ergens naar door te verwijzen."
-    HEADER: "Deze pagina zal gebruikers naar een andere pagina doorsturen (redirect)"
-    OTHERURL: "Andere website URL"
-    REDIRECTTO: "Doorverwijzen naar"
-    REDIRECTTOEXTERNAL: "Een andere website"
-    REDIRECTTOPAGE: "Een pagina op deze website"
-    YOURPAGE: "Pagina op deze website"
+    DESCRIPTION: 'Redirects to a different internal page'
+    HASBEENSETUP: 'Er is een verwijs pagina opgezet zonder ergens naar door te verwijzen.'
+    HEADER: 'Deze pagina zal gebruikers naar een andere pagina doorsturen (redirect)'
+    OTHERURL: 'Andere website URL'
+    REDIRECTTO: 'Doorverwijzen naar'
+    REDIRECTTOEXTERNAL: 'Een andere website'
+    REDIRECTTOPAGE: 'Een pagina op deze website'
+    YOURPAGE: 'Pagina op deze website'
+  RelationFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+    FILTER: Filter
+  ReportAdmin:
+    MENUTITLE: Reports
   ReportAdminForm:
-    FILTERBY: "Filter op"
+    FILTERBY: 'Filter op'
   SearchForm:
-    GO: "Go"
-    SEARCH: "Zoeken"
-    SearchResults: "Zoek Resultaten"
+    GO: Go
+    SEARCH: Zoeken
+    SearchResults: 'Zoek Resultaten'
   SideReport:
-    BROKENFILES: "Pagina's met verbroken bestanden"
-    BROKENLINKS: "Pagina's met verbroken verwijzingen"
-    BROKENREDIRECTORPAGES: "RedirectorPages dit naar verwijderde pagina's verwijzen"
-    BROKENVIRTUALPAGES: "VirtuelePagina's die naar verwijderde pagina's verwijzen"
-    BrokenLinksGroupTitle: "Verbroken verwijzingen raportage"
-    ContentGroupTitle: "Inhoudsrapportages"
-    EMPTYPAGES: "Lege pagina's"
-    LAST2WEEKS: "Pagina's gewijzigd in de laatste twee weken"
-    OtherGroupTitle: "Anders"
-    ParameterLiveCheckbox: "Controleer gepubliceerde site"
-    REPEMPTY: "Het %s verslag is leeg."
+    BROKENFILES: 'Pagina''s met verbroken bestanden'
+    BROKENLINKS: 'Pagina''s met verbroken verwijzingen'
+    BROKENREDIRECTORPAGES: 'RedirectorPages dit naar verwijderde pagina''s verwijzen'
+    BROKENVIRTUALPAGES: 'VirtuelePagina''s die naar verwijderde pagina''s verwijzen'
+    BrokenLinksGroupTitle: 'Verbroken verwijzingen raportage'
+    ContentGroupTitle: Inhoudsrapportages
+    EMPTYPAGES: 'Lege pagina''s'
+    LAST2WEEKS: 'Pagina''s gewijzigd in de laatste twee weken'
+    OtherGroupTitle: Anders
+    ParameterLiveCheckbox: 'Controleer gepubliceerde site'
+    REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigatorLink:
-    ShareInstructions: "Kopieer en plak de link hieronder, om een link te delen op deze pagina."
-    ShareLink: "Deel een link"
+    ShareInstructions: 'Kopieer en plak de link hieronder, om een link te delen op deze pagina.'
+    ShareLink: 'Deel een link'
   SilverStripeNavigatorLinkl:
-    CloseLink: "Sluiten"
+    CloseLink: Sluiten
   SiteConfig:
-    DEFAULTTHEME: "(Gebruik standaard thema)"
-    EDITHEADER: "Wie kan pagina's op de site wijzigen?"
-    EDIT_PERMISSION: "Aanpassen site configuratie"
-    EDIT_PERMISSION_HELP: "Bevoegdheid om globale toegangsinstellingen/hoogste niveau pagina rechten te bewerken."
-    SITENAMEDEFAULT: "Jouw Site Naam"
-    SITETAGLINE: "Site Slogan/Motto"
-    SITETITLE: "Site Titel"
-    TABACCESS: "Toegang"
-    TABMAIN: "Hoofd"
-    TAGLINEDEFAULT: "jouw motto hier"
-    THEME: "Thema"
-    TOPLEVELCREATE: "Wie kunnen pagina's in op het hoogste niveau van de site aanmaken?"
-    VIEWHEADER: "Wie kunnen pagina's op de site bekijken?"
+    DEFAULTTHEME: '(Gebruik standaard thema)'
+    EDITHEADER: 'Wie kan pagina''s op de site wijzigen?'
+    EDIT_PERMISSION: 'Aanpassen site configuratie'
+    EDIT_PERMISSION_HELP: 'Bevoegdheid om globale toegangsinstellingen/hoogste niveau pagina rechten te bewerken.'
+    SITENAMEDEFAULT: 'Jouw Site Naam'
+    SITETAGLINE: 'Site Slogan/Motto'
+    SITETITLE: 'Site Titel'
+    TABACCESS: Toegang
+    TABMAIN: Hoofd
+    TAGLINEDEFAULT: 'jouw motto hier'
+    THEME: Thema
+    TOPLEVELCREATE: 'Wie kunnen pagina''s in op het hoogste niveau van de site aanmaken?'
+    VIEWHEADER: 'Wie kunnen pagina''s op de site bekijken?'
   SiteTree:
-    ACCESSANYONE: "Iedereen"
-    ACCESSHEADER: "Wie kan deze pagina bekijken?"
-    ACCESSLOGGEDIN: "Gebruikers die zijn ingelogd"
-    ACCESSONLYTHESE: "Alleen deze gebruikers (kies uit de lijst)"
-    ALLOWCOMMENTS: "Commentaar toestaan op deze pagina?"
-    APPEARSVIRTUALPAGES: "Deze inhoud verschijnt ook op de virtuele pagina's in de %s secties."
-    BUTTONCANCELDRAFT: "Annuleer veranderingen op dit concept"
-    BUTTONCANCELDRAFTDESC: "Verwijder het concept en zet de gepubliceerde pagina's naar deze concept pagina"
-    BUTTONSAVEPUBLISH: "Bewaar en Publiceer"
-    BUTTONUNPUBLISH: "Publicatie intrekken"
-    BUTTONUNPUBLISHDESC: "Deze pagina verwijderen uit de gepubliceerde site"
-    CHANGETO: "Verander in \"%s\""
-    Comments: "Commentaar"
-    Content: "Inhoud"
-    DEFAULTABOUTCONTENT: "<p>Je aan deze pagina je eigen inhoud toevoegen of de pagina verwijderen en nieuwe aanmaken.</p>"
-    DEFAULTABOUTTITLE: "Over ons"
-    DEFAULTCONTACTCONTENT: "<p>Je kan deze pagina vullen met je eigen inhoud, of ze verwijderen en je eigen pagina's aanmaken.</p>"
-    DEFAULTCONTACTTITLE: "Contact"
-    DEFAULTHOMECONTENT: "<p>Welkom bij Silverstripe! Dit is de standaard homepagina. Je kan deze pagina wijzigen door <a href=\"admin/\">het CMS</a> te openen. Je kan nu de <a href=\"http://doc.silverstripe.com\">documentatie voor ontwikkelaars</a> bekijken, of aan <a href=\"http://doc.silverstripe.com/doku.php?id=tutorials\">de tutorials</a> beginnen."
-    DEFAULTHOMETITLE: "Home"
-    DEPENDENT_NOTE: "De volgende pagina's zijn afhankelijk van deze pagina. Hieronder vallen virtuelepagina's, verwijsingspagina's en pagina's met links in de inhoud."
-    DependtPageColumnLinkType: "Link type"
-    DependtPageColumnURL: "URL"
-    EDITANYONE: "Iedereen die kan inloggen in het CMS"
-    EDITHEADER: "Wie kan deze pagina wijzigen?"
-    EDITONLYTHESE: "Alleen deze gebruikers (kies uit de lijst)"
-    EDITORGROUPS: "Wijziginggroepen"
-    EDIT_ALL_DESCRIPTION: "Kan iedere pagina wijzigen, ongeacht de specifieke pagina beveiliging"
-    EDIT_ALL_HELP: "Bevoegdheid om alle pagina's op de site te wijzigen, onafhankelijk van de instellingen in het 'Toegang' tabblad. Vereist \"Toegang tot site inhoud\" rechten"
-    Editors: "Redacteursgroepen"
-    HASBROKENLINKS: "Deze pagina heeft gebroken links."
-    HTMLEDITORTITLE: "Inhoud"
-    INHERIT: "Overnemen van de bovenliggende pagina"
-    LINKCHANGENOTE: "Het veranderen van de link van deze pagina beïnvloed de links van alle onderliggende pagina's. "
-    MENUTITLE: "Navigatie label"
-    METADESC: "Omschrijving"
-    METAEXTRA: "Aangepaste Meta Labels"
-    METAKEYWORDS: "Sleutelwoorden"
-    METATITLE: "Titel"
-    PAGELOCATION: "Pagina locatie"
-    PAGETITLE: "Pagina titel"
-    PAGETYPE: "Pagina type"
-    PARENTID: "Bovenliggende pagina"
-    PARENTTYPE: "Pagina lokatie"
-    PARENTTYPE_ROOT: "Top-level pagina"
-    PARENTTYPE_SUBPAGE: "Subpagina onder bovenliggende pagina (kies hieronder)"
-    PERMISSION_GRANTACCESS_DESCRIPTION: "Instellen welke groepen toegang hebben tot bepaalde pagina's of deze kunnen bewerken"
-    PERMISSION_GRANTACCESS_HELP: "Bevoegdheid om pagina specifieke toegangsrechten in de \"Pagina's\" sectie te wijzigen."
-    PLURALNAME: "Site structuur"
-    REORGANISE_DESCRIPTION: "Mag de site structuur wijzigen"
-    REORGANISE_HELP: "Pas pagina volgorde aan in de site structuur met behulp van verslepen."
-    SHOWINMENUS: "Weergeven in menu's?"
-    SHOWINSEARCH: "Weergeven in zoeken?"
-    SINGULARNAME: "Site Boom"
-    TABACCESS: "Toegang"
-    TABBEHAVIOUR: "Gedrag"
-    TABCONTENT: "Inhoud"
-    TABDEPENDENT: "Afhankelijke pagina's"
-    TABMETA: "Meta-data"
-    TOPLEVEL: "Site Inhoud (Top Niveau)"
-    TOPLEVELCREATORGROUPS: "Hoogste niveau auteurs"
-    URLSegment: "URL Segment"
-    VIEWERGROUPS: "Toegangsgroepen"
-    VIEW_ALL_DESCRIPTION: "Kan iedere pagina op de website bekijken, ongeacht de specifieke pagina instelling"
-    VIEW_ALL_HELP: "Bevoegdheid om alle pagina's op de site te bekijken, onafhankelijk van instellingen op het Toegangstapblad. Vereist \"Toegang tot site Inhoud\" rechten."
-    VIEW_DRAFT_CONTENT: "Bekijk concept inhoud"
-    VIEW_DRAFT_CONTENT_HELP: "Bevoegdheid om pagina's buiten het CMS in concept mode te bekijken. Nuttig voor externe medewerkers zonder CMS toegang."
-    Viewers: "Gebruikersgroepen"
-    has_one_Parent: "Bovenliggende pagina"
-    many_many_BackLinkTracking: "Wederlink Volgen"
-    many_many_ImageTracking: "Afbeelding Volgen"
-    many_many_LinkTracking: "Link Volgen"
+    ACCESSANYONE: Iedereen
+    ACCESSHEADER: 'Wie kan deze pagina bekijken?'
+    ACCESSLOGGEDIN: 'Gebruikers die zijn ingelogd'
+    ACCESSONLYTHESE: 'Alleen deze gebruikers (kies uit de lijst)'
+    ADDEDTODRAFTHELP: 'Page has not been published yet'
+    ADDEDTODRAFTSHORT: Draft
+    ALLOWCOMMENTS: 'Commentaar toestaan op deze pagina?'
+    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+    BUTTONCANCELDRAFT: 'Annuleer veranderingen op dit concept'
+    BUTTONCANCELDRAFTDESC: 'Verwijder het concept en zet de gepubliceerde pagina''s naar deze concept pagina'
+    BUTTONSAVEPUBLISH: 'Bewaar en Publiceer'
+    BUTTONUNPUBLISH: 'Publicatie intrekken'
+    BUTTONUNPUBLISHDESC: 'Deze pagina verwijderen uit de gepubliceerde site'
+    Back: Terug
+    CREATED: 'Date Created'
+    Comments: Commentaar
+    Content: Inhoud
+    DEFAULTABOUTCONTENT: '<p>Je aan deze pagina je eigen inhoud toevoegen of de pagina verwijderen en nieuwe aanmaken.</p>'
+    DEFAULTABOUTTITLE: 'Over ons'
+    DEFAULTCONTACTCONTENT: '<p>Je kan deze pagina vullen met je eigen inhoud, of ze verwijderen en je eigen pagina''s aanmaken.</p>'
+    DEFAULTCONTACTTITLE: Contact
+    DEFAULTHOMECONTENT: '<p>Welkom bij Silverstripe! Dit is de standaard homepagina. Je kan deze pagina wijzigen door <a href="admin/">het CMS</a> te openen. Je kan nu de <a href="http://doc.silverstripe.com">documentatie voor ontwikkelaars</a> bekijken, of aan <a href="http://doc.silverstripe.com/doku.php?id=tutorials">de tutorials</a> beginnen.'
+    DEFAULTHOMETITLE: Home
+    DELETEDPAGEHELP: 'Page is no longer published'
+    DELETEDPAGESHORT: Deleted
+    DEPENDENT_NOTE: 'De volgende pagina''s zijn afhankelijk van deze pagina. Hieronder vallen virtuelepagina''s, verwijsingspagina''s en pagina''s met links in de inhoud.'
+    DependtPageColumnLinkType: 'Link type'
+    DependtPageColumnURL: URL
+    EDITANYONE: 'Iedereen die kan inloggen in het CMS'
+    EDITHEADER: 'Wie kan deze pagina wijzigen?'
+    EDITONLYTHESE: 'Alleen deze gebruikers (kies uit de lijst)'
+    EDITORGROUPS: Wijziginggroepen
+    EDIT_ALL_DESCRIPTION: 'Kan iedere pagina wijzigen, ongeacht de specifieke pagina beveiliging'
+    EDIT_ALL_HELP: 'Bevoegdheid om alle pagina''s op de site te wijzigen, onafhankelijk van de instellingen in het ''Toegang'' tabblad. Vereist "Toegang tot site inhoud" rechten'
+    Editors: Redacteursgroepen
+    HASBROKENLINKS: 'Deze pagina heeft gebroken links.'
+    HTMLEDITORTITLE: Inhoud
+    INHERIT: 'Overnemen van de bovenliggende pagina'
+    LASTUPDATED: 'Last Updated'
+    LINKCHANGENOTE: 'Het veranderen van de link van deze pagina beïnvloed de links van alle onderliggende pagina''s. '
+    MENUTITLE: 'Navigatie label'
+    METADESC: Omschrijving
+    METAEXTRA: 'Aangepaste Meta Labels'
+    METAKEYWORDS: Sleutelwoorden
+    METATITLE: Titel
+    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
+    MODIFIEDONDRAFTSHORT: Modified
+    PAGELOCATION: 'Pagina locatie'
+    PAGETITLE: 'Pagina titel'
+    PAGETYPE: 'Pagina type'
+    PARENTID: 'Bovenliggende pagina'
+    PARENTTYPE: 'Pagina lokatie'
+    PARENTTYPE_ROOT: 'Top-level pagina'
+    PARENTTYPE_SUBPAGE: 'Subpagina onder bovenliggende pagina (kies hieronder)'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Instellen welke groepen toegang hebben tot bepaalde pagina''s of deze kunnen bewerken'
+    PERMISSION_GRANTACCESS_HELP: 'Bevoegdheid om pagina specifieke toegangsrechten in de "Pagina''s" sectie te wijzigen.'
+    PLURALNAME: 'Site structuur'
+    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
+    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
+    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
+    REMOVEDFROMDRAFTSHORT: 'Removed from draft'
+    REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
+    REORGANISE_DESCRIPTION: 'Mag de site structuur wijzigen'
+    REORGANISE_HELP: 'Pas pagina volgorde aan in de site structuur met behulp van verslepen.'
+    SHOWINMENUS: 'Weergeven in menu''s?'
+    SHOWINSEARCH: 'Weergeven in zoeken?'
+    SINGULARNAME: 'Site Boom'
+    TABBEHAVIOUR: Gedrag
+    TABCONTENT: Inhoud
+    TABDEPENDENT: 'Afhankelijke pagina''s'
+    TOPLEVEL: 'Site Inhoud (Top Niveau)'
+    TOPLEVELCREATORGROUPS: 'Hoogste niveau auteurs'
+    URLSegment: 'URL Segment'
+    VIEWERGROUPS: Toegangsgroepen
+    VIEW_ALL_DESCRIPTION: 'Kan iedere pagina op de website bekijken, ongeacht de specifieke pagina instelling'
+    VIEW_ALL_HELP: 'Bevoegdheid om alle pagina''s op de site te bekijken, onafhankelijk van instellingen op het Toegangstapblad. Vereist "Toegang tot site Inhoud" rechten.'
+    VIEW_DRAFT_CONTENT: 'Bekijk concept inhoud'
+    VIEW_DRAFT_CONTENT_HELP: 'Bevoegdheid om pagina''s buiten het CMS in concept mode te bekijken. Nuttig voor externe medewerkers zonder CMS toegang.'
+    Viewers: Gebruikersgroepen
+    Visibility: Visibility
+    has_one_Parent: 'Bovenliggende pagina'
+    many_many_BackLinkTracking: 'Wederlink Volgen'
+    many_many_ImageTracking: 'Afbeelding Volgen'
+    many_many_LinkTracking: 'Link Volgen'
+  SiteTreeURLSegmentField:
+    HelpChars: ' Special characters are automatically converted or removed.'
   StaticExporter:
-    BASEURL: "Basis URL"
-    EXPORTTO: "Exporteren naar die map"
-    NAME: "Statische export"
+    BASEURL: 'Basis URL'
+    EXPORTTO: 'Exporteren naar die map'
+    NAME: 'Statische export'
   TableListField:
-    SELECT: "Selecteer:"
-  TableListField.ss:
-    SORTASC: "Sorteer op oplopende volgorde"
-    SORTDESC: "Sorteer op aflopende volgorde"
-  TableListField_PageControls.ss:
-    VIEWFIRST: "Bekijk eerste"
-    VIEWLAST: "Bekijk laatste"
-    VIEWNEXT: "Toon volgende"
-    VIEWPREVIOUS: "Bekijk vorige"
-  ViewArchivedEmail.ss:
-    CANACCESS: "U kunt de gearchiveerde site bekijken via deze link:"
-    HAVEASKED: "U heeft de inhoud van onze site opgevraagd op"
+    FILTER: Filter
+    SELECT: 'Selecteer:'
+  TestFileUploadPage:
+    DESCRIPTION: 'Generic content page'
+  TestPage:
+    DESCRIPTION: 'Generic content page'
+  TreeTools:
+    DisplayLabel: 'Display:'
   VirtualPage:
-    CHOOSE: "Kies een pagina om naar te verwijzen"
-    EDITCONTENT: "Klik hier om de inhoud te wijzigen"
-    HEADER: "Dit is een virtuele pagina"
-    PLURALNAME: "Virtuele pagina's"
-    SINGULARNAME: "Virtuele Pagina"
-  WidgetAreaEditor.ss:
-    AVAILABLE: "Beschikbare widgets"
-    AVAILWIDGETS: "Klik op een widget titel hieronder om te gebruiken op deze pagina."
-    INUSE: "Widgets momenteel in gebruik"
-    NOAVAIL: "Er zijn momenteel geen widgets beschikbaar"
-    TOSORT: "Sleep widget omhoog en naar beneden om gebruikte widgets te sorteren."
-  WidgetDescription.ss:
-    CLICKTOADDWIDGET: "Klik om deze widget toe te voegen."
-  WidgetEditor.ss:
-    DELETE: "Verwijder"
+    CHOOSE: 'Kies een pagina om naar te verwijzen'
+    DESCRIPTION: 'Displays the content of another page'
+    EDITCONTENT: 'Klik hier om de inhoud te wijzigen'
+    HEADER: 'Dit is een virtuele pagina'
+    PLURALNAME: 'Virtuele pagina''s'
+    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
+    SINGULARNAME: 'Virtuele Pagina'
+  cms:
+    FILESYSTEMSYNC: 'Sync files'

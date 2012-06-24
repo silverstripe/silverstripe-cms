@@ -1,250 +1,408 @@
 sv:
   AssetAdmin:
-    NEWFOLDER: "Ny mapp"
-    THUMBSDELETED: "%s oanvända tumnaglar har raderats"
-  AssetAdmin_left.ss:
-    GO: "Kör"
+    ADDFILES: 'Lägg till filer'
+    ALLOWEDEXTS: 'Tillåtna filändelser'
+    ActionAdd: 'Lägg till mapp'
+    AppCategoryArchive: Arkivera
+    AppCategoryAudio: Ljud
+    AppCategoryFlash: Flash
+    AppCategoryImage: Bild
+    AppCategoryVideo: Video
+    BackToFolder: 'Tillbaka till mappen'
+    CREATED: Datum
+    CurrentFolderOnly: 'Begränsa till aktuell mapp?'
+    DetailsView: Detaljer
+    FILES: Filer
+    FILESYSTEMSYNCTITLE: 'Uppdatera CMS databasposter av filer på filsystemet. Användbar när nya filer har laddats upp utanför CMS, t.ex. via FTP.'
+    FROMTHEINTERNET: 'Från internet'
+    FROMYOURCOMPUTER: 'Från din dator'
+    Filetype: Filtyp
+    ListView: Listvy
+    MENUTITLE: Filer
+    NEWFOLDER: 'Ny mapp'
+    SIZE: Storlek
+    THUMBSDELETED: '{count} oanvända tumnaglar har raderats'
+    TreeView: Trädvy
+    Upload: 'Ladda upp'
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Radera mapparna'
+  AssetTableField:
+    BACKLINKCOUNT: 'Använd på:'
+    PAGES: sida(-or)
+  BasicFieldsTestPage:
+    DESCRIPTION: 'Allmän innehållssida'
+  BigFamilyPage:
+    DESCRIPTION: 'Allmän innehållssida'
   BrokenLinksReport:
-    Any: "Alla"
-    BROKENLINKS: "Rapport för brutna länkar"
-    CheckSite: "Kontrollera sajt"
-    CheckSiteDropdownDraft: "Sajt Utkast"
-    CheckSiteDropdownPublished: "Publicerad Sajt"
-    ColumnDateLastModified: "Datum vid senaste modifiering"
-    ColumnDateLastPublished: "Datum vid senaste publicering"
-    ColumnProblemType: "Problem typ"
-    ColumnURL: "URL"
-    HasBrokenFile: "har trasig fil"
-    HasBrokenLink: "har trasig länk"
-    HasBrokenLinkAndFile: "har trasig länk och fil"
-    HoverTitleEditPage: "Redigera sida"
-    PageName: "Sidnamn"
-    ReasonDropdown: "Problem med kontroll"
-    ReasonDropdownBROKENFILE: "Trasig fil"
-    ReasonDropdownBROKENLINK: "Bruten länk"
-    ReasonDropdownRPBROKENLINK: "Omdirigerings sida pekar till en icke-existerande sida"
-    ReasonDropdownVPBROKENLINK: "virtuell sida pekar till icke-existerande sida"
-    RedirectorNonExistent: "Omdirigerings sida pekar till en icke-existerande sida"
-    VirtualPageNonExistent: "virtuell sida pekar till icke-existerande sida"
+    Any: Alla
+    BROKENLINKS: 'Rapport för trasiga länkar'
+    CheckSite: 'Kontrollera sajt'
+    CheckSiteDropdownDraft: Utkast
+    CheckSiteDropdownPublished: 'Publicerad Sajt'
+    ColumnDateLastModified: 'Datum vid senaste modifiering'
+    ColumnDateLastPublished: 'Datum vid senaste publicering'
+    ColumnProblemType: Problemtyp
+    ColumnURL: URL
+    HasBrokenFile: 'har trasig fil'
+    HasBrokenLink: 'har trasig länk'
+    HasBrokenLinkAndFile: 'har trasig länk och fil'
+    HoverTitleEditPage: 'Redigera sida'
+    PageName: Sidnamn
+    ReasonDropdown: 'Problem med kontroll'
+    ReasonDropdownBROKENFILE: 'Trasig fil'
+    ReasonDropdownBROKENLINK: 'Bruten länk'
+    ReasonDropdownRPBROKENLINK: 'Omdirigerings sida pekar till en icke-existerande sida'
+    ReasonDropdownVPBROKENLINK: 'virtuell sida pekar till icke-existerande sida'
+    RedirectorNonExistent: 'omdirigeringssida pekar på en icke-existerande sida'
+    SORTASC: 'Sortera i stigande ordning'
+    SORTDESC: 'Sortera i fallande ordning'
+    VirtualPageNonExistent: 'virtuell sida pekar till icke-existerande sida'
+  CMSAddPageController:
+    Title: 'Skapa sida'
   CMSBatchActions:
-    DELETE_DRAFT_PAGES: "Radera från sajt utkast"
-    DELETE_PAGES: "radera från publicerad site"
-    PUBLISHED_PAGES: "Publicerat %d sidor, %d misslyckades"
-    PUBLISH_PAGES: "Publicera"
-    UNPUBLISHED_PAGES: "Un-publicerade % d sidor"
-    UNPUBLISH_PAGES: "Dölj publicerad"
+    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
+    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
+    DELETE_DRAFT_PAGES: 'Radera från sajt utkast'
+    DELETE_PAGES: 'radera från publicerad site'
+    PUBLISHED_PAGES: 'Publicerat %d sidor, %d misslyckades'
+    PUBLISH_PAGES: Publicera
+    UNPUBLISHED_PAGES: 'Un-publicerade % d sidor'
+    UNPUBLISH_PAGES: 'Dölj publicerad'
+  CMSFileAddController:
+    MENUTITLE: Filer
   CMSMain:
-    ACCESS: "Tillgång till '%s' (%s)"
-    DELETE: "Radera från utkast-sajten"
-    DELETEFP: "Radera från den publicerade sajten"
-    DESCREMOVED: "och %s ättlingar"
-    EMAIL: "E-post"
-    NEW: "Ny"
-    PAGENOTEXISTS: "Den här sidan finns inte"
-    PUBALLCONFIRM: "Publicera alla sidor på sajten, kopiera innehållets status till 'live'"
-    PUBALLFUN: "\"Publicera alla\"-funktion"
-    PUBALLFUN2: "Ett klick på den här knappen är samma sak som att gå till varje sida och klicka på \"Publicera\". Tanken är att den ska användas efter stora uppdateringar av innehållet på sidan, som när den skapas."
-    PUBPAGES: "Klar: %d sidor publicerade"
-    REMOVED: "Raderade '%s'%s från den publicerade sajten"
-    REMOVEDPAGE: "Tog bort '%s' "
-    REMOVEDPAGEFROMDRAFT: "Raderade '%s' från utkast-sajten"
-    RESTORE: "Återskapa"
-    RESTORED: "Återställningen av '%s' lyckades"
-    ROLLBACK: "Återställ den här versionen"
-    ROLLEDBACKPUB: "Återskapade den publicerade versionen. Nytt versionsnummer är #%d"
-    ROLLEDBACKVERSION: "Återskapade version #%d. Nytt versionsnummer är #%d"
-    SAVE: "Spara"
-  CMSMain_left.ss:
+    ACCESS: 'Tillgång till sektionen ''{title}'''
+    ACCESS_HELP: 'Tillåt visning av det sektionen innehållande sidträdet och dess innehåll. Rättigheter visa och redigera kan hanteras i sidans dropdownmenyer, liksom i "Innehållsbehörigheter".'
+    AddNew: 'Lägg till ny sida'
+    AddNewButton: 'Skapa ny'
+    ChoosePageParentMode: 'Välj var du vill skapa denna sida'
+    ChoosePageType: 'Välj sidtyp'
+    Create: Skapa
+    DELETE: 'Radera utkast'
+    DELETEFP: Radera
+    DESCREMOVED: 'och {count} ättlingar'
+    EMAIL: E-post
+    MENUTITLE: 'Redigera sida'
+    NEW: Ny
+    PAGENOTEXISTS: 'Den här sidan finns inte'
+    PAGES: Sidor
+    PAGETYPEANYOPT: 'Vilken som helst'
+    PAGETYPEOPT: Sidtyp
+    PUBALLCONFIRM: 'Publicera alla sidor på sajten, kopiera innehållets status till ''live'''
+    PUBALLFUN: '"Publicera alla"-funktion'
+    PUBALLFUN2: 'Ett klick på den här knappen är samma sak som att gå till varje sida och klicka på "Publicera". Tanken är att den ska användas efter stora uppdateringar av innehållet på sidan, som när den skapas.'
+    PUBPAGES: 'Klar: Publicerade {count} sidor'
+    PageAdded: 'Lyckades skapa sida'
+    REMOVED: 'Raderade ''%s''%s från den publicerade sajten'
+    REMOVEDPAGE: 'Tog bort ''{title}'' från den publicerade sajten'
+    REMOVEDPAGEFROMDRAFT: 'Raderade ''%s'' från utkast'
+    RESTORE: 'Återskapa'
+    RESTORED: 'Återskapandet av  ''{title}'' lyckades'
+    ROLLBACK: 'Återställ den här versionen'
+    ROLLEDBACKPUB: 'Återskapade publicerad version. Nytt versionsnummer är #{version}'
+    ROLLEDBACKVERSION: 'Återskapade version #%d. Nytt versionsnummer är #%d'
+    SAVE: Spara
+    SAVEDRAFT: 'Spara utkast'
+    TabContent: Innehåll
+    TabHistory: Historia
+    TabSettings: Inställningar
+  CMSPageAddController:
+    MENUTITLE: 'Skapa sida'
+    ParentMode_child: 'Under en annan sida'
+    ParentMode_top: Toppnivå
+  CMSPageEditController:
+    MENUTITLE: 'Redigera sidan'
+  CMSPageHistoryController:
+    COMPAREMODE: 'Jämför läge (välj två)'
+    COMPAREVERSIONS: 'Jämnför versioner'
+    COMPARINGVERSION: 'Jämför version {version1} och {version2}.'
+    MENUTITLE: Historia
+    REVERTTOTHISVERSION: 'Ändra till denna version'
+    SHOWUNPUBLISHED: 'Visa opublicerade versioner'
+    SHOWVERSION: 'Visa version'
+    VIEW: 'Titta på'
+    VIEWINGVERSION: 'Nu visas version {version}.'
+  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Filtrera"'
+  CMSPageSettingsController:
+    MENUTITLE: 'Ändra sidan'
+  CMSPagesController:
+    GalleryView: 'Se galleriet'
+    ListView: Listvy
+    MENUTITLE: Sidor
+    TreeView: Trädvy
+  CMSSearch:
+    FILTERDATEFROM: Från
+    FILTERDATEHEADING: Datum
+    FILTERDATETO: Till
+    FILTERLABELTEXT: Innehåll
+  CMSSettingsController:
+    AUTHOR: Författare
+    MENUTITLE: Inställningar
+    NOTPUBLISHED: 'Ej publicerad'
+    PUBLISHER: Utgivare
+    UNKNOWN: Okänd
+    WHEN: När
+  CMSSiteTreeFilter_ChangedPages:
+    ENABLEDRAGGING: 'Dra och släpp'
+    GO: Kör
+    MULTISELECT: Flerval
+    Title: 'Ändrade sidor'
+    VIEWFIRST: 'Visa första'
+    VIEWLAST: 'Visa sista'
+    VIEWNEXT: 'Visa nästa'
+    VIEWPREVIOUS: 'Visa föregående'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Alla sidor, inklusive raderade'
+  CMSSiteTreeFilter_Search:
+    Title: 'Alla sidor'
   ContentControl:
-    NOTEWONTBESHOWN: "Observera: Detta meddelande kommer inte att visas för besökarna"
+    NOTEWONTBESHOWN: 'Observera: Detta meddelande kommer inte att visas för besökarna'
   ContentController:
-    ARCHIVEDSITE: "Arkiverade sidor"
-    ARCHIVEDSITEFROM: "Arkiverade webbplats från"
-    CMS: "CMS"
-    DRAFTSITE: "Förslag Site"
-    DRAFT_SITE_ACCESS_RESTRICTION: "Du måste logga med ditt CMS-lösenord för att kunna se utkast och arkiverat material. <a href=\"%s\">Klicka här för att gå tillbaks till den publicerade sajten.</a>"
-    LOGGEDINAS: "Inloggad som"
-    LOGIN: "Logga in"
-    LOGOUT: "Logga ut"
-    NOTLOGGEDIN: "Inte inloggad"
-    PUBLISHEDSITE: "Publicerad site"
-    VIEWPAGEIN: "titta på sidan i:"
+    ARCHIVEDSITE: 'Arkiverad sajt'
+    ARCHIVEDSITEFROM: 'Arkiverad sajt från'
+    CMS: CMS
+    DRAFTSITE: Utkast
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Du måste logga med ditt CMS-lösenord för att kunna se utkast och arkiverat material. <a href="%s">Klicka här för att gå tillbaks till den publicerade sajten.</a>'
+    Email: E-post
+    InstallFilesDeleted: 'Installationsfilerna raderades utan problem.'
+    InstallSecurityWarning: 'Av säkerhetsskäl bör du nu radera installationsfilerna, förutom om du planerar att installera om (<em>kräver administratörs login, se ovan</em>). Webbservern behöver nu bara skrivrättigheter till katalogen "assets", du kan ta bort skrivrättigheter till alla andra kataloger. <a href="{link}" style="text-align: center;">Klicka här för att radera installationsfilerna.</a>'
+    InstallSuccessCongratulations: 'SilverStripe har installerats utan problem.'
+    LOGGEDINAS: 'Inloggad som'
+    LOGIN: 'Logga in'
+    LOGOUT: 'Logga ut'
+    NOTLOGGEDIN: 'Inte inloggad'
+    PUBLISHEDSITE: 'Publicerad sajt'
+    Password: Lösenord
+    PostInstallTutorialIntro: 'Denna sajt är en enkel version av en SilverStripe 2 sajt. För att vidareutveckla den se  {link}.'
+    StartEditing: 'Du kan ändra din sajts innehåll genom <a href="{link}">publiceringsverktyget</a>.'
+    UnableDeleteInstall: 'Lyckades inte radera installationsfilerna. Radera följande filer manuellt.'
+    VIEWPAGEIN: 'Titta på sidan i:'
   ErrorPage:
-    CODE: "Felkod"
-    DEFAULTERRORPAGECONTENT: "<p>Det verkar som om du försökter komma åt en sida som inte finns.</p><p>Var god kontrollera stavningen på adressen som du försökte nå och försök igen."
-    DEFAULTERRORPAGETITLE: "Sidan hittades inte"
-    ERRORFILEPROBLEM: "Ett fel uppstod när du försökte öppna filen \"% s\" för skrivning. Kontrollera filrättigheter"
-    400: "400 - Felaktig förfrågan"
-    401: "401 - Obehörig"
-    403: "403 - Förbjuden"
-    404: "404 - Hittades inte"
-    405: "405 - Metoden inte tillåten"
-    406: "406 - Inte acceptabelt"
-    407: "407 - Proxy-autensiering krävs"
-    408: "408 - Begäran tog för lång tid"
-    409: "409 - Konflikt"
-    410: "410 - Borta"
-    411: "411 - Längd krävs"
-    412: "412 - Ett villkor är inte uppfyllt"
-    413: "413 - Den efterfrågade entiteten är för stor"
-    414: "414 - URIn för begäran är för lång"
-    415: "415 - Mediatypen stöds inte"
-    416: "Det efterfrågade intervallet går inte att leverera"
-    417: "Förväntningen gick inte att infria"
-    500: "500 - Internt server-fel"
-    501: "501 - Inte implementerad"
-    502: "502 - Felaktig gateway"
-    503: "503 - Tjänsten otillgänglig"
-    504: "504 - Gateway timeout"
-    505: "505 - HTTP-versionen stöds inte"
+    CODE: Felkod
+    DEFAULTERRORPAGECONTENT: '<p>Det verkar som om du försökter komma åt en sida som inte finns.</p><p>Var god kontrollera stavningen på adressen som du försökte nå och försök igen.'
+    DEFAULTERRORPAGETITLE: 'Sidan hittades inte'
+    DEFAULTSERVERERRORPAGECONTENT: '<p> Tyvärr, det blev ett problem med hanteringen av din förfrågan. </p>'
+    DEFAULTSERVERERRORPAGETITLE: Server-fel
+    DESCRIPTION: 'Anpassat innehåll för olika fel ärenden (t.ex. "Sidan kan inte hittas")'
+    ERRORFILEPROBLEM: 'Kunde inte skriva filen "{filename}". Var vänlig kontrollera skrivrättigheterna.'
+    400: '400 - Felaktig förfrågan'
+    401: '401 - Obehörig'
+    403: '403 - Förbjuden'
+    404: '404 - Hittades inte'
+    405: '405 - Metoden inte tillåten'
+    406: '406 - Inte acceptabelt'
+    407: '407 - Proxy-autensiering krävs'
+    408: '408 - Begäran tog för lång tid'
+    409: '409 - Konflikt'
+    410: '410 - Borta'
+    411: '411 - Längd krävs'
+    412: '412 - Ett villkor är inte uppfyllt'
+    413: '413 - Den efterfrågade entiteten är för stor'
+    414: '414 - URIn för begäran är för lång'
+    415: '415 - Mediatypen stöds inte'
+    416: 'Det efterfrågade intervallet går inte att leverera'
+    417: 'Förväntningen gick inte att infria'
+    500: '500 - Internt server-fel'
+    501: '501 - Inte implementerad'
+    502: '502 - Felaktig gateway'
+    503: '503 - Tjänsten otillgänglig'
+    504: '504 - Gateway timeout'
+    505: '505 - HTTP-versionen stöds inte'
   Folder:
-    DELETEUNUSEDTHUMBNAILS: "Radera oanvända tumnaglar"
-    UNUSEDFILESTITLE: "Oanvända filer"
-    UNUSEDTHUMBNAILSTITLE: "Oanvända tumnaglar"
+    AddFolderButton: 'Skapa mapp'
+    DELETEUNUSEDTHUMBNAILS: 'Radera oanvända tumnaglar'
+    UNUSEDFILESTITLE: 'Oanvända filer'
+    UNUSEDTHUMBNAILSTITLE: 'Oanvända tumnaglar'
+    UploadFilesButton: 'Ladda upp'
+  GridFieldTestPage:
+    DESCRIPTION: 'Allmän innehållssida'
   LeftAndMain:
-    STATUSPUBLISHEDSUCCESS: "Publiceringen av '%s' lyckades"
+    DELETED: Raderad
+    PreviewButton: Förhandsgranska
+    SAVEDUP: Sparad
+    STATUSPUBLISHEDSUCCESS: 'Publiseringen av  ''{title}'' lyckades'
+    SearchResults: Sökresultat
+    VersionUnknown: Okänd
+  LegacyTableFieldsTestPage:
+    DESCRIPTION: 'Allmän innehållssida'
+  MyNonRootPage:
+    CANACCESS: 'Du kan komma åt den arkiverade sajten med denna länk:'
+    DESCRIPTION: 'Allmän innehållssida'
+    HAVEASKED: 'Du har efterfrågat att se innehållet på vår sajt på'
+  MyOtherPage:
+    DESCRIPTION: 'Allmän innehållssida'
+  MyPage:
+    DESCRIPTION: 'Allmän innehållssida'
+  MyRandomPage:
+    DESCRIPTION: 'Generisk innehållssida'
+  PackageManagerPage:
+    DESCRIPTION: 'Allmän innehållssida'
+    RESET: Rensa
+  Page:
+    DESCRIPTION: 'Allmän innehållssida'
   Permission:
-    CMS_ACCESS_CATEGORY: "CMS Tillgång"
+    CMS_ACCESS_CATEGORY: CMS-tillgång
   Permissions:
-    CONTENT_CATEGORY: "Innehålls tillgång"
-    PERMISSIONS_CATEGORY: "Roller och tillgång"
+    CONTENT_CATEGORY: 'Innehålls tillgång'
+    PERMISSIONS_CATEGORY: 'Roller och tillgång'
   RedirectorPage:
-    HASBEENSETUP: "En omdirigeringssida har skapats utan att ha något mål."
-    HEADER: "Den här sidan omdirigerar användare till en annan sida"
-    OTHERURL: "En annan url"
-    REDIRECTTO: "Dirigera till"
-    REDIRECTTOEXTERNAL: "En annan webbsajt"
-    REDIRECTTOPAGE: "En sida på din sajt"
-    YOURPAGE: "Sida på din sajt"
+    DESCRIPTION: 'Omdirigera till en annnan intern sida'
+    HASBEENSETUP: 'En omdirigeringssida har skapats utan att ha något mål.'
+    HEADER: 'Den här sidan omdirigerar användare till en annan sida'
+    OTHERURL: 'En annan url'
+    REDIRECTTO: 'Dirigera till'
+    REDIRECTTOEXTERNAL: 'En annan sajt'
+    REDIRECTTOPAGE: 'En sida på din sajt'
+    YOURPAGE: 'Sida på din sajt'
+  RelationFieldsTestPage:
+    DESCRIPTION: 'Generisk innehållssida'
+    FILTER: Filtrera
+  ReportAdmin:
+    MENUTITLE: Rapporter
   ReportAdminForm:
-    FILTERBY: "Filtrera med"
+    FILTERBY: 'Filtrera på'
   SearchForm:
-    GO: "Gå"
-    SEARCH: "Sök"
-    SearchResults: "Sökresultat"
+    GO: Gå
+    SEARCH: Sök
+    SearchResults: Sökresultat
   SideReport:
-    BROKENFILES: "Sidor med trasiga filer"
-    BROKENLINKS: "Sidor med trasiga länkar"
-    BROKENREDIRECTORPAGES: "Omdirigerings Sidor pekar till raderade sidor"
-    BROKENVIRTUALPAGES: "Virtuella Sidor pekar till raderade sidor"
-    BrokenLinksGroupTitle: "Rapport för brutna länkar"
-    ContentGroupTitle: "Innehålls rapport"
-    EMPTYPAGES: "Tomma sidor"
-    LAST2WEEKS: "Sidor som har redigerats de senaste 2 veckorna"
-    OtherGroupTitle: "Annat"
-    ParameterLiveCheckbox: "Kontrollera live sajt"
-    REPEMPTY: "%s-rapporten är tom."
+    BROKENFILES: 'Sidor med trasiga filer'
+    BROKENLINKS: 'Sidor med trasiga länkar'
+    BROKENREDIRECTORPAGES: 'Omdirigeringssidor som pekar på raderade sidor'
+    BROKENVIRTUALPAGES: 'Virtuella sidor som pekar på raderade sidor'
+    BrokenLinksGroupTitle: 'Rapport för trasiga länkar'
+    ContentGroupTitle: Innehållsrapport
+    EMPTYPAGES: 'Tomma sidor'
+    LAST2WEEKS: 'Sidor som har redigerats de senaste 2 veckorna'
+    OtherGroupTitle: Annat
+    ParameterLiveCheckbox: 'Kontrollera live sajt'
+    REPEMPTY: 'Raporten {title} är tom.'
   SilverStripeNavigatorLink:
-    ShareInstructions: "Kopiera och klistra in länken nedan för att dela den här sidan."
-    ShareLink: "Dela länk"
+    ShareInstructions: 'Kopiera och klistra in länken nedan för att dela den här sidan.'
+    ShareLink: 'Dela länk'
   SilverStripeNavigatorLinkl:
-    CloseLink: "Stäng"
+    CloseLink: Stäng
   SiteConfig:
-    DEFAULTTHEME: "(Använd standardtema)"
-    EDITHEADER: "Vem kan redigera sidor på den här sajten?"
-    EDIT_PERMISSION: "Redigera sajt konfiguration"
-    SITENAMEDEFAULT: "Din Sajts Namn"
-    SITETAGLINE: "Din sajts Slogan"
-    SITETITLE: "Sajt titel"
-    TABACCESS: "Tillgång"
-    TABMAIN: "Huvud"
-    TAGLINEDEFAULT: "din underrubrik"
-    THEME: "Tema"
-    VIEWHEADER: "Vem kan se sidor på den här sajten?"
+    DEFAULTTHEME: '(Använd standardtema)'
+    EDITHEADER: 'Vem kan redigera sidor på den här sajten?'
+    EDIT_PERMISSION: 'Redigera sajtkonfiguration'
+    EDIT_PERMISSION_HELP: 'Möjlighet att ändra den globala åtkomstinställningar / toppnivåbehörigheter.'
+    SITENAMEDEFAULT: 'Din Sajts Namn'
+    SITETAGLINE: 'Din sajts Slogan'
+    SITETITLE: Sajttitel
+    TABACCESS: Tillgång
+    TABMAIN: Huvud
+    TAGLINEDEFAULT: 'din underrubrik här'
+    THEME: Tema
+    TOPLEVELCREATE: 'Vem kan skapa sidor i sajtroten?'
+    VIEWHEADER: 'Vem kan se sidor på den här sajten?'
   SiteTree:
-    ACCESSANYONE: "Alla"
-    ACCESSHEADER: "Vem kan se den här sidan?"
-    ACCESSLOGGEDIN: "Inloggade användare"
-    ACCESSONLYTHESE: "Bara de här (välj från listan)"
-    ALLOWCOMMENTS: "Acceptera kommentar på den här sidan"
-    APPEARSVIRTUALPAGES: "Det här innehållet finns också på virtuella sidor i %s sektionerna."
-    BUTTONCANCELDRAFT: "Upphäv utkast-ändringar"
-    BUTTONCANCELDRAFTDESC: "Radera ditt utkast och återgå till den publicerade sidan"
-    BUTTONSAVEPUBLISH: "Spara och publicera"
-    BUTTONUNPUBLISH: "Avpublicera"
-    BUTTONUNPUBLISHDESC: "Ta bort den här sidan från den publicerade sajten"
-    CHANGETO: "Ändra till \"%s\""
-    Comments: "Kommentarer"
-    Content: "Innehåll"
-    DEFAULTABOUTCONTENT: "<p>Du kan fylla den här sidan med ditt eget innehåll, eller radera den och skapa dina egna sidor.<br/></p>"
-    DEFAULTABOUTTITLE: "Om oss"
-    DEFAULTCONTACTCONTENT: "<p>Du kan fylla den här sidan med ditt eget innehåll, eller radera den och skapa dina egna sidor.<br/></p>"
-    DEFAULTCONTACTTITLE: "Kontakta oss"
-    DEFAULTHOMECONTENT: "<p>Välkommen till SilverStripe! Det här är standard-hemsidan. Du kan redigera den är sidan genom att öppna <a href=\"admin/\">CMSet</a>. Du kan nu komma åt <a href=\"http://doc.silverstripe.com\">utvecklar-dokumentationen</a>, eller börja med  <a href=\"http://doc.silverstripe.com/doku.php?id=tutorials\">handledningen</a></p>"
-    DEFAULTHOMETITLE: "Hem"
-    DEPENDENT_NOTE: "Följande sidor berörs av den här sidan. Inklusive virtuella sidor, omdirigerings sidor, och sidor med innehålls länkar."
-    DependtPageColumnLinkType: "Länk typ"
-    DependtPageColumnURL: "URL"
-    EDITANYONE: "Alla som kan logga in"
-    EDITHEADER: "Vem kan redigera den här sidan?"
-    EDITONLYTHESE: "Bara de här (välj från listan)"
-    EDITORGROUPS: "Redaktör Grupper"
-    EDIT_ALL_DESCRIPTION: "Kan redigera alla sidor på webbplatsen"
-    Editors: "Redigerargrupper"
-    HASBROKENLINKS: "Den här sidan har trasiga länkar."
-    HTMLEDITORTITLE: "Innehåll"
-    INHERIT: "Ärv från föräldrasida"
-    MENUTITLE: "Navigationsetikett"
-    METADESC: "Beskrivning"
-    METAEXTRA: "Egna meta-taggar"
-    METAKEYWORDS: "Nyckelord"
-    METATITLE: "Titel"
-    PAGETITLE: "Sidnamn"
-    PAGETYPE: "Sidtyp"
-    PARENTID: "Överordnad sida"
-    PARENTTYPE: "Sidans adress"
-    PARENTTYPE_ROOT: "Översta nivån"
-    PARENTTYPE_SUBPAGE: "Sub-sida under en förälder sida (välj nedan)"
-    PERMISSION_GRANTACCESS_DESCRIPTION: "Bestäm vilka grupper som kan redigera vissa sidor"
-    PLURALNAME: "Sidträd"
-    REORGANISE_DESCRIPTION: "Ändra sidstrukturen"
-    SHOWINMENUS: "Visa i menyer?"
-    SHOWINSEARCH: "Visa i sökningar"
-    SINGULARNAME: "Sidträd"
-    TABACCESS: "Åtkomst"
-    TABBEHAVIOUR: "Beteende"
-    TABCONTENT: "Innehåll"
-    TABMETA: "Meta-data"
-    TOPLEVEL: "Sajt-innehåll (Topp-nivå)"
-    URLSegment: "URL-segment"
-    VIEWERGROUPS: "Innehålss grupp"
-    VIEW_ALL_DESCRIPTION: "Visa alla sidor"
-    VIEW_DRAFT_CONTENT: "Se utkast"
-    Viewers: "Åskådargrupper"
-    has_one_Parent: "Föräldrasida"
-    many_many_BackLinkTracking: "Spåra inlänkar"
-    many_many_ImageTracking: "Spåra bild"
-    many_many_LinkTracking: "Spåra länk"
+    ACCESSANYONE: Alla
+    ACCESSHEADER: 'Vem kan se den här sidan?'
+    ACCESSLOGGEDIN: 'Inloggade användare'
+    ACCESSONLYTHESE: 'Bara de här (välj från listan)'
+    ADDEDTODRAFTHELP: 'Sidan har inte publicerats än'
+    ADDEDTODRAFTSHORT: Utkast
+    ALLOWCOMMENTS: 'Acceptera kommentar på den här sidan'
+    APPEARSVIRTUALPAGES: 'Detta innehåll förekommer även på en virtuell sida i sektionen {title}.'
+    BUTTONCANCELDRAFT: 'Upphäv utkast-ändringar'
+    BUTTONCANCELDRAFTDESC: 'Radera ditt utkast och återgå till den publicerade sidan'
+    BUTTONSAVEPUBLISH: 'Spara och publicera'
+    BUTTONUNPUBLISH: Avpublicera
+    BUTTONUNPUBLISHDESC: 'Ta bort den här sidan från den publicerade sajten'
+    Back: Tillbaka
+    CREATED: Skapad
+    Comments: Kommentarer
+    Content: Innehåll
+    DEFAULTABOUTCONTENT: '<p>Du kan fylla den här sidan med ditt eget innehåll, eller radera den och skapa dina egna sidor.<br/></p>'
+    DEFAULTABOUTTITLE: 'Om oss'
+    DEFAULTCONTACTCONTENT: '<p>Du kan fylla den här sidan med ditt eget innehåll, eller radera den och skapa dina egna sidor.<br/></p>'
+    DEFAULTCONTACTTITLE: 'Kontakta oss'
+    DEFAULTHOMECONTENT: '<p>Välkommen till SilverStripe! Det här är standard-hemsidan. Du kan redigera den är sidan genom att öppna <a href="admin/">CMSet</a>. Du kan nu komma åt <a href="http://doc.silverstripe.com">utvecklar-dokumentationen</a>, eller börja med  <a href="http://doc.silverstripe.com/doku.php?id=tutorials">handledningen</a></p>'
+    DEFAULTHOMETITLE: Hem
+    DELETEDPAGEHELP: 'Sidan är inte längre publicerad'
+    DELETEDPAGESHORT: Raderad
+    DEPENDENT_NOTE: 'Följande sidor berörs av den här sidan. Inklusive virtuella sidor, omdirigerings sidor, och sidor med innehålls länkar.'
+    DependtPageColumnLinkType: Länktyp
+    DependtPageColumnURL: URL
+    EDITANYONE: 'Alla som kan logga in'
+    EDITHEADER: 'Vem kan redigera den här sidan?'
+    EDITONLYTHESE: 'Bara de här (välj från listan)'
+    EDITORGROUPS: 'Redaktör Grupper'
+    EDIT_ALL_DESCRIPTION: 'Kan redigera alla sidor på webbplatsen'
+    EDIT_ALL_HELP: 'Möjlighet att redigera alla sidor på webbplatsen, oavsett inställningarna på fliken Åtkomst. Kräver "Tillgång till Sidor delen" tillåtelse'
+    Editors: Redigerargrupper
+    HASBROKENLINKS: 'Den här sidan har trasiga länkar.'
+    HTMLEDITORTITLE: Innehåll
+    INHERIT: 'Ärv från föräldrasida'
+    LASTUPDATED: 'Senast uppdaterade'
+    LINKCHANGENOTE: 'Om du ändrar sidans länkadress så kommer den också påverka länkarna på underliggande sidor'
+    MENUTITLE: Navigationsetikett
+    METADESC: Beskrivning
+    METAEXTRA: 'Egna meta-taggar'
+    METAKEYWORDS: Nyckelord
+    METATITLE: Titel
+    MODIFIEDONDRAFTHELP: 'Sidan har ej publicerade ändringar'
+    MODIFIEDONDRAFTSHORT: Ändrad
+    PAGELOCATION: 'Sidans adress'
+    PAGETITLE: Sidnamn
+    PAGETYPE: Sidtyp
+    PARENTID: 'Överordnad sida'
+    PARENTTYPE: 'Sidans adress'
+    PARENTTYPE_ROOT: 'Översta nivån'
+    PARENTTYPE_SUBPAGE: 'Sub-sida under en förälder sida (välj nedan)'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Bestäm vilka grupper som kan redigera vissa sidor'
+    PERMISSION_GRANTACCESS_HELP: 'Tillåt inställning av sidspecifika åtkomstbegränsningar i "Sidor"-avsnittet.'
+    PLURALNAME: Sidträd
+    PageTypNotAllowedOnRoot: 'Sidtypen "{type}" tillåts inte på rotnivå'
+    PageTypeNotAllowed: 'Sidtypen "{type}" tillåts inte som barn till förälderns sida'
+    REMOVEDFROMDRAFTHELP: 'Sidan är publicerad men har raderats från utkastet'
+    REMOVEDFROMDRAFTSHORT: 'Radera från utkast'
+    REMOVE_INSTALL_WARNING: 'Varning: Du måste tabort install.php från denna SilverStripe installation p.g.a säkerhetsskäl.'
+    REORGANISE_DESCRIPTION: 'Ändra sidstrukturen'
+    REORGANISE_HELP: 'Flytta om sidorna in sidträdet med drag & släpp.'
+    SHOWINMENUS: 'Visa i menyer?'
+    SHOWINSEARCH: 'Visa i sökningar'
+    SINGULARNAME: Sidträd
+    TABBEHAVIOUR: Beteende
+    TABCONTENT: Innehåll
+    TABDEPENDENT: 'Beroende sidor'
+    TOPLEVEL: 'Sajt-innehåll (Topp-nivå)'
+    TOPLEVELCREATORGROUPS: 'Topp-nivå skapare'
+    URLSegment: URL-segment
+    VIEWERGROUPS: 'Innehålss grupp'
+    VIEW_ALL_DESCRIPTION: 'Visa alla sidor'
+    VIEW_ALL_HELP: 'Möjlighet att visa vilken sida som helst på webbplatsen, oavsett inställningarna på fliken Åtkomst. Kräver "Tillgång till Webbplatsinnehåll" tillåtelse'
+    VIEW_DRAFT_CONTENT: 'Se utkast'
+    VIEW_DRAFT_CONTENT_HELP: 'Gäller att visa sidor i utkast läge. Användbart för externa samarbetspartners utan CMS åtkomst.'
+    Viewers: 'Åskådargrupper'
+    Visibility: Synlighet
+    has_one_Parent: Föräldrasida
+    many_many_BackLinkTracking: 'Spåra inlänkar'
+    many_many_ImageTracking: 'Spåra bild'
+    many_many_LinkTracking: 'Spåra länk'
+  SiteTreeURLSegmentField:
+    HelpChars: 'Specialtecken konverteras eller tas bort'
   StaticExporter:
-    BASEURL: "Bas-URL"
-    EXPORTTO: "Exportera till den mappen"
-    NAME: "Statisk exportör"
+    BASEURL: Bas-URL
+    EXPORTTO: 'Exportera till den mappen'
+    NAME: 'Statisk exportör'
   TableListField:
-    SELECT: "Välj:"
-  TableListField.ss:
-    SORTASC: "Sortera i stigande ordning"
-    SORTDESC: "Sortera i fallande ordning"
-  TableListField_PageControls.ss:
-    VIEWFIRST: "Visa första"
-    VIEWLAST: "Visa senaste"
-    VIEWNEXT: "Visa nästa"
-    VIEWPREVIOUS: "Visa föregående"
-  ViewArchivedEmail.ss:
-    CANACCESS: "Du kan komma åt den arkiverade sajten på den här länken:"
-    HAVEASKED: "Du har frågat efter att få se innehållet på vår sajt från"
+    FILTER: Filter
+    SELECT: 'Välj:'
+  TestFileUploadPage:
+    DESCRIPTION: 'Allmän innehållssida'
+  TestPage:
+    DESCRIPTION: 'Allmän innehållssida'
+  TreeTools:
+    DisplayLabel: 'Visa:'
   VirtualPage:
-    CHOOSE: "Välj en sida att länka till"
-    EDITCONTENT: "klicka här för att redigera innehållet"
-    HEADER: "Det här är en virutell sida"
-    PLURALNAME: "Virtuella sidor"
-    SINGULARNAME: "Virtuell sida"
-  WidgetAreaEditor.ss:
-    AVAILABLE: "Tillgängliga widgets"
-    AVAILWIDGETS: "Klicka en widgets titel för att använda på den här sidan."
-    INUSE: "Widgets som används just nu"
-    NOAVAIL: "För närvarande finns inga widgets tillgängliga"
-    TOSORT: "För att sortera de widgets som används på den här sidan, dra dem up och ner."
-  WidgetDescription.ss:
-    CLICKTOADDWIDGET: "Klicka för att lägga till den här widgeten"
-  WidgetEditor.ss:
-    DELETE: "Ta bort"
+    CHOOSE: 'Välj en sida att länka till'
+    DESCRIPTION: 'Visa innehåll för en annan sida'
+    EDITCONTENT: 'klicka här för att redigera innehållet'
+    HEADER: 'Det här är en virutell sida'
+    PLURALNAME: 'Virtuella sidor'
+    PageTypNotAllowedOnRoot: 'Ursprungliga sidan av typ "{type}" tillåts inte på rotnivå för denna virtuella sida'
+    SINGULARNAME: 'Virtuell sida'
+  cms:
+    FILESYSTEMSYNC: 'Synkronisera filer'
