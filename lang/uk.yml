@@ -1,125 +1,408 @@
 uk:
   AssetAdmin:
-    NEWFOLDER: "Нова Тека"
-    THUMBSDELETED: "%s не використовуваних картинок було видалено"
-  AssetAdmin_left.ss:
-    GO: "Уперед"
+    ADDFILES: 'Add Files'
+    ALLOWEDEXTS: 'Allowed extensions'
+    ActionAdd: 'Add folder'
+    AppCategoryArchive: Archive
+    AppCategoryAudio: Audio
+    AppCategoryFlash: Flash
+    AppCategoryImage: Image
+    AppCategoryVideo: Video
+    BackToFolder: 'Back to folder'
+    CREATED: Date
+    CurrentFolderOnly: 'Limit to current folder?'
+    DetailsView: Details
+    FILES: Files
+    FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
+    FROMTHEINTERNET: 'From the internet'
+    FROMYOURCOMPUTER: 'From your computer'
+    Filetype: 'File type'
+    ListView: 'List View'
+    MENUTITLE: Files
+    NEWFOLDER: 'Нова Тека'
+    SIZE: Size
+    THUMBSDELETED: '{count} unused thumbnails have been deleted'
+    TreeView: 'Tree View'
+    Upload: Upload
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Delete folders'
+  AssetTableField:
+    BACKLINKCOUNT: 'Used on:'
+    PAGES: page(s)
+  BasicFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+  BigFamilyPage:
+    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
-    Any: "Будь-який"
-    PageName: "Назва сторінки"
+    Any: Будь-який
+    BROKENLINKS: 'Broken links report'
+    CheckSite: 'Check site'
+    CheckSiteDropdownDraft: 'Draft Site'
+    CheckSiteDropdownPublished: 'Published Site'
+    ColumnDateLastModified: 'Date last modified'
+    ColumnDateLastPublished: 'Date last published'
+    ColumnProblemType: 'Problem type'
+    ColumnURL: URL
+    HasBrokenFile: 'has broken file'
+    HasBrokenLink: 'has broken link'
+    HasBrokenLinkAndFile: 'has broken link and file'
+    HoverTitleEditPage: 'Edit page'
+    PageName: 'Назва сторінки'
+    ReasonDropdown: 'Problem to check'
+    ReasonDropdownBROKENFILE: 'Broken file'
+    ReasonDropdownBROKENLINK: 'Broken link'
+    ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
+    ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
+    RedirectorNonExistent: 'redirector page pointing to non-existent page'
+    SORTASC: 'Sort in ascending order'
+    SORTDESC: 'Sort in descending order'
+    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
+  CMSAddPageController:
+    Title: 'Add page'
+  CMSBatchActions:
+    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
+    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
+    DELETE_DRAFT_PAGES: 'Delete from draft site'
+    DELETE_PAGES: 'Delete from published site'
+    PUBLISHED_PAGES: 'Published %d pages, %d failures'
+    PUBLISH_PAGES: Publish
+    UNPUBLISHED_PAGES: 'Un-published %d pages'
+    UNPUBLISH_PAGES: Un-publish
+  CMSFileAddController:
+    MENUTITLE: Files
   CMSMain:
-    ACCESS: "Доступ до секції '%s'"
-    DELETE: "Видалити з чорнового сайту"
-    DESCREMOVED: "і %s нащадків"
-    EMAIL: "Електронна пошта"
-    NEW: "Нове"
-    PAGENOTEXISTS: "Ця сторінка не існує"
-    PUBALLCONFIRM: "Будь ласка, опублікуйте кожну сторінку. Для цього перенесіть проміжний варіант до існуючого."
-    PUBALLFUN: "Дія \"Опублікувати все\""
-    PUBALLFUN2: "Натиснувши цю кнопку Ви зробите те ж саме, що й перейшовши до кожної сторінки та натиснувши \"Публікувати\". Це внесено для тих випадків, коли Ви маєте намір маштабно змінити вміст, наприклад, після першого створення сайту."
-    PUBPAGES: "Зроблено: Опубліковано %d сторінки(ок)"
-    REMOVED: "Видалено '%s'%s з публічного сайту"
-    REMOVEDPAGE: "Видалено '%s' з опублікованого."
-    REMOVEDPAGEFROMDRAFT: "Видалено '%s' з чорнового сайту"
-    RESTORED: "'%s' успішно відновлено"
-    ROLLBACK: "Повернутися до цієї версії"
-    ROLLEDBACKPUB: "Повернено опубліковану версію. Нова версія - #%d"
-    ROLLEDBACKVERSION: "Повернено версію #%d. Нова версія - #%d"
-    SAVE: "Зберегти"
-  CMSMain_left.ss:
+    ACCESS: 'Access to ''{title}'' section'
+    ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
+    AddNew: 'Add new page'
+    AddNewButton: 'Add new'
+    ChoosePageParentMode: 'Choose where to create this page'
+    ChoosePageType: 'Choose page type'
+    Create: Create
+    DELETE: 'Видалити з чорнового сайту'
+    DELETEFP: Delete
+    DESCREMOVED: 'and {count} descendants'
+    EMAIL: 'Електронна пошта'
+    MENUTITLE: 'Edit Page'
+    NEW: Нове
+    PAGENOTEXISTS: 'Ця сторінка не існує'
+    PAGES: Pages
+    PAGETYPEANYOPT: Any
+    PAGETYPEOPT: 'Page Type'
+    PUBALLCONFIRM: 'Будь ласка, опублікуйте кожну сторінку. Для цього перенесіть проміжний варіант до існуючого.'
+    PUBALLFUN: 'Дія "Опублікувати все"'
+    PUBALLFUN2: 'Натиснувши цю кнопку Ви зробите те ж саме, що й перейшовши до кожної сторінки та натиснувши "Публікувати". Це внесено для тих випадків, коли Ви маєте намір маштабно змінити вміст, наприклад, після першого створення сайту.'
+    PUBPAGES: 'Done: Published {count} pages'
+    PageAdded: 'Successfully created page'
+    REMOVED: 'Видалено ''%s''%s з публічного сайту'
+    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
+    REMOVEDPAGEFROMDRAFT: 'Видалено ''%s'' з чорнового сайту'
+    RESTORE: Restore
+    RESTORED: 'Restored ''{title}'' successfully'
+    ROLLBACK: 'Повернутися до цієї версії'
+    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
+    ROLLEDBACKVERSION: 'Повернено версію #%d. Нова версія - #%d'
+    SAVE: Зберегти
+    SAVEDRAFT: 'Save Draft'
+    TabContent: Content
+    TabHistory: History
+    TabSettings: Settings
+  CMSPageAddController:
+    MENUTITLE: 'Add page'
+    ParentMode_child: 'Under another page'
+    ParentMode_top: 'Top level'
+  CMSPageEditController:
+    MENUTITLE: 'Edit Page'
+  CMSPageHistoryController:
+    COMPAREMODE: 'Compare mode (select two)'
+    COMPAREVERSIONS: 'Compare Versions'
+    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
+    MENUTITLE: History
+    REVERTTOTHISVERSION: 'Revert to this version'
+    SHOWUNPUBLISHED: 'Show unpublished versions'
+    SHOWVERSION: 'Show Version'
+    VIEW: view
+    VIEWINGVERSION: 'Currently viewing version {version}.'
+  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  CMSPageSettingsController:
+    MENUTITLE: 'Edit Page'
+  CMSPagesController:
+    GalleryView: 'Gallery View'
+    ListView: 'List View'
+    MENUTITLE: Pages
+    TreeView: 'Tree View'
+  CMSSearch:
+    FILTERDATEFROM: From
+    FILTERDATEHEADING: Date
+    FILTERDATETO: To
+    FILTERLABELTEXT: Content
+  CMSSettingsController:
+    AUTHOR: Author
+    MENUTITLE: Settings
+    NOTPUBLISHED: 'Not published'
+    PUBLISHER: Publisher
+    UNKNOWN: Unknown
+    WHEN: When
+  CMSSiteTreeFilter_ChangedPages:
+    ENABLEDRAGGING: 'Drag''n''drop'
+    GO: Уперед
+    MULTISELECT: Multi-selection
+    Title: 'Changed pages'
+    VIEWFIRST: 'View first'
+    VIEWLAST: 'View last'
+    VIEWNEXT: 'View next'
+    VIEWPREVIOUS: 'View previous'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'All pages, including deleted'
+  CMSSiteTreeFilter_Search:
+    Title: 'All pages'
+  ContentControl:
+    NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
   ContentController:
-    DRAFT_SITE_ACCESS_RESTRICTION: "Ви повинні увійти у систему для перегляду чернетки даного матеріалу. <a href=\"%s\">Натсиніть для переходу на опублікований матеріал.</a>"
-    LOGGEDINAS: "Залогований як "
-    LOGIN: "Логін"
-    LOGOUT: "Вилогуватися"
-    NOTLOGGEDIN: "Не залогований"
-    PUBLISHEDSITE: "Публічний сайт"
-    VIEWPAGEIN: "Переглянути сторінку в:"
+    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITEFROM: 'Archived site from'
+    CMS: CMS
+    DRAFTSITE: 'Draft Site'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Ви повинні увійти у систему для перегляду чернетки даного матеріалу. <a href="%s">Натсиніть для переходу на опублікований матеріал.</a>'
+    Email: Email
+    InstallFilesDeleted: 'Installation files have been successfully deleted.'
+    InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    LOGGEDINAS: 'Залогований як '
+    LOGIN: Логін
+    LOGOUT: Вилогуватися
+    NOTLOGGEDIN: 'Не залогований'
+    PUBLISHEDSITE: 'Публічний сайт'
+    Password: Password
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
+    VIEWPAGEIN: 'Переглянути сторінку в:'
   ErrorPage:
-    CODE: "Код помилки"
-    ERRORFILEPROBLEM: "Помилка при записі в файл \"%s\""
+    CODE: 'Код помилки'
+    DEFAULTERRORPAGECONTENT: '<p>Sorry, it seems you were trying to access a page that doesn''t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>'
+    DEFAULTERRORPAGETITLE: 'Page not found'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Server error'
+    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
+    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    400: '400 - Bad Request'
+    401: '401 - Unauthorized'
+    403: '403 - Forbidden'
+    404: '404 - Not Found'
+    405: '405 - Method Not Allowed'
+    406: '406 - Not Acceptable'
+    407: '407 - Proxy Authentication Required'
+    408: '408 - Request Timeout'
+    409: '409 - Conflict'
+    410: '410 - Gone'
+    411: '411 - Length Required'
+    412: '412 - Precondition Failed'
+    413: '413 - Request Entity Too Large'
+    414: '414 - Request-URI Too Long'
+    415: '415 - Unsupported Media Type'
+    416: '416 - Request Range Not Satisfiable'
+    417: '417 - Expectation Failed'
+    500: '500 - Internal Server Error'
+    501: '501 - Not Implemented'
+    502: '502 - Bad Gateway'
+    503: '503 - Service Unavailable'
+    504: '504 - Gateway Timeout'
+    505: '505 - HTTP Version Not Supported'
+  Folder:
+    AddFolderButton: 'Add folder'
+    DELETEUNUSEDTHUMBNAILS: 'Delete unused thumbnails'
+    UNUSEDFILESTITLE: 'Unused files'
+    UNUSEDTHUMBNAILSTITLE: 'Unused thumbnails'
+    UploadFilesButton: Upload
+  GridFieldTestPage:
+    DESCRIPTION: 'Generic content page'
   LeftAndMain:
-    STATUSPUBLISHEDSUCCESS: "Успішно опубліковано '%s'"
+    DELETED: Deleted.
+    PreviewButton: Preview
+    SAVEDUP: Saved.
+    STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
+    SearchResults: 'Search Results'
+    VersionUnknown: Unknown
+  LegacyTableFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+  MyNonRootPage:
+    CANACCESS: 'Ви можете перейти до архівного сайту за посиланням:'
+    DESCRIPTION: 'Generic content page'
+    HAVEASKED: 'Ви надіслали запит на перегляд вмісту нашої сторінки'
+  MyOtherPage:
+    DESCRIPTION: 'Generic content page'
+  MyPage:
+    DESCRIPTION: 'Generic content page'
+  MyRandomPage:
+    DESCRIPTION: 'Generic content page'
+  PackageManagerPage:
+    DESCRIPTION: 'Generic content page'
+    RESET: Reset
+  Page:
+    DESCRIPTION: 'Generic content page'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'CMS Access'
+  Permissions:
+    CONTENT_CATEGORY: 'Content permissions'
+    PERMISSIONS_CATEGORY: 'Roles and access permissions'
   RedirectorPage:
-    HASBEENSETUP: "Сторінка перенаправлення була встановлена без указання цілі перенаправлення"
-    HEADER: "Ця сторінка перенаправляє користувачів на іншу сторінку"
-    OTHERURL: "URL іншого сайту"
-    REDIRECTTO: "Перенапралено на"
-    REDIRECTTOEXTERNAL: "Інший сайт"
-    REDIRECTTOPAGE: "Сторінку на Вашому сайті"
-    YOURPAGE: "Сторінки на Вашому сайті"
+    DESCRIPTION: 'Redirects to a different internal page'
+    HASBEENSETUP: 'Сторінка перенаправлення була встановлена без указання цілі перенаправлення'
+    HEADER: 'Ця сторінка перенаправляє користувачів на іншу сторінку'
+    OTHERURL: 'URL іншого сайту'
+    REDIRECTTO: 'Перенапралено на'
+    REDIRECTTOEXTERNAL: 'Інший сайт'
+    REDIRECTTOPAGE: 'Сторінку на Вашому сайті'
+    YOURPAGE: 'Сторінки на Вашому сайті'
+  RelationFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+    FILTER: Filter
+  ReportAdmin:
+    MENUTITLE: Reports
   ReportAdminForm:
-    FILTERBY: "Фільтр по"
+    FILTERBY: 'Фільтр по'
+  SearchForm:
+    GO: Go
+    SEARCH: Search
+    SearchResults: 'Search Results'
   SideReport:
-    EMPTYPAGES: "Порожні сторінки"
-    LAST2WEEKS: "Сторінки, відредаговані за останні два тижні"
-    REPEMPTY: "Звіт %s порожній."
+    BROKENFILES: 'Pages with broken files'
+    BROKENLINKS: 'Pages with broken links'
+    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
+    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
+    BrokenLinksGroupTitle: 'Broken links reports'
+    ContentGroupTitle: 'Content reports'
+    EMPTYPAGES: 'Порожні сторінки'
+    LAST2WEEKS: 'Сторінки, відредаговані за останні два тижні'
+    OtherGroupTitle: Other
+    ParameterLiveCheckbox: 'Check live site'
+    REPEMPTY: 'The {title} report is empty.'
+  SilverStripeNavigatorLink:
+    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
+    ShareLink: 'Share link'
+  SilverStripeNavigatorLinkl:
+    CloseLink: Close
   SiteConfig:
-    TABACCESS: "Доступ"
-    TABMAIN: "Головна"
+    DEFAULTTHEME: '(Use default theme)'
+    EDITHEADER: 'Who can edit pages on this site?'
+    EDIT_PERMISSION: 'Manage site configuration'
+    EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
+    SITENAMEDEFAULT: 'Your Site Name'
+    SITETAGLINE: 'Site Tagline/Slogan'
+    SITETITLE: 'Site title'
+    TABACCESS: Доступ
+    TABMAIN: Головна
+    TAGLINEDEFAULT: 'your tagline here'
+    THEME: Theme
+    TOPLEVELCREATE: 'Who can create pages in the root of the site?'
+    VIEWHEADER: 'Who can view pages on this site?'
   SiteTree:
-    ACCESSANYONE: "Будь-хто"
-    ACCESSHEADER: "Хто може переглядати цю сторінку?"
-    ACCESSLOGGEDIN: "Тільки ті, що увійшли"
-    ACCESSONLYTHESE: "Тільки ці люди (виберіть зі списку)"
-    ALLOWCOMMENTS: "Дозволити коментувати на цій сторінці?"
-    APPEARSVIRTUALPAGES: "Цей вміст також трапляється на віртуальних сторінках у розділах %s."
-    BUTTONCANCELDRAFT: "Відмінити зміни чернетки"
-    BUTTONCANCELDRAFTDESC: "Видалити черентку та повернутися до теперішнього опублікованого варіанту"
-    BUTTONSAVEPUBLISH: "Зберегти та опублікувати"
-    BUTTONUNPUBLISH: "Відміна публікування"
-    BUTTONUNPUBLISHDESC: "Видалити цю сторінку з опублікованого"
-    CHANGETO: "Змінити на \"%s\""
-    Comments: "Коментарі"
-    Content: "Контент"
-    DEPENDENT_NOTE: "Наступні сторінки залежать від цієї сторінки. Вони включають віртуальні сторінки, сторінки переадресації і сторінки з посиланням у змісті"
-    DependtPageColumnURL: "URL"
-    EDITANYONE: "Будь-хто, хто може увійти до системи"
-    EDITHEADER: "Хто може змінювати цю сторінку?"
-    EDITONLYTHESE: "Тільки ці люди (виберіть зі списку)"
-    Editors: "Групи редакторів"
-    HASBROKENLINKS: "Ця сторінка має зламані посилання."
-    HTMLEDITORTITLE: "Вміст"
-    INHERIT: "Наслідувати з батьківської сторінки"
-    MENUTITLE: "Мітка навігації"
-    METADESC: "Опис"
-    METAEXTRA: "Власні Мета-теги"
-    METAKEYWORDS: "Ключові вирази"
-    METATITLE: "Назва"
-    PAGETITLE: "Назва сторінки"
-    PAGETYPE: "Тип сторінки"
-    PARENTID: "Батьківська сторінка"
-    PARENTTYPE: "Розміщення сторінки"
-    PERMISSION_GRANTACCESS_DESCRIPTION: "Керувати правами доступу до контенту"
-    PLURALNAME: "Дерево сайту"
-    SHOWINMENUS: "Показувати у навігації?"
-    SHOWINSEARCH: "Показувати у пошуку?"
-    SINGULARNAME: "Дерево сайту"
-    TABACCESS: "Доступ"
-    TABBEHAVIOUR: "Поводження"
-    TABCONTENT: "Вміст"
-    TABMETA: "Мета-дані"
-    TOPLEVEL: "Вміст Сайту (Верхній Рівень)"
-    URLSegment: "URL адреса"
-    Viewers: "Групи глядачів"
-    has_one_Parent: "Батьківська сторінка"
+    ACCESSANYONE: 'Будь-хто'
+    ACCESSHEADER: 'Хто може переглядати цю сторінку?'
+    ACCESSLOGGEDIN: 'Тільки ті, що увійшли'
+    ACCESSONLYTHESE: 'Тільки ці люди (виберіть зі списку)'
+    ADDEDTODRAFTHELP: 'Page has not been published yet'
+    ADDEDTODRAFTSHORT: Draft
+    ALLOWCOMMENTS: 'Дозволити коментувати на цій сторінці?'
+    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+    BUTTONCANCELDRAFT: 'Відмінити зміни чернетки'
+    BUTTONCANCELDRAFTDESC: 'Видалити черентку та повернутися до теперішнього опублікованого варіанту'
+    BUTTONSAVEPUBLISH: 'Зберегти та опублікувати'
+    BUTTONUNPUBLISH: 'Відміна публікування'
+    BUTTONUNPUBLISHDESC: 'Видалити цю сторінку з опублікованого'
+    Back: Back
+    CREATED: 'Date Created'
+    Comments: Коментарі
+    Content: Контент
+    DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
+    DEFAULTABOUTTITLE: 'About Us'
+    DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
+    DEFAULTCONTACTTITLE: 'Contact Us'
+    DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
+    DEFAULTHOMETITLE: Home
+    DELETEDPAGEHELP: 'Page is no longer published'
+    DELETEDPAGESHORT: Deleted
+    DEPENDENT_NOTE: 'Наступні сторінки залежать від цієї сторінки. Вони включають віртуальні сторінки, сторінки переадресації і сторінки з посиланням у змісті'
+    DependtPageColumnLinkType: 'Link type'
+    DependtPageColumnURL: URL
+    EDITANYONE: 'Будь-хто, хто може увійти до системи'
+    EDITHEADER: 'Хто може змінювати цю сторінку?'
+    EDITONLYTHESE: 'Тільки ці люди (виберіть зі списку)'
+    EDITORGROUPS: 'Editor Groups'
+    EDIT_ALL_DESCRIPTION: 'Edit any page'
+    EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
+    Editors: 'Групи редакторів'
+    HASBROKENLINKS: 'Ця сторінка має зламані посилання.'
+    HTMLEDITORTITLE: Вміст
+    INHERIT: 'Наслідувати з батьківської сторінки'
+    LASTUPDATED: 'Last Updated'
+    LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
+    MENUTITLE: 'Мітка навігації'
+    METADESC: Опис
+    METAEXTRA: 'Власні Мета-теги'
+    METAKEYWORDS: 'Ключові вирази'
+    METATITLE: Назва
+    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
+    MODIFIEDONDRAFTSHORT: Modified
+    PAGELOCATION: 'Page location'
+    PAGETITLE: 'Назва сторінки'
+    PAGETYPE: 'Тип сторінки'
+    PARENTID: 'Батьківська сторінка'
+    PARENTTYPE: 'Розміщення сторінки'
+    PARENTTYPE_ROOT: 'Top-level page'
+    PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Керувати правами доступу до контенту'
+    PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
+    PLURALNAME: 'Дерево сайту'
+    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
+    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
+    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
+    REMOVEDFROMDRAFTSHORT: 'Removed from draft'
+    REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
+    REORGANISE_DESCRIPTION: 'Change site structure'
+    REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
+    SHOWINMENUS: 'Показувати у навігації?'
+    SHOWINSEARCH: 'Показувати у пошуку?'
+    SINGULARNAME: 'Дерево сайту'
+    TABBEHAVIOUR: Поводження
+    TABCONTENT: Вміст
+    TABDEPENDENT: 'Dependent pages'
+    TOPLEVEL: 'Вміст Сайту (Верхній Рівень)'
+    TOPLEVELCREATORGROUPS: 'Top level creators'
+    URLSegment: 'URL адреса'
+    VIEWERGROUPS: 'Viewer Groups'
+    VIEW_ALL_DESCRIPTION: 'View any page'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
+    VIEW_DRAFT_CONTENT: 'View draft content'
+    VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
+    Viewers: 'Групи глядачів'
+    Visibility: Visibility
+    has_one_Parent: 'Батьківська сторінка'
+    many_many_BackLinkTracking: 'Backlink Tracking'
+    many_many_ImageTracking: 'Image Tracking'
+    many_many_LinkTracking: 'Link Tracking'
+  SiteTreeURLSegmentField:
+    HelpChars: ' Special characters are automatically converted or removed.'
   StaticExporter:
-    BASEURL: "Основний URL"
-    EXPORTTO: "Експортувати до наведеної теки"
-    NAME: "Статичний експортер"
+    BASEURL: 'Основний URL'
+    EXPORTTO: 'Експортувати до наведеної теки'
+    NAME: 'Статичний експортер'
   TableListField:
-  ViewArchivedEmail.ss:
-    CANACCESS: "Ви можете перейти до архівного сайту за посиланням:"
-    HAVEASKED: "Ви надіслали запит на перегляд вмісту нашої сторінки"
+    FILTER: Filter
+    SELECT: 'Select:'
+  TestFileUploadPage:
+    DESCRIPTION: 'Generic content page'
+  TestPage:
+    DESCRIPTION: 'Generic content page'
+  TreeTools:
+    DisplayLabel: 'Display:'
   VirtualPage:
-    CHOOSE: "Виберіть сторінку на яку посилатися"
-    EDITCONTENT: "натисніть тут для редагування вмісту"
-    HEADER: "Це віртуальна сторінка"
-    PLURALNAME: "Віртуальні сторінки"
-    SINGULARNAME: "Віртуальна сторінка"
-  WidgetAreaEditor.ss:
-    AVAILABLE: "Доступні віджети"
-    INUSE: "Віджети що використовуються"
-    NOAVAIL: "Наразі немає доступних віджетів."
-  WidgetEditor.ss:
-    DELETE: "Видалити"
+    CHOOSE: 'Виберіть сторінку на яку посилатися'
+    DESCRIPTION: 'Displays the content of another page'
+    EDITCONTENT: 'натисніть тут для редагування вмісту'
+    HEADER: 'Це віртуальна сторінка'
+    PLURALNAME: 'Віртуальні сторінки'
+    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
+    SINGULARNAME: 'Віртуальна сторінка'
+  cms:
+    FILESYSTEMSYNC: 'Sync files'

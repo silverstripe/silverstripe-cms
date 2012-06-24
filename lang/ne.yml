@@ -1,48 +1,408 @@
 ne:
+  AssetAdmin:
+    ADDFILES: 'Add Files'
+    ALLOWEDEXTS: 'Allowed extensions'
+    ActionAdd: 'Add folder'
+    AppCategoryArchive: Archive
+    AppCategoryAudio: Audio
+    AppCategoryFlash: Flash
+    AppCategoryImage: Image
+    AppCategoryVideo: Video
+    BackToFolder: 'Back to folder'
+    CREATED: Date
+    CurrentFolderOnly: 'Limit to current folder?'
+    DetailsView: Details
+    FILES: Files
+    FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
+    FROMTHEINTERNET: 'From the internet'
+    FROMYOURCOMPUTER: 'From your computer'
+    Filetype: 'File type'
+    ListView: 'List View'
+    MENUTITLE: Files
+    NEWFOLDER: NewFolder
+    SIZE: Size
+    THUMBSDELETED: '{count} unused thumbnails have been deleted'
+    TreeView: 'Tree View'
+    Upload: Upload
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Delete folders'
+  AssetTableField:
+    BACKLINKCOUNT: 'Used on:'
+    PAGES: page(s)
+  BasicFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+  BigFamilyPage:
+    DESCRIPTION: 'Generic content page'
+  BrokenLinksReport:
+    Any: Any
+    BROKENLINKS: 'Broken links report'
+    CheckSite: 'Check site'
+    CheckSiteDropdownDraft: 'Draft Site'
+    CheckSiteDropdownPublished: 'Published Site'
+    ColumnDateLastModified: 'Date last modified'
+    ColumnDateLastPublished: 'Date last published'
+    ColumnProblemType: 'Problem type'
+    ColumnURL: URL
+    HasBrokenFile: 'has broken file'
+    HasBrokenLink: 'has broken link'
+    HasBrokenLinkAndFile: 'has broken link and file'
+    HoverTitleEditPage: 'Edit page'
+    PageName: 'Page name'
+    ReasonDropdown: 'Problem to check'
+    ReasonDropdownBROKENFILE: 'Broken file'
+    ReasonDropdownBROKENLINK: 'Broken link'
+    ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
+    ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
+    RedirectorNonExistent: 'redirector page pointing to non-existent page'
+    SORTASC: 'Sort in ascending order'
+    SORTDESC: 'Sort in descending order'
+    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
+  CMSAddPageController:
+    Title: 'Add page'
+  CMSBatchActions:
+    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
+    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
+    DELETE_DRAFT_PAGES: 'Delete from draft site'
+    DELETE_PAGES: 'Delete from published site'
+    PUBLISHED_PAGES: 'Published %d pages, %d failures'
+    PUBLISH_PAGES: Publish
+    UNPUBLISHED_PAGES: 'Un-published %d pages'
+    UNPUBLISH_PAGES: Un-publish
+  CMSFileAddController:
+    MENUTITLE: Files
+  CMSMain:
+    ACCESS: 'Access to ''{title}'' section'
+    ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
+    AddNew: 'Add new page'
+    AddNewButton: 'Add new'
+    ChoosePageParentMode: 'Choose where to create this page'
+    ChoosePageType: 'Choose page type'
+    Create: Create
+    DELETE: 'Delete draft'
+    DELETEFP: Delete
+    DESCREMOVED: 'and {count} descendants'
+    EMAIL: Email
+    MENUTITLE: 'Edit Page'
+    NEW: 'New '
+    PAGENOTEXISTS: 'This page doesn''t exist'
+    PAGES: Pages
+    PAGETYPEANYOPT: Any
+    PAGETYPEOPT: 'Page Type'
+    PUBALLCONFIRM: 'Please publish every page in the site, copying content stage to live'
+    PUBALLFUN: '"Publish All" functionality'
+    PUBALLFUN2: 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It''s				intended to be used after there have been massive edits of the content, such as when the site was				first built.'
+    PUBPAGES: 'Done: Published {count} pages'
+    PageAdded: 'Successfully created page'
+    REMOVED: 'Deleted ''%s''%s from live site'
+    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
+    REMOVEDPAGEFROMDRAFT: 'Removed ''%s'' from the draft site'
+    RESTORE: Restore
+    RESTORED: 'Restored ''{title}'' successfully'
+    ROLLBACK: 'Roll back to this version'
+    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
+    ROLLEDBACKVERSION: 'Rolled back to version #%d.  New version number is #%d'
+    SAVE: Save
+    SAVEDRAFT: 'Save Draft'
+    TabContent: Content
+    TabHistory: History
+    TabSettings: Settings
+  CMSPageAddController:
+    MENUTITLE: 'Add page'
+    ParentMode_child: 'Under another page'
+    ParentMode_top: 'Top level'
+  CMSPageEditController:
+    MENUTITLE: 'Edit Page'
+  CMSPageHistoryController:
+    COMPAREMODE: 'Compare mode (select two)'
+    COMPAREVERSIONS: 'Compare Versions'
+    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
+    MENUTITLE: History
+    REVERTTOTHISVERSION: 'Revert to this version'
+    SHOWUNPUBLISHED: 'Show unpublished versions'
+    SHOWVERSION: 'Show Version'
+    VIEW: view
+    VIEWINGVERSION: 'Currently viewing version {version}.'
+  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  CMSPageSettingsController:
+    MENUTITLE: 'Edit Page'
+  CMSPagesController:
+    GalleryView: 'Gallery View'
+    ListView: 'List View'
+    MENUTITLE: Pages
+    TreeView: 'Tree View'
+  CMSSearch:
+    FILTERDATEFROM: From
+    FILTERDATEHEADING: Date
+    FILTERDATETO: To
+    FILTERLABELTEXT: Content
+  CMSSettingsController:
+    AUTHOR: Author
+    MENUTITLE: Settings
+    NOTPUBLISHED: 'Not published'
+    PUBLISHER: Publisher
+    UNKNOWN: Unknown
+    WHEN: When
+  CMSSiteTreeFilter_ChangedPages:
+    ENABLEDRAGGING: 'Drag''n''drop'
+    GO: Go
+    MULTISELECT: Multi-selection
+    Title: 'Changed pages'
+    VIEWFIRST: 'View first'
+    VIEWLAST: 'View last'
+    VIEWNEXT: 'View next'
+    VIEWPREVIOUS: 'View previous'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'All pages, including deleted'
+  CMSSiteTreeFilter_Search:
+    Title: 'All pages'
+  ContentControl:
+    NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
   ContentController:
-    DRAFT_SITE_ACCESS_RESTRICTION: "यदि तपाईं draft अथवा archived सामाग्री हेर्न चाहानुहुन्छ भन्ने आफ्नो CMSको पासओडले भित्र जानुपर्छ । <a href=\"%s\">प्रकाशित साईटमा जान यहाँ थिचु्नुहोस् ।  </a>"
+    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITEFROM: 'Archived site from'
+    CMS: CMS
+    DRAFTSITE: 'Draft Site'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'यदि तपाईं draft अथवा archived सामाग्री हेर्न चाहानुहुन्छ भन्ने आफ्नो CMSको पासओडले भित्र जानुपर्छ । <a href="%s">प्रकाशित साईटमा जान यहाँ थिचु्नुहोस् ।  </a>'
+    Email: Email
+    InstallFilesDeleted: 'Installation files have been successfully deleted.'
+    InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    LOGGEDINAS: 'Logged in as'
+    LOGIN: Login
+    LOGOUT: 'Log out'
+    NOTLOGGEDIN: 'Not logged in'
+    PUBLISHEDSITE: 'Published Site'
+    Password: Password
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
+    VIEWPAGEIN: 'View Page in:'
   ErrorPage:
-    CODE: "त्रुटी सङ्केत "
+    CODE: 'त्रुटी सङ्केत '
+    DEFAULTERRORPAGECONTENT: '<p>Sorry, it seems you were trying to access a page that doesn''t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>'
+    DEFAULTERRORPAGETITLE: 'Page not found'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Server error'
+    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
+    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    400: '400 - Bad Request'
+    401: '401 - Unauthorized'
+    403: '403 - Forbidden'
+    404: '404 - Not Found'
+    405: '405 - Method Not Allowed'
+    406: '406 - Not Acceptable'
+    407: '407 - Proxy Authentication Required'
+    408: '408 - Request Timeout'
+    409: '409 - Conflict'
+    410: '410 - Gone'
+    411: '411 - Length Required'
+    412: '412 - Precondition Failed'
+    413: '413 - Request Entity Too Large'
+    414: '414 - Request-URI Too Long'
+    415: '415 - Unsupported Media Type'
+    416: '416 - Request Range Not Satisfiable'
+    417: '417 - Expectation Failed'
+    500: '500 - Internal Server Error'
+    501: '501 - Not Implemented'
+    502: '502 - Bad Gateway'
+    503: '503 - Service Unavailable'
+    504: '504 - Gateway Timeout'
+    505: '505 - HTTP Version Not Supported'
+  Folder:
+    AddFolderButton: 'Add folder'
+    DELETEUNUSEDTHUMBNAILS: 'Delete unused thumbnails'
+    UNUSEDFILESTITLE: 'Unused files'
+    UNUSEDTHUMBNAILSTITLE: 'Unused thumbnails'
+    UploadFilesButton: Upload
+  GridFieldTestPage:
+    DESCRIPTION: 'Generic content page'
+  LeftAndMain:
+    DELETED: Deleted.
+    PreviewButton: Preview
+    SAVEDUP: Saved.
+    STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
+    SearchResults: 'Search Results'
+    VersionUnknown: Unknown
+  LegacyTableFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+  MyNonRootPage:
+    CANACCESS: 'You can access the archived site at this link:'
+    DESCRIPTION: 'Generic content page'
+    HAVEASKED: 'You have asked to view the content of our site on'
+  MyOtherPage:
+    DESCRIPTION: 'Generic content page'
+  MyPage:
+    DESCRIPTION: 'Generic content page'
+  MyRandomPage:
+    DESCRIPTION: 'Generic content page'
+  PackageManagerPage:
+    DESCRIPTION: 'Generic content page'
+    RESET: Reset
+  Page:
+    DESCRIPTION: 'Generic content page'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'CMS Access'
+  Permissions:
+    CONTENT_CATEGORY: 'Content permissions'
+    PERMISSIONS_CATEGORY: 'Roles and access permissions'
   RedirectorPage:
-    HASBEENSETUP: "कुनै पनि पुनर्निर्देशनबिना नै एउटा पुनर्निदेशन पृष्ठ सेटअप गरियो । "
-    HEADER: "यो पेजले प्रयोगकतालाई अर्को पेजमा लैजान्छ"
-    OTHERURL: "अर्को वेबसाईटको यू.र्.ल्"
-    REDIRECTTO: "अर्को पेजमा लैजाउ"
-    REDIRECTTOEXTERNAL: "अर्को वेबसाईट"
-    REDIRECTTOPAGE: "तपाईंको वेबसाईटमा एउटा पेज"
-    YOURPAGE: "तपाईंको वेबसाईटमा एउटा पेज"
+    DESCRIPTION: 'Redirects to a different internal page'
+    HASBEENSETUP: 'कुनै पनि पुनर्निर्देशनबिना नै एउटा पुनर्निदेशन पृष्ठ सेटअप गरियो । '
+    HEADER: 'यो पेजले प्रयोगकतालाई अर्को पेजमा लैजान्छ'
+    OTHERURL: 'अर्को वेबसाईटको यू.र्.ल्'
+    REDIRECTTO: 'अर्को पेजमा लैजाउ'
+    REDIRECTTOEXTERNAL: 'अर्को वेबसाईट'
+    REDIRECTTOPAGE: 'तपाईंको वेबसाईटमा एउटा पेज'
+    YOURPAGE: 'तपाईंको वेबसाईटमा एउटा पेज'
+  RelationFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+    FILTER: Filter
+  ReportAdmin:
+    MENUTITLE: Reports
+  ReportAdminForm:
+    FILTERBY: 'Filter by'
+  SearchForm:
+    GO: Go
+    SEARCH: Search
+    SearchResults: 'Search Results'
+  SideReport:
+    BROKENFILES: 'Pages with broken files'
+    BROKENLINKS: 'Pages with broken links'
+    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
+    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
+    BrokenLinksGroupTitle: 'Broken links reports'
+    ContentGroupTitle: 'Content reports'
+    EMPTYPAGES: 'Pages with no content'
+    LAST2WEEKS: 'Pages edited in the last 2 weeks'
+    OtherGroupTitle: Other
+    ParameterLiveCheckbox: 'Check live site'
+    REPEMPTY: 'The {title} report is empty.'
+  SilverStripeNavigatorLink:
+    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
+    ShareLink: 'Share link'
+  SilverStripeNavigatorLinkl:
+    CloseLink: Close
+  SiteConfig:
+    DEFAULTTHEME: '(Use default theme)'
+    EDITHEADER: 'Who can edit pages on this site?'
+    EDIT_PERMISSION: 'Manage site configuration'
+    EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
+    SITENAMEDEFAULT: 'Your Site Name'
+    SITETAGLINE: 'Site Tagline/Slogan'
+    SITETITLE: 'Site title'
+    TABACCESS: Access
+    TABMAIN: Main
+    TAGLINEDEFAULT: 'your tagline here'
+    THEME: Theme
+    TOPLEVELCREATE: 'Who can create pages in the root of the site?'
+    VIEWHEADER: 'Who can view pages on this site?'
   SiteTree:
-    ACCESSANYONE: "जोकोहिले"
-    ACCESSHEADER: "मेरो सईटमा कसले यो पजे हेर्न सक्छ ? "
-    ACCESSLOGGEDIN: "भित्र छिरेक प्रयोगकर्तहरु"
-    ACCESSONLYTHESE: "यि मान्छे मात्र (लिस्टबाट छान्)"
-    ALLOWCOMMENTS: "यो पजेमा प्रतिक्रिया लेखन् दिनुहोस् ?"
-    APPEARSVIRTUALPAGES: "यो सामाग्री %s सेक्सनको virtual पेजहरुमा पर्छ जस्तो देखिन्छ । "
-    BUTTONCANCELDRAFT: "द्राफ्ट्रमा भएका परिवर्तनहरु क्यान्सिल गर्नुहोस् "
-    BUTTONCANCELDRAFTDESC: "द्राफ्ट्र हटाउनुहोस् र प्रकाशित पेजमा जानुहोस्"
-    BUTTONSAVEPUBLISH: "सेभ र प्रकाशित गरनुहोस्"
-    BUTTONUNPUBLISH: "प्रकाशित नगरनुहोस्"
-    BUTTONUNPUBLISHDESC: "प्रकाशित साईटबाट यो पेजलाई हटाउनुहोस्"
-    EDITANYONE: "जोकोहिले जो सि.म्.एस् भित्र छिरेका छन्"
-    EDITHEADER: "कसले यो CMS भित्र मिलाउन सक्छ ?"
-    EDITONLYTHESE: "यि मान्छे मात्र (लिस्टबाट छान्)"
-    HASBROKENLINKS: "यो पजेमा टुटेका लिन्कहरु छन् ।"
-    HTMLEDITORTITLE: "सामाग्री"
-    MENUTITLE: "अबलोकन नाम "
-    METADESC: "विवरण"
-    METAEXTRA: "Custom Meta Tags"
-    METAKEYWORDS: "किवर्डहरु "
-    METATITLE: "शिषक"
-    PAGETITLE: "पेजको नाम"
-    PAGETYPE: "पेज किसिम"
-    SHOWINMENUS: "मेनुमा देखाउनुहोस् ? "
-    SHOWINSEARCH: "खोजिमा देखाउनुहोस् ?"
-    TABACCESS: "अधिकार"
-    TABBEHAVIOUR: "बनी"
-    TABCONTENT: "सामाग्री"
-    TABMETA: "Meta-data"
-    TOPLEVEL: "साईट सामाग्री (उच्च स्तान)"
+    ACCESSANYONE: जोकोहिले
+    ACCESSHEADER: 'मेरो सईटमा कसले यो पजे हेर्न सक्छ ? '
+    ACCESSLOGGEDIN: 'भित्र छिरेक प्रयोगकर्तहरु'
+    ACCESSONLYTHESE: 'यि मान्छे मात्र (लिस्टबाट छान्)'
+    ADDEDTODRAFTHELP: 'Page has not been published yet'
+    ADDEDTODRAFTSHORT: Draft
+    ALLOWCOMMENTS: 'यो पजेमा प्रतिक्रिया लेखन् दिनुहोस् ?'
+    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+    BUTTONCANCELDRAFT: 'द्राफ्ट्रमा भएका परिवर्तनहरु क्यान्सिल गर्नुहोस् '
+    BUTTONCANCELDRAFTDESC: 'द्राफ्ट्र हटाउनुहोस् र प्रकाशित पेजमा जानुहोस्'
+    BUTTONSAVEPUBLISH: 'सेभ र प्रकाशित गरनुहोस्'
+    BUTTONUNPUBLISH: 'प्रकाशित नगरनुहोस्'
+    BUTTONUNPUBLISHDESC: 'प्रकाशित साईटबाट यो पेजलाई हटाउनुहोस्'
+    Back: Back
+    CREATED: 'Date Created'
+    Comments: Comments
+    Content: Content
+    DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
+    DEFAULTABOUTTITLE: 'About Us'
+    DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
+    DEFAULTCONTACTTITLE: 'Contact Us'
+    DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
+    DEFAULTHOMETITLE: Home
+    DELETEDPAGEHELP: 'Page is no longer published'
+    DELETEDPAGESHORT: Deleted
+    DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DependtPageColumnLinkType: 'Link type'
+    DependtPageColumnURL: URL
+    EDITANYONE: 'जोकोहिले जो सि.म्.एस् भित्र छिरेका छन्'
+    EDITHEADER: 'कसले यो CMS भित्र मिलाउन सक्छ ?'
+    EDITONLYTHESE: 'यि मान्छे मात्र (लिस्टबाट छान्)'
+    EDITORGROUPS: 'Editor Groups'
+    EDIT_ALL_DESCRIPTION: 'Edit any page'
+    EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
+    Editors: 'Editors Groups'
+    HASBROKENLINKS: 'यो पजेमा टुटेका लिन्कहरु छन् ।'
+    HTMLEDITORTITLE: सामाग्री
+    INHERIT: 'Inherit from parent page'
+    LASTUPDATED: 'Last Updated'
+    LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
+    MENUTITLE: 'अबलोकन नाम '
+    METADESC: विवरण
+    METAEXTRA: 'Custom Meta Tags'
+    METAKEYWORDS: 'किवर्डहरु '
+    METATITLE: शिषक
+    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
+    MODIFIEDONDRAFTSHORT: Modified
+    PAGELOCATION: 'Page location'
+    PAGETITLE: 'पेजको नाम'
+    PAGETYPE: 'पेज किसिम'
+    PARENTID: 'Parent page'
+    PARENTTYPE: 'Page location'
+    PARENTTYPE_ROOT: 'Top-level page'
+    PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
+    PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
+    PLURALNAME: 'Site Tres'
+    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
+    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
+    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
+    REMOVEDFROMDRAFTSHORT: 'Removed from draft'
+    REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
+    REORGANISE_DESCRIPTION: 'Change site structure'
+    REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
+    SHOWINMENUS: 'मेनुमा देखाउनुहोस् ? '
+    SHOWINSEARCH: 'खोजिमा देखाउनुहोस् ?'
+    SINGULARNAME: 'Site Tree'
+    TABBEHAVIOUR: बनी
+    TABCONTENT: सामाग्री
+    TABDEPENDENT: 'Dependent pages'
+    TOPLEVEL: 'साईट सामाग्री (उच्च स्तान)'
+    TOPLEVELCREATORGROUPS: 'Top level creators'
+    URLSegment: 'URL Segment'
+    VIEWERGROUPS: 'Viewer Groups'
+    VIEW_ALL_DESCRIPTION: 'View any page'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
+    VIEW_DRAFT_CONTENT: 'View draft content'
+    VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
+    Viewers: 'Viewers Groups'
+    Visibility: Visibility
+    has_one_Parent: 'Parent Page'
+    many_many_BackLinkTracking: 'Backlink Tracking'
+    many_many_ImageTracking: 'Image Tracking'
+    many_many_LinkTracking: 'Link Tracking'
+  SiteTreeURLSegmentField:
+    HelpChars: ' Special characters are automatically converted or removed.'
+  StaticExporter:
+    BASEURL: 'Base URL'
+    EXPORTTO: 'Export to that folder'
+    NAME: 'Static exporter'
+  TableListField:
+    FILTER: Filter
+    SELECT: 'Select:'
+  TestFileUploadPage:
+    DESCRIPTION: 'Generic content page'
+  TestPage:
+    DESCRIPTION: 'Generic content page'
+  TreeTools:
+    DisplayLabel: 'Display:'
   VirtualPage:
-    CHOOSE: "लिन्क गर्न पेज छानुहोस् "
-    EDITCONTENT: "सामाग्री मिलाउन यहाँ थिचुन्नुहोस्"
-    HEADER: "यो भरचुअल पेज हो"
+    CHOOSE: 'लिन्क गर्न पेज छानुहोस् '
+    DESCRIPTION: 'Displays the content of another page'
+    EDITCONTENT: 'सामाग्री मिलाउन यहाँ थिचुन्नुहोस्'
+    HEADER: 'यो भरचुअल पेज हो'
+    PLURALNAME: 'Virtual Pags'
+    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
+    SINGULARNAME: 'Virtual Page'
+  cms:
+    FILESYSTEMSYNC: 'Sync files'

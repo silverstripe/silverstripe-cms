@@ -1,59 +1,408 @@
 da:
   AssetAdmin:
-    NEWFOLDER: "Ny mappe"
-    THUMBSDELETED: "Alle ubrugte thumbnails er slettet"
-  AssetAdmin_left.ss:
-    GO: "Go"
+    ADDFILES: 'Add Files'
+    ALLOWEDEXTS: 'Allowed extensions'
+    ActionAdd: 'Add folder'
+    AppCategoryArchive: Archive
+    AppCategoryAudio: Audio
+    AppCategoryFlash: Flash
+    AppCategoryImage: Image
+    AppCategoryVideo: Video
+    BackToFolder: 'Back to folder'
+    CREATED: Date
+    CurrentFolderOnly: 'Limit to current folder?'
+    DetailsView: Details
+    FILES: Files
+    FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
+    FROMTHEINTERNET: 'From the internet'
+    FROMYOURCOMPUTER: 'From your computer'
+    Filetype: 'File type'
+    ListView: 'List View'
+    MENUTITLE: Files
+    NEWFOLDER: 'Ny mappe'
+    SIZE: Size
+    THUMBSDELETED: '{count} unused thumbnails have been deleted'
+    TreeView: 'Tree View'
+    Upload: Upload
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Delete folders'
+  AssetTableField:
+    BACKLINKCOUNT: 'Used on:'
+    PAGES: page(s)
+  BasicFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+  BigFamilyPage:
+    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
-    ColumnURL: "URL"
-    HoverTitleEditPage: "Rediger siden"
+    Any: Any
+    BROKENLINKS: 'Broken links report'
+    CheckSite: 'Check site'
+    CheckSiteDropdownDraft: 'Draft Site'
+    CheckSiteDropdownPublished: 'Published Site'
+    ColumnDateLastModified: 'Date last modified'
+    ColumnDateLastPublished: 'Date last published'
+    ColumnProblemType: 'Problem type'
+    ColumnURL: URL
+    HasBrokenFile: 'has broken file'
+    HasBrokenLink: 'has broken link'
+    HasBrokenLinkAndFile: 'has broken link and file'
+    HoverTitleEditPage: 'Rediger siden'
+    PageName: 'Page name'
+    ReasonDropdown: 'Problem to check'
+    ReasonDropdownBROKENFILE: 'Broken file'
+    ReasonDropdownBROKENLINK: 'Broken link'
+    ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
+    ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
+    RedirectorNonExistent: 'redirector page pointing to non-existent page'
+    SORTASC: 'Sort in ascending order'
+    SORTDESC: 'Sort in descending order'
+    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
+  CMSAddPageController:
+    Title: 'Add page'
   CMSBatchActions:
-    DELETE_PAGES: "Slet fra publiseret side"
-    PUBLISHED_PAGES: "Publiserede %d sider"
-    PUBLISH_PAGES: "Publisér"
-    UNPUBLISHED_PAGES: "U-publiserede %d sider"
-    UNPUBLISH_PAGES: "U-publisér"
+    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
+    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
+    DELETE_DRAFT_PAGES: 'Delete from draft site'
+    DELETE_PAGES: 'Slet fra publiseret side'
+    PUBLISHED_PAGES: 'Publiserede %d sider'
+    PUBLISH_PAGES: Publisér
+    UNPUBLISHED_PAGES: 'U-publiserede %d sider'
+    UNPUBLISH_PAGES: U-publisér
+  CMSFileAddController:
+    MENUTITLE: Files
   CMSMain:
-    ACCESS: "Adgang til %S i CMS"
-    DELETE: "Slet fra fra udkast-sitet"
-    DESCREMOVED: "og %s efterkommere"
-    EMAIL: "Email"
-    NEW: "Ny"
-    PAGENOTEXISTS: "Denne side eksisterer ikke"
-    PUBALLCONFIRM: "Udgiv alle sider på sitet. Kopierer indhold fra kladde til offentlig"
-    PUBALLFUN: "\"Udgiv alle\" funktionalitet"
-    PUBALLFUN2: "Hvis du trykker på denne knap, svarer det til at gå til hver enkel side og vælge udgiv. Det er hensigten at denne funktion benyttes når der er blevet lavet mange ændringer på flere sider, som f.eks da websitet blev påbegyndt."
-    PUBPAGES: "Udført: Udgivet %d sider"
-    REMOVED: "Slet '%s'%s fra live-sitet"
-    REMOVEDPAGE: "Fjernede '%s' fra den udgivne side"
-    REMOVEDPAGEFROMDRAFT: "'%s'  fjernet fra udkast-sitet"
-    RESTORED: "Succesfuld gendannelse '%s'"
-    ROLLBACK: "Rul tilbage til denne version"
-    ROLLEDBACKPUB: "Rullet tilbage til udgivet version. Nyt versionnummer er #%d"
-    ROLLEDBACKVERSION: "Tilbagerullet til version #%d. Nyt versionsnummer er #%d"
-    SAVE: "Gem"
-  CMSMain_left.ss:
+    ACCESS: 'Access to ''{title}'' section'
+    ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
+    AddNew: 'Add new page'
+    AddNewButton: 'Add new'
+    ChoosePageParentMode: 'Choose where to create this page'
+    ChoosePageType: 'Choose page type'
+    Create: Create
+    DELETE: 'Slet fra fra udkast-sitet'
+    DELETEFP: Delete
+    DESCREMOVED: 'and {count} descendants'
+    EMAIL: Email
+    MENUTITLE: 'Edit Page'
+    NEW: Ny
+    PAGENOTEXISTS: 'Denne side eksisterer ikke'
+    PAGES: Pages
+    PAGETYPEANYOPT: Any
+    PAGETYPEOPT: 'Page Type'
+    PUBALLCONFIRM: 'Udgiv alle sider på sitet. Kopierer indhold fra kladde til offentlig'
+    PUBALLFUN: '"Udgiv alle" funktionalitet'
+    PUBALLFUN2: 'Hvis du trykker på denne knap, svarer det til at gå til hver enkel side og vælge udgiv. Det er hensigten at denne funktion benyttes når der er blevet lavet mange ændringer på flere sider, som f.eks da websitet blev påbegyndt.'
+    PUBPAGES: 'Done: Published {count} pages'
+    PageAdded: 'Successfully created page'
+    REMOVED: 'Slet ''%s''%s fra live-sitet'
+    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
+    REMOVEDPAGEFROMDRAFT: '''%s''  fjernet fra udkast-sitet'
+    RESTORE: Restore
+    RESTORED: 'Restored ''{title}'' successfully'
+    ROLLBACK: 'Rul tilbage til denne version'
+    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
+    ROLLEDBACKVERSION: 'Tilbagerullet til version #%d. Nyt versionsnummer er #%d'
+    SAVE: Gem
+    SAVEDRAFT: 'Save Draft'
+    TabContent: Content
+    TabHistory: History
+    TabSettings: Settings
+  CMSPageAddController:
+    MENUTITLE: 'Add page'
+    ParentMode_child: 'Under another page'
+    ParentMode_top: 'Top level'
+  CMSPageEditController:
+    MENUTITLE: 'Edit Page'
+  CMSPageHistoryController:
+    COMPAREMODE: 'Compare mode (select two)'
+    COMPAREVERSIONS: 'Sammenlign versioner'
+    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
+    MENUTITLE: History
+    REVERTTOTHISVERSION: 'Revert to this version'
+    SHOWUNPUBLISHED: 'Show unpublished versions'
+    SHOWVERSION: 'Show Version'
+    VIEW: view
+    VIEWINGVERSION: 'Currently viewing version {version}.'
+  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  CMSPageSettingsController:
+    MENUTITLE: 'Edit Page'
+  CMSPagesController:
+    GalleryView: 'Gallery View'
+    ListView: 'List View'
+    MENUTITLE: Pages
+    TreeView: 'Tree View'
+  CMSSearch:
+    FILTERDATEFROM: Fra
+    FILTERDATEHEADING: Date
+    FILTERDATETO: To
+    FILTERLABELTEXT: Content
+  CMSSettingsController:
+    AUTHOR: Author
+    MENUTITLE: Settings
+    NOTPUBLISHED: 'Not published'
+    PUBLISHER: Publisher
+    UNKNOWN: Unknown
+    WHEN: When
+  CMSSiteTreeFilter_ChangedPages:
+    ENABLEDRAGGING: 'Drag''n''drop'
+    GO: Go
+    MULTISELECT: Multi-selection
+    Title: 'Changed pages'
+    VIEWFIRST: 'Vis f&oslash;rste'
+    VIEWLAST: 'Vis Sidste'
+    VIEWNEXT: 'Vis n&aelig;ste'
+    VIEWPREVIOUS: 'Vis forrige'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'All pages, including deleted'
+  CMSSiteTreeFilter_Search:
+    Title: 'All pages'
+  ContentControl:
+    NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
+  ContentController:
+    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITEFROM: 'Archived site from'
+    CMS: CMS
+    DRAFTSITE: 'Draft Site'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'You must log in with your CMS password in order to view the draft or archived content.  <a href="%s">Click here to go back to the published site.</a>'
+    Email: Email
+    InstallFilesDeleted: 'Installation files have been successfully deleted.'
+    InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    LOGGEDINAS: 'Logged in as'
+    LOGIN: Login
+    LOGOUT: 'Log out'
+    NOTLOGGEDIN: 'Not logged in'
+    PUBLISHEDSITE: 'Published Site'
+    Password: Password
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
+    VIEWPAGEIN: 'View Page in:'
+  ErrorPage:
+    CODE: 'Error code'
+    DEFAULTERRORPAGECONTENT: '<p>Sorry, it seems you were trying to access a page that doesn''t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>'
+    DEFAULTERRORPAGETITLE: 'Page not found'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Server error'
+    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
+    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    400: '400 - Bad Request'
+    401: '401 - Unauthorized'
+    403: '403 - Forbidden'
+    404: '404 - Not Found'
+    405: '405 - Method Not Allowed'
+    406: '406 - Not Acceptable'
+    407: '407 - Proxy Authentication Required'
+    408: '408 - Request Timeout'
+    409: '409 - Conflict'
+    410: '410 - Gone'
+    411: '411 - Length Required'
+    412: '412 - Precondition Failed'
+    413: '413 - Request Entity Too Large'
+    414: '414 - Request-URI Too Long'
+    415: '415 - Unsupported Media Type'
+    416: '416 - Request Range Not Satisfiable'
+    417: '417 - Expectation Failed'
+    500: '500 - Internal Server Error'
+    501: '501 - Not Implemented'
+    502: '502 - Bad Gateway'
+    503: '503 - Service Unavailable'
+    504: '504 - Gateway Timeout'
+    505: '505 - HTTP Version Not Supported'
+  Folder:
+    AddFolderButton: 'Add folder'
+    DELETEUNUSEDTHUMBNAILS: 'Delete unused thumbnails'
+    UNUSEDFILESTITLE: 'Unused files'
+    UNUSEDTHUMBNAILSTITLE: 'Unused thumbnails'
+    UploadFilesButton: Upload
+  GridFieldTestPage:
+    DESCRIPTION: 'Generic content page'
   LeftAndMain:
-    STATUSPUBLISHEDSUCCESS: "Publicerede '%s'"
+    DELETED: Deleted.
+    PreviewButton: Preview
+    SAVEDUP: Saved.
+    STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
+    SearchResults: 'Search Results'
+    VersionUnknown: Unknown
+  LegacyTableFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+  MyNonRootPage:
+    CANACCESS: 'Du kan tilgå¨den arkiverede side på dette link:'
+    DESCRIPTION: 'Generic content page'
+    HAVEASKED: 'Du har spurgt om at se indholdet af vores side på'
+  MyOtherPage:
+    DESCRIPTION: 'Generic content page'
+  MyPage:
+    DESCRIPTION: 'Generic content page'
+  MyRandomPage:
+    DESCRIPTION: 'Generic content page'
+  PackageManagerPage:
+    DESCRIPTION: 'Generic content page'
+    RESET: Reset
+  Page:
+    DESCRIPTION: 'Generic content page'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'CMS Access'
+  Permissions:
+    CONTENT_CATEGORY: 'Content permissions'
+    PERMISSIONS_CATEGORY: 'Roles and access permissions'
+  RedirectorPage:
+    DESCRIPTION: 'Redirects to a different internal page'
+    HASBEENSETUP: 'A redirector page has been set up without anywhere to redirect to.'
+    HEADER: 'This page will redirect users to another page'
+    OTHERURL: 'Other website URL'
+    REDIRECTTO: 'Redirect to'
+    REDIRECTTOEXTERNAL: 'Another website'
+    REDIRECTTOPAGE: 'A page on your website'
+    YOURPAGE: 'Page on your website'
+  RelationFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+    FILTER: Filter
+  ReportAdmin:
+    MENUTITLE: Reports
+  ReportAdminForm:
+    FILTERBY: 'Filter by'
+  SearchForm:
+    GO: Go
+    SEARCH: Search
+    SearchResults: 'Search Results'
   SideReport:
-    EMPTYPAGES: "Tomme sider"
-    LAST2WEEKS: "Sider ændret indenfor de sidste 2 uger"
-    REPEMPTY: "Denne %s rapport er tom."
+    BROKENFILES: 'Pages with broken files'
+    BROKENLINKS: 'Pages with broken links'
+    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
+    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
+    BrokenLinksGroupTitle: 'Broken links reports'
+    ContentGroupTitle: 'Content reports'
+    EMPTYPAGES: 'Tomme sider'
+    LAST2WEEKS: 'Sider ændret indenfor de sidste 2 uger'
+    OtherGroupTitle: Other
+    ParameterLiveCheckbox: 'Check live site'
+    REPEMPTY: 'The {title} report is empty.'
+  SilverStripeNavigatorLink:
+    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
+    ShareLink: 'Share link'
+  SilverStripeNavigatorLinkl:
+    CloseLink: Close
+  SiteConfig:
+    DEFAULTTHEME: '(Use default theme)'
+    EDITHEADER: 'Who can edit pages on this site?'
+    EDIT_PERMISSION: 'Manage site configuration'
+    EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
+    SITENAMEDEFAULT: 'Your Site Name'
+    SITETAGLINE: 'Site Tagline/Slogan'
+    SITETITLE: 'Site title'
+    TABACCESS: Access
+    TABMAIN: Main
+    TAGLINEDEFAULT: 'your tagline here'
+    THEME: Theme
+    TOPLEVELCREATE: 'Who can create pages in the root of the site?'
+    VIEWHEADER: 'Who can view pages on this site?'
+  SiteTree:
+    ACCESSANYONE: Anyone
+    ACCESSHEADER: 'Who can view this page?'
+    ACCESSLOGGEDIN: 'Logged-in users'
+    ACCESSONLYTHESE: 'Only these people (choose from list)'
+    ADDEDTODRAFTHELP: 'Page has not been published yet'
+    ADDEDTODRAFTSHORT: Draft
+    ALLOWCOMMENTS: 'Allow comments on this page?'
+    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+    BUTTONCANCELDRAFT: 'Cancel draft changes'
+    BUTTONCANCELDRAFTDESC: 'Delete your draft and revert to the currently published page'
+    BUTTONSAVEPUBLISH: 'Save & Publish'
+    BUTTONUNPUBLISH: Unpublish
+    BUTTONUNPUBLISHDESC: 'Remove this page from the published site'
+    Back: Back
+    CREATED: 'Date Created'
+    Comments: Comments
+    Content: Content
+    DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
+    DEFAULTABOUTTITLE: 'About Us'
+    DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
+    DEFAULTCONTACTTITLE: 'Contact Us'
+    DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
+    DEFAULTHOMETITLE: Home
+    DELETEDPAGEHELP: 'Page is no longer published'
+    DELETEDPAGESHORT: Deleted
+    DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DependtPageColumnLinkType: 'Link type'
+    DependtPageColumnURL: URL
+    EDITANYONE: 'Anyone who can log-in to the CMS'
+    EDITHEADER: 'Who can edit this page?'
+    EDITONLYTHESE: 'Only these people (choose from list)'
+    EDITORGROUPS: 'Editor Groups'
+    EDIT_ALL_DESCRIPTION: 'Edit any page'
+    EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
+    Editors: 'Editors Groups'
+    HASBROKENLINKS: 'This page has broken links.'
+    HTMLEDITORTITLE: Content
+    INHERIT: 'Inherit from parent page'
+    LASTUPDATED: 'Last Updated'
+    LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
+    MENUTITLE: 'Navigation label'
+    METADESC: 'Meta Description'
+    METAEXTRA: 'Custom Meta Tags'
+    METAKEYWORDS: 'Meta Keywords'
+    METATITLE: 'Meta Title'
+    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
+    MODIFIEDONDRAFTSHORT: Modified
+    PAGELOCATION: 'Page location'
+    PAGETITLE: 'Page name'
+    PAGETYPE: 'Page type'
+    PARENTID: 'Parent page'
+    PARENTTYPE: 'Page location'
+    PARENTTYPE_ROOT: 'Top-level page'
+    PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
+    PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
+    PLURALNAME: 'Site Tres'
+    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
+    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
+    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
+    REMOVEDFROMDRAFTSHORT: 'Removed from draft'
+    REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
+    REORGANISE_DESCRIPTION: 'Change site structure'
+    REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
+    SHOWINMENUS: 'Show in menus?'
+    SHOWINSEARCH: 'Show in search?'
+    SINGULARNAME: 'Site Tree'
+    TABBEHAVIOUR: Behavior
+    TABCONTENT: 'Main Content'
+    TABDEPENDENT: 'Dependent pages'
+    TOPLEVEL: 'Site Content (Top Level)'
+    TOPLEVELCREATORGROUPS: 'Top level creators'
+    URLSegment: 'URL Segment'
+    VIEWERGROUPS: 'Viewer Groups'
+    VIEW_ALL_DESCRIPTION: 'View any page'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
+    VIEW_DRAFT_CONTENT: 'View draft content'
+    VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
+    Viewers: 'Viewers Groups'
+    Visibility: Visibility
+    has_one_Parent: 'Parent Page'
+    many_many_BackLinkTracking: 'Backlink Tracking'
+    many_many_ImageTracking: 'Image Tracking'
+    many_many_LinkTracking: 'Link Tracking'
+  SiteTreeURLSegmentField:
+    HelpChars: ' Special characters are automatically converted or removed.'
   StaticExporter:
-    BASEURL: "Base URL"
-    EXPORTTO: "Eksporter til mappen"
-    NAME: "Statisk eksporter"
-  TableListField_PageControls.ss:
-    VIEWFIRST: "Vis f&oslash;rste"
-    VIEWLAST: "Vis Sidste"
-    VIEWNEXT: "Vis n&aelig;ste"
-    VIEWPREVIOUS: "Vis forrige"
-  ViewArchivedEmail.ss:
-    CANACCESS: "Du kan tilgå¨den arkiverede side på dette link:"
-    HAVEASKED: "Du har spurgt om at se indholdet af vores side på"
-  WidgetAreaEditor.ss:
-    AVAILABLE: "Tilgængelige Widgets"
-    INUSE: "Widgets i brug"
-    NOAVAIL: "Der er ingen widgets tilgængelige"
-  WidgetEditor.ss:
-    DELETE: "Slet"
+    BASEURL: 'Base URL'
+    EXPORTTO: 'Eksporter til mappen'
+    NAME: 'Statisk eksporter'
+  TableListField:
+    FILTER: Filter
+    SELECT: 'Select:'
+  TestFileUploadPage:
+    DESCRIPTION: 'Generic content page'
+  TestPage:
+    DESCRIPTION: 'Generic content page'
+  TreeTools:
+    DisplayLabel: 'Display:'
+  VirtualPage:
+    CHOOSE: 'Choose a page to link to'
+    DESCRIPTION: 'Displays the content of another page'
+    EDITCONTENT: 'click here to edit the content'
+    HEADER: 'This is a virtual page'
+    PLURALNAME: 'Virtual Pags'
+    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
+    SINGULARNAME: 'Virtual Page'
+  cms:
+    FILESYSTEMSYNC: 'Sync files'
