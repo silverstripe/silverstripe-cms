@@ -1,188 +1,190 @@
-zh-CN:
+zh_CN:
+  AssetAdmin:
+    ADDFILES: 'Add Files'
+    ALLOWEDEXTS: 'Allowed extensions'
+    ActionAdd: 'Add folder'
+    AppCategoryArchive: Archive
+    AppCategoryAudio: Audio
+    AppCategoryFlash: Flash
+    AppCategoryImage: Image
+    AppCategoryVideo: Video
+    BackToFolder: 'Back to folder'
+    CREATED: Date
+    CurrentFolderOnly: 'Limit to current folder?'
+    DetailsView: Details
+    FILES: Files
+    FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
+    FROMTHEINTERNET: 'From the internet'
+    FROMYOURCOMPUTER: 'From your computer'
+    Filetype: 'File type'
+    ListView: 'List View'
+    MENUTITLE: Files
+    NEWFOLDER: 新建文件夹
+    SIZE: Size
+    THUMBSDELETED: '{count} unused thumbnails have been deleted'
+    TreeView: 'Tree View'
+    Upload: Upload
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Delete folders'
+  AssetTableField:
+    BACKLINKCOUNT: 'Used on:'
+    PAGES: page(s)
+  BasicFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+  BigFamilyPage:
+    DESCRIPTION: 'Generic content page'
+  BrokenLinksReport:
+    Any: Any
+    BROKENLINKS: 'Broken links report'
+    CheckSite: 'Check site'
+    CheckSiteDropdownDraft: 'Draft Site'
+    CheckSiteDropdownPublished: 'Published Site'
+    ColumnDateLastModified: 'Date last modified'
+    ColumnDateLastPublished: 'Date last published'
+    ColumnProblemType: 'Problem type'
+    ColumnURL: URL
+    HasBrokenFile: 'has broken file'
+    HasBrokenLink: 'has broken link'
+    HasBrokenLinkAndFile: 'has broken link and file'
+    HoverTitleEditPage: 'Edit page'
+    PageName: 'Page name'
+    ReasonDropdown: 'Problem to check'
+    ReasonDropdownBROKENFILE: 'Broken file'
+    ReasonDropdownBROKENLINK: 'Broken link'
+    ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
+    ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
+    RedirectorNonExistent: 'redirector page pointing to non-existent page'
+    SORTASC: 'Sort in ascending order'
+    SORTDESC: 'Sort in descending order'
+    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
+  CMSAddPageController:
+    Title: 'Add page'
+  CMSBatchActions:
+    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
+    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
+    DELETE_DRAFT_PAGES: 'Delete from draft site'
+    DELETE_PAGES: 'Delete from published site'
+    PUBLISHED_PAGES: 'Published %d pages, %d failures'
+    PUBLISH_PAGES: Publish
+    UNPUBLISHED_PAGES: 'Un-published %d pages'
+    UNPUBLISH_PAGES: Un-publish
+  CMSFileAddController:
+    MENUTITLE: Files
+  CMSMain:
+    ACCESS: 'Access to ''{title}'' section'
+    ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
+    AddNew: 'Add new page'
+    AddNewButton: 'Add new'
+    ChoosePageParentMode: 'Choose where to create this page'
+    ChoosePageType: 'Choose page type'
+    Create: Create
+    DELETE: '从测试网站中删除'
+    DELETEFP: Delete
+    DESCREMOVED: 'and {count} descendants'
+    EMAIL: 电子邮件
+    MENUTITLE: 'Edit Page'
+    NEW: 新建的
+    PAGENOTEXISTS: 该网页不存在
+    PAGES: Pages
+    PAGETYPEANYOPT: Any
+    PAGETYPEOPT: 'Page Type'
+    PUBALLCONFIRM: '请发布该站的每一网页，这样，预备发布站上的内容就会复制到正式发布站上'
+    PUBALLFUN: '“全部发布“功能'
+    PUBALLFUN2: 按下这一按键将等同于逐一发布每一网页。此功能适用于被大量编辑过的网页，如在网站被第一次使用时。
+    PUBPAGES: 'Done: Published {count} pages'
+    PageAdded: 'Successfully created page'
+    REMOVED: '已从正式网站删除 ''%s''%s '
+    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
+    REMOVEDPAGEFROMDRAFT: '已从测试站点删除 ''%s'''
+    RESTORE: Restore
+    RESTORED: 'Restored ''{title}'' successfully'
+    ROLLBACK: 恢复到这一版本
+    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
+    ROLLEDBACKVERSION: '回复到#%d版本。新的版本号为#%d'
+    SAVE: 保存
+    SAVEDRAFT: 'Save Draft'
+    TabContent: Content
+    TabHistory: History
+    TabSettings: Settings
+  CMSPageAddController:
+    MENUTITLE: 'Add page'
+    ParentMode_child: 'Under another page'
+    ParentMode_top: 'Top level'
+  CMSPageEditController:
+    MENUTITLE: 'Edit Page'
+  CMSPageHistoryController:
+    COMPAREMODE: 'Compare mode (select two)'
+    COMPAREVERSIONS: 'Compare Versions'
+    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
+    MENUTITLE: History
+    REVERTTOTHISVERSION: 'Revert to this version'
+    SHOWUNPUBLISHED: 'Show unpublished versions'
+    SHOWVERSION: 'Show Version'
+    VIEW: view
+    VIEWINGVERSION: 'Currently viewing version {version}.'
+  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  CMSPageSettingsController:
+    MENUTITLE: 'Edit Page'
+  CMSPagesController:
+    GalleryView: 'Gallery View'
+    ListView: 'List View'
+    MENUTITLE: Pages
+    TreeView: 'Tree View'
   CMSSearch:
     FILTERDATEFROM: From
     FILTERDATEHEADING: Date
-    FILTERLABELTEXT: Content
     FILTERDATETO: To
-  SearchForm:
-    GO: Go
-    SEARCH: Search
-    SearchResults: 'Search Results'
-  StaticExporter:
-    EXPORTTO: 导出到该文件夹
-    BASEURL: 基本URL
-    NAME: 网站静态拷贝导出器
-  LeftAndMain:
-    VersionUnknown: Unknown
-    STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
-    DELETED: Deleted.
-    SearchResults: 'Search Results'
-    PreviewButton: Preview
-    SAVEDUP: Saved.
-  CMSPagesController:
-    ListView: 'List View'
-    TreeView: 'Tree View'
-    MENUTITLE: Pages
-    GalleryView: 'Gallery View'
-  MyRandomPage:
-    DESCRIPTION: 'Generic content page'
+    FILTERLABELTEXT: Content
   CMSSettingsController:
-    MENUTITLE: Settings
-    PUBLISHER: Publisher
-    NOTPUBLISHED: 'Not published'
-    WHEN: When
     AUTHOR: Author
+    MENUTITLE: Settings
+    NOTPUBLISHED: 'Not published'
+    PUBLISHER: Publisher
     UNKNOWN: Unknown
-  CMSSiteTreeFilter_Search:
-    Title: 'All pages'
-  CMSPageSettingsController:
-    MENUTITLE: 'Edit Page'
-  CMSPageHistoryController:
-    VIEWINGVERSION: 'Currently viewing version {version}.'
-    MENUTITLE: History
-    COMPAREVERSIONS: 'Compare Versions'
-    COMPAREMODE: 'Compare mode (select two)'
-    REVERTTOTHISVERSION: 'Revert to this version'
-    SHOWVERSION: 'Show Version'
-    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
-    SHOWUNPUBLISHED: 'Show unpublished versions'
-    VIEW: view
-  VirtualPage:
-    EDITCONTENT: '点击这里以编辑内容'
-    HEADER: 这是一个虚拟页
-    PLURALNAME: 'Virtual Pags'
-    SINGULARNAME: 'Virtual Page'
-    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
-    DESCRIPTION: 'Displays the content of another page'
-    CHOOSE: 选择一个网页进行链接
-  RedirectorPage:
-    OTHERURL: 另一网站的URL
-    DESCRIPTION: 'Redirects to a different internal page'
-    REDIRECTTOEXTERNAL: 另一网站
-    REDIRECTTO: 重新导向
-    YOURPAGE: 您网站中的网页
-    HEADER: 该页会将用户重新导向另一网页
-    REDIRECTTOPAGE: 您网站中的一个网页
-    HASBEENSETUP: 重导网页被生成，却没有什么地方由它来重导。
-  Folder:
-    UploadFilesButton: Upload
-    AddFolderButton: 'Add folder'
-    UNUSEDFILESTITLE: 'Unused files'
-    UNUSEDTHUMBNAILSTITLE: 'Unused thumbnails'
-    DELETEUNUSEDTHUMBNAILS: 'Delete unused thumbnails'
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
-    ShareLink: 'Share link'
+    WHEN: When
+  CMSSiteTreeFilter_ChangedPages:
+    ENABLEDRAGGING: 'Drag''n''drop'
+    GO: 执行
+    MULTISELECT: Multi-selection
+    Title: 'Changed pages'
+    VIEWFIRST: 'View first'
+    VIEWLAST: 'View last'
+    VIEWNEXT: 'View next'
+    VIEWPREVIOUS: 'View previous'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
-  SilverStripeNavigatorLinkl:
-    CloseLink: Close
+  CMSSiteTreeFilter_Search:
+    Title: 'All pages'
   ContentControl:
     NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
-  SiteTree:
-    DependtPageColumnLinkType: 'Link type'
-    DEFAULTABOUTTITLE: 'About Us'
-    VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
-    EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
-    REMOVEDFROMDRAFTSHORT: 'Removed from draft'
-    EDITONLYTHESE: '只有这些人（请从下列清单中选择）'
-    Editors: 'Editors Groups'
-    Comments: Comments
-    TOPLEVEL: '网站内容（顶层）'
-    PARENTID: 'Parent page'
-    PAGELOCATION: 'Page location'
-    METAKEYWORDS: '网页关键词标签'
-    LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
-    PAGETITLE: 网页名称
-    BUTTONUNPUBLISHDESC: '将此页从正式发布站删除'
-    DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
-    EDIT_ALL_DESCRIPTION: 'Edit any page'
-    DEFAULTHOMETITLE: Home
-    PARENTTYPE: 'Page location'
-    ACCESSHEADER: 在我的网站上，谁可以浏览此页？
-    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
-    SHOWINSEARCH: '是否包括在搜索结果中？'
-    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
-    PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
-    VIEWERGROUPS: 'Viewer Groups'
-    ACCESSONLYTHESE: '只有这些人（请从下列清单中选择）'
-    CREATED: 'Date Created'
-    INHERIT: 'Inherit from parent page'
-    URLSegment: 'URL Segment'
-    SINGULARNAME: 'Site Tree'
-    VIEW_DRAFT_CONTENT: 'View draft content'
-    TOPLEVELCREATORGROUPS: 'Top level creators'
-    REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
-    DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
-    PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
-    PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    TABBEHAVIOUR: 行为特点
-    SHOWINMENUS: 是否出现在菜单中？
-    BUTTONCANCELDRAFT: 取消草稿的改动
-    many_many_BackLinkTracking: 'Backlink Tracking'
-    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
-    PLURALNAME: 'Site Tres'
-    TABDEPENDENT: 'Dependent pages'
-    ACCESSLOGGEDIN: 已登录的用户
-    METADESC: '网页描述标签'
-    MENUTITLE: '导航标签'
-    Content: Content
-    DELETEDPAGEHELP: 'Page is no longer published'
-    DependtPageColumnURL: URL
-    REORGANISE_DESCRIPTION: 'Change site structure'
-    DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
-    BUTTONCANCELDRAFTDESC: 将您的草稿恢复到目前正式发布的版本
-    EDITHEADER: 谁能在CMS中编辑此页？
-    EDITANYONE: 任何可以登录CMS的人
-    REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
-    DEFAULTCONTACTTITLE: 'Contact Us'
-    many_many_LinkTracking: 'Link Tracking'
-    Visibility: Visibility
-    MODIFIEDONDRAFTSHORT: Modified
-    PAGETYPE: 网页类型
-    many_many_ImageTracking: 'Image Tracking'
-    HTMLEDITORTITLE: '内容'
-    ACCESSANYONE: 任何人
-    PARENTTYPE_ROOT: 'Top-level page'
-    ALLOWCOMMENTS: '是否允许对次页进行评论？'
-    LASTUPDATED: 'Last Updated'
-    METAEXTRA: '自定义Meta标签'
-    HASBROKENLINKS: 该页有失效链接。
-    DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
-    VIEW_ALL_DESCRIPTION: 'View any page'
-    TABCONTENT: '内容'
-    Viewers: 'Viewers Groups'
-    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
-    ADDEDTODRAFTHELP: 'Page has not been published yet'
-    BUTTONUNPUBLISH: 撤消发布
-    METATITLE: 'Title标签'
-    ADDEDTODRAFTSHORT: Draft
-    has_one_Parent: 'Parent Page'
-    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
-    BUTTONSAVEPUBLISH: 保存并发布
-    DELETEDPAGESHORT: Deleted
-    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
-    EDITORGROUPS: 'Editor Groups'
-    Back: Back
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  CMSBatchActions:
-    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
-    DELETE_PAGES: 'Delete from published site'
-    DELETE_DRAFT_PAGES: 'Delete from draft site'
-    UNPUBLISHED_PAGES: 'Un-published %d pages'
-    UNPUBLISH_PAGES: Un-publish
-    PUBLISHED_PAGES: 'Published %d pages, %d failures'
-    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
-    PUBLISH_PAGES: Publish
-  MyPage:
-    DESCRIPTION: 'Generic content page'
+  ContentController:
+    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITEFROM: 'Archived site from'
+    CMS: CMS
+    DRAFTSITE: 'Draft Site'
+    DRAFT_SITE_ACCESS_RESTRICTION: '您必需用您的CMS密码来登录，才可浏览预备发布或已归档内容。<a href="%s">点击这里可回到正式发布站<a>'
+    Email: Email
+    InstallFilesDeleted: 'Installation files have been successfully deleted.'
+    InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    LOGGEDINAS: 'Logged in as'
+    LOGIN: Login
+    LOGOUT: 'Log out'
+    NOTLOGGEDIN: 'Not logged in'
+    PUBLISHEDSITE: 'Published Site'
+    Password: Password
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
+    VIEWPAGEIN: 'View Page in:'
   ErrorPage:
     CODE: '错误代码'
     DEFAULTERRORPAGECONTENT: '<p>Sorry, it seems you were trying to access a page that doesn''t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>'
     DEFAULTERRORPAGETITLE: 'Page not found'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Server error'
+    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
+    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
     400: '400 - Bad Request'
     401: '401 - Unauthorized'
     403: '403 - Forbidden'
@@ -200,209 +202,207 @@ zh-CN:
     415: '415 - Unsupported Media Type'
     416: '416 - Request Range Not Satisfiable'
     417: '417 - Expectation Failed'
-    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
-    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
     500: '500 - Internal Server Error'
     501: '501 - Not Implemented'
     502: '502 - Bad Gateway'
     503: '503 - Service Unavailable'
     504: '504 - Gateway Timeout'
     505: '505 - HTTP Version Not Supported'
-  AssetAdmin:
-    FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
-    DetailsView: Details
-    CREATED: Date
-    MENUTITLE: Files
-    FROMTHEINTERNET: 'From the internet'
-    BackToFolder: 'Back to folder'
-    Upload: Upload
-    NEWFOLDER: 新建文件夹
-    CurrentFolderOnly: 'Limit to current folder?'
-    ADDFILES: 'Add Files'
-    THUMBSDELETED: '{count} unused thumbnails have been deleted'
-    SIZE: Size
-    FILES: Files
-    TreeView: 'Tree View'
-    AppCategoryVideo: Video
-    AppCategoryAudio: Audio
-    Filetype: 'File type'
-    AppCategoryArchive: Archive
-    ActionAdd: 'Add folder'
-    AppCategoryFlash: Flash
-    FROMYOURCOMPUTER: 'From your computer'
-    ListView: 'List View'
-    AppCategoryImage: Image
-    ALLOWEDEXTS: 'Allowed extensions'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-    FILTER: Filter
-  Permissions:
-    CONTENT_CATEGORY: 'Content permissions'
-    PERMISSIONS_CATEGORY: 'Roles and access permissions'
-  BrokenLinksReport:
-    HasBrokenFile: 'has broken file'
-    ReasonDropdownBROKENFILE: 'Broken file'
-    ColumnDateLastPublished: 'Date last published'
-    ColumnURL: URL
-    CheckSiteDropdownPublished: 'Published Site'
-    HasBrokenLinkAndFile: 'has broken link and file'
-    ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
-    ColumnDateLastModified: 'Date last modified'
-    PageName: 'Page name'
-    ReasonDropdown: 'Problem to check'
-    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
-    ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
-    HasBrokenLink: 'has broken link'
-    CheckSite: 'Check site'
-    HoverTitleEditPage: 'Edit page'
-    ReasonDropdownBROKENLINK: 'Broken link'
-    Any: Any
-    BROKENLINKS: 'Broken links report'
-    RedirectorNonExistent: 'redirector page pointing to non-existent page'
-    ColumnProblemType: 'Problem type'
-    CheckSiteDropdownDraft: 'Draft Site'
-    SORTASC: 'Sort in ascending order'
-    SORTDESC: 'Sort in descending order'
-  MyOtherPage:
-    DESCRIPTION: 'Generic content page'
-  CMSPageAddController:
-    ParentMode_top: 'Top level'
-    MENUTITLE: 'Add page'
-    ParentMode_child: 'Under another page'
-  TestPage:
-    DESCRIPTION: 'Generic content page'
-  ReportAdminForm:
-    FILTERBY: 'Filter by'
-  CMSAddPageController:
-    Title: 'Add page'
+  Folder:
+    AddFolderButton: 'Add folder'
+    DELETEUNUSEDTHUMBNAILS: 'Delete unused thumbnails'
+    UNUSEDFILESTITLE: 'Unused files'
+    UNUSEDTHUMBNAILSTITLE: 'Unused thumbnails'
+    UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
-  TableListField:
-    SELECT: 'Select:'
-    FILTER: Filter
-  ContentController:
-    DRAFTSITE: 'Draft Site'
-    InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    LOGOUT: 'Log out'
-    LOGGEDINAS: 'Logged in as'
-    LOGIN: Login
-    CMS: CMS
-    Email: Email
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
-    InstallFilesDeleted: 'Installation files have been successfully deleted.'
-    DRAFT_SITE_ACCESS_RESTRICTION: '您必需用您的CMS密码来登录，才可浏览预备发布或已归档内容。<a href="%s">点击这里可回到正式发布站<a>'
-    NOTLOGGEDIN: 'Not logged in'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
-    PUBLISHEDSITE: 'Published Site'
-    ARCHIVEDSITEFROM: 'Archived site from'
-    ARCHIVEDSITE: 'Archived Site'
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
-    Password: Password
-    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
-    VIEWPAGEIN: 'View Page in:'
-  CMSPageEditController:
-    MENUTITLE: 'Edit Page'
-  Page:
-    DESCRIPTION: 'Generic content page'
-  SiteTreeURLSegmentField:
-    HelpChars: ' Special characters are automatically converted or removed.'
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Changed pages'
-    ENABLEDRAGGING: 'Drag''n''drop'
-    MULTISELECT: Multi-selection
-    GO: 执行
-    VIEWPREVIOUS: 'View previous'
-    VIEWNEXT: 'View next'
-    VIEWFIRST: 'View first'
-    VIEWLAST: 'View last'
-  BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
-  TreeTools:
-    DisplayLabel: 'Display:'
-  SiteConfig:
-    SITENAMEDEFAULT: 'Your Site Name'
-    SITETITLE: 'Site title'
-    TAGLINEDEFAULT: 'your tagline here'
-    EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
-    EDIT_PERMISSION: 'Manage site configuration'
-    VIEWHEADER: 'Who can view pages on this site?'
-    TOPLEVELCREATE: 'Who can create pages in the root of the site?'
-    TABMAIN: Main
-    EDITHEADER: 'Who can edit pages on this site?'
-    THEME: Theme
-    TABACCESS: Access
-    DEFAULTTHEME: '(Use default theme)'
-    SITETAGLINE: 'Site Tagline/Slogan'
-  CMSMain:
-    ChoosePageType: 'Choose page type'
-    PAGENOTEXISTS: 该网页不存在
-    Create: Create
-    PUBALLFUN: '“全部发布“功能'
-    ChoosePageParentMode: 'Choose where to create this page'
-    NEW: 新建的
-    EMAIL: 电子邮件
-    REMOVEDPAGEFROMDRAFT: '已从测试站点删除 ''%s'''
-    ROLLEDBACKVERSION: '回复到#%d版本。新的版本号为#%d'
-    TabContent: Content
-    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
-    TabSettings: Settings
-    ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
-    SAVEDRAFT: 'Save Draft'
-    TabHistory: History
-    ROLLBACK: 恢复到这一版本
-    AddNewButton: 'Add new'
-    AddNew: 'Add new page'
-    MENUTITLE: 'Edit Page'
-    PUBALLFUN2: 按下这一按键将等同于逐一发布每一网页。此功能适用于被大量编辑过的网页，如在网站被第一次使用时。
-    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
-    PUBALLCONFIRM: '请发布该站的每一网页，这样，预备发布站上的内容就会复制到正式发布站上'
-    PAGETYPEANYOPT: Any
-    PageAdded: 'Successfully created page'
-    DESCREMOVED: 'and {count} descendants'
-    DELETEFP: Delete
-    RESTORE: Restore
-    REMOVED: '已从正式网站删除 ''%s''%s '
-    ACCESS: 'Access to ''{title}'' section'
-    PAGETYPEOPT: 'Page Type'
-    PUBPAGES: 'Done: Published {count} pages'
-    SAVE: 保存
-    PAGES: Pages
-    RESTORED: 'Restored ''{title}'' successfully'
-    DELETE: '从测试网站中删除'
-  SideReport:
-    EMPTYPAGES: 空白页
-    ParameterLiveCheckbox: 'Check live site'
-    REPEMPTY: 'The {title} report is empty.'
-    BROKENLINKS: 'Pages with broken links'
-    LAST2WEEKS: '在过去2周内编辑过的网页'
-    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
-    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
-    BrokenLinksGroupTitle: 'Broken links reports'
-    BROKENFILES: 'Pages with broken files'
-    OtherGroupTitle: Other
-    ContentGroupTitle: 'Content reports'
-  CMSFileAddController:
-    MENUTITLE: Files
-  MyNonRootPage:
-    DESCRIPTION: 'Generic content page'
-    CANACCESS: '您可通过这个链接进入已归挡的网页：'
-    HAVEASKED: '在%s,您要求浏览我们网站'
+  LeftAndMain:
+    DELETED: Deleted.
+    PreviewButton: Preview
+    SAVEDUP: Saved.
+    STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
+    SearchResults: 'Search Results'
+    VersionUnknown: Unknown
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-  TestFileUploadPage:
+  MyNonRootPage:
+    CANACCESS: '您可通过这个链接进入已归挡的网页：'
     DESCRIPTION: 'Generic content page'
-  AssetTableField:
-    PAGES: page(s)
-    BACKLINKCOUNT: 'Used on:'
-  ReportAdmin:
-    MENUTITLE: Reports
-  AssetAdmin_DeleteBatchAction:
-    TITLE: 'Delete folders'
-  cms:
-    FILESYSTEMSYNC: 'Sync files'
-  Permission:
-    CMS_ACCESS_CATEGORY: 'CMS Access'
+    HAVEASKED: '在%s,您要求浏览我们网站'
+  MyOtherPage:
+    DESCRIPTION: 'Generic content page'
+  MyPage:
+    DESCRIPTION: 'Generic content page'
+  MyRandomPage:
+    DESCRIPTION: 'Generic content page'
   PackageManagerPage:
     DESCRIPTION: 'Generic content page'
     RESET: Reset
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  Page:
+    DESCRIPTION: 'Generic content page'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'CMS Access'
+  Permissions:
+    CONTENT_CATEGORY: 'Content permissions'
+    PERMISSIONS_CATEGORY: 'Roles and access permissions'
+  RedirectorPage:
+    DESCRIPTION: 'Redirects to a different internal page'
+    HASBEENSETUP: 重导网页被生成，却没有什么地方由它来重导。
+    HEADER: 该页会将用户重新导向另一网页
+    OTHERURL: 另一网站的URL
+    REDIRECTTO: 重新导向
+    REDIRECTTOEXTERNAL: 另一网站
+    REDIRECTTOPAGE: 您网站中的一个网页
+    YOURPAGE: 您网站中的网页
+  RelationFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+    FILTER: Filter
+  ReportAdmin:
+    MENUTITLE: Reports
+  ReportAdminForm:
+    FILTERBY: 'Filter by'
+  SearchForm:
+    GO: Go
+    SEARCH: Search
+    SearchResults: 'Search Results'
+  SideReport:
+    BROKENFILES: 'Pages with broken files'
+    BROKENLINKS: 'Pages with broken links'
+    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
+    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
+    BrokenLinksGroupTitle: 'Broken links reports'
+    ContentGroupTitle: 'Content reports'
+    EMPTYPAGES: 空白页
+    LAST2WEEKS: '在过去2周内编辑过的网页'
+    OtherGroupTitle: Other
+    ParameterLiveCheckbox: 'Check live site'
+    REPEMPTY: 'The {title} report is empty.'
+  SilverStripeNavigatorLink:
+    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
+    ShareLink: 'Share link'
+  SilverStripeNavigatorLinkl:
+    CloseLink: Close
+  SiteConfig:
+    DEFAULTTHEME: '(Use default theme)'
+    EDITHEADER: 'Who can edit pages on this site?'
+    EDIT_PERMISSION: 'Manage site configuration'
+    EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
+    SITENAMEDEFAULT: 'Your Site Name'
+    SITETAGLINE: 'Site Tagline/Slogan'
+    SITETITLE: 'Site title'
+    TABACCESS: Access
+    TABMAIN: Main
+    TAGLINEDEFAULT: 'your tagline here'
+    THEME: Theme
+    TOPLEVELCREATE: 'Who can create pages in the root of the site?'
+    VIEWHEADER: 'Who can view pages on this site?'
+  SiteTree:
+    ACCESSANYONE: 任何人
+    ACCESSHEADER: 在我的网站上，谁可以浏览此页？
+    ACCESSLOGGEDIN: 已登录的用户
+    ACCESSONLYTHESE: '只有这些人（请从下列清单中选择）'
+    ADDEDTODRAFTHELP: 'Page has not been published yet'
+    ADDEDTODRAFTSHORT: Draft
+    ALLOWCOMMENTS: '是否允许对次页进行评论？'
+    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+    BUTTONCANCELDRAFT: 取消草稿的改动
+    BUTTONCANCELDRAFTDESC: 将您的草稿恢复到目前正式发布的版本
+    BUTTONSAVEPUBLISH: 保存并发布
+    BUTTONUNPUBLISH: 撤消发布
+    BUTTONUNPUBLISHDESC: '将此页从正式发布站删除'
+    Back: Back
+    CREATED: 'Date Created'
+    Comments: Comments
+    Content: Content
+    DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
+    DEFAULTABOUTTITLE: 'About Us'
+    DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
+    DEFAULTCONTACTTITLE: 'Contact Us'
+    DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
+    DEFAULTHOMETITLE: Home
+    DELETEDPAGEHELP: 'Page is no longer published'
+    DELETEDPAGESHORT: Deleted
+    DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DependtPageColumnLinkType: 'Link type'
+    DependtPageColumnURL: URL
+    EDITANYONE: 任何可以登录CMS的人
+    EDITHEADER: 谁能在CMS中编辑此页？
+    EDITONLYTHESE: '只有这些人（请从下列清单中选择）'
+    EDITORGROUPS: 'Editor Groups'
+    EDIT_ALL_DESCRIPTION: 'Edit any page'
+    EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
+    Editors: 'Editors Groups'
+    HASBROKENLINKS: 该页有失效链接。
+    HTMLEDITORTITLE: '内容'
+    INHERIT: 'Inherit from parent page'
+    LASTUPDATED: 'Last Updated'
+    LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
+    MENUTITLE: '导航标签'
+    METADESC: '网页描述标签'
+    METAEXTRA: '自定义Meta标签'
+    METAKEYWORDS: '网页关键词标签'
+    METATITLE: 'Title标签'
+    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
+    MODIFIEDONDRAFTSHORT: Modified
+    PAGELOCATION: 'Page location'
+    PAGETITLE: 网页名称
+    PAGETYPE: 网页类型
+    PARENTID: 'Parent page'
+    PARENTTYPE: 'Page location'
+    PARENTTYPE_ROOT: 'Top-level page'
+    PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
+    PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
+    PLURALNAME: 'Site Tres'
+    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
+    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
+    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
+    REMOVEDFROMDRAFTSHORT: 'Removed from draft'
+    REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
+    REORGANISE_DESCRIPTION: 'Change site structure'
+    REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
+    SHOWINMENUS: 是否出现在菜单中？
+    SHOWINSEARCH: '是否包括在搜索结果中？'
+    SINGULARNAME: 'Site Tree'
+    TABBEHAVIOUR: 行为特点
+    TABCONTENT: '内容'
+    TABDEPENDENT: 'Dependent pages'
+    TOPLEVEL: '网站内容（顶层）'
+    TOPLEVELCREATORGROUPS: 'Top level creators'
+    URLSegment: 'URL Segment'
+    VIEWERGROUPS: 'Viewer Groups'
+    VIEW_ALL_DESCRIPTION: 'View any page'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
+    VIEW_DRAFT_CONTENT: 'View draft content'
+    VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
+    Viewers: 'Viewers Groups'
+    Visibility: Visibility
+    has_one_Parent: 'Parent Page'
+    many_many_BackLinkTracking: 'Backlink Tracking'
+    many_many_ImageTracking: 'Image Tracking'
+    many_many_LinkTracking: 'Link Tracking'
+  SiteTreeURLSegmentField:
+    HelpChars: ' Special characters are automatically converted or removed.'
+  StaticExporter:
+    BASEURL: 基本URL
+    EXPORTTO: 导出到该文件夹
+    NAME: 网站静态拷贝导出器
+  TableListField:
+    FILTER: Filter
+    SELECT: 'Select:'
+  TestFileUploadPage:
+    DESCRIPTION: 'Generic content page'
+  TestPage:
+    DESCRIPTION: 'Generic content page'
+  TreeTools:
+    DisplayLabel: 'Display:'
+  VirtualPage:
+    CHOOSE: 选择一个网页进行链接
+    DESCRIPTION: 'Displays the content of another page'
+    EDITCONTENT: '点击这里以编辑内容'
+    HEADER: 这是一个虚拟页
+    PLURALNAME: 'Virtual Pags'
+    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
+    SINGULARNAME: 'Virtual Page'
+  cms:
+    FILESYSTEMSYNC: 'Sync files'
