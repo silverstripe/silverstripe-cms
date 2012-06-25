@@ -60,8 +60,8 @@ sv:
   CMSAddPageController:
     Title: 'Skapa sida'
   CMSBatchActions:
-    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
-    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
+    DELETED_DRAFT_PAGES: 'Raderade %d sidor från utkastsajten, %d misslyckades'
+    DELETED_PAGES: 'Raderade %d sidor från den publiserade sajten, %d misslyckades'
     DELETE_DRAFT_PAGES: 'Radera från sajt utkast'
     DELETE_PAGES: 'radera från publicerad site'
     PUBLISHED_PAGES: 'Publicerat %d sidor, %d misslyckades'

@@ -2,7 +2,7 @@ de:
   AssetAdmin:
     ADDFILES: 'Add Files'
     ALLOWEDEXTS: 'Allowed extensions'
-    ActionAdd: 'Add folder'
+    ActionAdd: 'Ordner hinzufügen'
     AppCategoryArchive: Archive
     AppCategoryAudio: Audio
     AppCategoryFlash: Flash
@@ -32,7 +32,7 @@ de:
   BasicFieldsTestPage:
     DESCRIPTION: 'Allgemeine Inaltsseite'
   BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Allgemeine Inaltsseite'
   BrokenLinksReport:
     Any: Alle
     BROKENLINKS: 'Defekte Links'
@@ -77,7 +77,7 @@ de:
     AddNewButton: 'Add new'
     ChoosePageParentMode: 'Choose where to create this page'
     ChoosePageType: 'Choose page type'
-    Create: Create
+    Create: Erstellen
     DELETE: 'Von Entwurf-Seite löschen'
     DELETEFP: 'Von veröffentlicher Seite entfernen'
     DESCREMOVED: 'and {count} descendants'
@@ -92,7 +92,7 @@ de:
     PUBALLFUN: '"Alle veröffentlichen"-Funktion'
     PUBALLFUN2: 'Dieser Button bewirkt dasselbe wie auf jeder Seite "veröffentlichen" zu wählen. Sie sollten diese Funktion nutzen, wenn grössere Inhaltsänderungen stattgefunden haben, zum Beispiel wenn die Seite erstellt wurde.'
     PUBPAGES: 'Done: Published {count} pages'
-    PageAdded: 'Successfully created page'
+    PageAdded: 'Seite erfolgreich erstellt'
     REMOVED: 'Lösche ''%s''%s von der Live-Seite'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: 'Lösche ''%s'' von der Entwurfs-Seite'
@@ -105,7 +105,7 @@ de:
     SAVEDRAFT: 'Entwurf speichern'
     TabContent: Inhalt
     TabHistory: History
-    TabSettings: Settings
+    TabSettings: Einstellungen
   CMSPageAddController:
     MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
@@ -166,7 +166,7 @@ de:
     Email: Email
     InstallFilesDeleted: 'Installation files have been successfully deleted.'
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    InstallSuccessCongratulations: 'SilverStripe wurde erfolgreich installiert.'
     LOGGEDINAS: 'Angemeldet als'
     LOGIN: Anmelden
     LOGOUT: Abmelden
@@ -220,7 +220,7 @@ de:
     DELETED: Deleted.
     PreviewButton: Vorschau
     SAVEDUP: Saved.
-    STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
+    STATUSPUBLISHEDSUCCESS: '''{title}'' wurde erfolgreich veröffentlicht'
     SearchResults: Suchergebnis
     VersionUnknown: Unbekannt
   LegacyTableFieldsTestPage:
@@ -382,7 +382,7 @@ de:
     many_many_ImageTracking: Bild-Verfolgung
     many_many_LinkTracking: Link-Verfolgung
   SiteTreeURLSegmentField:
-    HelpChars: ' Special characters are automatically converted or removed.'
+    HelpChars: 'Umlaute werden automatisch konvertiert oder entfernt.'
   StaticExporter:
     BASEURL: 'Ausgangs URL'
     EXPORTTO: 'Exportieren in diesen Ordner'
