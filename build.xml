@@ -408,13 +408,16 @@ Your friendly automated release script.
 	<target name="translations-staging-setup">
 		<propertyprompt propertyName="module" 
 			promptText="Module name?"
-			useExistingValue="true" />
+			useExistingValue="true"
+			defaultValue="framework" />
 		<propertyprompt propertyName="getlocalization.${module}.project" 
 			promptText="getlocalization project"
-			useExistingValue="true" />
+			useExistingValue="true"
+			defaultValue="sapphire" />
 		<propertyprompt propertyName="getlocalization.${module}.user" 
 			promptText="getlocalization username"
-			useExistingValue="true" />
+			useExistingValue="true"
+			defaultValue="silverstripe" />
 		<propertyprompt propertyName="getlocalization.${module}.password" 
 			promptText="getlocalization password"
 			useExistingValue="true" />
@@ -432,8 +435,8 @@ Your friendly automated release script.
 	<target name="translations-update-git-masterfile" 
 		description="Collect translation on a module, commit them into a specialized branch and push to the origin repository."
 		depends="translations-staging-setup">
-		<exec command="git merge origin/master" dir="${module}" checkreturn="true" />
-		<exec command="php framework/cli-script.php dev/tasks/i18nTextCollectorTask" passthru="true" />		
+		<exec command="git merge --strategy recursive -X theirs origin/master" dir="${module}" checkreturn="true" />
+		<exec command="php framework/cli-script.php dev/tasks/i18nTextCollectorTask" passthru="true" checkreturn="true" />		
 		<exec command="git status --short" dir="${module}" outputProperty="git.status.${module}" />
 		<if>
 			<istrue value="${git.status.${module}}" />
