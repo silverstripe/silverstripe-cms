@@ -454,7 +454,7 @@ Your friendly automated release script.
 
 	<target name="translations-update-gl-contribs" description="Update translations in working copy from getlocalization.com, and commit changes to a specialized branch and push to origin repository. Note: The API requests can take a couple of minutes."
 		depends="translations-staging-setup">
-		<exec command="git stash" dir="${module}" checkreturn="true" />
+		<exec command="git stash" dir="${module}" />
 		<updateTranslationsTask 
 			glProductName="${getlocalization.${module}.project}" 
 			glUser="${getlocalization.${module}.user}"
@@ -472,7 +472,7 @@ Your friendly automated release script.
 			</then>
 		</if>
 		<exec command="git checkout master" dir="${module}" checkreturn="true" />
-		<exec command="git stash pop" dir="${module}" checkreturn="true" />
+		<exec command="git stash pop" dir="${module}" />
 	</target>
 
 	<target name="translations-sync" 
