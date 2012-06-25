@@ -156,11 +156,13 @@ class UpdateTranslationsTask extends SilverStripeBuildTask {
 		// can't easily change to that format for backwards compat reasons, so we need to convert.
 		// The passed in file name doesn't really matter here, only the contained locale.
 		// By convention, the first line in the YAML file is always the locale used, as a YAML "root key".
+		$localeRegex = '/^([\w-_]*):/';
 		$content = file_get_contents($file);
-		preg_match('/^([\w-_]*):/', $content, $matches);
+		preg_match($localeRegex, $content, $matches);
 		$locale = $matches[1];
 		$locale = str_replace('-', '_', $locale);
 		$locale = str_replace(':', '', $locale);
+		$content = preg_replace($localeRegex, $locale . ':', $content);
 		
 		// Convert faulty multiline double quoted string YAML
 		// to block format, in order to allow the YAML Parser to open it later
@@ -191,11 +193,11 @@ class UpdateTranslationsTask extends SilverStripeBuildTask {
 
 		// Parse YML as a sanity check,
 		// and reorder alphabetically by key to ensure consistent diffs.
-		require_once '../framework/thirdparty/zend_translate_railsyaml/library/Translate/Adapter/thirdparty/sfYaml/lib/sfYaml.php';
-		require_once '../framework/thirdparty/zend_translate_railsyaml/library/Translate/Adapter/thirdparty/sfYaml/lib/sfYamlParser.php';
-		require_once '../framework/thirdparty/zend_translate_railsyaml/library/Translate/Adapter/thirdparty/sfYaml/lib/sfYamlDumper.php';
+		require_once dirname(__FILE__) . '/../framework/thirdparty/zend_translate_railsyaml/library/Translate/Adapter/thirdparty/sfYaml/lib/sfYaml.php';
+		require_once dirname(__FILE__) . '/../framework/thirdparty/zend_translate_railsyaml/library/Translate/Adapter/thirdparty/sfYaml/lib/sfYamlParser.php';
+		require_once dirname(__FILE__) . '/../framework/thirdparty/zend_translate_railsyaml/library/Translate/Adapter/thirdparty/sfYaml/lib/sfYamlDumper.php';
 		$yamlHandler = new sfYaml();
-		$yml = $yamlHandler->parse($content);
+		$yml = $yamlHandler->load($content);
 		if(isset($yml[$locale]) && is_array($yml[$locale])) {
 			ksort($yml[$locale]);
 			foreach($yml[$locale] as $k => &$v) {

@@ -406,6 +406,19 @@ Your friendly automated release script.
 	</target>
 
 	<target name="translations-staging-setup">
+		<propertyprompt propertyName="module" 
+			promptText="Module name?"
+			useExistingValue="true" />
+		<propertyprompt propertyName="getlocalization.${module}.project" 
+			promptText="getlocalization project"
+			useExistingValue="true" />
+		<propertyprompt propertyName="getlocalization.${module}.user" 
+			promptText="getlocalization username"
+			useExistingValue="true" />
+		<propertyprompt propertyName="getlocalization.${module}.password" 
+			promptText="getlocalization password"
+			useExistingValue="true" />
+
 		<exec command="git checkout master" dir="${module}" checkreturn="true" />
 		<exec command="git fetch origin" dir="${module}" checkreturn="true" />
 		<exec command="git branch -D translation-staging" dir="${module}" checkreturn="true" />
@@ -428,7 +441,7 @@ Your friendly automated release script.
 			<then>
 				<exec command="git add lang/*" dir="${module}" passthru="true" checkreturn="true" />
 				<exec command="git commit -m 'MINOR Updated translations master'" dir="${module}" passthru="true" checkreturn="true" />
-				<exec command="git merge --force origin/master" dir="${module}" checkreturn="true" />
+				<exec command="git merge origin/master" dir="${module}" checkreturn="true" />
 			</then>
 		</if>
 	</target>
@@ -456,7 +469,7 @@ Your friendly automated release script.
 				<exec command="git add lang/*" dir="${module}" passthru="true" checkreturn="true" />
 				<exec command="git add javascript/lang/*" dir="${module}" passthru="true" checkreturn="true" />
 				<exec command="git commit -m 'MINOR Updated translations'" dir="${module}" passthru="true" checkreturn="true" />
-				<exec command="git push origin/translation-staging" dir="${module}" checkreturn="true" />
+				<exec command="git push origin translation-staging" dir="${module}" checkreturn="true" />
 			</then>
 		</if>
 		<exec command="git checkout master" dir="${module}" checkreturn="true" />
@@ -465,9 +478,9 @@ Your friendly automated release script.
 
 	<target name="translations-sync" 
 		description="Wrapper task to handle updating translations and master files, using the getlocalization.com API, committing to a specialized branch in the working copy and pushing to the origin repository.">
-		<foreach list="cms" param="module" target="translations-update-git-masterfile" />
-		<foreach list="cms" param="module" target="translations-update-gl-masterfile" />
-		<foreach list="cms" param="module" target="translations-update-gl-contribs" />
+		<foreach list="framework,cms" param="module" target="translations-update-git-masterfile" />
+		<foreach list="framework,cms" param="module" target="translations-update-gl-masterfile" />
+		<foreach list="framework,cms" param="module" target="translations-update-gl-contribs" />
 	</target>
 
 </project>
