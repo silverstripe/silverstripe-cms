@@ -1,188 +1,190 @@
-he-IL:
+he_IL:
+  AssetAdmin:
+    ADDFILES: 'Add Files'
+    ALLOWEDEXTS: 'Allowed extensions'
+    ActionAdd: 'Add folder'
+    AppCategoryArchive: Archive
+    AppCategoryAudio: Audio
+    AppCategoryFlash: Flash
+    AppCategoryImage: Image
+    AppCategoryVideo: Video
+    BackToFolder: 'Back to folder'
+    CREATED: Date
+    CurrentFolderOnly: 'Limit to current folder?'
+    DetailsView: Details
+    FILES: Files
+    FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
+    FROMTHEINTERNET: 'From the internet'
+    FROMYOURCOMPUTER: 'From your computer'
+    Filetype: 'File type'
+    ListView: 'List View'
+    MENUTITLE: Files
+    NEWFOLDER: תיקיהחדשה
+    SIZE: Size
+    THUMBSDELETED: '{count} unused thumbnails have been deleted'
+    TreeView: 'Tree View'
+    Upload: Upload
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Delete folders'
+  AssetTableField:
+    BACKLINKCOUNT: 'Used on:'
+    PAGES: page(s)
+  BasicFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+  BigFamilyPage:
+    DESCRIPTION: 'Generic content page'
+  BrokenLinksReport:
+    Any: Any
+    BROKENLINKS: 'Broken links report'
+    CheckSite: 'Check site'
+    CheckSiteDropdownDraft: 'Draft Site'
+    CheckSiteDropdownPublished: 'Published Site'
+    ColumnDateLastModified: 'Date last modified'
+    ColumnDateLastPublished: 'Date last published'
+    ColumnProblemType: 'Problem type'
+    ColumnURL: URL
+    HasBrokenFile: 'has broken file'
+    HasBrokenLink: 'has broken link'
+    HasBrokenLinkAndFile: 'has broken link and file'
+    HoverTitleEditPage: 'Edit page'
+    PageName: 'Page name'
+    ReasonDropdown: 'Problem to check'
+    ReasonDropdownBROKENFILE: 'Broken file'
+    ReasonDropdownBROKENLINK: 'Broken link'
+    ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
+    ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
+    RedirectorNonExistent: 'redirector page pointing to non-existent page'
+    SORTASC: 'Sort in ascending order'
+    SORTDESC: 'Sort in descending order'
+    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
+  CMSAddPageController:
+    Title: 'Add page'
+  CMSBatchActions:
+    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
+    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
+    DELETE_DRAFT_PAGES: 'Delete from draft site'
+    DELETE_PAGES: 'Delete from published site'
+    PUBLISHED_PAGES: 'Published %d pages, %d failures'
+    PUBLISH_PAGES: Publish
+    UNPUBLISHED_PAGES: 'Un-published %d pages'
+    UNPUBLISH_PAGES: Un-publish
+  CMSFileAddController:
+    MENUTITLE: Files
+  CMSMain:
+    ACCESS: 'Access to ''{title}'' section'
+    ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
+    AddNew: 'Add new page'
+    AddNewButton: 'Add new'
+    ChoosePageParentMode: 'Choose where to create this page'
+    ChoosePageType: 'Choose page type'
+    Create: Create
+    DELETE: 'מחיקה מאתר הטיוטה'
+    DELETEFP: Delete
+    DESCREMOVED: 'and {count} descendants'
+    EMAIL: 'דוא"ל'
+    MENUTITLE: 'Edit Page'
+    NEW: חדש
+    PAGENOTEXISTS: 'עמוד זה אינו קיים במערכת'
+    PAGES: Pages
+    PAGETYPEANYOPT: Any
+    PAGETYPEOPT: 'Page Type'
+    PUBALLCONFIRM: 'נא לפרסם את כל העמודים באתר, תוך העתקת כל הטיוטות לגרסה הסופית'
+    PUBALLFUN: 'פרסם הכל'
+    PUBALLFUN2: 'לחיצת כפתור זה מקבילה לאישור פרסום על כל העמודים באתר. הכפתור נועד לאישורים גורפים שבאו בעקבות עריכה נרחבת באתר דוגמת ההגדרות הראשוניות כאשר נוצר אתר זה'
+    PUBPAGES: 'Done: Published {count} pages'
+    PageAdded: 'Successfully created page'
+    REMOVED: '''%s''%s נמחק מהאתר'
+    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
+    REMOVEDPAGEFROMDRAFT: '''$s'' הוסר מאתר הטיוטה'
+    RESTORE: Restore
+    RESTORED: 'Restored ''{title}'' successfully'
+    ROLLBACK: 'שחזר לגרסה זו'
+    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
+    ROLLEDBACKVERSION: 'שוחזר לגירסה  #%d. הגירסה הנוכחית היא  #%d'
+    SAVE: שמור
+    SAVEDRAFT: 'Save Draft'
+    TabContent: Content
+    TabHistory: History
+    TabSettings: Settings
+  CMSPageAddController:
+    MENUTITLE: 'Add page'
+    ParentMode_child: 'Under another page'
+    ParentMode_top: 'Top level'
+  CMSPageEditController:
+    MENUTITLE: 'Edit Page'
+  CMSPageHistoryController:
+    COMPAREMODE: 'Compare mode (select two)'
+    COMPAREVERSIONS: 'Compare Versions'
+    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
+    MENUTITLE: History
+    REVERTTOTHISVERSION: 'Revert to this version'
+    SHOWUNPUBLISHED: 'Show unpublished versions'
+    SHOWVERSION: 'Show Version'
+    VIEW: view
+    VIEWINGVERSION: 'Currently viewing version {version}.'
+  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  CMSPageSettingsController:
+    MENUTITLE: 'Edit Page'
+  CMSPagesController:
+    GalleryView: 'Gallery View'
+    ListView: 'List View'
+    MENUTITLE: Pages
+    TreeView: 'Tree View'
   CMSSearch:
     FILTERDATEFROM: From
     FILTERDATEHEADING: Date
-    FILTERLABELTEXT: Content
     FILTERDATETO: To
-  SearchForm:
-    GO: Go
-    SEARCH: Search
-    SearchResults: 'Search Results'
-  StaticExporter:
-    EXPORTTO: 'ייצא לתיקיה זו'
-    BASEURL: 'כתובת בסיס'
-    NAME: 'מייצא '
-  LeftAndMain:
-    VersionUnknown: Unknown
-    STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
-    DELETED: Deleted.
-    SearchResults: 'Search Results'
-    PreviewButton: Preview
-    SAVEDUP: Saved.
-  CMSPagesController:
-    ListView: 'List View'
-    TreeView: 'Tree View'
-    MENUTITLE: Pages
-    GalleryView: 'Gallery View'
-  MyRandomPage:
-    DESCRIPTION: 'Generic content page'
+    FILTERLABELTEXT: Content
   CMSSettingsController:
-    MENUTITLE: Settings
-    PUBLISHER: Publisher
-    NOTPUBLISHED: 'Not published'
-    WHEN: When
     AUTHOR: Author
+    MENUTITLE: Settings
+    NOTPUBLISHED: 'Not published'
+    PUBLISHER: Publisher
     UNKNOWN: Unknown
-  CMSSiteTreeFilter_Search:
-    Title: 'All pages'
-  CMSPageSettingsController:
-    MENUTITLE: 'Edit Page'
-  CMSPageHistoryController:
-    VIEWINGVERSION: 'Currently viewing version {version}.'
-    MENUTITLE: History
-    COMPAREVERSIONS: 'Compare Versions'
-    COMPAREMODE: 'Compare mode (select two)'
-    REVERTTOTHISVERSION: 'Revert to this version'
-    SHOWVERSION: 'Show Version'
-    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
-    SHOWUNPUBLISHED: 'Show unpublished versions'
-    VIEW: view
-  VirtualPage:
-    EDITCONTENT: 'לחץ כאן בכדי לערוך את התוכן'
-    HEADER: 'זהו עמוד ווירטואלי'
-    PLURALNAME: 'דפים וירטואליים'
-    SINGULARNAME: 'דף וירטואלי'
-    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
-    DESCRIPTION: 'Displays the content of another page'
-    CHOOSE: 'בחר בעמוד לקשר אליו'
-  RedirectorPage:
-    OTHERURL: 'כתובת של אתר אחר'
-    DESCRIPTION: 'Redirects to a different internal page'
-    REDIRECTTOEXTERNAL: 'אתר אחר'
-    REDIRECTTO: 'העבר אל'
-    YOURPAGE: 'עמוד באתר שלך'
-    HEADER: 'העמוד הזה יוביל משתמשים לעמוד אחר'
-    REDIRECTTOPAGE: 'עמוד באתר שלך'
-    HASBEENSETUP: 'נוצר דף הפניה ללא יעד'
-  Folder:
-    UploadFilesButton: Upload
-    AddFolderButton: 'Add folder'
-    UNUSEDFILESTITLE: 'Unused files'
-    UNUSEDTHUMBNAILSTITLE: 'Unused thumbnails'
-    DELETEUNUSEDTHUMBNAILS: 'Delete unused thumbnails'
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
-    ShareLink: 'Share link'
+    WHEN: When
+  CMSSiteTreeFilter_ChangedPages:
+    ENABLEDRAGGING: 'Drag''n''drop'
+    GO: סע
+    MULTISELECT: Multi-selection
+    Title: 'Changed pages'
+    VIEWFIRST: 'הצג ראשון'
+    VIEWLAST: 'הצג אחרון'
+    VIEWNEXT: 'הצג את הבא'
+    VIEWPREVIOUS: 'הצג את הקודם'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
-  SilverStripeNavigatorLinkl:
-    CloseLink: Close
+  CMSSiteTreeFilter_Search:
+    Title: 'All pages'
   ContentControl:
     NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
-  SiteTree:
-    DependtPageColumnLinkType: 'Link type'
-    DEFAULTABOUTTITLE: 'About Us'
-    VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
-    EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
-    REMOVEDFROMDRAFTSHORT: 'Removed from draft'
-    EDITONLYTHESE: 'Only these people (choose from list)'
-    Editors: 'Editors Groups'
-    Comments: Comments
-    TOPLEVEL: 'תוכן האתר (רמה עליונה)'
-    PARENTID: 'Parent page'
-    PAGELOCATION: 'Page location'
-    METAKEYWORDS: 'מילות מפתח'
-    LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
-    PAGETITLE: 'שם הדף'
-    BUTTONUNPUBLISHDESC: 'Remove this page from the published site'
-    DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
-    EDIT_ALL_DESCRIPTION: 'Edit any page'
-    DEFAULTHOMETITLE: Home
-    PARENTTYPE: 'Page location'
-    ACCESSHEADER: 'Who can view this page?'
-    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
-    SHOWINSEARCH: 'לכלול בחיפוש?'
-    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
-    PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
-    VIEWERGROUPS: 'Viewer Groups'
-    ACCESSONLYTHESE: 'Only these people (choose from list)'
-    CREATED: 'Date Created'
-    INHERIT: 'Inherit from parent page'
-    URLSegment: 'מקטע כתובת'
-    SINGULARNAME: 'דפי האתר'
-    VIEW_DRAFT_CONTENT: 'View draft content'
-    TOPLEVELCREATORGROUPS: 'Top level creators'
-    REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
-    DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
-    PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
-    PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    TABBEHAVIOUR: Behavior
-    SHOWINMENUS: 'להראות בתפריטים?'
-    BUTTONCANCELDRAFT: 'Cancel draft changes'
-    many_many_BackLinkTracking: 'Backlink Tracking'
-    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
-    PLURALNAME: 'עצי אתר'
-    TABDEPENDENT: 'Dependent pages'
-    ACCESSLOGGEDIN: 'Logged-in users'
-    METADESC: תיאור
-    MENUTITLE: 'תווית ניווט'
-    Content: תוכן
-    DELETEDPAGEHELP: 'Page is no longer published'
-    DependtPageColumnURL: URL
-    REORGANISE_DESCRIPTION: 'Change site structure'
-    DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
-    BUTTONCANCELDRAFTDESC: 'Delete your draft and revert to the currently published page'
-    EDITHEADER: 'Who can edit this page?'
-    EDITANYONE: 'Anyone who can log-in to the CMS'
-    REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
-    DEFAULTCONTACTTITLE: 'Contact Us'
-    many_many_LinkTracking: 'Link Tracking'
-    Visibility: Visibility
-    MODIFIEDONDRAFTSHORT: Modified
-    PAGETYPE: 'סוג דף'
-    many_many_ImageTracking: 'Image Tracking'
-    HTMLEDITORTITLE: תוכן
-    ACCESSANYONE: Anyone
-    PARENTTYPE_ROOT: 'Top-level page'
-    ALLOWCOMMENTS: 'מותרות תגובות בדף זה?'
-    LASTUPDATED: 'Last Updated'
-    METAEXTRA: 'תגי מטא נוספים'
-    HASBROKENLINKS: 'דף זה מכיל קישורים שבורים'
-    DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
-    VIEW_ALL_DESCRIPTION: 'View any page'
-    TABCONTENT: 'Main Content'
-    Viewers: 'Viewers Groups'
-    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
-    ADDEDTODRAFTHELP: 'Page has not been published yet'
-    BUTTONUNPUBLISH: Unpublish
-    METATITLE: כותרת
-    ADDEDTODRAFTSHORT: Draft
-    has_one_Parent: 'דף אב'
-    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
-    BUTTONSAVEPUBLISH: 'Save & Publish'
-    DELETEDPAGESHORT: Deleted
-    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
-    EDITORGROUPS: 'Editor Groups'
-    Back: Back
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  CMSBatchActions:
-    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
-    DELETE_PAGES: 'Delete from published site'
-    DELETE_DRAFT_PAGES: 'Delete from draft site'
-    UNPUBLISHED_PAGES: 'Un-published %d pages'
-    UNPUBLISH_PAGES: Un-publish
-    PUBLISHED_PAGES: 'Published %d pages, %d failures'
-    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
-    PUBLISH_PAGES: Publish
-  MyPage:
-    DESCRIPTION: 'Generic content page'
+  ContentController:
+    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITEFROM: 'Archived site from'
+    CMS: CMS
+    DRAFTSITE: 'Draft Site'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'עליך להכנס עם סיסמת המערכת בכדי לצפות בדף טיוטה או בתוכן שמור. <a href="%s">לחזרה לאתר לחץ כאן</a>'
+    Email: Email
+    InstallFilesDeleted: 'Installation files have been successfully deleted.'
+    InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    LOGGEDINAS: 'Logged in as'
+    LOGIN: Login
+    LOGOUT: 'Log out'
+    NOTLOGGEDIN: 'Not logged in'
+    PUBLISHEDSITE: 'Published Site'
+    Password: Password
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
+    VIEWPAGEIN: 'View Page in:'
   ErrorPage:
     CODE: 'הודעת שגיאה'
     DEFAULTERRORPAGECONTENT: '<p>מצטערים, נראה שהדף שניסית להגיע אליו אינו קיים</p><p>אנא בדוק את הכתובת המבוקשת ונסה שנית</p>'
     DEFAULTERRORPAGETITLE: 'הדף המבוקש לא נמצא'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Server error'
+    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
+    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
     400: '400 - בקשה שגויה'
     401: '401 - לא מורשה'
     403: '403 - אין כניסה'
@@ -200,209 +202,207 @@ he-IL:
     415: '415 - Unsupported Media Type'
     416: '416 - Request Range Not Satisfiable'
     417: '417 - Expectation Failed'
-    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
-    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
     500: '500 - Internal Server Error'
     501: '501 - Not Implemented'
     502: '502 - Bad Gateway'
     503: '503 - Service Unavailable'
     504: '504 - Gateway Timeout'
     505: '505 - HTTP Version Not Supported'
-  AssetAdmin:
-    FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
-    DetailsView: Details
-    CREATED: Date
-    MENUTITLE: Files
-    FROMTHEINTERNET: 'From the internet'
-    BackToFolder: 'Back to folder'
-    Upload: Upload
-    NEWFOLDER: תיקיהחדשה
-    CurrentFolderOnly: 'Limit to current folder?'
-    ADDFILES: 'Add Files'
-    THUMBSDELETED: '{count} unused thumbnails have been deleted'
-    SIZE: Size
-    FILES: Files
-    TreeView: 'Tree View'
-    AppCategoryVideo: Video
-    AppCategoryAudio: Audio
-    Filetype: 'File type'
-    AppCategoryArchive: Archive
-    ActionAdd: 'Add folder'
-    AppCategoryFlash: Flash
-    FROMYOURCOMPUTER: 'From your computer'
-    ListView: 'List View'
-    AppCategoryImage: Image
-    ALLOWEDEXTS: 'Allowed extensions'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-    FILTER: Filter
-  Permissions:
-    CONTENT_CATEGORY: 'Content permissions'
-    PERMISSIONS_CATEGORY: 'Roles and access permissions'
-  BrokenLinksReport:
-    HasBrokenFile: 'has broken file'
-    ReasonDropdownBROKENFILE: 'Broken file'
-    ColumnDateLastPublished: 'Date last published'
-    ColumnURL: URL
-    CheckSiteDropdownPublished: 'Published Site'
-    HasBrokenLinkAndFile: 'has broken link and file'
-    ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
-    ColumnDateLastModified: 'Date last modified'
-    PageName: 'Page name'
-    ReasonDropdown: 'Problem to check'
-    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
-    ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
-    HasBrokenLink: 'has broken link'
-    CheckSite: 'Check site'
-    HoverTitleEditPage: 'Edit page'
-    ReasonDropdownBROKENLINK: 'Broken link'
-    Any: Any
-    BROKENLINKS: 'Broken links report'
-    RedirectorNonExistent: 'redirector page pointing to non-existent page'
-    ColumnProblemType: 'Problem type'
-    CheckSiteDropdownDraft: 'Draft Site'
-    SORTASC: 'Sort in ascending order'
-    SORTDESC: 'Sort in descending order'
-  MyOtherPage:
-    DESCRIPTION: 'Generic content page'
-  CMSPageAddController:
-    ParentMode_top: 'Top level'
-    MENUTITLE: 'Add page'
-    ParentMode_child: 'Under another page'
-  TestPage:
-    DESCRIPTION: 'Generic content page'
-  ReportAdminForm:
-    FILTERBY: 'Filter by'
-  CMSAddPageController:
-    Title: 'Add page'
+  Folder:
+    AddFolderButton: 'Add folder'
+    DELETEUNUSEDTHUMBNAILS: 'Delete unused thumbnails'
+    UNUSEDFILESTITLE: 'Unused files'
+    UNUSEDTHUMBNAILSTITLE: 'Unused thumbnails'
+    UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
-  TableListField:
-    SELECT: 'Select:'
-    FILTER: Filter
-  ContentController:
-    DRAFTSITE: 'Draft Site'
-    InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    LOGOUT: 'Log out'
-    LOGGEDINAS: 'Logged in as'
-    LOGIN: Login
-    CMS: CMS
-    Email: Email
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
-    InstallFilesDeleted: 'Installation files have been successfully deleted.'
-    DRAFT_SITE_ACCESS_RESTRICTION: 'עליך להכנס עם סיסמת המערכת בכדי לצפות בדף טיוטה או בתוכן שמור. <a href="%s">לחזרה לאתר לחץ כאן</a>'
-    NOTLOGGEDIN: 'Not logged in'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
-    PUBLISHEDSITE: 'Published Site'
-    ARCHIVEDSITEFROM: 'Archived site from'
-    ARCHIVEDSITE: 'Archived Site'
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
-    Password: Password
-    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
-    VIEWPAGEIN: 'View Page in:'
-  CMSPageEditController:
-    MENUTITLE: 'Edit Page'
-  Page:
-    DESCRIPTION: 'Generic content page'
-  SiteTreeURLSegmentField:
-    HelpChars: ' Special characters are automatically converted or removed.'
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Changed pages'
-    ENABLEDRAGGING: 'Drag''n''drop'
-    MULTISELECT: Multi-selection
-    GO: סע
-    VIEWPREVIOUS: 'הצג את הקודם'
-    VIEWNEXT: 'הצג את הבא'
-    VIEWFIRST: 'הצג ראשון'
-    VIEWLAST: 'הצג אחרון'
-  BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
-  TreeTools:
-    DisplayLabel: 'Display:'
-  SiteConfig:
-    SITENAMEDEFAULT: 'Your Site Name'
-    SITETITLE: 'Site title'
-    TAGLINEDEFAULT: 'your tagline here'
-    EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
-    EDIT_PERMISSION: 'Manage site configuration'
-    VIEWHEADER: 'Who can view pages on this site?'
-    TOPLEVELCREATE: 'Who can create pages in the root of the site?'
-    TABMAIN: Main
-    EDITHEADER: 'Who can edit pages on this site?'
-    THEME: Theme
-    TABACCESS: Access
-    DEFAULTTHEME: '(Use default theme)'
-    SITETAGLINE: 'Site Tagline/Slogan'
-  CMSMain:
-    ChoosePageType: 'Choose page type'
-    PAGENOTEXISTS: 'עמוד זה אינו קיים במערכת'
-    Create: Create
-    PUBALLFUN: 'פרסם הכל'
-    ChoosePageParentMode: 'Choose where to create this page'
-    NEW: חדש
-    EMAIL: 'דוא"ל'
-    REMOVEDPAGEFROMDRAFT: '''$s'' הוסר מאתר הטיוטה'
-    ROLLEDBACKVERSION: 'שוחזר לגירסה  #%d. הגירסה הנוכחית היא  #%d'
-    TabContent: Content
-    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
-    TabSettings: Settings
-    ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
-    SAVEDRAFT: 'Save Draft'
-    TabHistory: History
-    ROLLBACK: 'שחזר לגרסה זו'
-    AddNewButton: 'Add new'
-    AddNew: 'Add new page'
-    MENUTITLE: 'Edit Page'
-    PUBALLFUN2: 'לחיצת כפתור זה מקבילה לאישור פרסום על כל העמודים באתר. הכפתור נועד לאישורים גורפים שבאו בעקבות עריכה נרחבת באתר דוגמת ההגדרות הראשוניות כאשר נוצר אתר זה'
-    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
-    PUBALLCONFIRM: 'נא לפרסם את כל העמודים באתר, תוך העתקת כל הטיוטות לגרסה הסופית'
-    PAGETYPEANYOPT: Any
-    PageAdded: 'Successfully created page'
-    DESCREMOVED: 'and {count} descendants'
-    DELETEFP: Delete
-    RESTORE: Restore
-    REMOVED: '''%s''%s נמחק מהאתר'
-    ACCESS: 'Access to ''{title}'' section'
-    PAGETYPEOPT: 'Page Type'
-    PUBPAGES: 'Done: Published {count} pages'
-    SAVE: שמור
-    PAGES: Pages
-    RESTORED: 'Restored ''{title}'' successfully'
-    DELETE: 'מחיקה מאתר הטיוטה'
-  SideReport:
-    EMPTYPAGES: 'עמודים ריקים'
-    ParameterLiveCheckbox: 'Check live site'
-    REPEMPTY: 'The {title} report is empty.'
-    BROKENLINKS: 'Pages with broken links'
-    LAST2WEEKS: 'עמודים שנערכו בשבועיים האחרונים'
-    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
-    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
-    BrokenLinksGroupTitle: 'Broken links reports'
-    BROKENFILES: 'Pages with broken files'
-    OtherGroupTitle: Other
-    ContentGroupTitle: 'Content reports'
-  CMSFileAddController:
-    MENUTITLE: Files
-  MyNonRootPage:
-    DESCRIPTION: 'Generic content page'
-    CANACCESS: 'אתה יכול להכנס לארכיון האתר בקישור הזה:'
-    HAVEASKED: 'ביקשת לצפות בתוכן האתר שלנו ב'
+  LeftAndMain:
+    DELETED: Deleted.
+    PreviewButton: Preview
+    SAVEDUP: Saved.
+    STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
+    SearchResults: 'Search Results'
+    VersionUnknown: Unknown
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-  TestFileUploadPage:
+  MyNonRootPage:
+    CANACCESS: 'אתה יכול להכנס לארכיון האתר בקישור הזה:'
     DESCRIPTION: 'Generic content page'
-  AssetTableField:
-    PAGES: page(s)
-    BACKLINKCOUNT: 'Used on:'
-  ReportAdmin:
-    MENUTITLE: Reports
-  AssetAdmin_DeleteBatchAction:
-    TITLE: 'Delete folders'
-  cms:
-    FILESYSTEMSYNC: 'Sync files'
-  Permission:
-    CMS_ACCESS_CATEGORY: 'CMS Access'
+    HAVEASKED: 'ביקשת לצפות בתוכן האתר שלנו ב'
+  MyOtherPage:
+    DESCRIPTION: 'Generic content page'
+  MyPage:
+    DESCRIPTION: 'Generic content page'
+  MyRandomPage:
+    DESCRIPTION: 'Generic content page'
   PackageManagerPage:
     DESCRIPTION: 'Generic content page'
     RESET: Reset
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  Page:
+    DESCRIPTION: 'Generic content page'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'CMS Access'
+  Permissions:
+    CONTENT_CATEGORY: 'Content permissions'
+    PERMISSIONS_CATEGORY: 'Roles and access permissions'
+  RedirectorPage:
+    DESCRIPTION: 'Redirects to a different internal page'
+    HASBEENSETUP: 'נוצר דף הפניה ללא יעד'
+    HEADER: 'העמוד הזה יוביל משתמשים לעמוד אחר'
+    OTHERURL: 'כתובת של אתר אחר'
+    REDIRECTTO: 'העבר אל'
+    REDIRECTTOEXTERNAL: 'אתר אחר'
+    REDIRECTTOPAGE: 'עמוד באתר שלך'
+    YOURPAGE: 'עמוד באתר שלך'
+  RelationFieldsTestPage:
+    DESCRIPTION: 'Generic content page'
+    FILTER: Filter
+  ReportAdmin:
+    MENUTITLE: Reports
+  ReportAdminForm:
+    FILTERBY: 'Filter by'
+  SearchForm:
+    GO: Go
+    SEARCH: Search
+    SearchResults: 'Search Results'
+  SideReport:
+    BROKENFILES: 'Pages with broken files'
+    BROKENLINKS: 'Pages with broken links'
+    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
+    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
+    BrokenLinksGroupTitle: 'Broken links reports'
+    ContentGroupTitle: 'Content reports'
+    EMPTYPAGES: 'עמודים ריקים'
+    LAST2WEEKS: 'עמודים שנערכו בשבועיים האחרונים'
+    OtherGroupTitle: Other
+    ParameterLiveCheckbox: 'Check live site'
+    REPEMPTY: 'The {title} report is empty.'
+  SilverStripeNavigatorLink:
+    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
+    ShareLink: 'Share link'
+  SilverStripeNavigatorLinkl:
+    CloseLink: Close
+  SiteConfig:
+    DEFAULTTHEME: '(Use default theme)'
+    EDITHEADER: 'Who can edit pages on this site?'
+    EDIT_PERMISSION: 'Manage site configuration'
+    EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
+    SITENAMEDEFAULT: 'Your Site Name'
+    SITETAGLINE: 'Site Tagline/Slogan'
+    SITETITLE: 'Site title'
+    TABACCESS: Access
+    TABMAIN: Main
+    TAGLINEDEFAULT: 'your tagline here'
+    THEME: Theme
+    TOPLEVELCREATE: 'Who can create pages in the root of the site?'
+    VIEWHEADER: 'Who can view pages on this site?'
+  SiteTree:
+    ACCESSANYONE: Anyone
+    ACCESSHEADER: 'Who can view this page?'
+    ACCESSLOGGEDIN: 'Logged-in users'
+    ACCESSONLYTHESE: 'Only these people (choose from list)'
+    ADDEDTODRAFTHELP: 'Page has not been published yet'
+    ADDEDTODRAFTSHORT: Draft
+    ALLOWCOMMENTS: 'מותרות תגובות בדף זה?'
+    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+    BUTTONCANCELDRAFT: 'Cancel draft changes'
+    BUTTONCANCELDRAFTDESC: 'Delete your draft and revert to the currently published page'
+    BUTTONSAVEPUBLISH: 'Save & Publish'
+    BUTTONUNPUBLISH: Unpublish
+    BUTTONUNPUBLISHDESC: 'Remove this page from the published site'
+    Back: Back
+    CREATED: 'Date Created'
+    Comments: Comments
+    Content: תוכן
+    DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
+    DEFAULTABOUTTITLE: 'About Us'
+    DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
+    DEFAULTCONTACTTITLE: 'Contact Us'
+    DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
+    DEFAULTHOMETITLE: Home
+    DELETEDPAGEHELP: 'Page is no longer published'
+    DELETEDPAGESHORT: Deleted
+    DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DependtPageColumnLinkType: 'Link type'
+    DependtPageColumnURL: URL
+    EDITANYONE: 'Anyone who can log-in to the CMS'
+    EDITHEADER: 'Who can edit this page?'
+    EDITONLYTHESE: 'Only these people (choose from list)'
+    EDITORGROUPS: 'Editor Groups'
+    EDIT_ALL_DESCRIPTION: 'Edit any page'
+    EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
+    Editors: 'Editors Groups'
+    HASBROKENLINKS: 'דף זה מכיל קישורים שבורים'
+    HTMLEDITORTITLE: תוכן
+    INHERIT: 'Inherit from parent page'
+    LASTUPDATED: 'Last Updated'
+    LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
+    MENUTITLE: 'תווית ניווט'
+    METADESC: תיאור
+    METAEXTRA: 'תגי מטא נוספים'
+    METAKEYWORDS: 'מילות מפתח'
+    METATITLE: כותרת
+    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
+    MODIFIEDONDRAFTSHORT: Modified
+    PAGELOCATION: 'Page location'
+    PAGETITLE: 'שם הדף'
+    PAGETYPE: 'סוג דף'
+    PARENTID: 'Parent page'
+    PARENTTYPE: 'Page location'
+    PARENTTYPE_ROOT: 'Top-level page'
+    PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
+    PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
+    PLURALNAME: 'עצי אתר'
+    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
+    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
+    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
+    REMOVEDFROMDRAFTSHORT: 'Removed from draft'
+    REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
+    REORGANISE_DESCRIPTION: 'Change site structure'
+    REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
+    SHOWINMENUS: 'להראות בתפריטים?'
+    SHOWINSEARCH: 'לכלול בחיפוש?'
+    SINGULARNAME: 'דפי האתר'
+    TABBEHAVIOUR: Behavior
+    TABCONTENT: 'Main Content'
+    TABDEPENDENT: 'Dependent pages'
+    TOPLEVEL: 'תוכן האתר (רמה עליונה)'
+    TOPLEVELCREATORGROUPS: 'Top level creators'
+    URLSegment: 'מקטע כתובת'
+    VIEWERGROUPS: 'Viewer Groups'
+    VIEW_ALL_DESCRIPTION: 'View any page'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
+    VIEW_DRAFT_CONTENT: 'View draft content'
+    VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
+    Viewers: 'Viewers Groups'
+    Visibility: Visibility
+    has_one_Parent: 'דף אב'
+    many_many_BackLinkTracking: 'Backlink Tracking'
+    many_many_ImageTracking: 'Image Tracking'
+    many_many_LinkTracking: 'Link Tracking'
+  SiteTreeURLSegmentField:
+    HelpChars: ' Special characters are automatically converted or removed.'
+  StaticExporter:
+    BASEURL: 'כתובת בסיס'
+    EXPORTTO: 'ייצא לתיקיה זו'
+    NAME: 'מייצא '
+  TableListField:
+    FILTER: Filter
+    SELECT: 'Select:'
+  TestFileUploadPage:
+    DESCRIPTION: 'Generic content page'
+  TestPage:
+    DESCRIPTION: 'Generic content page'
+  TreeTools:
+    DisplayLabel: 'Display:'
+  VirtualPage:
+    CHOOSE: 'בחר בעמוד לקשר אליו'
+    DESCRIPTION: 'Displays the content of another page'
+    EDITCONTENT: 'לחץ כאן בכדי לערוך את התוכן'
+    HEADER: 'זהו עמוד ווירטואלי'
+    PLURALNAME: 'דפים וירטואליים'
+    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
+    SINGULARNAME: 'דף וירטואלי'
+  cms:
+    FILESYSTEMSYNC: 'Sync files'
