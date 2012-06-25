@@ -421,8 +421,7 @@ Your friendly automated release script.
 
 		<exec command="git checkout master" dir="${module}" checkreturn="true" />
 		<exec command="git fetch origin" dir="${module}" checkreturn="true" />
-		<exec command="git branch -D translation-staging" dir="${module}" checkreturn="true" />
-		<exec command="git branch --track translation-staging origin/translation-staging" dir="${module}" checkreturn="true" />
+		<exec command="git branch --force --track translation-staging origin/translation-staging" dir="${module}" checkreturn="true" />
 		<exec command="git checkout translation-staging" dir="${module}" checkreturn="true" />
 	</target>
 
