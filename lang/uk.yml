@@ -297,7 +297,7 @@ uk:
     TOPLEVELCREATE: 'Who can create pages in the root of the site?'
     VIEWHEADER: 'Who can view pages on this site?'
   SiteTree:
-    ACCESSANYONE: 'Будь-хто'
+    ACCESSANYONE: Будь-хто
     ACCESSHEADER: 'Хто може переглядати цю сторінку?'
     ACCESSLOGGEDIN: 'Тільки ті, що увійшли'
     ACCESSONLYTHESE: 'Тільки ці люди (виберіть зі списку)'

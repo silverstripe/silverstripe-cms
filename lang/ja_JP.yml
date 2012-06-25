@@ -79,7 +79,7 @@ ja_JP:
     ChoosePageType: 'Choose page type'
     Create: Create
     DELETE: ドラフトサイトから削除
-    DELETEFP: '公開サイトから削除'
+    DELETEFP: 公開サイトから削除
     DESCREMOVED: 'and {count} descendants'
     EMAIL: Email
     MENUTITLE: 'Edit Page'
@@ -96,7 +96,7 @@ ja_JP:
     REMOVED: 'Deleted ''%s''%s from live site'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: 'Removed ''%s'' from the draft site'
-    RESTORE: '復元'
+    RESTORE: 復元
     RESTORED: 'Restored ''{title}'' successfully'
     ROLLBACK: 'Roll back to this version'
     ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
@@ -118,7 +118,7 @@ ja_JP:
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
     MENUTITLE: 履歴
     REVERTTOTHISVERSION: このバージョンに戻す
-    SHOWUNPUBLISHED: '公開されていないバージョンを表示'
+    SHOWUNPUBLISHED: 公開されていないバージョンを表示
     SHOWVERSION: バージョンを表示
     VIEW: 表示
     VIEWINGVERSION: 'Currently viewing version {version}.'
@@ -133,12 +133,12 @@ ja_JP:
   CMSSearch:
     FILTERDATEFROM: From
     FILTERDATEHEADING: 日付
-    FILTERDATETO: '宛先'
+    FILTERDATETO: 宛先
     FILTERLABELTEXT: コンテンツ
   CMSSettingsController:
-    AUTHOR: '作成者'
+    AUTHOR: 作成者
     MENUTITLE: 設定
-    NOTPUBLISHED: '未公開'
+    NOTPUBLISHED: 未公開
     PUBLISHER: パブリッシャー
     UNKNOWN: 不明
     WHEN: いつ
@@ -152,9 +152,9 @@ ja_JP:
     VIEWNEXT: 次を表示
     VIEWPREVIOUS: 前回を表示
   CMSSiteTreeFilter_DeletedPages:
-    Title: '全ページ（削除されたページも含む）'
+    Title: 全ページ（削除されたページも含む）
   CMSSiteTreeFilter_Search:
-    Title: '全ページ'
+    Title: 全ページ
   ContentControl:
     NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
   ContentController:
@@ -209,10 +209,10 @@ ja_JP:
     504: '504 - Gatewayが時間切れです'
     505: '505 - サポートされていないHTTPのバージョンです'
   Folder:
-    AddFolderButton: 'フォルダの追加'
-    DELETEUNUSEDTHUMBNAILS: '未使用のサムネイルを削除'
+    AddFolderButton: フォルダの追加
+    DELETEUNUSEDTHUMBNAILS: 未使用のサムネイルを削除
     UNUSEDFILESTITLE: 未使用のファイル
-    UNUSEDTHUMBNAILSTITLE: '未使用のサムネイル'
+    UNUSEDTHUMBNAILSTITLE: 未使用のサムネイル
     UploadFilesButton: アップロード
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
@@ -246,8 +246,8 @@ ja_JP:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
   RedirectorPage:
-    DESCRIPTION: '別の内部ページにリダイレクト'
-    HASBEENSETUP: '転送URLを含むページには、転送先がない状態で設定されています。'
+    DESCRIPTION: 別の内部ページにリダイレクト
+    HASBEENSETUP: 転送URLを含むページには、転送先がない状態で設定されています。
     HEADER: このページをユーザーを変更して他のページにしますか？
     OTHERURL: 他のウェブサイトのURL
     REDIRECTTO: 変更は
@@ -278,8 +278,8 @@ ja_JP:
     ParameterLiveCheckbox: 'Check live site'
     REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'このページを共有するには、以下のリンクをコピー＆ペーストとします。'
-    ShareLink: '共有リンク'
+    ShareInstructions: このページを共有するには、以下のリンクをコピー＆ペーストとします。
+    ShareLink: 共有リンク
   SilverStripeNavigatorLinkl:
     CloseLink: 閉じる
   SiteConfig:
@@ -305,11 +305,11 @@ ja_JP:
     ADDEDTODRAFTSHORT: Draft
     ALLOWCOMMENTS: コメントを許可しますか？
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
-    BUTTONCANCELDRAFT: '草稿の編集内容を取り消します'
-    BUTTONCANCELDRAFTDESC: '草稿と前回公開されたページを削除します'
-    BUTTONSAVEPUBLISH: '保存して公開'
-    BUTTONUNPUBLISH: '非公開'
-    BUTTONUNPUBLISHDESC: '公開サイトから取り除きました'
+    BUTTONCANCELDRAFT: 草稿の編集内容を取り消します
+    BUTTONCANCELDRAFTDESC: 草稿と前回公開されたページを削除します
+    BUTTONSAVEPUBLISH: 保存して公開
+    BUTTONUNPUBLISH: 非公開
+    BUTTONUNPUBLISHDESC: 公開サイトから取り除きました
     Back: Back
     CREATED: 'Date Created'
     Comments: コメント
@@ -319,7 +319,7 @@ ja_JP:
     DEFAULTCONTACTCONTENT: '<p>あなた自身、自由にページに書き込むことが出来、もちろん添削も自由に行えます。<br /></p>'
     DEFAULTCONTACTTITLE: 連絡はこちらまで
     DEFAULTHOMECONTENT: '<p>SilverStripeへようこそ！これはデフォルトのホームページです。このページを編集するには、<a href="admin/">CMS</a>にアクセスしてください。<a href="http://doc.silverstripe.org">開発者向けドキュメント</a>や、<a href="http://doc.silverstripe.org/doku.php?id=tutorials">チュートリアル</a>もご覧いただけます。</p>'
-    DEFAULTHOMETITLE: 'ホーム'
+    DEFAULTHOMETITLE: ホーム
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Deleted
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
@@ -333,13 +333,13 @@ ja_JP:
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     Editors: 編集グループ
     HASBROKENLINKS: このページはリンク切れがあります
-    HTMLEDITORTITLE: '内容'
+    HTMLEDITORTITLE: 内容
     INHERIT: 親ページを受け継ぐ
     LASTUPDATED: 'Last Updated'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 操作レベル
     METADESC: 説明
-    METAEXTRA: 'メタタグをカスタム'
+    METAEXTRA: メタタグをカスタム
     METAKEYWORDS: キーワード
     METATITLE: タイトル
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
@@ -348,12 +348,12 @@ ja_JP:
     PAGETITLE: ページ名
     PAGETYPE: ページタイプ
     PARENTID: 親ページ
-    PARENTTYPE: 'ページの場所'
+    PARENTTYPE: ページの場所
     PARENTTYPE_ROOT: 'Top-level page'
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: コンテンツへのアクセス権限を編集
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: 'サイトのツリー構造'
+    PLURALNAME: サイトのツリー構造
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -363,7 +363,7 @@ ja_JP:
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: メニューに表示しますか？
     SHOWINSEARCH: 検索に表示しますか？
-    SINGULARNAME: 'サイトのツリー構造'
+    SINGULARNAME: サイトのツリー構造
     TABBEHAVIOUR: 動作
     TABCONTENT: コンテンツ
     TABDEPENDENT: 'Dependent pages'
@@ -375,10 +375,10 @@ ja_JP:
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
     VIEW_DRAFT_CONTENT: ドラフトを見る
     VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
-    Viewers: '閲覧者のグループ'
+    Viewers: 閲覧者のグループ
     Visibility: Visibility
     has_one_Parent: 親ページ
-    many_many_BackLinkTracking: 'リンク元を追跡'
+    many_many_BackLinkTracking: リンク元を追跡
     many_many_ImageTracking: 画像へのリンクを追跡
     many_many_LinkTracking: リンクを追跡
   SiteTreeURLSegmentField:
@@ -397,7 +397,7 @@ ja_JP:
   TreeTools:
     DisplayLabel: 'Display:'
   VirtualPage:
-    CHOOSE: 'リンクするページを選択してください'
+    CHOOSE: リンクするページを選択してください
     DESCRIPTION: 別のページのコンテンツを表示
     EDITCONTENT: クリックしてコンテンツを編集
     HEADER: これがバーチャルページです

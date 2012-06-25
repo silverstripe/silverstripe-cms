@@ -262,7 +262,7 @@ sk:
   ReportAdminForm:
     FILTERBY: 'Filtrovať podľa'
   SearchForm:
-    GO: 'Štart'
+    GO: Štart
     SEARCH: Hľadať
     SearchResults: 'Výsledky vyhľadávania'
   SideReport:
