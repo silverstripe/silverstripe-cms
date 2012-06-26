@@ -12,7 +12,7 @@ uk:
     CREATED: Дата
     CurrentFolderOnly: 'Обмежити до поточної папки?'
     DetailsView: Деталі
-    FILES: Files
+    FILES: Файли
     FILESYSTEMSYNCTITLE: 'Оновлення бази даних файлів у файловій системі. Корисно, коли нові файли були завантажені поза CMS, наприклад, через FTP.'
     FROMTHEINTERNET: 'З інтернету'
     FROMYOURCOMPUTER: 'З мого комп''ютера'
@@ -21,18 +21,18 @@ uk:
     MENUTITLE: Файли
     NEWFOLDER: 'Нова Тека'
     SIZE: Розмір
-    THUMBSDELETED: '{count} unused thumbnails have been deleted'
+    THUMBSDELETED: '{count} невикористаних ескізів було видалено'
     TreeView: 'У вигляді дерева'
     Upload: Завантажити
   AssetAdmin_DeleteBatchAction:
-    TITLE: 'Delete folders'
+    TITLE: 'Видалені папки'
   AssetTableField:
-    BACKLINKCOUNT: 'Used on:'
-    PAGES: page(s)
+    BACKLINKCOUNT: 'Використовується в:'
+    PAGES: сторінка(и)
   BasicFieldsTestPage:
     DESCRIPTION: 'Загальний вміст сторінки'
   BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Загальна сторінка з вмістом'
   BrokenLinksReport:
     Any: Будь-який
     BROKENLINKS: 'Звіт про биті посилання'
@@ -69,43 +69,43 @@ uk:
     UNPUBLISHED_PAGES: 'Знято з публікації %d сторінок'
     UNPUBLISH_PAGES: 'Зняти з публікації'
   CMSFileAddController:
-    MENUTITLE: Files
+    MENUTITLE: Файли
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
-    AddNew: 'Add new page'
-    AddNewButton: 'Add new'
-    ChoosePageParentMode: 'Choose where to create this page'
-    ChoosePageType: 'Choose page type'
+    AddNew: 'Додати нову сторінку'
+    AddNewButton: 'Додати новий'
+    ChoosePageParentMode: 'Виберіть де створити цю сторінку'
+    ChoosePageType: 'Виберіть тип сторінки'
     Create: Створити
     DELETE: 'Видалити з чорнового сайту'
-    DELETEFP: Delete
+    DELETEFP: Видалити
     DESCREMOVED: 'and {count} descendants'
     EMAIL: 'Електронна пошта'
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: 'Редагувати сторінку'
     NEW: Нове
     PAGENOTEXISTS: 'Ця сторінка не існує'
-    PAGES: Pages
-    PAGETYPEANYOPT: Any
-    PAGETYPEOPT: 'Page Type'
+    PAGES: Сторінки
+    PAGETYPEANYOPT: Будь-який
+    PAGETYPEOPT: 'Тип сторінки'
     PUBALLCONFIRM: 'Будь ласка, опублікуйте кожну сторінку. Для цього перенесіть проміжний варіант до існуючого.'
     PUBALLFUN: 'Дія "Опублікувати все"'
     PUBALLFUN2: 'Натиснувши цю кнопку Ви зробите те ж саме, що й перейшовши до кожної сторінки та натиснувши "Публікувати". Це внесено для тих випадків, коли Ви маєте намір маштабно змінити вміст, наприклад, після першого створення сайту.'
     PUBPAGES: 'Done: Published {count} pages'
-    PageAdded: 'Successfully created page'
+    PageAdded: 'Сторінка успішно створена'
     REMOVED: 'Видалено ''%s''%s з публічного сайту'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: 'Видалено ''%s'' з чорнового сайту'
-    RESTORE: Restore
+    RESTORE: Відновити
     RESTORED: 'Restored ''{title}'' successfully'
     ROLLBACK: 'Повернутися до цієї версії'
     ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
     ROLLEDBACKVERSION: 'Повернено версію #%d. Нова версія - #%d'
     SAVE: Зберегти
-    SAVEDRAFT: 'Save Draft'
-    TabContent: Content
-    TabHistory: History
-    TabSettings: Settings
+    SAVEDRAFT: 'Зберегти в чорновий'
+    TabContent: Вміст
+    TabHistory: Історія
+    TabSettings: Налаштування
   CMSPageAddController:
     MENUTITLE: 'Додати сторінку'
     ParentMode_child: 'Під іншою сторінкою'
@@ -122,7 +122,7 @@ uk:
     SHOWVERSION: 'Показати версію'
     VIEW: вигляд
     VIEWINGVERSION: 'Currently viewing version {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Застосувати фільтр"'
   CMSPageSettingsController:
     MENUTITLE: 'Редагувати сторінку'
   CMSPagesController:
@@ -146,7 +146,7 @@ uk:
     ENABLEDRAGGING: 'Drag''n''drop'
     GO: Уперед
     MULTISELECT: 'Множинний вибір'
-    Title: 'Changed pages'
+    Title: 'Змінені сторінки'
     VIEWFIRST: 'Переглянути першу'
     VIEWLAST: 'Переглянути останню'
     VIEWNEXT: 'Переглянути наступну'
@@ -163,19 +163,19 @@ uk:
     CMS: CMS
     DRAFTSITE: 'Чорновий сайт'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Ви повинні увійти у систему для перегляду чернетки даного матеріалу. <a href="%s">Натсиніть для переходу на опублікований матеріал.</a>'
-    Email: Email
-    InstallFilesDeleted: 'Installation files have been successfully deleted.'
+    Email: Е-пошта
+    InstallFilesDeleted: 'Інсталяційні файли були успішно видалені.'
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    InstallSuccessCongratulations: 'SilverStripe було успішно встановлено.'
     LOGGEDINAS: 'Залогований як '
     LOGIN: Логін
     LOGOUT: Вилогуватися
     NOTLOGGEDIN: 'Не залогований'
     PUBLISHEDSITE: 'Публічний сайт'
-    Password: Password
+    Password: Пароль
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
     StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
-    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
+    UnableDeleteInstall: 'Не вдається видалити інсталяційні файли. Будь ласка, видаліть вручну наведені нижче файли'
     VIEWPAGEIN: 'Переглянути сторінку в:'
   ErrorPage:
     CODE: 'Код помилки'
@@ -217,17 +217,17 @@ uk:
   GridFieldTestPage:
     DESCRIPTION: 'Загальна сторінку з вмістом'
   LeftAndMain:
-    DELETED: Deleted.
+    DELETED: Видалено
     PreviewButton: 'Попередній перегляд'
-    SAVEDUP: Saved.
-    STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
+    SAVEDUP: Збережено.
+    STATUSPUBLISHEDSUCCESS: 'Публікація ''{title}'' пройшла успішно'
     SearchResults: 'Результати пошуку'
     VersionUnknown: Невідомий
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Загальна сторінка з вмістом'
   MyNonRootPage:
     CANACCESS: 'Ви можете перейти до архівного сайту за посиланням:'
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Загальна сторінка з вмістом'
     HAVEASKED: 'Ви надіслали запит на перегляд вмісту нашої сторінки'
   MyOtherPage:
     DESCRIPTION: 'Загальна сторінка з вмістом'
@@ -237,11 +237,11 @@ uk:
     DESCRIPTION: 'Загальний вміст сторінки'
   PackageManagerPage:
     DESCRIPTION: 'Generic content page'
-    RESET: Reset
+    RESET: Відновити
   Page:
     DESCRIPTION: 'Загальна сторінка з вмістом'
   Permission:
-    CMS_ACCESS_CATEGORY: 'CMS Access'
+    CMS_ACCESS_CATEGORY: 'Доступ до CMS'
   Permissions:
     CONTENT_CATEGORY: 'Дозволи вмісту'
     PERMISSIONS_CATEGORY: 'Ролі та дозволи доступу'
@@ -258,7 +258,7 @@ uk:
     DESCRIPTION: 'Загальний вміст сторінки'
     FILTER: Фільтр
   ReportAdmin:
-    MENUTITLE: Reports
+    MENUTITLE: Звіти
   ReportAdminForm:
     FILTERBY: 'Фільтр по'
   SearchForm:
@@ -266,16 +266,16 @@ uk:
     SEARCH: Пошук
     SearchResults: 'Результати пошуку'
   SideReport:
-    BROKENFILES: 'Pages with broken files'
-    BROKENLINKS: 'Pages with broken links'
+    BROKENFILES: 'Сторінки з пошкодженими файлами'
+    BROKENLINKS: 'Сторінки з битими посиланнями'
     BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
     BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
-    BrokenLinksGroupTitle: 'Broken links reports'
-    ContentGroupTitle: 'Content reports'
+    BrokenLinksGroupTitle: 'Звіт про биті посилання'
+    ContentGroupTitle: 'Звіти про вміст'
     EMPTYPAGES: 'Порожні сторінки'
     LAST2WEEKS: 'Сторінки, відредаговані за останні два тижні'
-    OtherGroupTitle: Other
-    ParameterLiveCheckbox: 'Check live site'
+    OtherGroupTitle: Інше
+    ParameterLiveCheckbox: 'Перевірити робочий сайт'
     REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigatorLink:
     ShareInstructions: 'To share a this to this page, copy and paste the link below.'
@@ -284,15 +284,15 @@ uk:
     CloseLink: Закрити
   SiteConfig:
     DEFAULTTHEME: '(Використовувати тему за замовчуванням)'
-    EDITHEADER: 'Who can edit pages on this site?'
+    EDITHEADER: 'Хто може редагувати сторінки на цьому сайті?'
     EDIT_PERMISSION: 'Керувати конфігурацією сайту'
     EDIT_PERMISSION_HELP: 'Можливість редагування глобальних налаштувань доступу / дозволів сторінок верхнього рівня.'
     SITENAMEDEFAULT: 'Назва Вашого Сайту'
-    SITETAGLINE: 'Site Tagline/Slogan'
+    SITETAGLINE: 'Гасло сайту'
     SITETITLE: 'Заголовок сайту'
     TABACCESS: Доступ
     TABMAIN: Головна
-    TAGLINEDEFAULT: 'Ваш слоган'
+    TAGLINEDEFAULT: 'тут ваш слоган'
     THEME: 'Тема оформлення'
     TOPLEVELCREATE: 'Who can create pages in the root of the site?'
     VIEWHEADER: 'Хто може переглядати сторінки на цьому сайті?'
@@ -301,7 +301,7 @@ uk:
     ACCESSHEADER: 'Хто може переглядати цю сторінку?'
     ACCESSLOGGEDIN: 'Тільки ті, що увійшли'
     ACCESSONLYTHESE: 'Тільки ці люди (виберіть зі списку)'
-    ADDEDTODRAFTHELP: 'Page has not been published yet'
+    ADDEDTODRAFTHELP: 'Сторінка ще не опублікована'
     ADDEDTODRAFTSHORT: Draft
     ALLOWCOMMENTS: 'Дозволити коментувати на цій сторінці?'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
@@ -320,7 +320,7 @@ uk:
     DEFAULTCONTACTTITLE: Контакти
     DEFAULTHOMECONTENT: '<p>Ласкаво просимо до SilverStripe! Це стандартна домашня сторінка. Ви можете редагувати цю сторінку відкривши <a href="admin/">CMS</a>. Ви можете переглянути <a href="http://doc.silverstripe.org">документацію для розробників</a>, або почати з <a href="http://doc.silverstripe.org/doku.php?id=tutorials"> туторіалів.</a></p>'
     DEFAULTHOMETITLE: Домівка
-    DELETEDPAGEHELP: 'Page is no longer published'
+    DELETEDPAGEHELP: 'Сторінка вже не є опублікованою'
     DELETEDPAGESHORT: Видалений
     DEPENDENT_NOTE: 'Наступні сторінки залежать від цієї сторінки. Вони включають віртуальні сторінки, сторінки переадресації і сторінки з посиланням у змісті'
     DependtPageColumnLinkType: 'Тип посилання'
@@ -342,7 +342,7 @@ uk:
     METAEXTRA: 'Власні Мета-теги'
     METAKEYWORDS: 'Ключові вирази'
     METATITLE: Назва
-    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
+    MODIFIEDONDRAFTHELP: 'Сторінка має неопубліковані зміни'
     MODIFIEDONDRAFTSHORT: Змінений
     PAGELOCATION: 'Розміщення сторінки'
     PAGETITLE: 'Назва сторінки'
@@ -356,7 +356,7 @@ uk:
     PLURALNAME: 'Дерево сайту'
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
-    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
+    REMOVEDFROMDRAFTHELP: 'Сторінка опублікована, але видалена з чорнового сайту'
     REMOVEDFROMDRAFTSHORT: 'Видалено ''%s'' з чорнового сайту'
     REMOVE_INSTALL_WARNING: 'Увага: Ви повинні видалити install.php з цієї установки SilverStripe з міркувань безпеки.'
     REORGANISE_DESCRIPTION: 'Змінити структуру сайту'
@@ -382,7 +382,7 @@ uk:
     many_many_ImageTracking: 'Відстеження зображень'
     many_many_LinkTracking: 'Відстеження посилань'
   SiteTreeURLSegmentField:
-    HelpChars: ' Special characters are automatically converted or removed.'
+    HelpChars: 'Спеціальні символи автоматично перетворені або видалені.'
   StaticExporter:
     BASEURL: 'Основний URL'
     EXPORTTO: 'Експортувати до наведеної теки'
@@ -391,7 +391,7 @@ uk:
     FILTER: Фільтр
     SELECT: 'Вибрати:'
   TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Загальна сторінка з вмістом'
   TestPage:
     DESCRIPTION: 'Загальна сторінка з вмістом'
   TreeTools:
@@ -405,4 +405,4 @@ uk:
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Віртуальна сторінка'
   cms:
-    FILESYSTEMSYNC: 'Sync files'
+    FILESYSTEMSYNC: 'Синхронізувати файли'
