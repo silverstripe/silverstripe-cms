@@ -18,11 +18,10 @@ class CreateChangelog extends SilverStripeBuildTask {
 	 * Order of the array keys determines order of the lists.
 	 */
 	public $types = array(
-		'API Changes' => array('/^API CHANGE:?/i','/^APICHANGE?:?/i'),
-		'Features and Enhancements' => array('/^(ENHANCEMENT|ENHNACEMENT):?/i', '/^FEATURE:?/i'),
-		'Bugfixes' => array('/^(BUGFIX|BUGFUX):?/i','/^BUG FIX:?/i'),
-		'Minor changes' => array('/^MINOR:?/i'),
-		'Other' => array('/^[^A-Z][^A-Z][^A-Z]/') // dirty trick: check for uppercase characters
+		'API Changes' => array('/^(APICHANGE|API-CHANGE|API CHANGE|API)\s?:?/i'),
+		'Features and Enhancements' => array('/^(ENHANCEMENT|ENHNACEMENT|FEATURE|NEW)\s?:?/i'),
+		'Bugfixes' => array('/^(BUGFIX|BUGFUX|BUG)\s?:?/i','/^(BUG FIX)\s?:?/i'),
+		'Other' => array('/^(MINOR)\s?:?/i')
 	);
 	
 	public $commitUrls = array(
@@ -144,9 +143,9 @@ class CreateChangelog extends SilverStripeBuildTask {
 			foreach($this->types as $name => $rules) {
 				if(!isset($groupedByType[$name])) $groupedByType[$name] = array();
 				foreach($rules as $rule) {
-					if(!$matched && preg_match($rule, $commit['message'])) {
+					if(!$matched && preg_match($rule, $commit['message'], $matches)) {
 						// @todo The fallback rule on other can't be replaced, as it doesn't match a full prefix
-						$commit['message'] = ($name != 'Other') ? trim(preg_replace($rule, '', $commit['message'])) : $commit['message'];
+						$commit['message'] = trim(preg_replace($rule, '', $commit['message']));
 						$groupedByType[$name][] = $commit;
 						$matched = true;
 					}
