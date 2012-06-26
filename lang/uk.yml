@@ -1,29 +1,29 @@
 uk:
   AssetAdmin:
-    ADDFILES: 'Add Files'
-    ALLOWEDEXTS: 'Allowed extensions'
-    ActionAdd: 'Add folder'
-    AppCategoryArchive: Archive
-    AppCategoryAudio: Audio
+    ADDFILES: 'Додати файли'
+    ALLOWEDEXTS: 'Допустимі розширення'
+    ActionAdd: 'Додати папку'
+    AppCategoryArchive: Архівувати
+    AppCategoryAudio: Аудіо
     AppCategoryFlash: Flash
-    AppCategoryImage: Image
-    AppCategoryVideo: Video
-    BackToFolder: 'Back to folder'
-    CREATED: Date
-    CurrentFolderOnly: 'Limit to current folder?'
-    DetailsView: Details
+    AppCategoryImage: Зображення
+    AppCategoryVideo: Відео
+    BackToFolder: 'Повернутися до папки'
+    CREATED: Дата
+    CurrentFolderOnly: 'Обмежити до поточної папки?'
+    DetailsView: Деталі
     FILES: Files
-    FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
-    FROMTHEINTERNET: 'From the internet'
-    FROMYOURCOMPUTER: 'From your computer'
-    Filetype: 'File type'
-    ListView: 'List View'
-    MENUTITLE: Files
+    FILESYSTEMSYNCTITLE: 'Оновлення бази даних файлів у файловій системі. Корисно, коли нові файли були завантажені поза CMS, наприклад, через FTP.'
+    FROMTHEINTERNET: 'З інтернету'
+    FROMYOURCOMPUTER: 'З мого комп''ютера'
+    Filetype: 'Тип файлу'
+    ListView: 'У вигляді списку'
+    MENUTITLE: Файли
     NEWFOLDER: 'Нова Тека'
-    SIZE: Size
+    SIZE: Розмір
     THUMBSDELETED: '{count} unused thumbnails have been deleted'
-    TreeView: 'Tree View'
-    Upload: Upload
+    TreeView: 'У вигляді дерева'
+    Upload: Завантажити
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
   AssetTableField:
@@ -35,38 +35,38 @@ uk:
     DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Будь-який
-    BROKENLINKS: 'Broken links report'
-    CheckSite: 'Check site'
-    CheckSiteDropdownDraft: 'Draft Site'
-    CheckSiteDropdownPublished: 'Published Site'
-    ColumnDateLastModified: 'Date last modified'
-    ColumnDateLastPublished: 'Date last published'
-    ColumnProblemType: 'Problem type'
+    BROKENLINKS: 'Звіт про биті посилання'
+    CheckSite: 'Перевірити сайт'
+    CheckSiteDropdownDraft: 'Чорновий сайт'
+    CheckSiteDropdownPublished: 'Публічний сайт'
+    ColumnDateLastModified: 'Дата останньої зміни'
+    ColumnDateLastPublished: 'Дата останньої публікації'
+    ColumnProblemType: 'Тип проблеми'
     ColumnURL: URL
-    HasBrokenFile: 'has broken file'
-    HasBrokenLink: 'has broken link'
-    HasBrokenLinkAndFile: 'has broken link and file'
-    HoverTitleEditPage: 'Edit page'
+    HasBrokenFile: 'Має битий файл'
+    HasBrokenLink: 'має бите посилання'
+    HasBrokenLinkAndFile: 'має бите посилання та файл'
+    HoverTitleEditPage: 'Редагувати сторінку'
     PageName: 'Назва сторінки'
-    ReasonDropdown: 'Problem to check'
-    ReasonDropdownBROKENFILE: 'Broken file'
-    ReasonDropdownBROKENLINK: 'Broken link'
-    ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
-    ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
-    RedirectorNonExistent: 'redirector page pointing to non-existent page'
-    SORTASC: 'Sort in ascending order'
-    SORTDESC: 'Sort in descending order'
-    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
+    ReasonDropdown: 'Проблема для перевірки'
+    ReasonDropdownBROKENFILE: 'Битий файл'
+    ReasonDropdownBROKENLINK: 'Бите посилання'
+    ReasonDropdownRPBROKENLINK: 'Cторінка-перенаправлення що вказує на неіснуючу сторінку'
+    ReasonDropdownVPBROKENLINK: 'Віртуальна сторінка що вказує на неіснуючу сторінку'
+    RedirectorNonExistent: 'сторінка-перенаправлення що вказує на неіснуючу сторінку'
+    SORTASC: 'Сортувати у порядку зростання'
+    SORTDESC: 'Сортувати у порядку зменшення'
+    VirtualPageNonExistent: 'віртуальна сторінка що вказує на неіснуючу сторінку'
   CMSAddPageController:
-    Title: 'Add page'
+    Title: 'Додати сторінку'
   CMSBatchActions:
     DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
     DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
-    DELETE_DRAFT_PAGES: 'Delete from draft site'
-    DELETE_PAGES: 'Delete from published site'
-    PUBLISHED_PAGES: 'Published %d pages, %d failures'
-    PUBLISH_PAGES: Publish
-    UNPUBLISHED_PAGES: 'Un-published %d pages'
+    DELETE_DRAFT_PAGES: 'Видалити з чорнового сайту'
+    DELETE_PAGES: 'Видалити з опублікованого сайту'
+    PUBLISHED_PAGES: 'Опубліковано %d сторінок, %d навдач'
+    PUBLISH_PAGES: Опублікувати
+    UNPUBLISHED_PAGES: 'Знято з публікації %d сторінок'
     UNPUBLISH_PAGES: 'Зняти з публікації'
   CMSFileAddController:
     MENUTITLE: Files
@@ -77,7 +77,7 @@ uk:
     AddNewButton: 'Add new'
     ChoosePageParentMode: 'Choose where to create this page'
     ChoosePageType: 'Choose page type'
-    Create: Create
+    Create: Створити
     DELETE: 'Видалити з чорнового сайту'
     DELETEFP: Delete
     DESCREMOVED: 'and {count} descendants'
@@ -107,11 +107,11 @@ uk:
     TabHistory: History
     TabSettings: Settings
   CMSPageAddController:
-    MENUTITLE: 'Add page'
-    ParentMode_child: 'Under another page'
-    ParentMode_top: 'Top level'
+    MENUTITLE: 'Додати сторінку'
+    ParentMode_child: 'Під іншою сторінкою'
+    ParentMode_top: 'Вищий рівень'
   CMSPageEditController:
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: 'Редагувати сторінку'
   CMSPageHistoryController:
     COMPAREMODE: 'Режим порівняння (виберіть два)'
     COMPAREVERSIONS: 'Порівняти версії'
@@ -131,7 +131,7 @@ uk:
     MENUTITLE: Сторінки
     TreeView: 'У вигляді дерева'
   CMSSearch:
-    FILTERDATEFROM: From
+    FILTERDATEFROM: Від
     FILTERDATEHEADING: Дата
     FILTERDATETO: Кому
     FILTERLABELTEXT: Вміст
@@ -145,12 +145,12 @@ uk:
   CMSSiteTreeFilter_ChangedPages:
     ENABLEDRAGGING: 'Drag''n''drop'
     GO: Уперед
-    MULTISELECT: Multi-selection
+    MULTISELECT: 'Множинний вибір'
     Title: 'Changed pages'
-    VIEWFIRST: 'View first'
-    VIEWLAST: 'View last'
-    VIEWNEXT: 'View next'
-    VIEWPREVIOUS: 'View previous'
+    VIEWFIRST: 'Переглянути першу'
+    VIEWLAST: 'Переглянути останню'
+    VIEWNEXT: 'Переглянути наступну'
+    VIEWPREVIOUS: 'Переглянути попередню'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Всі сторінки, включаючи видалені'
   CMSSiteTreeFilter_Search:
@@ -158,10 +158,10 @@ uk:
   ContentControl:
     NOTEWONTBESHOWN: 'Примітка: це повідомлення не буде відображатися для відвідувачів'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
-    ARCHIVEDSITEFROM: 'Archived site from'
+    ARCHIVEDSITE: 'Заархівований сайт'
+    ARCHIVEDSITEFROM: 'Заархівований сайт з'
     CMS: CMS
-    DRAFTSITE: 'Draft Site'
+    DRAFTSITE: 'Чорновий сайт'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Ви повинні увійти у систему для перегляду чернетки даного матеріалу. <a href="%s">Натсиніть для переходу на опублікований матеріал.</a>'
     Email: Email
     InstallFilesDeleted: 'Installation files have been successfully deleted.'
@@ -179,11 +179,11 @@ uk:
     VIEWPAGEIN: 'Переглянути сторінку в:'
   ErrorPage:
     CODE: 'Код помилки'
-    DEFAULTERRORPAGECONTENT: '<p>Sorry, it seems you were trying to access a page that doesn''t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>'
-    DEFAULTERRORPAGETITLE: 'Page not found'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Server error'
-    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
+    DEFAULTERRORPAGECONTENT: '<p>Вибачте, але такої сторінки не існує.</p><p>Перевірте, будь-ласка, правильність URL та спробуйте ще раз.</p>'
+    DEFAULTERRORPAGETITLE: 'Сторінку не знайдено'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Вибачте, під час опрацювання вашого запиту сталася помилка.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Помилка сервера'
+    DESCRIPTION: 'Власний вміст для різних випадків помилки (наприклад, "Сторінку не знайдено")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
     400: '400 - Bad Request'
     401: '401 - Unauthorized'
@@ -215,13 +215,13 @@ uk:
     UNUSEDTHUMBNAILSTITLE: 'Невикористані ескізи'
     UploadFilesButton: Завантажити
   GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Загальна сторінку з вмістом'
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: 'Попередній перегляд'
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
-    SearchResults: 'Search Results'
+    SearchResults: 'Результати пошуку'
     VersionUnknown: Невідомий
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
@@ -230,21 +230,21 @@ uk:
     DESCRIPTION: 'Generic content page'
     HAVEASKED: 'Ви надіслали запит на перегляд вмісту нашої сторінки'
   MyOtherPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Загальна сторінка з вмістом'
   MyPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Загальний вміст сторінки'
   MyRandomPage:
     DESCRIPTION: 'Загальний вміст сторінки'
   PackageManagerPage:
     DESCRIPTION: 'Generic content page'
     RESET: Reset
   Page:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Загальна сторінка з вмістом'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
   Permissions:
-    CONTENT_CATEGORY: 'Content permissions'
-    PERMISSIONS_CATEGORY: 'Roles and access permissions'
+    CONTENT_CATEGORY: 'Дозволи вмісту'
+    PERMISSIONS_CATEGORY: 'Ролі та дозволи доступу'
   RedirectorPage:
     DESCRIPTION: 'Перенаправлення на іншу внутрішню сторінку'
     HASBEENSETUP: 'Сторінка перенаправлення була встановлена без указання цілі перенаправлення'
@@ -255,16 +255,16 @@ uk:
     REDIRECTTOPAGE: 'Сторінку на Вашому сайті'
     YOURPAGE: 'Сторінки на Вашому сайті'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-    FILTER: Filter
+    DESCRIPTION: 'Загальний вміст сторінки'
+    FILTER: Фільтр
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
     FILTERBY: 'Фільтр по'
   SearchForm:
-    GO: Go
-    SEARCH: Search
-    SearchResults: 'Search Results'
+    GO: Уперед
+    SEARCH: Пошук
+    SearchResults: 'Результати пошуку'
   SideReport:
     BROKENFILES: 'Pages with broken files'
     BROKENLINKS: 'Pages with broken links'
@@ -283,19 +283,19 @@ uk:
   SilverStripeNavigatorLinkl:
     CloseLink: Закрити
   SiteConfig:
-    DEFAULTTHEME: '(Use default theme)'
+    DEFAULTTHEME: '(Використовувати тему за замовчуванням)'
     EDITHEADER: 'Who can edit pages on this site?'
-    EDIT_PERMISSION: 'Manage site configuration'
-    EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
-    SITENAMEDEFAULT: 'Your Site Name'
+    EDIT_PERMISSION: 'Керувати конфігурацією сайту'
+    EDIT_PERMISSION_HELP: 'Можливість редагування глобальних налаштувань доступу / дозволів сторінок верхнього рівня.'
+    SITENAMEDEFAULT: 'Назва Вашого Сайту'
     SITETAGLINE: 'Site Tagline/Slogan'
-    SITETITLE: 'Site title'
+    SITETITLE: 'Заголовок сайту'
     TABACCESS: Доступ
     TABMAIN: Головна
-    TAGLINEDEFAULT: 'your tagline here'
-    THEME: Theme
+    TAGLINEDEFAULT: 'Ваш слоган'
+    THEME: 'Тема оформлення'
     TOPLEVELCREATE: 'Who can create pages in the root of the site?'
-    VIEWHEADER: 'Who can view pages on this site?'
+    VIEWHEADER: 'Хто може переглядати сторінки на цьому сайті?'
   SiteTree:
     ACCESSANYONE: Будь-хто
     ACCESSHEADER: 'Хто може переглядати цю сторінку?'
@@ -388,14 +388,14 @@ uk:
     EXPORTTO: 'Експортувати до наведеної теки'
     NAME: 'Статичний експортер'
   TableListField:
-    FILTER: Filter
-    SELECT: 'Select:'
+    FILTER: Фільтр
+    SELECT: 'Вибрати:'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
   TestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Загальна сторінка з вмістом'
   TreeTools:
-    DisplayLabel: 'Display:'
+    DisplayLabel: 'Відобразити:'
   VirtualPage:
     CHOOSE: 'Виберіть сторінку на яку посилатися'
     DESCRIPTION: 'Відображення вмісту іншої сторінки'
