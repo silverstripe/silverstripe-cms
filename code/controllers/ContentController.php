@@ -288,7 +288,7 @@ class ContentController extends Controller {
 
 		if(Director::isDev() || Permission::check('CMS_ACCESS_CMSMain') || Permission::check('VIEW_DRAFT_CONTENT')) {			
 			if($this->dataRecord) {
-				Requirements::css(CMS_DIR . '/css/SilverStripeNavigator.css');
+				Requirements::css(CMS_DIR . '/css/_old/SilverStripeNavigator.css');
 				Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.js');
 				Requirements::javascript(CMS_DIR . '/javascript/SilverStripeNavigator.js');
 				
@@ -325,7 +325,7 @@ HTML;
 		// On live sites we should still see the archived message
 		} else {
 			if($date = Versioned::current_archived_date()) {
-				Requirements::css(CMS_DIR . '/css/SilverStripeNavigator.css');
+				Requirements::css(CMS_DIR . '/css/_old/SilverStripeNavigator.css');
 				$dateObj = Datetime::create($date, null);
 				// $dateObj->setVal($date);
 				return "<div id=\"SilverStripeNavigatorMessage\">". _t('ContentController.ARCHIVEDSITEFROM') ."<br>" . $dateObj->Nice() . "</div>";
