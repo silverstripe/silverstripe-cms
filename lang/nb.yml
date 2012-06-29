@@ -1,26 +1,26 @@
 nb:
   AssetAdmin:
-    ADDFILES: 'Add Files'
+    ADDFILES: 'Legg til filer'
     ALLOWEDEXTS: 'Allowed extensions'
-    ActionAdd: 'Add folder'
-    AppCategoryArchive: Archive
+    ActionAdd: 'Legg til folder'
+    AppCategoryArchive: Arkiv
     AppCategoryAudio: Audio
     AppCategoryFlash: Flash
     AppCategoryImage: Image
     AppCategoryVideo: Video
-    BackToFolder: 'Back to folder'
+    BackToFolder: 'Tilbake til folder'
     CREATED: Date
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
     FILES: Files
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'From the internet'
-    FROMYOURCOMPUTER: 'From your computer'
-    Filetype: 'File type'
+    FROMYOURCOMPUTER: 'Fra din pc'
+    Filetype: Filtype
     ListView: 'List View'
     MENUTITLE: Files
-    NEWFOLDER: NewFolder
-    SIZE: Size
+    NEWFOLDER: 'Ny folder'
+    SIZE: Størrelse
     THUMBSDELETED: '{count} unused thumbnails have been deleted'
     TreeView: 'Tree View'
     Upload: Upload
@@ -54,8 +54,8 @@ nb:
     ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
     ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
     RedirectorNonExistent: 'redirector page pointing to non-existent page'
-    SORTASC: 'Sort in ascending order'
-    SORTDESC: 'Sort in descending order'
+    SORTASC: 'Sorter i stigende rekkefølge'
+    SORTDESC: 'Sorter i synkende rekkefølge'
     VirtualPageNonExistent: 'virtual page pointing to non-existent page'
   CMSAddPageController:
     Title: 'Add page'
@@ -107,7 +107,7 @@ nb:
     TabHistory: History
     TabSettings: Settings
   CMSPageAddController:
-    MENUTITLE: 'Add page'
+    MENUTITLE: 'Legg til side'
     ParentMode_child: 'Under another page'
     ParentMode_top: 'Top level'
   CMSPageEditController:
@@ -116,7 +116,7 @@ nb:
     COMPAREMODE: 'Compare mode (select two)'
     COMPAREVERSIONS: 'Compare Versions'
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
-    MENUTITLE: History
+    MENUTITLE: Historie
     REVERTTOTHISVERSION: 'Revert to this version'
     SHOWUNPUBLISHED: 'Show unpublished versions'
     SHOWVERSION: 'Show Version'
@@ -124,22 +124,22 @@ nb:
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
   CMSPageSettingsController:
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: 'Rediger siden'
   CMSPagesController:
-    GalleryView: 'Gallery View'
-    ListView: 'List View'
-    MENUTITLE: Pages
+    GalleryView: Bildevisning
+    ListView: Listevisning
+    MENUTITLE: Sider
     TreeView: 'Tree View'
   CMSSearch:
     FILTERDATEFROM: From
-    FILTERDATEHEADING: Date
-    FILTERDATETO: To
-    FILTERLABELTEXT: Content
+    FILTERDATEHEADING: Dato
+    FILTERDATETO: Til
+    FILTERLABELTEXT: Innhold
   CMSSettingsController:
-    AUTHOR: Author
+    AUTHOR: Forfatter
     MENUTITLE: Settings
-    NOTPUBLISHED: 'Not published'
-    PUBLISHER: Publisher
+    NOTPUBLISHED: 'Ikke utgitt'
+    PUBLISHER: Utgiver
     UNKNOWN: Unknown
     WHEN: When
   CMSSiteTreeFilter_ChangedPages:
@@ -154,7 +154,7 @@ nb:
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
-    Title: 'All pages'
+    Title: 'Alle sider'
   ContentControl:
     NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
   ContentController:
@@ -222,7 +222,7 @@ nb:
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: 'Search Results'
-    VersionUnknown: Unknown
+    VersionUnknown: Ukjent
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   MyNonRootPage:
@@ -321,7 +321,7 @@ nb:
     DEFAULTHOMECONTENT: '<p>Velkommen til SilverStripe! Dette er standard hjemmeside. Du kan redigere siden ved å åpne <a href="admin/">CMS''n</a>. Du kan nå aksessere <a href="http://doc.silverstripe.com">dokumentasjon for utviklere</a>, eller begynne å <a href="http://doc.silverstripe.com/doku.php?id=tutorials">lære SilverStripe.</a></p>'
     DEFAULTHOMETITLE: Hjem
     DELETEDPAGEHELP: 'Page is no longer published'
-    DELETEDPAGESHORT: Deleted
+    DELETEDPAGESHORT: Slettet
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
@@ -335,7 +335,7 @@ nb:
     HASBROKENLINKS: 'Denne siden har ødelagte lenker.'
     HTMLEDITORTITLE: Innhold
     INHERIT: 'Arvet fra foreldre side'
-    LASTUPDATED: 'Last Updated'
+    LASTUPDATED: 'Sist oppdatert'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 'Navigasjons etikett'
     METADESC: Beskrivelse
@@ -385,7 +385,7 @@ nb:
     HelpChars: ' Special characters are automatically converted or removed.'
   StaticExporter:
     BASEURL: 'Base URL'
-    EXPORTTO: 'Export to that folder'
+    EXPORTTO: 'Eksporter til folderen'
     NAME: 'Static exporter'
   TableListField:
     FILTER: Filter
