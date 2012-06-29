@@ -72,7 +72,7 @@ uk:
     MENUTITLE: Файли
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
-    ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
+    ACCESS_HELP: 'Дозволити перегляд розділу, що містить дерево сторінок і зміст. Дозволами на перегляд та редагування, а також окремими дозволами на контент, можна керувати на відповідних сторінках.'
     AddNew: 'Додати нову сторінку'
     AddNewButton: 'Додати новий'
     ChoosePageParentMode: 'Виберіть де створити цю сторінку'
@@ -115,13 +115,13 @@ uk:
   CMSPageHistoryController:
     COMPAREMODE: 'Режим порівняння (виберіть два)'
     COMPAREVERSIONS: 'Порівняти версії'
-    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
+    COMPARINGVERSION: 'Порівняння версій {version1} та {version2}.'
     MENUTITLE: Історія
     REVERTTOTHISVERSION: 'Відновити цю версію'
     SHOWUNPUBLISHED: 'Показати неопубліковані версії'
     SHOWVERSION: 'Показати версію'
     VIEW: вигляд
-    VIEWINGVERSION: 'Currently viewing version {version}.'
+    VIEWINGVERSION: 'Переглядається версія {version}.'
   CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Застосувати фільтр"'
   CMSPageSettingsController:
     MENUTITLE: 'Редагувати сторінку'
@@ -174,7 +174,7 @@ uk:
     PUBLISHEDSITE: 'Публічний сайт'
     Password: Пароль
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    StartEditing: 'Ви можете почати редагувати вміст сайту перейшовши в <a href="{link}">CMS</a>.'
     UnableDeleteInstall: 'Не вдається видалити інсталяційні файли. Будь ласка, видаліть вручну наведені нижче файли'
     VIEWPAGEIN: 'Переглянути сторінку в:'
   ErrorPage:
@@ -184,7 +184,7 @@ uk:
     DEFAULTSERVERERRORPAGECONTENT: '<p>Вибачте, під час опрацювання вашого запиту сталася помилка.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Помилка сервера'
     DESCRIPTION: 'Власний вміст для різних випадків помилки (наприклад, "Сторінку не знайдено")'
-    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    ERRORFILEPROBLEM: 'Помилка при відкритті файлу "{filename}" для запису. Перевірте, будь-ласка, дозволи на файл.'
     400: '400 - Bad Request'
     401: '401 - Unauthorized'
     403: '403 - Forbidden'
@@ -268,8 +268,8 @@ uk:
   SideReport:
     BROKENFILES: 'Сторінки з пошкодженими файлами'
     BROKENLINKS: 'Сторінки з битими посиланнями'
-    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
-    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
+    BROKENREDIRECTORPAGES: 'Сторінки-перенаправлення вказують на видалені сторінки'
+    BROKENVIRTUALPAGES: 'Віртуальні сторінки вказують на видалені сторінки'
     BrokenLinksGroupTitle: 'Звіт про биті посилання'
     ContentGroupTitle: 'Звіти про вміст'
     EMPTYPAGES: 'Порожні сторінки'
@@ -294,7 +294,7 @@ uk:
     TABMAIN: Головна
     TAGLINEDEFAULT: 'тут ваш слоган'
     THEME: 'Тема оформлення'
-    TOPLEVELCREATE: 'Who can create pages in the root of the site?'
+    TOPLEVELCREATE: 'Хто може створювати сторінки верхнього рівня на сайті?'
     VIEWHEADER: 'Хто може переглядати сторінки на цьому сайті?'
   SiteTree:
     ACCESSANYONE: Будь-хто
@@ -302,9 +302,9 @@ uk:
     ACCESSLOGGEDIN: 'Тільки ті, що увійшли'
     ACCESSONLYTHESE: 'Тільки ці люди (виберіть зі списку)'
     ADDEDTODRAFTHELP: 'Сторінка ще не опублікована'
-    ADDEDTODRAFTSHORT: Draft
+    ADDEDTODRAFTSHORT: Чорновий
     ALLOWCOMMENTS: 'Дозволити коментувати на цій сторінці?'
-    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+    APPEARSVIRTUALPAGES: 'Цей вміст також відображається на віртуальній сторінці в розділі {title}.'
     BUTTONCANCELDRAFT: 'Відмінити зміни чернетки'
     BUTTONCANCELDRAFTDESC: 'Видалити черентку та повернутися до теперішнього опублікованого варіанту'
     BUTTONSAVEPUBLISH: 'Зберегти та опублікувати'
@@ -354,8 +354,8 @@ uk:
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Керувати правами доступу до контенту'
     PERMISSION_GRANTACCESS_HELP: 'Дозволити встановлювати обмеження доступу окремо для кожної сторінки в розділі "Сторінки"'
     PLURALNAME: 'Дерево сайту'
-    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
-    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
+    PageTypNotAllowedOnRoot: 'Сторінки типу "{type}" не можуть бути кореневими'
+    PageTypeNotAllowed: 'Не дозоволяється створювати сторінки типу "{type}" як дочірні сторінки цієї сторінки'
     REMOVEDFROMDRAFTHELP: 'Сторінка опублікована, але видалена з чорнового сайту'
     REMOVEDFROMDRAFTSHORT: 'Видалено ''%s'' з чорнового сайту'
     REMOVE_INSTALL_WARNING: 'Увага: Ви повинні видалити install.php з цієї установки SilverStripe з міркувань безпеки.'
@@ -402,7 +402,7 @@ uk:
     EDITCONTENT: 'натисніть тут для редагування вмісту'
     HEADER: 'Це віртуальна сторінка'
     PLURALNAME: 'Віртуальні сторінки'
-    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
+    PageTypNotAllowedOnRoot: 'Тип сторінки "{type}" не допускається на кореневому рівні для цієї віртуальної сторінки'
     SINGULARNAME: 'Віртуальна сторінка'
   cms:
     FILESYSTEMSYNC: 'Синхронізувати файли'
