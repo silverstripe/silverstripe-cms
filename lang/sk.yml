@@ -27,7 +27,7 @@ sk:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
   AssetTableField:
-    BACKLINKCOUNT: 'Used on:'
+    BACKLINKCOUNT: 'Použité na:'
     PAGES: page(s)
   BasicFieldsTestPage:
     DESCRIPTION: 'Generic content page'
@@ -92,7 +92,7 @@ sk:
     PUBALLFUN: 'Funkcia "Publikovať všetko"'
     PUBALLFUN2: 'Stlačením tohto tlačidla vykonáte to isté ako keby ste navštívili každú stránku a stlačili "publikuj". Je určené na použite po rozsiahlych zmenách obsahu, napríklad keď bol web prvýkrát vytvorený.'
     PUBPAGES: 'Done: Published {count} pages'
-    PageAdded: 'Successfully created page'
+    PageAdded: 'Stránka vytvorená úspešne'
     REMOVED: 'Vymazané ''%s''%s z publikovaného webu'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: 'Odstránené ''%s'' z pracovnej verzie stránky'
@@ -164,17 +164,17 @@ sk:
     DRAFTSITE: 'Pracovná verzia stránky'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Pre zobrazenie návrhov alebo archivovaného obsahu sa musíte prihlásiť so svojím CMS heslom. <a href="%s">Pre návrat na publikovaný web kliknite Tu.</a>'
     Email: Email
-    InstallFilesDeleted: 'Installation files have been successfully deleted.'
+    InstallFilesDeleted: 'Inštalačné súbory boli odstranené úspešne.'
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    InstallSuccessCongratulations: 'SilverStripe bol nainštalovaný úspešne.'
     LOGGEDINAS: 'Prihlásený ako'
     LOGIN: Prihlásiť
     LOGOUT: Odhlásiť
     NOTLOGGEDIN: Neprihlásený
     PUBLISHEDSITE: 'Publikovaný web'
-    Password: Password
+    Password: Heslo
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    StartEditing: 'Môžte začať editáciu vášho web obsahu otvorením <a href="{link}">CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'Prezrieť stránku v:'
   ErrorPage:
@@ -382,7 +382,7 @@ sk:
     many_many_ImageTracking: 'Záznamy o  obrázkov'
     many_many_LinkTracking: 'Záznamy o odkazoch'
   SiteTreeURLSegmentField:
-    HelpChars: ' Special characters are automatically converted or removed.'
+    HelpChars: 'Špeciálne znaky sú automaticky zkonvertované alebo ostránené.'
   StaticExporter:
     BASEURL: 'Základná URL adresa'
     EXPORTTO: 'Exportovať do tohto adresára'
