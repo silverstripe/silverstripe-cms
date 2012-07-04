@@ -1,36 +1,36 @@
 nb:
   AssetAdmin:
     ADDFILES: 'Legg til filer'
-    ALLOWEDEXTS: 'Allowed extensions'
+    ALLOWEDEXTS: 'Tillatte utvidelser'
     ActionAdd: 'Legg til folder'
     AppCategoryArchive: Arkiv
     AppCategoryAudio: Audio
     AppCategoryFlash: Flash
-    AppCategoryImage: Image
+    AppCategoryImage: Bilde
     AppCategoryVideo: Video
     BackToFolder: 'Tilbake til folder'
-    CREATED: Date
-    CurrentFolderOnly: 'Limit to current folder?'
-    DetailsView: Details
+    CREATED: Dato
+    CurrentFolderOnly: 'Begrens til nåværende folder'
+    DetailsView: Detaljer
     FILES: Files
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
-    FROMTHEINTERNET: 'From the internet'
+    FROMTHEINTERNET: 'Fra internett'
     FROMYOURCOMPUTER: 'Fra din pc'
     Filetype: Filtype
-    ListView: 'List View'
-    MENUTITLE: Files
+    ListView: Listevisning
+    MENUTITLE: Filer
     NEWFOLDER: 'Ny folder'
     SIZE: Størrelse
     THUMBSDELETED: '{count} unused thumbnails have been deleted'
-    TreeView: 'Tree View'
-    Upload: Upload
+    TreeView: Trevisning
+    Upload: 'Last opp'
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
     PAGES: page(s)
   BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Generisk innholdsside'
   BigFamilyPage:
     DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
@@ -63,9 +63,9 @@ nb:
     DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
     DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
     DELETE_DRAFT_PAGES: 'Delete from draft site'
-    DELETE_PAGES: 'Delete from published site'
+    DELETE_PAGES: 'Slett fra publisert side'
     PUBLISHED_PAGES: 'Published %d pages, %d failures'
-    PUBLISH_PAGES: Publish
+    PUBLISH_PAGES: Publiser
     UNPUBLISHED_PAGES: 'Un-published %d pages'
     UNPUBLISH_PAGES: Un-publish
   CMSFileAddController:
@@ -182,7 +182,7 @@ nb:
     DEFAULTERRORPAGECONTENT: '<p>Beklager, det ser ut til at du prøver å nå en side som ikke finnes.</p><p>Sjekk at du har skrevet riktig adresse og prøv på nytt.</p>'
     DEFAULTERRORPAGETITLE: 'Finner ikke siden'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Server error'
+    DEFAULTSERVERERRORPAGETITLE: Serverfeil
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
     400: '400 - Dårlig Sidespørring'
@@ -310,7 +310,7 @@ nb:
     BUTTONSAVEPUBLISH: 'Lagre & Publiser'
     BUTTONUNPUBLISH: Av-publiser
     BUTTONUNPUBLISHDESC: 'Fjern denne siden fra det publiserte nettstedet'
-    Back: Back
+    Back: Tilbake
     CREATED: 'Date Created'
     Comments: Kommentarer
     Content: Innhold
@@ -328,7 +328,7 @@ nb:
     EDITANYONE: 'Alle som kan logge inn til kontrollpanelet'
     EDITHEADER: 'Hvem kan redigere dette i kontrollpanelet?'
     EDITONLYTHESE: 'Bare disse personene'
-    EDITORGROUPS: 'Editor Groups'
+    EDITORGROUPS: 'Redaktør grupper'
     EDIT_ALL_DESCRIPTION: 'Edit any page'
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     Editors: Redaktørgrupper
