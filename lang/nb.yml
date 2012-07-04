@@ -113,14 +113,14 @@ nb:
   CMSPageEditController:
     MENUTITLE: 'Edit Page'
   CMSPageHistoryController:
-    COMPAREMODE: 'Compare mode (select two)'
-    COMPAREVERSIONS: 'Compare Versions'
+    COMPAREMODE: 'Sammenlign modus (velg to)'
+    COMPAREVERSIONS: 'Sammenlign versjoner'
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
     MENUTITLE: Historie
-    REVERTTOTHISVERSION: 'Revert to this version'
-    SHOWUNPUBLISHED: 'Show unpublished versions'
-    SHOWVERSION: 'Show Version'
-    VIEW: view
+    REVERTTOTHISVERSION: 'Tilbake til denne versjonen'
+    SHOWUNPUBLISHED: 'Vis upubliserte versjoner'
+    SHOWVERSION: 'Vis versjon'
+    VIEW: Visning
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
   CMSPageSettingsController:
@@ -129,9 +129,9 @@ nb:
     GalleryView: Bildevisning
     ListView: Listevisning
     MENUTITLE: Sider
-    TreeView: 'Tree View'
+    TreeView: Trevisning
   CMSSearch:
-    FILTERDATEFROM: From
+    FILTERDATEFROM: Fra
     FILTERDATEHEADING: Dato
     FILTERDATETO: Til
     FILTERLABELTEXT: Innhold
@@ -209,19 +209,19 @@ nb:
     504: '504 - Gateway timeout'
     505: '505 - HTTP versjon ikke støttet'
   Folder:
-    AddFolderButton: 'Add folder'
+    AddFolderButton: 'Legg til folder'
     DELETEUNUSEDTHUMBNAILS: 'Slett miniatyrbilder som ikke er i bruk'
     UNUSEDFILESTITLE: 'Filer ikke i bruk'
     UNUSEDTHUMBNAILSTITLE: 'Miniatyrbilder ikke i bruk'
-    UploadFilesButton: Upload
+    UploadFilesButton: 'Last opp'
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Deleted.
-    PreviewButton: Preview
+    PreviewButton: Forhåndsvisning
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
-    SearchResults: 'Search Results'
+    SearchResults: Søkeresultater
     VersionUnknown: Ukjent
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
@@ -234,7 +234,7 @@ nb:
   MyPage:
     DESCRIPTION: 'Generic content page'
   MyRandomPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Generisk innholdsside'
   PackageManagerPage:
     DESCRIPTION: 'Generic content page'
     RESET: Reset
@@ -246,7 +246,7 @@ nb:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
   RedirectorPage:
-    DESCRIPTION: 'Redirects to a different internal page'
+    DESCRIPTION: 'Omdirigerer til en annen intern side'
     HASBEENSETUP: 'En omdirigeringssside har blitt satt opp uten et mål å omdirigere til.'
     HEADER: 'Denne siden vil omdirigere brukere til en annen side'
     OTHERURL: 'Andre nettsteds URL'
@@ -264,7 +264,7 @@ nb:
   SearchForm:
     GO: Utfør
     SEARCH: Søk
-    SearchResults: 'Search Results'
+    SearchResults: Søkeresultater
   SideReport:
     BROKENFILES: 'Pages with broken files'
     BROKENLINKS: 'Pages with broken links'
@@ -398,7 +398,7 @@ nb:
     DisplayLabel: 'Display:'
   VirtualPage:
     CHOOSE: 'Velg en side å lenke til'
-    DESCRIPTION: 'Displays the content of another page'
+    DESCRIPTION: 'Viser innholdet av en annen side'
     EDITCONTENT: 'Klikk her for å endre innholdet'
     HEADER: 'Dette er en virituell side'
     PLURALNAME: 'Virtuelle Sider'
