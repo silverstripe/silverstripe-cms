@@ -152,7 +152,7 @@ nb:
     VIEWNEXT: 'Se neste'
     VIEWPREVIOUS: 'Se forrige'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'All pages, including deleted'
+    Title: 'Alle sider, inkludert slettede'
   CMSSiteTreeFilter_Search:
     Title: 'Alle sider'
   ContentControl:
@@ -279,9 +279,9 @@ nb:
     REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigatorLink:
     ShareInstructions: 'To share a this to this page, copy and paste the link below.'
-    ShareLink: 'Share link'
+    ShareLink: 'Del link'
   SilverStripeNavigatorLinkl:
-    CloseLink: Close
+    CloseLink: Lukk
   SiteConfig:
     DEFAULTTHEME: '(Use default theme)'
     EDITHEADER: 'Who can edit pages on this site?'
