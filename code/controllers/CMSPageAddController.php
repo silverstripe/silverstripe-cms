@@ -122,7 +122,9 @@ class CMSPageAddController extends CMSPageEditController {
 		}
 
 		$record = $this->getNewItem("new-$className-$parentID".$suffix, false);
-		if(class_exists('Translatable') && $record->hasExtension('Translatable')) $record->Locale = $data['Locale'];
+		if(class_exists('Translatable') && $record->hasExtension('Translatable') && isset($data['Locale'])) {
+			$record->Locale = $data['Locale'];
+		}
 
 		try {
 			$record->write();

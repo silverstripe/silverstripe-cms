@@ -891,6 +891,25 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertContains('InheritedTitle', $treeTitle);
 		$this->assertContains('inherited-class', $treeTitle);
 	}
+
+	function testMenuTitleIsUnsetWhenEqualsTitle() {
+		$page = new SiteTree();
+		$page->Title = 'orig';
+		$page->MenuTitle = 'orig';
+		$page->write();
+		
+		// change menu title
+		$page->MenuTitle = 'changed';
+		$page->write();
+		$page = SiteTree::get()->byID($page->ID);
+		$this->assertEquals('changed', $page->getField('MenuTitle'));
+
+		// change menu title back
+		$page->MenuTitle = 'orig';
+		$page->write();
+		$page = SiteTree::get()->byID($page->ID);
+		$this->assertEquals(null, $page->getField('MenuTitle'));
+	}
 	
 }
 

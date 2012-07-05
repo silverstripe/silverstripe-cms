@@ -146,7 +146,8 @@ JS
 			new GridFieldPaginator(15),
 			new GridFieldEditButton(),
 			new GridFieldDeleteAction(),
-			new GridFieldDetailForm()
+			new GridFieldDetailForm(),
+			GridFieldLevelup::create($folder->ID)->setLinkSpec('admin/assets/show/%d')
 		);
 
 		$gridField = new GridField('File', $title, $this->getList(), $gridFieldConfig);
