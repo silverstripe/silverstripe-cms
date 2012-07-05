@@ -32,7 +32,7 @@ de:
   BasicFieldsTestPage:
     DESCRIPTION: 'Allgemeine Inaltsseite'
   BigFamilyPage:
-    DESCRIPTION: 'Allgemeine Inaltsseite'
+    DESCRIPTION: 'Allgemeine Inhaltsseite'
   BrokenLinksReport:
     Any: Alle
     BROKENLINKS: 'Defekte Links'
@@ -55,13 +55,13 @@ de:
     ReasonDropdownVPBROKENLINK: 'Virtuelle Seiten, die auf eine nicht vorhandene Seite verweisen'
     RedirectorNonExistent: 'Weiterleitung, die auf eine nicht vorhandene Seite verweist'
     SORTASC: 'Aufsteigend sortieren'
-    SORTDESC: 'Absteigen sortieren'
+    SORTDESC: 'Absteigend sortieren'
     VirtualPageNonExistent: 'Virtuelle Seite, die auf eine nicht vorhandene Seite verweist'
   CMSAddPageController:
     Title: 'Seite hinzufügen'
   CMSBatchActions:
-    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
-    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
+    DELETED_DRAFT_PAGES: '%d Seiten wurden von der Entwurfs-Site gelöscht, %d Fehler'
+    DELETED_PAGES: '%d Seiten wurden von der veröffentlichten Site gelöscht, %d Fehler'
     DELETE_DRAFT_PAGES: 'Von der Entwurfsansicht löschen'
     DELETE_PAGES: 'Von veröffentlichter Site löschen'
     PUBLISHED_PAGES: '%d Seiten veröffentlicht, %d Fehler'
@@ -73,7 +73,7 @@ de:
   CMSMain:
     ACCESS: 'Zugang zum Bereich ''{title}'''
     ACCESS_HELP: 'Seiteninhalt im CMS anzeigen. Anzeige- und Bearbeitungsberechtigungen können sowohl seitenspezifische als auch über die globalen Inhaltsberechtigungen gesetzt werden.'
-    AddNew: 'Neue Page hinzufügen'
+    AddNew: 'Neue Seite hinzufügen'
     AddNewButton: Erstellen
     ChoosePageParentMode: 'Wo soll diese Seite erstellt werden?'
     ChoosePageType: 'Seitentyp auswählen'
@@ -99,7 +99,7 @@ de:
     RESTORE: Wiederherstellen
     RESTORED: '''{title}'' wurde wiederhergestellt'
     ROLLBACK: 'Diese Version wiederherstellen'
-    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
+    ROLLEDBACKPUB: 'Die Änderungen seit der letzten Veröffentlichung wurden verworfen. Neue Versionsnummer ist #{version}'
     ROLLEDBACKVERSION: 'Version #%d wiederhergestellt. Neue Versionsnummer ist #%d'
     SAVE: Speichern
     SAVEDRAFT: 'Entwurf speichern'
@@ -143,7 +143,7 @@ de:
     UNKNOWN: Unbekannt
     WHEN: Wann
   CMSSiteTreeFilter_ChangedPages:
-    ENABLEDRAGGING: 'Drag''n''drop'
+    ENABLEDRAGGING: 'Drag & Drop'
     GO: Los
     MULTISELECT: Mehrfachauswahl
     Title: Seiten
@@ -184,7 +184,7 @@ de:
     DEFAULTSERVERERRORPAGECONTENT: '<p>Bei der Berarbeitung ihrer Anfrage ergab sich ein Problem.</p>'
     DEFAULTSERVERERRORPAGETITLE: Serverfehler
     DESCRIPTION: 'Spezieller Inhalt für andere Fehlerfälle (z.B. "Seite nicht gefunden")'
-    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    ERRORFILEPROBLEM: 'Die Datei "{filename}" konnte nicht zum Schreiben geöffnet werden. Bitte überprüfen Sie die Dateiberechtigungen.'
     400: '400 - Fehlerhafter Zugriff'
     401: '401 - Unerlaubter Zugriff'
     403: '403 - Verbotener Zugriff'
@@ -210,12 +210,12 @@ de:
     505: '505 - HTTP Version wird nicht unterstützt'
   Folder:
     AddFolderButton: 'Ordner hinzufügen'
-    DELETEUNUSEDTHUMBNAILS: 'löschen ungebrauchte Vorschaubilder'
-    UNUSEDFILESTITLE: 'ungebrauchte Dateien'
-    UNUSEDTHUMBNAILSTITLE: 'ungebrauchte Vorschaubilder'
+    DELETEUNUSEDTHUMBNAILS: 'Unbenutzte Vorschaubilder löschen'
+    UNUSEDFILESTITLE: 'Unbenutzte Dateien'
+    UNUSEDTHUMBNAILSTITLE: 'Unbenutzte Vorschaubilder'
     UploadFilesButton: Hochladen
   GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Allgemeine Inhaltsseite'
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Vorschau
@@ -224,13 +224,13 @@ de:
     SearchResults: Suchergebnis
     VersionUnknown: Unbekannt
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Allgemeine Inhaltsseite'
   MyNonRootPage:
     CANACCESS: 'Sie können unter folgendem Verweis auf die archivierte Seite zugreifen:'
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Allgemeine Inhaltsseite'
     HAVEASKED: 'Sie haben darum gebeten, den Inhalt unserer Seite zu sehen, am'
   MyOtherPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Allgemeine Inhaltsseite'
   MyPage:
     DESCRIPTION: 'Allgemeine Inaltsseite'
   MyRandomPage:
@@ -239,7 +239,7 @@ de:
     DESCRIPTION: 'Allgemeine Inhaltsseite'
     RESET: Zurücksetzen
   Page:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Allgemeine Inhaltsseite'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Zugriff'
   Permissions:
@@ -255,7 +255,7 @@ de:
     REDIRECTTOPAGE: 'Eine Seite auf Ihrer Website'
     YOURPAGE: 'Seite auf Ihrer Website'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Allgemeine Inhaltsseite'
     FILTER: Filter
   ReportAdmin:
     MENUTITLE: Berichte
@@ -266,7 +266,7 @@ de:
     SEARCH: Suche
     SearchResults: Suchergebnis
   SideReport:
-    BROKENFILES: 'Seiten mit defekten Links'
+    BROKENFILES: 'Seiten mit defekten Dateiverknüpfungen'
     BROKENLINKS: 'Seiten mit defekten Links'
     BROKENREDIRECTORPAGES: 'Weiterleitungen, die auf gelöschte Seiten verweisen'
     BROKENVIRTUALPAGES: 'Virtuelle Seiten, die auf gelöschte Seiten verweisen'
@@ -351,10 +351,10 @@ de:
     PARENTTYPE: Seitenposition
     PARENTTYPE_ROOT: 'Seite auf der obersten Ebene'
     PARENTTYPE_SUBPAGE: 'Seite unterhalb einer übergeordneten Seite (wählen Sie unten)'
-    PERMISSION_GRANTACCESS_DESCRIPTION: 'Kontrolliere, welche Gruppen die jeweilige Seite beteten oder bearbeiten dürfen'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Zugriffsrechte für Inhalte verwalten'
     PERMISSION_GRANTACCESS_HELP: 'Einstellung von seitenspezifischen Zugriffsbeschränkungen im Bereich "Seiteninhalt" erlauben'
     PLURALNAME: Seiten
-    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
+    PageTypNotAllowedOnRoot: 'Der Seitentyp "{type}" darf nicht auf der Grundebene verwendet werden.'
     PageTypeNotAllowed: 'Der Seitentyp "{type}" kann nicht als Kind dieser übergeordneten Seite verwendet werden'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
     REMOVEDFROMDRAFTSHORT: 'Von Entwurf entfernt'
@@ -382,7 +382,7 @@ de:
     many_many_ImageTracking: Bild-Verfolgung
     many_many_LinkTracking: Link-Verfolgung
   SiteTreeURLSegmentField:
-    HelpChars: 'Umlaute werden automatisch konvertiert oder entfernt.'
+    HelpChars: 'Sonderzeichen werden automatisch umgewandelt oder entfernt.'
   StaticExporter:
     BASEURL: 'Ausgangs URL'
     EXPORTTO: 'Exportieren in diesen Ordner'
@@ -391,9 +391,9 @@ de:
     FILTER: Filter
     SELECT: 'Auswählen:'
   TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Allgemeine Inhaltsseite'
   TestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Allgemeine Inhaltsseite'
   TreeTools:
     DisplayLabel: Anzeigen
   VirtualPage:
