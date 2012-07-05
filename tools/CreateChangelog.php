@@ -20,7 +20,7 @@ class CreateChangelog extends SilverStripeBuildTask {
 	public $types = array(
 		'API Changes' => array('/^(APICHANGE|API-CHANGE|API CHANGE|API)\s?:?/i'),
 		'Features and Enhancements' => array('/^(ENHANCEMENT|ENHNACEMENT|FEATURE|NEW)\s?:?/i'),
-		'Bugfixes' => array('/^(BUGFIX|BUGFUX|BUG)\s?:?/i','/^(BUG FIX)\s?:?/i'),
+		'Bugfixes' => array('/^(BUGFIX|BUGFUX|BUG|FIX)\s?:?/i','/^(BUG FIX)\s?:?/i'),
 		'Other' => array('/^(MINOR)\s?:?/i')
 	);
 	
