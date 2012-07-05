@@ -1,7 +1,7 @@
 de:
   AssetAdmin:
     ADDFILES: 'Dateien hinzufügen'
-    ALLOWEDEXTS: 'Allowed extensions'
+    ALLOWEDEXTS: 'Erlaubte Dateiendungen'
     ActionAdd: 'Ordner hinzufügen'
     AppCategoryArchive: Archive
     AppCategoryAudio: Audio
@@ -12,7 +12,7 @@ de:
     CREATED: Datum
     CurrentFolderOnly: 'Auf den aktuellen Ordner beschränken.'
     DetailsView: Details
-    FILES: Files
+    FILES: Dateien
     FILESYSTEMSYNCTITLE: 'Aktualisiere die CMS Datenbankeinträge zu Dateien im Dateisystem. Dies ist dann hilfreich, wenn Dateien ausserhalb des CMS hochgeladen wurden, z.B. mit FTP.'
     FROMTHEINTERNET: 'Aus dem Internet'
     FROMYOURCOMPUTER: 'Von Ihrem Computer'
@@ -21,14 +21,14 @@ de:
     MENUTITLE: Dateien
     NEWFOLDER: 'Neuer Ordner'
     SIZE: Grösse
-    THUMBSDELETED: '{count} unused thumbnails have been deleted'
-    TreeView: 'Tree View'
+    THUMBSDELETED: '{count} unbenutzte Vorschaubilder wurden gelöscht'
+    TreeView: Baumansicht
     Upload: Hochladen
   AssetAdmin_DeleteBatchAction:
-    TITLE: 'Delete folders'
+    TITLE: 'Ordner löschen'
   AssetTableField:
-    BACKLINKCOUNT: 'Used on:'
-    PAGES: page(s)
+    BACKLINKCOUNT: 'Verwendet auf:'
+    PAGES: Seite(n)
   BasicFieldsTestPage:
     DESCRIPTION: 'Allgemeine Inaltsseite'
   BigFamilyPage:
@@ -58,7 +58,7 @@ de:
     SORTDESC: 'Absteigen sortieren'
     VirtualPageNonExistent: 'Virtuelle Seite, die auf eine nicht vorhandene Seite verweist'
   CMSAddPageController:
-    Title: 'Add page'
+    Title: 'Seite hinzufügen'
   CMSBatchActions:
     DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
     DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
@@ -69,59 +69,59 @@ de:
     UNPUBLISHED_PAGES: 'Veröffentlichung von %d Seiten zurückgenommen'
     UNPUBLISH_PAGES: 'Veröffentlichung zurücknehmen'
   CMSFileAddController:
-    MENUTITLE: Files
+    MENUTITLE: Dateien
   CMSMain:
-    ACCESS: 'Access to ''{title}'' section'
+    ACCESS: 'Zugang zum Bereich ''{title}'''
     ACCESS_HELP: 'Seiteninhalt im CMS anzeigen. Anzeige- und Bearbeitungsberechtigungen können sowohl seitenspezifische als auch über die globalen Inhaltsberechtigungen gesetzt werden.'
     AddNew: 'Neue Page hinzufügen'
-    AddNewButton: 'Add new'
-    ChoosePageParentMode: 'Choose where to create this page'
-    ChoosePageType: 'Choose page type'
+    AddNewButton: Erstellen
+    ChoosePageParentMode: 'Wo soll diese Seite erstellt werden?'
+    ChoosePageType: 'Seitentyp auswählen'
     Create: Erstellen
     DELETE: 'Von Entwurf-Seite löschen'
     DELETEFP: 'Von veröffentlicher Seite entfernen'
-    DESCREMOVED: 'and {count} descendants'
+    DESCREMOVED: 'und {count} abhängige Seiten'
     EMAIL: E-Mail
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: 'Seite bearbeiten'
     NEW: Neu
     PAGENOTEXISTS: 'Diese Seite wurde nicht gefunden'
-    PAGES: Pages
+    PAGES: Seiten
     PAGETYPEANYOPT: Alle
-    PAGETYPEOPT: 'Page Type'
+    PAGETYPEOPT: Seitentyp
     PUBALLCONFIRM: 'Veröffentlicht jede Seite des Seitenbaumes und kopiert den Inhalt von Entwurf zu Live.'
     PUBALLFUN: '"Alle veröffentlichen"-Funktion'
     PUBALLFUN2: 'Dieser Button bewirkt dasselbe wie auf jeder Seite "veröffentlichen" zu wählen. Sie sollten diese Funktion nutzen, wenn grössere Inhaltsänderungen stattgefunden haben, zum Beispiel wenn die Seite erstellt wurde.'
-    PUBPAGES: 'Done: Published {count} pages'
+    PUBPAGES: 'Abgeschlossen: {count} Seiten wurden veröffentlicht'
     PageAdded: 'Seite erfolgreich erstellt'
     REMOVED: 'Lösche ''%s''%s von der Live-Seite'
-    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
+    REMOVEDPAGE: '''{title}'' wurde von der veröffentlichten Site entfernt'
     REMOVEDPAGEFROMDRAFT: 'Lösche ''%s'' von der Entwurfs-Seite'
     RESTORE: Wiederherstellen
-    RESTORED: 'Restored ''{title}'' successfully'
+    RESTORED: '''{title}'' wurde wiederhergestellt'
     ROLLBACK: 'Diese Version wiederherstellen'
     ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
     ROLLEDBACKVERSION: 'Version #%d wiederhergestellt. Neue Versionsnummer ist #%d'
     SAVE: Speichern
     SAVEDRAFT: 'Entwurf speichern'
     TabContent: Inhalt
-    TabHistory: History
+    TabHistory: Verlauf
     TabSettings: Einstellungen
   CMSPageAddController:
-    MENUTITLE: 'Add page'
-    ParentMode_child: 'Under another page'
-    ParentMode_top: 'Top level'
+    MENUTITLE: 'Seite hinzufügen'
+    ParentMode_child: 'Einer anderen Seite untergeordnet'
+    ParentMode_top: 'Auf der obersten Ebene'
   CMSPageEditController:
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: 'Seite bearbeiten'
   CMSPageHistoryController:
     COMPAREMODE: 'Vergleichsmodus (wähle zwei)'
     COMPAREVERSIONS: 'Versionen vergleichen'
-    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
+    COMPARINGVERSION: 'Vergleiche Versionen {version1} und {version2}.'
     MENUTITLE: Archiv
     REVERTTOTHISVERSION: 'Zurück zu dieser Version'
     SHOWUNPUBLISHED: 'Zeige nicht publizierte Versionen'
     SHOWVERSION: 'Zeige Version'
     VIEW: anzeigen
-    VIEWINGVERSION: 'Currently viewing version {version}.'
+    VIEWINGVERSION: 'Momentan angezeigte Version: {version}.'
   CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Filter anwenden"'
   CMSPageSettingsController:
     MENUTITLE: 'Seite editieren'
@@ -131,9 +131,9 @@ de:
     MENUTITLE: Seiten
     TreeView: Baumansicht
   CMSSearch:
-    FILTERDATEFROM: From
+    FILTERDATEFROM: Von
     FILTERDATEHEADING: Datum
-    FILTERDATETO: An
+    FILTERDATETO: Bis
     FILTERLABELTEXT: Inhalt
   CMSSettingsController:
     AUTHOR: Autor
@@ -145,8 +145,8 @@ de:
   CMSSiteTreeFilter_ChangedPages:
     ENABLEDRAGGING: 'Drag''n''drop'
     GO: Los
-    MULTISELECT: Multi-selection
-    Title: 'Changed pages'
+    MULTISELECT: Mehrfachauswahl
+    Title: Seiten
     VIEWFIRST: Erster
     VIEWLAST: Letzter
     VIEWNEXT: 'Zeige nächste'
@@ -163,8 +163,8 @@ de:
     CMS: CMS
     DRAFTSITE: Vorschau-Site
     DRAFT_SITE_ACCESS_RESTRICTION: 'Sie müssen sich mit ihrem CMS Passwort einloggen, um den Entwurf oder den archivierten Inhalt zu sehen. <a href="%s">Hier klicken um zurück zur veröffentlichten Seite zu gehen.</a>'
-    Email: Email
-    InstallFilesDeleted: 'Installation files have been successfully deleted.'
+    Email: E-Mail
+    InstallFilesDeleted: 'Die Installationsdateien wurden erfolgreich entfernt.'
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
     InstallSuccessCongratulations: 'SilverStripe wurde erfolgreich installiert.'
     LOGGEDINAS: 'Angemeldet als'
@@ -172,7 +172,7 @@ de:
     LOGOUT: Abmelden
     NOTLOGGEDIN: 'Nicht angemeldet'
     PUBLISHEDSITE: 'Veröffentlichte Site'
-    Password: Password
+    Password: Passwort
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
     StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Die Installationsdateien konnten nicht gelöscht werden. Bitte löschen Sie die Dateien manuell.'
@@ -234,10 +234,10 @@ de:
   MyPage:
     DESCRIPTION: 'Allgemeine Inaltsseite'
   MyRandomPage:
-    DESCRIPTION: 'Allgemeine Inaltsseite'
+    DESCRIPTION: 'Allgemeine Inhaltsseite'
   PackageManagerPage:
-    DESCRIPTION: 'Generic content page'
-    RESET: Reset
+    DESCRIPTION: 'Allgemeine Inhaltsseite'
+    RESET: Zurücksetzen
   Page:
     DESCRIPTION: 'Generic content page'
   Permission:
@@ -258,7 +258,7 @@ de:
     DESCRIPTION: 'Generic content page'
     FILTER: Filter
   ReportAdmin:
-    MENUTITLE: Reports
+    MENUTITLE: Berichte
   ReportAdminForm:
     FILTERBY: 'Filtern nach'
   SearchForm:
@@ -276,7 +276,7 @@ de:
     LAST2WEEKS: 'Seiten die in den letzten zwei Wochen hinzugefügt wurden'
     OtherGroupTitle: andere
     ParameterLiveCheckbox: 'Veröffentlichte Seite überprüfen'
-    REPEMPTY: 'The {title} report is empty.'
+    REPEMPTY: 'Der Bericht ''{title}'' ist leer.'
   SilverStripeNavigatorLink:
     ShareInstructions: 'Kopieren Sie den folgenden Link um diesen jemanden mitzuteilen.'
     ShareLink: 'Link mitteilen'
@@ -301,8 +301,8 @@ de:
     ACCESSHEADER: 'Wer kann diese Seite auf meiner Website ansehen?'
     ACCESSLOGGEDIN: 'eingeloggte Nutzer'
     ACCESSONLYTHESE: 'Nur folgende Personen (aus der der Liste wählen)'
-    ADDEDTODRAFTHELP: 'Page has not been published yet'
-    ADDEDTODRAFTSHORT: Draft
+    ADDEDTODRAFTHELP: 'Die Seite wurde noch nicht veröffentlicht'
+    ADDEDTODRAFTSHORT: Entwurf
     ALLOWCOMMENTS: 'Kommentare auf dieser Seite erlauben?'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: 'Verwerfe Entwurfsänderungen'
@@ -320,7 +320,7 @@ de:
     DEFAULTCONTACTTITLE: Kontakt
     DEFAULTHOMECONTENT: '<p>Willkommen bei SilverStripe! Dies ist die standard Startseite. Sie können diese Seite editieren, indem Sie <a href="admin/">das CMS</a> öffnen. Sie können außerdem die  <a href="http://doc.silverstripe.com">Entwicker Dokumentation</a> oder die <a href="http://doc.silverstripe.com/doku.php?id=tutorials">Einführungskurse und Tutorien</a> aufrufen.<p>'
     DEFAULTHOMETITLE: Startseite
-    DELETEDPAGEHELP: 'Page is no longer published'
+    DELETEDPAGEHELP: 'Die Seite ist nicht länger veröffentlicht'
     DELETEDPAGESHORT: Gelöscht
     DEPENDENT_NOTE: 'Die folgenden Seiten hängen von dieser Seite ab. Dies schließt Virtuelle Seiten, Weiterleitungen und Seiten mit Links im Inhalt ein.'
     DependtPageColumnLinkType: Linktyp
@@ -342,7 +342,7 @@ de:
     METAEXTRA: 'Benutzerdefinierte Meta-Tags'
     METAKEYWORDS: Schlüsselwörter
     METATITLE: Titel
-    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
+    MODIFIEDONDRAFTHELP: 'Die Seite hat unveröffentlichte Änderungen'
     MODIFIEDONDRAFTSHORT: 'Zuletzt geändert'
     PAGELOCATION: Seitenposition
     PAGETITLE: Seitenname
@@ -355,7 +355,7 @@ de:
     PERMISSION_GRANTACCESS_HELP: 'Einstellung von seitenspezifischen Zugriffsbeschränkungen im Bereich "Seiteninhalt" erlauben'
     PLURALNAME: Seiten
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
-    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
+    PageTypeNotAllowed: 'Der Seitentyp "{type}" kann nicht als Kind dieser übergeordneten Seite verwendet werden'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
     REMOVEDFROMDRAFTSHORT: 'Von Entwurf entfernt'
     REMOVE_INSTALL_WARNING: 'Warnung: Aus Sicherheitsgründen sollte die Datei install.php sollte aus dieser SilverStripe Installation entfernt werden.'
@@ -395,7 +395,7 @@ de:
   TestPage:
     DESCRIPTION: 'Generic content page'
   TreeTools:
-    DisplayLabel: 'Display:'
+    DisplayLabel: Anzeigen
   VirtualPage:
     CHOOSE: 'Wählen Sie eine Seite, auf die Sie verweisen möchten'
     DESCRIPTION: 'Zeigt den Inhalt eine anderen Seite'
