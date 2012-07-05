@@ -1,6 +1,6 @@
 de:
   AssetAdmin:
-    ADDFILES: 'Add Files'
+    ADDFILES: 'Dateien hinzufügen'
     ALLOWEDEXTS: 'Allowed extensions'
     ActionAdd: 'Ordner hinzufügen'
     AppCategoryArchive: Archive
@@ -15,8 +15,8 @@ de:
     FILES: Files
     FILESYSTEMSYNCTITLE: 'Aktualisiere die CMS Datenbankeinträge zu Dateien im Dateisystem. Dies ist dann hilfreich, wenn Dateien ausserhalb des CMS hochgeladen wurden, z.B. mit FTP.'
     FROMTHEINTERNET: 'Aus dem Internet'
-    FROMYOURCOMPUTER: 'From your computer'
-    Filetype: 'File type'
+    FROMYOURCOMPUTER: 'Von Ihrem Computer'
+    Filetype: Dateityp
     ListView: Listenansicht
     MENUTITLE: Dateien
     NEWFOLDER: 'Neuer Ordner'
