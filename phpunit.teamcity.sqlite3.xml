@@ -1,0 +1,33 @@
+<phpunit bootstrap="framework/tests/bootstrap.php" colors="false" backupGlobals="false" backupStaticAttributes="false" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false" stopOnError="false" stopOnFailure="false" stopOnIncomplete="false" stopOnSkipped="false" syntaxCheck="false" verbose="true" strict="true">
+
+	<testsuite name="Default">
+		<directory>mysite/tests</directory>
+		<directory>cms/tests</directory>
+		<directory>framework/tests</directory>
+		<directory>sqlite3/tests</directory>
+	</testsuite>
+
+	<listeners>
+		<listener class="SS_TestListener" file="framework/dev/TestListener.php" />
+    	<listener class="TeamCityListener" file="framework/dev/TeamCityListener.php"/>
+	</listeners>
+
+	<groups>
+		<exclude>
+			<group>sanitychecks</group>
+		</exclude>
+	</groups>
+
+	<php>
+		<!-- 
+			Set different database connection.
+			Relies on the presence of the 'zframeworktest_dbswitcher' module
+			(https://github.com/silverstripe-labs/zframeworktest_dbswitcher),
+			as well as on constants in _ss_environment.php (see module README).
+		-->
+	  <get name="db" value="sqlite3"/>
+	  <!-- Always flush the manifest -->
+	  <get name="flush" value="1"/>
+	</php>
+
+</phpunit>

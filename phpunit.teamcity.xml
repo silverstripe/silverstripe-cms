@@ -34,4 +34,5 @@
 			<group>sanitychecks</group>
 		</exclude>
 	</groups>
+	
 </phpunit>
