@@ -18,14 +18,16 @@
 		</exclude>
 	</groups>
 
-	<!-- 
-		Set different database connection.
-		Relies on the presence of the 'zframeworktest_dbswitcher' module
-		(https://github.com/silverstripe-labs/zframeworktest_dbswitcher),
-		as well as on constants in _ss_environment.php (see module README).
-	-->
 	<php>
+		<!-- 
+			Set different database connection.
+			Relies on the presence of the 'zframeworktest_dbswitcher' module
+			(https://github.com/silverstripe-labs/zframeworktest_dbswitcher),
+			as well as on constants in _ss_environment.php (see module README).
+		-->
 	  <get name="db" value="postgresql"/>
+	  <!-- Always flush the manifest -->
+	  <get name="flush" value="1"/>
 	</php>
 
 </phpunit>
