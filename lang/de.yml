@@ -133,7 +133,7 @@ de:
   CMSSearch:
     FILTERDATEFROM: Von
     FILTERDATEHEADING: Datum
-    FILTERDATETO: Bis
+    FILTERDATETO: Do
     FILTERLABELTEXT: Inhalt
   CMSSettingsController:
     AUTHOR: Autor
