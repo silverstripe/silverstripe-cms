@@ -131,9 +131,9 @@ ja_JP:
     MENUTITLE: ページ
     TreeView: ツリー表示
   CMSSearch:
-    FILTERDATEFROM: From
+    FILTERDATEFROM: 開始日
     FILTERDATEHEADING: 日付
-    FILTERDATETO: 宛先
+    FILTERDATETO: 終了日
     FILTERLABELTEXT: コンテンツ
   CMSSettingsController:
     AUTHOR: 作成者
