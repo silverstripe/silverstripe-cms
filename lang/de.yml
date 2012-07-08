@@ -6,7 +6,7 @@ de:
     AppCategoryArchive: Archive
     AppCategoryAudio: Audio
     AppCategoryFlash: Flash
-    AppCategoryImage: Image
+    AppCategoryImage: Bild
     AppCategoryVideo: Video
     BackToFolder: 'Zurück zum Ordner'
     CREATED: Datum
@@ -219,7 +219,7 @@ de:
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Vorschau
-    SAVEDUP: Saved.
+    SAVEDUP: Gespeichert.
     STATUSPUBLISHEDSUCCESS: '''{title}'' wurde erfolgreich veröffentlicht'
     SearchResults: Suchergebnis
     VersionUnknown: Unbekannt

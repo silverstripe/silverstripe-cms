@@ -128,7 +128,7 @@ nl:
   CMSPagesController:
     GalleryView: Albumweergave
     ListView: Lijstweergave
-    MENUTITLE: 'Pagina\\''s'
+    MENUTITLE: 'Pagina''s'
     TreeView: Hiërarchie
   CMSSearch:
     FILTERDATEFROM: Van
@@ -154,7 +154,7 @@ nl:
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Alle pagina\\''s, inclusief verwijderde'
   CMSSiteTreeFilter_Search:
-    Title: 'Alle pagina\\''s'
+    Title: 'Alle pagina''s'
   ContentControl:
     NOTEWONTBESHOWN: 'N.B. : Dit bericht is niet zichtbaar voor bezoekers'
   ContentController:
@@ -398,7 +398,7 @@ nl:
     DisplayLabel: 'Weergeven:'
   VirtualPage:
     CHOOSE: 'Kies een pagina om naar te verwijzen'
-    DESCRIPTION: 'Geeft de inhoud van de andere pagina weer'
+    DESCRIPTION: 'Geeft de inhoud van een andere pagina weer'
     EDITCONTENT: 'Klik hier om de inhoud te wijzigen'
     HEADER: 'Dit is een virtuele pagina'
     PLURALNAME: 'Virtuele pagina''s'
