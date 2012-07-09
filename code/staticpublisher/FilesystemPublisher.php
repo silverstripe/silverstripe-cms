@@ -186,10 +186,11 @@ class FilesystemPublisher extends StaticPublisher {
 			$response = Director::test(str_replace('+', ' ', $url));
 			
 			Requirements::clear();
-			
-			
-			
+
 			singleton('DataObject')->flushCache();
+
+			//skip any responses with a 404 status code. We don't want to turn those into statically cached pages
+			if (!$response || $response->getStatusCode() == '404') continue;
 
 			// Generate file content			
 			// PHP file caching will generate a simple script from a template
