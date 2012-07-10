@@ -715,7 +715,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				}
 			},
 			'getTreeTitle' => function($value, &$item) use($controller) {
-				return '<a class="cms-panel-link" href="' . $controller->Link('show') . '/' . $item->ID . '">' . $item->TreeTitle . '</a>';
+				return '<a class="cms-panel-link" href="' . singleton('CMSPageEditController')->Link('show') . '/' . $item->ID . '">' . $item->TreeTitle . '</a>';
 			}
 		));
 		
