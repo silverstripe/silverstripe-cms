@@ -697,8 +697,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		$columns->setDisplayFields($fields);
 		$columns->setFieldCasting(array(
-			'Created' => 'Date->Ago',
-			'LastEdited' => 'Date->Ago',
+			'Created' => 'Datetime->Ago',
+			'LastEdited' => 'Datetime->Ago',
 		));
 
 		$controller = $this;
