@@ -686,7 +686,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		// Don't allow navigating into children nodes on filtered lists
 		$fields = array(
-			'getTreeTitle' => _t('SiteTree.PAGETITLE', 'Page Title'),
+			'Title' => _t('SiteTree.PAGETITLE', 'Page Title'),
 			'Created' => _t('SiteTree.CREATED', 'Date Created'),
 			'LastEdited' => _t('SiteTree.LASTUPDATED', 'Last Updated'),
 		);
