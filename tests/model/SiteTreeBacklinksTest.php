@@ -36,7 +36,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		$this->assertNotContains($page2->ID, $page1->BackLinkTracking()->column('ID'), 'Assert backlink to page 2 doesn\'t exist');
 		
 		// add hyperlink to page 1 on page 2
-		$page2->Content .= '<p><a href="[sitetree_link id='.$page1->ID.']">Testing page 1 link</a></p>';
+		$page2->Content .= '<p><a href="[sitetree_link,id='.$page1->ID.']">Testing page 1 link</a></p>';
 		$page2->write();
 		
 		// load page 1
@@ -205,7 +205,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		$this->assertNotContains($page2->ID, $page1->BackLinkTracking()->column('ID'), 'Assert backlink to page 2 doesn\'t exist');
 		
 		// add hyperlink to page 1 on page 2
-		$page2->ExtraContent .= '<p><a href="[sitetree_link id='.$page1->ID.']">Testing page 1 link</a></p>';
+		$page2->ExtraContent .= '<p><a href="[sitetree_link,id='.$page1->ID.']">Testing page 1 link</a></p>';
 		$page2->write();
 		$page2->doPublish();
 
