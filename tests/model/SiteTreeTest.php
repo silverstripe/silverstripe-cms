@@ -587,8 +587,8 @@ class SiteTreeTest extends SapphireTest {
 		$parser = new ShortcodeParser();
 		$parser->register('sitetree_link', array('SiteTree', 'link_shortcode_handler'));
 		
-		$aboutShortcode = sprintf('[sitetree_link id=%d]', $aboutPage->ID);
-		$aboutEnclosed  = sprintf('[sitetree_link id=%d]Example Content[/sitetree_link]', $aboutPage->ID);
+		$aboutShortcode = sprintf('[sitetree_link,id=%d]', $aboutPage->ID);
+		$aboutEnclosed  = sprintf('[sitetree_link,id=%d]Example Content[/sitetree_link]', $aboutPage->ID);
 		
 		$aboutShortcodeExpected = $aboutPage->Link();
 		$aboutEnclosedExpected  = sprintf('<a href="%s">Example Content</a>', $aboutPage->Link());
@@ -601,8 +601,8 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertEquals($aboutShortcodeExpected, $parser->parse($aboutShortcode), 'Test that deleted pages still link.');
 		$this->assertEquals($aboutEnclosedExpected, $parser->parse($aboutEnclosed));
 		
-		$aboutShortcode = '[sitetree_link id="-1"]';
-		$aboutEnclosed  = '[sitetree_link id="-1"]Example Content[/sitetree_link]';
+		$aboutShortcode = '[sitetree_link,id="-1"]';
+		$aboutEnclosed  = '[sitetree_link,id="-1"]Example Content[/sitetree_link]';
 		
 		$aboutShortcodeExpected = $errorPage->Link();
 		$aboutEnclosedExpected  = sprintf('<a href="%s">Example Content</a>', $errorPage->Link());
@@ -611,7 +611,7 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertEquals($aboutEnclosedExpected, $parser->parse($aboutEnclosed));
 		
 		$this->assertEquals('', $parser->parse('[sitetree_link]'), 'Test that invalid ID attributes are not parsed.');
-		$this->assertEquals('', $parser->parse('[sitetree_link id="text"]'));
+		$this->assertEquals('', $parser->parse('[sitetree_link,id="text"]'));
 		$this->assertEquals('', $parser->parse('[sitetree_link]Example Content[/sitetree_link]'));
 	}
 	

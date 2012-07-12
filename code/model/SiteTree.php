@@ -366,7 +366,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 	
 	/**
-	 * Replace a "[sitetree_link id=n]" shortcode with a link to the page with the corresponding ID.
+	 * Replace a "[sitetree_link,id=n]" shortcode with a link to the page with the corresponding ID.
 	 *
 	 * @return string
 	 */
