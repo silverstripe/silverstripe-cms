@@ -29,25 +29,25 @@ class MigrateSiteTreeLinkingTaskTest extends SapphireTest {
 		$hashID   = $this->idFromFixture('SiteTree', 'hash_link');
 		
 		$homeContent = sprintf (
-			'<a href="[sitetree_link id=%d]">About</a><a href="[sitetree_link id=%d]">Staff</a><a href="http://silverstripe.org/">External Link</a>',
+			'<a href="[sitetree_link,id=%d]">About</a><a href="[sitetree_link,id=%d]">Staff</a><a href="http://silverstripe.org/">External Link</a>',
 			$aboutID,
 			$staffID
 		);
 		$aboutContent = sprintf (
-			'<a href="[sitetree_link id=%d]">Home</a><a href="[sitetree_link id=%d]">Staff</a>',
+			'<a href="[sitetree_link,id=%d]">Home</a><a href="[sitetree_link,id=%d]">Staff</a>',
 			$homeID,
 			$staffID
 		);
 		$staffContent = sprintf (
-			'<a href="[sitetree_link id=%d]">Home</a><a href="[sitetree_link id=%d]">About</a>',
+			'<a href="[sitetree_link,id=%d]">Home</a><a href="[sitetree_link,id=%d]">About</a>',
 			$homeID,
 			$aboutID
 		);
 		$actionContent = sprintf (
-			'<a href="[sitetree_link id=%d]SearchForm">Search Form</a>', $homeID
+			'<a href="[sitetree_link,id=%d]SearchForm">Search Form</a>', $homeID
 		);
 		$hashLinkContent = sprintf (
-			'<a href="[sitetree_link id=%d]#anchor">Home</a><a href="[sitetree_link id=%d]#second-anchor">About</a>',
+			'<a href="[sitetree_link,id=%d]#anchor">Home</a><a href="[sitetree_link,id=%d]#second-anchor">About</a>',
 			$homeID,
 			$aboutID
 		);

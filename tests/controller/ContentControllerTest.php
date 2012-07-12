@@ -112,7 +112,7 @@ class ContentControllerTest extends FunctionalTest {
 		
 		$page = new SiteTree();
 		$page->URLSegment = 'linking-page';
-		$page->Content = sprintf('<a href="[sitetree_link id=%s]">Testlink</a>', $linkedPage->ID);
+		$page->Content = sprintf('<a href="[sitetree_link,id=%s]">Testlink</a>', $linkedPage->ID);
 		$page->write();
 		$page->publish('Stage', 'Live');
 
