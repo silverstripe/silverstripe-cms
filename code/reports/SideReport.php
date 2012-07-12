@@ -92,7 +92,8 @@ class SideReportView extends ViewableData {
 		}
 		
 		if(isset($info['link']) && $info['link']) {
-			$link = ($info['link'] === true) ? "admin/show/$record->ID" : $info['link'];
+			$linkBase = singleton('CMSPageEditController')->Link('show') . '/';
+			$link = ($info['link'] === true) ? $linkBase . $record->ID : $info['link'];
 			return $prefix . "<a $classClause href=\"$link\">$val</a>";
 		} else {
 			return $prefix . "<span $classClause>$val</span>";
