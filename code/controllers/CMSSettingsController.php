@@ -5,6 +5,15 @@ class CMSSettingsController extends LeftAndMain {
 	static $url_rule = '/$Action/$ID/$OtherID';
 	static $menu_priority = -1;
 	static $menu_title = 'Settings';
+
+	public function getResponseNegotiator() {
+		$neg = parent::getResponseNegotiator();
+		$controller = $this;
+		$neg->setCallback('CurrentForm', function() use(&$controller) {
+			return $controller->renderWith($controller->getTemplatesWithSuffix('_Content'));
+		});
+		return $neg;
+	}
 	
 		/**
 	 * @return Form
@@ -16,8 +25,8 @@ class CMSSettingsController extends LeftAndMain {
 		$actions = $siteConfig->getCMSActions();
 		$form = new Form($this, 'EditForm', $fields, $actions);
 		$form->addExtraClass('root-form');
-
 		$form->addExtraClass('cms-edit-form cms-panel-padded center');
+		// don't add data-pjax-fragment=CurrentForm, its added in the content template instead
 
 		if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 		$form->setHTMLID('Form_EditForm');
@@ -47,8 +56,7 @@ class CMSSettingsController extends LeftAndMain {
 		$siteConfig->write();
 		
 		$this->response->addHeader('X-Status', rawurlencode(_t('LeftAndMain.SAVEDUP', 'Saved.')));
-	
-		return $form->forTemplate();
+		return $this->getResponseNegotiator()->respond($this->request);
 	}
 	
 	function LinkPreview() {
