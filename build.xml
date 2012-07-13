@@ -478,8 +478,31 @@ Your friendly automated release script.
 		<exec command="git stash pop" dir="${module}" />
 	</target>
 
+	<target name="translations-mergeback"
+		description="Copies changes from the translation staging branch back to the current branch. Doesn't use 'git merge' because the staging branch works on master. Usage: phing -Dmodule=<module> translations-mergeback">
+
+		<php function="sys_get_temp_dir" returnProperty="systmp" />
+		<property name="tmp" value="${systmp}/translationsMergebackTask/" />
+		<exec command="git fetch origin" dir="${module}" checkreturn="true" />
+		<exec command="git branch --force --track translation-staging origin/translation-staging" dir="${module}" checkreturn="true" />
+		<exec command="git checkout translation-staging" dir="${module}" checkreturn="true" />
+		<copy todir="${tmp}/${module}">
+			<fileset dir="${module}/lang" />
+		</copy>
+		<exec command="git checkout 3.0" dir="${module}" checkreturn="true" />
+		<copy todir="${module}/lang" overwrite="true">
+			<fileset dir="${tmp}/${module}/" />
+		</copy>
+
+		<exec command="git add lang/*" dir="${module}" passthru="true" checkreturn="true" />
+		<exec command="git commit -m 'Updated translations'" dir="${module}" passthru="true" checkreturn="true" />
+
+		<echo msg="Done! Please review the commit before pushing it, ensure no malicious code has been injected." />
+
+	</target>
+
 	<target name="translations-sync" 
-		description="Wrapper task to handle updating translations and master files, using the getlocalization.com API, committing to a specialized branch in the working copy and pushing to the origin repository.">
+		description="Wrapper task to handle updating translations and master files, using the getlocalization.com API, committing to a specialized branch in the working copy and pushing to the origin repository. ">
 		<foreach list="framework,cms" param="module" target="translations-update-git-masterfile" />
 		<foreach list="framework,cms" param="module" target="translations-update-gl-masterfile" />
 		<foreach list="framework,cms" param="module" target="translations-update-gl-contribs" />
