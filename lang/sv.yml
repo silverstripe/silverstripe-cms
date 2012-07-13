@@ -60,8 +60,8 @@ sv:
   CMSAddPageController:
     Title: 'Skapa sida'
   CMSBatchActions:
-    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
-    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
+    DELETED_DRAFT_PAGES: 'Raderade %d sidor från utkastsajten, %d misslyckades'
+    DELETED_PAGES: 'Raderade %d sidor från den publiserade sajten, %d misslyckades'
     DELETE_DRAFT_PAGES: 'Radera från sajt utkast'
     DELETE_PAGES: 'radera från publicerad site'
     PUBLISHED_PAGES: 'Publicerat %d sidor, %d misslyckades'
@@ -96,7 +96,7 @@ sv:
     REMOVED: 'Raderade ''%s''%s från den publicerade sajten'
     REMOVEDPAGE: 'Tog bort ''{title}'' från den publicerade sajten'
     REMOVEDPAGEFROMDRAFT: 'Raderade ''%s'' från utkast'
-    RESTORE: 'Återskapa'
+    RESTORE: Återskapa
     RESTORED: 'Återskapandet av  ''{title}'' lyckades'
     ROLLBACK: 'Återställ den här versionen'
     ROLLEDBACKPUB: 'Återskapade publicerad version. Nytt versionsnummer är #{version}'
@@ -375,7 +375,7 @@ sv:
     VIEW_ALL_HELP: 'Möjlighet att visa vilken sida som helst på webbplatsen, oavsett inställningarna på fliken Åtkomst. Kräver "Tillgång till Webbplatsinnehåll" tillåtelse'
     VIEW_DRAFT_CONTENT: 'Se utkast'
     VIEW_DRAFT_CONTENT_HELP: 'Gäller att visa sidor i utkast läge. Användbart för externa samarbetspartners utan CMS åtkomst.'
-    Viewers: 'Åskådargrupper'
+    Viewers: Åskådargrupper
     Visibility: Synlighet
     has_one_Parent: Föräldrasida
     many_many_BackLinkTracking: 'Spåra inlänkar'

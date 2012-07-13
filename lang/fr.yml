@@ -133,7 +133,7 @@ fr:
   CMSSearch:
     FILTERDATEFROM: Kimden
     FILTERDATEHEADING: Date
-    FILTERDATETO: 'à'
+    FILTERDATETO: à
     FILTERLABELTEXT: Contenu
   CMSSettingsController:
     AUTHOR: Auteur

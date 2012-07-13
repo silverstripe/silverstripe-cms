@@ -12,7 +12,7 @@ fi:
     CREATED: Pvm
     CurrentFolderOnly: 'Rajoita tähän kansioon?'
     DetailsView: Tiedot
-    FILES: Files
+    FILES: Tiedostot
     FILESYSTEMSYNCTITLE: 'Päivitä palvelimella olevat tiedostot CMS-järjestelmän tietokantaan. Kätevä toiminto, kun olet siirtänyt tiedostoja suoraa palvelimelle ohi CMS-järjestelmän esim. FTP-ohjelmalla.'
     FROMTHEINTERNET: Internetistä
     FROMYOURCOMPUTER: 'Omalta tietokoneelta'
@@ -21,18 +21,18 @@ fi:
     MENUTITLE: Tiedostot
     NEWFOLDER: 'Uusi kansio'
     SIZE: Koko
-    THUMBSDELETED: '{count} unused thumbnails have been deleted'
+    THUMBSDELETED: '{count} käyttämätöntä esikatselukuvaa poistettiin'
     TreeView: Puunäkymä
     Upload: Siirrä
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Poista kansiot'
   AssetTableField:
-    BACKLINKCOUNT: 'Used on:'
-    PAGES: page(s)
+    BACKLINKCOUNT: 'Linkitetty:'
+    PAGES: sivu(t)
   BasicFieldsTestPage:
     DESCRIPTION: 'Yleinen sisältösivu'
   BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Yleinen sisältösivu'
   BrokenLinksReport:
     Any: Yhtään
     BROKENLINKS: 'Rikkinäisten linkkien raportti'
@@ -60,8 +60,8 @@ fi:
   CMSAddPageController:
     Title: 'Lisää sivu'
   CMSBatchActions:
-    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
-    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
+    DELETED_DRAFT_PAGES: 'Poistettiin %d sivua luonnostelusivustolta, %d virhettä'
+    DELETED_PAGES: 'Poistettiin %d sivua julkaistulta sivustolta, %d virhettä'
     DELETE_DRAFT_PAGES: 'Poista luonnossivulta'
     DELETE_PAGES: 'Poista julkaistulta sivustolta'
     PUBLISHED_PAGES: 'Julkaistu %d sivua, %d epäonnistumista'
@@ -71,7 +71,7 @@ fi:
   CMSFileAddController:
     MENUTITLE: Tiedostot
   CMSMain:
-    ACCESS: 'Access to ''{title}'' section'
+    ACCESS: 'Pääsy ''{title}'' -osioon'
     ACCESS_HELP: 'Oikeuttaa katsella osiota, joka sisältää sivurakenteen ja sisällön. Katselu- ja muokkausoikeuksia voidaan käsitellä sivukohtaisten pudotusvalikoiden kautta kuten myös erillisiä "sisällön oikeuksia".'
     AddNew: 'Lisää uusi sivu'
     AddNewButton: 'Lisää uusi'
@@ -80,7 +80,7 @@ fi:
     Create: Luo
     DELETE: 'Poista luonnossivulta'
     DELETEFP: 'Poista julkaistulta sivulta'
-    DESCREMOVED: 'and {count} descendants'
+    DESCREMOVED: 'ja {count} alasivua'
     EMAIL: Sähköposti
     MENUTITLE: 'Muokkaa sivua'
     NEW: Uusi
@@ -91,15 +91,15 @@ fi:
     PUBALLCONFIRM: 'Julkaise jokainen sivu tällä sivustolla kopioiden luonnosten sisältö julkiselle sivustolle'
     PUBALLFUN: 'Julkaise kaikki -toiminto'
     PUBALLFUN2: 'Painamalla tätä nappia, tekee se saman kuin kävisit painamassa joka sivulla "julkaise". Se on käytännöllinen, jos on tehnyt isoja muutoksia sisältöön, esim. kun sivusto luotiin.'
-    PUBPAGES: 'Done: Published {count} pages'
-    PageAdded: 'Successfully created page'
+    PUBPAGES: 'Valmis: julkaistiin {count} sivu(a)'
+    PageAdded: 'Sivun luonti onnistui'
     REMOVED: '''%s''%s poistettu julkaistulta sivustolta'
-    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
+    REMOVEDPAGE: '''{title}'' poistettiin julkaistulta sivustolta'
     REMOVEDPAGEFROMDRAFT: 'Poistettu ''%s'' luonnossivustolta'
     RESTORE: Palauta
-    RESTORED: 'Restored ''{title}'' successfully'
+    RESTORED: '''{title}'' palautettiin onnistuneesti'
     ROLLBACK: 'Siirry takaisin tähän versioon.'
-    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
+    ROLLEDBACKPUB: 'Siirrytty takaisin julkaistuun versioon. Uusi versionumero on #{version}'
     ROLLEDBACKVERSION: 'Siirrytty takaisin versioon #%d. Uusi versionumero on #%d'
     SAVE: Tallenna
     SAVEDRAFT: 'Tallenna luonnos'
@@ -115,13 +115,13 @@ fi:
   CMSPageHistoryController:
     COMPAREMODE: 'Vertailutila (valitse kaksi)'
     COMPAREVERSIONS: 'Vertaa versioita'
-    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
+    COMPARINGVERSION: 'Vertaillaan versioita {version1} ja {version2}'
     MENUTITLE: Historia
     REVERTTOTHISVERSION: 'Palaa tähän versioon'
     SHOWUNPUBLISHED: 'Näytä julkaisemattomat versiot'
     SHOWVERSION: 'Näytä versionumero'
     VIEW: näkymä
-    VIEWINGVERSION: 'Currently viewing version {version}.'
+    VIEWINGVERSION: 'Katsot versiota {version}.'
   CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Suodata"'
   CMSPageSettingsController:
     MENUTITLE: 'Muokkaa sivua'
@@ -131,7 +131,7 @@ fi:
     MENUTITLE: Sivut
     TreeView: Puunäkymä
   CMSSearch:
-    FILTERDATEFROM: Lähettäjä
+    FILTERDATEFROM: Alkaen
     FILTERDATEHEADING: Pvm
     FILTERDATETO: Vastaanottaja
     FILTERLABELTEXT: Sisältö
@@ -163,19 +163,19 @@ fi:
     CMS: CMS
     DRAFTSITE: Luonnossivusto
     DRAFT_SITE_ACCESS_RESTRICTION: 'Voidaksesi katsella luonnoksia tai arkistoitua sisältöä sinun täytyy kirjautua sisään CMS:n salasanallasi. <a href="%s">Palataksesi julkiselle sivulle paina tästä</a>.'
-    Email: Email
-    InstallFilesDeleted: 'Installation files have been successfully deleted.'
-    InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    Email: Sähköposti
+    InstallFilesDeleted: 'Asennustiedostot poistettiin onnistuneesti.'
+    InstallSecurityWarning: 'Tietoturvan tania, kannattaa poistaa asennustiedostot palvelimelta, ellet aio asentaa järjestelmää uudelleen. (<em>pääkäyttäjän kirjautuminen vaaditaan, katso ylempää</em>). Palvelimella tarvitaan vain "assets"-kansioon kirjoitusoikeudet, voit poistaa kirjoitusoikeudet kaikista muista kansioista. <a href="{link}" style="text-align: center;">Napsauta tästä poistaaksesi kaikki asennustiedostot.</a>'
+    InstallSuccessCongratulations: 'SilverStripe asennettiin onnistuneesti.'
     LOGGEDINAS: 'Kirjautuneena sisään nimimerkillä'
     LOGIN: 'Kirjaudu sisään'
     LOGOUT: 'Kirjaudu ulos'
     NOTLOGGEDIN: 'Ei kirjautuneena sisään'
     PUBLISHEDSITE: 'Julkaistu sivusto'
-    Password: Password
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
-    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
+    Password: Salasana
+    PostInstallTutorialIntro: 'Tämä web-sivusto on yksinkertaistettu versio SilverStripe 2 -sivustosta. Laajentaaksesi tämän, ole hyvä ja katso {link}.'
+    StartEditing: 'Voit aloittaa sivuston muokkauksen avaamalla <a href="{link}">CMS-järjestelmän</a>.'
+    UnableDeleteInstall: 'Asennustiedostojen automaattinen poistaminen ei onnistunut. Ole hyvä ja poista seuraavat tiedostot manuaalisesti.'
     VIEWPAGEIN: 'Tarkastele sivua:'
   ErrorPage:
     CODE: Virhekoodi
@@ -184,7 +184,7 @@ fi:
     DEFAULTSERVERERRORPAGECONTENT: '<p>Pahoittelut, mutta pyyntösi aiheutti virheen.</p>'
     DEFAULTSERVERERRORPAGETITLE: Palvelinvirhe
     DESCRIPTION: 'Omat virheilmoitukset (sivuille, kuten "Sivua ei löytynyt")'
-    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    ERRORFILEPROBLEM: 'Virhe tiedostoa "{filename}" avattaessa ja kirjoittettaessa palvelimelle. Tarkista tiedoston kirjoitusoikeudet.'
     400: '400 - Virheellinen Pyyntö'
     401: '401 - Luvaton'
     403: '403 . Kielletty'
@@ -217,10 +217,10 @@ fi:
   GridFieldTestPage:
     DESCRIPTION: 'Yleinen sisältösivu'
   LeftAndMain:
-    DELETED: Deleted.
+    DELETED: Poistettu.
     PreviewButton: Esikatselu
-    SAVEDUP: Saved.
-    STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
+    SAVEDUP: Tallennettu.
+    STATUSPUBLISHEDSUCCESS: '''{title}'' julkaistiin onnistuneesti'
     SearchResults: Hakutulokset
     VersionUnknown: Tuntematon
   LegacyTableFieldsTestPage:
@@ -236,7 +236,7 @@ fi:
   MyRandomPage:
     DESCRIPTION: 'Yleinen sisältösivu'
   PackageManagerPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Yleinen sisältösivu'
     RESET: Nollaa
   Page:
     DESCRIPTION: 'Yleinen sisältösivu'
@@ -276,7 +276,7 @@ fi:
     LAST2WEEKS: 'Sivut, joita on muokattu viimeisen kahden viikon aikana'
     OtherGroupTitle: Muu
     ParameterLiveCheckbox: 'Tarkista live-sivusto'
-    REPEMPTY: 'The {title} report is empty.'
+    REPEMPTY: '{title}:n raportti on tyhjä.'
   SilverStripeNavigatorLink:
     ShareInstructions: 'Jakaaksesi tämän tällä sivulla, kopioi ja liitä alapuolella oleva linkki.'
     ShareLink: 'Jaa linkki'
@@ -301,10 +301,10 @@ fi:
     ACCESSHEADER: 'Ketkä saavat katsoa tätä sivua?'
     ACCESSLOGGEDIN: 'Kirjautuneet käyttäjät'
     ACCESSONLYTHESE: 'Vain seuraavat henkilöt (valitse listalta)'
-    ADDEDTODRAFTHELP: 'Page has not been published yet'
-    ADDEDTODRAFTSHORT: Draft
+    ADDEDTODRAFTHELP: 'Sivua ei ole vielä julkaistu'
+    ADDEDTODRAFTSHORT: Luonnos
     ALLOWCOMMENTS: 'Sallitaanko kommenttien jättö tälle sivulle?'
-    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+    APPEARSVIRTUALPAGES: 'Tämä sisältö on käytössä myös virtuaalisivuilla osioissa {title}'
     BUTTONCANCELDRAFT: 'Peruuta muutokset, jotka teit luonnokseen'
     BUTTONCANCELDRAFTDESC: 'Poista luonnoksesi ja palauta julkaistu sivu'
     BUTTONSAVEPUBLISH: 'Tallenna & julkaise'
@@ -320,7 +320,7 @@ fi:
     DEFAULTCONTACTTITLE: 'Ota yhteyttä meihin'
     DEFAULTHOMECONTENT: '<p>Tervetuloa SilverStripeen! Tämä on oletus-kotisivu. Voit muokata tätä sivua avaamalla <a href="admin/">CMS:n</a>. Voit myös lukea <a href="http://doc.silverstripe.com">kehittäjä-dokumentaatiota</a> tai aloittaa <a href="http://doc.silverstripe.com/doku.php?id=tutorials">johdatuskursseista</a>.</p>'
     DEFAULTHOMETITLE: Koti
-    DELETEDPAGEHELP: 'Page is no longer published'
+    DELETEDPAGEHELP: 'Sivu ei ole enää julkaistuna'
     DELETEDPAGESHORT: Poistettu
     DEPENDENT_NOTE: 'Seuraavat sivut riippuvat tästä sivusta. Tämä pitää sisällään virtuaaliset sivut, uudelleenohjaussivut ja sivut sisältölinkkien kanssa.'
     DependtPageColumnLinkType: 'Linkin tyyppi'
@@ -342,7 +342,7 @@ fi:
     METAEXTRA: 'Omat meta-tagit'
     METAKEYWORDS: Avainsanat
     METATITLE: Otsikko
-    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
+    MODIFIEDONDRAFTHELP: 'Sivulla on tehty muutoksia, joita ei ole julkaistu'
     MODIFIEDONDRAFTSHORT: Muokattu
     PAGELOCATION: 'Sivun sijainti'
     PAGETITLE: 'Sivun nimi'
@@ -354,9 +354,9 @@ fi:
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Hallitse sisällön käyttöoikeuksia'
     PERMISSION_GRANTACCESS_HELP: 'Salli sivukohtaisten pääsyrajoitusten asettaminen "Sivut" -osiossa.'
     PLURALNAME: Sivukartat
-    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
-    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
-    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
+    PageTypNotAllowedOnRoot: '"{type}" -sivutyyppi ei ole sallittu päätasolla'
+    PageTypeNotAllowed: '"{type}" -sivutyyppi ei ole sallittu tämän sivun alasivuna.'
+    REMOVEDFROMDRAFTHELP: 'Sivu on julkaistu, mutta on poistettu luonnoksista'
     REMOVEDFROMDRAFTSHORT: 'Poistettiin luonnoksista'
     REMOVE_INSTALL_WARNING: 'Varoitus: Turvallisuussyistä sinun tulisi poistaa install.php-tiedosto SilverStripe-asennuskansiosta.'
     REORGANISE_DESCRIPTION: 'Muuta sivuston rakennetta'
@@ -382,7 +382,7 @@ fi:
     many_many_ImageTracking: 'Kuvan seuranta'
     many_many_LinkTracking: 'Linkin seuranta'
   SiteTreeURLSegmentField:
-    HelpChars: ' Special characters are automatically converted or removed.'
+    HelpChars: 'Erikoismerkit muunnetaan automaattisesti tai poistetaan.'
   StaticExporter:
     BASEURL: 'Kannan URL-osoite'
     EXPORTTO: 'Vie tähän kansioon'
@@ -402,7 +402,7 @@ fi:
     EDITCONTENT: 'muokataksesi sisältöä paina tästä'
     HEADER: 'Tämä on virtuaalinen sivu'
     PLURALNAME: 'Virtuaaliset sivut'
-    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
+    PageTypNotAllowedOnRoot: 'Alkuperäinen sivutyyppi "{type}" ei ole sallittu tämän virtuaalisen sivun päätasolla'
     SINGULARNAME: 'Virtuaalinen sivu'
   cms:
     FILESYSTEMSYNC: 'Synkronoi tiedostot'
