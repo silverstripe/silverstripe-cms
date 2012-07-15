@@ -366,7 +366,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 	
 	/**
-	 * Replace a "[sitetree_link,id=n]" shortcode with a link to the page with the corresponding ID.
+	 * Replace a "[sitetree_link id=n]" shortcode with a link to the page with the corresponding ID.
 	 *
 	 * @return string
 	 */
@@ -1854,10 +1854,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					$urlsegment,
 					new TextField("MenuTitle", $this->fieldLabel('MenuTitle')),
 					$htmlField = new HtmlEditorField("Content", _t('SiteTree.HTMLEDITORTITLE', "Content", 'HTML editor title')),
-					new TextField("MetaTitle", $this->fieldLabel('MetaTitle')),
-					new TextareaField("MetaKeywords", $this->fieldLabel('MetaKeywords'), 1),
-					new TextareaField("MetaDescription", $this->fieldLabel('MetaDescription')),
-					new TextareaField("ExtraMeta",$this->fieldLabel('ExtraMeta'))
+					ToggleCompositeField::create('Metadata', _t('SiteTree.MetadataToggle', 'Metadata'),
+						array(
+							new TextField("MetaTitle", $this->fieldLabel('MetaTitle')),
+							new TextareaField("MetaKeywords", $this->fieldLabel('MetaKeywords'), 1),
+							new TextareaField("MetaDescription", $this->fieldLabel('MetaDescription')),
+							new TextareaField("ExtraMeta",$this->fieldLabel('ExtraMeta'))
+						)
+					)->setHeadingLevel(4)
 				),
 				$tabDependent = new Tab('Dependent',
 					$dependentNote,
