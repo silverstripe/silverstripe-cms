@@ -127,11 +127,11 @@ fr:
     MENUTITLE: 'Ändra sidan'
   CMSPagesController:
     GalleryView: Galerie
-    ListView: 'Liste Görünümü'
+    ListView: Liste
     MENUTITLE: Sayfalar
     TreeView: 'Ağaç Görünümü'
   CMSSearch:
-    FILTERDATEFROM: Kimden
+    FILTERDATEFROM: De
     FILTERDATEHEADING: Date
     FILTERDATETO: à
     FILTERLABELTEXT: Contenu
