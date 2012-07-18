@@ -97,8 +97,7 @@ class SS_Report extends ViewableData {
 	 */
 	function sourceQuery($params) {
 		if($this->hasMethod('sourceRecords')) {
-			$query = new SS_Report_FakeQuery($this, 'sourceRecords', $params);
-			return $query;
+			return $this->sourceRecords()->dataQuery();
 		} else {
 			user_error("Please override sourceQuery()/sourceRecords() and columns() or, if necessary, override getReportField()", E_USER_ERROR);
 		}
@@ -108,13 +107,19 @@ class SS_Report extends ViewableData {
 	 * Return a SS_List records for this report.
 	 */
 	function records($params) {
-		if($this->hasMethod('sourceRecords')) return $this->sourceRecords($params, null, null);
-		else {
+		if($this->hasMethod('sourceRecords')) {
+			return $this->sourceRecords($params, null, null);
+		} else {
 			$query = $this->sourceQuery();
-			return singleton($this->dataClass())->buildDataObjectSet($query->execute(), "DataObjectSet", $query);
+			$results = new ArrayList();
+			foreach($query->execute() as $data) {
+				$class = $this->dataClass();
+				$result = new $class($data);
+				$results->push($result);
+			}
+			return $results;
 		}
 	}
-
 
 	/**
 	 * Return the data class for this report
@@ -131,8 +136,6 @@ class SS_Report extends ViewableData {
 			"$action"
 		);
 	}
-
-
 
 	/**
 	 * @deprecated 3.0
@@ -170,7 +173,6 @@ class SS_Report extends ViewableData {
 			}
 		}
 	}
-
 
 	/**
 	 * Return an array of excluded reports. That is, reports that will not be included in
@@ -225,31 +227,31 @@ class SS_Report extends ViewableData {
 	 * @return FieldList
 	 */
 	function getCMSFields() {
-		$fields = new FieldList(
-			new LiteralField(
-				'ReportTitle', 
-				 "<h3>{$this->title()}</h3>"
-			)
-		);
+		$fields = new FieldList();
+
+		if($title = $this->title()) {
+			$fields->push(new LiteralField('ReportTitle', "<h3>{$title}</h3>"));
+		}
 		
-		if($this->description()) $fields->push(
-			new LiteralField('ReportDescription', "<p>" . $this->description() . "</p>"));
+		if($description = $this->description()) {
+			$fields->push(new LiteralField('ReportDescription', "<p>" . $description . "</p>"));
+		}
 			
 		// Add search fields is available
-		if($params = $this->parameterFields()) {
-			$filters = new FieldGroup('Filters');
-			foreach($params as $param) {
-				if ($param instanceof HiddenField) $fields->push($param);
-				else $filters->push($param);
+		if($this->hasMethod('parameterFields') && $fields = $this->parameterFields()) {
+			foreach($fields as $field) {
+				// Namespace fields for easier handling in form submissions
+				$field->setName(sprintf('filters[%s]', $field->getName()));
+				$field->addExtraClass('no-change-track'); // ignore in changetracker
+				$fields->push($field);
 			}
-			$fields->push($filters);
 
 			// Add a search button
-			$fields->push(new FormAction('updatereport', 'Filter'));
+			$fields->push(new FormAction('updatereport', _t('GridField.Filter')));
 		}
 		
 		$fields->push($this->getReportField());
-		
+
 		$this->extend('updateCMSFields', $fields);
 		
 		return $fields;
@@ -263,7 +265,7 @@ class SS_Report extends ViewableData {
 	}
 	
 	/**
-	 * Return a field, such as a {@link ComplexTableField} that is
+	 * Return a field, such as a {@link GridField} that is
 	 * used to show and manipulate data relating to this report.
 	 * 
 	 * Generally, you should override {@link columns()} and {@link records()} to make your report,
@@ -272,11 +274,24 @@ class SS_Report extends ViewableData {
 	 * @return FormField subclass
 	 */
 	function getReportField() {
-		$columnTitles = array();
-		$fieldFormatting = array();
-		$csvFieldFormatting = array();
+		// TODO Remove coupling with global state
+		$params = isset($_REQUEST['filters']) ? $_REQUEST['filters'] : array();
+		$items = $this->sourceRecords($params, null, null);
+
+		$gridFieldConfig = GridFieldConfig::create()->addComponents(
+			new GridFieldToolbarHeader(),
+			new GridFieldSortableHeader(),
+			new GridFieldDataColumns(),
+			new GridFieldPaginator(),
+			new GridFieldPrintButton(),
+			new GridFieldExportButton()
+		);
+		$gridField = new GridField('Report',$this->title(), $items, $gridFieldConfig);
+		$columns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
+		$displayFields = array();
 		$fieldCasting = array();
-		
+		$fieldFormatting = array();
+
 		// Parse the column information
 		foreach($this->columns() as $source => $info) {
 			if(is_string($info)) $info = array('title' => $info);
@@ -284,28 +299,19 @@ class SS_Report extends ViewableData {
 			if(isset($info['formatting'])) $fieldFormatting[$source] = $info['formatting'];
 			if(isset($info['csvFormatting'])) $csvFieldFormatting[$source] = $info['csvFormatting'];
 			if(isset($info['casting'])) $fieldCasting[$source] = $info['casting'];
-			$columnTitles[$source] = isset($info['title']) ? $info['title'] : $source;
-		}
-		
-		// To do: implement pagination
-		$query = $this->sourceQuery($_REQUEST);
-			
-		$tlf = new TableListField('ReportContent', $this->dataClass(), $columnTitles);
-		$tlf->setCustomQuery($query);
-		$tlf->setShowPagination(true);
-		$tlf->setPageSize(50);
-		$tlf->setPermissions(array('export', 'print'));
-		
-		// Hack to figure out if we are printing
-		if (isset($_REQUEST['url']) && array_pop(explode('/', $_REQUEST['url'])) == 'printall') {
-			$tlf->setTemplate('SSReportTableField');
-		}
-		
-		if($fieldFormatting) $tlf->setFieldFormatting($fieldFormatting);
-		if($csvFieldFormatting) $tlf->setCSVFieldFormatting($csvFieldFormatting);
-		if($fieldCasting) $tlf->setFieldCasting($fieldCasting);
 
-		return $tlf;
+			if(isset($info['link']) && $info['link']) {
+				$link = singleton('CMSPageEditController')->Link('show');
+				$fieldFormatting[$source] = '<a href=\"' . $link . '/$ID\">$value</a>';
+			}
+
+			$displayFields[$source] = isset($info['title']) ? $info['title'] : $source;
+		}
+		$columns->setDisplayFields($displayFields);
+		$columns->setFieldCasting($fieldCasting);
+		$columns->setFieldFormatting($fieldFormatting);
+
+		return $gridField;
 	}
 	
 	/**
@@ -332,76 +338,7 @@ class SS_Report extends ViewableData {
 	function TreeTitle() {
 		return $this->title();
 	}
-	
 
-
-}
-
-/**
- * This is an object that can be used to dress up a more complex querying mechanism in the clothing
- * of a SQLQuery object.  This means that you can inject it into a TableListField.
- * 
- * Use it like this:
- * 
- *     function sourceQuery($params) {
- *         return new SS_Report_FakeQuery($this, 'sourceRecords', $params)
- *     }
- *     function sourceRecords($params, $sort, $limit) {
- *         // Do some stuff
- *         // Return a SS_List of actual objects.
- *     }
- * 
- * This object is used by the default implementation of sourceQuery() on SS_Report, to make use of
- * a sourceReords() method if one exists.
- */
-class SS_Report_FakeQuery extends SQLQuery {
-	public $orderby;
-	public $limit;
-	
-	protected $obj, $method, $params;
-	
-	function __construct($obj, $method, $params) {
-		$this->obj = $obj;
-		$this->method = $method;
-		$this->params = $params;
-	}
-
-	/**
-	 * Provide a method that will return a list of columns that can be used to sort.
-	 */
-	function setSortColumnMethod($sortColMethod) {
-		$this->sortColMethod = $sortColMethod;
-	}
-
-	function limit($limit, $offset = 0) {
-		$this->limit = $limit;
-	}
-	
-	function unlimitedRowCount($column = null) {
-		$source = $this->obj->{$this->method}($this->params, null, null);
-		return $source ? $source->Count() : 0;
-	}
-	
-	function execute() {
-		$output = array();
-		$source = $this->obj->{$this->method}($this->params, $this->orderby, $this->limit);
-		if($source) foreach($source as $item) {
-			$mapItem = $item->toMap();
-			$mapItem['RecordClassName'] = get_class($item);
-			$output[] = $mapItem;
-		}
-		return $output;
-	}
-	
-	function canSortBy($fieldName) {
-		$fieldName = preg_replace('/(\s+?)(A|DE)SC$/', '', $fieldName);
-		if($this->sortColMethod) {
-			$columns = $this->obj->{$this->sortColMethod}();
-			return in_array($fieldName, $columns);
-		} else {
-			return false;
-		}
-	}
 }
 
 /**

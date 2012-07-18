@@ -51,6 +51,7 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 
 		// Always block the HtmlEditorField.js otherwise it will be sent with an ajax request
 		Requirements::block(FRAMEWORK_DIR . '/javascript/HtmlEditorField.js');
+		Requirements::javascript(CMS_DIR . '/javascript/ReportAdmin.js');
 	}
 
 	/**
@@ -147,48 +148,12 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 	}
 
 	public function getEditForm($id = null, $fields = null) {
-		$fields = new FieldList();
-		
 		$report = $this->reportObject;
-
 		if($report) {
-			// List all reports
-			$gridFieldConfig = GridFieldConfig::create()->addComponents(
-				new GridFieldToolbarHeader(),
-				new GridFieldSortableHeader(),
-				new GridFieldDataColumns(),
-				new GridFieldPaginator(),
-				new GridFieldPrintButton(),
-				new GridFieldExportButton()
-			);
-			$gridField = new GridField('Report',$report->title(), $report->sourceRecords(array(), null, null), $gridFieldConfig);
-			$columns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
-			$displayFields = array();
-			$fieldCasting = array();
-			$fieldFormatting = array();
-			
-			// Parse the column information
-			foreach($report->columns() as $source => $info) {
-				if(is_string($info)) $info = array('title' => $info);
-				
-				if(isset($info['formatting'])) $fieldFormatting[$source] = $info['formatting'];
-				if(isset($info['csvFormatting'])) $csvFieldFormatting[$source] = $info['csvFormatting'];
-				if(isset($info['casting'])) $fieldCasting[$source] = $info['casting'];
-
-				if(isset($info['link']) && $info['link']) {
-					$link = singleton('CMSPageEditController')->Link('show');
-					$fieldFormatting[$source] = '<a href=\"' . $link . '/$ID\">$value</a>';
-				}
-
-				$displayFields[$source] = isset($info['title']) ? $info['title'] : $source;
-			}
-			$columns->setDisplayFields($displayFields);
-			$columns->setFieldCasting($fieldCasting);
-			$columns->setFieldFormatting($fieldFormatting);
-
-			$fields->push($gridField);
+			$fields = $report->getCMSFields();
 		} else {
 			// List all reports
+			$fields = new FieldList();
 			$gridFieldConfig = GridFieldConfig::create()->addComponents(
 				new GridFieldToolbarHeader(),
 				new GridFieldSortableHeader(),
@@ -210,6 +175,7 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 		$actions = new FieldList();
 		$form = new Form($this, "EditForm", $fields, $actions);
 		$form->addExtraClass('cms-edit-form cms-panel-padded center ' . $this->BaseCSSClasses());
+		$form->loadDataFrom($this->request->getVars());
 
 		$this->extend('updateEditForm', $form);
 

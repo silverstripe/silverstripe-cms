@@ -21,11 +21,11 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 	function testBrokenLinksBetweenPages() {
 		$obj = $this->objFromFixture('Page','content');
 		
-		$obj->Content = '<a href="[sitetree_link id=3423423]">this is a broken link</a>';
+		$obj->Content = '<a href="[sitetree_link,id=3423423]">this is a broken link</a>';
 		$obj->syncLinkTracking();
 		$this->assertTrue($obj->HasBrokenLink, 'Page has a broken link');
 		
-		$obj->Content = '<a href="[sitetree_link id=' . $this->idFromFixture('Page','about') .']">this is not a broken link</a>';
+		$obj->Content = '<a href="[sitetree_link,id=' . $this->idFromFixture('Page','about') .']">this is not a broken link</a>';
 		$obj->syncLinkTracking();
 		$this->assertFalse($obj->HasBrokenLink, 'Page does NOT have a broken link');
 	}
@@ -107,7 +107,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$linkDest->doPublish();
 		
 		$linkSrc = $this->objFromFixture('Page','content');
-		$linkSrc->Content = "<p><a href=\"[sitetree_link id=$linkDest->ID]\">about us</a></p>";
+		$linkSrc->Content = "<p><a href=\"[sitetree_link,id=$linkDest->ID]\">about us</a></p>";
 		$linkSrc->write();
 
 		$linkSrc->doPublish();
@@ -151,7 +151,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$linkDest->doDeleteFromLive();
 		
 		$linkSrc = $this->objFromFixture('Page','content');
-		$linkSrc->Content = "<p><a href=\"[sitetree_link id=$linkDest->ID]\">about us</a></p>";
+		$linkSrc->Content = "<p><a href=\"[sitetree_link,id=$linkDest->ID]\">about us</a></p>";
 		$linkSrc->write();
 		
 		// Publish the source of the link, while the dest is still unpublished. 
@@ -175,7 +175,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		// Content links are one kind of link to pages
 		$p2 = new Page();
 		$p2->Title = "regular link";
-		$p2->Content = "<a href=\"[sitetree_link id=$p->ID]\">test</a>";
+		$p2->Content = "<a href=\"[sitetree_link,id=$p->ID]\">test</a>";
 		$p2->write();
 		$this->assertTrue($p2->doPublish());
 
@@ -250,7 +250,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		// Content links are one kind of link to pages
 		$p2 = new Page();
 		$p2->Title = "regular link";
-		$p2->Content = "<a href=\"[sitetree_link id=$p->ID]\">test</a>";
+		$p2->Content = "<a href=\"[sitetree_link,id=$p->ID]\">test</a>";
 		$p2->write();
 		$this->assertTrue($p2->doPublish());
 

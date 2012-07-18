@@ -84,13 +84,13 @@ zh_TW:
     EMAIL: 電子郵件
     MENUTITLE: 'Edit Page'
     NEW: 新增
-    PAGENOTEXISTS: '這頁不存在'
+    PAGENOTEXISTS: 這頁不存在
     PAGES: Pages
     PAGETYPEANYOPT: Any
     PAGETYPEOPT: 'Page Type'
-    PUBALLCONFIRM: '請發布所有網頁'
+    PUBALLCONFIRM: 請發布所有網頁
     PUBALLFUN: '"全部發布" 功能'
-    PUBALLFUN2: '按下這個按鈕就是如同到每頁按「發布」。當有很多內容更變時，這個功能可以省時。'
+    PUBALLFUN2: 按下這個按鈕就是如同到每頁按「發布」。當有很多內容更變時，這個功能可以省時。
     PUBPAGES: 'Done: Published {count} pages'
     PageAdded: 'Successfully created page'
     REMOVED: 'Deleted ''%s''%s from live site'
@@ -226,9 +226,9 @@ zh_TW:
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   MyNonRootPage:
-    CANACCESS: '您可以利用哲格連結到已歸檔站：'
+    CANACCESS: 您可以利用哲格連結到已歸檔站：
     DESCRIPTION: 'Generic content page'
-    HAVEASKED: '您要瀏覽這一天的網站內容：'
+    HAVEASKED: 您要瀏覽這一天的網站內容：
   MyOtherPage:
     DESCRIPTION: 'Generic content page'
   MyPage:
@@ -247,13 +247,13 @@ zh_TW:
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
   RedirectorPage:
     DESCRIPTION: 'Redirects to a different internal page'
-    HASBEENSETUP: '一個引導頁已被建立，但並沒有說明引導目的地。'
-    HEADER: '這頁會引導訪客至另外一頁'
-    OTHERURL: '其他網站網址'
+    HASBEENSETUP: 一個引導頁已被建立，但並沒有說明引導目的地。
+    HEADER: 這頁會引導訪客至另外一頁
+    OTHERURL: 其他網站網址
     REDIRECTTO: 引導訪客至
-    REDIRECTTOEXTERNAL: '其他網站'
-    REDIRECTTOPAGE: '自己網站上的網頁'
-    YOURPAGE: '自己網站上的網頁'
+    REDIRECTTOEXTERNAL: 其他網站
+    REDIRECTTOPAGE: 自己網站上的網頁
+    YOURPAGE: 自己網站上的網頁
   RelationFieldsTestPage:
     DESCRIPTION: 'Generic content page'
     FILTER: Filter
@@ -272,8 +272,8 @@ zh_TW:
     BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
     BrokenLinksGroupTitle: 'Broken links reports'
     ContentGroupTitle: 'Content reports'
-    EMPTYPAGES: '空頁'
-    LAST2WEEKS: '網頁在過去兩個禮拜有被更改過'
+    EMPTYPAGES: 空頁
+    LAST2WEEKS: 網頁在過去兩個禮拜有被更改過
     OtherGroupTitle: Other
     ParameterLiveCheckbox: 'Check live site'
     REPEMPTY: 'The {title} report is empty.'
@@ -298,12 +298,12 @@ zh_TW:
     VIEWHEADER: 'Who can view pages on this site?'
   SiteTree:
     ACCESSANYONE: 所有人
-    ACCESSHEADER: '誰可以瀏覽這頁？'
-    ACCESSLOGGEDIN: '已登入的使用者'
-    ACCESSONLYTHESE: '只有這些人(從清單選擇)'
+    ACCESSHEADER: 誰可以瀏覽這頁？
+    ACCESSLOGGEDIN: 已登入的使用者
+    ACCESSONLYTHESE: 只有這些人(從清單選擇)
     ADDEDTODRAFTHELP: 'Page has not been published yet'
     ADDEDTODRAFTSHORT: Draft
-    ALLOWCOMMENTS: '允許留言嗎？'
+    ALLOWCOMMENTS: 允許留言嗎？
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: 取消草稿更變
     BUTTONCANCELDRAFTDESC: 刪除草稿並回複到正式發布的版本
@@ -325,28 +325,28 @@ zh_TW:
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
-    EDITANYONE: '所有可以登入CMS的人'
-    EDITHEADER: '誰可以編輯這頁？'
-    EDITONLYTHESE: '只有這些人(從清單選擇)'
+    EDITANYONE: 所有可以登入CMS的人
+    EDITHEADER: 誰可以編輯這頁？
+    EDITONLYTHESE: 只有這些人(從清單選擇)
     EDITORGROUPS: 'Editor Groups'
     EDIT_ALL_DESCRIPTION: 'Edit any page'
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     Editors: 'Editors Groups'
-    HASBROKENLINKS: '網頁含有失效的連結。'
-    HTMLEDITORTITLE: '內容'
+    HASBROKENLINKS: 網頁含有失效的連結。
+    HTMLEDITORTITLE: 內容
     INHERIT: 'Inherit from parent page'
     LASTUPDATED: 'Last Updated'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 捷徑標籤
     METADESC: 敘述
-    METAEXTRA: '自訂元標籤(meta-tags)'
+    METAEXTRA: 自訂元標籤(meta-tags)
     METAKEYWORDS: 關鍵詞
     METATITLE: 標題
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
     PAGELOCATION: 'Page location'
-    PAGETITLE: '網頁名稱'
-    PAGETYPE: '網頁類型'
+    PAGETITLE: 網頁名稱
+    PAGETYPE: 網頁類型
     PARENTID: 'Parent page'
     PARENTTYPE: 'Page location'
     PARENTTYPE_ROOT: 'Top-level page'
@@ -365,7 +365,7 @@ zh_TW:
     SHOWINSEARCH: 在搜尋結果裡顯示嗎？
     SINGULARNAME: 'Site Tree'
     TABBEHAVIOUR: 作用
-    TABCONTENT: '內容'
+    TABCONTENT: 內容
     TABDEPENDENT: 'Dependent pages'
     TOPLEVEL: '網站內容 (高層)'
     TOPLEVELCREATORGROUPS: 'Top level creators'
@@ -386,7 +386,7 @@ zh_TW:
   StaticExporter:
     BASEURL: 基本網址
     EXPORTTO: 匯出至那個資料夾
-    NAME: '網站靜態匯出'
+    NAME: 網站靜態匯出
   TableListField:
     FILTER: Filter
     SELECT: 'Select:'
@@ -397,10 +397,10 @@ zh_TW:
   TreeTools:
     DisplayLabel: 'Display:'
   VirtualPage:
-    CHOOSE: '請選擇一個網頁來連結至'
+    CHOOSE: 請選擇一個網頁來連結至
     DESCRIPTION: 'Displays the content of another page'
-    EDITCONTENT: '點擊即可更改內容'
-    HEADER: '這是一個虛擬網頁'
+    EDITCONTENT: 點擊即可更改內容
+    HEADER: 這是一個虛擬網頁
     PLURALNAME: 'Virtual Pags'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtual Page'

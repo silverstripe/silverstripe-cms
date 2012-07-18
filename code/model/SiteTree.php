@@ -1854,10 +1854,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					$urlsegment,
 					new TextField("MenuTitle", $this->fieldLabel('MenuTitle')),
 					$htmlField = new HtmlEditorField("Content", _t('SiteTree.HTMLEDITORTITLE', "Content", 'HTML editor title')),
-					new TextField("MetaTitle", $this->fieldLabel('MetaTitle')),
-					new TextareaField("MetaKeywords", $this->fieldLabel('MetaKeywords'), 1),
-					new TextareaField("MetaDescription", $this->fieldLabel('MetaDescription')),
-					new TextareaField("ExtraMeta",$this->fieldLabel('ExtraMeta'))
+					ToggleCompositeField::create('Metadata', _t('SiteTree.MetadataToggle', 'Metadata'),
+						array(
+							new TextField("MetaTitle", $this->fieldLabel('MetaTitle')),
+							new TextareaField("MetaKeywords", $this->fieldLabel('MetaKeywords'), 1),
+							new TextareaField("MetaDescription", $this->fieldLabel('MetaDescription')),
+							new TextareaField("ExtraMeta",$this->fieldLabel('ExtraMeta'))
+						)
+					)->setHeadingLevel(4)
 				),
 				$tabDependent = new Tab('Dependent',
 					$dependentNote,
@@ -2329,7 +2333,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$result = array();
 		foreach($classes as $class) {
 			$instance = singleton($class);
-			if((($instance instanceof HiddenClass) || !$instance->canCreate())) continue;
+
+			// if the current page type is this the same as the class type always show the page type in the list see open ticket 5880 for why
+			if ($this->ClassName != $instance->ClassName) {
+				if((($instance instanceof HiddenClass) || !$instance->canCreate())) continue;
+			}
 			
 			if($perms = $instance->stat('need_permission')) {
 				if(!$this->can($perms)) continue;

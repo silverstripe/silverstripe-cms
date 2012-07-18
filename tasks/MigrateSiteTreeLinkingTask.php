@@ -26,7 +26,7 @@ class MigrateSiteTreeLinkingTask extends BuildTask {
 				// TOOD: Replace in all HTMLText fields
 				$page->Content = preg_replace (
 					"/href *= *([\"']?){$linked->URLSegment}\/?/i",
-					"href=$1[sitetree_link id={$linked->ID}]",
+					"href=$1[sitetree_link,id={$linked->ID}]",
 					$page->Content,
 					-1,
 					$replaced
