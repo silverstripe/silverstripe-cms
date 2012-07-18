@@ -318,7 +318,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		// The root element should point to the pages tree view,
 		// rather than the actual controller (which would just show an empty edit form)
-		$items[0]->Title = self::menu_title_for_class('CMSPagesController');
+		$defaultTitle = self::menu_title_for_class('CMSPagesController');
+		$items[0]->Title = _t("{$this->class}.MENUTITLE", $defaultTitle);
 		$items[0]->Link = singleton('CMSPagesController')->Link();
 
 		return $items;

@@ -64,9 +64,10 @@ class CMSSettingsController extends LeftAndMain {
 	}
 
 	function Breadcrumbs($unlinked = false) {
+		$defaultTitle = self::menu_title_for_class(get_class($this));
 		return new ArrayList(array(
 			new ArrayData(array(
-				'Title' => $this->SectionTitle(),
+				'Title' => _t("{$this->class}.MENUTITLE", $defaultTitle),
 				'Link' => false
 			))
 		));
