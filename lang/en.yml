@@ -331,6 +331,7 @@ en:
     METATITLE: 'Meta Title'
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
+    MetadataToggle: Metadata
     PAGELOCATION: 'Page location'
     PAGETITLE: 'Page name'
     PAGETYPE: 'Page type'
