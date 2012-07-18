@@ -1,4 +1,4 @@
-<div class="cms-content center cms-tabset $BaseCSSClasses" data-layout-type="border" data-pjax-fragment="Content">
+<div id="settings-controller-cms-content" class="cms-content center cms-tabset $BaseCSSClasses" data-layout-type="border" data-pjax-fragment="Content CurrentForm">
 
 	<div class="cms-content-header north">
 		<% with EditForm %>
