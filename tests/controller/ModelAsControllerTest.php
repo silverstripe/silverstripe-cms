@@ -233,5 +233,33 @@ class ModelAsControllerTest extends FunctionalTest {
 		$response = ModelAsController::find_old_page('oldpage2',$page2->ID);
 		$this->assertEquals(false, $response );
 	}
-	
+
+	/**
+	 * go to a page that's been published but is child of an unpublished page
+	 *
+	 * NOTE: This test requires nested_urls
+	 */
+	function testChildOfDraft() {
+		RootURLController::reset();
+		SiteTree::enable_nested_urls();
+
+		$draft = new Page();
+		$draft->Title = 'Root Leve Draft Page';
+		$draft->URLSegment = 'root';
+		$draft->write();
+
+		$published = new Page();
+		$published->Title = 'Published Page Under Draft Page';
+		$published->URLSegment = 'sub-root';
+		$published->write();
+		$published->publish('Stage', 'Live');
+		$response = $this->get('root/sub-root');
+
+		$this->assertEquals(
+		$response->getStatusCode(),
+			404,
+			'The page should not be found since its parent has not been published, in this case http://<yousitename>/root/sub-root or http://<yousitename>/sub-root'
+		);
+	}
+
 }
