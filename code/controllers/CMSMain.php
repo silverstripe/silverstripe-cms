@@ -669,14 +669,16 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function ListViewForm() {
 		$params = $this->request->requestVar('q');
 		$list = $this->getList($params, $parentID = $this->request->requestVar('ParentID'));
-		$gridFieldConfig = GridFieldConfig::create()->addComponents(
+		$gridFieldConfig = GridFieldConfig::create()->addComponents(			
 			new GridFieldSortableHeader(),
 			new GridFieldDataColumns(),
 			new GridFieldPaginator(15)
 		);
 		if($parentID){
 			$gridFieldConfig->addComponent(
-				new GridFieldLevelup($parentID)
+				GridFieldLevelup::create($parentID)
+					->setLinkSpec('?ParentID=%d&view=list')
+					->setAttributes(array('data-pjax' => 'ListViewForm,Breadcrumbs'))
 			);
 		}
 		$gridField = new GridField('Page','Pages', $list, $gridFieldConfig);
@@ -695,8 +697,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		$columns->setDisplayFields($fields);
 		$columns->setFieldCasting(array(
-			'Created' => 'Date->Ago',
-			'LastEdited' => 'Date->Ago',
+			'Created' => 'Datetime->Ago',
+			'LastEdited' => 'Datetime->Ago',
 		));
 
 		$controller = $this;

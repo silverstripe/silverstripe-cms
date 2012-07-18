@@ -127,13 +127,13 @@
 			 *  (Function) callback
 			 */
 			suggest: function(val, callback) {
-				var field = this.find(':text');
+				var field = this.find(':text'), urlParts = $.path.parseUrl(this.closest('form').attr('action')),
+					url = urlParts.hrefNoSearch + '/field/' + field.attr('name') + '/suggest/?value=' + encodeURIComponent(val);
+				if(urlParts.search) url += '&' + urlParts.search.replace(/^\?/, '');
+
 				$.get(
-					this.closest('form').attr('action') + 
-						'/field/' + field.attr('name') + '/suggest/?value=' + encodeURIComponent(val),
-					function(data) {
-						callback.apply(this, arguments);
-					}
+					url,
+					function(data) {callback.apply(this, arguments);}
 				);
 				
 			},

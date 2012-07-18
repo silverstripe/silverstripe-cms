@@ -25,8 +25,6 @@ class RedirectorPage extends Page {
 	static $many_many = array(
 	);
 	
-	static $allowed_children = array();
-
 	/**
 	 * Returns this page if the redirect is external, otherwise
 	 * returns the target page.
