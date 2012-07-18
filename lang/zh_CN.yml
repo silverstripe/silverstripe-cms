@@ -47,6 +47,7 @@ zh_CN:
     HasBrokenLink: 'has broken link'
     HasBrokenLinkAndFile: 'has broken link and file'
     HoverTitleEditPage: 'Edit page'
+    NOITEMSFOUND: 'No items found'
     PageName: 'Page name'
     ReasonDropdown: 'Problem to check'
     ReasonDropdownBROKENFILE: 'Broken file'
@@ -69,6 +70,8 @@ zh_CN:
     UNPUBLISHED_PAGES: 'Un-published %d pages'
     UNPUBLISH_PAGES: Un-publish
   CMSFileAddController:
+    CANACCESS: '您可通过这个链接进入已归挡的网页：'
+    HAVEASKED: '在%s,您要求浏览我们网站'
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -78,18 +81,20 @@ zh_CN:
     ChoosePageParentMode: 'Choose where to create this page'
     ChoosePageType: 'Choose page type'
     Create: Create
-    DELETE: 从测试网站中删除
+    DELETE: '从测试网站中删除'
     DELETEFP: Delete
     DESCREMOVED: 'and {count} descendants'
     EMAIL: 电子邮件
+    EditTree: 'Edit Tree'
+    ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
     NEW: 新建的
     PAGENOTEXISTS: 该网页不存在
     PAGES: Pages
     PAGETYPEANYOPT: Any
     PAGETYPEOPT: 'Page Type'
-    PUBALLCONFIRM: 请发布该站的每一网页，这样，预备发布站上的内容就会复制到正式发布站上
-    PUBALLFUN: “全部发布“功能
+    PUBALLCONFIRM: '请发布该站的每一网页，这样，预备发布站上的内容就会复制到正式发布站上'
+    PUBALLFUN: '“全部发布“功能'
     PUBALLFUN2: 按下这一按键将等同于逐一发布每一网页。此功能适用于被大量编辑过的网页，如在网站被第一次使用时。
     PUBPAGES: 'Done: Published {count} pages'
     PageAdded: 'Successfully created page'
@@ -106,6 +111,8 @@ zh_CN:
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
+    TreeFiltered: 'Filtered tree.'
+    TreeFilteredClear: 'Clear filter'
   CMSPageAddController:
     MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
@@ -143,9 +150,12 @@ zh_CN:
     UNKNOWN: Unknown
     WHEN: When
   CMSSiteTreeFilter_ChangedPages:
+    DISPLAYING: Displaying
     ENABLEDRAGGING: 'Drag''n''drop'
     GO: 执行
     MULTISELECT: Multi-selection
+    OF: of
+    TO: to
     Title: 'Changed pages'
     VIEWFIRST: 'View first'
     VIEWLAST: 'View last'
@@ -155,6 +165,8 @@ zh_CN:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
     Title: 'All pages'
+  CaseStudy:
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
   ContentController:
@@ -178,7 +190,7 @@ zh_CN:
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'View Page in:'
   ErrorPage:
-    CODE: 错误代码
+    CODE: '错误代码'
     DEFAULTERRORPAGECONTENT: '<p>Sorry, it seems you were trying to access a page that doesn''t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>'
     DEFAULTERRORPAGETITLE: 'Page not found'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
@@ -216,6 +228,7 @@ zh_CN:
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
+    FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -225,23 +238,11 @@ zh_CN:
     VersionUnknown: Unknown
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-  MyNonRootPage:
-    CANACCESS: 您可通过这个链接进入已归挡的网页：
-    DESCRIPTION: 'Generic content page'
-    HAVEASKED: '在%s,您要求浏览我们网站'
-  MyOtherPage:
-    DESCRIPTION: 'Generic content page'
-  MyPage:
-    DESCRIPTION: 'Generic content page'
-  MyRandomPage:
-    DESCRIPTION: 'Generic content page'
-  PackageManagerPage:
-    DESCRIPTION: 'Generic content page'
-    RESET: Reset
   Page:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
+    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
@@ -273,7 +274,7 @@ zh_CN:
     BrokenLinksGroupTitle: 'Broken links reports'
     ContentGroupTitle: 'Content reports'
     EMPTYPAGES: 空白页
-    LAST2WEEKS: 在过去2周内编辑过的网页
+    LAST2WEEKS: '在过去2周内编辑过的网页'
     OtherGroupTitle: Other
     ParameterLiveCheckbox: 'Check live site'
     REPEMPTY: 'The {title} report is empty.'
@@ -300,16 +301,16 @@ zh_CN:
     ACCESSANYONE: 任何人
     ACCESSHEADER: 在我的网站上，谁可以浏览此页？
     ACCESSLOGGEDIN: 已登录的用户
-    ACCESSONLYTHESE: 只有这些人（请从下列清单中选择）
+    ACCESSONLYTHESE: '只有这些人（请从下列清单中选择）'
     ADDEDTODRAFTHELP: 'Page has not been published yet'
     ADDEDTODRAFTSHORT: Draft
-    ALLOWCOMMENTS: 是否允许对次页进行评论？
+    ALLOWCOMMENTS: '是否允许对次页进行评论？'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: 取消草稿的改动
     BUTTONCANCELDRAFTDESC: 将您的草稿恢复到目前正式发布的版本
     BUTTONSAVEPUBLISH: 保存并发布
     BUTTONUNPUBLISH: 撤消发布
-    BUTTONUNPUBLISHDESC: 将此页从正式发布站删除
+    BUTTONUNPUBLISHDESC: '将此页从正式发布站删除'
     Back: Back
     CREATED: 'Date Created'
     Comments: Comments
@@ -323,27 +324,29 @@ zh_CN:
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Deleted
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
     EDITANYONE: 任何可以登录CMS的人
     EDITHEADER: 谁能在CMS中编辑此页？
-    EDITONLYTHESE: 只有这些人（请从下列清单中选择）
+    EDITONLYTHESE: '只有这些人（请从下列清单中选择）'
     EDITORGROUPS: 'Editor Groups'
     EDIT_ALL_DESCRIPTION: 'Edit any page'
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     Editors: 'Editors Groups'
     HASBROKENLINKS: 该页有失效链接。
-    HTMLEDITORTITLE: 内容
+    HTMLEDITORTITLE: '内容'
     INHERIT: 'Inherit from parent page'
     LASTUPDATED: 'Last Updated'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
-    MENUTITLE: 导航标签
-    METADESC: 网页描述标签
-    METAEXTRA: 自定义Meta标签
-    METAKEYWORDS: 网页关键词标签
-    METATITLE: Title标签
+    MENUTITLE: '导航标签'
+    METADESC: '网页描述标签'
+    METAEXTRA: '自定义Meta标签'
+    METAKEYWORDS: '网页关键词标签'
+    METATITLE: 'Title标签'
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
+    MetadataToggle: Metadata
     PAGELOCATION: 'Page location'
     PAGETITLE: 网页名称
     PAGETYPE: 网页类型
@@ -362,12 +365,12 @@ zh_CN:
     REORGANISE_DESCRIPTION: 'Change site structure'
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 是否出现在菜单中？
-    SHOWINSEARCH: 是否包括在搜索结果中？
+    SHOWINSEARCH: '是否包括在搜索结果中？'
     SINGULARNAME: 'Site Tree'
     TABBEHAVIOUR: 行为特点
-    TABCONTENT: 内容
+    TABCONTENT: '内容'
     TABDEPENDENT: 'Dependent pages'
-    TOPLEVEL: 网站内容（顶层）
+    TOPLEVEL: '网站内容（顶层）'
     TOPLEVELCREATORGROUPS: 'Top level creators'
     URLSegment: 'URL Segment'
     VIEWERGROUPS: 'Viewer Groups'
@@ -388,7 +391,6 @@ zh_CN:
     EXPORTTO: 导出到该文件夹
     NAME: 网站静态拷贝导出器
   TableListField:
-    FILTER: Filter
     SELECT: 'Select:'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
@@ -399,7 +401,7 @@ zh_CN:
   VirtualPage:
     CHOOSE: 选择一个网页进行链接
     DESCRIPTION: 'Displays the content of another page'
-    EDITCONTENT: 点击这里以编辑内容
+    EDITCONTENT: '点击这里以编辑内容'
     HEADER: 这是一个虚拟页
     PLURALNAME: 'Virtual Pags'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'

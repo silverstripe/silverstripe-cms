@@ -47,6 +47,7 @@ sv:
     HasBrokenLink: 'har trasig länk'
     HasBrokenLinkAndFile: 'har trasig länk och fil'
     HoverTitleEditPage: 'Redigera sida'
+    NOITEMSFOUND: 'No items found'
     PageName: Sidnamn
     ReasonDropdown: 'Problem med kontroll'
     ReasonDropdownBROKENFILE: 'Trasig fil'
@@ -69,6 +70,8 @@ sv:
     UNPUBLISHED_PAGES: 'Un-publicerade % d sidor'
     UNPUBLISH_PAGES: 'Dölj publicerad'
   CMSFileAddController:
+    CANACCESS: 'Du kan komma åt den arkiverade sajten med denna länk:'
+    HAVEASKED: 'Du har efterfrågat att se innehållet på vår sajt på'
     MENUTITLE: Filer
   CMSMain:
     ACCESS: 'Tillgång till sektionen ''{title}'''
@@ -82,6 +85,8 @@ sv:
     DELETEFP: Radera
     DESCREMOVED: 'och {count} ättlingar'
     EMAIL: E-post
+    EditTree: 'Edit Tree'
+    ListFiltered: 'Filtered list.'
     MENUTITLE: 'Redigera sida'
     NEW: Ny
     PAGENOTEXISTS: 'Den här sidan finns inte'
@@ -96,7 +101,7 @@ sv:
     REMOVED: 'Raderade ''%s''%s från den publicerade sajten'
     REMOVEDPAGE: 'Tog bort ''{title}'' från den publicerade sajten'
     REMOVEDPAGEFROMDRAFT: 'Raderade ''%s'' från utkast'
-    RESTORE: Återskapa
+    RESTORE: 'Återskapa'
     RESTORED: 'Återskapandet av  ''{title}'' lyckades'
     ROLLBACK: 'Återställ den här versionen'
     ROLLEDBACKPUB: 'Återskapade publicerad version. Nytt versionsnummer är #{version}'
@@ -106,6 +111,8 @@ sv:
     TabContent: Innehåll
     TabHistory: Historia
     TabSettings: Inställningar
+    TreeFiltered: 'Filtered tree.'
+    TreeFilteredClear: 'Clear filter'
   CMSPageAddController:
     MENUTITLE: 'Skapa sida'
     ParentMode_child: 'Under en annan sida'
@@ -143,9 +150,12 @@ sv:
     UNKNOWN: Okänd
     WHEN: När
   CMSSiteTreeFilter_ChangedPages:
+    DISPLAYING: Displaying
     ENABLEDRAGGING: 'Dra och släpp'
     GO: Kör
     MULTISELECT: Flerval
+    OF: of
+    TO: to
     Title: 'Ändrade sidor'
     VIEWFIRST: 'Visa första'
     VIEWLAST: 'Visa sista'
@@ -155,6 +165,8 @@ sv:
     Title: 'Alla sidor, inklusive raderade'
   CMSSiteTreeFilter_Search:
     Title: 'Alla sidor'
+  CaseStudy:
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Observera: Detta meddelande kommer inte att visas för besökarna'
   ContentController:
@@ -216,6 +228,7 @@ sv:
     UploadFilesButton: 'Ladda upp'
   GridFieldTestPage:
     DESCRIPTION: 'Allmän innehållssida'
+    FILTER: Filter
   LeftAndMain:
     DELETED: Raderad
     PreviewButton: Förhandsgranska
@@ -225,23 +238,11 @@ sv:
     VersionUnknown: Okänd
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Allmän innehållssida'
-  MyNonRootPage:
-    CANACCESS: 'Du kan komma åt den arkiverade sajten med denna länk:'
-    DESCRIPTION: 'Allmän innehållssida'
-    HAVEASKED: 'Du har efterfrågat att se innehållet på vår sajt på'
-  MyOtherPage:
-    DESCRIPTION: 'Allmän innehållssida'
-  MyPage:
-    DESCRIPTION: 'Allmän innehållssida'
-  MyRandomPage:
-    DESCRIPTION: 'Generisk innehållssida'
-  PackageManagerPage:
-    DESCRIPTION: 'Allmän innehållssida'
-    RESET: Rensa
   Page:
     DESCRIPTION: 'Allmän innehållssida'
   Permission:
     CMS_ACCESS_CATEGORY: CMS-tillgång
+    RESET: Rensa
   Permissions:
     CONTENT_CATEGORY: 'Innehålls tillgång'
     PERMISSIONS_CATEGORY: 'Roller och tillgång'
@@ -323,6 +324,7 @@ sv:
     DELETEDPAGEHELP: 'Sidan är inte längre publicerad'
     DELETEDPAGESHORT: Raderad
     DEPENDENT_NOTE: 'Följande sidor berörs av den här sidan. Inklusive virtuella sidor, omdirigerings sidor, och sidor med innehålls länkar.'
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: Länktyp
     DependtPageColumnURL: URL
     EDITANYONE: 'Alla som kan logga in'
@@ -344,6 +346,7 @@ sv:
     METATITLE: Titel
     MODIFIEDONDRAFTHELP: 'Sidan har ej publicerade ändringar'
     MODIFIEDONDRAFTSHORT: Ändrad
+    MetadataToggle: Metadata
     PAGELOCATION: 'Sidans adress'
     PAGETITLE: Sidnamn
     PAGETYPE: Sidtyp
@@ -375,7 +378,7 @@ sv:
     VIEW_ALL_HELP: 'Möjlighet att visa vilken sida som helst på webbplatsen, oavsett inställningarna på fliken Åtkomst. Kräver "Tillgång till Webbplatsinnehåll" tillåtelse'
     VIEW_DRAFT_CONTENT: 'Se utkast'
     VIEW_DRAFT_CONTENT_HELP: 'Gäller att visa sidor i utkast läge. Användbart för externa samarbetspartners utan CMS åtkomst.'
-    Viewers: Åskådargrupper
+    Viewers: 'Åskådargrupper'
     Visibility: Synlighet
     has_one_Parent: Föräldrasida
     many_many_BackLinkTracking: 'Spåra inlänkar'
@@ -388,7 +391,6 @@ sv:
     EXPORTTO: 'Exportera till den mappen'
     NAME: 'Statisk exportör'
   TableListField:
-    FILTER: Filter
     SELECT: 'Välj:'
   TestFileUploadPage:
     DESCRIPTION: 'Allmän innehållssida'

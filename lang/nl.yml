@@ -47,6 +47,7 @@ nl:
     HasBrokenLink: 'heeft verbroken link'
     HasBrokenLinkAndFile: 'heeft verbroken link en bestand'
     HoverTitleEditPage: 'Wijzig pagina'
+    NOITEMSFOUND: 'No items found'
     PageName: Paginanaam
     ReasonDropdown: 'Te controleren probleem'
     ReasonDropdownBROKENFILE: 'Verbroken bestand'
@@ -69,6 +70,8 @@ nl:
     UNPUBLISHED_PAGES: 'Publicatie van %d pagina''s ingetrokken'
     UNPUBLISH_PAGES: 'Publicatie intrekken'
   CMSFileAddController:
+    CANACCESS: 'U kunt de gearchiveerde site bekijken via deze link:'
+    HAVEASKED: 'U heeft de inhoud van onze site opgevraagd op'
     MENUTITLE: Bestanden
   CMSMain:
     ACCESS: 'Toegang tot het ''{title}'' gedeelte'
@@ -82,6 +85,8 @@ nl:
     DELETEFP: 'Verwijder van de gepubliceerde webpagina'
     DESCREMOVED: 'en {count} onderliggende'
     EMAIL: Email
+    EditTree: 'Edit Tree'
+    ListFiltered: 'Filtered list.'
     MENUTITLE: 'Wijzig pagina'
     NEW: Nieuw
     PAGENOTEXISTS: 'Deze pagina bestaat niet'
@@ -106,6 +111,8 @@ nl:
     TabContent: Inhoud
     TabHistory: Geschiedenis
     TabSettings: Instellingen
+    TreeFiltered: 'Filtered tree.'
+    TreeFilteredClear: 'Clear filter'
   CMSPageAddController:
     MENUTITLE: 'Pagina toevoegen'
     ParentMode_child: 'Onder een andere pagina'
@@ -143,9 +150,12 @@ nl:
     UNKNOWN: Onbekend
     WHEN: Wanneer
   CMSSiteTreeFilter_ChangedPages:
+    DISPLAYING: Displaying
     ENABLEDRAGGING: Slepen
     GO: Doen
     MULTISELECT: 'Meervoudige selectie'
+    OF: of
+    TO: to
     Title: 'Gewijzigde pagina''s'
     VIEWFIRST: 'Bekijk eerste'
     VIEWLAST: 'Bekijk laatste'
@@ -155,6 +165,8 @@ nl:
     Title: 'Alle pagina\\''s, inclusief verwijderde'
   CMSSiteTreeFilter_Search:
     Title: 'Alle pagina''s'
+  CaseStudy:
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'N.B. : Dit bericht is niet zichtbaar voor bezoekers'
   ContentController:
@@ -216,6 +228,7 @@ nl:
     UploadFilesButton: Uploaden
   GridFieldTestPage:
     DESCRIPTION: 'Algemene tekst pagina'
+    FILTER: Filteren
   LeftAndMain:
     DELETED: Verwijderd.
     PreviewButton: Voorbeeld
@@ -225,23 +238,11 @@ nl:
     VersionUnknown: Onbekend
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Algemene tekst pagina'
-  MyNonRootPage:
-    CANACCESS: 'U kunt de gearchiveerde site bekijken via deze link:'
-    DESCRIPTION: 'Algemene tekst pagina'
-    HAVEASKED: 'U heeft de inhoud van onze site opgevraagd op'
-  MyOtherPage:
-    DESCRIPTION: 'Algemene tekst pagina'
-  MyPage:
-    DESCRIPTION: 'Algemene tekst pagina'
-  MyRandomPage:
-    DESCRIPTION: 'Algemene tekst pagina'
-  PackageManagerPage:
-    DESCRIPTION: 'Algemene tekst pagina'
-    RESET: Reset
   Page:
     DESCRIPTION: 'Algemene tekst pagina'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Toegang'
+    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: Inhoudsrechten
     PERMISSIONS_CATEGORY: 'Rollen en toegangsrechten'
@@ -323,6 +324,7 @@ nl:
     DELETEDPAGEHELP: 'Deze pagina is niet langer gepubliceerd'
     DELETEDPAGESHORT: Verwijderd
     DEPENDENT_NOTE: 'De volgende pagina''s zijn afhankelijk van deze pagina. Hieronder vallen virtuelepagina''s, verwijsingspagina''s en pagina''s met links in de inhoud.'
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
     EDITANYONE: 'Iedereen die kan inloggen in het CMS'
@@ -344,6 +346,7 @@ nl:
     METATITLE: Titel
     MODIFIEDONDRAFTHELP: 'Pagina heeft wijzigingen die nog niet gepubliceerd zijn'
     MODIFIEDONDRAFTSHORT: Aangepast
+    MetadataToggle: Metadata
     PAGELOCATION: 'Pagina locatie'
     PAGETITLE: 'Pagina titel'
     PAGETYPE: 'Pagina type'
@@ -388,7 +391,6 @@ nl:
     EXPORTTO: 'Exporteren naar die map'
     NAME: 'Statische export'
   TableListField:
-    FILTER: Filteren
     SELECT: 'Selecteer:'
   TestFileUploadPage:
     DESCRIPTION: 'Algemene tekst pagina'
