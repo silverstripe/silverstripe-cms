@@ -159,7 +159,11 @@ class ModelAsController extends Controller implements NestedController {
 				'SiteTree', 
 				"\"URLSegment\" = '$URLSegment'" . ($useParentIDFilter ? ' AND "ParentID" = ' . (int)$parentID : '')
 			);
-			if($pages && $pages->Count() == 1) return $pages->First();
+			if(
+				$pages && $pages->Count() == 1 && 
+				(($pages->ParentID != 0 && $pages->First()->Parent()->isPublished()) || ($pages->First()->ParentID == 0 && $pages->First()->isPublished()))
+			)
+				return $pages->First();
 		}
 		
 		// Get an old version of a page that has been renamed.
@@ -176,7 +180,11 @@ class ModelAsController extends Controller implements NestedController {
 		
 		if($record && ($oldPage = DataObject::get_by_id('SiteTree', $record['RecordID']))) {
 			// Run the page through an extra filter to ensure that all extensions are applied.
-			if(SiteTree::get_by_link($oldPage->RelativeLink())) return $oldPage;
+			if(
+				SiteTree::get_by_link($oldPage->RelativeLink()) && 
+				(($oldPage->ParentID == 0 && $oldPage->isPublished()) || ($oldPage->ParentID != 0 && $oldPage->Parent()->isPublished()))
+			) 
+				return $oldPage; 
 		}
 	}
 	
