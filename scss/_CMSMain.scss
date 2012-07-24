@@ -84,7 +84,7 @@
 			}
 
 			// Show badge on hovered node
-			a:hover > .text > .badge {
+			a:hover > .text > .badge, .jstree-clicked > .text > .badge {
 				display: inline-block;
 			}
 		}

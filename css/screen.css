@@ -18,7 +18,7 @@
 .cms-content-tools #cms-content-treeview .cms-tree-expand-trigger { display: inline-block; margin: 0 0 2px 0; position: absolute; top: 8px; right: 4px; }
 .cms-content-tools #cms-content-treeview .cms-tree-expand-trigger span.ui-button-text { padding-right: 8px; }
 .cms-content-tools #cms-content-treeview .cms-tree .badge, .cms-content-tools #cms-content-treeview .cms-tree a > .jstree-icon { display: none; }
-.cms-content-tools #cms-content-treeview .cms-tree a:hover > .text > .badge { display: inline-block; }
+.cms-content-tools #cms-content-treeview .cms-tree a:hover > .text > .badge, .cms-content-tools #cms-content-treeview .cms-tree .jstree-clicked > .text > .badge { display: inline-block; }
 
 /** ------------------------------------------------------------------ URLSegment field ----------------------------------------------------------------- */
 .field.urlsegment.disabled { color: #444; padding-left: 0px; margin-left: 0px; background: none; border-color: transparent; }

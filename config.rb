@@ -9,6 +9,7 @@ sass_dir = "scss"
 images_dir = "images"
 javascripts_dir = "javascript"
 output_style = :compact
+line_comments = false
 # To enable relative paths to assets via compass helper functions. Uncomment:
 # relative_assets = true
 
