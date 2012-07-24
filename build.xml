@@ -479,7 +479,7 @@ Your friendly automated release script.
 	</target>
 
 	<target name="translations-mergeback"
-		description="Copies changes from the translation staging branch back to the current branch. Doesn't use 'git merge' because the staging branch works on master. Usage: phing -Dmodule=<module> translations-mergeback">
+		description="Copies changes from the translation staging branch back to the current branch. Doesn't use 'git merge' because the staging branch works on master. Usage: phing -Dmodule=[module] translations-mergeback">
 
 		<php function="sys_get_temp_dir" returnProperty="systmp" />
 		<property name="tmp" value="${systmp}/translationsMergebackTask/" />
