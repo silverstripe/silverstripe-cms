@@ -1580,8 +1580,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		$votes = $this->extend('augmentValidURLSegment');
 		if($votes) {
-			$votes = array_filter((array)$votes, 'is_null');
-			if($votes) return min($votes);
+			return min($votes);
 		}
 		
 		return true;
