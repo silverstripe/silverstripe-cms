@@ -436,7 +436,7 @@ Your friendly automated release script.
 		description="Collect translation on a module, commit them into a specialized branch and push to the origin repository."
 		depends="translations-staging-setup">
 		<exec command="git merge --strategy recursive -X theirs origin/master" dir="${module}" checkreturn="true" />
-		<exec command="php framework/cli-script.php dev/tasks/i18nTextCollectorTask" passthru="true" checkreturn="true" />		
+		<exec command="php framework/cli-script.php dev/tasks/i18nTextCollectorTask module=${module}" passthru="true" checkreturn="true" />
 		<exec command="git status --short" dir="${module}" outputProperty="git.status.${module}" />
 		<if>
 			<istrue value="${git.status.${module}}" />
