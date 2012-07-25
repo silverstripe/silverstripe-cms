@@ -1,4 +1,4 @@
-ro:
+my:
   AssetAdmin:
     ADDFILES: 'Add Files'
     ALLOWEDEXTS: 'Allowed extensions'
@@ -120,35 +120,35 @@ ro:
   CMSPageEditController:
     MENUTITLE: 'Edit Page'
   CMSPageHistoryController:
-    COMPAREMODE: 'Режим сравнения (выбрать две)'
-    COMPAREVERSIONS: 'Сравнение версий'
+    COMPAREMODE: 'Compare mode (select two)'
+    COMPAREVERSIONS: 'Compare Versions'
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
-    MENUTITLE: История
-    REVERTTOTHISVERSION: 'Вернуться на эту версию'
-    SHOWUNPUBLISHED: 'Показать неизданную версию'
-    SHOWVERSION: 'Показать версию'
-    VIEW: просмотр
+    MENUTITLE: History
+    REVERTTOTHISVERSION: 'Revert to this version'
+    SHOWUNPUBLISHED: 'Show unpublished versions'
+    SHOWVERSION: 'Show Version'
+    VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
   CMSPageSettingsController:
-    MENUTITLE: 'Править страницу'
+    MENUTITLE: 'Edit Page'
   CMSPagesController:
-    GalleryView: 'Обзор галереи'
-    ListView: Список
-    MENUTITLE: Страницы
-    TreeView: Дерево
+    GalleryView: 'Gallery View'
+    ListView: 'List View'
+    MENUTITLE: Pages
+    TreeView: 'Tree View'
   CMSSearch:
-    FILTERDATEFROM: От
-    FILTERDATEHEADING: Дата
-    FILTERDATETO: Кому
-    FILTERLABELTEXT: Содержание
+    FILTERDATEFROM: From
+    FILTERDATEHEADING: 'ေန ့စြဲ'
+    FILTERDATETO: To
+    FILTERLABELTEXT: Content
   CMSSettingsController:
-    AUTHOR: Автор
-    MENUTITLE: Настройки
-    NOTPUBLISHED: 'Не издано'
-    PUBLISHER: Издатель
-    UNKNOWN: Неизвестно
-    WHEN: Когда
+    AUTHOR: Author
+    MENUTITLE: Settings
+    NOTPUBLISHED: 'Not published'
+    PUBLISHER: Publisher
+    UNKNOWN: Unknown
+    WHEN: When
   CMSSiteTreeFilter_ChangedPages:
     DISPLAYING: Displaying
     ENABLEDRAGGING: 'Drag''n''drop'
@@ -164,7 +164,7 @@ ro:
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
-    Title: 'Все страницы'
+    Title: 'All pages'
   CaseStudy:
     DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
@@ -231,11 +231,11 @@ ro:
     FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
-    PreviewButton: Просмотр
+    PreviewButton: Preview
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
-    SearchResults: 'Результаты поиска'
-    VersionUnknown: Неизвестно
+    SearchResults: 'Search Results'
+    VersionUnknown: Unknown
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   Page:
@@ -250,7 +250,7 @@ ro:
     DESCRIPTION: 'Redirects to a different internal page'
     HASBEENSETUP: 'A redirector page has been set up without anywhere to redirect to.'
     HEADER: 'This page will redirect users to another page'
-    OTHERURL: 'Адрес другого сайта'
+    OTHERURL: 'Other website URL'
     REDIRECTTO: 'Redirect to'
     REDIRECTTOEXTERNAL: 'Another website'
     REDIRECTTOPAGE: 'A page on your website'
@@ -263,9 +263,9 @@ ro:
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
-    GO: Вперед
-    SEARCH: Поиск
-    SearchResults: 'Результаты поиска'
+    GO: Go
+    SEARCH: Search
+    SearchResults: 'Search Results'
   SideReport:
     BROKENFILES: 'Pages with broken files'
     BROKENLINKS: 'Pages with broken links'
@@ -298,23 +298,23 @@ ro:
     TOPLEVELCREATE: 'Who can create pages in the root of the site?'
     VIEWHEADER: 'Who can view pages on this site?'
   SiteTree:
-    ACCESSANYONE: Oricine
-    ACCESSHEADER: 'Cine poate vizualiza această pagină pe site-ul meu?'
-    ACCESSLOGGEDIN: 'Utilizatorii autentificaţi'
-    ACCESSONLYTHESE: 'Doar aceste persoane (selectează din listă)'
+    ACCESSANYONE: Anyone
+    ACCESSHEADER: 'Who can view this page?'
+    ACCESSLOGGEDIN: 'Logged-in users'
+    ACCESSONLYTHESE: 'Only these people (choose from list)'
     ADDEDTODRAFTHELP: 'Page has not been published yet'
     ADDEDTODRAFTSHORT: Draft
-    ALLOWCOMMENTS: 'Acceptă comentarii în aceasta pagină? '
+    ALLOWCOMMENTS: 'Allow comments on this page?'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: 'Cancel draft changes'
     BUTTONCANCELDRAFTDESC: 'Delete your draft and revert to the currently published page'
-    BUTTONSAVEPUBLISH: 'Salvează si Publică '
+    BUTTONSAVEPUBLISH: 'Save & Publish'
     BUTTONUNPUBLISH: Unpublish
     BUTTONUNPUBLISHDESC: 'Remove this page from the published site'
     Back: Back
     CREATED: 'Date Created'
     Comments: Comments
-    Content: Continut
+    Content: Content
     DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
     DEFAULTABOUTTITLE: 'About Us'
     DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
@@ -329,27 +329,27 @@ ro:
     DependtPageColumnURL: URL
     EDITANYONE: 'Anyone who can log-in to the CMS'
     EDITHEADER: 'Who can edit this page?'
-    EDITONLYTHESE: 'Doar aceste persoane (selectează din listă)'
+    EDITONLYTHESE: 'Only these people (choose from list)'
     EDITORGROUPS: 'Editor Groups'
     EDIT_ALL_DESCRIPTION: 'Edit any page'
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     Editors: 'Editors Groups'
     HASBROKENLINKS: 'This page has broken links.'
-    HTMLEDITORTITLE: Continut
+    HTMLEDITORTITLE: Content
     INHERIT: 'Inherit from parent page'
     LASTUPDATED: 'Last Updated'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 'Navigation label'
-    METADESC: Descriere
+    METADESC: 'Meta Description'
     METAEXTRA: 'Custom Meta Tags'
-    METAKEYWORDS: 'Cuvinte cheie'
-    METATITLE: Titlu
+    METAKEYWORDS: 'Meta Keywords'
+    METATITLE: 'Meta Title'
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
     MetadataToggle: Metadata
     PAGELOCATION: 'Page location'
-    PAGETITLE: 'Nume pagină'
-    PAGETYPE: 'Tipul paginii'
+    PAGETITLE: 'Page name'
+    PAGETYPE: 'Page type'
     PARENTID: 'Parent page'
     PARENTTYPE: 'Page location'
     PARENTTYPE_ROOT: 'Top-level page'
@@ -364,15 +364,15 @@ ro:
     REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
     REORGANISE_DESCRIPTION: 'Change site structure'
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
-    SHOWINMENUS: 'Afişează in meniu?'
+    SHOWINMENUS: 'Show in menus?'
     SHOWINSEARCH: 'Show in search?'
     SINGULARNAME: 'Site Tree'
-    TABBEHAVIOUR: Comportament
-    TABCONTENT: 'Conţinut '
+    TABBEHAVIOUR: Behavior
+    TABCONTENT: 'Main Content'
     TABDEPENDENT: 'Dependent pages'
     TOPLEVEL: 'Site Content (Top Level)'
     TOPLEVELCREATORGROUPS: 'Top level creators'
-    URLSegment: 'Segment URL'
+    URLSegment: 'URL Segment'
     VIEWERGROUPS: 'Viewer Groups'
     VIEW_ALL_DESCRIPTION: 'View any page'
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
@@ -380,15 +380,15 @@ ro:
     VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
     Viewers: 'Viewers Groups'
     Visibility: Visibility
-    has_one_Parent: 'Pagina Parinte'
+    has_one_Parent: 'Parent Page'
     many_many_BackLinkTracking: 'Backlink Tracking'
     many_many_ImageTracking: 'Image Tracking'
     many_many_LinkTracking: 'Link Tracking'
   SiteTreeURLSegmentField:
     HelpChars: ' Special characters are automatically converted or removed.'
   StaticExporter:
-    BASEURL: 'Основной адрес'
-    EXPORTTO: 'Экспорт в эту папку'
+    BASEURL: 'Base URL'
+    EXPORTTO: 'Export to that folder'
     NAME: 'Static exporter'
   TableListField:
     SELECT: 'Select:'
@@ -399,12 +399,12 @@ ro:
   TreeTools:
     DisplayLabel: 'Display:'
   VirtualPage:
-    CHOOSE: 'Выбрать страницы перехода'
-    DESCRIPTION: 'Показать содержание другой страницы'
-    EDITCONTENT: 'click aici pentru a edita conţinutul'
-    HEADER: 'Aceasta este o pagină virtuală '
-    PLURALNAME: 'Вирт. страницы'
+    CHOOSE: 'Choose a page to link to'
+    DESCRIPTION: 'Displays the content of another page'
+    EDITCONTENT: 'click here to edit the content'
+    HEADER: 'This is a virtual page'
+    PLURALNAME: 'Virtual Pags'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
-    SINGULARNAME: 'Pagina Virtuala'
+    SINGULARNAME: 'Virtual Page'
   cms:
     FILESYSTEMSYNC: 'Sync files'

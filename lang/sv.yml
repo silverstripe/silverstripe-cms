@@ -47,7 +47,7 @@ sv:
     HasBrokenLink: 'har trasig länk'
     HasBrokenLinkAndFile: 'har trasig länk och fil'
     HoverTitleEditPage: 'Redigera sida'
-    NOITEMSFOUND: 'No items found'
+    NOITEMSFOUND: 'Inga objekt hittade'
     PageName: Sidnamn
     ReasonDropdown: 'Problem med kontroll'
     ReasonDropdownBROKENFILE: 'Trasig fil'
@@ -85,8 +85,8 @@ sv:
     DELETEFP: Radera
     DESCREMOVED: 'och {count} ättlingar'
     EMAIL: E-post
-    EditTree: 'Edit Tree'
-    ListFiltered: 'Filtered list.'
+    EditTree: 'Redigera trädet'
+    ListFiltered: 'Filtrerad lista'
     MENUTITLE: 'Redigera sida'
     NEW: Ny
     PAGENOTEXISTS: 'Den här sidan finns inte'
@@ -111,8 +111,8 @@ sv:
     TabContent: Innehåll
     TabHistory: Historia
     TabSettings: Inställningar
-    TreeFiltered: 'Filtered tree.'
-    TreeFilteredClear: 'Clear filter'
+    TreeFiltered: 'Filtrerat träd'
+    TreeFilteredClear: 'Rensa lista'
   CMSPageAddController:
     MENUTITLE: 'Skapa sida'
     ParentMode_child: 'Under en annan sida'
@@ -150,12 +150,12 @@ sv:
     UNKNOWN: Okänd
     WHEN: När
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
+    DISPLAYING: Visar
     ENABLEDRAGGING: 'Dra och släpp'
     GO: Kör
     MULTISELECT: Flerval
-    OF: of
-    TO: to
+    OF: av
+    TO: till
     Title: 'Ändrade sidor'
     VIEWFIRST: 'Visa första'
     VIEWLAST: 'Visa sista'
@@ -166,7 +166,7 @@ sv:
   CMSSiteTreeFilter_Search:
     Title: 'Alla sidor'
   CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
+    DESCRIPTION: 'Casestudiesida som ska innehålla exempel på arbeten'
   ContentControl:
     NOTEWONTBESHOWN: 'Observera: Detta meddelande kommer inte att visas för besökarna'
   ContentController:
@@ -324,7 +324,7 @@ sv:
     DELETEDPAGEHELP: 'Sidan är inte längre publicerad'
     DELETEDPAGESHORT: Raderad
     DEPENDENT_NOTE: 'Följande sidor berörs av den här sidan. Inklusive virtuella sidor, omdirigerings sidor, och sidor med innehålls länkar.'
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Allmän innehållssida'
     DependtPageColumnLinkType: Länktyp
     DependtPageColumnURL: URL
     EDITANYONE: 'Alla som kan logga in'

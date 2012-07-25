@@ -47,7 +47,7 @@ es:
     HasBrokenLink: 'tiene un enlace roto'
     HasBrokenLinkAndFile: 'tiene un enlace y archivo roto'
     HoverTitleEditPage: 'Editar página'
-    NOITEMSFOUND: 'No items found'
+    NOITEMSFOUND: 'No se encontraron elementos'
     PageName: 'Nombre de la página'
     ReasonDropdown: 'Problema a comprobar'
     ReasonDropdownBROKENFILE: 'Archivo roto'
@@ -85,8 +85,8 @@ es:
     DELETEFP: 'Eliminar de la web publicada'
     DESCREMOVED: 'y {count} descendientes'
     EMAIL: E-mail
-    EditTree: 'Edit Tree'
-    ListFiltered: 'Filtered list.'
+    EditTree: 'Editar árbol'
+    ListFiltered: 'Lista filtrada'
     MENUTITLE: 'Editar página'
     NEW: Nueva
     PAGENOTEXISTS: 'Esta página no existe'
@@ -111,8 +111,8 @@ es:
     TabContent: Contenido
     TabHistory: Historial
     TabSettings: Ajustes
-    TreeFiltered: 'Filtered tree.'
-    TreeFilteredClear: 'Clear filter'
+    TreeFiltered: 'Árbol filtrado'
+    TreeFilteredClear: 'Limpiar filtro'
   CMSPageAddController:
     MENUTITLE: 'Añadir página'
     ParentMode_child: 'Debajo de otra página'
@@ -150,12 +150,12 @@ es:
     UNKNOWN: Desconocido
     WHEN: Cuando
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
+    DISPLAYING: Mostrando
     ENABLEDRAGGING: 'Drag''n''drop'
     GO: Ir
     MULTISELECT: Multi-selecciñón
-    OF: of
-    TO: to
+    OF: de
+    TO: a
     Title: 'Páginas cambiadas'
     VIEWFIRST: 'Ver primero'
     VIEWLAST: 'Ver último'
@@ -324,7 +324,7 @@ es:
     DELETEDPAGEHELP: 'La página ya no está publicada'
     DELETEDPAGESHORT: Borrado
     DEPENDENT_NOTE: 'Las siguientes páginas dependen de esta página. Esto incluye páginas virtuales, páginas de redireccionamiento, y las páginas con enlaces de contenido.'
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Página de contenido genérico'
     DependtPageColumnLinkType: 'Tipo de enlace'
     DependtPageColumnURL: URL
     EDITANYONE: 'Cualquiera que pueda iniciar sesión en el CMS'
@@ -346,7 +346,7 @@ es:
     METATITLE: Título
     MODIFIEDONDRAFTHELP: 'La página tiene cambios sin publicar'
     MODIFIEDONDRAFTSHORT: Modificado
-    MetadataToggle: Metadata
+    MetadataToggle: Metadatos
     PAGELOCATION: 'Localización de la página'
     PAGETITLE: 'Nombre de la página'
     PAGETYPE: 'Tipo de Página'

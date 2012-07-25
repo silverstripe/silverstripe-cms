@@ -1,134 +1,134 @@
 ja_JP:
   AssetAdmin:
-    ADDFILES: 'Add Files'
-    ALLOWEDEXTS: 'Allowed extensions'
-    ActionAdd: 'Add folder'
-    AppCategoryArchive: Archive
-    AppCategoryAudio: Audio
+    ADDFILES: 'ファイルを追加'
+    ALLOWEDEXTS: 利用可能な拡張子
+    ActionAdd: 'フォルダを追加'
+    AppCategoryArchive: アーカイブ
+    AppCategoryAudio: 音楽
     AppCategoryFlash: Flash
-    AppCategoryImage: Image
-    AppCategoryVideo: Video
-    BackToFolder: 'Back to folder'
-    CREATED: Date
-    CurrentFolderOnly: 'Limit to current folder?'
-    DetailsView: Details
-    FILES: Files
-    FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
-    FROMTHEINTERNET: 'From the internet'
-    FROMYOURCOMPUTER: 'From your computer'
-    Filetype: 'File type'
-    ListView: 'List View'
-    MENUTITLE: Files
-    NEWFOLDER: NewFolder
-    SIZE: Size
-    THUMBSDELETED: '{count} unused thumbnails have been deleted'
-    TreeView: 'Tree View'
-    Upload: Upload
+    AppCategoryImage: 画像
+    AppCategoryVideo: 動画
+    BackToFolder: フォルダへ戻る
+    CREATED: 日付
+    CurrentFolderOnly: 'このフォルダに限定しますか?'
+    DetailsView: 詳細
+    FILES: ファイル
+    FILESYSTEMSYNCTITLE: 'ファイルに関するCMSデータベースエントリーを更新する。例えば、FTPなどCMS以外を経由してファイルをアップロードした場合に便利です。'
+    FROMTHEINTERNET: インターネットから
+    FROMYOURCOMPUTER: コンピュータから
+    Filetype: ファイルの種類
+    ListView: リスト表示
+    MENUTITLE: ファイル
+    NEWFOLDER: 新しいフォルダ
+    SIZE: サイズ
+    THUMBSDELETED: '{count}個の未使用のサムネイルを削除しました'
+    TreeView: ツリー表示
+    Upload: アップロード
   AssetAdmin_DeleteBatchAction:
-    TITLE: 'Delete folders'
+    TITLE: フォルダを削除
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
-    PAGES: page(s)
+    PAGES: ページ
   BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 通常のコンテンツページ
   BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 通常のコンテンツページ
   BrokenLinksReport:
-    Any: Any
-    BROKENLINKS: 'Broken links report'
+    Any: 何でも
+    BROKENLINKS: 壊れたリンクのレポート
     CheckSite: 'Check site'
-    CheckSiteDropdownDraft: 'Draft Site'
-    CheckSiteDropdownPublished: 'Published Site'
-    ColumnDateLastModified: 'Date last modified'
-    ColumnDateLastPublished: 'Date last published'
-    ColumnProblemType: 'Problem type'
+    CheckSiteDropdownDraft: 下書きサイト
+    CheckSiteDropdownPublished: '公開済みサイト'
+    ColumnDateLastModified: 最終更新日
+    ColumnDateLastPublished: '最終公開日'
+    ColumnProblemType: 問題の種類
     ColumnURL: URL
     HasBrokenFile: 'has broken file'
     HasBrokenLink: 'has broken link'
     HasBrokenLinkAndFile: 'has broken link and file'
-    HoverTitleEditPage: 'Edit page'
-    NOITEMSFOUND: 'No items found'
-    PageName: 'Page name'
+    HoverTitleEditPage: ページの編集
+    NOITEMSFOUND: '見つかった項目はありませんでした'
+    PageName: ページ名
     ReasonDropdown: 'Problem to check'
-    ReasonDropdownBROKENFILE: 'Broken file'
-    ReasonDropdownBROKENLINK: 'Broken link'
-    ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
-    ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
-    RedirectorNonExistent: 'redirector page pointing to non-existent page'
-    SORTASC: 'Sort in ascending order'
-    SORTDESC: 'Sort in descending order'
-    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
+    ReasonDropdownBROKENFILE: 壊れたファイル
+    ReasonDropdownBROKENLINK: 壊れているリンク
+    ReasonDropdownRPBROKENLINK: 存在しないページを指しているリダイレクトページ
+    ReasonDropdownVPBROKENLINK: 存在しないページを指している仮想ページ
+    RedirectorNonExistent: 存在しないページを指しているリダイレクトページ
+    SORTASC: '昇順に並び替える'
+    SORTDESC: '降順に並び替える'
+    VirtualPageNonExistent: 存在しないページを指している仮想ページ
   CMSAddPageController:
-    Title: 'Add page'
+    Title: 'ページを追加'
   CMSBatchActions:
-    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
-    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
-    DELETE_DRAFT_PAGES: 'Delete from draft site'
-    DELETE_PAGES: 'Delete from published site'
-    PUBLISHED_PAGES: 'Published %d pages, %d failures'
-    PUBLISH_PAGES: Publish
-    UNPUBLISHED_PAGES: 'Un-published %d pages'
-    UNPUBLISH_PAGES: Un-publish
+    DELETED_DRAFT_PAGES: '%dページを下書きサイトから削除しましたが、%dページの削除に失敗しました。'
+    DELETED_PAGES: '%dページを公開サイトから削除しましたが、%dページの削除に失敗しました。'
+    DELETE_DRAFT_PAGES: 下書きサイトから削除
+    DELETE_PAGES: '公開サイトから削除'
+    PUBLISHED_PAGES: '%dページを公開しましたが、%dページの公開に失敗しました。'
+    PUBLISH_PAGES: '公開'
+    UNPUBLISHED_PAGES: '%dページを非公開にしました'
+    UNPUBLISH_PAGES: '非公開'
   CMSFileAddController:
     CANACCESS: 'You can access the archived site at this link:'
     HAVEASKED: 'You have asked to view the content of our site on'
-    MENUTITLE: Files
+    MENUTITLE: ファイル
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
-    AddNew: 'Add new page'
-    AddNewButton: 'Add new'
-    ChoosePageParentMode: 'Choose where to create this page'
-    ChoosePageType: 'Choose page type'
-    Create: Create
+    AddNew: '新しいページを追加'
+    AddNewButton: '新しく追加'
+    ChoosePageParentMode: 'このページを作成する場所を選択'
+    ChoosePageType: ページの種類を選択
+    Create: 作成
     DELETE: ドラフトサイトから削除
     DELETEFP: '公開サイトから削除'
     DESCREMOVED: 'and {count} descendants'
-    EMAIL: Email
-    EditTree: 'Edit Tree'
-    ListFiltered: 'Filtered list.'
-    MENUTITLE: 'Edit Page'
+    EMAIL: Eメール
+    EditTree: ツリーを編集
+    ListFiltered: フィルタリングされたリスト
+    MENUTITLE: ページを編集
     NEW: 'New '
-    PAGENOTEXISTS: 'This page doesn''t exist'
-    PAGES: Pages
-    PAGETYPEANYOPT: Any
-    PAGETYPEOPT: 'Page Type'
+    PAGENOTEXISTS: このページは存在しません
+    PAGES: ページ
+    PAGETYPEANYOPT: 何でも
+    PAGETYPEOPT: ページの種類
     PUBALLCONFIRM: 'Please publish every page in the site, copying content stage to live'
     PUBALLFUN: '"Publish All" functionality'
-    PUBALLFUN2: 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It''s				intended to be used after there have been massive edits of the content, such as when the site was				first built.'
-    PUBPAGES: 'Done: Published {count} pages'
-    PageAdded: 'Successfully created page'
-    REMOVED: 'Deleted ''%s''%s from live site'
-    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
-    REMOVEDPAGEFROMDRAFT: 'Removed ''%s'' from the draft site'
+    PUBALLFUN2: 'このボタンを押すことはすべてのページへ移動して"公開"を押すことと同じです。この機能は、サイトをはじめて作成した時など多くのコンテンツの編集がある場合に利用されることを想定されています。'
+    PUBPAGES: '完了: {count}ページを公開しました'
+    PageAdded: ページの作成に成功
+    REMOVED: '''%s''%sを実サイトから削除しました'
+    REMOVEDPAGE: '''{title}''を公開されているサイトから削除しました'
+    REMOVEDPAGEFROMDRAFT: '%sを下書きサイトから削除しました'
     RESTORE: '復元'
-    RESTORED: 'Restored ''{title}'' successfully'
-    ROLLBACK: 'Roll back to this version'
-    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
-    ROLLEDBACKVERSION: 'Rolled back to version #%d.  New version number is #%d'
+    RESTORED: '{title}を復旧しました'
+    ROLLBACK: このバージョンへ戻す
+    ROLLEDBACKPUB: '公開された版へロールバックしました。新しいバージョン番号は#{version}です'
+    ROLLEDBACKVERSION: 'バージョン#%dへロールバックしました。新しいバージョン番号は#%dです。'
     SAVE: 保存
-    SAVEDRAFT: 'Save Draft'
-    TabContent: Content
-    TabHistory: History
-    TabSettings: Settings
-    TreeFiltered: 'Filtered tree.'
-    TreeFilteredClear: 'Clear filter'
+    SAVEDRAFT: 下書きとして保存
+    TabContent: コンテンツ
+    TabHistory: 履歴
+    TabSettings: 設定
+    TreeFiltered: フィルタリングされたツリー
+    TreeFilteredClear: フィルタを解除
   CMSPageAddController:
-    MENUTITLE: 'Add page'
-    ParentMode_child: 'Under another page'
-    ParentMode_top: 'Top level'
+    MENUTITLE: 'ページを追加'
+    ParentMode_child: 他のページの下に作成
+    ParentMode_top: 最上位層
   CMSPageEditController:
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: ページの編集
   CMSPageHistoryController:
     COMPAREMODE: 比較モード（２つを選択）
     COMPAREVERSIONS: バージョンの比較
-    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
+    COMPARINGVERSION: '{version1}と{version2}を比較しています。'
     MENUTITLE: 履歴
     REVERTTOTHISVERSION: このバージョンに戻す
     SHOWUNPUBLISHED: '公開されていないバージョンを表示'
     SHOWVERSION: バージョンを表示
     VIEW: 表示
-    VIEWINGVERSION: 'Currently viewing version {version}.'
+    VIEWINGVERSION: '現在表示しているバージョンは{version}です。'
   CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
   CMSPageSettingsController:
     MENUTITLE: ページの編集
@@ -150,13 +150,13 @@ ja_JP:
     UNKNOWN: 不明
     WHEN: いつ
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
-    ENABLEDRAGGING: 'Drag''n''drop'
+    DISPLAYING: 表示中
+    ENABLEDRAGGING: ドラッグ・アンド・ドロップ
     GO: Go
-    MULTISELECT: Multi-selection
+    MULTISELECT: 複数選択
     OF: of
     TO: to
-    Title: 'Changed pages'
+    Title: 変更されたページ
     VIEWFIRST: 一番目を表示
     VIEWLAST: 最新を表示
     VIEWNEXT: 次を表示
@@ -168,34 +168,34 @@ ja_JP:
   CaseStudy:
     DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
-    NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
+    NOTEWONTBESHOWN: 'お知らせ: このメッセージは訪問者には表示されません'
   ContentController:
     ARCHIVEDSITE: 'Archived Site'
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
-    DRAFTSITE: 'Draft Site'
+    DRAFTSITE: 下書きサイト
     DRAFT_SITE_ACCESS_RESTRICTION: '草案かアーカイブされた内容を見るためにはログインしてください。<a href="%s">公開サイトにもどるにはコチラをクリックしてください。</a>'
-    Email: Email
-    InstallFilesDeleted: 'Installation files have been successfully deleted.'
+    Email: Eメール
+    InstallFilesDeleted: インストール関連ファイルは正しく削除されました
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    InstallSuccessCongratulations: SilverStripeは正しくインストールされました
     LOGGEDINAS: ログイン中：
     LOGIN: ログイン
     LOGOUT: ログアウト
-    NOTLOGGEDIN: 'Not logged in'
-    PUBLISHEDSITE: 'Published Site'
-    Password: Password
+    NOTLOGGEDIN: ログインされていません
+    PUBLISHEDSITE: '公開サイト'
+    Password: パスワード
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
-    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
+    StartEditing: '<a href="{link}">CMS</a>のリンクをクリックすることであなたのサイトのコンテンツの編集を開始することができます。'
+    UnableDeleteInstall: 'インストールファイルを削除することができませんでした。次のファイルを手動で削除してください。'
     VIEWPAGEIN: 'View Page in:'
   ErrorPage:
     CODE: エラーコード
     DEFAULTERRORPAGECONTENT: '<p>申し訳ありませんが、貴方の見ようとしているページは存在しません。</p><p>貴方が見ようとしているサイトのURLの綴りがあっているのか、再度確認してください。</p>'
     DEFAULTERRORPAGETITLE: ページが見つかりません
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Server error'
-    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>申し訳ございません。あなたのリクエストを処理中に問題が起きました。</p>'
+    DEFAULTSERVERERRORPAGETITLE: サーバーエラー
+    DESCRIPTION: 'それぞれのエラーケースに対してカスタムコンテンツを表示する(例:"ページがありません")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
     400: '400 - 不適格な要求です'
     401: '401 - 許可されていません'
@@ -227,25 +227,25 @@ ja_JP:
     UNUSEDTHUMBNAILSTITLE: '未使用のサムネイル'
     UploadFilesButton: アップロード
   GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
-    FILTER: Filter
+    DESCRIPTION: 通常のコンテンツページ
+    FILTER: フィルタ
   LeftAndMain:
-    DELETED: Deleted.
+    DELETED: 削除済
     PreviewButton: プレビュー
-    SAVEDUP: Saved.
-    STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
+    SAVEDUP: 保存済
+    STATUSPUBLISHEDSUCCESS: '''{title}''を正しく公開することができました'
     SearchResults: 検索結果
     VersionUnknown: 不明
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 通常のコンテンツページ
   Page:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 通常のコンテンツページ
   Permission:
-    CMS_ACCESS_CATEGORY: 'CMS Access'
-    RESET: Reset
+    CMS_ACCESS_CATEGORY: CMSへのアクセス
+    RESET: リセット
   Permissions:
-    CONTENT_CATEGORY: 'Content permissions'
-    PERMISSIONS_CATEGORY: 'Roles and access permissions'
+    CONTENT_CATEGORY: コンテンツに関する権限
+    PERMISSIONS_CATEGORY: 役割とアクセス権限
   RedirectorPage:
     DESCRIPTION: '別の内部ページにリダイレクト'
     HASBEENSETUP: '転送URLを含むページには、転送先がない状態で設定されています。'
@@ -256,10 +256,10 @@ ja_JP:
     REDIRECTTOPAGE: 貴方のウェブサイトを表示します
     YOURPAGE: 貴方のウェブサイトを表示します
   RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-    FILTER: Filter
+    DESCRIPTION: 通常のコンテンツページ
+    FILTER: フィルタ
   ReportAdmin:
-    MENUTITLE: Reports
+    MENUTITLE: レポート
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
@@ -267,52 +267,52 @@ ja_JP:
     SEARCH: 検索
     SearchResults: 検索結果
   SideReport:
-    BROKENFILES: 'Pages with broken files'
+    BROKENFILES: 壊れているファイルがあるページ
     BROKENLINKS: 'Pages with broken links'
     BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
     BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
-    BrokenLinksGroupTitle: 'Broken links reports'
+    BrokenLinksGroupTitle: 壊れているリンクのレポート
     ContentGroupTitle: 'Content reports'
-    EMPTYPAGES: 'Pages with no content'
+    EMPTYPAGES: 空のページ
     LAST2WEEKS: 'Pages edited in the last 2 weeks'
-    OtherGroupTitle: Other
+    OtherGroupTitle: その他
     ParameterLiveCheckbox: 'Check live site'
-    REPEMPTY: 'The {title} report is empty.'
+    REPEMPTY: '{title}のレポートは空です'
   SilverStripeNavigatorLink:
     ShareInstructions: 'このページを共有するには、以下のリンクをコピー＆ペーストとします。'
     ShareLink: '共有リンク'
   SilverStripeNavigatorLinkl:
     CloseLink: 閉じる
   SiteConfig:
-    DEFAULTTHEME: '(Use default theme)'
-    EDITHEADER: 'Who can edit pages on this site?'
-    EDIT_PERMISSION: 'Manage site configuration'
+    DEFAULTTHEME: (デフォルトのテーマを利用)
+    EDITHEADER: このサイト上でページを編集できる人
+    EDIT_PERMISSION: サイト設定の管理
     EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
-    SITENAMEDEFAULT: 'Your Site Name'
-    SITETAGLINE: 'Site Tagline/Slogan'
+    SITENAMEDEFAULT: サイト名
+    SITETAGLINE: サイトのキャッチコピー
     SITETITLE: サイトタイトル
-    TABACCESS: Access
-    TABMAIN: Main
-    TAGLINEDEFAULT: 'your tagline here'
+    TABACCESS: アクセス権限
+    TABMAIN: メイン
+    TAGLINEDEFAULT: 'サイトのキャッチフレーズをここに入力'
     THEME: テーマ
-    TOPLEVELCREATE: 'Who can create pages in the root of the site?'
-    VIEWHEADER: 'Who can view pages on this site?'
+    TOPLEVELCREATE: サイトのルートにおいてページを作成できる人
+    VIEWHEADER: このサイト上でページを閲覧できる人
   SiteTree:
     ACCESSANYONE: 誰でも
     ACCESSHEADER: 本サイトにあるページを誰か閲覧しますか？
     ACCESSLOGGEDIN: ログインしたユーザ
     ACCESSONLYTHESE: 'この人達だけ (リストから選択してください)'
-    ADDEDTODRAFTHELP: 'Page has not been published yet'
-    ADDEDTODRAFTSHORT: Draft
+    ADDEDTODRAFTHELP: 'ページはまだ公開されていません'
+    ADDEDTODRAFTSHORT: 下書き
     ALLOWCOMMENTS: コメントを許可しますか？
-    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+    APPEARSVIRTUALPAGES: 'このコンテンツは{title}として仮想ページにおいても表示されます。'
     BUTTONCANCELDRAFT: '草稿の編集内容を取り消します'
     BUTTONCANCELDRAFTDESC: '草稿と前回公開されたページを削除します'
     BUTTONSAVEPUBLISH: '保存して公開'
     BUTTONUNPUBLISH: '非公開'
     BUTTONUNPUBLISHDESC: '公開サイトから取り除きました'
-    Back: Back
-    CREATED: 'Date Created'
+    Back: 戻る
+    CREATED: 作成日
     Comments: コメント
     Content: コンテンツ
     DEFAULTABOUTCONTENT: '<p>あなた自身、自由にページに書き込むことが出来、もちろん添削も自由に行えます。<br /></p>'
@@ -322,70 +322,70 @@ ja_JP:
     DEFAULTHOMECONTENT: '<p>SilverStripeへようこそ！これはデフォルトのホームページです。このページを編集するには、<a href="admin/">CMS</a>にアクセスしてください。<a href="http://doc.silverstripe.org">開発者向けドキュメント</a>や、<a href="http://doc.silverstripe.org/doku.php?id=tutorials">チュートリアル</a>もご覧いただけます。</p>'
     DEFAULTHOMETITLE: 'ホーム'
     DELETEDPAGEHELP: 'Page is no longer published'
-    DELETEDPAGESHORT: Deleted
+    DELETEDPAGESHORT: 削除済
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
-    DESCRIPTION: 'Generic content page'
-    DependtPageColumnLinkType: 'Link type'
+    DESCRIPTION: 通常のコンテンツページ
+    DependtPageColumnLinkType: リンクの種類
     DependtPageColumnURL: URL
     EDITANYONE: 誰でもCMSにログインが可能
     EDITHEADER: この中から誰をCMSの編集を可能にしますか？
     EDITONLYTHESE: 'この人達だけ (リストから選択してください)'
-    EDITORGROUPS: 'Editor Groups'
-    EDIT_ALL_DESCRIPTION: 'Edit any page'
+    EDITORGROUPS: '編集者グループ'
+    EDIT_ALL_DESCRIPTION: すべてのページを編集
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     Editors: 編集グループ
     HASBROKENLINKS: このページはリンク切れがあります
     HTMLEDITORTITLE: '内容'
     INHERIT: 親ページを受け継ぐ
-    LASTUPDATED: 'Last Updated'
-    LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
+    LASTUPDATED: 最終更新日時
+    LINKCHANGENOTE: このページのリンクを変更するとすべての子ページのリンクに影響を与える可能性があります。
     MENUTITLE: 操作レベル
     METADESC: 説明
     METAEXTRA: 'メタタグをカスタム'
     METAKEYWORDS: キーワード
     METATITLE: タイトル
-    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
-    MODIFIEDONDRAFTSHORT: Modified
-    MetadataToggle: Metadata
-    PAGELOCATION: 'Page location'
+    MODIFIEDONDRAFTHELP: '公開されていない変更がページにあります'
+    MODIFIEDONDRAFTSHORT: 更新日時
+    MetadataToggle: メタデータ
+    PAGELOCATION: 'ページの場所'
     PAGETITLE: ページ名
     PAGETYPE: ページタイプ
     PARENTID: 親ページ
     PARENTTYPE: 'ページの場所'
-    PARENTTYPE_ROOT: 'Top-level page'
-    PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
+    PARENTTYPE_ROOT: 最上位層のページ
+    PARENTTYPE_SUBPAGE: 親ページの下にあるサブページ
     PERMISSION_GRANTACCESS_DESCRIPTION: コンテンツへのアクセス権限を編集
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
     PLURALNAME: 'サイトのツリー構造'
-    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
-    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
+    PageTypNotAllowedOnRoot: 'ページタイプ"{type}"は最上位層のページになることができません'
+    PageTypeNotAllowed: 'ページタイプ"{type}"はこの親ページの子になることができません'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
-    REMOVEDFROMDRAFTSHORT: 'Removed from draft'
-    REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
-    REORGANISE_DESCRIPTION: 'Change site structure'
-    REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
+    REMOVEDFROMDRAFTSHORT: 下書きから削除
+    REMOVE_INSTALL_WARNING: '警告: セキュリティ上の理由から、SilverStripeのインストール先にあるinstall.phpを削除してください。'
+    REORGANISE_DESCRIPTION: 'サイト構造を変更'
+    REORGANISE_HELP: 'サイトツリー内のページをドラッグ・アンド・ドロップで再編集'
     SHOWINMENUS: メニューに表示しますか？
     SHOWINSEARCH: 検索に表示しますか？
     SINGULARNAME: 'サイトのツリー構造'
     TABBEHAVIOUR: 動作
     TABCONTENT: コンテンツ
-    TABDEPENDENT: 'Dependent pages'
+    TABDEPENDENT: 依存ページ
     TOPLEVEL: 'サイトの内容 (最上位層)'
-    TOPLEVELCREATORGROUPS: 'Top level creators'
+    TOPLEVELCREATORGROUPS: '最上位層のページ作成者'
     URLSegment: URLセグメント
-    VIEWERGROUPS: 'Viewer Groups'
-    VIEW_ALL_DESCRIPTION: 'View any page'
+    VIEWERGROUPS: '閲覧者グループ'
+    VIEW_ALL_DESCRIPTION: すべてのページを閲覧
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
     VIEW_DRAFT_CONTENT: ドラフトを見る
     VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
     Viewers: '閲覧者のグループ'
-    Visibility: Visibility
+    Visibility: 表示・非表示
     has_one_Parent: 親ページ
     many_many_BackLinkTracking: 'リンク元を追跡'
     many_many_ImageTracking: 画像へのリンクを追跡
     many_many_LinkTracking: リンクを追跡
   SiteTreeURLSegmentField:
-    HelpChars: ' Special characters are automatically converted or removed.'
+    HelpChars: 特殊文字は自動的に変換されたか取り除かれました
   StaticExporter:
     BASEURL: ベースURL
     EXPORTTO: このフォルダにエクスポート
@@ -393,9 +393,9 @@ ja_JP:
   TableListField:
     SELECT: 選択：
   TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 通常のコンテンツページ
   TestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 通常のコンテンツページ
   TreeTools:
     DisplayLabel: 'Display:'
   VirtualPage:
@@ -404,7 +404,7 @@ ja_JP:
     EDITCONTENT: クリックしてコンテンツを編集
     HEADER: これがバーチャルページです
     PLURALNAME: 仮想ページ
-    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
+    PageTypNotAllowedOnRoot: 'この仮想ページに対して元のページの種類{type}はルートレベルに配置されることが許可されていません。'
     SINGULARNAME: 仮想ページ
   cms:
     FILESYSTEMSYNC: 'Sync files'

@@ -47,7 +47,7 @@ de:
     HasBrokenLink: 'Defekter Link'
     HasBrokenLinkAndFile: 'Defekter Link und defekter Dateilink'
     HoverTitleEditPage: 'Seite editieren'
-    NOITEMSFOUND: 'No items found'
+    NOITEMSFOUND: 'Keine Einträge gefunden.'
     PageName: Seitenname
     ReasonDropdown: 'Zu überprüfendes Problem'
     ReasonDropdownBROKENFILE: 'Defekter Dateilink'
@@ -86,7 +86,7 @@ de:
     DESCREMOVED: 'und {count} abhängige Seiten'
     EMAIL: E-Mail
     EditTree: 'Seitenbaum bearbeiten'
-    ListFiltered: 'Filtered list.'
+    ListFiltered: 'Gefilterte Liste'
     MENUTITLE: 'Seite bearbeiten'
     NEW: Neu
     PAGENOTEXISTS: 'Diese Seite wurde nicht gefunden'
@@ -112,7 +112,7 @@ de:
     TabHistory: Verlauf
     TabSettings: Einstellungen
     TreeFiltered: 'Seitenbaum gefiltert'
-    TreeFilteredClear: 'Clear filter'
+    TreeFilteredClear: 'Filter zurücksetzen'
   CMSPageAddController:
     MENUTITLE: 'Seite hinzufügen'
     ParentMode_child: 'Einer anderen Seite untergeordnet'
@@ -150,12 +150,12 @@ de:
     UNKNOWN: Unbekannt
     WHEN: Wann
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
+    DISPLAYING: Zeige
     ENABLEDRAGGING: 'Drag & Drop'
     GO: Los
     MULTISELECT: Mehrfachauswahl
-    OF: of
-    TO: to
+    OF: von
+    TO: bis
     Title: Seiten
     VIEWFIRST: Erster
     VIEWLAST: Letzter
@@ -324,7 +324,7 @@ de:
     DELETEDPAGEHELP: 'Die Seite ist nicht länger veröffentlicht'
     DELETEDPAGESHORT: Gelöscht
     DEPENDENT_NOTE: 'Die folgenden Seiten hängen von dieser Seite ab. Dies schließt Virtuelle Seiten, Weiterleitungen und Seiten mit Links im Inhalt ein.'
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Allgemeine Inhaltsseite'
     DependtPageColumnLinkType: Linktyp
     DependtPageColumnURL: URL
     EDITANYONE: 'Jeder der sich in das CMS einloggen kann'
@@ -346,7 +346,7 @@ de:
     METATITLE: Titel
     MODIFIEDONDRAFTHELP: 'Die Seite hat unveröffentlichte Änderungen'
     MODIFIEDONDRAFTSHORT: 'Zuletzt geändert'
-    MetadataToggle: Metadata
+    MetadataToggle: Metadaten
     PAGELOCATION: Seitenposition
     PAGETITLE: Seitenname
     PAGETYPE: Seitentyp

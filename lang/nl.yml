@@ -22,7 +22,7 @@ nl:
     NEWFOLDER: 'Nieuwe Map'
     SIZE: Omvang
     THUMBSDELETED: '{count} ongebruikte miniatuur afbeeldingen zijn verwijderd'
-    TreeView: Hiërarchie
+    TreeView: Boomstructuur
     Upload: Uploaden
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Verwijder mappen'
@@ -47,7 +47,7 @@ nl:
     HasBrokenLink: 'heeft verbroken link'
     HasBrokenLinkAndFile: 'heeft verbroken link en bestand'
     HoverTitleEditPage: 'Wijzig pagina'
-    NOITEMSFOUND: 'No items found'
+    NOITEMSFOUND: 'Geen items gevonden'
     PageName: Paginanaam
     ReasonDropdown: 'Te controleren probleem'
     ReasonDropdownBROKENFILE: 'Verbroken bestand'
@@ -85,8 +85,8 @@ nl:
     DELETEFP: 'Verwijder van de gepubliceerde webpagina'
     DESCREMOVED: 'en {count} onderliggende'
     EMAIL: Email
-    EditTree: 'Edit Tree'
-    ListFiltered: 'Filtered list.'
+    EditTree: 'Bewerk boomstructuur'
+    ListFiltered: 'Gefilterde lijst.'
     MENUTITLE: 'Wijzig pagina'
     NEW: Nieuw
     PAGENOTEXISTS: 'Deze pagina bestaat niet'
@@ -111,14 +111,14 @@ nl:
     TabContent: Inhoud
     TabHistory: Geschiedenis
     TabSettings: Instellingen
-    TreeFiltered: 'Filtered tree.'
-    TreeFilteredClear: 'Clear filter'
+    TreeFiltered: 'Gefilterde boomstructuur.'
+    TreeFilteredClear: 'Filter resetten'
   CMSPageAddController:
     MENUTITLE: 'Pagina toevoegen'
     ParentMode_child: 'Onder een andere pagina'
     ParentMode_top: 'Hoogste niveau'
   CMSPageEditController:
-    MENUTITLE: 'Wijzig pagina'
+    MENUTITLE: 'Wijzig Pagina'
   CMSPageHistoryController:
     COMPAREMODE: 'Vergelijken (selecteer 2)'
     COMPAREVERSIONS: 'Vergelijk Versies'
@@ -133,10 +133,10 @@ nl:
   CMSPageSettingsController:
     MENUTITLE: 'Wijzig pagina'
   CMSPagesController:
-    GalleryView: Albumweergave
+    GalleryView: 'Album weergave'
     ListView: Lijstweergave
     MENUTITLE: 'Pagina''s'
-    TreeView: Hiërarchie
+    TreeView: 'Hierarchische weergave'
   CMSSearch:
     FILTERDATEFROM: Van
     FILTERDATEHEADING: Datum
@@ -150,23 +150,23 @@ nl:
     UNKNOWN: Onbekend
     WHEN: Wanneer
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
+    DISPLAYING: Tonen
     ENABLEDRAGGING: Slepen
     GO: Doen
     MULTISELECT: 'Meervoudige selectie'
-    OF: of
-    TO: to
+    OF: van
+    TO: naar
     Title: 'Gewijzigde pagina''s'
     VIEWFIRST: 'Bekijk eerste'
     VIEWLAST: 'Bekijk laatste'
     VIEWNEXT: 'Toon volgende'
     VIEWPREVIOUS: 'Bekijk vorige'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'Alle pagina\\''s, inclusief verwijderde'
+    Title: 'Alle pagina''s (inclusief verwijderde)'
   CMSSiteTreeFilter_Search:
     Title: 'Alle pagina''s'
   CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
+    DESCRIPTION: 'De Case study pagina zal voorzien zijn van voorbeelden'
   ContentControl:
     NOTEWONTBESHOWN: 'N.B. : Dit bericht is niet zichtbaar voor bezoekers'
   ContentController:
@@ -194,7 +194,7 @@ nl:
     DEFAULTERRORPAGECONTENT: '<p>Sorry, maar de pagina die je zocht lijkt niet te bestaan.</p><p>Gelieve de spelling van de url te controleren en het opnieuw te proberen.</p>'
     DEFAULTERRORPAGETITLE: 'Pagina niet gevonden'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Helaas, er was een probleem bij het verwerken van je verzoek.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Server Fout'
+    DEFAULTSERVERERRORPAGETITLE: 'Probleem met de server'
     DESCRIPTION: 'Aangepaste tekst voor verschillende foutmeldingen (bijv: "Pagina niet gevonden")'
     ERRORFILEPROBLEM: 'Fout: "{filename}" kan niet geopend worden om te schrijven. Controleer alstublieft de bestandspermissies.'
     400: '400 - Foute Vraag'
@@ -265,11 +265,11 @@ nl:
   SearchForm:
     GO: Go
     SEARCH: Zoeken
-    SearchResults: 'Zoek Resultaten'
+    SearchResults: Zoekresultaten
   SideReport:
     BROKENFILES: 'Pagina''s met verbroken bestanden'
     BROKENLINKS: 'Pagina''s met verbroken verwijzingen'
-    BROKENREDIRECTORPAGES: 'RedirectorPages dit naar verwijderde pagina''s verwijzen'
+    BROKENREDIRECTORPAGES: 'RedirectorPages die naar verwijderde pagina''s verwijzen'
     BROKENVIRTUALPAGES: 'VirtuelePagina''s die naar verwijderde pagina''s verwijzen'
     BrokenLinksGroupTitle: 'Verbroken verwijzingen raportage'
     ContentGroupTitle: Inhoudsrapportages
@@ -324,7 +324,7 @@ nl:
     DELETEDPAGEHELP: 'Deze pagina is niet langer gepubliceerd'
     DELETEDPAGESHORT: Verwijderd
     DEPENDENT_NOTE: 'De volgende pagina''s zijn afhankelijk van deze pagina. Hieronder vallen virtuelepagina''s, verwijsingspagina''s en pagina''s met links in de inhoud.'
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Pagina voor algemene inhoud'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
     EDITANYONE: 'Iedereen die kan inloggen in het CMS'

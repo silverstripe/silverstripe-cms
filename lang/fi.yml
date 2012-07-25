@@ -47,7 +47,7 @@ fi:
     HasBrokenLink: 'sisältää rikkinäisen linkin'
     HasBrokenLinkAndFile: 'sisältää rikkinäisen linkin ja tiedoston'
     HoverTitleEditPage: Muokkaussivu
-    NOITEMSFOUND: 'No items found'
+    NOITEMSFOUND: 'Tietoja ei löytynyt'
     PageName: 'Sivun nimi'
     ReasonDropdown: 'Ongelma tarkistettavaksi'
     ReasonDropdownBROKENFILE: 'Rikkinäinen tiedosto'
@@ -85,7 +85,7 @@ fi:
     DELETEFP: 'Poista julkaistulta sivulta'
     DESCREMOVED: 'ja {count} alasivua'
     EMAIL: Sähköposti
-    EditTree: 'Edit Tree'
+    EditTree: 'Muokkaa rakennepuuta'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Muokkaa sivua'
     NEW: Uusi
@@ -112,7 +112,7 @@ fi:
     TabHistory: Historia
     TabSettings: Asetukset
     TreeFiltered: 'Filtered tree.'
-    TreeFilteredClear: 'Clear filter'
+    TreeFilteredClear: 'Nollaa suodatin'
   CMSPageAddController:
     MENUTITLE: 'Lisää sivu'
     ParentMode_child: 'Toisen sivun alla'
@@ -150,11 +150,11 @@ fi:
     UNKNOWN: Tuntematon
     WHEN: Milloin
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
+    DISPLAYING: Näytetään
     ENABLEDRAGGING: 'Vedä ja pudota'
     GO: Siirry
     MULTISELECT: Monivalinta
-    OF: of
+    OF: /
     TO: to
     Title: 'Muuttuneet sivut'
     VIEWFIRST: 'Näytä ensimmäinen'
@@ -324,7 +324,7 @@ fi:
     DELETEDPAGEHELP: 'Sivu ei ole enää julkaistuna'
     DELETEDPAGESHORT: Poistettu
     DEPENDENT_NOTE: 'Seuraavat sivut riippuvat tästä sivusta. Tämä pitää sisällään virtuaaliset sivut, uudelleenohjaussivut ja sivut sisältölinkkien kanssa.'
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Yleinen sisältösivu'
     DependtPageColumnLinkType: 'Linkin tyyppi'
     DependtPageColumnURL: URL
     EDITANYONE: 'Jokainen, joka voi kirjautua sisään CMS:ään.'
@@ -346,7 +346,7 @@ fi:
     METATITLE: Otsikko
     MODIFIEDONDRAFTHELP: 'Sivulla on tehty muutoksia, joita ei ole julkaistu'
     MODIFIEDONDRAFTSHORT: Muokattu
-    MetadataToggle: Metadata
+    MetadataToggle: Meta-tiedot
     PAGELOCATION: 'Sivun sijainti'
     PAGETITLE: 'Sivun nimi'
     PAGETYPE: 'Sivun tyyppi'
