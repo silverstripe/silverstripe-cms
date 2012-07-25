@@ -323,7 +323,7 @@ nb:
     DEFAULTHOMETITLE: Hjem
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Slettet
-    DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DEPENDENT_NOTE: 'De følgende sidene avhenger av denne siden. Dette inkluderer virtuelle sider, omdirigeringssider og sider med innholdslenker.'
     DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
@@ -345,7 +345,7 @@ nb:
     METAKEYWORDS: Nøkkelord
     METATITLE: Tittel
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
-    MODIFIEDONDRAFTSHORT: Modified
+    MODIFIEDONDRAFTSHORT: Modifisert
     MetadataToggle: Metadata
     PAGELOCATION: Sideplassering
     PAGETITLE: Sidenavn
