@@ -47,6 +47,7 @@ fr:
     HasBrokenLink: 'a cassé le lien'
     HasBrokenLinkAndFile: 'a cassé le lien et le fichier'
     HoverTitleEditPage: 'Editer la page'
+    NOITEMSFOUND: 'No items found'
     PageName: 'Nom de la page'
     ReasonDropdown: 'Problème à regarder'
     ReasonDropdownBROKENFILE: 'Fichier cassé'
@@ -69,6 +70,8 @@ fr:
     UNPUBLISHED_PAGES: '%d pages non publiées'
     UNPUBLISH_PAGES: 'Non publiées'
   CMSFileAddController:
+    CANACCESS: 'Vous pouvez accéder le site archivé par ce lien :'
+    HAVEASKED: 'Vous avez demandé à voir le contenu de notre site le'
     MENUTITLE: Fichiers
   CMSMain:
     ACCESS: 'Droits d’accès à la section « {title} »'
@@ -82,6 +85,8 @@ fr:
     DELETEFP: 'Retirer du site publié'
     DESCREMOVED: 'et {count} descendants'
     EMAIL: Email
+    EditTree: 'Edit Tree'
+    ListFiltered: 'Filtered list.'
     MENUTITLE: 'Éditer la page'
     NEW: Nouveau
     PAGENOTEXISTS: 'Cette page n''existe pas'
@@ -106,6 +111,8 @@ fr:
     TabContent: Contenu
     TabHistory: Historique
     TabSettings: Paramètres
+    TreeFiltered: 'Filtered tree.'
+    TreeFilteredClear: 'Clear filter'
   CMSPageAddController:
     MENUTITLE: 'Ajouter page'
     ParentMode_child: 'Sous une autre page'
@@ -127,13 +134,13 @@ fr:
     MENUTITLE: 'Ändra sidan'
   CMSPagesController:
     GalleryView: Galerie
-    ListView: 'Liste Görünümü'
+    ListView: Liste
     MENUTITLE: Sayfalar
     TreeView: 'Ağaç Görünümü'
   CMSSearch:
-    FILTERDATEFROM: Kimden
+    FILTERDATEFROM: De
     FILTERDATEHEADING: Date
-    FILTERDATETO: à
+    FILTERDATETO: 'à'
     FILTERLABELTEXT: Contenu
   CMSSettingsController:
     AUTHOR: Auteur
@@ -143,9 +150,12 @@ fr:
     UNKNOWN: Inconnu
     WHEN: Date
   CMSSiteTreeFilter_ChangedPages:
+    DISPLAYING: Displaying
     ENABLEDRAGGING: Glisser-déposer
     GO: Go
     MULTISELECT: 'Choix multiple'
+    OF: of
+    TO: to
     Title: 'Pages modifiées'
     VIEWFIRST: 'Voir le(s) premier(s)'
     VIEWLAST: 'Voir le(s) dernier(s)'
@@ -155,6 +165,8 @@ fr:
     Title: 'Toutes les pages, y compris les supprimées'
   CMSSiteTreeFilter_Search:
     Title: 'Toutes les pages'
+  CaseStudy:
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Note : ce message ne sera pas visible de vos visiteurs.'
   ContentController:
@@ -216,6 +228,7 @@ fr:
     UploadFilesButton: Télécharger
   GridFieldTestPage:
     DESCRIPTION: 'Page au contenu générique'
+    FILTER: Filtrer
   LeftAndMain:
     DELETED: Supprimée.
     PreviewButton: Aperçu
@@ -225,23 +238,11 @@ fr:
     VersionUnknown: Inconnu
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Page au contenu générique'
-  MyNonRootPage:
-    CANACCESS: 'Vous pouvez accéder le site archivé par ce lien :'
-    DESCRIPTION: 'Page au contenu générique'
-    HAVEASKED: 'Vous avez demandé à voir le contenu de notre site le'
-  MyOtherPage:
-    DESCRIPTION: 'Page au contenu générique'
-  MyPage:
-    DESCRIPTION: 'Page au contenu générique'
-  MyRandomPage:
-    DESCRIPTION: 'Page au contenu générique'
-  PackageManagerPage:
-    DESCRIPTION: 'Page au contenu générique'
-    RESET: Réinitialiser
   Page:
     DESCRIPTION: 'Page au contenu générique'
   Permission:
     CMS_ACCESS_CATEGORY: 'Accès au CMS'
+    RESET: Réinitialiser
   Permissions:
     CONTENT_CATEGORY: 'Permissions du contenu'
     PERMISSIONS_CATEGORY: 'Rôles et autorisations d’accès'
@@ -323,6 +324,7 @@ fr:
     DELETEDPAGEHELP: 'La page n’est plus publique '
     DELETEDPAGESHORT: Supprimée
     DEPENDENT_NOTE: 'Les pages suivantes dépendent de cette page. Ceci inclut les pages virtuelles, les redirections et les pages avec des liens.'
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Type de lien'
     DependtPageColumnURL: URL
     EDITANYONE: 'Toute personne pouvant se connecter au CMS'
@@ -344,6 +346,7 @@ fr:
     METATITLE: Titre
     MODIFIEDONDRAFTHELP: 'La page comporte des modifications non publiées'
     MODIFIEDONDRAFTSHORT: Modifiée
+    MetadataToggle: Metadata
     PAGELOCATION: 'Emplacement de la page'
     PAGETITLE: 'Nom de la page'
     PAGETYPE: 'Type de page'
@@ -388,7 +391,6 @@ fr:
     EXPORTTO: 'Exporter vers ce dossier'
     NAME: 'Exportation Statique'
   TableListField:
-    FILTER: Filtrer
     SELECT: 'Sélectionner:'
   TestFileUploadPage:
     DESCRIPTION: 'Page au contenu générique'

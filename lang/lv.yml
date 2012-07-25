@@ -47,6 +47,7 @@ lv:
     HasBrokenLink: 'has broken link'
     HasBrokenLinkAndFile: 'has broken link and file'
     HoverTitleEditPage: 'Edit page'
+    NOITEMSFOUND: 'No items found'
     PageName: 'Page name'
     ReasonDropdown: 'Problem to check'
     ReasonDropdownBROKENFILE: 'Broken file'
@@ -69,6 +70,8 @@ lv:
     UNPUBLISHED_PAGES: 'Un-published %d pages'
     UNPUBLISH_PAGES: Un-publish
   CMSFileAddController:
+    CANACCESS: 'You can access the archived site at this link:'
+    HAVEASKED: 'You have asked to view the content of our site on'
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -82,6 +85,8 @@ lv:
     DELETEFP: 'Dzēst no publicētās vietnes'
     DESCREMOVED: 'and {count} descendants'
     EMAIL: Email
+    EditTree: 'Edit Tree'
+    ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
     NEW: 'New '
     PAGENOTEXISTS: 'This page doesn''t exist'
@@ -106,6 +111,8 @@ lv:
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
+    TreeFiltered: 'Filtered tree.'
+    TreeFilteredClear: 'Clear filter'
   CMSPageAddController:
     MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
@@ -143,9 +150,12 @@ lv:
     UNKNOWN: Unknown
     WHEN: When
   CMSSiteTreeFilter_ChangedPages:
+    DISPLAYING: Displaying
     ENABLEDRAGGING: 'Drag''n''drop'
     GO: Go
     MULTISELECT: Multi-selection
+    OF: of
+    TO: to
     Title: 'Changed pages'
     VIEWFIRST: 'Skatīt pirmo'
     VIEWLAST: 'Skatīt pēdējo'
@@ -155,6 +165,8 @@ lv:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
     Title: 'All pages'
+  CaseStudy:
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Piezīme: šī ziņa nebūs redzama Jūsu apmeklētājiem'
   ContentController:
@@ -216,6 +228,7 @@ lv:
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
+    FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -225,23 +238,11 @@ lv:
     VersionUnknown: Unknown
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-  MyNonRootPage:
-    CANACCESS: 'You can access the archived site at this link:'
-    DESCRIPTION: 'Generic content page'
-    HAVEASKED: 'You have asked to view the content of our site on'
-  MyOtherPage:
-    DESCRIPTION: 'Generic content page'
-  MyPage:
-    DESCRIPTION: 'Generic content page'
-  MyRandomPage:
-    DESCRIPTION: 'Generic content page'
-  PackageManagerPage:
-    DESCRIPTION: 'Generic content page'
-    RESET: Reset
   Page:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
+    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'Satura atļaujas'
     PERMISSIONS_CATEGORY: 'Lomu un piekļuves atļaujas'
@@ -323,6 +324,7 @@ lv:
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Deleted
     DEPENDENT_NOTE: 'Sekojošās lapas ir atkarīgas no šīs lapas. Tās var būt virtuālās lapas, novirzītājlapas, un lapas, kas satur saites.'
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Saites tips'
     DependtPageColumnURL: URL
     EDITANYONE: 'Ikviens, kurš ir pieslēdzies CMS'
@@ -344,6 +346,7 @@ lv:
     METATITLE: Virsraksts
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
+    MetadataToggle: Metadata
     PAGELOCATION: 'Lapas adrese'
     PAGETITLE: 'Lapas nosaukums'
     PAGETYPE: 'Lapas tips'
@@ -388,7 +391,6 @@ lv:
     EXPORTTO: 'Export to that folder'
     NAME: 'Static exporter'
   TableListField:
-    FILTER: Filter
     SELECT: 'Izvēlēties:'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'

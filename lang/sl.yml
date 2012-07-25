@@ -47,6 +47,7 @@ sl:
     HasBrokenLink: 'ima nedelujočo povezavo'
     HasBrokenLinkAndFile: 'ima nedelujočo povezavo in vsebuje datoteko z napako'
     HoverTitleEditPage: 'Uredi stran'
+    NOITEMSFOUND: 'No items found'
     PageName: 'Ime strani'
     ReasonDropdown: 'Preveri težavo'
     ReasonDropdownBROKENFILE: 'Datoteka z napako'
@@ -69,6 +70,8 @@ sl:
     UNPUBLISHED_PAGES: 'Število iz objave umaknjenih strani: %d'
     UNPUBLISH_PAGES: 'Umakni iz objave'
   CMSFileAddController:
+    CANACCESS: 'Do arhvirane različice spletnega mesta lahko dostopate na naslovu:'
+    HAVEASKED: 'Za vpogled v vsebino našega spletnega mesta ste zaprosili'
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -82,6 +85,8 @@ sl:
     DELETEFP: 'Izbriši z objavljenega spletnega mesta'
     DESCREMOVED: 'and {count} descendants'
     EMAIL: E-naslov
+    EditTree: 'Edit Tree'
+    ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
     NEW: 'Nov '
     PAGENOTEXISTS: 'Stran na tem naslovu ne obstaja'
@@ -106,6 +111,8 @@ sl:
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
+    TreeFiltered: 'Filtered tree.'
+    TreeFilteredClear: 'Clear filter'
   CMSPageAddController:
     MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
@@ -143,9 +150,12 @@ sl:
     UNKNOWN: Unknown
     WHEN: When
   CMSSiteTreeFilter_ChangedPages:
+    DISPLAYING: Displaying
     ENABLEDRAGGING: 'Drag''n''drop'
     GO: Pojdi
     MULTISELECT: Multi-selection
+    OF: of
+    TO: to
     Title: 'Changed pages'
     VIEWFIRST: 'Na začetek'
     VIEWLAST: 'Na konec'
@@ -155,6 +165,8 @@ sl:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
     Title: 'All pages'
+  CaseStudy:
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Opomba: neprijavljeni obiskovalci spletnega mesta tega obvestila ne bodo videli.'
   ContentController:
@@ -216,6 +228,7 @@ sl:
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
+    FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -225,23 +238,11 @@ sl:
     VersionUnknown: Unknown
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-  MyNonRootPage:
-    CANACCESS: 'Do arhvirane različice spletnega mesta lahko dostopate na naslovu:'
-    DESCRIPTION: 'Generic content page'
-    HAVEASKED: 'Za vpogled v vsebino našega spletnega mesta ste zaprosili'
-  MyOtherPage:
-    DESCRIPTION: 'Generic content page'
-  MyPage:
-    DESCRIPTION: 'Generic content page'
-  MyRandomPage:
-    DESCRIPTION: 'Generic content page'
-  PackageManagerPage:
-    DESCRIPTION: 'Generic content page'
-    RESET: Reset
   Page:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'Dostop do CMS-vmesnika'
+    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'Nastavitve dovoljenj za upravljanje z vsebino'
     PERMISSIONS_CATEGORY: 'Vloge in dovoljenja za dostop'
@@ -323,6 +324,7 @@ sl:
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Deleted
     DEPENDENT_NOTE: 'Naslednje strani so odvisne od vsebine tukaj (vključuje navidezne strani, preusmerjevalne strani in strani s povezavami v vsebini)'
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Tip povezave'
     DependtPageColumnURL: URL
     EDITANYONE: 'Vsakdo, ki se prijavi v CMS-vmesnik'
@@ -344,6 +346,7 @@ sl:
     METATITLE: Naslov
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
+    MetadataToggle: Metadata
     PAGELOCATION: 'Lokacija strani'
     PAGETITLE: 'Ime strani'
     PAGETYPE: 'Tip strani'
@@ -388,7 +391,6 @@ sl:
     EXPORTTO: 'Izvozi v to mapo'
     NAME: 'Statični izvoz'
   TableListField:
-    FILTER: Filter
     SELECT: 'Izberi:'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'

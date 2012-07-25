@@ -47,6 +47,7 @@ ro:
     HasBrokenLink: 'has broken link'
     HasBrokenLinkAndFile: 'has broken link and file'
     HoverTitleEditPage: 'Edit page'
+    NOITEMSFOUND: 'No items found'
     PageName: 'Page name'
     ReasonDropdown: 'Problem to check'
     ReasonDropdownBROKENFILE: 'Broken file'
@@ -69,6 +70,8 @@ ro:
     UNPUBLISHED_PAGES: 'Un-published %d pages'
     UNPUBLISH_PAGES: Un-publish
   CMSFileAddController:
+    CANACCESS: 'You can access the archived site at this link:'
+    HAVEASKED: 'You have asked to view the content of our site on'
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -82,6 +85,8 @@ ro:
     DELETEFP: Delete
     DESCREMOVED: 'and {count} descendants'
     EMAIL: Email
+    EditTree: 'Edit Tree'
+    ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
     NEW: 'New '
     PAGENOTEXISTS: 'This page doesn''t exist'
@@ -106,6 +111,8 @@ ro:
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
+    TreeFiltered: 'Filtered tree.'
+    TreeFilteredClear: 'Clear filter'
   CMSPageAddController:
     MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
@@ -113,39 +120,42 @@ ro:
   CMSPageEditController:
     MENUTITLE: 'Edit Page'
   CMSPageHistoryController:
-    COMPAREMODE: 'Compare mode (select two)'
-    COMPAREVERSIONS: 'Compare Versions'
+    COMPAREMODE: 'Режим сравнения (выбрать две)'
+    COMPAREVERSIONS: 'Сравнение версий'
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
-    MENUTITLE: History
-    REVERTTOTHISVERSION: 'Revert to this version'
-    SHOWUNPUBLISHED: 'Show unpublished versions'
-    SHOWVERSION: 'Show Version'
-    VIEW: view
+    MENUTITLE: История
+    REVERTTOTHISVERSION: 'Вернуться на эту версию'
+    SHOWUNPUBLISHED: 'Показать неизданную версию'
+    SHOWVERSION: 'Показать версию'
+    VIEW: просмотр
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
   CMSPageSettingsController:
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: 'Править страницу'
   CMSPagesController:
-    GalleryView: 'Gallery View'
-    ListView: 'List View'
-    MENUTITLE: Pages
-    TreeView: 'Tree View'
+    GalleryView: 'Обзор галереи'
+    ListView: Список
+    MENUTITLE: Страницы
+    TreeView: Дерево
   CMSSearch:
-    FILTERDATEFROM: From
-    FILTERDATEHEADING: Date
-    FILTERDATETO: To
-    FILTERLABELTEXT: Content
+    FILTERDATEFROM: От
+    FILTERDATEHEADING: Дата
+    FILTERDATETO: Кому
+    FILTERLABELTEXT: Содержание
   CMSSettingsController:
-    AUTHOR: Author
-    MENUTITLE: Settings
-    NOTPUBLISHED: 'Not published'
-    PUBLISHER: Publisher
-    UNKNOWN: Unknown
-    WHEN: When
+    AUTHOR: Автор
+    MENUTITLE: Настройки
+    NOTPUBLISHED: 'Не издано'
+    PUBLISHER: Издатель
+    UNKNOWN: Неизвестно
+    WHEN: Когда
   CMSSiteTreeFilter_ChangedPages:
+    DISPLAYING: Displaying
     ENABLEDRAGGING: 'Drag''n''drop'
     GO: Go
     MULTISELECT: Multi-selection
+    OF: of
+    TO: to
     Title: 'Changed pages'
     VIEWFIRST: 'View first'
     VIEWLAST: 'View last'
@@ -154,7 +164,9 @@ ro:
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
-    Title: 'All pages'
+    Title: 'Все страницы'
+  CaseStudy:
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
   ContentController:
@@ -216,32 +228,21 @@ ro:
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
+    FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
-    PreviewButton: Preview
+    PreviewButton: Просмотр
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
-    SearchResults: 'Search Results'
-    VersionUnknown: Unknown
+    SearchResults: 'Результаты поиска'
+    VersionUnknown: Неизвестно
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-  MyNonRootPage:
-    CANACCESS: 'You can access the archived site at this link:'
-    DESCRIPTION: 'Generic content page'
-    HAVEASKED: 'You have asked to view the content of our site on'
-  MyOtherPage:
-    DESCRIPTION: 'Generic content page'
-  MyPage:
-    DESCRIPTION: 'Generic content page'
-  MyRandomPage:
-    DESCRIPTION: 'Generic content page'
-  PackageManagerPage:
-    DESCRIPTION: 'Generic content page'
-    RESET: Reset
   Page:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
+    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
@@ -249,7 +250,7 @@ ro:
     DESCRIPTION: 'Redirects to a different internal page'
     HASBEENSETUP: 'A redirector page has been set up without anywhere to redirect to.'
     HEADER: 'This page will redirect users to another page'
-    OTHERURL: 'Other website URL'
+    OTHERURL: 'Адрес другого сайта'
     REDIRECTTO: 'Redirect to'
     REDIRECTTOEXTERNAL: 'Another website'
     REDIRECTTOPAGE: 'A page on your website'
@@ -262,9 +263,9 @@ ro:
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
-    GO: Go
-    SEARCH: Search
-    SearchResults: 'Search Results'
+    GO: Вперед
+    SEARCH: Поиск
+    SearchResults: 'Результаты поиска'
   SideReport:
     BROKENFILES: 'Pages with broken files'
     BROKENLINKS: 'Pages with broken links'
@@ -323,6 +324,7 @@ ro:
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Deleted
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
     EDITANYONE: 'Anyone who can log-in to the CMS'
@@ -344,6 +346,7 @@ ro:
     METATITLE: Titlu
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
+    MetadataToggle: Metadata
     PAGELOCATION: 'Page location'
     PAGETITLE: 'Nume pagină'
     PAGETYPE: 'Tipul paginii'
@@ -384,11 +387,10 @@ ro:
   SiteTreeURLSegmentField:
     HelpChars: ' Special characters are automatically converted or removed.'
   StaticExporter:
-    BASEURL: 'Base URL'
-    EXPORTTO: 'Export to that folder'
+    BASEURL: 'Основной адрес'
+    EXPORTTO: 'Экспорт в эту папку'
     NAME: 'Static exporter'
   TableListField:
-    FILTER: Filter
     SELECT: 'Select:'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
@@ -397,11 +399,11 @@ ro:
   TreeTools:
     DisplayLabel: 'Display:'
   VirtualPage:
-    CHOOSE: 'Choose a page to link to'
-    DESCRIPTION: 'Displays the content of another page'
+    CHOOSE: 'Выбрать страницы перехода'
+    DESCRIPTION: 'Показать содержание другой страницы'
     EDITCONTENT: 'click aici pentru a edita conţinutul'
     HEADER: 'Aceasta este o pagină virtuală '
-    PLURALNAME: 'Virtual Pags'
+    PLURALNAME: 'Вирт. страницы'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Pagina Virtuala'
   cms:

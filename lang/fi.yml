@@ -47,6 +47,7 @@ fi:
     HasBrokenLink: 'sisältää rikkinäisen linkin'
     HasBrokenLinkAndFile: 'sisältää rikkinäisen linkin ja tiedoston'
     HoverTitleEditPage: Muokkaussivu
+    NOITEMSFOUND: 'Tietoja ei löytynyt'
     PageName: 'Sivun nimi'
     ReasonDropdown: 'Ongelma tarkistettavaksi'
     ReasonDropdownBROKENFILE: 'Rikkinäinen tiedosto'
@@ -69,6 +70,8 @@ fi:
     UNPUBLISHED_PAGES: 'Julkaisemattomat %d sivut'
     UNPUBLISH_PAGES: 'Älä julkaise'
   CMSFileAddController:
+    CANACCESS: 'Pääset arkistoidulle sivulle tällä linkillä:'
+    HAVEASKED: 'Sinua on pyydetty katsomaan sivun sisältöä '
     MENUTITLE: Tiedostot
   CMSMain:
     ACCESS: 'Pääsy ''{title}'' -osioon'
@@ -82,6 +85,8 @@ fi:
     DELETEFP: 'Poista julkaistulta sivulta'
     DESCREMOVED: 'ja {count} alasivua'
     EMAIL: Sähköposti
+    EditTree: 'Muokkaa rakennepuuta'
+    ListFiltered: 'Filtered list.'
     MENUTITLE: 'Muokkaa sivua'
     NEW: Uusi
     PAGENOTEXISTS: 'Tätä sivua ei ole olemassa'
@@ -106,6 +111,8 @@ fi:
     TabContent: Sisältö
     TabHistory: Historia
     TabSettings: Asetukset
+    TreeFiltered: 'Filtered tree.'
+    TreeFilteredClear: 'Nollaa suodatin'
   CMSPageAddController:
     MENUTITLE: 'Lisää sivu'
     ParentMode_child: 'Toisen sivun alla'
@@ -143,9 +150,12 @@ fi:
     UNKNOWN: Tuntematon
     WHEN: Milloin
   CMSSiteTreeFilter_ChangedPages:
+    DISPLAYING: Näytetään
     ENABLEDRAGGING: 'Vedä ja pudota'
     GO: Siirry
     MULTISELECT: Monivalinta
+    OF: /
+    TO: to
     Title: 'Muuttuneet sivut'
     VIEWFIRST: 'Näytä ensimmäinen'
     VIEWLAST: 'Näytä viimeinen'
@@ -155,6 +165,8 @@ fi:
     Title: 'Kaikki sivut, myös poistetut'
   CMSSiteTreeFilter_Search:
     Title: 'Kaikki sivut'
+  CaseStudy:
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Huomaa: tätä viestiä ei näytetä vierailijoille'
   ContentController:
@@ -216,6 +228,7 @@ fi:
     UploadFilesButton: Siirrä
   GridFieldTestPage:
     DESCRIPTION: 'Yleinen sisältösivu'
+    FILTER: Suodata
   LeftAndMain:
     DELETED: Poistettu.
     PreviewButton: Esikatselu
@@ -225,23 +238,11 @@ fi:
     VersionUnknown: Tuntematon
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Yleinen sisältösivu'
-  MyNonRootPage:
-    CANACCESS: 'Pääset arkistoidulle sivulle tällä linkillä:'
-    DESCRIPTION: 'Yleinen sisältösivu'
-    HAVEASKED: 'Sinua on pyydetty katsomaan sivun sisältöä '
-  MyOtherPage:
-    DESCRIPTION: 'Yleinen sisältösivu'
-  MyPage:
-    DESCRIPTION: 'Yleinen sisältösivu'
-  MyRandomPage:
-    DESCRIPTION: 'Yleinen sisältösivu'
-  PackageManagerPage:
-    DESCRIPTION: 'Yleinen sisältösivu'
-    RESET: Nollaa
   Page:
     DESCRIPTION: 'Yleinen sisältösivu'
   Permission:
     CMS_ACCESS_CATEGORY: CMS-pääsy
+    RESET: Nollaa
   Permissions:
     CONTENT_CATEGORY: 'Sisällön käyttöoikeudet'
     PERMISSIONS_CATEGORY: 'Roolit ja käyttöoikeudet'
@@ -323,6 +324,7 @@ fi:
     DELETEDPAGEHELP: 'Sivu ei ole enää julkaistuna'
     DELETEDPAGESHORT: Poistettu
     DEPENDENT_NOTE: 'Seuraavat sivut riippuvat tästä sivusta. Tämä pitää sisällään virtuaaliset sivut, uudelleenohjaussivut ja sivut sisältölinkkien kanssa.'
+    DESCRIPTION: 'Yleinen sisältösivu'
     DependtPageColumnLinkType: 'Linkin tyyppi'
     DependtPageColumnURL: URL
     EDITANYONE: 'Jokainen, joka voi kirjautua sisään CMS:ään.'
@@ -344,6 +346,7 @@ fi:
     METATITLE: Otsikko
     MODIFIEDONDRAFTHELP: 'Sivulla on tehty muutoksia, joita ei ole julkaistu'
     MODIFIEDONDRAFTSHORT: Muokattu
+    MetadataToggle: Meta-tiedot
     PAGELOCATION: 'Sivun sijainti'
     PAGETITLE: 'Sivun nimi'
     PAGETYPE: 'Sivun tyyppi'
@@ -388,7 +391,6 @@ fi:
     EXPORTTO: 'Vie tähän kansioon'
     NAME: 'Staattinen viejä'
   TableListField:
-    FILTER: Suodata
     SELECT: 'Valitse:'
   TestFileUploadPage:
     DESCRIPTION: 'Yleinen sisältösivu'

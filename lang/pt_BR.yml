@@ -47,6 +47,7 @@ pt_BR:
     HasBrokenLink: 'has broken link'
     HasBrokenLinkAndFile: 'has broken link and file'
     HoverTitleEditPage: 'Edit page'
+    NOITEMSFOUND: 'No items found'
     PageName: 'Page name'
     ReasonDropdown: 'Problem to check'
     ReasonDropdownBROKENFILE: 'Broken file'
@@ -69,6 +70,8 @@ pt_BR:
     UNPUBLISHED_PAGES: 'Un-published %d pages'
     UNPUBLISH_PAGES: Un-publish
   CMSFileAddController:
+    CANACCESS: 'Pode aceder ao site arquivado através deste link:'
+    HAVEASKED: 'Você pediu para ver o conteúdo do nosso site em'
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -82,6 +85,8 @@ pt_BR:
     DELETEFP: 'Excluir do site ativo'
     DESCREMOVED: 'and {count} descendants'
     EMAIL: E-mail
+    EditTree: 'Edit Tree'
+    ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
     NEW: Novo
     PAGENOTEXISTS: 'Esta página não existe'
@@ -106,6 +111,8 @@ pt_BR:
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
+    TreeFiltered: 'Filtered tree.'
+    TreeFilteredClear: 'Clear filter'
   CMSPageAddController:
     MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
@@ -143,9 +150,12 @@ pt_BR:
     UNKNOWN: Unknown
     WHEN: When
   CMSSiteTreeFilter_ChangedPages:
+    DISPLAYING: Displaying
     ENABLEDRAGGING: 'Drag''n''drop'
     GO: Ir
     MULTISELECT: Multi-selection
+    OF: of
+    TO: to
     Title: 'Changed pages'
     VIEWFIRST: 'Ver primeiro'
     VIEWLAST: 'Ver ultimo'
@@ -155,6 +165,8 @@ pt_BR:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
     Title: 'All pages'
+  CaseStudy:
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
   ContentController:
@@ -216,6 +228,7 @@ pt_BR:
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
+    FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -225,23 +238,11 @@ pt_BR:
     VersionUnknown: Unknown
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-  MyNonRootPage:
-    CANACCESS: 'Pode aceder ao site arquivado através deste link:'
-    DESCRIPTION: 'Generic content page'
-    HAVEASKED: 'Você pediu para ver o conteúdo do nosso site em'
-  MyOtherPage:
-    DESCRIPTION: 'Generic content page'
-  MyPage:
-    DESCRIPTION: 'Generic content page'
-  MyRandomPage:
-    DESCRIPTION: 'Generic content page'
-  PackageManagerPage:
-    DESCRIPTION: 'Generic content page'
-    RESET: Reset
   Page:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
+    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
@@ -323,6 +324,7 @@ pt_BR:
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Deleted
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
     EDITANYONE: 'Qualquer pessoa que possa fazer log-in'
@@ -344,6 +346,7 @@ pt_BR:
     METATITLE: Título
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
+    MetadataToggle: Metadata
     PAGELOCATION: 'Page location'
     PAGETITLE: 'Nome da Página'
     PAGETYPE: 'Tipo de página'
@@ -388,7 +391,6 @@ pt_BR:
     EXPORTTO: 'Exportar para a pasta'
     NAME: 'Relatório estático'
   TableListField:
-    FILTER: Filter
     SELECT: 'Select:'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'

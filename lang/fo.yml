@@ -47,6 +47,7 @@ fo:
     HasBrokenLink: 'has broken link'
     HasBrokenLinkAndFile: 'has broken link and file'
     HoverTitleEditPage: 'Edit page'
+    NOITEMSFOUND: 'No items found'
     PageName: 'Page name'
     ReasonDropdown: 'Problem to check'
     ReasonDropdownBROKENFILE: 'Broken file'
@@ -69,6 +70,8 @@ fo:
     UNPUBLISHED_PAGES: 'Un-published %d pages'
     UNPUBLISH_PAGES: Un-publish
   CMSFileAddController:
+    CANACCESS: 'Tú kann fáa atgongd til arkiv heimasíðuna her:'
+    HAVEASKED: 'Tú mást fáa loyvi, fyri at kunna síggja innihaldið á okkara heimasíðu á'
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -82,6 +85,8 @@ fo:
     DELETEFP: 'Strika frá tí almennu heimasíðuni'
     DESCREMOVED: 'and {count} descendants'
     EMAIL: Teldupostur
+    EditTree: 'Edit Tree'
+    ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
     NEW: Nýtt
     PAGENOTEXISTS: 'Hendan síðan finst ikki.'
@@ -106,6 +111,8 @@ fo:
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
+    TreeFiltered: 'Filtered tree.'
+    TreeFilteredClear: 'Clear filter'
   CMSPageAddController:
     MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
@@ -143,9 +150,12 @@ fo:
     UNKNOWN: Unknown
     WHEN: When
   CMSSiteTreeFilter_ChangedPages:
+    DISPLAYING: Displaying
     ENABLEDRAGGING: 'Drag''n''drop'
     GO: Víðari
     MULTISELECT: Multi-selection
+    OF: of
+    TO: to
     Title: 'Changed pages'
     VIEWFIRST: 'Vís fyrstu'
     VIEWLAST: 'Vís seinastu'
@@ -155,6 +165,8 @@ fo:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
     Title: 'All pages'
+  CaseStudy:
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
   ContentController:
@@ -216,6 +228,7 @@ fo:
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
+    FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -225,23 +238,11 @@ fo:
     VersionUnknown: Unknown
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-  MyNonRootPage:
-    CANACCESS: 'Tú kann fáa atgongd til arkiv heimasíðuna her:'
-    DESCRIPTION: 'Generic content page'
-    HAVEASKED: 'Tú mást fáa loyvi, fyri at kunna síggja innihaldið á okkara heimasíðu á'
-  MyOtherPage:
-    DESCRIPTION: 'Generic content page'
-  MyPage:
-    DESCRIPTION: 'Generic content page'
-  MyRandomPage:
-    DESCRIPTION: 'Generic content page'
-  PackageManagerPage:
-    DESCRIPTION: 'Generic content page'
-    RESET: Reset
   Page:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
+    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
@@ -323,6 +324,7 @@ fo:
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Deleted
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
     EDITANYONE: 'Øll kunna innrita á CMS skipanina'
@@ -344,6 +346,7 @@ fo:
     METATITLE: Heiti
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
+    MetadataToggle: Metadata
     PAGELOCATION: 'Page location'
     PAGETITLE: 'Navn á síðuni'
     PAGETYPE: 'Slag av síðu'
@@ -388,7 +391,6 @@ fo:
     EXPORTTO: 'Útles til skjáttuna'
     NAME: 'Static exporter'
   TableListField:
-    FILTER: Filter
     SELECT: 'Select:'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'

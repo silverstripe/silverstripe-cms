@@ -6,7 +6,7 @@ th:
     AppCategoryArchive: Archive
     AppCategoryAudio: ไฟล์เสียง
     AppCategoryFlash: แฟลช
-    AppCategoryImage: รูปภาพ
+    AppCategoryImage: 'รูปภาพ'
     AppCategoryVideo: วีดีโอ
     BackToFolder: ย้อนกลับไปที่โฟลเดอร์
     CREATED: วันที่
@@ -41,12 +41,13 @@ th:
     CheckSiteDropdownPublished: เว็บไซต์ที่เผยแพร่แล้ว
     ColumnDateLastModified: วันที่แก้ไขล่าสุด
     ColumnDateLastPublished: วันที่เผยแพร่ล่าสุด
-    ColumnProblemType: ประเภทปัญหา
+    ColumnProblemType: 'ประเภทปัญหา'
     ColumnURL: URL
     HasBrokenFile: มีไฟล์เสีย
     HasBrokenLink: มีลิงค์เสีย
     HasBrokenLinkAndFile: มีลิงค์เสียและไฟล์เสีย
     HoverTitleEditPage: แก้ไขหน้าเว็บ
+    NOITEMSFOUND: 'No items found'
     PageName: ชื่อของหน้าเว็บ
     ReasonDropdown: ปัญหาที่ต้องตรวจสอบ
     ReasonDropdownBROKENFILE: ไฟล์เสีย
@@ -69,6 +70,8 @@ th:
     UNPUBLISHED_PAGES: 'ยกเลิกการเผยแพร่หน้าเว็บแล้ว %d หน้า'
     UNPUBLISH_PAGES: ยกเลิกการเผยแพร่
   CMSFileAddController:
+    CANACCESS: 'คุณสามารถเข้าถึงเว็บไซต์รุ่นย้อนหลังได้จากลิงก์นี้:'
+    HAVEASKED: คุณได้ร้องขอเพื่อเปิดดูเนื้อหาในเว็บไซต์ของเราเมื่อ
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -82,6 +85,8 @@ th:
     DELETEFP: Delete
     DESCREMOVED: 'and {count} descendants'
     EMAIL: อีเมล
+    EditTree: 'Edit Tree'
+    ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
     NEW: ข่าว
     PAGENOTEXISTS: ไม่มีหน้านี้อยู่
@@ -106,6 +111,8 @@ th:
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
+    TreeFiltered: 'Filtered tree.'
+    TreeFilteredClear: 'Clear filter'
   CMSPageAddController:
     MENUTITLE: เพิ่มหน้า
     ParentMode_child: อยู่ใต้หน้าอื่นๆ
@@ -143,9 +150,12 @@ th:
     UNKNOWN: Unknown
     WHEN: เมื่อ
   CMSSiteTreeFilter_ChangedPages:
+    DISPLAYING: Displaying
     ENABLEDRAGGING: ลากแล้วปล่อย
     GO: ไป
     MULTISELECT: Multi-selection
+    OF: of
+    TO: to
     Title: 'Changed pages'
     VIEWFIRST: เปิดดูหน้าแรก
     VIEWLAST: เปิดดูหน้าสุดท้าย
@@ -155,6 +165,8 @@ th:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
     Title: หน้าทั้งหมด
+  CaseStudy:
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'หมายเหตุ: ข้อความนี้จะไม่ถูกนำไปแสดงให้ผู้เยี่ยมชมเว็บไซต์ของคุณเห็น'
   ContentController:
@@ -216,6 +228,7 @@ th:
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: หน้าเนื้อหาทั่วไป
+    FILTER: ตัวกรองข้อมูล
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: ดูตัวอย่าง
@@ -225,23 +238,11 @@ th:
     VersionUnknown: Unknown
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-  MyNonRootPage:
-    CANACCESS: 'คุณสามารถเข้าถึงเว็บไซต์รุ่นย้อนหลังได้จากลิงก์นี้:'
-    DESCRIPTION: 'Generic content page'
-    HAVEASKED: คุณได้ร้องขอเพื่อเปิดดูเนื้อหาในเว็บไซต์ของเราเมื่อ
-  MyOtherPage:
-    DESCRIPTION: 'Generic content page'
-  MyPage:
-    DESCRIPTION: หน้าเนื้อหาทั่วไป
-  MyRandomPage:
-    DESCRIPTION: หน้าเนื้อหาทั่วไป
-  PackageManagerPage:
-    DESCRIPTION: 'Generic content page'
-    RESET: Reset
   Page:
     DESCRIPTION: หน้าเนื้อหาทั่วไป
   Permission:
     CMS_ACCESS_CATEGORY: 'การเข้าถึง CMS'
+    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
@@ -323,6 +324,7 @@ th:
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Deleted
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: ชนิดของลิงค์
     DependtPageColumnURL: URL
     EDITANYONE: 'ทุกคนสามารถเข้าสู่ระบบของ CMS ได้ทั้งหมด'
@@ -344,6 +346,7 @@ th:
     METATITLE: ชื่อ
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
+    MetadataToggle: Metadata
     PAGELOCATION: ตำแหน่งหน้าเว็บ
     PAGETITLE: ชื่อหน้าเว็บ
     PAGETYPE: 'ประเภท เอกสาร'
@@ -388,7 +391,6 @@ th:
     EXPORTTO: ส่งออกข้อมูลไปยังโฟลเดอร์
     NAME: ตัวส่งออกข้อมูลแบบนิ่งอยู่กับที่
   TableListField:
-    FILTER: ตัวกรองข้อมูล
     SELECT: เลือก
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
