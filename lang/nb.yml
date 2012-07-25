@@ -48,16 +48,16 @@ nb:
     HasBrokenLinkAndFile: 'has broken link and file'
     HoverTitleEditPage: 'Rediger side'
     NOITEMSFOUND: 'No items found'
-    PageName: 'Page name'
+    PageName: Sidenavn
     ReasonDropdown: 'Problem to check'
     ReasonDropdownBROKENFILE: 'Broken file'
     ReasonDropdownBROKENLINK: 'Broken link'
-    ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
+    ReasonDropdownRPBROKENLINK: 'Omdirigeringsside peker til ikke-eksisterende side'
     ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
     RedirectorNonExistent: 'redirector page pointing to non-existent page'
     SORTASC: 'Sorter i stigende rekkefølge'
     SORTDESC: 'Sorter i synkende rekkefølge'
-    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
+    VirtualPageNonExistent: 'Virtuell side peker til ikke-eksisterende side'
   CMSAddPageController:
     Title: 'Legg til side'
   CMSBatchActions:
@@ -182,7 +182,7 @@ nb:
     LOGGEDINAS: 'Logged in as'
     LOGIN: Login
     LOGOUT: 'Log out'
-    NOTLOGGEDIN: 'Not logged in'
+    NOTLOGGEDIN: 'Ikke logget inn'
     PUBLISHEDSITE: 'Published Site'
     Password: Password
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
@@ -395,7 +395,7 @@ nb:
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
   TestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Generisk innholdsside'
   TreeTools:
     DisplayLabel: 'Display:'
   VirtualPage:
