@@ -1,8 +1,8 @@
 et_EE:
   AssetAdmin:
-    ADDFILES: 'Add Files'
+    ADDFILES: 'Lisa fail'
     ALLOWEDEXTS: 'Allowed extensions'
-    ActionAdd: 'Add folder'
+    ActionAdd: 'Lisa kaust'
     AppCategoryArchive: Archive
     AppCategoryAudio: Audio
     AppCategoryFlash: Flash
@@ -64,9 +64,9 @@ et_EE:
     DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
     DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
     DELETE_DRAFT_PAGES: 'Delete from draft site'
-    DELETE_PAGES: 'Delete from published site'
+    DELETE_PAGES: 'Kustuta avaldatud lehekülgede hulgast'
     PUBLISHED_PAGES: 'Published %d pages, %d failures'
-    PUBLISH_PAGES: Publish
+    PUBLISH_PAGES: Avalda
     UNPUBLISHED_PAGES: 'Un-published %d pages'
     UNPUBLISH_PAGES: Un-publish
   CMSFileAddController:
@@ -77,7 +77,7 @@ et_EE:
     ACCESS: 'Access to ''{title}'' section'
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
     AddNew: 'Add new page'
-    AddNewButton: 'Add new'
+    AddNewButton: 'Lisa uus'
     ChoosePageParentMode: 'Choose where to create this page'
     ChoosePageType: 'Choose page type'
     Create: Create
@@ -97,7 +97,7 @@ et_EE:
     PUBALLFUN: '"Avalda Kõik" funktsionaalsus'
     PUBALLFUN2: 'Sellele nupule vajutamine on sama, kui käia igal lehel ja vajutada igal lehel "Avalda" nuppu. Nuppu on soovitatav kasutada, kui oled muutnud mitmeid lehti - see salvestab igal lehel toimunud muudatused.'
     PUBPAGES: 'Done: Published {count} pages'
-    PageAdded: 'Successfully created page'
+    PageAdded: 'Lehekülje loomine õnnestus'
     REMOVED: '''%s''%s kustutatud päris lehelt'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: '''%s'' eemaldatud visandi lehelt'
@@ -125,7 +125,7 @@ et_EE:
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
     MENUTITLE: History
     REVERTTOTHISVERSION: 'Revert to this version'
-    SHOWUNPUBLISHED: 'Show unpublished versions'
+    SHOWUNPUBLISHED: 'Näita ka avaldamata versioone'
     SHOWVERSION: 'Show Version'
     VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
@@ -135,19 +135,19 @@ et_EE:
   CMSPagesController:
     GalleryView: 'Gallery View'
     ListView: 'List View'
-    MENUTITLE: Pages
+    MENUTITLE: Leheküljed
     TreeView: 'Tree View'
   CMSSearch:
-    FILTERDATEFROM: From
-    FILTERDATEHEADING: Date
-    FILTERDATETO: To
+    FILTERDATEFROM: Alates
+    FILTERDATEHEADING: Kuupäev
+    FILTERDATETO: Lõpetades
     FILTERLABELTEXT: Content
   CMSSettingsController:
-    AUTHOR: Author
-    MENUTITLE: Settings
+    AUTHOR: Autor
+    MENUTITLE: Seaded
     NOTPUBLISHED: 'Not published'
     PUBLISHER: Publisher
-    UNKNOWN: Unknown
+    UNKNOWN: Teadmata
     WHEN: When
   CMSSiteTreeFilter_ChangedPages:
     DISPLAYING: Displaying
@@ -164,7 +164,7 @@ et_EE:
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
-    Title: 'All pages'
+    Title: 'Kõik leheküljed'
   CaseStudy:
     DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
@@ -221,7 +221,7 @@ et_EE:
     504: '504 - Sissepääsutee aegmaas'
     505: '505 - HTTP versioon ei ole kasutusel'
   Folder:
-    AddFolderButton: 'Add folder'
+    AddFolderButton: 'Lisa kaust'
     DELETEUNUSEDTHUMBNAILS: 'Kustuta kasutamata väikepildid'
     UNUSEDFILESTITLE: 'Kasutamata failid'
     UNUSEDTHUMBNAILSTITLE: 'Kasutamata väikepildid'
@@ -231,11 +231,11 @@ et_EE:
     FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
-    PreviewButton: Preview
+    PreviewButton: Eelvaade
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
-    SearchResults: 'Search Results'
-    VersionUnknown: Unknown
+    SearchResults: 'Otsingu tulemused'
+    VersionUnknown: Teadmata
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   Page:
@@ -259,13 +259,13 @@ et_EE:
     DESCRIPTION: 'Generic content page'
     FILTER: Filter
   ReportAdmin:
-    MENUTITLE: Reports
+    MENUTITLE: Aruanded
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
     GO: Mine
     SEARCH: Otsi
-    SearchResults: 'Search Results'
+    SearchResults: 'Otsingu tulemused'
   SideReport:
     BROKENFILES: 'Pages with broken files'
     BROKENLINKS: 'Pages with broken links'
@@ -282,7 +282,7 @@ et_EE:
     ShareInstructions: 'To share a this to this page, copy and paste the link below.'
     ShareLink: 'Share link'
   SilverStripeNavigatorLinkl:
-    CloseLink: Close
+    CloseLink: Sulge
   SiteConfig:
     DEFAULTTHEME: '(Use default theme)'
     EDITHEADER: 'Who can edit pages on this site?'
@@ -311,7 +311,7 @@ et_EE:
     BUTTONSAVEPUBLISH: 'Salvesta ja avalda'
     BUTTONUNPUBLISH: 'Võta maha'
     BUTTONUNPUBLISHDESC: 'Eemalda see lehekülg avalikult saidilt'
-    Back: Back
+    Back: Tagasi
     CREATED: 'Date Created'
     Comments: Komentaarid
     Content: Sisu
@@ -345,8 +345,8 @@ et_EE:
     METAKEYWORDS: Märksõnad
     METATITLE: Pealkiri
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
-    MODIFIEDONDRAFTSHORT: Modified
-    MetadataToggle: Metadata
+    MODIFIEDONDRAFTSHORT: Muudetud
+    MetadataToggle: Metaandmed
     PAGELOCATION: 'Page location'
     PAGETITLE: 'Lehekülje nimi'
     PAGETYPE: 'Lehe tüüp'
@@ -407,4 +407,4 @@ et_EE:
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Suunav leht'
   cms:
-    FILESYSTEMSYNC: 'Sync files'
+    FILESYSTEMSYNC: 'Sünkrooni failid'
