@@ -106,7 +106,7 @@ ru:
     ROLLBACK: 'Откатить до этой версии'
     ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
     ROLLEDBACKVERSION: 'Произведен откат до версии #%d. Номер новой версии #%d'
-    SAVE: 'Сохранить'
+    SAVE: Сохранить
     SAVEDRAFT: 'Save Draft'
     TabContent: Content
     TabHistory: History

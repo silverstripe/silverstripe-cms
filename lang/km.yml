@@ -403,8 +403,8 @@ km:
     DESCRIPTION: 'Displays the content of another page'
     EDITCONTENT: 'click here to edit the content'
     HEADER: 'This is a virtual page'
-    PLURALNAME: 'ទំព័រដូច'
+    PLURALNAME: ទំព័រដូច
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
-    SINGULARNAME: 'ទំព័រដូច'
+    SINGULARNAME: ទំព័រដូច
   cms:
     FILESYSTEMSYNC: 'Sync files'

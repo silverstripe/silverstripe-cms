@@ -140,7 +140,7 @@ fr:
   CMSSearch:
     FILTERDATEFROM: De
     FILTERDATEHEADING: Date
-    FILTERDATETO: 'à'
+    FILTERDATETO: à
     FILTERLABELTEXT: Contenu
   CMSSettingsController:
     AUTHOR: Auteur
