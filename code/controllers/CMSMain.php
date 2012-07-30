@@ -287,9 +287,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$classDropdown->setEmptyString(_t('CMSMain.PAGETYPEANYOPT','Any'));
 
 		$actions = new FieldList(
-			FormAction::create('doSearch',  _t('CMSMain_left.ss.APPLY FILTER', 'Apply Filter'))
+			FormAction::create('doSearch',  _t('CMSMain.APPLYFILTER', 'Apply Filter'))
 			->addExtraClass('ss-ui-action-constructive'),
-			Object::create('ResetFormAction', 'clear', _t('CMSMain_left.ss.RESET', 'Reset'))
+			Object::create('ResetFormAction', 'clear', _t('CMSMain.RESET', 'Reset'))
 		);
 
 		// Use <button> to allow full jQuery UI styling
