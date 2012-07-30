@@ -313,6 +313,7 @@ en:
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
     EDITANYONE: 'Anyone who can log-in to the CMS'
+    EDITERROR: 'There has been an error editing this page and it has not been saved'
     EDITHEADER: 'Who can edit this page?'
     EDITONLYTHESE: 'Only these people (choose from list)'
     EDITORGROUPS: 'Editor Groups'

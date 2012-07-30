@@ -176,6 +176,7 @@ class ErrorPage extends Page {
 	 * @param string|int $fromStage Place to copy from. Can be either a stage name or a version number.
 	 * @param string $toStage Place to copy to. Must be a stage name.
 	 * @param boolean $createNewVersion Set this to true to create a new version number.  By default, the existing version number will be copied over.
+	 * @return String/boolean
 	 */
 	function doPublish() {
 		parent::doPublish();
@@ -212,6 +213,8 @@ class ErrorPage extends Page {
 			$this->response->addHeader('X-Status', rawurlencode($fileErrorText));
 			return $this->httpError(405);
 		}
+
+		return true;
 	}
 	
 	/**
