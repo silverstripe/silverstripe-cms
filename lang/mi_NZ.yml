@@ -78,6 +78,7 @@ mi_NZ:
     ACCESS_HELP: 'Tukua kia kitea te wāhanga kei roto te whārangi rākau me ngā ihirangi. Ka taea te whakahaere i te tiro me te whakatika whakaaetanga mā ngā takaiho tauwhāiti-whārangi, mā "Ngā whakaaetanga ihirangi" motuhake hoki.'
     AddNew: 'Tāpiri whārangi hōu'
     AddNewButton: 'Tāpiri mea hōu'
+    APPLYFILTER: "Hoatu Tātari"
     ChoosePageParentMode: 'Kōwhiri ki hea hangaia ai tēnei whārangi'
     ChoosePageType: 'Kōwhiria te momo whārangi'
     Create: Hanga
@@ -86,6 +87,7 @@ mi_NZ:
     DESCREMOVED: 'me ngā uri {count}'
     EMAIL: Īmēra
     EditTree: 'Whakatika Rākau'
+    FILTER: Tātari
     ListFiltered: 'Rārangi kua tātaritia'
     MENUTITLE: 'Whakatika Whārangi'
     NEW: 'he ____ hōu'
@@ -101,6 +103,7 @@ mi_NZ:
     REMOVED: 'I mukua te ''%s''%s i te pae ora'
     REMOVEDPAGE: 'I tango te ''{title}'' i te pae kua whakaputaina'
     REMOVEDPAGEFROMDRAFT: 'I tangohia a ''%s'' i te pae hukihuki'
+    RESET: 'Tautuhi Anō'
     RESTORE: Whakaora
     RESTORED: 'I momoho te whakaora i te ''{title}'''
     ROLLBACK: 'Hoki whakamuri ki tēnei putanga.'

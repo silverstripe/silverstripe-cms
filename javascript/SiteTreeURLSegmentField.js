@@ -160,7 +160,7 @@
 				// edit button
 				editAction = $('<button />', {
 					'class': 'ss-ui-button ss-ui-button-small edit',
-					'text': 'Edit',
+					'text': ss.i18n._t('URLSEGMENT.Edit', 'Edit'),
 					'click': function(e) {
 						e.preventDefault();
 						self.edit();
@@ -171,7 +171,7 @@
 				// update button
 				updateAction = $('<button />', {
 					'class': 'update ss-ui-button-small',
-					'text': 'OK',
+					'text': ss.i18n._t('URLSEGMENT.OK', 'OK'),
 					'click': function(e) {
 						e.preventDefault();
 						self.update();
@@ -182,7 +182,7 @@
 				cancelAction = $('<button />', {
 					'class': 'cancel ss-ui-action-minor ss-ui-button-small',
 					'href': '#',
-					'text': 'cancel',
+					'text':  ss.i18n._t('URLSEGMENT.Cancel', 'Cancel'),
 					'click': function(e) {
 						e.preventDefault();
 						self.cancel();
