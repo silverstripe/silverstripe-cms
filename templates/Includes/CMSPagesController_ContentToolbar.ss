@@ -12,3 +12,4 @@
 	</div>
 </div>
 <% include CMSPagesController_ContentToolActions %>
+<% include CMSPagesController_ContentBatchActions %>
