@@ -97,8 +97,11 @@ class CMSPageHistoryController extends CMSMain {
 		// Respect permission failures from parent implementation
 		if(!($form instanceof Form)) return $form;
 
+		$nav = new SilverStripeNavigatorItem_ArchiveLink($record);
+
 		$form->setActions(new FieldList(
-			$revert = FormAction::create('doRollback', _t('CMSPageHistoryController.REVERTTOTHISVERSION', 'Revert to this version'))->setUseButtonTag(true)
+			$revert = FormAction::create('doRollback', _t('CMSPageHistoryController.REVERTTOTHISVERSION', 'Revert to this version'))->setUseButtonTag(true),
+			$navField = new LiteralField('ArchivedLink', $nav->getHTML())
 		));
 		
 		$fields = $form->Fields();
@@ -106,8 +109,9 @@ class CMSPageHistoryController extends CMSMain {
 		$fields->push(new HiddenField("ID"));
 		$fields->push(new HiddenField("Version"));
 		
-		$fields = $fields->makeReadonly();
-
+		$fields = $fields->makeReadonly();		
+		$navField->setAllowHTML(true);
+		
 		foreach($fields->dataFields() as $field) {
 			$field->dontEscape = true;
 			$field->reserveNL = true;
