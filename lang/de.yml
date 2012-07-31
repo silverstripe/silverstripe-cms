@@ -3,7 +3,7 @@ de:
     ADDFILES: 'Dateien hinzufügen'
     ALLOWEDEXTS: 'Erlaubte Dateiendungen'
     ActionAdd: 'Ordner hinzufügen'
-    AppCategoryArchive: Archive
+    AppCategoryArchive: Archivieren
     AppCategoryAudio: Audio
     AppCategoryFlash: Flash
     AppCategoryImage: Bild
@@ -47,6 +47,7 @@ de:
     HasBrokenLink: 'Defekter Link'
     HasBrokenLinkAndFile: 'Defekter Link und defekter Dateilink'
     HoverTitleEditPage: 'Seite editieren'
+    NOITEMSFOUND: 'Keine Einträge gefunden.'
     PageName: Seitenname
     ReasonDropdown: 'Zu überprüfendes Problem'
     ReasonDropdownBROKENFILE: 'Defekter Dateilink'
@@ -69,6 +70,8 @@ de:
     UNPUBLISHED_PAGES: 'Veröffentlichung von %d Seiten zurückgenommen'
     UNPUBLISH_PAGES: 'Veröffentlichung zurücknehmen'
   CMSFileAddController:
+    CANACCESS: 'Sie können unter folgendem Verweis auf die archivierte Seite zugreifen:'
+    HAVEASKED: 'Sie haben darum gebeten, den Inhalt unserer Seite zu sehen, am'
     MENUTITLE: Dateien
   CMSMain:
     ACCESS: 'Zugang zum Bereich ''{title}'''
@@ -82,6 +85,8 @@ de:
     DELETEFP: 'Von veröffentlicher Seite entfernen'
     DESCREMOVED: 'und {count} abhängige Seiten'
     EMAIL: E-Mail
+    EditTree: 'Seitenbaum bearbeiten'
+    ListFiltered: 'Gefilterte Liste'
     MENUTITLE: 'Seite bearbeiten'
     NEW: Neu
     PAGENOTEXISTS: 'Diese Seite wurde nicht gefunden'
@@ -106,6 +111,8 @@ de:
     TabContent: Inhalt
     TabHistory: Verlauf
     TabSettings: Einstellungen
+    TreeFiltered: 'Seitenbaum gefiltert'
+    TreeFilteredClear: 'Filter zurücksetzen'
   CMSPageAddController:
     MENUTITLE: 'Seite hinzufügen'
     ParentMode_child: 'Einer anderen Seite untergeordnet'
@@ -143,9 +150,12 @@ de:
     UNKNOWN: Unbekannt
     WHEN: Wann
   CMSSiteTreeFilter_ChangedPages:
+    DISPLAYING: Zeige
     ENABLEDRAGGING: 'Drag & Drop'
     GO: Los
     MULTISELECT: Mehrfachauswahl
+    OF: von
+    TO: bis
     Title: Seiten
     VIEWFIRST: Erster
     VIEWLAST: Letzter
@@ -155,6 +165,8 @@ de:
     Title: 'Alle Seiten, auch gelöschte.'
   CMSSiteTreeFilter_Search:
     Title: 'Alle Seiten'
+  CaseStudy:
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Achtung: Diese Nachricht wird Ihren Besuchern nicht gezeigt.'
   ContentController:
@@ -216,8 +228,9 @@ de:
     UploadFilesButton: Hochladen
   GridFieldTestPage:
     DESCRIPTION: 'Allgemeine Inhaltsseite'
+    FILTER: Filter
   LeftAndMain:
-    DELETED: Deleted.
+    DELETED: Gelöscht
     PreviewButton: Vorschau
     SAVEDUP: Gespeichert.
     STATUSPUBLISHEDSUCCESS: '''{title}'' wurde erfolgreich veröffentlicht'
@@ -225,23 +238,11 @@ de:
     VersionUnknown: Unbekannt
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Allgemeine Inhaltsseite'
-  MyNonRootPage:
-    CANACCESS: 'Sie können unter folgendem Verweis auf die archivierte Seite zugreifen:'
-    DESCRIPTION: 'Allgemeine Inhaltsseite'
-    HAVEASKED: 'Sie haben darum gebeten, den Inhalt unserer Seite zu sehen, am'
-  MyOtherPage:
-    DESCRIPTION: 'Allgemeine Inhaltsseite'
-  MyPage:
-    DESCRIPTION: 'Allgemeine Inaltsseite'
-  MyRandomPage:
-    DESCRIPTION: 'Allgemeine Inhaltsseite'
-  PackageManagerPage:
-    DESCRIPTION: 'Allgemeine Inhaltsseite'
-    RESET: Zurücksetzen
   Page:
     DESCRIPTION: 'Allgemeine Inhaltsseite'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Zugriff'
+    RESET: Zurücksetzen
   Permissions:
     CONTENT_CATEGORY: Inhaltsberechtigungen
     PERMISSIONS_CATEGORY: 'Rollen- und Zugriffsberechtigungen'
@@ -323,6 +324,7 @@ de:
     DELETEDPAGEHELP: 'Die Seite ist nicht länger veröffentlicht'
     DELETEDPAGESHORT: Gelöscht
     DEPENDENT_NOTE: 'Die folgenden Seiten hängen von dieser Seite ab. Dies schließt Virtuelle Seiten, Weiterleitungen und Seiten mit Links im Inhalt ein.'
+    DESCRIPTION: 'Allgemeine Inhaltsseite'
     DependtPageColumnLinkType: Linktyp
     DependtPageColumnURL: URL
     EDITANYONE: 'Jeder der sich in das CMS einloggen kann'
@@ -344,6 +346,7 @@ de:
     METATITLE: Titel
     MODIFIEDONDRAFTHELP: 'Die Seite hat unveröffentlichte Änderungen'
     MODIFIEDONDRAFTSHORT: 'Zuletzt geändert'
+    MetadataToggle: Metadaten
     PAGELOCATION: Seitenposition
     PAGETITLE: Seitenname
     PAGETYPE: Seitentyp
@@ -388,7 +391,6 @@ de:
     EXPORTTO: 'Exportieren in diesen Ordner'
     NAME: 'statischer Exporter'
   TableListField:
-    FILTER: Filter
     SELECT: 'Auswählen:'
   TestFileUploadPage:
     DESCRIPTION: 'Allgemeine Inhaltsseite'

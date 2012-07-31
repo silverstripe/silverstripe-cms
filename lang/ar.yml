@@ -47,6 +47,7 @@ ar:
     HasBrokenLink: 'يحتوى مرابط مكسور'
     HasBrokenLinkAndFile: 'يحتوى ملف ورابط مكسور'
     HoverTitleEditPage: 'تعديل صفحة'
+    NOITEMSFOUND: 'No items found'
     PageName: 'اسم الصفحة'
     ReasonDropdown: 'مشكلة للتأكد'
     ReasonDropdownBROKENFILE: 'ملف مكسور'
@@ -69,6 +70,8 @@ ar:
     UNPUBLISHED_PAGES: '%d من الصفحات غير المنشورة'
     UNPUBLISH_PAGES: 'غير منشور'
   CMSFileAddController:
+    CANACCESS: 'يمكنك الدخول إلى أرشيف الموقع عن طريق الرابط التالي :'
+    HAVEASKED: 'تم طلب مشاهدة محتوى الموقع في'
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -82,6 +85,8 @@ ar:
     DELETEFP: 'حذف من الموقع المنشور'
     DESCREMOVED: 'and {count} descendants'
     EMAIL: 'البريد الإلكتروني'
+    EditTree: 'Edit Tree'
+    ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
     NEW: جديد
     PAGENOTEXISTS: 'هذه الصفحة غير موجودة'
@@ -106,6 +111,8 @@ ar:
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
+    TreeFiltered: 'Filtered tree.'
+    TreeFilteredClear: 'Clear filter'
   CMSPageAddController:
     MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
@@ -143,9 +150,12 @@ ar:
     UNKNOWN: Unknown
     WHEN: When
   CMSSiteTreeFilter_ChangedPages:
+    DISPLAYING: Displaying
     ENABLEDRAGGING: 'Drag''n''drop'
     GO: اذهب
     MULTISELECT: Multi-selection
+    OF: of
+    TO: to
     Title: 'Changed pages'
     VIEWFIRST: 'عرض الأول'
     VIEWLAST: 'عرض الأخير'
@@ -155,6 +165,8 @@ ar:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
     Title: 'All pages'
+  CaseStudy:
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'تنبيه: هذه الرسالة لن يتم عرضها لزوار موقعك'
   ContentController:
@@ -216,6 +228,7 @@ ar:
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
+    FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -225,23 +238,11 @@ ar:
     VersionUnknown: Unknown
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-  MyNonRootPage:
-    CANACCESS: 'يمكنك الدخول إلى أرشيف الموقع عن طريق الرابط التالي :'
-    DESCRIPTION: 'Generic content page'
-    HAVEASKED: 'تم طلب مشاهدة محتوى الموقع في'
-  MyOtherPage:
-    DESCRIPTION: 'Generic content page'
-  MyPage:
-    DESCRIPTION: 'Generic content page'
-  MyRandomPage:
-    DESCRIPTION: 'Generic content page'
-  PackageManagerPage:
-    DESCRIPTION: 'Generic content page'
-    RESET: Reset
   Page:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'الوصل لنظام إدارة المحتوى'
+    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'تصاريح المحتوى'
     PERMISSIONS_CATEGORY: 'تصريح الدخول والقواعد'
@@ -323,6 +324,7 @@ ar:
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Deleted
     DEPENDENT_NOTE: 'الصفحات التالية تعتمد على هذه الصفحة. وهذا يشمل صفحات الظاهري، وصفحات معيد التوجيه، والصفحات التي تحتوي على روابط المحتوى.'
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'نوع الرابط'
     DependtPageColumnURL: رابط
     EDITANYONE: 'أي شخص '
@@ -344,6 +346,7 @@ ar:
     METATITLE: العنوان
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
+    MetadataToggle: Metadata
     PAGELOCATION: 'موقع الضفحة'
     PAGETITLE: 'اسم الصفحة'
     PAGETYPE: 'نوع الصفحة'
@@ -388,7 +391,6 @@ ar:
     EXPORTTO: 'تصدير إلى مجلد'
     NAME: 'المصدر الثابت Exporter'
   TableListField:
-    FILTER: Filter
     SELECT: اختيار
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'

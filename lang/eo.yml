@@ -47,6 +47,7 @@ eo:
     HasBrokenLink: 'havas rompitan ligilon'
     HasBrokenLinkAndFile: 'havas rompitan ligilon kaj dosieron'
     HoverTitleEditPage: 'Redakti paĝon'
+    NOITEMSFOUND: 'No items found'
     PageName: 'Page name'
     ReasonDropdown: 'Problemo kontrolota'
     ReasonDropdownBROKENFILE: 'Rompita dosiero'
@@ -69,6 +70,8 @@ eo:
     UNPUBLISHED_PAGES: 'Malpublikigis %d paĝojn'
     UNPUBLISH_PAGES: Malpublikigi
   CMSFileAddController:
+    CANACCESS: 'Vi povas aliri la enarkivigitan retejon je ĉi tiu ligilo:'
+    HAVEASKED: 'Vi petis vidi la enhavon de nia retejo je'
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -82,6 +85,8 @@ eo:
     DELETEFP: 'Forigi el la publika retejo'
     DESCREMOVED: 'and {count} descendants'
     EMAIL: Retpoŝto
+    EditTree: 'Edit Tree'
+    ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
     NEW: Nova
     PAGENOTEXISTS: 'Ĉi tiu paĝo ne ekzistas'
@@ -106,6 +111,8 @@ eo:
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
+    TreeFiltered: 'Filtered tree.'
+    TreeFilteredClear: 'Clear filter'
   CMSPageAddController:
     MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
@@ -143,9 +150,12 @@ eo:
     UNKNOWN: Unknown
     WHEN: When
   CMSSiteTreeFilter_ChangedPages:
+    DISPLAYING: Displaying
     ENABLEDRAGGING: 'Drag''n''drop'
     GO: Ek
     MULTISELECT: Multi-selection
+    OF: of
+    TO: to
     Title: 'Changed pages'
     VIEWFIRST: 'Vidigi unuan'
     VIEWLAST: 'Vidigi lastan'
@@ -155,6 +165,8 @@ eo:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
     Title: 'All pages'
+  CaseStudy:
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Notu: ne vidigos ĉi tiun mesaĝon al viaj vizitantoj'
   ContentController:
@@ -216,6 +228,7 @@ eo:
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
+    FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -225,23 +238,11 @@ eo:
     VersionUnknown: Unknown
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-  MyNonRootPage:
-    CANACCESS: 'Vi povas aliri la enarkivigitan retejon je ĉi tiu ligilo:'
-    DESCRIPTION: 'Generic content page'
-    HAVEASKED: 'Vi petis vidi la enhavon de nia retejo je'
-  MyOtherPage:
-    DESCRIPTION: 'Generic content page'
-  MyPage:
-    DESCRIPTION: 'Generic content page'
-  MyRandomPage:
-    DESCRIPTION: 'Generic content page'
-  PackageManagerPage:
-    DESCRIPTION: 'Generic content page'
-    RESET: Reset
   Page:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: CMS-aliro
+    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: Enhavopermesoj
     PERMISSIONS_CATEGORY: 'Roloj kaj aliraj permesoj'
@@ -323,6 +324,7 @@ eo:
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Deleted
     DEPENDENT_NOTE: 'La sekvaj paĝoj dependas de ĉi tiu paĝo. Tio inkluzivas virtualajn paĝojn, redirektaj paĝoj, kaj paĝoj kun enhavaj ligiloj.'
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Ligila tipo'
     DependtPageColumnURL: URL
     EDITANYONE: 'Tiu, kiu povas ensaluti en la CMSO'
@@ -344,6 +346,7 @@ eo:
     METATITLE: Titolo
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
+    MetadataToggle: Metadata
     PAGELOCATION: 'Page location'
     PAGETITLE: 'Nomo de paĝo'
     PAGETYPE: 'Tipo de paĝo'
@@ -388,7 +391,6 @@ eo:
     EXPORTTO: 'Eksporti al tiu dosierujo'
     NAME: 'Statika eksportilo'
   TableListField:
-    FILTER: Filter
     SELECT: 'Select:'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'

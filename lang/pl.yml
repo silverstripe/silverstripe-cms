@@ -47,6 +47,7 @@ pl:
     HasBrokenLink: 'ma uszkodzony link'
     HasBrokenLinkAndFile: 'ma uszkodzony link oraz plik'
     HoverTitleEditPage: 'Edytuj stronę'
+    NOITEMSFOUND: 'Nic nie znaleziono'
     PageName: 'Nazwa strony'
     ReasonDropdown: 'Problem do sprawdzenia'
     ReasonDropdownBROKENFILE: 'Uszkodzony plik'
@@ -69,6 +70,8 @@ pl:
     UNPUBLISHED_PAGES: 'Usunięto z opublikowanych %d stron'
     UNPUBLISH_PAGES: 'Cofnij publikację'
   CMSFileAddController:
+    CANACCESS: 'Dostęp do zarchiwizowanej witryny:'
+    HAVEASKED: 'Poprosiłeś o obejrzenie treści naszej strony na'
     MENUTITLE: Pliki
   CMSMain:
     ACCESS: 'Dostęp do ''{title}'''
@@ -82,6 +85,8 @@ pl:
     DELETEFP: 'Usuń z opublikowanej witryny'
     DESCREMOVED: 'i {count} potomków'
     EMAIL: Email
+    EditTree: 'Edytuj drzewko'
+    ListFiltered: 'Filtrowana lista.'
     MENUTITLE: 'Edytuj stronę'
     NEW: Nowy
     PAGENOTEXISTS: 'Ta strona nie istnieje'
@@ -106,6 +111,8 @@ pl:
     TabContent: Zawartość
     TabHistory: Historia
     TabSettings: Ustawienia
+    TreeFiltered: 'Filtruj drzewko'
+    TreeFilteredClear: 'Wyczyść filtr'
   CMSPageAddController:
     MENUTITLE: 'Dodaj stronę'
     ParentMode_child: 'Pod inną stroną'
@@ -143,9 +150,12 @@ pl:
     UNKNOWN: Nieznany
     WHEN: Kiedy
   CMSSiteTreeFilter_ChangedPages:
+    DISPLAYING: Wyświetlane
     ENABLEDRAGGING: 'Przeciągnij i upuść'
     GO: Przejdź
     MULTISELECT: 'Multi wybór'
+    OF: z
+    TO: do
     Title: 'Zmienione strony'
     VIEWFIRST: 'Zobacz pierwsze'
     VIEWLAST: 'Zobacz ostatnie'
@@ -155,6 +165,8 @@ pl:
     Title: 'Wszystkie strony włącznie z usuniętymi'
   CMSSiteTreeFilter_Search:
     Title: 'Wszystkie strony'
+  CaseStudy:
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Uwaga: ta strona nie będzie widoczna dla twoich odwiedzających  '
   ContentController:
@@ -216,6 +228,7 @@ pl:
     UploadFilesButton: Prześlij
   GridFieldTestPage:
     DESCRIPTION: 'Zwykła strona'
+    FILTER: Filtr
   LeftAndMain:
     DELETED: Usunięty
     PreviewButton: Podgląd
@@ -225,23 +238,11 @@ pl:
     VersionUnknown: Nieznany
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Zwykła strona'
-  MyNonRootPage:
-    CANACCESS: 'Dostęp do zarchiwizowanej witryny:'
-    DESCRIPTION: 'Zwykła strona'
-    HAVEASKED: 'Poprosiłeś o obejrzenie treści naszej strony na'
-  MyOtherPage:
-    DESCRIPTION: 'Zwykła strona'
-  MyPage:
-    DESCRIPTION: 'Zwykła strona'
-  MyRandomPage:
-    DESCRIPTION: 'Zwykła strona'
-  PackageManagerPage:
-    DESCRIPTION: 'Zwykła strona'
-    RESET: Resetuj
   Page:
     DESCRIPTION: 'Zwykła strona'
   Permission:
     CMS_ACCESS_CATEGORY: 'Dostęp do CMS'
+    RESET: Resetuj
   Permissions:
     CONTENT_CATEGORY: 'Uprawnienie edycji treści'
     PERMISSIONS_CATEGORY: 'Uprawnienia ról i dostępu'
@@ -323,6 +324,7 @@ pl:
     DELETEDPAGEHELP: 'Strona nie jest już opublikowana'
     DELETEDPAGESHORT: Usunięty
     DEPENDENT_NOTE: 'Poniższe strony są zależne od tej (łącznie z wirtualnymi stronami, stronami przekierowującymi oraz stronami z treścią).'
+    DESCRIPTION: 'Zwykła strona'
     DependtPageColumnLinkType: 'Typ linku'
     DependtPageColumnURL: 'Adres internetowy'
     EDITANYONE: 'Każdy to jest zalogowany w systemie CMS'
@@ -344,6 +346,7 @@ pl:
     METATITLE: Tytuł
     MODIFIEDONDRAFTHELP: 'Na stronie znajdują się nieopublikowane zmiany'
     MODIFIEDONDRAFTSHORT: Zmodyfikowana
+    MetadataToggle: Metadane
     PAGELOCATION: 'Lokalizacja strony'
     PAGETITLE: 'Nazwa strony'
     PAGETYPE: 'Rodzaj strony'
@@ -388,7 +391,6 @@ pl:
     EXPORTTO: 'Eksportuj do tego katalogu'
     NAME: 'Statyczny eksporter'
   TableListField:
-    FILTER: Filtr
     SELECT: 'Wybierz:'
   TestFileUploadPage:
     DESCRIPTION: 'Zwykła strona'

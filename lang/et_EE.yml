@@ -1,8 +1,8 @@
 et_EE:
   AssetAdmin:
-    ADDFILES: 'Add Files'
+    ADDFILES: 'Lisa fail'
     ALLOWEDEXTS: 'Allowed extensions'
-    ActionAdd: 'Add folder'
+    ActionAdd: 'Lisa kaust'
     AppCategoryArchive: Archive
     AppCategoryAudio: Audio
     AppCategoryFlash: Flash
@@ -47,6 +47,7 @@ et_EE:
     HasBrokenLink: 'has broken link'
     HasBrokenLinkAndFile: 'has broken link and file'
     HoverTitleEditPage: 'Edit page'
+    NOITEMSFOUND: 'No items found'
     PageName: 'Page name'
     ReasonDropdown: 'Problem to check'
     ReasonDropdownBROKENFILE: 'Broken file'
@@ -63,18 +64,20 @@ et_EE:
     DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
     DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
     DELETE_DRAFT_PAGES: 'Delete from draft site'
-    DELETE_PAGES: 'Delete from published site'
+    DELETE_PAGES: 'Kustuta avaldatud lehekülgede hulgast'
     PUBLISHED_PAGES: 'Published %d pages, %d failures'
-    PUBLISH_PAGES: Publish
+    PUBLISH_PAGES: Avalda
     UNPUBLISHED_PAGES: 'Un-published %d pages'
     UNPUBLISH_PAGES: Un-publish
   CMSFileAddController:
+    CANACCESS: 'Arhiveeritud lehele pääsed ligi selle lingi kaudu:'
+    HAVEASKED: 'Soovid vaadata meie lehe sisu kuupäeval'
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
     AddNew: 'Add new page'
-    AddNewButton: 'Add new'
+    AddNewButton: 'Lisa uus'
     ChoosePageParentMode: 'Choose where to create this page'
     ChoosePageType: 'Choose page type'
     Create: Create
@@ -82,6 +85,8 @@ et_EE:
     DELETEFP: 'Kustuta avaldatud leht'
     DESCREMOVED: 'and {count} descendants'
     EMAIL: E-post
+    EditTree: 'Edit Tree'
+    ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
     NEW: Uus
     PAGENOTEXISTS: 'Antud lehekülge ei eksisteeri'
@@ -92,7 +97,7 @@ et_EE:
     PUBALLFUN: '"Avalda Kõik" funktsionaalsus'
     PUBALLFUN2: 'Sellele nupule vajutamine on sama, kui käia igal lehel ja vajutada igal lehel "Avalda" nuppu. Nuppu on soovitatav kasutada, kui oled muutnud mitmeid lehti - see salvestab igal lehel toimunud muudatused.'
     PUBPAGES: 'Done: Published {count} pages'
-    PageAdded: 'Successfully created page'
+    PageAdded: 'Lehekülje loomine õnnestus'
     REMOVED: '''%s''%s kustutatud päris lehelt'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: '''%s'' eemaldatud visandi lehelt'
@@ -106,6 +111,8 @@ et_EE:
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
+    TreeFiltered: 'Filtered tree.'
+    TreeFilteredClear: 'Clear filter'
   CMSPageAddController:
     MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
@@ -118,7 +125,7 @@ et_EE:
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
     MENUTITLE: History
     REVERTTOTHISVERSION: 'Revert to this version'
-    SHOWUNPUBLISHED: 'Show unpublished versions'
+    SHOWUNPUBLISHED: 'Näita ka avaldamata versioone'
     SHOWVERSION: 'Show Version'
     VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
@@ -128,24 +135,27 @@ et_EE:
   CMSPagesController:
     GalleryView: 'Gallery View'
     ListView: 'List View'
-    MENUTITLE: Pages
+    MENUTITLE: Leheküljed
     TreeView: 'Tree View'
   CMSSearch:
-    FILTERDATEFROM: From
-    FILTERDATEHEADING: Date
-    FILTERDATETO: To
+    FILTERDATEFROM: Alates
+    FILTERDATEHEADING: Kuupäev
+    FILTERDATETO: Lõpetades
     FILTERLABELTEXT: Content
   CMSSettingsController:
-    AUTHOR: Author
-    MENUTITLE: Settings
+    AUTHOR: Autor
+    MENUTITLE: Seaded
     NOTPUBLISHED: 'Not published'
     PUBLISHER: Publisher
-    UNKNOWN: Unknown
+    UNKNOWN: Teadmata
     WHEN: When
   CMSSiteTreeFilter_ChangedPages:
+    DISPLAYING: Displaying
     ENABLEDRAGGING: 'Drag''n''drop'
     GO: Mine
     MULTISELECT: Multi-selection
+    OF: of
+    TO: to
     Title: 'Changed pages'
     VIEWFIRST: 'Vaata esimest'
     VIEWLAST: 'Vaata viimast'
@@ -154,7 +164,9 @@ et_EE:
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
-    Title: 'All pages'
+    Title: 'Kõik leheküljed'
+  CaseStudy:
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
   ContentController:
@@ -209,39 +221,28 @@ et_EE:
     504: '504 - Sissepääsutee aegmaas'
     505: '505 - HTTP versioon ei ole kasutusel'
   Folder:
-    AddFolderButton: 'Add folder'
+    AddFolderButton: 'Lisa kaust'
     DELETEUNUSEDTHUMBNAILS: 'Kustuta kasutamata väikepildid'
     UNUSEDFILESTITLE: 'Kasutamata failid'
     UNUSEDTHUMBNAILSTITLE: 'Kasutamata väikepildid'
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
+    FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
-    PreviewButton: Preview
+    PreviewButton: Eelvaade
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
-    SearchResults: 'Search Results'
-    VersionUnknown: Unknown
+    SearchResults: 'Otsingu tulemused'
+    VersionUnknown: Teadmata
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-  MyNonRootPage:
-    CANACCESS: 'Arhiveeritud lehele pääsed ligi selle lingi kaudu:'
-    DESCRIPTION: 'Generic content page'
-    HAVEASKED: 'Soovid vaadata meie lehe sisu kuupäeval'
-  MyOtherPage:
-    DESCRIPTION: 'Generic content page'
-  MyPage:
-    DESCRIPTION: 'Generic content page'
-  MyRandomPage:
-    DESCRIPTION: 'Generic content page'
-  PackageManagerPage:
-    DESCRIPTION: 'Generic content page'
-    RESET: Reset
   Page:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
+    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
@@ -258,13 +259,13 @@ et_EE:
     DESCRIPTION: 'Generic content page'
     FILTER: Filter
   ReportAdmin:
-    MENUTITLE: Reports
+    MENUTITLE: Aruanded
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
     GO: Mine
     SEARCH: Otsi
-    SearchResults: 'Search Results'
+    SearchResults: 'Otsingu tulemused'
   SideReport:
     BROKENFILES: 'Pages with broken files'
     BROKENLINKS: 'Pages with broken links'
@@ -281,7 +282,7 @@ et_EE:
     ShareInstructions: 'To share a this to this page, copy and paste the link below.'
     ShareLink: 'Share link'
   SilverStripeNavigatorLinkl:
-    CloseLink: Close
+    CloseLink: Sulge
   SiteConfig:
     DEFAULTTHEME: '(Use default theme)'
     EDITHEADER: 'Who can edit pages on this site?'
@@ -310,7 +311,7 @@ et_EE:
     BUTTONSAVEPUBLISH: 'Salvesta ja avalda'
     BUTTONUNPUBLISH: 'Võta maha'
     BUTTONUNPUBLISHDESC: 'Eemalda see lehekülg avalikult saidilt'
-    Back: Back
+    Back: Tagasi
     CREATED: 'Date Created'
     Comments: Komentaarid
     Content: Sisu
@@ -323,6 +324,7 @@ et_EE:
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Deleted
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
     EDITANYONE: 'Igaüks, kes sisuhaldussüsteemi sisse võib logida'
@@ -343,7 +345,8 @@ et_EE:
     METAKEYWORDS: Märksõnad
     METATITLE: Pealkiri
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
-    MODIFIEDONDRAFTSHORT: Modified
+    MODIFIEDONDRAFTSHORT: Muudetud
+    MetadataToggle: Metaandmed
     PAGELOCATION: 'Page location'
     PAGETITLE: 'Lehekülje nimi'
     PAGETYPE: 'Lehe tüüp'
@@ -388,7 +391,6 @@ et_EE:
     EXPORTTO: 'Ekspordi sellesse kausta'
     NAME: 'Staatiline eksportija'
   TableListField:
-    FILTER: Filter
     SELECT: 'Select:'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
@@ -405,4 +407,4 @@ et_EE:
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Suunav leht'
   cms:
-    FILESYSTEMSYNC: 'Sync files'
+    FILESYSTEMSYNC: 'Sünkrooni failid'

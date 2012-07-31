@@ -84,6 +84,8 @@ en:
     DELETEFP: Delete
     DESCREMOVED: 'and {count} descendants'
     EMAIL: Email
+    EditTree: 'Edit Tree'
+    ListFiltered: 'Filtered list.'
     NEW: 'New '
     PAGENOTEXISTS: 'This page doesn''t exist'
     PAGES: Pages
@@ -107,6 +109,8 @@ en:
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
+    TreeFiltered: 'Filtered tree.'
+    TreeFilteredClear: 'Clear filter'
     MENUTITLE: 'Edit Page'
   CMSMain_left.ss:
     'APPLY FILTER': 'Apply Filter'
@@ -152,6 +156,8 @@ en:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
     Title: 'All pages'
+  CaseStudy:
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
   ContentController:
@@ -221,16 +227,6 @@ en:
     SearchResults: 'Search Results'
     VersionUnknown: Unknown
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  MyNonRootPage:
-    DESCRIPTION: 'Generic content page'
-  MyOtherPage:
-    DESCRIPTION: 'Generic content page'
-  MyPage:
-    DESCRIPTION: 'Generic content page'
-  MyRandomPage:
-    DESCRIPTION: 'Generic content page'
-  PackageManagerPage:
     DESCRIPTION: 'Generic content page'
   Page:
     DESCRIPTION: 'Generic content page'
@@ -313,6 +309,7 @@ en:
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Deleted
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
     EDITANYONE: 'Anyone who can log-in to the CMS'
@@ -334,6 +331,7 @@ en:
     METATITLE: 'Meta Title'
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
+    MetadataToggle: Metadata
     PAGELOCATION: 'Page location'
     PAGETITLE: 'Page name'
     PAGETYPE: 'Page type'
@@ -380,9 +378,13 @@ en:
   TableListField:
     SELECT: 'Select:'
   TableListField.ss:
+    NOITEMSFOUND: 'No items found'
     SORTASC: 'Sort in ascending order'
     SORTDESC: 'Sort in descending order'
   TableListField_PageControls.ss:
+    DISPLAYING: Displaying
+    OF: of
+    TO: to
     VIEWFIRST: 'View first'
     VIEWLAST: 'View last'
     VIEWNEXT: 'View next'

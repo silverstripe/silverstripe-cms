@@ -47,6 +47,7 @@ uk:
     HasBrokenLink: 'має бите посилання'
     HasBrokenLinkAndFile: 'має бите посилання та файл'
     HoverTitleEditPage: 'Редагувати сторінку'
+    NOITEMSFOUND: 'No items found'
     PageName: 'Назва сторінки'
     ReasonDropdown: 'Проблема для перевірки'
     ReasonDropdownBROKENFILE: 'Битий файл'
@@ -69,6 +70,8 @@ uk:
     UNPUBLISHED_PAGES: 'Знято з публікації %d сторінок'
     UNPUBLISH_PAGES: 'Зняти з публікації'
   CMSFileAddController:
+    CANACCESS: 'Ви можете перейти до архівного сайту за посиланням:'
+    HAVEASKED: 'Ви надіслали запит на перегляд вмісту нашої сторінки'
     MENUTITLE: Файли
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -82,6 +85,8 @@ uk:
     DELETEFP: Видалити
     DESCREMOVED: 'and {count} descendants'
     EMAIL: 'Електронна пошта'
+    EditTree: 'Edit Tree'
+    ListFiltered: 'Filtered list.'
     MENUTITLE: 'Редагувати сторінку'
     NEW: Нове
     PAGENOTEXISTS: 'Ця сторінка не існує'
@@ -106,6 +111,8 @@ uk:
     TabContent: Вміст
     TabHistory: Історія
     TabSettings: Налаштування
+    TreeFiltered: 'Filtered tree.'
+    TreeFilteredClear: 'Clear filter'
   CMSPageAddController:
     MENUTITLE: 'Додати сторінку'
     ParentMode_child: 'Під іншою сторінкою'
@@ -143,9 +150,12 @@ uk:
     UNKNOWN: Невідомий
     WHEN: Коли
   CMSSiteTreeFilter_ChangedPages:
+    DISPLAYING: Displaying
     ENABLEDRAGGING: 'Drag''n''drop'
     GO: Уперед
     MULTISELECT: 'Множинний вибір'
+    OF: of
+    TO: to
     Title: 'Змінені сторінки'
     VIEWFIRST: 'Переглянути першу'
     VIEWLAST: 'Переглянути останню'
@@ -155,6 +165,8 @@ uk:
     Title: 'Всі сторінки, включаючи видалені'
   CMSSiteTreeFilter_Search:
     Title: 'Всі сторінки'
+  CaseStudy:
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Примітка: це повідомлення не буде відображатися для відвідувачів'
   ContentController:
@@ -216,6 +228,7 @@ uk:
     UploadFilesButton: Завантажити
   GridFieldTestPage:
     DESCRIPTION: 'Загальна сторінку з вмістом'
+    FILTER: Фільтр
   LeftAndMain:
     DELETED: Видалено
     PreviewButton: 'Попередній перегляд'
@@ -225,23 +238,11 @@ uk:
     VersionUnknown: Невідомий
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Загальна сторінка з вмістом'
-  MyNonRootPage:
-    CANACCESS: 'Ви можете перейти до архівного сайту за посиланням:'
-    DESCRIPTION: 'Загальна сторінка з вмістом'
-    HAVEASKED: 'Ви надіслали запит на перегляд вмісту нашої сторінки'
-  MyOtherPage:
-    DESCRIPTION: 'Загальна сторінка з вмістом'
-  MyPage:
-    DESCRIPTION: 'Загальний вміст сторінки'
-  MyRandomPage:
-    DESCRIPTION: 'Загальний вміст сторінки'
-  PackageManagerPage:
-    DESCRIPTION: 'Generic content page'
-    RESET: Відновити
   Page:
     DESCRIPTION: 'Загальна сторінка з вмістом'
   Permission:
     CMS_ACCESS_CATEGORY: 'Доступ до CMS'
+    RESET: Відновити
   Permissions:
     CONTENT_CATEGORY: 'Дозволи вмісту'
     PERMISSIONS_CATEGORY: 'Ролі та дозволи доступу'
@@ -323,6 +324,7 @@ uk:
     DELETEDPAGEHELP: 'Сторінка вже не є опублікованою'
     DELETEDPAGESHORT: Видалений
     DEPENDENT_NOTE: 'Наступні сторінки залежать від цієї сторінки. Вони включають віртуальні сторінки, сторінки переадресації і сторінки з посиланням у змісті'
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Тип посилання'
     DependtPageColumnURL: URL
     EDITANYONE: 'Будь-хто, хто може увійти до системи'
@@ -344,6 +346,7 @@ uk:
     METATITLE: Назва
     MODIFIEDONDRAFTHELP: 'Сторінка має неопубліковані зміни'
     MODIFIEDONDRAFTSHORT: Змінений
+    MetadataToggle: Metadata
     PAGELOCATION: 'Розміщення сторінки'
     PAGETITLE: 'Назва сторінки'
     PAGETYPE: 'Тип сторінки'
@@ -388,7 +391,6 @@ uk:
     EXPORTTO: 'Експортувати до наведеної теки'
     NAME: 'Статичний експортер'
   TableListField:
-    FILTER: Фільтр
     SELECT: 'Вибрати:'
   TestFileUploadPage:
     DESCRIPTION: 'Загальна сторінка з вмістом'

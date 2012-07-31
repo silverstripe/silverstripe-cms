@@ -25,7 +25,7 @@ nb:
     TreeView: Trevisning
     Upload: 'Last opp'
   AssetAdmin_DeleteBatchAction:
-    TITLE: 'Delete folders'
+    TITLE: 'Slett foldere'
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
     PAGES: page(s)
@@ -46,19 +46,20 @@ nb:
     HasBrokenFile: 'has broken file'
     HasBrokenLink: 'has broken link'
     HasBrokenLinkAndFile: 'has broken link and file'
-    HoverTitleEditPage: 'Edit page'
-    PageName: 'Page name'
+    HoverTitleEditPage: 'Rediger side'
+    NOITEMSFOUND: 'No items found'
+    PageName: Sidenavn
     ReasonDropdown: 'Problem to check'
     ReasonDropdownBROKENFILE: 'Broken file'
     ReasonDropdownBROKENLINK: 'Broken link'
-    ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
+    ReasonDropdownRPBROKENLINK: 'Omdirigeringsside peker til ikke-eksisterende side'
     ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
     RedirectorNonExistent: 'redirector page pointing to non-existent page'
     SORTASC: 'Sorter i stigende rekkefølge'
     SORTDESC: 'Sorter i synkende rekkefølge'
-    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
+    VirtualPageNonExistent: 'Virtuell side peker til ikke-eksisterende side'
   CMSAddPageController:
-    Title: 'Add page'
+    Title: 'Legg til side'
   CMSBatchActions:
     DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
     DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
@@ -69,6 +70,8 @@ nb:
     UNPUBLISHED_PAGES: 'Un-published %d pages'
     UNPUBLISH_PAGES: Un-publish
   CMSFileAddController:
+    CANACCESS: 'You can access the archived site at this link:'
+    HAVEASKED: 'You have asked to view the content of our site on'
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -82,6 +85,8 @@ nb:
     DELETEFP: 'Slett fra publisert side'
     DESCREMOVED: 'and {count} descendants'
     EMAIL: Email
+    EditTree: 'Edit Tree'
+    ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
     NEW: 'New '
     PAGENOTEXISTS: 'This page doesn''t exist'
@@ -106,6 +111,8 @@ nb:
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
+    TreeFiltered: 'Filtered tree.'
+    TreeFilteredClear: 'Clear filter'
   CMSPageAddController:
     MENUTITLE: 'Legg til side'
     ParentMode_child: 'Under another page'
@@ -137,15 +144,18 @@ nb:
     FILTERLABELTEXT: Innhold
   CMSSettingsController:
     AUTHOR: Forfatter
-    MENUTITLE: Settings
+    MENUTITLE: Innstillinger
     NOTPUBLISHED: 'Ikke utgitt'
     PUBLISHER: Utgiver
-    UNKNOWN: Unknown
-    WHEN: When
+    UNKNOWN: Ukjent
+    WHEN: Når
   CMSSiteTreeFilter_ChangedPages:
+    DISPLAYING: Displaying
     ENABLEDRAGGING: 'Drag''n''drop'
     GO: Go
     MULTISELECT: Multi-selection
+    OF: of
+    TO: to
     Title: 'Changed pages'
     VIEWFIRST: 'Se første'
     VIEWLAST: 'Se siste'
@@ -155,8 +165,10 @@ nb:
     Title: 'Alle sider, inkludert slettede'
   CMSSiteTreeFilter_Search:
     Title: 'Alle sider'
+  CaseStudy:
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
-    NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
+    NOTEWONTBESHOWN: 'Merk: denne beskjeden vil ikke være synlig for besøkende'
   ContentController:
     ARCHIVEDSITE: 'Archived Site'
     ARCHIVEDSITEFROM: 'Archived site from'
@@ -170,7 +182,7 @@ nb:
     LOGGEDINAS: 'Logged in as'
     LOGIN: Login
     LOGOUT: 'Log out'
-    NOTLOGGEDIN: 'Not logged in'
+    NOTLOGGEDIN: 'Ikke logget inn'
     PUBLISHEDSITE: 'Published Site'
     Password: Password
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
@@ -215,7 +227,8 @@ nb:
     UNUSEDTHUMBNAILSTITLE: 'Miniatyrbilder ikke i bruk'
     UploadFilesButton: 'Last opp'
   GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Generisk innholdsside'
+    FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Forhåndsvisning
@@ -225,23 +238,11 @@ nb:
     VersionUnknown: Ukjent
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-  MyNonRootPage:
-    CANACCESS: 'You can access the archived site at this link:'
-    DESCRIPTION: 'Generic content page'
-    HAVEASKED: 'You have asked to view the content of our site on'
-  MyOtherPage:
-    DESCRIPTION: 'Generic content page'
-  MyPage:
-    DESCRIPTION: 'Generic content page'
-  MyRandomPage:
-    DESCRIPTION: 'Generisk innholdsside'
-  PackageManagerPage:
-    DESCRIPTION: 'Generic content page'
-    RESET: Reset
   Page:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
+    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
@@ -255,10 +256,10 @@ nb:
     REDIRECTTOPAGE: 'En side på nettstedet'
     YOURPAGE: 'Side på ditt nettsted'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Generisk innholdsside'
     FILTER: Filter
   ReportAdmin:
-    MENUTITLE: Reports
+    MENUTITLE: Rapporter
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
@@ -322,7 +323,8 @@ nb:
     DEFAULTHOMETITLE: Hjem
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Slettet
-    DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DEPENDENT_NOTE: 'De følgende sidene avhenger av denne siden. Dette inkluderer virtuelle sider, omdirigeringssider og sider med innholdslenker.'
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
     EDITANYONE: 'Alle som kan logge inn til kontrollpanelet'
@@ -336,15 +338,16 @@ nb:
     HTMLEDITORTITLE: Innhold
     INHERIT: 'Arvet fra foreldre side'
     LASTUPDATED: 'Sist oppdatert'
-    LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
+    LINKCHANGENOTE: 'Endring av denne sidens lenke vil også påvirke lenkene til alle underliggende sider.'
     MENUTITLE: 'Navigasjons etikett'
     METADESC: Beskrivelse
     METAEXTRA: 'Egendefinerte Meta Tags'
     METAKEYWORDS: Nøkkelord
     METATITLE: Tittel
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
-    MODIFIEDONDRAFTSHORT: Modified
-    PAGELOCATION: 'Page location'
+    MODIFIEDONDRAFTSHORT: Modifisert
+    MetadataToggle: Metadata
+    PAGELOCATION: Sideplassering
     PAGETITLE: Sidenavn
     PAGETYPE: Sidetype
     PARENTID: 'Overordnet side'
@@ -359,7 +362,7 @@ nb:
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
     REMOVEDFROMDRAFTSHORT: 'Fjernet fra utkast'
     REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
-    REORGANISE_DESCRIPTION: 'Change site structure'
+    REORGANISE_DESCRIPTION: 'Endre nettstedets struktur'
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'Vis i menyer?'
     SHOWINSEARCH: 'Vis i søk?'
@@ -374,9 +377,9 @@ nb:
     VIEW_ALL_DESCRIPTION: 'View any page'
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
     VIEW_DRAFT_CONTENT: 'Se innhold i utkast'
-    VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
+    VIEW_DRAFT_CONTENT_HELP: 'Gjelder visning av sider utenfor CMS i utkastmodus. Nyttig for eksterne bidragsytere uten CMS-tilgang.'
     Viewers: Lesergrupper
-    Visibility: Visibility
+    Visibility: Synlighet
     has_one_Parent: Foreldreside
     many_many_BackLinkTracking: Referansesporing
     many_many_ImageTracking: Bildesporing
@@ -386,14 +389,13 @@ nb:
   StaticExporter:
     BASEURL: 'Base URL'
     EXPORTTO: 'Eksporter til folderen'
-    NAME: 'Static exporter'
+    NAME: 'Eksport av statiske sider'
   TableListField:
-    FILTER: Filter
-    SELECT: 'Select:'
+    SELECT: 'Velg:'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
   TestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Generisk innholdsside'
   TreeTools:
     DisplayLabel: 'Display:'
   VirtualPage:
@@ -405,4 +407,4 @@ nb:
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtuell Side'
   cms:
-    FILESYSTEMSYNC: 'Sync files'
+    FILESYSTEMSYNC: 'Synkroniser filer'
