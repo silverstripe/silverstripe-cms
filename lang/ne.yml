@@ -135,20 +135,20 @@ ne:
   CMSPagesController:
     GalleryView: 'Gallery View'
     ListView: 'List View'
-    MENUTITLE: Pages
+    MENUTITLE: पानाहरू
     TreeView: 'Tree View'
   CMSSearch:
-    FILTERDATEFROM: From
-    FILTERDATEHEADING: Date
+    FILTERDATEFROM: बाट
+    FILTERDATEHEADING: मिति
     FILTERDATETO: To
     FILTERLABELTEXT: Content
   CMSSettingsController:
-    AUTHOR: Author
+    AUTHOR: लेखक
     MENUTITLE: Settings
     NOTPUBLISHED: 'Not published'
     PUBLISHER: Publisher
     UNKNOWN: Unknown
-    WHEN: When
+    WHEN: कहिले
   CMSSiteTreeFilter_ChangedPages:
     DISPLAYING: Displaying
     ENABLEDRAGGING: 'Drag''n''drop'
@@ -164,7 +164,7 @@ ne:
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
-    Title: 'All pages'
+    Title: 'सबै पानाहरू'
   CaseStudy:
     DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
@@ -282,7 +282,7 @@ ne:
     ShareInstructions: 'To share a this to this page, copy and paste the link below.'
     ShareLink: 'Share link'
   SilverStripeNavigatorLinkl:
-    CloseLink: Close
+    CloseLink: बन्द
   SiteConfig:
     DEFAULTTHEME: '(Use default theme)'
     EDITHEADER: 'Who can edit pages on this site?'
@@ -316,7 +316,7 @@ ne:
     Comments: Comments
     Content: Content
     DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
-    DEFAULTABOUTTITLE: 'About Us'
+    DEFAULTABOUTTITLE: 'हाम्रो बारे'
     DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
     DEFAULTCONTACTTITLE: 'Contact Us'
     DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'

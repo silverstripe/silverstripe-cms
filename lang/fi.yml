@@ -86,7 +86,7 @@ fi:
     DESCREMOVED: 'ja {count} alasivua'
     EMAIL: Sähköposti
     EditTree: 'Muokkaa rakennepuuta'
-    ListFiltered: 'Filtered list.'
+    ListFiltered: 'Suodatettu lista.'
     MENUTITLE: 'Muokkaa sivua'
     NEW: Uusi
     PAGENOTEXISTS: 'Tätä sivua ei ole olemassa'
@@ -111,7 +111,7 @@ fi:
     TabContent: Sisältö
     TabHistory: Historia
     TabSettings: Asetukset
-    TreeFiltered: 'Filtered tree.'
+    TreeFiltered: 'Suodatettu hakemistopuu.'
     TreeFilteredClear: 'Nollaa suodatin'
   CMSPageAddController:
     MENUTITLE: 'Lisää sivu'
@@ -140,7 +140,7 @@ fi:
   CMSSearch:
     FILTERDATEFROM: Alkaen
     FILTERDATEHEADING: Pvm
-    FILTERDATETO: Vastaanottaja
+    FILTERDATETO: Päättyen
     FILTERLABELTEXT: Sisältö
   CMSSettingsController:
     AUTHOR: Tekijä
@@ -177,7 +177,7 @@ fi:
     DRAFT_SITE_ACCESS_RESTRICTION: 'Voidaksesi katsella luonnoksia tai arkistoitua sisältöä sinun täytyy kirjautua sisään CMS:n salasanallasi. <a href="%s">Palataksesi julkiselle sivulle paina tästä</a>.'
     Email: Sähköposti
     InstallFilesDeleted: 'Asennustiedostot poistettiin onnistuneesti.'
-    InstallSecurityWarning: 'Tietoturvan tania, kannattaa poistaa asennustiedostot palvelimelta, ellet aio asentaa järjestelmää uudelleen. (<em>pääkäyttäjän kirjautuminen vaaditaan, katso ylempää</em>). Palvelimella tarvitaan vain "assets"-kansioon kirjoitusoikeudet, voit poistaa kirjoitusoikeudet kaikista muista kansioista. <a href="{link}" style="text-align: center;">Napsauta tästä poistaaksesi kaikki asennustiedostot.</a>'
+    InstallSecurityWarning: 'Tietoturvan takia, kannattaa poistaa asennustiedostot palvelimelta, ellet aio asentaa järjestelmää uudelleen. (<em>pääkäyttäjän kirjautuminen vaaditaan, katso ylempää</em>). Palvelimella kirjoitusoikeudet tarvitaan vain "assets"-kansioon. Voit poistaa kirjoitusoikeudet kaikista muista kansioista. <br /> <a href="{link}" style="text-align: center;">Napsauta tästä poistaaksesi kaikki asennustiedostot.</a>'
     InstallSuccessCongratulations: 'SilverStripe asennettiin onnistuneesti.'
     LOGGEDINAS: 'Kirjautuneena sisään nimimerkillä'
     LOGIN: 'Kirjaudu sisään'

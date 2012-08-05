@@ -47,7 +47,7 @@ fr:
     HasBrokenLink: 'a cassé le lien'
     HasBrokenLinkAndFile: 'a cassé le lien et le fichier'
     HoverTitleEditPage: 'Editer la page'
-    NOITEMSFOUND: 'No items found'
+    NOITEMSFOUND: 'Aucun élément trouvé'
     PageName: 'Nom de la page'
     ReasonDropdown: 'Problème à regarder'
     ReasonDropdownBROKENFILE: 'Fichier cassé'
@@ -85,8 +85,8 @@ fr:
     DELETEFP: 'Retirer du site publié'
     DESCREMOVED: 'et {count} descendants'
     EMAIL: Email
-    EditTree: 'Edit Tree'
-    ListFiltered: 'Filtered list.'
+    EditTree: 'Éditer l''abre'
+    ListFiltered: 'Liste filtrée.'
     MENUTITLE: 'Éditer la page'
     NEW: Nouveau
     PAGENOTEXISTS: 'Cette page n''existe pas'
@@ -111,8 +111,8 @@ fr:
     TabContent: Contenu
     TabHistory: Historique
     TabSettings: Paramètres
-    TreeFiltered: 'Filtered tree.'
-    TreeFilteredClear: 'Clear filter'
+    TreeFiltered: 'Abre filtré.'
+    TreeFilteredClear: 'Annuler le filtre'
   CMSPageAddController:
     MENUTITLE: 'Ajouter page'
     ParentMode_child: 'Sous une autre page'
@@ -136,7 +136,7 @@ fr:
     GalleryView: Galerie
     ListView: Liste
     MENUTITLE: Sayfalar
-    TreeView: 'Ağaç Görünümü'
+    TreeView: Arbre
   CMSSearch:
     FILTERDATEFROM: De
     FILTERDATEHEADING: Date
@@ -150,12 +150,12 @@ fr:
     UNKNOWN: Inconnu
     WHEN: Date
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
+    DISPLAYING: Affichage
     ENABLEDRAGGING: Glisser-déposer
     GO: Go
     MULTISELECT: 'Choix multiple'
-    OF: of
-    TO: to
+    OF: de
+    TO: à
     Title: 'Pages modifiées'
     VIEWFIRST: 'Voir le(s) premier(s)'
     VIEWLAST: 'Voir le(s) dernier(s)'
@@ -166,7 +166,7 @@ fr:
   CMSSiteTreeFilter_Search:
     Title: 'Toutes les pages'
   CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
+    DESCRIPTION: 'Étude de cas avec des exemples de fonctionnalités.'
   ContentControl:
     NOTEWONTBESHOWN: 'Note : ce message ne sera pas visible de vos visiteurs.'
   ContentController:
@@ -324,7 +324,7 @@ fr:
     DELETEDPAGEHELP: 'La page n’est plus publique '
     DELETEDPAGESHORT: Supprimée
     DEPENDENT_NOTE: 'Les pages suivantes dépendent de cette page. Ceci inclut les pages virtuelles, les redirections et les pages avec des liens.'
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Page remplie par default'
     DependtPageColumnLinkType: 'Type de lien'
     DependtPageColumnURL: URL
     EDITANYONE: 'Toute personne pouvant se connecter au CMS'
@@ -346,7 +346,7 @@ fr:
     METATITLE: Titre
     MODIFIEDONDRAFTHELP: 'La page comporte des modifications non publiées'
     MODIFIEDONDRAFTSHORT: Modifiée
-    MetadataToggle: Metadata
+    MetadataToggle: Métadonnées
     PAGELOCATION: 'Emplacement de la page'
     PAGETITLE: 'Nom de la page'
     PAGETYPE: 'Type de page'

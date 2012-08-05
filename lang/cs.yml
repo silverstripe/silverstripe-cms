@@ -3,34 +3,34 @@ cs:
     ADDFILES: 'Přidat soubory'
     ALLOWEDEXTS: 'Povolené extenze'
     ActionAdd: 'Přidat složku'
-    AppCategoryArchive: Archive
-    AppCategoryAudio: Audio
+    AppCategoryArchive: Archív
+    AppCategoryAudio: Zvuk
     AppCategoryFlash: Flash
     AppCategoryImage: Image
     AppCategoryVideo: Video
-    BackToFolder: 'Back to folder'
-    CREATED: Date
+    BackToFolder: 'Zpět na složku'
+    CREATED: Datum
     CurrentFolderOnly: 'Limit to current folder?'
-    DetailsView: Details
+    DetailsView: Detaily
     FILES: Soubory
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'Z internetu'
     FROMYOURCOMPUTER: 'Z vašeho počítače'
-    Filetype: 'File type'
-    ListView: 'List View'
-    MENUTITLE: Files
+    Filetype: 'Typ souboru'
+    ListView: Seznam
+    MENUTITLE: Soubory
     NEWFOLDER: 'Nová složka'
     SIZE: Velikost
     THUMBSDELETED: '{count} unused thumbnails have been deleted'
     TreeView: 'Tree View'
-    Upload: Upload
+    Upload: Nahrát
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
     PAGES: page(s)
   BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   BigFamilyPage:
     DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
@@ -47,7 +47,7 @@ cs:
     HasBrokenLink: 'porušen odkaz'
     HasBrokenLinkAndFile: 'porušen odkaz a soubor'
     HoverTitleEditPage: 'Editovat stránku'
-    NOITEMSFOUND: 'No items found'
+    NOITEMSFOUND: 'Nenalezeny žádné záznamy'
     PageName: 'Název stránky'
     ReasonDropdown: 'Problém ke kontrole'
     ReasonDropdownBROKENFILE: 'Porušen soubor'
@@ -133,10 +133,10 @@ cs:
   CMSPageSettingsController:
     MENUTITLE: 'Editovat stránku'
   CMSPagesController:
-    GalleryView: 'Gallery View'
-    ListView: 'List View'
+    GalleryView: Galerie
+    ListView: Seznam
     MENUTITLE: Stránky
-    TreeView: 'Tree View'
+    TreeView: Strom
   CMSSearch:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Datum
@@ -193,8 +193,8 @@ cs:
     CODE: 'Chybový kód'
     DEFAULTERRORPAGECONTENT: '<p>Omlouváme se, zdá se, že jste se pokoušeli o přístup na stránku, která neexistuje. </ p> <p> Zkontrolujte pravopis URL, které jste se pokoušeli o přístup a zkuste to znovu</p>'
     DEFAULTERRORPAGETITLE: 'Strana nenelazena'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Server error'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Je nám to líto, ale nastal problém se zpracováním Vašeho poždavku.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Chyba serveru'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
     400: '400 - Špatný požadavek'
@@ -247,7 +247,7 @@ cs:
     CONTENT_CATEGORY: 'Oprávnění obsahu'
     PERMISSIONS_CATEGORY: 'Role a přístupová práva'
   RedirectorPage:
-    DESCRIPTION: 'Redirects to a different internal page'
+    DESCRIPTION: 'Přesměrovat na jinou interní stránku'
     HASBEENSETUP: 'Přesměrovací stránka byla nastavena bez cíle.'
     HEADER: 'Tato stránka přesměruje uživatele na jinou'
     OTHERURL: 'Jinou webovou adresu'

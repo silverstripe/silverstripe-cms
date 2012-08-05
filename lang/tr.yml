@@ -162,7 +162,7 @@ tr:
     VIEWNEXT: 'Sonrakini görüntüle'
     VIEWPREVIOUS: 'Öncekini görüntüle'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'All pages, including deleted'
+    Title: 'Silinmişler dahil bütün sayfalar'
   CMSSiteTreeFilter_Search:
     Title: 'Tüm sayfalar'
   CaseStudy:
@@ -282,7 +282,7 @@ tr:
     ShareInstructions: 'To share a this to this page, copy and paste the link below.'
     ShareLink: 'Share link'
   SilverStripeNavigatorLinkl:
-    CloseLink: Close
+    CloseLink: Kapat
   SiteConfig:
     DEFAULTTHEME: '(Use default theme)'
     EDITHEADER: 'Who can edit pages on this site?'
@@ -312,7 +312,7 @@ tr:
     BUTTONUNPUBLISH: 'Yayından kaldır'
     BUTTONUNPUBLISHDESC: 'Bu sayfayı yayından kaldır'
     Back: Back
-    CREATED: 'Date Created'
+    CREATED: 'Oluşturulma Tarihi'
     Comments: Yorumlar
     Content: İçerik
     DEFAULTABOUTCONTENT: '<p>Bu sayfayı kendi içeriğinizle doldurabilir, ya da bu sayfayı silip kendi sayfalarınızı oluşturabilirsiniz.<br /></p>'
@@ -347,7 +347,7 @@ tr:
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
     MetadataToggle: Metadata
-    PAGELOCATION: 'Page location'
+    PAGELOCATION: 'Sayfa yeri'
     PAGETITLE: 'Sayfa ismi'
     PAGETYPE: 'Sayfa tipi'
     PARENTID: 'Ana sayfa'

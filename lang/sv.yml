@@ -133,7 +133,7 @@ sv:
   CMSPageSettingsController:
     MENUTITLE: 'Ändra sidan'
   CMSPagesController:
-    GalleryView: 'Se galleriet'
+    GalleryView: Gallerivy
     ListView: Listvy
     MENUTITLE: Sidor
     TreeView: Trädvy

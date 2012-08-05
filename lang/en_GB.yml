@@ -234,8 +234,8 @@ en_GB:
     PreviewButton: Preview
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
-    SearchResults: 'Search Results'
-    VersionUnknown: Unknown
+    SearchResults: Søgeresultater
+    VersionUnknown: Ukendt
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   Page:

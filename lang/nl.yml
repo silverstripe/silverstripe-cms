@@ -77,7 +77,7 @@ nl:
     ACCESS: 'Toegang tot het ''{title}'' gedeelte'
     ACCESS_HELP: 'Bevoegdheid voor bekijken van pagina tak en inhoudssecties. Bekijk- en bewerkingstoestemmingen kunnen worden toegekend door pagina specifieke menu''s en het aparte "Inhoudsmachtigingen".'
     AddNew: 'Voeg nieuwe pagina toe'
-    AddNewButton: 'Voeg nieuwe toe'
+    AddNewButton: Nieuw
     ChoosePageParentMode: 'Kies waar u deze pagina wilt creëren'
     ChoosePageType: 'Kies een pagina type'
     Create: Creëer
@@ -85,7 +85,7 @@ nl:
     DELETEFP: 'Verwijder van de gepubliceerde webpagina'
     DESCREMOVED: 'en {count} onderliggende'
     EMAIL: Email
-    EditTree: 'Bewerk boomstructuur'
+    EditTree: 'Menu indelen'
     ListFiltered: 'Gefilterde lijst.'
     MENUTITLE: 'Wijzig pagina'
     NEW: Nieuw
