@@ -812,7 +812,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$this->response->addHeader('X-Status', rawurlencode(_t('LeftAndMain.SAVEDUP', 'Saved.')));
 		}
 
-		return $this->getResponseNegotiator()->respond($this->request);
+		// Override returned fragments - tree icons, labels or structure could've changed.
+		return $this->getResponseNegotiator()->overrideFragments(array('Content'))->respond($this->request);
 	}
 
 	/**
