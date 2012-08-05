@@ -148,6 +148,13 @@ class SiteConfig extends DataObject implements PermissionProvider {
 		
 		return $actions;
 	}
+
+	/**
+	 * @return String
+	 */
+	function CMSEditLink() {
+		return singleton('CMSSettingsController')->Link();
+	}
 	
 	/**
 	 * Get the current sites SiteConfig, and creates a new one
