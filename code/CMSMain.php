@@ -214,23 +214,28 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 		return $filter_options;
 	}
-		public function SiteTreeFilterDateField() {
-			$dateField = new DateField('SiteTreeFilterDate');
-			
-			// TODO Enabling this means we load jQuery UI by default in the CMS,
-			// which is a pretty big performance hit in 2.4 (where the library isn't used for other parts
-			// of the interface).
-			// $dateField->setConfig('showcalendar', true);
-			
-			return $dateField->Field();
-		}
-		public function SiteTreeFilterPageTypeField() {
-			$types = SiteTree::page_type_classes(); array_unshift($types, 'All');
-			$source = array_combine($types, $types);
-			asort($source);
-			$optionsetField = new DropdownField('ClassName', 'ClassName', $source, 'Any');
-			return $optionsetField->Field();
-		}	
+
+	public function SiteTreeFilterDateField() {
+		$dateField = new DateField('SiteTreeFilterDate');
+		
+		// TODO Enabling this means we load jQuery UI by default in the CMS,
+		// which is a pretty big performance hit in 2.4 (where the library isn't used for other parts
+		// of the interface).
+		// $dateField->setConfig('showcalendar', true);
+		
+		return $dateField->Field();
+	}
+
+	public function SiteTreeFilterPageTypeField() {
+		$types = SiteTree::page_type_classes(); 
+		array_unshift($types, 'Any');
+
+		$source = array_combine($types, $types);
+		asort($source);
+		$optionsetField = new DropdownField('ClassName', 'ClassName', $source, 'Any');
+		
+		return $optionsetField->Field();
+	}
 
 	public function generateDataTreeHints() {
 		$classes = ClassInfo::subclassesFor( $this->stat('tree_class') );
