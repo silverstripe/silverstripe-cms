@@ -173,46 +173,53 @@ class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter {
 	 * 
 	 * @return Array
 	 */
-	function pagesIncluded() {
+	public function pagesIncluded() {
+		$sng = singleton('SiteTree');
 		$ids = array();
-		$q = new SQLQuery();
-		$q->setSelect(array('"ID"','"ParentID"'))
-			->setFrom('"SiteTree"');
-		$where = array();
-		
-		$SQL_params = Convert::raw2sql($this->params);
-		foreach($SQL_params as $name => $val) {
+
+		$query = new DataQuery('SiteTree');
+		$query->setQueriedColumns(array('ID', 'ParentID'));
+
+		foreach($this->params as $name => $val) {
+			$SQL_val = Convert::raw2sql($val);
+
 			switch($name) {
-				// Match against URLSegment, Title, MenuTitle & Content
 				case 'Term':
-					if($val) $where[] = "\"URLSegment\" LIKE '%$val%' OR \"Title\" LIKE '%$val%' OR \"MenuTitle\" LIKE '%$val%' OR \"Content\" LIKE '%$val%'";
+					$query->whereAny(array(
+						"\"URLSegment\" LIKE '%$SQL_val%'",
+						"\"Title\" LIKE '%$SQL_val%'",
+						"\"MenuTitle\" LIKE '%$SQL_val%'",
+						"\"Content\" LIKE '%$SQL_val%'"
+					));
 					break;
-				// Match against date
+
 				case 'LastEditedFrom':
-					if($val) $where[] = "\"LastEdited\" >= '$val'";
+					$query->where("\"LastEdited\" >= '$SQL_val'");
 					break;
+
 				case 'LastEditedTo':
-					if($val) $where[] = "\"LastEdited\" <= '$val'";
+					$query->where("\"LastEdited\" <= '$SQL_val'");
 					break;
-				// Match against exact ClassName
+
 				case 'ClassName':
 					if($val && $val != 'All') {
-						$where[] = "\"ClassName\" = '$val'";
+						$query->where("\"ClassName\" = '$SQL_val'");
 					}
 					break;
+
 				default:
-					// Partial string match against a variety of fields 
-					if(!empty($val) && singleton("SiteTree")->hasDatabaseField($name)) {
-						$where[] = "\"$name\" LIKE '%$val%'";
+					if(!empty($val) && $sng->hasDatabaseField($name)) {
+						$filter = $sng->dbObject($name)->defaultSearchFilter();
+						$filter->setValue($val);
+						$filter->apply($query);
 					}
 			}
 		}
-		$q->setWhere(empty($where) ? '' : '(' . implode(') AND (',$where) . ')');
 
-		foreach($q->execute() as $row) {
-			$ids[] = array('ID'=>$row['ID'],'ParentID'=>$row['ParentID']);
+		foreach($query->execute() as $row) {
+			$ids[] = array('ID' => $row['ID'], 'ParentID' => $row['ParentID']);
 		}
-		
+
 		return $ids;
 	}
 }

@@ -303,6 +303,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			->unsetValidator();
 		$form->loadDataFrom($this->request->getVars());
 
+		$this->extend('updateSearchForm', $form);
 		return $form;
 	}
 	
