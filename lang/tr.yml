@@ -26,9 +26,15 @@ tr:
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Klasörleri sil'
+  AssetAdmin_Tools.ss:
+    FILTER: Filter
+  AssetAdmin_left.ss:
+    GO: Git
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
     PAGES: page(s)
+  BackLink_Button.ss:
+    Back: Back
   BasicFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   BigFamilyPage:
@@ -47,7 +53,6 @@ tr:
     HasBrokenLink: 'has broken link'
     HasBrokenLinkAndFile: 'has broken link and file'
     HoverTitleEditPage: 'Edit page'
-    NOITEMSFOUND: 'No items found'
     PageName: 'Page name'
     ReasonDropdown: 'Problem to check'
     ReasonDropdownBROKENFILE: 'Broken file'
@@ -55,8 +60,6 @@ tr:
     ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
     ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
     RedirectorNonExistent: 'redirector page pointing to non-existent page'
-    SORTASC: 'Artan olarak sırala'
-    SORTDESC: 'Azalan olarak sırala'
     VirtualPageNonExistent: 'virtual page pointing to non-existent page'
   CMSAddPageController:
     Title: 'Add page'
@@ -70,8 +73,6 @@ tr:
     UNPUBLISHED_PAGES: 'Un-published %d pages'
     UNPUBLISH_PAGES: 'Yayından kaldır'
   CMSFileAddController:
-    CANACCESS: 'Arşivdeki siteye şu bağlantıdan erişebilirsiniz:'
-    HAVEASKED: 'Şu tarihe kadar olan site içeriğini görüntülemek istediniz:'
     MENUTITLE: Dosyalar
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -113,6 +114,9 @@ tr:
     TabSettings: Settings
     TreeFiltered: 'Filtered tree.'
     TreeFilteredClear: 'Clear filter'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Filteri Uygula'
+    RESET: Sıfırla
   CMSPageAddController:
     MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
@@ -129,7 +133,12 @@ tr:
     SHOWVERSION: 'Show Version'
     VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Filteri Uygula"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Yazar
+    NOTPUBLISHED: Yayınlanmamış
+    PUBLISHER: Yayınlayan
+    UNKNOWN: Bilinmeyen
+    WHEN: 'Ne zaman'
   CMSPageSettingsController:
     MENUTITLE: 'Sayfayı düzenle'
   CMSPagesController:
@@ -137,30 +146,20 @@ tr:
     ListView: 'Liste Görünümü'
     MENUTITLE: Sayfalar
     TreeView: 'Ağaç Görünümü'
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: 'Drag''n''drop'
+    MULTISELECT: Multi-selection
+  CMSPagesController_Tools.ss:
+    FILTER: Filter
   CMSSearch:
     FILTERDATEFROM: Kimden
     FILTERDATEHEADING: Tarih
     FILTERDATETO: Kime
     FILTERLABELTEXT: İçerik
   CMSSettingsController:
-    AUTHOR: Yazar
     MENUTITLE: Ayarlar
-    NOTPUBLISHED: Yayınlanmamış
-    PUBLISHER: Yayınlayan
-    UNKNOWN: Bilinmeyen
-    WHEN: 'Ne zaman'
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
-    ENABLEDRAGGING: 'Drag''n''drop'
-    GO: Git
-    MULTISELECT: Multi-selection
-    OF: of
-    TO: to
     Title: 'Changed pages'
-    VIEWFIRST: 'Birinciyi görüntüle'
-    VIEWLAST: 'Sonuncuyu görüntüle'
-    VIEWNEXT: 'Sonrakini görüntüle'
-    VIEWPREVIOUS: 'Öncekini görüntüle'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Silinmişler dahil bütün sayfalar'
   CMSSiteTreeFilter_Search:
@@ -228,7 +227,6 @@ tr:
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Önizleme
@@ -242,7 +240,6 @@ tr:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Erişimi'
-    RESET: Sıfırla
   Permissions:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
@@ -257,7 +254,6 @@ tr:
     YOURPAGE: 'Web sitenizdeki bir sayfa'
   RelationFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filter
   ReportAdmin:
     MENUTITLE: Raporlar
   ReportAdminForm:
@@ -311,7 +307,6 @@ tr:
     BUTTONSAVEPUBLISH: 'Kaydet ve Yayınla'
     BUTTONUNPUBLISH: 'Yayından kaldır'
     BUTTONUNPUBLISHDESC: 'Bu sayfayı yayından kaldır'
-    Back: Back
     CREATED: 'Oluşturulma Tarihi'
     Comments: Yorumlar
     Content: İçerik
@@ -392,12 +387,27 @@ tr:
     NAME: 'Statik Aktarıcı'
   TableListField:
     SELECT: 'Select:'
+  TableListField.ss:
+    NOITEMSFOUND: 'No items found'
+    SORTASC: 'Artan olarak sırala'
+    SORTDESC: 'Azalan olarak sırala'
+  TableListField_PageControls.ss:
+    DISPLAYING: Displaying
+    OF: of
+    TO: to
+    VIEWFIRST: 'Birinciyi görüntüle'
+    VIEWLAST: 'Sonuncuyu görüntüle'
+    VIEWNEXT: 'Sonrakini görüntüle'
+    VIEWPREVIOUS: 'Öncekini görüntüle'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
   TestPage:
     DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'Arşivdeki siteye şu bağlantıdan erişebilirsiniz:'
+    HAVEASKED: 'Şu tarihe kadar olan site içeriğini görüntülemek istediniz:'
   VirtualPage:
     CHOOSE: 'Bağlantı vermek için bir sayfa seçiniz'
     DESCRIPTION: 'Displays the content of another page'

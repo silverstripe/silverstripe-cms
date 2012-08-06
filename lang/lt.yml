@@ -26,9 +26,15 @@ lt:
     Upload: Įkelti
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Ištrinti aplankus'
+  AssetAdmin_Tools.ss:
+    FILTER: Filtras
+  AssetAdmin_left.ss:
+    GO: Vykdyti
   AssetTableField:
     BACKLINKCOUNT: 'Naudojama:'
     PAGES: puslapis(-iai)
+  BackLink_Button.ss:
+    Back: Atgal
   BasicFieldsTestPage:
     DESCRIPTION: 'Standartinio turinio puslapis'
   BigFamilyPage:
@@ -47,7 +53,6 @@ lt:
     HasBrokenLink: 'turi sugadintą nuorodą'
     HasBrokenLinkAndFile: 'turi sugadintą nuorodą bei bylą'
     HoverTitleEditPage: 'Redaguoti puslapį'
-    NOITEMSFOUND: '404 - Nerasta'
     PageName: 'Puslapio pavadinimas'
     ReasonDropdown: 'Tikrinti problemas'
     ReasonDropdownBROKENFILE: 'Sugadinta byla'
@@ -55,8 +60,6 @@ lt:
     ReasonDropdownRPBROKENLINK: 'Peradresuojantis puslapis veda į neegzistuojantį puslapį'
     ReasonDropdownVPBROKENLINK: 'Virtualus puslapis veda į neegzistuojantį puslapį'
     RedirectorNonExistent: 'Peradresuojantis puslapis veda į neegzistuojantį puslapį'
-    SORTASC: 'Rūšiuoti didėjimo tvarka'
-    SORTDESC: 'Rūšiuoti mažėjimo tvarka'
     VirtualPageNonExistent: 'virtualus puslapis veda į neegzistuojantį puslapį'
   CMSAddPageController:
     Title: 'Pridėti puslapį'
@@ -70,8 +73,6 @@ lt:
     UNPUBLISHED_PAGES: 'Nebepublikuojami %d puslapiai.'
     UNPUBLISH_PAGES: Nebepublikuoti
   CMSFileAddController:
-    CANACCESS: 'Jūs galite atverti suarchyvuotą svetainę paspaudę šią nuorodą:'
-    HAVEASKED: 'Jūs norėjote peržiūrėti turinį mūsų svetainėje '
     MENUTITLE: Bylos
   CMSMain:
     ACCESS: 'Priėjimas prie ''{title}'' dalies'
@@ -113,6 +114,9 @@ lt:
     TabSettings: Nustatymai
     TreeFiltered: 'Filtruotas medis.'
     TreeFilteredClear: 'Panaikinti filtrą'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Pritaikyti filtrą'
+    RESET: Atstatyti
   CMSPageAddController:
     MENUTITLE: 'Pridėti puslapį'
     ParentMode_child: 'Po kitu puslapiu'
@@ -129,7 +133,12 @@ lt:
     SHOWVERSION: 'Rodyti versiją'
     VIEW: peržiūrėti
     VIEWINGVERSION: 'Dabar peržiūrima versija {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Pritaikyti filtrą"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Autorius
+    NOTPUBLISHED: Nepublikuotas
+    PUBLISHER: Leidėjas
+    UNKNOWN: Nežinoma
+    WHEN: Kada
   CMSPageSettingsController:
     MENUTITLE: 'Redaguoti puslapį'
   CMSPagesController:
@@ -137,30 +146,20 @@ lt:
     ListView: 'Sąrašo rodinys'
     MENUTITLE: Puslapiai
     TreeView: 'Medžio rodinys'
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: Tempti/Mesti
+    MULTISELECT: 'Daugybinis pasirinkimas'
+  CMSPagesController_Tools.ss:
+    FILTER: Filtras
   CMSSearch:
     FILTERDATEFROM: Nuo
     FILTERDATEHEADING: Data
     FILTERDATETO: iki
     FILTERLABELTEXT: Turinys
   CMSSettingsController:
-    AUTHOR: Autorius
     MENUTITLE: Nustatymai
-    NOTPUBLISHED: Nepublikuotas
-    PUBLISHER: Leidėjas
-    UNKNOWN: Nežinoma
-    WHEN: Kada
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Rodoma
-    ENABLEDRAGGING: Tempti/Mesti
-    GO: Vykdyti
-    MULTISELECT: 'Daugybinis pasirinkimas'
-    OF: iš
-    TO: į
     Title: 'Pakeisti puslapiai'
-    VIEWFIRST: 'Žiūrėti pirmą'
-    VIEWLAST: 'Žiūrėti paskutinį'
-    VIEWNEXT: 'Žiūrėti sekantį'
-    VIEWPREVIOUS: 'Žiūrėti ankstesnį'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Visus puslapius, kartu su ištrintais'
   CMSSiteTreeFilter_Search:
@@ -228,7 +227,6 @@ lt:
     UploadFilesButton: Įkelti
   GridFieldTestPage:
     DESCRIPTION: 'Standartinio turinio puslapis'
-    FILTER: Filtras
   LeftAndMain:
     DELETED: Ištrinta.
     PreviewButton: Peržiūra
@@ -242,7 +240,6 @@ lt:
     DESCRIPTION: 'Standartinio turinio puslapis'
   Permission:
     CMS_ACCESS_CATEGORY: 'TVS Prieiga'
-    RESET: Atstatyti
   Permissions:
     CONTENT_CATEGORY: 'Turinio teisės'
     PERMISSIONS_CATEGORY: 'Rolės ir priėjimo leidimai'
@@ -257,7 +254,6 @@ lt:
     YOURPAGE: 'Jūsų svetainės puslapis'
   RelationFieldsTestPage:
     DESCRIPTION: 'Standartinio turinio puslapis'
-    FILTER: Filtras
   ReportAdmin:
     MENUTITLE: Ataskaitos
   ReportAdminForm:
@@ -311,7 +307,6 @@ lt:
     BUTTONSAVEPUBLISH: 'Išsaugoti ir publikuoti'
     BUTTONUNPUBLISH: Nebepublikuoti
     BUTTONUNPUBLISHDESC: 'Pašalinti šį puslapį iš publikuojamos svetainės'
-    Back: Atgal
     CREATED: 'Sukūrimo data'
     Comments: Komentarai
     Content: Turinys
@@ -392,12 +387,27 @@ lt:
     NAME: 'Statinis eksportavimas'
   TableListField:
     SELECT: 'Pasirinkite:'
+  TableListField.ss:
+    NOITEMSFOUND: '404 - Nerasta'
+    SORTASC: 'Rūšiuoti didėjimo tvarka'
+    SORTDESC: 'Rūšiuoti mažėjimo tvarka'
+  TableListField_PageControls.ss:
+    DISPLAYING: Rodoma
+    OF: iš
+    TO: į
+    VIEWFIRST: 'Žiūrėti pirmą'
+    VIEWLAST: 'Žiūrėti paskutinį'
+    VIEWNEXT: 'Žiūrėti sekantį'
+    VIEWPREVIOUS: 'Žiūrėti ankstesnį'
   TestFileUploadPage:
     DESCRIPTION: 'Standartinio turinio puslapis'
   TestPage:
     DESCRIPTION: 'Standartinio turinio puslapis'
   TreeTools:
     DisplayLabel: 'Rodyti:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'Jūs galite atverti suarchyvuotą svetainę paspaudę šią nuorodą:'
+    HAVEASKED: 'Jūs norėjote peržiūrėti turinį mūsų svetainėje '
   VirtualPage:
     CHOOSE: 'Pasirinkti puslapį nuorodai'
     DESCRIPTION: 'Rodo kito puslapio turinį'

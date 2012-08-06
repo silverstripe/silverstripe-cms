@@ -26,9 +26,15 @@ hu:
     Upload: Feltöltés
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Mappák törlése'
+  AssetAdmin_Tools.ss:
+    FILTER: Szűrő
+  AssetAdmin_left.ss:
+    GO: Mehet
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
     PAGES: oldal(ak)
+  BackLink_Button.ss:
+    Back: Vissza
   BasicFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   BigFamilyPage:
@@ -47,7 +53,6 @@ hu:
     HasBrokenLink: 'has broken link'
     HasBrokenLinkAndFile: 'has broken link and file'
     HoverTitleEditPage: 'Oldal szerkesztése'
-    NOITEMSFOUND: 'No items found'
     PageName: 'Oldal neve'
     ReasonDropdown: 'Problem to check'
     ReasonDropdownBROKENFILE: 'Hibás állomány'
@@ -55,8 +60,6 @@ hu:
     ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
     ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
     RedirectorNonExistent: 'redirector page pointing to non-existent page'
-    SORTASC: 'Sort in ascending order'
-    SORTDESC: 'Sort in descending order'
     VirtualPageNonExistent: 'virtual page pointing to non-existent page'
   CMSAddPageController:
     Title: 'Oldal hozzáadása'
@@ -70,8 +73,6 @@ hu:
     UNPUBLISHED_PAGES: 'Un-published %d pages'
     UNPUBLISH_PAGES: 'Publikálás visszavonása'
   CMSFileAddController:
-    CANACCESS: 'Az archivált oldalt elérheted ezen a linken:'
-    HAVEASKED: 'Azt kérted, hogy megnézhesd a honlapunk tartalmát ekkor:'
     MENUTITLE: Állományok
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -113,6 +114,9 @@ hu:
     TabSettings: Beállítások
     TreeFiltered: 'Filtered tree.'
     TreeFilteredClear: 'Szűrő törlése'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Szűrő alkalmazása'
+    RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Oldal hozzáadása'
     ParentMode_child: 'Másik oldal alatt'
@@ -129,7 +133,12 @@ hu:
     SHOWVERSION: 'Show Version'
     VIEW: megtekintés
     VIEWINGVERSION: 'Currently viewing version {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Szűrő alkalmazása"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Szerző
+    NOTPUBLISHED: 'Nincs publikálva'
+    PUBLISHER: Szerző
+    UNKNOWN: Ismeretlen
+    WHEN: Mikor
   CMSPageSettingsController:
     MENUTITLE: 'Oldal szerkesztése'
   CMSPagesController:
@@ -137,30 +146,20 @@ hu:
     ListView: 'Lista nézet'
     MENUTITLE: Oldalak
     TreeView: 'Fa nézet'
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: 'Drag''n''drop'
+    MULTISELECT: Multi-selection
+  CMSPagesController_Tools.ss:
+    FILTER: Szűrő
   CMSSearch:
     FILTERDATEFROM: -tól
     FILTERDATEHEADING: Dátum
     FILTERDATETO: -ig
     FILTERLABELTEXT: Tartalom
   CMSSettingsController:
-    AUTHOR: Szerző
     MENUTITLE: Beállítások
-    NOTPUBLISHED: 'Nincs publikálva'
-    PUBLISHER: Szerző
-    UNKNOWN: Ismeretlen
-    WHEN: Mikor
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
-    ENABLEDRAGGING: 'Drag''n''drop'
-    GO: Mehet
-    MULTISELECT: Multi-selection
-    OF: of
-    TO: to
     Title: 'Változtatott oldalak'
-    VIEWFIRST: 'Első mutatása'
-    VIEWLAST: 'Utolsó mutatása'
-    VIEWNEXT: 'Következő mutatása'
-    VIEWPREVIOUS: 'Előző mutatása'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Összes oldal, a töröltekkel együtt'
   CMSSiteTreeFilter_Search:
@@ -228,7 +227,6 @@ hu:
     UploadFilesButton: Feltöltés
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Szűrő
   LeftAndMain:
     DELETED: Törölve.
     PreviewButton: Előnézet
@@ -242,7 +240,6 @@ hu:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS hozzáférés'
-    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
@@ -257,7 +254,6 @@ hu:
     YOURPAGE: 'Oldal a weblapodon'
   RelationFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Szűrő
   ReportAdmin:
     MENUTITLE: Jelentések
   ReportAdminForm:
@@ -311,7 +307,6 @@ hu:
     BUTTONSAVEPUBLISH: 'Mentés és publikálás'
     BUTTONUNPUBLISH: 'Publikálás visszavonása'
     BUTTONUNPUBLISHDESC: 'Oldal eltávolítása a publikált oldalról'
-    Back: Vissza
     CREATED: 'Létrehozás dátuma'
     Comments: Kommentárok
     Content: Tartalom
@@ -392,12 +387,27 @@ hu:
     NAME: 'Statikus exportáló'
   TableListField:
     SELECT: 'Select:'
+  TableListField.ss:
+    NOITEMSFOUND: 'No items found'
+    SORTASC: 'Sort in ascending order'
+    SORTDESC: 'Sort in descending order'
+  TableListField_PageControls.ss:
+    DISPLAYING: Displaying
+    OF: of
+    TO: to
+    VIEWFIRST: 'Első mutatása'
+    VIEWLAST: 'Utolsó mutatása'
+    VIEWNEXT: 'Következő mutatása'
+    VIEWPREVIOUS: 'Előző mutatása'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
   TestPage:
     DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'Az archivált oldalt elérheted ezen a linken:'
+    HAVEASKED: 'Azt kérted, hogy megnézhesd a honlapunk tartalmát ekkor:'
   VirtualPage:
     CHOOSE: 'Válassz belinkelendő oldalt'
     DESCRIPTION: 'Displays the content of another page'

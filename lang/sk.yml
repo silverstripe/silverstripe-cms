@@ -26,9 +26,15 @@ sk:
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
+  AssetAdmin_Tools.ss:
+    FILTER: Filter
+  AssetAdmin_left.ss:
+    GO: Vykonať
   AssetTableField:
     BACKLINKCOUNT: 'Použité na:'
     PAGES: page(s)
+  BackLink_Button.ss:
+    Back: Back
   BasicFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   BigFamilyPage:
@@ -47,7 +53,6 @@ sk:
     HasBrokenLink: 'obsahuje porušený odkaz'
     HasBrokenLinkAndFile: 'obsahuje porušený odkaz a súbor'
     HoverTitleEditPage: 'Upraviť stránku'
-    NOITEMSFOUND: 'No items found'
     PageName: 'Názov stránky'
     ReasonDropdown: 'Problem pri skontrolovaní'
     ReasonDropdownBROKENFILE: 'Porušnený súbor'
@@ -55,8 +60,6 @@ sk:
     ReasonDropdownRPBROKENLINK: 'Presmerovávacia stránka odkazuje na ne-existujúcu stránku'
     ReasonDropdownVPBROKENLINK: 'Virtuálna stránka odkazuje na ne-existujúcu stránku'
     RedirectorNonExistent: 'presmerovávacia stránka odkazuje na ne-existujúcu stránku'
-    SORTASC: 'Zoradiť poradie vzostupne'
-    SORTDESC: 'Zoradiť poradie zostupne'
     VirtualPageNonExistent: 'virtuálna stránka odkazuje na ne-existujúcu stránku'
   CMSAddPageController:
     Title: 'Add page'
@@ -70,8 +73,6 @@ sk:
     UNPUBLISHED_PAGES: 'Od-publikované %d stranky'
     UNPUBLISH_PAGES: Od-publikovať
   CMSFileAddController:
-    CANACCESS: 'Archivovaný web môžete navštíviť týmto odkazom:'
-    HAVEASKED: 'Požiadali ste o zobrazenie obsahu webu z'
     MENUTITLE: Súbory
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -113,6 +114,9 @@ sk:
     TabSettings: Nastavenia
     TreeFiltered: 'Filtered tree.'
     TreeFilteredClear: 'Clear filter'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Apply Filter'
+    RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
@@ -129,7 +133,12 @@ sk:
     SHOWVERSION: 'Show Version'
     VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Autor
+    NOTPUBLISHED: Nepublikovaná
+    PUBLISHER: Publisher
+    UNKNOWN: Neznáma
+    WHEN: When
   CMSPageSettingsController:
     MENUTITLE: 'Upraviť stránku'
   CMSPagesController:
@@ -137,30 +146,20 @@ sk:
     ListView: 'List View'
     MENUTITLE: Stránky
     TreeView: 'Tree View'
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: 'Drag''n''drop'
+    MULTISELECT: Multi-selection
+  CMSPagesController_Tools.ss:
+    FILTER: Filter
   CMSSearch:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Dátum
     FILTERDATETO: Do
     FILTERLABELTEXT: Obsah
   CMSSettingsController:
-    AUTHOR: Autor
     MENUTITLE: Nastavenia
-    NOTPUBLISHED: Nepublikovaná
-    PUBLISHER: Publisher
-    UNKNOWN: Neznáma
-    WHEN: When
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
-    ENABLEDRAGGING: 'Drag''n''drop'
-    GO: Vykonať
-    MULTISELECT: Multi-selection
-    OF: of
-    TO: to
     Title: 'Changed pages'
-    VIEWFIRST: 'Zobraz prvé'
-    VIEWLAST: 'Zobraz posledné'
-    VIEWNEXT: 'Zobraz nasledujúce'
-    VIEWPREVIOUS: 'Zobraz predchádzajúce'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
@@ -228,7 +227,6 @@ sk:
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -242,7 +240,6 @@ sk:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'Prístup do CMS'
-    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'Právomoci k obsahu'
     PERMISSIONS_CATEGORY: 'Právomoci pre úlohy a prístupy'
@@ -257,13 +254,12 @@ sk:
     YOURPAGE: 'Stránku na Vašom webe'
   RelationFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filter
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
     FILTERBY: 'Filtrovať podľa'
   SearchForm:
-    GO: Štart
+    GO: 'Štart'
     SEARCH: Hľadať
     SearchResults: 'Výsledky vyhľadávania'
   SideReport:
@@ -311,7 +307,6 @@ sk:
     BUTTONSAVEPUBLISH: 'Uložiť a publikovať'
     BUTTONUNPUBLISH: Nepublikovať
     BUTTONUNPUBLISHDESC: 'Odstrániť túto stránku z publikovaných na webe'
-    Back: Back
     CREATED: 'Date Created'
     Comments: Komentáre
     Content: Obsah
@@ -392,12 +387,27 @@ sk:
     NAME: 'Statický export'
   TableListField:
     SELECT: 'Vyberte:'
+  TableListField.ss:
+    NOITEMSFOUND: 'No items found'
+    SORTASC: 'Zoradiť poradie vzostupne'
+    SORTDESC: 'Zoradiť poradie zostupne'
+  TableListField_PageControls.ss:
+    DISPLAYING: Displaying
+    OF: of
+    TO: to
+    VIEWFIRST: 'Zobraz prvé'
+    VIEWLAST: 'Zobraz posledné'
+    VIEWNEXT: 'Zobraz nasledujúce'
+    VIEWPREVIOUS: 'Zobraz predchádzajúce'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
   TestPage:
     DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'Archivovaný web môžete navštíviť týmto odkazom:'
+    HAVEASKED: 'Požiadali ste o zobrazenie obsahu webu z'
   VirtualPage:
     CHOOSE: 'Vyberte kam má stránka odkazovať'
     DESCRIPTION: 'Displays the content of another page'

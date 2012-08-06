@@ -26,9 +26,15 @@ fa_IR:
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
+  AssetAdmin_Tools.ss:
+    FILTER: Filter
+  AssetAdmin_left.ss:
+    GO: Go
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
     PAGES: page(s)
+  BackLink_Button.ss:
+    Back: Back
   BasicFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   BigFamilyPage:
@@ -47,7 +53,6 @@ fa_IR:
     HasBrokenLink: 'has broken link'
     HasBrokenLinkAndFile: 'has broken link and file'
     HoverTitleEditPage: 'ویرایش صفحه'
-    NOITEMSFOUND: 'No items found'
     PageName: 'نام صفحه'
     ReasonDropdown: 'مشکل در بررسی'
     ReasonDropdownBROKENFILE: 'Broken file'
@@ -55,8 +60,6 @@ fa_IR:
     ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
     ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
     RedirectorNonExistent: 'redirector page pointing to non-existent page'
-    SORTASC: 'چینش صعودی'
-    SORTDESC: 'چینش نزولی'
     VirtualPageNonExistent: 'virtual page pointing to non-existent page'
   CMSAddPageController:
     Title: 'Add page'
@@ -70,8 +73,6 @@ fa_IR:
     UNPUBLISHED_PAGES: 'Un-published %d pages'
     UNPUBLISH_PAGES: Un-publish
   CMSFileAddController:
-    CANACCESS: 'You can access the archived site at this link:'
-    HAVEASKED: 'شما خواسته اید که درون‌مایه تارگاه ما را ببینید در'
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -113,6 +114,9 @@ fa_IR:
     TabSettings: Settings
     TreeFiltered: 'Filtered tree.'
     TreeFilteredClear: 'Clear filter'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Apply Filter'
+    RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
@@ -129,7 +133,12 @@ fa_IR:
     SHOWVERSION: 'Show Version'
     VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Author
+    NOTPUBLISHED: 'Not published'
+    PUBLISHER: Publisher
+    UNKNOWN: Unknown
+    WHEN: When
   CMSPageSettingsController:
     MENUTITLE: 'Edit Page'
   CMSPagesController:
@@ -137,30 +146,20 @@ fa_IR:
     ListView: 'List View'
     MENUTITLE: Pages
     TreeView: 'Tree View'
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: 'Drag''n''drop'
+    MULTISELECT: Multi-selection
+  CMSPagesController_Tools.ss:
+    FILTER: Filter
   CMSSearch:
     FILTERDATEFROM: From
     FILTERDATEHEADING: Date
     FILTERDATETO: To
     FILTERLABELTEXT: Content
   CMSSettingsController:
-    AUTHOR: Author
     MENUTITLE: Settings
-    NOTPUBLISHED: 'Not published'
-    PUBLISHER: Publisher
-    UNKNOWN: Unknown
-    WHEN: When
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
-    ENABLEDRAGGING: 'Drag''n''drop'
-    GO: Go
-    MULTISELECT: Multi-selection
-    OF: of
-    TO: to
     Title: 'Changed pages'
-    VIEWFIRST: 'نشان دادن نخست'
-    VIEWLAST: 'نشان دادن پایان'
-    VIEWNEXT: 'نشان دادن پسین'
-    VIEWPREVIOUS: 'نشان دادن پیشین'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
@@ -228,7 +227,6 @@ fa_IR:
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -242,7 +240,6 @@ fa_IR:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
-    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'دسترسی محتوا'
     PERMISSIONS_CATEGORY: 'مجوز دسترسی ها و وظایف'
@@ -257,7 +254,6 @@ fa_IR:
     YOURPAGE: 'برگ روی تارگاه شما'
   RelationFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filter
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -298,7 +294,7 @@ fa_IR:
     TOPLEVELCREATE: 'چه کسی میتواند صفحه جدیدی در ریشه(root) سایت ایجاد کند؟'
     VIEWHEADER: 'چه کسی میتواند صفحات سایت را مشاهده کند؟'
   SiteTree:
-    ACCESSANYONE: همه
+    ACCESSANYONE: 'همه'
     ACCESSHEADER: 'چه کسی بتواند این صفحه را مشاهده کنید ؟'
     ACCESSLOGGEDIN: 'کاربران وارد شده'
     ACCESSONLYTHESE: 'فقط این افراد (انتخاب از لیست)'
@@ -311,7 +307,6 @@ fa_IR:
     BUTTONSAVEPUBLISH: 'ذخیره و انتشار'
     BUTTONUNPUBLISH: Unpublish
     BUTTONUNPUBLISHDESC: 'Remove this page from the published site'
-    Back: Back
     CREATED: 'Date Created'
     Comments: Comments
     Content: 'درون مایه'
@@ -335,7 +330,7 @@ fa_IR:
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     Editors: 'Editors Groups'
     HASBROKENLINKS: 'لینک این صفحه شکسته است.'
-    HTMLEDITORTITLE: درون‌مایه
+    HTMLEDITORTITLE: 'درون‌مایه'
     INHERIT: 'Inherit from parent page'
     LASTUPDATED: 'Last Updated'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
@@ -368,7 +363,7 @@ fa_IR:
     SHOWINSEARCH: 'نمایش در جستجو ؟'
     SINGULARNAME: 'لینک سایت'
     TABBEHAVIOUR: Behavior
-    TABCONTENT: مطلب
+    TABCONTENT: 'مطلب'
     TABDEPENDENT: 'Dependent pages'
     TOPLEVEL: 'Site Content (Top Level)'
     TOPLEVELCREATORGROUPS: 'Top level creators'
@@ -392,12 +387,27 @@ fa_IR:
     NAME: 'Static exporter'
   TableListField:
     SELECT: انتخاب
+  TableListField.ss:
+    NOITEMSFOUND: 'No items found'
+    SORTASC: 'چینش صعودی'
+    SORTDESC: 'چینش نزولی'
+  TableListField_PageControls.ss:
+    DISPLAYING: Displaying
+    OF: of
+    TO: to
+    VIEWFIRST: 'نشان دادن نخست'
+    VIEWLAST: 'نشان دادن پایان'
+    VIEWNEXT: 'نشان دادن پسین'
+    VIEWPREVIOUS: 'نشان دادن پیشین'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
   TestPage:
     DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'You can access the archived site at this link:'
+    HAVEASKED: 'شما خواسته اید که درون‌مایه تارگاه ما را ببینید در'
   VirtualPage:
     CHOOSE: 'Choose a page to link to'
     DESCRIPTION: 'Displays the content of another page'

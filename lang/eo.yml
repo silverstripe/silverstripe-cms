@@ -26,9 +26,15 @@ eo:
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
+  AssetAdmin_Tools.ss:
+    FILTER: Filter
+  AssetAdmin_left.ss:
+    GO: Ek
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
     PAGES: page(s)
+  BackLink_Button.ss:
+    Back: Back
   BasicFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   BigFamilyPage:
@@ -47,7 +53,6 @@ eo:
     HasBrokenLink: 'havas rompitan ligilon'
     HasBrokenLinkAndFile: 'havas rompitan ligilon kaj dosieron'
     HoverTitleEditPage: 'Redakti paĝon'
-    NOITEMSFOUND: 'No items found'
     PageName: 'Page name'
     ReasonDropdown: 'Problemo kontrolota'
     ReasonDropdownBROKENFILE: 'Rompita dosiero'
@@ -55,8 +60,6 @@ eo:
     ReasonDropdownRPBROKENLINK: 'Alidirekta paĝo direktanta al neekzistanta paĝo'
     ReasonDropdownVPBROKENLINK: 'Virtuala paĝo direktanta al neekzistanta paĝo'
     RedirectorNonExistent: 'alidirekta paĝo direktanta al neekzistanta paĝo'
-    SORTASC: 'Ordigi kreske'
-    SORTDESC: 'Ordigi malkreske'
     VirtualPageNonExistent: 'virtuala paĝo direktanta al neekzistanta paĝo'
   CMSAddPageController:
     Title: 'Add page'
@@ -70,8 +73,6 @@ eo:
     UNPUBLISHED_PAGES: 'Malpublikigis %d paĝojn'
     UNPUBLISH_PAGES: Malpublikigi
   CMSFileAddController:
-    CANACCESS: 'Vi povas aliri la enarkivigitan retejon je ĉi tiu ligilo:'
-    HAVEASKED: 'Vi petis vidi la enhavon de nia retejo je'
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -113,6 +114,9 @@ eo:
     TabSettings: Settings
     TreeFiltered: 'Filtered tree.'
     TreeFilteredClear: 'Clear filter'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Apply Filter'
+    RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
@@ -129,7 +133,12 @@ eo:
     SHOWVERSION: 'Show Version'
     VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Author
+    NOTPUBLISHED: 'Not published'
+    PUBLISHER: Publisher
+    UNKNOWN: Unknown
+    WHEN: When
   CMSPageSettingsController:
     MENUTITLE: 'Edit Page'
   CMSPagesController:
@@ -137,30 +146,20 @@ eo:
     ListView: 'List View'
     MENUTITLE: Pages
     TreeView: 'Tree View'
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: 'Drag''n''drop'
+    MULTISELECT: Multi-selection
+  CMSPagesController_Tools.ss:
+    FILTER: Filter
   CMSSearch:
     FILTERDATEFROM: From
     FILTERDATEHEADING: Date
     FILTERDATETO: To
     FILTERLABELTEXT: Content
   CMSSettingsController:
-    AUTHOR: Author
     MENUTITLE: Settings
-    NOTPUBLISHED: 'Not published'
-    PUBLISHER: Publisher
-    UNKNOWN: Unknown
-    WHEN: When
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
-    ENABLEDRAGGING: 'Drag''n''drop'
-    GO: Ek
-    MULTISELECT: Multi-selection
-    OF: of
-    TO: to
     Title: 'Changed pages'
-    VIEWFIRST: 'Vidigi unuan'
-    VIEWLAST: 'Vidigi lastan'
-    VIEWNEXT: 'Vidigi sekvan'
-    VIEWPREVIOUS: 'Vidigi antaŭan'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
@@ -228,7 +227,6 @@ eo:
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -242,7 +240,6 @@ eo:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: CMS-aliro
-    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: Enhavopermesoj
     PERMISSIONS_CATEGORY: 'Roloj kaj aliraj permesoj'
@@ -257,7 +254,6 @@ eo:
     YOURPAGE: 'Paĝo en via retejo'
   RelationFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filter
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -311,7 +307,6 @@ eo:
     BUTTONSAVEPUBLISH: 'Konservi kaj Publikigi'
     BUTTONUNPUBLISH: Maleldonu
     BUTTONUNPUBLISHDESC: 'Forigu ĉi tiu paĝo de la eldoniĝ ejon'
-    Back: Back
     CREATED: 'Date Created'
     Comments: Komentoj
     Content: Enhavo
@@ -392,12 +387,27 @@ eo:
     NAME: 'Statika eksportilo'
   TableListField:
     SELECT: 'Select:'
+  TableListField.ss:
+    NOITEMSFOUND: 'No items found'
+    SORTASC: 'Ordigi kreske'
+    SORTDESC: 'Ordigi malkreske'
+  TableListField_PageControls.ss:
+    DISPLAYING: Displaying
+    OF: of
+    TO: to
+    VIEWFIRST: 'Vidigi unuan'
+    VIEWLAST: 'Vidigi lastan'
+    VIEWNEXT: 'Vidigi sekvan'
+    VIEWPREVIOUS: 'Vidigi antaŭan'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
   TestPage:
     DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'Vi povas aliri la enarkivigitan retejon je ĉi tiu ligilo:'
+    HAVEASKED: 'Vi petis vidi la enhavon de nia retejo je'
   VirtualPage:
     CHOOSE: 'Elektu paĝon ligi'
     DESCRIPTION: 'Displays the content of another page'

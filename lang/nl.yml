@@ -26,9 +26,15 @@ nl:
     Upload: Uploaden
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Verwijder mappen'
+  AssetAdmin_Tools.ss:
+    FILTER: Filter
+  AssetAdmin_left.ss:
+    GO: Doen
   AssetTableField:
     BACKLINKCOUNT: 'Gebruikt op:'
     PAGES: pagina(s)
+  BackLink_Button.ss:
+    Back: Terug
   BasicFieldsTestPage:
     DESCRIPTION: 'Algemene tekst pagina'
   BigFamilyPage:
@@ -47,7 +53,6 @@ nl:
     HasBrokenLink: 'heeft verbroken link'
     HasBrokenLinkAndFile: 'heeft verbroken link en bestand'
     HoverTitleEditPage: 'Wijzig pagina'
-    NOITEMSFOUND: 'Geen items gevonden'
     PageName: Paginanaam
     ReasonDropdown: 'Te controleren probleem'
     ReasonDropdownBROKENFILE: 'Verbroken bestand'
@@ -55,8 +60,6 @@ nl:
     ReasonDropdownRPBROKENLINK: 'Verwijzingspagina wijst naar niet bestaande pagina'
     ReasonDropdownVPBROKENLINK: 'Virtuele pagina verwijst naar niet bestaande pagina'
     RedirectorNonExistent: 'verwijzingspagina wijst naar niet bestaande pagina'
-    SORTASC: 'Sorteer op oplopende volgorde'
-    SORTDESC: 'Sorteer op aflopende volgorde'
     VirtualPageNonExistent: 'virtuele pagina verwijst naar niet bestaande pagina'
   CMSAddPageController:
     Title: 'Pagina toevoegen'
@@ -70,8 +73,6 @@ nl:
     UNPUBLISHED_PAGES: 'Publicatie van %d pagina''s ingetrokken'
     UNPUBLISH_PAGES: 'Publicatie intrekken'
   CMSFileAddController:
-    CANACCESS: 'U kunt de gearchiveerde site bekijken via deze link:'
-    HAVEASKED: 'U heeft de inhoud van onze site opgevraagd op'
     MENUTITLE: Bestanden
   CMSMain:
     ACCESS: 'Toegang tot het ''{title}'' gedeelte'
@@ -113,6 +114,9 @@ nl:
     TabSettings: Instellingen
     TreeFiltered: 'Gefilterde boomstructuur.'
     TreeFilteredClear: 'Filter resetten'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Filter toepassen'
+    RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Pagina toevoegen'
     ParentMode_child: 'Onder een andere pagina'
@@ -129,7 +133,12 @@ nl:
     SHOWVERSION: 'Toon Versie'
     VIEW: toon
     VIEWINGVERSION: 'U bekijkt nu versie {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Filter toepassen"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Auteur
+    NOTPUBLISHED: 'Niet gepubliceerd'
+    PUBLISHER: Uitgever
+    UNKNOWN: Onbekend
+    WHEN: Wanneer
   CMSPageSettingsController:
     MENUTITLE: 'Wijzig pagina'
   CMSPagesController:
@@ -137,30 +146,20 @@ nl:
     ListView: Lijstweergave
     MENUTITLE: 'Pagina''s'
     TreeView: 'Hierarchische weergave'
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: Slepen
+    MULTISELECT: 'Meervoudige selectie'
+  CMSPagesController_Tools.ss:
+    FILTER: Filteren
   CMSSearch:
     FILTERDATEFROM: Van
     FILTERDATEHEADING: Datum
     FILTERDATETO: Aan
     FILTERLABELTEXT: Inhoud
   CMSSettingsController:
-    AUTHOR: Auteur
     MENUTITLE: Instellingen
-    NOTPUBLISHED: 'Niet gepubliceerd'
-    PUBLISHER: Uitgever
-    UNKNOWN: Onbekend
-    WHEN: Wanneer
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Tonen
-    ENABLEDRAGGING: Slepen
-    GO: Doen
-    MULTISELECT: 'Meervoudige selectie'
-    OF: van
-    TO: naar
     Title: 'Gewijzigde pagina''s'
-    VIEWFIRST: 'Bekijk eerste'
-    VIEWLAST: 'Bekijk laatste'
-    VIEWNEXT: 'Toon volgende'
-    VIEWPREVIOUS: 'Bekijk vorige'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Alle pagina''s (inclusief verwijderde)'
   CMSSiteTreeFilter_Search:
@@ -228,7 +227,6 @@ nl:
     UploadFilesButton: Uploaden
   GridFieldTestPage:
     DESCRIPTION: 'Algemene tekst pagina'
-    FILTER: Filteren
   LeftAndMain:
     DELETED: Verwijderd.
     PreviewButton: Voorbeeld
@@ -242,7 +240,6 @@ nl:
     DESCRIPTION: 'Algemene tekst pagina'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Toegang'
-    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: Inhoudsrechten
     PERMISSIONS_CATEGORY: 'Rollen en toegangsrechten'
@@ -257,7 +254,6 @@ nl:
     YOURPAGE: 'Pagina op deze website'
   RelationFieldsTestPage:
     DESCRIPTION: 'Algemene tekst pagina'
-    FILTER: Filter
   ReportAdmin:
     MENUTITLE: Rapporten
   ReportAdminForm:
@@ -311,7 +307,6 @@ nl:
     BUTTONSAVEPUBLISH: 'Bewaar en Publiceer'
     BUTTONUNPUBLISH: 'Publicatie intrekken'
     BUTTONUNPUBLISHDESC: 'Deze pagina verwijderen uit de gepubliceerde site'
-    Back: Terug
     CREATED: 'Datum gemaakt'
     Comments: Commentaar
     Content: Inhoud
@@ -392,12 +387,27 @@ nl:
     NAME: 'Statische export'
   TableListField:
     SELECT: 'Selecteer:'
+  TableListField.ss:
+    NOITEMSFOUND: 'Geen items gevonden'
+    SORTASC: 'Sorteer op oplopende volgorde'
+    SORTDESC: 'Sorteer op aflopende volgorde'
+  TableListField_PageControls.ss:
+    DISPLAYING: Tonen
+    OF: van
+    TO: naar
+    VIEWFIRST: 'Bekijk eerste'
+    VIEWLAST: 'Bekijk laatste'
+    VIEWNEXT: 'Toon volgende'
+    VIEWPREVIOUS: 'Bekijk vorige'
   TestFileUploadPage:
     DESCRIPTION: 'Algemene tekst pagina'
   TestPage:
     DESCRIPTION: 'Algemene tekst pagina'
   TreeTools:
     DisplayLabel: 'Weergeven:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'U kunt de gearchiveerde site bekijken via deze link:'
+    HAVEASKED: 'U heeft de inhoud van onze site opgevraagd op'
   VirtualPage:
     CHOOSE: 'Kies een pagina om naar te verwijzen'
     DESCRIPTION: 'Geeft de inhoud van een andere pagina weer'

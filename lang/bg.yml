@@ -3,7 +3,7 @@ bg:
     ADDFILES: 'Добави файлове'
     ALLOWEDEXTS: 'Разрешени разширения'
     ActionAdd: 'Добави директория'
-    AppCategoryArchive: Архив
+    AppCategoryArchive: 'Архив'
     AppCategoryAudio: Audio
     AppCategoryFlash: Flash
     AppCategoryImage: Image
@@ -20,15 +20,21 @@ bg:
     ListView: 'List View'
     MENUTITLE: Файлове
     NEWFOLDER: 'Нова директория'
-    SIZE: Размер
+    SIZE: 'Размер'
     THUMBSDELETED: '{count} unused thumbnails have been deleted'
     TreeView: 'Tree View'
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
+  AssetAdmin_Tools.ss:
+    FILTER: Филтър
+  AssetAdmin_left.ss:
+    GO: Давай
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
     PAGES: page(s)
+  BackLink_Button.ss:
+    Back: Back
   BasicFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   BigFamilyPage:
@@ -47,7 +53,6 @@ bg:
     HasBrokenLink: 'има развален линк'
     HasBrokenLinkAndFile: 'има развален линк и файл'
     HoverTitleEditPage: 'Редактиране на страницата'
-    NOITEMSFOUND: 'No items found'
     PageName: 'Page name'
     ReasonDropdown: 'Проблем за проверка'
     ReasonDropdownBROKENFILE: 'Развален файл'
@@ -55,8 +60,6 @@ bg:
     ReasonDropdownRPBROKENLINK: 'Страница за пренасочване, сочеща към несъществуваща страница'
     ReasonDropdownVPBROKENLINK: 'Виртуална страница, сочеща към несъществуваща страница'
     RedirectorNonExistent: 'Страница за пренасочване, сочеща към несъществуваща страница'
-    SORTASC: 'Сортирай възходящо'
-    SORTDESC: 'Сортирай низходящо'
     VirtualPageNonExistent: 'Виртуална страница, сочеща към несъществуваща страница'
   CMSAddPageController:
     Title: 'Добави страница'
@@ -70,8 +73,6 @@ bg:
     UNPUBLISHED_PAGES: 'Премахнати от публикация %d страници'
     UNPUBLISH_PAGES: Un-publish
   CMSFileAddController:
-    CANACCESS: 'You can access the archived site at this link:'
-    HAVEASKED: 'You have asked to view the content of our site on'
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -113,6 +114,9 @@ bg:
     TabSettings: Настройки
     TreeFiltered: 'Filtered tree.'
     TreeFilteredClear: 'Clear filter'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Apply Filter'
+    RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Добави страница'
     ParentMode_child: 'Под друга страница'
@@ -129,7 +133,12 @@ bg:
     SHOWVERSION: 'Покажи версията'
     VIEW: Изглед
     VIEWINGVERSION: 'Currently viewing version {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Автор
+    NOTPUBLISHED: Чернова
+    PUBLISHER: Автор
+    UNKNOWN: Unknown
+    WHEN: Когато
   CMSPageSettingsController:
     MENUTITLE: 'Редактиране на страницата'
   CMSPagesController:
@@ -137,30 +146,20 @@ bg:
     ListView: 'Изглед в списък'
     MENUTITLE: Страници
     TreeView: 'Дървовиден изглед'
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: 'Drag''n''drop (теглене и пускане)'
+    MULTISELECT: 'Избиране на няколко'
+  CMSPagesController_Tools.ss:
+    FILTER: Филтър
   CMSSearch:
     FILTERDATEFROM: От
     FILTERDATEHEADING: Дата
     FILTERDATETO: Към
     FILTERLABELTEXT: Content
   CMSSettingsController:
-    AUTHOR: Автор
     MENUTITLE: Настройки
-    NOTPUBLISHED: Чернова
-    PUBLISHER: Автор
-    UNKNOWN: Unknown
-    WHEN: Когато
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
-    ENABLEDRAGGING: 'Drag''n''drop (теглене и пускане)'
-    GO: Давай
-    MULTISELECT: 'Избиране на няколко'
-    OF: of
-    TO: to
     Title: 'Changed pages'
-    VIEWFIRST: 'Преглед на първото'
-    VIEWLAST: 'Преглед на последното'
-    VIEWNEXT: 'Преглед на следващото'
-    VIEWPREVIOUS: 'Преглед на предишното'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Всички страници, включително изтритите'
   CMSSiteTreeFilter_Search:
@@ -181,7 +180,7 @@ bg:
     InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
     LOGGEDINAS: 'Влязъл като'
     LOGIN: Login
-    LOGOUT: Изход
+    LOGOUT: 'Изход'
     NOTLOGGEDIN: 'Извън системата'
     PUBLISHEDSITE: 'Публикувани страници'
     Password: Password
@@ -228,7 +227,6 @@ bg:
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Филтър
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -242,7 +240,6 @@ bg:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
-    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'Права по съдържанието'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
@@ -257,7 +254,6 @@ bg:
     YOURPAGE: 'Страница на вашият уебсайт'
   RelationFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Филтър
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -311,7 +307,6 @@ bg:
     BUTTONSAVEPUBLISH: 'Съхрани и Публикувай'
     BUTTONUNPUBLISH: 'Премахни от публикация'
     BUTTONUNPUBLISHDESC: 'Премахни тази страница от публикувания сайт'
-    Back: Back
     CREATED: 'Дата на създаване'
     Comments: Съдържание
     Content: Съдържание
@@ -392,12 +387,27 @@ bg:
     NAME: 'Static exporter'
   TableListField:
     SELECT: 'Select:'
+  TableListField.ss:
+    NOITEMSFOUND: 'No items found'
+    SORTASC: 'Сортирай възходящо'
+    SORTDESC: 'Сортирай низходящо'
+  TableListField_PageControls.ss:
+    DISPLAYING: Displaying
+    OF: of
+    TO: to
+    VIEWFIRST: 'Преглед на първото'
+    VIEWLAST: 'Преглед на последното'
+    VIEWNEXT: 'Преглед на следващото'
+    VIEWPREVIOUS: 'Преглед на предишното'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
   TestPage:
     DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Покажи:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'You can access the archived site at this link:'
+    HAVEASKED: 'You have asked to view the content of our site on'
   VirtualPage:
     CHOOSE: 'Изберете страница към която да обвържете'
     DESCRIPTION: 'Показва съдържанието на друга страница'

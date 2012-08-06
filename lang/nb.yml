@@ -26,9 +26,15 @@ nb:
     Upload: 'Last opp'
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Slett foldere'
+  AssetAdmin_Tools.ss:
+    FILTER: Filter
+  AssetAdmin_left.ss:
+    GO: Go
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
     PAGES: page(s)
+  BackLink_Button.ss:
+    Back: Tilbake
   BasicFieldsTestPage:
     DESCRIPTION: 'Generisk innholdsside'
   BigFamilyPage:
@@ -47,7 +53,6 @@ nb:
     HasBrokenLink: 'has broken link'
     HasBrokenLinkAndFile: 'has broken link and file'
     HoverTitleEditPage: 'Rediger side'
-    NOITEMSFOUND: 'No items found'
     PageName: Sidenavn
     ReasonDropdown: 'Problem to check'
     ReasonDropdownBROKENFILE: 'Broken file'
@@ -55,8 +60,6 @@ nb:
     ReasonDropdownRPBROKENLINK: 'Omdirigeringsside peker til ikke-eksisterende side'
     ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
     RedirectorNonExistent: 'redirector page pointing to non-existent page'
-    SORTASC: 'Sorter i stigende rekkefølge'
-    SORTDESC: 'Sorter i synkende rekkefølge'
     VirtualPageNonExistent: 'Virtuell side peker til ikke-eksisterende side'
   CMSAddPageController:
     Title: 'Legg til side'
@@ -70,8 +73,6 @@ nb:
     UNPUBLISHED_PAGES: 'Un-published %d pages'
     UNPUBLISH_PAGES: Un-publish
   CMSFileAddController:
-    CANACCESS: 'You can access the archived site at this link:'
-    HAVEASKED: 'You have asked to view the content of our site on'
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -113,6 +114,9 @@ nb:
     TabSettings: Settings
     TreeFiltered: 'Filtered tree.'
     TreeFilteredClear: 'Clear filter'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Apply Filter'
+    RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Legg til side'
     ParentMode_child: 'Under another page'
@@ -129,7 +133,12 @@ nb:
     SHOWVERSION: 'Vis versjon'
     VIEW: Visning
     VIEWINGVERSION: 'Currently viewing version {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Forfatter
+    NOTPUBLISHED: 'Ikke utgitt'
+    PUBLISHER: Utgiver
+    UNKNOWN: Ukjent
+    WHEN: Når
   CMSPageSettingsController:
     MENUTITLE: 'Rediger siden'
   CMSPagesController:
@@ -137,30 +146,20 @@ nb:
     ListView: Listevisning
     MENUTITLE: Sider
     TreeView: Trevisning
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: 'Drag''n''drop'
+    MULTISELECT: Multi-selection
+  CMSPagesController_Tools.ss:
+    FILTER: Filter
   CMSSearch:
     FILTERDATEFROM: Fra
     FILTERDATEHEADING: Dato
     FILTERDATETO: Til
     FILTERLABELTEXT: Innhold
   CMSSettingsController:
-    AUTHOR: Forfatter
     MENUTITLE: Innstillinger
-    NOTPUBLISHED: 'Ikke utgitt'
-    PUBLISHER: Utgiver
-    UNKNOWN: Ukjent
-    WHEN: Når
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
-    ENABLEDRAGGING: 'Drag''n''drop'
-    GO: Go
-    MULTISELECT: Multi-selection
-    OF: of
-    TO: to
     Title: 'Changed pages'
-    VIEWFIRST: 'Se første'
-    VIEWLAST: 'Se siste'
-    VIEWNEXT: 'Se neste'
-    VIEWPREVIOUS: 'Se forrige'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Alle sider, inkludert slettede'
   CMSSiteTreeFilter_Search:
@@ -228,7 +227,6 @@ nb:
     UploadFilesButton: 'Last opp'
   GridFieldTestPage:
     DESCRIPTION: 'Generisk innholdsside'
-    FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Forhåndsvisning
@@ -242,7 +240,6 @@ nb:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
-    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
@@ -257,7 +254,6 @@ nb:
     YOURPAGE: 'Side på ditt nettsted'
   RelationFieldsTestPage:
     DESCRIPTION: 'Generisk innholdsside'
-    FILTER: Filter
   ReportAdmin:
     MENUTITLE: Rapporter
   ReportAdminForm:
@@ -311,7 +307,6 @@ nb:
     BUTTONSAVEPUBLISH: 'Lagre & Publiser'
     BUTTONUNPUBLISH: Av-publiser
     BUTTONUNPUBLISHDESC: 'Fjern denne siden fra det publiserte nettstedet'
-    Back: Tilbake
     CREATED: 'Date Created'
     Comments: Kommentarer
     Content: Innhold
@@ -392,12 +387,27 @@ nb:
     NAME: 'Eksport av statiske sider'
   TableListField:
     SELECT: 'Velg:'
+  TableListField.ss:
+    NOITEMSFOUND: 'No items found'
+    SORTASC: 'Sorter i stigende rekkefølge'
+    SORTDESC: 'Sorter i synkende rekkefølge'
+  TableListField_PageControls.ss:
+    DISPLAYING: Displaying
+    OF: of
+    TO: to
+    VIEWFIRST: 'Se første'
+    VIEWLAST: 'Se siste'
+    VIEWNEXT: 'Se neste'
+    VIEWPREVIOUS: 'Se forrige'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
   TestPage:
     DESCRIPTION: 'Generisk innholdsside'
   TreeTools:
     DisplayLabel: 'Display:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'You can access the archived site at this link:'
+    HAVEASKED: 'You have asked to view the content of our site on'
   VirtualPage:
     CHOOSE: 'Velg en side å lenke til'
     DESCRIPTION: 'Viser innholdet av en annen side'

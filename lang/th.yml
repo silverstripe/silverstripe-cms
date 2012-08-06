@@ -6,7 +6,7 @@ th:
     AppCategoryArchive: Archive
     AppCategoryAudio: ไฟล์เสียง
     AppCategoryFlash: แฟลช
-    AppCategoryImage: รูปภาพ
+    AppCategoryImage: 'รูปภาพ'
     AppCategoryVideo: วีดีโอ
     BackToFolder: ย้อนกลับไปที่โฟลเดอร์
     CREATED: วันที่
@@ -26,9 +26,15 @@ th:
     Upload: อัพโหลด
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
+  AssetAdmin_Tools.ss:
+    FILTER: ตัวกรองข้อมูล
+  AssetAdmin_left.ss:
+    GO: ไป
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
     PAGES: page(s)
+  BackLink_Button.ss:
+    Back: ย้อนกลับ
   BasicFieldsTestPage:
     DESCRIPTION: หน้าเนื้อหาทั่วไป
   BigFamilyPage:
@@ -41,13 +47,12 @@ th:
     CheckSiteDropdownPublished: เว็บไซต์ที่เผยแพร่แล้ว
     ColumnDateLastModified: วันที่แก้ไขล่าสุด
     ColumnDateLastPublished: วันที่เผยแพร่ล่าสุด
-    ColumnProblemType: ประเภทปัญหา
+    ColumnProblemType: 'ประเภทปัญหา'
     ColumnURL: URL
     HasBrokenFile: มีไฟล์เสีย
     HasBrokenLink: มีลิงค์เสีย
     HasBrokenLinkAndFile: มีลิงค์เสียและไฟล์เสีย
     HoverTitleEditPage: แก้ไขหน้าเว็บ
-    NOITEMSFOUND: 'No items found'
     PageName: ชื่อของหน้าเว็บ
     ReasonDropdown: ปัญหาที่ต้องตรวจสอบ
     ReasonDropdownBROKENFILE: ไฟล์เสีย
@@ -55,8 +60,6 @@ th:
     ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
     ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
     RedirectorNonExistent: 'redirector page pointing to non-existent page'
-    SORTASC: จัดเรียงลำดับจากน้อยมามาก
-    SORTDESC: จัดเรียงลำดับจากมากมาน้อย
     VirtualPageNonExistent: 'virtual page pointing to non-existent page'
   CMSAddPageController:
     Title: เพิ่มหน้า
@@ -70,8 +73,6 @@ th:
     UNPUBLISHED_PAGES: 'ยกเลิกการเผยแพร่หน้าเว็บแล้ว %d หน้า'
     UNPUBLISH_PAGES: ยกเลิกการเผยแพร่
   CMSFileAddController:
-    CANACCESS: 'คุณสามารถเข้าถึงเว็บไซต์รุ่นย้อนหลังได้จากลิงก์นี้:'
-    HAVEASKED: คุณได้ร้องขอเพื่อเปิดดูเนื้อหาในเว็บไซต์ของเราเมื่อ
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -113,6 +114,9 @@ th:
     TabSettings: Settings
     TreeFiltered: 'Filtered tree.'
     TreeFilteredClear: 'Clear filter'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Apply Filter'
+    RESET: Reset
   CMSPageAddController:
     MENUTITLE: เพิ่มหน้า
     ParentMode_child: อยู่ใต้หน้าอื่นๆ
@@ -129,7 +133,12 @@ th:
     SHOWVERSION: แสดงข้อมูลรุ่น
     VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: ผู้แต่ง
+    NOTPUBLISHED: ยังไม่ได้เผยแพร่
+    PUBLISHER: ผู้เผยแพร่
+    UNKNOWN: Unknown
+    WHEN: เมื่อ
   CMSPageSettingsController:
     MENUTITLE: แก้ไขหน้าเว็บ
   CMSPagesController:
@@ -137,30 +146,20 @@ th:
     ListView: มุมมองแบบแสดงรายการ
     MENUTITLE: หน้า
     TreeView: 'มุมมองแบบ Tree'
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: ลากแล้วปล่อย
+    MULTISELECT: Multi-selection
+  CMSPagesController_Tools.ss:
+    FILTER: ตัวกรองข้อมูล
   CMSSearch:
     FILTERDATEFROM: จาก
     FILTERDATEHEADING: วันที่
     FILTERDATETO: ถึง
     FILTERLABELTEXT: เนื้อหา
   CMSSettingsController:
-    AUTHOR: ผู้แต่ง
     MENUTITLE: ตั้งค่า
-    NOTPUBLISHED: ยังไม่ได้เผยแพร่
-    PUBLISHER: ผู้เผยแพร่
-    UNKNOWN: Unknown
-    WHEN: เมื่อ
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
-    ENABLEDRAGGING: ลากแล้วปล่อย
-    GO: ไป
-    MULTISELECT: Multi-selection
-    OF: of
-    TO: to
     Title: 'Changed pages'
-    VIEWFIRST: เปิดดูหน้าแรก
-    VIEWLAST: เปิดดูหน้าสุดท้าย
-    VIEWNEXT: เปิดดูถัดไป
-    VIEWPREVIOUS: เปิดดูก่อนหน้า
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
@@ -228,7 +227,6 @@ th:
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: หน้าเนื้อหาทั่วไป
-    FILTER: ตัวกรองข้อมูล
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: ดูตัวอย่าง
@@ -242,7 +240,6 @@ th:
     DESCRIPTION: หน้าเนื้อหาทั่วไป
   Permission:
     CMS_ACCESS_CATEGORY: 'การเข้าถึง CMS'
-    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
@@ -257,7 +254,6 @@ th:
     YOURPAGE: หน้าเว็บที่อยู่บนเว็บไซต์ของคุณ
   RelationFieldsTestPage:
     DESCRIPTION: หน้าเนื้อหาทั่วไป
-    FILTER: ตัวกรองข้อมูล
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -311,7 +307,6 @@ th:
     BUTTONSAVEPUBLISH: บันทึกและเผยแพร่
     BUTTONUNPUBLISH: ยังไม่ได้เผยแพร่
     BUTTONUNPUBLISHDESC: 'Remove this page from the published site'
-    Back: ย้อนกลับ
     CREATED: 'Date Created'
     Comments: ความคิดเห็น
     Content: เนื้อหา
@@ -392,12 +387,27 @@ th:
     NAME: ตัวส่งออกข้อมูลแบบนิ่งอยู่กับที่
   TableListField:
     SELECT: เลือก
+  TableListField.ss:
+    NOITEMSFOUND: 'No items found'
+    SORTASC: จัดเรียงลำดับจากน้อยมามาก
+    SORTDESC: จัดเรียงลำดับจากมากมาน้อย
+  TableListField_PageControls.ss:
+    DISPLAYING: Displaying
+    OF: of
+    TO: to
+    VIEWFIRST: เปิดดูหน้าแรก
+    VIEWLAST: เปิดดูหน้าสุดท้าย
+    VIEWNEXT: เปิดดูถัดไป
+    VIEWPREVIOUS: เปิดดูก่อนหน้า
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
   TestPage:
     DESCRIPTION: หน้าเนื้อหาทั่วไป
   TreeTools:
     DisplayLabel: 'แสดง:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'คุณสามารถเข้าถึงเว็บไซต์รุ่นย้อนหลังได้จากลิงก์นี้:'
+    HAVEASKED: คุณได้ร้องขอเพื่อเปิดดูเนื้อหาในเว็บไซต์ของเราเมื่อ
   VirtualPage:
     CHOOSE: 'Choose a page to link to'
     DESCRIPTION: 'Displays the content of another page'

@@ -26,9 +26,15 @@ pl:
     Upload: Prześlij
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Usuń foldery'
+  AssetAdmin_Tools.ss:
+    FILTER: Filtr
+  AssetAdmin_left.ss:
+    GO: Przejdź
   AssetTableField:
     BACKLINKCOUNT: 'Używany na:'
     PAGES: stron(y)
+  BackLink_Button.ss:
+    Back: Wstecz
   BasicFieldsTestPage:
     DESCRIPTION: 'Zwykła strona'
   BigFamilyPage:
@@ -47,7 +53,6 @@ pl:
     HasBrokenLink: 'ma uszkodzony link'
     HasBrokenLinkAndFile: 'ma uszkodzony link oraz plik'
     HoverTitleEditPage: 'Edytuj stronę'
-    NOITEMSFOUND: 'Nic nie znaleziono'
     PageName: 'Nazwa strony'
     ReasonDropdown: 'Problem do sprawdzenia'
     ReasonDropdownBROKENFILE: 'Uszkodzony plik'
@@ -55,8 +60,6 @@ pl:
     ReasonDropdownRPBROKENLINK: 'Strona przekierowująca wskazuje na nieistniejącą stronę'
     ReasonDropdownVPBROKENLINK: 'Strona wirtualna wskazuje na nieistniejącą stronę'
     RedirectorNonExistent: 'strona przekierowująca wskazuje na nieistniejącą stronę'
-    SORTASC: 'Sortuj w porządku rosnącym'
-    SORTDESC: 'Sortuj w porządku malejącym'
     VirtualPageNonExistent: 'strona wirtualna wskazuje na nieistniejącą stronę'
   CMSAddPageController:
     Title: 'Dodaj stronę'
@@ -70,8 +73,6 @@ pl:
     UNPUBLISHED_PAGES: 'Usunięto z opublikowanych %d stron'
     UNPUBLISH_PAGES: 'Cofnij publikację'
   CMSFileAddController:
-    CANACCESS: 'Dostęp do zarchiwizowanej witryny:'
-    HAVEASKED: 'Poprosiłeś o obejrzenie treści naszej strony na'
     MENUTITLE: Pliki
   CMSMain:
     ACCESS: 'Dostęp do ''{title}'''
@@ -113,6 +114,9 @@ pl:
     TabSettings: Ustawienia
     TreeFiltered: 'Filtruj drzewko'
     TreeFilteredClear: 'Wyczyść filtr'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Zastosuj filtr'
+    RESET: Resetuj
   CMSPageAddController:
     MENUTITLE: 'Dodaj stronę'
     ParentMode_child: 'Pod inną stroną'
@@ -129,7 +133,12 @@ pl:
     SHOWVERSION: 'Pokaż wersję'
     VIEW: zobacz
     VIEWINGVERSION: 'Obecnie oglądasz wersję {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Zastosuj filtr"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Autor
+    NOTPUBLISHED: Nieopublikowana
+    PUBLISHER: Edytor
+    UNKNOWN: Nieznany
+    WHEN: Kiedy
   CMSPageSettingsController:
     MENUTITLE: 'Edytuj stronę'
   CMSPagesController:
@@ -137,30 +146,20 @@ pl:
     ListView: 'Widok listy'
     MENUTITLE: Strony
     TreeView: 'Widok drzewa'
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: 'Przeciągnij i upuść'
+    MULTISELECT: 'Multi wybór'
+  CMSPagesController_Tools.ss:
+    FILTER: Filtr
   CMSSearch:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Data
     FILTERDATETO: Do
     FILTERLABELTEXT: Zawartość
   CMSSettingsController:
-    AUTHOR: Autor
     MENUTITLE: Ustawienia
-    NOTPUBLISHED: Nieopublikowana
-    PUBLISHER: Edytor
-    UNKNOWN: Nieznany
-    WHEN: Kiedy
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Wyświetlane
-    ENABLEDRAGGING: 'Przeciągnij i upuść'
-    GO: Przejdź
-    MULTISELECT: 'Multi wybór'
-    OF: z
-    TO: do
     Title: 'Zmienione strony'
-    VIEWFIRST: 'Zobacz pierwsze'
-    VIEWLAST: 'Zobacz ostatnie'
-    VIEWNEXT: 'Zobacz następne'
-    VIEWPREVIOUS: 'Zobacz poprzednie'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Wszystkie strony włącznie z usuniętymi'
   CMSSiteTreeFilter_Search:
@@ -228,10 +227,9 @@ pl:
     UploadFilesButton: Prześlij
   GridFieldTestPage:
     DESCRIPTION: 'Zwykła strona'
-    FILTER: Filtr
   LeftAndMain:
     DELETED: Usunięty
-    PreviewButton: Podgląd
+    PreviewButton: 'Podgląd'
     SAVEDUP: Zapisane
     STATUSPUBLISHEDSUCCESS: 'Opublikowano ''{title}'' '
     SearchResults: 'Wyniki wyszukiwania'
@@ -242,7 +240,6 @@ pl:
     DESCRIPTION: 'Zwykła strona'
   Permission:
     CMS_ACCESS_CATEGORY: 'Dostęp do CMS'
-    RESET: Resetuj
   Permissions:
     CONTENT_CATEGORY: 'Uprawnienie edycji treści'
     PERMISSIONS_CATEGORY: 'Uprawnienia ról i dostępu'
@@ -257,7 +254,6 @@ pl:
     YOURPAGE: 'Strona na Twojej witrynie'
   RelationFieldsTestPage:
     DESCRIPTION: 'Zwykła strona'
-    FILTER: Filtr
   ReportAdmin:
     MENUTITLE: Raporty
   ReportAdminForm:
@@ -311,7 +307,6 @@ pl:
     BUTTONSAVEPUBLISH: 'Zapisz i opublikuj'
     BUTTONUNPUBLISH: Nieopublikowane
     BUTTONUNPUBLISHDESC: 'Zmień tę stronę na opublikowaną'
-    Back: Wstecz
     CREATED: 'Data utworzenia'
     Comments: Komentarze
     Content: Zawartość
@@ -392,12 +387,27 @@ pl:
     NAME: 'Statyczny eksporter'
   TableListField:
     SELECT: 'Wybierz:'
+  TableListField.ss:
+    NOITEMSFOUND: 'Nic nie znaleziono'
+    SORTASC: 'Sortuj w porządku rosnącym'
+    SORTDESC: 'Sortuj w porządku malejącym'
+  TableListField_PageControls.ss:
+    DISPLAYING: Wyświetlane
+    OF: z
+    TO: do
+    VIEWFIRST: 'Zobacz pierwsze'
+    VIEWLAST: 'Zobacz ostatnie'
+    VIEWNEXT: 'Zobacz następne'
+    VIEWPREVIOUS: 'Zobacz poprzednie'
   TestFileUploadPage:
     DESCRIPTION: 'Zwykła strona'
   TestPage:
     DESCRIPTION: 'Zwykła strona'
   TreeTools:
     DisplayLabel: 'Wyświetl:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'Dostęp do zarchiwizowanej witryny:'
+    HAVEASKED: 'Poprosiłeś o obejrzenie treści naszej strony na'
   VirtualPage:
     CHOOSE: 'Zmień link do strony'
     DESCRIPTION: 'Wyświetla zawartość innej strony'

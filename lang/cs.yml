@@ -26,9 +26,15 @@ cs:
     Upload: Nahrát
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
+  AssetAdmin_Tools.ss:
+    FILTER: Filtr
+  AssetAdmin_left.ss:
+    GO: Proveď
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
     PAGES: page(s)
+  BackLink_Button.ss:
+    Back: Zpět
   BasicFieldsTestPage:
     DESCRIPTION: 'Obecný obsah stránky'
   BigFamilyPage:
@@ -47,7 +53,6 @@ cs:
     HasBrokenLink: 'porušen odkaz'
     HasBrokenLinkAndFile: 'porušen odkaz a soubor'
     HoverTitleEditPage: 'Editovat stránku'
-    NOITEMSFOUND: 'Nenalezeny žádné záznamy'
     PageName: 'Název stránky'
     ReasonDropdown: 'Problém ke kontrole'
     ReasonDropdownBROKENFILE: 'Porušen soubor'
@@ -55,8 +60,6 @@ cs:
     ReasonDropdownRPBROKENLINK: 'Stránka redirektoru ukazuje na neexistující stránku'
     ReasonDropdownVPBROKENLINK: 'Virtuální stránka ukazuje na neexistující stránku'
     RedirectorNonExistent: 'stránka redirektoru ukazuje na neexistující stránku'
-    SORTASC: 'Třídit v vzestupném pořadí'
-    SORTDESC: 'Třídit v sestupném pořadí'
     VirtualPageNonExistent: 'virtuální stránka ukazuje na neexistující stránku'
   CMSAddPageController:
     Title: 'Přidat stránku'
@@ -70,8 +73,6 @@ cs:
     UNPUBLISHED_PAGES: 'Nezveřejněných %d stránek'
     UNPUBLISH_PAGES: Nezveřejnit
   CMSFileAddController:
-    CANACCESS: 'Můžete přistupovat k archivu pomocí tohoto odkazu:'
-    HAVEASKED: 'Požadovali jste prohlížet obsah našich stránek během'
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -113,6 +114,9 @@ cs:
     TabSettings: Settings
     TreeFiltered: 'Filtered tree.'
     TreeFilteredClear: 'Clear filter'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Apply Filter'
+    RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Přidat stránku'
     ParentMode_child: 'Under another page'
@@ -129,7 +133,12 @@ cs:
     SHOWVERSION: 'Zobrazit verzi'
     VIEW: zobrazit
     VIEWINGVERSION: 'Currently viewing version {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Autor
+    NOTPUBLISHED: Nezveřejněno
+    PUBLISHER: Publisher
+    UNKNOWN: Neznámý
+    WHEN: When
   CMSPageSettingsController:
     MENUTITLE: 'Editovat stránku'
   CMSPagesController:
@@ -137,30 +146,20 @@ cs:
     ListView: Seznam
     MENUTITLE: Stránky
     TreeView: Strom
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: 'Drag''n''drop'
+    MULTISELECT: Multi-selection
+  CMSPagesController_Tools.ss:
+    FILTER: Filtr
   CMSSearch:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Datum
     FILTERDATETO: Do
     FILTERLABELTEXT: Obsah
   CMSSettingsController:
-    AUTHOR: Autor
     MENUTITLE: Možnosti
-    NOTPUBLISHED: Nezveřejněno
-    PUBLISHER: Publisher
-    UNKNOWN: Neznámý
-    WHEN: When
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
-    ENABLEDRAGGING: 'Drag''n''drop'
-    GO: Proveď
-    MULTISELECT: Multi-selection
-    OF: of
-    TO: to
     Title: 'Changed pages'
-    VIEWFIRST: 'Zobrazit první'
-    VIEWLAST: 'Zobrazit poslední'
-    VIEWNEXT: 'Zobrazit další'
-    VIEWPREVIOUS: 'Zobrazit předchozí'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Všechny stránky, včetně odstraněných'
   CMSSiteTreeFilter_Search:
@@ -228,7 +227,6 @@ cs:
     UploadFilesButton: Nahrát
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filtr
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Náhled
@@ -242,7 +240,6 @@ cs:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'Přístup CMS'
-    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'Oprávnění obsahu'
     PERMISSIONS_CATEGORY: 'Role a přístupová práva'
@@ -257,7 +254,6 @@ cs:
     YOURPAGE: 'Stránku na Vašem webu'
   RelationFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filtr
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -311,7 +307,6 @@ cs:
     BUTTONSAVEPUBLISH: 'Uložit a Zveřejnit'
     BUTTONUNPUBLISH: Nezveřejňovat
     BUTTONUNPUBLISHDESC: 'Odstranit tuto stránku z publikovaných na webu'
-    Back: Zpět
     CREATED: 'Datum vytvoření'
     Comments: Komentáře
     Content: Obsah
@@ -392,12 +387,27 @@ cs:
     NAME: 'Statický exportér'
   TableListField:
     SELECT: 'Vybrat:'
+  TableListField.ss:
+    NOITEMSFOUND: 'Nenalezeny žádné záznamy'
+    SORTASC: 'Třídit v vzestupném pořadí'
+    SORTDESC: 'Třídit v sestupném pořadí'
+  TableListField_PageControls.ss:
+    DISPLAYING: Displaying
+    OF: of
+    TO: to
+    VIEWFIRST: 'Zobrazit první'
+    VIEWLAST: 'Zobrazit poslední'
+    VIEWNEXT: 'Zobrazit další'
+    VIEWPREVIOUS: 'Zobrazit předchozí'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
   TestPage:
     DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'Můžete přistupovat k archivu pomocí tohoto odkazu:'
+    HAVEASKED: 'Požadovali jste prohlížet obsah našich stránek během'
   VirtualPage:
     CHOOSE: 'Vyberte, kam má stránka odkazovat'
     DESCRIPTION: 'Zobrazit obsah jiné stránky'

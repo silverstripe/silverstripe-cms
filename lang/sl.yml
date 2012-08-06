@@ -26,9 +26,15 @@ sl:
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
+  AssetAdmin_Tools.ss:
+    FILTER: Filter
+  AssetAdmin_left.ss:
+    GO: Pojdi
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
     PAGES: page(s)
+  BackLink_Button.ss:
+    Back: Back
   BasicFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   BigFamilyPage:
@@ -47,7 +53,6 @@ sl:
     HasBrokenLink: 'ima nedelujočo povezavo'
     HasBrokenLinkAndFile: 'ima nedelujočo povezavo in vsebuje datoteko z napako'
     HoverTitleEditPage: 'Uredi stran'
-    NOITEMSFOUND: 'No items found'
     PageName: 'Ime strani'
     ReasonDropdown: 'Preveri težavo'
     ReasonDropdownBROKENFILE: 'Datoteka z napako'
@@ -55,8 +60,6 @@ sl:
     ReasonDropdownRPBROKENLINK: 'Preusmerjevalna stran, ki kaže na neobstoječo stran'
     ReasonDropdownVPBROKENLINK: 'Navidezna stran, ki kaže na neobstoječo stran'
     RedirectorNonExistent: 'preusmerjevalna stran, ki kaže na neobstoječo stran'
-    SORTASC: 'Razvrsti naraščajoče'
-    SORTDESC: 'Razvrsti padajoče'
     VirtualPageNonExistent: 'navidezna stran, ki kaže na neobstoječo stran'
   CMSAddPageController:
     Title: 'Add page'
@@ -70,8 +73,6 @@ sl:
     UNPUBLISHED_PAGES: 'Število iz objave umaknjenih strani: %d'
     UNPUBLISH_PAGES: 'Umakni iz objave'
   CMSFileAddController:
-    CANACCESS: 'Do arhvirane različice spletnega mesta lahko dostopate na naslovu:'
-    HAVEASKED: 'Za vpogled v vsebino našega spletnega mesta ste zaprosili'
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -113,6 +114,9 @@ sl:
     TabSettings: Settings
     TreeFiltered: 'Filtered tree.'
     TreeFilteredClear: 'Clear filter'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Apply Filter'
+    RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
@@ -129,7 +133,12 @@ sl:
     SHOWVERSION: 'Show Version'
     VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Author
+    NOTPUBLISHED: 'Not published'
+    PUBLISHER: Publisher
+    UNKNOWN: Unknown
+    WHEN: When
   CMSPageSettingsController:
     MENUTITLE: 'Edit Page'
   CMSPagesController:
@@ -137,30 +146,20 @@ sl:
     ListView: 'List View'
     MENUTITLE: Pages
     TreeView: 'Tree View'
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: 'Drag''n''drop'
+    MULTISELECT: Multi-selection
+  CMSPagesController_Tools.ss:
+    FILTER: Filter
   CMSSearch:
     FILTERDATEFROM: From
     FILTERDATEHEADING: Date
     FILTERDATETO: To
     FILTERLABELTEXT: Content
   CMSSettingsController:
-    AUTHOR: Author
     MENUTITLE: Settings
-    NOTPUBLISHED: 'Not published'
-    PUBLISHER: Publisher
-    UNKNOWN: Unknown
-    WHEN: When
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
-    ENABLEDRAGGING: 'Drag''n''drop'
-    GO: Pojdi
-    MULTISELECT: Multi-selection
-    OF: of
-    TO: to
     Title: 'Changed pages'
-    VIEWFIRST: 'Na začetek'
-    VIEWLAST: 'Na konec'
-    VIEWNEXT: Naslednja
-    VIEWPREVIOUS: Prejšnja
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
@@ -228,7 +227,6 @@ sl:
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -242,7 +240,6 @@ sl:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'Dostop do CMS-vmesnika'
-    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'Nastavitve dovoljenj za upravljanje z vsebino'
     PERMISSIONS_CATEGORY: 'Vloge in dovoljenja za dostop'
@@ -257,7 +254,6 @@ sl:
     YOURPAGE: 'Stran na tvojem spletnem mestu'
   RelationFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filter
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -311,7 +307,6 @@ sl:
     BUTTONSAVEPUBLISH: 'Shrani in objavi'
     BUTTONUNPUBLISH: 'Umakni iz objave'
     BUTTONUNPUBLISHDESC: 'Umakni to stran iz objave'
-    Back: Back
     CREATED: 'Date Created'
     Comments: Komentarji
     Content: Vsebina
@@ -392,12 +387,27 @@ sl:
     NAME: 'Statični izvoz'
   TableListField:
     SELECT: 'Izberi:'
+  TableListField.ss:
+    NOITEMSFOUND: 'No items found'
+    SORTASC: 'Razvrsti naraščajoče'
+    SORTDESC: 'Razvrsti padajoče'
+  TableListField_PageControls.ss:
+    DISPLAYING: Displaying
+    OF: of
+    TO: to
+    VIEWFIRST: 'Na začetek'
+    VIEWLAST: 'Na konec'
+    VIEWNEXT: Naslednja
+    VIEWPREVIOUS: Prejšnja
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
   TestPage:
     DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'Do arhvirane različice spletnega mesta lahko dostopate na naslovu:'
+    HAVEASKED: 'Za vpogled v vsebino našega spletnega mesta ste zaprosili'
   VirtualPage:
     CHOOSE: 'Izberite stran, na katero bo vodila povezava'
     DESCRIPTION: 'Displays the content of another page'

@@ -26,9 +26,15 @@ da:
     Upload: Overfør
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Slet mapper'
+  AssetAdmin_Tools.ss:
+    FILTER: Filter
+  AssetAdmin_left.ss:
+    GO: Go
   AssetTableField:
     BACKLINKCOUNT: 'Brugt på:'
     PAGES: side(r)
+  BackLink_Button.ss:
+    Back: Tilbage
   BasicFieldsTestPage:
     DESCRIPTION: 'Standard indholdsside'
   BigFamilyPage:
@@ -47,7 +53,6 @@ da:
     HasBrokenLink: 'har et dårligt link'
     HasBrokenLinkAndFile: 'har et dårligt link og en ødelagt fil'
     HoverTitleEditPage: 'Rediger siden'
-    NOITEMSFOUND: '404 - Not Found'
     PageName: Sidenavn
     ReasonDropdown: 'Problem der skal undersøges'
     ReasonDropdownBROKENFILE: 'Ødelagt fil'
@@ -55,8 +60,6 @@ da:
     ReasonDropdownRPBROKENLINK: 'Viderestillende side der peger på en side der ikke findes'
     ReasonDropdownVPBROKENLINK: 'Virtuel side der peger på en side der ikke findes'
     RedirectorNonExistent: 'Viderestillende side der peger på en side der ikke findes'
-    SORTASC: 'Sorter efter stigende orden'
-    SORTDESC: 'Sorter efter faldende orden'
     VirtualPageNonExistent: 'Virtuel side der peger på en side der ikke findes'
   CMSAddPageController:
     Title: 'Tilføj side'
@@ -70,8 +73,6 @@ da:
     UNPUBLISHED_PAGES: 'U-publiserede %d sider'
     UNPUBLISH_PAGES: U-publisér
   CMSFileAddController:
-    CANACCESS: 'Du kan tilgå¨den arkiverede side på dette link:'
-    HAVEASKED: 'Du har spurgt om at se indholdet af vores side på'
     MENUTITLE: Filer
   CMSMain:
     ACCESS: 'Adgang til ''{title}'' sektionen'
@@ -113,6 +114,9 @@ da:
     TabSettings: Indstillinger
     TreeFiltered: 'Filtreret sidetræ.'
     TreeFilteredClear: 'Nulstil filter'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Anvend filter'
+    RESET: Nulstil
   CMSPageAddController:
     MENUTITLE: 'Tilføj side'
     ParentMode_child: 'Under en anden side'
@@ -129,7 +133,12 @@ da:
     SHOWVERSION: 'Vis version'
     VIEW: Visning
     VIEWINGVERSION: 'Lige nu vises version {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Anvend filter"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Forfatter
+    NOTPUBLISHED: 'Ikke udgivet'
+    PUBLISHER: Udgiver
+    UNKNOWN: Ukendt
+    WHEN: Hvornår
   CMSPageSettingsController:
     MENUTITLE: 'Rediger side'
   CMSPagesController:
@@ -137,30 +146,20 @@ da:
     ListView: Listevisning
     MENUTITLE: Sider
     TreeView: Trævisning
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: 'Træk&slip'
+    MULTISELECT: Multivalg
+  CMSPagesController_Tools.ss:
+    FILTER: Filtre
   CMSSearch:
     FILTERDATEFROM: Fra
     FILTERDATEHEADING: Dato
     FILTERDATETO: Til
     FILTERLABELTEXT: Indhold
   CMSSettingsController:
-    AUTHOR: Forfatter
     MENUTITLE: Indstillinger
-    NOTPUBLISHED: 'Ikke udgivet'
-    PUBLISHER: Udgiver
-    UNKNOWN: Ukendt
-    WHEN: Hvornår
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Viser
-    ENABLEDRAGGING: 'Træk&slip'
-    GO: Go
-    MULTISELECT: Multivalg
-    OF: af
-    TO: til
     Title: 'Ændrede sider'
-    VIEWFIRST: 'Vis f&oslash;rste'
-    VIEWLAST: 'Vis Sidste'
-    VIEWNEXT: 'Vis n&aelig;ste'
-    VIEWPREVIOUS: 'Vis forrige'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Alle sider, inklusive slettede'
   CMSSiteTreeFilter_Search:
@@ -228,7 +227,6 @@ da:
     UploadFilesButton: Overfør
   GridFieldTestPage:
     DESCRIPTION: 'Standard indholdsside'
-    FILTER: Filtre
   LeftAndMain:
     DELETED: Slettet.
     PreviewButton: Forhåndsvisning
@@ -242,7 +240,6 @@ da:
     DESCRIPTION: 'Standard indholdsside'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Adgang'
-    RESET: Nulstil
   Permissions:
     CONTENT_CATEGORY: Indholdsrettigheder
     PERMISSIONS_CATEGORY: 'Roller og adgangstilladelser'
@@ -257,7 +254,6 @@ da:
     YOURPAGE: 'Side på dit websted'
   RelationFieldsTestPage:
     DESCRIPTION: 'Standard indholdsside'
-    FILTER: Filter
   ReportAdmin:
     MENUTITLE: Rapporter
   ReportAdminForm:
@@ -311,7 +307,6 @@ da:
     BUTTONSAVEPUBLISH: 'Gem og udgiv'
     BUTTONUNPUBLISH: 'Annuller udgivelse'
     BUTTONUNPUBLISHDESC: 'Fjern denne side fra det publicerede site'
-    Back: Tilbage
     CREATED: 'Dato for oprettelse'
     Comments: Kommentarer
     Content: Indhold
@@ -392,12 +387,27 @@ da:
     NAME: 'Statisk eksportør'
   TableListField:
     SELECT: 'Vælg:'
+  TableListField.ss:
+    NOITEMSFOUND: '404 - Not Found'
+    SORTASC: 'Sorter efter stigende orden'
+    SORTDESC: 'Sorter efter faldende orden'
+  TableListField_PageControls.ss:
+    DISPLAYING: Viser
+    OF: af
+    TO: til
+    VIEWFIRST: 'Vis f&oslash;rste'
+    VIEWLAST: 'Vis Sidste'
+    VIEWNEXT: 'Vis n&aelig;ste'
+    VIEWPREVIOUS: 'Vis forrige'
   TestFileUploadPage:
     DESCRIPTION: 'Standard indholdsside'
   TestPage:
     DESCRIPTION: 'Standard indholdsside'
   TreeTools:
     DisplayLabel: 'Display:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'Du kan tilgå¨den arkiverede side på dette link:'
+    HAVEASKED: 'Du har spurgt om at se indholdet af vores side på'
   VirtualPage:
     CHOOSE: 'Vælg en side at linke til'
     DESCRIPTION: 'Viser indholdet fra en anden side'
