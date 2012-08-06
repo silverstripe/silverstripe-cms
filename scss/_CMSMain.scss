@@ -13,10 +13,8 @@
 #cms-page-history-versions {
 	tr {
 		&.loading {
-			color: #999;
-			
-			td {
-				
+			color: #999;			
+			td {				
 				&:hover {
 					cursor: none;
 				}
@@ -68,9 +66,10 @@
 		.cms-tree-expand-trigger {
 			display: inline-block;
 			margin:0 0 2px 0;
-			position:absolute;
-			top:8px;
-			right:4px;
+			//position:absolute;
+			//top:8px;
+			//right:4px;
+			float:left;
 			span.ui-button-text{
 					padding-right:8px;
 			}
