@@ -26,9 +26,15 @@ ar:
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
+  AssetAdmin_Tools.ss:
+    FILTER: Filter
+  AssetAdmin_left.ss:
+    GO: اذهب
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
     PAGES: page(s)
+  BackLink_Button.ss:
+    Back: Back
   BasicFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   BigFamilyPage:
@@ -47,7 +53,6 @@ ar:
     HasBrokenLink: 'يحتوى مرابط مكسور'
     HasBrokenLinkAndFile: 'يحتوى ملف ورابط مكسور'
     HoverTitleEditPage: 'تعديل صفحة'
-    NOITEMSFOUND: 'No items found'
     PageName: 'اسم الصفحة'
     ReasonDropdown: 'مشكلة للتأكد'
     ReasonDropdownBROKENFILE: 'ملف مكسور'
@@ -55,8 +60,6 @@ ar:
     ReasonDropdownRPBROKENLINK: 'معيد توجيه الصفحة يشير الى صفحة غير موجودة..'
     ReasonDropdownVPBROKENLINK: 'الصفحة الظاهرية تشير الى صفحة غير موجودة..'
     RedirectorNonExistent: 'معيد توجيه الصفحة يشير الى صفحة غير موجودة..'
-    SORTASC: 'ترتيب تصاعدي'
-    SORTDESC: 'ترتيب تنازلي'
     VirtualPageNonExistent: 'الصفحة الظاهرية تشير الى صفحة غير موجودة..'
   CMSAddPageController:
     Title: 'Add page'
@@ -70,8 +73,6 @@ ar:
     UNPUBLISHED_PAGES: '%d من الصفحات غير المنشورة'
     UNPUBLISH_PAGES: 'غير منشور'
   CMSFileAddController:
-    CANACCESS: 'يمكنك الدخول إلى أرشيف الموقع عن طريق الرابط التالي :'
-    HAVEASKED: 'تم طلب مشاهدة محتوى الموقع في'
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -113,6 +114,9 @@ ar:
     TabSettings: Settings
     TreeFiltered: 'Filtered tree.'
     TreeFilteredClear: 'Clear filter'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Apply Filter'
+    RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
@@ -129,7 +133,12 @@ ar:
     SHOWVERSION: 'Show Version'
     VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Author
+    NOTPUBLISHED: 'Not published'
+    PUBLISHER: Publisher
+    UNKNOWN: Unknown
+    WHEN: When
   CMSPageSettingsController:
     MENUTITLE: 'Edit Page'
   CMSPagesController:
@@ -137,30 +146,20 @@ ar:
     ListView: 'List View'
     MENUTITLE: Pages
     TreeView: 'Tree View'
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: 'Drag''n''drop'
+    MULTISELECT: Multi-selection
+  CMSPagesController_Tools.ss:
+    FILTER: Filter
   CMSSearch:
     FILTERDATEFROM: From
     FILTERDATEHEADING: Date
     FILTERDATETO: To
     FILTERLABELTEXT: Content
   CMSSettingsController:
-    AUTHOR: Author
     MENUTITLE: Settings
-    NOTPUBLISHED: 'Not published'
-    PUBLISHER: Publisher
-    UNKNOWN: Unknown
-    WHEN: When
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
-    ENABLEDRAGGING: 'Drag''n''drop'
-    GO: اذهب
-    MULTISELECT: Multi-selection
-    OF: of
-    TO: to
     Title: 'Changed pages'
-    VIEWFIRST: 'عرض الأول'
-    VIEWLAST: 'عرض الأخير'
-    VIEWNEXT: 'عرض التالي'
-    VIEWPREVIOUS: 'عرض السابق'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
@@ -228,7 +227,6 @@ ar:
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -242,7 +240,6 @@ ar:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'الوصل لنظام إدارة المحتوى'
-    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'تصاريح المحتوى'
     PERMISSIONS_CATEGORY: 'تصريح الدخول والقواعد'
@@ -257,7 +254,6 @@ ar:
     YOURPAGE: 'صفحة في موقعك الشخصي'
   RelationFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filter
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -294,11 +290,11 @@ ar:
     TABACCESS: الوصول
     TABMAIN: الرئيسي
     TAGLINEDEFAULT: 'علامتك هنا'
-    THEME: الثيم
+    THEME: 'الثيم'
     TOPLEVELCREATE: 'من يستطيع إنشاء صفحات في جذر الموقع؟'
     VIEWHEADER: 'من يستطيع عرض الصفحات على هذا الموقع؟...'
   SiteTree:
-    ACCESSANYONE: الجميع
+    ACCESSANYONE: 'الجميع'
     ACCESSHEADER: 'من يستطيع مشاهدة هذه الصفحة ؟'
     ACCESSLOGGEDIN: 'الأعضاء المسجلين'
     ACCESSONLYTHESE: 'فقط هؤلاء الأشخاص ( اختر من القائمة)'
@@ -311,10 +307,9 @@ ar:
     BUTTONSAVEPUBLISH: 'حفظ و نشر'
     BUTTONUNPUBLISH: 'غير منشور'
     BUTTONUNPUBLISHDESC: 'حذف هذه الصفحة من الموقع المنشور'
-    Back: Back
     CREATED: 'Date Created'
     Comments: التعليقات
-    Content: المحتوى
+    Content: 'المحتوى'
     DEFAULTABOUTCONTENT: '<p>يمكنك ملء هذه الصفحة بمحتوى خاص بك أو حذفها و إنشاء صفحات جديدة خاصة بك<br /></p>'
     DEFAULTABOUTTITLE: حول
     DEFAULTCONTACTCONTENT: '<p>يمكنك ملء هذه الصفحة بمحتوى خاص بك أو حذفها و إنشاء صفحات جديدة خاصة بك<br /></p>'
@@ -335,11 +330,11 @@ ar:
     EDIT_ALL_HELP: 'القدرة على تحرير أي صفحة على الموقع ، بغض النظر عن الإعدادات على علامة تبويب الوصول. يتطلب تصريح "الوصول إلى محتوى الموقع" '
     Editors: 'مجموعات المحررين'
     HASBROKENLINKS: 'هذه الصفحة تحتوي على روابط معطوبة'
-    HTMLEDITORTITLE: محتوى
+    HTMLEDITORTITLE: 'محتوى'
     INHERIT: 'استيراد من الصفحة المرجعية'
     LASTUPDATED: 'Last Updated'
     LINKCHANGENOTE: 'تغيير هذا وصلة رابط الصفحة سوف تؤثر أيضًا على الوصلات لجميع صفحات الفرعية.'
-    MENUTITLE: القائمة
+    MENUTITLE: 'القائمة'
     METADESC: الوصف
     METAEXTRA: 'تخصيص Meta Tags'
     METAKEYWORDS: 'الكلمات المفتاحية'
@@ -368,7 +363,7 @@ ar:
     SHOWINSEARCH: 'عرض في البحث ؟'
     SINGULARNAME: 'هيكلة الموقع'
     TABBEHAVIOUR: الشسلوك
-    TABCONTENT: المحتوى
+    TABCONTENT: 'المحتوى'
     TABDEPENDENT: 'الصفحات المعتدة'
     TOPLEVEL: 'محتوى الموقع ( مستوى أعلى )'
     TOPLEVELCREATORGROUPS: 'منشيء المستوى الأعلى'
@@ -392,12 +387,27 @@ ar:
     NAME: 'المصدر الثابت Exporter'
   TableListField:
     SELECT: اختيار
+  TableListField.ss:
+    NOITEMSFOUND: 'No items found'
+    SORTASC: 'ترتيب تصاعدي'
+    SORTDESC: 'ترتيب تنازلي'
+  TableListField_PageControls.ss:
+    DISPLAYING: Displaying
+    OF: of
+    TO: to
+    VIEWFIRST: 'عرض الأول'
+    VIEWLAST: 'عرض الأخير'
+    VIEWNEXT: 'عرض التالي'
+    VIEWPREVIOUS: 'عرض السابق'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
   TestPage:
     DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'يمكنك الدخول إلى أرشيف الموقع عن طريق الرابط التالي :'
+    HAVEASKED: 'تم طلب مشاهدة محتوى الموقع في'
   VirtualPage:
     CHOOSE: 'اختر صفحة ليتم ربطها في'
     DESCRIPTION: 'Displays the content of another page'

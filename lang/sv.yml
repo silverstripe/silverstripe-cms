@@ -26,9 +26,15 @@ sv:
     Upload: 'Ladda upp'
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Radera mapparna'
+  AssetAdmin_Tools.ss:
+    FILTER: Filtrera
+  AssetAdmin_left.ss:
+    GO: Kör
   AssetTableField:
     BACKLINKCOUNT: 'Använd på:'
     PAGES: sida(-or)
+  BackLink_Button.ss:
+    Back: Tillbaka
   BasicFieldsTestPage:
     DESCRIPTION: 'Allmän innehållssida'
   BigFamilyPage:
@@ -47,7 +53,6 @@ sv:
     HasBrokenLink: 'har trasig länk'
     HasBrokenLinkAndFile: 'har trasig länk och fil'
     HoverTitleEditPage: 'Redigera sida'
-    NOITEMSFOUND: 'Inga objekt hittade'
     PageName: Sidnamn
     ReasonDropdown: 'Problem med kontroll'
     ReasonDropdownBROKENFILE: 'Trasig fil'
@@ -55,8 +60,6 @@ sv:
     ReasonDropdownRPBROKENLINK: 'Omdirigerings sida pekar till en icke-existerande sida'
     ReasonDropdownVPBROKENLINK: 'virtuell sida pekar till icke-existerande sida'
     RedirectorNonExistent: 'omdirigeringssida pekar på en icke-existerande sida'
-    SORTASC: 'Sortera i stigande ordning'
-    SORTDESC: 'Sortera i fallande ordning'
     VirtualPageNonExistent: 'virtuell sida pekar till icke-existerande sida'
   CMSAddPageController:
     Title: 'Skapa sida'
@@ -70,8 +73,6 @@ sv:
     UNPUBLISHED_PAGES: 'Un-publicerade % d sidor'
     UNPUBLISH_PAGES: 'Dölj publicerad'
   CMSFileAddController:
-    CANACCESS: 'Du kan komma åt den arkiverade sajten med denna länk:'
-    HAVEASKED: 'Du har efterfrågat att se innehållet på vår sajt på'
     MENUTITLE: Filer
   CMSMain:
     ACCESS: 'Tillgång till sektionen ''{title}'''
@@ -101,7 +102,7 @@ sv:
     REMOVED: 'Raderade ''%s''%s från den publicerade sajten'
     REMOVEDPAGE: 'Tog bort ''{title}'' från den publicerade sajten'
     REMOVEDPAGEFROMDRAFT: 'Raderade ''%s'' från utkast'
-    RESTORE: Återskapa
+    RESTORE: 'Återskapa'
     RESTORED: 'Återskapandet av  ''{title}'' lyckades'
     ROLLBACK: 'Återställ den här versionen'
     ROLLEDBACKPUB: 'Återskapade publicerad version. Nytt versionsnummer är #{version}'
@@ -113,6 +114,9 @@ sv:
     TabSettings: Inställningar
     TreeFiltered: 'Filtrerat träd'
     TreeFilteredClear: 'Rensa lista'
+  CMSMain_left.ss:
+    'APPLY FILTER': Filtrera
+    RESET: Rensa
   CMSPageAddController:
     MENUTITLE: 'Skapa sida'
     ParentMode_child: 'Under en annan sida'
@@ -129,38 +133,33 @@ sv:
     SHOWVERSION: 'Visa version'
     VIEW: 'Titta på'
     VIEWINGVERSION: 'Nu visas version {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Filtrera"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Författare
+    NOTPUBLISHED: 'Ej publicerad'
+    PUBLISHER: Utgivare
+    UNKNOWN: Okänd
+    WHEN: När
   CMSPageSettingsController:
     MENUTITLE: 'Ändra sidan'
   CMSPagesController:
-    GalleryView: 'Se galleriet'
+    GalleryView: Gallerivy
     ListView: Listvy
     MENUTITLE: Sidor
     TreeView: Trädvy
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: 'Dra och släpp'
+    MULTISELECT: Flerval
+  CMSPagesController_Tools.ss:
+    FILTER: Filter
   CMSSearch:
     FILTERDATEFROM: Från
     FILTERDATEHEADING: Datum
     FILTERDATETO: Till
     FILTERLABELTEXT: Innehåll
   CMSSettingsController:
-    AUTHOR: Författare
     MENUTITLE: Inställningar
-    NOTPUBLISHED: 'Ej publicerad'
-    PUBLISHER: Utgivare
-    UNKNOWN: Okänd
-    WHEN: När
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Visar
-    ENABLEDRAGGING: 'Dra och släpp'
-    GO: Kör
-    MULTISELECT: Flerval
-    OF: av
-    TO: till
     Title: 'Ändrade sidor'
-    VIEWFIRST: 'Visa första'
-    VIEWLAST: 'Visa sista'
-    VIEWNEXT: 'Visa nästa'
-    VIEWPREVIOUS: 'Visa föregående'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Alla sidor, inklusive raderade'
   CMSSiteTreeFilter_Search:
@@ -228,7 +227,6 @@ sv:
     UploadFilesButton: 'Ladda upp'
   GridFieldTestPage:
     DESCRIPTION: 'Allmän innehållssida'
-    FILTER: Filter
   LeftAndMain:
     DELETED: Raderad
     PreviewButton: Förhandsgranska
@@ -242,7 +240,6 @@ sv:
     DESCRIPTION: 'Allmän innehållssida'
   Permission:
     CMS_ACCESS_CATEGORY: CMS-tillgång
-    RESET: Rensa
   Permissions:
     CONTENT_CATEGORY: 'Innehålls tillgång'
     PERMISSIONS_CATEGORY: 'Roller och tillgång'
@@ -257,7 +254,6 @@ sv:
     YOURPAGE: 'Sida på din sajt'
   RelationFieldsTestPage:
     DESCRIPTION: 'Generisk innehållssida'
-    FILTER: Filtrera
   ReportAdmin:
     MENUTITLE: Rapporter
   ReportAdminForm:
@@ -311,7 +307,6 @@ sv:
     BUTTONSAVEPUBLISH: 'Spara och publicera'
     BUTTONUNPUBLISH: Avpublicera
     BUTTONUNPUBLISHDESC: 'Ta bort den här sidan från den publicerade sajten'
-    Back: Tillbaka
     CREATED: Skapad
     Comments: Kommentarer
     Content: Innehåll
@@ -378,7 +373,7 @@ sv:
     VIEW_ALL_HELP: 'Möjlighet att visa vilken sida som helst på webbplatsen, oavsett inställningarna på fliken Åtkomst. Kräver "Tillgång till Webbplatsinnehåll" tillåtelse'
     VIEW_DRAFT_CONTENT: 'Se utkast'
     VIEW_DRAFT_CONTENT_HELP: 'Gäller att visa sidor i utkast läge. Användbart för externa samarbetspartners utan CMS åtkomst.'
-    Viewers: Åskådargrupper
+    Viewers: 'Åskådargrupper'
     Visibility: Synlighet
     has_one_Parent: Föräldrasida
     many_many_BackLinkTracking: 'Spåra inlänkar'
@@ -392,12 +387,27 @@ sv:
     NAME: 'Statisk exportör'
   TableListField:
     SELECT: 'Välj:'
+  TableListField.ss:
+    NOITEMSFOUND: 'Inga objekt hittade'
+    SORTASC: 'Sortera i stigande ordning'
+    SORTDESC: 'Sortera i fallande ordning'
+  TableListField_PageControls.ss:
+    DISPLAYING: Visar
+    OF: av
+    TO: till
+    VIEWFIRST: 'Visa första'
+    VIEWLAST: 'Visa sista'
+    VIEWNEXT: 'Visa nästa'
+    VIEWPREVIOUS: 'Visa föregående'
   TestFileUploadPage:
     DESCRIPTION: 'Allmän innehållssida'
   TestPage:
     DESCRIPTION: 'Allmän innehållssida'
   TreeTools:
     DisplayLabel: 'Visa:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'Du kan komma åt den arkiverade sajten med denna länk:'
+    HAVEASKED: 'Du har efterfrågat att se innehållet på vår sajt på'
   VirtualPage:
     CHOOSE: 'Välj en sida att länka till'
     DESCRIPTION: 'Visa innehåll för en annan sida'

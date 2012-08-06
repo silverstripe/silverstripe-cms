@@ -26,9 +26,15 @@ es_AR:
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
+  AssetAdmin_Tools.ss:
+    FILTER: Filter
+  AssetAdmin_left.ss:
+    GO: Ir
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
     PAGES: page(s)
+  BackLink_Button.ss:
+    Back: Back
   BasicFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   BigFamilyPage:
@@ -47,7 +53,6 @@ es_AR:
     HasBrokenLink: 'tiene un enlace roto'
     HasBrokenLinkAndFile: 'tiene enlace y archivo rotos'
     HoverTitleEditPage: 'Editar página'
-    NOITEMSFOUND: 'No items found'
     PageName: 'Nombre de página'
     ReasonDropdown: 'Problema para verificar'
     ReasonDropdownBROKENFILE: 'Archivo roto'
@@ -55,8 +60,6 @@ es_AR:
     ReasonDropdownRPBROKENLINK: 'La página de redireccionamiento apunta a una página inexistente'
     ReasonDropdownVPBROKENLINK: 'Página virtual apuntando a una página no existente'
     RedirectorNonExistent: 'la página de redireccionamiento apunta a una página inexistente'
-    SORTASC: 'Ordenar en orden ascendente'
-    SORTDESC: 'Ordenar en orden descendente'
     VirtualPageNonExistent: 'página virtual apuntando a una página no existente'
   CMSAddPageController:
     Title: 'Add page'
@@ -70,8 +73,6 @@ es_AR:
     UNPUBLISHED_PAGES: 'Se despublicaron %d páginas'
     UNPUBLISH_PAGES: Despublicar
   CMSFileAddController:
-    CANACCESS: 'Puedes acceder al sitio archivado con este enlace:'
-    HAVEASKED: 'Has solicitado ver el contenido de nuestro sitio en'
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -113,6 +114,9 @@ es_AR:
     TabSettings: Settings
     TreeFiltered: 'Filtered tree.'
     TreeFilteredClear: 'Clear filter'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Apply Filter'
+    RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
@@ -129,7 +133,12 @@ es_AR:
     SHOWVERSION: 'Show Version'
     VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Author
+    NOTPUBLISHED: 'Not published'
+    PUBLISHER: Publisher
+    UNKNOWN: Unknown
+    WHEN: When
   CMSPageSettingsController:
     MENUTITLE: 'Edit Page'
   CMSPagesController:
@@ -137,30 +146,20 @@ es_AR:
     ListView: 'List View'
     MENUTITLE: Pages
     TreeView: 'Tree View'
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: 'Drag''n''drop'
+    MULTISELECT: Multi-selection
+  CMSPagesController_Tools.ss:
+    FILTER: Filter
   CMSSearch:
     FILTERDATEFROM: From
     FILTERDATEHEADING: Date
     FILTERDATETO: To
     FILTERLABELTEXT: Content
   CMSSettingsController:
-    AUTHOR: Author
     MENUTITLE: Settings
-    NOTPUBLISHED: 'Not published'
-    PUBLISHER: Publisher
-    UNKNOWN: Unknown
-    WHEN: When
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
-    ENABLEDRAGGING: 'Drag''n''drop'
-    GO: Ir
-    MULTISELECT: Multi-selection
-    OF: of
-    TO: to
     Title: 'Changed pages'
-    VIEWFIRST: 'Ver primero'
-    VIEWLAST: 'Ver último'
-    VIEWNEXT: 'Ver siguiente'
-    VIEWPREVIOUS: 'Ver anterior'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
@@ -228,7 +227,6 @@ es_AR:
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -242,7 +240,6 @@ es_AR:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'Acceso al CMS'
-    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'Permisos de contenido'
     PERMISSIONS_CATEGORY: 'Roles y permisos de acceso'
@@ -257,7 +254,6 @@ es_AR:
     YOURPAGE: 'Página en tu sitio web'
   RelationFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filter
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -311,7 +307,6 @@ es_AR:
     BUTTONSAVEPUBLISH: 'Guardar y Publicar'
     BUTTONUNPUBLISH: 'No Publicar'
     BUTTONUNPUBLISHDESC: 'Quitar ésta página del sitio público'
-    Back: Back
     CREATED: 'Date Created'
     Comments: Comentarios
     Content: Contenido
@@ -392,12 +387,27 @@ es_AR:
     NAME: 'Exportador estático'
   TableListField:
     SELECT: 'Seleccionar:'
+  TableListField.ss:
+    NOITEMSFOUND: 'No items found'
+    SORTASC: 'Ordenar en orden ascendente'
+    SORTDESC: 'Ordenar en orden descendente'
+  TableListField_PageControls.ss:
+    DISPLAYING: Displaying
+    OF: of
+    TO: to
+    VIEWFIRST: 'Ver primero'
+    VIEWLAST: 'Ver último'
+    VIEWNEXT: 'Ver siguiente'
+    VIEWPREVIOUS: 'Ver anterior'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
   TestPage:
     DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'Puedes acceder al sitio archivado con este enlace:'
+    HAVEASKED: 'Has solicitado ver el contenido de nuestro sitio en'
   VirtualPage:
     CHOOSE: 'Selecciona una página con la que enlazar'
     DESCRIPTION: 'Displays the content of another page'

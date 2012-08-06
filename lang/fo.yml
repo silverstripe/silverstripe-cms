@@ -26,9 +26,15 @@ fo:
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
+  AssetAdmin_Tools.ss:
+    FILTER: Filter
+  AssetAdmin_left.ss:
+    GO: Víðari
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
     PAGES: page(s)
+  BackLink_Button.ss:
+    Back: Back
   BasicFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   BigFamilyPage:
@@ -47,7 +53,6 @@ fo:
     HasBrokenLink: 'has broken link'
     HasBrokenLinkAndFile: 'has broken link and file'
     HoverTitleEditPage: 'Edit page'
-    NOITEMSFOUND: 'No items found'
     PageName: 'Page name'
     ReasonDropdown: 'Problem to check'
     ReasonDropdownBROKENFILE: 'Broken file'
@@ -55,8 +60,6 @@ fo:
     ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
     ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
     RedirectorNonExistent: 'redirector page pointing to non-existent page'
-    SORTASC: 'Sort in ascending order'
-    SORTDESC: 'Sort in descending order'
     VirtualPageNonExistent: 'virtual page pointing to non-existent page'
   CMSAddPageController:
     Title: 'Add page'
@@ -70,8 +73,6 @@ fo:
     UNPUBLISHED_PAGES: 'Un-published %d pages'
     UNPUBLISH_PAGES: Un-publish
   CMSFileAddController:
-    CANACCESS: 'Tú kann fáa atgongd til arkiv heimasíðuna her:'
-    HAVEASKED: 'Tú mást fáa loyvi, fyri at kunna síggja innihaldið á okkara heimasíðu á'
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -113,6 +114,9 @@ fo:
     TabSettings: Settings
     TreeFiltered: 'Filtered tree.'
     TreeFilteredClear: 'Clear filter'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Apply Filter'
+    RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
@@ -129,7 +133,12 @@ fo:
     SHOWVERSION: 'Show Version'
     VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Author
+    NOTPUBLISHED: 'Not published'
+    PUBLISHER: Publisher
+    UNKNOWN: Unknown
+    WHEN: When
   CMSPageSettingsController:
     MENUTITLE: 'Edit Page'
   CMSPagesController:
@@ -137,30 +146,20 @@ fo:
     ListView: 'List View'
     MENUTITLE: Pages
     TreeView: 'Tree View'
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: 'Drag''n''drop'
+    MULTISELECT: Multi-selection
+  CMSPagesController_Tools.ss:
+    FILTER: Filter
   CMSSearch:
     FILTERDATEFROM: From
     FILTERDATEHEADING: Date
     FILTERDATETO: To
     FILTERLABELTEXT: Content
   CMSSettingsController:
-    AUTHOR: Author
     MENUTITLE: Settings
-    NOTPUBLISHED: 'Not published'
-    PUBLISHER: Publisher
-    UNKNOWN: Unknown
-    WHEN: When
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
-    ENABLEDRAGGING: 'Drag''n''drop'
-    GO: Víðari
-    MULTISELECT: Multi-selection
-    OF: of
-    TO: to
     Title: 'Changed pages'
-    VIEWFIRST: 'Vís fyrstu'
-    VIEWLAST: 'Vís seinastu'
-    VIEWNEXT: 'Vís næsta'
-    VIEWPREVIOUS: 'Vís fyrra'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
@@ -228,7 +227,6 @@ fo:
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -242,7 +240,6 @@ fo:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
-    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
@@ -257,7 +254,6 @@ fo:
     YOURPAGE: 'Síða á tínari heimasíðu'
   RelationFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filter
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -311,7 +307,6 @@ fo:
     BUTTONSAVEPUBLISH: 'Goym og almenna kunngerð'
     BUTTONUNPUBLISH: 'Óalmenna kunngerð'
     BUTTONUNPUBLISHDESC: 'Strika hesa síðuna frá tí almennu heimasíðuni'
-    Back: Back
     CREATED: 'Date Created'
     Comments: Viðmerkingar
     Content: Innihald
@@ -392,12 +387,27 @@ fo:
     NAME: 'Static exporter'
   TableListField:
     SELECT: 'Select:'
+  TableListField.ss:
+    NOITEMSFOUND: 'No items found'
+    SORTASC: 'Sort in ascending order'
+    SORTDESC: 'Sort in descending order'
+  TableListField_PageControls.ss:
+    DISPLAYING: Displaying
+    OF: of
+    TO: to
+    VIEWFIRST: 'Vís fyrstu'
+    VIEWLAST: 'Vís seinastu'
+    VIEWNEXT: 'Vís næsta'
+    VIEWPREVIOUS: 'Vís fyrra'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
   TestPage:
     DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'Tú kann fáa atgongd til arkiv heimasíðuna her:'
+    HAVEASKED: 'Tú mást fáa loyvi, fyri at kunna síggja innihaldið á okkara heimasíðu á'
   VirtualPage:
     CHOOSE: 'Vel eina síðu at vísa til'
     DESCRIPTION: 'Displays the content of another page'

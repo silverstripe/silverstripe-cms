@@ -26,9 +26,15 @@ si:
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
+  AssetAdmin_Tools.ss:
+    FILTER: Filter
+  AssetAdmin_left.ss:
+    GO: යන්න
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
     PAGES: page(s)
+  BackLink_Button.ss:
+    Back: Back
   BasicFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   BigFamilyPage:
@@ -47,7 +53,6 @@ si:
     HasBrokenLink: 'has broken link'
     HasBrokenLinkAndFile: 'has broken link and file'
     HoverTitleEditPage: 'Edit page'
-    NOITEMSFOUND: 'No items found'
     PageName: 'Page name'
     ReasonDropdown: 'Problem to check'
     ReasonDropdownBROKENFILE: 'Broken file'
@@ -55,8 +60,6 @@ si:
     ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
     ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
     RedirectorNonExistent: 'redirector page pointing to non-existent page'
-    SORTASC: 'Sort in ascending order'
-    SORTDESC: 'Sort in descending order'
     VirtualPageNonExistent: 'virtual page pointing to non-existent page'
   CMSAddPageController:
     Title: 'Add page'
@@ -70,8 +73,6 @@ si:
     UNPUBLISHED_PAGES: 'Un-published %d pages'
     UNPUBLISH_PAGES: Un-publish
   CMSFileAddController:
-    CANACCESS: 'මෙම බැදීමෙන් පැරනි අඩවියට ප්රවිෂ්ට විය හැක'
-    HAVEASKED: 'ඹබට අපගේ වෙබ් අඩවිය නිරීක්ශනය කරන ලෙස ඉල්ලා ඇත'
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -88,7 +89,7 @@ si:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
-    NEW: අලුත්
+    NEW: 'අලුත්'
     PAGENOTEXISTS: 'මෙම  පිටුව තවදුරටත් නොපවතී'
     PAGES: Pages
     PAGETYPEANYOPT: Any
@@ -113,6 +114,9 @@ si:
     TabSettings: Settings
     TreeFiltered: 'Filtered tree.'
     TreeFilteredClear: 'Clear filter'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Apply Filter'
+    RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Add page'
     ParentMode_child: 'Under another page'
@@ -129,7 +133,12 @@ si:
     SHOWVERSION: 'Show Version'
     VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Author
+    NOTPUBLISHED: 'Not published'
+    PUBLISHER: Publisher
+    UNKNOWN: Unknown
+    WHEN: When
   CMSPageSettingsController:
     MENUTITLE: 'Edit Page'
   CMSPagesController:
@@ -137,30 +146,20 @@ si:
     ListView: 'List View'
     MENUTITLE: Pages
     TreeView: 'Tree View'
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: 'Drag''n''drop'
+    MULTISELECT: Multi-selection
+  CMSPagesController_Tools.ss:
+    FILTER: Filter
   CMSSearch:
     FILTERDATEFROM: From
     FILTERDATEHEADING: Date
     FILTERDATETO: To
     FILTERLABELTEXT: Content
   CMSSettingsController:
-    AUTHOR: Author
     MENUTITLE: Settings
-    NOTPUBLISHED: 'Not published'
-    PUBLISHER: Publisher
-    UNKNOWN: Unknown
-    WHEN: When
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
-    ENABLEDRAGGING: 'Drag''n''drop'
-    GO: යන්න
-    MULTISELECT: Multi-selection
-    OF: of
-    TO: to
     Title: 'Changed pages'
-    VIEWFIRST: 'පළමු එක පෙන්වන්න'
-    VIEWLAST: 'අවසානය පෙන්වන්න'
-    VIEWNEXT: 'ඊළඟ එක පෙන්වන්න'
-    VIEWPREVIOUS: 'පෙර පෙන්වන්න'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
@@ -228,7 +227,6 @@ si:
     UploadFilesButton: Upload
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filter
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -242,7 +240,6 @@ si:
     DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
-    RESET: Reset
   Permissions:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
@@ -257,7 +254,6 @@ si:
     YOURPAGE: 'ඔබේ අඩවියේ පිටුවක්'
   RelationFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filter
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -311,10 +307,9 @@ si:
     BUTTONSAVEPUBLISH: 'සේව් කර ප්රසිද්ධ කරන්න'
     BUTTONUNPUBLISH: 'අප්රසිද්ධ කරන්න'
     BUTTONUNPUBLISHDESC: 'මෙම පිටුව ප්රසිද්ධ කල අඩවියෙන් ගලවන්න'
-    Back: Back
     CREATED: 'Date Created'
     Comments: Comments
-    Content: අන්තර්ගතය
+    Content: 'අන්තර්ගතය'
     DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
     DEFAULTABOUTTITLE: 'අපි ගැන'
     DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
@@ -335,12 +330,12 @@ si:
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     Editors: 'Editors Groups'
     HASBROKENLINKS: 'මෙම පිටුවට කැඩුනු බැදීම් ඇත'
-    HTMLEDITORTITLE: අන්තර්ගතය
+    HTMLEDITORTITLE: 'අන්තර්ගතය'
     INHERIT: 'Inherit from parent page'
     LASTUPDATED: 'Last Updated'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 'සංක්රමන ලේබලය'
-    METADESC: අර්තකතනය
+    METADESC: 'අර්තකතනය'
     METAEXTRA: 'සැකසූ මෙටා ටැග්'
     METAKEYWORDS: යතුරැ
     METATITLE: මාතෘකා
@@ -368,9 +363,9 @@ si:
     SHOWINSEARCH: 'සර්ච් ඵකේ පෙන්වන්නද?'
     SINGULARNAME: 'Site Tree'
     TABBEHAVIOUR: හැසිරීම
-    TABCONTENT: අන්තර්ගතය
+    TABCONTENT: 'අන්තර්ගතය'
     TABDEPENDENT: 'Dependent pages'
-    TOPLEVEL: අන්ර්ගතය
+    TOPLEVEL: 'අන්ර්ගතය'
     TOPLEVELCREATORGROUPS: 'Top level creators'
     URLSegment: 'URL කොටස'
     VIEWERGROUPS: 'Viewer Groups'
@@ -392,12 +387,27 @@ si:
     NAME: 'ස්තිතික අපනයනය කරන්නා'
   TableListField:
     SELECT: 'Select:'
+  TableListField.ss:
+    NOITEMSFOUND: 'No items found'
+    SORTASC: 'Sort in ascending order'
+    SORTDESC: 'Sort in descending order'
+  TableListField_PageControls.ss:
+    DISPLAYING: Displaying
+    OF: of
+    TO: to
+    VIEWFIRST: 'පළමු එක පෙන්වන්න'
+    VIEWLAST: 'අවසානය පෙන්වන්න'
+    VIEWNEXT: 'ඊළඟ එක පෙන්වන්න'
+    VIEWPREVIOUS: 'පෙර පෙන්වන්න'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
   TestPage:
     DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'මෙම බැදීමෙන් පැරනි අඩවියට ප්රවිෂ්ට විය හැක'
+    HAVEASKED: 'ඹබට අපගේ වෙබ් අඩවිය නිරීක්ශනය කරන ලෙස ඉල්ලා ඇත'
   VirtualPage:
     CHOOSE: 'බැදීමට පිටුවක් තෝරන්න'
     DESCRIPTION: 'Displays the content of another page'

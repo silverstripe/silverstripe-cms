@@ -26,9 +26,15 @@ gl_ES:
     Upload: Subir
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Eliminar cartafoles'
+  AssetAdmin_Tools.ss:
+    FILTER: Filtro
+  AssetAdmin_left.ss:
+    GO: Ir
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
     PAGES: page(s)
+  BackLink_Button.ss:
+    Back: Atrás
   BasicFieldsTestPage:
     DESCRIPTION: 'Páxina de contido xenérico'
   BigFamilyPage:
@@ -47,7 +53,6 @@ gl_ES:
     HasBrokenLink: 'ten ligazón rota'
     HasBrokenLinkAndFile: 'rompeu a ligazón e o ficheiro'
     HoverTitleEditPage: 'Editar Páxina'
-    NOITEMSFOUND: 'No items found'
     PageName: 'Nome da páxina'
     ReasonDropdown: 'Problema para comprobar'
     ReasonDropdownBROKENFILE: 'Ficheiro roto'
@@ -55,8 +60,6 @@ gl_ES:
     ReasonDropdownRPBROKENLINK: 'O redirector está apuntando a unha páxina inexistente'
     ReasonDropdownVPBROKENLINK: 'A páxina virtual está apuntando a unha páxina inexistente'
     RedirectorNonExistent: 'o redirector está apuntando a unha páxina inexistente'
-    SORTASC: 'Ordear ascendentemente'
-    SORTDESC: 'Ordear descendentemente'
     VirtualPageNonExistent: 'a páxina virtual está apuntando a unha páxina inexistente'
   CMSAddPageController:
     Title: 'Engadir páxina'
@@ -70,8 +73,6 @@ gl_ES:
     UNPUBLISHED_PAGES: '%d páxinas sen publicar'
     UNPUBLISH_PAGES: 'Sen publicar'
   CMSFileAddController:
-    CANACCESS: 'Podes acceder ao sitio arquivado nesta ligazón:'
-    HAVEASKED: 'Solicitaches ver o contido do sitio sobre'
     MENUTITLE: Ficheiros
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
@@ -113,6 +114,9 @@ gl_ES:
     TabSettings: Configuracións
     TreeFiltered: 'Filtered tree.'
     TreeFilteredClear: 'Clear filter'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Aplicar Filtro'
+    RESET: Reiniciar
   CMSPageAddController:
     MENUTITLE: 'Engadir páxina'
     ParentMode_child: 'Baixo outra páxina'
@@ -129,7 +133,12 @@ gl_ES:
     SHOWVERSION: 'Amosar Versión'
     VIEW: ver
     VIEWINGVERSION: 'Currently viewing version {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Aplicar Filtro"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Autor
+    NOTPUBLISHED: 'Non publicado'
+    PUBLISHER: Editor
+    UNKNOWN: Descoñecido
+    WHEN: Cando
   CMSPageSettingsController:
     MENUTITLE: 'Editar Páxina'
   CMSPagesController:
@@ -137,30 +146,20 @@ gl_ES:
     ListView: 'Vista en Listado'
     MENUTITLE: Páxinas
     TreeView: 'Vista en Árbore'
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: 'Arrastrar e soltar'
+    MULTISELECT: 'Selección múltiple'
+  CMSPagesController_Tools.ss:
+    FILTER: Filtro
   CMSSearch:
     FILTERDATEFROM: Desde
     FILTERDATEHEADING: Data
     FILTERDATETO: Ata
     FILTERLABELTEXT: Contido
   CMSSettingsController:
-    AUTHOR: Autor
     MENUTITLE: Configuracións
-    NOTPUBLISHED: 'Non publicado'
-    PUBLISHER: Editor
-    UNKNOWN: Descoñecido
-    WHEN: Cando
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
-    ENABLEDRAGGING: 'Arrastrar e soltar'
-    GO: Ir
-    MULTISELECT: 'Selección múltiple'
-    OF: of
-    TO: to
     Title: 'Páxinas cambiadas'
-    VIEWFIRST: 'Ver primeiro'
-    VIEWLAST: 'Ver último'
-    VIEWNEXT: 'Ver seguinte'
-    VIEWPREVIOUS: 'Ver anterior'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Todas as páxinas, incluindo eliminadas'
   CMSSiteTreeFilter_Search:
@@ -228,7 +227,6 @@ gl_ES:
     UploadFilesButton: Subir
   GridFieldTestPage:
     DESCRIPTION: 'Páxina de contido xenérico'
-    FILTER: Filtro
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Previsualizar
@@ -242,7 +240,6 @@ gl_ES:
     DESCRIPTION: 'Páxina de contido xenérico'
   Permission:
     CMS_ACCESS_CATEGORY: 'Acceso CMS'
-    RESET: Reiniciar
   Permissions:
     CONTENT_CATEGORY: 'Permisos do Contido'
     PERMISSIONS_CATEGORY: 'Roles e permisos de acceso'
@@ -257,7 +254,6 @@ gl_ES:
     YOURPAGE: 'Páxina no teu sitio web'
   RelationFieldsTestPage:
     DESCRIPTION: 'Páxina de contido xenérico'
-    FILTER: Filtro
   ReportAdmin:
     MENUTITLE: Informes
   ReportAdminForm:
@@ -311,7 +307,6 @@ gl_ES:
     BUTTONSAVEPUBLISH: 'Gardar e Publicar'
     BUTTONUNPUBLISH: 'Sen publicar'
     BUTTONUNPUBLISHDESC: 'Eliminar esta páxina do sitio publicado'
-    Back: Atrás
     CREATED: 'Data de Creación'
     Comments: Comentarios
     Content: Contido
@@ -392,12 +387,27 @@ gl_ES:
     NAME: 'Exportar estáticos'
   TableListField:
     SELECT: 'Seleccionar:'
+  TableListField.ss:
+    NOITEMSFOUND: 'No items found'
+    SORTASC: 'Ordear ascendentemente'
+    SORTDESC: 'Ordear descendentemente'
+  TableListField_PageControls.ss:
+    DISPLAYING: Displaying
+    OF: of
+    TO: to
+    VIEWFIRST: 'Ver primeiro'
+    VIEWLAST: 'Ver último'
+    VIEWNEXT: 'Ver seguinte'
+    VIEWPREVIOUS: 'Ver anterior'
   TestFileUploadPage:
     DESCRIPTION: 'Páxina de contido xenérico'
   TestPage:
     DESCRIPTION: 'Páxina de contido xenérico'
   TreeTools:
     DisplayLabel: 'Visualizar:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'Podes acceder ao sitio arquivado nesta ligazón:'
+    HAVEASKED: 'Solicitaches ver o contido do sitio sobre'
   VirtualPage:
     CHOOSE: 'Escoller a páxina para ligar a'
     DESCRIPTION: 'Visualizar o contido doutra páxina'

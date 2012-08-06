@@ -26,9 +26,15 @@ fi:
     Upload: Siirrä
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Poista kansiot'
+  AssetAdmin_Tools.ss:
+    FILTER: Suodatin
+  AssetAdmin_left.ss:
+    GO: Siirry
   AssetTableField:
     BACKLINKCOUNT: 'Linkitetty:'
     PAGES: sivu(t)
+  BackLink_Button.ss:
+    Back: Takaisin
   BasicFieldsTestPage:
     DESCRIPTION: 'Yleinen sisältösivu'
   BigFamilyPage:
@@ -47,7 +53,6 @@ fi:
     HasBrokenLink: 'sisältää rikkinäisen linkin'
     HasBrokenLinkAndFile: 'sisältää rikkinäisen linkin ja tiedoston'
     HoverTitleEditPage: Muokkaussivu
-    NOITEMSFOUND: 'Tietoja ei löytynyt'
     PageName: 'Sivun nimi'
     ReasonDropdown: 'Ongelma tarkistettavaksi'
     ReasonDropdownBROKENFILE: 'Rikkinäinen tiedosto'
@@ -55,8 +60,6 @@ fi:
     ReasonDropdownRPBROKENLINK: 'Uudelleenohjaava sivu osoittaa olemattomalle sivulle'
     ReasonDropdownVPBROKENLINK: 'Virtuaalinen sivu osoittaa olemattomalle sivulle'
     RedirectorNonExistent: 'uudelleenohjaava sivu osoittaa olemattomalle sivulle'
-    SORTASC: 'Järjestä nousevasti'
-    SORTDESC: 'Järjestä laskevasti'
     VirtualPageNonExistent: 'virtuaalinen sivu osoittaa olemattomalle sivulle'
   CMSAddPageController:
     Title: 'Lisää sivu'
@@ -70,8 +73,6 @@ fi:
     UNPUBLISHED_PAGES: 'Julkaisemattomat %d sivut'
     UNPUBLISH_PAGES: 'Älä julkaise'
   CMSFileAddController:
-    CANACCESS: 'Pääset arkistoidulle sivulle tällä linkillä:'
-    HAVEASKED: 'Sinua on pyydetty katsomaan sivun sisältöä '
     MENUTITLE: Tiedostot
   CMSMain:
     ACCESS: 'Pääsy ''{title}'' -osioon'
@@ -86,7 +87,7 @@ fi:
     DESCREMOVED: 'ja {count} alasivua'
     EMAIL: Sähköposti
     EditTree: 'Muokkaa rakennepuuta'
-    ListFiltered: 'Filtered list.'
+    ListFiltered: 'Suodatettu lista.'
     MENUTITLE: 'Muokkaa sivua'
     NEW: Uusi
     PAGENOTEXISTS: 'Tätä sivua ei ole olemassa'
@@ -111,8 +112,11 @@ fi:
     TabContent: Sisältö
     TabHistory: Historia
     TabSettings: Asetukset
-    TreeFiltered: 'Filtered tree.'
+    TreeFiltered: 'Suodatettu hakemistopuu.'
     TreeFilteredClear: 'Nollaa suodatin'
+  CMSMain_left.ss:
+    'APPLY FILTER': Suodata
+    RESET: Nollaa
   CMSPageAddController:
     MENUTITLE: 'Lisää sivu'
     ParentMode_child: 'Toisen sivun alla'
@@ -129,7 +133,12 @@ fi:
     SHOWVERSION: 'Näytä versionumero'
     VIEW: näkymä
     VIEWINGVERSION: 'Katsot versiota {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Suodata"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Tekijä
+    NOTPUBLISHED: Julkaisematon
+    PUBLISHER: Julkaisija
+    UNKNOWN: Tuntematon
+    WHEN: Milloin
   CMSPageSettingsController:
     MENUTITLE: 'Muokkaa sivua'
   CMSPagesController:
@@ -137,30 +146,20 @@ fi:
     ListView: Listanäkymä
     MENUTITLE: Sivut
     TreeView: Puunäkymä
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: 'Vedä ja pudota'
+    MULTISELECT: Monivalinta
+  CMSPagesController_Tools.ss:
+    FILTER: Suodata
   CMSSearch:
     FILTERDATEFROM: Alkaen
     FILTERDATEHEADING: Pvm
-    FILTERDATETO: Vastaanottaja
+    FILTERDATETO: Päättyen
     FILTERLABELTEXT: Sisältö
   CMSSettingsController:
-    AUTHOR: Tekijä
     MENUTITLE: Asetukset
-    NOTPUBLISHED: Julkaisematon
-    PUBLISHER: Julkaisija
-    UNKNOWN: Tuntematon
-    WHEN: Milloin
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Näytetään
-    ENABLEDRAGGING: 'Vedä ja pudota'
-    GO: Siirry
-    MULTISELECT: Monivalinta
-    OF: /
-    TO: to
     Title: 'Muuttuneet sivut'
-    VIEWFIRST: 'Näytä ensimmäinen'
-    VIEWLAST: 'Näytä viimeinen'
-    VIEWNEXT: 'Näytä seuraava'
-    VIEWPREVIOUS: 'Näytä edellinen'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Kaikki sivut, myös poistetut'
   CMSSiteTreeFilter_Search:
@@ -177,7 +176,7 @@ fi:
     DRAFT_SITE_ACCESS_RESTRICTION: 'Voidaksesi katsella luonnoksia tai arkistoitua sisältöä sinun täytyy kirjautua sisään CMS:n salasanallasi. <a href="%s">Palataksesi julkiselle sivulle paina tästä</a>.'
     Email: Sähköposti
     InstallFilesDeleted: 'Asennustiedostot poistettiin onnistuneesti.'
-    InstallSecurityWarning: 'Tietoturvan tania, kannattaa poistaa asennustiedostot palvelimelta, ellet aio asentaa järjestelmää uudelleen. (<em>pääkäyttäjän kirjautuminen vaaditaan, katso ylempää</em>). Palvelimella tarvitaan vain "assets"-kansioon kirjoitusoikeudet, voit poistaa kirjoitusoikeudet kaikista muista kansioista. <a href="{link}" style="text-align: center;">Napsauta tästä poistaaksesi kaikki asennustiedostot.</a>'
+    InstallSecurityWarning: 'Tietoturvan takia, kannattaa poistaa asennustiedostot palvelimelta, ellet aio asentaa järjestelmää uudelleen. (<em>pääkäyttäjän kirjautuminen vaaditaan, katso ylempää</em>). Palvelimella kirjoitusoikeudet tarvitaan vain "assets"-kansioon. Voit poistaa kirjoitusoikeudet kaikista muista kansioista. <br /> <a href="{link}" style="text-align: center;">Napsauta tästä poistaaksesi kaikki asennustiedostot.</a>'
     InstallSuccessCongratulations: 'SilverStripe asennettiin onnistuneesti.'
     LOGGEDINAS: 'Kirjautuneena sisään nimimerkillä'
     LOGIN: 'Kirjaudu sisään'
@@ -228,7 +227,6 @@ fi:
     UploadFilesButton: Siirrä
   GridFieldTestPage:
     DESCRIPTION: 'Yleinen sisältösivu'
-    FILTER: Suodata
   LeftAndMain:
     DELETED: Poistettu.
     PreviewButton: Esikatselu
@@ -242,7 +240,6 @@ fi:
     DESCRIPTION: 'Yleinen sisältösivu'
   Permission:
     CMS_ACCESS_CATEGORY: CMS-pääsy
-    RESET: Nollaa
   Permissions:
     CONTENT_CATEGORY: 'Sisällön käyttöoikeudet'
     PERMISSIONS_CATEGORY: 'Roolit ja käyttöoikeudet'
@@ -257,7 +254,6 @@ fi:
     YOURPAGE: 'Sivu verkkosivustollasi'
   RelationFieldsTestPage:
     DESCRIPTION: 'Yleinen sisältösivu'
-    FILTER: Suodatin
   ReportAdmin:
     MENUTITLE: Raportit
   ReportAdminForm:
@@ -311,7 +307,6 @@ fi:
     BUTTONSAVEPUBLISH: 'Tallenna & julkaise'
     BUTTONUNPUBLISH: 'Poista julkaisu'
     BUTTONUNPUBLISHDESC: 'Poista tämä sivu julkaistulta sivustolta'
-    Back: Takaisin
     CREATED: Luotu
     Comments: Kommentit
     Content: Sisältö
@@ -392,12 +387,27 @@ fi:
     NAME: 'Staattinen viejä'
   TableListField:
     SELECT: 'Valitse:'
+  TableListField.ss:
+    NOITEMSFOUND: 'Tietoja ei löytynyt'
+    SORTASC: 'Järjestä nousevasti'
+    SORTDESC: 'Järjestä laskevasti'
+  TableListField_PageControls.ss:
+    DISPLAYING: Näytetään
+    OF: /
+    TO: to
+    VIEWFIRST: 'Näytä ensimmäinen'
+    VIEWLAST: 'Näytä viimeinen'
+    VIEWNEXT: 'Näytä seuraava'
+    VIEWPREVIOUS: 'Näytä edellinen'
   TestFileUploadPage:
     DESCRIPTION: 'Yleinen sisältösivu'
   TestPage:
     DESCRIPTION: 'Yleinen sisältösivu'
   TreeTools:
     DisplayLabel: 'Näytä:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'Pääset arkistoidulle sivulle tällä linkillä:'
+    HAVEASKED: 'Sinua on pyydetty katsomaan sivun sisältöä '
   VirtualPage:
     CHOOSE: 'Valitse sivu, jolle linkitetään'
     DESCRIPTION: 'Näytä toisen sivun sisältö'

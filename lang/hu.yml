@@ -1,44 +1,50 @@
 hu:
   AssetAdmin:
-    ADDFILES: 'Add Files'
-    ALLOWEDEXTS: 'Allowed extensions'
-    ActionAdd: 'Add folder'
-    AppCategoryArchive: Archive
-    AppCategoryAudio: Audio
+    ADDFILES: 'Állomány hozzáadása'
+    ALLOWEDEXTS: 'Engedélyezett kiterjesztések'
+    ActionAdd: 'Mappa hozzáadása'
+    AppCategoryArchive: Archív
+    AppCategoryAudio: Audió
     AppCategoryFlash: Flash
-    AppCategoryImage: Image
-    AppCategoryVideo: Video
-    BackToFolder: 'Back to folder'
-    CREATED: Date
+    AppCategoryImage: Kép
+    AppCategoryVideo: Videó
+    BackToFolder: 'Vissza a mappába'
+    CREATED: Dátum
     CurrentFolderOnly: 'Limit to current folder?'
-    DetailsView: Details
-    FILES: Files
+    DetailsView: Részletek
+    FILES: Állományok
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
-    FROMTHEINTERNET: 'From the internet'
+    FROMTHEINTERNET: Internetről
     FROMYOURCOMPUTER: 'From your computer'
-    Filetype: 'File type'
-    ListView: 'List View'
-    MENUTITLE: Files
+    Filetype: 'Állomány típusa'
+    ListView: 'Lista nézet'
+    MENUTITLE: Állományok
     NEWFOLDER: 'Új mappa'
-    SIZE: Size
+    SIZE: Méret
     THUMBSDELETED: '{count} unused thumbnails have been deleted'
     TreeView: 'Tree View'
-    Upload: Upload
+    Upload: Feltöltés
   AssetAdmin_DeleteBatchAction:
-    TITLE: 'Delete folders'
+    TITLE: 'Mappák törlése'
+  AssetAdmin_Tools.ss:
+    FILTER: Szűrő
+  AssetAdmin_left.ss:
+    GO: Mehet
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
-    PAGES: page(s)
+    PAGES: oldal(ak)
+  BackLink_Button.ss:
+    Back: Vissza
   BasicFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   BigFamilyPage:
     DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
-    Any: Any
+    Any: Bármely
     BROKENLINKS: 'Broken links report'
     CheckSite: 'Check site'
-    CheckSiteDropdownDraft: 'Draft Site'
-    CheckSiteDropdownPublished: 'Published Site'
+    CheckSiteDropdownDraft: 'Oldal vázlata'
+    CheckSiteDropdownPublished: 'Publikált oldal'
     ColumnDateLastModified: 'Date last modified'
     ColumnDateLastPublished: 'Date last published'
     ColumnProblemType: 'Problem type'
@@ -46,58 +52,53 @@ hu:
     HasBrokenFile: 'has broken file'
     HasBrokenLink: 'has broken link'
     HasBrokenLinkAndFile: 'has broken link and file'
-    HoverTitleEditPage: 'Edit page'
-    NOITEMSFOUND: 'No items found'
-    PageName: 'Page name'
+    HoverTitleEditPage: 'Oldal szerkesztése'
+    PageName: 'Oldal neve'
     ReasonDropdown: 'Problem to check'
-    ReasonDropdownBROKENFILE: 'Broken file'
-    ReasonDropdownBROKENLINK: 'Broken link'
+    ReasonDropdownBROKENFILE: 'Hibás állomány'
+    ReasonDropdownBROKENLINK: 'Hibás hivatkozás'
     ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
     ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
     RedirectorNonExistent: 'redirector page pointing to non-existent page'
-    SORTASC: 'Sort in ascending order'
-    SORTDESC: 'Sort in descending order'
     VirtualPageNonExistent: 'virtual page pointing to non-existent page'
   CMSAddPageController:
-    Title: 'Add page'
+    Title: 'Oldal hozzáadása'
   CMSBatchActions:
     DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
     DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
-    DELETE_DRAFT_PAGES: 'Delete from draft site'
-    DELETE_PAGES: 'Delete from published site'
+    DELETE_DRAFT_PAGES: 'Törlés a vázlatokból'
+    DELETE_PAGES: 'Törlés a publikált oldalakból'
     PUBLISHED_PAGES: 'Published %d pages, %d failures'
-    PUBLISH_PAGES: Publish
+    PUBLISH_PAGES: Publikálni
     UNPUBLISHED_PAGES: 'Un-published %d pages'
-    UNPUBLISH_PAGES: Un-publish
+    UNPUBLISH_PAGES: 'Publikálás visszavonása'
   CMSFileAddController:
-    CANACCESS: 'Az archivált oldalt elérheted ezen a linken:'
-    HAVEASKED: 'Azt kérted, hogy megnézhesd a honlapunk tartalmát ekkor:'
-    MENUTITLE: Files
+    MENUTITLE: Állományok
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
-    AddNew: 'Add new page'
-    AddNewButton: 'Add new'
+    AddNew: 'Új oldal hozzáadása'
+    AddNewButton: 'Új hozzáadása'
     ChoosePageParentMode: 'Choose where to create this page'
-    ChoosePageType: 'Choose page type'
-    Create: Create
-    DELETE: 'Törlés a vázlat oldalról'
-    DELETEFP: 'Törlés a publikus oldalról'
+    ChoosePageType: 'Válassza ki az oldal típusát'
+    Create: Létrehozni
+    DELETE: 'Vázlat törlése'
+    DELETEFP: Törlés
     DESCREMOVED: 'and {count} descendants'
-    EMAIL: E-mail
+    EMAIL: Email
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: 'Oldal szerkesztése'
     NEW: Új
     PAGENOTEXISTS: 'Ez az oldal nem létezik.'
-    PAGES: Pages
-    PAGETYPEANYOPT: Any
-    PAGETYPEOPT: 'Page Type'
+    PAGES: Oldalak
+    PAGETYPEANYOPT: Egyéb
+    PAGETYPEOPT: 'Oldal típusa'
     PUBALLCONFIRM: 'Minden oldal publikálása, fázistartalmak kitevése'
     PUBALLFUN: '"Összes publikálása" funkció'
     PUBALLFUN2: 'Ennek a gombnak a megnyomásával ugyanazt érheted el, mintha az összes oldalon megnyomnád a publikálás gombot. Akkor célszerű használni, ha a tartalom nagy változáson ment keresztül, mint például az oldal kezdeti felépítésénél.'
     PUBPAGES: 'Done: Published {count} pages'
-    PageAdded: 'Successfully created page'
+    PageAdded: 'Oldal sikeresen létrehozva'
     REMOVED: '''%s'' törölve az éles oldalról'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: '''%s'' törlése a piszkozatoldalról'
@@ -107,105 +108,103 @@ hu:
     ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
     ROLLEDBACKVERSION: 'Visszaálítva a #%d verzióra. Az új verziószám #%d.'
     SAVE: Mentés
-    SAVEDRAFT: 'Save Draft'
-    TabContent: Content
+    SAVEDRAFT: 'Vázlat mentése'
+    TabContent: Tartalom
     TabHistory: History
-    TabSettings: Settings
+    TabSettings: Beállítások
     TreeFiltered: 'Filtered tree.'
-    TreeFilteredClear: 'Clear filter'
+    TreeFilteredClear: 'Szűrő törlése'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Szűrő alkalmazása'
+    RESET: Reset
   CMSPageAddController:
-    MENUTITLE: 'Add page'
-    ParentMode_child: 'Under another page'
+    MENUTITLE: 'Oldal hozzáadása'
+    ParentMode_child: 'Másik oldal alatt'
     ParentMode_top: 'Top level'
   CMSPageEditController:
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: 'Oldal szerkesztése'
   CMSPageHistoryController:
     COMPAREMODE: 'Compare mode (select two)'
-    COMPAREVERSIONS: 'Compare Versions'
+    COMPAREVERSIONS: 'Verziók összehasonlítása'
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
     MENUTITLE: History
-    REVERTTOTHISVERSION: 'Revert to this version'
+    REVERTTOTHISVERSION: 'Visszatérés erre a verzióra'
     SHOWUNPUBLISHED: 'Show unpublished versions'
     SHOWVERSION: 'Show Version'
-    VIEW: view
+    VIEW: megtekintés
     VIEWINGVERSION: 'Currently viewing version {version}.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Apply Filter"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Szerző
+    NOTPUBLISHED: 'Nincs publikálva'
+    PUBLISHER: Szerző
+    UNKNOWN: Ismeretlen
+    WHEN: Mikor
   CMSPageSettingsController:
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: 'Oldal szerkesztése'
   CMSPagesController:
-    GalleryView: 'Gallery View'
-    ListView: 'List View'
-    MENUTITLE: Pages
-    TreeView: 'Tree View'
-  CMSSearch:
-    FILTERDATEFROM: From
-    FILTERDATEHEADING: Date
-    FILTERDATETO: To
-    FILTERLABELTEXT: Content
-  CMSSettingsController:
-    AUTHOR: Author
-    MENUTITLE: Settings
-    NOTPUBLISHED: 'Not published'
-    PUBLISHER: Publisher
-    UNKNOWN: Unknown
-    WHEN: When
-  CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: Displaying
+    GalleryView: 'Galéria nézet'
+    ListView: 'Lista nézet'
+    MENUTITLE: Oldalak
+    TreeView: 'Fa nézet'
+  CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: 'Drag''n''drop'
-    GO: Mehet
     MULTISELECT: Multi-selection
-    OF: of
-    TO: to
-    Title: 'Changed pages'
-    VIEWFIRST: 'Első mutatása'
-    VIEWLAST: 'Utolsó mutatása'
-    VIEWNEXT: 'Következő mutatása'
-    VIEWPREVIOUS: 'Előző mutatása'
+  CMSPagesController_Tools.ss:
+    FILTER: Szűrő
+  CMSSearch:
+    FILTERDATEFROM: -tól
+    FILTERDATEHEADING: Dátum
+    FILTERDATETO: -ig
+    FILTERLABELTEXT: Tartalom
+  CMSSettingsController:
+    MENUTITLE: Beállítások
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Változtatott oldalak'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'All pages, including deleted'
+    Title: 'Összes oldal, a töröltekkel együtt'
   CMSSiteTreeFilter_Search:
-    Title: 'All pages'
+    Title: 'Összes oldal'
   CaseStudy:
     DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Archivált oldal'
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
-    DRAFTSITE: 'Draft Site'
+    DRAFTSITE: 'Vázlat oldal'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Be kell jelentkezned a CMS jelszavaddal, hogy megtekinthesd a piszkozatot vagy az archivált tartalmat. <a href="%s">A publikált oldalra való visszatéréshez kattints ide.</a>'
     Email: Email
-    InstallFilesDeleted: 'Installation files have been successfully deleted.'
+    InstallFilesDeleted: 'A telepítő állományok sikeresen tőrőlve lettek.'
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
-    LOGGEDINAS: 'Logged in as'
-    LOGIN: Login
-    LOGOUT: 'Log out'
+    InstallSuccessCongratulations: 'A Silverstripe telepítése sikeres volt.'
+    LOGGEDINAS: 'Bejelentkezve, mint'
+    LOGIN: Bejelentkezés
+    LOGOUT: Kijelentkezés
     NOTLOGGEDIN: 'Not logged in'
-    PUBLISHEDSITE: 'Published Site'
-    Password: Password
+    PUBLISHEDSITE: 'Publikált oldal'
+    Password: Jelszó
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
     StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
-    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
+    UnableDeleteInstall: 'A telepítő állományok törlése nem sikerült. Kérjük törölje az alábbi állományokat kézzel.'
     VIEWPAGEIN: 'View Page in:'
   ErrorPage:
     CODE: Hibakód
     DEFAULTERRORPAGECONTENT: '<p>Sorry, it seems you were trying to access a page that doesn''t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>'
-    DEFAULTERRORPAGETITLE: 'Page not found'
+    DEFAULTERRORPAGETITLE: 'Az oldal nem található'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Server error'
+    DEFAULTSERVERERRORPAGETITLE: 'Szerver hiba'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
-    400: '400 - Bad Request'
+    400: '400 - Hibás kérés'
     401: '401 - Unauthorized'
     403: '403 - Forbidden'
-    404: '404 - Not Found'
+    404: '404 - Az oldal nem létezik'
     405: '405 - Method Not Allowed'
     406: '406 - Not Acceptable'
     407: '407 - Proxy Authentication Required'
     408: '408 - Request Timeout'
-    409: '409 - Conflict'
+    409: '409 - Konfliktus'
     410: '410 - Gone'
     411: '411 - Length Required'
     412: '412 - Precondition Failed'
@@ -221,28 +220,26 @@ hu:
     504: '504 - Gateway Timeout'
     505: '505 - HTTP Version Not Supported'
   Folder:
-    AddFolderButton: 'Add folder'
-    DELETEUNUSEDTHUMBNAILS: 'Delete unused thumbnails'
-    UNUSEDFILESTITLE: 'Unused files'
-    UNUSEDTHUMBNAILSTITLE: 'Unused thumbnails'
-    UploadFilesButton: Upload
+    AddFolderButton: 'Mappa hozzáadása'
+    DELETEUNUSEDTHUMBNAILS: 'Nem használt bélyegképek törlése'
+    UNUSEDFILESTITLE: 'Nem használt állományok'
+    UNUSEDTHUMBNAILSTITLE: 'Nem használt bélyegképek'
+    UploadFilesButton: Feltöltés
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filter
   LeftAndMain:
-    DELETED: Deleted.
-    PreviewButton: Preview
-    SAVEDUP: Saved.
-    STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
-    SearchResults: 'Search Results'
-    VersionUnknown: Unknown
+    DELETED: Törölve.
+    PreviewButton: Előnézet
+    SAVEDUP: Elmentve.
+    STATUSPUBLISHEDSUCCESS: '''{title}'' sikeresen publikálva'
+    SearchResults: Találatok
+    VersionUnknown: Ismeretlen
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   Page:
     DESCRIPTION: 'Generic content page'
   Permission:
-    CMS_ACCESS_CATEGORY: 'CMS Access'
-    RESET: Reset
+    CMS_ACCESS_CATEGORY: 'CMS hozzáférés'
   Permissions:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
@@ -257,44 +254,43 @@ hu:
     YOURPAGE: 'Oldal a weblapodon'
   RelationFieldsTestPage:
     DESCRIPTION: 'Generic content page'
-    FILTER: Filter
   ReportAdmin:
-    MENUTITLE: Reports
+    MENUTITLE: Jelentések
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
-    GO: Go
-    SEARCH: Search
-    SearchResults: 'Search Results'
+    GO: Mehet
+    SEARCH: Keresés
+    SearchResults: Találatok
   SideReport:
     BROKENFILES: 'Pages with broken files'
-    BROKENLINKS: 'Pages with broken links'
-    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
-    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
+    BROKENLINKS: 'Oldalak hibás hivatkozásokkal'
+    BROKENREDIRECTORPAGES: 'RedirectorPage-ek törölt oldalakra hivatkoznak'
+    BROKENVIRTUALPAGES: 'VirtualPages törölt oldalakra mutatnak'
     BrokenLinksGroupTitle: 'Broken links reports'
     ContentGroupTitle: 'Content reports'
     EMPTYPAGES: 'Üres oldalak'
     LAST2WEEKS: 'Elmúlt 2 héten belül szerkesztett oldalak'
-    OtherGroupTitle: Other
+    OtherGroupTitle: Más
     ParameterLiveCheckbox: 'Check live site'
     REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigatorLink:
     ShareInstructions: 'To share a this to this page, copy and paste the link below.'
-    ShareLink: 'Share link'
+    ShareLink: 'Hivatkozás megosztása'
   SilverStripeNavigatorLinkl:
-    CloseLink: Close
+    CloseLink: Bezárni
   SiteConfig:
-    DEFAULTTHEME: '(Use default theme)'
+    DEFAULTTHEME: '(Alap téma használata)'
     EDITHEADER: 'Who can edit pages on this site?'
     EDIT_PERMISSION: 'Manage site configuration'
     EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
-    SITENAMEDEFAULT: 'Your Site Name'
+    SITENAMEDEFAULT: 'Az oldal neve'
     SITETAGLINE: 'Site Tagline/Slogan'
-    SITETITLE: 'Site title'
-    TABACCESS: Access
+    SITETITLE: 'Oldal címe'
+    TABACCESS: Hozzáférés
     TABMAIN: Main
     TAGLINEDEFAULT: 'your tagline here'
-    THEME: Theme
+    THEME: Témák
     TOPLEVELCREATE: 'Who can create pages in the root of the site?'
     VIEWHEADER: 'Who can view pages on this site?'
   SiteTree:
@@ -302,30 +298,29 @@ hu:
     ACCESSHEADER: 'Ki láthatja ezt az oldalt a weblapon?'
     ACCESSLOGGEDIN: 'Bejelentkezett felhasználók'
     ACCESSONLYTHESE: 'Csak ezen emberek (válassz a listából)'
-    ADDEDTODRAFTHELP: 'Page has not been published yet'
-    ADDEDTODRAFTSHORT: Draft
-    ALLOWCOMMENTS: 'A megjegyzések engedélyezve legyenek az oldalon?'
+    ADDEDTODRAFTHELP: 'Az oldal jelenleg még nincs publikálva.'
+    ADDEDTODRAFTSHORT: Vázlat
+    ALLOWCOMMENTS: 'Megjegyzések engedélyezése ezen az oldalon?'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: 'Piszkozaton végzett változtatások visszavonása'
     BUTTONCANCELDRAFTDESC: 'Piszkozat törlése, és vissztérés a jelenleg publikált oldalra'
     BUTTONSAVEPUBLISH: 'Mentés és publikálás'
     BUTTONUNPUBLISH: 'Publikálás visszavonása'
     BUTTONUNPUBLISHDESC: 'Oldal eltávolítása a publikált oldalról'
-    Back: Back
-    CREATED: 'Date Created'
-    Comments: Comments
+    CREATED: 'Létrehozás dátuma'
+    Comments: Kommentárok
     Content: Tartalom
     DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
-    DEFAULTABOUTTITLE: 'About Us'
+    DEFAULTABOUTTITLE: Rólunk
     DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
-    DEFAULTCONTACTTITLE: 'Contact Us'
+    DEFAULTCONTACTTITLE: Kapcsolat
     DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
     DEFAULTHOMETITLE: Home
     DELETEDPAGEHELP: 'Page is no longer published'
-    DELETEDPAGESHORT: Deleted
+    DELETEDPAGESHORT: Törölve
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
     DESCRIPTION: 'Generic content page'
-    DependtPageColumnLinkType: 'Link type'
+    DependtPageColumnLinkType: 'Hivatkozás típusa'
     DependtPageColumnURL: URL
     EDITANYONE: 'Bárki, aki be tud jelentkezni a CMS-be'
     EDITHEADER: 'Ki szerkesztheti ezt a CMS-ben?'
@@ -337,15 +332,15 @@ hu:
     HASBROKENLINKS: 'Ez az oldal hibás linkeket tartalmaz.'
     HTMLEDITORTITLE: Tartalom
     INHERIT: 'Inherit from parent page'
-    LASTUPDATED: 'Last Updated'
+    LASTUPDATED: 'Utoljára frissítve'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 'Navigációs cimke'
     METADESC: Leírás
     METAEXTRA: 'Saját meta címkék'
-    METAKEYWORDS: Kulcsszavak
+    METAKEYWORDS: 'Meta kulcsszavak'
     METATITLE: Cím
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
-    MODIFIEDONDRAFTSHORT: Modified
+    MODIFIEDONDRAFTSHORT: Változtatva
     MetadataToggle: Metadata
     PAGELOCATION: 'Page location'
     PAGETITLE: 'Az oldal neve'
@@ -359,10 +354,10 @@ hu:
     PLURALNAME: 'Site Tres'
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
-    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
-    REMOVEDFROMDRAFTSHORT: 'Removed from draft'
-    REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
-    REORGANISE_DESCRIPTION: 'Change site structure'
+    REMOVEDFROMDRAFTHELP: 'Az oldal publikálva lett, de törölve lett a vázlatok közül'
+    REMOVEDFROMDRAFTSHORT: 'Törölve a vázlatokból'
+    REMOVE_INSTALL_WARNING: 'Figyelmeztetés: Törölje az install.php állományt a Silverstripe telepítéséből. '
+    REORGANISE_DESCRIPTION: 'Oldal szerkezetének megváltoztatása'
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'Látható legyen a menükben?'
     SHOWINSEARCH: 'Látható legyen a keresésben?'
@@ -379,25 +374,40 @@ hu:
     VIEW_DRAFT_CONTENT: 'View draft content'
     VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
     Viewers: 'Viewers Groups'
-    Visibility: Visibility
+    Visibility: Láthatóság
     has_one_Parent: 'Szülő oldal'
     many_many_BackLinkTracking: 'Backlink Tracking'
-    many_many_ImageTracking: 'Image Tracking'
+    many_many_ImageTracking: 'Kép követése'
     many_many_LinkTracking: 'Link Tracking'
   SiteTreeURLSegmentField:
-    HelpChars: ' Special characters are automatically converted or removed.'
+    HelpChars: 'A speciális karakterek automatikusan konvertálódnak vagy törlődnek.'
   StaticExporter:
     BASEURL: 'Alap URL'
     EXPORTTO: 'Exportálás abba a mappába'
     NAME: 'Statikus exportáló'
   TableListField:
     SELECT: 'Select:'
+  TableListField.ss:
+    NOITEMSFOUND: 'No items found'
+    SORTASC: 'Sort in ascending order'
+    SORTDESC: 'Sort in descending order'
+  TableListField_PageControls.ss:
+    DISPLAYING: Displaying
+    OF: of
+    TO: to
+    VIEWFIRST: 'Első mutatása'
+    VIEWLAST: 'Utolsó mutatása'
+    VIEWNEXT: 'Következő mutatása'
+    VIEWPREVIOUS: 'Előző mutatása'
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
   TestPage:
     DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'Az archivált oldalt elérheted ezen a linken:'
+    HAVEASKED: 'Azt kérted, hogy megnézhesd a honlapunk tartalmát ekkor:'
   VirtualPage:
     CHOOSE: 'Válassz belinkelendő oldalt'
     DESCRIPTION: 'Displays the content of another page'
@@ -405,6 +415,6 @@ hu:
     HEADER: 'Ez egy virtuális oldal'
     PLURALNAME: 'Virtual Pags'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
-    SINGULARNAME: 'Virtuális Oldal'
+    SINGULARNAME: 'Virtuális oldal'
   cms:
     FILESYSTEMSYNC: 'Sync files'

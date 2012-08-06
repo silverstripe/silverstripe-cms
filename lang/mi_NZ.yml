@@ -26,9 +26,15 @@ mi_NZ:
     Upload: Tukuatu
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Muku kōpaki'
+  AssetAdmin_Tools.ss:
+    FILTER: Tātari
+  AssetAdmin_left.ss:
+    GO: Haere
   AssetTableField:
     BACKLINKCOUNT: 'I whakamahia i:'
     PAGES: 'te/ngā whārangi'
+  BackLink_Button.ss:
+    Back: Hoki
   BasicFieldsTestPage:
     DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
   BigFamilyPage:
@@ -47,7 +53,6 @@ mi_NZ:
     HasBrokenLink: 'he hono whati tōna'
     HasBrokenLinkAndFile: 'he hono whati, kōnae whati ōna'
     HoverTitleEditPage: 'Whakatika whārangi'
-    NOITEMSFOUND: 'Kāore he tūemi i kitea'
     PageName: 'Ingoa whārangi'
     ReasonDropdown: 'Raru hei taki'
     ReasonDropdownBROKENFILE: 'Kōnae whati'
@@ -55,8 +60,6 @@ mi_NZ:
     ReasonDropdownRPBROKENLINK: 'Whārangi tuku anō e tohu ana ki te whārangi kāore i reira'
     ReasonDropdownVPBROKENLINK: 'Whārangi mariko e tohu ana ki te whārangi kāore i reira'
     RedirectorNonExistent: 'Whārangi tuku anō e tohu ana ki te whārangi kāore i reira'
-    SORTASC: 'Kōmakatia ki te raupapa aupiki'
-    SORTDESC: 'Kōmakatia ki te raupapa auheke'
     VirtualPageNonExistent: 'Whārangi mariko e tohu ana ki te whārangi kāore i reira'
   CMSAddPageController:
     Title: 'Tāpiri whārangi'
@@ -70,8 +73,6 @@ mi_NZ:
     UNPUBLISHED_PAGES: ' %d ngā whārangi kua wetewhakaputaina'
     UNPUBLISH_PAGES: Wete-whakaputa
   CMSFileAddController:
-    CANACCESS: 'Ka taea te uru ki te pae putumōhio mā tēnei hononga'
-    HAVEASKED: 'Kua tono mai kia tirohia e koe ngā ihirangi o tā mātou pae i'
     MENUTITLE: 'Ngā Kōnae'
   CMSMain:
     ACCESS: 'Uru ki te wāhanga ''{title}'' '
@@ -113,6 +114,9 @@ mi_NZ:
     TabSettings: 'Ngā Tautuhinga'
     TreeFiltered: 'Rākau kua tātaritia'
     TreeFilteredClear: 'Ūkui tātari'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Hoatu Tātari'
+    RESET: 'Tautuhi Anō'
   CMSPageAddController:
     MENUTITLE: 'Tāpiri whārangi'
     ParentMode_child: 'Kei raro i tētahi atu whārangi'
@@ -129,7 +133,12 @@ mi_NZ:
     SHOWVERSION: 'Whakaatu Putanga'
     VIEW: Tiro
     VIEWINGVERSION: 'Tiro ana i te putanga {version} ināianei.'
-  CMSPageHistoryController_versions.ss: 'BackLink_Button.ss:  AssetAdmin_Tools.ss:  TableListField.ss:  CMSPagesController_Tools.ss:  CMSPagesController_ContentToolbar.ss:  AssetAdmin_left.ss:  TableListField_PageControls.ss:  ViewArchivedEmail.ss:  CMSMain_left.ss:    APPLY FILTER: "Hoatu Tātari"'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Kaituhi
+    NOTPUBLISHED: 'Kāore i whakaputaina'
+    PUBLISHER: Pūwhakaputa
+    UNKNOWN: 'Tē Mōhiotia'
+    WHEN: Inahea
   CMSPageSettingsController:
     MENUTITLE: 'Whakatika Whārangi'
   CMSPagesController:
@@ -137,30 +146,20 @@ mi_NZ:
     ListView: 'Tirohanga Rārangi'
     MENUTITLE: 'Ngā Whārangi'
     TreeView: 'Tirohanga Rākau'
+  CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: 'Tō me te taka'
+    MULTISELECT: Tīpakonga-maha
+  CMSPagesController_Tools.ss:
+    FILTER: Tātari
   CMSSearch:
     FILTERDATEFROM: 'Mai i'
     FILTERDATEHEADING: Rā
     FILTERDATETO: Ki
     FILTERLABELTEXT: 'Ngā Ihirangi'
   CMSSettingsController:
-    AUTHOR: Kaituhi
     MENUTITLE: 'Ngā Tautuhinga'
-    NOTPUBLISHED: 'Kāore i whakaputaina'
-    PUBLISHER: Pūwhakaputa
-    UNKNOWN: 'Tē Mōhiotia'
-    WHEN: Inahea
   CMSSiteTreeFilter_ChangedPages:
-    DISPLAYING: 'Whakaatu ana'
-    ENABLEDRAGGING: 'Tō me te taka'
-    GO: Haere
-    MULTISELECT: Tīpakonga-maha
-    OF: o
-    TO: ki
     Title: 'Ngā whārangi kua hurihia'
-    VIEWFIRST: 'Tirohia te tuatahi'
-    VIEWLAST: 'Tirohia te whakamutunga'
-    VIEWNEXT: 'Tiro panuku'
-    VIEWPREVIOUS: 'Tirohia tōmua'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Ngā whārangi katoa, tae atu ki ērā kua mukua'
   CMSSiteTreeFilter_Search:
@@ -228,7 +227,6 @@ mi_NZ:
     UploadFilesButton: Tukuatu
   GridFieldTestPage:
     DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
-    FILTER: Tātari
   LeftAndMain:
     DELETED: 'Kua Mukua'
     PreviewButton: Arokite
@@ -242,7 +240,6 @@ mi_NZ:
     DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
   Permission:
     CMS_ACCESS_CATEGORY: 'Uru CMS'
-    RESET: 'Tautuhi Anō'
   Permissions:
     CONTENT_CATEGORY: 'Whakaaetanga ihirangi'
     PERMISSIONS_CATEGORY: 'Ngā tūranga me ngā whakaaetanga uru'
@@ -257,7 +254,6 @@ mi_NZ:
     YOURPAGE: 'Whārangi kei tō paetukutuku'
   RelationFieldsTestPage:
     DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
-    FILTER: Tātari
   ReportAdmin:
     MENUTITLE: 'Ngā Pūrongo'
   ReportAdminForm:
@@ -311,7 +307,6 @@ mi_NZ:
     BUTTONSAVEPUBLISH: 'Tiaki me te Whakaputa'
     BUTTONUNPUBLISH: Wetewhakaputa
     BUTTONUNPUBLISHDESC: 'Tangohia tēnei whārangi i te pae kua whakaputaina'
-    Back: Hoki
     CREATED: 'Rā Hanga'
     Comments: 'Ngā Tākupu'
     Content: 'Ngā Ihirangi'
@@ -392,12 +387,27 @@ mi_NZ:
     NAME: 'Pūkaweatu rerekore'
   TableListField:
     SELECT: Tīpako
+  TableListField.ss:
+    NOITEMSFOUND: 'Kāore he tūemi i kitea'
+    SORTASC: 'Kōmakatia ki te raupapa aupiki'
+    SORTDESC: 'Kōmakatia ki te raupapa auheke'
+  TableListField_PageControls.ss:
+    DISPLAYING: 'Whakaatu ana'
+    OF: o
+    TO: ki
+    VIEWFIRST: 'Tirohia te tuatahi'
+    VIEWLAST: 'Tirohia te whakamutunga'
+    VIEWNEXT: 'Tiro panuku'
+    VIEWPREVIOUS: 'Tirohia tōmua'
   TestFileUploadPage:
     DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
   TestPage:
     DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
   TreeTools:
     DisplayLabel: 'Whakaatu:'
+  ViewArchivedEmail.ss:
+    CANACCESS: 'Ka taea te uru ki te pae putumōhio mā tēnei hononga'
+    HAVEASKED: 'Kua tono mai kia tirohia e koe ngā ihirangi o tā mātou pae i'
   VirtualPage:
     CHOOSE: 'Kōwhiria he whārangi kia honoa '
     DESCRIPTION: 'Ka whakaatu i ngā ihirangi o tētahi atu whārangi'
