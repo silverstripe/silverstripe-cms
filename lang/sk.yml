@@ -12,7 +12,7 @@ sk:
     CREATED: Dátum
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
-    FILES: Files
+    FILES: Súbory
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'From the internet'
     FROMYOURCOMPUTER: 'From your computer'
@@ -25,14 +25,14 @@ sk:
     TreeView: 'Tree View'
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
-    TITLE: 'Delete folders'
+    TITLE: 'Vymazať zložky'
   AssetAdmin_Tools.ss:
     FILTER: Filter
   AssetAdmin_left.ss:
     GO: Vykonať
   AssetTableField:
     BACKLINKCOUNT: 'Použité na:'
-    PAGES: page(s)
+    PAGES: stránka(y)
   BackLink_Button.ss:
     Back: Späť
   BasicFieldsTestPage:
@@ -64,7 +64,7 @@ sk:
   CMSAddPageController:
     Title: 'Add page'
   CMSBatchActions:
-    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
+    DELETED_DRAFT_PAGES: 'Smazaných %d stránok z návrhu webu, %d zlyhaní'
     DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
     DELETE_DRAFT_PAGES: 'Vymazať z návhrového webu'
     DELETE_PAGES: 'Vymazať z publikovaného webu'
@@ -77,22 +77,22 @@ sk:
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
     ACCESS_HELP: 'Povoliť prezeranie sekcie obshujúcej štruktúru a obsah webu. Právomoci na prezeranie a úpravu môžu byť nastavené cez menu pre samostanú stránku tak isto ako jednotlivé právomoci pre obsah.'
-    AddNew: 'Add new page'
-    AddNewButton: 'Add new'
-    ChoosePageParentMode: 'Choose where to create this page'
-    ChoosePageType: 'Choose page type'
-    Create: Create
+    AddNew: 'Pridať novou stránku'
+    AddNewButton: 'Pridať nový'
+    ChoosePageParentMode: 'Vyberte, kde vytvoriť túto stránku'
+    ChoosePageType: 'Vyberte typ stránky'
+    Create: Vytvoriť
     DELETE: 'Vymazať z pracovnej verzie stránky'
     DELETEFP: 'Vymazať z publikovaného webu'
     DESCREMOVED: 'and {count} descendants'
     EMAIL: 'Pošli e-mailom'
-    EditTree: 'Edit Tree'
-    ListFiltered: 'Filtered list.'
+    EditTree: 'Editovať strom'
+    ListFiltered: 'Filtrovaný zoznam.'
     MENUTITLE: 'Upraviť stránku'
     NEW: Nový
     PAGENOTEXISTS: 'Táto stránka neexistuje.'
     PAGES: Stránky
-    PAGETYPEANYOPT: Any
+    PAGETYPEANYOPT: Akýkoľvek
     PAGETYPEOPT: 'Typ stránky'
     PUBALLCONFIRM: 'Publikovať všetky stránky z úschovne'
     PUBALLFUN: 'Funkcia "Publikovať všetko"'
@@ -108,12 +108,12 @@ sk:
     ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
     ROLLEDBACKVERSION: 'Vrátené späť na verziu: #%d. Číslo novej verzie je #%d'
     SAVE: Uložiť
-    SAVEDRAFT: 'Save Draft'
+    SAVEDRAFT: 'Uložiť návrh'
     TabContent: Obsah
     TabHistory: História
     TabSettings: Nastavenia
-    TreeFiltered: 'Filtered tree.'
-    TreeFilteredClear: 'Clear filter'
+    TreeFiltered: 'Filtrovaný strom.'
+    TreeFilteredClear: 'Vyčistiť filter'
   CMSMain_left.ss:
     'APPLY FILTER': 'Apply Filter'
     RESET: Reset
@@ -124,12 +124,12 @@ sk:
   CMSPageEditController:
     MENUTITLE: 'Edit Page'
   CMSPageHistoryController:
-    COMPAREMODE: 'Compare mode (select two)'
+    COMPAREMODE: 'Mód porovnania (vyberte dva)'
     COMPAREVERSIONS: 'Porovnať verzie'
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
     MENUTITLE: História
-    REVERTTOTHISVERSION: 'Revert to this version'
-    SHOWUNPUBLISHED: 'Show unpublished versions'
+    REVERTTOTHISVERSION: 'Vrátiť sa k tejto verzii'
+    SHOWUNPUBLISHED: 'Zobraziť nepublikované verzie'
     SHOWVERSION: 'Zobraziť verziu'
     VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
@@ -147,8 +147,8 @@ sk:
     MENUTITLE: Stránky
     TreeView: 'Zobraziť strom'
   CMSPagesController_ContentToolbar.ss:
-    ENABLEDRAGGING: 'Drag''n''drop'
-    MULTISELECT: Multi-selection
+    ENABLEDRAGGING: 'Tiahni a pusť'
+    MULTISELECT: 'Multi výber'
   CMSPagesController_Tools.ss:
     FILTER: Filter
   CMSSearch:
@@ -159,9 +159,9 @@ sk:
   CMSSettingsController:
     MENUTITLE: Nastavenia
   CMSSiteTreeFilter_ChangedPages:
-    Title: 'Changed pages'
+    Title: 'Zmenené stránky'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'All pages, including deleted'
+    Title: 'Všetky stránky, vrátane vymazaných'
   CMSSiteTreeFilter_Search:
     Title: 'Všetky stránky'
   CaseStudy:
@@ -228,14 +228,14 @@ sk:
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
   LeftAndMain:
-    DELETED: Deleted.
+    DELETED: Smazané.
     PreviewButton: Zobrazenie
-    SAVEDUP: Saved.
+    SAVEDUP: Uložené.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: 'Výsledky vyhľadávania'
     VersionUnknown: Neznáma
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   Page:
     DESCRIPTION: 'Generic content page'
   Permission:
@@ -299,7 +299,7 @@ sk:
     ACCESSLOGGEDIN: 'Prihlásení používatelia'
     ACCESSONLYTHESE: 'Iba títo ľudia (vyberte zo zoznamu)'
     ADDEDTODRAFTHELP: 'Page has not been published yet'
-    ADDEDTODRAFTSHORT: Draft
+    ADDEDTODRAFTSHORT: Návrh
     ALLOWCOMMENTS: 'Povoliť komentáre na tejto stránke?'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: 'Zrušiť zmeny v návrhu'
@@ -341,7 +341,7 @@ sk:
     METATITLE: Titulok
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Zmenené
-    MetadataToggle: Metadata
+    MetadataToggle: Metaúdaje
     PAGELOCATION: 'Pozícia stránky'
     PAGETITLE: 'Meno stránky'
     PAGETYPE: 'Typ stránky'
@@ -354,8 +354,8 @@ sk:
     PLURALNAME: 'Strom stránok'
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
-    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
-    REMOVEDFROMDRAFTSHORT: 'Odstránené z konceptu'
+    REMOVEDFROMDRAFTHELP: 'Stránka je zverejnená, ale bola odstránená z návrhu'
+    REMOVEDFROMDRAFTSHORT: 'Odstránené z návrhu'
     REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
     REORGANISE_DESCRIPTION: 'Zmeniť štruktúru webu'
     REORGANISE_HELP: 'Zoradiť stránky v stromovej štruktúre pomocou prenesenia.'
@@ -392,19 +392,19 @@ sk:
     SORTASC: 'Zoradiť poradie vzostupne'
     SORTDESC: 'Zoradiť poradie zostupne'
   TableListField_PageControls.ss:
-    DISPLAYING: Displaying
-    OF: of
-    TO: to
+    DISPLAYING: Zobrazujem
+    OF: z
+    TO: do
     VIEWFIRST: 'Zobraz prvé'
     VIEWLAST: 'Zobraz posledné'
     VIEWNEXT: 'Zobraz nasledujúce'
     VIEWPREVIOUS: 'Zobraz predchádzajúce'
   TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   TestPage:
     DESCRIPTION: 'Generic content page'
   TreeTools:
-    DisplayLabel: 'Display:'
+    DisplayLabel: 'Zobraz:'
   ViewArchivedEmail.ss:
     CANACCESS: 'Archivovaný web môžete navštíviť týmto odkazom:'
     HAVEASKED: 'Požiadali ste o zobrazenie obsahu webu z'
