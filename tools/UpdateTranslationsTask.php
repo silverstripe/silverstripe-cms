@@ -170,7 +170,7 @@ class UpdateTranslationsTask extends SilverStripeBuildTask {
 		$isBlock = false;
 		$blockIndex = -1;
 		$lines = explode(PHP_EOL, $content);
-		$keyedLineRegex = '/^\s*[\w\d-_]*:\s*/'; 
+		$keyedLineRegex = '/^\s*[\w\d-_\.]*:\s*/'; 
 		$leadingQuoteRegex = '/^\s*\"/';
 		$trailingQuoteRegex = '/[^\\\\]\"$/';
 		foreach($lines as $i => $line) {
