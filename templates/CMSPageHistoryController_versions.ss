@@ -2,9 +2,9 @@
 	<thead>
 		<tr>
 			<th class="ui-helper-hidden"></th>
-			<th><% _t('WHEN','When') %></th>
-			<th><% _t('AUTHOR','Author') %></th>
-			<th><% _t('PUBLISHER','Publisher') %></th>
+			<th><% _t('CMSPageHistoryController_versions.ss.WHEN','When') %></th>
+			<th><% _t('CMSPageHistoryController_versions.ss.AUTHOR','Author') %></th>
+			<th><% _t('CMSPageHistoryController_versions.ss.PUBLISHER','Publisher') %></th>
 		</tr>
 	</thead>
 	
@@ -15,8 +15,8 @@
 			<% with LastEdited %>
 				<td class="last-edited first-column" title="$Ago - $Nice">$Nice</td>
 			<% end_with %>
-			<td><% if Author %>$Author.FirstName $Author.Surname.Initial<% else %><% _t('UNKNOWN','Unknown') %><% end_if %></td>
-			<td class="last-column"><% if Published %><% if Publisher %>$Publisher.FirstName $Publisher.Surname.Initial<% else %><% _t('UNKNOWN','Unknown') %><% end_if %><% else %><% _t('NOTPUBLISHED','Not published') %><% end_if %></td>			
+			<td><% if Author %>$Author.FirstName $Author.Surname.Initial<% else %><% _t('CMSPageHistoryController_versions.ss.UNKNOWN','Unknown') %><% end_if %></td>
+			<td class="last-column"><% if Published %><% if Publisher %>$Publisher.FirstName $Publisher.Surname.Initial<% else %><% _t('CMSPageHistoryController_versions.ss.UNKNOWN','Unknown') %><% end_if %><% else %><% _t('CMSPageHistoryController_versions.ss.NOTPUBLISHED','Not published') %><% end_if %></td>			
 		</tr>
 		<% end_loop %>
 	</tbody>
