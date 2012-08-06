@@ -13,7 +13,7 @@ sk:
     CurrentFolderOnly: 'Obmedziť k aktuálnej zložke?'
     DetailsView: Detaily
     FILES: Súbory
-    FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
+    FILESYSTEMSYNCTITLE: 'Aktualizuje záznamy súborov databázy CMS na súborovom systéme. Užitočné, keď sú nové súbory nahrané mimo CMS, napr cez FTP.'
     FROMTHEINTERNET: 'Z internetu'
     FROMYOURCOMPUTER: 'Z vášho počitača'
     Filetype: 'Typ súboru'
@@ -75,7 +75,7 @@ sk:
   CMSFileAddController:
     MENUTITLE: Súbory
   CMSMain:
-    ACCESS: 'Access to ''{title}'' section'
+    ACCESS: 'Pristup k ''{title}'' sekcii'
     ACCESS_HELP: 'Povoliť prezeranie sekcie obshujúcej štruktúru a obsah webu. Právomoci na prezeranie a úpravu môžu byť nastavené cez menu pre samostanú stránku tak isto ako jednotlivé právomoci pre obsah.'
     AddNew: 'Pridať novou stránku'
     AddNewButton: 'Pridať nový'
@@ -84,7 +84,7 @@ sk:
     Create: Vytvoriť
     DELETE: 'Vymazať z pracovnej verzie stránky'
     DELETEFP: 'Vymazať z publikovaného webu'
-    DESCREMOVED: 'and {count} descendants'
+    DESCREMOVED: 'a {count} potomkov'
     EMAIL: 'Pošli e-mailom'
     EditTree: 'Editovať strom'
     ListFiltered: 'Filtrovaný zoznam.'
@@ -97,15 +97,15 @@ sk:
     PUBALLCONFIRM: 'Publikovať všetky stránky z úschovne'
     PUBALLFUN: 'Funkcia "Publikovať všetko"'
     PUBALLFUN2: 'Stlačením tohto tlačidla vykonáte to isté ako keby ste navštívili každú stránku a stlačili "publikuj". Je určené na použite po rozsiahlych zmenách obsahu, napríklad keď bol web prvýkrát vytvorený.'
-    PUBPAGES: 'Done: Published {count} pages'
+    PUBPAGES: 'Hotovo: Publikované {count} stránky'
     PageAdded: 'Stránka vytvorená úspešne'
     REMOVED: 'Vymazané ''%s''%s z publikovaného webu'
-    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
+    REMOVEDPAGE: 'Smazané ''{title}'' z verejného webu'
     REMOVEDPAGEFROMDRAFT: 'Odstránené ''%s'' z pracovnej verzie stránky'
     RESTORE: Obnoviť
-    RESTORED: 'Restored ''{title}'' successfully'
+    RESTORED: 'Obnovené ''{title}'' úspešne'
     ROLLBACK: 'Návrat späť na túto verziu'
-    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
+    ROLLEDBACKPUB: 'Vrátené späť na zverejnenú verziu. Číslo novej verzie je #{version}'
     ROLLEDBACKVERSION: 'Vrátené späť na verziu: #%d. Číslo novej verzie je #%d'
     SAVE: Uložiť
     SAVEDRAFT: 'Uložiť návrh'
@@ -165,7 +165,7 @@ sk:
   CMSSiteTreeFilter_Search:
     Title: 'Všetky stránky'
   CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
+    DESCRIPTION: 'Prípadová štúdia stránky predstavuje pracovné príklady'
   ContentControl:
     NOTEWONTBESHOWN: 'Poznámka: Táto správa sa nebude zobrazovať vašim návštevníkom'
   ContentController:
@@ -176,7 +176,7 @@ sk:
     DRAFT_SITE_ACCESS_RESTRICTION: 'Pre zobrazenie návrhov alebo archivovaného obsahu sa musíte prihlásiť so svojím CMS heslom. <a href="%s">Pre návrat na publikovaný web kliknite Tu.</a>'
     Email: Email
     InstallFilesDeleted: 'Inštalačné súbory boli odstranené úspešne.'
-    InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
+    InstallSecurityWarning: 'Z bezpečnostných dôvodov by ste mali teraz odstrániť inštalačné súbory, ak  neplánujete preinštalovať ho neskôr (<em> vyžaduje admin prihlásiť, pozri vyššie </em>). Webový server teraz potrebuje už len prístup pre zápis do zložky "assets", môžete odstrániť práva zápisu zo všetkých ostatných zložiek. <a href="{link}" style="text-align: center;"> Kliknite tu pre zmazanie inštalačných súborov. </a>'
     InstallSuccessCongratulations: 'SilverStripe bol nainštalovaný úspešne.'
     LOGGEDINAS: 'Prihlásený ako'
     LOGIN: Prihlásiť
@@ -184,9 +184,9 @@ sk:
     NOTLOGGEDIN: Neprihlásený
     PUBLISHEDSITE: 'Publikovaný web'
     Password: Heslo
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
+    PostInstallTutorialIntro: 'Tento web je zjednodušená verzia SilverStripe 2. webu. Ak ho chcete rošíriť, pozrite sa na odkaz {link}, prosím.'
     StartEditing: 'Môžte začať editáciu vášho web obsahu otvorením <a href="{link}">CMS</a>.'
-    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
+    UnableDeleteInstall: 'Nepodarilo sa smazať inštalačné súbory. Smazte ručne súbory uvedené dole'
     VIEWPAGEIN: 'Prezrieť stránku v:'
   ErrorPage:
     CODE: 'Chybový kód'
@@ -194,7 +194,7 @@ sk:
     DEFAULTERRORPAGETITLE: 'Stránka nenajdená'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Prepáčte, ale bol problém s manipuláciou vášho požiadavku.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Chyba servera'
-    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
+    DESCRIPTION: 'Vlastný obsah pre rôzne prípady chýb (napr. "Stránka nenájdená")'
     ERRORFILEPROBLEM: 'Chyba otvorenia súboru "{filename}" pre zápis. Skontrolujte oprávnenia súboru, prosím.'
     400: '400 - Neplatná požiadavka'
     401: '401 - Neautorizovaný prístup'
@@ -273,7 +273,7 @@ sk:
     LAST2WEEKS: 'Stránky upravené počaas posledných 2 týždňov'
     OtherGroupTitle: Ostatné
     ParameterLiveCheckbox: 'Skontolovať živú stránku'
-    REPEMPTY: 'The {title} report is empty.'
+    REPEMPTY: '{title} správa je prázdna.'
   SilverStripeNavigatorLink:
     ShareInstructions: 'Pre zdielanie tejto stránky, skopírujte linku nižšie.'
     ShareLink: 'Zdieľať linku'
@@ -414,7 +414,7 @@ sk:
     EDITCONTENT: 'kliknite tu pre editáciu obsahu'
     HEADER: 'Toto je virtuálna stránka'
     PLURALNAME: 'Virtuálne stránky'
-    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
-    SINGULARNAME: 'Virtuálné stránka'
+    PageTypNotAllowedOnRoot: 'Pôvodná stránka typu "{type}" nie je povolená na najvyššej úrovni pre túto virtálnu stránku'
+    SINGULARNAME: 'Virtuálna stránka'
   cms:
     FILESYSTEMSYNC: 'Synchronizovať súbory'
