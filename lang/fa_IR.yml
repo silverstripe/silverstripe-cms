@@ -294,7 +294,7 @@ fa_IR:
     TOPLEVELCREATE: 'چه کسی میتواند صفحه جدیدی در ریشه(root) سایت ایجاد کند؟'
     VIEWHEADER: 'چه کسی میتواند صفحات سایت را مشاهده کند؟'
   SiteTree:
-    ACCESSANYONE: 'همه'
+    ACCESSANYONE: همه
     ACCESSHEADER: 'چه کسی بتواند این صفحه را مشاهده کنید ؟'
     ACCESSLOGGEDIN: 'کاربران وارد شده'
     ACCESSONLYTHESE: 'فقط این افراد (انتخاب از لیست)'
@@ -330,7 +330,7 @@ fa_IR:
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     Editors: 'Editors Groups'
     HASBROKENLINKS: 'لینک این صفحه شکسته است.'
-    HTMLEDITORTITLE: 'درون‌مایه'
+    HTMLEDITORTITLE: درون‌مایه
     INHERIT: 'Inherit from parent page'
     LASTUPDATED: 'Last Updated'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
@@ -363,7 +363,7 @@ fa_IR:
     SHOWINSEARCH: 'نمایش در جستجو ؟'
     SINGULARNAME: 'لینک سایت'
     TABBEHAVIOUR: Behavior
-    TABCONTENT: 'مطلب'
+    TABCONTENT: مطلب
     TABDEPENDENT: 'Dependent pages'
     TOPLEVEL: 'Site Content (Top Level)'
     TOPLEVELCREATORGROUPS: 'Top level creators'

@@ -3,7 +3,7 @@ bg:
     ADDFILES: 'Добави файлове'
     ALLOWEDEXTS: 'Разрешени разширения'
     ActionAdd: 'Добави директория'
-    AppCategoryArchive: 'Архив'
+    AppCategoryArchive: Архив
     AppCategoryAudio: Audio
     AppCategoryFlash: Flash
     AppCategoryImage: Image
@@ -20,7 +20,7 @@ bg:
     ListView: 'List View'
     MENUTITLE: Файлове
     NEWFOLDER: 'Нова директория'
-    SIZE: 'Размер'
+    SIZE: Размер
     THUMBSDELETED: '{count} unused thumbnails have been deleted'
     TreeView: 'Tree View'
     Upload: Upload
@@ -180,7 +180,7 @@ bg:
     InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
     LOGGEDINAS: 'Влязъл като'
     LOGIN: Login
-    LOGOUT: 'Изход'
+    LOGOUT: Изход
     NOTLOGGEDIN: 'Извън системата'
     PUBLISHEDSITE: 'Публикувани страници'
     Password: Password

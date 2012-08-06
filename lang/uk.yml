@@ -3,7 +3,7 @@ uk:
     ADDFILES: 'Додати файли'
     ALLOWEDEXTS: 'Допустимі розширення'
     ActionAdd: 'Додати папку'
-    AppCategoryArchive: 'Архівувати'
+    AppCategoryArchive: Архівувати
     AppCategoryAudio: Аудіо
     AppCategoryFlash: Flash
     AppCategoryImage: Зображення
@@ -20,7 +20,7 @@ uk:
     ListView: 'У вигляді списку'
     MENUTITLE: Файли
     NEWFOLDER: 'Нова Тека'
-    SIZE: 'Розмір'
+    SIZE: Розмір
     THUMBSDELETED: '{count} невикористаних ескізів було видалено'
     TreeView: 'У вигляді дерева'
     Upload: Завантажити
@@ -294,7 +294,7 @@ uk:
     TOPLEVELCREATE: 'Хто може створювати сторінки верхнього рівня на сайті?'
     VIEWHEADER: 'Хто може переглядати сторінки на цьому сайті?'
   SiteTree:
-    ACCESSANYONE: 'Будь-хто'
+    ACCESSANYONE: Будь-хто
     ACCESSHEADER: 'Хто може переглядати цю сторінку?'
     ACCESSLOGGEDIN: 'Тільки ті, що увійшли'
     ACCESSONLYTHESE: 'Тільки ці люди (виберіть зі списку)'

@@ -6,7 +6,7 @@ th:
     AppCategoryArchive: Archive
     AppCategoryAudio: ไฟล์เสียง
     AppCategoryFlash: แฟลช
-    AppCategoryImage: 'รูปภาพ'
+    AppCategoryImage: รูปภาพ
     AppCategoryVideo: วีดีโอ
     BackToFolder: ย้อนกลับไปที่โฟลเดอร์
     CREATED: วันที่
@@ -47,7 +47,7 @@ th:
     CheckSiteDropdownPublished: เว็บไซต์ที่เผยแพร่แล้ว
     ColumnDateLastModified: วันที่แก้ไขล่าสุด
     ColumnDateLastPublished: วันที่เผยแพร่ล่าสุด
-    ColumnProblemType: 'ประเภทปัญหา'
+    ColumnProblemType: ประเภทปัญหา
     ColumnURL: URL
     HasBrokenFile: มีไฟล์เสีย
     HasBrokenLink: มีลิงค์เสีย

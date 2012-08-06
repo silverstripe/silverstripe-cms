@@ -290,11 +290,11 @@ ar:
     TABACCESS: الوصول
     TABMAIN: الرئيسي
     TAGLINEDEFAULT: 'علامتك هنا'
-    THEME: 'الثيم'
+    THEME: الثيم
     TOPLEVELCREATE: 'من يستطيع إنشاء صفحات في جذر الموقع؟'
     VIEWHEADER: 'من يستطيع عرض الصفحات على هذا الموقع؟...'
   SiteTree:
-    ACCESSANYONE: 'الجميع'
+    ACCESSANYONE: الجميع
     ACCESSHEADER: 'من يستطيع مشاهدة هذه الصفحة ؟'
     ACCESSLOGGEDIN: 'الأعضاء المسجلين'
     ACCESSONLYTHESE: 'فقط هؤلاء الأشخاص ( اختر من القائمة)'
@@ -309,7 +309,7 @@ ar:
     BUTTONUNPUBLISHDESC: 'حذف هذه الصفحة من الموقع المنشور'
     CREATED: 'Date Created'
     Comments: التعليقات
-    Content: 'المحتوى'
+    Content: المحتوى
     DEFAULTABOUTCONTENT: '<p>يمكنك ملء هذه الصفحة بمحتوى خاص بك أو حذفها و إنشاء صفحات جديدة خاصة بك<br /></p>'
     DEFAULTABOUTTITLE: حول
     DEFAULTCONTACTCONTENT: '<p>يمكنك ملء هذه الصفحة بمحتوى خاص بك أو حذفها و إنشاء صفحات جديدة خاصة بك<br /></p>'
@@ -330,11 +330,11 @@ ar:
     EDIT_ALL_HELP: 'القدرة على تحرير أي صفحة على الموقع ، بغض النظر عن الإعدادات على علامة تبويب الوصول. يتطلب تصريح "الوصول إلى محتوى الموقع" '
     Editors: 'مجموعات المحررين'
     HASBROKENLINKS: 'هذه الصفحة تحتوي على روابط معطوبة'
-    HTMLEDITORTITLE: 'محتوى'
+    HTMLEDITORTITLE: محتوى
     INHERIT: 'استيراد من الصفحة المرجعية'
     LASTUPDATED: 'Last Updated'
     LINKCHANGENOTE: 'تغيير هذا وصلة رابط الصفحة سوف تؤثر أيضًا على الوصلات لجميع صفحات الفرعية.'
-    MENUTITLE: 'القائمة'
+    MENUTITLE: القائمة
     METADESC: الوصف
     METAEXTRA: 'تخصيص Meta Tags'
     METAKEYWORDS: 'الكلمات المفتاحية'
@@ -363,7 +363,7 @@ ar:
     SHOWINSEARCH: 'عرض في البحث ؟'
     SINGULARNAME: 'هيكلة الموقع'
     TABBEHAVIOUR: الشسلوك
-    TABCONTENT: 'المحتوى'
+    TABCONTENT: المحتوى
     TABDEPENDENT: 'الصفحات المعتدة'
     TOPLEVEL: 'محتوى الموقع ( مستوى أعلى )'
     TOPLEVELCREATORGROUPS: 'منشيء المستوى الأعلى'
