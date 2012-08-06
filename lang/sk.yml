@@ -21,7 +21,7 @@ sk:
     MENUTITLE: Súbory
     NEWFOLDER: 'Nový Adresár'
     SIZE: Veľkosť
-    THUMBSDELETED: '{count} unused thumbnails have been deleted'
+    THUMBSDELETED: '{count} nepoužitých miniatúr bolo smazaných'
     TreeView: 'Zobraziť strom'
     Upload: Nahrať
   AssetAdmin_DeleteBatchAction:
@@ -65,7 +65,7 @@ sk:
     Title: 'Pridať stránku'
   CMSBatchActions:
     DELETED_DRAFT_PAGES: 'Smazaných %d stránok z návrhu webu, %d zlyhaní'
-    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
+    DELETED_PAGES: 'Smazaných %d stránok z verejného webu, %d zlyhaní'
     DELETE_DRAFT_PAGES: 'Vymazať z návhrového webu'
     DELETE_PAGES: 'Vymazať z publikovaného webu'
     PUBLISHED_PAGES: 'Publikovaných %d stránok, %d zlyhaní'
@@ -195,7 +195,7 @@ sk:
     DEFAULTSERVERERRORPAGECONTENT: '<p>Prepáčte, ale bol problém s manipuláciou vášho požiadavku.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Chyba servera'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
-    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    ERRORFILEPROBLEM: 'Chyba otvorenia súboru "{filename}" pre zápis. Skontrolujte oprávnenia súboru, prosím.'
     400: '400 - Neplatná požiadavka'
     401: '401 - Neautorizovaný prístup'
     403: '403 - Zamietnuté'
@@ -301,7 +301,7 @@ sk:
     ADDEDTODRAFTHELP: 'Stránka ešte nebola zverejnená'
     ADDEDTODRAFTSHORT: Návrh
     ALLOWCOMMENTS: 'Povoliť komentáre na tejto stránke?'
-    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+    APPEARSVIRTUALPAGES: 'Tento obsah sa zobrazí aj na virtuálnych stránkach v {title} sekciách.'
     BUTTONCANCELDRAFT: 'Zrušiť zmeny v návrhu'
     BUTTONCANCELDRAFTDESC: 'Vymazať návrh a vrátiť sa k aktuálne zverejnenej stránke'
     BUTTONSAVEPUBLISH: 'Uložiť a publikovať'
@@ -319,7 +319,7 @@ sk:
     DELETEDPAGEHELP: 'Stránka už nie je viacej zverejnená'
     DELETEDPAGESHORT: Smazané
     DEPENDENT_NOTE: 'Nasledujúce stránky sú závislé na tejto stránke. To zahŕňa virtuálne stránky, presmerovania a stránky s odkazmi.'
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
     DependtPageColumnLinkType: 'Typ odkazu'
     DependtPageColumnURL: Url
     EDITANYONE: 'Ktokoľvek kto sa môže prihlásiť do CMS'
@@ -352,11 +352,11 @@ sk:
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Spravovať prístupové práva pre obsah'
     PERMISSION_GRANTACCESS_HELP: 'Povoliť nastavenia obmedzenia pre stranku v sekcií "Pages".'
     PLURALNAME: 'Strom stránok'
-    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
-    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
+    PageTypNotAllowedOnRoot: 'Stránka typu "{type}" nie je povolená na najvyššej úrovni'
+    PageTypeNotAllowed: 'Stránka typu "{type}" nie je povolená ako potomok nadriadenej stránky'
     REMOVEDFROMDRAFTHELP: 'Stránka je zverejnená, ale bola odstránená z návrhu'
     REMOVEDFROMDRAFTSHORT: 'Odstránené z návrhu'
-    REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
+    REMOVE_INSTALL_WARNING: 'Upozornenie: Z bezpečnostných dôvodov odstránte súbor install.php z SilverStripe inštalácie.'
     REORGANISE_DESCRIPTION: 'Zmeniť štruktúru webu'
     REORGANISE_HELP: 'Zoradiť stránky v stromovej štruktúre pomocou prenesenia.'
     SHOWINMENUS: 'Zobrazovať v menu?'
@@ -388,7 +388,7 @@ sk:
   TableListField:
     SELECT: 'Vyberte:'
   TableListField.ss:
-    NOITEMSFOUND: 'No items found'
+    NOITEMSFOUND: 'Žiadne položky nájdené'
     SORTASC: 'Zoradiť poradie vzostupne'
     SORTDESC: 'Zoradiť poradie zostupne'
   TableListField_PageControls.ss:
