@@ -220,17 +220,11 @@ en:
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: 'Search Results'
     VersionUnknown: Unknown
-  Page:
-    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
   Permissions:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
-  Project:
-    DESCRIPTION: 'Generic content page'
-  ProjectsHolder:
-    DESCRIPTION: 'Generic content page'
   RedirectorPage:
     DESCRIPTION: 'Redirects to a different internal page'
     HASBEENSETUP: 'A redirector page has been set up without anywhere to redirect to.'
