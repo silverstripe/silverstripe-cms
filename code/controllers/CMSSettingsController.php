@@ -5,6 +5,7 @@ class CMSSettingsController extends LeftAndMain {
 	static $url_rule = '/$Action/$ID/$OtherID';
 	static $menu_priority = -1;
 	static $menu_title = 'Settings';
+	static $tree_class = 'SiteConfig';
 
 	public function getResponseNegotiator() {
 		$neg = parent::getResponseNegotiator();
