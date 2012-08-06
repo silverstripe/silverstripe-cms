@@ -165,7 +165,7 @@ it:
   CMSSiteTreeFilter_Search:
     Title: 'Tutte le pagine'
   CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
+    DESCRIPTION: 'Pagina caso studio per caratterizzare esempi di lavoro'
   ContentControl:
     NOTEWONTBESHOWN: 'Nota: questo messaggio non verrà mostrato ai visitatori'
   ContentController:
