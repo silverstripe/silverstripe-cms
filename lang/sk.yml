@@ -34,7 +34,7 @@ sk:
     BACKLINKCOUNT: 'Použité na:'
     PAGES: page(s)
   BackLink_Button.ss:
-    Back: Back
+    Back: Späť
   BasicFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   BigFamilyPage:
@@ -125,12 +125,12 @@ sk:
     MENUTITLE: 'Edit Page'
   CMSPageHistoryController:
     COMPAREMODE: 'Compare mode (select two)'
-    COMPAREVERSIONS: 'Compare Versions'
+    COMPAREVERSIONS: 'Porovnať verzie'
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
     MENUTITLE: História
     REVERTTOTHISVERSION: 'Revert to this version'
     SHOWUNPUBLISHED: 'Show unpublished versions'
-    SHOWVERSION: 'Show Version'
+    SHOWVERSION: 'Zobraziť verziu'
     VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
@@ -142,10 +142,10 @@ sk:
   CMSPageSettingsController:
     MENUTITLE: 'Upraviť stránku'
   CMSPagesController:
-    GalleryView: 'Gallery View'
-    ListView: 'List View'
+    GalleryView: 'Zobraziť galériu'
+    ListView: 'Zobraziť zoznam'
     MENUTITLE: Stránky
-    TreeView: 'Tree View'
+    TreeView: 'Zobraziť strom'
   CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: 'Drag''n''drop'
     MULTISELECT: Multi-selection
@@ -193,7 +193,7 @@ sk:
     DEFAULTERRORPAGECONTENT: 'Snažíte sa otvoriť stránku ktorá neexistuje. Prosím skontrolujte napísané URL a skuste znova.'
     DEFAULTERRORPAGETITLE: 'Stránka nenajdená'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Server error'
+    DEFAULTSERVERERRORPAGETITLE: 'Chyba servera'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
     400: '400 - Neplatná požiadavka'
@@ -220,16 +220,16 @@ sk:
     504: '504 - Čas na požiadavky vypršal - Brána'
     505: '505 - HTTP verzia nie je podporovaná'
   Folder:
-    AddFolderButton: 'Add folder'
+    AddFolderButton: 'Pridať zložku'
     DELETEUNUSEDTHUMBNAILS: 'Vymazať nepoužívané náhĺady obrázkov'
     UNUSEDFILESTITLE: 'Nepoužívané súbory'
     UNUSEDTHUMBNAILSTITLE: 'Nepoužívané náhĺady obrázkov'
-    UploadFilesButton: Upload
+    UploadFilesButton: Nahrať
   GridFieldTestPage:
     DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Deleted.
-    PreviewButton: Preview
+    PreviewButton: Zobrazenie
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: 'Výsledky vyhľadávania'
@@ -307,7 +307,7 @@ sk:
     BUTTONSAVEPUBLISH: 'Uložiť a publikovať'
     BUTTONUNPUBLISH: Nepublikovať
     BUTTONUNPUBLISHDESC: 'Odstrániť túto stránku z publikovaných na webe'
-    CREATED: 'Date Created'
+    CREATED: 'Dátum vytvorenia'
     Comments: Komentáre
     Content: Obsah
     DEFAULTABOUTCONTENT: 'Túto stránku môžete vyplniť vlastným obsahom, alebo ju zmazať a vytvoriť vaše vlastné stránky.'
@@ -317,7 +317,7 @@ sk:
     DEFAULTHOMECONTENT: '<p>Vitajte v SilverStripe! Toto je predvolená úvodná stránka. Môžete you upraviť otvorením <a href="admin/">CMS-ka</a>. Môžete isť na <a href="http://doc.silverstripe.org">dokumentáciu</a>, alebo začať s <a href="http://doc.silverstripe.org/doku.php?id=tutorials">návodmi</a>.</p>'
     DEFAULTHOMETITLE: Domov
     DELETEDPAGEHELP: 'Page is no longer published'
-    DELETEDPAGESHORT: Deleted
+    DELETEDPAGESHORT: Smazané
     DEPENDENT_NOTE: 'Nasledujúce stránky sú závislé na tejto stránke. To zahŕňa virtuálne stránky, presmerovania a stránky s odkazmi.'
     DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Typ odkazu'
@@ -332,7 +332,7 @@ sk:
     HASBROKENLINKS: 'Táto stránka obsahuje nefunkčné odkazy.'
     HTMLEDITORTITLE: Obsah
     INHERIT: 'Zdediť od nadradenej stránky'
-    LASTUPDATED: 'Last Updated'
+    LASTUPDATED: 'Posledne aktualizované'
     LINKCHANGENOTE: 'Zmenenie odkazu na tejto stránke ovplyní aj odkazy na všetkých podstránkach.'
     MENUTITLE: 'Navigačná menovka'
     METADESC: Popis
@@ -340,7 +340,7 @@ sk:
     METAKEYWORDS: 'Kľúčové slová'
     METATITLE: Titulok
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
-    MODIFIEDONDRAFTSHORT: Modified
+    MODIFIEDONDRAFTSHORT: Zmenené
     MetadataToggle: Metadata
     PAGELOCATION: 'Pozícia stránky'
     PAGETITLE: 'Meno stránky'
@@ -355,7 +355,7 @@ sk:
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
-    REMOVEDFROMDRAFTSHORT: 'Removed from draft'
+    REMOVEDFROMDRAFTSHORT: 'Odstránené z konceptu'
     REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
     REORGANISE_DESCRIPTION: 'Zmeniť štruktúru webu'
     REORGANISE_HELP: 'Zoradiť stránky v stromovej štruktúre pomocou prenesenia.'
@@ -374,7 +374,7 @@ sk:
     VIEW_DRAFT_CONTENT: 'Zobraz obsah návrhu'
     VIEW_DRAFT_CONTENT_HELP: 'Vzťahuje sa na prezeranie stránok mimo CMS, v návrhovom móde. Užitočné pre externých spolupracovníkov bez prístupu do CMS-ka.'
     Viewers: 'Skupiny prezeračov'
-    Visibility: Visibility
+    Visibility: Viditeľnosť
     has_one_Parent: 'Nadradená stránka'
     many_many_BackLinkTracking: 'Záznamy o Backlink-ov'
     many_many_ImageTracking: 'Záznamy o  obrázkov'
