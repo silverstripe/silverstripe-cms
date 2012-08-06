@@ -6,7 +6,7 @@ cs:
     AppCategoryArchive: Archív
     AppCategoryAudio: Zvuk
     AppCategoryFlash: Flash
-    AppCategoryImage: Image
+    AppCategoryImage: Obrázek
     AppCategoryVideo: Video
     BackToFolder: 'Zpět na složku'
     CREATED: Datum
@@ -86,8 +86,8 @@ cs:
     DELETEFP: 'Smazat z publikovaných stránek'
     DESCREMOVED: 'and {count} descendants'
     EMAIL: Email
-    EditTree: 'Edit Tree'
-    ListFiltered: 'Filtered list.'
+    EditTree: 'Editovat strom'
+    ListFiltered: 'Filtrovaný seznam.'
     MENUTITLE: 'Edit Page'
     NEW: Nový
     PAGENOTEXISTS: 'Tato stránka neexistuje'
@@ -112,17 +112,17 @@ cs:
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
-    TreeFiltered: 'Filtered tree.'
-    TreeFilteredClear: 'Clear filter'
+    TreeFiltered: 'Filtrovaný strom.'
+    TreeFilteredClear: 'Vyčistit filtr'
   CMSMain_left.ss:
     'APPLY FILTER': 'Apply Filter'
     RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Přidat stránku'
-    ParentMode_child: 'Under another page'
+    ParentMode_child: 'Pod jinou stránku'
     ParentMode_top: 'Nejvyšší úroveň'
   CMSPageEditController:
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: 'Editovat stránku'
   CMSPageHistoryController:
     COMPAREMODE: 'Mód porovnání (vyberte dva)'
     COMPAREVERSIONS: 'Porovnat verze'
@@ -136,9 +136,9 @@ cs:
   CMSPageHistoryController_versions.ss:
     AUTHOR: Autor
     NOTPUBLISHED: Nezveřejněno
-    PUBLISHER: Publisher
+    PUBLISHER: Vydavatel
     UNKNOWN: Neznámý
-    WHEN: When
+    WHEN: Když
   CMSPageSettingsController:
     MENUTITLE: 'Editovat stránku'
   CMSPagesController:
@@ -148,7 +148,7 @@ cs:
     TreeView: Strom
   CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: 'Drag''n''drop'
-    MULTISELECT: Multi-selection
+    MULTISELECT: 'Multi výběr'
   CMSPagesController_Tools.ss:
     FILTER: Filtr
   CMSSearch:
@@ -226,7 +226,7 @@ cs:
     UNUSEDTHUMBNAILSTITLE: 'Nepoužité miniatury'
     UploadFilesButton: Nahrát
   GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Náhled
@@ -237,7 +237,7 @@ cs:
   LegacyTableFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   Page:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   Permission:
     CMS_ACCESS_CATEGORY: 'Přístup CMS'
   Permissions:
@@ -253,7 +253,7 @@ cs:
     REDIRECTTOPAGE: 'Stránku na Vašem webu'
     YOURPAGE: 'Stránku na Vašem webu'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -319,7 +319,7 @@ cs:
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Smazáno
     DEPENDENT_NOTE: 'Následující stránky závisí na této stránce. Tyto obsahují virtuální stránky, redirektor stránky, a stránky s odkazy obsahu.'
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
     DependtPageColumnLinkType: 'Typ odkazu'
     DependtPageColumnURL: URL
     EDITANYONE: 'Kdokoliv, kdo se do CMS může přihlásit'
@@ -392,9 +392,9 @@ cs:
     SORTASC: 'Třídit v vzestupném pořadí'
     SORTDESC: 'Třídit v sestupném pořadí'
   TableListField_PageControls.ss:
-    DISPLAYING: Displaying
-    OF: of
-    TO: to
+    DISPLAYING: Zobrazuji
+    OF: z
+    TO: do
     VIEWFIRST: 'Zobrazit první'
     VIEWLAST: 'Zobrazit poslední'
     VIEWNEXT: 'Zobrazit další'
@@ -402,7 +402,7 @@ cs:
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
   TestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   TreeTools:
     DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:
