@@ -203,8 +203,6 @@ class SiteConfig extends DataObject implements PermissionProvider {
 			
 			if($defaultConfig){					
 				return $defaultConfig->createTranslation($locale);
-				$siteConfig->Title = $defaultConfig->Title;
-				$siteConfig->Tagline = $defaultConfig->Tagline;
 			}			
 			
 			// TODO Copy view/edit group settings
