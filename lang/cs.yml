@@ -64,9 +64,9 @@ cs:
   CMSAddPageController:
     Title: 'Přidat stránku'
   CMSBatchActions:
-    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
+    DELETED_DRAFT_PAGES: 'Smazáno %d stránek z konceptu webu, %d selhání'
     DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
-    DELETE_DRAFT_PAGES: 'Smazáno z konceptu webu'
+    DELETE_DRAFT_PAGES: 'Smazat z konceptu webu'
     DELETE_PAGES: 'Smazat ze zveřejněného webu'
     PUBLISHED_PAGES: 'Zveřejněných %d stránek, %d selhání'
     PUBLISH_PAGES: Zveřejnit
@@ -108,7 +108,7 @@ cs:
     ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
     ROLLEDBACKVERSION: 'Vracím se zpět na verzi #%d. Číslo nové verze je #%d'
     SAVE: Uložit
-    SAVEDRAFT: 'Save Draft'
+    SAVEDRAFT: 'Uložit koncept'
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
@@ -299,7 +299,7 @@ cs:
     ACCESSLOGGEDIN: 'Přihlášení uživatelé'
     ACCESSONLYTHESE: 'Jenom tito lidé (vyberte ze seznamu)'
     ADDEDTODRAFTHELP: 'Page has not been published yet'
-    ADDEDTODRAFTSHORT: Draft
+    ADDEDTODRAFTSHORT: Koncept
     ALLOWCOMMENTS: 'Povolit pro tuto stránku komentáře?'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: 'Zrušit změny v konceptu'
@@ -355,7 +355,7 @@ cs:
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
-    REMOVEDFROMDRAFTSHORT: 'Odstraněny z konceptu'
+    REMOVEDFROMDRAFTSHORT: 'Odstraněno z konceptu'
     REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
     REORGANISE_DESCRIPTION: 'Změna struktury webu'
     REORGANISE_HELP: 'Reorganizace stránek webu pomocí  "táhni a pusť".'
@@ -372,7 +372,7 @@ cs:
     VIEW_ALL_DESCRIPTION: 'Může vidět jakoukoli stránku webu, obcházeje bezpečnostní specifikaci stránky'
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
     VIEW_DRAFT_CONTENT: 'Zobrazit obsah konceptu'
-    VIEW_DRAFT_CONTENT_HELP: 'Vztahuje se na prohlížení stránek mimo CMS, v koncept  módu. Užitečné pro externí spolupracovníky bez přístupu do CMS.'
+    VIEW_DRAFT_CONTENT_HELP: 'Vztahuje se na prohlížení stránek mimo CMS, v koncept módu. Užitečné pro externí spolupracovníky bez přístupu do CMS.'
     Viewers: 'Skupiny návštěvníků'
     Visibility: Viditelnost
     has_one_Parent: 'Rodičovská stránka'
