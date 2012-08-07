@@ -10,7 +10,7 @@ cs:
     AppCategoryVideo: Video
     BackToFolder: 'Zpět na složku'
     CREATED: Datum
-    CurrentFolderOnly: 'Limit to current folder?'
+    CurrentFolderOnly: 'Omezit na aktuální složku?'
     DetailsView: Detaily
     FILES: Soubory
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
@@ -25,7 +25,7 @@ cs:
     TreeView: 'Zobrazit strom'
     Upload: Nahrát
   AssetAdmin_DeleteBatchAction:
-    TITLE: 'Delete folders'
+    TITLE: 'Smazat složky'
   AssetAdmin_Tools.ss:
     FILTER: Filtr
   AssetAdmin_left.ss:
@@ -38,7 +38,7 @@ cs:
   BasicFieldsTestPage:
     DESCRIPTION: 'Obecný obsah stránky'
   BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   BrokenLinksReport:
     Any: Jakékoliv
     BROKENLINKS: 'Výkaz porušených odkazů'
@@ -75,7 +75,7 @@ cs:
   CMSFileAddController:
     MENUTITLE: Soubory
   CMSMain:
-    ACCESS: 'Access to ''{title}'' section'
+    ACCESS: 'Přístup k ''{title}'' sekci'
     ACCESS_HELP: 'Povolit prohlížení sekce obsahující strukturu a obsah webu. Oprávnění na prohlížení a úpravu mohou být nastavena skrze menu pro samostatnou stránku, také jako jednotlivé oprávnění pro obsah.'
     AddNew: 'Přidat novou stránku'
     AddNewButton: 'Přidat nový'
@@ -84,7 +84,7 @@ cs:
     Create: Vytvořit
     DELETE: 'Smazat ze stránek návrhu'
     DELETEFP: 'Smazat z publikovaných stránek'
-    DESCREMOVED: 'and {count} descendants'
+    DESCREMOVED: 'a {count} potomků'
     EMAIL: Email
     EditTree: 'Editovat strom'
     ListFiltered: 'Filtrovaný seznam.'
@@ -115,8 +115,8 @@ cs:
     TreeFiltered: 'Filtrovaný strom.'
     TreeFilteredClear: 'Vyčistit filtr'
   CMSMain_left.ss:
-    'APPLY FILTER': 'Apply Filter'
-    RESET: Reset
+    'APPLY FILTER': 'Použít filtr'
+    RESET: Resetovat
   CMSPageAddController:
     MENUTITLE: 'Přidat stránku'
     ParentMode_child: 'Pod jinou stránku'
@@ -126,13 +126,13 @@ cs:
   CMSPageHistoryController:
     COMPAREMODE: 'Mód porovnání (vyberte dva)'
     COMPAREVERSIONS: 'Porovnat verze'
-    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
+    COMPARINGVERSION: 'Porovnání verzí {version1} a {version2}.'
     MENUTITLE: Historie
     REVERTTOTHISVERSION: 'Zpět na tuto verzi'
     SHOWUNPUBLISHED: 'Zobrazit nezveřejněné verze'
     SHOWVERSION: 'Zobrazit verzi'
     VIEW: zobrazit
-    VIEWINGVERSION: 'Currently viewing version {version}.'
+    VIEWINGVERSION: 'Právě prohlížíte verzi {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Autor
     NOTPUBLISHED: Nezveřejněno
@@ -228,10 +228,10 @@ cs:
   GridFieldTestPage:
     DESCRIPTION: 'Obecný obsah stránky'
   LeftAndMain:
-    DELETED: Deleted.
+    DELETED: Smazáno.
     PreviewButton: Náhled
-    SAVEDUP: Saved.
-    STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
+    SAVEDUP: Uloženo.
+    STATUSPUBLISHEDSUCCESS: 'Publikováno ''{title}'' úspěšně'
     SearchResults: 'Výsledky hledání'
     VersionUnknown: Neznámý
   LegacyTableFieldsTestPage:
@@ -316,7 +316,7 @@ cs:
     DEFAULTCONTACTTITLE: 'Kontaktujte nás'
     DEFAULTHOMECONTENT: '<p>Vítejte v CMS SilverStripe! Toto je úvodní stránka. Tuto i jiné stránky můžete změnit <a href="admin/">přihlášením do systému</a>. Můžete také navštívit <a href="http://doc.silverstripe.com">vývojářskou dokumentaci (EN)</a>, nebo <a href="http://doc.silverstripe.com/doku.php?id=tutorials">návody (EN)</a></p>'
     DEFAULTHOMETITLE: 'Úvodní strana'
-    DELETEDPAGEHELP: 'Page is no longer published'
+    DELETEDPAGEHELP: 'Stránka už není více zveřejněna'
     DELETEDPAGESHORT: Smazáno
     DEPENDENT_NOTE: 'Následující stránky závisí na této stránce. Tyto obsahují virtuální stránky, redirektor stránky, a stránky s odkazy obsahu.'
     DESCRIPTION: 'Obecný obsah stránky'
@@ -339,7 +339,7 @@ cs:
     METAEXTRA: 'Vlastní meta tagy'
     METAKEYWORDS: 'Klíčová slova'
     METATITLE: Název
-    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
+    MODIFIEDONDRAFTHELP: 'Stránka má nezveřejněné změny'
     MODIFIEDONDRAFTSHORT: Změněno
     MetadataToggle: Metadata
     PAGELOCATION: 'Umístění stránky'
@@ -417,4 +417,4 @@ cs:
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtuální stránka'
   cms:
-    FILESYSTEMSYNC: 'Sync files'
+    FILESYSTEMSYNC: 'Synchronizovat soubory'

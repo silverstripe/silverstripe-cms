@@ -2,15 +2,15 @@ sk:
   AssetAdmin:
     ADDFILES: 'Pridať súbory'
     ALLOWEDEXTS: 'Povolené extenzie'
-    ActionAdd: 'Pridať zložku'
+    ActionAdd: 'Pridať priečinok'
     AppCategoryArchive: Archív
     AppCategoryAudio: Zvuk
     AppCategoryFlash: Flash
     AppCategoryImage: Obrázok
     AppCategoryVideo: Video
-    BackToFolder: 'Späť na zložku'
+    BackToFolder: 'Späť na priečinok'
     CREATED: Dátum
-    CurrentFolderOnly: 'Obmedziť k aktuálnej zložke?'
+    CurrentFolderOnly: 'Obmedziť na aktuálny priečinok?'
     DetailsView: Detaily
     FILES: Súbory
     FILESYSTEMSYNCTITLE: 'Aktualizuje záznamy súborov databázy CMS na súborovom systéme. Užitočné, keď sú nové súbory nahrané mimo CMS, napr cez FTP.'
@@ -19,13 +19,13 @@ sk:
     Filetype: 'Typ súboru'
     ListView: 'Zobraziť zoznam'
     MENUTITLE: Súbory
-    NEWFOLDER: 'Nový Adresár'
+    NEWFOLDER: 'Nový priečinok'
     SIZE: Veľkosť
     THUMBSDELETED: '{count} nepoužitých miniatúr bolo smazaných'
     TreeView: 'Zobraziť strom'
     Upload: Nahrať
   AssetAdmin_DeleteBatchAction:
-    TITLE: 'Vymazať zložky'
+    TITLE: 'Vymazať priečinky'
   AssetAdmin_Tools.ss:
     FILTER: Filtrovať
   AssetAdmin_left.ss:
@@ -41,7 +41,7 @@ sk:
     DESCRIPTION: 'Obecný obsah stránky'
   BrokenLinksReport:
     Any: Akékoľvek
-    BROKENLINKS: 'Správa o nefunkčných odkazoch'
+    BROKENLINKS: 'Správa nefunkčných odkazov'
     CheckSite: 'Skontrolovať stránku'
     CheckSiteDropdownDraft: 'Navrhový web'
     CheckSiteDropdownPublished: 'Publikovaný web'
@@ -176,7 +176,7 @@ sk:
     DRAFT_SITE_ACCESS_RESTRICTION: 'Pre zobrazenie návrhov alebo archivovaného obsahu sa musíte prihlásiť so svojím CMS heslom. <a href="%s">Pre návrat na publikovaný web kliknite Tu.</a>'
     Email: Email
     InstallFilesDeleted: 'Inštalačné súbory boli odstranené úspešne.'
-    InstallSecurityWarning: 'Z bezpečnostných dôvodov by ste mali teraz odstrániť inštalačné súbory, ak  neplánujete preinštalovať ho neskôr (<em> vyžaduje admin prihlásiť, pozri vyššie </em>). Webový server teraz potrebuje už len prístup pre zápis do zložky "assets", môžete odstrániť práva zápisu zo všetkých ostatných zložiek. <a href="{link}" style="text-align: center;"> Kliknite tu pre zmazanie inštalačných súborov. </a>'
+    InstallSecurityWarning: 'Z bezpečnostných dôvodov by ste mali teraz odstrániť inštalačné súbory, ak  neplánujete preinštalovať neskôr (<em> vyžaduje admin prihlásenie, pozri vyššie </em>). Webový server teraz potrebuje už len prístup pre zápis do priečinka "assets", môžete odstrániť práva zápisu zo všetkých ostatných priečinkov. <a href="{link}" style="text-align: center;"> Kliknite tu pre odstránenie inštalačných súborov. </a>'
     InstallSuccessCongratulations: 'SilverStripe bol nainštalovaný úspešne.'
     LOGGEDINAS: 'Prihlásený ako'
     LOGIN: Prihlásiť
@@ -220,7 +220,7 @@ sk:
     504: '504 - Čas na požiadavky vypršal - Brána'
     505: '505 - HTTP verzia nie je podporovaná'
   Folder:
-    AddFolderButton: 'Pridať zložku'
+    AddFolderButton: 'Pridať priečinok'
     DELETEUNUSEDTHUMBNAILS: 'Vymazať nepoužívané náhĺady obrázkov'
     UNUSEDFILESTITLE: 'Nepoužívané súbory'
     UNUSEDTHUMBNAILSTITLE: 'Nepoužívané náhĺady obrázkov'
@@ -255,7 +255,7 @@ sk:
   RelationFieldsTestPage:
     DESCRIPTION: 'Obecný obsah stránky'
   ReportAdmin:
-    MENUTITLE: Správy
+    MENUTITLE: Výkazy
   ReportAdminForm:
     FILTERBY: 'Filtrovať podľa'
   SearchForm:
@@ -267,13 +267,13 @@ sk:
     BROKENLINKS: 'Stránky z poškodenými odkazmi'
     BROKENREDIRECTORPAGES: 'Presmerovávacie stránky odkazujú na vymazané stránky'
     BROKENVIRTUALPAGES: 'Virtuálne stránky odkazujú na vymazané stránky'
-    BrokenLinksGroupTitle: 'Správy o poškodených odkazoch'
-    ContentGroupTitle: 'Správy o obsahu'
+    BrokenLinksGroupTitle: 'Výkazy nefunkčných odkazov'
+    ContentGroupTitle: 'Výkazy obsahu'
     EMPTYPAGES: 'Prázdne stránky'
     LAST2WEEKS: 'Stránky upravené počaas posledných 2 týždňov'
     OtherGroupTitle: Ostatné
     ParameterLiveCheckbox: 'Skontolovať živú stránku'
-    REPEMPTY: '{title} správa je prázdna.'
+    REPEMPTY: '{title} výkaz je prázdny.'
   SilverStripeNavigatorLink:
     ShareInstructions: 'Pre zdielanie tejto stránky, skopírujte linku nižšie.'
     ShareLink: 'Zdieľať linku'
@@ -383,7 +383,7 @@ sk:
     HelpChars: 'Špeciálne znaky sú automaticky zkonvertované alebo ostránené.'
   StaticExporter:
     BASEURL: 'Základná URL adresa'
-    EXPORTTO: 'Exportovať do tohto adresára'
+    EXPORTTO: 'Exportovať do tohto priečinka'
     NAME: 'Statický export'
   TableListField:
     SELECT: 'Vyberte:'
