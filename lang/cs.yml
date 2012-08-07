@@ -354,7 +354,7 @@ cs:
     PLURALNAME: 'Mapa stránek'
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
-    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
+    REMOVEDFROMDRAFTHELP: 'Stránka je zveřejněna, ale byla odstraněna z konceptu'
     REMOVEDFROMDRAFTSHORT: 'Odstraněno z konceptu'
     REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
     REORGANISE_DESCRIPTION: 'Změna struktury webu'

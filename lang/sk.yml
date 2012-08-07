@@ -64,7 +64,7 @@ sk:
   CMSAddPageController:
     Title: 'Pridať stránku'
   CMSBatchActions:
-    DELETED_DRAFT_PAGES: 'Smazaných %d stránok z návrhu webu, %d zlyhaní'
+    DELETED_DRAFT_PAGES: 'Smazaných %d stránok z koceptu webu, %d zlyhaní'
     DELETED_PAGES: 'Smazaných %d stránok z verejného webu, %d zlyhaní'
     DELETE_DRAFT_PAGES: 'Vymazať z návhrového webu'
     DELETE_PAGES: 'Vymazať z publikovaného webu'
@@ -108,7 +108,7 @@ sk:
     ROLLEDBACKPUB: 'Vrátené späť na zverejnenú verziu. Číslo novej verzie je #{version}'
     ROLLEDBACKVERSION: 'Vrátené späť na verziu: #%d. Číslo novej verzie je #%d'
     SAVE: Uložiť
-    SAVEDRAFT: 'Uložiť návrh'
+    SAVEDRAFT: 'Uložiť koncept'
     TabContent: Obsah
     TabHistory: História
     TabSettings: Nastavenia
@@ -299,7 +299,7 @@ sk:
     ACCESSLOGGEDIN: 'Prihlásení používatelia'
     ACCESSONLYTHESE: 'Iba títo ľudia (vyberte zo zoznamu)'
     ADDEDTODRAFTHELP: 'Stránka ešte nebola zverejnená'
-    ADDEDTODRAFTSHORT: Návrh
+    ADDEDTODRAFTSHORT: Koncept
     ALLOWCOMMENTS: 'Povoliť komentáre na tejto stránke?'
     APPEARSVIRTUALPAGES: 'Tento obsah sa zobrazí aj na virtuálnych stránkach v {title} sekciách.'
     BUTTONCANCELDRAFT: 'Zrušiť zmeny v návrhu'
@@ -354,8 +354,8 @@ sk:
     PLURALNAME: 'Strom stránok'
     PageTypNotAllowedOnRoot: 'Stránka typu "{type}" nie je povolená na najvyššej úrovni'
     PageTypeNotAllowed: 'Stránka typu "{type}" nie je povolená ako potomok nadriadenej stránky'
-    REMOVEDFROMDRAFTHELP: 'Stránka je zverejnená, ale bola odstránená z návrhu'
-    REMOVEDFROMDRAFTSHORT: 'Odstránené z návrhu'
+    REMOVEDFROMDRAFTHELP: 'Stránka je zverejnená, ale bola odstránená z koceptuu'
+    REMOVEDFROMDRAFTSHORT: 'Odstránené z konceptu'
     REMOVE_INSTALL_WARNING: 'Upozornenie: Z bezpečnostných dôvodov odstránte súbor install.php z SilverStripe inštalácie.'
     REORGANISE_DESCRIPTION: 'Zmeniť štruktúru webu'
     REORGANISE_HELP: 'Zoradiť stránky v stromovej štruktúre pomocou prenesenia.'
