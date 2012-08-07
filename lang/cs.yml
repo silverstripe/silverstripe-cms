@@ -13,7 +13,7 @@ cs:
     CurrentFolderOnly: 'Omezit na aktuální složku?'
     DetailsView: Detaily
     FILES: Soubory
-    FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
+    FILESYSTEMSYNCTITLE: 'Aktualizace záznamů souborů databáze CMS na souborovém systému. Užitečné, když byly nové soubory nahrány mimo CMS, např. přes FTP.'
     FROMTHEINTERNET: 'Z internetu'
     FROMYOURCOMPUTER: 'Z vašeho počítače'
     Filetype: 'Typ souboru'
@@ -184,8 +184,8 @@ cs:
     NOTLOGGEDIN: 'Není přihlášen'
     PUBLISHEDSITE: 'Zveřejnen web'
     Password: Heslo
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    PostInstallTutorialIntro: 'Tento web je zjednodušená verze SilverStripe 2. webu. Pro rozšíření, prosím podívejte se na {link}.'
+    StartEditing: 'Můžete začít editovat váš obsah webu otevřením <a href="{link}">CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'Zobrazit stránku v:'
   ErrorPage:
@@ -327,7 +327,7 @@ cs:
     EDITONLYTHESE: 'Jenom tito lidé (vyberte ze seznamu)'
     EDITORGROUPS: 'Editor skupin'
     EDIT_ALL_DESCRIPTION: 'Může editovat jakoukoli stránku webu, obcházeje bezpečnostní specifikaci stránky'
-    EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
+    EDIT_ALL_HELP: 'Možnost upravit libovolnou stránku na webu, bez ohledu na nastavení na kartě Přístup. Vyžaduje povolení "Přístup k sekci ''Stránky''"'
     Editors: 'Skupiny editorů'
     HASBROKENLINKS: 'Tato stránka obsahuje neplatné odkazy.'
     HTMLEDITORTITLE: Obsah
@@ -356,7 +356,7 @@ cs:
     PageTypeNotAllowed: 'Stránka typu "{type}" není povolena jako potomek této nadřízené stránky'
     REMOVEDFROMDRAFTHELP: 'Stránka je zveřejněna, ale byla odstraněna z konceptu'
     REMOVEDFROMDRAFTSHORT: 'Odstraněno z konceptu'
-    REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
+    REMOVE_INSTALL_WARNING: 'Upozornění: Měli by jste odstranit soubor install.php z této instalace SilverStripe z bezpečnostních důvodů.'
     REORGANISE_DESCRIPTION: 'Změna struktury webu'
     REORGANISE_HELP: 'Reorganizace stránek webu pomocí  "táhni a pusť".'
     SHOWINMENUS: 'Zobrazovat v menu?'
@@ -370,7 +370,7 @@ cs:
     URLSegment: 'Segment URL'
     VIEWERGROUPS: 'Prohlížeč skupin'
     VIEW_ALL_DESCRIPTION: 'Může vidět jakoukoli stránku webu, obcházeje bezpečnostní specifikaci stránky'
-    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
+    VIEW_ALL_HELP: 'Možnost zobrazit libovolnou stránku na webu, bez ohledu na nastavení na kartě Přístup. Vyžaduje povolení "Přístup k obsahu webu"'
     VIEW_DRAFT_CONTENT: 'Zobrazit obsah konceptu'
     VIEW_DRAFT_CONTENT_HELP: 'Vztahuje se na prohlížení stránek mimo CMS, v koncept módu. Užitečné pro externí spolupracovníky bez přístupu do CMS.'
     Viewers: 'Skupiny návštěvníků'
@@ -414,7 +414,7 @@ cs:
     EDITCONTENT: 'klikněte sem pro editaci obsahu'
     HEADER: 'Toto je virtuální stránka'
     PLURALNAME: 'Virtuální stránky'
-    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
+    PageTypNotAllowedOnRoot: 'Původní stránka typu "{type}" není povolena na nejvyšší úrovni pro tuto virtuální stránku'
     SINGULARNAME: 'Virtuální stránka'
   cms:
     FILESYSTEMSYNC: 'Synchronizovat soubory'
