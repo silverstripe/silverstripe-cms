@@ -404,7 +404,7 @@ sk:
   TestPage:
     DESCRIPTION: 'Obecný obsah stránky'
   TreeTools:
-    DisplayLabel: 'Zobraz:'
+    DisplayLabel: 'Zobrazenie:'
   ViewArchivedEmail.ss:
     CANACCESS: 'Archivovaný web môžete navštíviť týmto odkazom:'
     HAVEASKED: 'Požiadali ste o zobrazenie obsahu webu z'

@@ -31,8 +31,8 @@ cs:
   AssetAdmin_left.ss:
     GO: Proveď
   AssetTableField:
-    BACKLINKCOUNT: 'Used on:'
-    PAGES: page(s)
+    BACKLINKCOUNT: 'Použito na:'
+    PAGES: stránka(y)
   BackLink_Button.ss:
     Back: Zpět
   BasicFieldsTestPage:
@@ -65,7 +65,7 @@ cs:
     Title: 'Přidat stránku'
   CMSBatchActions:
     DELETED_DRAFT_PAGES: 'Smazáno %d stránek z konceptu webu, %d selhání'
-    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
+    DELETED_PAGES: 'Odstraněno %d stránek z veřejného webu, %d selhání'
     DELETE_DRAFT_PAGES: 'Smazat z konceptu webu'
     DELETE_PAGES: 'Smazat ze zveřejněného webu'
     PUBLISHED_PAGES: 'Zveřejněných %d stránek, %d selhání'
@@ -100,12 +100,12 @@ cs:
     PUBPAGES: 'Hotovo: Zveřejněno {count} stránek'
     PageAdded: 'Stránka vytvořena úspěšně'
     REMOVED: 'Smazán ''%s''%s ze živé stránky'
-    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
+    REMOVEDPAGE: 'Odstraněno ''{title}'' ze zveřejněného webu'
     REMOVEDPAGEFROMDRAFT: '''%s'' odebráno z konceptu'
     RESTORE: Obnovit
-    RESTORED: 'Restored ''{title}'' successfully'
+    RESTORED: 'Obnoveno ''{title}'' úspěšně'
     ROLLBACK: 'Vrátit se zpět na tuto verzi'
-    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
+    ROLLEDBACKPUB: 'Vrací se zpět na zveřejněnou verzi. Číslo nové verze je #{version}'
     ROLLEDBACKVERSION: 'Vracím se zpět na verzi #%d. Číslo nové verze je #%d'
     SAVE: Uložit
     SAVEDRAFT: 'Uložit koncept'
@@ -165,7 +165,7 @@ cs:
   CMSSiteTreeFilter_Search:
     Title: 'Všechny stránky'
   CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
+    DESCRIPTION: 'Případová studie stránky představuje pracovní příklady'
   ContentControl:
     NOTEWONTBESHOWN: 'Poznámka: tato zpráva nebude zobrazena vašim návštěvníkům'
   ContentController:
@@ -176,7 +176,7 @@ cs:
     DRAFT_SITE_ACCESS_RESTRICTION: 'Abyste mohli prohlížet archiv nebo koncepty, musíte být přihlášeni se svým CMS heslem. <a href="%s">Klikněte sem pro návrat na zveřejněné stránky.</a>'
     Email: Email
     InstallFilesDeleted: 'Instalační soubory byly odstraněny úspěšně.'
-    InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
+    InstallSecurityWarning: 'Z bezpečnostních důvodů byste se měli nyní odstranit instalační soubory, pokud se nechystáte přeinstalovat později (<em>vyžaduje admin přihlášení, viz výše </em>). Webový server nyní potřebuje pouze přístup pro zápis do složky "assets", můžete odstranit práva zápisu ze všech ostatních složek. <a href="{link}" style="text-align: center;"> Klikněte sem pro smazání instalačních souborů.</a>'
     InstallSuccessCongratulations: 'SilverStripe byl nainstalován úspěšně.'
     LOGGEDINAS: 'Přihlášen jako'
     LOGIN: Přihlášení
@@ -186,7 +186,7 @@ cs:
     Password: Heslo
     PostInstallTutorialIntro: 'Tento web je zjednodušená verze SilverStripe 2. webu. Pro rozšíření, prosím podívejte se na {link}.'
     StartEditing: 'Můžete začít editovat váš obsah webu otevřením <a href="{link}">CMS</a>.'
-    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
+    UnableDeleteInstall: 'Nelze smazat instalační soubory. Prosím, odstraňte soubory níže ručně'
     VIEWPAGEIN: 'Zobrazit stránku v:'
   ErrorPage:
     CODE: 'Chybový kód'
@@ -273,7 +273,7 @@ cs:
     LAST2WEEKS: 'Stránky upravené během posledních 2 týdnů'
     OtherGroupTitle: Jiné
     ParameterLiveCheckbox: 'Zkontrolovat web'
-    REPEMPTY: 'The {title} report is empty.'
+    REPEMPTY: '{title} výkaz je prázdný.'
   SilverStripeNavigatorLink:
     ShareInstructions: 'K sdílení této stránky, odkaz zkopírujte a vložte dolů.'
     ShareLink: 'Sdílet odkaz'
@@ -404,7 +404,7 @@ cs:
   TestPage:
     DESCRIPTION: 'Obecný obsah stránky'
   TreeTools:
-    DisplayLabel: 'Display:'
+    DisplayLabel: 'Zobrazení:'
   ViewArchivedEmail.ss:
     CANACCESS: 'Můžete přistupovat k archivu pomocí tohoto odkazu:'
     HAVEASKED: 'Požadovali jste prohlížet obsah našich stránek během'
