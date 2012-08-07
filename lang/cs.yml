@@ -22,7 +22,7 @@ cs:
     NEWFOLDER: 'Nová složka'
     SIZE: Velikost
     THUMBSDELETED: '{count} unused thumbnails have been deleted'
-    TreeView: 'Tree View'
+    TreeView: 'Zobrazit strom'
     Upload: Nahrát
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
@@ -73,27 +73,27 @@ cs:
     UNPUBLISHED_PAGES: 'Nezveřejněných %d stránek'
     UNPUBLISH_PAGES: Nezveřejnit
   CMSFileAddController:
-    MENUTITLE: Files
+    MENUTITLE: Soubory
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
     ACCESS_HELP: 'Povolit prohlížení sekce obsahující strukturu a obsah webu. Oprávnění na prohlížení a úpravu mohou být nastavena skrze menu pro samostatnou stránku, také jako jednotlivé oprávnění pro obsah.'
-    AddNew: 'Add new page'
-    AddNewButton: 'Add new'
-    ChoosePageParentMode: 'Choose where to create this page'
-    ChoosePageType: 'Choose page type'
-    Create: Create
+    AddNew: 'Přidat novou stránku'
+    AddNewButton: 'Přidat nový'
+    ChoosePageParentMode: 'Vyberte, kde vytvořit tuto stránku'
+    ChoosePageType: 'Vyberte typ stránky'
+    Create: Vytvořit
     DELETE: 'Smazat ze stránek návrhu'
     DELETEFP: 'Smazat z publikovaných stránek'
     DESCREMOVED: 'and {count} descendants'
     EMAIL: Email
     EditTree: 'Editovat strom'
     ListFiltered: 'Filtrovaný seznam.'
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: 'Editovat stránku'
     NEW: Nový
     PAGENOTEXISTS: 'Tato stránka neexistuje'
-    PAGES: Pages
-    PAGETYPEANYOPT: Any
-    PAGETYPEOPT: 'Page Type'
+    PAGES: Stránky
+    PAGETYPEANYOPT: Jakkýkoliv
+    PAGETYPEOPT: 'Typ stránky'
     PUBALLCONFIRM: 'Prosím zveřejněte veškeré stránky z úschovny'
     PUBALLFUN: 'Funkce "Publikovat vše"'
     PUBALLFUN2: 'Stisknutí tohoto tlačítka se rovná zveřejnění každé jednotlivé stránky. Toto tlačítko má být použito, pokud se vyskytly rozsáhlé úpravy obsahu, jako např. když poprvé sestavujete stránky.'
@@ -109,9 +109,9 @@ cs:
     ROLLEDBACKVERSION: 'Vracím se zpět na verzi #%d. Číslo nové verze je #%d'
     SAVE: Uložit
     SAVEDRAFT: 'Uložit koncept'
-    TabContent: Content
-    TabHistory: History
-    TabSettings: Settings
+    TabContent: Obsah
+    TabHistory: Historie
+    TabSettings: Nastavení
     TreeFiltered: 'Filtrovaný strom.'
     TreeFilteredClear: 'Vyčistit filtr'
   CMSMain_left.ss:
@@ -147,7 +147,7 @@ cs:
     MENUTITLE: Stránky
     TreeView: Strom
   CMSPagesController_ContentToolbar.ss:
-    ENABLEDRAGGING: 'Drag''n''drop'
+    ENABLEDRAGGING: 'Táhni a pusť'
     MULTISELECT: 'Multi výběr'
   CMSPagesController_Tools.ss:
     FILTER: Filtr
@@ -159,7 +159,7 @@ cs:
   CMSSettingsController:
     MENUTITLE: Možnosti
   CMSSiteTreeFilter_ChangedPages:
-    Title: 'Changed pages'
+    Title: 'Změněné stránky'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Všechny stránky, včetně odstraněných'
   CMSSiteTreeFilter_Search:
@@ -235,7 +235,7 @@ cs:
     SearchResults: 'Výsledky hledání'
     VersionUnknown: Neznámý
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   Page:
     DESCRIPTION: 'Obecný obsah stránky'
   Permission:
@@ -255,7 +255,7 @@ cs:
   RelationFieldsTestPage:
     DESCRIPTION: 'Obecný obsah stránky'
   ReportAdmin:
-    MENUTITLE: Reports
+    MENUTITLE: Výkazy
   ReportAdminForm:
     FILTERBY: 'Filtrovat dle'
   SearchForm:
@@ -400,7 +400,7 @@ cs:
     VIEWNEXT: 'Zobrazit další'
     VIEWPREVIOUS: 'Zobrazit předchozí'
   TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   TestPage:
     DESCRIPTION: 'Obecný obsah stránky'
   TreeTools:
