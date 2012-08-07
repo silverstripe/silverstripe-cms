@@ -21,7 +21,7 @@ cs:
     MENUTITLE: Soubory
     NEWFOLDER: 'Nová složka'
     SIZE: Velikost
-    THUMBSDELETED: '{count} unused thumbnails have been deleted'
+    THUMBSDELETED: '{count} nepoužitých miniatur bylo smazáno'
     TreeView: 'Zobrazit strom'
     Upload: Nahrát
   AssetAdmin_DeleteBatchAction:
@@ -97,7 +97,7 @@ cs:
     PUBALLCONFIRM: 'Prosím zveřejněte veškeré stránky z úschovny'
     PUBALLFUN: 'Funkce "Publikovat vše"'
     PUBALLFUN2: 'Stisknutí tohoto tlačítka se rovná zveřejnění každé jednotlivé stránky. Toto tlačítko má být použito, pokud se vyskytly rozsáhlé úpravy obsahu, jako např. když poprvé sestavujete stránky.'
-    PUBPAGES: 'Done: Published {count} pages'
+    PUBPAGES: 'Hotovo: Zveřejněno {count} stránek'
     PageAdded: 'Stránka vytvořena úspěšně'
     REMOVED: 'Smazán ''%s''%s ze živé stránky'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
@@ -194,8 +194,8 @@ cs:
     DEFAULTERRORPAGETITLE: 'Strana nenelazena'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Je nám to líto, ale nastal problém se zpracováním Vašeho poždavku.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Chyba serveru'
-    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
-    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    DESCRIPTION: 'Vlastní obsah pro různé případy chyb (např. "Stránka nenalezena")'
+    ERRORFILEPROBLEM: 'Chyba otevření souboru "{filename}" pro zápis. Zkontrolujte oprávnění souboru, prosím.'
     400: '400 - Špatný požadavek'
     401: '401 - Neautorizováno'
     403: '403 - Zakázáno'
@@ -298,10 +298,10 @@ cs:
     ACCESSHEADER: 'Kdo může tuto stránku prohlížet?'
     ACCESSLOGGEDIN: 'Přihlášení uživatelé'
     ACCESSONLYTHESE: 'Jenom tito lidé (vyberte ze seznamu)'
-    ADDEDTODRAFTHELP: 'Page has not been published yet'
+    ADDEDTODRAFTHELP: 'Stránka nebyla dosud zveřejněna'
     ADDEDTODRAFTSHORT: Koncept
     ALLOWCOMMENTS: 'Povolit pro tuto stránku komentáře?'
-    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+    APPEARSVIRTUALPAGES: 'Tento obsah se také zobrazí na virtuálních stránkáchy v sekcích {title}.'
     BUTTONCANCELDRAFT: 'Zrušit změny v konceptu'
     BUTTONCANCELDRAFTDESC: 'Odstranit koncept a vrátit se k aktuálně zveřejněné stránce'
     BUTTONSAVEPUBLISH: 'Uložit a Zveřejnit'
@@ -352,8 +352,8 @@ cs:
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Správa přístupových práv pro obsah stránek'
     PERMISSION_GRANTACCESS_HELP: 'Povolit nastavení omezení na specifické stránky v sekci "Stránky".'
     PLURALNAME: 'Mapa stránek'
-    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
-    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
+    PageTypNotAllowedOnRoot: 'Stránka typu "{type}" není povolena na nejvyšší úrovni'
+    PageTypeNotAllowed: 'Stránka typu "{type}" není povolena jako potomek této nadřízené stránky'
     REMOVEDFROMDRAFTHELP: 'Stránka je zveřejněna, ale byla odstraněna z konceptu'
     REMOVEDFROMDRAFTSHORT: 'Odstraněno z konceptu'
     REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
