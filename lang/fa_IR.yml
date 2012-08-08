@@ -383,8 +383,8 @@ fa_IR:
     HelpChars: ' Special characters are automatically converted or removed.'
   StaticExporter:
     BASEURL: 'URI پایه'
-    EXPORTTO: 'Export to that folder'
-    NAME: 'Static exporter'
+    EXPORTTO: 'استخراج به پوشه'
+    NAME: 'خروجي پايدار'
   TableListField:
     SELECT: انتخاب
   TableListField.ss:
