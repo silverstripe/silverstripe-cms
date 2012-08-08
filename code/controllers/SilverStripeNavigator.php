@@ -320,7 +320,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 	}
 	
 	function getLink() {
-		return $this->record->AbsoluteLink() . '?archiveDate=' . $date;
+		return $this->record->AbsoluteLink() . '?archiveDate=' . $this->record->LastEdited;
 	}
 	
 	function canView($member = null) {
