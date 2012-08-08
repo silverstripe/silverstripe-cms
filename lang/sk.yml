@@ -29,7 +29,7 @@ sk:
   AssetAdmin_Tools.ss:
     FILTER: Filtrovať
   AssetAdmin_left.ss:
-    GO: Vykonať
+    GO: Choď
   AssetTableField:
     BACKLINKCOUNT: 'Použité na:'
     PAGES: stránka(y)
@@ -41,7 +41,7 @@ sk:
     DESCRIPTION: 'Obecný obsah stránky'
   BrokenLinksReport:
     Any: Akékoľvek
-    BROKENLINKS: 'Správa nefunkčných odkazov'
+    BROKENLINKS: 'Výkaz porušených odkazov'
     CheckSite: 'Skontrolovať stránku'
     CheckSiteDropdownDraft: 'Navrhový web'
     CheckSiteDropdownPublished: 'Publikovaný web'
@@ -59,7 +59,7 @@ sk:
     ReasonDropdownBROKENLINK: 'Porušnený odkaz'
     ReasonDropdownRPBROKENLINK: 'Presmerovávacia stránka odkazuje na ne-existujúcu stránku'
     ReasonDropdownVPBROKENLINK: 'Virtuálna stránka odkazuje na ne-existujúcu stránku'
-    RedirectorNonExistent: 'presmerovávacia stránka odkazuje na ne-existujúcu stránku'
+    RedirectorNonExistent: 'stránka presmerovania odkazuje na ne-existujúcu stránku'
     VirtualPageNonExistent: 'virtuálna stránka odkazuje na ne-existujúcu stránku'
   CMSAddPageController:
     Title: 'Pridať stránku'
@@ -67,11 +67,11 @@ sk:
     DELETED_DRAFT_PAGES: 'Smazaných %d stránok z koceptu webu, %d zlyhaní'
     DELETED_PAGES: 'Smazaných %d stránok z verejného webu, %d zlyhaní'
     DELETE_DRAFT_PAGES: 'Vymazať z návhrového webu'
-    DELETE_PAGES: 'Vymazať z publikovaného webu'
+    DELETE_PAGES: 'Vymazať z verejného webu'
     PUBLISHED_PAGES: 'Publikovaných %d stránok, %d zlyhaní'
-    PUBLISH_PAGES: Publikovať
-    UNPUBLISHED_PAGES: 'Od-publikované %d stranky'
-    UNPUBLISH_PAGES: Od-publikovať
+    PUBLISH_PAGES: Zverejniť
+    UNPUBLISHED_PAGES: 'Ne-zverejnené %d stranky'
+    UNPUBLISH_PAGES: Ne-zverejniť
   CMSFileAddController:
     MENUTITLE: Súbory
   CMSMain:
@@ -169,8 +169,8 @@ sk:
   ContentControl:
     NOTEWONTBESHOWN: 'Poznámka: Táto správa sa nebude zobrazovať vašim návštevníkom'
   ContentController:
-    ARCHIVEDSITE: 'Archívovaná stránka'
-    ARCHIVEDSITEFROM: 'Archívovaná stránka z'
+    ARCHIVEDSITE: 'Archivovaný web'
+    ARCHIVEDSITEFROM: 'Archivovaný web z'
     CMS: CMS
     DRAFTSITE: 'Pracovná verzia stránky'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Pre zobrazenie návrhov alebo archivovaného obsahu sa musíte prihlásiť so svojím CMS heslom. <a href="%s">Pre návrat na publikovaný web kliknite Tu.</a>'
@@ -182,7 +182,7 @@ sk:
     LOGIN: Prihlásiť
     LOGOUT: Odhlásiť
     NOTLOGGEDIN: Neprihlásený
-    PUBLISHEDSITE: 'Publikovaný web'
+    PUBLISHEDSITE: 'Verejný web'
     Password: Heslo
     PostInstallTutorialIntro: 'Tento web je zjednodušená verzia SilverStripe 2. webu. Ak ho chcete rošíriť, pozrite sa na odkaz {link}, prosím.'
     StartEditing: 'Môžte začať editáciu vášho web obsahu otvorením <a href="{link}">CMS</a>.'
@@ -221,9 +221,9 @@ sk:
     505: '505 - HTTP verzia nie je podporovaná'
   Folder:
     AddFolderButton: 'Pridať priečinok'
-    DELETEUNUSEDTHUMBNAILS: 'Vymazať nepoužívané náhĺady obrázkov'
-    UNUSEDFILESTITLE: 'Nepoužívané súbory'
-    UNUSEDTHUMBNAILSTITLE: 'Nepoužívané náhĺady obrázkov'
+    DELETEUNUSEDTHUMBNAILS: 'Vymazať nepoužité miniatúry'
+    UNUSEDFILESTITLE: 'Nepoužité súbory'
+    UNUSEDTHUMBNAILSTITLE: 'Nepoužité miniatúry'
     UploadFilesButton: Nahrať
   GridFieldTestPage:
     DESCRIPTION: 'Obecný obsah stránky'
@@ -247,11 +247,11 @@ sk:
     DESCRIPTION: 'Presmeruje na inú internú stránku'
     HASBEENSETUP: 'Stránka na presmerovanie bola nastavená bez cieľa.'
     HEADER: 'Táto stránka presmeruje používateľov na inú stránku'
-    OTHERURL: 'Inú webovú URL adresu.'
+    OTHERURL: 'Iné webové URL.'
     REDIRECTTO: 'Presmerovať na'
-    REDIRECTTOEXTERNAL: 'Inú webovú stránku'
-    REDIRECTTOPAGE: 'Stránku na Vašom webe'
-    YOURPAGE: 'Stránku na Vašom webe'
+    REDIRECTTOEXTERNAL: 'Iná webová stránka'
+    REDIRECTTOPAGE: 'Stránka na vašom webe'
+    YOURPAGE: 'Stránka na vašom webe'
   RelationFieldsTestPage:
     DESCRIPTION: 'Obecný obsah stránky'
   ReportAdmin:
@@ -267,7 +267,7 @@ sk:
     BROKENLINKS: 'Stránky z poškodenými odkazmi'
     BROKENREDIRECTORPAGES: 'Presmerovávacie stránky odkazujú na vymazané stránky'
     BROKENVIRTUALPAGES: 'Virtuálne stránky odkazujú na vymazané stránky'
-    BrokenLinksGroupTitle: 'Výkazy nefunkčných odkazov'
+    BrokenLinksGroupTitle: 'Výkazy porušených odkazov'
     ContentGroupTitle: 'Výkazy obsahu'
     EMPTYPAGES: 'Prázdne stránky'
     LAST2WEEKS: 'Stránky upravené počaas posledných 2 týždňov'
@@ -276,17 +276,17 @@ sk:
     REPEMPTY: '{title} výkaz je prázdny.'
   SilverStripeNavigatorLink:
     ShareInstructions: 'Pre zdielanie tejto stránky, skopírujte linku nižšie.'
-    ShareLink: 'Zdieľať linku'
+    ShareLink: 'Zdieľať odkaz'
   SilverStripeNavigatorLinkl:
     CloseLink: Zavrieť
   SiteConfig:
     DEFAULTTHEME: '(Použi predvolenú tému)'
     EDITHEADER: 'Kto môže upravovať stranky na tomto webe?'
-    EDIT_PERMISSION: 'Spravovať nastavenia webu'
+    EDIT_PERMISSION: 'Spravovať konfiguráciu webu'
     EDIT_PERMISSION_HELP: 'Možnosť meniť globálne prístupové nastavenia/právomoci pre hlavné stránky.'
     SITENAMEDEFAULT: 'Meno vašej stránky'
     SITETAGLINE: 'Slogan stránky'
-    SITETITLE: 'Titulok stránky'
+    SITETITLE: 'Titulok webu'
     TABACCESS: Prístup
     TABMAIN: Hlavné
     TAGLINEDEFAULT: 'váš citát sem'
@@ -295,7 +295,7 @@ sk:
     VIEWHEADER: 'Kto môže vidieť stránky na tomto webe?'
   SiteTree:
     ACCESSANYONE: Ktokoľvek
-    ACCESSHEADER: 'Kto si môže prezerať túto stránku?'
+    ACCESSHEADER: 'Kto môže vidieť túto stránku?'
     ACCESSLOGGEDIN: 'Prihlásení používatelia'
     ACCESSONLYTHESE: 'Iba títo ľudia (vyberte zo zoznamu)'
     ADDEDTODRAFTHELP: 'Stránka ešte nebola zverejnená'
@@ -318,7 +318,7 @@ sk:
     DEFAULTHOMETITLE: Domov
     DELETEDPAGEHELP: 'Stránka už nie je viacej zverejnená'
     DELETEDPAGESHORT: Smazané
-    DEPENDENT_NOTE: 'Nasledujúce stránky sú závislé na tejto stránke. To zahŕňa virtuálne stránky, presmerovania a stránky s odkazmi.'
+    DEPENDENT_NOTE: 'Nasledujúce stránky závisia na tejto stránke. To zahŕňa virtuálne stránky, presmerovania a stránky s odkazmi.'
     DESCRIPTION: 'Obecný obsah stránky'
     DependtPageColumnLinkType: 'Typ odkazu'
     DependtPageColumnURL: Url
@@ -327,26 +327,26 @@ sk:
     EDITONLYTHESE: 'Iba títo ľudia (vyberte zo zoznamu)'
     EDITORGROUPS: 'Skupiny upravovateľov'
     EDIT_ALL_DESCRIPTION: 'Upraviť ktorúkoľvek stránku'
-    EDIT_ALL_HELP: 'Schopnosť upravovať ktorúkoľvek stránku na webe, nedbajúc na nastavenia v záložke prístupov. Vyžaduje právomoc "Prístupu k obsahu webu"'
-    Editors: 'Skupiny upravovatelov'
+    EDIT_ALL_HELP: 'Schopnosť upravovať ktorúkoľvek stránku na webe, nedbajúc na nastavenia v záložke prístupov. Vyžaduje "Prístup k ''Stránkam'' sekcia" povolenie'
+    Editors: 'Skupiny upravovateľov'
     HASBROKENLINKS: 'Táto stránka obsahuje nefunkčné odkazy.'
     HTMLEDITORTITLE: Obsah
     INHERIT: 'Zdediť od nadradenej stránky'
     LASTUPDATED: 'Posledne aktualizované'
-    LINKCHANGENOTE: 'Zmenenie odkazu na tejto stránke ovplyní aj odkazy na všetkých podstránkach.'
+    LINKCHANGENOTE: 'Zmenenie odkazu na tejto stránky ovplyvní tiež odkazy všetkých podstránok.'
     MENUTITLE: 'Navigačná menovka'
     METADESC: Popis
     METAEXTRA: 'Vlastné Meta Tagy'
-    METAKEYWORDS: 'Kľúčové slová'
+    METAKEYWORDS: 'Meta kľúčové slová'
     METATITLE: Titulok
     MODIFIEDONDRAFTHELP: 'Stránka má nezverejnené zmeny'
     MODIFIEDONDRAFTSHORT: Zmenené
     MetadataToggle: Metaúdaje
     PAGELOCATION: 'Pozícia stránky'
-    PAGETITLE: 'Meno stránky'
+    PAGETITLE: 'Názov stránky'
     PAGETYPE: 'Typ stránky'
     PARENTID: 'Nadradená stránka'
-    PARENTTYPE: 'umiestnenie stránky'
+    PARENTTYPE: 'Pozícia stránky'
     PARENTTYPE_ROOT: 'Hlavná stránka'
     PARENTTYPE_SUBPAGE: 'Podstránka pod rodičovskou strankov (vyberte nižšie)'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Spravovať prístupové práva pre obsah'
@@ -360,7 +360,7 @@ sk:
     REORGANISE_DESCRIPTION: 'Zmeniť štruktúru webu'
     REORGANISE_HELP: 'Zoradiť stránky v stromovej štruktúre pomocou prenesenia.'
     SHOWINMENUS: 'Zobrazovať v menu?'
-    SHOWINSEARCH: 'Zobrazovať v hľadaní?'
+    SHOWINSEARCH: 'Zobraziť v hľadaní?'
     SINGULARNAME: 'Strom stránky'
     TABBEHAVIOUR: Správanie
     TABCONTENT: Obsah
@@ -382,7 +382,7 @@ sk:
   SiteTreeURLSegmentField:
     HelpChars: 'Špeciálne znaky sú automaticky zkonvertované alebo ostránené.'
   StaticExporter:
-    BASEURL: 'Základná URL adresa'
+    BASEURL: 'Základné URL'
     EXPORTTO: 'Exportovať do tohto priečinka'
     NAME: 'Statický export'
   TableListField:

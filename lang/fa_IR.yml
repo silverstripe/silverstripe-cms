@@ -152,10 +152,10 @@ fa_IR:
   CMSPagesController_Tools.ss:
     FILTER: Filter
   CMSSearch:
-    FILTERDATEFROM: From
-    FILTERDATEHEADING: Date
-    FILTERDATETO: To
-    FILTERLABELTEXT: Content
+    FILTERDATEFROM: از
+    FILTERDATEHEADING: تاريخ
+    FILTERDATETO: به
+    FILTERLABELTEXT: 'محتواي اصلي'
   CMSSettingsController:
     MENUTITLE: Settings
   CMSSiteTreeFilter_ChangedPages:
