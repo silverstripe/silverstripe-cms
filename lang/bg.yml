@@ -27,7 +27,7 @@ bg:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
   AssetAdmin_Tools.ss:
-    FILTER: Филтър
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Давай
   AssetTableField:
@@ -169,7 +169,7 @@ bg:
   ContentControl:
     NOTEWONTBESHOWN: 'Забележка: Това съобщение няма да се показва на Вашите посетители'
   ContentController:
-    ARCHIVEDSITE: 'Архивиран сайт'
+    ARCHIVEDSITE: 'Archived Site'
     ARCHIVEDSITEFROM: 'Архивиран сайт от'
     CMS: 'СУС (CMS)'
     DRAFTSITE: Чернови

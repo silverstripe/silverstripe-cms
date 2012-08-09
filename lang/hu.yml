@@ -27,7 +27,7 @@ hu:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Mappák törlése'
   AssetAdmin_Tools.ss:
-    FILTER: Szűrő
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Mehet
   AssetTableField:
@@ -169,7 +169,7 @@ hu:
   ContentControl:
     NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
   ContentController:
-    ARCHIVEDSITE: 'Archivált oldal'
+    ARCHIVEDSITE: 'Archived Site'
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
     DRAFTSITE: 'Vázlat oldal'

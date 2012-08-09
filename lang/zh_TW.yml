@@ -36,7 +36,7 @@ zh_TW:
   BackLink_Button.ss:
     Back: 返回
   BasicFieldsTestPage:
-    DESCRIPTION: 一般內容網頁
+    DESCRIPTION: 'Generic content page'
   BigFamilyPage:
     DESCRIPTION: 'Generic content page'
   BrokenLinksReport:

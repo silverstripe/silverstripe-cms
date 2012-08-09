@@ -169,7 +169,7 @@ az:
   ContentControl:
     NOTEWONTBESHOWN: 'Qeyd: Bu mesaj ziyarətçilər üçün görünməyəcək'
   ContentController:
-    ARCHIVEDSITE: 'Arxivləşdirilmiş sayt'
+    ARCHIVEDSITE: 'Archived Site'
     ARCHIVEDSITEFROM: 'Arxivləşmiş sayt'
     CMS: CMS
     DRAFTSITE: 'Qaralama sayt'

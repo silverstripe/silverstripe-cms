@@ -36,9 +36,9 @@ da:
   BackLink_Button.ss:
     Back: Tilbage
   BasicFieldsTestPage:
-    DESCRIPTION: 'Standard indholdsside'
+    DESCRIPTION: 'Generic content page'
   BigFamilyPage:
-    DESCRIPTION: 'Standard indholdsside'
+    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Alle
     BROKENLINKS: 'Rapport over brudte links'
@@ -165,11 +165,11 @@ da:
   CMSSiteTreeFilter_Search:
     Title: 'Alle sider'
   CaseStudy:
-    DESCRIPTION: 'Casestudieside til fremtidige eksempler'
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Bemærk: denne besked bliver ikke vist til dine besøgende '
   ContentController:
-    ARCHIVEDSITE: 'Arkiveret side'
+    ARCHIVEDSITE: 'Archived Site'
     ARCHIVEDSITEFROM: 'Arkiveret side fra'
     CMS: CMS
     DRAFTSITE: Kladdeside
@@ -226,7 +226,7 @@ da:
     UNUSEDTHUMBNAILSTITLE: 'Ubrugte miniaturer'
     UploadFilesButton: Overfør
   GridFieldTestPage:
-    DESCRIPTION: 'Standard indholdsside'
+    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Slettet.
     PreviewButton: Forhåndsvisning
@@ -235,9 +235,9 @@ da:
     SearchResults: Søgeresultater
     VersionUnknown: Ukendt
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Standard indholdsside'
+    DESCRIPTION: 'Generic content page'
   Page:
-    DESCRIPTION: 'Standard indholdsside'
+    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Adgang'
   Permissions:
@@ -253,7 +253,7 @@ da:
     REDIRECTTOPAGE: 'En side på dit websted'
     YOURPAGE: 'Side på dit websted'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Standard indholdsside'
+    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Rapporter
   ReportAdminForm:
@@ -400,9 +400,9 @@ da:
     VIEWNEXT: 'Vis n&aelig;ste'
     VIEWPREVIOUS: 'Vis forrige'
   TestFileUploadPage:
-    DESCRIPTION: 'Standard indholdsside'
+    DESCRIPTION: 'Generic content page'
   TestPage:
-    DESCRIPTION: 'Standard indholdsside'
+    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:

@@ -169,7 +169,7 @@ ar:
   ContentControl:
     NOTEWONTBESHOWN: 'تنبيه: هذه الرسالة لن يتم عرضها لزوار موقعك'
   ContentController:
-    ARCHIVEDSITE: 'موقع تمت أرشفته'
+    ARCHIVEDSITE: 'Archived Site'
     ARCHIVEDSITEFROM: 'موقع تمت أرشفته منذ'
     CMS: 'نظام إدارة المحتوى'
     DRAFTSITE: 'موقع في المسودة'

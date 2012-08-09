@@ -27,7 +27,7 @@ fr:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Supprimer dossiers'
   AssetAdmin_Tools.ss:
-    FILTER: Filtrer
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Go
   AssetTableField:
@@ -36,9 +36,9 @@ fr:
   BackLink_Button.ss:
     Back: Retour
   BasicFieldsTestPage:
-    DESCRIPTION: 'Page au contenu générique'
+    DESCRIPTION: 'Generic content page'
   BigFamilyPage:
-    DESCRIPTION: 'Page au contenu générique'
+    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: 'N''importe quel'
     BROKENLINKS: 'Rapport des liens brisés'
@@ -165,11 +165,11 @@ fr:
   CMSSiteTreeFilter_Search:
     Title: 'Toutes les pages'
   CaseStudy:
-    DESCRIPTION: 'Étude de cas avec des exemples de fonctionnalités.'
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Note : ce message ne sera pas visible de vos visiteurs.'
   ContentController:
-    ARCHIVEDSITE: 'Site archivé'
+    ARCHIVEDSITE: 'Archived Site'
     ARCHIVEDSITEFROM: 'Site archivé depuis'
     CMS: CMS
     DRAFTSITE: 'Site Brouillon'
@@ -226,7 +226,7 @@ fr:
     UNUSEDTHUMBNAILSTITLE: 'Miniatures inutilisées'
     UploadFilesButton: Télécharger
   GridFieldTestPage:
-    DESCRIPTION: 'Page au contenu générique'
+    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Supprimée.
     PreviewButton: Aperçu
@@ -235,9 +235,9 @@ fr:
     SearchResults: 'Résultats de la recherche'
     VersionUnknown: Inconnu
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Page au contenu générique'
+    DESCRIPTION: 'Generic content page'
   Page:
-    DESCRIPTION: 'Page au contenu générique'
+    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'Accès au CMS'
   Permissions:
@@ -253,7 +253,7 @@ fr:
     REDIRECTTOPAGE: 'Une page de votre site web'
     YOURPAGE: 'Page de votre site web'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Page au contenu générique'
+    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Rapports
   ReportAdminForm:
@@ -319,7 +319,7 @@ fr:
     DELETEDPAGEHELP: 'La page n’est plus publique '
     DELETEDPAGESHORT: Supprimée
     DEPENDENT_NOTE: 'Les pages suivantes dépendent de cette page. Ceci inclut les pages virtuelles, les redirections et les pages avec des liens.'
-    DESCRIPTION: 'Page remplie par default'
+    DESCRIPTION: 'Page au contenu générique'
     DependtPageColumnLinkType: 'Type de lien'
     DependtPageColumnURL: URL
     EDITANYONE: 'Toute personne pouvant se connecter au CMS'
@@ -400,9 +400,9 @@ fr:
     VIEWNEXT: 'Voir le(s) suivant(s)'
     VIEWPREVIOUS: 'Voir le(s) précédent(s)'
   TestFileUploadPage:
-    DESCRIPTION: 'Page au contenu générique'
+    DESCRIPTION: 'Generic content page'
   TestPage:
-    DESCRIPTION: 'Page au contenu générique'
+    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Afficher :'
   ViewArchivedEmail.ss:

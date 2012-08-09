@@ -27,7 +27,7 @@ pl:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Usuń foldery'
   AssetAdmin_Tools.ss:
-    FILTER: Filtr
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Przejdź
   AssetTableField:
@@ -36,9 +36,9 @@ pl:
   BackLink_Button.ss:
     Back: Wstecz
   BasicFieldsTestPage:
-    DESCRIPTION: 'Zwykła strona'
+    DESCRIPTION: 'Generic content page'
   BigFamilyPage:
-    DESCRIPTION: 'Zwykła strona'
+    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Jakikolwiek
     BROKENLINKS: 'Raport uszkodzonych linków'
@@ -169,7 +169,7 @@ pl:
   ContentControl:
     NOTEWONTBESHOWN: 'Uwaga: ta strona nie będzie widoczna dla twoich odwiedzających  '
   ContentController:
-    ARCHIVEDSITE: 'Zarchiwizowana witryna'
+    ARCHIVEDSITE: 'Archived Site'
     ARCHIVEDSITEFROM: 'Zarchiwizowana witryna od'
     CMS: 'System Zarządzania Treścią'
     DRAFTSITE: 'Szkic witryny'
@@ -226,7 +226,7 @@ pl:
     UNUSEDTHUMBNAILSTITLE: 'Nieużywane miniatury'
     UploadFilesButton: Prześlij
   GridFieldTestPage:
-    DESCRIPTION: 'Zwykła strona'
+    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Usunięty
     PreviewButton: Podgląd
@@ -235,9 +235,9 @@ pl:
     SearchResults: 'Wyniki wyszukiwania'
     VersionUnknown: Nieznany
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Zwykła strona'
+    DESCRIPTION: 'Generic content page'
   Page:
-    DESCRIPTION: 'Zwykła strona'
+    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'Dostęp do CMS'
   Permissions:
@@ -253,7 +253,7 @@ pl:
     REDIRECTTOPAGE: 'Strona na Twojej witrynie'
     YOURPAGE: 'Strona na Twojej witrynie'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Zwykła strona'
+    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Raporty
   ReportAdminForm:
@@ -400,9 +400,9 @@ pl:
     VIEWNEXT: 'Zobacz następne'
     VIEWPREVIOUS: 'Zobacz poprzednie'
   TestFileUploadPage:
-    DESCRIPTION: 'Zwykła strona'
+    DESCRIPTION: 'Generic content page'
   TestPage:
-    DESCRIPTION: 'Zwykła strona'
+    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Wyświetl:'
   ViewArchivedEmail.ss:

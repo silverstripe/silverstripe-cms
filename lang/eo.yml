@@ -169,7 +169,7 @@ eo:
   ContentControl:
     NOTEWONTBESHOWN: 'Notu: ne vidigos ĉi tiun mesaĝon al viaj vizitantoj'
   ContentController:
-    ARCHIVEDSITE: 'Enarkivigita Retejo'
+    ARCHIVEDSITE: 'Archived Site'
     ARCHIVEDSITEFROM: 'Enarkivigita retejo el'
     CMS: CMS
     DRAFTSITE: 'Malneta Retejo'

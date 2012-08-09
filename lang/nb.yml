@@ -36,7 +36,7 @@ nb:
   BackLink_Button.ss:
     Back: Tilbake
   BasicFieldsTestPage:
-    DESCRIPTION: 'Generisk innholdsside'
+    DESCRIPTION: 'Generic content page'
   BigFamilyPage:
     DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
@@ -226,7 +226,7 @@ nb:
     UNUSEDTHUMBNAILSTITLE: 'Miniatyrbilder ikke i bruk'
     UploadFilesButton: 'Last opp'
   GridFieldTestPage:
-    DESCRIPTION: 'Generisk innholdsside'
+    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Forhåndsvisning
@@ -253,7 +253,7 @@ nb:
     REDIRECTTOPAGE: 'En side på nettstedet'
     YOURPAGE: 'Side på ditt nettsted'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Generisk innholdsside'
+    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Rapporter
   ReportAdminForm:
@@ -319,7 +319,7 @@ nb:
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Slettet
     DEPENDENT_NOTE: 'De følgende sidene avhenger av denne siden. Dette inkluderer virtuelle sider, omdirigeringssider og sider med innholdslenker.'
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Generisk innholdsside'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
     EDITANYONE: 'Alle som kan logge inn til kontrollpanelet'
@@ -402,7 +402,7 @@ nb:
   TestFileUploadPage:
     DESCRIPTION: 'Generic content page'
   TestPage:
-    DESCRIPTION: 'Generisk innholdsside'
+    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:

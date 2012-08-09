@@ -169,7 +169,7 @@ lv:
   ContentControl:
     NOTEWONTBESHOWN: 'Piezīme: šī ziņa nebūs redzama Jūsu apmeklētājiem'
   ContentController:
-    ARCHIVEDSITE: 'Arhivēta vietne'
+    ARCHIVEDSITE: 'Archived Site'
     ARCHIVEDSITEFROM: 'Arhivēta vietne no'
     CMS: CMS
     DRAFTSITE: 'Melnrakstu vietne'

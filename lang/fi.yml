@@ -27,7 +27,7 @@ fi:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Poista kansiot'
   AssetAdmin_Tools.ss:
-    FILTER: Suodatin
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Siirry
   AssetTableField:
@@ -36,9 +36,9 @@ fi:
   BackLink_Button.ss:
     Back: Takaisin
   BasicFieldsTestPage:
-    DESCRIPTION: 'Yleinen sisältösivu'
+    DESCRIPTION: 'Generic content page'
   BigFamilyPage:
-    DESCRIPTION: 'Yleinen sisältösivu'
+    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Yhtään
     BROKENLINKS: 'Rikkinäisten linkkien raportti'
@@ -169,7 +169,7 @@ fi:
   ContentControl:
     NOTEWONTBESHOWN: 'Huomaa: tätä viestiä ei näytetä vierailijoille'
   ContentController:
-    ARCHIVEDSITE: 'Arkistoitu sivusto'
+    ARCHIVEDSITE: 'Archived Site'
     ARCHIVEDSITEFROM: 'Arkistoitu sivusto lähteestä:'
     CMS: CMS
     DRAFTSITE: Luonnossivusto
@@ -226,7 +226,7 @@ fi:
     UNUSEDTHUMBNAILSTITLE: 'Käyttämättömät pikkukuvat'
     UploadFilesButton: Siirrä
   GridFieldTestPage:
-    DESCRIPTION: 'Yleinen sisältösivu'
+    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Poistettu.
     PreviewButton: Esikatselu
@@ -235,9 +235,9 @@ fi:
     SearchResults: Hakutulokset
     VersionUnknown: Tuntematon
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Yleinen sisältösivu'
+    DESCRIPTION: 'Generic content page'
   Page:
-    DESCRIPTION: 'Yleinen sisältösivu'
+    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: CMS-pääsy
   Permissions:
@@ -253,7 +253,7 @@ fi:
     REDIRECTTOPAGE: 'Sivu verkkosivustollasi'
     YOURPAGE: 'Sivu verkkosivustollasi'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Yleinen sisältösivu'
+    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Raportit
   ReportAdminForm:
@@ -400,9 +400,9 @@ fi:
     VIEWNEXT: 'Näytä seuraava'
     VIEWPREVIOUS: 'Näytä edellinen'
   TestFileUploadPage:
-    DESCRIPTION: 'Yleinen sisältösivu'
+    DESCRIPTION: 'Generic content page'
   TestPage:
-    DESCRIPTION: 'Yleinen sisältösivu'
+    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Näytä:'
   ViewArchivedEmail.ss:

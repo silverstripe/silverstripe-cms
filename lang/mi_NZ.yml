@@ -27,7 +27,7 @@ mi_NZ:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Muku kōpaki'
   AssetAdmin_Tools.ss:
-    FILTER: Tātari
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Haere
   AssetTableField:
@@ -36,9 +36,9 @@ mi_NZ:
   BackLink_Button.ss:
     Back: Hoki
   BasicFieldsTestPage:
-    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
+    DESCRIPTION: 'Generic content page'
   BigFamilyPage:
-    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
+    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: 'Ko tētahi'
     BROKENLINKS: 'Pūrongo hono whati'
@@ -165,11 +165,11 @@ mi_NZ:
   CMSSiteTreeFilter_Search:
     Title: 'Ngā Whārangi Katoa'
   CaseStudy:
-    DESCRIPTION: 'Whārangi mātai tūāhua hei whakaatu tauira mahi'
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Tuhipoka: kāore tēnei karere e whakaaturia ki ō manuhiri'
   ContentController:
-    ARCHIVEDSITE: 'Pae Putumōhio'
+    ARCHIVEDSITE: 'Archived Site'
     ARCHIVEDSITEFROM: 'Pae putumōhio mai i'
     CMS: CMS
     DRAFTSITE: 'Pae Hukihuki'
@@ -226,7 +226,7 @@ mi_NZ:
     UNUSEDTHUMBNAILSTITLE: 'Ngā karakōnui kāore i whakamahia'
     UploadFilesButton: Tukuatu
   GridFieldTestPage:
-    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
+    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: 'Kua Mukua'
     PreviewButton: Arokite
@@ -235,9 +235,9 @@ mi_NZ:
     SearchResults: 'Ngā Hua Rapu'
     VersionUnknown: 'Tē Mōhiotia'
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
+    DESCRIPTION: 'Generic content page'
   Page:
-    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
+    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'Uru CMS'
   Permissions:
@@ -253,7 +253,7 @@ mi_NZ:
     REDIRECTTOPAGE: 'Whārangi kei tō paetukutuku'
     YOURPAGE: 'Whārangi kei tō paetukutuku'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
+    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: 'Ngā Pūrongo'
   ReportAdminForm:
@@ -400,9 +400,9 @@ mi_NZ:
     VIEWNEXT: 'Tiro panuku'
     VIEWPREVIOUS: 'Tirohia tōmua'
   TestFileUploadPage:
-    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
+    DESCRIPTION: 'Generic content page'
   TestPage:
-    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
+    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Whakaatu:'
   ViewArchivedEmail.ss:

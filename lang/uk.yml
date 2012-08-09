@@ -27,7 +27,7 @@ uk:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Видалені папки'
   AssetAdmin_Tools.ss:
-    FILTER: Фільтр
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Уперед
   AssetTableField:
@@ -36,9 +36,9 @@ uk:
   BackLink_Button.ss:
     Back: Назад
   BasicFieldsTestPage:
-    DESCRIPTION: 'Загальний вміст сторінки'
+    DESCRIPTION: 'Generic content page'
   BigFamilyPage:
-    DESCRIPTION: 'Загальна сторінка з вмістом'
+    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Будь-який
     BROKENLINKS: 'Звіт про биті посилання'
@@ -169,7 +169,7 @@ uk:
   ContentControl:
     NOTEWONTBESHOWN: 'Примітка: це повідомлення не буде відображатися для відвідувачів'
   ContentController:
-    ARCHIVEDSITE: 'Заархівований сайт'
+    ARCHIVEDSITE: 'Archived Site'
     ARCHIVEDSITEFROM: 'Заархівований сайт з'
     CMS: CMS
     DRAFTSITE: 'Чорновий сайт'
@@ -226,7 +226,7 @@ uk:
     UNUSEDTHUMBNAILSTITLE: 'Невикористані ескізи'
     UploadFilesButton: Завантажити
   GridFieldTestPage:
-    DESCRIPTION: 'Загальна сторінку з вмістом'
+    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Видалено
     PreviewButton: 'Попередній перегляд'
@@ -235,9 +235,9 @@ uk:
     SearchResults: 'Результати пошуку'
     VersionUnknown: Невідомий
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Загальна сторінка з вмістом'
+    DESCRIPTION: 'Generic content page'
   Page:
-    DESCRIPTION: 'Загальна сторінка з вмістом'
+    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'Доступ до CMS'
   Permissions:
@@ -253,7 +253,7 @@ uk:
     REDIRECTTOPAGE: 'Сторінку на Вашому сайті'
     YOURPAGE: 'Сторінки на Вашому сайті'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Загальний вміст сторінки'
+    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Звіти
   ReportAdminForm:
@@ -319,7 +319,7 @@ uk:
     DELETEDPAGEHELP: 'Сторінка вже не є опублікованою'
     DELETEDPAGESHORT: Видалений
     DEPENDENT_NOTE: 'Наступні сторінки залежать від цієї сторінки. Вони включають віртуальні сторінки, сторінки переадресації і сторінки з посиланням у змісті'
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Загальний вміст сторінки'
     DependtPageColumnLinkType: 'Тип посилання'
     DependtPageColumnURL: URL
     EDITANYONE: 'Будь-хто, хто може увійти до системи'
@@ -400,9 +400,9 @@ uk:
     VIEWNEXT: 'Переглянути наступну'
     VIEWPREVIOUS: 'Переглянути попередню'
   TestFileUploadPage:
-    DESCRIPTION: 'Загальна сторінка з вмістом'
+    DESCRIPTION: 'Generic content page'
   TestPage:
-    DESCRIPTION: 'Загальна сторінка з вмістом'
+    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Відобразити:'
   ViewArchivedEmail.ss:

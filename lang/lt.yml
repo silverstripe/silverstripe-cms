@@ -27,7 +27,7 @@ lt:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Ištrinti aplankus'
   AssetAdmin_Tools.ss:
-    FILTER: Filtras
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Vykdyti
   AssetTableField:
@@ -36,9 +36,9 @@ lt:
   BackLink_Button.ss:
     Back: Atgal
   BasicFieldsTestPage:
-    DESCRIPTION: 'Standartinio turinio puslapis'
+    DESCRIPTION: 'Generic content page'
   BigFamilyPage:
-    DESCRIPTION: 'Standartinio turinio puslapis'
+    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: 'Bet kurias'
     BROKENLINKS: 'Sugadintų nuorodų ataskaita'
@@ -169,7 +169,7 @@ lt:
   ContentControl:
     NOTEWONTBESHOWN: 'Pastaba: ši žinutė nebus matoma jūsų lankytojams'
   ContentController:
-    ARCHIVEDSITE: 'Archyvuota svetainė'
+    ARCHIVEDSITE: 'Archived Site'
     ARCHIVEDSITEFROM: 'Archyvuota svetainė iš'
     CMS: TVS
     DRAFTSITE: 'Juodraštinė svetainė'
@@ -226,7 +226,7 @@ lt:
     UNUSEDTHUMBNAILSTITLE: 'Nenaudojamos ikonos'
     UploadFilesButton: Įkelti
   GridFieldTestPage:
-    DESCRIPTION: 'Standartinio turinio puslapis'
+    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Ištrinta.
     PreviewButton: Peržiūra
@@ -235,9 +235,9 @@ lt:
     SearchResults: 'Paieškos rezultatai'
     VersionUnknown: Nežinoma
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Standartinio turinio puslapis'
+    DESCRIPTION: 'Generic content page'
   Page:
-    DESCRIPTION: 'Standartinio turinio puslapis'
+    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'TVS Prieiga'
   Permissions:
@@ -253,7 +253,7 @@ lt:
     REDIRECTTOPAGE: 'Jūsų svetainės puslapis'
     YOURPAGE: 'Jūsų svetainės puslapis'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Standartinio turinio puslapis'
+    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Ataskaitos
   ReportAdminForm:
@@ -400,9 +400,9 @@ lt:
     VIEWNEXT: 'Žiūrėti sekantį'
     VIEWPREVIOUS: 'Žiūrėti ankstesnį'
   TestFileUploadPage:
-    DESCRIPTION: 'Standartinio turinio puslapis'
+    DESCRIPTION: 'Generic content page'
   TestPage:
-    DESCRIPTION: 'Standartinio turinio puslapis'
+    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Rodyti:'
   ViewArchivedEmail.ss:

@@ -27,7 +27,7 @@ sk:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Vymazať priečinky'
   AssetAdmin_Tools.ss:
-    FILTER: Filtrovať
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Choď
   AssetTableField:
@@ -36,9 +36,9 @@ sk:
   BackLink_Button.ss:
     Back: Späť
   BasicFieldsTestPage:
-    DESCRIPTION: 'Obecný obsah stránky'
+    DESCRIPTION: 'Generic content page'
   BigFamilyPage:
-    DESCRIPTION: 'Obecný obsah stránky'
+    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Akékoľvek
     BROKENLINKS: 'Výkaz porušených odkazov'
@@ -165,11 +165,11 @@ sk:
   CMSSiteTreeFilter_Search:
     Title: 'Všetky stránky'
   CaseStudy:
-    DESCRIPTION: 'Prípadová štúdia stránky predstavuje pracovné príklady'
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Poznámka: Táto správa sa nebude zobrazovať vašim návštevníkom'
   ContentController:
-    ARCHIVEDSITE: 'Archivovaný web'
+    ARCHIVEDSITE: 'Archived Site'
     ARCHIVEDSITEFROM: 'Archivovaný web z'
     CMS: CMS
     DRAFTSITE: 'Pracovná verzia stránky'
@@ -226,7 +226,7 @@ sk:
     UNUSEDTHUMBNAILSTITLE: 'Nepoužité miniatúry'
     UploadFilesButton: Nahrať
   GridFieldTestPage:
-    DESCRIPTION: 'Obecný obsah stránky'
+    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Smazané.
     PreviewButton: Zobrazenie
@@ -235,9 +235,9 @@ sk:
     SearchResults: 'Výsledky vyhľadávania'
     VersionUnknown: Neznáma
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Obecný obsah stránky'
+    DESCRIPTION: 'Generic content page'
   Page:
-    DESCRIPTION: 'Obecný obsah stránky'
+    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'Prístup do CMS'
   Permissions:
@@ -253,7 +253,7 @@ sk:
     REDIRECTTOPAGE: 'Stránka na vašom webe'
     YOURPAGE: 'Stránka na vašom webe'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Obecný obsah stránky'
+    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Výkazy
   ReportAdminForm:
@@ -400,9 +400,9 @@ sk:
     VIEWNEXT: 'Zobraz nasledujúce'
     VIEWPREVIOUS: 'Zobraz predchádzajúce'
   TestFileUploadPage:
-    DESCRIPTION: 'Obecný obsah stránky'
+    DESCRIPTION: 'Generic content page'
   TestPage:
-    DESCRIPTION: 'Obecný obsah stránky'
+    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Zobrazenie:'
   ViewArchivedEmail.ss:

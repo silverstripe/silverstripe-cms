@@ -169,7 +169,7 @@ sl:
   ContentControl:
     NOTEWONTBESHOWN: 'Opomba: neprijavljeni obiskovalci spletnega mesta tega obvestila ne bodo videli.'
   ContentController:
-    ARCHIVEDSITE: 'Arhivirana različica spletnega mesta'
+    ARCHIVEDSITE: 'Archived Site'
     ARCHIVEDSITEFROM: 'Arhivirana različica iz'
     CMS: CMS
     DRAFTSITE: 'Osnutek spletnega mesta'

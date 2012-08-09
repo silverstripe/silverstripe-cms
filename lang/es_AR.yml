@@ -169,7 +169,7 @@ es_AR:
   ContentControl:
     NOTEWONTBESHOWN: 'Nota: este mensage no se mostrará a sus visitantes'
   ContentController:
-    ARCHIVEDSITE: 'Sitio archivado'
+    ARCHIVEDSITE: 'Archived Site'
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
     DRAFTSITE: 'Sitio borrador'

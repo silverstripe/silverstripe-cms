@@ -27,7 +27,7 @@ ja_JP:
   AssetAdmin_DeleteBatchAction:
     TITLE: フォルダを削除
   AssetAdmin_Tools.ss:
-    FILTER: フィルタ
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Go
   AssetTableField:
@@ -36,9 +36,9 @@ ja_JP:
   BackLink_Button.ss:
     Back: 戻る
   BasicFieldsTestPage:
-    DESCRIPTION: 通常のコンテンツページ
+    DESCRIPTION: 'Generic content page'
   BigFamilyPage:
-    DESCRIPTION: 通常のコンテンツページ
+    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: 何でも
     BROKENLINKS: 壊れたリンクのレポート
@@ -226,7 +226,7 @@ ja_JP:
     UNUSEDTHUMBNAILSTITLE: 未使用のサムネイル
     UploadFilesButton: アップロード
   GridFieldTestPage:
-    DESCRIPTION: 通常のコンテンツページ
+    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: 削除済
     PreviewButton: プレビュー
@@ -235,9 +235,9 @@ ja_JP:
     SearchResults: 検索結果
     VersionUnknown: 不明
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 通常のコンテンツページ
+    DESCRIPTION: 'Generic content page'
   Page:
-    DESCRIPTION: 通常のコンテンツページ
+    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: CMSへのアクセス
   Permissions:
@@ -253,7 +253,7 @@ ja_JP:
     REDIRECTTOPAGE: 貴方のウェブサイトを表示します
     YOURPAGE: 貴方のウェブサイトを表示します
   RelationFieldsTestPage:
-    DESCRIPTION: 通常のコンテンツページ
+    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: レポート
   ReportAdminForm:
@@ -400,9 +400,9 @@ ja_JP:
     VIEWNEXT: 次を表示
     VIEWPREVIOUS: 前回を表示
   TestFileUploadPage:
-    DESCRIPTION: 通常のコンテンツページ
+    DESCRIPTION: 'Generic content page'
   TestPage:
-    DESCRIPTION: 通常のコンテンツページ
+    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:

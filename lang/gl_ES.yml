@@ -27,7 +27,7 @@ gl_ES:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Eliminar cartafoles'
   AssetAdmin_Tools.ss:
-    FILTER: Filtro
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Ir
   AssetTableField:
@@ -36,7 +36,7 @@ gl_ES:
   BackLink_Button.ss:
     Back: Atrás
   BasicFieldsTestPage:
-    DESCRIPTION: 'Páxina de contido xenérico'
+    DESCRIPTION: 'Generic content page'
   BigFamilyPage:
     DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
@@ -169,7 +169,7 @@ gl_ES:
   ContentControl:
     NOTEWONTBESHOWN: 'Nota: esta mensaxe non se amosará aos visitantes'
   ContentController:
-    ARCHIVEDSITE: 'Sitio Arquivado'
+    ARCHIVEDSITE: 'Archived Site'
     ARCHIVEDSITEFROM: 'Sitio arquivado dende'
     CMS: CMS
     DRAFTSITE: 'Sitio Borrador'
@@ -226,7 +226,7 @@ gl_ES:
     UNUSEDTHUMBNAILSTITLE: 'Miniaturas sen usar'
     UploadFilesButton: Subir
   GridFieldTestPage:
-    DESCRIPTION: 'Páxina de contido xenérico'
+    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Previsualizar
@@ -235,9 +235,9 @@ gl_ES:
     SearchResults: 'Resultados Busca'
     VersionUnknown: Descoñecido
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Páxina de contido xenérico'
+    DESCRIPTION: 'Generic content page'
   Page:
-    DESCRIPTION: 'Páxina de contido xenérico'
+    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'Acceso CMS'
   Permissions:
@@ -253,7 +253,7 @@ gl_ES:
     REDIRECTTOPAGE: 'Unha páxina no teu sitio web'
     YOURPAGE: 'Páxina no teu sitio web'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Páxina de contido xenérico'
+    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Informes
   ReportAdminForm:
@@ -319,7 +319,7 @@ gl_ES:
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Eliminado
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Páxina de contido xenérico'
     DependtPageColumnLinkType: 'Tipo de ligazón'
     DependtPageColumnURL: URL
     EDITANYONE: 'Ningún pode iniciar sesión no CMS'
@@ -400,9 +400,9 @@ gl_ES:
     VIEWNEXT: 'Ver seguinte'
     VIEWPREVIOUS: 'Ver anterior'
   TestFileUploadPage:
-    DESCRIPTION: 'Páxina de contido xenérico'
+    DESCRIPTION: 'Generic content page'
   TestPage:
-    DESCRIPTION: 'Páxina de contido xenérico'
+    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Visualizar:'
   ViewArchivedEmail.ss:

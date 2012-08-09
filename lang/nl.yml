@@ -36,9 +36,9 @@ nl:
   BackLink_Button.ss:
     Back: Terug
   BasicFieldsTestPage:
-    DESCRIPTION: 'Algemene tekst pagina'
+    DESCRIPTION: 'Generic content page'
   BigFamilyPage:
-    DESCRIPTION: 'Algemene tekst pagina'
+    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Alles
     BROKENLINKS: 'Verbroken verwijzingen rapportage'
@@ -165,11 +165,11 @@ nl:
   CMSSiteTreeFilter_Search:
     Title: 'Alle pagina''s'
   CaseStudy:
-    DESCRIPTION: 'De Case study pagina zal voorzien zijn van voorbeelden'
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'N.B. : Dit bericht is niet zichtbaar voor bezoekers'
   ContentController:
-    ARCHIVEDSITE: 'Gearchiveerde site'
+    ARCHIVEDSITE: 'Archived Site'
     ARCHIVEDSITEFROM: 'Gearchiveerde site van'
     CMS: CMS
     DRAFTSITE: 'Concept site'
@@ -226,7 +226,7 @@ nl:
     UNUSEDTHUMBNAILSTITLE: 'Ongebruikte miniatuur afbeeldingen'
     UploadFilesButton: Uploaden
   GridFieldTestPage:
-    DESCRIPTION: 'Algemene tekst pagina'
+    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Verwijderd.
     PreviewButton: Voorbeeld
@@ -235,9 +235,9 @@ nl:
     SearchResults: Zoekresultaten
     VersionUnknown: Onbekend
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Algemene tekst pagina'
+    DESCRIPTION: 'Generic content page'
   Page:
-    DESCRIPTION: 'Algemene tekst pagina'
+    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Toegang'
   Permissions:
@@ -253,7 +253,7 @@ nl:
     REDIRECTTOPAGE: 'Een pagina op deze website'
     YOURPAGE: 'Pagina op deze website'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Algemene tekst pagina'
+    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Rapporten
   ReportAdminForm:
@@ -319,7 +319,7 @@ nl:
     DELETEDPAGEHELP: 'Deze pagina is niet langer gepubliceerd'
     DELETEDPAGESHORT: Verwijderd
     DEPENDENT_NOTE: 'De volgende pagina''s zijn afhankelijk van deze pagina. Hieronder vallen virtuelepagina''s, verwijsingspagina''s en pagina''s met links in de inhoud.'
-    DESCRIPTION: 'Pagina voor algemene inhoud'
+    DESCRIPTION: 'Algemene tekst pagina'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
     EDITANYONE: 'Iedereen die kan inloggen in het CMS'
@@ -400,9 +400,9 @@ nl:
     VIEWNEXT: 'Toon volgende'
     VIEWPREVIOUS: 'Bekijk vorige'
   TestFileUploadPage:
-    DESCRIPTION: 'Algemene tekst pagina'
+    DESCRIPTION: 'Generic content page'
   TestPage:
-    DESCRIPTION: 'Algemene tekst pagina'
+    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Weergeven:'
   ViewArchivedEmail.ss:

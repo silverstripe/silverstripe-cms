@@ -27,7 +27,7 @@ sv:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Radera mapparna'
   AssetAdmin_Tools.ss:
-    FILTER: Filtrera
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Kör
   AssetTableField:
@@ -36,9 +36,9 @@ sv:
   BackLink_Button.ss:
     Back: Tillbaka
   BasicFieldsTestPage:
-    DESCRIPTION: 'Allmän innehållssida'
+    DESCRIPTION: 'Generic content page'
   BigFamilyPage:
-    DESCRIPTION: 'Allmän innehållssida'
+    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Alla
     BROKENLINKS: 'Rapport för trasiga länkar'
@@ -165,11 +165,11 @@ sv:
   CMSSiteTreeFilter_Search:
     Title: 'Alla sidor'
   CaseStudy:
-    DESCRIPTION: 'Casestudiesida som ska innehålla exempel på arbeten'
+    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Observera: Detta meddelande kommer inte att visas för besökarna'
   ContentController:
-    ARCHIVEDSITE: 'Arkiverad sajt'
+    ARCHIVEDSITE: 'Archived Site'
     ARCHIVEDSITEFROM: 'Arkiverad sajt från'
     CMS: CMS
     DRAFTSITE: Utkast
@@ -226,7 +226,7 @@ sv:
     UNUSEDTHUMBNAILSTITLE: 'Oanvända tumnaglar'
     UploadFilesButton: 'Ladda upp'
   GridFieldTestPage:
-    DESCRIPTION: 'Allmän innehållssida'
+    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Raderad
     PreviewButton: Förhandsgranska
@@ -235,9 +235,9 @@ sv:
     SearchResults: Sökresultat
     VersionUnknown: Okänd
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Allmän innehållssida'
+    DESCRIPTION: 'Generic content page'
   Page:
-    DESCRIPTION: 'Allmän innehållssida'
+    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: CMS-tillgång
   Permissions:
@@ -253,7 +253,7 @@ sv:
     REDIRECTTOPAGE: 'En sida på din sajt'
     YOURPAGE: 'Sida på din sajt'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Generisk innehållssida'
+    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Rapporter
   ReportAdminForm:
@@ -319,7 +319,7 @@ sv:
     DELETEDPAGEHELP: 'Sidan är inte längre publicerad'
     DELETEDPAGESHORT: Raderad
     DEPENDENT_NOTE: 'Följande sidor berörs av den här sidan. Inklusive virtuella sidor, omdirigerings sidor, och sidor med innehålls länkar.'
-    DESCRIPTION: 'Allmän innehållssida'
+    DESCRIPTION: 'Generisk innehållssida'
     DependtPageColumnLinkType: Länktyp
     DependtPageColumnURL: URL
     EDITANYONE: 'Alla som kan logga in'
@@ -400,9 +400,9 @@ sv:
     VIEWNEXT: 'Visa nästa'
     VIEWPREVIOUS: 'Visa föregående'
   TestFileUploadPage:
-    DESCRIPTION: 'Allmän innehållssida'
+    DESCRIPTION: 'Generic content page'
   TestPage:
-    DESCRIPTION: 'Allmän innehållssida'
+    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Visa:'
   ViewArchivedEmail.ss:
