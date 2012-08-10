@@ -36,9 +36,9 @@ da:
   BackLink_Button.ss:
     Back: Tilbage
   BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Standard indholdsside'
   BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Standard indholdsside'
   BrokenLinksReport:
     Any: Alle
     BROKENLINKS: 'Rapport over brudte links'
@@ -165,11 +165,11 @@ da:
   CMSSiteTreeFilter_Search:
     Title: 'Alle sider'
   CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
+    DESCRIPTION: 'Casestudieside til fremtidige eksempler'
   ContentControl:
     NOTEWONTBESHOWN: 'Bemærk: denne besked bliver ikke vist til dine besøgende '
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Arkiveret side'
     ARCHIVEDSITEFROM: 'Arkiveret side fra'
     CMS: CMS
     DRAFTSITE: Kladdeside
@@ -226,7 +226,7 @@ da:
     UNUSEDTHUMBNAILSTITLE: 'Ubrugte miniaturer'
     UploadFilesButton: Overfør
   GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Standard indholdsside'
   LeftAndMain:
     DELETED: Slettet.
     PreviewButton: Forhåndsvisning
@@ -235,9 +235,9 @@ da:
     SearchResults: Søgeresultater
     VersionUnknown: Ukendt
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Standard indholdsside'
   Page:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Standard indholdsside'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Adgang'
   Permissions:
@@ -253,7 +253,7 @@ da:
     REDIRECTTOPAGE: 'En side på dit websted'
     YOURPAGE: 'Side på dit websted'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Standard indholdsside'
   ReportAdmin:
     MENUTITLE: Rapporter
   ReportAdminForm:
@@ -400,9 +400,9 @@ da:
     VIEWNEXT: 'Vis n&aelig;ste'
     VIEWPREVIOUS: 'Vis forrige'
   TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Standard indholdsside'
   TestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Standard indholdsside'
   TreeTools:
     DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:
