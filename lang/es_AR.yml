@@ -154,8 +154,8 @@ es_AR:
   CMSSearch:
     FILTERDATEFROM: From
     FILTERDATEHEADING: Date
-    FILTERDATETO: To
-    FILTERLABELTEXT: Content
+    FILTERDATETO: Para
+    FILTERLABELTEXT: Contenido
   CMSSettingsController:
     MENUTITLE: Settings
   CMSSiteTreeFilter_ChangedPages:
