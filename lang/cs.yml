@@ -27,7 +27,7 @@ cs:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Smazat složky'
   AssetAdmin_Tools.ss:
-    FILTER: Filter
+    FILTER: Filtr
   AssetAdmin_left.ss:
     GO: Proveď
   AssetTableField:
@@ -36,9 +36,9 @@ cs:
   BackLink_Button.ss:
     Back: Zpět
   BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   BrokenLinksReport:
     Any: Jakékoliv
     BROKENLINKS: 'Výkaz porušených odkazů'
@@ -169,7 +169,7 @@ cs:
   ContentControl:
     NOTEWONTBESHOWN: 'Poznámka: tato zpráva nebude zobrazena vašim návštěvníkům'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Archivovaný web'
     ARCHIVEDSITEFROM: 'Archivován web z'
     CMS: CMS
     DRAFTSITE: 'Koncept webu'
@@ -226,7 +226,7 @@ cs:
     UNUSEDTHUMBNAILSTITLE: 'Nepoužité miniatury'
     UploadFilesButton: Nahrát
   GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   LeftAndMain:
     DELETED: Smazáno.
     PreviewButton: Náhled
@@ -235,9 +235,9 @@ cs:
     SearchResults: 'Výsledky hledání'
     VersionUnknown: Neznámý
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   Page:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   Permission:
     CMS_ACCESS_CATEGORY: 'Přístup CMS'
   Permissions:
@@ -253,7 +253,7 @@ cs:
     REDIRECTTOPAGE: 'Stránku na Vašem webu'
     YOURPAGE: 'Stránku na Vašem webu'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   ReportAdmin:
     MENUTITLE: Výkazy
   ReportAdminForm:
@@ -400,9 +400,9 @@ cs:
     VIEWNEXT: 'Zobrazit další'
     VIEWPREVIOUS: 'Zobrazit předchozí'
   TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   TestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   TreeTools:
     DisplayLabel: 'Zobrazení:'
   ViewArchivedEmail.ss:

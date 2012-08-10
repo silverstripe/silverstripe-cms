@@ -36,9 +36,9 @@ sk:
   BackLink_Button.ss:
     Back: Späť
   BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   BrokenLinksReport:
     Any: Akékoľvek
     BROKENLINKS: 'Výkaz porušených odkazov'
@@ -169,7 +169,7 @@ sk:
   ContentControl:
     NOTEWONTBESHOWN: 'Poznámka: Táto správa sa nebude zobrazovať vašim návštevníkom'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Archivovaný web'
     ARCHIVEDSITEFROM: 'Archivovaný web z'
     CMS: CMS
     DRAFTSITE: 'Pracovná verzia stránky'
@@ -226,7 +226,7 @@ sk:
     UNUSEDTHUMBNAILSTITLE: 'Nepoužité miniatúry'
     UploadFilesButton: Nahrať
   GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   LeftAndMain:
     DELETED: Smazané.
     PreviewButton: Zobrazenie
@@ -235,9 +235,9 @@ sk:
     SearchResults: 'Výsledky vyhľadávania'
     VersionUnknown: Neznáma
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   Page:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   Permission:
     CMS_ACCESS_CATEGORY: 'Prístup do CMS'
   Permissions:
@@ -253,7 +253,7 @@ sk:
     REDIRECTTOPAGE: 'Stránka na vašom webe'
     YOURPAGE: 'Stránka na vašom webe'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   ReportAdmin:
     MENUTITLE: Výkazy
   ReportAdminForm:
@@ -400,9 +400,9 @@ sk:
     VIEWNEXT: 'Zobraz nasledujúce'
     VIEWPREVIOUS: 'Zobraz predchádzajúce'
   TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   TestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Obecný obsah stránky'
   TreeTools:
     DisplayLabel: 'Zobrazenie:'
   ViewArchivedEmail.ss:
