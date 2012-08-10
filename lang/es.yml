@@ -27,7 +27,7 @@ es:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Eliminar carpetas'
   AssetAdmin_Tools.ss:
-    FILTER: Filter
+    FILTER: Filtrar
   AssetAdmin_left.ss:
     GO: Ir
   AssetTableField:
@@ -36,9 +36,9 @@ es:
   BackLink_Button.ss:
     Back: Atras
   BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Página de contenido genérico'
   BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Página de contenido genérico'
   BrokenLinksReport:
     Any: Cualquiera
     BROKENLINKS: 'Informe de enlaces rotos'
@@ -165,11 +165,11 @@ es:
   CMSSiteTreeFilter_Search:
     Title: 'Todas las paginas'
   CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
+    DESCRIPTION: 'Página de casos de estudio para ejemplos de futuros trabajos'
   ContentControl:
     NOTEWONTBESHOWN: 'Nota: este mensaje no se mostrará a tus visitantes'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Sitio Archivado'
     ARCHIVEDSITEFROM: 'Sitio archivado desde'
     CMS: CMS
     DRAFTSITE: 'Sitio en Borrador'
@@ -226,7 +226,7 @@ es:
     UNUSEDTHUMBNAILSTITLE: 'Miniaturas sin usar'
     UploadFilesButton: Subir
   GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Página de contenido genérico'
   LeftAndMain:
     DELETED: Borrado.
     PreviewButton: 'Vista previa'
@@ -235,9 +235,9 @@ es:
     SearchResults: 'Resultados de la búsqueda'
     VersionUnknown: Desconocido
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Página de contenido genérico'
   Page:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Página de contenido genérico'
   Permission:
     CMS_ACCESS_CATEGORY: 'Acceso CMS'
   Permissions:
@@ -253,7 +253,7 @@ es:
     REDIRECTTOPAGE: 'Una página en su sitio web'
     YOURPAGE: 'Página en su sitio web'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Página de contenido genérico'
   ReportAdmin:
     MENUTITLE: Informes
   ReportAdminForm:
@@ -400,9 +400,9 @@ es:
     VIEWNEXT: 'Ver siguiente'
     VIEWPREVIOUS: 'Ver anterior'
   TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Página de contenido genérico'
   TestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Página de contenido genérico'
   TreeTools:
     DisplayLabel: 'Mostrar:'
   ViewArchivedEmail.ss:
