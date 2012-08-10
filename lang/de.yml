@@ -36,9 +36,9 @@ de:
   BackLink_Button.ss:
     Back: Zurück
   BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Allgemeine Inhaltsseite'
   BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Allgemeine Inhaltsseite'
   BrokenLinksReport:
     Any: Alle
     BROKENLINKS: 'Defekte Links'
@@ -165,11 +165,11 @@ de:
   CMSSiteTreeFilter_Search:
     Title: 'Alle Seiten'
   CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
+    DESCRIPTION: 'Fallstudien-Seite zur Darstellung von Arbeitsproben'
   ContentControl:
     NOTEWONTBESHOWN: 'Achtung: Diese Nachricht wird Ihren Besuchern nicht gezeigt.'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Archivierte Seite'
     ARCHIVEDSITEFROM: 'Site archiviert von'
     CMS: CMS
     DRAFTSITE: Vorschau-Site
@@ -226,7 +226,7 @@ de:
     UNUSEDTHUMBNAILSTITLE: 'Unbenutzte Vorschaubilder'
     UploadFilesButton: Hochladen
   GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Allgemeine Inhaltsseite'
   LeftAndMain:
     DELETED: Gelöscht.
     PreviewButton: Vorschau
@@ -235,9 +235,9 @@ de:
     SearchResults: Suchergebnisse
     VersionUnknown: Unbekannt
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Allgemeine Inhaltsseite'
   Page:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Allgemeine Inhaltsseite'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Zugriff'
   Permissions:
@@ -253,7 +253,7 @@ de:
     REDIRECTTOPAGE: 'Eine Seite auf Ihrer Website'
     YOURPAGE: 'Seite auf Ihrer Website'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Allgemeine Inhaltsseite'
   ReportAdmin:
     MENUTITLE: Berichte
   ReportAdminForm:
@@ -400,9 +400,9 @@ de:
     VIEWNEXT: Nächster
     VIEWPREVIOUS: Vorheriger
   TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Allgemeine Inhaltsseite'
   TestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Allgemeine Inhaltsseite'
   TreeTools:
     DisplayLabel: 'Anzeigen:'
   ViewArchivedEmail.ss:
