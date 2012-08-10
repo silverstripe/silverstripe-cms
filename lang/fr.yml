@@ -27,7 +27,7 @@ fr:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Supprimer dossiers'
   AssetAdmin_Tools.ss:
-    FILTER: Filter
+    FILTER: Filtrer
   AssetAdmin_left.ss:
     GO: Go
   AssetTableField:
@@ -36,9 +36,9 @@ fr:
   BackLink_Button.ss:
     Back: Retour
   BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Page au contenu générique'
   BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Page au contenu générique'
   BrokenLinksReport:
     Any: 'N''importe quel'
     BROKENLINKS: 'Rapport des liens brisés'
@@ -165,11 +165,11 @@ fr:
   CMSSiteTreeFilter_Search:
     Title: 'Toutes les pages'
   CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
+    DESCRIPTION: 'Étude de cas avec exemple de fonctionnalités.'
   ContentControl:
     NOTEWONTBESHOWN: 'Note : ce message ne sera pas visible de vos visiteurs.'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Site archivé'
     ARCHIVEDSITEFROM: 'Site archivé depuis'
     CMS: CMS
     DRAFTSITE: 'Site Brouillon'
@@ -226,7 +226,7 @@ fr:
     UNUSEDTHUMBNAILSTITLE: 'Miniatures inutilisées'
     UploadFilesButton: Télécharger
   GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Page au contenu générique'
   LeftAndMain:
     DELETED: Supprimée.
     PreviewButton: Aperçu
@@ -235,9 +235,9 @@ fr:
     SearchResults: 'Résultats de la recherche'
     VersionUnknown: Inconnu
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Page au contenu générique'
   Page:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Page au contenu générique'
   Permission:
     CMS_ACCESS_CATEGORY: 'Accès au CMS'
   Permissions:
@@ -253,7 +253,7 @@ fr:
     REDIRECTTOPAGE: 'Une page de votre site web'
     YOURPAGE: 'Page de votre site web'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Page au contenu générique'
   ReportAdmin:
     MENUTITLE: Rapports
   ReportAdminForm:
@@ -400,9 +400,9 @@ fr:
     VIEWNEXT: 'Voir le(s) suivant(s)'
     VIEWPREVIOUS: 'Voir le(s) précédent(s)'
   TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Page au contenu générique'
   TestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Page au contenu générique'
   TreeTools:
     DisplayLabel: 'Afficher :'
   ViewArchivedEmail.ss:
