@@ -68,8 +68,6 @@ class CMSFileAddController extends LeftAndMain {
 			// The Upload class expects a folder relative *within* assets/
 			$path = preg_replace('/^' . ASSETS_DIR . '\//', '', $folder->getFilename());
 			$uploadField->setFolderName($path);
-		} else {
-			$uploadField->setFolderName(ASSETS_DIR);
 		}
 
 		$exts = $uploadField->getValidator()->getAllowedExtensions();
