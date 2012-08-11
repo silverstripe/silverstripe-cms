@@ -26,8 +26,8 @@ sv:
     Upload: 'Ladda upp'
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Radera mapparna'
-  AssetAdmin_Tools.ss:
-    FILTER: Filtrera
+  AssetAdmin_Tools:
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Kör
   AssetTableField:
@@ -35,10 +35,6 @@ sv:
     PAGES: sida(-or)
   BackLink_Button.ss:
     Back: Tillbaka
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Alla
     BROKENLINKS: 'Rapport för trasiga länkar'
@@ -102,7 +98,7 @@ sv:
     REMOVED: 'Raderade ''%s''%s från den publicerade sajten'
     REMOVEDPAGE: 'Tog bort ''{title}'' från den publicerade sajten'
     REMOVEDPAGEFROMDRAFT: 'Raderade ''%s'' från utkast'
-    RESTORE: 'Återskapa'
+    RESTORE: Återskapa
     RESTORED: 'Återskapandet av  ''{title}'' lyckades'
     ROLLBACK: 'Återställ den här versionen'
     ROLLEDBACKPUB: 'Återskapade publicerad version. Nytt versionsnummer är #{version}'
@@ -164,12 +160,10 @@ sv:
     Title: 'Alla sidor, inklusive raderade'
   CMSSiteTreeFilter_Search:
     Title: 'Alla sidor'
-  CaseStudy:
-    DESCRIPTION: 'Casestudiesida som ska innehålla exempel på arbeten'
   ContentControl:
     NOTEWONTBESHOWN: 'Observera: Detta meddelande kommer inte att visas för besökarna'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Arkiverad sajt från'
     CMS: CMS
     DRAFTSITE: Utkast
@@ -196,6 +190,8 @@ sv:
     DEFAULTSERVERERRORPAGETITLE: Server-fel
     DESCRIPTION: 'Anpassat innehåll för olika fel ärenden (t.ex. "Sidan kan inte hittas")'
     ERRORFILEPROBLEM: 'Kunde inte skriva filen "{filename}". Var vänlig kontrollera skrivrättigheterna.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Felaktig förfrågan'
     401: '401 - Obehörig'
     403: '403 - Förbjuden'
@@ -225,8 +221,6 @@ sv:
     UNUSEDFILESTITLE: 'Oanvända filer'
     UNUSEDTHUMBNAILSTITLE: 'Oanvända tumnaglar'
     UploadFilesButton: 'Ladda upp'
-  GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Raderad
     PreviewButton: Förhandsgranska
@@ -234,10 +228,6 @@ sv:
     STATUSPUBLISHEDSUCCESS: 'Publiseringen av  ''{title}'' lyckades'
     SearchResults: Sökresultat
     VersionUnknown: Okänd
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Allmän innehållssida'
-  Page:
-    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: CMS-tillgång
   Permissions:
@@ -248,12 +238,12 @@ sv:
     HASBEENSETUP: 'En omdirigeringssida har skapats utan att ha något mål.'
     HEADER: 'Den här sidan omdirigerar användare till en annan sida'
     OTHERURL: 'En annan url'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Dirigera till'
     REDIRECTTOEXTERNAL: 'En annan sajt'
     REDIRECTTOPAGE: 'En sida på din sajt'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Sida på din sajt'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Generisk innehållssida'
   ReportAdmin:
     MENUTITLE: Rapporter
   ReportAdminForm:
@@ -284,6 +274,8 @@ sv:
     EDITHEADER: 'Vem kan redigera sidor på den här sajten?'
     EDIT_PERMISSION: 'Redigera sajtkonfiguration'
     EDIT_PERMISSION_HELP: 'Möjlighet att ändra den globala åtkomstinställningar / toppnivåbehörigheter.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Din Sajts Namn'
     SITETAGLINE: 'Din sajts Slogan'
     SITETITLE: Sajttitel
@@ -319,7 +311,7 @@ sv:
     DELETEDPAGEHELP: 'Sidan är inte längre publicerad'
     DELETEDPAGESHORT: Raderad
     DEPENDENT_NOTE: 'Följande sidor berörs av den här sidan. Inklusive virtuella sidor, omdirigerings sidor, och sidor med innehålls länkar.'
-    DESCRIPTION: 'Allmän innehållssida'
+    DESCRIPTION: 'Generisk innehållssida'
     DependtPageColumnLinkType: Länktyp
     DependtPageColumnURL: URL
     EDITANYONE: 'Alla som kan logga in'
@@ -373,7 +365,7 @@ sv:
     VIEW_ALL_HELP: 'Möjlighet att visa vilken sida som helst på webbplatsen, oavsett inställningarna på fliken Åtkomst. Kräver "Tillgång till Webbplatsinnehåll" tillåtelse'
     VIEW_DRAFT_CONTENT: 'Se utkast'
     VIEW_DRAFT_CONTENT_HELP: 'Gäller att visa sidor i utkast läge. Användbart för externa samarbetspartners utan CMS åtkomst.'
-    Viewers: 'Åskådargrupper'
+    Viewers: Åskådargrupper
     Visibility: Synlighet
     has_one_Parent: Föräldrasida
     many_many_BackLinkTracking: 'Spåra inlänkar'
@@ -399,10 +391,6 @@ sv:
     VIEWLAST: 'Visa sista'
     VIEWNEXT: 'Visa nästa'
     VIEWPREVIOUS: 'Visa föregående'
-  TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
-  TestPage:
-    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Visa:'
   ViewArchivedEmail.ss:

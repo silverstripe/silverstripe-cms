@@ -26,7 +26,7 @@ si:
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
-  AssetAdmin_Tools.ss:
+  AssetAdmin_Tools:
     FILTER: Filter
   AssetAdmin_left.ss:
     GO: යන්න
@@ -35,10 +35,6 @@ si:
     PAGES: page(s)
   BackLink_Button.ss:
     Back: Back
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Any
     BROKENLINKS: 'Broken links report'
@@ -89,7 +85,7 @@ si:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
-    NEW: 'අලුත්'
+    NEW: අලුත්
     PAGENOTEXISTS: 'මෙම  පිටුව තවදුරටත් නොපවතී'
     PAGES: Pages
     PAGETYPEANYOPT: Any
@@ -164,12 +160,10 @@ si:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
     Title: 'All pages'
-  CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
     DRAFTSITE: 'Draft Site'
@@ -196,6 +190,8 @@ si:
     DEFAULTSERVERERRORPAGETITLE: 'Server error'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - දුර්වල ඉල්ළීමක්'
     401: '401 - බල රහිත'
     403: '403 - තහනම්'
@@ -225,8 +221,6 @@ si:
     UNUSEDFILESTITLE: 'භාවිතා නොකළ ගොනු'
     UNUSEDTHUMBNAILSTITLE: 'Unused thumbnails'
     UploadFilesButton: Upload
-  GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -234,10 +228,6 @@ si:
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: 'Search Results'
     VersionUnknown: Unknown
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  Page:
-    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
   Permissions:
@@ -248,12 +238,12 @@ si:
     HASBEENSETUP: 'යොමු කිරීමේ පිටුව කිසිවකට යොමු නොකරයි'
     HEADER: 'මෙම පිටුව පරිබෝඡකයන් වෙනත් යොමු කරයි'
     OTHERURL: 'වෙනත් වෙබ් අඩවි URL'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'යොමු කරන්න'
     REDIRECTTOEXTERNAL: 'වෙනත් වෙබ් අඩවි'
     REDIRECTTOPAGE: 'ඔබේ අඩවියේ පිටුවක්'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'ඔබේ අඩවියේ පිටුවක්'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -284,6 +274,8 @@ si:
     EDITHEADER: 'Who can edit pages on this site?'
     EDIT_PERMISSION: 'Manage site configuration'
     EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Your Site Name'
     SITETAGLINE: 'Site Tagline/Slogan'
     SITETITLE: 'Site title'
@@ -309,7 +301,7 @@ si:
     BUTTONUNPUBLISHDESC: 'මෙම පිටුව ප්රසිද්ධ කල අඩවියෙන් ගලවන්න'
     CREATED: 'Date Created'
     Comments: Comments
-    Content: 'අන්තර්ගතය'
+    Content: අන්තර්ගතය
     DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
     DEFAULTABOUTTITLE: 'අපි ගැන'
     DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
@@ -330,12 +322,12 @@ si:
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     Editors: 'Editors Groups'
     HASBROKENLINKS: 'මෙම පිටුවට කැඩුනු බැදීම් ඇත'
-    HTMLEDITORTITLE: 'අන්තර්ගතය'
+    HTMLEDITORTITLE: අන්තර්ගතය
     INHERIT: 'Inherit from parent page'
     LASTUPDATED: 'Last Updated'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 'සංක්රමන ලේබලය'
-    METADESC: 'අර්තකතනය'
+    METADESC: අර්තකතනය
     METAEXTRA: 'සැකසූ මෙටා ටැග්'
     METAKEYWORDS: යතුරැ
     METATITLE: මාතෘකා
@@ -363,9 +355,9 @@ si:
     SHOWINSEARCH: 'සර්ච් ඵකේ පෙන්වන්නද?'
     SINGULARNAME: 'Site Tree'
     TABBEHAVIOUR: හැසිරීම
-    TABCONTENT: 'අන්තර්ගතය'
+    TABCONTENT: අන්තර්ගතය
     TABDEPENDENT: 'Dependent pages'
-    TOPLEVEL: 'අන්ර්ගතය'
+    TOPLEVEL: අන්ර්ගතය
     TOPLEVELCREATORGROUPS: 'Top level creators'
     URLSegment: 'URL කොටස'
     VIEWERGROUPS: 'Viewer Groups'
@@ -399,10 +391,6 @@ si:
     VIEWLAST: 'අවසානය පෙන්වන්න'
     VIEWNEXT: 'ඊළඟ එක පෙන්වන්න'
     VIEWPREVIOUS: 'පෙර පෙන්වන්න'
-  TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
-  TestPage:
-    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:

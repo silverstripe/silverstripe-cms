@@ -26,7 +26,7 @@ sl:
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
-  AssetAdmin_Tools.ss:
+  AssetAdmin_Tools:
     FILTER: Filter
   AssetAdmin_left.ss:
     GO: Pojdi
@@ -35,10 +35,6 @@ sl:
     PAGES: page(s)
   BackLink_Button.ss:
     Back: Back
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Poljuben
     BROKENLINKS: 'Poročilo o nedelujočih povezavah'
@@ -164,12 +160,10 @@ sl:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
     Title: 'All pages'
-  CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Opomba: neprijavljeni obiskovalci spletnega mesta tega obvestila ne bodo videli.'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Arhivirana različica iz'
     CMS: CMS
     DRAFTSITE: 'Osnutek spletnega mesta'
@@ -196,6 +190,8 @@ sl:
     DEFAULTSERVERERRORPAGETITLE: 'Server error'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: 'Napaka 400'
     401: 'Napaka 401: Nimate dovoljena za dostop'
     403: 'Napaka 403: Nimate dovoljena za dostop'
@@ -225,8 +221,6 @@ sl:
     UNUSEDFILESTITLE: 'Neuporabljene datoteke'
     UNUSEDTHUMBNAILSTITLE: 'Neuporabljene ikone (pomanjšane slike)'
     UploadFilesButton: Upload
-  GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -234,10 +228,6 @@ sl:
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: 'Search Results'
     VersionUnknown: Unknown
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  Page:
-    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'Dostop do CMS-vmesnika'
   Permissions:
@@ -248,12 +238,12 @@ sl:
     HASBEENSETUP: 'Nastavljena preusmeritev še nima določenega cilja.'
     HEADER: 'Ta stran bo preusmerila uporabnike na drugo stran'
     OTHERURL: 'URL druge spletne strani'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Preusmeri na'
     REDIRECTTOEXTERNAL: 'Druga spletna stran'
     REDIRECTTOPAGE: 'Stran na tvojem spletnem mestu'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Stran na tvojem spletnem mestu'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -284,6 +274,8 @@ sl:
     EDITHEADER: 'Kdo lahko ureja strani na tem spletnem mestu?'
     EDIT_PERMISSION: 'Upravljanje nastavitev spletnega mesta'
     EDIT_PERMISSION_HELP: 'Možnost upravljanja z dostopom na najvišji ravni'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Naziv vašega spletnega mesta'
     SITETAGLINE: Slogan
     SITETITLE: 'Naslov spletnega mesta (title)'
@@ -399,10 +391,6 @@ sl:
     VIEWLAST: 'Na konec'
     VIEWNEXT: Naslednja
     VIEWPREVIOUS: Prejšnja
-  TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
-  TestPage:
-    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:

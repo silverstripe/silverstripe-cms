@@ -26,7 +26,7 @@ ru:
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
-  AssetAdmin_Tools.ss:
+  AssetAdmin_Tools:
     FILTER: Filter
   AssetAdmin_left.ss:
     GO: Перейти
@@ -35,10 +35,6 @@ ru:
     PAGES: page(s)
   BackLink_Button.ss:
     Back: Back
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Any
     BROKENLINKS: 'Broken links report'
@@ -107,7 +103,7 @@ ru:
     ROLLBACK: 'Откатить до этой версии'
     ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
     ROLLEDBACKVERSION: 'Произведен откат до версии #%d. Номер новой версии #%d'
-    SAVE: 'Сохранить'
+    SAVE: Сохранить
     SAVEDRAFT: 'Save Draft'
     TabContent: Content
     TabHistory: History
@@ -134,18 +130,18 @@ ru:
     VIEW: обзор
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
-    AUTHOR: Author
-    NOTPUBLISHED: 'Not published'
-    PUBLISHER: Publisher
-    UNKNOWN: Unknown
-    WHEN: When
+    AUTHOR: Автор
+    NOTPUBLISHED: 'Не издавалось'
+    PUBLISHER: Издатель
+    UNKNOWN: Неизвестно
+    WHEN: Когда
   CMSPageSettingsController:
     MENUTITLE: 'Править страницы'
   CMSPagesController:
-    GalleryView: 'Gallery View'
-    ListView: 'List View'
-    MENUTITLE: Pages
-    TreeView: 'Tree View'
+    GalleryView: 'Обзор галереи'
+    ListView: 'Обзор списка'
+    MENUTITLE: Страницы
+    TreeView: 'Обзор дерева'
   CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: 'Drag''n''drop'
     MULTISELECT: Multi-selection
@@ -157,19 +153,17 @@ ru:
     FILTERDATETO: Кому
     FILTERLABELTEXT: Содержимое
   CMSSettingsController:
-    MENUTITLE: Settings
+    MENUTITLE: Настройки
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Changed pages'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
-    Title: 'All pages'
-  CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
+    Title: 'Все страницы'
   ContentControl:
     NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
     DRAFTSITE: 'Draft Site'
@@ -196,6 +190,8 @@ ru:
     DEFAULTSERVERERRORPAGETITLE: 'Server error'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Плохой запрос'
     401: '401 - Неавторизован'
     403: '403 - Запрещено'
@@ -225,8 +221,6 @@ ru:
     UNUSEDFILESTITLE: 'Неиспользуемые файлы'
     UNUSEDTHUMBNAILSTITLE: 'Неиспользуемые миниатюры'
     UploadFilesButton: Upload
-  GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Просмотр
@@ -234,10 +228,6 @@ ru:
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: 'Результаты поиска'
     VersionUnknown: Неизвестно
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  Page:
-    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
   Permissions:
@@ -248,12 +238,12 @@ ru:
     HASBEENSETUP: 'Страница перенаправления установлена без указания места перенаправления.'
     HEADER: 'Эта страница будет перенаправлять пользователей на другую страницу'
     OTHERURL: 'URL другого сайта'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Перенаправлять на'
     REDIRECTTOEXTERNAL: 'Другой сайт'
     REDIRECTTOPAGE: 'Страницу Вашего сайта'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Страница Вашего сайта'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -284,6 +274,8 @@ ru:
     EDITHEADER: 'Who can edit pages on this site?'
     EDIT_PERMISSION: 'Manage site configuration'
     EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Your Site Name'
     SITETAGLINE: 'Site Tagline/Slogan'
     SITETITLE: 'Site title'
@@ -399,10 +391,6 @@ ru:
     VIEWLAST: 'См. последн.'
     VIEWNEXT: 'См. следующ.'
     VIEWPREVIOUS: 'См. предыдущ.'
-  TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
-  TestPage:
-    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:

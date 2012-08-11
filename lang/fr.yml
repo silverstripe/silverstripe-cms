@@ -26,8 +26,8 @@ fr:
     Upload: Télécharger
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Supprimer dossiers'
-  AssetAdmin_Tools.ss:
-    FILTER: Filtrer
+  AssetAdmin_Tools:
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Go
   AssetTableField:
@@ -35,10 +35,6 @@ fr:
     PAGES: page(s)
   BackLink_Button.ss:
     Back: Retour
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Page au contenu générique'
-  BigFamilyPage:
-    DESCRIPTION: 'Page au contenu générique'
   BrokenLinksReport:
     Any: 'N''importe quel'
     BROKENLINKS: 'Rapport des liens brisés'
@@ -154,7 +150,7 @@ fr:
   CMSSearch:
     FILTERDATEFROM: De
     FILTERDATEHEADING: Date
-    FILTERDATETO: 'à'
+    FILTERDATETO: à
     FILTERLABELTEXT: Contenu
   CMSSettingsController:
     MENUTITLE: Paramètres
@@ -164,12 +160,10 @@ fr:
     Title: 'Toutes les pages, y compris les supprimées'
   CMSSiteTreeFilter_Search:
     Title: 'Toutes les pages'
-  CaseStudy:
-    DESCRIPTION: 'Étude de cas avec des exemples de fonctionnalités.'
   ContentControl:
     NOTEWONTBESHOWN: 'Note : ce message ne sera pas visible de vos visiteurs.'
   ContentController:
-    ARCHIVEDSITE: 'Site archivé'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Site archivé depuis'
     CMS: CMS
     DRAFTSITE: 'Site Brouillon'
@@ -196,6 +190,8 @@ fr:
     DEFAULTSERVERERRORPAGETITLE: 'Erreur du serveur'
     DESCRIPTION: 'Contenu personnalisé pour diverses erreurs (p. ex. « Page introuvable »)'
     ERRORFILEPROBLEM: ' L''ouverture du fichier « {filename} » afin de le modifier a provoqué une erreur ; vérifiez les droits d’accès au fichier. '
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Mauvaise demande'
     401: '401 - Non autorisé'
     403: '403 - Interdit'
@@ -225,8 +221,6 @@ fr:
     UNUSEDFILESTITLE: 'Fichiers inutilisés'
     UNUSEDTHUMBNAILSTITLE: 'Miniatures inutilisées'
     UploadFilesButton: Télécharger
-  GridFieldTestPage:
-    DESCRIPTION: 'Page au contenu générique'
   LeftAndMain:
     DELETED: Supprimée.
     PreviewButton: Aperçu
@@ -234,10 +228,6 @@ fr:
     STATUSPUBLISHEDSUCCESS: '« {title} » publiée avec succès'
     SearchResults: 'Résultats de la recherche'
     VersionUnknown: Inconnu
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Page au contenu générique'
-  Page:
-    DESCRIPTION: 'Page au contenu générique'
   Permission:
     CMS_ACCESS_CATEGORY: 'Accès au CMS'
   Permissions:
@@ -248,12 +238,12 @@ fr:
     HASBEENSETUP: 'Une page de redirection sans adresse de redirection a été créée.'
     HEADER: 'Cette page va rediriger les utilisateurs vers une autre page'
     OTHERURL: 'Autre URL de site web'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Rediriger vers'
     REDIRECTTOEXTERNAL: 'Autre site web'
     REDIRECTTOPAGE: 'Une page de votre site web'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Page de votre site web'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Page au contenu générique'
   ReportAdmin:
     MENUTITLE: Rapports
   ReportAdminForm:
@@ -284,6 +274,8 @@ fr:
     EDITHEADER: 'Qui peut modifier les pages sur ce site?'
     EDIT_PERMISSION: 'Configuration du site'
     EDIT_PERMISSION_HELP: 'Capacité d''édition des accès globales et permission des pages de premier niveau.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Notre de votre site'
     SITETAGLINE: 'Slogan ou devise du site'
     SITETITLE: 'Titre du site'
@@ -319,7 +311,7 @@ fr:
     DELETEDPAGEHELP: 'La page n’est plus publique '
     DELETEDPAGESHORT: Supprimée
     DEPENDENT_NOTE: 'Les pages suivantes dépendent de cette page. Ceci inclut les pages virtuelles, les redirections et les pages avec des liens.'
-    DESCRIPTION: 'Page remplie par default'
+    DESCRIPTION: 'Page au contenu générique'
     DependtPageColumnLinkType: 'Type de lien'
     DependtPageColumnURL: URL
     EDITANYONE: 'Toute personne pouvant se connecter au CMS'
@@ -394,15 +386,11 @@ fr:
   TableListField_PageControls.ss:
     DISPLAYING: Affichage
     OF: de
-    TO: 'à'
+    TO: à
     VIEWFIRST: 'Voir le(s) premier(s)'
     VIEWLAST: 'Voir le(s) dernier(s)'
     VIEWNEXT: 'Voir le(s) suivant(s)'
     VIEWPREVIOUS: 'Voir le(s) précédent(s)'
-  TestFileUploadPage:
-    DESCRIPTION: 'Page au contenu générique'
-  TestPage:
-    DESCRIPTION: 'Page au contenu générique'
   TreeTools:
     DisplayLabel: 'Afficher :'
   ViewArchivedEmail.ss:

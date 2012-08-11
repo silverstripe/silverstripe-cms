@@ -26,7 +26,7 @@ nl:
     Upload: Uploaden
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Verwijder mappen'
-  AssetAdmin_Tools.ss:
+  AssetAdmin_Tools:
     FILTER: Filter
   AssetAdmin_left.ss:
     GO: Doen
@@ -35,10 +35,6 @@ nl:
     PAGES: pagina(s)
   BackLink_Button.ss:
     Back: Terug
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Alles
     BROKENLINKS: 'Verbroken verwijzingen rapportage'
@@ -164,12 +160,10 @@ nl:
     Title: 'Alle pagina''s (inclusief verwijderde)'
   CMSSiteTreeFilter_Search:
     Title: 'Alle pagina''s'
-  CaseStudy:
-    DESCRIPTION: 'De Case study pagina zal voorzien zijn van voorbeelden'
   ContentControl:
     NOTEWONTBESHOWN: 'N.B. : Dit bericht is niet zichtbaar voor bezoekers'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Gearchiveerde site van'
     CMS: CMS
     DRAFTSITE: 'Concept site'
@@ -196,6 +190,8 @@ nl:
     DEFAULTSERVERERRORPAGETITLE: 'Probleem met de server'
     DESCRIPTION: 'Aangepaste tekst voor verschillende foutmeldingen (bijv: "Pagina niet gevonden")'
     ERRORFILEPROBLEM: 'Fout: "{filename}" kan niet geopend worden om te schrijven. Controleer alstublieft de bestandspermissies.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Foute Vraag'
     401: '401 - Geen toestemming'
     403: '403 - Geen toegang'
@@ -225,8 +221,6 @@ nl:
     UNUSEDFILESTITLE: 'Ongebruikte bestanden'
     UNUSEDTHUMBNAILSTITLE: 'Ongebruikte miniatuur afbeeldingen'
     UploadFilesButton: Uploaden
-  GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Verwijderd.
     PreviewButton: Voorbeeld
@@ -234,10 +228,6 @@ nl:
     STATUSPUBLISHEDSUCCESS: '''{title}'' is succesvol gepubliceerd'
     SearchResults: Zoekresultaten
     VersionUnknown: Onbekend
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Algemene tekst pagina'
-  Page:
-    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Toegang'
   Permissions:
@@ -248,12 +238,12 @@ nl:
     HASBEENSETUP: 'Er is een verwijs pagina opgezet zonder ergens naar door te verwijzen.'
     HEADER: 'Deze pagina zal gebruikers naar een andere pagina doorsturen (redirect)'
     OTHERURL: 'Andere website URL'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Doorverwijzen naar'
     REDIRECTTOEXTERNAL: 'Een andere website'
     REDIRECTTOPAGE: 'Een pagina op deze website'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Pagina op deze website'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Algemene tekst pagina'
   ReportAdmin:
     MENUTITLE: Rapporten
   ReportAdminForm:
@@ -284,6 +274,8 @@ nl:
     EDITHEADER: 'Wie kan pagina''s op de site wijzigen?'
     EDIT_PERMISSION: 'Aanpassen site configuratie'
     EDIT_PERMISSION_HELP: 'Bevoegdheid om globale toegangsinstellingen/hoogste niveau pagina rechten te bewerken.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Jouw Site Naam'
     SITETAGLINE: 'Site Slogan/Motto'
     SITETITLE: 'Site Titel'
@@ -319,7 +311,7 @@ nl:
     DELETEDPAGEHELP: 'Deze pagina is niet langer gepubliceerd'
     DELETEDPAGESHORT: Verwijderd
     DEPENDENT_NOTE: 'De volgende pagina''s zijn afhankelijk van deze pagina. Hieronder vallen virtuelepagina''s, verwijsingspagina''s en pagina''s met links in de inhoud.'
-    DESCRIPTION: 'Pagina voor algemene inhoud'
+    DESCRIPTION: 'Algemene tekst pagina'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
     EDITANYONE: 'Iedereen die kan inloggen in het CMS'
@@ -399,10 +391,6 @@ nl:
     VIEWLAST: 'Bekijk laatste'
     VIEWNEXT: 'Toon volgende'
     VIEWPREVIOUS: 'Bekijk vorige'
-  TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
-  TestPage:
-    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Weergeven:'
   ViewArchivedEmail.ss:

@@ -26,8 +26,8 @@ pl:
     Upload: Prześlij
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Usuń foldery'
-  AssetAdmin_Tools.ss:
-    FILTER: Filtr
+  AssetAdmin_Tools:
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Przejdź
   AssetTableField:
@@ -35,10 +35,6 @@ pl:
     PAGES: stron(y)
   BackLink_Button.ss:
     Back: Wstecz
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Jakikolwiek
     BROKENLINKS: 'Raport uszkodzonych linków'
@@ -164,12 +160,10 @@ pl:
     Title: 'Wszystkie strony włącznie z usuniętymi'
   CMSSiteTreeFilter_Search:
     Title: 'Wszystkie strony'
-  CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Uwaga: ta strona nie będzie widoczna dla twoich odwiedzających  '
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Zarchiwizowana witryna od'
     CMS: 'System Zarządzania Treścią'
     DRAFTSITE: 'Szkic witryny'
@@ -196,6 +190,8 @@ pl:
     DEFAULTSERVERERRORPAGETITLE: 'Błąd serwera'
     DESCRIPTION: 'Własna zawartość dla różnych błędów (np. "Strona nie została znaleziona")'
     ERRORFILEPROBLEM: 'Błąd podczas otwierania pliku "{filename}". Proszę sprawdzić uprawnienia do plików.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Nieprawidłowe zapytanie'
     401: '401 - Nieautoryzowany Dostęp'
     403: '403 - Zabroniony'
@@ -225,19 +221,13 @@ pl:
     UNUSEDFILESTITLE: 'Nieużywane pliki'
     UNUSEDTHUMBNAILSTITLE: 'Nieużywane miniatury'
     UploadFilesButton: Prześlij
-  GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Usunięty
-    PreviewButton: 'Podgląd'
+    PreviewButton: Podgląd
     SAVEDUP: Zapisane
     STATUSPUBLISHEDSUCCESS: 'Opublikowano ''{title}'' '
     SearchResults: 'Wyniki wyszukiwania'
     VersionUnknown: Nieznany
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Zwykła strona'
-  Page:
-    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'Dostęp do CMS'
   Permissions:
@@ -248,12 +238,12 @@ pl:
     HASBEENSETUP: 'Strona przekierowująca została ustawiona bez celu, do którego ma przekierowywać.'
     HEADER: 'Ta strona przeniesie użytkowników na inną stronę'
     OTHERURL: 'Adres URL innej strony'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Przenieś do'
     REDIRECTTOEXTERNAL: 'Inna strona'
     REDIRECTTOPAGE: 'Strona na Twojej witrynie'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Strona na Twojej witrynie'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Zwykła strona'
   ReportAdmin:
     MENUTITLE: Raporty
   ReportAdminForm:
@@ -284,6 +274,8 @@ pl:
     EDITHEADER: 'Kto może edytować strony tego serwisu?'
     EDIT_PERMISSION: 'Zarządzanie konfiguracją serwisu'
     EDIT_PERMISSION_HELP: 'Możliwość edycji globalnych ustawień bezpieczeństwa/uprawnień do stron pierwszego poziomu.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Nazwa twojego serwisu'
     SITETAGLINE: 'Slogan serwisu'
     SITETITLE: 'Tytuł serwisu'
@@ -399,10 +391,6 @@ pl:
     VIEWLAST: 'Zobacz ostatnie'
     VIEWNEXT: 'Zobacz następne'
     VIEWPREVIOUS: 'Zobacz poprzednie'
-  TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
-  TestPage:
-    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Wyświetl:'
   ViewArchivedEmail.ss:

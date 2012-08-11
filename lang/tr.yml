@@ -26,7 +26,7 @@ tr:
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Klasörleri sil'
-  AssetAdmin_Tools.ss:
+  AssetAdmin_Tools:
     FILTER: Filter
   AssetAdmin_left.ss:
     GO: Git
@@ -35,10 +35,6 @@ tr:
     PAGES: page(s)
   BackLink_Button.ss:
     Back: Back
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Any
     BROKENLINKS: 'Broken links report'
@@ -164,12 +160,10 @@ tr:
     Title: 'Silinmişler dahil bütün sayfalar'
   CMSSiteTreeFilter_Search:
     Title: 'Tüm sayfalar'
-  CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
     DRAFTSITE: 'Draft Site'
@@ -196,6 +190,8 @@ tr:
     DEFAULTSERVERERRORPAGETITLE: 'Server error'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Hatalı İstek'
     401: '401 - Erişim Engellenmiş'
     403: '403 - Yasak'
@@ -225,8 +221,6 @@ tr:
     UNUSEDFILESTITLE: 'Kullanılmamış dosyalar'
     UNUSEDTHUMBNAILSTITLE: 'Kullanılmamış thumbnail ler'
     UploadFilesButton: Upload
-  GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Önizleme
@@ -234,10 +228,6 @@ tr:
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: 'Arama Sonuçları'
     VersionUnknown: Bilinmeyen
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  Page:
-    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Erişimi'
   Permissions:
@@ -248,12 +238,12 @@ tr:
     HASBEENSETUP: 'Yönlendirilecek yeri olmayan bir yönlendirme sayfası ayarlandı.'
     HEADER: 'Bu sayfa, kullanıcıları başka bir sayfaya yönlendirir'
     OTHERURL: 'Başka bir siteye ait URL'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Şuraya yönlendir'
     REDIRECTTOEXTERNAL: 'Başka bir site'
     REDIRECTTOPAGE: 'Web sitenizdeki bir sayfa'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Web sitenizdeki bir sayfa'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Raporlar
   ReportAdminForm:
@@ -284,6 +274,8 @@ tr:
     EDITHEADER: 'Who can edit pages on this site?'
     EDIT_PERMISSION: 'Manage site configuration'
     EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Your Site Name'
     SITETAGLINE: 'Site Tagline/Slogan'
     SITETITLE: 'Site title'
@@ -399,10 +391,6 @@ tr:
     VIEWLAST: 'Sonuncuyu görüntüle'
     VIEWNEXT: 'Sonrakini görüntüle'
     VIEWPREVIOUS: 'Öncekini görüntüle'
-  TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
-  TestPage:
-    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:

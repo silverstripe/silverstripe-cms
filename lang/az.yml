@@ -26,7 +26,7 @@ az:
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
-  AssetAdmin_Tools.ss:
+  AssetAdmin_Tools:
     FILTER: Filter
   AssetAdmin_left.ss:
     GO: Go
@@ -35,10 +35,6 @@ az:
     PAGES: page(s)
   BackLink_Button.ss:
     Back: Back
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Any
     BROKENLINKS: 'Broken links report'
@@ -164,12 +160,10 @@ az:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
     Title: 'All pages'
-  CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Qeyd: Bu mesaj ziyarətçilər üçün görünməyəcək'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Arxivləşmiş sayt'
     CMS: CMS
     DRAFTSITE: 'Qaralama sayt'
@@ -196,6 +190,8 @@ az:
     DEFAULTSERVERERRORPAGETITLE: 'Server error'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Bad Request'
     401: '401 - Unauthorized'
     403: '403 - Forbidden'
@@ -225,8 +221,6 @@ az:
     UNUSEDFILESTITLE: 'İstifadəsiz fayllar'
     UNUSEDTHUMBNAILSTITLE: 'İşlənməyən şəkillər'
     UploadFilesButton: Upload
-  GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -234,10 +228,6 @@ az:
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: 'Search Results'
     VersionUnknown: Unknown
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  Page:
-    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
   Permissions:
@@ -248,12 +238,12 @@ az:
     HASBEENSETUP: 'Yönləndirmə səhifəsinə yönlənmə istiqaməti verilməyib.'
     HEADER: 'Bu səhifə istifadəçiləri başqa səhifəyə yönləndirəcək'
     OTHERURL: 'Başqa Web saytın URL-i'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: Yönləndir
     REDIRECTTOEXTERNAL: 'Başqa Web sayt'
     REDIRECTTOPAGE: 'web səhifənizdə olan səhifə'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Web saytınızda olan səhifə'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -284,6 +274,8 @@ az:
     EDITHEADER: 'Bu saytda səhifələri kim redaktə edə bilər?'
     EDIT_PERMISSION: 'Sayt konfigurasiyasını sazla'
     EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Saytın adı'
     SITETAGLINE: 'Saytın sloqanı'
     SITETITLE: 'Saytın başlığı'
@@ -399,10 +391,6 @@ az:
     VIEWLAST: 'Axırıncı baxılmış'
     VIEWNEXT: Növbəti
     VIEWPREVIOUS: 'Əvvəlkinə bax'
-  TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
-  TestPage:
-    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:

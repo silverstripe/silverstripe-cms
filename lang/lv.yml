@@ -26,7 +26,7 @@ lv:
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
-  AssetAdmin_Tools.ss:
+  AssetAdmin_Tools:
     FILTER: Filter
   AssetAdmin_left.ss:
     GO: Go
@@ -35,10 +35,6 @@ lv:
     PAGES: page(s)
   BackLink_Button.ss:
     Back: Back
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Any
     BROKENLINKS: 'Broken links report'
@@ -164,12 +160,10 @@ lv:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
     Title: 'All pages'
-  CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Piezīme: šī ziņa nebūs redzama Jūsu apmeklētājiem'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Arhivēta vietne no'
     CMS: CMS
     DRAFTSITE: 'Melnrakstu vietne'
@@ -196,6 +190,8 @@ lv:
     DEFAULTSERVERERRORPAGETITLE: 'Server error'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Nekorekts pieprasījums'
     401: '401 - Neautorizēts'
     403: '403 - Aizliegts'
@@ -225,8 +221,6 @@ lv:
     UNUSEDFILESTITLE: 'Neizmanotie faili'
     UNUSEDTHUMBNAILSTITLE: 'Neizmantotie sīktēli'
     UploadFilesButton: Upload
-  GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -234,10 +228,6 @@ lv:
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: 'Search Results'
     VersionUnknown: Unknown
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  Page:
-    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
   Permissions:
@@ -248,12 +238,12 @@ lv:
     HASBEENSETUP: 'Novirzītājlapa ir uzstādīta bez norādes uz kurieni novirzīt.'
     HEADER: 'Šī lapa novirzīs lietotājus uz citu lapu '
     OTHERURL: 'Citas tīmekļa vietnes URL'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Novirzīt uz '
     REDIRECTTOEXTERNAL: 'Cita tīmekļa vietni'
     REDIRECTTOPAGE: 'Tīmekļa vietnes lapu'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Tīmekļa vietnes lapa'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -284,6 +274,8 @@ lv:
     EDITHEADER: 'Kurš var labot šīs vietnes lapas?'
     EDIT_PERMISSION: 'Pārvaldīt vietnes konfigurāciju'
     EDIT_PERMISSION_HELP: 'Iespēja labot globālus piekļuves uzstādījumus/augstākā līmeņa lapu atļaujas.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Jūsu vietnes nosaukums'
     SITETAGLINE: 'Vietnes apakšvirsraksts/sauklis'
     SITETITLE: 'Vietnes nosaukums'
@@ -399,10 +391,6 @@ lv:
     VIEWLAST: 'Skatīt pēdējo'
     VIEWNEXT: 'Skatīt nākamo'
     VIEWPREVIOUS: 'Skatīt iepriekšējo'
-  TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
-  TestPage:
-    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:

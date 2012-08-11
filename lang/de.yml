@@ -26,7 +26,7 @@ de:
     Upload: Hochladen
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Ordner löschen'
-  AssetAdmin_Tools.ss:
+  AssetAdmin_Tools:
     FILTER: Filter
   AssetAdmin_left.ss:
     GO: Los
@@ -35,10 +35,6 @@ de:
     PAGES: Seite(n)
   BackLink_Button.ss:
     Back: Zurück
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Allgemeine Inhaltsseite'
-  BigFamilyPage:
-    DESCRIPTION: 'Allgemeine Inhaltsseite'
   BrokenLinksReport:
     Any: Alle
     BROKENLINKS: 'Defekte Links'
@@ -164,19 +160,17 @@ de:
     Title: 'Alle Seiten, auch gelöschte.'
   CMSSiteTreeFilter_Search:
     Title: 'Alle Seiten'
-  CaseStudy:
-    DESCRIPTION: 'Fallstudien-Seite zur Darstellung von Arbeitsproben'
   ContentControl:
     NOTEWONTBESHOWN: 'Achtung: Diese Nachricht wird Ihren Besuchern nicht gezeigt.'
   ContentController:
-    ARCHIVEDSITE: 'Archivierte Seite'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Site archiviert von'
     CMS: CMS
     DRAFTSITE: Vorschau-Site
     DRAFT_SITE_ACCESS_RESTRICTION: 'Sie müssen sich mit ihrem CMS Passwort einloggen, um den Entwurf oder den archivierten Inhalt zu sehen. <a href="%s">Hier klicken um zurück zur veröffentlichten Site zu gehen.</a>'
     Email: E-Mail
     InstallFilesDeleted: 'Die Installationsdateien wurden erfolgreich gelöscht.'
-    InstallSecurityWarning: 'Aus Sicherheitsgründen sollten Sie jetzt die Installationsdaten loeschen, es sei denn sie moechten spaeter erneut installieren. (<em>Dieses erfordert den Administratoren Zugang (siehe oben)</em>). Der Web server benoetigt nun nur noch Schreibzugriff auf den "assets" Ordner und Sie koennen nun den Schreibzugriff fuer alle anderen Ordner loeschen. <a href="{link}" style="text-align: center;"> Klicken Sie hier um die Installationsdaten zu loeschen.</a> '
+    InstallSecurityWarning: 'Zu Ihrer Sicherheit löschen Sie jetzt bitte die Installationsdateien, es sei denn Sie möchten zu einem späteren Zeitpunkt erneut installieren. (<em>Dies erfordert den Administrator-Zugang (siehe oben)</em>). Der Webserver benötigt nun nur noch Schreibrechte auf das "assets" Verzeichnis und Sie können die Schreibrechte für alle anderen Ordner entfernen. <a href="{link}" style="text-align: center;">Die Installationsdaten jetzt löschen.</a> '
     InstallSuccessCongratulations: 'SilverStripe wurde erfolgreich installiert.'
     LOGGEDINAS: 'Angemeldet als'
     LOGIN: Anmelden
@@ -196,6 +190,8 @@ de:
     DEFAULTSERVERERRORPAGETITLE: Serverfehler
     DESCRIPTION: 'Spezieller Inhalt für andere Fehlerfälle (z.B. "Seite nicht gefunden")'
     ERRORFILEPROBLEM: 'Die Datei "{filename}" konnte nicht zum Schreiben geöffnet werden. Bitte überprüfen Sie die Dateiberechtigungen.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Fehlerhafter Zugriff'
     401: '401 - Unerlaubter Zugriff'
     403: '403 - Verbotener Zugriff'
@@ -225,8 +221,6 @@ de:
     UNUSEDFILESTITLE: 'Unbenutzte Dateien'
     UNUSEDTHUMBNAILSTITLE: 'Unbenutzte Vorschaubilder'
     UploadFilesButton: Hochladen
-  GridFieldTestPage:
-    DESCRIPTION: 'Allgemeine Inhaltsseite'
   LeftAndMain:
     DELETED: Gelöscht.
     PreviewButton: Vorschau
@@ -234,10 +228,6 @@ de:
     STATUSPUBLISHEDSUCCESS: '''{title}'' wurde erfolgreich veröffentlicht'
     SearchResults: Suchergebnisse
     VersionUnknown: Unbekannt
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Allgemeine Inhaltsseite'
-  Page:
-    DESCRIPTION: 'Allgemeine Inhaltsseite'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Zugriff'
   Permissions:
@@ -248,12 +238,12 @@ de:
     HASBEENSETUP: 'Eine Weiterleitungsseite wurde erstellt ohne das eine Weiterleitung definiert wurde.'
     HEADER: 'Diese Seite wird Nutzer auf eine andere Seite weiterleiten'
     OTHERURL: 'Andere Webseiten URL'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Weiterleiten zu'
     REDIRECTTOEXTERNAL: 'Andere Website'
     REDIRECTTOPAGE: 'Eine Seite auf Ihrer Website'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Seite auf Ihrer Website'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Allgemeine Inhaltsseite'
   ReportAdmin:
     MENUTITLE: Berichte
   ReportAdminForm:
@@ -284,6 +274,8 @@ de:
     EDITHEADER: 'Wer kann Seiten auf dieser Website bearbeiten?'
     EDIT_PERMISSION: 'Websiteeinstellungen editieren'
     EDIT_PERMISSION_HELP: 'Möglichkeit, die globalen Zugrifsseinstellungen sowie die Berechtigungen für die Hauptebene zu editieren.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Name Ihrer Website'
     SITETAGLINE: 'Ihr Websiteslogan'
     SITETITLE: 'Titel der Site'
@@ -399,10 +391,6 @@ de:
     VIEWLAST: Letzter
     VIEWNEXT: Nächster
     VIEWPREVIOUS: Vorheriger
-  TestFileUploadPage:
-    DESCRIPTION: 'Allgemeine Inhaltsseite'
-  TestPage:
-    DESCRIPTION: 'Allgemeine Inhaltsseite'
   TreeTools:
     DisplayLabel: 'Anzeigen:'
   ViewArchivedEmail.ss:

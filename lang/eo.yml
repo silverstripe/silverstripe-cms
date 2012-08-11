@@ -26,7 +26,7 @@ eo:
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
-  AssetAdmin_Tools.ss:
+  AssetAdmin_Tools:
     FILTER: Filter
   AssetAdmin_left.ss:
     GO: Ek
@@ -35,10 +35,6 @@ eo:
     PAGES: page(s)
   BackLink_Button.ss:
     Back: Back
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Any
     BROKENLINKS: 'Raporto pri rompitaj ligiloj'
@@ -164,12 +160,10 @@ eo:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
     Title: 'All pages'
-  CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Notu: ne vidigos ĉi tiun mesaĝon al viaj vizitantoj'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Enarkivigita retejo el'
     CMS: CMS
     DRAFTSITE: 'Malneta Retejo'
@@ -196,6 +190,8 @@ eo:
     DEFAULTSERVERERRORPAGETITLE: 'Server error'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Nevalida Peto'
     401: '401- Nepermesita'
     403: '403 - Nepermesebla'
@@ -225,8 +221,6 @@ eo:
     UNUSEDFILESTITLE: 'Neuzitaj dosieroj'
     UNUSEDTHUMBNAILSTITLE: 'Neuzitaj miniaturoj'
     UploadFilesButton: Upload
-  GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -234,10 +228,6 @@ eo:
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: 'Search Results'
     VersionUnknown: Unknown
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  Page:
-    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: CMS-aliro
   Permissions:
@@ -248,12 +238,12 @@ eo:
     HASBEENSETUP: 'Redirekta paĝo estis agordita sen ie al kie redirekt.'
     HEADER: 'Ĉi tiu paĝo redirektos uzantojn al alia paĝo'
     OTHERURL: 'Alia retejo URL'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: Redirekti
     REDIRECTTOEXTERNAL: 'Alia retejo'
     REDIRECTTOPAGE: 'Paĝo en via retejo'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Paĝo en via retejo'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -284,6 +274,8 @@ eo:
     EDITHEADER: 'Kiu povas redakti paĝojn en ĉi tiu retejo?'
     EDIT_PERMISSION: 'Agordi konfiguron de retejo'
     EDIT_PERMISSION_HELP: 'Eblo agordi alirajn agordojn/supranivelajn paĝajn permesojn.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Nomo de via retejo'
     SITETAGLINE: 'Slogano de retejo'
     SITETITLE: 'Titolo de retejo'
@@ -399,10 +391,6 @@ eo:
     VIEWLAST: 'Vidigi lastan'
     VIEWNEXT: 'Vidigi sekvan'
     VIEWPREVIOUS: 'Vidigi antaŭan'
-  TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
-  TestPage:
-    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:

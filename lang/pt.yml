@@ -26,8 +26,8 @@ pt:
     Upload: Enviar
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Apagar pastas'
-  AssetAdmin_Tools.ss:
-    FILTER: Filtro
+  AssetAdmin_Tools:
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Ir
   AssetTableField:
@@ -35,10 +35,6 @@ pt:
     PAGES: página(s)
   BackLink_Button.ss:
     Back: Voltar
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  BigFamilyPage:
-    DESCRIPTION: 'Página de conteúdo genérico'
   BrokenLinksReport:
     Any: Qualquer
     BROKENLINKS: 'Relatório de links inválidos'
@@ -164,12 +160,10 @@ pt:
     Title: 'Todas as páginas, incluindo apagadas'
   CMSSiteTreeFilter_Search:
     Title: 'Todas as páginas'
-  CaseStudy:
-    DESCRIPTION: 'Página de estudo a apresentar em trabalhos de exemplo'
   ContentControl:
     NOTEWONTBESHOWN: 'Nota: Esta mensagem não vai ser apresentada aos visitantes'
   ContentController:
-    ARCHIVEDSITE: 'Arquivar o site'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Arquivar o site de'
     CMS: 'Gestor de Conteúdos'
     DRAFTSITE: 'Site Rascunho'
@@ -196,6 +190,8 @@ pt:
     DEFAULTSERVERERRORPAGETITLE: '500 - Erro do servidor'
     DESCRIPTION: 'Conteúdo personalizado para as diferentes possibilidades de erro (ex. página não encontrada)'
     ERRORFILEPROBLEM: 'Erro ao escrever no ficheiro "{filename}". Por favor, verifique as permissões do ficheiro.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Bad Request'
     401: '401 - Não Autorizado'
     403: '403 - Proibido'
@@ -225,8 +221,6 @@ pt:
     UNUSEDFILESTITLE: 'Ficheiros não utilizados'
     UNUSEDTHUMBNAILSTITLE: 'Miniaturas não utilizadas'
     UploadFilesButton: Submeter
-  GridFieldTestPage:
-    DESCRIPTION: 'Página de conteúdo genérico'
   LeftAndMain:
     DELETED: Apagada
     PreviewButton: Pré-visualização
@@ -234,10 +228,6 @@ pt:
     STATUSPUBLISHEDSUCCESS: '''{title}'' restaurado com sucesso'
     SearchResults: 'Resultados da pesquisa'
     VersionUnknown: Desconhecido
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Página de conteúdo genérico'
-  Page:
-    DESCRIPTION: 'Página de conteúdo genérico'
   Permission:
     CMS_ACCESS_CATEGORY: 'Acesso ao CMS'
   Permissions:
@@ -248,12 +238,12 @@ pt:
     HASBEENSETUP: 'Uma página de redireccionamento foi criada sem nenhum destino.'
     HEADER: 'Esta página irá redireccionar os utilizadores para outra página'
     OTHERURL: 'Outro Site'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Redireccionar para'
     REDIRECTTOEXTERNAL: 'Outro site'
     REDIRECTTOPAGE: 'Uma página no seu site'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Página no seu Site'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Página de conteúdo genérico'
   ReportAdmin:
     MENUTITLE: Relatórios
   ReportAdminForm:
@@ -284,6 +274,8 @@ pt:
     EDITHEADER: 'Quem pode editar páginas neste site?'
     EDIT_PERMISSION: 'Gerir configuração do site'
     EDIT_PERMISSION_HELP: 'Capacidade de editar as configurações de acesso global / permissões da página.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Nome do site'
     SITETAGLINE: 'Slogan do site'
     SITETITLE: 'Título do site'
@@ -399,10 +391,6 @@ pt:
     VIEWLAST: 'Ver o último'
     VIEWNEXT: 'Ver o próximo'
     VIEWPREVIOUS: 'Ver o anterior'
-  TestFileUploadPage:
-    DESCRIPTION: 'Página de conteúdo genérico'
-  TestPage:
-    DESCRIPTION: 'Página de conteúdo genérico'
   TreeTools:
     DisplayLabel: 'Apresentar:'
   ViewArchivedEmail.ss:

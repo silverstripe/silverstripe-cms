@@ -26,8 +26,8 @@ lt:
     Upload: Įkelti
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Ištrinti aplankus'
-  AssetAdmin_Tools.ss:
-    FILTER: Filtras
+  AssetAdmin_Tools:
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Vykdyti
   AssetTableField:
@@ -35,10 +35,6 @@ lt:
     PAGES: puslapis(-iai)
   BackLink_Button.ss:
     Back: Atgal
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Standartinio turinio puslapis'
-  BigFamilyPage:
-    DESCRIPTION: 'Standartinio turinio puslapis'
   BrokenLinksReport:
     Any: 'Bet kurias'
     BROKENLINKS: 'Sugadintų nuorodų ataskaita'
@@ -164,12 +160,10 @@ lt:
     Title: 'Visus puslapius, kartu su ištrintais'
   CMSSiteTreeFilter_Search:
     Title: 'Visi puslapiai'
-  CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Pastaba: ši žinutė nebus matoma jūsų lankytojams'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Archyvuota svetainė iš'
     CMS: TVS
     DRAFTSITE: 'Juodraštinė svetainė'
@@ -196,6 +190,8 @@ lt:
     DEFAULTSERVERERRORPAGETITLE: 'Tarnybinės stoties klaida'
     DESCRIPTION: 'Savitas turinys, skirtingai klaidai apibrėžti (Pvz.: "Puslapis nerastas")'
     ERRORFILEPROBLEM: 'Klaida atveriant rašymui bylą "{filename}". Prašome patikrinti bylos leidimus.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Bloga užklausa'
     401: '401 - Leidimas neduotas'
     403: '403 - Uždrausta'
@@ -225,8 +221,6 @@ lt:
     UNUSEDFILESTITLE: 'Nenaudojamos bylos'
     UNUSEDTHUMBNAILSTITLE: 'Nenaudojamos ikonos'
     UploadFilesButton: Įkelti
-  GridFieldTestPage:
-    DESCRIPTION: 'Standartinio turinio puslapis'
   LeftAndMain:
     DELETED: Ištrinta.
     PreviewButton: Peržiūra
@@ -234,10 +228,6 @@ lt:
     STATUSPUBLISHEDSUCCESS: '''{title}'' publikuota sėkmingai'
     SearchResults: 'Paieškos rezultatai'
     VersionUnknown: Nežinoma
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Standartinio turinio puslapis'
-  Page:
-    DESCRIPTION: 'Standartinio turinio puslapis'
   Permission:
     CMS_ACCESS_CATEGORY: 'TVS Prieiga'
   Permissions:
@@ -248,12 +238,12 @@ lt:
     HASBEENSETUP: 'Nukreipimo puslapis nustatytas be jokio nukreipimo.'
     HEADER: 'Šis puslapis nukreips lankytojus į kitą puslapį'
     OTHERURL: 'Kitos svetainės URL adresas'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Nukreipti į'
     REDIRECTTOEXTERNAL: 'Kita svetainė'
     REDIRECTTOPAGE: 'Jūsų svetainės puslapis'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Jūsų svetainės puslapis'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Standartinio turinio puslapis'
   ReportAdmin:
     MENUTITLE: Ataskaitos
   ReportAdminForm:
@@ -284,6 +274,8 @@ lt:
     EDITHEADER: 'Kas gali redaguoti šį puslapį?'
     EDIT_PERMISSION: 'Tvarkyti svetainės parametrus'
     EDIT_PERMISSION_HELP: 'Galimybė tvarkyti globalias priėjimo, pagrindinio puslapio teises.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Jūsų Svetainės Pavadinimas'
     SITETAGLINE: 'Svetainės šūkis'
     SITETITLE: 'Svetainės pavadinimas'
@@ -399,10 +391,6 @@ lt:
     VIEWLAST: 'Žiūrėti paskutinį'
     VIEWNEXT: 'Žiūrėti sekantį'
     VIEWPREVIOUS: 'Žiūrėti ankstesnį'
-  TestFileUploadPage:
-    DESCRIPTION: 'Standartinio turinio puslapis'
-  TestPage:
-    DESCRIPTION: 'Standartinio turinio puslapis'
   TreeTools:
     DisplayLabel: 'Rodyti:'
   ViewArchivedEmail.ss:
