@@ -123,7 +123,7 @@ bg:
     COMPAREMODE: 'Режим на сравнение (Избери два)'
     COMPAREVERSIONS: 'Сравни версиите'
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
-    MENUTITLE: History
+    MENUTITLE: История
     REVERTTOTHISVERSION: 'Върни тази версия'
     SHOWUNPUBLISHED: 'Покажи непублекуваната версия'
     SHOWVERSION: 'Покажи версията'
@@ -133,7 +133,7 @@ bg:
     AUTHOR: Автор
     NOTPUBLISHED: Чернова
     PUBLISHER: Автор
-    UNKNOWN: Unknown
+    UNKNOWN: Неизвестно
     WHEN: Когато
   CMSPageSettingsController:
     MENUTITLE: 'Редактиране на страницата'
@@ -220,13 +220,13 @@ bg:
     DELETEUNUSEDTHUMBNAILS: 'Изтрий неизползвани миниатури'
     UNUSEDFILESTITLE: 'Неизползвани файлове'
     UNUSEDTHUMBNAILSTITLE: 'Неизползвани миниатури'
-    UploadFilesButton: Upload
+    UploadFilesButton: 'Качи '
   LeftAndMain:
     DELETED: Deleted.
-    PreviewButton: Preview
+    PreviewButton: Изглед
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
-    SearchResults: 'Search Results'
+    SearchResults: 'Резултати от търсенето'
     VersionUnknown: Unknown
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
@@ -251,7 +251,7 @@ bg:
   SearchForm:
     GO: Давай
     SEARCH: Търси
-    SearchResults: 'Search Results'
+    SearchResults: 'Резултати от търсенето'
   SideReport:
     BROKENFILES: 'Pages with broken files'
     BROKENLINKS: 'Pages with broken links'
@@ -265,7 +265,7 @@ bg:
     ParameterLiveCheckbox: 'Check live site'
     REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
+    ShareInstructions: 'За да споделиш тая страница, копирай и постави връзката по- долу'
     ShareLink: 'Сподели линк'
   SilverStripeNavigatorLinkl:
     CloseLink: Затвори
@@ -338,7 +338,7 @@ bg:
     PAGETITLE: 'Име на страница'
     PAGETYPE: 'Вид страница'
     PARENTID: 'Предишната в йерархията страница'
-    PARENTTYPE: 'Page location'
+    PARENTTYPE: 'Местонахождение на страницата'
     PARENTTYPE_ROOT: 'Страница от най-високо ниво в йерархията'
     PARENTTYPE_SUBPAGE: Подстраница
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Промени правата за достъп до съдържанието'
@@ -366,7 +366,7 @@ bg:
     VIEW_DRAFT_CONTENT: 'Виж черновата'
     VIEW_DRAFT_CONTENT_HELP: 'Отнася се за преглед на страници извън CMS в режим на чернова. Полезно за външни сътрудници, без достъп на CMS.'
     Viewers: 'Viewers Groups'
-    Visibility: Visibility
+    Visibility: Видимост
     has_one_Parent: 'Предишната в йерархията страница'
     many_many_BackLinkTracking: 'Следене на "обратни линкове"'
     many_many_ImageTracking: 'Следене на снимките'
