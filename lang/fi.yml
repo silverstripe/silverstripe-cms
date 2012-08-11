@@ -27,7 +27,7 @@ fi:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Poista kansiot'
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: Suodin
   AssetAdmin_left.ss:
     GO: Siirry
   AssetTableField:
@@ -163,7 +163,7 @@ fi:
   ContentControl:
     NOTEWONTBESHOWN: 'Huomaa: tätä viestiä ei näytetä vierailijoille'
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
+    ARCHIVEDSITE: 'Esikatselu versio'
     ARCHIVEDSITEFROM: 'Arkistoitu sivusto lähteestä:'
     CMS: CMS
     DRAFTSITE: Luonnossivusto
@@ -190,8 +190,8 @@ fi:
     DEFAULTSERVERERRORPAGETITLE: Palvelinvirhe
     DESCRIPTION: 'Omat virheilmoitukset (sivuille, kuten "Sivua ei löytynyt")'
     ERRORFILEPROBLEM: 'Virhe tiedostoa "{filename}" avattaessa ja kirjoittettaessa palvelimelle. Tarkista tiedoston kirjoitusoikeudet.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
+    PLURALNAME: Virhesivut
+    SINGULARNAME: Virhesivu
     400: '400 - Virheellinen Pyyntö'
     401: '401 - Luvaton'
     403: '403 . Kielletty'
@@ -238,11 +238,11 @@ fi:
     HASBEENSETUP: 'Sivu, joka ohjaa käyttäjän toiselle sivulle on valmis, mutta sivua, jolle käyttäjä ohjataan, ei ole.'
     HEADER: 'Tämä sivu ohjaa käyttäjän toiselle sivulle'
     OTHERURL: 'Toisen verkkosivuston URL-osoite'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: 'Uudelleenohjaavat sivut'
     REDIRECTTO: 'Minne ohjataan?'
     REDIRECTTOEXTERNAL: 'Muu verkkosivusto'
     REDIRECTTOPAGE: 'Sivu verkkosivustollasi'
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: 'Uudelleenohjaava sivu'
     YOURPAGE: 'Sivu verkkosivustollasi'
   ReportAdmin:
     MENUTITLE: Raportit
@@ -274,8 +274,8 @@ fi:
     EDITHEADER: 'Kuka voi muokata sivuja tällä sivustolla?'
     EDIT_PERMISSION: 'Hallinnoi sivun kokoonpanoa'
     EDIT_PERMISSION_HELP: 'Kyky muokata maailmanlaajuisia käyttöoikeusasetuksia/ ylätason sivujen käyttöoikeuksia.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
+    PLURALNAME: 'Sivuston asetuksia'
+    SINGULARNAME: 'Sivuston asetukset'
     SITENAMEDEFAULT: 'Sivustosi nimi'
     SITETAGLINE: 'Sivuston mainoslause/slogan'
     SITETITLE: 'Sivuston otsikko'
@@ -386,7 +386,7 @@ fi:
   TableListField_PageControls.ss:
     DISPLAYING: Näytetään
     OF: /
-    TO: to
+    TO: -»
     VIEWFIRST: 'Näytä ensimmäinen'
     VIEWLAST: 'Näytä viimeinen'
     VIEWNEXT: 'Näytä seuraava'

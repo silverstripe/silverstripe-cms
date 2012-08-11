@@ -27,7 +27,7 @@ mi_NZ:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Muku kōpaki'
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: Tātari
   AssetAdmin_left.ss:
     GO: Haere
   AssetTableField:
