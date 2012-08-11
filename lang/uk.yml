@@ -3,7 +3,7 @@ uk:
     ADDFILES: 'Додати файли'
     ALLOWEDEXTS: 'Допустимі розширення'
     ActionAdd: 'Додати папку'
-    AppCategoryArchive: Архівувати
+    AppCategoryArchive: 'Архівувати'
     AppCategoryAudio: Аудіо
     AppCategoryFlash: Flash
     AppCategoryImage: Зображення
@@ -20,14 +20,14 @@ uk:
     ListView: 'У вигляді списку'
     MENUTITLE: Файли
     NEWFOLDER: 'Нова Тека'
-    SIZE: Розмір
+    SIZE: 'Розмір'
     THUMBSDELETED: '{count} невикористаних ескізів було видалено'
     TreeView: 'У вигляді дерева'
     Upload: Завантажити
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Видалені папки'
   AssetAdmin_Tools.ss:
-    FILTER: Filter
+    FILTER: Фільтр
   AssetAdmin_left.ss:
     GO: Уперед
   AssetTableField:
@@ -235,7 +235,7 @@ uk:
     SearchResults: 'Результати пошуку'
     VersionUnknown: Невідомий
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Загальна сторінка з вмістом'
   Page:
     DESCRIPTION: 'Generic content page'
   Permission:
@@ -253,7 +253,7 @@ uk:
     REDIRECTTOPAGE: 'Сторінку на Вашому сайті'
     YOURPAGE: 'Сторінки на Вашому сайті'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Загальний вміст сторінки'
   ReportAdmin:
     MENUTITLE: Звіти
   ReportAdminForm:
@@ -294,7 +294,7 @@ uk:
     TOPLEVELCREATE: 'Хто може створювати сторінки верхнього рівня на сайті?'
     VIEWHEADER: 'Хто може переглядати сторінки на цьому сайті?'
   SiteTree:
-    ACCESSANYONE: Будь-хто
+    ACCESSANYONE: 'Будь-хто'
     ACCESSHEADER: 'Хто може переглядати цю сторінку?'
     ACCESSLOGGEDIN: 'Тільки ті, що увійшли'
     ACCESSONLYTHESE: 'Тільки ці люди (виберіть зі списку)'
@@ -319,7 +319,7 @@ uk:
     DELETEDPAGEHELP: 'Сторінка вже не є опублікованою'
     DELETEDPAGESHORT: Видалений
     DEPENDENT_NOTE: 'Наступні сторінки залежать від цієї сторінки. Вони включають віртуальні сторінки, сторінки переадресації і сторінки з посиланням у змісті'
-    DESCRIPTION: 'Загальний вміст сторінки'
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Тип посилання'
     DependtPageColumnURL: URL
     EDITANYONE: 'Будь-хто, хто може увійти до системи'

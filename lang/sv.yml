@@ -27,7 +27,7 @@ sv:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Radera mapparna'
   AssetAdmin_Tools.ss:
-    FILTER: Filter
+    FILTER: Filtrera
   AssetAdmin_left.ss:
     GO: Kör
   AssetTableField:
@@ -102,7 +102,7 @@ sv:
     REMOVED: 'Raderade ''%s''%s från den publicerade sajten'
     REMOVEDPAGE: 'Tog bort ''{title}'' från den publicerade sajten'
     REMOVEDPAGEFROMDRAFT: 'Raderade ''%s'' från utkast'
-    RESTORE: Återskapa
+    RESTORE: 'Återskapa'
     RESTORED: 'Återskapandet av  ''{title}'' lyckades'
     ROLLBACK: 'Återställ den här versionen'
     ROLLEDBACKPUB: 'Återskapade publicerad version. Nytt versionsnummer är #{version}'
@@ -165,7 +165,7 @@ sv:
   CMSSiteTreeFilter_Search:
     Title: 'Alla sidor'
   CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
+    DESCRIPTION: 'Casestudiesida som ska innehålla exempel på arbeten'
   ContentControl:
     NOTEWONTBESHOWN: 'Observera: Detta meddelande kommer inte att visas för besökarna'
   ContentController:
@@ -235,7 +235,7 @@ sv:
     SearchResults: Sökresultat
     VersionUnknown: Okänd
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Allmän innehållssida'
   Page:
     DESCRIPTION: 'Generic content page'
   Permission:
@@ -253,7 +253,7 @@ sv:
     REDIRECTTOPAGE: 'En sida på din sajt'
     YOURPAGE: 'Sida på din sajt'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Generisk innehållssida'
   ReportAdmin:
     MENUTITLE: Rapporter
   ReportAdminForm:
@@ -319,7 +319,7 @@ sv:
     DELETEDPAGEHELP: 'Sidan är inte längre publicerad'
     DELETEDPAGESHORT: Raderad
     DEPENDENT_NOTE: 'Följande sidor berörs av den här sidan. Inklusive virtuella sidor, omdirigerings sidor, och sidor med innehålls länkar.'
-    DESCRIPTION: 'Generisk innehållssida'
+    DESCRIPTION: 'Allmän innehållssida'
     DependtPageColumnLinkType: Länktyp
     DependtPageColumnURL: URL
     EDITANYONE: 'Alla som kan logga in'
@@ -373,7 +373,7 @@ sv:
     VIEW_ALL_HELP: 'Möjlighet att visa vilken sida som helst på webbplatsen, oavsett inställningarna på fliken Åtkomst. Kräver "Tillgång till Webbplatsinnehåll" tillåtelse'
     VIEW_DRAFT_CONTENT: 'Se utkast'
     VIEW_DRAFT_CONTENT_HELP: 'Gäller att visa sidor i utkast läge. Användbart för externa samarbetspartners utan CMS åtkomst.'
-    Viewers: Åskådargrupper
+    Viewers: 'Åskådargrupper'
     Visibility: Synlighet
     has_one_Parent: Föräldrasida
     many_many_BackLinkTracking: 'Spåra inlänkar'

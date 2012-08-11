@@ -303,6 +303,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			->unsetValidator();
 		$form->loadDataFrom($this->request->getVars());
 
+		$this->extend('updateSearchForm', $form);
 		return $form;
 	}
 	
@@ -700,6 +701,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$columns->setFieldCasting(array(
 			'Created' => 'Datetime->Ago',
 			'LastEdited' => 'Datetime->Ago',
+			'getTreeTitle' => 'HTMLText'
 		));
 
 		$controller = $this;

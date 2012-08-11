@@ -165,7 +165,7 @@ nl:
   CMSSiteTreeFilter_Search:
     Title: 'Alle pagina''s'
   CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
+    DESCRIPTION: 'De Case study pagina zal voorzien zijn van voorbeelden'
   ContentControl:
     NOTEWONTBESHOWN: 'N.B. : Dit bericht is niet zichtbaar voor bezoekers'
   ContentController:
@@ -235,7 +235,7 @@ nl:
     SearchResults: Zoekresultaten
     VersionUnknown: Onbekend
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Algemene tekst pagina'
   Page:
     DESCRIPTION: 'Generic content page'
   Permission:
@@ -253,7 +253,7 @@ nl:
     REDIRECTTOPAGE: 'Een pagina op deze website'
     YOURPAGE: 'Pagina op deze website'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Algemene tekst pagina'
   ReportAdmin:
     MENUTITLE: Rapporten
   ReportAdminForm:
@@ -319,7 +319,7 @@ nl:
     DELETEDPAGEHELP: 'Deze pagina is niet langer gepubliceerd'
     DELETEDPAGESHORT: Verwijderd
     DEPENDENT_NOTE: 'De volgende pagina''s zijn afhankelijk van deze pagina. Hieronder vallen virtuelepagina''s, verwijsingspagina''s en pagina''s met links in de inhoud.'
-    DESCRIPTION: 'Algemene tekst pagina'
+    DESCRIPTION: 'Pagina voor algemene inhoud'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
     EDITANYONE: 'Iedereen die kan inloggen in het CMS'

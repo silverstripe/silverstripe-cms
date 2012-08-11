@@ -6,7 +6,7 @@ th:
     AppCategoryArchive: Archive
     AppCategoryAudio: ไฟล์เสียง
     AppCategoryFlash: แฟลช
-    AppCategoryImage: รูปภาพ
+    AppCategoryImage: 'รูปภาพ'
     AppCategoryVideo: วีดีโอ
     BackToFolder: ย้อนกลับไปที่โฟลเดอร์
     CREATED: วันที่
@@ -27,7 +27,7 @@ th:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
   AssetAdmin_Tools.ss:
-    FILTER: Filter
+    FILTER: ตัวกรองข้อมูล
   AssetAdmin_left.ss:
     GO: ไป
   AssetTableField:
@@ -47,7 +47,7 @@ th:
     CheckSiteDropdownPublished: เว็บไซต์ที่เผยแพร่แล้ว
     ColumnDateLastModified: วันที่แก้ไขล่าสุด
     ColumnDateLastPublished: วันที่เผยแพร่ล่าสุด
-    ColumnProblemType: ประเภทปัญหา
+    ColumnProblemType: 'ประเภทปัญหา'
     ColumnURL: URL
     HasBrokenFile: มีไฟล์เสีย
     HasBrokenLink: มีลิงค์เสีย
@@ -253,7 +253,7 @@ th:
     REDIRECTTOPAGE: หน้าเว็บในเว็บไซต์ของคุณ
     YOURPAGE: หน้าเว็บที่อยู่บนเว็บไซต์ของคุณ
   RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: หน้าเนื้อหาทั่วไป
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -319,7 +319,7 @@ th:
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Deleted
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
-    DESCRIPTION: หน้าเนื้อหาทั่วไป
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: ชนิดของลิงค์
     DependtPageColumnURL: URL
     EDITANYONE: 'ทุกคนสามารถเข้าสู่ระบบของ CMS ได้ทั้งหมด'

@@ -27,7 +27,7 @@ lt:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Ištrinti aplankus'
   AssetAdmin_Tools.ss:
-    FILTER: Filter
+    FILTER: Filtras
   AssetAdmin_left.ss:
     GO: Vykdyti
   AssetTableField:
@@ -36,9 +36,9 @@ lt:
   BackLink_Button.ss:
     Back: Atgal
   BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Standartinio turinio puslapis'
   BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Standartinio turinio puslapis'
   BrokenLinksReport:
     Any: 'Bet kurias'
     BROKENLINKS: 'Sugadintų nuorodų ataskaita'
@@ -226,7 +226,7 @@ lt:
     UNUSEDTHUMBNAILSTITLE: 'Nenaudojamos ikonos'
     UploadFilesButton: Įkelti
   GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Standartinio turinio puslapis'
   LeftAndMain:
     DELETED: Ištrinta.
     PreviewButton: Peržiūra
@@ -235,9 +235,9 @@ lt:
     SearchResults: 'Paieškos rezultatai'
     VersionUnknown: Nežinoma
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Standartinio turinio puslapis'
   Page:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Standartinio turinio puslapis'
   Permission:
     CMS_ACCESS_CATEGORY: 'TVS Prieiga'
   Permissions:
@@ -253,7 +253,7 @@ lt:
     REDIRECTTOPAGE: 'Jūsų svetainės puslapis'
     YOURPAGE: 'Jūsų svetainės puslapis'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Standartinio turinio puslapis'
   ReportAdmin:
     MENUTITLE: Ataskaitos
   ReportAdminForm:
@@ -400,9 +400,9 @@ lt:
     VIEWNEXT: 'Žiūrėti sekantį'
     VIEWPREVIOUS: 'Žiūrėti ankstesnį'
   TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Standartinio turinio puslapis'
   TestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Standartinio turinio puslapis'
   TreeTools:
     DisplayLabel: 'Rodyti:'
   ViewArchivedEmail.ss:

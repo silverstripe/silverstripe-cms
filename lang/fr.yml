@@ -154,7 +154,7 @@ fr:
   CMSSearch:
     FILTERDATEFROM: De
     FILTERDATEHEADING: Date
-    FILTERDATETO: à
+    FILTERDATETO: 'à'
     FILTERLABELTEXT: Contenu
   CMSSettingsController:
     MENUTITLE: Paramètres
@@ -165,7 +165,7 @@ fr:
   CMSSiteTreeFilter_Search:
     Title: 'Toutes les pages'
   CaseStudy:
-    DESCRIPTION: 'Étude de cas avec exemple de fonctionnalités.'
+    DESCRIPTION: 'Étude de cas avec des exemples de fonctionnalités.'
   ContentControl:
     NOTEWONTBESHOWN: 'Note : ce message ne sera pas visible de vos visiteurs.'
   ContentController:
@@ -319,7 +319,7 @@ fr:
     DELETEDPAGEHELP: 'La page n’est plus publique '
     DELETEDPAGESHORT: Supprimée
     DEPENDENT_NOTE: 'Les pages suivantes dépendent de cette page. Ceci inclut les pages virtuelles, les redirections et les pages avec des liens.'
-    DESCRIPTION: 'Page au contenu générique'
+    DESCRIPTION: 'Page remplie par default'
     DependtPageColumnLinkType: 'Type de lien'
     DependtPageColumnURL: URL
     EDITANYONE: 'Toute personne pouvant se connecter au CMS'
@@ -394,7 +394,7 @@ fr:
   TableListField_PageControls.ss:
     DISPLAYING: Affichage
     OF: de
-    TO: à
+    TO: 'à'
     VIEWFIRST: 'Voir le(s) premier(s)'
     VIEWLAST: 'Voir le(s) dernier(s)'
     VIEWNEXT: 'Voir le(s) suivant(s)'

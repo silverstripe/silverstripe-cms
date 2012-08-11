@@ -176,7 +176,7 @@ de:
     DRAFT_SITE_ACCESS_RESTRICTION: 'Sie müssen sich mit ihrem CMS Passwort einloggen, um den Entwurf oder den archivierten Inhalt zu sehen. <a href="%s">Hier klicken um zurück zur veröffentlichten Site zu gehen.</a>'
     Email: E-Mail
     InstallFilesDeleted: 'Die Installationsdateien wurden erfolgreich gelöscht.'
-    InstallSecurityWarning: 'Zu Ihrer Sicherheit löschen Sie jetzt bitte die Installationsdateien, es sei denn Sie möchten zu einem späteren Zeitpunkt erneut installieren. (<em>Dies erfordert den Administrator-Zugang (siehe oben)</em>). Der Webserver benötigt nun nur noch Schreibrechte auf das "assets" Verzeichnis und Sie können die Schreibrechte für alle anderen Ordner entfernen. <a href="{link}" style="text-align: center;">Die Installationsdaten jetzt löschen.</a> '
+    InstallSecurityWarning: 'Aus Sicherheitsgründen sollten Sie jetzt die Installationsdaten loeschen, es sei denn sie moechten spaeter erneut installieren. (<em>Dieses erfordert den Administratoren Zugang (siehe oben)</em>). Der Web server benoetigt nun nur noch Schreibzugriff auf den "assets" Ordner und Sie koennen nun den Schreibzugriff fuer alle anderen Ordner loeschen. <a href="{link}" style="text-align: center;"> Klicken Sie hier um die Installationsdaten zu loeschen.</a> '
     InstallSuccessCongratulations: 'SilverStripe wurde erfolgreich installiert.'
     LOGGEDINAS: 'Angemeldet als'
     LOGIN: Anmelden

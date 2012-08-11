@@ -25,16 +25,16 @@ sk:
     TreeView: 'Zobraziť strom'
     Upload: Nahrať
   AssetAdmin_DeleteBatchAction:
-    TITLE: 'Vymazať priečinky'
+    TITLE: 'Delete folders'
   AssetAdmin_Tools.ss:
     FILTER: Filter
   AssetAdmin_left.ss:
-    GO: Choď
+    GO: Vykonať
   AssetTableField:
     BACKLINKCOUNT: 'Použité na:'
-    PAGES: stránka(y)
+    PAGES: page(s)
   BackLink_Button.ss:
-    Back: Späť
+    Back: Back
   BasicFieldsTestPage:
     DESCRIPTION: 'Obecný obsah stránky'
   BigFamilyPage:
@@ -59,7 +59,7 @@ sk:
     ReasonDropdownBROKENLINK: 'Porušnený odkaz'
     ReasonDropdownRPBROKENLINK: 'Presmerovávacia stránka odkazuje na ne-existujúcu stránku'
     ReasonDropdownVPBROKENLINK: 'Virtuálna stránka odkazuje na ne-existujúcu stránku'
-    RedirectorNonExistent: 'stránka presmerovania odkazuje na ne-existujúcu stránku'
+    RedirectorNonExistent: 'presmerovávacia stránka odkazuje na ne-existujúcu stránku'
     VirtualPageNonExistent: 'virtuálna stránka odkazuje na ne-existujúcu stránku'
   CMSAddPageController:
     Title: 'Pridať stránku'
@@ -86,8 +86,8 @@ sk:
     DELETEFP: 'Vymazať z publikovaného webu'
     DESCREMOVED: 'a {count} potomkov'
     EMAIL: 'Pošli e-mailom'
-    EditTree: 'Editovať strom'
-    ListFiltered: 'Filtrovaný zoznam.'
+    EditTree: 'Edit Tree'
+    ListFiltered: 'Filtered list.'
     MENUTITLE: 'Upraviť stránku'
     NEW: Nový
     PAGENOTEXISTS: 'Táto stránka neexistuje.'
@@ -112,10 +112,10 @@ sk:
     TabContent: Obsah
     TabHistory: História
     TabSettings: Nastavenia
-    TreeFiltered: 'Filtrovaný strom.'
-    TreeFilteredClear: 'Vyčistiť filter'
+    TreeFiltered: 'Filtered tree.'
+    TreeFilteredClear: 'Clear filter'
   CMSMain_left.ss:
-    'APPLY FILTER': 'Použiť filter'
+    'APPLY FILTER': 'Apply Filter'
     RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Pridať stránku'
@@ -128,29 +128,29 @@ sk:
     COMPAREVERSIONS: 'Porovnať verzie'
     COMPARINGVERSION: 'Porovnie verzií {version1} a {version2}.'
     MENUTITLE: História
-    REVERTTOTHISVERSION: 'Vrátiť sa k tejto verzii'
-    SHOWUNPUBLISHED: 'Zobraziť nepublikované verzie'
-    SHOWVERSION: 'Zobraziť verziu'
-    VIEW: zobraziť
-    VIEWINGVERSION: 'Práve sa zobrazuje verzia {version}.'
+    REVERTTOTHISVERSION: 'Revert to this version'
+    SHOWUNPUBLISHED: 'Show unpublished versions'
+    SHOWVERSION: 'Show Version'
+    VIEW: view
+    VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Autor
     NOTPUBLISHED: Nepublikovaná
-    PUBLISHER: Vydavateľ
+    PUBLISHER: Publisher
     UNKNOWN: Neznáma
-    WHEN: Keď
+    WHEN: When
   CMSPageSettingsController:
     MENUTITLE: 'Upraviť stránku'
   CMSPagesController:
     GalleryView: 'Zobraziť galériu'
     ListView: 'Zobraziť zoznam'
     MENUTITLE: Stránky
-    TreeView: 'Zobraziť strom'
+    TreeView: 'Tree View'
   CMSPagesController_ContentToolbar.ss:
-    ENABLEDRAGGING: 'Tiahni a pusť'
-    MULTISELECT: 'Multi výber'
+    ENABLEDRAGGING: 'Drag''n''drop'
+    MULTISELECT: Multi-selection
   CMSPagesController_Tools.ss:
-    FILTER: Filtrovať
+    FILTER: Filter
   CMSSearch:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Dátum
@@ -159,7 +159,7 @@ sk:
   CMSSettingsController:
     MENUTITLE: Nastavenia
   CMSSiteTreeFilter_ChangedPages:
-    Title: 'Zmenené stránky'
+    Title: 'Changed pages'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Všetky stránky, vrátane vymazaných'
   CMSSiteTreeFilter_Search:
@@ -235,7 +235,7 @@ sk:
     SearchResults: 'Výsledky vyhľadávania'
     VersionUnknown: Neznáma
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Obecný obsah stránky'
+    DESCRIPTION: 'Generic content page'
   Page:
     DESCRIPTION: 'Obecný obsah stránky'
   Permission:
@@ -253,13 +253,13 @@ sk:
     REDIRECTTOPAGE: 'Stránka na vašom webe'
     YOURPAGE: 'Stránka na vašom webe'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Obecný obsah stránky'
+    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Výkazy
   ReportAdminForm:
     FILTERBY: 'Filtrovať podľa'
   SearchForm:
-    GO: Štart
+    GO: 'Štart'
     SEARCH: Hľadať
     SearchResults: 'Výsledky vyhľadávania'
   SideReport:
@@ -307,7 +307,7 @@ sk:
     BUTTONSAVEPUBLISH: 'Uložiť a publikovať'
     BUTTONUNPUBLISH: Nepublikovať
     BUTTONUNPUBLISHDESC: 'Odstrániť túto stránku z publikovaných na webe'
-    CREATED: 'Dátum vytvorenia'
+    CREATED: 'Date Created'
     Comments: Komentáre
     Content: Obsah
     DEFAULTABOUTCONTENT: 'Túto stránku môžete vyplniť vlastným obsahom, alebo ju zmazať a vytvoriť vaše vlastné stránky.'
@@ -316,10 +316,10 @@ sk:
     DEFAULTCONTACTTITLE: 'Kontaktuje nás'
     DEFAULTHOMECONTENT: '<p>Vitajte v SilverStripe! Toto je predvolená úvodná stránka. Môžete you upraviť otvorením <a href="admin/">CMS-ka</a>. Môžete isť na <a href="http://doc.silverstripe.org">dokumentáciu</a>, alebo začať s <a href="http://doc.silverstripe.org/doku.php?id=tutorials">návodmi</a>.</p>'
     DEFAULTHOMETITLE: Domov
-    DELETEDPAGEHELP: 'Stránka už nie je viacej zverejnená'
-    DELETEDPAGESHORT: Smazané
-    DEPENDENT_NOTE: 'Nasledujúce stránky závisia na tejto stránke. To zahŕňa virtuálne stránky, presmerovania a stránky s odkazmi.'
-    DESCRIPTION: 'Obecný obsah stránky'
+    DELETEDPAGEHELP: 'Page is no longer published'
+    DELETEDPAGESHORT: Deleted
+    DEPENDENT_NOTE: 'Nasledujúce stránky sú závislé na tejto stránke. To zahŕňa virtuálne stránky, presmerovania a stránky s odkazmi.'
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Typ odkazu'
     DependtPageColumnURL: Url
     EDITANYONE: 'Ktokoľvek kto sa môže prihlásiť do CMS'
@@ -339,9 +339,9 @@ sk:
     METAEXTRA: 'Vlastné Meta Tagy'
     METAKEYWORDS: 'Meta kľúčové slová'
     METATITLE: Titulok
-    MODIFIEDONDRAFTHELP: 'Stránka má nezverejnené zmeny'
-    MODIFIEDONDRAFTSHORT: Zmenené
-    MetadataToggle: Metaúdaje
+    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
+    MODIFIEDONDRAFTSHORT: Modified
+    MetadataToggle: Metadata
     PAGELOCATION: 'Pozícia stránky'
     PAGETITLE: 'Názov stránky'
     PAGETYPE: 'Typ stránky'
@@ -388,13 +388,13 @@ sk:
   TableListField:
     SELECT: 'Vyberte:'
   TableListField.ss:
-    NOITEMSFOUND: 'Žiadne položky nájdené'
+    NOITEMSFOUND: 'No items found'
     SORTASC: 'Zoradiť poradie vzostupne'
     SORTDESC: 'Zoradiť poradie zostupne'
   TableListField_PageControls.ss:
-    DISPLAYING: Zobrazujem
-    OF: z
-    TO: do
+    DISPLAYING: Displaying
+    OF: of
+    TO: to
     VIEWFIRST: 'Zobraz prvé'
     VIEWLAST: 'Zobraz posledné'
     VIEWNEXT: 'Zobraz nasledujúce'
@@ -404,7 +404,7 @@ sk:
   TestPage:
     DESCRIPTION: 'Obecný obsah stránky'
   TreeTools:
-    DisplayLabel: 'Zobrazenie:'
+    DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:
     CANACCESS: 'Archivovaný web môžete navštíviť týmto odkazom:'
     HAVEASKED: 'Požiadali ste o zobrazenie obsahu webu z'

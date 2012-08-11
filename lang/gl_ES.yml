@@ -27,7 +27,7 @@ gl_ES:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Eliminar cartafoles'
   AssetAdmin_Tools.ss:
-    FILTER: Filter
+    FILTER: Filtro
   AssetAdmin_left.ss:
     GO: Ir
   AssetTableField:
@@ -235,7 +235,7 @@ gl_ES:
     SearchResults: 'Resultados Busca'
     VersionUnknown: Descoñecido
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Páxina de contido xenérico'
   Page:
     DESCRIPTION: 'Generic content page'
   Permission:
@@ -253,7 +253,7 @@ gl_ES:
     REDIRECTTOPAGE: 'Unha páxina no teu sitio web'
     YOURPAGE: 'Páxina no teu sitio web'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Páxina de contido xenérico'
   ReportAdmin:
     MENUTITLE: Informes
   ReportAdminForm:
@@ -319,7 +319,7 @@ gl_ES:
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Eliminado
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
-    DESCRIPTION: 'Páxina de contido xenérico'
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Tipo de ligazón'
     DependtPageColumnURL: URL
     EDITANYONE: 'Ningún pode iniciar sesión no CMS'

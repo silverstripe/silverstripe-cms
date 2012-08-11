@@ -27,7 +27,7 @@ es:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Eliminar carpetas'
   AssetAdmin_Tools.ss:
-    FILTER: Filtrar
+    FILTER: Filtro
   AssetAdmin_left.ss:
     GO: Ir
   AssetTableField:
@@ -165,7 +165,7 @@ es:
   CMSSiteTreeFilter_Search:
     Title: 'Todas las paginas'
   CaseStudy:
-    DESCRIPTION: 'Página de casos de estudio para ejemplos de futuros trabajos'
+    DESCRIPTION: 'Página de casos de estudio para ejemplos de trabajos futuros'
   ContentControl:
     NOTEWONTBESHOWN: 'Nota: este mensaje no se mostrará a tus visitantes'
   ContentController:

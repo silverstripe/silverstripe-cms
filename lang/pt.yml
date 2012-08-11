@@ -27,7 +27,7 @@ pt:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Apagar pastas'
   AssetAdmin_Tools.ss:
-    FILTER: Filter
+    FILTER: Filtro
   AssetAdmin_left.ss:
     GO: Ir
   AssetTableField:
@@ -38,7 +38,7 @@ pt:
   BasicFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Página de conteúdo genérico'
   BrokenLinksReport:
     Any: Qualquer
     BROKENLINKS: 'Relatório de links inválidos'
@@ -165,11 +165,11 @@ pt:
   CMSSiteTreeFilter_Search:
     Title: 'Todas as páginas'
   CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
+    DESCRIPTION: 'Página de estudo a apresentar em trabalhos de exemplo'
   ContentControl:
     NOTEWONTBESHOWN: 'Nota: Esta mensagem não vai ser apresentada aos visitantes'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Arquivar o site'
     ARCHIVEDSITEFROM: 'Arquivar o site de'
     CMS: 'Gestor de Conteúdos'
     DRAFTSITE: 'Site Rascunho'
@@ -226,7 +226,7 @@ pt:
     UNUSEDTHUMBNAILSTITLE: 'Miniaturas não utilizadas'
     UploadFilesButton: Submeter
   GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Página de conteúdo genérico'
   LeftAndMain:
     DELETED: Apagada
     PreviewButton: Pré-visualização
@@ -235,9 +235,9 @@ pt:
     SearchResults: 'Resultados da pesquisa'
     VersionUnknown: Desconhecido
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Página de conteúdo genérico'
   Page:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Página de conteúdo genérico'
   Permission:
     CMS_ACCESS_CATEGORY: 'Acesso ao CMS'
   Permissions:
@@ -253,7 +253,7 @@ pt:
     REDIRECTTOPAGE: 'Uma página no seu site'
     YOURPAGE: 'Página no seu Site'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Página de conteúdo genérico'
   ReportAdmin:
     MENUTITLE: Relatórios
   ReportAdminForm:
@@ -400,9 +400,9 @@ pt:
     VIEWNEXT: 'Ver o próximo'
     VIEWPREVIOUS: 'Ver o anterior'
   TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Página de conteúdo genérico'
   TestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Página de conteúdo genérico'
   TreeTools:
     DisplayLabel: 'Apresentar:'
   ViewArchivedEmail.ss:

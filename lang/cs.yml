@@ -10,7 +10,7 @@ cs:
     AppCategoryVideo: Video
     BackToFolder: 'Zpět na složku'
     CREATED: Datum
-    CurrentFolderOnly: 'Omezit na aktuální složku?'
+    CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Detaily
     FILES: Soubory
     FILESYSTEMSYNCTITLE: 'Aktualizace záznamů souborů databáze CMS na souborovém systému. Užitečné, když byly nové soubory nahrány mimo CMS, např. přes FTP.'
@@ -21,18 +21,18 @@ cs:
     MENUTITLE: Soubory
     NEWFOLDER: 'Nová složka'
     SIZE: Velikost
-    THUMBSDELETED: '{count} nepoužitých miniatur bylo smazáno'
-    TreeView: 'Zobrazit strom'
+    THUMBSDELETED: '{count} unused thumbnails have been deleted'
+    TreeView: 'Tree View'
     Upload: Nahrát
   AssetAdmin_DeleteBatchAction:
-    TITLE: 'Smazat složky'
+    TITLE: 'Delete folders'
   AssetAdmin_Tools.ss:
     FILTER: Filtr
   AssetAdmin_left.ss:
     GO: Proveď
   AssetTableField:
-    BACKLINKCOUNT: 'Použito na:'
-    PAGES: stránka(y)
+    BACKLINKCOUNT: 'Used on:'
+    PAGES: page(s)
   BackLink_Button.ss:
     Back: Zpět
   BasicFieldsTestPage:
@@ -86,9 +86,9 @@ cs:
     DELETEFP: 'Smazat z publikovaných stránek'
     DESCREMOVED: 'a {count} potomků'
     EMAIL: Email
-    EditTree: 'Editovat strom'
-    ListFiltered: 'Filtrovaný seznam.'
-    MENUTITLE: 'Editovat stránku'
+    EditTree: 'Edit Tree'
+    ListFiltered: 'Filtered list.'
+    MENUTITLE: 'Edit Page'
     NEW: Nový
     PAGENOTEXISTS: 'Tato stránka neexistuje'
     PAGES: Stránky
@@ -108,15 +108,15 @@ cs:
     ROLLEDBACKPUB: 'Vrací se zpět na zveřejněnou verzi. Číslo nové verze je #{version}'
     ROLLEDBACKVERSION: 'Vracím se zpět na verzi #%d. Číslo nové verze je #%d'
     SAVE: Uložit
-    SAVEDRAFT: 'Uložit koncept'
-    TabContent: Obsah
-    TabHistory: Historie
-    TabSettings: Nastavení
-    TreeFiltered: 'Filtrovaný strom.'
-    TreeFilteredClear: 'Vyčistit filtr'
+    SAVEDRAFT: 'Save Draft'
+    TabContent: Content
+    TabHistory: History
+    TabSettings: Settings
+    TreeFiltered: 'Filtered tree.'
+    TreeFilteredClear: 'Clear filter'
   CMSMain_left.ss:
-    'APPLY FILTER': 'Použít filtr'
-    RESET: Resetovat
+    'APPLY FILTER': 'Apply Filter'
+    RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Přidat stránku'
     ParentMode_child: 'Pod jinou stránku'
@@ -132,13 +132,13 @@ cs:
     SHOWUNPUBLISHED: 'Zobrazit nezveřejněné verze'
     SHOWVERSION: 'Zobrazit verzi'
     VIEW: zobrazit
-    VIEWINGVERSION: 'Právě prohlížíte verzi {version}.'
+    VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Autor
     NOTPUBLISHED: Nezveřejněno
-    PUBLISHER: Vydavatel
+    PUBLISHER: Publisher
     UNKNOWN: Neznámý
-    WHEN: Když
+    WHEN: When
   CMSPageSettingsController:
     MENUTITLE: 'Editovat stránku'
   CMSPagesController:
@@ -147,8 +147,8 @@ cs:
     MENUTITLE: Stránky
     TreeView: Strom
   CMSPagesController_ContentToolbar.ss:
-    ENABLEDRAGGING: 'Táhni a pusť'
-    MULTISELECT: 'Multi výběr'
+    ENABLEDRAGGING: 'Drag''n''drop'
+    MULTISELECT: Multi-selection
   CMSPagesController_Tools.ss:
     FILTER: Filtr
   CMSSearch:
@@ -159,7 +159,7 @@ cs:
   CMSSettingsController:
     MENUTITLE: Možnosti
   CMSSiteTreeFilter_ChangedPages:
-    Title: 'Změněné stránky'
+    Title: 'Changed pages'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Všechny stránky, včetně odstraněných'
   CMSSiteTreeFilter_Search:
@@ -194,8 +194,8 @@ cs:
     DEFAULTERRORPAGETITLE: 'Strana nenelazena'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Je nám to líto, ale nastal problém se zpracováním Vašeho poždavku.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Chyba serveru'
-    DESCRIPTION: 'Vlastní obsah pro různé případy chyb (např. "Stránka nenalezena")'
-    ERRORFILEPROBLEM: 'Chyba otevření souboru "{filename}" pro zápis. Zkontrolujte oprávnění souboru, prosím.'
+    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
+    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
     400: '400 - Špatný požadavek'
     401: '401 - Neautorizováno'
     403: '403 - Zakázáno'
@@ -235,7 +235,7 @@ cs:
     SearchResults: 'Výsledky hledání'
     VersionUnknown: Neznámý
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Obecný obsah stránky'
+    DESCRIPTION: 'Generic content page'
   Page:
     DESCRIPTION: 'Obecný obsah stránky'
   Permission:
@@ -253,7 +253,7 @@ cs:
     REDIRECTTOPAGE: 'Stránku na Vašem webu'
     YOURPAGE: 'Stránku na Vašem webu'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Obecný obsah stránky'
+    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Výkazy
   ReportAdminForm:
@@ -319,7 +319,7 @@ cs:
     DELETEDPAGEHELP: 'Stránka už není více zveřejněna'
     DELETEDPAGESHORT: Smazáno
     DEPENDENT_NOTE: 'Následující stránky závisí na této stránce. Tyto obsahují virtuální stránky, redirektor stránky, a stránky s odkazy obsahu.'
-    DESCRIPTION: 'Obecný obsah stránky'
+    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Typ odkazu'
     DependtPageColumnURL: URL
     EDITANYONE: 'Kdokoliv, kdo se do CMS může přihlásit'
@@ -392,9 +392,9 @@ cs:
     SORTASC: 'Třídit v vzestupném pořadí'
     SORTDESC: 'Třídit v sestupném pořadí'
   TableListField_PageControls.ss:
-    DISPLAYING: Zobrazuji
-    OF: z
-    TO: do
+    DISPLAYING: Displaying
+    OF: of
+    TO: to
     VIEWFIRST: 'Zobrazit první'
     VIEWLAST: 'Zobrazit poslední'
     VIEWNEXT: 'Zobrazit další'
@@ -404,7 +404,7 @@ cs:
   TestPage:
     DESCRIPTION: 'Obecný obsah stránky'
   TreeTools:
-    DisplayLabel: 'Zobrazení:'
+    DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:
     CANACCESS: 'Můžete přistupovat k archivu pomocí tohoto odkazu:'
     HAVEASKED: 'Požadovali jste prohlížet obsah našich stránek během'

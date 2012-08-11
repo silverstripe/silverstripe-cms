@@ -25,16 +25,16 @@ it:
     TreeView: 'Visualizzazione a albero'
     Upload: Carica
   AssetAdmin_DeleteBatchAction:
-    TITLE: 'Elimina cartelle'
+    TITLE: 'Delete folders'
   AssetAdmin_Tools.ss:
     FILTER: Filter
   AssetAdmin_left.ss:
     GO: Vai
   AssetTableField:
-    BACKLINKCOUNT: 'Usato in:'
-    PAGES: pagina/e
+    BACKLINKCOUNT: 'Used on:'
+    PAGES: page(s)
   BackLink_Button.ss:
-    Back: Indietro
+    Back: Back
   BasicFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   BigFamilyPage:
@@ -57,10 +57,10 @@ it:
     ReasonDropdown: 'Problemi da verificare'
     ReasonDropdownBROKENFILE: 'File non funzionante'
     ReasonDropdownBROKENLINK: 'Link non funzionante'
-    ReasonDropdownRPBROKENLINK: 'Pagina di redirezione che punta a una pagina che non esiste'
-    ReasonDropdownVPBROKENLINK: 'Pagina virtuale che punta a una pagina che non esiste'
-    RedirectorNonExistent: 'pagina di redirezione che punta a una pagina che non esiste'
-    VirtualPageNonExistent: 'pagina virtuale che punta a una pagina che non esiste'
+    ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
+    ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
+    RedirectorNonExistent: 'redirector page pointing to non-existent page'
+    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
   CMSAddPageController:
     Title: 'Aggiungi pagina'
   CMSBatchActions:
@@ -86,9 +86,9 @@ it:
     DELETEFP: 'Elimina dal sito pubblicato'
     DESCREMOVED: 'e {count} discendenti'
     EMAIL: Email
-    EditTree: 'Modifica albero'
-    ListFiltered: 'Lista filtrata.'
-    MENUTITLE: 'Modifica pagina'
+    EditTree: 'Edit Tree'
+    ListFiltered: 'Filtered list.'
+    MENUTITLE: 'Edit Page'
     NEW: Nuova
     PAGENOTEXISTS: 'Questa pagina non esiste'
     PAGES: Pagine
@@ -108,15 +108,15 @@ it:
     ROLLEDBACKPUB: 'Ripristinata la versione pubblicata. Il nuovo numero di versione è #{version}'
     ROLLEDBACKVERSION: 'Ripristinata la versione #%d. Il nuovo numero di versione è #%d'
     SAVE: Salva
-    SAVEDRAFT: 'Salva bozza'
-    TabContent: Contenuto
-    TabHistory: Archivio
-    TabSettings: Impostazioni
-    TreeFiltered: 'Albero filtrato.'
-    TreeFilteredClear: 'Azzera filtro'
+    SAVEDRAFT: 'Save Draft'
+    TabContent: Content
+    TabHistory: History
+    TabSettings: Settings
+    TreeFiltered: 'Filtered tree.'
+    TreeFilteredClear: 'Clear filter'
   CMSMain_left.ss:
-    'APPLY FILTER': 'Applica filtro'
-    RESET: Azzera
+    'APPLY FILTER': 'Apply Filter'
+    RESET: Reset
   CMSPageAddController:
     MENUTITLE: 'Aggiungi pagina'
     ParentMode_child: 'Sotto un''altra pagina'
@@ -124,46 +124,46 @@ it:
   CMSPageEditController:
     MENUTITLE: 'Modifica pagina'
   CMSPageHistoryController:
-    COMPAREMODE: 'Modalità confronto (selezionane due)'
-    COMPAREVERSIONS: 'Confronta versioni'
-    COMPARINGVERSION: 'Confronto versioni {version1} e {version2}.'
-    MENUTITLE: Archivio
-    REVERTTOTHISVERSION: 'Ripristina a questa versione'
-    SHOWUNPUBLISHED: 'Mostra versioni non pubblicate'
-    SHOWVERSION: 'Mostra versione'
-    VIEW: vista
-    VIEWINGVERSION: 'Versione attualmente visualizzata {version}.'
+    COMPAREMODE: 'Compare mode (select two)'
+    COMPAREVERSIONS: 'Compare Versions'
+    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
+    MENUTITLE: History
+    REVERTTOTHISVERSION: 'Revert to this version'
+    SHOWUNPUBLISHED: 'Show unpublished versions'
+    SHOWVERSION: 'Show Version'
+    VIEW: view
+    VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
-    AUTHOR: Autore
-    NOTPUBLISHED: 'Non pubblicato'
-    PUBLISHER: Editore
-    UNKNOWN: Sconosciuto
-    WHEN: Quando
+    AUTHOR: Author
+    NOTPUBLISHED: 'Not published'
+    PUBLISHER: Publisher
+    UNKNOWN: Unknown
+    WHEN: When
   CMSPageSettingsController:
     MENUTITLE: 'Modifica pagina'
   CMSPagesController:
-    GalleryView: 'Visualizzazione a galleria'
-    ListView: 'Visualizzazione a lista'
-    MENUTITLE: Pagine
-    TreeView: 'Visualizzazione a albero'
+    GalleryView: 'Gallery View'
+    ListView: 'List View'
+    MENUTITLE: Pages
+    TreeView: 'Tree View'
   CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: 'Drag''n''drop'
-    MULTISELECT: 'Selezione multipla'
+    MULTISELECT: Multi-selection
   CMSPagesController_Tools.ss:
-    FILTER: Filtra
+    FILTER: Filter
   CMSSearch:
     FILTERDATEFROM: Da
     FILTERDATEHEADING: Data
     FILTERDATETO: A
     FILTERLABELTEXT: Contenuto
   CMSSettingsController:
-    MENUTITLE: Impostazioni
+    MENUTITLE: Settings
   CMSSiteTreeFilter_ChangedPages:
-    Title: 'Pagine cambiate'
+    Title: 'Changed pages'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Tutte le pagine, eliminate incluse'
   CMSSiteTreeFilter_Search:
-    Title: 'Tutte le pagine'
+    Title: 'All pages'
   CaseStudy:
     DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
@@ -307,7 +307,7 @@ it:
     BUTTONSAVEPUBLISH: 'Salva & pubblica'
     BUTTONUNPUBLISH: 'Non pubblicare'
     BUTTONUNPUBLISHDESC: 'Rimuovi questa pagina dal sito pubblicato'
-    CREATED: 'Data creazione'
+    CREATED: 'Date Created'
     Comments: Commenti
     Content: Contenuto
     DEFAULTABOUTCONTENT: '<p>Puoi riempire questa pagina con i tuoi contenuti, oppure cancellarla e creare le tue pagine.<br /></p>'
@@ -316,11 +316,11 @@ it:
     DEFAULTCONTACTTITLE: Contattaci
     DEFAULTHOMECONTENT: '<p>Benvenuto in SilverStripe! Questa è l''homepage di default. Puoi modificare questa pagina aprendo <a href="admin/">il CMS</a>. Puoi visualizzare adesso la <a href="http://doc.silverstripe.com">documentazione di sviluppo</a>, o iniziaren <a href="http://doc.silverstripe.com/doku.php?id=tutorials">i tutorial.</a></p>'
     DEFAULTHOMETITLE: Home
-    DELETEDPAGEHELP: 'La pagina non è più pubblicata'
-    DELETEDPAGESHORT: Eliminata
-    DEPENDENT_NOTE: 'Le seguenti pagine dipendono da questa pagina. Queste includono pagine virtuali, pagine di redirezione e pagine con link nel contenuto.'
-    DESCRIPTION: 'Pagina con contenuto generico'
-    DependtPageColumnLinkType: 'Tipo di link'
+    DELETEDPAGEHELP: 'Page is no longer published'
+    DELETEDPAGESHORT: Deleted
+    DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DESCRIPTION: 'Generic content page'
+    DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
     EDITANYONE: 'Chiunque può autenticarsi all''interno del CMS'
     EDITHEADER: 'Chi può modificare questo all''interno del CMS?'
@@ -339,10 +339,10 @@ it:
     METAEXTRA: 'Meta tag personalizzati'
     METAKEYWORDS: 'Parole chiavi'
     METATITLE: Titolo
-    MODIFIEDONDRAFTHELP: 'La pagina ha modifiche non pubblicate'
-    MODIFIEDONDRAFTSHORT: Modificata
+    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
+    MODIFIEDONDRAFTSHORT: Modified
     MetadataToggle: Metadata
-    PAGELOCATION: 'Collocazione pagina'
+    PAGELOCATION: 'Page location'
     PAGETITLE: 'Nome della pagina'
     PAGETYPE: 'Tipo di pagina'
     PARENTID: 'Pagina madre'
@@ -386,15 +386,15 @@ it:
     EXPORTTO: 'Esporta in questa cartella'
     NAME: 'Sistema di esportazione statico'
   TableListField:
-    SELECT: 'Seleziona:'
+    SELECT: 'Select:'
   TableListField.ss:
-    NOITEMSFOUND: 'Nessun elemento trovato'
-    SORTASC: 'Ordina in modo ascendente'
-    SORTDESC: 'Ordina in modo discendente'
+    NOITEMSFOUND: 'No items found'
+    SORTASC: 'Sort in ascending order'
+    SORTDESC: 'Sort in descending order'
   TableListField_PageControls.ss:
-    DISPLAYING: Visualizzo
-    OF: di
-    TO: a
+    DISPLAYING: Displaying
+    OF: of
+    TO: to
     VIEWFIRST: 'Visualizza primo'
     VIEWLAST: 'Visualizza ultimo'
     VIEWNEXT: 'Visualizza successivo'
@@ -404,7 +404,7 @@ it:
   TestPage:
     DESCRIPTION: 'Generic content page'
   TreeTools:
-    DisplayLabel: 'Visualizza:'
+    DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:
     CANACCESS: 'Puoi accedere al sito archiviato da questo indirizzo:'
     HAVEASKED: 'Hai chiesto di visualizzare il contenuto del nostro sito il'

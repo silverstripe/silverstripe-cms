@@ -65,7 +65,8 @@ class SiteConfig extends DataObject implements PermissionProvider {
 					$topLevelCreatorsGroupsField = ListboxField::create("CreateTopLevelGroups", _t('SiteTree.TOPLEVELCREATORGROUPS', "Top level creators"))
 						->setMultiple(true)->setSource($groupsMap)
 				)
-			)
+			),
+			new HiddenField('ID')
 		);
 
 		$themeDropdownField->setEmptyString(_t('SiteConfig.DEFAULTTHEME', '(Use default theme)'));
@@ -147,6 +148,13 @@ class SiteConfig extends DataObject implements PermissionProvider {
 		$this->extend('updateCMSActions', $actions);
 		
 		return $actions;
+	}
+
+	/**
+	 * @return String
+	 */
+	function CMSEditLink() {
+		return singleton('CMSSettingsController')->Link();
 	}
 	
 	/**

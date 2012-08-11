@@ -3,7 +3,7 @@ bg:
     ADDFILES: 'Добави файлове'
     ALLOWEDEXTS: 'Разрешени разширения'
     ActionAdd: 'Добави директория'
-    AppCategoryArchive: Архив
+    AppCategoryArchive: 'Архив'
     AppCategoryAudio: Audio
     AppCategoryFlash: Flash
     AppCategoryImage: Image
@@ -20,14 +20,14 @@ bg:
     ListView: 'List View'
     MENUTITLE: Файлове
     NEWFOLDER: 'Нова директория'
-    SIZE: Размер
+    SIZE: 'Размер'
     THUMBSDELETED: '{count} unused thumbnails have been deleted'
     TreeView: 'Tree View'
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
   AssetAdmin_Tools.ss:
-    FILTER: Filter
+    FILTER: Филтър
   AssetAdmin_left.ss:
     GO: Давай
   AssetTableField:
@@ -169,7 +169,7 @@ bg:
   ContentControl:
     NOTEWONTBESHOWN: 'Забележка: Това съобщение няма да се показва на Вашите посетители'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Архивиран сайт'
     ARCHIVEDSITEFROM: 'Архивиран сайт от'
     CMS: 'СУС (CMS)'
     DRAFTSITE: Чернови
@@ -180,7 +180,7 @@ bg:
     InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
     LOGGEDINAS: 'Влязъл като'
     LOGIN: Login
-    LOGOUT: Изход
+    LOGOUT: 'Изход'
     NOTLOGGEDIN: 'Извън системата'
     PUBLISHEDSITE: 'Публикувани страници'
     Password: Password

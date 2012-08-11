@@ -172,7 +172,8 @@ class SearchForm extends Form {
 		// legacy usage: $data was defaulting to $_REQUEST, parameter not passed in doc.silverstripe.org tutorials
 		if(!isset($data)) $data = $_REQUEST;
 		
-		return Convert::raw2xml($data['Search']);
+		// The form could be rendered without the search being done, so check for that.
+		if (isset($data['Search'])) return Convert::raw2xml($data['Search']);
 	}
 	
 	/**

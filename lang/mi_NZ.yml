@@ -36,9 +36,9 @@ mi_NZ:
   BackLink_Button.ss:
     Back: Hoki
   BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
   BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
   BrokenLinksReport:
     Any: 'Ko tētahi'
     BROKENLINKS: 'Pūrongo hono whati'
@@ -165,7 +165,7 @@ mi_NZ:
   CMSSiteTreeFilter_Search:
     Title: 'Ngā Whārangi Katoa'
   CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
+    DESCRIPTION: 'Whārangi mātai tūāhua hei whakaatu tauira mahi'
   ContentControl:
     NOTEWONTBESHOWN: 'Tuhipoka: kāore tēnei karere e whakaaturia ki ō manuhiri'
   ContentController:
@@ -226,7 +226,7 @@ mi_NZ:
     UNUSEDTHUMBNAILSTITLE: 'Ngā karakōnui kāore i whakamahia'
     UploadFilesButton: Tukuatu
   GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
   LeftAndMain:
     DELETED: 'Kua Mukua'
     PreviewButton: Arokite
@@ -235,9 +235,9 @@ mi_NZ:
     SearchResults: 'Ngā Hua Rapu'
     VersionUnknown: 'Tē Mōhiotia'
   LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
   Page:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
   Permission:
     CMS_ACCESS_CATEGORY: 'Uru CMS'
   Permissions:
@@ -253,7 +253,7 @@ mi_NZ:
     REDIRECTTOPAGE: 'Whārangi kei tō paetukutuku'
     YOURPAGE: 'Whārangi kei tō paetukutuku'
   RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
   ReportAdmin:
     MENUTITLE: 'Ngā Pūrongo'
   ReportAdminForm:
@@ -400,9 +400,9 @@ mi_NZ:
     VIEWNEXT: 'Tiro panuku'
     VIEWPREVIOUS: 'Tirohia tōmua'
   TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
   TestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
   TreeTools:
     DisplayLabel: 'Whakaatu:'
   ViewArchivedEmail.ss:

@@ -36,7 +36,7 @@ zh_TW:
   BackLink_Button.ss:
     Back: 返回
   BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: '一般內容網頁'
   BigFamilyPage:
     DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
@@ -90,13 +90,13 @@ zh_TW:
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
     NEW: 新增
-    PAGENOTEXISTS: 這頁不存在
+    PAGENOTEXISTS: '這頁不存在'
     PAGES: Pages
     PAGETYPEANYOPT: Any
     PAGETYPEOPT: 'Page Type'
-    PUBALLCONFIRM: 請發布所有網頁
+    PUBALLCONFIRM: '請發布所有網頁'
     PUBALLFUN: '"全部發布" 功能'
-    PUBALLFUN2: 按下這個按鈕就是如同到每頁按「發布」。當有很多內容更變時，這個功能可以省時。
+    PUBALLFUN2: '按下這個按鈕就是如同到每頁按「發布」。當有很多內容更變時，這個功能可以省時。'
     PUBPAGES: 'Done: Published {count} pages'
     PageAdded: 'Successfully created page'
     REMOVED: 'Deleted ''%s''%s from live site'
@@ -124,7 +124,7 @@ zh_TW:
   CMSPageEditController:
     MENUTITLE: 'Edit Page'
   CMSPageHistoryController:
-    COMPAREMODE: 比較模式(選擇兩個)
+    COMPAREMODE: '比較模式(選擇兩個)'
     COMPAREVERSIONS: 比較版本
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
     MENUTITLE: 歷史
@@ -134,17 +134,17 @@ zh_TW:
     VIEW: 瀏覽
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
-    AUTHOR: 作者
+    AUTHOR: '作者'
     NOTPUBLISHED: 未發行的
-    PUBLISHER: 發行者
+    PUBLISHER: '發行者'
     UNKNOWN: 未知的
     WHEN: 何時
   CMSPageSettingsController:
-    MENUTITLE: 編輯網頁
+    MENUTITLE: '編輯網頁'
   CMSPagesController:
     GalleryView: 圖庫瀏覽
-    ListView: 清單瀏覽
-    MENUTITLE: 網頁
+    ListView: '清單瀏覽'
+    MENUTITLE: '網頁'
     TreeView: 樹狀瀏覽
   CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: 'Drag''n''drop'
@@ -163,7 +163,7 @@ zh_TW:
   CMSSiteTreeFilter_DeletedPages:
     Title: '所有網頁, 包括已刪除的'
   CMSSiteTreeFilter_Search:
-    Title: 所有網頁
+    Title: '所有網頁'
   CaseStudy:
     DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
@@ -191,7 +191,7 @@ zh_TW:
   ErrorPage:
     CODE: 錯誤代碼
     DEFAULTERRORPAGECONTENT: '<p>抱歉, 看來您正再嘗試存取一個不存在的網頁</p><p>請檢查您正在嘗試存取網址的拼寫並再試一次.</p>'
-    DEFAULTERRORPAGETITLE: 未發現網頁
+    DEFAULTERRORPAGETITLE: '未發現網頁'
     DEFAULTSERVERERRORPAGECONTENT: '<p>抱歉, 處裡您的要求發生一個問題</p>'
     DEFAULTSERVERERRORPAGETITLE: 伺服器錯誤
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
@@ -229,7 +229,7 @@ zh_TW:
     DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Deleted.
-    PreviewButton: 預覽
+    PreviewButton: '預覽'
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: 搜尋結果
@@ -244,14 +244,14 @@ zh_TW:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
   RedirectorPage:
-    DESCRIPTION: 重新導向到一個內部不同的網頁
-    HASBEENSETUP: 沒有任何地方被重新導向的一個重新導向網頁已被設定.
-    HEADER: 本網頁將重新導向用戶至別的網頁
-    OTHERURL: 其他網站網址
+    DESCRIPTION: '重新導向到一個內部不同的網頁'
+    HASBEENSETUP: '沒有任何地方被重新導向的一個重新導向網頁已被設定.'
+    HEADER: '本網頁將重新導向用戶至別的網頁'
+    OTHERURL: '其他網站網址'
     REDIRECTTO: 重新導向到
     REDIRECTTOEXTERNAL: 別的網站
-    REDIRECTTOPAGE: 在您網站上的一個網頁
-    YOURPAGE: 在您網站上的網頁
+    REDIRECTTOPAGE: '在您網站上的一個網頁'
+    YOURPAGE: '在您網站上的網頁'
   RelationFieldsTestPage:
     DESCRIPTION: 'Generic content page'
   ReportAdmin:
@@ -269,8 +269,8 @@ zh_TW:
     BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
     BrokenLinksGroupTitle: 'Broken links reports'
     ContentGroupTitle: 'Content reports'
-    EMPTYPAGES: 空頁
-    LAST2WEEKS: 網頁在過去兩個禮拜有被更改過
+    EMPTYPAGES: '空頁'
+    LAST2WEEKS: '網頁在過去兩個禮拜有被更改過'
     OtherGroupTitle: Other
     ParameterLiveCheckbox: 'Check live site'
     REPEMPTY: 'The {title} report is empty.'
@@ -295,12 +295,12 @@ zh_TW:
     VIEWHEADER: 'Who can view pages on this site?'
   SiteTree:
     ACCESSANYONE: 所有人
-    ACCESSHEADER: 誰可以瀏覽這頁？
-    ACCESSLOGGEDIN: 已登入的使用者
-    ACCESSONLYTHESE: 只有這些人(從清單選擇)
+    ACCESSHEADER: '誰可以瀏覽這頁？'
+    ACCESSLOGGEDIN: '已登入的使用者'
+    ACCESSONLYTHESE: '只有這些人(從清單選擇)'
     ADDEDTODRAFTHELP: 'Page has not been published yet'
     ADDEDTODRAFTSHORT: Draft
-    ALLOWCOMMENTS: 允許留言嗎？
+    ALLOWCOMMENTS: '允許留言嗎？'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: 取消草稿更變
     BUTTONCANCELDRAFTDESC: 刪除草稿並回複到正式發布的版本
@@ -309,47 +309,47 @@ zh_TW:
     BUTTONUNPUBLISHDESC: 從正式發布站移除
     CREATED: 建立日期
     Comments: 意見
-    Content: 內容
+    Content: '內容'
     DEFAULTABOUTCONTENT: '<p>您可以用您自己的內容填入本網頁, 或是刪除它並建立您自己的網頁<br /></p>'
     DEFAULTABOUTTITLE: 關於我們
     DEFAULTCONTACTCONTENT: '<p>您可以用您自己的內容填入本網頁, 或是刪除它並建立您自己的網頁<br /></p>'
     DEFAULTCONTACTTITLE: 連絡我們
     DEFAULTHOMECONTENT: '<p>歡迎光臨 SilverStrip! 這是預設的主頁. 您可以開啟<a href="admin/">the CMS</a>來編輯這個網頁. 您現在可存取<a href="http://doc.silverstripe.org">developer documentation</a>, 或是開始<a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
-    DEFAULTHOMETITLE: 首頁
+    DEFAULTHOMETITLE: '首頁'
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: 已刪除
     DEPENDENT_NOTE: '以下的網頁是依附在本網頁的. 這包含了虛擬網頁, 重新導向網頁, 以及有內容鏈結的網頁.'
     DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 鏈結類型
     DependtPageColumnURL: 網址
-    EDITANYONE: 所有可以登入CMS的人
-    EDITHEADER: 誰可以編輯這頁？
-    EDITONLYTHESE: 只有這些人(從清單選擇)
-    EDITORGROUPS: 編輯者群組
-    EDIT_ALL_DESCRIPTION: 編輯任何網頁
+    EDITANYONE: '所有可以登入CMS的人'
+    EDITHEADER: '誰可以編輯這頁？'
+    EDITONLYTHESE: '只有這些人(從清單選擇)'
+    EDITORGROUPS: '編輯者群組'
+    EDIT_ALL_DESCRIPTION: '編輯任何網頁'
     EDIT_ALL_HELP: '不管在存取Tab上的設定值, 在網站上有能力去編輯任何網頁. 需要 "到''網頁''部分的存取"許可'
-    Editors: 編輯者群體
-    HASBROKENLINKS: 網頁含有失效的連結。
-    HTMLEDITORTITLE: 內容
-    INHERIT: 從母頁繼承
+    Editors: '編輯者群體'
+    HASBROKENLINKS: '網頁含有失效的連結。'
+    HTMLEDITORTITLE: '內容'
+    INHERIT: '從母頁繼承'
     LASTUPDATED: 最近更新
-    LINKCHANGENOTE: 改變這個網頁鏈結將也會影響所有子網頁的鏈結
+    LINKCHANGENOTE: '改變這個網頁鏈結將也會影響所有子網頁的鏈結'
     MENUTITLE: 捷徑標籤
     METADESC: 敘述
-    METAEXTRA: 自訂元標籤(meta-tags)
+    METAEXTRA: '自訂元標籤(meta-tags)'
     METAKEYWORDS: 關鍵詞
     METATITLE: 標題
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: 已修改
     MetadataToggle: Metadata
-    PAGELOCATION: 網頁位置
-    PAGETITLE: 網頁名稱
-    PAGETYPE: 網頁類型
-    PARENTID: 母頁
-    PARENTTYPE: 網頁位置
-    PARENTTYPE_ROOT: 頂級網頁
-    PARENTTYPE_SUBPAGE: 在母頁下面的次頁
-    PERMISSION_GRANTACCESS_DESCRIPTION: 管理內容的存取權限
+    PAGELOCATION: '網頁位置'
+    PAGETITLE: '網頁名稱'
+    PAGETYPE: '網頁類型'
+    PARENTID: '母頁'
+    PARENTTYPE: '網頁位置'
+    PARENTTYPE_ROOT: '頂級網頁'
+    PARENTTYPE_SUBPAGE: '在母頁下面的次頁'
+    PERMISSION_GRANTACCESS_DESCRIPTION: '管理內容的存取權限'
     PERMISSION_GRANTACCESS_HELP: '允許設定在"網頁"部分的網頁-特定存取限制.'
     PLURALNAME: '網站 Tres'
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
@@ -363,19 +363,19 @@ zh_TW:
     SHOWINSEARCH: 在搜尋結果裡顯示嗎？
     SINGULARNAME: 網站樹狀架構
     TABBEHAVIOUR: 作用
-    TABCONTENT: 內容
-    TABDEPENDENT: 依賴網頁
+    TABCONTENT: '內容'
+    TABDEPENDENT: '依賴網頁'
     TOPLEVEL: '網站內容 (高層)'
-    TOPLEVELCREATORGROUPS: 頂級創作者
+    TOPLEVELCREATORGROUPS: '頂級創作者'
     URLSegment: 網址分類
-    VIEWERGROUPS: 瀏覽者群組
-    VIEW_ALL_DESCRIPTION: 瀏覽任何網頁
+    VIEWERGROUPS: '瀏覽者群組'
+    VIEW_ALL_DESCRIPTION: '瀏覽任何網頁'
     VIEW_ALL_HELP: '不管在存取Tab上的設定值, 在網站上有能力去編輯任何網頁. 需要 "到''網頁''部分的存取"許可'
-    VIEW_DRAFT_CONTENT: 瀏覽內容草稿
+    VIEW_DRAFT_CONTENT: '瀏覽內容草稿'
     VIEW_DRAFT_CONTENT_HELP: '應用於在草稿模式下觀看CMS以外的網頁. 沒有CMS存取權的外部合作者是有用的.'
-    Viewers: 瀏覽者群組
+    Viewers: '瀏覽者群組'
     Visibility: 能見度
-    has_one_Parent: 母頁
+    has_one_Parent: '母頁'
     many_many_BackLinkTracking: 背面鏈結追蹤
     many_many_ImageTracking: 影像追蹤
     many_many_LinkTracking: 鏈結追蹤
@@ -384,7 +384,7 @@ zh_TW:
   StaticExporter:
     BASEURL: 基本網址
     EXPORTTO: 匯出至那個資料夾
-    NAME: 網站靜態匯出
+    NAME: '網站靜態匯出'
   TableListField:
     SELECT: 'Select:'
   TableListField.ss:
@@ -406,15 +406,15 @@ zh_TW:
   TreeTools:
     DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:
-    CANACCESS: 您可以利用哲格連結到已歸檔站：
-    HAVEASKED: 您要瀏覽這一天的網站內容：
+    CANACCESS: '您可以利用哲格連結到已歸檔站：'
+    HAVEASKED: '您要瀏覽這一天的網站內容：'
   VirtualPage:
-    CHOOSE: 請選擇一個網頁來連結至
-    DESCRIPTION: 顯示其他網頁的內容
-    EDITCONTENT: 點擊即可更改內容
-    HEADER: 這是一個虛擬網頁
-    PLURALNAME: 虛擬網頁
+    CHOOSE: '請選擇一個網頁來連結至'
+    DESCRIPTION: '顯示其他網頁的內容'
+    EDITCONTENT: '點擊即可更改內容'
+    HEADER: '這是一個虛擬網頁'
+    PLURALNAME: '虛擬網頁'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
-    SINGULARNAME: 虛擬網頁
+    SINGULARNAME: '虛擬網頁'
   cms:
     FILESYSTEMSYNC: 'Sync files'
