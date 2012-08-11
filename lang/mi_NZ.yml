@@ -27,7 +27,7 @@ mi_NZ:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Muku kōpaki'
   AssetAdmin_Tools.ss:
-    FILTER: Filter
+    FILTER: Tātari
   AssetAdmin_left.ss:
     GO: Haere
   AssetTableField:
@@ -169,7 +169,7 @@ mi_NZ:
   ContentControl:
     NOTEWONTBESHOWN: 'Tuhipoka: kāore tēnei karere e whakaaturia ki ō manuhiri'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Pae Putumōhio'
     ARCHIVEDSITEFROM: 'Pae putumōhio mai i'
     CMS: CMS
     DRAFTSITE: 'Pae Hukihuki'
