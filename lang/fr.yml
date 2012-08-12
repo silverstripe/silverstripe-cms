@@ -140,7 +140,7 @@ fr:
   CMSPagesController:
     GalleryView: Galerie
     ListView: Liste
-    MENUTITLE: Sayfalar
+    MENUTITLE: Pages
     TreeView: Arbre
   CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: Glisser-déposer
