@@ -205,11 +205,13 @@ class SiteConfig extends DataObject implements PermissionProvider {
 		$siteConfig->Tagline = _t('SiteConfig.TAGLINEDEFAULT',"your tagline here");
 
 		if(class_exists('Translatable') && $siteConfig->hasExtension('Translatable')){
-			$defaultConfig = DataObject::get_one('SiteConfig');
-			if($defaultConfig){
-				$siteConfig->Title = $defaultConfig->Title;
-				$siteConfig->Tagline = $defaultConfig->Tagline;
-			}
+			Translatable::disable_locale_filter();
+			$defaultConfig = SiteConfig::get()->first();
+			Translatable::enable_locale_filter();			
+			
+			if($defaultConfig){					
+				return $defaultConfig->createTranslation($locale);
+			}			
 			
 			// TODO Copy view/edit group settings
 			
