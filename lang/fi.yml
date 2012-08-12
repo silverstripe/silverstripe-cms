@@ -26,8 +26,8 @@ fi:
     Upload: Siirrä
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Poista kansiot'
-  AssetAdmin_Tools.ss:
-    FILTER: Suodatin
+  AssetAdmin_Tools:
+    FILTER: Suodin
   AssetAdmin_left.ss:
     GO: Siirry
   AssetTableField:
@@ -35,10 +35,6 @@ fi:
     PAGES: sivu(t)
   BackLink_Button.ss:
     Back: Takaisin
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Yleinen sisältösivu'
-  BigFamilyPage:
-    DESCRIPTION: 'Yleinen sisältösivu'
   BrokenLinksReport:
     Any: Yhtään
     BROKENLINKS: 'Rikkinäisten linkkien raportti'
@@ -164,12 +160,10 @@ fi:
     Title: 'Kaikki sivut, myös poistetut'
   CMSSiteTreeFilter_Search:
     Title: 'Kaikki sivut'
-  CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Huomaa: tätä viestiä ei näytetä vierailijoille'
   ContentController:
-    ARCHIVEDSITE: 'Arkistoitu sivusto'
+    ARCHIVEDSITE: 'Esikatselu versio'
     ARCHIVEDSITEFROM: 'Arkistoitu sivusto lähteestä:'
     CMS: CMS
     DRAFTSITE: Luonnossivusto
@@ -196,6 +190,8 @@ fi:
     DEFAULTSERVERERRORPAGETITLE: Palvelinvirhe
     DESCRIPTION: 'Omat virheilmoitukset (sivuille, kuten "Sivua ei löytynyt")'
     ERRORFILEPROBLEM: 'Virhe tiedostoa "{filename}" avattaessa ja kirjoittettaessa palvelimelle. Tarkista tiedoston kirjoitusoikeudet.'
+    PLURALNAME: Virhesivut
+    SINGULARNAME: Virhesivu
     400: '400 - Virheellinen Pyyntö'
     401: '401 - Luvaton'
     403: '403 . Kielletty'
@@ -225,8 +221,6 @@ fi:
     UNUSEDFILESTITLE: 'Käyttämättömät tiedostot'
     UNUSEDTHUMBNAILSTITLE: 'Käyttämättömät pikkukuvat'
     UploadFilesButton: Siirrä
-  GridFieldTestPage:
-    DESCRIPTION: 'Yleinen sisältösivu'
   LeftAndMain:
     DELETED: Poistettu.
     PreviewButton: Esikatselu
@@ -234,10 +228,6 @@ fi:
     STATUSPUBLISHEDSUCCESS: '''{title}'' julkaistiin onnistuneesti'
     SearchResults: Hakutulokset
     VersionUnknown: Tuntematon
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Yleinen sisältösivu'
-  Page:
-    DESCRIPTION: 'Yleinen sisältösivu'
   Permission:
     CMS_ACCESS_CATEGORY: CMS-pääsy
   Permissions:
@@ -248,12 +238,12 @@ fi:
     HASBEENSETUP: 'Sivu, joka ohjaa käyttäjän toiselle sivulle on valmis, mutta sivua, jolle käyttäjä ohjataan, ei ole.'
     HEADER: 'Tämä sivu ohjaa käyttäjän toiselle sivulle'
     OTHERURL: 'Toisen verkkosivuston URL-osoite'
+    PLURALNAME: 'Uudelleenohjaavat sivut'
     REDIRECTTO: 'Minne ohjataan?'
     REDIRECTTOEXTERNAL: 'Muu verkkosivusto'
     REDIRECTTOPAGE: 'Sivu verkkosivustollasi'
+    SINGULARNAME: 'Uudelleenohjaava sivu'
     YOURPAGE: 'Sivu verkkosivustollasi'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Yleinen sisältösivu'
   ReportAdmin:
     MENUTITLE: Raportit
   ReportAdminForm:
@@ -284,6 +274,8 @@ fi:
     EDITHEADER: 'Kuka voi muokata sivuja tällä sivustolla?'
     EDIT_PERMISSION: 'Hallinnoi sivun kokoonpanoa'
     EDIT_PERMISSION_HELP: 'Kyky muokata maailmanlaajuisia käyttöoikeusasetuksia/ ylätason sivujen käyttöoikeuksia.'
+    PLURALNAME: 'Sivuston asetuksia'
+    SINGULARNAME: 'Sivuston asetukset'
     SITENAMEDEFAULT: 'Sivustosi nimi'
     SITETAGLINE: 'Sivuston mainoslause/slogan'
     SITETITLE: 'Sivuston otsikko'
@@ -394,15 +386,11 @@ fi:
   TableListField_PageControls.ss:
     DISPLAYING: Näytetään
     OF: /
-    TO: to
+    TO: -»
     VIEWFIRST: 'Näytä ensimmäinen'
     VIEWLAST: 'Näytä viimeinen'
     VIEWNEXT: 'Näytä seuraava'
     VIEWPREVIOUS: 'Näytä edellinen'
-  TestFileUploadPage:
-    DESCRIPTION: 'Yleinen sisältösivu'
-  TestPage:
-    DESCRIPTION: 'Yleinen sisältösivu'
   TreeTools:
     DisplayLabel: 'Näytä:'
   ViewArchivedEmail.ss:

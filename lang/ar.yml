@@ -26,7 +26,7 @@ ar:
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
-  AssetAdmin_Tools.ss:
+  AssetAdmin_Tools:
     FILTER: Filter
   AssetAdmin_left.ss:
     GO: اذهب
@@ -35,10 +35,6 @@ ar:
     PAGES: page(s)
   BackLink_Button.ss:
     Back: Back
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: أي
     BROKENLINKS: 'تقرير الروابط المكسورة'
@@ -164,12 +160,10 @@ ar:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
     Title: 'All pages'
-  CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'تنبيه: هذه الرسالة لن يتم عرضها لزوار موقعك'
   ContentController:
-    ARCHIVEDSITE: 'موقع تمت أرشفته'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'موقع تمت أرشفته منذ'
     CMS: 'نظام إدارة المحتوى'
     DRAFTSITE: 'موقع في المسودة'
@@ -196,6 +190,8 @@ ar:
     DEFAULTSERVERERRORPAGETITLE: 'Server error'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - طلب خاطئ'
     401: '401 - غير مصرح'
     403: '403 - ممنوع'
@@ -225,8 +221,6 @@ ar:
     UNUSEDFILESTITLE: 'الملفات غير المستخدمة'
     UNUSEDTHUMBNAILSTITLE: 'المصغرات غير المستخدمة'
     UploadFilesButton: Upload
-  GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -234,10 +228,6 @@ ar:
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: 'Search Results'
     VersionUnknown: Unknown
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  Page:
-    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'الوصل لنظام إدارة المحتوى'
   Permissions:
@@ -248,12 +238,12 @@ ar:
     HASBEENSETUP: 'صفحة التحويل تم تهيئتها بدون تحديد وجهة التحويل'
     HEADER: 'هذه الصفحة سوف تقوم بتحويل الأعضاء إلى صفحة أخرى'
     OTHERURL: 'رابط موقع آخر'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'تحويل إلى'
     REDIRECTTOEXTERNAL: 'موقع آخر'
     REDIRECTTOPAGE: 'صفحة في موقعك الشخصي'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'صفحة في موقعك الشخصي'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -284,17 +274,19 @@ ar:
     EDITHEADER: 'من يستطيع تحرير الصفحات الموجودة على هذا الموقع؟'
     EDIT_PERMISSION: 'إدارة إعدادات الموقع'
     EDIT_PERMISSION_HELP: 'القدرة على تحرير إعدادات الوصول العالمي / أذونات صفحة المستوى الأعلى.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'اسم عنوان موقعك'
     SITETAGLINE: 'علامة / شعار الموقع'
     SITETITLE: 'عنوان الموقع'
     TABACCESS: الوصول
     TABMAIN: الرئيسي
     TAGLINEDEFAULT: 'علامتك هنا'
-    THEME: 'الثيم'
+    THEME: الثيم
     TOPLEVELCREATE: 'من يستطيع إنشاء صفحات في جذر الموقع؟'
     VIEWHEADER: 'من يستطيع عرض الصفحات على هذا الموقع؟...'
   SiteTree:
-    ACCESSANYONE: 'الجميع'
+    ACCESSANYONE: الجميع
     ACCESSHEADER: 'من يستطيع مشاهدة هذه الصفحة ؟'
     ACCESSLOGGEDIN: 'الأعضاء المسجلين'
     ACCESSONLYTHESE: 'فقط هؤلاء الأشخاص ( اختر من القائمة)'
@@ -309,7 +301,7 @@ ar:
     BUTTONUNPUBLISHDESC: 'حذف هذه الصفحة من الموقع المنشور'
     CREATED: 'Date Created'
     Comments: التعليقات
-    Content: 'المحتوى'
+    Content: المحتوى
     DEFAULTABOUTCONTENT: '<p>يمكنك ملء هذه الصفحة بمحتوى خاص بك أو حذفها و إنشاء صفحات جديدة خاصة بك<br /></p>'
     DEFAULTABOUTTITLE: حول
     DEFAULTCONTACTCONTENT: '<p>يمكنك ملء هذه الصفحة بمحتوى خاص بك أو حذفها و إنشاء صفحات جديدة خاصة بك<br /></p>'
@@ -330,11 +322,11 @@ ar:
     EDIT_ALL_HELP: 'القدرة على تحرير أي صفحة على الموقع ، بغض النظر عن الإعدادات على علامة تبويب الوصول. يتطلب تصريح "الوصول إلى محتوى الموقع" '
     Editors: 'مجموعات المحررين'
     HASBROKENLINKS: 'هذه الصفحة تحتوي على روابط معطوبة'
-    HTMLEDITORTITLE: 'محتوى'
+    HTMLEDITORTITLE: محتوى
     INHERIT: 'استيراد من الصفحة المرجعية'
     LASTUPDATED: 'Last Updated'
     LINKCHANGENOTE: 'تغيير هذا وصلة رابط الصفحة سوف تؤثر أيضًا على الوصلات لجميع صفحات الفرعية.'
-    MENUTITLE: 'القائمة'
+    MENUTITLE: القائمة
     METADESC: الوصف
     METAEXTRA: 'تخصيص Meta Tags'
     METAKEYWORDS: 'الكلمات المفتاحية'
@@ -363,7 +355,7 @@ ar:
     SHOWINSEARCH: 'عرض في البحث ؟'
     SINGULARNAME: 'هيكلة الموقع'
     TABBEHAVIOUR: الشسلوك
-    TABCONTENT: 'المحتوى'
+    TABCONTENT: المحتوى
     TABDEPENDENT: 'الصفحات المعتدة'
     TOPLEVEL: 'محتوى الموقع ( مستوى أعلى )'
     TOPLEVELCREATORGROUPS: 'منشيء المستوى الأعلى'
@@ -399,10 +391,6 @@ ar:
     VIEWLAST: 'عرض الأخير'
     VIEWNEXT: 'عرض التالي'
     VIEWPREVIOUS: 'عرض السابق'
-  TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
-  TestPage:
-    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:

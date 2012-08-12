@@ -26,8 +26,8 @@ gl_ES:
     Upload: Subir
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Eliminar cartafoles'
-  AssetAdmin_Tools.ss:
-    FILTER: Filtro
+  AssetAdmin_Tools:
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Ir
   AssetTableField:
@@ -35,10 +35,6 @@ gl_ES:
     PAGES: page(s)
   BackLink_Button.ss:
     Back: Atrás
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Páxina de contido xenérico'
-  BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Ningún
     BROKENLINKS: 'Informe de ligazóns rotas'
@@ -164,12 +160,10 @@ gl_ES:
     Title: 'Todas as páxinas, incluindo eliminadas'
   CMSSiteTreeFilter_Search:
     Title: 'Todas as páxinas'
-  CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Nota: esta mensaxe non se amosará aos visitantes'
   ContentController:
-    ARCHIVEDSITE: 'Sitio Arquivado'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Sitio arquivado dende'
     CMS: CMS
     DRAFTSITE: 'Sitio Borrador'
@@ -196,6 +190,8 @@ gl_ES:
     DEFAULTSERVERERRORPAGETITLE: 'Erro Servidor'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Bad Request'
     401: '401 - Unauthorized'
     403: '403 - Forbidden'
@@ -225,8 +221,6 @@ gl_ES:
     UNUSEDFILESTITLE: 'Ficheiros sen usar'
     UNUSEDTHUMBNAILSTITLE: 'Miniaturas sen usar'
     UploadFilesButton: Subir
-  GridFieldTestPage:
-    DESCRIPTION: 'Páxina de contido xenérico'
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Previsualizar
@@ -234,10 +228,6 @@ gl_ES:
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: 'Resultados Busca'
     VersionUnknown: Descoñecido
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Páxina de contido xenérico'
-  Page:
-    DESCRIPTION: 'Páxina de contido xenérico'
   Permission:
     CMS_ACCESS_CATEGORY: 'Acceso CMS'
   Permissions:
@@ -248,12 +238,12 @@ gl_ES:
     HASBEENSETUP: 'A redirector page has been set up without anywhere to redirect to.'
     HEADER: 'Esta páxina redirixirá os usuarios a outra páxina'
     OTHERURL: 'Outra URL do sitio web'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Redirixir a'
     REDIRECTTOEXTERNAL: 'Outro sitio web'
     REDIRECTTOPAGE: 'Unha páxina no teu sitio web'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Páxina no teu sitio web'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Páxina de contido xenérico'
   ReportAdmin:
     MENUTITLE: Informes
   ReportAdminForm:
@@ -284,6 +274,8 @@ gl_ES:
     EDITHEADER: 'Quen pode editar neste sitio?'
     EDIT_PERMISSION: 'Xestionar a configuración do sitio'
     EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'O nome do teu Sitio'
     SITETAGLINE: 'Eslogan do sitio'
     SITETITLE: 'Título do Sitio'
@@ -319,7 +311,7 @@ gl_ES:
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Eliminado
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Páxina de contido xenérico'
     DependtPageColumnLinkType: 'Tipo de ligazón'
     DependtPageColumnURL: URL
     EDITANYONE: 'Ningún pode iniciar sesión no CMS'
@@ -399,10 +391,6 @@ gl_ES:
     VIEWLAST: 'Ver último'
     VIEWNEXT: 'Ver seguinte'
     VIEWPREVIOUS: 'Ver anterior'
-  TestFileUploadPage:
-    DESCRIPTION: 'Páxina de contido xenérico'
-  TestPage:
-    DESCRIPTION: 'Páxina de contido xenérico'
   TreeTools:
     DisplayLabel: 'Visualizar:'
   ViewArchivedEmail.ss:

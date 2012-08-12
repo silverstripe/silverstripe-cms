@@ -26,7 +26,7 @@ mi_NZ:
     Upload: Tukuatu
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Muku kōpaki'
-  AssetAdmin_Tools.ss:
+  AssetAdmin_Tools:
     FILTER: Tātari
   AssetAdmin_left.ss:
     GO: Haere
@@ -35,10 +35,6 @@ mi_NZ:
     PAGES: 'te/ngā whārangi'
   BackLink_Button.ss:
     Back: Hoki
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
-  BigFamilyPage:
-    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
   BrokenLinksReport:
     Any: 'Ko tētahi'
     BROKENLINKS: 'Pūrongo hono whati'
@@ -164,12 +160,10 @@ mi_NZ:
     Title: 'Ngā whārangi katoa, tae atu ki ērā kua mukua'
   CMSSiteTreeFilter_Search:
     Title: 'Ngā Whārangi Katoa'
-  CaseStudy:
-    DESCRIPTION: 'Whārangi mātai tūāhua hei whakaatu tauira mahi'
   ContentControl:
     NOTEWONTBESHOWN: 'Tuhipoka: kāore tēnei karere e whakaaturia ki ō manuhiri'
   ContentController:
-    ARCHIVEDSITE: 'Pae Putumōhio'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Pae putumōhio mai i'
     CMS: CMS
     DRAFTSITE: 'Pae Hukihuki'
@@ -196,6 +190,8 @@ mi_NZ:
     DEFAULTSERVERERRORPAGETITLE: 'Hapa tūmau'
     DESCRIPTION: 'Ngā ihirangi ritenga mō ngā take hapa rerekē (hei tauira. "Kāore i kitea te whārangi")'
     ERRORFILEPROBLEM: 'Kua hapa te whakatuwhera i te kōnae "{filename}" mō te tuhituhi. Tirohia ngā whakaaetanga kōnae.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Tono Kino'
     401: '401 - Tē Whakamanatia'
     403: '403 - Kua Rāhuitia'
@@ -225,8 +221,6 @@ mi_NZ:
     UNUSEDFILESTITLE: 'Ngā kōnae kāore i whakamahia'
     UNUSEDTHUMBNAILSTITLE: 'Ngā karakōnui kāore i whakamahia'
     UploadFilesButton: Tukuatu
-  GridFieldTestPage:
-    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
   LeftAndMain:
     DELETED: 'Kua Mukua'
     PreviewButton: Arokite
@@ -234,10 +228,6 @@ mi_NZ:
     STATUSPUBLISHEDSUCCESS: 'I momoho te whakaputa i te ''{title}'' '
     SearchResults: 'Ngā Hua Rapu'
     VersionUnknown: 'Tē Mōhiotia'
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
-  Page:
-    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
   Permission:
     CMS_ACCESS_CATEGORY: 'Uru CMS'
   Permissions:
@@ -248,12 +238,12 @@ mi_NZ:
     HASBEENSETUP: 'Kua tatū he whārangi tuku anō me te kore whai wāhi hei tuku anō.'
     HEADER: 'Ka tuku anō tēnei whārangi i ngā kaiwhakamahi ki whārangi kē'
     OTHERURL: 'Tētahi atu PRO paetukutuku'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Tukua anō ki'
     REDIRECTTOEXTERNAL: 'Tētahi atu paetukutuku'
     REDIRECTTOPAGE: 'Whārangi kei tō paetukutuku'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Whārangi kei tō paetukutuku'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
   ReportAdmin:
     MENUTITLE: 'Ngā Pūrongo'
   ReportAdminForm:
@@ -284,6 +274,8 @@ mi_NZ:
     EDITHEADER: 'Mā wai ngā whārangi i tēnei pae e whakatika?'
     EDIT_PERMISSION: 'Whakahaeretia te whirihora pae'
     EDIT_PERMISSION_HELP: 'Āhei ki te whakatika i ngā tautuhinga uru aowhānui/ngā whakaaetanga whārangi taumata matua.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Tō Ingoa Pae'
     SITETAGLINE: 'Rārangi Tautuhinga Pae/Peha'
     SITETITLE: 'Taitara pae'
@@ -399,10 +391,6 @@ mi_NZ:
     VIEWLAST: 'Tirohia te whakamutunga'
     VIEWNEXT: 'Tiro panuku'
     VIEWPREVIOUS: 'Tirohia tōmua'
-  TestFileUploadPage:
-    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
-  TestPage:
-    DESCRIPTION: 'Whārangi ihirangi ahuwhānui'
   TreeTools:
     DisplayLabel: 'Whakaatu:'
   ViewArchivedEmail.ss:

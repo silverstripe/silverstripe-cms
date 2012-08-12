@@ -26,8 +26,8 @@ hu:
     Upload: Feltöltés
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Mappák törlése'
-  AssetAdmin_Tools.ss:
-    FILTER: Szűrő
+  AssetAdmin_Tools:
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Mehet
   AssetTableField:
@@ -35,10 +35,6 @@ hu:
     PAGES: oldal(ak)
   BackLink_Button.ss:
     Back: Vissza
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Bármely
     BROKENLINKS: 'Broken links report'
@@ -164,12 +160,10 @@ hu:
     Title: 'Összes oldal, a töröltekkel együtt'
   CMSSiteTreeFilter_Search:
     Title: 'Összes oldal'
-  CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
   ContentController:
-    ARCHIVEDSITE: 'Archivált oldal'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
     DRAFTSITE: 'Vázlat oldal'
@@ -196,6 +190,8 @@ hu:
     DEFAULTSERVERERRORPAGETITLE: 'Szerver hiba'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Hibás kérés'
     401: '401 - Unauthorized'
     403: '403 - Forbidden'
@@ -225,8 +221,6 @@ hu:
     UNUSEDFILESTITLE: 'Nem használt állományok'
     UNUSEDTHUMBNAILSTITLE: 'Nem használt bélyegképek'
     UploadFilesButton: Feltöltés
-  GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Törölve.
     PreviewButton: Előnézet
@@ -234,10 +228,6 @@ hu:
     STATUSPUBLISHEDSUCCESS: '''{title}'' sikeresen publikálva'
     SearchResults: Találatok
     VersionUnknown: Ismeretlen
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  Page:
-    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS hozzáférés'
   Permissions:
@@ -248,12 +238,12 @@ hu:
     HASBEENSETUP: 'Egy átirányító oldal került létrehozásra, anélkül hogy lenne hova átirányítania.'
     HEADER: 'Ez az oldal egy másik oldalra fogja írányítani a felhasználókat'
     OTHERURL: 'Egy másik weboldal URL-je '
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Átirányítás ide:'
     REDIRECTTOEXTERNAL: 'Egy másik weboldal'
     REDIRECTTOPAGE: 'Egy oldal a weblapodon'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Oldal a weblapodon'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Jelentések
   ReportAdminForm:
@@ -284,6 +274,8 @@ hu:
     EDITHEADER: 'Who can edit pages on this site?'
     EDIT_PERMISSION: 'Manage site configuration'
     EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Az oldal neve'
     SITETAGLINE: 'Site Tagline/Slogan'
     SITETITLE: 'Oldal címe'
@@ -399,10 +391,6 @@ hu:
     VIEWLAST: 'Utolsó mutatása'
     VIEWNEXT: 'Következő mutatása'
     VIEWPREVIOUS: 'Előző mutatása'
-  TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
-  TestPage:
-    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:

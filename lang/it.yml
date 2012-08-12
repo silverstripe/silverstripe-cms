@@ -1,44 +1,40 @@
 it:
   AssetAdmin:
-    ADDFILES: 'Add Files'
-    ALLOWEDEXTS: 'Allowed extensions'
-    ActionAdd: 'Add folder'
-    AppCategoryArchive: Archive
+    ADDFILES: 'Aggiungi File'
+    ALLOWEDEXTS: 'Estensioni consentite'
+    ActionAdd: 'Aggiungi cartella'
+    AppCategoryArchive: Archivia
     AppCategoryAudio: Audio
     AppCategoryFlash: Flash
-    AppCategoryImage: Image
+    AppCategoryImage: Immagine
     AppCategoryVideo: Video
-    BackToFolder: 'Back to folder'
-    CREATED: Date
-    CurrentFolderOnly: 'Limit to current folder?'
-    DetailsView: Details
+    BackToFolder: 'Torna alla cartella'
+    CREATED: 'Data creazione'
+    CurrentFolderOnly: 'Limita alla cartella corrente?'
+    DetailsView: Dettagli
     FILES: Files
-    FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
-    FROMTHEINTERNET: 'From the internet'
-    FROMYOURCOMPUTER: 'From your computer'
-    Filetype: 'File type'
-    ListView: 'List View'
+    FILESYSTEMSYNCTITLE: 'Aggiorna il database dei file. Utile quando nuovi file sono stati caricati fuori dal CMS, es. via FTP.'
+    FROMTHEINTERNET: 'Da Internet'
+    FROMYOURCOMPUTER: 'Dal tuo computer'
+    Filetype: 'Tipo di file'
+    ListView: 'Visualizzazione a lista'
     MENUTITLE: Files
     NEWFOLDER: NuovaCartella
-    SIZE: Size
-    THUMBSDELETED: '{count} unused thumbnails have been deleted'
-    TreeView: 'Tree View'
-    Upload: Upload
+    SIZE: Dimensione
+    THUMBSDELETED: '{count} miniature inutilizzate sono state eliminate'
+    TreeView: 'Visualizzazione a albero'
+    Upload: Carica
   AssetAdmin_DeleteBatchAction:
-    TITLE: 'Delete folders'
-  AssetAdmin_Tools.ss:
+    TITLE: 'Elimina cartelle'
+  AssetAdmin_Tools:
     FILTER: Filter
   AssetAdmin_left.ss:
     GO: Vai
   AssetTableField:
-    BACKLINKCOUNT: 'Used on:'
-    PAGES: page(s)
+    BACKLINKCOUNT: 'Usato in:'
+    PAGES: pagina/e
   BackLink_Button.ss:
-    Back: Back
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
+    Back: Indietro
   BrokenLinksReport:
     Any: Qualsiasi
     BROKENLINKS: 'Report links non funzionanti'
@@ -46,156 +42,156 @@ it:
     CheckSiteDropdownDraft: 'Sito Bozza'
     CheckSiteDropdownPublished: 'Sito Pubblicato'
     ColumnDateLastModified: 'Data ultima modifica'
-    ColumnDateLastPublished: 'Date last published'
+    ColumnDateLastPublished: 'Data ultima pubblicazione'
     ColumnProblemType: 'Tipologia Problema'
     ColumnURL: URL
     HasBrokenFile: 'ha un file non funzionante'
     HasBrokenLink: 'ha un link non funzionante'
-    HasBrokenLinkAndFile: 'ha un link ed un file non funzionante'
+    HasBrokenLinkAndFile: 'ha link e file non funzionanti'
     HoverTitleEditPage: 'Modifica pagina'
     PageName: 'Nome pagina'
     ReasonDropdown: 'Problemi da verificare'
     ReasonDropdownBROKENFILE: 'File non funzionante'
     ReasonDropdownBROKENLINK: 'Link non funzionante'
-    ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
-    ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
-    RedirectorNonExistent: 'redirector page pointing to non-existent page'
-    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
+    ReasonDropdownRPBROKENLINK: 'Pagina di redirezione che punta a una pagina che non esiste'
+    ReasonDropdownVPBROKENLINK: 'Pagina virtuale che punta a una pagina che non esiste'
+    RedirectorNonExistent: 'pagina di redirezione che punta a una pagina che non esiste'
+    VirtualPageNonExistent: 'pagina virtuale che punta a una pagina che non esiste'
   CMSAddPageController:
-    Title: 'Add page'
+    Title: 'Aggiungi pagina'
   CMSBatchActions:
-    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
-    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
+    DELETED_DRAFT_PAGES: 'Eliminate %d pagine dal sito bozza, %d non a buon fine'
+    DELETED_PAGES: 'Eliminate %d pagine dal sito pubblicato, %d non a buon fine'
     DELETE_DRAFT_PAGES: 'Elimina dal sito bozza'
-    DELETE_PAGES: 'Eliminato dal sito pubblicato'
+    DELETE_PAGES: 'Eliminata dal sito pubblicato'
     PUBLISHED_PAGES: 'Pubblicate %d pagine, %d non a buon fine'
     PUBLISH_PAGES: Pubblica
     UNPUBLISHED_PAGES: '%d pagine non pubblicate'
-    UNPUBLISH_PAGES: 'Pubblicazione annullata'
+    UNPUBLISH_PAGES: 'Non pubblicare'
   CMSFileAddController:
     MENUTITLE: Files
   CMSMain:
-    ACCESS: 'Access to ''{title}'' section'
-    ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
-    AddNew: 'Add new page'
-    AddNewButton: 'Add new'
-    ChoosePageParentMode: 'Choose where to create this page'
-    ChoosePageType: 'Choose page type'
-    Create: Create
+    ACCESS: 'Accesso alla sezione ''{title}'''
+    ACCESS_HELP: 'Consente la visualizzazione della sezione con l''albero delle pagine e i contenuti. I permessi di visualizzazione e modifica possono essere gestiti attraverso menù a tendina specifici della pagina, come dai separati "Permessi sui contenuti".'
+    AddNew: 'Aggiungi nuova pagina'
+    AddNewButton: 'Aggiungi nuova'
+    ChoosePageParentMode: 'Scegli dove creare questa pagina'
+    ChoosePageType: 'Scegli tipo di pagina'
+    Create: Crea
     DELETE: 'Elimina dal sito bozza'
     DELETEFP: 'Elimina dal sito pubblicato'
-    DESCREMOVED: 'and {count} descendants'
+    DESCREMOVED: 'e {count} discendenti'
     EMAIL: Email
-    EditTree: 'Edit Tree'
-    ListFiltered: 'Filtered list.'
-    MENUTITLE: 'Edit Page'
+    EditTree: 'Modifica albero'
+    ListFiltered: 'Lista filtrata.'
+    MENUTITLE: 'Modifica pagina'
     NEW: Nuova
     PAGENOTEXISTS: 'Questa pagina non esiste'
-    PAGES: Pages
-    PAGETYPEANYOPT: Any
-    PAGETYPEOPT: 'Page Type'
+    PAGES: Pagine
+    PAGETYPEANYOPT: Qualsiasi
+    PAGETYPEOPT: 'Tipo di pagina'
     PUBALLCONFIRM: 'Per favore pubblica ogni singola pagina nel sito, copiando i contenuti in ''stage'' su ''live''.'
     PUBALLFUN: 'Funzione "Pubblica tutto"'
     PUBALLFUN2: 'Cliccare questo bottone equivale ad accedere a tutte le pagine e cliccare ''pubblica''. Tale bottone è inteso per essere utilizzato dopo aver apportato modifiche di massa ai contenuti, come nella prima pubblicazione del sito.'
-    PUBPAGES: 'Done: Published {count} pages'
-    PageAdded: 'Successfully created page'
+    PUBPAGES: 'Fatto: Pubblicate {count} pagine'
+    PageAdded: 'Pagina creata con successo'
     REMOVED: 'Cancellato ''%s''%s dal sito produzione'
-    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
+    REMOVEDPAGE: 'Eliminata ''{title}'' dal sito pubblicato'
     REMOVEDPAGEFROMDRAFT: 'Cacellato ''%s'' dal sito bozza'
     RESTORE: Ripristina
-    RESTORED: 'Restored ''{title}'' successfully'
+    RESTORED: 'Ripristinata ''{title}'' con successo'
     ROLLBACK: 'Ripristina a questa versione'
-    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
+    ROLLEDBACKPUB: 'Ripristinata la versione pubblicata. Il nuovo numero di versione è #{version}'
     ROLLEDBACKVERSION: 'Ripristinata la versione #%d. Il nuovo numero di versione è #%d'
     SAVE: Salva
-    SAVEDRAFT: 'Save Draft'
-    TabContent: Content
-    TabHistory: History
-    TabSettings: Settings
-    TreeFiltered: 'Filtered tree.'
-    TreeFilteredClear: 'Clear filter'
+    SAVEDRAFT: 'Salva bozza'
+    TabContent: Contenuto
+    TabHistory: Archivio
+    TabSettings: Impostazioni
+    TreeFiltered: 'Albero filtrato.'
+    TreeFilteredClear: 'Azzera filtro'
   CMSMain_left.ss:
-    'APPLY FILTER': 'Apply Filter'
-    RESET: Reset
+    'APPLY FILTER': 'Applica filtro'
+    RESET: Azzera
   CMSPageAddController:
-    MENUTITLE: 'Add page'
-    ParentMode_child: 'Under another page'
-    ParentMode_top: 'Top level'
+    MENUTITLE: 'Aggiungi pagina'
+    ParentMode_child: 'Sotto un''altra pagina'
+    ParentMode_top: 'Primo livello'
   CMSPageEditController:
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: 'Modifica pagina'
   CMSPageHistoryController:
-    COMPAREMODE: 'Compare mode (select two)'
-    COMPAREVERSIONS: 'Compare Versions'
-    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
-    MENUTITLE: History
-    REVERTTOTHISVERSION: 'Revert to this version'
-    SHOWUNPUBLISHED: 'Show unpublished versions'
-    SHOWVERSION: 'Show Version'
-    VIEW: view
-    VIEWINGVERSION: 'Currently viewing version {version}.'
+    COMPAREMODE: 'Modalità confronto (selezionane due)'
+    COMPAREVERSIONS: 'Confronta versioni'
+    COMPARINGVERSION: 'Confronto versioni {version1} e {version2}.'
+    MENUTITLE: Archivio
+    REVERTTOTHISVERSION: 'Ripristina a questa versione'
+    SHOWUNPUBLISHED: 'Mostra versioni non pubblicate'
+    SHOWVERSION: 'Mostra versione'
+    VIEW: vista
+    VIEWINGVERSION: 'Versione attualmente visualizzata {version}.'
   CMSPageHistoryController_versions.ss:
-    AUTHOR: Author
-    NOTPUBLISHED: 'Not published'
-    PUBLISHER: Publisher
-    UNKNOWN: Unknown
-    WHEN: When
+    AUTHOR: Autore
+    NOTPUBLISHED: 'Non pubblicato'
+    PUBLISHER: Editore
+    UNKNOWN: Sconosciuto
+    WHEN: Quando
   CMSPageSettingsController:
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: 'Modifica pagina'
   CMSPagesController:
-    GalleryView: 'Gallery View'
-    ListView: 'List View'
-    MENUTITLE: Pages
-    TreeView: 'Tree View'
+    GalleryView: 'Visualizzazione a galleria'
+    ListView: 'Visualizzazione a lista'
+    MENUTITLE: Pagine
+    TreeView: 'Visualizzazione a albero'
   CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: 'Drag''n''drop'
-    MULTISELECT: Multi-selection
+    MULTISELECT: 'Selezione multipla'
   CMSPagesController_Tools.ss:
-    FILTER: Filter
+    FILTER: Filtra
   CMSSearch:
-    FILTERDATEFROM: From
-    FILTERDATEHEADING: Date
-    FILTERDATETO: To
-    FILTERLABELTEXT: Content
+    FILTERDATEFROM: Da
+    FILTERDATEHEADING: Data
+    FILTERDATETO: A
+    FILTERLABELTEXT: Contenuto
   CMSSettingsController:
-    MENUTITLE: Settings
+    MENUTITLE: Impostazioni
   CMSSiteTreeFilter_ChangedPages:
-    Title: 'Changed pages'
+    Title: 'Pagine cambiate'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'All pages, including deleted'
+    Title: 'Tutte le pagine, eliminate incluse'
   CMSSiteTreeFilter_Search:
-    Title: 'All pages'
-  CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
+    Title: 'Tutte le pagine'
   ContentControl:
     NOTEWONTBESHOWN: 'Nota: questo messaggio non verrà mostrato ai visitatori'
   ContentController:
-    ARCHIVEDSITE: 'Sito Archiviato'
-    ARCHIVEDSITEFROM: 'Archived site from'
+    ARCHIVEDSITE: 'Preview version'
+    ARCHIVEDSITEFROM: 'Sito archiviato da'
     CMS: CMS
     DRAFTSITE: 'Bozza del sito'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Devi autenticarti utilizzando la tua password per poter visualizzare bozze o contenuti archiviati. <a href="%s">Clicca qui per tornare al sito di pubblicazione</a>'
     Email: Email
-    InstallFilesDeleted: 'Installation files have been successfully deleted.'
-    InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    InstallFilesDeleted: 'I file di installazione sono stati eliminati con successo.'
+    InstallSecurityWarning: 'Per motivi di sicurezza ora devi eliminare i file di installazione, a meno che non stai pianificando in installare nuovamente più tardi (<em>richiede accesso da amministratore, vedi sopra</em>). Inoltre il server web ora richiede permessi di scrittura solo alla cartella "assets", Quindi puoi rimuovere i permessi di scrittura da tutte le altre cartelle. <a href="{link}" style="text-align: center;">Clicca qui per cancellare i file di installazione.</a>'
+    InstallSuccessCongratulations: 'SilverStripe è stato installato con successo.'
     LOGGEDINAS: 'Sei acceduto come'
     LOGIN: Accedi
     LOGOUT: Disconnetti
     NOTLOGGEDIN: 'Non connesso'
     PUBLISHEDSITE: 'Sito pubblicato'
     Password: Password
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
-    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
+    PostInstallTutorialIntro: 'Questo sito web è una versione semplificata di un sito di SilverStripe 2. Per estenderlo, visita {link}.'
+    StartEditing: 'Puoi iniziare a modificare i contenuti del sito aprendo <a href="{link}">il CMS</a>.'
+    UnableDeleteInstall: 'Impossibile eliminare i file di installazione. Cancella manualmente i file sotto indicati'
     VIEWPAGEIN: 'Mostra pagina in:'
   ErrorPage:
     CODE: 'Codice di errore'
     DEFAULTERRORPAGECONTENT: '<p>Spiacente, sembra che tu cercassi di accedere ad una pagina che non esiste.</p><p>Controlla che l''URL che stavi cercando di accedere sia corretta e prova di nuovo.</p>'
     DEFAULTERRORPAGETITLE: 'Pagina non trovata'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Server error'
-    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
-    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Spiacenti, c''è stato un problema con la gestione della tua richiesta.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Errore server'
+    DESCRIPTION: 'Contenuto personalizzato per differenti casi di errore (es. "Pagina non trovata")'
+    ERRORFILEPROBLEM: 'Errore nell''apertura del file "{filename}" per la scrittura. Controlla i permessi del file.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Richiesta errata'
     401: '401 - Non Autorizzato'
     403: '403 - Accesso Negato'
@@ -220,75 +216,71 @@ it:
     504: '504 - Timeout del gateway'
     505: '505 - Versione HTTP non supportata'
   Folder:
-    AddFolderButton: 'Add folder'
+    AddFolderButton: 'Aggiungi cartella'
     DELETEUNUSEDTHUMBNAILS: 'Elimina anteprime inutilizzate'
     UNUSEDFILESTITLE: 'File inutilizzati'
     UNUSEDTHUMBNAILSTITLE: 'Anteprime inutilizzate'
-    UploadFilesButton: Upload
-  GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
+    UploadFilesButton: Carica
   LeftAndMain:
-    DELETED: Deleted.
-    PreviewButton: Preview
-    SAVEDUP: Saved.
-    STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
-    SearchResults: 'Search Results'
-    VersionUnknown: Unknown
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  Page:
-    DESCRIPTION: 'Generic content page'
+    DELETED: Eliminata.
+    PreviewButton: Anteprima
+    SAVEDUP: Salvata.
+    STATUSPUBLISHEDSUCCESS: 'Pubblicata ''{title}'' con successo'
+    SearchResults: 'Risultati della ricerca'
+    VersionUnknown: Sconosciuta
   Permission:
-    CMS_ACCESS_CATEGORY: 'CMS Access'
+    CMS_ACCESS_CATEGORY: 'Accesso CMS'
   Permissions:
-    CONTENT_CATEGORY: 'Content permissions'
-    PERMISSIONS_CATEGORY: 'Roles and access permissions'
+    CONTENT_CATEGORY: 'Permessi sui contenuti'
+    PERMISSIONS_CATEGORY: 'Ruoli e permessi d''accesso'
   RedirectorPage:
-    DESCRIPTION: 'Redirects to a different internal page'
+    DESCRIPTION: 'Redirige a un''altra pagina del sito'
     HASBEENSETUP: 'Una pagina di redirezione è stata configurata nonostante non vi sia alcun indirizzo a cui farla puntare'
     HEADER: 'Questa pagina redirigerà gli utenti su un''altra'
     OTHERURL: 'Altro indirizzo del sito web'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Redirigi a'
     REDIRECTTOEXTERNAL: 'Un altro sito web'
     REDIRECTTOPAGE: 'Una pagina sul tuo sito web'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Pagina sul tuo sito web'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
   ReportAdmin:
-    MENUTITLE: Reports
+    MENUTITLE: Rapporti
   ReportAdminForm:
-    FILTERBY: 'Filter by'
+    FILTERBY: 'Filtra per'
   SearchForm:
     GO: Vai
     SEARCH: Cerca
-    SearchResults: 'Search Results'
+    SearchResults: 'Risultati della ricerca'
   SideReport:
-    BROKENFILES: 'Pages with broken files'
-    BROKENLINKS: 'Pages with broken links'
-    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
-    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
-    BrokenLinksGroupTitle: 'Broken links reports'
-    ContentGroupTitle: 'Content reports'
+    BROKENFILES: 'Pagine con file non funzionanti'
+    BROKENLINKS: 'Pagine con link non funzionanti.'
+    BROKENREDIRECTORPAGES: 'Pagina di redirezione che puntano a pagine eliminate'
+    BROKENVIRTUALPAGES: 'Pagine virtuali che puntano a pagine eliminate'
+    BrokenLinksGroupTitle: 'Rapporto link non funzionanti'
+    ContentGroupTitle: 'Rapporti sui contenuti'
     EMPTYPAGES: 'Pagine vuote'
     LAST2WEEKS: 'Pagine modificate nelle ultime 2 settimane'
-    OtherGroupTitle: Other
-    ParameterLiveCheckbox: 'Check live site'
-    REPEMPTY: 'The {title} report is empty.'
+    OtherGroupTitle: Altro
+    ParameterLiveCheckbox: 'Verifica sito pubblicato'
+    REPEMPTY: 'Il rapporto {title} è vuoto.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
-    ShareLink: 'Share link'
+    ShareInstructions: 'Per condividere questa pagina, copia e incolla il link qui sotto.'
+    ShareLink: 'Link di condivisione'
   SilverStripeNavigatorLinkl:
-    CloseLink: Close
+    CloseLink: Chiudi
   SiteConfig:
     DEFAULTTHEME: '(Usa il tema di default)'
     EDITHEADER: '(Chi può modificare le pagine in questo sito?)'
     EDIT_PERMISSION: 'Gestisci la configurazione del sito'
     EDIT_PERMISSION_HELP: 'Capacità di modificare le impostazioni globali di accesso/permessi pagina alto livello'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Nome del tuo sito'
     SITETAGLINE: 'Motto/Slogan del sito'
     SITETITLE: 'Titolo del sito'
-    TABACCESS: Access
-    TABMAIN: Main
+    TABACCESS: Accesso
+    TABMAIN: Principale
     TAGLINEDEFAULT: 'lo slogan qui'
     THEME: Tema
     TOPLEVELCREATE: 'Chi può creare pagine a livello di root?'
@@ -298,16 +290,16 @@ it:
     ACCESSHEADER: 'Chi può vedere questa pagina sul mio sito?'
     ACCESSLOGGEDIN: 'Utenti autenticati'
     ACCESSONLYTHESE: 'Solamente queste persone (scegli dalla lista)'
-    ADDEDTODRAFTHELP: 'Page has not been published yet'
-    ADDEDTODRAFTSHORT: Draft
+    ADDEDTODRAFTHELP: 'La pagina non è stata ancora pubblicata'
+    ADDEDTODRAFTSHORT: Bozza
     ALLOWCOMMENTS: 'Permetti commenti in questa pagina?'
-    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+    APPEARSVIRTUALPAGES: 'Questo contenuto appare nelle pagine virtuali nelle sezioni {title}.'
     BUTTONCANCELDRAFT: 'Cancella le modifiche salvate in bozza'
     BUTTONCANCELDRAFTDESC: 'Cancella la tua bozza e ritorna alla versione corrente della pagina pubblicata'
     BUTTONSAVEPUBLISH: 'Salva & pubblica'
     BUTTONUNPUBLISH: 'Non pubblicare'
     BUTTONUNPUBLISHDESC: 'Rimuovi questa pagina dal sito pubblicato'
-    CREATED: 'Date Created'
+    CREATED: 'Data creazione'
     Comments: Commenti
     Content: Contenuto
     DEFAULTABOUTCONTENT: '<p>Puoi riempire questa pagina con i tuoi contenuti, oppure cancellarla e creare le tue pagine.<br /></p>'
@@ -316,11 +308,11 @@ it:
     DEFAULTCONTACTTITLE: Contattaci
     DEFAULTHOMECONTENT: '<p>Benvenuto in SilverStripe! Questa è l''homepage di default. Puoi modificare questa pagina aprendo <a href="admin/">il CMS</a>. Puoi visualizzare adesso la <a href="http://doc.silverstripe.com">documentazione di sviluppo</a>, o iniziaren <a href="http://doc.silverstripe.com/doku.php?id=tutorials">i tutorial.</a></p>'
     DEFAULTHOMETITLE: Home
-    DELETEDPAGEHELP: 'Page is no longer published'
-    DELETEDPAGESHORT: Deleted
-    DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
-    DESCRIPTION: 'Generic content page'
-    DependtPageColumnLinkType: 'Link type'
+    DELETEDPAGEHELP: 'La pagina non è più pubblicata'
+    DELETEDPAGESHORT: Eliminata
+    DEPENDENT_NOTE: 'Le seguenti pagine dipendono da questa pagina. Queste includono pagine virtuali, pagine di redirezione e pagine con link nel contenuto.'
+    DESCRIPTION: 'Pagina con contenuto generico'
+    DependtPageColumnLinkType: 'Tipo di link'
     DependtPageColumnURL: URL
     EDITANYONE: 'Chiunque può autenticarsi all''interno del CMS'
     EDITHEADER: 'Chi può modificare questo all''interno del CMS?'
@@ -332,31 +324,31 @@ it:
     HASBROKENLINKS: 'Quest pagina ha collegamenti non funzionanti.'
     HTMLEDITORTITLE: Contenuto
     INHERIT: 'Eredita dalla pagina madre'
-    LASTUPDATED: 'Last Updated'
+    LASTUPDATED: 'Ultimo aggiornamento'
     LINKCHANGENOTE: 'Cambiare il link di questa pagina farà cambiare anche i link delle pagine figlio. '
     MENUTITLE: 'Etichetta di navigazione'
     METADESC: Descrizione
     METAEXTRA: 'Meta tag personalizzati'
     METAKEYWORDS: 'Parole chiavi'
     METATITLE: Titolo
-    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
-    MODIFIEDONDRAFTSHORT: Modified
+    MODIFIEDONDRAFTHELP: 'La pagina ha modifiche non pubblicate'
+    MODIFIEDONDRAFTSHORT: Modificata
     MetadataToggle: Metadata
-    PAGELOCATION: 'Page location'
+    PAGELOCATION: 'Collocazione pagina'
     PAGETITLE: 'Nome della pagina'
     PAGETYPE: 'Tipo di pagina'
     PARENTID: 'Pagina madre'
     PARENTTYPE: 'Collocazione pagina'
     PARENTTYPE_ROOT: 'Pagina Top-Level'
-    PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
+    PARENTTYPE_SUBPAGE: 'Pagina sotto una pagina madre'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Controlla quali gruppi possono accedere o editare certe pagine'
     PERMISSION_GRANTACCESS_HELP: 'Consenti le impostazioni di restrizione d''accesso a pagine specifiche nella sezione "Pagine".'
     PLURALNAME: 'Alberi del sito'
-    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
-    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
-    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
-    REMOVEDFROMDRAFTSHORT: 'Removed from draft'
-    REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
+    PageTypNotAllowedOnRoot: 'Il tipo di pagina "{type}" non è consentito al primo livello'
+    PageTypeNotAllowed: 'Il tipo di pagina "{type}" non è consentito come figlio di questa pagina madre'
+    REMOVEDFROMDRAFTHELP: 'La pagina è pubblicata, ma è stata eliminata dal sito bozza'
+    REMOVEDFROMDRAFTSHORT: 'Eliminato dal sito bozza'
+    REMOVE_INSTALL_WARNING: 'Attenzione: devi rimuovere install.php da questa installazione di SilverStripe per motivi di sicurezza.'
     REORGANISE_DESCRIPTION: 'Cambia struttura del sito'
     REORGANISE_HELP: 'Riordina le pagine nella struttura ad albero del sito utilizzando il drag&drop.'
     SHOWINMENUS: 'Visualizza nel menu?'
@@ -364,57 +356,53 @@ it:
     SINGULARNAME: 'Albero del sito'
     TABBEHAVIOUR: Comportamento
     TABCONTENT: Contenuto
-    TABDEPENDENT: 'Dependent pages'
+    TABDEPENDENT: 'Pagine dipendenti'
     TOPLEVEL: 'Contenuto del sito (Livello alto)'
     TOPLEVELCREATORGROUPS: 'Creatori di livello superiore'
     URLSegment: 'Segmento URL'
     VIEWERGROUPS: 'Gruppi di visualizzatori'
-    VIEW_ALL_DESCRIPTION: 'View any page'
+    VIEW_ALL_DESCRIPTION: 'Visualizza qualsiasi pagina'
     VIEW_ALL_HELP: 'Possibilità di vedere qualsiasi pagina del sito senza, tenere conto delle impostazioni nella tab Access. Richiede i permessi di "Accesso ai contenuti del sito"'
-    VIEW_DRAFT_CONTENT: 'View draft content'
-    VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
+    VIEW_DRAFT_CONTENT: 'Visualizza contenuto bozza'
+    VIEW_DRAFT_CONTENT_HELP: 'Si applica per visualizzare le pagine in bozza al di fuori del CMS. Utile per collaboratori esterni che non hanno accesso al CMS.'
     Viewers: 'Gruppi di visualizzatori'
-    Visibility: Visibility
+    Visibility: Visibilità
     has_one_Parent: 'Pagina madre'
     many_many_BackLinkTracking: 'Tracciamento link di ritorno'
     many_many_ImageTracking: 'Tracciamento immagine'
     many_many_LinkTracking: 'Tracciamento collegamento'
   SiteTreeURLSegmentField:
-    HelpChars: ' Special characters are automatically converted or removed.'
+    HelpChars: 'I caratteri speciali sono automaticamente convertiti o eliminati.'
   StaticExporter:
     BASEURL: 'URL di base'
     EXPORTTO: 'Esporta in questa cartella'
     NAME: 'Sistema di esportazione statico'
   TableListField:
-    SELECT: 'Select:'
+    SELECT: 'Seleziona:'
   TableListField.ss:
-    NOITEMSFOUND: 'No items found'
-    SORTASC: 'Sort in ascending order'
-    SORTDESC: 'Sort in descending order'
+    NOITEMSFOUND: 'Nessun elemento trovato'
+    SORTASC: 'Ordina in modo ascendente'
+    SORTDESC: 'Ordina in modo discendente'
   TableListField_PageControls.ss:
-    DISPLAYING: Displaying
-    OF: of
-    TO: to
+    DISPLAYING: Visualizzo
+    OF: di
+    TO: a
     VIEWFIRST: 'Visualizza primo'
     VIEWLAST: 'Visualizza ultimo'
     VIEWNEXT: 'Visualizza successivo'
     VIEWPREVIOUS: 'Visualizza precedente'
-  TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
-  TestPage:
-    DESCRIPTION: 'Generic content page'
   TreeTools:
-    DisplayLabel: 'Display:'
+    DisplayLabel: 'Visualizza:'
   ViewArchivedEmail.ss:
     CANACCESS: 'Puoi accedere al sito archiviato da questo indirizzo:'
     HAVEASKED: 'Hai chiesto di visualizzare il contenuto del nostro sito il'
   VirtualPage:
     CHOOSE: 'Scegli una pagina a cui collegarla'
-    DESCRIPTION: 'Displays the content of another page'
+    DESCRIPTION: 'Visualizza il contenuto di un''altra pagina'
     EDITCONTENT: 'Clicca qui per modificare il contenuto'
     HEADER: 'Questa è una pagina virtuale'
     PLURALNAME: 'Pagine virtuali'
-    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
+    PageTypNotAllowedOnRoot: 'Il tipo di pagina originale "{type}" non è consentito al primo livello per questa pagina virtuale'
     SINGULARNAME: 'Pagina virtuale'
   cms:
-    FILESYSTEMSYNC: 'Sync files'
+    FILESYSTEMSYNC: 'Sincronizza file'

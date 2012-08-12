@@ -26,7 +26,7 @@ ne:
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
-  AssetAdmin_Tools.ss:
+  AssetAdmin_Tools:
     FILTER: Filter
   AssetAdmin_left.ss:
     GO: Go
@@ -35,10 +35,6 @@ ne:
     PAGES: page(s)
   BackLink_Button.ss:
     Back: Back
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Any
     BROKENLINKS: 'Broken links report'
@@ -164,12 +160,10 @@ ne:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
     Title: 'सबै पानाहरू'
-  CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
     DRAFTSITE: 'Draft Site'
@@ -196,6 +190,8 @@ ne:
     DEFAULTSERVERERRORPAGETITLE: 'Server error'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Bad Request'
     401: '401 - Unauthorized'
     403: '403 - Forbidden'
@@ -225,8 +221,6 @@ ne:
     UNUSEDFILESTITLE: 'Unused files'
     UNUSEDTHUMBNAILSTITLE: 'Unused thumbnails'
     UploadFilesButton: Upload
-  GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Preview
@@ -234,10 +228,6 @@ ne:
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: 'Search Results'
     VersionUnknown: Unknown
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  Page:
-    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
   Permissions:
@@ -248,12 +238,12 @@ ne:
     HASBEENSETUP: 'कुनै पनि पुनर्निर्देशनबिना नै एउटा पुनर्निदेशन पृष्ठ सेटअप गरियो । '
     HEADER: 'यो पेजले प्रयोगकतालाई अर्को पेजमा लैजान्छ'
     OTHERURL: 'अर्को वेबसाईटको यू.र्.ल्'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'अर्को पेजमा लैजाउ'
     REDIRECTTOEXTERNAL: 'अर्को वेबसाईट'
     REDIRECTTOPAGE: 'तपाईंको वेबसाईटमा एउटा पेज'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'तपाईंको वेबसाईटमा एउटा पेज'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -284,6 +274,8 @@ ne:
     EDITHEADER: 'Who can edit pages on this site?'
     EDIT_PERMISSION: 'Manage site configuration'
     EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Your Site Name'
     SITETAGLINE: 'Site Tagline/Slogan'
     SITETITLE: 'Site title'
@@ -399,10 +391,6 @@ ne:
     VIEWLAST: 'View last'
     VIEWNEXT: 'View next'
     VIEWPREVIOUS: 'View previous'
-  TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
-  TestPage:
-    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:

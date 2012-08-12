@@ -26,7 +26,7 @@ da:
     Upload: Overfør
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Slet mapper'
-  AssetAdmin_Tools.ss:
+  AssetAdmin_Tools:
     FILTER: Filter
   AssetAdmin_left.ss:
     GO: Go
@@ -35,10 +35,6 @@ da:
     PAGES: side(r)
   BackLink_Button.ss:
     Back: Tilbage
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Standard indholdsside'
-  BigFamilyPage:
-    DESCRIPTION: 'Standard indholdsside'
   BrokenLinksReport:
     Any: Alle
     BROKENLINKS: 'Rapport over brudte links'
@@ -164,12 +160,10 @@ da:
     Title: 'Alle sider, inklusive slettede'
   CMSSiteTreeFilter_Search:
     Title: 'Alle sider'
-  CaseStudy:
-    DESCRIPTION: 'Casestudieside til fremtidige eksempler'
   ContentControl:
     NOTEWONTBESHOWN: 'Bemærk: denne besked bliver ikke vist til dine besøgende '
   ContentController:
-    ARCHIVEDSITE: 'Arkiveret side'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Arkiveret side fra'
     CMS: CMS
     DRAFTSITE: Kladdeside
@@ -196,6 +190,8 @@ da:
     DEFAULTSERVERERRORPAGETITLE: Serverfejl
     DESCRIPTION: 'Brugerdefineret indhold for forskellige fejltyper (f.eks. "Siden blev ikke fundet")'
     ERRORFILEPROBLEM: 'Kunne ikke åbne filen "{filename}" til skrivning. Undersøg filrettighederne.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Bad Request'
     401: '401 - Unauthorized'
     403: '403 - Forbidden'
@@ -225,8 +221,6 @@ da:
     UNUSEDFILESTITLE: 'Ubrugte filer'
     UNUSEDTHUMBNAILSTITLE: 'Ubrugte miniaturer'
     UploadFilesButton: Overfør
-  GridFieldTestPage:
-    DESCRIPTION: 'Standard indholdsside'
   LeftAndMain:
     DELETED: Slettet.
     PreviewButton: Forhåndsvisning
@@ -234,10 +228,6 @@ da:
     STATUSPUBLISHEDSUCCESS: 'Udgav ''{title}'' med succes'
     SearchResults: Søgeresultater
     VersionUnknown: Ukendt
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Standard indholdsside'
-  Page:
-    DESCRIPTION: 'Standard indholdsside'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Adgang'
   Permissions:
@@ -248,12 +238,12 @@ da:
     HASBEENSETUP: 'En omdirigeringsside er blevet sat op, uden et sted at omdirigere til.'
     HEADER: 'Denne side omdirigerer besøgende til en anden side'
     OTHERURL: 'Andet websteds URL'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Omdiriger til'
     REDIRECTTOEXTERNAL: 'Et andet websted'
     REDIRECTTOPAGE: 'En side på dit websted'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Side på dit websted'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Standard indholdsside'
   ReportAdmin:
     MENUTITLE: Rapporter
   ReportAdminForm:
@@ -284,6 +274,8 @@ da:
     EDITHEADER: 'Hvem kan redigere sider på dette websted ?'
     EDIT_PERMISSION: 'Administrer sideopsætningen'
     EDIT_PERMISSION_HELP: 'Mulighed for at ændre indstillingerne for global adgang / topniveauside tilladelser.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Dit sidenavn'
     SITETAGLINE: 'Webstedets Tagline/Slogan'
     SITETITLE: Sidetitel
@@ -399,10 +391,6 @@ da:
     VIEWLAST: 'Vis Sidste'
     VIEWNEXT: 'Vis n&aelig;ste'
     VIEWPREVIOUS: 'Vis forrige'
-  TestFileUploadPage:
-    DESCRIPTION: 'Standard indholdsside'
-  TestPage:
-    DESCRIPTION: 'Standard indholdsside'
   TreeTools:
     DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:

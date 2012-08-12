@@ -26,7 +26,7 @@ nb:
     Upload: 'Last opp'
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Slett foldere'
-  AssetAdmin_Tools.ss:
+  AssetAdmin_Tools:
     FILTER: Filter
   AssetAdmin_left.ss:
     GO: Go
@@ -35,10 +35,6 @@ nb:
     PAGES: page(s)
   BackLink_Button.ss:
     Back: Tilbake
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Generisk innholdsside'
-  BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Any
     BROKENLINKS: 'Broken links report'
@@ -164,12 +160,10 @@ nb:
     Title: 'Alle sider, inkludert slettede'
   CMSSiteTreeFilter_Search:
     Title: 'Alle sider'
-  CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Merk: denne beskjeden vil ikke være synlig for besøkende'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
     DRAFTSITE: 'Draft Site'
@@ -196,6 +190,8 @@ nb:
     DEFAULTSERVERERRORPAGETITLE: Serverfeil
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Dårlig Sidespørring'
     401: '401 - Uautorisert'
     403: '403 - Forbudt'
@@ -225,8 +221,6 @@ nb:
     UNUSEDFILESTITLE: 'Filer ikke i bruk'
     UNUSEDTHUMBNAILSTITLE: 'Miniatyrbilder ikke i bruk'
     UploadFilesButton: 'Last opp'
-  GridFieldTestPage:
-    DESCRIPTION: 'Generisk innholdsside'
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Forhåndsvisning
@@ -234,10 +228,6 @@ nb:
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: Søkeresultater
     VersionUnknown: Ukjent
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  Page:
-    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
   Permissions:
@@ -248,12 +238,12 @@ nb:
     HASBEENSETUP: 'En omdirigeringssside har blitt satt opp uten et mål å omdirigere til.'
     HEADER: 'Denne siden vil omdirigere brukere til en annen side'
     OTHERURL: 'Andre nettsteds URL'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Omdirigere til'
     REDIRECTTOEXTERNAL: 'Et annet nettsted'
     REDIRECTTOPAGE: 'En side på nettstedet'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Side på ditt nettsted'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Generisk innholdsside'
   ReportAdmin:
     MENUTITLE: Rapporter
   ReportAdminForm:
@@ -284,6 +274,8 @@ nb:
     EDITHEADER: 'Who can edit pages on this site?'
     EDIT_PERMISSION: 'Manage site configuration'
     EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Your Site Name'
     SITETAGLINE: 'Site Tagline/Slogan'
     SITETITLE: 'Site title'
@@ -319,7 +311,7 @@ nb:
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Slettet
     DEPENDENT_NOTE: 'De følgende sidene avhenger av denne siden. Dette inkluderer virtuelle sider, omdirigeringssider og sider med innholdslenker.'
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Generisk innholdsside'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
     EDITANYONE: 'Alle som kan logge inn til kontrollpanelet'
@@ -399,10 +391,6 @@ nb:
     VIEWLAST: 'Se siste'
     VIEWNEXT: 'Se neste'
     VIEWPREVIOUS: 'Se forrige'
-  TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
-  TestPage:
-    DESCRIPTION: 'Generisk innholdsside'
   TreeTools:
     DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:

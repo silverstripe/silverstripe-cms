@@ -6,7 +6,7 @@ th:
     AppCategoryArchive: Archive
     AppCategoryAudio: ไฟล์เสียง
     AppCategoryFlash: แฟลช
-    AppCategoryImage: 'รูปภาพ'
+    AppCategoryImage: รูปภาพ
     AppCategoryVideo: วีดีโอ
     BackToFolder: ย้อนกลับไปที่โฟลเดอร์
     CREATED: วันที่
@@ -26,8 +26,8 @@ th:
     Upload: อัพโหลด
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
-  AssetAdmin_Tools.ss:
-    FILTER: ตัวกรองข้อมูล
+  AssetAdmin_Tools:
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: ไป
   AssetTableField:
@@ -35,10 +35,6 @@ th:
     PAGES: page(s)
   BackLink_Button.ss:
     Back: ย้อนกลับ
-  BasicFieldsTestPage:
-    DESCRIPTION: หน้าเนื้อหาทั่วไป
-  BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Any
     BROKENLINKS: รายงานลิงค์เสีย
@@ -47,7 +43,7 @@ th:
     CheckSiteDropdownPublished: เว็บไซต์ที่เผยแพร่แล้ว
     ColumnDateLastModified: วันที่แก้ไขล่าสุด
     ColumnDateLastPublished: วันที่เผยแพร่ล่าสุด
-    ColumnProblemType: 'ประเภทปัญหา'
+    ColumnProblemType: ประเภทปัญหา
     ColumnURL: URL
     HasBrokenFile: มีไฟล์เสีย
     HasBrokenLink: มีลิงค์เสีย
@@ -164,12 +160,10 @@ th:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
     Title: หน้าทั้งหมด
-  CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'หมายเหตุ: ข้อความนี้จะไม่ถูกนำไปแสดงให้ผู้เยี่ยมชมเว็บไซต์ของคุณเห็น'
   ContentController:
-    ARCHIVEDSITE: 'Archived Site'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
     DRAFTSITE: เว็บไซต์ฉบับร่าง
@@ -196,6 +190,8 @@ th:
     DEFAULTSERVERERRORPAGETITLE: เซิร์ฟเวอร์เกิดข้อผิดพลาด
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Bad Request'
     401: '401 - Unauthorized'
     403: '403 - Forbidden'
@@ -225,8 +221,6 @@ th:
     UNUSEDFILESTITLE: 'Unused files'
     UNUSEDTHUMBNAILSTITLE: 'Unused thumbnails'
     UploadFilesButton: Upload
-  GridFieldTestPage:
-    DESCRIPTION: หน้าเนื้อหาทั่วไป
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: ดูตัวอย่าง
@@ -234,10 +228,6 @@ th:
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: ผลการค้นหา
     VersionUnknown: Unknown
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  Page:
-    DESCRIPTION: หน้าเนื้อหาทั่วไป
   Permission:
     CMS_ACCESS_CATEGORY: 'การเข้าถึง CMS'
   Permissions:
@@ -248,12 +238,12 @@ th:
     HASBEENSETUP: 'A redirector page has been set up without anywhere to redirect to.'
     HEADER: หน้าเว็บนี้จะเปลี่ยนเส้นทางผู้ใช้งานไปยังหน้าเว็บอื่นๆ
     OTHERURL: 'ที่อยู่ URL ของเว็บไซต์อื่นๆ'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: เปลี่ยนเส้นทางไปที่
     REDIRECTTOEXTERNAL: เว็บไซต์อื่นๆ
     REDIRECTTOPAGE: หน้าเว็บในเว็บไซต์ของคุณ
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: หน้าเว็บที่อยู่บนเว็บไซต์ของคุณ
-  RelationFieldsTestPage:
-    DESCRIPTION: หน้าเนื้อหาทั่วไป
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -284,6 +274,8 @@ th:
     EDITHEADER: 'ใครสามารถแก้ไขหน้าเว็บบนเว็บไซต์นี้ได้บ้าง?'
     EDIT_PERMISSION: การจัดการการกำหนดค่าของเว็บไซต์
     EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: ชื่อเว็บไซต์ของคุณ
     SITETAGLINE: 'Site Tagline/Slogan'
     SITETITLE: ชื่อเว็บไซต์
@@ -319,7 +311,7 @@ th:
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Deleted
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: หน้าเนื้อหาทั่วไป
     DependtPageColumnLinkType: ชนิดของลิงค์
     DependtPageColumnURL: URL
     EDITANYONE: 'ทุกคนสามารถเข้าสู่ระบบของ CMS ได้ทั้งหมด'
@@ -399,10 +391,6 @@ th:
     VIEWLAST: เปิดดูหน้าสุดท้าย
     VIEWNEXT: เปิดดูถัดไป
     VIEWPREVIOUS: เปิดดูก่อนหน้า
-  TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
-  TestPage:
-    DESCRIPTION: หน้าเนื้อหาทั่วไป
   TreeTools:
     DisplayLabel: 'แสดง:'
   ViewArchivedEmail.ss:

@@ -3,7 +3,7 @@ uk:
     ADDFILES: 'Додати файли'
     ALLOWEDEXTS: 'Допустимі розширення'
     ActionAdd: 'Додати папку'
-    AppCategoryArchive: 'Архівувати'
+    AppCategoryArchive: Архівувати
     AppCategoryAudio: Аудіо
     AppCategoryFlash: Flash
     AppCategoryImage: Зображення
@@ -20,14 +20,14 @@ uk:
     ListView: 'У вигляді списку'
     MENUTITLE: Файли
     NEWFOLDER: 'Нова Тека'
-    SIZE: 'Розмір'
+    SIZE: Розмір
     THUMBSDELETED: '{count} невикористаних ескізів було видалено'
     TreeView: 'У вигляді дерева'
     Upload: Завантажити
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Видалені папки'
-  AssetAdmin_Tools.ss:
-    FILTER: Фільтр
+  AssetAdmin_Tools:
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Уперед
   AssetTableField:
@@ -35,10 +35,6 @@ uk:
     PAGES: сторінка(и)
   BackLink_Button.ss:
     Back: Назад
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Загальний вміст сторінки'
-  BigFamilyPage:
-    DESCRIPTION: 'Загальна сторінка з вмістом'
   BrokenLinksReport:
     Any: Будь-який
     BROKENLINKS: 'Звіт про биті посилання'
@@ -164,12 +160,10 @@ uk:
     Title: 'Всі сторінки, включаючи видалені'
   CMSSiteTreeFilter_Search:
     Title: 'Всі сторінки'
-  CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Примітка: це повідомлення не буде відображатися для відвідувачів'
   ContentController:
-    ARCHIVEDSITE: 'Заархівований сайт'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Заархівований сайт з'
     CMS: CMS
     DRAFTSITE: 'Чорновий сайт'
@@ -196,6 +190,8 @@ uk:
     DEFAULTSERVERERRORPAGETITLE: 'Помилка сервера'
     DESCRIPTION: 'Власний вміст для різних випадків помилки (наприклад, "Сторінку не знайдено")'
     ERRORFILEPROBLEM: 'Помилка при відкритті файлу "{filename}" для запису. Перевірте, будь-ласка, дозволи на файл.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Bad Request'
     401: '401 - Unauthorized'
     403: '403 - Forbidden'
@@ -225,8 +221,6 @@ uk:
     UNUSEDFILESTITLE: 'Невикористані файли'
     UNUSEDTHUMBNAILSTITLE: 'Невикористані ескізи'
     UploadFilesButton: Завантажити
-  GridFieldTestPage:
-    DESCRIPTION: 'Загальна сторінку з вмістом'
   LeftAndMain:
     DELETED: Видалено
     PreviewButton: 'Попередній перегляд'
@@ -234,10 +228,6 @@ uk:
     STATUSPUBLISHEDSUCCESS: 'Публікація ''{title}'' пройшла успішно'
     SearchResults: 'Результати пошуку'
     VersionUnknown: Невідомий
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Загальна сторінка з вмістом'
-  Page:
-    DESCRIPTION: 'Загальна сторінка з вмістом'
   Permission:
     CMS_ACCESS_CATEGORY: 'Доступ до CMS'
   Permissions:
@@ -248,12 +238,12 @@ uk:
     HASBEENSETUP: 'Сторінка перенаправлення була встановлена без указання цілі перенаправлення'
     HEADER: 'Ця сторінка перенаправляє користувачів на іншу сторінку'
     OTHERURL: 'URL іншого сайту'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Перенапралено на'
     REDIRECTTOEXTERNAL: 'Інший сайт'
     REDIRECTTOPAGE: 'Сторінку на Вашому сайті'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Сторінки на Вашому сайті'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Загальний вміст сторінки'
   ReportAdmin:
     MENUTITLE: Звіти
   ReportAdminForm:
@@ -284,6 +274,8 @@ uk:
     EDITHEADER: 'Хто може редагувати сторінки на цьому сайті?'
     EDIT_PERMISSION: 'Керувати конфігурацією сайту'
     EDIT_PERMISSION_HELP: 'Можливість редагування глобальних налаштувань доступу / дозволів сторінок верхнього рівня.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Назва Вашого Сайту'
     SITETAGLINE: 'Гасло сайту'
     SITETITLE: 'Заголовок сайту'
@@ -294,7 +286,7 @@ uk:
     TOPLEVELCREATE: 'Хто може створювати сторінки верхнього рівня на сайті?'
     VIEWHEADER: 'Хто може переглядати сторінки на цьому сайті?'
   SiteTree:
-    ACCESSANYONE: 'Будь-хто'
+    ACCESSANYONE: Будь-хто
     ACCESSHEADER: 'Хто може переглядати цю сторінку?'
     ACCESSLOGGEDIN: 'Тільки ті, що увійшли'
     ACCESSONLYTHESE: 'Тільки ці люди (виберіть зі списку)'
@@ -319,7 +311,7 @@ uk:
     DELETEDPAGEHELP: 'Сторінка вже не є опублікованою'
     DELETEDPAGESHORT: Видалений
     DEPENDENT_NOTE: 'Наступні сторінки залежать від цієї сторінки. Вони включають віртуальні сторінки, сторінки переадресації і сторінки з посиланням у змісті'
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Загальний вміст сторінки'
     DependtPageColumnLinkType: 'Тип посилання'
     DependtPageColumnURL: URL
     EDITANYONE: 'Будь-хто, хто може увійти до системи'
@@ -399,10 +391,6 @@ uk:
     VIEWLAST: 'Переглянути останню'
     VIEWNEXT: 'Переглянути наступну'
     VIEWPREVIOUS: 'Переглянути попередню'
-  TestFileUploadPage:
-    DESCRIPTION: 'Загальна сторінка з вмістом'
-  TestPage:
-    DESCRIPTION: 'Загальна сторінка з вмістом'
   TreeTools:
     DisplayLabel: 'Відобразити:'
   ViewArchivedEmail.ss:

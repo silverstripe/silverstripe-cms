@@ -3,7 +3,7 @@ bg:
     ADDFILES: 'Добави файлове'
     ALLOWEDEXTS: 'Разрешени разширения'
     ActionAdd: 'Добави директория'
-    AppCategoryArchive: 'Архив'
+    AppCategoryArchive: Архив
     AppCategoryAudio: Audio
     AppCategoryFlash: Flash
     AppCategoryImage: Image
@@ -20,14 +20,14 @@ bg:
     ListView: 'List View'
     MENUTITLE: Файлове
     NEWFOLDER: 'Нова директория'
-    SIZE: 'Размер'
+    SIZE: Размер
     THUMBSDELETED: '{count} unused thumbnails have been deleted'
     TreeView: 'Tree View'
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
-  AssetAdmin_Tools.ss:
-    FILTER: Филтър
+  AssetAdmin_Tools:
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Давай
   AssetTableField:
@@ -35,10 +35,6 @@ bg:
     PAGES: page(s)
   BackLink_Button.ss:
     Back: Back
-  BasicFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  BigFamilyPage:
-    DESCRIPTION: 'Generic content page'
   BrokenLinksReport:
     Any: Всички
     BROKENLINKS: 'Списък на развалени линкове'
@@ -127,7 +123,7 @@ bg:
     COMPAREMODE: 'Режим на сравнение (Избери два)'
     COMPAREVERSIONS: 'Сравни версиите'
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
-    MENUTITLE: History
+    MENUTITLE: История
     REVERTTOTHISVERSION: 'Върни тази версия'
     SHOWUNPUBLISHED: 'Покажи непублекуваната версия'
     SHOWVERSION: 'Покажи версията'
@@ -137,7 +133,7 @@ bg:
     AUTHOR: Автор
     NOTPUBLISHED: Чернова
     PUBLISHER: Автор
-    UNKNOWN: Unknown
+    UNKNOWN: Неизвестно
     WHEN: Когато
   CMSPageSettingsController:
     MENUTITLE: 'Редактиране на страницата'
@@ -164,12 +160,10 @@ bg:
     Title: 'Всички страници, включително изтритите'
   CMSSiteTreeFilter_Search:
     Title: 'Всички страници'
-  CaseStudy:
-    DESCRIPTION: 'Case study page to fature work examples'
   ContentControl:
     NOTEWONTBESHOWN: 'Забележка: Това съобщение няма да се показва на Вашите посетители'
   ContentController:
-    ARCHIVEDSITE: 'Архивиран сайт'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Архивиран сайт от'
     CMS: 'СУС (CMS)'
     DRAFTSITE: Чернови
@@ -180,7 +174,7 @@ bg:
     InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
     LOGGEDINAS: 'Влязъл като'
     LOGIN: Login
-    LOGOUT: 'Изход'
+    LOGOUT: Изход
     NOTLOGGEDIN: 'Извън системата'
     PUBLISHEDSITE: 'Публикувани страници'
     Password: Password
@@ -196,6 +190,8 @@ bg:
     DEFAULTSERVERERRORPAGETITLE: 'Грешка при сървъра'
     DESCRIPTION: 'Специално съдържание при различни грешки (напр. "Страницата не съществува")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Лошо Поискване'
     401: '401 - Неауторизирано'
     403: '403 - Забранено'
@@ -224,20 +220,14 @@ bg:
     DELETEUNUSEDTHUMBNAILS: 'Изтрий неизползвани миниатури'
     UNUSEDFILESTITLE: 'Неизползвани файлове'
     UNUSEDTHUMBNAILSTITLE: 'Неизползвани миниатури'
-    UploadFilesButton: Upload
-  GridFieldTestPage:
-    DESCRIPTION: 'Generic content page'
+    UploadFilesButton: 'Качи '
   LeftAndMain:
     DELETED: Deleted.
-    PreviewButton: Preview
+    PreviewButton: Изглед
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
-    SearchResults: 'Search Results'
+    SearchResults: 'Резултати от търсенето'
     VersionUnknown: Unknown
-  LegacyTableFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
-  Page:
-    DESCRIPTION: 'Generic content page'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
   Permissions:
@@ -248,12 +238,12 @@ bg:
     HASBEENSETUP: 'Създадена е страница за пренасочване без да има накъде да се пренасочи.'
     HEADER: 'Тази страница ще пренасочи потребители към друга страница'
     OTHERURL: 'Друг уебсайт URL'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Пренасочи към'
     REDIRECTTOEXTERNAL: 'Друг уебсайт'
     REDIRECTTOPAGE: 'Страница на вашият уебсайт'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Страница на вашият уебсайт'
-  RelationFieldsTestPage:
-    DESCRIPTION: 'Generic content page'
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
@@ -261,7 +251,7 @@ bg:
   SearchForm:
     GO: Давай
     SEARCH: Търси
-    SearchResults: 'Search Results'
+    SearchResults: 'Резултати от търсенето'
   SideReport:
     BROKENFILES: 'Pages with broken files'
     BROKENLINKS: 'Pages with broken links'
@@ -275,7 +265,7 @@ bg:
     ParameterLiveCheckbox: 'Check live site'
     REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
+    ShareInstructions: 'За да споделиш тая страница, копирай и постави връзката по- долу'
     ShareLink: 'Сподели линк'
   SilverStripeNavigatorLinkl:
     CloseLink: Затвори
@@ -284,6 +274,8 @@ bg:
     EDITHEADER: 'Кой може да редактира страници по сайта?'
     EDIT_PERMISSION: 'Промяна на конфигурацията на сайта'
     EDIT_PERMISSION_HELP: 'Възможност за редакция на глобалните правила за достъп / правата на страниците, най-високо в йерархията'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Име на сайта'
     SITETAGLINE: 'Подзаглавие на сайта'
     SITETITLE: 'Заглавие на сайта'
@@ -346,7 +338,7 @@ bg:
     PAGETITLE: 'Име на страница'
     PAGETYPE: 'Вид страница'
     PARENTID: 'Предишната в йерархията страница'
-    PARENTTYPE: 'Page location'
+    PARENTTYPE: 'Местонахождение на страницата'
     PARENTTYPE_ROOT: 'Страница от най-високо ниво в йерархията'
     PARENTTYPE_SUBPAGE: Подстраница
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Промени правата за достъп до съдържанието'
@@ -374,7 +366,7 @@ bg:
     VIEW_DRAFT_CONTENT: 'Виж черновата'
     VIEW_DRAFT_CONTENT_HELP: 'Отнася се за преглед на страници извън CMS в режим на чернова. Полезно за външни сътрудници, без достъп на CMS.'
     Viewers: 'Viewers Groups'
-    Visibility: Visibility
+    Visibility: Видимост
     has_one_Parent: 'Предишната в йерархията страница'
     many_many_BackLinkTracking: 'Следене на "обратни линкове"'
     many_many_ImageTracking: 'Следене на снимките'
@@ -399,10 +391,6 @@ bg:
     VIEWLAST: 'Преглед на последното'
     VIEWNEXT: 'Преглед на следващото'
     VIEWPREVIOUS: 'Преглед на предишното'
-  TestFileUploadPage:
-    DESCRIPTION: 'Generic content page'
-  TestPage:
-    DESCRIPTION: 'Generic content page'
   TreeTools:
     DisplayLabel: 'Покажи:'
   ViewArchivedEmail.ss:
