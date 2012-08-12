@@ -120,14 +120,14 @@ tr:
   CMSPageEditController:
     MENUTITLE: 'Edit Page'
   CMSPageHistoryController:
-    COMPAREMODE: 'Compare mode (select two)'
+    COMPAREMODE: 'Kıyaslama modu (iki tane seçiniz)'
     COMPAREVERSIONS: 'Versiyonları karşılaştır'
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
     MENUTITLE: Geçmiş
-    REVERTTOTHISVERSION: 'Revert to this version'
-    SHOWUNPUBLISHED: 'Show unpublished versions'
-    SHOWVERSION: 'Show Version'
-    VIEW: view
+    REVERTTOTHISVERSION: 'Bu versiyona düşür'
+    SHOWUNPUBLISHED: 'Yayınlanmamış versiyonları göster'
+    SHOWVERSION: 'Versiyonu Göster'
+    VIEW: 'Göz at'
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Yazar
@@ -161,7 +161,7 @@ tr:
   CMSSiteTreeFilter_Search:
     Title: 'Tüm sayfalar'
   ContentControl:
-    NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
+    NOTEWONTBESHOWN: 'Not: Bu mesaj ziyaretçilerinize gösterilmeyecektir.'
   ContentController:
     ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Archived site from'
@@ -216,11 +216,11 @@ tr:
     504: '504 - Arayapı Zaman Aşımı'
     505: '505 - HTTP Versiyonu Desteklenmiyor'
   Folder:
-    AddFolderButton: 'Add folder'
+    AddFolderButton: 'Klasör ekle'
     DELETEUNUSEDTHUMBNAILS: 'Kullanılmamış thumbnail leri sil'
     UNUSEDFILESTITLE: 'Kullanılmamış dosyalar'
     UNUSEDTHUMBNAILSTITLE: 'Kullanılmamış thumbnail ler'
-    UploadFilesButton: Upload
+    UploadFilesButton: Yükle
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Önizleme
@@ -265,8 +265,8 @@ tr:
     ParameterLiveCheckbox: 'Yayındaki siteyi kontrol et'
     REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
-    ShareLink: 'Share link'
+    ShareInstructions: 'Bu sayfayı paylaşmak için, aşağıdaki linki kopyalayıp yapıştırınız.'
+    ShareLink: 'Linki paylaş'
   SilverStripeNavigatorLinkl:
     CloseLink: Kapat
   SiteConfig:
@@ -398,7 +398,7 @@ tr:
     HAVEASKED: 'Şu tarihe kadar olan site içeriğini görüntülemek istediniz:'
   VirtualPage:
     CHOOSE: 'Bağlantı vermek için bir sayfa seçiniz'
-    DESCRIPTION: 'Displays the content of another page'
+    DESCRIPTION: 'Başka sayfanın içeriğini gösterir'
     EDITCONTENT: 'içeriği düzenlemek için buraya tıklayın'
     HEADER: 'Bu sanal bir sayfadır'
     PLURALNAME: 'Sanal Sayfalar'
