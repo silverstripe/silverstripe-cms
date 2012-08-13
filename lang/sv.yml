@@ -190,8 +190,8 @@ sv:
     DEFAULTSERVERERRORPAGETITLE: Server-fel
     DESCRIPTION: 'Anpassat innehåll för olika fel ärenden (t.ex. "Sidan kan inte hittas")'
     ERRORFILEPROBLEM: 'Kunde inte skriva filen "{filename}". Var vänlig kontrollera skrivrättigheterna.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
+    PLURALNAME: Felsidor
+    SINGULARNAME: Felsida
     400: '400 - Felaktig förfrågan'
     401: '401 - Obehörig'
     403: '403 - Förbjuden'
@@ -238,11 +238,11 @@ sv:
     HASBEENSETUP: 'En omdirigeringssida har skapats utan att ha något mål.'
     HEADER: 'Den här sidan omdirigerar användare till en annan sida'
     OTHERURL: 'En annan url'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: 'Omdirigerings sidor'
     REDIRECTTO: 'Dirigera till'
     REDIRECTTOEXTERNAL: 'En annan sajt'
     REDIRECTTOPAGE: 'En sida på din sajt'
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: 'Omdirigerings sida'
     YOURPAGE: 'Sida på din sajt'
   ReportAdmin:
     MENUTITLE: Rapporter
