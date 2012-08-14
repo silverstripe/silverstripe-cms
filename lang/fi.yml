@@ -194,7 +194,7 @@ fi:
     SINGULARNAME: Virhesivu
     400: '400 - Virheellinen Pyyntö'
     401: '401 - Luvaton'
-    403: '403 . Kielletty'
+    403: '403 - Kielletty'
     404: '404 - Ei löytynyt'
     405: '405 - Menetelmä ei sallittu'
     406: '406 - Ei hyväksyttävä'
@@ -279,8 +279,8 @@ fi:
     SITENAMEDEFAULT: 'Sivustosi nimi'
     SITETAGLINE: 'Sivuston mainoslause/slogan'
     SITETITLE: 'Sivuston otsikko'
-    TABACCESS: Pääsy
-    TABMAIN: Pää
+    TABACCESS: Oikeudet
+    TABMAIN: 'Yleiset asetukset'
     TAGLINEDEFAULT: 'sinun mainoslauseesi tähän'
     THEME: Teema
     TOPLEVELCREATE: 'Kuka voi luoda sivuja sivuston juureen?'
