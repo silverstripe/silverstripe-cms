@@ -13,7 +13,7 @@ sv:
     CurrentFolderOnly: 'Begränsa till aktuell mapp?'
     DetailsView: Detaljer
     FILES: Filer
-    FILESYSTEMSYNCTITLE: 'Uppdatera CMS databasposter av filer på filsystemet. Användbar när nya filer har laddats upp utanför CMS, t.ex. via FTP.'
+    FILESYSTEMSYNCTITLE: 'Uppdatera CMS:ets databasposter för filer i filsystemet. Användbart när nya filer har laddats upp utanför CMS:et, t.ex. via FTP.'
     FROMTHEINTERNET: 'Från internet'
     FROMYOURCOMPUTER: 'Från din dator'
     Filetype: Filtyp
@@ -72,7 +72,7 @@ sv:
     MENUTITLE: Filer
   CMSMain:
     ACCESS: 'Tillgång till sektionen ''{title}'''
-    ACCESS_HELP: 'Tillåt visning av det sektionen innehållande sidträdet och dess innehåll. Rättigheter visa och redigera kan hanteras i sidans dropdownmenyer, liksom i "Innehållsbehörigheter".'
+    ACCESS_HELP: 'Tillåt visning av sektionen innehållande sidträdet och dess innehåll. Rättigheter att visa och redigera sidan kan hanteras i dess rullgardinsmenyer, liksom i "Innehållsbehörigheter".'
     AddNew: 'Skapa ny sida'
     AddNewButton: 'Skapa ny'
     ChoosePageParentMode: 'Välj var du vill skapa denna sida'
@@ -163,7 +163,7 @@ sv:
   ContentControl:
     NOTEWONTBESHOWN: 'Observera: Detta meddelande kommer inte att visas för besökarna'
   ContentController:
-    ARCHIVEDSITE: 'Utkast version'
+    ARCHIVEDSITE: 'Förhandsgranska version'
     ARCHIVEDSITEFROM: 'Arkiverad sajt från'
     CMS: CMS
     DRAFTSITE: Utkast
@@ -181,7 +181,7 @@ sv:
     PostInstallTutorialIntro: 'Denna sajt är en enkel version av en SilverStripe 2 sajt. För att vidareutveckla den se  {link}.'
     StartEditing: 'Du kan ändra din sajts innehåll genom <a href="{link}">publiceringsverktyget</a>.'
     UnableDeleteInstall: 'Lyckades inte radera installationsfilerna. Radera följande filer manuellt.'
-    VIEWPAGEIN: 'Titta på sidan i:'
+    VIEWPAGEIN: 'titta på sidan i:'
   ErrorPage:
     CODE: Felkod
     DEFAULTERRORPAGECONTENT: '<p>Det verkar som om du försökter komma åt en sida som inte finns.</p><p>Var god kontrollera stavningen på adressen som du försökte nå och försök igen.'
@@ -222,9 +222,9 @@ sv:
     UNUSEDTHUMBNAILSTITLE: 'Oanvända tumnaglar'
     UploadFilesButton: 'Ladda upp'
   LeftAndMain:
-    DELETED: Raderad
+    DELETED: Raderad.
     PreviewButton: Förhandsgranska
-    SAVEDUP: Sparad
+    SAVEDUP: Sparad.
     STATUSPUBLISHEDSUCCESS: 'Publiseringen av  ''{title}'' lyckades'
     SearchResults: Sökresultat
     VersionUnknown: Okänd
@@ -238,11 +238,11 @@ sv:
     HASBEENSETUP: 'En omdirigeringssida har skapats utan att ha något mål.'
     HEADER: 'Den här sidan omdirigerar användare till en annan sida'
     OTHERURL: 'Andra sidans URL'
-    PLURALNAME: 'Omdirigerings sidor'
+    PLURALNAME: Omdirigeringssidor
     REDIRECTTO: 'Omdirigera till'
     REDIRECTTOEXTERNAL: 'En annan sajt'
     REDIRECTTOPAGE: 'En sida på din sajt'
-    SINGULARNAME: 'Omdirigerings sida'
+    SINGULARNAME: Omdirigeringssida
     YOURPAGE: 'Sida på din sajt'
   ReportAdmin:
     MENUTITLE: Rapporter
@@ -274,8 +274,8 @@ sv:
     EDITHEADER: 'Vem kan redigera sidor på den här sajten?'
     EDIT_PERMISSION: 'Redigera sajtkonfiguration'
     EDIT_PERMISSION_HELP: 'Möjlighet att ändra den globala åtkomstinställningar / toppnivåbehörigheter.'
-    PLURALNAME: 'Sajt inställningar'
-    SINGULARNAME: 'Sajt inställning'
+    PLURALNAME: Sajtinställningar
+    SINGULARNAME: Sajtinställning
     SITENAMEDEFAULT: 'Din Sajts Namn'
     SITETAGLINE: 'Din sajts Slogan'
     SITETITLE: Sajttitel
@@ -292,7 +292,7 @@ sv:
     ACCESSONLYTHESE: 'Bara dessa (välj från listan)'
     ADDEDTODRAFTHELP: 'Sidan har inte publicerats än'
     ADDEDTODRAFTSHORT: Utkast
-    ALLOWCOMMENTS: 'Acceptera kommentar på den här sidan'
+    ALLOWCOMMENTS: 'Tillåt kommentar på den här sidan?'
     APPEARSVIRTUALPAGES: 'Detta innehåll förekommer även på en virtuell sida i sektionen {title}.'
     BUTTONCANCELDRAFT: 'Ångra utkaständringar'
     BUTTONCANCELDRAFTDESC: 'Radera ditt utkast och återgå till den publicerade sidan'
@@ -350,7 +350,7 @@ sv:
     REMOVEDFROMDRAFTSHORT: 'Radera från utkast'
     REMOVE_INSTALL_WARNING: 'Varning: Du bör radera install.php från SilverStripe-installationen p.g.a säkerhetsskäl.'
     REORGANISE_DESCRIPTION: 'Ändra sidstrukturen'
-    REORGANISE_HELP: 'Flytta om sidorna in sidträdet med drag & släpp.'
+    REORGANISE_HELP: 'Flytta om sidorna i sidträdet genom att dra och släppa.'
     SHOWINMENUS: 'Visa i menyer?'
     SHOWINSEARCH: 'Visa i sökningar?'
     SINGULARNAME: Sidträd
