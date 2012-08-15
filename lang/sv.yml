@@ -320,7 +320,7 @@ sv:
     EDITORGROUPS: Redaktörsgrupper
     EDIT_ALL_DESCRIPTION: 'Redigera alla sidor'
     EDIT_ALL_HELP: 'Möjlighet att redigera alla sidor på sajten, oavsett inställningarna under Åtkomstfliken. Kräver "Tillgång till ''Sidor''-delen"'
-    Editors: Redigerargrupper
+    Editors: Redaktörsgrupper
     HASBROKENLINKS: 'Den här sidan har trasiga länkar.'
     HTMLEDITORTITLE: Innehåll
     INHERIT: 'Ärv från överordnad sida'
@@ -338,7 +338,7 @@ sv:
     PAGETITLE: Sidnamn
     PAGETYPE: Sidtyp
     PARENTID: 'Överordnad sida'
-    PARENTTYPE: 'Sidans adress'
+    PARENTTYPE: 'Sidans position'
     PARENTTYPE_ROOT: 'Översta nivån'
     PARENTTYPE_SUBPAGE: 'Undersida under en överordnad sida (välj nedan)'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Administrera åtkomsträttigheter för innehåll'
