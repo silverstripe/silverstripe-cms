@@ -123,43 +123,43 @@ ar:
     COMPAREMODE: 'Compare mode (select two)'
     COMPAREVERSIONS: 'Compare Versions'
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
-    MENUTITLE: History
+    MENUTITLE: السجل
     REVERTTOTHISVERSION: 'Revert to this version'
     SHOWUNPUBLISHED: 'Show unpublished versions'
     SHOWVERSION: 'Show Version'
     VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
-    AUTHOR: Author
-    NOTPUBLISHED: 'Not published'
-    PUBLISHER: Publisher
-    UNKNOWN: Unknown
+    AUTHOR: الكاتب
+    NOTPUBLISHED: 'غير منشور'
+    PUBLISHER: الناشر
+    UNKNOWN: 'غير معروف'
     WHEN: When
   CMSPageSettingsController:
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: 'تحرير صفحة'
   CMSPagesController:
     GalleryView: 'Gallery View'
-    ListView: 'List View'
-    MENUTITLE: Pages
-    TreeView: 'Tree View'
+    ListView: 'قائمة العرض'
+    MENUTITLE: الصفحات
+    TreeView: 'شجرة العرض'
   CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: 'Drag''n''drop'
     MULTISELECT: Multi-selection
   CMSPagesController_Tools.ss:
     FILTER: Filter
   CMSSearch:
-    FILTERDATEFROM: From
-    FILTERDATEHEADING: Date
-    FILTERDATETO: To
-    FILTERLABELTEXT: Content
+    FILTERDATEFROM: من
+    FILTERDATEHEADING: التاريخ
+    FILTERDATETO: إلى
+    FILTERLABELTEXT: المحتوى
   CMSSettingsController:
-    MENUTITLE: Settings
+    MENUTITLE: الإعدادات
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Changed pages'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
-    Title: 'All pages'
+    Title: 'كل الصفحات'
   ContentControl:
     NOTEWONTBESHOWN: 'تنبيه: هذه الرسالة لن يتم عرضها لزوار موقعك'
   ContentController:
@@ -223,11 +223,11 @@ ar:
     UploadFilesButton: Upload
   LeftAndMain:
     DELETED: Deleted.
-    PreviewButton: Preview
+    PreviewButton: عرض
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
-    SearchResults: 'Search Results'
-    VersionUnknown: Unknown
+    SearchResults: 'نتائج البحث'
+    VersionUnknown: 'غير معروف'
   Permission:
     CMS_ACCESS_CATEGORY: 'الوصل لنظام إدارة المحتوى'
   Permissions:
