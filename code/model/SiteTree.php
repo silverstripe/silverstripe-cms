@@ -991,17 +991,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * Stub method to get the site config, provided so it's easy to override
 	 */
 	function getSiteConfig() {
-		$altConfig = false;
+		
 		if($this->hasMethod('alternateSiteConfig')) {
 			$altConfig = $this->alternateSiteConfig();
+			if($altConfig)
+				return $altConfig;
 		}
-		if($altConfig) {
-			return $altConfig;
-		} elseif(class_exists('Translatable') && $this->hasExtension('Translatable')) {
-			 return SiteConfig::current_site_config($this->Locale);
-		} else {
-			return SiteConfig::current_site_config();
-		}
+		
+		return SiteConfig::current_site_config();
 	}
 
 	/**

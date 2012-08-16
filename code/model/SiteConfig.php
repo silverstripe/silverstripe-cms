@@ -1,15 +1,8 @@
 <?php
+
 /**
  * Sitewide configuration.
  * 
- * h2. Translation
- * 
- * To enable translation of configurations alongside the {@link Translatable} extension.
- * This also allows assigning language-specific toplevel permissions for viewing and editing
- * pages, in addition to the normal `TRANSLATE_*`/`TRANSLATE_ALL` permissions.
- * 
- * 	Object::add_extension('SiteConfig', 'Translatable');
- *
  * @author Tom Rix
  * @package cms
  */
@@ -34,7 +27,16 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	public static function disable_theme($theme) {
 		self::$disabled_themes[$theme] = $theme;
 	}
-	
+
+	function populateDefaults()
+	{
+		$this->Title = _t('SiteConfig.SITENAMEDEFAULT', "Your Site Name");
+		$this->Tagline = _t('SiteConfig.TAGLINEDEFAULT', "your tagline here");
+		
+		// Allow these defaults to be overridden
+		parent::populateDefaults();
+	}
+
 	/**
 	 * Get the fields that are sent to the CMS. In
 	 * your extensions: updateCMSFields($fields)
@@ -48,25 +50,25 @@ class SiteConfig extends DataObject implements PermissionProvider {
 		asort($groupsMap);
 
 		$fields = new FieldList(
-			new TabSet("Root",
-				$tabMain = new Tab('Main',
-					$titleField = new TextField("Title", _t('SiteConfig.SITETITLE', "Site title")),
-					$taglineField = new TextField("Tagline", _t('SiteConfig.SITETAGLINE', "Site Tagline/Slogan")),
-					$themeDropdownField = new DropdownField("Theme", _t('SiteConfig.THEME', 'Theme'), $this->getAvailableThemes())
-				),
-				$tabAccess = new Tab('Access',
-					$viewersOptionsField = new OptionsetField("CanViewType", _t('SiteConfig.VIEWHEADER', "Who can view pages on this site?")),
-					$viewerGroupsField = ListboxField::create("ViewerGroups", _t('SiteTree.VIEWERGROUPS', "Viewer Groups"))
-						->setMultiple(true)->setSource($groupsMap),
-					$editorsOptionsField = new OptionsetField("CanEditType", _t('SiteConfig.EDITHEADER', "Who can edit pages on this site?")),
-					$editorGroupsField = ListboxField::create("EditorGroups", _t('SiteTree.EDITORGROUPS', "Editor Groups"))
-						->setMultiple(true)->setSource($groupsMap),
-					$topLevelCreatorsOptionsField = new OptionsetField("CanCreateTopLevelType", _t('SiteConfig.TOPLEVELCREATE', "Who can create pages in the root of the site?")),
-					$topLevelCreatorsGroupsField = ListboxField::create("CreateTopLevelGroups", _t('SiteTree.TOPLEVELCREATORGROUPS', "Top level creators"))
-						->setMultiple(true)->setSource($groupsMap)
-				)
-			),
-			new HiddenField('ID')
+						new TabSet("Root",
+								$tabMain = new Tab('Main',
+										$titleField = new TextField("Title", _t('SiteConfig.SITETITLE', "Site title")),
+										$taglineField = new TextField("Tagline", _t('SiteConfig.SITETAGLINE', "Site Tagline/Slogan")),
+										$themeDropdownField = new DropdownField("Theme", _t('SiteConfig.THEME', 'Theme'), $this->getAvailableThemes())
+								),
+								$tabAccess = new Tab('Access',
+										$viewersOptionsField = new OptionsetField("CanViewType", _t('SiteConfig.VIEWHEADER', "Who can view pages on this site?")),
+										$viewerGroupsField = ListboxField::create("ViewerGroups", _t('SiteTree.VIEWERGROUPS', "Viewer Groups"))
+												->setMultiple(true)->setSource($groupsMap),
+										$editorsOptionsField = new OptionsetField("CanEditType", _t('SiteConfig.EDITHEADER', "Who can edit pages on this site?")),
+										$editorGroupsField = ListboxField::create("EditorGroups", _t('SiteTree.EDITORGROUPS', "Editor Groups"))
+												->setMultiple(true)->setSource($groupsMap),
+										$topLevelCreatorsOptionsField = new OptionsetField("CanCreateTopLevelType", _t('SiteConfig.TOPLEVELCREATE', "Who can create pages in the root of the site?")),
+										$topLevelCreatorsGroupsField = ListboxField::create("CreateTopLevelGroups", _t('SiteTree.TOPLEVELCREATORGROUPS', "Top level creators"))
+												->setMultiple(true)->setSource($groupsMap)
+								)
+						),
+						new HiddenField('ID')
 		);
 
 		$themeDropdownField->setEmptyString(_t('SiteConfig.DEFAULTTHEME', '(Use default theme)'));
@@ -84,13 +86,6 @@ class SiteConfig extends DataObject implements PermissionProvider {
 		
 		$topLevelCreatorsOptionsField->setSource($editorsOptionsSource);
 		
-		// Translatable doesn't handle updateCMSFields on DataObjects,
-		// so add it here to save the current Locale,
-		// because onBeforeWrite does not work.
-		if(class_exists('Translatable') && Object::has_extension('SiteConfig',"Translatable")){ 
-			$fields->push(new HiddenField("Locale"));
-		}
-
 		if (!Permission::check('EDIT_SITECONFIG')) {
 			$fields->makeFieldReadonly($viewersOptionsField);
 			$fields->makeFieldReadonly($viewerGroupsField);
@@ -161,22 +156,15 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	 * Get the current sites SiteConfig, and creates a new one
 	 * through {@link make_site_config()} if none is found.
 	 *
-	 * @param string $locale
 	 * @return SiteConfig
 	 */
-	static function current_site_config($locale = null) {
-		if(class_exists('Translatable') && Object::has_extension('SiteConfig',"Translatable")){
-			$locale = isset($locale) ? $locale : Translatable::get_current_locale();
-			$siteConfig = Translatable::get_one_by_locale('SiteConfig', $locale);
-		} else {
-			$siteConfig = DataObject::get_one('SiteConfig');
-		}
-		
-		if (!$siteConfig) $siteConfig = self::make_site_config($locale);
-		
-		return $siteConfig;
+	static function current_site_config() {
+		if ($siteConfig = DataObject::get_one('SiteConfig'))
+			return $siteConfig;
+
+		return self::make_site_config();
 	}
-	
+
 	/**
 	 * Setup a default SiteConfig record if none exists
 	 */
@@ -191,39 +179,14 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	
 	/**
 	 * Create SiteConfig with defaults from language file.
-	 * if Translatable is enabled on SiteConfig, see if one already exist
-	 * and use those values for the translated defaults. 
 	 * 
 	 * @param string $locale
 	 * @return SiteConfig
 	 */
-	static function make_site_config($locale = null) {
-		if(class_exists('Translatable') && !$locale) $locale = Translatable::get_current_locale();
-		
-		$siteConfig = new SiteConfig();
-		$siteConfig->Title = _t('SiteConfig.SITENAMEDEFAULT',"Your Site Name");
-		$siteConfig->Tagline = _t('SiteConfig.TAGLINEDEFAULT',"your tagline here");
+	static function make_site_config() {
+		return SiteConfig::create();
+	}
 
-		if(class_exists('Translatable') && $siteConfig->hasExtension('Translatable')){
-			Translatable::disable_locale_filter();
-			$defaultConfig = SiteConfig::get()->first();
-			Translatable::enable_locale_filter();			
-			
-			if($defaultConfig){					
-				return $defaultConfig->createTranslation($locale);
-			}			
-			
-			// TODO Copy view/edit group settings
-			
-			// set the correct Locale
-			$siteConfig->Locale = $locale;
-		}
-
-		$siteConfig->write();
-		
-		return $siteConfig;
- 	}
-	
 	/**
 	 * Can a user view pages on this site? This method is only
 	 * called if a page is set to Inherit, but there is nothing
