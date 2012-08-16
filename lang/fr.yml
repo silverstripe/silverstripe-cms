@@ -149,8 +149,8 @@ fr:
     FILTER: Filtrer
   CMSSearch:
     FILTERDATEFROM: De
-    FILTERDATEHEADING: Tarih
-    FILTERDATETO: Kime
+    FILTERDATEHEADING: Date
+    FILTERDATETO: à
     FILTERLABELTEXT: Terme
   CMSSettingsController:
     MENUTITLE: Ayarlar
