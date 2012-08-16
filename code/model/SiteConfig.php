@@ -184,7 +184,9 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	 * @return SiteConfig
 	 */
 	static function make_site_config() {
-		return SiteConfig::create();
+		$config = SiteConfig::create();
+		$config->write();
+		return $config;
 	}
 
 	/**
