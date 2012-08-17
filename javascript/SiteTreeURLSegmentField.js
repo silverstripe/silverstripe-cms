@@ -11,9 +11,13 @@
 			 * Constructor: onmatch
 			 */
 			onmatch : function() {
-				this._addActions(); // add elements and actions for editing
-				this.edit(); // toggle
-				this._autoInputWidth(); // set width of input field
+				// Only initialize the field if it contains an editable field.
+				// This ensures we don't get bogus previews on readonly fields.
+				if(this.find(':text').length) {
+					this._addActions(); // add elements and actions for editing
+					this.edit(); // toggle
+					this._autoInputWidth(); // set width of input field
+				}
 				
 				this._super();
 			},
