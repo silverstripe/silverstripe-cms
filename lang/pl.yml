@@ -27,7 +27,7 @@ pl:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Usuń foldery'
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: Filtruj
   AssetAdmin_left.ss:
     GO: Przejdź
   AssetTableField:
@@ -163,7 +163,7 @@ pl:
   ContentControl:
     NOTEWONTBESHOWN: 'Uwaga: ta strona nie będzie widoczna dla twoich odwiedzających  '
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
+    ARCHIVEDSITE: 'Podgląd wersji'
     ARCHIVEDSITEFROM: 'Zarchiwizowana witryna od'
     CMS: 'System Zarządzania Treścią'
     DRAFTSITE: 'Szkic witryny'
@@ -190,8 +190,8 @@ pl:
     DEFAULTSERVERERRORPAGETITLE: 'Błąd serwera'
     DESCRIPTION: 'Własna zawartość dla różnych błędów (np. "Strona nie została znaleziona")'
     ERRORFILEPROBLEM: 'Błąd podczas otwierania pliku "{filename}". Proszę sprawdzić uprawnienia do plików.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
+    PLURALNAME: 'Strony błędów'
+    SINGULARNAME: 'Strona błędu'
     400: '400 - Nieprawidłowe zapytanie'
     401: '401 - Nieautoryzowany Dostęp'
     403: '403 - Zabroniony'
@@ -238,11 +238,11 @@ pl:
     HASBEENSETUP: 'Strona przekierowująca została ustawiona bez celu, do którego ma przekierowywać.'
     HEADER: 'Ta strona przeniesie użytkowników na inną stronę'
     OTHERURL: 'Adres URL innej strony'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: 'Strony przekierowujące'
     REDIRECTTO: 'Przenieś do'
     REDIRECTTOEXTERNAL: 'Inna strona'
     REDIRECTTOPAGE: 'Strona na Twojej witrynie'
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: 'Strona przekierowująca'
     YOURPAGE: 'Strona na Twojej witrynie'
   ReportAdmin:
     MENUTITLE: Raporty
@@ -274,8 +274,8 @@ pl:
     EDITHEADER: 'Kto może edytować strony tego serwisu?'
     EDIT_PERMISSION: 'Zarządzanie konfiguracją serwisu'
     EDIT_PERMISSION_HELP: 'Możliwość edycji globalnych ustawień bezpieczeństwa/uprawnień do stron pierwszego poziomu.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
+    PLURALNAME: 'Konfiguracje strony'
+    SINGULARNAME: 'Konfiguracja strony'
     SITENAMEDEFAULT: 'Nazwa twojego serwisu'
     SITETAGLINE: 'Slogan serwisu'
     SITETITLE: 'Tytuł serwisu'
