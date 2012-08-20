@@ -845,8 +845,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		    	$id = $id . $suffix;
 	    }
 
-		$newItem->Title = _t('CMSMain.NEW',"New ",'"New " followed by a className').$className;
-		$newItem->URLSegment = "new-" . strtolower($className);
+		$newItem->Title = _t(
+			'CMSMain.NEWPAGE',
+			"New {pagetype}",'followed by a page type title',
+			array('pagetype' => singleton($className)->i18n_singular_name())
+		);
 		$newItem->ClassName = $className;
 		$newItem->ParentID = $parentID;
 
