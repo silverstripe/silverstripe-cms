@@ -203,7 +203,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 
 	function LinkPageAdd() {
-		return singleton("CMSPageAddController")->Link();
+		$link = singleton("CMSPageAddController")->Link();
+		$this->extend('updateLinkPageAdd', $link);
+		return $link;
 	}
 	
 	/**
@@ -466,9 +468,15 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$addAction = $instance->i18n_singular_name();
 			
 			// Get description
-			$description = _t($class . 'DESCRIPTION');
-			if(!$description) $description = $instance->uninherited('description');
-			if($class == 'Page' && !$description) $description = singleton('SiteTree')->uninherited('description');
+			$description = _t($class . '.DESCRIPTION');
+
+			if(!$description) {
+				$description = $instance->uninherited('description');
+			}
+			
+			if($class == 'Page' && !$description) {
+				$description = singleton('SiteTree')->uninherited('description');
+			}
 			
 			$result->push(new ArrayData(array(
 				'ClassName' => $class,
@@ -480,6 +488,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 		
 		$result = $result->sort('AddAction');
+		
 		return $result;
 	}
 
