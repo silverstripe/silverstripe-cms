@@ -3,7 +3,7 @@ fr:
     ADDFILES: 'Ajouter des fichiers'
     ALLOWEDEXTS: 'Extensions autorisées'
     ActionAdd: 'Ajouter un dossier'
-    AppCategoryArchive: Archiver
+    AppCategoryArchive: Archive
     AppCategoryAudio: Audio
     AppCategoryFlash: Flash
     AppCategoryImage: Image
@@ -27,7 +27,7 @@ fr:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Supprimer dossiers'
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: Filtrer
   AssetAdmin_left.ss:
     GO: Go
   AssetTableField:
@@ -82,8 +82,8 @@ fr:
     DELETEFP: 'Retirer du site publié'
     DESCREMOVED: 'et {count} descendants'
     EMAIL: Email
-    EditTree: 'Éditer l''abre'
-    ListFiltered: 'Liste filtrée.'
+    EditTree: 'Ağacı düzenle'
+    ListFiltered: 'Filtrelenmiş liste.'
     MENUTITLE: 'Éditer la page'
     NEW: Nouveau
     PAGENOTEXISTS: 'Cette page n''existe pas'
@@ -108,8 +108,8 @@ fr:
     TabContent: Contenu
     TabHistory: Historique
     TabSettings: Paramètres
-    TreeFiltered: 'Abre filtré.'
-    TreeFilteredClear: 'Annuler le filtre'
+    TreeFiltered: 'Filtrelenmiş ağaç liste.'
+    TreeFilteredClear: 'Filtreyi temizle'
   CMSMain_left.ss:
     'APPLY FILTER': 'Appliquer le filtre'
     RESET: Réinitialiser
@@ -132,7 +132,7 @@ fr:
   CMSPageHistoryController_versions.ss:
     AUTHOR: Auteur
     NOTPUBLISHED: 'Non publiée'
-    PUBLISHER: Éditeur
+    PUBLISHER: Yayınlayan
     UNKNOWN: Inconnu
     WHEN: Date
   CMSPageSettingsController:
@@ -140,7 +140,7 @@ fr:
   CMSPagesController:
     GalleryView: Galerie
     ListView: Liste
-    MENUTITLE: Sayfalar
+    MENUTITLE: Pages
     TreeView: Arbre
   CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: Glisser-déposer
@@ -151,9 +151,9 @@ fr:
     FILTERDATEFROM: De
     FILTERDATEHEADING: Date
     FILTERDATETO: à
-    FILTERLABELTEXT: Contenu
+    FILTERLABELTEXT: Terme
   CMSSettingsController:
-    MENUTITLE: Paramètres
+    MENUTITLE: Ayarlar
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Pages modifiées'
   CMSSiteTreeFilter_DeletedPages:
@@ -163,7 +163,7 @@ fr:
   ContentControl:
     NOTEWONTBESHOWN: 'Note : ce message ne sera pas visible de vos visiteurs.'
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
+    ARCHIVEDSITE: 'Version de l’aperçu'
     ARCHIVEDSITEFROM: 'Site archivé depuis'
     CMS: CMS
     DRAFTSITE: 'Site Brouillon'
@@ -190,8 +190,8 @@ fr:
     DEFAULTSERVERERRORPAGETITLE: 'Erreur du serveur'
     DESCRIPTION: 'Contenu personnalisé pour diverses erreurs (p. ex. « Page introuvable »)'
     ERRORFILEPROBLEM: ' L’ouverture du fichier « {filename} » afin de le modifier a provoqué une erreur ; vérifiez les droits d’accès au fichier. '
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
+    PLURALNAME: 'Pages d’erreur'
+    SINGULARNAME: 'Page d’erreur'
     400: '400 - Mauvaise demande'
     401: '401 - Non autorisé'
     403: '403 - Interdit'
@@ -223,11 +223,11 @@ fr:
     UploadFilesButton: Télécharger
   LeftAndMain:
     DELETED: Supprimée.
-    PreviewButton: Aperçu
+    PreviewButton: Önizleme
     SAVEDUP: Sauvegardée.
     STATUSPUBLISHEDSUCCESS: '« {title} » publiée avec succès'
-    SearchResults: 'Résultats de la recherche'
-    VersionUnknown: Inconnu
+    SearchResults: 'Arama Sonuçları'
+    VersionUnknown: Bilinmeyen
   Permission:
     CMS_ACCESS_CATEGORY: 'Accès au CMS'
   Permissions:
@@ -238,11 +238,11 @@ fr:
     HASBEENSETUP: 'Une page de redirection sans adresse de redirection a été créée.'
     HEADER: 'Cette page va rediriger les utilisateurs vers une autre page'
     OTHERURL: 'Autre URL de site web'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: 'Pages de redirection'
     REDIRECTTO: 'Rediriger vers'
     REDIRECTTOEXTERNAL: 'Autre site web'
     REDIRECTTOPAGE: 'Une page de votre site web'
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: 'Page de redirection'
     YOURPAGE: 'Page de votre site web'
   ReportAdmin:
     MENUTITLE: Rapports
@@ -274,8 +274,8 @@ fr:
     EDITHEADER: 'Qui peut modifier les pages sur ce site?'
     EDIT_PERMISSION: 'Configuration du site'
     EDIT_PERMISSION_HELP: 'Capacité d''édition des accès globales et permission des pages de premier niveau.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
+    PLURALNAME: 'Configurations du site'
+    SINGULARNAME: 'Configuration du site'
     SITENAMEDEFAULT: 'Nom du site'
     SITETAGLINE: 'Slogan ou devise du site'
     SITETITLE: 'Titre du site'
@@ -384,9 +384,9 @@ fr:
     SORTASC: 'Classer en ordre ascendant'
     SORTDESC: 'Classer en ordre descendant'
   TableListField_PageControls.ss:
-    DISPLAYING: Affichage
+    DISPLAYING: Gösterilen
     OF: de
-    TO: à
+    TO: kime
     VIEWFIRST: 'Voir le(s) premier(s)'
     VIEWLAST: 'Voir le(s) dernier(s)'
     VIEWNEXT: 'Voir le(s) suivant(s)'
@@ -405,4 +405,4 @@ fr:
     PageTypNotAllowedOnRoot: 'Le type de page d’origine « {type} » n’est pas autorisé au niveau racine pour cette page virtuelle'
     SINGULARNAME: 'Page virtuelle'
   cms:
-    FILESYSTEMSYNC: 'Synchroniser fichiers'
+    FILESYSTEMSYNC: 'Mettre à jour'

@@ -120,46 +120,46 @@ ar:
   CMSPageEditController:
     MENUTITLE: 'Edit Page'
   CMSPageHistoryController:
-    COMPAREMODE: 'Compare mode (select two)'
-    COMPAREVERSIONS: 'Compare Versions'
+    COMPAREMODE: 'وضع المقارنة (أختر أثنين)ـ'
+    COMPAREVERSIONS: 'مقارنة النسخ'
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
-    MENUTITLE: History
-    REVERTTOTHISVERSION: 'Revert to this version'
-    SHOWUNPUBLISHED: 'Show unpublished versions'
-    SHOWVERSION: 'Show Version'
+    MENUTITLE: السجل
+    REVERTTOTHISVERSION: 'العودة الى هذة النسخة'
+    SHOWUNPUBLISHED: 'عرض النسخ الغير منشورة'
+    SHOWVERSION: 'عرض النسخ'
     VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
-    AUTHOR: Author
-    NOTPUBLISHED: 'Not published'
-    PUBLISHER: Publisher
-    UNKNOWN: Unknown
-    WHEN: When
+    AUTHOR: الكاتب
+    NOTPUBLISHED: 'غير منشور'
+    PUBLISHER: الناشر
+    UNKNOWN: 'غير معروف'
+    WHEN: متى
   CMSPageSettingsController:
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: 'تحرير صفحة'
   CMSPagesController:
     GalleryView: 'Gallery View'
-    ListView: 'List View'
-    MENUTITLE: Pages
-    TreeView: 'Tree View'
+    ListView: 'قائمة العرض'
+    MENUTITLE: الصفحات
+    TreeView: 'شجرة العرض'
   CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: 'Drag''n''drop'
     MULTISELECT: Multi-selection
   CMSPagesController_Tools.ss:
     FILTER: Filter
   CMSSearch:
-    FILTERDATEFROM: From
-    FILTERDATEHEADING: Date
-    FILTERDATETO: To
-    FILTERLABELTEXT: Content
+    FILTERDATEFROM: من
+    FILTERDATEHEADING: التاريخ
+    FILTERDATETO: إلى
+    FILTERLABELTEXT: المحتوى
   CMSSettingsController:
-    MENUTITLE: Settings
+    MENUTITLE: الإعدادات
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Changed pages'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
-    Title: 'All pages'
+    Title: 'كل الصفحات'
   ContentControl:
     NOTEWONTBESHOWN: 'تنبيه: هذه الرسالة لن يتم عرضها لزوار موقعك'
   ContentController:
@@ -223,18 +223,18 @@ ar:
     UploadFilesButton: Upload
   LeftAndMain:
     DELETED: Deleted.
-    PreviewButton: Preview
+    PreviewButton: عرض
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
-    SearchResults: 'Search Results'
-    VersionUnknown: Unknown
+    SearchResults: 'نتائج البحث'
+    VersionUnknown: 'غير معروف'
   Permission:
     CMS_ACCESS_CATEGORY: 'الوصل لنظام إدارة المحتوى'
   Permissions:
     CONTENT_CATEGORY: 'تصاريح المحتوى'
     PERMISSIONS_CATEGORY: 'تصريح الدخول والقواعد'
   RedirectorPage:
-    DESCRIPTION: 'Redirects to a different internal page'
+    DESCRIPTION: 'إعادة توجية الى صفحة داخلية مختلفة '
     HASBEENSETUP: 'صفحة التحويل تم تهيئتها بدون تحديد وجهة التحويل'
     HEADER: 'هذه الصفحة سوف تقوم بتحويل الأعضاء إلى صفحة أخرى'
     OTHERURL: 'رابط موقع آخر'
@@ -324,7 +324,7 @@ ar:
     HASBROKENLINKS: 'هذه الصفحة تحتوي على روابط معطوبة'
     HTMLEDITORTITLE: محتوى
     INHERIT: 'استيراد من الصفحة المرجعية'
-    LASTUPDATED: 'Last Updated'
+    LASTUPDATED: 'أخر تحديث'
     LINKCHANGENOTE: 'تغيير هذا وصلة رابط الصفحة سوف تؤثر أيضًا على الوصلات لجميع صفحات الفرعية.'
     MENUTITLE: القائمة
     METADESC: الوصف
@@ -332,7 +332,7 @@ ar:
     METAKEYWORDS: 'الكلمات المفتاحية'
     METATITLE: العنوان
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
-    MODIFIEDONDRAFTSHORT: Modified
+    MODIFIEDONDRAFTSHORT: معدل
     MetadataToggle: Metadata
     PAGELOCATION: 'موقع الضفحة'
     PAGETITLE: 'اسم الصفحة'
@@ -348,7 +348,7 @@ ar:
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
     REMOVEDFROMDRAFTSHORT: 'Removed from draft'
-    REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
+    REMOVE_INSTALL_WARNING: 'تحذير : يجب حذف الملف install.php من SilverStripe لاسباب أمنية '
     REORGANISE_DESCRIPTION: 'Can reorganise the site tree'
     REORGANISE_HELP: 'إعادة ترتيب الصفحات في  شجرة الموقع من خلال السحب والإسقاط.'
     SHOWINMENUS: 'عرض في قوائم ؟'
@@ -398,7 +398,7 @@ ar:
     HAVEASKED: 'تم طلب مشاهدة محتوى الموقع في'
   VirtualPage:
     CHOOSE: 'اختر صفحة ليتم ربطها في'
-    DESCRIPTION: 'Displays the content of another page'
+    DESCRIPTION: 'أعرض محتويات الصفحة الأخرى'
     EDITCONTENT: 'اضغط هنا لتعديل المحتوى'
     HEADER: 'هذه صفحة افتراضية'
     PLURALNAME: 'الصفحات الافتراضية'
