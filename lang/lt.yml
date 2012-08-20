@@ -72,7 +72,7 @@ lt:
     MENUTITLE: Bylos
   CMSMain:
     ACCESS: 'Priėjimas prie ''{title}'' dalies'
-    ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
+    ACCESS_HELP: 'Leisti peržiūrėti svetainės medžio ir turinio skiltį. Peržiūros, bei redagavimo leidimai gali būti pakeisti per iškrentančius pasirinkimus ir per atskirus "Turinio leidimai".'
     AddNew: 'Pridėti naują puslapį'
     AddNewButton: 'Pridėti naują'
     ChoosePageParentMode: 'Pasirinkite kur sukurti šį puslapį'
