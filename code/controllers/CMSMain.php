@@ -202,8 +202,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return $link;
 	}
 
-	function LinkPageAdd() {
-		return singleton("CMSPageAddController")->Link();
+	function LinkPageAdd($extraArguments = null) {
+		$link = singleton("CMSPageAddController")->Link();
+		$this->extend('updateLinkPageAdd', $link);
+		if($extraArguments)
+			$link = Controller::join_links ($link, $extraArguments);
+		return $link;
 	}
 	
 	/**
