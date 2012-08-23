@@ -1,33 +1,33 @@
 ru:
   AssetAdmin:
-    ADDFILES: 'Add Files'
-    ALLOWEDEXTS: 'Allowed extensions'
-    ActionAdd: 'Add folder'
-    AppCategoryArchive: Archive
+    ADDFILES: 'Добавить файлы'
+    ALLOWEDEXTS: 'Допустимые расширения'
+    ActionAdd: 'Добавить папку'
+    AppCategoryArchive: Архив
     AppCategoryAudio: Audio
     AppCategoryFlash: Flash
-    AppCategoryImage: Image
+    AppCategoryImage: Изображение
     AppCategoryVideo: Video
-    BackToFolder: 'Back to folder'
+    BackToFolder: 'Вернуться к папке'
     CREATED: Date
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
     FILES: Files
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'From the internet'
-    FROMYOURCOMPUTER: 'From your computer'
+    FROMYOURCOMPUTER: 'С компьютера'
     Filetype: 'File type'
     ListView: 'List View'
-    MENUTITLE: Files
+    MENUTITLE: Файлы
     NEWFOLDER: 'Новая папка'
-    SIZE: Size
+    SIZE: Размер
     THUMBSDELETED: '{count} unused thumbnails have been deleted'
     TreeView: 'Tree View'
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: Фильтр
   AssetAdmin_left.ss:
     GO: Перейти
   AssetTableField:
@@ -63,17 +63,17 @@ ru:
     DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
     DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
     DELETE_DRAFT_PAGES: 'Удалить из чернового сайта'
-    DELETE_PAGES: 'Delete from published site'
+    DELETE_PAGES: 'Удалить из опубликованной версии сайта'
     PUBLISHED_PAGES: 'Published %d pages, %d failures'
-    PUBLISH_PAGES: Publish
-    UNPUBLISHED_PAGES: 'Un-published %d pages'
+    PUBLISH_PAGES: Опубликовать
+    UNPUBLISHED_PAGES: 'Публикация %d страниц отменена'
     UNPUBLISH_PAGES: Un-publish
   CMSFileAddController:
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
-    AddNew: 'Add new page'
+    AddNew: 'Добавить новую страницу'
     AddNewButton: 'Add new'
     ChoosePageParentMode: 'Выберите, где создать страницу'
     ChoosePageType: 'Выберите тип страницы'
@@ -104,7 +104,7 @@ ru:
     ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
     ROLLEDBACKVERSION: 'Произведен откат до версии #%d. Номер новой версии #%d'
     SAVE: Сохранить
-    SAVEDRAFT: 'Save Draft'
+    SAVEDRAFT: 'Сохранить черновик'
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
@@ -163,7 +163,7 @@ ru:
   ContentControl:
     NOTEWONTBESHOWN: 'Примечание: это сообщение не будет отображаться для посетителей'
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
+    ARCHIVEDSITE: 'Версия для просмотра'
     ARCHIVEDSITEFROM: 'Архив сайта от'
     CMS: CMS
     DRAFTSITE: 'Черновой сайт'
@@ -186,8 +186,8 @@ ru:
     CODE: 'Код ошибки'
     DEFAULTERRORPAGECONTENT: '<p>Извините, страница, к которой вы пытаетесь получить доступ, не существует.</p><p>Пожалуйста, проверьте правильность написания ссылки и попытайтесь снова.</p>'
     DEFAULTERRORPAGETITLE: 'Страница не найдена'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Server error'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Не удалось обработать запрос.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Ошибка сервера'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
     PLURALNAME: 'Error Pags'
@@ -216,11 +216,11 @@ ru:
     504: '504 - Шлюз не отвечает'
     505: '505 - Версия HTTP не поддерживается'
   Folder:
-    AddFolderButton: 'Add folder'
+    AddFolderButton: 'Добавить папку'
     DELETEUNUSEDTHUMBNAILS: 'Удалить неиспользуемые миниатюры'
     UNUSEDFILESTITLE: 'Неиспользуемые файлы'
     UNUSEDTHUMBNAILSTITLE: 'Неиспользуемые миниатюры'
-    UploadFilesButton: Upload
+    UploadFilesButton: Загрузить
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Просмотр
@@ -268,7 +268,7 @@ ru:
     ShareInstructions: 'Чтобы поделиться ссылкой на эту страницу, скопируйте URL ниже.'
     ShareLink: 'Поделиться ссылкой'
   SilverStripeNavigatorLinkl:
-    CloseLink: Close
+    CloseLink: Закрыть
   SiteConfig:
     DEFAULTTHEME: '(Использовать тему по умолчанию)'
     EDITHEADER: 'Who can edit pages on this site?'
@@ -290,7 +290,7 @@ ru:
     ACCESSHEADER: 'Кто может просматривать эту страницу на моем сайте?'
     ACCESSLOGGEDIN: 'Авторизованные пользователи'
     ACCESSONLYTHESE: 'Только эти пользователи (выберите из списка)'
-    ADDEDTODRAFTHELP: 'Page has not been published yet'
+    ADDEDTODRAFTHELP: 'Эта страница еще не опубликована'
     ADDEDTODRAFTSHORT: Draft
     ALLOWCOMMENTS: 'Разрешить комментарии для этой страницы?'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
@@ -299,7 +299,7 @@ ru:
     BUTTONSAVEPUBLISH: 'Сохр. и опублик.'
     BUTTONUNPUBLISH: 'Отмена публикации'
     BUTTONUNPUBLISHDESC: 'Удалить эту страницу с опубликованного сайта'
-    CREATED: 'Date Created'
+    CREATED: 'Дата создания'
     Comments: Комментарии
     Content: 'Наполнение сайта'
     DEFAULTABOUTCONTENT: '<p>Вы можете заполнить эту страницу собственным содержимым или удалить ее и создать новые страницы.<br /></p>'
@@ -324,7 +324,7 @@ ru:
     HASBROKENLINKS: 'Эта страница содержит неверные ссылки.'
     HTMLEDITORTITLE: Содержимое
     INHERIT: 'Такие же как у родительской страницы'
-    LASTUPDATED: 'Last Updated'
+    LASTUPDATED: 'Последнее обновление'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 'Метка в навигации'
     METADESC: Описание
@@ -339,7 +339,7 @@ ru:
     PAGETYPE: 'Тип страницы'
     PARENTID: 'Parent page'
     PARENTTYPE: 'Page location'
-    PARENTTYPE_ROOT: 'Top-level page'
+    PARENTTYPE_ROOT: 'Страница верхнего уровня'
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
@@ -363,7 +363,7 @@ ru:
     VIEWERGROUPS: 'Viewer Groups'
     VIEW_ALL_DESCRIPTION: 'View any page'
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
-    VIEW_DRAFT_CONTENT: 'View draft content'
+    VIEW_DRAFT_CONTENT: 'Просмотреть содержимое черновика'
     VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
     Viewers: 'Группы чтения'
     Visibility: Visibility
