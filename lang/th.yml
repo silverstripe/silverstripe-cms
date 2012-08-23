@@ -120,12 +120,12 @@ th:
   CMSPageEditController:
     MENUTITLE: แก้ไขหน้าเว็บ
   CMSPageHistoryController:
-    COMPAREMODE: 'Compare mode (select two)'
+    COMPAREMODE: 'โหมดเปรียบเทียบ (เลือกสองรายการ)'
     COMPAREVERSIONS: เปรียบเทียบรุ่น
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
-    MENUTITLE: History
+    MENUTITLE: ประวัติย้อนหลัง
     REVERTTOTHISVERSION: ย้อนกลับไปที่รุ่นนี้
-    SHOWUNPUBLISHED: 'Show unpublished versions'
+    SHOWUNPUBLISHED: แสดงรุ่นที่ระงับการเผยแพร่ไว้
     SHOWVERSION: แสดงข้อมูลรุ่น
     VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
