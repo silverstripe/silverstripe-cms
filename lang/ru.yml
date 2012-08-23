@@ -1,33 +1,33 @@
 ru:
   AssetAdmin:
-    ADDFILES: 'Add Files'
-    ALLOWEDEXTS: 'Allowed extensions'
-    ActionAdd: 'Add folder'
-    AppCategoryArchive: Archive
+    ADDFILES: 'Добавить файлы'
+    ALLOWEDEXTS: 'Допустимые расширения'
+    ActionAdd: 'Добавить папку'
+    AppCategoryArchive: Архив
     AppCategoryAudio: Audio
     AppCategoryFlash: Flash
-    AppCategoryImage: Image
+    AppCategoryImage: Изображение
     AppCategoryVideo: Video
-    BackToFolder: 'Back to folder'
+    BackToFolder: 'Вернуться к папке'
     CREATED: Date
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
     FILES: Files
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'From the internet'
-    FROMYOURCOMPUTER: 'From your computer'
+    FROMYOURCOMPUTER: 'С компьютера'
     Filetype: 'File type'
     ListView: 'List View'
-    MENUTITLE: Files
+    MENUTITLE: Файлы
     NEWFOLDER: 'Новая папка'
-    SIZE: Size
+    SIZE: Размер
     THUMBSDELETED: '{count} unused thumbnails have been deleted'
     TreeView: 'Tree View'
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: Фильтр
   AssetAdmin_left.ss:
     GO: Перейти
   AssetTableField:
@@ -58,25 +58,25 @@ ru:
     RedirectorNonExistent: 'redirector page pointing to non-existent page'
     VirtualPageNonExistent: 'virtual page pointing to non-existent page'
   CMSAddPageController:
-    Title: 'Add page'
+    Title: 'Добавить страницу'
   CMSBatchActions:
     DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
     DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
     DELETE_DRAFT_PAGES: 'Удалить из чернового сайта'
-    DELETE_PAGES: 'Delete from published site'
+    DELETE_PAGES: 'Удалить из опубликованной версии сайта'
     PUBLISHED_PAGES: 'Published %d pages, %d failures'
-    PUBLISH_PAGES: Publish
-    UNPUBLISHED_PAGES: 'Un-published %d pages'
+    PUBLISH_PAGES: Опубликовать
+    UNPUBLISHED_PAGES: 'Публикация %d страниц отменена'
     UNPUBLISH_PAGES: Un-publish
   CMSFileAddController:
     MENUTITLE: Files
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
-    AddNew: 'Add new page'
-    AddNewButton: 'Add new'
-    ChoosePageParentMode: 'Choose where to create this page'
-    ChoosePageType: 'Choose page type'
+    AddNew: 'Добавить новую страницу'
+    AddNewButton: Добавить
+    ChoosePageParentMode: 'Выберите, где создать страницу'
+    ChoosePageType: 'Выберите тип страницы'
     Create: Create
     DELETE: 'Удалить с тестового сайта'
     DELETEFP: 'Удалить с опубликованного сайта'
@@ -104,7 +104,7 @@ ru:
     ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
     ROLLEDBACKVERSION: 'Произведен откат до версии #%d. Номер новой версии #%d'
     SAVE: Сохранить
-    SAVEDRAFT: 'Save Draft'
+    SAVEDRAFT: 'Сохранить черновик'
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
@@ -114,11 +114,11 @@ ru:
     'APPLY FILTER': 'Apply Filter'
     RESET: Reset
   CMSPageAddController:
-    MENUTITLE: 'Add page'
-    ParentMode_child: 'Under another page'
-    ParentMode_top: 'Top level'
+    MENUTITLE: 'Добавить страницу'
+    ParentMode_child: 'Под другой страницей'
+    ParentMode_top: 'Верхний уровень'
   CMSPageEditController:
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: 'Редактировать страницу'
   CMSPageHistoryController:
     COMPAREMODE: 'Режим сравнения (выбрать две)'
     COMPAREVERSIONS: 'Сравнить версии'
@@ -146,7 +146,7 @@ ru:
     ENABLEDRAGGING: 'Drag''n''drop'
     MULTISELECT: Multi-selection
   CMSPagesController_Tools.ss:
-    FILTER: Filter
+    FILTER: Фильтр
   CMSSearch:
     FILTERDATEFROM: От
     FILTERDATEHEADING: Дата
@@ -157,37 +157,37 @@ ru:
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Changed pages'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'All pages, including deleted'
+    Title: 'Все страницы, включая удаленные'
   CMSSiteTreeFilter_Search:
     Title: 'Все страницы'
   ContentControl:
-    NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
+    NOTEWONTBESHOWN: 'Примечание: это сообщение не будет отображаться для посетителей'
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
-    ARCHIVEDSITEFROM: 'Archived site from'
+    ARCHIVEDSITE: 'Версия для просмотра'
+    ARCHIVEDSITEFROM: 'Архив сайта от'
     CMS: CMS
-    DRAFTSITE: 'Draft Site'
+    DRAFTSITE: 'Черновой сайт'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Вы должны войти с паролем для Системы Управления (CMS), чтобы увидеть черновое или архивное содержимое. <a href="%s">Нажмите сюда, чтобы вернуться на опубликованный сайт.</a>'
     Email: Email
     InstallFilesDeleted: 'Installation files have been successfully deleted.'
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
     InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
-    LOGGEDINAS: 'Logged in as'
+    LOGGEDINAS: 'Залогинен как'
     LOGIN: Login
-    LOGOUT: 'Log out'
+    LOGOUT: Выйти
     NOTLOGGEDIN: 'Not logged in'
-    PUBLISHEDSITE: 'Published Site'
+    PUBLISHEDSITE: 'Опубликованный сайт'
     Password: Password
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
     StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
-    VIEWPAGEIN: 'View Page in:'
+    VIEWPAGEIN: 'Просмотреть страницу в:'
   ErrorPage:
     CODE: 'Код ошибки'
     DEFAULTERRORPAGECONTENT: '<p>Извините, страница, к которой вы пытаетесь получить доступ, не существует.</p><p>Пожалуйста, проверьте правильность написания ссылки и попытайтесь снова.</p>'
     DEFAULTERRORPAGETITLE: 'Страница не найдена'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Server error'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Не удалось обработать запрос.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Ошибка сервера'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
     PLURALNAME: 'Error Pags'
@@ -216,11 +216,11 @@ ru:
     504: '504 - Шлюз не отвечает'
     505: '505 - Версия HTTP не поддерживается'
   Folder:
-    AddFolderButton: 'Add folder'
+    AddFolderButton: 'Добавить папку'
     DELETEUNUSEDTHUMBNAILS: 'Удалить неиспользуемые миниатюры'
     UNUSEDFILESTITLE: 'Неиспользуемые файлы'
     UNUSEDTHUMBNAILSTITLE: 'Неиспользуемые миниатюры'
-    UploadFilesButton: Upload
+    UploadFilesButton: Загрузить
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Просмотр
@@ -234,7 +234,7 @@ ru:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
   RedirectorPage:
-    DESCRIPTION: 'Redirects to a different internal page'
+    DESCRIPTION: 'Перенаправление на другую внутреннюю страницу'
     HASBEENSETUP: 'Страница перенаправления установлена без указания места перенаправления.'
     HEADER: 'Эта страница будет перенаправлять пользователей на другую страницу'
     OTHERURL: 'URL другого сайта'
@@ -247,7 +247,7 @@ ru:
   ReportAdmin:
     MENUTITLE: Reports
   ReportAdminForm:
-    FILTERBY: 'Filter by'
+    FILTERBY: 'Фильтровать по'
   SearchForm:
     GO: Выполн.
     SEARCH: Поиск
@@ -265,32 +265,32 @@ ru:
     ParameterLiveCheckbox: 'Check live site'
     REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
-    ShareLink: 'Share link'
+    ShareInstructions: 'Чтобы поделиться ссылкой на эту страницу, скопируйте URL ниже.'
+    ShareLink: 'Поделиться ссылкой'
   SilverStripeNavigatorLinkl:
-    CloseLink: Close
+    CloseLink: Закрыть
   SiteConfig:
-    DEFAULTTHEME: '(Use default theme)'
+    DEFAULTTHEME: '(Использовать тему по умолчанию)'
     EDITHEADER: 'Who can edit pages on this site?'
     EDIT_PERMISSION: 'Manage site configuration'
     EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
     PLURALNAME: 'Site Configs'
     SINGULARNAME: 'Site Config'
-    SITENAMEDEFAULT: 'Your Site Name'
-    SITETAGLINE: 'Site Tagline/Slogan'
-    SITETITLE: 'Site title'
+    SITENAMEDEFAULT: 'Название сайта'
+    SITETAGLINE: 'Подзаголовок сайта / слоган'
+    SITETITLE: 'Заголовок сайта'
     TABACCESS: Доступ
     TABMAIN: Главная
     TAGLINEDEFAULT: 'your tagline here'
     THEME: Theme
-    TOPLEVELCREATE: 'Who can create pages in the root of the site?'
-    VIEWHEADER: 'Who can view pages on this site?'
+    TOPLEVELCREATE: 'Кто может создавать страницы верхнего уровня на этом сайте?'
+    VIEWHEADER: 'Кто может просматривать страницы на этом сайте?'
   SiteTree:
     ACCESSANYONE: Все
     ACCESSHEADER: 'Кто может просматривать эту страницу на моем сайте?'
     ACCESSLOGGEDIN: 'Авторизованные пользователи'
     ACCESSONLYTHESE: 'Только эти пользователи (выберите из списка)'
-    ADDEDTODRAFTHELP: 'Page has not been published yet'
+    ADDEDTODRAFTHELP: 'Эта страница еще не опубликована'
     ADDEDTODRAFTSHORT: Draft
     ALLOWCOMMENTS: 'Разрешить комментарии для этой страницы?'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
@@ -299,7 +299,7 @@ ru:
     BUTTONSAVEPUBLISH: 'Сохр. и опублик.'
     BUTTONUNPUBLISH: 'Отмена публикации'
     BUTTONUNPUBLISHDESC: 'Удалить эту страницу с опубликованного сайта'
-    CREATED: 'Date Created'
+    CREATED: 'Дата создания'
     Comments: Комментарии
     Content: 'Наполнение сайта'
     DEFAULTABOUTCONTENT: '<p>Вы можете заполнить эту страницу собственным содержимым или удалить ее и создать новые страницы.<br /></p>'
@@ -324,7 +324,7 @@ ru:
     HASBROKENLINKS: 'Эта страница содержит неверные ссылки.'
     HTMLEDITORTITLE: Содержимое
     INHERIT: 'Такие же как у родительской страницы'
-    LASTUPDATED: 'Last Updated'
+    LASTUPDATED: 'Последнее обновление'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 'Метка в навигации'
     METADESC: Описание
@@ -334,22 +334,22 @@ ru:
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
     MetadataToggle: Metadata
-    PAGELOCATION: 'Page location'
+    PAGELOCATION: 'Расположение страницы'
     PAGETITLE: 'Название страницы'
     PAGETYPE: 'Тип страницы'
-    PARENTID: 'Parent page'
-    PARENTTYPE: 'Page location'
-    PARENTTYPE_ROOT: 'Top-level page'
-    PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
+    PARENTID: 'Родительская страница'
+    PARENTTYPE: 'Расположение страницы'
+    PARENTTYPE_ROOT: 'Страница верхнего уровня'
+    PARENTTYPE_SUBPAGE: 'Подстраница под родительской страницей'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
     PLURALNAME: 'Дерево сайта'
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
-    REMOVEDFROMDRAFTSHORT: 'Removed from draft'
+    REMOVEDFROMDRAFTSHORT: 'Удалено из черновика'
     REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
-    REORGANISE_DESCRIPTION: 'Change site structure'
+    REORGANISE_DESCRIPTION: 'Изменить структуру сайта'
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'Показывать в меню?'
     SHOWINSEARCH: 'Показывать в поиске?'
@@ -363,7 +363,7 @@ ru:
     VIEWERGROUPS: 'Viewer Groups'
     VIEW_ALL_DESCRIPTION: 'View any page'
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
-    VIEW_DRAFT_CONTENT: 'View draft content'
+    VIEW_DRAFT_CONTENT: 'Просмотреть содержимое черновика'
     VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
     Viewers: 'Группы чтения'
     Visibility: Visibility
@@ -378,7 +378,7 @@ ru:
     EXPORTTO: 'Экспорт в эту папку'
     NAME: 'Статический экспорт'
   TableListField:
-    SELECT: 'Select:'
+    SELECT: 'Выбрать:'
   TableListField.ss:
     NOITEMSFOUND: 'No items found'
     SORTASC: 'По возрастанию'
@@ -392,7 +392,7 @@ ru:
     VIEWNEXT: 'См. следующ.'
     VIEWPREVIOUS: 'См. предыдущ.'
   TreeTools:
-    DisplayLabel: 'Display:'
+    DisplayLabel: 'Отображать:'
   ViewArchivedEmail.ss:
     CANACCESS: 'Вы можете посмотреть архивную версию сайта по этой ссылке:'
     HAVEASKED: 'Вы запросили просмотр содержимого нашего сайта за'
