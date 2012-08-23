@@ -994,8 +994,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		
 		if($this->hasMethod('alternateSiteConfig')) {
 			$altConfig = $this->alternateSiteConfig();
-			if($altConfig)
-				return $altConfig;
+			if($altConfig) return $altConfig;
 		}
 		
 		return SiteConfig::current_site_config();
