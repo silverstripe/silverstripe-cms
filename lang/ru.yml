@@ -74,7 +74,7 @@ ru:
     ACCESS: 'Access to ''{title}'' section'
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
     AddNew: 'Добавить новую страницу'
-    AddNewButton: 'Add new'
+    AddNewButton: Добавить
     ChoosePageParentMode: 'Выберите, где создать страницу'
     ChoosePageType: 'Выберите тип страницы'
     Create: Create
@@ -337,7 +337,7 @@ ru:
     PAGELOCATION: 'Page location'
     PAGETITLE: 'Название страницы'
     PAGETYPE: 'Тип страницы'
-    PARENTID: 'Parent page'
+    PARENTID: 'Родительская страница'
     PARENTTYPE: 'Page location'
     PARENTTYPE_ROOT: 'Страница верхнего уровня'
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
