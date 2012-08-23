@@ -75,8 +75,8 @@ ru:
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
     AddNew: 'Add new page'
     AddNewButton: 'Add new'
-    ChoosePageParentMode: 'Choose where to create this page'
-    ChoosePageType: 'Choose page type'
+    ChoosePageParentMode: 'Выберите, где создать страницу'
+    ChoosePageType: 'Выберите тип страницы'
     Create: Create
     DELETE: 'Удалить с тестового сайта'
     DELETEFP: 'Удалить с опубликованного сайта'
@@ -265,26 +265,26 @@ ru:
     ParameterLiveCheckbox: 'Check live site'
     REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
+    ShareInstructions: 'Чтобы поделиться ссылкой на эту страницу, скопируйте URL ниже.'
     ShareLink: 'Поделиться ссылкой'
   SilverStripeNavigatorLinkl:
     CloseLink: Close
   SiteConfig:
-    DEFAULTTHEME: '(Use default theme)'
+    DEFAULTTHEME: '(Использовать тему по умолчанию)'
     EDITHEADER: 'Who can edit pages on this site?'
     EDIT_PERMISSION: 'Manage site configuration'
     EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
     PLURALNAME: 'Site Configs'
     SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Название сайта'
-    SITETAGLINE: 'Site Tagline/Slogan'
+    SITETAGLINE: 'Подзаголовок сайта / слоган'
     SITETITLE: 'Заголовок сайта'
     TABACCESS: Доступ
     TABMAIN: Главная
     TAGLINEDEFAULT: 'your tagline here'
     THEME: Theme
-    TOPLEVELCREATE: 'Who can create pages in the root of the site?'
-    VIEWHEADER: 'Who can view pages on this site?'
+    TOPLEVELCREATE: 'Кто может создавать страницы верхнего уровня на этом сайте?'
+    VIEWHEADER: 'Кто может просматривать страницы на этом сайте?'
   SiteTree:
     ACCESSANYONE: Все
     ACCESSHEADER: 'Кто может просматривать эту страницу на моем сайте?'
