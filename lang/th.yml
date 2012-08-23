@@ -25,7 +25,7 @@ th:
     TreeView: 'มุมมองแบบ Tree'
     Upload: อัพโหลด
   AssetAdmin_DeleteBatchAction:
-    TITLE: 'Delete folders'
+    TITLE: ลบโฟลเดอร์
   AssetAdmin_Tools:
     FILTER: Filter
   AssetAdmin_left.ss:
@@ -69,27 +69,27 @@ th:
     UNPUBLISHED_PAGES: 'ยกเลิกการเผยแพร่หน้าเว็บแล้ว %d หน้า'
     UNPUBLISH_PAGES: ยกเลิกการเผยแพร่
   CMSFileAddController:
-    MENUTITLE: Files
+    MENUTITLE: ไฟล์
   CMSMain:
     ACCESS: 'Access to ''{title}'' section'
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
-    AddNew: 'Add new page'
-    AddNewButton: 'Add new'
-    ChoosePageParentMode: 'Choose where to create this page'
+    AddNew: เพิ่มหน้าใหม่
+    AddNewButton: เพิ่มใหม่
+    ChoosePageParentMode: เลือกว่าต้องการสร้างหน้าเว็บนี้ไว้ที่ไหน
     ChoosePageType: 'Choose page type'
-    Create: Create
+    Create: สร้าง
     DELETE: ลบออกจากเว็บไซต์ฉบับร่าง
-    DELETEFP: Delete
+    DELETEFP: ลบ
     DESCREMOVED: 'and {count} descendants'
     EMAIL: อีเมล
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: แก้ไขหน้าเว็บ
     NEW: ข่าว
     PAGENOTEXISTS: ไม่มีหน้านี้อยู่
-    PAGES: Pages
+    PAGES: หน้า
     PAGETYPEANYOPT: Any
-    PAGETYPEOPT: 'Page Type'
+    PAGETYPEOPT: ประเภทหน้าเว็บ
     PUBALLCONFIRM: 'กรุณาเผยแพร่หน้าเว็บทุกหน้าในเว็บไซต์, คัดลอกเนื้อหาลงไปที่'
     PUBALLFUN: 'ฟังก์ชั่นการทำงาน "เผยแพร่ทั้งหมด"'
     PUBALLFUN2: 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It''s				intended to be used after there have been massive edits of the content, such as when the site was				first built.'
@@ -98,21 +98,21 @@ th:
     REMOVED: 'ลบ ''%s''%s จากเว็บไซต์ที่ออนไลน์สดๆอยู่แล้ว'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: 'ลบ ''%s'' ออกจากเว็บไซต์ฉบับร่างแล้ว'
-    RESTORE: Restore
+    RESTORE: คืนค่า
     RESTORED: 'Restored ''{title}'' successfully'
     ROLLBACK: ย้อนกลับไปที่รุ่นนี้
     ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
     ROLLEDBACKVERSION: 'ย้อนกลับไปเป็นรุ่น #%d แล้ว หมายเลขใหม่ของรุ่นคือ #%d'
     SAVE: บันทึก
-    SAVEDRAFT: 'Save Draft'
-    TabContent: Content
-    TabHistory: History
-    TabSettings: Settings
+    SAVEDRAFT: บันทึกเป็นฉบับร่าง
+    TabContent: เนื้อหา
+    TabHistory: ประวัติย้อนหลัง
+    TabSettings: ตั้งค่า
     TreeFiltered: 'Filtered tree.'
-    TreeFilteredClear: 'Clear filter'
+    TreeFilteredClear: ล้างค่าตัวกรองข้อมูล
   CMSMain_left.ss:
     'APPLY FILTER': 'Apply Filter'
-    RESET: Reset
+    RESET: รีเซ็ต
   CMSPageAddController:
     MENUTITLE: เพิ่มหน้า
     ParentMode_child: อยู่ใต้หน้าอื่นๆ
@@ -127,7 +127,7 @@ th:
     REVERTTOTHISVERSION: ย้อนกลับไปที่รุ่นนี้
     SHOWUNPUBLISHED: แสดงรุ่นที่ระงับการเผยแพร่ไว้
     SHOWVERSION: แสดงข้อมูลรุ่น
-    VIEW: view
+    VIEW: มุมมอง
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: ผู้แต่ง
@@ -155,35 +155,35 @@ th:
   CMSSettingsController:
     MENUTITLE: ตั้งค่า
   CMSSiteTreeFilter_ChangedPages:
-    Title: 'Changed pages'
+    Title: หน้าที่ถูกเปลี่ยนแปลง
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'All pages, including deleted'
+    Title: 'ทุกหน้า รวมทั้งหน้าที่ถูกลบไปแล้วด้วย'
   CMSSiteTreeFilter_Search:
     Title: หน้าทั้งหมด
   ContentControl:
     NOTEWONTBESHOWN: 'หมายเหตุ: ข้อความนี้จะไม่ถูกนำไปแสดงให้ผู้เยี่ยมชมเว็บไซต์ของคุณเห็น'
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
+    ARCHIVEDSITE: รุ่นสำหรับดูตัวอย่าง
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
     DRAFTSITE: เว็บไซต์ฉบับร่าง
     DRAFT_SITE_ACCESS_RESTRICTION: 'You must log in with your CMS password in order to view the draft or archived content.  <a href="%s">Click here to go back to the published site.</a>'
-    Email: Email
-    InstallFilesDeleted: 'Installation files have been successfully deleted.'
+    Email: อีเมล
+    InstallFilesDeleted: ไฟล์ติดตั้งได้ถูกลบทิ้งเรียบร้อยแล้ว
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    InstallSuccessCongratulations: 'SilverStripe ได้รับการติดตั้งเรียบร้อยแล้ว'
     LOGGEDINAS: เข้าสู่ระบบในชื่อ
     LOGIN: เข้าสู่ระบบ
     LOGOUT: ออกจากระบบ
     NOTLOGGEDIN: ยังไม่ได้เข้าสู่ระบบ
     PUBLISHEDSITE: เว็บไซต์ที่เผยแพร่อยู่
-    Password: Password
+    Password: รหัสผ่าน
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
     StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
-    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
+    UnableDeleteInstall: 'ไม่สามารถลบไฟล์ติดตั้งได้ กรุณาลบไฟล์ดังกล่าวด้านล่างด้วยตนเอง'
     VIEWPAGEIN: 'เปิดดูหน้าเว็บใน:'
   ErrorPage:
-    CODE: 'Error code'
+    CODE: รหัสข้อผิดพลาด
     DEFAULTERRORPAGECONTENT: '<p>Sorry, it seems you were trying to access a page that doesn''t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>'
     DEFAULTERRORPAGETITLE: ไม่พบหน้าที่ต้องการ
     DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
@@ -216,15 +216,15 @@ th:
     504: '504 - Gateway Timeout'
     505: '505 - HTTP Version Not Supported'
   Folder:
-    AddFolderButton: 'Add folder'
+    AddFolderButton: เพิ่มโฟลเดอร์
     DELETEUNUSEDTHUMBNAILS: 'Delete unused thumbnails'
-    UNUSEDFILESTITLE: 'Unused files'
-    UNUSEDTHUMBNAILSTITLE: 'Unused thumbnails'
-    UploadFilesButton: Upload
+    UNUSEDFILESTITLE: ไฟล์ที่ไม่ได้ใช้งาน
+    UNUSEDTHUMBNAILSTITLE: รูปย่อที่ไม่ได้ใช้งาน
+    UploadFilesButton: อัพโหลด
   LeftAndMain:
-    DELETED: Deleted.
+    DELETED: ถูกลบแล้ว
     PreviewButton: ดูตัวอย่าง
-    SAVEDUP: Saved.
+    SAVEDUP: บันทึกแล้ว
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: ผลการค้นหา
     VersionUnknown: Unknown
@@ -234,7 +234,7 @@ th:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
   RedirectorPage:
-    DESCRIPTION: 'Redirects to a different internal page'
+    DESCRIPTION: เปลี่ยนเส้นทางไปยังหน้าเว็บภายในอื่นๆ
     HASBEENSETUP: 'A redirector page has been set up without anywhere to redirect to.'
     HEADER: หน้าเว็บนี้จะเปลี่ยนเส้นทางผู้ใช้งานไปยังหน้าเว็บอื่นๆ
     OTHERURL: 'ที่อยู่ URL ของเว็บไซต์อื่นๆ'
@@ -274,8 +274,8 @@ th:
     EDITHEADER: 'ใครสามารถแก้ไขหน้าเว็บบนเว็บไซต์นี้ได้บ้าง?'
     EDIT_PERMISSION: การจัดการการกำหนดค่าของเว็บไซต์
     EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
+    PLURALNAME: กำหนดค่าเว็บไซต์
+    SINGULARNAME: ตั้งค่าเว็บไซต์
     SITENAMEDEFAULT: ชื่อเว็บไซต์ของคุณ
     SITETAGLINE: 'Site Tagline/Slogan'
     SITETITLE: ชื่อเว็บไซต์
@@ -291,7 +291,7 @@ th:
     ACCESSLOGGEDIN: ผู้ใช้งานที่อยู่ในระบบ
     ACCESSONLYTHESE: 'เฉพาะบุคคลเหล่านี้เท่านั้น (เลือกจากรายการ)'
     ADDEDTODRAFTHELP: 'Page has not been published yet'
-    ADDEDTODRAFTSHORT: Draft
+    ADDEDTODRAFTSHORT: ฉบับร่าง
     ALLOWCOMMENTS: 'อนุญาตให้แสดงความเห็นในหน้านีหรือไม่?'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: ยกเลิกการเปลี่ยนแปลงในฉบับร่าง
@@ -299,7 +299,7 @@ th:
     BUTTONSAVEPUBLISH: บันทึกและเผยแพร่
     BUTTONUNPUBLISH: ยังไม่ได้เผยแพร่
     BUTTONUNPUBLISHDESC: 'Remove this page from the published site'
-    CREATED: 'Date Created'
+    CREATED: วันที่สร้าง
     Comments: ความคิดเห็น
     Content: เนื้อหา
     DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
@@ -309,7 +309,7 @@ th:
     DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
     DEFAULTHOMETITLE: หน้าแรก
     DELETEDPAGEHELP: 'Page is no longer published'
-    DELETEDPAGESHORT: Deleted
+    DELETEDPAGESHORT: ถูกลบ
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
     DESCRIPTION: หน้าเนื้อหาทั่วไป
     DependtPageColumnLinkType: ชนิดของลิงค์
@@ -323,8 +323,8 @@ th:
     Editors: 'Editors Groups'
     HASBROKENLINKS: หน้าเว็บนี้มีลิงค์เสีย
     HTMLEDITORTITLE: เนื้อหา
-    INHERIT: 'Inherit from parent page'
-    LASTUPDATED: 'Last Updated'
+    INHERIT: สืบทอดค่าจากหน้าเว็บต้นทาง
+    LASTUPDATED: อัพเดทล่าสุด
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 'Navigation label'
     METADESC: รายละเอียด
@@ -332,7 +332,7 @@ th:
     METAKEYWORDS: คีย์เวิร์ด
     METATITLE: ชื่อ
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
-    MODIFIEDONDRAFTSHORT: Modified
+    MODIFIEDONDRAFTSHORT: แก้ไขเมื่อ
     MetadataToggle: Metadata
     PAGELOCATION: ตำแหน่งหน้าเว็บ
     PAGETITLE: ชื่อหน้าเว็บ
@@ -347,17 +347,17 @@ th:
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
-    REMOVEDFROMDRAFTSHORT: 'Removed from draft'
+    REMOVEDFROMDRAFTSHORT: ลบออกจากฉบับร่าง
     REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
-    REORGANISE_DESCRIPTION: 'Change site structure'
+    REORGANISE_DESCRIPTION: เปลี่ยนโครงสร้างเว็บไซต์
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'แสดงในเมนู?'
     SHOWINSEARCH: 'แสดงในผลลัพธ์ของการค้นหาหรือไม่?'
     SINGULARNAME: โครงสร้างไซต์แบบต้นไม้
-    TABBEHAVIOUR: Behavior
+    TABBEHAVIOUR: พฤติกรรม
     TABCONTENT: เนื้อหา
     TABDEPENDENT: 'Dependent pages'
-    TOPLEVEL: 'Site Content (Top Level)'
+    TOPLEVEL: 'เนื้อหาเว็บไซต์ (ระดับสูงสุด)'
     TOPLEVELCREATORGROUPS: 'Top level creators'
     URLSegment: 'ส่วนการจัดการ URL'
     VIEWERGROUPS: 'Viewer Groups'
@@ -366,7 +366,7 @@ th:
     VIEW_DRAFT_CONTENT: เปิดดูเนื้อหาฉบับร่าง
     VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
     Viewers: 'Viewers Groups'
-    Visibility: Visibility
+    Visibility: สามารถมองเห็นได้
     has_one_Parent: 'Parent Page'
     many_many_BackLinkTracking: 'Backlink Tracking'
     many_many_ImageTracking: 'Image Tracking'
@@ -384,8 +384,8 @@ th:
     SORTASC: จัดเรียงลำดับจากน้อยมามาก
     SORTDESC: จัดเรียงลำดับจากมากมาน้อย
   TableListField_PageControls.ss:
-    DISPLAYING: Displaying
-    OF: of
+    DISPLAYING: กำลังแสดง
+    OF: จาก
     TO: to
     VIEWFIRST: เปิดดูหน้าแรก
     VIEWLAST: เปิดดูหน้าสุดท้าย
@@ -397,11 +397,11 @@ th:
     CANACCESS: 'คุณสามารถเข้าถึงเว็บไซต์รุ่นย้อนหลังได้จากลิงก์นี้:'
     HAVEASKED: คุณได้ร้องขอเพื่อเปิดดูเนื้อหาในเว็บไซต์ของเราเมื่อ
   VirtualPage:
-    CHOOSE: 'Choose a page to link to'
+    CHOOSE: เลือกหน้าเว็บที่ต้องการลิงก์ไป
     DESCRIPTION: 'Displays the content of another page'
     EDITCONTENT: คลิกที่นี่เพื่อแก้ไขเนื้อหา
-    HEADER: 'This is a virtual page'
-    PLURALNAME: 'Virtual Pags'
+    HEADER: นี่เป็นหน้าเว็บจำลอง
+    PLURALNAME: หน้าเว็บจำลอง
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: หน้าจำลอง
   cms:
