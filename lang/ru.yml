@@ -136,9 +136,9 @@ ru:
     UNKNOWN: Неизвестно
     WHEN: Когда
   CMSPageSettingsController:
-    MENUTITLE: 'Править страницы'
+    MENUTITLE: 'Править страницу'
   CMSPagesController:
-    GalleryView: 'Обзор галереи'
+    GalleryView: 'В виде галереи'
     ListView: 'Обзор списка'
     MENUTITLE: Страницы
     TreeView: 'Обзор дерева'
@@ -318,8 +318,8 @@ ru:
     EDITHEADER: 'Кто может редактировать это в Системе (CMS)?'
     EDITONLYTHESE: 'Только эти пользователи (выберите из списка)'
     EDITORGROUPS: 'Editor Groups'
-    EDIT_ALL_DESCRIPTION: 'Edit any page'
-    EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
+    EDIT_ALL_DESCRIPTION: 'Редактирование любой страницы'
+    EDIT_ALL_HELP: 'Возможность редактировать любую страницу на сайте независимо от настроек во вкладке "Доступ". Необходимо право доступа к разделу "Страницы".'
     Editors: 'Группы редакторов'
     HASBROKENLINKS: 'Эта страница содержит неверные ссылки.'
     HTMLEDITORTITLE: Содержимое
@@ -361,8 +361,8 @@ ru:
     TOPLEVELCREATORGROUPS: 'Top level creators'
     URLSegment: 'Адрес страницы'
     VIEWERGROUPS: 'Viewer Groups'
-    VIEW_ALL_DESCRIPTION: 'View any page'
-    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
+    VIEW_ALL_DESCRIPTION: 'Просмотр любой страницы'
+    VIEW_ALL_HELP: 'Возможность просматривать любую страницу на сайте независимо от настроек во вкладке "Доступ". Необходимо право доступа к содержимому сайта.'
     VIEW_DRAFT_CONTENT: 'Просмотреть содержимое черновика'
     VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
     Viewers: 'Группы чтения'
