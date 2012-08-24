@@ -99,7 +99,7 @@ ru:
     REMOVEDPAGE: 'Страница ''{title}'' удалена с опубликованного сайта.'
     REMOVEDPAGEFROMDRAFT: 'Удалено ''%s'' с чернового сайта'
     RESTORE: Восстановить
-    RESTORED: 'Restored ''{title}'' successfully'
+    RESTORED: '''{title}'' успешно восстановлен'
     ROLLBACK: 'Откатить до этой версии'
     ROLLEDBACKPUB: 'Произведен откат до опубликованной версии. Номер новой версии #{version}'
     ROLLEDBACKVERSION: 'Произведен откат до версии #%d. Номер новой версии #%d'
@@ -325,7 +325,7 @@ ru:
     HTMLEDITORTITLE: Содержимое
     INHERIT: 'Такие же как у родительской страницы'
     LASTUPDATED: 'Последнее обновление'
-    LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
+    LINKCHANGENOTE: 'Изменение ссылки на эту страницу повлияет и на ссылки всех дочерних страниц.'
     MENUTITLE: 'Метка в навигации'
     METADESC: Описание
     METAEXTRA: 'Пользовательские мета-тэги'
@@ -360,7 +360,7 @@ ru:
     TOPLEVEL: 'Содержимое сайта (Верхний уровень)'
     TOPLEVELCREATORGROUPS: 'Top level creators'
     URLSegment: 'Адрес страницы'
-    VIEWERGROUPS: 'Viewer Groups'
+    VIEWERGROUPS: 'Группы чтения'
     VIEW_ALL_DESCRIPTION: 'Просмотр любой страницы'
     VIEW_ALL_HELP: 'Возможность просматривать любую страницу на сайте независимо от настроек во вкладке "Доступ". Требуется право доступа к содержимому сайта.'
     VIEW_DRAFT_CONTENT: 'Просмотреть содержимое черновика'
