@@ -15,7 +15,7 @@ ru:
     FILES: Files
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'Из интернета'
-    FROMYOURCOMPUTER: 'С компьютера'
+    FROMYOURCOMPUTER: 'С диска'
     Filetype: 'File type'
     ListView: 'List View'
     MENUTITLE: Файлы
@@ -349,7 +349,7 @@ ru:
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
     REMOVEDFROMDRAFTSHORT: 'Удалено из черновика'
     REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
-    REORGANISE_DESCRIPTION: 'Изменить структуру сайта'
+    REORGANISE_DESCRIPTION: 'Изменение структуры сайта'
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'Показывать в меню?'
     SHOWINSEARCH: 'Показывать в поиске?'
@@ -362,7 +362,7 @@ ru:
     URLSegment: 'Адрес страницы'
     VIEWERGROUPS: 'Viewer Groups'
     VIEW_ALL_DESCRIPTION: 'Просмотр любой страницы'
-    VIEW_ALL_HELP: 'Возможность просматривать любую страницу на сайте независимо от настроек во вкладке "Доступ". Необходимо право доступа к содержимому сайта.'
+    VIEW_ALL_HELP: 'Возможность просматривать любую страницу на сайте независимо от настроек во вкладке "Доступ". Требуется право доступа к содержимому сайта.'
     VIEW_DRAFT_CONTENT: 'Просмотреть содержимое черновика'
     VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
     Viewers: 'Группы чтения'
