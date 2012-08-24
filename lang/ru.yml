@@ -10,11 +10,11 @@ ru:
     AppCategoryVideo: Video
     BackToFolder: 'Вернуться к папке'
     CREATED: Date
-    CurrentFolderOnly: 'Limit to current folder?'
+    CurrentFolderOnly: 'Только в этой папке?'
     DetailsView: Details
     FILES: Files
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
-    FROMTHEINTERNET: 'From the internet'
+    FROMTHEINTERNET: 'Из интернета'
     FROMYOURCOMPUTER: 'С компьютера'
     Filetype: 'File type'
     ListView: 'List View'
@@ -31,7 +31,7 @@ ru:
   AssetAdmin_left.ss:
     GO: Перейти
   AssetTableField:
-    BACKLINKCOUNT: 'Used on:'
+    BACKLINKCOUNT: 'Используется на:'
     PAGES: page(s)
   BackLink_Button.ss:
     Back: Back
@@ -60,8 +60,8 @@ ru:
   CMSAddPageController:
     Title: 'Добавить страницу'
   CMSBatchActions:
-    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
-    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
+    DELETED_DRAFT_PAGES: '%d страниц удалено с чернового сайта, %d ошибок'
+    DELETED_PAGES: '%d страниц удалено с опубликованного сайта, %d ошибок'
     DELETE_DRAFT_PAGES: 'Удалить из чернового сайта'
     DELETE_PAGES: 'Удалить из опубликованной версии сайта'
     PUBLISHED_PAGES: 'Published %d pages, %d failures'
@@ -71,7 +71,7 @@ ru:
   CMSFileAddController:
     MENUTITLE: Files
   CMSMain:
-    ACCESS: 'Access to ''{title}'' section'
+    ACCESS: 'Доступ к разделу ''{title}'''
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
     AddNew: 'Добавить новую страницу'
     AddNewButton: Добавить
@@ -94,14 +94,14 @@ ru:
     PUBALLFUN: 'Функция "Опубликовать все"'
     PUBALLFUN2: 'Нажатие этой кнопки выполнит ту же функцию, что и нажатие кнопки "Опубликовать" для каждой отдельной страницы. Данная функция предназначена для использования после значительных изменений содержимого, например, в момент создания нового сайта.'
     PUBPAGES: 'Done: Published {count} pages'
-    PageAdded: 'Successfully created page'
+    PageAdded: 'Страница успешно создана'
     REMOVED: 'Удалено ''%s''%s с опубликованного сайта'
-    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
+    REMOVEDPAGE: 'Страница ''{title}'' удалена с опубликованного сайта.'
     REMOVEDPAGEFROMDRAFT: 'Удалено ''%s'' с чернового сайта'
     RESTORE: Восстановить
     RESTORED: 'Restored ''{title}'' successfully'
     ROLLBACK: 'Откатить до этой версии'
-    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
+    ROLLEDBACKPUB: 'Произведен откат до опубликованной версии. Номер новой версии #{version}'
     ROLLEDBACKVERSION: 'Произведен откат до версии #%d. Номер новой версии #%d'
     SAVE: Сохранить
     SAVEDRAFT: 'Сохранить черновик'
@@ -311,7 +311,7 @@ ru:
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Deleted
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
-    DESCRIPTION: 'Generic content page'
+    DESCRIPTION: 'Обычная страница'
     DependtPageColumnLinkType: 'Тип ссылки'
     DependtPageColumnURL: URL
     EDITANYONE: 'Все у кого есть доступ к Системе (CMS)'
@@ -333,7 +333,7 @@ ru:
     METATITLE: Заголовок
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
-    MetadataToggle: Metadata
+    MetadataToggle: Метаданные
     PAGELOCATION: 'Расположение страницы'
     PAGETITLE: 'Название страницы'
     PAGETYPE: 'Тип страницы'
@@ -372,7 +372,7 @@ ru:
     many_many_ImageTracking: 'Отслеживание картинок'
     many_many_LinkTracking: 'Отслеживание ссылок'
   SiteTreeURLSegmentField:
-    HelpChars: ' Special characters are automatically converted or removed.'
+    HelpChars: 'Спецсимволы автоматически конвертируются или удаляются.'
   StaticExporter:
     BASEURL: 'Базовый URL'
     EXPORTTO: 'Экспорт в эту папку'
@@ -380,7 +380,7 @@ ru:
   TableListField:
     SELECT: 'Выбрать:'
   TableListField.ss:
-    NOITEMSFOUND: 'No items found'
+    NOITEMSFOUND: 'Элементов не найдено'
     SORTASC: 'По возрастанию'
     SORTDESC: 'По убыванию'
   TableListField_PageControls.ss:
