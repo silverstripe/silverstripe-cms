@@ -102,7 +102,7 @@ bg:
     RESTORED: 'Restored ''{title}'' successfully'
     ROLLBACK: 'Върни към тази версия'
     ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
-    ROLLEDBACKVERSION: 'Върната на верися #%d. Новиа версия с номер #%d'
+    ROLLEDBACKVERSION: 'Върната на верися #%d. Новата версия е с номер #%d'
     SAVE: Save
     SAVEDRAFT: 'Запази чернова'
     TabContent: Content

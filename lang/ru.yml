@@ -34,7 +34,7 @@ ru:
     BACKLINKCOUNT: 'Используется на:'
     PAGES: page(s)
   BackLink_Button.ss:
-    Back: Back
+    Back: Назад
   BrokenLinksReport:
     Any: Any
     BROKENLINKS: 'Broken links report'
@@ -64,10 +64,10 @@ ru:
     DELETED_PAGES: '%d страниц удалено с опубликованного сайта, %d ошибок'
     DELETE_DRAFT_PAGES: 'Удалить из чернового сайта'
     DELETE_PAGES: 'Удалить из опубликованной версии сайта'
-    PUBLISHED_PAGES: 'Published %d pages, %d failures'
+    PUBLISHED_PAGES: 'Опубликовано %d страниц, %d ошибок'
     PUBLISH_PAGES: Опубликовать
     UNPUBLISHED_PAGES: 'Публикация %d страниц отменена'
-    UNPUBLISH_PAGES: Un-publish
+    UNPUBLISH_PAGES: 'Отмена публикации'
   CMSFileAddController:
     MENUTITLE: Files
   CMSMain:
@@ -309,15 +309,15 @@ ru:
     DEFAULTHOMECONTENT: '<p>Добро пожаловать в SilverStripe! Это главная страница по умолчанию. Вы можете редактировать ее в <a href="admin/">Системе Управления Содержимым</a>. Вы также можете обратиться к <a href="http://doc.silverstripe.com">документации для разработчиков</a> или начать с <a href="http://doc.silverstripe.com/doku.php?id=tutorials">учебных материалов.</a></p>'
     DEFAULTHOMETITLE: Главная
     DELETEDPAGEHELP: 'Page is no longer published'
-    DELETEDPAGESHORT: Deleted
-    DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DELETEDPAGESHORT: Удалено
+    DEPENDENT_NOTE: 'С этой страницей связаны следующие зависимые страницы (сюда относятся виртуальные страницы, страницы перенаправления и страницы со ссылками на контент).'
     DESCRIPTION: 'Обычная страница'
     DependtPageColumnLinkType: 'Тип ссылки'
     DependtPageColumnURL: URL
     EDITANYONE: 'Все у кого есть доступ к Системе (CMS)'
     EDITHEADER: 'Кто может редактировать это в Системе (CMS)?'
     EDITONLYTHESE: 'Только эти пользователи (выберите из списка)'
-    EDITORGROUPS: 'Editor Groups'
+    EDITORGROUPS: 'Группы редактирования'
     EDIT_ALL_DESCRIPTION: 'Редактирование любой страницы'
     EDIT_ALL_HELP: 'Возможность редактировать любую страницу на сайте независимо от настроек во вкладке "Доступ". Необходимо право доступа к разделу "Страницы".'
     Editors: 'Группы редакторов'
@@ -341,29 +341,29 @@ ru:
     PARENTTYPE: 'Расположение страницы'
     PARENTTYPE_ROOT: 'Страница верхнего уровня'
     PARENTTYPE_SUBPAGE: 'Подстраница под родительской страницей'
-    PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Управление правами доступа к содержимому'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
     PLURALNAME: 'Дерево сайта'
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
     REMOVEDFROMDRAFTSHORT: 'Удалено из черновика'
-    REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
+    REMOVE_INSTALL_WARNING: 'Внимание: по соображениям безопасности рекомендуется удалить файл install.php из данной инсталляции SilverStripe.'
     REORGANISE_DESCRIPTION: 'Изменение структуры сайта'
-    REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
+    REORGANISE_HELP: 'Изменение порядка страниц в древовидной структуре сайта посредством drag&drop.'
     SHOWINMENUS: 'Показывать в меню?'
     SHOWINSEARCH: 'Показывать в поиске?'
     SINGULARNAME: 'Дерево сайта'
     TABBEHAVIOUR: Поведение
     TABCONTENT: Содержимое
-    TABDEPENDENT: 'Dependent pages'
+    TABDEPENDENT: 'Зависимые страницы'
     TOPLEVEL: 'Содержимое сайта (Верхний уровень)'
     TOPLEVELCREATORGROUPS: 'Top level creators'
     URLSegment: 'Адрес страницы'
     VIEWERGROUPS: 'Группы чтения'
     VIEW_ALL_DESCRIPTION: 'Просмотр любой страницы'
     VIEW_ALL_HELP: 'Возможность просматривать любую страницу на сайте независимо от настроек во вкладке "Доступ". Требуется право доступа к содержимому сайта.'
-    VIEW_DRAFT_CONTENT: 'Просмотреть содержимое черновика'
+    VIEW_DRAFT_CONTENT: 'Просмотр содержимого черновика'
     VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
     Viewers: 'Группы чтения'
     Visibility: Visibility
