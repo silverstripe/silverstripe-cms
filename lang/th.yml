@@ -133,7 +133,7 @@ th:
     AUTHOR: ผู้แต่ง
     NOTPUBLISHED: ยังไม่ได้เผยแพร่
     PUBLISHER: ผู้เผยแพร่
-    UNKNOWN: Unknown
+    UNKNOWN: ไม่ทราบ
     WHEN: เมื่อ
   CMSPageSettingsController:
     MENUTITLE: แก้ไขหน้าเว็บ
@@ -217,7 +217,7 @@ th:
     505: '505 - HTTP Version Not Supported'
   Folder:
     AddFolderButton: เพิ่มโฟลเดอร์
-    DELETEUNUSEDTHUMBNAILS: 'Delete unused thumbnails'
+    DELETEUNUSEDTHUMBNAILS: ลบรูปย่อที่ไม่ได้ใช้งาน
     UNUSEDFILESTITLE: ไฟล์ที่ไม่ได้ใช้งาน
     UNUSEDTHUMBNAILSTITLE: รูปย่อที่ไม่ได้ใช้งาน
     UploadFilesButton: อัพโหลด
@@ -227,7 +227,7 @@ th:
     SAVEDUP: บันทึกแล้ว
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: ผลการค้นหา
-    VersionUnknown: Unknown
+    VersionUnknown: ไม่ทราบ
   Permission:
     CMS_ACCESS_CATEGORY: 'การเข้าถึง CMS'
   Permissions:
@@ -398,7 +398,7 @@ th:
     HAVEASKED: คุณได้ร้องขอเพื่อเปิดดูเนื้อหาในเว็บไซต์ของเราเมื่อ
   VirtualPage:
     CHOOSE: เลือกหน้าเว็บที่ต้องการลิงก์ไป
-    DESCRIPTION: 'Displays the content of another page'
+    DESCRIPTION: แสดงเนื้อหาของหน้าเว็บอื่นๆ
     EDITCONTENT: คลิกที่นี่เพื่อแก้ไขเนื้อหา
     HEADER: นี่เป็นหน้าเว็บจำลอง
     PLURALNAME: หน้าเว็บจำลอง
