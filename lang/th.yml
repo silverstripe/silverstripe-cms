@@ -12,7 +12,7 @@ th:
     CREATED: วันที่
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: รายละเอียด
-    FILES: Files
+    FILES: ไฟล์
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: จากอินเทอร์เน็ต
     FROMYOURCOMPUTER: จากเครื่องคอมพิวเตอร์ของคุณ
@@ -32,7 +32,7 @@ th:
     GO: ไป
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
-    PAGES: page(s)
+    PAGES: หน้า
   BackLink_Button.ss:
     Back: ย้อนกลับ
   BrokenLinksReport:
@@ -94,7 +94,7 @@ th:
     PUBALLFUN: 'ฟังก์ชั่นการทำงาน "เผยแพร่ทั้งหมด"'
     PUBALLFUN2: 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It''s				intended to be used after there have been massive edits of the content, such as when the site was				first built.'
     PUBPAGES: 'Done: Published {count} pages'
-    PageAdded: 'Successfully created page'
+    PageAdded: หน้าเว็บที่สร้างเสร็จเรียบร้อยแล้ว
     REMOVED: 'ลบ ''%s''%s จากเว็บไซต์ที่ออนไลน์สดๆอยู่แล้ว'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: 'ลบ ''%s'' ออกจากเว็บไซต์ฉบับร่างแล้ว'
@@ -255,14 +255,14 @@ th:
   SideReport:
     BROKENFILES: หน้าเว็บที่มีไฟล์เสีย
     BROKENLINKS: หน้าเว็บที่มีลิงค์เสีย
-    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
+    BROKENREDIRECTORPAGES: เปลี่ยนเส้นทางหน้าเว็บที่ชี้ไปที่หน้าเว็บที่ถูกลบแล้ว
     BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
     BrokenLinksGroupTitle: รายงานลิงค์เสีย
     ContentGroupTitle: รายงานเกี่ยวกับเนื้อหา
     EMPTYPAGES: หน้าเว็บที่ยังไม่มีเนื้อหา
     LAST2WEEKS: 'หน้าเว็บที่ถูกแก้ไขใน 2 สัปดาห์ล่าสุด'
     OtherGroupTitle: อื่นๆ
-    ParameterLiveCheckbox: 'Check live site'
+    ParameterLiveCheckbox: ดูเว็บไซต์แบบสดๆ
     REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigatorLink:
     ShareInstructions: 'To share a this to this page, copy and paste the link below.'
@@ -365,9 +365,9 @@ th:
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
     VIEW_DRAFT_CONTENT: เปิดดูเนื้อหาฉบับร่าง
     VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
-    Viewers: 'Viewers Groups'
+    Viewers: กลุ่มผู้เข้าชม
     Visibility: สามารถมองเห็นได้
-    has_one_Parent: 'Parent Page'
+    has_one_Parent: หน้าเว็บต้นทาง
     many_many_BackLinkTracking: 'Backlink Tracking'
     many_many_ImageTracking: 'Image Tracking'
     many_many_LinkTracking: 'Link Tracking'
@@ -380,13 +380,13 @@ th:
   TableListField:
     SELECT: เลือก
   TableListField.ss:
-    NOITEMSFOUND: 'No items found'
+    NOITEMSFOUND: ไม่พบรายการที่ต้องการ
     SORTASC: จัดเรียงลำดับจากน้อยมามาก
     SORTDESC: จัดเรียงลำดับจากมากมาน้อย
   TableListField_PageControls.ss:
     DISPLAYING: กำลังแสดง
     OF: จาก
-    TO: to
+    TO: ถึง
     VIEWFIRST: เปิดดูหน้าแรก
     VIEWLAST: เปิดดูหน้าสุดท้าย
     VIEWNEXT: เปิดดูถัดไป
