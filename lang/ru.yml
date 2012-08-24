@@ -4,19 +4,19 @@ ru:
     ALLOWEDEXTS: 'Допустимые расширения'
     ActionAdd: 'Добавить папку'
     AppCategoryArchive: Архив
-    AppCategoryAudio: Audio
+    AppCategoryAudio: Аудио
     AppCategoryFlash: Flash
     AppCategoryImage: Изображение
-    AppCategoryVideo: Video
+    AppCategoryVideo: Видео
     BackToFolder: 'Вернуться к папке'
-    CREATED: Date
+    CREATED: Дата
     CurrentFolderOnly: 'Только в этой папке?'
     DetailsView: Details
     FILES: Files
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'Из интернета'
     FROMYOURCOMPUTER: 'С диска'
-    Filetype: 'File type'
+    Filetype: 'Тип файла'
     ListView: 'List View'
     MENUTITLE: Файлы
     NEWFOLDER: 'Новая папка'
@@ -41,7 +41,7 @@ ru:
     CheckSite: 'Check site'
     CheckSiteDropdownDraft: 'Draft Site'
     CheckSiteDropdownPublished: 'Published Site'
-    ColumnDateLastModified: 'Date last modified'
+    ColumnDateLastModified: 'Дата последнего изменения'
     ColumnDateLastPublished: 'Date last published'
     ColumnProblemType: 'Problem type'
     ColumnURL: URL
@@ -49,13 +49,13 @@ ru:
     HasBrokenLink: 'has broken link'
     HasBrokenLinkAndFile: 'has broken link and file'
     HoverTitleEditPage: 'Edit page'
-    PageName: 'Page name'
+    PageName: 'Название страницы'
     ReasonDropdown: 'Problem to check'
     ReasonDropdownBROKENFILE: 'Broken file'
     ReasonDropdownBROKENLINK: 'Broken link'
-    ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
+    ReasonDropdownRPBROKENLINK: 'Страница перенаправления указывает на несуществующую страницу'
     ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
-    RedirectorNonExistent: 'redirector page pointing to non-existent page'
+    RedirectorNonExistent: 'страница перенаправления указывает на несуществующую страницу'
     VirtualPageNonExistent: 'virtual page pointing to non-existent page'
   CMSAddPageController:
     Title: 'Добавить страницу'
@@ -77,19 +77,19 @@ ru:
     AddNewButton: Добавить
     ChoosePageParentMode: 'Выберите, где создать страницу'
     ChoosePageType: 'Выберите тип страницы'
-    Create: Create
+    Create: Создать
     DELETE: 'Удалить с тестового сайта'
     DELETEFP: 'Удалить с опубликованного сайта'
     DESCREMOVED: 'and {count} descendants'
     EMAIL: Email
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: 'Править страницу'
     NEW: Новый
     PAGENOTEXISTS: 'Страница не существует'
-    PAGES: Pages
-    PAGETYPEANYOPT: Any
-    PAGETYPEOPT: 'Page Type'
+    PAGES: Страницы
+    PAGETYPEANYOPT: Любой
+    PAGETYPEOPT: 'Тип страницы'
     PUBALLCONFIRM: 'Пожалуйста, опубликуйте каждую страницу сайта, перенося содержимое из чернового режима в опубликованный'
     PUBALLFUN: 'Функция "Опубликовать все"'
     PUBALLFUN2: 'Нажатие этой кнопки выполнит ту же функцию, что и нажатие кнопки "Опубликовать" для каждой отдельной страницы. Данная функция предназначена для использования после значительных изменений содержимого, например, в момент создания нового сайта.'
@@ -106,8 +106,8 @@ ru:
     SAVE: Сохранить
     SAVEDRAFT: 'Сохранить черновик'
     TabContent: Content
-    TabHistory: History
-    TabSettings: Settings
+    TabHistory: История
+    TabSettings: Настройки
     TreeFiltered: 'Filtered tree.'
     TreeFilteredClear: 'Clear filter'
   CMSMain_left.ss:
@@ -238,11 +238,11 @@ ru:
     HASBEENSETUP: 'Страница перенаправления установлена без указания места перенаправления.'
     HEADER: 'Эта страница будет перенаправлять пользователей на другую страницу'
     OTHERURL: 'URL другого сайта'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: 'Страницы перенаправления'
     REDIRECTTO: 'Перенаправлять на'
     REDIRECTTOEXTERNAL: 'Другой сайт'
     REDIRECTTOPAGE: 'Страницу Вашего сайта'
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: 'Страница перенаправления'
     YOURPAGE: 'Страница Вашего сайта'
   ReportAdmin:
     MENUTITLE: Reports
@@ -282,7 +282,7 @@ ru:
     TABACCESS: Доступ
     TABMAIN: Главная
     TAGLINEDEFAULT: 'your tagline here'
-    THEME: Theme
+    THEME: Тема
     TOPLEVELCREATE: 'Кто может создавать страницы верхнего уровня на этом сайте?'
     VIEWHEADER: 'Кто может просматривать страницы на этом сайте?'
   SiteTree:
