@@ -90,7 +90,7 @@ sk:
     PAGES: Stránky
     PAGETYPEANYOPT: Akýkoľvek
     PAGETYPEOPT: 'Typ stránky'
-    PUBALLCONFIRM: 'Publikovať všetky stránky z úschovne'
+    PUBALLCONFIRM: 'Prosím, zverejnite všetky stránky webu, zkopírovaním obsahu na verejné'
     PUBALLFUN: 'Funkcia "Publikovať všetko"'
     PUBALLFUN2: 'Stlačením tohto tlačidla vykonáte to isté ako keby ste navštívili každú stránku a stlačili "publikuj". Je určené na použite po rozsiahlych zmenách obsahu, napríklad keď bol web prvýkrát vytvorený.'
     PUBPAGES: 'Hotovo: Publikované {count} stránky'
@@ -180,7 +180,7 @@ sk:
     Password: Heslo
     PostInstallTutorialIntro: 'Tento web je zjednodušená verzia SilverStripe 2. webu. Ak ho chcete rošíriť, pozrite sa na odkaz {link}, prosím.'
     StartEditing: 'Môžte začať editáciu vášho web obsahu otvorením <a href="{link}">CMS</a>.'
-    UnableDeleteInstall: 'Nepodarilo sa smazať inštalačné súbory. Smazte ručne súbory uvedené dole'
+    UnableDeleteInstall: 'Nepodarilo sa smazať inštalačné súbory. Smažte ručne súbory uvedené dole'
     VIEWPAGEIN: 'Prezrieť stránku v:'
   ErrorPage:
     CODE: 'Chybový kód'
