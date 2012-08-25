@@ -271,7 +271,7 @@ sk:
     CloseLink: Zavrieť
   SiteConfig:
     DEFAULTTHEME: '(Použi predvolenú tému)'
-    EDITHEADER: 'Kto môže upravovať stranky na tomto webe?'
+    EDITHEADER: 'Kto môže editovať stránky na tomto webe?'
     EDIT_PERMISSION: 'Spravovať konfiguráciu webu'
     EDIT_PERMISSION_HELP: 'Možnosť meniť globálne prístupové nastavenia/právomoci pre hlavné stránky.'
     PLURALNAME: 'Konfigurácie webu'
@@ -325,7 +325,7 @@ sk:
     HTMLEDITORTITLE: Obsah
     INHERIT: 'Zdediť od nadradenej stránky'
     LASTUPDATED: 'Posledne aktualizované'
-    LINKCHANGENOTE: 'Zmenenie odkazu na tejto stránky ovplyvní tiež odkazy všetkých podstránok.'
+    LINKCHANGENOTE: 'Zmenenie odkazu tejto stránky ovplyvní tiež odkazy všetkých podstránok.'
     MENUTITLE: 'Navigačná menovka'
     METADESC: Popis
     METAEXTRA: 'Vlastné Meta Tagy'
@@ -345,7 +345,7 @@ sk:
     PERMISSION_GRANTACCESS_HELP: 'Povoliť nastavenia obmedzenia pre stranku v sekcií "Pages".'
     PLURALNAME: 'Strom stránok'
     PageTypNotAllowedOnRoot: 'Stránka typu "{type}" nie je povolená na najvyššej úrovni'
-    PageTypeNotAllowed: 'Stránka typu "{type}" nie je povolená ako potomok nadriadenej stránky'
+    PageTypeNotAllowed: 'Stránka typu "{type}" nie je povolená ako potomok nadradenej stránky'
     REMOVEDFROMDRAFTHELP: 'Stránka je zverejnená, ale bola odstránená z koceptuu'
     REMOVEDFROMDRAFTSHORT: 'Odstránené z konceptu'
     REMOVE_INSTALL_WARNING: 'Upozornenie: Z bezpečnostných dôvodov odstránte súbor install.php z SilverStripe inštalácie.'
@@ -402,7 +402,7 @@ sk:
     EDITCONTENT: 'kliknite tu pre editáciu obsahu'
     HEADER: 'Toto je virtuálna stránka'
     PLURALNAME: 'Virtuálne stránky'
-    PageTypNotAllowedOnRoot: 'Pôvodná stránka typu "{type}" nie je povolená na najvyššej úrovni pre túto virtálnu stránku'
+    PageTypNotAllowedOnRoot: 'Pôvodná stránka typu "{type}" nie je povolená na najvyššej úrovni pre túto virtuálnu stránku'
     SINGULARNAME: 'Virtuálna stránka'
   cms:
     FILESYSTEMSYNC: 'Synchronizovať súbory'
