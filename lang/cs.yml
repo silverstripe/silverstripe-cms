@@ -170,7 +170,7 @@ cs:
     DRAFT_SITE_ACCESS_RESTRICTION: 'Abyste mohli prohlížet archiv nebo koncepty, musíte být přihlášeni se svým CMS heslem. <a href="%s">Klikněte sem pro návrat na zveřejněné stránky.</a>'
     Email: Email
     InstallFilesDeleted: 'Instalační soubory byly odstraněny úspěšně.'
-    InstallSecurityWarning: 'Z bezpečnostních důvodů byste se měli nyní odstranit instalační soubory, pokud se nechystáte přeinstalovat později (<em>vyžaduje admin přihlášení, viz výše </em>). Webový server nyní potřebuje pouze přístup pro zápis do složky "assets", můžete odstranit práva zápisu ze všech ostatních složek. <a href="{link}" style="text-align: center;"> Klikněte sem pro smazání instalačních souborů.</a>'
+    InstallSecurityWarning: 'Z bezpečnostních důvodů byste měli nyní odstranit instalační soubory, pokud se nechystáte přeinstalovat později (<em>vyžaduje admin přihlášení, viz výše </em>). Webový server nyní potřebuje pouze přístup pro zápis do složky "assets", můžete odstranit práva zápisu ze všech ostatních složek. <a href="{link}" style="text-align: center;"> Klikněte sem pro smazání instalačních souborů.</a>'
     InstallSuccessCongratulations: 'SilverStripe byl nainstalován úspěšně.'
     LOGGEDINAS: 'Přihlášen jako'
     LOGIN: Přihlášení
