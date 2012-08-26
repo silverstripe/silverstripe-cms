@@ -163,7 +163,7 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 			$gridField = new GridField('Reports',false, $this->Reports(), $gridFieldConfig);
 			$columns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
 			$columns->setDisplayFields(array(
-				'title' => 'Title',
+				'title' => _t('ReportAdmin.ReportTitle', 'Title'),
 			));
 			$columns->setFieldFormatting(array(
 				'title' => '<a href=\"$Link\" class=\"cms-panel-link\">$value</a>'
