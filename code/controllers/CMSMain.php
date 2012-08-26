@@ -468,8 +468,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 			$addAction = $instance->i18n_singular_name();
 			
-			// Get description
-			$description = _t($class . '.DESCRIPTION');
+			// Get description (convert 'Page' to 'SiteTree' for correct localization lookups)
+			$description = _t((($class == 'Page') ? 'SiteTree' : $class) . '.DESCRIPTION');
 
 			if(!$description) {
 				$description = $instance->uninherited('description');
@@ -484,7 +484,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				'AddAction' => $addAction,
 				'Description' => $description,
 				// TODO Sprite support
-				'IconURL' => $instance->stat('icon')
+				'IconURL' => $instance->stat('icon'),
+				'Title' => singleton($class)->i18n_singular_name(),
 			)));
 		}
 		
