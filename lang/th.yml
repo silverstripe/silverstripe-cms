@@ -189,7 +189,7 @@ th:
     DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
     DEFAULTSERVERERRORPAGETITLE: เซิร์ฟเวอร์เกิดข้อผิดพลาด
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
-    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    ERRORFILEPROBLEM: 'เกิดข้อผิดพลาดในการเปิดไฟล์ "{filename}" เพื่อเขียนข้อมูล. กรุณาตรวจสอบสิทธิ์.'
     PLURALNAME: หน้าแสดงข้อผิดพลาด
     SINGULARNAME: หน้าแสดงข้อผิดพลาด
     400: '400 - Bad Request'
@@ -290,7 +290,7 @@ th:
     ACCESSHEADER: 'ใครบ้างที่สามารถเปิดดูหน้านี้ได้?'
     ACCESSLOGGEDIN: ผู้ใช้งานที่อยู่ในระบบ
     ACCESSONLYTHESE: 'เฉพาะบุคคลเหล่านี้เท่านั้น (เลือกจากรายการ)'
-    ADDEDTODRAFTHELP: 'Page has not been published yet'
+    ADDEDTODRAFTHELP: หน้าเว็บยังไม่ได้ถูกเผยแพร่
     ADDEDTODRAFTSHORT: ฉบับร่าง
     ALLOWCOMMENTS: 'อนุญาตให้แสดงความเห็นในหน้านีหรือไม่?'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
@@ -308,7 +308,7 @@ th:
     DEFAULTCONTACTTITLE: ติดต่อเรา
     DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
     DEFAULTHOMETITLE: หน้าแรก
-    DELETEDPAGEHELP: 'Page is no longer published'
+    DELETEDPAGEHELP: หน้าเว็บไม่ได้ถูกเผยแพร่อีกต่อไปแล้ว
     DELETEDPAGESHORT: ถูกลบ
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
     DESCRIPTION: หน้าเนื้อหาทั่วไป
@@ -344,9 +344,9 @@ th:
     PERMISSION_GRANTACCESS_DESCRIPTION: การจัดการสิทธิ์การเข้าถึงเนื้อหา
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
     PLURALNAME: โครงสร้างไซต์
-    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
+    PageTypNotAllowedOnRoot: 'ประเภทของหน้าเว็บ "{type}" ไม่ได้รับอนุญาตให้สามารถใช้งานได้ที่ตำแหน่ง root'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
-    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
+    REMOVEDFROMDRAFTHELP: 'หน้าเว็บถูกเผยแพร่แล้ว แต่ถูกลบออกจากฉบับร่างด้วยเช่นกัน'
     REMOVEDFROMDRAFTSHORT: ลบออกจากฉบับร่าง
     REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
     REORGANISE_DESCRIPTION: เปลี่ยนโครงสร้างเว็บไซต์
