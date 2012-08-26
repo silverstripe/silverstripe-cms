@@ -99,7 +99,7 @@ th:
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: 'ลบ ''%s'' ออกจากเว็บไซต์ฉบับร่างแล้ว'
     RESTORE: คืนค่า
-    RESTORED: 'Restored ''{title}'' successfully'
+    RESTORED: 'เรียกคืนค่า ''{title}'' เสร็จเรียบร้อยแล้ว'
     ROLLBACK: ย้อนกลับไปที่รุ่นนี้
     ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
     ROLLEDBACKVERSION: 'ย้อนกลับไปเป็นรุ่น #%d แล้ว หมายเลขใหม่ของรุ่นคือ #%d'
@@ -190,8 +190,8 @@ th:
     DEFAULTSERVERERRORPAGETITLE: เซิร์ฟเวอร์เกิดข้อผิดพลาด
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
+    PLURALNAME: หน้าแสดงข้อผิดพลาด
+    SINGULARNAME: หน้าแสดงข้อผิดพลาด
     400: '400 - Bad Request'
     401: '401 - Unauthorized'
     403: '403 - Forbidden'
