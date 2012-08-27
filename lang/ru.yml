@@ -14,17 +14,17 @@ ru:
     DetailsView: Детали
     FILES: Files
     FILESYSTEMSYNC: Синхронизировать
-    FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
+    FILESYSTEMSYNCTITLE: 'Обновление базы данных файлов в файловой системе. Стоит использовать, если новые файлы были загружены без использования CMS, например, через FTP.'
     FROMTHEINTERNET: 'Из интернета'
     FROMYOURCOMPUTER: 'С диска'
     Filetype: 'Тип файла'
-    ListView: 'List View'
+    ListView: 'В виде списка'
     MENUTITLE: Файлы
     NEWFOLDER: 'Новая папка'
     SIZE: Размер
     THUMBSDELETED: '{count} unused thumbnails have been deleted'
-    TreeView: 'Tree View'
-    Upload: Upload
+    TreeView: 'В виде дерева'
+    Upload: Загрузить
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
   AssetAdmin_Tools:
@@ -37,27 +37,27 @@ ru:
   BackLink_Button.ss:
     Back: Назад
   BrokenLinksReport:
-    Any: Any
-    BROKENLINKS: 'Broken links report'
-    CheckSite: 'Check site'
-    CheckSiteDropdownDraft: 'Draft Site'
-    CheckSiteDropdownPublished: 'Published Site'
+    Any: Все
+    BROKENLINKS: 'Отчет об ошибочных ссылках'
+    CheckSite: 'Проверить сайт'
+    CheckSiteDropdownDraft: 'Черновой сайт'
+    CheckSiteDropdownPublished: 'Опубликованный сайт'
     ColumnDateLastModified: 'Дата последнего изменения'
-    ColumnDateLastPublished: 'Date last published'
-    ColumnProblemType: 'Problem type'
+    ColumnDateLastPublished: 'Дата последней публикации'
+    ColumnProblemType: 'Вид проблемы'
     ColumnURL: URL
-    HasBrokenFile: 'has broken file'
-    HasBrokenLink: 'has broken link'
-    HasBrokenLinkAndFile: 'has broken link and file'
-    HoverTitleEditPage: 'Edit page'
+    HasBrokenFile: 'содержит поврежденный файл'
+    HasBrokenLink: 'содержит нерабочую ссылку'
+    HasBrokenLinkAndFile: 'содержит нерабочую ссылку и поврежденный файл'
+    HoverTitleEditPage: 'Править страницу'
     PageName: 'Название страницы'
-    ReasonDropdown: 'Problem to check'
-    ReasonDropdownBROKENFILE: 'Broken file'
-    ReasonDropdownBROKENLINK: 'Broken link'
+    ReasonDropdown: Проблема
+    ReasonDropdownBROKENFILE: 'Поврежденный файл'
+    ReasonDropdownBROKENLINK: 'Нерабочая ссылка'
     ReasonDropdownRPBROKENLINK: 'Страница перенаправления указывает на несуществующую страницу'
-    ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
+    ReasonDropdownVPBROKENLINK: 'Страница перенаправления указывает на несуществующую страницу'
     RedirectorNonExistent: 'страница перенаправления указывает на несуществующую страницу'
-    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
+    VirtualPageNonExistent: 'страница перенаправления указывает на несуществующую страницу'
   CMSAddPageController:
     Title: 'Добавить страницу'
   CMSBatchActions:
@@ -106,7 +106,7 @@ ru:
     ROLLEDBACKVERSION: 'Произведен откат до версии #%d. Номер новой версии #%d'
     SAVE: Сохранить
     SAVEDRAFT: 'Сохранить черновик'
-    TabContent: Content
+    TabContent: Содержимое
     TabHistory: История
     TabSettings: Настройки
     TreeFiltered: 'Filtered tree.'
@@ -145,7 +145,7 @@ ru:
     TreeView: 'Обзор дерева'
   CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: 'Drag''n''drop'
-    MULTISELECT: Multi-selection
+    MULTISELECT: 'Множественный выбор'
   CMSPagesController_Tools.ss:
     FILTER: Фильтр
   CMSSearch:
@@ -174,9 +174,9 @@ ru:
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
     InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
     LOGGEDINAS: 'Залогинен как'
-    LOGIN: Login
+    LOGIN: Вход
     LOGOUT: Выйти
-    NOTLOGGEDIN: 'Not logged in'
+    NOTLOGGEDIN: 'Не вошли в систему'
     PUBLISHEDSITE: 'Опубликованный сайт'
     Password: Пароль
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
@@ -232,8 +232,8 @@ ru:
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
   Permissions:
-    CONTENT_CATEGORY: 'Content permissions'
-    PERMISSIONS_CATEGORY: 'Roles and access permissions'
+    CONTENT_CATEGORY: 'Права доступа к содержимому'
+    PERMISSIONS_CATEGORY: 'Роли и права доступа'
   RedirectorPage:
     DESCRIPTION: 'Перенаправление на другую внутреннюю страницу'
     HASBEENSETUP: 'Страница перенаправления установлена без указания места перенаправления.'
@@ -273,9 +273,9 @@ ru:
     CloseLink: Закрыть
   SiteConfig:
     DEFAULTTHEME: '(Использовать тему по умолчанию)'
-    EDITHEADER: 'Who can edit pages on this site?'
-    EDIT_PERMISSION: 'Manage site configuration'
-    EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
+    EDITHEADER: 'Кто может редактировать страницы на этом сайте?'
+    EDIT_PERMISSION: 'Управлять конфигурацией сайта'
+    EDIT_PERMISSION_HELP: 'Возможность редактировать глобальные настройки доступа/права доступа к страницам верхнего уровня.'
     PLURALNAME: 'Site Configs'
     SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Название сайта'
@@ -283,7 +283,7 @@ ru:
     SITETITLE: 'Заголовок сайта'
     TABACCESS: Доступ
     TABMAIN: Главная
-    TAGLINEDEFAULT: 'your tagline here'
+    TAGLINEDEFAULT: 'ваш слоган здесь'
     THEME: Тема
     TOPLEVELCREATE: 'Кто может создавать страницы верхнего уровня на этом сайте?'
     VIEWHEADER: 'Кто может просматривать страницы на этом сайте?'
@@ -346,8 +346,8 @@ ru:
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Управление правами доступа к содержимому'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
     PLURALNAME: Pages
-    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
-    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
+    PageTypNotAllowedOnRoot: 'Страницы типа "{type}" не могут быть корневыми'
+    PageTypeNotAllowed: 'Страницы типа "{type}" недопустимы для этой родительской страницы в качестве дочерних'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
     REMOVEDFROMDRAFTSHORT: 'Удалено из черновика'
     REMOVE_INSTALL_WARNING: 'Внимание: по соображениям безопасности рекомендуется удалить файл install.php из данной инсталляции SilverStripe.'
