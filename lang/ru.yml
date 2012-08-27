@@ -11,9 +11,9 @@ ru:
     BackToFolder: 'Вернуться к папке'
     CREATED: Дата
     CurrentFolderOnly: 'Только в этой папке?'
-    DetailsView: Details
+    DetailsView: Детали
     FILES: Files
-    FILESYSTEMSYNC: 'Sync files'
+    FILESYSTEMSYNC: Синхронизировать
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'Из интернета'
     FROMYOURCOMPUTER: 'С диска'
@@ -33,7 +33,7 @@ ru:
     GO: Перейти
   AssetTableField:
     BACKLINKCOUNT: 'Используется на:'
-    PAGES: page(s)
+    PAGES: страниц
   BackLink_Button.ss:
     Back: Назад
   BrokenLinksReport:
@@ -81,12 +81,12 @@ ru:
     Create: Создать
     DELETE: 'Удалить с тестового сайта'
     DELETEFP: 'Удалить с опубликованного сайта'
-    DESCREMOVED: 'and {count} descendants'
+    DESCREMOVED: 'и {count} страниц нижнего уровня'
     EMAIL: Email
     EditTree: 'Edit Tree'
-    ListFiltered: 'Filtered list.'
+    ListFiltered: 'Отфильтрованный список.'
     MENUTITLE: 'Править страницу'
-    NEWPAGE: 'New {pagetype}'
+    NEWPAGE: 'Новая {pagetype}'
     PAGENOTEXISTS: 'Страница не существует'
     PAGES: Страницы
     PAGETYPEANYOPT: Любой
@@ -94,7 +94,7 @@ ru:
     PUBALLCONFIRM: 'Пожалуйста, опубликуйте каждую страницу сайта, перенося содержимое из чернового режима в опубликованный'
     PUBALLFUN: 'Функция "Опубликовать все"'
     PUBALLFUN2: 'Нажатие этой кнопки выполнит ту же функцию, что и нажатие кнопки "Опубликовать" для каждой отдельной страницы. Данная функция предназначена для использования после значительных изменений содержимого, например, в момент создания нового сайта.'
-    PUBPAGES: 'Done: Published {count} pages'
+    PUBPAGES: 'Готово: опубликовано {count} страниц'
     PageAdded: 'Страница успешно создана'
     REMOVED: 'Удалено ''%s''%s с опубликованного сайта'
     REMOVEDPAGE: 'Страница ''{title}'' удалена с опубликованного сайта.'
@@ -110,7 +110,7 @@ ru:
     TabHistory: История
     TabSettings: Настройки
     TreeFiltered: 'Filtered tree.'
-    TreeFilteredClear: 'Clear filter'
+    TreeFilteredClear: 'Сбросить фильтр'
   CMSMain_left.ss:
     'APPLY FILTER': 'Apply Filter'
     RESET: Reset
@@ -178,10 +178,10 @@ ru:
     LOGOUT: Выйти
     NOTLOGGEDIN: 'Not logged in'
     PUBLISHEDSITE: 'Опубликованный сайт'
-    Password: Password
+    Password: Пароль
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
     StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
-    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
+    UnableDeleteInstall: 'Не удалось удалить инсталляционные файлы. Пожалуйста, удалите следующие файлы вручную'
     VIEWPAGEIN: 'Просмотреть страницу в:'
   ErrorPage:
     CODE: 'Код ошибки'
@@ -189,7 +189,7 @@ ru:
     DEFAULTERRORPAGETITLE: 'Страница не найдена'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Не удалось обработать запрос.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Ошибка сервера'
-    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
+    DESCRIPTION: 'Пользовательские страницы ошибок (например, "Страница не найдена")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
     PLURALNAME: 'Error Pags'
     SINGULARNAME: 'Error Page'
@@ -265,7 +265,7 @@ ru:
     LAST2WEEKS: 'Страницы, редактированные последние 2 недели'
     OtherGroupTitle: Другие
     ParameterLiveCheckbox: 'Check live site'
-    REPEMPTY: 'The {title} report is empty.'
+    REPEMPTY: 'Отчет {title} пуст.'
   SilverStripeNavigatorLink:
     ShareInstructions: 'Чтобы поделиться ссылкой на эту страницу, скопируйте URL ниже.'
     ShareLink: 'Поделиться ссылкой'
@@ -334,7 +334,7 @@ ru:
     METAKEYWORDS: 'Ключевые слова'
     METATITLE: Заголовок
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
-    MODIFIEDONDRAFTSHORT: Modified
+    MODIFIEDONDRAFTSHORT: Изменено
     MetadataToggle: Метаданные
     PAGELOCATION: 'Расположение страницы'
     PAGETITLE: 'Название страницы'
@@ -360,7 +360,7 @@ ru:
     TABCONTENT: Содержимое
     TABDEPENDENT: 'Зависимые страницы'
     TOPLEVEL: 'Содержимое сайта (Верхний уровень)'
-    TOPLEVELCREATORGROUPS: 'Top level creators'
+    TOPLEVELCREATORGROUPS: 'Авторы верхнего уровня'
     URLSegment: 'Адрес страницы'
     VIEWERGROUPS: 'Группы чтения'
     VIEW_ALL_DESCRIPTION: 'Просмотр любой страницы'
@@ -368,7 +368,7 @@ ru:
     VIEW_DRAFT_CONTENT: 'Просмотр содержимого черновика'
     VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
     Viewers: 'Группы чтения'
-    Visibility: Visibility
+    Visibility: Отображение
     has_one_Parent: 'Родительская страница'
     many_many_BackLinkTracking: 'Отслеживание обратных ссылок'
     many_many_ImageTracking: 'Отслеживание картинок'

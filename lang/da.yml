@@ -13,7 +13,7 @@ da:
     CurrentFolderOnly: 'Begræns til den nuværende mappe'
     DetailsView: Detaljer
     FILES: Filer
-    FILESYSTEMSYNC: 'Sync files'
+    FILESYSTEMSYNC: 'Synkronisér filer'
     FILESYSTEMSYNCTITLE: 'Opdater poster over filer i filsystemet i CMS-databasen. Dette kan være nyttigt når nye filer er blevet overført uden for CMS, f.eks. via FTP.'
     FROMTHEINTERNET: 'Fra internettet'
     FROMYOURCOMPUTER: 'Fra din computer'
@@ -86,7 +86,7 @@ da:
     EditTree: 'Rediger sidetræ'
     ListFiltered: 'Filtreret liste.'
     MENUTITLE: 'Rediger side'
-    NEWPAGE: 'New {pagetype}'
+    NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Denne side eksisterer ikke'
     PAGES: Sider
     PAGETYPEANYOPT: Enhver
@@ -164,7 +164,7 @@ da:
   ContentControl:
     NOTEWONTBESHOWN: 'Bemærk: denne besked bliver ikke vist til dine besøgende '
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
+    ARCHIVEDSITE: Forhåndsvisning
     ARCHIVEDSITEFROM: 'Arkiveret side fra'
     CMS: CMS
     DRAFTSITE: Kladdeside
@@ -191,8 +191,8 @@ da:
     DEFAULTSERVERERRORPAGETITLE: Serverfejl
     DESCRIPTION: 'Brugerdefineret indhold for forskellige fejltyper (f.eks. "Siden blev ikke fundet")'
     ERRORFILEPROBLEM: 'Kunne ikke åbne filen "{filename}" til skrivning. Undersøg filrettighederne.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
+    PLURALNAME: Fejlsider
+    SINGULARNAME: Fejlside
     400: '400 - Bad Request'
     401: '401 - Unauthorized'
     403: '403 - Forbidden'
@@ -239,15 +239,15 @@ da:
     HASBEENSETUP: 'En omdirigeringsside er blevet sat op, uden et sted at omdirigere til.'
     HEADER: 'Denne side omdirigerer besøgende til en anden side'
     OTHERURL: 'Andet websteds URL'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: 'Videresendende side'
     REDIRECTTO: 'Omdiriger til'
     REDIRECTTOEXTERNAL: 'Et andet websted'
     REDIRECTTOPAGE: 'En side på dit websted'
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: 'Viderestillende side'
     YOURPAGE: 'Side på dit websted'
   ReportAdmin:
     MENUTITLE: Rapporter
-    ReportTitle: Title
+    ReportTitle: Titel
   ReportAdminForm:
     FILTERBY: 'Filtrer ved'
   SearchForm:
@@ -276,8 +276,8 @@ da:
     EDITHEADER: 'Hvem kan redigere sider på dette websted ?'
     EDIT_PERMISSION: 'Administrer sideopsætningen'
     EDIT_PERMISSION_HELP: 'Mulighed for at ændre indstillingerne for global adgang / topniveauside tilladelser.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
+    PLURALNAME: Løsningskonfigurationer
+    SINGULARNAME: Løsningskonfiguration
     SITENAMEDEFAULT: 'Dit sidenavn'
     SITETAGLINE: 'Webstedets Tagline/Slogan'
     SITETITLE: Sidetitel
@@ -345,7 +345,7 @@ da:
     PARENTTYPE_SUBPAGE: 'Underside fra en overliggende side'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Administrer adgangsrettigheder for indhold'
     PERMISSION_GRANTACCESS_HELP: 'Tillad indstilling af side-specifikke adgangsbegrænsninger i sektionen "Sider" .'
-    PLURALNAME: Pages
+    PLURALNAME: Sider
     PageTypNotAllowedOnRoot: 'Sidetypen "{type}" er ikke tilladt på rodniveau'
     PageTypeNotAllowed: 'Sidetypen {type} er ikke tilladt som underside til denne side'
     REMOVEDFROMDRAFTHELP: 'Siden er udgivet, men er blevet slette fra kladder'
@@ -355,7 +355,7 @@ da:
     REORGANISE_HELP: 'Omarranger sider i sidetræet ved hjælp af træk&slip.'
     SHOWINMENUS: 'Vis i menuer ?'
     SHOWINSEARCH: 'Vis i søgninger?'
-    SINGULARNAME: Page
+    SINGULARNAME: Side
     TABBEHAVIOUR: Opførsel
     TABCONTENT: 'Primært indhold'
     TABDEPENDENT: 'Afhængige sider'

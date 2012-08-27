@@ -244,7 +244,7 @@ cs:
     REDIRECTTOEXTERNAL: 'Jinou webovou stránku'
     REDIRECTTOPAGE: 'Stránku na Vašem webu'
     SINGULARNAME: 'Přesměrovací stránka'
-    YOURPAGE: 'Stránku na Vašem webu'
+    YOURPAGE: 'Stránka na vašem webu'
   ReportAdmin:
     MENUTITLE: Výkazy
     ReportTitle: Titulek
