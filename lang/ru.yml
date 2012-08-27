@@ -55,9 +55,9 @@ ru:
     ReasonDropdownBROKENFILE: 'Поврежденный файл'
     ReasonDropdownBROKENLINK: 'Нерабочая ссылка'
     ReasonDropdownRPBROKENLINK: 'Страница перенаправления указывает на несуществующую страницу'
-    ReasonDropdownVPBROKENLINK: 'Страница перенаправления указывает на несуществующую страницу'
+    ReasonDropdownVPBROKENLINK: 'Виртуальная страница указывает на несуществующую страницу'
     RedirectorNonExistent: 'страница перенаправления указывает на несуществующую страницу'
-    VirtualPageNonExistent: 'страница перенаправления указывает на несуществующую страницу'
+    VirtualPageNonExistent: 'виртуальная страница указывает на несуществующую страницу'
   CMSAddPageController:
     Title: 'Добавить страницу'
   CMSBatchActions:
@@ -151,7 +151,7 @@ ru:
   CMSSearch:
     FILTERDATEFROM: От
     FILTERDATEHEADING: Дата
-    FILTERDATETO: Кому
+    FILTERDATETO: До
     FILTERLABELTEXT: Содержимое
   CMSSettingsController:
     MENUTITLE: Настройки
