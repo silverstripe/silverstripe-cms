@@ -2699,7 +2699,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return String
 	 */
 	function i18n_singular_name() {
-		return _t($this->class.'.SINGULARNAME', $this->singular_name());
+		// Convert 'Page' to 'SiteTree' for correct localization lookups
+		$class = ($this->class == 'Page') ? 'SiteTree' : $this->class;
+		return _t($class.'.SINGULARNAME', $this->singular_name());
 	}
 	
 	/**
@@ -2709,13 +2711,16 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	function provideI18nEntities() {
 		$entities = parent::provideI18nEntities();
 		
-		if(isset($entities['Page.SINGULARNAME'])) $entities['Page.SINGULARNAME'][3] = FRAMEWORK_DIR;
-		if(isset($entities['Page.PLURALNAME'])) $entities['Page.PLURALNAME'][3] = FRAMEWORK_DIR;		
+		if(isset($entities['Page.SINGULARNAME'])) $entities['Page.SINGULARNAME'][3] = CMS_DIR;
+		if(isset($entities['Page.PLURALNAME'])) $entities['Page.PLURALNAME'][3] = CMS_DIR;		
 
 		$entities[$this->class . '.DESCRIPTION'] = array(
 			$this->stat('description'),
 			'Description of the page type (shown in the "add page" dialog)'
 		);
+
+		$entities['SiteTree.SINGULARNAME'][0] = 'Page';
+		$entities['SiteTree.PLURALNAME'][0] = 'Pages';
 
 		return $entities;
 	}

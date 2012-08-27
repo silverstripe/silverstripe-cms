@@ -234,7 +234,7 @@ tr:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
   RedirectorPage:
-    DESCRIPTION: 'Redirects to a different internal page'
+    DESCRIPTION: 'Başka iç sayfaya yönlendir'
     HASBEENSETUP: 'Yönlendirilecek yeri olmayan bir yönlendirme sayfası ayarlandı.'
     HEADER: 'Bu sayfa, kullanıcıları başka bir sayfaya yönlendirir'
     OTHERURL: 'Başka bir siteye ait URL'
@@ -312,7 +312,7 @@ tr:
     DELETEDPAGESHORT: Deleted
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
     DESCRIPTION: 'Generic content page'
-    DependtPageColumnLinkType: 'Link type'
+    DependtPageColumnLinkType: 'Link tipi'
     DependtPageColumnURL: URL
     EDITANYONE: 'CMS''e giriş yapabilen herkes'
     EDITHEADER: 'Bu sayfayı kimler düzenleyebilir?'
@@ -324,7 +324,7 @@ tr:
     HASBROKENLINKS: 'Bu sayfada hatalı linkler var.'
     HTMLEDITORTITLE: İçerik
     INHERIT: 'Üst sayfadan kalan'
-    LASTUPDATED: 'Last Updated'
+    LASTUPDATED: 'Son Güncellenen'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 'Navigasyon etiketi'
     METADESC: Tanım
@@ -332,14 +332,14 @@ tr:
     METAKEYWORDS: 'Anahtar kelimeler'
     METATITLE: Başlık
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
-    MODIFIEDONDRAFTSHORT: Modified
+    MODIFIEDONDRAFTSHORT: Değiştirilmiş
     MetadataToggle: Metadata
     PAGELOCATION: 'Sayfa yeri'
     PAGETITLE: 'Sayfa ismi'
     PAGETYPE: 'Sayfa tipi'
     PARENTID: 'Ana sayfa'
     PARENTTYPE: 'Sayfa konumu'
-    PARENTTYPE_ROOT: 'Top-level page'
+    PARENTTYPE_ROOT: 'Üst seviye sayfa'
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Grupların işlem ve düzenlemelerinin kontrolü'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
@@ -349,8 +349,8 @@ tr:
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
     REMOVEDFROMDRAFTSHORT: 'Removed from draft'
     REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
-    REORGANISE_DESCRIPTION: 'Change site structure'
-    REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
+    REORGANISE_DESCRIPTION: 'Site yapısını değiştir'
+    REORGANISE_HELP: 'Site ağacının sürükle&bırak şeklinde tekrardan düzenle'
     SHOWINMENUS: 'Menülerde gösterilsin mi?'
     SHOWINSEARCH: 'Aramalarda gösterilsin mi?'
     SINGULARNAME: 'Site Ağacı'
@@ -366,7 +366,7 @@ tr:
     VIEW_DRAFT_CONTENT: 'View draft content'
     VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
     Viewers: 'Görüntüleyici Grupları'
-    Visibility: Visibility
+    Visibility: Görünürlük
     has_one_Parent: 'Üst Sayfa'
     many_many_BackLinkTracking: 'Geri bağlantı izi'
     many_many_ImageTracking: 'İmaj izi'

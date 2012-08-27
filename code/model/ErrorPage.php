@@ -88,6 +88,7 @@ class ErrorPage extends Page {
 	
 				// Ensure a static error page is created from latest error page content
 				$response = Director::test(Director::makeRelative($pageNotFoundErrorPage->Link()));
+				$written = null;
 				if($fh = fopen($pageNotFoundErrorPagePath, 'w')) {
 					$written = fwrite($fh, $response->getBody());
 					fclose($fh);
@@ -115,6 +116,7 @@ class ErrorPage extends Page {
 	
 				// Ensure a static error page is created from latest error page content
 				$response = Director::test(Director::makeRelative($serverErrorPage->Link()));
+				$written = null;
 				if($fh = fopen($serverErrorPagePath, 'w')) {
 					$written = fwrite($fh, $response->getBody());
 					fclose($fh);

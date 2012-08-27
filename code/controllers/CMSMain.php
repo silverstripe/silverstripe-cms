@@ -202,9 +202,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return $link;
 	}
 
-	function LinkPageAdd() {
+	function LinkPageAdd($extraArguments = null) {
 		$link = singleton("CMSPageAddController")->Link();
 		$this->extend('updateLinkPageAdd', $link);
+		if($extraArguments) $link = Controller::join_links ($link, $extraArguments);
 		return $link;
 	}
 	
@@ -467,8 +468,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 			$addAction = $instance->i18n_singular_name();
 			
-			// Get description
-			$description = _t($class . '.DESCRIPTION');
+			// Get description (convert 'Page' to 'SiteTree' for correct localization lookups)
+			$description = _t((($class == 'Page') ? 'SiteTree' : $class) . '.DESCRIPTION');
 
 			if(!$description) {
 				$description = $instance->uninherited('description');
@@ -483,7 +484,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				'AddAction' => $addAction,
 				'Description' => $description,
 				// TODO Sprite support
-				'IconURL' => $instance->stat('icon')
+				'IconURL' => $instance->stat('icon'),
+				'Title' => singleton($class)->i18n_singular_name(),
 			)));
 		}
 		
@@ -719,9 +721,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				$num = $item ? $item->numChildren() : null;
 				if($num) {
 					return sprintf(
-						'<a class="cms-panel-link list-children-link" data-pjax-target="ListViewForm,Breadcrumbs" href="%s?ParentID=%d&view=list">%s</a>',
-						$controller->Link(),
-						$item->ID,
+						'<a class="cms-panel-link list-children-link" data-pjax-target="ListViewForm,Breadcrumbs" href="%s">%s</a>',
+						Controller::join_links($controller->Link(), "?ParentID={$item->ID}&view=list"),
 						$num
 					);
 				}
@@ -845,8 +846,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		    	$id = $id . $suffix;
 	    }
 
-		$newItem->Title = _t('CMSMain.NEW',"New ",'"New " followed by a className').$className;
-		$newItem->URLSegment = "new-" . strtolower($className);
+		$newItem->Title = _t(
+			'CMSMain.NEWPAGE',
+			"New {pagetype}",'followed by a page type title',
+			array('pagetype' => singleton($className)->i18n_singular_name())
+		);
 		$newItem->ClassName = $className;
 		$newItem->ParentID = $parentID;
 

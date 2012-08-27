@@ -303,8 +303,8 @@ fa_IR:
     Comments: Comments
     Content: 'درون مایه'
     DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
-    DEFAULTABOUTTITLE: 'About Us'
-    DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
+    DEFAULTABOUTTITLE: 'درباره ما'
+    DEFAULTCONTACTCONTENT: '<p>می‌توانید محتوی این صفحه را به دلخواه تغییر دهید یا کلا آن را حذف کرده و خودتان صفخات جدیدی ایجاد کنید.</p>'
     DEFAULTCONTACTTITLE: 'تماس با ما'
     DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
     DEFAULTHOMETITLE: خانه
@@ -349,14 +349,14 @@ fa_IR:
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
     REMOVEDFROMDRAFTSHORT: 'Removed from draft'
     REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
-    REORGANISE_DESCRIPTION: 'Change site structure'
+    REORGANISE_DESCRIPTION: 'تغییر ساختار سایت'
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'Show in menus?'
     SHOWINSEARCH: 'نمایش در جستجو ؟'
     SINGULARNAME: 'لینک سایت'
     TABBEHAVIOUR: Behavior
     TABCONTENT: مطلب
-    TABDEPENDENT: 'Dependent pages'
+    TABDEPENDENT: 'صفحات مرتبط'
     TOPLEVEL: 'Site Content (Top Level)'
     TOPLEVELCREATORGROUPS: 'Top level creators'
     URLSegment: 'بخش آدرس URL'
