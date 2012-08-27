@@ -257,8 +257,8 @@ ru:
   SideReport:
     BROKENFILES: 'Страницы с ошибочными файлами'
     BROKENLINKS: 'Страницы с ошибочными ссылками'
-    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
-    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
+    BROKENREDIRECTORPAGES: 'Страницы перенаправления, указывающие на удаленные страницы'
+    BROKENVIRTUALPAGES: 'Виртуальные страницы, указывающие на удаленные страницы'
     BrokenLinksGroupTitle: 'Отчет об ошибочных ссылках'
     ContentGroupTitle: 'Content reports'
     EMPTYPAGES: 'Пустые страницы'
@@ -404,5 +404,5 @@ ru:
     EDITCONTENT: 'Нажмите здесь для редактирования содержимого'
     HEADER: 'Это виртуальная страница'
     PLURALNAME: 'Виртуальная страница'
-    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
+    PageTypNotAllowedOnRoot: 'Страницы типа "{type}" недопустимы в качестве корневых для этой виртуальной страницы'
     SINGULARNAME: 'Виртуальная страница'
