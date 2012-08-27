@@ -13,6 +13,7 @@ fr:
     CurrentFolderOnly: 'Limiter au dossier actuel ?'
     DetailsView: Détails
     FILES: Fichiers
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Met à jour la base de données du système de fichiers, de façon à prendre en compte des fichiers téléchargés en dehors du CMS (p. ex. par FTP).'
     FROMTHEINTERNET: 'En ligne'
     FROMYOURCOMPUTER: 'Depuis votre ordinateur'
@@ -85,7 +86,7 @@ fr:
     EditTree: 'Ağacı düzenle'
     ListFiltered: 'Filtrelenmiş liste.'
     MENUTITLE: 'Éditer la page'
-    NEW: Nouveau
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Cette page n''existe pas'
     PAGES: Pages
     PAGETYPEANYOPT: Tous
@@ -246,6 +247,7 @@ fr:
     YOURPAGE: 'Page de votre site web'
   ReportAdmin:
     MENUTITLE: Rapports
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filtrer par'
   SearchForm:
@@ -343,7 +345,7 @@ fr:
     PARENTTYPE_SUBPAGE: 'Sous-page d''une page parente (choisir en dessous) '
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Contrôler les groupes qui peuvent accéder ou éditer certaines pages'
     PERMISSION_GRANTACCESS_HELP: 'Autoriser la gestion des restrictions d''accès spécifiques par page dans la section "Pages"'
-    PLURALNAME: 'Structures du site'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Le type de page « {type} » n’est pas autorisé au niveau racine'
     PageTypeNotAllowed: 'Le type de page « {type} » n''est pas autorisé comme enfant de cette page parent'
     REMOVEDFROMDRAFTHELP: 'La page est publiée, mais a été effacée des brouillons'
@@ -353,7 +355,7 @@ fr:
     REORGANISE_HELP: 'Réorganiser les pages du site avec le glisser/déplacer'
     SHOWINMENUS: 'Afficher dans les menus ?'
     SHOWINSEARCH: 'Afficher dans les recherches ?'
-    SINGULARNAME: 'Structure du site'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Comportement
     TABCONTENT: Contenu
     TABDEPENDENT: 'Pages dépendantes'
@@ -404,5 +406,3 @@ fr:
     PLURALNAME: 'Pages Virtuelles'
     PageTypNotAllowedOnRoot: 'Le type de page d’origine « {type} » n’est pas autorisé au niveau racine pour cette page virtuelle'
     SINGULARNAME: 'Page virtuelle'
-  cms:
-    FILESYSTEMSYNC: 'Mettre à jour'

@@ -13,6 +13,7 @@ th:
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: รายละเอียด
     FILES: ไฟล์
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: จากอินเทอร์เน็ต
     FROMYOURCOMPUTER: จากเครื่องคอมพิวเตอร์ของคุณ
@@ -85,7 +86,7 @@ th:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: แก้ไขหน้าเว็บ
-    NEW: ข่าว
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: ไม่มีหน้านี้อยู่
     PAGES: หน้า
     PAGETYPEANYOPT: Any
@@ -246,6 +247,7 @@ th:
     YOURPAGE: หน้าเว็บที่อยู่บนเว็บไซต์ของคุณ
   ReportAdmin:
     MENUTITLE: Reports
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: แสดงข้อมูลตาม
   SearchForm:
@@ -343,7 +345,7 @@ th:
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: การจัดการสิทธิ์การเข้าถึงเนื้อหา
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: โครงสร้างไซต์
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'ประเภทของหน้าเว็บ "{type}" ไม่ได้รับอนุญาตให้สามารถใช้งานได้ที่ตำแหน่ง root'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'หน้าเว็บถูกเผยแพร่แล้ว แต่ถูกลบออกจากฉบับร่างด้วยเช่นกัน'
@@ -353,7 +355,7 @@ th:
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'แสดงในเมนู?'
     SHOWINSEARCH: 'แสดงในผลลัพธ์ของการค้นหาหรือไม่?'
-    SINGULARNAME: โครงสร้างไซต์แบบต้นไม้
+    SINGULARNAME: Page
     TABBEHAVIOUR: พฤติกรรม
     TABCONTENT: เนื้อหา
     TABDEPENDENT: 'Dependent pages'
@@ -404,5 +406,3 @@ th:
     PLURALNAME: หน้าเว็บจำลอง
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: หน้าจำลอง
-  cms:
-    FILESYSTEMSYNC: 'Sync files'

@@ -13,6 +13,7 @@ es:
     CurrentFolderOnly: '¿Límite a la carpeta actual?'
     DetailsView: Detalles
     FILES: Archivos
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Actualizar las entradas de base de datos del CMS de archivos en el sistema de archivos. Es útil cuando los nuevos archivos se han subido desde fuera del CMS, p.e., a través de FTP.'
     FROMTHEINTERNET: 'Desde internet'
     FROMYOURCOMPUTER: 'Desde tu ordenador'
@@ -85,7 +86,7 @@ es:
     EditTree: 'Editar árbol'
     ListFiltered: 'Lista filtrada'
     MENUTITLE: 'Editar página'
-    NEW: Nueva
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Esta página no existe'
     PAGES: Páginas
     PAGETYPEANYOPT: Cualquiera
@@ -246,6 +247,7 @@ es:
     YOURPAGE: 'Página en su sitio web'
   ReportAdmin:
     MENUTITLE: Informes
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filtrar por'
   SearchForm:
@@ -343,7 +345,7 @@ es:
     PARENTTYPE_SUBPAGE: 'Sub-página por debajo de una página padre'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Controlar qué grupos pueden acceder o editar determinadas páginas'
     PERMISSION_GRANTACCESS_HELP: 'Permitir la creación de restricciones de acceso específicas a la página en la sección "Páginas".'
-    PLURALNAME: 'Árboles del sitio'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'La página tipo "{type}" no está permitida en el nivel raiz'
     PageTypeNotAllowed: 'El tipo de página "{type}" no está permitido como hijo de esta página padre'
     REMOVEDFROMDRAFTHELP: 'La página está publicada, pero ha sido eliminada de borrador'
@@ -353,7 +355,7 @@ es:
     REORGANISE_HELP: 'Reorganizar las páginas en el árbol del sitio a través de drag&drop.'
     SHOWINMENUS: '¿Mostrar en menús?'
     SHOWINSEARCH: '¿Mostrar en la búsqueda?'
-    SINGULARNAME: 'Árbol del Sitio'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Comportamiento
     TABCONTENT: Contenido
     TABDEPENDENT: 'Páginas dependientes'
@@ -404,5 +406,3 @@ es:
     PLURALNAME: 'Páginas Virtuales'
     PageTypNotAllowedOnRoot: 'Tipo de página original "{type}" no se permite en el nivel raíz para esta página virtual'
     SINGULARNAME: 'Página Virtual'
-  cms:
-    FILESYSTEMSYNC: 'Sincronizar archivos'

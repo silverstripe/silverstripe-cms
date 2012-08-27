@@ -13,6 +13,7 @@ pt_BR:
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'From the internet'
     FROMYOURCOMPUTER: 'From your computer'
@@ -85,7 +86,7 @@ pt_BR:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
-    NEW: Novo
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Esta página não existe'
     PAGES: Pages
     PAGETYPEANYOPT: Any
@@ -246,6 +247,7 @@ pt_BR:
     YOURPAGE: 'Página no seu website'
   ReportAdmin:
     MENUTITLE: Reports
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
@@ -343,7 +345,7 @@ pt_BR:
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Controla os grupos que podem acessar ou editar determinadas páginas'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: 'Mapa dos Sites'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -353,7 +355,7 @@ pt_BR:
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'Mostrar nos menus?'
     SHOWINSEARCH: 'Uncluir na procura?'
-    SINGULARNAME: 'Mapa do Site'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Comportamento
     TABCONTENT: Conteúdo
     TABDEPENDENT: 'Dependent pages'
@@ -404,5 +406,3 @@ pt_BR:
     PLURALNAME: 'Páginas virtuais'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Página virtual'
-  cms:
-    FILESYSTEMSYNC: 'Sync files'

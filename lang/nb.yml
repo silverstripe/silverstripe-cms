@@ -13,6 +13,7 @@ nb:
     CurrentFolderOnly: 'Begrens til nåværende folder'
     DetailsView: Detaljer
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'Fra internett'
     FROMYOURCOMPUTER: 'Fra din pc'
@@ -85,7 +86,7 @@ nb:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
-    NEW: 'New '
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'This page doesn''t exist'
     PAGES: Pages
     PAGETYPEANYOPT: Any
@@ -246,6 +247,7 @@ nb:
     YOURPAGE: 'Side på ditt nettsted'
   ReportAdmin:
     MENUTITLE: Rapporter
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
@@ -343,7 +345,7 @@ nb:
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Kontroller hvilke grupper som har tilgang til eller kan endre sidene'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: Sidetrær
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -353,7 +355,7 @@ nb:
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'Vis i menyer?'
     SHOWINSEARCH: 'Vis i søk?'
-    SINGULARNAME: Sidetre
+    SINGULARNAME: Page
     TABBEHAVIOUR: Adferd
     TABCONTENT: Innhold
     TABDEPENDENT: 'Dependent pages'
@@ -404,5 +406,3 @@ nb:
     PLURALNAME: 'Virtuelle Sider'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtuell Side'
-  cms:
-    FILESYSTEMSYNC: 'Synkroniser filer'

@@ -13,6 +13,7 @@ nl:
     CurrentFolderOnly: 'Tot de huidige map beperken?'
     DetailsView: Details
     FILES: Bestanden
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Zoek naar nieuwe of verwijderde bestanden op de schijf, om de database van het CMS bij te werken. Dit is nodig als er bestanden via FTP (of andere wijze) zijn toegevoegd.'
     FROMTHEINTERNET: 'Van het internet'
     FROMYOURCOMPUTER: 'Vanaf computer'
@@ -85,7 +86,7 @@ nl:
     EditTree: 'Menu indelen'
     ListFiltered: 'Gefilterde lijst.'
     MENUTITLE: 'Wijzig pagina'
-    NEW: Nieuw
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Deze pagina bestaat niet'
     PAGES: 'Pagina ''s'
     PAGETYPEANYOPT: Elke
@@ -246,6 +247,7 @@ nl:
     YOURPAGE: 'Pagina op deze website'
   ReportAdmin:
     MENUTITLE: Rapporten
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter op'
   SearchForm:
@@ -343,7 +345,7 @@ nl:
     PARENTTYPE_SUBPAGE: 'Subpagina onder bovenliggende pagina (kies hieronder)'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Instellen welke groepen toegang hebben tot bepaalde pagina''s of deze kunnen bewerken'
     PERMISSION_GRANTACCESS_HELP: 'Bevoegdheid om pagina specifieke toegangsrechten in de "Pagina''s" sectie te wijzigen.'
-    PLURALNAME: 'Site structuur'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Paginatype "{type}" is niet toegestaan op het hoogste niveau'
     PageTypeNotAllowed: 'Pagina type "{type}" mag niet ondergeschikt zijn aan deze bovenliggende pagina'
     REMOVEDFROMDRAFTHELP: 'Deze pagina is gepubliceerd, maar verwijderd uit de conceptsite'
@@ -353,7 +355,7 @@ nl:
     REORGANISE_HELP: 'Pas pagina volgorde aan in de site structuur met behulp van verslepen.'
     SHOWINMENUS: 'Weergeven in menu''s?'
     SHOWINSEARCH: 'Weergeven in zoeken?'
-    SINGULARNAME: 'Site Boom'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Gedrag
     TABCONTENT: Inhoud
     TABDEPENDENT: 'Afhankelijke pagina''s'
@@ -404,5 +406,3 @@ nl:
     PLURALNAME: 'Virtuele pagina''s'
     PageTypNotAllowedOnRoot: 'Voor deze virtuele pagina is het originele paginatype "{type}" niet toegestaan op het hoogste niveau.'
     SINGULARNAME: 'Virtuele Pagina'
-  cms:
-    FILESYSTEMSYNC: 'Bestanden synchroniseren'

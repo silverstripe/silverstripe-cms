@@ -13,6 +13,7 @@ gl_ES:
     CurrentFolderOnly: 'Limitar ao cartafol actual?'
     DetailsView: Detalles
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'Dende a Internet'
     FROMYOURCOMPUTER: 'Dende o teu Computador'
@@ -85,7 +86,7 @@ gl_ES:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Editar Páxina'
-    NEW: Novo
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Esta páxina non existe'
     PAGES: Páxinas
     PAGETYPEANYOPT: Ningún
@@ -246,6 +247,7 @@ gl_ES:
     YOURPAGE: 'Páxina no teu sitio web'
   ReportAdmin:
     MENUTITLE: Informes
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filtrar por'
   SearchForm:
@@ -343,7 +345,7 @@ gl_ES:
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Xestionar dereitos de acceso para o contido'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: 'Árbore do Sitio'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -353,7 +355,7 @@ gl_ES:
     REORGANISE_HELP: 'Reorganizar as páxinas na árbore do sitio a través de arrastrar e soltar.'
     SHOWINMENUS: 'Amosar nos menús?'
     SHOWINSEARCH: 'Amosar na busca?'
-    SINGULARNAME: 'Árbore do Sitio'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Comportamento
     TABCONTENT: 'Contido Principal'
     TABDEPENDENT: 'Páxinas dependentes'
@@ -404,5 +406,3 @@ gl_ES:
     PLURALNAME: 'Páxs Virtuais'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Páxina Virtual'
-  cms:
-    FILESYSTEMSYNC: 'Sincronizar ficheiros'

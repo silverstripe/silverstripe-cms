@@ -13,6 +13,7 @@ lt:
     CurrentFolderOnly: 'Apriboti iki šio aplanko?'
     DetailsView: 'Detalesnė informacija'
     FILES: Bylos
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Atnaujinti TVS bylų sarašo duomenų bazę. Naudotina, kai naujos bylos buvo įkeltos naudojant trečios šalies programinę įrangą, Pavyzdžiui FTP.'
     FROMTHEINTERNET: 'Iš interneto'
     FROMYOURCOMPUTER: 'Iš jūsų kompiuterio'
@@ -85,7 +86,7 @@ lt:
     EditTree: 'Redaguoti Medį'
     ListFiltered: 'Filtruotas sąrašas.'
     MENUTITLE: 'Redaguoti puslapį'
-    NEW: Naujas
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Šis puslapis neegzistuoja'
     PAGES: Puslapiai
     PAGETYPEANYOPT: 'Bet koks'
@@ -246,6 +247,7 @@ lt:
     YOURPAGE: 'Jūsų svetainės puslapis'
   ReportAdmin:
     MENUTITLE: Ataskaitos
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filtruoti pagal'
   SearchForm:
@@ -343,7 +345,7 @@ lt:
     PARENTTYPE_SUBPAGE: 'Puslapis po tėviniu puslapiu'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Valdyti turinio redagavimo teises'
     PERMISSION_GRANTACCESS_HELP: 'Leisti nustatyti puslapiui galiojančias specifines teises, "Puslapiai" skiltyje.'
-    PLURALNAME: 'Svetainės medis'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Puslapio tipas "{type}" neleidžiamas šakniniame lygmenyje'
     PageTypeNotAllowed: 'Puslapio tipas "{type}" neleidžiamas tėviniame puslapyje'
     REMOVEDFROMDRAFTHELP: 'Puslapis buvo publikuotas, tačiau buvo ištrintas iš juodraščių.'
@@ -353,7 +355,7 @@ lt:
     REORGANISE_HELP: 'Perrikiuoti puslapius naudojant Tempti/Mesti būdą.'
     SHOWINMENUS: 'Ar įtraukti į rodomą meniu?'
     SHOWINSEARCH: 'Rodyti paieškoje?'
-    SINGULARNAME: 'Svetainės medis'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Elgsena
     TABCONTENT: Turinys
     TABDEPENDENT: 'Priklausantys puslapiai'
@@ -404,5 +406,3 @@ lt:
     PLURALNAME: 'Virtualūs puslapiai'
     PageTypNotAllowedOnRoot: 'Norimas puslapio tipas "{type}" neleidžiamas šiame virtualiame puslapyje, šakniniame lygmenyje.'
     SINGULARNAME: 'Virtualus puslapis'
-  cms:
-    FILESYSTEMSYNC: 'Sinchronizuoti bylas'

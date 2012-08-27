@@ -13,6 +13,7 @@ cs:
     CurrentFolderOnly: 'Omezit na aktuální složku?'
     DetailsView: Detaily
     FILES: Soubory
+    FILESYSTEMSYNC: 'Synchronizovat soubory'
     FILESYSTEMSYNCTITLE: 'Aktualizace záznamů souborů databáze CMS na souborovém systému. Užitečné, když byly nové soubory nahrány mimo CMS, např. přes FTP.'
     FROMTHEINTERNET: 'Z internetu'
     FROMYOURCOMPUTER: 'Z vašeho počítače'
@@ -85,7 +86,7 @@ cs:
     EditTree: 'Editovat strom'
     ListFiltered: 'Filtrovaný seznam.'
     MENUTITLE: 'Editovat stránku'
-    NEW: Nový
+    NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Tato stránka neexistuje'
     PAGES: Stránky
     PAGETYPEANYOPT: Jakkýkoliv
@@ -246,6 +247,7 @@ cs:
     YOURPAGE: 'Stránku na Vašem webu'
   ReportAdmin:
     MENUTITLE: Výkazy
+    ReportTitle: Titulek
   ReportAdminForm:
     FILTERBY: 'Filtrovat dle'
   SearchForm:
@@ -343,7 +345,7 @@ cs:
     PARENTTYPE_SUBPAGE: 'Pod-stránka pod nadřazenou stránkou (vyberte dole)'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Správa přístupových práv pro obsah stránek'
     PERMISSION_GRANTACCESS_HELP: 'Povolit nastavení omezení na specifické stránky v sekci "Stránky".'
-    PLURALNAME: 'Mapa stránek'
+    PLURALNAME: Stránky
     PageTypNotAllowedOnRoot: 'Stránka typu "{type}" není povolena na nejvyšší úrovni'
     PageTypeNotAllowed: 'Stránka typu "{type}" není povolena jako potomek této nadřízené stránky'
     REMOVEDFROMDRAFTHELP: 'Stránka je zveřejněna, ale byla odstraněna z konceptu'
@@ -353,7 +355,7 @@ cs:
     REORGANISE_HELP: 'Reorganizace stránek webu pomocí  "táhni a pusť".'
     SHOWINMENUS: 'Zobrazovat v menu?'
     SHOWINSEARCH: 'Zobrazovat ve vyhledávání?'
-    SINGULARNAME: 'Strom stránky'
+    SINGULARNAME: Stránka
     TABBEHAVIOUR: Chování
     TABCONTENT: Obsah
     TABDEPENDENT: 'Závislé stránky'
@@ -404,5 +406,3 @@ cs:
     PLURALNAME: 'Virtuální stránky'
     PageTypNotAllowedOnRoot: 'Původní stránka typu "{type}" není povolena na nejvyšší úrovni pro tuto virtuální stránku'
     SINGULARNAME: 'Virtuální stránka'
-  cms:
-    FILESYSTEMSYNC: 'Synchronizovat soubory'

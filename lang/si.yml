@@ -13,6 +13,7 @@ si:
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'From the internet'
     FROMYOURCOMPUTER: 'From your computer'
@@ -85,7 +86,7 @@ si:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
-    NEW: අලුත්
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'මෙම  පිටුව තවදුරටත් නොපවතී'
     PAGES: Pages
     PAGETYPEANYOPT: Any
@@ -246,6 +247,7 @@ si:
     YOURPAGE: 'ඔබේ අඩවියේ පිටුවක්'
   ReportAdmin:
     MENUTITLE: Reports
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
@@ -343,7 +345,7 @@ si:
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: 'Site Trees'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -353,7 +355,7 @@ si:
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'මෙනුවේ පෙන්වන්නද?'
     SHOWINSEARCH: 'සර්ච් ඵකේ පෙන්වන්නද?'
-    SINGULARNAME: 'Site Tree'
+    SINGULARNAME: Page
     TABBEHAVIOUR: හැසිරීම
     TABCONTENT: අන්තර්ගතය
     TABDEPENDENT: 'Dependent pages'
@@ -404,5 +406,3 @@ si:
     PLURALNAME: 'මනඃකල්පිත පිටු'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'මනඃකල්පිත පිටුව'
-  cms:
-    FILESYSTEMSYNC: 'Sync files'

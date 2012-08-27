@@ -13,6 +13,7 @@ ar:
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'From the internet'
     FROMYOURCOMPUTER: 'From your computer'
@@ -85,7 +86,7 @@ ar:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
-    NEW: جديد
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'هذه الصفحة غير موجودة'
     PAGES: Pages
     PAGETYPEANYOPT: Any
@@ -246,6 +247,7 @@ ar:
     YOURPAGE: 'صفحة في موقعك الشخصي'
   ReportAdmin:
     MENUTITLE: Reports
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'فرز عبر'
   SearchForm:
@@ -343,7 +345,7 @@ ar:
     PARENTTYPE_SUBPAGE: 'صفحة فرعية أسفل صفحة رئيسية (اختر أدناه)'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'التحكم في المجموعات التي لها صلاحية الدخول أو التعديل على صفحات محددة'
     PERMISSION_GRANTACCESS_HELP: 'السماح بضع القيود على الوصول صفحة محددة في قسم "الصفحات".'
-    PLURALNAME: 'هياكل الموقع'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -353,7 +355,7 @@ ar:
     REORGANISE_HELP: 'إعادة ترتيب الصفحات في  شجرة الموقع من خلال السحب والإسقاط.'
     SHOWINMENUS: 'عرض في قوائم ؟'
     SHOWINSEARCH: 'عرض في البحث ؟'
-    SINGULARNAME: 'هيكلة الموقع'
+    SINGULARNAME: Page
     TABBEHAVIOUR: الشسلوك
     TABCONTENT: المحتوى
     TABDEPENDENT: 'الصفحات المعتدة'
@@ -404,5 +406,3 @@ ar:
     PLURALNAME: 'الصفحات الافتراضية'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'الصفحة الافتراضية'
-  cms:
-    FILESYSTEMSYNC: 'Sync files'

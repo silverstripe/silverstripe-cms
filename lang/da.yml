@@ -13,6 +13,7 @@ da:
     CurrentFolderOnly: 'Begræns til den nuværende mappe'
     DetailsView: Detaljer
     FILES: Filer
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Opdater poster over filer i filsystemet i CMS-databasen. Dette kan være nyttigt når nye filer er blevet overført uden for CMS, f.eks. via FTP.'
     FROMTHEINTERNET: 'Fra internettet'
     FROMYOURCOMPUTER: 'Fra din computer'
@@ -85,7 +86,7 @@ da:
     EditTree: 'Rediger sidetræ'
     ListFiltered: 'Filtreret liste.'
     MENUTITLE: 'Rediger side'
-    NEW: Ny
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Denne side eksisterer ikke'
     PAGES: Sider
     PAGETYPEANYOPT: Enhver
@@ -246,6 +247,7 @@ da:
     YOURPAGE: 'Side på dit websted'
   ReportAdmin:
     MENUTITLE: Rapporter
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filtrer ved'
   SearchForm:
@@ -343,7 +345,7 @@ da:
     PARENTTYPE_SUBPAGE: 'Underside fra en overliggende side'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Administrer adgangsrettigheder for indhold'
     PERMISSION_GRANTACCESS_HELP: 'Tillad indstilling af side-specifikke adgangsbegrænsninger i sektionen "Sider" .'
-    PLURALNAME: Sidetræer
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Sidetypen "{type}" er ikke tilladt på rodniveau'
     PageTypeNotAllowed: 'Sidetypen {type} er ikke tilladt som underside til denne side'
     REMOVEDFROMDRAFTHELP: 'Siden er udgivet, men er blevet slette fra kladder'
@@ -353,7 +355,7 @@ da:
     REORGANISE_HELP: 'Omarranger sider i sidetræet ved hjælp af træk&slip.'
     SHOWINMENUS: 'Vis i menuer ?'
     SHOWINSEARCH: 'Vis i søgninger?'
-    SINGULARNAME: Sidetræ
+    SINGULARNAME: Page
     TABBEHAVIOUR: Opførsel
     TABCONTENT: 'Primært indhold'
     TABDEPENDENT: 'Afhængige sider'
@@ -404,5 +406,3 @@ da:
     PLURALNAME: 'Virtuelle sider'
     PageTypNotAllowedOnRoot: 'Original side type "{type}" er ikke tilladt på rodniveau for denne virtuelle side'
     SINGULARNAME: 'Virtuel side'
-  cms:
-    FILESYSTEMSYNC: 'Synkronisér filer'

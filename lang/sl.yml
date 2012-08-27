@@ -13,6 +13,7 @@ sl:
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'From the internet'
     FROMYOURCOMPUTER: 'From your computer'
@@ -85,7 +86,7 @@ sl:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
-    NEW: 'Nov '
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Stran na tem naslovu ne obstaja'
     PAGES: Pages
     PAGETYPEANYOPT: Any
@@ -246,6 +247,7 @@ sl:
     YOURPAGE: 'Stran na tvojem spletnem mestu'
   ReportAdmin:
     MENUTITLE: Reports
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filtriraj po'
   SearchForm:
@@ -343,7 +345,7 @@ sl:
     PARENTTYPE_SUBPAGE: 'Podstran (izberi spodaj)'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Upravljaj s pravicami za dostop do vsebine'
     PERMISSION_GRANTACCESS_HELP: 'Dovoli nastavitve pravic za dostop do izbrane strani v sklopu "Strani".'
-    PLURALNAME: 'Drevesne strukture'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -353,7 +355,7 @@ sl:
     REORGANISE_HELP: 'Razvrsti strani v drevesni strukturi s funkcijo "povleci in izpusti".'
     SHOWINMENUS: 'Pokaži v meniju?'
     SHOWINSEARCH: 'Pokaži v iskalniku?'
-    SINGULARNAME: 'Drevesna struktura'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Vedenje
     TABCONTENT: Vsebina
     TABDEPENDENT: 'Odvisne strani'
@@ -404,5 +406,3 @@ sl:
     PLURALNAME: 'Virtualne strani'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtualna stran'
-  cms:
-    FILESYSTEMSYNC: 'Sync files'

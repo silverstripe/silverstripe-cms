@@ -13,6 +13,7 @@ de:
     CurrentFolderOnly: 'Auf den aktuellen Ordner beschränken?'
     DetailsView: Details
     FILES: Dateien
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Aktualisiere die CMS Datenbankeinträge zu Dateien auf dem Server. Dies ist dann hilfreich, wenn Dateien ausserhalb des CMS hochgeladen wurden, z.B. mit FTP.'
     FROMTHEINTERNET: 'Aus dem Internet'
     FROMYOURCOMPUTER: 'Von Ihrem Computer'
@@ -85,7 +86,7 @@ de:
     EditTree: 'Seitenbaum bearbeiten'
     ListFiltered: 'Gefilterte Liste'
     MENUTITLE: 'Seite bearbeiten'
-    NEW: Neu
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Diese Seite existiert nicht'
     PAGES: Seiten
     PAGETYPEANYOPT: Alle
@@ -246,6 +247,7 @@ de:
     YOURPAGE: 'Seite auf Ihrer Website'
   ReportAdmin:
     MENUTITLE: Berichte
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filtern nach'
   SearchForm:
@@ -343,7 +345,7 @@ de:
     PARENTTYPE_SUBPAGE: 'Seite unterhalb einer übergeordneten Seite (wählen Sie unten)'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Zugriffsrechte für Inhalte verwalten'
     PERMISSION_GRANTACCESS_HELP: 'Einstellung von seitenspezifischen Zugriffsbeschränkungen im Bereich "Seiteninhalt" erlauben'
-    PLURALNAME: Seiten
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Der Seitentyp "{type}" darf nicht auf der Grundebene verwendet werden.'
     PageTypeNotAllowed: 'Der Seitentyp "{type}" kann nicht als Kind dieser übergeordneten Seite verwendet werden'
     REMOVEDFROMDRAFTHELP: 'Die Seite ist veröffentlicht, wurde aber von der Entwurf Seite gelöscht.'
@@ -353,7 +355,7 @@ de:
     REORGANISE_HELP: 'Seiten im Seitenbaum per Drag&Drop sortieren.'
     SHOWINMENUS: 'In Menüs anzeigen?'
     SHOWINSEARCH: 'In der Suche anzeigen?'
-    SINGULARNAME: Seite
+    SINGULARNAME: Page
     TABBEHAVIOUR: Verhalten
     TABCONTENT: Inhalt
     TABDEPENDENT: 'Abhängige Seiten'
@@ -404,5 +406,3 @@ de:
     PLURALNAME: 'Virtuelle Seiten'
     PageTypNotAllowedOnRoot: 'Der ursprüngliche Seitentyp "{type}" ist nicht zulässig für diese virtuelle Seite. '
     SINGULARNAME: 'Virtuelle Seite'
-  cms:
-    FILESYSTEMSYNC: 'Dateien synchronisieren'

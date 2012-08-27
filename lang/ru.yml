@@ -13,6 +13,7 @@ ru:
     CurrentFolderOnly: 'Только в этой папке?'
     DetailsView: Details
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'Из интернета'
     FROMYOURCOMPUTER: 'С диска'
@@ -85,7 +86,7 @@ ru:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Править страницу'
-    NEW: Новый
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Страница не существует'
     PAGES: Страницы
     PAGETYPEANYOPT: Любой
@@ -246,6 +247,7 @@ ru:
     YOURPAGE: 'Страница Вашего сайта'
   ReportAdmin:
     MENUTITLE: Reports
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Фильтровать по'
   SearchForm:
@@ -343,7 +345,7 @@ ru:
     PARENTTYPE_SUBPAGE: 'Подстраница под родительской страницей'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Управление правами доступа к содержимому'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: 'Дерево сайта'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -353,7 +355,7 @@ ru:
     REORGANISE_HELP: 'Изменение порядка страниц в древовидной структуре сайта посредством drag&drop.'
     SHOWINMENUS: 'Показывать в меню?'
     SHOWINSEARCH: 'Показывать в поиске?'
-    SINGULARNAME: 'Дерево сайта'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Поведение
     TABCONTENT: Содержимое
     TABDEPENDENT: 'Зависимые страницы'
@@ -404,5 +406,3 @@ ru:
     PLURALNAME: 'Виртуальная страница'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Виртуальная страница'
-  cms:
-    FILESYSTEMSYNC: 'Sync files'

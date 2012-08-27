@@ -13,6 +13,7 @@ sv:
     CurrentFolderOnly: 'Begränsa till aktuell mapp?'
     DetailsView: Detaljer
     FILES: Filer
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Uppdatera CMS:ets databasposter för filer i filsystemet. Användbart när nya filer har laddats upp utanför CMS:et, t.ex. via FTP.'
     FROMTHEINTERNET: 'Från internet'
     FROMYOURCOMPUTER: 'Från din dator'
@@ -85,7 +86,7 @@ sv:
     EditTree: 'Redigera trädet'
     ListFiltered: 'Filtrerad lista'
     MENUTITLE: 'Redigera sida'
-    NEW: Ny
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Den här sidan finns inte'
     PAGES: Sidor
     PAGETYPEANYOPT: 'Vilken som helst'
@@ -246,6 +247,7 @@ sv:
     YOURPAGE: 'Sida på din sajt'
   ReportAdmin:
     MENUTITLE: Rapporter
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filtrera på'
   SearchForm:
@@ -343,7 +345,7 @@ sv:
     PARENTTYPE_SUBPAGE: 'Undersida under en överordnad sida (välj nedan)'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Administrera åtkomsträttigheter för innehåll'
     PERMISSION_GRANTACCESS_HELP: 'Tillåt inställning av sidspecifika åtkomstbegränsningar i "Sidor"-sektionen.'
-    PLURALNAME: Sidträd
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Sidtypen "{type}" tillåts inte på rotnivå'
     PageTypeNotAllowed: 'Sidtypen "{type}" tillåts inte som barn till förälderns sida'
     REMOVEDFROMDRAFTHELP: 'Sidan är publicerad men har raderats från utkastet'
@@ -353,7 +355,7 @@ sv:
     REORGANISE_HELP: 'Flytta om sidorna i sidträdet genom att dra och släppa.'
     SHOWINMENUS: 'Visa i menyer?'
     SHOWINSEARCH: 'Visa i sökningar?'
-    SINGULARNAME: Sidträd
+    SINGULARNAME: Page
     TABBEHAVIOUR: Beteende
     TABCONTENT: Huvudinnehåll
     TABDEPENDENT: 'Beroende sidor'
@@ -404,5 +406,3 @@ sv:
     PLURALNAME: 'Virtuella sidor'
     PageTypNotAllowedOnRoot: 'Ursprungliga sidan av typ "{type}" tillåts inte på rotnivå för denna virtuella sida'
     SINGULARNAME: 'Virtuell sida'
-  cms:
-    FILESYSTEMSYNC: 'Synkronisera filer'

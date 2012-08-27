@@ -13,6 +13,7 @@ lv:
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'From the internet'
     FROMYOURCOMPUTER: 'From your computer'
@@ -85,7 +86,7 @@ lv:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
-    NEW: 'New '
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'This page doesn''t exist'
     PAGES: Pages
     PAGETYPEANYOPT: Any
@@ -246,6 +247,7 @@ lv:
     YOURPAGE: 'Tīmekļa vietnes lapa'
   ReportAdmin:
     MENUTITLE: Reports
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
@@ -343,7 +345,7 @@ lv:
     PARENTTYPE_SUBPAGE: 'Apakšlapa zem vecāka lapas (izvēlieties zemāk)'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Pārvaldīt piekļuves tiesības saturam'
     PERMISSION_GRANTACCESS_HELP: 'Atļaut atsevišķu lapu piekļuves ierobežojumu iestatījumu sadaļā "Lapas".'
-    PLURALNAME: 'Vietnes strukrtūras'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -353,7 +355,7 @@ lv:
     REORGANISE_HELP: 'Pārkārtot lapas koka struktūra ar "vilkt un nomest" paņēmienu.'
     SHOWINMENUS: 'Rādīt izvēlnēs?'
     SHOWINSEARCH: 'Rādīt meklēšanas rezultātos?'
-    SINGULARNAME: 'Vietnes struktūra'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Uzvedība
     TABCONTENT: Saturs
     TABDEPENDENT: 'Atkarīgās lapas'
@@ -404,5 +406,3 @@ lv:
     PLURALNAME: 'Virtuālās lapas'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtuālās lapa'
-  cms:
-    FILESYSTEMSYNC: 'Sync files'

@@ -13,6 +13,7 @@ mi_NZ:
     CurrentFolderOnly: 'Ka whakatiki ki te kōpaki o nāianei?'
     DetailsView: 'Ngā Taipitopito'
     FILES: 'Ngā Kōnae'
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Whakahōutia ngā tāurunga pātengi raraunga CMS o ngā kōnae kei te pūnaha kōnae. He whaitake ina tukuna atu he kōnae hou mai i waho i te CMS, hei tauira, mā te FTP.'
     FROMTHEINTERNET: 'Mai i te Ipurangi'
     FROMYOURCOMPUTER: 'Mai i tō rorohiko'
@@ -85,7 +86,7 @@ mi_NZ:
     EditTree: 'Whakatika Rākau'
     ListFiltered: 'Rārangi kua tātaritia'
     MENUTITLE: 'Whakatika Whārangi'
-    NEW: 'he ____ hōu'
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'kāore tēnei rārangi e tīari'
     PAGES: 'Ngā Whārangi'
     PAGETYPEANYOPT: 'Ko tētahi'
@@ -246,6 +247,7 @@ mi_NZ:
     YOURPAGE: 'Whārangi kei tō paetukutuku'
   ReportAdmin:
     MENUTITLE: 'Ngā Pūrongo'
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Tātari mā te'
   SearchForm:
@@ -343,7 +345,7 @@ mi_NZ:
     PARENTTYPE_SUBPAGE: 'Whārangi-iti kei raro i te whārangi matua'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Whakahaeretia ngā motika uru mō ngā ihirangi'
     PERMISSION_GRANTACCESS_HELP: 'Tukuna te tautuhi rāhuitanga uru ki ētahi whārangi tauwhāiti i te wāhanga "Ngā Whārangi"'
-    PLURALNAME: 'Ngā Rākau Pae'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Kāore e whakaaetia te momo whārangi "{type}" i te taumata pūtake'
     PageTypeNotAllowed: 'Kāore e whakaaetia te momo whārangi "{type}" hei tamaiti a tēnei whārangi matua'
     REMOVEDFROMDRAFTHELP: 'Kua whakaputaina te whārangi, engari kua mukua i te hukihuki'
@@ -353,7 +355,7 @@ mi_NZ:
     REORGANISE_HELP: 'Whakaraupapatia ngā whārangi i te rākau pae mā te tō me te taka.'
     SHOWINMENUS: 'Ka kitea i ngā tahua?'
     SHOWINSEARCH: 'Ka kitea i te rapu?'
-    SINGULARNAME: 'Rākau Pae'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Whanonga
     TABCONTENT: 'Ngā Ihirangi Matua'
     TABDEPENDENT: 'Ngā whārangi hāngai'
@@ -404,5 +406,3 @@ mi_NZ:
     PLURALNAME: 'Ngā Whārangi Mariko'
     PageTypNotAllowedOnRoot: 'Kāore e whakaaetia te momo whārangi taketake "{type}" i te taumata pūtake o tēnei whārangi mariko'
     SINGULARNAME: 'Whārangi Mariko'
-  cms:
-    FILESYSTEMSYNC: 'Tukutahi kōnae'

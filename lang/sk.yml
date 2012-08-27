@@ -13,6 +13,7 @@ sk:
     CurrentFolderOnly: 'Obmedziť na aktuálny priečinok?'
     DetailsView: Detaily
     FILES: Súbory
+    FILESYSTEMSYNC: 'Synchronizovať súbory'
     FILESYSTEMSYNCTITLE: 'Aktualizuje záznamy súborov databázy CMS na súborovom systéme. Užitočné, keď sú nové súbory nahrané mimo CMS, napr cez FTP.'
     FROMTHEINTERNET: 'Z internetu'
     FROMYOURCOMPUTER: 'Z vášho počitača'
@@ -85,7 +86,7 @@ sk:
     EditTree: 'Editovať strom'
     ListFiltered: 'Filtrovaný zoznam.'
     MENUTITLE: 'Upraviť stránku'
-    NEW: Nový
+    NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Táto stránka neexistuje.'
     PAGES: Stránky
     PAGETYPEANYOPT: Akýkoľvek
@@ -246,6 +247,7 @@ sk:
     YOURPAGE: 'Stránka na vašom webe'
   ReportAdmin:
     MENUTITLE: Výkazy
+    ReportTitle: Titulok
   ReportAdminForm:
     FILTERBY: 'Filtrovať podľa'
   SearchForm:
@@ -343,7 +345,7 @@ sk:
     PARENTTYPE_SUBPAGE: 'Podstránka pod rodičovskou strankov (vyberte nižšie)'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Spravovať prístupové práva pre obsah'
     PERMISSION_GRANTACCESS_HELP: 'Povoliť nastavenia obmedzenia pre stranku v sekcií "Pages".'
-    PLURALNAME: 'Strom stránok'
+    PLURALNAME: Stránky
     PageTypNotAllowedOnRoot: 'Stránka typu "{type}" nie je povolená na najvyššej úrovni'
     PageTypeNotAllowed: 'Stránka typu "{type}" nie je povolená ako potomok nadradenej stránky'
     REMOVEDFROMDRAFTHELP: 'Stránka je zverejnená, ale bola odstránená z koceptuu'
@@ -353,7 +355,7 @@ sk:
     REORGANISE_HELP: 'Zoradiť stránky v stromovej štruktúre pomocou prenesenia.'
     SHOWINMENUS: 'Zobrazovať v menu?'
     SHOWINSEARCH: 'Zobraziť v hľadaní?'
-    SINGULARNAME: 'Strom stránky'
+    SINGULARNAME: Stránka
     TABBEHAVIOUR: Správanie
     TABCONTENT: Obsah
     TABDEPENDENT: 'Závislé stránky'
@@ -404,5 +406,3 @@ sk:
     PLURALNAME: 'Virtuálne stránky'
     PageTypNotAllowedOnRoot: 'Pôvodná stránka typu "{type}" nie je povolená na najvyššej úrovni pre túto virtuálnu stránku'
     SINGULARNAME: 'Virtuálna stránka'
-  cms:
-    FILESYSTEMSYNC: 'Synchronizovať súbory'

@@ -13,6 +13,7 @@ it:
     CurrentFolderOnly: 'Limita alla cartella corrente?'
     DetailsView: Dettagli
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Aggiorna il database dei file. Utile quando nuovi file sono stati caricati fuori dal CMS, es. via FTP.'
     FROMTHEINTERNET: 'Da Internet'
     FROMYOURCOMPUTER: 'Dal tuo computer'
@@ -85,7 +86,7 @@ it:
     EditTree: 'Modifica albero'
     ListFiltered: 'Lista filtrata.'
     MENUTITLE: 'Modifica pagina'
-    NEW: Nuova
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Questa pagina non esiste'
     PAGES: Pagine
     PAGETYPEANYOPT: Qualsiasi
@@ -246,6 +247,7 @@ it:
     YOURPAGE: 'Pagina sul tuo sito web'
   ReportAdmin:
     MENUTITLE: Rapporti
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filtra per'
   SearchForm:
@@ -343,7 +345,7 @@ it:
     PARENTTYPE_SUBPAGE: 'Pagina sotto una pagina madre'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Controlla quali gruppi possono accedere o editare certe pagine'
     PERMISSION_GRANTACCESS_HELP: 'Consenti le impostazioni di restrizione d''accesso a pagine specifiche nella sezione "Pagine".'
-    PLURALNAME: 'Alberi del sito'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Il tipo di pagina "{type}" non è consentito al primo livello'
     PageTypeNotAllowed: 'Il tipo di pagina "{type}" non è consentito come figlio di questa pagina madre'
     REMOVEDFROMDRAFTHELP: 'La pagina è pubblicata, ma è stata eliminata dal sito bozza'
@@ -353,7 +355,7 @@ it:
     REORGANISE_HELP: 'Riordina le pagine nella struttura ad albero del sito utilizzando il drag&drop.'
     SHOWINMENUS: 'Visualizza nel menu?'
     SHOWINSEARCH: 'Visualizza in cerca?'
-    SINGULARNAME: 'Albero del sito'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Comportamento
     TABCONTENT: Contenuto
     TABDEPENDENT: 'Pagine dipendenti'
@@ -404,5 +406,3 @@ it:
     PLURALNAME: 'Pagine virtuali'
     PageTypNotAllowedOnRoot: 'Il tipo di pagina originale "{type}" non è consentito al primo livello per questa pagina virtuale'
     SINGULARNAME: 'Pagina virtuale'
-  cms:
-    FILESYSTEMSYNC: 'Sincronizza file'

@@ -13,6 +13,7 @@ fi:
     CurrentFolderOnly: 'Rajoita tähän kansioon?'
     DetailsView: Tiedot
     FILES: Tiedostot
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Päivitä palvelimella olevat tiedostot CMS-järjestelmän tietokantaan. Kätevä toiminto, kun olet siirtänyt tiedostoja suoraa palvelimelle ohi CMS-järjestelmän esim. FTP-ohjelmalla.'
     FROMTHEINTERNET: Internetistä
     FROMYOURCOMPUTER: 'Omalta tietokoneelta'
@@ -85,7 +86,7 @@ fi:
     EditTree: 'Muokkaa rakennepuuta'
     ListFiltered: 'Suodatettu lista.'
     MENUTITLE: 'Muokkaa sivua'
-    NEW: Uusi
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Tätä sivua ei ole olemassa'
     PAGES: Sivut
     PAGETYPEANYOPT: 'Mikä tahansa'
@@ -246,6 +247,7 @@ fi:
     YOURPAGE: 'Sivu verkkosivustollasi'
   ReportAdmin:
     MENUTITLE: Raportit
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: Suodata
   SearchForm:
@@ -343,7 +345,7 @@ fi:
     PARENTTYPE_SUBPAGE: 'Alasivu ylätason sivulle (valitse ylätaso)'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Hallitse sisällön käyttöoikeuksia'
     PERMISSION_GRANTACCESS_HELP: 'Salli sivukohtaisten pääsyrajoitusten asettaminen "Sivut" -osiossa.'
-    PLURALNAME: Sivukartat
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: '"{type}" -sivutyyppi ei ole sallittu päätasolla'
     PageTypeNotAllowed: '"{type}" -sivutyyppi ei ole sallittu tämän sivun alasivuna.'
     REMOVEDFROMDRAFTHELP: 'Sivu on julkaistu, mutta on poistettu luonnoksista'
@@ -353,7 +355,7 @@ fi:
     REORGANISE_HELP: 'Uudelleenjärjestä sivuston rakenteen sivut vetämällä ne paikoilleen.'
     SHOWINMENUS: 'Näytetäänkö valikoissa?'
     SHOWINSEARCH: 'Näytetäänkö hauissa?'
-    SINGULARNAME: Sivukartta
+    SINGULARNAME: Page
     TABBEHAVIOUR: Käyttäytyminen
     TABCONTENT: Sisältö
     TABDEPENDENT: 'Riippuvaiset sivut'
@@ -404,5 +406,3 @@ fi:
     PLURALNAME: 'Virtuaaliset sivut'
     PageTypNotAllowedOnRoot: 'Alkuperäinen sivutyyppi "{type}" ei ole sallittu tämän virtuaalisen sivun päätasolla'
     SINGULARNAME: 'Virtuaalinen sivu'
-  cms:
-    FILESYSTEMSYNC: 'Synkronoi tiedostot'

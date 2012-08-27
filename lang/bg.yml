@@ -13,6 +13,7 @@ bg:
     CurrentFolderOnly: 'Ограничи в текущата директория?'
     DetailsView: Details
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Актуализира базата данни с файловете от файловата система. Полезно когато файлове са били качени не през системата, а например през FTP.'
     FROMTHEINTERNET: 'От интернет'
     FROMYOURCOMPUTER: 'From your computer'
@@ -85,7 +86,7 @@ bg:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Редактиране на страницата'
-    NEW: Създай
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Тази страница не съществува'
     PAGES: Pages
     PAGETYPEANYOPT: Any
@@ -246,6 +247,7 @@ bg:
     YOURPAGE: 'Страница на вашият уебсайт'
   ReportAdmin:
     MENUTITLE: Reports
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Филтрирай по'
   SearchForm:
@@ -343,7 +345,7 @@ bg:
     PARENTTYPE_SUBPAGE: Подстраница
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Промени правата за достъп до съдържанието'
     PERMISSION_GRANTACCESS_HELP: 'Разреши настройката на специфични ограничения за достъп в раздела "Страници"'
-    PLURALNAME: 'Site Tres'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -353,7 +355,7 @@ bg:
     REORGANISE_HELP: 'Преорганизирай страниците в дървото чрез "drag&drop" (теглене и пускане)'
     SHOWINMENUS: 'Покажи в менютата?'
     SHOWINSEARCH: 'Покажи в търсене?'
-    SINGULARNAME: 'Структурно дърво'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Поведение
     TABCONTENT: Съдържание
     TABDEPENDENT: 'Зависими страници'
@@ -404,5 +406,3 @@ bg:
     PLURALNAME: 'Виртуални страници'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Виртуална страница'
-  cms:
-    FILESYSTEMSYNC: 'Sync files'

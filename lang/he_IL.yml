@@ -13,6 +13,7 @@ he_IL:
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'From the internet'
     FROMYOURCOMPUTER: 'From your computer'
@@ -85,7 +86,7 @@ he_IL:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
-    NEW: חדש
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'עמוד זה אינו קיים במערכת'
     PAGES: Pages
     PAGETYPEANYOPT: Any
@@ -246,6 +247,7 @@ he_IL:
     YOURPAGE: 'עמוד באתר שלך'
   ReportAdmin:
     MENUTITLE: Reports
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
@@ -343,7 +345,7 @@ he_IL:
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: 'עצי אתר'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -353,7 +355,7 @@ he_IL:
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'להראות בתפריטים?'
     SHOWINSEARCH: 'לכלול בחיפוש?'
-    SINGULARNAME: 'דפי האתר'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Behavior
     TABCONTENT: 'Main Content'
     TABDEPENDENT: 'Dependent pages'
@@ -404,5 +406,3 @@ he_IL:
     PLURALNAME: 'דפים וירטואליים'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'דף וירטואלי'
-  cms:
-    FILESYSTEMSYNC: 'Sync files'

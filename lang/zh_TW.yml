@@ -13,6 +13,7 @@ zh_TW:
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'From the internet'
     FROMYOURCOMPUTER: 'From your computer'
@@ -85,7 +86,7 @@ zh_TW:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
-    NEW: 新增
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 這頁不存在
     PAGES: Pages
     PAGETYPEANYOPT: Any
@@ -246,6 +247,7 @@ zh_TW:
     YOURPAGE: 在您網站上的網頁
   ReportAdmin:
     MENUTITLE: Reports
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
@@ -343,7 +345,7 @@ zh_TW:
     PARENTTYPE_SUBPAGE: 在母頁下面的次頁
     PERMISSION_GRANTACCESS_DESCRIPTION: 管理內容的存取權限
     PERMISSION_GRANTACCESS_HELP: '允許設定在"網頁"部分的網頁-特定存取限制.'
-    PLURALNAME: '網站 Tres'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -353,7 +355,7 @@ zh_TW:
     REORGANISE_HELP: '經由 拉&放 於網站樹狀架構內重新安排網頁.'
     SHOWINMENUS: 在選單裡顯示嗎？
     SHOWINSEARCH: 在搜尋結果裡顯示嗎？
-    SINGULARNAME: 網站樹狀架構
+    SINGULARNAME: Page
     TABBEHAVIOUR: 作用
     TABCONTENT: 內容
     TABDEPENDENT: 依賴網頁
@@ -404,5 +406,3 @@ zh_TW:
     PLURALNAME: 虛擬網頁
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 虛擬網頁
-  cms:
-    FILESYSTEMSYNC: 'Sync files'

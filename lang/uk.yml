@@ -13,6 +13,7 @@ uk:
     CurrentFolderOnly: 'Обмежити до поточної папки?'
     DetailsView: Деталі
     FILES: Файли
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Оновлення бази даних файлів у файловій системі. Корисно, коли нові файли були завантажені поза CMS, наприклад, через FTP.'
     FROMTHEINTERNET: 'З інтернету'
     FROMYOURCOMPUTER: 'З мого комп''ютера'
@@ -85,7 +86,7 @@ uk:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Редагувати сторінку'
-    NEW: Нове
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Ця сторінка не існує'
     PAGES: Сторінки
     PAGETYPEANYOPT: Будь-який
@@ -246,6 +247,7 @@ uk:
     YOURPAGE: 'Сторінки на Вашому сайті'
   ReportAdmin:
     MENUTITLE: Звіти
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Фільтр по'
   SearchForm:
@@ -343,7 +345,7 @@ uk:
     PARENTTYPE_SUBPAGE: 'Дочірня сторінки під батьківською сторінкою'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Керувати правами доступу до контенту'
     PERMISSION_GRANTACCESS_HELP: 'Дозволити встановлювати обмеження доступу окремо для кожної сторінки в розділі "Сторінки"'
-    PLURALNAME: 'Дерево сайту'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Сторінки типу "{type}" не можуть бути кореневими'
     PageTypeNotAllowed: 'Не дозоволяється створювати сторінки типу "{type}" як дочірні сторінки цієї сторінки'
     REMOVEDFROMDRAFTHELP: 'Сторінка опублікована, але видалена з чорнового сайту'
@@ -353,7 +355,7 @@ uk:
     REORGANISE_HELP: 'Переставляти сторінки в дереві сайту за допомогою drag&drop'
     SHOWINMENUS: 'Показувати у навігації?'
     SHOWINSEARCH: 'Показувати у пошуку?'
-    SINGULARNAME: 'Дерево сайту'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Поводження
     TABCONTENT: Вміст
     TABDEPENDENT: 'Залежні сторінки'
@@ -404,5 +406,3 @@ uk:
     PLURALNAME: 'Віртуальні сторінки'
     PageTypNotAllowedOnRoot: 'Тип сторінки "{type}" не допускається на кореневому рівні для цієї віртуальної сторінки'
     SINGULARNAME: 'Віртуальна сторінка'
-  cms:
-    FILESYSTEMSYNC: 'Синхронізувати файли'

@@ -13,6 +13,7 @@ et_EE:
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: Internetist
     FROMYOURCOMPUTER: 'From your computer'
@@ -85,7 +86,7 @@ et_EE:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
-    NEW: Uus
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Antud lehekülge ei eksisteeri'
     PAGES: Pages
     PAGETYPEANYOPT: Any
@@ -246,6 +247,7 @@ et_EE:
     YOURPAGE: 'Lehekülg sinu veebisaidil'
   ReportAdmin:
     MENUTITLE: Aruanded
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
@@ -343,7 +345,7 @@ et_EE:
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Kontroli millised gruppid saavad ligipääsu ja võimaluse muuta mingeid lehti'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: Sisukorrad
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -353,7 +355,7 @@ et_EE:
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'Näita menüüdes?'
     SHOWINSEARCH: 'Näita otsingus?'
-    SINGULARNAME: Sisukord
+    SINGULARNAME: Page
     TABBEHAVIOUR: Käitumine
     TABCONTENT: Sisu
     TABDEPENDENT: 'Dependent pages'
@@ -404,5 +406,3 @@ et_EE:
     PLURALNAME: 'Suunavad lehed'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Suunav leht'
-  cms:
-    FILESYSTEMSYNC: 'Sünkrooni failid'
