@@ -574,17 +574,18 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$fields->push($idField = new HiddenField("ID", false, $id));
 			// Necessary for different subsites
 			$fields->push($liveURLField = new HiddenField("AbsoluteLink", false, $record->AbsoluteLink()));
-			$fields->push($liveURLField = new HiddenField("LiveURLSegment"));
-			$fields->push($stageURLField = new HiddenField("StageURLSegment"));
+			$fields->push($liveURLField = new HiddenField("LiveLink"));
+			$fields->push($stageURLField = new HiddenField("StageLink"));
 			$fields->push(new HiddenField("TreeTitle", false, $record->TreeTitle));
 
 			$fields->push(new HiddenField('Sort','', $record->Sort));
 
 			if($record->ID && is_numeric( $record->ID ) ) {
 				$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree\".\"ID\" = $record->ID");
-				if($liveRecord) $liveURLField->setValue($liveRecord->AbsoluteLink());
+				if($liveRecord) {
+					$liveURLField->setValue(Controller::join_links($liveRecord->AbsoluteLink(), '?stage=Live'));
+				}
 			}
-			
 			if(!$deletedFromStage) {
 				$stageURLField->setValue(Controller::join_links($record->AbsoluteLink(), '?stage=Stage'));
 			}
@@ -615,7 +616,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			
 			$form = new Form($this, "EditForm", $fields, $actions, $validator);
 			$form->loadDataFrom($record);
-			$stageURLField->setValue(Controller::join_links($record->getStageURLSegment(), '?stage=Stage'));
 			$form->disableDefaultAction();
 			$form->addExtraClass('cms-edit-form');
 			$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
