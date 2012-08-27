@@ -1061,8 +1061,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		// Can be used in different contexts: In normal page edit view, in which case the redirect won't have any effect.
 		// Or in history view, in which case a revert causes the CMS to re-load the edit view.
+		// The X-Pjax header forces a "full" content refresh on redirect.
 		$url = Controller::join_links(singleton('CMSPageEditController')->Link('show'), $record->ID);
 		$this->response->addHeader('X-ControllerURL', $url);
+		$this->request->addHeader('X-Pjax', 'Content');  
+		$this->response->addHeader('X-Pjax', 'Content');  
+
 		return $this->getResponseNegotiator()->respond($this->request);
 	}
 
