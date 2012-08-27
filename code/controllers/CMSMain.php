@@ -284,7 +284,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			)
 			// new TextField('MetaTags', _t('CMSMain.SearchMetaTags', 'Meta tags'))
 		);
-		$dateGroup->subfieldParam = 'FieldHolder';
+		$dateGroup->setFieldHolderTemplate('FieldGroup_DefaultFieldHolder')->addExtraClass('stacked');
 		$dateFrom->setConfig('showcalendar', true);
 		$dateTo->setConfig('showcalendar', true);
 		$classDropdown->setEmptyString(_t('CMSMain.PAGETYPEANYOPT','Any'));
