@@ -2699,7 +2699,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return String
 	 */
 	function i18n_singular_name() {
-		return _t($this->class.'.SINGULARNAME', $this->singular_name());
+		// Convert 'Page' to 'SiteTree' for correct localization lookups
+		$class = ($this->class == 'Page') ? 'SiteTree' : $this->class;
+		return _t($class.'.SINGULARNAME', $this->singular_name());
 	}
 	
 	/**
