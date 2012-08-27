@@ -239,6 +239,7 @@ en:
     YOURPAGE: 'Page on your website'
   ReportAdmin:
     ReportTitle: Title
+    MENUTITLE: Reports
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
@@ -405,5 +406,3 @@ en:
     MENUTITLE: 'Edit Page'
   CMSSettingsController:
     MENUTITLE: Settings
-  ReportAdmin:
-    MENUTITLE: Reports
