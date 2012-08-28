@@ -73,7 +73,7 @@ ru:
     MENUTITLE: Файлы
   CMSMain:
     ACCESS: 'Доступ к разделу ''{title}'''
-    ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
+    ACCESS_HELP: 'Возможность просматривать раздел, содержащий дерево страниц и контент. Настройка прав просмотра и редактирования производится через выпадающие меню на отдельных страницах, а также через "Права доступа к контенту".'
     AddNew: 'Добавить новую страницу'
     AddNewButton: Добавить
     ChoosePageParentMode: 'Выберите, где создать страницу'
@@ -264,7 +264,7 @@ ru:
     EMPTYPAGES: 'Пустые страницы'
     LAST2WEEKS: 'Страницы, редактированные последние 2 недели'
     OtherGroupTitle: Другие
-    ParameterLiveCheckbox: 'Check live site'
+    ParameterLiveCheckbox: 'Проверить "живую версию" сайта'
     REPEMPTY: 'Отчет {title} пуст.'
   SilverStripeNavigatorLink:
     ShareInstructions: 'Чтобы поделиться ссылкой на эту страницу, скопируйте URL ниже.'
@@ -344,7 +344,7 @@ ru:
     PARENTTYPE_ROOT: 'Страница верхнего уровня'
     PARENTTYPE_SUBPAGE: 'Подстраница под родительской страницей'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Управление правами доступа к содержимому'
-    PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
+    PERMISSION_GRANTACCESS_HELP: 'Возможность устанавливать ограничения доступа в разделе "Страницы" для каждой страницы отдельно.'
     PLURALNAME: Страницы
     PageTypNotAllowedOnRoot: 'Страницы типа "{type}" не могут быть корневыми'
     PageTypeNotAllowed: 'Страницы типа "{type}" недопустимы для этой родительской страницы в качестве дочерних'
