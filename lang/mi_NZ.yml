@@ -13,7 +13,7 @@ mi_NZ:
     CurrentFolderOnly: 'Ka whakatiki ki te kōpaki o nāianei?'
     DetailsView: 'Ngā Taipitopito'
     FILES: 'Ngā Kōnae'
-    FILESYSTEMSYNC: 'Sync files'
+    FILESYSTEMSYNC: 'Tukutahi kōnae'
     FILESYSTEMSYNCTITLE: 'Whakahōutia ngā tāurunga pātengi raraunga CMS o ngā kōnae kei te pūnaha kōnae. He whaitake ina tukuna atu he kōnae hou mai i waho i te CMS, hei tauira, mā te FTP.'
     FROMTHEINTERNET: 'Mai i te Ipurangi'
     FROMYOURCOMPUTER: 'Mai i tō rorohiko'
@@ -86,7 +86,7 @@ mi_NZ:
     EditTree: 'Whakatika Rākau'
     ListFiltered: 'Rārangi kua tātaritia'
     MENUTITLE: 'Whakatika Whārangi'
-    NEWPAGE: 'New {pagetype}'
+    NEWPAGE: '{pagetype} hou'
     PAGENOTEXISTS: 'kāore tēnei rārangi e tīari'
     PAGES: 'Ngā Whārangi'
     PAGETYPEANYOPT: 'Ko tētahi'
@@ -164,7 +164,7 @@ mi_NZ:
   ContentControl:
     NOTEWONTBESHOWN: 'Tuhipoka: kāore tēnei karere e whakaaturia ki ō manuhiri'
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
+    ARCHIVEDSITE: 'Putanga Arokite'
     ARCHIVEDSITEFROM: 'Pae putumōhio mai i'
     CMS: CMS
     DRAFTSITE: 'Pae Hukihuki'
@@ -191,8 +191,8 @@ mi_NZ:
     DEFAULTSERVERERRORPAGETITLE: 'Hapa tūmau'
     DESCRIPTION: 'Ngā ihirangi ritenga mō ngā take hapa rerekē (hei tauira. "Kāore i kitea te whārangi")'
     ERRORFILEPROBLEM: 'Kua hapa te whakatuwhera i te kōnae "{filename}" mō te tuhituhi. Tirohia ngā whakaaetanga kōnae.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
+    PLURALNAME: 'Ngā Whārangi Hapa'
+    SINGULARNAME: 'Whārangi Hapa'
     400: '400 - Tono Kino'
     401: '401 - Tē Whakamanatia'
     403: '403 - Kua Rāhuitia'
@@ -239,15 +239,15 @@ mi_NZ:
     HASBEENSETUP: 'Kua tatū he whārangi tuku anō me te kore whai wāhi hei tuku anō.'
     HEADER: 'Ka tuku anō tēnei whārangi i ngā kaiwhakamahi ki whārangi kē'
     OTHERURL: 'Tētahi atu PRO paetukutuku'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: 'Ngā Whārangi Tuku Anō'
     REDIRECTTO: 'Tukua anō ki'
     REDIRECTTOEXTERNAL: 'Tētahi atu paetukutuku'
     REDIRECTTOPAGE: 'Whārangi kei tō paetukutuku'
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: 'Whārangi Tuku Anō'
     YOURPAGE: 'Whārangi kei tō paetukutuku'
   ReportAdmin:
     MENUTITLE: 'Ngā Pūrongo'
-    ReportTitle: Title
+    ReportTitle: Taitara
   ReportAdminForm:
     FILTERBY: 'Tātari mā te'
   SearchForm:
@@ -276,8 +276,8 @@ mi_NZ:
     EDITHEADER: 'Mā wai ngā whārangi i tēnei pae e whakatika?'
     EDIT_PERMISSION: 'Whakahaeretia te whirihora pae'
     EDIT_PERMISSION_HELP: 'Āhei ki te whakatika i ngā tautuhinga uru aowhānui/ngā whakaaetanga whārangi taumata matua.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
+    PLURALNAME: 'Ngā Whirihoranga Pae'
+    SINGULARNAME: 'Whirihoranga Pae'
     SITENAMEDEFAULT: 'Tō Ingoa Pae'
     SITETAGLINE: 'Rārangi Tautuhinga Pae/Peha'
     SITETITLE: 'Taitara pae'
@@ -345,7 +345,7 @@ mi_NZ:
     PARENTTYPE_SUBPAGE: 'Whārangi-iti kei raro i te whārangi matua'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Whakahaeretia ngā motika uru mō ngā ihirangi'
     PERMISSION_GRANTACCESS_HELP: 'Tukuna te tautuhi rāhuitanga uru ki ētahi whārangi tauwhāiti i te wāhanga "Ngā Whārangi"'
-    PLURALNAME: Pages
+    PLURALNAME: 'Ngā Whārangi'
     PageTypNotAllowedOnRoot: 'Kāore e whakaaetia te momo whārangi "{type}" i te taumata pūtake'
     PageTypeNotAllowed: 'Kāore e whakaaetia te momo whārangi "{type}" hei tamaiti a tēnei whārangi matua'
     REMOVEDFROMDRAFTHELP: 'Kua whakaputaina te whārangi, engari kua mukua i te hukihuki'
@@ -355,7 +355,7 @@ mi_NZ:
     REORGANISE_HELP: 'Whakaraupapatia ngā whārangi i te rākau pae mā te tō me te taka.'
     SHOWINMENUS: 'Ka kitea i ngā tahua?'
     SHOWINSEARCH: 'Ka kitea i te rapu?'
-    SINGULARNAME: Page
+    SINGULARNAME: Whārangi
     TABBEHAVIOUR: Whanonga
     TABCONTENT: 'Ngā Ihirangi Matua'
     TABDEPENDENT: 'Ngā whārangi hāngai'
