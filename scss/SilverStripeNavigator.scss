@@ -1,0 +1,90 @@
+
+#SilverStripeNavigator {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	border-top: 2px solid #d4d0c8;
+	background-color:#81858d;
+	height: 22px;
+}
+
+#SilverStripeNavigator * {
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 10px !important;
+}
+
+#SilverStripeNavigator .holder {
+	text-align: center;
+	padding-top : 4px;
+	padding-left : 3px;
+	padding-right : 6px;
+	color: white;
+	border-top: 1px solid #555555;
+}
+#SilverStripeNavigator #logInStatus {
+	float: right;
+}
+#SilverStripeNavigator #switchView {
+	float: left;
+
+}
+
+#SilverStripeNavigator a  {
+	color: #fff;
+	background-color: transparent;
+	text-decoration: underline;
+}
+#SilverStripeNavigator a:hover  {
+	background-color: transparent;
+}
+
+#SilverStripeNavigator .bottomTabs a  {
+	margin-right: 8px;
+	text-decoration: underline;
+}
+
+#SilverStripeNavigator .bottomTabs a.current {
+	font-weight:bold;
+	text-decoration: none;
+}
+
+#SilverStripeNavigatorMessage {
+	font-family: 'Lucida Grande', Verdana, Arial, 'sans-serif';
+	position: absolute;
+	right: 20px;
+	top: 40px;
+	padding: 10px;
+	border-color: #c99;
+	color: #fff;
+	background-color: #c00;
+	border: 1px solid #000;
+}
+
+#SilverStripeNavigatorLinkPopup {
+	display: none;
+	position: absolute;
+	top: -60px;
+	height: 50px;
+	width: 350px;
+	left: 200px;
+	background-color: white;
+	border: 1px solid black;
+	z-index: 100;
+	color: black;
+	padding: 5px;
+}
+
+#SilverStripeNavigatorLinkPopup input {
+	width: 250px;
+}
+
+#SilverStripeNavigatorLinkPopup a.close {
+	color: blue;
+	text-align: right;
+	width: 80%;
+	border: none !important;
+	cursor: pointer;
+}
+
+

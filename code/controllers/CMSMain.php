@@ -284,7 +284,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			)
 			// new TextField('MetaTags', _t('CMSMain.SearchMetaTags', 'Meta tags'))
 		);
-		$dateGroup->subfieldParam = 'FieldHolder';
+		$dateGroup->setFieldHolderTemplate('FieldGroup_DefaultFieldHolder')->addExtraClass('stacked');
 		$dateFrom->setConfig('showcalendar', true);
 		$dateTo->setConfig('showcalendar', true);
 		$classDropdown->setEmptyString(_t('CMSMain.PAGETYPEANYOPT','Any'));
@@ -574,17 +574,18 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$fields->push($idField = new HiddenField("ID", false, $id));
 			// Necessary for different subsites
 			$fields->push($liveURLField = new HiddenField("AbsoluteLink", false, $record->AbsoluteLink()));
-			$fields->push($liveURLField = new HiddenField("LiveURLSegment"));
-			$fields->push($stageURLField = new HiddenField("StageURLSegment"));
+			$fields->push($liveURLField = new HiddenField("LiveLink"));
+			$fields->push($stageURLField = new HiddenField("StageLink"));
 			$fields->push(new HiddenField("TreeTitle", false, $record->TreeTitle));
 
 			$fields->push(new HiddenField('Sort','', $record->Sort));
 
 			if($record->ID && is_numeric( $record->ID ) ) {
 				$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree\".\"ID\" = $record->ID");
-				if($liveRecord) $liveURLField->setValue($liveRecord->AbsoluteLink());
+				if($liveRecord) {
+					$liveURLField->setValue(Controller::join_links($liveRecord->AbsoluteLink(), '?stage=Live'));
+				}
 			}
-			
 			if(!$deletedFromStage) {
 				$stageURLField->setValue(Controller::join_links($record->AbsoluteLink(), '?stage=Stage'));
 			}
@@ -615,7 +616,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			
 			$form = new Form($this, "EditForm", $fields, $actions, $validator);
 			$form->loadDataFrom($record);
-			$stageURLField->setValue(Controller::join_links($record->getStageURLSegment(), '?stage=Stage'));
 			$form->disableDefaultAction();
 			$form->addExtraClass('cms-edit-form');
 			$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
@@ -1061,8 +1061,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		// Can be used in different contexts: In normal page edit view, in which case the redirect won't have any effect.
 		// Or in history view, in which case a revert causes the CMS to re-load the edit view.
+		// The X-Pjax header forces a "full" content refresh on redirect.
 		$url = Controller::join_links(singleton('CMSPageEditController')->Link('show'), $record->ID);
 		$this->response->addHeader('X-ControllerURL', $url);
+		$this->request->addHeader('X-Pjax', 'Content');  
+		$this->response->addHeader('X-Pjax', 'Content');  
+
 		return $this->getResponseNegotiator()->respond($this->request);
 	}
 

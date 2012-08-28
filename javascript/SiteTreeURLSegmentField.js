@@ -94,10 +94,12 @@
 				}
 				
 				if (currentVal != updateVal) {
+					self.addClass('loading');
 					self.suggest(updateVal, function(data) {
 						var newVal = decodeURIComponent(data.value);
 						field.val(newVal);
 						self.edit(title);
+						self.removeClass('loading');
 					});
 				} else {
 					self.edit();
