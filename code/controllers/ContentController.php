@@ -314,7 +314,7 @@ class ContentController extends Controller {
 					</div>
 
 					<div id="switchView" class="bottomTabs">
-						<div class="blank">$viewPageIn </div>
+						$viewPageIn 
 						$items
 					</div>
 					</div>
