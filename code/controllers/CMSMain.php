@@ -573,21 +573,20 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 			$fields->push($idField = new HiddenField("ID", false, $id));
 			// Necessary for different subsites
-			$fields->push($liveURLField = new HiddenField("AbsoluteLink", false, $record->AbsoluteLink()));
-			$fields->push($liveURLField = new HiddenField("LiveLink"));
-			$fields->push($stageURLField = new HiddenField("StageLink"));
+			$fields->push($liveLinkField = new HiddenField("AbsoluteLink", false, $record->AbsoluteLink()));
+			$fields->push($liveLinkField = new HiddenField("LiveLink"));
+			$fields->push($stageLinkField = new HiddenField("StageLink"));
 			$fields->push(new HiddenField("TreeTitle", false, $record->TreeTitle));
 
 			$fields->push(new HiddenField('Sort','', $record->Sort));
 
 			if($record->ID && is_numeric( $record->ID ) ) {
-				$liveRecord = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree\".\"ID\" = $record->ID");
-				if($liveRecord) {
-					$liveURLField->setValue(Controller::join_links($liveRecord->AbsoluteLink(), '?stage=Live'));
+				$liveLink = $record->getAbsoluteLiveLink();
+				if($liveLink) $liveLinkField->setValue($liveLink);
+				if(!$deletedFromStage) {
+					$stageLink = Controller::join_links($record->AbsoluteLink(), '?stage=Stage');
+					if($stageLink) $stageLinkField->setValue($stageLink);
 				}
-			}
-			if(!$deletedFromStage) {
-				$stageURLField->setValue(Controller::join_links($record->AbsoluteLink(), '?stage=Stage'));
 			}
 			
 			// Added in-line to the form, but plucked into different view by LeftAndMain.Preview.js upon load
