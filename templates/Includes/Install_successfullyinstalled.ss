@@ -3,7 +3,7 @@
 </p>
 
 <% if Project == 'tutorial' %>
-	<%t ContentController.PostInstallTutorialIntro 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.' link='<a href="http://doc.silverstripe.org/doku.php?id=tutorials">our tutorials</a>' %>
+	<%t ContentController.PostInstallTutorialIntro 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.' link='<a href="http://doc.silverstripe.org/framework/en/tutorials">our tutorials</a>' %>
 <% end_if %>
 
 	<p><strong>&nbsp; &nbsp; <%t ContentController.Email "Email" %>: $Username</strong></br>
