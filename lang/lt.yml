@@ -13,7 +13,7 @@ lt:
     CurrentFolderOnly: 'Apriboti iki šio aplanko?'
     DetailsView: 'Detalesnė informacija'
     FILES: Bylos
-    FILESYSTEMSYNC: 'Sync files'
+    FILESYSTEMSYNC: 'Sinchronizuoti bylas'
     FILESYSTEMSYNCTITLE: 'Atnaujinti TVS bylų sarašo duomenų bazę. Naudotina, kai naujos bylos buvo įkeltos naudojant trečios šalies programinę įrangą, Pavyzdžiui FTP.'
     FROMTHEINTERNET: 'Iš interneto'
     FROMYOURCOMPUTER: 'Iš jūsų kompiuterio'
@@ -28,7 +28,7 @@ lt:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Ištrinti aplankus'
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: Filtras
   AssetAdmin_left.ss:
     GO: Vykdyti
   AssetTableField:
@@ -86,14 +86,14 @@ lt:
     EditTree: 'Redaguoti Medį'
     ListFiltered: 'Filtruotas sąrašas.'
     MENUTITLE: 'Redaguoti puslapį'
-    NEWPAGE: 'New {pagetype}'
+    NEWPAGE: 'Naujas {pagetype}'
     PAGENOTEXISTS: 'Šis puslapis neegzistuoja'
     PAGES: Puslapiai
     PAGETYPEANYOPT: 'Bet koks'
     PAGETYPEOPT: 'Puslapio tipas'
     PUBALLCONFIRM: 'Prašome publikuoti kiekvieną svetainės puslapį, kopijuojant turinį į svetainę'
     PUBALLFUN: '"Publikuoti viską" funkcionalumas'
-    PUBALLFUN2: 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It''s				intended to be used after there have been massive edits of the content, such as when the site was				first built.'
+    PUBALLFUN2: "Paspaudus šį mygtuką, bus publikuotas kiekvienas puslapis svetainėje. \\nŠitai numatyta naudoti kai padaromi dideli pakeitimai svetainės turinyje, \\npavyzdžiui ką tik sukūrus svetainę."
     PUBPAGES: 'Įvykdyta: Publikuoti {count} puslapiai'
     PageAdded: 'Puslapis sėkmingai sukurtas'
     REMOVED: 'Deleted ''%s''%s from live site'
@@ -164,7 +164,7 @@ lt:
   ContentControl:
     NOTEWONTBESHOWN: 'Pastaba: ši žinutė nebus matoma jūsų lankytojams'
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
+    ARCHIVEDSITE: 'Peržiūrėti versiją'
     ARCHIVEDSITEFROM: 'Archyvuota svetainė iš'
     CMS: TVS
     DRAFTSITE: 'Juodraštinė svetainė'
@@ -191,8 +191,8 @@ lt:
     DEFAULTSERVERERRORPAGETITLE: 'Tarnybinės stoties klaida'
     DESCRIPTION: 'Savitas turinys, skirtingai klaidai apibrėžti (Pvz.: "Puslapis nerastas")'
     ERRORFILEPROBLEM: 'Klaida atveriant rašymui bylą "{filename}". Prašome patikrinti bylos leidimus.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
+    PLURALNAME: 'Klaidos puslapiai'
+    SINGULARNAME: 'Klaidos puslapis'
     400: '400 - Bloga užklausa'
     401: '401 - Leidimas neduotas'
     403: '403 - Uždrausta'
@@ -239,15 +239,15 @@ lt:
     HASBEENSETUP: 'Nukreipimo puslapis nustatytas be jokio nukreipimo.'
     HEADER: 'Šis puslapis nukreips lankytojus į kitą puslapį'
     OTHERURL: 'Kitos svetainės URL adresas'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: 'Persiuntimo puslapiai'
     REDIRECTTO: 'Nukreipti į'
     REDIRECTTOEXTERNAL: 'Kita svetainė'
     REDIRECTTOPAGE: 'Jūsų svetainės puslapis'
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: 'Persiuntimo puslapis'
     YOURPAGE: 'Jūsų svetainės puslapis'
   ReportAdmin:
     MENUTITLE: Ataskaitos
-    ReportTitle: Title
+    ReportTitle: Antraštė
   ReportAdminForm:
     FILTERBY: 'Filtruoti pagal'
   SearchForm:
@@ -276,8 +276,8 @@ lt:
     EDITHEADER: 'Kas gali redaguoti šį puslapį?'
     EDIT_PERMISSION: 'Tvarkyti svetainės parametrus'
     EDIT_PERMISSION_HELP: 'Galimybė tvarkyti globalias priėjimo, pagrindinio puslapio teises.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
+    PLURALNAME: 'Svetaines konfiguracijos'
+    SINGULARNAME: 'Svetaines konfigūracija'
     SITENAMEDEFAULT: 'Jūsų Svetainės Pavadinimas'
     SITETAGLINE: 'Svetainės šūkis'
     SITETITLE: 'Svetainės pavadinimas'
@@ -345,7 +345,7 @@ lt:
     PARENTTYPE_SUBPAGE: 'Puslapis po tėviniu puslapiu'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Valdyti turinio redagavimo teises'
     PERMISSION_GRANTACCESS_HELP: 'Leisti nustatyti puslapiui galiojančias specifines teises, "Puslapiai" skiltyje.'
-    PLURALNAME: Pages
+    PLURALNAME: Puslapiai
     PageTypNotAllowedOnRoot: 'Puslapio tipas "{type}" neleidžiamas šakniniame lygmenyje'
     PageTypeNotAllowed: 'Puslapio tipas "{type}" neleidžiamas tėviniame puslapyje'
     REMOVEDFROMDRAFTHELP: 'Puslapis buvo publikuotas, tačiau buvo ištrintas iš juodraščių.'
@@ -355,7 +355,7 @@ lt:
     REORGANISE_HELP: 'Perrikiuoti puslapius naudojant Tempti/Mesti būdą.'
     SHOWINMENUS: 'Ar įtraukti į rodomą meniu?'
     SHOWINSEARCH: 'Rodyti paieškoje?'
-    SINGULARNAME: Page
+    SINGULARNAME: Puslapis
     TABBEHAVIOUR: Elgsena
     TABCONTENT: Turinys
     TABDEPENDENT: 'Priklausantys puslapiai'
