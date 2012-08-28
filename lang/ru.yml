@@ -260,7 +260,7 @@ ru:
     BROKENREDIRECTORPAGES: 'Страницы перенаправления, указывающие на удаленные страницы'
     BROKENVIRTUALPAGES: 'Виртуальные страницы, указывающие на удаленные страницы'
     BrokenLinksGroupTitle: 'Отчет об ошибочных ссылках'
-    ContentGroupTitle: 'Content reports'
+    ContentGroupTitle: 'Отчеты по контенту'
     EMPTYPAGES: 'Пустые страницы'
     LAST2WEEKS: 'Страницы, редактированные последние 2 недели'
     OtherGroupTitle: Другие
@@ -276,8 +276,8 @@ ru:
     EDITHEADER: 'Кто может редактировать страницы на этом сайте?'
     EDIT_PERMISSION: 'Управление конфигурацией сайта'
     EDIT_PERMISSION_HELP: 'Возможность редактировать глобальные настройки доступа/права доступа к страницам верхнего уровня.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
+    PLURALNAME: 'Конфигурации сайта'
+    SINGULARNAME: 'Конфигурация сайта'
     SITENAMEDEFAULT: 'Название сайта'
     SITETAGLINE: 'Подзаголовок сайта / слоган'
     SITETITLE: 'Заголовок сайта'
@@ -295,7 +295,7 @@ ru:
     ADDEDTODRAFTHELP: 'Эта страница еще не опубликована'
     ADDEDTODRAFTSHORT: Черновик
     ALLOWCOMMENTS: 'Разрешить комментарии для этой страницы?'
-    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+    APPEARSVIRTUALPAGES: 'Этот контент также отображается на виртуальных страницах в разделе {title}.'
     BUTTONCANCELDRAFT: 'Отменить изменения черновика'
     BUTTONCANCELDRAFTDESC: 'Удалить черновик и вернуться к уже опубликованной странице'
     BUTTONSAVEPUBLISH: 'Сохр. и опублик.'
@@ -310,7 +310,7 @@ ru:
     DEFAULTCONTACTTITLE: Контакты
     DEFAULTHOMECONTENT: '<p>Добро пожаловать в SilverStripe! Это главная страница по умолчанию. Вы можете редактировать ее в <a href="admin/">Системе Управления Содержимым</a>. Вы также можете обратиться к <a href="http://doc.silverstripe.com">документации для разработчиков</a> или начать с <a href="http://doc.silverstripe.com/doku.php?id=tutorials">учебных материалов.</a></p>'
     DEFAULTHOMETITLE: Главная
-    DELETEDPAGEHELP: 'Page is no longer published'
+    DELETEDPAGEHELP: 'Страница больше не является опубликованной'
     DELETEDPAGESHORT: Удалено
     DEPENDENT_NOTE: 'С этой страницей связаны следующие зависимые страницы (сюда относятся виртуальные страницы, страницы перенаправления и страницы со ссылками на контент).'
     DESCRIPTION: 'Обычная страница'
@@ -386,7 +386,7 @@ ru:
     SORTASC: 'По возрастанию'
     SORTDESC: 'По убыванию'
   TableListField_PageControls.ss:
-    DISPLAYING: Displaying
+    DISPLAYING: Отображение
     OF: из
     TO: по
     VIEWFIRST: 'См. первое'
