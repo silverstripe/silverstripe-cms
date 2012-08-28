@@ -93,12 +93,8 @@
  * ----------------------------------------------------------------- */
 .field.urlsegment {
 
-	&.disabled {
-		color: #444;
-		padding-left: 0px;
-		margin-left: 0px;
-		background: none;
-		border-color: transparent;
+	&.loading {
+		background: url(../images/loading.gif) no-repeat 162px 8px;
 	}
 
 	.prefix,
