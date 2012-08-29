@@ -224,7 +224,7 @@ fr:
     UploadFilesButton: Télécharger
   LeftAndMain:
     DELETED: Supprimée.
-    PreviewButton: Önizleme
+    PreviewButton: Aperçu
     SAVEDUP: Sauvegardée.
     STATUSPUBLISHEDSUCCESS: '« {title} » publiée avec succès'
     SearchResults: 'Arama Sonuçları'
