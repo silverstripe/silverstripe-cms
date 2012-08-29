@@ -55,6 +55,9 @@ $fileName = dirname($_SERVER['SCRIPT_FILENAME']) . '/' . $url;
  */
 if($url && file_exists($fileName)) {
 	$fileURL = (dirname($_SERVER['SCRIPT_NAME'])=='/'?'':dirname($_SERVER['SCRIPT_NAME'])) . '/' . $url;
+	if(isset($_SERVER['QUERY_STRING'])) {
+		$fileURL .= '?' . $_SERVER['QUERY_STRING'];
+	}
 	header($_SERVER['SERVER_PROTOCOL'] . ' 301 Moved Permanently');
 	header("Location: $fileURL");
 	die();
