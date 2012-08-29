@@ -578,8 +578,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$fields->push($stageLinkField = new HiddenField("StageLink"));
 			$fields->push(new HiddenField("TreeTitle", false, $record->TreeTitle));
 
-			$fields->push(new HiddenField('Sort','', $record->Sort));
-
 			if($record->ID && is_numeric( $record->ID ) ) {
 				$liveLink = $record->getAbsoluteLiveLink();
 				if($liveLink) $liveLinkField->setValue($liveLink);
