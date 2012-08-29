@@ -12,7 +12,7 @@ bg:
     CREATED: Date
     CurrentFolderOnly: 'Ограничи в текущата директория?'
     DetailsView: Details
-    FILES: Files
+    FILES: Файлове
     FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Актуализира базата данни с файловете от файловата система. Полезно когато файлове са били качени не през системата, а например през FTP.'
     FROMTHEINTERNET: 'От интернет'
@@ -28,12 +28,12 @@ bg:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: 'Филтрирай по'
   AssetAdmin_left.ss:
     GO: Давай
   AssetTableField:
-    BACKLINKCOUNT: 'Used on:'
-    PAGES: page(s)
+    BACKLINKCOUNT: 'Използвано от:'
+    PAGES: Страница/и
   BackLink_Button.ss:
     Back: Back
   BrokenLinksReport:
@@ -61,8 +61,8 @@ bg:
   CMSAddPageController:
     Title: 'Добави страница'
   CMSBatchActions:
-    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
-    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
+    DELETED_DRAFT_PAGES: 'Публикувани %d страници от черновата на сайта, %d грешки'
+    DELETED_PAGES: 'Публикувани %d страници, %d грешки'
     DELETE_DRAFT_PAGES: 'Изтрий от черновите'
     DELETE_PAGES: 'Изтрий от публикуваните страници'
     PUBLISHED_PAGES: 'Публикувани %d страници, %d грешки'
@@ -72,7 +72,7 @@ bg:
   CMSFileAddController:
     MENUTITLE: Files
   CMSMain:
-    ACCESS: 'Access to ''{title}'' section'
+    ACCESS: 'Достъп до ''{title}'' секция'
     ACCESS_HELP: 'Разреши излгед на раздела съдържащ структурното дърво и съдържанието. Правата за достъп и редактиране могат да бъдат променени през падащи менюта (dropdowns), както и чрез отделни права на съдържанието'
     AddNew: 'Добави страница'
     AddNewButton: 'Add new'
@@ -84,7 +84,7 @@ bg:
     DESCREMOVED: 'and {count} descendants'
     EMAIL: Email
     EditTree: 'Edit Tree'
-    ListFiltered: 'Filtered list.'
+    ListFiltered: 'Филтриран списък.'
     MENUTITLE: 'Редактиране на страницата'
     NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Тази страница не съществува'
@@ -94,13 +94,13 @@ bg:
     PUBALLCONFIRM: 'Please publish every page in the site, copying content stage to live'
     PUBALLFUN: '"Публикувай всичко" функционалност'
     PUBALLFUN2: 'Натискайки този бутон все едно, публикувате всяка страница по отделно. Идеята е тази функционалност да се използва при мащабна редакция на съдържанието, като например случая когато сайта бива първоначално попълнен.'
-    PUBPAGES: 'Done: Published {count} pages'
-    PageAdded: 'Successfully created page'
+    PUBPAGES: 'Готово. Публикувани {count} броя страници'
+    PageAdded: 'успешно създадена страница'
     REMOVED: 'Deleted ''%s''%s from live site'
-    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
+    REMOVEDPAGE: 'Примахнато ''{title}'' от публикувания сайт'
     REMOVEDPAGEFROMDRAFT: 'Премахната(и) ''%s'' от черновите'
     RESTORE: Restore
-    RESTORED: 'Restored ''{title}'' successfully'
+    RESTORED: 'Успешно възтановен/а ''{title}'''
     ROLLBACK: 'Върни към тази версия'
     ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
     ROLLEDBACKVERSION: 'Върната на верися #%d. Новата версия е с номер #%d'
@@ -110,7 +110,7 @@ bg:
     TabHistory: History
     TabSettings: Настройки
     TreeFiltered: 'Filtered tree.'
-    TreeFilteredClear: 'Clear filter'
+    TreeFilteredClear: 'Нулирай филтъра'
   CMSMain_left.ss:
     'APPLY FILTER': 'Apply Filter'
     RESET: Reset
@@ -170,18 +170,18 @@ bg:
     DRAFTSITE: Чернови
     DRAFT_SITE_ACCESS_RESTRICTION: 'Трябва да влезете с вашата CMS парола, за да видите черновата или архивираното съдържание. <a href="%s">Натиснете тук, за да се върнете обратно към публикувания сайт.</a>'
     Email: Email
-    InstallFilesDeleted: 'Installation files have been successfully deleted.'
+    InstallFilesDeleted: 'Инсталационните файлове са успешно изтрити.'
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    InstallSuccessCongratulations: 'SilverStripe е успешно инсталирана.'
     LOGGEDINAS: 'Влязъл като'
     LOGIN: Login
     LOGOUT: Изход
     NOTLOGGEDIN: 'Извън системата'
     PUBLISHEDSITE: 'Публикувани страници'
-    Password: Password
+    Password: Парола
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
     StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
-    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
+    UnableDeleteInstall: 'Не може да бъдат изтрити инсталационните файлове. Моля изтриите ги "на ръка"'
     VIEWPAGEIN: 'Изглед на страница в:'
   ErrorPage:
     CODE: 'Грешка в кода'
@@ -239,11 +239,11 @@ bg:
     HASBEENSETUP: 'Създадена е страница за пренасочване без да има накъде да се пренасочи.'
     HEADER: 'Тази страница ще пренасочи потребители към друга страница'
     OTHERURL: 'Друг уебсайт URL'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: 'Препратени страници'
     REDIRECTTO: 'Пренасочи към'
     REDIRECTTOEXTERNAL: 'Друг уебсайт'
     REDIRECTTOPAGE: 'Страница на вашият уебсайт'
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: 'Страница за пренасочване, сочеща към несъществуваща страница'
     YOURPAGE: 'Страница на вашият уебсайт'
   ReportAdmin:
     MENUTITLE: Reports
@@ -265,7 +265,7 @@ bg:
     LAST2WEEKS: 'Pages edited in the last 2 weeks'
     OtherGroupTitle: Other
     ParameterLiveCheckbox: 'Check live site'
-    REPEMPTY: 'The {title} report is empty.'
+    REPEMPTY: 'Отчетът {title}  е празен'
   SilverStripeNavigatorLink:
     ShareInstructions: 'За да споделиш тая страница, копирай и постави връзката по- долу'
     ShareLink: 'Сподели линк'
@@ -335,7 +335,7 @@ bg:
     METATITLE: Заглавие
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Променен
-    MetadataToggle: Metadata
+    MetadataToggle: Meta-data
     PAGELOCATION: 'Местонахождение на страницата'
     PAGETITLE: 'Име на страница'
     PAGETYPE: 'Вид страница'
@@ -348,7 +348,7 @@ bg:
     PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
-    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
+    REMOVEDFROMDRAFTHELP: 'Страницата  е публикувана, но е изтрита от черновата'
     REMOVEDFROMDRAFTSHORT: 'Изтрии от чернова'
     REMOVE_INSTALL_WARNING: 'Внимание: Изтрийте install.php от тази Silverstripe инсталация поради съображения за сигурност.'
     REORGANISE_DESCRIPTION: 'Промени структурата на сайта'
@@ -374,7 +374,7 @@ bg:
     many_many_ImageTracking: 'Следене на снимките'
     many_many_LinkTracking: 'Следене на линовете'
   SiteTreeURLSegmentField:
-    HelpChars: ' Special characters are automatically converted or removed.'
+    HelpChars: 'Специалните символи са автоматично конвертирани или изтрити.'
   StaticExporter:
     BASEURL: 'Базов URL'
     EXPORTTO: 'Експорт на тази папка'
@@ -386,8 +386,8 @@ bg:
     SORTASC: 'Сортирай възходящо'
     SORTDESC: 'Сортирай низходящо'
   TableListField_PageControls.ss:
-    DISPLAYING: Displaying
-    OF: of
+    DISPLAYING: Показани
+    OF: от
     TO: to
     VIEWFIRST: 'Преглед на първото'
     VIEWLAST: 'Преглед на последното'
