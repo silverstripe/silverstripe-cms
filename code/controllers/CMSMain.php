@@ -781,7 +781,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$record->HasBrokenLink = 0;
 		$record->HasBrokenFile = 0;
 
-		$record->writeWithoutVersion();
+		try {
+			$record->writeWithoutVersion();
+		} catch (ValidationException $e) {
+			$this->response->addHeader('X-Status', rawurlencode($e->getMessage()));
+			$form->sessionMessage($e->getMessage(), 'bad');
+			return $this->getResponseNegotiator()->respond($this->request);
+		}
 
 		// Update the class instance if necessary
 		if(isset($data['ClassName']) && $data['ClassName'] != $record->ClassName) {
@@ -796,27 +802,50 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		// save form data into record
 		$form->saveInto($record);
-		$record->write();
+		try {
+			$recordID = $record->write();
+		} catch (ValidationException $e) {
+			$this->response->addHeader('X-Status', rawurlencode($e->getMessage()));
+			$form->sessionMessage($e->getMessage(), 'bad');
+			return $this->getResponseNegotiator()->respond($this->request);
+		}
 		
 		// If the 'Save & Publish' button was clicked, also publish the page
 		if (isset($data['publish']) && $data['publish'] == 1) {
-			$record->doPublish();
-			
+			$result = $record->doPublish();
+
 			// Update classname with original and get new instance (see above for explanation)
 			if(isset($data['ClassName'])) {
 				$record->setClassName($data['ClassName']);
 				$publishedRecord = $record->newClassInstance($record->ClassName);
+				// check if $publishedRecord is the correct instance
+				$result = ($result == true && $publishedRecord instanceof $data['ClassName']) ? true : false;
 			}
-			
-			$this->response->addHeader(
-				'X-Status',
-				rawurlencode(_t(
-					'LeftAndMain.STATUSPUBLISHEDSUCCESS', 
-					"Published '{title}' successfully",
+
+			// if everything has gone OK $result should be true
+			if ($result == false) {
+				$msg = _t(
+					'LeftAndMain.EDITERROR', 
+					"There has been an error editing this page and it has not been saved",
 					'Status message after publishing a page, showing the page title',
 					array('title' => $record->Title)
-				))
-			);
+				);
+				$this->response->addHeader(
+					'X-Status',
+					rawurlencode($msg)
+				);
+				$form->sessionMessage($msg, 'bad');
+			} else {
+				$this->response->addHeader(
+					'X-Status',
+					rawurlencode(_t(
+						'LeftAndMain.STATUSPUBLISHEDSUCCESS', 
+						"Published '{title}' successfully",
+						'Status message after publishing a page, showing the page title',
+						array('title' => $record->Title)
+					))
+				);
+			}
 		} else {
 			$this->response->addHeader('X-Status', rawurlencode(_t('LeftAndMain.SAVEDUP', 'Saved.')));
 		}
