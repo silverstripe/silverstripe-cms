@@ -194,11 +194,13 @@ class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter {
 					break;
 
 				case 'LastEditedFrom':
-					$query->where("\"LastEdited\" >= '$SQL_val'");
+					$fromDate = new DateField(null, null, $SQL_val);
+					$query->where("\"LastEdited\" >= '{$fromDate->dataValue()}'");
 					break;
 
 				case 'LastEditedTo':
-					$query->where("\"LastEdited\" <= '$SQL_val'");
+					$toDate = new DateField(null, null, $SQL_val);
+					$query->where("\"LastEdited\" <= '{$toDate->dataValue()}'");
 					break;
 
 				case 'ClassName':
