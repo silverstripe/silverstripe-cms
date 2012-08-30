@@ -10,10 +10,10 @@ th:
     AppCategoryVideo: วีดีโอ
     BackToFolder: ย้อนกลับไปที่โฟลเดอร์
     CREATED: วันที่
-    CurrentFolderOnly: 'Limit to current folder?'
+    CurrentFolderOnly: 'จำกัดเฉพาะโฟลเดอร์นี้?'
     DetailsView: รายละเอียด
     FILES: ไฟล์
-    FILESYSTEMSYNC: 'Sync files'
+    FILESYSTEMSYNC: ผสานไฟล์
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: จากอินเทอร์เน็ต
     FROMYOURCOMPUTER: จากเครื่องคอมพิวเตอร์ของคุณ
@@ -28,7 +28,7 @@ th:
   AssetAdmin_DeleteBatchAction:
     TITLE: ลบโฟลเดอร์
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: ตัวกรองข้อมูล
   AssetAdmin_left.ss:
     GO: ไป
   AssetTableField:
@@ -54,10 +54,10 @@ th:
     ReasonDropdown: ปัญหาที่ต้องตรวจสอบ
     ReasonDropdownBROKENFILE: ไฟล์เสีย
     ReasonDropdownBROKENLINK: ลิงค์เสีย
-    ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
-    ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
-    RedirectorNonExistent: 'redirector page pointing to non-existent page'
-    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
+    ReasonDropdownRPBROKENLINK: หน้าเว็บเปลี่ยนเส้นทางชี้ไปที่หน้าเว็บที่ไม่มีอยู่ในระบบ
+    ReasonDropdownVPBROKENLINK: หน้าเว็บจำลองชี้ไปยังหน้าเว็บที่ไม่มีอยู่ในระบบ
+    RedirectorNonExistent: หน้าเว็บเปลี่ยนเส้นทางชี้ไปที่หน้าเว็บที่ไม่มีอยู่ในระบบ
+    VirtualPageNonExistent: หน้าเว็บจำลองชี้ไปที่หน้าเว็บที่ไม่มีอยู่ในระบบ
   CMSAddPageController:
     Title: เพิ่มหน้า
   CMSBatchActions:
@@ -77,16 +77,16 @@ th:
     AddNew: เพิ่มหน้าใหม่
     AddNewButton: เพิ่มใหม่
     ChoosePageParentMode: เลือกว่าต้องการสร้างหน้าเว็บนี้ไว้ที่ไหน
-    ChoosePageType: 'Choose page type'
+    ChoosePageType: เลือกประเภทของหน้าเว็บ
     Create: สร้าง
     DELETE: ลบออกจากเว็บไซต์ฉบับร่าง
     DELETEFP: ลบ
     DESCREMOVED: 'and {count} descendants'
     EMAIL: อีเมล
-    EditTree: 'Edit Tree'
-    ListFiltered: 'Filtered list.'
+    EditTree: 'แก้ไขรายการแบบ Tree'
+    ListFiltered: แสดงรายการตามตัวกรองข้อมูล
     MENUTITLE: แก้ไขหน้าเว็บ
-    NEWPAGE: 'New {pagetype}'
+    NEWPAGE: 'ใหม่ {pagetype}'
     PAGENOTEXISTS: ไม่มีหน้านี้อยู่
     PAGES: หน้า
     PAGETYPEANYOPT: Any
@@ -109,27 +109,27 @@ th:
     TabContent: เนื้อหา
     TabHistory: ประวัติย้อนหลัง
     TabSettings: ตั้งค่า
-    TreeFiltered: 'Filtered tree.'
+    TreeFiltered: 'แสดงรายการแบบ Tree ตามตัวกรองข้อมูล'
     TreeFilteredClear: ล้างค่าตัวกรองข้อมูล
   CMSMain_left.ss:
-    'APPLY FILTER': 'Apply Filter'
+    'APPLY FILTER': นำตัวกรองข้อมูลไปใช้งาน
     RESET: รีเซ็ต
   CMSPageAddController:
     MENUTITLE: เพิ่มหน้า
     ParentMode_child: อยู่ใต้หน้าอื่นๆ
-    ParentMode_top: 'Top level'
+    ParentMode_top: ระดับสูงสุด
   CMSPageEditController:
     MENUTITLE: แก้ไขหน้าเว็บ
   CMSPageHistoryController:
     COMPAREMODE: 'โหมดเปรียบเทียบ (เลือกสองรายการ)'
     COMPAREVERSIONS: เปรียบเทียบรุ่น
-    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
+    COMPARINGVERSION: 'กำลังเปรียบเทียบรุ่น {version1} และ {version2}.'
     MENUTITLE: ประวัติย้อนหลัง
     REVERTTOTHISVERSION: ย้อนกลับไปที่รุ่นนี้
     SHOWUNPUBLISHED: แสดงรุ่นที่ระงับการเผยแพร่ไว้
     SHOWVERSION: แสดงข้อมูลรุ่น
     VIEW: มุมมอง
-    VIEWINGVERSION: 'Currently viewing version {version}.'
+    VIEWINGVERSION: 'ขณะนี้กำลังเปิดดูในรุ่น {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: ผู้แต่ง
     NOTPUBLISHED: ยังไม่ได้เผยแพร่
@@ -226,28 +226,28 @@ th:
     DELETED: ถูกลบแล้ว
     PreviewButton: ดูตัวอย่าง
     SAVEDUP: บันทึกแล้ว
-    STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
+    STATUSPUBLISHEDSUCCESS: 'เผยแพร่ ''{title}'' เสร็จเรียบร้อยแล้ว'
     SearchResults: ผลการค้นหา
     VersionUnknown: ไม่ทราบ
   Permission:
     CMS_ACCESS_CATEGORY: 'การเข้าถึง CMS'
   Permissions:
-    CONTENT_CATEGORY: 'Content permissions'
-    PERMISSIONS_CATEGORY: 'Roles and access permissions'
+    CONTENT_CATEGORY: สิทธิ์อนุญาตของเนื้อหา
+    PERMISSIONS_CATEGORY: บทบาทและสิทธิ์อนุญาตการเข้าถึง
   RedirectorPage:
     DESCRIPTION: เปลี่ยนเส้นทางไปยังหน้าเว็บภายในอื่นๆ
     HASBEENSETUP: 'A redirector page has been set up without anywhere to redirect to.'
     HEADER: หน้าเว็บนี้จะเปลี่ยนเส้นทางผู้ใช้งานไปยังหน้าเว็บอื่นๆ
     OTHERURL: 'ที่อยู่ URL ของเว็บไซต์อื่นๆ'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: หน้าเว็บเปลี่ยนเส้นทาง
     REDIRECTTO: เปลี่ยนเส้นทางไปที่
     REDIRECTTOEXTERNAL: เว็บไซต์อื่นๆ
     REDIRECTTOPAGE: หน้าเว็บในเว็บไซต์ของคุณ
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: หน้าเว็บเปลี่ยนเส้นทาง
     YOURPAGE: หน้าเว็บที่อยู่บนเว็บไซต์ของคุณ
   ReportAdmin:
-    MENUTITLE: Reports
-    ReportTitle: Title
+    MENUTITLE: รายงาน
+    ReportTitle: หัวเรื่อง
   ReportAdminForm:
     FILTERBY: แสดงข้อมูลตาม
   SearchForm:
@@ -258,7 +258,7 @@ th:
     BROKENFILES: หน้าเว็บที่มีไฟล์เสีย
     BROKENLINKS: หน้าเว็บที่มีลิงค์เสีย
     BROKENREDIRECTORPAGES: เปลี่ยนเส้นทางหน้าเว็บที่ชี้ไปที่หน้าเว็บที่ถูกลบแล้ว
-    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
+    BROKENVIRTUALPAGES: หน้าเว็บจำลองชี้ไปที่หน้าเว็บที่ถูกลบทิ้งไปแล้ว
     BrokenLinksGroupTitle: รายงานลิงค์เสีย
     ContentGroupTitle: รายงานเกี่ยวกับเนื้อหา
     EMPTYPAGES: หน้าเว็บที่ยังไม่มีเนื้อหา
@@ -267,8 +267,8 @@ th:
     ParameterLiveCheckbox: ดูเว็บไซต์แบบสดๆ
     REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
-    ShareLink: 'Share link'
+    ShareInstructions: 'หากต้องการแชร์หน้าเว็บนี้, คัดลอกแล้วนำลิงก์ด้านล่างนี้ไปวาง'
+    ShareLink: ลิงก์ที่ต้องการแชร์
   SilverStripeNavigatorLinkl:
     CloseLink: ปิด
   SiteConfig:
@@ -285,7 +285,7 @@ th:
     TABMAIN: หน้าหลัก
     TAGLINEDEFAULT: 'your tagline here'
     THEME: ชุดธีม
-    TOPLEVELCREATE: 'Who can create pages in the root of the site?'
+    TOPLEVELCREATE: 'ใครบ้างที่สามารถสร้างหน้าเว็บที่ตำแหน่ง root ของเว็บไซต์ได้?'
     VIEWHEADER: 'ใครบ้่างที่สามารถเปิดดูหน้าเว็บบนเว็บไซต์นี้ได้?'
   SiteTree:
     ACCESSANYONE: ทุกคน
@@ -300,11 +300,11 @@ th:
     BUTTONCANCELDRAFTDESC: 'Delete your draft and revert to the currently published page'
     BUTTONSAVEPUBLISH: บันทึกและเผยแพร่
     BUTTONUNPUBLISH: ยังไม่ได้เผยแพร่
-    BUTTONUNPUBLISHDESC: 'Remove this page from the published site'
+    BUTTONUNPUBLISHDESC: ลบหน้าเว็บนี้ออกจากเว็บไซต์ที่เผยแพร่แล้ว
     CREATED: วันที่สร้าง
     Comments: ความคิดเห็น
     Content: เนื้อหา
-    DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
+    DEFAULTABOUTCONTENT: '<p>คุณสามารถใส่เนื้อหาของคุณเองลงไปในหน้านี้ได้ หรือลบหน้าดังกล่าวทิ้ง แล้วสร้างหน้าเว็บของคุณเองขึ้นมาใหม่ได้.<br /></p>'
     DEFAULTABOUTTITLE: เกี่ยวกับเรา
     DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
     DEFAULTCONTACTTITLE: ติดต่อเรา
@@ -312,25 +312,25 @@ th:
     DEFAULTHOMETITLE: หน้าแรก
     DELETEDPAGEHELP: หน้าเว็บไม่ได้ถูกเผยแพร่อีกต่อไปแล้ว
     DELETEDPAGESHORT: ถูกลบ
-    DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DEPENDENT_NOTE: 'หน้าเว็บต่อไปนี้อาศัยหน้าเว็บนี้เป็นตัวอ้างอิง ซึ่งได้แก่หน้าเว็บจำลอง, หน้าเว็บที่เปลี่ยนเส้นทาง, และหน้าเว็บที่มีลิงก์เนื้อหาอยู่ด้วย'
     DESCRIPTION: หน้าเนื้อหาทั่วไป
     DependtPageColumnLinkType: ชนิดของลิงค์
     DependtPageColumnURL: URL
     EDITANYONE: 'ทุกคนสามารถเข้าสู่ระบบของ CMS ได้ทั้งหมด'
     EDITHEADER: 'ใครสามารถแก้ไขหน้านี้ได้บ้าง?'
     EDITONLYTHESE: 'เฉพาะบุคคลเหล่านี้เท่านั้น (เลือกจากรายการ)'
-    EDITORGROUPS: 'Editor Groups'
+    EDITORGROUPS: กลุ่มของบรรณาธิการ
     EDIT_ALL_DESCRIPTION: แก้ไขหน้าเว็บใดก็ได้
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
-    Editors: 'Editors Groups'
+    Editors: กลุ่มของบรรณาธิการ
     HASBROKENLINKS: หน้าเว็บนี้มีลิงค์เสีย
     HTMLEDITORTITLE: เนื้อหา
     INHERIT: สืบทอดค่าจากหน้าเว็บต้นทาง
     LASTUPDATED: อัพเดทล่าสุด
-    LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
+    LINKCHANGENOTE: การเปลี่ยนลิงก์ของหน้าเว็บนี้จะส่งผลถึงลิงก์ต่างๆที่อยู่ในหน้าเว็บลูกด้วย
     MENUTITLE: 'Navigation label'
     METADESC: รายละเอียด
-    METAEXTRA: 'Custom Meta Tags'
+    METAEXTRA: 'Meta Tags แบบกำหนดเอง'
     METAKEYWORDS: คีย์เวิร์ด
     METATITLE: ชื่อ
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
@@ -339,30 +339,30 @@ th:
     PAGELOCATION: ตำแหน่งหน้าเว็บ
     PAGETITLE: ชื่อหน้าเว็บ
     PAGETYPE: 'ประเภท เอกสาร'
-    PARENTID: 'Parent page'
+    PARENTID: หน้าเว็บแม่
     PARENTTYPE: ตำแหน่งที่อยู่หน้าเวป
-    PARENTTYPE_ROOT: 'Top-level page'
-    PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
+    PARENTTYPE_ROOT: หน้าเว็บระดับสูงสุด
+    PARENTTYPE_SUBPAGE: หน้าเว็บย่อยที่อยู่ใต้หน้าเว็บแม่
     PERMISSION_GRANTACCESS_DESCRIPTION: การจัดการสิทธิ์การเข้าถึงเนื้อหา
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: Pages
+    PLURALNAME: หน้า
     PageTypNotAllowedOnRoot: 'ประเภทของหน้าเว็บ "{type}" ไม่ได้รับอนุญาตให้สามารถใช้งานได้ที่ตำแหน่ง root'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'หน้าเว็บถูกเผยแพร่แล้ว แต่ถูกลบออกจากฉบับร่างด้วยเช่นกัน'
     REMOVEDFROMDRAFTSHORT: ลบออกจากฉบับร่าง
-    REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
+    REMOVE_INSTALL_WARNING: 'คำเตือน: คุณควรลบไฟล์ install.php ออกหลังการติดตั้ง SilverStripe เพื่อความปลอดภัย'
     REORGANISE_DESCRIPTION: เปลี่ยนโครงสร้างเว็บไซต์
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'แสดงในเมนู?'
     SHOWINSEARCH: 'แสดงในผลลัพธ์ของการค้นหาหรือไม่?'
-    SINGULARNAME: Page
+    SINGULARNAME: หน้า
     TABBEHAVIOUR: พฤติกรรม
     TABCONTENT: เนื้อหา
     TABDEPENDENT: 'Dependent pages'
     TOPLEVEL: 'เนื้อหาเว็บไซต์ (ระดับสูงสุด)'
-    TOPLEVELCREATORGROUPS: 'Top level creators'
+    TOPLEVELCREATORGROUPS: ผู้สร้างระดับสูงสุด
     URLSegment: 'ส่วนการจัดการ URL'
-    VIEWERGROUPS: 'Viewer Groups'
+    VIEWERGROUPS: กลุ่มผู้ชม
     VIEW_ALL_DESCRIPTION: เปิดดูหน้าเว็บใดก็ได้
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
     VIEW_DRAFT_CONTENT: เปิดดูเนื้อหาฉบับร่าง
@@ -370,9 +370,9 @@ th:
     Viewers: กลุ่มผู้เข้าชม
     Visibility: สามารถมองเห็นได้
     has_one_Parent: หน้าเว็บต้นทาง
-    many_many_BackLinkTracking: 'Backlink Tracking'
-    many_many_ImageTracking: 'Image Tracking'
-    many_many_LinkTracking: 'Link Tracking'
+    many_many_BackLinkTracking: แกะรอยลิงก์ย้อนกลับ
+    many_many_ImageTracking: แกะรอยรูปภาพ
+    many_many_LinkTracking: แกะรอยลิงก์
   SiteTreeURLSegmentField:
     HelpChars: ' Special characters are automatically converted or removed.'
   StaticExporter:
