@@ -131,36 +131,36 @@ sr:
     VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
-    AUTHOR: Author
-    NOTPUBLISHED: 'Not published'
-    PUBLISHER: Publisher
-    UNKNOWN: Unknown
-    WHEN: When
+    AUTHOR: Autor
+    NOTPUBLISHED: Neobjavljeno
+    PUBLISHER: Izdavač
+    UNKNOWN: Nepoznato
+    WHEN: Datum
   CMSPageSettingsController:
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: 'Izmeni stranicu'
   CMSPagesController:
-    GalleryView: 'Gallery View'
-    ListView: 'List View'
-    MENUTITLE: Pages
-    TreeView: 'Tree View'
+    GalleryView: 'Prikaz galerije'
+    ListView: 'Prikaz liste'
+    MENUTITLE: Stranice
+    TreeView: 'Prikaz drveta'
   CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: 'Drag''n''drop'
     MULTISELECT: Multi-selection
   CMSPagesController_Tools.ss:
     FILTER: Filter
   CMSSearch:
-    FILTERDATEFROM: From
-    FILTERDATEHEADING: Date
-    FILTERDATETO: To
-    FILTERLABELTEXT: Content
+    FILTERDATEFROM: Od
+    FILTERDATEHEADING: Datum
+    FILTERDATETO: Za
+    FILTERLABELTEXT: Sadržaj
   CMSSettingsController:
-    MENUTITLE: Settings
+    MENUTITLE: Podešavanja
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Changed pages'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'All pages, including deleted'
   CMSSiteTreeFilter_Search:
-    Title: 'All pages'
+    Title: 'Sve stranice'
   ContentControl:
     NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
   ContentController:
@@ -224,11 +224,11 @@ sr:
     UploadFilesButton: Upload
   LeftAndMain:
     DELETED: Deleted.
-    PreviewButton: Preview
+    PreviewButton: 'Opšti pregled'
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
-    SearchResults: 'Search Results'
-    VersionUnknown: Unknown
+    SearchResults: 'Rezultati pretrage'
+    VersionUnknown: Nepoznato
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
   Permissions:
@@ -251,9 +251,9 @@ sr:
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
-    GO: Go
+    GO: Pokreni
     SEARCH: Претрага
-    SearchResults: 'Search Results'
+    SearchResults: 'Rezultati pretrage'
   SideReport:
     BROKENFILES: 'Pages with broken files'
     BROKENLINKS: 'Pages with broken links'
