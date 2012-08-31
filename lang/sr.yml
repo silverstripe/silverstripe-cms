@@ -121,14 +121,14 @@ sr:
   CMSPageEditController:
     MENUTITLE: 'Edit Page'
   CMSPageHistoryController:
-    COMPAREMODE: 'Compare mode (select two)'
-    COMPAREVERSIONS: 'Compare Versions'
+    COMPAREMODE: 'Uporedni metod (izaberi dva)'
+    COMPAREVERSIONS: 'Uporediti verzije'
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
     MENUTITLE: History
-    REVERTTOTHISVERSION: 'Revert to this version'
-    SHOWUNPUBLISHED: 'Show unpublished versions'
-    SHOWVERSION: 'Show Version'
-    VIEW: view
+    REVERTTOTHISVERSION: 'Vrati se na ovu verziju'
+    SHOWUNPUBLISHED: 'Pokaži neobjavljene verzije'
+    SHOWVERSION: 'Pokaži verziju'
+    VIEW: pregled
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Autor
@@ -158,11 +158,11 @@ sr:
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Changed pages'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'All pages, including deleted'
+    Title: 'Sve stranice, uključujući i izbrisane'
   CMSSiteTreeFilter_Search:
     Title: 'Sve stranice'
   ContentControl:
-    NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
+    NOTEWONTBESHOWN: 'Primedba: ova poruka neće biti prikazana vašim posetiocima'
   ContentController:
     ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Archived site from'
@@ -217,11 +217,11 @@ sr:
     504: '504 - Gateway Timeout'
     505: '505 - HTTP верзија није подржана'
   Folder:
-    AddFolderButton: 'Add folder'
+    AddFolderButton: 'Dodaj direktorijum'
     DELETEUNUSEDTHUMBNAILS: 'Обриши некоришћене умањене приказе'
-    UNUSEDFILESTITLE: 'Unused files'
-    UNUSEDTHUMBNAILSTITLE: 'Unused thumbnails'
-    UploadFilesButton: Upload
+    UNUSEDFILESTITLE: 'Nekorišćeni fajlovi'
+    UNUSEDTHUMBNAILSTITLE: 'Nekorišćeni umanjeni prikazi'
+    UploadFilesButton: Postavi
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: 'Opšti pregled'
@@ -235,7 +235,7 @@ sr:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
   RedirectorPage:
-    DESCRIPTION: 'Redirects to a different internal page'
+    DESCRIPTION: 'Preusmerava na drugu stranicu'
     HASBEENSETUP: 'Страница за преусмеравање је постављена без параметра за преусмеравање'
     HEADER: 'Ова страна ће преусмерити кориснике на другу страну'
     OTHERURL: 'URL другог сајта'
@@ -267,10 +267,10 @@ sr:
     ParameterLiveCheckbox: 'Check live site'
     REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
-    ShareLink: 'Share link'
+    ShareInstructions: 'Da bi ste  podelili link ka ovoj stranici, kopirajte i dodajte link ispod.'
+    ShareLink: 'Podeliti link'
   SilverStripeNavigatorLinkl:
-    CloseLink: Close
+    CloseLink: Zatvoriti
   SiteConfig:
     DEFAULTTHEME: '(Use default theme)'
     EDITHEADER: 'Who can edit pages on this site?'
@@ -301,8 +301,8 @@ sr:
     BUTTONSAVEPUBLISH: 'Сачувај и објави'
     BUTTONUNPUBLISH: 'Повуци објављивање'
     BUTTONUNPUBLISHDESC: 'Уклони ову страну са живог сајта'
-    CREATED: 'Date Created'
-    Comments: Comments
+    CREATED: 'Datum kreiranja'
+    Comments: Komentari
     Content: Content
     DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
     DEFAULTABOUTTITLE: 'О нама'
@@ -312,22 +312,22 @@ sr:
     DEFAULTHOMETITLE: Почетна
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Deleted
-    DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DEPENDENT_NOTE: 'Sledeće stranice oslanjaju se na ovu stranicu. Ovo podrazumeva virtuelne stranice, preusmeravajuće stranice i stranice sa linkovima sadržaja.'
     DESCRIPTION: 'Generic content page'
-    DependtPageColumnLinkType: 'Link type'
+    DependtPageColumnLinkType: 'Vrsta linka'
     DependtPageColumnURL: URL
     EDITANYONE: 'Свако ко може да се пријави на CMS'
     EDITHEADER: 'Ко може да мења ову страницу у CMS-у?'
     EDITONLYTHESE: 'Само ови људи (изаберите са списка)'
     EDITORGROUPS: 'Editor Groups'
     EDIT_ALL_DESCRIPTION: 'Edit any page'
-    EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
-    Editors: 'Editors Groups'
+    EDIT_ALL_HELP: 'Mogućnost menjanja bilo koje stranice na sajtu, bez obzira na podešavanja unutar kartice "Pristup". Zahteva dozvolu "Pristup odeljku ‚Stranice‚"'
+    Editors: 'Grupe editora'
     HASBROKENLINKS: 'Ова страна има неважеће линкове.'
     HTMLEDITORTITLE: Садржај
-    INHERIT: 'Inherit from parent page'
+    INHERIT: 'Naslediti od izvorne strane'
     LASTUPDATED: 'Last Updated'
-    LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
+    LINKCHANGENOTE: 'Promena linka ove stranice će uticati na linkove svih pod-stranica takođe.'
     MENUTITLE: 'Натпис за навигацију'
     METADESC: Опис
     METAEXTRA: 'Прилагођени мета тагови'
@@ -336,20 +336,20 @@ sr:
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
     MetadataToggle: Metadata
-    PAGELOCATION: 'Page location'
+    PAGELOCATION: 'Lokacija stranice'
     PAGETITLE: 'Име стране'
     PAGETYPE: 'Тип стране'
-    PARENTID: 'Parent page'
-    PARENTTYPE: 'Page location'
+    PARENTID: 'Izvorna strana'
+    PARENTTYPE: 'Lokacija stranice'
     PARENTTYPE_ROOT: 'Top-level page'
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
-    PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Promeni dozvole pristupu sadržaju'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
     PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
-    REMOVEDFROMDRAFTSHORT: 'Removed from draft'
+    REMOVEDFROMDRAFTSHORT: 'Izbrisano sa nacrta'
     REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
     REORGANISE_DESCRIPTION: 'Change site structure'
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
@@ -361,12 +361,12 @@ sr:
     TABDEPENDENT: 'Dependent pages'
     TOPLEVEL: 'Садржај сајта (главни ниво)'
     TOPLEVELCREATORGROUPS: 'Top level creators'
-    URLSegment: 'URL Segment'
-    VIEWERGROUPS: 'Viewer Groups'
+    URLSegment: 'Segment URL adrese'
+    VIEWERGROUPS: 'Grupe pregledača'
     VIEW_ALL_DESCRIPTION: 'View any page'
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
     VIEW_DRAFT_CONTENT: 'View draft content'
-    VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
+    VIEW_DRAFT_CONTENT_HELP: 'Primenjuje se na gledanje stranica van CMS-a u nacrtnom modu. Korisno za spoljne sradnike bez pristupa CMS-u.'
     Viewers: 'Viewers Groups'
     Visibility: Visibility
     has_one_Parent: 'Parent Page'
@@ -400,9 +400,9 @@ sr:
     HAVEASKED: 'Замољени сте да погледате садржај овог сајта'
   VirtualPage:
     CHOOSE: 'Изаберите страну коју желите да повежете'
-    DESCRIPTION: 'Displays the content of another page'
+    DESCRIPTION: 'Prikazuje sadržaj druge stranice'
     EDITCONTENT: 'кликните овде да бисте променили садржај'
     HEADER: 'Ово је виртуална страна'
-    PLURALNAME: 'Virtual Pags'
+    PLURALNAME: 'Virtuelne stranice'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
-    SINGULARNAME: 'Virtual Page'
+    SINGULARNAME: 'Virtuelna strana'
