@@ -13,7 +13,7 @@ de:
     CurrentFolderOnly: 'Auf den aktuellen Ordner beschränken?'
     DetailsView: Details
     FILES: Dateien
-    FILESYSTEMSYNC: 'Sync files'
+    FILESYSTEMSYNC: 'Dateien synchronisieren'
     FILESYSTEMSYNCTITLE: 'Aktualisiere die CMS Datenbankeinträge zu Dateien auf dem Server. Dies ist dann hilfreich, wenn Dateien ausserhalb des CMS hochgeladen wurden, z.B. mit FTP.'
     FROMTHEINTERNET: 'Aus dem Internet'
     FROMYOURCOMPUTER: 'Von Ihrem Computer'
@@ -86,7 +86,7 @@ de:
     EditTree: 'Seitenbaum bearbeiten'
     ListFiltered: 'Gefilterte Liste'
     MENUTITLE: 'Seite bearbeiten'
-    NEWPAGE: 'New {pagetype}'
+    NEWPAGE: 'Neue {pagetype}'
     PAGENOTEXISTS: 'Diese Seite existiert nicht'
     PAGES: Seiten
     PAGETYPEANYOPT: Alle
@@ -247,7 +247,7 @@ de:
     YOURPAGE: 'Seite auf Ihrer Website'
   ReportAdmin:
     MENUTITLE: Berichte
-    ReportTitle: Title
+    ReportTitle: Titel
   ReportAdminForm:
     FILTERBY: 'Filtern nach'
   SearchForm:
@@ -268,7 +268,7 @@ de:
     REPEMPTY: 'Der Bericht ''{title}'' ist leer.'
   SilverStripeNavigatorLink:
     ShareInstructions: 'Kopieren Sie den folgenden Link um diesen jemanden mitzuteilen.'
-    ShareLink: 'Link mitteilen'
+    ShareLink: 'Link teilen'
   SilverStripeNavigatorLinkl:
     CloseLink: schließen
   SiteConfig:
@@ -290,7 +290,7 @@ de:
   SiteTree:
     ACCESSANYONE: Jeder
     ACCESSHEADER: 'Wer kann diese Seite auf meiner Website ansehen?'
-    ACCESSLOGGEDIN: 'eingeloggte Nutzer'
+    ACCESSLOGGEDIN: 'Angemeldete Benutzer'
     ACCESSONLYTHESE: 'Nur folgende Personen (aus der der Liste wählen)'
     ADDEDTODRAFTHELP: 'Die Seite wurde noch nicht veröffentlicht'
     ADDEDTODRAFTSHORT: Entwurf
@@ -322,7 +322,7 @@ de:
     EDITORGROUPS: Bearbeitergruppen
     EDIT_ALL_DESCRIPTION: 'Kann beliebige Seiten bearbeiten'
     EDIT_ALL_HELP: 'Kann beliebige Seiten auf der Site bearbeiten; seitenspezifische Sicherheitseinstellungen werden ignoriert.'
-    Editors: 'Editor Gruppen'
+    Editors: 'Bearbeiter Gruppen'
     HASBROKENLINKS: 'Diese Seite enthält ungültige Verweise.'
     HTMLEDITORTITLE: Inhalt
     INHERIT: 'Übernehmen von der übergeordneten Seite'
@@ -342,10 +342,10 @@ de:
     PARENTID: 'Übergeordnete Seite'
     PARENTTYPE: Seitenposition
     PARENTTYPE_ROOT: 'Seite auf der obersten Ebene'
-    PARENTTYPE_SUBPAGE: 'Seite unterhalb einer übergeordneten Seite (wählen Sie unten)'
+    PARENTTYPE_SUBPAGE: 'Seite unterhalb einer übergeordneten Seite'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Zugriffsrechte für Inhalte verwalten'
     PERMISSION_GRANTACCESS_HELP: 'Einstellung von seitenspezifischen Zugriffsbeschränkungen im Bereich "Seiteninhalt" erlauben'
-    PLURALNAME: Pages
+    PLURALNAME: Seite(n)
     PageTypNotAllowedOnRoot: 'Der Seitentyp "{type}" darf nicht auf der Grundebene verwendet werden.'
     PageTypeNotAllowed: 'Der Seitentyp "{type}" kann nicht als Kind dieser übergeordneten Seite verwendet werden'
     REMOVEDFROMDRAFTHELP: 'Die Seite ist veröffentlicht, wurde aber von der Entwurf Seite gelöscht.'
@@ -355,7 +355,7 @@ de:
     REORGANISE_HELP: 'Seiten im Seitenbaum per Drag&Drop sortieren.'
     SHOWINMENUS: 'In Menüs anzeigen?'
     SHOWINSEARCH: 'In der Suche anzeigen?'
-    SINGULARNAME: Page
+    SINGULARNAME: 'Seite bearbeiten'
     TABBEHAVIOUR: Verhalten
     TABCONTENT: Inhalt
     TABDEPENDENT: 'Abhängige Seiten'
