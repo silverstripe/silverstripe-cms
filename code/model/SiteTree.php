@@ -1511,7 +1511,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			// deconstructs any inheritance trees already.
 			$allowed = $parent->allowedChildren();
 			$subject = ($this instanceof VirtualPage) ? $this->CopyContentFrom() : $this;
-			if($subject->ID && !in_array($subject->ClassName, $allowed)) {
+			if(!in_array($subject->ClassName, $allowed)) {
 				
 				$result->error(
 					_t(
