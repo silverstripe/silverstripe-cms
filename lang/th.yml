@@ -185,9 +185,9 @@ th:
     VIEWPAGEIN: 'เปิดดูหน้าเว็บใน:'
   ErrorPage:
     CODE: รหัสข้อผิดพลาด
-    DEFAULTERRORPAGECONTENT: '<p>Sorry, it seems you were trying to access a page that doesn''t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>'
+    DEFAULTERRORPAGECONTENT: '<p>ขออภัย, แต่คุณดูเหมือนกำลังพยายามที่จะเข้าถึงหน้าเว็บที่ไม่มีอยู่ในระบบ.</p><p>กรุณาตรวจสอบการสะกดคำของ URL ของหน้าเว็บที่คุณพยายามจะเข้าถึงแล้วลองใหม่อีกครั้ง.</p>'
     DEFAULTERRORPAGETITLE: ไม่พบหน้าที่ต้องการ
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>ขออภัย, เกิดข้อผิดพลาดบางประการในการจัดการตามคำร้องขอของคุณ</p>'
     DEFAULTSERVERERRORPAGETITLE: เซิร์ฟเวอร์เกิดข้อผิดพลาด
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'เกิดข้อผิดพลาดในการเปิดไฟล์ "{filename}" เพื่อเขียนข้อมูล. กรุณาตรวจสอบสิทธิ์.'
@@ -297,7 +297,7 @@ th:
     ALLOWCOMMENTS: 'อนุญาตให้แสดงความเห็นในหน้านีหรือไม่?'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: ยกเลิกการเปลี่ยนแปลงในฉบับร่าง
-    BUTTONCANCELDRAFTDESC: 'Delete your draft and revert to the currently published page'
+    BUTTONCANCELDRAFTDESC: ลบฉบับร่างของคุณแล้วย้อนกลับไปใช้หน้าเว็บที่เผยแพร่อยู่ในขณะนี้
     BUTTONSAVEPUBLISH: บันทึกและเผยแพร่
     BUTTONUNPUBLISH: ยังไม่ได้เผยแพร่
     BUTTONUNPUBLISHDESC: ลบหน้าเว็บนี้ออกจากเว็บไซต์ที่เผยแพร่แล้ว
@@ -306,9 +306,9 @@ th:
     Content: เนื้อหา
     DEFAULTABOUTCONTENT: '<p>คุณสามารถใส่เนื้อหาของคุณเองลงไปในหน้านี้ได้ หรือลบหน้าดังกล่าวทิ้ง แล้วสร้างหน้าเว็บของคุณเองขึ้นมาใหม่ได้.<br /></p>'
     DEFAULTABOUTTITLE: เกี่ยวกับเรา
-    DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
+    DEFAULTCONTACTCONTENT: '<p>คุณสามารถใส่เนื้อหาของคุณลงไปในหน้าเว็บนี้ได้, หรือลบเนื้อหาออกแล้วสร้างหน้าเว็บที่เป็นของคุณเองใหม่ได้.<br /></p>'
     DEFAULTCONTACTTITLE: ติดต่อเรา
-    DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
+    DEFAULTHOMECONTENT: '<p>ยินดีต้อนรับเข้าสู่ SilverStripe! นี่คือคือหน้าแรกที่กำหนดไว้เริ่มต้น. คุณสามารถแก้ไขหน้าเว็บนี้ได้ด้วยการเปิด <a href="admin/">CMS</a>. คุณสามารถเข้าไปที่ <a href="http://doc.silverstripe.org">เอกสารคู่มือประกอบการใช้งานสำหรับนักพัฒนา</a>, หรือเข้าไปที่<a href="http://doc.silverstripe.org/doku.php?id=tutorials">เพื่อศึกษาบทเรียนต่างๆได้.</a></p>'
     DEFAULTHOMETITLE: หน้าแรก
     DELETEDPAGEHELP: หน้าเว็บไม่ได้ถูกเผยแพร่อีกต่อไปแล้ว
     DELETEDPAGESHORT: ถูกลบ
@@ -321,7 +321,7 @@ th:
     EDITONLYTHESE: 'เฉพาะบุคคลเหล่านี้เท่านั้น (เลือกจากรายการ)'
     EDITORGROUPS: กลุ่มของบรรณาธิการ
     EDIT_ALL_DESCRIPTION: แก้ไขหน้าเว็บใดก็ได้
-    EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
+    EDIT_ALL_HELP: 'ความสามารถในการแก้ไขหน้าเว็บใดๆในเว็บไซต์, โดยไม่ต้องคำนึงถึงการตั้งค่าที่อยู่ในส่วนของแท็บการเข้าถึง, จำเป็นต้องได้รับสิทธิ์อนุญาติ "เข้าถึงส่วนของ''หน้าเว็บ''"'
     Editors: กลุ่มของบรรณาธิการ
     HASBROKENLINKS: หน้าเว็บนี้มีลิงค์เสีย
     HTMLEDITORTITLE: เนื้อหา
@@ -344,7 +344,7 @@ th:
     PARENTTYPE_ROOT: หน้าเว็บระดับสูงสุด
     PARENTTYPE_SUBPAGE: หน้าเว็บย่อยที่อยู่ใต้หน้าเว็บแม่
     PERMISSION_GRANTACCESS_DESCRIPTION: การจัดการสิทธิ์การเข้าถึงเนื้อหา
-    PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
+    PERMISSION_GRANTACCESS_HELP: 'อนุญาตให้มีการตั้งค่าข้อจำกัดในการเข้าถึงหน้าเว็บเฉพาะหน้าได้จากส่วนของ "หน้าเว็บ"'
     PLURALNAME: หน้า
     PageTypNotAllowedOnRoot: 'ประเภทของหน้าเว็บ "{type}" ไม่ได้รับอนุญาตให้สามารถใช้งานได้ที่ตำแหน่ง root'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
@@ -352,7 +352,7 @@ th:
     REMOVEDFROMDRAFTSHORT: ลบออกจากฉบับร่าง
     REMOVE_INSTALL_WARNING: 'คำเตือน: คุณควรลบไฟล์ install.php ออกหลังการติดตั้ง SilverStripe เพื่อความปลอดภัย'
     REORGANISE_DESCRIPTION: เปลี่ยนโครงสร้างเว็บไซต์
-    REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
+    REORGANISE_HELP: จัดเรียงหน้าเว็บที่อยู่ในแผนผังเว็บไซต์แบบต้นไม้โดยการลากและวาง
     SHOWINMENUS: 'แสดงในเมนู?'
     SHOWINSEARCH: 'แสดงในผลลัพธ์ของการค้นหาหรือไม่?'
     SINGULARNAME: หน้า
@@ -366,7 +366,7 @@ th:
     VIEW_ALL_DESCRIPTION: เปิดดูหน้าเว็บใดก็ได้
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
     VIEW_DRAFT_CONTENT: เปิดดูเนื้อหาฉบับร่าง
-    VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
+    VIEW_DRAFT_CONTENT_HELP: 'นำไปใช้ในการดูหน้าเว็บที่อยู่ด้านนอก CMS ในโหมดฉบับร่าง มีประโยชน์สำหรับการทำงานร่วมกันจากภายนอก โดยไม่จำเป็นต้องเข้าถึง CMS'
     Viewers: กลุ่มผู้เข้าชม
     Visibility: สามารถมองเห็นได้
     has_one_Parent: หน้าเว็บต้นทาง
