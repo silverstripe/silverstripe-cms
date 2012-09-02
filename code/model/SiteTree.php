@@ -1803,7 +1803,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if($this->HasBrokenLink || $this->HasBrokenFile) {
 			$statusMessage[] = _t('SiteTree.HASBROKENLINKS', "This page has broken links.");
 		}
-		
+
 		$dependentNote = '';
 		$dependentTable = new LiteralField('DependentNote', '<p></p>');
 		
@@ -1876,6 +1876,20 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		else $fields->removeFieldFromTab('Root', 'Dependent');
 		
 		$tabMain->setTitle(_t('SiteTree.TABCONTENT', "Main Content"));
+
+		if($this->ObsoleteClassName) {
+			$obsoleteWarning = _t(
+				'SiteTree.OBSOLETECLASS',
+				"This page is of obsolete type {type}. Saving will reset it's type and you may lose data",
+				array('type' => $this->ObsoleteClassName)
+			);
+
+			$fields->addFieldToTab(
+				"Root.Main",
+				new LiteralField("ObsoleteWarningHeader", "<p class=\"message warning\">$obsoleteWarning</p>"),
+				"Title"
+			);
+		}
 
 		if(file_exists(BASE_PATH . '/install.php')) {
 			$fields->addFieldToTab("Root.Main", new LiteralField("InstallWarningHeader", 
