@@ -41,11 +41,6 @@
 						if(allowedChildren.hasOwnProperty('allowedchildren-0')) {
 							menuitems['addsubpage'] = {
 									'label': ss.i18n._t('Tree.AddSubPage'),
-									'action': function(obj) {
-										$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
-											self.data('urlAddpage'), id, 'Page'
-										));
-									},
 									'submenu': allowedChildren
 								};
 						}				
