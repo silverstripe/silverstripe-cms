@@ -32,7 +32,7 @@ th:
   AssetAdmin_left.ss:
     GO: ไป
   AssetTableField:
-    BACKLINKCOUNT: 'Used on:'
+    BACKLINKCOUNT: 'ถูกใช้งานเมื่อ:'
     PAGES: หน้า
   BackLink_Button.ss:
     Back: ย้อนกลับ
@@ -61,8 +61,8 @@ th:
   CMSAddPageController:
     Title: เพิ่มหน้า
   CMSBatchActions:
-    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
-    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
+    DELETED_DRAFT_PAGES: 'ลบ %d หน้าจากเว็บไซต์ฉบับร่างแล้ว, ล้มเหลว %d'
+    DELETED_PAGES: 'ลบ %d หน้าจากเว็บไซต์ที่เผยแพร่อยู่แล้ว ล้มเหลว %d'
     DELETE_DRAFT_PAGES: ลบออกจากเว็บไซต์ฉบับร่าง
     DELETE_PAGES: ลบออกจากเว็บไซต์ที่เผยแพร่อยู่
     PUBLISHED_PAGES: 'เผยแพร่แล้ว %d หน้า, ล้วเหลว %d'
