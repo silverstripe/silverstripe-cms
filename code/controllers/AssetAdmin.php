@@ -336,6 +336,7 @@ JS
 			'mov' => _t('AssetAdmin.AppCategoryVideo', 'Video'),
 			'flash' => _t('AssetAdmin.AppCategoryFlash', 'Flash', 'The fileformat'),
 			'zip' => _t('AssetAdmin.AppCategoryArchive', 'Archive', 'A collection of files'),
+			'doc' => _t('AssetAdmin.AppCategoryDocument', 'Document')
 		);
 		$context->addField(
 			$typeDropdown = new DropdownField(
