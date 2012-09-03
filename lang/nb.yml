@@ -301,7 +301,7 @@ nb:
     BUTTONSAVEPUBLISH: 'Lagre & Publiser'
     BUTTONUNPUBLISH: Av-publiser
     BUTTONUNPUBLISHDESC: 'Fjern denne siden fra det publiserte nettstedet'
-    CREATED: 'Date Created'
+    CREATED: 'Kreasjons dato'
     Comments: Kommentarer
     Content: Innhold
     DEFAULTABOUTCONTENT: '<p>Du kan fylle denne siden med ditt innhold, eller du kan slette siden og lage dine egne sider.<br /></p>'
@@ -350,7 +350,7 @@ nb:
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
     REMOVEDFROMDRAFTSHORT: 'Fjernet fra utkast'
-    REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
+    REMOVE_INSTALL_WARNING: 'Advarsel: du burde fjerne installerte.php fra silverstripe for sikkerhetskyld'
     REORGANISE_DESCRIPTION: 'Endre nettstedets struktur'
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'Vis i menyer?'
@@ -362,7 +362,7 @@ nb:
     TOPLEVEL: 'Nettstedets Innhold (øverste nivå)'
     TOPLEVELCREATORGROUPS: 'Top level creators'
     URLSegment: 'URL Segment'
-    VIEWERGROUPS: 'Viewer Groups'
+    VIEWERGROUPS: 'Publikums grupper'
     VIEW_ALL_DESCRIPTION: 'View any page'
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
     VIEW_DRAFT_CONTENT: 'Se innhold i utkast'

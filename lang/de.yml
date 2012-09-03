@@ -191,8 +191,8 @@ de:
     DEFAULTSERVERERRORPAGETITLE: Serverfehler
     DESCRIPTION: 'Spezieller Inhalt für andere Fehlerfälle (z.B. "Seite nicht gefunden")'
     ERRORFILEPROBLEM: 'Die Datei "{filename}" konnte nicht zum Schreiben geöffnet werden. Bitte überprüfen Sie die Dateiberechtigungen.'
-    PLURALNAME: Fehlerseiten
-    SINGULARNAME: Fehlerseite
+    PLURALNAME: 'Fehler Seiten'
+    SINGULARNAME: 'Fehler Seite'
     400: '400 - Fehlerhafter Zugriff'
     401: '401 - Unerlaubter Zugriff'
     403: '403 - Verbotener Zugriff'
@@ -345,7 +345,7 @@ de:
     PARENTTYPE_SUBPAGE: 'Seite unterhalb einer übergeordneten Seite'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Zugriffsrechte für Inhalte verwalten'
     PERMISSION_GRANTACCESS_HELP: 'Einstellung von seitenspezifischen Zugriffsbeschränkungen im Bereich "Seiteninhalt" erlauben'
-    PLURALNAME: Seite(n)
+    PLURALNAME: Seiten
     PageTypNotAllowedOnRoot: 'Der Seitentyp "{type}" darf nicht auf der Grundebene verwendet werden.'
     PageTypeNotAllowed: 'Der Seitentyp "{type}" kann nicht als Kind dieser übergeordneten Seite verwendet werden'
     REMOVEDFROMDRAFTHELP: 'Die Seite ist veröffentlicht, wurde aber von der Entwurf Seite gelöscht.'
@@ -355,7 +355,7 @@ de:
     REORGANISE_HELP: 'Seiten im Seitenbaum per Drag&Drop sortieren.'
     SHOWINMENUS: 'In Menüs anzeigen?'
     SHOWINSEARCH: 'In der Suche anzeigen?'
-    SINGULARNAME: 'Seite bearbeiten'
+    SINGULARNAME: Seite
     TABBEHAVIOUR: Verhalten
     TABCONTENT: Inhalt
     TABDEPENDENT: 'Abhängige Seiten'
