@@ -226,8 +226,8 @@ en_GB:
     PreviewButton: Preview
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
-    SearchResults: Søgeresultater
-    VersionUnknown: Ukendt
+    SearchResults: 'Search results'
+    VersionUnknown: 'Unknown version'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
   Permissions:
