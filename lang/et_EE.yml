@@ -12,7 +12,7 @@ et_EE:
     CREATED: Kuupäev
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
-    FILES: Files
+    FILES: Failid
     FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: Internetist
@@ -22,7 +22,7 @@ et_EE:
     MENUTITLE: Failid
     NEWFOLDER: 'Uus kaust'
     SIZE: Suurus
-    THUMBSDELETED: '{count} unused thumbnails have been deleted'
+    THUMBSDELETED: '{count} kasutamata pisipilti on kustutatud'
     TreeView: 'Tree View'
     Upload: 'Laadi üles'
   AssetAdmin_DeleteBatchAction:
@@ -121,28 +121,28 @@ et_EE:
   CMSPageEditController:
     MENUTITLE: 'Edit Page'
   CMSPageHistoryController:
-    COMPAREMODE: 'Compare mode (select two)'
-    COMPAREVERSIONS: 'Compare Versions'
+    COMPAREMODE: 'Võrdlus reziim (vali kaks)'
+    COMPAREVERSIONS: 'Võrdle versioone'
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
     MENUTITLE: Ajalugu
-    REVERTTOTHISVERSION: 'Revert to this version'
+    REVERTTOTHISVERSION: 'Taasta valitud versioon'
     SHOWUNPUBLISHED: 'Näita ka avaldamata versioone'
     SHOWVERSION: 'Show Version'
-    VIEW: view
+    VIEW: vaade
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Autor
-    NOTPUBLISHED: 'Not published'
-    PUBLISHER: Publisher
+    NOTPUBLISHED: Avaldamata
+    PUBLISHER: Avaldaja
     UNKNOWN: Teadmata
     WHEN: Millal
   CMSPageSettingsController:
     MENUTITLE: 'Muuda lehte'
   CMSPagesController:
-    GalleryView: 'Gallery View'
-    ListView: 'List View'
+    GalleryView: 'Galerii vaade'
+    ListView: 'Nimekirja vaade'
     MENUTITLE: Leheküljed
-    TreeView: 'Tree View'
+    TreeView: 'Puu vaade'
   CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: 'Drag''n''drop'
     MULTISELECT: Multi-selection
@@ -293,7 +293,7 @@ et_EE:
     ACCESSLOGGEDIN: 'Sisse logitud kasutajad'
     ACCESSONLYTHESE: 'Ainult järgnevad isikud (vali nimekirjast)'
     ADDEDTODRAFTHELP: 'Page has not been published yet'
-    ADDEDTODRAFTSHORT: Draft
+    ADDEDTODRAFTSHORT: Mustand
     ALLOWCOMMENTS: 'Luba kommentaare sellel lehel?'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: 'Tühista visandi muudatused'
@@ -346,9 +346,9 @@ et_EE:
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Kontroli millised gruppid saavad ligipääsu ja võimaluse muuta mingeid lehti'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
     PLURALNAME: Pages
-    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
+    PageTypNotAllowedOnRoot: '"{type} tüüpi lehekülg ei ole juurkataloogi tasemel lubatud'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
-    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
+    REMOVEDFROMDRAFTHELP: 'Lehekülg on avalikustatud, kuid mustand on kustutatud'
     REMOVEDFROMDRAFTSHORT: 'Removed from draft'
     REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
     REORGANISE_DESCRIPTION: 'Change site structure'
