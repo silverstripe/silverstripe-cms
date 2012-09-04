@@ -247,8 +247,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	
 	function SearchForm() {
 		// get all page types in a dropdown-compatible format
-		$pageTypes = SiteTree::page_type_classes(); 
-		$pageTypes = array_combine($pageTypes, $pageTypes);
+		$pageTypeClasses = SiteTree::page_type_classes(); 
+		$pageTypes = array();
+		foreach ($pageTypeClasses as $pageTypeClass) {
+			$pageTypes[$pageTypeClass] = _t($pageTypeClass.'.SINGULARNAME', $pageTypeClass);
+		}
 		asort($pageTypes);
 		
 		// get all filter instances
