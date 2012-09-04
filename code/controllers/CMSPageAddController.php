@@ -101,8 +101,10 @@ class CMSPageAddController extends CMSPageEditController {
 			if($page) $parentID = $page->ID;
 		}
 
-		if(is_numeric($parentID) && $parentID > 0) $parentObj = DataObject::get_by_id("SiteTree", $parentID);
-		else $parentObj = null;
+		$parentObj = null;
+		if($data['ParentModeField'] == 'child' and is_numeric($parentID) && $parentID > 0) {
+			$parentObj = DataObject::get_by_id("SiteTree", $parentID);
+		}
 		
 		if(!$parentObj || !$parentObj->ID) $parentID = 0;
 

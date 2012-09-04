@@ -6,10 +6,7 @@
 		 */
 		$(".cms-add-form .parent-mode :input").entwine({
 			onclick: function(e) {
-				if(this.val() == 'top') {
-					var parentField = this.closest('form').find('#ParentID .TreeDropdownField');
-					parentField.setValue('');
-				}
+				this.closest('.cms-add-form').updateTypeList();
 			}
 		});
 		
@@ -19,6 +16,7 @@
 				this.find('#ParentID .TreeDropdownField').bind('change', function() {
 					self.updateTypeList();
 				});
+
 				this.updateTypeList();
 				this._super();
 			},
@@ -32,12 +30,13 @@
 			 */
 			updateTypeList: function() {
 				var hints = this.find('.hints').data('hints'), 
-					metadata = this.find('#ParentID .TreeDropdownField').data('metadata'),
-					id = this.find('#ParentID .TreeDropdownField').getValue(),
+					metadata = this.find('input[name=ParentModeField]:checked').val() == 'child' ? this.find('#ParentID .TreeDropdownField').data('metadata') : null,
+					id = this.find('input[name=ParentModeField]:checked').val() == 'child' ? this.find('#ParentID .TreeDropdownField').getValue() : 0,
 					newClassName = metadata ? metadata.ClassName : null,
 					hintKey = newClassName ? newClassName : 'Root',
 					hint = (typeof hints[hintKey] != 'undefined') ? hints[hintKey] : null;
-				
+
+
 				var disallowedChildren = (hint && typeof hint.disallowedChildren != 'undefined') ? hint.disallowedChildren : [],
 					defaultChildClass = (hint && typeof hint.defaultChild != 'undefined') ? hint.defaultChild : null;
 				
