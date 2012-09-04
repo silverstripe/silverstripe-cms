@@ -289,7 +289,7 @@ sk:
     VIEWHEADER: 'Kto môže vidieť stránky na tomto webe?'
   SiteTree:
     ACCESSANYONE: Ktokoľvek
-    ACCESSHEADER: 'Kto môže vidieť túto stránku?'
+    ACCESSHEADER: 'Kto môže prezerať túto stránku?'
     ACCESSLOGGEDIN: 'Prihlásení používatelia'
     ACCESSONLYTHESE: 'Iba títo ľudia (vyberte zo zoznamu)'
     ADDEDTODRAFTHELP: 'Stránka ešte nebola zverejnená'
