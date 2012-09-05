@@ -71,12 +71,14 @@ abstract class CMSSiteTreeFilter extends Object {
 				$parents[$pageArr['ParentID']] = true;
 				$this->_cache_ids[$pageArr['ID']] = true;
 			}
-		
-			if(!empty($parents)) {
+
+			while(!empty($parents)) {
 				$q = new SQLQuery();
 				$q->setSelect(array('"ID"','"ParentID"'))
 					->setFrom('"SiteTree"')
 					->setWhere('"ID" in ('.implode(',',array_keys($parents)).')');
+
+				$parents = array();
 
 				foreach($q->execute() as $row) {
 					if ($row['ParentID']) $parents[$row['ParentID']] = true;
