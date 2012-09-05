@@ -46,7 +46,7 @@ class CMSPageAddController extends CMSPageEditController {
 				array(
 					"top//$topTitle" => null, //new LiteralField("Dummy", ''),
 					"child//$childTitle" => $parentField = new TreeDropdownField(
-						"ParentID", 
+						"NewPageParentID", 
 						"",
 						'SiteTree',
 						'ID',
@@ -92,7 +92,7 @@ class CMSPageAddController extends CMSPageEditController {
 
 	public function doAdd($data, $form) {
 		$className = isset($data['PageType']) ? $data['PageType'] : "Page";
-		$parentID = isset($data['ParentID']) ? (int)$data['ParentID'] : 0;
+		$parentID = isset($data['NewPageParentID']) ? (int)$data['NewPageParentID'] : 0;
 
 		$suffix = isset($data['Suffix']) ? "-" . $data['Suffix'] : null;
 

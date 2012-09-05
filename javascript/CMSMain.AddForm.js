@@ -13,7 +13,7 @@
 		$(".cms-add-form").entwine({
 			onmatch: function() {
 				var self = this;
-				this.find('#ParentID .TreeDropdownField').bind('change', function() {
+				this.find('#NewPageParentID .TreeDropdownField').bind('change', function() {
 					self.updateTypeList();
 				});
 
@@ -30,8 +30,8 @@
 			 */
 			updateTypeList: function() {
 				var hints = this.find('.hints').data('hints'), 
-					metadata = this.find('input[name=ParentModeField]:checked').val() == 'child' ? this.find('#ParentID .TreeDropdownField').data('metadata') : null,
-					id = this.find('input[name=ParentModeField]:checked').val() == 'child' ? this.find('#ParentID .TreeDropdownField').getValue() : 0,
+					metadata = this.find('input[name=ParentModeField]:checked').val() == 'child' ? this.find('#NewPageParentID .TreeDropdownField').data('metadata') : null,
+					id = this.find('input[name=ParentModeField]:checked').val() == 'child' ? this.find('#NewPageParentID .TreeDropdownField').getValue() : 0,
 					newClassName = metadata ? metadata.ClassName : null,
 					hintKey = newClassName ? newClassName : 'Root',
 					hint = (typeof hints[hintKey] != 'undefined') ? hints[hintKey] : null;
