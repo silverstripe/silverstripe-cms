@@ -127,7 +127,7 @@ et_EE:
     MENUTITLE: Ajalugu
     REVERTTOTHISVERSION: 'Taasta valitud versioon'
     SHOWUNPUBLISHED: 'Näita ka avaldamata versioone'
-    SHOWVERSION: 'Show Version'
+    SHOWVERSION: 'Näita versiooni'
     VIEW: vaade
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
