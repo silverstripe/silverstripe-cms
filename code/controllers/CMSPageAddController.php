@@ -16,8 +16,6 @@ class CMSPageAddController extends CMSPageEditController {
 	 * @return Form
 	 */
 	function AddForm() {
-		$record = $this->currentPage();
-		
 		$pageTypes = array();
 		foreach($this->PageTypes() as $type) {
 			$html = sprintf('<span class="page-icon class-%s"></span><strong class="title">%s</strong><span class="description">%s</span>',
@@ -39,7 +37,6 @@ class CMSPageAddController extends CMSPageEditController {
 		$childTitle = _t('CMSPageAddController.ParentMode_child', 'Under another page');
 
 		$fields = new FieldList(
-			// new HiddenField("ParentID", false, ($this->parentRecord) ? $this->parentRecord->ID : null),
 			// TODO Should be part of the form attribute, but not possible in current form API
 			$hintsField = new LiteralField('Hints', sprintf('<span class="hints" data-hints="%s"></span>', $this->SiteTreeHints())),
 			new LiteralField('PageModeHeader', sprintf($numericLabelTmpl, 1, _t('CMSMain.ChoosePageParentMode', 'Choose where to create this page'))),
@@ -49,7 +46,7 @@ class CMSPageAddController extends CMSPageEditController {
 				array(
 					"top//$topTitle" => null, //new LiteralField("Dummy", ''),
 					"child//$childTitle" => $parentField = new TreeDropdownField(
-						"ParentID", 
+						"NewPageParentID", 
 						"",
 						'SiteTree',
 						'ID',
@@ -64,17 +61,17 @@ class CMSPageAddController extends CMSPageEditController {
 				'Page'
 			)
 		);
-		// TODO Re-enable search once it allows for HTML title display, 
-		// see http://open.silverstripe.org/ticket/7455
-		// $parentField->setShowSearch(true);
-		$parentModeField->setValue($this->request->getVar('ParentID') ? 'child' : 'top');
+
+		//$parentField->setShowSearch(true);
 		$parentModeField->addExtraClass('parent-mode');
 
 		// CMSMain->currentPageID() automatically sets the homepage,
 		// which we need to counteract in the default selection (which should default to root, ID=0)
-		$homepageSegment = RootURLController::get_homepage_link();
-		if($record && $record->URLSegment != $homepageSegment) {
-			$parentField->setValue($record->ID);	
+		if($parentID = $this->request->getVar('ParentID')) {
+			$parentModeField->setValue('child');
+			$parentField->setValue((int)$parentID);
+		} else {
+			$parentModeField->setValue('top');
 		}
 		
 		$actions = new FieldList(
@@ -90,16 +87,12 @@ class CMSPageAddController extends CMSPageEditController {
 		$form->addExtraClass('cms-add-form stacked cms-content center cms-edit-form ' . $this->BaseCSSClasses());
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 
-		if($parentID = $this->request->getVar('ParentID')) {
-			$form->Fields()->dataFieldByName('ParentID')->setValue((int)$parentID);
-		}
-
 		return $form;
 	}
 
 	public function doAdd($data, $form) {
 		$className = isset($data['PageType']) ? $data['PageType'] : "Page";
-		$parentID = isset($data['ParentID']) ? (int)$data['ParentID'] : 0;
+		$parentID = isset($data['NewPageParentID']) ? (int)$data['NewPageParentID'] : 0;
 
 		$suffix = isset($data['Suffix']) ? "-" . $data['Suffix'] : null;
 
@@ -108,8 +101,10 @@ class CMSPageAddController extends CMSPageEditController {
 			if($page) $parentID = $page->ID;
 		}
 
-		if(is_numeric($parentID) && $parentID > 0) $parentObj = DataObject::get_by_id("SiteTree", $parentID);
-		else $parentObj = null;
+		$parentObj = null;
+		if($data['ParentModeField'] == 'child' and is_numeric($parentID) && $parentID > 0) {
+			$parentObj = DataObject::get_by_id("SiteTree", $parentID);
+		}
 		
 		if(!$parentObj || !$parentObj->ID) $parentID = 0;
 
