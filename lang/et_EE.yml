@@ -49,11 +49,11 @@ et_EE:
     HasBrokenFile: 'has broken file'
     HasBrokenLink: 'has broken link'
     HasBrokenLinkAndFile: 'has broken link and file'
-    HoverTitleEditPage: 'Edit page'
-    PageName: 'Page name'
+    HoverTitleEditPage: 'Muuda lehte'
+    PageName: 'Lehe nimi'
     ReasonDropdown: 'Problem to check'
     ReasonDropdownBROKENFILE: 'Broken file'
-    ReasonDropdownBROKENLINK: 'Broken link'
+    ReasonDropdownBROKENLINK: 'Vigane link'
     ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
     ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
     RedirectorNonExistent: 'redirector page pointing to non-existent page'
@@ -112,14 +112,14 @@ et_EE:
     TreeFiltered: 'Filtered tree.'
     TreeFilteredClear: 'Clear filter'
   CMSMain_left.ss:
-    'APPLY FILTER': 'Apply Filter'
+    'APPLY FILTER': 'Aktiveeri filter'
     RESET: Reset
   CMSPageAddController:
-    MENUTITLE: 'Add page'
+    MENUTITLE: 'Lisa leht'
     ParentMode_child: 'Under another page'
     ParentMode_top: 'Top level'
   CMSPageEditController:
-    MENUTITLE: 'Edit Page'
+    MENUTITLE: 'Muuda lehte'
   CMSPageHistoryController:
     COMPAREMODE: 'Võrdlus reziim (vali kaks)'
     COMPAREVERSIONS: 'Võrdle versioone'
@@ -169,13 +169,13 @@ et_EE:
     CMS: CMS
     DRAFTSITE: 'Draft Site'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Pead olema sisse logitud oma sisuhalduse parooliga, et vaadata mustandeid ja arhiveeritud sisu. <a href="%s">Vajuta siia, et minna tagasi avaldatud lehe juurde.</a>'
-    Email: Email
+    Email: E-post
     InstallFilesDeleted: 'Installation files have been successfully deleted.'
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
     InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
     LOGGEDINAS: 'Logged in as'
-    LOGIN: Login
-    LOGOUT: 'Log out'
+    LOGIN: 'Logi sisse'
+    LOGOUT: 'Logi välja'
     NOTLOGGEDIN: 'Not logged in'
     PUBLISHEDSITE: 'Published Site'
     Password: Salasõna
@@ -188,7 +188,7 @@ et_EE:
     DEFAULTERRORPAGECONTENT: '<p>Vabandust aga tundub, et proovid ligipääseda lehele mida pole olemas.</p><p>Palun kontrolli uuesti aadressi kuhu proovid ligi pääseda.</p>'
     DEFAULTERRORPAGETITLE: 'Lehekülge ei leitud'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Server error'
+    DEFAULTSERVERERRORPAGETITLE: 'Serveri viga'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
     PLURALNAME: 'Error Pags'
@@ -249,7 +249,7 @@ et_EE:
     MENUTITLE: Aruanded
     ReportTitle: Title
   ReportAdminForm:
-    FILTERBY: 'Filter by'
+    FILTERBY: Filtreeri
   SearchForm:
     GO: Mine
     SEARCH: Otsi
@@ -268,7 +268,7 @@ et_EE:
     REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigatorLink:
     ShareInstructions: 'To share a this to this page, copy and paste the link below.'
-    ShareLink: 'Share link'
+    ShareLink: 'Jaga linki'
   SilverStripeNavigatorLinkl:
     CloseLink: Sulge
   SiteConfig:
@@ -314,7 +314,7 @@ et_EE:
     DELETEDPAGESHORT: Kustutatud
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
     DESCRIPTION: 'Generic content page'
-    DependtPageColumnLinkType: 'Link type'
+    DependtPageColumnLinkType: 'Lingi tüüp'
     DependtPageColumnURL: URL
     EDITANYONE: 'Igaüks, kes sisuhaldussüsteemi sisse võib logida'
     EDITHEADER: 'Kes tohib seda sisuhaldussüsteemi kaudu muuta?'
@@ -326,7 +326,7 @@ et_EE:
     HASBROKENLINKS: 'Sellel lehel on katkiseid linke.'
     HTMLEDITORTITLE: Sisu
     INHERIT: 'Päring vanemalt lehelt'
-    LASTUPDATED: 'Last Updated'
+    LASTUPDATED: 'Viimati uuendatud'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 'Navigatsiooni silt'
     METADESC: Kirjeldus
@@ -380,7 +380,7 @@ et_EE:
     EXPORTTO: 'Ekspordi sellesse kausta'
     NAME: 'Staatiline eksportija'
   TableListField:
-    SELECT: 'Select:'
+    SELECT: 'Vali:'
   TableListField.ss:
     NOITEMSFOUND: 'Ei leitud ühtegi kirjet'
     SORTASC: 'Sort in ascending order'
