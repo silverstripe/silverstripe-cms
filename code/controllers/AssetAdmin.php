@@ -95,7 +95,7 @@ JS
 		// Don't filter list when a detail view is requested,
 		// to avoid edge cases where the filtered list wouldn't contain the requested
 		// record due to faulty session state (current folder not always encoded in URL, see #7408).
-		if($this->request->param('ID') == 'field') {
+		if(!$folder->ID && ($this->request->param('ID') == 'field')) {
 			return $list;
 		}
 
@@ -336,6 +336,7 @@ JS
 			'mov' => _t('AssetAdmin.AppCategoryVideo', 'Video'),
 			'flash' => _t('AssetAdmin.AppCategoryFlash', 'Flash', 'The fileformat'),
 			'zip' => _t('AssetAdmin.AppCategoryArchive', 'Archive', 'A collection of files'),
+			'doc' => _t('AssetAdmin.AppCategoryDocument', 'Document')
 		);
 		$context->addField(
 			$typeDropdown = new DropdownField(

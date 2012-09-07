@@ -8,6 +8,7 @@ en_GB:
     AppCategoryFlash: Flash
     AppCategoryImage: Image
     AppCategoryVideo: Video
+    AppCategoryDocument: Document
     BackToFolder: 'Back to folder'
     CREATED: Date
     CurrentFolderOnly: 'Limit to current folder?'

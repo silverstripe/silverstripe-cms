@@ -4,6 +4,7 @@
  * @subpackage tests
  */
 class CMSMainTest extends FunctionalTest {
+
 	static $fixture_file = 'CMSMainTest.yml';
 	
 	protected $autoFollowRedirection = false;
@@ -221,6 +222,44 @@ class CMSMainTest extends FunctionalTest {
 		$this->session()->inst_set('loggedInAs', NULL);
 	}
 
+	function testCreationOfRestrictedPage(){
+		$adminUser = $this->objFromFixture('Member', 'admin');
+		$adminUser->logIn();
+
+		// Create toplevel page
+		$this->get('admin/pages/add');
+		$response = $this->post(
+			'admin/pages/add/AddForm', 
+			array('ParentID' => '0', 'PageType' => 'CMSMainTest_ClassA', 'Locale' => 'en_US', 'action_doAdd' => 1)
+		);
+		$this->assertFalse($response->isError());
+		preg_match('/edit\/show\/(\d*)/', $response->getHeader('Location'), $matches);
+		$newPageId = $matches[1];
+
+		// Create allowed child
+		$this->get('admin/pages/add');
+		$response = $this->post(
+			'admin/pages/add/AddForm', 
+			array('ParentID' => $newPageId, 'PageType' => 'CMSMainTest_ClassB', 'Locale' => 'en_US', 'action_doAdd' => 1)
+		);
+		$this->assertFalse($response->isError());
+		$this->assertNull($response->getBody());
+
+		// Create disallowed child
+		$this->get('admin/pages/add');
+		$response = $this->post(
+			'admin/pages/add/AddForm', 
+			array('ParentID' => $newPageId, 'PageType' => 'Page', 'Locale' => 'en_US', 'action_doAdd' => 1)
+		);
+		$this->assertFalse($response->isError());
+		$this->assertContains(
+			_t('SiteTree.PageTypeNotAllowed', array('type' => 'Page')),
+			$response->getBody()
+		);
+
+		$this->session()->inst_set('loggedInAs', NULL);
+	}
+
 	function testBreadcrumbs() {
 		$page3 = $this->objFromFixture('Page', 'page3');		
 		$page31 = $this->objFromFixture('Page', 'page31');		
@@ -238,4 +277,12 @@ class CMSMainTest extends FunctionalTest {
 
 		$this->session()->inst_set('loggedInAs', null);
 	}
+}
+
+class CMSMainTest_ClassA extends Page implements TestOnly {
+	static $allowed_children = array('CMSMainTest_ClassB');
+}
+
+class CMSMainTest_ClassB extends Page implements TestOnly {
+	
 }

@@ -356,6 +356,23 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertEquals('about-us/edit', $about->RelativeLink('edit'), 'Matches URLSegment plus parameter on top level');
 		$this->assertEquals('about-us/tom&jerry', $about->RelativeLink('tom&jerry'), 'Doesnt url encode parameter');
 	}
+
+	function testAbsoluteLiveLink() {
+		$parent = $this->objFromFixture('Page', 'about');
+		$child = $this->objFromFixture('Page', 'staff');
+
+		SiteTree::enable_nested_urls();		
+
+		$child->publish('Stage', 'Live');
+		$parent->URLSegment = 'changed-on-live';
+		$parent->write();
+		$parent->publish('Stage', 'Live');
+		$parent->URLSegment = 'changed-on-draft';
+		$parent->write();
+		
+		$this->assertStringEndsWith('changed-on-live/my-staff/', $child->getAbsoluteLiveLink(false));
+		$this->assertStringEndsWith('changed-on-live/my-staff/?stage=Live', $child->getAbsoluteLiveLink());
+	}
 	
 	function testDeleteFromStageOperatesRecursively() {
 		SiteTree::set_enforce_strict_hierarchy(false);

@@ -314,7 +314,7 @@ class ContentController extends Controller {
 					</div>
 
 					<div id="switchView" class="bottomTabs">
-						<div class="blank">$viewPageIn </div>
+						$viewPageIn 
 						$items
 					</div>
 					</div>
@@ -401,7 +401,7 @@ HTML;
 		));
 		
 		return array(
-			"Title" => DBField::create_field('Varchar', "Title", "Installation Successful"),
+			"Title" =>  _t("ContentController.INSTALL_SUCCESS", "Installation Successful!"),
 			"Content" => $data->renderWith('Install_successfullyinstalled'),
 		);
 	}

@@ -10,6 +10,7 @@ class CMSPagesController extends CMSMain {
 	static $url_priority = 40;
 	static $menu_title = 'Pages';	
 	static $required_permission_codes = 'CMS_ACCESS_CMSMain';
+	static $session_namespace = 'CMSMain';
 
 	function LinkPreview() {
 		return false;
@@ -20,14 +21,6 @@ class CMSPagesController extends CMSMain {
 	 */
 	public function ViewState() {
 		return $this->request->getVar('view');
-	}
-
-	/**
-	 * Doesn't deal with a single record, and we need
-	 * to avoid session state from previous record edits leaking in here.
-	 */
-	public function currentPageID() {
-		return false;
 	}
 
 	public function isCurrentPage(DataObject $record) {

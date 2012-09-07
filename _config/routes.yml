@@ -1,6 +1,7 @@
 ---
 Name: modelascontrollerroutes
-After: framework/routes#rootroutes
+Before: '*'
+After: '#rootroutes'
 ---
 Director:
   rules:
@@ -8,7 +9,7 @@ Director:
     '$URLSegment//$Action/$ID/$OtherID': 'ModelAsController'
 ---
 Name: legacycmsroutes
-After: '*'
+After: '#adminroutes'
 ---
 Director:
   rules:

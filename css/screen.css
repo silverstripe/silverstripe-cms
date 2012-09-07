@@ -21,7 +21,7 @@
 .cms-content-tools #cms-content-treeview .cms-tree a:hover > .text > .badge, .cms-content-tools #cms-content-treeview .cms-tree .jstree-clicked > .text > .badge { display: inline-block; }
 
 /** ------------------------------------------------------------------ URLSegment field ----------------------------------------------------------------- */
-.field.urlsegment.disabled { color: #444; padding-left: 0px; margin-left: 0px; background: none; border-color: transparent; }
+.field.urlsegment.loading { background: url(../images/loading.gif) no-repeat 162px 8px; }
 .field.urlsegment .prefix, .field.urlsegment .preview { padding-top: 8px; display: inline-block; }
 .field.urlsegment .prefix { color: #777; }
 .field.urlsegment .cancel, .field.urlsegment .update, .field.urlsegment .edit { margin-left: 7px; }
@@ -41,7 +41,7 @@
 .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav .ui-state-active.content-treeview a, .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav .ui-widget-content .ui-state-active.content-treeview a, .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav .ui-widget-header .ui-state-active.content-treeview a { background-position: 1px -40px; }
 .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav .ui-state-active.content-galleryview a, .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav .ui-widget-content .ui-state-active.content-galleryview a, .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav .ui-widget-header .ui-state-active.content-galleryview a { background-position: -161px -40px; }
 .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav .ui-state-active.content-listview a, .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav .ui-widget-content .ui-state-active.content-listview a, .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav .ui-widget-header .ui-state-active.content-listview a { background-position: -38px -40px; }
-.cms .AssetAdmin .cms-content-toolbar .cms-page-add-button { background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f3f3f3), color-stop(100%, #d9d9d9)); background-image: -webkit-linear-gradient(#f3f3f3, #d9d9d9); background-image: -moz-linear-gradient(#f3f3f3, #d9d9d9); background-image: -o-linear-gradient(#f3f3f3, #d9d9d9); background-image: -ms-linear-gradient(#f3f3f3, #d9d9d9); background-image: linear-gradient(#f3f3f3, #d9d9d9); border-color: #c0c0c2; }
+.cms .AssetAdmin .cms-content-toolbar .cms-page-add-button { background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f3f3f3), color-stop(100%, #d9d9d9)); background-image: -webkit-linear-gradient(#f3f3f3, #d9d9d9); background-image: -moz-linear-gradient(#f3f3f3, #d9d9d9); background-image: -o-linear-gradient(#f3f3f3, #d9d9d9); background-image: linear-gradient(#f3f3f3, #d9d9d9); border-color: #c0c0c2; }
 .cms .AssetAdmin .cms-content-toolbar .cms-page-add-button span.btn-icon-add { height: 17px; }
 .cms .AssetAdmin .cms-content-toolbar .cms-page-add-button span.ui-button-text { color: #393939; text-shadow: white 0 1px 1px; }
 .cms .AssetAdmin #Root_TreeView .cms-tree ul .class-Folder a span.text span.jstree-foldericon { background: url(../images/blue-folder-horizontal.png) no-repeat; width: 16px; height: 16px; float: left; display: block; margin-right: 4px; }

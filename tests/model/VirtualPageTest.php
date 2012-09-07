@@ -10,7 +10,7 @@ class VirtualPageTest extends SapphireTest {
 	);
 
 	protected $requiredExtensions = array(
-		'Page' => array('VirtualPageTest_PageExtension')
+		'SiteTree' => array('VirtualPageTest_PageExtension')
 	);
 
 	function setUp() {
