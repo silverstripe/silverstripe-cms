@@ -5,7 +5,7 @@ ru:
     ActionAdd: 'Добавить папку'
     AppCategoryArchive: Архив
     AppCategoryAudio: Аудио
-    AppCategoryDocument: Document
+    AppCategoryDocument: Документ
     AppCategoryFlash: Flash
     AppCategoryImage: Изображение
     AppCategoryVideo: Видео
@@ -171,10 +171,10 @@ ru:
     DRAFTSITE: 'Черновой сайт'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Вы должны войти с паролем для Системы Управления (CMS), чтобы увидеть черновое или архивное содержимое. <a href="%s">Нажмите сюда, чтобы вернуться на опубликованный сайт.</a>'
     Email: Email
-    INSTALL_SUCCESS: 'Installation Successful!'
+    INSTALL_SUCCESS: 'Успешная установка!'
     InstallFilesDeleted: 'Инсталляционные файлы были успешно удалены.'
     InstallSecurityWarning: 'Если вы не планируете в ближайшее время переустанавливать CMS, по соображениям безопасности рекомендуется удалить инсталляционные файлы (<em>для этого необходим администраторский доступ, см. выше</em>). Теперь веб-серверу требуется доступ для записи только к папке "assets"; вы можете защитить от записи все остальные папки. <a href="{link}" style="text-align: center;">Щелкните здесь, чтобы удалить инсталляционные файлы.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
+    InstallSuccessCongratulations: 'SilverStripe был успешно установлен!'
     LOGGEDINAS: 'Залогинен как'
     LOGIN: Вход
     LOGOUT: Выход
