@@ -61,7 +61,7 @@ sk:
   CMSAddPageController:
     Title: 'Pridať stránku'
   CMSBatchActions:
-    DELETED_DRAFT_PAGES: 'Smazaných %d stránok z koceptu webu, %d zlyhaní'
+    DELETED_DRAFT_PAGES: 'Smazaných %d stránok z konceptu webu, %d zlyhaní'
     DELETED_PAGES: 'Smazaných %d stránok z verejného webu, %d zlyhaní'
     DELETE_DRAFT_PAGES: 'Vymazať z návhrového webu'
     DELETE_PAGES: 'Vymazať z verejného webu'
@@ -348,7 +348,7 @@ sk:
     PLURALNAME: Stránky
     PageTypNotAllowedOnRoot: 'Stránka typu "{type}" nie je povolená na najvyššej úrovni'
     PageTypeNotAllowed: 'Stránka typu "{type}" nie je povolená ako potomok nadradenej stránky'
-    REMOVEDFROMDRAFTHELP: 'Stránka je zverejnená, ale bola odstránená z koceptuu'
+    REMOVEDFROMDRAFTHELP: 'Stránka je zverejnená, ale bola odstránená z konceptu'
     REMOVEDFROMDRAFTSHORT: 'Odstránené z konceptu'
     REMOVE_INSTALL_WARNING: 'Upozornenie: Z bezpečnostných dôvodov odstránte súbor install.php z SilverStripe inštalácie.'
     REORGANISE_DESCRIPTION: 'Zmeniť štruktúru webu'
