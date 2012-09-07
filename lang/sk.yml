@@ -5,6 +5,7 @@ sk:
     ActionAdd: 'Pridať priečinok'
     AppCategoryArchive: Archív
     AppCategoryAudio: Zvuk
+    AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: Obrázok
     AppCategoryVideo: Video
@@ -170,17 +171,18 @@ sk:
     DRAFTSITE: 'Pracovná verzia stránky'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Pre zobrazenie návrhov alebo archivovaného obsahu sa musíte prihlásiť so svojím CMS heslom. <a href="%s">Pre návrat na publikovaný web kliknite Tu.</a>'
     Email: Email
+    INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Inštalačné súbory boli odstranené úspešne.'
     InstallSecurityWarning: 'Z bezpečnostných dôvodov by ste mali teraz odstrániť inštalačné súbory, ak  neplánujete preinštalovať neskôr (<em> vyžaduje admin prihlásenie, pozri vyššie </em>). Webový server teraz potrebuje už len prístup pre zápis do priečinka "assets", môžete odstrániť práva zápisu zo všetkých ostatných priečinkov. <a href="{link}" style="text-align: center;"> Kliknite tu pre odstránenie inštalačných súborov. </a>'
-    InstallSuccessCongratulations: 'SilverStripe bol nainštalovaný úspešne.'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: 'Prihlásený ako'
     LOGIN: Prihlásiť
     LOGOUT: Odhlásiť
     NOTLOGGEDIN: Neprihlásený
     PUBLISHEDSITE: 'Verejný web'
     Password: Heslo
-    PostInstallTutorialIntro: 'Tento web je zjednodušená verzia SilverStripe 2. webu. Ak ho chcete rošíriť, pozrite sa na odkaz {link}, prosím.'
-    StartEditing: 'Môžte začať editáciu vášho web obsahu otvorením <a href="{link}">CMS</a>.'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'Nepodarilo sa smazať inštalačné súbory. Smažte ručne súbory uvedené dole'
     VIEWPAGEIN: 'Prezrieť stránku v:'
   ErrorPage:
@@ -336,6 +338,7 @@ sk:
     MODIFIEDONDRAFTHELP: 'Stránka má nezverejnené zmeny'
     MODIFIEDONDRAFTSHORT: Zmenené
     MetadataToggle: Metaúdaje
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: 'Pozícia stránky'
     PAGETITLE: 'Názov stránky'
     PAGETYPE: 'Typ stránky'

@@ -5,6 +5,7 @@ ar:
     ActionAdd: 'Add folder'
     AppCategoryArchive: Archive
     AppCategoryAudio: Audio
+    AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: Image
     AppCategoryVideo: Video
@@ -170,17 +171,18 @@ ar:
     DRAFTSITE: 'موقع في المسودة'
     DRAFT_SITE_ACCESS_RESTRICTION: 'بجب تسجيل الدخول ببيانات نظام إدارة المحتوى للتمكن من مشاهدة المسودات أو محتوى الأرشيف. <a href="%s">اضغط هنا للرجوع إلى الموقع المنشور.</a>'
     Email: Email
+    INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Installation files have been successfully deleted.'
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: 'الدخول كـ'
     LOGIN: الدخول
     LOGOUT: الخروج
     NOTLOGGEDIN: 'لم يتم تسجيل الدخول'
     PUBLISHEDSITE: 'موقع منشور'
     Password: Password
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'مشاهدة الصفحة في:'
   ErrorPage:
@@ -336,6 +338,7 @@ ar:
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: معدل
     MetadataToggle: Metadata
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: 'موقع الضفحة'
     PAGETITLE: 'اسم الصفحة'
     PAGETYPE: 'نوع الصفحة'

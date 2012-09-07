@@ -5,6 +5,7 @@ et_EE:
     ActionAdd: 'Lisa kaust'
     AppCategoryArchive: Arhiiv
     AppCategoryAudio: Heli
+    AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: Pilt
     AppCategoryVideo: Video
@@ -73,7 +74,7 @@ et_EE:
     MENUTITLE: Failid
   CMSMain:
     ACCESS: 'Juurdepääs jaotisele ''{title}'''
-    ACCESS_HELP: 'Luba lehepuud ja sisu hõlmava jaotise vaatamine. Vaatamis- ja redigeerimislubasid on võimalik hallata nii lehepõhiselt kui ka eraldi jaotise "Sisu load" abil.'
+    ACCESS_HELP: 'Luba lehepuud ja sisu hõlmava jaotise vaatamine. Vaatamis- ja redigeerimisõigusi on võimalik hallata nii lehepõhiselt kui ka eraldi jaotise "Sisu õigused" abil.'
     AddNew: 'Lisa uus leht'
     AddNewButton: 'Lisa uus'
     ChoosePageParentMode: 'Valige, kuhu see leht luua'
@@ -83,7 +84,7 @@ et_EE:
     DELETEFP: 'Kustuta avaldatud leht'
     DESCREMOVED: 'ja {count} järglast'
     EMAIL: E-post
-    EditTree: 'Redigeeri puud'
+    EditTree: Redigeeri
     ListFiltered: 'Filtreeritud loend'
     MENUTITLE: 'Redigeeri lehte'
     NEWPAGE: 'Uus {pagetype}'
@@ -170,17 +171,18 @@ et_EE:
     DRAFTSITE: 'Mustandi sait'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Pead olema sisse logitud oma sisuhalduse parooliga, et vaadata mustandeid ja arhiveeritud sisu. <a href="%s">Vajuta siia, et minna tagasi avaldatud lehe juurde.</a>'
     Email: E-post
+    INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Installifailid on edukalt kustutatud.'
     InstallSecurityWarning: 'Turvalisuse põhjustel soovitame nüüd installifailid kustutada, juhul kui te ei plaani hiljem uuesti installida (<em>nõuab administraatorina sisselogimist, vt ülevalt</em>). Edaspidi vajab veebiserver juurdepääsu kirjutamiseks ainult kaustale "assets". Võite eemaldada kõigi teiste kaustade kirjutusõigused. <a href="{link}" style="text-align: center;">Klõpsake siin installifailide kustutamiseks.</a>'
-    InstallSuccessCongratulations: 'SilverStripe on edukalt installitud.'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: 'Sisse logitud kui'
     LOGIN: 'Logi sisse'
     LOGOUT: 'Logi välja'
     NOTLOGGEDIN: 'Pole sisse logitud'
     PUBLISHEDSITE: 'Avaldatud sait'
     Password: Salasõna
-    PostInstallTutorialIntro: 'See veebisait on lihtsustatud versioon SilverStripe 2 saidist. Selle laiendamiseks uurige lähemalt aadressil {link}.'
-    StartEditing: 'Saate alustada oma saidi sisu redigeerimisega, kui avate <a href="{link}">CMS-i</a>.'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'Installifaile ei olnud võimalik kustutada. Kustutage allolevad failid käsitsi.'
     VIEWPAGEIN: 'Kuva leht:'
   ErrorPage:
@@ -190,7 +192,7 @@ et_EE:
     DEFAULTSERVERERRORPAGECONTENT: '<p>Vabandust, teie taotluse töötlemisel ilmnes probleem.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Serveri viga'
     DESCRIPTION: 'Kohandatud sisu erinevate tõrgete korral (nt "Lehte ei leitud")'
-    ERRORFILEPROBLEM: 'Tõrge faili "{filename}" avamisel kirjutamiseks. Kontrollige faili lubasid.'
+    ERRORFILEPROBLEM: 'Tõrge faili "{filename}" avamisel kirjutamiseks. Kontrollige faili õigusi.'
     PLURALNAME: Vealehed
     SINGULARNAME: Vealehed
     400: '400 - Halb päring'
@@ -232,8 +234,8 @@ et_EE:
   Permission:
     CMS_ACCESS_CATEGORY: CMS-juurdepääs
   Permissions:
-    CONTENT_CATEGORY: 'Sisu load'
-    PERMISSIONS_CATEGORY: 'Rollid ja juurdepääsuload'
+    CONTENT_CATEGORY: 'Sisu õigused'
+    PERMISSIONS_CATEGORY: 'Rollid ja juurdepääsuõigused'
   RedirectorPage:
     DESCRIPTION: 'Suunab teisele siselehele'
     HASBEENSETUP: 'Suunav lehekülg seati üles ilma, et ta kuhugile suunaks.'
@@ -275,7 +277,7 @@ et_EE:
     DEFAULTTHEME: '(Kasuta vaikekujundust)'
     EDITHEADER: 'Kes saavad sellel saidil lehti redigeerida?'
     EDIT_PERMISSION: 'Saidi konfiguratsiooni haldamine'
-    EDIT_PERMISSION_HELP: 'Võimalus redigeerida üldiseid juurdepääsuseadeid / kõrgema taseme lehe lubasid.'
+    EDIT_PERMISSION_HELP: 'Võimalus redigeerida üldiseid juurdepääsuseadeid / kõrgema taseme lehe õigusi.'
     PLURALNAME: 'Saidi konfiguratsioonid'
     SINGULARNAME: 'Saidi konfiguratsioon'
     SITENAMEDEFAULT: 'Teie saidi nimi'
@@ -321,7 +323,7 @@ et_EE:
     EDITONLYTHESE: 'Ainult järgnevad isikud (vali nimekirjast)'
     EDITORGROUPS: Muutjagrupid
     EDIT_ALL_DESCRIPTION: 'Redigeeri mis tahes lehte'
-    EDIT_ALL_HELP: "Võimalus redigeerida mis tahes lehte sellel saidil, hoolimata vahekaardi Juurdepääs seadetest. Vajab jaotise Juurdepääs lehtedele luba\\n"
+    EDIT_ALL_HELP: "Võimalus redigeerida mis tahes lehte sellel saidil, hoolimata vahekaardi Juurdepääs seadetest. Vajab jaotise \"Juurdepääs  lehtedele\" õigusi\\n"
     Editors: 'Toimetajate gruppid'
     HASBROKENLINKS: 'Sellel lehel on katkiseid linke.'
     HTMLEDITORTITLE: Sisu
@@ -336,6 +338,7 @@ et_EE:
     MODIFIEDONDRAFTHELP: 'Lehel on avaldamata muudatusi'
     MODIFIEDONDRAFTSHORT: Muudetud
     MetadataToggle: Metaandmed
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: 'Lehe asukoht'
     PAGETITLE: 'Lehekülje nimi'
     PAGETYPE: 'Lehe tüüp'
@@ -364,7 +367,7 @@ et_EE:
     URLSegment: 'URL-i jagu'
     VIEWERGROUPS: Vaatajagrupid
     VIEW_ALL_DESCRIPTION: 'Kuva mis tahes leht'
-    VIEW_ALL_HELP: 'Võimalus vaadata mis tahes lehte saidil, hoolimata vahekaardi Juurdepääs seadetest. Vajab jaotise Juurdepääs saidi sisule luba'
+    VIEW_ALL_HELP: 'Võimalus vaadata mis tahes lehte saidil, hoolimata vahekaardi Juurdepääs seadetest. Vajab jaotise "Juurdepääs saidi sisule" õigusi'
     VIEW_DRAFT_CONTENT: 'Kuva mustandi sisu'
     VIEW_DRAFT_CONTENT_HELP: 'Rakendub lehe vaatamisel väljaspool CMS-i mustandirežiimis. Kasulik välistele kaastöötajatele, kellel puudub juurdepääs CMS-ile.'
     Viewers: 'Vaatajate gruppid'

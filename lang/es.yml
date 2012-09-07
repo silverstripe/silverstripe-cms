@@ -5,6 +5,7 @@ es:
     ActionAdd: 'Añadir carpeta'
     AppCategoryArchive: Archivar
     AppCategoryAudio: Audio
+    AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: Imagen
     AppCategoryVideo: Vídeo
@@ -170,17 +171,18 @@ es:
     DRAFTSITE: 'Sitio en Borrador'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Debe iniciar sesión para poder acceder a los contenidos archivados o al borrador. <a href="%s">De un click aquí para regresar al sitio publicado.</a>'
     Email: 'Correo electrónico'
+    INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Los archivos de instalación han sido borrados correctamente.'
     InstallSecurityWarning: 'Por razones de seguridad ahora debes eliminar los archivos de instalación, a menos que estés planeando reinstalar más tarde (<em>requiere inicio de sesión de administrador, ver arriba</em>). El servidor web ahora tan sólo necesita acceso de escritura a la carpeta "assets", puedes quitar el acceso de escritura de todas las demás carpetas. <a href="{link}" style="text-align: center;">Haz clic aquí para borrar los archivos de instalación.</a>'
-    InstallSuccessCongratulations: 'SilverStripe ha sido instalado correctamente.'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: 'Conectado como'
     LOGIN: 'Iniciar sesión'
     LOGOUT: Desconectar
     NOTLOGGEDIN: 'No conectado'
     PUBLISHEDSITE: 'Sitio Publicado'
     Password: Contraseña
-    PostInstallTutorialIntro: 'Este sitio web es una versión simplista de un sitio SilverStripe 2. Para ampliarls, por favor, echa un vistazo a {link}.'
-    StartEditing: 'Puedes empezar a editar el  contenido de tu sitio abriendo <a href="{link}">el CMS</a>.'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'No se pueden eliminar los archivos de instalación. Por favor, elimina los siguientes archivos manualmente'
     VIEWPAGEIN: 'Ver página en:'
   ErrorPage:
@@ -336,6 +338,7 @@ es:
     MODIFIEDONDRAFTHELP: 'La página tiene cambios sin publicar'
     MODIFIEDONDRAFTSHORT: Modificado
     MetadataToggle: Metadatos
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: 'Localización de la página'
     PAGETITLE: 'Nombre de la página'
     PAGETYPE: 'Tipo de Página'

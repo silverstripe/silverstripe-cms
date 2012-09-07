@@ -5,6 +5,7 @@ pl:
     ActionAdd: 'Dodaj katalog'
     AppCategoryArchive: Archiwum
     AppCategoryAudio: Dźwięk
+    AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: Obraz
     AppCategoryVideo: Wideo
@@ -170,17 +171,18 @@ pl:
     DRAFTSITE: 'Szkic witryny'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Musisz zalogować się za pomocą swojego hasła do CMSa, aby obejrzeć nieopublikowaną i zarchiwizowaną treść. <a href="%s">Kliknij tutaj aby powrócić do opublikowanej strony.</a>'
     Email: 'Adres e-mail'
+    INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Pliki instalacyjne zostały pomyślnie usunięte'
     InstallSecurityWarning: 'Dla bezpieczeństwa powinieneś skasować pliki instalacyjne, chyba że planujesz reinstalację w późniejszym czasie (<em>wymaga zalogowania się jako admin, patrz wyżej</em>). Serwer potrzebuje teraz tylko dostępu do folderu "assets", możesz usunąć dostęp do innych folderów. <a href="{link}" style="text-align: center;">Kliknij tutaj aby usunąć pliki instalacyjne.</a>'
-    InstallSuccessCongratulations: 'Silverstripe został zainstalowany'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: 'Zalogowany jako'
     LOGIN: Zaloguj
     LOGOUT: Wyloguj
     NOTLOGGEDIN: 'Nie zalogowany'
     PUBLISHEDSITE: 'Opublikowana witryna'
     Password: Hasło
-    PostInstallTutorialIntro: 'Ta strona jest uproszczoną wersją strony SilverStripe 2. Aby rozszerzyć ją, proszę zajrzeć do {link}.'
-    StartEditing: 'Możesz rozpocząć edycję zawartości witryn(y) otwierając <a href="{link}">CMS</a>.'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'Nie można usunąć plików instalacyjnych. Proszę usunąć je ręcznie'
     VIEWPAGEIN: 'Zobacz stronę w:'
   ErrorPage:
@@ -336,6 +338,7 @@ pl:
     MODIFIEDONDRAFTHELP: 'Na stronie znajdują się nieopublikowane zmiany'
     MODIFIEDONDRAFTSHORT: Zmodyfikowana
     MetadataToggle: Metadane
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: 'Lokalizacja strony'
     PAGETITLE: 'Nazwa strony'
     PAGETYPE: 'Rodzaj strony'

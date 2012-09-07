@@ -5,10 +5,10 @@ fr:
     ActionAdd: 'Ajouter un dossier'
     AppCategoryArchive: Archive
     AppCategoryAudio: Audio
+    AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: Image
     AppCategoryVideo: Vidéo
-    AppCategoryDocument: Document
     BackToFolder: 'Revenir au dossier'
     CREATED: Date
     CurrentFolderOnly: 'Limiter au dossier actuel ?'
@@ -171,17 +171,18 @@ fr:
     DRAFTSITE: 'Site Brouillon'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Vous devez vous authentifier avec votre mot de passe CMS afin de pouvoir consulter le contenu brouillon ou archivé. <a href="%s">Cliquer ici pour revenir au site publié.</a>'
     Email: 'Courrier électronique'
+    INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Les fichiers d’installation ont été supprimés. '
     InstallSecurityWarning: 'Pour des raisons de sécurité vous devriez supprimer maintenant les fichiers d’installation, à moins que vous n’ayez prévu de réinstaller le système ultérieurement (<em>ce qui nécessite de se connecter comme administrateur, voir plus haut</em>). Désormais, votre serveur n’aura besoin de droits de accès en écriture que pour le dossier « assets », vous pouvez donc les révoquer pour tous les autres dossiers. <a href="{link}" style="text-align: center;">Faites clic ici pour supprimer les fichiers d’installation.</a>'
-    InstallSuccessCongratulations: 'SilverStripe a été correctement installé.'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: 'Connecté en tant que'
     LOGIN: Connectez-vous
     LOGOUT: 'Se déconnecter'
     NOTLOGGEDIN: Non-connecté
     PUBLISHEDSITE: 'Site Publié'
     Password: 'Mot de passe'
-    PostInstallTutorialIntro: 'Ce site est une version simple sur la base de SilverStripe 2. Pour le développer, nous vous suggérons de consulter {link}.'
-    StartEditing: 'Vous pouvez commencer à éditer votre site en ouvrant <a href="{link}">le CMS</a>.'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'La suppression des fichiers d’installation a échoué ; faites-le manuellement pour les fichiers ci-dessous : '
     VIEWPAGEIN: 'Voir la page en :'
   ErrorPage:
@@ -337,6 +338,7 @@ fr:
     MODIFIEDONDRAFTHELP: 'La page comporte des modifications non publiées'
     MODIFIEDONDRAFTSHORT: Modifiée
     MetadataToggle: Métadonnées
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: 'Emplacement de la page'
     PAGETITLE: 'Nom de la page'
     PAGETYPE: 'Type de page'

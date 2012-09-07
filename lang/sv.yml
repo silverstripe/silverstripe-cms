@@ -5,6 +5,7 @@ sv:
     ActionAdd: 'Skapa mapp'
     AppCategoryArchive: Arkivera
     AppCategoryAudio: Ljud
+    AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: Bild
     AppCategoryVideo: Video
@@ -170,17 +171,18 @@ sv:
     DRAFTSITE: Utkast
     DRAFT_SITE_ACCESS_RESTRICTION: 'Du måste logga med ditt CMS-lösenord för att kunna se utkast och arkiverat material. <a href="%s">Klicka här för att gå tillbaks till den publicerade sajten.</a>'
     Email: E-post
+    INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Installationsfilerna raderades utan problem.'
     InstallSecurityWarning: 'Av säkerhetsskäl bör du nu radera installationsfilerna, förutom om du planerar att installera om (<em>kräver administratörs login, se ovan</em>). Webbservern behöver nu bara skrivrättigheter till katalogen "assets", du kan ta bort skrivrättigheter till alla andra kataloger. <a href="{link}" style="text-align: center;">Klicka här för att radera installationsfilerna.</a>'
-    InstallSuccessCongratulations: 'SilverStripe har installerats utan problem.'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: 'Inloggad som'
     LOGIN: 'Logga in'
     LOGOUT: 'Logga ut'
     NOTLOGGEDIN: 'Inte inloggad'
     PUBLISHEDSITE: 'Publicerad sajt'
     Password: Lösenord
-    PostInstallTutorialIntro: 'Denna sajt är en enkel version av en SilverStripe 2 sajt. För att vidareutveckla den se  {link}.'
-    StartEditing: 'Du kan ändra din sajts innehåll genom <a href="{link}">publiceringsverktyget</a>.'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'Lyckades inte radera installationsfilerna. Radera följande filer manuellt.'
     VIEWPAGEIN: 'titta på sidan i:'
   ErrorPage:
@@ -336,6 +338,7 @@ sv:
     MODIFIEDONDRAFTHELP: 'Sidan har ej publicerade ändringar'
     MODIFIEDONDRAFTSHORT: Ändrad
     MetadataToggle: Metadata
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: 'Sidans position'
     PAGETITLE: Sidnamn
     PAGETYPE: Sidtyp
