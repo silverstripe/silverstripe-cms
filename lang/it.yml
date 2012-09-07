@@ -13,6 +13,7 @@ it:
     CurrentFolderOnly: 'Limita alla cartella corrente?'
     DetailsView: Dettagli
     FILES: Files
+    FILESYSTEMSYNC: 'Sincronizza file'
     FILESYSTEMSYNCTITLE: 'Aggiorna il database dei file. Utile quando nuovi file sono stati caricati fuori dal CMS, es. via FTP.'
     FROMTHEINTERNET: 'Da Internet'
     FROMYOURCOMPUTER: 'Dal tuo computer'
@@ -27,7 +28,7 @@ it:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Elimina cartelle'
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: Filtra
   AssetAdmin_left.ss:
     GO: Vai
   AssetTableField:
@@ -85,7 +86,7 @@ it:
     EditTree: 'Modifica albero'
     ListFiltered: 'Lista filtrata.'
     MENUTITLE: 'Modifica pagina'
-    NEW: Nuova
+    NEWPAGE: 'Nuova {pagetype}'
     PAGENOTEXISTS: 'Questa pagina non esiste'
     PAGES: Pagine
     PAGETYPEANYOPT: Qualsiasi
@@ -163,7 +164,7 @@ it:
   ContentControl:
     NOTEWONTBESHOWN: 'Nota: questo messaggio non verrà mostrato ai visitatori'
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
+    ARCHIVEDSITE: 'Anteprima versione'
     ARCHIVEDSITEFROM: 'Sito archiviato da'
     CMS: CMS
     DRAFTSITE: 'Bozza del sito'
@@ -190,8 +191,8 @@ it:
     DEFAULTSERVERERRORPAGETITLE: 'Errore server'
     DESCRIPTION: 'Contenuto personalizzato per differenti casi di errore (es. "Pagina non trovata")'
     ERRORFILEPROBLEM: 'Errore nell''apertura del file "{filename}" per la scrittura. Controlla i permessi del file.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
+    PLURALNAME: 'Pagine errore'
+    SINGULARNAME: 'Pagina errore'
     400: '400 - Richiesta errata'
     401: '401 - Non Autorizzato'
     403: '403 - Accesso Negato'
@@ -238,14 +239,15 @@ it:
     HASBEENSETUP: 'Una pagina di redirezione è stata configurata nonostante non vi sia alcun indirizzo a cui farla puntare'
     HEADER: 'Questa pagina redirigerà gli utenti su un''altra'
     OTHERURL: 'Altro indirizzo del sito web'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: 'Pagine di redirezione'
     REDIRECTTO: 'Redirigi a'
     REDIRECTTOEXTERNAL: 'Un altro sito web'
     REDIRECTTOPAGE: 'Una pagina sul tuo sito web'
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: 'Pagina di redirezione'
     YOURPAGE: 'Pagina sul tuo sito web'
   ReportAdmin:
     MENUTITLE: Rapporti
+    ReportTitle: Titolo
   ReportAdminForm:
     FILTERBY: 'Filtra per'
   SearchForm:
@@ -274,8 +276,8 @@ it:
     EDITHEADER: '(Chi può modificare le pagine in questo sito?)'
     EDIT_PERMISSION: 'Gestisci la configurazione del sito'
     EDIT_PERMISSION_HELP: 'Capacità di modificare le impostazioni globali di accesso/permessi pagina alto livello'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
+    PLURALNAME: 'Configurazioni sito'
+    SINGULARNAME: 'Configurazione sito'
     SITENAMEDEFAULT: 'Nome del tuo sito'
     SITETAGLINE: 'Motto/Slogan del sito'
     SITETITLE: 'Titolo del sito'
@@ -343,7 +345,7 @@ it:
     PARENTTYPE_SUBPAGE: 'Pagina sotto una pagina madre'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Controlla quali gruppi possono accedere o editare certe pagine'
     PERMISSION_GRANTACCESS_HELP: 'Consenti le impostazioni di restrizione d''accesso a pagine specifiche nella sezione "Pagine".'
-    PLURALNAME: 'Alberi del sito'
+    PLURALNAME: Pagine
     PageTypNotAllowedOnRoot: 'Il tipo di pagina "{type}" non è consentito al primo livello'
     PageTypeNotAllowed: 'Il tipo di pagina "{type}" non è consentito come figlio di questa pagina madre'
     REMOVEDFROMDRAFTHELP: 'La pagina è pubblicata, ma è stata eliminata dal sito bozza'
@@ -353,7 +355,7 @@ it:
     REORGANISE_HELP: 'Riordina le pagine nella struttura ad albero del sito utilizzando il drag&drop.'
     SHOWINMENUS: 'Visualizza nel menu?'
     SHOWINSEARCH: 'Visualizza in cerca?'
-    SINGULARNAME: 'Albero del sito'
+    SINGULARNAME: Pagina
     TABBEHAVIOUR: Comportamento
     TABCONTENT: Contenuto
     TABDEPENDENT: 'Pagine dipendenti'
@@ -404,5 +406,3 @@ it:
     PLURALNAME: 'Pagine virtuali'
     PageTypNotAllowedOnRoot: 'Il tipo di pagina originale "{type}" non è consentito al primo livello per questa pagina virtuale'
     SINGULARNAME: 'Pagina virtuale'
-  cms:
-    FILESYSTEMSYNC: 'Sincronizza file'

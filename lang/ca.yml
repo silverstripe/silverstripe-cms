@@ -13,6 +13,7 @@ ca:
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'From the internet'
     FROMYOURCOMPUTER: 'From your computer'
@@ -85,7 +86,7 @@ ca:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
-    NEW: Nova
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Aquesta pàgina no existeix'
     PAGES: Pages
     PAGETYPEANYOPT: Any
@@ -246,6 +247,7 @@ ca:
     YOURPAGE: 'Pàgina del vostre lloc web'
   ReportAdmin:
     MENUTITLE: Reports
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
@@ -343,7 +345,7 @@ ca:
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Controla quins grups poden accedir o editar certes pàgines'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: 'Àrbres del web'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -353,7 +355,7 @@ ca:
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'Mostra als menús?'
     SHOWINSEARCH: 'Mostra en cerques?'
-    SINGULARNAME: 'Àrbre del web'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Comportament
     TABCONTENT: Contingut
     TABDEPENDENT: 'Dependent pages'
@@ -404,5 +406,3 @@ ca:
     PLURALNAME: 'Pàgines virtuals'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Pàgina virtual'
-  cms:
-    FILESYSTEMSYNC: 'Sync files'

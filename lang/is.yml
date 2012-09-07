@@ -13,6 +13,7 @@ is:
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'From the internet'
     FROMYOURCOMPUTER: 'From your computer'
@@ -85,7 +86,7 @@ is:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
-    NEW: 'New '
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'This page doesn''t exist'
     PAGES: Pages
     PAGETYPEANYOPT: Any
@@ -246,6 +247,7 @@ is:
     YOURPAGE: 'Síða á heimasíðunni þinni'
   ReportAdmin:
     MENUTITLE: Reports
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
@@ -343,7 +345,7 @@ is:
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: Veftré
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -353,7 +355,7 @@ is:
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'Sýna í valmynd?'
     SHOWINSEARCH: 'Sýna í leit?'
-    SINGULARNAME: Veftré
+    SINGULARNAME: Page
     TABBEHAVIOUR: Hegðun
     TABCONTENT: Efni
     TABDEPENDENT: 'Dependent pages'
@@ -404,5 +406,3 @@ is:
     PLURALNAME: 'Sýndar síða'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Sýndar síða'
-  cms:
-    FILESYSTEMSYNC: 'Sync files'

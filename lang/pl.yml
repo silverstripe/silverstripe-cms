@@ -13,6 +13,7 @@ pl:
     CurrentFolderOnly: 'Ograniczyć do bieżącego katalogu?'
     DetailsView: Szczegóły
     FILES: Pliki
+    FILESYSTEMSYNC: 'Synchronizuj pliki'
     FILESYSTEMSYNCTITLE: 'Uaktualnia bazę plików. Przydatne, gdy nowe pliki zostały przesłane poza systemem CMS, np. przez FTP.'
     FROMTHEINTERNET: 'Z internetu'
     FROMYOURCOMPUTER: 'Z komputera'
@@ -85,7 +86,7 @@ pl:
     EditTree: 'Edytuj drzewko'
     ListFiltered: 'Filtrowana lista.'
     MENUTITLE: 'Edytuj stronę'
-    NEW: Nowy
+    NEWPAGE: 'Nowa {pagetype}'
     PAGENOTEXISTS: 'Ta strona nie istnieje'
     PAGES: Strony
     PAGETYPEANYOPT: Jakikolwiek
@@ -246,6 +247,7 @@ pl:
     YOURPAGE: 'Strona na Twojej witrynie'
   ReportAdmin:
     MENUTITLE: Raporty
+    ReportTitle: Tytuł
   ReportAdminForm:
     FILTERBY: 'Filtruj po'
   SearchForm:
@@ -343,7 +345,7 @@ pl:
     PARENTTYPE_SUBPAGE: 'Podstrona innej strony (wybierz poniżej)'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Zarządzaj prawami dostępu'
     PERMISSION_GRANTACCESS_HELP: 'Zezwól na ustawienie wymagań dostępu dla konkretnej strony w sekcji "Strony".'
-    PLURALNAME: 'Drzewa stron'
+    PLURALNAME: Strony
     PageTypNotAllowedOnRoot: '"{type}" nie jest dozwolona na głównym poziomie'
     PageTypeNotAllowed: '"{type}" nie jest dozwolona jako strona podrzędna dla tej strony'
     REMOVEDFROMDRAFTHELP: 'Strona jest opublikowana, ale została usunięta ze szkiców'
@@ -353,7 +355,7 @@ pl:
     REORGANISE_HELP: 'Zmień kolejność stron na drzewie witryny wykorzystując przeciągnij i  upuść.'
     SHOWINMENUS: 'Pokazuj w menu?'
     SHOWINSEARCH: 'Pokazuj w wyszukiwarce?'
-    SINGULARNAME: 'Drzewo strony'
+    SINGULARNAME: Strona
     TABBEHAVIOUR: Zachowanie
     TABCONTENT: Zawartość
     TABDEPENDENT: 'Strony zależne'
@@ -404,5 +406,3 @@ pl:
     PLURALNAME: 'Wirtualne Strony'
     PageTypNotAllowedOnRoot: '"{type}" nie jest dozwolona dla głównego poziomu wirtualnej strony'
     SINGULARNAME: 'Wirtualna Strona'
-  cms:
-    FILESYSTEMSYNC: 'Synchronizuj pliki'

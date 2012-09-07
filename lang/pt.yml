@@ -13,6 +13,7 @@ pt:
     CurrentFolderOnly: 'Limitar à pasta actual?'
     DetailsView: Detalhes
     FILES: Ficheiros
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Actualize a base de dados de ficheiros do CMS. É recomendado quando são adicionados novos arquivos externamente, por exemplo, através de FTP.'
     FROMTHEINTERNET: 'Da internet'
     FROMYOURCOMPUTER: 'Do computador'
@@ -85,7 +86,7 @@ pt:
     EditTree: 'Editar árvore'
     ListFiltered: 'Lista filtrada.'
     MENUTITLE: 'Editar página'
-    NEW: Novo
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Esta página não existe'
     PAGES: Páginas
     PAGETYPEANYOPT: Qualquer
@@ -246,6 +247,7 @@ pt:
     YOURPAGE: 'Página no seu Site'
   ReportAdmin:
     MENUTITLE: Relatórios
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filtrar por'
   SearchForm:
@@ -343,7 +345,7 @@ pt:
     PARENTTYPE_SUBPAGE: 'Página Parente'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Gestão de permissões de acesso para o conteúdo'
     PERMISSION_GRANTACCESS_HELP: 'Permitir criar restrições específicas na página.'
-    PLURALNAME: 'Árvores do Site'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Páginas do tipo "{type}" não tem permissões para serem criadas a este nível.'
     PageTypeNotAllowed: 'A página do tipo "{type}" não é permitida como filho deste tipo de página'
     REMOVEDFROMDRAFTHELP: 'A página está publicada mas foi removida dos rascunhos'
@@ -353,7 +355,7 @@ pt:
     REORGANISE_HELP: 'Rearranjar páginas na árvore do site com drag&drop'
     SHOWINMENUS: 'Mostrar no Menu?'
     SHOWINSEARCH: 'Mostrar nas pesquisas?'
-    SINGULARNAME: 'Árvore do Site'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Comportamento
     TABCONTENT: Conteúdo
     TABDEPENDENT: 'Páginas Dependentes'
@@ -404,5 +406,3 @@ pt:
     PLURALNAME: 'Páginas Virtuais'
     PageTypNotAllowedOnRoot: 'Páginas do tipo "{type}" não tem permissões para serem criadas a este nível.'
     SINGULARNAME: 'Página Virtual'
-  cms:
-    FILESYSTEMSYNC: 'Sincronizar ficheiros'

@@ -13,6 +13,7 @@ es:
     CurrentFolderOnly: '¿Límite a la carpeta actual?'
     DetailsView: Detalles
     FILES: Archivos
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Actualizar las entradas de base de datos del CMS de archivos en el sistema de archivos. Es útil cuando los nuevos archivos se han subido desde fuera del CMS, p.e., a través de FTP.'
     FROMTHEINTERNET: 'Desde internet'
     FROMYOURCOMPUTER: 'Desde tu ordenador'
@@ -27,7 +28,7 @@ es:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Eliminar carpetas'
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: Filtrar
   AssetAdmin_left.ss:
     GO: Ir
   AssetTableField:
@@ -85,7 +86,7 @@ es:
     EditTree: 'Editar árbol'
     ListFiltered: 'Lista filtrada'
     MENUTITLE: 'Editar página'
-    NEW: Nueva
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Esta página no existe'
     PAGES: Páginas
     PAGETYPEANYOPT: Cualquiera
@@ -163,7 +164,7 @@ es:
   ContentControl:
     NOTEWONTBESHOWN: 'Nota: este mensaje no se mostrará a tus visitantes'
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
+    ARCHIVEDSITE: 'Versión de la vista previa'
     ARCHIVEDSITEFROM: 'Sitio archivado desde'
     CMS: CMS
     DRAFTSITE: 'Sitio en Borrador'
@@ -190,8 +191,8 @@ es:
     DEFAULTSERVERERRORPAGETITLE: 'Error de servidor'
     DESCRIPTION: 'Contenido personalizado para los distintos casos de error (p.e. "Página no encontrada")'
     ERRORFILEPROBLEM: 'Error abriendo el archivo "{filename}" para escritura. Por favor comprueba los permisos del archivo.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
+    PLURALNAME: 'Páginas de error'
+    SINGULARNAME: 'Página de error'
     400: '400 - Petición incorrecta (Bad Request)'
     401: '401 - No autorizado (Unauthorized)'
     403: '403 - Prohibido (Forbidden)'
@@ -238,14 +239,15 @@ es:
     HASBEENSETUP: 'Se ha establecido una página redireccionadora sin ningún sitio al cual redireccionar.'
     HEADER: 'Esta página redireccionará a los usuarios a otra página'
     OTHERURL: 'Otra dirección URL de un sitio web'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: 'Páginas de redirección'
     REDIRECTTO: 'Redireccionar a'
     REDIRECTTOEXTERNAL: 'Otro sitio web'
     REDIRECTTOPAGE: 'Una página en su sitio web'
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: 'Página de redirección'
     YOURPAGE: 'Página en su sitio web'
   ReportAdmin:
     MENUTITLE: Informes
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filtrar por'
   SearchForm:
@@ -274,8 +276,8 @@ es:
     EDITHEADER: '¿Quién puede editar páginas en este sitio?'
     EDIT_PERMISSION: 'Gestionar configuración del sitio'
     EDIT_PERMISSION_HELP: 'Capacidad de editar el acceso de configuración global/permisos de página de nivel superior.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
+    PLURALNAME: 'Configuraciones del sitio'
+    SINGULARNAME: 'Configuración del sitio'
     SITENAMEDEFAULT: 'Nombre de tu Sitio'
     SITETAGLINE: 'Lema/Eslogan del Sitio'
     SITETITLE: 'Título de tu sitio'
@@ -343,7 +345,7 @@ es:
     PARENTTYPE_SUBPAGE: 'Sub-página por debajo de una página padre'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Controlar qué grupos pueden acceder o editar determinadas páginas'
     PERMISSION_GRANTACCESS_HELP: 'Permitir la creación de restricciones de acceso específicas a la página en la sección "Páginas".'
-    PLURALNAME: 'Árboles del sitio'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'La página tipo "{type}" no está permitida en el nivel raiz'
     PageTypeNotAllowed: 'El tipo de página "{type}" no está permitido como hijo de esta página padre'
     REMOVEDFROMDRAFTHELP: 'La página está publicada, pero ha sido eliminada de borrador'
@@ -353,7 +355,7 @@ es:
     REORGANISE_HELP: 'Reorganizar las páginas en el árbol del sitio a través de drag&drop.'
     SHOWINMENUS: '¿Mostrar en menús?'
     SHOWINSEARCH: '¿Mostrar en la búsqueda?'
-    SINGULARNAME: 'Árbol del Sitio'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Comportamiento
     TABCONTENT: Contenido
     TABDEPENDENT: 'Páginas dependientes'
@@ -404,5 +406,3 @@ es:
     PLURALNAME: 'Páginas Virtuales'
     PageTypNotAllowedOnRoot: 'Tipo de página original "{type}" no se permite en el nivel raíz para esta página virtual'
     SINGULARNAME: 'Página Virtual'
-  cms:
-    FILESYSTEMSYNC: 'Sincronizar archivos'

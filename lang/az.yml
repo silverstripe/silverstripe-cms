@@ -13,6 +13,7 @@ az:
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'From the internet'
     FROMYOURCOMPUTER: 'From your computer'
@@ -85,7 +86,7 @@ az:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
-    NEW: 'New '
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'This page doesn''t exist'
     PAGES: Pages
     PAGETYPEANYOPT: Any
@@ -246,6 +247,7 @@ az:
     YOURPAGE: 'Web saytınızda olan səhifə'
   ReportAdmin:
     MENUTITLE: Reports
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
@@ -343,7 +345,7 @@ az:
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Bu məzmun üçün icazələrə nəzarət et'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: 'Sayt ierarxiyası'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -353,7 +355,7 @@ az:
     REORGANISE_HELP: 'Səhifələri dart burax əməliyyatı ilə sırala.'
     SHOWINMENUS: 'Menyularda görünsün?'
     SHOWINSEARCH: 'Axtarışda görünsün?'
-    SINGULARNAME: 'Saytın ierarxiyası'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Davranış
     TABCONTENT: Məzmun
     TABDEPENDENT: 'Asılı səhifələr'
@@ -404,5 +406,3 @@ az:
     PLURALNAME: 'Virtual səhifələr'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtual səhifə'
-  cms:
-    FILESYSTEMSYNC: 'Sync files'

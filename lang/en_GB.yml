@@ -14,6 +14,7 @@ en_GB:
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'From the internet'
     FROMYOURCOMPUTER: 'From your computer'
@@ -86,7 +87,7 @@ en_GB:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
-    NEW: New
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'This page doesn''t exist'
     PAGES: Pages
     PAGETYPEANYOPT: Any
@@ -227,8 +228,8 @@ en_GB:
     PreviewButton: Preview
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
-    SearchResults: Søgeresultater
-    VersionUnknown: Ukendt
+    SearchResults: 'Search Results'
+    VersionUnknown: Unknown
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
   Permissions:
@@ -247,6 +248,7 @@ en_GB:
     YOURPAGE: 'Page on your website'
   ReportAdmin:
     MENUTITLE: Reports
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
@@ -344,7 +346,7 @@ en_GB:
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: 'Site Trees'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -354,7 +356,7 @@ en_GB:
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'Show in menus?'
     SHOWINSEARCH: 'Show in search?'
-    SINGULARNAME: 'Site Tree'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Behaviour
     TABCONTENT: Content
     TABDEPENDENT: 'Dependent pages'
@@ -405,5 +407,3 @@ en_GB:
     PLURALNAME: 'Virtual Pages'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtual Page'
-  cms:
-    FILESYSTEMSYNC: 'Sync files'

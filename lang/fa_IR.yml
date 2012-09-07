@@ -13,6 +13,7 @@ fa_IR:
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'From the internet'
     FROMYOURCOMPUTER: 'From your computer'
@@ -85,7 +86,7 @@ fa_IR:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
-    NEW: جدید
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'این صفحه وجود ندارد'
     PAGES: Pages
     PAGETYPEANYOPT: Any
@@ -246,6 +247,7 @@ fa_IR:
     YOURPAGE: 'برگ روی تارگاه شما'
   ReportAdmin:
     MENUTITLE: Reports
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'فیلتر به وسیله'
   SearchForm:
@@ -343,7 +345,7 @@ fa_IR:
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: 'لینک های سایت'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -353,7 +355,7 @@ fa_IR:
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'Show in menus?'
     SHOWINSEARCH: 'نمایش در جستجو ؟'
-    SINGULARNAME: 'لینک سایت'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Behavior
     TABCONTENT: مطلب
     TABDEPENDENT: 'صفحات مرتبط'
@@ -404,5 +406,3 @@ fa_IR:
     PLURALNAME: 'صفحه های مجازی'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'صفحه مجازی'
-  cms:
-    FILESYSTEMSYNC: 'Sync files'

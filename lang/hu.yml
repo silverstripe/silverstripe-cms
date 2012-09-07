@@ -13,6 +13,7 @@ hu:
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Részletek
     FILES: Állományok
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: Internetről
     FROMYOURCOMPUTER: 'From your computer'
@@ -85,7 +86,7 @@ hu:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Oldal szerkesztése'
-    NEW: Új
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Ez az oldal nem létezik.'
     PAGES: Oldalak
     PAGETYPEANYOPT: Egyéb
@@ -246,6 +247,7 @@ hu:
     YOURPAGE: 'Oldal a weblapodon'
   ReportAdmin:
     MENUTITLE: Jelentések
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
@@ -343,7 +345,7 @@ hu:
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: 'Site Tres'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Az oldal publikálva lett, de törölve lett a vázlatok közül'
@@ -353,7 +355,7 @@ hu:
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'Látható legyen a menükben?'
     SHOWINSEARCH: 'Látható legyen a keresésben?'
-    SINGULARNAME: 'Site Tree'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Viselkedés
     TABCONTENT: Tartalom
     TABDEPENDENT: 'Dependent pages'
@@ -404,5 +406,3 @@ hu:
     PLURALNAME: 'Virtual Pags'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtuális oldal'
-  cms:
-    FILESYSTEMSYNC: 'Sync files'
