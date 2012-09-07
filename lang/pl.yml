@@ -5,7 +5,7 @@ pl:
     ActionAdd: 'Dodaj katalog'
     AppCategoryArchive: Archiwum
     AppCategoryAudio: Dźwięk
-    AppCategoryDocument: Document
+    AppCategoryDocument: Dokument
     AppCategoryFlash: Flash
     AppCategoryImage: Obraz
     AppCategoryVideo: Wideo
@@ -171,10 +171,10 @@ pl:
     DRAFTSITE: 'Szkic witryny'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Musisz zalogować się za pomocą swojego hasła do CMSa, aby obejrzeć nieopublikowaną i zarchiwizowaną treść. <a href="%s">Kliknij tutaj aby powrócić do opublikowanej strony.</a>'
     Email: 'Adres e-mail'
-    INSTALL_SUCCESS: 'Installation Successful!'
+    INSTALL_SUCCESS: 'Instalacja przebiegła pomyślnie'
     InstallFilesDeleted: 'Pliki instalacyjne zostały pomyślnie usunięte'
     InstallSecurityWarning: 'Dla bezpieczeństwa powinieneś skasować pliki instalacyjne, chyba że planujesz reinstalację w późniejszym czasie (<em>wymaga zalogowania się jako admin, patrz wyżej</em>). Serwer potrzebuje teraz tylko dostępu do folderu "assets", możesz usunąć dostęp do innych folderów. <a href="{link}" style="text-align: center;">Kliknij tutaj aby usunąć pliki instalacyjne.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
+    InstallSuccessCongratulations: 'SilverStripe został zainstalowany!'
     LOGGEDINAS: 'Zalogowany jako'
     LOGIN: Zaloguj
     LOGOUT: Wyloguj
@@ -182,7 +182,7 @@ pl:
     PUBLISHEDSITE: 'Opublikowana witryna'
     Password: Hasło
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    StartEditing: 'Możesz zacząć edytować Twoją stronę otwierając <a href=\\"{link}\\">CMS</a>.'
     UnableDeleteInstall: 'Nie można usunąć plików instalacyjnych. Proszę usunąć je ręcznie'
     VIEWPAGEIN: 'Zobacz stronę w:'
   ErrorPage:
