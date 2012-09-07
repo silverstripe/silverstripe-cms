@@ -89,7 +89,7 @@ cs:
     NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Tato stránka neexistuje'
     PAGES: Stránky
-    PAGETYPEANYOPT: Jakkýkoliv
+    PAGETYPEANYOPT: Jakékoliv
     PAGETYPEOPT: 'Typ stránky'
     PUBALLCONFIRM: 'Prosím zveřejněte veškeré stránky z úschovny'
     PUBALLFUN: 'Funkce "Publikovat vše"'
