@@ -5,7 +5,7 @@ th:
     ActionAdd: เพิ่มโฟลเดอร์
     AppCategoryArchive: Archive
     AppCategoryAudio: ไฟล์เสียง
-    AppCategoryDocument: Document
+    AppCategoryDocument: เอกสาร
     AppCategoryFlash: แฟลช
     AppCategoryImage: รูปภาพ
     AppCategoryVideo: วีดีโอ
@@ -95,7 +95,7 @@ th:
     PUBALLCONFIRM: 'กรุณาเผยแพร่หน้าเว็บทุกหน้าในเว็บไซต์, คัดลอกเนื้อหาลงไปที่'
     PUBALLFUN: 'ฟังก์ชั่นการทำงาน "เผยแพร่ทั้งหมด"'
     PUBALLFUN2: 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It''s				intended to be used after there have been massive edits of the content, such as when the site was				first built.'
-    PUBPAGES: 'Done: Published {count} pages'
+    PUBPAGES: 'เผยแแพร่หน้าเว็บแล้ว {count} หน้า'
     PageAdded: หน้าเว็บที่สร้างเสร็จเรียบร้อยแล้ว
     REMOVED: 'ลบ ''%s''%s จากเว็บไซต์ที่ออนไลน์สดๆอยู่แล้ว'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
@@ -169,12 +169,12 @@ th:
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
     DRAFTSITE: เว็บไซต์ฉบับร่าง
-    DRAFT_SITE_ACCESS_RESTRICTION: 'You must log in with your CMS password in order to view the draft or archived content.  <a href="%s">Click here to go back to the published site.</a>'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'คุณต้องเข้าสู่ระบบด้วยรหัสผ่าน CMS ของคุณ หากต้องการเปิดดูฉบับร่าง หรือเนื้อหาย้อนหลัง.  <a href="%s">คลิกที่นี่เพื่อย้อนกลับไปที่เว็บไซต์ที่เผยแพร่อยู่.</a>'
     Email: อีเมล
-    INSTALL_SUCCESS: 'Installation Successful!'
+    INSTALL_SUCCESS: การติดตั้งเสร็จสมบูรณ์
     InstallFilesDeleted: ไฟล์ติดตั้งได้ถูกลบทิ้งเรียบร้อยแล้ว
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
+    InstallSuccessCongratulations: 'SilverStripe ได้รับการติดตั้งเรียบร้อยแล้ว!'
     LOGGEDINAS: เข้าสู่ระบบในชื่อ
     LOGIN: เข้าสู่ระบบ
     LOGOUT: ออกจากระบบ
@@ -182,7 +182,7 @@ th:
     PUBLISHEDSITE: เว็บไซต์ที่เผยแพร่อยู่
     Password: รหัสผ่าน
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    StartEditing: 'คุณสามารถเริ่มต้นแก้ไขเนื้อหาในเว็บไซต์ของคุณได้โดยการเปิด <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'ไม่สามารถลบไฟล์ติดตั้งได้ กรุณาลบไฟล์ดังกล่าวด้านล่างด้วยตนเอง'
     VIEWPAGEIN: 'เปิดดูหน้าเว็บใน:'
   ErrorPage:
@@ -191,7 +191,7 @@ th:
     DEFAULTERRORPAGETITLE: ไม่พบหน้าที่ต้องการ
     DEFAULTSERVERERRORPAGECONTENT: '<p>ขออภัย, เกิดข้อผิดพลาดบางประการในการจัดการตามคำร้องขอของคุณ</p>'
     DEFAULTSERVERERRORPAGETITLE: เซิร์ฟเวอร์เกิดข้อผิดพลาด
-    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
+    DESCRIPTION: 'กำหนดเนื้อหาเองสำหรับข้อผิดพลาดต่างๆ (e.g. "ไม่พบหน้าเว็บที่ต้องการ")'
     ERRORFILEPROBLEM: 'เกิดข้อผิดพลาดในการเปิดไฟล์ "{filename}" เพื่อเขียนข้อมูล. กรุณาตรวจสอบสิทธิ์.'
     PLURALNAME: หน้าแสดงข้อผิดพลาด
     SINGULARNAME: หน้าแสดงข้อผิดพลาด
