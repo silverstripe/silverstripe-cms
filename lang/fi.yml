@@ -5,7 +5,7 @@ fi:
     ActionAdd: 'Lisää kansio'
     AppCategoryArchive: Arkisto
     AppCategoryAudio: Ääni
-    AppCategoryDocument: Document
+    AppCategoryDocument: Asiakirja
     AppCategoryFlash: Flash
     AppCategoryImage: Kuva
     AppCategoryVideo: Video
@@ -171,18 +171,18 @@ fi:
     DRAFTSITE: Luonnossivusto
     DRAFT_SITE_ACCESS_RESTRICTION: 'Voidaksesi katsella luonnoksia tai arkistoitua sisältöä sinun täytyy kirjautua sisään CMS:n salasanallasi. <a href="%s">Palataksesi julkiselle sivulle paina tästä</a>.'
     Email: Sähköposti
-    INSTALL_SUCCESS: 'Installation Successful!'
+    INSTALL_SUCCESS: 'Asennus onnistui!'
     InstallFilesDeleted: 'Asennustiedostot poistettiin onnistuneesti.'
     InstallSecurityWarning: 'Tietoturvan takia, kannattaa poistaa asennustiedostot palvelimelta, ellet aio asentaa järjestelmää uudelleen. (<em>pääkäyttäjän kirjautuminen vaaditaan, katso ylempää</em>). Palvelimella kirjoitusoikeudet tarvitaan vain "assets"-kansioon. Voit poistaa kirjoitusoikeudet kaikista muista kansioista. <br /> <a href="{link}" style="text-align: center;">Napsauta tästä poistaaksesi kaikki asennustiedostot.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
+    InstallSuccessCongratulations: 'SilverStripe asennettu onnistuneesti!'
     LOGGEDINAS: 'Kirjautuneena sisään nimimerkillä'
     LOGIN: 'Kirjaudu sisään'
     LOGOUT: 'Kirjaudu ulos'
     NOTLOGGEDIN: 'Ei kirjautuneena sisään'
     PUBLISHEDSITE: 'Julkaistu sivusto'
     Password: Salasana
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    PostInstallTutorialIntro: 'Tämä sivusto on yksinkertaistettu versio SilverStripe 3 sivustosta. Laajentaaksesi tätä, ole hyvä ja tutustu: {link}.'
+    StartEditing: 'Voit aloittaa sivustosi sisällön muokkaamisen kirjautumalla <a href=\\"{link}\\">CMS-järjestelmään</a>.'
     UnableDeleteInstall: 'Asennustiedostojen automaattinen poistaminen ei onnistunut. Ole hyvä ja poista seuraavat tiedostot manuaalisesti.'
     VIEWPAGEIN: 'Tarkastele sivua:'
   ErrorPage:
@@ -338,7 +338,7 @@ fi:
     MODIFIEDONDRAFTHELP: 'Sivulla on tehty muutoksia, joita ei ole julkaistu'
     MODIFIEDONDRAFTSHORT: Muokattu
     MetadataToggle: Meta-tiedot
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
+    OBSOLETECLASS: 'Tämä sivu on vanhentunutta tyyppiä ({type}). Tallentaminen nollaa tyypin ja saatat menettää tietoja.'
     PAGELOCATION: 'Sivun sijainti'
     PAGETITLE: 'Sivun nimi'
     PAGETYPE: 'Sivun tyyppi'

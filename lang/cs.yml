@@ -5,7 +5,7 @@ cs:
     ActionAdd: 'Přidat složku'
     AppCategoryArchive: Archív
     AppCategoryAudio: Zvuk
-    AppCategoryDocument: Document
+    AppCategoryDocument: Dokument
     AppCategoryFlash: Flash
     AppCategoryImage: Obrázek
     AppCategoryVideo: Video
@@ -171,18 +171,18 @@ cs:
     DRAFTSITE: 'Koncept webu'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Abyste mohli prohlížet archiv nebo koncepty, musíte být přihlášeni se svým CMS heslem. <a href="%s">Klikněte sem pro návrat na zveřejněné stránky.</a>'
     Email: Email
-    INSTALL_SUCCESS: 'Installation Successful!'
+    INSTALL_SUCCESS: 'Instalace úspěšná!'
     InstallFilesDeleted: 'Instalační soubory byly odstraněny úspěšně.'
     InstallSecurityWarning: 'Z bezpečnostních důvodů byste měli nyní odstranit instalační soubory, pokud se nechystáte přeinstalovat později (<em>vyžaduje admin přihlášení, viz výše </em>). Webový server nyní potřebuje pouze přístup pro zápis do složky "assets", můžete odstranit práva zápisu ze všech ostatních složek. <a href="{link}" style="text-align: center;"> Klikněte sem pro smazání instalačních souborů.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
+    InstallSuccessCongratulations: 'SilverStripe byl nainstalován úspěšně!'
     LOGGEDINAS: 'Přihlášen jako'
     LOGIN: Přihlášení
     LOGOUT: Odhlášení
     NOTLOGGEDIN: 'Není přihlášen'
     PUBLISHEDSITE: 'Zveřejnen web'
     Password: Heslo
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    PostInstallTutorialIntro: 'Tento web je zjednodušená verze SilverStripe 3. webu. Pro rozšíření, podívejte se na {link} prosím.'
+    StartEditing: 'Můžete začít editovat váš obsah webu otevřením <a href=\\"{link}\\">CMS</a>.'
     UnableDeleteInstall: 'Nelze smazat instalační soubory. Prosím, odstraňte soubory níže ručně'
     VIEWPAGEIN: 'Zobrazit stránku v:'
   ErrorPage:
@@ -338,7 +338,7 @@ cs:
     MODIFIEDONDRAFTHELP: 'Stránka má nezveřejněné změny'
     MODIFIEDONDRAFTSHORT: Změněno
     MetadataToggle: Metadata
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
+    OBSOLETECLASS: 'Tato stránka je zastaralý typ {type}. Uložení spůsobí zrušení jeho typu a vy můžete přijít o svá data'
     PAGELOCATION: 'Umístění stránky'
     PAGETITLE: 'Název stránky'
     PAGETYPE: 'Typ stránky'
