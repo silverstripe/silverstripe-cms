@@ -183,17 +183,17 @@ en_GB:
     Password: Password
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
     StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
-    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
+    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually.'
     VIEWPAGEIN: 'View Page in:'
   ErrorPage:
     CODE: 'Error code'
     DEFAULTERRORPAGECONTENT: '<p>Sorry, it seems you were trying to access a page that doesn''t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>'
     DEFAULTERRORPAGETITLE: 'Page not found'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem handling your request.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Server error'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
-    PLURALNAME: 'Error Pags'
+    PLURALNAME: 'Error Pages'
     SINGULARNAME: 'Error Page'
     400: '400 - Bad Request'
     401: '401 - Unauthorised'
@@ -269,7 +269,7 @@ en_GB:
     ParameterLiveCheckbox: 'Check live site'
     REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
+    ShareInstructions: 'To share a link to this page, copy and paste the link below.'
     ShareLink: 'Share link'
   SilverStripeNavigatorLinkl:
     CloseLink: Close
