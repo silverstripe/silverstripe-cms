@@ -4,13 +4,13 @@ bg:
     ALLOWEDEXTS: 'Разрешени разширения'
     ActionAdd: 'Добави директория'
     AppCategoryArchive: Архив
-    AppCategoryAudio: Audio
+    AppCategoryAudio: Аудио
     AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: Image
-    AppCategoryVideo: Video
+    AppCategoryVideo: Видео
     BackToFolder: 'Обратно към директорията'
-    CREATED: Date
+    CREATED: 'Дата на създаване'
     CurrentFolderOnly: 'Ограничи в текущата директория?'
     DetailsView: Details
     FILES: Файлове
@@ -19,7 +19,7 @@ bg:
     FROMTHEINTERNET: 'От интернет'
     FROMYOURCOMPUTER: 'From your computer'
     Filetype: 'File type'
-    ListView: 'List View'
+    ListView: 'Изглед в списък'
     MENUTITLE: Файлове
     NEWFOLDER: 'Нова директория'
     SIZE: Размер
@@ -36,7 +36,7 @@ bg:
     BACKLINKCOUNT: 'Използвано от:'
     PAGES: Страница/и
   BackLink_Button.ss:
-    Back: Back
+    Back: Назад
   BrokenLinksReport:
     Any: Всички
     BROKENLINKS: 'Списък на развалени линкове'
@@ -69,7 +69,7 @@ bg:
     PUBLISHED_PAGES: 'Публикувани %d страници, %d грешки'
     PUBLISH_PAGES: Публикувай
     UNPUBLISHED_PAGES: 'Премахнати от публикация %d страници'
-    UNPUBLISH_PAGES: Un-publish
+    UNPUBLISH_PAGES: 'Премахни от публикация'
   CMSFileAddController:
     MENUTITLE: Files
   CMSMain:
@@ -153,7 +153,7 @@ bg:
     FILTERDATEFROM: От
     FILTERDATEHEADING: Дата
     FILTERDATETO: Към
-    FILTERLABELTEXT: Content
+    FILTERLABELTEXT: Съдържание
   CMSSettingsController:
     MENUTITLE: Настройки
   CMSSiteTreeFilter_ChangedPages:
@@ -230,7 +230,7 @@ bg:
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: 'Резултати от търсенето'
-    VersionUnknown: Unknown
+    VersionUnknown: Неизвестно
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
   Permissions:
