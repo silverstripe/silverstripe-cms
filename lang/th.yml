@@ -73,7 +73,7 @@ th:
   CMSFileAddController:
     MENUTITLE: ไฟล์
   CMSMain:
-    ACCESS: 'Access to ''{title}'' section'
+    ACCESS: 'เข้าถึงเซ็กชั่น ''{title}'''
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
     AddNew: เพิ่มหน้าใหม่
     AddNewButton: เพิ่มใหม่
@@ -98,7 +98,7 @@ th:
     PUBPAGES: 'เผยแแพร่หน้าเว็บแล้ว {count} หน้า'
     PageAdded: หน้าเว็บที่สร้างเสร็จเรียบร้อยแล้ว
     REMOVED: 'ลบ ''%s''%s จากเว็บไซต์ที่ออนไลน์สดๆอยู่แล้ว'
-    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
+    REMOVEDPAGE: 'ลบ ''{title}'' ออกจากเว็บไซต์ที่เผยแพร่อยู่แล้ว'
     REMOVEDPAGEFROMDRAFT: 'ลบ ''%s'' ออกจากเว็บไซต์ฉบับร่างแล้ว'
     RESTORE: คืนค่า
     RESTORED: 'เรียกคืนค่า ''{title}'' เสร็จเรียบร้อยแล้ว'
@@ -146,7 +146,7 @@ th:
     TreeView: 'มุมมองแบบ Tree'
   CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: ลากแล้วปล่อย
-    MULTISELECT: Multi-selection
+    MULTISELECT: การเลือกพร้อมกันหลายรายการ
   CMSPagesController_Tools.ss:
     FILTER: ตัวกรองข้อมูล
   CMSSearch:
@@ -267,7 +267,7 @@ th:
     LAST2WEEKS: 'หน้าเว็บที่ถูกแก้ไขใน 2 สัปดาห์ล่าสุด'
     OtherGroupTitle: อื่นๆ
     ParameterLiveCheckbox: ดูเว็บไซต์แบบสดๆ
-    REPEMPTY: 'The {title} report is empty.'
+    REPEMPTY: 'รายงาน {title} ยังว่างอยู่'
   SilverStripeNavigatorLink:
     ShareInstructions: 'หากต้องการแชร์หน้าเว็บนี้, คัดลอกแล้วนำลิงก์ด้านล่างนี้ไปวาง'
     ShareLink: ลิงก์ที่ต้องการแชร์
@@ -335,7 +335,7 @@ th:
     METAEXTRA: 'Meta Tags แบบกำหนดเอง'
     METAKEYWORDS: คีย์เวิร์ด
     METATITLE: ชื่อ
-    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
+    MODIFIEDONDRAFTHELP: หน้าเว็บถูกเปลี่ยนค่าเป็นระงับการเผยแพร่แล้ว
     MODIFIEDONDRAFTSHORT: แก้ไขเมื่อ
     MetadataToggle: Metadata
     OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
