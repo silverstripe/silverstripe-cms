@@ -14,7 +14,7 @@ fr:
     CurrentFolderOnly: 'Limiter au dossier actuel ?'
     DetailsView: Détails
     FILES: Fichiers
-    FILESYSTEMSYNC: 'Sync files'
+    FILESYSTEMSYNC: 'Synchroniser les fichiers'
     FILESYSTEMSYNCTITLE: 'Met à jour la base de données du système de fichiers, de façon à prendre en compte des fichiers téléchargés en dehors du CMS (p. ex. par FTP).'
     FROMTHEINTERNET: 'En ligne'
     FROMYOURCOMPUTER: 'Depuis votre ordinateur'
@@ -87,7 +87,7 @@ fr:
     EditTree: 'Ağacı düzenle'
     ListFiltered: 'Filtrelenmiş liste.'
     MENUTITLE: 'Éditer la page'
-    NEWPAGE: 'New {pagetype}'
+    NEWPAGE: 'Nouveau {pagetype}'
     PAGENOTEXISTS: 'Cette page n''existe pas'
     PAGES: Pages
     PAGETYPEANYOPT: Tous
@@ -171,10 +171,10 @@ fr:
     DRAFTSITE: 'Site Brouillon'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Vous devez vous authentifier avec votre mot de passe CMS afin de pouvoir consulter le contenu brouillon ou archivé. <a href="%s">Cliquer ici pour revenir au site publié.</a>'
     Email: 'Courrier électronique'
-    INSTALL_SUCCESS: 'Installation Successful!'
+    INSTALL_SUCCESS: 'Installation terminée!'
     InstallFilesDeleted: 'Les fichiers d’installation ont été supprimés. '
     InstallSecurityWarning: 'Pour des raisons de sécurité vous devriez supprimer maintenant les fichiers d’installation, à moins que vous n’ayez prévu de réinstaller le système ultérieurement (<em>ce qui nécessite de se connecter comme administrateur, voir plus haut</em>). Désormais, votre serveur n’aura besoin de droits de accès en écriture que pour le dossier « assets », vous pouvez donc les révoquer pour tous les autres dossiers. <a href="{link}" style="text-align: center;">Faites clic ici pour supprimer les fichiers d’installation.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
+    InstallSuccessCongratulations: 'SilverStripe a été installé avec succès.'
     LOGGEDINAS: 'Connecté en tant que'
     LOGIN: Connectez-vous
     LOGOUT: 'Se déconnecter'
@@ -249,7 +249,7 @@ fr:
     YOURPAGE: 'Page de votre site web'
   ReportAdmin:
     MENUTITLE: Rapports
-    ReportTitle: Title
+    ReportTitle: Titre
   ReportAdminForm:
     FILTERBY: 'Filtrer par'
   SearchForm:
@@ -338,7 +338,7 @@ fr:
     MODIFIEDONDRAFTHELP: 'La page comporte des modifications non publiées'
     MODIFIEDONDRAFTSHORT: Modifiée
     MetadataToggle: Métadonnées
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
+    OBSOLETECLASS: 'Cette page est de type {type}. Celui-ci est obsolète. Vous pourriez perdre des données en sauvegardant dans ce type.'
     PAGELOCATION: 'Emplacement de la page'
     PAGETITLE: 'Nom de la page'
     PAGETYPE: 'Type de page'
