@@ -330,7 +330,7 @@ th:
     INHERIT: สืบทอดค่าจากหน้าเว็บต้นทาง
     LASTUPDATED: อัพเดทล่าสุด
     LINKCHANGENOTE: การเปลี่ยนลิงก์ของหน้าเว็บนี้จะส่งผลถึงลิงก์ต่างๆที่อยู่ในหน้าเว็บลูกด้วย
-    MENUTITLE: 'Navigation label'
+    MENUTITLE: ป้ายบอกทาง
     METADESC: รายละเอียด
     METAEXTRA: 'Meta Tags แบบกำหนดเอง'
     METAKEYWORDS: คีย์เวิร์ด
@@ -361,13 +361,13 @@ th:
     SINGULARNAME: หน้า
     TABBEHAVIOUR: พฤติกรรม
     TABCONTENT: เนื้อหา
-    TABDEPENDENT: 'Dependent pages'
+    TABDEPENDENT: หน้าย่อย
     TOPLEVEL: 'เนื้อหาเว็บไซต์ (ระดับสูงสุด)'
     TOPLEVELCREATORGROUPS: ผู้สร้างระดับสูงสุด
     URLSegment: 'ส่วนการจัดการ URL'
     VIEWERGROUPS: กลุ่มผู้ชม
     VIEW_ALL_DESCRIPTION: เปิดดูหน้าเว็บใดก็ได้
-    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
+    VIEW_ALL_HELP: 'สามารถเปิดดูหน้าเว็บใดๆก็ได้ในเว็บไซต์, โดยไม่จำเป็นต้องคำนึงถึงการตั้งในส่วนของแท็บการเข้าถึง จำเป็นต้องได้รับสิทธิ์ "สามารถเข้าถึงเนื้อหาในเว็บไซต์ได้"'
     VIEW_DRAFT_CONTENT: เปิดดูเนื้อหาฉบับร่าง
     VIEW_DRAFT_CONTENT_HELP: 'นำไปใช้ในการดูหน้าเว็บที่อยู่ด้านนอก CMS ในโหมดฉบับร่าง มีประโยชน์สำหรับการทำงานร่วมกันจากภายนอก โดยไม่จำเป็นต้องเข้าถึง CMS'
     Viewers: กลุ่มผู้เข้าชม
