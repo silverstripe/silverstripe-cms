@@ -19,18 +19,11 @@
 	font-size: 11px;
 }
 
-.ReportAdmin .filters {
-	overflow: auto;
-}
-
 .ReportAdmin .filters .field {
 	padding: 0;
 }
 
 .ReportAdmin .filters > .field {
-	float: left;
-	clear: none;
-	margin-right: 1em;
 	margin-bottom: .5em;
 }
 
