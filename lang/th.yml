@@ -23,7 +23,7 @@ th:
     MENUTITLE: ไฟล์
     NEWFOLDER: สร้างโฟลเดอร์ใหม่
     SIZE: ขนาด
-    THUMBSDELETED: '{count} unused thumbnails have been deleted'
+    THUMBSDELETED: '{count} รูปย่อที่ไม่ได้ถูกใช้งานได้ถูกลบทิ้งแล้ว'
     TreeView: 'มุมมองแบบ Tree'
     Upload: อัพโหลด
   AssetAdmin_DeleteBatchAction:
@@ -181,7 +181,7 @@ th:
     NOTLOGGEDIN: ยังไม่ได้เข้าสู่ระบบ
     PUBLISHEDSITE: เว็บไซต์ที่เผยแพร่อยู่
     Password: รหัสผ่าน
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    PostInstallTutorialIntro: 'เว็บไซต์นี้เป็นรุ่นอย่างง่ายของเว็บไซต์ที่สร้างจากรุ่น SiverStripe 3 หากต้องการขยายขีดความสามารถ กรุณาเข้าไปที่ {link}'
     StartEditing: 'คุณสามารถเริ่มต้นแก้ไขเนื้อหาในเว็บไซต์ของคุณได้โดยการเปิด <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'ไม่สามารถลบไฟล์ติดตั้งได้ กรุณาลบไฟล์ดังกล่าวด้านล่างด้วยตนเอง'
     VIEWPAGEIN: 'เปิดดูหน้าเว็บใน:'
@@ -195,7 +195,7 @@ th:
     ERRORFILEPROBLEM: 'เกิดข้อผิดพลาดในการเปิดไฟล์ "{filename}" เพื่อเขียนข้อมูล. กรุณาตรวจสอบสิทธิ์.'
     PLURALNAME: หน้าแสดงข้อผิดพลาด
     SINGULARNAME: หน้าแสดงข้อผิดพลาด
-    400: '400 - Bad Request'
+    400: '400 - ข้อความร้องขอที่ส่งมามีความผิดพลาดทางไวยากรณ์ หรือไม่สามารถทำตามการร้องขอนั้นได้'
     401: '401 - Unauthorized'
     403: '403 - Forbidden'
     404: '404 - Not Found'
@@ -238,7 +238,7 @@ th:
     PERMISSIONS_CATEGORY: บทบาทและสิทธิ์อนุญาตการเข้าถึง
   RedirectorPage:
     DESCRIPTION: เปลี่ยนเส้นทางไปยังหน้าเว็บภายในอื่นๆ
-    HASBEENSETUP: 'A redirector page has been set up without anywhere to redirect to.'
+    HASBEENSETUP: หน้าเว็บที่มีการเปลี่ยนเส้นทางซึ่งได้รับการตั้งค่าโดยปราศจากตำแหน่งปลายทางที่ต้องการเปลี่ยนเส้นทางไป
     HEADER: หน้าเว็บนี้จะเปลี่ยนเส้นทางผู้ใช้งานไปยังหน้าเว็บอื่นๆ
     OTHERURL: 'ที่อยู่ URL ของเว็บไซต์อื่นๆ'
     PLURALNAME: หน้าเว็บเปลี่ยนเส้นทาง
@@ -281,7 +281,7 @@ th:
     PLURALNAME: กำหนดค่าเว็บไซต์
     SINGULARNAME: ตั้งค่าเว็บไซต์
     SITENAMEDEFAULT: ชื่อเว็บไซต์ของคุณ
-    SITETAGLINE: 'Site Tagline/Slogan'
+    SITETAGLINE: สโลแกนของเว็บไซต์
     SITETITLE: ชื่อเว็บไซต์
     TABACCESS: เข้าถึง
     TABMAIN: หน้าหลัก
@@ -297,7 +297,7 @@ th:
     ADDEDTODRAFTHELP: หน้าเว็บยังไม่ได้ถูกเผยแพร่
     ADDEDTODRAFTSHORT: ฉบับร่าง
     ALLOWCOMMENTS: 'อนุญาตให้แสดงความเห็นในหน้านีหรือไม่?'
-    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+    APPEARSVIRTUALPAGES: 'เนื้อหานี้ปรากฏอยู่ในหน้าเว็บจำลองในส่วนของ {title} ด้วยเช่นกัน'
     BUTTONCANCELDRAFT: ยกเลิกการเปลี่ยนแปลงในฉบับร่าง
     BUTTONCANCELDRAFTDESC: ลบฉบับร่างของคุณแล้วย้อนกลับไปใช้หน้าเว็บที่เผยแพร่อยู่ในขณะนี้
     BUTTONSAVEPUBLISH: บันทึกและเผยแพร่
@@ -350,7 +350,7 @@ th:
     PERMISSION_GRANTACCESS_HELP: 'อนุญาตให้มีการตั้งค่าข้อจำกัดในการเข้าถึงหน้าเว็บเฉพาะหน้าได้จากส่วนของ "หน้าเว็บ"'
     PLURALNAME: หน้า
     PageTypNotAllowedOnRoot: 'ประเภทของหน้าเว็บ "{type}" ไม่ได้รับอนุญาตให้สามารถใช้งานได้ที่ตำแหน่ง root'
-    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
+    PageTypeNotAllowed: 'ชนิดของหน้าเว็บ "{type}" ไม่ได้รับอนุญาตให้ใช้เป็นหน้าเว็บลูกของหน้าเว็บแม่นี้'
     REMOVEDFROMDRAFTHELP: 'หน้าเว็บถูกเผยแพร่แล้ว แต่ถูกลบออกจากฉบับร่างด้วยเช่นกัน'
     REMOVEDFROMDRAFTSHORT: ลบออกจากฉบับร่าง
     REMOVE_INSTALL_WARNING: 'คำเตือน: คุณควรลบไฟล์ install.php ออกหลังการติดตั้ง SilverStripe เพื่อความปลอดภัย'
@@ -377,7 +377,7 @@ th:
     many_many_ImageTracking: แกะรอยรูปภาพ
     many_many_LinkTracking: แกะรอยลิงก์
   SiteTreeURLSegmentField:
-    HelpChars: ' Special characters are automatically converted or removed.'
+    HelpChars: ตัวอักษรพิเศษได้ถูกแปลงค่าหรือลบออกโดยอัตโนมัติแล้ว
   StaticExporter:
     BASEURL: 'URL หลักสำหรับอ้างอิง'
     EXPORTTO: ส่งออกข้อมูลไปยังโฟลเดอร์
@@ -407,5 +407,5 @@ th:
     EDITCONTENT: คลิกที่นี่เพื่อแก้ไขเนื้อหา
     HEADER: นี่เป็นหน้าเว็บจำลอง
     PLURALNAME: หน้าเว็บจำลอง
-    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
+    PageTypNotAllowedOnRoot: 'ชนิดของหน้าเว็บดั้งเดิม "{type}" ไม่ได้รับอนุญาตให้ใช้งานกับหน้าเว็บจำลองที่ตำแหน่ง root'
     SINGULARNAME: หน้าจำลอง
