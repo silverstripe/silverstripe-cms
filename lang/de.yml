@@ -5,6 +5,7 @@ de:
     ActionAdd: 'Ordner hinzufügen'
     AppCategoryArchive: Archivieren
     AppCategoryAudio: Audio
+    AppCategoryDocument: Dokument
     AppCategoryFlash: Flash
     AppCategoryImage: Bild
     AppCategoryVideo: Video
@@ -13,6 +14,7 @@ de:
     CurrentFolderOnly: 'Auf den aktuellen Ordner beschränken?'
     DetailsView: Details
     FILES: Dateien
+    FILESYSTEMSYNC: 'Dateien synchronisieren'
     FILESYSTEMSYNCTITLE: 'Aktualisiere die CMS Datenbankeinträge zu Dateien auf dem Server. Dies ist dann hilfreich, wenn Dateien ausserhalb des CMS hochgeladen wurden, z.B. mit FTP.'
     FROMTHEINTERNET: 'Aus dem Internet'
     FROMYOURCOMPUTER: 'Von Ihrem Computer'
@@ -85,7 +87,7 @@ de:
     EditTree: 'Seitenbaum bearbeiten'
     ListFiltered: 'Gefilterte Liste'
     MENUTITLE: 'Seite bearbeiten'
-    NEW: Neu
+    NEWPAGE: 'Neue {pagetype}'
     PAGENOTEXISTS: 'Diese Seite existiert nicht'
     PAGES: Seiten
     PAGETYPEANYOPT: Alle
@@ -167,19 +169,20 @@ de:
     ARCHIVEDSITEFROM: 'Site archiviert von'
     CMS: CMS
     DRAFTSITE: Vorschau-Site
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Sie müssen sich mit ihrem CMS Passwort einloggen, um den Entwurf oder den archivierten Inhalt zu sehen. <a href="%s">Hier klicken um zurück zur veröffentlichten Site zu gehen.</a>'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Sie müssen sich mit Ihrem CMS Passwort einloggen, um den Entwurf oder den archivierten Inhalt zu sehen. <a href="%s">Zurück zur veröffentlichten Seite.</a>'
     Email: E-Mail
+    INSTALL_SUCCESS: 'Die Installation war erfolgreich!'
     InstallFilesDeleted: 'Die Installationsdateien wurden erfolgreich gelöscht.'
     InstallSecurityWarning: 'Zu Ihrer Sicherheit löschen Sie jetzt bitte die Installationsdateien, es sei denn Sie möchten zu einem späteren Zeitpunkt erneut installieren. (<em>Dies erfordert den Administrator-Zugang (siehe oben)</em>). Der Webserver benötigt nun nur noch Schreibrechte auf das "assets" Verzeichnis und Sie können die Schreibrechte für alle anderen Ordner entfernen. <a href="{link}" style="text-align: center;">Die Installationsdaten jetzt löschen.</a> '
-    InstallSuccessCongratulations: 'SilverStripe wurde erfolgreich installiert.'
+    InstallSuccessCongratulations: 'SilverStripe wurde erfolgreich installiert!'
     LOGGEDINAS: 'Angemeldet als'
     LOGIN: Anmelden
     LOGOUT: Abmelden
     NOTLOGGEDIN: 'Nicht angemeldet'
     PUBLISHEDSITE: 'Veröffentlichte Site'
     Password: Passwort
-    PostInstallTutorialIntro: 'Diese Website ist eine vereinfachte Version einer SIlverStripe 2 Site. Um diese zu erweitern, besuchen Sie {link}.'
-    StartEditing: 'Sie können mit der Bearbeitung der Inhalte Ihrer Site beginnen, indem Sie <a href="{link}">das CMS</a> öffnen.'
+    PostInstallTutorialIntro: 'Diese Internetseite ist eine einfache Version einer SilverStripe 3 Seite. Wie man diese erweitert, erfährst Du in der {link}.'
+    StartEditing: 'Du kannst nun beginnen die Seiteninhalte zu bearbeiten in dem Du <a href=\\"{link}\\">das CMS</a> öffnest.'
     UnableDeleteInstall: 'Die Installationsdateien konnten nicht gelöscht werden. Bitte löschen Sie die Dateien manuell.'
     VIEWPAGEIN: 'Seite anzeigen in:'
   ErrorPage:
@@ -246,6 +249,7 @@ de:
     YOURPAGE: 'Seite auf Ihrer Website'
   ReportAdmin:
     MENUTITLE: Berichte
+    ReportTitle: Titel
   ReportAdminForm:
     FILTERBY: 'Filtern nach'
   SearchForm:
@@ -266,7 +270,7 @@ de:
     REPEMPTY: 'Der Bericht ''{title}'' ist leer.'
   SilverStripeNavigatorLink:
     ShareInstructions: 'Kopieren Sie den folgenden Link um diesen jemanden mitzuteilen.'
-    ShareLink: 'Link mitteilen'
+    ShareLink: 'Link teilen'
   SilverStripeNavigatorLinkl:
     CloseLink: schließen
   SiteConfig:
@@ -288,7 +292,7 @@ de:
   SiteTree:
     ACCESSANYONE: Jeder
     ACCESSHEADER: 'Wer kann diese Seite auf meiner Website ansehen?'
-    ACCESSLOGGEDIN: 'eingeloggte Nutzer'
+    ACCESSLOGGEDIN: 'Angemeldete Benutzer'
     ACCESSONLYTHESE: 'Nur folgende Personen (aus der der Liste wählen)'
     ADDEDTODRAFTHELP: 'Die Seite wurde noch nicht veröffentlicht'
     ADDEDTODRAFTSHORT: Entwurf
@@ -320,7 +324,7 @@ de:
     EDITORGROUPS: Bearbeitergruppen
     EDIT_ALL_DESCRIPTION: 'Kann beliebige Seiten bearbeiten'
     EDIT_ALL_HELP: 'Kann beliebige Seiten auf der Site bearbeiten; seitenspezifische Sicherheitseinstellungen werden ignoriert.'
-    Editors: 'Editor Gruppen'
+    Editors: 'Bearbeiter Gruppen'
     HASBROKENLINKS: 'Diese Seite enthält ungültige Verweise.'
     HTMLEDITORTITLE: Inhalt
     INHERIT: 'Übernehmen von der übergeordneten Seite'
@@ -334,13 +338,14 @@ de:
     MODIFIEDONDRAFTHELP: 'Die Seite hat unveröffentlichte Änderungen'
     MODIFIEDONDRAFTSHORT: 'Zuletzt geändert'
     MetadataToggle: Metadaten
+    OBSOLETECLASS: 'Der Seitentyp {type} dieser Seite existiert nicht mehr. Durch Speichern wird der Seitentyp zurückgesetzt, dies könnte Datenverluste zur Folge haben.'
     PAGELOCATION: Seitenposition
     PAGETITLE: Seitenname
     PAGETYPE: Seitentyp
     PARENTID: 'Übergeordnete Seite'
     PARENTTYPE: Seitenposition
     PARENTTYPE_ROOT: 'Seite auf der obersten Ebene'
-    PARENTTYPE_SUBPAGE: 'Seite unterhalb einer übergeordneten Seite (wählen Sie unten)'
+    PARENTTYPE_SUBPAGE: 'Seite unterhalb einer übergeordneten Seite'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Zugriffsrechte für Inhalte verwalten'
     PERMISSION_GRANTACCESS_HELP: 'Einstellung von seitenspezifischen Zugriffsbeschränkungen im Bereich "Seiteninhalt" erlauben'
     PLURALNAME: Seiten
@@ -404,5 +409,3 @@ de:
     PLURALNAME: 'Virtuelle Seiten'
     PageTypNotAllowedOnRoot: 'Der ursprüngliche Seitentyp "{type}" ist nicht zulässig für diese virtuelle Seite. '
     SINGULARNAME: 'Virtuelle Seite'
-  cms:
-    FILESYSTEMSYNC: 'Dateien synchronisieren'

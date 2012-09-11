@@ -5,6 +5,7 @@ gl_ES:
     ActionAdd: 'Engadir cartafol'
     AppCategoryArchive: Arquivo
     AppCategoryAudio: Audio
+    AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: Imaxe
     AppCategoryVideo: Video
@@ -13,6 +14,7 @@ gl_ES:
     CurrentFolderOnly: 'Limitar ao cartafol actual?'
     DetailsView: Detalles
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'Dende a Internet'
     FROMYOURCOMPUTER: 'Dende o teu Computador'
@@ -85,7 +87,7 @@ gl_ES:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Editar Páxina'
-    NEW: Novo
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Esta páxina non existe'
     PAGES: Páxinas
     PAGETYPEANYOPT: Ningún
@@ -169,17 +171,18 @@ gl_ES:
     DRAFTSITE: 'Sitio Borrador'
     DRAFT_SITE_ACCESS_RESTRICTION: 'You must log in with your CMS password in order to view the draft or archived content.  <a href="%s">Click here to go back to the published site.</a>'
     Email: Email
+    INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Installation files have been successfully deleted.'
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: 'Iniciada sesión como'
     LOGIN: 'Iniciar sesión'
     LOGOUT: 'Pechar sesión'
     NOTLOGGEDIN: 'Sen iniciar sesión'
     PUBLISHEDSITE: 'Sitio Publicado'
     Password: Password
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'Ver a Páxina en:'
   ErrorPage:
@@ -246,6 +249,7 @@ gl_ES:
     YOURPAGE: 'Páxina no teu sitio web'
   ReportAdmin:
     MENUTITLE: Informes
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filtrar por'
   SearchForm:
@@ -334,6 +338,7 @@ gl_ES:
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modificado
     MetadataToggle: Metadata
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: 'Localización da páxina'
     PAGETITLE: 'Nome da páxina'
     PAGETYPE: 'Tipo de Páxina'
@@ -343,7 +348,7 @@ gl_ES:
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Xestionar dereitos de acceso para o contido'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: 'Árbore do Sitio'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -353,7 +358,7 @@ gl_ES:
     REORGANISE_HELP: 'Reorganizar as páxinas na árbore do sitio a través de arrastrar e soltar.'
     SHOWINMENUS: 'Amosar nos menús?'
     SHOWINSEARCH: 'Amosar na busca?'
-    SINGULARNAME: 'Árbore do Sitio'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Comportamento
     TABCONTENT: 'Contido Principal'
     TABDEPENDENT: 'Páxinas dependentes'
@@ -404,5 +409,3 @@ gl_ES:
     PLURALNAME: 'Páxs Virtuais'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Páxina Virtual'
-  cms:
-    FILESYSTEMSYNC: 'Sincronizar ficheiros'

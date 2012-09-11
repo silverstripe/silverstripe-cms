@@ -5,6 +5,7 @@ da:
     ActionAdd: 'Tilføj mappe'
     AppCategoryArchive: Arkiv
     AppCategoryAudio: Lyd
+    AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: Billeder
     AppCategoryVideo: Video
@@ -13,6 +14,7 @@ da:
     CurrentFolderOnly: 'Begræns til den nuværende mappe'
     DetailsView: Detaljer
     FILES: Filer
+    FILESYSTEMSYNC: 'Synkronisér filer'
     FILESYSTEMSYNCTITLE: 'Opdater poster over filer i filsystemet i CMS-databasen. Dette kan være nyttigt når nye filer er blevet overført uden for CMS, f.eks. via FTP.'
     FROMTHEINTERNET: 'Fra internettet'
     FROMYOURCOMPUTER: 'Fra din computer'
@@ -85,7 +87,7 @@ da:
     EditTree: 'Rediger sidetræ'
     ListFiltered: 'Filtreret liste.'
     MENUTITLE: 'Rediger side'
-    NEW: Ny
+    NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Denne side eksisterer ikke'
     PAGES: Sider
     PAGETYPEANYOPT: Enhver
@@ -163,23 +165,24 @@ da:
   ContentControl:
     NOTEWONTBESHOWN: 'Bemærk: denne besked bliver ikke vist til dine besøgende '
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
+    ARCHIVEDSITE: Forhåndsvisning
     ARCHIVEDSITEFROM: 'Arkiveret side fra'
     CMS: CMS
     DRAFTSITE: Kladdeside
     DRAFT_SITE_ACCESS_RESTRICTION: 'Du skal være logget ind med din CMS adgangskode for se indhold af kladder eller arkiv. <a href="%s">Klik her for at komme tilbage til den udgivne side.</a>'
     Email: Email
+    INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Installationsfilerne blev slettet korrekt.'
     InstallSecurityWarning: 'Af sikkerhedmæssige årsager bør du slette installationsfilerne, medmindre du planlægger at installere igen på et senere tidspunkt (<em>kræver admin login, se det ovenstående</em>). Webserveren behøver også kun skriverettigheder til mappen "assets", du kan fjerne skriverettigheder til alle de andre mapper. <a href="{link}" style="text-align: center;">Klik her for at slette installationsfilerne.</a>'
-    InstallSuccessCongratulations: 'SilverStripe blev installeret korrekt.'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: 'Logget på som'
     LOGIN: 'Log ind'
     LOGOUT: 'Log ud'
     NOTLOGGEDIN: 'Ikke logget ind'
     PUBLISHEDSITE: 'Udgivet side'
     Password: Adgangskode
-    PostInstallTutorialIntro: 'Denne hjemmeside er en forenklet udgave af en SilverStripe 2 side. For at udvide dette, bedes du tage et kig på {link}.'
-    StartEditing: 'Du kan starte med at redigere dit websteds indhold ved at åbne <a href="{link}">CMS\\''en</a>.'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'Var ikke i stand til at slette installationsfilerne. Slet venligst filerne herunder manuelt.'
     VIEWPAGEIN: 'Vis side i:'
   ErrorPage:
@@ -190,8 +193,8 @@ da:
     DEFAULTSERVERERRORPAGETITLE: Serverfejl
     DESCRIPTION: 'Brugerdefineret indhold for forskellige fejltyper (f.eks. "Siden blev ikke fundet")'
     ERRORFILEPROBLEM: 'Kunne ikke åbne filen "{filename}" til skrivning. Undersøg filrettighederne.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
+    PLURALNAME: Fejlsider
+    SINGULARNAME: Fejlside
     400: '400 - Bad Request'
     401: '401 - Unauthorized'
     403: '403 - Forbidden'
@@ -238,14 +241,15 @@ da:
     HASBEENSETUP: 'En omdirigeringsside er blevet sat op, uden et sted at omdirigere til.'
     HEADER: 'Denne side omdirigerer besøgende til en anden side'
     OTHERURL: 'Andet websteds URL'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: 'Videresendende side'
     REDIRECTTO: 'Omdiriger til'
     REDIRECTTOEXTERNAL: 'Et andet websted'
     REDIRECTTOPAGE: 'En side på dit websted'
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: 'Viderestillende side'
     YOURPAGE: 'Side på dit websted'
   ReportAdmin:
     MENUTITLE: Rapporter
+    ReportTitle: Titel
   ReportAdminForm:
     FILTERBY: 'Filtrer ved'
   SearchForm:
@@ -274,8 +278,8 @@ da:
     EDITHEADER: 'Hvem kan redigere sider på dette websted ?'
     EDIT_PERMISSION: 'Administrer sideopsætningen'
     EDIT_PERMISSION_HELP: 'Mulighed for at ændre indstillingerne for global adgang / topniveauside tilladelser.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
+    PLURALNAME: Løsningskonfigurationer
+    SINGULARNAME: Løsningskonfiguration
     SITENAMEDEFAULT: 'Dit sidenavn'
     SITETAGLINE: 'Webstedets Tagline/Slogan'
     SITETITLE: Sidetitel
@@ -334,6 +338,7 @@ da:
     MODIFIEDONDRAFTHELP: 'Siden har ikke-udgivne ændringer'
     MODIFIEDONDRAFTSHORT: Ændret
     MetadataToggle: Metadata
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: Sideplacering
     PAGETITLE: Sidenavn
     PAGETYPE: Sidetype
@@ -343,7 +348,7 @@ da:
     PARENTTYPE_SUBPAGE: 'Underside fra en overliggende side'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Administrer adgangsrettigheder for indhold'
     PERMISSION_GRANTACCESS_HELP: 'Tillad indstilling af side-specifikke adgangsbegrænsninger i sektionen "Sider" .'
-    PLURALNAME: Sidetræer
+    PLURALNAME: Sider
     PageTypNotAllowedOnRoot: 'Sidetypen "{type}" er ikke tilladt på rodniveau'
     PageTypeNotAllowed: 'Sidetypen {type} er ikke tilladt som underside til denne side'
     REMOVEDFROMDRAFTHELP: 'Siden er udgivet, men er blevet slette fra kladder'
@@ -353,7 +358,7 @@ da:
     REORGANISE_HELP: 'Omarranger sider i sidetræet ved hjælp af træk&slip.'
     SHOWINMENUS: 'Vis i menuer ?'
     SHOWINSEARCH: 'Vis i søgninger?'
-    SINGULARNAME: Sidetræ
+    SINGULARNAME: Side
     TABBEHAVIOUR: Opførsel
     TABCONTENT: 'Primært indhold'
     TABDEPENDENT: 'Afhængige sider'
@@ -404,5 +409,3 @@ da:
     PLURALNAME: 'Virtuelle sider'
     PageTypNotAllowedOnRoot: 'Original side type "{type}" er ikke tilladt på rodniveau for denne virtuelle side'
     SINGULARNAME: 'Virtuel side'
-  cms:
-    FILESYSTEMSYNC: 'Synkronisér filer'

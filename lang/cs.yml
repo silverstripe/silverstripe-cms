@@ -5,6 +5,7 @@ cs:
     ActionAdd: 'Přidat složku'
     AppCategoryArchive: Archív
     AppCategoryAudio: Zvuk
+    AppCategoryDocument: Dokument
     AppCategoryFlash: Flash
     AppCategoryImage: Obrázek
     AppCategoryVideo: Video
@@ -13,6 +14,7 @@ cs:
     CurrentFolderOnly: 'Omezit na aktuální složku?'
     DetailsView: Detaily
     FILES: Soubory
+    FILESYSTEMSYNC: 'Synchronizovat soubory'
     FILESYSTEMSYNCTITLE: 'Aktualizace záznamů souborů databáze CMS na souborovém systému. Užitečné, když byly nové soubory nahrány mimo CMS, např. přes FTP.'
     FROMTHEINTERNET: 'Z internetu'
     FROMYOURCOMPUTER: 'Z vašeho počítače'
@@ -85,10 +87,10 @@ cs:
     EditTree: 'Editovat strom'
     ListFiltered: 'Filtrovaný seznam.'
     MENUTITLE: 'Editovat stránku'
-    NEW: Nový
+    NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Tato stránka neexistuje'
     PAGES: Stránky
-    PAGETYPEANYOPT: Jakkýkoliv
+    PAGETYPEANYOPT: Jakékoliv
     PAGETYPEOPT: 'Typ stránky'
     PUBALLCONFIRM: 'Prosím zveřejněte veškeré stránky z úschovny'
     PUBALLFUN: 'Funkce "Publikovat vše"'
@@ -169,17 +171,18 @@ cs:
     DRAFTSITE: 'Koncept webu'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Abyste mohli prohlížet archiv nebo koncepty, musíte být přihlášeni se svým CMS heslem. <a href="%s">Klikněte sem pro návrat na zveřejněné stránky.</a>'
     Email: Email
+    INSTALL_SUCCESS: 'Instalace úspěšná!'
     InstallFilesDeleted: 'Instalační soubory byly odstraněny úspěšně.'
-    InstallSecurityWarning: 'Z bezpečnostních důvodů byste se měli nyní odstranit instalační soubory, pokud se nechystáte přeinstalovat později (<em>vyžaduje admin přihlášení, viz výše </em>). Webový server nyní potřebuje pouze přístup pro zápis do složky "assets", můžete odstranit práva zápisu ze všech ostatních složek. <a href="{link}" style="text-align: center;"> Klikněte sem pro smazání instalačních souborů.</a>'
-    InstallSuccessCongratulations: 'SilverStripe byl nainstalován úspěšně.'
+    InstallSecurityWarning: 'Z bezpečnostních důvodů byste měli nyní odstranit instalační soubory, pokud se nechystáte přeinstalovat později (<em>vyžaduje admin přihlášení, viz výše </em>). Webový server nyní potřebuje pouze přístup pro zápis do složky "assets", můžete odstranit práva zápisu ze všech ostatních složek. <a href="{link}" style="text-align: center;"> Klikněte sem pro smazání instalačních souborů.</a>'
+    InstallSuccessCongratulations: 'SilverStripe byl nainstalován úspěšně!'
     LOGGEDINAS: 'Přihlášen jako'
     LOGIN: Přihlášení
     LOGOUT: Odhlášení
     NOTLOGGEDIN: 'Není přihlášen'
     PUBLISHEDSITE: 'Zveřejnen web'
     Password: Heslo
-    PostInstallTutorialIntro: 'Tento web je zjednodušená verze SilverStripe 2. webu. Pro rozšíření, prosím podívejte se na {link}.'
-    StartEditing: 'Můžete začít editovat váš obsah webu otevřením <a href="{link}">CMS</a>.'
+    PostInstallTutorialIntro: 'Tento web je zjednodušená verze SilverStripe 3. webu. Pro rozšíření, podívejte se na {link} prosím.'
+    StartEditing: 'Můžete začít editovat váš obsah webu otevřením <a href=\\"{link}\\">CMS</a>.'
     UnableDeleteInstall: 'Nelze smazat instalační soubory. Prosím, odstraňte soubory níže ručně'
     VIEWPAGEIN: 'Zobrazit stránku v:'
   ErrorPage:
@@ -243,9 +246,10 @@ cs:
     REDIRECTTOEXTERNAL: 'Jinou webovou stránku'
     REDIRECTTOPAGE: 'Stránku na Vašem webu'
     SINGULARNAME: 'Přesměrovací stránka'
-    YOURPAGE: 'Stránku na Vašem webu'
+    YOURPAGE: 'Stránka na vašem webu'
   ReportAdmin:
     MENUTITLE: Výkazy
+    ReportTitle: Titulek
   ReportAdminForm:
     FILTERBY: 'Filtrovat dle'
   SearchForm:
@@ -304,7 +308,7 @@ cs:
     Content: Obsah
     DEFAULTABOUTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky. <br /> </ p>'
     DEFAULTABOUTTITLE: 'O nás'
-    DEFAULTCONTACTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky. <br /> </ p>'
+    DEFAULTCONTACTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky. <br /> </p>'
     DEFAULTCONTACTTITLE: 'Kontaktujte nás'
     DEFAULTHOMECONTENT: '<p>Vítejte v CMS SilverStripe! Toto je úvodní stránka. Tuto i jiné stránky můžete změnit <a href="admin/">přihlášením do systému</a>. Můžete také navštívit <a href="http://doc.silverstripe.com">vývojářskou dokumentaci (EN)</a>, nebo <a href="http://doc.silverstripe.com/doku.php?id=tutorials">návody (EN)</a></p>'
     DEFAULTHOMETITLE: 'Úvodní strana'
@@ -315,7 +319,7 @@ cs:
     DependtPageColumnLinkType: 'Typ odkazu'
     DependtPageColumnURL: URL
     EDITANYONE: 'Kdokoliv, kdo se do CMS může přihlásit'
-    EDITHEADER: 'Kdo může editovat tuto stránku?'
+    EDITHEADER: 'Kdo může tuto stránku editovat?'
     EDITONLYTHESE: 'Jenom tito lidé (vyberte ze seznamu)'
     EDITORGROUPS: 'Editor skupin'
     EDIT_ALL_DESCRIPTION: 'Může editovat jakoukoli stránku webu, obcházeje bezpečnostní specifikaci stránky'
@@ -334,6 +338,7 @@ cs:
     MODIFIEDONDRAFTHELP: 'Stránka má nezveřejněné změny'
     MODIFIEDONDRAFTSHORT: Změněno
     MetadataToggle: Metadata
+    OBSOLETECLASS: 'Tato stránka je zastaralý typ {type}. Uložení spůsobí zrušení jeho typu a vy můžete přijít o svá data'
     PAGELOCATION: 'Umístění stránky'
     PAGETITLE: 'Název stránky'
     PAGETYPE: 'Typ stránky'
@@ -343,7 +348,7 @@ cs:
     PARENTTYPE_SUBPAGE: 'Pod-stránka pod nadřazenou stránkou (vyberte dole)'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Správa přístupových práv pro obsah stránek'
     PERMISSION_GRANTACCESS_HELP: 'Povolit nastavení omezení na specifické stránky v sekci "Stránky".'
-    PLURALNAME: 'Mapa stránek'
+    PLURALNAME: Stránky
     PageTypNotAllowedOnRoot: 'Stránka typu "{type}" není povolena na nejvyšší úrovni'
     PageTypeNotAllowed: 'Stránka typu "{type}" není povolena jako potomek této nadřízené stránky'
     REMOVEDFROMDRAFTHELP: 'Stránka je zveřejněna, ale byla odstraněna z konceptu'
@@ -353,7 +358,7 @@ cs:
     REORGANISE_HELP: 'Reorganizace stránek webu pomocí  "táhni a pusť".'
     SHOWINMENUS: 'Zobrazovat v menu?'
     SHOWINSEARCH: 'Zobrazovat ve vyhledávání?'
-    SINGULARNAME: 'Strom stránky'
+    SINGULARNAME: Stránka
     TABBEHAVIOUR: Chování
     TABCONTENT: Obsah
     TABDEPENDENT: 'Závislé stránky'
@@ -404,5 +409,3 @@ cs:
     PLURALNAME: 'Virtuální stránky'
     PageTypNotAllowedOnRoot: 'Původní stránka typu "{type}" není povolena na nejvyšší úrovni pro tuto virtuální stránku'
     SINGULARNAME: 'Virtuální stránka'
-  cms:
-    FILESYSTEMSYNC: 'Synchronizovat soubory'

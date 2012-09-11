@@ -5,6 +5,7 @@ sv:
     ActionAdd: 'Skapa mapp'
     AppCategoryArchive: Arkivera
     AppCategoryAudio: Ljud
+    AppCategoryDocument: Dokument
     AppCategoryFlash: Flash
     AppCategoryImage: Bild
     AppCategoryVideo: Video
@@ -13,6 +14,7 @@ sv:
     CurrentFolderOnly: 'Begränsa till aktuell mapp?'
     DetailsView: Detaljer
     FILES: Filer
+    FILESYSTEMSYNC: 'Synkronisera filer'
     FILESYSTEMSYNCTITLE: 'Uppdatera CMS:ets databasposter för filer i filsystemet. Användbart när nya filer har laddats upp utanför CMS:et, t.ex. via FTP.'
     FROMTHEINTERNET: 'Från internet'
     FROMYOURCOMPUTER: 'Från din dator'
@@ -85,7 +87,7 @@ sv:
     EditTree: 'Redigera trädet'
     ListFiltered: 'Filtrerad lista'
     MENUTITLE: 'Redigera sida'
-    NEW: Ny
+    NEWPAGE: 'Ny {pagetype}'
     PAGENOTEXISTS: 'Den här sidan finns inte'
     PAGES: Sidor
     PAGETYPEANYOPT: 'Vilken som helst'
@@ -169,17 +171,18 @@ sv:
     DRAFTSITE: Utkast
     DRAFT_SITE_ACCESS_RESTRICTION: 'Du måste logga med ditt CMS-lösenord för att kunna se utkast och arkiverat material. <a href="%s">Klicka här för att gå tillbaks till den publicerade sajten.</a>'
     Email: E-post
+    INSTALL_SUCCESS: 'Installation lyckades!'
     InstallFilesDeleted: 'Installationsfilerna raderades utan problem.'
     InstallSecurityWarning: 'Av säkerhetsskäl bör du nu radera installationsfilerna, förutom om du planerar att installera om (<em>kräver administratörs login, se ovan</em>). Webbservern behöver nu bara skrivrättigheter till katalogen "assets", du kan ta bort skrivrättigheter till alla andra kataloger. <a href="{link}" style="text-align: center;">Klicka här för att radera installationsfilerna.</a>'
-    InstallSuccessCongratulations: 'SilverStripe har installerats utan problem.'
+    InstallSuccessCongratulations: 'Silverstripe har installerats!'
     LOGGEDINAS: 'Inloggad som'
     LOGIN: 'Logga in'
     LOGOUT: 'Logga ut'
     NOTLOGGEDIN: 'Inte inloggad'
     PUBLISHEDSITE: 'Publicerad sajt'
     Password: Lösenord
-    PostInstallTutorialIntro: 'Denna sajt är en enkel version av en SilverStripe 2 sajt. För att vidareutveckla den se  {link}.'
-    StartEditing: 'Du kan ändra din sajts innehåll genom <a href="{link}">publiceringsverktyget</a>.'
+    PostInstallTutorialIntro: 'Denna webbplats är en enklare version av en Silverstripe 3 hemsida. För att bygga ut, ta en titt på {link}.'
+    StartEditing: 'Du kan börja redigera innehållet på din webbplats genom att öppna  <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'Lyckades inte radera installationsfilerna. Radera följande filer manuellt.'
     VIEWPAGEIN: 'titta på sidan i:'
   ErrorPage:
@@ -246,6 +249,7 @@ sv:
     YOURPAGE: 'Sida på din sajt'
   ReportAdmin:
     MENUTITLE: Rapporter
+    ReportTitle: Titel
   ReportAdminForm:
     FILTERBY: 'Filtrera på'
   SearchForm:
@@ -334,6 +338,7 @@ sv:
     MODIFIEDONDRAFTHELP: 'Sidan har ej publicerade ändringar'
     MODIFIEDONDRAFTSHORT: Ändrad
     MetadataToggle: Metadata
+    OBSOLETECLASS: 'Denna sida är föråldrad typ {type}. Att spara kommer återställa dess typ och du kan förlora data'
     PAGELOCATION: 'Sidans position'
     PAGETITLE: Sidnamn
     PAGETYPE: Sidtyp
@@ -343,7 +348,7 @@ sv:
     PARENTTYPE_SUBPAGE: 'Undersida under en överordnad sida (välj nedan)'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Administrera åtkomsträttigheter för innehåll'
     PERMISSION_GRANTACCESS_HELP: 'Tillåt inställning av sidspecifika åtkomstbegränsningar i "Sidor"-sektionen.'
-    PLURALNAME: Sidträd
+    PLURALNAME: Sidor
     PageTypNotAllowedOnRoot: 'Sidtypen "{type}" tillåts inte på rotnivå'
     PageTypeNotAllowed: 'Sidtypen "{type}" tillåts inte som barn till förälderns sida'
     REMOVEDFROMDRAFTHELP: 'Sidan är publicerad men har raderats från utkastet'
@@ -353,7 +358,7 @@ sv:
     REORGANISE_HELP: 'Flytta om sidorna i sidträdet genom att dra och släppa.'
     SHOWINMENUS: 'Visa i menyer?'
     SHOWINSEARCH: 'Visa i sökningar?'
-    SINGULARNAME: Sidträd
+    SINGULARNAME: Sida
     TABBEHAVIOUR: Beteende
     TABCONTENT: Huvudinnehåll
     TABDEPENDENT: 'Beroende sidor'
@@ -404,5 +409,3 @@ sv:
     PLURALNAME: 'Virtuella sidor'
     PageTypNotAllowedOnRoot: 'Ursprungliga sidan av typ "{type}" tillåts inte på rotnivå för denna virtuella sida'
     SINGULARNAME: 'Virtuell sida'
-  cms:
-    FILESYSTEMSYNC: 'Synkronisera filer'

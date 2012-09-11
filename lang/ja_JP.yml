@@ -5,6 +5,7 @@ ja_JP:
     ActionAdd: フォルダを追加
     AppCategoryArchive: アーカイブ
     AppCategoryAudio: 音楽
+    AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: 画像
     AppCategoryVideo: 動画
@@ -13,6 +14,7 @@ ja_JP:
     CurrentFolderOnly: 'このフォルダに限定しますか?'
     DetailsView: 詳細
     FILES: ファイル
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: ファイルに関するCMSデータベースエントリーを更新する。例えば、FTPなどCMS以外を経由してファイルをアップロードした場合に便利です。
     FROMTHEINTERNET: インターネットから
     FROMYOURCOMPUTER: コンピュータから
@@ -85,7 +87,7 @@ ja_JP:
     EditTree: ツリーを編集
     ListFiltered: フィルタリングされたリスト
     MENUTITLE: ページを編集
-    NEW: 'New '
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: このページは存在しません
     PAGES: ページ
     PAGETYPEANYOPT: 何でも
@@ -169,17 +171,18 @@ ja_JP:
     DRAFTSITE: 下書きサイト
     DRAFT_SITE_ACCESS_RESTRICTION: '草案かアーカイブされた内容を見るためにはログインしてください。<a href="%s">公開サイトにもどるにはコチラをクリックしてください。</a>'
     Email: Eメール
+    INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: インストール関連ファイルは正しく削除されました
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: SilverStripeは正しくインストールされました
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: ログイン中：
     LOGIN: ログイン
     LOGOUT: ログアウト
     NOTLOGGEDIN: ログインされていません
     PUBLISHEDSITE: 公開サイト
     Password: パスワード
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
-    StartEditing: '<a href="{link}">CMS</a>のリンクをクリックすることであなたのサイトのコンテンツの編集を開始することができます。'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: インストールファイルを削除することができませんでした。次のファイルを手動で削除してください。
     VIEWPAGEIN: 'View Page in:'
   ErrorPage:
@@ -246,6 +249,7 @@ ja_JP:
     YOURPAGE: 貴方のウェブサイトを表示します
   ReportAdmin:
     MENUTITLE: レポート
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
@@ -334,6 +338,7 @@ ja_JP:
     MODIFIEDONDRAFTHELP: 公開されていない変更がページにあります
     MODIFIEDONDRAFTSHORT: 更新日時
     MetadataToggle: メタデータ
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: ページの場所
     PAGETITLE: ページ名
     PAGETYPE: ページタイプ
@@ -343,7 +348,7 @@ ja_JP:
     PARENTTYPE_SUBPAGE: 親ページの下にあるサブページ
     PERMISSION_GRANTACCESS_DESCRIPTION: コンテンツへのアクセス権限を編集
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: サイトのツリー構造
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'ページタイプ"{type}"は最上位層のページになることができません'
     PageTypeNotAllowed: 'ページタイプ"{type}"はこの親ページの子になることができません'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -353,7 +358,7 @@ ja_JP:
     REORGANISE_HELP: サイトツリー内のページをドラッグ・アンド・ドロップで再編集
     SHOWINMENUS: メニューに表示しますか？
     SHOWINSEARCH: 検索に表示しますか？
-    SINGULARNAME: サイトのツリー構造
+    SINGULARNAME: Page
     TABBEHAVIOUR: 動作
     TABCONTENT: コンテンツ
     TABDEPENDENT: 依存ページ
@@ -404,5 +409,3 @@ ja_JP:
     PLURALNAME: 仮想ページ
     PageTypNotAllowedOnRoot: 'この仮想ページに対して元のページの種類{type}はルートレベルに配置されることが許可されていません。'
     SINGULARNAME: 仮想ページ
-  cms:
-    FILESYSTEMSYNC: 'Sync files'
