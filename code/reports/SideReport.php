@@ -207,7 +207,7 @@ class SideReport_BrokenLinks extends SS_Report {
 	function columns() {
 		return array(
 			"Title" => array(
-				"title" => "Title", // todo: use NestedTitle(2)
+				"title" => _t('ReportAdmin.ReportTitle', 'Title'), // todo: use NestedTitle(2)
 				"link" => true,
 			),
 		);
