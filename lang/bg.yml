@@ -4,12 +4,13 @@ bg:
     ALLOWEDEXTS: 'Разрешени разширения'
     ActionAdd: 'Добави директория'
     AppCategoryArchive: Архив
-    AppCategoryAudio: Audio
+    AppCategoryAudio: Аудио
+    AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: Image
-    AppCategoryVideo: Video
+    AppCategoryVideo: Видео
     BackToFolder: 'Обратно към директорията'
-    CREATED: Date
+    CREATED: 'Дата на създаване'
     CurrentFolderOnly: 'Ограничи в текущата директория?'
     DetailsView: Details
     FILES: Файлове
@@ -18,7 +19,7 @@ bg:
     FROMTHEINTERNET: 'От интернет'
     FROMYOURCOMPUTER: 'From your computer'
     Filetype: 'File type'
-    ListView: 'List View'
+    ListView: 'Изглед в списък'
     MENUTITLE: Файлове
     NEWFOLDER: 'Нова директория'
     SIZE: Размер
@@ -35,7 +36,7 @@ bg:
     BACKLINKCOUNT: 'Използвано от:'
     PAGES: Страница/и
   BackLink_Button.ss:
-    Back: Back
+    Back: Назад
   BrokenLinksReport:
     Any: Всички
     BROKENLINKS: 'Списък на развалени линкове'
@@ -68,7 +69,7 @@ bg:
     PUBLISHED_PAGES: 'Публикувани %d страници, %d грешки'
     PUBLISH_PAGES: Публикувай
     UNPUBLISHED_PAGES: 'Премахнати от публикация %d страници'
-    UNPUBLISH_PAGES: Un-publish
+    UNPUBLISH_PAGES: 'Премахни от публикация'
   CMSFileAddController:
     MENUTITLE: Files
   CMSMain:
@@ -152,7 +153,7 @@ bg:
     FILTERDATEFROM: От
     FILTERDATEHEADING: Дата
     FILTERDATETO: Към
-    FILTERLABELTEXT: Content
+    FILTERLABELTEXT: Съдържание
   CMSSettingsController:
     MENUTITLE: Настройки
   CMSSiteTreeFilter_ChangedPages:
@@ -170,17 +171,18 @@ bg:
     DRAFTSITE: Чернови
     DRAFT_SITE_ACCESS_RESTRICTION: 'Трябва да влезете с вашата CMS парола, за да видите черновата или архивираното съдържание. <a href="%s">Натиснете тук, за да се върнете обратно към публикувания сайт.</a>'
     Email: Email
+    INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Инсталационните файлове са успешно изтрити.'
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe е успешно инсталирана.'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: 'Влязъл като'
     LOGIN: Login
     LOGOUT: Изход
     NOTLOGGEDIN: 'Извън системата'
     PUBLISHEDSITE: 'Публикувани страници'
     Password: Парола
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'Не може да бъдат изтрити инсталационните файлове. Моля изтриите ги "на ръка"'
     VIEWPAGEIN: 'Изглед на страница в:'
   ErrorPage:
@@ -228,7 +230,7 @@ bg:
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: 'Резултати от търсенето'
-    VersionUnknown: Unknown
+    VersionUnknown: Неизвестно
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
   Permissions:
@@ -336,6 +338,7 @@ bg:
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Променен
     MetadataToggle: Meta-data
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: 'Местонахождение на страницата'
     PAGETITLE: 'Име на страница'
     PAGETYPE: 'Вид страница'

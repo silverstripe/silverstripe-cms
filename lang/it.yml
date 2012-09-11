@@ -5,6 +5,7 @@ it:
     ActionAdd: 'Aggiungi cartella'
     AppCategoryArchive: Archivia
     AppCategoryAudio: Audio
+    AppCategoryDocument: Documento
     AppCategoryFlash: Flash
     AppCategoryImage: Immagine
     AppCategoryVideo: Video
@@ -170,17 +171,18 @@ it:
     DRAFTSITE: 'Bozza del sito'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Devi autenticarti utilizzando la tua password per poter visualizzare bozze o contenuti archiviati. <a href="%s">Clicca qui per tornare al sito di pubblicazione</a>'
     Email: Email
+    INSTALL_SUCCESS: 'Installazione conclusa con successo!'
     InstallFilesDeleted: 'I file di installazione sono stati eliminati con successo.'
     InstallSecurityWarning: 'Per motivi di sicurezza ora devi eliminare i file di installazione, a meno che non stai pianificando in installare nuovamente più tardi (<em>richiede accesso da amministratore, vedi sopra</em>). Inoltre il server web ora richiede permessi di scrittura solo alla cartella "assets", Quindi puoi rimuovere i permessi di scrittura da tutte le altre cartelle. <a href="{link}" style="text-align: center;">Clicca qui per cancellare i file di installazione.</a>'
-    InstallSuccessCongratulations: 'SilverStripe è stato installato con successo.'
+    InstallSuccessCongratulations: 'SilverStripe è stato installato con successo!'
     LOGGEDINAS: 'Sei acceduto come'
     LOGIN: Accedi
     LOGOUT: Disconnetti
     NOTLOGGEDIN: 'Non connesso'
     PUBLISHEDSITE: 'Sito pubblicato'
     Password: Password
-    PostInstallTutorialIntro: 'Questo sito web è una versione semplificata di un sito di SilverStripe 2. Per estenderlo, visita {link}.'
-    StartEditing: 'Puoi iniziare a modificare i contenuti del sito aprendo <a href="{link}">il CMS</a>.'
+    PostInstallTutorialIntro: 'Il sito web è una versione semplificata di un sito SilverStripe 3. Per estenderlo, dai un''occhiata a {link}.'
+    StartEditing: 'Puoi iniziare a modificare il tuo sito aprendo <a href=\\"{link}\\">il CMS</a>.'
     UnableDeleteInstall: 'Impossibile eliminare i file di installazione. Cancella manualmente i file sotto indicati'
     VIEWPAGEIN: 'Mostra pagina in:'
   ErrorPage:
@@ -336,6 +338,7 @@ it:
     MODIFIEDONDRAFTHELP: 'La pagina ha modifiche non pubblicate'
     MODIFIEDONDRAFTSHORT: Modificata
     MetadataToggle: Metadata
+    OBSOLETECLASS: 'Quasta pagina è del tipo obsoleto {type}. Salvarla ripristinerà il suo tipo e potrai perdere dati'
     PAGELOCATION: 'Collocazione pagina'
     PAGETITLE: 'Nome della pagina'
     PAGETYPE: 'Tipo di pagina'

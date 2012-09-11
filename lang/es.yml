@@ -5,6 +5,7 @@ es:
     ActionAdd: 'Añadir carpeta'
     AppCategoryArchive: Archivar
     AppCategoryAudio: Audio
+    AppCategoryDocument: Documento
     AppCategoryFlash: Flash
     AppCategoryImage: Imagen
     AppCategoryVideo: Vídeo
@@ -13,7 +14,7 @@ es:
     CurrentFolderOnly: '¿Límite a la carpeta actual?'
     DetailsView: Detalles
     FILES: Archivos
-    FILESYSTEMSYNC: 'Sync files'
+    FILESYSTEMSYNC: 'Sincronizar archivos'
     FILESYSTEMSYNCTITLE: 'Actualizar las entradas de base de datos del CMS de archivos en el sistema de archivos. Es útil cuando los nuevos archivos se han subido desde fuera del CMS, p.e., a través de FTP.'
     FROMTHEINTERNET: 'Desde internet'
     FROMYOURCOMPUTER: 'Desde tu ordenador'
@@ -86,7 +87,7 @@ es:
     EditTree: 'Editar árbol'
     ListFiltered: 'Lista filtrada'
     MENUTITLE: 'Editar página'
-    NEWPAGE: 'New {pagetype}'
+    NEWPAGE: 'Nuevo {pagetype}'
     PAGENOTEXISTS: 'Esta página no existe'
     PAGES: Páginas
     PAGETYPEANYOPT: Cualquiera
@@ -170,17 +171,18 @@ es:
     DRAFTSITE: 'Sitio en Borrador'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Debe iniciar sesión para poder acceder a los contenidos archivados o al borrador. <a href="%s">De un click aquí para regresar al sitio publicado.</a>'
     Email: 'Correo electrónico'
+    INSTALL_SUCCESS: '¡Instalación Correcta!'
     InstallFilesDeleted: 'Los archivos de instalación han sido borrados correctamente.'
     InstallSecurityWarning: 'Por razones de seguridad ahora debes eliminar los archivos de instalación, a menos que estés planeando reinstalar más tarde (<em>requiere inicio de sesión de administrador, ver arriba</em>). El servidor web ahora tan sólo necesita acceso de escritura a la carpeta "assets", puedes quitar el acceso de escritura de todas las demás carpetas. <a href="{link}" style="text-align: center;">Haz clic aquí para borrar los archivos de instalación.</a>'
-    InstallSuccessCongratulations: 'SilverStripe ha sido instalado correctamente.'
+    InstallSuccessCongratulations: '¡SilverStripe ha sido instalado con éxito!'
     LOGGEDINAS: 'Conectado como'
     LOGIN: 'Iniciar sesión'
     LOGOUT: Desconectar
     NOTLOGGEDIN: 'No conectado'
     PUBLISHEDSITE: 'Sitio Publicado'
     Password: Contraseña
-    PostInstallTutorialIntro: 'Este sitio web es una versión simplista de un sitio SilverStripe 2. Para ampliarls, por favor, echa un vistazo a {link}.'
-    StartEditing: 'Puedes empezar a editar el  contenido de tu sitio abriendo <a href="{link}">el CMS</a>.'
+    PostInstallTutorialIntro: 'Este sitio web es una versión simple de un sitio SilverStripe 3. Para ampliarlo, por favor echa un vistazo en {link}.'
+    StartEditing: 'Puedes empezar editando el contenido de tu sitio abriendo <a href=\\"{link}\\">el CMS</a>.'
     UnableDeleteInstall: 'No se pueden eliminar los archivos de instalación. Por favor, elimina los siguientes archivos manualmente'
     VIEWPAGEIN: 'Ver página en:'
   ErrorPage:
@@ -247,7 +249,7 @@ es:
     YOURPAGE: 'Página en su sitio web'
   ReportAdmin:
     MENUTITLE: Informes
-    ReportTitle: Title
+    ReportTitle: Título
   ReportAdminForm:
     FILTERBY: 'Filtrar por'
   SearchForm:
@@ -336,6 +338,7 @@ es:
     MODIFIEDONDRAFTHELP: 'La página tiene cambios sin publicar'
     MODIFIEDONDRAFTSHORT: Modificado
     MetadataToggle: Metadatos
+    OBSOLETECLASS: 'Esta página es de tipo obsoleto {type}. Guardando resetearás su tipo y puedes perder datos'
     PAGELOCATION: 'Localización de la página'
     PAGETITLE: 'Nombre de la página'
     PAGETYPE: 'Tipo de Página'
@@ -345,7 +348,7 @@ es:
     PARENTTYPE_SUBPAGE: 'Sub-página por debajo de una página padre'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Controlar qué grupos pueden acceder o editar determinadas páginas'
     PERMISSION_GRANTACCESS_HELP: 'Permitir la creación de restricciones de acceso específicas a la página en la sección "Páginas".'
-    PLURALNAME: Pages
+    PLURALNAME: Páginas
     PageTypNotAllowedOnRoot: 'La página tipo "{type}" no está permitida en el nivel raiz'
     PageTypeNotAllowed: 'El tipo de página "{type}" no está permitido como hijo de esta página padre'
     REMOVEDFROMDRAFTHELP: 'La página está publicada, pero ha sido eliminada de borrador'
@@ -355,7 +358,7 @@ es:
     REORGANISE_HELP: 'Reorganizar las páginas en el árbol del sitio a través de drag&drop.'
     SHOWINMENUS: '¿Mostrar en menús?'
     SHOWINSEARCH: '¿Mostrar en la búsqueda?'
-    SINGULARNAME: Page
+    SINGULARNAME: Página
     TABBEHAVIOUR: Comportamiento
     TABCONTENT: Contenido
     TABDEPENDENT: 'Páginas dependientes'

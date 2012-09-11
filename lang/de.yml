@@ -5,6 +5,7 @@ de:
     ActionAdd: 'Ordner hinzufügen'
     AppCategoryArchive: Archivieren
     AppCategoryAudio: Audio
+    AppCategoryDocument: Dokument
     AppCategoryFlash: Flash
     AppCategoryImage: Bild
     AppCategoryVideo: Video
@@ -170,17 +171,18 @@ de:
     DRAFTSITE: Vorschau-Site
     DRAFT_SITE_ACCESS_RESTRICTION: 'Sie müssen sich mit Ihrem CMS Passwort einloggen, um den Entwurf oder den archivierten Inhalt zu sehen. <a href="%s">Zurück zur veröffentlichten Seite.</a>'
     Email: E-Mail
+    INSTALL_SUCCESS: 'Die Installation war erfolgreich!'
     InstallFilesDeleted: 'Die Installationsdateien wurden erfolgreich gelöscht.'
     InstallSecurityWarning: 'Zu Ihrer Sicherheit löschen Sie jetzt bitte die Installationsdateien, es sei denn Sie möchten zu einem späteren Zeitpunkt erneut installieren. (<em>Dies erfordert den Administrator-Zugang (siehe oben)</em>). Der Webserver benötigt nun nur noch Schreibrechte auf das "assets" Verzeichnis und Sie können die Schreibrechte für alle anderen Ordner entfernen. <a href="{link}" style="text-align: center;">Die Installationsdaten jetzt löschen.</a> '
-    InstallSuccessCongratulations: 'SilverStripe wurde erfolgreich installiert.'
+    InstallSuccessCongratulations: 'SilverStripe wurde erfolgreich installiert!'
     LOGGEDINAS: 'Angemeldet als'
     LOGIN: Anmelden
     LOGOUT: Abmelden
     NOTLOGGEDIN: 'Nicht angemeldet'
     PUBLISHEDSITE: 'Veröffentlichte Site'
     Password: Passwort
-    PostInstallTutorialIntro: 'Diese Website ist eine vereinfachte Version einer SIlverStripe 2 Site. Um diese zu erweitern, besuchen Sie {link}.'
-    StartEditing: 'Sie können mit der Bearbeitung der Inhalte Ihrer Site beginnen, indem Sie <a href="{link}">das CMS</a> öffnen.'
+    PostInstallTutorialIntro: 'Diese Internetseite ist eine einfache Version einer SilverStripe 3 Seite. Wie man diese erweitert, erfährst Du in der {link}.'
+    StartEditing: 'Du kannst nun beginnen die Seiteninhalte zu bearbeiten in dem Du <a href=\\"{link}\\">das CMS</a> öffnest.'
     UnableDeleteInstall: 'Die Installationsdateien konnten nicht gelöscht werden. Bitte löschen Sie die Dateien manuell.'
     VIEWPAGEIN: 'Seite anzeigen in:'
   ErrorPage:
@@ -191,8 +193,8 @@ de:
     DEFAULTSERVERERRORPAGETITLE: Serverfehler
     DESCRIPTION: 'Spezieller Inhalt für andere Fehlerfälle (z.B. "Seite nicht gefunden")'
     ERRORFILEPROBLEM: 'Die Datei "{filename}" konnte nicht zum Schreiben geöffnet werden. Bitte überprüfen Sie die Dateiberechtigungen.'
-    PLURALNAME: 'Fehler Seiten'
-    SINGULARNAME: 'Fehler Seite'
+    PLURALNAME: Fehlerseiten
+    SINGULARNAME: Fehlerseite
     400: '400 - Fehlerhafter Zugriff'
     401: '401 - Unerlaubter Zugriff'
     403: '403 - Verbotener Zugriff'
@@ -336,6 +338,7 @@ de:
     MODIFIEDONDRAFTHELP: 'Die Seite hat unveröffentlichte Änderungen'
     MODIFIEDONDRAFTSHORT: 'Zuletzt geändert'
     MetadataToggle: Metadaten
+    OBSOLETECLASS: 'Der Seitentyp {type} dieser Seite existiert nicht mehr. Durch Speichern wird der Seitentyp zurückgesetzt, dies könnte Datenverluste zur Folge haben.'
     PAGELOCATION: Seitenposition
     PAGETITLE: Seitenname
     PAGETYPE: Seitentyp

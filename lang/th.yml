@@ -5,6 +5,7 @@ th:
     ActionAdd: เพิ่มโฟลเดอร์
     AppCategoryArchive: Archive
     AppCategoryAudio: ไฟล์เสียง
+    AppCategoryDocument: เอกสาร
     AppCategoryFlash: แฟลช
     AppCategoryImage: รูปภาพ
     AppCategoryVideo: วีดีโอ
@@ -22,7 +23,7 @@ th:
     MENUTITLE: ไฟล์
     NEWFOLDER: สร้างโฟลเดอร์ใหม่
     SIZE: ขนาด
-    THUMBSDELETED: '{count} unused thumbnails have been deleted'
+    THUMBSDELETED: '{count} รูปย่อที่ไม่ได้ถูกใช้งานได้ถูกลบทิ้งแล้ว'
     TreeView: 'มุมมองแบบ Tree'
     Upload: อัพโหลด
   AssetAdmin_DeleteBatchAction:
@@ -72,7 +73,7 @@ th:
   CMSFileAddController:
     MENUTITLE: ไฟล์
   CMSMain:
-    ACCESS: 'Access to ''{title}'' section'
+    ACCESS: 'เข้าถึงเซ็กชั่น ''{title}'''
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
     AddNew: เพิ่มหน้าใหม่
     AddNewButton: เพิ่มใหม่
@@ -94,10 +95,10 @@ th:
     PUBALLCONFIRM: 'กรุณาเผยแพร่หน้าเว็บทุกหน้าในเว็บไซต์, คัดลอกเนื้อหาลงไปที่'
     PUBALLFUN: 'ฟังก์ชั่นการทำงาน "เผยแพร่ทั้งหมด"'
     PUBALLFUN2: 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It''s				intended to be used after there have been massive edits of the content, such as when the site was				first built.'
-    PUBPAGES: 'Done: Published {count} pages'
+    PUBPAGES: 'เผยแแพร่หน้าเว็บแล้ว {count} หน้า'
     PageAdded: หน้าเว็บที่สร้างเสร็จเรียบร้อยแล้ว
     REMOVED: 'ลบ ''%s''%s จากเว็บไซต์ที่ออนไลน์สดๆอยู่แล้ว'
-    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
+    REMOVEDPAGE: 'ลบ ''{title}'' ออกจากเว็บไซต์ที่เผยแพร่อยู่แล้ว'
     REMOVEDPAGEFROMDRAFT: 'ลบ ''%s'' ออกจากเว็บไซต์ฉบับร่างแล้ว'
     RESTORE: คืนค่า
     RESTORED: 'เรียกคืนค่า ''{title}'' เสร็จเรียบร้อยแล้ว'
@@ -145,7 +146,7 @@ th:
     TreeView: 'มุมมองแบบ Tree'
   CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: ลากแล้วปล่อย
-    MULTISELECT: Multi-selection
+    MULTISELECT: การเลือกพร้อมกันหลายรายการ
   CMSPagesController_Tools.ss:
     FILTER: ตัวกรองข้อมูล
   CMSSearch:
@@ -168,19 +169,20 @@ th:
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
     DRAFTSITE: เว็บไซต์ฉบับร่าง
-    DRAFT_SITE_ACCESS_RESTRICTION: 'You must log in with your CMS password in order to view the draft or archived content.  <a href="%s">Click here to go back to the published site.</a>'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'คุณต้องเข้าสู่ระบบด้วยรหัสผ่าน CMS ของคุณ หากต้องการเปิดดูฉบับร่าง หรือเนื้อหาย้อนหลัง.  <a href="%s">คลิกที่นี่เพื่อย้อนกลับไปที่เว็บไซต์ที่เผยแพร่อยู่.</a>'
     Email: อีเมล
+    INSTALL_SUCCESS: การติดตั้งเสร็จสมบูรณ์
     InstallFilesDeleted: ไฟล์ติดตั้งได้ถูกลบทิ้งเรียบร้อยแล้ว
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe ได้รับการติดตั้งเรียบร้อยแล้ว'
+    InstallSuccessCongratulations: 'SilverStripe ได้รับการติดตั้งเรียบร้อยแล้ว!'
     LOGGEDINAS: เข้าสู่ระบบในชื่อ
     LOGIN: เข้าสู่ระบบ
     LOGOUT: ออกจากระบบ
     NOTLOGGEDIN: ยังไม่ได้เข้าสู่ระบบ
     PUBLISHEDSITE: เว็บไซต์ที่เผยแพร่อยู่
     Password: รหัสผ่าน
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    PostInstallTutorialIntro: 'เว็บไซต์นี้เป็นรุ่นอย่างง่ายของเว็บไซต์ที่สร้างจากรุ่น SiverStripe 3 หากต้องการขยายขีดความสามารถ กรุณาเข้าไปที่ {link}'
+    StartEditing: 'คุณสามารถเริ่มต้นแก้ไขเนื้อหาในเว็บไซต์ของคุณได้โดยการเปิด <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'ไม่สามารถลบไฟล์ติดตั้งได้ กรุณาลบไฟล์ดังกล่าวด้านล่างด้วยตนเอง'
     VIEWPAGEIN: 'เปิดดูหน้าเว็บใน:'
   ErrorPage:
@@ -189,11 +191,11 @@ th:
     DEFAULTERRORPAGETITLE: ไม่พบหน้าที่ต้องการ
     DEFAULTSERVERERRORPAGECONTENT: '<p>ขออภัย, เกิดข้อผิดพลาดบางประการในการจัดการตามคำร้องขอของคุณ</p>'
     DEFAULTSERVERERRORPAGETITLE: เซิร์ฟเวอร์เกิดข้อผิดพลาด
-    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
+    DESCRIPTION: 'กำหนดเนื้อหาเองสำหรับข้อผิดพลาดต่างๆ (e.g. "ไม่พบหน้าเว็บที่ต้องการ")'
     ERRORFILEPROBLEM: 'เกิดข้อผิดพลาดในการเปิดไฟล์ "{filename}" เพื่อเขียนข้อมูล. กรุณาตรวจสอบสิทธิ์.'
     PLURALNAME: หน้าแสดงข้อผิดพลาด
     SINGULARNAME: หน้าแสดงข้อผิดพลาด
-    400: '400 - Bad Request'
+    400: '400 - ข้อความร้องขอที่ส่งมามีความผิดพลาดทางไวยากรณ์ หรือไม่สามารถทำตามการร้องขอนั้นได้'
     401: '401 - Unauthorized'
     403: '403 - Forbidden'
     404: '404 - Not Found'
@@ -236,7 +238,7 @@ th:
     PERMISSIONS_CATEGORY: บทบาทและสิทธิ์อนุญาตการเข้าถึง
   RedirectorPage:
     DESCRIPTION: เปลี่ยนเส้นทางไปยังหน้าเว็บภายในอื่นๆ
-    HASBEENSETUP: 'A redirector page has been set up without anywhere to redirect to.'
+    HASBEENSETUP: หน้าเว็บที่มีการเปลี่ยนเส้นทางซึ่งได้รับการตั้งค่าโดยปราศจากตำแหน่งปลายทางที่ต้องการเปลี่ยนเส้นทางไป
     HEADER: หน้าเว็บนี้จะเปลี่ยนเส้นทางผู้ใช้งานไปยังหน้าเว็บอื่นๆ
     OTHERURL: 'ที่อยู่ URL ของเว็บไซต์อื่นๆ'
     PLURALNAME: หน้าเว็บเปลี่ยนเส้นทาง
@@ -265,7 +267,7 @@ th:
     LAST2WEEKS: 'หน้าเว็บที่ถูกแก้ไขใน 2 สัปดาห์ล่าสุด'
     OtherGroupTitle: อื่นๆ
     ParameterLiveCheckbox: ดูเว็บไซต์แบบสดๆ
-    REPEMPTY: 'The {title} report is empty.'
+    REPEMPTY: 'รายงาน {title} ยังว่างอยู่'
   SilverStripeNavigatorLink:
     ShareInstructions: 'หากต้องการแชร์หน้าเว็บนี้, คัดลอกแล้วนำลิงก์ด้านล่างนี้ไปวาง'
     ShareLink: ลิงก์ที่ต้องการแชร์
@@ -279,7 +281,7 @@ th:
     PLURALNAME: กำหนดค่าเว็บไซต์
     SINGULARNAME: ตั้งค่าเว็บไซต์
     SITENAMEDEFAULT: ชื่อเว็บไซต์ของคุณ
-    SITETAGLINE: 'Site Tagline/Slogan'
+    SITETAGLINE: สโลแกนของเว็บไซต์
     SITETITLE: ชื่อเว็บไซต์
     TABACCESS: เข้าถึง
     TABMAIN: หน้าหลัก
@@ -295,7 +297,7 @@ th:
     ADDEDTODRAFTHELP: หน้าเว็บยังไม่ได้ถูกเผยแพร่
     ADDEDTODRAFTSHORT: ฉบับร่าง
     ALLOWCOMMENTS: 'อนุญาตให้แสดงความเห็นในหน้านีหรือไม่?'
-    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+    APPEARSVIRTUALPAGES: 'เนื้อหานี้ปรากฏอยู่ในหน้าเว็บจำลองในส่วนของ {title} ด้วยเช่นกัน'
     BUTTONCANCELDRAFT: ยกเลิกการเปลี่ยนแปลงในฉบับร่าง
     BUTTONCANCELDRAFTDESC: ลบฉบับร่างของคุณแล้วย้อนกลับไปใช้หน้าเว็บที่เผยแพร่อยู่ในขณะนี้
     BUTTONSAVEPUBLISH: บันทึกและเผยแพร่
@@ -328,14 +330,15 @@ th:
     INHERIT: สืบทอดค่าจากหน้าเว็บต้นทาง
     LASTUPDATED: อัพเดทล่าสุด
     LINKCHANGENOTE: การเปลี่ยนลิงก์ของหน้าเว็บนี้จะส่งผลถึงลิงก์ต่างๆที่อยู่ในหน้าเว็บลูกด้วย
-    MENUTITLE: 'Navigation label'
+    MENUTITLE: ป้ายบอกทาง
     METADESC: รายละเอียด
     METAEXTRA: 'Meta Tags แบบกำหนดเอง'
     METAKEYWORDS: คีย์เวิร์ด
     METATITLE: ชื่อ
-    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
+    MODIFIEDONDRAFTHELP: หน้าเว็บถูกเปลี่ยนค่าเป็นระงับการเผยแพร่แล้ว
     MODIFIEDONDRAFTSHORT: แก้ไขเมื่อ
     MetadataToggle: Metadata
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: ตำแหน่งหน้าเว็บ
     PAGETITLE: ชื่อหน้าเว็บ
     PAGETYPE: 'ประเภท เอกสาร'
@@ -347,7 +350,7 @@ th:
     PERMISSION_GRANTACCESS_HELP: 'อนุญาตให้มีการตั้งค่าข้อจำกัดในการเข้าถึงหน้าเว็บเฉพาะหน้าได้จากส่วนของ "หน้าเว็บ"'
     PLURALNAME: หน้า
     PageTypNotAllowedOnRoot: 'ประเภทของหน้าเว็บ "{type}" ไม่ได้รับอนุญาตให้สามารถใช้งานได้ที่ตำแหน่ง root'
-    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
+    PageTypeNotAllowed: 'ชนิดของหน้าเว็บ "{type}" ไม่ได้รับอนุญาตให้ใช้เป็นหน้าเว็บลูกของหน้าเว็บแม่นี้'
     REMOVEDFROMDRAFTHELP: 'หน้าเว็บถูกเผยแพร่แล้ว แต่ถูกลบออกจากฉบับร่างด้วยเช่นกัน'
     REMOVEDFROMDRAFTSHORT: ลบออกจากฉบับร่าง
     REMOVE_INSTALL_WARNING: 'คำเตือน: คุณควรลบไฟล์ install.php ออกหลังการติดตั้ง SilverStripe เพื่อความปลอดภัย'
@@ -358,13 +361,13 @@ th:
     SINGULARNAME: หน้า
     TABBEHAVIOUR: พฤติกรรม
     TABCONTENT: เนื้อหา
-    TABDEPENDENT: 'Dependent pages'
+    TABDEPENDENT: หน้าย่อย
     TOPLEVEL: 'เนื้อหาเว็บไซต์ (ระดับสูงสุด)'
     TOPLEVELCREATORGROUPS: ผู้สร้างระดับสูงสุด
     URLSegment: 'ส่วนการจัดการ URL'
     VIEWERGROUPS: กลุ่มผู้ชม
     VIEW_ALL_DESCRIPTION: เปิดดูหน้าเว็บใดก็ได้
-    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
+    VIEW_ALL_HELP: 'สามารถเปิดดูหน้าเว็บใดๆก็ได้ในเว็บไซต์, โดยไม่จำเป็นต้องคำนึงถึงการตั้งในส่วนของแท็บการเข้าถึง จำเป็นต้องได้รับสิทธิ์ "สามารถเข้าถึงเนื้อหาในเว็บไซต์ได้"'
     VIEW_DRAFT_CONTENT: เปิดดูเนื้อหาฉบับร่าง
     VIEW_DRAFT_CONTENT_HELP: 'นำไปใช้ในการดูหน้าเว็บที่อยู่ด้านนอก CMS ในโหมดฉบับร่าง มีประโยชน์สำหรับการทำงานร่วมกันจากภายนอก โดยไม่จำเป็นต้องเข้าถึง CMS'
     Viewers: กลุ่มผู้เข้าชม
@@ -374,7 +377,7 @@ th:
     many_many_ImageTracking: แกะรอยรูปภาพ
     many_many_LinkTracking: แกะรอยลิงก์
   SiteTreeURLSegmentField:
-    HelpChars: ' Special characters are automatically converted or removed.'
+    HelpChars: ตัวอักษรพิเศษได้ถูกแปลงค่าหรือลบออกโดยอัตโนมัติแล้ว
   StaticExporter:
     BASEURL: 'URL หลักสำหรับอ้างอิง'
     EXPORTTO: ส่งออกข้อมูลไปยังโฟลเดอร์
@@ -404,5 +407,5 @@ th:
     EDITCONTENT: คลิกที่นี่เพื่อแก้ไขเนื้อหา
     HEADER: นี่เป็นหน้าเว็บจำลอง
     PLURALNAME: หน้าเว็บจำลอง
-    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
+    PageTypNotAllowedOnRoot: 'ชนิดของหน้าเว็บดั้งเดิม "{type}" ไม่ได้รับอนุญาตให้ใช้งานกับหน้าเว็บจำลองที่ตำแหน่ง root'
     SINGULARNAME: หน้าจำลอง

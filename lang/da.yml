@@ -5,6 +5,7 @@ da:
     ActionAdd: 'Tilføj mappe'
     AppCategoryArchive: Arkiv
     AppCategoryAudio: Lyd
+    AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: Billeder
     AppCategoryVideo: Video
@@ -170,17 +171,18 @@ da:
     DRAFTSITE: Kladdeside
     DRAFT_SITE_ACCESS_RESTRICTION: 'Du skal være logget ind med din CMS adgangskode for se indhold af kladder eller arkiv. <a href="%s">Klik her for at komme tilbage til den udgivne side.</a>'
     Email: Email
+    INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Installationsfilerne blev slettet korrekt.'
     InstallSecurityWarning: 'Af sikkerhedmæssige årsager bør du slette installationsfilerne, medmindre du planlægger at installere igen på et senere tidspunkt (<em>kræver admin login, se det ovenstående</em>). Webserveren behøver også kun skriverettigheder til mappen "assets", du kan fjerne skriverettigheder til alle de andre mapper. <a href="{link}" style="text-align: center;">Klik her for at slette installationsfilerne.</a>'
-    InstallSuccessCongratulations: 'SilverStripe blev installeret korrekt.'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: 'Logget på som'
     LOGIN: 'Log ind'
     LOGOUT: 'Log ud'
     NOTLOGGEDIN: 'Ikke logget ind'
     PUBLISHEDSITE: 'Udgivet side'
     Password: Adgangskode
-    PostInstallTutorialIntro: 'Denne hjemmeside er en forenklet udgave af en SilverStripe 2 side. For at udvide dette, bedes du tage et kig på {link}.'
-    StartEditing: 'Du kan starte med at redigere dit websteds indhold ved at åbne <a href="{link}">CMS\\''en</a>.'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'Var ikke i stand til at slette installationsfilerne. Slet venligst filerne herunder manuelt.'
     VIEWPAGEIN: 'Vis side i:'
   ErrorPage:
@@ -336,6 +338,7 @@ da:
     MODIFIEDONDRAFTHELP: 'Siden har ikke-udgivne ændringer'
     MODIFIEDONDRAFTSHORT: Ændret
     MetadataToggle: Metadata
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: Sideplacering
     PAGETITLE: Sidenavn
     PAGETYPE: Sidetype

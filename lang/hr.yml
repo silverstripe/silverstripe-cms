@@ -5,6 +5,7 @@ hr:
     ActionAdd: 'Add folder'
     AppCategoryArchive: Archive
     AppCategoryAudio: Audio
+    AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: Image
     AppCategoryVideo: Video
@@ -170,17 +171,18 @@ hr:
     DRAFTSITE: 'Draft Site'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Morate biti prijavljeni sa vašom CMS zaporkom kako bi ste mogli vidjeti privremeni ili arhivirani sadržaj. <a href="%s">Kliknite kako bi ste se vratili na objavljen dio stranice</a>'
     Email: Email
+    INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Installation files have been successfully deleted.'
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: 'Logged in as'
     LOGIN: Login
     LOGOUT: 'Log out'
     NOTLOGGEDIN: 'Not logged in'
     PUBLISHEDSITE: 'Published Site'
     Password: Password
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'View Page in:'
   ErrorPage:
@@ -336,6 +338,7 @@ hr:
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
     MetadataToggle: Metadata
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: 'Page location'
     PAGETITLE: 'Ime stranice'
     PAGETYPE: 'Vrsta stranice'

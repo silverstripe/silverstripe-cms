@@ -5,6 +5,7 @@ pt:
     ActionAdd: 'Adicionar pasta'
     AppCategoryArchive: Arquivar
     AppCategoryAudio: Audio
+    AppCategoryDocument: Document
     AppCategoryFlash: 'Inserir flash'
     AppCategoryImage: Imagem
     AppCategoryVideo: Vídeo
@@ -170,17 +171,18 @@ pt:
     DRAFTSITE: 'Site Rascunho'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Tem de se autenticar para ver o conteúdo de rascunho ou arquivado. <a href="%s">Clique aqui para voltar ao site publicado</a>'
     Email: Email
+    INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Ficheiros de instalação foram removidos com sucesso.'
     InstallSecurityWarning: 'Por razões de segurança deverá apagar os ficheiros de instalação, a menos que esteja a planear uma instalação futura (<em> requer acesso de administrador, ver acima </em>). O servidor apenas necessita de permissões de escrita na pasta "assets", poderá remover todos os acessos de escrita nas restantes pastas.<a href="{link}" style="text-align: Clique aqui para apagar os ficheiros de instalação.</a>'
-    InstallSuccessCongratulations: 'SilverStripe foi instalado com sucesso.'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: 'Autenticado como'
     LOGIN: Autenticar
     LOGOUT: Sair
     NOTLOGGEDIN: 'Não autenticado'
     PUBLISHEDSITE: 'Site Publicado'
     Password: Palavra-passe
-    PostInstallTutorialIntro: 'Este site é uma versão simplificada da versão anterior do SilverStripe (versão 2). Para saber mais, siga o link {link}.'
-    StartEditing: 'Pode começar a editar o conteúdo do seu site acedendo ao <a href="{link}">CMS</a>.'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'Impossível remover os ficheiros de instalação. Por favor, remova-os manualmente.'
     VIEWPAGEIN: 'Ver página em:'
   ErrorPage:
@@ -336,6 +338,7 @@ pt:
     MODIFIEDONDRAFTHELP: 'A página contem alterações não publicadas'
     MODIFIEDONDRAFTSHORT: Modificado
     MetadataToggle: Meta-data
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: 'Localização da página'
     PAGETITLE: 'Nome da página'
     PAGETYPE: 'Tipo de Página'

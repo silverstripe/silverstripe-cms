@@ -5,6 +5,7 @@ lt:
     ActionAdd: 'Pridėti aplanką'
     AppCategoryArchive: Archyvas
     AppCategoryAudio: Garsas
+    AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: Paveikslėlis
     AppCategoryVideo: Video
@@ -170,17 +171,18 @@ lt:
     DRAFTSITE: 'Juodraštinė svetainė'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Jūs turite prisijungti su savo TVS slaptažodžiu, kad galėtumėte peržiūrėti juodraščio arba archyvo turinį.<a href="%s">Spauskite čia, norėdami grįžti į svetainę</a>.'
     Email: 'E. paštas'
+    INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Įdiegimo bylos sėkmingai pašalintos'
     InstallSecurityWarning: 'Saugumo sumetimais Jūs turėtumėte ištrinti įdiegimo bylas, nebent vėliau Jūs planuojate iš naujo diegti (<em>bus reikalinga administravimo prieiga, žiūrėkite viršuje</em>). Web paslaugos programa turi gauti rašymo teises "assets" aplankui, kitiems aplankams tokių teisių nereikia. <a href="{link}" style="text-align: center;">Spauskite čia jei norite ištrinti įdiegimo bylas</a>'
-    InstallSuccessCongratulations: 'SilverStripe buvo sėkmingai įdiegta.'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: 'Prisijungėte kaip '
     LOGIN: Prisijungti
     LOGOUT: Atsijungti
     NOTLOGGEDIN: Neprisijungęs
     PUBLISHEDSITE: 'Publikuojama svetainė'
     Password: Slaptažodis
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
-    StartEditing: 'Jūs galite pradėti redaguoti svetainės turinį, atidarydami <a href="{link}">TVS</a>.'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'Nepajėgiame ištrinti įdiegimo bylų. Prašome pašalinti bylas rankiniu būdu.'
     VIEWPAGEIN: 'Peržiūrėti puslapį:'
   ErrorPage:
@@ -336,6 +338,7 @@ lt:
     MODIFIEDONDRAFTHELP: 'Puslapyje yra nepublikuoto turinio'
     MODIFIEDONDRAFTSHORT: Pakeistas
     MetadataToggle: Metaduomenys
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: 'Puslapio vieta'
     PAGETITLE: 'Puslapio pavadinimas'
     PAGETYPE: 'Puslapio tipas'

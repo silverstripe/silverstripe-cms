@@ -5,6 +5,7 @@ ru:
     ActionAdd: 'Добавить папку'
     AppCategoryArchive: Архив
     AppCategoryAudio: Аудио
+    AppCategoryDocument: Документ
     AppCategoryFlash: Flash
     AppCategoryImage: Изображение
     AppCategoryVideo: Видео
@@ -170,17 +171,18 @@ ru:
     DRAFTSITE: 'Черновой сайт'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Вы должны войти с паролем для Системы Управления (CMS), чтобы увидеть черновое или архивное содержимое. <a href="%s">Нажмите сюда, чтобы вернуться на опубликованный сайт.</a>'
     Email: Email
+    INSTALL_SUCCESS: 'Успешная установка!'
     InstallFilesDeleted: 'Инсталляционные файлы были успешно удалены.'
     InstallSecurityWarning: 'Если вы не планируете в ближайшее время переустанавливать CMS, по соображениям безопасности рекомендуется удалить инсталляционные файлы (<em>для этого необходим администраторский доступ, см. выше</em>). Теперь веб-серверу требуется доступ для записи только к папке "assets"; вы можете защитить от записи все остальные папки. <a href="{link}" style="text-align: center;">Щелкните здесь, чтобы удалить инсталляционные файлы.</a>'
-    InstallSuccessCongratulations: 'Установка SilverStripe прошла успешно.'
+    InstallSuccessCongratulations: 'SilverStripe был успешно установлен!'
     LOGGEDINAS: 'Залогинен как'
     LOGIN: Вход
     LOGOUT: Выход
     NOTLOGGEDIN: 'Не вошли в систему'
     PUBLISHEDSITE: 'Опубликованный сайт'
     Password: Пароль
-    PostInstallTutorialIntro: 'Это упрощенная версия сайта, созданного с помощью SilverStripe 2. Чтобы расширить ее, пройдите по этой ссылке: {link}.'
-    StartEditing: ' Вы можете приступить к редактированию сайта, открыв <a href="{link}">CMS</a>.'
+    PostInstallTutorialIntro: 'Это упрощенная версия сайта, созданного с помощью SilverStripe 3. О возможностях расширения сайта можно узнать, щелкнув эту ссылку: {link}.'
+    StartEditing: 'Вы можете приступить к редактированию содержимого сайта, открыв <a href=\\"{link}\\">CMS</a>.'
     UnableDeleteInstall: 'Не удалось удалить инсталляционные файлы. Пожалуйста, удалите следующие файлы вручную'
     VIEWPAGEIN: 'Просмотреть страницу в:'
   ErrorPage:
@@ -336,6 +338,7 @@ ru:
     MODIFIEDONDRAFTHELP: 'На этой странице есть неопубликованные изменения'
     MODIFIEDONDRAFTSHORT: Изменено
     MetadataToggle: Метаданные
+    OBSOLETECLASS: 'Тип страницы {type} больше не поддерживается. При сохранении тип страницы будет сброшен, что может привести к потере данных'
     PAGELOCATION: 'Расположение страницы'
     PAGETITLE: 'Название страницы'
     PAGETYPE: 'Тип страницы'
