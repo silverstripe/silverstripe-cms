@@ -5,6 +5,7 @@ zh_TW:
     ActionAdd: 'Add folder'
     AppCategoryArchive: Archive
     AppCategoryAudio: Audio
+    AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: Image
     AppCategoryVideo: Video
@@ -13,6 +14,7 @@ zh_TW:
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'From the internet'
     FROMYOURCOMPUTER: 'From your computer'
@@ -85,7 +87,7 @@ zh_TW:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
-    NEW: 新增
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 這頁不存在
     PAGES: Pages
     PAGETYPEANYOPT: Any
@@ -169,17 +171,18 @@ zh_TW:
     DRAFTSITE: 'Draft Site'
     DRAFT_SITE_ACCESS_RESTRICTION: '你必須先登入才能瀏覽草稿或歸檔內容。<a href="%s">回到正式發布站</a>'
     Email: Email
+    INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Installation files have been successfully deleted.'
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: 'Logged in as'
     LOGIN: Login
     LOGOUT: 'Log out'
     NOTLOGGEDIN: 'Not logged in'
     PUBLISHEDSITE: 'Published Site'
     Password: Password
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'View Page in:'
   ErrorPage:
@@ -246,6 +249,7 @@ zh_TW:
     YOURPAGE: 在您網站上的網頁
   ReportAdmin:
     MENUTITLE: Reports
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
@@ -334,6 +338,7 @@ zh_TW:
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: 已修改
     MetadataToggle: Metadata
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: 網頁位置
     PAGETITLE: 網頁名稱
     PAGETYPE: 網頁類型
@@ -343,7 +348,7 @@ zh_TW:
     PARENTTYPE_SUBPAGE: 在母頁下面的次頁
     PERMISSION_GRANTACCESS_DESCRIPTION: 管理內容的存取權限
     PERMISSION_GRANTACCESS_HELP: '允許設定在"網頁"部分的網頁-特定存取限制.'
-    PLURALNAME: '網站 Tres'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -353,7 +358,7 @@ zh_TW:
     REORGANISE_HELP: '經由 拉&放 於網站樹狀架構內重新安排網頁.'
     SHOWINMENUS: 在選單裡顯示嗎？
     SHOWINSEARCH: 在搜尋結果裡顯示嗎？
-    SINGULARNAME: 網站樹狀架構
+    SINGULARNAME: Page
     TABBEHAVIOUR: 作用
     TABCONTENT: 內容
     TABDEPENDENT: 依賴網頁
@@ -404,5 +409,3 @@ zh_TW:
     PLURALNAME: 虛擬網頁
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 虛擬網頁
-  cms:
-    FILESYSTEMSYNC: 'Sync files'

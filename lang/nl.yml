@@ -5,6 +5,7 @@ nl:
     ActionAdd: 'Map toevoegen'
     AppCategoryArchive: Archiveer
     AppCategoryAudio: Audio
+    AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: Afbeelding
     AppCategoryVideo: Video
@@ -13,6 +14,7 @@ nl:
     CurrentFolderOnly: 'Tot de huidige map beperken?'
     DetailsView: Details
     FILES: Bestanden
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Zoek naar nieuwe of verwijderde bestanden op de schijf, om de database van het CMS bij te werken. Dit is nodig als er bestanden via FTP (of andere wijze) zijn toegevoegd.'
     FROMTHEINTERNET: 'Van het internet'
     FROMYOURCOMPUTER: 'Vanaf computer'
@@ -85,7 +87,7 @@ nl:
     EditTree: 'Menu indelen'
     ListFiltered: 'Gefilterde lijst.'
     MENUTITLE: 'Wijzig pagina'
-    NEW: Nieuw
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Deze pagina bestaat niet'
     PAGES: 'Pagina ''s'
     PAGETYPEANYOPT: Elke
@@ -169,17 +171,18 @@ nl:
     DRAFTSITE: 'Concept site'
     DRAFT_SITE_ACCESS_RESTRICTION: 'U moet inloggen met Uw CMS wachtwoord om die inhoud te kunnen zien. <a href="%s">Klik hier</a> om terug te keren naar de gepubliceerde site.'
     Email: E-mail
+    INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'De installatiebestanden zijn succesvol verwijderd.'
     InstallSecurityWarning: 'Om veiligheidsredenen dient u de installatiebestanden nu te verwijderen, tenzij u van plan bent om later opnieuw te installeren (<em>dit vereist   toegang als administrator, zie boven</em>). De webserver heeft vanaf nu alleen nog schrijftoegang nodig tot de "assets" map, u kunt de schrijftoegang van alle andere mappen verwijderen. <a href="{link}" style="text-align:center;">Klik hier om de installatiebestanden te verwijderen.</a> '
-    InstallSuccessCongratulations: 'SilverStripe is succesvol geïnstalleerd'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: 'Ingelogd als'
     LOGIN: Inloggen
     LOGOUT: Uitloggen
     NOTLOGGEDIN: 'Niet ingelogd'
     PUBLISHEDSITE: 'Gepubliceerde site'
     Password: Wachtwoord
-    PostInstallTutorialIntro: 'Deze website is een vereenvoudigde versie van een SilverStripe 2 site. Om dit te verbeteren, verzoeken wij u te kijken op {link}.'
-    StartEditing: 'U kunt beginnen met het bewerken van uw site door <a href="{link}">het CMS</a> te openen.'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'De installatiebestanden konden niet verwijderd worden. Verwijder onderstaande bestanden alstublieft handmatig.'
     VIEWPAGEIN: 'Bekijk pagina in:'
   ErrorPage:
@@ -246,6 +249,7 @@ nl:
     YOURPAGE: 'Pagina op deze website'
   ReportAdmin:
     MENUTITLE: Rapporten
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter op'
   SearchForm:
@@ -334,6 +338,7 @@ nl:
     MODIFIEDONDRAFTHELP: 'Pagina heeft wijzigingen die nog niet gepubliceerd zijn'
     MODIFIEDONDRAFTSHORT: Aangepast
     MetadataToggle: Metadata
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: 'Pagina locatie'
     PAGETITLE: 'Pagina titel'
     PAGETYPE: 'Pagina type'
@@ -343,7 +348,7 @@ nl:
     PARENTTYPE_SUBPAGE: 'Subpagina onder bovenliggende pagina (kies hieronder)'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Instellen welke groepen toegang hebben tot bepaalde pagina''s of deze kunnen bewerken'
     PERMISSION_GRANTACCESS_HELP: 'Bevoegdheid om pagina specifieke toegangsrechten in de "Pagina''s" sectie te wijzigen.'
-    PLURALNAME: 'Site structuur'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Paginatype "{type}" is niet toegestaan op het hoogste niveau'
     PageTypeNotAllowed: 'Pagina type "{type}" mag niet ondergeschikt zijn aan deze bovenliggende pagina'
     REMOVEDFROMDRAFTHELP: 'Deze pagina is gepubliceerd, maar verwijderd uit de conceptsite'
@@ -353,7 +358,7 @@ nl:
     REORGANISE_HELP: 'Pas pagina volgorde aan in de site structuur met behulp van verslepen.'
     SHOWINMENUS: 'Weergeven in menu''s?'
     SHOWINSEARCH: 'Weergeven in zoeken?'
-    SINGULARNAME: 'Site Boom'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Gedrag
     TABCONTENT: Inhoud
     TABDEPENDENT: 'Afhankelijke pagina''s'
@@ -404,5 +409,3 @@ nl:
     PLURALNAME: 'Virtuele pagina''s'
     PageTypNotAllowedOnRoot: 'Voor deze virtuele pagina is het originele paginatype "{type}" niet toegestaan op het hoogste niveau.'
     SINGULARNAME: 'Virtuele Pagina'
-  cms:
-    FILESYSTEMSYNC: 'Bestanden synchroniseren'

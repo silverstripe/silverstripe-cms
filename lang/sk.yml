@@ -5,6 +5,7 @@ sk:
     ActionAdd: 'Pridať priečinok'
     AppCategoryArchive: Archív
     AppCategoryAudio: Zvuk
+    AppCategoryDocument: Dokument
     AppCategoryFlash: Flash
     AppCategoryImage: Obrázok
     AppCategoryVideo: Video
@@ -13,6 +14,7 @@ sk:
     CurrentFolderOnly: 'Obmedziť na aktuálny priečinok?'
     DetailsView: Detaily
     FILES: Súbory
+    FILESYSTEMSYNC: 'Synchronizovať súbory'
     FILESYSTEMSYNCTITLE: 'Aktualizuje záznamy súborov databázy CMS na súborovom systéme. Užitočné, keď sú nové súbory nahrané mimo CMS, napr cez FTP.'
     FROMTHEINTERNET: 'Z internetu'
     FROMYOURCOMPUTER: 'Z vášho počitača'
@@ -60,7 +62,7 @@ sk:
   CMSAddPageController:
     Title: 'Pridať stránku'
   CMSBatchActions:
-    DELETED_DRAFT_PAGES: 'Smazaných %d stránok z koceptu webu, %d zlyhaní'
+    DELETED_DRAFT_PAGES: 'Smazaných %d stránok z konceptu webu, %d zlyhaní'
     DELETED_PAGES: 'Smazaných %d stránok z verejného webu, %d zlyhaní'
     DELETE_DRAFT_PAGES: 'Vymazať z návhrového webu'
     DELETE_PAGES: 'Vymazať z verejného webu'
@@ -85,12 +87,12 @@ sk:
     EditTree: 'Editovať strom'
     ListFiltered: 'Filtrovaný zoznam.'
     MENUTITLE: 'Upraviť stránku'
-    NEW: Nový
+    NEWPAGE: 'Nová {pagetype}'
     PAGENOTEXISTS: 'Táto stránka neexistuje.'
     PAGES: Stránky
-    PAGETYPEANYOPT: Akýkoľvek
+    PAGETYPEANYOPT: Akákoľvek
     PAGETYPEOPT: 'Typ stránky'
-    PUBALLCONFIRM: 'Publikovať všetky stránky z úschovne'
+    PUBALLCONFIRM: 'Prosím, zverejnite všetky stránky webu, zkopírovaním obsahu na verejné'
     PUBALLFUN: 'Funkcia "Publikovať všetko"'
     PUBALLFUN2: 'Stlačením tohto tlačidla vykonáte to isté ako keby ste navštívili každú stránku a stlačili "publikuj". Je určené na použite po rozsiahlych zmenách obsahu, napríklad keď bol web prvýkrát vytvorený.'
     PUBPAGES: 'Hotovo: Publikované {count} stránky'
@@ -169,18 +171,19 @@ sk:
     DRAFTSITE: 'Pracovná verzia stránky'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Pre zobrazenie návrhov alebo archivovaného obsahu sa musíte prihlásiť so svojím CMS heslom. <a href="%s">Pre návrat na publikovaný web kliknite Tu.</a>'
     Email: Email
+    INSTALL_SUCCESS: 'Inštalácia úspešná!'
     InstallFilesDeleted: 'Inštalačné súbory boli odstranené úspešne.'
     InstallSecurityWarning: 'Z bezpečnostných dôvodov by ste mali teraz odstrániť inštalačné súbory, ak  neplánujete preinštalovať neskôr (<em> vyžaduje admin prihlásenie, pozri vyššie </em>). Webový server teraz potrebuje už len prístup pre zápis do priečinka "assets", môžete odstrániť práva zápisu zo všetkých ostatných priečinkov. <a href="{link}" style="text-align: center;"> Kliknite tu pre odstránenie inštalačných súborov. </a>'
-    InstallSuccessCongratulations: 'SilverStripe bol nainštalovaný úspešne.'
+    InstallSuccessCongratulations: 'SilverStripe bol nainštalovaný úspešne!'
     LOGGEDINAS: 'Prihlásený ako'
     LOGIN: Prihlásiť
     LOGOUT: Odhlásiť
     NOTLOGGEDIN: Neprihlásený
     PUBLISHEDSITE: 'Verejný web'
     Password: Heslo
-    PostInstallTutorialIntro: 'Tento web je zjednodušená verzia SilverStripe 2. webu. Ak ho chcete rošíriť, pozrite sa na odkaz {link}, prosím.'
-    StartEditing: 'Môžte začať editáciu vášho web obsahu otvorením <a href="{link}">CMS</a>.'
-    UnableDeleteInstall: 'Nepodarilo sa smazať inštalačné súbory. Smazte ručne súbory uvedené dole'
+    PostInstallTutorialIntro: 'Tento web je zjednodušená verzia SilverStripe 3. webu. Pre rošírenie, pozrite sa na {link}, prosím.'
+    StartEditing: 'Môžte začať editáciu vášho web obsahu otvorením <a href=\\"{link}\\">CMS</a>.'
+    UnableDeleteInstall: 'Nepodarilo sa smazať inštalačné súbory. Smažte ručne súbory uvedené dole'
     VIEWPAGEIN: 'Prezrieť stránku v:'
   ErrorPage:
     CODE: 'Chybový kód'
@@ -246,6 +249,7 @@ sk:
     YOURPAGE: 'Stránka na vašom webe'
   ReportAdmin:
     MENUTITLE: Výkazy
+    ReportTitle: Titulok
   ReportAdminForm:
     FILTERBY: 'Filtrovať podľa'
   SearchForm:
@@ -271,7 +275,7 @@ sk:
     CloseLink: Zavrieť
   SiteConfig:
     DEFAULTTHEME: '(Použi predvolenú tému)'
-    EDITHEADER: 'Kto môže upravovať stranky na tomto webe?'
+    EDITHEADER: 'Kto môže editovať stránky na tomto webe?'
     EDIT_PERMISSION: 'Spravovať konfiguráciu webu'
     EDIT_PERMISSION_HELP: 'Možnosť meniť globálne prístupové nastavenia/právomoci pre hlavné stránky.'
     PLURALNAME: 'Konfigurácie webu'
@@ -287,7 +291,7 @@ sk:
     VIEWHEADER: 'Kto môže vidieť stránky na tomto webe?'
   SiteTree:
     ACCESSANYONE: Ktokoľvek
-    ACCESSHEADER: 'Kto môže vidieť túto stránku?'
+    ACCESSHEADER: 'Kto môže prezerať túto stránku?'
     ACCESSLOGGEDIN: 'Prihlásení používatelia'
     ACCESSONLYTHESE: 'Iba títo ľudia (vyberte zo zoznamu)'
     ADDEDTODRAFTHELP: 'Stránka ešte nebola zverejnená'
@@ -325,7 +329,7 @@ sk:
     HTMLEDITORTITLE: Obsah
     INHERIT: 'Zdediť od nadradenej stránky'
     LASTUPDATED: 'Posledne aktualizované'
-    LINKCHANGENOTE: 'Zmenenie odkazu na tejto stránky ovplyvní tiež odkazy všetkých podstránok.'
+    LINKCHANGENOTE: 'Zmenenie odkazu tejto stránky ovplyvní tiež odkazy všetkých podstránok.'
     MENUTITLE: 'Navigačná menovka'
     METADESC: Popis
     METAEXTRA: 'Vlastné Meta Tagy'
@@ -334,6 +338,7 @@ sk:
     MODIFIEDONDRAFTHELP: 'Stránka má nezverejnené zmeny'
     MODIFIEDONDRAFTSHORT: Zmenené
     MetadataToggle: Metaúdaje
+    OBSOLETECLASS: 'Táto stránka je zastaralý typ {type}. Uloženie spôsobí stratu jeho typu a vy môžte stratiť dáta'
     PAGELOCATION: 'Pozícia stránky'
     PAGETITLE: 'Názov stránky'
     PAGETYPE: 'Typ stránky'
@@ -343,17 +348,17 @@ sk:
     PARENTTYPE_SUBPAGE: 'Podstránka pod rodičovskou strankov (vyberte nižšie)'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Spravovať prístupové práva pre obsah'
     PERMISSION_GRANTACCESS_HELP: 'Povoliť nastavenia obmedzenia pre stranku v sekcií "Pages".'
-    PLURALNAME: 'Strom stránok'
+    PLURALNAME: Stránky
     PageTypNotAllowedOnRoot: 'Stránka typu "{type}" nie je povolená na najvyššej úrovni'
-    PageTypeNotAllowed: 'Stránka typu "{type}" nie je povolená ako potomok nadriadenej stránky'
-    REMOVEDFROMDRAFTHELP: 'Stránka je zverejnená, ale bola odstránená z koceptuu'
+    PageTypeNotAllowed: 'Stránka typu "{type}" nie je povolená ako potomok nadradenej stránky'
+    REMOVEDFROMDRAFTHELP: 'Stránka je zverejnená, ale bola odstránená z konceptu'
     REMOVEDFROMDRAFTSHORT: 'Odstránené z konceptu'
     REMOVE_INSTALL_WARNING: 'Upozornenie: Z bezpečnostných dôvodov odstránte súbor install.php z SilverStripe inštalácie.'
     REORGANISE_DESCRIPTION: 'Zmeniť štruktúru webu'
     REORGANISE_HELP: 'Zoradiť stránky v stromovej štruktúre pomocou prenesenia.'
     SHOWINMENUS: 'Zobrazovať v menu?'
     SHOWINSEARCH: 'Zobraziť v hľadaní?'
-    SINGULARNAME: 'Strom stránky'
+    SINGULARNAME: Stránka
     TABBEHAVIOUR: Správanie
     TABCONTENT: Obsah
     TABDEPENDENT: 'Závislé stránky'
@@ -402,7 +407,5 @@ sk:
     EDITCONTENT: 'kliknite tu pre editáciu obsahu'
     HEADER: 'Toto je virtuálna stránka'
     PLURALNAME: 'Virtuálne stránky'
-    PageTypNotAllowedOnRoot: 'Pôvodná stránka typu "{type}" nie je povolená na najvyššej úrovni pre túto virtálnu stránku'
+    PageTypNotAllowedOnRoot: 'Pôvodná stránka typu "{type}" nie je povolená na najvyššej úrovni pre túto virtuálnu stránku'
     SINGULARNAME: 'Virtuálna stránka'
-  cms:
-    FILESYSTEMSYNC: 'Synchronizovať súbory'

@@ -5,6 +5,7 @@ nb:
     ActionAdd: 'Legg til folder'
     AppCategoryArchive: Arkiv
     AppCategoryAudio: Audio
+    AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: Bilde
     AppCategoryVideo: Video
@@ -13,6 +14,7 @@ nb:
     CurrentFolderOnly: 'Begrens til nåværende folder'
     DetailsView: Detaljer
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'Fra internett'
     FROMYOURCOMPUTER: 'Fra din pc'
@@ -85,7 +87,7 @@ nb:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
-    NEW: 'New '
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'This page doesn''t exist'
     PAGES: Pages
     PAGETYPEANYOPT: Any
@@ -169,17 +171,18 @@ nb:
     DRAFTSITE: 'Draft Site'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Du må være logget inn i kontrollpanelet for å se utkast eller det arkiverte innholdet. <a href="%s">Klikk her for å gå tilbake til den publiserte versjonen.</a>'
     Email: Email
+    INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Installation files have been successfully deleted.'
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: 'Logged in as'
     LOGIN: Login
     LOGOUT: 'Log out'
     NOTLOGGEDIN: 'Ikke logget inn'
     PUBLISHEDSITE: 'Published Site'
     Password: Password
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'View Page in:'
   ErrorPage:
@@ -246,6 +249,7 @@ nb:
     YOURPAGE: 'Side på ditt nettsted'
   ReportAdmin:
     MENUTITLE: Rapporter
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
@@ -299,7 +303,7 @@ nb:
     BUTTONSAVEPUBLISH: 'Lagre & Publiser'
     BUTTONUNPUBLISH: Av-publiser
     BUTTONUNPUBLISHDESC: 'Fjern denne siden fra det publiserte nettstedet'
-    CREATED: 'Date Created'
+    CREATED: 'Kreasjons dato'
     Comments: Kommentarer
     Content: Innhold
     DEFAULTABOUTCONTENT: '<p>Du kan fylle denne siden med ditt innhold, eller du kan slette siden og lage dine egne sider.<br /></p>'
@@ -334,6 +338,7 @@ nb:
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modifisert
     MetadataToggle: Metadata
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: Sideplassering
     PAGETITLE: Sidenavn
     PAGETYPE: Sidetype
@@ -343,24 +348,24 @@ nb:
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Kontroller hvilke grupper som har tilgang til eller kan endre sidene'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: Sidetrær
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
     REMOVEDFROMDRAFTSHORT: 'Fjernet fra utkast'
-    REMOVE_INSTALL_WARNING: 'Warning: You should remove install.php from this SilverStripe install for security reasons.'
+    REMOVE_INSTALL_WARNING: 'Advarsel: du burde fjerne installerte.php fra silverstripe for sikkerhetskyld'
     REORGANISE_DESCRIPTION: 'Endre nettstedets struktur'
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'Vis i menyer?'
     SHOWINSEARCH: 'Vis i søk?'
-    SINGULARNAME: Sidetre
+    SINGULARNAME: Page
     TABBEHAVIOUR: Adferd
     TABCONTENT: Innhold
     TABDEPENDENT: 'Dependent pages'
     TOPLEVEL: 'Nettstedets Innhold (øverste nivå)'
     TOPLEVELCREATORGROUPS: 'Top level creators'
     URLSegment: 'URL Segment'
-    VIEWERGROUPS: 'Viewer Groups'
+    VIEWERGROUPS: 'Publikums grupper'
     VIEW_ALL_DESCRIPTION: 'View any page'
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
     VIEW_DRAFT_CONTENT: 'Se innhold i utkast'
@@ -404,5 +409,3 @@ nb:
     PLURALNAME: 'Virtuelle Sider'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtuell Side'
-  cms:
-    FILESYSTEMSYNC: 'Synkroniser filer'

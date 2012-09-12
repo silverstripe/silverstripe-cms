@@ -5,6 +5,7 @@ es_AR:
     ActionAdd: 'Add folder'
     AppCategoryArchive: Archive
     AppCategoryAudio: Audio
+    AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: Image
     AppCategoryVideo: Video
@@ -13,6 +14,7 @@ es_AR:
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'From the internet'
     FROMYOURCOMPUTER: 'From your computer'
@@ -85,7 +87,7 @@ es_AR:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
-    NEW: Nuevo
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Esta página no existe'
     PAGES: Pages
     PAGETYPEANYOPT: Any
@@ -169,17 +171,18 @@ es_AR:
     DRAFTSITE: 'Sitio borrador'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Debes iniciar sesión con tu contraseña CMS para poder ver el contenido del borrador archivado . <a href="%s">Haz click aquí para regresar al sitio publicado.</a>'
     Email: Email
+    INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Installation files have been successfully deleted.'
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: 'Conectado como'
     LOGIN: 'Iniciar sesión'
     LOGOUT: Desconectarse
     NOTLOGGEDIN: 'No conectado'
     PUBLISHEDSITE: 'Sitio publicado'
     Password: Password
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'Ver página en:'
   ErrorPage:
@@ -246,6 +249,7 @@ es_AR:
     YOURPAGE: 'Página en tu sitio web'
   ReportAdmin:
     MENUTITLE: Reports
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filtrar por'
   SearchForm:
@@ -334,6 +338,7 @@ es_AR:
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
     MetadataToggle: Metadata
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: 'Ubicación de la página'
     PAGETITLE: 'Nombre de página'
     PAGETYPE: 'Tipo de Página'
@@ -343,7 +348,7 @@ es_AR:
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Administrar los derechos de acceso para el contenido'
     PERMISSION_GRANTACCESS_HELP: 'Permitir el establecimiento de restricciones de acceso específicas de la página en la sección "Páginas".'
-    PLURALNAME: 'Árboles de Sitio'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -353,7 +358,7 @@ es_AR:
     REORGANISE_HELP: 'Reorganizar las páginas en el árbol del sitio mediante arrastrar y soltar.'
     SHOWINMENUS: '¿Mostrar en menús?'
     SHOWINSEARCH: '¿Mostrar en búsqueda?'
-    SINGULARNAME: 'Árbol de Sitio'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Compotamiento
     TABCONTENT: Contenido
     TABDEPENDENT: 'Páginas dependientes'
@@ -404,5 +409,3 @@ es_AR:
     PLURALNAME: 'Págs. Virtuales'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Página Virtual'
-  cms:
-    FILESYSTEMSYNC: 'Sync files'

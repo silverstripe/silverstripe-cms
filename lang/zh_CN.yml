@@ -5,6 +5,7 @@ zh_CN:
     ActionAdd: 'Add folder'
     AppCategoryArchive: Archive
     AppCategoryAudio: Audio
+    AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: Image
     AppCategoryVideo: Video
@@ -13,6 +14,7 @@ zh_CN:
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
     FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: 'From the internet'
     FROMYOURCOMPUTER: 'From your computer'
@@ -85,7 +87,7 @@ zh_CN:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Edit Page'
-    NEW: 新建的
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 该网页不存在
     PAGES: Pages
     PAGETYPEANYOPT: Any
@@ -125,9 +127,9 @@ zh_CN:
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
     MENUTITLE: History
     REVERTTOTHISVERSION: 'Revert to this version'
-    SHOWUNPUBLISHED: 'Show unpublished versions'
-    SHOWVERSION: 'Show Version'
-    VIEW: view
+    SHOWUNPUBLISHED: 显示未发布版本
+    SHOWVERSION: 显示版本
+    VIEW: 视图
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Author
@@ -138,10 +140,10 @@ zh_CN:
   CMSPageSettingsController:
     MENUTITLE: 'Edit Page'
   CMSPagesController:
-    GalleryView: 'Gallery View'
-    ListView: 'List View'
-    MENUTITLE: Pages
-    TreeView: 'Tree View'
+    GalleryView: 相册视图
+    ListView: 列表视图
+    MENUTITLE: 页面
+    TreeView: 树形视图
   CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: 'Drag''n''drop'
     MULTISELECT: Multi-selection
@@ -157,7 +159,7 @@ zh_CN:
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Changed pages'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'All pages, including deleted'
+    Title: 所有页面(包含已删除)
   CMSSiteTreeFilter_Search:
     Title: 'All pages'
   ContentControl:
@@ -169,17 +171,18 @@ zh_CN:
     DRAFTSITE: 'Draft Site'
     DRAFT_SITE_ACCESS_RESTRICTION: '您必需用您的CMS密码来登录，才可浏览预备发布或已归档内容。<a href="%s">点击这里可回到正式发布站<a>'
     Email: Email
+    INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Installation files have been successfully deleted.'
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed.'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: 'Logged in as'
     LOGIN: Login
     LOGOUT: 'Log out'
     NOTLOGGEDIN: 'Not logged in'
     PUBLISHEDSITE: 'Published Site'
     Password: Password
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'View Page in:'
   ErrorPage:
@@ -216,14 +219,14 @@ zh_CN:
     504: '504 - Gateway Timeout'
     505: '505 - HTTP Version Not Supported'
   Folder:
-    AddFolderButton: 'Add folder'
-    DELETEUNUSEDTHUMBNAILS: 'Delete unused thumbnails'
-    UNUSEDFILESTITLE: 'Unused files'
-    UNUSEDTHUMBNAILSTITLE: 'Unused thumbnails'
-    UploadFilesButton: Upload
+    AddFolderButton: 添加文件夹
+    DELETEUNUSEDTHUMBNAILS: 删除未使用缩略图
+    UNUSEDFILESTITLE: 未使用文件
+    UNUSEDTHUMBNAILSTITLE: 未使用缩略图
+    UploadFilesButton: 上传
   LeftAndMain:
     DELETED: Deleted.
-    PreviewButton: Preview
+    PreviewButton: 预览
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: 'Search Results'
@@ -234,7 +237,7 @@ zh_CN:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
   RedirectorPage:
-    DESCRIPTION: 'Redirects to a different internal page'
+    DESCRIPTION: 跳转至其他的内部页面
     HASBEENSETUP: 重导网页被生成，却没有什么地方由它来重导。
     HEADER: 该页会将用户重新导向另一网页
     OTHERURL: 另一网站的URL
@@ -246,6 +249,7 @@ zh_CN:
     YOURPAGE: 您网站中的网页
   ReportAdmin:
     MENUTITLE: Reports
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
@@ -265,10 +269,10 @@ zh_CN:
     ParameterLiveCheckbox: 'Check live site'
     REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
-    ShareLink: 'Share link'
+    ShareInstructions: 分享此页，请复制粘贴下面的链接
+    ShareLink: 分享链接
   SilverStripeNavigatorLinkl:
-    CloseLink: Close
+    CloseLink: 关闭
   SiteConfig:
     DEFAULTTHEME: '(Use default theme)'
     EDITHEADER: 'Who can edit pages on this site?'
@@ -299,11 +303,11 @@ zh_CN:
     BUTTONSAVEPUBLISH: 保存并发布
     BUTTONUNPUBLISH: 撤消发布
     BUTTONUNPUBLISHDESC: 将此页从正式发布站删除
-    CREATED: 'Date Created'
+    CREATED: 创建日期
     Comments: Comments
     Content: Content
     DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
-    DEFAULTABOUTTITLE: 'About Us'
+    DEFAULTABOUTTITLE: 关于我们
     DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
     DEFAULTCONTACTTITLE: 'Contact Us'
     DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
@@ -323,7 +327,7 @@ zh_CN:
     Editors: 'Editors Groups'
     HASBROKENLINKS: 该页有失效链接。
     HTMLEDITORTITLE: 内容
-    INHERIT: 'Inherit from parent page'
+    INHERIT: 从父页面继承
     LASTUPDATED: 'Last Updated'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 导航标签
@@ -334,6 +338,7 @@ zh_CN:
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
     MetadataToggle: Metadata
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: 'Page location'
     PAGETITLE: 网页名称
     PAGETYPE: 网页类型
@@ -343,7 +348,7 @@ zh_CN:
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: 'Site Tres'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
@@ -353,7 +358,7 @@ zh_CN:
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 是否出现在菜单中？
     SHOWINSEARCH: 是否包括在搜索结果中？
-    SINGULARNAME: 'Site Tree'
+    SINGULARNAME: Page
     TABBEHAVIOUR: 行为特点
     TABCONTENT: 内容
     TABDEPENDENT: 'Dependent pages'
@@ -398,11 +403,9 @@ zh_CN:
     HAVEASKED: '在%s,您要求浏览我们网站'
   VirtualPage:
     CHOOSE: 选择一个网页进行链接
-    DESCRIPTION: 'Displays the content of another page'
+    DESCRIPTION: 显示其他页的内容
     EDITCONTENT: 点击这里以编辑内容
     HEADER: 这是一个虚拟页
-    PLURALNAME: 'Virtual Pags'
+    PLURALNAME: 虚拟页面
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
-    SINGULARNAME: 'Virtual Page'
-  cms:
-    FILESYSTEMSYNC: 'Sync files'
+    SINGULARNAME: 虚拟页面

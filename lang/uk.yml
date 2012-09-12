@@ -5,6 +5,7 @@ uk:
     ActionAdd: 'Додати папку'
     AppCategoryArchive: Архівувати
     AppCategoryAudio: Аудіо
+    AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: Зображення
     AppCategoryVideo: Відео
@@ -13,6 +14,7 @@ uk:
     CurrentFolderOnly: 'Обмежити до поточної папки?'
     DetailsView: Деталі
     FILES: Файли
+    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Оновлення бази даних файлів у файловій системі. Корисно, коли нові файли були завантажені поза CMS, наприклад, через FTP.'
     FROMTHEINTERNET: 'З інтернету'
     FROMYOURCOMPUTER: 'З мого комп''ютера'
@@ -85,7 +87,7 @@ uk:
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Редагувати сторінку'
-    NEW: Нове
+    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: 'Ця сторінка не існує'
     PAGES: Сторінки
     PAGETYPEANYOPT: Будь-який
@@ -169,17 +171,18 @@ uk:
     DRAFTSITE: 'Чорновий сайт'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Ви повинні увійти у систему для перегляду чернетки даного матеріалу. <a href="%s">Натсиніть для переходу на опублікований матеріал.</a>'
     Email: Е-пошта
+    INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Інсталяційні файли були успішно видалені.'
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe було успішно встановлено.'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: 'Залогований як '
     LOGIN: Логін
     LOGOUT: Вилогуватися
     NOTLOGGEDIN: 'Не залогований'
     PUBLISHEDSITE: 'Публічний сайт'
     Password: Пароль
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 2 site. To extend this, please take a look at {link}.'
-    StartEditing: 'Ви можете почати редагувати вміст сайту перейшовши в <a href="{link}">CMS</a>.'
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
     UnableDeleteInstall: 'Не вдається видалити інсталяційні файли. Будь ласка, видаліть вручну наведені нижче файли'
     VIEWPAGEIN: 'Переглянути сторінку в:'
   ErrorPage:
@@ -246,6 +249,7 @@ uk:
     YOURPAGE: 'Сторінки на Вашому сайті'
   ReportAdmin:
     MENUTITLE: Звіти
+    ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Фільтр по'
   SearchForm:
@@ -334,6 +338,7 @@ uk:
     MODIFIEDONDRAFTHELP: 'Сторінка має неопубліковані зміни'
     MODIFIEDONDRAFTSHORT: Змінений
     MetadataToggle: Metadata
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: 'Розміщення сторінки'
     PAGETITLE: 'Назва сторінки'
     PAGETYPE: 'Тип сторінки'
@@ -343,7 +348,7 @@ uk:
     PARENTTYPE_SUBPAGE: 'Дочірня сторінки під батьківською сторінкою'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Керувати правами доступу до контенту'
     PERMISSION_GRANTACCESS_HELP: 'Дозволити встановлювати обмеження доступу окремо для кожної сторінки в розділі "Сторінки"'
-    PLURALNAME: 'Дерево сайту'
+    PLURALNAME: Pages
     PageTypNotAllowedOnRoot: 'Сторінки типу "{type}" не можуть бути кореневими'
     PageTypeNotAllowed: 'Не дозоволяється створювати сторінки типу "{type}" як дочірні сторінки цієї сторінки'
     REMOVEDFROMDRAFTHELP: 'Сторінка опублікована, але видалена з чорнового сайту'
@@ -353,7 +358,7 @@ uk:
     REORGANISE_HELP: 'Переставляти сторінки в дереві сайту за допомогою drag&drop'
     SHOWINMENUS: 'Показувати у навігації?'
     SHOWINSEARCH: 'Показувати у пошуку?'
-    SINGULARNAME: 'Дерево сайту'
+    SINGULARNAME: Page
     TABBEHAVIOUR: Поводження
     TABCONTENT: Вміст
     TABDEPENDENT: 'Залежні сторінки'
@@ -404,5 +409,3 @@ uk:
     PLURALNAME: 'Віртуальні сторінки'
     PageTypNotAllowedOnRoot: 'Тип сторінки "{type}" не допускається на кореневому рівні для цієї віртуальної сторінки'
     SINGULARNAME: 'Віртуальна сторінка'
-  cms:
-    FILESYSTEMSYNC: 'Синхронізувати файли'
