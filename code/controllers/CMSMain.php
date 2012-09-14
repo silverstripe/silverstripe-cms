@@ -341,7 +341,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function SiteTreeHints() {
 		$json = '';
 
-	 	$classes = ClassInfo::subclassesFor( $this->stat('tree_class') );
+	 	$classes = SiteTree::page_type_classes();
 
 	 	$cacheCanCreate = array();
 	 	foreach($classes as $class) $cacheCanCreate[$class] = singleton($class)->canCreate();
@@ -373,7 +373,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 					
 					if($instance instanceof HiddenClass) continue;
 
-					if(!$cacheCanCreate[$child]) continue;
+					if(!array_key_exists($child, $cacheCanCreate) || !$cacheCanCreate[$child]) continue;
 
 					// skip this type if it is restricted
 					if($instance->stat('need_permission') && !$this->can(singleton($class)->stat('need_permission'))) continue;
