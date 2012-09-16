@@ -165,7 +165,7 @@ it:
   ContentControl:
     NOTEWONTBESHOWN: 'Nota: questo messaggio non verrà mostrato ai visitatori'
   ContentController:
-    ARCHIVEDSITE: 'Anteprima versione'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Sito archiviato da'
     CMS: CMS
     DRAFTSITE: 'Bozza del sito'
@@ -193,8 +193,8 @@ it:
     DEFAULTSERVERERRORPAGETITLE: 'Errore server'
     DESCRIPTION: 'Contenuto personalizzato per differenti casi di errore (es. "Pagina non trovata")'
     ERRORFILEPROBLEM: 'Errore nell''apertura del file "{filename}" per la scrittura. Controlla i permessi del file.'
-    PLURALNAME: 'Pagine errore'
-    SINGULARNAME: 'Pagina errore'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Richiesta errata'
     401: '401 - Non Autorizzato'
     403: '403 - Accesso Negato'
@@ -241,11 +241,11 @@ it:
     HASBEENSETUP: 'Una pagina di redirezione è stata configurata nonostante non vi sia alcun indirizzo a cui farla puntare'
     HEADER: 'Questa pagina redirigerà gli utenti su un''altra'
     OTHERURL: 'Altro indirizzo del sito web'
-    PLURALNAME: 'Pagine di redirezione'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Redirigi a'
     REDIRECTTOEXTERNAL: 'Un altro sito web'
     REDIRECTTOPAGE: 'Una pagina sul tuo sito web'
-    SINGULARNAME: 'Pagina di redirezione'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Pagina sul tuo sito web'
   ReportAdmin:
     MENUTITLE: Rapporti
@@ -278,8 +278,8 @@ it:
     EDITHEADER: '(Chi può modificare le pagine in questo sito?)'
     EDIT_PERMISSION: 'Gestisci la configurazione del sito'
     EDIT_PERMISSION_HELP: 'Capacità di modificare le impostazioni globali di accesso/permessi pagina alto livello'
-    PLURALNAME: 'Configurazioni sito'
-    SINGULARNAME: 'Configurazione sito'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Nome del tuo sito'
     SITETAGLINE: 'Motto/Slogan del sito'
     SITETITLE: 'Titolo del sito'

@@ -29,7 +29,7 @@ ru:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Удалить папки'
   AssetAdmin_Tools:
-    FILTER: Фильтр
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Выбрать
   AssetTableField:
@@ -165,7 +165,7 @@ ru:
   ContentControl:
     NOTEWONTBESHOWN: 'Примечание: это сообщение не будет отображаться для посетителей'
   ContentController:
-    ARCHIVEDSITE: 'Версия для просмотра'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Архив сайта от'
     CMS: CMS
     DRAFTSITE: 'Черновой сайт'
@@ -193,8 +193,8 @@ ru:
     DEFAULTSERVERERRORPAGETITLE: 'Ошибка сервера'
     DESCRIPTION: 'Пользовательские страницы ошибок (например, "Страница не найдена")'
     ERRORFILEPROBLEM: 'Ошибка при открытии файла "{filename}" для записи. Пожалуйста, проверьте права доступа к файлам.'
-    PLURALNAME: 'Страницы ошибок'
-    SINGULARNAME: 'Страница ошибки'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Плохой запрос'
     401: '401 - Неавторизован'
     403: '403 - Запрещено'
@@ -241,11 +241,11 @@ ru:
     HASBEENSETUP: 'Страница перенаправления установлена без указания места перенаправления.'
     HEADER: 'Эта страница будет перенаправлять пользователей на другую страницу'
     OTHERURL: 'URL другого сайта'
-    PLURALNAME: 'Страницы перенаправления'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Перенаправлять на'
     REDIRECTTOEXTERNAL: 'Другой сайт'
     REDIRECTTOPAGE: 'Страницу Вашего сайта'
-    SINGULARNAME: 'Страница перенаправления'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Страница Вашего сайта'
   ReportAdmin:
     MENUTITLE: Отчеты
@@ -278,8 +278,8 @@ ru:
     EDITHEADER: 'Кто может редактировать страницы на этом сайте?'
     EDIT_PERMISSION: 'Управление конфигурацией сайта'
     EDIT_PERMISSION_HELP: 'Возможность редактировать глобальные настройки доступа/права доступа к страницам верхнего уровня.'
-    PLURALNAME: 'Конфигурации сайта'
-    SINGULARNAME: 'Конфигурация сайта'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Название сайта'
     SITETAGLINE: 'Подзаголовок сайта / слоган'
     SITETITLE: 'Заголовок сайта'

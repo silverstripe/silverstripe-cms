@@ -29,7 +29,7 @@ pt:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Apagar pastas'
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: Filtro
   AssetAdmin_left.ss:
     GO: Ir
   AssetTableField:

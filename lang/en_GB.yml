@@ -193,7 +193,7 @@ en_GB:
     DEFAULTSERVERERRORPAGETITLE: 'Server error'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
-    PLURALNAME: 'Error Pages'
+    PLURALNAME: 'Error Pags'
     SINGULARNAME: 'Error Page'
     400: '400 - Bad Request'
     401: '401 - Unauthorised'

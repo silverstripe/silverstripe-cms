@@ -29,7 +29,7 @@ sk:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Vymazať priečinky'
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: Filtrovať
   AssetAdmin_left.ss:
     GO: Choď
   AssetTableField:
@@ -165,7 +165,7 @@ sk:
   ContentControl:
     NOTEWONTBESHOWN: 'Poznámka: Táto správa sa nebude zobrazovať vašim návštevníkom'
   ContentController:
-    ARCHIVEDSITE: 'Zobrazenie verzie'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Archivovaný web z'
     CMS: CMS
     DRAFTSITE: 'Pracovná verzia stránky'
@@ -193,8 +193,8 @@ sk:
     DEFAULTSERVERERRORPAGETITLE: 'Chyba servera'
     DESCRIPTION: 'Vlastný obsah pre rôzne prípady chýb (napr. "Stránka nenájdená")'
     ERRORFILEPROBLEM: 'Chyba otvorenia súboru "{filename}" pre zápis. Skontrolujte oprávnenia súboru, prosím.'
-    PLURALNAME: 'Chybové stránky'
-    SINGULARNAME: 'Chybova stránka'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Neplatná požiadavka'
     401: '401 - Neautorizovaný prístup'
     403: '403 - Zamietnuté'
@@ -241,11 +241,11 @@ sk:
     HASBEENSETUP: 'Stránka na presmerovanie bola nastavená bez cieľa.'
     HEADER: 'Táto stránka presmeruje používateľov na inú stránku'
     OTHERURL: 'Iné webové URL.'
-    PLURALNAME: 'Presmerovacie stránky'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Presmerovať na'
     REDIRECTTOEXTERNAL: 'Iná webová stránka'
     REDIRECTTOPAGE: 'Stránka na vašom webe'
-    SINGULARNAME: 'Presmerovacia stránka'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Stránka na vašom webe'
   ReportAdmin:
     MENUTITLE: Výkazy
@@ -278,8 +278,8 @@ sk:
     EDITHEADER: 'Kto môže editovať stránky na tomto webe?'
     EDIT_PERMISSION: 'Spravovať konfiguráciu webu'
     EDIT_PERMISSION_HELP: 'Možnosť meniť globálne prístupové nastavenia/právomoci pre hlavné stránky.'
-    PLURALNAME: 'Konfigurácie webu'
-    SINGULARNAME: 'Konfigurácia webu'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Meno vašej stránky'
     SITETAGLINE: 'Slogan stránky'
     SITETITLE: 'Titulok webu'

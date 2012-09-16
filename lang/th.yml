@@ -165,7 +165,7 @@ th:
   ContentControl:
     NOTEWONTBESHOWN: 'หมายเหตุ: ข้อความนี้จะไม่ถูกนำไปแสดงให้ผู้เยี่ยมชมเว็บไซต์ของคุณเห็น'
   ContentController:
-    ARCHIVEDSITE: รุ่นสำหรับดูตัวอย่าง
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
     DRAFTSITE: เว็บไซต์ฉบับร่าง
@@ -193,8 +193,8 @@ th:
     DEFAULTSERVERERRORPAGETITLE: เซิร์ฟเวอร์เกิดข้อผิดพลาด
     DESCRIPTION: 'กำหนดเนื้อหาเองสำหรับข้อผิดพลาดต่างๆ (e.g. "ไม่พบหน้าเว็บที่ต้องการ")'
     ERRORFILEPROBLEM: 'เกิดข้อผิดพลาดในการเปิดไฟล์ "{filename}" เพื่อเขียนข้อมูล. กรุณาตรวจสอบสิทธิ์.'
-    PLURALNAME: หน้าแสดงข้อผิดพลาด
-    SINGULARNAME: หน้าแสดงข้อผิดพลาด
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - ข้อความร้องขอที่ส่งมามีความผิดพลาดทางไวยากรณ์ หรือไม่สามารถทำตามการร้องขอนั้นได้'
     401: '401 - Unauthorized'
     403: '403 - Forbidden'
@@ -241,11 +241,11 @@ th:
     HASBEENSETUP: หน้าเว็บที่มีการเปลี่ยนเส้นทางซึ่งได้รับการตั้งค่าโดยปราศจากตำแหน่งปลายทางที่ต้องการเปลี่ยนเส้นทางไป
     HEADER: หน้าเว็บนี้จะเปลี่ยนเส้นทางผู้ใช้งานไปยังหน้าเว็บอื่นๆ
     OTHERURL: 'ที่อยู่ URL ของเว็บไซต์อื่นๆ'
-    PLURALNAME: หน้าเว็บเปลี่ยนเส้นทาง
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: เปลี่ยนเส้นทางไปที่
     REDIRECTTOEXTERNAL: เว็บไซต์อื่นๆ
     REDIRECTTOPAGE: หน้าเว็บในเว็บไซต์ของคุณ
-    SINGULARNAME: หน้าเว็บเปลี่ยนเส้นทาง
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: หน้าเว็บที่อยู่บนเว็บไซต์ของคุณ
   ReportAdmin:
     MENUTITLE: รายงาน
@@ -278,8 +278,8 @@ th:
     EDITHEADER: 'ใครสามารถแก้ไขหน้าเว็บบนเว็บไซต์นี้ได้บ้าง?'
     EDIT_PERMISSION: การจัดการการกำหนดค่าของเว็บไซต์
     EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
-    PLURALNAME: กำหนดค่าเว็บไซต์
-    SINGULARNAME: ตั้งค่าเว็บไซต์
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: ชื่อเว็บไซต์ของคุณ
     SITETAGLINE: สโลแกนของเว็บไซต์
     SITETITLE: ชื่อเว็บไซต์

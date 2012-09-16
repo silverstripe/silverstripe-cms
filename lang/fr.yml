@@ -165,7 +165,7 @@ fr:
   ContentControl:
     NOTEWONTBESHOWN: 'Note : ce message ne sera pas visible de vos visiteurs.'
   ContentController:
-    ARCHIVEDSITE: 'Version de l’aperçu'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Site archivé depuis'
     CMS: CMS
     DRAFTSITE: 'Site Brouillon'
@@ -193,8 +193,8 @@ fr:
     DEFAULTSERVERERRORPAGETITLE: 'Erreur du serveur'
     DESCRIPTION: 'Contenu personnalisé pour diverses erreurs (p. ex. « Page introuvable »)'
     ERRORFILEPROBLEM: ' L’ouverture du fichier « {filename} » afin de le modifier a provoqué une erreur ; vérifiez les droits d’accès au fichier. '
-    PLURALNAME: 'Pages d’erreur'
-    SINGULARNAME: 'Page d’erreur'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Mauvaise demande'
     401: '401 - Non autorisé'
     403: '403 - Interdit'
@@ -241,11 +241,11 @@ fr:
     HASBEENSETUP: 'Une page de redirection sans adresse de redirection a été créée.'
     HEADER: 'Cette page va rediriger les utilisateurs vers une autre page'
     OTHERURL: 'Autre URL de site web'
-    PLURALNAME: 'Pages de redirection'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Rediriger vers'
     REDIRECTTOEXTERNAL: 'Autre site web'
     REDIRECTTOPAGE: 'Une page de votre site web'
-    SINGULARNAME: 'Page de redirection'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Page de votre site web'
   ReportAdmin:
     MENUTITLE: Rapports
@@ -278,8 +278,8 @@ fr:
     EDITHEADER: 'Qui peut modifier les pages sur ce site?'
     EDIT_PERMISSION: 'Configuration du site'
     EDIT_PERMISSION_HELP: 'Capacité d''édition des accès globales et permission des pages de premier niveau.'
-    PLURALNAME: 'Configurations du site'
-    SINGULARNAME: 'Configuration du site'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Nom du site'
     SITETAGLINE: 'Slogan ou devise du site'
     SITETITLE: 'Titre du site'

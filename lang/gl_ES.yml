@@ -29,7 +29,7 @@ gl_ES:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Eliminar cartafoles'
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: Filtro
   AssetAdmin_left.ss:
     GO: Ir
   AssetTableField:

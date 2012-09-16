@@ -29,7 +29,7 @@ bg:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Delete folders'
   AssetAdmin_Tools:
-    FILTER: 'Филтрирай по'
+    FILTER: Филтър
   AssetAdmin_left.ss:
     GO: Давай
   AssetTableField:
@@ -241,11 +241,11 @@ bg:
     HASBEENSETUP: 'Създадена е страница за пренасочване без да има накъде да се пренасочи.'
     HEADER: 'Тази страница ще пренасочи потребители към друга страница'
     OTHERURL: 'Друг уебсайт URL'
-    PLURALNAME: 'Препратени страници'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Пренасочи към'
     REDIRECTTOEXTERNAL: 'Друг уебсайт'
     REDIRECTTOPAGE: 'Страница на вашият уебсайт'
-    SINGULARNAME: 'Страница за пренасочване, сочеща към несъществуваща страница'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Страница на вашият уебсайт'
   ReportAdmin:
     MENUTITLE: Reports

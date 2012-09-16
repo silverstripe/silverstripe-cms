@@ -29,7 +29,7 @@ sv:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Radera mapparna'
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: Filtrera
   AssetAdmin_left.ss:
     GO: Kör
   AssetTableField:
@@ -165,7 +165,7 @@ sv:
   ContentControl:
     NOTEWONTBESHOWN: 'Observera: Detta meddelande kommer inte att visas för besökarna'
   ContentController:
-    ARCHIVEDSITE: 'Förhandsgranska version'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Arkiverad sajt från'
     CMS: CMS
     DRAFTSITE: Utkast
@@ -193,8 +193,8 @@ sv:
     DEFAULTSERVERERRORPAGETITLE: Serverfel
     DESCRIPTION: 'Anpassat innehåll för olika felärenden (t.ex. "Sidan kan inte hittas")'
     ERRORFILEPROBLEM: 'Kunde inte skriva filen "{filename}". Var vänlig kontrollera skrivrättigheterna.'
-    PLURALNAME: Felsidor
-    SINGULARNAME: Felsida
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Felaktig förfrågan'
     401: '401 - Obehörig'
     403: '403 - Förbjuden'
@@ -241,11 +241,11 @@ sv:
     HASBEENSETUP: 'En omdirigeringssida har skapats utan att ha något mål.'
     HEADER: 'Den här sidan omdirigerar användare till en annan sida'
     OTHERURL: 'Andra sidans URL'
-    PLURALNAME: Omdirigeringssidor
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Omdirigera till'
     REDIRECTTOEXTERNAL: 'En annan sajt'
     REDIRECTTOPAGE: 'En sida på din sajt'
-    SINGULARNAME: Omdirigeringssida
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Sida på din sajt'
   ReportAdmin:
     MENUTITLE: Rapporter
@@ -278,8 +278,8 @@ sv:
     EDITHEADER: 'Vem kan redigera sidor på den här sajten?'
     EDIT_PERMISSION: 'Redigera sajtkonfiguration'
     EDIT_PERMISSION_HELP: 'Möjlighet att ändra den globala åtkomstinställningar / toppnivåbehörigheter.'
-    PLURALNAME: Sajtinställningar
-    SINGULARNAME: Sajtinställning
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Din Sajts Namn'
     SITETAGLINE: 'Din sajts Slogan'
     SITETITLE: Sajttitel

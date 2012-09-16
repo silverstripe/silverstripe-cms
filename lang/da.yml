@@ -165,7 +165,7 @@ da:
   ContentControl:
     NOTEWONTBESHOWN: 'Bemærk: denne besked bliver ikke vist til dine besøgende '
   ContentController:
-    ARCHIVEDSITE: Forhåndsvisning
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Arkiveret side fra'
     CMS: CMS
     DRAFTSITE: Kladdeside
@@ -193,8 +193,8 @@ da:
     DEFAULTSERVERERRORPAGETITLE: Serverfejl
     DESCRIPTION: 'Brugerdefineret indhold for forskellige fejltyper (f.eks. "Siden blev ikke fundet")'
     ERRORFILEPROBLEM: 'Kunne ikke åbne filen "{filename}" til skrivning. Undersøg filrettighederne.'
-    PLURALNAME: Fejlsider
-    SINGULARNAME: Fejlside
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Bad Request'
     401: '401 - Unauthorized'
     403: '403 - Forbidden'
@@ -241,11 +241,11 @@ da:
     HASBEENSETUP: 'En omdirigeringsside er blevet sat op, uden et sted at omdirigere til.'
     HEADER: 'Denne side omdirigerer besøgende til en anden side'
     OTHERURL: 'Andet websteds URL'
-    PLURALNAME: 'Videresendende side'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Omdiriger til'
     REDIRECTTOEXTERNAL: 'Et andet websted'
     REDIRECTTOPAGE: 'En side på dit websted'
-    SINGULARNAME: 'Viderestillende side'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Side på dit websted'
   ReportAdmin:
     MENUTITLE: Rapporter
@@ -278,8 +278,8 @@ da:
     EDITHEADER: 'Hvem kan redigere sider på dette websted ?'
     EDIT_PERMISSION: 'Administrer sideopsætningen'
     EDIT_PERMISSION_HELP: 'Mulighed for at ændre indstillingerne for global adgang / topniveauside tilladelser.'
-    PLURALNAME: Løsningskonfigurationer
-    SINGULARNAME: Løsningskonfiguration
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Dit sidenavn'
     SITETAGLINE: 'Webstedets Tagline/Slogan'
     SITETITLE: Sidetitel

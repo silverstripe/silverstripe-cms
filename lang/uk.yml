@@ -29,7 +29,7 @@ uk:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Видалені папки'
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: Фільтр
   AssetAdmin_left.ss:
     GO: Уперед
   AssetTableField:
