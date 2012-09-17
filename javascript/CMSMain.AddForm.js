@@ -55,6 +55,10 @@
 				}
 				selectedEl.setSelected(true);
 				selectedEl.siblings().setSelected(false);
+
+				// Disable the "Create" button if none of the pagetypes are available
+				var buttonState = (this.find('#PageType li:not(.disabled)').length) ? 'enable' : 'disable';
+				this.find('button[name=action_doAdd]').button(buttonState);
 			}
 		});
 		
