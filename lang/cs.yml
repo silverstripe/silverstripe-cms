@@ -165,7 +165,7 @@ cs:
   ContentControl:
     NOTEWONTBESHOWN: 'Poznámka: tato zpráva nebude zobrazena vašim návštěvníkům'
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
+    ARCHIVEDSITE: 'Náhled verze'
     ARCHIVEDSITEFROM: 'Archivován web z'
     CMS: CMS
     DRAFTSITE: 'Koncept webu'
@@ -193,8 +193,8 @@ cs:
     DEFAULTSERVERERRORPAGETITLE: 'Chyba serveru'
     DESCRIPTION: 'Vlastní obsah pro různé případy chyb (např. "Stránka nenalezena")'
     ERRORFILEPROBLEM: 'Chyba otevření souboru "{filename}" pro zápis. Zkontrolujte oprávnění souboru, prosím.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
+    PLURALNAME: 'Chybové stránky'
+    SINGULARNAME: 'Chybová stránka'
     400: '400 - Špatný požadavek'
     401: '401 - Neautorizováno'
     403: '403 - Zakázáno'
@@ -241,11 +241,11 @@ cs:
     HASBEENSETUP: 'Přesměrovací stránka byla nastavena bez cíle.'
     HEADER: 'Tato stránka přesměruje uživatele na jinou'
     OTHERURL: 'Jinou webovou adresu'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: 'Přesměrovací stránky'
     REDIRECTTO: 'Přesměrovat na'
     REDIRECTTOEXTERNAL: 'Jinou webovou stránku'
     REDIRECTTOPAGE: 'Stránku na Vašem webu'
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: 'Přesměrovací stránka'
     YOURPAGE: 'Stránka na vašem webu'
   ReportAdmin:
     MENUTITLE: Výkazy
@@ -278,8 +278,8 @@ cs:
     EDITHEADER: 'Kdo může editovat stránky tohoto webu?'
     EDIT_PERMISSION: 'Správa konfigurace webu'
     EDIT_PERMISSION_HELP: 'Možnost měnit globální přístupové nastavení/oprávnění pro hlavní stránky.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
+    PLURALNAME: 'Konfigurace webu'
+    SINGULARNAME: 'Konfigurace webu'
     SITENAMEDEFAULT: 'Název tvého webu'
     SITETAGLINE: 'Štítek/Slogan webu'
     SITETITLE: 'Titulek webu'
