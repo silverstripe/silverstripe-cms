@@ -81,7 +81,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		CMSBatchActionHandler::register('deletefromlive', 'CMSBatchAction_DeleteFromLive');
 	}
 
-	function index($request) {
+	public function index($request) {
 		// In case we're not showing a specific record, explicitly remove any session state,
 		// to avoid it being highlighted in the tree, and causing an edit form to show.
 		if(!$request->param('Action')) $this->setCurrentPageId(null);
@@ -104,7 +104,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 *
 	 * @return boolean
 	 */
-	function ShowSwitchView() {
+	public function ShowSwitchView() {
 		return true;
 	}
 	
@@ -112,7 +112,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * Overloads the LeftAndMain::ShowView. Allows to pass a page as a parameter, so we are able
 	 * to switch view also for archived versions.
 	 */
-	function SwitchView($page = null) {
+	public function SwitchView($page = null) {
 		if(!$page) {
 			$page = $this->currentPage();
 		}
@@ -202,7 +202,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return $link;
 	}
 
-	function LinkPageAdd($extraArguments = null) {
+	public function LinkPageAdd($extraArguments = null) {
 		$link = singleton("CMSPageAddController")->Link();
 		$this->extend('updateLinkPageAdd', $link);
 		if($extraArguments) $link = Controller::join_links ($link, $extraArguments);
@@ -245,7 +245,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return $html;
 	}
 	
-	function SearchForm() {
+	public function SearchForm() {
 		// get all page types in a dropdown-compatible format
 		$pageTypeClasses = SiteTree::page_type_classes(); 
 		$pageTypes = array();
@@ -313,7 +313,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return $form;
 	}
 	
-	function doSearch($data, $form) {
+	public function doSearch($data, $form) {
 		return $this->getsubtree($this->request);
 	}
 
@@ -993,13 +993,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return $this->getResponseNegotiator()->respond($this->request);
 	}
 
-	function publish($data, $form) {
+	public function publish($data, $form) {
 		$data['publish'] = '1';
 		
 		return $this->save($data, $form);
 	}
 
-	function unpublish($data, $form) {
+	public function unpublish($data, $form) {
 		$className = $this->stat('tree_class');
 		$record = DataObject::get_by_id($className, $data['ID']);
 		
@@ -1019,7 +1019,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	/**
 	 * @return array
 	 */
-	function rollback() {
+	public function rollback() {
 		return $this->doRollback(array(
 			'ID' => $this->currentPageID(),
 			'Version' => $this->request->param('VersionID')
@@ -1034,7 +1034,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 *
 	 * @return html
 	 */
-	function doRollback($data, $form) {
+	public function doRollback($data, $form) {
 		$this->extend('onBeforeRollback', $data['ID']);
 		
 		$id = (isset($data['ID'])) ? (int) $data['ID'] : null;
@@ -1074,11 +1074,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	/**
 	 * Batch Actions Handler
 	 */
-	function batchactions() {
+	public function batchactions() {
 		return new CMSBatchActionHandler($this, 'batchactions');
 	}
 	
-	function BatchActionParameters() {
+	public function BatchActionParameters() {
 		$batchActions = CMSBatchActionHandler::$batch_actions;
 
 		$forms = array();
@@ -1101,11 +1101,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	/**
 	 * Returns a list of batch actions
 	 */
-	function BatchActionList() {
+	public function BatchActionList() {
 		return $this->batchactions()->batchActionList();
 	}
 	
-	function buildbrokenlinks($request) {
+	public function buildbrokenlinks($request) {
 		// Protect against CSRF on destructive action
 		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
 		
@@ -1141,7 +1141,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 	}
 
-	function publishall($request) {
+	public function publishall($request) {
 		if(!Permission::check('ADMIN')) return Security::permissionFailure($this);
 
 		increase_time_limit_to();
@@ -1198,7 +1198,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	/**
 	 * Restore a completely deleted page from the SiteTree_versions table.
 	 */
-	function restore($data, $form) {
+	public function restore($data, $form) {
 		if(!isset($data['ID']) || !is_numeric($data['ID'])) {
 			return new SS_HTTPResponse("Please pass an ID in the form content", 400);
 		}
@@ -1221,7 +1221,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return $this->getResponseNegotiator()->respond($this->request);
 	}
 
-	function duplicate($request) {
+	public function duplicate($request) {
 		// Protect against CSRF on destructive action
 		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
 		
@@ -1247,7 +1247,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 	}
 
-	function duplicatewithchildren($request) {
+	public function duplicatewithchildren($request) {
 		// Protect against CSRF on destructive action
 		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
 		
@@ -1288,7 +1288,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		);
 	}
 
-	function providePermissions() {
+	public function providePermissions() {
 		$title = _t("CMSPagesController.MENUTITLE", LeftAndMain::menu_title_for_class('CMSPagesController'));
 		return array(
 			"CMS_ACCESS_CMSMain" => array(

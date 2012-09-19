@@ -217,7 +217,7 @@ class ContentController extends Controller {
 	 *
 	 * @return string
 	 */
-	function project() {
+	public function project() {
 		global $project;
 		return $project;
 	}
@@ -333,7 +333,7 @@ HTML;
 		}
 	}
 	
-	function SiteConfig() {
+	public function SiteConfig() {
 		if(method_exists($this->dataRecord, 'getSiteConfig')) {
 			return $this->dataRecord->getSiteConfig();
 		} else {
@@ -347,7 +347,7 @@ HTML;
 	 * @deprecated 2.5 Use ContentLocale() instead and write attribute names suitable to XHTML/HTML
 	 * templates directly in the template.
 	 */
-	function LangAttributes() {
+	public function LangAttributes() {
 		Deprecation::notice('2.5', 'Use ContentLocale() instead and write attribute names suitable to XHTML/HTML instead.');
 		$locale = $this->ContentLocale();
 		return "xml:lang=\"$locale\" lang=\"$locale\"";	
@@ -364,7 +364,7 @@ HTML;
 	 * 
 	 * @return string
 	 */
-	function ContentLocale() {
+	public function ContentLocale() {
 		if($this->dataRecord && $this->dataRecord->hasExtension('Translatable')) {
 			$locale = $this->dataRecord->Locale;
 		} elseif(class_exists('Translatable') && Object::has_extension('SiteTree', 'Translatable')) {
@@ -379,7 +379,7 @@ HTML;
 	/**
 	 * This action is called by the installation system
 	 */
-	function successfullyinstalled() {
+	public function successfullyinstalled() {
 		// The manifest should be built by now, so it's safe to publish the 404 page
 		$fourohfour = Versioned::get_one_by_stage('ErrorPage', 'Stage', '"ErrorCode" = 404');
 		if($fourohfour) {
@@ -406,7 +406,7 @@ HTML;
 		);
 	}
 
-	function deleteinstallfiles() {
+	public function deleteinstallfiles() {
 		if(!Permission::check("ADMIN")) return Security::permissionFailure($this);
 		
 		$title = new Varchar("Title");

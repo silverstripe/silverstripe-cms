@@ -4,14 +4,14 @@ class RedirectorPageTest extends FunctionalTest {
 	static $fixture_file = 'RedirectorPageTest.yml';
 	static $use_draft_site = true;
 	
-	function testGoodRedirectors() {
+	public function testGoodRedirectors() {
 		/* For good redirectors, the final destination URL will be returned */
 		$this->assertEquals("http://www.google.com", $this->objFromFixture('RedirectorPage','goodexternal')->Link());
 		$this->assertEquals(Director::baseURL() . "redirection-dest/", $this->objFromFixture('RedirectorPage','goodinternal')->redirectionLink());
 		$this->assertEquals(Director::baseURL() . "redirection-dest/", $this->objFromFixture('RedirectorPage','goodinternal')->Link());
 	}
 
-	function testEmptyRedirectors() {
+	public function testEmptyRedirectors() {
 		/* If a redirector page is misconfigured, then its link method will just return the usual URLSegment-generated value */
 		$page1 = $this->objFromFixture('RedirectorPage','badexternal');
 		$this->assertEquals(Director::baseURL() . 'bad-external/', $page1->Link());
@@ -27,7 +27,7 @@ class RedirectorPageTest extends FunctionalTest {
 		$this->assertContains('message-setupWithoutRedirect', $content);
 	}
 
-	function testReflexiveAndTransitiveInternalRedirectors() {
+	public function testReflexiveAndTransitiveInternalRedirectors() {
 		/* Reflexive redirectors are those that point to themselves.  They should behave the same as an empty redirector */
 		$page = $this->objFromFixture('RedirectorPage','reflexive');
 		$this->assertEquals(Director::baseURL() . 'reflexive/', $page->Link());
@@ -44,7 +44,7 @@ class RedirectorPageTest extends FunctionalTest {
 		$this->assertEquals(Director::baseURL() . "redirection-dest/", $response->getHeader("Location"));
 	}
 
-	function testExternalURLGetsPrefixIfNotSet() {
+	public function testExternalURLGetsPrefixIfNotSet() {
 		$page = $this->objFromFixture('RedirectorPage', 'externalnoprefix');
 		$this->assertEquals($page->ExternalURL, 'http://google.com', 'onBeforeWrite has prefixed with http');
 		$page->write();

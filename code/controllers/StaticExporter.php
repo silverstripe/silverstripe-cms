@@ -27,7 +27,7 @@ class StaticExporter extends Controller {
 		'export', 
 	);
 
-	function init() {
+	public function init() {
 		parent::init();
 		
 		$canAccess = (Director::isDev() || Director::is_cli() || Permission::check("ADMIN"));
@@ -35,16 +35,16 @@ class StaticExporter extends Controller {
 	}
 		
 	
-	function Link($action = null) {
+	public function Link($action = null) {
 		return "StaticExporter/$action";
 	}
 	
-	function index() {
+	public function index() {
 		echo "<h1>"._t('StaticExporter.NAME','Static exporter')."</h1>";
 		echo $this->StaticExportForm()->forTemplate();
 	}
 	
-	function StaticExportForm() {
+	public function StaticExportForm() {
 		return new Form($this, 'StaticExportForm', new FieldList(
 			// new TextField('folder', _t('StaticExporter.FOLDEREXPORT','Folder to export to')),
 			new TextField('baseurl', _t('StaticExporter.BASEURL','Base URL'))
@@ -53,7 +53,7 @@ class StaticExporter extends Controller {
 		));
 	}
 	
-	function export() {
+	public function export() {
 		// specify custom baseurl for publishing to other webroot
 		if(isset($_REQUEST['baseurl'])) {
 			$base = $_REQUEST['baseurl'];

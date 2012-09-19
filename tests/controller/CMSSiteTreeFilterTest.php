@@ -3,7 +3,7 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 
 	static $fixture_file = 'CMSSiteTreeFilterTest.yml';
 	
-	function testSearchFilterEmpty() {
+	public function testSearchFilterEmpty() {
 		$page1 = $this->objFromFixture('Page', 'page1');
 		$page2 = $this->objFromFixture('Page', 'page2');
 	
@@ -14,7 +14,7 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 		$this->assertTrue($f->isPageIncluded($page2));
 	}
 	
-	function testSearchFilterByTitle() {
+	public function testSearchFilterByTitle() {
 		$page1 = $this->objFromFixture('Page', 'page1');
 		$page2 = $this->objFromFixture('Page', 'page2');
 	
@@ -30,7 +30,7 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 		);
 	}
 	
-	function testIncludesParentsForNestedMatches() {
+	public function testIncludesParentsForNestedMatches() {
 		$parent = $this->objFromFixture('Page', 'page3');
 		$child = $this->objFromFixture('Page', 'page3b');
 	
@@ -46,7 +46,7 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 		);
 	}
 	
-	function testChangedPagesFilter() {
+	public function testChangedPagesFilter() {
 		$unchangedPage = $this->objFromFixture('Page', 'page1');
 		$unchangedPage->doPublish();
 	
@@ -68,7 +68,7 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 		);
 	}
 	
-	function testDeletedPagesFilter() {
+	public function testDeletedPagesFilter() {
 		$deletedPage = $this->objFromFixture('Page', 'page2');
 		$deletedPage->publish('Stage', 'Live');
 		$deletedPageID = $deletedPage->ID;

@@ -1,7 +1,7 @@
 <?php
 class ContentControllerSearchExtensionTest extends SapphireTest {
 	
-	function testCustomSearchFormClassesToTest() {
+	public function testCustomSearchFormClassesToTest() {
 		FulltextSearchable::enable('File');
 		
 		$page = new Page();
