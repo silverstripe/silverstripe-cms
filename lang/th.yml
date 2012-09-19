@@ -3,7 +3,7 @@ th:
     ADDFILES: เพิ่มไฟล์
     ALLOWEDEXTS: ส่วนเสริมที่อนุญาตให้ใช้งานได้
     ActionAdd: เพิ่มโฟลเดอร์
-    AppCategoryArchive: Archive
+    AppCategoryArchive: รายการ
     AppCategoryAudio: ไฟล์เสียง
     AppCategoryDocument: เอกสาร
     AppCategoryFlash: แฟลช
@@ -15,7 +15,7 @@ th:
     DetailsView: รายละเอียด
     FILES: ไฟล์
     FILESYSTEMSYNC: ผสานไฟล์
-    FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
+    FILESYSTEMSYNCTITLE: 'อัพเดทรายการไฟลในฐานข้อมูล CMS ในระบบไฟล์ มีประโยชน์สำหรับการอัพโหลดไฟล์ใหม่นอกระบบ CMS เช่น ผ่านทาง FTP'
     FROMTHEINTERNET: จากอินเทอร์เน็ต
     FROMYOURCOMPUTER: จากเครื่องคอมพิวเตอร์ของคุณ
     Filetype: ชนิดของไฟล์
@@ -38,7 +38,7 @@ th:
   BackLink_Button.ss:
     Back: ย้อนกลับ
   BrokenLinksReport:
-    Any: Any
+    Any: ใดๆก็ได้
     BROKENLINKS: รายงานลิงค์เสีย
     CheckSite: ตรวจเว็บไซต์
     CheckSiteDropdownDraft: เว็บไซต์ฉบับร่าง
@@ -90,7 +90,7 @@ th:
     NEWPAGE: 'ใหม่ {pagetype}'
     PAGENOTEXISTS: ไม่มีหน้านี้อยู่
     PAGES: หน้า
-    PAGETYPEANYOPT: Any
+    PAGETYPEANYOPT: ประเภทใดก็ได้
     PAGETYPEOPT: ประเภทหน้าเว็บ
     PUBALLCONFIRM: 'กรุณาเผยแพร่หน้าเว็บทุกหน้าในเว็บไซต์, คัดลอกเนื้อหาลงไปที่'
     PUBALLFUN: 'ฟังก์ชั่นการทำงาน "เผยแพร่ทั้งหมด"'
@@ -103,7 +103,7 @@ th:
     RESTORE: คืนค่า
     RESTORED: 'เรียกคืนค่า ''{title}'' เสร็จเรียบร้อยแล้ว'
     ROLLBACK: ย้อนกลับไปที่รุ่นนี้
-    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
+    ROLLEDBACKPUB: 'ย้อนกลับไปใช้รุ่นที่เผยแพร่อยู่ หมายเลขรุ่นใหม่คือ #{version}'
     ROLLEDBACKVERSION: 'ย้อนกลับไปเป็นรุ่น #%d แล้ว หมายเลขใหม่ของรุ่นคือ #%d'
     SAVE: บันทึก
     SAVEDRAFT: บันทึกเป็นฉบับร่าง
@@ -165,7 +165,7 @@ th:
   ContentControl:
     NOTEWONTBESHOWN: 'หมายเหตุ: ข้อความนี้จะไม่ถูกนำไปแสดงให้ผู้เยี่ยมชมเว็บไซต์ของคุณเห็น'
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
+    ARCHIVEDSITE: รุ่นสำหรับดูตัวอย่าง
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
     DRAFTSITE: เว็บไซต์ฉบับร่าง
@@ -193,8 +193,8 @@ th:
     DEFAULTSERVERERRORPAGETITLE: เซิร์ฟเวอร์เกิดข้อผิดพลาด
     DESCRIPTION: 'กำหนดเนื้อหาเองสำหรับข้อผิดพลาดต่างๆ (e.g. "ไม่พบหน้าเว็บที่ต้องการ")'
     ERRORFILEPROBLEM: 'เกิดข้อผิดพลาดในการเปิดไฟล์ "{filename}" เพื่อเขียนข้อมูล. กรุณาตรวจสอบสิทธิ์.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
+    PLURALNAME: หน้าเว็บแสดงข้อผิดพลาด
+    SINGULARNAME: หน้าเว็บแสดงข้อผิดพลาด
     400: '400 - ข้อความร้องขอที่ส่งมามีความผิดพลาดทางไวยากรณ์ หรือไม่สามารถทำตามการร้องขอนั้นได้'
     401: '401 - Unauthorized'
     403: '403 - Forbidden'
@@ -241,11 +241,11 @@ th:
     HASBEENSETUP: หน้าเว็บที่มีการเปลี่ยนเส้นทางซึ่งได้รับการตั้งค่าโดยปราศจากตำแหน่งปลายทางที่ต้องการเปลี่ยนเส้นทางไป
     HEADER: หน้าเว็บนี้จะเปลี่ยนเส้นทางผู้ใช้งานไปยังหน้าเว็บอื่นๆ
     OTHERURL: 'ที่อยู่ URL ของเว็บไซต์อื่นๆ'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: หน้าเว็บเปลี่ยนเส้นทาง
     REDIRECTTO: เปลี่ยนเส้นทางไปที่
     REDIRECTTOEXTERNAL: เว็บไซต์อื่นๆ
     REDIRECTTOPAGE: หน้าเว็บในเว็บไซต์ของคุณ
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: หน้าเว็บเปลี่ยนเส้นทาง
     YOURPAGE: หน้าเว็บที่อยู่บนเว็บไซต์ของคุณ
   ReportAdmin:
     MENUTITLE: รายงาน
@@ -278,14 +278,14 @@ th:
     EDITHEADER: 'ใครสามารถแก้ไขหน้าเว็บบนเว็บไซต์นี้ได้บ้าง?'
     EDIT_PERMISSION: การจัดการการกำหนดค่าของเว็บไซต์
     EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
+    PLURALNAME: กำหนดค่าเว็บไซต์
+    SINGULARNAME: กำหนดค่าเว็บไซต์
     SITENAMEDEFAULT: ชื่อเว็บไซต์ของคุณ
     SITETAGLINE: สโลแกนของเว็บไซต์
     SITETITLE: ชื่อเว็บไซต์
     TABACCESS: เข้าถึง
     TABMAIN: หน้าหลัก
-    TAGLINEDEFAULT: 'your tagline here'
+    TAGLINEDEFAULT: กรอกสโลแกนของคุณลงที่นี่
     THEME: ชุดธีม
     TOPLEVELCREATE: 'ใครบ้างที่สามารถสร้างหน้าเว็บที่ตำแหน่ง root ของเว็บไซต์ได้?'
     VIEWHEADER: 'ใครบ้่างที่สามารถเปิดดูหน้าเว็บบนเว็บไซต์นี้ได้?'
@@ -338,7 +338,7 @@ th:
     MODIFIEDONDRAFTHELP: หน้าเว็บถูกเปลี่ยนค่าเป็นระงับการเผยแพร่แล้ว
     MODIFIEDONDRAFTSHORT: แก้ไขเมื่อ
     MetadataToggle: Metadata
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
+    OBSOLETECLASS: 'หน้าเว็บนี้เป็นหน้าเว็บประเภทที่เก่าแล้ว {type} การบันทึกข้อมูลจะรีเซ็ตค่าประเภทของหน้าดังกล่าว และอาจทำให้ข้อมูลสูญหายได้'
     PAGELOCATION: ตำแหน่งหน้าเว็บ
     PAGETITLE: ชื่อหน้าเว็บ
     PAGETYPE: 'ประเภท เอกสาร'
