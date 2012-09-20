@@ -14,12 +14,12 @@ class ZZZSearchFormTest extends FunctionalTest {
 	
 	protected $mockController;
 	
-	function waitUntilIndexingFinished() {
+	public function waitUntilIndexingFinished() {
 		$db = DB::getConn();
 		if (method_exists($db, 'waitUntilIndexingFinished')) DB::getConn()->waitUntilIndexingFinished();
 	}
 	
-	function setUpOnce() {
+	public function setUpOnce() {
 		// HACK Postgres doesn't refresh TSearch indexes when the schema changes after CREATE TABLE
 		// MySQL will need a different table type
 		self::kill_temp_db();
@@ -29,7 +29,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 		parent::setUpOnce();
 	}
 	
-	function setUp() {
+	public function setUp() {
 		parent::setUp();
 		
 		$holderPage = $this->objFromFixture('SiteTree', 'searchformholder');
@@ -38,7 +38,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 		$this->waitUntilIndexingFinished();
 	}
 	
-	function testPublishedPagesMatchedByTitle() {
+	public function testPublishedPagesMatchedByTitle() {
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 	
 		$publishedPage = $this->objFromFixture('SiteTree', 'publicPublishedPage');
@@ -53,7 +53,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 		);
 	}
 	
-	function testDoubleQuotesPublishedPagesMatchedByTitle() {
+	public function testDoubleQuotesPublishedPagesMatchedByTitle() {
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 
 		$publishedPage = $this->objFromFixture('SiteTree', 'publicPublishedPage');
@@ -71,7 +71,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 	}
 	
 	/*
-	function testUnpublishedPagesNotIncluded() {
+	public function testUnpublishedPagesNotIncluded() {
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 		
 		$results = $sf->getResults(null, array('Search'=>'publicUnpublishedPage'));
@@ -84,7 +84,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 	}
 	*/
 	
-	function testPagesRestrictedToLoggedinUsersNotIncluded() {
+	public function testPagesRestrictedToLoggedinUsersNotIncluded() {
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 		
 		$page = $this->objFromFixture('SiteTree', 'restrictedViewLoggedInUsers');
@@ -106,7 +106,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 		$member->logOut();
 	}
 
-	function testPagesRestrictedToSpecificGroupNotIncluded() {
+	public function testPagesRestrictedToSpecificGroupNotIncluded() {
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 		
 		$page = $this->objFromFixture('SiteTree', 'restrictedViewOnlyWebsiteUsers');
@@ -138,7 +138,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 		$member->logOut();
 	}
 	
-	function testInheritedRestrictedPagesNotInlucded() {
+	public function testInheritedRestrictedPagesNotInlucded() {
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 		
 		$page = $this->objFromFixture('SiteTree', 'inheritRestrictedView');
@@ -161,7 +161,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 		$member->logOut();
 	}
 	
-	function testDisabledShowInSearchFlagNotIncludedForSiteTree() {
+	public function testDisabledShowInSearchFlagNotIncludedForSiteTree() {
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 		
 		$page = $this->objFromFixture('SiteTree', 'dontShowInSearchPage');
@@ -173,7 +173,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 		);
 	}
 	
-	function testDisabledShowInSearchFlagNotIncludedForFiles() {
+	public function testDisabledShowInSearchFlagNotIncludedForFiles() {
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 		
 		$dontShowInSearchFile = $this->objFromFixture('File', 'dontShowInSearchFile');
@@ -193,7 +193,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 		);
 	}
 
-	function testSearchTitleAndContentWithSpecialCharacters() {
+	public function testSearchTitleAndContentWithSpecialCharacters() {
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 		
 		$pageWithSpecialChars = $this->objFromFixture('SiteTree', 'pageWithSpecialChars');

@@ -35,7 +35,7 @@ class SearchForm extends Form {
 	 *  if fields are added to the form.
 	 * @param FieldList $actions Optional, defaults to a single field named "Go".
 	 */
-	function __construct($controller, $name, $fields = null, $actions = null) {
+	public function __construct($controller, $name, $fields = null, $actions = null) {
 		if(!$fields) {
 			$fields = new FieldList(
 				new TextField('Search', _t('SearchForm.SEARCH', 'Search')
@@ -70,7 +70,7 @@ class SearchForm extends Form {
 	 * Set the classes to search.
 	 * Currently you can only choose from "SiteTree" and "File", but a future version might improve this. 
  	 */
-	function classesToSearch($classes) {
+	public function classesToSearch($classes) {
 		$illegalClasses = array_diff($classes, array('SiteTree', 'File'));
 		if($illegalClasses) {
 			user_error("SearchForm::classesToSearch() passed illegal classes '" . implode("', '", $illegalClasses) . "'.  At this stage, only File and SiteTree are allowed", E_USER_WARNING);
@@ -84,7 +84,7 @@ class SearchForm extends Form {
 	 *
 	 * @return array
 	 */
-	function getClassesToSearch() {
+	public function getClassesToSearch() {
 		return $this->classesToSearch; 
 	}
 

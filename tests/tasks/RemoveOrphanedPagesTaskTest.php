@@ -36,7 +36,7 @@ class RemoveOrphanedPagesTaskTest extends FunctionalTest {
 	
 	static $use_draft_site = false;
 	
-	function setUp() {
+	public function setUp() {
 		parent::setUp();
 		
 		$parent1_published = $this->objFromFixture('Page', 'parent1_published');
@@ -75,7 +75,7 @@ class RemoveOrphanedPagesTaskTest extends FunctionalTest {
 		$child2_1_published_orphaned->publish('Stage', 'Live');
 	}
 	
-	function testGetOrphansByStage() {
+	public function testGetOrphansByStage() {
 		// all orphans
 		$child1_3_orphaned = $this->objFromFixture('Page', 'child1_3_orphaned');
 		$child1_4_orphaned_published = $this->objFromFixture('Page', 'child1_4_orphaned_published');

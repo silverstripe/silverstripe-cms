@@ -39,7 +39,7 @@ class CMSPageHistoryController extends CMSMain {
 	/**
 	 * @return array
 	 */
-	function show($request) {
+	public function show($request) {
 		$form = $this->ShowVersionForm($request->param('VersionID'));
 		
 		$negotiator = $this->getResponseNegotiator();
@@ -57,7 +57,7 @@ class CMSPageHistoryController extends CMSMain {
 	/**
 	 * @return array
 	 */
-	function compare($request) {
+	public function compare($request) {
 		$form = $this->CompareVersionsForm(
 			$request->param('VersionID'), 
 			$request->param('OtherVersionID')
@@ -88,7 +88,7 @@ class CMSPageHistoryController extends CMSMain {
 	 *
 	 * @return Form
 	 */
-	function getEditForm($id = null, $fields = null, $versionID = null, $compareID = null) {
+	public function getEditForm($id = null, $fields = null, $versionID = null, $compareID = null) {
 		if(!$id) $id = $this->currentPageID();
 		
 		$record = $this->getRecord($id, $versionID);
@@ -178,7 +178,7 @@ class CMSPageHistoryController extends CMSMain {
 	 *
 	 * @return Form
 	 */
-	function VersionsForm() {
+	public function VersionsForm() {
 		$id = $this->currentPageID();
 		$page = $this->getRecord($id);
 		$versionsHtml = '';
@@ -269,7 +269,7 @@ class CMSPageHistoryController extends CMSMain {
 	 *
 	 * @return html
 	 */
-	function doCompare($data, $form) {
+	public function doCompare($data, $form) {
 		$versions = $data['Versions'];
 		if(count($versions) < 2) return null;
 		
@@ -306,7 +306,7 @@ class CMSPageHistoryController extends CMSMain {
 	 *
 	 * @return html
 	 */	
-	function doShowVersion($data, $form) {
+	public function doShowVersion($data, $form) {
 		$versionID = null;
 		
 		if(isset($data['Versions']) && is_array($data['Versions'])) { 
@@ -334,7 +334,7 @@ class CMSPageHistoryController extends CMSMain {
 	/**
 	 * @return Form
 	 */
-	function ShowVersionForm($versionID = null) {
+	public function ShowVersionForm($versionID = null) {
 		if(!$versionID) return null;
 
 		$id = $this->currentPageID();
@@ -346,7 +346,7 @@ class CMSPageHistoryController extends CMSMain {
 	/**
 	 * @return Form
 	 */
-	function CompareVersionsForm($versionID, $otherVersionID) {
+	public function CompareVersionsForm($versionID, $otherVersionID) {
 		if($versionID > $otherVersionID) {
 			$toVersion = $versionID;
 			$fromVersion = $otherVersionID;

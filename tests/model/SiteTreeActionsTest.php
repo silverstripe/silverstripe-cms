@@ -16,19 +16,19 @@ class SiteTreeActionsTest extends FunctionalTest {
 
 	static $fixture_file = 'SiteTreeActionsTest.yml';
 	
-	static function set_up_once() {
+	static public function set_up_once() {
 		SiteTreeTest::set_up_once();
 
 		parent::set_up_once();
 	}
 	
-	static function tear_down_once() {
+	static public function tear_down_once() {
 		SiteTreeTest::tear_down_once();
 		
 		parent::tear_down_once();
 	}
 	
-	function testActionsReadonly() {
+	public function testActionsReadonly() {
 		if(class_exists('SiteTreeCMSWorkflow')) return true;
 		
 		$readonlyEditor = $this->objFromFixture('Member', 'cmsreadonlyeditor');
@@ -50,7 +50,7 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$this->assertNull($actions->dataFieldByName('action_revert'));
 	}
 	
-	function testActionsNoDeletePublishedRecord() {
+	public function testActionsNoDeletePublishedRecord() {
 		if(class_exists('SiteTreeCMSWorkflow')) return true;
 
 		$this->logInWithPermission('ADMIN');
@@ -79,7 +79,7 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$this->assertNotNull($actions->dataFieldByName('action_deletefromlive'));
 	}
 
-	function testActionsPublishedRecord() {
+	public function testActionsPublishedRecord() {
 		if(class_exists('SiteTreeCMSWorkflow')) return true;
 
 		$author = $this->objFromFixture('Member', 'cmseditor');
@@ -101,7 +101,7 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$this->assertNull($actions->dataFieldByName('action_revert'));
 	}
 	
-	function testActionsDeletedFromStageRecord() {
+	public function testActionsDeletedFromStageRecord() {
 		if(class_exists('SiteTreeCMSWorkflow')) return true;
 
 		$author = $this->objFromFixture('Member', 'cmseditor');
@@ -129,7 +129,7 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$this->assertNotNull($actions->dataFieldByName('action_revert'));
 	}
 	
-	function testActionsChangedOnStageRecord() {
+	public function testActionsChangedOnStageRecord() {
 		if(class_exists('SiteTreeCMSWorkflow')) return true;
 		
 		$author = $this->objFromFixture('Member', 'cmseditor');
@@ -153,7 +153,7 @@ class SiteTreeActionsTest extends FunctionalTest {
 		$this->assertNull($actions->dataFieldByName('action_revert'));
 	}
 
-	function testActionsViewingOldVersion() {
+	public function testActionsViewingOldVersion() {
 		$p = new Page();
 		$p->Content = 'test page first version';
 		$p->write();
@@ -175,11 +175,11 @@ class SiteTreeActionsTest extends FunctionalTest {
 }
 
 class SiteTreeActionsTest_Page extends Page implements TestOnly {
-	function canEdit($member = null) {
+	public function canEdit($member = null) {
 		return Permission::checkMember($member, 'SiteTreeActionsTest_Page_CANEDIT');
 	}
 	
-	function canDelete($member = null) {
+	public function canDelete($member = null) {
 		return Permission::checkMember($member, 'SiteTreeActionsTest_Page_CANDELETE');
 	}
 }

@@ -12,7 +12,7 @@ class CMSPagesController extends CMSMain {
 	static $required_permission_codes = 'CMS_ACCESS_CMSMain';
 	static $session_namespace = 'CMSMain';
 
-	function LinkPreview() {
+	public function LinkPreview() {
 		return false;
 	}
 

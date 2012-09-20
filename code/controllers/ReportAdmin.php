@@ -63,7 +63,7 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 	 * @param Member $member
 	 * @return boolean
 	 */
-	function canView($member = null) {
+	public function canView($member = null) {
 		if(!$member && $member !== FALSE) $member = Member::currentUser();
 
 		if(!parent::canView($member)) return false;
@@ -101,7 +101,7 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 	 *
 	 * @return boolean
 	 */
-	public static function has_reports() {
+	static public function has_reports() {
 		return sizeof(SS_Report::get_reports()) > 0;
 	}
 
@@ -137,7 +137,7 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 		return $link;
 	}
 
-	function providePermissions() {
+	public function providePermissions() {
 		$title = _t("ReportAdmin.MENUTITLE", LeftAndMain::menu_title_for_class($this->class));
 		return array(
 			"CMS_ACCESS_ReportAdmin" => array(

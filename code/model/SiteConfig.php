@@ -24,11 +24,11 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	
 	protected static $disabled_themes = array();
 	
-	public static function disable_theme($theme) {
+	static public function disable_theme($theme) {
 		self::$disabled_themes[$theme] = $theme;
 	}
 
-	function populateDefaults()
+	public function populateDefaults()
 	{
 		$this->Title = _t('SiteConfig.SITENAMEDEFAULT', "Your Site Name");
 		$this->Tagline = _t('SiteConfig.TAGLINEDEFAULT', "your tagline here");
@@ -43,7 +43,7 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	 *
 	 * @return FieldList
 	 */
-	function getCMSFields() {
+	public function getCMSFields() {
 		Requirements::javascript(CMS_DIR . "/javascript/SitetreeAccess.js");
 
 		$groupsMap = Group::get()->map('ID', 'Breadcrumbs')->toArray();
@@ -130,7 +130,7 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	 *
 	 * @return Fieldset
 	 */
-	function getCMSActions() {
+	public function getCMSActions() {
 		if (Permission::check('ADMIN') || Permission::check('EDIT_SITECONFIG')) {
 			$actions = new FieldList(
 				FormAction::create('save_siteconfig', _t('CMSMain.SAVE','Save'))
@@ -148,7 +148,7 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	/**
 	 * @return String
 	 */
-	function CMSEditLink() {
+	public function CMSEditLink() {
 		return singleton('CMSSettingsController')->Link();
 	}
 	
@@ -158,7 +158,7 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	 *
 	 * @return SiteConfig
 	 */
-	static function current_site_config() {
+	static public function current_site_config() {
 		if ($siteConfig = DataObject::get_one('SiteConfig')) return $siteConfig;
 		
 		return self::make_site_config();
@@ -167,7 +167,7 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	/**
 	 * Setup a default SiteConfig record if none exists
 	 */
-	function requireDefaultRecords() {
+	public function requireDefaultRecords() {
 		parent::requireDefaultRecords();
 		$siteConfig = DataObject::get_one('SiteConfig');
 		if(!$siteConfig) {
@@ -182,7 +182,7 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	 * @param string $locale
 	 * @return SiteConfig
 	 */
-	static function make_site_config() {
+	static public function make_site_config() {
 		$config = SiteConfig::create();
 		$config->write();
 		return $config;
@@ -236,7 +236,7 @@ class SiteConfig extends DataObject implements PermissionProvider {
 		return false;
 	}
 	
-	function providePermissions() {
+	public function providePermissions() {
 		return array(
 			'EDIT_SITECONFIG' => array(
 				'name' => _t('SiteConfig.EDIT_PERMISSION', 'Manage site configuration'),

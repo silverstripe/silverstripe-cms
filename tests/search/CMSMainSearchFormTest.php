@@ -5,7 +5,7 @@ class CMSMainSearchFormTest extends FunctionalTest {
 	
 	protected $autoFollowRedirection = false;
 	
-	function testTitleFilter() {
+	public function testTitleFilter() {
 		$this->session()->inst_set('loggedInAs', $this->idFromFixture('Member', 'admin'));
 
 		$response = $this->get(

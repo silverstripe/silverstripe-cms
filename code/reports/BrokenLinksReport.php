@@ -8,11 +8,11 @@
 
 class BrokenLinksReport extends SS_Report {
 
-	function title() {
+	public function title() {
 		return _t('BrokenLinksReport.BROKENLINKS',"Broken links report");
 	}
 	
-	function sourceRecords($params, $sort, $limit) {
+	public function sourceRecords($params, $sort, $limit) {
 		$join = '';
 		$sortBrokenReason = false;
 		if($sort) {
@@ -73,7 +73,7 @@ class BrokenLinksReport extends SS_Report {
 		
 		return $returnSet;
 	}
-	function columns() {
+	public function columns() {
 		if(isset($_REQUEST['CheckSite']) && $_REQUEST['CheckSite'] == 'Draft') {
 			$dateTitle = _t('BrokenLinksReport.ColumnDateLastModified', 'Date last modified');
 		} else {
@@ -112,7 +112,7 @@ class BrokenLinksReport extends SS_Report {
 		
 		return $fields;
 	}
-	function parameterFields() {
+	public function parameterFields() {
 		return new FieldList(
 			new DropdownField('CheckSite', _t('BrokenLinksReport.CheckSite','Check site'), array(
 				'Published' => _t('BrokenLinksReport.CheckSiteDropdownPublished', 'Published Site'),

@@ -14,25 +14,25 @@ class SideReportView extends ViewableData {
 	protected $controller, $report;
 	protected $parameters;
 	
-	function __construct($controller, $report) {
+	public function __construct($controller, $report) {
 		$this->controller = $controller;
 		$this->report = $report;
 		parent::__construct();
 	}
 	
-	function group() {
+	public function group() {
 		return _t('SideReport.OtherGroupTitle', "Other");
 	}
 	
-	function sort() {
+	public function sort() {
 		return 0;
 	}
 	
-	function setParameters($parameters) {
+	public function setParameters($parameters) {
 		$this->parameters = $parameters;
 	}
 	
-	function forTemplate() {
+	public function forTemplate() {
 		$records = $this->report->records($this->parameters);
 		$columns = $this->report->columns();
 		
@@ -111,7 +111,7 @@ class SideReportView extends ViewableData {
  * @subpackage content
  */
 class SideReportWrapper extends SS_ReportWrapper {
-	function columns() {
+	public function columns() {
 		if($this->baseReport->hasMethod('sideReportColumns')) {
 			return $this->baseReport->sideReportColumns();
 		} else {
@@ -129,20 +129,20 @@ class SideReportWrapper extends SS_ReportWrapper {
  * @subpackage content
  */
 class SideReport_EmptyPages extends SS_Report {
-	function title() {
+	public function title() {
 		return _t('SideReport.EMPTYPAGES',"Pages with no content");
 	}
 
-	function group() {
+	public function group() {
 		return _t('SideReport.ContentGroupTitle', "Content reports");
 	}
-	function sort() {
+	public function sort() {
 		return 100;
 	}
-	function sourceRecords($params = null) {
+	public function sourceRecords($params = null) {
 		return DataObject::get("SiteTree", "\"ClassName\" != 'RedirectorPage' AND (\"Content\" = '' OR \"Content\" IS NULL OR \"Content\" LIKE '<p></p>' OR \"Content\" LIKE '<p>&nbsp;</p>')", '"Title"');
 	}
-	function columns() {
+	public function columns() {
 		return array(
 			"Title" => array(
 				"title" => "Title", // todo: use NestedTitle(2)
@@ -159,20 +159,20 @@ class SideReport_EmptyPages extends SS_Report {
  * @subpackage content
  */
 class SideReport_RecentlyEdited extends SS_Report {
-	function title() {
+	public function title() {
 		return _t('SideReport.LAST2WEEKS',"Pages edited in the last 2 weeks");
 	}
-	function group() {
+	public function group() {
 		return _t('SideReport.ContentGroupTitle', "Content reports");
 	}
-	function sort() {
+	public function sort() {
 		return 200;
 	}
-	function sourceRecords($params = null) {
+	public function sourceRecords($params = null) {
 		$threshold = strtotime('-14 days', SS_Datetime::now()->Format('U'));
 		return DataObject::get("SiteTree", "\"SiteTree\".\"LastEdited\" > '".date("Y-m-d H:i:s", $threshold)."'", "\"SiteTree\".\"LastEdited\" DESC");
 	}
-	function columns() {
+	public function columns() {
 		return array(
 			"Title" => array(
 				"title" => "Title", // todo: use NestedTitle(2)
@@ -189,13 +189,13 @@ class SideReport_RecentlyEdited extends SS_Report {
  * @subpackage content
  */
 class SideReport_BrokenLinks extends SS_Report {
-	function title() {
+	public function title() {
 		return _t('SideReport.BROKENLINKS',"Pages with broken links");
 	}
-	function group() {
+	public function group() {
 		return _t('SideReport.BrokenLinksGroupTitle', "Broken links reports");
 	}
-	function sourceRecords($params = null) {
+	public function sourceRecords($params = null) {
 		// Get class names for page types that are not virtual pages or redirector pages
 		$classes = array_diff(ClassInfo::subclassesFor('SiteTree'), ClassInfo::subclassesFor('VirtualPage'), ClassInfo::subclassesFor('RedirectorPage'));
 		$classNames = "'".join("','", $classes)."'";
@@ -204,7 +204,7 @@ class SideReport_BrokenLinks extends SS_Report {
 		else $ret = DataObject::get('SiteTree', "ClassName IN ($classNames) AND HasBrokenLink = 1");
 		return $ret;
 	}
-	function columns() {
+	public function columns() {
 		return array(
 			"Title" => array(
 				"title" => _t('ReportAdmin.ReportTitle', 'Title'), // todo: use NestedTitle(2)
@@ -212,7 +212,7 @@ class SideReport_BrokenLinks extends SS_Report {
 			),
 		);
 	}
-	function getParameterFields() {
+	public function getParameterFields() {
 		return new FieldList(
 			new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))
 		);
@@ -227,13 +227,13 @@ class SideReport_BrokenLinks extends SS_Report {
  * @subpackage content
  */
 class SideReport_BrokenFiles extends SS_Report {
-	function title() {
+	public function title() {
 		return _t('SideReport.BROKENFILES',"Pages with broken files");
 	}
-	function group() {
+	public function group() {
 		return _t('SideReport.BrokenLinksGroupTitle', "Broken links reports");
 	}
-	function sourceRecords($params = null) {
+	public function sourceRecords($params = null) {
 		// Get class names for page types that are not virtual pages or redirector pages
 		$classes = array_diff(ClassInfo::subclassesFor('SiteTree'), ClassInfo::subclassesFor('VirtualPage'), ClassInfo::subclassesFor('RedirectorPage'));
 		$classNames = "'".join("','", $classes)."'";
@@ -242,7 +242,7 @@ class SideReport_BrokenFiles extends SS_Report {
 		else $ret = DataObject::get('SiteTree', "ClassName IN ($classNames) AND HasBrokenFile = 1");
 		return $ret;
 	}
-	function columns() {
+	public function columns() {
 		return array(
 			"Title" => array(
 				"title" => "Title", // todo: use NestedTitle(2)
@@ -251,7 +251,7 @@ class SideReport_BrokenFiles extends SS_Report {
 		);
 	}
 
-	function getParameterFields() {
+	public function getParameterFields() {
 		return new FieldList(
 			new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))
 		);
@@ -263,20 +263,20 @@ class SideReport_BrokenFiles extends SS_Report {
  * @subpackage content
  */
 class SideReport_BrokenVirtualPages extends SS_Report {
-	function title() {
+	public function title() {
 		return _t('SideReport.BROKENVIRTUALPAGES', 'VirtualPages pointing to deleted pages');
 	}
-	function group() {
+	public function group() {
 		return _t('SideReport.BrokenLinksGroupTitle', "Broken links reports");
 	}
-	function sourceRecords($params = null) {
+	public function sourceRecords($params = null) {
 		$classNames = "'".join("','", ClassInfo::subclassesFor('VirtualPage'))."'";
 		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "ClassName IN ($classNames) AND HasBrokenLink = 1");
 		else $ret = DataObject::get('SiteTree', "ClassName IN ($classNames) AND HasBrokenLink = 1");
 		return $ret;
 	}
 	
-	function columns() {
+	public function columns() {
 		return array(
 			"Title" => array(
 				"title" => "Title", // todo: use NestedTitle(2)
@@ -285,7 +285,7 @@ class SideReport_BrokenVirtualPages extends SS_Report {
 		);
 	}
 
-	function getParameterFields() {
+	public function getParameterFields() {
 		return new FieldList(
 			new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))
 		);
@@ -297,13 +297,13 @@ class SideReport_BrokenVirtualPages extends SS_Report {
  * @subpackage content
  */
 class SideReport_BrokenRedirectorPages extends SS_Report {
-	function title() {
+	public function title() {
 		return _t('SideReport.BROKENREDIRECTORPAGES', 'RedirectorPages pointing to deleted pages');
 	}
-	function group() {
+	public function group() {
 		return _t('SideReport.BrokenLinksGroupTitle', "Broken links reports");
 	}
-	function sourceRecords($params = null) {
+	public function sourceRecords($params = null) {
 		$classNames = "'".join("','", ClassInfo::subclassesFor('RedirectorPage'))."'";
 		
 		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "ClassName IN ($classNames) AND HasBrokenLink = 1");
@@ -311,7 +311,7 @@ class SideReport_BrokenRedirectorPages extends SS_Report {
 		return $ret;
 	}
 	
-	function columns() {
+	public function columns() {
 		return array(
 			"Title" => array(
 				"title" => "Title", // todo: use NestedTitle(2)
@@ -320,7 +320,7 @@ class SideReport_BrokenRedirectorPages extends SS_Report {
 		);
 	}
 	
-	function getParameterFields() {
+	public function getParameterFields() {
 		return new FieldList(
 			new CheckboxField('OnLive', _t('SideReport.ParameterLiveCheckbox', 'Check live site'))
 		);

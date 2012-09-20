@@ -15,7 +15,7 @@ class CMSPageAddController extends CMSPageEditController {
 	/**
 	 * @return Form
 	 */
-	function AddForm() {
+	public function AddForm() {
 		$record = $this->currentPage();
 		
 		$pageTypes = array();

@@ -9,7 +9,7 @@ class SiteTreeFileExtension extends DataExtension {
 		'BackLinkTracking' => 'SiteTree'
 	);
 
-	function updateCMSFields(FieldList $fields) {
+	public function updateCMSFields(FieldList $fields) {
 		$fields->insertAfter(new ReadonlyField('BackLinkCount', 
 			_t('AssetTableField.BACKLINKCOUNT', 'Used on:'), 
 			$this->BackLinkTracking()->Count() . ' ' . _t('AssetTableField.PAGES', 'page(s)')), 
@@ -22,7 +22,7 @@ class SiteTreeFileExtension extends DataExtension {
 	 * 
 	 * @return ComponentSet
 	 */
-	function BackLinkTracking($filter = "", $sort = "", $join = "", $limit = "") {
+	public function BackLinkTracking($filter = "", $sort = "", $join = "", $limit = "") {
 		if(class_exists("Subsite")){
 			$rememberSubsiteFilter = Subsite::$disable_subsite_filter;
 			Subsite::disable_subsite_filter(true);
@@ -43,7 +43,7 @@ class SiteTreeFileExtension extends DataExtension {
 	 * 
 	 * @return Integer
 	 */
-	function BackLinkTrackingCount() {
+	public function BackLinkTrackingCount() {
 		$pages = $this->owner->BackLinkTracking();
 		if($pages) {
 			return $pages->Count();
@@ -55,7 +55,7 @@ class SiteTreeFileExtension extends DataExtension {
 	/**
 	 * Updates link tracking.
 	 */
-	function onAfterDelete() {
+	public function onAfterDelete() {
 	    // We query the explicit ID list, because BackLinkTracking will get modified after the stage
 	    // site does its thing
 		$brokenPageIDs = $this->owner->BackLinkTracking()->column("ID");
@@ -86,7 +86,7 @@ class SiteTreeFileExtension extends DataExtension {
 	 * @param String $old File path relative to the webroot
 	 * @param String $new File path relative to the webroot
 	 */
-	function updateLinks($old, $new) {
+	public function updateLinks($old, $new) {
 		if(class_exists('Subsite')) Subsite::disable_subsite_filter(true);
 	
 		$pages = $this->owner->BackLinkTracking();

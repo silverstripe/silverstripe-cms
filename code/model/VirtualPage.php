@@ -49,7 +49,7 @@ class VirtualPage extends Page {
 	/** 
 	 * Generates the array of fields required for the page type.
 	 */
-	function getVirtualFields() {
+	public function getVirtualFields() {
 		$nonVirtualFields = array_merge(self::$non_virtual_fields, self::$initially_copied_fields);
 		$record = $this->CopyContentFrom();
 
@@ -66,7 +66,7 @@ class VirtualPage extends Page {
 	/**
 	 * @return SiteTree Returns the linked page, or failing that, a new object.
 	 */
-	function CopyContentFrom() {
+	public function CopyContentFrom() {
 		$copyContentFromID = $this->CopyContentFromID;
 		if(!$copyContentFromID) return new SiteTree();
 		
@@ -87,12 +87,12 @@ class VirtualPage extends Page {
 		
 		return $this->components['CopyContentFrom'] ? $this->components['CopyContentFrom'] : new SiteTree();
 	}
-	function setCopyContentFromID($val) {
+	public function setCopyContentFromID($val) {
 		if($val && DataObject::get_by_id('SiteTree', $val) instanceof VirtualPage) $val = 0;
 		return $this->setField("CopyContentFromID", $val);
 	}
  
-	function ContentSource() {
+	public function ContentSource() {
 		return $this->CopyContentFrom();
 	}
 
@@ -111,7 +111,7 @@ class VirtualPage extends Page {
 		return $tags;
 	}
 	
-	function allowedChildren() {
+	public function allowedChildren() {
 		if($this->CopyContentFrom()) {
 			return $this->CopyContentFrom()->allowedChildren();
 		}
@@ -164,7 +164,7 @@ class VirtualPage extends Page {
 	/**
 	 * Generate the CMS fields from the fields from the original page.
 	 */
-	function getCMSFields() {
+	public function getCMSFields() {
 		$fields = parent::getCMSFields();
 		
 		// Setup the linking to the original page.
@@ -209,7 +209,7 @@ class VirtualPage extends Page {
 	/** 
 	 * We have to change it to copy all the content from the original page first.
 	 */
-	function onBeforeWrite() {
+	public function onBeforeWrite() {
 		$performCopyFrom = null;
 
 		// Determine if we need to copy values.
@@ -245,7 +245,7 @@ class VirtualPage extends Page {
 		parent::onBeforeWrite();
 	}
 	
-	function onAfterWrite() {
+	public function onAfterWrite() {
 		parent::onAfterWrite();
 
 		// Don't do this stuff when we're publishing
@@ -292,7 +292,7 @@ class VirtualPage extends Page {
 		}
 	}
 
-	function validate() {
+	public function validate() {
 		$result = parent::validate();
 
 		// "Can be root" validation
@@ -314,7 +314,7 @@ class VirtualPage extends Page {
 	/**
 	 * Ensure we have an up-to-date version of everything.
 	 */
-	function copyFrom($source, $updateImageTracking = true) {
+	public function copyFrom($source, $updateImageTracking = true) {
 		if($source) {
 			foreach($this->getVirtualFields() as $virtualField) {
 				$this->$virtualField = $source->$virtualField;
@@ -332,7 +332,7 @@ class VirtualPage extends Page {
 		}
 	}
 	
-	function updateImageTracking() {
+	public function updateImageTracking() {
 		// Doesn't work on unsaved records
 		if(!$this->ID) return;
 
@@ -343,7 +343,7 @@ class VirtualPage extends Page {
 		$this->ImageTracking()->setByIdList($this->CopyContentFrom()->ImageTracking()->column('ID'));
 	}
 
-	function CMSTreeClasses() {
+	public function CMSTreeClasses() {
 		return parent::CMSTreeClasses() . ' VirtualPage-' . $this->CopyContentFrom()->ClassName;
 	}
 	
@@ -354,7 +354,7 @@ class VirtualPage extends Page {
 	 * @param string $field 
 	 * @return mixed
 	 */
-	function __get($field) {
+	public function __get($field) {
 		if(parent::hasMethod($funcName = "get$field")) {
 			return $this->$funcName();
 		} else if(parent::hasField($field)) {
@@ -370,7 +370,7 @@ class VirtualPage extends Page {
 	 * @param string $method 
 	 * @param string $args 
 	 */
-	function __call($method, $args) {
+	public function __call($method, $args) {
 		if(parent::hasMethod($method)) {
 			return parent::__call($method, $args);
 		} else {
@@ -393,7 +393,7 @@ class VirtualPage extends Page {
 	 * @param string $method 
 	 * @return bool 
 	 */
-	function hasMethod($method) {
+	public function hasMethod($method) {
 		if(parent::hasMethod($method)) return true;
 		return $this->copyContentFrom()->hasMethod($method);
 	}
@@ -412,13 +412,13 @@ class VirtualPage_Controller extends Page_Controller {
 	/**
 	 * Reloads the content if the version is different ;-)
 	 */
-	function reloadContent() {
+	public function reloadContent() {
 		$this->failover->copyFrom($this->failover->CopyContentFrom());
 		$this->failover->write();
 		return;
 	}
 	
-	function getViewer($action) {
+	public function getViewer($action) {
 		$originalClass = get_class($this->CopyContentFrom());
 		if ($originalClass == 'SiteTree') $name = 'Page_Controller';
 		else $name = $originalClass."_Controller";
@@ -432,7 +432,7 @@ class VirtualPage_Controller extends Page_Controller {
 	 * NOTE: Virtual page must have a container object of subclass of sitetree.
 	 * We can't load the content without an ID or record to copy it from.
 	 */
-	function init(){
+	public function init(){
 		if(isset($this->record) && $this->record->ID){
 			if($this->record->VersionID != $this->failover->CopyContentFrom()->Version){
 				$this->reloadContent();
@@ -442,7 +442,7 @@ class VirtualPage_Controller extends Page_Controller {
 		parent::init();
 	}
 
-	function loadcontentall() {
+	public function loadcontentall() {
 		$pages = DataObject::get("VirtualPage");
 		foreach($pages as $page) {
 			$page->copyFrom($page->CopyContentFrom());
@@ -458,7 +458,7 @@ class VirtualPage_Controller extends Page_Controller {
 	 * @param string $method 
 	 * @return bool 
 	 */
-	function hasMethod($method) {
+	public function hasMethod($method) {
 		$haveIt = parent::hasMethod($method);
 		if (!$haveIt) {	
 			$originalClass = get_class($this->CopyContentFrom());
@@ -476,7 +476,7 @@ class VirtualPage_Controller extends Page_Controller {
 	 * @param string $method 
 	 * @param string $args 
 	 */
-	function __call($method, $args) {
+	public function __call($method, $args) {
 		try {
 			return parent::__call($method, $args);
 		} catch (Exception $e) {
