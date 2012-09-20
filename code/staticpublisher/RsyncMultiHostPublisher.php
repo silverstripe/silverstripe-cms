@@ -24,7 +24,7 @@ class RsyncMultiHostPublisher extends FilesystemPublisher {
 	 * 
 	 * @param $targets An array of targets to publish to.  These can either be local file names, or scp-style targets, in the form "user@server:path"
 	 */
-	static function set_targets($targets) {
+	static public function set_targets($targets) {
 		self::$targets = $targets;
 	}
 	
@@ -32,11 +32,11 @@ class RsyncMultiHostPublisher extends FilesystemPublisher {
 	 * Specify folders to exclude from the rsync
 	 * For example, you could exclude assets.
 	 */
-	static function set_excluded_folders($folders) {
+	static public function set_excluded_folders($folders) {
 		self::$excluded_folders = $folders;
 	}
 
-	function publishPages($urls) {
+	public function publishPages($urls) {
 		parent::publishPages($urls);
 		$base = Director::baseFolder();
 		$framework = FRAMEWORK_DIR;

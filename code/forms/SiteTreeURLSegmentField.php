@@ -21,16 +21,16 @@ class SiteTreeURLSegmentField extends TextField {
 		'suggest'
 	);
 
-	function Value() {
+	public function Value() {
 		return rawurldecode($this->value);
 	}
 
-	function Field($properties = array()) {
+	public function Field($properties = array()) {
 		Requirements::javascript(CMS_DIR . '/javascript/SiteTreeURLSegmentField.js');
 		return parent::Field($properties);
 	}
 	
-	function suggest($request) {
+	public function suggest($request) {
 		if(!$request->getVar('value')) return $this->httpError(405);
 		$page = $this->getPage();
 
@@ -49,7 +49,7 @@ class SiteTreeURLSegmentField extends TextField {
 	/**
 	 * @return SiteTree
 	 */
-	function getPage() {
+	public function getPage() {
 		$idField = $this->getForm()->Fields()->dataFieldByName('ID');
 		return ($idField && $idField->Value()) ? DataObject::get_by_id('SiteTree', $idField->Value()) : singleton('SiteTree');
 	}
@@ -57,14 +57,14 @@ class SiteTreeURLSegmentField extends TextField {
 	/**
 	 * @param string the secondary text to show
 	 */
-	function setHelpText($string){
+	public function setHelpText($string){
 		$this->helpText = $string; 
 	}
 	
 	/**
 	 * @return string the secondary text to show in the template
 	 */
-	function getHelpText(){
+	public function getHelpText(){
 		return $this->helpText;
 	
 	}
@@ -72,19 +72,19 @@ class SiteTreeURLSegmentField extends TextField {
 	/**
 	 * @param the url that prefixes the page url segment field
 	 */
-	function setURLPrefix($url){
+	public function setURLPrefix($url){
 		$this->urlPrefix = $url;
 	}
 	
 	/**
 	 * @return the url prefixes the page url segment field to show in template
 	 */
-	function getURLPrefix(){
+	public function getURLPrefix(){
 		return $this->urlPrefix;
 	}
 	
 
-	function Type() {
+	public function Type() {
 		return 'text urlsegment';
 	}
 

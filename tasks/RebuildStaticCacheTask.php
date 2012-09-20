@@ -11,7 +11,7 @@ class RebuildStaticCacheTask extends Controller {
 		'index', 
 	);
 
-	function init() {
+	public function init() {
 		parent::init();
 		
 		Versioned::reading_stage('live');
@@ -20,7 +20,7 @@ class RebuildStaticCacheTask extends Controller {
 		if(!$canAccess) return Security::permissionFailure($this);
 	}
 
-	function index() {
+	public function index() {
 		StaticPublisher::set_echo_progress(true);
 
 		$page = singleton('Page');
@@ -44,7 +44,7 @@ class RebuildStaticCacheTask extends Controller {
 	 * @param array $urls The URLs of pages to re-fetch and cache.
 	 * @param bool $removeAll Remove all stale cache files (default TRUE).
 	 */
-	function rebuildCache($urls, $removeAll = true) {
+	public function rebuildCache($urls, $removeAll = true) {
 
 		if(!is_array($urls)) {
 			// $urls must be an array	
@@ -117,7 +117,7 @@ class RebuildStaticCacheTask extends Controller {
 		echo "\n\n== Done! ==";
 	}
 	
-	function show() {
+	public function show() {
 		$urls = singleton('Page')->allPagesToCache();
 		echo "<pre>\n";
 		print_r($urls);

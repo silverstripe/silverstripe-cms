@@ -43,7 +43,7 @@
  
 // Modified by: Silverstripe Ltd. (changed naming of file-input-elements) 
 
-function ObservableObject() {
+public function ObservableObject() {
     this.functions = [];
 }
 ObservableObject.prototype = {
@@ -63,7 +63,7 @@ ObservableObject.prototype = {
 
 var MultiSelectorObserver = new ObservableObject();
 
-function MultiSelector( list_target, max, upload_button ){
+public function MultiSelector( list_target, max, upload_button ){
 	
 	this.upload_button = upload_button;
 	this.upload_button.setAttribute("disabled", "disabled"); 

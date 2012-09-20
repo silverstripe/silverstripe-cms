@@ -6,7 +6,7 @@
 class FileLinkTrackingTest extends SapphireTest {
 	static $fixture_file = "FileLinkTrackingTest.yml";
 	
-	function setUp() {
+	public function setUp() {
 		parent::setUp();
 		$this->logInWithPermission('ADMIN');
 		
@@ -16,7 +16,7 @@ class FileLinkTrackingTest extends SapphireTest {
 		fclose($fh);
 	}
 
-	function tearDown() {
+	public function tearDown() {
 		parent::tearDown();
 		$testFiles = array(
 			'/testscript-test-file.pdf',
@@ -28,7 +28,7 @@ class FileLinkTrackingTest extends SapphireTest {
 		}
 	}
 	
-	function testFileRenameUpdatesDraftAndPublishedPages() {
+	public function testFileRenameUpdatesDraftAndPublishedPages() {
 		$page = $this->objFromFixture('Page', 'page1');
 		$this->assertTrue($page->doPublish());
 		$this->assertContains('<img src="assets/testscript-test-file.pdf"',
@@ -44,7 +44,7 @@ class FileLinkTrackingTest extends SapphireTest {
 			DB::query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = $page->ID")->value());
 	}
 
-	function testFileLinkRewritingOnVirtualPages() {
+	public function testFileLinkRewritingOnVirtualPages() {
 		// Publish the source page
 		$page = $this->objFromFixture('Page', 'page1');
 		$this->assertTrue($page->doPublish());
@@ -67,7 +67,7 @@ class FileLinkTrackingTest extends SapphireTest {
 			DB::query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = $svp->ID")->value());
 	}
 	
-	function testLinkRewritingOnAPublishedPageDoesntMakeItEditedOnDraft() {
+	public function testLinkRewritingOnAPublishedPageDoesntMakeItEditedOnDraft() {
 		// Publish the source page
 		$page = $this->objFromFixture('Page', 'page1');
 		$this->assertTrue($page->doPublish());
@@ -86,7 +86,7 @@ class FileLinkTrackingTest extends SapphireTest {
 		$this->assertFalse($page->IsModifiedOnStage);
 	}
 
-	function testTwoFileRenamesInARowWork() {
+	public function testTwoFileRenamesInARowWork() {
 		$page = $this->objFromFixture('Page', 'page1');
 		$this->assertTrue($page->doPublish());
 		$this->assertContains('<img src="assets/testscript-test-file.pdf"',

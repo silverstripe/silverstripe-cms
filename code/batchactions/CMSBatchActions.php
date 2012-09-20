@@ -6,17 +6,17 @@
  * @subpackage batchaction
  */
 class CMSBatchAction_Publish extends CMSBatchAction {
-	function getActionTitle() {
+	public function getActionTitle() {
 		return _t('CMSBatchActions.PUBLISH_PAGES', 'Publish');
 	}
 
-	function run(SS_List $pages) {
+	public function run(SS_List $pages) {
 		return $this->batchaction($pages, 'doPublish',
 			_t('CMSBatchActions.PUBLISHED_PAGES', 'Published %d pages, %d failures')
 		);
 	}
 
-	function applicablePages($ids) {
+	public function applicablePages($ids) {
 		return $this->applicablePagesHelper($ids, 'canPublish', true, false);
 	}
 }
@@ -28,11 +28,11 @@ class CMSBatchAction_Publish extends CMSBatchAction {
  * @subpackage batchaction
  */
 class CMSBatchAction_Unpublish extends CMSBatchAction {
-	function getActionTitle() {
+	public function getActionTitle() {
 		return _t('CMSBatchActions.UNPUBLISH_PAGES', 'Un-publish');
 	}
 
-	function run(SS_List $pages) {
+	public function run(SS_List $pages) {
 		return $this->batchaction($pages, 'doUnpublish',
 			_t('CMSBatchActions.UNPUBLISHED_PAGES', 'Un-published %d pages')
 		);
@@ -46,11 +46,11 @@ class CMSBatchAction_Unpublish extends CMSBatchAction {
  * @subpackage batchaction
  */
 class CMSBatchAction_Delete extends CMSBatchAction {
-	function getActionTitle() {
+	public function getActionTitle() {
 		return _t('CMSBatchActions.DELETE_DRAFT_PAGES', 'Delete from draft site');
 	}
 
-	function run(SS_List $pages) {
+	public function run(SS_List $pages) {
 		$status = array(
 			'modified'=>array(),
 			'deleted'=>array(),
@@ -81,7 +81,7 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 		return $this->response(_t('CMSBatchActions.DELETED_DRAFT_PAGES', 'Deleted %d pages from draft site, %d failures'), $status);
 	}
 
-	function applicablePages($ids) {
+	public function applicablePages($ids) {
 		return $this->applicablePagesHelper($ids, 'canDelete', true, false);
 	}
 }
@@ -93,12 +93,12 @@ class CMSBatchAction_Delete extends CMSBatchAction {
  * @subpackage batchaction
  */
 class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
-	function getActionTitle() {
+	public function getActionTitle() {
 		return _t('CMSBatchActions.DELETE_PAGES', 'Delete from published site');
 	}
 
 
-	function run(SS_List $pages) {
+	public function run(SS_List $pages) {
 		$status = array(
 			'modified'=>array(),
 			'deleted'=>array()
@@ -126,7 +126,7 @@ class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 		return $this->response(_t('CMSBatchActions.DELETED_PAGES', 'Deleted %d pages from published site, %d failures'), $status);
 	}
 
-	function applicablePages($ids) {
+	public function applicablePages($ids) {
 		return $this->applicablePagesHelper($ids, 'canDelete', false, true);
 	}
 }

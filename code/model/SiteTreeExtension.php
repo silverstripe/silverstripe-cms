@@ -7,22 +7,22 @@
  */
 abstract class SiteTreeExtension extends DataExtension {
 
-	function onBeforePublish(&$original) {
+	public function onBeforePublish(&$original) {
 	}
 
-	function onAfterPublish(&$original) {
+	public function onAfterPublish(&$original) {
 	}
 	
-	function onBeforeUnpublish() {
+	public function onBeforeUnpublish() {
 	}
 	
-	function onAfterUnpublish() {
+	public function onAfterUnpublish() {
 	}
 	
-	function canAddChildren($member) {
+	public function canAddChildren($member) {
 	}
 	
-	function canPublish($member) {
+	public function canPublish($member) {
 		
 	}
 

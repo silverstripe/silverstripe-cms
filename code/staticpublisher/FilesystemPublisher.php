@@ -44,7 +44,7 @@ class FilesystemPublisher extends StaticPublisher {
 	 * Set a different base URL for the static copy of the site.
 	 * This can be useful if you are running the CMS on a different domain from the website.
 	 */
-	static function set_static_base_url($url) {
+	static public function set_static_base_url($url) {
 		self::$static_base_url = $url;
 	}
 	
@@ -56,7 +56,7 @@ class FilesystemPublisher extends StaticPublisher {
 	 *   with the filename 'index.html'.  If you set the extension to PHP, then a simple PHP script will
 	 *   be generated that can do appropriate cache & redirect header negotation.
 	 */
-	function __construct($destFolder = 'cache', $fileExtension = null) {
+	public function __construct($destFolder = 'cache', $fileExtension = null) {
 		// Remove trailing slash from folder
 		if(substr($destFolder, -1) == '/') $destFolder = substr($destFolder, 0, -1);
 		
@@ -90,7 +90,7 @@ class FilesystemPublisher extends StaticPublisher {
 	 * @param Array $urls Absolute or relative URLs
 	 * @return Array Map of original URLs to filesystem paths (relative to {@link $destFolder}).
 	 */
-	function urlsToPaths($urls) {
+	public function urlsToPaths($urls) {
 		$mappedUrls = array();
 		foreach($urls as $url) {
 
@@ -123,7 +123,7 @@ class FilesystemPublisher extends StaticPublisher {
 		return $mappedUrls;
 	}
 	
-	function unpublishPages($urls) {
+	public function unpublishPages($urls) {
 		// Do we need to map these?
 		// Detect a numerically indexed arrays
 		if (is_numeric(join('', array_keys($urls)))) $urls = $this->urlsToPaths($urls);
@@ -142,7 +142,7 @@ class FilesystemPublisher extends StaticPublisher {
 		}
 	}
 	
-	function publishPages($urls) { 
+	public function publishPages($urls) { 
 		// Do we need to map these?
 		// Detect a numerically indexed arrays
 		if (is_numeric(join('', array_keys($urls)))) $urls = $this->urlsToPaths($urls);

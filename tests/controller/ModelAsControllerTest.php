@@ -19,7 +19,7 @@ class ModelAsControllerTest extends FunctionalTest {
 	 * This setup will enable nested-urls for this test and resets the state
 	 * after the tests have been performed.
 	 */
-	function setUp() {
+	public function setUp() {
 		parent::setUp();
 
 		$this->orig['nested_urls'] = SiteTree::nested_urls();
@@ -32,7 +32,7 @@ class ModelAsControllerTest extends FunctionalTest {
 	 * This setup will enable nested-urls for this test and resets the state
 	 * after the tests have been performed.
 	 */
-	function tearDown() {
+	public function tearDown() {
 		
 		if (isset($this->orig['nested_urls']) && !$this->orig['nested_urls']) {
 			SiteTree::disable_nested_urls();
@@ -131,7 +131,7 @@ class ModelAsControllerTest extends FunctionalTest {
 			$response->getHeader("Location"));
 	}
 
-	function testDoesntRedirectToNestedChildrenOutsideOfOwnHierarchy() {
+	public function testDoesntRedirectToNestedChildrenOutsideOfOwnHierarchy() {
 		$this->generateNestedPagesFixture();
 		
 		$otherParent = new Page(array(
@@ -156,7 +156,7 @@ class ModelAsControllerTest extends FunctionalTest {
 	 * NOTE: This test requires nested_urls
 	 * 
 	 */
-	function testRedirectsNestedRenamedPagesWithGetParameters() {
+	public function testRedirectsNestedRenamedPagesWithGetParameters() {
 		$this->generateNestedPagesFixture();
 		
 		// check third level URLSegment 
@@ -173,7 +173,7 @@ class ModelAsControllerTest extends FunctionalTest {
 	 * NOTE: This test requires nested_urls
 	 * 
 	 */
-	function testDoesntRedirectToNestedRenamedPageWhenNewExists() {
+	public function testDoesntRedirectToNestedRenamedPageWhenNewExists() {
 		$this->generateNestedPagesFixture();
 		
 		$otherLevel1 = new Page(array(
@@ -202,7 +202,7 @@ class ModelAsControllerTest extends FunctionalTest {
 	 * NOTE: This test requires nested_urls
 	 * 
 	 */
-	function testFindOldPage(){
+	public function testFindOldPage(){
 		$page = new Page();
 		$page->Title      = 'First Level';
 		$page->URLSegment = 'oldurl';
@@ -239,7 +239,7 @@ class ModelAsControllerTest extends FunctionalTest {
 	 *
 	 * NOTE: This test requires nested_urls
 	 */
-	function testChildOfDraft() {
+	public function testChildOfDraft() {
 		RootURLController::reset();
 		SiteTree::enable_nested_urls();
 

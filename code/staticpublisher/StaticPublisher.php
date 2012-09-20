@@ -24,18 +24,18 @@ abstract class StaticPublisher extends DataExtension {
 	 */
 	static $static_publisher_theme=false;
 	
-	abstract function publishPages($pages);
-	abstract function unpublishPages($pages);
+	abstract public function publishPages($pages);
+	abstract public function unpublishPages($pages);
 
-	static function set_static_publisher_theme($theme){
+	static public function set_static_publisher_theme($theme){
 		self::$static_publisher_theme=$theme;
 	}
 	
-	static function static_publisher_theme(){
+	static public function static_publisher_theme(){
 		return self::$static_publisher_theme;
 	}
 
-	static function echo_progress() {
+	static public function echo_progress() {
 		return (boolean)self::$echo_progress;
 	}
 	
@@ -43,14 +43,14 @@ abstract class StaticPublisher extends DataExtension {
 	 * Either turns on (boolean true) or off (boolean false) the progress indicators.
 	 * @see StaticPublisher::$echo_progress
 	 */
-	static function set_echo_progress($progress) {
+	static public function set_echo_progress($progress) {
 		self::$echo_progress = (boolean)$progress;
 	}
 
 	/**
 	 * Called after a page is published.
 	 */
-	function onAfterPublish($original) {
+	public function onAfterPublish($original) {
 		$this->republish($original);
 	}
 	
@@ -60,11 +60,11 @@ abstract class StaticPublisher extends DataExtension {
 	 * 
 	 * Only called if the published content exists and has been modified.
 	 */
-	function onRenameLinkedAsset($original) {
+	public function onRenameLinkedAsset($original) {
 		$this->republish($original);
 	}
 	
-	function republish($original) {
+	public function republish($original) {
 		if (self::$disable_realtime) return;
 
 		$urls = array();
@@ -102,7 +102,7 @@ abstract class StaticPublisher extends DataExtension {
 	 * On after unpublish, get changes and hook into underlying
 	 * functionality
 	 */
-	function onAfterUnpublish($page) {
+	public function onAfterUnpublish($page) {
 		if (self::$disable_realtime) return;
 		
 		// Get the affected URLs
@@ -125,7 +125,7 @@ abstract class StaticPublisher extends DataExtension {
 	/**
 	 * Get all external references to CSS, JS, 
 	 */
-	function externalReferencesFor($content) {
+	public function externalReferencesFor($content) {
 		$CLI_content = escapeshellarg($content);
 		$tidy = `echo $CLI_content | tidy -numeric -asxhtml`;
 		$tidy = preg_replace('/xmlns="[^"]+"/','', $tidy);

@@ -6,19 +6,19 @@
 class SiteTreeBrokenLinksTest extends SapphireTest {
 	static $fixture_file = 'SiteTreeBrokenLinksTest.yml';
 	
-	static function set_up_once() {
+	static public function set_up_once() {
 		SiteTreeTest::set_up_once();
 
 		parent::set_up_once();
 	}
 	
-	static function tear_down_once() {
+	static public function tear_down_once() {
 		SiteTreeTest::tear_down_once();
 		
 		parent::tear_down_once();
 	}
 
-	function testBrokenLinksBetweenPages() {
+	public function testBrokenLinksBetweenPages() {
 		$obj = $this->objFromFixture('Page','content');
 		
 		$obj->Content = '<a href="[sitetree_link,id=3423423]">this is a broken link</a>';
@@ -30,7 +30,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$this->assertFalse($obj->HasBrokenLink, 'Page does NOT have a broken link');
 	}
 	
-	function testBrokenVirtualPages() {
+	public function testBrokenVirtualPages() {
 		$obj = $this->objFromFixture('Page','content');
 		$vp = new VirtualPage();
 		
@@ -43,7 +43,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$this->assertTrue($vp->HasBrokenLink, 'Broken virtual page IS marked as such');
 	}
 	
-	function testBrokenInternalRedirectorPages() {
+	public function testBrokenInternalRedirectorPages() {
 		$obj = $this->objFromFixture('Page','content');
 		$rp = new RedirectorPage();
 		
@@ -58,7 +58,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$this->assertTrue($rp->HasBrokenLink, 'Broken redirector page IS marked as such');
 	}
 
-	function testBrokenAssetLinks() {
+	public function testBrokenAssetLinks() {
 		$obj = $this->objFromFixture('Page','content');
 		
 		$obj->Content = '<a href="assets/nofilehere.pdf">this is a broken link to a pdf file</a>';
@@ -70,7 +70,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$this->assertFalse($obj->HasBrokenFile, 'Page does NOT have a broken file');
 	}
 
-	function testDeletingFileMarksBackedPagesAsBroken() {
+	public function testDeletingFileMarksBackedPagesAsBroken() {
 		// Test entry
 		$file = new File();
 		$file->Filename = 'test-file.pdf';
@@ -99,7 +99,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$liveObj = Versioned::get_one_by_stage("SiteTree", "Live", "\"SiteTree\".\"ID\" = $obj->ID");
 		$this->assertEquals(1, $liveObj->HasBrokenFile);
 	}	
-	function testDeletingMarksBackLinkedPagesAsBroken() {
+	public function testDeletingMarksBackLinkedPagesAsBroken() {
 		$this->logInWithPermission('ADMIN');
 		
 		// Set up two published pages with a link from content -> about
@@ -142,7 +142,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 			WHERE \"ID\" = $linkSrc->ID")->value());
 	}
 
-	function testPublishingSourceBeforeDestHasBrokenLink() {
+	public function testPublishingSourceBeforeDestHasBrokenLink() {
 		$this->logInWithPermission('ADMIN');
 		
 		// Set up two draft pages with a link from content -> about
@@ -164,7 +164,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 	}
 
 	
-	function testRestoreFixesBrokenLinks() {
+	public function testRestoreFixesBrokenLinks() {
 		// Create page and virutal page
 		$p = new Page();
 		$p->Title = "source";
@@ -239,7 +239,7 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		
 	}
 
-	function testRevertToLiveFixesBrokenLinks() {
+	public function testRevertToLiveFixesBrokenLinks() {
 		// Create page and virutal page
 		$p = new Page();
 		$p->Title = "source";

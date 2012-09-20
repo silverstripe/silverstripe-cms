@@ -11,7 +11,7 @@ class ErrorPageTest extends FunctionalTest {
 	
 	protected $tmpAssetsPath = '';
 	
-	function setUp() {
+	public function setUp() {
 		parent::setUp();
 		
 		$this->orig['ErrorPage_staticfilepath'] = ErrorPage::get_static_filepath();		
@@ -23,7 +23,7 @@ class ErrorPageTest extends FunctionalTest {
 		Director::set_environment_type('live');
 	}
 	
-	function tearDown() {
+	public function tearDown() {
 		parent::tearDown();
 		
 		ErrorPage::set_static_filepath($this->orig['ErrorPage_staticfilepath']);
@@ -33,7 +33,7 @@ class ErrorPageTest extends FunctionalTest {
 		Filesystem::removeFolder($this->tmpAssetsPath);
 	}
 	
-	function test404ErrorPage() {
+	public function test404ErrorPage() {
 		$page = $this->objFromFixture('ErrorPage', '404');
 		// ensure that the errorpage exists as a physical file
 		$page->publish('Stage', 'Live');
@@ -50,7 +50,7 @@ class ErrorPageTest extends FunctionalTest {
 		$this->assertEquals($response->getStatusDescription(), 'Not Found', 'Status message of the HTTResponse for error page is "Not found"');
 	}
 	
-	function testBehaviourOfShowInMenuAndShowInSearchFlags() {
+	public function testBehaviourOfShowInMenuAndShowInSearchFlags() {
 		$page = $this->objFromFixture('ErrorPage', '404');
 		
 		/* Don't show the error page in the menus */

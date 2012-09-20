@@ -36,7 +36,7 @@ abstract class CMSSiteTreeFilter extends Object {
 	 */
 	protected $childrenMethod = null;
 		
-	function __construct($params = null) {
+	public function __construct($params = null) {
 		if($params) $this->params = $params;
 		
 		parent::__construct();
@@ -46,14 +46,14 @@ abstract class CMSSiteTreeFilter extends Object {
 	 * @return String Method on {@link Hierarchy} objects
 	 * which is used to traverse into children relationships.
 	 */
-	function getChildrenMethod() {
+	public function getChildrenMethod() {
 		return $this->childrenMethod;
 	}
 	
 	/**
 	 * @return Array Map of Page IDs to their respective ParentID values.
 	 */
-	function pagesIncluded() {}
+	public function pagesIncluded() {}
 	
 	/**
 	 * Populate the IDs of the pages returned by pagesIncluded(), also including
@@ -116,11 +116,11 @@ class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter {
 	
 	protected $childrenMethod = "AllHistoricalChildren";
 	
-	static function title() {
+	static public function title() {
 		return _t('CMSSiteTreeFilter_DeletedPages.Title', "All pages, including deleted");
 	}
 	
-	function pagesIncluded() {
+	public function pagesIncluded() {
 		$ids = array();
 		// TODO Not very memory efficient, but usually not very many deleted pages exist
 		$pages = Versioned::get_including_deleted('SiteTree');
@@ -139,11 +139,11 @@ class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter {
  */
 class CMSSiteTreeFilter_ChangedPages extends CMSSiteTreeFilter {
 	
-	static function title() {
+	static public function title() {
 		return _t('CMSSiteTreeFilter_ChangedPages.Title', "Changed pages");
 	}
 	
-	function pagesIncluded() {
+	public function pagesIncluded() {
 		$ids = array();
 		$q = new SQLQuery();
 		$q->setSelect(array('"SiteTree"."ID"','"SiteTree"."ParentID"'))
@@ -165,7 +165,7 @@ class CMSSiteTreeFilter_ChangedPages extends CMSSiteTreeFilter {
  */
 class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter {
 
-	static function title() {
+	static public function title() {
 		return _t('CMSSiteTreeFilter_Search.Title', "All pages");
 	}
 	

@@ -8,7 +8,7 @@ class SilverStripeNavigatorTest extends SapphireTest {
 	
 	static $fixture_file = 'cms/tests/controller/CMSMainTest.yml';
 	
-	function testGetItems() {
+	public function testGetItems() {
 		$page = $this->objFromFixture('Page', 'page1');
 		$navigator = new SilverStripeNavigator($page);
 		
@@ -23,7 +23,7 @@ class SilverStripeNavigatorTest extends SapphireTest {
 		);
 	}
 	
-	function testCanView() {
+	public function testCanView() {
 		$page = $this->objFromFixture('Page', 'page1');
 		$admin = $this->objFromFixture('Member', 'admin');
 		$author = $this->objFromFixture('Member', 'assetsonlyuser');
@@ -47,7 +47,7 @@ class SilverStripeNavigatorTest_TestItem extends SilverStripeNavigatorItem imple
 }
 
 class SilverStripeNavigatorTest_ProtectedTestItem extends SilverStripeNavigatorItem implements TestOnly {
-	function canView($member = null) {
+	public function canView($member = null) {
 		if(!$member) $member = Member::currentUser();
 		return Permission::checkMember($member, 'ADMIN');
 	}

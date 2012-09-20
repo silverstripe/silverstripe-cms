@@ -22,7 +22,7 @@ class SilverStripeNavigator extends ViewableData {
 	/**
 	 * @param DataObject
 	 */
-	function __construct($record) {
+	public function __construct($record) {
 		if(!in_array('CMSPreviewable', class_implements($record))) {
 			throw new InvalidArgumentException('SilverStripeNavigator: Record of type %s doesn\'t implement CMSPreviewable', get_class($record));
 		}
@@ -33,7 +33,7 @@ class SilverStripeNavigator extends ViewableData {
 	/**
 	 * @return SS_List of SilverStripeNavigatorItem
 	 */
-	function getItems() {
+	public function getItems() {
 		$items = array();
 	
 		$classes = ClassInfo::subclassesFor('SilverStripeNavigatorItem');
@@ -65,7 +65,7 @@ class SilverStripeNavigator extends ViewableData {
 	/**
 	 * @return DataObject
 	 */
-	function getRecord() {
+	public function getRecord() {
 		return $this->record;
 	}
 
@@ -73,7 +73,7 @@ class SilverStripeNavigator extends ViewableData {
 	 * @param DataObject $record
 	 * @return Array template data
 	 */
-	static function get_for_record($record) {
+	static public function get_for_record($record) {
 		$html = '';
 		$message = '';
 		$navigator = new SilverStripeNavigator($record);
@@ -110,7 +110,7 @@ class SilverStripeNavigatorItem extends ViewableData {
 	/**
 	 * @param DataObject
 	 */
-	function __construct($record) {
+	public function __construct($record) {
 		$this->record = $record;
 	}
 	
@@ -118,13 +118,13 @@ class SilverStripeNavigatorItem extends ViewableData {
 	 * @return String HTML, mostly a link - but can be more complex as well.
 	 * For example, a "future state" item might show a date selector.
 	 */
-	function getHTML() {}
+	public function getHTML() {}
 
 	/**
 	* @return String
 	* Text displayed in watermark
 	*/
-	function getWatermark() {}
+	public function getWatermark() {}
 	
 	/**
 	 * Optional link to a specific view of this record.
@@ -133,24 +133,24 @@ class SilverStripeNavigatorItem extends ViewableData {
 	 * 
 	 * @return String
 	 */
-	function getLink() {}
+	public function getLink() {}
 	
 	/**
 	 * @return String
 	 */
-	function getMessage() {}
+	public function getMessage() {}
 	
 	/**
 	 * @return DataObject
 	 */
-	function getRecord() {
+	public function getRecord() {
 		return $this->record;
 	} 
 	
 	/**
 	 * @return Int
 	 */
-	function getPriority() {
+	public function getPriority() {
 		return $this->stat('priority');
 	}
 	
@@ -160,7 +160,7 @@ class SilverStripeNavigatorItem extends ViewableData {
 	 * 
 	 * @return boolean
 	 */
-	function isActive() {
+	public function isActive() {
 		return false;
 	}
 	
@@ -171,7 +171,7 @@ class SilverStripeNavigatorItem extends ViewableData {
 	 * @param Member
 	 * @return Boolean
 	 */
-	function canView($member = null) {
+	public function canView($member = null) {
 		return true;
 	}
 }
@@ -183,7 +183,7 @@ class SilverStripeNavigatorItem extends ViewableData {
 class SilverStripeNavigatorItem_CMSLink extends SilverStripeNavigatorItem {
 	static $priority = 10;	
 	
-	function getHTML() {
+	public function getHTML() {
 		return sprintf(
 			'<a href="%s">%s</a>',
 			$this->record->CMSEditLink(),
@@ -191,15 +191,15 @@ class SilverStripeNavigatorItem_CMSLink extends SilverStripeNavigatorItem {
 		);
 	}
 	
-	function getLink() {
+	public function getLink() {
 		return $this->record->CMSEditLink();
 	}
 	
-	function isActive() {
+	public function isActive() {
 		return (Controller::curr() instanceof CMSMain);
 	}
 	
-	function canView($member = null) {
+	public function canView($member = null) {
 		// Don't show in CMS
 		return !(Controller::curr() instanceof CMSMain);
 	}
@@ -213,7 +213,7 @@ class SilverStripeNavigatorItem_CMSLink extends SilverStripeNavigatorItem {
 class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
 	static $priority = 20;
 
-	function getHTML() {
+	public function getHTML() {
 		$draftPage = $this->getDraftPage();
 		if($draftPage) {
 			$this->recordLink = Controller::join_links($draftPage->AbsoluteLink(), "?stage=Stage");
@@ -221,23 +221,23 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
 		}
 	}
 
-	function getWatermark() {
+	public function getWatermark() {
 		return _t('ContentController.DRAFTSITE');
 	}
 	
-	function getMessage() {
+	public function getMessage() {
 		return "<div id=\"SilverStripeNavigatorMessage\" title=\"". _t('ContentControl.NOTEWONTBESHOWN', 'Note: this message will not be shown to your visitors') ."\">".  _t('ContentController.DRAFTSITE', 'Draft Site') ."</div>";
 	}
 	
-	function getLink() {
+	public function getLink() {
 		return Controller::join_links($this->record->AbsoluteLink(), '?stage=Stage');
 	}
 	
-	function canView($member = null) {
+	public function canView($member = null) {
 		return ($this->record->hasExtension('Versioned') && $this->getDraftPage());
 	}
 	
-	function isActive() {
+	public function isActive() {
 		return (
 			Versioned::current_stage() == 'Stage' 
 			&& !(ClassInfo::exists('SiteTreeFutureState') && SiteTreeFutureState::get_future_datetime())
@@ -261,7 +261,7 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
 class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem {
 	static $priority = 30;
 
-	function getHTML() {
+	public function getHTML() {
 		$livePage = $this->getLivePage();
 		if($livePage) {
 			$this->recordLink = Controller::join_links($livePage->AbsoluteLink(), "?stage=Live");
@@ -269,23 +269,23 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem {
 		}
 	}
 
-	function getWatermark() {
+	public function getWatermark() {
 		return _t('ContentController.PUBLISHEDSITE');
 	}
 	
-	function getMessage() {
+	public function getMessage() {
 		return "<div id=\"SilverStripeNavigatorMessage\" title=\"". _t('ContentControl.NOTEWONTBESHOWN', 'Note: this message will not be shown to your visitors') ."\">".  _t('ContentController.PUBLISHEDSITE', 'Published Site') ."</div>";
 	}
 	
-	function getLink() {
+	public function getLink() {
 		return Controller::join_links($this->record->AbsoluteLink(), '?stage=Live');
 	}
 	
-	function canView($member = null) {
+	public function canView($member = null) {
 		return ($this->record->hasExtension('Versioned') && $this->getLivePage());
 	}
 	
-	function isActive() {
+	public function isActive() {
 		return (!Versioned::current_stage() || Versioned::current_stage() == 'Live');
 	}
 	
@@ -306,12 +306,12 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem {
 class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 	static $priority = 40;
 
-	function getHTML() {
+	public function getHTML() {
 			$this->recordLink = $this->record->AbsoluteLink();
 			return "<a class=\"ss-ui-button\" href=\"$this->recordLink?archiveDate={$this->record->LastEdited}\" target=\"_blank\">". _t('ContentController.ARCHIVEDSITE', 'Preview version') ."</a>";
 	}
 	
-	function getMessage() { 
+	public function getMessage() { 
 		if($date = Versioned::current_archived_date()) {
 			$dateObj = Datetime::create();
 			$dateObj->setValue($date);
@@ -319,15 +319,15 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 		}
 	}
 	
-	function getLink() {
+	public function getLink() {
 		return $this->record->AbsoluteLink() . '?archiveDate=' . $this->record->LastEdited;
 	}
 	
-	function canView($member = null) {
+	public function canView($member = null) {
 		return ($this->record->hasExtension('Versioned') && $this->isArchived());
 	}
 	
-	function isActive() {
+	public function isActive() {
 		return (Versioned::current_archived_date());
 	}
 	
@@ -336,7 +336,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 	 * 
 	 * @return boolean
 	 */
-	function isArchived() {
+	public function isArchived() {
 		if(!$this->record->hasExtension('Versioned')) return false;
 		
 		$baseTable = ClassInfo::baseDataClass($this->record->class);

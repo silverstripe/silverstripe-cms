@@ -11,7 +11,7 @@ class CMSMainTest extends FunctionalTest {
 	
 	static protected $orig = array();
 	
-	static function set_up_once() {
+	static public function set_up_once() {
 		self::$orig['CMSBatchActionHandler_batch_actions'] = CMSBatchActionHandler::$batch_actions;
 		CMSBatchActionHandler::$batch_actions = array(
 			'publish' => 'CMSBatchAction_Publish',
@@ -22,7 +22,7 @@ class CMSMainTest extends FunctionalTest {
 		parent::set_up_once();
 	}
 	
-	static function tear_down_once() {
+	static public function tear_down_once() {
 		CMSBatchActionHandler::$batch_actions = self::$orig['CMSBatchActionHandler_batch_actions'];
 		
 		parent::tear_down_once();
@@ -31,7 +31,7 @@ class CMSMainTest extends FunctionalTest {
 	/**
 	 * @todo Test the results of a publication better
 	 */
-	function testPublish() {
+	public function testPublish() {
 		$page1 = $this->objFromFixture('Page', "page1");
 		$page2 = $this->objFromFixture('Page', "page2");
 		$this->session()->inst_set('loggedInAs', $this->idFromFixture('Member', 'admin'));
@@ -74,7 +74,7 @@ class CMSMainTest extends FunctionalTest {
 	/**
 	 * Test publication of one of every page type
 	 */
-	function testPublishOneOfEachKindOfPage() {
+	public function testPublishOneOfEachKindOfPage() {
 		return;
 		$classes = ClassInfo::subclassesFor("SiteTree");
 		array_shift($classes);
@@ -100,7 +100,7 @@ class CMSMainTest extends FunctionalTest {
 	 * Test that getCMSFields works on each page type.
 	 * Mostly, this is just checking that the method doesn't return an error
 	 */
-	function testThatGetCMSFieldsWorksOnEveryPageType() {
+	public function testThatGetCMSFieldsWorksOnEveryPageType() {
 		$classes = ClassInfo::subclassesFor("SiteTree");
 		array_shift($classes);
 	
@@ -118,7 +118,7 @@ class CMSMainTest extends FunctionalTest {
 		}
 	}
 	
-	function testCanPublishPageWithUnpublishedParentWithStrictHierarchyOff() {
+	public function testCanPublishPageWithUnpublishedParentWithStrictHierarchyOff() {
 		$this->logInWithPermission('ADMIN');
 		
 		SiteTree::set_enforce_strict_hierarchy(true);
@@ -139,7 +139,7 @@ class CMSMainTest extends FunctionalTest {
 	/**
 	 * Test that a draft-deleted page can still be opened in the CMS
 	 */
-	function testDraftDeletedPageCanBeOpenedInCMS() {
+	public function testDraftDeletedPageCanBeOpenedInCMS() {
 		$this->session()->inst_set('loggedInAs', $this->idFromFixture('Member', 'admin'));
 	
 		// Set up a page that is delete from live
@@ -161,7 +161,7 @@ class CMSMainTest extends FunctionalTest {
 	/**
 	 * Test CMSMain::getRecord()
 	 */
-	function testGetRecord() {
+	public function testGetRecord() {
 		// Set up a page that is delete from live
 		$page1 = $this->objFromFixture('Page','page1');
 		$page1ID = $page1->ID;
@@ -185,14 +185,14 @@ class CMSMainTest extends FunctionalTest {
 	
 	}
 	
-	function testDeletedPagesSiteTreeFilter() {
+	public function testDeletedPagesSiteTreeFilter() {
 		$id = $this->idFromFixture('Page', 'page3');
 		$this->logInWithPermission('ADMIN');
 		$result = $this->get('admin/pages/getsubtree?filter=CMSSiteTreeFilter_DeletedPages&ajax=1&ID=' . $id);
 		$this->assertEquals(200, $result->getStatusCode());
 	}
 	
-	function testCreationOfTopLevelPage(){
+	public function testCreationOfTopLevelPage(){
 		$cmsUser = $this->objFromFixture('Member', 'allcmssectionsuser');
 		$rootEditUser = $this->objFromFixture('Member', 'rootedituser');
 
@@ -222,7 +222,7 @@ class CMSMainTest extends FunctionalTest {
 		$this->session()->inst_set('loggedInAs', NULL);
 	}
 
-	function testCreationOfRestrictedPage(){
+	public function testCreationOfRestrictedPage(){
 		$adminUser = $this->objFromFixture('Member', 'admin');
 		$adminUser->logIn();
 
@@ -260,7 +260,7 @@ class CMSMainTest extends FunctionalTest {
 		$this->session()->inst_set('loggedInAs', NULL);
 	}
 
-	function testBreadcrumbs() {
+	public function testBreadcrumbs() {
 		$page3 = $this->objFromFixture('Page', 'page3');		
 		$page31 = $this->objFromFixture('Page', 'page31');		
 		$adminuser = $this->objFromFixture('Member', 'admin');
