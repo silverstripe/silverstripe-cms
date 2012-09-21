@@ -332,9 +332,14 @@ fa_IR:
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 'برچسب ناوبری'
     METADESC: توضیحات
+    METADESCHELP: 'Add a description of your page here. Make sure you think about your keywords when writing your description'
     METAEXTRA: 'Custom Meta Tags'
+    METAEXTRAHELP: 'When adding custom meta tags they must be wrapped in an html tag. For example &lt;meta name="customName" content="your custom content here" /&gt;'
+    METAINTRO: 'Metadata helps describe and categorise your site. By filling out the fields below it will help improve your site''s ranking on search engines.'
+    METAKEYWORDHELP: 'Add any keywords that are relevant to the page here. Separate keywords and phrases with a comma: keyword, keywords, keyword phrase'
     METAKEYWORDS: کلیدواژه‌ها
     METATITLE: عنوان
+    METATITLEHELP: 'Add the title of your page here'
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
     MetadataToggle: Metadata

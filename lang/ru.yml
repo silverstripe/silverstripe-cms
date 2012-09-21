@@ -332,9 +332,14 @@ ru:
     LINKCHANGENOTE: 'Изменение ссылки на эту страницу повлияет и на ссылки всех дочерних страниц.'
     MENUTITLE: 'Метка в навигации'
     METADESC: Описание
+    METADESCHELP: 'Add a description of your page here. Make sure you think about your keywords when writing your description'
     METAEXTRA: 'Пользовательские мета-тэги'
+    METAEXTRAHELP: 'When adding custom meta tags they must be wrapped in an html tag. For example &lt;meta name="customName" content="your custom content here" /&gt;'
+    METAINTRO: 'Metadata helps describe and categorise your site. By filling out the fields below it will help improve your site''s ranking on search engines.'
+    METAKEYWORDHELP: 'Add any keywords that are relevant to the page here. Separate keywords and phrases with a comma: keyword, keywords, keyword phrase'
     METAKEYWORDS: 'Ключевые слова'
     METATITLE: Заголовок
+    METATITLEHELP: 'Add the title of your page here'
     MODIFIEDONDRAFTHELP: 'На этой странице есть неопубликованные изменения'
     MODIFIEDONDRAFTSHORT: Изменено
     MetadataToggle: Метаданные
