@@ -26,7 +26,7 @@ class RootURLController extends Controller {
 	 *
 	 * @return string
 	 */
-	public static function get_homepage_link() {
+	static public function get_homepage_link() {
 		if(!self::$cached_homepage_link) {
 			// TODO Move to 'homepagefordomain' module
 			if(class_exists('HomepageForDomainExtension')) {
@@ -63,7 +63,7 @@ class RootURLController extends Controller {
 	 *
 	 * @param string $urlsegment the URL segment for your home page
 	 */
-	public static function set_default_homepage_link($urlsegment = "home") {
+	static public function set_default_homepage_link($urlsegment = "home") {
 		self::$default_homepage_link = $urlsegment;
 	}
 
@@ -72,7 +72,7 @@ class RootURLController extends Controller {
 	 *
 	 * @return string
 	 */
-	public static function get_default_homepage_link() {
+	static public function get_default_homepage_link() {
 		return self::$default_homepage_link;
 	}
 	
@@ -83,7 +83,7 @@ class RootURLController extends Controller {
 	 * @param SiteTree $page
 	 * @return bool
 	 */
-	public static function should_be_on_root(SiteTree $page) {
+	static public function should_be_on_root(SiteTree $page) {
 		if(!self::$is_at_root && self::get_homepage_link() == trim($page->RelativeLink(true), '/')) {
 			return !(
 				class_exists('Translatable') && $page->hasExtension('Translatable') && $page->Locale && $page->Locale != Translatable::default_locale()
@@ -96,7 +96,7 @@ class RootURLController extends Controller {
 	/**
 	 * Resets the cached homepage link value - useful for testing.
 	 */
-	public static function reset() {
+	static public function reset() {
 		self::$cached_homepage_link = null;
 	}
 	

@@ -10,7 +10,7 @@ class SideReportTest extends SapphireTest {
 
 	static $daysAgo = 14;
 	
-	function setUp() {
+	public function setUp() {
 		parent::setUp();
 
 		// set the dates by hand: impossible to set via yml
@@ -24,7 +24,7 @@ class SideReportTest extends SapphireTest {
 		DB::query("UPDATE \"SiteTree\" SET \"Created\"='2009-01-01 00:00:00', \"LastEdited\"='".date('Y-m-d H:i:s', $beforeThreshold)."' WHERE \"ID\"='".$before->ID."'");
 	}
 
-	function testRecentlyEdited() {
+	public function testRecentlyEdited() {
 		SS_Datetime::set_mock_now('31-06-2009 00:00:00');
 
 		$after = $this->objFromFixture('SiteTree', 'after');

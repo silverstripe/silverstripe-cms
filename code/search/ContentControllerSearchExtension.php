@@ -14,7 +14,7 @@ class ContentControllerSearchExtension extends Extension {
 	/**
 	 * Site search form
 	 */
-	function SearchForm() {
+	public function SearchForm() {
 		$searchText =  _t('SearchForm.SEARCH', 'Search');
 
 		if($this->owner->request && $this->owner->request->getVar('Search')) {
@@ -39,7 +39,7 @@ class ContentControllerSearchExtension extends Extension {
 	 * @param SearchForm $form The form instance that was submitted
 	 * @param SS_HTTPRequest $request Request generated for this action
 	 */
-	function results($data, $form, $request) {
+	public function results($data, $form, $request) {
 		$data = array(
 			'Results' => $form->getResults(),
 			'Query' => $form->getSearchQuery(),

@@ -12,7 +12,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
 	private $versionUnpublishedCheck, $versionPublishCheck, $versionUnpublishedCheck2;
 	private $page;
 	
-	function setUp() {
+	public function setUp() {
 		parent::setUp();
 		
 		$this->loginWithPermission('ADMIN');
@@ -40,7 +40,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
 		$this->versionPublishCheck2 = $this->page->Version;
 	}
 	
-	function testGetEditForm() {
+	public function testGetEditForm() {
 		$controller = new CMSPageHistoryController();
 		
 		// should get the latest version which we cannot rollback to
@@ -84,7 +84,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
 	 * @todo should be less tied to cms theme.
 	 * @todo check highlighting for comparing pages.
 	 */
-	function testVersionsForm() {
+	public function testVersionsForm() {
 		$history = $this->get('admin/pages/history/show/'. $this->page->ID);
 		$form = $this->cssParser()->getBySelector("#Form_VersionsForm");
 		
@@ -101,7 +101,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
 		$this->assertEquals(4, count($rows));
 	}
 	
-	function testVersionsFormTableContainsInformation() {
+	public function testVersionsFormTableContainsInformation() {
 		$history = $this->get('admin/pages/history/show/'. $this->page->ID);
 		$form = $this->cssParser()->getBySelector("#Form_VersionsForm");
 		$rows = $form[0]->xpath("fieldset/table/tbody/tr");
@@ -126,7 +126,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
 		$this->assertThat((string) $rows[1]->attributes()->class, $this->logicalNot($this->stringContains('active')));
 	}
 	
-	function testVersionsFormSelectsUnpublishedCheckbox() {
+	public function testVersionsFormSelectsUnpublishedCheckbox() {
 		$history = $this->get('admin/pages/history/show/'. $this->page->ID);
 		$checkbox = $this->cssParser()->getBySelector("#Form_VersionsForm #ShowUnpublished input");
 

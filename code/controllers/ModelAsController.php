@@ -16,7 +16,7 @@ class ModelAsController extends Controller implements NestedController {
 	 * @param string $action
 	 * @return ContentController
 	 */
-	public static function controller_for(SiteTree $sitetree, $action = null) {
+	static public function controller_for(SiteTree $sitetree, $action = null) {
 		if($sitetree->class == 'SiteTree') $controller = "ContentController";
 		else $controller = "{$sitetree->class}_Controller";
 
@@ -148,7 +148,7 @@ class ModelAsController extends Controller implements NestedController {
 	 * @param int $parentID The ID of the parent of the page the URLSegment belongs to. 
 	 * @return SiteTree
 	 */
-	static function find_old_page($URLSegment,$parentID = 0, $ignoreNestedURLs = false) {
+	static public function find_old_page($URLSegment,$parentID = 0, $ignoreNestedURLs = false) {
 		$URLSegment = Convert::raw2sql(rawurlencode($URLSegment));
 		
 		$useParentIDFilter = SiteTree::nested_urls() && $parentID;

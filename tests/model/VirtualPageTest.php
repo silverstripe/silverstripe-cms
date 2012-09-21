@@ -13,7 +13,7 @@ class VirtualPageTest extends SapphireTest {
 		'SiteTree' => array('VirtualPageTest_PageExtension')
 	);
 
-	function setUp() {
+	public function setUp() {
 		parent::setUp();
 
 		$this->origInitiallyCopiedFields = VirtualPage::$initially_copied_fields;
@@ -23,7 +23,7 @@ class VirtualPageTest extends SapphireTest {
 		VirtualPage::$non_virtual_fields[] = 'MySharedNonVirtualField';
 	}
 
-	function tearDown() {
+	public function tearDown() {
 		parent::tearDown();
 
 		VirtualPage::$initially_copied_fields = $this->origInitiallyCopiedFields;
@@ -34,7 +34,7 @@ class VirtualPageTest extends SapphireTest {
 	 * Test that, after you update the source page of a virtual page, all the virtual pages
 	 * are updated
 	 */
-	function testEditingSourcePageUpdatesVirtualPages() {
+	public function testEditingSourcePageUpdatesVirtualPages() {
 		$master = $this->objFromFixture('Page', 'master');
 		$master->Title = "New title";
 		$master->MenuTitle = "New menutitle";
@@ -56,7 +56,7 @@ class VirtualPageTest extends SapphireTest {
 	 * Test that, after you publish the source page of a virtual page, all the already published
 	 * virtual pages are published
 	 */
-	function testPublishingSourcePagePublishesAlreadyPublishedVirtualPages() {
+	public function testPublishingSourcePagePublishesAlreadyPublishedVirtualPages() {
 		$this->logInWithPermission('ADMIN');
 
 		$master = $this->objFromFixture('Page', 'master');
@@ -93,7 +93,7 @@ class VirtualPageTest extends SapphireTest {
 	/**
 	 * Test that virtual pages get the content from the master page when they are created.
 	 */
-	function testNewVirtualPagesGrabTheContentFromTheirMaster() {
+	public function testNewVirtualPagesGrabTheContentFromTheirMaster() {
 		$vp = new VirtualPage();
 		$vp->write();
 		
@@ -115,7 +115,7 @@ class VirtualPageTest extends SapphireTest {
 	 * This means that when you publish them, they should show the published content of the source
 	 * page, not the draft content at the time when you clicked 'publish' in the CMS.
 	 */
-	function testPublishingAVirtualPageCopiedPublishedContentNotDraftContent() {
+	public function testPublishingAVirtualPageCopiedPublishedContentNotDraftContent() {
 		$p = new Page();
 		$p->Content = "published content";
 		$p->write();
@@ -140,7 +140,7 @@ class VirtualPageTest extends SapphireTest {
 			DB::query('SELECT "Content" from "SiteTree_Live" WHERE "ID" = ' . $vp->ID)->value());
 	}
 
-	function testCantPublishVirtualPagesBeforeTheirSource() {
+	public function testCantPublishVirtualPagesBeforeTheirSource() {
 		// An unpublished source page
 		$p = new Page();
 		$p->Content = "test content";
@@ -161,7 +161,7 @@ class VirtualPageTest extends SapphireTest {
 		$this->assertTrue($vp->canPublish());
 	}
 
-	function testCanDeleteOrphanedVirtualPagesFromLive() {
+	public function testCanDeleteOrphanedVirtualPagesFromLive() {
 		// An unpublished source page
 		$p = new Page();
 		$p->Content = "test content";
@@ -185,7 +185,7 @@ class VirtualPageTest extends SapphireTest {
 		$this->assertNull(DB::query("SELECT \"ID\" FROM \"SiteTree_Live\" WHERE \"ID\" = $vp->ID")->value());
 	}
 	
-	function testVirtualPagesArentInappropriatelyPublished() {
+	public function testVirtualPagesArentInappropriatelyPublished() {
 		// Fixture
 		$p = new Page();
 		$p->Content = "test content";
@@ -237,7 +237,7 @@ class VirtualPageTest extends SapphireTest {
 		$this->assertFalse($vp->IsModifiedOnStage);
 	}
 	
-	function testVirtualPagesCreateVersionRecords() {
+	public function testVirtualPagesCreateVersionRecords() {
 		$source = $this->objFromFixture('Page', 'master');
 		$source->Title = "T0";
 		$source->write();
@@ -275,7 +275,7 @@ class VirtualPageTest extends SapphireTest {
 				WHERE \"RecordID\" = $vp->ID AND \"Version\" = $liveVersion")->value());
 	}
 	
-	function fixVersionNumberCache($page) {
+	public function fixVersionNumberCache($page) {
 		$pages = func_get_args();
 		foreach($pages as $p) {
 			Versioned::prepopulate_versionnumber_cache('SiteTree', 'Stage', array($p->ID));
@@ -283,7 +283,7 @@ class VirtualPageTest extends SapphireTest {
 		}
 	}
 
-	function testUnpublishingSourcePageOfAVirtualPageAlsoUnpublishesVirtualPage() {
+	public function testUnpublishingSourcePageOfAVirtualPageAlsoUnpublishesVirtualPage() {
 		// Create page and virutal page
 		$p = new Page();
 		$p->Title = "source";
@@ -315,7 +315,7 @@ class VirtualPageTest extends SapphireTest {
 		$this->assertEquals(1, $vp->HasBrokenLink);
 	}	
 
-	function testDeletingFromLiveSourcePageOfAVirtualPageAlsoUnpublishesVirtualPage() {
+	public function testDeletingFromLiveSourcePageOfAVirtualPageAlsoUnpublishesVirtualPage() {
 		// Create page and virutal page
 		$p = new Page();
 		$p->Title = "source";
@@ -352,7 +352,7 @@ class VirtualPageTest extends SapphireTest {
 	/**
 	 * Base functionality tested in {@link SiteTreeTest->testAllowedChildrenValidation()}.
 	 */
-	function testAllowedChildrenLimitedOnVirtualPages() {
+	public function testAllowedChildrenLimitedOnVirtualPages() {
 		$classA = new SiteTreeTest_ClassA();
 		$classA->write();
 		$classB = new SiteTreeTest_ClassB();
@@ -375,7 +375,7 @@ class VirtualPageTest extends SapphireTest {
 		$this->assertFalse($valid->valid(), "Doesn't allow child linked to virtual page type disallowed by parent");
 	}
 	
-	function testGetVirtualFields() {
+	public function testGetVirtualFields() {
 		// Needs association with an original, otherwise will just return the "base" virtual fields
 		$page = new VirtualPageTest_ClassA();
 		$page->write();
@@ -388,7 +388,7 @@ class VirtualPageTest extends SapphireTest {
 		$this->assertNotContains('MyInitiallyCopiedField', $virtual->getVirtualFields());
 	}
 	
-	function testCopyFrom() {
+	public function testCopyFrom() {
 		$original = new VirtualPageTest_ClassA();
 		$original->MyInitiallyCopiedField = 'original';
 		$original->MyVirtualField = 'original';
@@ -426,7 +426,7 @@ class VirtualPageTest extends SapphireTest {
 		);
 	}
 	
-	function testWriteWithoutVersion() {
+	public function testWriteWithoutVersion() {
 		$original = new SiteTree();
 		$original->write();
 		// Create a second version (different behaviour),
@@ -473,7 +473,7 @@ class VirtualPageTest extends SapphireTest {
 		);
 	}
 
-	function testCanBeRoot() {
+	public function testCanBeRoot() {
 		$page = new SiteTree();
 		$page->ParentID = 0;
 		$page->write();
@@ -500,7 +500,7 @@ class VirtualPageTest extends SapphireTest {
 		if(!$isDetected) $this->fail('Fails validation with $can_be_root=false');
 	}
 
-	function testPageTypeChangeDoesntKeepOrphanedVirtualPageRecord() {
+	public function testPageTypeChangeDoesntKeepOrphanedVirtualPageRecord() {
 		$page = new SiteTree();
 		$page->write();
 		$page->publish('Stage', 'Live');
@@ -536,7 +536,7 @@ class VirtualPageTest extends SapphireTest {
 		);
 	}
 
-	function testPageTypeChangePropagatesToLive() {
+	public function testPageTypeChangePropagatesToLive() {
 		$page = new SiteTree();
 		$page->MySharedNonVirtualField = 'original';
 		$page->write();

@@ -11,7 +11,7 @@ class FilesystemPublisherTest extends SapphireTest {
 	
 	protected $orig = array();
 	
-	function setUp() {
+	public function setUp() {
 		parent::setUp();
 		
 		Object::add_extension("SiteTree", "FilesystemPublisher('assets/FilesystemPublisherTest-static-folder/')");
@@ -20,7 +20,7 @@ class FilesystemPublisherTest extends SapphireTest {
 		FilesystemPublisher::$domain_based_caching = false;
 	}
 	
-	function tearDown() {
+	public function tearDown() {
 		parent::tearDown();
 
 		Object::remove_extension("SiteTree", "FilesystemPublisher('assets/FilesystemPublisherTest-static-folder/')");
@@ -32,7 +32,7 @@ class FilesystemPublisherTest extends SapphireTest {
 		}
 	}
 	
-	function testUrlsToPathsWithRelativeUrls() {
+	public function testUrlsToPathsWithRelativeUrls() {
 		$fsp = new FilesystemPublisher('.', 'html');
 		
 		$this->assertEquals(
@@ -54,7 +54,7 @@ class FilesystemPublisherTest extends SapphireTest {
 		);
 	}
 	
-	function testUrlsToPathsWithAbsoluteUrls() {
+	public function testUrlsToPathsWithAbsoluteUrls() {
 		$fsp = new FilesystemPublisher('.', 'html');
 		
 		$url = Director::absoluteBaseUrl();
@@ -79,7 +79,7 @@ class FilesystemPublisherTest extends SapphireTest {
 		);
 	}
 
-	function testUrlsToPathsWithDomainBasedCaching() {
+	public function testUrlsToPathsWithDomainBasedCaching() {
 		$origDomainBasedCaching = FilesystemPublisher::$domain_based_caching;
 		FilesystemPublisher::$domain_based_caching = true;
 		
@@ -120,7 +120,7 @@ class FilesystemPublisherTest extends SapphireTest {
 	 * is where extension instances are set up and subsequently used by
 	 * {@link DataObject::defineMethods()}.
 	 */
-	function testHasCalledParentConstructor() {
+	public function testHasCalledParentConstructor() {
 		$fsp = new FilesystemPublisher('.', '.html');
 		$this->assertEquals($fsp->class, 'FilesystemPublisher');
 	}
@@ -129,7 +129,7 @@ class FilesystemPublisherTest extends SapphireTest {
 	 * These are a few simple tests to check that we will be retrieving the correct theme when we need it
 	 * StaticPublishing needs to be able to retrieve a non-null theme at the time publishPages() is called.
 	 */
-	function testStaticPublisherTheme(){
+	public function testStaticPublisherTheme(){
 		
 		//This will be the name of the default theme of this particular project
 		$default_theme=SSViewer::current_theme();

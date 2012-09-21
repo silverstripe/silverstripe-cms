@@ -77,7 +77,7 @@ class SS_Report extends ViewableData {
 	 *  - overriding description(), which lets you support i18n 
 	 *  - defining the $description property
 	 */
-	function title() {
+	public function title() {
 		return $this->title;
 	}
 	
@@ -88,14 +88,14 @@ class SS_Report extends ViewableData {
 	 *  - overriding description(), which lets you support i18n 
 	 *  - defining the $description property
 	 */
-	function description() {
+	public function description() {
 		return $this->description;
 	}
 	
 	/**
 	 * Return the {@link SQLQuery} that provides your report data.
 	 */
-	function sourceQuery($params) {
+	public function sourceQuery($params) {
 		if($this->hasMethod('sourceRecords')) {
 			return $this->sourceRecords()->dataQuery();
 		} else {
@@ -106,7 +106,7 @@ class SS_Report extends ViewableData {
 	/**
 	 * Return a SS_List records for this report.
 	 */
-	function records($params) {
+	public function records($params) {
 		if($this->hasMethod('sourceRecords')) {
 			return $this->sourceRecords($params, null, null);
 		} else {
@@ -124,11 +124,11 @@ class SS_Report extends ViewableData {
 	/**
 	 * Return the data class for this report
 	 */
-	function dataClass() {
+	public function dataClass() {
 		return $this->dataClass;
 	}
 
-	function getLink($action = null) {
+	public function getLink($action = null) {
 		return Controller::join_links(
 			'admin/reports/',
 			"$this->class",
@@ -147,7 +147,7 @@ class SS_Report extends ViewableData {
 	 * @param $priority The priority.  Higher numbers will appear furhter up in the reports list.
 	 * The default value is zero.
 	 */
-	static function register($list, $reportClass, $priority = 0) {
+	static public function register($list, $reportClass, $priority = 0) {
 		Deprecation::notice('3.0', 'All subclasses of SS_Report now appear in the report admin, no need to register');
 	}
 
@@ -155,7 +155,7 @@ class SS_Report extends ViewableData {
 	 * @deprecated 3.0
 	 * All subclasses of SS_Report now appear in the report admin, no need to register or unregister.
 	 */
-	static function unregister($list, $reportClass) {
+	static public function unregister($list, $reportClass) {
 		self::add_excluded_reports($reportClass);
 	}
 
@@ -163,7 +163,7 @@ class SS_Report extends ViewableData {
 	 * Exclude certain reports classes from the list of Reports in the CMS
 	 * @param $reportClass Can be either a string with the report classname or an array of reports classnames
 	 */
-	static function add_excluded_reports($reportClass) {
+	static public function add_excluded_reports($reportClass) {
 		if (is_array($reportClass)) {
 			self::$excluded_reports = array_merge(self::$excluded_reports, $reportClass);
 		} else {
@@ -179,7 +179,7 @@ class SS_Report extends ViewableData {
 	 * the list of reports in report admin in the CMS.
 	 * @return array
 	 */
-	static function get_excluded_reports() {
+	static public function get_excluded_reports() {
 		return self::$excluded_reports;
 	}
 
@@ -187,7 +187,7 @@ class SS_Report extends ViewableData {
 	 * Return the SS_Report objects making up the given list.
 	 * @return ArrayList an arraylist of SS_Report objects
 	 */
-	static function get_reports() {
+	static public function get_reports() {
 		$reports = ClassInfo::subclassesFor(get_called_class());
 
 		$reportsArray = array();
@@ -226,7 +226,7 @@ class SS_Report extends ViewableData {
 	 *
 	 * @return FieldList
 	 */
-	function getCMSFields() {
+	public function getCMSFields() {
 		$fields = new FieldList();
 
 		if($title = $this->title()) {
@@ -257,7 +257,7 @@ class SS_Report extends ViewableData {
 		return $fields;
 	}
 	
-	function getCMSActions() {
+	public function getCMSActions() {
 		// getCMSActions() can be extended with updateCMSActions() on a extension
 		$actions = new FieldList();
 		$this->extend('updateCMSActions', $actions);
@@ -273,7 +273,7 @@ class SS_Report extends ViewableData {
 	 *
 	 * @return FormField subclass
 	 */
-	function getReportField() {
+	public function getReportField() {
 		// TODO Remove coupling with global state
 		$params = isset($_REQUEST['filters']) ? $_REQUEST['filters'] : array();
 		$items = $this->sourceRecords($params, null, null);
@@ -318,7 +318,7 @@ class SS_Report extends ViewableData {
 	 * @param Member $member
 	 * @return boolean
 	 */
-	function canView($member = null) {
+	public function canView($member = null) {
 		if(!$member && $member !== FALSE) {
 			$member = Member::currentUser();
 		}
@@ -335,7 +335,7 @@ class SS_Report extends ViewableData {
 	 *
 	 * @return string
 	 */
-	function TreeTitle() {
+	public function TreeTitle() {
 		return $this->title();
 	}
 
@@ -360,27 +360,27 @@ class SS_Report extends ViewableData {
 abstract class SS_ReportWrapper extends SS_Report {
 	protected $baseReport;
 
-	function __construct($baseReport) {
+	public function __construct($baseReport) {
 		$this->baseReport = is_string($baseReport) ? new $baseReport : $baseReport;
 		$this->dataClass = $this->baseReport->dataClass();
 		parent::__construct();
 	}
 
-	function ID() {
+	public function ID() {
 		return get_class($this->baseReport) . '_' . get_class($this);
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////
 	// Filtering
 
-	function parameterFields() {
+	public function parameterFields() {
 		return $this->baseReport->parameterFields();
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////
 	// Columns
 
-	function columns() {
+	public function columns() {
 		return $this->baseReport->columns();
 	}
 
@@ -390,16 +390,16 @@ abstract class SS_ReportWrapper extends SS_Report {
 	/**
 	 * Override this method to perform some actions prior to querying.
 	 */
-	function beforeQuery($params) {
+	public function beforeQuery($params) {
 	}
 
 	/**
 	 * Override this method to perform some actions after querying.
 	 */
-	function afterQuery() {
+	public function afterQuery() {
 	}
 
-	function sourceQuery($params) {
+	public function sourceQuery($params) {
 		if($this->baseReport->hasMethod('sourceRecords')) {
 			// The default implementation will create a fake query from our sourceRecords() method
 			return parent::sourceQuery($params);
@@ -416,7 +416,7 @@ abstract class SS_ReportWrapper extends SS_Report {
 
 	}
 
-	function sourceRecords($params = array(), $sort = null, $limit = null) {
+	public function sourceRecords($params = array(), $sort = null, $limit = null) {
 		$this->beforeQuery($params);
 		$records = $this->baseReport->sourceRecords($params, $sort, $limit);
 		$this->afterQuery();
@@ -427,23 +427,23 @@ abstract class SS_ReportWrapper extends SS_Report {
 	///////////////////////////////////////////////////////////////////////////////////////////
 	// Pass-through
 
-	function title() {
+	public function title() {
 		return $this->baseReport->title();
 	}
 	
-	function group() {
+	public function group() {
 		return $this->baseReport->hasMethod('group') ? $this->baseReport->group() : 'Group';
 	}
 	
-	function sort() {
+	public function sort() {
 		return $this->baseReport->hasMethod('sort') ? $this->baseReport->sort() : 0;
 	}
 
-	function description() {
+	public function description() {
 		return $this->baseReport->description();
 	}
 
-	function canView($member = null) {
+	public function canView($member = null) {
 		return $this->baseReport->canView($member);
 	}
 	

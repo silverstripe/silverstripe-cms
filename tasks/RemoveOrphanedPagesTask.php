@@ -48,11 +48,11 @@ in the other stage:<br />
 	
 	protected $orphanedSearchClass = 'SiteTree';
 	
-	function Link() {
+	public function Link() {
 		return $this->class;
 	}
 	
-	function init() {
+	public function init() {
 		parent::init();
 		
 		if(!Permission::check('ADMIN')) {
@@ -60,7 +60,7 @@ in the other stage:<br />
 		}
 	}
 	
-	function index() {
+	public function index() {
 		Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.js');
 		Requirements::customCSS('#OrphanIDs .middleColumn {width: auto;}');
 		Requirements::customCSS('#OrphanIDs label {display: inline;}');
@@ -68,7 +68,7 @@ in the other stage:<br />
 		return $this->renderWith('BlankPage');
 	}
 	
-	function Form() {
+	public function Form() {
 		$fields = new FieldList();
 		$source = array();
 		
@@ -179,11 +179,11 @@ in the other stage:<br />
 		return $form;
 	}
 	
-	function run($request) {
+	public function run($request) {
 		// @todo Merge with BuildTask functionality
 	}
 	
-	function doSubmit($data, $form) {
+	public function doSubmit($data, $form) {
 		set_time_limit(60*10); // 10 minutes
 		
 		if(!isset($data['OrphanIDs']) || !isset($data['OrphanOperation'])) return false;
@@ -321,7 +321,7 @@ in the other stage:<br />
 	 * @param int|array $limit
 	 * @return SS_List
 	 */
-	function getOrphanedPages($class = 'SiteTree', $filter = '', $sort = null, $join = null, $limit = null) {
+	public function getOrphanedPages($class = 'SiteTree', $filter = '', $sort = null, $join = null, $limit = null) {
 		$filter .= ($filter) ? ' AND ' : '';
 		$filter .= sprintf("\"%s\".\"ParentID\" != 0 AND \"Parents\".\"ID\" IS NULL", $class);
 		
