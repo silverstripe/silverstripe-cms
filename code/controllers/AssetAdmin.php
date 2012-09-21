@@ -484,7 +484,7 @@ JS
 		}
 	}
 	
-	function getSiteTreeFor($className, $rootID = null, $childrenMethod = null, $numChildrenMethod = null, $filterFunction = null, $minNodeCount = 30) {
+	public function getSiteTreeFor($className, $rootID = null, $childrenMethod = null, $numChildrenMethod = null, $filterFunction = null, $minNodeCount = 30) {
 		if (!$childrenMethod) $childrenMethod = 'ChildFolders';
 		return parent::getSiteTreeFor($className, $rootID, $childrenMethod, $numChildrenMethod, $filterFunction, $minNodeCount);
 	}
@@ -638,7 +638,7 @@ JS
 		return $items;
 	}
 
-	function providePermissions() {
+	public function providePermissions() {
 		$title = _t("AssetAdmin.MENUTITLE", LeftAndMain::menu_title_for_class($this->class));
 		return array(
 			"CMS_ACCESS_AssetAdmin" => array(

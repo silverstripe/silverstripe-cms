@@ -12,7 +12,7 @@ class SiteConfigTest extends SapphireTest {
 		'SiteTree' => array('SiteTreeSubsites')
 	);
 	
-	function testAvailableThemes() {
+	public function testAvailableThemes() {
 		$config = SiteConfig::current_site_config();
 		$ds = DIRECTORY_SEPARATOR;
 		$testThemeBaseDir = TEMP_FOLDER . $ds . 'test-themes';

@@ -7,19 +7,19 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		'SiteTree' => array('SiteTreeBacklinksTest_DOD'),
 	);
 	
-	static function set_up_once() {
+	static public function set_up_once() {
 		SiteTreeTest::set_up_once();
 
 		parent::set_up_once();
 	}
 	
-	static function tear_down_once() {
+	static public function tear_down_once() {
 		SiteTreeTest::tear_down_once();
 		
 		parent::tear_down_once();
 	}
 	
-	function setUp() {
+	public function setUp() {
 		parent::setUp();
 		
 		// Log in as admin so that we don't run into permission issues.  That's not what we're
@@ -27,7 +27,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		$this->logInWithPermission('ADMIN');
 	}
 
-	function testSavingPageWithLinkAddsBacklink() {
+	public function testSavingPageWithLinkAddsBacklink() {
 		// load page 1
 		$page1 = $this->objFromFixture('Page', 'page1');
 		
@@ -46,7 +46,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		$this->assertContains($page2->ID, $page1->BackLinkTracking()->column('ID'), 'Assert backlink to page 2 exists');
 	}
 	
-	function testRemovingLinkFromPageRemovesBacklink() {
+	public function testRemovingLinkFromPageRemovesBacklink() {
 		// load page 1
 		$page1 = $this->objFromFixture('Page', 'page1');
 		
@@ -65,7 +65,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		$this->assertNotContains($page3->ID, $page1->BackLinkTracking()->column('ID'), 'Assert backlink to page 3 doesn\'t exist');
 	}
 
-	function testChangingUrlOnDraftSiteRewritesLink() {
+	public function testChangingUrlOnDraftSiteRewritesLink() {
 		// load page 1
 		$page1 = $this->objFromFixture('Page', 'page1');
 		
@@ -89,7 +89,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		$this->assertContains(Director::baseURL().'new-url-segment/', $links, 'Assert hyperlink to page 1\'s new url exists on page 3');
 	}
 	
-	function testChangingUrlOnLiveSiteRewritesLink() {
+	public function testChangingUrlOnLiveSiteRewritesLink() {
 		// publish page 1 & 3
 		$page1 = $this->objFromFixture('Page', 'page1');
 		$page3 = $this->objFromFixture('Page', 'page3');
@@ -120,7 +120,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		$this->assertContains(Director::baseURL().'new-url-segment/', $links, 'Assert hyperlink to page 1\'s new url exists on page 3');
 	}
 
-	function testPublishingPageWithModifiedUrlRewritesLink() {
+	public function testPublishingPageWithModifiedUrlRewritesLink() {
 		// publish page 1 & 3
 		$page1 = $this->objFromFixture('Page', 'page1');
 		$page3 = $this->objFromFixture('Page', 'page3');
@@ -155,7 +155,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		$this->assertContains(Director::baseURL().'new-url-segment/', $links, 'Assert hyperlink to page 1\'s new published url exists on page 3');
 	}
 	
-	function testPublishingPageWithModifiedLinksRewritesLinks() {
+	public function testPublishingPageWithModifiedLinksRewritesLinks() {
 		// publish page 1 & 3
 		$page1 = $this->objFromFixture('Page', 'page1');
 		$page3 = $this->objFromFixture('Page', 'page3');
@@ -195,7 +195,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 		$this->assertContains(Director::baseURL().'new-url-segment/', $links, 'Assert hyperlink to page 1\'s current published url exists on page 3');
 	}
 	
-	function testLinkTrackingOnExtraContentFields() {
+	public function testLinkTrackingOnExtraContentFields() {
 		$page1 = $this->objFromFixture('Page', 'page1');
 		$page2 = $this->objFromFixture('Page', 'page2');
 		$page1->doPublish();
@@ -248,7 +248,7 @@ class SiteTreeBacklinksTest_DOD extends DataExtension implements TestOnly {
 		'ExtraContent' => 'HTMLText',
 	);
 
-	function updateCMSFields(FieldList $fields) {
+	public function updateCMSFields(FieldList $fields) {
 		$fields->addFieldToTab("Root.Content", new HTMLEditorField("ExtraContent"));
 	}
 }

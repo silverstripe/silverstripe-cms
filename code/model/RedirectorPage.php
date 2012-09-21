@@ -30,7 +30,7 @@ class RedirectorPage extends Page {
 	 * returns the target page.
 	 * @return SiteTree
 	 */
-	function ContentSource() {
+	public function ContentSource() {
 		if($this->RedirectionType == 'Internal') {
 			return $this->LinkTo();
 		} else {
@@ -44,7 +44,7 @@ class RedirectorPage extends Page {
 	 * destination, to prevent unnecessary 30x redirections.  However, if it's misconfigured, then
 	 * it will return a link to itself, which will then display an error message. 
 	 */
-	function Link() {
+	public function Link() {
 		if($link = $this->redirectionLink()) return $link;
 		else return $this->regularLink();
 	}
@@ -53,7 +53,7 @@ class RedirectorPage extends Page {
 	 * Return the normal link directly to this page.  Once you visit this link, a 30x redirection
 	 * will take you to your final destination.
 	 */
-	function regularLink($action = null) {
+	public function regularLink($action = null) {
 		return parent::Link($action);
 	}
 	
@@ -61,7 +61,7 @@ class RedirectorPage extends Page {
 	 * Return the link that we should redirect to.
 	 * Only return a value if there is a legal redirection destination.
 	 */
-	function redirectionLink() {
+	public function redirectionLink() {
 		if($this->RedirectionType == 'External') {
 			if($this->ExternalURL) {
 				return $this->ExternalURL;
@@ -90,7 +90,7 @@ class RedirectorPage extends Page {
 		}
 	}
 	
-	function syncLinkTracking() {
+	public function syncLinkTracking() {
 		if ($this->RedirectionType == 'Internal') {
 			if($this->LinkToID) {
 				$this->HasBrokenLink = DataObject::get_by_id('SiteTree', $this->LinkToID) ? false : true;
@@ -104,7 +104,7 @@ class RedirectorPage extends Page {
 		}
 	}
 
-	function onBeforeWrite() {
+	public function onBeforeWrite() {
 		parent::onBeforeWrite();
 
 		// Prefix the URL with "http://" if no prefix is found
@@ -113,7 +113,7 @@ class RedirectorPage extends Page {
 		}
 	}
 
-	function getCMSFields() {
+	public function getCMSFields() {
 		Requirements::javascript(CMS_DIR . '/javascript/RedirectorPage.js');
 		
 		$fields = parent::getCMSFields();
@@ -151,7 +151,7 @@ class RedirectorPage extends Page {
 	}
 	
 	// Don't cache RedirectorPages
-	function subPagesToCache() {
+	public function subPagesToCache() {
 		return array();
 	}
 }
@@ -163,7 +163,7 @@ class RedirectorPage extends Page {
  */
 class RedirectorPage_Controller extends Page_Controller {
 
-	function init() {
+	public function init() {
 		parent::init();
 
 		if($link = $this->redirectionLink()) {
@@ -175,7 +175,7 @@ class RedirectorPage_Controller extends Page_Controller {
 	/**
 	 * If we ever get this far, it means that the redirection failed.
 	 */
-	function Content() {
+	public function Content() {
 		return "<p class=\"message-setupWithoutRedirect\">" .
 			_t('RedirectorPage.HASBEENSETUP', 'A redirector page has been set up without anywhere to redirect to.') .
 			"</p>";

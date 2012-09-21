@@ -18,7 +18,7 @@ class UpgradeSiteTreePermissionSchemaTask extends BuildTask {
 		See http://open.silverstripe.com/ticket/2847
 	";
 	
-	function run($request) {
+	public function run($request) {
 		// transfer values for changed column name
 		foreach(array('SiteTree','SiteTree_Live','SiteTree_versions') as $table) {
 			DB::query("UPDATE \"{$table}\" SET \"CanViewType\" = 'Viewers';");

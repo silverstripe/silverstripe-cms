@@ -2,7 +2,7 @@
 
 class ReportTest extends SapphireTest {
 
-	function testGetReports() {
+	public function testGetReports() {
 		$reports = SS_Report::get_reports();
 		$this->assertNotNull($reports, "Reports returned");
 		$previousSort = 0;
@@ -12,7 +12,7 @@ class ReportTest extends SapphireTest {
 		}
 	}
 
-	function testExcludeReport() {
+	public function testExcludeReport() {
 		$reports = SS_Report::get_reports();
 		$reportNames = array();
 		foreach($reports as $report) {
@@ -42,7 +42,7 @@ class ReportTest extends SapphireTest {
 		$this->assertNotContains('ReportTest_FakeTest2',$reportNames,'ReportTest_FakeTest2 is NOT in reports list');
 	}
 
-	function testAbstractClassesAreExcluded() {
+	public function testAbstractClassesAreExcluded() {
 		$reports = SS_Report::get_reports();
 		$reportNames = array();
 		foreach($reports as $report) {
@@ -55,62 +55,62 @@ class ReportTest extends SapphireTest {
 }
 
 class ReportTest_FakeTest extends SS_Report implements TestOnly {
-	function title() {
+	public function title() {
 		return 'Report title';
 	}
-	function columns() {
+	public function columns() {
 		return array(
 			"Title" => array(
 				"title" => "Page Title"
 			)
 		);
 	}
-	function sourceRecords($params, $sort, $limit) {
+	public function sourceRecords($params, $sort, $limit) {
 		return new ArrayList();
 	}
 
-	function sort() {
+	public function sort() {
 		return 100;
 	}
 }
 
 
 class ReportTest_FakeTest2 extends SS_Report implements TestOnly {
-	function title() {
+	public function title() {
 		return 'Report title 2';
 	}
-	function columns() {
+	public function columns() {
 		return array(
 			"Title" => array(
 				"title" => "Page Title 2"
 			)
 		);
 	}
-	function sourceRecords($params, $sort, $limit) {
+	public function sourceRecords($params, $sort, $limit) {
 		return new ArrayList();
 	}
 
-	function sort() {
+	public function sort() {
 		return 98;
 	}
 }
 
 abstract class ReportTest_FakeTest_Abstract extends SS_Report implements TestOnly {
-	function title() {
+	public function title() {
 		return 'Report title Abstract';
 	}
-	function columns() {
+	public function columns() {
 		return array(
 			"Title" => array(
 				"title" => "Page Title Abstract"
 			)
 		);
 	}
-	function sourceRecords($params, $sort, $limit) {
+	public function sourceRecords($params, $sort, $limit) {
 		return new ArrayList();
 	}
 
-	function sort() {
+	public function sort() {
 		return 5;
 	}
 }

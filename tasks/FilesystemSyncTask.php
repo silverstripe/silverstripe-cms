@@ -12,7 +12,7 @@ class FilesystemSyncTask extends BuildTask {
 		should be called whenever files are added to the assets/ folder from outside
 		SilverStripe, for example, if an author uploads files via FTP.";
 	
-	function run($request) {
+	public function run($request) {
 		if(isset($_GET['folderID'])) {
 			$folderID = $_GET['folderID'];
 		} else {
