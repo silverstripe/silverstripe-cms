@@ -332,14 +332,14 @@ pl:
     LINKCHANGENOTE: 'Zmiana linku na aktualnej stronie skutkuje zmianą w linkach stron potomnych.'
     MENUTITLE: 'Sekcja nawigacji'
     METADESC: Opis
-    METADESCHELP: 'Add a description of your page here. Make sure you think about your keywords when writing your description'
+    METADESCHELP: 'Dodaj opis swojej strony. Tworząc opis pomyśl o odpowiednich słowach kluczowych.'
     METAEXTRA: 'Własne Meta Tagi'
-    METAEXTRAHELP: 'When adding custom meta tags they must be wrapped in an html tag. For example &lt;meta name="customName" content="your custom content here" /&gt;'
-    METAINTRO: 'Metadata helps describe and categorise your site. By filling out the fields below it will help improve your site''s ranking on search engines.'
-    METAKEYWORDHELP: 'Add any keywords that are relevant to the page here. Separate keywords and phrases with a comma: keyword, keywords, keyword phrase'
+    METAEXTRAHELP: 'Dodawane meta tagi muszą być ujęte w tag html. Na przykład  &lt;meta name="nazwa" content="zawartość" /&gt;'
+    METAINTRO: 'Metadane pomagają opisać i skategoryzować twoją stronę. Wypełnienie poniższych pól, pomoże podnieść ranking twojej strony w wyszukiwarkach.'
+    METAKEYWORDHELP: 'Dodaj słowa kluczowe powiązane z tą stroną. Słowa i frazy oddziel przecinkiem: słowo, słowo, jakaś fraza.'
     METAKEYWORDS: 'Słowa kluczowe'
     METATITLE: Tytuł
-    METATITLEHELP: 'Add the title of your page here'
+    METATITLEHELP: 'Dodaj tytuł strony'
     MODIFIEDONDRAFTHELP: 'Na stronie znajdują się nieopublikowane zmiany'
     MODIFIEDONDRAFTSHORT: Zmodyfikowana
     MetadataToggle: Metadane
