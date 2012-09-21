@@ -76,9 +76,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		"Title" => "Varchar(255)",
 		"MenuTitle" => "Varchar(100)",
 		"Content" => "HTMLText",
-		"MetaTitle" => "Varchar(255)",
 		"MetaDescription" => "Text",
-		"MetaKeywords" => "Varchar(255)",
 		"ExtraMeta" => "HTMLText",
 		"ShowInMenus" => "Boolean",
 		"ShowInSearch" => "Boolean",
@@ -1268,18 +1266,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	public function MetaTags($includeTitle = true) {
 		$tags = "";
 		if($includeTitle === true || $includeTitle == 'true') {
-			$tags .= "<title>" . Convert::raw2xml(($this->MetaTitle)
-				? $this->MetaTitle
-				: $this->Title) . "</title>\n";
+			$tags .= "<title>" . $this->Title . "</title>\n";
 		}
 
 		$tags .= "<meta name=\"generator\" content=\"SilverStripe - http://silverstripe.org\" />\n";
 
 		$charset = ContentNegotiator::get_encoding();
 		$tags .= "<meta http-equiv=\"Content-type\" content=\"text/html; charset=$charset\" />\n";
-		if($this->MetaKeywords) {
-			$tags .= "<meta name=\"keywords\" content=\"" . Convert::raw2att($this->MetaKeywords) . "\" />\n";
-		}
 		if($this->MetaDescription) {
 			$tags .= "<meta name=\"description\" content=\"" . Convert::raw2att($this->MetaDescription) . "\" />\n";
 		}
@@ -1852,11 +1845,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					$htmlField = new HtmlEditorField("Content", _t('SiteTree.HTMLEDITORTITLE', "Content", 'HTML editor title')),
 					ToggleCompositeField::create('Metadata', _t('SiteTree.MetadataToggle', 'Metadata'),
 						array(
-							$metaIntroField = new CompositeField(
-								$metaIntro = new LabelField("MetaIntro", $Title = "Metadata helps describe and categorise your site. By filling out the fields below it will help improve your site's ranking on search engines.")
-							),
-							$metaFieldTitle = new TextField("MetaTitle", $this->fieldLabel('MetaTitle')),
-							$metaFieldKeyword = new TextareaField("MetaKeywords", $this->fieldLabel('MetaKeywords'), 1),
 							$metaFieldDesc = new TextareaField("MetaDescription", $this->fieldLabel('MetaDescription')),
 							$metaFieldExtra = new TextareaField("ExtraMeta",$this->fieldLabel('ExtraMeta'))
 						)
@@ -1870,17 +1858,23 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		);
 		$htmlField->addExtraClass('stacked');
 		
-		$metaIntroField->addExtraClass('field');
-		$metaIntro->addExtraClass('help');
 		// Help text for MetaData on page content editor
-		$metaFieldTitle->setRightTitle(_t('SiteTree.METATITLEHELP', "Add the title of your page here"))
-						->addExtraClass('help');
-		$metaFieldKeyword->setRightTitle(_t('SiteTree.METAKEYWORDHELP', "Add any keywords that are relevant to the page here. Separate keywords and phrases with a comma: keyword, keywords, keyword phrase"))
-						->addExtraClass('help');
-		$metaFieldDesc->setRightTitle(_t('SiteTree.METADESCHELP', "Add a description of your page here. Make sure you think about your keywords when writing your description"))
-						->addExtraClass('help');
-		$metaFieldExtra->setRightTitle(_t('SiteTree.METAEXTRAHELP', "When adding custom meta tags they must be wrapped in an html tag. For example &lt;meta name=\"customName\" content=\"your custom content here\" /&gt;"))
-						->addExtraClass('help');
+		$metaFieldDesc
+			->setRightTitle(
+				_t(
+					'SiteTree.METADESCHELP', 
+					"Search engines use this content for displaying search results (although it will not influence their ranking)."
+				)
+			)
+			->addExtraClass('help');
+		$metaFieldExtra
+			->setRightTitle(
+				_t(
+					'SiteTree.METAEXTRAHELP', 
+					"HTML tags for additional meta information. For example &lt;meta name=\"customName\" content=\"your custom content here\" /&gt;"
+				)
+			)
+			->addExtraClass('help');
 
 		// Conditional dependent pages tab
 		if($dependentPagesCount) $tabDependent->setTitle(_t('SiteTree.TABDEPENDENT', "Dependent pages") . " ($dependentPagesCount)");
@@ -2036,10 +2030,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$labels = parent::fieldLabels($includerelations);
 			$labels['Title'] = _t('SiteTree.PAGETITLE', "Page name");
 			$labels['MenuTitle'] = _t('SiteTree.MENUTITLE', "Navigation label");
-			$labels['MetaIntro'] = _t('SiteTree.METAINTRO', "Metadata helps describe and categorise your site. By filling out the fields below it will help improve your site's ranking on search engines.");
-			$labels['MetaTitle'] = _t('SiteTree.METATITLE', "Meta Title");
 			$labels['MetaDescription'] = _t('SiteTree.METADESC', "Meta Description");
-			$labels['MetaKeywords'] = _t('SiteTree.METAKEYWORDS', "Meta Keywords");
 			$labels['ExtraMeta'] = _t('SiteTree.METAEXTRA', "Custom Meta Tags");
 			$labels['ClassName'] = _t('SiteTree.PAGETYPE', "Page type", 'Classname of a page object');
 			$labels['ParentType'] = _t('SiteTree.PARENTTYPE', "Page location");

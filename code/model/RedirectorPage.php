@@ -121,8 +121,6 @@ class RedirectorPage extends Page {
 		
 		// Remove all metadata fields, does not apply for redirector pages
 		$fields->removeByName('MetaTagsHeader');
-		$fields->removeByName('MetaTitle');
-		$fields->removeByName('MetaKeywords');
 		$fields->removeByName('MetaDescription');
 		$fields->removeByName('ExtraMeta');
 		
