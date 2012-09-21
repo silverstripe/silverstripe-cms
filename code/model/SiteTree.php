@@ -1852,10 +1852,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					$htmlField = new HtmlEditorField("Content", _t('SiteTree.HTMLEDITORTITLE', "Content", 'HTML editor title')),
 					ToggleCompositeField::create('Metadata', _t('SiteTree.MetadataToggle', 'Metadata'),
 						array(
-							new TextField("MetaTitle", $this->fieldLabel('MetaTitle')),
-							new TextareaField("MetaKeywords", $this->fieldLabel('MetaKeywords'), 1),
-							new TextareaField("MetaDescription", $this->fieldLabel('MetaDescription')),
-							new TextareaField("ExtraMeta",$this->fieldLabel('ExtraMeta'))
+							$metaIntroField = new CompositeField(
+								$metaIntro = new LabelField("MetaIntro", $Title = "Metadata helps describe and categorise your site. By filling out the fields below it will help improve your site's ranking on search engines.")
+							),
+							$metaFieldTitle = new TextField("MetaTitle", $this->fieldLabel('MetaTitle')),
+							$metaFieldKeyword = new TextareaField("MetaKeywords", $this->fieldLabel('MetaKeywords'), 1),
+							$metaFieldDesc = new TextareaField("MetaDescription", $this->fieldLabel('MetaDescription')),
+							$metaFieldExtra = new TextareaField("ExtraMeta",$this->fieldLabel('ExtraMeta'))
 						)
 					)->setHeadingLevel(4)
 				),
@@ -1867,6 +1870,18 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		);
 		$htmlField->addExtraClass('stacked');
 		
+		$metaIntroField->addExtraClass('field');
+		$metaIntro->addExtraClass('help');
+		// Help text for MetaData on page content editor
+		$metaFieldTitle->setRightTitle(_t('SiteTree.METATITLEHELP', "Add the title of your page here"))
+						->addExtraClass('help');
+		$metaFieldKeyword->setRightTitle(_t('SiteTree.METAKEYWORDHELP', "Add any keywords that are relevant to the page here. Separate keywords and phrases with a comma: keyword, keywords, keyword phrase"))
+						->addExtraClass('help');
+		$metaFieldDesc->setRightTitle(_t('SiteTree.METADESCHELP', "Add a description of your page here. Make sure you think about your keywords when writing your description"))
+						->addExtraClass('help');
+		$metaFieldExtra->setRightTitle(_t('SiteTree.METAEXTRAHELP', "When adding custom meta tags they must be wrapped in an html tag. For example &lt;meta name=\"customName\" content=\"your custom content here\" /&gt;"))
+						->addExtraClass('help');
+
 		// Conditional dependent pages tab
 		if($dependentPagesCount) $tabDependent->setTitle(_t('SiteTree.TABDEPENDENT', "Dependent pages") . " ($dependentPagesCount)");
 		else $fields->removeFieldFromTab('Root', 'Dependent');
@@ -2021,6 +2036,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$labels = parent::fieldLabels($includerelations);
 			$labels['Title'] = _t('SiteTree.PAGETITLE', "Page name");
 			$labels['MenuTitle'] = _t('SiteTree.MENUTITLE', "Navigation label");
+			$labels['MetaIntro'] = _t('SiteTree.METAINTRO', "Metadata helps describe and categorise your site. By filling out the fields below it will help improve your site's ranking on search engines.");
 			$labels['MetaTitle'] = _t('SiteTree.METATITLE', "Meta Title");
 			$labels['MetaDescription'] = _t('SiteTree.METADESC', "Meta Description");
 			$labels['MetaKeywords'] = _t('SiteTree.METAKEYWORDS', "Meta Keywords");
