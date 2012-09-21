@@ -1,0 +1,30 @@
+language: php 
+php: 
+ - 5.3
+ - 5.4
+
+env:
+ - TESTDB=MYSQL
+ - TESTDB=PGSQL
+
+matrix:
+  exclude:
+    - php: 5.4
+      env: TESTDB=PGSQL
+
+before_script:
+ - ./tests/travis/before_script ~/builds/ss 
+ - cd ~/builds/ss
+
+script: 
+ - php framework/cli-script.php dev/tests/module/cms
+
+branches:
+  except:
+    - translation-staging
+    - 2.4
+
+notifications:
+  irc:
+    channels:
+     - "irc.freenode.org#silverstripe"
