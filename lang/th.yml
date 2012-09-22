@@ -332,14 +332,14 @@ th:
     LINKCHANGENOTE: การเปลี่ยนลิงก์ของหน้าเว็บนี้จะส่งผลถึงลิงก์ต่างๆที่อยู่ในหน้าเว็บลูกด้วย
     MENUTITLE: ป้ายบอกทาง
     METADESC: รายละเอียด
-    METADESCHELP: 'Add a description of your page here. Make sure you think about your keywords when writing your description'
+    METADESCHELP: 'เพิ่มคำอธิบายเกี่ยวกับหน้าเว็บของคุณลงที่นี่ กรุณาตรวจสอบให้แน่ใจว่าคุณได้นึกถึงคีย์เวิร์ดในขณะนี้ที่เขียนคำอธิบายด้วย'
     METAEXTRA: 'Meta Tags แบบกำหนดเอง'
-    METAEXTRAHELP: 'When adding custom meta tags they must be wrapped in an html tag. For example &lt;meta name="customName" content="your custom content here" /&gt;'
-    METAINTRO: 'Metadata helps describe and categorise your site. By filling out the fields below it will help improve your site''s ranking on search engines.'
-    METAKEYWORDHELP: 'Add any keywords that are relevant to the page here. Separate keywords and phrases with a comma: keyword, keywords, keyword phrase'
+    METAEXTRAHELP: 'เมื่อเพิ่ม meta tag แบบกำหนดเองเมื่อไรกตาม meta tag เหล่านั้นต้องถูกหุ้มด้วยแท็กคำสั่ง html ตัวอย่างเช่น  &lt;meta name="customName" content="เนื้อหาที่คุณกำหนดเอง" /&gt;'
+    METAINTRO: 'Metadata ช่วยในการอธิบายและจัดหมวดหมู่เว็บไซต์ของคุณ ด้วยการกรอกข้อมูลลงในช่องข้อมูลด้านล่างนี้ จะช่วยปรับปรุงอันดับเว็บไซต์ของคุณในเครื่องมือค้นหาต่างๆ'
+    METAKEYWORDHELP: 'เพิ่มคียเวิร์ดใดๆก็ได้ที่สัมพันธ์กับหน้าเว็บนี้ คั่นระหว่างรายการคีย์เวิร์ดและวลีต่างๆด้วยเครื่องหมายจุลภาค: คียเวิร์ด, คีย์เวิร์ด, คีย์เวิร์ด, วลีคียเวิร์ด'
     METAKEYWORDS: คีย์เวิร์ด
     METATITLE: ชื่อ
-    METATITLEHELP: 'Add the title of your page here'
+    METATITLEHELP: เพิ่มชื่อหัวเวบของคุณลงที่นี่
     MODIFIEDONDRAFTHELP: หน้าเว็บถูกเปลี่ยนค่าเป็นระงับการเผยแพร่แล้ว
     MODIFIEDONDRAFTSHORT: แก้ไขเมื่อ
     MetadataToggle: Metadata
