@@ -334,9 +334,9 @@ ru:
     METADESC: Описание
     METADESCHELP: 'Add a description of your page here. Make sure you think about your keywords when writing your description'
     METAEXTRA: 'Пользовательские мета-тэги'
-    METAEXTRAHELP: 'When adding custom meta tags they must be wrapped in an html tag. For example &lt;meta name="customName" content="your custom content here" /&gt;'
+    METAEXTRAHELP: 'Пользовательские мета-тэги размещаются внутри html-тэга. Например: &lt;meta name="customName" content="значение тэга" /&gt;'
     METAINTRO: 'Метаданные - это данные, которые применяются для описания и категоризации сайтов. Заполнив нижестоящие поля, Вы сможете улучшить позиции своего сайта в результатах поисковиков.'
-    METAKEYWORDHELP: 'Add any keywords that are relevant to the page here. Separate keywords and phrases with a comma: keyword, keywords, keyword phrase'
+    METAKEYWORDHELP: 'Все ключевые слова, относящиеся к странице, можно добавить здесь. Отдельные ключевые слова и фразы разделяются запятой.'
     METAKEYWORDS: 'Ключевые слова'
     METATITLE: Заголовок
     METATITLEHELP: 'Укажите заголовок страницы здесь'
