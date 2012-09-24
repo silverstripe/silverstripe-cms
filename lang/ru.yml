@@ -29,7 +29,7 @@ ru:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Удалить папки'
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: Фильтр
   AssetAdmin_left.ss:
     GO: Выбрать
   AssetTableField:
@@ -165,7 +165,7 @@ ru:
   ContentControl:
     NOTEWONTBESHOWN: 'Примечание: это сообщение не будет отображаться для посетителей'
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
+    ARCHIVEDSITE: 'Версия для просмотра'
     ARCHIVEDSITEFROM: 'Архив сайта от'
     CMS: CMS
     DRAFTSITE: 'Черновой сайт'
@@ -193,8 +193,8 @@ ru:
     DEFAULTSERVERERRORPAGETITLE: 'Ошибка сервера'
     DESCRIPTION: 'Пользовательские страницы ошибок (например, "Страница не найдена")'
     ERRORFILEPROBLEM: 'Ошибка при открытии файла "{filename}" для записи. Пожалуйста, проверьте права доступа к файлам.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
+    PLURALNAME: 'Страницы ошибок'
+    SINGULARNAME: 'Страница ошибки'
     400: '400 - Плохой запрос'
     401: '401 - Неавторизован'
     403: '403 - Запрещено'
@@ -241,11 +241,11 @@ ru:
     HASBEENSETUP: 'Страница перенаправления установлена без указания места перенаправления.'
     HEADER: 'Эта страница будет перенаправлять пользователей на другую страницу'
     OTHERURL: 'URL другого сайта'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: 'Страницы перенаправления'
     REDIRECTTO: 'Перенаправлять на'
     REDIRECTTOEXTERNAL: 'Другой сайт'
     REDIRECTTOPAGE: 'Страницу Вашего сайта'
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: 'Страница перенаправления'
     YOURPAGE: 'Страница Вашего сайта'
   ReportAdmin:
     MENUTITLE: Отчеты
@@ -278,8 +278,8 @@ ru:
     EDITHEADER: 'Кто может редактировать страницы на этом сайте?'
     EDIT_PERMISSION: 'Управление конфигурацией сайта'
     EDIT_PERMISSION_HELP: 'Возможность редактировать глобальные настройки доступа/права доступа к страницам верхнего уровня.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
+    PLURALNAME: 'Конфигурации сайта'
+    SINGULARNAME: 'Конфигурация сайта'
     SITENAMEDEFAULT: 'Название сайта'
     SITETAGLINE: 'Подзаголовок сайта / слоган'
     SITETITLE: 'Заголовок сайта'
@@ -335,11 +335,11 @@ ru:
     METADESCHELP: 'Add a description of your page here. Make sure you think about your keywords when writing your description'
     METAEXTRA: 'Пользовательские мета-тэги'
     METAEXTRAHELP: 'When adding custom meta tags they must be wrapped in an html tag. For example &lt;meta name="customName" content="your custom content here" /&gt;'
-    METAINTRO: 'Metadata helps describe and categorise your site. By filling out the fields below it will help improve your site''s ranking on search engines.'
+    METAINTRO: 'Метаданные - это данные, которые применяются для описания и категоризации сайтов. Заполнив нижестоящие поля, Вы сможете улучшить позиции своего сайта в результатах поисковиков.'
     METAKEYWORDHELP: 'Add any keywords that are relevant to the page here. Separate keywords and phrases with a comma: keyword, keywords, keyword phrase'
     METAKEYWORDS: 'Ключевые слова'
     METATITLE: Заголовок
-    METATITLEHELP: 'Add the title of your page here'
+    METATITLEHELP: 'Укажите заголовок страницы здесь'
     MODIFIEDONDRAFTHELP: 'На этой странице есть неопубликованные изменения'
     MODIFIEDONDRAFTSHORT: Изменено
     MetadataToggle: Метаданные
