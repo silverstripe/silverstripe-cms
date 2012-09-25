@@ -332,7 +332,7 @@ it:
     LINKCHANGENOTE: 'Cambiare il link di questa pagina farà cambiare anche i link delle pagine figlio. '
     MENUTITLE: 'Etichetta di navigazione'
     METADESC: Descrizione
-    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
+    METADESCHELP: 'I motori di ricerca utilizzano questo contenuto per visualizzare i risultati (ma non ne influenza la posizione)'
     METAEXTRA: 'Meta tag personalizzati'
     METAEXTRAHELP: 'Tag HTML per meta addizionali. Per esempio &lt;meta name="nomePersonalizzato" content="Il tuo contenuto personalizzato" /&gt;'
     MODIFIEDONDRAFTHELP: 'La pagina ha modifiche non pubblicate'
