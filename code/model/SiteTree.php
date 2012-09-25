@@ -1771,9 +1771,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					$parentPage = $linkedPage->Parent;
 					if($parentPage) {
 						if($parentPage->ID) {
-							$parentPageLinks[] = "<a class=\"cmsEditlink\" href=\"admin/show/$linkedPage->ID\">{$parentPage->Title}</a>";
+							$parentPageLinks[] = "<a class=\"cmsEditlink\" href=\"admin/pages/edit/show/$linkedPage->ID\">{$parentPage->Title}</a>";
 						} else {
-							$parentPageLinks[] = "<a class=\"cmsEditlink\" href=\"admin/show/$linkedPage->ID\">" .
+							$parentPageLinks[] = "<a class=\"cmsEditlink\" href=\"admin/pages/edit/show/$linkedPage->ID\">" .
 								_t('SiteTree.TOPLEVEL', 'Site Content (Top Level)') .
 								"</a>";
 						}
@@ -1821,7 +1821,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			);
 			$dependentTable->getConfig()->getComponentByType('GridFieldDataColumns')
 				->setFieldFormatting(array(
-				'Title' => '<a href=\"admin/show/$ID\">$Title</a>',
+				'Title' => '<a href=\"admin/pages/edit/show/$ID\">$Title</a>',
 				'AbsoluteLink' => '<a href=\"$value\">$value</a>',
 				));
 		}
