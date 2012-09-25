@@ -51,9 +51,9 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 		$unchangedPage->doPublish();
 	
 		$changedPage = $this->objFromFixture('Page', 'page2');
-		$changedPage->MetaTitle = 'Original';
+		$changedPage->Title = 'Original';
 		$changedPage->publish('Stage', 'Live');
-		$changedPage->MetaTitle = 'Changed';
+		$changedPage->Title = 'Changed';
 		$changedPage->write();
 	
 		$f = new CMSSiteTreeFilter_ChangedPages();

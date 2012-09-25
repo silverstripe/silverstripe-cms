@@ -136,17 +136,17 @@ class SiteTreeTest extends SapphireTest {
 		$this->logInWithPermission('ADMIN');
 		
 		$obj = $this->objFromFixture('Page', 'about');
-		$obj->MetaTitle = "asdfasdf";
+		$obj->Title = "asdfasdf";
 		$obj->write();
 		$this->assertTrue($obj->doPublish());
 		
-		$this->assertEquals('asdfasdf', DB::query("SELECT \"MetaTitle\" FROM \"SiteTree_Live\" WHERE \"ID\" = '$obj->ID'")->value());
+		$this->assertEquals('asdfasdf', DB::query("SELECT \"Title\" FROM \"SiteTree_Live\" WHERE \"ID\" = '$obj->ID'")->value());
 	
-		$obj->MetaTitle = null;
+		$obj->Title = null;
 		$obj->write();
 		$this->assertTrue($obj->doPublish());
 	
-		$this->assertNull(DB::query("SELECT \"MetaTitle\" FROM \"SiteTree_Live\" WHERE \"ID\" = '$obj->ID'")->value());
+		$this->assertNull(DB::query("SELECT \"Title\" FROM \"SiteTree_Live\" WHERE \"ID\" = '$obj->ID'")->value());
 		
 	}
 	
