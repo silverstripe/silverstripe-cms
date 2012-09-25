@@ -332,14 +332,9 @@ cs:
     LINKCHANGENOTE: 'Změnění tohoto odkazu stránky, bude mít také vliv na odkazy podřízených stránek.'
     MENUTITLE: 'Navigační popisek'
     METADESC: Popis
-    METADESCHELP: 'Přidejte popis své stránky zde. Přemýšlejte o klíčových slovech při psaní svého popisu'
+    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'Vlastní meta tagy'
-    METAEXTRAHELP: 'Při přidávání vlastních meta tagů ty musí být zabaleny do html tagu. Například &lt;meta name="vlastní název" content="tady vlastní obsah" /&gt;'
-    METAINTRO: 'Metadata pomůžou popsat a kategorizovat váš web. Vyplněním polí pod ním pomůže zlepšit hodnocení vašeho webu ve vyhledávačích.'
-    METAKEYWORDHELP: 'Přidejte klíčová slova, která jsou relevantní této stránce, zde. Oddělujte klíčová slova a fráze čárkou: klíčové slovo, klíčová slova, klíčová fráze'
-    METAKEYWORDS: 'Klíčová slova'
-    METATITLE: Název
-    METATITLEHELP: 'Sem přidejte titulek vaší stránky'
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Stránka má nezveřejněné změny'
     MODIFIEDONDRAFTSHORT: Změněno
     MetadataToggle: Metadata

@@ -332,14 +332,9 @@ th:
     LINKCHANGENOTE: การเปลี่ยนลิงก์ของหน้าเว็บนี้จะส่งผลถึงลิงก์ต่างๆที่อยู่ในหน้าเว็บลูกด้วย
     MENUTITLE: ป้ายบอกทาง
     METADESC: รายละเอียด
-    METADESCHELP: 'เพิ่มคำอธิบายเกี่ยวกับหน้าเว็บของคุณลงที่นี่ กรุณาตรวจสอบให้แน่ใจว่าคุณได้นึกถึงคีย์เวิร์ดในขณะนี้ที่เขียนคำอธิบายด้วย'
+    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'Meta Tags แบบกำหนดเอง'
-    METAEXTRAHELP: 'เมื่อเพิ่ม meta tag แบบกำหนดเองเมื่อไรกตาม meta tag เหล่านั้นต้องถูกหุ้มด้วยแท็กคำสั่ง html ตัวอย่างเช่น  &lt;meta name="customName" content="เนื้อหาที่คุณกำหนดเอง" /&gt;'
-    METAINTRO: 'Metadata ช่วยในการอธิบายและจัดหมวดหมู่เว็บไซต์ของคุณ ด้วยการกรอกข้อมูลลงในช่องข้อมูลด้านล่างนี้ จะช่วยปรับปรุงอันดับเว็บไซต์ของคุณในเครื่องมือค้นหาต่างๆ'
-    METAKEYWORDHELP: 'เพิ่มคียเวิร์ดใดๆก็ได้ที่สัมพันธ์กับหน้าเว็บนี้ คั่นระหว่างรายการคีย์เวิร์ดและวลีต่างๆด้วยเครื่องหมายจุลภาค: คียเวิร์ด, คีย์เวิร์ด, คีย์เวิร์ด, วลีคียเวิร์ด'
-    METAKEYWORDS: คีย์เวิร์ด
-    METATITLE: ชื่อ
-    METATITLEHELP: เพิ่มชื่อหัวเวบของคุณลงที่นี่
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: หน้าเว็บถูกเปลี่ยนค่าเป็นระงับการเผยแพร่แล้ว
     MODIFIEDONDRAFTSHORT: แก้ไขเมื่อ
     MetadataToggle: Metadata

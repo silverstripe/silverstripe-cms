@@ -332,14 +332,9 @@ pl:
     LINKCHANGENOTE: 'Zmiana linku na aktualnej stronie skutkuje zmianą w linkach stron potomnych.'
     MENUTITLE: 'Sekcja nawigacji'
     METADESC: Opis
-    METADESCHELP: 'Dodaj opis swojej strony. Tworząc opis pomyśl o odpowiednich słowach kluczowych.'
+    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'Własne Meta Tagi'
-    METAEXTRAHELP: 'Dodawane meta tagi muszą być ujęte w tag html. Na przykład  &lt;meta name="nazwa" content="zawartość" /&gt;'
-    METAINTRO: 'Metadane pomagają opisać i skategoryzować twoją stronę. Wypełnienie poniższych pól, pomoże podnieść ranking twojej strony w wyszukiwarkach.'
-    METAKEYWORDHELP: 'Dodaj słowa kluczowe powiązane z tą stroną. Słowa i frazy oddziel przecinkiem: słowo, słowo, jakaś fraza.'
-    METAKEYWORDS: 'Słowa kluczowe'
-    METATITLE: Tytuł
-    METATITLEHELP: 'Dodaj tytuł strony'
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Na stronie znajdują się nieopublikowane zmiany'
     MODIFIEDONDRAFTSHORT: Zmodyfikowana
     MetadataToggle: Metadane

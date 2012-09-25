@@ -332,14 +332,9 @@ sk:
     LINKCHANGENOTE: 'Zmenenie odkazu tejto stránky ovplyvní tiež odkazy všetkých podstránok.'
     MENUTITLE: 'Navigačná menovka'
     METADESC: Popis
-    METADESCHELP: 'Pridajte popis svojej stránky tu. Popremýšlajte o kľúčových slovách pri písaní svojho popisu'
+    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'Vlastné Meta Tagy'
-    METAEXTRAHELP: 'Pri pridávaní vlastných meta tagov, tie musia byť vložené do html tagu. Napríklad &lt;meta name="vlastný názov" content="tu bude váš vlastný obsah" /&gt;'
-    METAINTRO: 'Metadáta pomôžu popísať a kategorizovať váš web. Vyplnením polí dolu pomôže zlepšiť hodnotenie vášho webu vo vyhľadávačoch.'
-    METAKEYWORDHELP: 'Pridajte kľúčové slová, ktoré sú relevantné tejto stránke, tu. Oddelujte kľúčové slová a frázy čiarkou: kľúčové slovo, kľúčové slová, kľúčová fráza'
-    METAKEYWORDS: 'Meta kľúčové slová'
-    METATITLE: Titulok
-    METATITLEHELP: 'Tu pridajte titulok vašej stránky'
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Stránka má nezverejnené zmeny'
     MODIFIEDONDRAFTSHORT: Zmenené
     MetadataToggle: Metaúdaje
