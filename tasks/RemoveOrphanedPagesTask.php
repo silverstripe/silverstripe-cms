@@ -102,7 +102,7 @@ in the other stage:<br />
 				)
 			);
 			$label = sprintf(
-				'<a href="admin/show/%d">%s</a> <small>(#%d, Last Modified Date: %s, Last Modifier: %s, %s)</small>',
+				'<a href="admin/pages/edit/show/%d">%s</a> <small>(#%d, Last Modified Date: %s, Last Modifier: %s, %s)</small>',
 				$orphan->ID,
 				$orphan->Title,
 				$orphan->ID,
