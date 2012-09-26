@@ -332,9 +332,9 @@ th:
     LINKCHANGENOTE: การเปลี่ยนลิงก์ของหน้าเว็บนี้จะส่งผลถึงลิงก์ต่างๆที่อยู่ในหน้าเว็บลูกด้วย
     MENUTITLE: ป้ายบอกทาง
     METADESC: รายละเอียด
-    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
+    METADESCHELP: 'เว็บไซต์ค้นหาข้อมูลใช้เนื้อหาในส่วนนี้เพื่อแสดงผลการค้นหา (แม้ว่าจะไม่มีผลกระทบกับการจัดอันดับก็ตาม).'
     METAEXTRA: 'Meta Tags แบบกำหนดเอง'
-    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
+    METAEXTRAHELP: 'แท็กคำสั่ง HTML สำหรับใช้เป็นข้อมูล meta เพิ่มเติม. ตัวอย่างเพิ่มเติม &lt;meta name="ชื่อที่ต้องการ" content="กำหนดเนื้อหาของคุณเองที่นี่" /&gt;'
     MODIFIEDONDRAFTHELP: หน้าเว็บถูกเปลี่ยนค่าเป็นระงับการเผยแพร่แล้ว
     MODIFIEDONDRAFTSHORT: แก้ไขเมื่อ
     MetadataToggle: Metadata
