@@ -126,11 +126,8 @@ class ModelAsController extends Controller implements NestedController {
 				return $this->response;
 			}
 			
-			if($response = ErrorPage::response_for(404)) {
-				return $response;
-			} else {
-				$this->httpError(404, 'The requested page could not be found.');
-			}
+			$response = ErrorPage::response_for(404);
+			$this->httpError(404, $response ? $response : 'The requested page could not be found.');
 		}
 		
 		// Enforce current locale setting to the loaded SiteTree object
