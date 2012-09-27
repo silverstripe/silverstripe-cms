@@ -53,16 +53,18 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 		$editor->setValue('<img src="assets/example.jpg" />');
 		$editor->saveInto($sitetree);
 
-		$xml = new SimpleXMLElement($sitetree->Content);
-		$this->assertNotNull($xml['alt'], 'Alt tags are added by default.');
-		$this->assertNotNull($xml['title'], 'Title tags are added by default.');
+                $parser = new CSSContentParser($sitetree->Content);
+                $xml = $parser->getByXpath('//img');
+                $this->assertEquals('', $xml[0]['alt'], 'Alt tags are added by default.');
+                $this->assertEquals('', $xml[0]['title'], 'Title tags are added by default.');
 
-		$editor->setValue('<img src="assets/example.jpg" alt="foo" title="bar" />');
-		$editor->saveInto($sitetree);
+                $editor->setValue('<img src="assets/example.jpg" alt="foo" title="bar" />');
+                $editor->saveInto($sitetree);
 
-		$xml = new SimpleXMLElement($sitetree->Content);
-		$this->assertNotNull('foo', $xml['alt'], 'Alt tags are preserved.');
-		$this->assertNotNull('bar', $xml['title'], 'Title tags are preserved.');
+                $parser = new CSSContentParser($sitetree->Content);
+                $xml = $parser->getByXpath('//img');
+                $this->assertEquals('foo', $xml[0]['alt'], 'Alt tags are preserved.');
+                $this->assertEquals('bar', $xml[0]['title'], 'Title tags are preserved.');
 	}
 
 	public function testImageTracking() {
