@@ -6,7 +6,8 @@ class CMSSettingsController extends LeftAndMain {
 	static $menu_priority = -1;
 	static $menu_title = 'Settings';
 	static $tree_class = 'SiteConfig';
-
+	static $required_permission_codes = array('EDIT_SITECONFIG');
+	
 	public function getResponseNegotiator() {
 		$neg = parent::getResponseNegotiator();
 		$controller = $this;
