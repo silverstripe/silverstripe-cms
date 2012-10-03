@@ -5,7 +5,7 @@
 		 * 
 		 * Input validation on the URLSegment field
 		 */
-		$('.field.urlsegment').entwine({
+		$('.field.urlsegment:not(.readonly)').entwine({
 	
 			/**
 			 * Constructor: onmatch
