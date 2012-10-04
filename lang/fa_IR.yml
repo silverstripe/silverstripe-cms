@@ -128,7 +128,7 @@ fa_IR:
     MENUTITLE: History
     REVERTTOTHISVERSION: 'Revert to this version'
     SHOWUNPUBLISHED: 'Show unpublished versions'
-    SHOWVERSION: 'Show Version'
+    SHOWVERSION: 'نمایش ویرایش'
     VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
@@ -140,7 +140,7 @@ fa_IR:
   CMSPageSettingsController:
     MENUTITLE: 'Edit Page'
   CMSPagesController:
-    GalleryView: 'Gallery View'
+    GalleryView: 'مشاهده گالری'
     ListView: 'List View'
     MENUTITLE: Pages
     TreeView: 'Tree View'
@@ -155,7 +155,7 @@ fa_IR:
     FILTERDATETO: به
     FILTERLABELTEXT: 'محتواي اصلي'
   CMSSettingsController:
-    MENUTITLE: Settings
+    MENUTITLE: تنظیمات
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Changed pages'
   CMSSiteTreeFilter_DeletedPages:
@@ -229,7 +229,7 @@ fa_IR:
     PreviewButton: Preview
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
-    SearchResults: 'Search Results'
+    SearchResults: 'نتایج جستجو'
     VersionUnknown: Unknown
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
