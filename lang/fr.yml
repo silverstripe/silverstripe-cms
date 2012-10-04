@@ -129,7 +129,7 @@ fr:
     REVERTTOTHISVERSION: 'Ändra till denna version'
     SHOWUNPUBLISHED: 'Afficher les versions non publiées'
     SHOWVERSION: 'Visa version'
-    VIEW: Visa
+    VIEW: Afficher
     VIEWINGVERSION: 'Version affichée : {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Auteur
@@ -138,7 +138,7 @@ fr:
     UNKNOWN: Inconnu
     WHEN: Date
   CMSPageSettingsController:
-    MENUTITLE: 'Ändra sidan'
+    MENUTITLE: 'Éditer la page'
   CMSPagesController:
     GalleryView: Galerie
     ListView: Liste
@@ -269,7 +269,7 @@ fr:
     ParameterLiveCheckbox: 'Visiter le site de production'
     REPEMPTY: 'Le rapport {title} est vide'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Pour partager un page ''this-to-this'', copier et coller le lien ci-dessous.'
+    ShareInstructions: 'Pour partager un lien vers cette page, copiez et collez le lien ci-dessous.'
     ShareLink: 'Partager le lien'
   SilverStripeNavigatorLinkl:
     CloseLink: Fermer
@@ -332,7 +332,7 @@ fr:
     LINKCHANGENOTE: 'Changer le lien de cette page affectera aussi les liens des pages enfants.'
     MENUTITLE: 'Nom de navigation'
     METADESC: Description
-    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
+    METADESCHELP: 'Les moteurs de recherche reprennent cette description dans leurs résultats (bien qu’elle n’ait pas d’influence sur le classement).'
     METAEXTRA: 'Méta Balises Personnalisées'
     METAEXTRAHELP: 'Balises HTML pour des métadonnées supplémentaires. Par exemple &lt;meta name="monNom" content="Mon contenu" /&gt;'
     MODIFIEDONDRAFTHELP: 'La page comporte des modifications non publiées'
@@ -369,7 +369,7 @@ fr:
     VIEW_ALL_DESCRIPTION: 'Voir toute la page'
     VIEW_ALL_HELP: 'Possibilité de voir toutes les pages du site, peu importe les réglages de l’onglet Accès. Nécessite la permission "Access to Site Content"'
     VIEW_DRAFT_CONTENT: 'Voir les brouillons'
-    VIEW_DRAFT_CONTENT_HELP: 'S''applique à la visualisation de page de manière externe au CMS en mode brouillon. Pratique pour les collaborateurs externes sans accès CMS.'
+    VIEW_DRAFT_CONTENT_HELP: 'Concerne l’affichage des pages de manière externe au CMS en mode brouillon. Pratique pour les collaborateurs externes sans accès au CMS.'
     Viewers: 'Groupes de visualisation'
     Visibility: Visibilité
     has_one_Parent: 'Page parente'
@@ -404,8 +404,8 @@ fr:
   VirtualPage:
     CHOOSE: 'Choisir le lien d''une page'
     DESCRIPTION: 'Affiche le contenu d’une autre page'
-    EDITCONTENT: 'cliquer ici pour modifier le contenu'
+    EDITCONTENT: 'Faites clic ici pour modifier le contenu'
     HEADER: 'Cette page est virtuelle'
-    PLURALNAME: 'Pages Virtuelles'
+    PLURALNAME: 'Pages virtuelles'
     PageTypNotAllowedOnRoot: 'Le type de page d’origine « {type} » n’est pas autorisé au niveau racine pour cette page virtuelle'
     SINGULARNAME: 'Page virtuelle'
