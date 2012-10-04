@@ -104,7 +104,7 @@ fr:
     RESTORED: '« {title} » restaurée avec succès'
     ROLLBACK: 'Retourner à cette version'
     ROLLEDBACKPUB: 'Retour à la version publiée. La nouvelle version est la nº {version}'
-    ROLLEDBACKVERSION: 'Retour à la version #%d. La nouvelle version est #%d'
+    ROLLEDBACKVERSION: 'Retour à la version nº %d. La nouvelle version est la nº %d.'
     SAVE: Sauvegarder
     SAVEDRAFT: 'Sauvegarder brouillon'
     TabContent: Contenu
@@ -127,7 +127,7 @@ fr:
     COMPARINGVERSION: 'Comparaison entre les versions {version1} et {version2}.'
     MENUTITLE: Historique
     REVERTTOTHISVERSION: 'Ändra till denna version'
-    SHOWUNPUBLISHED: 'Visa opublicerade versioner'
+    SHOWUNPUBLISHED: 'Afficher les versions non publiées'
     SHOWVERSION: 'Visa version'
     VIEW: Visa
     VIEWINGVERSION: 'Version affichée : {version}.'
@@ -165,7 +165,7 @@ fr:
   ContentControl:
     NOTEWONTBESHOWN: 'Note : ce message ne sera pas visible de vos visiteurs.'
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
+    ARCHIVEDSITE: 'Aperçu de cette version'
     ARCHIVEDSITEFROM: 'Site archivé depuis'
     CMS: CMS
     DRAFTSITE: 'Site Brouillon'
@@ -181,8 +181,8 @@ fr:
     NOTLOGGEDIN: Non-connecté
     PUBLISHEDSITE: 'Site Publié'
     Password: 'Mot de passe'
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    PostInstallTutorialIntro: 'Ce site est une version simplifiée d’un site SilverStripe 3. Pour le développer, consultez {link}.'
+    StartEditing: 'Vous pouvez commencer à éditer le contenu du site en accédant au <a href=\\"{link}\\">CMS</a>.'
     UnableDeleteInstall: 'La suppression des fichiers d’installation a échoué ; faites-le manuellement pour les fichiers ci-dessous : '
     VIEWPAGEIN: 'Voir la page en :'
   ErrorPage:
@@ -193,8 +193,8 @@ fr:
     DEFAULTSERVERERRORPAGETITLE: 'Erreur du serveur'
     DESCRIPTION: 'Contenu personnalisé pour diverses erreurs (p. ex. « Page introuvable »)'
     ERRORFILEPROBLEM: ' L’ouverture du fichier « {filename} » afin de le modifier a provoqué une erreur ; vérifiez les droits d’accès au fichier. '
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
+    PLURALNAME: 'Pages d’erreur'
+    SINGULARNAME: 'Page d’erreur'
     400: '400 - Mauvaise demande'
     401: '401 - Non autorisé'
     403: '403 - Interdit'
@@ -241,11 +241,11 @@ fr:
     HASBEENSETUP: 'Une page de redirection sans adresse de redirection a été créée.'
     HEADER: 'Cette page va rediriger les utilisateurs vers une autre page'
     OTHERURL: 'Autre URL de site web'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: 'Pages de redirection'
     REDIRECTTO: 'Rediriger vers'
     REDIRECTTOEXTERNAL: 'Autre site web'
     REDIRECTTOPAGE: 'Une page de votre site web'
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: 'Page de redirection'
     YOURPAGE: 'Page de votre site web'
   ReportAdmin:
     MENUTITLE: Rapports
@@ -278,8 +278,8 @@ fr:
     EDITHEADER: 'Qui peut modifier les pages sur ce site?'
     EDIT_PERMISSION: 'Configuration du site'
     EDIT_PERMISSION_HELP: 'Capacité d''édition des accès globales et permission des pages de premier niveau.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
+    PLURALNAME: 'Configurations du site'
+    SINGULARNAME: 'Configuration du site'
     SITENAMEDEFAULT: 'Nom du site'
     SITETAGLINE: 'Slogan ou devise du site'
     SITETITLE: 'Titre du site'
@@ -334,7 +334,7 @@ fr:
     METADESC: Description
     METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'Méta Balises Personnalisées'
-    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
+    METAEXTRAHELP: 'Balises HTML pour des métadonnées supplémentaires. Par exemple &lt;meta name="monNom" content="Mon contenu" /&gt;'
     MODIFIEDONDRAFTHELP: 'La page comporte des modifications non publiées'
     MODIFIEDONDRAFTSHORT: Modifiée
     MetadataToggle: Métadonnées
