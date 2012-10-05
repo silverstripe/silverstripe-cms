@@ -1554,7 +1554,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if(!self::nested_urls() || !$this->ParentID) {
 			if(class_exists($this->URLSegment) && is_subclass_of($this->URLSegment, 'RequestHandler')) return false;
 		}
-		
+		if (class_exists('Translatable')) {
+			Translatable::disable_locale_filter();
+		}
 		$IDFilter     = ($this->ID) ? "AND \"SiteTree\".\"ID\" <> $this->ID" :  null;
 		$parentFilter = null;
 		
@@ -1570,6 +1572,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			'SiteTree', 
 			"\"URLSegment\" = '$this->URLSegment' $IDFilter $parentFilter"
 		);
+		if (class_exists('Translatable')) {
+			Translatable::enable_locale_filter();
+		}
 		if ($existingPage) {
 			return false;
 		}
