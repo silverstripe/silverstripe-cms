@@ -24,6 +24,12 @@ class CMSSettingsController extends LeftAndMain {
 		$siteConfig = SiteConfig::current_site_config();
 		$fields = $siteConfig->getCMSFields();
 
+		// Tell the CMS what URL the preview should show
+		$fields->push(new HiddenField('PreviewURL', 'Preview URL', RootURLController::get_homepage_link()));
+		// Added in-line to the form, but plucked into different view by LeftAndMain.Preview.js upon load
+		$fields->push($navField = new LiteralField('SilverStripeNavigator', $this->getSilverStripeNavigator()));
+		$navField->setAllowHTML(true);
+
 		$actions = $siteConfig->getCMSActions();
 		$form = new Form($this, 'EditForm', $fields, $actions);
 		$form->addExtraClass('root-form');
@@ -44,6 +50,14 @@ class CMSSettingsController extends LeftAndMain {
 		return $form;
 	}
 
+	/**
+	 * Used for preview controls, mainly links which switch between different states of the page.
+	 *
+	 * @return ArrayData
+	 */
+	public function getSilverStripeNavigator() {
+		return $this->renderWith('CMSSettingsController_SilverStripeNavigator');
+	}
 
 	/**
 	 * Save the current sites {@link SiteConfig} into the database
@@ -62,7 +76,9 @@ class CMSSettingsController extends LeftAndMain {
 	}
 	
 	public function LinkPreview() {
-		return false;
+		$record = $this->getRecord($this->currentPageID());
+		$baseLink = ($record && $record instanceof Page) ? $record->Link('?stage=Stage') : Director::absoluteBaseURL();
+		return $baseLink;
 	}
 
 	public function Breadcrumbs($unlinked = false) {
