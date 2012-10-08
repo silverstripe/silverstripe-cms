@@ -174,7 +174,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * @see SiteTree::nested_urls()
 	 */
-	private static $nested_urls = false;
+	private static $nested_urls = true;
 	
 	/**
 	 * @see SiteTree::set_create_default_pages()
