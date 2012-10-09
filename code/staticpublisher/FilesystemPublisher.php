@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Usage: Object::add_extension("SiteTree", "FilesystemPublisher('static-folder', 'html')");
+ * Usage: SiteTree::add_extension("FilesystemPublisher('static-folder', 'html')");
  * 
  * Usage: To work with Subsite module you need to:
  * - Add FilesystemPublisher::$domain_based_caching = true; in mysite/_config.php
