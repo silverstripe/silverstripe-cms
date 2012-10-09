@@ -205,11 +205,10 @@ class ContentController extends Controller {
 	 * @uses ErrorPage::response_for()
 	 */
 	public function httpError($code, $message = null) {
-		if($this->request->isMedia() || !$response = ErrorPage::response_for($code)) {
-			parent::httpError($code, $message);
-		} else {
-			throw new SS_HTTPResponse_Exception($response);
-		}
+		// Don't use the HTML response for media requests
+		$response = $this->request->isMedia() ? null : ErrorPage::response_for($code);
+		// Failover to $message if the HTML response is unavailable / inappropriate
+		parent::httpError($code, $response ? $response : $message);
 	}
 
 	/**
@@ -367,7 +366,7 @@ HTML;
 	public function ContentLocale() {
 		if($this->dataRecord && $this->dataRecord->hasExtension('Translatable')) {
 			$locale = $this->dataRecord->Locale;
-		} elseif(class_exists('Translatable') && Object::has_extension('SiteTree', 'Translatable')) {
+		} elseif(class_exists('Translatable') && SiteTree::has_extension('Translatable')) {
 			$locale = Translatable::get_current_locale();
 		} else {
 			$locale = i18n::get_locale();

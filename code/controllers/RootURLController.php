@@ -44,7 +44,7 @@ class RootURLController extends Controller {
 				// TODO Move to 'translatable' module
 				if (
 					class_exists('Translatable')
-					&& Object::has_extension('SiteTree', 'Translatable')
+					&& SiteTree::has_extension('Translatable')
 					&& $link = Translatable::get_homepage_link_by_locale(Translatable::get_current_locale())
 				) {
 					self::$cached_homepage_link = $link;
