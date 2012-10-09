@@ -50,7 +50,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	
 	public function init() {
 		// set reading lang
-		if(Object::has_extension('SiteTree', 'Translatable') && !$this->request->isAjax()) {
+		if(SiteTree::has_extension('Translatable') && !$this->request->isAjax()) {
 			Translatable::choose_site_locale(array_keys(Translatable::get_existing_content_languages('SiteTree')));
 		}
 		
@@ -542,7 +542,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			 *	This bit breaks the all FileIFrameField functions if the field is used in CMS
 			 *  and its relevent ajax calles, like loading the tree dropdown for TreeSelectorField. 
 			 */
-			/* if($record && Object::has_extension('SiteTree', 'Translatable') && $record->Locale && $record->Locale != Translatable::get_current_locale()) {
+			/* if($record && SiteTree::has_extension('Translatable') && $record->Locale && $record->Locale != Translatable::get_current_locale()) {
 				$record = null;
 			}*/
 
