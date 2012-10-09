@@ -366,7 +366,7 @@ HTML;
 	public function ContentLocale() {
 		if($this->dataRecord && $this->dataRecord->hasExtension('Translatable')) {
 			$locale = $this->dataRecord->Locale;
-		} elseif(class_exists('Translatable') && Object::has_extension('SiteTree', 'Translatable')) {
+		} elseif(class_exists('Translatable') && SiteTree::has_extension('Translatable')) {
 			$locale = Translatable::get_current_locale();
 		} else {
 			$locale = i18n::get_locale();
