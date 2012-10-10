@@ -478,10 +478,12 @@ JS
 	public function currentPage() {
 		$id = $this->currentPageID();
 		if($id && is_numeric($id) && $id > 0) {
-			return DataObject::get_by_id('Folder', $id);
-		} else {
-			return new Folder();
+			$folder = DataObject::get_by_id('Folder', $id);
+			if($folder && $folder->exists()) {
+				return $folder;
+			}
 		}
+		return new Folder();
 	}
 	
 	public function getSiteTreeFor($className, $rootID = null, $childrenMethod = null, $numChildrenMethod = null, $filterFunction = null, $minNodeCount = 30) {
