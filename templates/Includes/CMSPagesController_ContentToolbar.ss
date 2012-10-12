@@ -1,14 +1,12 @@
-<div class="cms-tree-view-modes">
-	<span><% _t("TreeTools.DisplayLabel","Display:") %></span>
-	<% if CanOrganiseSitetree %> 
-	<div class="checkboxAboveTree">
-		<input type="radio" name="view-mode" class="view-mode" value="draggable" id="view-mode-draggable" checked="checked" />
-		<label for="view-mode-draggable"><% _t("CMSPagesController_ContentToolbar.ss.ENABLEDRAGGING","Drag'n'drop") %></label>
-	</div>
-	<% end_if %>
-	<div>
-		<input type="radio" name="view-mode" class="view-mode" value="multiselect" id="view-mode-multiselect" />
-		<label for="view-mode-multiselect"><% _t("CMSPagesController_ContentToolbar.ss.MULTISELECT","Multi-selection") %></label>
-	</div>
+<div class="cms-actions-row">
+	<a class="cms-page-add-button ss-ui-button ss-ui-action-constructive" data-icon="add" href="$LinkPageAdd" data-url-addpage="{$LinkPageAdd('?ParentID=%s')}"><% _t('CMSMain.AddNewButton', 'Add new') %></a>
 </div>
-<% include CMSPagesController_ContentToolActions %>
+
+<div class="cms-content-batchactions">
+	<div class="view-mode-batchactions-wrapper">
+		<input id="view-mode-batchactions" name="view-mode-batchactions" type="checkbox" />
+		<label for="view-mode"><% _t("CMSPagesController_ContentToolbar.ss.MULTISELECT","Multi-selection") %></label>
+	</div>
+
+	$BatchActionsForm
+</div>
