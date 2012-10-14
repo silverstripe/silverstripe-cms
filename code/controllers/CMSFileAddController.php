@@ -23,13 +23,13 @@ class CMSFileAddController extends LeftAndMain {
 	 */
 	public function currentPage() {
 		$id = $this->currentPageID();
-
 		if($id && is_numeric($id) && $id > 0) {
-			return DataObject::get_by_id('Folder', $id);
-		} else {
-			// ID is either '0' or 'root'
-			return singleton('Folder');
+			$folder = DataObject::get_by_id('Folder', $id);
+			if($folder && $folder->exists()) {
+				return $folder;
+			}
 		}
+		return new Folder();
 	}
 
 	/**
@@ -64,12 +64,12 @@ class CMSFileAddController extends LeftAndMain {
 		$uploadField->removeExtraClass('ss-uploadfield');
 		$uploadField->setTemplate('AssetUploadField');
 
-		if ($folder->exists() && $folder->getFilename()) {
+		if($folder->exists() && $folder->getFilename()) {
 			// The Upload class expects a folder relative *within* assets/
 			$path = preg_replace('/^' . ASSETS_DIR . '\//', '', $folder->getFilename());
 			$uploadField->setFolderName($path);
 		} else {
-			$uploadField->setFolderName(ASSETS_DIR);
+			$uploadField->setFolderName('/'); // root of the assets
 		}
 
 		$exts = $uploadField->getValidator()->getAllowedExtensions();
