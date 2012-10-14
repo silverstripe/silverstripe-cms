@@ -29,7 +29,7 @@
 				
 				var form = self.parents('form');
 				var url_segment = $('.field.urlsegment', form).find(':text');
-				var live_url_segment = $('input[name=LiveURLSegment]', form);
+				var live_link = $('input[name=LiveLink]', form);
 				
 				self._addActions();
 
@@ -40,7 +40,7 @@
 						self.data('OrigVal', title);
 
 						// Criteria for defining a "new" page
-						if ((url_segment.val().indexOf('new') == 0) && live_url_segment.val() == '') {
+						if ((url_segment.val().indexOf('new') == 0) && live_link.val() == '') {
 							self.updateURLSegment(title);
 						} else {
 							$('.update', self.parent()).show();
