@@ -1,4 +1,5 @@
 <div class="cms-content-toolbar">
+	<% include CMSPagesController_ContentToolActions %>
 	<% include CMSPagesController_ContentToolbar %>
 </div>
 

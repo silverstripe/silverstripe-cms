@@ -1,3 +1,7 @@
+<div class="cms-content-batchactions">
+	$BatchActionsForm
+</div>
+
 <div class="cms-tree-view-modes">
 	<span><% _t("TreeTools.DisplayLabel","Display:") %></span>
 	<% if CanOrganiseSitetree %> 
@@ -11,4 +15,4 @@
 		<label for="view-mode-multiselect"><% _t("MULTISELECT","Multi-selection") %></label>
 	</div>
 </div>
-<% include CMSPagesController_ContentToolActions %>
+
