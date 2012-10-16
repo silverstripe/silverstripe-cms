@@ -6,16 +6,16 @@ SiteTree:
   about:
     Title: About Us
     URLSegment: about
-    Content: <a href="home">Home</a><a href="staff/">Staff</a>
+    Content: '<a href="home">Home</a><a href="staff/">Staff</a>'
   staff:
     Title: Staff
     URLSegment: staff
-    Content: <a href="home/">Home</a><a href="about">About</a>
+    Content: '<a href="home/">Home</a><a href="about">About</a>'
     Parent: =>SiteTree.about
   action:
     Title: Action Link
     URLSegment: action
-    Content: <a href="home/SearchForm">Search Form</a>
+    Content: '<a href="home/SearchForm">Search Form</a>'
   hash_link:
     Title: Hash Link
     URLSegment: hash-link
@@ -23,7 +23,7 @@ SiteTree:
   admin_link:
     Title: Admin Link
     URLSegment: admin-link
-    Content: <a href="admin">Admin</a>
+    Content: '<a href="admin">Admin</a>'
   no_links:
     Title: No Links
     URLSegment: No Links
