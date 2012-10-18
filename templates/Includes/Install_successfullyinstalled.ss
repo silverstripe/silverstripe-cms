@@ -10,7 +10,7 @@
 	<strong>&nbsp; &nbsp; <%t ContentController.Password "Password" %>: $Password</strong></p>
 
 <p>
-	<%t ContentController.StartEditing "You can start editing your site's content by opening <a href=\"{link}\">the CMS</a>." link="admin/" %> 
+	<%t ContentController.StartEditing 'You can start editing your site\'s content by opening <a href="{link}">the CMS</a>.' link="admin/" %> 
 </p>
 
 <div style="background:#fcf8f2; border-radius:4px; border: 1px solid #ffc28b; padding:5px; margin:5px;">
