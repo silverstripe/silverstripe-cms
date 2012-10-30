@@ -35,6 +35,30 @@ abstract class CMSSiteTreeFilter extends Object {
 	 * @var String 
 	 */
 	protected $childrenMethod = null;
+	
+	/**
+	 * Returns a sorted array of all implementators of CMSSiteTreeFilter, suitable for use in a dropdown.
+	 * 
+	 * @return array
+	 */
+	public static function get_all_filters() {
+		// get all filter instances
+		$filters = ClassInfo::subclassesFor('CMSSiteTreeFilter');
+		// remove abstract CMSSiteTreeFilter class
+		array_shift($filters);
+		// add filters to map
+		$filterMap = array();
+		
+		foreach($filters as $filter) {
+			$filterMap[$filter] = call_user_func(array($filter, 'title'));
+		}
+		// ensure that 'all pages' filter is on top position
+		uasort($filterMap, 
+			create_function('$a,$b', 'return ($a == "CMSSiteTreeFilter_Search") ? 1 : -1;')
+		);
+		
+		return $filterMap;
+	}
 		
 	public function __construct($params = null) {
 		if($params) $this->params = $params;
