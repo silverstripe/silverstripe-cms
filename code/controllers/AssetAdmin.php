@@ -140,8 +140,8 @@ JS
 		// File listing
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
 			new GridFieldToolbarHeader(),
-			new GridFieldFilterHeader(),
 			new GridFieldSortableHeader(),
+			new GridFieldFilterHeader(),			
 			new GridFieldDataColumns(),
 			new GridFieldPaginator(15),
 			new GridFieldEditButton(),
