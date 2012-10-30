@@ -329,6 +329,8 @@ Options:
 	
 		<exec command="scp -P 2222 SilverStripe-v${version}.tar.gz ${release_dest}" checkreturn="true" logoutput="true" />
 
+		<echo msg="Release uploaded to ${release_url}SilverStripe-v${version}.tar.gz" />
+
 		<mail from="reports@silverstripe.com" tolist="${release_notify_list}" subject="SilverStripe ${version} has been uploaded">A new SilverStripe release is ready, and although it hasn't been publicly announced yet, is available at the following locations:
 			
 ${release_url}SilverStripe-v${version}.tar.gz
