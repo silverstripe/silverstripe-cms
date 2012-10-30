@@ -1,4 +1,6 @@
-## Overview
+## SilverStripe CMS
+
+[![Build Status](https://secure.travis-ci.org/silverstripe/silverstripe-cms.png)](http://travis-ci.org/silverstripe/silverstripe-cms)
 
 PHP5 Content Management System (CMS), see [http://silverstripe.org](http://silverstripe.org). Requires the [`framework`](http://github.com/silverstripe/sapphire) module and a [`silverstripe-installer`](http://github.com/silverstripe/silverstripe-installer) base project.
 

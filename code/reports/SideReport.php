@@ -200,8 +200,8 @@ class SideReport_BrokenLinks extends SS_Report {
 		$classes = array_diff(ClassInfo::subclassesFor('SiteTree'), ClassInfo::subclassesFor('VirtualPage'), ClassInfo::subclassesFor('RedirectorPage'));
 		$classNames = "'".join("','", $classes)."'";
 		
-		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "ClassName IN ($classNames) AND HasBrokenLink = 1");
-		else $ret = DataObject::get('SiteTree', "ClassName IN ($classNames) AND HasBrokenLink = 1");
+		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "\"ClassName\" IN ($classNames) AND \"HasBrokenLink\" = 1");
+		else $ret = DataObject::get('SiteTree', "\"ClassName\" IN ($classNames) AND \"HasBrokenLink\" = 1");
 		return $ret;
 	}
 	public function columns() {
@@ -238,8 +238,8 @@ class SideReport_BrokenFiles extends SS_Report {
 		$classes = array_diff(ClassInfo::subclassesFor('SiteTree'), ClassInfo::subclassesFor('VirtualPage'), ClassInfo::subclassesFor('RedirectorPage'));
 		$classNames = "'".join("','", $classes)."'";
 		
-		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "ClassName IN ($classNames) AND HasBrokenFile = 1");
-		else $ret = DataObject::get('SiteTree', "ClassName IN ($classNames) AND HasBrokenFile = 1");
+		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "\"ClassName\" IN ($classNames) AND \"HasBrokenFile\" = 1");
+		else $ret = DataObject::get('SiteTree', "\"ClassName\" IN ($classNames) AND \"HasBrokenFile\" = 1");
 		return $ret;
 	}
 	public function columns() {
@@ -271,8 +271,8 @@ class SideReport_BrokenVirtualPages extends SS_Report {
 	}
 	public function sourceRecords($params = null) {
 		$classNames = "'".join("','", ClassInfo::subclassesFor('VirtualPage'))."'";
-		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "ClassName IN ($classNames) AND HasBrokenLink = 1");
-		else $ret = DataObject::get('SiteTree', "ClassName IN ($classNames) AND HasBrokenLink = 1");
+		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "\"ClassName\" IN ($classNames) AND \"HasBrokenLink\" = 1");
+		else $ret = DataObject::get('SiteTree', "\"ClassName\" IN ($classNames) AND \"HasBrokenLink\" = 1");
 		return $ret;
 	}
 	
@@ -306,8 +306,8 @@ class SideReport_BrokenRedirectorPages extends SS_Report {
 	public function sourceRecords($params = null) {
 		$classNames = "'".join("','", ClassInfo::subclassesFor('RedirectorPage'))."'";
 		
-		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "ClassName IN ($classNames) AND HasBrokenLink = 1");
-		else $ret = DataObject::get('SiteTree', "ClassName IN ($classNames) AND HasBrokenLink = 1");
+		if (isset($_REQUEST['OnLive'])) $ret = Versioned::get_by_stage('SiteTree', 'Live', "\"ClassName\" IN ($classNames) AND \"HasBrokenLink\" = 1");
+		else $ret = DataObject::get('SiteTree', "\"ClassName\" IN ($classNames) AND \"HasBrokenLink\" = 1");
 		return $ret;
 	}
 	
