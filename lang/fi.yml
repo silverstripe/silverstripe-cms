@@ -182,7 +182,7 @@ fi:
     PUBLISHEDSITE: 'Julkaistu sivusto'
     Password: Salasana
     PostInstallTutorialIntro: 'Tämä sivusto on yksinkertaistettu versio SilverStripe 3 sivustosta. Laajentaaksesi tätä, ole hyvä ja tutustu: {link}.'
-    StartEditing: 'Voit aloittaa sivustosi sisällön muokkaamisen kirjautumalla <a href=\\"{link}\\">CMS-järjestelmään</a>.'
+    StartEditing: 'Voit aloittaa sivuston muokkauksen avaamalla <a href="{link}">CMS-järjestelmän</a>.'
     UnableDeleteInstall: 'Asennustiedostojen automaattinen poistaminen ei onnistunut. Ole hyvä ja poista seuraavat tiedostot manuaalisesti.'
     VIEWPAGEIN: 'Tarkastele sivua:'
   ErrorPage:

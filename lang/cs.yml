@@ -182,7 +182,7 @@ cs:
     PUBLISHEDSITE: 'Zveřejnen web'
     Password: Heslo
     PostInstallTutorialIntro: 'Tento web je zjednodušená verze SilverStripe 3. webu. Pro rozšíření, podívejte se na {link} prosím.'
-    StartEditing: 'Můžete začít editovat váš obsah webu otevřením <a href=\\"{link}\\">CMS</a>.'
+    StartEditing: 'Můžete začít editovat váš obsah webu otevřením <a href="{link}">CMS</a>.'
     UnableDeleteInstall: 'Nelze smazat instalační soubory. Prosím, odstraňte soubory níže ručně'
     VIEWPAGEIN: 'Zobrazit stránku v:'
   ErrorPage:

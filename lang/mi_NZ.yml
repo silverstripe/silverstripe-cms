@@ -182,7 +182,7 @@ mi_NZ:
     PUBLISHEDSITE: 'Pae Kua Whakaputaina'
     Password: Kupuhipa
     PostInstallTutorialIntro: 'He tauira rūnā tēnei paetukutuku o tētahi paetukutuku SilverStripe 3. Hei toro i tēnei, tirohia te {link}'
-    StartEditing: 'Ka taea te tīmata ki te whakatika i ngā ihirangi o tō pae mā te huaki i <a href=\\"{link}\\">te CMS</a>.'
+    StartEditing: 'Ka taea te whakatika i ngā ihirangi o t/ō pae mā te whakatuwhera i <a href="{link}">te CMS</a>.'
     UnableDeleteInstall: 'Kāore i taea te muku i ngā kōnae tāuta. Mukua ā-ringa ngā kōnae kei raro'
     VIEWPAGEIN: 'Tiro Whārangi i'
   ErrorPage:

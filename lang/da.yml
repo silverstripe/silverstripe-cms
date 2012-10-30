@@ -182,7 +182,7 @@ da:
     PUBLISHEDSITE: 'Udgivet side'
     Password: Adgangskode
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    StartEditing: 'Du kan starte med at redigere dit websteds indhold ved at åbne <a href="{link}">CMS\\''en</a>.'
     UnableDeleteInstall: 'Var ikke i stand til at slette installationsfilerne. Slet venligst filerne herunder manuelt.'
     VIEWPAGEIN: 'Vis side i:'
   ErrorPage:

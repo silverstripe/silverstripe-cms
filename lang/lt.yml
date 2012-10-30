@@ -182,7 +182,7 @@ lt:
     PUBLISHEDSITE: 'Publikuojama svetainė'
     Password: Slaptažodis
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    StartEditing: 'Jūs galite pradėti redaguoti svetainės turinį, atidarydami <a href="{link}">TVS</a>.'
     UnableDeleteInstall: 'Nepajėgiame ištrinti įdiegimo bylų. Prašome pašalinti bylas rankiniu būdu.'
     VIEWPAGEIN: 'Peržiūrėti puslapį:'
   ErrorPage:

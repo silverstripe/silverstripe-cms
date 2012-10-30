@@ -182,7 +182,7 @@ fr:
     PUBLISHEDSITE: 'Site Publié'
     Password: 'Mot de passe'
     PostInstallTutorialIntro: 'Ce site est une version simplifiée d’un site SilverStripe 3. Pour le développer, consultez {link}.'
-    StartEditing: 'Vous pouvez commencer à éditer le contenu du site en accédant au <a href=\\"{link}\\">CMS</a>.'
+    StartEditing: 'Vous pouvez commencer à éditer votre site en ouvrant <a href="{link}">le CMS</a>.'
     UnableDeleteInstall: 'La suppression des fichiers d’installation a échoué ; faites-le manuellement pour les fichiers ci-dessous : '
     VIEWPAGEIN: 'Voir la page en :'
   ErrorPage:

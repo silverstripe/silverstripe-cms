@@ -182,7 +182,7 @@ uk:
     PUBLISHEDSITE: 'Публічний сайт'
     Password: Пароль
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    StartEditing: 'Ви можете почати редагувати вміст сайту перейшовши в <a href="{link}">CMS</a>.'
     UnableDeleteInstall: 'Не вдається видалити інсталяційні файли. Будь ласка, видаліть вручну наведені нижче файли'
     VIEWPAGEIN: 'Переглянути сторінку в:'
   ErrorPage:

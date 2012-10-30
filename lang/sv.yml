@@ -182,7 +182,7 @@ sv:
     PUBLISHEDSITE: 'Publicerad sajt'
     Password: Lösenord
     PostInstallTutorialIntro: 'Denna webbplats är en enklare version av en Silverstripe 3 hemsida. För att bygga ut, ta en titt på {link}.'
-    StartEditing: 'Du kan börja redigera innehållet på din webbplats genom att öppna  <a href=\\"{link}\\">the CMS</a>.'
+    StartEditing: 'Du kan ändra din sajts innehåll genom <a href="{link}">publiceringsverktyget</a>.'
     UnableDeleteInstall: 'Lyckades inte radera installationsfilerna. Radera följande filer manuellt.'
     VIEWPAGEIN: 'titta på sidan i:'
   ErrorPage:

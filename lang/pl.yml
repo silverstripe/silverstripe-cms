@@ -182,7 +182,7 @@ pl:
     PUBLISHEDSITE: 'Opublikowana witryna'
     Password: Hasło
     PostInstallTutorialIntro: 'Ta strona jest uproszczoną wersją witryny SilverStripe 3. Aby ją rozszerzyć, zajrzyj proszę na stronę: {link}'
-    StartEditing: 'Możesz zacząć edytować Twoją stronę otwierając <a href=\\"{link}\\">CMS</a>.'
+    StartEditing: 'Możesz rozpocząć edycję zawartości witryn(y) otwierając <a href="{link}">CMS</a>.'
     UnableDeleteInstall: 'Nie można usunąć plików instalacyjnych. Proszę usunąć je ręcznie'
     VIEWPAGEIN: 'Zobacz stronę w:'
   ErrorPage:

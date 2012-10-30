@@ -182,7 +182,7 @@ th:
     PUBLISHEDSITE: เว็บไซต์ที่เผยแพร่อยู่
     Password: รหัสผ่าน
     PostInstallTutorialIntro: 'เว็บไซต์นี้เป็นรุ่นอย่างง่ายของเว็บไซต์ที่สร้างจากรุ่น SiverStripe 3 หากต้องการขยายขีดความสามารถ กรุณาเข้าไปที่ {link}'
-    StartEditing: 'คุณสามารถเริ่มต้นแก้ไขเนื้อหาในเว็บไซต์ของคุณได้โดยการเปิด <a href=\\"{link}\\">the CMS</a>.'
+    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'ไม่สามารถลบไฟล์ติดตั้งได้ กรุณาลบไฟล์ดังกล่าวด้านล่างด้วยตนเอง'
     VIEWPAGEIN: 'เปิดดูหน้าเว็บใน:'
   ErrorPage:

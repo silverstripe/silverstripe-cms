@@ -182,7 +182,7 @@ de:
     PUBLISHEDSITE: 'Veröffentlichte Site'
     Password: Passwort
     PostInstallTutorialIntro: 'Diese Internetseite ist eine einfache Version einer SilverStripe 3 Seite. Wie man diese erweitert, erfährst Du in der {link}.'
-    StartEditing: 'Du kannst nun beginnen die Seiteninhalte zu bearbeiten in dem Du <a href=\\"{link}\\">das CMS</a> öffnest.'
+    StartEditing: 'Sie können mit der Bearbeitung der Inhalte Ihrer Site beginnen, indem Sie <a href="{link}">das CMS</a> öffnen.'
     UnableDeleteInstall: 'Die Installationsdateien konnten nicht gelöscht werden. Bitte löschen Sie die Dateien manuell.'
     VIEWPAGEIN: 'Seite anzeigen in:'
   ErrorPage:
