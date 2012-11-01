@@ -1,16 +1,6 @@
 {
 	"name": "silverstripe/installer",
 	"description": "The SilverStripe Framework Installer",
-	"repositories": [
-		{
-			"type": "git",
-			"url": "https://github.com/silverstripe/silverstripe-cms.git"
-		},
-		{
-			"type": "git",
-			"url": "https://github.com/silverstripe/sapphire.git"
-		}
-	],
 	"require": {
 		"php": ">=5.3.2",
 		"silverstripe/cms": "3.0.x-dev",
