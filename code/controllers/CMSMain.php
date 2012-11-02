@@ -245,72 +245,89 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return $html;
 	}
 	
+	/**
+	 * Returns a Form for page searching for use in templates.
+	 * 
+	 * Can be modified from a decorator by a 'updateSearchForm' method
+	 *
+	 * @return Form
+	 */
 	public function SearchForm() {
-		// get all page types in a dropdown-compatible format
-		$pageTypeClasses = SiteTree::page_type_classes(); 
-		$pageTypes = array();
-		foreach ($pageTypeClasses as $pageTypeClass) {
-			$pageTypes[$pageTypeClass] = _t($pageTypeClass.'.SINGULARNAME', $pageTypeClass);
-		}
-		asort($pageTypes);
 		
-		// get all filter instances
-		$filters = ClassInfo::subclassesFor('CMSSiteTreeFilter');
-		$filterMap = array();
-		// remove base class
-		array_shift($filters);
-		// add filters to map
-		foreach($filters as $filter) {
-			$filterMap[$filter] = call_user_func(array($filter, 'title'));
-		}
-		// ensure that 'all pages' filter is on top position
-		uasort($filterMap, 
-			create_function('$a,$b', 'return ($a == "CMSSiteTreeFilter_Search") ? 1 : -1;')
-		);
+		// Get some translation for fields labels
+		$translatedDateFrom = _t('CMSSearch.FILTERDATEFROM', 'From');
+		$translatedDateTo = _t('CMSSearch.FILTERDATETO', 'To');
+		$translatedPages =  _t('CMSMain.PAGES', 'Pages');
+		$translatedPageTypes = _t('CMSMain.PAGETYPEOPT', 'Page Type', 'Dropdown for limiting search to a page type');
 		
-		$fields = new FieldList(
-			new TextField('q[Term]', _t('CMSSearch.FILTERLABELTEXT', 'Content')),
-			$dateGroup = new FieldGroup(
-				new HeaderField('q[Date]', _t('CMSSearch.FILTERDATEHEADING', 'Date'), 4),
-				$dateFrom = new DateField('q[LastEditedFrom]', _t('CMSSearch.FILTERDATEFROM', 'From')),
-				$dateTo = new DateField('q[LastEditedTo]', _t('CMSSearch.FILTERDATETO', 'To'))
-			),
-			new DropdownField(
-				'q[FilterClass]',
-				_t('CMSMain.PAGES', 'Pages'),
-				$filterMap
-			),
-			$classDropdown = new DropdownField(
-				'q[ClassName]',
-				_t('CMSMain.PAGETYPEOPT','Page Type', 'Dropdown for limiting search to a page type'),
-				$pageTypes
-			)
-			// new TextField('MetaTags', _t('CMSMain.SearchMetaTags', 'Meta tags'))
+		// Create the fields
+		$content = new TextField('q[Term]', _t('CMSSearch.FILTERLABELTEXT', 'Content'));
+		$dateHeader = new HeaderField('q[Date]', _t('CMSSearch.FILTERDATEHEADING', 'Date'), 4);
+		$dateFrom = new DateField('q[LastEditedFrom]', $translatedDateFrom);
+		$dateFrom->setConfig('showcalendar', true);
+		$dateTo = new DateField('q[LastEditedTo]', $translatedDateTo);
+		$dateTo->setConfig('showcalendar', true);
+		$pageFilter = new DropdownField('q[FilterClass]', $translatedPages, CMSSiteTreeFilter::get_all_filters());
+		$pageClasses = new DropdownField( 'q[ClassName]', $translatedPageTypes, $this->getPageTypes());
+		$pageClasses->setEmptyString(_t('CMSMain.PAGETYPEANYOPT','Any'));
+		
+		// Group the Datefields
+		$dateGroup = new FieldGroup(
+			$dateHeader,
+			$dateFrom,
+			$dateTo
 		);
 		$dateGroup->setFieldHolderTemplate('FieldGroup_DefaultFieldHolder')->addExtraClass('stacked');
-		$dateFrom->setConfig('showcalendar', true);
-		$dateTo->setConfig('showcalendar', true);
-		$classDropdown->setEmptyString(_t('CMSMain.PAGETYPEANYOPT','Any'));
-
+		
+		// Create the Field list
+		$fields = new FieldList(
+			$content,
+			$dateGroup,
+			$pageFilter,
+			$pageClasses
+		);
+		
+		// Create the Search and Reset action
 		$actions = new FieldList(
 			FormAction::create('doSearch',  _t('CMSMain_left.ss.APPLY FILTER', 'Apply Filter'))
 			->addExtraClass('ss-ui-action-constructive'),
 			Object::create('ResetFormAction', 'clear', _t('CMSMain_left.ss.RESET', 'Reset'))
 		);
 
-		// Use <button> to allow full jQuery UI styling
-		foreach($actions->dataFields() as $action) $action->setUseButtonTag(true);
+		// Use <button> to allow full jQuery UI styling on the all of the Actions
+		foreach($actions->dataFields() as $action) {
+			$action->setUseButtonTag(true);
+		}
 		
+		// Create the form
 		$form = Form::create($this, 'SearchForm', $fields, $actions)
 			->addExtraClass('cms-search-form')
 			->setFormMethod('GET')
 			->setFormAction($this->Link())
 			->disableSecurityToken()
 			->unsetValidator();
+		
+		// Load the form with previously sent search data
 		$form->loadDataFrom($this->request->getVars());
 
+		// Allow decorators to modify the form
 		$this->extend('updateSearchForm', $form);
+		
 		return $form;
+	}
+	
+	/**
+	 * Returns a sorted array suitable for a dropdown with pagetypes and their translated name
+	 * 
+	 * @return array
+	 */
+	protected function getPageTypes() {
+		$pageTypes = array();
+		foreach(SiteTree::page_type_classes() as $pageTypeClass) {
+			$pageTypes[$pageTypeClass] = _t($pageTypeClass.'.SINGULARNAME', $pageTypeClass);
+		}
+		asort($pageTypes);
+		return $pageTypes;
 	}
 	
 	public function doSearch($data, $form) {
