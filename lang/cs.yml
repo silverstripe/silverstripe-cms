@@ -1,7 +1,6 @@
 cs:
   AssetAdmin:
     ADDFILES: 'Přidat soubory'
-    ALLOWEDEXTS: 'Povolené extenze'
     ActionAdd: 'Přidat složku'
     AppCategoryArchive: Archív
     AppCategoryAudio: Zvuk

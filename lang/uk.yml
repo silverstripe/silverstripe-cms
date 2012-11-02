@@ -1,7 +1,6 @@
 uk:
   AssetAdmin:
     ADDFILES: 'Додати файли'
-    ALLOWEDEXTS: 'Допустимі розширення'
     ActionAdd: 'Додати папку'
     AppCategoryArchive: Архівувати
     AppCategoryAudio: Аудіо

@@ -1,7 +1,6 @@
 mi_NZ:
   AssetAdmin:
     ADDFILES: 'Tāpiri Kōnae'
-    ALLOWEDEXTS: 'Ngā toronga ka whakaaetia'
     ActionAdd: 'Tāpiri kōpaki'
     AppCategoryArchive: Puranga
     AppCategoryAudio: Ororongo

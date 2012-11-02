@@ -1,7 +1,6 @@
 fi:
   AssetAdmin:
     ADDFILES: 'Lisää tiedostoja'
-    ALLOWEDEXTS: 'Sallitut laajennukset'
     ActionAdd: 'Lisää kansio'
     AppCategoryArchive: Arkisto
     AppCategoryAudio: Ääni

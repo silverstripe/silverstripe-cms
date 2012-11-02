@@ -1,7 +1,6 @@
 nb:
   AssetAdmin:
     ADDFILES: 'Legg til filer'
-    ALLOWEDEXTS: 'Tillatte utvidelser'
     ActionAdd: 'Legg til folder'
     AppCategoryArchive: Arkiv
     AppCategoryAudio: Audio

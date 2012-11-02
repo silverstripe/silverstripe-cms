@@ -1,7 +1,6 @@
 pl:
   AssetAdmin:
     ADDFILES: 'Dodaj pliki'
-    ALLOWEDEXTS: 'Dozwolone rozszerzenia'
     ActionAdd: 'Dodaj katalog'
     AppCategoryArchive: Archiwum
     AppCategoryAudio: Dźwięk

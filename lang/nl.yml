@@ -1,7 +1,6 @@
 nl:
   AssetAdmin:
     ADDFILES: Bestanden
-    ALLOWEDEXTS: 'Toegestande extensies'
     ActionAdd: 'Map toevoegen'
     AppCategoryArchive: Archiveer
     AppCategoryAudio: Audio

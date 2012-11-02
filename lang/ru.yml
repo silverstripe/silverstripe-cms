@@ -1,7 +1,6 @@
 ru:
   AssetAdmin:
     ADDFILES: 'Добавить файлы'
-    ALLOWEDEXTS: 'Допустимые расширения'
     ActionAdd: 'Добавить папку'
     AppCategoryArchive: Архив
     AppCategoryAudio: Аудио

@@ -1,7 +1,6 @@
 bg:
   AssetAdmin:
     ADDFILES: 'Добави файлове'
-    ALLOWEDEXTS: 'Разрешени разширения'
     ActionAdd: 'Добави директория'
     AppCategoryArchive: Архив
     AppCategoryAudio: Аудио

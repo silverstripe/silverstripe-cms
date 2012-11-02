@@ -1,7 +1,6 @@
 sk:
   AssetAdmin:
     ADDFILES: 'Pridať súbory'
-    ALLOWEDEXTS: 'Povolené extenzie'
     ActionAdd: 'Pridať priečinok'
     AppCategoryArchive: Archív
     AppCategoryAudio: Zvuk

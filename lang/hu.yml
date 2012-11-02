@@ -1,7 +1,6 @@
 hu:
   AssetAdmin:
     ADDFILES: 'Állomány hozzáadása'
-    ALLOWEDEXTS: 'Engedélyezett kiterjesztések'
     ActionAdd: 'Mappa hozzáadása'
     AppCategoryArchive: Archív
     AppCategoryAudio: Audió

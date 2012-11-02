@@ -1,7 +1,6 @@
 fr:
   AssetAdmin:
     ADDFILES: 'Ajouter des fichiers'
-    ALLOWEDEXTS: 'Extensions autorisées'
     ActionAdd: 'Ajouter un dossier'
     AppCategoryArchive: Archive
     AppCategoryAudio: Audio

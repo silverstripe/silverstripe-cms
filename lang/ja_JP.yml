@@ -1,7 +1,6 @@
 ja_JP:
   AssetAdmin:
     ADDFILES: ファイルを追加
-    ALLOWEDEXTS: 利用可能な拡張子
     ActionAdd: フォルダを追加
     AppCategoryArchive: アーカイブ
     AppCategoryAudio: 音楽

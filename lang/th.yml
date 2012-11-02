@@ -1,7 +1,6 @@
 th:
   AssetAdmin:
     ADDFILES: เพิ่มไฟล์
-    ALLOWEDEXTS: ส่วนเสริมที่อนุญาตให้ใช้งานได้
     ActionAdd: เพิ่มโฟลเดอร์
     AppCategoryArchive: รายการ
     AppCategoryAudio: ไฟล์เสียง

@@ -1,7 +1,6 @@
 es_MX:
   AssetAdmin:
     ADDFILES: 'Add Files'
-    ALLOWEDEXTS: 'Allowed extensions'
     ActionAdd: 'Add folder'
     AppCategoryArchive: Archive
     AppCategoryAudio: Audio

@@ -1,7 +1,6 @@
 pt:
   AssetAdmin:
     ADDFILES: 'Adicionar ficheiros'
-    ALLOWEDEXTS: 'Extensões  permitidas'
     ActionAdd: 'Adicionar pasta'
     AppCategoryArchive: Arquivar
     AppCategoryAudio: Audio

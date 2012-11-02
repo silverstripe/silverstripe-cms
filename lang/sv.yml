@@ -1,7 +1,6 @@
 sv:
   AssetAdmin:
     ADDFILES: 'Lägg till filer'
-    ALLOWEDEXTS: 'Tillåtna filändelser'
     ActionAdd: 'Skapa mapp'
     AppCategoryArchive: Arkivera
     AppCategoryAudio: Ljud

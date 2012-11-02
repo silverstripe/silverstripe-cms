@@ -1,7 +1,6 @@
 lt:
   AssetAdmin:
     ADDFILES: 'Įkelti bylą/as'
-    ALLOWEDEXTS: 'Leidžiami plėtiniai'
     ActionAdd: 'Pridėti aplanką'
     AppCategoryArchive: Archyvas
     AppCategoryAudio: Garsas

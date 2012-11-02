@@ -1,7 +1,6 @@
 da:
   AssetAdmin:
     ADDFILES: 'Tilføj filer'
-    ALLOWEDEXTS: 'Tilladte filendelser'
     ActionAdd: 'Tilføj mappe'
     AppCategoryArchive: Arkiv
     AppCategoryAudio: Lyd

@@ -1,7 +1,6 @@
 gl_ES:
   AssetAdmin:
     ADDFILES: 'Engadir Ficheiros'
-    ALLOWEDEXTS: 'Extensións permitidas'
     ActionAdd: 'Engadir cartafol'
     AppCategoryArchive: Arquivo
     AppCategoryAudio: Audio

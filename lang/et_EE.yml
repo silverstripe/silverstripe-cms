@@ -1,7 +1,6 @@
 et_EE:
   AssetAdmin:
     ADDFILES: 'Lisa fail'
-    ALLOWEDEXTS: 'Lubatud laiendused'
     ActionAdd: 'Lisa kaust'
     AppCategoryArchive: Arhiiv
     AppCategoryAudio: Heli
