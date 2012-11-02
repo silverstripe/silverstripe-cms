@@ -74,20 +74,13 @@ class CMSFileAddController extends LeftAndMain {
 
 		$exts = $uploadField->getValidator()->getAllowedExtensions();
 		asort($exts);
+		$uploadField->Extensions = implode(', ', $exts);
 
 		$form = new Form(
 			$this,
 			'getEditForm',
 			new FieldList(
-				$uploadField,
-				new LiteralField(
-					'AllowedExtensions',
-					sprintf(
-						'<p>%s: %s</p>',
-						_t('AssetAdmin.ALLOWEDEXTS', 'Allowed extensions'),
-						implode('<em>, </em>', $exts)
-					)
-				),
+				$uploadField,				
 				new HiddenField('ID')
 			),
 			new FieldList()
