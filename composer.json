@@ -1,0 +1,23 @@
+{
+	"name": "silverstripe/cms",
+	"description": "The SilverStripe Content Management System",
+	"type": "silverstripe-module",
+	"keywords": ["silverstripe", "cms"],
+	"homepage": "http://silverstripe.org/cms",
+	"license": "BSD-3-Clause",
+	"authors": [
+		{
+			"name": "SilverStripe",
+			"homepage": "http://silverstripe.com"
+		},
+		{
+			"name": "The SilverStripe Community",
+			"homepage": "http://silverstripe.org"
+		}
+	],
+	"require": {
+		"php": ">=5.2.4",
+		"composer/installers": "*",
+		"silverstripe/framework": "self.version"
+	}
+}
