@@ -3,9 +3,13 @@
 	"description": "The SilverStripe Framework Installer",
 	"require": {
 		"php": ">=5.3.2",
-		"silverstripe/cms": "3.0.x-dev",
-		"silverstripe/framework": "3.0.x-dev",
+		"silverstripe/cms": "self.version",
+		"silverstripe/framework": "self.version",
 		"silverstripe-themes/simple": "*"
+	},
+	"require-dev": {
+		"silverstripe/compass": "*",
+		"silverstripe/docsviewer": "*"
 	},
 	"minimum-stability": "dev"
 }
