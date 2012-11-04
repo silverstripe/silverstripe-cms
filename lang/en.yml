@@ -139,7 +139,6 @@ en:
     MENUTITLE: Pages
     TreeView: 'Tree View'
   CMSPagesController_ContentToolbar.ss:
-    ENABLEDRAGGING: 'Drag''n''drop'
     MULTISELECT: Multi-selection
   CMSPagesController_Tools.ss:
     FILTER: Filter
@@ -174,7 +173,7 @@ en:
     PUBLISHEDSITE: 'Published Site'
     Password: Password
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\"{link}\">the CMS</a>.'
+    StartEditing: 'You can start editing your site\''s content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'View Page in:'
   ErrorPage:
@@ -388,8 +387,6 @@ en:
     VIEWLAST: 'View last'
     VIEWNEXT: 'View next'
     VIEWPREVIOUS: 'View previous'
-  TreeTools:
-    DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:
     CANACCESS: 'You can access the archived site at this link:'
     HAVEASKED: 'You have asked to view the content of our site on'
