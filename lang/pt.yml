@@ -1,11 +1,10 @@
 pt:
   AssetAdmin:
     ADDFILES: 'Adicionar ficheiros'
-    ALLOWEDEXTS: 'Extensões  permitidas'
     ActionAdd: 'Adicionar pasta'
     AppCategoryArchive: Arquivar
     AppCategoryAudio: Audio
-    AppCategoryDocument: Document
+    AppCategoryDocument: Documento
     AppCategoryFlash: 'Inserir flash'
     AppCategoryImage: Imagem
     AppCategoryVideo: Vídeo
@@ -14,7 +13,7 @@ pt:
     CurrentFolderOnly: 'Limitar à pasta actual?'
     DetailsView: Detalhes
     FILES: Ficheiros
-    FILESYSTEMSYNC: 'Sync files'
+    FILESYSTEMSYNC: 'Sincronizar ficheiros'
     FILESYSTEMSYNCTITLE: 'Actualize a base de dados de ficheiros do CMS. É recomendado quando são adicionados novos arquivos externamente, por exemplo, através de FTP.'
     FROMTHEINTERNET: 'Da internet'
     FROMYOURCOMPUTER: 'Do computador'
@@ -29,7 +28,7 @@ pt:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Apagar pastas'
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: Filtro
   AssetAdmin_left.ss:
     GO: Ir
   AssetTableField:
@@ -87,7 +86,7 @@ pt:
     EditTree: 'Editar árvore'
     ListFiltered: 'Lista filtrada.'
     MENUTITLE: 'Editar página'
-    NEWPAGE: 'New {pagetype}'
+    NEWPAGE: 'Nova {pagetype}'
     PAGENOTEXISTS: 'Esta página não existe'
     PAGES: Páginas
     PAGETYPEANYOPT: Qualquer
@@ -165,24 +164,24 @@ pt:
   ContentControl:
     NOTEWONTBESHOWN: 'Nota: Esta mensagem não vai ser apresentada aos visitantes'
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
+    ARCHIVEDSITE: Pré-visualização
     ARCHIVEDSITEFROM: 'Arquivar o site de'
     CMS: 'Gestor de Conteúdos'
     DRAFTSITE: 'Site Rascunho'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Tem de se autenticar para ver o conteúdo de rascunho ou arquivado. <a href="%s">Clique aqui para voltar ao site publicado</a>'
     Email: Email
-    INSTALL_SUCCESS: 'Installation Successful!'
+    INSTALL_SUCCESS: 'Instalação concluída com sucesso'
     InstallFilesDeleted: 'Ficheiros de instalação foram removidos com sucesso.'
     InstallSecurityWarning: 'Por razões de segurança deverá apagar os ficheiros de instalação, a menos que esteja a planear uma instalação futura (<em> requer acesso de administrador, ver acima </em>). O servidor apenas necessita de permissões de escrita na pasta "assets", poderá remover todos os acessos de escrita nas restantes pastas.<a href="{link}" style="text-align: Clique aqui para apagar os ficheiros de instalação.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
+    InstallSuccessCongratulations: 'SilverStripe foi instalado com sucesso'
     LOGGEDINAS: 'Autenticado como'
     LOGIN: Autenticar
     LOGOUT: Sair
     NOTLOGGEDIN: 'Não autenticado'
     PUBLISHEDSITE: 'Site Publicado'
     Password: Palavra-passe
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    PostInstallTutorialIntro: 'Este site é uma versão simplificada do SilverStripe 3. Para adicionar novas funcionalidades visita {link}.'
+    StartEditing: 'Pode começar a editar o conteúdo do seu site acedendo ao <a href="{link}">CMS</a>.'
     UnableDeleteInstall: 'Impossível remover os ficheiros de instalação. Por favor, remova-os manualmente.'
     VIEWPAGEIN: 'Ver página em:'
   ErrorPage:
@@ -193,8 +192,8 @@ pt:
     DEFAULTSERVERERRORPAGETITLE: '500 - Erro do servidor'
     DESCRIPTION: 'Conteúdo personalizado para as diferentes possibilidades de erro (ex. página não encontrada)'
     ERRORFILEPROBLEM: 'Erro ao escrever no ficheiro "{filename}". Por favor, verifique as permissões do ficheiro.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
+    PLURALNAME: 'Página de erro'
+    SINGULARNAME: 'Página de erro'
     400: '400 - Bad Request'
     401: '401 - Não Autorizado'
     403: '403 - Proibido'
@@ -241,15 +240,15 @@ pt:
     HASBEENSETUP: 'Uma página de redireccionamento foi criada sem nenhum destino.'
     HEADER: 'Esta página irá redireccionar os utilizadores para outra página'
     OTHERURL: 'Outro Site'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: 'Página de redirecção'
     REDIRECTTO: 'Redireccionar para'
     REDIRECTTOEXTERNAL: 'Outro site'
     REDIRECTTOPAGE: 'Uma página no seu site'
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: 'A página redirecciona para uma que não existe'
     YOURPAGE: 'Página no seu Site'
   ReportAdmin:
     MENUTITLE: Relatórios
-    ReportTitle: Title
+    ReportTitle: Título
   ReportAdminForm:
     FILTERBY: 'Filtrar por'
   SearchForm:
@@ -278,8 +277,8 @@ pt:
     EDITHEADER: 'Quem pode editar páginas neste site?'
     EDIT_PERMISSION: 'Gerir configuração do site'
     EDIT_PERMISSION_HELP: 'Capacidade de editar as configurações de acesso global / permissões da página.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
+    PLURALNAME: 'Configurações do site'
+    SINGULARNAME: 'Configurações do site'
     SITENAMEDEFAULT: 'Nome do site'
     SITETAGLINE: 'Slogan do site'
     SITETITLE: 'Título do site'
@@ -332,13 +331,13 @@ pt:
     LINKCHANGENOTE: 'Alterar as ligação das páginas vai-se reflectir na ligação das páginas dependentes.'
     MENUTITLE: 'Nome na Navegação'
     METADESC: Descrição
+    METADESCHELP: 'Os motores de pesquisa utilizam este conteúdo para apresentar os seus resultados (no entanto não influencia o ranking do site). '
     METAEXTRA: 'Meta-Tags personalizáveis'
-    METAKEYWORDS: 'Palavras chave'
-    METATITLE: Título
+    METAEXTRAHELP: 'HTML tags para informações adicionais. Por exemplo &lt;meta name="nomeDaTag" content="o teu conteúdo personalizado" /&gt;'
     MODIFIEDONDRAFTHELP: 'A página contem alterações não publicadas'
     MODIFIEDONDRAFTSHORT: Modificado
     MetadataToggle: Meta-data
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
+    OBSOLETECLASS: 'O tipo de página {type} é obsuleto. Ao gravar esta página poderá perder alguns dos dados. '
     PAGELOCATION: 'Localização da página'
     PAGETITLE: 'Nome da página'
     PAGETYPE: 'Tipo de Página'
@@ -348,7 +347,7 @@ pt:
     PARENTTYPE_SUBPAGE: 'Página Parente'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Gestão de permissões de acesso para o conteúdo'
     PERMISSION_GRANTACCESS_HELP: 'Permitir criar restrições específicas na página.'
-    PLURALNAME: Pages
+    PLURALNAME: Páginas
     PageTypNotAllowedOnRoot: 'Páginas do tipo "{type}" não tem permissões para serem criadas a este nível.'
     PageTypeNotAllowed: 'A página do tipo "{type}" não é permitida como filho deste tipo de página'
     REMOVEDFROMDRAFTHELP: 'A página está publicada mas foi removida dos rascunhos'
@@ -358,7 +357,7 @@ pt:
     REORGANISE_HELP: 'Rearranjar páginas na árvore do site com drag&drop'
     SHOWINMENUS: 'Mostrar no Menu?'
     SHOWINSEARCH: 'Mostrar nas pesquisas?'
-    SINGULARNAME: Page
+    SINGULARNAME: Página
     TABBEHAVIOUR: Comportamento
     TABCONTENT: Conteúdo
     TABDEPENDENT: 'Páginas Dependentes'

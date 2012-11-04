@@ -1,7 +1,6 @@
 en_GB:
   AssetAdmin:
     ADDFILES: 'Add Files'
-    ALLOWEDEXTS: 'Allowed extensions'
     ActionAdd: 'Add folder'
     AppCategoryArchive: Archive
     AppCategoryAudio: Audio
@@ -182,7 +181,7 @@ en_GB:
     PUBLISHEDSITE: 'Published Site'
     Password: Password
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually.'
     VIEWPAGEIN: 'View Page in:'
   ErrorPage:
@@ -237,11 +236,11 @@ en_GB:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
   RedirectorPage:
-    DESCRIPTION: 'Redirects to a different internal page'
+    DESCRIPTION: 'Redirects to another page'
     HASBEENSETUP: 'A redirector page has been set up without anywhere to redirect to.'
     HEADER: 'This page will redirect users to another page'
     OTHERURL: 'Other website URL'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: 'Redirector Pages'
     REDIRECTTO: 'Redirect to'
     REDIRECTTOEXTERNAL: 'Another website'
     REDIRECTTOPAGE: 'A page on your website'
@@ -314,7 +313,7 @@ en_GB:
     DEFAULTHOMETITLE: Home
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Deleted
-    DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages and pages with content links.'
     DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Link type'
     DependtPageColumnURL: URL
@@ -332,9 +331,9 @@ en_GB:
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 'Navigation label'
     METADESC: Description
+    METADESCHELP: 'Search engines use this content when displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'Custom Meta Tags'
-    METAKEYWORDS: Keywords
-    METATITLE: Title
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
     MetadataToggle: Metadata
@@ -377,7 +376,7 @@ en_GB:
     many_many_ImageTracking: 'Image Tracking'
     many_many_LinkTracking: 'Link Tracking'
   SiteTreeURLSegmentField:
-    HelpChars: ' Special characters are automatically converted or removed.'
+    HelpChars: 'Special characters are automatically converted or removed.'
   StaticExporter:
     BASEURL: 'Base URL'
     EXPORTTO: 'Export to that folder'

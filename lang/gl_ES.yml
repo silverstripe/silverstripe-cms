@@ -1,7 +1,6 @@
 gl_ES:
   AssetAdmin:
     ADDFILES: 'Engadir Ficheiros'
-    ALLOWEDEXTS: 'Extensións permitidas'
     ActionAdd: 'Engadir cartafol'
     AppCategoryArchive: Arquivo
     AppCategoryAudio: Audio
@@ -29,7 +28,7 @@ gl_ES:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Eliminar cartafoles'
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: Filtro
   AssetAdmin_left.ss:
     GO: Ir
   AssetTableField:
@@ -182,7 +181,7 @@ gl_ES:
     PUBLISHEDSITE: 'Sitio Publicado'
     Password: Password
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'Ver a Páxina en:'
   ErrorPage:
@@ -332,9 +331,9 @@ gl_ES:
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 'Etiqueta Navegación'
     METADESC: 'Meta Descrición'
+    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'Personalizar Meta Tags'
-    METAKEYWORDS: 'Meta Keywords'
-    METATITLE: 'Meta Title'
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modificado
     MetadataToggle: Metadata

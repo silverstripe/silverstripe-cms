@@ -1,7 +1,6 @@
 eo:
   AssetAdmin:
     ADDFILES: 'Add Files'
-    ALLOWEDEXTS: 'Allowed extensions'
     ActionAdd: 'Add folder'
     AppCategoryArchive: Archive
     AppCategoryAudio: Audio
@@ -182,7 +181,7 @@ eo:
     PUBLISHEDSITE: 'Publikigita Retejo'
     Password: Password
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'Vidigi Paĝon en:'
   ErrorPage:
@@ -332,9 +331,9 @@ eo:
     LINKCHANGENOTE: 'Ŝanĝi la ligilon de ĉi tiu paĝo ankaŭ influas la ligilojn de ĉiuj idaj paĝoj.'
     MENUTITLE: 'Navigado etikedo'
     METADESC: Priskribo
+    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'Propraj Meta-etikedoj '
-    METAKEYWORDS: Ĉefvortoj
-    METATITLE: Titolo
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
     MetadataToggle: Metadata

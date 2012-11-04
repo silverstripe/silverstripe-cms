@@ -1,7 +1,6 @@
 sk:
   AssetAdmin:
     ADDFILES: 'Pridať súbory'
-    ALLOWEDEXTS: 'Povolené extenzie'
     ActionAdd: 'Pridať priečinok'
     AppCategoryArchive: Archív
     AppCategoryAudio: Zvuk
@@ -29,7 +28,7 @@ sk:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Vymazať priečinky'
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: Filtrovať
   AssetAdmin_left.ss:
     GO: Choď
   AssetTableField:
@@ -182,7 +181,7 @@ sk:
     PUBLISHEDSITE: 'Verejný web'
     Password: Heslo
     PostInstallTutorialIntro: 'Tento web je zjednodušená verzia SilverStripe 3. webu. Pre rošírenie, pozrite sa na {link}, prosím.'
-    StartEditing: 'Môžte začať editáciu vášho web obsahu otvorením <a href=\\"{link}\\">CMS</a>.'
+    StartEditing: 'Môžte začať editáciu vášho web obsahu otvorením <a href="{link}">CMS</a>.'
     UnableDeleteInstall: 'Nepodarilo sa smazať inštalačné súbory. Smažte ručne súbory uvedené dole'
     VIEWPAGEIN: 'Prezrieť stránku v:'
   ErrorPage:
@@ -194,7 +193,7 @@ sk:
     DESCRIPTION: 'Vlastný obsah pre rôzne prípady chýb (napr. "Stránka nenájdená")'
     ERRORFILEPROBLEM: 'Chyba otvorenia súboru "{filename}" pre zápis. Skontrolujte oprávnenia súboru, prosím.'
     PLURALNAME: 'Chybové stránky'
-    SINGULARNAME: 'Chybova stránka'
+    SINGULARNAME: 'Chybová stránka'
     400: '400 - Neplatná požiadavka'
     401: '401 - Neautorizovaný prístup'
     403: '403 - Zamietnuté'
@@ -332,9 +331,9 @@ sk:
     LINKCHANGENOTE: 'Zmenenie odkazu tejto stránky ovplyvní tiež odkazy všetkých podstránok.'
     MENUTITLE: 'Navigačná menovka'
     METADESC: Popis
+    METADESCHELP: 'Vyhľadávače používajú tento obsah pre zobrazovanie výsledkov vyhľadávania (aj keď to nebude mať vplyv na ich hodnotenie).'
     METAEXTRA: 'Vlastné Meta Tagy'
-    METAKEYWORDS: 'Meta kľúčové slová'
-    METATITLE: Titulok
+    METAEXTRAHELP: 'HTML tagy pre ďalšie meta informácie. Napríklad &lt;meta name="vlastnýnazov" content="vlastný obsah tu"  /&gt;'
     MODIFIEDONDRAFTHELP: 'Stránka má nezverejnené zmeny'
     MODIFIEDONDRAFTSHORT: Zmenené
     MetadataToggle: Metaúdaje

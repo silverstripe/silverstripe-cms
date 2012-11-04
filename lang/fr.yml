@@ -1,7 +1,6 @@
 fr:
   AssetAdmin:
     ADDFILES: 'Ajouter des fichiers'
-    ALLOWEDEXTS: 'Extensions autorisées'
     ActionAdd: 'Ajouter un dossier'
     AppCategoryArchive: Archive
     AppCategoryAudio: Audio
@@ -104,7 +103,7 @@ fr:
     RESTORED: '« {title} » restaurée avec succès'
     ROLLBACK: 'Retourner à cette version'
     ROLLEDBACKPUB: 'Retour à la version publiée. La nouvelle version est la nº {version}'
-    ROLLEDBACKVERSION: 'Retour à la version #%d. La nouvelle version est #%d'
+    ROLLEDBACKVERSION: 'Retour à la version nº %d. La nouvelle version est la nº %d.'
     SAVE: Sauvegarder
     SAVEDRAFT: 'Sauvegarder brouillon'
     TabContent: Contenu
@@ -127,9 +126,9 @@ fr:
     COMPARINGVERSION: 'Comparaison entre les versions {version1} et {version2}.'
     MENUTITLE: Historique
     REVERTTOTHISVERSION: 'Ändra till denna version'
-    SHOWUNPUBLISHED: 'Visa opublicerade versioner'
+    SHOWUNPUBLISHED: 'Afficher les versions non publiées'
     SHOWVERSION: 'Visa version'
-    VIEW: Visa
+    VIEW: Afficher
     VIEWINGVERSION: 'Version affichée : {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Auteur
@@ -138,7 +137,7 @@ fr:
     UNKNOWN: Inconnu
     WHEN: Date
   CMSPageSettingsController:
-    MENUTITLE: 'Ändra sidan'
+    MENUTITLE: 'Éditer la page'
   CMSPagesController:
     GalleryView: Galerie
     ListView: Liste
@@ -165,7 +164,7 @@ fr:
   ContentControl:
     NOTEWONTBESHOWN: 'Note : ce message ne sera pas visible de vos visiteurs.'
   ContentController:
-    ARCHIVEDSITE: 'Version de l’aperçu'
+    ARCHIVEDSITE: 'Aperçu de cette version'
     ARCHIVEDSITEFROM: 'Site archivé depuis'
     CMS: CMS
     DRAFTSITE: 'Site Brouillon'
@@ -181,8 +180,8 @@ fr:
     NOTLOGGEDIN: Non-connecté
     PUBLISHEDSITE: 'Site Publié'
     Password: 'Mot de passe'
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    PostInstallTutorialIntro: 'Ce site est une version simplifiée d’un site SilverStripe 3. Pour le développer, consultez {link}.'
+    StartEditing: 'Vous pouvez commencer à éditer votre site en ouvrant <a href="{link}">le CMS</a>.'
     UnableDeleteInstall: 'La suppression des fichiers d’installation a échoué ; faites-le manuellement pour les fichiers ci-dessous : '
     VIEWPAGEIN: 'Voir la page en :'
   ErrorPage:
@@ -269,7 +268,7 @@ fr:
     ParameterLiveCheckbox: 'Visiter le site de production'
     REPEMPTY: 'Le rapport {title} est vide'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Pour partager un page ''this-to-this'', copier et coller le lien ci-dessous.'
+    ShareInstructions: 'Pour partager un lien vers cette page, copiez et collez le lien ci-dessous.'
     ShareLink: 'Partager le lien'
   SilverStripeNavigatorLinkl:
     CloseLink: Fermer
@@ -332,9 +331,9 @@ fr:
     LINKCHANGENOTE: 'Changer le lien de cette page affectera aussi les liens des pages enfants.'
     MENUTITLE: 'Nom de navigation'
     METADESC: Description
+    METADESCHELP: 'Les moteurs de recherche reprennent cette description dans leurs résultats (bien qu’elle n’ait pas d’influence sur le classement).'
     METAEXTRA: 'Méta Balises Personnalisées'
-    METAKEYWORDS: 'Mots clés'
-    METATITLE: Titre
+    METAEXTRAHELP: 'Balises HTML pour des métadonnées supplémentaires. Par exemple &lt;meta name="monNom" content="Mon contenu" /&gt;'
     MODIFIEDONDRAFTHELP: 'La page comporte des modifications non publiées'
     MODIFIEDONDRAFTSHORT: Modifiée
     MetadataToggle: Métadonnées
@@ -369,7 +368,7 @@ fr:
     VIEW_ALL_DESCRIPTION: 'Voir toute la page'
     VIEW_ALL_HELP: 'Possibilité de voir toutes les pages du site, peu importe les réglages de l’onglet Accès. Nécessite la permission "Access to Site Content"'
     VIEW_DRAFT_CONTENT: 'Voir les brouillons'
-    VIEW_DRAFT_CONTENT_HELP: 'S''applique à la visualisation de page de manière externe au CMS en mode brouillon. Pratique pour les collaborateurs externes sans accès CMS.'
+    VIEW_DRAFT_CONTENT_HELP: 'Concerne l’affichage des pages de manière externe au CMS en mode brouillon. Pratique pour les collaborateurs externes sans accès au CMS.'
     Viewers: 'Groupes de visualisation'
     Visibility: Visibilité
     has_one_Parent: 'Page parente'
@@ -404,8 +403,8 @@ fr:
   VirtualPage:
     CHOOSE: 'Choisir le lien d''une page'
     DESCRIPTION: 'Affiche le contenu d’une autre page'
-    EDITCONTENT: 'cliquer ici pour modifier le contenu'
+    EDITCONTENT: 'Faites clic ici pour modifier le contenu'
     HEADER: 'Cette page est virtuelle'
-    PLURALNAME: 'Pages Virtuelles'
+    PLURALNAME: 'Pages virtuelles'
     PageTypNotAllowedOnRoot: 'Le type de page d’origine « {type} » n’est pas autorisé au niveau racine pour cette page virtuelle'
     SINGULARNAME: 'Page virtuelle'

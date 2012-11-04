@@ -1,7 +1,6 @@
 fi:
   AssetAdmin:
     ADDFILES: 'Lisää tiedostoja'
-    ALLOWEDEXTS: 'Sallitut laajennukset'
     ActionAdd: 'Lisää kansio'
     AppCategoryArchive: Arkisto
     AppCategoryAudio: Ääni
@@ -29,7 +28,7 @@ fi:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Poista kansiot'
   AssetAdmin_Tools:
-    FILTER: Suodin
+    FILTER: Suodatin
   AssetAdmin_left.ss:
     GO: Siirry
   AssetTableField:
@@ -182,7 +181,7 @@ fi:
     PUBLISHEDSITE: 'Julkaistu sivusto'
     Password: Salasana
     PostInstallTutorialIntro: 'Tämä sivusto on yksinkertaistettu versio SilverStripe 3 sivustosta. Laajentaaksesi tätä, ole hyvä ja tutustu: {link}.'
-    StartEditing: 'Voit aloittaa sivustosi sisällön muokkaamisen kirjautumalla <a href=\\"{link}\\">CMS-järjestelmään</a>.'
+    StartEditing: 'Voit aloittaa sivuston muokkauksen avaamalla <a href="{link}">CMS-järjestelmän</a>.'
     UnableDeleteInstall: 'Asennustiedostojen automaattinen poistaminen ei onnistunut. Ole hyvä ja poista seuraavat tiedostot manuaalisesti.'
     VIEWPAGEIN: 'Tarkastele sivua:'
   ErrorPage:
@@ -332,9 +331,9 @@ fi:
     LINKCHANGENOTE: 'Tämän sivun linkin muuttaminen vaikuttaa myös alasivujen linkkeihin.'
     MENUTITLE: 'Navigoinnin nimike'
     METADESC: Kuvaus
+    METADESCHELP: 'Hakukoneet näyttää tämä sisältö hakutuloksessa (tämä sisältö ei kuitenkin vaikuttaa sijaintia hakutuloksessa).'
     METAEXTRA: 'Omat meta-tagit'
-    METAKEYWORDS: Avainsanat
-    METATITLE: Otsikko
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Sivulla on tehty muutoksia, joita ei ole julkaistu'
     MODIFIEDONDRAFTSHORT: Muokattu
     MetadataToggle: Meta-tiedot

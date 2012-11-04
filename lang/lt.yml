@@ -1,7 +1,6 @@
 lt:
   AssetAdmin:
     ADDFILES: 'Įkelti bylą/as'
-    ALLOWEDEXTS: 'Leidžiami plėtiniai'
     ActionAdd: 'Pridėti aplanką'
     AppCategoryArchive: Archyvas
     AppCategoryAudio: Garsas
@@ -165,7 +164,7 @@ lt:
   ContentControl:
     NOTEWONTBESHOWN: 'Pastaba: ši žinutė nebus matoma jūsų lankytojams'
   ContentController:
-    ARCHIVEDSITE: 'Peržiūrėti versiją'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Archyvuota svetainė iš'
     CMS: TVS
     DRAFTSITE: 'Juodraštinė svetainė'
@@ -182,7 +181,7 @@ lt:
     PUBLISHEDSITE: 'Publikuojama svetainė'
     Password: Slaptažodis
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    StartEditing: 'Jūs galite pradėti redaguoti svetainės turinį, atidarydami <a href="{link}">TVS</a>.'
     UnableDeleteInstall: 'Nepajėgiame ištrinti įdiegimo bylų. Prašome pašalinti bylas rankiniu būdu.'
     VIEWPAGEIN: 'Peržiūrėti puslapį:'
   ErrorPage:
@@ -193,8 +192,8 @@ lt:
     DEFAULTSERVERERRORPAGETITLE: 'Tarnybinės stoties klaida'
     DESCRIPTION: 'Savitas turinys, skirtingai klaidai apibrėžti (Pvz.: "Puslapis nerastas")'
     ERRORFILEPROBLEM: 'Klaida atveriant rašymui bylą "{filename}". Prašome patikrinti bylos leidimus.'
-    PLURALNAME: 'Klaidos puslapiai'
-    SINGULARNAME: 'Klaidos puslapis'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Bloga užklausa'
     401: '401 - Leidimas neduotas'
     403: '403 - Uždrausta'
@@ -241,11 +240,11 @@ lt:
     HASBEENSETUP: 'Nukreipimo puslapis nustatytas be jokio nukreipimo.'
     HEADER: 'Šis puslapis nukreips lankytojus į kitą puslapį'
     OTHERURL: 'Kitos svetainės URL adresas'
-    PLURALNAME: 'Persiuntimo puslapiai'
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Nukreipti į'
     REDIRECTTOEXTERNAL: 'Kita svetainė'
     REDIRECTTOPAGE: 'Jūsų svetainės puslapis'
-    SINGULARNAME: 'Persiuntimo puslapis'
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Jūsų svetainės puslapis'
   ReportAdmin:
     MENUTITLE: Ataskaitos
@@ -278,8 +277,8 @@ lt:
     EDITHEADER: 'Kas gali redaguoti šį puslapį?'
     EDIT_PERMISSION: 'Tvarkyti svetainės parametrus'
     EDIT_PERMISSION_HELP: 'Galimybė tvarkyti globalias priėjimo, pagrindinio puslapio teises.'
-    PLURALNAME: 'Svetaines konfiguracijos'
-    SINGULARNAME: 'Svetaines konfigūracija'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Jūsų Svetainės Pavadinimas'
     SITETAGLINE: 'Svetainės šūkis'
     SITETITLE: 'Svetainės pavadinimas'
@@ -332,9 +331,9 @@ lt:
     LINKCHANGENOTE: 'Keičiant šio puslapio nuorodą, keisis ir jam priklausančių puslapių nuorodos.'
     MENUTITLE: 'Navigacijos pavadinimas'
     METADESC: Aprašymas
+    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'Vartotojo meta žymės'
-    METAKEYWORDS: 'Meta raktažodžiai'
-    METATITLE: Pavadinimas
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Puslapyje yra nepublikuoto turinio'
     MODIFIEDONDRAFTSHORT: Pakeistas
     MetadataToggle: Metaduomenys

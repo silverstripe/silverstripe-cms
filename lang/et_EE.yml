@@ -1,7 +1,6 @@
 et_EE:
   AssetAdmin:
     ADDFILES: 'Lisa fail'
-    ALLOWEDEXTS: 'Lubatud laiendused'
     ActionAdd: 'Lisa kaust'
     AppCategoryArchive: Arhiiv
     AppCategoryAudio: Heli
@@ -29,7 +28,7 @@ et_EE:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Kustuta kaustad'
   AssetAdmin_Tools:
-    FILTER: Filtreeri
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Mine
   AssetTableField:
@@ -165,7 +164,7 @@ et_EE:
   ContentControl:
     NOTEWONTBESHOWN: 'Märkus. Seda teadet ei kuvata lehe külastajatele'
   ContentController:
-    ARCHIVEDSITE: 'Eelvaate versioon'
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Arhiveeritud sait asukohast'
     CMS: CMS
     DRAFTSITE: 'Mustandi sait'
@@ -182,7 +181,7 @@ et_EE:
     PUBLISHEDSITE: 'Avaldatud sait'
     Password: Salasõna
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    StartEditing: 'Saate alustada oma saidi sisu redigeerimisega, kui avate <a href="{link}">CMS-i</a>.'
     UnableDeleteInstall: 'Installifaile ei olnud võimalik kustutada. Kustutage allolevad failid käsitsi.'
     VIEWPAGEIN: 'Kuva leht:'
   ErrorPage:
@@ -193,8 +192,8 @@ et_EE:
     DEFAULTSERVERERRORPAGETITLE: 'Serveri viga'
     DESCRIPTION: 'Kohandatud sisu erinevate tõrgete korral (nt "Lehte ei leitud")'
     ERRORFILEPROBLEM: 'Tõrge faili "{filename}" avamisel kirjutamiseks. Kontrollige faili õigusi.'
-    PLURALNAME: Vealehed
-    SINGULARNAME: Vealehed
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Halb päring'
     401: '401 - Volitamata ligipääs'
     403: '403 - Keelatud'
@@ -241,11 +240,11 @@ et_EE:
     HASBEENSETUP: 'Suunav lehekülg seati üles ilma, et ta kuhugile suunaks.'
     HEADER: 'See lehekülg suunab kasutajad teisele leheküljele'
     OTHERURL: 'Teise veebisaidi URL'
-    PLURALNAME: Ümbersuunamislehed
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Suuna ümber'
     REDIRECTTOEXTERNAL: 'Teisele veebisaidile'
     REDIRECTTOPAGE: 'Leheküljele sinu veebisaidil'
-    SINGULARNAME: Ümbersuunamisleht
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Lehekülg sinu veebisaidil'
   ReportAdmin:
     MENUTITLE: Aruanded
@@ -278,8 +277,8 @@ et_EE:
     EDITHEADER: 'Kes saavad sellel saidil lehti redigeerida?'
     EDIT_PERMISSION: 'Saidi konfiguratsiooni haldamine'
     EDIT_PERMISSION_HELP: 'Võimalus redigeerida üldiseid juurdepääsuseadeid / kõrgema taseme lehe õigusi.'
-    PLURALNAME: 'Saidi konfiguratsioonid'
-    SINGULARNAME: 'Saidi konfiguratsioon'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Teie saidi nimi'
     SITETAGLINE: 'Saidi reklaamlause'
     SITETITLE: 'Saidi pealkiri'
@@ -332,9 +331,9 @@ et_EE:
     LINKCHANGENOTE: 'Selle lehe lingi muutmine mõjutab ka kõigi alamlehtede linke.'
     MENUTITLE: 'Navigatsiooni silt'
     METADESC: Kirjeldus
+    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'Kohandatud metamärgendid'
-    METAKEYWORDS: Märksõnad
-    METATITLE: Pealkiri
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Lehel on avaldamata muudatusi'
     MODIFIEDONDRAFTSHORT: Muudetud
     MetadataToggle: Metaandmed
