@@ -1,7 +1,6 @@
 zh_TW:
   AssetAdmin:
     ADDFILES: 'Add Files'
-    ALLOWEDEXTS: 'Allowed extensions'
     ActionAdd: 'Add folder'
     AppCategoryArchive: Archive
     AppCategoryAudio: Audio
@@ -182,7 +181,7 @@ zh_TW:
     PUBLISHEDSITE: 'Published Site'
     Password: Password
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'View Page in:'
   ErrorPage:
@@ -332,9 +331,9 @@ zh_TW:
     LINKCHANGENOTE: 改變這個網頁鏈結將也會影響所有子網頁的鏈結
     MENUTITLE: 捷徑標籤
     METADESC: 敘述
+    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 自訂元標籤(meta-tags)
-    METAKEYWORDS: 關鍵詞
-    METATITLE: 標題
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: 已修改
     MetadataToggle: Metadata

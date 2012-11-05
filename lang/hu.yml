@@ -1,7 +1,6 @@
 hu:
   AssetAdmin:
     ADDFILES: 'Állomány hozzáadása'
-    ALLOWEDEXTS: 'Engedélyezett kiterjesztések'
     ActionAdd: 'Mappa hozzáadása'
     AppCategoryArchive: Archív
     AppCategoryAudio: Audió
@@ -29,7 +28,7 @@ hu:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Mappák törlése'
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: Szűrő
   AssetAdmin_left.ss:
     GO: Mehet
   AssetTableField:
@@ -182,7 +181,7 @@ hu:
     PUBLISHEDSITE: 'Publikált oldal'
     Password: Jelszó
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'A telepítő állományok törlése nem sikerült. Kérjük törölje az alábbi állományokat kézzel.'
     VIEWPAGEIN: 'View Page in:'
   ErrorPage:
@@ -332,9 +331,9 @@ hu:
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 'Navigációs cimke'
     METADESC: Leírás
+    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'Saját meta címkék'
-    METAKEYWORDS: 'Meta kulcsszavak'
-    METATITLE: Cím
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Változtatva
     MetadataToggle: Metadata

@@ -1,7 +1,6 @@
 ru:
   AssetAdmin:
     ADDFILES: 'Добавить файлы'
-    ALLOWEDEXTS: 'Допустимые расширения'
     ActionAdd: 'Добавить папку'
     AppCategoryArchive: Архив
     AppCategoryAudio: Аудио
@@ -182,7 +181,7 @@ ru:
     PUBLISHEDSITE: 'Опубликованный сайт'
     Password: Пароль
     PostInstallTutorialIntro: 'Это упрощенная версия сайта, созданного с помощью SilverStripe 3. О возможностях расширения сайта можно узнать, щелкнув эту ссылку: {link}.'
-    StartEditing: 'Вы можете приступить к редактированию содержимого сайта, открыв <a href=\\"{link}\\">CMS</a>.'
+    StartEditing: ' Вы можете приступить к редактированию сайта, открыв <a href="{link}">CMS</a>.'
     UnableDeleteInstall: 'Не удалось удалить инсталляционные файлы. Пожалуйста, удалите следующие файлы вручную'
     VIEWPAGEIN: 'Просмотреть страницу в:'
   ErrorPage:
@@ -332,9 +331,9 @@ ru:
     LINKCHANGENOTE: 'Изменение ссылки на эту страницу повлияет и на ссылки всех дочерних страниц.'
     MENUTITLE: 'Метка в навигации'
     METADESC: Описание
+    METADESCHELP: 'Поисковые системы используют этот контент для отображения результатов поиска (однако на рейтинг страницы он не влияет).'
     METAEXTRA: 'Пользовательские мета-тэги'
-    METAKEYWORDS: 'Ключевые слова'
-    METATITLE: Заголовок
+    METAEXTRAHELP: 'HTML-теги для дополнительной мета-информации. Например, &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'На этой странице есть неопубликованные изменения'
     MODIFIEDONDRAFTSHORT: Изменено
     MetadataToggle: Метаданные

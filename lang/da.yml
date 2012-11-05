@@ -1,7 +1,6 @@
 da:
   AssetAdmin:
     ADDFILES: 'Tilføj filer'
-    ALLOWEDEXTS: 'Tilladte filendelser'
     ActionAdd: 'Tilføj mappe'
     AppCategoryArchive: Arkiv
     AppCategoryAudio: Lyd
@@ -165,7 +164,7 @@ da:
   ContentControl:
     NOTEWONTBESHOWN: 'Bemærk: denne besked bliver ikke vist til dine besøgende '
   ContentController:
-    ARCHIVEDSITE: Forhåndsvisning
+    ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Arkiveret side fra'
     CMS: CMS
     DRAFTSITE: Kladdeside
@@ -182,7 +181,7 @@ da:
     PUBLISHEDSITE: 'Udgivet side'
     Password: Adgangskode
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    StartEditing: 'Du kan starte med at redigere dit websteds indhold ved at åbne <a href="{link}">CMS\\''en</a>.'
     UnableDeleteInstall: 'Var ikke i stand til at slette installationsfilerne. Slet venligst filerne herunder manuelt.'
     VIEWPAGEIN: 'Vis side i:'
   ErrorPage:
@@ -193,8 +192,8 @@ da:
     DEFAULTSERVERERRORPAGETITLE: Serverfejl
     DESCRIPTION: 'Brugerdefineret indhold for forskellige fejltyper (f.eks. "Siden blev ikke fundet")'
     ERRORFILEPROBLEM: 'Kunne ikke åbne filen "{filename}" til skrivning. Undersøg filrettighederne.'
-    PLURALNAME: Fejlsider
-    SINGULARNAME: Fejlside
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Bad Request'
     401: '401 - Unauthorized'
     403: '403 - Forbidden'
@@ -241,7 +240,7 @@ da:
     HASBEENSETUP: 'En omdirigeringsside er blevet sat op, uden et sted at omdirigere til.'
     HEADER: 'Denne side omdirigerer besøgende til en anden side'
     OTHERURL: 'Andet websteds URL'
-    PLURALNAME: 'Videresendende side'
+    PLURALNAME: 'Videresendende sider'
     REDIRECTTO: 'Omdiriger til'
     REDIRECTTOEXTERNAL: 'Et andet websted'
     REDIRECTTOPAGE: 'En side på dit websted'
@@ -278,8 +277,8 @@ da:
     EDITHEADER: 'Hvem kan redigere sider på dette websted ?'
     EDIT_PERMISSION: 'Administrer sideopsætningen'
     EDIT_PERMISSION_HELP: 'Mulighed for at ændre indstillingerne for global adgang / topniveauside tilladelser.'
-    PLURALNAME: Løsningskonfigurationer
-    SINGULARNAME: Løsningskonfiguration
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Dit sidenavn'
     SITETAGLINE: 'Webstedets Tagline/Slogan'
     SITETITLE: Sidetitel
@@ -332,9 +331,9 @@ da:
     LINKCHANGENOTE: 'Ved at ændre denne sides link, ændrer du også linket til alle underliggende sider.'
     MENUTITLE: Navigationsetiket
     METADESC: Meta-beskrivelse
+    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'Brugerdefinerede Meta Tags'
-    METAKEYWORDS: 'Meta nøgleord'
-    METATITLE: Meta-Titel
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Siden har ikke-udgivne ændringer'
     MODIFIEDONDRAFTSHORT: Ændret
     MetadataToggle: Metadata

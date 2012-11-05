@@ -1,7 +1,6 @@
 it:
   AssetAdmin:
     ADDFILES: 'Aggiungi File'
-    ALLOWEDEXTS: 'Estensioni consentite'
     ActionAdd: 'Aggiungi cartella'
     AppCategoryArchive: Archivia
     AppCategoryAudio: Audio
@@ -182,7 +181,7 @@ it:
     PUBLISHEDSITE: 'Sito pubblicato'
     Password: Password
     PostInstallTutorialIntro: 'Il sito web è una versione semplificata di un sito SilverStripe 3. Per estenderlo, dai un''occhiata a {link}.'
-    StartEditing: 'Puoi iniziare a modificare il tuo sito aprendo <a href=\\"{link}\\">il CMS</a>.'
+    StartEditing: 'Puoi iniziare a modificare i contenuti del sito aprendo <a href="{link}">il CMS</a>.'
     UnableDeleteInstall: 'Impossibile eliminare i file di installazione. Cancella manualmente i file sotto indicati'
     VIEWPAGEIN: 'Mostra pagina in:'
   ErrorPage:
@@ -194,7 +193,7 @@ it:
     DESCRIPTION: 'Contenuto personalizzato per differenti casi di errore (es. "Pagina non trovata")'
     ERRORFILEPROBLEM: 'Errore nell''apertura del file "{filename}" per la scrittura. Controlla i permessi del file.'
     PLURALNAME: 'Pagine errore'
-    SINGULARNAME: 'Pagina errore'
+    SINGULARNAME: 'Pagine errore'
     400: '400 - Richiesta errata'
     401: '401 - Non Autorizzato'
     403: '403 - Accesso Negato'
@@ -332,9 +331,9 @@ it:
     LINKCHANGENOTE: 'Cambiare il link di questa pagina farà cambiare anche i link delle pagine figlio. '
     MENUTITLE: 'Etichetta di navigazione'
     METADESC: Descrizione
+    METADESCHELP: 'I motori di ricerca utilizzano questo contenuto per visualizzare i risultati (ma non ne influenza la posizione)'
     METAEXTRA: 'Meta tag personalizzati'
-    METAKEYWORDS: 'Parole chiavi'
-    METATITLE: Titolo
+    METAEXTRAHELP: 'Tag HTML per meta addizionali. Per esempio &lt;meta name="nomePersonalizzato" content="Il tuo contenuto personalizzato" /&gt;'
     MODIFIEDONDRAFTHELP: 'La pagina ha modifiche non pubblicate'
     MODIFIEDONDRAFTSHORT: Modificata
     MetadataToggle: Metadata

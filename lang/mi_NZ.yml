@@ -1,11 +1,10 @@
 mi_NZ:
   AssetAdmin:
     ADDFILES: 'Tāpiri Kōnae'
-    ALLOWEDEXTS: 'Ngā toronga ka whakaaetia'
     ActionAdd: 'Tāpiri kōpaki'
     AppCategoryArchive: Puranga
     AppCategoryAudio: Ororongo
-    AppCategoryDocument: Document
+    AppCategoryDocument: Tuhinga
     AppCategoryFlash: Flash
     AppCategoryImage: Atahanga
     AppCategoryVideo: Ataata
@@ -171,18 +170,18 @@ mi_NZ:
     DRAFTSITE: 'Pae Hukihuki'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Me takiuru mā tō kupuhipa CMS hei tiro i te hukihuki, ngā ihirangi putumōhio rānei.  <a href="%s">Pāwhiri ki konei kia hoki ki te pae kua whakaputaina.</a>'
     Email: Īmēra
-    INSTALL_SUCCESS: 'Installation Successful!'
+    INSTALL_SUCCESS: 'Kua oti pai te tāuta!'
     InstallFilesDeleted: 'Kua momoho te muku i ngā kōnae tāuta'
     InstallSecurityWarning: 'Me muku koe i ngā kōnae tāuta mō ngā pūtake haumaru, engari ia kei te whakaaro koe ki te tāuta ā muri atu (<em>ka hiahiatia te takiuru kaiwhakahaere, tirohia ki runga</em>). Ka hiahia te tūmau tukutuku ināianei i te uru tuhituhi anake ki te kōpaki "ngā rawa", ka taea te tango i te uru tuhituhi mai i ērā atu kōpaki katoa. <a href="{link}" style="text-align: center;">Pāwhiri ki konei ki te muku i ngā kōnae tāuta.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
+    InstallSuccessCongratulations: 'Kua tāuta momohotia te Silverstripe!'
     LOGGEDINAS: 'Kua takiuru hei'
     LOGIN: Takiuru
     LOGOUT: Takiputa
     NOTLOGGEDIN: 'Kāore anō kia taukiru'
     PUBLISHEDSITE: 'Pae Kua Whakaputaina'
     Password: Kupuhipa
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    PostInstallTutorialIntro: 'He tauira rūnā tēnei paetukutuku o tētahi paetukutuku SilverStripe 3. Hei toro i tēnei, tirohia te {link}'
+    StartEditing: 'Ka taea te whakatika i ngā ihirangi o t/ō pae mā te whakatuwhera i <a href="{link}">te CMS</a>.'
     UnableDeleteInstall: 'Kāore i taea te muku i ngā kōnae tāuta. Mukua ā-ringa ngā kōnae kei raro'
     VIEWPAGEIN: 'Tiro Whārangi i'
   ErrorPage:
@@ -332,13 +331,13 @@ mi_NZ:
     LINKCHANGENOTE: 'Mā te huri i te hono o tēnei whārangi ka pāngia ngā hono o ngā whārangi tamariki katoa.'
     MENUTITLE: 'Tapanga whakatere'
     METADESC: 'Whakaahuatanga Meta'
+    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'Ngā Tūtohu Meta Ritenga'
-    METAKEYWORDS: 'Ngā Kupu Matua Meta'
-    METATITLE: 'Taitara Meta'
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'He huringa kāore anō kia whakaputaina ō te whārangi'
     MODIFIEDONDRAFTSHORT: 'Kua Whakakētia'
     MetadataToggle: Raraungameta
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
+    OBSOLETECLASS: 'He neha {type} tēnei tūmomo whārangi. Mā te te tiaki ka tautuhi anō i te tūmomo, ka ngaro pea he raraunga'
     PAGELOCATION: Tauwāhi
     PAGETITLE: 'Ingoa whārangi'
     PAGETYPE: 'Tūmomo wharangi '

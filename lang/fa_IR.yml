@@ -1,7 +1,6 @@
 fa_IR:
   AssetAdmin:
     ADDFILES: 'Add Files'
-    ALLOWEDEXTS: 'Allowed extensions'
     ActionAdd: 'Add folder'
     AppCategoryArchive: Archive
     AppCategoryAudio: Audio
@@ -128,7 +127,7 @@ fa_IR:
     MENUTITLE: History
     REVERTTOTHISVERSION: 'Revert to this version'
     SHOWUNPUBLISHED: 'Show unpublished versions'
-    SHOWVERSION: 'Show Version'
+    SHOWVERSION: 'نمایش ویرایش'
     VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
@@ -140,7 +139,7 @@ fa_IR:
   CMSPageSettingsController:
     MENUTITLE: 'Edit Page'
   CMSPagesController:
-    GalleryView: 'Gallery View'
+    GalleryView: 'مشاهده گالری'
     ListView: 'List View'
     MENUTITLE: Pages
     TreeView: 'Tree View'
@@ -155,7 +154,7 @@ fa_IR:
     FILTERDATETO: به
     FILTERLABELTEXT: 'محتواي اصلي'
   CMSSettingsController:
-    MENUTITLE: Settings
+    MENUTITLE: تنظیمات
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Changed pages'
   CMSSiteTreeFilter_DeletedPages:
@@ -182,7 +181,7 @@ fa_IR:
     PUBLISHEDSITE: 'Published Site'
     Password: Password
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'View Page in:'
   ErrorPage:
@@ -229,7 +228,7 @@ fa_IR:
     PreviewButton: Preview
     SAVEDUP: Saved.
     STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
-    SearchResults: 'Search Results'
+    SearchResults: 'نتایج جستجو'
     VersionUnknown: Unknown
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
@@ -332,9 +331,9 @@ fa_IR:
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 'برچسب ناوبری'
     METADESC: توضیحات
+    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'Custom Meta Tags'
-    METAKEYWORDS: کلیدواژه‌ها
-    METATITLE: عنوان
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
     MetadataToggle: Metadata

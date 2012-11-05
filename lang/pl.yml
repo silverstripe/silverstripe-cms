@@ -1,7 +1,6 @@
 pl:
   AssetAdmin:
     ADDFILES: 'Dodaj pliki'
-    ALLOWEDEXTS: 'Dozwolone rozszerzenia'
     ActionAdd: 'Dodaj katalog'
     AppCategoryArchive: Archiwum
     AppCategoryAudio: Dźwięk
@@ -29,7 +28,7 @@ pl:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Usuń foldery'
   AssetAdmin_Tools:
-    FILTER: Filtruj
+    FILTER: Filtr
   AssetAdmin_left.ss:
     GO: Przejdź
   AssetTableField:
@@ -181,8 +180,8 @@ pl:
     NOTLOGGEDIN: 'Nie zalogowany'
     PUBLISHEDSITE: 'Opublikowana witryna'
     Password: Hasło
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'Możesz zacząć edytować Twoją stronę otwierając <a href=\\"{link}\\">CMS</a>.'
+    PostInstallTutorialIntro: 'Ta strona jest uproszczoną wersją witryny SilverStripe 3. Aby ją rozszerzyć, zajrzyj proszę na stronę: {link}'
+    StartEditing: 'Możesz rozpocząć edycję zawartości witryn(y) otwierając <a href="{link}">CMS</a>.'
     UnableDeleteInstall: 'Nie można usunąć plików instalacyjnych. Proszę usunąć je ręcznie'
     VIEWPAGEIN: 'Zobacz stronę w:'
   ErrorPage:
@@ -194,7 +193,7 @@ pl:
     DESCRIPTION: 'Własna zawartość dla różnych błędów (np. "Strona nie została znaleziona")'
     ERRORFILEPROBLEM: 'Błąd podczas otwierania pliku "{filename}". Proszę sprawdzić uprawnienia do plików.'
     PLURALNAME: 'Strony błędów'
-    SINGULARNAME: 'Strona błędu'
+    SINGULARNAME: 'Strona błędów'
     400: '400 - Nieprawidłowe zapytanie'
     401: '401 - Nieautoryzowany Dostęp'
     403: '403 - Zabroniony'
@@ -332,13 +331,13 @@ pl:
     LINKCHANGENOTE: 'Zmiana linku na aktualnej stronie skutkuje zmianą w linkach stron potomnych.'
     MENUTITLE: 'Sekcja nawigacji'
     METADESC: Opis
+    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'Własne Meta Tagi'
-    METAKEYWORDS: 'Słowa kluczowe'
-    METATITLE: Tytuł
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Na stronie znajdują się nieopublikowane zmiany'
     MODIFIEDONDRAFTSHORT: Zmodyfikowana
     MetadataToggle: Metadane
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
+    OBSOLETECLASS: 'Ta strona należy do zdezaktualizowanego typu {type}. Zapisanie jej spowoduje zresetowanie jej typu i możliwą utratę danych'
     PAGELOCATION: 'Lokalizacja strony'
     PAGETITLE: 'Nazwa strony'
     PAGETYPE: 'Rodzaj strony'

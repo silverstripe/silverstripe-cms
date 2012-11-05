@@ -1,7 +1,6 @@
 uk:
   AssetAdmin:
     ADDFILES: 'Додати файли'
-    ALLOWEDEXTS: 'Допустимі розширення'
     ActionAdd: 'Додати папку'
     AppCategoryArchive: Архівувати
     AppCategoryAudio: Аудіо
@@ -29,7 +28,7 @@ uk:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Видалені папки'
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: Фільтр
   AssetAdmin_left.ss:
     GO: Уперед
   AssetTableField:
@@ -182,7 +181,7 @@ uk:
     PUBLISHEDSITE: 'Публічний сайт'
     Password: Пароль
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    StartEditing: 'Ви можете почати редагувати вміст сайту перейшовши в <a href="{link}">CMS</a>.'
     UnableDeleteInstall: 'Не вдається видалити інсталяційні файли. Будь ласка, видаліть вручну наведені нижче файли'
     VIEWPAGEIN: 'Переглянути сторінку в:'
   ErrorPage:
@@ -332,9 +331,9 @@ uk:
     LINKCHANGENOTE: 'Зміна адреси цієї сторінки вплине на адреси всіх дочірніх сторінок'
     MENUTITLE: 'Мітка навігації'
     METADESC: Опис
+    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'Власні Мета-теги'
-    METAKEYWORDS: 'Ключові вирази'
-    METATITLE: Назва
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Сторінка має неопубліковані зміни'
     MODIFIEDONDRAFTSHORT: Змінений
     MetadataToggle: Metadata

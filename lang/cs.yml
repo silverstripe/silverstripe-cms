@@ -1,7 +1,6 @@
 cs:
   AssetAdmin:
     ADDFILES: 'Přidat soubory'
-    ALLOWEDEXTS: 'Povolené extenze'
     ActionAdd: 'Přidat složku'
     AppCategoryArchive: Archív
     AppCategoryAudio: Zvuk
@@ -182,7 +181,7 @@ cs:
     PUBLISHEDSITE: 'Zveřejnen web'
     Password: Heslo
     PostInstallTutorialIntro: 'Tento web je zjednodušená verze SilverStripe 3. webu. Pro rozšíření, podívejte se na {link} prosím.'
-    StartEditing: 'Můžete začít editovat váš obsah webu otevřením <a href=\\"{link}\\">CMS</a>.'
+    StartEditing: 'Můžete začít editovat váš obsah webu otevřením <a href="{link}">CMS</a>.'
     UnableDeleteInstall: 'Nelze smazat instalační soubory. Prosím, odstraňte soubory níže ručně'
     VIEWPAGEIN: 'Zobrazit stránku v:'
   ErrorPage:
@@ -332,9 +331,9 @@ cs:
     LINKCHANGENOTE: 'Změnění tohoto odkazu stránky, bude mít také vliv na odkazy podřízených stránek.'
     MENUTITLE: 'Navigační popisek'
     METADESC: Popis
+    METADESCHELP: 'Vyhledávače používají tento obsah pro zobrazovaní výsledkův vyhledávaní (i když to nebude mít vlyv na jejich hodnocení).'
     METAEXTRA: 'Vlastní meta tagy'
-    METAKEYWORDS: 'Klíčová slova'
-    METATITLE: Název
+    METAEXTRAHELP: 'HTML tagy pro další meta informace. Například &lt;meta name="vlastnínazev" content="vlastní obsah zde" /&gt;'
     MODIFIEDONDRAFTHELP: 'Stránka má nezveřejněné změny'
     MODIFIEDONDRAFTSHORT: Změněno
     MetadataToggle: Metadata

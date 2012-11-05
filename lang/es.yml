@@ -1,7 +1,6 @@
 es:
   AssetAdmin:
     ADDFILES: 'Añadir Archivos'
-    ALLOWEDEXTS: 'Extensiones permitidas'
     ActionAdd: 'Añadir carpeta'
     AppCategoryArchive: Archivar
     AppCategoryAudio: Audio
@@ -29,7 +28,7 @@ es:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Eliminar carpetas'
   AssetAdmin_Tools:
-    FILTER: Filtrar
+    FILTER: Filtro
   AssetAdmin_left.ss:
     GO: Ir
   AssetTableField:
@@ -165,7 +164,7 @@ es:
   ContentControl:
     NOTEWONTBESHOWN: 'Nota: este mensaje no se mostrará a tus visitantes'
   ContentController:
-    ARCHIVEDSITE: 'Versión de la vista previa'
+    ARCHIVEDSITE: 'Vista previa de la versión'
     ARCHIVEDSITEFROM: 'Sitio archivado desde'
     CMS: CMS
     DRAFTSITE: 'Sitio en Borrador'
@@ -182,7 +181,7 @@ es:
     PUBLISHEDSITE: 'Sitio Publicado'
     Password: Contraseña
     PostInstallTutorialIntro: 'Este sitio web es una versión simple de un sitio SilverStripe 3. Para ampliarlo, por favor echa un vistazo en {link}.'
-    StartEditing: 'Puedes empezar editando el contenido de tu sitio abriendo <a href=\\"{link}\\">el CMS</a>.'
+    StartEditing: 'Puedes empezar a editar el  contenido de tu sitio abriendo <a href="{link}">el CMS</a>.'
     UnableDeleteInstall: 'No se pueden eliminar los archivos de instalación. Por favor, elimina los siguientes archivos manualmente'
     VIEWPAGEIN: 'Ver página en:'
   ErrorPage:
@@ -245,7 +244,7 @@ es:
     REDIRECTTO: 'Redireccionar a'
     REDIRECTTOEXTERNAL: 'Otro sitio web'
     REDIRECTTOPAGE: 'Una página en su sitio web'
-    SINGULARNAME: 'Página de redirección'
+    SINGULARNAME: 'Página de redirección apuntando a una página que no existe'
     YOURPAGE: 'Página en su sitio web'
   ReportAdmin:
     MENUTITLE: Informes
@@ -332,9 +331,9 @@ es:
     LINKCHANGENOTE: 'Cambio el enlace de esta página también afectará a los enlaces de todas las páginas hijas.'
     MENUTITLE: 'Etiqueta de Navegación'
     METADESC: Descripción
+    METADESCHELP: 'Los motores de búsqueda usan este contenido para mostrar resultados de búsqueda (aunque no influirá en su ranking).'
     METAEXTRA: 'Meta Tags Personalizadas'
-    METAKEYWORDS: 'Palabras Clave'
-    METATITLE: Título
+    METAEXTRAHELP: 'Etiquetas HTML para meta información adicional. Por ejemplo &lt;meta name="nombrePersonalizado" content="tu contenido personalizado aquí" /&gt;'
     MODIFIEDONDRAFTHELP: 'La página tiene cambios sin publicar'
     MODIFIEDONDRAFTSHORT: Modificado
     MetadataToggle: Metadatos

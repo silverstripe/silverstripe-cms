@@ -1,4 +1,4 @@
-hy_AM:
+pes_IR:
   AssetAdmin:
     ADDFILES: 'Add Files'
     ActionAdd: 'Add folder'
@@ -149,10 +149,10 @@ hy_AM:
   CMSPagesController_Tools.ss:
     FILTER: Filter
   CMSSearch:
-    FILTERDATEFROM: From
-    FILTERDATEHEADING: Date
-    FILTERDATETO: To
-    FILTERLABELTEXT: Content
+    FILTERDATEFROM: از
+    FILTERDATEHEADING: تاریخ
+    FILTERDATETO: به
+    FILTERLABELTEXT: محتوی
   CMSSettingsController:
     MENUTITLE: Settings
   CMSSiteTreeFilter_ChangedPages:
@@ -252,9 +252,9 @@ hy_AM:
   ReportAdminForm:
     FILTERBY: 'Filter by'
   SearchForm:
-    GO: Go
-    SEARCH: Search
-    SearchResults: 'Search Results'
+    GO: برو
+    SEARCH: جستجو
+    SearchResults: 'نتایج جستجو'
   SideReport:
     BROKENFILES: 'Pages with broken files'
     BROKENLINKS: 'Pages with broken links'

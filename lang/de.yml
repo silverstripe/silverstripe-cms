@@ -1,7 +1,6 @@
 de:
   AssetAdmin:
     ADDFILES: 'Dateien hinzufügen'
-    ALLOWEDEXTS: 'Erlaubte Dateiendungen'
     ActionAdd: 'Ordner hinzufügen'
     AppCategoryArchive: Archivieren
     AppCategoryAudio: Audio
@@ -29,7 +28,7 @@ de:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Ordner löschen'
   AssetAdmin_Tools:
-    FILTER: Filtern
+    FILTER: Filter
   AssetAdmin_left.ss:
     GO: Los
   AssetTableField:
@@ -182,7 +181,7 @@ de:
     PUBLISHEDSITE: 'Veröffentlichte Site'
     Password: Passwort
     PostInstallTutorialIntro: 'Diese Internetseite ist eine einfache Version einer SilverStripe 3 Seite. Wie man diese erweitert, erfährst Du in der {link}.'
-    StartEditing: 'Du kannst nun beginnen die Seiteninhalte zu bearbeiten in dem Du <a href=\\"{link}\\">das CMS</a> öffnest.'
+    StartEditing: 'Sie können mit der Bearbeitung der Inhalte Ihrer Site beginnen, indem Sie <a href="{link}">das CMS</a> öffnen.'
     UnableDeleteInstall: 'Die Installationsdateien konnten nicht gelöscht werden. Bitte löschen Sie die Dateien manuell.'
     VIEWPAGEIN: 'Seite anzeigen in:'
   ErrorPage:
@@ -193,8 +192,8 @@ de:
     DEFAULTSERVERERRORPAGETITLE: Serverfehler
     DESCRIPTION: 'Spezieller Inhalt für andere Fehlerfälle (z.B. "Seite nicht gefunden")'
     ERRORFILEPROBLEM: 'Die Datei "{filename}" konnte nicht zum Schreiben geöffnet werden. Bitte überprüfen Sie die Dateiberechtigungen.'
-    PLURALNAME: Fehlerseiten
-    SINGULARNAME: Fehlerseite
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
     400: '400 - Fehlerhafter Zugriff'
     401: '401 - Unerlaubter Zugriff'
     403: '403 - Verbotener Zugriff'
@@ -241,11 +240,11 @@ de:
     HASBEENSETUP: 'Eine Weiterleitungsseite wurde erstellt ohne das eine Weiterleitung definiert wurde.'
     HEADER: 'Diese Seite wird Nutzer auf eine andere Seite weiterleiten'
     OTHERURL: 'Andere Webseiten URL'
-    PLURALNAME: Umleitungsseite
+    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Weiterleiten zu'
     REDIRECTTOEXTERNAL: 'Andere Website'
     REDIRECTTOPAGE: 'Eine Seite auf Ihrer Website'
-    SINGULARNAME: Weiterleitungsseite
+    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Seite auf Ihrer Website'
   ReportAdmin:
     MENUTITLE: Berichte
@@ -332,9 +331,9 @@ de:
     LINKCHANGENOTE: 'Das Ändern des Links zu dieser Seite führt ebenfalls zur Änderungen aller Links der Unterseiten dieser Seite.'
     MENUTITLE: Navigationsbezeichnung
     METADESC: Beschreibung
+    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'Benutzerdefinierte Meta-Tags'
-    METAKEYWORDS: Schlüsselwörter
-    METATITLE: Titel
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Die Seite hat unveröffentlichte Änderungen'
     MODIFIEDONDRAFTSHORT: 'Zuletzt geändert'
     MetadataToggle: Metadaten

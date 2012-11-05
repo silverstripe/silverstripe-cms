@@ -1,7 +1,6 @@
 ja_JP:
   AssetAdmin:
     ADDFILES: ファイルを追加
-    ALLOWEDEXTS: 利用可能な拡張子
     ActionAdd: フォルダを追加
     AppCategoryArchive: アーカイブ
     AppCategoryAudio: 音楽
@@ -29,7 +28,7 @@ ja_JP:
   AssetAdmin_DeleteBatchAction:
     TITLE: フォルダを削除
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER: フィルタ
   AssetAdmin_left.ss:
     GO: Go
   AssetTableField:
@@ -182,7 +181,7 @@ ja_JP:
     PUBLISHEDSITE: 公開サイト
     Password: パスワード
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site''s content by opening <a href=\\"{link}\\">the CMS</a>.'
+    StartEditing: '<a href="{link}">CMS</a>のリンクをクリックすることであなたのサイトのコンテンツの編集を開始することができます。'
     UnableDeleteInstall: インストールファイルを削除することができませんでした。次のファイルを手動で削除してください。
     VIEWPAGEIN: 'View Page in:'
   ErrorPage:
@@ -332,9 +331,9 @@ ja_JP:
     LINKCHANGENOTE: このページのリンクを変更するとすべての子ページのリンクに影響を与える可能性があります。
     MENUTITLE: 操作レベル
     METADESC: 説明
+    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: メタタグをカスタム
-    METAKEYWORDS: キーワード
-    METATITLE: タイトル
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 公開されていない変更がページにあります
     MODIFIEDONDRAFTSHORT: 更新日時
     MetadataToggle: メタデータ
