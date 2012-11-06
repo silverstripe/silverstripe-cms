@@ -1,11 +1,15 @@
 /**
- * Style  custom to the CMSMain admin interface. CMSMain extends the built in 
+ * Style  custom to the CMSMain admin interface. CMSMain extends the b-tablt in 
  * SilverStripe admin section styles. As much as possible we want to use those 
  * built in styles. If anything in this file can be implemented in a generic 
  * way then it should be include in the admin scss files.
  *
  * @package cms
  */
+
+ #Form_EditForm.CMSMain {
+ 	padding: 0; /* fixs the double padding around the edit panel - move to framework? */
+ }
 
 /** ------------------------------------------------------------------
  * Page History Section.
@@ -32,7 +36,7 @@
 
 .CMSPageHistoryController {
 	ins {
-		background-color: #DFD;
+		background-color: #B5E7B7;
 		padding: 2px;
 		text-decoration: none;
 	}
@@ -105,10 +109,19 @@
 
 	.prefix {
 		color: #777;
+		padding-bottom: 4px;
 	}
 
 	.cancel, .update, .edit {
-		margin-left: 7px;
+		margin-left: 5px;
+	}
+	.update, .edit {
+		padding-left: 2px;
+		padding-right: 2px;
+	}
+	.cancel .ui-button-text {
+		padding-left: 0;
+		padding-right: 0;
 	}
 
 	.help {

@@ -17,7 +17,7 @@
 				a {
 					font-weight: bold;
 					line-height: 16px;
-					padding: 12px 20px 12px;
+					padding: 0 20px;
 					text-indent:-9999em;
 					background: url(../images/content-header-tabs-sprite.png) no-repeat;
 				}
@@ -79,18 +79,14 @@
 	}
 
 	#Form_EditForm_File {
-		td {
-			// Taken care of by minimum image sizes
-			padding-top: 0;
-			padding-bottom: 0;
-			&.bottom-all {
-				padding:0.7em;
-			}
+		td.bottom-all {
+			padding: 0.3em 0.7em;
 		}
 		td.col-StripThumbnail {
-			padding: 1px 5px;
+			padding: 0;
 			width: 32px;
 			height: 32px;
+			line-height: 8px;
 
 			img {
 				width: 32px;
@@ -99,12 +95,12 @@
 		}
 		tr[data-class=Folder] {
 			td.col-StripThumbnail {
-				background: transparent url(../images/treeicons/blue-folder-horizontal.png) no-repeat center;
+				background: transparent url(../images/blue-folder-horizontal-24.png) no-repeat center;
 			}
 		}
 		tr[data-class=File] {
 			td.col-StripThumbnail {
-				background: transparent url(../images/treeicons/blue-document.png) no-repeat center;
+				background: transparent url(../images/document-16.png) no-repeat center;
 			}
 		}
 	}
