@@ -5,7 +5,7 @@
 			<h2><% _t('AssetAdmin.ADDFILES', 'Add Files') %></h2>
 		</div>
 		<div class="cms-content-header-tabs">
-			<ul>
+			<ul class="cms-tabset-nav-primary">
 				<li>
 					<a href="#cms-content-fromyourcomputer"><% _t('AssetAdmin.FROMYOURCOMPUTER', 'From your computer') %></a>
 				</li>

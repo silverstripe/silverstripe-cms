@@ -221,11 +221,11 @@ JS
 				$tabList = new Tab('ListView', _t('AssetAdmin.ListView', 'List View')),
 				$tabTree = new Tab('TreeView', _t('AssetAdmin.TreeView', 'Tree View'))
 			);
-			$tabList->addExtraClass("content-listview");
-			$tabTree->addExtraClass("content-treeview");
+			$tabList->addExtraClass("content-listview cms-tabset-icon list");
+			$tabTree->addExtraClass("content-treeview cms-tabset-icon tree");
 			if($fields->Count() && $folder->exists()) {
 				$tabs->push($tabDetails = new Tab('DetailsView', _t('AssetAdmin.DetailsView', 'Details')));
-				$tabDetails->addExtraClass("content-galleryview");
+				$tabDetails->addExtraClass("content-galleryview cms-tabset-icon edit");
 				foreach($fields as $field) {
 					$fields->removeByName($field->getName());
 					$tabDetails->push($field);
