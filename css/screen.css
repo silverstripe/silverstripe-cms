@@ -33,7 +33,7 @@
 .cms .AssetAdmin .cms-content-fields .cms-edit-form.AssetAdmin { overflow-y: auto; }
 .cms .AssetAdmin .cms-content-fields .cms-content-tools .cms-panel-content { overflow: hidden; }
 .cms .AssetAdmin .cms-content-fields .cms-content-tools .cms-panel-content .cms-search-form { height: 100%; }
-.cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav li a { font-weight: bold; line-height: 16px; padding: 12px 20px 12px; text-indent: -9999em; background: url(../images/content-header-tabs-sprite.png) no-repeat; }
+.cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav li a { font-weight: bold; padding: 0 20px 0; text-indent: -9999em; background: url(../images/content-header-tabs-sprite.png) no-repeat; }
 .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav li.content-treeview a { background-position: 2px 0px; }
 .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav li.content-galleryview a { background-position: -160px 0px; }
 .cms .AssetAdmin .cms-content-header-tabs .ui-tabs-nav li.content-listview a { background-position: -39px 0px; }

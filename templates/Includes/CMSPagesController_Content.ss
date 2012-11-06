@@ -9,10 +9,10 @@
 	
 		<div class="cms-content-header-tabs">
 			<ul>
-				<li class="content-treeview<% if ViewState == tree %> ui-tabs-selected<% end_if %>">
+				<li class="content-treeview<% if ViewState == tree %> ui-tabs-active<% end_if %>">
 					<a href="#cms-content-treeview" class="cms-panel-link" data-href="$LinkTreeView"><% _t('CMSPagesController.TreeView', 'Tree View') %></a>
 				</li>
-				<li class="content-listview<% if ViewState == list %> ui-tabs-selected<% end_if %>">
+				<li class="content-listview<% if ViewState == list %> ui-tabs-active<% end_if %>">
 					<a href="#cms-content-listview" class="cms-panel-link" data-href="$LinkListView"><% _t('CMSPagesController.ListView', 'List View') %></a>
 				</li>
 				<!--
