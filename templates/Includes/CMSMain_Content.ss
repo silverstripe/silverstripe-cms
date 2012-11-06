@@ -8,7 +8,7 @@
 		</div>
 	
 		<div class="cms-content-header-tabs">
-			<ul>
+			<ul class="cms-tabset-nav-primary">
 				<li class="content-treeview<% if class == 'CMSPageEditController' %> ui-tabs-active<% end_if %>">
 					<a href="$LinkPageEdit" class="cms-panel-link" title="Form_EditForm" data-href="$LinkPageEdit">
 						<% _t('CMSMain.TabContent', 'Content') %>
