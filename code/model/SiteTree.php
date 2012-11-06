@@ -76,9 +76,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		"Title" => "Varchar(255)",
 		"MenuTitle" => "Varchar(100)",
 		"Content" => "HTMLText",
-		"MetaTitle" => "Varchar(255)",
 		"MetaDescription" => "Text",
-		"MetaKeywords" => "Varchar(1024)",
 		"ExtraMeta" => "HTMLText",
 		"ShowInMenus" => "Boolean",
 		"ShowInSearch" => "Boolean",
@@ -176,7 +174,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * @see SiteTree::nested_urls()
 	 */
-	private static $nested_urls = false;
+	private static $nested_urls = true;
 	
 	/**
 	 * @see SiteTree::set_create_default_pages()
@@ -1268,18 +1266,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	public function MetaTags($includeTitle = true) {
 		$tags = "";
 		if($includeTitle === true || $includeTitle == 'true') {
-			$tags .= "<title>" . Convert::raw2xml(($this->MetaTitle)
-				? $this->MetaTitle
-				: $this->Title) . "</title>\n";
+			$tags .= "<title>" . $this->Title . "</title>\n";
 		}
 
 		$tags .= "<meta name=\"generator\" content=\"SilverStripe - http://silverstripe.org\" />\n";
 
 		$charset = ContentNegotiator::get_encoding();
 		$tags .= "<meta http-equiv=\"Content-type\" content=\"text/html; charset=$charset\" />\n";
-		if($this->MetaKeywords) {
-			$tags .= "<meta name=\"keywords\" content=\"" . Convert::raw2att($this->MetaKeywords) . "\" />\n";
-		}
 		if($this->MetaDescription) {
 			$tags .= "<meta name=\"description\" content=\"" . Convert::raw2att($this->MetaDescription) . "\" />\n";
 		}
@@ -1851,10 +1844,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					$htmlField = new HtmlEditorField("Content", _t('SiteTree.HTMLEDITORTITLE', "Content", 'HTML editor title')),
 					ToggleCompositeField::create('Metadata', _t('SiteTree.MetadataToggle', 'Metadata'),
 						array(
-							new TextField("MetaTitle", $this->fieldLabel('MetaTitle')),
-							new TextareaField("MetaKeywords", $this->fieldLabel('MetaKeywords'), 1),
-							new TextareaField("MetaDescription", $this->fieldLabel('MetaDescription')),
-							new TextareaField("ExtraMeta",$this->fieldLabel('ExtraMeta'))
+							$metaFieldDesc = new TextareaField("MetaDescription", $this->fieldLabel('MetaDescription')),
+							$metaFieldExtra = new TextareaField("ExtraMeta",$this->fieldLabel('ExtraMeta'))
 						)
 					)->setHeadingLevel(4)
 				),
@@ -1866,6 +1857,24 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		);
 		$htmlField->addExtraClass('stacked');
 		
+		// Help text for MetaData on page content editor
+		$metaFieldDesc
+			->setRightTitle(
+				_t(
+					'SiteTree.METADESCHELP', 
+					"Search engines use this content for displaying search results (although it will not influence their ranking)."
+				)
+			)
+			->addExtraClass('help');
+		$metaFieldExtra
+			->setRightTitle(
+				_t(
+					'SiteTree.METAEXTRAHELP', 
+					"HTML tags for additional meta information. For example &lt;meta name=\"customName\" content=\"your custom content here\" /&gt;"
+				)
+			)
+			->addExtraClass('help');
+
 		// Conditional dependent pages tab
 		if($dependentPagesCount) $tabDependent->setTitle(_t('SiteTree.TABDEPENDENT', "Dependent pages") . " ($dependentPagesCount)");
 		else $fields->removeFieldFromTab('Root', 'Dependent');
@@ -2020,9 +2029,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$labels = parent::fieldLabels($includerelations);
 			$labels['Title'] = _t('SiteTree.PAGETITLE', "Page name");
 			$labels['MenuTitle'] = _t('SiteTree.MENUTITLE', "Navigation label");
-			$labels['MetaTitle'] = _t('SiteTree.METATITLE', "Meta Title");
 			$labels['MetaDescription'] = _t('SiteTree.METADESC', "Meta Description");
-			$labels['MetaKeywords'] = _t('SiteTree.METAKEYWORDS', "Meta Keywords");
 			$labels['ExtraMeta'] = _t('SiteTree.METAEXTRA', "Custom Meta Tags");
 			$labels['ClassName'] = _t('SiteTree.PAGETYPE', "Page type", 'Classname of a page object');
 			$labels['ParentType'] = _t('SiteTree.PARENTTYPE', "Page location");
