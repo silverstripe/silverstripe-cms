@@ -8,15 +8,15 @@
 		</div>
 	
 		<div class="cms-content-header-tabs">
-			<ul>
-				<li class="content-treeview<% if ViewState == tree %> ui-tabs-active<% end_if %>">
+			<ul class="cms-tabset-nav-primary">
+				<li class="content-treeview<% if ViewState == tree %> ui-tabs-active<% end_if %> cms-tabset-icon tree">
 					<a href="#cms-content-treeview" class="cms-panel-link" data-href="$LinkTreeView"><% _t('CMSPagesController.TreeView', 'Tree View') %></a>
 				</li>
-				<li class="content-listview<% if ViewState == list %> ui-tabs-active<% end_if %>">
+				<li class="content-listview<% if ViewState == list %> ui-tabs-active<% end_if %> cms-tabset-icon list">
 					<a href="#cms-content-listview" class="cms-panel-link" data-href="$LinkListView"><% _t('CMSPagesController.ListView', 'List View') %></a>
 				</li>
 				<!--
-				<li class="content-galleryview">
+				<li class="content-galleryview cms-tabset-icon gallery">
 					<a href="#cms-content-galleryview"><% _t('CMSPagesController.GalleryView', 'Gallery View') %></a>
 				</li>
 				-->

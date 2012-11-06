@@ -51,10 +51,13 @@ class SiteConfig extends DataObject implements PermissionProvider {
 
 		$fields = new FieldList(
 			new TabSet("Root",
-				$tabMain = new Tab('Main',
-					$titleField = new TextField("Title", _t('SiteConfig.SITETITLE', "Site title")),
-					$taglineField = new TextField("Tagline", _t('SiteConfig.SITETAGLINE', "Site Tagline/Slogan")),
-					$themeDropdownField = new DropdownField("Theme", _t('SiteConfig.THEME', 'Theme'), $this->getAvailableThemes())
+				$tabMain = new TabSet('Main',
+					new Tab('bla',
+						$titleField = new TextField("Title", _t('SiteConfig.SITETITLE', "Site title")),
+						$taglineField = new TextField("Tagline", _t('SiteConfig.SITETAGLINE', "Site Tagline/Slogan")),
+						$themeDropdownField = new DropdownField("Theme", _t('SiteConfig.THEME', 'Theme'), $this->getAvailableThemes())
+					),
+					new Tab('blubb')
 				),
 				$tabAccess = new Tab('Access',
 					$viewersOptionsField = new OptionsetField("CanViewType", _t('SiteConfig.VIEWHEADER', "Who can view pages on this site?")),
