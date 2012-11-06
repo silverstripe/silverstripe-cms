@@ -14,7 +14,7 @@ class FilesystemPublisherTest extends SapphireTest {
 	public function setUp() {
 		parent::setUp();
 		
-		Object::add_extension("SiteTree", "FilesystemPublisher('assets/FilesystemPublisherTest-static-folder/')");
+		SiteTree::add_extension("FilesystemPublisher('assets/FilesystemPublisherTest-static-folder/')");
 		
 		$this->orig['domain_based_caching'] = FilesystemPublisher::$domain_based_caching;
 		FilesystemPublisher::$domain_based_caching = false;
@@ -23,7 +23,7 @@ class FilesystemPublisherTest extends SapphireTest {
 	public function tearDown() {
 		parent::tearDown();
 
-		Object::remove_extension("SiteTree", "FilesystemPublisher('assets/FilesystemPublisherTest-static-folder/')");
+		SiteTree::remove_extension("FilesystemPublisher('assets/FilesystemPublisherTest-static-folder/')");
 
 		FilesystemPublisher::$domain_based_caching = $this->orig['domain_based_caching'];
 

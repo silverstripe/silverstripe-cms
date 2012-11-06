@@ -39,8 +39,8 @@ class SiteTreeTest extends SapphireTest {
 
 			// refresh the extended statics - different fields in $db with Translatable enabled
 			if(self::$origTranslatableSettings['has_extension']) {
-				Object::remove_extension('SiteTree', 'Translatable');
-				Object::remove_extension('SiteConfig', 'Translatable');
+				SiteTree::remove_extension('Translatable');
+				SiteConfig::remove_extension('Translatable');
 			}
 		}
 
@@ -54,8 +54,8 @@ class SiteTreeTest extends SapphireTest {
 	static public function tear_down_once() {
 		if(class_exists('Translatable')) {
 			if(self::$origTranslatableSettings['has_extension']) {
-				Object::add_extension('SiteTree', 'Translatable');
-				Object::add_extension('SiteConfig', 'Translatable');
+				SiteTree::add_extension('Translatable');
+				SiteConfig::add_extension('Translatable');
 			}
 			
 
