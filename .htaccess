@@ -20,14 +20,10 @@ ErrorDocument 500 /assets/error-500.html
 <IfModule mod_rewrite.c>
 	SetEnv HTTP_MOD_REWRITE On
 	RewriteEngine On
+	RewriteBase '/ss-3.0'
 
 	RewriteCond %{REQUEST_URI} ^(.*)$
 	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteRule .* framework/main.php?url=%1 [QSA]
-
-	RewriteCond %{REQUEST_URI} ^(.*)/framework/main.php$
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteRule . %1/install.php? [R,L]
-
+	RewriteRule .* framework/main.php?url=%1&%{QUERY_STRING} [L]
 </IfModule>
 ### SILVERSTRIPE END ###
