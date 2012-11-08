@@ -2,10 +2,10 @@
 	"name": "silverstripe/installer",
 	"description": "The SilverStripe Framework Installer",
 	"require": {
-		"php": ">=5.2.4",
-		"silverstripe/cms": "2.4.x-dev",
-		"silverstripe/framework": "2.4.x-dev",
-		"silverstripe-themes/blackcandy": "2.4.x-dev"
+		"php": ">=5.3.2",
+		"silverstripe/cms": "self.version",
+		"silverstripe/framework": "self.version",
+		"silverstripe-themes/simple": "*"
 	},
 	"require-dev": {
 		"silverstripe/compass": "*",
