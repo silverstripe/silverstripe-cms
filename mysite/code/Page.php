@@ -7,14 +7,6 @@ class Page extends SiteTree {
 	public static $has_one = array(
 	);
 
-	function getCMSFields() {
-		$fields = parent::getCMSFields();
-		$fields->findOrMakeTab('Root.Bla.Foo1');
-		$fields->findOrMakeTab('Root.Bla.Foo2');
-
-		return $fields;
-	}
-
 }
 class Page_Controller extends ContentController {
 
