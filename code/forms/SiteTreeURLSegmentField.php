@@ -27,6 +27,8 @@ class SiteTreeURLSegmentField extends TextField {
 
 	public function Field($properties = array()) {
 		Requirements::javascript(CMS_DIR . '/javascript/SiteTreeURLSegmentField.js');
+		Requirements::add_i18n_javascript(CMS_DIR . '/javascript/lang', false, true);
+		Requirements::css(CMS_DIR . "/css/screen.css");
 		return parent::Field($properties);
 	}
 	
