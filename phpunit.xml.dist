@@ -13,7 +13,7 @@
 	- sapphire/dev/TestRunner.php for an alternative way to run unit tests through the "sake" CLI tool.
 -->
 <phpunit 
-	bootstrap="/sapphire/tests/bootstrap.php"
+	bootstrap="sapphire/tests/bootstrap.php"
 	colors="true"
 >
 	<testsuite name="Default">
