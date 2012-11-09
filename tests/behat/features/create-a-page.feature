@@ -8,8 +8,8 @@ Feature: Create a page
   Scenario: I can create a page from the pages section
     Given I am logged in with "ADMIN" permissions
     And I go to "/admin/pages"
-    And I should see "Add new" button in CMS Content Toolbar
-    When I press "Add new" button
+    And I should see a "Add new" button in CMS Content Toolbar
+    When I press the "Add new" button
     And I check "Page"
-    And I press "Create" button
+    And I press the "Create" button
     Then I should see an edit page form

@@ -11,8 +11,8 @@ Feature: Search for a page
     Then I should see "About Us" in CMS Tree
     And I should see "Contact Us" in CMS Tree
 
-    When I expand Filter CMS Panel
+    When I expand the "Filter" CMS Panel
     And I fill in "Content" with "About Us"
-    And I press "Apply Filter" button
+    And I press the "Apply Filter" button
     Then I should see "About Us" in CMS Tree
     But I should not see "Contact Us" in CMS Tree

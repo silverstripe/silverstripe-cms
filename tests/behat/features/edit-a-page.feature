@@ -20,9 +20,9 @@ Feature: Edit a page
     Then I should see an edit page form
 
     When I fill in "Title" with "About Us!"
-    And I fill in content form with "my new content"
-    And I press "Save Draft" button
-    Then I should see "Saved." notice
+    And I fill in the content form with "my new content"
+    And I press the "Save Draft" button
+    Then I should see a "Saved." notice
 
     When I follow "About Us"
     Then the "Title" field should contain "About Us!"
