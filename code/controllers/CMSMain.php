@@ -255,6 +255,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function SearchForm() {
 		// Create the fields
 		$content = new TextField('q[Term]', _t('CMSSearch.FILTERLABELTEXT', 'Content'));
+		// following line is used to filter via ajax when entering content
+		$content->setAttribute('onkeydown', "jQuery('.cms-search-form').entwine('ss').searchContent('Term');");
 		$dateHeader = new HeaderField('q[Date]', _t('CMSSearch.FILTERDATEHEADING', 'Date'), 4);
 		$dateFrom = new DateField(
 			'q[LastEditedFrom]', 
