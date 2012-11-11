@@ -256,7 +256,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// Create the fields
 		$content = new TextField('q[Term]', _t('CMSSearch.FILTERLABELTEXT', 'Content'));
 		// following line is used to filter via ajax when entering content
-		$content->setAttribute('onkeydown', "jQuery('.cms-search-form').entwine('ss').searchContent();");
+		$content->setAttribute('onkeydown', "jQuery('.cms-search-form').entwine('ss').searchContent(event);");
 		$dateHeader = new HeaderField('q[Date]', _t('CMSSearch.FILTERDATEHEADING', 'Date'), 4);
 		$dateFrom = new DateField(
 			'q[LastEditedFrom]', 
@@ -273,13 +273,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			_t('CMSMain.PAGES', 'Pages'), 
 			CMSSiteTreeFilter::get_all_filters()
 		);
-		$pageFilter->setAttribute('onchange', "jQuery('.cms-search-form').entwine('ss').searchContent();");
+		$pageFilter->setAttribute('onchange', "jQuery('.cms-search-form').entwine('ss').searchContent(event);");
 		$pageClasses = new DropdownField(
 			'q[ClassName]', 
 			_t('CMSMain.PAGETYPEOPT', 'Page Type', 'Dropdown for limiting search to a page type'), 
 			$this->getPageTypes()
 		);
-		$pageClasses->setAttribute('onchange', "jQuery('.cms-search-form').entwine('ss').searchContent();");
+		$pageClasses->setAttribute('onchange', "jQuery('.cms-search-form').entwine('ss').searchContent(event);");
 		$pageClasses->setEmptyString(_t('CMSMain.PAGETYPEANYOPT','Any'));
 		
 		// Group the Datefields
