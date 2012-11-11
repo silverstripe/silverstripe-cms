@@ -120,11 +120,13 @@ JS
 
 		// Category filter
 		if(isset($params['AppCategory'])) {
-			$exts = File::$app_categories[$params['AppCategory']];
+			$exts = (isset(File::$app_categories[$params['AppCategory']])) ? File::$app_categories[$params['AppCategory']] : array();
 			$categorySQLs = array();
 			foreach($exts as $ext) $categorySQLs[] = '"File"."Name" LIKE \'%.' . $ext . '\'';
 			// TODO Use DataList->filterAny() once OR connectives are implemented properly
-			$list = $list->where('(' . implode(' OR ', $categorySQLs) . ')');
+			if (count($categorySQLs) > 0) {
+				$list = $list->where('(' . implode(' OR ', $categorySQLs) . ')');
+			}
 		}
 
 		return $list;
