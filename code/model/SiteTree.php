@@ -1044,9 +1044,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @param String $siteConfigMethod Method to call on {@link SiteConfig} for toplevel items, e.g. "canEdit"
 	 * @param String $globalPermission If the member doesn't have this permission code, don't bother iterating deeper.
 	 * @param Boolean $useCached
+	 * @param Array $handledIds
 	 * @return Array An map of {@link SiteTree} ID keys, to boolean values
 	 */
-	static public function batch_permission_check($ids, $memberID, $typeField, $groupJoinTable, $siteConfigMethod, $globalPermission = 'CMS_ACCESS_CMSMain', $useCached = true) {
+	static public function batch_permission_check($ids, $memberID, $typeField, $groupJoinTable, $siteConfigMethod, $globalPermission = 'CMS_ACCESS_CMSMain', $useCached = true, $handledIds = null) {
 		// Sanitise the IDs
 		$ids = array_filter($ids, 'is_numeric');
 		
@@ -1121,6 +1122,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						if($item->ParentID) {
 							if(!isset($groupedByParent[$item->ParentID])) $groupedByParent[$item->ParentID] = array();
 							$groupedByParent[$item->ParentID][] = $item->ID;
+							$handledIds[$item->ID] = $item->ID;
 						} else {
 							// Might return different site config based on record context, e.g. when subsites module is used
 							$siteConfig = $item->getSiteConfig();
@@ -1129,6 +1131,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					}
 
 					if($groupedByParent) {
+						$groupedByParent = array_diff_key($groupedByParent,$handledIds);
 						$actuallyInherited = self::batch_permission_check(array_keys($groupedByParent), $memberID, $typeField, $groupJoinTable, $siteConfigMethod);
 						if($actuallyInherited) {
 							$parentIDs = array_keys(array_filter($actuallyInherited));
