@@ -5,11 +5,11 @@
 		<div class="cms-content-header-info">
 			<% include BackLink_Button %>
 
-			<h2 id="page-title-heading">
+			
 			<% with Controller %>
 				<% include CMSBreadcrumbs %>
 			<% end_with %>
-			</h2>
+			
 		</div>
 		<% if Fields.hasTabset %>
 			<% with Fields.fieldByName('Root') %>
