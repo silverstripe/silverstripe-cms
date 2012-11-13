@@ -133,6 +133,27 @@ Options:
 		<exec command="${phpunit_bin}" checkreturn="true" passthru="true" />
 	</target>
 
+	<target name="behat" if="basedir" 
+		description="Runs behaviour tests through Behat, on the 'framework' and 'cms' modules (if available). Requires phpunit, composer and behat.">
+
+		<if>
+			<available file="${basedir}/framework/" type="dir" />
+			<then>
+				<echo msg="Testing 'framework' module" />
+				<exec command="vendor/bin/behat @framework" checkreturn="true" passthru="true" />	
+			</then>
+		</if>
+		
+		<if>
+			<available file="${basedir}/cms/" type="dir" />
+			<then>
+				<echo msg="Testing 'cms' module" />
+				<exec command="vendor/bin/behat @cms" checkreturn="true" passthru="true" />	
+			</then>
+		</if>
+
+	</target>
+
 	<target name="tag" if="basedir" 
 		description="Creates a new git tag in all the nested working copies (optionally pushes the created tag)"
 		depends="_gitRepositories,_gitBinary">
