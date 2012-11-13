@@ -19,7 +19,7 @@ and [installation from source](http://doc.silverstripe.org/framework/en/installa
 
 ## License ##
 
-	Copyright (c) 2007-2011, SilverStripe Limited - www.silverstripe.com
+	Copyright (c) 2007-2012, SilverStripe Limited - www.silverstripe.com
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
