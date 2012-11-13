@@ -1,19 +1,8 @@
 default:
   context:
     class: SilverStripe\Cms\Test\Behaviour\FeatureContext
-    parameters:
-      admin_url: /admin/
-      login_url: /Security/login
-      screenshot_path: %behat.paths.features%/screenshots/
   extensions:
-    SilverStripe\BehatExtension\Extension:
-      framework_path: ../../../framework
-      ajax_steps:
-        - go to
-        - follow
-        - press
-        - click
-        - submit
+    SilverStripe\BehatExtension\Extension: ~
     Behat\MinkExtension\Extension:
       # Adjust this to your local environment
       base_url:  http://localhost/
