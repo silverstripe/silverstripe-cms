@@ -326,7 +326,10 @@ JS
 		$context = singleton('File')->getDefaultSearchContext();
 		
 		// Namespace fields, for easier detection if a search is present
-		foreach($context->getFields() as $field) $field->setName(sprintf('q[%s]', $field->getName()));
+		foreach($context->getFields() as $field) {
+			$field->setName(sprintf('q[%s]', $field->getName()));
+			$field->setAttribute('onkeydown', "jQuery('.cms-search-form').entwine('ss').searchContent(event);");
+		}
 		foreach($context->getFilters() as $filter) $filter->setFullName(sprintf('q[%s]', $filter->getFullName()));
 
 		// Customize fields
@@ -345,6 +348,7 @@ JS
 				$appCategories
 			)
 		);
+		$typeDropdown->setAttribute('onchange', "jQuery('.cms-search-form').entwine('ss').searchContent(event);");
 
 		$typeDropdown->setEmptyString(' ');
 
