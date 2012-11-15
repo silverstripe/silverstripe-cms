@@ -119,7 +119,7 @@ JS
 		}
 
 		// Category filter
-		if(isset($params['AppCategory'])) {
+		if(isset($params['AppCategory']) && isset(File::$app_categories[$params['AppCategory']])) {
 			$exts = File::$app_categories[$params['AppCategory']];
 			$categorySQLs = array();
 			foreach($exts as $ext) $categorySQLs[] = '"File"."Name" LIKE \'%.' . $ext . '\'';
