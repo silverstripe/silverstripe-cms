@@ -253,7 +253,7 @@ JS
 			// TODO Replace with lazy loading on client to avoid performance hit of rendering potentially unused views
 			new LiteralField(
 				'Tree',
-				$treeField->createTag(
+				FormField::create_tag(
 					'div', 
 					array(
 						'class' => 'cms-tree', 
