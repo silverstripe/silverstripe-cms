@@ -9,7 +9,8 @@
 	},
 	"require-dev": {
 		"silverstripe/compass": "*",
-		"silverstripe/docsviewer": "*"
+		"silverstripe/docsviewer": "*",
+		"phpunit/phpunit": "3.7.*"
 	},
 	"minimum-stability": "dev"
 }
