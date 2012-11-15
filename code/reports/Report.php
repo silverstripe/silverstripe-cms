@@ -138,28 +138,6 @@ class SS_Report extends ViewableData {
 	}
 
 	/**
-	 * @deprecated 3.0
-	 * All subclasses of SS_Report now appear in the report admin, no need to register or unregister.
-	 *
-	 * Register a report.
-	 * @param $list The list to add the report to: "ReportAdmin" or "SideReports"
-	 * @param $reportClass The class of the report to add.
-	 * @param $priority The priority.  Higher numbers will appear furhter up in the reports list.
-	 * The default value is zero.
-	 */
-	static public function register($list, $reportClass, $priority = 0) {
-		Deprecation::notice('3.0', 'All subclasses of SS_Report now appear in the report admin, no need to register');
-	}
-
-	/**
-	 * @deprecated 3.0
-	 * All subclasses of SS_Report now appear in the report admin, no need to register or unregister.
-	 */
-	static public function unregister($list, $reportClass) {
-		self::add_excluded_reports($reportClass);
-	}
-
-	/**
 	 * Exclude certain reports classes from the list of Reports in the CMS
 	 * @param $reportClass Can be either a string with the report classname or an array of reports classnames
 	 */
