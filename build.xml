@@ -268,7 +268,7 @@ Options:
 				<exclude name="_ss_environment.php" />
 				<exclude name="*.tar.gz" />
 				<exclude name="*.zip" />
-
+				<exclude name="behat.yml" />
 			</fileset>
 			<fileset dir="${basedir}">
 				<include name="assets/Uploads" />
@@ -299,7 +299,7 @@ Options:
 				<exclude name="_ss_environment.php" />
 				<exclude name="*.tar.gz" />
 				<exclude name="*.zip" />
-
+				<exclude name="behat.yml" />
 				<exclude name="cms/**" />
 			</fileset>
 			<fileset dir="${basedir}">

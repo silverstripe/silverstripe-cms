@@ -1,0 +1,20 @@
+default:
+  extensions:
+
+    SilverStripe\BehatExtension\Extension:
+      framework_path: framework
+
+    Behat\MinkExtension\Extension:
+      # Adjust this to your own website URL.
+      # Uncomment, or set through environment variable:
+      # > export BEHAT_PARAMS="extensions[Behat\MinkExtension\Extension][base_url]=http://localhost/"
+      # 
+      # base_url:  http://localhost/
+
+      # TODO Dynamically set through LocatorProcessor
+      files_path: %behat.paths.base%/framework/tests/behat/features/files/
+      default_session: selenium2
+      javascript_session: selenium2
+      goutte: ~
+      selenium2:
+        browser: firefox
