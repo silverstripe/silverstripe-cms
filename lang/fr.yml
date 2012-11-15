@@ -122,12 +122,12 @@ fr:
     MENUTITLE: 'Éditer la page'
   CMSPageHistoryController:
     COMPAREMODE: 'Comparer (choisissez deux)'
-    COMPAREVERSIONS: 'Jämnför versioner'
+    COMPAREVERSIONS: 'Comparer les versions'
     COMPARINGVERSION: 'Comparaison entre les versions {version1} et {version2}.'
     MENUTITLE: Historique
-    REVERTTOTHISVERSION: 'Ändra till denna version'
+    REVERTTOTHISVERSION: 'Revenir à cette version'
     SHOWUNPUBLISHED: 'Afficher les versions non publiées'
-    SHOWVERSION: 'Visa version'
+    SHOWVERSION: 'Afficher cette version'
     VIEW: Afficher
     VIEWINGVERSION: 'Version affichée : {version}.'
   CMSPageHistoryController_versions.ss:
