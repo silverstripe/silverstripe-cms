@@ -122,9 +122,9 @@ class SilverStripeNavigatorItem extends ViewableData {
 
 	/**
 	* @return String
-	* Text displayed in watermark
+	* Get the Title of an item
 	*/
-	public function getWatermark() {}
+	public function getTitle() {}
 	
 	/**
 	 * Optional link to a specific view of this record.
@@ -190,6 +190,10 @@ class SilverStripeNavigatorItem_CMSLink extends SilverStripeNavigatorItem {
 			_t('ContentController.CMS', 'CMS')
 		);
 	}
+
+	public function getTitle() {
+		return _t('ContentController.CMS', 'CMS');		
+	}
 	
 	public function getLink() {
 		return $this->record->CMSEditLink();
@@ -221,7 +225,7 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
 		}
 	}
 
-	public function getWatermark() {
+	public function getTitle() {
 		return _t('ContentController.DRAFTSITE');
 	}
 	
@@ -269,7 +273,7 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem {
 		}
 	}
 
-	public function getWatermark() {
+	public function getTitle() {
 		return _t('ContentController.PUBLISHEDSITE');
 	}
 	
@@ -309,6 +313,10 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 	public function getHTML() {
 			$this->recordLink = $this->record->AbsoluteLink();
 			return "<a class=\"ss-ui-button\" href=\"$this->recordLink?archiveDate={$this->record->LastEdited}\" target=\"_blank\">". _t('ContentController.ARCHIVEDSITE', 'Preview version') ."</a>";
+	}
+
+	public function getTitle() {
+		return _t('ContentController.VERSION', 'Version').': '.$this->record->LastEdited;		
 	}
 	
 	public function getMessage() { 
