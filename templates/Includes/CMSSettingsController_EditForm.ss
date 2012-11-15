@@ -19,11 +19,6 @@
 		<% loop Actions %>
 			$Field
 		<% end_loop %>
-		<% if Controller.LinkPreview %>
-			<a href="$Controller.LinkPreview" class="cms-preview-toggle-link ss-ui-button" data-icon="preview">
-				<% _t('LeftAndMain.PreviewButton', 'Preview') %> &raquo;
-			</a>
-		<% end_if %>
 	</div>
 	<% end_if %>
 </form>

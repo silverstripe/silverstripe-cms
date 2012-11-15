@@ -4,32 +4,26 @@ function windowName(suffix) {
 }
 
 (function($) {
-	$('#switchView a.newWindow').live('click',
-		function() {
+	$(document).ready(function() {
+		$('#switchView a.newWindow').on('click', function(e) {
 			var w = window.open(this.href, windowName(this.target));
 			w.focus();
 			return false;
-		}
-	);
+		});
 
-	$('#SilverStripeNavigatorLink').live('click',
-		function() {
+		$('#SilverStripeNavigatorLink').on('click', function(e) {
 			$('#SilverStripeNavigatorLinkPopup').toggle();
 			return false;
-		}
-	);
-	
-	$('#SilverStripeNavigatorLinkPopup a.close').live('click',
-		function() {
+		});
+		
+		$('#SilverStripeNavigatorLinkPopup a.close').on('click', function(e) {
 			$('#SilverStripeNavigatorLinkPopup').hide();
 			return false;
-		}
-	);
-	
-	$('#SilverStripeNavigatorLinkPopup input').live('focus',
-		function() {
+		});
+		
+		$('#SilverStripeNavigatorLinkPopup input').on('focus',function(e) {
 			this.select();
-		}
-	);
+		});
+	});
 
 })(jQuery);
