@@ -2512,15 +2512,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		return $this->_cache_statusFlags;
 	}
 
-	
-	/**
-	 * @deprecated 3.0 Use getTreeTitle()
-	 */
-	public function TreeTitle() {
-		Deprecation::notice('3.0', 'Use getTreeTitle() instead.');
-		return $this->getTreeTitle();
-	}
-	
 	/**
 	 * getTreeTitle will return three <span> html DOM elements, an empty <span> with
 	 * the class 'jstree-pageicon' in front, following by a <span> wrapping around its
