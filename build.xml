@@ -269,6 +269,7 @@ Options:
 				<exclude name="*.tar.gz" />
 				<exclude name="*.zip" />
 				<exclude name="behat.yml" />
+				<exclude name="composer.*" />
 			</fileset>
 			<fileset dir="${basedir}">
 				<include name="assets/Uploads" />
@@ -300,6 +301,7 @@ Options:
 				<exclude name="*.tar.gz" />
 				<exclude name="*.zip" />
 				<exclude name="behat.yml" />
+				<exclude name="composer.*" />
 				<exclude name="cms/**" />
 			</fileset>
 			<fileset dir="${basedir}">
