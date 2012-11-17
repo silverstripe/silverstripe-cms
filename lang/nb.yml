@@ -1,228 +1,418 @@
 nb:
   AssetAdmin:
-    ADDFILES: 'Legg til filer'
-    ActionAdd: 'Legg til folder'
-    AppCategoryArchive: Arkiv
-    AppCategoryAudio: Audio
-    AppCategoryDocument: Document
-    AppCategoryFlash: Flash
-    AppCategoryImage: Bilde
-    AppCategoryVideo: Video
-    BackToFolder: 'Tilbake til folder'
-    CREATED: Dato
-    CurrentFolderOnly: 'Begrens til nåværende folder'
-    DetailsView: Detaljer
-    FILES: Files
-    FILESYSTEMSYNC: 'Sync files'
-    FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
-    FROMTHEINTERNET: 'Fra internett'
-    FROMYOURCOMPUTER: 'Fra din pc'
-    Filetype: Filtype
-    ListView: Listevisning
-    MENUTITLE: Filer
-    NEWFOLDER: 'Ny folder'
-    SIZE: Størrelse
-    THUMBSDELETED: '{count} unused thumbnails have been deleted'
-    TreeView: Trevisning
-    Upload: 'Last opp'
+    ADDFILES:
+      - null
+    ActionAdd:
+      - null
+    AppCategoryArchive:
+      - null
+    AppCategoryAudio:
+      - null
+    AppCategoryDocument:
+      - null
+    AppCategoryFlash:
+      - null
+    AppCategoryImage:
+      - null
+    AppCategoryVideo:
+      - null
+    BackToFolder:
+      - null
+    CREATED:
+      - null
+    CurrentFolderOnly:
+      - null
+    DetailsView:
+      - null
+    FILES:
+      - null
+    FILESYSTEMSYNC:
+      - null
+    FILESYSTEMSYNCTITLE:
+      - null
+    FROMTHEINTERNET:
+      - null
+    FROMYOURCOMPUTER:
+      - null
+    Filetype:
+      - null
+    ListView:
+      - null
+    MENUTITLE:
+      - null
+    NEWFOLDER:
+      - null
+    SIZE:
+      - null
+    THUMBSDELETED:
+      - null
+    TreeView:
+      - null
+    Upload:
+      - null
   AssetAdmin_DeleteBatchAction:
-    TITLE: 'Slett foldere'
+    TITLE:
+      - null
   AssetAdmin_Tools:
-    FILTER: Filter
+    FILTER:
+      - null
   AssetAdmin_left.ss:
-    GO: Go
+    GO:
+      - null
   AssetTableField:
-    BACKLINKCOUNT: 'Used on:'
-    PAGES: page(s)
+    BACKLINKCOUNT:
+      - null
+    PAGES:
+      - null
   BackLink_Button.ss:
-    Back: Tilbake
+    Back:
+      - null
   BrokenLinksReport:
-    Any: Any
-    BROKENLINKS: 'Broken links report'
-    CheckSite: 'Check site'
-    CheckSiteDropdownDraft: 'Draft Site'
-    CheckSiteDropdownPublished: 'Published Site'
-    ColumnDateLastModified: 'Date last modified'
-    ColumnDateLastPublished: 'Date last published'
-    ColumnProblemType: 'Problem type'
-    ColumnURL: URL
-    HasBrokenFile: 'has broken file'
-    HasBrokenLink: 'has broken link'
-    HasBrokenLinkAndFile: 'has broken link and file'
-    HoverTitleEditPage: 'Rediger side'
-    PageName: Sidenavn
-    ReasonDropdown: 'Problem to check'
-    ReasonDropdownBROKENFILE: 'Broken file'
-    ReasonDropdownBROKENLINK: 'Broken link'
-    ReasonDropdownRPBROKENLINK: 'Omdirigeringsside peker til ikke-eksisterende side'
-    ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
-    RedirectorNonExistent: 'redirector page pointing to non-existent page'
-    VirtualPageNonExistent: 'Virtuell side peker til ikke-eksisterende side'
+    Any:
+      - null
+    BROKENLINKS:
+      - null
+    CheckSite:
+      - null
+    CheckSiteDropdownDraft:
+      - null
+    CheckSiteDropdownPublished:
+      - null
+    ColumnDateLastModified:
+      - null
+    ColumnDateLastPublished:
+      - null
+    ColumnProblemType:
+      - null
+    ColumnURL:
+      - null
+    HasBrokenFile:
+      - null
+    HasBrokenLink:
+      - null
+    HasBrokenLinkAndFile:
+      - null
+    HoverTitleEditPage:
+      - null
+    PageName:
+      - null
+    ReasonDropdown:
+      - null
+    ReasonDropdownBROKENFILE:
+      - null
+    ReasonDropdownBROKENLINK:
+      - null
+    ReasonDropdownRPBROKENLINK:
+      - null
+    ReasonDropdownVPBROKENLINK:
+      - null
+    RedirectorNonExistent:
+      - null
+    VirtualPageNonExistent:
+      - null
   CMSAddPageController:
-    Title: 'Legg til side'
+    Title:
+      - null
   CMSBatchActions:
-    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
-    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
-    DELETE_DRAFT_PAGES: 'Delete from draft site'
-    DELETE_PAGES: 'Slett fra publisert side'
-    PUBLISHED_PAGES: 'Published %d pages, %d failures'
-    PUBLISH_PAGES: Publiser
-    UNPUBLISHED_PAGES: 'Un-published %d pages'
-    UNPUBLISH_PAGES: Un-publish
+    DELETED_DRAFT_PAGES:
+      - null
+    DELETED_PAGES:
+      - null
+    DELETE_DRAFT_PAGES:
+      - null
+    DELETE_PAGES:
+      - null
+    PUBLISHED_PAGES:
+      - null
+    PUBLISH_PAGES:
+      - null
+    UNPUBLISHED_PAGES:
+      - null
+    UNPUBLISH_PAGES:
+      - null
   CMSFileAddController:
-    MENUTITLE: Files
+    MENUTITLE:
+      - null
   CMSMain:
-    ACCESS: 'Access to ''{title}'' section'
-    ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
-    AddNew: 'Add new page'
-    AddNewButton: 'Add new'
-    ChoosePageParentMode: 'Choose where to create this page'
-    ChoosePageType: 'Choose page type'
-    Create: Create
-    DELETE: 'Slett fra utkast side'
-    DELETEFP: 'Slett fra publisert side'
-    DESCREMOVED: 'and {count} descendants'
-    EMAIL: Email
-    EditTree: 'Edit Tree'
-    ListFiltered: 'Filtered list.'
-    MENUTITLE: 'Edit Page'
-    NEWPAGE: 'New {pagetype}'
-    PAGENOTEXISTS: 'This page doesn''t exist'
-    PAGES: Pages
-    PAGETYPEANYOPT: Any
-    PAGETYPEOPT: 'Page Type'
-    PUBALLCONFIRM: 'Please publish every page in the site, copying content stage to live'
-    PUBALLFUN: '"Publish All" functionality'
-    PUBALLFUN2: 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It''s				intended to be used after there have been massive edits of the content, such as when the site was				first built.'
-    PUBPAGES: 'Done: Published {count} pages'
-    PageAdded: 'Successfully created page'
-    REMOVED: 'Deleted ''%s''%s from live site'
-    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
-    REMOVEDPAGEFROMDRAFT: 'Removed ''%s'' from the draft site'
-    RESTORE: Gjenopprett
-    RESTORED: 'Restored ''{title}'' successfully'
-    ROLLBACK: 'Roll back to this version'
-    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
-    ROLLEDBACKVERSION: 'Rolled back to version #%d.  New version number is #%d'
-    SAVE: Lagre
-    SAVEDRAFT: 'Save Draft'
-    TabContent: Content
-    TabHistory: History
-    TabSettings: Settings
-    TreeFiltered: 'Filtered tree.'
-    TreeFilteredClear: 'Clear filter'
+    ACCESS:
+      - null
+    ACCESS_HELP:
+      - null
+    AddNew:
+      - null
+    AddNewButton:
+      - null
+    ChoosePageParentMode:
+      - null
+    ChoosePageType:
+      - null
+    Create:
+      - null
+    DELETE:
+      - null
+    DELETEFP:
+      - null
+    DESCREMOVED:
+      - null
+    EMAIL:
+      - null
+    EditTree:
+      - null
+    ListFiltered:
+      - null
+    MENUTITLE:
+      - null
+    NEWPAGE:
+      - null
+    PAGENOTEXISTS:
+      - null
+    PAGES:
+      - null
+    PAGETYPEANYOPT:
+      - null
+    PAGETYPEOPT:
+      - null
+    PUBALLCONFIRM:
+      - null
+    PUBALLFUN:
+      - null
+    PUBALLFUN2:
+      - null
+    PUBPAGES:
+      - null
+    PageAdded:
+      - null
+    REMOVED:
+      - null
+    REMOVEDPAGE:
+      - null
+    REMOVEDPAGEFROMDRAFT:
+      - null
+    RESTORE:
+      - null
+    RESTORED:
+      - null
+    ROLLBACK:
+      - null
+    ROLLEDBACKPUB:
+      - null
+    ROLLEDBACKVERSION:
+      - null
+    SAVE:
+      - null
+    SAVEDRAFT:
+      - null
+    TabContent:
+      - null
+    TabHistory:
+      - null
+    TabSettings:
+      - null
+    TreeFiltered:
+      - null
+    TreeFilteredClear:
+      - null
   CMSMain_left.ss:
-    'APPLY FILTER': 'Apply Filter'
-    RESET: Reset
+    'APPLY FILTER':
+      - null
+    RESET:
+      - null
   CMSPageAddController:
-    MENUTITLE: 'Legg til side'
-    ParentMode_child: 'Under another page'
-    ParentMode_top: 'Top level'
+    MENUTITLE:
+      - null
+    ParentMode_child:
+      - null
+    ParentMode_top:
+      - null
   CMSPageEditController:
-    MENUTITLE: 'Edit Page'
+    MENUTITLE:
+      - null
   CMSPageHistoryController:
-    COMPAREMODE: 'Sammenlign modus (velg to)'
-    COMPAREVERSIONS: 'Sammenlign versjoner'
-    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
-    MENUTITLE: Historie
-    REVERTTOTHISVERSION: 'Tilbake til denne versjonen'
-    SHOWUNPUBLISHED: 'Vis upubliserte versjoner'
-    SHOWVERSION: 'Vis versjon'
-    VIEW: Visning
-    VIEWINGVERSION: 'Currently viewing version {version}.'
+    COMPAREMODE:
+      - null
+    COMPAREVERSIONS:
+      - null
+    COMPARINGVERSION:
+      - null
+    MENUTITLE:
+      - null
+    REVERTTOTHISVERSION:
+      - null
+    SHOWUNPUBLISHED:
+      - null
+    SHOWVERSION:
+      - null
+    VIEW:
+      - null
+    VIEWINGVERSION:
+      - null
   CMSPageHistoryController_versions.ss:
-    AUTHOR: Forfatter
-    NOTPUBLISHED: 'Ikke utgitt'
-    PUBLISHER: Utgiver
-    UNKNOWN: Ukjent
-    WHEN: Når
+    AUTHOR:
+      - null
+    NOTPUBLISHED:
+      - null
+    PUBLISHER:
+      - null
+    UNKNOWN:
+      - null
+    WHEN:
+      - null
   CMSPageSettingsController:
-    MENUTITLE: 'Rediger siden'
+    MENUTITLE:
+      - null
   CMSPagesController:
-    GalleryView: Bildevisning
+    GalleryView:
+      - null
     ListView: Listevisning
-    MENUTITLE: Sider
-    TreeView: Trevisning
+    MENUTITLE:
+      - null
+    TreeView:
+      - null
   CMSPagesController_ContentToolbar.ss:
-    ENABLEDRAGGING: 'Drag''n''drop'
-    MULTISELECT: Multi-selection
+    ENABLEDRAGGING:
+      - null
+    MULTISELECT:
+      - null
   CMSPagesController_Tools.ss:
-    FILTER: Filter
+    FILTER:
+      - null
   CMSSearch:
     FILTERDATEFROM: Fra
     FILTERDATEHEADING: Dato
     FILTERDATETO: Til
     FILTERLABELTEXT: Innhold
   CMSSettingsController:
-    MENUTITLE: Innstillinger
+    MENUTITLE:
+      - null
   CMSSiteTreeFilter_ChangedPages:
-    Title: 'Changed pages'
+    Title:
+      - null
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'Alle sider, inkludert slettede'
+    Title:
+      - null
   CMSSiteTreeFilter_Search:
-    Title: 'Alle sider'
+    Title:
+      - null
   ContentControl:
-    NOTEWONTBESHOWN: 'Merk: denne beskjeden vil ikke være synlig for besøkende'
+    NOTEWONTBESHOWN:
+      - null
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
-    ARCHIVEDSITEFROM: 'Archived site from'
-    CMS: CMS
-    DRAFTSITE: 'Draft Site'
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Du må være logget inn i kontrollpanelet for å se utkast eller det arkiverte innholdet. <a href="%s">Klikk her for å gå tilbake til den publiserte versjonen.</a>'
-    Email: Email
-    INSTALL_SUCCESS: 'Installation Successful!'
-    InstallFilesDeleted: 'Installation files have been successfully deleted.'
-    InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
-    LOGGEDINAS: 'Logged in as'
-    LOGIN: Login
-    LOGOUT: 'Log out'
-    NOTLOGGEDIN: 'Ikke logget inn'
-    PUBLISHEDSITE: 'Published Site'
-    Password: Password
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
-    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
-    VIEWPAGEIN: 'View Page in:'
+    ARCHIVEDSITE:
+      - null
+    ARCHIVEDSITEFROM:
+      - null
+    CMS:
+      - null
+    DRAFTSITE:
+      - null
+    DRAFT_SITE_ACCESS_RESTRICTION:
+      - null
+    Email:
+      - null
+    INSTALL_SUCCESS:
+      - null
+    InstallFilesDeleted:
+      - null
+    InstallSecurityWarning:
+      - null
+    InstallSuccessCongratulations:
+      - null
+    LOGGEDINAS:
+      - null
+    LOGIN:
+      - null
+    LOGOUT:
+      - null
+    NOTLOGGEDIN:
+      - null
+    PUBLISHEDSITE:
+      - null
+    Password:
+      - null
+    PostInstallTutorialIntro:
+      - null
+    StartEditing:
+      - null
+    UnableDeleteInstall:
+      - null
+    VIEWPAGEIN:
+      - null
   ErrorPage:
-    CODE: Feilkode
-    DEFAULTERRORPAGECONTENT: '<p>Beklager, det ser ut til at du prøver å nå en side som ikke finnes.</p><p>Sjekk at du har skrevet riktig adresse og prøv på nytt.</p>'
-    DEFAULTERRORPAGETITLE: 'Finner ikke siden'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
-    DEFAULTSERVERERRORPAGETITLE: Serverfeil
-    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
-    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
-    400: '400 - Dårlig Sidespørring'
-    401: '401 - Uautorisert'
-    403: '403 - Forbudt'
-    404: '404 - Ikke funnet'
-    405: '405 - Metode ikke tillat'
-    406: '406 - Ikke akseptabel'
-    407: '407 - Proxy autentisering påkrevd'
-    408: '408 - Sidespørring timeout'
-    409: '409 - Konflikt'
-    410: '410 - Borte'
-    411: '411 - Lengde påkrevd'
-    412: '412 - Prekondisjon feilet'
-    413: '413 - Spørringsenhet for stor'
-    414: '414 - Spørrings-URI for lang'
-    415: '415 - Mediatype ikke støttet'
-    416: '416 - Spørringsspenne kan ikke tilfredstilles'
-    417: '417 - Forventning feilet'
-    500: '500 - Intern serverfeil'
-    501: '501 - Ikke implementert'
-    502: '502 - Dårlig gateway'
-    503: '503 - Service ikke tilgjengelig'
-    504: '504 - Gateway timeout'
-    505: '505 - HTTP versjon ikke støttet'
+    CODE:
+      - null
+    DEFAULTERRORPAGECONTENT:
+      - null
+    DEFAULTERRORPAGETITLE:
+      - null
+    DEFAULTSERVERERRORPAGECONTENT:
+      - null
+    DEFAULTSERVERERRORPAGETITLE:
+      - null
+    DESCRIPTION:
+      - null
+    ERRORFILEPROBLEM:
+      - null
+    PLURALNAME:
+      - null
+    SINGULARNAME:
+      - null
+    400:
+      - null
+    401:
+      - null
+    403:
+      - null
+    404:
+      - null
+    405:
+      - null
+    406:
+      - null
+    407:
+      - null
+    408:
+      - null
+    409:
+      - null
+    410:
+      - null
+    411:
+      - null
+    412:
+      - null
+    413:
+      - null
+    414:
+      - null
+    415:
+      - null
+    416:
+      - null
+    417:
+      - null
+    500:
+      - null
+    501:
+      - null
+    502:
+      - null
+    503:
+      - null
+    504:
+      - null
+    505:
+      - null
   Folder:
-    AddFolderButton: 'Legg til folder'
-    DELETEUNUSEDTHUMBNAILS: 'Slett miniatyrbilder som ikke er i bruk'
-    UNUSEDFILESTITLE: 'Filer ikke i bruk'
-    UNUSEDTHUMBNAILSTITLE: 'Miniatyrbilder ikke i bruk'
-    UploadFilesButton: 'Last opp'
+    AddFolderButton:
+      - null
+    DELETEUNUSEDTHUMBNAILS:
+      - null
+    UNUSEDFILESTITLE:
+      - null
+    UNUSEDTHUMBNAILSTITLE:
+      - null
+    UploadFilesButton:
+      - null
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Forhåndsvisning
@@ -231,180 +421,333 @@ nb:
     SearchResults: Søkeresultater
     VersionUnknown: Ukjent
   Permission:
-    CMS_ACCESS_CATEGORY: 'CMS Access'
+    CMS_ACCESS_CATEGORY:
+      - null
   Permissions:
-    CONTENT_CATEGORY: 'Content permissions'
-    PERMISSIONS_CATEGORY: 'Roles and access permissions'
+    CONTENT_CATEGORY:
+      - null
+    PERMISSIONS_CATEGORY:
+      - null
   RedirectorPage:
-    DESCRIPTION: 'Omdirigerer til en annen intern side'
-    HASBEENSETUP: 'En omdirigeringssside har blitt satt opp uten et mål å omdirigere til.'
-    HEADER: 'Denne siden vil omdirigere brukere til en annen side'
-    OTHERURL: 'Andre nettsteds URL'
-    PLURALNAME: 'Redirector Pags'
-    REDIRECTTO: 'Omdirigere til'
-    REDIRECTTOEXTERNAL: 'Et annet nettsted'
-    REDIRECTTOPAGE: 'En side på nettstedet'
-    SINGULARNAME: 'Redirector Page'
-    YOURPAGE: 'Side på ditt nettsted'
+    DESCRIPTION:
+      - null
+    HASBEENSETUP:
+      - null
+    HEADER:
+      - null
+    OTHERURL:
+      - null
+    PLURALNAME:
+      - null
+    REDIRECTTO:
+      - null
+    REDIRECTTOEXTERNAL:
+      - null
+    REDIRECTTOPAGE:
+      - null
+    SINGULARNAME:
+      - null
+    YOURPAGE:
+      - null
   ReportAdmin:
-    MENUTITLE: Rapporter
-    ReportTitle: Title
+    MENUTITLE:
+      - null
+    ReportTitle:
+      - null
   ReportAdminForm:
-    FILTERBY: 'Filter by'
+    FILTERBY:
+      - null
   SearchForm:
     GO: Utfør
     SEARCH: Søk
     SearchResults: Søkeresultater
   SideReport:
-    BROKENFILES: 'Pages with broken files'
-    BROKENLINKS: 'Pages with broken links'
-    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
-    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
-    BrokenLinksGroupTitle: 'Broken links reports'
-    ContentGroupTitle: 'Content reports'
-    EMPTYPAGES: 'Pages with no content'
-    LAST2WEEKS: 'Pages edited in the last 2 weeks'
-    OtherGroupTitle: Other
-    ParameterLiveCheckbox: 'Check live site'
-    REPEMPTY: 'The {title} report is empty.'
+    BROKENFILES:
+      - null
+    BROKENLINKS:
+      - null
+    BROKENREDIRECTORPAGES:
+      - null
+    BROKENVIRTUALPAGES:
+      - null
+    BrokenLinksGroupTitle:
+      - null
+    ContentGroupTitle:
+      - null
+    EMPTYPAGES:
+      - null
+    LAST2WEEKS:
+      - null
+    OtherGroupTitle:
+      - null
+    ParameterLiveCheckbox:
+      - null
+    REPEMPTY:
+      - null
   SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
-    ShareLink: 'Del link'
+    ShareInstructions:
+      - null
+    ShareLink:
+      - null
   SilverStripeNavigatorLinkl:
-    CloseLink: Lukk
+    CloseLink:
+      - null
   SiteConfig:
-    DEFAULTTHEME: '(Use default theme)'
-    EDITHEADER: 'Who can edit pages on this site?'
-    EDIT_PERMISSION: 'Manage site configuration'
-    EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
-    SITENAMEDEFAULT: 'Your Site Name'
-    SITETAGLINE: 'Site Tagline/Slogan'
-    SITETITLE: 'Site title'
-    TABACCESS: Access
-    TABMAIN: Main
-    TAGLINEDEFAULT: 'your tagline here'
-    THEME: Theme
-    TOPLEVELCREATE: 'Who can create pages in the root of the site?'
-    VIEWHEADER: 'Who can view pages on this site?'
+    DEFAULTTHEME:
+      - null
+    EDITHEADER:
+      - null
+    EDIT_PERMISSION:
+      - null
+    EDIT_PERMISSION_HELP:
+      - null
+    PLURALNAME:
+      - null
+    SINGULARNAME:
+      - null
+    SITENAMEDEFAULT:
+      - null
+    SITETAGLINE:
+      - null
+    SITETITLE:
+      - null
+    TABACCESS:
+      - null
+    TABMAIN:
+      - null
+    TAGLINEDEFAULT:
+      - null
+    THEME:
+      - null
+    TOPLEVELCREATE:
+      - null
+    VIEWHEADER:
+      - null
   SiteTree:
-    ACCESSANYONE: Alle
-    ACCESSHEADER: 'Hvem kan se denne siden?'
-    ACCESSLOGGEDIN: 'Brukere som er logget inn'
-    ACCESSONLYTHESE: 'Bare disse personene (velg fra listen)'
-    ADDEDTODRAFTHELP: 'Page has not been published yet'
-    ADDEDTODRAFTSHORT: Draft
-    ALLOWCOMMENTS: 'Tillat kommentarer på denne siden?'
-    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
-    BUTTONCANCELDRAFT: 'Avbryt endringer i utkast'
-    BUTTONCANCELDRAFTDESC: 'Slett utkast og gå tilbake til publisert versjon av denne siden'
-    BUTTONSAVEPUBLISH: 'Lagre & Publiser'
-    BUTTONUNPUBLISH: Av-publiser
-    BUTTONUNPUBLISHDESC: 'Fjern denne siden fra det publiserte nettstedet'
-    CREATED: 'Kreasjons dato'
-    Comments: Kommentarer
-    Content: Innhold
-    DEFAULTABOUTCONTENT: '<p>Du kan fylle denne siden med ditt innhold, eller du kan slette siden og lage dine egne sider.<br /></p>'
-    DEFAULTABOUTTITLE: 'Om oss'
-    DEFAULTCONTACTCONTENT: '<p>Du kan fylle denne siden med ditt innhold, eller du kan slette siden og lage dine egne sider.<br /></p>'
-    DEFAULTCONTACTTITLE: 'Kontakt oss'
-    DEFAULTHOMECONTENT: '<p>Velkommen til SilverStripe! Dette er standard hjemmeside. Du kan redigere siden ved å åpne <a href="admin/">CMS''n</a>. Du kan nå aksessere <a href="http://doc.silverstripe.com">dokumentasjon for utviklere</a>, eller begynne å <a href="http://doc.silverstripe.com/doku.php?id=tutorials">lære SilverStripe.</a></p>'
-    DEFAULTHOMETITLE: Hjem
-    DELETEDPAGEHELP: 'Page is no longer published'
-    DELETEDPAGESHORT: Slettet
-    DEPENDENT_NOTE: 'De følgende sidene avhenger av denne siden. Dette inkluderer virtuelle sider, omdirigeringssider og sider med innholdslenker.'
-    DESCRIPTION: 'Generisk innholdsside'
-    DependtPageColumnLinkType: 'Link type'
-    DependtPageColumnURL: URL
-    EDITANYONE: 'Alle som kan logge inn til kontrollpanelet'
-    EDITHEADER: 'Hvem kan redigere dette i kontrollpanelet?'
-    EDITONLYTHESE: 'Bare disse personene'
-    EDITORGROUPS: 'Redaktør grupper'
-    EDIT_ALL_DESCRIPTION: 'Edit any page'
-    EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
-    Editors: Redaktørgrupper
-    HASBROKENLINKS: 'Denne siden har ødelagte lenker.'
-    HTMLEDITORTITLE: Innhold
-    INHERIT: 'Arvet fra foreldre side'
-    LASTUPDATED: 'Sist oppdatert'
-    LINKCHANGENOTE: 'Endring av denne sidens lenke vil også påvirke lenkene til alle underliggende sider.'
-    MENUTITLE: 'Navigasjons etikett'
-    METADESC: Beskrivelse
-    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
-    METAEXTRA: 'Egendefinerte Meta Tags'
-    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
-    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
-    MODIFIEDONDRAFTSHORT: Modifisert
-    MetadataToggle: Metadata
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
-    PAGELOCATION: Sideplassering
-    PAGETITLE: Sidenavn
-    PAGETYPE: Sidetype
-    PARENTID: 'Overordnet side'
-    PARENTTYPE: 'Page location'
-    PARENTTYPE_ROOT: 'Top-level page'
-    PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
-    PERMISSION_GRANTACCESS_DESCRIPTION: 'Kontroller hvilke grupper som har tilgang til eller kan endre sidene'
-    PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: Pages
-    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
-    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
-    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
-    REMOVEDFROMDRAFTSHORT: 'Fjernet fra utkast'
-    REMOVE_INSTALL_WARNING: 'Advarsel: du burde fjerne installerte.php fra silverstripe for sikkerhetskyld'
-    REORGANISE_DESCRIPTION: 'Endre nettstedets struktur'
-    REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
-    SHOWINMENUS: 'Vis i menyer?'
-    SHOWINSEARCH: 'Vis i søk?'
-    SINGULARNAME: Page
-    TABBEHAVIOUR: Adferd
-    TABCONTENT: Innhold
-    TABDEPENDENT: 'Dependent pages'
-    TOPLEVEL: 'Nettstedets Innhold (øverste nivå)'
-    TOPLEVELCREATORGROUPS: 'Top level creators'
-    URLSegment: 'URL Segment'
-    VIEWERGROUPS: 'Publikums grupper'
-    VIEW_ALL_DESCRIPTION: 'View any page'
-    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
-    VIEW_DRAFT_CONTENT: 'Se innhold i utkast'
-    VIEW_DRAFT_CONTENT_HELP: 'Gjelder visning av sider utenfor CMS i utkastmodus. Nyttig for eksterne bidragsytere uten CMS-tilgang.'
-    Viewers: Lesergrupper
-    Visibility: Synlighet
-    has_one_Parent: Foreldreside
-    many_many_BackLinkTracking: Referansesporing
-    many_many_ImageTracking: Bildesporing
-    many_many_LinkTracking: Lenkesporing
+    ACCESSANYONE:
+      - null
+    ACCESSHEADER:
+      - null
+    ACCESSLOGGEDIN:
+      - null
+    ACCESSONLYTHESE:
+      - null
+    ADDEDTODRAFTHELP:
+      - null
+    ADDEDTODRAFTSHORT:
+      - null
+    ALLOWCOMMENTS:
+      - null
+    APPEARSVIRTUALPAGES:
+      - null
+    BUTTONCANCELDRAFT:
+      - null
+    BUTTONCANCELDRAFTDESC:
+      - null
+    BUTTONSAVEPUBLISH:
+      - null
+    BUTTONUNPUBLISH:
+      - null
+    BUTTONUNPUBLISHDESC:
+      - null
+    CREATED:
+      - null
+    Comments:
+      - null
+    Content:
+      - null
+    DEFAULTABOUTCONTENT:
+      - null
+    DEFAULTABOUTTITLE:
+      - null
+    DEFAULTCONTACTCONTENT:
+      - null
+    DEFAULTCONTACTTITLE:
+      - null
+    DEFAULTHOMECONTENT:
+      - null
+    DEFAULTHOMETITLE:
+      - null
+    DELETEDPAGEHELP:
+      - null
+    DELETEDPAGESHORT:
+      - null
+    DEPENDENT_NOTE:
+      - null
+    DESCRIPTION:
+      - null
+    DependtPageColumnLinkType:
+      - null
+    DependtPageColumnURL:
+      - null
+    EDITANYONE:
+      - null
+    EDITHEADER:
+      - null
+    EDITONLYTHESE:
+      - null
+    EDITORGROUPS:
+      - null
+    EDIT_ALL_DESCRIPTION:
+      - null
+    EDIT_ALL_HELP:
+      - null
+    Editors:
+      - null
+    HASBROKENLINKS:
+      - null
+    HTMLEDITORTITLE:
+      - null
+    INHERIT:
+      - null
+    LASTUPDATED:
+      - null
+    LINKCHANGENOTE:
+      - null
+    MENUTITLE:
+      - null
+    METADESC:
+      - null
+    METADESCHELP:
+      - null
+    METAEXTRA:
+      - null
+    METAEXTRAHELP:
+      - null
+    MODIFIEDONDRAFTHELP:
+      - null
+    MODIFIEDONDRAFTSHORT:
+      - null
+    MetadataToggle:
+      - null
+    OBSOLETECLASS:
+      - null
+    PAGELOCATION:
+      - null
+    PAGETITLE:
+      - null
+    PAGETYPE:
+      - null
+    PARENTID:
+      - null
+    PARENTTYPE:
+      - null
+    PARENTTYPE_ROOT:
+      - null
+    PARENTTYPE_SUBPAGE:
+      - null
+    PERMISSION_GRANTACCESS_DESCRIPTION:
+      - null
+    PERMISSION_GRANTACCESS_HELP:
+      - null
+    PLURALNAME:
+      - null
+    PageTypNotAllowedOnRoot:
+      - null
+    PageTypeNotAllowed:
+      - null
+    REMOVEDFROMDRAFTHELP:
+      - null
+    REMOVEDFROMDRAFTSHORT:
+      - null
+    REMOVE_INSTALL_WARNING:
+      - null
+    REORGANISE_DESCRIPTION:
+      - null
+    REORGANISE_HELP:
+      - null
+    SHOWINMENUS:
+      - null
+    SHOWINSEARCH:
+      - null
+    SINGULARNAME:
+      - null
+    TABBEHAVIOUR:
+      - null
+    TABCONTENT:
+      - null
+    TABDEPENDENT:
+      - null
+    TOPLEVEL:
+      - null
+    TOPLEVELCREATORGROUPS:
+      - null
+    URLSegment:
+      - null
+    VIEWERGROUPS:
+      - null
+    VIEW_ALL_DESCRIPTION:
+      - null
+    VIEW_ALL_HELP:
+      - null
+    VIEW_DRAFT_CONTENT:
+      - null
+    VIEW_DRAFT_CONTENT_HELP:
+      - null
+    Viewers:
+      - null
+    Visibility:
+      - null
+    has_one_Parent:
+      - null
+    many_many_BackLinkTracking:
+      - null
+    many_many_ImageTracking:
+      - null
+    many_many_LinkTracking:
+      - null
   SiteTreeURLSegmentField:
-    HelpChars: ' Special characters are automatically converted or removed.'
+    HelpChars:
+      - null
   StaticExporter:
     BASEURL: 'Base URL'
     EXPORTTO: 'Eksporter til folderen'
     NAME: 'Eksport av statiske sider'
   TableListField:
-    SELECT: 'Velg:'
+    SELECT:
+      - null
   TableListField.ss:
-    NOITEMSFOUND: 'No items found'
-    SORTASC: 'Sorter i stigende rekkefølge'
-    SORTDESC: 'Sorter i synkende rekkefølge'
+    NOITEMSFOUND:
+      - null
+    SORTASC:
+      - null
+    SORTDESC:
+      - null
   TableListField_PageControls.ss:
-    DISPLAYING: Displaying
-    OF: of
-    TO: to
-    VIEWFIRST: 'Se første'
-    VIEWLAST: 'Se siste'
-    VIEWNEXT: 'Se neste'
-    VIEWPREVIOUS: 'Se forrige'
+    DISPLAYING:
+      - null
+    OF:
+      - null
+    TO:
+      - null
+    VIEWFIRST:
+      - null
+    VIEWLAST:
+      - null
+    VIEWNEXT:
+      - null
+    VIEWPREVIOUS:
+      - null
   TreeTools:
-    DisplayLabel: 'Display:'
+    DisplayLabel:
+      - null
   ViewArchivedEmail.ss:
-    CANACCESS: 'You can access the archived site at this link:'
-    HAVEASKED: 'You have asked to view the content of our site on'
+    CANACCESS:
+      - null
+    HAVEASKED:
+      - null
   VirtualPage:
-    CHOOSE: 'Velg en side å lenke til'
-    DESCRIPTION: 'Viser innholdet av en annen side'
-    EDITCONTENT: 'Klikk her for å endre innholdet'
-    HEADER: 'Dette er en virituell side'
-    PLURALNAME: 'Virtuelle Sider'
-    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
-    SINGULARNAME: 'Virtuell Side'
+    CHOOSE:
+      - null
+    DESCRIPTION:
+      - null
+    EDITCONTENT:
+      - null
+    HEADER:
+      - null
+    PLURALNAME:
+      - null
+    PageTypNotAllowedOnRoot:
+      - null
+    SINGULARNAME:
+      - null

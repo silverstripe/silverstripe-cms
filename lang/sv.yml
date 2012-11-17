@@ -1,228 +1,418 @@
 sv:
   AssetAdmin:
-    ADDFILES: 'Lägg till filer'
-    ActionAdd: 'Skapa mapp'
-    AppCategoryArchive: Arkivera
-    AppCategoryAudio: Ljud
-    AppCategoryDocument: Dokument
-    AppCategoryFlash: Flash
-    AppCategoryImage: Bild
-    AppCategoryVideo: Video
-    BackToFolder: 'Tillbaka till mappen'
-    CREATED: Datum
-    CurrentFolderOnly: 'Begränsa till aktuell mapp?'
-    DetailsView: Detaljer
-    FILES: Filer
-    FILESYSTEMSYNC: 'Synkronisera filer'
-    FILESYSTEMSYNCTITLE: 'Uppdatera CMS:ets databasposter för filer i filsystemet. Användbart när nya filer har laddats upp utanför CMS:et, t.ex. via FTP.'
-    FROMTHEINTERNET: 'Från internet'
-    FROMYOURCOMPUTER: 'Från din dator'
-    Filetype: Filtyp
-    ListView: Listvy
-    MENUTITLE: Filer
-    NEWFOLDER: 'Ny mapp'
-    SIZE: Storlek
-    THUMBSDELETED: '{count} oanvända tumnaglar har raderats'
-    TreeView: Trädvy
-    Upload: 'Ladda upp'
+    ADDFILES:
+      - null
+    ActionAdd:
+      - null
+    AppCategoryArchive:
+      - null
+    AppCategoryAudio:
+      - null
+    AppCategoryDocument:
+      - null
+    AppCategoryFlash:
+      - null
+    AppCategoryImage:
+      - null
+    AppCategoryVideo:
+      - null
+    BackToFolder:
+      - null
+    CREATED:
+      - null
+    CurrentFolderOnly:
+      - null
+    DetailsView:
+      - null
+    FILES:
+      - null
+    FILESYSTEMSYNC:
+      - null
+    FILESYSTEMSYNCTITLE:
+      - null
+    FROMTHEINTERNET:
+      - null
+    FROMYOURCOMPUTER:
+      - null
+    Filetype:
+      - null
+    ListView:
+      - null
+    MENUTITLE:
+      - null
+    NEWFOLDER:
+      - null
+    SIZE:
+      - null
+    THUMBSDELETED:
+      - null
+    TreeView:
+      - null
+    Upload:
+      - null
   AssetAdmin_DeleteBatchAction:
-    TITLE: 'Radera mapparna'
+    TITLE:
+      - null
   AssetAdmin_Tools:
-    FILTER: Filtrera
+    FILTER:
+      - null
   AssetAdmin_left.ss:
-    GO: Kör
+    GO:
+      - null
   AssetTableField:
-    BACKLINKCOUNT: 'Använd på:'
-    PAGES: sida(-or)
+    BACKLINKCOUNT:
+      - null
+    PAGES:
+      - null
   BackLink_Button.ss:
-    Back: Tillbaka
+    Back:
+      - null
   BrokenLinksReport:
-    Any: Alla
-    BROKENLINKS: 'Rapport för brutna länkar'
-    CheckSite: 'Kontrollera sajt'
-    CheckSiteDropdownDraft: Utkast
-    CheckSiteDropdownPublished: 'Publicerad Sajt'
-    ColumnDateLastModified: 'Datum vid senaste modifiering'
-    ColumnDateLastPublished: 'Datum vid senaste publicering'
-    ColumnProblemType: Problemtyp
-    ColumnURL: URL
-    HasBrokenFile: 'har trasig fil'
-    HasBrokenLink: 'har trasig länk'
-    HasBrokenLinkAndFile: 'har trasig länk och fil'
-    HoverTitleEditPage: 'Redigera sida'
-    PageName: Sidnamn
-    ReasonDropdown: 'Problem att kontrollera'
-    ReasonDropdownBROKENFILE: 'Trasig fil'
-    ReasonDropdownBROKENLINK: 'Bruten länk'
-    ReasonDropdownRPBROKENLINK: 'Omdirigeringssida pekar på en icke-existerande sida'
-    ReasonDropdownVPBROKENLINK: 'Virtuell sida pekar på icke-existerande sida'
-    RedirectorNonExistent: 'omdirigeringssida pekar på en icke-existerande sida'
-    VirtualPageNonExistent: 'virtuell sida pekar på icke-existerande sida'
+    Any:
+      - null
+    BROKENLINKS:
+      - null
+    CheckSite:
+      - null
+    CheckSiteDropdownDraft:
+      - null
+    CheckSiteDropdownPublished:
+      - null
+    ColumnDateLastModified:
+      - null
+    ColumnDateLastPublished:
+      - null
+    ColumnProblemType:
+      - null
+    ColumnURL:
+      - null
+    HasBrokenFile:
+      - null
+    HasBrokenLink:
+      - null
+    HasBrokenLinkAndFile:
+      - null
+    HoverTitleEditPage:
+      - null
+    PageName:
+      - null
+    ReasonDropdown:
+      - null
+    ReasonDropdownBROKENFILE:
+      - null
+    ReasonDropdownBROKENLINK:
+      - null
+    ReasonDropdownRPBROKENLINK:
+      - null
+    ReasonDropdownVPBROKENLINK:
+      - null
+    RedirectorNonExistent:
+      - null
+    VirtualPageNonExistent:
+      - null
   CMSAddPageController:
-    Title: 'Skapa sida'
+    Title:
+      - null
   CMSBatchActions:
-    DELETED_DRAFT_PAGES: 'Raderade %d sidor från utkastsajten, %d misslyckades'
-    DELETED_PAGES: 'Raderade %d sidor från den publiserade sajten, %d misslyckades'
-    DELETE_DRAFT_PAGES: 'Radera från utkast'
-    DELETE_PAGES: 'Radera från publicerade sajten'
-    PUBLISHED_PAGES: 'Publicerade %d sidor, %d misslyckades'
-    PUBLISH_PAGES: Publicera
-    UNPUBLISHED_PAGES: 'Avpublicerade %d sidor'
-    UNPUBLISH_PAGES: Avpublicera
+    DELETED_DRAFT_PAGES:
+      - null
+    DELETED_PAGES:
+      - null
+    DELETE_DRAFT_PAGES:
+      - null
+    DELETE_PAGES:
+      - null
+    PUBLISHED_PAGES:
+      - null
+    PUBLISH_PAGES:
+      - null
+    UNPUBLISHED_PAGES:
+      - null
+    UNPUBLISH_PAGES:
+      - null
   CMSFileAddController:
-    MENUTITLE: Filer
+    MENUTITLE:
+      - null
   CMSMain:
-    ACCESS: 'Tillgång till sektionen ''{title}'''
-    ACCESS_HELP: 'Tillåt visning av sektionen innehållande sidträdet och dess innehåll. Rättigheter att visa och redigera sidan kan hanteras i dess rullgardinsmenyer, liksom i "Innehållsbehörigheter".'
-    AddNew: 'Skapa ny sida'
-    AddNewButton: 'Skapa ny'
-    ChoosePageParentMode: 'Välj var du vill skapa denna sida'
-    ChoosePageType: 'Välj sidtyp'
-    Create: Skapa
-    DELETE: 'Radera utkast'
-    DELETEFP: Radera
-    DESCREMOVED: 'och {count} ättlingar'
-    EMAIL: E-post
-    EditTree: 'Redigera trädet'
-    ListFiltered: 'Filtrerad lista'
-    MENUTITLE: 'Redigera sida'
-    NEWPAGE: 'Ny {pagetype}'
-    PAGENOTEXISTS: 'Den här sidan finns inte'
-    PAGES: Sidor
-    PAGETYPEANYOPT: 'Vilken som helst'
-    PAGETYPEOPT: Sidtyp
-    PUBALLCONFIRM: 'Publicera alla sidor på sajten, kopiera innehållets status till ''live'''
-    PUBALLFUN: '"Publicera alla"-funktion'
-    PUBALLFUN2: 'Ett klick på den här knappen är samma sak som att gå till varje sida och klicka på "Publicera". Tanken är att den ska användas efter stora uppdateringar av innehållet på sidan, som när den skapas.'
-    PUBPAGES: 'Klar: Publicerade {count} sidor'
-    PageAdded: 'Lyckades skapa sida'
-    REMOVED: 'Raderade ''%s''%s från den publicerade sajten'
-    REMOVEDPAGE: 'Tog bort ''{title}'' från den publicerade sajten'
-    REMOVEDPAGEFROMDRAFT: 'Raderade ''%s'' från utkast'
-    RESTORE: Återskapa
-    RESTORED: 'Återskapandet av  ''{title}'' lyckades'
-    ROLLBACK: 'Återställ den här versionen'
-    ROLLEDBACKPUB: 'Återskapade publicerad version. Nytt versionsnummer är #{version}'
-    ROLLEDBACKVERSION: 'Återskapade version #%d. Nytt versionsnummer är #%d'
-    SAVE: Spara
-    SAVEDRAFT: 'Spara utkast'
-    TabContent: Innehåll
-    TabHistory: Historia
-    TabSettings: Inställningar
-    TreeFiltered: 'Filtrerat träd'
-    TreeFilteredClear: 'Rensa lista'
+    ACCESS:
+      - null
+    ACCESS_HELP:
+      - null
+    AddNew:
+      - null
+    AddNewButton:
+      - null
+    ChoosePageParentMode:
+      - null
+    ChoosePageType:
+      - null
+    Create:
+      - null
+    DELETE:
+      - null
+    DELETEFP:
+      - null
+    DESCREMOVED:
+      - null
+    EMAIL:
+      - null
+    EditTree:
+      - null
+    ListFiltered:
+      - null
+    MENUTITLE:
+      - null
+    NEWPAGE:
+      - null
+    PAGENOTEXISTS:
+      - null
+    PAGES:
+      - null
+    PAGETYPEANYOPT:
+      - null
+    PAGETYPEOPT:
+      - null
+    PUBALLCONFIRM:
+      - null
+    PUBALLFUN:
+      - null
+    PUBALLFUN2:
+      - null
+    PUBPAGES:
+      - null
+    PageAdded:
+      - null
+    REMOVED:
+      - null
+    REMOVEDPAGE:
+      - null
+    REMOVEDPAGEFROMDRAFT:
+      - null
+    RESTORE:
+      - null
+    RESTORED:
+      - null
+    ROLLBACK:
+      - null
+    ROLLEDBACKPUB:
+      - null
+    ROLLEDBACKVERSION:
+      - null
+    SAVE:
+      - null
+    SAVEDRAFT:
+      - null
+    TabContent:
+      - null
+    TabHistory:
+      - null
+    TabSettings:
+      - null
+    TreeFiltered:
+      - null
+    TreeFilteredClear:
+      - null
   CMSMain_left.ss:
-    'APPLY FILTER': Filtrera
-    RESET: Rensa
+    'APPLY FILTER':
+      - null
+    RESET:
+      - null
   CMSPageAddController:
-    MENUTITLE: 'Skapa sida'
-    ParentMode_child: 'Under en annan sida'
-    ParentMode_top: Toppnivå
+    MENUTITLE:
+      - null
+    ParentMode_child:
+      - null
+    ParentMode_top:
+      - null
   CMSPageEditController:
-    MENUTITLE: 'Redigera sidan'
+    MENUTITLE:
+      - null
   CMSPageHistoryController:
-    COMPAREMODE: 'Jämföringsläge (välj två)'
-    COMPAREVERSIONS: 'Jämför versioner'
-    COMPARINGVERSION: 'Jämför version {version1} och {version2}.'
-    MENUTITLE: Historia
-    REVERTTOTHISVERSION: 'Ändra till denna version'
-    SHOWUNPUBLISHED: 'Visa opublicerade versioner'
-    SHOWVERSION: 'Visa version'
-    VIEW: 'Titta på'
-    VIEWINGVERSION: 'Nu visas version {version}.'
+    COMPAREMODE:
+      - null
+    COMPAREVERSIONS:
+      - null
+    COMPARINGVERSION:
+      - null
+    MENUTITLE:
+      - null
+    REVERTTOTHISVERSION:
+      - null
+    SHOWUNPUBLISHED:
+      - null
+    SHOWVERSION:
+      - null
+    VIEW:
+      - null
+    VIEWINGVERSION:
+      - null
   CMSPageHistoryController_versions.ss:
-    AUTHOR: Författare
-    NOTPUBLISHED: 'Ej publicerad'
-    PUBLISHER: Utgivare
-    UNKNOWN: Okänd
-    WHEN: När
+    AUTHOR:
+      - null
+    NOTPUBLISHED:
+      - null
+    PUBLISHER:
+      - null
+    UNKNOWN:
+      - null
+    WHEN:
+      - null
   CMSPageSettingsController:
-    MENUTITLE: 'Redigera sida'
+    MENUTITLE:
+      - null
   CMSPagesController:
-    GalleryView: Gallerivy
+    GalleryView:
+      - null
     ListView: Listvy
-    MENUTITLE: Sidor
-    TreeView: Trädvy
+    MENUTITLE:
+      - null
+    TreeView:
+      - null
   CMSPagesController_ContentToolbar.ss:
-    ENABLEDRAGGING: 'Dra och släpp'
-    MULTISELECT: Flerval
+    ENABLEDRAGGING:
+      - null
+    MULTISELECT:
+      - null
   CMSPagesController_Tools.ss:
-    FILTER: Filter
+    FILTER:
+      - null
   CMSSearch:
     FILTERDATEFROM: Från
     FILTERDATEHEADING: Datum
     FILTERDATETO: Till
     FILTERLABELTEXT: Innehåll
   CMSSettingsController:
-    MENUTITLE: Inställningar
+    MENUTITLE:
+      - null
   CMSSiteTreeFilter_ChangedPages:
-    Title: 'Ändrade sidor'
+    Title:
+      - null
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'Alla sidor, inklusive raderade'
+    Title:
+      - null
   CMSSiteTreeFilter_Search:
-    Title: 'Alla sidor'
+    Title:
+      - null
   ContentControl:
-    NOTEWONTBESHOWN: 'Observera: Detta meddelande kommer inte att visas för besökarna'
+    NOTEWONTBESHOWN:
+      - null
   ContentController:
-    ARCHIVEDSITE: 'Utkast version'
-    ARCHIVEDSITEFROM: 'Arkiverad sajt från'
-    CMS: CMS
-    DRAFTSITE: Utkast
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Du måste logga med ditt CMS-lösenord för att kunna se utkast och arkiverat material. <a href="%s">Klicka här för att gå tillbaks till den publicerade sajten.</a>'
-    Email: E-post
-    INSTALL_SUCCESS: 'Installation lyckades!'
-    InstallFilesDeleted: 'Installationsfilerna raderades utan problem.'
-    InstallSecurityWarning: 'Av säkerhetsskäl bör du nu radera installationsfilerna, förutom om du planerar att installera om (<em>kräver administratörs login, se ovan</em>). Webbservern behöver nu bara skrivrättigheter till katalogen "assets", du kan ta bort skrivrättigheter till alla andra kataloger. <a href="{link}" style="text-align: center;">Klicka här för att radera installationsfilerna.</a>'
-    InstallSuccessCongratulations: 'Silverstripe har installerats!'
-    LOGGEDINAS: 'Inloggad som'
-    LOGIN: 'Logga in'
-    LOGOUT: 'Logga ut'
-    NOTLOGGEDIN: 'Inte inloggad'
-    PUBLISHEDSITE: 'Publicerad sajt'
-    Password: Lösenord
-    PostInstallTutorialIntro: 'Denna webbplats är en enklare version av en Silverstripe 3 hemsida. För att bygga ut, ta en titt på {link}.'
-    StartEditing: 'Du kan ändra din sajts innehåll genom <a href="{link}">publiceringsverktyget</a>.'
-    UnableDeleteInstall: 'Lyckades inte radera installationsfilerna. Radera följande filer manuellt.'
-    VIEWPAGEIN: 'titta på sidan i:'
+    ARCHIVEDSITE:
+      - null
+    ARCHIVEDSITEFROM:
+      - null
+    CMS:
+      - null
+    DRAFTSITE:
+      - null
+    DRAFT_SITE_ACCESS_RESTRICTION:
+      - null
+    Email:
+      - null
+    INSTALL_SUCCESS:
+      - null
+    InstallFilesDeleted:
+      - null
+    InstallSecurityWarning:
+      - null
+    InstallSuccessCongratulations:
+      - null
+    LOGGEDINAS:
+      - null
+    LOGIN:
+      - null
+    LOGOUT:
+      - null
+    NOTLOGGEDIN:
+      - null
+    PUBLISHEDSITE:
+      - null
+    Password:
+      - null
+    PostInstallTutorialIntro:
+      - null
+    StartEditing:
+      - null
+    UnableDeleteInstall:
+      - null
+    VIEWPAGEIN:
+      - null
   ErrorPage:
-    CODE: Felkod
-    DEFAULTERRORPAGECONTENT: '<p>Det verkar som om du försökter komma åt en sida som inte finns.</p><p>Var god kontrollera stavningen på adressen som du försökte nå och försök igen.'
-    DEFAULTERRORPAGETITLE: 'Sidan hittades inte'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Ursäkta, ett fel uppstod vid hanteringen av din förfrågan.</p>'
-    DEFAULTSERVERERRORPAGETITLE: Serverfel
-    DESCRIPTION: 'Anpassat innehåll för olika felärenden (t.ex. "Sidan kan inte hittas")'
-    ERRORFILEPROBLEM: 'Kunde inte skriva filen "{filename}". Var vänlig kontrollera skrivrättigheterna.'
-    PLURALNAME: Felmeddelandesidor
-    SINGULARNAME: Felsida
-    400: '400 - Felaktig förfrågan'
-    401: '401 - Obehörig'
-    403: '403 - Förbjuden'
-    404: '404 - Hittades inte'
-    405: '405 - Metoden inte tillåten'
-    406: '406 - Inte acceptabelt'
-    407: '407 - Proxyautentisering krävs'
-    408: '408 - Begäran tog för lång tid'
-    409: '409 - Konflikt'
-    410: '410 - Borta'
-    411: '411 - Längd krävs'
-    412: '412 - Ett villkor är inte uppfyllt'
-    413: '413 - Den efterfrågade entiteten är för stor'
-    414: '414 - URI:n för begäran är för lång'
-    415: '415 - Mediatypen stöds inte'
-    416: '416 - Det efterfrågade intervallet går inte att leverera'
-    417: '417 - Förväntningen gick inte att infria'
-    500: '500 - Internt serverfel'
-    501: '501 - Inte implementerad'
-    502: '502 - Felaktig gateway'
-    503: '503 - Tjänsten otillgänglig'
-    504: '504 - Gateway timeout'
-    505: '505 - HTTP-versionen stöds inte'
+    CODE:
+      - null
+    DEFAULTERRORPAGECONTENT:
+      - null
+    DEFAULTERRORPAGETITLE:
+      - null
+    DEFAULTSERVERERRORPAGECONTENT:
+      - null
+    DEFAULTSERVERERRORPAGETITLE:
+      - null
+    DESCRIPTION:
+      - null
+    ERRORFILEPROBLEM:
+      - null
+    PLURALNAME:
+      - null
+    SINGULARNAME:
+      - null
+    400:
+      - null
+    401:
+      - null
+    403:
+      - null
+    404:
+      - null
+    405:
+      - null
+    406:
+      - null
+    407:
+      - null
+    408:
+      - null
+    409:
+      - null
+    410:
+      - null
+    411:
+      - null
+    412:
+      - null
+    413:
+      - null
+    414:
+      - null
+    415:
+      - null
+    416:
+      - null
+    417:
+      - null
+    500:
+      - null
+    501:
+      - null
+    502:
+      - null
+    503:
+      - null
+    504:
+      - null
+    505:
+      - null
   Folder:
-    AddFolderButton: 'Skapa mapp'
-    DELETEUNUSEDTHUMBNAILS: 'Radera oanvända tumnaglar'
-    UNUSEDFILESTITLE: 'Oanvända filer'
-    UNUSEDTHUMBNAILSTITLE: 'Oanvända tumnaglar'
-    UploadFilesButton: 'Ladda upp'
+    AddFolderButton:
+      - null
+    DELETEUNUSEDTHUMBNAILS:
+      - null
+    UNUSEDFILESTITLE:
+      - null
+    UNUSEDTHUMBNAILSTITLE:
+      - null
+    UploadFilesButton:
+      - null
   LeftAndMain:
     DELETED: Raderad.
     PreviewButton: Förhandsgranska
@@ -231,180 +421,333 @@ sv:
     SearchResults: Sökresultat
     VersionUnknown: Okänd
   Permission:
-    CMS_ACCESS_CATEGORY: CMS-tillgång
+    CMS_ACCESS_CATEGORY:
+      - null
   Permissions:
-    CONTENT_CATEGORY: Innehållsåtkomst
-    PERMISSIONS_CATEGORY: 'Roller och åtkomst'
+    CONTENT_CATEGORY:
+      - null
+    PERMISSIONS_CATEGORY:
+      - null
   RedirectorPage:
-    DESCRIPTION: 'Omdirigerar till en annan intern sida'
-    HASBEENSETUP: 'En omdirigeringssida har skapats utan att ha något mål.'
-    HEADER: 'Den här sidan omdirigerar användare till en annan sida'
-    OTHERURL: 'Andra sidans URL'
-    PLURALNAME: 'Omdirigerings sidor'
-    REDIRECTTO: 'Omdirigera till'
-    REDIRECTTOEXTERNAL: 'En annan sajt'
-    REDIRECTTOPAGE: 'En sida på din sajt'
-    SINGULARNAME: Omdirigeringssida
-    YOURPAGE: 'Sida på din sajt'
+    DESCRIPTION:
+      - null
+    HASBEENSETUP:
+      - null
+    HEADER:
+      - null
+    OTHERURL:
+      - null
+    PLURALNAME:
+      - null
+    REDIRECTTO:
+      - null
+    REDIRECTTOEXTERNAL:
+      - null
+    REDIRECTTOPAGE:
+      - null
+    SINGULARNAME:
+      - null
+    YOURPAGE:
+      - null
   ReportAdmin:
-    MENUTITLE: Rapporter
-    ReportTitle: Titel
+    MENUTITLE:
+      - null
+    ReportTitle:
+      - null
   ReportAdminForm:
-    FILTERBY: 'Filtrera på'
+    FILTERBY:
+      - null
   SearchForm:
     GO: Kör
     SEARCH: Sök
     SearchResults: Sökresultat
   SideReport:
-    BROKENFILES: 'Sidor med trasiga filer'
-    BROKENLINKS: 'Sidor med trasiga länkar'
-    BROKENREDIRECTORPAGES: 'Omdirigeringssidor som pekar på raderade sidor'
-    BROKENVIRTUALPAGES: 'Virtuella sidor som pekar på raderade sidor'
-    BrokenLinksGroupTitle: 'Rapport för trasiga länkar'
-    ContentGroupTitle: Innehållsrapport
-    EMPTYPAGES: 'Tomma sidor'
-    LAST2WEEKS: 'Sidor som har redigerats de senaste 2 veckorna'
-    OtherGroupTitle: Annat
-    ParameterLiveCheckbox: 'Kontrollera live sajt'
-    REPEMPTY: 'Raporten {title} är tom.'
+    BROKENFILES:
+      - null
+    BROKENLINKS:
+      - null
+    BROKENREDIRECTORPAGES:
+      - null
+    BROKENVIRTUALPAGES:
+      - null
+    BrokenLinksGroupTitle:
+      - null
+    ContentGroupTitle:
+      - null
+    EMPTYPAGES:
+      - null
+    LAST2WEEKS:
+      - null
+    OtherGroupTitle:
+      - null
+    ParameterLiveCheckbox:
+      - null
+    REPEMPTY:
+      - null
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Kopiera och klistra in länken nedan för att dela den här sidan.'
-    ShareLink: 'Dela länk'
+    ShareInstructions:
+      - null
+    ShareLink:
+      - null
   SilverStripeNavigatorLinkl:
-    CloseLink: Stäng
+    CloseLink:
+      - null
   SiteConfig:
-    DEFAULTTHEME: '(Använd standardtema)'
-    EDITHEADER: 'Vem kan redigera sidor på den här sajten?'
-    EDIT_PERMISSION: 'Redigera sajtkonfiguration'
-    EDIT_PERMISSION_HELP: 'Möjlighet att ändra den globala åtkomstinställningar / toppnivåbehörigheter.'
-    PLURALNAME: 'Sajt inställningar'
-    SINGULARNAME: 'Sajt inställning'
-    SITENAMEDEFAULT: 'Din Sajts Namn'
-    SITETAGLINE: 'Din sajts Slogan'
-    SITETITLE: Sajttitel
-    TABACCESS: Tillgång
-    TABMAIN: Huvud
-    TAGLINEDEFAULT: 'din underrubrik här'
-    THEME: Tema
-    TOPLEVELCREATE: 'Vem kan skapa sidor i sajtroten?'
-    VIEWHEADER: 'Vem kan se sidor på den här sajten?'
+    DEFAULTTHEME:
+      - null
+    EDITHEADER:
+      - null
+    EDIT_PERMISSION:
+      - null
+    EDIT_PERMISSION_HELP:
+      - null
+    PLURALNAME:
+      - null
+    SINGULARNAME:
+      - null
+    SITENAMEDEFAULT:
+      - null
+    SITETAGLINE:
+      - null
+    SITETITLE:
+      - null
+    TABACCESS:
+      - null
+    TABMAIN:
+      - null
+    TAGLINEDEFAULT:
+      - null
+    THEME:
+      - null
+    TOPLEVELCREATE:
+      - null
+    VIEWHEADER:
+      - null
   SiteTree:
-    ACCESSANYONE: Alla
-    ACCESSHEADER: 'Vem kan se den här sidan?'
-    ACCESSLOGGEDIN: 'Inloggade användare'
-    ACCESSONLYTHESE: 'Bara dessa (välj från listan)'
-    ADDEDTODRAFTHELP: 'Sidan har inte publicerats än'
-    ADDEDTODRAFTSHORT: Utkast
-    ALLOWCOMMENTS: 'Tillåt kommentar på den här sidan?'
-    APPEARSVIRTUALPAGES: 'Detta innehåll förekommer även på en virtuell sida i sektionen {title}.'
-    BUTTONCANCELDRAFT: 'Ångra utkaständringar'
-    BUTTONCANCELDRAFTDESC: 'Radera ditt utkast och återgå till den publicerade sidan'
-    BUTTONSAVEPUBLISH: 'Spara och publicera'
-    BUTTONUNPUBLISH: Avpublicera
-    BUTTONUNPUBLISHDESC: 'Ta bort den här sidan från den publicerade sajten'
-    CREATED: Skapad
-    Comments: Kommentarer
-    Content: Innehåll
-    DEFAULTABOUTCONTENT: '<p>Du kan fylla den här sidan med ditt eget innehåll, eller radera den och skapa dina egna sidor.<br/></p>'
-    DEFAULTABOUTTITLE: 'Om oss'
-    DEFAULTCONTACTCONTENT: '<p>Du kan fylla den här sidan med ditt eget innehåll, eller radera den och skapa dina egna sidor.<br/></p>'
-    DEFAULTCONTACTTITLE: 'Kontakta oss'
-    DEFAULTHOMECONTENT: '<p>Välkommen till SilverStripe! Det här är standard-hemsidan. Du kan redigera den är sidan genom att öppna <a href="admin/">CMSet</a>. Du kan nu komma åt <a href="http://doc.silverstripe.com">utvecklar-dokumentationen</a>, eller börja med  <a href="http://doc.silverstripe.com/doku.php?id=tutorials">handledningen</a></p>'
-    DEFAULTHOMETITLE: Hem
-    DELETEDPAGEHELP: 'Sidan är inte längre publicerad'
-    DELETEDPAGESHORT: Raderad
-    DEPENDENT_NOTE: 'Följande sidor berörs av den här sidan. Inklusive virtuella sidor, omdirigeringssidor, och sidor med innehållslänkar.'
-    DESCRIPTION: 'Generisk innehållssida'
-    DependtPageColumnLinkType: Länktyp
-    DependtPageColumnURL: URL
-    EDITANYONE: 'Alla som kan logga in'
-    EDITHEADER: 'Vem kan redigera den här sidan?'
-    EDITONLYTHESE: 'Bara de här (välj från listan)'
-    EDITORGROUPS: Redaktörsgrupper
-    EDIT_ALL_DESCRIPTION: 'Redigera alla sidor'
-    EDIT_ALL_HELP: 'Möjlighet att redigera alla sidor på sajten, oavsett inställningarna under Åtkomstfliken. Kräver "Tillgång till ''Sidor''-delen"'
-    Editors: Redaktörsgrupper
-    HASBROKENLINKS: 'Den här sidan har trasiga länkar.'
-    HTMLEDITORTITLE: Innehåll
-    INHERIT: 'Ärv från överordnad sida'
-    LASTUPDATED: 'Senast uppdaterad'
-    LINKCHANGENOTE: 'Om du ändrar sidans länkadress så kommer det också påverka länkarna på underliggande sidor'
-    MENUTITLE: Navigationsetikett
-    METADESC: Metabeskrivning
-    METADESCHELP: 'Sökmotorer använder detta innehåll vid visning av sökresultatet (rangordningen påverkas dock inte av detta innehåll).'
-    METAEXTRA: 'Egna metataggar'
-    METAEXTRAHELP: 'HTML taggar för övrig meta information. Till exempel &lt;meta name="Namn" content="innehållet kommer här" /&gt;'
-    MODIFIEDONDRAFTHELP: 'Sidan har ej publicerade ändringar'
-    MODIFIEDONDRAFTSHORT: Ändrad
-    MetadataToggle: Metadata
-    OBSOLETECLASS: 'Denna sida är föråldrad typ {type}. Att spara kommer återställa dess typ och du kan förlora data'
-    PAGELOCATION: 'Sidans position'
-    PAGETITLE: Sidnamn
-    PAGETYPE: Sidtyp
-    PARENTID: 'Överordnad sida'
-    PARENTTYPE: 'Sidans position'
-    PARENTTYPE_ROOT: 'Översta nivån'
-    PARENTTYPE_SUBPAGE: 'Undersida under en överordnad sida (välj nedan)'
-    PERMISSION_GRANTACCESS_DESCRIPTION: 'Administrera åtkomsträttigheter för innehåll'
-    PERMISSION_GRANTACCESS_HELP: 'Tillåt inställning av sidspecifika åtkomstbegränsningar i "Sidor"-sektionen.'
-    PLURALNAME: Sidor
-    PageTypNotAllowedOnRoot: 'Sidtypen "{type}" tillåts inte på rotnivå'
-    PageTypeNotAllowed: 'Sidtypen "{type}" tillåts inte som barn till förälderns sida'
-    REMOVEDFROMDRAFTHELP: 'Sidan är publicerad men har raderats från utkastet'
-    REMOVEDFROMDRAFTSHORT: 'Radera från utkast'
-    REMOVE_INSTALL_WARNING: 'Varning: Du bör radera install.php från SilverStripe-installationen p.g.a säkerhetsskäl.'
-    REORGANISE_DESCRIPTION: 'Ändra sidstrukturen'
-    REORGANISE_HELP: 'Flytta om sidorna i sidträdet genom att dra och släppa.'
-    SHOWINMENUS: 'Visa i menyer?'
-    SHOWINSEARCH: 'Visa i sökningar?'
-    SINGULARNAME: Sida
-    TABBEHAVIOUR: Beteende
-    TABCONTENT: Huvudinnehåll
-    TABDEPENDENT: 'Beroende sidor'
-    TOPLEVEL: 'Sajtinnehåll (toppnivå)'
-    TOPLEVELCREATORGROUPS: 'Topp-nivå skapare'
-    URLSegment: URL-segment
-    VIEWERGROUPS: Åtkomstgrupper
-    VIEW_ALL_DESCRIPTION: 'Visa alla sidor'
-    VIEW_ALL_HELP: 'Möjlighet att se alla sidor på sajten, oavsett inställningarna under Åtkomstfliken. Kräver "Tillgång till webbplatsinnehåll"'
-    VIEW_DRAFT_CONTENT: 'Se utkast'
-    VIEW_DRAFT_CONTENT_HELP: 'Gäller sidor visade i utkastläge utanför CMS:et. Användbart för medarbetare utan CMS-åtkomst.'
-    Viewers: Åskådargrupper
-    Visibility: Synlighet
-    has_one_Parent: 'Överordnad sida'
-    many_many_BackLinkTracking: 'Spåra inlänkar'
-    many_many_ImageTracking: 'Spåra bild'
-    many_many_LinkTracking: 'Spåra länk'
+    ACCESSANYONE:
+      - null
+    ACCESSHEADER:
+      - null
+    ACCESSLOGGEDIN:
+      - null
+    ACCESSONLYTHESE:
+      - null
+    ADDEDTODRAFTHELP:
+      - null
+    ADDEDTODRAFTSHORT:
+      - null
+    ALLOWCOMMENTS:
+      - null
+    APPEARSVIRTUALPAGES:
+      - null
+    BUTTONCANCELDRAFT:
+      - null
+    BUTTONCANCELDRAFTDESC:
+      - null
+    BUTTONSAVEPUBLISH:
+      - null
+    BUTTONUNPUBLISH:
+      - null
+    BUTTONUNPUBLISHDESC:
+      - null
+    CREATED:
+      - null
+    Comments:
+      - null
+    Content:
+      - null
+    DEFAULTABOUTCONTENT:
+      - null
+    DEFAULTABOUTTITLE:
+      - null
+    DEFAULTCONTACTCONTENT:
+      - null
+    DEFAULTCONTACTTITLE:
+      - null
+    DEFAULTHOMECONTENT:
+      - null
+    DEFAULTHOMETITLE:
+      - null
+    DELETEDPAGEHELP:
+      - null
+    DELETEDPAGESHORT:
+      - null
+    DEPENDENT_NOTE:
+      - null
+    DESCRIPTION:
+      - null
+    DependtPageColumnLinkType:
+      - null
+    DependtPageColumnURL:
+      - null
+    EDITANYONE:
+      - null
+    EDITHEADER:
+      - null
+    EDITONLYTHESE:
+      - null
+    EDITORGROUPS:
+      - null
+    EDIT_ALL_DESCRIPTION:
+      - null
+    EDIT_ALL_HELP:
+      - null
+    Editors:
+      - null
+    HASBROKENLINKS:
+      - null
+    HTMLEDITORTITLE:
+      - null
+    INHERIT:
+      - null
+    LASTUPDATED:
+      - null
+    LINKCHANGENOTE:
+      - null
+    MENUTITLE:
+      - null
+    METADESC:
+      - null
+    METADESCHELP:
+      - null
+    METAEXTRA:
+      - null
+    METAEXTRAHELP:
+      - null
+    MODIFIEDONDRAFTHELP:
+      - null
+    MODIFIEDONDRAFTSHORT:
+      - null
+    MetadataToggle:
+      - null
+    OBSOLETECLASS:
+      - null
+    PAGELOCATION:
+      - null
+    PAGETITLE:
+      - null
+    PAGETYPE:
+      - null
+    PARENTID:
+      - null
+    PARENTTYPE:
+      - null
+    PARENTTYPE_ROOT:
+      - null
+    PARENTTYPE_SUBPAGE:
+      - null
+    PERMISSION_GRANTACCESS_DESCRIPTION:
+      - null
+    PERMISSION_GRANTACCESS_HELP:
+      - null
+    PLURALNAME:
+      - null
+    PageTypNotAllowedOnRoot:
+      - null
+    PageTypeNotAllowed:
+      - null
+    REMOVEDFROMDRAFTHELP:
+      - null
+    REMOVEDFROMDRAFTSHORT:
+      - null
+    REMOVE_INSTALL_WARNING:
+      - null
+    REORGANISE_DESCRIPTION:
+      - null
+    REORGANISE_HELP:
+      - null
+    SHOWINMENUS:
+      - null
+    SHOWINSEARCH:
+      - null
+    SINGULARNAME:
+      - null
+    TABBEHAVIOUR:
+      - null
+    TABCONTENT:
+      - null
+    TABDEPENDENT:
+      - null
+    TOPLEVEL:
+      - null
+    TOPLEVELCREATORGROUPS:
+      - null
+    URLSegment:
+      - null
+    VIEWERGROUPS:
+      - null
+    VIEW_ALL_DESCRIPTION:
+      - null
+    VIEW_ALL_HELP:
+      - null
+    VIEW_DRAFT_CONTENT:
+      - null
+    VIEW_DRAFT_CONTENT_HELP:
+      - null
+    Viewers:
+      - null
+    Visibility:
+      - null
+    has_one_Parent:
+      - null
+    many_many_BackLinkTracking:
+      - null
+    many_many_ImageTracking:
+      - null
+    many_many_LinkTracking:
+      - null
   SiteTreeURLSegmentField:
-    HelpChars: 'Specialtecken konverteras eller tas bort'
+    HelpChars:
+      - null
   StaticExporter:
     BASEURL: Bas-URL
     EXPORTTO: 'Exportera till den mappen'
     NAME: 'Statisk exportör'
   TableListField:
-    SELECT: 'Välj:'
+    SELECT:
+      - null
   TableListField.ss:
-    NOITEMSFOUND: 'Inga objekt hittade'
-    SORTASC: 'Sortera i stigande ordning'
-    SORTDESC: 'Sortera i fallande ordning'
+    NOITEMSFOUND:
+      - null
+    SORTASC:
+      - null
+    SORTDESC:
+      - null
   TableListField_PageControls.ss:
-    DISPLAYING: Visar
-    OF: av
-    TO: till
-    VIEWFIRST: 'Visa första'
-    VIEWLAST: 'Visa sista'
-    VIEWNEXT: 'Visa nästa'
-    VIEWPREVIOUS: 'Visa föregående'
+    DISPLAYING:
+      - null
+    OF:
+      - null
+    TO:
+      - null
+    VIEWFIRST:
+      - null
+    VIEWLAST:
+      - null
+    VIEWNEXT:
+      - null
+    VIEWPREVIOUS:
+      - null
   TreeTools:
-    DisplayLabel: 'Visa:'
+    DisplayLabel:
+      - null
   ViewArchivedEmail.ss:
-    CANACCESS: 'Du kan komma åt den arkiverade sajten med denna länk:'
-    HAVEASKED: 'Du har efterfrågat att se innehållet på vår sajt på'
+    CANACCESS:
+      - null
+    HAVEASKED:
+      - null
   VirtualPage:
-    CHOOSE: 'Välj en sida att länka till'
-    DESCRIPTION: 'Visar innehåll från en annan sida'
-    EDITCONTENT: 'klicka här för att redigera innehållet'
-    HEADER: 'Det här är en virutell sida'
-    PLURALNAME: 'Virtuella sidor'
-    PageTypNotAllowedOnRoot: 'Ursprungliga sidan av typ "{type}" tillåts inte på rotnivå för denna virtuella sida'
-    SINGULARNAME: 'Virtuell sida'
+    CHOOSE:
+      - null
+    DESCRIPTION:
+      - null
+    EDITCONTENT:
+      - null
+    HEADER:
+      - null
+    PLURALNAME:
+      - null
+    PageTypNotAllowedOnRoot:
+      - null
+    SINGULARNAME:
+      - null
