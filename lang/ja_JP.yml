@@ -1,418 +1,228 @@
 ja_JP:
   AssetAdmin:
-    ADDFILES:
-      - null
-    ActionAdd:
-      - null
-    AppCategoryArchive:
-      - null
-    AppCategoryAudio:
-      - null
-    AppCategoryDocument:
-      - null
-    AppCategoryFlash:
-      - null
-    AppCategoryImage:
-      - null
-    AppCategoryVideo:
-      - null
-    BackToFolder:
-      - null
-    CREATED:
-      - null
-    CurrentFolderOnly:
-      - null
-    DetailsView:
-      - null
-    FILES:
-      - null
-    FILESYSTEMSYNC:
-      - null
-    FILESYSTEMSYNCTITLE:
-      - null
-    FROMTHEINTERNET:
-      - null
-    FROMYOURCOMPUTER:
-      - null
-    Filetype:
-      - null
-    ListView:
-      - null
-    MENUTITLE:
-      - null
-    NEWFOLDER:
-      - null
-    SIZE:
-      - null
-    THUMBSDELETED:
-      - null
-    TreeView:
-      - null
-    Upload:
-      - null
+    ADDFILES: ファイルを追加
+    ActionAdd: フォルダを追加
+    AppCategoryArchive: アーカイブ
+    AppCategoryAudio: 音楽
+    AppCategoryDocument: Document
+    AppCategoryFlash: Flash
+    AppCategoryImage: 画像
+    AppCategoryVideo: 動画
+    BackToFolder: フォルダへ戻る
+    CREATED: 日付
+    CurrentFolderOnly: 'このフォルダに限定しますか?'
+    DetailsView: 詳細
+    FILES: ファイル
+    FILESYSTEMSYNC: 'Sync files'
+    FILESYSTEMSYNCTITLE: ファイルに関するCMSデータベースエントリーを更新する。例えば、FTPなどCMS以外を経由してファイルをアップロードした場合に便利です。
+    FROMTHEINTERNET: インターネットから
+    FROMYOURCOMPUTER: コンピュータから
+    Filetype: ファイルの種類
+    ListView: リスト表示
+    MENUTITLE: ファイル
+    NEWFOLDER: 新しいフォルダ
+    SIZE: サイズ
+    THUMBSDELETED: '{count}個の未使用のサムネイルを削除しました'
+    TreeView: ツリー表示
+    Upload: アップロード
   AssetAdmin_DeleteBatchAction:
-    TITLE:
-      - null
+    TITLE: フォルダを削除
   AssetAdmin_Tools:
-    FILTER:
-      - null
+    FILTER: フィルタ
   AssetAdmin_left.ss:
-    GO:
-      - null
+    GO: Go
   AssetTableField:
-    BACKLINKCOUNT:
-      - null
-    PAGES:
-      - null
+    BACKLINKCOUNT: 'Used on:'
+    PAGES: ページ
   BackLink_Button.ss:
-    Back:
-      - null
+    Back: 戻る
   BrokenLinksReport:
-    Any:
-      - null
-    BROKENLINKS:
-      - null
-    CheckSite:
-      - null
-    CheckSiteDropdownDraft:
-      - null
-    CheckSiteDropdownPublished:
-      - null
-    ColumnDateLastModified:
-      - null
-    ColumnDateLastPublished:
-      - null
-    ColumnProblemType:
-      - null
-    ColumnURL:
-      - null
-    HasBrokenFile:
-      - null
-    HasBrokenLink:
-      - null
-    HasBrokenLinkAndFile:
-      - null
-    HoverTitleEditPage:
-      - null
-    PageName:
-      - null
-    ReasonDropdown:
-      - null
-    ReasonDropdownBROKENFILE:
-      - null
-    ReasonDropdownBROKENLINK:
-      - null
-    ReasonDropdownRPBROKENLINK:
-      - null
-    ReasonDropdownVPBROKENLINK:
-      - null
-    RedirectorNonExistent:
-      - null
-    VirtualPageNonExistent:
-      - null
+    Any: 何でも
+    BROKENLINKS: 壊れたリンクのレポート
+    CheckSite: 'Check site'
+    CheckSiteDropdownDraft: 下書きサイト
+    CheckSiteDropdownPublished: 公開済みサイト
+    ColumnDateLastModified: 最終更新日
+    ColumnDateLastPublished: 最終公開日
+    ColumnProblemType: 問題の種類
+    ColumnURL: URL
+    HasBrokenFile: 'has broken file'
+    HasBrokenLink: 'has broken link'
+    HasBrokenLinkAndFile: 'has broken link and file'
+    HoverTitleEditPage: ページの編集
+    PageName: ページ名
+    ReasonDropdown: 'Problem to check'
+    ReasonDropdownBROKENFILE: 壊れたファイル
+    ReasonDropdownBROKENLINK: 壊れているリンク
+    ReasonDropdownRPBROKENLINK: 存在しないページを指しているリダイレクトページ
+    ReasonDropdownVPBROKENLINK: 存在しないページを指している仮想ページ
+    RedirectorNonExistent: 存在しないページを指しているリダイレクトページ
+    VirtualPageNonExistent: 存在しないページを指している仮想ページ
   CMSAddPageController:
-    Title:
-      - null
+    Title: ページを追加
   CMSBatchActions:
-    DELETED_DRAFT_PAGES:
-      - null
-    DELETED_PAGES:
-      - null
-    DELETE_DRAFT_PAGES:
-      - null
-    DELETE_PAGES:
-      - null
-    PUBLISHED_PAGES:
-      - null
-    PUBLISH_PAGES:
-      - null
-    UNPUBLISHED_PAGES:
-      - null
-    UNPUBLISH_PAGES:
-      - null
+    DELETED_DRAFT_PAGES: '%dページを下書きサイトから削除しましたが、%dページの削除に失敗しました。'
+    DELETED_PAGES: '%dページを公開サイトから削除しましたが、%dページの削除に失敗しました。'
+    DELETE_DRAFT_PAGES: 下書きサイトから削除
+    DELETE_PAGES: 公開サイトから削除
+    PUBLISHED_PAGES: '%dページを公開しましたが、%dページの公開に失敗しました。'
+    PUBLISH_PAGES: 公開
+    UNPUBLISHED_PAGES: '%dページを非公開にしました'
+    UNPUBLISH_PAGES: 非公開
   CMSFileAddController:
-    MENUTITLE:
-      - null
+    MENUTITLE: ファイル
   CMSMain:
-    ACCESS:
-      - null
-    ACCESS_HELP:
-      - null
-    AddNew:
-      - null
-    AddNewButton:
-      - null
-    ChoosePageParentMode:
-      - null
-    ChoosePageType:
-      - null
-    Create:
-      - null
-    DELETE:
-      - null
-    DELETEFP:
-      - null
-    DESCREMOVED:
-      - null
-    EMAIL:
-      - null
-    EditTree:
-      - null
-    ListFiltered:
-      - null
-    MENUTITLE:
-      - null
-    NEWPAGE:
-      - null
-    PAGENOTEXISTS:
-      - null
-    PAGES:
-      - null
-    PAGETYPEANYOPT:
-      - null
-    PAGETYPEOPT:
-      - null
-    PUBALLCONFIRM:
-      - null
-    PUBALLFUN:
-      - null
-    PUBALLFUN2:
-      - null
-    PUBPAGES:
-      - null
-    PageAdded:
-      - null
-    REMOVED:
-      - null
-    REMOVEDPAGE:
-      - null
-    REMOVEDPAGEFROMDRAFT:
-      - null
-    RESTORE:
-      - null
-    RESTORED:
-      - null
-    ROLLBACK:
-      - null
-    ROLLEDBACKPUB:
-      - null
-    ROLLEDBACKVERSION:
-      - null
-    SAVE:
-      - null
-    SAVEDRAFT:
-      - null
-    TabContent:
-      - null
-    TabHistory:
-      - null
-    TabSettings:
-      - null
-    TreeFiltered:
-      - null
-    TreeFilteredClear:
-      - null
+    ACCESS: 'Access to ''{title}'' section'
+    ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
+    AddNew: 新しいページを追加
+    AddNewButton: 新しく追加
+    ChoosePageParentMode: このページを作成する場所を選択
+    ChoosePageType: ページの種類を選択
+    Create: 作成
+    DELETE: ドラフトサイトから削除
+    DELETEFP: 公開サイトから削除
+    DESCREMOVED: 'and {count} descendants'
+    EMAIL: Eメール
+    EditTree: ツリーを編集
+    ListFiltered: フィルタリングされたリスト
+    MENUTITLE: ページを編集
+    NEWPAGE: 'New {pagetype}'
+    PAGENOTEXISTS: このページは存在しません
+    PAGES: ページ
+    PAGETYPEANYOPT: 何でも
+    PAGETYPEOPT: ページの種類
+    PUBALLCONFIRM: 'Please publish every page in the site, copying content stage to live'
+    PUBALLFUN: '"Publish All" functionality'
+    PUBALLFUN2: 'このボタンを押すことはすべてのページへ移動して"公開"を押すことと同じです。この機能は、サイトをはじめて作成した時など多くのコンテンツの編集がある場合に利用されることを想定されています。'
+    PUBPAGES: '完了: {count}ページを公開しました'
+    PageAdded: ページの作成に成功
+    REMOVED: '''%s''%sを実サイトから削除しました'
+    REMOVEDPAGE: '''{title}''を公開されているサイトから削除しました'
+    REMOVEDPAGEFROMDRAFT: '%sを下書きサイトから削除しました'
+    RESTORE: 復元
+    RESTORED: '{title}を復旧しました'
+    ROLLBACK: このバージョンへ戻す
+    ROLLEDBACKPUB: '公開された版へロールバックしました。新しいバージョン番号は#{version}です'
+    ROLLEDBACKVERSION: 'バージョン#%dへロールバックしました。新しいバージョン番号は#%dです。'
+    SAVE: 保存
+    SAVEDRAFT: 下書きとして保存
+    TabContent: コンテンツ
+    TabHistory: 履歴
+    TabSettings: 設定
+    TreeFiltered: フィルタリングされたツリー
+    TreeFilteredClear: フィルタを解除
   CMSMain_left.ss:
-    'APPLY FILTER':
-      - null
-    RESET:
-      - null
+    'APPLY FILTER': 'Apply Filter'
+    RESET: リセット
   CMSPageAddController:
-    MENUTITLE:
-      - null
-    ParentMode_child:
-      - null
-    ParentMode_top:
-      - null
+    MENUTITLE: ページを追加
+    ParentMode_child: 他のページの下に作成
+    ParentMode_top: 最上位層
   CMSPageEditController:
-    MENUTITLE:
-      - null
+    MENUTITLE: ページの編集
   CMSPageHistoryController:
-    COMPAREMODE:
-      - null
-    COMPAREVERSIONS:
-      - null
-    COMPARINGVERSION:
-      - null
-    MENUTITLE:
-      - null
-    REVERTTOTHISVERSION:
-      - null
-    SHOWUNPUBLISHED:
-      - null
-    SHOWVERSION:
-      - null
-    VIEW:
-      - null
-    VIEWINGVERSION:
-      - null
+    COMPAREMODE: 比較モード（２つを選択）
+    COMPAREVERSIONS: バージョンの比較
+    COMPARINGVERSION: '{version1}と{version2}を比較しています。'
+    MENUTITLE: 履歴
+    REVERTTOTHISVERSION: このバージョンに戻す
+    SHOWUNPUBLISHED: 公開されていないバージョンを表示
+    SHOWVERSION: バージョンを表示
+    VIEW: 表示
+    VIEWINGVERSION: '現在表示しているバージョンは{version}です。'
   CMSPageHistoryController_versions.ss:
-    AUTHOR:
-      - null
-    NOTPUBLISHED:
-      - null
-    PUBLISHER:
-      - null
-    UNKNOWN:
-      - null
-    WHEN:
-      - null
+    AUTHOR: 作成者
+    NOTPUBLISHED: 未公開
+    PUBLISHER: パブリッシャー
+    UNKNOWN: 不明
+    WHEN: いつ
   CMSPageSettingsController:
-    MENUTITLE:
-      - null
+    MENUTITLE: ページの編集
   CMSPagesController:
-    GalleryView:
-      - null
+    GalleryView: ギャラリー表示
     ListView: 一覧表示
-    MENUTITLE:
-      - null
-    TreeView:
-      - null
+    MENUTITLE: ページ
+    TreeView: ツリー表示
   CMSPagesController_ContentToolbar.ss:
-    ENABLEDRAGGING:
-      - null
-    MULTISELECT:
-      - null
+    ENABLEDRAGGING: ドラッグ・アンド・ドロップ
+    MULTISELECT: 複数選択
   CMSPagesController_Tools.ss:
-    FILTER:
-      - null
+    FILTER: フィルタ
   CMSSearch:
     FILTERDATEFROM: 開始日
     FILTERDATEHEADING: 日付
     FILTERDATETO: 終了日
     FILTERLABELTEXT: コンテンツ
   CMSSettingsController:
-    MENUTITLE:
-      - null
+    MENUTITLE: 設定
   CMSSiteTreeFilter_ChangedPages:
-    Title:
-      - null
+    Title: 変更されたページ
   CMSSiteTreeFilter_DeletedPages:
-    Title:
-      - null
+    Title: 全ページ（削除されたページも含む）
   CMSSiteTreeFilter_Search:
-    Title:
-      - null
+    Title: 全ページ
   ContentControl:
-    NOTEWONTBESHOWN:
-      - null
+    NOTEWONTBESHOWN: 'お知らせ: このメッセージは訪問者には表示されません'
   ContentController:
-    ARCHIVEDSITE:
-      - null
-    ARCHIVEDSITEFROM:
-      - null
-    CMS:
-      - null
-    DRAFTSITE:
-      - null
-    DRAFT_SITE_ACCESS_RESTRICTION:
-      - null
-    Email:
-      - null
-    INSTALL_SUCCESS:
-      - null
-    InstallFilesDeleted:
-      - null
-    InstallSecurityWarning:
-      - null
-    InstallSuccessCongratulations:
-      - null
-    LOGGEDINAS:
-      - null
-    LOGIN:
-      - null
-    LOGOUT:
-      - null
-    NOTLOGGEDIN:
-      - null
-    PUBLISHEDSITE:
-      - null
-    Password:
-      - null
-    PostInstallTutorialIntro:
-      - null
-    StartEditing:
-      - null
-    UnableDeleteInstall:
-      - null
-    VIEWPAGEIN:
-      - null
+    ARCHIVEDSITE: 'Preview version'
+    ARCHIVEDSITEFROM: 'Archived site from'
+    CMS: CMS
+    DRAFTSITE: 下書きサイト
+    DRAFT_SITE_ACCESS_RESTRICTION: '草案かアーカイブされた内容を見るためにはログインしてください。<a href="%s">公開サイトにもどるにはコチラをクリックしてください。</a>'
+    Email: Eメール
+    INSTALL_SUCCESS: 'Installation Successful!'
+    InstallFilesDeleted: インストール関連ファイルは正しく削除されました
+    InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
+    LOGGEDINAS: ログイン中：
+    LOGIN: ログイン
+    LOGOUT: ログアウト
+    NOTLOGGEDIN: ログインされていません
+    PUBLISHEDSITE: 公開サイト
+    Password: パスワード
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: '<a href="{link}">CMS</a>のリンクをクリックすることであなたのサイトのコンテンツの編集を開始することができます。'
+    UnableDeleteInstall: インストールファイルを削除することができませんでした。次のファイルを手動で削除してください。
+    VIEWPAGEIN: 'View Page in:'
   ErrorPage:
-    CODE:
-      - null
-    DEFAULTERRORPAGECONTENT:
-      - null
-    DEFAULTERRORPAGETITLE:
-      - null
-    DEFAULTSERVERERRORPAGECONTENT:
-      - null
-    DEFAULTSERVERERRORPAGETITLE:
-      - null
-    DESCRIPTION:
-      - null
-    ERRORFILEPROBLEM:
-      - null
-    PLURALNAME:
-      - null
-    SINGULARNAME:
-      - null
-    400:
-      - null
-    401:
-      - null
-    403:
-      - null
-    404:
-      - null
-    405:
-      - null
-    406:
-      - null
-    407:
-      - null
-    408:
-      - null
-    409:
-      - null
-    410:
-      - null
-    411:
-      - null
-    412:
-      - null
-    413:
-      - null
-    414:
-      - null
-    415:
-      - null
-    416:
-      - null
-    417:
-      - null
-    500:
-      - null
-    501:
-      - null
-    502:
-      - null
-    503:
-      - null
-    504:
-      - null
-    505:
-      - null
+    CODE: エラーコード
+    DEFAULTERRORPAGECONTENT: '<p>申し訳ありませんが、貴方の見ようとしているページは存在しません。</p><p>貴方が見ようとしているサイトのURLの綴りがあっているのか、再度確認してください。</p>'
+    DEFAULTERRORPAGETITLE: ページが見つかりません
+    DEFAULTSERVERERRORPAGECONTENT: '<p>申し訳ございません。あなたのリクエストを処理中に問題が起きました。</p>'
+    DEFAULTSERVERERRORPAGETITLE: サーバーエラー
+    DESCRIPTION: 'それぞれのエラーケースに対してカスタムコンテンツを表示する(例:"ページがありません")'
+    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
+    400: '400 - 不適格な要求です'
+    401: '401 - 許可されていません'
+    403: '403 - 禁止されています'
+    404: '404 - 見つかりません'
+    405: '405 - 禁じられた方法です'
+    406: '406 - 許容できません'
+    407: '407 - プロキシ認証が必要です'
+    408: '408 - 応答がありません'
+    409: '409 - 衝突が生じています'
+    410: '410 - 消失しました'
+    411: '411 - 冗長な要求です。'
+    412: '412 - 前提条件がありません'
+    413: '413 - リクエストされたものが長すぎます'
+    414: '414 - リクエストされたURIが長すぎます'
+    415: '415 - サポートされていないメディアです'
+    416: '416 - リクエストの長さが満たされていません'
+    417: '417 - 期待には沿えませんでした'
+    500: '500 - 本質的なサーバーエラーです'
+    501: '501 - 実施できません'
+    502: '502 - Gatewayとして正しくありません'
+    503: '503 - サービスが利用できません'
+    504: '504 - Gatewayが時間切れです'
+    505: '505 - サポートされていないHTTPのバージョンです'
   Folder:
-    AddFolderButton:
-      - null
-    DELETEUNUSEDTHUMBNAILS:
-      - null
-    UNUSEDFILESTITLE:
-      - null
-    UNUSEDTHUMBNAILSTITLE:
-      - null
-    UploadFilesButton:
-      - null
+    AddFolderButton: フォルダの追加
+    DELETEUNUSEDTHUMBNAILS: 未使用のサムネイルを削除
+    UNUSEDFILESTITLE: 未使用のファイル
+    UNUSEDTHUMBNAILSTITLE: 未使用のサムネイル
+    UploadFilesButton: アップロード
   LeftAndMain:
     DELETED: 削除済
     PreviewButton: プレビュー
@@ -421,333 +231,180 @@ ja_JP:
     SearchResults: 検索結果
     VersionUnknown: 不明
   Permission:
-    CMS_ACCESS_CATEGORY:
-      - null
+    CMS_ACCESS_CATEGORY: CMSへのアクセス
   Permissions:
-    CONTENT_CATEGORY:
-      - null
-    PERMISSIONS_CATEGORY:
-      - null
+    CONTENT_CATEGORY: コンテンツに関する権限
+    PERMISSIONS_CATEGORY: 役割とアクセス権限
   RedirectorPage:
-    DESCRIPTION:
-      - null
-    HASBEENSETUP:
-      - null
-    HEADER:
-      - null
-    OTHERURL:
-      - null
-    PLURALNAME:
-      - null
-    REDIRECTTO:
-      - null
-    REDIRECTTOEXTERNAL:
-      - null
-    REDIRECTTOPAGE:
-      - null
-    SINGULARNAME:
-      - null
-    YOURPAGE:
-      - null
+    DESCRIPTION: 別の内部ページにリダイレクト
+    HASBEENSETUP: 転送URLを含むページには、転送先がない状態で設定されています。
+    HEADER: このページをユーザーを変更して他のページにしますか？
+    OTHERURL: 他のウェブサイトのURL
+    PLURALNAME: 'Redirector Pags'
+    REDIRECTTO: 変更は
+    REDIRECTTOEXTERNAL: 他のウェブサイト
+    REDIRECTTOPAGE: 貴方のウェブサイトを表示します
+    SINGULARNAME: 'Redirector Page'
+    YOURPAGE: 貴方のウェブサイトを表示します
   ReportAdmin:
-    MENUTITLE:
-      - null
-    ReportTitle:
-      - null
+    MENUTITLE: レポート
+    ReportTitle: Title
   ReportAdminForm:
-    FILTERBY:
-      - null
+    FILTERBY: 'Filter by'
   SearchForm:
     GO: 開始
     SEARCH: 検索
     SearchResults: 検索結果
   SideReport:
-    BROKENFILES:
-      - null
-    BROKENLINKS:
-      - null
-    BROKENREDIRECTORPAGES:
-      - null
-    BROKENVIRTUALPAGES:
-      - null
-    BrokenLinksGroupTitle:
-      - null
-    ContentGroupTitle:
-      - null
-    EMPTYPAGES:
-      - null
-    LAST2WEEKS:
-      - null
-    OtherGroupTitle:
-      - null
-    ParameterLiveCheckbox:
-      - null
-    REPEMPTY:
-      - null
+    BROKENFILES: 壊れているファイルがあるページ
+    BROKENLINKS: 'Pages with broken links'
+    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
+    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
+    BrokenLinksGroupTitle: 壊れているリンクのレポート
+    ContentGroupTitle: 'Content reports'
+    EMPTYPAGES: 空のページ
+    LAST2WEEKS: 'Pages edited in the last 2 weeks'
+    OtherGroupTitle: その他
+    ParameterLiveCheckbox: 'Check live site'
+    REPEMPTY: '{title}のレポートは空です'
   SilverStripeNavigatorLink:
-    ShareInstructions:
-      - null
-    ShareLink:
-      - null
+    ShareInstructions: このページを共有するには、以下のリンクをコピー＆ペーストとします。
+    ShareLink: 共有リンク
   SilverStripeNavigatorLinkl:
-    CloseLink:
-      - null
+    CloseLink: 閉じる
   SiteConfig:
-    DEFAULTTHEME:
-      - null
-    EDITHEADER:
-      - null
-    EDIT_PERMISSION:
-      - null
-    EDIT_PERMISSION_HELP:
-      - null
-    PLURALNAME:
-      - null
-    SINGULARNAME:
-      - null
-    SITENAMEDEFAULT:
-      - null
-    SITETAGLINE:
-      - null
-    SITETITLE:
-      - null
-    TABACCESS:
-      - null
-    TABMAIN:
-      - null
-    TAGLINEDEFAULT:
-      - null
-    THEME:
-      - null
-    TOPLEVELCREATE:
-      - null
-    VIEWHEADER:
-      - null
+    DEFAULTTHEME: (デフォルトのテーマを利用)
+    EDITHEADER: このサイト上でページを編集できる人
+    EDIT_PERMISSION: サイト設定の管理
+    EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
+    SITENAMEDEFAULT: サイト名
+    SITETAGLINE: サイトのキャッチコピー
+    SITETITLE: サイトタイトル
+    TABACCESS: アクセス権限
+    TABMAIN: メイン
+    TAGLINEDEFAULT: サイトのキャッチフレーズをここに入力
+    THEME: テーマ
+    TOPLEVELCREATE: サイトのルートにおいてページを作成できる人
+    VIEWHEADER: このサイト上でページを閲覧できる人
   SiteTree:
-    ACCESSANYONE:
-      - null
-    ACCESSHEADER:
-      - null
-    ACCESSLOGGEDIN:
-      - null
-    ACCESSONLYTHESE:
-      - null
-    ADDEDTODRAFTHELP:
-      - null
-    ADDEDTODRAFTSHORT:
-      - null
-    ALLOWCOMMENTS:
-      - null
-    APPEARSVIRTUALPAGES:
-      - null
-    BUTTONCANCELDRAFT:
-      - null
-    BUTTONCANCELDRAFTDESC:
-      - null
-    BUTTONSAVEPUBLISH:
-      - null
-    BUTTONUNPUBLISH:
-      - null
-    BUTTONUNPUBLISHDESC:
-      - null
-    CREATED:
-      - null
-    Comments:
-      - null
-    Content:
-      - null
-    DEFAULTABOUTCONTENT:
-      - null
-    DEFAULTABOUTTITLE:
-      - null
-    DEFAULTCONTACTCONTENT:
-      - null
-    DEFAULTCONTACTTITLE:
-      - null
-    DEFAULTHOMECONTENT:
-      - null
-    DEFAULTHOMETITLE:
-      - null
-    DELETEDPAGEHELP:
-      - null
-    DELETEDPAGESHORT:
-      - null
-    DEPENDENT_NOTE:
-      - null
-    DESCRIPTION:
-      - null
-    DependtPageColumnLinkType:
-      - null
-    DependtPageColumnURL:
-      - null
-    EDITANYONE:
-      - null
-    EDITHEADER:
-      - null
-    EDITONLYTHESE:
-      - null
-    EDITORGROUPS:
-      - null
-    EDIT_ALL_DESCRIPTION:
-      - null
-    EDIT_ALL_HELP:
-      - null
-    Editors:
-      - null
-    HASBROKENLINKS:
-      - null
-    HTMLEDITORTITLE:
-      - null
-    INHERIT:
-      - null
-    LASTUPDATED:
-      - null
-    LINKCHANGENOTE:
-      - null
-    MENUTITLE:
-      - null
-    METADESC:
-      - null
-    METADESCHELP:
-      - null
-    METAEXTRA:
-      - null
-    METAEXTRAHELP:
-      - null
-    MODIFIEDONDRAFTHELP:
-      - null
-    MODIFIEDONDRAFTSHORT:
-      - null
-    MetadataToggle:
-      - null
-    OBSOLETECLASS:
-      - null
-    PAGELOCATION:
-      - null
-    PAGETITLE:
-      - null
-    PAGETYPE:
-      - null
-    PARENTID:
-      - null
-    PARENTTYPE:
-      - null
-    PARENTTYPE_ROOT:
-      - null
-    PARENTTYPE_SUBPAGE:
-      - null
-    PERMISSION_GRANTACCESS_DESCRIPTION:
-      - null
-    PERMISSION_GRANTACCESS_HELP:
-      - null
-    PLURALNAME:
-      - null
-    PageTypNotAllowedOnRoot:
-      - null
-    PageTypeNotAllowed:
-      - null
-    REMOVEDFROMDRAFTHELP:
-      - null
-    REMOVEDFROMDRAFTSHORT:
-      - null
-    REMOVE_INSTALL_WARNING:
-      - null
-    REORGANISE_DESCRIPTION:
-      - null
-    REORGANISE_HELP:
-      - null
-    SHOWINMENUS:
-      - null
-    SHOWINSEARCH:
-      - null
-    SINGULARNAME:
-      - null
-    TABBEHAVIOUR:
-      - null
-    TABCONTENT:
-      - null
-    TABDEPENDENT:
-      - null
-    TOPLEVEL:
-      - null
-    TOPLEVELCREATORGROUPS:
-      - null
-    URLSegment:
-      - null
-    VIEWERGROUPS:
-      - null
-    VIEW_ALL_DESCRIPTION:
-      - null
-    VIEW_ALL_HELP:
-      - null
-    VIEW_DRAFT_CONTENT:
-      - null
-    VIEW_DRAFT_CONTENT_HELP:
-      - null
-    Viewers:
-      - null
-    Visibility:
-      - null
-    has_one_Parent:
-      - null
-    many_many_BackLinkTracking:
-      - null
-    many_many_ImageTracking:
-      - null
-    many_many_LinkTracking:
-      - null
+    ACCESSANYONE: 誰でも
+    ACCESSHEADER: 本サイトにあるページを誰か閲覧しますか？
+    ACCESSLOGGEDIN: ログインしたユーザ
+    ACCESSONLYTHESE: 'この人達だけ (リストから選択してください)'
+    ADDEDTODRAFTHELP: ページはまだ公開されていません
+    ADDEDTODRAFTSHORT: 下書き
+    ALLOWCOMMENTS: コメントを許可しますか？
+    APPEARSVIRTUALPAGES: 'このコンテンツは{title}として仮想ページにおいても表示されます。'
+    BUTTONCANCELDRAFT: 草稿の編集内容を取り消します
+    BUTTONCANCELDRAFTDESC: 草稿と前回公開されたページを削除します
+    BUTTONSAVEPUBLISH: 保存して公開
+    BUTTONUNPUBLISH: 非公開
+    BUTTONUNPUBLISHDESC: 公開サイトから取り除きました
+    CREATED: 作成日
+    Comments: コメント
+    Content: コンテンツ
+    DEFAULTABOUTCONTENT: '<p>あなた自身、自由にページに書き込むことが出来、もちろん添削も自由に行えます。<br /></p>'
+    DEFAULTABOUTTITLE: 私たちについて
+    DEFAULTCONTACTCONTENT: '<p>あなた自身、自由にページに書き込むことが出来、もちろん添削も自由に行えます。<br /></p>'
+    DEFAULTCONTACTTITLE: 連絡はこちらまで
+    DEFAULTHOMECONTENT: '<p>SilverStripeへようこそ！これはデフォルトのホームページです。このページを編集するには、<a href="admin/">CMS</a>にアクセスしてください。<a href="http://doc.silverstripe.org">開発者向けドキュメント</a>や、<a href="http://doc.silverstripe.org/doku.php?id=tutorials">チュートリアル</a>もご覧いただけます。</p>'
+    DEFAULTHOMETITLE: ホーム
+    DELETEDPAGEHELP: 'Page is no longer published'
+    DELETEDPAGESHORT: 削除済
+    DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DESCRIPTION: 通常のコンテンツページ
+    DependtPageColumnLinkType: リンクの種類
+    DependtPageColumnURL: URL
+    EDITANYONE: 誰でもCMSにログインが可能
+    EDITHEADER: この中から誰をCMSの編集を可能にしますか？
+    EDITONLYTHESE: 'この人達だけ (リストから選択してください)'
+    EDITORGROUPS: 編集者グループ
+    EDIT_ALL_DESCRIPTION: すべてのページを編集
+    EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
+    Editors: 編集グループ
+    HASBROKENLINKS: このページはリンク切れがあります
+    HTMLEDITORTITLE: 内容
+    INHERIT: 親ページを受け継ぐ
+    LASTUPDATED: 最終更新日時
+    LINKCHANGENOTE: このページのリンクを変更するとすべての子ページのリンクに影響を与える可能性があります。
+    MENUTITLE: 操作レベル
+    METADESC: 説明
+    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
+    METAEXTRA: メタタグをカスタム
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
+    MODIFIEDONDRAFTHELP: 公開されていない変更がページにあります
+    MODIFIEDONDRAFTSHORT: 更新日時
+    MetadataToggle: メタデータ
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
+    PAGELOCATION: ページの場所
+    PAGETITLE: ページ名
+    PAGETYPE: ページタイプ
+    PARENTID: 親ページ
+    PARENTTYPE: ページの場所
+    PARENTTYPE_ROOT: 最上位層のページ
+    PARENTTYPE_SUBPAGE: 親ページの下にあるサブページ
+    PERMISSION_GRANTACCESS_DESCRIPTION: コンテンツへのアクセス権限を編集
+    PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
+    PLURALNAME: Pages
+    PageTypNotAllowedOnRoot: 'ページタイプ"{type}"は最上位層のページになることができません'
+    PageTypeNotAllowed: 'ページタイプ"{type}"はこの親ページの子になることができません'
+    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
+    REMOVEDFROMDRAFTSHORT: 下書きから削除
+    REMOVE_INSTALL_WARNING: '警告: セキュリティ上の理由から、SilverStripeのインストール先にあるinstall.phpを削除してください。'
+    REORGANISE_DESCRIPTION: サイト構造を変更
+    REORGANISE_HELP: サイトツリー内のページをドラッグ・アンド・ドロップで再編集
+    SHOWINMENUS: メニューに表示しますか？
+    SHOWINSEARCH: 検索に表示しますか？
+    SINGULARNAME: Page
+    TABBEHAVIOUR: 動作
+    TABCONTENT: コンテンツ
+    TABDEPENDENT: 依存ページ
+    TOPLEVEL: 'サイトの内容 (最上位層)'
+    TOPLEVELCREATORGROUPS: 最上位層のページ作成者
+    URLSegment: URLセグメント
+    VIEWERGROUPS: 閲覧者グループ
+    VIEW_ALL_DESCRIPTION: すべてのページを閲覧
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
+    VIEW_DRAFT_CONTENT: ドラフトを見る
+    VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
+    Viewers: 閲覧者のグループ
+    Visibility: 表示・非表示
+    has_one_Parent: 親ページ
+    many_many_BackLinkTracking: リンク元を追跡
+    many_many_ImageTracking: 画像へのリンクを追跡
+    many_many_LinkTracking: リンクを追跡
   SiteTreeURLSegmentField:
-    HelpChars:
-      - null
+    HelpChars: 特殊文字は自動的に変換されたか取り除かれました
   StaticExporter:
     BASEURL: ベースURL
     EXPORTTO: このフォルダにエクスポート
     NAME: スタティック・エクスポーター
   TableListField:
-    SELECT:
-      - null
+    SELECT: 選択：
   TableListField.ss:
-    NOITEMSFOUND:
-      - null
-    SORTASC:
-      - null
-    SORTDESC:
-      - null
+    NOITEMSFOUND: 見つかった項目はありませんでした
+    SORTASC: 昇順に並び替える
+    SORTDESC: 降順に並び替える
   TableListField_PageControls.ss:
-    DISPLAYING:
-      - null
-    OF:
-      - null
-    TO:
-      - null
-    VIEWFIRST:
-      - null
-    VIEWLAST:
-      - null
-    VIEWNEXT:
-      - null
-    VIEWPREVIOUS:
-      - null
+    DISPLAYING: 表示中
+    OF: of
+    TO: to
+    VIEWFIRST: 一番目を表示
+    VIEWLAST: 最新を表示
+    VIEWNEXT: 次を表示
+    VIEWPREVIOUS: 前回を表示
   TreeTools:
-    DisplayLabel:
-      - null
+    DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:
-    CANACCESS:
-      - null
-    HAVEASKED:
-      - null
+    CANACCESS: 'You can access the archived site at this link:'
+    HAVEASKED: 'You have asked to view the content of our site on'
   VirtualPage:
-    CHOOSE:
-      - null
-    DESCRIPTION:
-      - null
-    EDITCONTENT:
-      - null
-    HEADER:
-      - null
-    PLURALNAME:
-      - null
-    PageTypNotAllowedOnRoot:
-      - null
-    SINGULARNAME:
-      - null
+    CHOOSE: リンクするページを選択してください
+    DESCRIPTION: 別のページのコンテンツを表示
+    EDITCONTENT: クリックしてコンテンツを編集
+    HEADER: これがバーチャルページです
+    PLURALNAME: 仮想ページ
+    PageTypNotAllowedOnRoot: 'この仮想ページに対して元のページの種類{type}はルートレベルに配置されることが許可されていません。'
+    SINGULARNAME: 仮想ページ

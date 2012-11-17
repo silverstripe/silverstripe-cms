@@ -1,418 +1,228 @@
 gl_ES:
   AssetAdmin:
-    ADDFILES:
-      - null
-    ActionAdd:
-      - null
-    AppCategoryArchive:
-      - null
-    AppCategoryAudio:
-      - null
-    AppCategoryDocument:
-      - null
-    AppCategoryFlash:
-      - null
-    AppCategoryImage:
-      - null
-    AppCategoryVideo:
-      - null
-    BackToFolder:
-      - null
-    CREATED:
-      - null
-    CurrentFolderOnly:
-      - null
-    DetailsView:
-      - null
-    FILES:
-      - null
-    FILESYSTEMSYNC:
-      - null
-    FILESYSTEMSYNCTITLE:
-      - null
-    FROMTHEINTERNET:
-      - null
-    FROMYOURCOMPUTER:
-      - null
-    Filetype:
-      - null
-    ListView:
-      - null
-    MENUTITLE:
-      - null
-    NEWFOLDER:
-      - null
-    SIZE:
-      - null
-    THUMBSDELETED:
-      - null
-    TreeView:
-      - null
-    Upload:
-      - null
-  AssetAdmin_DeleteBatchAction:
-    TITLE:
-      - null
-  AssetAdmin_Tools:
-    FILTER:
-      - null
-  AssetAdmin_left.ss:
-    GO:
-      - null
-  AssetTableField:
-    BACKLINKCOUNT:
-      - null
-    PAGES:
-      - null
-  BackLink_Button.ss:
-    Back:
-      - null
-  BrokenLinksReport:
-    Any:
-      - null
-    BROKENLINKS:
-      - null
-    CheckSite:
-      - null
-    CheckSiteDropdownDraft:
-      - null
-    CheckSiteDropdownPublished:
-      - null
-    ColumnDateLastModified:
-      - null
-    ColumnDateLastPublished:
-      - null
-    ColumnProblemType:
-      - null
-    ColumnURL:
-      - null
-    HasBrokenFile:
-      - null
-    HasBrokenLink:
-      - null
-    HasBrokenLinkAndFile:
-      - null
-    HoverTitleEditPage:
-      - null
-    PageName:
-      - null
-    ReasonDropdown:
-      - null
-    ReasonDropdownBROKENFILE:
-      - null
-    ReasonDropdownBROKENLINK:
-      - null
-    ReasonDropdownRPBROKENLINK:
-      - null
-    ReasonDropdownVPBROKENLINK:
-      - null
-    RedirectorNonExistent:
-      - null
-    VirtualPageNonExistent:
-      - null
-  CMSAddPageController:
-    Title:
-      - null
-  CMSBatchActions:
-    DELETED_DRAFT_PAGES:
-      - null
-    DELETED_PAGES:
-      - null
-    DELETE_DRAFT_PAGES:
-      - null
-    DELETE_PAGES:
-      - null
-    PUBLISHED_PAGES:
-      - null
-    PUBLISH_PAGES:
-      - null
-    UNPUBLISHED_PAGES:
-      - null
-    UNPUBLISH_PAGES:
-      - null
-  CMSFileAddController:
-    MENUTITLE:
-      - null
-  CMSMain:
-    ACCESS:
-      - null
-    ACCESS_HELP:
-      - null
-    AddNew:
-      - null
-    AddNewButton:
-      - null
-    ChoosePageParentMode:
-      - null
-    ChoosePageType:
-      - null
-    Create:
-      - null
-    DELETE:
-      - null
-    DELETEFP:
-      - null
-    DESCREMOVED:
-      - null
-    EMAIL:
-      - null
-    EditTree:
-      - null
-    ListFiltered:
-      - null
-    MENUTITLE:
-      - null
-    NEWPAGE:
-      - null
-    PAGENOTEXISTS:
-      - null
-    PAGES:
-      - null
-    PAGETYPEANYOPT:
-      - null
-    PAGETYPEOPT:
-      - null
-    PUBALLCONFIRM:
-      - null
-    PUBALLFUN:
-      - null
-    PUBALLFUN2:
-      - null
-    PUBPAGES:
-      - null
-    PageAdded:
-      - null
-    REMOVED:
-      - null
-    REMOVEDPAGE:
-      - null
-    REMOVEDPAGEFROMDRAFT:
-      - null
-    RESTORE:
-      - null
-    RESTORED:
-      - null
-    ROLLBACK:
-      - null
-    ROLLEDBACKPUB:
-      - null
-    ROLLEDBACKVERSION:
-      - null
-    SAVE:
-      - null
-    SAVEDRAFT:
-      - null
-    TabContent:
-      - null
-    TabHistory:
-      - null
-    TabSettings:
-      - null
-    TreeFiltered:
-      - null
-    TreeFilteredClear:
-      - null
-  CMSMain_left.ss:
-    'APPLY FILTER':
-      - null
-    RESET:
-      - null
-  CMSPageAddController:
-    MENUTITLE:
-      - null
-    ParentMode_child:
-      - null
-    ParentMode_top:
-      - null
-  CMSPageEditController:
-    MENUTITLE:
-      - null
-  CMSPageHistoryController:
-    COMPAREMODE:
-      - null
-    COMPAREVERSIONS:
-      - null
-    COMPARINGVERSION:
-      - null
-    MENUTITLE:
-      - null
-    REVERTTOTHISVERSION:
-      - null
-    SHOWUNPUBLISHED:
-      - null
-    SHOWVERSION:
-      - null
-    VIEW:
-      - null
-    VIEWINGVERSION:
-      - null
-  CMSPageHistoryController_versions.ss:
-    AUTHOR:
-      - null
-    NOTPUBLISHED:
-      - null
-    PUBLISHER:
-      - null
-    UNKNOWN:
-      - null
-    WHEN:
-      - null
-  CMSPageSettingsController:
-    MENUTITLE:
-      - null
-  CMSPagesController:
-    GalleryView:
-      - null
+    ADDFILES: 'Engadir Ficheiros'
+    ActionAdd: 'Engadir cartafol'
+    AppCategoryArchive: Arquivo
+    AppCategoryAudio: Audio
+    AppCategoryDocument: Document
+    AppCategoryFlash: Flash
+    AppCategoryImage: Imaxe
+    AppCategoryVideo: Video
+    BackToFolder: 'Retornar ao cartafol'
+    CREATED: Data
+    CurrentFolderOnly: 'Limitar ao cartafol actual?'
+    DetailsView: Detalles
+    FILES: Files
+    FILESYSTEMSYNC: 'Sync files'
+    FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
+    FROMTHEINTERNET: 'Dende a Internet'
+    FROMYOURCOMPUTER: 'Dende o teu Computador'
+    Filetype: 'Tipo ficheiro'
     ListView: 'Vista en Listado'
-    MENUTITLE:
-      - null
-    TreeView:
-      - null
+    MENUTITLE: Ficheiros
+    NEWFOLDER: NewFolder
+    SIZE: Tamaño
+    THUMBSDELETED: '{count} unused thumbnails have been deleted'
+    TreeView: 'Vista en Árbore'
+    Upload: Subir
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Eliminar cartafoles'
+  AssetAdmin_Tools:
+    FILTER: Filtro
+  AssetAdmin_left.ss:
+    GO: Ir
+  AssetTableField:
+    BACKLINKCOUNT: 'Used on:'
+    PAGES: page(s)
+  BackLink_Button.ss:
+    Back: Atrás
+  BrokenLinksReport:
+    Any: Ningún
+    BROKENLINKS: 'Informe de ligazóns rotas'
+    CheckSite: 'Probar o sitio'
+    CheckSiteDropdownDraft: 'Sitio Borrador'
+    CheckSiteDropdownPublished: 'Sitio Publicado'
+    ColumnDateLastModified: 'Data de modificación'
+    ColumnDateLastPublished: 'Data da última publicación'
+    ColumnProblemType: 'Tipo de problema'
+    ColumnURL: URL
+    HasBrokenFile: 'rompeu o ficheiro'
+    HasBrokenLink: 'ten ligazón rota'
+    HasBrokenLinkAndFile: 'rompeu a ligazón e o ficheiro'
+    HoverTitleEditPage: 'Editar Páxina'
+    PageName: 'Nome da páxina'
+    ReasonDropdown: 'Problema para comprobar'
+    ReasonDropdownBROKENFILE: 'Ficheiro roto'
+    ReasonDropdownBROKENLINK: 'Ligazón rota'
+    ReasonDropdownRPBROKENLINK: 'O redirector está apuntando a unha páxina inexistente'
+    ReasonDropdownVPBROKENLINK: 'A páxina virtual está apuntando a unha páxina inexistente'
+    RedirectorNonExistent: 'o redirector está apuntando a unha páxina inexistente'
+    VirtualPageNonExistent: 'a páxina virtual está apuntando a unha páxina inexistente'
+  CMSAddPageController:
+    Title: 'Engadir páxina'
+  CMSBatchActions:
+    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
+    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
+    DELETE_DRAFT_PAGES: 'Eliminar do sitio borrador'
+    DELETE_PAGES: 'Eliminar do sitio publicado'
+    PUBLISHED_PAGES: '%d páxinas publicadas, %d erros'
+    PUBLISH_PAGES: Publicar
+    UNPUBLISHED_PAGES: '%d páxinas sen publicar'
+    UNPUBLISH_PAGES: 'Sen publicar'
+  CMSFileAddController:
+    MENUTITLE: Ficheiros
+  CMSMain:
+    ACCESS: 'Access to ''{title}'' section'
+    ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
+    AddNew: 'Engadir nova páxina'
+    AddNewButton: 'Engadir novo'
+    ChoosePageParentMode: 'Escoller donde crear esta páxina'
+    ChoosePageType: 'Escoller tipo de páxina'
+    Create: Crear
+    DELETE: 'Eliminar borrador'
+    DELETEFP: Eliminar
+    DESCREMOVED: 'and {count} descendants'
+    EMAIL: Correo-e
+    EditTree: 'Edit Tree'
+    ListFiltered: 'Filtered list.'
+    MENUTITLE: 'Editar Páxina'
+    NEWPAGE: 'New {pagetype}'
+    PAGENOTEXISTS: 'Esta páxina non existe'
+    PAGES: Páxinas
+    PAGETYPEANYOPT: Ningún
+    PAGETYPEOPT: 'Tipo de Páxina'
+    PUBALLCONFIRM: 'Por favor publica toda a páxina no sitio, copiando o contido a contorna de produción'
+    PUBALLFUN: 'Funcionalidade "Publicar Todo"'
+    PUBALLFUN2: "Premendo este botón farás o equivalente de ir a todas as páxinas e premer en \"publicar\". \\nIsto está pensado para facer un uso masivo despois das edicións de contido, por exemplo \\ncando o sitio foi construído por primeira vez."
+    PUBPAGES: 'Done: Published {count} pages'
+    PageAdded: 'Successfully created page'
+    REMOVED: 'Eliminado ''%s''%s do sitio en vivo'
+    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
+    REMOVEDPAGEFROMDRAFT: 'Eliminado ''%s''  do borrador do sitio'
+    RESTORE: Restaurar
+    RESTORED: 'Restored ''{title}'' successfully'
+    ROLLBACK: 'Desfacer a esta versión'
+    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
+    ROLLEDBACKVERSION: 'Rsstablecida a versión #%d. O novo número de versión é #%d'
+    SAVE: Gardar
+    SAVEDRAFT: 'Gardar Borrador'
+    TabContent: Contido
+    TabHistory: Historial
+    TabSettings: Configuracións
+    TreeFiltered: 'Filtered tree.'
+    TreeFilteredClear: 'Clear filter'
+  CMSMain_left.ss:
+    'APPLY FILTER': 'Aplicar Filtro'
+    RESET: Reiniciar
+  CMSPageAddController:
+    MENUTITLE: 'Engadir páxina'
+    ParentMode_child: 'Baixo outra páxina'
+    ParentMode_top: 'Nivel superior'
+  CMSPageEditController:
+    MENUTITLE: 'Editar Páxina'
+  CMSPageHistoryController:
+    COMPAREMODE: 'Modo comparación (seleccionar dúas)'
+    COMPAREVERSIONS: 'Comparar Versións'
+    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
+    MENUTITLE: Historial
+    REVERTTOTHISVERSION: 'Retornar a esta versión'
+    SHOWUNPUBLISHED: 'Amosar versións sen publicar'
+    SHOWVERSION: 'Amosar Versión'
+    VIEW: ver
+    VIEWINGVERSION: 'Currently viewing version {version}.'
+  CMSPageHistoryController_versions.ss:
+    AUTHOR: Autor
+    NOTPUBLISHED: 'Non publicado'
+    PUBLISHER: Editor
+    UNKNOWN: Descoñecido
+    WHEN: Cando
+  CMSPageSettingsController:
+    MENUTITLE: 'Editar Páxina'
+  CMSPagesController:
+    GalleryView: 'Vista en Galería'
+    ListView: 'Vista en Listado'
+    MENUTITLE: Páxinas
+    TreeView: 'Vista en Árbore'
   CMSPagesController_ContentToolbar.ss:
-    ENABLEDRAGGING:
-      - null
-    MULTISELECT:
-      - null
+    ENABLEDRAGGING: 'Arrastrar e soltar'
+    MULTISELECT: 'Selección múltiple'
   CMSPagesController_Tools.ss:
-    FILTER:
-      - null
+    FILTER: Filtro
   CMSSearch:
     FILTERDATEFROM: Desde
     FILTERDATEHEADING: Data
     FILTERDATETO: Ata
     FILTERLABELTEXT: Contido
   CMSSettingsController:
-    MENUTITLE:
-      - null
+    MENUTITLE: Configuracións
   CMSSiteTreeFilter_ChangedPages:
-    Title:
-      - null
+    Title: 'Páxinas cambiadas'
   CMSSiteTreeFilter_DeletedPages:
-    Title:
-      - null
+    Title: 'Todas as páxinas, incluindo eliminadas'
   CMSSiteTreeFilter_Search:
-    Title:
-      - null
+    Title: 'Todas as páxinas'
   ContentControl:
-    NOTEWONTBESHOWN:
-      - null
+    NOTEWONTBESHOWN: 'Nota: esta mensaxe non se amosará aos visitantes'
   ContentController:
-    ARCHIVEDSITE:
-      - null
-    ARCHIVEDSITEFROM:
-      - null
-    CMS:
-      - null
-    DRAFTSITE:
-      - null
-    DRAFT_SITE_ACCESS_RESTRICTION:
-      - null
-    Email:
-      - null
-    INSTALL_SUCCESS:
-      - null
-    InstallFilesDeleted:
-      - null
-    InstallSecurityWarning:
-      - null
-    InstallSuccessCongratulations:
-      - null
-    LOGGEDINAS:
-      - null
-    LOGIN:
-      - null
-    LOGOUT:
-      - null
-    NOTLOGGEDIN:
-      - null
-    PUBLISHEDSITE:
-      - null
-    Password:
-      - null
-    PostInstallTutorialIntro:
-      - null
-    StartEditing:
-      - null
-    UnableDeleteInstall:
-      - null
-    VIEWPAGEIN:
-      - null
+    ARCHIVEDSITE: 'Preview version'
+    ARCHIVEDSITEFROM: 'Sitio arquivado dende'
+    CMS: CMS
+    DRAFTSITE: 'Sitio Borrador'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'You must log in with your CMS password in order to view the draft or archived content.  <a href="%s">Click here to go back to the published site.</a>'
+    Email: Email
+    INSTALL_SUCCESS: 'Installation Successful!'
+    InstallFilesDeleted: 'Installation files have been successfully deleted.'
+    InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
+    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
+    LOGGEDINAS: 'Iniciada sesión como'
+    LOGIN: 'Iniciar sesión'
+    LOGOUT: 'Pechar sesión'
+    NOTLOGGEDIN: 'Sen iniciar sesión'
+    PUBLISHEDSITE: 'Sitio Publicado'
+    Password: Password
+    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
+    VIEWPAGEIN: 'Ver a Páxina en:'
   ErrorPage:
-    CODE:
-      - null
-    DEFAULTERRORPAGECONTENT:
-      - null
-    DEFAULTERRORPAGETITLE:
-      - null
-    DEFAULTSERVERERRORPAGECONTENT:
-      - null
-    DEFAULTSERVERERRORPAGETITLE:
-      - null
-    DESCRIPTION:
-      - null
-    ERRORFILEPROBLEM:
-      - null
-    PLURALNAME:
-      - null
-    SINGULARNAME:
-      - null
-    400:
-      - null
-    401:
-      - null
-    403:
-      - null
-    404:
-      - null
-    405:
-      - null
-    406:
-      - null
-    407:
-      - null
-    408:
-      - null
-    409:
-      - null
-    410:
-      - null
-    411:
-      - null
-    412:
-      - null
-    413:
-      - null
-    414:
-      - null
-    415:
-      - null
-    416:
-      - null
-    417:
-      - null
-    500:
-      - null
-    501:
-      - null
-    502:
-      - null
-    503:
-      - null
-    504:
-      - null
-    505:
-      - null
+    CODE: 'Código de erro'
+    DEFAULTERRORPAGECONTENT: '<p>Sintoo, parece que estabas tratando de acceder a unha página que non existe.</p><p>Por favor, comproba o enderezo da URL que estaba tratando de acceder e volva tentalo.</p>'
+    DEFAULTERRORPAGETITLE: 'Páxina non atopada'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Sintoo, houbo un problema coa xestión da túa petición.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Erro Servidor'
+    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
+    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
+    PLURALNAME: 'Error Pags'
+    SINGULARNAME: 'Error Page'
+    400: '400 - Bad Request'
+    401: '401 - Unauthorized'
+    403: '403 - Forbidden'
+    404: '404 - Not Found'
+    405: '405 - Method Not Allowed'
+    406: '406 - Not Acceptable'
+    407: '407 - Proxy Authentication Required'
+    408: '408 - Request Timeout'
+    409: '409 - Conflict'
+    410: '410 - Gone'
+    411: '411 - Length Required'
+    412: '412 - Precondition Failed'
+    413: '413 - Request Entity Too Large'
+    414: '414 - Request-URI Too Long'
+    415: '415 - Unsupported Media Type'
+    416: '416 - Request Range Not Satisfiable'
+    417: '417 - Expectation Failed'
+    500: '500 - Internal Server Error'
+    501: '501 - Not Implemented'
+    502: '502 - Bad Gateway'
+    503: '503 - Service Unavailable'
+    504: '504 - Gateway Timeout'
+    505: '505 - HTTP Version Not Supported'
   Folder:
-    AddFolderButton:
-      - null
-    DELETEUNUSEDTHUMBNAILS:
-      - null
-    UNUSEDFILESTITLE:
-      - null
-    UNUSEDTHUMBNAILSTITLE:
-      - null
-    UploadFilesButton:
-      - null
+    AddFolderButton: 'Engadir cartafol'
+    DELETEUNUSEDTHUMBNAILS: 'Eliminar as miniaturas sen usar'
+    UNUSEDFILESTITLE: 'Ficheiros sen usar'
+    UNUSEDTHUMBNAILSTITLE: 'Miniaturas sen usar'
+    UploadFilesButton: Subir
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: Previsualizar
@@ -421,333 +231,180 @@ gl_ES:
     SearchResults: 'Resultados Busca'
     VersionUnknown: Descoñecido
   Permission:
-    CMS_ACCESS_CATEGORY:
-      - null
+    CMS_ACCESS_CATEGORY: 'Acceso CMS'
   Permissions:
-    CONTENT_CATEGORY:
-      - null
-    PERMISSIONS_CATEGORY:
-      - null
+    CONTENT_CATEGORY: 'Permisos do Contido'
+    PERMISSIONS_CATEGORY: 'Roles e permisos de acceso'
   RedirectorPage:
-    DESCRIPTION:
-      - null
-    HASBEENSETUP:
-      - null
-    HEADER:
-      - null
-    OTHERURL:
-      - null
-    PLURALNAME:
-      - null
-    REDIRECTTO:
-      - null
-    REDIRECTTOEXTERNAL:
-      - null
-    REDIRECTTOPAGE:
-      - null
-    SINGULARNAME:
-      - null
-    YOURPAGE:
-      - null
+    DESCRIPTION: 'Redireccións a unha páxina interna diferente'
+    HASBEENSETUP: 'A redirector page has been set up without anywhere to redirect to.'
+    HEADER: 'Esta páxina redirixirá os usuarios a outra páxina'
+    OTHERURL: 'Outra URL do sitio web'
+    PLURALNAME: 'Redirector Pags'
+    REDIRECTTO: 'Redirixir a'
+    REDIRECTTOEXTERNAL: 'Outro sitio web'
+    REDIRECTTOPAGE: 'Unha páxina no teu sitio web'
+    SINGULARNAME: 'Redirector Page'
+    YOURPAGE: 'Páxina no teu sitio web'
   ReportAdmin:
-    MENUTITLE:
-      - null
-    ReportTitle:
-      - null
+    MENUTITLE: Informes
+    ReportTitle: Title
   ReportAdminForm:
-    FILTERBY:
-      - null
+    FILTERBY: 'Filtrar por'
   SearchForm:
     GO: Ir
     SEARCH: Buscar
     SearchResults: 'Resultados Busca'
   SideReport:
-    BROKENFILES:
-      - null
-    BROKENLINKS:
-      - null
-    BROKENREDIRECTORPAGES:
-      - null
-    BROKENVIRTUALPAGES:
-      - null
-    BrokenLinksGroupTitle:
-      - null
-    ContentGroupTitle:
-      - null
-    EMPTYPAGES:
-      - null
-    LAST2WEEKS:
-      - null
-    OtherGroupTitle:
-      - null
-    ParameterLiveCheckbox:
-      - null
-    REPEMPTY:
-      - null
+    BROKENFILES: 'Páxinas con ficheiros rotos'
+    BROKENLINKS: 'Páxinas con ligazóns rotas'
+    BROKENREDIRECTORPAGES: 'RedirectorPages apuntando a páxinas eliminadas'
+    BROKENVIRTUALPAGES: 'VirtualPages apuntando a páxinas eliminadas'
+    BrokenLinksGroupTitle: 'Informes de ligazóns rotas'
+    ContentGroupTitle: 'Informes do Contido'
+    EMPTYPAGES: 'Páxinas sen contido'
+    LAST2WEEKS: 'Páxinas editadas nas 2 últimas semanas'
+    OtherGroupTitle: Outro
+    ParameterLiveCheckbox: 'Probar o sitio en vivo'
+    REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigatorLink:
-    ShareInstructions:
-      - null
-    ShareLink:
-      - null
+    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
+    ShareLink: 'Ligazón compartir'
   SilverStripeNavigatorLinkl:
-    CloseLink:
-      - null
+    CloseLink: Pechar
   SiteConfig:
-    DEFAULTTHEME:
-      - null
-    EDITHEADER:
-      - null
-    EDIT_PERMISSION:
-      - null
-    EDIT_PERMISSION_HELP:
-      - null
-    PLURALNAME:
-      - null
-    SINGULARNAME:
-      - null
-    SITENAMEDEFAULT:
-      - null
-    SITETAGLINE:
-      - null
-    SITETITLE:
-      - null
-    TABACCESS:
-      - null
-    TABMAIN:
-      - null
-    TAGLINEDEFAULT:
-      - null
-    THEME:
-      - null
-    TOPLEVELCREATE:
-      - null
-    VIEWHEADER:
-      - null
+    DEFAULTTHEME: '(Usar tema por defecto)'
+    EDITHEADER: 'Quen pode editar neste sitio?'
+    EDIT_PERMISSION: 'Xestionar a configuración do sitio'
+    EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
+    PLURALNAME: 'Site Configs'
+    SINGULARNAME: 'Site Config'
+    SITENAMEDEFAULT: 'O nome do teu Sitio'
+    SITETAGLINE: 'Eslogan do sitio'
+    SITETITLE: 'Título do Sitio'
+    TABACCESS: Acceder
+    TABMAIN: Principal
+    TAGLINEDEFAULT: 'o teu eslogan aquí'
+    THEME: Tema
+    TOPLEVELCREATE: 'Quen pode crear as páxinas na raíz do sitio?'
+    VIEWHEADER: 'Quen pode ver as páxinas neste sitio?'
   SiteTree:
-    ACCESSANYONE:
-      - null
-    ACCESSHEADER:
-      - null
-    ACCESSLOGGEDIN:
-      - null
-    ACCESSONLYTHESE:
-      - null
-    ADDEDTODRAFTHELP:
-      - null
-    ADDEDTODRAFTSHORT:
-      - null
-    ALLOWCOMMENTS:
-      - null
-    APPEARSVIRTUALPAGES:
-      - null
-    BUTTONCANCELDRAFT:
-      - null
-    BUTTONCANCELDRAFTDESC:
-      - null
-    BUTTONSAVEPUBLISH:
-      - null
-    BUTTONUNPUBLISH:
-      - null
-    BUTTONUNPUBLISHDESC:
-      - null
-    CREATED:
-      - null
-    Comments:
-      - null
-    Content:
-      - null
-    DEFAULTABOUTCONTENT:
-      - null
-    DEFAULTABOUTTITLE:
-      - null
-    DEFAULTCONTACTCONTENT:
-      - null
-    DEFAULTCONTACTTITLE:
-      - null
-    DEFAULTHOMECONTENT:
-      - null
-    DEFAULTHOMETITLE:
-      - null
-    DELETEDPAGEHELP:
-      - null
-    DELETEDPAGESHORT:
-      - null
-    DEPENDENT_NOTE:
-      - null
-    DESCRIPTION:
-      - null
-    DependtPageColumnLinkType:
-      - null
-    DependtPageColumnURL:
-      - null
-    EDITANYONE:
-      - null
-    EDITHEADER:
-      - null
-    EDITONLYTHESE:
-      - null
-    EDITORGROUPS:
-      - null
-    EDIT_ALL_DESCRIPTION:
-      - null
-    EDIT_ALL_HELP:
-      - null
-    Editors:
-      - null
-    HASBROKENLINKS:
-      - null
-    HTMLEDITORTITLE:
-      - null
-    INHERIT:
-      - null
-    LASTUPDATED:
-      - null
-    LINKCHANGENOTE:
-      - null
-    MENUTITLE:
-      - null
-    METADESC:
-      - null
-    METADESCHELP:
-      - null
-    METAEXTRA:
-      - null
-    METAEXTRAHELP:
-      - null
-    MODIFIEDONDRAFTHELP:
-      - null
-    MODIFIEDONDRAFTSHORT:
-      - null
-    MetadataToggle:
-      - null
-    OBSOLETECLASS:
-      - null
-    PAGELOCATION:
-      - null
-    PAGETITLE:
-      - null
-    PAGETYPE:
-      - null
-    PARENTID:
-      - null
-    PARENTTYPE:
-      - null
-    PARENTTYPE_ROOT:
-      - null
-    PARENTTYPE_SUBPAGE:
-      - null
-    PERMISSION_GRANTACCESS_DESCRIPTION:
-      - null
-    PERMISSION_GRANTACCESS_HELP:
-      - null
-    PLURALNAME:
-      - null
-    PageTypNotAllowedOnRoot:
-      - null
-    PageTypeNotAllowed:
-      - null
-    REMOVEDFROMDRAFTHELP:
-      - null
-    REMOVEDFROMDRAFTSHORT:
-      - null
-    REMOVE_INSTALL_WARNING:
-      - null
-    REORGANISE_DESCRIPTION:
-      - null
-    REORGANISE_HELP:
-      - null
-    SHOWINMENUS:
-      - null
-    SHOWINSEARCH:
-      - null
-    SINGULARNAME:
-      - null
-    TABBEHAVIOUR:
-      - null
-    TABCONTENT:
-      - null
-    TABDEPENDENT:
-      - null
-    TOPLEVEL:
-      - null
-    TOPLEVELCREATORGROUPS:
-      - null
-    URLSegment:
-      - null
-    VIEWERGROUPS:
-      - null
-    VIEW_ALL_DESCRIPTION:
-      - null
-    VIEW_ALL_HELP:
-      - null
-    VIEW_DRAFT_CONTENT:
-      - null
-    VIEW_DRAFT_CONTENT_HELP:
-      - null
-    Viewers:
-      - null
-    Visibility:
-      - null
-    has_one_Parent:
-      - null
-    many_many_BackLinkTracking:
-      - null
-    many_many_ImageTracking:
-      - null
-    many_many_LinkTracking:
-      - null
+    ACCESSANYONE: Ninguén
+    ACCESSHEADER: 'Quen pode ver esta páxina?'
+    ACCESSLOGGEDIN: 'Usuarios con sesión iniciada'
+    ACCESSONLYTHESE: 'Só esta xente (escoller da lista)'
+    ADDEDTODRAFTHELP: 'Page has not been published yet'
+    ADDEDTODRAFTSHORT: Draft
+    ALLOWCOMMENTS: 'Permitir comentario nesta páxina?'
+    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+    BUTTONCANCELDRAFT: 'Cancelar cambios do borrador'
+    BUTTONCANCELDRAFTDESC: 'Eliminar o borrador e revertir a páxina publicada actualmente'
+    BUTTONSAVEPUBLISH: 'Gardar e Publicar'
+    BUTTONUNPUBLISH: 'Sen publicar'
+    BUTTONUNPUBLISHDESC: 'Eliminar esta páxina do sitio publicado'
+    CREATED: 'Data de Creación'
+    Comments: Comentarios
+    Content: Contido
+    DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
+    DEFAULTABOUTTITLE: 'Sobre nós'
+    DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
+    DEFAULTCONTACTTITLE: Contactarnos
+    DEFAULTHOMECONTENT: '<p>Benvido a SilverStripe! Esta é a páxina de inicio por defecto. Podes editar esta páxina abrindo <a href="admin/">o CMS</a>. Agora podes acceder a <a href="http://doc.silverstripe.org">documentación do desenvolvedor</a>, ou comezar <a href="http://doc.silverstripe.org/doku.php?id=tutorials">os titoriais.</a></p>'
+    DEFAULTHOMETITLE: Inicio
+    DELETEDPAGEHELP: 'Page is no longer published'
+    DELETEDPAGESHORT: Eliminado
+    DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
+    DESCRIPTION: 'Páxina de contido xenérico'
+    DependtPageColumnLinkType: 'Tipo de ligazón'
+    DependtPageColumnURL: URL
+    EDITANYONE: 'Ningún pode iniciar sesión no CMS'
+    EDITHEADER: 'Quen pode editar esta páxina?'
+    EDITONLYTHESE: 'Só esta xente (escoller da lista)'
+    EDITORGROUPS: 'Grupos Editor'
+    EDIT_ALL_DESCRIPTION: 'Editar calquer páxina'
+    EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
+    Editors: 'Grupos dos Editores'
+    HASBROKENLINKS: 'Esta páxina ten ligazóns rotas.'
+    HTMLEDITORTITLE: Contido
+    INHERIT: 'Herdado da páxina pai'
+    LASTUPDATED: 'Último Actualizado'
+    LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
+    MENUTITLE: 'Etiqueta Navegación'
+    METADESC: 'Meta Descrición'
+    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
+    METAEXTRA: 'Personalizar Meta Tags'
+    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
+    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
+    MODIFIEDONDRAFTSHORT: Modificado
+    MetadataToggle: Metadata
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
+    PAGELOCATION: 'Localización da páxina'
+    PAGETITLE: 'Nome da páxina'
+    PAGETYPE: 'Tipo de Páxina'
+    PARENTID: 'Páxina pai'
+    PARENTTYPE: 'Localización da páxina'
+    PARENTTYPE_ROOT: 'Páxina nivel alto'
+    PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Xestionar dereitos de acceso para o contido'
+    PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
+    PLURALNAME: Pages
+    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
+    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
+    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
+    REMOVEDFROMDRAFTSHORT: 'Eliminado do borrador'
+    REMOVE_INSTALL_WARNING: 'Coidado: Deberías eliminar install.php da instalación deste Silverstripe por razóns de seguridade.'
+    REORGANISE_DESCRIPTION: 'Cambiar a estrutura do sitio'
+    REORGANISE_HELP: 'Reorganizar as páxinas na árbore do sitio a través de arrastrar e soltar.'
+    SHOWINMENUS: 'Amosar nos menús?'
+    SHOWINSEARCH: 'Amosar na busca?'
+    SINGULARNAME: Page
+    TABBEHAVIOUR: Comportamento
+    TABCONTENT: 'Contido Principal'
+    TABDEPENDENT: 'Páxinas dependentes'
+    TOPLEVEL: 'Contido do Sitio (Nivel Superior)'
+    TOPLEVELCREATORGROUPS: 'Creadores de nivel superior'
+    URLSegment: 'Segmento URL'
+    VIEWERGROUPS: 'Visor Grupos'
+    VIEW_ALL_DESCRIPTION: 'Ver calquera páxina'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
+    VIEW_DRAFT_CONTENT: 'Ver contido do borrador'
+    VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
+    Viewers: 'Viewers Groups'
+    Visibility: Visibilidade
+    has_one_Parent: 'Páxina pai'
+    many_many_BackLinkTracking: 'Backlink Tracking'
+    many_many_ImageTracking: 'Imaxe de Seguemento'
+    many_many_LinkTracking: 'Ligazón de Seguemento'
   SiteTreeURLSegmentField:
-    HelpChars:
-      - null
+    HelpChars: ' Special characters are automatically converted or removed.'
   StaticExporter:
     BASEURL: 'Base URL'
     EXPORTTO: 'Exportar ao cartafol'
     NAME: 'Exportar estáticos'
   TableListField:
-    SELECT:
-      - null
+    SELECT: 'Seleccionar:'
   TableListField.ss:
-    NOITEMSFOUND:
-      - null
-    SORTASC:
-      - null
-    SORTDESC:
-      - null
+    NOITEMSFOUND: 'No items found'
+    SORTASC: 'Ordear ascendentemente'
+    SORTDESC: 'Ordear descendentemente'
   TableListField_PageControls.ss:
-    DISPLAYING:
-      - null
-    OF:
-      - null
-    TO:
-      - null
-    VIEWFIRST:
-      - null
-    VIEWLAST:
-      - null
-    VIEWNEXT:
-      - null
-    VIEWPREVIOUS:
-      - null
+    DISPLAYING: Displaying
+    OF: of
+    TO: to
+    VIEWFIRST: 'Ver primeiro'
+    VIEWLAST: 'Ver último'
+    VIEWNEXT: 'Ver seguinte'
+    VIEWPREVIOUS: 'Ver anterior'
   TreeTools:
-    DisplayLabel:
-      - null
+    DisplayLabel: 'Visualizar:'
   ViewArchivedEmail.ss:
-    CANACCESS:
-      - null
-    HAVEASKED:
-      - null
+    CANACCESS: 'Podes acceder ao sitio arquivado nesta ligazón:'
+    HAVEASKED: 'Solicitaches ver o contido do sitio sobre'
   VirtualPage:
-    CHOOSE:
-      - null
-    DESCRIPTION:
-      - null
-    EDITCONTENT:
-      - null
-    HEADER:
-      - null
-    PLURALNAME:
-      - null
-    PageTypNotAllowedOnRoot:
-      - null
-    SINGULARNAME:
-      - null
+    CHOOSE: 'Escoller a páxina para ligar a'
+    DESCRIPTION: 'Visualizar o contido doutra páxina'
+    EDITCONTENT: 'preme aquí para editar o contido'
+    HEADER: 'Esta é unha páxina virtual'
+    PLURALNAME: 'Páxs Virtuais'
+    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
+    SINGULARNAME: 'Páxina Virtual'
