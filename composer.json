@@ -9,6 +9,7 @@
 	},
 	"require-dev": {
 		"silverstripe/docsviewer": "*",
+		"silverstripe/behat-extension": "*",
 		"phpunit/phpunit": "3.7.*"
 	},
 	"minimum-stability": "dev"
