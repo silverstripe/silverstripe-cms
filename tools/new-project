@@ -1,3 +1,0 @@
-#!/bin/bash
-base=`dirname $0`
-php $base/lib/new-project.php "$@"
