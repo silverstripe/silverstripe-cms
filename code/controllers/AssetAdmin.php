@@ -120,7 +120,8 @@ JS
 
 		// Category filter
 		if(isset($params['AppCategory'])) {
-			$exts = (isset(File::$app_categories[$params['AppCategory']])) ? File::$app_categories[$params['AppCategory']] : array();
+			$exts = (isset(File::$app_categories[$params['AppCategory']])) ?
+				File::$app_categories[$params['AppCategory']] : array();
 			$categorySQLs = array();
 			foreach($exts as $ext) $categorySQLs[] = '"File"."Name" LIKE \'%.' . $ext . '\'';
 			// TODO Use DataList->filterAny() once OR connectives are implemented properly
