@@ -25,7 +25,6 @@ var addgroup = {
 		var st = $('sitetree');
 		$('addgroup_options').elements.ParentID.value = st.firstSelected() ? st.getIdxOf(st.firstSelected()) : 0;
 		Ajax.SubmitForm('addgroup_options', null, {
-			onSuccess : Ajax.Evaluator,
 			onFailure : function(response) {
 				errorMessage('Error adding page', response);
 			}
@@ -113,8 +112,6 @@ var deletegroup = {
 	
 				Ajax.SubmitForm('deletegroup_options', null, {
 					onSuccess : function(response) {
-						Ajax.Evaluator(response);
-	
 						var sel;
 						if((sel = $('sitetree').firstSelected()) && sel.parentNode) sel.addNodeClass('current');
 						else $('Form_EditForm').innerHTML = "";

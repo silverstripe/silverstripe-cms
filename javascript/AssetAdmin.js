@@ -321,7 +321,6 @@ addfolder.prototype = {
 		return false;
 	},
 	onSuccess: function(response) {
-		Ajax.Evaluator(response);
 		// Make it possible to drop files into the new folder
 		DropFileItem.applyTo('#sitetree li');
 	},
@@ -456,7 +455,6 @@ var deletefolder = {
 	},
 	
 	submit_success: function(response) {
-		Ajax.Evaluator(response);
 		treeactions.closeSelection($('deletepage'));
 	}
 };

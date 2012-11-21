@@ -654,7 +654,8 @@ JS;
 		
 		$script .= "statusMessage('$message');";
 
-		return $script;
+		FormResponse::add($script);
+		return FormResponse::respond();
 	}
 	
 	public function removefile($request){
@@ -671,10 +672,12 @@ JS;
 			$file->destroy();
 
 			if(Director::is_ajax()) {
-				echo <<<JS
+				$js = <<<JS
 				$('Form_EditForm_Files').removeFile($fileID);
 				statusMessage('removed file', 'good');
 JS;
+				FormResponse::add($js);
+				return FormResponse::respond();
 			} else {
 				Director::redirectBack();
 			}

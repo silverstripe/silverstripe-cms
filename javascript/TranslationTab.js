@@ -11,10 +11,7 @@ Behaviour.register({
 				url += "&locale=" + $('Form_EditForm_Locale').value;
 				url += "&SecurityID=" + $$('input[name=SecurityID]')[0].value;
 				
-				new Ajax.Request( url, {
-					onSuccess: Ajax.Evaluator,
-					onFailure: Ajax.Evaluator
-				});
+				new Ajax.Request(url);
 				
 				return false;
 			}
