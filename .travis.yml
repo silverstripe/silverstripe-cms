@@ -11,7 +11,7 @@ before_script:
  - cd ~/builds/ss
 
 script: 
- - php framework/cli-script.php dev/tests/module/cms
+ - php sapphire/cli-script.php dev/tests/module/cms
 
 branches:
   except:
