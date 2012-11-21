@@ -311,6 +311,50 @@
 		});
 
 		/**
+		 * Enable save buttons upon detecting changes to content.
+		 * "changed" class is added by jQuery.changetracker.
+		 */
+		$('.cms-edit-form .changed').entwine({
+			onmatch: function(e) {
+				var form = this.closest('.cms-edit-form');
+				form.find('#Form_EditForm_action_save').button({showingAlternate: true});
+				form.find('#Form_EditForm_action_publish').button({showingAlternate: true});
+				this._super(e);
+			},
+			onunmatch: function(e) {
+				this._super(e);
+			}
+		});
+
+		$('.cms-edit-form .Actions #Form_EditForm_action_publish').entwine({
+			/**
+			 * Bind to ssui.button event to trigger stylistic changes.
+			 */
+			onbuttonafterrefreshalternate: function() {
+				if (this.button('option', 'showingAlternate')) {
+					this.addClass('ss-ui-action-constructive');
+				}
+				else {
+					this.removeClass('ss-ui-action-constructive');
+				}
+			}
+		});
+
+		$('.cms-edit-form .Actions #Form_EditForm_action_save').entwine({
+			/**
+			 * Bind to ssui.button event to trigger stylistic changes.
+			 */
+			onbuttonafterrefreshalternate: function() {
+				if (this.button('option', 'showingAlternate')) {
+					this.addClass('ss-ui-action-constructive');
+				}
+				else {
+					this.removeClass('ss-ui-action-constructive');
+				}
+			}
+		});
+
+		/**
 		 * Class: .cms-edit-form.CMSPageSettingsController input[name="ParentType"]:checked
 		 *
 		 * Showing the "Page location" "Parent page" chooser only when the "Sub-page underneath a parent page"
