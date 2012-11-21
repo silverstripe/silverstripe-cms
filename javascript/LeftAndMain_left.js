@@ -286,7 +286,6 @@ TreeNodeAPI.prototype = {
 
 		new Ajax.Request(url, {
 			method : 'get',
-			onSuccess : Ajax.Evaluator,
 			onFailure : function(response) {
 				errorMessage('Error: ', response);
 			}
@@ -297,7 +296,6 @@ TreeNodeAPI.prototype = {
 		var url = baseHref() + 'admin/duplicatewithchildren/' + this.getIdx() + '?ajax=1&SecurityID=' + token;
 		new Ajax.Request(url, {
 			method : 'get',
-			onSuccess : Ajax.Evaluator,
 			onFailure : function(response) {
 				errorMessage('Error: ', response);
 			}
@@ -431,7 +429,6 @@ SiteTreeNode.prototype = {
 		new Ajax.Request(SiteTreeHandlers.parentChanged_url, {
 			method : 'post', 
 			postBody : 'ID=' + node.getIdx() + '&ParentID=' + newParent.getIdx() + '&CurrentlyOpenPageID=' + currentlyOpenPageID + '&SecurityID=' + token,
-			onSuccess : Ajax.Evaluator,
 			onFailure : function(response) {
 				errorMessage('error saving parent', response);
 			}

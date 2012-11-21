@@ -103,7 +103,7 @@ CMSForm.prototype = {
 		}
 
 		if(response && evalResponse) {
-			Ajax.Evaluator(response);
+			// no-op, has already been evaluated by prototype.js
 		} else {
 			this.innerHTML = rightHTML;
 		}
@@ -178,8 +178,6 @@ CMSForm.prototype = {
 		}
 		
 		var success = function(response) {
-			Ajax.Evaluator(response);
-			
 			__form.resetElements();
 			if(__callAfter) __callAfter();
 			if(__form.notify && __form.elements.ID != undefined) __form.notify('PageSaved', __form.elements.ID.value);

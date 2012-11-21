@@ -8,7 +8,6 @@ function action_revert_right() {
 	$('Form_EditForm_action_revert').value = ss.i18n._t('CMSMAIN.RESTORING');
 	$('Form_EditForm_action_revert').className = 'action loading';
 	Ajax.SubmitForm('Form_EditForm', 'action_revert', {
-		onSuccess : Ajax.Evaluator,
 		onFailure : function(response) {
 			errorMessage(ss.i18n._t('CMSMAIN.ERRORREVERTING'), response);
 		}

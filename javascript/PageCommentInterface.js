@@ -66,8 +66,7 @@ PageCommentInterface.prototype = {
 					//need to check if there is actually a spam question to change first
 					if(form.elements.Math){
 						new Ajax.Request(document.getElementsByTagName('base')[0].href+'PageCommentInterface_Controller/newspamquestion', {
-							onSuccess: loadSpamQuestion,
-							onFailure: Ajax.Evaluator
+							onSuccess: loadSpamQuestion
 						});
 					}
 					

@@ -131,7 +131,6 @@ addpageclass.prototype = {
 
 			var suffix = _NEW_PAGES[parentID]++;
 			Ajax.SubmitForm(_HANDLER_FORMS.addpage, "action_addpage", {
-				onSuccess : Ajax.Evaluator,
 				onFailure : function(response) { if (response.status == 403) {
 					alert('You cannot add that page at that location.');
 				}},
@@ -592,7 +591,6 @@ publishpage.prototype = {
 		// Submit form
 		Ajax.SubmitForm(this, null, {
 			onSuccess :  function(response) {
-				Ajax.Evaluator(response);
 				$('batchactions_go').className = '';
 				batchActionGlobals.deselectAll();
 			},
@@ -639,7 +637,6 @@ deletepage.prototype = {
 				$('Form_DeleteItemsForm_action_deleteitems').className = 'loading';
 				Ajax.SubmitForm(this, null, {
 					onSuccess : function(response) {
-						Ajax.Evaluator(response);
 						$('Form_DeleteItemsForm_action_deleteitems').className = '';
 						treeactions.closeSelection($('batchactions'));
 					},
