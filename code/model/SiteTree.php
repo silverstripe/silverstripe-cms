@@ -2047,17 +2047,45 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 	/**
 	 * Get the actions available in the CMS for this page - eg Save, Publish.
+	 *
+	 * Frontend scripts and styles know how to handle the following FormFields:
+	 * * top-level FormActions appear as standalone buttons
+	 * * top-level CompositeField with FormActions within appear as grouped buttons
+	 * * TabSet & Tabs appear as a drop ups
+	 * * FormActions within the Tab are restyled as links
+	 * * major actions can provide alternate states for richer presentation (see ssui.button widget extension).
+	 *
 	 * @return FieldList The available actions for this page.
 	 */
 	public function getCMSActions() {
-		$minorActions = CompositeField::create()->setTag('fieldset')->addExtraClass('ss-ui-buttonset');
-		$actions = new FieldList($minorActions);
+		$existsOnLive = $this->getExistsOnLive();
+
+		// Major actions appear as buttons immediately visible as page actions.
+		$majorActions = CompositeField::create()->setName('MajorActions')->setTag('fieldset')->addExtraClass('ss-ui-buttonset');
+
+		// Minor options are hidden behind a drop-up and appear as links (although they are still FormActions).
+		$rootTabSet = new TabSet('ActionMenus');
+		$moreOptions = new Tab(
+			'MoreOptions', 
+			_t('SiteTree.MoreOptions', 'More options', 'Expands a view for more buttons')
+		);
+		$rootTabSet->push($moreOptions);
+		$rootTabSet->addExtraClass('ss-ui-action-tabset action-menus');
+
+		// Render page information into the "more-options" drop-up, on the top.
+		$moreOptions->push(
+			new LiteralField('Information',
+				$this->customise(array(
+					'ExistsOnLive' => $existsOnLive
+				))->renderWith('SiteTree_Information')
+			)
+		);
 
 		// "readonly"/viewing version that isn't the current version of the record
 		$stageOrLiveRecord = Versioned::get_one_by_stage($this->class, Versioned::current_stage(), sprintf('"SiteTree"."ID" = %d', $this->ID));
 		if($stageOrLiveRecord && $stageOrLiveRecord->Version != $this->Version) {
-			$minorActions->push(FormAction::create('email', _t('CMSMain.EMAIL', 'Email')));
-			$minorActions->push(FormAction::create('rollback', _t('CMSMain.ROLLBACK', 'Roll back to this version')));
+			$moreOptions->push(FormAction::create('email', _t('CMSMain.EMAIL', 'Email')));
+			$moreOptions->push(FormAction::create('rollback', _t('CMSMain.ROLLBACK', 'Roll back to this version')));
 
 			// getCMSActions() can be extended with updateCMSActions() on a extension
 			$this->extend('updateCMSActions', $actions);
@@ -2067,17 +2095,17 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		if($this->isPublished() && $this->canPublish() && !$this->IsDeletedFromStage && $this->canDeleteFromLive()) {
 			// "unpublish"
-			$minorActions->push(
+			$moreOptions->push(
 				FormAction::create('unpublish', _t('SiteTree.BUTTONUNPUBLISH', 'Unpublish'), 'delete')
 					->setDescription(_t('SiteTree.BUTTONUNPUBLISHDESC', 'Remove this page from the published site'))
-					->addExtraClass('ss-ui-action-destructive')->setAttribute('data-icon', 'unpublish')
+					->addExtraClass('ss-ui-action-destructive')
 			);
 		}
 
 		if($this->stagesDiffer('Stage', 'Live') && !$this->IsDeletedFromStage) {
 			if($this->isPublished() && $this->canEdit())	{
 				// "rollback"
-				$minorActions->push(
+				$moreOptions->push(
 					FormAction::create('rollback', _t('SiteTree.BUTTONCANCELDRAFT', 'Cancel draft changes'), 'delete')
 						->setDescription(_t('SiteTree.BUTTONCANCELDRAFTDESC', 'Delete your draft and revert to the currently published page'))
 				);
@@ -2086,49 +2114,59 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		if($this->canEdit()) {
 			if($this->IsDeletedFromStage) {
-				if($this->ExistsOnLive) {
+				// The usual major actions are not available, so we provide alternatives here.
+				if($existsOnLive) {
 					// "restore"
-					$minorActions->push(FormAction::create('revert',_t('CMSMain.RESTORE','Restore')));
+					$majorActions->push(FormAction::create('revert',_t('CMSMain.RESTORE','Restore')));
 					if($this->canDelete() && $this->canDeleteFromLive()) {
 						// "delete from live"
-						$minorActions->push(
+						$majorActions->push(
 							FormAction::create('deletefromlive',_t('CMSMain.DELETEFP','Delete'))->addExtraClass('ss-ui-action-destructive')
 						);
 					}
 				} else {
 					// "restore"
-					$minorActions->push(
+					$majorActions->push(
 						FormAction::create('restore',_t('CMSMain.RESTORE','Restore'))->setAttribute('data-icon', 'decline')
 					);
 				}
 			} else {
 				if($this->canDelete()) {
 					// "delete"
-					$minorActions->push(
+					$moreOptions->push(
 						FormAction::create('delete',_t('CMSMain.DELETE','Delete draft'))->addExtraClass('delete ss-ui-action-destructive')
-							->setAttribute('data-icon', 'decline')
 					);
 				}
 			
-				// "save"
-				$minorActions->push(
-					FormAction::create('save',_t('CMSMain.SAVEDRAFT','Save Draft'))->setAttribute('data-icon', 'addpage')
+				// "save", supports an alternate state that is still clickable, but notifies the user that the action is not needed.
+				$majorActions->push(
+					FormAction::create('save', _t('SiteTree.BUTTONSAVED', 'Saved'))
+						->setAttribute('data-icon', 'accept')
+						->setAttribute('data-icon-alternate', 'addpage')
+						->setAttribute('data-text-alternate', _t('CMSMain.SAVEDRAFT','Save draft'))
 				);
 			}
 		}
 
 		if($this->canPublish() && !$this->IsDeletedFromStage) {
-			// "publish"
-			$actions->push(
-				FormAction::create('publish', _t('SiteTree.BUTTONSAVEPUBLISH', 'Save & Publish'))
-					->addExtraClass('ss-ui-action-constructive')->setAttribute('data-icon', 'accept')
+			// "publish", as with "save", it supports an alternate state to show when action is needed.
+			$majorActions->push(
+				$publish = FormAction::create('publish', _t('SiteTree.BUTTONPUBLISHED', 'Published'))
+					->setAttribute('data-icon', 'accept')
+					->setAttribute('data-icon-alternate', 'disk')
+					->setAttribute('data-text-alternate', _t('SiteTree.BUTTONSAVEPUBLISH', 'Save & publish'))
 			);
+
+			// Set up the initial state of the button to reflect the state of the underlying SiteTree object.
+			if($this->stagesDiffer('Stage', 'Live')) {
+				$publish->addExtraClass('ss-ui-alternate');
+			}
 		}
 		
-		// getCMSActions() can be extended with updateCMSActions() on a extension
+		// Hook for extensions to add/remove actions.
 		$this->extend('updateCMSActions', $actions);
-		
-		return $actions;
+
+		return new FieldList(array($majorActions, $rootTabSet));
 	}
 	
 	/**
