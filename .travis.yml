@@ -13,7 +13,7 @@ matrix:
       env: TESTDB=PGSQL
 
 before_script:
- - ./tests/travis/before_script ~/builds/ss 
+ - ./tests/travis/before_script ~/builds/ss $TRAVIS_BRANCH
  - cd ~/builds/ss
 
 script: 

@@ -1,4 +1,5 @@
 BUILD_DIR=$1
+TRAVIS_BRANCH=$2
 git clone --depth=100 --quiet git://github.com/silverstripe/silverstripe-installer.git $BUILD_DIR
 git clone --depth=100 --quiet git://github.com/silverstripe-labs/silverstripe-sqlite3.git $BUILD_DIR/sqlite3
 git clone --depth=100 --quiet git://github.com/silverstripe/silverstripe-postgresql.git $BUILD_DIR/postgresql
