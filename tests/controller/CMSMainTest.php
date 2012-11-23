@@ -7,8 +7,6 @@ class CMSMainTest extends FunctionalTest {
 
 	static $fixture_file = 'CMSMainTest.yml';
 	
-	protected $autoFollowRedirection = false;
-	
 	static protected $orig = array();
 	
 	public function setUpOnce() {
@@ -37,7 +35,6 @@ class CMSMainTest extends FunctionalTest {
 		$this->session()->inst_set('loggedInAs', $this->idFromFixture('Member', 'admin'));
 		
 		$response = $this->get('admin/pages/publishall?confirm=1');
-
 		$this->assertContains(
 			'Done: Published 30 pages',
 			$response->getBody()
@@ -45,7 +42,7 @@ class CMSMainTest extends FunctionalTest {
 	
 		// Some modules (e.g., cmsworkflow) will remove this action
 		if(isset(CMSBatchActionHandler::$batch_actions['publish'])) {
-			$response = Director::test('admin/pages/batchactions/publish', array('csvIDs' => implode(',', array($page1->ID, $page2->ID)), 'ajax' => 1), $this->session());
+			$response = $this->get('admin/pages/batchactions/publish?ajax=1&csvIDs=' . implode(',', array($page1->ID, $page2->ID)));
 			$responseData = Convert::json2array($response->getBody());
 			$this->assertArrayHasKey($page1->ID, $responseData['modified']);
 			$this->assertArrayHasKey($page2->ID, $responseData['modified']);
@@ -193,6 +190,9 @@ class CMSMainTest extends FunctionalTest {
 	}
 	
 	public function testCreationOfTopLevelPage(){
+		$origFollow = $this->autoFollowRedirection;
+		$this->autoFollowRedirection = false;
+
 		$cmsUser = $this->objFromFixture('Member', 'allcmssectionsuser');
 		$rootEditUser = $this->objFromFixture('Member', 'rootedituser');
 
@@ -220,9 +220,14 @@ class CMSMainTest extends FunctionalTest {
 		$this->assertContains('/show/',$location, 'Must redirect to /show/ the new page');
 		// TODO Logout
 		$this->session()->inst_set('loggedInAs', NULL);
+
+		$this->autoFollowRedirection = $origFollow;
 	}
 
 	public function testCreationOfRestrictedPage(){
+		$origFollow = $this->autoFollowRedirection;
+		$this->autoFollowRedirection = false;
+
 		$adminUser = $this->objFromFixture('Member', 'admin');
 		$adminUser->logIn();
 
@@ -258,6 +263,8 @@ class CMSMainTest extends FunctionalTest {
 		);
 
 		$this->session()->inst_set('loggedInAs', NULL);
+
+		$this->autoFollowRedirection = $origFollow;
 	}
 
 	public function testBreadcrumbs() {
