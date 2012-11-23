@@ -16,7 +16,7 @@
 	  for more information on configuration and execution options.
 	- framework/dev/TestRunner.php for an alternative way to run unit tests through the "sake" CLI tool.
 -->
-<phpunit bootstrap="framework/tests/bootstrap.php" colors="true" backupGlobals="false" backupStaticAttributes="false" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false" stopOnError="false" stopOnFailure="false" stopOnIncomplete="false" stopOnSkipped="false" syntaxCheck="false" verbose="true" strict="true">
+<phpunit bootstrap="framework/tests/bootstrap.php" colors="true" backupGlobals="false" backupStaticAttributes="false" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false" stopOnError="false" stopOnFailure="false" stopOnIncomplete="false" stopOnSkipped="false" syntaxCheck="false">
 
 	<testsuite name="Default">
 		<directory>mysite/tests</directory>
