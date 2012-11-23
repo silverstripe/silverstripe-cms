@@ -20,55 +20,6 @@ class SiteTreeTest extends SapphireTest {
 		'SiteTreeTest_StageStatusInherit',
 	);
 	
-	/**
-	 * @todo Necessary because of monolithic Translatable design
-	 */
-	static protected $origTranslatableSettings = array();
-	
-	static public function set_up_once() {
-		// needs to recreate the database schema with language properties
-		self::kill_temp_db();
-
-		// store old defaults	
-		if(class_exists('Translatable')) {
-			self::$origTranslatableSettings['has_extension'] = singleton('SiteTree')->hasExtension('Translatable');
-			self::$origTranslatableSettings['default_locale'] = Translatable::default_locale();
-			
-			// overwrite locale
-			Translatable::set_default_locale("en_US");
-
-			// refresh the extended statics - different fields in $db with Translatable enabled
-			if(self::$origTranslatableSettings['has_extension']) {
-				Object::remove_extension('SiteTree', 'Translatable');
-				Object::remove_extension('SiteConfig', 'Translatable');
-			}
-		}
-
-		// recreate database with new settings
-		$dbname = self::create_temp_db();
-		DB::set_alternative_database_name($dbname);
-
-		parent::set_up_once();
-	}
-	
-	static public function tear_down_once() {
-		if(class_exists('Translatable')) {
-			if(self::$origTranslatableSettings['has_extension']) {
-				Object::add_extension('SiteTree', 'Translatable');
-				Object::add_extension('SiteConfig', 'Translatable');
-			}
-			
-
-			Translatable::set_default_locale(self::$origTranslatableSettings['default_locale']);
-			Translatable::set_current_locale(self::$origTranslatableSettings['default_locale']);
-		}
-		
-		self::kill_temp_db();
-		self::create_temp_db();
-		
-		parent::tear_down_once();
-	}
-	
 	public function testCreateDefaultpages() {
 			$remove = DataObject::get('SiteTree');
 			if($remove) foreach($remove as $page) $page->delete();

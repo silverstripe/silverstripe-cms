@@ -11,7 +11,7 @@ class CMSMainTest extends FunctionalTest {
 	
 	static protected $orig = array();
 	
-	static public function set_up_once() {
+	public function setUpOnce() {
 		self::$orig['CMSBatchActionHandler_batch_actions'] = CMSBatchActionHandler::$batch_actions;
 		CMSBatchActionHandler::$batch_actions = array(
 			'publish' => 'CMSBatchAction_Publish',
@@ -19,13 +19,13 @@ class CMSMainTest extends FunctionalTest {
 			'deletefromlive' => 'CMSBatchAction_DeleteFromLive',
 		);
 		
-		parent::set_up_once();
+		parent::setUpOnce();
 	}
 	
-	static public function tear_down_once() {
+	public function tearDownOnce() {
 		CMSBatchActionHandler::$batch_actions = self::$orig['CMSBatchActionHandler_batch_actions'];
 		
-		parent::tear_down_once();
+		parent::tearDownOnce();
 	}
 	
 	/**
