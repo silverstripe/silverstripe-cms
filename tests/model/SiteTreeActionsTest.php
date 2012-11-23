@@ -16,18 +16,6 @@ class SiteTreeActionsTest extends FunctionalTest {
 
 	static $fixture_file = 'SiteTreeActionsTest.yml';
 	
-	static public function set_up_once() {
-		SiteTreeTest::set_up_once();
-
-		parent::set_up_once();
-	}
-	
-	static public function tear_down_once() {
-		SiteTreeTest::tear_down_once();
-		
-		parent::tear_down_once();
-	}
-	
 	public function testActionsReadonly() {
 		if(class_exists('SiteTreeCMSWorkflow')) return true;
 		
