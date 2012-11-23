@@ -17,8 +17,8 @@ git clone --depth=100 --quiet git://github.com/silverstripe-labs/silverstripe-sq
 echo "Checking out postgresql@master"
 git clone --depth=100 --quiet git://github.com/silverstripe/silverstripe-postgresql.git $BUILD_DIR/postgresql
 
-echo "Checking out sapphire@$TRAVIS_BRANCH"
-git clone --depth=100 --quiet -b $TRAVIS_BRANCH git://github.com/silverstripe/sapphire.git $BUILD_DIR/framework
+echo "Checking out sapphire@3.0"
+git clone --depth=100 --quiet -b 3.0 git://github.com/silverstripe/sapphire.git $BUILD_DIR/framework
 
 # Copy setup files
 cp $BUILD_DIR/framework/tests/travis/_ss_environment.php $BUILD_DIR
