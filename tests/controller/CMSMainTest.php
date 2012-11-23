@@ -72,25 +72,26 @@ class CMSMainTest extends FunctionalTest {
 	 * Test publication of one of every page type
 	 */
 	public function testPublishOneOfEachKindOfPage() {
-		return;
-		$classes = ClassInfo::subclassesFor("SiteTree");
-		array_shift($classes);
+		$this->markTestIncomplete();
+
+		// $classes = ClassInfo::subclassesFor("SiteTree");
+		// array_shift($classes);
 	
-		foreach($classes as $class) {
-			$page = new $class();
-			if($class instanceof TestOnly) continue;
+		// foreach($classes as $class) {
+		// 	$page = new $class();
+		// 	if($class instanceof TestOnly) continue;
 			
-			$page->Title = "Test $class page";
+		// 	$page->Title = "Test $class page";
 			
-			$page->write();
-			$this->assertEquals("Test $class page", DB::query("SELECT \"Title\" FROM \"SiteTree\" WHERE \"ID\" = $page->ID")->value());
+		// 	$page->write();
+		// 	$this->assertEquals("Test $class page", DB::query("SELECT \"Title\" FROM \"SiteTree\" WHERE \"ID\" = $page->ID")->value());
 			
-			$page->doPublish();
-			$this->assertEquals("Test $class page", DB::query("SELECT \"Title\" FROM \"SiteTree_Live\" WHERE \"ID\" = $page->ID")->value());
+		// 	$page->doPublish();
+		// 	$this->assertEquals("Test $class page", DB::query("SELECT \"Title\" FROM \"SiteTree_Live\" WHERE \"ID\" = $page->ID")->value());
 			
-			// Check that you can visit the page
-			$this->get($page->URLSegment);
-		}
+		// 	// Check that you can visit the page
+		// 	$this->get($page->URLSegment);
+		// }
 	}
 	
 	/**

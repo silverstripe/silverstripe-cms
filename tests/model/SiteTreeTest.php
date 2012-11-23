@@ -423,11 +423,14 @@ class SiteTreeTest extends SapphireTest {
 	 * an error
 	 */
 	public function testReadArchiveDate() {
-		Versioned::reading_archived_date('2009-07-02 14:05:07');
-		
+		$date = '2009-07-02 14:05:07';
+		Versioned::reading_archived_date($date);
 		DataObject::get('SiteTree', "\"ParentID\" = 0");
-		
 		Versioned::reading_archived_date(null);
+		$this->assertEquals(
+			Versioned::get_reading_mode(),
+			'Archive.'
+		);
 	}
 	
 	public function testEditPermissions() {
