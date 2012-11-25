@@ -18,9 +18,9 @@
 	"require": {
 		"php": ">=5.3.2",
 		"composer/installers": "*",
-		"silverstripe/framework": "self.version"
+		"silverstripe/framework": "3.0.*"
 	},
 	"autoload": {
 		"classmap": ["tests/behat/"]
-  }
+	}
 }
