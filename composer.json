@@ -18,7 +18,7 @@
 	"require": {
 		"php": ">=5.3.2",
 		"composer/installers": "*",
-		"silverstripe/framework": "3.0.*"
+		"silverstripe/framework": "dev-master"
 	},
 	"extra": {
 		"branch-alias": {
