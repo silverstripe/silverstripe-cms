@@ -10,13 +10,11 @@
 	 - "phpunit framework/tests/filesystem/FolderTest.php": Run a single test
 	 - "phpunit <dash><dash>coverage-html assets/": Generate coverage report (replace <dash> with "-", requires xdebug)
 	
-	Further information:
-	- http://www.phpunit.de/manual/current/en/textui.html for more commandline options.
-	- http://github.com/chillu/silverstripe-doc-restructuring/blob/master/master/cms/docs/en/howto/phpunit-configuration.md
-	  for more information on configuration and execution options.
-	- framework/dev/TestRunner.php for an alternative way to run unit tests through the "sake" CLI tool.
+	More information:
+	- http://www.phpunit.de/manual/current/en/textui.html
+	- http://doc.silverstripe.org/framework/en/topics/testing/#configuration
 -->
-<phpunit bootstrap="framework/tests/bootstrap.php" colors="true" backupGlobals="false" backupStaticAttributes="false" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false" stopOnError="false" stopOnFailure="false" stopOnIncomplete="false" stopOnSkipped="false" syntaxCheck="false" verbose="true" strict="true">
+<phpunit bootstrap="framework/tests/bootstrap.php" colors="true">
 
 	<testsuite name="Default">
 		<directory>mysite/tests</directory>
