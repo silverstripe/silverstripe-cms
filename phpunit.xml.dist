@@ -18,6 +18,7 @@
 >
 	<testsuite name="Default">
 		<directory>./</directory>
+		<exclude>vendor/</exclude>
 	</testsuite>
 	
 	<filter>
