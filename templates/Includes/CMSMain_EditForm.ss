@@ -16,13 +16,14 @@
 		</fieldset>
 	</div>
 
-	<div class="cms-content-actions south">
+	<div class="cms-content-actions cms-content-controls south">
 		<% if Actions %>
 		<div class="Actions">
 			<% loop Actions %>
 				$Field
 			<% end_loop %>
 	
+			<% include LeftAndMain_ViewModeSelector SelectID="preview-mode-dropdown-in-content" %>
 		</div>
 		<% end_if %>
 	</div>
