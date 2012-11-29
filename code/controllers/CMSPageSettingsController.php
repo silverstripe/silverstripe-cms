@@ -17,4 +17,10 @@ class CMSPageSettingsController extends CMSMain {
 		return parent::getEditForm($record, ($record) ? $record->getSettingsFields() : null);
 	}
 
+	public function Breadcrumbs($unlinked = false) {
+		$crumbs = parent::Breadcrumbs($unlinked);
+		$crumbs[0]->Title = _t('CMSPagesController.MENUTITLE');
+		return $crumbs;
+	}
+
 }
