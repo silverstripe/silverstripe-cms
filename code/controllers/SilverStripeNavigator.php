@@ -127,6 +127,13 @@ class SilverStripeNavigatorItem extends ViewableData {
 	public function getTitle() {}
 	
 	/**
+	 * Machine-friendly name.
+	 */
+	public function getName() {
+		return substr(get_class($this), strpos(get_class($this), '_')+1);
+	}
+
+	/**
 	 * Optional link to a specific view of this record.
 	 * Not all items are simple links, please use {@link getHTML()}
 	 * to represent an item in markup unless you know what you're doing.
