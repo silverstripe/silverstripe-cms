@@ -25,6 +25,62 @@ class CMSMainTest extends FunctionalTest {
 		
 		parent::tearDownOnce();
 	}
+
+	function testSiteTreeHints() {
+		$cache = SS_Cache::factory('CMSMain_SiteTreeHints');
+		$cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+
+		$rawHints = singleton('CMSMain')->SiteTreeHints();
+		$this->assertNotNull($rawHints);
+
+		$rawHints = preg_replace('/^"(.*)"$/', '$1', Convert::xml2raw($rawHints));
+		$hints = Convert::json2array($rawHints);
+
+		$this->assertArrayHasKey('Root', $hints);
+		$this->assertArrayHasKey('Page', $hints);
+		$this->assertArrayHasKey('All', $hints);
+
+		$this->assertArrayHasKey(
+			'CMSMainTest_ClassA',
+			$hints['All'],
+			'Global list shows allowed classes'
+		);
+
+		$this->assertArrayNotHasKey(
+			'CMSMainTest_HiddenClass',
+			$hints['All'],
+			'Global list does not list hidden classes'
+		);
+
+		$this->assertNotContains(
+			'CMSMainTest_ClassA',
+			$hints['Root']['disallowedChildren'],
+			'Limits root classes'
+		);
+
+		$this->assertContains(
+			'CMSMainTest_NotRoot',
+			$hints['Root']['disallowedChildren'],
+			'Limits root classes'
+		);
+		$this->assertNotContains(
+			'CMSMainTest_ClassA',
+			// Lenient checks because other modules might influence state
+			(array)@$hints['Page']['disallowedChildren'],
+			'Does not limit types on unlimited parent'
+		);
+		$this->assertContains(
+			'Page',
+			$hints['CMSMainTest_ClassA']['disallowedChildren'], 
+			'Limited parent lists disallowed classes'
+		);
+		$this->assertNotContains(
+			'CMSMainTest_ClassB',
+			$hints['CMSMainTest_ClassA']['disallowedChildren'], 
+			'Limited parent omits explicitly allowed classes in disallowedChildren'
+		);
+		
+	}
 	
 	/**
 	 * @todo Test the results of a publication better
@@ -292,5 +348,13 @@ class CMSMainTest_ClassA extends Page implements TestOnly {
 }
 
 class CMSMainTest_ClassB extends Page implements TestOnly {
+	
+}
+
+class CMSMainTest_NotRoot extends Page implements TestOnly {
+	static $can_be_root = false;
+}
+
+class CMSMainTest_HiddenClass extends Page implements TestOnly, HiddenClass {
 	
 }

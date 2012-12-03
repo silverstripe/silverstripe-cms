@@ -34,17 +34,22 @@
 				var hints = this.find('.hints').data('hints'), 
 					metadata = this.find('#ParentID .TreeDropdownField').data('metadata'),
 					id = this.find('#ParentID .TreeDropdownField').getValue(),
-					newClassName = metadata ? metadata.ClassName : null,
-					hintKey = newClassName ? newClassName : 'Root',
-					hint = (typeof hints[hintKey] != 'undefined') ? hints[hintKey] : null;
+					newClassName = (id && metadata) ? metadata.ClassName : null,
+					hintKey = (newClassName) ? newClassName : 'Root',
+					hint = (typeof hints[hintKey] != 'undefined') ? hints[hintKey] : null,
+					allAllowed = true;
 				
 				var disallowedChildren = (hint && typeof hint.disallowedChildren != 'undefined') ? hint.disallowedChildren : [],
 					defaultChildClass = (hint && typeof hint.defaultChild != 'undefined') ? hint.defaultChild : null;
 				
 				// Limit selection
 				this.find('#PageType li').each(function() {
-					var className = $(this).find('input').val(), isAllowed = ($.inArray(className, disallowedChildren) == -1);
+					var className = $(this).find('input').val(), 
+						isAllowed = ($.inArray(className, disallowedChildren) == -1);
+					
 					$(this).setEnabled(isAllowed);
+					if(!isAllowed) $(this).setSelected(false);
+					allAllowed = allAllowed && isAllowed;
 				});
 				
 				// Set default child selection, or fall back to first available option
@@ -59,6 +64,8 @@
 				// Disable the "Create" button if none of the pagetypes are available
 				var buttonState = (this.find('#PageType li:not(.disabled)').length) ? 'enable' : 'disable';
 				this.find('button[name=action_doAdd]').button(buttonState);
+
+				this.find('.message-restricted')[allAllowed ? 'hide' : 'show']();
 			}
 		});
 		

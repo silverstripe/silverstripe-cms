@@ -364,7 +364,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 */
 	public function SiteTreeHints() {
 		$json = '';
-
 		$classes = SiteTree::page_type_classes();
 
 	 	$cacheCanCreate = array();
@@ -377,55 +376,68 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 	$json = $cache->load($cacheKey);
 	 	if(!$json) {
 			$def['Root'] = array();
-			$def['Root']['disallowedParents'] = array();
+			$def['Root']['disallowedChildren'] = array();
 
+			// Contains all possible classes to support UI controls listing them all,
+			// such as the "add page here" context menu.
+			$def['All'] = array(); 
+
+			// Identify disallows and set globals
+			$globalDisallowed = array();
+			foreach($classes as $class) {
+				$obj = singleton($class);
+				$needsPerm = $obj->stat('need_permission');
+
+				if(!($obj instanceof HiddenClass)) {
+					$def['All'][$class] = array(
+						'title' => $obj->i18n_singular_name()
+					);	
+				}
+
+				if(!$obj->stat('can_be_root')) {
+					$def['Root']['disallowedChildren'][] = $class;
+				}
+				
+				if(
+					($obj instanceof HiddenClass)
+					|| (!array_key_exists($class, $cacheCanCreate) || !$cacheCanCreate[$class])
+					|| ($needsPerm && !$this->can($needsPerm))
+				) {
+					$globalDisallowed[] = $class;
+					$def['Root']['disallowedChildren'][] = $class;
+				}
+			}
+
+			// Set disallows by class
 			foreach($classes as $class) {
 				$obj = singleton($class);
 				if($obj instanceof HiddenClass) continue;
-				
-				$allowedChildren = $obj->allowedChildren();
-				
-				// SiteTree::allowedChildren() returns null rather than an empty array if SiteTree::allowed_chldren == 'none'
-				if($allowedChildren == null) $allowedChildren = array();
-				
-				// Exclude SiteTree from possible Children
-				$possibleChildren = array_diff($allowedChildren, array("SiteTree"));
 
-				// Find i18n - names and build allowed children array
-				foreach($possibleChildren as $child) {
-					$instance = singleton($child);
-					
-					if($instance instanceof HiddenClass) continue;
+				$def[$class] = array();
 
-					if(!array_key_exists($child, $cacheCanCreate) || !$cacheCanCreate[$child]) continue;
+				$allowed = $obj->allowedChildren();
+				if($pos = array_search('SiteTree', $allowed)) unset($allowed[$pos]);
 
-					// skip this type if it is restricted
-					if($instance->stat('need_permission') && !$this->can(singleton($class)->stat('need_permission'))) continue;
+				// Start by disallowing all classes which aren't specifically allowed,
+				// then add the ones which are globally disallowed.
+				$disallowed = array_diff($classes, (array)$allowed);
+				$disallowed = array_unique(array_merge($disallowed, $globalDisallowed));
+				if($disallowed) $def[$class]['disallowedChildren'] = $disallowed;
 
-					$title = $instance->i18n_singular_name();
-
-					$def[$class]['allowedChildren'][] = array("ssclass" => $child, "ssname" => $title);
+				$defaultChild = $obj->defaultChild();
+				if($defaultChild != 'Page' && $defaultChild != null) {
+					$def[$class]['defaultChild'] = $defaultChild;
 				}
 
-				$allowedChildren = array_keys(array_diff($classes, $allowedChildren));
-				if($allowedChildren) $def[$class]['disallowedChildren'] = $allowedChildren;
-				$defaultChild = $obj->defaultChild();
-				if($defaultChild != 'Page' && $defaultChild != null) $def[$class]['defaultChild'] = $defaultChild;
 				$defaultParent = $obj->defaultParent();
 				$parent = SiteTree::get_by_link($defaultParent);
 				$id = $parent ? $parent->id : null;
-				if ($defaultParent != 1 && $defaultParent != null)  $def[$class]['defaultParent'] = $defaultParent;
-				if(isset($def[$class]['disallowedChildren'])) {
-					foreach($def[$class]['disallowedChildren'] as $disallowedChild) {
-						$def[$disallowedChild]['disallowedParents'][] = $class;
-					}
+				if ($defaultParent != 1 && $defaultParent != null) {
+					$def[$class]['defaultParent'] = $defaultParent;
 				}
-				
-				// Are any classes allowed to be parents of root?
-				$def['Root']['disallowedParents'][] = $class;
 			}
 
-			$json = Convert::raw2xml(Convert::raw2json($def));
+			$json = Convert::raw2json($def);
 			$cache->save($json, $cacheKey);
 		}
 		return $json;

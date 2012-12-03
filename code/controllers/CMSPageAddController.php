@@ -41,9 +41,11 @@ class CMSPageAddController extends CMSPageEditController {
 		$fields = new FieldList(
 			// new HiddenField("ParentID", false, ($this->parentRecord) ? $this->parentRecord->ID : null),
 			// TODO Should be part of the form attribute, but not possible in current form API
-			$hintsField = new LiteralField('Hints', sprintf('<span class="hints" data-hints="%s"></span>', $this->SiteTreeHints())),
+			$hintsField = new LiteralField(
+				'Hints', 
+				sprintf('<span class="hints" data-hints="%s"></span>', Convert::raw2xml($this->SiteTreeHints()))
+			),
 			new LiteralField('PageModeHeader', sprintf($numericLabelTmpl, 1, _t('CMSMain.ChoosePageParentMode', 'Choose where to create this page'))),
-			
 			$parentModeField = new SelectionGroup(
 				"ParentModeField",
 				array(
@@ -62,6 +64,16 @@ class CMSPageAddController extends CMSPageEditController {
 				sprintf($numericLabelTmpl, 2, _t('CMSMain.ChoosePageType', 'Choose page type')), 
 				$pageTypes, 
 				'Page'
+			),
+			new LiteralField(
+				'RestrictedNote',
+				sprintf(
+					'<p class="message notice message-restricted">%s</p>',
+					_t(
+						'CMSMain.AddPageRestriction', 
+						'Note: Some page types are not allowed for this selection'
+					)
+				)
 			)
 		);
 		// TODO Re-enable search once it allows for HTML title display, 
