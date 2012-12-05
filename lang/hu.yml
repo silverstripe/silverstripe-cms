@@ -79,10 +79,10 @@ hu:
     ChoosePageParentMode: 'Choose where to create this page'
     ChoosePageType: 'Válassza ki az oldal típusát'
     Create: Létrehozni
-    DELETE: 'Vázlat törlése'
-    DELETEFP: Törlés
+    DELETE: 'Törlés a vázlat oldalról'
+    DELETEFP: 'Törlés a publikus oldalról'
     DESCREMOVED: 'and {count} descendants'
-    EMAIL: Email
+    EMAIL: E-mail
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Oldal szerkesztése'
@@ -295,7 +295,7 @@ hu:
     ACCESSONLYTHESE: 'Csak ezen emberek (válassz a listából)'
     ADDEDTODRAFTHELP: 'Az oldal jelenleg még nincs publikálva.'
     ADDEDTODRAFTSHORT: Vázlat
-    ALLOWCOMMENTS: 'Megjegyzések engedélyezése ezen az oldalon?'
+    ALLOWCOMMENTS: 'A megjegyzések engedélyezve legyenek az oldalon?'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: 'Piszkozaton végzett változtatások visszavonása'
     BUTTONCANCELDRAFTDESC: 'Piszkozat törlése, és vissztérés a jelenleg publikált oldalra'
@@ -407,4 +407,4 @@ hu:
     HEADER: 'Ez egy virtuális oldal'
     PLURALNAME: 'Virtual Pags'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
-    SINGULARNAME: 'Virtuális oldal'
+    SINGULARNAME: 'Virtuális Oldal'

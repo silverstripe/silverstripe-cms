@@ -75,7 +75,7 @@ nl:
     ACCESS: 'Toegang tot het ''{title}'' gedeelte'
     ACCESS_HELP: 'Bevoegdheid voor bekijken van pagina tak en inhoudssecties. Bekijk- en bewerkingstoestemmingen kunnen worden toegekend door pagina specifieke menu''s en het aparte "Inhoudsmachtigingen".'
     AddNew: 'Voeg nieuwe pagina toe'
-    AddNewButton: Nieuw
+    AddNewButton: 'Voeg nieuwe toe'
     ChoosePageParentMode: 'Kies waar u deze pagina wilt creëren'
     ChoosePageType: 'Kies een pagina type'
     Create: Creëer
@@ -98,7 +98,7 @@ nl:
     PageAdded: 'Pagina succesvol gecreëerd'
     REMOVED: 'Verwijderde ''%s''%s van live site'
     REMOVEDPAGE: '''{title}'' is van de gepubliceerde site verwijderd'
-    REMOVEDPAGEFROMDRAFT: '''%s'' is verwijderd uit de concept-site'
+    REMOVEDPAGEFROMDRAFT: 'Verwijderde ''%s'' uit de concept-site'
     RESTORE: Herstel
     RESTORED: '''{title}'' is succesvol hersteld'
     ROLLBACK: 'Terugzetten naar deze versie'
@@ -158,7 +158,7 @@ nl:
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Gewijzigde pagina''s'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'Alle pagina''s (inclusief verwijderde)'
+    Title: 'Alle pagina\\''s, inclusief verwijderde'
   CMSSiteTreeFilter_Search:
     Title: 'Alle pagina''s'
   ContentControl:
@@ -167,7 +167,7 @@ nl:
     ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Gearchiveerde site van'
     CMS: CMS
-    DRAFTSITE: Concept-site
+    DRAFTSITE: 'Concept site'
     DRAFT_SITE_ACCESS_RESTRICTION: 'U moet inloggen met Uw CMS wachtwoord om die inhoud te kunnen zien. <a href="%s">Klik hier</a> om terug te keren naar de gepubliceerde site.'
     Email: E-mail
     INSTALL_SUCCESS: 'Installatie voltooid!'
@@ -258,7 +258,7 @@ nl:
   SideReport:
     BROKENFILES: 'Pagina''s met verbroken bestanden'
     BROKENLINKS: 'Pagina''s met verbroken verwijzingen'
-    BROKENREDIRECTORPAGES: 'RedirectorPages die naar verwijderde pagina''s verwijzen'
+    BROKENREDIRECTORPAGES: 'RedirectorPages dit naar verwijderde pagina''s verwijzen'
     BROKENVIRTUALPAGES: 'VirtuelePagina''s die naar verwijderde pagina''s verwijzen'
     BrokenLinksGroupTitle: 'Verbroken verwijzingen raportage'
     ContentGroupTitle: Inhoudsrapportages

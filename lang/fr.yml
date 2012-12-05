@@ -103,7 +103,7 @@ fr:
     RESTORED: '« {title} » restaurée avec succès'
     ROLLBACK: 'Retourner à cette version'
     ROLLEDBACKPUB: 'Retour à la version publiée. La nouvelle version est la nº {version}'
-    ROLLEDBACKVERSION: 'Retour à la version nº %d. La nouvelle version est la nº %d.'
+    ROLLEDBACKVERSION: 'Retour à la version #%d. La nouvelle version est #%d'
     SAVE: Sauvegarder
     SAVEDRAFT: 'Sauvegarder brouillon'
     TabContent: Contenu
@@ -137,7 +137,7 @@ fr:
     UNKNOWN: Inconnu
     WHEN: Date
   CMSPageSettingsController:
-    MENUTITLE: 'Éditer la page'
+    MENUTITLE: 'Sayfayı Düzenle'
   CMSPagesController:
     GalleryView: Galerie
     ListView: Liste
@@ -268,7 +268,7 @@ fr:
     ParameterLiveCheckbox: 'Visiter le site de production'
     REPEMPTY: 'Le rapport {title} est vide'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Pour partager un lien vers cette page, copiez et collez le lien ci-dessous.'
+    ShareInstructions: 'Pour partager un page ''this-to-this'', copier et coller le lien ci-dessous.'
     ShareLink: 'Partager le lien'
   SilverStripeNavigatorLinkl:
     CloseLink: Fermer
@@ -326,7 +326,7 @@ fr:
     Editors: 'Groupes d''éditeurs'
     HASBROKENLINKS: 'Cette page a des liens cassés.'
     HTMLEDITORTITLE: Contenu
-    INHERIT: 'Hérite de la page parente'
+    INHERIT: 'hérite de la page parente'
     LASTUPDATED: 'Dernière mise à jour'
     LINKCHANGENOTE: 'Changer le lien de cette page affectera aussi les liens des pages enfants.'
     MENUTITLE: 'Nom de navigation'
@@ -343,7 +343,7 @@ fr:
     PAGETYPE: 'Type de page'
     PARENTID: 'Page parent'
     PARENTTYPE: 'Emplacement de la page'
-    PARENTTYPE_ROOT: 'Page de premier niveau'
+    PARENTTYPE_ROOT: 'Page de premier niveau. '
     PARENTTYPE_SUBPAGE: 'Sous-page d''une page parente (choisir en dessous) '
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Contrôler les groupes qui peuvent accéder ou éditer certaines pages'
     PERMISSION_GRANTACCESS_HELP: 'Autoriser la gestion des restrictions d''accès spécifiques par page dans la section "Pages"'
@@ -368,7 +368,7 @@ fr:
     VIEW_ALL_DESCRIPTION: 'Voir toute la page'
     VIEW_ALL_HELP: 'Possibilité de voir toutes les pages du site, peu importe les réglages de l’onglet Accès. Nécessite la permission "Access to Site Content"'
     VIEW_DRAFT_CONTENT: 'Voir les brouillons'
-    VIEW_DRAFT_CONTENT_HELP: 'Concerne l’affichage des pages de manière externe au CMS en mode brouillon. Pratique pour les collaborateurs externes sans accès au CMS.'
+    VIEW_DRAFT_CONTENT_HELP: 'S''applique à la visualisation de page de manière externe au CMS en mode brouillon. Pratique pour les collaborateurs externes sans accès CMS.'
     Viewers: 'Groupes de visualisation'
     Visibility: Visibilité
     has_one_Parent: 'Page parente'
@@ -403,8 +403,8 @@ fr:
   VirtualPage:
     CHOOSE: 'Choisir le lien d''une page'
     DESCRIPTION: 'Affiche le contenu d’une autre page'
-    EDITCONTENT: 'Faites clic ici pour modifier le contenu'
+    EDITCONTENT: 'cliquer ici pour modifier le contenu'
     HEADER: 'Cette page est virtuelle'
-    PLURALNAME: 'Pages virtuelles'
+    PLURALNAME: 'Pages Virtuelles'
     PageTypNotAllowedOnRoot: 'Le type de page d’origine « {type} » n’est pas autorisé au niveau racine pour cette page virtuelle'
     SINGULARNAME: 'Page virtuelle'

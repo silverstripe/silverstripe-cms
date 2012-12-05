@@ -39,7 +39,7 @@ de:
   BrokenLinksReport:
     Any: Alle
     BROKENLINKS: 'Defekte Links'
-    CheckSite: 'Site überprüfen'
+    CheckSite: 'Seite überprüfen'
     CheckSiteDropdownDraft: Vorschau-Site
     CheckSiteDropdownPublished: 'Veröffentlichte Site'
     ColumnDateLastModified: 'Zuletzt geändert'
@@ -54,8 +54,8 @@ de:
     ReasonDropdown: 'Zu überprüfendes Problem'
     ReasonDropdownBROKENFILE: 'Defekte Datei'
     ReasonDropdownBROKENLINK: 'Defekter Link'
-    ReasonDropdownRPBROKENLINK: 'Weiterleitung, die auf eine nicht vorhandene Seite verweist'
-    ReasonDropdownVPBROKENLINK: 'Virtuelle Seite, die auf eine nicht vorhandene Seite verweist'
+    ReasonDropdownRPBROKENLINK: 'Weiterleitungen, die auf eine nicht vorhandene Seite verweisen'
+    ReasonDropdownVPBROKENLINK: 'Virtuelle Seiten, die auf eine nicht vorhandene Seite verweisen'
     RedirectorNonExistent: 'Weiterleitung, die auf eine nicht vorhandene Seite verweist'
     VirtualPageNonExistent: 'Virtuelle Seite, die auf eine nicht vorhandene Seite verweist'
   CMSAddPageController:
@@ -80,14 +80,14 @@ de:
     ChoosePageType: 'Seitentyp auswählen'
     Create: Erstellen
     DELETE: 'Von Entwurf-Seite löschen'
-    DELETEFP: Löschen
+    DELETEFP: 'Von veröffentlicher Seite entfernen'
     DESCREMOVED: 'und {count} abstammende Seiten'
     EMAIL: E-Mail
     EditTree: 'Seitenbaum bearbeiten'
     ListFiltered: 'Gefilterte Liste'
     MENUTITLE: 'Seite bearbeiten'
     NEWPAGE: 'Neue {pagetype}'
-    PAGENOTEXISTS: 'Diese Seite existiert nicht'
+    PAGENOTEXISTS: 'Diese Seite wurde nicht gefunden'
     PAGES: Seiten
     PAGETYPEANYOPT: Alle
     PAGETYPEOPT: Seitentyp
@@ -96,9 +96,9 @@ de:
     PUBALLFUN2: 'Dieser Button bewirkt dasselbe wie auf jeder Seite "veröffentlichen" zu wählen. Sie sollten diese Funktion nutzen, wenn grössere Inhaltsänderungen stattgefunden haben, zum Beispiel wenn die Seite erstellt wurde.'
     PUBPAGES: 'Abgeschlossen: {count} Seiten wurden veröffentlicht'
     PageAdded: 'Seite erfolgreich erstellt'
-    REMOVED: '''%s''%s von der Live-Seite gelöscht'
+    REMOVED: 'Lösche ''%s''%s von der Live-Seite'
     REMOVEDPAGE: '''{title}'' wurde von der veröffentlichten Site entfernt'
-    REMOVEDPAGEFROMDRAFT: 'Lösche ''%s'' von der Entwurfs-Site'
+    REMOVEDPAGEFROMDRAFT: 'Lösche ''%s'' von der Entwurfs-Seite'
     RESTORE: Wiederherstellen
     RESTORED: '''{title}'' wurde wiederhergestellt'
     ROLLBACK: 'Diese Version wiederherstellen'
@@ -107,7 +107,7 @@ de:
     SAVE: Speichern
     SAVEDRAFT: 'Entwurf speichern'
     TabContent: Inhalt
-    TabHistory: Historie
+    TabHistory: Verlauf
     TabSettings: Einstellungen
     TreeFiltered: 'Seitenbaum gefiltert'
     TreeFilteredClear: 'Filter zurücksetzen'
@@ -171,7 +171,7 @@ de:
     DRAFT_SITE_ACCESS_RESTRICTION: 'Sie müssen sich mit Ihrem CMS Passwort einloggen, um den Entwurf oder den archivierten Inhalt zu sehen. <a href="%s">Zurück zur veröffentlichten Seite.</a>'
     Email: E-Mail
     INSTALL_SUCCESS: 'Die Installation war erfolgreich!'
-    InstallFilesDeleted: 'Die Installationsdateien wurden erfolgreich gelöscht.'
+    InstallFilesDeleted: 'Die Installationsdateien wurden erfolgreich entfernt.'
     InstallSecurityWarning: 'Zu Ihrer Sicherheit löschen Sie jetzt bitte die Installationsdateien, es sei denn Sie möchten zu einem späteren Zeitpunkt erneut installieren. (<em>Dies erfordert den Administrator-Zugang (siehe oben)</em>). Der Webserver benötigt nun nur noch Schreibrechte auf das "assets" Verzeichnis und Sie können die Schreibrechte für alle anderen Ordner entfernen. <a href="{link}" style="text-align: center;">Die Installationsdaten jetzt löschen.</a> '
     InstallSuccessCongratulations: 'SilverStripe wurde erfolgreich installiert!'
     LOGGEDINAS: 'Angemeldet als'
@@ -281,7 +281,7 @@ de:
     SINGULARNAME: Seitenkonfiguration
     SITENAMEDEFAULT: 'Name Ihrer Website'
     SITETAGLINE: 'Ihr Websiteslogan'
-    SITETITLE: 'Titel der Site'
+    SITETITLE: 'Titel der Internetseite'
     TABACCESS: Zugriff
     TABMAIN: Hauptteil
     TAGLINEDEFAULT: 'Ihr Websiteslogan'
@@ -393,13 +393,13 @@ de:
     TO: bis
     VIEWFIRST: Erster
     VIEWLAST: Letzter
-    VIEWNEXT: Nächster
+    VIEWNEXT: 'Zeige nächste'
     VIEWPREVIOUS: Vorheriger
   TreeTools:
     DisplayLabel: 'Anzeigen:'
   ViewArchivedEmail.ss:
     CANACCESS: 'Sie können unter folgendem Verweis auf die archivierte Seite zugreifen:'
-    HAVEASKED: 'Sie haben darum gebeten, den Inhalt unserer Site zu sehen, am'
+    HAVEASKED: 'Sie haben darum gebeten, den Inhalt unserer Seite zu sehen, am'
   VirtualPage:
     CHOOSE: 'Wählen Sie eine Seite, auf die Sie verweisen möchten'
     DESCRIPTION: 'Zeigt den Inhalt einer anderen Seite'
