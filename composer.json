@@ -3,8 +3,8 @@
 	"description": "The SilverStripe Framework Installer",
 	"require": {
 		"php": ">=5.2.4",
-		"silverstripe/cms": "2.4.*@stable",
-		"silverstripe/framework": "2.4.*@stable",
+		"silverstripe/cms": "2.4.*",
+		"silverstripe/framework": "2.4.*",
 		"silverstripe-themes/blackcandy": "2.4.*"
 	},
 	"minimum-stability": "dev",
