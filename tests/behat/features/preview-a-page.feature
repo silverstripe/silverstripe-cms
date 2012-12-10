@@ -25,7 +25,7 @@ Feature: Preview a page
     Then I should see "About Us" in CMS Tree
 
     When I follow "About Us"
-    And I fill in the content form with "my new content"
+    And I fill in the "Content" HTML field with "my new content"
     And I press the "Save Draft" button
     And I press the "Preview »" button
 
