@@ -11,7 +11,7 @@ Feature: Preview a page
     Then I should see "About Us" in CMS Tree
 
     When I follow "About Us"
-    And I press the "Preview »" button
+    And I set the CMS mode to "Preview mode"
     Then I can see the preview panel
     And the preview contains "About Us"
 
@@ -27,15 +27,15 @@ Feature: Preview a page
     When I follow "About Us"
     And I fill in the "Content" HTML field with "my new content"
     And I press the "Save Draft" button
-    And I press the "Preview »" button
+    And I set the CMS mode to "Preview mode"
 
-    When I follow "Published Site"
+    When I switch the preview to "Published"
     Then the preview does not contain "my new content"
     And the preview contains "You can fill"
 
-    When I follow "Draft Site"
+    When I switch the preview to "Draft"
     Then the preview does not contain "You can fill"
     And the preview contains "my new content"
 
-    When I press the "« Edit" button
+    And I set the CMS mode to "Edit mode"
     Then I should see an edit page form
