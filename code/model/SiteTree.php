@@ -1694,27 +1694,15 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * Return the number of {@link DependentPages()}
 	 * 
+	 * @deprecated 3.1 Use DependentPages()->Count() instead.
+	 *
 	 * @param $includeVirtuals Set to false to exlcude virtual pages.
 	 */
 	public function DependentPagesCount($includeVirtuals = true) {
-		$links = DB::query("SELECT COUNT(*) FROM \"SiteTree_LinkTracking\" 
-			INNER JOIN \"SiteTree\" ON \"SiteTree\".\"ID\" = \"SiteTree_LinkTracking\".\"SiteTreeID\"
-			WHERE \"ChildID\" = $this->ID ")->value();
-		if($includeVirtuals && class_exists('VirtualPage')) {
-			$virtuals = DB::query("SELECT COUNT(*) FROM \"VirtualPage\" 
-			INNER JOIN \"SiteTree\" ON \"SiteTree\".\"ID\" = \"VirtualPage\".\"ID\"
-			WHERE \"CopyContentFromID\" = $this->ID")->value();
-		} else {
-			$virtuals = 0;
-		}
-		$redirectors = DB::query("SELECT COUNT(*) FROM \"RedirectorPage\" 
-			INNER JOIN \"SiteTree\" ON \"SiteTree\".\"ID\" = \"RedirectorPage\".\"ID\"
-			WHERE \"RedirectionType\" = 'Internal' AND \"LinkToID\" = $this->ID")->value();
-			
-			
-		return 0 + $links + $virtuals + $redirectors;
+		Deprecation::notice('3.1', 'Use SiteTree->DependentPages()->Count() instead.');
+		return $this->DependentPages($includeVirtuals)->Count();
 	}
-	
+
 	/**
 	 * Return all virtual pages that link to this page
 	 */
@@ -1788,7 +1776,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$dependentTable = new LiteralField('DependentNote', '<p></p>');
 		
 		// Create a table for showing pages linked to this one
-		$dependentPagesCount = $this->DependentPagesCount();
+		$dependentPages = $this->DependentPages();
+		$dependentPagesCount = $dependentPages->Count();
 		if($dependentPagesCount) {
 			$dependentColumns = array(
 				'Title' => $this->fieldLabel('Title'),
@@ -1801,7 +1790,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$dependentTable = GridField::create(
 				'DependentPages',
 				false,
-				$this->DependentPages()
+				$dependentPages
 			);
 			$dependentTable->getConfig()->getComponentByType('GridFieldDataColumns')
 				->setFieldFormatting(array(

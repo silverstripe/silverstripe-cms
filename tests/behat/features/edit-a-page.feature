@@ -20,10 +20,10 @@ Feature: Edit a page
     Then I should see an edit page form
 
     When I fill in "Title" with "About Us!"
-    And I fill in the content form with "my new content"
+    And I fill in the "Content" HTML field with "my new content"
     And I press the "Save Draft" button
     Then I should see a "Saved." notice
 
     When I follow "About Us"
     Then the "Title" field should contain "About Us!"
-    And the content form should contain "my new content"
+    And the "Content" HTML field should contain "my new content"
