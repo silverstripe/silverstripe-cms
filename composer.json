@@ -10,6 +10,7 @@
 	"require-dev": {
 		"silverstripe/docsviewer": "*",
 		"silverstripe/behat-extension": "*",
+		"silverstripe/buildtools": "*",
 		"phpunit/phpunit": "3.7.*"
 	},
 	"minimum-stability": "dev"

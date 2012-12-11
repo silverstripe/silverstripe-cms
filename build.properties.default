@@ -1,6 +1,0 @@
-getlocalization.framework.project = sapphire
-getlocalization.framework.user = silverstripe
-getlocalization.framework.password = 
-getlocalization.cms.project = silverstripe_cms
-getlocalization.cms.user = silverstripe
-getlocalization.cms.password = 
