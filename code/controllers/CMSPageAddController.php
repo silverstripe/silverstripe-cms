@@ -46,13 +46,21 @@ class CMSPageAddController extends CMSPageEditController {
 			$parentModeField = new SelectionGroup(
 				"ParentModeField",
 				array(
-					"top//$topTitle" => null, //new LiteralField("Dummy", ''),
-					"child//$childTitle" => $parentField = new TreeDropdownField(
-						"ParentID", 
-						"",
-						'SiteTree',
-						'ID',
-						'TreeTitle'
+					new SelectionGroup_Item(
+						"top",
+						null,
+						$topTitle
+					),
+					new SelectionGroup_Item(
+						'child',
+						$parentField = new TreeDropdownField(
+							"ParentID", 
+							"",
+							'SiteTree',
+							'ID',
+							'TreeTitle'
+						),
+						$childTitle
 					)
 				)
 			),
