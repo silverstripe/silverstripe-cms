@@ -18,12 +18,7 @@
 	"require": {
 		"php": ">=5.3.2",
 		"composer/installers": "*",
-		"silverstripe/framework": "dev-master"
-	},
-	"extra": {
-		"branch-alias": {
-			"dev-master": "3.1.x-dev"
-		}
+		"silverstripe/framework": "3.1.x-dev"
 	},
 	"autoload": {
 		"classmap": ["tests/behat/"]
