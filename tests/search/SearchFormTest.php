@@ -37,8 +37,24 @@ class ZZZSearchFormTest extends FunctionalTest {
 		
 		$this->waitUntilIndexingFinished();
 	}
+
+	/**
+	 * @return Boolean
+	 */
+	protected function checkFulltextSupport() {
+		$conn = DB::getConn();
+		if(class_exists('MSSQLDatabase') && $conn instanceof MSSQLDatabase) {
+			$supports = $conn->fullTextEnabled();
+		} else {
+			$supports = true;
+		}
+		if(!$supports) $this->markTestSkipped('Fulltext not supported by DB driver or setup');
+		return $supports;
+	}
 	
 	public function testPublishedPagesMatchedByTitle() {
+		if(!$this->checkFulltextSupport()) return;
+
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 	
 		$publishedPage = $this->objFromFixture('SiteTree', 'publicPublishedPage');
@@ -54,6 +70,8 @@ class ZZZSearchFormTest extends FunctionalTest {
 	}
 	
 	public function testDoubleQuotesPublishedPagesMatchedByTitle() {
+		if(!$this->checkFulltextSupport()) return;
+
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 
 		$publishedPage = $this->objFromFixture('SiteTree', 'publicPublishedPage');
@@ -72,6 +90,8 @@ class ZZZSearchFormTest extends FunctionalTest {
 	
 	/*
 	public function testUnpublishedPagesNotIncluded() {
+		if(!$this->checkFulltextSupport()) return;
+
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 		
 		$results = $sf->getResults(null, array('Search'=>'publicUnpublishedPage'));
@@ -85,6 +105,8 @@ class ZZZSearchFormTest extends FunctionalTest {
 	*/
 	
 	public function testPagesRestrictedToLoggedinUsersNotIncluded() {
+		if(!$this->checkFulltextSupport()) return;
+
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 		
 		$page = $this->objFromFixture('SiteTree', 'restrictedViewLoggedInUsers');
@@ -107,6 +129,8 @@ class ZZZSearchFormTest extends FunctionalTest {
 	}
 
 	public function testPagesRestrictedToSpecificGroupNotIncluded() {
+		if(!$this->checkFulltextSupport()) return;
+
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 		
 		$page = $this->objFromFixture('SiteTree', 'restrictedViewOnlyWebsiteUsers');
@@ -139,6 +163,8 @@ class ZZZSearchFormTest extends FunctionalTest {
 	}
 	
 	public function testInheritedRestrictedPagesNotInlucded() {
+		if(!$this->checkFulltextSupport()) return;
+
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 		
 		$page = $this->objFromFixture('SiteTree', 'inheritRestrictedView');
@@ -162,6 +188,8 @@ class ZZZSearchFormTest extends FunctionalTest {
 	}
 	
 	public function testDisabledShowInSearchFlagNotIncludedForSiteTree() {
+		if(!$this->checkFulltextSupport()) return;
+
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 		
 		$page = $this->objFromFixture('SiteTree', 'dontShowInSearchPage');
@@ -174,6 +202,8 @@ class ZZZSearchFormTest extends FunctionalTest {
 	}
 	
 	public function testDisabledShowInSearchFlagNotIncludedForFiles() {
+		if(!$this->checkFulltextSupport()) return;
+
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 		
 		$dontShowInSearchFile = $this->objFromFixture('File', 'dontShowInSearchFile');
@@ -194,6 +224,8 @@ class ZZZSearchFormTest extends FunctionalTest {
 	}
 
 	public function testSearchTitleAndContentWithSpecialCharacters() {
+		if(!$this->checkFulltextSupport()) return;
+
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 		
 		$pageWithSpecialChars = $this->objFromFixture('SiteTree', 'pageWithSpecialChars');
