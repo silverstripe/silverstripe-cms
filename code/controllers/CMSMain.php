@@ -857,25 +857,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// If the 'Save & Publish' button was clicked, also publish the page
 		if (isset($data['publish']) && $data['publish'] == 1) {
 			$record->doPublish();
-			
-			// Update classname with original and get new instance (see above for explanation)
-			if(isset($data['ClassName'])) {
-				$record->setClassName($data['ClassName']);
-				$publishedRecord = $record->newClassInstance($record->ClassName);
-			}
-			
-			$this->response->addHeader(
-				'X-Status',
-				rawurlencode(_t(
-					'LeftAndMain.STATUSPUBLISHEDSUCCESS', 
-					"Published '{title}' successfully",
-					'Status message after publishing a page, showing the page title',
-					array('title' => $record->Title)
-				))
-			);
-		} else {
-			$this->response->addHeader('X-Status', rawurlencode(_t('LeftAndMain.SAVEDUP', 'Saved.')));
-		}
+		} 
 
 		return $this->getResponseNegotiator()->respond($this->request);
 	}
