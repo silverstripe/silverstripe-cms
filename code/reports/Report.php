@@ -163,7 +163,7 @@ class SS_Report extends ViewableData {
 
 	/**
 	 * Return the SS_Report objects making up the given list.
-	 * @return ArrayList an arraylist of SS_Report objects
+	 * @return Array of SS_Report objects
 	 */
 	static public function get_reports() {
 		$reports = ClassInfo::subclassesFor(get_called_class());
@@ -182,13 +182,12 @@ class SS_Report extends ViewableData {
 			}
 		}
 
-		//convert array into ArrayList
-		$list = ArrayList::create($reportsArray);
+		uasort($reportsArray, function($a, $b) {
+			if($a->sort == $b->sort) return 0;
+			else return ($a->sort < $b->sort) ? -1 : 1;
+		});
 
-		//sort
-		$list = $list->sort('sort');
-
-		return $list;
+		return $reportsArray;
 	}
 
 	/////////////////////// UI METHODS ///////////////////////

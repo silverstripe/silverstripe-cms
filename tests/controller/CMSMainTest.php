@@ -182,9 +182,10 @@ class CMSMainTest extends FunctionalTest {
 		$parentPage->doUnpublish();
 		$childPage->doUnpublish();
 
-		$this->assertContains(
+		$actions = $childPage->getCMSActions()->dataFields();
+		$this->assertArrayHasKey(
 			'action_publish',
-			$childPage->getCMSActions()->column('Name'),
+			$actions,
 			'Can publish a page with an unpublished parent with strict hierarchy off'
 		);
 		SiteTree::set_enforce_strict_hierarchy(false);

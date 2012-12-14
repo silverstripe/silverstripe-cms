@@ -16,7 +16,7 @@ class MigrateSiteTreeLinkingTask extends BuildTask {
 		$links = 0;
 
 		$linkedPages = new DataList('SiteTree');
-		$linkedPages->innerJoin('SiteTree_LinkTracking', '"SiteTree_LinkTracking"."SiteTreeID" = "SiteTree"."ID"');
+		$linkedPages = $linkedPages->innerJoin('SiteTree_LinkTracking', '"SiteTree_LinkTracking"."SiteTreeID" = "SiteTree"."ID"');
 		if($linkedPages) foreach($linkedPages as $page) {
 			$tracking = DB::query(sprintf('SELECT "ChildID", "FieldName" FROM "SiteTree_LinkTracking" WHERE "SiteTreeID" = %d', $page->ID))->map();
 
