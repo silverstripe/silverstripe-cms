@@ -2087,6 +2087,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$moreOptions->push(FormAction::create('email', _t('CMSMain.EMAIL', 'Email')));
 			$moreOptions->push(FormAction::create('rollback', _t('CMSMain.ROLLBACK', 'Roll back to this version')));
 
+			$actions = new FieldList(array($majorActions, $rootTabSet));
+
 			// getCMSActions() can be extended with updateCMSActions() on a extension
 			$this->extend('updateCMSActions', $actions);
 
@@ -2162,11 +2164,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				$publish->addExtraClass('ss-ui-alternate');
 			}
 		}
+
+		$actions = new FieldList(array($majorActions, $rootTabSet));
 		
 		// Hook for extensions to add/remove actions.
 		$this->extend('updateCMSActions', $actions);
 
-		return new FieldList(array($majorActions, $rootTabSet));
+		return $actions;
 	}
 	
 	/**
