@@ -8,6 +8,12 @@ class CMSSettingsController extends LeftAndMain {
 	static $tree_class = 'SiteConfig';
 	static $required_permission_codes = array('EDIT_SITECONFIG');
 	
+	public function init() {
+		parent::init();
+
+		Requirements::javascript(CMS_DIR . '/javascript/CMSMain.EditForm.js');
+	}
+
 	public function getResponseNegotiator() {
 		$neg = parent::getResponseNegotiator();
 		$controller = $this;
