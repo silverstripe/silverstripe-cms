@@ -58,13 +58,28 @@ class SiteConfig extends DataObject implements PermissionProvider {
 				$tabAccess = new Tab('Access',
 					$viewersOptionsField = new OptionsetField("CanViewType", _t('SiteConfig.VIEWHEADER', "Who can view pages on this site?")),
 					$viewerGroupsField = ListboxField::create("ViewerGroups", _t('SiteTree.VIEWERGROUPS', "Viewer Groups"))
-						->setMultiple(true)->setSource($groupsMap),
+						->setMultiple(true)
+						->setSource($groupsMap)
+						->setAttribute(
+							'data-placeholder', 
+							_t('SiteTree.GroupPlaceholder', 'Click to select group')
+						),
 					$editorsOptionsField = new OptionsetField("CanEditType", _t('SiteConfig.EDITHEADER', "Who can edit pages on this site?")),
 					$editorGroupsField = ListboxField::create("EditorGroups", _t('SiteTree.EDITORGROUPS', "Editor Groups"))
-						->setMultiple(true)->setSource($groupsMap),
+						->setMultiple(true)
+						->setSource($groupsMap)
+						->setAttribute(
+							'data-placeholder', 
+							_t('SiteTree.GroupPlaceholder', 'Click to select group')
+						),
 					$topLevelCreatorsOptionsField = new OptionsetField("CanCreateTopLevelType", _t('SiteConfig.TOPLEVELCREATE', "Who can create pages in the root of the site?")),
 					$topLevelCreatorsGroupsField = ListboxField::create("CreateTopLevelGroups", _t('SiteTree.TOPLEVELCREATORGROUPS', "Top level creators"))
-						->setMultiple(true)->setSource($groupsMap)
+						->setMultiple(true)
+						->setSource($groupsMap)
+						->setAttribute(
+							'data-placeholder', 
+							_t('SiteTree.GroupPlaceholder', 'Click to select group')
+						)
 				)
 			),
 			new HiddenField('ID')
