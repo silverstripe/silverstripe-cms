@@ -2083,9 +2083,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$rootTabSet->addExtraClass('ss-ui-action-tabset action-menus');
 
 		// Render page information into the "more-options" drop-up, on the top.
+		$live = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree\".\"ID\"='$this->ID'");
 		$moreOptions->push(
 			new LiteralField('Information',
 				$this->customise(array(
+					'Live' => $live,
 					'ExistsOnLive' => $existsOnLive
 				))->renderWith('SiteTree_Information')
 			)
