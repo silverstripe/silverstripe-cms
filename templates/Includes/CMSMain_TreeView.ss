@@ -7,10 +7,6 @@
 	$AddForm
 </div>
 
-<button href="$LinkPagesWithSearch" class="cms-tree-expand-trigger cms-panel-link ss-button" data-icon="pencil">
-	<% _t('CMSMain.EditTree', 'Edit Tree') %>
-</button>
-
 $ExtraTreeTools
 
 <div class="center">
