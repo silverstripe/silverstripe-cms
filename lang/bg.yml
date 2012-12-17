@@ -16,15 +16,15 @@ bg:
     FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Актуализира базата данни с файловете от файловата система. Полезно когато файлове са били качени не през системата, а например през FTP.'
     FROMTHEINTERNET: 'От интернет'
-    FROMYOURCOMPUTER: 'From your computer'
-    Filetype: 'File type'
+    FROMYOURCOMPUTER: 'От компютъра'
+    Filetype: 'Тип на файла'
     ListView: 'Изглед в списък'
     MENUTITLE: Файлове
     NEWFOLDER: 'Нова директория'
     SIZE: Размер
     THUMBSDELETED: '{count} unused thumbnails have been deleted'
     TreeView: 'Дървовиден изглед'
-    Upload: Upload
+    Upload: 'Качи '
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Изтрити папки'
   AssetAdmin_Tools:
@@ -70,7 +70,7 @@ bg:
     UNPUBLISHED_PAGES: 'Премахнати от публикация %d страници'
     UNPUBLISH_PAGES: 'Премахни от публикация'
   CMSFileAddController:
-    MENUTITLE: Files
+    MENUTITLE: Файлове
   CMSMain:
     ACCESS: 'Достъп до ''{title}'' секция'
     ACCESS_HELP: 'Разреши излгед на раздела съдържащ структурното дърво и съдържанието. Правата за достъп и редактиране могат да бъдат променени през падащи менюта (dropdowns), както и чрез отделни права на съдържанието'
@@ -90,7 +90,7 @@ bg:
     PAGENOTEXISTS: 'Тази страница не съществува'
     PAGES: Страници
     PAGETYPEANYOPT: Всички
-    PAGETYPEOPT: 'Page Type'
+    PAGETYPEOPT: 'Тип на страницата'
     PUBALLCONFIRM: 'Публикувай всяка страница в сайта'
     PUBALLFUN: '"Публикувай всичко" функционалност'
     PUBALLFUN2: 'Натискайки този бутон все едно, публикувате всяка страница по отделно. Идеята е тази функционалност да се използва при мащабна редакция на съдържанието, като например случая когато сайта бива първоначално попълнен.'
@@ -224,14 +224,14 @@ bg:
     UNUSEDTHUMBNAILSTITLE: 'Неизползвани миниатури'
     UploadFilesButton: 'Качи '
   LeftAndMain:
-    DELETED: Deleted.
+    DELETED: Изтрито.
     PreviewButton: Изглед
-    SAVEDUP: Saved.
+    SAVEDUP: Записано.
     STATUSPUBLISHEDSUCCESS: 'Успешно публикуван/а ''{title}'''
     SearchResults: 'Резултати от търсенето'
     VersionUnknown: Неизвестно
   Permission:
-    CMS_ACCESS_CATEGORY: 'CMS Access'
+    CMS_ACCESS_CATEGORY: 'Достъп до CMS'
   Permissions:
     CONTENT_CATEGORY: 'Права по съдържанието'
     PERMISSIONS_CATEGORY: 'Роли и права за достъп'

@@ -237,15 +237,15 @@ zh_TW:
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
   RedirectorPage:
     DESCRIPTION: 重新導向到一個內部不同的網頁
-    HASBEENSETUP: 沒有任何地方被重新導向的一個重新導向網頁已被設定.
-    HEADER: 本網頁將重新導向用戶至別的網頁
+    HASBEENSETUP: 一個引導頁已被建立，但並沒有說明引導目的地。
+    HEADER: 這頁會引導訪客至另外一頁
     OTHERURL: 其他網站網址
     PLURALNAME: 'Redirector Pags'
-    REDIRECTTO: 重新導向到
-    REDIRECTTOEXTERNAL: 別的網站
-    REDIRECTTOPAGE: 在您網站上的一個網頁
+    REDIRECTTO: 引導訪客至
+    REDIRECTTOEXTERNAL: 其他網站
+    REDIRECTTOPAGE: 自己網站上的網頁
     SINGULARNAME: 'Redirector Page'
-    YOURPAGE: 在您網站上的網頁
+    YOURPAGE: 自己網站上的網頁
   ReportAdmin:
     MENUTITLE: Reports
     ReportTitle: Title
