@@ -4,7 +4,7 @@ hu:
     ActionAdd: 'Mappa hozzáadása'
     AppCategoryArchive: Archív
     AppCategoryAudio: Audió
-    AppCategoryDocument: Document
+    AppCategoryDocument: Dokumentum
     AppCategoryFlash: Flash
     AppCategoryImage: Kép
     AppCategoryVideo: Videó
@@ -16,7 +16,7 @@ hu:
     FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
     FROMTHEINTERNET: Internetről
-    FROMYOURCOMPUTER: 'From your computer'
+    FROMYOURCOMPUTER: Számítógépéről
     Filetype: 'Állomány típusa'
     ListView: 'Lista nézet'
     MENUTITLE: Állományok
@@ -32,19 +32,19 @@ hu:
   AssetAdmin_left.ss:
     GO: Mehet
   AssetTableField:
-    BACKLINKCOUNT: 'Used on:'
+    BACKLINKCOUNT: 'Felhasználva:'
     PAGES: oldal(ak)
   BackLink_Button.ss:
     Back: Vissza
   BrokenLinksReport:
     Any: Bármely
     BROKENLINKS: 'Broken links report'
-    CheckSite: 'Check site'
+    CheckSite: 'Oldal ellenőrzése'
     CheckSiteDropdownDraft: 'Oldal vázlata'
     CheckSiteDropdownPublished: 'Publikált oldal'
     ColumnDateLastModified: 'Date last modified'
     ColumnDateLastPublished: 'Date last published'
-    ColumnProblemType: 'Problem type'
+    ColumnProblemType: 'Probléma típusa'
     ColumnURL: URL
     HasBrokenFile: 'has broken file'
     HasBrokenLink: 'has broken link'
@@ -57,17 +57,17 @@ hu:
     ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
     ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
     RedirectorNonExistent: 'redirector page pointing to non-existent page'
-    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
+    VirtualPageNonExistent: 'a virtuális oldal egy nem létező oldalra hivatkozik'
   CMSAddPageController:
     Title: 'Oldal hozzáadása'
   CMSBatchActions:
     DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
-    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
+    DELETED_PAGES: '%d oldal törölve a publikáltak közül, %d hibás'
     DELETE_DRAFT_PAGES: 'Törlés a vázlatokból'
     DELETE_PAGES: 'Törlés a publikált oldalakból'
-    PUBLISHED_PAGES: 'Published %d pages, %d failures'
+    PUBLISHED_PAGES: '%d oldal publikálva, %d hibás'
     PUBLISH_PAGES: Publikálni
-    UNPUBLISHED_PAGES: 'Un-published %d pages'
+    UNPUBLISHED_PAGES: '%d publikálatlan oldal'
     UNPUBLISH_PAGES: 'Publikálás visszavonása'
   CMSFileAddController:
     MENUTITLE: Állományok
@@ -79,14 +79,14 @@ hu:
     ChoosePageParentMode: 'Choose where to create this page'
     ChoosePageType: 'Válassza ki az oldal típusát'
     Create: Létrehozni
-    DELETE: 'Vázlat törlése'
-    DELETEFP: Törlés
+    DELETE: 'Törlés a vázlat oldalról'
+    DELETEFP: 'Törlés a publikus oldalról'
     DESCREMOVED: 'and {count} descendants'
-    EMAIL: Email
+    EMAIL: E-mail
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
     MENUTITLE: 'Oldal szerkesztése'
-    NEWPAGE: 'New {pagetype}'
+    NEWPAGE: 'Új {pagetype}'
     PAGENOTEXISTS: 'Ez az oldal nem létezik.'
     PAGES: Oldalak
     PAGETYPEANYOPT: Egyéb
@@ -117,7 +117,7 @@ hu:
   CMSPageAddController:
     MENUTITLE: 'Oldal hozzáadása'
     ParentMode_child: 'Másik oldal alatt'
-    ParentMode_top: 'Top level'
+    ParentMode_top: 'Felső szint'
   CMSPageEditController:
     MENUTITLE: 'Oldal szerkesztése'
   CMSPageHistoryController:
@@ -162,18 +162,18 @@ hu:
   CMSSiteTreeFilter_Search:
     Title: 'Összes oldal'
   ContentControl:
-    NOTEWONTBESHOWN: 'Note: this message will not be shown to your visitors'
+    NOTEWONTBESHOWN: 'Megjegyzés: ez az üzenet a látogatók számára nem jelenik meg'
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
-    ARCHIVEDSITEFROM: 'Archived site from'
+    ARCHIVEDSITE: 'Előnézeti verzió'
+    ARCHIVEDSITEFROM: Archiválva
     CMS: CMS
     DRAFTSITE: 'Vázlat oldal'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Be kell jelentkezned a CMS jelszavaddal, hogy megtekinthesd a piszkozatot vagy az archivált tartalmat. <a href="%s">A publikált oldalra való visszatéréshez kattints ide.</a>'
     Email: Email
-    INSTALL_SUCCESS: 'Installation Successful!'
+    INSTALL_SUCCESS: 'Sikeres telepítés!'
     InstallFilesDeleted: 'A telepítő állományok sikeresen tőrőlve lettek.'
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
+    InstallSuccessCongratulations: 'A SilverStripe sikeresen telepítve lett!'
     LOGGEDINAS: 'Bejelentkezve, mint'
     LOGIN: Bejelentkezés
     LOGOUT: Kijelentkezés
@@ -192,8 +192,8 @@ hu:
     DEFAULTSERVERERRORPAGETITLE: 'Szerver hiba'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
+    PLURALNAME: 'Hiba oldalak'
+    SINGULARNAME: 'Hiba oldal'
     400: '400 - Hibás kérés'
     401: '401 - Unauthorized'
     403: '403 - Forbidden'
@@ -240,11 +240,11 @@ hu:
     HASBEENSETUP: 'Egy átirányító oldal került létrehozásra, anélkül hogy lenne hova átirányítania.'
     HEADER: 'Ez az oldal egy másik oldalra fogja írányítani a felhasználókat'
     OTHERURL: 'Egy másik weboldal URL-je '
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: 'Átirányító oldalak'
     REDIRECTTO: 'Átirányítás ide:'
     REDIRECTTOEXTERNAL: 'Egy másik weboldal'
     REDIRECTTOPAGE: 'Egy oldal a weblapodon'
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: 'Átirányító oldal'
     YOURPAGE: 'Oldal a weblapodon'
   ReportAdmin:
     MENUTITLE: Jelentések
@@ -277,8 +277,8 @@ hu:
     EDITHEADER: 'Who can edit pages on this site?'
     EDIT_PERMISSION: 'Manage site configuration'
     EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
+    PLURALNAME: 'Oldal konfigurációk'
+    SINGULARNAME: 'Oldal konfiguráció'
     SITENAMEDEFAULT: 'Az oldal neve'
     SITETAGLINE: 'Site Tagline/Slogan'
     SITETITLE: 'Oldal címe'
@@ -295,7 +295,7 @@ hu:
     ACCESSONLYTHESE: 'Csak ezen emberek (válassz a listából)'
     ADDEDTODRAFTHELP: 'Az oldal jelenleg még nincs publikálva.'
     ADDEDTODRAFTSHORT: Vázlat
-    ALLOWCOMMENTS: 'Megjegyzések engedélyezése ezen az oldalon?'
+    ALLOWCOMMENTS: 'A megjegyzések engedélyezve legyenek az oldalon?'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: 'Piszkozaton végzett változtatások visszavonása'
     BUTTONCANCELDRAFTDESC: 'Piszkozat törlése, és vissztérés a jelenleg publikált oldalra'
@@ -321,7 +321,7 @@ hu:
     EDITHEADER: 'Ki szerkesztheti ezt a CMS-ben?'
     EDITONLYTHESE: 'Csak ezek az emberek (válassz a listából)'
     EDITORGROUPS: 'Editor Groups'
-    EDIT_ALL_DESCRIPTION: 'Edit any page'
+    EDIT_ALL_DESCRIPTION: 'Bármely oldal szerkesztése'
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     Editors: 'Editors Groups'
     HASBROKENLINKS: 'Ez az oldal hibás linkeket tartalmaz.'
@@ -336,18 +336,18 @@ hu:
     METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Változtatva
-    MetadataToggle: Metadata
+    MetadataToggle: Metaadatok
     OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: 'Page location'
     PAGETITLE: 'Az oldal neve'
     PAGETYPE: 'Oldal típusa'
     PARENTID: 'Parent page'
     PARENTTYPE: 'Page location'
-    PARENTTYPE_ROOT: 'Top-level page'
+    PARENTTYPE_ROOT: 'Felső szintű oldal'
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Manage access rights for content'
     PERMISSION_GRANTACCESS_HELP: 'Allow setting of page-specific access restrictions in the "Pages" section.'
-    PLURALNAME: Pages
+    PLURALNAME: Oldalak
     PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
     PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
     REMOVEDFROMDRAFTHELP: 'Az oldal publikálva lett, de törölve lett a vázlatok közül'
@@ -357,7 +357,7 @@ hu:
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'Látható legyen a menükben?'
     SHOWINSEARCH: 'Látható legyen a keresésben?'
-    SINGULARNAME: Page
+    SINGULARNAME: Oldal
     TABBEHAVIOUR: Viselkedés
     TABCONTENT: Tartalom
     TABDEPENDENT: 'Dependent pages'
@@ -365,7 +365,7 @@ hu:
     TOPLEVELCREATORGROUPS: 'Top level creators'
     URLSegment: 'URL szegmens'
     VIEWERGROUPS: 'Viewer Groups'
-    VIEW_ALL_DESCRIPTION: 'View any page'
+    VIEW_ALL_DESCRIPTION: 'Bármely oldal megtekintése'
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
     VIEW_DRAFT_CONTENT: 'View draft content'
     VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
@@ -385,8 +385,8 @@ hu:
     SELECT: 'Select:'
   TableListField.ss:
     NOITEMSFOUND: 'No items found'
-    SORTASC: 'Sort in ascending order'
-    SORTDESC: 'Sort in descending order'
+    SORTASC: 'Rendezés növekvő sorrendben'
+    SORTDESC: 'Rendezés csökkenő sorrendben'
   TableListField_PageControls.ss:
     DISPLAYING: Displaying
     OF: of
@@ -407,4 +407,4 @@ hu:
     HEADER: 'Ez egy virtuális oldal'
     PLURALNAME: 'Virtual Pags'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
-    SINGULARNAME: 'Virtuális oldal'
+    SINGULARNAME: 'Virtuális Oldal'
