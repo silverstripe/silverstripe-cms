@@ -30,6 +30,12 @@ abstract class StaticPublisher extends DataExtension {
 	static public function set_static_publisher_theme($theme){
 		self::$static_publisher_theme=$theme;
 	}
+
+	/**
+	 * @var boolean Includes a timestamp at the bottom of the generated HTML of each file,
+	 * which can be useful for debugging issues with stale caches etc.
+	 */
+	static $include_caching_metadata = false;
 	
 	static public function static_publisher_theme(){
 		return self::$static_publisher_theme;
@@ -152,6 +158,23 @@ abstract class StaticPublisher extends DataExtension {
 		
 		return $urls;		
 	}
-
+	
+	/**
+	 * Provides context for this URL, written as an HTML comment to the static file cache,
+	 * which can be useful for debugging cache problems. For example, you could track the
+	 * event or related page which triggered this republication. The returned data
+	 * is unstructured and not intended to be consumed programmatically.
+	 * Consider injecting standard HTML <meta> tags instead where applicable.
+	 * 
+	 * Note: Only used when {@link $include_caching_metadata} is enabled.
+	 * 
+	 * @param String
+	 * @return Array A numeric array of all metadata.
+	 */
+	function getMetadata($url) {
+		return array(
+			'Cache generated on ' . date('Y-m-d H:i:s T (O)')
+		);
+	}
 }
 

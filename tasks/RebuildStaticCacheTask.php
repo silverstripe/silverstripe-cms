@@ -114,7 +114,7 @@ class RebuildStaticCacheTask extends Controller {
 		
 		if (file_exists($cacheBaseDir.'/lock')) unlink($cacheBaseDir.'/lock');
 		
-		echo "\n\n== Done! ==";
+		echo "\n\n== Done! ==\n";
 	}
 	
 	public function show() {
