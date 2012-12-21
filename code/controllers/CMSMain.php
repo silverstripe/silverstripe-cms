@@ -938,15 +938,24 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		Versioned::reading_stage('Stage');
 
 		if(isset($descendantsRemoved)) {
-			$descRemoved = " and $descendantsRemoved descendants";
-			$descRemoved = ' ' . _t('CMSMain.DESCREMOVED', 'and {count} descendants', array('count' => $descendantsRemoved));
+			$descRemoved = ' ' . _t(
+				'CMSMain.DESCREMOVED', 
+				'and {count} descendants', 
+				array('count' => $descendantsRemoved)
+			);
 		} else {
 			$descRemoved = '';
 		}
 
 		$this->response->addHeader(
 			'X-Status',
-			rawurlencode(sprintf(_t('CMSMain.REMOVED', 'Deleted \'%s\'%s from live site'), $recordTitle, $descRemoved))
+			rawurlencode(
+				_t(
+					'CMSMain.REMOVED', 
+					'Deleted \'{title}\'{description} from live site',
+					array('title' => $recordTitle, 'description' => $descRemoved)
+				)
+			)
 		);
 		
 		// Even if the record has been deleted from stage and live, it can be viewed in "archive mode"
