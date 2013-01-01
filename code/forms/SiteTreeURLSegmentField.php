@@ -15,7 +15,7 @@ class SiteTreeURLSegmentField extends TextField {
 	/** 
 	 * @var string 
 	 */
-	protected $helpText, $urlPrefix;
+	protected $helpText, $baseLink;
 	
 	static $allowed_actions = array(
 		'suggest'
@@ -74,17 +74,20 @@ class SiteTreeURLSegmentField extends TextField {
 	/**
 	 * @param the url that prefixes the page url segment field
 	 */
-	public function setURLPrefix($url){
-		$this->urlPrefix = $url;
+	public function setBaseLink($url){
+		$this->baseLink = $url;
 	}
 	
 	/**
 	 * @return the url prefixes the page url segment field to show in template
 	 */
-	public function getURLPrefix(){
-		return $this->urlPrefix;
+	public function getBaseLink(){
+		return $this->baseLink;
 	}
 	
+	public function getShortenedBaseLink(){
+		return (strlen($this->baseLink) > 36) ? "..." .substr($this->baseLink, -32) : $this->baseLink;		
+	}
 
 	public function Type() {
 		return 'text urlsegment';
