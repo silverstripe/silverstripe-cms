@@ -1,7 +1,7 @@
 /** This file is the central collection of included modules, links to custom SCSS files, and any global SCSS variable definitions.  DO NOT ADD stylesheet rules to this file directly!  Note: By prefixing files with an underscore, they won't create individual CSS files. */
 /** ----------------------------- Core Compass Libraries ------------------------------ */
 /** ----------------------------- CMS Components ------------------------------ */
-/** Style  custom to the CMSMain admin interface. CMSMain extends the built in  SilverStripe admin section styles. As much as possible we want to use those  built in styles. If anything in this file can be implemented in a generic  way then it should be include in the admin scss files.  @package cms */
+/** Style  custom to the CMSMain admin interface. CMSMain extends the built in SilverStripe admin section styles. As much as possible we want to use those built in styles. If anything in this file can be implemented in a generic way then it should be include in the admin scss files.  @package cms */
 /** ------------------------------------------------------------------ Page History Section. ----------------------------------------------------------------- */
 #cms-page-history-versions tr.loading { color: #999; }
 #cms-page-history-versions tr.loading td:hover { cursor: none; }
@@ -21,13 +21,17 @@
 .cms-content-tools #cms-content-treeview .cms-tree a:hover > .text > .badge, .cms-content-tools #cms-content-treeview .cms-tree .jstree-clicked > .text > .badge { display: inline-block; }
 
 /** ------------------------------------------------------------------ URLSegment field ----------------------------------------------------------------- */
-.field.urlsegment.loading { background: url(../images/loading.gif) no-repeat 162px 8px; }
+.field.urlsegment .preview, .field.urlsegment .edit, .field.urlsegment .update, .field.urlsegment .cancel, .field.urlsegment .help { display: none; }
 .field.urlsegment .prefix, .field.urlsegment .preview { padding-top: 8px; display: inline-block; }
 .field.urlsegment .prefix { color: #777; }
-.field.urlsegment .cancel, .field.urlsegment .update, .field.urlsegment .edit { margin-left: 7px; }
-.field.urlsegment .help { margin-left: 0; }
+.field.urlsegment .edit { margin-left: 5px; }
+.field.urlsegment .cancel { margin-left: 0; text-decoration: none; }
+.field.urlsegment .cancel:hover { text-decoration: underline; }
+.field.urlsegment .help { margin: 10px 0 0 0; }
+.field.urlsegment.loading { background: url(../images/loading.gif) no-repeat 162px 8px; }
+.field.urlsegment.urlsegment-transformed .text.urlsegment { min-width: 140px; width: auto !important; max-width: auto !important; }
 
-#Form_EditForm #Title .update { margin-left: 7px; }
+.field.text .update { margin-left: 5px; }
 
 .cms .AssetAdmin .cms-content-fields { overflow: hidden; }
 .cms .AssetAdmin .cms-content-fields .cms-edit-form.AssetAdmin { overflow-y: auto; }

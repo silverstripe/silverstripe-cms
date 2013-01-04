@@ -17,40 +17,26 @@
 
 		/**
 		 * Class: .cms-edit-form input[name=Title]
-		 * 
+		 *
 		 * Input validation on the Title field
 		 */
 		$('.cms-edit-form input[name=Title]').entwine({
 			// Constructor: onmatch
 			onmatch : function() {
-				var self = this;
-
+				var self = this,
+					form = self.parents('form'),
+					live_link = $('input[name=LiveLink]', form);
+				
 				self.data('OrigVal', self.val());
 				
-				var form = self.parents('form');
-				var url_segment = $('.field.urlsegment', form).find(':text');
-				var live_link = $('input[name=LiveLink]', form);
+				this.bind('change', function(e) {
+					var origTitle = self.data('OrigVal');
+					var title = self.val();
+					self.data('OrigVal', title);
+					self.updateRelatedFields(title, origTitle);
+					self.updateBreadcrumbLabel(title);
+				});
 				
-				self._addActions();
-
-				if(url_segment.length > 0) {
-					this.bind('change', function(e) {
-						var origTitle = self.data('OrigVal');
-						var title = self.val();
-						self.data('OrigVal', title);
-
-						// Criteria for defining a "new" page
-						if ((url_segment.val().indexOf('new') == 0) && live_link.val() == '') {
-							self.updateURLSegment(title);
-						} else {
-							$('.update', self.parent()).show();
-						}
-
-						self.updateRelatedFields(title, origTitle);
-						self.updateBreadcrumbLabel(title);
-					});
-				}
-
 				this._super();
 			},
 			onunmatch: function() {
@@ -59,7 +45,7 @@
 			
 			/**
 			 * Function: updateRelatedFields
-			 * 
+			 *
 			 * Update the related fields if appropriate
 			 * (String) title The new title
 			 * (Stirng) origTitle The original title
@@ -77,57 +63,17 @@
 			},
 			
 			/**
-			 * Function: updateURLSegment
-			 * 
-			 * Update the URLSegment
-			 * (String) title
-			 */
-			updateURLSegment: function(title) {
-				var url_segment_field = $('.field.urlsegment', this.parents('form'));
-				var updateURLFromTitle = $('.update', this.parent());
-				url_segment_field.update(title);
-				if (updateURLFromTitle.is(':visible')) {
-					updateURLFromTitle.hide();
-				}
-			},
-			
-			/**
 			 * Function: updateBreadcrumbLabel
-			 * 
+			 *
 			 * Update the breadcrumb
 			 * (String) title
 			 */
 			updateBreadcrumbLabel: function(title) {
 				var pageID = $('.cms-edit-form input[name=ID]').val();
 				var panelCrumb = $('span.cms-panel-link.crumb');
-				if (title && title != "") {
+				if (title && title !== "") {
 					panelCrumb.text(title);
 				}
-			},
-			
-			/**
-			 * Function: _addActions
-			 *  
-			 * Utility to add update from title action
-			 * 
-			 */
-			_addActions: function() {
-				var self = this;
-				var	updateURLFromTitle;
-				
-				// update button
-				updateURLFromTitle = $('<button />', {
-					'class': 'update ss-ui-button-small',
-					'text': 'Update URL',
-					'click': function(e) {
-						e.preventDefault();
-						self.updateURLSegment(self.val());
-					}
-				});
-				
-				// insert elements
-				updateURLFromTitle.insertAfter(self);
-				updateURLFromTitle.hide();
 			}
 		});
 
@@ -149,7 +95,7 @@
 
 			/**
 			 * Function: updatePanelLabels
-			 * 
+			 *
 			 * Update the tree
 			 * (String) title
 			 */
@@ -158,7 +104,7 @@
 
 				// only update immediate text element, we don't want to update all the nested ones
 				var treeItem = $('.item:first', $('.cms-tree').find("[data-id='" + pageID + "']"));
-				if (title && title != "") {
+				if (title && title !== "") {
 					treeItem.text(title);
 				}
 			}
@@ -167,7 +113,7 @@
 	
 		/**
 		 * Class: .cms-edit-form .parentTypeSelector
-		 * 
+		 *
 		 * ParentID field combination - mostly toggling between
 		 * the two radiobuttons and setting the hidden "ParentID" field
 		 */
@@ -189,7 +135,7 @@
 	
 			/**
 			 * Function: _toggleSelection
-			 * 
+			 *
 			 * Parameters:
 			 *  (Event) e
 			 */
@@ -205,7 +151,7 @@
 			
 			/**
 			 * Function: _changeParentId
-			 * 
+			 *
 			 * Parameters:
 			 *  (Event) e
 			 */
@@ -218,7 +164,7 @@
 
 		/**
 		 * Class: .cms-edit-form #CanViewType, .cms-edit-form #CanEditType
-		 * 
+		 *
 		 * Toggle display of group dropdown in "access" tab,
 		 * based on selection of radiobuttons.
 		 */
@@ -239,7 +185,7 @@
 					}
 					else {
 						wrapper.removeClass('remove-splitter');
-						dropdown['hide']();	
+						dropdown['hide']();
 					}
 				});
 		
@@ -252,24 +198,24 @@
 			onunmatch: function() {
 				this._super();
 			}
-		});	
+		});
 
 		/**
 		 * Class: .cms-edit-form .Actions #Form_EditForm_action_print
-		 * 
+		 *
 		 * Open a printable representation of the form in a new window.
 		 * Used for readonly older versions of a specific page.
 		 */
 		$('.cms-edit-form .Actions #Form_EditForm_action_print').entwine({
 			/**
 			 * Function: onclick
-			 * 
+			 *
 			 * Parameters:
 			 *  (Event) e
 			 */
 			onclick: function(e) {
-				var printURL = $(this[0].form).attr('action').replace(/\?.*$/,'') 
-					+ '/printable/' 
+				var printURL = $(this[0].form).attr('action').replace(/\?.*$/,'')
+					+ '/printable/'
 					+ $(':input[name=ID]',this[0].form).val();
 				if(printURL.substr(0,7) != 'http://') printURL = $('base').attr('href') + printURL;
 
@@ -281,14 +227,14 @@
 
 		/**
 		 * Class: .cms-edit-form .Actions #Form_EditForm_action_rollback
-		 * 
+		 *
 		 * A "rollback" to a specific version needs user confirmation.
 		 */
 		$('.cms-edit-form .Actions #Form_EditForm_action_rollback').entwine({
 			
 			/**
 			 * Function: onclick
-			 * 
+			 *
 			 * Parameters:
 			 *  (Event) e
 			 */
@@ -296,7 +242,7 @@
 				var form = this.parents('form:first'), version = form.find(':input[name=Version]').val(), message = '';
 				if(version) {
 					message = ss.i18n.sprintf(
-						ss.i18n._t('CMSMain.RollbackToVersion'), 
+						ss.i18n._t('CMSMain.RollbackToVersion'),
 						version
 					);
 				} else {

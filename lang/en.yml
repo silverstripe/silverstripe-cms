@@ -369,6 +369,9 @@ en:
     many_many_LinkTracking: 'Link Tracking'
   SiteTreeURLSegmentField:
     HelpChars: ' Special characters are automatically converted or removed.'
+    Edit: 'Edit'
+    OK: 'OK'
+    Cancel: 'Cancel'
   StaticExporter:
     BASEURL: 'Base URL'
     EXPORTTO: 'Export to that folder'

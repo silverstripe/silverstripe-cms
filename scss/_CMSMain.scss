@@ -1,7 +1,7 @@
 /**
- * Style  custom to the CMSMain admin interface. CMSMain extends the built in 
- * SilverStripe admin section styles. As much as possible we want to use those 
- * built in styles. If anything in this file can be implemented in a generic 
+ * Style  custom to the CMSMain admin interface. CMSMain extends the built in
+ * SilverStripe admin section styles. As much as possible we want to use those
+ * built in styles. If anything in this file can be implemented in a generic
  * way then it should be include in the admin scss files.
  *
  * @package cms
@@ -54,7 +54,7 @@
 }
 
 // Hide certain elements when shown in "sidebar mode"
-.cms-content-tools { 
+.cms-content-tools {
 	#cms-content-treeview {
 		.cms-content-toolbar {
 			border-bottom:none;
@@ -93,30 +93,59 @@
  * URLSegment field
  * ----------------------------------------------------------------- */
 .field.urlsegment {
-
-	&.loading {
-		background: url(../images/loading.gif) no-repeat 162px 8px;
+	
+	.preview,
+	.edit,
+	.update,
+	.cancel,
+	.help {
+		display: none;
 	}
-
+	
 	.prefix,
 	.preview {
 		padding-top: 8px;
 		display: inline-block;
 	}
-
+	
 	.prefix {
 		color: #777;
 	}
-
-	.cancel, .update, .edit {
-		margin-left: 7px;
+	
+	.edit {
+		margin-left: 5px;
 	}
-
-	.help {
+	
+	.cancel {
 		margin-left: 0;
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
 	}
+	
+	.help {
+		margin: 10px 0 0 0;
+	}
+	
+	&.loading {
+		background: url(../images/loading.gif) no-repeat 162px 8px;
+	}
+	
+	&.urlsegment-transformed {
+		.text.urlsegment {
+			min-width: 140px;
+			width: auto !important;
+			max-width: auto !important;
+		}
+	}
+	
 }
 
-#Form_EditForm #Title .update {
-	margin-left: 7px;
+.field.text {
+	
+	.update {
+		margin-left: 5px;
+	}
+	
 }
