@@ -58,7 +58,7 @@ DraggableSeparator.prototype = {
 
 function fixRightWidth() {
 	if(!$('right')) return;
-	
+
 	var contentPanel = jQuery('#contentPanel');
 
 	// Absolutely position all the elements
@@ -209,8 +209,8 @@ window.onresize = function(init) {
 
 	if(typeof fitToParent == 'function') {
 		if($('Form_EditForm')) fitToParent('Form_EditForm', 4);
-		if($('Form_AddForm')) fitToParent('Form_AddForm', 4);	
-	}
+		if($('Form_AddForm')) fitToParent('Form_AddForm', 4);
+			}
 	if(typeof fixHeight_left == 'function') fixHeight_left();
 	if(typeof fixRightWidth == 'function') fixRightWidth();
 
@@ -299,7 +299,6 @@ function prepareAjaxActions(actions, formName, tabName) {
 				btn.attr('disabled', 'disabled').addClass('loading');
 				statusMessage('...');
 				Ajax.SubmitForm(this.ownerForm, this.name, {
-					onSuccess: Ajax.Evaluator,
 					onFailure: function() {
 						btn.removeAttr('disabled').removeClass('loading');
 						ajaxErrorHandler.apply(arguments);
@@ -333,7 +332,6 @@ function ajaxSubmitForm(automated, callAfter, form, action, verb) {
 		statusMessage(verb + '...', '', true);
 
 		var success = function(response) {
-			Ajax.Evaluator(response);
 			if(callAfter) callAfter();
 		}
 
@@ -364,10 +362,6 @@ function ajaxSubmitFieldSet(href, fieldSet, extraData) {
 	// Send request
 	new Ajax.Request(href, {
 		method : 'post', postBody : data,
-		onSuccess : function(response) {
-			//alert(response.responseText);
-			Ajax.Evaluator(response);
-		},
 		onFailure : function(response) {
 			alert(response.responseText);
 			//errorMessage('Error: ', response);
@@ -382,7 +376,6 @@ function ajaxLink(href) {
 	// Send request
 	new Ajax.Request(href + (href.indexOf("?") == -1 ? "?" : "&") + "ajax=1", {
 		method : 'get',
-		onSuccess : Ajax.Evaluator,
 		onFailure : ajaxErrorHandler
 	});
 }

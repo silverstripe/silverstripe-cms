@@ -23,6 +23,5 @@
 	"extra": {
 		"branch-alias": {
 			"dev-post-2.4": "2.5.x-dev"
-		}
 	}
-}
+}}

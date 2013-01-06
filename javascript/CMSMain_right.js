@@ -10,7 +10,6 @@ function action_revert_right() {
 	var btn = jQuery('#Form_EditForm_action_revert');
 	btn.val(ss.i18n._t('CMSMAIN.RESTORING')).addClass('loading').attr('disabled', 'disabled');
 	Ajax.SubmitForm('Form_EditForm', 'action_revert', {
-		onSuccess : Ajax.Evaluator,
 		onFailure : function(response) {
 			btn.removeClass('loading').removeAttr('disabled');
 			errorMessage(ss.i18n._t('CMSMAIN.ERRORREVERTING'), response);

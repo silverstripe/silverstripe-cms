@@ -833,13 +833,14 @@ JS;
 	public function addTreeNodeJS($page, $select = false) {
 		$parentID = (int)$page->ParentID;
 		$title = Convert::raw2js($page->TreeTitle());
-		$response = <<<JS
+		$js = <<<JS
 var newNode = $('sitetree').createTreeNode($page->ID, "$title", "$page->class");
 var parentNode = $('sitetree').getTreeNodeByIdx($parentID); 
 if(parentNode) parentNode.appendTreeNode(newNode);
 JS;
-		$response .= ($select ? "newNode.selectTreeNode();\n" : "") ;
-		return $response;
+		$js .= ($select ? "newNode.selectTreeNode();\n" : "") ;
+		FormResponse::add($js);
+		return FormResponse::respond();
 	}
 	/**
 	 * Returns a javascript snippet to remove a tree node for the given page, if it exists.
@@ -851,7 +852,7 @@ JS;
 		if (!$page || (!isset($page->ID) && !isset($page->OldID))) return false;
 		
 		$id = $page->ID ? $page->ID : $page->OldID;
-		$response = <<<JS
+		$js = <<<JS
 var node = $('sitetree').getTreeNodeByIdx($id);
 if(node && node.parentTreeNode) node.parentTreeNode.removeTreeNode(node);
 $('Form_EditForm').closeIfSetTo($id);
@@ -862,7 +863,8 @@ JS;
 			$this->setCurrentPageID(null);
 		}
 		
-		return $response;
+		FormResponse::add($js);
+		return FormResponse::respond();
 	}
 
 	/**
