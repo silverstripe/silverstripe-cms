@@ -1666,24 +1666,36 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
         // We merge all into a regular SS_List, because DataList doesn't support merge
         if($contentLinks = $this->BackLinkTracking()) {
-            foreach($contentLinks as $item) $item->DependentLinkType = 'Content link';
-			$items->merge($contentLinks);
+        	$linkList = new ArrayList();
+            foreach($contentLinks as $item) {
+            	$item->DependentLinkType = 'Content link';
+            	$linkList->push($item);
+            }
+			$items->merge($linkList);
         }
 		
 		// Virtual pages
 		if($includeVirtuals) {
 			$virtuals = $this->VirtualPages();
 			if($virtuals) {
-				foreach($virtuals as $item) $item->DependentLinkType = 'Virtual page';
-				$items->merge($virtuals);
+				$virtualList = new ArrayList();
+				foreach($virtuals as $item) {
+					$item->DependentLinkType = 'Virtual page';
+					$virtualList->push($item);
+				}
+				$items->merge($virtualList);
 			}
 		}
 
 		// Redirector pages
 		$redirectors = DataObject::get("RedirectorPage", "\"RedirectorPage\".\"RedirectionType\" = 'Internal' AND \"LinkToID\" = $this->ID");
 		if($redirectors) {
-			foreach($redirectors as $item) $item->DependentLinkType = 'Redirector page';
-			$items->merge($redirectors);
+			$redirectorList = new ArrayList();
+			foreach($redirectors as $item) {
+				$item->DependentLinkType = 'Redirector page';
+				$redirectorList->push($item);
+			}
+			$items->merge($redirectorList);
 		}
 
 		if(class_exists('Subsite')) Subsite::disable_subsite_filter($origDisableSubsiteFilter);
@@ -1793,6 +1805,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				$dependentPages
 			);
 			$dependentTable->getConfig()->getComponentByType('GridFieldDataColumns')
+				->setDisplayFields($dependentColumns)
 				->setFieldFormatting(array(
 				'Title' => '<a href=\"admin/pages/edit/show/$ID\">$Title</a>',
 				'AbsoluteLink' => '<a href=\"$value\">$value</a>',
