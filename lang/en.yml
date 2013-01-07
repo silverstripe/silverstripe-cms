@@ -320,6 +320,8 @@ en:
     HTMLEDITORTITLE: Content
     INHERIT: 'Inherit from parent page'
     LASTUPDATED: 'Last Updated'
+    LASTSAVED: 'Last saved'
+    LASTPUBLISHED: 'Last published'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 'Navigation label'
     METADESC: 'Meta Description'
