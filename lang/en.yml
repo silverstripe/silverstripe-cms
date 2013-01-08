@@ -363,6 +363,7 @@ en:
     VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
     VIEW_DRAFT_CONTENT: 'View draft content'
     VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
+    VIRTUALPAGEWARNING: 'This virtual page cannot be published until you set a page to link to!'
     Viewers: 'Viewers Groups'
     Visibility: Visibility
     has_one_Parent: 'Parent Page'

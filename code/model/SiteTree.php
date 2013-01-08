@@ -1915,6 +1915,19 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						$this->fieldLabel('ClassName'), 
 						$this->getClassDropdown()
 					),
+					$virtualPageWarning = new LiteralField(
+						'VirtualPageWarning',
+						'<div class="message notice">' .
+							_t('SITETREE.VIRTUALPAGEWARNING',
+								'<p>This virtual page cannot be published until you set ' .
+								'a page to link to!</p>') .
+						'</div>'
+					),
+					$copyContentFromField = new TreeDropdownField(
+						"CopyContentFromID", 
+						_t('VirtualPage.CHOOSE', "Choose a page to link to"), 
+						'SiteTree'
+					),
 					$parentTypeSelector = new CompositeField(
 						new OptionsetField("ParentType", _t("SiteTree.PAGELOCATION", "Page location"), array(
 							"root" => _t("SiteTree.PARENTTYPE_ROOT", "Top-level page"),
@@ -1951,6 +1964,15 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				)
 			)
 		);
+
+		// CopyContentFromID and VirtualPageWarning are specific to Virtual pages
+		if ($this->ClassName != 'VirtualPage') {
+			$fields->removeByName('CopyContentFromID');
+			$fields->removeByName('VirtualPageWarning');
+		}
+		if ($this->ClassName == 'VirtualPage' && $this->CopyContentFromID) {
+			$fields->removeByName('VirtualPageWarning');
+		}
 		
 		$visibility->setTitle($this->fieldLabel('Visibility'));
 		
