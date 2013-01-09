@@ -212,8 +212,12 @@ class SilverStripeNavigatorItem_CMSLink extends SilverStripeNavigatorItem {
 	}
 	
 	public function canView($member = null) {
-		// Don't show in CMS
-		return !(Controller::curr() instanceof CMSMain);
+		return (
+			// Don't show in CMS
+			!(Controller::curr() instanceof CMSMain)
+			// Don't follow redirects in preview, they break the CMS editing form
+			&& !($this->record instanceof RedirectorPage)
+		);
 	}
 
 }
@@ -246,7 +250,12 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
 	}
 	
 	public function canView($member = null) {
-		return ($this->record->hasExtension('Versioned') && $this->getDraftPage());
+		return (
+			$this->record->hasExtension('Versioned') 
+			&& $this->getDraftPage()
+			// Don't follow redirects in preview, they break the CMS editing form
+			&& !($this->record instanceof RedirectorPage)
+		);
 	}
 	
 	public function isActive() {
@@ -294,7 +303,12 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem {
 	}
 	
 	public function canView($member = null) {
-		return ($this->record->hasExtension('Versioned') && $this->getLivePage());
+		return (
+			$this->record->hasExtension('Versioned') 
+			&& $this->getLivePage()
+			// Don't follow redirects in preview, they break the CMS editing form
+			&& !($this->record instanceof RedirectorPage)
+		);
 	}
 	
 	public function isActive() {
@@ -340,7 +354,12 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 	}
 	
 	public function canView($member = null) {
-		return ($this->record->hasExtension('Versioned') && $this->isArchived());
+		return (
+			$this->record->hasExtension('Versioned') 
+			&& $this->isArchived()
+			// Don't follow redirects in preview, they break the CMS editing form
+			&& !($this->record instanceof RedirectorPage)
+		);
 	}
 	
 	public function isActive() {
