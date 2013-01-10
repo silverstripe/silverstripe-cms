@@ -1,4 +1,4 @@
-<span class="prefix">$URLPrefix</span><input $AttributesHTML />
+<a class="prefix" href="$ParentLink">$URLPrefix</a><input $AttributesHTML />
 <% if HelpText %>
 <p class="help">$HelpText</p>
 <% end_if %>
