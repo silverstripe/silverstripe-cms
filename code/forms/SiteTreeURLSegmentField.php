@@ -30,7 +30,8 @@ class SiteTreeURLSegmentField extends TextField {
 	 * @return String
 	 */
 	public function ParentLink() {
-		return dirname($this->getPage()->Link())."/";
+		//do we need \ for windows?
+		return rtrim(dirname($this->getPage()->Link()), '/')."/";
 	}
 
 	function Field($properties = array()) {
