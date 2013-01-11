@@ -94,8 +94,12 @@
  * ----------------------------------------------------------------- */
 .field.urlsegment {
 
-	&.loading {
-		background: url(../images/loading.gif) no-repeat 162px 8px;
+	.preview,
+	.edit,
+	.update,
+	.cancel,
+	.help {
+		display: none;
 	}
 
 	.prefix,
@@ -108,15 +112,40 @@
 		color: #777;
 	}
 
-	.cancel, .update, .edit {
-		margin-left: 7px;
+	.edit {
+		margin-left: 5px;
+	}
+
+	.cancel {
+		margin-left: 0;
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 
 	.help {
-		margin-left: 0;
+		margin: 10px 0 0 0;
 	}
+
+	&.loading {
+		background: url(../images/loading.gif) no-repeat 162px 8px;
+	}
+
+	&.urlsegment-transformed {
+		.text.urlsegment {
+			min-width: 140px;
+			width: auto !important;
+			max-width: auto !important;
+		}
+	}
+
 }
 
-#Form_EditForm #Title .update {
-	margin-left: 7px;
+.field.text {
+
+	.update {
+		margin-left: 5px;
+	}
+
 }
