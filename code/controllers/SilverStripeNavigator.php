@@ -246,7 +246,7 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
 	}
 	
 	public function getLink() {
-		return Controller::join_links($this->record->AbsoluteLink(), '?stage=Stage');
+		return Controller::join_links($this->record->PreviewLink(), '?stage=Stage');
 	}
 	
 	public function canView($member = null) {
@@ -299,7 +299,7 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem {
 	}
 	
 	public function getLink() {
-		return Controller::join_links($this->record->AbsoluteLink(), '?stage=Live');
+		return Controller::join_links($this->record->PreviewLink(), '?stage=Live');
 	}
 	
 	public function canView($member = null) {
@@ -333,7 +333,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 	static $priority = 40;
 
 	public function getHTML() {
-			$this->recordLink = $this->record->AbsoluteLink();
+			$this->recordLink = $this->record->PreviewLink();
 			return "<a class=\"ss-ui-button\" href=\"$this->recordLink?archiveDate={$this->record->LastEdited}\" target=\"_blank\">". _t('ContentController.ARCHIVEDSITE', 'Preview version') ."</a>";
 	}
 
@@ -350,7 +350,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 	}
 	
 	public function getLink() {
-		return $this->record->AbsoluteLink() . '?archiveDate=' . $this->record->LastEdited;
+		return $this->record->PreviewLink() . '?archiveDate=' . $this->record->LastEdited;
 	}
 	
 	public function canView($member = null) {

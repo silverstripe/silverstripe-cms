@@ -412,6 +412,18 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			return Director::absoluteURL($this->Link($action));
 		}
 	}
+
+	/**
+	 * Base link used for previewing. Defaults to absolute URL,
+	 * in order to account for domain changes, e.g. on multi site setups.
+	 * Does not contain hints about the stage, see {@link SilverStripeNavigator} for details.
+	 * 
+	 * @param string $action See {@link Link()}
+	 * @return string
+	 */
+	public function PreviewLink($action = null) {
+		return $this->AbsoluteLink($action);
+	}
 	
 	/**
 	 * Return the link for this {@link SiteTree} object relative to the SilverStripe root.
