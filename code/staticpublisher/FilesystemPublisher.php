@@ -142,7 +142,19 @@ class FilesystemPublisher extends StaticPublisher {
 		}
 	}
 	
+	/**
+ 	 * Uses {@link Director::test()} to perform in-memory HTTP requests
+ 	 * on the passed-in URLs.
+ 	 * 
+ 	 * @param  array $urls Relative URLs 
+ 	 * @return array Result, keyed by URL. Keys: 
+ 	 *               - "statuscode": The HTTP status code
+ 	 *               - "redirect": A redirect location (if applicable)
+ 	 *               - "path": The filesystem path where the cache has been written
+ 	 */
 	public function publishPages($urls) { 
+		$result = array();
+
 		// Do we need to map these?
 		// Detect a numerically indexed arrays
 		if (is_numeric(join('', array_keys($urls)))) $urls = $this->urlsToPaths($urls);
@@ -167,9 +179,10 @@ class FilesystemPublisher extends StaticPublisher {
 		$files = array();
 		$i = 0;
 		$totalURLs = sizeof($urls);
-
 		foreach($urls as $url => $path) {
-			
+			$origUrl = $url;
+			$result[$origUrl] = array('statuscode' => null, 'redirect' => null, 'path' => null);
+
 			if(self::$static_base_url) Director::setBaseURL(self::$static_base_url);
 			$i++;
 
@@ -189,12 +202,18 @@ class FilesystemPublisher extends StaticPublisher {
 			if(Director::is_relative_url($url)) $url = Director::absoluteURL($url);
 			$response = Director::test(str_replace('+', ' ', $url));
 			
+ 			if($response) {
+ 				$result[$origUrl]['statuscode'] = $response->getStatusCode();
+ 			}
+
 			Requirements::clear();
 			
 			singleton('DataObject')->flushCache();
 
-			//skip any responses with a 404 status code. We don't want to turn those into statically cached pages
-			if (!$response || $response->getStatusCode() == '404') continue;
+  			//skip any responses with a 404 status code. We don't want to turn those into statically cached pages
+ 			if (!$response || $response->getStatusCode() == '404') {
+ 				continue;
+ 			}
 
 			// Generate file content			
 			// PHP file caching will generate a simple script from a template
@@ -231,7 +250,7 @@ class FilesystemPublisher extends StaticPublisher {
 				);
 			}
 			
-			$files[] = array(
+			$files[$origUrl] = array(
 				'Content' => $content,
 				'Folder' => dirname($path).'/',
 				'Filename' => basename($path),
@@ -268,17 +287,22 @@ class FilesystemPublisher extends StaticPublisher {
 		if($this->fileExtension == 'php') SSViewer::setOption('rewriteHashlinks', true); 
 
 		$base = BASE_PATH . "/$this->destFolder";
-		foreach($files as $file) {
+		foreach($files as $origUrl => $file) {
 			Filesystem::makeFolder("$base/$file[Folder]");
+
+			$path = "$base/$file[Folder]$file[Filename]";
+			$result[$origUrl]['path'] = $path;
 			
 			if(isset($file['Content'])) {
-				$fh = fopen("$base/$file[Folder]$file[Filename]", "w");
+				$fh = fopen($path, "w");
 				fwrite($fh, $file['Content']);
 				fclose($fh);
 			} else if(isset($file['Copy'])) {
-				copy($file['Copy'], "$base/$file[Folder]$file[Filename]");
+				copy($file['Copy'], $path);
 			}
 		}
+
+		return $result;
 	}
 	
 	/**
