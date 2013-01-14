@@ -263,7 +263,7 @@ class SS_Report extends ViewableData {
 			new GridFieldPrintButton(),
 			new GridFieldExportButton()
 		);
-		$gridField = new GridField('Report',$this->title(), $items, $gridFieldConfig);
+		$gridField = new GridField('Report',false, $items, $gridFieldConfig);
 		$columns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
 		$displayFields = array();
 		$fieldCasting = array();
