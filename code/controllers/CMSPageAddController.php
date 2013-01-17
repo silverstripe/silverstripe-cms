@@ -19,7 +19,7 @@ class CMSPageAddController extends CMSPageEditController {
 		$pageTypes = array();
 		foreach($this->PageTypes() as $type) {
 			$html = sprintf('<span class="page-icon class-%s"></span><strong class="title">%s</strong><span class="description">%s</span>',
-				$type->getField('Title'),
+				$type->getField('ClassName'),
 				$type->getField('AddAction'),
 				$type->getField('Description')
 			);
