@@ -321,8 +321,10 @@
 				this._super(e);
 			},
 			onunmatch: function(e) {
-				this.find('button[name=action_save]').button('option', 'showingAlternate', false);
-				this.find('button[name=action_publish]').button('option', 'showingAlternate', false);
+				if(this.data('button')) {
+					this.find('button[name=action_save]').button('option', 'showingAlternate', false);
+					this.find('button[name=action_publish]').button('option', 'showingAlternate', false);
+				}
 				this._super(e);
 			}
 		});
