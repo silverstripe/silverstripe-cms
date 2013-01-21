@@ -94,7 +94,7 @@ en:
     PUBALLFUN2: "Pressing this button will do the equivalent of going to every page and pressing \"publish\".  It's\n				intended to be used after there have been massive edits of the content, such as when the site was\n				first built."
     PUBPAGES: 'Done: Published {count} pages'
     PageAdded: 'Successfully created page'
-    REMOVED: 'Deleted ''%s''%s from live site'
+    REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: 'Removed ''%s'' from the draft site'
     RESTORE: Restore
@@ -320,6 +320,8 @@ en:
     HTMLEDITORTITLE: Content
     INHERIT: 'Inherit from parent page'
     LASTUPDATED: 'Last Updated'
+    LASTSAVED: 'Last saved'
+    LASTPUBLISHED: 'Last published'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 'Navigation label'
     METADESC: 'Meta Description'

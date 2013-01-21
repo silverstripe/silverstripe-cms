@@ -167,8 +167,8 @@ pl:
     ARCHIVEDSITE: 'Podgląd wersji'
     ARCHIVEDSITEFROM: 'Zarchiwizowana witryna od'
     CMS: 'System Zarządzania Treścią'
-    DRAFTSITE: 'Szkic witryny'
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Musisz zalogować się za pomocą swojego hasła do CMSa, aby obejrzeć nieopublikowaną i zarchiwizowaną treść. <a href="%s">Kliknij tutaj aby powrócić do opublikowanej strony.</a>'
+    DRAFTSITE: 'Strona nieopublikowana'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Musisz zalogować się za pomocą swojego hasła do CMSa, aby obejrzeć brudnopis i zarchiwizowaną treść. <a href="%s">Kliknij tutaj aby powrócić do opublikowanej strony.</a>'
     Email: 'Adres e-mail'
     INSTALL_SUCCESS: 'Instalacja przebiegła pomyślnie'
     InstallFilesDeleted: 'Pliki instalacyjne zostały pomyślnie usunięte'
@@ -239,13 +239,13 @@ pl:
     DESCRIPTION: 'Przekierowuje do wskazanej wewnętrznej strony'
     HASBEENSETUP: 'Strona przekierowująca została ustawiona bez celu, do którego ma przekierowywać.'
     HEADER: 'Ta strona przeniesie użytkowników na inną stronę'
-    OTHERURL: 'Adres URL innej strony'
+    OTHERURL: 'Inny adres URL strony'
     PLURALNAME: 'Strony przekierowujące'
     REDIRECTTO: 'Przenieś do'
     REDIRECTTOEXTERNAL: 'Inna strona'
-    REDIRECTTOPAGE: 'Strona na Twojej witrynie'
+    REDIRECTTOPAGE: 'Strona na Twojej stronie www'
     SINGULARNAME: 'Strona przekierowująca'
-    YOURPAGE: 'Strona na Twojej witrynie'
+    YOURPAGE: 'Strona na Twojej stronie www'
   ReportAdmin:
     MENUTITLE: Raporty
     ReportTitle: Tytuł
@@ -275,7 +275,7 @@ pl:
   SiteConfig:
     DEFAULTTHEME: '(Użyj domyślnego szablonu)'
     EDITHEADER: 'Kto może edytować strony tego serwisu?'
-    EDIT_PERMISSION: 'Zarządzanie konfiguracją serwisu'
+    EDIT_PERMISSION: 'Zarządzanie konfiguracją strony'
     EDIT_PERMISSION_HELP: 'Możliwość edycji globalnych ustawień bezpieczeństwa/uprawnień do stron pierwszego poziomu.'
     PLURALNAME: 'Konfiguracje strony'
     SINGULARNAME: 'Konfiguracja strony'
@@ -309,8 +309,8 @@ pl:
     DEFAULTABOUTTITLE: 'O nas'
     DEFAULTCONTACTCONTENT: '<p>Możesz wypełnić tę stronę własną treścią, usunąć ją i tworzyć własne strony.<br /></p>'
     DEFAULTCONTACTTITLE: Kontakt
-    DEFAULTHOMECONTENT: '<p>Witaj w SilverStripe! To jest domyślna strona główna. Możesz ją edytować, otwierając <a href="admin/">CMS</a>. Możesz również otworzyć <a href="http://doc.silverstripe.com">dokumentację dla developerów</a>, lub rozpocząć <a href="http://doc.silverstripe.com/doku.php?id=tutorials">jeden z samouczków.</a></p>'
-    DEFAULTHOMETITLE: 'Strona główna'
+    DEFAULTHOMECONTENT: '<p>Witaj w SilverStripe! To jest domyślna strona domowa. Możesz ją edytować, otwierając <a href="admin/">CMS</a>. Możesz teraz otworzyć <a href="http://doc.silverstripe.com">dokumentację dla developerów</a>, lub rozpocząć <a href="http://doc.silverstripe.com/doku.php?id=tutorials">jeden z samouczyków.</a></p>'
+    DEFAULTHOMETITLE: 'Strona Domowa'
     DELETEDPAGEHELP: 'Strona nie jest już opublikowana'
     DELETEDPAGESHORT: Usunięty
     DEPENDENT_NOTE: 'Poniższe strony są zależne od tej (łącznie z wirtualnymi stronami, stronami przekierowującymi oraz stronami z treścią).'

@@ -223,6 +223,14 @@ class FilesystemPublisher extends StaticPublisher {
 				}
 			}
 			
+			if(StaticPublisher::$include_caching_metadata) {
+				$content = str_replace(
+					'</html>', 
+					sprintf("</html>\n\n<!-- %s -->", implode(" ", $this->getMetadata($url))),
+					$content
+				);
+			}
+			
 			$files[] = array(
 				'Content' => $content,
 				'Folder' => dirname($path).'/',

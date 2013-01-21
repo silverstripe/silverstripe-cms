@@ -194,16 +194,16 @@ lt:
     ERRORFILEPROBLEM: 'Klaida atveriant rašymui bylą "{filename}". Prašome patikrinti bylos leidimus.'
     PLURALNAME: 'Error Pags'
     SINGULARNAME: 'Error Page'
-    400: '400 - Bloga užklausa'
-    401: '401 - Leidimas neduotas'
-    403: '403 - Uždrausta'
-    404: '404 - Puslapis nerastas'
-    405: '405 - Neleistinas būdas'
+    400: '400 - bloga užklausa'
+    401: '401 - neautorizuota'
+    403: '403 - uždrausta'
+    404: '404 - nerasta'
+    405: '405 - neleistinas būdas'
     406: '406 - nepriimtina'
     407: '407 - reikalinga proxy autentifikacija'
     408: '408 - baigėsi užklausai skirtas laikas'
-    409: '409 - Konfliktas'
-    410: '410 - Nebėra'
+    409: '409 - konfliktas'
+    410: '410 - gone'
     411: '411 - reikalingas ilgis'
     412: '412 - išankstinė klaida'
     413: '413 - per didelė užklausa'
@@ -301,7 +301,7 @@ lt:
     BUTTONCANCELDRAFTDESC: 'Ištrinti juodraštį ir grįžti prie šiuo metu publikuojamo puslapio'
     BUTTONSAVEPUBLISH: 'Išsaugoti ir publikuoti'
     BUTTONUNPUBLISH: Nebepublikuoti
-    BUTTONUNPUBLISHDESC: 'Pašalinti šį puslapį iš publikuojamos svetainės'
+    BUTTONUNPUBLISHDESC: 'Pašalinti šį puslapį iš publikuojamų'
     CREATED: 'Sukūrimo data'
     Comments: Komentarai
     Content: Turinys
@@ -344,8 +344,8 @@ lt:
     PARENTID: 'Tėvinis puslapis'
     PARENTTYPE: 'Puslapio vieta'
     PARENTTYPE_ROOT: 'Pagrindinis puslapis'
-    PARENTTYPE_SUBPAGE: 'Puslapis po tėviniu puslapiu'
-    PERMISSION_GRANTACCESS_DESCRIPTION: 'Valdyti turinio redagavimo teises'
+    PARENTTYPE_SUBPAGE: 'Puslapis išplečiantis pagrindinį (pasirinkite žemiau)'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Kontroliuoti kurios grupės gali matyti ir redaguoti specialius puslapius'
     PERMISSION_GRANTACCESS_HELP: 'Leisti nustatyti puslapiui galiojančias specifines teises, "Puslapiai" skiltyje.'
     PLURALNAME: Puslapiai
     PageTypNotAllowedOnRoot: 'Puslapio tipas "{type}" neleidžiamas šakniniame lygmenyje'
@@ -355,8 +355,8 @@ lt:
     REMOVE_INSTALL_WARNING: 'Perspėjimas: Saugumo sumetimais Jūs turėtumėte pašalinti install.php bylą iš SilverStripe.'
     REORGANISE_DESCRIPTION: 'Gali perorganizuoti svetainę'
     REORGANISE_HELP: 'Perrikiuoti puslapius naudojant Tempti/Mesti būdą.'
-    SHOWINMENUS: 'Ar įtraukti į rodomą meniu?'
-    SHOWINSEARCH: 'Rodyti paieškoje?'
+    SHOWINMENUS: 'Ar rodyti meniu?'
+    SHOWINSEARCH: 'Ar rodyti paieškoje'
     SINGULARNAME: Puslapis
     TABBEHAVIOUR: Elgsena
     TABCONTENT: Turinys
@@ -364,7 +364,7 @@ lt:
     TOPLEVEL: 'Svetainės turinys (aukščiausias lygmuo)'
     TOPLEVELCREATORGROUPS: 'Aukščiausio lygmens kūrėjai'
     URLSegment: 'URL dalis'
-    VIEWERGROUPS: 'Lankytojų grupės'
+    VIEWERGROUPS: 'Lankytojų grupė'
     VIEW_ALL_DESCRIPTION: 'Gali peržiūrėti bet kurį puslapį svetainėje, apeinant puslapio peržiūros teises'
     VIEW_ALL_HELP: 'Galimybė peržiūrėti bet kurį puslapį svetainėje, nepriklausomai nuo "Priėjimo/Leidimų" skyriaus nustatymų. Būtinas leidimas "Prieiti prie svetainės turinio"'
     VIEW_DRAFT_CONTENT: 'Peržiūrėti juodraščio turinį'

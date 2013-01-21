@@ -314,14 +314,17 @@
 		 * Enable save buttons upon detecting changes to content.
 		 * "changed" class is added by jQuery.changetracker.
 		 */
-		$('.cms-edit-form .changed').entwine({
+		$('.cms-edit-form.changed').entwine({
 			onmatch: function(e) {
-				var form = this.closest('.cms-edit-form');
-				form.find('button[name=action_save]').button('option', 'showingAlternate', true);
-				form.find('button[name=action_publish]').button('option', 'showingAlternate', true);
+				this.find('button[name=action_save]').button('option', 'showingAlternate', true);
+				this.find('button[name=action_publish]').button('option', 'showingAlternate', true);
 				this._super(e);
 			},
 			onunmatch: function(e) {
+				var saveButton = this.find('button[name=action_save]');
+				if(saveButton.data('button')) saveButton('option', 'showingAlternate', false);
+				var publishButton = this.find('button[name=action_publish]');
+				if(publishButton.data('button')) publishButton('option', 'showingAlternate', false);
 				this._super(e);
 			}
 		});

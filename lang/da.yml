@@ -121,28 +121,28 @@ da:
   CMSPageEditController:
     MENUTITLE: 'Rediger side'
   CMSPageHistoryController:
-    COMPAREMODE: 'Sammenligningstilstand (vælg to)'
+    COMPAREMODE: 'Sammenlign (Vælg to)'
     COMPAREVERSIONS: 'Sammenlign versioner'
     COMPARINGVERSION: 'Sammenligner versionerne {version1} og {version2}.'
     MENUTITLE: Historik
     REVERTTOTHISVERSION: 'Genskab denne version'
-    SHOWUNPUBLISHED: 'Vis versioner der ikke er udgivne'
+    SHOWUNPUBLISHED: 'Vis ikke publicerede versioner'
     SHOWVERSION: 'Vis version'
     VIEW: Visning
     VIEWINGVERSION: 'Lige nu vises version {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Forfatter
-    NOTPUBLISHED: 'Ikke udgivet'
+    NOTPUBLISHED: 'Ikke publiseret'
     PUBLISHER: Udgiver
     UNKNOWN: Ukendt
     WHEN: Hvornår
   CMSPageSettingsController:
-    MENUTITLE: 'Rediger side'
+    MENUTITLE: 'Rediger siden'
   CMSPagesController:
-    GalleryView: Gallerivisning
-    ListView: Listevisning
+    GalleryView: 'Galleri visning'
+    ListView: 'Liste visning'
     MENUTITLE: Sider
-    TreeView: Trævisning
+    TreeView: 'Træ visning'
   CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: 'Træk&slip'
     MULTISELECT: Multivalg
@@ -239,13 +239,13 @@ da:
     DESCRIPTION: 'Omdirigerer til en anden intern side'
     HASBEENSETUP: 'En omdirigeringsside er blevet sat op, uden et sted at omdirigere til.'
     HEADER: 'Denne side omdirigerer besøgende til en anden side'
-    OTHERURL: 'Andet websteds URL'
+    OTHERURL: 'Anden hjemmeside URL'
     PLURALNAME: 'Videresendende sider'
     REDIRECTTO: 'Omdiriger til'
-    REDIRECTTOEXTERNAL: 'Et andet websted'
-    REDIRECTTOPAGE: 'En side på dit websted'
+    REDIRECTTOEXTERNAL: 'En anden hjemmeside'
+    REDIRECTTOPAGE: 'En side på din hjemmeside'
     SINGULARNAME: 'Viderestillende side'
-    YOURPAGE: 'Side på dit websted'
+    YOURPAGE: 'Side på din hjemmeside'
   ReportAdmin:
     MENUTITLE: Rapporter
     ReportTitle: Titel
@@ -379,8 +379,8 @@ da:
     HelpChars: 'Specialkarakterer bliver automatisk konverteret eller fjernet.'
   StaticExporter:
     BASEURL: 'Base URL'
-    EXPORTTO: 'Eksporter til den mappe'
-    NAME: 'Statisk eksportør'
+    EXPORTTO: 'Eksporter til mappen'
+    NAME: 'Statisk eksporter'
   TableListField:
     SELECT: 'Vælg:'
   TableListField.ss:

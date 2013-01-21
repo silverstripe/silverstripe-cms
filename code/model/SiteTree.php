@@ -412,6 +412,18 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			return Director::absoluteURL($this->Link($action));
 		}
 	}
+
+	/**
+	 * Base link used for previewing. Defaults to absolute URL,
+	 * in order to account for domain changes, e.g. on multi site setups.
+	 * Does not contain hints about the stage, see {@link SilverStripeNavigator} for details.
+	 * 
+	 * @param string $action See {@link Link()}
+	 * @return string
+	 */
+	public function PreviewLink($action = null) {
+		return $this->AbsoluteLink($action);
+	}
 	
 	/**
 	 * Return the link for this {@link SiteTree} object relative to the SilverStripe root.
@@ -1666,24 +1678,36 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
         // We merge all into a regular SS_List, because DataList doesn't support merge
         if($contentLinks = $this->BackLinkTracking()) {
-            foreach($contentLinks as $item) $item->DependentLinkType = 'Content link';
-			$items->merge($contentLinks);
+        	$linkList = new ArrayList();
+            foreach($contentLinks as $item) {
+            	$item->DependentLinkType = 'Content link';
+            	$linkList->push($item);
+            }
+			$items->merge($linkList);
         }
 		
 		// Virtual pages
 		if($includeVirtuals) {
 			$virtuals = $this->VirtualPages();
 			if($virtuals) {
-				foreach($virtuals as $item) $item->DependentLinkType = 'Virtual page';
-				$items->merge($virtuals);
+				$virtualList = new ArrayList();
+				foreach($virtuals as $item) {
+					$item->DependentLinkType = 'Virtual page';
+					$virtualList->push($item);
+				}
+				$items->merge($virtualList);
 			}
 		}
 
 		// Redirector pages
 		$redirectors = DataObject::get("RedirectorPage", "\"RedirectorPage\".\"RedirectionType\" = 'Internal' AND \"LinkToID\" = $this->ID");
 		if($redirectors) {
-			foreach($redirectors as $item) $item->DependentLinkType = 'Redirector page';
-			$items->merge($redirectors);
+			$redirectorList = new ArrayList();
+			foreach($redirectors as $item) {
+				$item->DependentLinkType = 'Redirector page';
+				$redirectorList->push($item);
+			}
+			$items->merge($redirectorList);
 		}
 
 		if(class_exists('Subsite')) Subsite::disable_subsite_filter($origDisableSubsiteFilter);
@@ -1793,6 +1817,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				$dependentPages
 			);
 			$dependentTable->getConfig()->getComponentByType('GridFieldDataColumns')
+				->setDisplayFields($dependentColumns)
 				->setFieldFormatting(array(
 				'Title' => '<a href=\"admin/pages/edit/show/$ID\">$Title</a>',
 				'AbsoluteLink' => '<a href=\"$value\">$value</a>',
@@ -1865,7 +1890,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if($this->ObsoleteClassName) {
 			$obsoleteWarning = _t(
 				'SiteTree.OBSOLETECLASS',
-				"This page is of obsolete type {type}. Saving will reset it's type and you may lose data",
+				"This page is of obsolete type {type}. Saving will reset its type and you may lose data",
 				array('type' => $this->ObsoleteClassName)
 			);
 
@@ -1931,13 +1956,23 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						_t('SiteTree.ACCESSHEADER', "Who can view this page?")
 					),
 					$viewerGroupsField = ListboxField::create("ViewerGroups", _t('SiteTree.VIEWERGROUPS', "Viewer Groups"))
-						->setMultiple(true)->setSource($groupsMap),
+						->setMultiple(true)
+						->setSource($groupsMap)
+						->setAttribute(
+							'data-placeholder', 
+							_t('SiteTree.GroupPlaceholder', 'Click to select group')
+						),
 					$editorsOptionsField = new OptionsetField(
 						"CanEditType", 
 						_t('SiteTree.EDITHEADER', "Who can edit this page?")
 					),
 					$editorGroupsField = ListboxField::create("EditorGroups", _t('SiteTree.EDITORGROUPS', "Editor Groups"))
-						->setMultiple(true)->setSource($groupsMap)
+						->setMultiple(true)
+						->setSource($groupsMap)
+						->setAttribute(
+							'data-placeholder', 
+							_t('SiteTree.GroupPlaceholder', 'Click to select group')
+						)
 				)
 			)
 		);
@@ -2073,9 +2108,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$rootTabSet->addExtraClass('ss-ui-action-tabset action-menus');
 
 		// Render page information into the "more-options" drop-up, on the top.
+		$live = Versioned::get_one_by_stage('SiteTree', 'Live', "\"SiteTree\".\"ID\"='$this->ID'");
 		$moreOptions->push(
 			new LiteralField('Information',
 				$this->customise(array(
+					'Live' => $live,
 					'ExistsOnLive' => $existsOnLive
 				))->renderWith('SiteTree_Information')
 			)

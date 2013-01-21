@@ -196,7 +196,7 @@ fi:
     SINGULARNAME: Virhesivu
     400: '400 - Virheellinen Pyyntö'
     401: '401 - Luvaton'
-    403: '403 - Kielletty'
+    403: '403 . Kielletty'
     404: '404 - Ei löytynyt'
     405: '405 - Menetelmä ei sallittu'
     406: '406 - Ei hyväksyttävä'
@@ -333,7 +333,7 @@ fi:
     METADESC: Kuvaus
     METADESCHELP: 'Hakukoneet näyttää tämä sisältö hakutuloksessa (tämä sisältö ei kuitenkin vaikuttaa sijaintia hakutuloksessa).'
     METAEXTRA: 'Omat meta-tagit'
-    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
+    METAEXTRAHELP: 'Omat meta-tagit'
     MODIFIEDONDRAFTHELP: 'Sivulla on tehty muutoksia, joita ei ole julkaistu'
     MODIFIEDONDRAFTSHORT: Muokattu
     MetadataToggle: Meta-tiedot

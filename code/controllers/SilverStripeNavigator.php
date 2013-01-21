@@ -212,8 +212,12 @@ class SilverStripeNavigatorItem_CMSLink extends SilverStripeNavigatorItem {
 	}
 	
 	public function canView($member = null) {
-		// Don't show in CMS
-		return !(Controller::curr() instanceof CMSMain);
+		return (
+			// Don't show in CMS
+			!(Controller::curr() instanceof CMSMain)
+			// Don't follow redirects in preview, they break the CMS editing form
+			&& !($this->record instanceof RedirectorPage)
+		);
 	}
 
 }
@@ -242,11 +246,16 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
 	}
 	
 	public function getLink() {
-		return Controller::join_links($this->record->AbsoluteLink(), '?stage=Stage');
+		return Controller::join_links($this->record->PreviewLink(), '?stage=Stage');
 	}
 	
 	public function canView($member = null) {
-		return ($this->record->hasExtension('Versioned') && $this->getDraftPage());
+		return (
+			$this->record->hasExtension('Versioned') 
+			&& $this->getDraftPage()
+			// Don't follow redirects in preview, they break the CMS editing form
+			&& !($this->record instanceof RedirectorPage)
+		);
 	}
 	
 	public function isActive() {
@@ -290,11 +299,16 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem {
 	}
 	
 	public function getLink() {
-		return Controller::join_links($this->record->AbsoluteLink(), '?stage=Live');
+		return Controller::join_links($this->record->PreviewLink(), '?stage=Live');
 	}
 	
 	public function canView($member = null) {
-		return ($this->record->hasExtension('Versioned') && $this->getLivePage());
+		return (
+			$this->record->hasExtension('Versioned') 
+			&& $this->getLivePage()
+			// Don't follow redirects in preview, they break the CMS editing form
+			&& !($this->record instanceof RedirectorPage)
+		);
 	}
 	
 	public function isActive() {
@@ -319,7 +333,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 	static $priority = 40;
 
 	public function getHTML() {
-			$this->recordLink = $this->record->AbsoluteLink();
+			$this->recordLink = $this->record->PreviewLink();
 			return "<a class=\"ss-ui-button\" href=\"$this->recordLink?archiveDate={$this->record->LastEdited}\" target=\"_blank\">". _t('ContentController.ARCHIVEDSITE', 'Preview version') ."</a>";
 	}
 
@@ -336,11 +350,16 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 	}
 	
 	public function getLink() {
-		return $this->record->AbsoluteLink() . '?archiveDate=' . $this->record->LastEdited;
+		return $this->record->PreviewLink() . '?archiveDate=' . $this->record->LastEdited;
 	}
 	
 	public function canView($member = null) {
-		return ($this->record->hasExtension('Versioned') && $this->isArchived());
+		return (
+			$this->record->hasExtension('Versioned') 
+			&& $this->isArchived()
+			// Don't follow redirects in preview, they break the CMS editing form
+			&& !($this->record instanceof RedirectorPage)
+		);
 	}
 	
 	public function isActive() {
