@@ -245,7 +245,7 @@ pt:
     REDIRECTTOEXTERNAL: 'Outro site'
     REDIRECTTOPAGE: 'Uma página no seu site'
     SINGULARNAME: 'A página redirecciona para uma que não existe'
-    YOURPAGE: 'Página no seu Site'
+    YOURPAGE: 'Página no seu site'
   ReportAdmin:
     MENUTITLE: Relatórios
     ReportTitle: Título
@@ -305,9 +305,9 @@ pt:
     CREATED: 'Data de criação'
     Comments: Comentários
     Content: Conteúdo
-    DEFAULTABOUTCONTENT: '<p>Pode preencher esta página com o seu próprio conteúdo, ou apagá-la e criar as suas próprias páginas. <br /></p>'
+    DEFAULTABOUTCONTENT: '<p>Pode preencher esta página com o seu próprio conteúdo, ou apagá-la e criar as suas próprias páginas.</p>'
     DEFAULTABOUTTITLE: 'Quem Somos'
-    DEFAULTCONTACTCONTENT: '<p>Pode preencher esta página com o seu próprio conteúdo, ou apagá-la e criar as suas próprias páginas. <br /></p>'
+    DEFAULTCONTACTCONTENT: '<p>Pode preencher esta página com o seu próprio conteúdo, ou apagá-la e criar as suas próprias páginas.</p>'
     DEFAULTCONTACTTITLE: Contacte-nos
     DEFAULTHOMECONTENT: '<p>Bem-vido ao SilverStripe! Esta é a página principal. Pode editar esta página acedendo ao <a href="admin/">CMS</a>. Poderá também visitar a <a href="http//doc.silverstripe.com">documentação para desenvolvimento</a>, ou começar <a href="http://doc.silverstripe.com/doku.php?id=tutorials">pelos tutoriais.</a></p>'
     DEFAULTHOMETITLE: 'Página Principal'
@@ -319,7 +319,7 @@ pt:
     DependtPageColumnURL: URL
     EDITANYONE: 'Todos que possam efectuar a autenticação no CMS'
     EDITHEADER: 'Quem pode editar esta página no CMS?'
-    EDITONLYTHESE: 'Apenas estes (Seleccione da lista abaixo)'
+    EDITONLYTHESE: 'Apenas estes (selecione da lista abaixo)'
     EDITORGROUPS: 'Editar grupos'
     EDIT_ALL_DESCRIPTION: 'Editar qualquer página'
     EDIT_ALL_HELP: 'Capacidade de visualizar qualquer página do site, independentemente das configurações. Requer as permissões "Acesso ao conteúdo do site"'

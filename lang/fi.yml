@@ -63,12 +63,12 @@ fi:
   CMSBatchActions:
     DELETED_DRAFT_PAGES: 'Poistettiin %d sivua luonnostelusivustolta, %d virhettä'
     DELETED_PAGES: 'Poistettiin %d sivua julkaistulta sivustolta, %d virhettä'
-    DELETE_DRAFT_PAGES: 'Poista luonnossivulta'
+    DELETE_DRAFT_PAGES: 'Poista luonnossivustosta'
     DELETE_PAGES: 'Poista julkaistulta sivustolta'
     PUBLISHED_PAGES: 'Julkaistu %d sivua, %d epäonnistumista'
     PUBLISH_PAGES: Julkaise
     UNPUBLISHED_PAGES: 'Julkaisemattomat %d sivut'
-    UNPUBLISH_PAGES: 'Älä julkaise'
+    UNPUBLISH_PAGES: 'Poista julkaisu'
   CMSFileAddController:
     MENUTITLE: Tiedostot
   CMSMain:
@@ -330,7 +330,7 @@ fi:
     LASTUPDATED: 'Viimeksi päivitetty'
     LINKCHANGENOTE: 'Tämän sivun linkin muuttaminen vaikuttaa myös alasivujen linkkeihin.'
     MENUTITLE: 'Navigoinnin nimike'
-    METADESC: Kuvaus
+    METADESC: 'Meta kuvaus'
     METADESCHELP: 'Hakukoneet näyttää tämä sisältö hakutuloksessa (tämä sisältö ei kuitenkin vaikuttaa sijaintia hakutuloksessa).'
     METAEXTRA: 'Omat meta-tagit'
     METAEXTRAHELP: 'Omat meta-tagit'
@@ -363,7 +363,7 @@ fi:
     TABDEPENDENT: 'Riippuvaiset sivut'
     TOPLEVEL: 'Sivuston sisältö (ylin taso)'
     TOPLEVELCREATORGROUPS: 'Huipputason tekijät'
-    URLSegment: URL-kenttä
+    URLSegment: URL-osoite
     VIEWERGROUPS: Katsojaryhmät
     VIEW_ALL_DESCRIPTION: 'Näytä mikä tahansa sivu'
     VIEW_ALL_HELP: 'Mahdollisuus tarkastella mitä tahansa sivua sivustosta, riippumatta Käyttöoikeus-välilehden asetuksista. Vaatii "Käyttöoikeus sivuston sisältöön" -lupaa'

@@ -40,7 +40,7 @@ nl:
     Any: Alles
     BROKENLINKS: 'Verbroken verwijzingen rapportage'
     CheckSite: 'Controleer site'
-    CheckSiteDropdownDraft: 'Concept Site'
+    CheckSiteDropdownDraft: Concept-site
     CheckSiteDropdownPublished: 'Gepubliceerde Site'
     ColumnDateLastModified: 'Laatste wijzigingsdatum'
     ColumnDateLastPublished: 'Laatste publicatiedatum'
@@ -61,7 +61,7 @@ nl:
   CMSAddPageController:
     Title: 'Pagina toevoegen'
   CMSBatchActions:
-    DELETED_DRAFT_PAGES: '%d pagina''s van de concept site verwijderd, %d mislukt'
+    DELETED_DRAFT_PAGES: '%d pagina''s van de concept-site verwijderd, %d mislukt'
     DELETED_PAGES: '%d pagina''s van de gepubliceerde site verwijderd, %d mislukt'
     DELETE_DRAFT_PAGES: 'Verwijder van concept site'
     DELETE_PAGES: 'Verwijder van gepubliceerde site'
@@ -98,7 +98,7 @@ nl:
     PageAdded: 'Pagina succesvol gecreëerd'
     REMOVED: 'Verwijderde ''%s''%s van live site'
     REMOVEDPAGE: '''{title}'' is van de gepubliceerde site verwijderd'
-    REMOVEDPAGEFROMDRAFT: 'Verwijderde ''%s'' uit de concept-site'
+    REMOVEDPAGEFROMDRAFT: '''%s'' is verwijderd uit de concept-site'
     RESTORE: Herstel
     RESTORED: '''{title}'' is succesvol hersteld'
     ROLLBACK: 'Terugzetten naar deze versie'
@@ -162,12 +162,12 @@ nl:
   CMSSiteTreeFilter_Search:
     Title: 'Alle pagina''s'
   ContentControl:
-    NOTEWONTBESHOWN: 'N.B. : Dit bericht is niet zichtbaar voor bezoekers'
+    NOTEWONTBESHOWN: 'Aantekening: dit bericht is niet zichtbaar voor bezoekers'
   ContentController:
     ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Gearchiveerde site van'
     CMS: CMS
-    DRAFTSITE: 'Concept site'
+    DRAFTSITE: Concept-site
     DRAFT_SITE_ACCESS_RESTRICTION: 'U moet inloggen met Uw CMS wachtwoord om die inhoud te kunnen zien. <a href="%s">Klik hier</a> om terug te keren naar de gepubliceerde site.'
     Email: E-mail
     INSTALL_SUCCESS: 'Installatie voltooid!'
@@ -219,7 +219,7 @@ nl:
     505: '505 - HTTP Versie Niet Ondersteund'
   Folder:
     AddFolderButton: 'Map toevoegen'
-    DELETEUNUSEDTHUMBNAILS: 'Verwijder niet gebruikte thumbnails'
+    DELETEUNUSEDTHUMBNAILS: 'Verwijder ongebruikte thumbnails'
     UNUSEDFILESTITLE: 'Ongebruikte bestanden'
     UNUSEDTHUMBNAILSTITLE: 'Ongebruikte miniatuur afbeeldingen'
     UploadFilesButton: Uploaden
@@ -252,7 +252,7 @@ nl:
   ReportAdminForm:
     FILTERBY: 'Filter op'
   SearchForm:
-    GO: Go
+    GO: Zoeken
     SEARCH: Zoeken
     SearchResults: Zoekresultaten
   SideReport:
@@ -305,8 +305,8 @@ nl:
     CREATED: 'Datum gemaakt'
     Comments: Commentaar
     Content: Inhoud
-    DEFAULTABOUTCONTENT: '<p>Je aan deze pagina je eigen inhoud toevoegen of de pagina verwijderen en nieuwe aanmaken.</p>'
-    DEFAULTABOUTTITLE: 'Over ons'
+    DEFAULTABOUTCONTENT: '<p>Je kan deze pagina van je eigen inhoud voorzien of de pagina verwijderen en een nieuwe aanmaken.</p>'
+    DEFAULTABOUTTITLE: 'Over Ons'
     DEFAULTCONTACTCONTENT: '<p>Je kan deze pagina vullen met je eigen inhoud, of ze verwijderen en je eigen pagina''s aanmaken.</p>'
     DEFAULTCONTACTTITLE: Contact
     DEFAULTHOMECONTENT: '<p>Welkom bij Silverstripe! Dit is de standaard homepagina. Je kan deze pagina wijzigen door <a href="admin/">het CMS</a> te openen. Je kan nu de <a href="http://doc.silverstripe.com">documentatie voor ontwikkelaars</a> bekijken, of aan <a href="http://doc.silverstripe.com/doku.php?id=tutorials">de tutorials</a> beginnen.'

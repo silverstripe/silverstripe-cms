@@ -124,7 +124,7 @@ hu:
     COMPAREMODE: 'Compare mode (select two)'
     COMPAREVERSIONS: 'Verziók összehasonlítása'
     COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
-    MENUTITLE: History
+    MENUTITLE: Előzmények
     REVERTTOTHISVERSION: 'Visszatérés erre a verzióra'
     SHOWUNPUBLISHED: 'Show unpublished versions'
     SHOWVERSION: 'Show Version'
@@ -236,7 +236,7 @@ hu:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
   RedirectorPage:
-    DESCRIPTION: 'Redirects to a different internal page'
+    DESCRIPTION: 'Átirányítja egy másik belső oldalra'
     HASBEENSETUP: 'Egy átirányító oldal került létrehozásra, anélkül hogy lenne hova átirányítania.'
     HEADER: 'Ez az oldal egy másik oldalra fogja írányítani a felhasználókat'
     OTHERURL: 'Egy másik weboldal URL-je '
@@ -310,7 +310,7 @@ hu:
     DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
     DEFAULTCONTACTTITLE: Kapcsolat
     DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
-    DEFAULTHOMETITLE: Home
+    DEFAULTHOMETITLE: Kezdőoldal
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Törölve
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
@@ -320,7 +320,7 @@ hu:
     EDITANYONE: 'Bárki, aki be tud jelentkezni a CMS-be'
     EDITHEADER: 'Ki szerkesztheti ezt a CMS-ben?'
     EDITONLYTHESE: 'Csak ezek az emberek (válassz a listából)'
-    EDITORGROUPS: 'Editor Groups'
+    EDITORGROUPS: 'Csoportok szerkesztése'
     EDIT_ALL_DESCRIPTION: 'Bármely oldal szerkesztése'
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     Editors: 'Editors Groups'
@@ -339,9 +339,9 @@ hu:
     MetadataToggle: Metaadatok
     OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: 'Page location'
-    PAGETITLE: 'Az oldal neve'
+    PAGETITLE: 'Oldal neve'
     PAGETYPE: 'Oldal típusa'
-    PARENTID: 'Parent page'
+    PARENTID: 'Szülő oldal'
     PARENTTYPE: 'Page location'
     PARENTTYPE_ROOT: 'Felső szintű oldal'
     PARENTTYPE_SUBPAGE: 'Sub-page underneath a parent page'

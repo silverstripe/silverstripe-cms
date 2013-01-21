@@ -96,7 +96,7 @@ pl:
     PUBALLFUN2: 'Naciśnięcie tego przycisku spowoduje przejście po wszystkich stronach i opublikowanie ich. Zazwyczaj używa się tego, gdy w witrynie było bardzo dużo zmian, na przykład gdy witryna została utworzona.'
     PUBPAGES: 'Zrobiono:  Opublikowano {count} stron'
     PageAdded: 'Pomyślnie utworzono stronę'
-    REMOVED: 'Usunięto ''%s%s z opublikowanej witryny'
+    REMOVED: 'Usunięto ''%s''%s z opublikowanej witryny'
     REMOVEDPAGE: 'Usunięto ''{title}'' z opublikowanych stron'
     REMOVEDPAGEFROMDRAFT: '''%s'' usunięto ze szkiców'
     RESTORE: Przywróć
@@ -195,10 +195,10 @@ pl:
     PLURALNAME: 'Strony błędów'
     SINGULARNAME: 'Strona błędów'
     400: '400 - Nieprawidłowe zapytanie'
-    401: '401 - Nieautoryzowany Dostęp'
+    401: '401 - Nieautoryzowany dostęp'
     403: '403 - Zabroniony'
-    404: '404 - Nie Znaleziono'
-    405: '405 - Niedozwolona Metoda'
+    404: '404 - Nie znaleziono'
+    405: '405 - Niedozwolona metoda'
     406: '406 - Niedozwolone'
     407: '407 - Wymagane Uwierzytelnienie do Serwera Proxy'
     408: '408 - Koniec czasu oczekiwania na żądanie'
@@ -225,7 +225,7 @@ pl:
     UploadFilesButton: Prześlij
   LeftAndMain:
     DELETED: Usunięty
-    PreviewButton: Podgląd
+    PreviewButton: 'Podgląd'
     SAVEDUP: Zapisane
     STATUSPUBLISHEDSUCCESS: 'Opublikowano ''{title}'' '
     SearchResults: 'Wyniki wyszukiwania'
@@ -301,7 +301,7 @@ pl:
     BUTTONCANCELDRAFTDESC: 'Usuń zmiany i wróć do istniejącej wersji opublikowanej strony'
     BUTTONSAVEPUBLISH: 'Zapisz i opublikuj'
     BUTTONUNPUBLISH: Nieopublikowane
-    BUTTONUNPUBLISHDESC: 'Zmień tę stronę na opublikowaną'
+    BUTTONUNPUBLISHDESC: 'Usuń tę stronę z opublikowanej witryny'
     CREATED: 'Data utworzenia'
     Comments: Komentarze
     Content: Zawartość
@@ -322,7 +322,7 @@ pl:
     EDITONLYTHESE: 'Tylko Ci ludzi (wybierz z listy)'
     EDITORGROUPS: 'Grupy edytujących'
     EDIT_ALL_DESCRIPTION: 'Edytuj jakąkolwiek stronę'
-    EDIT_ALL_HELP: 'Zdolność edycji jakiejkolwiek strony na witrynie, bez względu na ustawienia w zakładce Dostęp. Wymaga uprawnienia "Dostęp do edycji treści"'
+    EDIT_ALL_HELP: 'Możliwość edycji jakiejkolwiek strony w witrynie, bez względu na ustawienia w zakładce Dostęp. Wymaga uprawnienia "Dostęp do edycji treści"'
     Editors: 'Grupy Edytorów'
     HASBROKENLINKS: 'Ta strona ma niedziałający link'
     HTMLEDITORTITLE: Zawartość
@@ -332,7 +332,7 @@ pl:
     MENUTITLE: 'Sekcja nawigacji'
     METADESC: Opis
     METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
-    METAEXTRA: 'Własne Meta Tagi'
+    METAEXTRA: 'Własne meta tagi'
     METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Na stronie znajdują się nieopublikowane zmiany'
     MODIFIEDONDRAFTSHORT: Zmodyfikowana
@@ -361,20 +361,20 @@ pl:
     TABBEHAVIOUR: Zachowanie
     TABCONTENT: Zawartość
     TABDEPENDENT: 'Strony zależne'
-    TOPLEVEL: 'Zawartość strony (Główny Poziom)'
+    TOPLEVEL: 'Zawartość witryny (główny poziom)'
     TOPLEVELCREATORGROUPS: 'Twórcy najwyższego szczebla'
     URLSegment: 'Segment adresu URL'
     VIEWERGROUPS: 'Grupy przeglądających'
     VIEW_ALL_DESCRIPTION: 'Przeglądanie stron'
     VIEW_ALL_HELP: 'Zdolność oglądania jakiejkolwiek strony na witrynie, bez względu na ustawienia w zakładce Dostęp. Wymaga uprawnienia "Dostęp do edycji treści"'
-    VIEW_DRAFT_CONTENT: 'Obejrzyj treść nieopublikowaną'
+    VIEW_DRAFT_CONTENT: 'Obejrzyj szkic treści'
     VIEW_DRAFT_CONTENT_HELP: 'Stosowane do oglądania szkiców stron poza systemem CMS. Przydatne w przypadku zewnętrznych współpracowników nie mających dostępu do CMS.'
     Viewers: 'Grupy przeglądających'
     Visibility: Widoczność
     has_one_Parent: 'Strona Nadrzędna'
     many_many_BackLinkTracking: 'Śledzenie backlinków'
-    many_many_ImageTracking: 'Śledzenie Obrazków'
-    many_many_LinkTracking: 'Śledzenie Linków'
+    many_many_ImageTracking: 'Śledzenie obrazków'
+    many_many_LinkTracking: 'Śledzenie linków'
   SiteTreeURLSegmentField:
     HelpChars: 'Znaki specjalne są automatycznie zamienione lub usunięte.'
   StaticExporter:

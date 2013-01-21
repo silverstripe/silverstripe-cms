@@ -170,10 +170,10 @@ et_EE:
     DRAFTSITE: 'Mustandi sait'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Pead olema sisse logitud oma sisuhalduse parooliga, et vaadata mustandeid ja arhiveeritud sisu. <a href="%s">Vajuta siia, et minna tagasi avaldatud lehe juurde.</a>'
     Email: E-post
-    INSTALL_SUCCESS: 'Installation Successful!'
+    INSTALL_SUCCESS: 'Paigaldus oli edukas!'
     InstallFilesDeleted: 'Installifailid on edukalt kustutatud.'
     InstallSecurityWarning: 'Turvalisuse põhjustel soovitame nüüd installifailid kustutada, juhul kui te ei plaani hiljem uuesti installida (<em>nõuab administraatorina sisselogimist, vt ülevalt</em>). Edaspidi vajab veebiserver juurdepääsu kirjutamiseks ainult kaustale "assets". Võite eemaldada kõigi teiste kaustade kirjutusõigused. <a href="{link}" style="text-align: center;">Klõpsake siin installifailide kustutamiseks.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
+    InstallSuccessCongratulations: 'SilverStripe edukalt paigaldatud!'
     LOGGEDINAS: 'Sisse logitud kui'
     LOGIN: 'Logi sisse'
     LOGOUT: 'Logi välja'
@@ -192,8 +192,8 @@ et_EE:
     DEFAULTSERVERERRORPAGETITLE: 'Serveri viga'
     DESCRIPTION: 'Kohandatud sisu erinevate tõrgete korral (nt "Lehte ei leitud")'
     ERRORFILEPROBLEM: 'Tõrge faili "{filename}" avamisel kirjutamiseks. Kontrollige faili õigusi.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
+    PLURALNAME: Vealeheküljed
+    SINGULARNAME: Vealehekülg
     400: '400 - Halb päring'
     401: '401 - Volitamata ligipääs'
     403: '403 - Keelatud'
@@ -240,11 +240,11 @@ et_EE:
     HASBEENSETUP: 'Suunav lehekülg seati üles ilma, et ta kuhugile suunaks.'
     HEADER: 'See lehekülg suunab kasutajad teisele leheküljele'
     OTHERURL: 'Teise veebisaidi URL'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: Ümbersuunamisleheküljed
     REDIRECTTO: 'Suuna ümber'
     REDIRECTTOEXTERNAL: 'Teisele veebisaidile'
     REDIRECTTOPAGE: 'Leheküljele sinu veebisaidil'
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: Ümbersuunamislehekülg
     YOURPAGE: 'Lehekülg sinu veebisaidil'
   ReportAdmin:
     MENUTITLE: Aruanded

@@ -79,8 +79,8 @@ lt:
     ChoosePageParentMode: 'Pasirinkite kur sukurti šį puslapį'
     ChoosePageType: 'Pasirinkite puslapio tipą'
     Create: Sukurti
-    DELETE: 'Ištrinti iš juodraščių'
-    DELETEFP: 'Ištrinti iš publikuojamų'
+    DELETE: 'Ištrinti juodraštį'
+    DELETEFP: Ištrinti
     DESCREMOVED: 'ir {count} jam priklausantys'
     EMAIL: 'E. paštas'
     EditTree: 'Redaguoti Medį'
@@ -194,11 +194,11 @@ lt:
     ERRORFILEPROBLEM: 'Klaida atveriant rašymui bylą "{filename}". Prašome patikrinti bylos leidimus.'
     PLURALNAME: 'Error Pags'
     SINGULARNAME: 'Error Page'
-    400: '400 - bloga užklausa'
-    401: '401 - neautorizuota'
-    403: '403 - uždrausta'
-    404: '404 - nerasta'
-    405: '405 - neleistinas būdas'
+    400: '400 - Bloga užklausa'
+    401: '401 - Leidimas neduotas'
+    403: '403 - Uždrausta'
+    404: '404 - Puslapis nerastas'
+    405: '405 - Neleistinas būdas'
     406: '406 - nepriimtina'
     407: '407 - reikalinga proxy autentifikacija'
     408: '408 - baigėsi užklausai skirtas laikas'
@@ -219,9 +219,9 @@ lt:
     505: '505 - nepalaikoma HTTP versija'
   Folder:
     AddFolderButton: 'Pridėti aplanką'
-    DELETEUNUSEDTHUMBNAILS: 'Ištrinti nenaudojamas ikonas'
+    DELETEUNUSEDTHUMBNAILS: 'Ištrinti nenaudojamus peržiūros paveikslėlius'
     UNUSEDFILESTITLE: 'Nenaudojamos bylos'
-    UNUSEDTHUMBNAILSTITLE: 'Nenaudojamos ikonos'
+    UNUSEDTHUMBNAILSTITLE: 'Nenaudojami peržiūros paveikslėliai'
     UploadFilesButton: Įkelti
   LeftAndMain:
     DELETED: Ištrinta.
@@ -243,16 +243,16 @@ lt:
     PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Nukreipti į'
     REDIRECTTOEXTERNAL: 'Kita svetainė'
-    REDIRECTTOPAGE: 'Jūsų svetainės puslapis'
+    REDIRECTTOPAGE: 'Puslapis Jūsų svetainėje'
     SINGULARNAME: 'Redirector Page'
-    YOURPAGE: 'Jūsų svetainės puslapis'
+    YOURPAGE: 'Puslapį Jūsų svetainėje'
   ReportAdmin:
     MENUTITLE: Ataskaitos
     ReportTitle: Antraštė
   ReportAdminForm:
     FILTERBY: 'Filtruoti pagal'
   SearchForm:
-    GO: Eiti
+    GO: Vykdyti
     SEARCH: Ieškoti
     SearchResults: 'Paieškos rezultatai'
   SideReport:
@@ -291,7 +291,7 @@ lt:
   SiteTree:
     ACCESSANYONE: 'Bet kas'
     ACCESSHEADER: 'Kas gali matyti šį puslapį?'
-    ACCESSLOGGEDIN: 'Prisijungę vartotojai'
+    ACCESSLOGGEDIN: 'Prisijungę naudotojai'
     ACCESSONLYTHESE: 'Tik šie žmonės (pasirinkite iš sąrašo)'
     ADDEDTODRAFTHELP: 'Puslapis dar nebuvo publikuotas'
     ADDEDTODRAFTSHORT: Juodraštis
@@ -317,7 +317,7 @@ lt:
     DESCRIPTION: 'Standartinio turinio puslapis'
     DependtPageColumnLinkType: 'Nuorodos tipas'
     DependtPageColumnURL: 'URL adresas'
-    EDITANYONE: 'Bet kuris prisijungęs į TVS'
+    EDITANYONE: 'Bet kuris prisijungęs prie TVS'
     EDITHEADER: 'Kas gali redaguoti šį puslapį?'
     EDITONLYTHESE: 'Tik šie žmonės (pasirinkite iš sąrašo)'
     EDITORGROUPS: 'Redaktorių grupė'
@@ -330,9 +330,9 @@ lt:
     LASTUPDATED: 'Vėliausiai atnaujinta'
     LINKCHANGENOTE: 'Keičiant šio puslapio nuorodą, keisis ir jam priklausančių puslapių nuorodos.'
     MENUTITLE: 'Navigacijos pavadinimas'
-    METADESC: Aprašymas
+    METADESC: 'Meta aprašymas'
     METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
-    METAEXTRA: 'Vartotojo meta žymės'
+    METAEXTRA: 'Naudotojo meta žymės'
     METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Puslapyje yra nepublikuoto turinio'
     MODIFIEDONDRAFTSHORT: Pakeistas
@@ -353,13 +353,13 @@ lt:
     REMOVEDFROMDRAFTHELP: 'Puslapis buvo publikuotas, tačiau buvo ištrintas iš juodraščių.'
     REMOVEDFROMDRAFTSHORT: 'Pašalinta iš juodraščių'
     REMOVE_INSTALL_WARNING: 'Perspėjimas: Saugumo sumetimais Jūs turėtumėte pašalinti install.php bylą iš SilverStripe.'
-    REORGANISE_DESCRIPTION: 'Gali perorganizuoti svetainę'
+    REORGANISE_DESCRIPTION: 'Gali keisti svetainės struktūrą'
     REORGANISE_HELP: 'Perrikiuoti puslapius naudojant Tempti/Mesti būdą.'
     SHOWINMENUS: 'Ar rodyti meniu?'
     SHOWINSEARCH: 'Ar rodyti paieškoje'
     SINGULARNAME: Puslapis
     TABBEHAVIOUR: Elgsena
-    TABCONTENT: Turinys
+    TABCONTENT: 'Pagrindinis turinys'
     TABDEPENDENT: 'Priklausantys puslapiai'
     TOPLEVEL: 'Svetainės turinys (aukščiausias lygmuo)'
     TOPLEVELCREATORGROUPS: 'Aukščiausio lygmens kūrėjai'

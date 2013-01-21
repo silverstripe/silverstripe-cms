@@ -91,7 +91,7 @@ sv:
     PAGES: Sidor
     PAGETYPEANYOPT: 'Vilken som helst'
     PAGETYPEOPT: Sidtyp
-    PUBALLCONFIRM: 'Publicera alla sidor på sajten, kopiera innehållets status till ''live'''
+    PUBALLCONFIRM: 'Publicera alla sidor på sajten och kopiera dem till "live"'
     PUBALLFUN: '"Publicera alla"-funktion'
     PUBALLFUN2: 'Ett klick på den här knappen är samma sak som att gå till varje sida och klicka på "Publicera". Tanken är att den ska användas efter stora uppdateringar av innehållet på sidan, som när den skapas.'
     PUBPAGES: 'Klar: Publicerade {count} sidor'
@@ -99,7 +99,7 @@ sv:
     REMOVED: 'Raderade ''%s''%s från den publicerade sajten'
     REMOVEDPAGE: 'Tog bort ''{title}'' från den publicerade sajten'
     REMOVEDPAGEFROMDRAFT: 'Raderade ''%s'' från utkast'
-    RESTORE: Återskapa
+    RESTORE: 'Återskapa'
     RESTORED: 'Återskapandet av  ''{title}'' lyckades'
     ROLLBACK: 'Återställ den här versionen'
     ROLLEDBACKPUB: 'Återskapade publicerad version. Nytt versionsnummer är #{version}'
@@ -206,7 +206,7 @@ sv:
     410: '410 - Borta'
     411: '411 - Längd krävs'
     412: '412 - Ett villkor är inte uppfyllt'
-    413: '413 - Den efterfrågade entiteten är för stor'
+    413: '413 - Den efterfrågade enheten är för stor'
     414: '414 - URI:n för begäran är för lång'
     415: '415 - Mediatypen stöds inte'
     416: '416 - Det efterfrågade intervallet går inte att leverera'
@@ -283,7 +283,7 @@ sv:
     SITETAGLINE: 'Din sajts Slogan'
     SITETITLE: Sajttitel
     TABACCESS: Tillgång
-    TABMAIN: Huvud
+    TABMAIN: Allmänt
     TAGLINEDEFAULT: 'din underrubrik här'
     THEME: Tema
     TOPLEVELCREATE: 'Vem kan skapa sidor i sajtroten?'
@@ -298,7 +298,7 @@ sv:
     ALLOWCOMMENTS: 'Tillåt kommentar på den här sidan?'
     APPEARSVIRTUALPAGES: 'Detta innehåll förekommer även på en virtuell sida i sektionen {title}.'
     BUTTONCANCELDRAFT: 'Ångra utkaständringar'
-    BUTTONCANCELDRAFTDESC: 'Radera ditt utkast och återgå till den publicerade sidan'
+    BUTTONCANCELDRAFTDESC: 'Radera utkast och återgå till den publicerade sidan'
     BUTTONSAVEPUBLISH: 'Spara och publicera'
     BUTTONUNPUBLISH: Avpublicera
     BUTTONUNPUBLISHDESC: 'Ta bort den här sidan från den publicerade sajten'
@@ -309,7 +309,7 @@ sv:
     DEFAULTABOUTTITLE: 'Om oss'
     DEFAULTCONTACTCONTENT: '<p>Du kan fylla den här sidan med ditt eget innehåll, eller radera den och skapa dina egna sidor.<br/></p>'
     DEFAULTCONTACTTITLE: 'Kontakta oss'
-    DEFAULTHOMECONTENT: '<p>Välkommen till SilverStripe! Det här är standard-hemsidan. Du kan redigera den är sidan genom att öppna <a href="admin/">CMSet</a>. Du kan nu komma åt <a href="http://doc.silverstripe.com">utvecklar-dokumentationen</a>, eller börja med  <a href="http://doc.silverstripe.com/doku.php?id=tutorials">handledningen</a></p>'
+    DEFAULTHOMECONTENT: '<p>Välkommen till SilverStripe! Det här är standardhemsidan. Du kan redigera sidan genom att öppna <a href="admin/">CMS:et</a>. Du kan använda <a href="http://doc.silverstripe.com">utvecklardokumentationen</a>, eller börja med  <a href="http://doc.silverstripe.com/doku.php?id=tutorials">guiderna</a></p>'
     DEFAULTHOMETITLE: Hem
     DELETEDPAGEHELP: 'Sidan är inte längre publicerad'
     DELETEDPAGESHORT: Raderad
@@ -351,7 +351,7 @@ sv:
     PageTypNotAllowedOnRoot: 'Sidtypen "{type}" tillåts inte på rotnivå'
     PageTypeNotAllowed: 'Sidtypen "{type}" tillåts inte som barn till förälderns sida'
     REMOVEDFROMDRAFTHELP: 'Sidan är publicerad men har raderats från utkastet'
-    REMOVEDFROMDRAFTSHORT: 'Radera från utkast'
+    REMOVEDFROMDRAFTSHORT: 'Raderad från utkast'
     REMOVE_INSTALL_WARNING: 'Varning: Du bör radera install.php från SilverStripe-installationen p.g.a säkerhetsskäl.'
     REORGANISE_DESCRIPTION: 'Ändra sidstrukturen'
     REORGANISE_HELP: 'Flytta om sidorna i sidträdet genom att dra och släppa.'
@@ -364,12 +364,12 @@ sv:
     TOPLEVEL: 'Sajtinnehåll (toppnivå)'
     TOPLEVELCREATORGROUPS: 'Topp-nivå skapare'
     URLSegment: URL-segment
-    VIEWERGROUPS: Åtkomstgrupper
+    VIEWERGROUPS: 'Åtkomstgrupper'
     VIEW_ALL_DESCRIPTION: 'Visa alla sidor'
     VIEW_ALL_HELP: 'Möjlighet att se alla sidor på sajten, oavsett inställningarna under Åtkomstfliken. Kräver "Tillgång till webbplatsinnehåll"'
     VIEW_DRAFT_CONTENT: 'Se utkast'
     VIEW_DRAFT_CONTENT_HELP: 'Gäller sidor visade i utkastläge utanför CMS:et. Användbart för medarbetare utan CMS-åtkomst.'
-    Viewers: Åskådargrupper
+    Viewers: 'Åskådargrupper'
     Visibility: Synlighet
     has_one_Parent: 'Överordnad sida'
     many_many_BackLinkTracking: 'Spåra inlänkar'

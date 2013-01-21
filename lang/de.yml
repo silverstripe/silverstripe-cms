@@ -80,8 +80,8 @@ de:
     ChoosePageType: 'Seitentyp auswählen'
     Create: Erstellen
     DELETE: 'Von Entwurf-Seite löschen'
-    DELETEFP: 'Von veröffentlicher Seite entfernen'
-    DESCREMOVED: 'und {count} abstammende Seiten'
+    DELETEFP: Löschen
+    DESCREMOVED: 'und {count} untergeordnete Seiten'
     EMAIL: E-Mail
     EditTree: 'Seitenbaum bearbeiten'
     ListFiltered: 'Gefilterte Liste'
@@ -326,11 +326,11 @@ de:
     Editors: 'Bearbeiter Gruppen'
     HASBROKENLINKS: 'Diese Seite enthält ungültige Verweise.'
     HTMLEDITORTITLE: Inhalt
-    INHERIT: 'Übernehmen von der übergeordneten Seite'
+    INHERIT: 'Von der übergeordneten Seite erben'
     LASTUPDATED: 'Letzte Änderung'
-    LINKCHANGENOTE: 'Das Ändern des Links zu dieser Seite führt ebenfalls zur Änderungen aller Links der Unterseiten dieser Seite.'
+    LINKCHANGENOTE: 'Das Ändern des Links zu dieser Seite führt ebenfalls zur Änderung aller Links der Unterseiten dieser Seite.'
     MENUTITLE: Navigationsbezeichnung
-    METADESC: Beschreibung
+    METADESC: 'Meta Description'
     METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'Benutzerdefinierte Meta-Tags'
     METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
@@ -351,7 +351,7 @@ de:
     PageTypNotAllowedOnRoot: 'Der Seitentyp "{type}" darf nicht auf der Grundebene verwendet werden.'
     PageTypeNotAllowed: 'Der Seitentyp "{type}" kann nicht als Kind dieser übergeordneten Seite verwendet werden'
     REMOVEDFROMDRAFTHELP: 'Die Seite ist veröffentlicht, wurde aber von der Entwurf Seite gelöscht.'
-    REMOVEDFROMDRAFTSHORT: 'Von Entwurf entfernt'
+    REMOVEDFROMDRAFTSHORT: 'Aus Entwurf entfernt'
     REMOVE_INSTALL_WARNING: 'Warnung: Aus Sicherheitsgründen sollte die Datei install.php aus dieser SilverStripe Installation entfernt werden.'
     REORGANISE_DESCRIPTION: 'Kann die Site-Struktur reorganisieren'
     REORGANISE_HELP: 'Seiten im Seitenbaum per Drag&Drop sortieren.'
@@ -359,7 +359,7 @@ de:
     SHOWINSEARCH: 'In der Suche anzeigen?'
     SINGULARNAME: Seite
     TABBEHAVIOUR: Verhalten
-    TABCONTENT: Inhalt
+    TABCONTENT: Haupt-Inhalt
     TABDEPENDENT: 'Abhängige Seiten'
     TOPLEVEL: 'Seiten Inhalt (Top Level)'
     TOPLEVELCREATORGROUPS: Bearbeitergruppen

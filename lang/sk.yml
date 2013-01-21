@@ -37,11 +37,11 @@ sk:
   BackLink_Button.ss:
     Back: Späť
   BrokenLinksReport:
-    Any: Akékoľvek
-    BROKENLINKS: 'Správa o nefunkčných odkazoch'
-    CheckSite: 'Skontrolovať stránku'
-    CheckSiteDropdownDraft: 'Navrhový web'
-    CheckSiteDropdownPublished: 'Publikovaný web'
+    Any: Akákoľvek
+    BROKENLINKS: 'Výkaz porušených odkazov'
+    CheckSite: 'Skontrolovať web'
+    CheckSiteDropdownDraft: 'Koncept webu'
+    CheckSiteDropdownPublished: 'Verejný web'
     ColumnDateLastModified: 'Dátum poslednej úpravy'
     ColumnDateLastPublished: 'Dátum poslednej publikácie'
     ColumnProblemType: 'Problémový typ'
@@ -51,10 +51,10 @@ sk:
     HasBrokenLinkAndFile: 'obsahuje porušený odkaz a súbor'
     HoverTitleEditPage: 'Upraviť stránku'
     PageName: 'Názov stránky'
-    ReasonDropdown: 'Problem pri skontrolovaní'
-    ReasonDropdownBROKENFILE: 'Porušnený súbor'
+    ReasonDropdown: 'Problém na skontrolovanie'
+    ReasonDropdownBROKENFILE: 'Porušený súbor'
     ReasonDropdownBROKENLINK: 'Porušnený odkaz'
-    ReasonDropdownRPBROKENLINK: 'Presmerovávacia stránka odkazuje na ne-existujúcu stránku'
+    ReasonDropdownRPBROKENLINK: 'Presmerovacia stránka ukazuje na neexistujúcu stránku'
     ReasonDropdownVPBROKENLINK: 'Virtuálna stránka odkazuje na ne-existujúcu stránku'
     RedirectorNonExistent: 'presmerovávacia stránka odkazuje na ne-existujúcu stránku'
     VirtualPageNonExistent: 'virtuálna stránka odkazuje na ne-existujúcu stránku'
@@ -73,13 +73,13 @@ sk:
     MENUTITLE: Súbory
   CMSMain:
     ACCESS: 'Pristup k ''{title}'' sekcii'
-    ACCESS_HELP: 'Povoliť prezeranie sekcie obshujúcej štruktúru a obsah webu. Právomoci na prezeranie a úpravu môžu byť nastavené cez menu pre samostanú stránku tak isto ako jednotlivé právomoci pre obsah.'
+    ACCESS_HELP: 'Povoliť prezeranie sekcie obsahujúcu strom stránok a obsah. Práva na prezeranie a úpravu môžu byť nastavené cez výber, ako aj jednotlivo  "Práva obsahu".'
     AddNew: 'Pridať novou stránku'
     AddNewButton: 'Pridať nový'
     ChoosePageParentMode: 'Vyberte, kde vytvoriť túto stránku'
     ChoosePageType: 'Vyberte typ stránky'
     Create: Vytvoriť
-    DELETE: 'Vymazať z pracovnej verzie stránky'
+    DELETE: 'Vymazať koncept'
     DELETEFP: 'Vymazať z publikovaného webu'
     DESCREMOVED: 'a {count} potomkov'
     EMAIL: 'Pošli e-mailom'
@@ -98,7 +98,7 @@ sk:
     PageAdded: 'Stránka vytvorená úspešne'
     REMOVED: 'Vymazané ''%s''%s z publikovaného webu'
     REMOVEDPAGE: 'Smazané ''{title}'' z verejného webu'
-    REMOVEDPAGEFROMDRAFT: 'Odstránené ''%s'' z pracovnej verzie stránky'
+    REMOVEDPAGEFROMDRAFT: 'Odstránené ''%s'' z konceptu webu'
     RESTORE: Obnoviť
     RESTORED: 'Obnovené ''{title}'' úspešne'
     ROLLBACK: 'Návrat späť na túto verziu'
@@ -167,7 +167,7 @@ sk:
     ARCHIVEDSITE: 'Zobrazenie verzie'
     ARCHIVEDSITEFROM: 'Archívovaná stránka z'
     CMS: CMS
-    DRAFTSITE: 'Pracovná verzia stránky'
+    DRAFTSITE: 'Koncept webu'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Pre zobrazenie návrhov alebo archivovaného obsahu sa musíte prihlásiť so svojím CMS heslom. <a href="%s">Pre návrat na publikovaný web kliknite Tu.</a>'
     Email: Email
     INSTALL_SUCCESS: 'Inštalácia úspešná!'
@@ -186,8 +186,8 @@ sk:
     VIEWPAGEIN: 'Prezrieť stránku v:'
   ErrorPage:
     CODE: 'Chybový kód'
-    DEFAULTERRORPAGECONTENT: 'Snažíte sa otvoriť stránku ktorá neexistuje. Prosím skontrolujte napísané URL a skuste znova.'
-    DEFAULTERRORPAGETITLE: 'Stránka nenajdená'
+    DEFAULTERRORPAGECONTENT: '<p>Prepáčte, vyzerá to tak, že sa snažíte otvoriť stránku ktorá neexistuje.</p><p> Prosím skontrolujte napísané URL a skuste znova.</p>'
+    DEFAULTERRORPAGETITLE: 'Stránka nenájdená'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Prepáčte, ale bol problém s manipuláciou vášho požiadavku.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Chyba servera'
     DESCRIPTION: 'Vlastný obsah pre rôzne prípady chýb (napr. "Stránka nenájdená")'
@@ -233,8 +233,8 @@ sk:
   Permission:
     CMS_ACCESS_CATEGORY: 'Prístup do CMS'
   Permissions:
-    CONTENT_CATEGORY: 'Právomoci k obsahu'
-    PERMISSIONS_CATEGORY: 'Právomoci pre úlohy a prístupy'
+    CONTENT_CATEGORY: 'Práva k obsahu'
+    PERMISSIONS_CATEGORY: 'Úlohy a prístupové práva'
   RedirectorPage:
     DESCRIPTION: 'Presmeruje na inú internú stránku'
     HASBEENSETUP: 'Stránka na presmerovanie bola nastavená bez cieľa.'
@@ -252,13 +252,13 @@ sk:
   ReportAdminForm:
     FILTERBY: 'Filtrovať podľa'
   SearchForm:
-    GO: Štart
+    GO: Choď
     SEARCH: Hľadať
     SearchResults: 'Výsledky vyhľadávania'
   SideReport:
     BROKENFILES: 'Stránky z poškodenými súbormi'
     BROKENLINKS: 'Stránky z poškodenými odkazmi'
-    BROKENREDIRECTORPAGES: 'Presmerovávacie stránky odkazujú na vymazané stránky'
+    BROKENREDIRECTORPAGES: 'Presmerovacie stránky ukazujú na smazané stránky'
     BROKENVIRTUALPAGES: 'Virtuálne stránky odkazujú na vymazané stránky'
     BrokenLinksGroupTitle: 'Správy o poškodených odkazoch'
     ContentGroupTitle: 'Správy o obsahu'
@@ -279,7 +279,7 @@ sk:
     EDIT_PERMISSION_HELP: 'Možnosť meniť globálne prístupové nastavenia/právomoci pre hlavné stránky.'
     PLURALNAME: 'Konfigurácie webu'
     SINGULARNAME: 'Konfigurácia webu'
-    SITENAMEDEFAULT: 'Meno vašej stránky'
+    SITENAMEDEFAULT: 'Názov vášho webu'
     SITETAGLINE: 'Slogan stránky'
     SITETITLE: 'Titulok stránky'
     TABACCESS: Prístup
@@ -297,40 +297,40 @@ sk:
     ADDEDTODRAFTSHORT: Koncept
     ALLOWCOMMENTS: 'Povoliť komentáre na tejto stránke?'
     APPEARSVIRTUALPAGES: 'Tento obsah sa zobrazí aj na virtuálnych stránkach v {title} sekciách.'
-    BUTTONCANCELDRAFT: 'Zrušiť zmeny v návrhu'
+    BUTTONCANCELDRAFT: 'Zrušiť zmeny v konceptu'
     BUTTONCANCELDRAFTDESC: 'Vymazať návrh a vrátiť sa k aktuálne zverejnenej stránke'
-    BUTTONSAVEPUBLISH: 'Uložiť a publikovať'
-    BUTTONUNPUBLISH: Nepublikovať
+    BUTTONSAVEPUBLISH: 'Uložiť & publikovať'
+    BUTTONUNPUBLISH: Nezverejniť
     BUTTONUNPUBLISHDESC: 'Odstrániť túto stránku z publikovaných na webe'
     CREATED: 'Dátum vytvorenia'
     Comments: Komentáre
     Content: Obsah
-    DEFAULTABOUTCONTENT: 'Túto stránku môžete vyplniť vlastným obsahom, alebo ju zmazať a vytvoriť vaše vlastné stránky.'
+    DEFAULTABOUTCONTENT: '<p>Túto stránku môžete vyplniť vlastným obsahom, alebo ju zmazať a vytvoriť vaše vlastné stránky.<br /></p>'
     DEFAULTABOUTTITLE: 'O nás'
-    DEFAULTCONTACTCONTENT: 'Túto stránku môžete naplniť vlastným obsahom, alebo zmazať a vytvoriť vaše vlastné stránky.'
+    DEFAULTCONTACTCONTENT: '<p>Túto stránku môžete vyplniť vlastným obsahom, alebo ju zmazať a vytvoriť vaše vlastné stránky.<br /></p>'
     DEFAULTCONTACTTITLE: 'Kontaktuje nás'
-    DEFAULTHOMECONTENT: '<p>Vitajte v SilverStripe! Toto je predvolená úvodná stránka. Môžete you upraviť otvorením <a href="admin/">CMS-ka</a>. Môžete isť na <a href="http://doc.silverstripe.org">dokumentáciu</a>, alebo začať s <a href="http://doc.silverstripe.org/doku.php?id=tutorials">návodmi</a>.</p>'
+    DEFAULTHOMECONTENT: '<p>Vitajte v SilverStripe! Toto je predvolená úvodná stránka. Môžete you upraviť otvorením <a href="admin/">CMS-ka</a>. Môžete isť na <a href="http://doc.silverstripe.org">dokumentáciu vývoára</a>, alebo začať s <a href="http://doc.silverstripe.org/doku.php?id=tutorials">návodmi</a>.</p>'
     DEFAULTHOMETITLE: Domov
     DELETEDPAGEHELP: 'Stránka už nie je viacej zverejnená'
     DELETEDPAGESHORT: Smazané
     DEPENDENT_NOTE: 'Nasledujúce stránky sú závislé na tejto stránke. To zahŕňa virtuálne stránky, presmerovania a stránky s odkazmi.'
     DESCRIPTION: 'Obecný obsah stránky'
     DependtPageColumnLinkType: 'Typ odkazu'
-    DependtPageColumnURL: Url
+    DependtPageColumnURL: URL
     EDITANYONE: 'Ktokoľvek kto sa môže prihlásiť do CMS'
-    EDITHEADER: 'Kto to môže editovať pomocou CMS?'
+    EDITHEADER: 'Kto môže editovať túto stránnku?'
     EDITONLYTHESE: 'Iba títo ľudia (vyberte zo zoznamu)'
     EDITORGROUPS: 'Skupiny upravovateľov'
-    EDIT_ALL_DESCRIPTION: 'Upraviť ktorúkoľvek stránku'
-    EDIT_ALL_HELP: 'Schopnosť upravovať ktorúkoľvek stránku na webe, nedbajúc na nastavenia v záložke prístupov. Vyžaduje právomoc "Prístupu k obsahu webu"'
-    Editors: 'Skupiny upravovatelov'
+    EDIT_ALL_DESCRIPTION: 'Upraviť akúkoľvek stránku'
+    EDIT_ALL_HELP: 'Schopnosť upravovať ktorúkoľvek stránku na webe, nedbajúc na nastavenia v záložke prístupov. Vyžaduje "Prístup k ''Stránkam'' sekcia" povolenie'
+    Editors: 'Skupiny upravovateľov'
     HASBROKENLINKS: 'Táto stránka obsahuje nefunkčné odkazy.'
     HTMLEDITORTITLE: Obsah
-    INHERIT: 'Zdediť od nadradenej stránky'
+    INHERIT: 'Dediť od nadradenej stránky'
     LASTUPDATED: 'Posledne aktualizované'
     LINKCHANGENOTE: 'Zmenenie odkazu na tejto stránke ovplyní aj odkazy na všetkých podstránkach.'
     MENUTITLE: 'Navigačná menovka'
-    METADESC: Popis
+    METADESC: 'Meta Popis'
     METADESCHELP: 'Vyhľadávače používajú tento obsah pre zobrazovanie výsledkov vyhľadávania (aj keď to nebude mať vplyv na ich hodnotenie).'
     METAEXTRA: 'Vlastné Meta Tagy'
     METAEXTRAHELP: 'HTML tagy pre ďalšie meta informácie. Napríklad &lt;meta name="vlastnýnazov" content="vlastný obsah tu"  /&gt;'
@@ -342,11 +342,11 @@ sk:
     PAGETITLE: 'Meno stránky'
     PAGETYPE: 'Typ stránky'
     PARENTID: 'Nadradená stránka'
-    PARENTTYPE: 'umiestnenie stránky'
-    PARENTTYPE_ROOT: 'Hlavná stránka'
-    PARENTTYPE_SUBPAGE: 'Podstránka pod rodičovskou strankov (vyberte nižšie)'
+    PARENTTYPE: 'Pozícia stránky'
+    PARENTTYPE_ROOT: 'Stránka najvyššej úrovne'
+    PARENTTYPE_SUBPAGE: 'Podstránka pod rodičovskou stránkov'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Spravovať prístupové práva pre obsah'
-    PERMISSION_GRANTACCESS_HELP: 'Povoliť nastavenia obmedzenia pre stranku v sekcií "Pages".'
+    PERMISSION_GRANTACCESS_HELP: 'Povoliť nastavenie obmedzenia pre stránku v sekcií "Stránky".'
     PLURALNAME: Stránky
     PageTypNotAllowedOnRoot: 'Stránka typu "{type}" nie je povolená na najvyššej úrovni'
     PageTypeNotAllowed: 'Stránka typu "{type}" nie je povolená ako potomok nadradenej stránky'
@@ -354,26 +354,26 @@ sk:
     REMOVEDFROMDRAFTSHORT: 'Odstránené z konceptu'
     REMOVE_INSTALL_WARNING: 'Upozornenie: Z bezpečnostných dôvodov odstránte súbor install.php z SilverStripe inštalácie.'
     REORGANISE_DESCRIPTION: 'Zmeniť štruktúru webu'
-    REORGANISE_HELP: 'Zoradiť stránky v stromovej štruktúre pomocou prenesenia.'
-    SHOWINMENUS: 'Zobrazovať v menu?'
-    SHOWINSEARCH: 'Zobrazovať v hľadaní?'
+    REORGANISE_HELP: 'Zoradiť stránky v stromovej štruktúre pomocou tiahni a pusť.'
+    SHOWINMENUS: 'Zobraziť v ponuke?'
+    SHOWINSEARCH: 'Zobraziť v hľadaní?'
     SINGULARNAME: Stránka
     TABBEHAVIOUR: Správanie
-    TABCONTENT: Obsah
+    TABCONTENT: 'Hlavný obsah'
     TABDEPENDENT: 'Závislé stránky'
     TOPLEVEL: 'Obsah Webu (Najvyššia úroveň)'
-    TOPLEVELCREATORGROUPS: 'Tvorcovia hlavných stránok'
-    URLSegment: 'časť URL'
+    TOPLEVELCREATORGROUPS: 'Tvorcovia najvyššej úrovne'
+    URLSegment: 'Čast URL'
     VIEWERGROUPS: 'Skupiny prezeračov'
-    VIEW_ALL_DESCRIPTION: 'Prezerať ktorúkoľvek stránku'
-    VIEW_ALL_HELP: 'Schopnosť prezerať ktorúkoľvek stránku na webe, nedbajúc na nastavenia v záložke prístupov. Vyžaduje právomoc "Prístupu k obsahu webu"'
-    VIEW_DRAFT_CONTENT: 'Zobraz obsah návrhu'
+    VIEW_ALL_DESCRIPTION: 'Prezerať akúkoľvek stránku'
+    VIEW_ALL_HELP: 'Schopnosť prezerať akúkoľvek stránku na webe, nedbajúc na nastavenia v záložke prístupov. Vyžaduje "Prístupu k obsahu webu" práva'
+    VIEW_DRAFT_CONTENT: 'Zobraziť obsah konceptu'
     VIEW_DRAFT_CONTENT_HELP: 'Vzťahuje sa na prezeranie stránok mimo CMS, v návrhovom móde. Užitočné pre externých spolupracovníkov bez prístupu do CMS-ka.'
     Viewers: 'Skupiny prezeračov'
     Visibility: Viditeľnosť
     has_one_Parent: 'Nadradená stránka'
     many_many_BackLinkTracking: 'Záznamy o Backlink-ov'
-    many_many_ImageTracking: 'Záznamy o  obrázkov'
+    many_many_ImageTracking: 'Záznamy o obrázkoch'
     many_many_LinkTracking: 'Záznamy o odkazoch'
   SiteTreeURLSegmentField:
     HelpChars: 'Špeciálne znaky sú automaticky zkonvertované alebo ostránené.'

@@ -304,7 +304,7 @@ si:
     BUTTONUNPUBLISHDESC: 'මෙම පිටුව ප්රසිද්ධ කල අඩවියෙන් ගලවන්න'
     CREATED: 'Date Created'
     Comments: Comments
-    Content: අන්තර්ගතය
+    Content: 'අන්තර්ගතය'
     DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
     DEFAULTABOUTTITLE: 'අපි ගැන'
     DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
@@ -325,12 +325,12 @@ si:
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     Editors: 'Editors Groups'
     HASBROKENLINKS: 'මෙම පිටුවට කැඩුනු බැදීම් ඇත'
-    HTMLEDITORTITLE: අන්තර්ගතය
+    HTMLEDITORTITLE: 'අන්තර්ගතය'
     INHERIT: 'Inherit from parent page'
     LASTUPDATED: 'Last Updated'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 'සංක්රමන ලේබලය'
-    METADESC: අර්තකතනය
+    METADESC: 'අර්තකතනය'
     METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'සැකසූ මෙටා ටැග්'
     METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
@@ -359,9 +359,9 @@ si:
     SHOWINSEARCH: 'සර්ච් ඵකේ පෙන්වන්නද?'
     SINGULARNAME: Page
     TABBEHAVIOUR: හැසිරීම
-    TABCONTENT: අන්තර්ගතය
+    TABCONTENT: 'අන්තර්ගතය'
     TABDEPENDENT: 'Dependent pages'
-    TOPLEVEL: අන්ර්ගතය
+    TOPLEVEL: 'අන්ර්ගතය'
     TOPLEVELCREATORGROUPS: 'Top level creators'
     URLSegment: 'URL කොටස'
     VIEWERGROUPS: 'Viewer Groups'

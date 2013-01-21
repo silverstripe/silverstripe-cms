@@ -2,7 +2,7 @@ ru:
   AssetAdmin:
     ADDFILES: 'Добавить файлы'
     ActionAdd: 'Добавить папку'
-    AppCategoryArchive: Архив
+    AppCategoryArchive: 'Архив'
     AppCategoryAudio: Аудио
     AppCategoryDocument: Документ
     AppCategoryFlash: Flash
@@ -13,7 +13,7 @@ ru:
     CurrentFolderOnly: 'Только в этой папке?'
     DetailsView: Детали
     FILES: Файлы
-    FILESYSTEMSYNC: Синхронизировать
+    FILESYSTEMSYNC: 'Синхронизировать'
     FILESYSTEMSYNCTITLE: 'Обновление базы данных файлов в файловой системе. Стоит использовать, если новые файлы были загружены без использования CMS, например, через FTP.'
     FROMTHEINTERNET: 'Из интернета'
     FROMYOURCOMPUTER: 'С диска'
@@ -21,7 +21,7 @@ ru:
     ListView: 'В виде списка'
     MENUTITLE: Файлы
     NEWFOLDER: 'Новая папка'
-    SIZE: Размер
+    SIZE: 'Размер'
     THUMBSDELETED: '{count} неиспользуемых миниатюр удалено'
     TreeView: 'В виде дерева'
     Upload: Загрузить
@@ -79,8 +79,8 @@ ru:
     ChoosePageParentMode: 'Выберите, где создать страницу'
     ChoosePageType: 'Выберите тип страницы'
     Create: Создать
-    DELETE: 'Удалить с тестового сайта'
-    DELETEFP: 'Удалить с опубликованного сайта'
+    DELETE: 'Удалить черновик'
+    DELETEFP: Удалить
     DESCREMOVED: 'и {count} страниц нижнего уровня'
     EMAIL: Email
     EditTree: 'Редактировать дерево'
@@ -96,15 +96,15 @@ ru:
     PUBALLFUN2: 'Нажатие этой кнопки выполнит ту же функцию, что и нажатие кнопки "Опубликовать" для каждой отдельной страницы. Данная функция предназначена для использования после значительных изменений содержимого, например, в момент создания нового сайта.'
     PUBPAGES: 'Готово: опубликовано {count} страниц'
     PageAdded: 'Страница успешно создана'
-    REMOVED: 'Удалено ''%s''%s с опубликованного сайта'
+    REMOVED: '''%s''%s удалено с опубликованного сайта'
     REMOVEDPAGE: 'Страница ''{title}'' удалена с опубликованного сайта'
-    REMOVEDPAGEFROMDRAFT: 'Удалено ''%s'' с чернового сайта'
+    REMOVEDPAGEFROMDRAFT: 'Страница ''%s'' удалена с чернового сайта'
     RESTORE: Восстановить
     RESTORED: '''{title}'' успешно восстановлен'
     ROLLBACK: 'Откатить до этой версии'
     ROLLEDBACKPUB: 'Произведен откат до опубликованной версии. Номер новой версии #{version}'
     ROLLEDBACKVERSION: 'Произведен откат до версии #%d. Номер новой версии #%d'
-    SAVE: Сохранить
+    SAVE: 'Сохранить'
     SAVEDRAFT: 'Сохранить черновик'
     TabContent: Содержимое
     TabHistory: История
@@ -170,13 +170,13 @@ ru:
     DRAFTSITE: 'Черновой сайт'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Вы должны войти с паролем для Системы Управления (CMS), чтобы увидеть черновое или архивное содержимое. <a href="%s">Нажмите сюда, чтобы вернуться на опубликованный сайт.</a>'
     Email: Email
-    INSTALL_SUCCESS: 'Успешная установка!'
+    INSTALL_SUCCESS: 'Инсталляция прошла успешно!'
     InstallFilesDeleted: 'Инсталляционные файлы были успешно удалены.'
     InstallSecurityWarning: 'Если вы не планируете в ближайшее время переустанавливать CMS, по соображениям безопасности рекомендуется удалить инсталляционные файлы (<em>для этого необходим администраторский доступ, см. выше</em>). Теперь веб-серверу требуется доступ для записи только к папке "assets"; вы можете защитить от записи все остальные папки. <a href="{link}" style="text-align: center;">Щелкните здесь, чтобы удалить инсталляционные файлы.</a>'
-    InstallSuccessCongratulations: 'SilverStripe был успешно установлен!'
+    InstallSuccessCongratulations: 'SilverStripe успешно установлен!'
     LOGGEDINAS: 'Залогинен как'
-    LOGIN: Вход
-    LOGOUT: Выход
+    LOGIN: 'Вход'
+    LOGOUT: 'Выход'
     NOTLOGGEDIN: 'Не вошли в систему'
     PUBLISHEDSITE: 'Опубликованный сайт'
     Password: Пароль
@@ -226,7 +226,7 @@ ru:
   LeftAndMain:
     DELETED: Удалено.
     PreviewButton: Просмотр
-    SAVEDUP: Сохранено.
+    SAVEDUP: 'Сохранено.'
     STATUSPUBLISHEDSUCCESS: '''{title}'' успешно опубликован'
     SearchResults: 'Результаты поиска'
     VersionUnknown: Неизвестно
@@ -260,10 +260,10 @@ ru:
     BROKENLINKS: 'Страницы с ошибочными ссылками'
     BROKENREDIRECTORPAGES: 'Страницы перенаправления, указывающие на удаленные страницы'
     BROKENVIRTUALPAGES: 'Виртуальные страницы, указывающие на удаленные страницы'
-    BrokenLinksGroupTitle: 'Отчет об ошибочных ссылках'
+    BrokenLinksGroupTitle: 'Отчеты об ошибочных ссылках'
     ContentGroupTitle: 'Отчеты по контенту'
     EMPTYPAGES: 'Пустые страницы'
-    LAST2WEEKS: 'Страницы, редактированные последние 2 недели'
+    LAST2WEEKS: 'Страницы, которые редактировались в последние 2 недели'
     OtherGroupTitle: Другие
     ParameterLiveCheckbox: 'Проверить опубликованный сайт'
     REPEMPTY: 'Отчет {title} пуст.'
@@ -318,7 +318,7 @@ ru:
     DependtPageColumnLinkType: 'Тип ссылки'
     DependtPageColumnURL: URL
     EDITANYONE: 'Все у кого есть доступ к Системе (CMS)'
-    EDITHEADER: 'Кто может редактировать это в Системе (CMS)?'
+    EDITHEADER: 'Кто может редактировать эту страницу?'
     EDITONLYTHESE: 'Только эти пользователи (выберите из списка)'
     EDITORGROUPS: 'Группы редактирования'
     EDIT_ALL_DESCRIPTION: 'Редактирование любой страницы'
@@ -331,7 +331,7 @@ ru:
     LINKCHANGENOTE: 'Изменение ссылки на эту страницу повлияет и на ссылки всех дочерних страниц.'
     MENUTITLE: 'Метка в навигации'
     METADESC: Описание
-    METADESCHELP: 'Поисковые системы используют эту контент для отображения результатов поиска.'
+    METADESCHELP: 'Поисковые системы используют этот контент для отображения результатов поиска (однако на рейтинг страницы он не влияет).'
     METAEXTRA: 'Пользовательские мета-тэги'
     METAEXTRAHELP: 'HTML-теги для дополнительной мета-информации. Например, &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'На этой странице есть неопубликованные изменения'
