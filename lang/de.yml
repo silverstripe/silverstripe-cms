@@ -39,7 +39,7 @@ de:
   BrokenLinksReport:
     Any: Alle
     BROKENLINKS: 'Defekte Links'
-    CheckSite: 'Seite überprüfen'
+    CheckSite: 'Site überprüfen'
     CheckSiteDropdownDraft: Vorschau-Site
     CheckSiteDropdownPublished: 'Veröffentlichte Site'
     ColumnDateLastModified: 'Zuletzt geändert'
@@ -54,8 +54,8 @@ de:
     ReasonDropdown: 'Zu überprüfendes Problem'
     ReasonDropdownBROKENFILE: 'Defekte Datei'
     ReasonDropdownBROKENLINK: 'Defekter Link'
-    ReasonDropdownRPBROKENLINK: 'Weiterleitungen, die auf eine nicht vorhandene Seite verweisen'
-    ReasonDropdownVPBROKENLINK: 'Virtuelle Seiten, die auf eine nicht vorhandene Seite verweisen'
+    ReasonDropdownRPBROKENLINK: 'Weiterleitung, die auf eine nicht vorhandene Seite verweist'
+    ReasonDropdownVPBROKENLINK: 'Virtuelle Seite, die auf eine nicht vorhandene Seite verweist'
     RedirectorNonExistent: 'Weiterleitung, die auf eine nicht vorhandene Seite verweist'
     VirtualPageNonExistent: 'Virtuelle Seite, die auf eine nicht vorhandene Seite verweist'
   CMSAddPageController:
@@ -80,14 +80,14 @@ de:
     ChoosePageType: 'Seitentyp auswählen'
     Create: Erstellen
     DELETE: 'Von Entwurf-Seite löschen'
-    DELETEFP: 'Von veröffentlicher Seite entfernen'
-    DESCREMOVED: 'und {count} abstammende Seiten'
+    DELETEFP: Löschen
+    DESCREMOVED: 'und {count} untergeordnete Seiten'
     EMAIL: E-Mail
     EditTree: 'Seitenbaum bearbeiten'
     ListFiltered: 'Gefilterte Liste'
     MENUTITLE: 'Seite bearbeiten'
     NEWPAGE: 'Neue {pagetype}'
-    PAGENOTEXISTS: 'Diese Seite wurde nicht gefunden'
+    PAGENOTEXISTS: 'Diese Seite existiert nicht'
     PAGES: Seiten
     PAGETYPEANYOPT: Alle
     PAGETYPEOPT: Seitentyp
@@ -96,9 +96,9 @@ de:
     PUBALLFUN2: 'Dieser Button bewirkt dasselbe wie auf jeder Seite "veröffentlichen" zu wählen. Sie sollten diese Funktion nutzen, wenn grössere Inhaltsänderungen stattgefunden haben, zum Beispiel wenn die Seite erstellt wurde.'
     PUBPAGES: 'Abgeschlossen: {count} Seiten wurden veröffentlicht'
     PageAdded: 'Seite erfolgreich erstellt'
-    REMOVED: 'Lösche ''%s''%s von der Live-Seite'
+    REMOVED: '''%s''%s von der Live-Seite gelöscht'
     REMOVEDPAGE: '''{title}'' wurde von der veröffentlichten Site entfernt'
-    REMOVEDPAGEFROMDRAFT: 'Lösche ''%s'' von der Entwurfs-Seite'
+    REMOVEDPAGEFROMDRAFT: 'Lösche ''%s'' von der Entwurfs-Site'
     RESTORE: Wiederherstellen
     RESTORED: '''{title}'' wurde wiederhergestellt'
     ROLLBACK: 'Diese Version wiederherstellen'
@@ -107,7 +107,7 @@ de:
     SAVE: Speichern
     SAVEDRAFT: 'Entwurf speichern'
     TabContent: Inhalt
-    TabHistory: Verlauf
+    TabHistory: Historie
     TabSettings: Einstellungen
     TreeFiltered: 'Seitenbaum gefiltert'
     TreeFilteredClear: 'Filter zurücksetzen'
@@ -171,7 +171,7 @@ de:
     DRAFT_SITE_ACCESS_RESTRICTION: 'Sie müssen sich mit Ihrem CMS Passwort einloggen, um den Entwurf oder den archivierten Inhalt zu sehen. <a href="%s">Zurück zur veröffentlichten Seite.</a>'
     Email: E-Mail
     INSTALL_SUCCESS: 'Die Installation war erfolgreich!'
-    InstallFilesDeleted: 'Die Installationsdateien wurden erfolgreich entfernt.'
+    InstallFilesDeleted: 'Die Installationsdateien wurden erfolgreich gelöscht.'
     InstallSecurityWarning: 'Zu Ihrer Sicherheit löschen Sie jetzt bitte die Installationsdateien, es sei denn Sie möchten zu einem späteren Zeitpunkt erneut installieren. (<em>Dies erfordert den Administrator-Zugang (siehe oben)</em>). Der Webserver benötigt nun nur noch Schreibrechte auf das "assets" Verzeichnis und Sie können die Schreibrechte für alle anderen Ordner entfernen. <a href="{link}" style="text-align: center;">Die Installationsdaten jetzt löschen.</a> '
     InstallSuccessCongratulations: 'SilverStripe wurde erfolgreich installiert!'
     LOGGEDINAS: 'Angemeldet als'
@@ -281,7 +281,7 @@ de:
     SINGULARNAME: Seitenkonfiguration
     SITENAMEDEFAULT: 'Name Ihrer Website'
     SITETAGLINE: 'Ihr Websiteslogan'
-    SITETITLE: 'Titel der Internetseite'
+    SITETITLE: 'Titel der Site'
     TABACCESS: Zugriff
     TABMAIN: Hauptteil
     TAGLINEDEFAULT: 'Ihr Websiteslogan'
@@ -326,11 +326,11 @@ de:
     Editors: 'Bearbeiter Gruppen'
     HASBROKENLINKS: 'Diese Seite enthält ungültige Verweise.'
     HTMLEDITORTITLE: Inhalt
-    INHERIT: 'Übernehmen von der übergeordneten Seite'
+    INHERIT: 'Von der übergeordneten Seite erben'
     LASTUPDATED: 'Letzte Änderung'
-    LINKCHANGENOTE: 'Das Ändern des Links zu dieser Seite führt ebenfalls zur Änderungen aller Links der Unterseiten dieser Seite.'
+    LINKCHANGENOTE: 'Das Ändern des Links zu dieser Seite führt ebenfalls zur Änderung aller Links der Unterseiten dieser Seite.'
     MENUTITLE: Navigationsbezeichnung
-    METADESC: Beschreibung
+    METADESC: 'Meta Description'
     METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'Benutzerdefinierte Meta-Tags'
     METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
@@ -351,7 +351,7 @@ de:
     PageTypNotAllowedOnRoot: 'Der Seitentyp "{type}" darf nicht auf der Grundebene verwendet werden.'
     PageTypeNotAllowed: 'Der Seitentyp "{type}" kann nicht als Kind dieser übergeordneten Seite verwendet werden'
     REMOVEDFROMDRAFTHELP: 'Die Seite ist veröffentlicht, wurde aber von der Entwurf Seite gelöscht.'
-    REMOVEDFROMDRAFTSHORT: 'Von Entwurf entfernt'
+    REMOVEDFROMDRAFTSHORT: 'Aus Entwurf entfernt'
     REMOVE_INSTALL_WARNING: 'Warnung: Aus Sicherheitsgründen sollte die Datei install.php aus dieser SilverStripe Installation entfernt werden.'
     REORGANISE_DESCRIPTION: 'Kann die Site-Struktur reorganisieren'
     REORGANISE_HELP: 'Seiten im Seitenbaum per Drag&Drop sortieren.'
@@ -359,7 +359,7 @@ de:
     SHOWINSEARCH: 'In der Suche anzeigen?'
     SINGULARNAME: Seite
     TABBEHAVIOUR: Verhalten
-    TABCONTENT: Inhalt
+    TABCONTENT: Haupt-Inhalt
     TABDEPENDENT: 'Abhängige Seiten'
     TOPLEVEL: 'Seiten Inhalt (Top Level)'
     TOPLEVELCREATORGROUPS: Bearbeitergruppen
@@ -393,13 +393,13 @@ de:
     TO: bis
     VIEWFIRST: Erster
     VIEWLAST: Letzter
-    VIEWNEXT: 'Zeige nächste'
+    VIEWNEXT: Nächster
     VIEWPREVIOUS: Vorheriger
   TreeTools:
     DisplayLabel: 'Anzeigen:'
   ViewArchivedEmail.ss:
     CANACCESS: 'Sie können unter folgendem Verweis auf die archivierte Seite zugreifen:'
-    HAVEASKED: 'Sie haben darum gebeten, den Inhalt unserer Seite zu sehen, am'
+    HAVEASKED: 'Sie haben darum gebeten, den Inhalt unserer Site zu sehen, am'
   VirtualPage:
     CHOOSE: 'Wählen Sie eine Seite, auf die Sie verweisen möchten'
     DESCRIPTION: 'Zeigt den Inhalt einer anderen Seite'

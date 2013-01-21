@@ -96,7 +96,7 @@ pl:
     PUBALLFUN2: 'Naciśnięcie tego przycisku spowoduje przejście po wszystkich stronach i opublikowanie ich. Zazwyczaj używa się tego, gdy w witrynie było bardzo dużo zmian, na przykład gdy witryna została utworzona.'
     PUBPAGES: 'Zrobiono:  Opublikowano {count} stron'
     PageAdded: 'Pomyślnie utworzono stronę'
-    REMOVED: 'Usunięto ''%s%s z opublikowanej witryny'
+    REMOVED: 'Usunięto ''%s''%s z opublikowanej witryny'
     REMOVEDPAGE: 'Usunięto ''{title}'' z opublikowanych stron'
     REMOVEDPAGEFROMDRAFT: '''%s'' usunięto ze szkiców'
     RESTORE: Przywróć
@@ -167,8 +167,8 @@ pl:
     ARCHIVEDSITE: 'Podgląd wersji'
     ARCHIVEDSITEFROM: 'Zarchiwizowana witryna od'
     CMS: 'System Zarządzania Treścią'
-    DRAFTSITE: 'Strona nieopublikowana'
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Musisz zalogować się za pomocą swojego hasła do CMSa, aby obejrzeć brudnopis i zarchiwizowaną treść. <a href="%s">Kliknij tutaj aby powrócić do opublikowanej strony.</a>'
+    DRAFTSITE: 'Szkic witryny'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Musisz zalogować się za pomocą swojego hasła do CMSa, aby obejrzeć nieopublikowaną i zarchiwizowaną treść. <a href="%s">Kliknij tutaj aby powrócić do opublikowanej strony.</a>'
     Email: 'Adres e-mail'
     INSTALL_SUCCESS: 'Instalacja przebiegła pomyślnie'
     InstallFilesDeleted: 'Pliki instalacyjne zostały pomyślnie usunięte'
@@ -195,10 +195,10 @@ pl:
     PLURALNAME: 'Strony błędów'
     SINGULARNAME: 'Strona błędów'
     400: '400 - Nieprawidłowe zapytanie'
-    401: '401 - Nieautoryzowany Dostęp'
+    401: '401 - Nieautoryzowany dostęp'
     403: '403 - Zabroniony'
-    404: '404 - Nie Znaleziono'
-    405: '405 - Niedozwolona Metoda'
+    404: '404 - Nie znaleziono'
+    405: '405 - Niedozwolona metoda'
     406: '406 - Niedozwolone'
     407: '407 - Wymagane Uwierzytelnienie do Serwera Proxy'
     408: '408 - Koniec czasu oczekiwania na żądanie'
@@ -225,7 +225,7 @@ pl:
     UploadFilesButton: Prześlij
   LeftAndMain:
     DELETED: Usunięty
-    PreviewButton: Podgląd
+    PreviewButton: 'Podgląd'
     SAVEDUP: Zapisane
     STATUSPUBLISHEDSUCCESS: 'Opublikowano ''{title}'' '
     SearchResults: 'Wyniki wyszukiwania'
@@ -239,13 +239,13 @@ pl:
     DESCRIPTION: 'Przekierowuje do wskazanej wewnętrznej strony'
     HASBEENSETUP: 'Strona przekierowująca została ustawiona bez celu, do którego ma przekierowywać.'
     HEADER: 'Ta strona przeniesie użytkowników na inną stronę'
-    OTHERURL: 'Inny adres URL strony'
+    OTHERURL: 'Adres URL innej strony'
     PLURALNAME: 'Strony przekierowujące'
     REDIRECTTO: 'Przenieś do'
     REDIRECTTOEXTERNAL: 'Inna strona'
-    REDIRECTTOPAGE: 'Strona na Twojej stronie www'
+    REDIRECTTOPAGE: 'Strona na Twojej witrynie'
     SINGULARNAME: 'Strona przekierowująca'
-    YOURPAGE: 'Strona na Twojej stronie www'
+    YOURPAGE: 'Strona na Twojej witrynie'
   ReportAdmin:
     MENUTITLE: Raporty
     ReportTitle: Tytuł
@@ -275,7 +275,7 @@ pl:
   SiteConfig:
     DEFAULTTHEME: '(Użyj domyślnego szablonu)'
     EDITHEADER: 'Kto może edytować strony tego serwisu?'
-    EDIT_PERMISSION: 'Zarządzanie konfiguracją strony'
+    EDIT_PERMISSION: 'Zarządzanie konfiguracją serwisu'
     EDIT_PERMISSION_HELP: 'Możliwość edycji globalnych ustawień bezpieczeństwa/uprawnień do stron pierwszego poziomu.'
     PLURALNAME: 'Konfiguracje strony'
     SINGULARNAME: 'Konfiguracja strony'
@@ -301,7 +301,7 @@ pl:
     BUTTONCANCELDRAFTDESC: 'Usuń zmiany i wróć do istniejącej wersji opublikowanej strony'
     BUTTONSAVEPUBLISH: 'Zapisz i opublikuj'
     BUTTONUNPUBLISH: Nieopublikowane
-    BUTTONUNPUBLISHDESC: 'Zmień tę stronę na opublikowaną'
+    BUTTONUNPUBLISHDESC: 'Usuń tę stronę z opublikowanej witryny'
     CREATED: 'Data utworzenia'
     Comments: Komentarze
     Content: Zawartość
@@ -309,8 +309,8 @@ pl:
     DEFAULTABOUTTITLE: 'O nas'
     DEFAULTCONTACTCONTENT: '<p>Możesz wypełnić tę stronę własną treścią, usunąć ją i tworzyć własne strony.<br /></p>'
     DEFAULTCONTACTTITLE: Kontakt
-    DEFAULTHOMECONTENT: '<p>Witaj w SilverStripe! To jest domyślna strona domowa. Możesz ją edytować, otwierając <a href="admin/">CMS</a>. Możesz teraz otworzyć <a href="http://doc.silverstripe.com">dokumentację dla developerów</a>, lub rozpocząć <a href="http://doc.silverstripe.com/doku.php?id=tutorials">jeden z samouczyków.</a></p>'
-    DEFAULTHOMETITLE: 'Strona Domowa'
+    DEFAULTHOMECONTENT: '<p>Witaj w SilverStripe! To jest domyślna strona główna. Możesz ją edytować, otwierając <a href="admin/">CMS</a>. Możesz również otworzyć <a href="http://doc.silverstripe.com">dokumentację dla developerów</a>, lub rozpocząć <a href="http://doc.silverstripe.com/doku.php?id=tutorials">jeden z samouczków.</a></p>'
+    DEFAULTHOMETITLE: 'Strona główna'
     DELETEDPAGEHELP: 'Strona nie jest już opublikowana'
     DELETEDPAGESHORT: Usunięty
     DEPENDENT_NOTE: 'Poniższe strony są zależne od tej (łącznie z wirtualnymi stronami, stronami przekierowującymi oraz stronami z treścią).'
@@ -322,7 +322,7 @@ pl:
     EDITONLYTHESE: 'Tylko Ci ludzi (wybierz z listy)'
     EDITORGROUPS: 'Grupy edytujących'
     EDIT_ALL_DESCRIPTION: 'Edytuj jakąkolwiek stronę'
-    EDIT_ALL_HELP: 'Zdolność edycji jakiejkolwiek strony na witrynie, bez względu na ustawienia w zakładce Dostęp. Wymaga uprawnienia "Dostęp do edycji treści"'
+    EDIT_ALL_HELP: 'Możliwość edycji jakiejkolwiek strony w witrynie, bez względu na ustawienia w zakładce Dostęp. Wymaga uprawnienia "Dostęp do edycji treści"'
     Editors: 'Grupy Edytorów'
     HASBROKENLINKS: 'Ta strona ma niedziałający link'
     HTMLEDITORTITLE: Zawartość
@@ -332,7 +332,7 @@ pl:
     MENUTITLE: 'Sekcja nawigacji'
     METADESC: Opis
     METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
-    METAEXTRA: 'Własne Meta Tagi'
+    METAEXTRA: 'Własne meta tagi'
     METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Na stronie znajdują się nieopublikowane zmiany'
     MODIFIEDONDRAFTSHORT: Zmodyfikowana
@@ -361,20 +361,20 @@ pl:
     TABBEHAVIOUR: Zachowanie
     TABCONTENT: Zawartość
     TABDEPENDENT: 'Strony zależne'
-    TOPLEVEL: 'Zawartość strony (Główny Poziom)'
+    TOPLEVEL: 'Zawartość witryny (główny poziom)'
     TOPLEVELCREATORGROUPS: 'Twórcy najwyższego szczebla'
     URLSegment: 'Segment adresu URL'
     VIEWERGROUPS: 'Grupy przeglądających'
     VIEW_ALL_DESCRIPTION: 'Przeglądanie stron'
     VIEW_ALL_HELP: 'Zdolność oglądania jakiejkolwiek strony na witrynie, bez względu na ustawienia w zakładce Dostęp. Wymaga uprawnienia "Dostęp do edycji treści"'
-    VIEW_DRAFT_CONTENT: 'Obejrzyj treść nieopublikowaną'
+    VIEW_DRAFT_CONTENT: 'Obejrzyj szkic treści'
     VIEW_DRAFT_CONTENT_HELP: 'Stosowane do oglądania szkiców stron poza systemem CMS. Przydatne w przypadku zewnętrznych współpracowników nie mających dostępu do CMS.'
     Viewers: 'Grupy przeglądających'
     Visibility: Widoczność
     has_one_Parent: 'Strona Nadrzędna'
     many_many_BackLinkTracking: 'Śledzenie backlinków'
-    many_many_ImageTracking: 'Śledzenie Obrazków'
-    many_many_LinkTracking: 'Śledzenie Linków'
+    many_many_ImageTracking: 'Śledzenie obrazków'
+    many_many_LinkTracking: 'Śledzenie linków'
   SiteTreeURLSegmentField:
     HelpChars: 'Znaki specjalne są automatycznie zamienione lub usunięte.'
   StaticExporter:

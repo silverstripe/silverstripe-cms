@@ -99,7 +99,7 @@ tr:
     REMOVED: '''%s'' aktif siteden silindi'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: '''%s'' taslak siteden silindi'
-    RESTORE: 'Eski haline getir'
+    RESTORE: 'Geri yükle'
     RESTORED: 'Restored ''{title}'' successfully'
     ROLLBACK: 'Bu sürüme geri dön'
     ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
