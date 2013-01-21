@@ -4,7 +4,7 @@ lt:
     ActionAdd: 'Pridėti aplanką'
     AppCategoryArchive: Archyvas
     AppCategoryAudio: Garsas
-    AppCategoryDocument: Document
+    AppCategoryDocument: Dokumentas
     AppCategoryFlash: Flash
     AppCategoryImage: Paveikslėlis
     AppCategoryVideo: Video
@@ -14,7 +14,7 @@ lt:
     DetailsView: 'Detalesnė informacija'
     FILES: Bylos
     FILESYSTEMSYNC: 'Sinchronizuoti bylas'
-    FILESYSTEMSYNCTITLE: 'Atnaujinti TVS bylų sarašo duomenų bazę. Naudotina, kai naujos bylos buvo įkeltos naudojant trečios šalies programinę įrangą, Pavyzdžiui FTP.'
+    FILESYSTEMSYNCTITLE: 'Atnaujinti TVS bylų sąrašo duomenų bazę. Naudotina, kai naujos bylos buvo įkeltos naudojant trečios šalies programinę įrangą, pavyzdžiui, FTP.'
     FROMTHEINTERNET: 'Iš interneto'
     FROMYOURCOMPUTER: 'Iš jūsų kompiuterio'
     Filetype: 'Bylos tipas'
@@ -43,7 +43,7 @@ lt:
     CheckSiteDropdownDraft: 'Juodraštinė svetainė'
     CheckSiteDropdownPublished: 'Publikuojama svetainė'
     ColumnDateLastModified: 'Paskutinį kartą pakeista'
-    ColumnDateLastPublished: 'Paskutini kartą publikuota'
+    ColumnDateLastPublished: 'Paskutinį kartą publikuota'
     ColumnProblemType: 'Problemos tipas'
     ColumnURL: 'URL adresas'
     HasBrokenFile: 'turi sugadintą bylą'
@@ -73,10 +73,10 @@ lt:
     MENUTITLE: Bylos
   CMSMain:
     ACCESS: 'Priėjimas prie ''{title}'' dalies'
-    ACCESS_HELP: 'Leisti peržiūrėti svetainės medžio ir turinio skiltį. Peržiūros, bei redagavimo leidimai gali būti pakeisti per iškrentančius pasirinkimus ir per atskirus "Turinio leidimai".'
+    ACCESS_HELP: 'Leisti peržiūrėti svetainės medžio ir turinio skiltį. Peržiūros bei redagavimo leidimai gali būti pakeisti per iškrentančius pasirinkimus ir per atskirą "Turinio leidimai".'
     AddNew: 'Pridėti naują puslapį'
     AddNewButton: 'Pridėti naują'
-    ChoosePageParentMode: 'Pasirinkite kur sukurti šį puslapį'
+    ChoosePageParentMode: 'Pasirinkite, kur sukurti šį puslapį'
     ChoosePageType: 'Pasirinkite puslapio tipą'
     Create: Sukurti
     DELETE: 'Ištrinti juodraštį'
@@ -93,7 +93,7 @@ lt:
     PAGETYPEOPT: 'Puslapio tipas'
     PUBALLCONFIRM: 'Prašome publikuoti kiekvieną svetainės puslapį, kopijuojant turinį į svetainę'
     PUBALLFUN: '"Publikuoti viską" funkcionalumas'
-    PUBALLFUN2: "Paspaudus šį mygtuką, bus publikuotas kiekvienas puslapis svetainėje. \\nŠitai numatyta naudoti kai padaromi dideli pakeitimai svetainės turinyje, \\npavyzdžiui ką tik sukūrus svetainę."
+    PUBALLFUN2: "Paspaudus šį mygtuką, bus publikuotas kiekvienas puslapis svetainėje. \\nŠitai numatyta naudoti, kai padaromi dideli pakeitimai svetainės turinyje, \\npavyzdžiui, ką tik sukūrus svetainę."
     PUBPAGES: 'Įvykdyta: Publikuoti {count} puslapiai'
     PageAdded: 'Puslapis sėkmingai sukurtas'
     REMOVED: 'Deleted ''%s''%s from live site'
@@ -101,7 +101,7 @@ lt:
     REMOVEDPAGEFROMDRAFT: '''%s'' pašalintas iš juodraštinės svetainės'
     RESTORE: Atstatyti
     RESTORED: '''{title}'' atstatytas sėkmingai'
-    ROLLBACK: 'Gryžti prie šios versijos'
+    ROLLBACK: 'Grįžti prie šios versijos'
     ROLLEDBACKPUB: 'Buvo sugrįžta prie publikuojamos versijos. Naujas versijos numeris yra #{version}'
     ROLLEDBACKVERSION: 'Buvo sugrįžta prie versijos #%d. Naujas versijos numeris yra #%d'
     SAVE: Išsaugoti
@@ -151,7 +151,7 @@ lt:
   CMSSearch:
     FILTERDATEFROM: Nuo
     FILTERDATEHEADING: Data
-    FILTERDATETO: iki
+    FILTERDATETO: Iki
     FILTERLABELTEXT: Turinys
   CMSSettingsController:
     MENUTITLE: Nustatymai
@@ -168,55 +168,55 @@ lt:
     ARCHIVEDSITEFROM: 'Archyvuota svetainė iš'
     CMS: TVS
     DRAFTSITE: 'Juodraštinė svetainė'
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Jūs turite prisijungti su savo TVS slaptažodžiu, kad galėtumėte peržiūrėti juodraščio arba archyvo turinį.<a href="%s">Spauskite čia, norėdami grįžti į svetainę</a>.'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Jūs turite prisijungti su savo TVS slaptažodžiu, kad galėtumėte peržiūrėti juodraščio arba archyvo turinį.<a href="%s">Spauskite čia, norėdami grįžti į svetainę.</a>'
     Email: 'E. paštas'
-    INSTALL_SUCCESS: 'Installation Successful!'
+    INSTALL_SUCCESS: 'Įdiegimas sėkmingas!'
     InstallFilesDeleted: 'Įdiegimo bylos sėkmingai pašalintos'
-    InstallSecurityWarning: 'Saugumo sumetimais Jūs turėtumėte ištrinti įdiegimo bylas, nebent vėliau Jūs planuojate iš naujo diegti (<em>bus reikalinga administravimo prieiga, žiūrėkite viršuje</em>). Web paslaugos programa turi gauti rašymo teises "assets" aplankui, kitiems aplankams tokių teisių nereikia. <a href="{link}" style="text-align: center;">Spauskite čia jei norite ištrinti įdiegimo bylas</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
-    LOGGEDINAS: 'Prisijungėte kaip '
+    InstallSecurityWarning: 'Saugumo sumetimais Jūs turėtumėte ištrinti įdiegimo bylas, nebent vėliau Jūs planuojate iš naujo diegti (<em>bus reikalinga administravimo prieiga, žiūrėkite viršuje</em>). Web paslaugos programa turi gauti rašymo teises "assets" aplankui, kitiems aplankams tokių teisių nereikia. <a href="{link}" style="text-align: center;">Spauskite čia, jei norite ištrinti įdiegimo bylas.</a>'
+    InstallSuccessCongratulations: 'SilverStripe buvo sėkmingai įdiegta!'
+    LOGGEDINAS: 'Prisijungėte kaip'
     LOGIN: Prisijungti
     LOGOUT: Atsijungti
     NOTLOGGEDIN: Neprisijungęs
     PUBLISHEDSITE: 'Publikuojama svetainė'
     Password: Slaptažodis
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    PostInstallTutorialIntro: 'Šis puslapis yra supaprastinta SilverStripe 3 tinklapio versija. Norėdami išplėsti jo funkcionalumą, apsilankykite {link}.'
     StartEditing: 'Jūs galite pradėti redaguoti svetainės turinį, atidarydami <a href="{link}">TVS</a>.'
     UnableDeleteInstall: 'Nepajėgiame ištrinti įdiegimo bylų. Prašome pašalinti bylas rankiniu būdu.'
     VIEWPAGEIN: 'Peržiūrėti puslapį:'
   ErrorPage:
     CODE: 'Klaidos kodas'
-    DEFAULTERRORPAGECONTENT: '	<p>Atsiprašome, atrodo, kad Jūs bandėte patekti į puslapį, kuris neegzistuoja.</p><p>Prašome patikrinti URL adresą ir pabandyti dar kartą.</p>'
+    DEFAULTERRORPAGECONTENT: '<p>Atsiprašome, atrodo, kad Jūs bandėte patekti į puslapį, kuris neegzistuoja.</p><p>Prašome patikrinti URL adresą ir pabandyti dar kartą.</p>'
     DEFAULTERRORPAGETITLE: 'Puslapis nerastas'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Apgailestaujame, tačiau apdorojant užklausą įvyko klaida.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Tarnybinės stoties klaida'
-    DESCRIPTION: 'Savitas turinys, skirtingai klaidai apibrėžti (Pvz.: "Puslapis nerastas")'
+    DESCRIPTION: 'Savitas turinys skirtingai klaidai apibrėžti (pvz.: "Puslapis nerastas")'
     ERRORFILEPROBLEM: 'Klaida atveriant rašymui bylą "{filename}". Prašome patikrinti bylos leidimus.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
+    PLURALNAME: 'Klaidos Puslapiai'
+    SINGULARNAME: 'Klaidos Puslapis'
     400: '400 - Bloga užklausa'
     401: '401 - Leidimas neduotas'
     403: '403 - Uždrausta'
     404: '404 - Puslapis nerastas'
     405: '405 - Neleistinas būdas'
-    406: '406 - nepriimtina'
-    407: '407 - reikalinga proxy autentifikacija'
-    408: '408 - baigėsi užklausai skirtas laikas'
+    406: '406 - Nepriimtina'
+    407: '407 - Reikalinga proxy autentifikacija'
+    408: '408 - Baigėsi užklausai skirtas laikas'
     409: '409 - Konfliktas'
     410: '410 - Nebėra'
-    411: '411 - reikalingas ilgis'
-    412: '412 - išankstinė klaida'
-    413: '413 - per didelė užklausa'
-    414: '414 - per ilgas URL adresas'
-    415: '415 - nežinomas media tipas'
-    416: '416 - netinkamos užklausimo ribos'
-    417: '417 - netikėtas atsakymas'
-    500: '500 - vidinė serverio klaida'
-    501: '501 - neįgyvendinta'
-    502: '502 - neteisingas gateway'
+    411: '411 - Reikalingas ilgis'
+    412: '412 - Išankstinė klaida'
+    413: '413 - Per didelė užklausa'
+    414: '414 - Per ilgas URL adresas'
+    415: '415 - Nežinomas media tipas'
+    416: '416 - Netinkamos užklausimo ribos'
+    417: '417 - Netikėtas atsakymas'
+    500: '500 - Vidinė serverio klaida'
+    501: '501 - Neįgyvendinta'
+    502: '502 - Tinklų sietuvo (gateway) klaida'
     503: '503 - Servisas nepasiekiamas'
-    504: '504 - viršytas laiko limitas'
-    505: '505 - nepalaikoma HTTP versija'
+    504: '504 - Viršytas laiko limitas'
+    505: '505 - Nepalaikoma HTTP versija'
   Folder:
     AddFolderButton: 'Pridėti aplanką'
     DELETEUNUSEDTHUMBNAILS: 'Ištrinti nenaudojamus peržiūros paveikslėlius'
@@ -240,11 +240,11 @@ lt:
     HASBEENSETUP: 'Nukreipimo puslapis nustatytas be jokio nukreipimo.'
     HEADER: 'Šis puslapis nukreips lankytojus į kitą puslapį'
     OTHERURL: 'Kitos svetainės URL adresas'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: 'Nukreipimo Puslapiai'
     REDIRECTTO: 'Nukreipti į'
     REDIRECTTOEXTERNAL: 'Kita svetainė'
     REDIRECTTOPAGE: 'Puslapis Jūsų svetainėje'
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: 'Nukreipimo Puslapis'
     YOURPAGE: 'Puslapį Jūsų svetainėje'
   ReportAdmin:
     MENUTITLE: Ataskaitos
@@ -258,12 +258,12 @@ lt:
   SideReport:
     BROKENFILES: 'Puslapiai su sugadintomis bylomis'
     BROKENLINKS: 'Puslapiai su neveikiančiomis nuorodomis'
-    BROKENREDIRECTORPAGES: 'Nukreipiantieji puslapiai kurie nukreipia į ištrintus puslapius'
-    BROKENVIRTUALPAGES: 'Virtualūs puslapiai vedantys į ištrintus puslapius'
+    BROKENREDIRECTORPAGES: 'Nukreipiamieji puslapiai, kurie nukreipia į ištrintus puslapius'
+    BROKENVIRTUALPAGES: 'Virtualūs puslapiai, vedantys į ištrintus puslapius'
     BrokenLinksGroupTitle: 'Neveikiančių nuorodų ataskaitos'
     ContentGroupTitle: 'Turinio ataskaitos'
     EMPTYPAGES: 'Puslapiai be turinio'
-    LAST2WEEKS: 'Paskutines 2 savaites keisti puslapiai'
+    LAST2WEEKS: 'Per paskutines 2 savaites keisti puslapiai'
     OtherGroupTitle: Kita
     ParameterLiveCheckbox: 'Patikrinti publikuojamą svetainę'
     REPEMPTY: '{title} ataskaita yra tuščia.'
@@ -277,8 +277,8 @@ lt:
     EDITHEADER: 'Kas gali redaguoti šį puslapį?'
     EDIT_PERMISSION: 'Tvarkyti svetainės parametrus'
     EDIT_PERMISSION_HELP: 'Galimybė tvarkyti globalias priėjimo, pagrindinio puslapio teises.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
+    PLURALNAME: 'Svetainės Konfigūracijos'
+    SINGULARNAME: 'Svetainės Konfigūracija'
     SITENAMEDEFAULT: 'Jūsų Svetainės Pavadinimas'
     SITETAGLINE: 'Svetainės šūkis'
     SITETITLE: 'Svetainės pavadinimas'
@@ -296,7 +296,7 @@ lt:
     ADDEDTODRAFTHELP: 'Puslapis dar nebuvo publikuotas'
     ADDEDTODRAFTSHORT: Juodraštis
     ALLOWCOMMENTS: 'Ar leisti komentuoti šį puslapį?'
-    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+    APPEARSVIRTUALPAGES: 'Šis turinys taip pat matomas virtualiuose puslapiuose, {title} skyriuose.'
     BUTTONCANCELDRAFT: 'Atšaukti juodraščio pakeitimus'
     BUTTONCANCELDRAFTDESC: 'Ištrinti juodraštį ir grįžti prie šiuo metu publikuojamo puslapio'
     BUTTONSAVEPUBLISH: 'Išsaugoti ir publikuoti'
@@ -313,14 +313,14 @@ lt:
     DEFAULTHOMETITLE: Pradžia
     DELETEDPAGEHELP: 'Puslapis nebepublikuojamas'
     DELETEDPAGESHORT: Ištrinti
-    DEPENDENT_NOTE: 'Šiam puslapiui priklauso šie puslapiai. Tai gali būti virtualūs, nukreipiantys puslapiai, bei puslapiai rodantys kitų puslapių turinį.'
+    DEPENDENT_NOTE: 'Šiam puslapiui priklauso šie puslapiai. Tai gali būti virtualūs, nukreipiamieji puslapiai bei puslapiai, rodantys kitų puslapių turinį.'
     DESCRIPTION: 'Standartinio turinio puslapis'
     DependtPageColumnLinkType: 'Nuorodos tipas'
     DependtPageColumnURL: 'URL adresas'
-    EDITANYONE: 'Bet kuris prisijungęs prie TVS'
+    EDITANYONE: 'Bet kuris, prisijungęs prie TVS'
     EDITHEADER: 'Kas gali redaguoti šį puslapį?'
     EDITONLYTHESE: 'Tik šie žmonės (pasirinkite iš sąrašo)'
-    EDITORGROUPS: 'Redaktorių grupė'
+    EDITORGROUPS: 'Redaktorių grupės'
     EDIT_ALL_DESCRIPTION: 'Gali redaguoti puslapį, apeinant puslapio redagavimo teises'
     EDIT_ALL_HELP: 'Galimybė redaguoti bet kurį puslapį, nepriklausomai nuo "Priėjimo/Leidimų" skyriaus nustatymų. Būtinas leidimas "Prieiti prie ''Puslapių''"'
     Editors: 'Redaguotojų grupė'
@@ -331,13 +331,13 @@ lt:
     LINKCHANGENOTE: 'Keičiant šio puslapio nuorodą, keisis ir jam priklausančių puslapių nuorodos.'
     MENUTITLE: 'Navigacijos pavadinimas'
     METADESC: 'Meta aprašymas'
-    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
+    METADESCHELP: 'Paieškos varikliai naudoja šį turinį paieškos rezultatų atvaizdavimui (tačiau tai neturės įtakos jų reitingui).'
     METAEXTRA: 'Naudotojo meta žymės'
-    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
+    METAEXTRAHELP: 'HTML žymos papildomai meta informacijai. Pavyzdžiui: &lt;meta name="tavoPavadinimas" content="tavo turinys čia" /&gt;'
     MODIFIEDONDRAFTHELP: 'Puslapyje yra nepublikuoto turinio'
     MODIFIEDONDRAFTSHORT: Pakeistas
     MetadataToggle: Metaduomenys
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
+    OBSOLETECLASS: 'Šis puslapis yra nebenaudojamo tipo {type}. Išsaugojimas iš naujo nustatys jo tipą, ko pasekoje galite prarasti duomenis'
     PAGELOCATION: 'Puslapio vieta'
     PAGETITLE: 'Puslapio pavadinimas'
     PAGETYPE: 'Puslapio tipas'
@@ -399,12 +399,12 @@ lt:
     DisplayLabel: 'Rodyti:'
   ViewArchivedEmail.ss:
     CANACCESS: 'Jūs galite atverti suarchyvuotą svetainę paspaudę šią nuorodą:'
-    HAVEASKED: 'Jūs norėjote peržiūrėti turinį mūsų svetainėje '
+    HAVEASKED: 'Jūs norėjote peržiūrėti turinį mūsų svetainėje'
   VirtualPage:
     CHOOSE: 'Pasirinkti puslapį nuorodai'
     DESCRIPTION: 'Rodo kito puslapio turinį'
     EDITCONTENT: 'turiniui redaguoti spauskite čia'
     HEADER: 'Tai virtualus puslapis'
-    PLURALNAME: 'Virtualūs puslapiai'
+    PLURALNAME: 'Virtualūs Puslapiai'
     PageTypNotAllowedOnRoot: 'Norimas puslapio tipas "{type}" neleidžiamas šiame virtualiame puslapyje, šakniniame lygmenyje.'
-    SINGULARNAME: 'Virtualus puslapis'
+    SINGULARNAME: 'Virtualus Puslapis'
