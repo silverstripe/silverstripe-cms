@@ -321,10 +321,10 @@
 				this._super(e);
 			},
 			onunmatch: function(e) {
-				if(this.data('button')) {
-					this.find('button[name=action_save]').button('option', 'showingAlternate', false);
-					this.find('button[name=action_publish]').button('option', 'showingAlternate', false);
-				}
+				var saveButton = this.find('button[name=action_save]');
+				if(saveButton.data('button')) saveButton('option', 'showingAlternate', false);
+				var publishButton = this.find('button[name=action_publish]');
+				if(publishButton.data('button')) publishButton('option', 'showingAlternate', false);
 				this._super(e);
 			}
 		});
