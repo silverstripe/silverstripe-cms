@@ -38,17 +38,17 @@ it:
     Back: Indietro
   BrokenLinksReport:
     Any: Qualsiasi
-    BROKENLINKS: 'Report links non funzionanti'
+    BROKENLINKS: 'Rapporto link non funzionanti'
     CheckSite: 'Verifica sito'
     CheckSiteDropdownDraft: 'Sito Bozza'
     CheckSiteDropdownPublished: 'Sito Pubblicato'
     ColumnDateLastModified: 'Data ultima modifica'
     ColumnDateLastPublished: 'Data ultima pubblicazione'
-    ColumnProblemType: 'Tipologia Problema'
+    ColumnProblemType: 'Tipo problema'
     ColumnURL: URL
     HasBrokenFile: 'ha un file non funzionante'
     HasBrokenLink: 'ha un link non funzionante'
-    HasBrokenLinkAndFile: 'ha un link ed un file non funzionante'
+    HasBrokenLinkAndFile: 'ha link e file non funzionanti'
     HoverTitleEditPage: 'Modifica pagina'
     PageName: 'Nome pagina'
     ReasonDropdown: 'Problemi da verificare'
@@ -64,11 +64,11 @@ it:
     DELETED_DRAFT_PAGES: 'Eliminate %d pagine dal sito bozza, %d non a buon fine'
     DELETED_PAGES: 'Eliminate %d pagine dal sito pubblicato, %d non a buon fine'
     DELETE_DRAFT_PAGES: 'Elimina dal sito bozza'
-    DELETE_PAGES: 'Eliminato dal sito pubblicato'
+    DELETE_PAGES: 'Eliminata dal sito pubblicato'
     PUBLISHED_PAGES: 'Pubblicate %d pagine, %d non a buon fine'
     PUBLISH_PAGES: Pubblica
     UNPUBLISHED_PAGES: '%d pagine non pubblicate'
-    UNPUBLISH_PAGES: 'Pubblicazione annullata'
+    UNPUBLISH_PAGES: 'Non pubblicare'
   CMSFileAddController:
     MENUTITLE: Files
   CMSMain:
@@ -79,7 +79,7 @@ it:
     ChoosePageParentMode: 'Scegli dove creare questa pagina'
     ChoosePageType: 'Scegli tipo di pagina'
     Create: Crea
-    DELETE: 'Elimina dal sito bozza'
+    DELETE: 'Elimina bozza'
     DELETEFP: 'Elimina dal sito pubblicato'
     DESCREMOVED: 'e {count} discendenti'
     EMAIL: Email
@@ -91,14 +91,14 @@ it:
     PAGES: Pagine
     PAGETYPEANYOPT: Qualsiasi
     PAGETYPEOPT: 'Tipo di pagina'
-    PUBALLCONFIRM: 'Per favore pubblica ogni singola pagina nel sito, copiando i contenuti in ''stage'' su ''live''.'
+    PUBALLCONFIRM: 'Per favore pubblica ogni singola pagina nel sito, copiando i contenuti da ''bozza'' a ''pubblicato''.'
     PUBALLFUN: 'Funzione "Pubblica tutto"'
     PUBALLFUN2: 'Cliccare questo bottone equivale ad accedere a tutte le pagine e cliccare ''pubblica''. Tale bottone è inteso per essere utilizzato dopo aver apportato modifiche di massa ai contenuti, come nella prima pubblicazione del sito.'
     PUBPAGES: 'Fatto: Pubblicate {count} pagine'
     PageAdded: 'Pagina creata con successo'
-    REMOVED: 'Cancellato ''%s''%s dal sito produzione'
+    REMOVED: 'Eliminata ''%s''%s dal sito pubblicato'
     REMOVEDPAGE: 'Eliminata ''{title}'' dal sito pubblicato'
-    REMOVEDPAGEFROMDRAFT: 'Cacellato ''%s'' dal sito bozza'
+    REMOVEDPAGEFROMDRAFT: 'Eliminata ''%s'' dal sito bozza'
     RESTORE: Ripristina
     RESTORED: 'Ripristinata ''{title}'' con successo'
     ROLLBACK: 'Ripristina a questa versione'
@@ -167,14 +167,14 @@ it:
     ARCHIVEDSITE: 'Anteprima versione'
     ARCHIVEDSITEFROM: 'Sito archiviato da'
     CMS: CMS
-    DRAFTSITE: 'Bozza del sito'
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Devi autenticarti utilizzando la tua password per poter visualizzare bozze o contenuti archiviati. <a href="%s">Clicca qui per tornare al sito di pubblicazione</a>'
+    DRAFTSITE: 'Sito Bozza'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Devi autenticarti utilizzando la tua password per poter visualizzare bozze o contenuti archiviati. <a href="%s">Clicca qui per tornare al sito pubblicato</a>'
     Email: Email
     INSTALL_SUCCESS: 'Installazione conclusa con successo!'
     InstallFilesDeleted: 'I file di installazione sono stati eliminati con successo.'
     InstallSecurityWarning: 'Per motivi di sicurezza ora devi eliminare i file di installazione, a meno che non stai pianificando in installare nuovamente più tardi (<em>richiede accesso da amministratore, vedi sopra</em>). Inoltre il server web ora richiede permessi di scrittura solo alla cartella "assets", Quindi puoi rimuovere i permessi di scrittura da tutte le altre cartelle. <a href="{link}" style="text-align: center;">Clicca qui per cancellare i file di installazione.</a>'
     InstallSuccessCongratulations: 'SilverStripe è stato installato con successo!'
-    LOGGEDINAS: 'Sei acceduto come'
+    LOGGEDINAS: 'Sei collegato come'
     LOGIN: Accedi
     LOGOUT: Disconnetti
     NOTLOGGEDIN: 'Non connesso'
@@ -186,7 +186,7 @@ it:
     VIEWPAGEIN: 'Mostra pagina in:'
   ErrorPage:
     CODE: 'Codice di errore'
-    DEFAULTERRORPAGECONTENT: '<p>Spiacente, sembra che tu cercassi di accedere ad una pagina che non esiste.</p><p>Controlla che l''URL che stavi cercando di accedere sia corretta e prova di nuovo.</p>'
+    DEFAULTERRORPAGECONTENT: '<p>Spiacente, sembra che tu cercassi di accedere ad una pagina che non esiste.</p><p>Controlla che l''URL a cui stavi cercando di accedere sia corretto e prova di nuovo.</p>'
     DEFAULTERRORPAGETITLE: 'Pagina non trovata'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Spiacenti, c''è stato un problema con la gestione della tua richiesta.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Errore server'
@@ -273,24 +273,24 @@ it:
   SilverStripeNavigatorLinkl:
     CloseLink: Chiudi
   SiteConfig:
-    DEFAULTTHEME: '(Usa il tema di default)'
-    EDITHEADER: '(Chi può modificare le pagine in questo sito?)'
+    DEFAULTTHEME: '(Usa il tema predefinito)'
+    EDITHEADER: 'Chi può modificare le pagine in questo sito?'
     EDIT_PERMISSION: 'Gestisci la configurazione del sito'
-    EDIT_PERMISSION_HELP: 'Capacità di modificare le impostazioni globali di accesso/permessi pagina alto livello'
+    EDIT_PERMISSION_HELP: 'Capacità di modificare le impostazioni globali di accesso/permessi pagina primo livello'
     PLURALNAME: 'Configurazioni sito'
     SINGULARNAME: 'Configurazione sito'
-    SITENAMEDEFAULT: 'Nome del tuo sito'
+    SITENAMEDEFAULT: 'Nome del sito'
     SITETAGLINE: 'Motto/Slogan del sito'
     SITETITLE: 'Titolo del sito'
     TABACCESS: Accesso
     TABMAIN: Principale
     TAGLINEDEFAULT: 'lo slogan qui'
     THEME: Tema
-    TOPLEVELCREATE: 'Chi può creare pagine a livello di root?'
+    TOPLEVELCREATE: 'Chi può creare pagine di primo livello?'
     VIEWHEADER: 'Chi può vedere le pagine in questo sito?'
   SiteTree:
     ACCESSANYONE: Chiunque
-    ACCESSHEADER: 'Chi può vedere questa pagina sul mio sito?'
+    ACCESSHEADER: 'Chi può vedere questa pagina?'
     ACCESSLOGGEDIN: 'Utenti autenticati'
     ACCESSONLYTHESE: 'Solamente queste persone (scegli dalla lista)'
     ADDEDTODRAFTHELP: 'La pagina non è stata ancora pubblicata'
@@ -317,14 +317,14 @@ it:
     DESCRIPTION: 'Pagina con contenuto generico'
     DependtPageColumnLinkType: 'Tipo di link'
     DependtPageColumnURL: URL
-    EDITANYONE: 'Chiunque può autenticarsi all''interno del CMS'
-    EDITHEADER: 'Chi può modificare questo all''interno del CMS?'
+    EDITANYONE: 'Chiunque può autenticarsi al CMS'
+    EDITHEADER: 'Chi può modificare questa pagina?'
     EDITONLYTHESE: 'Solamente queste persone (scegli dalla lista)'
     EDITORGROUPS: 'Gruppi di editori'
     EDIT_ALL_DESCRIPTION: 'Modifica qualunque pagina'
     EDIT_ALL_HELP: 'Possibilità di modificare qualsiasi pagina nel sito, senza tenere conto delle impostazioni nella tab Access. Richiede i permessi di "Accesso ai contenuti del sito"'
     Editors: 'Gruppi di Editori'
-    HASBROKENLINKS: 'Quest pagina ha collegamenti non funzionanti.'
+    HASBROKENLINKS: 'Questa pagina ha link non funzionanti.'
     HTMLEDITORTITLE: Contenuto
     INHERIT: 'Eredita dalla pagina madre'
     LASTUPDATED: 'Ultimo aggiornamento'
@@ -343,9 +343,9 @@ it:
     PAGETYPE: 'Tipo di pagina'
     PARENTID: 'Pagina madre'
     PARENTTYPE: 'Collocazione pagina'
-    PARENTTYPE_ROOT: 'Pagina Top-Level'
+    PARENTTYPE_ROOT: 'Pagina di primo livello'
     PARENTTYPE_SUBPAGE: 'Pagina sotto una pagina madre'
-    PERMISSION_GRANTACCESS_DESCRIPTION: 'Controlla quali gruppi possono accedere o editare certe pagine'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Gestisci quali gruppi possono accedere o modificare certe pagine'
     PERMISSION_GRANTACCESS_HELP: 'Consenti le impostazioni di restrizione d''accesso a pagine specifiche nella sezione "Pagine".'
     PLURALNAME: Pagine
     PageTypNotAllowedOnRoot: 'Il tipo di pagina "{type}" non è consentito al primo livello'
@@ -354,27 +354,27 @@ it:
     REMOVEDFROMDRAFTSHORT: 'Eliminato dal sito bozza'
     REMOVE_INSTALL_WARNING: 'Attenzione: devi rimuovere install.php da questa installazione di SilverStripe per motivi di sicurezza.'
     REORGANISE_DESCRIPTION: 'Cambia struttura del sito'
-    REORGANISE_HELP: 'Riordina le pagine nella struttura ad albero del sito utilizzando il drag&drop.'
-    SHOWINMENUS: 'Visualizza nel menu?'
+    REORGANISE_HELP: 'Riordina le pagine nell''albero del sito utilizzando il drag&drop.'
+    SHOWINMENUS: 'Visualizza nei menu?'
     SHOWINSEARCH: 'Visualizza in cerca?'
     SINGULARNAME: Pagina
     TABBEHAVIOUR: Comportamento
-    TABCONTENT: Contenuto
+    TABCONTENT: 'Contenuto Principale'
     TABDEPENDENT: 'Pagine dipendenti'
     TOPLEVEL: 'Contenuto del sito (Livello alto)'
-    TOPLEVELCREATORGROUPS: 'Creatori di livello superiore'
+    TOPLEVELCREATORGROUPS: 'Creatori di primo livello'
     URLSegment: 'Segmento URL'
     VIEWERGROUPS: 'Gruppi di visualizzatori'
     VIEW_ALL_DESCRIPTION: 'Visualizza qualsiasi pagina'
-    VIEW_ALL_HELP: 'Possibilità di vedere qualsiasi pagina del sito senza, tenere conto delle impostazioni nella tab Access. Richiede i permessi di "Accesso ai contenuti del sito"'
+    VIEW_ALL_HELP: 'Possibilità di vedere qualsiasi pagina del sito, senza tenere conto delle impostazioni nel tab Accesso. Richiede i permessi per "Accesso alla sezione ''Pagine''"'
     VIEW_DRAFT_CONTENT: 'Visualizza contenuto bozza'
     VIEW_DRAFT_CONTENT_HELP: 'Si applica per visualizzare le pagine in bozza al di fuori del CMS. Utile per collaboratori esterni che non hanno accesso al CMS.'
     Viewers: 'Gruppi di visualizzatori'
-    Visibility: Visibilità
+    Visibility: 'Visibilità'
     has_one_Parent: 'Pagina madre'
-    many_many_BackLinkTracking: 'Tracciamento link di ritorno'
-    many_many_ImageTracking: 'Tracciamento immagine'
-    many_many_LinkTracking: 'Tracciamento collegamento'
+    many_many_BackLinkTracking: 'Monitoriaggio link di ritorno'
+    many_many_ImageTracking: 'Monitoraggio immagine'
+    many_many_LinkTracking: 'Monitoraggio link'
   SiteTreeURLSegmentField:
     HelpChars: 'I caratteri speciali sono automaticamente convertiti o eliminati.'
   StaticExporter:
@@ -393,7 +393,7 @@ it:
     TO: a
     VIEWFIRST: 'Visualizza primo'
     VIEWLAST: 'Visualizza ultimo'
-    VIEWNEXT: 'Visualizza successivo'
+    VIEWNEXT: 'Visualizza seguente'
     VIEWPREVIOUS: 'Visualizza precedente'
   TreeTools:
     DisplayLabel: 'Visualizza:'

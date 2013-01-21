@@ -54,16 +54,16 @@ cs:
     ReasonDropdown: 'Problém ke kontrole'
     ReasonDropdownBROKENFILE: 'Porušen soubor'
     ReasonDropdownBROKENLINK: 'Porušen odkaz'
-    ReasonDropdownRPBROKENLINK: 'Stránka redirektoru ukazuje na neexistující stránku'
+    ReasonDropdownRPBROKENLINK: 'Přesměrovací stránka ukazuje na neexistující stránku'
     ReasonDropdownVPBROKENLINK: 'Virtuální stránka ukazuje na neexistující stránku'
-    RedirectorNonExistent: 'stránka redirektoru ukazuje na neexistující stránku'
+    RedirectorNonExistent: 'přesměrovací stránka ukazuje na neexistující stránku'
     VirtualPageNonExistent: 'virtuální stránka ukazuje na neexistující stránku'
   CMSAddPageController:
     Title: 'Přidat stránku'
   CMSBatchActions:
     DELETED_DRAFT_PAGES: 'Smazáno %d stránek z konceptu webu, %d selhání'
     DELETED_PAGES: 'Odstraněno %d stránek z veřejného webu, %d selhání'
-    DELETE_DRAFT_PAGES: 'Smazáno z konceptu webu'
+    DELETE_DRAFT_PAGES: 'Smazat z konceptu webu'
     DELETE_PAGES: 'Smazat ze zveřejněného webu'
     PUBLISHED_PAGES: 'Zveřejněných %d stránek, %d selhání'
     PUBLISH_PAGES: Zveřejnit
@@ -79,7 +79,7 @@ cs:
     ChoosePageParentMode: 'Vyberte, kde vytvořit tuto stránku'
     ChoosePageType: 'Vyberte typ stránky'
     Create: Vytvořit
-    DELETE: 'Smazat ze stránek návrhu'
+    DELETE: 'Smazat koncept'
     DELETEFP: 'Smazat z publikovaných stránek'
     DESCREMOVED: 'a {count} potomků'
     EMAIL: Email
@@ -98,7 +98,7 @@ cs:
     PageAdded: 'Stránka vytvořena úspěšně'
     REMOVED: 'Smazán ''%s''%s ze živé stránky'
     REMOVEDPAGE: 'Odstraněno ''{title}'' ze zveřejněného webu'
-    REMOVEDPAGEFROMDRAFT: '''%s'' odebráno z konceptu'
+    REMOVEDPAGEFROMDRAFT: 'Odstraněno ''%s'' z konceptu webu'
     RESTORE: Obnovit
     RESTORED: 'Obnoveno ''{title}'' úspěšně'
     ROLLBACK: 'Vrátit se zpět na tuto verzi'
@@ -186,7 +186,7 @@ cs:
     VIEWPAGEIN: 'Zobrazit stránku v:'
   ErrorPage:
     CODE: 'Chybový kód'
-    DEFAULTERRORPAGECONTENT: '<p>Omlouváme se, zdá se, že jste se pokoušeli o přístup na stránku, která neexistuje. </ p> <p> Zkontrolujte pravopis URL, které jste se pokoušeli o přístup a zkuste to znovu</p>'
+    DEFAULTERRORPAGECONTENT: '<p>Omlouváme se, zdá se, že jste se pokoušeli o přístup na stránku, která neexistuje. </p> <p> Zkontrolujte pravopis URL, na které jste se pokoušeli o přístup a zkuste to znovu</p>'
     DEFAULTERRORPAGETITLE: 'Strana nenelazena'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Je nám to líto, ale nastal problém se zpracováním Vašeho poždavku.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Chyba serveru'
@@ -243,7 +243,7 @@ cs:
     PLURALNAME: 'Přesměrovací stránky'
     REDIRECTTO: 'Přesměrovat na'
     REDIRECTTOEXTERNAL: 'Jinou webovou stránku'
-    REDIRECTTOPAGE: 'Stránku na Vašem webu'
+    REDIRECTTOPAGE: 'Stránka na vašem webu'
     SINGULARNAME: 'Přesměrovací stránka'
     YOURPAGE: 'Stránka na vašem webu'
   ReportAdmin:
@@ -258,7 +258,7 @@ cs:
   SideReport:
     BROKENFILES: 'Stránky s porušenými soubory'
     BROKENLINKS: 'Stránky s porušenými odkazy'
-    BROKENREDIRECTORPAGES: 'RedirectorPages ukazuje na smazané stránky'
+    BROKENREDIRECTORPAGES: 'Přesměrovací stránky ukazují na smazané stránky'
     BROKENVIRTUALPAGES: 'VirualPages ukazuje na smazané stránky'
     BrokenLinksGroupTitle: 'Výkazy porušených odkazů'
     ContentGroupTitle: 'Výkazy obsahu'
@@ -273,7 +273,7 @@ cs:
   SilverStripeNavigatorLinkl:
     CloseLink: Zavřít
   SiteConfig:
-    DEFAULTTHEME: '(''Použít implicitní tému)'
+    DEFAULTTHEME: '(Použít implicitní tému)'
     EDITHEADER: 'Kdo může editovat stránky tohoto webu?'
     EDIT_PERMISSION: 'Správa konfigurace webu'
     EDIT_PERMISSION_HELP: 'Možnost měnit globální přístupové nastavení/oprávnění pro hlavní stránky.'
@@ -305,20 +305,20 @@ cs:
     CREATED: 'Datum vytvoření'
     Comments: Komentáře
     Content: Obsah
-    DEFAULTABOUTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky. <br /> </ p>'
+    DEFAULTABOUTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky. <br /> </p>'
     DEFAULTABOUTTITLE: 'O nás'
-    DEFAULTCONTACTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky. <br /> </ p>'
+    DEFAULTCONTACTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky. <br /> </p>'
     DEFAULTCONTACTTITLE: 'Kontaktujte nás'
     DEFAULTHOMECONTENT: '<p>Vítejte v CMS SilverStripe! Toto je úvodní stránka. Tuto i jiné stránky můžete změnit <a href="admin/">přihlášením do systému</a>. Můžete také navštívit <a href="http://doc.silverstripe.com">vývojářskou dokumentaci (EN)</a>, nebo <a href="http://doc.silverstripe.com/doku.php?id=tutorials">návody (EN)</a></p>'
     DEFAULTHOMETITLE: 'Úvodní strana'
     DELETEDPAGEHELP: 'Stránka už není více zveřejněna'
     DELETEDPAGESHORT: Smazáno
-    DEPENDENT_NOTE: 'Následující stránky závisí na této stránce. Tyto obsahují virtuální stránky, redirektor stránky, a stránky s odkazy obsahu.'
+    DEPENDENT_NOTE: 'Následující stránky závisí na této stránce. Tyto obsahují virtuální stránky, přesměrovací stránky a stránky s odkazy obsahu.'
     DESCRIPTION: 'Obecný obsah stránky'
     DependtPageColumnLinkType: 'Typ odkazu'
     DependtPageColumnURL: URL
     EDITANYONE: 'Kdokoliv, kdo se do CMS může přihlásit'
-    EDITHEADER: 'Kdo může editovat tuto stránku?'
+    EDITHEADER: 'Kdo může tuto stránku editovat?'
     EDITONLYTHESE: 'Jenom tito lidé (vyberte ze seznamu)'
     EDITORGROUPS: 'Editor skupin'
     EDIT_ALL_DESCRIPTION: 'Může editovat jakoukoli stránku webu, obcházeje bezpečnostní specifikaci stránky'
@@ -368,7 +368,7 @@ cs:
     VIEW_ALL_DESCRIPTION: 'Může vidět jakoukoli stránku webu, obcházeje bezpečnostní specifikaci stránky'
     VIEW_ALL_HELP: 'Možnost zobrazit libovolnou stránku na webu, bez ohledu na nastavení na kartě Přístup. Vyžaduje povolení "Přístup k obsahu webu"'
     VIEW_DRAFT_CONTENT: 'Zobrazit obsah konceptu'
-    VIEW_DRAFT_CONTENT_HELP: 'Vztahuje se na prohlížení stránek mimo CMS, v koncept  módu. Užitečné pro externí spolupracovníky bez přístupu do CMS.'
+    VIEW_DRAFT_CONTENT_HELP: 'Vztahuje se na prohlížení stránek mimo CMS, v koncept módu. Užitečné pro externí spolupracovníky bez přístupu do CMS.'
     Viewers: 'Skupiny návštěvníků'
     Visibility: Viditelnost
     has_one_Parent: 'Rodičovská stránka'
