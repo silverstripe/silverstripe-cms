@@ -1890,7 +1890,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if($this->ObsoleteClassName) {
 			$obsoleteWarning = _t(
 				'SiteTree.OBSOLETECLASS',
-				"This page is of obsolete type {type}. Saving will reset it's type and you may lose data",
+				"This page is of obsolete type {type}. Saving will reset its type and you may lose data",
 				array('type' => $this->ObsoleteClassName)
 			);
 
