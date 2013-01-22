@@ -17,40 +17,26 @@
 
 		/**
 		 * Class: .cms-edit-form input[name=Title]
-		 * 
+		 *
 		 * Input validation on the Title field
 		 */
 		$('.cms-edit-form input[name=Title]').entwine({
 			// Constructor: onmatch
 			onmatch : function() {
-				var self = this;
-
+				var self = this,
+					form = self.parents('form'),
+					live_link = $('input[name=LiveLink]', form);
+				
 				self.data('OrigVal', self.val());
 				
-				var form = self.parents('form');
-				var url_segment = $('.field.urlsegment', form).find(':text');
-				var live_link = $('input[name=LiveLink]', form);
+				this.bind('change', function(e) {
+					var origTitle = self.data('OrigVal');
+					var title = self.val();
+					self.data('OrigVal', title);
+					self.updateRelatedFields(title, origTitle);
+					self.updateBreadcrumbLabel(title);
+				});
 				
-				self._addActions();
-
-				if(url_segment.length > 0) {
-					this.bind('change', function(e) {
-						var origTitle = self.data('OrigVal');
-						var title = self.val();
-						self.data('OrigVal', title);
-
-						// Criteria for defining a "new" page
-						if ((url_segment.val().indexOf('new') == 0) && live_link.val() == '') {
-							self.updateURLSegment(title);
-						} else {
-							$('.update', self.parent()).show();
-						}
-
-						self.updateRelatedFields(title, origTitle);
-						self.updateBreadcrumbLabel(title);
-					});
-				}
-
 				this._super();
 			},
 			onunmatch: function() {
@@ -59,7 +45,7 @@
 			
 			/**
 			 * Function: updateRelatedFields
-			 * 
+			 *
 			 * Update the related fields if appropriate
 			 * (String) title The new title
 			 * (Stirng) origTitle The original title
@@ -77,57 +63,17 @@
 			},
 			
 			/**
-			 * Function: updateURLSegment
-			 * 
-			 * Update the URLSegment
-			 * (String) title
-			 */
-			updateURLSegment: function(title) {
-				var url_segment_field = $('.field.urlsegment', this.parents('form'));
-				var updateURLFromTitle = $('.update', this.parent());
-				url_segment_field.update(title);
-				if (updateURLFromTitle.is(':visible')) {
-					updateURLFromTitle.hide();
-				}
-			},
-			
-			/**
 			 * Function: updateBreadcrumbLabel
-			 * 
+			 *
 			 * Update the breadcrumb
 			 * (String) title
 			 */
 			updateBreadcrumbLabel: function(title) {
 				var pageID = $('.cms-edit-form input[name=ID]').val();
 				var panelCrumb = $('span.cms-panel-link.crumb');
-				if (title && title != "") {
+				if (title && title !== "") {
 					panelCrumb.text(title);
 				}
-			},
-			
-			/**
-			 * Function: _addActions
-			 *  
-			 * Utility to add update from title action
-			 * 
-			 */
-			_addActions: function() {
-				var self = this;
-				var	updateURLFromTitle;
-				
-				// update button
-				updateURLFromTitle = $('<button />', {
-					'class': 'update ss-ui-button-small',
-					'text': 'Update URL',
-					'click': function(e) {
-						e.preventDefault();
-						self.updateURLSegment(self.val());
-					}
-				});
-				
-				// insert elements
-				updateURLFromTitle.insertAfter(self);
-				updateURLFromTitle.hide();
 			}
 		});
 
