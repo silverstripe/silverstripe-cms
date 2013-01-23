@@ -19,14 +19,14 @@ class SiteTreeFolderExtension extends DataExtension {
 		}
 
 		foreach($classes as $className) {
-			$query = singleton($className)->extendedSQL();
+			$query = new DataQuery($className);
 			$ids = $query->execute()->column();
 			if(!count($ids)) continue;
 			
 			foreach(singleton($className)->has_one() as $relName => $joinClass) {
 				if($joinClass == 'Image' || $joinClass == 'File') {
 					$fieldName = $relName .'ID';
-					$query = singleton($className)->extendedSQL("$fieldName > 0");
+					$query = DataList::create($className)->where("$fieldName > 0");
 					$query->distinct = true;
 					$query->select(array($fieldName));
 					$usedFiles = array_merge($usedFiles, $query->execute()->column());
