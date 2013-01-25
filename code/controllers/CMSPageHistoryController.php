@@ -74,6 +74,16 @@ class CMSPageHistoryController extends CMSMain {
 
 		return $negotiator->respond($request);
 	}
+
+	public function getSilverStripeNavigator() {
+		$record = $this->getRecord($this->currentPageID(), $this->request->param('VersionID'));
+		if($record) {
+			$navigator = new SilverStripeNavigator($record);
+			return $navigator->renderWith($this->getTemplatesWithSuffix('_SilverStripeNavigator'));
+		} else {
+			return false;
+		}
+	}
 	
 	/**
 	 * Returns the read only version of the edit form. Detaches all {@link FormAction} 
