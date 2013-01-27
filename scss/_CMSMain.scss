@@ -108,12 +108,23 @@
 		color: #777;
 	}
 
-	.cancel, .update, .edit {
+	.update, .edit {
 		margin-left: 7px;
+	}
+	
+	.cancel {
+		margin-left: 0;
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 
 	.help {
-		margin-left: 0;
+		margin: 5px 0 0 0;
+		line-height: 1.9em;
+		font-style: italic;
+		color: #2D80AF;
 	}
 }
 
