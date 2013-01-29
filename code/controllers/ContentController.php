@@ -302,7 +302,12 @@ class ContentController extends Controller {
 				$surname = Convert::raw2xml($member->Surname);
 				$logInMessage = _t('ContentController.LOGGEDINAS', 'Logged in as') ." {$firstname} {$surname} - <a href=\"Security/logout\">". _t('ContentController.LOGOUT', 'Log out'). "</a>";
 			} else {
-				$logInMessage = _t('ContentController.NOTLOGGEDIN', 'Not logged in') ." - <a href=\"Security/login\">". _t('ContentController.LOGIN', 'Login') ."</a>";
+				$logInMessage = sprintf(
+					'%s - <a href="%s">%s</a>' ,
+					_t('ContentController.NOTLOGGEDIN', 'Not logged in') ,
+					Config::inst()->get('Security', 'login_url'),
+					_t('ContentController.LOGIN', 'Login') ."</a>"
+				);
 			}
 			$viewPageIn = _t('ContentController.VIEWPAGEIN', 'View Page in:');
 			
