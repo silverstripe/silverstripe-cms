@@ -21,7 +21,7 @@ class ErrorPage extends Page {
 		"ShowInMenus" => 0,
 		"ShowInSearch" => 0
 	);
-	
+
 	static $allowed_children = array();
 
 	static $description = 'Custom content for different error cases (e.g. "Page not found")';
@@ -57,7 +57,7 @@ class ErrorPage extends Page {
 			return $response;
 		}
 	}
-	
+
 	/**
 	 * Ensures that there is always a 404 page
 	 * by checking if there's an instance of
@@ -73,25 +73,7 @@ class ErrorPage extends Page {
 				mkdir(ASSETS_PATH);
 			}
 
-			$defaultPages = array(
-				array(
-					'ErrorCode' => 404,
-					'Title' => _t('ErrorPage.DEFAULTERRORPAGETITLE', 'Page not found'),
-					'Content' => _t(
-						'ErrorPage.DEFAULTERRORPAGECONTENT', 
-						'<p>Sorry, it seems you were trying to access a page that doesn\'t exist.</p>'
-						. '<p>Please check the spelling of the URL you were trying to access and try again.</p>'
-					)
-				),
-				array(
-					'ErrorCode' => 500,
-					'Title' => _t('ErrorPage.DEFAULTSERVERERRORPAGETITLE', 'Server error'),
-					'Content' => _t(
-						'ErrorPage.DEFAULTSERVERERRORPAGECONTENT', 
-						'<p>Sorry, there was a problem with handling your request.</p>'
-					)
-				)
-			);
+			$defaultPages = $this->getDefaultRecords();
 	
 			foreach($defaultPages as $defaultData) {
 				$code = $defaultData['ErrorCode'];
@@ -103,10 +85,7 @@ class ErrorPage extends Page {
 				$pagePath = self::get_filepath_for_errorcode($code);
 				if(!($pageExists && file_exists($pagePath))) {
 					if(!$pageExists) {
-						$page = new ErrorPage();
-						$page->ErrorCode = $code;
-						$page->Title = $defaultData['Title'];
-						$page->Content = $defaultData['Title'];
+						$page = new ErrorPage($defaultData);
 						$page->write();
 						$page->publish('Stage', 'Live');
 					}
@@ -138,6 +117,37 @@ class ErrorPage extends Page {
 			}
 
 		}
+	}
+
+	/**
+	 * Returns an array of arrays, each of which defines
+	 * properties for a new ErrorPage record.
+	 * 
+	 * @return Array
+	 */
+	protected function getDefaultRecords() {
+		$data = array(
+			array(
+				'ErrorCode' => 404,
+				'Title' => _t('ErrorPage.DEFAULTERRORPAGETITLE', 'Page not found'),
+				'Content' => _t(
+					'ErrorPage.DEFAULTERRORPAGECONTENT', 
+					'<p>Sorry, it seems you were trying to access a page that doesn\'t exist.</p>'
+					. '<p>Please check the spelling of the URL you were trying to access and try again.</p>'
+				)
+			),
+			array(
+				'ErrorCode' => 500,
+				'Title' => _t('ErrorPage.DEFAULTSERVERERRORPAGETITLE', 'Server error'),
+				'Content' => _t(
+					'ErrorPage.DEFAULTSERVERERRORPAGECONTENT', 
+					'<p>Sorry, there was a problem with handling your request.</p>'
+				)
+			)
+		);
+		$this->extend('getDefaultRecords', $data);
+
+		return $data;
 	}
 
 	public function getCMSFields() {
