@@ -24,7 +24,10 @@ class ContentControllerPermissionsTest extends FunctionalTest {
 		$response = $this->get('/testpage/?stage=Stage');
 		// should redirect to login
 		$this->assertEquals($response->getStatusCode(), 302, 'Redirects to login page when not logged in for draft stage');
-		$this->assertContains('Security/login', $response->getHeader('Location'));
+		$this->assertContains(
+			Config::inst()->get('Security', 'login_url'), 
+			$response->getHeader('Location')
+		);
 		
 		$this->logInWithPermission('CMS_ACCESS_CMSMain');
 		

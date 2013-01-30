@@ -121,28 +121,28 @@ da:
   CMSPageEditController:
     MENUTITLE: 'Rediger side'
   CMSPageHistoryController:
-    COMPAREMODE: 'Sammenlign (Vælg to)'
+    COMPAREMODE: 'Sammenligningstilstand (vælg to)'
     COMPAREVERSIONS: 'Sammenlign versioner'
     COMPARINGVERSION: 'Sammenligner versionerne {version1} og {version2}.'
     MENUTITLE: Historik
     REVERTTOTHISVERSION: 'Genskab denne version'
-    SHOWUNPUBLISHED: 'Vis ikke publicerede versioner'
+    SHOWUNPUBLISHED: 'Vis versioner der ikke er udgivne'
     SHOWVERSION: 'Vis version'
     VIEW: Visning
     VIEWINGVERSION: 'Lige nu vises version {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Forfatter
-    NOTPUBLISHED: 'Ikke publiseret'
+    NOTPUBLISHED: 'Ikke udgivet'
     PUBLISHER: Udgiver
     UNKNOWN: Ukendt
     WHEN: Hvornår
   CMSPageSettingsController:
-    MENUTITLE: 'Rediger siden'
+    MENUTITLE: 'Rediger side'
   CMSPagesController:
-    GalleryView: 'Galleri visning'
-    ListView: 'Liste visning'
+    GalleryView: Gallerivisning
+    ListView: Listevisning
     MENUTITLE: Sider
-    TreeView: 'Træ visning'
+    TreeView: Trævisning
   CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: 'Træk&slip'
     MULTISELECT: Multivalg
@@ -239,13 +239,13 @@ da:
     DESCRIPTION: 'Omdirigerer til en anden intern side'
     HASBEENSETUP: 'En omdirigeringsside er blevet sat op, uden et sted at omdirigere til.'
     HEADER: 'Denne side omdirigerer besøgende til en anden side'
-    OTHERURL: 'Anden hjemmeside URL'
+    OTHERURL: 'Andet websteds URL'
     PLURALNAME: 'Videresendende sider'
     REDIRECTTO: 'Omdiriger til'
-    REDIRECTTOEXTERNAL: 'En anden hjemmeside'
-    REDIRECTTOPAGE: 'En side på din hjemmeside'
+    REDIRECTTOEXTERNAL: 'Et andet websted'
+    REDIRECTTOPAGE: 'En side på dit websted'
     SINGULARNAME: 'Viderestillende side'
-    YOURPAGE: 'Side på din hjemmeside'
+    YOURPAGE: 'Side på dit websted'
   ReportAdmin:
     MENUTITLE: Rapporter
     ReportTitle: Titel
@@ -301,7 +301,7 @@ da:
     BUTTONCANCELDRAFTDESC: 'Slet kladden og benyt istedet den nuværende side'
     BUTTONSAVEPUBLISH: 'Gem og udgiv'
     BUTTONUNPUBLISH: 'Annuller udgivelse'
-    BUTTONUNPUBLISHDESC: 'Fjern denne side fra det publicerede site'
+    BUTTONUNPUBLISHDESC: 'Fjern denne side fra det udgivne websted'
     CREATED: 'Dato for oprettelse'
     Comments: Kommentarer
     Content: Indhold
@@ -315,7 +315,7 @@ da:
     DELETEDPAGESHORT: Slettet
     DEPENDENT_NOTE: 'De følgende sider afhænger af denne side. Dette omfatter virtuelle sider, omstillingssider og sider med indholdshenvisninger.'
     DESCRIPTION: 'Standard indholdsside'
-    DependtPageColumnLinkType: 'Link type'
+    DependtPageColumnLinkType: Linktype
     DependtPageColumnURL: URL
     EDITANYONE: 'Enhver der kan logge ind på CMS'
     EDITHEADER: 'Hvem kan redigere denne side ?'
@@ -351,7 +351,7 @@ da:
     PageTypNotAllowedOnRoot: 'Sidetypen "{type}" er ikke tilladt på rodniveau'
     PageTypeNotAllowed: 'Sidetypen {type} er ikke tilladt som underside til denne side'
     REMOVEDFROMDRAFTHELP: 'Siden er udgivet, men er blevet slette fra kladder'
-    REMOVEDFROMDRAFTSHORT: 'Slettet fra klade'
+    REMOVEDFROMDRAFTSHORT: 'Slettet fra kladde'
     REMOVE_INSTALL_WARNING: 'Advarsel: Du bør, af sikkerhedsmæssige årsager, slette install.php fra SilverStripe installationsmappen.'
     REORGANISE_DESCRIPTION: 'Ændre webstedets struktur'
     REORGANISE_HELP: 'Omarranger sider i sidetræet ved hjælp af træk&slip.'
@@ -361,7 +361,7 @@ da:
     TABBEHAVIOUR: Opførsel
     TABCONTENT: 'Primært indhold'
     TABDEPENDENT: 'Afhængige sider'
-    TOPLEVEL: 'Side indhold (Top niveau)'
+    TOPLEVEL: 'Sideindhold (Top niveau)'
     TOPLEVELCREATORGROUPS: 'Top level skabere'
     URLSegment: 'URL Segment'
     VIEWERGROUPS: Visningsgrupper
@@ -379,8 +379,8 @@ da:
     HelpChars: 'Specialkarakterer bliver automatisk konverteret eller fjernet.'
   StaticExporter:
     BASEURL: 'Base URL'
-    EXPORTTO: 'Eksporter til mappen'
-    NAME: 'Statisk eksporter'
+    EXPORTTO: 'Eksporter til den mappe'
+    NAME: 'Statisk eksportør'
   TableListField:
     SELECT: 'Vælg:'
   TableListField.ss:

@@ -219,7 +219,7 @@ sr:
     505: '505 - HTTP верзија није подржана'
   Folder:
     AddFolderButton: 'Dodaj direktorijum'
-    DELETEUNUSEDTHUMBNAILS: 'Обриши некоришћене умањене приказе'
+    DELETEUNUSEDTHUMBNAILS: 'Obriši nekorišćene umanjene prikaze'
     UNUSEDFILESTITLE: 'Nekorišćeni fajlovi'
     UNUSEDTHUMBNAILSTITLE: 'Nekorišćeni umanjeni prikazi'
     UploadFilesButton: Postavi
@@ -237,15 +237,15 @@ sr:
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
   RedirectorPage:
     DESCRIPTION: 'Preusmerava na drugu stranicu'
-    HASBEENSETUP: 'Страница за преусмеравање је постављена без параметра за преусмеравање'
-    HEADER: 'Ова страна ће преусмерити кориснике на другу страну'
-    OTHERURL: 'URL другог сајта'
+    HASBEENSETUP: 'Stranica za preusmeravanje je podešena bez parametara preusmeravanja.'
+    HEADER: 'Ova stranica će preusmeriti korisnike na drugu stranicu'
+    OTHERURL: 'URL drugog sajta'
     PLURALNAME: 'Redirector Pags'
-    REDIRECTTO: 'Преусмери на'
-    REDIRECTTOEXTERNAL: 'други сајт'
-    REDIRECTTOPAGE: 'страницу на вашем сајту'
+    REDIRECTTO: 'Preusmeri na'
+    REDIRECTTOEXTERNAL: 'Drugi sajt'
+    REDIRECTTOPAGE: 'Stranicu na vašem sajtu'
     SINGULARNAME: 'Redirector Page'
-    YOURPAGE: 'Страница на вашем сајту'
+    YOURPAGE: 'Stranica na vašem sajtu'
   ReportAdmin:
     MENUTITLE: Reports
     ReportTitle: Title
@@ -253,7 +253,7 @@ sr:
     FILTERBY: 'Filter by'
   SearchForm:
     GO: Pokreni
-    SEARCH: Претрага
+    SEARCH: Pretraga
     SearchResults: 'Rezultati pretrage'
   SideReport:
     BROKENFILES: 'Pages with broken files'
@@ -290,9 +290,9 @@ sr:
     VIEWHEADER: 'Who can view pages on this site?'
   SiteTree:
     ACCESSANYONE: Свако
-    ACCESSHEADER: 'Ко може да види ову страну на мом сајту?'
+    ACCESSHEADER: 'Ko može da vidi ovu stranicu?'
     ACCESSLOGGEDIN: 'Пријављени корисници'
-    ACCESSONLYTHESE: 'Само ови људи (изаберите са списка)'
+    ACCESSONLYTHESE: 'Samo ove osobe (izaberi sa liste)'
     ADDEDTODRAFTHELP: 'Page has not been published yet'
     ADDEDTODRAFTSHORT: Draft
     ALLOWCOMMENTS: 'Дозволити коментаре на овој страни?'
@@ -301,16 +301,16 @@ sr:
     BUTTONCANCELDRAFTDESC: 'Избришите свој нацрт и вратите се на тренутно објављену страну'
     BUTTONSAVEPUBLISH: 'Сачувај и објави'
     BUTTONUNPUBLISH: 'Повуци објављивање'
-    BUTTONUNPUBLISHDESC: 'Уклони ову страну са живог сајта'
+    BUTTONUNPUBLISHDESC: 'Izbriši ovu stranicu sa sajta na kome je objavljena'
     CREATED: 'Datum kreiranja'
     Comments: Komentari
     Content: Content
     DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
-    DEFAULTABOUTTITLE: 'О нама'
+    DEFAULTABOUTTITLE: 'O nama'
     DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
     DEFAULTCONTACTTITLE: 'Контактирајте нас'
     DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
-    DEFAULTHOMETITLE: Почетна
+    DEFAULTHOMETITLE: 'Početna stranica'
     DELETEDPAGEHELP: 'Page is no longer published'
     DELETEDPAGESHORT: Deleted
     DEPENDENT_NOTE: 'Sledeće stranice oslanjaju se na ovu stranicu. Ovo podrazumeva virtuelne stranice, preusmeravajuće stranice i stranice sa linkovima sadržaja.'
@@ -319,7 +319,7 @@ sr:
     DependtPageColumnURL: URL
     EDITANYONE: 'Свако ко може да се пријави на CMS'
     EDITHEADER: 'Ко може да мења ову страницу у CMS-у?'
-    EDITONLYTHESE: 'Само ови људи (изаберите са списка)'
+    EDITONLYTHESE: 'Samo ove osobe (izaberite sa liste)'
     EDITORGROUPS: 'Editor Groups'
     EDIT_ALL_DESCRIPTION: 'Edit any page'
     EDIT_ALL_HELP: 'Mogućnost menjanja bilo koje stranice na sajtu, bez obzira na podešavanja unutar kartice "Pristup". Zahteva dozvolu "Pristup odeljku ‚Stranice‚"'
@@ -339,7 +339,7 @@ sr:
     MetadataToggle: Metadata
     OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: 'Lokacija stranice'
-    PAGETITLE: 'Име стране'
+    PAGETITLE: 'Naziv stranice'
     PAGETYPE: 'Тип стране'
     PARENTID: 'Izvorna strana'
     PARENTTYPE: 'Lokacija stranice'
@@ -356,12 +356,12 @@ sr:
     REORGANISE_DESCRIPTION: 'Change site structure'
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 'Приказати у менијима?'
-    SHOWINSEARCH: 'Приказати у претрази?'
+    SHOWINSEARCH: 'Prikazati u pretrazi?'
     SINGULARNAME: Page
     TABBEHAVIOUR: Понашање
     TABCONTENT: Садржај
     TABDEPENDENT: 'Dependent pages'
-    TOPLEVEL: 'Садржај сајта (главни ниво)'
+    TOPLEVEL: 'Sadržaj sajta (glavni nivo)'
     TOPLEVELCREATORGROUPS: 'Top level creators'
     URLSegment: 'Segment URL adrese'
     VIEWERGROUPS: 'Grupe pregledača'
@@ -378,9 +378,9 @@ sr:
   SiteTreeURLSegmentField:
     HelpChars: ' Special characters are automatically converted or removed.'
   StaticExporter:
-    BASEURL: 'Основни URL'
-    EXPORTTO: 'Извези у ову фасциклу'
-    NAME: 'Извези статичне садржаје'
+    BASEURL: 'Osnovni URL'
+    EXPORTTO: 'Izvesti u ovaj direktorijum'
+    NAME: 'Statički izvoznik'
   TableListField:
     SELECT: 'Select:'
   TableListField.ss:
@@ -401,10 +401,10 @@ sr:
     CANACCESS: 'Можете да приступите архивираном садржају на овом линку:'
     HAVEASKED: 'Замољени сте да погледате садржај овог сајта'
   VirtualPage:
-    CHOOSE: 'Изаберите страну коју желите да повежете'
+    CHOOSE: 'Izaberite stranicu na koju da se povežete'
     DESCRIPTION: 'Prikazuje sadržaj druge stranice'
-    EDITCONTENT: 'кликните овде да бисте променили садржај'
-    HEADER: 'Ово је виртуална страна'
+    EDITCONTENT: 'kliknite ovde da promenite sadržaj'
+    HEADER: 'Ovo je virtuelna strana'
     PLURALNAME: 'Virtuelne stranice'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtuelna strana'
