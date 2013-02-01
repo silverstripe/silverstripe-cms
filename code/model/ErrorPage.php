@@ -172,12 +172,23 @@ class ErrorPage extends Page {
 	}
 	
 	/**
+	 * We make sure that the Error Pages always sit 
+	 * at the bottom of the SiteTree / GridField List.
+	 * We have taken one million as a minimum sort number
+	 * for Error Pages.  
+	 */
+	public function onBeforeWrite() {
+		$minimumSortNumber = 1000000;
+		parent::onBeforeWrite();
+		if($this->Sort < $minimumSortNumber) {
+			$this->Sort = $this->Sort + $minimumSortNumber;
+		}
+	}
+	
+	/**
 	 * When an error page is published, create a static HTML page with its
 	 * content, so the page can be shown even when SilverStripe is not
 	 * functioning correctly before publishing this page normally.
-	 * @param string|int $fromStage Place to copy from. Can be either a stage name or a version number.
-	 * @param string $toStage Place to copy to. Must be a stage name.
-	 * @param boolean $createNewVersion Set this to true to create a new version number.  By default, the existing version number will be copied over.
 	 */
 	public function doPublish() {
 		parent::doPublish();
