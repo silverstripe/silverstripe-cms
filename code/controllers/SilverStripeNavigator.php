@@ -196,12 +196,12 @@ class SilverStripeNavigatorItem_CMSLink extends SilverStripeNavigatorItem {
 	}
 	
 	public function isActive() {
-		return (Controller::curr() instanceof CMSMain);
+		return (Controller::curr() instanceof LeftAndMain);
 	}
 	
 	public function canView($member = null) {
 		// Don't show in CMS
-		return !(Controller::curr() instanceof CMSMain);
+		return !(Controller::curr() instanceof LeftAndMain);
 	}
 
 }
