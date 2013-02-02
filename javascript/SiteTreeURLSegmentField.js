@@ -14,9 +14,8 @@
 				// Only initialize the field if it contains an editable field.
 				// This ensures we don't get bogus previews on readonly fields.
 				if(this.find(':text').length) {
-					this._addActions(); // add elements and actions for editing
-					this.edit(); // toggle
-					this._autoInputWidth(); // set width of input field
+					// add elements and actions for editing
+					this._addActions();
 				}
 				
 				this._super();
@@ -48,17 +47,17 @@
 				holder.text(field.val());
 				
 				// toggle elements
-				if (field.is(':visible')) {
+				if (field.attr('aria-expanded') === "true") {
 					update.hide();
 					cancel.hide();
-					field.hide();
+					field.hide().attr('aria-expanded', 'false');
 					holder.show();
 					edit.show();
 					help.hide();
 				} else {
 					edit.hide();
 					holder.hide();
-					field.show();
+					field.show().attr('aria-expanded', 'true');
 					update.show();
 					cancel.show();
 					help.show();
@@ -196,10 +195,13 @@
 				});
 				
 				// insert elements
-				preview.insertAfter('.prefix');
+				preview.insertAfter(this.find('.prefix'));
 				editAction.insertAfter(field);
 				cancelAction.insertAfter(field);
 				updateAction.insertAfter(field);
+				field.attr('aria-expanded', 'true');
+				this.edit();
+				this._autoInputWidth();
 			},
 			
 			/**
