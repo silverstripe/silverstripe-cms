@@ -231,7 +231,7 @@ class FilesystemPublisher extends StaticPublisher {
 				);
 			}
 			
-			$files[] = array(
+			$files[$origUrl] = array(
 				'Content' => $content,
 				'Folder' => dirname($path).'/',
 				'Filename' => basename($path),
