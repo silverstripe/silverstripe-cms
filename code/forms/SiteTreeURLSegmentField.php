@@ -15,7 +15,7 @@ class SiteTreeURLSegmentField extends TextField {
 	/** 
 	 * @var string 
 	 */
-	protected $helpText, $urlPrefix;
+	protected $helpText, $urlPrefix, $urlSuffix;
 	
 	static $allowed_actions = array(
 		'suggest'
@@ -23,6 +23,16 @@ class SiteTreeURLSegmentField extends TextField {
 
 	public function Value() {
 		return rawurldecode($this->value);
+	}
+
+	public function getAttributes() {
+		return array_merge(
+			parent::getAttributes(),
+			array(
+				'data-prefix' => $this->getURLPrefix(),
+				'data-suffix' => '?stage=Stage'
+			)
+		);
 	}
 
 	public function Field($properties = array()) {
@@ -85,9 +95,20 @@ class SiteTreeURLSegmentField extends TextField {
 		return $this->urlPrefix;
 	}
 	
+	public function getURLSuffix() {
+		return $this->urlSuffix;
+	}
+
+	public function setURLSuffix($suffix) {
+		$this->urlSuffix = $suffix;
+	}
 
 	public function Type() {
 		return 'text urlsegment';
+	}
+
+	public function getURL() {
+		return Controller::join_links($this->getURLPrefix(), $this->Value(), $this->getURLSuffix());
 	}
 
 }
