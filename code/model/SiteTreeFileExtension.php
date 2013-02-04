@@ -9,7 +9,7 @@ class SiteTreeFileExtension extends DataExtension {
 		'BackLinkTracking' => 'SiteTree'
 	);
 
-	public function updateCMSFields(FieldList $fields) {
+	public function updateCMSFields(FieldList &$fields) {
 		$fields->insertAfter(new ReadonlyField('BackLinkCount', 
 			_t('AssetTableField.BACKLINKCOUNT', 'Used on:'), 
 			$this->BackLinkTracking()->Count() . ' ' . _t('AssetTableField.PAGES', 'page(s)')), 
