@@ -113,11 +113,6 @@ class CMSPageHistoryController extends CMSMain {
 		$fields = $fields->makeReadonly();		
 		$navField->setAllowHTML(true);
 		
-		foreach($fields->dataFields() as $field) {
-			$field->dontEscape = true;
-			$field->reserveNL = true;
-		}
-		
 		if($compareID) {
 			$link = Controller::join_links(
 				$this->Link('show'),
