@@ -39,6 +39,8 @@ class ErrorPage extends Page {
 	static public function response_for($statusCode) {
 		// first attempt to dynamically generate the error page
 		if($errorPage = DataObject::get_one('ErrorPage', "\"ErrorCode\" = $statusCode")) {
+			Requirements::clear();
+			Requirements::clear_combined_files();
 			return ModelAsController::controller_for($errorPage)->handleRequest(new SS_HTTPRequest('GET', ''), DataModel::inst());
 		}
 		
