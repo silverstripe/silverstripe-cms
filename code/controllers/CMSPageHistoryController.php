@@ -15,6 +15,8 @@ class CMSPageHistoryController extends CMSMain {
 	
 	static $allowed_actions = array(
 		'VersionsForm',
+		'CompareVersionsForm',
+		'show',
 		'compare'
 	);
 	
