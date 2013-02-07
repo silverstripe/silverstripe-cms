@@ -208,7 +208,7 @@ class SilverStripeNavigatorItem extends ViewableData {
 				(!$currentDraft || ($currentDraft && $this->record->Version != $currentDraft->Version)) 
 				&& (!$currentLive || ($currentLive && $this->record->Version != $currentLive->Version))
 			);
-		}
+}
 
 		return $this->record->_cached_isArchived;
 	}
@@ -228,7 +228,7 @@ class SilverStripeNavigatorItem_CMSLink extends SilverStripeNavigatorItem {
 			_t('ContentController.CMS', 'CMS')
 		);
 	}
-
+	
 	public function getTitle() {
 		return _t('ContentController.CMS', 'CMS', 'Used in navigation. Should be a short label');		
 	}
@@ -238,13 +238,13 @@ class SilverStripeNavigatorItem_CMSLink extends SilverStripeNavigatorItem {
 	}
 	
 	public function isActive() {
-		return (Controller::curr() instanceof CMSMain);
+		return (Controller::curr() instanceof LeftAndMain);
 	}
 	
 	public function canView($member = null) {
 		return (
-			// Don't show in CMS
-			!(Controller::curr() instanceof CMSMain)
+		// Don't show in CMS
+			!(Controller::curr() instanceof LeftAndMain)
 			// Don't follow redirects in preview, they break the CMS editing form
 			&& !($this->record instanceof RedirectorPage)
 		);
@@ -375,7 +375,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 			$this->recordLink = $this->record->PreviewLink();
 			return "<a class=\"ss-ui-button\" href=\"$this->recordLink?archiveDate={$this->record->LastEdited}\" target=\"_blank\">". _t('ContentController.ARCHIVEDSITE', 'Preview version') ."</a>";
 	}
-
+	
 	public function getTitle() {
 		return _t('SilverStripeNavigator.ARCHIVED', 'Archived');
 	}
@@ -404,5 +404,5 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 	public function isActive() {
 		return $this->isArchived();
 	}
-}
+	}
 
