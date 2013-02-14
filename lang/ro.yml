@@ -1,45 +1,45 @@
 ro:
   AssetAdmin:
-    ADDFILES: 'Add Files'
-    ActionAdd: 'Add folder'
+    ADDFILES: 'Adaugati fisiere'
+    ActionAdd: 'Creaza Folder'
     AppCategoryArchive: Archive
     AppCategoryAudio: Audio
     AppCategoryDocument: Document
     AppCategoryFlash: Flash
     AppCategoryImage: Image
     AppCategoryVideo: Video
-    BackToFolder: 'Back to folder'
+    BackToFolder: 'Inapoi la folder'
     CREATED: Date
     CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Details
     FILES: Files
-    FILESYSTEMSYNC: 'Sync files'
+    FILESYSTEMSYNC: 'Sincronizati fisierele'
     FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
-    FROMTHEINTERNET: 'From the internet'
-    FROMYOURCOMPUTER: 'From your computer'
-    Filetype: 'File type'
-    ListView: 'List View'
+    FROMTHEINTERNET: 'De pe internet'
+    FROMYOURCOMPUTER: 'Din calculatorul dumneavoastra'
+    Filetype: 'Tipul Fisierului'
+    ListView: 'Vizualizare in lista'
     MENUTITLE: Files
     NEWFOLDER: NewFolder
     SIZE: Size
     THUMBSDELETED: '{count} unused thumbnails have been deleted'
-    TreeView: 'Tree View'
+    TreeView: 'Vizualizare gen arbore'
     Upload: Upload
   AssetAdmin_DeleteBatchAction:
-    TITLE: 'Delete folders'
+    TITLE: 'Stergeti directoarele'
   AssetAdmin_Tools:
     FILTER: Filter
   AssetAdmin_left.ss:
     GO: Go
   AssetTableField:
-    BACKLINKCOUNT: 'Used on:'
+    BACKLINKCOUNT: 'Utilizat la:'
     PAGES: page(s)
   BackLink_Button.ss:
     Back: Back
   BrokenLinksReport:
     Any: Any
-    BROKENLINKS: 'Broken links report'
-    CheckSite: 'Check site'
+    BROKENLINKS: 'Raporteaza linkuri defecte'
+    CheckSite: 'Verifica Site-ul'
     CheckSiteDropdownDraft: 'Draft Site'
     CheckSiteDropdownPublished: 'Published Site'
     ColumnDateLastModified: 'Date last modified'
@@ -382,18 +382,18 @@ ro:
     EXPORTTO: 'Экспорт в эту папку'
     NAME: 'Static exporter'
   TableListField:
-    SELECT: 'Select:'
+    SELECT: 'Selecteaza:'
   TableListField.ss:
-    NOITEMSFOUND: 'No items found'
+    NOITEMSFOUND: 'Nici-un obiect gasit'
     SORTASC: 'Sort in ascending order'
     SORTDESC: 'Sort in descending order'
   TableListField_PageControls.ss:
     DISPLAYING: Displaying
     OF: of
     TO: to
-    VIEWFIRST: 'View first'
-    VIEWLAST: 'View last'
-    VIEWNEXT: 'View next'
+    VIEWFIRST: 'Arata Primul'
+    VIEWLAST: 'Arata Ultimul'
+    VIEWNEXT: 'Arata Urmatorul'
     VIEWPREVIOUS: 'View previous'
   TreeTools:
     DisplayLabel: 'Display:'
