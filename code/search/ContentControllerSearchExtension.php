@@ -37,7 +37,7 @@ class ContentControllerSearchExtension extends Extension {
 	 *
 	 * @param array $data The raw request data submitted by user
 	 * @param SearchForm $form The form instance that was submitted
-	 * @param SS_HTTPRequest $request Request generated for this action
+	 * @param \SilverStripe\Framework\Http\Request $request Request generated for this action
 	 */
 	public function results($data, $form, $request) {
 		$data = array(

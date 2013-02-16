@@ -1,4 +1,7 @@
 <?php
+
+use SilverStripe\Framework\Http\Session;
+
 class CMSPageAddController extends CMSPageEditController {
 
 	static $url_segment = 'pages/add';

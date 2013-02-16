@@ -1,4 +1,8 @@
 <?php
+
+use SilverStripe\Framework\Http\Http;
+use SilverStripe\Framework\Http\Session;
+
 /**
  * AssetAdmin is the 'file store' section of the CMS.
  * It provides an interface for maniupating the File and Folder objects in the system.
@@ -96,7 +100,7 @@ JS
 		// Don't filter list when a detail view is requested,
 		// to avoid edge cases where the filtered list wouldn't contain the requested
 		// record due to faulty session state (current folder not always encoded in URL, see #7408).
-		if(!$folder->ID && $this->request->requestVar('ID') === null && ($this->request->param('ID') == 'field')) {
+		if(!$folder->ID && $this->request->requestVar('ID') === null && ($this->request->getParam('ID') == 'field')) {
 			return $list;
 		}
 
@@ -324,8 +328,8 @@ JS
 		$record->delete();
 		$this->setCurrentPageID(null);
 
-		$this->response->addHeader('X-Status', rawurlencode(_t('LeftAndMain.DELETED', 'Deleted.')));
-		$this->response->addHeader('X-Pjax', 'Content');
+		$this->response->setHeader('X-Status', rawurlencode(_t('LeftAndMain.DELETED', 'Deleted.')));
+		$this->response->setHeader('X-Pjax', 'Content');
 		return $this->redirect(Controller::join_links($this->Link('show'), $parentID ? $parentID : 0));
 	}
 
@@ -516,7 +520,7 @@ JS
 	 */
 	public function doSync() {
 		$message = Filesystem::sync();
-		$this->response->addHeader('X-Status', rawurlencode($message));
+		$this->response->setHeader('X-Status', rawurlencode($message));
 		
 		return;
 	}
@@ -550,7 +554,7 @@ JS
 			'{count} unused thumbnails have been deleted', 
 			array('count' => $count)
 		);
-		$this->response->addHeader('X-Status', rawurlencode($message));
+		$this->response->setHeader('X-Status', rawurlencode($message));
 		return;
 	}
 	
@@ -593,7 +597,7 @@ JS
 					foreach($objects as $object) {
 						foreach($SNG_class->db() as $fieldName => $fieldType) {
 							if($fieldType == 'HTMLText') {
-								$url1 = HTTP::findByTagAndAttribute($object->$fieldName,array('img' => 'src'));
+								$url1 = Http::findByTagAndAttribute($object->$fieldName,array('img' => 'src'));
 								
 								if($url1 != NULL) {
 									$usedThumbnails[] = substr($url1[0], strpos($url1[0], '/assets/') + 8);
@@ -601,7 +605,7 @@ JS
 								
 								if($object->latestPublished > 0) {
 									$object = Versioned::get_latest_version($className, $object->ID);
-									$url2 = HTTP::findByTagAndAttribute($object->$fieldName, array('img' => 'src'));
+									$url2 = Http::findByTagAndAttribute($object->$fieldName, array('img' => 'src'));
 									
 									if($url2 != NULL) {
 										$usedThumbnails[] = substr($url2[0], strpos($url2[0], '/assets/') + 8);
@@ -637,7 +641,7 @@ JS
 		}
 
 		// If we're adding a folder, note that in breadcrumbs as well
-		if($this->request->param('Action') == 'addfolder') {
+		if($this->request->getParam('Action') == 'addfolder') {
 			$items->push(new ArrayData(array(
 				'Title' => _t('Folder.AddFolderButton', 'Add folder'),
 				'Link' => false

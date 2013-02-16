@@ -1,4 +1,7 @@
 <?php
+
+use SilverStripe\Framework\Http\Http;
+
 /**
  * This class lets you export a static copy of your site.
  * It creates a huge number of folders each containing an index.html file.
@@ -106,7 +109,7 @@ class StaticExporter extends Controller {
 		Filesystem::removeFolder($tmpBaseFolder);
 		
 		// return as download to the client
-		$response = SS_HTTPRequest::send_file($archiveContent, "$baseFolderName.tar.gz", 'application/x-tar-gz');
+		$response = Http::send_file($archiveContent, "$baseFolderName.tar.gz", 'application/x-tar-gz');
 		echo $response->output();
 	}
 	

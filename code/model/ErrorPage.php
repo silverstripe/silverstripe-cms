@@ -1,4 +1,8 @@
 <?php
+
+use SilverStripe\Framework\Http\Request;
+use SilverStripe\Framework\Http\Response;
+
 /**
  * ErrorPage holds the content for the page of an error response.
  * Renders the page on each publish action into a static HTML file
@@ -31,17 +35,17 @@ class ErrorPage extends Page {
 	public function canAddChildren($member = null) { return false; }
 	
 	/**
-	 * Get a {@link SS_HTTPResponse} to response to a HTTP error code if an {@link ErrorPage} for that code is present.
+	 * Get a {@link Response} to response to a HTTP error code if an {@link ErrorPage} for that code is present.
 	 *
 	 * @param int $statusCode
-	 * @return SS_HTTPResponse
+	 * @return Response
 	 */
 	static public function response_for($statusCode) {
 		// first attempt to dynamically generate the error page
 		if($errorPage = DataObject::get_one('ErrorPage', "\"ErrorCode\" = $statusCode")) {
 			Requirements::clear();
 			Requirements::clear_combined_files();
-			return ModelAsController::controller_for($errorPage)->handleRequest(new SS_HTTPRequest('GET', ''), DataModel::inst());
+			return ModelAsController::controller_for($errorPage)->handleRequest(new Request('GET'), DataModel::inst());
 		}
 		
 		// then fall back on a cached version
@@ -51,7 +55,7 @@ class ErrorPage extends Page {
 		);
 		
 		if(file_exists($cachedPath)) {
-			$response = new SS_HTTPResponse();	
+			$response = new Response();
 			
 			$response->setStatusCode($statusCode);
 			$response->setBody(file_get_contents($cachedPath));	
@@ -232,7 +236,7 @@ class ErrorPage extends Page {
 				"Error opening file \"{filename}\" for writing. Please check file permissions.",
 				array('filename' => $errorFile)
 			);
-			$this->response->addHeader('X-Status', rawurlencode($fileErrorText));
+			$this->response->setHeader('X-Status', rawurlencode($fileErrorText));
 			return $this->httpError(405);
 		}
 	}
@@ -294,7 +298,7 @@ class ErrorPage_Controller extends Page_Controller {
 	public function init() {
 		parent::init();
 
-		$action = $this->request->param('Action');
+		$action = $this->request->getParam('Action');
 		if(!$action || $action == 'index') {
 			$this->getResponse()->setStatusCode($this->failover->ErrorCode ? $this->failover->ErrorCode : 404);
 		}

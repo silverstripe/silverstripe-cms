@@ -1,5 +1,7 @@
 <?php
 
+use SilverStripe\Framework\Http\Http;
+
 /**
  * Usage: SiteTree::add_extension("FilesystemPublisher('static-folder', 'html')");
  * 

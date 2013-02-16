@@ -1,4 +1,7 @@
 <?php
+
+use SilverStripe\Framework\Http\Session;
+
 /**
  * @package cms
  * @subpackage tests

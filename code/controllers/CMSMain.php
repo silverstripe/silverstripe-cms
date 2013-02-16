@@ -1,4 +1,9 @@
 <?php
+
+use SilverStripe\Framework\Http\Response;
+use SilverStripe\Framework\Http\ResponseException;
+use SilverStripe\Framework\Http\Session;
+
 /**
  * The main "content" area of the CMS.
  *
@@ -84,7 +89,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function index($request) {
 		// In case we're not showing a specific record, explicitly remove any session state,
 		// to avoid it being highlighted in the tree, and causing an edit form to show.
-		if(!$request->param('Action')) $this->setCurrentPageId(null);
+		if(!$request->getParam('Action')) $this->setCurrentPageId(null);
 
 		return parent::index($request);
 	}
@@ -827,7 +832,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		if(substr($SQL_id,0,3) != 'new') {
 			$record = DataObject::get_by_id($className, $SQL_id);
 			if($record && !$record->canEdit()) return Security::permissionFailure($this);
-			if(!$record || !$record->ID) throw new SS_HTTPResponse_Exception("Bad record ID #$SQL_id", 404);
+			if(!$record || !$record->ID) throw new ResponseException("Bad record ID #$SQL_id", 404);
 		} else {
 			if(!singleton($this->stat('tree_class'))->canCreate()) return Security::permissionFailure($this);
 			$record = $this->getNewItem($SQL_id, false);
@@ -947,7 +952,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$descRemoved = '';
 		}
 
-		$this->response->addHeader(
+		$this->response->setHeader(
 			'X-Status',
 			rawurlencode(
 				_t(
@@ -979,11 +984,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
  	 * @uses SiteTree->doRevertToLive()
 	 */
 	public function revert($data, $form) {
-		if(!isset($data['ID'])) return new SS_HTTPResponse("Please pass an ID in the form content", 400);
+		if(!isset($data['ID'])) return new Response("Please pass an ID in the form content", 400);
 		
 		$id = (int) $data['ID'];
 		$restoredPage = Versioned::get_latest_version("SiteTree", $id);
-		if(!$restoredPage) 	return new SS_HTTPResponse("SiteTree #$id not found", 400);
+		if(!$restoredPage) 	return new Response("SiteTree #$id not found", 400);
 		
 		$record = Versioned::get_one_by_stage(
 			'SiteTree', 
@@ -994,11 +999,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// a user can restore a page without publication rights, as it just adds a new draft state
 		// (this action should just be available when page has been "deleted from draft")
 		if($record && !$record->canEdit()) return Security::permissionFailure($this);
-		if(!$record || !$record->ID) throw new SS_HTTPResponse_Exception("Bad record ID #$id", 404);
+		if(!$record || !$record->ID) throw new ResponseException("Bad record ID #$id", 404);
 
 		$record->doRevertToLive();
 		
-		$this->response->addHeader(
+		$this->response->setHeader(
 			'X-Status',
 			rawurlencode(_t(
 				'CMSMain.RESTORED',
@@ -1022,13 +1027,13 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			sprintf("\"SiteTree\".\"ID\" = %d", $id)
 		);
 		if($record && !$record->canDelete()) return Security::permissionFailure();
-		if(!$record || !$record->ID) throw new SS_HTTPResponse_Exception("Bad record ID #$id", 404);
+		if(!$record || !$record->ID) throw new ResponseException("Bad record ID #$id", 404);
 		
 		// save ID and delete record
 		$recordID = $record->ID;
 		$record->delete();
 
-		$this->response->addHeader(
+		$this->response->setHeader(
 			'X-Status',
 			rawurlencode(sprintf(_t('CMSMain.REMOVEDPAGEFROMDRAFT',"Removed '%s' from the draft site"), $record->Title))
 		);
@@ -1048,11 +1053,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$record = DataObject::get_by_id($className, $data['ID']);
 		
 		if($record && !$record->canDeleteFromLive()) return Security::permissionFailure($this);
-		if(!$record || !$record->ID) throw new SS_HTTPResponse_Exception("Bad record ID #" . (int)$data['ID'], 404);
+		if(!$record || !$record->ID) throw new ResponseException("Bad record ID #" . (int)$data['ID'], 404);
 		
 		$record->doUnpublish();
 		
-		$this->response->addHeader(
+		$this->response->setHeader(
 			'X-Status',
 			rawurlencode(_t('CMSMain.REMOVEDPAGE',"Removed '{title}' from the published site", array('title' => $record->Title)))
 		);
@@ -1066,7 +1071,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function rollback() {
 		return $this->doRollback(array(
 			'ID' => $this->currentPageID(),
-			'Version' => $this->request->param('VersionID')
+			'Version' => $this->request->getParam('VersionID')
 		), null);
 	}
 
@@ -1102,15 +1107,15 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			);
 		}
 
-		$this->response->addHeader('X-Status', rawurlencode($message));
+		$this->response->setHeader('X-Status', rawurlencode($message));
 		
 		// Can be used in different contexts: In normal page edit view, in which case the redirect won't have any effect.
 		// Or in history view, in which case a revert causes the CMS to re-load the edit view.
 		// The X-Pjax header forces a "full" content refresh on redirect.
 		$url = Controller::join_links(singleton('CMSPageEditController')->Link('show'), $record->ID);
-		$this->response->addHeader('X-ControllerURL', $url);
-		$this->request->addHeader('X-Pjax', 'Content');  
-		$this->response->addHeader('X-Pjax', 'Content');  
+		$this->response->setHeader('X-ControllerURL', $url);
+		$this->request->setHeader('X-Pjax', 'Content');
+		$this->response->setHeader('X-Pjax', 'Content');
 
 		return $this->getResponseNegotiator()->respond($this->request);
 	}
@@ -1244,16 +1249,16 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 */
 	public function restore($data, $form) {
 		if(!isset($data['ID']) || !is_numeric($data['ID'])) {
-			return new SS_HTTPResponse("Please pass an ID in the form content", 400);
+			return new Response("Please pass an ID in the form content", 400);
 		}
 		
 		$id = (int)$data['ID'];
 		$restoredPage = Versioned::get_latest_version("SiteTree", $id);
-		if(!$restoredPage) 	return new SS_HTTPResponse("SiteTree #$id not found", 400);
+		if(!$restoredPage) 	return new Response("SiteTree #$id not found", 400);
 		
 		$restoredPage = $restoredPage->doRestoreToStage();
 		
-		$this->response->addHeader(
+		$this->response->setHeader(
 			'X-Status',
 			rawurlencode(_t(
 				'CMSMain.RESTORED',
@@ -1272,7 +1277,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
 			$page = DataObject::get_by_id("SiteTree", $id);
 			if($page && (!$page->canEdit() || !$page->canCreate())) return Security::permissionFailure($this);
-			if(!$page || !$page->ID) throw new SS_HTTPResponse_Exception("Bad record ID #$id", 404);
+			if(!$page || !$page->ID) throw new ResponseException("Bad record ID #$id", 404);
 
 			$newPage = $page->duplicate();
 			
@@ -1298,7 +1303,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
 			$page = DataObject::get_by_id("SiteTree", $id);
 			if($page && (!$page->canEdit() || !$page->canCreate())) return Security::permissionFailure($this);
-			if(!$page || !$page->ID) throw new SS_HTTPResponse_Exception("Bad record ID #$id", 404);
+			if(!$page || !$page->ID) throw new ResponseException("Bad record ID #$id", 404);
 
 			$newPage = $page->duplicateWithChildren();
 

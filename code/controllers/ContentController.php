@@ -1,4 +1,10 @@
 <?php
+
+use SilverStripe\Framework\Http\Request;
+use SilverStripe\Framework\Http\Response;
+use SilverStripe\Framework\Http\ResponseException;
+use SilverStripe\Framework\Http\Session;
+
 /**
  * The most common kind of controller; effectively a controller linked to a {@link DataObject}.
  *
@@ -127,11 +133,11 @@ class ContentController extends Controller {
 	 * This acts the same as {@link Controller::handleRequest()}, but if an action cannot be found this will attempt to
 	 * fall over to a child controller in order to provide functionality for nested URLs.
 	 *
-	 * @return SS_HTTPResponse
+	 * @return Response
 	 */
-	public function handleRequest(SS_HTTPRequest $request, DataModel $model = null) {
+	public function handleRequest(Request $request, DataModel $model = null) {
 		$child  = null;
-		$action = $request->param('Action');
+		$action = $request->getParam('Action');
 		$this->setDataModel($model);
 		
 		// If nested URLs are enabled, and there is no action handler for the current request then attempt to pass
@@ -151,15 +157,15 @@ class ContentController extends Controller {
 			if(!$child){
 				$child = ModelAsController::find_old_page($action,$this->ID);
 				if($child){
-					$response = new SS_HTTPResponse();
+					$response = new Response();
 					$params = $request->getVars();
 					if(isset($params['url'])) unset($params['url']);
 					$response->redirect(
 						Controller::join_links(
 							$child->Link(
 								Controller::join_links(
-									$request->param('ID'), // 'ID' is the new 'URLSegment', everything shifts up one position
-									$request->param('OtherID')
+									$request->getParam('ID'), // 'ID' is the new 'URLSegment', everything shifts up one position
+									$request->getParam('OtherID')
 								)
 							),
 							// Needs to be in separate join links to avoid urlencoding
@@ -171,12 +177,12 @@ class ContentController extends Controller {
 				}
 			}
 		}
-		
+
 		// we found a page with this URLSegment.
 		if($child) {
 			$request->shiftAllParams();
 			$request->shift();
-			
+
 			$response = ModelAsController::controller_for($child)->handleRequest($request, $model);
 		} else {
 			// If a specific locale is requested, and it doesn't match the page found by URLSegment,
@@ -186,13 +192,13 @@ class ContentController extends Controller {
 				if($request->getVar('locale') && $this->dataRecord && $this->dataRecord->Locale != $request->getVar('locale')) {
 					$translation = $this->dataRecord->getTranslation($request->getVar('locale'));
 					if($translation) {
-						$response = new SS_HTTPResponse();
+						$response = new Response();
 						$response->redirect($translation->Link(), 301);
-						throw new SS_HTTPResponse_Exception($response);
+						throw new ResponseException($response);
 					}
 				}
 			}
-			
+
 			Director::set_current_page($this->data());
 			$response = parent::handleRequest($request, $model);
 			Director::set_current_page(null);

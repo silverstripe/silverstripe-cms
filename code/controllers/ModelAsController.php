@@ -1,4 +1,9 @@
 <?php
+
+use SilverStripe\Framework\Http\Request;
+use SilverStripe\Framework\Http\Response;
+use SilverStripe\Framework\Http\ResponseException;
+
 /**
  * ModelAsController deals with mapping the initial request to the first {@link SiteTree}/{@link ContentController}
  * pair, which are then used to handle the request.
@@ -34,16 +39,16 @@ class ModelAsController extends Controller implements NestedController {
 	
 	/**
 	 * @uses ModelAsController::getNestedController()
-	 * @return SS_HTTPResponse
+	 * @return Response
 	 */
-	public function handleRequest(SS_HTTPRequest $request, DataModel $model) {
+	public function handleRequest(Request $request, DataModel $model) {
 		$this->request = $request;
 		$this->setDataModel($model);
 		
 		$this->pushCurrent();
 
 		// Create a response just in case init() decides to redirect
-		$this->response = new SS_HTTPResponse();
+		$this->response = new Response();
 
 		$this->init();
 
@@ -66,11 +71,11 @@ class ModelAsController extends Controller implements NestedController {
 			
 			if($result instanceof RequestHandler) {
 				$result = $result->handleRequest($this->request, $model);
-			} else if(!($result instanceof SS_HTTPResponse)) {
+			} else if(!($result instanceof Response)) {
 				user_error("ModelAsController::getNestedController() returned bad object type '" . 
 					get_class($result)."'", E_USER_WARNING);
 			}
-		} catch(SS_HTTPResponse_Exception $responseException) {
+		} catch(ResponseException $responseException) {
 			$result = $responseException->getResponse();
 		}
 		
@@ -84,7 +89,7 @@ class ModelAsController extends Controller implements NestedController {
 	public function getNestedController() {
 		$request = $this->request;
 		
-		if(!$URLSegment = $request->param('URLSegment')) {
+		if(!$URLSegment = $request->getParam('URLSegment')) {
 			throw new Exception('ModelAsController->getNestedController(): was not passed a URLSegment value.');
 		}
 		
@@ -107,14 +112,14 @@ class ModelAsController extends Controller implements NestedController {
 			if($redirect) {
 				$params = $request->getVars();
 				if(isset($params['url'])) unset($params['url']);
-				$this->response = new SS_HTTPResponse();
+				$this->response = new Response();
 				$this->response->redirect(
 					Controller::join_links(
 						$redirect->Link(
 							Controller::join_links(
-								$request->param('Action'), 
-								$request->param('ID'), 
-								$request->param('OtherID')
+								$request->getParam('Action'),
+								$request->getParam('ID'),
+								$request->getParam('OtherID')
 							)
 						),
 						// Needs to be in separate join links to avoid urlencoding
@@ -137,7 +142,7 @@ class ModelAsController extends Controller implements NestedController {
 			Debug::message("Using record #$sitetree->ID of type $sitetree->class with link {$sitetree->Link()}");
 		}
 		
-		return self::controller_for($sitetree, $this->request->param('Action'));
+		return self::controller_for($sitetree, $this->request->getParam('Action'));
 	}
 	
 	/**
