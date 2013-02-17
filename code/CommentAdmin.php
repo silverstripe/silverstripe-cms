@@ -93,7 +93,8 @@ class CommentAdmin extends LeftAndMain {
 		$table->setParentClass(false);
 		$table->setFieldCasting(array(
 			'Created' => 'SS_Datetime->Full',
-			'Comment' => array('HTMLText->LimitCharacters', 150)
+			'Comment' => array('HTMLText->LimitCharacters', 150),
+			'Parent.Title' => 'Text',
 		));
 		
 		$table->setPageSize(self::get_comments_per_page());
