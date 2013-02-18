@@ -1302,9 +1302,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	
 	/**
 	 * Return the version number of this application.
-	 * Uses the subversion path information in <mymodule>/silverstripe_version
+	 * Uses the number in <mymodule>/silverstripe_version
 	 * (automacially replaced by build scripts).
-	 * 
+	 * If silverstripe_version is empty,
+	 * then attempts to get it from composer.lock
+	 *
 	 * @return string
 	 */
 	public function CMSVersion() {
