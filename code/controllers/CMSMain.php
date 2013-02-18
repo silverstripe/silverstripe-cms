@@ -1313,27 +1313,30 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		// Tries to obtain version number from composer.lock if it exists
 		if(!$cmsVersion || !$frameworkVersion) {
-			$composer_lock_path = BASE_PATH . '/composer.lock';
-			if (file_exists($composer_lock_path)) {
+			$composerLockPath = BASE_PATH . '/composer.lock';
+			if (file_exists($composerLockPath)) {
 				$cache = SS_Cache::factory('CMSMain_CMSVersion');
-				$cacheKey = filemtime($composer_lock_path);
-				$json_versions = $cache->load($cacheKey);
-				if(!$json_versions) {
-					if ($json_data = file_get_contents($composer_lock_path)) {
-						if ($lockdata = json_decode($json_data)) {
-							if (isset($lockdata->packages)) {
-								$array_versions = array();
-								foreach ($lockdata->packages as $package) {
-									if ($package->name == "silverstripe/cms" && !$cmsVersion && isset($package->version)) $array_versions['cms'] = $package->version;
-									if ($package->name == "silverstripe/framework" && !$frameworkVersion && isset($package->version)) $array_versions['framework'] = $package->version;
+				$cacheKey = filemtime($composerLockPath);
+				$jsonVersions = $cache->load($cacheKey);
+				if(!$jsonVersions && $jsonData = file_get_contents($composerLockPath)) {
+					if ($lockdata = json_decode($jsonData)) {
+						if (isset($lockdata->packages)) {
+							$arrayVersions = array();
+							foreach ($lockdata->packages as $package) {
+								if ($package->name == "silverstripe/cms" && !$cmsVersion && isset($package->version)) {
+									$arrayVersions['cms'] = $package->version;
 								}
-								$json_versions = json_encode($array_versions);
-								$cache->save($json_versions, $cacheKey);
+								if ($package->name == "silverstripe/framework" && !$frameworkVersion && isset($package->version)) {
+									$arrayVersions['framework'] = $package->version;
+								}
 							}
+							$jsonVersions = json_encode($arrayVersions);
+							$cache->save($jsonVersions, $cacheKey);
 						}
 					}
+					
 				}
-				$versions = json_decode($json_versions);
+				$versions = json_decode($jsonVersions);
 				$cmsVersion = $versions->cms;
 				$frameworkVersion = $versions->framework;
 			}
