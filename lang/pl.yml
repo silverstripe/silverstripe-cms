@@ -331,9 +331,9 @@ pl:
     LINKCHANGENOTE: 'Zmiana linku na aktualnej stronie skutkuje zmianą w linkach stron potomnych.'
     MENUTITLE: 'Sekcja nawigacji'
     METADESC: Opis
-    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
+    METADESCHELP: 'Wyszukiwarki używają tej zawartości do wyświetlania wyników wyszukiwania (aczkolwiek nie zmieni to ich miejsca w rankingu)'
     METAEXTRA: 'Własne meta tagi'
-    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
+    METAEXTRAHELP: 'Tagi HTML dla dodatkowych informacji. Na przykład &lt;meta name="niestandardowaNazwa" content="twoja zawartość" /&gt;'
     MODIFIEDONDRAFTHELP: 'Na stronie znajdują się nieopublikowane zmiany'
     MODIFIEDONDRAFTSHORT: Zmodyfikowana
     MetadataToggle: Metadane

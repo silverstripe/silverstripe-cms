@@ -112,7 +112,7 @@ ja_JP:
     TreeFiltered: フィルタリングされたツリー
     TreeFilteredClear: フィルタを解除
   CMSMain_left.ss:
-    'APPLY FILTER': 'Apply Filter'
+    'APPLY FILTER': フィルタを適用
     RESET: リセット
   CMSPageAddController:
     MENUTITLE: 'ページを追加'
@@ -240,11 +240,11 @@ ja_JP:
     HASBEENSETUP: '転送URLを含むページには、転送先がない状態で設定されています。'
     HEADER: このページをユーザーを変更して他のページにしますか？
     OTHERURL: 他のウェブサイトのURL
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: リダイレクトページ
     REDIRECTTO: 変更は
     REDIRECTTOEXTERNAL: 他のウェブサイト
     REDIRECTTOPAGE: 貴方のウェブサイトを表示します
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: リダイレクトページ
     YOURPAGE: 貴方のウェブサイトを表示します
   ReportAdmin:
     MENUTITLE: レポート
@@ -259,7 +259,7 @@ ja_JP:
     BROKENFILES: 壊れているファイルがあるページ
     BROKENLINKS: 'Pages with broken links'
     BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
-    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
+    BROKENVIRTUALPAGES: '削除されたページを参照している仮想ページ'
     BrokenLinksGroupTitle: 壊れているリンクのレポート
     ContentGroupTitle: 'Content reports'
     EMPTYPAGES: 空のページ
@@ -311,7 +311,7 @@ ja_JP:
     DEFAULTCONTACTTITLE: 連絡はこちらまで
     DEFAULTHOMECONTENT: '<p>SilverStripeへようこそ！これはデフォルトのホームページです。このページを編集するには、<a href="admin/">CMS</a>にアクセスしてください。<a href="http://doc.silverstripe.org">開発者向けドキュメント</a>や、<a href="http://doc.silverstripe.org/doku.php?id=tutorials">チュートリアル</a>もご覧いただけます。</p>'
     DEFAULTHOMETITLE: 'ホーム'
-    DELETEDPAGEHELP: 'Page is no longer published'
+    DELETEDPAGEHELP: 'このページは今は公開されていません。'
     DELETEDPAGESHORT: 削除済
     DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages, and pages with content links.'
     DESCRIPTION: 通常のコンテンツページ
@@ -329,7 +329,7 @@ ja_JP:
     INHERIT: 親ページを受け継ぐ
     LASTUPDATED: 最終更新日時
     LINKCHANGENOTE: このページのリンクを変更するとすべての子ページのリンクに影響を与える可能性があります。
-    MENUTITLE: 操作レベル
+    MENUTITLE: メニュー表示
     METADESC: 説明
     METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'メタタグをカスタム'
@@ -398,7 +398,7 @@ ja_JP:
   TreeTools:
     DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:
-    CANACCESS: 'You can access the archived site at this link:'
+    CANACCESS: アーカイブされたサイトには次のリンクでアクセス可能です：
     HAVEASKED: 'You have asked to view the content of our site on'
   VirtualPage:
     CHOOSE: 'リンクするページを選択してください'

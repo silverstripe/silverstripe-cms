@@ -72,7 +72,7 @@ uk:
   CMSFileAddController:
     MENUTITLE: Файли
   CMSMain:
-    ACCESS: 'Access to ''{title}'' section'
+    ACCESS: 'Доступ до секції ''{title}'' '
     ACCESS_HELP: 'Дозволити перегляд розділу, що містить дерево сторінок і зміст. Дозволами на перегляд та редагування, а також окремими дозволами на контент, можна керувати на відповідних сторінках.'
     AddNew: 'Додати нову сторінку'
     AddNewButton: 'Додати новий'
@@ -81,7 +81,7 @@ uk:
     Create: Створити
     DELETE: 'Видалити з чорнового сайту'
     DELETEFP: Видалити
-    DESCREMOVED: 'and {count} descendants'
+    DESCREMOVED: 'і {count} нащадків'
     EMAIL: 'Електронна пошта'
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
@@ -97,12 +97,12 @@ uk:
     PUBPAGES: 'Done: Published {count} pages'
     PageAdded: 'Сторінка успішно створена'
     REMOVED: 'Видалено ''%s''%s з публічного сайту'
-    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
+    REMOVEDPAGE: '''{title}'' видалено з публічного сайту'
     REMOVEDPAGEFROMDRAFT: 'Видалено ''%s'' з чорнового сайту'
     RESTORE: Відновити
     RESTORED: 'Restored ''{title}'' successfully'
     ROLLBACK: 'Повернутися до цієї версії'
-    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
+    ROLLEDBACKPUB: 'Повернено до опублікованої версії. Нова версія #{version}'
     ROLLEDBACKVERSION: 'Повернено версію #%d. Нова версія - #%d'
     SAVE: Зберегти
     SAVEDRAFT: 'Зберегти в чорновий'
@@ -268,7 +268,7 @@ uk:
     ParameterLiveCheckbox: 'Перевірити робочий сайт'
     REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
+    ShareInstructions: 'Щоб поділитися цією сторінкою, скопіюйте та вставте посилання нижче.'
     ShareLink: 'Поділитися посиланням'
   SilverStripeNavigatorLinkl:
     CloseLink: Закрити
