@@ -1309,13 +1309,30 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 */
 	public function CMSVersion() {
 		$cmsVersion = file_get_contents(CMS_PATH . '/silverstripe_version');
-		if(!$cmsVersion) $cmsVersion = _t('LeftAndMain.VersionUnknown', 'Unknown');
-		
 		$frameworkVersion = file_get_contents(FRAMEWORK_PATH . '/silverstripe_version');
+		
+		// Tries to obtain version number from composer.lock if it exists
+		if(!$cmsVersion || !$frameworkVersion) {
+			$compose_lock_path = BASE_PATH . '/composer.lock';
+			if (file_exists($compose_lock_path)) {
+				if ($json_data = file_get_contents($compose_lock_path)) {
+					if ($lockdata = json_decode($json_data)) {
+						if (isset($lockdata->packages)) {
+							foreach ($lockdata->packages as $package) {
+								if ($package->name == "silverstripe/cms" && !$cmsVersion && isset($package->version)) $cmsVersion = $package->version;
+								if ($package->name == "silverstripe/framework" && !$frameworkVersion && isset($package->version)) $frameworkVersion = $package->version;
+							}
+						}
+					}
+				}
+			}
+		}
+				
+		if(!$cmsVersion) $cmsVersion = _t('LeftAndMain.VersionUnknown', 'Unknown');
 		if(!$frameworkVersion) $frameworkVersion = _t('LeftAndMain.VersionUnknown', 'Unknown');
 		
 		return sprintf(
-			"CMS: %s Framework: %s",
+			"CMS: %s, Framework: %s",
 			$cmsVersion,
 			$frameworkVersion
 		);
