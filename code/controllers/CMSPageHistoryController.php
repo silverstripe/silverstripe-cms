@@ -15,6 +15,8 @@ class CMSPageHistoryController extends CMSMain {
 	
 	static $allowed_actions = array(
 		'VersionsForm',
+		'CompareVersionsForm',
+		'show',
 		'compare'
 	);
 	
@@ -74,6 +76,16 @@ class CMSPageHistoryController extends CMSMain {
 
 		return $negotiator->respond($request);
 	}
+
+	public function getSilverStripeNavigator() {
+		$record = $this->getRecord($this->currentPageID(), $this->request->param('VersionID'));
+		if($record) {
+			$navigator = new SilverStripeNavigator($record);
+			return $navigator->renderWith($this->getTemplatesWithSuffix('_SilverStripeNavigator'));
+		} else {
+			return false;
+		}
+	}
 	
 	/**
 	 * Returns the read only version of the edit form. Detaches all {@link FormAction} 
@@ -111,11 +123,6 @@ class CMSPageHistoryController extends CMSMain {
 		$fields->push(new HiddenField("Version"));
 		
 		$fields = $fields->makeReadonly();		
-		
-		foreach($fields->dataFields() as $field) {
-			$field->dontEscape = true;
-			$field->reserveNL = true;
-		}
 		
 		if($compareID) {
 			$link = Controller::join_links(

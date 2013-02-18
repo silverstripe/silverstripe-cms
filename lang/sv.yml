@@ -73,14 +73,14 @@ sv:
     MENUTITLE: Filer
   CMSMain:
     ACCESS: 'Tillgång till sektionen ''{title}'''
-    ACCESS_HELP: 'Tillåt visning av det avsnitt som innehåller sidträdet och dess innehåll. Visa och redigera behörigheter kan hanteras på sidans specifika dropdownmenyerna, liksom de separata "behörigheter innehåll".'
+    ACCESS_HELP: 'Tillåt visning av sektionen innehållande sidträdet och dess innehåll. Rättigheter att visa och redigera sidan kan hanteras i dess rullgardinsmenyer, liksom i "Innehållsbehörigheter".'
     AddNew: 'Skapa ny sida'
     AddNewButton: 'Skapa ny'
     ChoosePageParentMode: 'Välj var du vill skapa denna sida'
     ChoosePageType: 'Välj sidtyp'
     Create: Skapa
     DELETE: 'Radera utkast'
-    DELETEFP: 'Radera från den publicerade sajten'
+    DELETEFP: Radera
     DESCREMOVED: 'och {count} ättlingar'
     EMAIL: E-post
     EditTree: 'Redigera trädet'
@@ -252,7 +252,7 @@ sv:
   ReportAdminForm:
     FILTERBY: 'Filtrera på'
   SearchForm:
-    GO: Gå
+    GO: Kör
     SEARCH: Sök
     SearchResults: Sökresultat
   SideReport:
@@ -260,7 +260,7 @@ sv:
     BROKENLINKS: 'Sidor med trasiga länkar'
     BROKENREDIRECTORPAGES: 'Omdirigeringssidor som pekar på raderade sidor'
     BROKENVIRTUALPAGES: 'Virtuella sidor som pekar på raderade sidor'
-    BrokenLinksGroupTitle: 'Rapport för brutna länkar'
+    BrokenLinksGroupTitle: 'Rapport för trasiga länkar'
     ContentGroupTitle: Innehållsrapport
     EMPTYPAGES: 'Tomma sidor'
     LAST2WEEKS: 'Sidor som har redigerats de senaste 2 veckorna'
@@ -314,7 +314,7 @@ sv:
     DELETEDPAGEHELP: 'Sidan är inte längre publicerad'
     DELETEDPAGESHORT: Raderad
     DEPENDENT_NOTE: 'Följande sidor berörs av den här sidan. Inklusive virtuella sidor, omdirigeringssidor, och sidor med innehållslänkar.'
-    DESCRIPTION: 'Allmän innehållssida'
+    DESCRIPTION: 'Generisk innehållssida'
     DependtPageColumnLinkType: Länktyp
     DependtPageColumnURL: URL
     EDITANYONE: 'Alla som kan logga in'
@@ -399,7 +399,7 @@ sv:
     DisplayLabel: 'Visa:'
   ViewArchivedEmail.ss:
     CANACCESS: 'Du kan komma åt den arkiverade sajten med denna länk:'
-    HAVEASKED: 'Du har frågat efter att få se innehållet på vår sajt från'
+    HAVEASKED: 'Du har efterfrågat att se innehållet på vår sajt på'
   VirtualPage:
     CHOOSE: 'Välj en sida att länka till'
     DESCRIPTION: 'Visar innehåll från en annan sida'

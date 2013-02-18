@@ -4,7 +4,7 @@ lt:
     ActionAdd: 'Pridėti aplanką'
     AppCategoryArchive: Archyvas
     AppCategoryAudio: Garsas
-    AppCategoryDocument: Document
+    AppCategoryDocument: Dokumentas
     AppCategoryFlash: Flash
     AppCategoryImage: Paveikslėlis
     AppCategoryVideo: Video
@@ -170,17 +170,17 @@ lt:
     DRAFTSITE: 'Juodraštinė svetainė'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Jūs turite prisijungti su savo TVS slaptažodžiu, kad galėtumėte peržiūrėti juodraščio arba archyvo turinį.<a href="%s">Spauskite čia, norėdami grįžti į svetainę</a>.'
     Email: 'E. paštas'
-    INSTALL_SUCCESS: 'Installation Successful!'
+    INSTALL_SUCCESS: 'Įdiegimas sėkmingas!'
     InstallFilesDeleted: 'Įdiegimo bylos sėkmingai pašalintos'
     InstallSecurityWarning: 'Saugumo sumetimais Jūs turėtumėte ištrinti įdiegimo bylas, nebent vėliau Jūs planuojate iš naujo diegti (<em>bus reikalinga administravimo prieiga, žiūrėkite viršuje</em>). Web paslaugos programa turi gauti rašymo teises "assets" aplankui, kitiems aplankams tokių teisių nereikia. <a href="{link}" style="text-align: center;">Spauskite čia jei norite ištrinti įdiegimo bylas</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
+    InstallSuccessCongratulations: 'SilverStripe buvo sėkmingai įdiegta!'
     LOGGEDINAS: 'Prisijungėte kaip '
     LOGIN: Prisijungti
     LOGOUT: Atsijungti
     NOTLOGGEDIN: Neprisijungęs
     PUBLISHEDSITE: 'Publikuojama svetainė'
     Password: Slaptažodis
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
+    PostInstallTutorialIntro: 'Šis puslapis yra supaprastinta SilverStripe 3 tinklapio versija. Norėdami išplėsti jo funkcionalumą, apsilankykite {link}.'
     StartEditing: 'Jūs galite pradėti redaguoti svetainės turinį, atidarydami <a href="{link}">TVS</a>.'
     UnableDeleteInstall: 'Nepajėgiame ištrinti įdiegimo bylų. Prašome pašalinti bylas rankiniu būdu.'
     VIEWPAGEIN: 'Peržiūrėti puslapį:'
@@ -192,8 +192,8 @@ lt:
     DEFAULTSERVERERRORPAGETITLE: 'Tarnybinės stoties klaida'
     DESCRIPTION: 'Savitas turinys, skirtingai klaidai apibrėžti (Pvz.: "Puslapis nerastas")'
     ERRORFILEPROBLEM: 'Klaida atveriant rašymui bylą "{filename}". Prašome patikrinti bylos leidimus.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
+    PLURALNAME: 'Klaidos puslapiai'
+    SINGULARNAME: 'Klaidos puslapis'
     400: '400 - Bloga užklausa'
     401: '401 - Leidimas neduotas'
     403: '403 - Uždrausta'
@@ -202,8 +202,8 @@ lt:
     406: '406 - nepriimtina'
     407: '407 - reikalinga proxy autentifikacija'
     408: '408 - baigėsi užklausai skirtas laikas'
-    409: '409 - konfliktas'
-    410: '410 - gone'
+    409: '409 - Konfliktas'
+    410: '410 - Nebėra'
     411: '411 - reikalingas ilgis'
     412: '412 - išankstinė klaida'
     413: '413 - per didelė užklausa'
@@ -240,11 +240,11 @@ lt:
     HASBEENSETUP: 'Nukreipimo puslapis nustatytas be jokio nukreipimo.'
     HEADER: 'Šis puslapis nukreips lankytojus į kitą puslapį'
     OTHERURL: 'Kitos svetainės URL adresas'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: 'Nukreipimo puslapiai'
     REDIRECTTO: 'Nukreipti į'
     REDIRECTTOEXTERNAL: 'Kita svetainė'
     REDIRECTTOPAGE: 'Puslapis Jūsų svetainėje'
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: 'Nukreipimo puslapis'
     YOURPAGE: 'Puslapį Jūsų svetainėje'
   ReportAdmin:
     MENUTITLE: Ataskaitos
@@ -277,8 +277,8 @@ lt:
     EDITHEADER: 'Kas gali redaguoti šį puslapį?'
     EDIT_PERMISSION: 'Tvarkyti svetainės parametrus'
     EDIT_PERMISSION_HELP: 'Galimybė tvarkyti globalias priėjimo, pagrindinio puslapio teises.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
+    PLURALNAME: 'Svetainės konfigūracijos'
+    SINGULARNAME: 'Svetainės konfigūracija'
     SITENAMEDEFAULT: 'Jūsų Svetainės Pavadinimas'
     SITETAGLINE: 'Svetainės šūkis'
     SITETITLE: 'Svetainės pavadinimas'
@@ -296,12 +296,12 @@ lt:
     ADDEDTODRAFTHELP: 'Puslapis dar nebuvo publikuotas'
     ADDEDTODRAFTSHORT: Juodraštis
     ALLOWCOMMENTS: 'Ar leisti komentuoti šį puslapį?'
-    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
+    APPEARSVIRTUALPAGES: 'Šis turinys taip pat matomas virtualiuose puslapiuose, {title} skyriuose.'
     BUTTONCANCELDRAFT: 'Atšaukti juodraščio pakeitimus'
     BUTTONCANCELDRAFTDESC: 'Ištrinti juodraštį ir grįžti prie šiuo metu publikuojamo puslapio'
     BUTTONSAVEPUBLISH: 'Išsaugoti ir publikuoti'
     BUTTONUNPUBLISH: Nebepublikuoti
-    BUTTONUNPUBLISHDESC: 'Pašalinti šį puslapį iš publikuojamų'
+    BUTTONUNPUBLISHDESC: 'Pašalinti šį puslapį iš publikuojamos svetainės'
     CREATED: 'Sukūrimo data'
     Comments: Komentarai
     Content: Turinys
@@ -331,21 +331,21 @@ lt:
     LINKCHANGENOTE: 'Keičiant šio puslapio nuorodą, keisis ir jam priklausančių puslapių nuorodos.'
     MENUTITLE: 'Navigacijos pavadinimas'
     METADESC: 'Meta aprašymas'
-    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
+    METADESCHELP: 'Paieškos varikliai naudoja šį turinį paieškos rezultatų atvaizdavimui (tačiau jis neturės įtakos rezultatų reitingui).'
     METAEXTRA: 'Naudotojo meta žymės'
-    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
+    METAEXTRAHELP: 'HTML žymos papildomai meta informacijai. Pavyzdžiui: &lt;meta name="tavoPavadinimas" content="tavo turinys čia" /&gt;'
     MODIFIEDONDRAFTHELP: 'Puslapyje yra nepublikuoto turinio'
     MODIFIEDONDRAFTSHORT: Pakeistas
     MetadataToggle: Metaduomenys
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
+    OBSOLETECLASS: 'Šis puslapis yra nebenaudojamo tipo {type}. Išsaugojimas iš naujo nustatys jo tipą, ko pasekoje galite prarasti duomenis'
     PAGELOCATION: 'Puslapio vieta'
     PAGETITLE: 'Puslapio pavadinimas'
     PAGETYPE: 'Puslapio tipas'
     PARENTID: 'Tėvinis puslapis'
     PARENTTYPE: 'Puslapio vieta'
     PARENTTYPE_ROOT: 'Pagrindinis puslapis'
-    PARENTTYPE_SUBPAGE: 'Puslapis išplečiantis pagrindinį (pasirinkite žemiau)'
-    PERMISSION_GRANTACCESS_DESCRIPTION: 'Kontroliuoti kurios grupės gali matyti ir redaguoti specialius puslapius'
+    PARENTTYPE_SUBPAGE: 'Puslapis po tėviniu puslapiu'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Valdyti turinio redagavimo teises'
     PERMISSION_GRANTACCESS_HELP: 'Leisti nustatyti puslapiui galiojančias specifines teises, "Puslapiai" skiltyje.'
     PLURALNAME: Puslapiai
     PageTypNotAllowedOnRoot: 'Puslapio tipas "{type}" neleidžiamas šakniniame lygmenyje'
@@ -355,8 +355,8 @@ lt:
     REMOVE_INSTALL_WARNING: 'Perspėjimas: Saugumo sumetimais Jūs turėtumėte pašalinti install.php bylą iš SilverStripe.'
     REORGANISE_DESCRIPTION: 'Gali keisti svetainės struktūrą'
     REORGANISE_HELP: 'Perrikiuoti puslapius naudojant Tempti/Mesti būdą.'
-    SHOWINMENUS: 'Ar rodyti meniu?'
-    SHOWINSEARCH: 'Ar rodyti paieškoje'
+    SHOWINMENUS: 'Ar įtraukti į rodomą meniu?'
+    SHOWINSEARCH: 'Rodyti paieškoje?'
     SINGULARNAME: Puslapis
     TABBEHAVIOUR: Elgsena
     TABCONTENT: 'Pagrindinis turinys'
@@ -364,7 +364,7 @@ lt:
     TOPLEVEL: 'Svetainės turinys (aukščiausias lygmuo)'
     TOPLEVELCREATORGROUPS: 'Aukščiausio lygmens kūrėjai'
     URLSegment: 'URL dalis'
-    VIEWERGROUPS: 'Lankytojų grupė'
+    VIEWERGROUPS: 'Lankytojų grupės'
     VIEW_ALL_DESCRIPTION: 'Gali peržiūrėti bet kurį puslapį svetainėje, apeinant puslapio peržiūros teises'
     VIEW_ALL_HELP: 'Galimybė peržiūrėti bet kurį puslapį svetainėje, nepriklausomai nuo "Priėjimo/Leidimų" skyriaus nustatymų. Būtinas leidimas "Prieiti prie svetainės turinio"'
     VIEW_DRAFT_CONTENT: 'Peržiūrėti juodraščio turinį'

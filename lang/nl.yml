@@ -75,7 +75,7 @@ nl:
     ACCESS: 'Toegang tot het ''{title}'' gedeelte'
     ACCESS_HELP: 'Bevoegdheid voor bekijken van pagina tak en inhoudssecties. Bekijk- en bewerkingstoestemmingen kunnen worden toegekend door pagina specifieke menu''s en het aparte "Inhoudsmachtigingen".'
     AddNew: 'Voeg nieuwe pagina toe'
-    AddNewButton: 'Voeg nieuwe toe'
+    AddNewButton: Nieuw
     ChoosePageParentMode: 'Kies waar u deze pagina wilt creëren'
     ChoosePageType: 'Kies een pagina type'
     Create: Creëer
@@ -158,7 +158,7 @@ nl:
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Gewijzigde pagina''s'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'Alle pagina\\''s, inclusief verwijderde'
+    Title: 'Alle pagina''s (inclusief verwijderde)'
   CMSSiteTreeFilter_Search:
     Title: 'Alle pagina''s'
   ContentControl:
@@ -258,7 +258,7 @@ nl:
   SideReport:
     BROKENFILES: 'Pagina''s met verbroken bestanden'
     BROKENLINKS: 'Pagina''s met verbroken verwijzingen'
-    BROKENREDIRECTORPAGES: 'RedirectorPages dit naar verwijderde pagina''s verwijzen'
+    BROKENREDIRECTORPAGES: 'RedirectorPages die naar verwijderde pagina''s verwijzen'
     BROKENVIRTUALPAGES: 'VirtuelePagina''s die naar verwijderde pagina''s verwijzen'
     BrokenLinksGroupTitle: 'Verbroken verwijzingen raportage'
     ContentGroupTitle: Inhoudsrapportages

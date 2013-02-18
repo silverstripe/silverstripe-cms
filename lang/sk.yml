@@ -20,7 +20,7 @@ sk:
     Filetype: 'Typ súboru'
     ListView: 'Zobraziť zoznam'
     MENUTITLE: Súbory
-    NEWFOLDER: 'Nový Adresár'
+    NEWFOLDER: 'Nový priečinok'
     SIZE: Veľkosť
     THUMBSDELETED: '{count} nepoužitých miniatúr bolo smazaných'
     TreeView: 'Zobraziť strom'
@@ -30,7 +30,7 @@ sk:
   AssetAdmin_Tools:
     FILTER: Filtrovať
   AssetAdmin_left.ss:
-    GO: Vykonať
+    GO: Choď
   AssetTableField:
     BACKLINKCOUNT: 'Použité na:'
     PAGES: stránka(y)
@@ -56,7 +56,7 @@ sk:
     ReasonDropdownBROKENLINK: 'Porušnený odkaz'
     ReasonDropdownRPBROKENLINK: 'Presmerovacia stránka ukazuje na neexistujúcu stránku'
     ReasonDropdownVPBROKENLINK: 'Virtuálna stránka odkazuje na ne-existujúcu stránku'
-    RedirectorNonExistent: 'presmerovávacia stránka odkazuje na ne-existujúcu stránku'
+    RedirectorNonExistent: 'presmerovacia stránka ukazuje na neexistujúcu stránku'
     VirtualPageNonExistent: 'virtuálna stránka odkazuje na ne-existujúcu stránku'
   CMSAddPageController:
     Title: 'Pridať stránku'
@@ -64,11 +64,11 @@ sk:
     DELETED_DRAFT_PAGES: 'Smazaných %d stránok z konceptu webu, %d zlyhaní'
     DELETED_PAGES: 'Smazaných %d stránok z verejného webu, %d zlyhaní'
     DELETE_DRAFT_PAGES: 'Vymazať z návhrového webu'
-    DELETE_PAGES: 'Vymazať z publikovaného webu'
+    DELETE_PAGES: 'Vymazať z verejného webu'
     PUBLISHED_PAGES: 'Publikovaných %d stránok, %d zlyhaní'
-    PUBLISH_PAGES: Publikovať
-    UNPUBLISHED_PAGES: 'Od-publikované %d stranky'
-    UNPUBLISH_PAGES: Od-publikovať
+    PUBLISH_PAGES: Zverejniť
+    UNPUBLISHED_PAGES: 'Ne-zverejnené %d stranky'
+    UNPUBLISH_PAGES: Ne-zverejniť
   CMSFileAddController:
     MENUTITLE: Súbory
   CMSMain:
@@ -91,7 +91,7 @@ sk:
     PAGES: Stránky
     PAGETYPEANYOPT: Akákoľvek
     PAGETYPEOPT: 'Typ stránky'
-    PUBALLCONFIRM: 'Publikovať všetky stránky z úschovne'
+    PUBALLCONFIRM: 'Prosím, zverejnite všetky stránky webu, zkopírovaním obsahu na verejné'
     PUBALLFUN: 'Funkcia "Publikovať všetko"'
     PUBALLFUN2: 'Stlačením tohto tlačidla vykonáte to isté ako keby ste navštívili každú stránku a stlačili "publikuj". Je určené na použite po rozsiahlych zmenách obsahu, napríklad keď bol web prvýkrát vytvorený.'
     PUBPAGES: 'Hotovo: Publikované {count} stránky'
@@ -165,7 +165,7 @@ sk:
     NOTEWONTBESHOWN: 'Poznámka: Táto správa sa nebude zobrazovať vašim návštevníkom'
   ContentController:
     ARCHIVEDSITE: 'Zobrazenie verzie'
-    ARCHIVEDSITEFROM: 'Archívovaná stránka z'
+    ARCHIVEDSITEFROM: 'Archivovaný web z'
     CMS: CMS
     DRAFTSITE: 'Koncept webu'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Pre zobrazenie návrhov alebo archivovaného obsahu sa musíte prihlásiť so svojím CMS heslom. <a href="%s">Pre návrat na publikovaný web kliknite Tu.</a>'
@@ -178,7 +178,7 @@ sk:
     LOGIN: Prihlásiť
     LOGOUT: Odhlásiť
     NOTLOGGEDIN: Neprihlásený
-    PUBLISHEDSITE: 'Publikovaný web'
+    PUBLISHEDSITE: 'Verejný web'
     Password: Heslo
     PostInstallTutorialIntro: 'Tento web je zjednodušená verzia SilverStripe 3. webu. Pre rošírenie, pozrite sa na {link}, prosím.'
     StartEditing: 'Môžte začať editáciu vášho web obsahu otvorením <a href="{link}">CMS</a>.'
@@ -219,9 +219,9 @@ sk:
     505: '505 - HTTP verzia nie je podporovaná'
   Folder:
     AddFolderButton: 'Pridať priečinok'
-    DELETEUNUSEDTHUMBNAILS: 'Vymazať nepoužívané náhĺady obrázkov'
-    UNUSEDFILESTITLE: 'Nepoužívané súbory'
-    UNUSEDTHUMBNAILSTITLE: 'Nepoužívané náhĺady obrázkov'
+    DELETEUNUSEDTHUMBNAILS: 'Vymazať nepoužité miniatúry'
+    UNUSEDFILESTITLE: 'Nepoužité súbory'
+    UNUSEDTHUMBNAILSTITLE: 'Nepoužité miniatúry'
     UploadFilesButton: Nahrať
   LeftAndMain:
     DELETED: Smazané.
@@ -239,13 +239,13 @@ sk:
     DESCRIPTION: 'Presmeruje na inú internú stránku'
     HASBEENSETUP: 'Stránka na presmerovanie bola nastavená bez cieľa.'
     HEADER: 'Táto stránka presmeruje používateľov na inú stránku'
-    OTHERURL: 'Inú webovú URL adresu.'
+    OTHERURL: 'Iné webové URL.'
     PLURALNAME: 'Presmerovacie stránky'
     REDIRECTTO: 'Presmerovať na'
-    REDIRECTTOEXTERNAL: 'Inú webovú stránku'
-    REDIRECTTOPAGE: 'Stránku na Vašom webe'
+    REDIRECTTOEXTERNAL: 'Iná webová stránka'
+    REDIRECTTOPAGE: 'Stránka na vašom webe'
     SINGULARNAME: 'Presmerovacia stránka'
-    YOURPAGE: 'Stránku na Vašom webe'
+    YOURPAGE: 'Stránka na vašom webe'
   ReportAdmin:
     MENUTITLE: Výkazy
     ReportTitle: Titulok
@@ -260,8 +260,8 @@ sk:
     BROKENLINKS: 'Stránky z poškodenými odkazmi'
     BROKENREDIRECTORPAGES: 'Presmerovacie stránky ukazujú na smazané stránky'
     BROKENVIRTUALPAGES: 'Virtuálne stránky odkazujú na vymazané stránky'
-    BrokenLinksGroupTitle: 'Správy o poškodených odkazoch'
-    ContentGroupTitle: 'Správy o obsahu'
+    BrokenLinksGroupTitle: 'Výkazy porušených odkazov'
+    ContentGroupTitle: 'Výkazy obsahu'
     EMPTYPAGES: 'Prázdne stránky'
     LAST2WEEKS: 'Stránky upravené počaas posledných 2 týždňov'
     OtherGroupTitle: Ostatné
@@ -269,19 +269,19 @@ sk:
     REPEMPTY: '{title} výkaz je prázdny.'
   SilverStripeNavigatorLink:
     ShareInstructions: 'Pre zdielanie tejto stránky, skopírujte linku nižšie.'
-    ShareLink: 'Zdieľať linku'
+    ShareLink: 'Zdieľať odkaz'
   SilverStripeNavigatorLinkl:
     CloseLink: Zavrieť
   SiteConfig:
     DEFAULTTHEME: '(Použi predvolenú tému)'
-    EDITHEADER: 'Kto môže upravovať stranky na tomto webe?'
-    EDIT_PERMISSION: 'Spravovať nastavenia webu'
+    EDITHEADER: 'Kto môže editovať stránky na tomto webe?'
+    EDIT_PERMISSION: 'Spravovať konfiguráciu webu'
     EDIT_PERMISSION_HELP: 'Možnosť meniť globálne prístupové nastavenia/právomoci pre hlavné stránky.'
     PLURALNAME: 'Konfigurácie webu'
     SINGULARNAME: 'Konfigurácia webu'
     SITENAMEDEFAULT: 'Názov vášho webu'
     SITETAGLINE: 'Slogan stránky'
-    SITETITLE: 'Titulok stránky'
+    SITETITLE: 'Titulok webu'
     TABACCESS: Prístup
     TABMAIN: Hlavné
     TAGLINEDEFAULT: 'váš citát sem'
@@ -290,7 +290,7 @@ sk:
     VIEWHEADER: 'Kto môže vidieť stránky na tomto webe?'
   SiteTree:
     ACCESSANYONE: Ktokoľvek
-    ACCESSHEADER: 'Kto si môže prezerať túto stránku?'
+    ACCESSHEADER: 'Kto môže prezerať túto stránku?'
     ACCESSLOGGEDIN: 'Prihlásení používatelia'
     ACCESSONLYTHESE: 'Iba títo ľudia (vyberte zo zoznamu)'
     ADDEDTODRAFTHELP: 'Stránka ešte nebola zverejnená'
@@ -313,7 +313,7 @@ sk:
     DEFAULTHOMETITLE: Domov
     DELETEDPAGEHELP: 'Stránka už nie je viacej zverejnená'
     DELETEDPAGESHORT: Smazané
-    DEPENDENT_NOTE: 'Nasledujúce stránky sú závislé na tejto stránke. To zahŕňa virtuálne stránky, presmerovania a stránky s odkazmi.'
+    DEPENDENT_NOTE: 'Nasledujúce stránky sú závislé na tejto stránke. To zahŕňa virtuálne stránky, presmerovacie stránky a stránky s odkazmi obsahu.'
     DESCRIPTION: 'Obecný obsah stránky'
     DependtPageColumnLinkType: 'Typ odkazu'
     DependtPageColumnURL: URL
@@ -328,7 +328,7 @@ sk:
     HTMLEDITORTITLE: Obsah
     INHERIT: 'Dediť od nadradenej stránky'
     LASTUPDATED: 'Posledne aktualizované'
-    LINKCHANGENOTE: 'Zmenenie odkazu na tejto stránke ovplyní aj odkazy na všetkých podstránkach.'
+    LINKCHANGENOTE: 'Zmenenie odkazu tejto stránky ovplyvní tiež odkazy všetkých podstránok.'
     MENUTITLE: 'Navigačná menovka'
     METADESC: 'Meta Popis'
     METADESCHELP: 'Vyhľadávače používajú tento obsah pre zobrazovanie výsledkov vyhľadávania (aj keď to nebude mať vplyv na ich hodnotenie).'
@@ -339,7 +339,7 @@ sk:
     MetadataToggle: Metaúdaje
     OBSOLETECLASS: 'Táto stránka je zastaralý typ {type}. Uloženie spôsobí stratu jeho typu a vy môžte stratiť dáta'
     PAGELOCATION: 'Pozícia stránky'
-    PAGETITLE: 'Meno stránky'
+    PAGETITLE: 'Názov stránky'
     PAGETYPE: 'Typ stránky'
     PARENTID: 'Nadradená stránka'
     PARENTTYPE: 'Pozícia stránky'
@@ -378,8 +378,8 @@ sk:
   SiteTreeURLSegmentField:
     HelpChars: 'Špeciálne znaky sú automaticky zkonvertované alebo ostránené.'
   StaticExporter:
-    BASEURL: 'Základná URL adresa'
-    EXPORTTO: 'Exportovať do tohto adresára'
+    BASEURL: 'Základné URL'
+    EXPORTTO: 'Exportovať do tohto priečinka'
     NAME: 'Statický export'
   TableListField:
     SELECT: 'Vyberte:'
@@ -407,4 +407,4 @@ sk:
     HEADER: 'Toto je virtuálna stránka'
     PLURALNAME: 'Virtuálne stránky'
     PageTypNotAllowedOnRoot: 'Pôvodná stránka typu "{type}" nie je povolená na najvyššej úrovni pre túto virtuálnu stránku'
-    SINGULARNAME: 'Virtuálné stránka'
+    SINGULARNAME: 'Virtuálna stránka'

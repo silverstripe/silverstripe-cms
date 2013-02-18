@@ -93,7 +93,7 @@ en:
     PUBALLFUN2: "Pressing this button will do the equivalent of going to every page and pressing \"publish\".  It's\n				intended to be used after there have been massive edits of the content, such as when the site was\n				first built."
     PUBPAGES: 'Done: Published {count} pages'
     PageAdded: 'Successfully created page'
-    REMOVED: 'Deleted ''{title}''{description} from live site'
+    REMOVED: 'Deleted ''%s''%s from live site'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: 'Removed ''%s'' from the draft site'
     RESTORE: Restore
@@ -138,6 +138,7 @@ en:
     MENUTITLE: Pages
     TreeView: 'Tree View'
   CMSPagesController_ContentToolbar.ss:
+    ENABLEDRAGGING: 'Drag''n''drop'
     MULTISELECT: Multi-selection
   CMSPagesController_Tools.ss:
     FILTER: Filter
@@ -388,6 +389,8 @@ en:
     VIEWLAST: 'View last'
     VIEWNEXT: 'View next'
     VIEWPREVIOUS: 'View previous'
+  TreeTools:
+    DisplayLabel: 'Display:'
   ViewArchivedEmail.ss:
     CANACCESS: 'You can access the archived site at this link:'
     HAVEASKED: 'You have asked to view the content of our site on'

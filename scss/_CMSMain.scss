@@ -98,22 +98,25 @@
 		background: url(../images/loading.gif) no-repeat 162px 8px;
 	}
 
-	.prefix,
 	.preview {
 		padding-top: 8px;
 		display: inline-block;
 	}
 
-	.prefix {
-		color: #777;
+	input.text {
+		width: 250px; // ensure there's enough room for buttons
 	}
 
-	.cancel, .update, .edit {
-		margin-left: 7px;
+	input.text, .cancel, .update, .edit {
+		margin-right: 8px;
 	}
 
 	.help {
 		margin-left: 0;
+	}
+
+	.edit-holder {
+		display: none;
 	}
 }
 

@@ -48,7 +48,7 @@ it:
     ColumnURL: URL
     HasBrokenFile: 'ha un file non funzionante'
     HasBrokenLink: 'ha un link non funzionante'
-    HasBrokenLinkAndFile: 'ha un link ed un file non funzionante'
+    HasBrokenLinkAndFile: 'ha link e file non funzionanti'
     HoverTitleEditPage: 'Modifica pagina'
     PageName: 'Nome pagina'
     ReasonDropdown: 'Problemi da verificare'
@@ -64,11 +64,11 @@ it:
     DELETED_DRAFT_PAGES: 'Eliminate %d pagine dal sito bozza, %d non a buon fine'
     DELETED_PAGES: 'Eliminate %d pagine dal sito pubblicato, %d non a buon fine'
     DELETE_DRAFT_PAGES: 'Elimina dal sito bozza'
-    DELETE_PAGES: 'Eliminato dal sito pubblicato'
+    DELETE_PAGES: 'Eliminata dal sito pubblicato'
     PUBLISHED_PAGES: 'Pubblicate %d pagine, %d non a buon fine'
     PUBLISH_PAGES: Pubblica
     UNPUBLISHED_PAGES: '%d pagine non pubblicate'
-    UNPUBLISH_PAGES: 'Pubblicazione annullata'
+    UNPUBLISH_PAGES: 'Non pubblicare'
   CMSFileAddController:
     MENUTITLE: Files
   CMSMain:

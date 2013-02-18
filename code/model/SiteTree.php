@@ -577,14 +577,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		
 		$page = parent::duplicate(false);
 		$page->Sort = 0;
-		$this->extend('onBeforeDuplicate', $page);
+		$this->invokeWithExtensions('onBeforeDuplicate', $page);
 		
 		if($doWrite) {
 			$page->write();
 
 			$page = $this->duplicateManyManyRelations($this, $page);
 		}
-		$this->extend('onAfterDuplicate', $page);
+		$this->invokeWithExtensions('onAfterDuplicate', $page);
 		
 		return $page;
 	}
@@ -1653,7 +1653,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						if($table == 'SiteTree_Live') {
 							$publishedClass = $origPublished['ClassName'];
 							$origPublishedObj = new $publishedClass($origPublished);
-							$this->extend('onRenameLinkedAsset', $origPublishedObj);
+							$this->invokeWithExtensions('onRenameLinkedAsset', $origPublishedObj);
 						}
 					}
 				}
@@ -1829,11 +1829,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			(self::nested_urls() && $this->ParentID ? $this->Parent()->RelativeLink(true) : null)
 		);
 		
-		
-		
-		$url = (strlen($baseLink) > 36) ? "..." .substr($baseLink, -32) : $baseLink;
 		$urlsegment = new SiteTreeURLSegmentField("URLSegment", $this->fieldLabel('URLSegment'));
-		$urlsegment->setURLPrefix($url);
+		$urlsegment->setURLPrefix($baseLink);
 		$helpText = (self::nested_urls() && count($this->Children())) ? $this->fieldLabel('LinkChangeNote') : '';
 		if(!URLSegmentFilter::$default_allow_multibyte) {
 			$helpText .= $helpText ? '<br />' : '';
@@ -2265,7 +2262,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if(!$this->canDeleteFromLive()) return false;
 		if(!$this->ID) return false;
 		
-		$this->extend('onBeforeUnpublish');
+		$this->invokeWithExtensions('onBeforeUnpublish', $this);
 		
 		$origStage = Versioned::current_stage();
 		Versioned::reading_stage('Live');
@@ -2295,7 +2292,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$this->write();
 		}
 
-		$this->extend('onAfterUnpublish');
+		$this->invokeWithExtensions('onAfterUnpublish', $this);
 
 		return true;
 	}
@@ -2304,6 +2301,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * Revert the draft changes: replace the draft content with the content on live
 	 */
 	public function doRevertToLive() {
+		$this->invokeWithExtensions('onBeforeRevertToLive', $this);
+
 		$this->publish("Live", "Stage", false);
 
 		// Use a clone to get the updates made by $this->publish
@@ -2316,7 +2315,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$page->write();
 		}
 		
-		$this->extend('onAfterRevertToLive');
+		$this->invokeWithExtensions('onAfterRevertToLive', $this);
 	}
 	
 	/**

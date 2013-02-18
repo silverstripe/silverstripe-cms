@@ -27,20 +27,19 @@
 
 				self.data('OrigVal', self.val());
 				
-				var form = self.parents('form');
-				var url_segment = $('.field.urlsegment', form).find(':text');
-				var live_link = $('input[name=LiveLink]', form);
-				
-				self._addActions();
+				var form = self.closest('form');
+				var urlSegmentInput = $('input:text[name=URLSegment]', form);
+				var liveLinkInput = $('input[name=LiveLink]', form);
 
-				if(url_segment.length > 0) {
+				if (urlSegmentInput.length > 0) {
+					self._addActions();
 					this.bind('change', function(e) {
 						var origTitle = self.data('OrigVal');
 						var title = self.val();
 						self.data('OrigVal', title);
 
 						// Criteria for defining a "new" page
-						if ((url_segment.val().indexOf('new') == 0) && live_link.val() == '') {
+						if ((urlSegmentInput.val().indexOf('new') == 0) && liveLinkInput.val() == '') {
 							self.updateURLSegment(title);
 						} else {
 							$('.update', self.parent()).show();
@@ -83,9 +82,10 @@
 			 * (String) title
 			 */
 			updateURLSegment: function(title) {
-				var url_segment_field = $('.field.urlsegment', this.parents('form'));
+				var urlSegmentInput = $('input:text[name=URLSegment]', this.closest('form'));
+				var urlSegmentField = urlSegmentInput.closest('.field.urlsegment');
 				var updateURLFromTitle = $('.update', this.parent());
-				url_segment_field.update(title);
+				urlSegmentField.update(title);
 				if (updateURLFromTitle.is(':visible')) {
 					updateURLFromTitle.hide();
 				}

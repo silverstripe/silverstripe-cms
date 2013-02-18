@@ -87,7 +87,7 @@ class RebuildStaticCacheTask extends Controller {
 		$count = isset($_GET['count']) ? $_GET['count'] : sizeof($urls);
 		if(($start + $count) > sizeof($urls)) $count = sizeof($urls) - $start;
 
-		$urls = array_slice($urls, $start, $count);
+		$mappedUrls = array_slice($mappedUrls, $start, $count);
 
 		if($removeAll && !isset($_GET['urls']) && $start == 0 && file_exists("../cache")) {
 			echo "Removing stale cache files... \n";

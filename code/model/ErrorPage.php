@@ -21,7 +21,7 @@ class ErrorPage extends Page {
 		"ShowInMenus" => 0,
 		"ShowInSearch" => 0
 	);
-	
+
 	static $allowed_children = array();
 
 	static $description = 'Custom content for different error cases (e.g. "Page not found")';
@@ -39,6 +39,8 @@ class ErrorPage extends Page {
 	static public function response_for($statusCode) {
 		// first attempt to dynamically generate the error page
 		if($errorPage = DataObject::get_one('ErrorPage', "\"ErrorCode\" = $statusCode")) {
+			Requirements::clear();
+			Requirements::clear_combined_files();
 			return ModelAsController::controller_for($errorPage)->handleRequest(new SS_HTTPRequest('GET', ''), DataModel::inst());
 		}
 		
@@ -57,7 +59,7 @@ class ErrorPage extends Page {
 			return $response;
 		}
 	}
-	
+
 	/**
 	 * Ensures that there is always a 404 page
 	 * by checking if there's an instance of
@@ -72,63 +74,82 @@ class ErrorPage extends Page {
 			if(!file_exists(ASSETS_PATH)) {
 				mkdir(ASSETS_PATH);
 			}
-	
-			$pageNotFoundErrorPage = DataObject::get_one('ErrorPage', "\"ErrorCode\" = '404'");
-			$pageNotFoundErrorPageExists = ($pageNotFoundErrorPage && $pageNotFoundErrorPage->exists()) ? true : false;
-			$pageNotFoundErrorPagePath = self::get_filepath_for_errorcode(404);
-			if(!($pageNotFoundErrorPageExists && file_exists($pageNotFoundErrorPagePath))) {
-				if(!$pageNotFoundErrorPageExists) {
-					$pageNotFoundErrorPage = new ErrorPage();
-					$pageNotFoundErrorPage->ErrorCode = 404;
-					$pageNotFoundErrorPage->Title = _t('ErrorPage.DEFAULTERRORPAGETITLE', 'Page not found');
-					$pageNotFoundErrorPage->Content = _t('ErrorPage.DEFAULTERRORPAGECONTENT', '<p>Sorry, it seems you were trying to access a page that doesn\'t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>');
-					$pageNotFoundErrorPage->write();
-					$pageNotFoundErrorPage->publish('Stage', 'Live');
-				}
-	
-				// Ensure a static error page is created from latest error page content
-				$response = Director::test(Director::makeRelative($pageNotFoundErrorPage->Link()));
-				$written = null;
-				if($fh = fopen($pageNotFoundErrorPagePath, 'w')) {
-					$written = fwrite($fh, $response->getBody());
-					fclose($fh);
-				}
-	
-				if($written) {
-					DB::alteration_message('404 error page created', 'created');
-				} else {
-					DB::alteration_message(sprintf('404 error page could not be created at %s. Please check permissions', $pageNotFoundErrorPagePath), 'error');
-				}
-			}
-	
-			$serverErrorPage = DataObject::get_one('ErrorPage', "\"ErrorCode\" = '500'");
-			$serverErrorPageExists = ($serverErrorPage && $serverErrorPage->exists()) ? true : false;
-			$serverErrorPagePath = self::get_filepath_for_errorcode(500);
-			if(!($serverErrorPageExists && file_exists($serverErrorPagePath))) {
-				if(!$serverErrorPageExists) {
-					$serverErrorPage = new ErrorPage();
-					$serverErrorPage->ErrorCode = 500;
-					$serverErrorPage->Title = _t('ErrorPage.DEFAULTSERVERERRORPAGETITLE', 'Server error');
-					$serverErrorPage->Content = _t('ErrorPage.DEFAULTSERVERERRORPAGECONTENT', '<p>Sorry, there was a problem with handling your request.</p>');
-					$serverErrorPage->write();
-					$serverErrorPage->publish('Stage', 'Live');
-				}
-	
-				// Ensure a static error page is created from latest error page content
-				$response = Director::test(Director::makeRelative($serverErrorPage->Link()));
-				$written = null;
-				if($fh = fopen($serverErrorPagePath, 'w')) {
-					$written = fwrite($fh, $response->getBody());
-					fclose($fh);
-				}
 
-				if($written) {
-					DB::alteration_message('500 error page created', 'created');
-				} else {
-					DB::alteration_message(sprintf('500 error page could not be created at %s. Please check permissions', $serverErrorPagePath), 'error');
+			$defaultPages = $this->getDefaultRecords();
+	
+			foreach($defaultPages as $defaultData) {
+				$code = $defaultData['ErrorCode'];
+				$page = DataObject::get_one(
+					'ErrorPage', 
+					sprintf("\"ErrorCode\" = '%s'", $code)
+				);
+				$pageExists = ($page && $page->exists());
+				$pagePath = self::get_filepath_for_errorcode($code);
+				if(!($pageExists && file_exists($pagePath))) {
+					if(!$pageExists) {
+						$page = new ErrorPage($defaultData);
+						$page->write();
+						$page->publish('Stage', 'Live');
+					}
+
+					// Ensure a static error page is created from latest error page content
+					$response = Director::test(Director::makeRelative($page->Link()));
+					$written = null;
+					if($fh = fopen($pagePath, 'w')) {
+						$written = fwrite($fh, $response->getBody());
+						fclose($fh);
+					}
+
+					if($written) {
+						DB::alteration_message(
+							sprintf('%s error page created', $code),
+							'created'
+						);
+					} else {
+						DB::alteration_message(
+							sprintf(
+								'%s error page could not be created at %s. Please check permissions', 
+								$code,
+								$pagePath
+							), 
+							'error'
+						);
+					}
 				}
 			}
+
 		}
+	}
+
+	/**
+	 * Returns an array of arrays, each of which defines
+	 * properties for a new ErrorPage record.
+	 * 
+	 * @return Array
+	 */
+	protected function getDefaultRecords() {
+		$data = array(
+			array(
+				'ErrorCode' => 404,
+				'Title' => _t('ErrorPage.DEFAULTERRORPAGETITLE', 'Page not found'),
+				'Content' => _t(
+					'ErrorPage.DEFAULTERRORPAGECONTENT', 
+					'<p>Sorry, it seems you were trying to access a page that doesn\'t exist.</p>'
+					. '<p>Please check the spelling of the URL you were trying to access and try again.</p>'
+				)
+			),
+			array(
+				'ErrorCode' => 500,
+				'Title' => _t('ErrorPage.DEFAULTSERVERERRORPAGETITLE', 'Server error'),
+				'Content' => _t(
+					'ErrorPage.DEFAULTSERVERERRORPAGECONTENT', 
+					'<p>Sorry, there was a problem with handling your request.</p>'
+				)
+			)
+		);
+		$this->extend('getDefaultRecords', $data);
+
+		return $data;
 	}
 
 	public function getCMSFields() {

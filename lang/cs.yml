@@ -63,7 +63,7 @@ cs:
   CMSBatchActions:
     DELETED_DRAFT_PAGES: 'Smazáno %d stránek z konceptu webu, %d selhání'
     DELETED_PAGES: 'Odstraněno %d stránek z veřejného webu, %d selhání'
-    DELETE_DRAFT_PAGES: 'Smazáno z konceptu webu'
+    DELETE_DRAFT_PAGES: 'Smazat z konceptu webu'
     DELETE_PAGES: 'Smazat ze zveřejněného webu'
     PUBLISHED_PAGES: 'Zveřejněných %d stránek, %d selhání'
     PUBLISH_PAGES: Zveřejnit
@@ -307,7 +307,7 @@ cs:
     Content: Obsah
     DEFAULTABOUTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky. <br /> </p>'
     DEFAULTABOUTTITLE: 'O nás'
-    DEFAULTCONTACTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky. <br /> </ p>'
+    DEFAULTCONTACTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky. <br /> </p>'
     DEFAULTCONTACTTITLE: 'Kontaktujte nás'
     DEFAULTHOMECONTENT: '<p>Vítejte v CMS SilverStripe! Toto je úvodní stránka. Tuto i jiné stránky můžete změnit <a href="admin/">přihlášením do systému</a>. Můžete také navštívit <a href="http://doc.silverstripe.com">vývojářskou dokumentaci (EN)</a>, nebo <a href="http://doc.silverstripe.com/doku.php?id=tutorials">návody (EN)</a></p>'
     DEFAULTHOMETITLE: 'Úvodní strana'
@@ -318,7 +318,7 @@ cs:
     DependtPageColumnLinkType: 'Typ odkazu'
     DependtPageColumnURL: URL
     EDITANYONE: 'Kdokoliv, kdo se do CMS může přihlásit'
-    EDITHEADER: 'Kdo může editovat tuto stránku?'
+    EDITHEADER: 'Kdo může tuto stránku editovat?'
     EDITONLYTHESE: 'Jenom tito lidé (vyberte ze seznamu)'
     EDITORGROUPS: 'Editor skupin'
     EDIT_ALL_DESCRIPTION: 'Může editovat jakoukoli stránku webu, obcházeje bezpečnostní specifikaci stránky'
@@ -368,7 +368,7 @@ cs:
     VIEW_ALL_DESCRIPTION: 'Může vidět jakoukoli stránku webu, obcházeje bezpečnostní specifikaci stránky'
     VIEW_ALL_HELP: 'Možnost zobrazit libovolnou stránku na webu, bez ohledu na nastavení na kartě Přístup. Vyžaduje povolení "Přístup k obsahu webu"'
     VIEW_DRAFT_CONTENT: 'Zobrazit obsah konceptu'
-    VIEW_DRAFT_CONTENT_HELP: 'Vztahuje se na prohlížení stránek mimo CMS, v koncept  módu. Užitečné pro externí spolupracovníky bez přístupu do CMS.'
+    VIEW_DRAFT_CONTENT_HELP: 'Vztahuje se na prohlížení stránek mimo CMS, v koncept módu. Užitečné pro externí spolupracovníky bez přístupu do CMS.'
     Viewers: 'Skupiny návštěvníků'
     Visibility: Viditelnost
     has_one_Parent: 'Rodičovská stránka'

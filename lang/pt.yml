@@ -133,13 +133,13 @@ pt:
   CMSPageHistoryController_versions.ss:
     AUTHOR: Autor
     NOTPUBLISHED: 'Não publicada'
-    PUBLISHER: Издатель
-    UNKNOWN: Неизвестно
+    PUBLISHER: Publicador
+    UNKNOWN: Desconhecido
     WHEN: Quando
   CMSPageSettingsController:
     MENUTITLE: 'Editar página'
   CMSPagesController:
-    GalleryView: 'Обзор галереи'
+    GalleryView: 'Vista de galeria'
     ListView: 'Vista em lista'
     MENUTITLE: Páginas
     TreeView: 'Vista em árvore'
@@ -218,11 +218,11 @@ pt:
     504: '504 - Gateway Timeout'
     505: '505 - Versão HTTP não suportada'
   Folder:
-    AddFolderButton: 'Добавить папку'
-    DELETEUNUSEDTHUMBNAILS: 'Apagar miniaturas não usadas'
+    AddFolderButton: 'Adicionar pasta'
+    DELETEUNUSEDTHUMBNAILS: 'Apagar miniaturas não utilizadas'
     UNUSEDFILESTITLE: 'Ficheiros não utilizados'
-    UNUSEDTHUMBNAILSTITLE: 'Miniaturas não usadas'
-    UploadFilesButton: Загрузить
+    UNUSEDTHUMBNAILSTITLE: 'Miniaturas não utilizadas'
+    UploadFilesButton: Submeter
   LeftAndMain:
     DELETED: Apagada
     PreviewButton: Pré-visualização
@@ -236,7 +236,7 @@ pt:
     CONTENT_CATEGORY: 'Permissões de conteúdo'
     PERMISSIONS_CATEGORY: 'Regras e permissões de acesso'
   RedirectorPage:
-    DESCRIPTION: 'Переадресовывать на другую внутреннюю страницу'
+    DESCRIPTION: 'Redirecionar para outra página interna'
     HASBEENSETUP: 'Uma página de redireccionamento foi criada sem nenhum destino.'
     HEADER: 'Esta página irá redireccionar os utilizadores para outra página'
     OTHERURL: 'Outro Site'
@@ -379,8 +379,8 @@ pt:
     HelpChars: 'Os caracteres especiais são automaticamente convertido ou removidos.'
   StaticExporter:
     BASEURL: 'URL base'
-    EXPORTTO: 'Exportar para essa pasta'
-    NAME: 'Статичный проводник'
+    EXPORTTO: 'Exportar para esta pasta'
+    NAME: 'Exportar estaticamente'
   TableListField:
     SELECT: 'Escolha:'
   TableListField.ss:
@@ -402,7 +402,7 @@ pt:
     HAVEASKED: 'Pediu para ver o conteúdo do nosso site na'
   VirtualPage:
     CHOOSE: 'Escolha uma página para onde redireccionar'
-    DESCRIPTION: 'Показывать содержание другой страницы'
+    DESCRIPTION: 'Apresentar o conteúdo de outra página'
     EDITCONTENT: 'clique aqui para editar o conteúdo'
     HEADER: 'Esta é uma página virtual'
     PLURALNAME: 'Páginas Virtuais'

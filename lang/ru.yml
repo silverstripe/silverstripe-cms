@@ -30,7 +30,7 @@ ru:
   AssetAdmin_Tools:
     FILTER: Фильтр
   AssetAdmin_left.ss:
-    GO: Перейти
+    GO: Выбрать
   AssetTableField:
     BACKLINKCOUNT: 'Используется на:'
     PAGES: страниц
@@ -137,9 +137,9 @@ ru:
     UNKNOWN: Неизвестно
     WHEN: Когда
   CMSPageSettingsController:
-    MENUTITLE: 'Править страницы'
+    MENUTITLE: 'Править страницу'
   CMSPagesController:
-    GalleryView: 'Обзор галереи'
+    GalleryView: 'В виде галереи'
     ListView: 'Обзор списка'
     MENUTITLE: Страницы
     TreeView: 'Обзор дерева'
@@ -151,7 +151,7 @@ ru:
   CMSSearch:
     FILTERDATEFROM: От
     FILTERDATEHEADING: Дата
-    FILTERDATETO: Кому
+    FILTERDATETO: До
     FILTERLABELTEXT: Содержимое
   CMSSettingsController:
     MENUTITLE: Настройки
@@ -323,10 +323,10 @@ ru:
     EDITORGROUPS: 'Группы редактирования'
     EDIT_ALL_DESCRIPTION: 'Редактирование любой страницы'
     EDIT_ALL_HELP: 'Возможность редактировать любую страницу на сайте независимо от настроек во вкладке "Доступ". Необходимо право доступа к разделу "Страницы".'
-    Editors: 'Группы редакторов'
+    Editors: 'Группы редактирования'
     HASBROKENLINKS: 'Эта страница содержит неверные ссылки.'
     HTMLEDITORTITLE: Содержимое
-    INHERIT: 'Такие же как у родительской страницы'
+    INHERIT: 'Перенять от родительской страницы'
     LASTUPDATED: 'Последнее обновление'
     LINKCHANGENOTE: 'Изменение ссылки на эту страницу повлияет и на ссылки всех дочерних страниц.'
     MENUTITLE: 'Метка в навигации'
@@ -373,7 +373,7 @@ ru:
     Visibility: Отображение
     has_one_Parent: 'Родительская страница'
     many_many_BackLinkTracking: 'Отслеживание обратных ссылок'
-    many_many_ImageTracking: 'Отслеживание картинок'
+    many_many_ImageTracking: 'Отслеживание изображений'
     many_many_LinkTracking: 'Отслеживание ссылок'
   SiteTreeURLSegmentField:
     HelpChars: 'Спецсимволы автоматически конвертируются или удаляются.'
@@ -401,7 +401,7 @@ ru:
     CANACCESS: 'Вы можете посмотреть архивную версию сайта по этой ссылке:'
     HAVEASKED: 'Вы запросили просмотр содержимого нашего сайта за'
   VirtualPage:
-    CHOOSE: 'Выберите страницу, на которую ссылаетесь,'
+    CHOOSE: 'Выберите страницу, на которую ссылаетесь'
     DESCRIPTION: 'Показать содержимое других страниц'
     EDITCONTENT: 'Нажмите здесь для редактирования содержимого'
     HEADER: 'Это виртуальная страница'

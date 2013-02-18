@@ -164,7 +164,7 @@ et_EE:
   ContentControl:
     NOTEWONTBESHOWN: 'Märkus. Seda teadet ei kuvata lehe külastajatele'
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
+    ARCHIVEDSITE: 'Eelvaate versioon'
     ARCHIVEDSITEFROM: 'Arhiveeritud sait asukohast'
     CMS: CMS
     DRAFTSITE: 'Mustandi sait'
@@ -277,8 +277,8 @@ et_EE:
     EDITHEADER: 'Kes saavad sellel saidil lehti redigeerida?'
     EDIT_PERMISSION: 'Saidi konfiguratsiooni haldamine'
     EDIT_PERMISSION_HELP: 'Võimalus redigeerida üldiseid juurdepääsuseadeid / kõrgema taseme lehe õigusi.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
+    PLURALNAME: 'Saidi konfiguratsioonid'
+    SINGULARNAME: 'Saidi konfiguratsioon'
     SITENAMEDEFAULT: 'Teie saidi nimi'
     SITETAGLINE: 'Saidi reklaamlause'
     SITETITLE: 'Saidi pealkiri'

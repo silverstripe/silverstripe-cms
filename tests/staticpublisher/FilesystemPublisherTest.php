@@ -10,6 +10,8 @@ class FilesystemPublisherTest extends SapphireTest {
 	protected $usesDatabase = true;
 	
 	protected $orig = array();
+
+	static $fixture_file = 'cms/tests/staticpublisher/FilesystemPublisherTest.yml';
 	
 	public function setUp() {
 		parent::setUp();
@@ -155,6 +157,42 @@ class FilesystemPublisherTest extends SapphireTest {
 		$this->assertNotEquals($current_theme, $default_theme, 'The static publisher theme overrides the custom theme');
 		
 		
+	}
+
+	function testPublishPages() {
+		$cacheFolder = '/assets/FilesystemPublisherTest-static-folder/';
+		$cachePath = Director::baseFolder() . $cacheFolder;
+		$publisher = new FilesystemPublisher($cacheFolder, 'html');
+		$page1 = $this->objFromFixture('Page', 'page1');
+		$page1->publish('Stage', 'Live');
+		$redirector1 = $this->objFromFixture('RedirectorPage', 'redirector1');
+		$redirector1->publish('Stage', 'Live');
+		
+		$results = $publisher->publishPages(array(
+			$page1->Link(), 
+			$redirector1->regularLink(),
+			'/notfound'
+		));
+
+		$this->assertArrayHasKey($page1->Link(), $results);
+		$this->assertEquals(200, $results[$page1->Link()]['statuscode']);
+		$this->assertEquals(
+			realpath($results[$page1->Link()]['path']), 
+			realpath($cachePath . './page1.html')
+		);
+
+		$this->assertArrayHasKey($redirector1->regularLink(), $results);
+		$this->assertEquals(301, $results[$redirector1->regularLink()]['statuscode']);
+		$this->assertEquals(Director::baseURL() . 'page1/', $results[$redirector1->regularLink()]['redirect']);
+		$this->assertEquals(
+			realpath($results[$redirector1->regularLink()]['path']), 
+			realpath($cachePath . './redirect-to-page1.html')
+		);
+
+		$this->assertArrayHasKey('/notfound', $results);
+		$this->assertEquals(404, $results['/notfound']['statuscode']);
+		$this->assertNull($results['/notfound']['redirect']);
+		$this->assertNull($results['/notfound']['path']);
 	}
 	
 }
