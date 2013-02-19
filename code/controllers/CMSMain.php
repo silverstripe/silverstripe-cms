@@ -449,7 +449,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * 
 	 * @return String CSS 
 	 */
-	public function generatePageIconsCss() {
+	public static function generatePageIconsCss() {
 		$css = ''; 
 		
 		$classes = ClassInfo::subclassesFor('SiteTree'); 
