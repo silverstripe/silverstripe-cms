@@ -1,0 +1,32 @@
+{
+	"name": "cwp/recipe-basic",
+	"description": "CWP basic recipe",
+	"require": {
+		"php": ">=5.3.2",
+		"silverstripe/cms": "3.1.x-dev",
+		"silverstripe/framework": "3.1.x-dev",
+		"silverstripe/registry": "*",
+		"silverstripe/subsites": "dev-master",
+		"silverstripe/taxonomy": "*",
+		"undefinedoffset/sortablegridfield": "dev-master",
+		"silverstripe/fulltextsearch": "dev-master",
+		"cwp/cwp": "*",
+		"cwp-themes/default": "*"
+	},
+	"require-dev": {
+		"silverstripe/behat-extension": "*",
+		"silverstripe/buildtools": "*",
+		"phpunit/phpunit": "3.7.*"
+	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "ssh://git@gitlab.cwp.govt.nz:2222/cwp/cwp.git"
+		},
+		{
+			"type": "vcs",
+			"url": "ssh://git@gitlab.cwp.govt.nz:2222/cwp-themes/default.git"
+		}
+	],
+	"minimum-stability": "dev"
+}

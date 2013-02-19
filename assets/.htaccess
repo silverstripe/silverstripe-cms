@@ -1,0 +1,37 @@
+#
+# Whitelist appropriate assets files.
+# Note that you will need to maintain this whitelist yourself if you modify File::$allowed_extensions
+#
+# If you are not using Apache then you can ignore this file.
+# If you are using IIS then you should look at assets/web.config instead.
+#
+# To add an extension to the list, you need to put another string of the form "ext|" on the
+# FilesMatch line, inside the parentheses. 
+#
+# For example, to add *.exe files to list of downloadable assets, change this line: 
+#
+#   <FilesMatch "\.(html|htm|xhtml...
+#
+# To this:
+#
+#   <FilesMatch "\.(exe|html|htm|xhtml...
+#
+# Once you do this, visitors will be able to download *.exe files that are uploaded to the assets
+# directory.
+#
+# For compatibility reasons, we include uppercase versions of allowed extensions, as Apache 1.3
+# does not support regular expression case insensitive matches using PCRE style.
+#
+Deny from all
+<FilesMatch "\.(html|HTML|htm|HTM|xhtml|XHTML|js|JS|css|CSS|bmp|BMP|png|PNG|gif|GIF|jpg|JPG|jpeg|JPEG|ico|ICO|pcx|PCX|tif|TIF|tiff|TIFF|au|AU|mid|MID|midi|MIDI|mpa|MPA|mp3|MP3|ogg|OGG|m4a|M4A|ra|RA|wma|WMA|wav|WAV|cda|CDA|avi|AVI|mpg|MPG|mpeg|MPEG|asf|ASF|wmv|WMV|m4v|M4V|mov|MOV|mkv|MKV|mp4|MP4|swf|SWF|flv|FLV|ram|RAM|rm|RM|doc|DOC|docx|DOCX|txt|TXT|rtf|RTF|xls|XLS|xlsx|XLSX|pages|PAGES|ppt|PPT|pptx|PPTX|pps|PPS|csv|CSV|cab|CAB|arj|ARJ|tar|TAR|zip|ZIP|zipx|ZIPX|sit|SIT|sitx|SITX|gz|GZ|tgz|TGZ|bz2|BZ2|ace|ACE|arc|ARC|pkg|PKG|dmg|DMG|hqx|HQX|jar|JAR|xml|XML|pdf|PDF)$">
+	Allow from all
+</FilesMatch>
+
+# We disable PHP via several methods
+# Replace the handler with the default plaintext handler
+AddHandler default-handler php phtml php3 php4 php5 inc
+
+<IfModule mod_php5.c>
+	# Turn the PHP engine off
+	php_flag engine off
+</IfModule>
