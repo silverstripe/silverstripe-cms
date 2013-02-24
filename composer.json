@@ -20,12 +20,12 @@
 	},
 	"repositories": [
 		{
-			"type": "vcs",
-			"url": "ssh://git@gitlab.cwp.govt.nz:2222/cwp/cwp.git"
+				"type": "vcs",
+				"url": "http://gitlab.cwp.govt.nz/cwp/cwp.git"
 		},
 		{
-			"type": "vcs",
-			"url": "ssh://git@gitlab.cwp.govt.nz:2222/cwp-themes/default.git"
+				"type": "vcs",
+				"url": "http://gitlab.cwp.govt.nz/cwp-themes/default.git"
 		}
 	],
 	"minimum-stability": "dev"
