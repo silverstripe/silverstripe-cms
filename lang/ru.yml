@@ -2,7 +2,7 @@ ru:
   AssetAdmin:
     ADDFILES: 'Добавить файлы'
     ActionAdd: 'Добавить папку'
-    AppCategoryArchive: 'Архив'
+    AppCategoryArchive: Архив
     AppCategoryAudio: Аудио
     AppCategoryDocument: Документ
     AppCategoryFlash: Flash
@@ -13,7 +13,7 @@ ru:
     CurrentFolderOnly: 'Только в этой папке?'
     DetailsView: Детали
     FILES: Файлы
-    FILESYSTEMSYNC: 'Синхронизировать'
+    FILESYSTEMSYNC: Синхронизировать
     FILESYSTEMSYNCTITLE: 'Обновление базы данных файлов в файловой системе. Стоит использовать, если новые файлы были загружены без использования CMS, например, через FTP.'
     FROMTHEINTERNET: 'Из интернета'
     FROMYOURCOMPUTER: 'С диска'
@@ -21,7 +21,7 @@ ru:
     ListView: 'В виде списка'
     MENUTITLE: Файлы
     NEWFOLDER: 'Новая папка'
-    SIZE: 'Размер'
+    SIZE: Размер
     THUMBSDELETED: '{count} неиспользуемых миниатюр удалено'
     TreeView: 'В виде дерева'
     Upload: Загрузить
@@ -104,7 +104,7 @@ ru:
     ROLLBACK: 'Откатить до этой версии'
     ROLLEDBACKPUB: 'Произведен откат до опубликованной версии. Номер новой версии #{version}'
     ROLLEDBACKVERSION: 'Произведен откат до версии #%d. Номер новой версии #%d'
-    SAVE: 'Сохранить'
+    SAVE: Сохранить
     SAVEDRAFT: 'Сохранить черновик'
     TabContent: Содержимое
     TabHistory: История
@@ -175,8 +175,8 @@ ru:
     InstallSecurityWarning: 'Если вы не планируете в ближайшее время переустанавливать CMS, по соображениям безопасности рекомендуется удалить инсталляционные файлы (<em>для этого необходим администраторский доступ, см. выше</em>). Теперь веб-серверу требуется доступ для записи только к папке "assets"; вы можете защитить от записи все остальные папки. <a href="{link}" style="text-align: center;">Щелкните здесь, чтобы удалить инсталляционные файлы.</a>'
     InstallSuccessCongratulations: 'SilverStripe успешно установлен!'
     LOGGEDINAS: 'Залогинен как'
-    LOGIN: 'Вход'
-    LOGOUT: 'Выход'
+    LOGIN: Вход
+    LOGOUT: Выход
     NOTLOGGEDIN: 'Не вошли в систему'
     PUBLISHEDSITE: 'Опубликованный сайт'
     Password: Пароль
@@ -226,7 +226,7 @@ ru:
   LeftAndMain:
     DELETED: Удалено.
     PreviewButton: Просмотр
-    SAVEDUP: 'Сохранено.'
+    SAVEDUP: Сохранено.
     STATUSPUBLISHEDSUCCESS: '''{title}'' успешно опубликован'
     SearchResults: 'Результаты поиска'
     VersionUnknown: Неизвестно

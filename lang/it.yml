@@ -370,7 +370,7 @@ it:
     VIEW_DRAFT_CONTENT: 'Visualizza contenuto bozza'
     VIEW_DRAFT_CONTENT_HELP: 'Si applica per visualizzare le pagine in bozza al di fuori del CMS. Utile per collaboratori esterni che non hanno accesso al CMS.'
     Viewers: 'Gruppi di visualizzatori'
-    Visibility: 'Visibilità'
+    Visibility: Visibilità
     has_one_Parent: 'Pagina madre'
     many_many_BackLinkTracking: 'Monitoriaggio link di ritorno'
     many_many_ImageTracking: 'Monitoraggio immagine'

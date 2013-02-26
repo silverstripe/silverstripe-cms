@@ -164,7 +164,7 @@ nl:
   ContentControl:
     NOTEWONTBESHOWN: 'Aantekening: dit bericht is niet zichtbaar voor bezoekers'
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
+    ARCHIVEDSITE: 'Voorbeeld versie'
     ARCHIVEDSITEFROM: 'Gearchiveerde site van'
     CMS: CMS
     DRAFTSITE: Concept-site

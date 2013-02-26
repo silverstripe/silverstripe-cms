@@ -6,7 +6,7 @@ th:
     AppCategoryAudio: ไฟล์เสียง
     AppCategoryDocument: เอกสาร
     AppCategoryFlash: แฟลช
-    AppCategoryImage: 'รูปภาพ'
+    AppCategoryImage: รูปภาพ
     AppCategoryVideo: วีดีโอ
     BackToFolder: ย้อนกลับไปที่โฟลเดอร์
     CREATED: วันที่
@@ -44,7 +44,7 @@ th:
     CheckSiteDropdownPublished: เว็บไซต์ที่เผยแพร่แล้ว
     ColumnDateLastModified: วันที่แก้ไขล่าสุด
     ColumnDateLastPublished: วันที่เผยแพร่ล่าสุด
-    ColumnProblemType: 'ประเภทปัญหา'
+    ColumnProblemType: ประเภทปัญหา
     ColumnURL: URL
     HasBrokenFile: มีไฟล์เสีย
     HasBrokenLink: มีลิงค์เสีย
@@ -77,7 +77,7 @@ th:
     AddNew: เพิ่มหน้าใหม่
     AddNewButton: เพิ่มใหม่
     ChoosePageParentMode: เลือกว่าต้องการสร้างหน้าเว็บนี้ไว้ที่ไหน
-    ChoosePageType: 'เลือกประเภทของหน้าเว็บ'
+    ChoosePageType: เลือกประเภทของหน้าเว็บ
     Create: สร้าง
     DELETE: ลบออกจากเว็บไซต์ฉบับร่าง
     DELETEFP: ลบ
@@ -89,8 +89,8 @@ th:
     NEWPAGE: 'ใหม่ {pagetype}'
     PAGENOTEXISTS: ไม่มีหน้านี้อยู่
     PAGES: หน้า
-    PAGETYPEANYOPT: 'ประเภทใดก็ได้'
-    PAGETYPEOPT: 'ประเภทหน้าเว็บ'
+    PAGETYPEANYOPT: ประเภทใดก็ได้
+    PAGETYPEOPT: ประเภทหน้าเว็บ
     PUBALLCONFIRM: 'กรุณาเผยแพร่หน้าเว็บทุกหน้าในเว็บไซต์, คัดลอกเนื้อหาลงไปที่'
     PUBALLFUN: 'ฟังก์ชั่นการทำงาน "เผยแพร่ทั้งหมด"'
     PUBALLFUN2: "การกดปุ่มนี้จะเทียบเท่ากับการไปที่หน้าต่างๆทุกๆหน้าแล้วกด \"เผยแพร่\".  It's\\nปุ่มดังกล่าวมีไว้ด้วยความตั้งใจที่ต้องการให้นำไปใช้กับการแก้ไขเนื้อหาเป็นจำนวนมาก เช่น เมื่อเว็บไซต์\\nถูกสร้างขึ้นเป็นครั้งแรก."
@@ -236,7 +236,7 @@ th:
     CONTENT_CATEGORY: สิทธิ์อนุญาตของเนื้อหา
     PERMISSIONS_CATEGORY: บทบาทและสิทธิ์อนุญาตการเข้าถึง
   RedirectorPage:
-    DESCRIPTION: 'เปลี่ยนเส้นทางไปยังหน้าเว็บภายในอื่นๆ'
+    DESCRIPTION: เปลี่ยนเส้นทางไปยังหน้าเว็บภายในอื่นๆ
     HASBEENSETUP: หน้าเว็บที่มีการเปลี่ยนเส้นทางซึ่งได้รับการตั้งค่าโดยปราศจากตำแหน่งปลายทางที่ต้องการเปลี่ยนเส้นทางไป
     HEADER: หน้าเว็บนี้จะเปลี่ยนเส้นทางผู้ใช้งานไปยังหน้าเว็บอื่นๆ
     OTHERURL: 'ที่อยู่ URL ของเว็บไซต์อื่นๆ'
@@ -373,7 +373,7 @@ th:
     Visibility: สามารถมองเห็นได้
     has_one_Parent: หน้าเว็บต้นทาง
     many_many_BackLinkTracking: แกะรอยลิงก์ย้อนกลับ
-    many_many_ImageTracking: 'แกะรอยรูปภาพ'
+    many_many_ImageTracking: แกะรอยรูปภาพ
     many_many_LinkTracking: แกะรอยลิงก์
   SiteTreeURLSegmentField:
     HelpChars: ตัวอักษรพิเศษได้ถูกแปลงค่าหรือลบออกโดยอัตโนมัติแล้ว
