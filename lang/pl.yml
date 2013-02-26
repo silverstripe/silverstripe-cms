@@ -225,7 +225,7 @@ pl:
     UploadFilesButton: Prześlij
   LeftAndMain:
     DELETED: Usunięty
-    PreviewButton: 'Podgląd'
+    PreviewButton: Podgląd
     SAVEDUP: Zapisane
     STATUSPUBLISHEDSUCCESS: 'Opublikowano ''{title}'' '
     SearchResults: 'Wyniki wyszukiwania'

@@ -99,7 +99,7 @@ sv:
     REMOVED: 'Raderade ''%s''%s från den publicerade sajten'
     REMOVEDPAGE: 'Tog bort ''{title}'' från den publicerade sajten'
     REMOVEDPAGEFROMDRAFT: 'Raderade ''%s'' från utkast'
-    RESTORE: 'Återskapa'
+    RESTORE: Återskapa
     RESTORED: 'Återskapandet av  ''{title}'' lyckades'
     ROLLBACK: 'Återställ den här versionen'
     ROLLEDBACKPUB: 'Återskapade publicerad version. Nytt versionsnummer är #{version}'
@@ -364,12 +364,12 @@ sv:
     TOPLEVEL: 'Sajtinnehåll (toppnivå)'
     TOPLEVELCREATORGROUPS: 'Topp-nivå skapare'
     URLSegment: URL-segment
-    VIEWERGROUPS: 'Åtkomstgrupper'
+    VIEWERGROUPS: Åtkomstgrupper
     VIEW_ALL_DESCRIPTION: 'Visa alla sidor'
     VIEW_ALL_HELP: 'Möjlighet att se alla sidor på sajten, oavsett inställningarna under Åtkomstfliken. Kräver "Tillgång till webbplatsinnehåll"'
     VIEW_DRAFT_CONTENT: 'Se utkast'
     VIEW_DRAFT_CONTENT_HELP: 'Gäller sidor visade i utkastläge utanför CMS:et. Användbart för medarbetare utan CMS-åtkomst.'
-    Viewers: 'Åskådargrupper'
+    Viewers: Åskådargrupper
     Visibility: Synlighet
     has_one_Parent: 'Överordnad sida'
     many_many_BackLinkTracking: 'Spåra inlänkar'

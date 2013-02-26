@@ -6,7 +6,7 @@ he_IL:
     AppCategoryAudio: שמע
     AppCategoryDocument: מסמך
     AppCategoryFlash: פלאש
-    AppCategoryImage: 'תמונה'
+    AppCategoryImage: תמונה
     AppCategoryVideo: וידאו
     BackToFolder: 'חזרה לתיקייה'
     CREATED: תאריך
@@ -15,7 +15,7 @@ he_IL:
     FILES: קבצים
     FILESYSTEMSYNC: 'סנכרון קבצים'
     FILESYSTEMSYNCTITLE: 'עדכון רשומות מסד הנתונים של ה־CMS במערכת הקבצים. שימושי כאשר הועלו קבצים חדשים מחוץ ל־CMS, לדוגמה באמצעות FTP.'
-    FROMTHEINTERNET: 'מהאינטרנט'
+    FROMTHEINTERNET: מהאינטרנט
     FROMYOURCOMPUTER: 'מהמחשב שלך'
     Filetype: 'סוג הקובץ'
     ListView: 'תצוגת רשימה'
@@ -28,7 +28,7 @@ he_IL:
   AssetAdmin_DeleteBatchAction:
     TITLE: 'למחוק תיקיות'
   AssetAdmin_Tools:
-    FILTER: 'מסנן'
+    FILTER: מסנן
   AssetAdmin_left.ss:
     GO: לעבור
   AssetTableField:
@@ -147,7 +147,7 @@ he_IL:
     ENABLEDRAGGING: 'גרירה והשלכה'
     MULTISELECT: 'בחירה מרובה'
   CMSPagesController_Tools.ss:
-    FILTER: 'מסנן'
+    FILTER: מסנן
   CMSSearch:
     FILTERDATEFROM: מ־
     FILTERDATEHEADING: תאריך
@@ -175,7 +175,7 @@ he_IL:
     InstallSecurityWarning: 'מטעמי אבטחה עליך למחוק כעת את קובצי ההתקנה, אלמלא תכניותיך הן להתקין מחדש מאוחר יותר (<em>נדרשת כניסת מנהל, פרטים להלן</em>). שרת האינטרנט יזדקק רק לעת עתה לגישה לכתיבה לתיקייה „assets“, ניתן להסיר את גישת הכתיבה מכל שאר התיקיות. <a href="{link}" style="text-align: center;">יש ללחוץ כאן כדי למחוק את קובצי ההתקנה.</a>'
     InstallSuccessCongratulations: 'מערכת ה־SilverStripe הותקנה בהצלחה!'
     LOGGEDINAS: 'נכנסת בשם'
-    LOGIN: 'כניסה'
+    LOGIN: כניסה
     LOGOUT: יציאה
     NOTLOGGEDIN: 'לא נכנסת'
     PUBLISHEDSITE: 'אתר שפורסם'
@@ -224,9 +224,9 @@ he_IL:
     UNUSEDTHUMBNAILSTITLE: 'תמונות ממוזערות שאינן בשימוש'
     UploadFilesButton: העלאה
   LeftAndMain:
-    DELETED: 'נמחק.'
+    DELETED: נמחק.
     PreviewButton: 'תצוגה מקדימה'
-    SAVEDUP: 'נשמר.'
+    SAVEDUP: נשמר.
     STATUSPUBLISHEDSUCCESS: '''{title}'' פורסם בהצלחה'
     SearchResults: 'תוצאות החיפוש'
     VersionUnknown: 'לא ידועה'
@@ -312,7 +312,7 @@ he_IL:
     DEFAULTHOMECONTENT: '<p>ברוך בואך ל־SilverStripe! זהו עמוד הבית כבררת המחדל. ניתן לערוך עמוד זה על ידי פתיחת <a href="admin/">ה־CMS</a>. כעת ניתן לגשת <a href="http://doc.silverstripe.org">לתיעוד עבור המפתחים</a>, או לגשת ללמוד <a href="http://doc.silverstripe.org/doku.php?id=tutorials">מהמדריכים.</a></p>'
     DEFAULTHOMETITLE: 'דף הבית'
     DELETEDPAGEHELP: 'העמוד אינו מפורסם עוד'
-    DELETEDPAGESHORT: 'נמחק'
+    DELETEDPAGESHORT: נמחק
     DEPENDENT_NOTE: 'העמודים הבאים תלויים בעמוד זה. בין אלו נכללים, עמודים וירטואליים, עמודי הפנייה ועמודים עם קישורי תוכן.'
     DESCRIPTION: 'דף תוכן גנרי'
     DependtPageColumnLinkType: 'סוג הקישור'
@@ -335,7 +335,7 @@ he_IL:
     METAEXTRA: 'תגי על נוספים'
     METAEXTRAHELP: 'תגיות HTML לנתוני על נוספים. לדוגמה &lt;meta name="שם_מותאם_אישית" content="התוכן שלך כאן" /&gt;'
     MODIFIEDONDRAFTHELP: 'בעמוד יש שינויים שלא פורסמו'
-    MODIFIEDONDRAFTSHORT: 'השתנה'
+    MODIFIEDONDRAFTSHORT: השתנה
     MetadataToggle: 'נתוני על'
     OBSOLETECLASS: 'עמוד זה הוא מסוג מיושן {type}. השמירה עלולה לאפס את הסוג שלך והנתונים שלך עלולים ללכת לאיבוד'
     PAGELOCATION: 'מיקום העמוד'
@@ -358,7 +358,7 @@ he_IL:
     SHOWINMENUS: 'להציג בתפריטים?'
     SHOWINSEARCH: 'לכלול בחיפוש?'
     SINGULARNAME: עמוד
-    TABBEHAVIOUR: 'התנהגות'
+    TABBEHAVIOUR: התנהגות
     TABCONTENT: 'תוכן ראשי'
     TABDEPENDENT: 'עמודים תלויים'
     TOPLEVEL: 'תוכן האתר (רמה עליונה)'
