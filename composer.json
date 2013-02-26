@@ -21,11 +21,11 @@
 	"repositories": [
 		{
 				"type": "vcs",
-				"url": "http://gitlab.cwp.govt.nz/cwp/cwp.git"
+				"url": "https://gitlab.cwp.govt.nz/cwp/cwp.git"
 		},
 		{
 				"type": "vcs",
-				"url": "http://gitlab.cwp.govt.nz/cwp-themes/default.git"
+				"url": "https://gitlab.cwp.govt.nz/cwp-themes/default.git"
 		}
 	],
 	"minimum-stability": "dev"
