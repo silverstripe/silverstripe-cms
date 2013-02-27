@@ -1,4 +1,7 @@
 <?php
+
+use SilverStripe\Framework\Http\Session;
+
 class CMSFileAddController extends LeftAndMain {
 
 	static $url_segment = 'assets/add';

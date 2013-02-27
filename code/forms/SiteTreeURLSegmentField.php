@@ -54,7 +54,7 @@ class SiteTreeURLSegmentField extends TextField {
 			$count++;
 		}
 		
-		Controller::curr()->getResponse()->addHeader('Content-Type', 'application/json');
+		Controller::curr()->getResponse()->setHeader('Content-Type', 'application/json');
 		return Convert::raw2json(array('value' => $page->URLSegment));
 	}
 		

@@ -1,5 +1,7 @@
 <?php
 
+use SilverStripe\Framework\Http\Http;
+
 class SiteTreeBacklinksTest extends SapphireTest {
 	static $fixture_file = "SiteTreeBacklinksTest.yml";
 

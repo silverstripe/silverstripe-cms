@@ -1,4 +1,8 @@
 <?php
+
+use SilverStripe\Framework\Http\Request;
+use SilverStripe\Framework\Http\Response;
+
 /**
  * @package cms
  * @subpackage control
@@ -101,10 +105,10 @@ class RootURLController extends Controller {
 	}
 	
 	/**
-	 * @param SS_HTTPRequest $request
-	 * @return SS_HTTPResponse
+	 * @param Request $request
+	 * @return Response
 	 */
-	public function handleRequest(SS_HTTPRequest $request, DataModel $model = null) {
+	public function handleRequest(Request $request, DataModel $model = null) {
 		self::$is_at_root = true;
 		$this->setDataModel($model);
 		
@@ -112,15 +116,12 @@ class RootURLController extends Controller {
 		$this->init();
 		
 		if(!DB::isActive() || !ClassInfo::hasTable('SiteTree')) {
-			$this->response = new SS_HTTPResponse();
+			$this->response = new Response();
 			$this->response->redirect(Director::absoluteBaseURL() . 'dev/build?returnURL=' . (isset($_GET['url']) ? urlencode($_GET['url']) : null));
 			return $this->response;
 		}
-			
-		$request = new SS_HTTPRequest (
-			$request->httpMethod(), self::get_homepage_link() . '/', $request->getVars(), $request->postVars()
-		);
-		$request->match('$URLSegment//$Action', true);
+
+		$request->pushParams(array('URLSegment' => self::get_homepage_link()));
 		
 		$controller = new ModelAsController();
 		$result     = $controller->handleRequest($request, $model);

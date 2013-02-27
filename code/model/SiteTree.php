@@ -1,4 +1,7 @@
 <?php
+
+use SilverStripe\Framework\Http\Request;
+
 /**
  * Basic data-object representing all pages within the site tree.
  * This data-object takes care of the heirachy. All page types that live within the hierarchy should inherit from this.
@@ -1363,7 +1366,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			// only execute command if fields haven't been renamed to _obsolete_<fieldname> already by the task
 			if(array_key_exists('Viewers', $conn->fieldList('SiteTree'))) {
 				$task = new UpgradeSiteTreePermissionSchemaTask();
-				$task->run(new SS_HTTPRequest('GET','/'));
+				$task->run(new Request('GET','/'));
 			}
 		}
 	}
