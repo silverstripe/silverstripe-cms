@@ -1302,20 +1302,53 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	
 	/**
 	 * Return the version number of this application.
-	 * Uses the subversion path information in <mymodule>/silverstripe_version
+	 * Uses the number in <mymodule>/silverstripe_version
 	 * (automacially replaced by build scripts).
-	 * 
+	 * If silverstripe_version is empty,
+	 * then attempts to get it from composer.lock
+	 *
 	 * @return string
 	 */
 	public function CMSVersion() {
 		$cmsVersion = file_get_contents(CMS_PATH . '/silverstripe_version');
-		if(!$cmsVersion) $cmsVersion = _t('LeftAndMain.VersionUnknown', 'Unknown');
-		
 		$frameworkVersion = file_get_contents(FRAMEWORK_PATH . '/silverstripe_version');
+		
+		// Tries to obtain version number from composer.lock if it exists
+		if(!$cmsVersion || !$frameworkVersion) {
+			$composerLockPath = BASE_PATH . '/composer.lock';
+			if (file_exists($composerLockPath)) {
+				$cache = SS_Cache::factory('CMSMain_CMSVersion');
+				$cacheKey = filemtime($composerLockPath);
+				$jsonVersions = $cache->load($cacheKey);
+				if(!$jsonVersions && $jsonData = file_get_contents($composerLockPath)) {
+					if ($lockdata = json_decode($jsonData)) {
+						if (isset($lockdata->packages)) {
+							$arrayVersions = array();
+							foreach ($lockdata->packages as $package) {
+								if ($package->name == "silverstripe/cms" && !$cmsVersion && isset($package->version)) {
+									$arrayVersions['cms'] = $package->version;
+								}
+								if ($package->name == "silverstripe/framework" && !$frameworkVersion && isset($package->version)) {
+									$arrayVersions['framework'] = $package->version;
+								}
+							}
+							$jsonVersions = json_encode($arrayVersions);
+							$cache->save($jsonVersions, $cacheKey);
+						}
+					}
+					
+				}
+				$versions = json_decode($jsonVersions);
+				$cmsVersion = $versions->cms;
+				$frameworkVersion = $versions->framework;
+			}
+		}
+				
+		if(!$cmsVersion) $cmsVersion = _t('LeftAndMain.VersionUnknown', 'Unknown');
 		if(!$frameworkVersion) $frameworkVersion = _t('LeftAndMain.VersionUnknown', 'Unknown');
 		
 		return sprintf(
-			"CMS: %s Framework: %s",
+			"CMS: %s, Framework: %s",
 			$cmsVersion,
 			$frameworkVersion
 		);
