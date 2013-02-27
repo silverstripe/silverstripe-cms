@@ -2,7 +2,7 @@ bg:
   AssetAdmin:
     ADDFILES: 'Добави файлове'
     ActionAdd: 'Добави директория'
-    AppCategoryArchive: 'Архив'
+    AppCategoryArchive: Архив
     AppCategoryAudio: Аудио
     AppCategoryDocument: Document
     AppCategoryFlash: Flash
@@ -21,7 +21,7 @@ bg:
     ListView: 'Изглед в списък'
     MENUTITLE: Файлове
     NEWFOLDER: 'Нова директория'
-    SIZE: 'Размер'
+    SIZE: Размер
     THUMBSDELETED: '{count} unused thumbnails have been deleted'
     TreeView: 'Дървовиден изглед'
     Upload: 'Качи '
@@ -175,8 +175,8 @@ bg:
     InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
     InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
     LOGGEDINAS: 'Влязъл като'
-    LOGIN: 'Вход'
-    LOGOUT: 'Изход'
+    LOGIN: Вход
+    LOGOUT: Изход
     NOTLOGGEDIN: 'Извън системата'
     PUBLISHEDSITE: 'Публикувани страници'
     Password: Парола

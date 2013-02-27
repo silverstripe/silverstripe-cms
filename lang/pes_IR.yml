@@ -152,7 +152,7 @@ pes_IR:
     FILTERDATEFROM: از
     FILTERDATEHEADING: تاریخ
     FILTERDATETO: به
-    FILTERLABELTEXT: 'محتوی'
+    FILTERLABELTEXT: محتوی
   CMSSettingsController:
     MENUTITLE: Settings
   CMSSiteTreeFilter_ChangedPages:

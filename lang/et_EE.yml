@@ -244,7 +244,7 @@ et_EE:
     REDIRECTTO: 'Suuna ümber'
     REDIRECTTOEXTERNAL: 'Teisele veebisaidile'
     REDIRECTTOPAGE: 'Leheküljele sinu veebisaidil'
-    SINGULARNAME: Ümbersuunamislehekülg
+    SINGULARNAME: Ümbersuunamisleht
     YOURPAGE: 'Lehekülg sinu veebisaidil'
   ReportAdmin:
     MENUTITLE: Aruanded
@@ -405,6 +405,6 @@ et_EE:
     DESCRIPTION: 'Kuvab sisu teiselt lehelt'
     EDITCONTENT: 'Vajuta siia et sisu muuta'
     HEADER: 'See on virtuaalne leht'
-    PLURALNAME: 'Suunavad lehed'
+    PLURALNAME: 'Virtuaalsed lehed'
     PageTypNotAllowedOnRoot: 'Lehe originaaltüüp "{type}" ei ole selle virtuaalse lehe juurtasandil lubatud.'
-    SINGULARNAME: 'Suunav leht'
+    SINGULARNAME: 'Virtuaalne leht'

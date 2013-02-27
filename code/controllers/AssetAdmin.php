@@ -25,6 +25,7 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 	public static $allowed_actions = array(
 		'addfolder',
 		'delete',
+		'AddForm',
 		'DeleteItemsForm',
 		'getsubtree',
 		'movemarked',

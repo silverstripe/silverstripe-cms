@@ -135,7 +135,7 @@ ar:
     NOTPUBLISHED: 'غير منشور'
     PUBLISHER: الناشر
     UNKNOWN: 'غير معروف'
-    WHEN: 'متى'
+    WHEN: متى
   CMSPageSettingsController:
     MENUTITLE: 'تحرير صفحة'
   CMSPagesController:
@@ -149,10 +149,10 @@ ar:
   CMSPagesController_Tools.ss:
     FILTER: Filter
   CMSSearch:
-    FILTERDATEFROM: 'من'
+    FILTERDATEFROM: من
     FILTERDATEHEADING: التاريخ
     FILTERDATETO: إلى
-    FILTERLABELTEXT: 'المحتوى'
+    FILTERLABELTEXT: المحتوى
   CMSSettingsController:
     MENUTITLE: الإعدادات
   CMSSiteTreeFilter_ChangedPages:
@@ -285,11 +285,11 @@ ar:
     TABACCESS: الوصول
     TABMAIN: الرئيسي
     TAGLINEDEFAULT: 'علامتك هنا'
-    THEME: 'الثيم'
+    THEME: الثيم
     TOPLEVELCREATE: 'من يستطيع إنشاء صفحات في جذر الموقع؟'
     VIEWHEADER: 'من يستطيع عرض الصفحات على هذا الموقع؟...'
   SiteTree:
-    ACCESSANYONE: 'الجميع'
+    ACCESSANYONE: الجميع
     ACCESSHEADER: 'من يستطيع مشاهدة هذه الصفحة ؟'
     ACCESSLOGGEDIN: 'الأعضاء المسجلين'
     ACCESSONLYTHESE: 'فقط هؤلاء الأشخاص ( اختر من القائمة)'
@@ -304,7 +304,7 @@ ar:
     BUTTONUNPUBLISHDESC: 'حذف هذه الصفحة من الموقع المنشور'
     CREATED: 'Date Created'
     Comments: التعليقات
-    Content: 'المحتوى'
+    Content: المحتوى
     DEFAULTABOUTCONTENT: '<p>يمكنك ملء هذه الصفحة بمحتوى خاص بك أو حذفها و إنشاء صفحات جديدة خاصة بك<br /></p>'
     DEFAULTABOUTTITLE: حول
     DEFAULTCONTACTCONTENT: '<p>يمكنك ملء هذه الصفحة بمحتوى خاص بك أو حذفها و إنشاء صفحات جديدة خاصة بك<br /></p>'
@@ -325,17 +325,17 @@ ar:
     EDIT_ALL_HELP: 'القدرة على تحرير أي صفحة على الموقع ، بغض النظر عن الإعدادات على علامة تبويب الوصول. يتطلب تصريح "الوصول إلى محتوى الموقع" '
     Editors: 'مجموعات المحررين'
     HASBROKENLINKS: 'هذه الصفحة تحتوي على روابط معطوبة'
-    HTMLEDITORTITLE: 'محتوى'
+    HTMLEDITORTITLE: محتوى
     INHERIT: 'استيراد من الصفحة المرجعية'
     LASTUPDATED: 'أخر تحديث'
     LINKCHANGENOTE: 'تغيير هذا وصلة رابط الصفحة سوف تؤثر أيضًا على الوصلات لجميع صفحات الفرعية.'
-    MENUTITLE: 'القائمة'
+    MENUTITLE: القائمة
     METADESC: الوصف
     METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'تخصيص Meta Tags'
     METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
-    MODIFIEDONDRAFTSHORT: 'معدل'
+    MODIFIEDONDRAFTSHORT: معدل
     MetadataToggle: Metadata
     OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
     PAGELOCATION: 'موقع الضفحة'
@@ -359,7 +359,7 @@ ar:
     SHOWINSEARCH: 'عرض في البحث ؟'
     SINGULARNAME: Page
     TABBEHAVIOUR: الشسلوك
-    TABCONTENT: 'المحتوى'
+    TABCONTENT: المحتوى
     TABDEPENDENT: 'الصفحات المعتدة'
     TOPLEVEL: 'محتوى الموقع ( مستوى أعلى )'
     TOPLEVELCREATORGROUPS: 'منشيء المستوى الأعلى'
