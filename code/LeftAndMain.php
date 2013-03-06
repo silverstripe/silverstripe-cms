@@ -673,7 +673,11 @@ JS;
 		$record->HasBrokenLink = 0;
 		$record->HasBrokenFile = 0;
 
-		$record->writeWithoutVersion();
+		if($record->hasExtension('Versioned')) {
+			$record->writeWithoutVersion();
+		} else {
+			$record->write();
+		}
 
 		// HACK: This should be turned into something more general
 		$originalURLSegment = $record->URLSegment;
