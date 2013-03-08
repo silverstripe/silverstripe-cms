@@ -314,6 +314,15 @@ class LeftAndMain extends Controller {
 		SSViewer::set_theme(null);
 	}
 
+	public function handleRequest(SS_HTTPRequest $request) {
+		try {
+			return parent::handleRequest($request);
+		} catch(ValidationException $e) {
+			// Nicer presentation of model-level validation errors
+			return $this->httpError(403, $e->getResult()->message());
+		}
+	}
+
 	
 	/**
 	 * If this is set to true, the "switchView" context in the
