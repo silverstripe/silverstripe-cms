@@ -1277,24 +1277,34 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$newPage = $page->duplicate();
 			
 			// ParentID can be hard-set in the URL.  This is useful for pages with multiple parents
-			if($_GET['parentID'] && is_numeric($_GET['parentID'])) {
+			if(isset($_GET['parentID']) && is_numeric($_GET['parentID'])) {
 				$newPage->ParentID = $_GET['parentID'];
 				$newPage->write();
 			}
 			
-			// Reload form, data and actions might have changed
-			$form = $this->getEditForm($newPage->ID);
+			$this->response->addHeader(
+				'X-Status',
+				rawurlencode(_t(
+					'CMSMain.DUPLICATED',
+					"Duplicated '{title}' successfully", 
+					array('title' => $newPage->Title)
+				))
+			);
+			$url = Controller::join_links(singleton('CMSPageEditController')->Link('show'), $newPage->ID);
+			$this->response->addHeader('X-ControllerURL', $url);
+			$this->request->addHeader('X-Pjax', 'Content');  
+			$this->response->addHeader('X-Pjax', 'Content');  
 			
-			return $form->forTemplate();
+			return $this->getResponseNegotiator()->respond($this->request);
 		} else {
-			user_error("CMSMain::duplicate() Bad ID: '$id'", E_USER_WARNING);
+			return new SS_HTTPResponse("CMSMain::duplicate() Bad ID: '$id'", 400);
 		}
 	}
 
 	public function duplicatewithchildren($request) {
 		// Protect against CSRF on destructive action
 		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
-		
+		increase_time_limit_to();
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
 			$page = DataObject::get_by_id("SiteTree", $id);
 			if($page && (!$page->canEdit() || !$page->canCreate())) return Security::permissionFailure($this);
@@ -1302,12 +1312,22 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 			$newPage = $page->duplicateWithChildren();
 
-			// Reload form, data and actions might have changed
-			$form = $this->getEditForm($newPage->ID);
+			$this->response->addHeader(
+				'X-Status',
+				rawurlencode(_t(
+					'CMSMain.DUPLICATEDWITHCHILDREN',
+					"Duplicated '{title}' and children successfully", 
+					array('title' => $newPage->Title)
+				))
+			);
+			$url = Controller::join_links(singleton('CMSPageEditController')->Link('show'), $newPage->ID);
+			$this->response->addHeader('X-ControllerURL', $url);
+			$this->request->addHeader('X-Pjax', 'Content');  
+			$this->response->addHeader('X-Pjax', 'Content');  
 			
-			return $form->forTemplate();
+			return $this->getResponseNegotiator()->respond($this->request);
 		} else {
-			user_error("CMSMain::duplicate() Bad ID: '$id'", E_USER_WARNING);
+			return new SS_HTTPResponse("CMSMain::duplicatewithchildren() Bad ID: '$id'", 400);
 		}
 	}
 	
