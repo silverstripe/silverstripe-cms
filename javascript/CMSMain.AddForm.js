@@ -70,7 +70,8 @@
 		});
 		
 		$(".cms-add-form #PageType li").entwine({
-			onclick: function() {
+			onclick: function(e) {
+				e.preventDefault();
 				this.setSelected(true);
 			},
 			setSelected: function(bool) {
