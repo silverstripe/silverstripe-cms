@@ -59,6 +59,27 @@
 							};
 						}	
 
+						menuitems['duplicate'] = {
+							'label': ss.i18n._t('Tree.Duplicate'),
+							'submenu': [
+								{
+									'label': ss.i18n._t('Tree.ThisPageOnly'),
+									'action': function(obj) {
+										$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
+											self.data('urlDuplicate'), obj.data('id')
+										));
+									}
+								},{
+									'label': ss.i18n._t('Tree.ThisPageAndSubpages'),
+									'action': function(obj) {
+										$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
+											self.data('urlDuplicatewithchildren'), obj.data('id')
+										));
+									}
+								}
+							]									
+						};
+
 						return menuitems;
 					} 
 				};
