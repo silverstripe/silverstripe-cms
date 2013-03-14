@@ -2206,6 +2206,17 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		return $actions;
 	}
+
+	/**
+	 * Update the form provided by {@link CMSMain->ListViewForm()},
+	 * e.g. to customize the data source of its children,
+	 * or alter the GridField capabilities.
+	 * 
+	 * @param Form $form
+	 */
+	public function updateCmsListViewForm(Form &$form) {
+		// no-op
+	}
 	
 	/**
 	 * Publish this page.

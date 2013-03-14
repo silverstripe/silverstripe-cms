@@ -734,7 +734,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	
 	public function ListViewForm() {
 		$params = $this->request->requestVar('q');
-		$list = $this->getList($params, $parentID = $this->request->requestVar('ParentID'));
+		$parentID = $this->request->requestVar('ParentID');
+		$list = $this->getList($params, $parentID);
+		$parent = $parentID ? $this->getRecord($parentID) : singleton($this->stat('tree_class'));
+		
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(			
 			new GridFieldSortableHeader(),
 			new GridFieldDataColumns(),
@@ -796,6 +799,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$listview->setAttribute('data-pjax-fragment', 'ListViewForm');
 
 		$this->extend('updateListView', $listview);
+
+		if($parent->hasMethod('updateCmsListViewForm')) {
+			$parent->updateCmsListViewForm($listview);
+		}
 		
 		$listview->disableSecurityToken();
 		return $listview;
