@@ -12,12 +12,27 @@
 							'edit': {
 								'label': ss.i18n._t('Tree.EditPage'),
 								'action': function(obj) {
-										$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
+									$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
 										self.data('urlEditpage'), obj.data('id')
 									));
 								}
 							}
 						};
+
+						// Add "show as list"
+						if(!node.hasClass('nochildren')) {
+							menuitems['showaslist'] = {
+								'label': ss.i18n._t('Tree.ShowAsList'),
+								'action': function(obj) {
+									$('.cms-container').entwine('.ss').loadPanel(
+										self.data('urlListview') + '&ParentID=' + obj.data('id'),
+										null,
+										// Default to list view tab
+										{tabState: {'pages-controller-cms-content': {'tabSelector': '.content-listview'}}}
+									);
+								}
+							};
+						}
 						
 						// Build a list for allowed children as submenu entries
 						var pagetype = node.data('pagetype'),
