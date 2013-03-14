@@ -757,6 +757,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			'LastEdited' => _t('SiteTree.LASTUPDATED', 'Last Updated'),
 		);
 		$gridField->getConfig()->getComponentByType('GridFieldSortableHeader')->setFieldSorting(array('getTreeTitle' => 'Title'));
+		$gridField->getState()->ParentID = $parentID;
 
 		if(!$params) {
 			$fields = array_merge(array('listChildrenLink' => ''), $fields);

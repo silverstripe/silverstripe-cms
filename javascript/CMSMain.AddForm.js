@@ -91,9 +91,18 @@
 	
 		$(".cms-page-add-button").entwine({
 			onclick: function(e) {
-				var selected = $('.cms-tree').jstree('get_selected'),
-					parentId = selected ? $(selected[0]).data('id') : null,
-					data = {selector: this.data('targetPanel'),pjax: this.data('pjax')},
+				var tree = $('.cms-tree'), list = $('.cms-list'), parentId = 0;
+
+				// Choose parent ID either from tree or list view, depending which is visible
+				if(tree.is(':visible')) {
+					var selected = tree.jstree('get_selected');
+					parentId = selected ? $(selected[0]).data('id') : null;
+				} else {
+					var state = list.find('input[name="Page[GridState]"]').val();
+					if(state) parentId = parseInt(JSON.parse(state).ParentID, 10);
+				}
+					
+				var data = {selector: this.data('targetPanel'),pjax: this.data('pjax')},
 					url = parentId ? ss.i18n.sprintf(this.data('urlAddpage'), parentId) : this.attr('href');
 
 				$('.cms-container').loadPanel(url, null, data);
