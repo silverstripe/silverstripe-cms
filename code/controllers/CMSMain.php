@@ -1332,27 +1332,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 	}
 	
-	/**
-	 * Return the version number of this application.
-	 * Uses the subversion path information in <mymodule>/silverstripe_version
-	 * (automacially replaced by build scripts).
-	 * 
-	 * @return string
-	 */
-	public function CMSVersion() {
-		$cmsVersion = file_get_contents(CMS_PATH . '/silverstripe_version');
-		if(!$cmsVersion) $cmsVersion = _t('LeftAndMain.VersionUnknown', 'Unknown');
-		
-		$frameworkVersion = file_get_contents(FRAMEWORK_PATH . '/silverstripe_version');
-		if(!$frameworkVersion) $frameworkVersion = _t('LeftAndMain.VersionUnknown', 'Unknown');
-		
-		return sprintf(
-			"CMS: %s Framework: %s",
-			$cmsVersion,
-			$frameworkVersion
-		);
-	}
-
 	public function providePermissions() {
 		$title = _t("CMSPagesController.MENUTITLE", LeftAndMain::menu_title_for_class('CMSPagesController'));
 		return array(
