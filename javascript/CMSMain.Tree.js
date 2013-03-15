@@ -7,12 +7,12 @@
 				config.plugins.push('contextmenu');
 				config.contextmenu = {
 					'items': function(node) {
-
+						
 						var menuitems = {
 							'edit': {
 								'label': ss.i18n._t('Tree.EditPage'),
 								'action': function(obj) {
-									$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
+										$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
 										self.data('urlEditpage'), obj.data('id')
 									));
 								}
@@ -34,7 +34,7 @@
 								disallowedClass = disallowedChildren[i];
 								if(allowedChildren[disallowedClass]) {
 									delete allowedChildren[disallowedClass];
-								}
+							}
 							}
 						}
 
@@ -46,7 +46,7 @@
 								'_class': 'class-' + klass,
 								'action': function(obj) {
 									$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
-										self.data('urlAddpage'), id, klass
+									self.data('urlAddpage'), id, klass
 									));
 								}
 							};
@@ -57,7 +57,28 @@
 								'label': ss.i18n._t('Tree.AddSubPage'),
 								'submenu': menuAllowedChildren
 							};
-						}	
+						}				
+
+						menuitems['duplicate'] = {
+							'label': ss.i18n._t('Tree.Duplicate'),
+							'submenu': [
+								{
+									'label': ss.i18n._t('Tree.ThisPageOnly'),
+									'action': function(obj) {
+										$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
+											self.data('urlDuplicate'), obj.data('id')
+										));
+									}
+								},{
+									'label': ss.i18n._t('Tree.ThisPageAndSubpages'),
+									'action': function(obj) {
+										$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
+											self.data('urlDuplicatewithchildren'), obj.data('id')
+										));
+									}
+								}
+							]									
+						};
 
 						return menuitems;
 					} 

@@ -117,12 +117,10 @@ class RootURLController extends Controller {
 			return $this->response;
 		}
 			
-		$request = new SS_HTTPRequest (
-			$request->httpMethod(), self::get_homepage_link() . '/', $request->getVars(), $request->postVars()
-		);
+		$request->setUrl(self::get_homepage_link() . '/');
 		$request->match('$URLSegment//$Action', true);
-		
 		$controller = new ModelAsController();
+
 		$result     = $controller->handleRequest($request, $model);
 		
 		$this->popCurrent();

@@ -757,6 +757,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			'LastEdited' => _t('SiteTree.LASTUPDATED', 'Last Updated'),
 		);
 		$gridField->getConfig()->getComponentByType('GridFieldSortableHeader')->setFieldSorting(array('getTreeTitle' => 'Title'));
+		$gridField->getState()->ParentID = $parentID;
 
 		if(!$params) {
 			$fields = array_merge(array('listChildrenLink' => ''), $fields);
@@ -1277,24 +1278,34 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$newPage = $page->duplicate();
 			
 			// ParentID can be hard-set in the URL.  This is useful for pages with multiple parents
-			if($_GET['parentID'] && is_numeric($_GET['parentID'])) {
+			if(isset($_GET['parentID']) && is_numeric($_GET['parentID'])) {
 				$newPage->ParentID = $_GET['parentID'];
 				$newPage->write();
 			}
 			
-			// Reload form, data and actions might have changed
-			$form = $this->getEditForm($newPage->ID);
+			$this->response->addHeader(
+				'X-Status',
+				rawurlencode(_t(
+					'CMSMain.DUPLICATED',
+					"Duplicated '{title}' successfully", 
+					array('title' => $newPage->Title)
+				))
+			);
+			$url = Controller::join_links(singleton('CMSPageEditController')->Link('show'), $newPage->ID);
+			$this->response->addHeader('X-ControllerURL', $url);
+			$this->request->addHeader('X-Pjax', 'Content');  
+			$this->response->addHeader('X-Pjax', 'Content');  
 			
-			return $form->forTemplate();
+			return $this->getResponseNegotiator()->respond($this->request);
 		} else {
-			user_error("CMSMain::duplicate() Bad ID: '$id'", E_USER_WARNING);
+			return new SS_HTTPResponse("CMSMain::duplicate() Bad ID: '$id'", 400);
 		}
 	}
 
 	public function duplicatewithchildren($request) {
 		// Protect against CSRF on destructive action
 		if(!SecurityToken::inst()->checkRequest($request)) return $this->httpError(400);
-		
+		increase_time_limit_to();
 		if(($id = $this->urlParams['ID']) && is_numeric($id)) {
 			$page = DataObject::get_by_id("SiteTree", $id);
 			if($page && (!$page->canEdit() || !$page->canCreate())) return Security::permissionFailure($this);
@@ -1302,36 +1313,25 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 			$newPage = $page->duplicateWithChildren();
 
-			// Reload form, data and actions might have changed
-			$form = $this->getEditForm($newPage->ID);
+			$this->response->addHeader(
+				'X-Status',
+				rawurlencode(_t(
+					'CMSMain.DUPLICATEDWITHCHILDREN',
+					"Duplicated '{title}' and children successfully", 
+					array('title' => $newPage->Title)
+				))
+			);
+			$url = Controller::join_links(singleton('CMSPageEditController')->Link('show'), $newPage->ID);
+			$this->response->addHeader('X-ControllerURL', $url);
+			$this->request->addHeader('X-Pjax', 'Content');  
+			$this->response->addHeader('X-Pjax', 'Content');  
 			
-			return $form->forTemplate();
+			return $this->getResponseNegotiator()->respond($this->request);
 		} else {
-			user_error("CMSMain::duplicate() Bad ID: '$id'", E_USER_WARNING);
+			return new SS_HTTPResponse("CMSMain::duplicatewithchildren() Bad ID: '$id'", 400);
 		}
 	}
 	
-	/**
-	 * Return the version number of this application.
-	 * Uses the subversion path information in <mymodule>/silverstripe_version
-	 * (automacially replaced by build scripts).
-	 * 
-	 * @return string
-	 */
-	public function CMSVersion() {
-		$cmsVersion = file_get_contents(CMS_PATH . '/silverstripe_version');
-		if(!$cmsVersion) $cmsVersion = _t('LeftAndMain.VersionUnknown', 'Unknown');
-		
-		$frameworkVersion = file_get_contents(FRAMEWORK_PATH . '/silverstripe_version');
-		if(!$frameworkVersion) $frameworkVersion = _t('LeftAndMain.VersionUnknown', 'Unknown');
-		
-		return sprintf(
-			"CMS: %s Framework: %s",
-			$cmsVersion,
-			$frameworkVersion
-		);
-	}
-
 	public function providePermissions() {
 		$title = _t("CMSPagesController.MENUTITLE", LeftAndMain::menu_title_for_class('CMSPagesController'));
 		return array(
