@@ -28,7 +28,7 @@ class CMSPageHistoryController extends CMSMain {
 		$negotiator = parent::getResponseNegotiator();
 		$controller = $this;
 		$negotiator->setCallback('CurrentForm', function() use(&$controller) {
-			$form = $controller->ShowVersionForm($controller->getRequest()->param('VersionID'));
+			$form = $controller->ShowVersionForm($controller->getRequest()->getParam('VersionID'));
 			if($form) return $form->forTemplate();
 			else return $controller->renderWith($controller->getTemplatesWithSuffix('_Content'));
 		});
@@ -42,7 +42,7 @@ class CMSPageHistoryController extends CMSMain {
 	 * @return array
 	 */
 	public function show($request) {
-		$form = $this->ShowVersionForm($request->param('VersionID'));
+		$form = $this->ShowVersionForm($request->getParam('VersionID'));
 		
 		$negotiator = $this->getResponseNegotiator();
 		$controller = $this;
@@ -61,8 +61,8 @@ class CMSPageHistoryController extends CMSMain {
 	 */
 	public function compare($request) {
 		$form = $this->CompareVersionsForm(
-			$request->param('VersionID'), 
-			$request->param('OtherVersionID')
+			$request->getParam('VersionID'),
+			$request->getParam('OtherVersionID')
 		);
 
 		$negotiator = $this->getResponseNegotiator();
@@ -189,9 +189,9 @@ class CMSPageHistoryController extends CMSMain {
 		$page = $this->getRecord($id);
 		$versionsHtml = '';
 
-		$action = $this->request->param('Action');
-		$versionID = $this->request->param('VersionID');
-		$otherVersionID = $this->request->param('OtherVersionID');
+		$action = $this->request->getParam('Action');
+		$versionID = $this->request->getParam('VersionID');
+		$otherVersionID = $this->request->getParam('OtherVersionID');
 		
 		$showUnpublishedChecked = 0;
 		$compareModeChecked = ($action == "compare");

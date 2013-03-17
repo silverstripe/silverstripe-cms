@@ -232,7 +232,7 @@ class ErrorPage extends Page {
 				"Error opening file \"{filename}\" for writing. Please check file permissions.",
 				array('filename' => $errorFile)
 			);
-			$this->response->addHeader('X-Status', rawurlencode($fileErrorText));
+			$this->response->setHeader('X-Status', rawurlencode($fileErrorText));
 			return $this->httpError(405);
 		}
 	}
@@ -294,7 +294,7 @@ class ErrorPage_Controller extends Page_Controller {
 	public function init() {
 		parent::init();
 
-		$action = $this->request->param('Action');
+		$action = $this->request->getParam('Action');
 		if(!$action || $action == 'index') {
 			$this->getResponse()->setStatusCode($this->failover->ErrorCode ? $this->failover->ErrorCode : 404);
 		}

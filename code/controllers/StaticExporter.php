@@ -106,7 +106,7 @@ class StaticExporter extends Controller {
 		Filesystem::removeFolder($tmpBaseFolder);
 		
 		// return as download to the client
-		$response = SS_HTTPRequest::send_file($archiveContent, "$baseFolderName.tar.gz", 'application/x-tar-gz');
+		$response = HTTP::send_file($archiveContent, "$baseFolderName.tar.gz", 'application/x-tar-gz');
 		echo $response->output();
 	}
 	

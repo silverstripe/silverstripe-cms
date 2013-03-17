@@ -84,7 +84,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function index($request) {
 		// In case we're not showing a specific record, explicitly remove any session state,
 		// to avoid it being highlighted in the tree, and causing an edit form to show.
-		if(!$request->param('Action')) $this->setCurrentPageId(null);
+		if(!$request->getParam('Action')) $this->setCurrentPageId(null);
 
 		return parent::index($request);
 	}
@@ -948,7 +948,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$descRemoved = '';
 		}
 
-		$this->response->addHeader(
+		$this->response->setHeader(
 			'X-Status',
 			rawurlencode(
 				_t(
@@ -999,7 +999,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		$record->doRevertToLive();
 		
-		$this->response->addHeader(
+		$this->response->setHeader(
 			'X-Status',
 			rawurlencode(_t(
 				'CMSMain.RESTORED',
@@ -1029,7 +1029,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$recordID = $record->ID;
 		$record->delete();
 
-		$this->response->addHeader(
+		$this->response->setHeader(
 			'X-Status',
 			rawurlencode(sprintf(_t('CMSMain.REMOVEDPAGEFROMDRAFT',"Removed '%s' from the draft site"), $record->Title))
 		);
@@ -1053,7 +1053,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		$record->doUnpublish();
 		
-		$this->response->addHeader(
+		$this->response->setHeader(
 			'X-Status',
 			rawurlencode(_t('CMSMain.REMOVEDPAGE',"Removed '{title}' from the published site", array('title' => $record->Title)))
 		);
@@ -1067,7 +1067,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function rollback() {
 		return $this->doRollback(array(
 			'ID' => $this->currentPageID(),
-			'Version' => $this->request->param('VersionID')
+			'Version' => $this->request->getParam('VersionID')
 		), null);
 	}
 
@@ -1103,15 +1103,15 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			);
 		}
 
-		$this->response->addHeader('X-Status', rawurlencode($message));
+		$this->response->setHeader('X-Status', rawurlencode($message));
 		
 		// Can be used in different contexts: In normal page edit view, in which case the redirect won't have any effect.
 		// Or in history view, in which case a revert causes the CMS to re-load the edit view.
 		// The X-Pjax header forces a "full" content refresh on redirect.
 		$url = Controller::join_links(singleton('CMSPageEditController')->Link('show'), $record->ID);
-		$this->response->addHeader('X-ControllerURL', $url);
-		$this->request->addHeader('X-Pjax', 'Content');  
-		$this->response->addHeader('X-Pjax', 'Content');  
+		$this->response->setHeader('X-ControllerURL', $url);
+		$this->request->setHeader('X-Pjax', 'Content');
+		$this->response->setHeader('X-Pjax', 'Content');
 
 		return $this->getResponseNegotiator()->respond($this->request);
 	}
@@ -1254,7 +1254,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		$restoredPage = $restoredPage->doRestoreToStage();
 		
-		$this->response->addHeader(
+		$this->response->setHeader(
 			'X-Status',
 			rawurlencode(_t(
 				'CMSMain.RESTORED',
