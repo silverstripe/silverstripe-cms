@@ -131,7 +131,7 @@ class ContentController extends Controller {
 	 */
 	public function handleRequest(SS_HTTPRequest $request, DataModel $model = null) {
 		$child  = null;
-		$action = $request->param('Action');
+		$action = $request->getParam('Action');
 		$this->setDataModel($model);
 		
 		// If nested URLs are enabled, and there is no action handler for the current request then attempt to pass
@@ -158,8 +158,8 @@ class ContentController extends Controller {
 						Controller::join_links(
 							$child->Link(
 								Controller::join_links(
-									$request->param('ID'), // 'ID' is the new 'URLSegment', everything shifts up one position
-									$request->param('OtherID')
+									$request->getParam('ID'), // 'ID' is the new 'URLSegment', everything shifts up one position
+									$request->getParam('OtherID')
 								)
 							),
 							// Needs to be in separate join links to avoid urlencoding

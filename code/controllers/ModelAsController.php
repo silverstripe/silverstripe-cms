@@ -84,7 +84,7 @@ class ModelAsController extends Controller implements NestedController {
 	public function getNestedController() {
 		$request = $this->request;
 		
-		if(!$URLSegment = $request->param('URLSegment')) {
+		if(!$URLSegment = $request->getParam('URLSegment')) {
 			throw new Exception('ModelAsController->getNestedController(): was not passed a URLSegment value.');
 		}
 		
@@ -112,9 +112,9 @@ class ModelAsController extends Controller implements NestedController {
 					Controller::join_links(
 						$redirect->Link(
 							Controller::join_links(
-								$request->param('Action'), 
-								$request->param('ID'), 
-								$request->param('OtherID')
+								$request->getParam('Action'),
+								$request->getParam('ID'),
+								$request->getParam('OtherID')
 							)
 						),
 						// Needs to be in separate join links to avoid urlencoding
@@ -137,7 +137,7 @@ class ModelAsController extends Controller implements NestedController {
 			Debug::message("Using record #$sitetree->ID of type $sitetree->class with link {$sitetree->Link()}");
 		}
 		
-		return self::controller_for($sitetree, $this->request->param('Action'));
+		return self::controller_for($sitetree, $this->request->getParam('Action'));
 	}
 	
 	/**

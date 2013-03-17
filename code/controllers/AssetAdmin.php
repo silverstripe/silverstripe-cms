@@ -96,7 +96,7 @@ JS
 		// Don't filter list when a detail view is requested,
 		// to avoid edge cases where the filtered list wouldn't contain the requested
 		// record due to faulty session state (current folder not always encoded in URL, see #7408).
-		if(!$folder->ID && $this->request->requestVar('ID') === null && ($this->request->param('ID') == 'field')) {
+		if(!$folder->ID && $this->request->requestVar('ID') === null && ($this->request->getParam('ID') == 'field')) {
 			return $list;
 		}
 
@@ -324,8 +324,8 @@ JS
 		$record->delete();
 		$this->setCurrentPageID(null);
 
-		$this->response->addHeader('X-Status', rawurlencode(_t('LeftAndMain.DELETED', 'Deleted.')));
-		$this->response->addHeader('X-Pjax', 'Content');
+		$this->response->setHeader('X-Status', rawurlencode(_t('LeftAndMain.DELETED', 'Deleted.')));
+		$this->response->setHeader('X-Pjax', 'Content');
 		return $this->redirect(Controller::join_links($this->Link('show'), $parentID ? $parentID : 0));
 	}
 
@@ -516,7 +516,7 @@ JS
 	 */
 	public function doSync() {
 		$message = Filesystem::sync();
-		$this->response->addHeader('X-Status', rawurlencode($message));
+		$this->response->setHeader('X-Status', rawurlencode($message));
 		
 		return;
 	}
@@ -550,7 +550,7 @@ JS
 			'{count} unused thumbnails have been deleted', 
 			array('count' => $count)
 		);
-		$this->response->addHeader('X-Status', rawurlencode($message));
+		$this->response->setHeader('X-Status', rawurlencode($message));
 		return;
 	}
 	
@@ -637,7 +637,7 @@ JS
 		}
 
 		// If we're adding a folder, note that in breadcrumbs as well
-		if($this->request->param('Action') == 'addfolder') {
+		if($this->request->getParam('Action') == 'addfolder') {
 			$items->push(new ArrayData(array(
 				'Title' => _t('Folder.AddFolderButton', 'Add folder'),
 				'Link' => false
