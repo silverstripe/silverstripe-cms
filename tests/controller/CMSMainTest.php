@@ -9,23 +9,6 @@ class CMSMainTest extends FunctionalTest {
 	
 	static protected $orig = array();
 	
-	public function setUpOnce() {
-		self::$orig['CMSBatchActionHandler_batch_actions'] = CMSBatchActionHandler::$batch_actions;
-		CMSBatchActionHandler::$batch_actions = array(
-			'publish' => 'CMSBatchAction_Publish',
-			'delete' => 'CMSBatchAction_Delete',
-			'deletefromlive' => 'CMSBatchAction_DeleteFromLive',
-		);
-		
-		parent::setUpOnce();
-	}
-	
-	public function tearDownOnce() {
-		CMSBatchActionHandler::$batch_actions = self::$orig['CMSBatchActionHandler_batch_actions'];
-		
-		parent::tearDownOnce();
-	}
-
 	function testSiteTreeHints() {
 		$cache = SS_Cache::factory('CMSMain_SiteTreeHints');
 		$cache->clean(Zend_Cache::CLEANING_MODE_ALL);
@@ -97,7 +80,8 @@ class CMSMainTest extends FunctionalTest {
 		);
 	
 		// Some modules (e.g., cmsworkflow) will remove this action
-		if(isset(CMSBatchActionHandler::$batch_actions['publish'])) {
+		$actions = CMSBatchActionHandler::config()->batch_actions;
+		if(isset($actions['publish'])) {
 			$response = $this->get('admin/pages/batchactions/publish?ajax=1&csvIDs=' . implode(',', array($page1->ID, $page2->ID)));
 			$responseData = Convert::json2array($response->getBody());
 			$this->assertArrayHasKey($page1->ID, $responseData['modified']);
