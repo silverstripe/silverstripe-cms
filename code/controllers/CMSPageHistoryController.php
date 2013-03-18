@@ -6,21 +6,21 @@
  */
 class CMSPageHistoryController extends CMSMain {
 
-	static $url_segment = 'pages/history';
-	static $url_rule = '/$Action/$ID/$VersionID/$OtherVersionID';
-	static $url_priority = 42;
-	static $menu_title = 'History';
-	static $required_permission_codes = 'CMS_ACCESS_CMSMain';
-	static $session_namespace = 'CMSMain';
+	private static $url_segment = 'pages/history';
+	private static $url_rule = '/$Action/$ID/$VersionID/$OtherVersionID';
+	private static $url_priority = 42;
+	private static $menu_title = 'History';
+	private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
+	private static $session_namespace = 'CMSMain';
 	
-	static $allowed_actions = array(
+	private static $allowed_actions = array(
 		'VersionsForm',
 		'CompareVersionsForm',
 		'show',
 		'compare'
 	);
 	
-	public static $url_handlers = array(
+	private static $url_handlers = array(
 		'$Action/$ID/$VersionID/$OtherVersionID' => 'handleAction'
 	);
 

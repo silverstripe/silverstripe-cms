@@ -14,7 +14,7 @@
  */
 class SiteTreeActionsTest extends FunctionalTest {
 
-	static $fixture_file = 'SiteTreeActionsTest.yml';
+	protected static $fixture_file = 'SiteTreeActionsTest.yml';
 	
 	public function testActionsReadonly() {
 		if(class_exists('SiteTreeCMSWorkflow')) return true;

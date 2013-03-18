@@ -17,7 +17,7 @@ class SiteTreeURLSegmentField extends TextField {
 	 */
 	protected $helpText, $urlPrefix, $urlSuffix;
 	
-	static $allowed_actions = array(
+	private static $allowed_actions = array(
 		'suggest'
 	);
 

@@ -219,7 +219,8 @@ class SilverStripeNavigatorItem extends ViewableData {
  * @subpackage content
  */
 class SilverStripeNavigatorItem_CMSLink extends SilverStripeNavigatorItem {
-	static $priority = 10;	
+	/** @config */
+	private static $priority = 10;	
 	
 	public function getHTML() {
 		return sprintf(
@@ -257,7 +258,8 @@ class SilverStripeNavigatorItem_CMSLink extends SilverStripeNavigatorItem {
  * @subpackage content
  */
 class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
-	static $priority = 20;
+	/** @config */
+	private static $priority = 20;
 
 	public function getHTML() {
 		$draftPage = $this->getDraftPage();
@@ -316,7 +318,8 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
  * @subpackage content
  */
 class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem {
-	static $priority = 30;
+	/** @config */
+	private static $priority = 30;
 
 	public function getHTML() {
 		$livePage = $this->getLivePage();
@@ -369,7 +372,8 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem {
  * @subpackage content
  */
 class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
-	static $priority = 40;
+	/** @config */
+	private static $priority = 40;
 
 	public function getHTML() {
 			$this->recordLink = $this->record->AbsoluteLink();

@@ -5,9 +5,9 @@
  */
 class MigrateSiteTreeLinkingTaskTest extends SapphireTest {
 	
-	public static $fixture_file = 'MigrateSiteTreeLinkingTaskTest.yml';
+	protected static $fixture_file = 'MigrateSiteTreeLinkingTaskTest.yml';
 	
-	public static $use_draft_site = true;
+	protected static $use_draft_site = true;
 	
 	public function testLinkingMigration() {
 		ob_start();

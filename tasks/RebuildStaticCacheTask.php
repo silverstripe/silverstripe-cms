@@ -7,7 +7,7 @@
  */ 
 class RebuildStaticCacheTask extends Controller {
 
-	static $allowed_actions = array(
+	private static $allowed_actions = array(
 		'index', 
 	);
 
@@ -21,7 +21,7 @@ class RebuildStaticCacheTask extends Controller {
 	}
 
 	public function index() {
-		StaticPublisher::set_echo_progress(true);
+		Config::inst()->update('StaticPublisher', 'echo_progress', true);
 
 		$page = singleton('Page');
 		if(!$page->hasMethod('allPagesToCache')) {
@@ -92,7 +92,7 @@ class RebuildStaticCacheTask extends Controller {
 		if($removeAll && !isset($_GET['urls']) && $start == 0 && file_exists("../cache")) {
 			echo "Removing stale cache files... \n";
 			flush();
-			if (FilesystemPublisher::$domain_based_caching) {
+			if (Config::inst()->get('FilesystemPublisher', 'domain_based_caching')) {
 				// Glob each dir, then glob each one of those
 				foreach(glob(BASE_PATH . '/cache/*', GLOB_ONLYDIR) as $cacheDir) {
 					foreach(glob($cacheDir.'/*') as $cacheFile) {

@@ -28,7 +28,7 @@ class SiteConfigTest extends SapphireTest {
 		$this->assertContains('blackcandy', $themes, 'Test themes contain blackcandy theme');
 		$this->assertContains('darkshades', $themes, 'Test themes contain darkshades theme');
 		
-		SiteConfig::disable_theme('darkshades');
+		SiteConfig::config()->disabled_themes = array('darkshades');
 		$themes = $config->getAvailableThemes($testThemeBaseDir);
 		$this->assertFalse(in_array('darkshades', $themes), 'Darkshades was disabled - it is no longer available');
 		

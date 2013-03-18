@@ -7,7 +7,7 @@ class ModelAsControllerTest extends FunctionalTest {
 	
 	protected $usesDatabase = true;
 	
-	static $fixture_file = 'ModelAsControllerTest.yml';
+	protected static $fixture_file = 'ModelAsControllerTest.yml';
 	
 	protected $autoFollowRedirection = false;
 
@@ -22,8 +22,8 @@ class ModelAsControllerTest extends FunctionalTest {
 	public function setUp() {
 		parent::setUp();
 
-		$this->orig['nested_urls'] = SiteTree::nested_urls();
-		SiteTree::enable_nested_urls();
+		$this->orig['nested_urls'] = SiteTree::config()->nested_urls;
+		Config::inst()->update('SiteTree', 'nested_urls', true);
 	}
 
 	/**
@@ -35,7 +35,7 @@ class ModelAsControllerTest extends FunctionalTest {
 	public function tearDown() {
 		
 		if (isset($this->orig['nested_urls']) && !$this->orig['nested_urls']) {
-			SiteTree::disable_nested_urls();
+			SiteTree::config()->nested_urls = false;
 		}
 		parent::tearDown();		
 	}
@@ -241,7 +241,7 @@ class ModelAsControllerTest extends FunctionalTest {
 	 */
 	public function testChildOfDraft() {
 		RootURLController::reset();
-		SiteTree::enable_nested_urls();
+		Config::inst()->update('SiteTree', 'nested_urls', true);
 
 		$draft = new Page();
 		$draft->Title = 'Root Leve Draft Page';

@@ -11,23 +11,23 @@
  */
 class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionProvider {
 	
-	static $url_segment = 'pages';
+	private static $url_segment = 'pages';
 	
-	static $url_rule = '/$Action/$ID/$OtherID';
+	private static $url_rule = '/$Action/$ID/$OtherID';
 	
 	// Maintain a lower priority than other administration sections
 	// so that Director does not think they are actions of CMSMain
-	static $url_priority = 39;
+	private static $url_priority = 39;
 	
-	static $menu_title = 'Edit Page';
+	private static $menu_title = 'Edit Page';
 	
-	static $menu_priority = 10;
+	private static $menu_priority = 10;
 	
-	static $tree_class = "SiteTree";
+	private static $tree_class = "SiteTree";
 	
-	static $subitem_class = "Member";
+	private static $subitem_class = "Member";
 	
-	static $allowed_actions = array(
+	private static $allowed_actions = array(
 		'buildbrokenlinks',
 		'deleteitems',
 		'DeleteItemsForm',
@@ -1125,7 +1125,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 	
 	public function BatchActionParameters() {
-		$batchActions = CMSBatchActionHandler::$batch_actions;
+		$batchActions = CMSBatchActionHandler::config()->batch_actions;
 
 		$forms = array();
 		foreach($batchActions as $urlSegment => $batchAction) {

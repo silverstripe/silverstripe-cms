@@ -7,15 +7,15 @@
 */
 class VirtualPage extends Page {
 
-	static $description = 'Displays the content of another page';
+	private static $description = 'Displays the content of another page';
 	
 	public static $virtualFields;
 	
 	/**
 	 * @var Array Define fields that are not virtual - the virtual page must define these fields themselves.
-	 * Note that anything in {@link self::$initially_copied_fields} is implicitly included in this list.
+	 * Note that anything in {@link self::config()->initially_copied_fields} is implicitly included in this list.
 	 */
-	public static $non_virtual_fields = array(
+	private static $non_virtual_fields = array(
 		"SecurityTypeID",
 		"OwnerID",
 		"URLSegment",
@@ -32,17 +32,17 @@ class VirtualPage extends Page {
 	/**
 	 * @var Array Define fields that are initially copied to virtual pages but left modifiable after that.
 	 */
-	public static $initially_copied_fields = array(
+	private static $initially_copied_fields = array(
 		'ShowInMenus',
 		'ShowInSearch',
 		'URLSegment',
 	);
 	
-	static $has_one = array(
+	private static $has_one = array(
 		"CopyContentFrom" => "SiteTree",	
 	);
 	
-	static $db = array(
+	private static $db = array(
 		"VersionID" => "Int",
 	);
 	
@@ -50,7 +50,7 @@ class VirtualPage extends Page {
 	 * Generates the array of fields required for the page type.
 	 */
 	public function getVirtualFields() {
-		$nonVirtualFields = array_merge(self::$non_virtual_fields, self::$initially_copied_fields);
+		$nonVirtualFields = array_merge(self::config()->non_virtual_fields, self::config()->initially_copied_fields);
 		$record = $this->CopyContentFrom();
 
 		$allFields = $record->db();
@@ -323,7 +323,7 @@ class VirtualPage extends Page {
 			// We also want to copy certain, but only if we're copying the source page for the first
 			// time. After this point, the user is free to customise these for the virtual page themselves.
 			if($this->isChanged('CopyContentFromID', 2) && $this->CopyContentFromID != 0) {
-				foreach(self::$initially_copied_fields as $fieldName) {
+				foreach(self::config()->initially_copied_fields as $fieldName) {
 					$this->$fieldName = $source->$fieldName;
 				}
 			}
@@ -405,7 +405,7 @@ class VirtualPage extends Page {
  */
 class VirtualPage_Controller extends Page_Controller {
 	
-	static $allowed_actions = array(
+	private static $allowed_actions = array(
 		'loadcontentall' => 'ADMIN',
 	);
 	

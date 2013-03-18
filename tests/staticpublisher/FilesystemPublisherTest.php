@@ -11,23 +11,20 @@ class FilesystemPublisherTest extends SapphireTest {
 	
 	protected $orig = array();
 
-	static $fixture_file = 'cms/tests/staticpublisher/FilesystemPublisherTest.yml';
+	protected static $fixture_file = 'cms/tests/staticpublisher/FilesystemPublisherTest.yml';
 	
 	public function setUp() {
 		parent::setUp();
 		
 		SiteTree::add_extension("FilesystemPublisher('assets/FilesystemPublisherTest-static-folder/')");
 		
-		$this->orig['domain_based_caching'] = FilesystemPublisher::$domain_based_caching;
-		FilesystemPublisher::$domain_based_caching = false;
+		Config::inst()->update('FilesystemPublisher', 'domain_based_caching', false);
 	}
 	
 	public function tearDown() {
 		parent::tearDown();
 
 		SiteTree::remove_extension("FilesystemPublisher('assets/FilesystemPublisherTest-static-folder/')");
-
-		FilesystemPublisher::$domain_based_caching = $this->orig['domain_based_caching'];
 
 		if(file_exists(BASE_PATH . '/assets/FilesystemPublisherTest-static-folder')) {
 			Filesystem::removeFolder(BASE_PATH . '/assets/FilesystemPublisherTest-static-folder');
@@ -82,8 +79,7 @@ class FilesystemPublisherTest extends SapphireTest {
 	}
 
 	public function testUrlsToPathsWithDomainBasedCaching() {
-		$origDomainBasedCaching = FilesystemPublisher::$domain_based_caching;
-		FilesystemPublisher::$domain_based_caching = true;
+		Config::inst()->update('FilesystemPublisher', 'domain_based_caching', true);
 		
 		$fsp = new FilesystemPublisher('.', 'html');
 		
@@ -107,8 +103,6 @@ class FilesystemPublisherTest extends SapphireTest {
 			array($url => 'domain2.com/parent/child.html'),
 			'Nested URLsegment path mapping'
 		);
-		
-		FilesystemPublisher::$domain_based_caching = $origDomainBasedCaching;
 	}
 	
 	/**
@@ -134,7 +128,7 @@ class FilesystemPublisherTest extends SapphireTest {
 	public function testStaticPublisherTheme(){
 		
 		//This will be the name of the default theme of this particular project
-		$default_theme=SSViewer::current_theme();
+		$default_theme= Config::inst()->get('SSViewer', 'theme');
 		
 		$p1 = new Page();
 		$p1->URLSegment = strtolower(__CLASS__).'-page-1';
@@ -142,21 +136,13 @@ class FilesystemPublisherTest extends SapphireTest {
 		$p1->write();
 		$p1->doPublish();
 		
-		$current_theme=SSViewer::current_custom_theme();
+		$current_theme=Config::inst()->get('SSViewer', 'custom_theme');
 		$this->assertEquals($current_theme, $default_theme, 'After a standard publication, the theme is correct');
 		
 		//The CMS sometimes sets the theme to null.  Check that the $current_custom_theme is still the default
-		SSViewer::set_theme(null);
-		$current_theme=SSViewer::current_custom_theme();
+		Config::inst()->update('SSViewer', 'theme', null);
+		$current_theme=Config::inst()->get('SSViewer', 'custom_theme');
 		$this->assertEquals($current_theme, $default_theme, 'After a setting the theme to null, the default theme is correct');
-		
-		//We can set the static_publishing theme to something completely different:
-		//Static publishing will use this one instead of the current_custom_theme if it is not false
-		StaticPublisher::set_static_publisher_theme('otherTheme');
-		$current_theme=StaticPublisher::static_publisher_theme();
-		$this->assertNotEquals($current_theme, $default_theme, 'The static publisher theme overrides the custom theme');
-		
-		
 	}
 
 	function testPublishPages() {

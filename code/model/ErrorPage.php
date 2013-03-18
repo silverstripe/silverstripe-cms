@@ -13,20 +13,21 @@
  */
 class ErrorPage extends Page {
 
-	static $db = array(
+	private static $db = array(
 		"ErrorCode" => "Int",
 	);
 
-	static $defaults = array(
+	private static $defaults = array(
 		"ShowInMenus" => 0,
 		"ShowInSearch" => 0
 	);
 
-	static $allowed_children = array();
-
-	static $description = 'Custom content for different error cases (e.g. "Page not found")';
+	private static $allowed_children = array();
 	
-	protected static $static_filepath = ASSETS_PATH;
+	private static $description = 'Custom content for different error cases (e.g. "Page not found")';
+	
+	/** @config */
+	private static $static_filepath = ASSETS_PATH;
 	
 	public function canAddChildren($member = null) { return false; }
 	
@@ -204,10 +205,10 @@ class ErrorPage extends Page {
 		parent::doPublish();
 
 		// Run the page (reset the theme, it might've been disabled by LeftAndMain::init())
-		$oldTheme = SSViewer::current_theme();
-		SSViewer::set_theme(SSViewer::current_custom_theme());
+		$oldTheme = Config::inst()->get('SSViewer', 'theme');
+		Config::inst()->update('SSViewer', 'theme', Config::inst()->get('SSViewer', 'custom_theme'));
 		$response = Director::test(Director::makeRelative($this->Link()));
-		SSViewer::set_theme($oldTheme);
+		Config::inst()->update('SSViewer', 'theme', $oldTheme);
 
 		$errorContent = $response->getBody();
 		
@@ -262,27 +263,31 @@ class ErrorPage extends Page {
 			return singleton('ErrorPage')-> alternateFilepathForErrorcode($statusCode, $locale);
 		}
 		if(class_exists('Translatable') && singleton('SiteTree')->hasExtension('Translatable') && $locale && $locale != Translatable::default_locale()) {
-			return self::$static_filepath . "/error-{$statusCode}-{$locale}.html";
+			return self::config()->static_filepath . "/error-{$statusCode}-{$locale}.html";
 		} else {
-			return self::$static_filepath . "/error-{$statusCode}.html";
+			return self::config()->static_filepath . "/error-{$statusCode}.html";
 		}
 	}
 	
 	/**
 	 * Set the path where static error files are saved through {@link publish()}.
 	 * Defaults to /assets.
-	 * 
+	 *
+	 * @deprecated 3.2 Use "ErrorPage.static_file_path" instead
 	 * @param string $path
 	 */
 	static public function set_static_filepath($path) {
-		self::$static_filepath = $path;
+		Deprecation::notice('3.2', 'Use "ErrorPage.static_file_path" instead');
+		self::config()->static_filepath = $path;
 	}
 	
 	/**
+	 * @deprecated 3.2 Use "ErrorPage.static_file_path" instead
 	 * @return string
 	 */
 	static public function get_static_filepath() {
-		return self::$static_filepath;
+		Deprecation::notice('3.2', 'Use "ErrorPage.static_file_path" instead');
+		return self::config()->static_filepath;
 	}
 }
 

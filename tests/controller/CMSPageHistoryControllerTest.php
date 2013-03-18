@@ -7,7 +7,7 @@
 
 class CMSPageHistoryControllerTest extends FunctionalTest {
 	
-	static $fixture_file = 'CMSPageHistoryControllerTest.yml';
+	protected static $fixture_file = 'CMSPageHistoryControllerTest.yml';
 	
 	private $versionUnpublishedCheck, $versionPublishCheck, $versionUnpublishedCheck2;
 	private $page;

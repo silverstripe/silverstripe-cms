@@ -5,12 +5,12 @@
  */
 class CMSPagesController extends CMSMain {
 	
-	static $url_segment = 'pages';
-	static $url_rule = '/$Action/$ID/$OtherID';
-	static $url_priority = 40;
-	static $menu_title = 'Pages';	
-	static $required_permission_codes = 'CMS_ACCESS_CMSMain';
-	static $session_namespace = 'CMSMain';
+	private static $url_segment = 'pages';
+	private static $url_rule = '/$Action/$ID/$OtherID';
+	private static $url_priority = 40;
+	private static $menu_title = 'Pages';	
+	private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
+	private static $session_namespace = 'CMSMain';
 
 	public function LinkPreview() {
 		return false;

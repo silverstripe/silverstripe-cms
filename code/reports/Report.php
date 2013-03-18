@@ -63,8 +63,9 @@ class SS_Report extends ViewableData {
 	/**
 	 * Reports which should not be collected and returned in get_reports
 	 * @var array
+	 * @config
 	 */
-	public static $excluded_reports = array(
+	private static $excluded_reports = array(
 		'SS_Report',
 		'SS_ReportWrapper',
 		'SideReportWrapper'
@@ -143,11 +144,11 @@ class SS_Report extends ViewableData {
 	 */
 	static public function add_excluded_reports($reportClass) {
 		if (is_array($reportClass)) {
-			self::$excluded_reports = array_merge(self::$excluded_reports, $reportClass);
+			self::config()->excluded_reports = array_merge(self::config()->excluded_reports, $reportClass);
 		} else {
 			if (is_string($reportClass)) {
 				//add to the excluded reports, so this report doesn't get used
-				self::$excluded_reports[] = $reportClass;
+				self::config()->excluded_reports = array($reportClass);
 			}
 		}
 	}
@@ -155,10 +156,13 @@ class SS_Report extends ViewableData {
 	/**
 	 * Return an array of excluded reports. That is, reports that will not be included in
 	 * the list of reports in report admin in the CMS.
+	 *
+	 * @deprecated 3.2 Use the "Report.excluded_reports" config setting instead
 	 * @return array
 	 */
 	static public function get_excluded_reports() {
-		return self::$excluded_reports;
+		Deprecation::notice('3.2', 'Use the "Report.excluded_reports" config setting instead');
+		return self::config()->excluded_reports;
 	}
 
 	/**
@@ -172,7 +176,7 @@ class SS_Report extends ViewableData {
 		if ($reports && count($reports) > 0) {
 			//collect reports into array with an attribute for 'sort'
 			foreach($reports as $report) {
-				if (in_array($report, self::$excluded_reports)) continue;   //don't use the SS_Report superclass
+				if (in_array($report, self::config()->excluded_reports)) continue;   //don't use the SS_Report superclass
 				$reflectionClass = new ReflectionClass($report);
 				if ($reflectionClass->isAbstract()) continue;   //don't use abstract classes
 

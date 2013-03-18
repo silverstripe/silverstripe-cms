@@ -5,7 +5,7 @@
  */
 class SiteTreeFileExtension extends DataExtension {
 
-	public static $belongs_many_many = array(
+	private static $belongs_many_many = array(
 		'BackLinkTracking' => 'SiteTree'
 	);
 

@@ -6,9 +6,9 @@
 
 class SideReportTest extends SapphireTest {
 
-	static $fixture_file = 'SideReportTest.yml';
+	protected static $fixture_file = 'SideReportTest.yml';
 
-	static $daysAgo = 14;
+	private static $daysAgo = 14;
 	
 	public function setUp() {
 		parent::setUp();

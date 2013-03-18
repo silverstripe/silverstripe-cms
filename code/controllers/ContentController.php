@@ -22,7 +22,7 @@ class ContentController extends Controller {
 
 	protected $dataRecord;
 
-	public static $allowed_actions = array(
+	private static $allowed_actions = array(
 		'successfullyinstalled',
 		'deleteinstallfiles' // secured through custom code
 	);
@@ -119,7 +119,7 @@ class ContentController extends Controller {
 		
 		// Use theme from the site config
 		if(($config = SiteConfig::current_site_config()) && $config->Theme) {
-			SSViewer::set_theme($config->Theme);
+			Config::inst()->update('SSViewer', 'theme', $config->Theme);
 		}
 	}
 	
@@ -137,7 +137,7 @@ class ContentController extends Controller {
 		// If nested URLs are enabled, and there is no action handler for the current request then attempt to pass
 		// control to a child controller. This allows for the creation of chains of controllers which correspond to a
 		// nested URL.
-		if($action && SiteTree::nested_urls() && !$this->hasAction($action)) {
+		if($action && SiteTree::config()->nested_urls && !$this->hasAction($action)) {
 			// See ModelAdController->getNestedController() for similar logic
 			if(class_exists('Translatable')) Translatable::disable_locale_filter();
 			// look for a page with this URLSegment

@@ -28,24 +28,29 @@ class FilesystemPublisher extends StaticPublisher {
 	protected $fileExtension = 'html';
 	
 	/**
+	 * @config
 	 * @var String
 	 */
-	protected static $static_base_url = null;
+	private static $static_base_url = null;
 	
 	/**
+	 * @config
 	 * @var Boolean Use domain based cacheing (put cache files into a domain subfolder)
 	 * This must be true if you are using this with the "subsites" module.
 	 * Please note that this form of caching requires all URLs to be provided absolute
 	 * (not relative to the webroot) via {@link SiteTree->AbsoluteLink()}.
 	 */
-	public static $domain_based_caching = false;
+	private static $domain_based_caching = false;
 	
 	/**
 	 * Set a different base URL for the static copy of the site.
 	 * This can be useful if you are running the CMS on a different domain from the website.
+	 *
+	 * @deprecated 3.2 Use the "FilesystemPublisher.static_base_url" config setting instead
 	 */
 	static public function set_static_base_url($url) {
-		self::$static_base_url = $url;
+		Deprecation::notice('3.2', 'Use the "FilesystemPublisher.static_base_url" config setting instead');
+		Config::inst()->update('FilesystemPublisher', 'static_base_url', $url);
 	}
 	
 	/**
@@ -112,7 +117,7 @@ class FilesystemPublisher extends StaticPublisher {
 
 			$filename = $urlSegment ? "$urlSegment.$this->fileExtension" : "index.$this->fileExtension";
 
-			if (self::$domain_based_caching) {
+			if (Config::inst()->get('FilesystemPublisher', 'domain_based_caching')) {
 				if (!$urlParts) continue; // seriously malformed url here...
 				$filename = $urlParts['host'] . '/' . $filename;
 			}
@@ -167,15 +172,21 @@ class FilesystemPublisher extends StaticPublisher {
 		// Set the appropriate theme for this publication batch.
 		// This may have been set explicitly via StaticPublisher::static_publisher_theme,
 		// or we can use the last non-null theme.
-		if(!StaticPublisher::static_publisher_theme())
-			SSViewer::set_theme(SSViewer::current_custom_theme());
+		$customTheme = Config::inst()->get('StaticPublisher', 'static_publisher_theme');
+		if(!$customTheme)
+			Config::inst()->update('SSViewer', 'theme', Config::inst()->get('SSViewer', 'custom_theme'));
 		else
-			SSViewer::set_theme(StaticPublisher::static_publisher_theme());
+			Config::inst()->update('SSViewer', 'theme', $customTheme);
 			
 		$currentBaseURL = Director::baseURL();
-		if(self::$static_base_url) Director::setBaseURL(self::$static_base_url);
-		if($this->fileExtension == 'php') SSViewer::setOption('rewriteHashlinks', 'php'); 
-		if(StaticPublisher::echo_progress()) echo $this->class.": Publishing to " . self::$static_base_url . "\n";		
+		$staticBaseUrl = Config::inst()->get('FilesystemPublisher', 'static_base_url');
+		if($staticBaseUrl) Config::inst()->update('Director', 'alternate_base_url', $staticBaseUrl);
+		if($this->fileExtension == 'php') {
+			Config::inst()->update('SSViewer', 'rewrite_hash_links', 'php'); 
+		}
+		if(Config::inst()->get('StaticPublisher', 'echo_progress')) {
+			echo $this->class.": Publishing to " . $staticBaseUrl . "\n";		
+		}
 		$files = array();
 		$i = 0;
 		$totalURLs = sizeof($urls);
@@ -183,7 +194,7 @@ class FilesystemPublisher extends StaticPublisher {
 			$origUrl = $url;
 			$result[$origUrl] = array('statuscode' => null, 'redirect' => null, 'path' => null);
 			
-			if(self::$static_base_url) Director::setBaseURL(self::$static_base_url);
+			if($staticBaseUrl) Config::inst()->update('Director', 'alternate_base_url', $staticBaseUrl);
 			$i++;
 
 			if($url && !is_string($url)) {
@@ -191,7 +202,7 @@ class FilesystemPublisher extends StaticPublisher {
 				continue;
 			}
 			
-			if(StaticPublisher::echo_progress()) {
+			if(Config::inst()->get('StaticPublisher', 'echo_progress')) {
 				echo " * Publishing page $i/$totalURLs: $url\n";
 				flush();
 			}
@@ -241,7 +252,7 @@ class FilesystemPublisher extends StaticPublisher {
 				}
 			}
 			
-			if(StaticPublisher::$include_caching_metadata) {
+			if(Config::inst()->get('StaticPublisher', 'include_caching_metadata')) {
 				$content = str_replace(
 					'</html>', 
 					sprintf("</html>\n\n<!-- %s -->", implode(" ", $this->getMetadata($url))),
@@ -282,8 +293,10 @@ class FilesystemPublisher extends StaticPublisher {
 			}*/
 		}
 
-		if(self::$static_base_url) Director::setBaseURL($currentBaseURL); 
-		if($this->fileExtension == 'php') SSViewer::setOption('rewriteHashlinks', true); 
+		if(Config::inst()->get('FilesystemPublisher', 'static_base_url')) Config::inst()->update('Director', 'alternate_base_url', $currentBaseURL); 
+		if($this->fileExtension == 'php') {
+			Config::inst()->update('SSViewer', 'rewrite_hash_links', true); 
+		}
 
 		$base = BASE_PATH . "/$this->destFolder";
 		foreach($files as $origUrl => $file) {

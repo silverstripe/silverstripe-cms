@@ -13,17 +13,15 @@
  */
 class ReportAdmin extends LeftAndMain implements PermissionProvider {
 	
-	static $url_segment = 'reports';
+	private static $url_segment = 'reports';
 	
-	static $url_rule = '/$ReportClass/$Action';
+	private static $url_rule = '/$ReportClass/$Action';
 	
-	static $menu_title = 'Reports';	
+	private static $menu_title = 'Reports';	
 	
-	static $template_path = null; // defaults to (project)/templates/email
-	
-	static $tree_class = 'SS_Report';
+	private static $tree_class = 'SS_Report';
 
-	public static $url_handlers = array(
+	private static $url_handlers = array(
 		'$ReportClass/$Action' => 'handleAction'
 	);
 
