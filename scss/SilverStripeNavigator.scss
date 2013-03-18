@@ -1,4 +1,3 @@
-
 #SilverStripeNavigator {
 	position: fixed;
 	bottom: 0;
@@ -51,7 +50,8 @@
 
 #SilverStripeNavigatorMessage {
 	font-family: 'Lucida Grande', Verdana, Arial, 'sans-serif';
-	position: absolute;
+	position: fixed;
+	z-index: 1000;
 	right: 20px;
 	top: 40px;
 	padding: 10px;
