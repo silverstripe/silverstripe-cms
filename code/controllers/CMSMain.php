@@ -422,7 +422,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				// then add the ones which are globally disallowed.
 				$disallowed = array_diff($classes, (array)$allowed);
 				$disallowed = array_unique(array_merge($disallowed, $globalDisallowed));
-				if($disallowed) $def[$class]['disallowedChildren'] = $disallowed;
+				// Re-index the array for JSON non sequential key issue
+				if($disallowed) $def[$class]['disallowedChildren'] = array_values($disallowed);
 
 				$defaultChild = $obj->defaultChild();
 				if($defaultChild != 'Page' && $defaultChild != null) {
