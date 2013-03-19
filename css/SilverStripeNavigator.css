@@ -16,7 +16,7 @@
 
 #SilverStripeNavigator .bottomTabs a.current { font-weight: bold; text-decoration: none; }
 
-#SilverStripeNavigatorMessage { font-family: 'Lucida Grande', Verdana, Arial, 'sans-serif'; position: absolute; right: 20px; top: 40px; padding: 10px; border-color: #c99; color: #fff; background-color: #c00; border: 1px solid #000; }
+#SilverStripeNavigatorMessage { font-family: 'Lucida Grande', Verdana, Arial, 'sans-serif'; position: fixed; z-index: 1000; right: 20px; top: 40px; padding: 10px; border-color: #c99; color: #fff; background-color: #c00; border: 1px solid #000; }
 
 #SilverStripeNavigatorLinkPopup { display: none; position: absolute; top: -60px; height: 50px; width: 350px; left: 200px; background-color: white; border: 1px solid black; z-index: 100; color: black; padding: 5px; }
 
