@@ -188,7 +188,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 	}
 
-	protected function LinkWithSearch($link) {
+	public function LinkWithSearch($link) {
 		// Whitelist to avoid side effects
 		$params = array(
 			'q' => (array)$this->request->getVar('q'),
