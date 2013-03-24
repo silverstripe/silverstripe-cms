@@ -5,7 +5,7 @@
  */
 class ErrorPageTest extends FunctionalTest {
 	
-	static $fixture_file = 'ErrorPageTest.yml';
+	protected static $fixture_file = 'ErrorPageTest.yml';
 	
 	protected $orig = array();
 	
@@ -14,20 +14,18 @@ class ErrorPageTest extends FunctionalTest {
 	public function setUp() {
 		parent::setUp();
 		
-		$this->orig['ErrorPage_staticfilepath'] = ErrorPage::get_static_filepath();		
+		$this->orig['ErrorPage_staticfilepath'] = ErrorPage::config()->static_filepath;		
 		$this->tmpAssetsPath = sprintf('%s/_tmp_assets_%s', TEMP_FOLDER, rand());
 		Filesystem::makeFolder($this->tmpAssetsPath . '/ErrorPageTest');
-		ErrorPage::set_static_filepath($this->tmpAssetsPath . '/ErrorPageTest');
+		ErrorPage::config()->static_filepath = $this->tmpAssetsPath . '/ErrorPageTest';
 		
-		$this->orig['Director_environmenttype'] = Director::get_environment_type();
-		Director::set_environment_type('live');
+		Config::inst()->update('Director', 'environment_type', 'live');
 	}
 	
 	public function tearDown() {
 		parent::tearDown();
 		
-		ErrorPage::set_static_filepath($this->orig['ErrorPage_staticfilepath']);
-		Director::set_environment_type($this->orig['Director_environmenttype']);
+		ErrorPage::config()->static_filepath = $this->orig['ErrorPage_staticfilepath'];
 		
 		Filesystem::removeFolder($this->tmpAssetsPath . '/ErrorPageTest');
 		Filesystem::removeFolder($this->tmpAssetsPath);

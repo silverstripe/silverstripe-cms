@@ -1,8 +1,8 @@
 <?php
 
 class RedirectorPageTest extends FunctionalTest {
-	static $fixture_file = 'RedirectorPageTest.yml';
-	static $use_draft_site = true;
+	protected static $fixture_file = 'RedirectorPageTest.yml';
+	protected static $use_draft_site = true;
 	
 	public function testGoodRedirectors() {
 		/* For good redirectors, the final destination URL will be returned */

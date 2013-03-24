@@ -6,23 +6,22 @@
  * @subpackage content
  */
 class RedirectorPage extends Page {
-
-	static $description = 'Redirects to a different internal page';
+	private static $description = 'Redirects to a different internal page';
 	
-	static $db = array(
+	private static $db = array(
 		"RedirectionType" => "Enum('Internal,External','Internal')",
 		"ExternalURL" => "Varchar(2083)" // 2083 is the maximum length of a URL in Internet Explorer.
 	);
 	
-	static $defaults = array(
+	private static $defaults = array(
 		"RedirectionType" => "Internal"
 	);
 	
-	static $has_one = array(
+	private static $has_one = array(
 		"LinkTo" => "SiteTree",
 	);
 	
-	static $many_many = array(
+	private static $many_many = array(
 	);
 	
 	/**

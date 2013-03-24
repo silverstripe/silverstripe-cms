@@ -5,52 +5,71 @@
  */
 abstract class StaticPublisher extends DataExtension {
 	/**
-	 * Defines whether to output information about publishing or not. By 
+	 * @config
+	 * @var boolean Defines whether to output information about publishing or not. By 
 	 * default, this is off, and should be turned on when you want debugging 
 	 * (for example, in a cron task)
 	 */
-	static $echo_progress = false;
+	private static $echo_progress = false;
 	
 	/**
-	 * Realtime static publishing... the second a page
-    * is saved, it is written to the cache 
+	 * @config
+	 * @var boolean Realtime static publishing... the second a page
+   * is saved, it is written to the cache 
 	 */
-	static $disable_realtime = false;
+	private static $disable_realtime = false;
 	
 	/*
-	 * This is the current static publishing theme, which can be set at any point
-	 * If it's not set, then the last non-null theme, set via SSViewer::set_theme() is used
+	 * @config
+	 * @var boolean This is the current static publishing theme, which can be set at any point
+	 * If it's not set, then the last non-null theme, set via Config::inst()->update('SSViewer', 'theme', ) is used
 	 * The obvious place to set this is in _config.php
 	 */
-	static $static_publisher_theme=false;
+	private static $static_publisher_theme=false;
 	
 	abstract public function publishPages($pages);
 	abstract public function unpublishPages($pages);
 
+	/**
+	 * @deprecated 3.2 Use the "StaticPublisher.static_publisher_theme" config setting instead
+	 * @param [type] $theme [description]
+	 */
 	static public function set_static_publisher_theme($theme){
-		self::$static_publisher_theme=$theme;
+		Deprecation::notice('3.2', 'Use the "StaticPublisher.static_publisher_theme" config setting instead');
+		Config::inst()->update('StaticPublisher', 'static_publisher_theme', $theme);
 	}
 
 	/**
+	 * @config
 	 * @var boolean Includes a timestamp at the bottom of the generated HTML of each file,
 	 * which can be useful for debugging issues with stale caches etc.
 	 */
-	static $include_caching_metadata = false;
+	private static $include_caching_metadata = false;
 	
+	/**
+	 * @deprecated 3.2 Use the "StaticPublisher.static_publisher_theme" config setting instead
+	 */
 	static public function static_publisher_theme(){
-		return self::$static_publisher_theme;
+		Deprecation::notice('3.2', 'Use the "StaticPublisher.static_publisher_theme" config setting instead');
+		return Config::inst()->get('StaticPublisher', 'static_publisher_theme');
 	}
 
+	/**
+	 * @deprecated 3.2 Use the "StaticPublisher.echo_progress" config setting instead
+	 */
 	static public function echo_progress() {
-		return (boolean)self::$echo_progress;
+		Deprecation::notice('3.2', 'Use the "StaticPublisher.echo_progress" config setting instead');
+		return Config::inst()->get('StaticPublisher', 'echo_progress');
 	}
 	
 	/**
 	 * Either turns on (boolean true) or off (boolean false) the progress indicators.
+	 * @deprecated 3.2 Use the "StaticPublisher.echo_progress" config setting instead
 	 * @see StaticPublisher::$echo_progress
 	 */
 	static public function set_echo_progress($progress) {
-		self::$echo_progress = (boolean)$progress;
+		Deprecation::notice('3.2', 'Use the "StaticPublisher.echo_progress" config setting instead');
+		Config::inst()->update('StaticPublisher', 'echo_progress', $progress);
 	}
 
 	/**
@@ -71,7 +90,7 @@ abstract class StaticPublisher extends DataExtension {
 	}
 	
 	public function republish($original) {
-		if (self::$disable_realtime) return;
+		if (Config::inst()->get('StaticPublisher', 'disable_realtime')) return;
 
 		$urls = array();
 		
@@ -109,7 +128,7 @@ abstract class StaticPublisher extends DataExtension {
 	 * functionality
 	 */
 	public function onAfterUnpublish($page) {
-		if (self::$disable_realtime) return;
+		if (Config::inst()->get('StaticPublisher', 'disable_realtime')) return;
 		
 		// Get the affected URLs
 		if($this->owner->hasMethod('pagesAffectedByUnpublishing')) {

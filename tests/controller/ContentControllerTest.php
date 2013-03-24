@@ -5,9 +5,9 @@
  */
 class ContentControllerTest extends FunctionalTest {
 	
-	public static $fixture_file = 'ContentControllerTest.yml';
+	protected static $fixture_file = 'ContentControllerTest.yml';
 	
-	public static $use_draft_site = true;
+	protected static $use_draft_site = true;
 	
 	/**
 	 * Test that nested pages, basic actions, and nested/non-nested URL switching works properly
@@ -15,7 +15,7 @@ class ContentControllerTest extends FunctionalTest {
 
 	public function testNestedPages() {
 		RootURLController::reset();
-		SiteTree::enable_nested_urls();
+		Config::inst()->update('SiteTree', 'nested_urls', true);
 
 		$this->assertEquals('Home Page', $this->get('/')->getBody());
 		$this->assertEquals('Home Page', $this->get('/home/index/')->getBody());
@@ -30,7 +30,7 @@ class ContentControllerTest extends FunctionalTest {
 		$this->assertEquals('Third Level Page', $this->get('/home/second-level/third-level/second-index/')->getBody());
 
 		RootURLController::reset();
-		SiteTree::disable_nested_urls();
+		SiteTree::config()->nested_urls = false;
 
 		$this->assertEquals('Home Page', $this->get('/')->getBody());
 		$this->assertEquals('Home Page', $this->get('/home/')->getBody());
@@ -51,14 +51,14 @@ class ContentControllerTest extends FunctionalTest {
 	public function testChildrenOf() {
 		$controller = new ContentController();
 
-		SiteTree::enable_nested_urls();
+		Config::inst()->update('SiteTree', 'nested_urls', true);
 
 		$this->assertEquals(1, $controller->ChildrenOf('/')->Count());
 		$this->assertEquals(1, $controller->ChildrenOf('/home/')->Count());
 		$this->assertEquals(2, $controller->ChildrenOf('/home/second-level/')->Count());
 		$this->assertEquals(0, $controller->ChildrenOf('/home/second-level/third-level/')->Count());
 
-		SiteTree::disable_nested_urls();
+		SiteTree::config()->nested_urls = false;
 
 		$this->assertEquals(1, $controller->ChildrenOf('/')->Count());
 		$this->assertEquals(1, $controller->ChildrenOf('/home/')->Count());
@@ -67,7 +67,7 @@ class ContentControllerTest extends FunctionalTest {
 	}
 
 	public function testDeepNestedURLs() {
-		SiteTree::enable_nested_urls();
+		Config::inst()->update('SiteTree', 'nested_urls', true);
 
 		$page = new Page();
 		$page->URLSegment = 'base-page';
@@ -87,7 +87,7 @@ class ContentControllerTest extends FunctionalTest {
 		}
 
 
-		SiteTree::disable_nested_urls();
+		SiteTree::config()->nested_urls = false;
 	}
 
 	public function testViewDraft(){
@@ -129,7 +129,7 @@ class ContentControllerTest_Page extends Page {  }
 
 class ContentControllerTest_Page_Controller extends Page_Controller {
 
-	public static $allowed_actions = array (
+	private static $allowed_actions = array (
 		'second_index'
 	);
 

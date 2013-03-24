@@ -1,11 +1,11 @@
 <?php
 class CMSFileAddController extends LeftAndMain {
 
-	static $url_segment = 'assets/add';
-	static $url_priority = 60;
-	static $required_permission_codes = 'CMS_ACCESS_AssetAdmin';
-	static $menu_title = 'Files';
-	public static $tree_class = 'Folder';
+	private static $url_segment = 'assets/add';
+	private static $url_priority = 60;
+	private static $required_permission_codes = 'CMS_ACCESS_AssetAdmin';
+	private static $menu_title = 'Files';
+	private static $tree_class = 'Folder';
 	
 //	public function upload($request) {
 //		$formHtml = $this->renderWith(array('AssetAdmin_UploadContent'));

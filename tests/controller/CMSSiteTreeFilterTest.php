@@ -1,7 +1,7 @@
 <?php
 class CMSSiteTreeFilterTest extends SapphireTest {
 
-	static $fixture_file = 'CMSSiteTreeFilterTest.yml';
+	protected static $fixture_file = 'CMSSiteTreeFilterTest.yml';
 	
 	public function testSearchFilterEmpty() {
 		$page1 = $this->objFromFixture('Page', 'page1');

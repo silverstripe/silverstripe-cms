@@ -1,12 +1,12 @@
 <?php
 class CMSSettingsController extends LeftAndMain {
 
-	static $url_segment = 'settings';
-	static $url_rule = '/$Action/$ID/$OtherID';
-	static $menu_priority = -1;
-	static $menu_title = 'Settings';
-	static $tree_class = 'SiteConfig';
-	static $required_permission_codes = array('EDIT_SITECONFIG');
+	private static $url_segment = 'settings';
+	private static $url_rule = '/$Action/$ID/$OtherID';
+	private static $menu_priority = -1;
+	private static $menu_title = 'Settings';
+	private static $tree_class = 'SiteConfig';
+	private static $required_permission_codes = array('EDIT_SITECONFIG');
 	
 	public function init() {
 		parent::init();

@@ -8,21 +8,22 @@
  */
 class AssetAdmin extends LeftAndMain implements PermissionProvider{
 
-	static $url_segment = 'assets';
+	private static $url_segment = 'assets';
 	
-	static $url_rule = '/$Action/$ID';
+	private static $url_rule = '/$Action/$ID';
 	
-	static $menu_title = 'Files';
+	private static $menu_title = 'Files';
 
-	public static $tree_class = 'Folder';
+	private static $tree_class = 'Folder';
 	
 	/**
+	 * @config
 	 * @see Upload->allowedMaxFileSize
 	 * @var int
 	 */
-	public static $allowed_max_file_size;
+	private static $allowed_max_file_size;
 	
-	public static $allowed_actions = array(
+	private static $allowed_actions = array(
 		'addfolder',
 		'delete',
 		'AddForm',
@@ -121,8 +122,8 @@ JS
 
 		// Category filter
 		if(isset($params['AppCategory'])) {
-			if(isset(File::$app_categories[$params['AppCategory']])) {
-				$exts = File::$app_categories[$params['AppCategory']];
+			if(isset(File::config()->app_categories[$params['AppCategory']])) {
+				$exts = File::config()->app_categories[$params['AppCategory']];
 			} else {
 				$exts = array();
 			}
@@ -470,7 +471,7 @@ JS
 		$record->write();
 		
 		mkdir($record->FullPath);
-		chmod($record->FullPath, Filesystem::$file_create_mask);
+		chmod($record->FullPath, Filesystem::config()->file_create_mask);
 
 		if($parentRecord) {
 			return $this->redirect(Controller::join_links($this->Link('show'), $parentRecord->ID));

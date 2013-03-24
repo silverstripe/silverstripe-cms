@@ -6,7 +6,7 @@
  * @subpackage search
  */
 class ContentControllerSearchExtension extends Extension {
-	static $allowed_actions = array(
+	private static $allowed_actions = array(
 		'SearchForm',
 		'results',
 	);

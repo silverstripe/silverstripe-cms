@@ -1,7 +1,7 @@
 <?php
 
 class SiteTreeBacklinksTest extends SapphireTest {
-	static $fixture_file = "SiteTreeBacklinksTest.yml";
+	protected static $fixture_file = "SiteTreeBacklinksTest.yml";
 
 	protected $requiredExtensions = array(
 		'SiteTree' => array('SiteTreeBacklinksTest_DOD'),
@@ -232,7 +232,7 @@ class SiteTreeBacklinksTest extends SapphireTest {
 
 class SiteTreeBacklinksTest_DOD extends DataExtension implements TestOnly {
 
-	static $db = array(
+	private static $db = array(
 		'ExtraContent' => 'HTMLText',
 	);
 
