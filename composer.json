@@ -12,7 +12,8 @@
 		"silverstripe/fulltextsearch": "dev-master",
 		"cwp/cwp": "*",
 		"cwp-themes/default": "*",
-		"silverstripe/advancedworkflow": "*"
+		"silverstripe/advancedworkflow": "*",
+		"silverstripe/restfulserver": "*"
 	},
 	"require-dev": {
 		"silverstripe/behat-extension": "*",
