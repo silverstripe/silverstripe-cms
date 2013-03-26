@@ -18,7 +18,9 @@ docsviewer/
 framework/
 fulltextsearch/
 iframe/
+multivaluefield/
 nginx
+queuedjobs/
 registry/
 restfulserver/
 sortablegridfield/
