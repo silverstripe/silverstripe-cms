@@ -10,6 +10,7 @@ silverstripe-cache
 .DS_Store
 .ea
 apache
+advancedworkflow/
 buildtools/
 cms/
 cwp/

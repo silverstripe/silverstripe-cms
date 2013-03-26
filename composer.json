@@ -11,7 +11,8 @@
 		"undefinedoffset/sortablegridfield": "dev-master",
 		"silverstripe/fulltextsearch": "dev-master",
 		"cwp/cwp": "*",
-		"cwp-themes/default": "*"
+		"cwp-themes/default": "*",
+		"silverstripe/advancedworkflow": "*"
 	},
 	"require-dev": {
 		"silverstripe/behat-extension": "*",
