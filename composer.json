@@ -6,7 +6,6 @@
 		"silverstripe/cms": "3.1.x-dev",
 		"silverstripe/framework": "3.1.x-dev",
 		"silverstripe/registry": "*",
-		"silverstripe/subsites": "dev-master",
 		"silverstripe/taxonomy": "*",
 		"undefinedoffset/sortablegridfield": "dev-master",
 		"silverstripe/fulltextsearch": "dev-master",
