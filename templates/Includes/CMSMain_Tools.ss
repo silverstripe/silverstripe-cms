@@ -7,4 +7,8 @@
 	<div class="cms-panel-content-collapsed">
 		<h3 class="cms-panel-header">$SiteConfig.Title</h3>
 	</div>
+	<div class="cms-panel-toggle south">
+		<a class="toggle-expand" href="#"><span>&raquo;</span></a>
+		<a class="toggle-collapse" href="#"><span>&laquo;</span></a>
+	</div>
 </div>

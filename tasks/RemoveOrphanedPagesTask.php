@@ -23,7 +23,7 @@
 //class RemoveOrphanedPagesTask extends BuildTask {
 class RemoveOrphanedPagesTask extends Controller {
 	
-	static $allowed_actions = array(
+	private static $allowed_actions = array(
 		'index' => 'ADMIN',
 		'Form' => 'ADMIN',
 		'run' => 'ADMIN',

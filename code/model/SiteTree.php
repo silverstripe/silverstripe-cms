@@ -26,52 +26,58 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * 
 	 * Note that this setting is cached when used in the CMS, use the "flush" query parameter to clear it.
 	 *
+	 * @config
 	 * @var array
 	 */
-	static $allowed_children = array("SiteTree");
+	private static $allowed_children = array("SiteTree");
 
 	/**
 	 * The default child class for this page.
 	 * Note: Value might be cached, see {@link $allowed_chilren}.
 	 *
+	 * @config
 	 * @var string
 	 */
-	static $default_child = "Page";
+	private static $default_child = "Page";
 
 	/**
 	 * The default parent class for this page.
 	 * Note: Value might be cached, see {@link $allowed_chilren}.
 	 *
+	 * @config
 	 * @var string
 	 */
-	static $default_parent = null;
+	private static $default_parent = null;
 
 	/**
 	 * Controls whether a page can be in the root of the site tree.
 	 * Note: Value might be cached, see {@link $allowed_chilren}.
 	 *
+	 * @config
 	 * @var bool
 	 */
-	static $can_be_root = true;
+	private static $can_be_root = true;
 
 	/**
 	 * List of permission codes a user can have to allow a user to create a page of this type.
 	 * Note: Value might be cached, see {@link $allowed_chilren}.
 	 *
+	 * @config
 	 * @var array
 	 */
-	static $need_permission = null;
+	private static $need_permission = null;
 
 	/**
 	 * If you extend a class, and don't want to be able to select the old class
 	 * in the cms, set this to the old class name. Eg, if you extended Product
 	 * to make ImprovedProduct, then you would set $hide_ancestor to Product.
 	 *
+	 * @config
 	 * @var string
 	 */
-	static $hide_ancestor = null;
+	private static $hide_ancestor = null;
 
-	static $db = array(
+	private static $db = array(
 		"URLSegment" => "Varchar(255)",
 		"Title" => "Varchar(255)",
 		"MenuTitle" => "Varchar(100)",
@@ -88,27 +94,27 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		"CanEditType" => "Enum('LoggedInUsers, OnlyTheseUsers, Inherit', 'Inherit')",
 	);
 
-	static $indexes = array(
+	private static $indexes = array(
 		"URLSegment" => true,
 	);
 
-	static $many_many = array(
+	private static $many_many = array(
 		"LinkTracking" => "SiteTree",
 		"ImageTracking" => "File",
 		"ViewerGroups" => "Group",
 		"EditorGroups" => "Group",
 	);
 
-	static $belongs_many_many = array(
+	private static $belongs_many_many = array(
 		"BackLinkTracking" => "SiteTree"
 	);
 
-	static $many_many_extraFields = array(
+	private static $many_many_extraFields = array(
 		"LinkTracking" => array("FieldName" => "Varchar"),
 		"ImageTracking" => array("FieldName" => "Varchar")
 	);
 
-	static $casting = array(
+	private static $casting = array(
 		"Breadcrumbs" => "HTMLText",
 		"LastEdited" => "SS_Datetime",
 		"Created" => "SS_Datetime",
@@ -117,67 +123,64 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		'AbsoluteLink' => 'Text',
 	);
 
-	static $defaults = array(
+	private static $defaults = array(
 		"ShowInMenus" => 1,
 		"ShowInSearch" => 1,
 		"CanViewType" => "Inherit",
 		"CanEditType" => "Inherit"
 	);
 
-	static $versioning = array(
+	private static $versioning = array(
 		"Stage",  "Live"
 	);
 
-	static $default_sort = "\"Sort\"";
+	private static $default_sort = "\"Sort\"";
 
 	/**
 	 * If this is false, the class cannot be created in the CMS by regular content authors, only by ADMINs.
 	 * @var boolean
+	* @config
 	*/
-	static $can_create = true;
-
-	/**
-	 * @see CMSMain::generateTreeStylingCSS()
-	 */ 
-	static $page_states = array('readonly'); 
+	private static $can_create = true;
 
 	/**
 	 * Icon to use in the CMS page tree. This should be the full filename, relative to the webroot.
 	 * Also supports custom CSS rule contents (applied to the correct selector for the tree UI implementation).
 	 * 
 	 * @see CMSMain::generateTreeStylingCSS()
-	 * 
+	 * @config
 	 * @var string
 	 */
-	static $icon = null;
+	private static $icon = null;
 	
 	/**
+	 * @config
 	 * @var String Description of the class functionality, typically shown to a user
 	 * when selecting which page type to create. Translated through {@link provideI18nEntities()}.
 	 */
-	static $description = 'Generic content page';
+	private static $description = 'Generic content page';
 
-	static $extensions = array(
+	private static $extensions = array(
 		"Hierarchy",
 		"Versioned('Stage', 'Live')",
 	);
 	
-	static $searchable_fields = array(
+	private static $searchable_fields = array(
 		'Title',
 		'Content',
 	);
 
-	static $field_labels = array(
+	private static $field_labels = array(
 		'URLSegment' => 'URL'
 	);
 	
 	/**
-	 * @see SiteTree::nested_urls()
+	 * @config
 	 */
 	private static $nested_urls = true;
 	
 	/**
-	 * @see SiteTree::set_create_default_pages()
+	 * @config
 	*/
 	private static $create_default_pages = true;
 	
@@ -192,12 +195,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * of IDs mapped to their boolean permission ability (true=allow, false=deny).
 	 * See {@link batch_permission_check()} for details.
 	 */
-	public static $cache_permissions = array();
+	private static $cache_permissions = array();
 
 	/**
+	 * @config
 	 * @var boolean
 	 */
-	protected static $enforce_strict_hierarchy = true;
+	private static $enforce_strict_hierarchy = true;
 
 	protected $_cache_statusFlags = null;
 	
@@ -205,59 +209,77 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * Determines if the system should avoid orphaned pages
 	 * by deleting all children when the their parent is deleted (TRUE),
 	 * or rather preserve this data even if its not reachable through any navigation path (FALSE).
-	 * 
+	 *
+	 * @deprecated 3.2 Use the "SiteTree.enforce_strict_hierarchy" config setting instead
 	 * @param boolean
 	 */
 	static public function set_enforce_strict_hierarchy($to) {
-		self::$enforce_strict_hierarchy = $to;
+		Deprecation::notice('3.2', 'Use the "SiteTree.enforce_strict_hierarchy" config setting instead');
+		Config::inst()->update('SiteTree', 'enforce_strict_hierarchy', $to);
 	}
 	
 	/**
+	 * @deprecated 3.2 Use the "SiteTree.enforce_strict_hierarchy" config setting instead
 	 * @return boolean
 	 */
 	static public function get_enforce_strict_hierarchy() {
-		return self::$enforce_strict_hierarchy;
+		Deprecation::notice('3.2', 'Use the "SiteTree.enforce_strict_hierarchy" config setting instead');
+		return Config::inst()->get('SiteTree', 'enforce_strict_hierarchy');
 	}
 
 	/**
 	 * Returns TRUE if nested URLs (e.g. page/sub-page/) are currently enabled on this site.
 	 *
+	 * @deprecated 3.2 Use the "SiteTree.nested_urls" config setting instead
 	 * @return bool
 	 */
 	static public function nested_urls() {
-		return self::$nested_urls;
+		Deprecation::notice('3.2', 'Use the "SiteTree.nested_urls" config setting instead');
+		return Config::inst()->get('SiteTree', 'nested_urls');
 	}
 	
+	/**
+	 * @deprecated 3.2 Use the "SiteTree.nested_urls" config setting instead
+	 */
 	static public function enable_nested_urls() {
-		self::$nested_urls = true;
+		Deprecation::notice('3.2', 'Use the "SiteTree.nested_urls" config setting instead');
+		Config::inst()->update('SiteTree', 'nested_urls', true);
 	}
 	
+	/**
+	 * @deprecated 3.2 Use the "SiteTree.nested_urls" config setting instead
+	 */
 	static public function disable_nested_urls() {
-		self::$nested_urls = false;
+		Deprecation::notice('3.2', 'Use the "SiteTree.nested_urls" config setting instead');
+		Config::inst()->update('SiteTree', 'nested_urls', false);
 	}
 	
 	/**
 	 * Set the (re)creation of default pages on /dev/build
 	 *
+	 * @deprecated 3.2 Use the "SiteTree.create_default_pages" config setting instead
 	 * @param bool $option
 	 */
 	static public function set_create_default_pages($option = true) {
-		self::$create_default_pages = $option;
+		Deprecation::notice('3.2', 'Use the "SiteTree.create_default_pages" config setting instead');
+		Config::inst()->update('SiteTree', 'create_default_pages', $option);
 	}
 
 	/**
 	 * Return true if default pages should be created on /dev/build.
 	 *
+	 * @deprecated 3.2 Use the "SiteTree.create_default_pages" config setting instead
 	 * @return bool
 	 */
 	static public function get_create_default_pages() {
-		return self::$create_default_pages;
+		Deprecation::notice('3.2', 'Use the "SiteTree.create_default_pages" config setting instead');
+		return Config::inst()->get('SiteTree', 'create_default_pages');
 	}
 	
 	/**
 	 * Fetches the {@link SiteTree} object that maps to a link.
 	 *
-	 * If you have enabled {@link SiteTree::nested_urls()} on this site, then you can use a nested link such as
+	 * If you have enabled {@link SiteTree::config()->nested_urls} on this site, then you can use a nested link such as
 	 * "about-us/staff/", and this function will traverse down the URL chain and grab the appropriate link.
 	 *
 	 * Note that if no model can be found, this method will fall over to a extended alternateGetByLink method provided
@@ -279,17 +301,17 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		// Grab the initial root level page to traverse down from.
 		$URLSegment = array_shift($parts);
 		$sitetree   = DataObject::get_one (
-			'SiteTree', "\"URLSegment\" = '$URLSegment'" . (self::nested_urls() ? ' AND "ParentID" = 0' : ''), $cache
+			'SiteTree', "\"URLSegment\" = '$URLSegment'" . (self::config()->nested_urls ? ' AND "ParentID" = 0' : ''), $cache
 		);
 		
 		/// Fall back on a unique URLSegment for b/c.
-		if(!$sitetree && self::nested_urls() && $page = DataObject::get('SiteTree', "\"URLSegment\" = '$URLSegment'")->First()) {
+		if(!$sitetree && self::config()->nested_urls && $page = DataObject::get('SiteTree', "\"URLSegment\" = '$URLSegment'")->First()) {
 			return $page;
 		}
 		
 		// Attempt to grab an alternative page from extensions.
 		if(!$sitetree) {
-			$parentID = self::nested_urls() ? 0 : null;
+			$parentID = self::config()->nested_urls ? 0 : null;
 			
 			if($alternatives = singleton('SiteTree')->extend('alternateGetByLink', $URLSegment, $parentID)) {
 				foreach($alternatives as $alternative) if($alternative) $sitetree = $alternative;
@@ -299,7 +321,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 		
 		// Check if we have any more URL parts to parse.
-		if(!self::nested_urls() || !count($parts)) return $sitetree;
+		if(!self::config()->nested_urls || !count($parts)) return $sitetree;
 		
 		// Traverse down the remaining URL segments and grab the relevant SiteTree objects.
 		foreach($parts as $segment) {
@@ -438,7 +460,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string
 	 */
 	public function RelativeLink($action = null) {
-		if($this->ParentID && self::nested_urls()) {
+		if($this->ParentID && self::config()->nested_urls) {
 			$base = $this->Parent()->RelativeLink($this->URLSegment);
 		} else {
 			$base = $this->URLSegment;
@@ -1275,7 +1297,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		$tags .= "<meta name=\"generator\" content=\"SilverStripe - http://silverstripe.org\" />\n";
 
-		$charset = ContentNegotiator::get_encoding();
+		$charset = Config::inst()->get('ContentNegotiator', 'encoding');
 		$tags .= "<meta http-equiv=\"Content-type\" content=\"text/html; charset=$charset\" />\n";
 		if($this->MetaDescription) {
 			$tags .= "<meta name=\"description\" content=\"" . Convert::raw2att($this->MetaDescription) . "\" />\n";
@@ -1322,12 +1344,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		parent::requireDefaultRecords();
 		
 		// default pages
-		if($this->class == 'SiteTree' && self::get_create_default_pages()) {
-			if(!SiteTree::get_by_link(RootURLController::get_default_homepage_link())) {
+		if($this->class == 'SiteTree' && $this->config()->create_default_pages) {
+			if(!SiteTree::get_by_link(Config::inst()->get('RootURLController', 'default_homepage_link'))) {
 				$homepage = new Page();
 				$homepage->Title = _t('SiteTree.DEFAULTHOMETITLE', 'Home');
 				$homepage->Content = _t('SiteTree.DEFAULTHOMECONTENT', '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>');
-				$homepage->URLSegment = RootURLController::get_default_homepage_link();
+				$homepage->URLSegment = Config::inst()->get('RootURLController', 'default_homepage_link');
 				$homepage->Sort = 1;
 				$homepage->write();
 				$homepage->publish('Stage', 'Live');
@@ -1467,7 +1489,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		parent::onBeforeDelete();
 		
 		// If deleting this page, delete all its children.
-		if(SiteTree::get_enforce_strict_hierarchy() && $children = $this->Children()) {
+		if(SiteTree::config()->enforce_strict_hierarchy && $children = $this->Children()) {
 			foreach($children as $child) {
 				$child->delete();
 			}
@@ -1542,20 +1564,20 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return bool
 	 */
 	public function validURLSegment() {
-		if(self::nested_urls() && $parent = $this->Parent()) {
+		if(self::config()->nested_urls && $parent = $this->Parent()) {
 			if($controller = ModelAsController::controller_for($parent)) {
 				if($controller instanceof Controller && $controller->hasAction($this->URLSegment)) return false;
 			}
 		}
 		
-		if(!self::nested_urls() || !$this->ParentID) {
+		if(!self::config()->nested_urls || !$this->ParentID) {
 			if(class_exists($this->URLSegment) && is_subclass_of($this->URLSegment, 'RequestHandler')) return false;
 		}
 		
 		$IDFilter     = ($this->ID) ? "AND \"SiteTree\".\"ID\" <> $this->ID" :  null;
 		$parentFilter = null;
 		
-		if(self::nested_urls()) {
+		if(self::config()->nested_urls) {
 			if($this->ParentID) {
 				$parentFilter = " AND \"SiteTree\".\"ParentID\" = $this->ParentID";
 			} else {
@@ -1826,13 +1848,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		
 		$baseLink = Controller::join_links (
 			Director::absoluteBaseURL(),
-			(self::nested_urls() && $this->ParentID ? $this->Parent()->RelativeLink(true) : null)
+			(self::config()->nested_urls && $this->ParentID ? $this->Parent()->RelativeLink(true) : null)
 		);
 		
 		$urlsegment = new SiteTreeURLSegmentField("URLSegment", $this->fieldLabel('URLSegment'));
 		$urlsegment->setURLPrefix($baseLink);
-		$helpText = (self::nested_urls() && count($this->Children())) ? $this->fieldLabel('LinkChangeNote') : '';
-		if(!URLSegmentFilter::$default_allow_multibyte) {
+		$helpText = (self::config()->nested_urls && count($this->Children())) ? $this->fieldLabel('LinkChangeNote') : '';
+		if(!Config::inst()->get('URLSegmentFilter', 'default_allow_multibyte')) {
 			$helpText .= $helpText ? '<br />' : '';
 			$helpText .= _t('SiteTreeURLSegmentField.HelpChars', ' Special characters are automatically converted or removed.');
 		}

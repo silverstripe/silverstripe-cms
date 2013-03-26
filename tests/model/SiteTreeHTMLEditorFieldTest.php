@@ -1,8 +1,8 @@
 <?php
 class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
-	public static $fixture_file = 'SiteTreeHtmlEditorFieldTest.yml';
+	protected static $fixture_file = 'SiteTreeHtmlEditorFieldTest.yml';
 
-	public static $use_draft_site = true;
+	protected static $use_draft_site = true;
 
 	public function testLinkTracking() {
 		$sitetree = $this->objFromFixture('SiteTree', 'home');

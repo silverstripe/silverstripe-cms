@@ -5,27 +5,10 @@
  */
 class CMSMainTest extends FunctionalTest {
 
-	static $fixture_file = 'CMSMainTest.yml';
+	protected static $fixture_file = 'CMSMainTest.yml';
 	
 	static protected $orig = array();
 	
-	public function setUpOnce() {
-		self::$orig['CMSBatchActionHandler_batch_actions'] = CMSBatchActionHandler::$batch_actions;
-		CMSBatchActionHandler::$batch_actions = array(
-			'publish' => 'CMSBatchAction_Publish',
-			'delete' => 'CMSBatchAction_Delete',
-			'deletefromlive' => 'CMSBatchAction_DeleteFromLive',
-		);
-		
-		parent::setUpOnce();
-	}
-	
-	public function tearDownOnce() {
-		CMSBatchActionHandler::$batch_actions = self::$orig['CMSBatchActionHandler_batch_actions'];
-		
-		parent::tearDownOnce();
-	}
-
 	function testSiteTreeHints() {
 		$cache = SS_Cache::factory('CMSMain_SiteTreeHints');
 		$cache->clean(Zend_Cache::CLEANING_MODE_ALL);
@@ -95,9 +78,12 @@ class CMSMainTest extends FunctionalTest {
 			'Done: Published 30 pages',
 			$response->getBody()
 		);
+
+		$actions = CMSBatchActionHandler::config()->batch_actions;
 	
 		// Some modules (e.g., cmsworkflow) will remove this action
-		if(isset(CMSBatchActionHandler::$batch_actions['publish'])) {
+		$actions = CMSBatchActionHandler::config()->batch_actions;
+		if(isset($actions['publish'])) {
 			$response = $this->get('admin/pages/batchactions/publish?ajax=1&csvIDs=' . implode(',', array($page1->ID, $page2->ID)));
 			$responseData = Convert::json2array($response->getBody());
 			$this->assertArrayHasKey($page1->ID, $responseData['modified']);
@@ -175,7 +161,7 @@ class CMSMainTest extends FunctionalTest {
 	public function testCanPublishPageWithUnpublishedParentWithStrictHierarchyOff() {
 		$this->logInWithPermission('ADMIN');
 		
-		SiteTree::set_enforce_strict_hierarchy(true);
+		Config::inst()->update('SiteTree', 'enforce_strict_hierarchy', true);
 		$parentPage = $this->objFromFixture('Page','page3');
 		$childPage = $this->objFromFixture('Page','page1');
 		
@@ -188,7 +174,7 @@ class CMSMainTest extends FunctionalTest {
 			$actions,
 			'Can publish a page with an unpublished parent with strict hierarchy off'
 		);
-		SiteTree::set_enforce_strict_hierarchy(false);
+		Config::inst()->update('SiteTree', 'enforce_strict_hierarchy', false);
 	}	
 	
 	/**
@@ -345,7 +331,7 @@ class CMSMainTest extends FunctionalTest {
 }
 
 class CMSMainTest_ClassA extends Page implements TestOnly {
-	static $allowed_children = array('CMSMainTest_ClassB');
+	private static $allowed_children = array('CMSMainTest_ClassB');
 }
 
 class CMSMainTest_ClassB extends Page implements TestOnly {
@@ -353,7 +339,7 @@ class CMSMainTest_ClassB extends Page implements TestOnly {
 }
 
 class CMSMainTest_NotRoot extends Page implements TestOnly {
-	static $can_be_root = false;
+	private static $can_be_root = false;
 }
 
 class CMSMainTest_HiddenClass extends Page implements TestOnly, HiddenClass {

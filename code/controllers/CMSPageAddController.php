@@ -1,13 +1,13 @@
 <?php
 class CMSPageAddController extends CMSPageEditController {
 
-	static $url_segment = 'pages/add';
-	static $url_rule = '/$Action/$ID/$OtherID';
-	static $url_priority = 42;
-	static $menu_title = 'Add page';
-	static $required_permission_codes = 'CMS_ACCESS_CMSMain';
+	private static $url_segment = 'pages/add';
+	private static $url_rule = '/$Action/$ID/$OtherID';
+	private static $url_priority = 42;
+	private static $menu_title = 'Add page';
+	private static $required_permission_codes = 'CMS_ACCESS_CMSMain';
 
-	static $allowed_actions = array(
+	private static $allowed_actions = array(
 		'AddForm',
 		'doAdd',
 	);

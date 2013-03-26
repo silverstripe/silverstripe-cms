@@ -6,9 +6,9 @@
 
 class CmsReportsTest extends SapphireTest {
 
-	public static $fixture_file = 'CmsReportsTest.yml';
+	protected static $fixture_file = 'CmsReportsTest.yml';
 
-	public static $daysAgo = 14;
+	private static $daysAgo = 14;
 	
 	public function setUp() {
 		parent::setUp();

@@ -83,7 +83,7 @@ class SilverStripeNavigator extends ViewableData {
 			$text = $item->getHTML();
 			if($text) $html .= $text;
 			$newMessage = $item->getMessage();
-			if($newMessage) $message = $newMessage;
+			if($newMessage && $item->isActive()) $message = $newMessage;
 		}
 		
 		return array(
@@ -219,7 +219,8 @@ class SilverStripeNavigatorItem extends ViewableData {
  * @subpackage content
  */
 class SilverStripeNavigatorItem_CMSLink extends SilverStripeNavigatorItem {
-	static $priority = 10;	
+	/** @config */
+	private static $priority = 10;	
 	
 	public function getHTML() {
 		return sprintf(
@@ -257,13 +258,14 @@ class SilverStripeNavigatorItem_CMSLink extends SilverStripeNavigatorItem {
  * @subpackage content
  */
 class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
-	static $priority = 20;
+	/** @config */
+	private static $priority = 20;
 
 	public function getHTML() {
 		$draftPage = $this->getDraftPage();
 		if($draftPage) {
 			$this->recordLink = Controller::join_links($draftPage->AbsoluteLink(), "?stage=Stage");
-			return "<a href=\"$this->recordLink\">". _t('ContentController.DRAFTSITE', 'Draft Site') ."</a>";
+			return "<a ". ($this->isActive() ? 'class="current" ' : '') ."href=\"$this->recordLink\">". _t('ContentController.DRAFTSITE', 'Draft Site') ."</a>";
 		}
 	}
 
@@ -316,13 +318,14 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
  * @subpackage content
  */
 class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem {
-	static $priority = 30;
+	/** @config */
+	private static $priority = 30;
 
 	public function getHTML() {
 		$livePage = $this->getLivePage();
 		if($livePage) {
 			$this->recordLink = Controller::join_links($livePage->AbsoluteLink(), "?stage=Live");
-			return "<a href=\"$this->recordLink\">". _t('ContentController.PUBLISHEDSITE', 'Published Site') ."</a>";
+			return "<a ". ($this->isActive() ? 'class="current" ' : '') ."href=\"$this->recordLink\">". _t('ContentController.PUBLISHEDSITE', 'Published Site') ."</a>";
 		}
 	}
 
@@ -369,11 +372,12 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem {
  * @subpackage content
  */
 class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
-	static $priority = 40;
+	/** @config */
+	private static $priority = 40;
 
 	public function getHTML() {
-			$this->recordLink = $this->record->PreviewLink();
-			return "<a class=\"ss-ui-button\" href=\"$this->recordLink?archiveDate={$this->record->LastEdited}\" target=\"_blank\">". _t('ContentController.ARCHIVEDSITE', 'Preview version') ."</a>";
+			$this->recordLink = $this->record->AbsoluteLink();
+			return "<a class=\"ss-ui-button". ($this->isActive() ? ' current' : '') ."\" href=\"$this->recordLink?archiveDate={$this->record->LastEdited}\" target=\"_blank\">". _t('ContentController.ARCHIVEDSITE', 'Preview version') ."</a>";
 	}
 	
 	public function getTitle() {
@@ -382,8 +386,7 @@ class SilverStripeNavigatorItem_ArchiveLink extends SilverStripeNavigatorItem {
 	
 	public function getMessage() { 
 		if($date = Versioned::current_archived_date()) {
-			$dateObj = Datetime::create();
-			$dateObj->setValue($date);
+			$dateObj = DBField::create_field('Datetime', $date);
 			return "<div id=\"SilverStripeNavigatorMessage\" title=\"". _t('ContentControl.NOTEWONTBESHOWN', 'Note: this message will not be shown to your visitors') ."\">". _t('ContentController.ARCHIVEDSITEFROM', 'Archived site from') ."<br>" . $dateObj->Nice() . "</div>";
 		}
 	}

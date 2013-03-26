@@ -22,7 +22,7 @@
  */
 class StaticExporter extends Controller {
 
-	static $allowed_actions = array(
+	private static $allowed_actions = array(
 		'index', 
 		'export', 
 	);
@@ -58,7 +58,7 @@ class StaticExporter extends Controller {
 		if(isset($_REQUEST['baseurl'])) {
 			$base = $_REQUEST['baseurl'];
 			if(substr($base,-1) != '/') $base .= '/';
-			Director::setBaseURL($base);
+			Config::inst()->update('Director', 'alternate_base_url', $base);
 		}
 		
 		// setup temporary folders
