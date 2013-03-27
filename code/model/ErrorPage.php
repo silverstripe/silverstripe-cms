@@ -205,10 +205,10 @@ class ErrorPage extends Page {
 		parent::doPublish();
 
 		// Run the page (reset the theme, it might've been disabled by LeftAndMain::init())
-		$oldTheme = Config::inst()->get('SSViewer', 'theme');
-		Config::inst()->update('SSViewer', 'theme', Config::inst()->get('SSViewer', 'custom_theme'));
+		$oldEnabled = Config::inst()->get('SSViewer', 'theme_enabled');
+		Config::inst()->update('SSViewer', 'theme_enabled', true);
 		$response = Director::test(Director::makeRelative($this->Link()));
-		Config::inst()->update('SSViewer', 'theme', $oldTheme);
+		Config::inst()->update('SSViewer', 'theme_enabled', $oldEnabled);
 
 		$errorContent = $response->getBody();
 		

@@ -172,11 +172,13 @@ class FilesystemPublisher extends StaticPublisher {
 		// Set the appropriate theme for this publication batch.
 		// This may have been set explicitly via StaticPublisher::static_publisher_theme,
 		// or we can use the last non-null theme.
+		$origThemeEnabled = Config::inst()->get('SSViewer', 'theme_enabled');
+		Config::inst()->update('SSViewer', 'theme_enabled', true);
 		$customTheme = Config::inst()->get('StaticPublisher', 'static_publisher_theme');
-		if(!$customTheme)
-			Config::inst()->update('SSViewer', 'theme', Config::inst()->get('SSViewer', 'custom_theme'));
-		else
+		if($customTheme) {
+			$origTheme = Config::inst()->get('SSViewer', 'theme');
 			Config::inst()->update('SSViewer', 'theme', $customTheme);
+		}
 			
 		$currentBaseURL = Director::baseURL();
 		$staticBaseUrl = Config::inst()->get('FilesystemPublisher', 'static_base_url');
@@ -312,6 +314,11 @@ class FilesystemPublisher extends StaticPublisher {
 			} else if(isset($file['Copy'])) {
 				copy($file['Copy'], $path);
 			}
+		}
+
+		Config::inst()->update('SSViewer', 'theme_enabled', $origThemeEnabled);
+		if($customTheme) {
+			Config::inst()->update('SSViewer', 'theme', $origTheme);
 		}
 
 		return $result;
