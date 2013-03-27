@@ -70,7 +70,7 @@ class ErrorPage extends Page {
 	public function requireDefaultRecords() {
 		parent::requireDefaultRecords();
 
-		if ($this->class == 'ErrorPage' && SiteTree::get_create_default_pages()) {
+		if ($this->class == 'ErrorPage' && SiteTree::config()->create_default_pages) {
 			// Ensure that an assets path exists before we do any error page creation
 			if(!file_exists(ASSETS_PATH)) {
 				mkdir(ASSETS_PATH);
