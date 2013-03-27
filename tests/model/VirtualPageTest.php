@@ -17,15 +17,25 @@ class VirtualPageTest extends SapphireTest {
 		parent::setUp();
 
 		$this->origInitiallyCopiedFields = VirtualPage::config()->initially_copied_fields;
-		VirtualPage::config()->initially_copied_fields = array('MyInitiallyCopiedField');
+		Config::inst()->remove('VirtualPage', 'initially_copied_fields');
+		VirtualPage::config()->initially_copied_fields = array_merge(
+			$this->origInitiallyCopiedFields,
+			array('MyInitiallyCopiedField')
+		);
+		
 		$this->origNonVirtualField = VirtualPage::config()->non_virtual_fields;
-		$nonVirtual = VirtualPage::config()->non_virtual_fields;
-		VirtualPage::config()->non_virtual_fields = array('MyNonVirtualField', 'MySharedNonVirtualField');
+		Config::inst()->remove('VirtualPage', 'non_virtual_fields');
+		VirtualPage::config()->non_virtual_fields = array_merge(
+			$this->origNonVirtualField,
+			array('MyNonVirtualField', 'MySharedNonVirtualField')
+		);
 	}
 
 	public function tearDown() {
 		parent::tearDown();
 
+		Config::inst()->remove('VirtualPage', 'initially_copied_fields');
+		Config::inst()->remove('VirtualPage', 'non_virtual_fields');
 		VirtualPage::config()->initially_copied_fields = $this->origInitiallyCopiedFields;
 		VirtualPage::config()->non_virtual_fields = $this->origNonVirtualField;
 	}
