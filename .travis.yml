@@ -1,22 +1,35 @@
 language: php 
+
 php: 
  - 5.3
  - 5.4
 
 env:
- - TESTDB=MYSQL
+ - DB=MYSQL CORE_RELEASE=master
+ - DB=PGSQL CORE_RELEASE=master
+ - DB=SQLITE3 CORE_RELEASE=master
+ - PHPCS=1 CORE_RELEASE=master
 
 matrix:
   exclude:
     - php: 5.4
-      env: TESTDB=PGSQL
+      env: DB=PGSQL CORE_RELEASE=master
+    - php: 5.4
+      env: DB=SQLITE3 CORE_RELEASE=master
+    - php: 5.4
+      env: PHPCS=1 CORE_RELEASE=master
+  allow_failures:
+    - env: DB=PGSQL CORE_RELEASE=master
+    - env: DB=SQLITE3 CORE_RELEASE=master
+    - env: PHPCS=1 CORE_RELEASE=master
 
 before_script:
- - ./tests/travis/before_script ~/builds/ss
+ - git clone git://github.com/silverstripe-labs/silverstripe-travis-support.git ~/travis-support
+ - php ~/travis-support/travis_setup.php --source `pwd` --target ~/builds/ss
  - cd ~/builds/ss
 
 script: 
- - php framework/cli-script.php dev/tests/module/cms
+ - phpunit cms/tests/
 
 branches:
   except:
