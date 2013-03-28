@@ -1,10 +1,10 @@
 <?php
 class Page extends BasePage {
 
-	public static $db = array(
+	private static $db = array(
 	);
 
-	public static $has_one = array(
+	private static $has_one = array(
 	);
 
 }
@@ -25,7 +25,7 @@ class Page_Controller extends BasePage_Controller {
 	 *
 	 * @var array
 	 */
-	public static $allowed_actions = array (
+	private static $allowed_actions = array (
 	);
 
 }

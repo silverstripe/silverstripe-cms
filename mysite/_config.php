@@ -25,5 +25,5 @@ if (class_exists('SiteTree')) SiteTree::enable_nested_urls();
 
 SiteTree::set_create_default_pages(false);
 
-Object::add_extension('SiteTree', 'WorkflowApplicable');
-Object::add_extension('SiteTree', 'WorkflowEmbargoExpiryExtension');
+SiteTree::add_extension('WorkflowApplicable');
+SiteTree::add_extension('WorkflowEmbargoExpiryExtension');
