@@ -1,22 +1,23 @@
 language: php 
 php: 
  - 5.3
- - 5.4
 
 env:
- - TESTDB=MYSQL
+ - DB=MYSQL CORE_RELEASE=3.0
+ - DB=PGSQL CORE_RELEASE=3.0
 
 matrix:
-  exclude:
+  include:
     - php: 5.4
-      env: TESTDB=PGSQL
+      env: DB=MYSQL CORE_RELEASE=3.0
 
 before_script:
- - ./tests/travis/before_script ~/builds/ss
+ - phpenv rehash
+ - ./tests/travis/travis_setup.php --target ~/builds/ss
  - cd ~/builds/ss
 
 script: 
- - php framework/cli-script.php dev/tests/module/cms
+ - phpunit cms/tests/
 
 branches:
   except:
