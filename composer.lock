@@ -432,12 +432,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-registry.git",
-                "reference": "5c805265689cfd610709a5df82a1b982e2b76509"
+                "reference": "f7e205e0d52b3ca2034f2ff4974dddf14faff718"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-registry/zipball/5c805265689cfd610709a5df82a1b982e2b76509",
-                "reference": "5c805265689cfd610709a5df82a1b982e2b76509",
+                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-registry/zipball/f7e205e0d52b3ca2034f2ff4974dddf14faff718",
+                "reference": "f7e205e0d52b3ca2034f2ff4974dddf14faff718",
                 "shasum": ""
             },
             "require": {
@@ -461,7 +461,7 @@
             "keywords": [
                 "silverstripe"
             ],
-            "time": "2013-03-27 22:54:59"
+            "time": "2013-03-28 02:10:35"
         },
         {
             "name": "silverstripe/restfulserver",
