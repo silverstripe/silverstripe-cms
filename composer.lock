@@ -79,7 +79,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp-themes/default.git",
-                "reference": "aac4deb04b1dd8df627d2d68d3054a812f5b37bd"
+                "reference": "77b6c10726ba3cd210c3ce2e711176940878eb4f"
             },
             "require": {
                 "composer/installers": "*",
@@ -95,7 +95,7 @@
                 }
             },
             "description": "CWP Default Theme",
-            "time": "2013-02-26 02:08:25"
+            "time": "2013-04-02 22:06:35"
         },
         {
             "name": "cwp/cwp",
