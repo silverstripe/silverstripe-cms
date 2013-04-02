@@ -7,8 +7,9 @@
 		$(".cms-add-form .parent-mode :input").entwine({
 			onclick: function(e) {
 				if(this.val() == 'top') {
-					var parentField = this.closest('form').find('#ParentID .TreeDropdownField');
+					var parentField = this.closest('form').find('#ParentID .TreeDropdownField')
 					parentField.setValue('');
+					parentField.setTitle('');
 				}
 			}
 		});
