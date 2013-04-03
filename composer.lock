@@ -103,7 +103,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp.git",
-                "reference": "b4f98f60b1ce2d5045578cadbac9907e5991d856"
+                "reference": "98b6b671c667eec9209706f44924b6eb5a54b65e"
             },
             "require": {
                 "composer/installers": "*",
@@ -122,7 +122,7 @@
                 }
             },
             "description": "CWP Main Extension Module",
-            "time": "2013-04-01 20:35:27"
+            "time": "2013-04-03 20:58:04"
         },
         {
             "name": "silverstripe-themes/module_bootstrap",
@@ -245,12 +245,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/sapphire.git",
-                "reference": "120d90fd210172ec2862237cb65534a46b03bd84"
+                "reference": "ceb7e3c8a83ea62fedb4715318d200704d9ec4a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/sapphire/zipball/120d90fd210172ec2862237cb65534a46b03bd84",
-                "reference": "120d90fd210172ec2862237cb65534a46b03bd84",
+                "url": "https://api.github.com/repos/silverstripe/sapphire/zipball/ceb7e3c8a83ea62fedb4715318d200704d9ec4a2",
+                "reference": "ceb7e3c8a83ea62fedb4715318d200704d9ec4a2",
                 "shasum": ""
             },
             "require": {
@@ -283,7 +283,7 @@
                 "framework",
                 "silverstripe"
             ],
-            "time": "2013-04-03 03:19:59"
+            "time": "2013-04-03 10:50:08"
         },
         {
             "name": "silverstripe/fulltextsearch",
@@ -592,15 +592,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-userforms.git",
-                "reference": "6504db285cc12f006b369b940a363743cad86c53"
+                "reference": "bd60ad80c00d1d905b9498f9808005ec3c5b2cf0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-userforms/zipball/6504db285cc12f006b369b940a363743cad86c53",
-                "reference": "6504db285cc12f006b369b940a363743cad86c53",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-userforms/zipball/bd60ad80c00d1d905b9498f9808005ec3c5b2cf0",
+                "reference": "bd60ad80c00d1d905b9498f9808005ec3c5b2cf0",
                 "shasum": ""
             },
             "require": {
+                "silverstripe/cms": "3.*",
                 "silverstripe/framework": "3.*"
             },
             "type": "silverstripe-module",
@@ -620,7 +621,7 @@
                 "silverstripe",
                 "userforms"
             ],
-            "time": "2013-04-03 02:41:07"
+            "time": "2013-04-03 09:01:56"
         },
         {
             "name": "silverstripe/versionedfiles",
@@ -1187,12 +1188,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "8ccd3ba7f0d0ff0bbde844cab0dc096c87ac9ea7"
+                "reference": "176d928fe4e56aa06b2480d6650612c5e5d312b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/8ccd3ba7f0d0ff0bbde844cab0dc096c87ac9ea7",
-                "reference": "8ccd3ba7f0d0ff0bbde844cab0dc096c87ac9ea7",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/176d928fe4e56aa06b2480d6650612c5e5d312b1",
+                "reference": "176d928fe4e56aa06b2480d6650612c5e5d312b1",
                 "shasum": ""
             },
             "require": {
@@ -1273,7 +1274,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2013-04-01 22:44:55"
+            "time": "2013-04-03 20:23:46"
         },
         {
             "name": "instaclick/php-webdriver",
