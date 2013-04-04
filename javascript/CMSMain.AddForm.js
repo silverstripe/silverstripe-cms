@@ -16,12 +16,14 @@
 		
 		$(".cms-add-form").entwine({
 			onmatch: function() {
+				if (this.hasClass('initialised')) return;
 				var self = this;
 				this.find('#ParentID .TreeDropdownField').bind('change', function() {
 					self.updateTypeList();
 				});
 				this.updateTypeList();
 				this._super();
+				this.addClass('initialised');
 			},
 			onunmatch: function() {
 				this._super();
@@ -72,16 +74,16 @@
 		
 		$(".cms-add-form #PageType li").entwine({
 			onclick: function(e) {
-				e.preventDefault();
 				this.setSelected(true);
 			},
 			setSelected: function(bool) {
 				var input = this.find('input');
 				this.toggleClass('selected', bool);
+				
 				if(bool && !input.is(':disabled')) {
 					this.siblings().setSelected(false);
-					input.attr('checked', 'checked');
 				}
+				bool ? input.attr('checked', 'checked') : input.removeAttr('checked');
 			},
 			setEnabled: function(bool) {
 				$(this).toggleClass('disabled', !bool);
