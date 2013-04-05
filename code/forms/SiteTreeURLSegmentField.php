@@ -43,7 +43,11 @@ class SiteTreeURLSegmentField extends TextField {
 	}
 	
 	public function suggest($request) {
-		if(!$request->getVar('value')) return $this->httpError(405);
+		if(!$request->getVar('value')) {
+			return $this->httpError(405,
+				_t('SiteTreeURLSegmentField.EMPTY', 'Please enter a URL Segment or click cancel')
+			);
+		}
 		$page = $this->getPage();
 
 		// Same logic as SiteTree->onBeforeWrite
