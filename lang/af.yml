@@ -377,10 +377,6 @@ af:
     many_many_LinkTracking: 'Link Tracking'
   SiteTreeURLSegmentField:
     HelpChars: ' Special characters are automatically converted or removed.'
-  StaticExporter:
-    BASEURL: 'Base URL'
-    EXPORTTO: 'Export to that folder'
-    NAME: 'Static exporter'
   TableListField:
     SELECT: 'Select:'
   TableListField.ss:
