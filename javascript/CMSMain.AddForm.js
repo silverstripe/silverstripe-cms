@@ -15,18 +15,12 @@
 		});
 		
 		$(".cms-add-form").entwine({
-			onmatch: function() {
-				if (this.hasClass('initialised')) return;
+			onadd: function() {
 				var self = this;
 				this.find('#ParentID .TreeDropdownField').bind('change', function() {
 					self.updateTypeList();
 				});
 				this.updateTypeList();
-				this._super();
-				this.addClass('initialised');
-			},
-			onunmatch: function() {
-				this._super();
 			},
 			
 			/**
