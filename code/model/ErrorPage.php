@@ -26,22 +26,34 @@ class ErrorPage extends Page {
 	
 	private static $description = 'Custom content for different error cases (e.g. "Page not found")';
 	
-	/** @config */
+	/**
+	 * @config
+	 */
 	private static $static_filepath = ASSETS_PATH;
 	
-	public function canAddChildren($member = null) { return false; }
+	/**
+	 * @param $member
+	 *
+	 * @return boolean
+	 */
+	public function canAddChildren($member = null) {
+		return false;
+	}
 	
 	/**
-	 * Get a {@link SS_HTTPResponse} to response to a HTTP error code if an {@link ErrorPage} for that code is present.
+	 * Get a {@link SS_HTTPResponse} to response to a HTTP error code if an
+	 * {@link ErrorPage} for that code is present.
 	 *
 	 * @param int $statusCode
+	 *
 	 * @return SS_HTTPResponse
 	 */
-	static public function response_for($statusCode) {
+	public static function response_for($statusCode) {
 		// first attempt to dynamically generate the error page
 		if($errorPage = DataObject::get_one('ErrorPage', "\"ErrorCode\" = $statusCode")) {
 			Requirements::clear();
 			Requirements::clear_combined_files();
+
 			return ModelAsController::controller_for($errorPage)->handleRequest(new SS_HTTPRequest('GET', ''), DataModel::inst());
 		}
 		
@@ -62,10 +74,9 @@ class ErrorPage extends Page {
 	}
 
 	/**
-	 * Ensures that there is always a 404 page
-	 * by checking if there's an instance of
-	 * ErrorPage with a 404 and 500 error code. If there
-	 * is not, one is created when the DB is built.
+	 * Ensures that there is always a 404 page by checking if there's an
+	 * instance of ErrorPage with a 404 and 500 error code. If there is not,
+	 * one is created when the DB is built.
 	 */
 	public function requireDefaultRecords() {
 		parent::requireDefaultRecords();
@@ -126,7 +137,7 @@ class ErrorPage extends Page {
 	 * Returns an array of arrays, each of which defines
 	 * properties for a new ErrorPage record.
 	 * 
-	 * @return Array
+	 * @return array
 	 */
 	protected function getDefaultRecords() {
 		$data = array(
@@ -153,6 +164,9 @@ class ErrorPage extends Page {
 		return $data;
 	}
 
+	/**
+	 * @return FieldList
+	 */
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
 		
@@ -197,6 +211,7 @@ class ErrorPage extends Page {
 	 * When an error page is published, create a static HTML page with its
 	 * content, so the page can be shown even when SilverStripe is not
 	 * functioning correctly before publishing this page normally.
+	 *
 	 * @param string|int $fromStage Place to copy from. Can be either a stage name or a version number.
 	 * @param string $toStage Place to copy to. Must be a stage name.
 	 * @param boolean $createNewVersion Set this to true to create a new version number.  By default, the existing version number will be copied over.
@@ -205,10 +220,11 @@ class ErrorPage extends Page {
 		parent::doPublish();
 
 		// Run the page (reset the theme, it might've been disabled by LeftAndMain::init())
-		$oldTheme = Config::inst()->get('SSViewer', 'theme');
-		Config::inst()->update('SSViewer', 'theme', Config::inst()->get('SSViewer', 'custom_theme'));
+		$oldEnabled = Config::inst()->get('SSViewer', 'theme_enabled');
+		Config::inst()->update('SSViewer', 'theme_enabled', true);
+
 		$response = Director::test(Director::makeRelative($this->Link()));
-		Config::inst()->update('SSViewer', 'theme', $oldTheme);
+		Config::inst()->update('SSViewer', 'theme_enabled', $oldEnabled);
 
 		$errorContent = $response->getBody();
 		
@@ -239,9 +255,9 @@ class ErrorPage extends Page {
 	}
 	
 	/**
-	 *
 	 * @param boolean $includerelations a boolean value to indicate if the labels returned include relation fields
 	 * 
+	 * @return array
 	 */
 	public function fieldLabels($includerelations = true) {
 		$labels = parent::fieldLabels($includerelations);
@@ -256,12 +272,14 @@ class ErrorPage extends Page {
 	 * 
 	 * @param int $statusCode A HTTP Statuscode, mostly 404 or 500
 	 * @param String $locale A locale, e.g. 'de_DE' (Optional)
-	 * @return String
+	 *
+	 * @return string
 	 */
-	static public function get_filepath_for_errorcode($statusCode, $locale = null) {
+	public static function get_filepath_for_errorcode($statusCode, $locale = null) {
 		if (singleton('ErrorPage')->hasMethod('alternateFilepathForErrorcode')) {
 			return singleton('ErrorPage')-> alternateFilepathForErrorcode($statusCode, $locale);
 		}
+
 		if(class_exists('Translatable') && singleton('SiteTree')->hasExtension('Translatable') && $locale && $locale != Translatable::default_locale()) {
 			return self::config()->static_filepath . "/error-{$statusCode}-{$locale}.html";
 		} else {
@@ -293,9 +311,11 @@ class ErrorPage extends Page {
 
 /**
  * Controller for ErrorPages.
+ *
  * @package cms
  */
 class ErrorPage_Controller extends Page_Controller {
+
 	public function init() {
 		parent::init();
 
@@ -306,6 +326,4 @@ class ErrorPage_Controller extends Page_Controller {
 		
 	}
 }
-
-
 
