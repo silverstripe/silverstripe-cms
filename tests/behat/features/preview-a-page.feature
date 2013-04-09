@@ -14,6 +14,7 @@ Feature: Preview a page
     And I set the CMS mode to "Preview mode"
     Then I can see the preview panel
     And the preview contains "About Us"
+    Then I set the CMS mode to "Edit mode"
 
   # TODO:
   # - Only tests correctly on fresh database

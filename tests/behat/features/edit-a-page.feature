@@ -22,7 +22,7 @@ Feature: Edit a page
     When I fill in "Title" with "About Us!"
     And I fill in the "Content" HTML field with "my new content"
     And I press the "Save Draft" button
-    Then I should see a "Saved." notice
+    Then I should see a "Saved" button
 
     When I follow "About Us"
     Then the "Title" field should contain "About Us!"
