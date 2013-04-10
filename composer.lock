@@ -592,17 +592,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-userforms.git",
-                "reference": "73b4909c5cc86977aab363db81649badbcf5695c"
+                "reference": "48246c7e049cd6cac75db76e1d8f42df9cef12fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-userforms/zipball/73b4909c5cc86977aab363db81649badbcf5695c",
-                "reference": "73b4909c5cc86977aab363db81649badbcf5695c",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-userforms/zipball/48246c7e049cd6cac75db76e1d8f42df9cef12fa",
+                "reference": "48246c7e049cd6cac75db76e1d8f42df9cef12fa",
                 "shasum": ""
             },
             "require": {
-                "silverstripe/cms": "3.*",
-                "silverstripe/framework": "3.*"
+                "silverstripe/cms": "3.1.*",
+                "silverstripe/framework": "3.1.*"
             },
             "type": "silverstripe-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -621,7 +621,7 @@
                 "silverstripe",
                 "userforms"
             ],
-            "time": "2013-04-09 23:29:32"
+            "time": "2013-04-09 23:59:42"
         },
         {
             "name": "silverstripe/versionedfiles",
