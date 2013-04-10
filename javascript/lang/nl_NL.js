@@ -1,7 +1,7 @@
 if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
-  if(typeof(console) != 'undefined') console.error('Class ss.i18n not defined');
+	if(typeof(console) != 'undefined') console.error('Class ss.i18n not defined');
 } else {
-  ss.i18n.addDictionary('nl_NL', {
+	ss.i18n.addDictionary('nl_NL', {
 		'CMSMAIN.WARNINGSAVEPAGESBEFOREADDING' : "U moet de pagina opslaan voordat u kinderen kan toevoegen",
 		'CMSMAIN.CANTADDCHILDREN' : "Je kunt geen kinderen toevoegen aan de geselecteerde knoop",
 		'CMSMAIN.ERRORADDINGPAGE' : 'Fout toevoegen pagina',
@@ -26,10 +26,15 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'AssetTableField.MOVING': 'Verplaats %s bestand(en)',
 		'CMSMAIN.AddSearchCriteria': 'Voeg criteria toe',
 		'WidgetAreaEditor.TOOMANY': 'Sorry, je hebt de maximaal aantal widgets bereikt',
-		'AssetAdmin.ConfirmDelete': 'Wil je deze map verwijderen en alle bestanden??',
+		'AssetAdmin.ConfirmDelete': 'Wil je deze map verwijderen en alle bestanden?',
 		'Folder.Name': 'Mapnaam',
 		'Tree.AddSubPage': 'Voeg nieuwe pagina toe',
 		'Tree.EditPage': 'Aanpassen',
+		'Tree.Duplicate': 'Dupliceren',
+		'Tree.EditPage': 'Edit',
+		'Tree.ThisPageOnly': 'Enkel deze pagina',
+		'Tree.ThisPageAndSubpages': "Deze pagina en subpagina's",
+		'Tree.ShowAsList': 'Toon kinderen als lijst',
 		'CMSMain.ConfirmRestoreFromLive': "Do you really want to copy the published content to the draft site?",
 		'CMSMain.RollbackToVersion': "Do you really want to roll back to version #%s of this page?",
 		'URLSEGMENT.Edit': 'Aanpassen',
