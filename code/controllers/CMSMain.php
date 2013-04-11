@@ -46,6 +46,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'treeview',
 		'listview',
 		'ListViewForm',
+		'unpublish',
+		'publish',
+		'delete',
+		'deletefromlive'
 	);
 	
 	public function init() {
