@@ -24,7 +24,7 @@
 
 			redraw: function() {
 				var field = this.find(':text'), 
-					url = field.data('prefix') + field.val(),
+					url = decodeURI(field.data('prefix') + field.val()),
 					previewUrl = url;
 
 				// Truncate URL if required (ignoring the suffix, retaining the full value)
@@ -33,7 +33,7 @@
 				}
 
 				// Transfer current value to holder
-				this.find('.preview').attr('href', url + field.data('suffix')).text(previewUrl);
+				this.find('.preview').attr('href', encodeURI(url + field.data('suffix'))).text(previewUrl);
 			},
 
 			/**
@@ -92,12 +92,24 @@
 			 * @param (Function)
 			 */
 			suggest: function(val, callback) {
-				var field = this.find(':text'),
-					urlParts = $.path.parseUrl(this.closest('form').attr('action')),
+				var self = this,
+					field = self.find(':text'),
+					urlParts = $.path.parseUrl(self.closest('form').attr('action')),
 					url = urlParts.hrefNoSearch + '/field/' + field.attr('name') + '/suggest/?value=' + encodeURIComponent(val);
 				if(urlParts.search) url += '&' + urlParts.search.replace(/^\?/, '');
 
-				$.get(url, function(data) {callback.apply(this, arguments);});
+				$.ajax({
+					url: url,
+					success: function(data) {
+						callback.apply(this, arguments);
+					},
+					error: function(xhr, status) {
+						xhr.statusText = xhr.responseText;
+					},
+					complete: function() {
+						self.removeClass('loading');
+					}
+				});
 			}
 		});
 

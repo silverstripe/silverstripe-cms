@@ -7,23 +7,20 @@
 		$(".cms-add-form .parent-mode :input").entwine({
 			onclick: function(e) {
 				if(this.val() == 'top') {
-					var parentField = this.closest('form').find('#ParentID .TreeDropdownField');
+					var parentField = this.closest('form').find('#ParentID .TreeDropdownField')
 					parentField.setValue('');
+					parentField.setTitle('');
 				}
 			}
 		});
 		
 		$(".cms-add-form").entwine({
-			onmatch: function() {
+			onadd: function() {
 				var self = this;
 				this.find('#ParentID .TreeDropdownField').bind('change', function() {
 					self.updateTypeList();
 				});
 				this.updateTypeList();
-				this._super();
-			},
-			onunmatch: function() {
-				this._super();
 			},
 			
 			/**
