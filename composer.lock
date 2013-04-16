@@ -83,7 +83,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp-themes/default.git",
-                "reference": "13fabd9485a4f6326a86dc9e4d0bba2a9a02f03c"
+                "reference": "25bd397731690495c0cdedf321c200acba91ff59"
             },
             "require": {
                 "composer/installers": "*",
@@ -99,7 +99,7 @@
                 }
             },
             "description": "CWP Default Theme",
-            "time": "2013-04-10 02:43:39"
+            "time": "2013-04-14 23:18:47"
         },
         {
             "name": "cwp/cwp",
@@ -107,7 +107,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp.git",
-                "reference": "48be69317da7f8212b569cb7322b1bcc793744fa"
+                "reference": "6312e761c6d554a31e061895dc412ab0dc52db69"
             },
             "require": {
                 "composer/installers": "*",
@@ -126,7 +126,7 @@
                 }
             },
             "description": "CWP Main Extension Module",
-            "time": "2013-04-11 23:19:21"
+            "time": "2013-04-16 01:34:03"
         },
         {
             "name": "silverstripe-themes/module_bootstrap",
@@ -221,7 +221,7 @@
                     "tests/behat/"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -249,12 +249,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/sapphire.git",
-                "reference": "59dc0085d841df9a951c329720c4364184160c8b"
+                "reference": "c02d7e4c2e367cc6444c28262360eaf4bb2122e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/sapphire/zipball/59dc0085d841df9a951c329720c4364184160c8b",
-                "reference": "59dc0085d841df9a951c329720c4364184160c8b",
+                "url": "https://api.github.com/repos/silverstripe/sapphire/zipball/c02d7e4c2e367cc6444c28262360eaf4bb2122e3",
+                "reference": "c02d7e4c2e367cc6444c28262360eaf4bb2122e3",
                 "shasum": ""
             },
             "require": {
@@ -267,7 +267,7 @@
                     "tests/behat/features/bootstrap"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -287,7 +287,7 @@
                 "framework",
                 "silverstripe"
             ],
-            "time": "2013-04-11 23:13:32"
+            "time": "2013-04-14 21:56:45"
         },
         {
             "name": "silverstripe/fulltextsearch",
@@ -295,12 +295,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-fulltextsearch.git",
-                "reference": "2cd8582c4b70045d51cab4c9a687ecf0aafed0e7"
+                "reference": "f9998a2266a5a1e368127f9781a74848b1557b6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-fulltextsearch/zipball/2cd8582c4b70045d51cab4c9a687ecf0aafed0e7",
-                "reference": "2cd8582c4b70045d51cab4c9a687ecf0aafed0e7",
+                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-fulltextsearch/zipball/f9998a2266a5a1e368127f9781a74848b1557b6e",
+                "reference": "f9998a2266a5a1e368127f9781a74848b1557b6e",
                 "shasum": ""
             },
             "require": {
@@ -321,7 +321,7 @@
                 "solr",
                 "sphinx"
             ],
-            "time": "2013-04-03 03:25:49"
+            "time": "2013-04-12 04:31:10"
         },
         {
             "name": "silverstripe/iframe",
@@ -376,7 +376,7 @@
                 "silverstripe/framework": ">=3.0.0"
             },
             "type": "silverstripe-module",
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -545,12 +545,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-translatable.git",
-                "reference": "ba31412fa88a5d46dfc0418e7c917aaef3478c1b"
+                "reference": "bc7c0436c017905bbc180322006f060f5dc9b772"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-translatable/zipball/ba31412fa88a5d46dfc0418e7c917aaef3478c1b",
-                "reference": "ba31412fa88a5d46dfc0418e7c917aaef3478c1b",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-translatable/zipball/bc7c0436c017905bbc180322006f060f5dc9b772",
+                "reference": "bc7c0436c017905bbc180322006f060f5dc9b772",
                 "shasum": ""
             },
             "require": {
@@ -567,7 +567,7 @@
             "extra": {
                 "snapshot": "http://www.silverstripe.org/assets/Uploads/translatable4-small.png"
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -588,7 +588,7 @@
                 "localization",
                 "silverstripe"
             ],
-            "time": "2013-04-11 07:56:46"
+            "time": "2013-04-14 21:12:52"
         },
         {
             "name": "silverstripe/userforms",
@@ -596,12 +596,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-userforms.git",
-                "reference": "48246c7e049cd6cac75db76e1d8f42df9cef12fa"
+                "reference": "3b9419ab7ed57acb66414c105e089457c56719ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-userforms/zipball/48246c7e049cd6cac75db76e1d8f42df9cef12fa",
-                "reference": "48246c7e049cd6cac75db76e1d8f42df9cef12fa",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-userforms/zipball/3b9419ab7ed57acb66414c105e089457c56719ff",
+                "reference": "3b9419ab7ed57acb66414c105e089457c56719ff",
                 "shasum": ""
             },
             "require": {
@@ -625,7 +625,7 @@
                 "silverstripe",
                 "userforms"
             ],
-            "time": "2013-04-09 23:59:42"
+            "time": "2013-04-14 21:35:25"
         },
         {
             "name": "silverstripe/versionedfiles",
@@ -633,12 +633,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ajshort/silverstripe-versionedfiles.git",
-                "reference": "2bc0acbd0fae564ee5f9083f8a3524175400e94d"
+                "reference": "a41cbbeddebbcc88266a28b18a26826c1e2a38a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ajshort/silverstripe-versionedfiles/zipball/2bc0acbd0fae564ee5f9083f8a3524175400e94d",
-                "reference": "2bc0acbd0fae564ee5f9083f8a3524175400e94d",
+                "url": "https://api.github.com/repos/ajshort/silverstripe-versionedfiles/zipball/a41cbbeddebbcc88266a28b18a26826c1e2a38a7",
+                "reference": "a41cbbeddebbcc88266a28b18a26826c1e2a38a7",
                 "shasum": ""
             },
             "require": {
@@ -659,7 +659,7 @@
             "keywords": [
                 "silverstripe"
             ],
-            "time": "2013-03-28 05:21:52"
+            "time": "2013-04-12 01:09:37"
         },
         {
             "name": "silverstripe/versionfeed",
@@ -775,7 +775,7 @@
                     "Behat\\Behat": "src/"
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -834,7 +834,7 @@
                     "Behat\\Gherkin": "src/"
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -895,7 +895,7 @@
                     "Behat\\Mink": "src/"
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -949,7 +949,7 @@
                     "Behat\\Mink\\Driver": "src/"
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -998,7 +998,7 @@
                     "Behat\\MinkExtension": "src/"
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1055,7 +1055,7 @@
                     "Behat\\Mink\\Driver": "src/"
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1106,7 +1106,7 @@
                     "Behat\\Mink\\Driver": "src/"
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1169,7 +1169,7 @@
                     "Goutte": "."
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1192,12 +1192,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "6664d8a1f68b3c02036d34b615e27834cb80f67b"
+                "reference": "69e3f83717405f16f8dbfce3ffbb0e5d92212a46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/6664d8a1f68b3c02036d34b615e27834cb80f67b",
-                "reference": "6664d8a1f68b3c02036d34b615e27834cb80f67b",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/69e3f83717405f16f8dbfce3ffbb0e5d92212a46",
+                "reference": "69e3f83717405f16f8dbfce3ffbb0e5d92212a46",
                 "shasum": ""
             },
             "require": {
@@ -1252,7 +1252,7 @@
                     "Guzzle": "src/"
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1278,7 +1278,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2013-04-11 20:03:03"
+            "time": "2013-04-15 20:42:27"
         },
         {
             "name": "instaclick/php-webdriver",
@@ -1308,7 +1308,7 @@
                     "WebDriver": "lib/"
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache-2.0"
             ],
@@ -1321,7 +1321,7 @@
                 {
                     "name": "Anthon Pang",
                     "email": "apang@softwaredevelopment.ca",
-                    "role": "developer"
+                    "role": "Fork Maintainer"
                 }
             ],
             "description": "PHP WebDriver for Selenium 2",
@@ -1364,7 +1364,7 @@
                     "PHP/"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -1410,7 +1410,7 @@
                     "File/"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -1455,7 +1455,7 @@
                     "Text/"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -1499,7 +1499,7 @@
                     "PHP/"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -1544,7 +1544,7 @@
                     "PHP/"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -1571,12 +1571,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "3.7.19"
+                "reference": "69763a1876d58301c245bac0d7568398340e89d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3.7.19",
-                "reference": "3.7.19",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/69763a1876d58301c245bac0d7568398340e89d7",
+                "reference": "69763a1876d58301c245bac0d7568398340e89d7",
                 "shasum": ""
             },
             "require": {
@@ -1615,7 +1615,7 @@
                     "PHPUnit/"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 "",
                 "../../symfony/yaml/"
@@ -1637,7 +1637,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2013-03-25 11:45:06"
+            "time": "2013-04-15 15:47:15"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1666,7 +1666,7 @@
                     "PHPUnit/"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -1717,7 +1717,7 @@
                     "SilverStripe\\BehatExtension": "src/"
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1762,7 +1762,7 @@
                 "php": ">=5.3.2"
             },
             "type": "silverstripe-module",
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1801,7 +1801,7 @@
                 "silverstripe/framework": ">=3.1,<4.0"
             },
             "type": "silverstripe-module",
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1856,7 +1856,7 @@
                     "Symfony\\Component\\BrowserKit\\": ""
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1898,7 +1898,7 @@
                     "Symfony\\Component\\Config": ""
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1940,7 +1940,7 @@
                     "Symfony\\Component\\Console": ""
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1982,7 +1982,7 @@
                     "Symfony\\Component\\CssSelector": ""
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2032,7 +2032,7 @@
                     "Symfony\\Component\\DependencyInjection": ""
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2085,7 +2085,7 @@
                     "Symfony\\Component\\DomCrawler\\": ""
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2134,7 +2134,7 @@
                     "Symfony\\Component\\EventDispatcher": ""
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2176,7 +2176,7 @@
                     "Symfony\\Component\\Finder": ""
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2201,12 +2201,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
-                "reference": "cb6bbfbd5bc852cbd13768787f1b27d238ef6045"
+                "reference": "11e56d6342d8846c3130360a5099589dc1aaf182"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Process/zipball/cb6bbfbd5bc852cbd13768787f1b27d238ef6045",
-                "reference": "cb6bbfbd5bc852cbd13768787f1b27d238ef6045",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/11e56d6342d8846c3130360a5099589dc1aaf182",
+                "reference": "11e56d6342d8846c3130360a5099589dc1aaf182",
                 "shasum": ""
             },
             "require": {
@@ -2223,7 +2223,7 @@
                     "Symfony\\Component\\Process\\": ""
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2239,7 +2239,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "http://symfony.com",
-            "time": "2013-04-07 20:25:23"
+            "time": "2013-04-14 16:37:33"
         },
         {
             "name": "symfony/translation",
@@ -2273,7 +2273,7 @@
                     "Symfony\\Component\\Translation": ""
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2298,12 +2298,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "v2.1.9"
+                "reference": "4ef80f5c5081ad9a7e08184fc9f25c62d87e408c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/v2.1.9",
-                "reference": "v2.1.9",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/4ef80f5c5081ad9a7e08184fc9f25c62d87e408c",
+                "reference": "4ef80f5c5081ad9a7e08184fc9f25c62d87e408c",
                 "shasum": ""
             },
             "require": {
@@ -2315,7 +2315,7 @@
                     "Symfony\\Component\\Yaml": ""
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2331,7 +2331,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2013-03-23 01:54:33"
+            "time": "2013-04-12 10:27:36"
         }
     ],
     "aliases": [
