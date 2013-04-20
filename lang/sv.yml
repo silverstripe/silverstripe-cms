@@ -62,7 +62,7 @@ sv:
     Title: 'Skapa sida'
   CMSBatchActions:
     DELETED_DRAFT_PAGES: 'Raderade %d sidor från utkastsajten, %d misslyckades'
-    DELETED_PAGES: 'Raderade %d sidor från den publiserade sajten, %d misslyckades'
+    DELETED_PAGES: 'Raderade %d sidor från den publicerade sajten, %d misslyckades'
     DELETE_DRAFT_PAGES: 'Radera från utkast'
     DELETE_PAGES: 'Radera från publicerade sajten'
     PUBLISHED_PAGES: 'Publicerade %d sidor, %d misslyckades'
@@ -227,7 +227,7 @@ sv:
     DELETED: Raderad.
     PreviewButton: Förhandsgranska
     SAVEDUP: Sparad.
-    STATUSPUBLISHEDSUCCESS: 'Publiseringen av  ''{title}'' lyckades'
+    STATUSPUBLISHEDSUCCESS: 'Publiceringen av  ''{title}'' lyckades'
     SearchResults: Sökresultat
     VersionUnknown: Okänd
   Permission:
