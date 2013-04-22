@@ -22,7 +22,5 @@ date_default_timezone_set('Pacific/Auckland');
 
 if (class_exists('SiteTree')) SiteTree::enable_nested_urls();
 
-SiteTree::set_create_default_pages(false);
-
 SiteTree::add_extension('WorkflowApplicable');
 SiteTree::add_extension('WorkflowEmbargoExpiryExtension');
