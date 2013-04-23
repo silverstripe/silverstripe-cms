@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "d6d091410adecb7385733809a9d9237ed642c81c"
+                "reference": "6c23b07b3d07e392a1769110d2a910ab269aaa3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/d6d091410adecb7385733809a9d9237ed642c81c",
-                "reference": "d6d091410adecb7385733809a9d9237ed642c81c",
+                "url": "https://api.github.com/repos/composer/installers/zipball/6c23b07b3d07e392a1769110d2a910ab269aaa3d",
+                "reference": "6c23b07b3d07e392a1769110d2a910ab269aaa3d",
                 "shasum": ""
             },
             "replace": {
@@ -75,7 +75,7 @@
                 "yii",
                 "zend"
             ],
-            "time": "2013-04-07 20:02:43"
+            "time": "2013-04-22 16:11:49"
         },
         {
             "name": "cwp-themes/default",
@@ -83,7 +83,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp-themes/default.git",
-                "reference": "25bd397731690495c0cdedf321c200acba91ff59"
+                "reference": "6a8b9e949eedb14c5cc5c03405fcc20f726941cd"
             },
             "require": {
                 "composer/installers": "*",
@@ -99,7 +99,7 @@
                 }
             },
             "description": "CWP Default Theme",
-            "time": "2013-04-14 23:18:47"
+            "time": "2013-04-19 01:18:57"
         },
         {
             "name": "cwp/cwp",
@@ -107,7 +107,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp.git",
-                "reference": "4f493aea1cfcff2ec61960d2699ee0fefd427903"
+                "reference": "56ef0904be0936ed961f3271cef6d7bbe70542a5"
             },
             "require": {
                 "composer/installers": "*",
@@ -126,7 +126,7 @@
                 }
             },
             "description": "CWP Main Extension Module",
-            "time": "2013-04-16 02:44:16"
+            "time": "2013-04-23 00:31:05"
         },
         {
             "name": "silverstripe-themes/module_bootstrap",
@@ -202,12 +202,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-cms.git",
-                "reference": "a15081fbcc8ccfad1a512cbbec165bc9e31771f6"
+                "reference": "3.1.0-beta3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/a15081fbcc8ccfad1a512cbbec165bc9e31771f6",
-                "reference": "a15081fbcc8ccfad1a512cbbec165bc9e31771f6",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/3.1.0-beta3",
+                "reference": "3.1.0-beta3",
                 "shasum": ""
             },
             "require": {
@@ -241,7 +241,7 @@
                 "cms",
                 "silverstripe"
             ],
-            "time": "2013-04-10 07:55:32"
+            "time": "2013-04-18 16:31:31"
         },
         {
             "name": "silverstripe/framework",
@@ -249,12 +249,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/sapphire.git",
-                "reference": "c02d7e4c2e367cc6444c28262360eaf4bb2122e3"
+                "reference": "59dbdcfc55c00aa23297742777c52d24f3f01c68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/sapphire/zipball/c02d7e4c2e367cc6444c28262360eaf4bb2122e3",
-                "reference": "c02d7e4c2e367cc6444c28262360eaf4bb2122e3",
+                "url": "https://api.github.com/repos/silverstripe/sapphire/zipball/59dbdcfc55c00aa23297742777c52d24f3f01c68",
+                "reference": "59dbdcfc55c00aa23297742777c52d24f3f01c68",
                 "shasum": ""
             },
             "require": {
@@ -287,7 +287,7 @@
                 "framework",
                 "silverstripe"
             ],
-            "time": "2013-04-14 21:56:45"
+            "time": "2013-04-22 19:20:08"
         },
         {
             "name": "silverstripe/fulltextsearch",
@@ -596,12 +596,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-userforms.git",
-                "reference": "3b9419ab7ed57acb66414c105e089457c56719ff"
+                "reference": "4c79a2077afe7470beca9514f5f3b6ccf56a0806"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-userforms/zipball/3b9419ab7ed57acb66414c105e089457c56719ff",
-                "reference": "3b9419ab7ed57acb66414c105e089457c56719ff",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-userforms/zipball/4c79a2077afe7470beca9514f5f3b6ccf56a0806",
+                "reference": "4c79a2077afe7470beca9514f5f3b6ccf56a0806",
                 "shasum": ""
             },
             "require": {
@@ -625,7 +625,7 @@
                 "silverstripe",
                 "userforms"
             ],
-            "time": "2013-04-14 21:35:25"
+            "time": "2013-04-22 23:39:15"
         },
         {
             "name": "silverstripe/versionedfiles",
@@ -704,12 +704,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/UndefinedOffset/SortableGridField.git",
-                "reference": "399dc0ab89b5e8e27bf2981a1161b47849d2cdef"
+                "reference": "0.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/UndefinedOffset/SortableGridField/zipball/399dc0ab89b5e8e27bf2981a1161b47849d2cdef",
-                "reference": "399dc0ab89b5e8e27bf2981a1161b47849d2cdef",
+                "url": "https://api.github.com/repos/UndefinedOffset/SortableGridField/zipball/0.1.1",
+                "reference": "0.1.1",
                 "shasum": ""
             },
             "require": {
@@ -733,7 +733,7 @@
                 "gridfield",
                 "silverstripe"
             ],
-            "time": "2013-04-09 16:44:47"
+            "time": "2013-04-19 22:32:47"
         }
     ],
     "packages-dev": [
@@ -1192,12 +1192,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "69e3f83717405f16f8dbfce3ffbb0e5d92212a46"
+                "reference": "aa33f0708e62de956686ae13129e9e40d69c0cb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/69e3f83717405f16f8dbfce3ffbb0e5d92212a46",
-                "reference": "69e3f83717405f16f8dbfce3ffbb0e5d92212a46",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/aa33f0708e62de956686ae13129e9e40d69c0cb4",
+                "reference": "aa33f0708e62de956686ae13129e9e40d69c0cb4",
                 "shasum": ""
             },
             "require": {
@@ -1278,7 +1278,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2013-04-15 20:42:27"
+            "time": "2013-04-22 17:58:16"
         },
         {
             "name": "instaclick/php-webdriver",
@@ -1571,12 +1571,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "69763a1876d58301c245bac0d7568398340e89d7"
+                "reference": "b52bacb0c8545f238d5e1e6176fd5749827e1a20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/69763a1876d58301c245bac0d7568398340e89d7",
-                "reference": "69763a1876d58301c245bac0d7568398340e89d7",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b52bacb0c8545f238d5e1e6176fd5749827e1a20",
+                "reference": "b52bacb0c8545f238d5e1e6176fd5749827e1a20",
                 "shasum": ""
             },
             "require": {
@@ -1637,7 +1637,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2013-04-15 15:47:15"
+            "time": "2013-04-16 16:15:34"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1749,12 +1749,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-buildtools.git",
-                "reference": "c127b0a90fd464519ba14e6dbae44b783daf0f23"
+                "reference": "de48389688c9051a406fe12a280846a64d6c5f78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-buildtools/zipball/c127b0a90fd464519ba14e6dbae44b783daf0f23",
-                "reference": "c127b0a90fd464519ba14e6dbae44b783daf0f23",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-buildtools/zipball/de48389688c9051a406fe12a280846a64d6c5f78",
+                "reference": "de48389688c9051a406fe12a280846a64d6c5f78",
                 "shasum": ""
             },
             "require": {
@@ -1778,7 +1778,7 @@
                 "phing",
                 "silverstripe"
             ],
-            "time": "2013-04-10 13:59:28"
+            "time": "2013-04-19 10:37:25"
         },
         {
             "name": "silverstripe/testsession",
@@ -1881,12 +1881,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Config.git",
-                "reference": "v2.1.9"
+                "reference": "6e0586f2ed8ed343c294ac40d9c31b17a04243bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Config/zipball/v2.1.9",
-                "reference": "v2.1.9",
+                "url": "https://api.github.com/repos/symfony/Config/zipball/6e0586f2ed8ed343c294ac40d9c31b17a04243bb",
+                "reference": "6e0586f2ed8ed343c294ac40d9c31b17a04243bb",
                 "shasum": ""
             },
             "require": {
@@ -1914,7 +1914,7 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "http://symfony.com",
-            "time": "2013-01-09 08:51:07"
+            "time": "2013-04-22 04:28:40"
         },
         {
             "name": "symfony/console",
@@ -1923,12 +1923,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "f98590ded7b4628138613ee3844536a2a4d80140"
+                "reference": "ce41abe4ce6827083c981e556600f4fdad88b04c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/f98590ded7b4628138613ee3844536a2a4d80140",
-                "reference": "f98590ded7b4628138613ee3844536a2a4d80140",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/ce41abe4ce6827083c981e556600f4fdad88b04c",
+                "reference": "ce41abe4ce6827083c981e556600f4fdad88b04c",
                 "shasum": ""
             },
             "require": {
@@ -1956,7 +1956,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2013-04-07 14:54:11"
+            "time": "2013-04-17 05:12:51"
         },
         {
             "name": "symfony/css-selector",
@@ -2007,12 +2007,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/DependencyInjection.git",
-                "reference": "v2.1.9"
+                "reference": "7a087ddc962252c177ff7166b9d6048854908de2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/DependencyInjection/zipball/v2.1.9",
-                "reference": "v2.1.9",
+                "url": "https://api.github.com/repos/symfony/DependencyInjection/zipball/7a087ddc962252c177ff7166b9d6048854908de2",
+                "reference": "7a087ddc962252c177ff7166b9d6048854908de2",
                 "shasum": ""
             },
             "require": {
@@ -2048,7 +2048,7 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "http://symfony.com",
-            "time": "2013-03-23 06:58:10"
+            "time": "2013-04-19 06:18:27"
         },
         {
             "name": "symfony/dom-crawler",
@@ -2057,12 +2057,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/DomCrawler.git",
-                "reference": "0bcf05b5b461dca5c5d92e345f9114aebb72d35a"
+                "reference": "59b171317b17b60a5df830e09e02961563323e8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/DomCrawler/zipball/0bcf05b5b461dca5c5d92e345f9114aebb72d35a",
-                "reference": "0bcf05b5b461dca5c5d92e345f9114aebb72d35a",
+                "url": "https://api.github.com/repos/symfony/DomCrawler/zipball/59b171317b17b60a5df830e09e02961563323e8d",
+                "reference": "59b171317b17b60a5df830e09e02961563323e8d",
                 "shasum": ""
             },
             "require": {
@@ -2101,7 +2101,7 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "http://symfony.com",
-            "time": "2013-04-07 16:48:09"
+            "time": "2013-04-22 05:03:23"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -2201,12 +2201,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
-                "reference": "11e56d6342d8846c3130360a5099589dc1aaf182"
+                "reference": "a7177e400f55d62d5b94027ce7df6a715cef51ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Process/zipball/11e56d6342d8846c3130360a5099589dc1aaf182",
-                "reference": "11e56d6342d8846c3130360a5099589dc1aaf182",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/a7177e400f55d62d5b94027ce7df6a715cef51ff",
+                "reference": "a7177e400f55d62d5b94027ce7df6a715cef51ff",
                 "shasum": ""
             },
             "require": {
@@ -2239,7 +2239,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "http://symfony.com",
-            "time": "2013-04-14 16:37:33"
+            "time": "2013-04-21 08:43:42"
         },
         {
             "name": "symfony/translation",
@@ -2248,12 +2248,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Translation.git",
-                "reference": "9a977af2f4b85529ec87b1f026a0fda83507db27"
+                "reference": "39ba7a5dc560959667c45c9353b70f43182ca4b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Translation/zipball/9a977af2f4b85529ec87b1f026a0fda83507db27",
-                "reference": "9a977af2f4b85529ec87b1f026a0fda83507db27",
+                "url": "https://api.github.com/repos/symfony/Translation/zipball/39ba7a5dc560959667c45c9353b70f43182ca4b3",
+                "reference": "39ba7a5dc560959667c45c9353b70f43182ca4b3",
                 "shasum": ""
             },
             "require": {
@@ -2289,7 +2289,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "http://symfony.com",
-            "time": "2013-04-01 08:04:03"
+            "time": "2013-04-20 08:25:59"
         },
         {
             "name": "symfony/yaml",
