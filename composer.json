@@ -13,7 +13,8 @@
 		"cwp-themes/default": "*",
 		"silverstripe/advancedworkflow": "*",
 		"silverstripe/restfulserver": "*",
-		"silverstripe/queuedjobs": "*"
+		"silverstripe/queuedjobs": "*",
+		"silverstripe/subsites": "*"
 	},
 	"require-dev": {
 		"silverstripe/behat-extension": "*",
