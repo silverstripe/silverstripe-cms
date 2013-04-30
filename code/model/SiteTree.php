@@ -2758,7 +2758,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				'name' => _t('SiteTree.VIEW_ALL_DESCRIPTION', 'View any page'),
 				'category' => _t('Permissions.CONTENT_CATEGORY', 'Content permissions'),
 				'sort' => -100,
-				'help' => _t('SiteTree.VIEW_ALL_HELP', 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission')
+				'help' => _t('SiteTree.VIEW_ALL_HELP', 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to \'Pages\' section" permission')
 			),
 			'SITETREE_EDIT_ALL' => array(
 				'name' => _t('SiteTree.EDIT_ALL_DESCRIPTION', 'Edit any page'),
