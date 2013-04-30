@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "56973a79dc25e0b4107ddf444a0e9119",
+    "hash": "8e0a63fc11200a99c5f7e1f37c8d6214",
     "packages": [
         {
             "name": "composer/installers",
@@ -107,7 +107,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp.git",
-                "reference": "32dd436f0e08424fc75b3948afd68986cac14ef7"
+                "reference": "4eb8f4642a83b26b5ad5db878ad7c63efafe2a67"
             },
             "require": {
                 "composer/installers": "*",
@@ -126,7 +126,7 @@
                 }
             },
             "description": "CWP Main Extension Module",
-            "time": "2013-04-30 05:14:49"
+            "time": "2013-04-30 22:19:37"
         },
         {
             "name": "silverstripe-themes/module_bootstrap",
@@ -202,12 +202,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-cms.git",
-                "reference": "3.1.0-beta3"
+                "reference": "b4f2e35b3266f95518a16ee307a5fb422567b336"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/3.1.0-beta3",
-                "reference": "3.1.0-beta3",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/b4f2e35b3266f95518a16ee307a5fb422567b336",
+                "reference": "b4f2e35b3266f95518a16ee307a5fb422567b336",
                 "shasum": ""
             },
             "require": {
@@ -241,7 +241,7 @@
                 "cms",
                 "silverstripe"
             ],
-            "time": "2013-04-18 16:31:31"
+            "time": "2013-04-30 05:58:47"
         },
         {
             "name": "silverstripe/framework",
@@ -249,12 +249,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/sapphire.git",
-                "reference": "cef955c8b912248d8dc45479668fb08420d74fb7"
+                "reference": "284245c3deee71e12909da5e560ab4d5418ff49b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/sapphire/zipball/cef955c8b912248d8dc45479668fb08420d74fb7",
-                "reference": "cef955c8b912248d8dc45479668fb08420d74fb7",
+                "url": "https://api.github.com/repos/silverstripe/sapphire/zipball/284245c3deee71e12909da5e560ab4d5418ff49b",
+                "reference": "284245c3deee71e12909da5e560ab4d5418ff49b",
                 "shasum": ""
             },
             "require": {
@@ -287,7 +287,7 @@
                 "framework",
                 "silverstripe"
             ],
-            "time": "2013-04-29 22:35:25"
+            "time": "2013-04-30 13:42:25"
         },
         {
             "name": "silverstripe/fulltextsearch",
@@ -322,6 +322,35 @@
                 "sphinx"
             ],
             "time": "2013-04-12 04:31:10"
+        },
+        {
+            "name": "silverstripe/html5",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silverstripe/silverstripe-html5.git",
+                "reference": "54fc0b86efbfc571293c75862991923c78a7f1f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-html5/zipball/54fc0b86efbfc571293c75862991923c78a7f1f8",
+                "reference": "54fc0b86efbfc571293c75862991923c78a7f1f8",
+                "shasum": ""
+            },
+            "require": {
+                "silverstripe/framework": "3.*"
+            },
+            "type": "silverstripe-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "HTML5 support for SilverStripe",
+            "keywords": [
+                "HTML5",
+                "silverstripe"
+            ],
+            "time": "2013-03-19 21:01:47"
         },
         {
             "name": "silverstripe/iframe",
@@ -510,12 +539,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-subsites.git",
-                "reference": "7e7777ec6ab421a9a3f6bb3b9ada433dcb366da7"
+                "reference": "fbddc076b82d5c7439b06022e28364c63ce01be6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-subsites/zipball/7e7777ec6ab421a9a3f6bb3b9ada433dcb366da7",
-                "reference": "7e7777ec6ab421a9a3f6bb3b9ada433dcb366da7",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-subsites/zipball/fbddc076b82d5c7439b06022e28364c63ce01be6",
+                "reference": "fbddc076b82d5c7439b06022e28364c63ce01be6",
                 "shasum": ""
             },
             "require": {
@@ -536,7 +565,7 @@
                 "silverstripe",
                 "subsites"
             ],
-            "time": "2013-04-30 04:03:00"
+            "time": "2013-04-30 05:53:09"
         },
         {
             "name": "silverstripe/taxonomy",
@@ -1859,12 +1888,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/BrowserKit.git",
-                "reference": "698d6aac8134ecec647e745c67970ca1f0ce073b"
+                "reference": "c039600a1aa5ad56bbe251132e5319f060fa1a74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/BrowserKit/zipball/698d6aac8134ecec647e745c67970ca1f0ce073b",
-                "reference": "698d6aac8134ecec647e745c67970ca1f0ce073b",
+                "url": "https://api.github.com/repos/symfony/BrowserKit/zipball/c039600a1aa5ad56bbe251132e5319f060fa1a74",
+                "reference": "c039600a1aa5ad56bbe251132e5319f060fa1a74",
                 "shasum": ""
             },
             "require": {
@@ -1905,7 +1934,7 @@
             ],
             "description": "Symfony BrowserKit Component",
             "homepage": "http://symfony.com",
-            "time": "2013-04-25 10:35:08"
+            "time": "2013-04-30 07:16:44"
         },
         {
             "name": "symfony/config",
@@ -2234,12 +2263,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
-                "reference": "d55770ab111a89ee92773eb16f8acef9b09870f5"
+                "reference": "9b6fe3aa425d6c6f6b019d1948072f376de0ea41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Process/zipball/d55770ab111a89ee92773eb16f8acef9b09870f5",
-                "reference": "d55770ab111a89ee92773eb16f8acef9b09870f5",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/9b6fe3aa425d6c6f6b019d1948072f376de0ea41",
+                "reference": "9b6fe3aa425d6c6f6b019d1948072f376de0ea41",
                 "shasum": ""
             },
             "require": {
@@ -2272,7 +2301,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "http://symfony.com",
-            "time": "2013-04-25 13:23:11"
+            "time": "2013-04-30 07:21:49"
         },
         {
             "name": "symfony/translation",

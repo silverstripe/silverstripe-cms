@@ -14,7 +14,8 @@
 		"silverstripe/advancedworkflow": "*",
 		"silverstripe/restfulserver": "*",
 		"silverstripe/queuedjobs": "*",
-		"silverstripe/subsites": "*"
+		"silverstripe/subsites": "*",
+		"silverstripe/html5": "*"
 	},
 	"require-dev": {
 		"silverstripe/behat-extension": "*",
