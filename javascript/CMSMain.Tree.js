@@ -60,9 +60,12 @@
 								'label': '<span class="jstree-pageicon"></span>' + klassData.title,
 								'_class': 'class-' + klass,
 								'action': function(obj) {
-									$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
-									self.data('urlAddpage'), id, klass
-									));
+									$('.cms-container').entwine('.ss').loadPanel(
+										$.path.addSearchParams(
+											ss.i18n.sprintf(self.data('urlAddpage'), id, klass),
+											self.data('extraParams')
+										)
+									);
 								}
 							};
 						});
@@ -80,16 +83,22 @@
 								{
 									'label': ss.i18n._t('Tree.ThisPageOnly'),
 									'action': function(obj) {
-										$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
-											self.data('urlDuplicate'), obj.data('id')
-										));
+										$('.cms-container').entwine('.ss').loadPanel(
+											$.path.addSearchParams(
+												ss.i18n.sprintf(self.data('urlDuplicate'), obj.data('id')), 
+												self.data('extraParams')
+											)
+										);
 									}
 								},{
 									'label': ss.i18n._t('Tree.ThisPageAndSubpages'),
 									'action': function(obj) {
-										$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
-											self.data('urlDuplicatewithchildren'), obj.data('id')
-										));
+										$('.cms-container').entwine('.ss').loadPanel(
+											$.path.addSearchParams(
+												ss.i18n.sprintf(self.data('urlDuplicatewithchildren'), obj.data('id')), 
+												self.data('extraParams')
+											)
+										);
 									}
 								}
 							]									

@@ -98,8 +98,12 @@
 					if(state) parentId = parseInt(JSON.parse(state).ParentID, 10);
 				}
 					
-				var data = {selector: this.data('targetPanel'),pjax: this.data('pjax')},
-					url = parentId ? ss.i18n.sprintf(this.data('urlAddpage'), parentId) : this.attr('href');
+				var data = {selector: this.data('targetPanel'),pjax: this.data('pjax')}, url;
+				if(parentID) {
+					url = $.path.addSearchParams(ss.i18n.sprintf(this.data('urlAddpage'), parentId), this.data('extraParams'));
+				} else {
+					url = this.attr('href');
+				}
 
 				$('.cms-container').loadPanel(url, null, data);
 				e.preventDefault();
