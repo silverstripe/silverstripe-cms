@@ -107,7 +107,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp.git",
-                "reference": "4eb8f4642a83b26b5ad5db878ad7c63efafe2a67"
+                "reference": "bebdc922c31f5af73d7a882b19e27efb78451ac4"
             },
             "require": {
                 "composer/installers": "*",
@@ -126,7 +126,7 @@
                 }
             },
             "description": "CWP Main Extension Module",
-            "time": "2013-04-30 22:19:37"
+            "time": "2013-05-01 00:39:25"
         },
         {
             "name": "silverstripe-themes/module_bootstrap",
@@ -539,12 +539,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-subsites.git",
-                "reference": "fbddc076b82d5c7439b06022e28364c63ce01be6"
+                "reference": "0247765563522ef854be9fbf1d862a49c0d044c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-subsites/zipball/fbddc076b82d5c7439b06022e28364c63ce01be6",
-                "reference": "fbddc076b82d5c7439b06022e28364c63ce01be6",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-subsites/zipball/0247765563522ef854be9fbf1d862a49c0d044c8",
+                "reference": "0247765563522ef854be9fbf1d862a49c0d044c8",
                 "shasum": ""
             },
             "require": {
@@ -565,7 +565,7 @@
                 "silverstripe",
                 "subsites"
             ],
-            "time": "2013-04-30 05:53:09"
+            "time": "2013-05-01 00:35:17"
         },
         {
             "name": "silverstripe/taxonomy",
@@ -659,12 +659,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-userforms.git",
-                "reference": "c5200d31b44ead0a8a4612cdcdd342fd3cee0c74"
+                "reference": "869d4574171b0dd4a7a3960a2d8acc10d9111aa1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-userforms/zipball/c5200d31b44ead0a8a4612cdcdd342fd3cee0c74",
-                "reference": "c5200d31b44ead0a8a4612cdcdd342fd3cee0c74",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-userforms/zipball/869d4574171b0dd4a7a3960a2d8acc10d9111aa1",
+                "reference": "869d4574171b0dd4a7a3960a2d8acc10d9111aa1",
                 "shasum": ""
             },
             "require": {
@@ -688,7 +688,7 @@
                 "silverstripe",
                 "userforms"
             ],
-            "time": "2013-04-24 23:13:52"
+            "time": "2013-04-30 23:43:32"
         },
         {
             "name": "silverstripe/versionedfiles",
