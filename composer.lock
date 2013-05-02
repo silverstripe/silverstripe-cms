@@ -107,7 +107,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp.git",
-                "reference": "89c10fdae0e64d64f6968be72e13fef7bb1f8029"
+                "reference": "aad628a82a6b88c052e8c5fe9f8efa25895f450d"
             },
             "require": {
                 "composer/installers": "*",
@@ -126,7 +126,7 @@
                 }
             },
             "description": "CWP Main Extension Module",
-            "time": "2013-05-01 22:33:07"
+            "time": "2013-05-02 22:52:03"
         },
         {
             "name": "silverstripe-themes/module_bootstrap",
@@ -242,12 +242,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/sapphire.git",
-                "reference": "131e21d777e3a410925c5870401b8171a62223a5"
+                "reference": "7fbb9e3a960286a457b53f0485387ef2540db379"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/sapphire/zipball/131e21d777e3a410925c5870401b8171a62223a5",
-                "reference": "131e21d777e3a410925c5870401b8171a62223a5",
+                "url": "https://api.github.com/repos/silverstripe/sapphire/zipball/7fbb9e3a960286a457b53f0485387ef2540db379",
+                "reference": "7fbb9e3a960286a457b53f0485387ef2540db379",
                 "shasum": ""
             },
             "require": {
@@ -280,7 +280,7 @@
                 "framework",
                 "silverstripe"
             ],
-            "time": "2013-05-01 05:46:45"
+            "time": "2013-05-02 21:05:32"
         },
         {
             "name": "silverstripe/fulltextsearch",
@@ -288,12 +288,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-fulltextsearch.git",
-                "reference": "f9998a2266a5a1e368127f9781a74848b1557b6e"
+                "reference": "3ab71f70b09463595284b6bd0399f1fa9d139027"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-fulltextsearch/zipball/f9998a2266a5a1e368127f9781a74848b1557b6e",
-                "reference": "f9998a2266a5a1e368127f9781a74848b1557b6e",
+                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-fulltextsearch/zipball/3ab71f70b09463595284b6bd0399f1fa9d139027",
+                "reference": "3ab71f70b09463595284b6bd0399f1fa9d139027",
                 "shasum": ""
             },
             "require": {
@@ -314,7 +314,7 @@
                 "solr",
                 "sphinx"
             ],
-            "time": "2013-04-12 04:31:10"
+            "time": "2013-05-02 21:45:48"
         },
         {
             "name": "silverstripe/html5",
@@ -1619,12 +1619,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "47b0d674f9739b171c05f3095487518ba6aaacec"
+                "reference": "b2ba9a6fa005ef708495bbd7fa95f1f35e2f17b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/47b0d674f9739b171c05f3095487518ba6aaacec",
-                "reference": "47b0d674f9739b171c05f3095487518ba6aaacec",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b2ba9a6fa005ef708495bbd7fa95f1f35e2f17b1",
+                "reference": "b2ba9a6fa005ef708495bbd7fa95f1f35e2f17b1",
                 "shasum": ""
             },
             "require": {
@@ -1638,7 +1638,7 @@
                 "phpunit/php-text-template": ">=1.1.1",
                 "phpunit/php-timer": ">=1.0.2,<1.1.0",
                 "phpunit/phpunit-mock-objects": ">=1.2.0,<1.3.0",
-                "symfony/yaml": ">=2.0.0,<2.3.0"
+                "symfony/yaml": ">=2.0,<3.0"
             },
             "require-dev": {
                 "pear-pear/pear": "1.9.4"
@@ -1685,7 +1685,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2013-04-23 21:17:50"
+            "time": "2013-05-02 08:21:05"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
