@@ -107,7 +107,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp.git",
-                "reference": "4c07069fdb46bd02e23f917f66dfb9ffbfd4ac2c"
+                "reference": "f66dafb44b5a05cf419d299583875b54be46747b"
             },
             "require": {
                 "composer/installers": "*",
@@ -126,7 +126,7 @@
                 }
             },
             "description": "CWP Main Extension Module",
-            "time": "2013-05-03 02:21:06"
+            "time": "2013-05-06 05:22:15"
         },
         {
             "name": "silverstripe-themes/module_bootstrap",
@@ -242,12 +242,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/sapphire.git",
-                "reference": "fe2663a1404a9aa2ea489aee7b920c8868fbfbc4"
+                "reference": "b5a83878dddcfc739d6be500da3699657167ad5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/sapphire/zipball/fe2663a1404a9aa2ea489aee7b920c8868fbfbc4",
-                "reference": "fe2663a1404a9aa2ea489aee7b920c8868fbfbc4",
+                "url": "https://api.github.com/repos/silverstripe/sapphire/zipball/b5a83878dddcfc739d6be500da3699657167ad5f",
+                "reference": "b5a83878dddcfc739d6be500da3699657167ad5f",
                 "shasum": ""
             },
             "require": {
@@ -280,7 +280,7 @@
                 "framework",
                 "silverstripe"
             ],
-            "time": "2013-05-05 00:38:07"
+            "time": "2013-05-06 00:51:46"
         },
         {
             "name": "silverstripe/fulltextsearch",
