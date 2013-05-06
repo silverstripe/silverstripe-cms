@@ -1954,7 +1954,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		));
 		
 		foreach(array_reverse($this->beforeExtendingCMSFieldsCallbacks) as $callback) {
-			$callback($fields);
+			call_user_func($callback, $fields);
 		}
 		$this->beforeExtendingCMSFieldsCallbacks = array();
 		
