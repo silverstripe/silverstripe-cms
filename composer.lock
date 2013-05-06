@@ -107,12 +107,12 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp.git",
-                "reference": "f66dafb44b5a05cf419d299583875b54be46747b"
+                "reference": "13ea1bfbf17ccfe756ab7af2087d977889bc553c"
             },
             "require": {
                 "composer/installers": "*",
-                "silverstripe/cms": ">=3.0",
-                "silverstripe/framework": ">=3.0",
+                "silverstripe/cms": "~3.1",
+                "silverstripe/framework": "~3.1",
                 "silverstripe/iframe": "*",
                 "silverstripe/translatable": "*",
                 "silverstripe/userforms": "*",
@@ -126,7 +126,7 @@
                 }
             },
             "description": "CWP Main Extension Module",
-            "time": "2013-05-06 05:22:15"
+            "time": "2013-05-06 21:24:29"
         },
         {
             "name": "silverstripe-themes/module_bootstrap",
@@ -559,17 +559,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-taxonomy.git",
-                "reference": "1c981633bbb5afb3f8b66099ef652635e2207899"
+                "reference": "d16e452095095bc928d17d1a47682868be193527"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-taxonomy/zipball/1c981633bbb5afb3f8b66099ef652635e2207899",
-                "reference": "1c981633bbb5afb3f8b66099ef652635e2207899",
+                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-taxonomy/zipball/d16e452095095bc928d17d1a47682868be193527",
+                "reference": "d16e452095095bc928d17d1a47682868be193527",
                 "shasum": ""
             },
             "require": {
-                "silverstripe/cms": "3.*",
-                "silverstripe/framework": "3.*"
+                "silverstripe/cms": ">=3.1,<4.0",
+                "silverstripe/framework": ">=3.1,<4.0"
             },
             "type": "silverstripe-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -586,7 +586,7 @@
             "keywords": [
                 "silverstripe"
             ],
-            "time": "2013-04-09 23:31:16"
+            "time": "2013-05-06 21:21:05"
         },
         {
             "name": "silverstripe/translatable",
