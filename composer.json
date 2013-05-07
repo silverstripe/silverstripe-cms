@@ -7,12 +7,6 @@
 		"silverstripe/framework": "3.0.*@stable",
 		"silverstripe-themes/simple": "*"
 	},
-	"require-dev": {
-		"silverstripe/docsviewer": "*",
-		"silverstripe/behat-extension": "*",
-		"silverstripe/buildtools": "*",
-		"phpunit/phpunit": "3.7.*"
-	},
 	"config": {
 		"process-timeout": 600	
 	},
