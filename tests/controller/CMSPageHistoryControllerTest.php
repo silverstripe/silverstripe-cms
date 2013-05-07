@@ -52,7 +52,7 @@ class CMSPageHistoryControllerTest extends FunctionalTest {
 		$this->assertEquals($this->versionPublishCheck2, $form->Fields()->dataFieldByName('Version')->Value());
 
 		$this->assertContains(
-			sprintf("Currently viewing version %s.", $this->versionPublishCheck2),
+			'Currently viewing the latest version',
 			$form->Fields()->fieldByName('Root.Main.CurrentlyViewingMessage')->getContent()
 		);
 		

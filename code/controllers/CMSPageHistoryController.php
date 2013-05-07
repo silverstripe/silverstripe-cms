@@ -142,13 +142,16 @@ class CMSPageHistoryController extends CMSMain {
 			);
 			
 			$revert->setReadonly(true);
-		}
-		else {
-			$message = _t(
-				'CMSPageHistoryController.VIEWINGVERSION',
-				"Currently viewing version {version}.", 
-				array('version' => $versionID)
-			);
+		} else {
+			if($record->isLatestVersion()) {
+				$message = _t('CMSPageHistoryController.VIEWINGLATEST', 'Currently viewing the latest version.');
+			} else {
+				$message = _t(
+					'CMSPageHistoryController.VIEWINGVERSION',
+					"Currently viewing version {version}.",
+					array('version' => $versionID)
+				);
+			}
 		}
 		
 		$fields->addFieldToTab('Root.Main', 
