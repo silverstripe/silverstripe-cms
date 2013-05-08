@@ -1584,11 +1584,21 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				$parentFilter = ' AND "SiteTree"."ParentID" = 0';
 			}
 		}
-		
+
+		if(class_exists('Subsite')) {
+			$previousState = Subsite::$disable_subsite_filter;
+			Subsite::$disable_subsite_filter = false;
+		}
+
 		$existingPage = DataObject::get_one(
 			'SiteTree', 
 			"\"URLSegment\" = '$this->URLSegment' $IDFilter $parentFilter"
 		);
+
+		if(class_exists('Subsite')) {
+			Subsite::$disable_subsite_filter = $previousState;
+		}
+
 		if ($existingPage) {
 			return false;
 		}
