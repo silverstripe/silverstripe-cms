@@ -1,13 +1,9 @@
 default:
   extensions:
 
-    SilverStripe\BehatExtension\Extension:
-      framework_path: framework
-
-    Behat\MinkExtension\Extension:
-      # Adjust this to your own website URL.
-      # Uncomment, or set through environment variable:
-      # > export BEHAT_PARAMS="extensions[Behat\MinkExtension\Extension][base_url]=http://localhost/"
+    SilverStripe\BehatExtension\MinkExtension:
+      # Adjust "base_url" to your own website URL.
+      # Can be set via environment variables or _ss_environment.php/$_FILE_TO_URL_MAPPING as well.
       # 
       # base_url:  http://localhost/
 
@@ -18,3 +14,5 @@ default:
       goutte: ~
       selenium2:
         browser: firefox
+
+    SilverStripe\BehatExtension\Extension: ~
