@@ -171,7 +171,10 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 		}
 
 		$actions = new FieldList();
-		$form = new Form($this, "EditForm", $fields, $actions);
+		$form = CMSForm::create( 
+			$this, "EditForm", $fields, $actions
+		)->setHTMLID('Form_EditForm');
+		$form->setResponseNegotiator($this->getResponseNegotiator());
 		$form->addExtraClass('cms-edit-form cms-panel-padded center ' . $this->BaseCSSClasses());
 		$form->loadDataFrom($this->request->getVars());
 
