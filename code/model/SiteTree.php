@@ -400,11 +400,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		) {
 			 return; // There were no suitable matches at all.
 		}
+
+		$link = Convert::raw2att($page->Link());
 		
 		if($content) {
-			return sprintf('<a href="%s">%s</a>', $page->Link(), $parser->parse($content));
+			return sprintf('<a href="%s">%s</a>', $link, $parser->parse($content));
 		} else {
-			return $page->Link();
+			return $link;
 		}
 	}
 	

@@ -80,3 +80,11 @@ ErrorPage:
     404:
         Title: Page not Found
         ErrorCode: 404
+
+RedirectorPage:
+   external:
+      Title: External
+      URLSegment: external
+      RedirectionType: External
+      ExternalURL: "http://www.google.com?a&b"
+
