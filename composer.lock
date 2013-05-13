@@ -194,12 +194,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-cms.git",
-                "reference": "7ecf56490a406914608c828b93e64f6e189ae99c"
+                "reference": "f0e7990ca357bd92b044ee7597fd083f8b314caf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/7ecf56490a406914608c828b93e64f6e189ae99c",
-                "reference": "7ecf56490a406914608c828b93e64f6e189ae99c",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/f0e7990ca357bd92b044ee7597fd083f8b314caf",
+                "reference": "f0e7990ca357bd92b044ee7597fd083f8b314caf",
                 "shasum": ""
             },
             "require": {
@@ -233,7 +233,7 @@
                 "cms",
                 "silverstripe"
             ],
-            "time": "2013-05-08 07:38:25"
+            "time": "2013-05-12 21:09:10"
         },
         {
             "name": "silverstripe/framework",
@@ -241,12 +241,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/sapphire.git",
-                "reference": "c1d25d17ce6720b8d08decc7065267dd4d755efa"
+                "reference": "fd1aa197d5f304abac5fdee82d14c1d582c7d69d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/sapphire/zipball/c1d25d17ce6720b8d08decc7065267dd4d755efa",
-                "reference": "c1d25d17ce6720b8d08decc7065267dd4d755efa",
+                "url": "https://api.github.com/repos/silverstripe/sapphire/zipball/fd1aa197d5f304abac5fdee82d14c1d582c7d69d",
+                "reference": "fd1aa197d5f304abac5fdee82d14c1d582c7d69d",
                 "shasum": ""
             },
             "require": {
@@ -279,7 +279,7 @@
                 "framework",
                 "silverstripe"
             ],
-            "time": "2013-05-09 01:34:01"
+            "time": "2013-05-12 22:19:03"
         },
         {
             "name": "silverstripe/fulltextsearch",
@@ -649,12 +649,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-userforms.git",
-                "reference": "b1d9481c5759253c1b684a32832d6c6e6864756f"
+                "reference": "e5f8d13b15cc7d6795a9b600ae35b5ddbd39549d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-userforms/zipball/b1d9481c5759253c1b684a32832d6c6e6864756f",
-                "reference": "b1d9481c5759253c1b684a32832d6c6e6864756f",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-userforms/zipball/e5f8d13b15cc7d6795a9b600ae35b5ddbd39549d",
+                "reference": "e5f8d13b15cc7d6795a9b600ae35b5ddbd39549d",
                 "shasum": ""
             },
             "require": {
@@ -678,7 +678,7 @@
                 "silverstripe",
                 "userforms"
             ],
-            "time": "2013-05-07 12:06:55"
+            "time": "2013-05-13 02:32:41"
         },
         {
             "name": "silverstripe/versionedfiles",
@@ -854,12 +854,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Gherkin.git",
-                "reference": "70a37689d6fc5d4b9772dfac35c112f031306d09"
+                "reference": "c1f7d89e7e609e45fe40a8a8774f3e43cbe4ffcb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/70a37689d6fc5d4b9772dfac35c112f031306d09",
-                "reference": "70a37689d6fc5d4b9772dfac35c112f031306d09",
+                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/c1f7d89e7e609e45fe40a8a8774f3e43cbe4ffcb",
+                "reference": "c1f7d89e7e609e45fe40a8a8774f3e43cbe4ffcb",
                 "shasum": ""
             },
             "require": {
@@ -907,7 +907,7 @@
                 "Symfony2",
                 "parser"
             ],
-            "time": "2013-03-08 10:25:28"
+            "time": "2013-05-09 15:20:54"
         },
         {
             "name": "behat/mink",
@@ -1393,12 +1393,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "b0ec2d014fe497315aad876c6289a38fd4c075ff"
+                "reference": "d1113ca09a060fac85414b4d03982c34de803cd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/b0ec2d014fe497315aad876c6289a38fd4c075ff",
-                "reference": "b0ec2d014fe497315aad876c6289a38fd4c075ff",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/d1113ca09a060fac85414b4d03982c34de803cd7",
+                "reference": "d1113ca09a060fac85414b4d03982c34de803cd7",
                 "shasum": ""
             },
             "require": {
@@ -1438,7 +1438,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2013-05-07 13:59:06"
+            "time": "2013-05-11 06:28:55"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1624,12 +1624,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "19f1d742e0c36150001062f592c93f80aef3a9fd"
+                "reference": "a3dcfcb1347be04957d38bdb292b0ffb0e3c6cb6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/19f1d742e0c36150001062f592c93f80aef3a9fd",
-                "reference": "19f1d742e0c36150001062f592c93f80aef3a9fd",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a3dcfcb1347be04957d38bdb292b0ffb0e3c6cb6",
+                "reference": "a3dcfcb1347be04957d38bdb292b0ffb0e3c6cb6",
                 "shasum": ""
             },
             "require": {
@@ -1690,7 +1690,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2013-05-07 14:00:05"
+            "time": "2013-05-12 06:33:11"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1747,12 +1747,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-behat-extension.git",
-                "reference": "3a34c204c191310c9f6d2d478a4cb902e49790a0"
+                "reference": "8d3184b1faa6ae8626e665d3c9d99335bb89b3d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-behat-extension/zipball/3a34c204c191310c9f6d2d478a4cb902e49790a0",
-                "reference": "3a34c204c191310c9f6d2d478a4cb902e49790a0",
+                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-behat-extension/zipball/8d3184b1faa6ae8626e665d3c9d99335bb89b3d3",
+                "reference": "8d3184b1faa6ae8626e665d3c9d99335bb89b3d3",
                 "shasum": ""
             },
             "require": {
@@ -1794,7 +1794,7 @@
                 "silverstripe",
                 "web"
             ],
-            "time": "2013-04-09 09:32:43"
+            "time": "2013-05-09 15:07:28"
         },
         {
             "name": "silverstripe/buildtools",
@@ -1879,12 +1879,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/BrowserKit.git",
-                "reference": "v2.3.0-BETA1"
+                "reference": "v2.3.0-BETA2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/BrowserKit/zipball/v2.3.0-BETA1",
-                "reference": "v2.3.0-BETA1",
+                "url": "https://api.github.com/repos/symfony/BrowserKit/zipball/v2.3.0-BETA2",
+                "reference": "v2.3.0-BETA2",
                 "shasum": ""
             },
             "require": {
@@ -1934,12 +1934,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Config.git",
-                "reference": "v2.1.10"
+                "reference": "51909bf7f5d763d125a67781942d9293f65afae7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Config/zipball/v2.1.10",
-                "reference": "v2.1.10",
+                "url": "https://api.github.com/repos/symfony/Config/zipball/51909bf7f5d763d125a67781942d9293f65afae7",
+                "reference": "51909bf7f5d763d125a67781942d9293f65afae7",
                 "shasum": ""
             },
             "require": {
@@ -1967,7 +1967,7 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "http://symfony.com",
-            "time": "2013-04-22 04:28:40"
+            "time": "2013-05-09 15:22:40"
         },
         {
             "name": "symfony/console",
@@ -1976,12 +1976,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "v2.1.10"
+                "reference": "bd18f234d793a9417b96ba078f2675c8c04a2fde"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/v2.1.10",
-                "reference": "v2.1.10",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/bd18f234d793a9417b96ba078f2675c8c04a2fde",
+                "reference": "bd18f234d793a9417b96ba078f2675c8c04a2fde",
                 "shasum": ""
             },
             "require": {
@@ -2009,7 +2009,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2013-05-06 06:31:43"
+            "time": "2013-05-09 08:10:50"
         },
         {
             "name": "symfony/css-selector",
@@ -2110,12 +2110,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/DomCrawler.git",
-                "reference": "f78e94a8a4230a50c7556b4794924e8e35c19108"
+                "reference": "64dc2f811dbb51fb521c4370ef0a9574b030904c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/DomCrawler/zipball/f78e94a8a4230a50c7556b4794924e8e35c19108",
-                "reference": "f78e94a8a4230a50c7556b4794924e8e35c19108",
+                "url": "https://api.github.com/repos/symfony/DomCrawler/zipball/64dc2f811dbb51fb521c4370ef0a9574b030904c",
+                "reference": "64dc2f811dbb51fb521c4370ef0a9574b030904c",
                 "shasum": ""
             },
             "require": {
@@ -2154,7 +2154,7 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "http://symfony.com",
-            "time": "2013-05-06 06:26:30"
+            "time": "2013-05-10 15:43:46"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -2254,12 +2254,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
-                "reference": "bb721b29e033594512f8b08386e13593b0faaf0f"
+                "reference": "v2.3.0-BETA2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Process/zipball/bb721b29e033594512f8b08386e13593b0faaf0f",
-                "reference": "bb721b29e033594512f8b08386e13593b0faaf0f",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/v2.3.0-BETA2",
+                "reference": "v2.3.0-BETA2",
                 "shasum": ""
             },
             "require": {
@@ -2301,12 +2301,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Translation.git",
-                "reference": "39ba7a5dc560959667c45c9353b70f43182ca4b3"
+                "reference": "v2.1.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Translation/zipball/39ba7a5dc560959667c45c9353b70f43182ca4b3",
-                "reference": "39ba7a5dc560959667c45c9353b70f43182ca4b3",
+                "url": "https://api.github.com/repos/symfony/Translation/zipball/v2.1.10",
+                "reference": "v2.1.10",
                 "shasum": ""
             },
             "require": {
@@ -2351,12 +2351,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "4ef80f5c5081ad9a7e08184fc9f25c62d87e408c"
+                "reference": "347a7a02204433c6926ecc3f13e805bdc30e8f9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/4ef80f5c5081ad9a7e08184fc9f25c62d87e408c",
-                "reference": "4ef80f5c5081ad9a7e08184fc9f25c62d87e408c",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/347a7a02204433c6926ecc3f13e805bdc30e8f9f",
+                "reference": "347a7a02204433c6926ecc3f13e805bdc30e8f9f",
                 "shasum": ""
             },
             "require": {
@@ -2384,7 +2384,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2013-04-12 10:27:36"
+            "time": "2013-05-10 00:09:46"
         }
     ],
     "aliases": [
