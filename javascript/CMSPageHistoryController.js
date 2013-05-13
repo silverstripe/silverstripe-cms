@@ -8,6 +8,7 @@
 	 */
 	
 	$.entwine('ss', function($){
+
 		/**
 		 * Class: #Form_VersionsForm
 		 *
@@ -19,24 +20,6 @@
 			 * Constructor
 			 */
 			onmatch: function() {
-				var self = this;
-
-				/**
-				 * Event: :input[name=ShowUnpublished] change
-				 *
-				 * Changing the show unpublished checkbox toggles whether to show
-				 * or hide the unpublished versions. Because those rows may be being
-				 * compared this also ensures those rows are unselected.
-				 */
-				this.find(':input[name=ShowUnpublished]').bind('change', function(e) {
-					if($(this).attr("checked")) {
-						self.find("tr[data-published=false]").show();
-					}
-					else {
-						self.find("tr[data-published=false]").hide()._unselect();
-					}
-				});
-				
 				this._super();
 			},
 			onunmatch: function() {
@@ -80,6 +63,41 @@
 				}
 				
 				$('.cms-container').loadPanel(url, '', {pjax: 'CurrentForm'});
+			}
+		});
+
+		/**
+		 * Class: :input[name=ShowUnpublished]
+		 *
+		 * Used for toggling whether to show or hide unpublished versions.
+		 */
+		$('#Form_VersionsForm input[name=ShowUnpublished]').entwine({
+			onmatch: function() {
+				this.toggle();
+				this._super();
+			},
+			onunmatch: function() {
+				this._super();
+			},
+			/**
+			 * Event: :input[name=ShowUnpublished] change
+			 *
+			 * Changing the show unpublished checkbox toggles whether to show
+			 * or hide the unpublished versions. Because those rows may be being
+			 * compared this also ensures those rows are unselected.
+			 */
+			onchange: function() {
+				this.toggle();
+			},
+			toggle: function() {
+				var self = $(this);
+				var form = self.parents('form');
+
+				if(self.attr('checked')) {
+					form.find('tr[data-published=false]').show();
+				} else {
+					form.find("tr[data-published=false]").hide()._unselect();
+				}
 			}
 		});
 
