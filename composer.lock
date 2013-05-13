@@ -194,12 +194,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-cms.git",
-                "reference": "f0e7990ca357bd92b044ee7597fd083f8b314caf"
+                "reference": "89bf063880b3c955539292bbdabca4af5d1954cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/f0e7990ca357bd92b044ee7597fd083f8b314caf",
-                "reference": "f0e7990ca357bd92b044ee7597fd083f8b314caf",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/89bf063880b3c955539292bbdabca4af5d1954cd",
+                "reference": "89bf063880b3c955539292bbdabca4af5d1954cd",
                 "shasum": ""
             },
             "require": {
@@ -233,7 +233,7 @@
                 "cms",
                 "silverstripe"
             ],
-            "time": "2013-05-12 21:09:10"
+            "time": "2013-05-13 22:55:08"
         },
         {
             "name": "silverstripe/framework",
@@ -241,12 +241,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/sapphire.git",
-                "reference": "fd1aa197d5f304abac5fdee82d14c1d582c7d69d"
+                "reference": "d5bcbbd66a8a0fd904bc076867cf26eab8224da0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/sapphire/zipball/fd1aa197d5f304abac5fdee82d14c1d582c7d69d",
-                "reference": "fd1aa197d5f304abac5fdee82d14c1d582c7d69d",
+                "url": "https://api.github.com/repos/silverstripe/sapphire/zipball/d5bcbbd66a8a0fd904bc076867cf26eab8224da0",
+                "reference": "d5bcbbd66a8a0fd904bc076867cf26eab8224da0",
                 "shasum": ""
             },
             "require": {
@@ -279,7 +279,7 @@
                 "framework",
                 "silverstripe"
             ],
-            "time": "2013-05-12 22:19:03"
+            "time": "2013-05-13 22:51:42"
         },
         {
             "name": "silverstripe/fulltextsearch",
@@ -1624,12 +1624,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a3dcfcb1347be04957d38bdb292b0ffb0e3c6cb6"
+                "reference": "3.7.20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a3dcfcb1347be04957d38bdb292b0ffb0e3c6cb6",
-                "reference": "a3dcfcb1347be04957d38bdb292b0ffb0e3c6cb6",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3.7.20",
+                "reference": "3.7.20",
                 "shasum": ""
             },
             "require": {
@@ -1690,7 +1690,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2013-05-12 06:33:11"
+            "time": "2013-05-13 06:06:41"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1879,12 +1879,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/BrowserKit.git",
-                "reference": "v2.3.0-BETA2"
+                "reference": "193cee83794f3b2c699b7fd5834cb97894d73d00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/BrowserKit/zipball/v2.3.0-BETA2",
-                "reference": "v2.3.0-BETA2",
+                "url": "https://api.github.com/repos/symfony/BrowserKit/zipball/193cee83794f3b2c699b7fd5834cb97894d73d00",
+                "reference": "193cee83794f3b2c699b7fd5834cb97894d73d00",
                 "shasum": ""
             },
             "require": {
@@ -1896,7 +1896,7 @@
                 "symfony/process": ">=2.0,<3.0"
             },
             "suggest": {
-                "symfony/process": "2.2.*"
+                "symfony/process": ""
             },
             "type": "library",
             "extra": {
@@ -1925,7 +1925,7 @@
             ],
             "description": "Symfony BrowserKit Component",
             "homepage": "http://symfony.com",
-            "time": "2013-04-30 07:16:44"
+            "time": "2013-05-13 14:36:40"
         },
         {
             "name": "symfony/config",
@@ -2110,12 +2110,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/DomCrawler.git",
-                "reference": "64dc2f811dbb51fb521c4370ef0a9574b030904c"
+                "reference": "8e021abc55ad89df5ae63bbd6bd9d01ac3c8e5b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/DomCrawler/zipball/64dc2f811dbb51fb521c4370ef0a9574b030904c",
-                "reference": "64dc2f811dbb51fb521c4370ef0a9574b030904c",
+                "url": "https://api.github.com/repos/symfony/DomCrawler/zipball/8e021abc55ad89df5ae63bbd6bd9d01ac3c8e5b2",
+                "reference": "8e021abc55ad89df5ae63bbd6bd9d01ac3c8e5b2",
                 "shasum": ""
             },
             "require": {
@@ -2125,7 +2125,7 @@
                 "symfony/css-selector": ">=2.0,<3.0"
             },
             "suggest": {
-                "symfony/css-selector": "2.2.*"
+                "symfony/css-selector": ""
             },
             "type": "library",
             "extra": {
@@ -2154,7 +2154,7 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "http://symfony.com",
-            "time": "2013-05-10 15:43:46"
+            "time": "2013-05-13 14:36:40"
         },
         {
             "name": "symfony/event-dispatcher",
