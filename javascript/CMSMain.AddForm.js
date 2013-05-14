@@ -99,8 +99,9 @@
 				}
 					
 				var data = {selector: this.data('targetPanel'),pjax: this.data('pjax')}, url;
-				if(parentID) {
-					url = $.path.addSearchParams(ss.i18n.sprintf(this.data('urlAddpage'), parentId), this.data('extraParams'));
+				if(parentId) {
+					extraParams = this.data('extraParams') ? this.data('extraParams') : '';
+					url = $.path.addSearchParams(ss.i18n.sprintf(this.data('urlAddpage'), parentId), extraParams);
 				} else {
 					url = this.attr('href');
 				}
