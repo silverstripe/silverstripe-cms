@@ -82,7 +82,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp-themes/default.git",
-                "reference": "b69c38e97bcc652b613c4862972297bb7dc65e4f"
+                "reference": "15f94c673cd0fdc8266a4c636a16d8a7a494d9ff"
             },
             "require": {
                 "composer/installers": "*",
@@ -98,7 +98,7 @@
                 }
             },
             "description": "CWP Default Theme",
-            "time": "2013-05-03 02:22:50"
+            "time": "2013-05-14 02:36:18"
         },
         {
             "name": "cwp/cwp",
@@ -106,7 +106,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp.git",
-                "reference": "4ab1d139a59fb8a76383e1644dcca4b0ed4f4217"
+                "reference": "58bdf5608ac73d5d69aa39974bab9332d071fa09"
             },
             "require": {
                 "composer/installers": "*",
@@ -125,7 +125,7 @@
                 }
             },
             "description": "CWP Main Extension Module",
-            "time": "2013-05-09 03:13:13"
+            "time": "2013-05-14 02:36:47"
         },
         {
             "name": "silverstripe-themes/module_bootstrap",
