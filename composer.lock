@@ -82,7 +82,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp-themes/default.git",
-                "reference": "f457e6bc409c7117ceee564a59ea7e6ae7ceea6b"
+                "reference": "f9524ca67ef5aea2099e93f9184d4069628d13bf"
             },
             "require": {
                 "composer/installers": "*",
@@ -98,7 +98,7 @@
                 }
             },
             "description": "CWP Default Theme",
-            "time": "2013-05-14 23:13:05"
+            "time": "2013-05-16 01:59:39"
         },
         {
             "name": "cwp/cwp",
@@ -106,7 +106,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp.git",
-                "reference": "0b0c6400588042e8aad182cd7656e7189345f1aa"
+                "reference": "187ef3ab674de7e6e136403c6e626dd3e57857ed"
             },
             "require": {
                 "composer/installers": "*",
@@ -125,7 +125,7 @@
                 }
             },
             "description": "CWP Main Extension Module",
-            "time": "2013-05-15 00:59:50"
+            "time": "2013-05-16 01:57:39"
         },
         {
             "name": "silverstripe-themes/module_bootstrap",
@@ -194,12 +194,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-cms.git",
-                "reference": "89bf063880b3c955539292bbdabca4af5d1954cd"
+                "reference": "2567cda0b4050f4163074dbde7952d5253aa46be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/89bf063880b3c955539292bbdabca4af5d1954cd",
-                "reference": "89bf063880b3c955539292bbdabca4af5d1954cd",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/2567cda0b4050f4163074dbde7952d5253aa46be",
+                "reference": "2567cda0b4050f4163074dbde7952d5253aa46be",
                 "shasum": ""
             },
             "require": {
@@ -233,7 +233,7 @@
                 "cms",
                 "silverstripe"
             ],
-            "time": "2013-05-13 22:55:08"
+            "time": "2013-05-16 08:11:22"
         },
         {
             "name": "silverstripe/framework",
@@ -241,12 +241,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/sapphire.git",
-                "reference": "7bf790a5fa87895817161d12bb5d5ab31f8c72bd"
+                "reference": "0c6f32e752e1b7d4548a016ef3a0604c101c7c24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/sapphire/zipball/7bf790a5fa87895817161d12bb5d5ab31f8c72bd",
-                "reference": "7bf790a5fa87895817161d12bb5d5ab31f8c72bd",
+                "url": "https://api.github.com/repos/silverstripe/sapphire/zipball/0c6f32e752e1b7d4548a016ef3a0604c101c7c24",
+                "reference": "0c6f32e752e1b7d4548a016ef3a0604c101c7c24",
                 "shasum": ""
             },
             "require": {
@@ -279,7 +279,7 @@
                 "framework",
                 "silverstripe"
             ],
-            "time": "2013-05-14 11:02:01"
+            "time": "2013-05-16 02:18:06"
         },
         {
             "name": "silverstripe/fulltextsearch",
@@ -529,12 +529,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-subsites.git",
-                "reference": "3c6000111c8db5ca5977b57cec2af1f7ea439574"
+                "reference": "7965c86120edfa5c4e3e225d1b6e4f5bde764194"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-subsites/zipball/3c6000111c8db5ca5977b57cec2af1f7ea439574",
-                "reference": "3c6000111c8db5ca5977b57cec2af1f7ea439574",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-subsites/zipball/7965c86120edfa5c4e3e225d1b6e4f5bde764194",
+                "reference": "7965c86120edfa5c4e3e225d1b6e4f5bde764194",
                 "shasum": ""
             },
             "require": {
@@ -555,7 +555,7 @@
                 "silverstripe",
                 "subsites"
             ],
-            "time": "2013-05-09 00:18:48"
+            "time": "2013-05-15 03:05:42"
         },
         {
             "name": "silverstripe/taxonomy",
@@ -649,12 +649,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-userforms.git",
-                "reference": "e5f8d13b15cc7d6795a9b600ae35b5ddbd39549d"
+                "reference": "f5049b71c5668e75a2021d3b00b68cd413b17e16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-userforms/zipball/e5f8d13b15cc7d6795a9b600ae35b5ddbd39549d",
-                "reference": "e5f8d13b15cc7d6795a9b600ae35b5ddbd39549d",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-userforms/zipball/f5049b71c5668e75a2021d3b00b68cd413b17e16",
+                "reference": "f5049b71c5668e75a2021d3b00b68cd413b17e16",
                 "shasum": ""
             },
             "require": {
@@ -678,7 +678,7 @@
                 "silverstripe",
                 "userforms"
             ],
-            "time": "2013-05-13 02:32:41"
+            "time": "2013-05-15 21:09:29"
         },
         {
             "name": "silverstripe/versionedfiles",
@@ -1393,12 +1393,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "d1113ca09a060fac85414b4d03982c34de803cd7"
+                "reference": "1.2.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/d1113ca09a060fac85414b4d03982c34de803cd7",
-                "reference": "d1113ca09a060fac85414b4d03982c34de803cd7",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/1.2.10",
+                "reference": "1.2.10",
                 "shasum": ""
             },
             "require": {
@@ -1438,7 +1438,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2013-05-11 06:28:55"
+            "time": "2013-05-13 05:49:10"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1624,12 +1624,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "3.7.20"
+                "reference": "991f2978717ba46ac6d75c6a3c1d28981d8d9a50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3.7.20",
-                "reference": "3.7.20",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/991f2978717ba46ac6d75c6a3c1d28981d8d9a50",
+                "reference": "991f2978717ba46ac6d75c6a3c1d28981d8d9a50",
                 "shasum": ""
             },
             "require": {
@@ -1638,7 +1638,7 @@
                 "ext-reflection": "*",
                 "ext-spl": "*",
                 "php": ">=5.3.3",
-                "phpunit/php-code-coverage": ">=1.2.1,<1.3.0",
+                "phpunit/php-code-coverage": ">=1.2.10,<1.3.0",
                 "phpunit/php-file-iterator": ">=1.3.1",
                 "phpunit/php-text-template": ">=1.1.1",
                 "phpunit/php-timer": ">=1.0.2,<1.1.0",
@@ -1690,7 +1690,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2013-05-13 06:06:41"
+            "time": "2013-05-16 07:11:21"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1874,17 +1874,17 @@
         },
         {
             "name": "symfony/browser-kit",
-            "version": "dev-master",
+            "version": "2.3.x-dev",
             "target-dir": "Symfony/Component/BrowserKit",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/BrowserKit.git",
-                "reference": "193cee83794f3b2c699b7fd5834cb97894d73d00"
+                "reference": "v2.3.0-RC1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/BrowserKit/zipball/193cee83794f3b2c699b7fd5834cb97894d73d00",
-                "reference": "193cee83794f3b2c699b7fd5834cb97894d73d00",
+                "url": "https://api.github.com/repos/symfony/BrowserKit/zipball/v2.3.0-RC1",
+                "reference": "v2.3.0-RC1",
                 "shasum": ""
             },
             "require": {
@@ -1925,7 +1925,7 @@
             ],
             "description": "Symfony BrowserKit Component",
             "homepage": "http://symfony.com",
-            "time": "2013-05-13 14:36:40"
+            "time": "2013-05-15 15:16:47"
         },
         {
             "name": "symfony/config",
@@ -2105,7 +2105,7 @@
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "dev-master",
+            "version": "2.3.x-dev",
             "target-dir": "Symfony/Component/DomCrawler",
             "source": {
                 "type": "git",
@@ -2249,17 +2249,17 @@
         },
         {
             "name": "symfony/process",
-            "version": "dev-master",
+            "version": "2.3.x-dev",
             "target-dir": "Symfony/Component/Process",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
-                "reference": "v2.3.0-BETA2"
+                "reference": "v2.3.0-RC1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Process/zipball/v2.3.0-BETA2",
-                "reference": "v2.3.0-BETA2",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/v2.3.0-RC1",
+                "reference": "v2.3.0-RC1",
                 "shasum": ""
             },
             "require": {
