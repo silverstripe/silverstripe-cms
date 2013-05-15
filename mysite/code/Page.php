@@ -27,5 +27,4 @@ class Page_Controller extends BasePage_Controller {
 	 */
 	private static $allowed_actions = array (
 	);
-
 }

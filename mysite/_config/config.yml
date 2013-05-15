@@ -1,0 +1,10 @@
+SiteTree:
+  nested_urls: 1
+  extensions:
+   - WorkflowApplicable
+   - WorkflowEmbargoExpiryExtension
+SSViewer:
+  theme: 'default'
+MySQLDatabase:
+  connection_charset: 'utf8'
+
