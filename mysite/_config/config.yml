@@ -1,7 +1,10 @@
+---
+Name: mysiteconfig
+After: 'framework/*','cms/*'
+---
 SiteTree:
   nested_urls: 1
   extensions:
-   - WorkflowApplicable
    - WorkflowEmbargoExpiryExtension
 SSViewer:
   theme: 'default'
