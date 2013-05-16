@@ -15,7 +15,7 @@ For submitting patches, please read our [guide to contributing code](http://doc.
 
  * [Server Requirements](http://doc.silverstripe.org/framework/en/installation/server-requirements)
  * [Changelogs](http://doc.silverstripe.org/framework/en/changelogs/)
- * [Bugtracker: Framework](https://github.com/silverstripe/sapphire/issues)
+ * [Bugtracker: Framework](https://github.com/silverstripe/silverstripe-framework/issues)
  * [Bugtracker: CMS](https://github.com/silverstripe/silverstripe-cms/issues)
  * [Bugtracker: Installer](https://github.com/silverstripe/silverstripe-installer/issues)
  * [Forums](http://silverstripe.org/forums)
