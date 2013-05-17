@@ -106,7 +106,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp.git",
-                "reference": "747c7f9d7bb2856a07025cf95532fc9fc7ad8e5a"
+                "reference": "ed20d5d5088689eb425824b9b0ed105cbe5f60f6"
             },
             "require": {
                 "composer/installers": "*",
@@ -125,7 +125,7 @@
                 }
             },
             "description": "CWP Main Extension Module",
-            "time": "2013-05-16 22:54:42"
+            "time": "2013-05-17 02:24:53"
         },
         {
             "name": "silverstripe-themes/module_bootstrap",
