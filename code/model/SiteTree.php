@@ -446,7 +446,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string
 	 */
 	public function PreviewLink($action = null) {
-		return $this->AbsoluteLink($action);
+		if($this->hasMethod('alternatePreviewLink')) {
+			return $this->alternatePreviewLink($action);
+		} else {
+			return $this->AbsoluteLink($action);
+		}
 	}
 	
 	/**
