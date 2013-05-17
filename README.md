@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/silverstripe/silverstripe-cms.png?branch=3.0)](http://travis-ci.org/silverstripe/silverstripe-cms)
 
-PHP5 Content Management System (CMS), see [http://silverstripe.org](http://silverstripe.org). Requires the [`framework`](http://github.com/silverstripe/sapphire) module and a [`silverstripe-installer`](http://github.com/silverstripe/silverstripe-installer) base project.
+PHP5 Content Management System (CMS), see [http://silverstripe.org](http://silverstripe.org). Requires the [`framework`](http://github.com/silverstripe/silverstripe-framework) module and a [`silverstripe-installer`](http://github.com/silverstripe/silverstripe-installer) base project.
 
 ## Installation ##
 
@@ -22,7 +22,7 @@ If you would like to make changes to the SilverStripe core codebase, we have an 
 
  * [Requirements](http://doc.silverstripe.org/framework/en/installation/server-requirements)
  * [Changelogs](http://doc.silverstripe.org/framework/en/changelogs/)
- * [Bugtracker: Framework](https://github.com/silverstripe/sapphire/issues)
+ * [Bugtracker: Framework](https://github.com/silverstripe/silverstripe-framework/issues)
  * [Bugtracker: CMS](https://github.com/silverstripe/silverstripe-cms/issues)
  * [Bugtracker: Installer](https://github.com/silverstripe/silverstripe-installer/issues)
  * [Forums](http://silverstripe.org/forums)
