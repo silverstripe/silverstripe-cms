@@ -194,12 +194,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-cms.git",
-                "reference": "2567cda0b4050f4163074dbde7952d5253aa46be"
+                "reference": "b2e93537554931c4ff9c50a304a7e5688d9c09a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/2567cda0b4050f4163074dbde7952d5253aa46be",
-                "reference": "2567cda0b4050f4163074dbde7952d5253aa46be",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/b2e93537554931c4ff9c50a304a7e5688d9c09a8",
+                "reference": "b2e93537554931c4ff9c50a304a7e5688d9c09a8",
                 "shasum": ""
             },
             "require": {
@@ -233,7 +233,7 @@
                 "cms",
                 "silverstripe"
             ],
-            "time": "2013-05-16 08:11:22"
+            "time": "2013-05-17 12:05:03"
         },
         {
             "name": "silverstripe/framework",
@@ -241,12 +241,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-framework.git",
-                "reference": "a87bbb29034f9c2c4a887701df57d6b3c2527001"
+                "reference": "e0f4bd6113af5f6204a52c58de8141f20064d250"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/a87bbb29034f9c2c4a887701df57d6b3c2527001",
-                "reference": "a87bbb29034f9c2c4a887701df57d6b3c2527001",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/e0f4bd6113af5f6204a52c58de8141f20064d250",
+                "reference": "e0f4bd6113af5f6204a52c58de8141f20064d250",
                 "shasum": ""
             },
             "require": {
@@ -279,7 +279,7 @@
                 "framework",
                 "silverstripe"
             ],
-            "time": "2013-05-16 22:45:52"
+            "time": "2013-05-17 12:02:33"
         },
         {
             "name": "silverstripe/fulltextsearch",
@@ -598,12 +598,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-translatable.git",
-                "reference": "4c6e41441aeaf69ad0ad3a1c3030660d83f52590"
+                "reference": "f7eee8596db53b7c7bd916f2b9a0cedf805e63eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-translatable/zipball/4c6e41441aeaf69ad0ad3a1c3030660d83f52590",
-                "reference": "4c6e41441aeaf69ad0ad3a1c3030660d83f52590",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-translatable/zipball/f7eee8596db53b7c7bd916f2b9a0cedf805e63eb",
+                "reference": "f7eee8596db53b7c7bd916f2b9a0cedf805e63eb",
                 "shasum": ""
             },
             "require": {
@@ -641,7 +641,7 @@
                 "localization",
                 "silverstripe"
             ],
-            "time": "2013-05-16 23:09:52"
+            "time": "2013-05-17 12:04:12"
         },
         {
             "name": "silverstripe/userforms",
@@ -1393,12 +1393,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "1.2.10"
+                "reference": "ac44d7cab145515d1496f84811e42a5c5f39ee74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/1.2.10",
-                "reference": "1.2.10",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/ac44d7cab145515d1496f84811e42a5c5f39ee74",
+                "reference": "ac44d7cab145515d1496f84811e42a5c5f39ee74",
                 "shasum": ""
             },
             "require": {
@@ -1406,6 +1406,9 @@
                 "phpunit/php-file-iterator": ">=1.3.0@stable",
                 "phpunit/php-text-template": ">=1.1.1@stable",
                 "phpunit/php-token-stream": ">=1.1.3@stable"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
             },
             "suggest": {
                 "ext-dom": "*",
@@ -1438,7 +1441,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2013-05-13 05:49:10"
+            "time": "2013-05-18 03:35:59"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1624,12 +1627,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "991f2978717ba46ac6d75c6a3c1d28981d8d9a50"
+                "reference": "1c194d6359531979d68c8310afff7e3b73b99654"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/991f2978717ba46ac6d75c6a3c1d28981d8d9a50",
-                "reference": "991f2978717ba46ac6d75c6a3c1d28981d8d9a50",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1c194d6359531979d68c8310afff7e3b73b99654",
+                "reference": "1c194d6359531979d68c8310afff7e3b73b99654",
                 "shasum": ""
             },
             "require": {
@@ -1690,7 +1693,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2013-05-16 07:11:21"
+            "time": "2013-05-19 10:05:15"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1976,12 +1979,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "bd18f234d793a9417b96ba078f2675c8c04a2fde"
+                "reference": "fcbb61c19246ca26512d3d7535a041909914f2c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/bd18f234d793a9417b96ba078f2675c8c04a2fde",
-                "reference": "bd18f234d793a9417b96ba078f2675c8c04a2fde",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/fcbb61c19246ca26512d3d7535a041909914f2c7",
+                "reference": "fcbb61c19246ca26512d3d7535a041909914f2c7",
                 "shasum": ""
             },
             "require": {
@@ -2009,7 +2012,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2013-05-09 08:10:50"
+            "time": "2013-05-17 21:54:02"
         },
         {
             "name": "symfony/css-selector",
@@ -2018,12 +2021,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/CssSelector.git",
-                "reference": "v2.1.10"
+                "reference": "bf7bb82a099dfb26b018daf70ad1985fea4d2997"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/CssSelector/zipball/v2.1.10",
-                "reference": "v2.1.10",
+                "url": "https://api.github.com/repos/symfony/CssSelector/zipball/bf7bb82a099dfb26b018daf70ad1985fea4d2997",
+                "reference": "bf7bb82a099dfb26b018daf70ad1985fea4d2997",
                 "shasum": ""
             },
             "require": {
@@ -2051,7 +2054,7 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "http://symfony.com",
-            "time": "2013-01-09 08:51:07"
+            "time": "2013-05-17 00:31:34"
         },
         {
             "name": "symfony/dependency-injection",
@@ -2110,12 +2113,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/DomCrawler.git",
-                "reference": "8e021abc55ad89df5ae63bbd6bd9d01ac3c8e5b2"
+                "reference": "3cf81e7a021853183aa303181afc6e6868bf48ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/DomCrawler/zipball/8e021abc55ad89df5ae63bbd6bd9d01ac3c8e5b2",
-                "reference": "8e021abc55ad89df5ae63bbd6bd9d01ac3c8e5b2",
+                "url": "https://api.github.com/repos/symfony/DomCrawler/zipball/3cf81e7a021853183aa303181afc6e6868bf48ce",
+                "reference": "3cf81e7a021853183aa303181afc6e6868bf48ce",
                 "shasum": ""
             },
             "require": {
@@ -2154,7 +2157,7 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "http://symfony.com",
-            "time": "2013-05-13 14:36:40"
+            "time": "2013-05-19 19:00:48"
         },
         {
             "name": "symfony/event-dispatcher",
