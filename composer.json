@@ -15,7 +15,6 @@
 		"silverstripe/registry": "*",
 		"silverstripe/restfulserver": "*",
 		"silverstripe/subsites": "*",
-		"silverstripe/taxonomy": "*",
 		"silverstripe/translatable": "*",
 		"silverstripe/userforms": "*",
 		"silverstripe/versionedfiles": "*",

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "ece97fa56e6d31e66c3eb2ac9f830789",
+    "hash": "d7a3348298ee8b5669cc5754c3d3b7a2",
     "packages": [
         {
             "name": "composer/installers",
@@ -368,7 +368,7 @@
                 "silverstripe/framework": "3.*"
             },
             "type": "silverstripe-module",
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -558,41 +558,6 @@
             "time": "2013-05-15 03:05:42"
         },
         {
-            "name": "silverstripe/taxonomy",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/silverstripe-labs/silverstripe-taxonomy.git",
-                "reference": "edf2a4d928a3008d50f0ef866f4aff19af9ed94b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-taxonomy/zipball/edf2a4d928a3008d50f0ef866f4aff19af9ed94b",
-                "reference": "edf2a4d928a3008d50f0ef866f4aff19af9ed94b",
-                "shasum": ""
-            },
-            "require": {
-                "silverstripe/cms": ">=3.1.x-dev,<4.0",
-                "silverstripe/framework": ">=3.1.x-dev,<4.0"
-            },
-            "type": "silverstripe-module",
-            "notification-url": "http://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Robert Curry",
-                    "email": "robert@silverstripe.com"
-                }
-            ],
-            "description": "Provide extra taxonomy for cataloguing the data.",
-            "keywords": [
-                "silverstripe"
-            ],
-            "time": "2013-05-07 10:09:16"
-        },
-        {
             "name": "silverstripe/translatable",
             "version": "dev-master",
             "source": {
@@ -733,7 +698,7 @@
                 "silverstripe/framework": "3.*"
             },
             "type": "silverstripe-module",
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
