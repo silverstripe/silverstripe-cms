@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "34eaff5402251c7ff27edbf099c43e6a",
+    "hash": "ece97fa56e6d31e66c3eb2ac9f830789",
     "packages": [
         {
             "name": "composer/installers",
@@ -38,7 +38,7 @@
                     "Composer\\Installers\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -151,7 +151,7 @@
                     "dev-ssexpress": "0.1-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "description": "CSS toolkit by Twitter.",
             "time": "2012-12-05 22:55:55"
         },
@@ -338,7 +338,7 @@
                 "silverstripe/framework": "3.*"
             },
             "type": "silverstripe-module",
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -368,7 +368,7 @@
                 "silverstripe/framework": "3.*"
             },
             "type": "silverstripe-module",
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -402,7 +402,7 @@
                 "silverstripe/framework": ">=3.0.0"
             },
             "type": "silverstripe-module",
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -468,7 +468,7 @@
                 "silverstripe/framework": "3.*"
             },
             "type": "silverstripe-module",
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -504,7 +504,7 @@
                 "silverstripe/framework": "3.*"
             },
             "type": "silverstripe-module",
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "authors": [
                 {
                     "name": "Hamish Friedlander",
@@ -576,7 +576,7 @@
                 "silverstripe/framework": ">=3.1.x-dev,<4.0"
             },
             "type": "silverstripe-module",
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -733,7 +733,7 @@
                 "silverstripe/framework": "3.*"
             },
             "type": "silverstripe-module",
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -773,7 +773,7 @@
             "extra": {
                 "installer-name": "sortablegridfield"
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "authors": [
                 {
                     "name": "Ed Chipman",
@@ -869,7 +869,7 @@
                     "File/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -914,7 +914,7 @@
                     "Text/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -958,7 +958,7 @@
                     "PHP/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -1003,7 +1003,7 @@
                     "PHP/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -1125,7 +1125,7 @@
                     "PHPUnit/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "include-path": [
                 ""
             ],

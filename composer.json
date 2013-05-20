@@ -5,17 +5,22 @@
 		"php": ">=5.3.2",
 		"silverstripe/cms": "3.1.*",
 		"silverstripe/framework": "3.1.*",
-		"silverstripe/registry": "*",
-		"silverstripe/taxonomy": "*",
-		"undefinedoffset/sortablegridfield": "*",
-		"silverstripe/fulltextsearch": "*",
 		"cwp/cwp": "*",
 		"cwp-themes/default": "*",
 		"silverstripe/advancedworkflow": "*",
-		"silverstripe/restfulserver": "*",
+		"silverstripe/html5": "*",
+		"silverstripe/iframe": "*",
+		"silverstripe/fulltextsearch": "*",
 		"silverstripe/queuedjobs": "*",
+		"silverstripe/registry": "*",
+		"silverstripe/restfulserver": "*",
 		"silverstripe/subsites": "*",
-		"silverstripe/html5": "*"
+		"silverstripe/taxonomy": "*",
+		"silverstripe/translatable": "*",
+		"silverstripe/userforms": "*",
+		"silverstripe/versionedfiles": "*",
+		"silverstripe/versionfeed": "*",
+		"undefinedoffset/sortablegridfield": "*"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "3.7.*@stable"
