@@ -132,12 +132,12 @@
             "version": "dev-ssexpress",
             "source": {
                 "type": "git",
-                "url": "https://github.com/silverstripe-ux/sass-twitter-bootstrap.git",
+                "url": "git://github.com/silverstripe-ux/sass-twitter-bootstrap.git",
                 "reference": "a2c2105fa8b95578b3b017968e0eb6d5fb17ec9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-ux/sass-twitter-bootstrap/zipball/a2c2105fa8b95578b3b017968e0eb6d5fb17ec9b",
+                "url": "https://github.com/silverstripe-ux/sass-twitter-bootstrap/archive/a2c2105fa8b95578b3b017968e0eb6d5fb17ec9b.zip",
                 "reference": "a2c2105fa8b95578b3b017968e0eb6d5fb17ec9b",
                 "shasum": ""
             },
@@ -241,12 +241,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-framework.git",
-                "reference": "e0f4bd6113af5f6204a52c58de8141f20064d250"
+                "reference": "13e632d0532dd8f09751b1c9ebfc91a9eacafbfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/e0f4bd6113af5f6204a52c58de8141f20064d250",
-                "reference": "e0f4bd6113af5f6204a52c58de8141f20064d250",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/13e632d0532dd8f09751b1c9ebfc91a9eacafbfc",
+                "reference": "13e632d0532dd8f09751b1c9ebfc91a9eacafbfc",
                 "shasum": ""
             },
             "require": {
@@ -279,7 +279,7 @@
                 "framework",
                 "silverstripe"
             ],
-            "time": "2013-05-17 12:02:33"
+            "time": "2013-05-20 07:36:18"
         },
         {
             "name": "silverstripe/fulltextsearch",
@@ -686,12 +686,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ajshort/silverstripe-versionedfiles.git",
-                "reference": "f56d586f9637d06a14e87e470071b487cc10d83b"
+                "reference": "098613dbe360e6cd184ad7a6e62eb457a36c79dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ajshort/silverstripe-versionedfiles/zipball/f56d586f9637d06a14e87e470071b487cc10d83b",
-                "reference": "f56d586f9637d06a14e87e470071b487cc10d83b",
+                "url": "https://api.github.com/repos/ajshort/silverstripe-versionedfiles/zipball/098613dbe360e6cd184ad7a6e62eb457a36c79dd",
+                "reference": "098613dbe360e6cd184ad7a6e62eb457a36c79dd",
                 "shasum": ""
             },
             "require": {
@@ -712,7 +712,7 @@
             "keywords": [
                 "silverstripe"
             ],
-            "time": "2013-05-07 02:40:38"
+            "time": "2013-05-20 07:11:35"
         },
         {
             "name": "silverstripe/versionfeed",
