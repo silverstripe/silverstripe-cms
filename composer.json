@@ -3,12 +3,12 @@
 	"description": "CWP basic recipe",
 	"require": {
 		"php": ">=5.3.2",
-		"silverstripe/cms": "3.1.x-dev",
-		"silverstripe/framework": "3.1.x-dev",
+		"silverstripe/cms": "3.1.*",
+		"silverstripe/framework": "3.1.*",
 		"silverstripe/registry": "*",
 		"silverstripe/taxonomy": "*",
-		"undefinedoffset/sortablegridfield": "dev-master",
-		"silverstripe/fulltextsearch": "dev-master",
+		"undefinedoffset/sortablegridfield": "*",
+		"silverstripe/fulltextsearch": "*",
 		"cwp/cwp": "*",
 		"cwp-themes/default": "*",
 		"silverstripe/advancedworkflow": "*",
@@ -18,9 +18,10 @@
 		"silverstripe/html5": "*"
 	},
 	"require-dev": {
-		"silverstripe/behat-extension": "*",
-		"silverstripe/buildtools": "*",
-		"phpunit/phpunit": "3.7.*"
+		"phpunit/phpunit": "3.7.*@stable"
+	},
+	"config": {
+		"process-timeout": 900
 	},
 	"repositories": [
 		{
