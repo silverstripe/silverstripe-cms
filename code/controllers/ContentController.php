@@ -372,6 +372,10 @@ HTML;
 	 * This action is called by the installation system
 	 */
 	public function successfullyinstalled() {
+		// Return 410 Gone if this site is not actually a fresh installation
+		if (!file_exists(BASE_PATH . '/install.php')) {
+			$this->httpError(410);
+		}
 		// The manifest should be built by now, so it's safe to publish the 404 page
 		$fourohfour = Versioned::get_one_by_stage('ErrorPage', 'Stage', '"ErrorCode" = 404');
 		if($fourohfour) {
