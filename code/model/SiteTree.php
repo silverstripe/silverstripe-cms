@@ -2657,7 +2657,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if(!$this->canAddChildren())
 			$classes .= " nochildren";
 
-		if(!$this->canEdit() && !$this->canAddChildren()) 
+		if(!$this->canView() && !$this->canEdit() && !$this->canAddChildren())
 			$classes .= " disabled";
 
 		if(!$this->ShowInMenus) 
