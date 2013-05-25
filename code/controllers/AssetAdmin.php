@@ -158,8 +158,7 @@ JS
 			GridFieldLevelup::create($folder->ID)->setLinkSpec('admin/assets/show/%d')
 		);
 
-		$gridField = GridField::create('File', $title, $this->getList(), $gridFieldConfig)
-			->setCheckModelPermissions(true);
+		$gridField = GridField::create('File', $title, $this->getList(), $gridFieldConfig);
 		$columns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
 		$columns->setDisplayFields(array(
 			'StripThumbnail' => '',
