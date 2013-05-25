@@ -1259,7 +1259,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			rawurlencode(_t(
 				'CMSMain.RESTORED',
 				"Restored '{title}' successfully", 
-				array('title' => $restoredPage->TreeTitle)
+				array('title' => $restoredPage->Title)
 			))
 		);
 		
