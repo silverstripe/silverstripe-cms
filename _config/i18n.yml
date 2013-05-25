@@ -1,0 +1,8 @@
+---
+Name: cmsi18n
+Before: '/i18n'
+After: '/i18n#basei18n'
+---
+i18n:
+  module_priority:
+    - cms
