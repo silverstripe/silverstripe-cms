@@ -2621,7 +2621,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			if(is_string($data)) $data = array('text' => $data);
 			$treeTitle .= sprintf(
 				"<span class=\"badge %s\"%s>%s</span>",
-				Convert::raw2xml($class),
+				'status-' . Convert::raw2xml($class),
 				(isset($data['title'])) ? sprintf(' title="%s"', Convert::raw2xml($data['title'])) : '',
 				Convert::raw2xml($data['text'])
 			);
