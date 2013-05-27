@@ -489,6 +489,7 @@ JS
 				return $folder;
 			}
 		}
+		$this->setCurrentPageID(null);
 		return new Folder();
 	}
 	
