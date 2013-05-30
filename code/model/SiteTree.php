@@ -2651,17 +2651,25 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 */
 	public function CMSTreeClasses() {
 		$classes = sprintf('class-%s', $this->class);
-		if($this->HasBrokenFile || $this->HasBrokenLink)
+		if($this->HasBrokenFile || $this->HasBrokenLink) {
 			$classes .= " BrokenLink";
+		}
 
-		if(!$this->canAddChildren())
+		if(!$this->canAddChildren()) {
 			$classes .= " nochildren";
+		}
 
-		if(!$this->canView() && !$this->canEdit() && !$this->canAddChildren())
-			$classes .= " disabled";
+		if(!$this->canEdit() && !$this->canAddChildren()) {
+			if (!$this->canView()) {
+				$classes .= " disabled";
+			} else {
+				$classes .= " edit-disabled";
+			}
+		}
 
-		if(!$this->ShowInMenus) 
+		if(!$this->ShowInMenus) {
 			$classes .= " notinmenu";
+		}
 			
 		//TODO: Add integration
 		/*
