@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "d7a3348298ee8b5669cc5754c3d3b7a2",
+    "hash": "43ffa01f9e2d1c6517d7878ef12ea95a",
     "packages": [
         {
             "name": "composer/installers",
@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "3e3c4ace757bd7b9d11b9dc6b7fd2f4ef57dc8c1"
+                "reference": "04ae2b42384ed2f8d40263229530cabbaff3f930"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/3e3c4ace757bd7b9d11b9dc6b7fd2f4ef57dc8c1",
-                "reference": "3e3c4ace757bd7b9d11b9dc6b7fd2f4ef57dc8c1",
+                "url": "https://api.github.com/repos/composer/installers/zipball/04ae2b42384ed2f8d40263229530cabbaff3f930",
+                "reference": "04ae2b42384ed2f8d40263229530cabbaff3f930",
                 "shasum": ""
             },
             "replace": {
@@ -38,7 +38,7 @@
                     "Composer\\Installers\\": "src/"
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -74,7 +74,7 @@
                 "wordpress",
                 "zend"
             ],
-            "time": "2013-05-25 02:21:36"
+            "time": "2013-05-30 16:23:29"
         },
         {
             "name": "cwp-themes/default",
@@ -82,7 +82,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp-themes/default.git",
-                "reference": "b77c472a64ac108565e8bb71cbb80b850465b5fc"
+                "reference": "61b1eaed4902fdf78e83b7ff4be0a2d23d6d9005"
             },
             "require": {
                 "composer/installers": "*",
@@ -98,7 +98,7 @@
                 }
             },
             "description": "CWP Default Theme",
-            "time": "2013-05-23 05:45:24"
+            "time": "2013-05-28 02:18:30"
         },
         {
             "name": "cwp/cwp",
@@ -106,7 +106,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp.git",
-                "reference": "24e3074203d0156a559cb6c801b931472af77213"
+                "reference": "1700d6673498b59d18c67d2c9733e5aff7eb3fba"
             },
             "require": {
                 "composer/installers": "*",
@@ -121,7 +121,7 @@
                 }
             },
             "description": "CWP Main Extension Module",
-            "time": "2013-05-25 20:59:38"
+            "time": "2013-05-29 06:22:29"
         },
         {
             "name": "silverstripe-themes/module_bootstrap",
@@ -147,7 +147,7 @@
                     "dev-ssexpress": "0.1-dev"
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "description": "CSS toolkit by Twitter.",
             "time": "2013-05-23 03:54:45"
         },
@@ -190,12 +190,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-cms.git",
-                "reference": "e8f6b416d79e064316fa09fe7d0ba64f53433c20"
+                "reference": "206f09ab652faf73a2cb1b28d2b2026021745233"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/e8f6b416d79e064316fa09fe7d0ba64f53433c20",
-                "reference": "e8f6b416d79e064316fa09fe7d0ba64f53433c20",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/206f09ab652faf73a2cb1b28d2b2026021745233",
+                "reference": "206f09ab652faf73a2cb1b28d2b2026021745233",
                 "shasum": ""
             },
             "require": {
@@ -209,7 +209,7 @@
                     "tests/behat/"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -229,7 +229,7 @@
                 "cms",
                 "silverstripe"
             ],
-            "time": "2013-05-25 01:56:02"
+            "time": "2013-05-27 22:04:22"
         },
         {
             "name": "silverstripe/framework",
@@ -237,12 +237,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-framework.git",
-                "reference": "2b9a44ef67b4aef3cde7561fe3857a47138ca5ef"
+                "reference": "87694b7f72457c4b11ddb2aa5b18b8fd7f88cb4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/2b9a44ef67b4aef3cde7561fe3857a47138ca5ef",
-                "reference": "2b9a44ef67b4aef3cde7561fe3857a47138ca5ef",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/87694b7f72457c4b11ddb2aa5b18b8fd7f88cb4b",
+                "reference": "87694b7f72457c4b11ddb2aa5b18b8fd7f88cb4b",
                 "shasum": ""
             },
             "require": {
@@ -255,7 +255,7 @@
                     "tests/behat/features/bootstrap"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -275,7 +275,7 @@
                 "framework",
                 "silverstripe"
             ],
-            "time": "2013-05-26 01:06:47"
+            "time": "2013-05-30 08:45:17"
         },
         {
             "name": "silverstripe/fulltextsearch",
@@ -300,7 +300,7 @@
                 "silverstripe/subsites": "*"
             },
             "type": "silverstripe-module",
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "authors": [
                 {
                     "name": "Hamish Friedlander",
@@ -334,7 +334,7 @@
                 "silverstripe/framework": "3.*"
             },
             "type": "silverstripe-module",
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -351,12 +351,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-iframe.git",
-                "reference": "7325bc067ed346e503a53cdcec3edc0a69bc8d61"
+                "reference": "0392d910182a811204301f7a176919d2c2976369"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-iframe/zipball/7325bc067ed346e503a53cdcec3edc0a69bc8d61",
-                "reference": "7325bc067ed346e503a53cdcec3edc0a69bc8d61",
+                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-iframe/zipball/0392d910182a811204301f7a176919d2c2976369",
+                "reference": "0392d910182a811204301f7a176919d2c2976369",
                 "shasum": ""
             },
             "require": {
@@ -378,7 +378,7 @@
             "keywords": [
                 "silverstripe"
             ],
-            "time": "2013-02-27 04:09:14"
+            "time": "2013-05-28 02:55:20"
         },
         {
             "name": "silverstripe/multivaluefield",
@@ -398,7 +398,7 @@
                 "silverstripe/framework": ">=3.0.0"
             },
             "type": "silverstripe-module",
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -464,7 +464,7 @@
                 "silverstripe/framework": "3.*"
             },
             "type": "silverstripe-module",
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -500,14 +500,14 @@
                 "silverstripe/framework": "3.*"
             },
             "type": "silverstripe-module",
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "authors": [
                 {
                     "name": "Hamish Friedlander",
                     "email": "hamish@silverstripe.com"
                 },
                 {
-                    "name": "Sam Minnée",
+                    "name": "Sam Minnee",
                     "email": "sam@silverstripe.com"
                 }
             ],
@@ -525,12 +525,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-subsites.git",
-                "reference": "1538e49e1b135f16320aba02fc1eabab229721f0"
+                "reference": "b17e49fcd0ec51f4c1125835a91919e966039b14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-subsites/zipball/1538e49e1b135f16320aba02fc1eabab229721f0",
-                "reference": "1538e49e1b135f16320aba02fc1eabab229721f0",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-subsites/zipball/b17e49fcd0ec51f4c1125835a91919e966039b14",
+                "reference": "b17e49fcd0ec51f4c1125835a91919e966039b14",
                 "shasum": ""
             },
             "require": {
@@ -538,7 +538,7 @@
                 "silverstripe/framework": ">=3.1.x-dev,<4.0"
             },
             "type": "silverstripe-module",
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "authors": [
                 {
                     "name": "Sam Minnee",
@@ -551,7 +551,7 @@
                 "silverstripe",
                 "subsites"
             ],
-            "time": "2013-05-26 01:29:59"
+            "time": "2013-05-28 22:30:02"
         },
         {
             "name": "silverstripe/taxonomy",
@@ -572,7 +572,7 @@
                 "silverstripe/framework": ">=3.1.x-dev,<4.0"
             },
             "type": "silverstripe-module",
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -616,7 +616,7 @@
             "extra": {
                 "snapshot": "http://www.silverstripe.org/assets/Uploads/translatable4-small.png"
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -658,7 +658,7 @@
                 "silverstripe/framework": ">=3.1.x-dev,<4.0"
             },
             "type": "silverstripe-module",
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD"
             ],
@@ -681,20 +681,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ajshort/silverstripe-versionedfiles.git",
-                "reference": "098613dbe360e6cd184ad7a6e62eb457a36c79dd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ajshort/silverstripe-versionedfiles/zipball/098613dbe360e6cd184ad7a6e62eb457a36c79dd",
-                "reference": "098613dbe360e6cd184ad7a6e62eb457a36c79dd",
-                "shasum": ""
+                "url": "https://gitlab.cwp.govt.nz/silverstripe/silverstripe-versionedfiles.git",
+                "reference": "dccd557494c479a20d179941cbaecb22ab9abe0a"
             },
             "require": {
-                "silverstripe/framework": ">=3.1,<4.0"
+                "silverstripe/framework": "~3.1"
             },
             "type": "silverstripe-module",
-            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -708,7 +701,7 @@
             "keywords": [
                 "silverstripe"
             ],
-            "time": "2013-05-20 07:11:35"
+            "time": "2013-05-30 23:54:42"
         },
         {
             "name": "silverstripe/versionfeed",
@@ -753,12 +746,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/UndefinedOffset/SortableGridField.git",
-                "reference": "f75ebaea34d0a951320264fbfb2f56ee06aea92b"
+                "reference": "e33d57cb2829eb4c7a861571cb3c7db1d02b571f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/UndefinedOffset/SortableGridField/zipball/f75ebaea34d0a951320264fbfb2f56ee06aea92b",
-                "reference": "f75ebaea34d0a951320264fbfb2f56ee06aea92b",
+                "url": "https://api.github.com/repos/UndefinedOffset/SortableGridField/zipball/e33d57cb2829eb4c7a861571cb3c7db1d02b571f",
+                "reference": "e33d57cb2829eb4c7a861571cb3c7db1d02b571f",
                 "shasum": ""
             },
             "require": {
@@ -769,7 +762,7 @@
             "extra": {
                 "installer-name": "sortablegridfield"
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "authors": [
                 {
                     "name": "Ed Chipman",
@@ -782,7 +775,7 @@
                 "gridfield",
                 "silverstripe"
             ],
-            "time": "2013-05-25 23:42:35"
+            "time": "2013-05-27 12:16:53"
         }
     ],
     "packages-dev": [
@@ -819,7 +812,7 @@
                     "PHP/"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -865,7 +858,7 @@
                     "File/"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -910,7 +903,7 @@
                     "Text/"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -954,7 +947,7 @@
                     "PHP/"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -999,7 +992,7 @@
                     "PHP/"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -1070,7 +1063,7 @@
                     "PHPUnit/"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 "",
                 "../../symfony/yaml/"
@@ -1121,7 +1114,7 @@
                     "PHPUnit/"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -1172,7 +1165,7 @@
                     "Symfony\\Component\\Yaml\\": ""
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
