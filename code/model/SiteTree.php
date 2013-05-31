@@ -400,11 +400,13 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		) {
 			 return; // There were no suitable matches at all.
 		}
+
+		$link = Convert::raw2att($page->Link());
 		
 		if($content) {
-			return sprintf('<a href="%s">%s</a>', $page->Link(), $parser->parse($content));
+			return sprintf('<a href="%s">%s</a>', $link, $parser->parse($content));
 		} else {
-			return $page->Link();
+			return $link;
 		}
 	}
 	
@@ -444,7 +446,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string
 	 */
 	public function PreviewLink($action = null) {
-		return $this->AbsoluteLink($action);
+		if($this->hasMethod('alternatePreviewLink')) {
+			return $this->alternatePreviewLink($action);
+		} else {
+			return $this->AbsoluteLink($action);
+		}
 	}
 	
 	/**
@@ -462,22 +468,19 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	public function RelativeLink($action = null) {
 		if($this->ParentID && self::config()->nested_urls) {
 			$base = $this->Parent()->RelativeLink($this->URLSegment);
+		} elseif(!$action && $this->URLSegment == RootURLController::get_homepage_link()) {
+			// Unset base for root-level homepages.
+			// Note: Homepages with action parameters (or $action === true) 
+			// need to retain their URLSegment.
+			$base = null;
 		} else {
 			$base = $this->URLSegment;
 		}
 		
-		// Unset base for homepage URLSegments in their default language.
-		// Homepages with action parameters or in different languages
-		// need to retain their URLSegment. We can only do this if the homepage
-		// is on the root level.
-		if(!$action && $base == RootURLController::get_homepage_link() && !$this->ParentID) {
-			$base = null;
-			if(class_exists('Translatable') && $this->hasExtension('Translatable') && $this->Locale != Translatable::default_locale()){ 
-				$base = $this->URLSegment; 
-			}
-		}
+		$this->extend('updateRelativeLink', $base, $action);
 		
-		// Legacy support
+		// Legacy support: If $action === true, retain URLSegment for homepages,
+		// but don't append any action
 		if($action === true) $action = null;
 
 		return Controller::join_links($base, '/', $action);
@@ -1305,8 +1308,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if($this->ExtraMeta) { 
 			$tags .= $this->ExtraMeta . "\n";
 		} 
-		
-		if(Permission::check('CMS_ACCESS_CMSMain') && in_array('CMSPreviewable', class_implements($this))) {
+
+		if(Permission::check('CMS_ACCESS_CMSMain') && in_array('CMSPreviewable', class_implements($this)) && !$this instanceof ErrorPage) {
 			$tags .= "<meta name=\"x-page-id\" content=\"{$this->ID}\" />\n";
 			$tags .= "<meta name=\"x-cms-edit-link\" content=\"" . $this->CMSEditLink() . "\" />\n";
 		}
@@ -2618,7 +2621,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			if(is_string($data)) $data = array('text' => $data);
 			$treeTitle .= sprintf(
 				"<span class=\"badge %s\"%s>%s</span>",
-				Convert::raw2xml($class),
+				'status-' . Convert::raw2xml($class),
 				(isset($data['title'])) ? sprintf(' title="%s"', Convert::raw2xml($data['title'])) : '',
 				Convert::raw2xml($data['text'])
 			);
@@ -2654,7 +2657,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if(!$this->canAddChildren())
 			$classes .= " nochildren";
 
-		if(!$this->canEdit() && !$this->canAddChildren()) 
+		if(!$this->canView() && !$this->canEdit() && !$this->canAddChildren())
 			$classes .= " disabled";
 
 		if(!$this->ShowInMenus) 
@@ -2758,7 +2761,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				'name' => _t('SiteTree.VIEW_ALL_DESCRIPTION', 'View any page'),
 				'category' => _t('Permissions.CONTENT_CATEGORY', 'Content permissions'),
 				'sort' => -100,
-				'help' => _t('SiteTree.VIEW_ALL_HELP', 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission')
+				'help' => _t('SiteTree.VIEW_ALL_HELP', 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to \'Pages\' section" permission')
 			),
 			'SITETREE_EDIT_ALL' => array(
 				'name' => _t('SiteTree.EDIT_ALL_DESCRIPTION', 'Edit any page'),

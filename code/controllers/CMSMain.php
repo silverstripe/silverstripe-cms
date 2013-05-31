@@ -1092,15 +1092,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		if($version) {
 			$record->doRollbackTo($version);
 			$message = _t(
-				'CMSMain.ROLLEDBACKVERSION',
-				"Rolled back to version #%d.  New version number is #%d",
-				array('version' => $data['Version'], 'versionnew' => $record->Version)
+				'CMSMain.ROLLEDBACKVERSIONv2',
+				"Rolled back to version #%d.",
+				array('version' => $data['Version'])
 			);
 		} else {
 			$record->doRollbackTo('Live');
 			$message = _t(
-				'CMSMain.ROLLEDBACKPUB',"Rolled back to published version. New version number is #{version}",
-				array('version' => $record->Version)
+				'CMSMain.ROLLEDBACKPUBv2',"Rolled back to published version."
 			);
 		}
 
@@ -1260,7 +1259,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			rawurlencode(_t(
 				'CMSMain.RESTORED',
 				"Restored '{title}' successfully", 
-				array('title' => $restoredPage->TreeTitle)
+				array('title' => $restoredPage->Title)
 			))
 		);
 		

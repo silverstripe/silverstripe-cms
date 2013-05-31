@@ -158,7 +158,7 @@ JS
 			GridFieldLevelup::create($folder->ID)->setLinkSpec('admin/assets/show/%d')
 		);
 
-		$gridField = new GridField('File', $title, $this->getList(), $gridFieldConfig);
+		$gridField = GridField::create('File', $title, $this->getList(), $gridFieldConfig);
 		$columns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
 		$columns->setDisplayFields(array(
 			'StripThumbnail' => '',
@@ -491,6 +491,7 @@ JS
 				return $folder;
 			}
 		}
+		$this->setCurrentPageID(null);
 		return new Folder();
 	}
 	

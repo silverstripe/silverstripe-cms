@@ -43,7 +43,7 @@ class SearchForm extends Form {
 		}
 		
 		if(class_exists('Translatable') && singleton('SiteTree')->hasExtension('Translatable')) {
-			$fields->push(new HiddenField('locale', 'locale', Translatable::get_current_locale()));
+			$fields->push(new HiddenField('searchlocale', 'searchlocale', Translatable::get_current_locale()));
 		}
 		
 		if(!$actions) {
@@ -101,11 +101,18 @@ class SearchForm extends Form {
 		if(!isset($data) || !is_array($data)) $data = $_REQUEST;
 		
 		// set language (if present)
-		if(class_exists('Translatable') && singleton('SiteTree')->hasExtension('Translatable') && isset($data['locale'])) {
-			$origLocale = Translatable::get_current_locale();
-			Translatable::set_current_locale($data['locale']);
+		if(class_exists('Translatable')) {
+			if(singleton('SiteTree')->hasExtension('Translatable') && isset($data['searchlocale'])) {
+				if($data['searchlocale'] == "ALL") {
+					Translatable::disable_locale_filter();
+				} else {
+					$origLocale = Translatable::get_current_locale();
+
+					Translatable::set_current_locale($data['searchlocale']);
+				}
+			}
 		}
-	
+
 		$keywords = $data['Search'];
 
 	 	$andProcessor = create_function('$matches','
@@ -137,8 +144,14 @@ class SearchForm extends Form {
 		}
 		
 		// reset locale
-		if(class_exists('Translatable') && singleton('SiteTree')->hasExtension('Translatable') && isset($data['locale'])) {
-			Translatable::set_current_locale($origLocale);
+		if(class_exists('Translatable')) {
+			if(singleton('SiteTree')->hasExtension('Translatable') && isset($data['searchlocale'])) {
+				if($data['searchlocale'] == "ALL") {
+					Translatable::enable_locale_filter();
+				} else {
+					Translatable::set_current_locale($origLocale);
+				}
+			}
 		}
 
 		return $results;

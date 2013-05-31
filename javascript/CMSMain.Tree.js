@@ -9,15 +9,15 @@
 					'items': function(node) {
 						
 						var menuitems = {
-							'edit': {
-								'label': ss.i18n._t('Tree.EditPage'),
-								'action': function(obj) {
-									$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
-										self.data('urlEditpage'), obj.data('id')
-									));
+								'edit': {
+									'label': ss.i18n._t('Tree.EditPage', 'Edit page', 100, 'Used in the context menu when right-clicking on a page node in the CMS tree'),
+									'action': function(obj) {
+										$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
+											self.data('urlEditpage'), obj.data('id')
+										));
+									}
 								}
-							}
-						};
+							};
 
 						// Add "show as list"
 						if(!node.hasClass('nochildren')) {
@@ -60,18 +60,21 @@
 								'label': '<span class="jstree-pageicon"></span>' + klassData.title,
 								'_class': 'class-' + klass,
 								'action': function(obj) {
-									$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
-									self.data('urlAddpage'), id, klass
-									));
+									$('.cms-container').entwine('.ss').loadPanel(
+										$.path.addSearchParams(
+											ss.i18n.sprintf(self.data('urlAddpage'), id, klass),
+											self.data('extraParams')
+										)
+									);
 								}
 							};
 						});
 						
 						if(hasAllowedChildren) {
 							menuitems['addsubpage'] = {
-								'label': ss.i18n._t('Tree.AddSubPage'),
-								'submenu': menuAllowedChildren
-							};
+									'label': ss.i18n._t('Tree.AddSubPage', 'Add page under this page', 100, 'Used in the context menu when right-clicking on a page node in the CMS tree'),
+									'submenu': menuAllowedChildren
+								};
 						}				
 
 						menuitems['duplicate'] = {
@@ -80,16 +83,22 @@
 								{
 									'label': ss.i18n._t('Tree.ThisPageOnly'),
 									'action': function(obj) {
-										$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
-											self.data('urlDuplicate'), obj.data('id')
-										));
+										$('.cms-container').entwine('.ss').loadPanel(
+											$.path.addSearchParams(
+												ss.i18n.sprintf(self.data('urlDuplicate'), obj.data('id')), 
+												self.data('extraParams')
+											)
+										);
 									}
 								},{
 									'label': ss.i18n._t('Tree.ThisPageAndSubpages'),
 									'action': function(obj) {
-										$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
-											self.data('urlDuplicatewithchildren'), obj.data('id')
-										));
+										$('.cms-container').entwine('.ss').loadPanel(
+											$.path.addSearchParams(
+												ss.i18n.sprintf(self.data('urlDuplicatewithchildren'), obj.data('id')), 
+												self.data('extraParams')
+											)
+										);
 									}
 								}
 							]									
