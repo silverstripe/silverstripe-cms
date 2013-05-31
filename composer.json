@@ -29,24 +29,24 @@
 	},
 	"repositories": [
 		{
-				"type": "vcs",
-				"url": "https://gitlab.cwp.govt.nz/cwp/cwp.git"
+			"type": "vcs",
+			"url": "https://gitlab.cwp.govt.nz/cwp/cwp.git"
 		},
 		{
-				"type": "vcs",
-				"url": "https://gitlab.cwp.govt.nz/cwp-themes/default.git"
+			"type": "vcs",
+			"url": "https://gitlab.cwp.govt.nz/cwp-themes/default.git"
 		},
 		{
-				"type": "vcs",
-				"url": "https://gitlab.cwp.govt.nz/silverstripe/advancedworkflow.git"
+			"type": "vcs",
+			"url": "https://gitlab.cwp.govt.nz/silverstripe/advancedworkflow.git"
 		},
 		{
-				"type": "vcs",
-				"url": "https://gitlab.cwp.govt.nz/silverstripe/queuedjobs.git"
+			"type": "vcs",
+			"url": "https://gitlab.cwp.govt.nz/silverstripe/queuedjobs.git"
 		},
 		{
-				"type": "vcs",
-				"url": "https://gitlab.cwp.govt.nz/silverstripe/silverstripe-versionedfiles.git"
+			"type": "vcs",
+			"url": "https://gitlab.cwp.govt.nz/silverstripe/silverstripe-versionedfiles.git"
 		}
 	],
 	"minimum-stability": "dev"
