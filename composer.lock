@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "43ffa01f9e2d1c6517d7878ef12ea95a",
+    "hash": "cabd97efc9c1a8e8e95ec3a98a458905",
     "packages": [
         {
             "name": "composer/installers",
@@ -106,7 +106,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp.git",
-                "reference": "1700d6673498b59d18c67d2c9733e5aff7eb3fba"
+                "reference": "3bd039d3dcf6c04c0ffe479ac1b33ca3c1804958"
             },
             "require": {
                 "composer/installers": "*",
@@ -121,7 +121,7 @@
                 }
             },
             "description": "CWP Main Extension Module",
-            "time": "2013-05-29 06:22:29"
+            "time": "2013-05-31 02:47:27"
         },
         {
             "name": "silverstripe-themes/module_bootstrap",
