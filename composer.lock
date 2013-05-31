@@ -157,7 +157,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/silverstripe/advancedworkflow.git",
-                "reference": "7d249a6dd8b5bff2b5348aea3b343b5b84beed8b"
+                "reference": "a8f93aaf14d79a459315892873c9737feb5daebf"
             },
             "require": {
                 "silverstripe/cms": ">=3.0.0"
@@ -182,7 +182,7 @@
                 "silverstripe",
                 "workflow"
             ],
-            "time": "2013-05-24 04:44:42"
+            "time": "2013-05-31 05:20:39"
         },
         {
             "name": "silverstripe/cms",
