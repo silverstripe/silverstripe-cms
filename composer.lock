@@ -190,12 +190,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-cms.git",
-                "reference": "206f09ab652faf73a2cb1b28d2b2026021745233"
+                "reference": "bd86ff848c22d3c588b1a3273e008152bf65ac66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/206f09ab652faf73a2cb1b28d2b2026021745233",
-                "reference": "206f09ab652faf73a2cb1b28d2b2026021745233",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/bd86ff848c22d3c588b1a3273e008152bf65ac66",
+                "reference": "bd86ff848c22d3c588b1a3273e008152bf65ac66",
                 "shasum": ""
             },
             "require": {
@@ -229,7 +229,7 @@
                 "cms",
                 "silverstripe"
             ],
-            "time": "2013-05-27 22:04:22"
+            "time": "2013-05-31 15:53:05"
         },
         {
             "name": "silverstripe/framework",
@@ -237,12 +237,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-framework.git",
-                "reference": "9511d72aa90dd5bc4ae52976120501e629ddce79"
+                "reference": "1cebfc5d51a6d6d06ab222f8d0354dfe02ef7ed8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/9511d72aa90dd5bc4ae52976120501e629ddce79",
-                "reference": "9511d72aa90dd5bc4ae52976120501e629ddce79",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/1cebfc5d51a6d6d06ab222f8d0354dfe02ef7ed8",
+                "reference": "1cebfc5d51a6d6d06ab222f8d0354dfe02ef7ed8",
                 "shasum": ""
             },
             "require": {
@@ -275,7 +275,7 @@
                 "framework",
                 "silverstripe"
             ],
-            "time": "2013-05-31 04:36:08"
+            "time": "2013-05-31 23:51:01"
         },
         {
             "name": "silverstripe/fulltextsearch",
