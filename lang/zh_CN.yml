@@ -76,12 +76,15 @@ zh_CN:
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
     AddNew: 'Add new page'
     AddNewButton: 'Add new'
+    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
     ChoosePageParentMode: 'Choose where to create this page'
     ChoosePageType: 'Choose page type'
     Create: Create
-    DELETE: 从测试网站中删除
+    DELETE: '从测试网站中删除'
     DELETEFP: Delete
     DESCREMOVED: 'and {count} descendants'
+    DUPLICATED: 'Duplicated ''{title}'' successfully'
+    DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: 电子邮件
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
@@ -91,21 +94,21 @@ zh_CN:
     PAGES: Pages
     PAGETYPEANYOPT: Any
     PAGETYPEOPT: 'Page Type'
-    PUBALLCONFIRM: 请发布该站的每一网页，这样，预备发布站上的内容就会复制到正式发布站上
-    PUBALLFUN: “全部发布“功能
+    PUBALLCONFIRM: '请发布该站的每一网页，这样，预备发布站上的内容就会复制到正式发布站上'
+    PUBALLFUN: '“全部发布“功能'
     PUBALLFUN2: 按下这一按键将等同于逐一发布每一网页。此功能适用于被大量编辑过的网页，如在网站被第一次使用时。
     PUBPAGES: 'Done: Published {count} pages'
     PageAdded: 'Successfully created page'
-    REMOVED: '已从正式网站删除 ''%s''%s '
+    REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: '已从测试站点删除 ''%s'''
     RESTORE: Restore
     RESTORED: 'Restored ''{title}'' successfully'
     ROLLBACK: 恢复到这一版本
-    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
-    ROLLEDBACKVERSION: '回复到#%d版本。新的版本号为#%d'
+    ROLLEDBACKPUBv2: 'Rolled back to published version.'
+    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
     SAVE: 保存
-    SAVEDRAFT: 'Save Draft'
+    SAVEDRAFT: 'Save draft'
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
@@ -129,6 +132,7 @@ zh_CN:
     SHOWUNPUBLISHED: 显示未发布版本
     SHOWVERSION: 显示版本
     VIEW: 视图
+    VIEWINGLATEST: 'Currently viewing the latest version.'
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Author
@@ -142,7 +146,7 @@ zh_CN:
     GalleryView: 相册视图
     ListView: 列表视图
     MENUTITLE: 页面
-    TreeView: 树形视图
+    TreeView: '树形视图'
   CMSPagesController_ContentToolbar.ss:
     ENABLEDRAGGING: 'Drag''n''drop'
     MULTISELECT: Multi-selection
@@ -158,7 +162,7 @@ zh_CN:
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Changed pages'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 所有页面(包含已删除)
+    Title: '所有页面(包含已删除)'
   CMSSiteTreeFilter_Search:
     Title: 'All pages'
   ContentControl:
@@ -167,6 +171,7 @@ zh_CN:
     ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
+    DRAFT: Draft
     DRAFTSITE: 'Draft Site'
     DRAFT_SITE_ACCESS_RESTRICTION: '您必需用您的CMS密码来登录，才可浏览预备发布或已归档内容。<a href="%s">点击这里可回到正式发布站<a>'
     Email: Email
@@ -178,14 +183,15 @@ zh_CN:
     LOGIN: Login
     LOGOUT: 'Log out'
     NOTLOGGEDIN: 'Not logged in'
+    PUBLISHED: Published
     PUBLISHEDSITE: 'Published Site'
     Password: Password
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'View Page in:'
   ErrorPage:
-    CODE: 错误代码
+    CODE: '错误代码'
     DEFAULTERRORPAGECONTENT: '<p>Sorry, it seems you were trying to access a page that doesn''t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>'
     DEFAULTERRORPAGETITLE: 'Page not found'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem with handling your request.</p>'
@@ -218,11 +224,11 @@ zh_CN:
     504: '504 - Gateway Timeout'
     505: '505 - HTTP Version Not Supported'
   Folder:
-    AddFolderButton: 添加文件夹
-    DELETEUNUSEDTHUMBNAILS: 删除未使用缩略图
+    AddFolderButton: '添加文件夹'
+    DELETEUNUSEDTHUMBNAILS: '删除未使用缩略图'
     UNUSEDFILESTITLE: 未使用文件
     UNUSEDTHUMBNAILSTITLE: 未使用缩略图
-    UploadFilesButton: 上传
+    UploadFilesButton: '上传'
   LeftAndMain:
     DELETED: Deleted.
     PreviewButton: 预览
@@ -236,7 +242,7 @@ zh_CN:
     CONTENT_CATEGORY: 'Content permissions'
     PERMISSIONS_CATEGORY: 'Roles and access permissions'
   RedirectorPage:
-    DESCRIPTION: 跳转至其他的内部页面
+    DESCRIPTION: '跳转至其他的内部页面'
     HASBEENSETUP: 重导网页被生成，却没有什么地方由它来重导。
     HEADER: 该页会将用户重新导向另一网页
     OTHERURL: 另一网站的URL
@@ -251,6 +257,10 @@ zh_CN:
     ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter by'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
+    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
+    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
   SearchForm:
     GO: Go
     SEARCH: Search
@@ -263,15 +273,17 @@ zh_CN:
     BrokenLinksGroupTitle: 'Broken links reports'
     ContentGroupTitle: 'Content reports'
     EMPTYPAGES: 空白页
-    LAST2WEEKS: 在过去2周内编辑过的网页
+    LAST2WEEKS: '在过去2周内编辑过的网页'
     OtherGroupTitle: Other
     ParameterLiveCheckbox: 'Check live site'
     REPEMPTY: 'The {title} report is empty.'
+  SilverStripeNavigator:
+    ARCHIVED: Archived
   SilverStripeNavigatorLink:
     ShareInstructions: 分享此页，请复制粘贴下面的链接
     ShareLink: 分享链接
   SilverStripeNavigatorLinkl:
-    CloseLink: 关闭
+    CloseLink: '关闭'
   SiteConfig:
     DEFAULTTHEME: '(Use default theme)'
     EDITHEADER: 'Who can edit pages on this site?'
@@ -292,21 +304,23 @@ zh_CN:
     ACCESSANYONE: 任何人
     ACCESSHEADER: 在我的网站上，谁可以浏览此页？
     ACCESSLOGGEDIN: 已登录的用户
-    ACCESSONLYTHESE: 只有这些人（请从下列清单中选择）
+    ACCESSONLYTHESE: '只有这些人（请从下列清单中选择）'
     ADDEDTODRAFTHELP: 'Page has not been published yet'
     ADDEDTODRAFTSHORT: Draft
-    ALLOWCOMMENTS: 是否允许对次页进行评论？
+    ALLOWCOMMENTS: '是否允许对次页进行评论？'
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: 取消草稿的改动
     BUTTONCANCELDRAFTDESC: 将您的草稿恢复到目前正式发布的版本
-    BUTTONSAVEPUBLISH: 保存并发布
+    BUTTONPUBLISHED: Published
+    BUTTONSAVED: Saved
+    BUTTONSAVEPUBLISH: 'Save & publish'
     BUTTONUNPUBLISH: 撤消发布
-    BUTTONUNPUBLISHDESC: 将此页从正式发布站删除
+    BUTTONUNPUBLISHDESC: '将此页从正式发布站删除'
     CREATED: 创建日期
     Comments: Comments
     Content: Content
     DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
-    DEFAULTABOUTTITLE: 关于我们
+    DEFAULTABOUTTITLE: '关于我们'
     DEFAULTCONTACTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
     DEFAULTCONTACTTITLE: 'Contact Us'
     DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
@@ -319,25 +333,30 @@ zh_CN:
     DependtPageColumnURL: URL
     EDITANYONE: 任何可以登录CMS的人
     EDITHEADER: 谁能在CMS中编辑此页？
-    EDITONLYTHESE: 只有这些人（请从下列清单中选择）
+    EDITONLYTHESE: '只有这些人（请从下列清单中选择）'
     EDITORGROUPS: 'Editor Groups'
     EDIT_ALL_DESCRIPTION: 'Edit any page'
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     Editors: 'Editors Groups'
+    GroupPlaceholder: 'Click to select group'
     HASBROKENLINKS: 该页有失效链接。
-    HTMLEDITORTITLE: 内容
+    HTMLEDITORTITLE: '内容'
     INHERIT: 从父页面继承
+    LASTPUBLISHED: 'Last published'
+    LASTSAVED: 'Last saved'
     LASTUPDATED: 'Last Updated'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
-    MENUTITLE: 导航标签
-    METADESC: 网页描述标签
+    MENUTITLE: '导航标签'
+    METADESC: '网页描述标签'
     METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
-    METAEXTRA: 自定义Meta标签
+    METAEXTRA: '自定义Meta标签'
     METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
     MetadataToggle: Metadata
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
+    MoreOptions: 'More options'
+    NOTPUBLISHED: 'Not published'
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
     PAGELOCATION: 'Page location'
     PAGETITLE: 网页名称
     PAGETYPE: 网页类型
@@ -356,17 +375,17 @@ zh_CN:
     REORGANISE_DESCRIPTION: 'Change site structure'
     REORGANISE_HELP: 'Rearrange pages in the site tree through drag&drop.'
     SHOWINMENUS: 是否出现在菜单中？
-    SHOWINSEARCH: 是否包括在搜索结果中？
+    SHOWINSEARCH: '是否包括在搜索结果中？'
     SINGULARNAME: Page
     TABBEHAVIOUR: 行为特点
-    TABCONTENT: 内容
+    TABCONTENT: '内容'
     TABDEPENDENT: 'Dependent pages'
-    TOPLEVEL: 网站内容（顶层）
+    TOPLEVEL: '网站内容（顶层）'
     TOPLEVELCREATORGROUPS: 'Top level creators'
     URLSegment: 'URL Segment'
     VIEWERGROUPS: 'Viewer Groups'
     VIEW_ALL_DESCRIPTION: 'View any page'
-    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: 'View draft content'
     VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
     Viewers: 'Viewers Groups'
@@ -376,6 +395,7 @@ zh_CN:
     many_many_ImageTracking: 'Image Tracking'
     many_many_LinkTracking: 'Link Tracking'
   SiteTreeURLSegmentField:
+    EMPTY: 'Please enter a URL Segment or click cancel'
     HelpChars: ' Special characters are automatically converted or removed.'
   StaticExporter:
     BASEURL: 基本URL
@@ -397,14 +417,20 @@ zh_CN:
     VIEWPREVIOUS: 'View previous'
   TreeTools:
     DisplayLabel: 'Display:'
+  URLSegmentField:
+    Cancel: Cancel
+    Edit: Edit
+    OK: OK
   ViewArchivedEmail.ss:
-    CANACCESS: 您可通过这个链接进入已归挡的网页：
+    CANACCESS: '您可通过这个链接进入已归挡的网页：'
     HAVEASKED: '在%s,您要求浏览我们网站'
   VirtualPage:
-    CHOOSE: 选择一个网页进行链接
-    DESCRIPTION: 显示其他页的内容
-    EDITCONTENT: 点击这里以编辑内容
+    CHOOSE: 'Linked Page'
+    DESCRIPTION: '显示其他页的内容'
+    EDITCONTENT: 'Edit content on linked page'
+    EditLink: edit
     HEADER: 这是一个虚拟页
+    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
     PLURALNAME: 虚拟页面
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 虚拟页面

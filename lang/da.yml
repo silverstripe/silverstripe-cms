@@ -76,12 +76,15 @@ da:
     ACCESS_HELP: 'Tillad visning af den sektion, som indeholder sidetræet og indhold. Visnings- og redigeringstilladelser kan håndteres gennem sidespecifikke rullemenuer, såvel som de enkelte "Inholdstilladelser".'
     AddNew: 'Tilføj ny side'
     AddNewButton: 'Tilføj ny'
+    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
     ChoosePageParentMode: 'Vælg hvor denne side skal oprettes'
     ChoosePageType: 'Vælg sidetype'
     Create: Opret
     DELETE: 'Slet fra fra udkast-sitet'
     DELETEFP: Slet
     DESCREMOVED: 'og {count} efterkommere'
+    DUPLICATED: 'Duplicated ''{title}'' successfully'
+    DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: Email
     EditTree: 'Rediger sidetræ'
     ListFiltered: 'Filtreret liste.'
@@ -96,16 +99,16 @@ da:
     PUBALLFUN2: 'Hvis du trykker på denne knap, svarer det til at gå til hver enkel side og vælge udgiv. Det er hensigten at denne funktion benyttes når der er blevet lavet mange ændringer på flere sider, som f.eks da websitet blev påbegyndt.'
     PUBPAGES: 'Færdig: Udgav {count} sider'
     PageAdded: 'Siden blev oprettet med succes'
-    REMOVED: 'Slet ''%s''%s fra live-sitet'
+    REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: 'Fjernede ''{title}'' fra den udgivne side'
     REMOVEDPAGEFROMDRAFT: '''%s''  fjernet fra udkast-sitet'
     RESTORE: Genskab
     RESTORED: 'Genskabte ''{title}'' korrekt'
     ROLLBACK: 'Rul tilbage til denne version'
-    ROLLEDBACKPUB: 'Rullet tilbage til udgivne udgave. Nyt udgavenummer er # {version}'
-    ROLLEDBACKVERSION: 'Tilbagerullet til version #%d. Nyt versionsnummer er #%d'
+    ROLLEDBACKPUBv2: 'Rolled back to published version.'
+    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
     SAVE: Gem
-    SAVEDRAFT: 'Gem kladde'
+    SAVEDRAFT: 'Save draft'
     TabContent: Indhold
     TabHistory: Historik
     TabSettings: Indstillinger
@@ -129,6 +132,7 @@ da:
     SHOWUNPUBLISHED: 'Vis versioner der ikke er udgivne'
     SHOWVERSION: 'Vis version'
     VIEW: Visning
+    VIEWINGLATEST: 'Currently viewing the latest version.'
     VIEWINGVERSION: 'Lige nu vises version {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Forfatter
@@ -167,6 +171,7 @@ da:
     ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Arkiveret side fra'
     CMS: CMS
+    DRAFT: Draft
     DRAFTSITE: Kladdeside
     DRAFT_SITE_ACCESS_RESTRICTION: 'Du skal være logget ind med din CMS adgangskode for se indhold af kladder eller arkiv. <a href="%s">Klik her for at komme tilbage til den udgivne side.</a>'
     Email: Email
@@ -178,10 +183,11 @@ da:
     LOGIN: 'Log ind'
     LOGOUT: 'Log ud'
     NOTLOGGEDIN: 'Ikke logget ind'
+    PUBLISHED: Published
     PUBLISHEDSITE: 'Udgivet side'
     Password: Adgangskode
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'Du kan starte med at redigere dit websteds indhold ved at åbne <a href="{link}">CMS\\''en</a>.'
+    StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Var ikke i stand til at slette installationsfilerne. Slet venligst filerne herunder manuelt.'
     VIEWPAGEIN: 'Vis side i:'
   ErrorPage:
@@ -251,6 +257,10 @@ da:
     ReportTitle: Titel
   ReportAdminForm:
     FILTERBY: 'Filtrer ved'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
+    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
+    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
   SearchForm:
     GO: Send
     SEARCH: Søg
@@ -267,6 +277,8 @@ da:
     OtherGroupTitle: Anden
     ParameterLiveCheckbox: 'Tjek det udgivne websted'
     REPEMPTY: '{title}rapporten er tom.'
+  SilverStripeNavigator:
+    ARCHIVED: Archived
   SilverStripeNavigatorLink:
     ShareInstructions: 'Kopier linket herunder for at dele denne side.'
     ShareLink: 'Del link'
@@ -299,7 +311,9 @@ da:
     APPEARSVIRTUALPAGES: 'Dette indhold er også på de virtuelle sider i {title}sektionerne'
     BUTTONCANCELDRAFT: 'Annuller ændringer i kladden '
     BUTTONCANCELDRAFTDESC: 'Slet kladden og benyt istedet den nuværende side'
-    BUTTONSAVEPUBLISH: 'Gem og udgiv'
+    BUTTONPUBLISHED: Published
+    BUTTONSAVED: Saved
+    BUTTONSAVEPUBLISH: 'Save & publish'
     BUTTONUNPUBLISH: 'Annuller udgivelse'
     BUTTONUNPUBLISHDESC: 'Fjern denne side fra det udgivne websted'
     CREATED: 'Dato for oprettelse'
@@ -324,9 +338,12 @@ da:
     EDIT_ALL_DESCRIPTION: 'Rediger enhver side'
     EDIT_ALL_HELP: 'Mulighed for at redigere enhver side på webstedet, uanset indstillingerne på fanen Adgang. Kræver tilladelsen "Adgang til ''Sider'' sektionen"'
     Editors: 'Redaktørenes grupper'
+    GroupPlaceholder: 'Click to select group'
     HASBROKENLINKS: 'Denne side har links der ikke virker.'
     HTMLEDITORTITLE: Indhold
     INHERIT: 'Nedarv fra overliggende side'
+    LASTPUBLISHED: 'Last published'
+    LASTSAVED: 'Last saved'
     LASTUPDATED: 'Sidst opdateret'
     LINKCHANGENOTE: 'Ved at ændre denne sides link, ændrer du også linket til alle underliggende sider.'
     MENUTITLE: Navigationsetiket
@@ -337,7 +354,9 @@ da:
     MODIFIEDONDRAFTHELP: 'Siden har ikke-udgivne ændringer'
     MODIFIEDONDRAFTSHORT: Ændret
     MetadataToggle: Metadata
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
+    MoreOptions: 'More options'
+    NOTPUBLISHED: 'Not published'
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
     PAGELOCATION: Sideplacering
     PAGETITLE: Sidenavn
     PAGETYPE: Sidetype
@@ -366,7 +385,7 @@ da:
     URLSegment: 'URL Segment'
     VIEWERGROUPS: Visningsgrupper
     VIEW_ALL_DESCRIPTION: 'Vis enhver side'
-    VIEW_ALL_HELP: 'Mulighed for at redigere enhver side på webstedet, uanset indstillingerne på fanen Adgang. Kræver tilladelsen "Adgang til ''Sider'' sektionen"'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: 'Vis indhold af kladde'
     VIEW_DRAFT_CONTENT_HELP: 'Gælder for visning af sider uden for CMS i kladdetilstand. Nyttigt for eksterne samarbejdspartnere uden CMS adgang.'
     Viewers: Visningsgrupper
@@ -376,6 +395,7 @@ da:
     many_many_ImageTracking: 'Sporing af billeder'
     many_many_LinkTracking: 'Sporing af links'
   SiteTreeURLSegmentField:
+    EMPTY: 'Please enter a URL Segment or click cancel'
     HelpChars: 'Specialkarakterer bliver automatisk konverteret eller fjernet.'
   StaticExporter:
     BASEURL: 'Base URL'
@@ -397,14 +417,20 @@ da:
     VIEWPREVIOUS: 'Vis forrige'
   TreeTools:
     DisplayLabel: 'Display:'
+  URLSegmentField:
+    Cancel: Cancel
+    Edit: Edit
+    OK: OK
   ViewArchivedEmail.ss:
     CANACCESS: 'Du kan tilgå¨den arkiverede side på dette link:'
     HAVEASKED: 'Du har spurgt om at se indholdet af vores side på'
   VirtualPage:
-    CHOOSE: 'Vælg en side at linke til'
+    CHOOSE: 'Linked Page'
     DESCRIPTION: 'Viser indholdet fra en anden side'
-    EDITCONTENT: 'Klik her for at redigere indholdet'
+    EDITCONTENT: 'Edit content on linked page'
+    EditLink: edit
     HEADER: 'Dette er en virtuel side'
+    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
     PLURALNAME: 'Virtuelle sider'
     PageTypNotAllowedOnRoot: 'Original side type "{type}" er ikke tilladt på rodniveau for denne virtuelle side'
     SINGULARNAME: 'Virtuel side'
