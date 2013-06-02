@@ -80,6 +80,8 @@ en:
     DELETE: 'Delete draft'
     DELETEFP: Delete
     DESCREMOVED: 'and {count} descendants'
+    DUPLICATED: 'Duplicated ''{title}'' successfully'
+    DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: Email
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
@@ -93,22 +95,23 @@ en:
     PUBALLFUN2: "Pressing this button will do the equivalent of going to every page and pressing \"publish\".  It's\n				intended to be used after there have been massive edits of the content, such as when the site was\n				first built."
     PUBPAGES: 'Done: Published {count} pages'
     PageAdded: 'Successfully created page'
-    REMOVED: 'Deleted ''%s''%s from live site'
+    REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: 'Removed ''%s'' from the draft site'
     RESTORE: Restore
     RESTORED: 'Restored ''{title}'' successfully'
     ROLLBACK: 'Roll back to this version'
-    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
-    ROLLEDBACKVERSION: 'Rolled back to version #%d.  New version number is #%d'
+    ROLLEDBACKPUBv2: 'Rolled back to published version.'
+    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
     SAVE: Save
-    SAVEDRAFT: 'Save Draft'
+    SAVEDRAFT: 'Save draft'
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
     TreeFiltered: 'Filtered tree.'
     TreeFilteredClear: 'Clear filter'
     MENUTITLE: 'Edit Page'
+    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
   CMSMain_left.ss:
     'APPLY FILTER': 'Apply Filter'
     RESET: Reset
@@ -126,6 +129,7 @@ en:
     VIEW: view
     VIEWINGVERSION: 'Currently viewing version {version}.'
     MENUTITLE: History
+    VIEWINGLATEST: 'Currently viewing the latest version.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Author
     NOTPUBLISHED: 'Not published'
@@ -173,9 +177,11 @@ en:
     PUBLISHEDSITE: 'Published Site'
     Password: Password
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\''s content by opening <a href="{link}">the CMS</a>.'
+    StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'View Page in:'
+    DRAFT: Draft
+    PUBLISHED: Published
   ErrorPage:
     400: '400 - Bad Request'
     401: '401 - Unauthorized'
@@ -291,7 +297,7 @@ en:
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: 'Cancel draft changes'
     BUTTONCANCELDRAFTDESC: 'Delete your draft and revert to the currently published page'
-    BUTTONSAVEPUBLISH: 'Save & Publish'
+    BUTTONSAVEPUBLISH: 'Save & publish'
     BUTTONUNPUBLISH: Unpublish
     BUTTONUNPUBLISHDESC: 'Remove this page from the published site'
     CREATED: 'Date Created'
@@ -329,7 +335,7 @@ en:
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
     MetadataToggle: Metadata
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
     PAGELOCATION: 'Page location'
     PAGETITLE: 'Page name'
     PAGETYPE: 'Page type'
@@ -358,7 +364,7 @@ en:
     URLSegment: 'URL Segment'
     VIEWERGROUPS: 'Viewer Groups'
     VIEW_ALL_DESCRIPTION: 'View any page'
-    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: 'View draft content'
     VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
     Viewers: 'Viewers Groups'
@@ -367,8 +373,16 @@ en:
     many_many_BackLinkTracking: 'Backlink Tracking'
     many_many_ImageTracking: 'Image Tracking'
     many_many_LinkTracking: 'Link Tracking'
+    BUTTONPUBLISHED: Published
+    BUTTONSAVED: Saved
+    GroupPlaceholder: 'Click to select group'
+    LASTPUBLISHED: 'Last published'
+    LASTSAVED: 'Last saved'
+    MoreOptions: 'More options'
+    NOTPUBLISHED: 'Not published'
   SiteTreeURLSegmentField:
     HelpChars: ' Special characters are automatically converted or removed.'
+    EMPTY: 'Please enter a URL Segment or click cancel'
   StaticExporter:
     BASEURL: 'Base URL'
     EXPORTTO: 'Export to that folder'
@@ -393,13 +407,15 @@ en:
     CANACCESS: 'You can access the archived site at this link:'
     HAVEASKED: 'You have asked to view the content of our site on'
   VirtualPage:
-    CHOOSE: 'Choose a page to link to'
+    CHOOSE: 'Linked Page'
     DESCRIPTION: 'Displays the content of another page'
-    EDITCONTENT: 'click here to edit the content'
+    EDITCONTENT: 'Edit content on linked page'
     HEADER: 'This is a virtual page'
     PLURALNAME: 'Virtual Pags'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtual Page'
+    EditLink: edit
+    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
   CMSFileAddController:
     MENUTITLE: Files
   CMSPageEditController:
@@ -408,3 +424,13 @@ en:
     MENUTITLE: 'Edit Page'
   CMSSettingsController:
     MENUTITLE: Settings
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
+    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
+    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
+  SilverStripeNavigator:
+    ARCHIVED: Archived
+  URLSegmentField:
+    Cancel: Cancel
+    Edit: Edit
+    OK: OK

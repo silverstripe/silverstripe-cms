@@ -76,12 +76,15 @@ fi:
     ACCESS_HELP: 'Oikeuttaa katsella osiota, joka sisältää sivurakenteen ja sisällön. Katselu- ja muokkausoikeuksia voidaan käsitellä sivukohtaisten pudotusvalikoiden kautta kuten myös erillisiä "sisällön oikeuksia".'
     AddNew: 'Lisää uusi sivu'
     AddNewButton: 'Lisää uusi'
+    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
     ChoosePageParentMode: 'Valitse kohde, minne sivu luodaan'
     ChoosePageType: 'Valitse sivutyyppi'
     Create: Luo
     DELETE: 'Poista luonnossivulta'
     DELETEFP: 'Poista julkaistulta sivulta'
     DESCREMOVED: 'ja {count} alasivua'
+    DUPLICATED: 'Duplicated ''{title}'' successfully'
+    DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: Sähköposti
     EditTree: 'Muokkaa rakennepuuta'
     ListFiltered: 'Suodatettu lista.'
@@ -96,16 +99,16 @@ fi:
     PUBALLFUN2: 'Painamalla tätä nappia, tekee se saman kuin kävisit painamassa joka sivulla "julkaise". Se on käytännöllinen, jos on tehnyt isoja muutoksia sisältöön, esim. kun sivusto luotiin.'
     PUBPAGES: 'Valmis: julkaistiin {count} sivu(a)'
     PageAdded: 'Sivun luonti onnistui'
-    REMOVED: '''%s''%s poistettu julkaistulta sivustolta'
+    REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: '''{title}'' poistettiin julkaistulta sivustolta'
     REMOVEDPAGEFROMDRAFT: 'Poistettu ''%s'' luonnossivustolta'
     RESTORE: Palauta
     RESTORED: '''{title}'' palautettiin onnistuneesti'
     ROLLBACK: 'Siirry takaisin tähän versioon.'
-    ROLLEDBACKPUB: 'Siirrytty takaisin julkaistuun versioon. Uusi versionumero on #{version}'
-    ROLLEDBACKVERSION: 'Siirrytty takaisin versioon #%d. Uusi versionumero on #%d'
+    ROLLEDBACKPUBv2: 'Rolled back to published version.'
+    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
     SAVE: Tallenna
-    SAVEDRAFT: 'Tallenna luonnos'
+    SAVEDRAFT: 'Save draft'
     TabContent: Sisältö
     TabHistory: Historia
     TabSettings: Asetukset
@@ -129,6 +132,7 @@ fi:
     SHOWUNPUBLISHED: 'Näytä julkaisemattomat versiot'
     SHOWVERSION: 'Näytä versionumero'
     VIEW: näkymä
+    VIEWINGLATEST: 'Currently viewing the latest version.'
     VIEWINGVERSION: 'Katsot versiota {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Tekijä
@@ -167,21 +171,23 @@ fi:
     ARCHIVEDSITE: 'Esikatselu versio'
     ARCHIVEDSITEFROM: 'Arkistoitu sivusto lähteestä:'
     CMS: CMS
+    DRAFT: Draft
     DRAFTSITE: Luonnossivusto
     DRAFT_SITE_ACCESS_RESTRICTION: 'Voidaksesi katsella luonnoksia tai arkistoitua sisältöä sinun täytyy kirjautua sisään CMS:n salasanallasi. <a href="%s">Palataksesi julkiselle sivulle paina tästä</a>.'
     Email: Sähköposti
     INSTALL_SUCCESS: 'Asennus onnistui!'
     InstallFilesDeleted: 'Asennustiedostot poistettiin onnistuneesti.'
-    InstallSecurityWarning: 'Tietoturvan takia, kannattaa poistaa asennustiedostot palvelimelta, ellet aio asentaa järjestelmää uudelleen. (<em>pääkäyttäjän kirjautuminen vaaditaan, katso ylempää</em>). Palvelimella kirjoitusoikeudet tarvitaan vain "assets"-kansioon. Voit poistaa kirjoitusoikeudet kaikista muista kansioista. <br /> <a href="{link}" style="text-align: center;">Napsauta tästä poistaaksesi kaikki asennustiedostot.</a>'
+    InstallSecurityWarning: 'Tietoturvan takia, kannattaa poistaa asennustiedostot palvelimelta, ellet aio asentaa järjestelmää uudelleen. (<em>Vaaditaan pääkäyttäjän kirjautuminen: katso ylempää</em>). Palvelimella kirjoitusoikeudet tarvitaan vain "assets"-kansioon. Voit poistaa kirjoitusoikeudet kaikista muista kansioista. <br /> <a href="{link}" style="text-align: center;">Napsauta tästä poistaaksesi kaikki asennustiedostot.</a>'
     InstallSuccessCongratulations: 'SilverStripe asennettu onnistuneesti!'
     LOGGEDINAS: 'Kirjautuneena sisään nimimerkillä'
     LOGIN: 'Kirjaudu sisään'
     LOGOUT: 'Kirjaudu ulos'
     NOTLOGGEDIN: 'Ei kirjautuneena sisään'
+    PUBLISHED: Published
     PUBLISHEDSITE: 'Julkaistu sivusto'
     Password: Salasana
     PostInstallTutorialIntro: 'Tämä sivusto on yksinkertaistettu versio SilverStripe 3 sivustosta. Laajentaaksesi tätä, ole hyvä ja tutustu: {link}.'
-    StartEditing: 'Voit aloittaa sivuston muokkauksen avaamalla <a href="{link}">CMS-järjestelmän</a>.'
+    StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Asennustiedostojen automaattinen poistaminen ei onnistunut. Ole hyvä ja poista seuraavat tiedostot manuaalisesti.'
     VIEWPAGEIN: 'Tarkastele sivua:'
   ErrorPage:
@@ -251,6 +257,10 @@ fi:
     ReportTitle: Otsikko
   ReportAdminForm:
     FILTERBY: Suodata
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
+    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
+    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
   SearchForm:
     GO: Mene
     SEARCH: Haku
@@ -267,6 +277,8 @@ fi:
     OtherGroupTitle: Muu
     ParameterLiveCheckbox: 'Tarkista live-sivusto'
     REPEMPTY: '{title}:n raportti on tyhjä.'
+  SilverStripeNavigator:
+    ARCHIVED: Archived
   SilverStripeNavigatorLink:
     ShareInstructions: 'Jakaaksesi tämän tällä sivulla, kopioi ja liitä alapuolella oleva linkki.'
     ShareLink: 'Jaa linkki'
@@ -299,7 +311,9 @@ fi:
     APPEARSVIRTUALPAGES: 'Tämä sisältö on käytössä myös virtuaalisivuilla osioissa {title}'
     BUTTONCANCELDRAFT: 'Peruuta muutokset, jotka teit luonnokseen'
     BUTTONCANCELDRAFTDESC: 'Poista luonnoksesi ja palauta julkaistu sivu'
-    BUTTONSAVEPUBLISH: 'Tallenna & julkaise'
+    BUTTONPUBLISHED: Published
+    BUTTONSAVED: Saved
+    BUTTONSAVEPUBLISH: 'Save & publish'
     BUTTONUNPUBLISH: 'Poista julkaisu'
     BUTTONUNPUBLISHDESC: 'Poista tämä sivu julkaistulta sivustolta'
     CREATED: Luotu
@@ -309,7 +323,7 @@ fi:
     DEFAULTABOUTTITLE: 'Tietoa meistä'
     DEFAULTCONTACTCONTENT: '<p>Voit täyttää tämän sivun omalla sisällölläsi tai poistaa sen ja luoda omia sivujasi.<br /></p>'
     DEFAULTCONTACTTITLE: 'Ota yhteyttä meihin'
-    DEFAULTHOMECONTENT: '<p>Tervetuloa SilverStripeen! Tämä on oletus-kotisivu. Voit muokata tätä sivua avaamalla <a href="admin/">CMS:n</a>. Voit myös lukea <a href="http://doc.silverstripe.com">kehittäjä-dokumentaatiota</a> tai aloittaa <a href="http://doc.silverstripe.com/doku.php?id=tutorials">johdatuskursseista</a>.</p>'
+    DEFAULTHOMECONTENT: '<p>Tervetuloa SilverStripeen! Tämä on oletus-kotisivu. Voit muokata tätä sivua kirjautumalla <a href="admin/">ylläpitonäkymään</a>. Voit myös lukea <a href="http://doc.silverstripe.com">kehittäjä-dokumentaatiota</a> tai aloittaa tutustumisen järjestelmään <a href="http://doc.silverstripe.com/doku.php?id=tutorials">johdatuskursseista</a>.</p>'
     DEFAULTHOMETITLE: Koti
     DELETEDPAGEHELP: 'Sivu ei ole enää julkaistuna'
     DELETEDPAGESHORT: Poistettu
@@ -324,20 +338,25 @@ fi:
     EDIT_ALL_DESCRIPTION: 'Muokkaa mitä tahansa sivua'
     EDIT_ALL_HELP: 'Mahdollisuus muokata mitä tahansa sivua sivustosta, riippumatta Käyttöoikeus-välilehden asetuksista. Vaatii "Käyttöoikeus sivuston sisältöön" -lupaa'
     Editors: Toimittajaryhmät
+    GroupPlaceholder: 'Click to select group'
     HASBROKENLINKS: 'Tällä sivulla on rikkinäisiä linkkejä'
     HTMLEDITORTITLE: Sisältö
     INHERIT: 'Sama kuin ylätason sivulla'
+    LASTPUBLISHED: 'Last published'
+    LASTSAVED: 'Last saved'
     LASTUPDATED: 'Viimeksi päivitetty'
     LINKCHANGENOTE: 'Tämän sivun linkin muuttaminen vaikuttaa myös alasivujen linkkeihin.'
     MENUTITLE: 'Navigoinnin nimike'
     METADESC: 'Meta kuvaus'
-    METADESCHELP: 'Hakukoneet näyttää tämä sisältö hakutuloksessa (tämä sisältö ei kuitenkin vaikuttaa sijaintia hakutuloksessa).'
+    METADESCHELP: 'Hakukoneet näyttävät tämän sisällön hakutuloksissa (sisältö ei kuitenkaan vaikuttaa sijoitukseen hakutuloksessa).'
     METAEXTRA: 'Omat meta-tagit'
     METAEXTRAHELP: 'Omat meta-tagit'
     MODIFIEDONDRAFTHELP: 'Sivulla on tehty muutoksia, joita ei ole julkaistu'
     MODIFIEDONDRAFTSHORT: Muokattu
     MetadataToggle: Meta-tiedot
-    OBSOLETECLASS: 'Tämä sivu on vanhentunutta tyyppiä ({type}). Tallentaminen nollaa tyypin ja saatat menettää tietoja.'
+    MoreOptions: 'More options'
+    NOTPUBLISHED: 'Not published'
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
     PAGELOCATION: 'Sivun sijainti'
     PAGETITLE: 'Sivun nimi'
     PAGETYPE: 'Sivun tyyppi'
@@ -366,7 +385,7 @@ fi:
     URLSegment: URL-osoite
     VIEWERGROUPS: Katsojaryhmät
     VIEW_ALL_DESCRIPTION: 'Näytä mikä tahansa sivu'
-    VIEW_ALL_HELP: 'Mahdollisuus tarkastella mitä tahansa sivua sivustosta, riippumatta Käyttöoikeus-välilehden asetuksista. Vaatii "Käyttöoikeus sivuston sisältöön" -lupaa'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: 'Näytä luonnoksen sisältö'
     VIEW_DRAFT_CONTENT_HELP: 'Koskee sivujen näyttämistä CMS:n ulkopuolella vedoslaadulla. Hyödyllinen ulkopuolisille yhteistyökumppaneille ilman CMS-yhteyttä.'
     Viewers: Katselijaryhmät
@@ -376,6 +395,7 @@ fi:
     many_many_ImageTracking: 'Kuvan seuranta'
     many_many_LinkTracking: 'Linkin seuranta'
   SiteTreeURLSegmentField:
+    EMPTY: 'Please enter a URL Segment or click cancel'
     HelpChars: 'Erikoismerkit muunnetaan automaattisesti tai poistetaan.'
   StaticExporter:
     BASEURL: 'Kannan URL-osoite'
@@ -397,14 +417,20 @@ fi:
     VIEWPREVIOUS: 'Näytä edellinen'
   TreeTools:
     DisplayLabel: 'Näytä:'
+  URLSegmentField:
+    Cancel: Cancel
+    Edit: Edit
+    OK: OK
   ViewArchivedEmail.ss:
     CANACCESS: 'Pääset arkistoidulle sivulle tällä linkillä:'
     HAVEASKED: 'Sinua on pyydetty katsomaan sivun sisältöä '
   VirtualPage:
-    CHOOSE: 'Valitse sivu, jolle linkitetään'
+    CHOOSE: 'Linked Page'
     DESCRIPTION: 'Näytä toisen sivun sisältö'
-    EDITCONTENT: 'muokataksesi sisältöä paina tästä'
+    EDITCONTENT: 'Edit content on linked page'
+    EditLink: edit
     HEADER: 'Tämä on virtuaalinen sivu'
+    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
     PLURALNAME: 'Virtuaaliset sivut'
     PageTypNotAllowedOnRoot: 'Alkuperäinen sivutyyppi "{type}" ei ole sallittu tämän virtuaalisen sivun päätasolla'
     SINGULARNAME: 'Virtuaalinen sivu'

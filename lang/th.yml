@@ -6,7 +6,7 @@ th:
     AppCategoryAudio: ไฟล์เสียง
     AppCategoryDocument: เอกสาร
     AppCategoryFlash: แฟลช
-    AppCategoryImage: รูปภาพ
+    AppCategoryImage: 'รูปภาพ'
     AppCategoryVideo: วีดีโอ
     BackToFolder: ย้อนกลับไปที่โฟลเดอร์
     CREATED: วันที่
@@ -44,7 +44,7 @@ th:
     CheckSiteDropdownPublished: เว็บไซต์ที่เผยแพร่แล้ว
     ColumnDateLastModified: วันที่แก้ไขล่าสุด
     ColumnDateLastPublished: วันที่เผยแพร่ล่าสุด
-    ColumnProblemType: ประเภทปัญหา
+    ColumnProblemType: 'ประเภทปัญหา'
     ColumnURL: URL
     HasBrokenFile: มีไฟล์เสีย
     HasBrokenLink: มีลิงค์เสีย
@@ -76,12 +76,15 @@ th:
     ACCESS_HELP: 'อนุญาตให้เปิดดูส่วนของเซ็กชั่นที่บรรจุรายการหน้าเว็บแบบทรีและเนื้อหาได้ สิทธิ์ในการเปิดดูและแก้ไขสามารถจัดการได้ผ่านทางหน้าเว็บทีระบุอยู่ในเมนูแบบดรอปดาวน์ เช่นเดียวกับ "สิทธิ์อนุญาตของเนื้อหา" ที่แยกออกมาต่างหากด้วยเช่นกัน'
     AddNew: เพิ่มหน้าใหม่
     AddNewButton: เพิ่มใหม่
+    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
     ChoosePageParentMode: เลือกว่าต้องการสร้างหน้าเว็บนี้ไว้ที่ไหน
-    ChoosePageType: เลือกประเภทของหน้าเว็บ
+    ChoosePageType: 'เลือกประเภทของหน้าเว็บ'
     Create: สร้าง
     DELETE: ลบออกจากเว็บไซต์ฉบับร่าง
     DELETEFP: ลบ
     DESCREMOVED: 'และ {count} รายการลูก'
+    DUPLICATED: 'Duplicated ''{title}'' successfully'
+    DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: อีเมล
     EditTree: 'แก้ไขรายการแบบ Tree'
     ListFiltered: แสดงรายการตามตัวกรองข้อมูล
@@ -89,23 +92,23 @@ th:
     NEWPAGE: 'ใหม่ {pagetype}'
     PAGENOTEXISTS: ไม่มีหน้านี้อยู่
     PAGES: หน้า
-    PAGETYPEANYOPT: ประเภทใดก็ได้
-    PAGETYPEOPT: ประเภทหน้าเว็บ
+    PAGETYPEANYOPT: 'ประเภทใดก็ได้'
+    PAGETYPEOPT: 'ประเภทหน้าเว็บ'
     PUBALLCONFIRM: 'กรุณาเผยแพร่หน้าเว็บทุกหน้าในเว็บไซต์, คัดลอกเนื้อหาลงไปที่'
     PUBALLFUN: 'ฟังก์ชั่นการทำงาน "เผยแพร่ทั้งหมด"'
     PUBALLFUN2: "การกดปุ่มนี้จะเทียบเท่ากับการไปที่หน้าต่างๆทุกๆหน้าแล้วกด \"เผยแพร่\".  It's\\nปุ่มดังกล่าวมีไว้ด้วยความตั้งใจที่ต้องการให้นำไปใช้กับการแก้ไขเนื้อหาเป็นจำนวนมาก เช่น เมื่อเว็บไซต์\\nถูกสร้างขึ้นเป็นครั้งแรก."
     PUBPAGES: 'เผยแแพร่หน้าเว็บแล้ว {count} หน้า'
     PageAdded: หน้าเว็บที่สร้างเสร็จเรียบร้อยแล้ว
-    REMOVED: 'ลบ ''%s''%s จากเว็บไซต์ที่ออนไลน์สดๆอยู่แล้ว'
+    REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: 'ลบ ''{title}'' ออกจากเว็บไซต์ที่เผยแพร่อยู่แล้ว'
     REMOVEDPAGEFROMDRAFT: 'ลบ ''%s'' ออกจากเว็บไซต์ฉบับร่างแล้ว'
     RESTORE: คืนค่า
     RESTORED: 'เรียกคืนค่า ''{title}'' เสร็จเรียบร้อยแล้ว'
     ROLLBACK: ย้อนกลับไปที่รุ่นนี้
-    ROLLEDBACKPUB: 'ย้อนกลับไปใช้รุ่นที่เผยแพร่อยู่ หมายเลขรุ่นใหม่คือ #{version}'
-    ROLLEDBACKVERSION: 'ย้อนกลับไปเป็นรุ่น #%d แล้ว หมายเลขใหม่ของรุ่นคือ #%d'
+    ROLLEDBACKPUBv2: 'Rolled back to published version.'
+    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
     SAVE: บันทึก
-    SAVEDRAFT: บันทึกเป็นฉบับร่าง
+    SAVEDRAFT: 'Save draft'
     TabContent: เนื้อหา
     TabHistory: ประวัติย้อนหลัง
     TabSettings: ตั้งค่า
@@ -129,6 +132,7 @@ th:
     SHOWUNPUBLISHED: แสดงรุ่นที่ระงับการเผยแพร่ไว้
     SHOWVERSION: แสดงข้อมูลรุ่น
     VIEW: มุมมอง
+    VIEWINGLATEST: 'Currently viewing the latest version.'
     VIEWINGVERSION: 'ขณะนี้กำลังเปิดดูในรุ่น {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: ผู้แต่ง
@@ -167,6 +171,7 @@ th:
     ARCHIVEDSITE: รุ่นสำหรับดูตัวอย่าง
     ARCHIVEDSITEFROM: เว็บไซต์ที่จัดเก็บไว้ถาวรจาก
     CMS: CMS
+    DRAFT: Draft
     DRAFTSITE: เว็บไซต์ฉบับร่าง
     DRAFT_SITE_ACCESS_RESTRICTION: 'คุณต้องเข้าสู่ระบบด้วยรหัสผ่าน CMS ของคุณ หากต้องการเปิดดูฉบับร่าง หรือเนื้อหาย้อนหลัง.  <a href="%s">คลิกที่นี่เพื่อย้อนกลับไปที่เว็บไซต์ที่เผยแพร่อยู่.</a>'
     Email: อีเมล
@@ -178,10 +183,11 @@ th:
     LOGIN: เข้าสู่ระบบ
     LOGOUT: ออกจากระบบ
     NOTLOGGEDIN: ยังไม่ได้เข้าสู่ระบบ
+    PUBLISHED: Published
     PUBLISHEDSITE: เว็บไซต์ที่เผยแพร่อยู่
     Password: รหัสผ่าน
     PostInstallTutorialIntro: 'เว็บไซต์นี้เป็นรุ่นอย่างง่ายของเว็บไซต์ที่สร้างจากรุ่น SiverStripe 3 หากต้องการขยายขีดความสามารถ กรุณาเข้าไปที่ {link}'
-    StartEditing: 'คุณสามารถเริ่มทำการแก้ไขเนื้อหาในเว็บไซต์ของคุณได้ด้วยการเปิด <a href="{link}"> CMS</a>.'
+    StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'ไม่สามารถลบไฟล์ติดตั้งได้ กรุณาลบไฟล์ดังกล่าวด้านล่างด้วยตนเอง'
     VIEWPAGEIN: 'เปิดดูหน้าเว็บใน:'
   ErrorPage:
@@ -236,7 +242,7 @@ th:
     CONTENT_CATEGORY: สิทธิ์อนุญาตของเนื้อหา
     PERMISSIONS_CATEGORY: บทบาทและสิทธิ์อนุญาตการเข้าถึง
   RedirectorPage:
-    DESCRIPTION: เปลี่ยนเส้นทางไปยังหน้าเว็บภายในอื่นๆ
+    DESCRIPTION: 'เปลี่ยนเส้นทางไปยังหน้าเว็บภายในอื่นๆ'
     HASBEENSETUP: หน้าเว็บที่มีการเปลี่ยนเส้นทางซึ่งได้รับการตั้งค่าโดยปราศจากตำแหน่งปลายทางที่ต้องการเปลี่ยนเส้นทางไป
     HEADER: หน้าเว็บนี้จะเปลี่ยนเส้นทางผู้ใช้งานไปยังหน้าเว็บอื่นๆ
     OTHERURL: 'ที่อยู่ URL ของเว็บไซต์อื่นๆ'
@@ -251,6 +257,10 @@ th:
     ReportTitle: หัวเรื่อง
   ReportAdminForm:
     FILTERBY: แสดงข้อมูลตาม
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
+    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
+    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
   SearchForm:
     GO: ค้นหา
     SEARCH: ค้นหา
@@ -267,6 +277,8 @@ th:
     OtherGroupTitle: อื่นๆ
     ParameterLiveCheckbox: ดูเว็บไซต์แบบสดๆ
     REPEMPTY: 'รายงาน {title} ยังว่างอยู่'
+  SilverStripeNavigator:
+    ARCHIVED: Archived
   SilverStripeNavigatorLink:
     ShareInstructions: 'หากต้องการแชร์หน้าเว็บนี้, คัดลอกแล้วนำลิงก์ด้านล่างนี้ไปวาง'
     ShareLink: ลิงก์ที่ต้องการแชร์
@@ -299,7 +311,9 @@ th:
     APPEARSVIRTUALPAGES: 'เนื้อหานี้ปรากฏอยู่ในหน้าเว็บจำลองในส่วนของ {title} ด้วยเช่นกัน'
     BUTTONCANCELDRAFT: ยกเลิกการเปลี่ยนแปลงในฉบับร่าง
     BUTTONCANCELDRAFTDESC: ลบฉบับร่างของคุณแล้วย้อนกลับไปใช้หน้าเว็บที่เผยแพร่อยู่ในขณะนี้
-    BUTTONSAVEPUBLISH: บันทึกและเผยแพร่
+    BUTTONPUBLISHED: Published
+    BUTTONSAVED: Saved
+    BUTTONSAVEPUBLISH: 'Save & publish'
     BUTTONUNPUBLISH: ยังไม่ได้เผยแพร่
     BUTTONUNPUBLISHDESC: ลบหน้าเว็บนี้ออกจากเว็บไซต์ที่เผยแพร่แล้ว
     CREATED: วันที่สร้าง
@@ -324,9 +338,12 @@ th:
     EDIT_ALL_DESCRIPTION: แก้ไขหน้าเว็บใดก็ได้
     EDIT_ALL_HELP: 'ความสามารถในการแก้ไขหน้าเว็บใดๆในเว็บไซต์, โดยไม่ต้องคำนึงถึงการตั้งค่าที่อยู่ในส่วนของแท็บการเข้าถึง, จำเป็นต้องได้รับสิทธิ์อนุญาติ "เข้าถึงส่วนของ''หน้าเว็บ''"'
     Editors: กลุ่มของบรรณาธิการ
+    GroupPlaceholder: 'Click to select group'
     HASBROKENLINKS: หน้าเว็บนี้มีลิงค์เสีย
     HTMLEDITORTITLE: เนื้อหา
     INHERIT: สืบทอดค่าจากหน้าเว็บต้นทาง
+    LASTPUBLISHED: 'Last published'
+    LASTSAVED: 'Last saved'
     LASTUPDATED: อัพเดทล่าสุด
     LINKCHANGENOTE: การเปลี่ยนลิงก์ของหน้าเว็บนี้จะส่งผลถึงลิงก์ต่างๆที่อยู่ในหน้าเว็บลูกด้วย
     MENUTITLE: ป้ายบอกทาง
@@ -337,7 +354,9 @@ th:
     MODIFIEDONDRAFTHELP: หน้าเว็บถูกเปลี่ยนค่าเป็นระงับการเผยแพร่แล้ว
     MODIFIEDONDRAFTSHORT: แก้ไขเมื่อ
     MetadataToggle: Metadata
-    OBSOLETECLASS: 'หน้าเว็บนี้เป็นหน้าเว็บประเภทที่เก่าแล้ว {type} การบันทึกข้อมูลจะรีเซ็ตค่าประเภทของหน้าดังกล่าว และอาจทำให้ข้อมูลสูญหายได้'
+    MoreOptions: 'More options'
+    NOTPUBLISHED: 'Not published'
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
     PAGELOCATION: ตำแหน่งหน้าเว็บ
     PAGETITLE: ชื่อหน้าเว็บ
     PAGETYPE: 'ประเภท เอกสาร'
@@ -366,16 +385,17 @@ th:
     URLSegment: 'ส่วนการจัดการ URL'
     VIEWERGROUPS: กลุ่มผู้ชม
     VIEW_ALL_DESCRIPTION: เปิดดูหน้าเว็บใดก็ได้
-    VIEW_ALL_HELP: 'สามารถเปิดดูหน้าเว็บใดๆก็ได้ในเว็บไซต์, โดยไม่จำเป็นต้องคำนึงถึงการตั้งในส่วนของแท็บการเข้าถึง จำเป็นต้องได้รับสิทธิ์ "สามารถเข้าถึงเนื้อหาในเว็บไซต์ได้"'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: เปิดดูเนื้อหาฉบับร่าง
     VIEW_DRAFT_CONTENT_HELP: 'นำไปใช้ในการดูหน้าเว็บที่อยู่ด้านนอก CMS ในโหมดฉบับร่าง มีประโยชน์สำหรับการทำงานร่วมกันจากภายนอก โดยไม่จำเป็นต้องเข้าถึง CMS'
     Viewers: กลุ่มผู้เข้าชม
     Visibility: สามารถมองเห็นได้
     has_one_Parent: หน้าเว็บต้นทาง
     many_many_BackLinkTracking: แกะรอยลิงก์ย้อนกลับ
-    many_many_ImageTracking: แกะรอยรูปภาพ
+    many_many_ImageTracking: 'แกะรอยรูปภาพ'
     many_many_LinkTracking: แกะรอยลิงก์
   SiteTreeURLSegmentField:
+    EMPTY: 'Please enter a URL Segment or click cancel'
     HelpChars: ตัวอักษรพิเศษได้ถูกแปลงค่าหรือลบออกโดยอัตโนมัติแล้ว
   StaticExporter:
     BASEURL: 'URL หลักสำหรับอ้างอิง'
@@ -397,14 +417,20 @@ th:
     VIEWPREVIOUS: เปิดดูก่อนหน้า
   TreeTools:
     DisplayLabel: 'แสดง:'
+  URLSegmentField:
+    Cancel: Cancel
+    Edit: Edit
+    OK: OK
   ViewArchivedEmail.ss:
     CANACCESS: 'คุณสามารถเข้าถึงเว็บไซต์รุ่นย้อนหลังได้จากลิงก์นี้:'
     HAVEASKED: คุณได้ร้องขอเพื่อเปิดดูเนื้อหาในเว็บไซต์ของเราเมื่อ
   VirtualPage:
-    CHOOSE: เลือกหน้าเว็บที่ต้องการลิงก์ไป
+    CHOOSE: 'Linked Page'
     DESCRIPTION: แสดงเนื้อหาของหน้าเว็บอื่นๆ
-    EDITCONTENT: คลิกที่นี่เพื่อแก้ไขเนื้อหา
+    EDITCONTENT: 'Edit content on linked page'
+    EditLink: edit
     HEADER: นี่เป็นหน้าเว็บจำลอง
+    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
     PLURALNAME: หน้าเว็บจำลอง
     PageTypNotAllowedOnRoot: 'ชนิดของหน้าเว็บดั้งเดิม "{type}" ไม่ได้รับอนุญาตให้ใช้งานกับหน้าเว็บจำลองที่ตำแหน่ง root'
     SINGULARNAME: หน้าจำลอง

@@ -76,12 +76,15 @@ ar:
     ACCESS_HELP: 'سماح بعرض لقسم يحتوي على صفحة الشجرة والمحتوى. يمكن التعامل معها عرض وتحرير الأذونات من خلال القائمه المنسدله للروابط محددة صفحة، فضلا عن فصل "أذونات المحتوى".'
     AddNew: 'Add new page'
     AddNewButton: 'Add new'
+    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
     ChoosePageParentMode: 'Choose where to create this page'
     ChoosePageType: 'Choose page type'
     Create: Create
     DELETE: 'حذف من مسودة الموقع'
     DELETEFP: 'حذف من الموقع المنشور'
     DESCREMOVED: 'and {count} descendants'
+    DUPLICATED: 'Duplicated ''{title}'' successfully'
+    DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: 'البريد الإلكتروني'
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
@@ -96,16 +99,16 @@ ar:
     PUBALLFUN2: 'الضغط على هذا الزر يعني الذهاب لكل صفحة و نشرها.  It''sintended to be used after there have been massive edits of the content, such as when the site wasfirst built.'
     PUBPAGES: 'Done: Published {count} pages'
     PageAdded: 'Successfully created page'
-    REMOVED: '''%s''%s محذوفة من الموقع المباشر'
+    REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: '''%s'' محذوف من مسودة الموقع'
     RESTORE: تخزين
     RESTORED: 'Restored ''{title}'' successfully'
     ROLLBACK: 'عودة إلى هذا الإصدار'
-    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
-    ROLLEDBACKVERSION: 'عودة للإصدار #%d. الإصدار الجديد يحمل الرقم #%d'
+    ROLLEDBACKPUBv2: 'Rolled back to published version.'
+    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
     SAVE: حفظ
-    SAVEDRAFT: 'Save Draft'
+    SAVEDRAFT: 'Save draft'
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
@@ -129,13 +132,14 @@ ar:
     SHOWUNPUBLISHED: 'عرض النسخ الغير منشورة'
     SHOWVERSION: 'عرض النسخ'
     VIEW: view
+    VIEWINGLATEST: 'Currently viewing the latest version.'
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: الكاتب
     NOTPUBLISHED: 'غير منشور'
     PUBLISHER: الناشر
     UNKNOWN: 'غير معروف'
-    WHEN: متى
+    WHEN: 'متى'
   CMSPageSettingsController:
     MENUTITLE: 'تحرير صفحة'
   CMSPagesController:
@@ -149,10 +153,10 @@ ar:
   CMSPagesController_Tools.ss:
     FILTER: Filter
   CMSSearch:
-    FILTERDATEFROM: من
+    FILTERDATEFROM: 'من'
     FILTERDATEHEADING: التاريخ
     FILTERDATETO: إلى
-    FILTERLABELTEXT: المحتوى
+    FILTERLABELTEXT: 'المحتوى'
   CMSSettingsController:
     MENUTITLE: الإعدادات
   CMSSiteTreeFilter_ChangedPages:
@@ -167,6 +171,7 @@ ar:
     ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'موقع تمت أرشفته منذ'
     CMS: 'نظام إدارة المحتوى'
+    DRAFT: Draft
     DRAFTSITE: 'موقع في المسودة'
     DRAFT_SITE_ACCESS_RESTRICTION: 'بجب تسجيل الدخول ببيانات نظام إدارة المحتوى للتمكن من مشاهدة المسودات أو محتوى الأرشيف. <a href="%s">اضغط هنا للرجوع إلى الموقع المنشور.</a>'
     Email: Email
@@ -178,10 +183,11 @@ ar:
     LOGIN: الدخول
     LOGOUT: الخروج
     NOTLOGGEDIN: 'لم يتم تسجيل الدخول'
+    PUBLISHED: Published
     PUBLISHEDSITE: 'موقع منشور'
     Password: Password
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'مشاهدة الصفحة في:'
   ErrorPage:
@@ -251,6 +257,10 @@ ar:
     ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'فرز عبر'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
+    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
+    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
   SearchForm:
     GO: اذهب
     SEARCH: بحث
@@ -267,6 +277,8 @@ ar:
     OtherGroupTitle: أخرى
     ParameterLiveCheckbox: 'التأكد من حيوية الموقع'
     REPEMPTY: 'The {title} report is empty.'
+  SilverStripeNavigator:
+    ARCHIVED: Archived
   SilverStripeNavigatorLink:
     ShareInstructions: 'لمشاركة هذا إلى هذه النسخة، انسخ وإلصق الرابط أدناه....'
     ShareLink: 'رابط مشترك'
@@ -285,11 +297,11 @@ ar:
     TABACCESS: الوصول
     TABMAIN: الرئيسي
     TAGLINEDEFAULT: 'علامتك هنا'
-    THEME: الثيم
+    THEME: 'الثيم'
     TOPLEVELCREATE: 'من يستطيع إنشاء صفحات في جذر الموقع؟'
     VIEWHEADER: 'من يستطيع عرض الصفحات على هذا الموقع؟...'
   SiteTree:
-    ACCESSANYONE: الجميع
+    ACCESSANYONE: 'الجميع'
     ACCESSHEADER: 'من يستطيع مشاهدة هذه الصفحة ؟'
     ACCESSLOGGEDIN: 'الأعضاء المسجلين'
     ACCESSONLYTHESE: 'فقط هؤلاء الأشخاص ( اختر من القائمة)'
@@ -299,12 +311,14 @@ ar:
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: 'إلغاء التغييرات في المسودة'
     BUTTONCANCELDRAFTDESC: 'إلغاء المسودة و العودة إلى الموقع المنشور حالياً'
-    BUTTONSAVEPUBLISH: 'حفظ و نشر'
+    BUTTONPUBLISHED: Published
+    BUTTONSAVED: Saved
+    BUTTONSAVEPUBLISH: 'Save & publish'
     BUTTONUNPUBLISH: 'غير منشور'
     BUTTONUNPUBLISHDESC: 'حذف هذه الصفحة من الموقع المنشور'
     CREATED: 'Date Created'
     Comments: التعليقات
-    Content: المحتوى
+    Content: 'المحتوى'
     DEFAULTABOUTCONTENT: '<p>يمكنك ملء هذه الصفحة بمحتوى خاص بك أو حذفها و إنشاء صفحات جديدة خاصة بك<br /></p>'
     DEFAULTABOUTTITLE: حول
     DEFAULTCONTACTCONTENT: '<p>يمكنك ملء هذه الصفحة بمحتوى خاص بك أو حذفها و إنشاء صفحات جديدة خاصة بك<br /></p>'
@@ -324,20 +338,25 @@ ar:
     EDIT_ALL_DESCRIPTION: 'Can edit any page on the site, bypassing page specific security'
     EDIT_ALL_HELP: 'القدرة على تحرير أي صفحة على الموقع ، بغض النظر عن الإعدادات على علامة تبويب الوصول. يتطلب تصريح "الوصول إلى محتوى الموقع" '
     Editors: 'مجموعات المحررين'
+    GroupPlaceholder: 'Click to select group'
     HASBROKENLINKS: 'هذه الصفحة تحتوي على روابط معطوبة'
-    HTMLEDITORTITLE: محتوى
+    HTMLEDITORTITLE: 'محتوى'
     INHERIT: 'استيراد من الصفحة المرجعية'
+    LASTPUBLISHED: 'Last published'
+    LASTSAVED: 'Last saved'
     LASTUPDATED: 'أخر تحديث'
     LINKCHANGENOTE: 'تغيير هذا وصلة رابط الصفحة سوف تؤثر أيضًا على الوصلات لجميع صفحات الفرعية.'
-    MENUTITLE: القائمة
+    MENUTITLE: 'القائمة'
     METADESC: الوصف
     METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
     METAEXTRA: 'تخصيص Meta Tags'
     METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
-    MODIFIEDONDRAFTSHORT: معدل
+    MODIFIEDONDRAFTSHORT: 'معدل'
     MetadataToggle: Metadata
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
+    MoreOptions: 'More options'
+    NOTPUBLISHED: 'Not published'
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
     PAGELOCATION: 'موقع الضفحة'
     PAGETITLE: 'اسم الصفحة'
     PAGETYPE: 'نوع الصفحة'
@@ -359,14 +378,14 @@ ar:
     SHOWINSEARCH: 'عرض في البحث ؟'
     SINGULARNAME: Page
     TABBEHAVIOUR: الشسلوك
-    TABCONTENT: المحتوى
+    TABCONTENT: 'المحتوى'
     TABDEPENDENT: 'الصفحات المعتدة'
     TOPLEVEL: 'محتوى الموقع ( مستوى أعلى )'
     TOPLEVELCREATORGROUPS: 'منشيء المستوى الأعلى'
     URLSegment: 'جزء رابط الموقع'
     VIEWERGROUPS: 'مجموعات الزوار'
     VIEW_ALL_DESCRIPTION: 'Can view any page on the site, bypassing page specific security'
-    VIEW_ALL_HELP: 'القدرة على تحرير أي صفحة على الموقع ، بغض النظر عن الإعدادات على علامة تبويب الوصول. يتطلب تصريح "الوصول إلى محتوى الموقع" '
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: 'عرض مسودة المحتوى'
     VIEW_DRAFT_CONTENT_HELP: 'ينطبق على عرض صفحات خارج اتفاقية إدارة  محتوى الموقع في وضع المسودة. مفيدة للمتعاونين من الخارجين بدون الحصول على اتفاقية إدارة محتوى الموقع'
     Viewers: 'مجموعات المشاهدين'
@@ -376,6 +395,7 @@ ar:
     many_many_ImageTracking: 'متابعة الصور'
     many_many_LinkTracking: 'متابعة الروابط'
   SiteTreeURLSegmentField:
+    EMPTY: 'Please enter a URL Segment or click cancel'
     HelpChars: ' Special characters are automatically converted or removed.'
   StaticExporter:
     BASEURL: 'الرابط الأساسي'
@@ -397,14 +417,20 @@ ar:
     VIEWPREVIOUS: 'عرض السابق'
   TreeTools:
     DisplayLabel: 'Display:'
+  URLSegmentField:
+    Cancel: Cancel
+    Edit: Edit
+    OK: OK
   ViewArchivedEmail.ss:
     CANACCESS: 'يمكنك الدخول إلى أرشيف الموقع عن طريق الرابط التالي :'
     HAVEASKED: 'تم طلب مشاهدة محتوى الموقع في'
   VirtualPage:
-    CHOOSE: 'اختر صفحة ليتم ربطها في'
+    CHOOSE: 'Linked Page'
     DESCRIPTION: 'أعرض محتويات الصفحة الأخرى'
-    EDITCONTENT: 'اضغط هنا لتعديل المحتوى'
+    EDITCONTENT: 'Edit content on linked page'
+    EditLink: edit
     HEADER: 'هذه صفحة افتراضية'
+    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
     PLURALNAME: 'الصفحات الافتراضية'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'الصفحة الافتراضية'

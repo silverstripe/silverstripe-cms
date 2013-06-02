@@ -76,12 +76,15 @@ eo:
     ACCESS_HELP: 'Permesi vidigi la sekcion kiu enhavas paĝarbon kaj enhavon. Vidigaj kaj redaktaj permesoj estas trakteblaj per paĝspecifaj fallistoj, kaj ankaŭ la apartaj "Enhavaj permesoj".'
     AddNew: 'Aldoni novan paĝon'
     AddNewButton: 'Aldoni novan'
+    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
     ChoosePageParentMode: 'Elekti kie krei ĉi tiun paĝon'
     ChoosePageType: 'Elekti tipon de paĝo'
     Create: Krei
     DELETE: 'Forigi el la malneta retejo'
     DELETEFP: 'Forigi el la publika retejo'
     DESCREMOVED: 'kaj {count} posteuloj'
+    DUPLICATED: 'Duplicated ''{title}'' successfully'
+    DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: Retpoŝto
     EditTree: 'Redakta arbo'
     ListFiltered: 'Filtrita listo.'
@@ -96,16 +99,16 @@ eo:
     PUBALLFUN2: 'Premi ĉi tiun butonon estas same kiel viziti al ĉiu paĝo kaj premi je "eldoni". La intenco estas ke oni uzu ĝin post multnombraj redaktoj de la enhavo, ekzemple kiam oni unue konstruis la retejon.'
     PUBPAGES: 'Farite: publikigis {count} paĝojn'
     PageAdded: 'Sukcese kreis paĝon'
-    REMOVED: 'Forigis  ''%s''%s el la publika retejo'
+    REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: 'Forigis je ''{title}'' el la publikigita retejo'
     REMOVEDPAGEFROMDRAFT: 'Forigis je ''%s'' el la malneta retejo'
     RESTORE: Restaŭri
     RESTORED: 'Sukcese restaŭris je ''{title}'''
     ROLLBACK: 'Malfari al ĉi tiu versio'
-    ROLLEDBACKPUB: 'Malfaris ĝis publikigita versio. Nombro de nova versio estas  #{version}'
-    ROLLEDBACKVERSION: 'Malfaris al versio #%d. Nova versia nombro estas #%d'
+    ROLLEDBACKPUBv2: 'Rolled back to published version.'
+    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
     SAVE: Konservi
-    SAVEDRAFT: 'Konservi malnetan'
+    SAVEDRAFT: 'Save draft'
     TabContent: Enhavo
     TabHistory: Historio
     TabSettings: Agordoj
@@ -129,6 +132,7 @@ eo:
     SHOWUNPUBLISHED: 'Vidigi nepublikigitajn versiojn'
     SHOWVERSION: 'Vidigi version'
     VIEW: vido
+    VIEWINGLATEST: 'Currently viewing the latest version.'
     VIEWINGVERSION: 'Aktuale vidiĝas versio {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Aŭtoro
@@ -167,6 +171,7 @@ eo:
     ARCHIVEDSITE: 'Antaŭvida versio'
     ARCHIVEDSITEFROM: 'Enarkivigita retejo el'
     CMS: CMS
+    DRAFT: Draft
     DRAFTSITE: 'Malneta Retejo'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Vi devas ensaluti per via CMS-pasvorto por vidi la projektan aŭ enarkivigitan enhavon.  <a href="%s">Alklaku ĉi tie por reiri al la publika retejo.</a>'
     Email: Retpoŝto
@@ -178,10 +183,11 @@ eo:
     LOGIN: Ensaluti
     LOGOUT: Elsaluti
     NOTLOGGEDIN: 'Ne ensalutinte'
+    PUBLISHED: Published
     PUBLISHEDSITE: 'Publikigita Retejo'
     Password: Pasvorto
     PostInstallTutorialIntro: 'Ĉi tiu retejo estas tro simpla versio de retejo de SilverStripe 3. Por etendi ĝin, bonvolu rigardi al {link}.'
-    StartEditing: 'Vi povas ekredakti la enhavon de via retejo malfermante je <a href="{link}">la CMS</a>.'
+    StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Ne eblas forigi instalajn dosierojn. Bonvolu mane forigi la jenajn dosierojn'
     VIEWPAGEIN: 'Vidigi Paĝon en:'
   ErrorPage:
@@ -251,6 +257,10 @@ eo:
     ReportTitle: Titolo
   ReportAdminForm:
     FILTERBY: 'Filtri laŭ'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
+    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
+    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
   SearchForm:
     GO: Ek
     SEARCH: Serĉi
@@ -267,6 +277,8 @@ eo:
     OtherGroupTitle: Alia
     ParameterLiveCheckbox: 'Kontroli publikan retejon'
     REPEMPTY: 'La raporto {title} estas malplena.'
+  SilverStripeNavigator:
+    ARCHIVED: Archived
   SilverStripeNavigatorLink:
     ShareInstructions: 'Por dividi al ĉi tiu paĝo, kopiu kaj algluu la suban ligilon.'
     ShareLink: 'Komunigi ligilon'
@@ -299,7 +311,9 @@ eo:
     APPEARSVIRTUALPAGES: 'Ĉi tiu enhavo ankaŭ aperas en la virtualaj paĝoj en la sekcioj {title}.'
     BUTTONCANCELDRAFT: 'Nuligu projekton ŝanĝojn'
     BUTTONCANCELDRAFTDESC: 'Forigu vian projekton kaj reven al la aktuale eldon paĝo'
-    BUTTONSAVEPUBLISH: 'Konservi kaj Publikigi'
+    BUTTONPUBLISHED: Published
+    BUTTONSAVED: Saved
+    BUTTONSAVEPUBLISH: 'Save & publish'
     BUTTONUNPUBLISH: Maleldonu
     BUTTONUNPUBLISHDESC: 'Forigi ĉi tiun paĝon de la publikigita retejo'
     CREATED: 'Dato de kreo'
@@ -324,9 +338,12 @@ eo:
     EDIT_ALL_DESCRIPTION: 'Povas redakti ajnan paĝon en la retejo, preterpasante paĝspecifan sekurecon'
     EDIT_ALL_HELP: 'Eblo redakti ajnan paĝon en la retejo, senkonsidere de la agordoj en la langeto Aliro. Necesas la permeso "Aliro al sekcio ''Paĝoj'' "'
     Editors: 'Redaktaj Grupoj'
+    GroupPlaceholder: 'Click to select group'
     HASBROKENLINKS: 'Ĉi tiu paĝo havas rompitajn ligilojn.'
     HTMLEDITORTITLE: Enhavo
     INHERIT: 'Heredi de patra paĝo'
+    LASTPUBLISHED: 'Last published'
+    LASTSAVED: 'Last saved'
     LASTUPDATED: 'Lastfoje ĝisdatigita'
     LINKCHANGENOTE: 'Ŝanĝi la ligilon de ĉi tiu paĝo ankaŭ influas la ligilojn de ĉiuj idaj paĝoj.'
     MENUTITLE: 'Navigado etikedo'
@@ -337,7 +354,9 @@ eo:
     MODIFIEDONDRAFTHELP: 'Paĝo havas nepublikigitajn paĝojn'
     MODIFIEDONDRAFTSHORT: Ŝanĝita
     MetadataToggle: Metadatumoj
-    OBSOLETECLASS: 'Ĉi tiu paĝo estas de malaktuala tipo {type}. Konservi ĝin reagordos ĝian tipon kaj vi eble perdos datumojn.'
+    MoreOptions: 'More options'
+    NOTPUBLISHED: 'Not published'
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
     PAGELOCATION: 'Situo de paĝo'
     PAGETITLE: 'Nomo de paĝo'
     PAGETYPE: 'Tipo de paĝo'
@@ -366,7 +385,7 @@ eo:
     URLSegment: URL-Segmento
     VIEWERGROUPS: 'Grupoj de vidantoj'
     VIEW_ALL_DESCRIPTION: 'Povas vidigi ajnan paĝon en la retejo, preterpasante paĝspecifan sekurecon'
-    VIEW_ALL_HELP: 'Eblo vidigi ajnan paĝon en la retejo, senrigarde de la agordoj en la langeto Aliro. Necesas la permeso "Aliro al reteja enhavo"'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: 'Vidigi malnetan enhavon'
     VIEW_DRAFT_CONTENT_HELP: 'Aplikas por vidigi paĝojn ekster la CMS en malneta reĝimo. Utila por eksteraj kunlaborantoj sen aliro al la CMS.'
     Viewers: 'Grupoj de Vidantoj'
@@ -376,6 +395,7 @@ eo:
     many_many_ImageTracking: 'Spuri Bildojn'
     many_many_LinkTracking: 'Spuri Ligilojn'
   SiteTreeURLSegmentField:
+    EMPTY: 'Please enter a URL Segment or click cancel'
     HelpChars: 'Aŭtomate konvertas aŭ forigas specialajn signojn.'
   StaticExporter:
     BASEURL: 'Baza URL'
@@ -397,14 +417,20 @@ eo:
     VIEWPREVIOUS: 'Vidigi antaŭan'
   TreeTools:
     DisplayLabel: 'Vido:'
+  URLSegmentField:
+    Cancel: Cancel
+    Edit: Edit
+    OK: OK
   ViewArchivedEmail.ss:
     CANACCESS: 'Vi povas aliri la enarkivigitan retejon je ĉi tiu ligilo:'
     HAVEASKED: 'Vi petis vidi la enhavon de nia retejo je'
   VirtualPage:
-    CHOOSE: 'Elektu paĝon al kiu ligi'
+    CHOOSE: 'Linked Page'
     DESCRIPTION: 'Vidigi la enhavon de alia paĝo'
-    EDITCONTENT: 'klaku ĉi tie redakti la enhavon'
+    EDITCONTENT: 'Edit content on linked page'
+    EditLink: edit
     HEADER: 'Ĉi tiu estas virtuala paĝo'
+    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
     PLURALNAME: 'Virtual Pags'
     PageTypNotAllowedOnRoot: 'Origina paĝa tipo "{type}" ne estas permesita ĉe la root-nivelo por ĉi tiu virtuala paĝo.'
     SINGULARNAME: 'Virtuala paĝo'

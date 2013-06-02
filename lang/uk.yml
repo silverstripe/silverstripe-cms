@@ -2,7 +2,7 @@ uk:
   AssetAdmin:
     ADDFILES: 'Додати файли'
     ActionAdd: 'Додати папку'
-    AppCategoryArchive: Архівувати
+    AppCategoryArchive: 'Архівувати'
     AppCategoryAudio: Аудіо
     AppCategoryDocument: Document
     AppCategoryFlash: Flash
@@ -21,7 +21,7 @@ uk:
     ListView: 'У вигляді списку'
     MENUTITLE: Файли
     NEWFOLDER: 'Нова Тека'
-    SIZE: Розмір
+    SIZE: 'Розмір'
     THUMBSDELETED: '{count} невикористаних ескізів було видалено'
     TreeView: 'У вигляді дерева'
     Upload: Завантажити
@@ -76,12 +76,15 @@ uk:
     ACCESS_HELP: 'Дозволити перегляд розділу, що містить дерево сторінок і зміст. Дозволами на перегляд та редагування, а також окремими дозволами на контент, можна керувати на відповідних сторінках.'
     AddNew: 'Додати нову сторінку'
     AddNewButton: 'Додати новий'
+    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
     ChoosePageParentMode: 'Виберіть де створити цю сторінку'
     ChoosePageType: 'Виберіть тип сторінки'
     Create: Створити
     DELETE: 'Видалити з чорнового сайту'
     DELETEFP: Видалити
     DESCREMOVED: 'і {count} нащадків'
+    DUPLICATED: 'Duplicated ''{title}'' successfully'
+    DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: 'Електронна пошта'
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
@@ -96,16 +99,16 @@ uk:
     PUBALLFUN2: 'Натиснувши цю кнопку Ви зробите те ж саме, що й перейшовши до кожної сторінки та натиснувши "Публікувати". Це внесено для тих випадків, коли Ви маєте намір маштабно змінити вміст, наприклад, після першого створення сайту.'
     PUBPAGES: 'Done: Published {count} pages'
     PageAdded: 'Сторінка успішно створена'
-    REMOVED: 'Видалено ''%s''%s з публічного сайту'
+    REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: '''{title}'' видалено з публічного сайту'
     REMOVEDPAGEFROMDRAFT: 'Видалено ''%s'' з чорнового сайту'
     RESTORE: Відновити
     RESTORED: 'Restored ''{title}'' successfully'
     ROLLBACK: 'Повернутися до цієї версії'
-    ROLLEDBACKPUB: 'Повернено до опублікованої версії. Нова версія #{version}'
-    ROLLEDBACKVERSION: 'Повернено версію #%d. Нова версія - #%d'
+    ROLLEDBACKPUBv2: 'Rolled back to published version.'
+    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
     SAVE: Зберегти
-    SAVEDRAFT: 'Зберегти в чорновий'
+    SAVEDRAFT: 'Save draft'
     TabContent: Вміст
     TabHistory: Історія
     TabSettings: Налаштування
@@ -129,6 +132,7 @@ uk:
     SHOWUNPUBLISHED: 'Показати неопубліковані версії'
     SHOWVERSION: 'Показати версію'
     VIEW: вигляд
+    VIEWINGLATEST: 'Currently viewing the latest version.'
     VIEWINGVERSION: 'Переглядається версія {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Автор
@@ -167,6 +171,7 @@ uk:
     ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Заархівований сайт з'
     CMS: CMS
+    DRAFT: Draft
     DRAFTSITE: 'Чорновий сайт'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Ви повинні увійти у систему для перегляду чернетки даного матеріалу. <a href="%s">Натсиніть для переходу на опублікований матеріал.</a>'
     Email: Е-пошта
@@ -178,10 +183,11 @@ uk:
     LOGIN: Логін
     LOGOUT: Вилогуватися
     NOTLOGGEDIN: 'Не залогований'
+    PUBLISHED: Published
     PUBLISHEDSITE: 'Публічний сайт'
     Password: Пароль
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'Ви можете почати редагувати вміст сайту перейшовши в <a href="{link}">CMS</a>.'
+    StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Не вдається видалити інсталяційні файли. Будь ласка, видаліть вручну наведені нижче файли'
     VIEWPAGEIN: 'Переглянути сторінку в:'
   ErrorPage:
@@ -251,6 +257,10 @@ uk:
     ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Фільтр по'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
+    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
+    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
   SearchForm:
     GO: Уперед
     SEARCH: Пошук
@@ -267,6 +277,8 @@ uk:
     OtherGroupTitle: Інше
     ParameterLiveCheckbox: 'Перевірити робочий сайт'
     REPEMPTY: 'The {title} report is empty.'
+  SilverStripeNavigator:
+    ARCHIVED: Archived
   SilverStripeNavigatorLink:
     ShareInstructions: 'Щоб поділитися цією сторінкою, скопіюйте та вставте посилання нижче.'
     ShareLink: 'Поділитися посиланням'
@@ -289,7 +301,7 @@ uk:
     TOPLEVELCREATE: 'Хто може створювати сторінки верхнього рівня на сайті?'
     VIEWHEADER: 'Хто може переглядати сторінки на цьому сайті?'
   SiteTree:
-    ACCESSANYONE: Будь-хто
+    ACCESSANYONE: 'Будь-хто'
     ACCESSHEADER: 'Хто може переглядати цю сторінку?'
     ACCESSLOGGEDIN: 'Тільки ті, що увійшли'
     ACCESSONLYTHESE: 'Тільки ці люди (виберіть зі списку)'
@@ -299,7 +311,9 @@ uk:
     APPEARSVIRTUALPAGES: 'Цей вміст також відображається на віртуальній сторінці в розділі {title}.'
     BUTTONCANCELDRAFT: 'Відмінити зміни чернетки'
     BUTTONCANCELDRAFTDESC: 'Видалити черентку та повернутися до теперішнього опублікованого варіанту'
-    BUTTONSAVEPUBLISH: 'Зберегти та опублікувати'
+    BUTTONPUBLISHED: Published
+    BUTTONSAVED: Saved
+    BUTTONSAVEPUBLISH: 'Save & publish'
     BUTTONUNPUBLISH: 'Відміна публікування'
     BUTTONUNPUBLISHDESC: 'Видалити цю сторінку з опублікованого'
     CREATED: 'Дата створення'
@@ -324,9 +338,12 @@ uk:
     EDIT_ALL_DESCRIPTION: 'Редагувати будь-яку сторінку'
     EDIT_ALL_HELP: 'Можливість редагувати будь-яку сторінку сайту, незалежно від налаштувань на вкладці Доступ. Потрібен дозвіл "Доступ до розділу "Сторінки "'
     Editors: 'Групи редакторів'
+    GroupPlaceholder: 'Click to select group'
     HASBROKENLINKS: 'Ця сторінка має зламані посилання.'
     HTMLEDITORTITLE: Вміст
     INHERIT: 'Наслідувати з батьківської сторінки'
+    LASTPUBLISHED: 'Last published'
+    LASTSAVED: 'Last saved'
     LASTUPDATED: 'Останнє оновлення'
     LINKCHANGENOTE: 'Зміна адреси цієї сторінки вплине на адреси всіх дочірніх сторінок'
     MENUTITLE: 'Мітка навігації'
@@ -337,7 +354,9 @@ uk:
     MODIFIEDONDRAFTHELP: 'Сторінка має неопубліковані зміни'
     MODIFIEDONDRAFTSHORT: Змінений
     MetadataToggle: Metadata
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
+    MoreOptions: 'More options'
+    NOTPUBLISHED: 'Not published'
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
     PAGELOCATION: 'Розміщення сторінки'
     PAGETITLE: 'Назва сторінки'
     PAGETYPE: 'Тип сторінки'
@@ -366,7 +385,7 @@ uk:
     URLSegment: 'URL адреса'
     VIEWERGROUPS: 'Групи глядачів'
     VIEW_ALL_DESCRIPTION: 'Перегляд будь-якої сторінки'
-    VIEW_ALL_HELP: 'Можливість переглядати будь-яку сторінку сайту, незалежно від налаштувань на вкладці Доступ. Потрібен дозвіл "Доступ до розділу "Вміст сайту "'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: 'Переглянути чорновий вміст'
     VIEW_DRAFT_CONTENT_HELP: 'Застосовується для перегляду сторінки за межами CMS в чорновому режимі. Корисно для позаштатних співробітників, що не мають доступу до CMS.'
     Viewers: 'Групи глядачів'
@@ -376,6 +395,7 @@ uk:
     many_many_ImageTracking: 'Відстеження зображень'
     many_many_LinkTracking: 'Відстеження посилань'
   SiteTreeURLSegmentField:
+    EMPTY: 'Please enter a URL Segment or click cancel'
     HelpChars: 'Спеціальні символи автоматично перетворені або видалені.'
   StaticExporter:
     BASEURL: 'Основний URL'
@@ -397,14 +417,20 @@ uk:
     VIEWPREVIOUS: 'Переглянути попередню'
   TreeTools:
     DisplayLabel: 'Відобразити:'
+  URLSegmentField:
+    Cancel: Cancel
+    Edit: Edit
+    OK: OK
   ViewArchivedEmail.ss:
     CANACCESS: 'Ви можете перейти до архівного сайту за посиланням:'
     HAVEASKED: 'Ви надіслали запит на перегляд вмісту нашої сторінки'
   VirtualPage:
-    CHOOSE: 'Виберіть сторінку на яку посилатися'
+    CHOOSE: 'Linked Page'
     DESCRIPTION: 'Відображення вмісту іншої сторінки'
-    EDITCONTENT: 'натисніть тут для редагування вмісту'
+    EDITCONTENT: 'Edit content on linked page'
+    EditLink: edit
     HEADER: 'Це віртуальна сторінка'
+    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
     PLURALNAME: 'Віртуальні сторінки'
     PageTypNotAllowedOnRoot: 'Тип сторінки "{type}" не допускається на кореневому рівні для цієї віртуальної сторінки'
     SINGULARNAME: 'Віртуальна сторінка'
