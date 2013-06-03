@@ -76,15 +76,15 @@ it:
     ACCESS_HELP: 'Consente la visualizzazione della sezione con l''albero delle pagine e i contenuti. I permessi di visualizzazione e modifica possono essere gestiti attraverso menù a tendina specifici della pagina, come dai separati "Permessi sui contenuti".'
     AddNew: 'Aggiungi nuova pagina'
     AddNewButton: 'Aggiungi nuova'
-    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
+    AddPageRestriction: 'Nota: alcuni tipi di pagina non sono permessi in questa sezione'
     ChoosePageParentMode: 'Scegli dove creare questa pagina'
     ChoosePageType: 'Scegli tipo di pagina'
     Create: Crea
     DELETE: 'Elimina bozza'
     DELETEFP: 'Elimina dal sito pubblicato'
     DESCREMOVED: 'e {count} discendenti'
-    DUPLICATED: 'Duplicated ''{title}'' successfully'
-    DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
+    DUPLICATED: '''{title}'' duplicato correttamente'
+    DUPLICATEDWITHCHILDREN: '''{title}'' e figli duplicati correttamente'
     EMAIL: Email
     EditTree: 'Modifica albero'
     ListFiltered: 'Lista filtrata.'
@@ -99,16 +99,16 @@ it:
     PUBALLFUN2: 'Cliccare questo bottone equivale ad accedere a tutte le pagine e cliccare ''pubblica''. Tale bottone è inteso per essere utilizzato dopo aver apportato modifiche di massa ai contenuti, come nella prima pubblicazione del sito.'
     PUBPAGES: 'Fatto: Pubblicate {count} pagine'
     PageAdded: 'Pagina creata con successo'
-    REMOVED: 'Deleted ''{title}''{description} from live site'
+    REMOVED: '''{title}''{description} rimosso dal sito pubblico'
     REMOVEDPAGE: 'Eliminata ''{title}'' dal sito pubblicato'
     REMOVEDPAGEFROMDRAFT: 'Eliminata ''%s'' dal sito bozza'
     RESTORE: Ripristina
     RESTORED: 'Ripristinata ''{title}'' con successo'
     ROLLBACK: 'Ripristina a questa versione'
-    ROLLEDBACKPUBv2: 'Rolled back to published version.'
-    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
+    ROLLEDBACKPUBv2: 'Ripristinata a versione precedente.'
+    ROLLEDBACKVERSIONv2: 'Ripristinata a versione #%d.'
     SAVE: Salva
-    SAVEDRAFT: 'Save draft'
+    SAVEDRAFT: 'Salva Bozza'
     TabContent: Contenuto
     TabHistory: Archivio
     TabSettings: Impostazioni
@@ -132,7 +132,7 @@ it:
     SHOWUNPUBLISHED: 'Mostra versioni non pubblicate'
     SHOWVERSION: 'Mostra versione'
     VIEW: vista
-    VIEWINGLATEST: 'Currently viewing the latest version.'
+    VIEWINGLATEST: 'Si sta visualizzando l''ultima versione'
     VIEWINGVERSION: 'Versione attualmente visualizzata {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Autore
@@ -171,7 +171,7 @@ it:
     ARCHIVEDSITE: 'Anteprima versione'
     ARCHIVEDSITEFROM: 'Sito archiviato da'
     CMS: CMS
-    DRAFT: Draft
+    DRAFT: Bozza
     DRAFTSITE: 'Sito Bozza'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Devi autenticarti utilizzando la tua password per poter visualizzare bozze o contenuti archiviati. <a href="%s">Clicca qui per tornare al sito pubblicato</a>'
     Email: Email
@@ -183,11 +183,11 @@ it:
     LOGIN: Accedi
     LOGOUT: Disconnetti
     NOTLOGGEDIN: 'Non connesso'
-    PUBLISHED: Published
+    PUBLISHED: Pubblicato
     PUBLISHEDSITE: 'Sito pubblicato'
     Password: Password
     PostInstallTutorialIntro: 'Il sito web è una versione semplificata di un sito SilverStripe 3. Per estenderlo, dai un''occhiata a {link}.'
-    StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
+    StartEditing: 'Puoi iniziare a modificare i contenuti del sito aprendo <a href="{link}">il CMS</a>.'
     UnableDeleteInstall: 'Impossibile eliminare i file di installazione. Cancella manualmente i file sotto indicati'
     VIEWPAGEIN: 'Mostra pagina in:'
   ErrorPage:
@@ -258,9 +258,9 @@ it:
   ReportAdminForm:
     FILTERBY: 'Filtra per'
   SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
-    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
-    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
+    VIRTUALPAGEDRAFTWARNING: 'Perfavore pubblica la pagina linkata per poter pubblicare la pagina virtuale.'
+    VIRTUALPAGEWARNING: 'Perfavore scegli una pagina da linkare e salvala per poter pubblicare questa pagina.'
+    VIRTUALPAGEWARNINGSETTINGS: 'Perfavore scegli una pagina da linkare nel campo "Contenuto" per poter pubblicare.'
   SearchForm:
     GO: Vai
     SEARCH: Cerca
@@ -278,7 +278,7 @@ it:
     ParameterLiveCheckbox: 'Verifica sito pubblicato'
     REPEMPTY: 'Il rapporto {title} è vuoto.'
   SilverStripeNavigator:
-    ARCHIVED: Archived
+    ARCHIVED: Archiviato
   SilverStripeNavigatorLink:
     ShareInstructions: 'Per condividere questa pagina, copia e incolla il link qui sotto.'
     ShareLink: 'Link di condivisione'
@@ -311,9 +311,9 @@ it:
     APPEARSVIRTUALPAGES: 'Questo contenuto appare nelle pagine virtuali nelle sezioni {title}.'
     BUTTONCANCELDRAFT: 'Cancella le modifiche salvate in bozza'
     BUTTONCANCELDRAFTDESC: 'Cancella la tua bozza e ritorna alla versione corrente della pagina pubblicata'
-    BUTTONPUBLISHED: Published
-    BUTTONSAVED: Saved
-    BUTTONSAVEPUBLISH: 'Save & publish'
+    BUTTONPUBLISHED: Pubblicato
+    BUTTONSAVED: Salvato
+    BUTTONSAVEPUBLISH: 'Salva & Pubblica'
     BUTTONUNPUBLISH: 'Non pubblicare'
     BUTTONUNPUBLISHDESC: 'Rimuovi questa pagina dal sito pubblicato'
     CREATED: 'Data creazione'
@@ -338,12 +338,12 @@ it:
     EDIT_ALL_DESCRIPTION: 'Modifica qualunque pagina'
     EDIT_ALL_HELP: 'Possibilità di modificare qualsiasi pagina nel sito, senza tenere conto delle impostazioni nella tab Access. Richiede i permessi di "Accesso ai contenuti del sito"'
     Editors: 'Gruppi di Editori'
-    GroupPlaceholder: 'Click to select group'
+    GroupPlaceholder: 'Clicca per selezionare il gruppo'
     HASBROKENLINKS: 'Questa pagina ha link non funzionanti.'
     HTMLEDITORTITLE: Contenuto
     INHERIT: 'Eredita dalla pagina madre'
-    LASTPUBLISHED: 'Last published'
-    LASTSAVED: 'Last saved'
+    LASTPUBLISHED: 'Ultimo pubblicato'
+    LASTSAVED: 'Ultimo salvato'
     LASTUPDATED: 'Ultimo aggiornamento'
     LINKCHANGENOTE: 'Cambiare il link di questa pagina farà cambiare anche i link delle pagine figlio. '
     MENUTITLE: 'Etichetta di navigazione'
@@ -354,9 +354,9 @@ it:
     MODIFIEDONDRAFTHELP: 'La pagina ha modifiche non pubblicate'
     MODIFIEDONDRAFTSHORT: Modificata
     MetadataToggle: Metadata
-    MoreOptions: 'More options'
-    NOTPUBLISHED: 'Not published'
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
+    MoreOptions: 'Altre Opzioni'
+    NOTPUBLISHED: 'Non pubblicato'
+    OBSOLETECLASS: 'Quasta pagina è del tipo obsoleto {type}. Salvarla ripristinerà il suo tipo e potrai perdere dati'
     PAGELOCATION: 'Collocazione pagina'
     PAGETITLE: 'Nome della pagina'
     PAGETYPE: 'Tipo di pagina'
@@ -385,7 +385,7 @@ it:
     URLSegment: 'Segmento URL'
     VIEWERGROUPS: 'Gruppi di visualizzatori'
     VIEW_ALL_DESCRIPTION: 'Visualizza qualsiasi pagina'
-    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
+    VIEW_ALL_HELP: 'Possibilità di vedere qualsiasi pagina del sito, senza tenere conto delle impostazioni nel tab Accesso. Richiede i permessi per "Accesso alla sezione ''Pagine''"'
     VIEW_DRAFT_CONTENT: 'Visualizza contenuto bozza'
     VIEW_DRAFT_CONTENT_HELP: 'Si applica per visualizzare le pagine in bozza al di fuori del CMS. Utile per collaboratori esterni che non hanno accesso al CMS.'
     Viewers: 'Gruppi di visualizzatori'
@@ -395,7 +395,7 @@ it:
     many_many_ImageTracking: 'Monitoraggio immagine'
     many_many_LinkTracking: 'Monitoraggio link'
   SiteTreeURLSegmentField:
-    EMPTY: 'Please enter a URL Segment or click cancel'
+    EMPTY: 'Perfavore inserisci un segmento URL o clicca cancella'
     HelpChars: 'I caratteri speciali sono automaticamente convertiti o eliminati.'
   StaticExporter:
     BASEURL: 'URL di base'
@@ -418,19 +418,19 @@ it:
   TreeTools:
     DisplayLabel: 'Visualizza:'
   URLSegmentField:
-    Cancel: Cancel
-    Edit: Edit
+    Cancel: Cancella
+    Edit: Modifica
     OK: OK
   ViewArchivedEmail.ss:
     CANACCESS: 'Puoi accedere al sito archiviato da questo indirizzo:'
     HAVEASKED: 'Hai chiesto di visualizzare il contenuto del nostro sito il'
   VirtualPage:
-    CHOOSE: 'Linked Page'
+    CHOOSE: 'Scegli una pagina a cui collegarla'
     DESCRIPTION: 'Visualizza il contenuto di un''altra pagina'
-    EDITCONTENT: 'Edit content on linked page'
+    EDITCONTENT: 'Clicca qui per modificare il contenuto'
     EditLink: edit
     HEADER: 'Questa è una pagina virtuale'
-    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
+    HEADERWITHLINK: 'Questa è una pagina virtuale che copia il contenuto da "{title}" ({link})'
     PLURALNAME: 'Pagine virtuali'
     PageTypNotAllowedOnRoot: 'Il tipo di pagina originale "{type}" non è consentito al primo livello per questa pagina virtuale'
     SINGULARNAME: 'Pagina virtuale'
