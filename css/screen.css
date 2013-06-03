@@ -11,7 +11,7 @@
 .CMSPageHistoryController del { background-color: #FDD; padding: 2px; color: #ff4444; }
 
 /** -------------------------------------------- Tree View (collapsed for sidebar) -------------------------------------------- */
-#cms-content-treeview .cms-tree-expand-trigger { display: none; }
+#cms-content-treeview .cms-tree-expand-trigger, #cms-content-listview .cms-tree-expand-trigger { display: none; }
 
 .cms-content-tools #cms-content-treeview .cms-content-toolbar { border-bottom: none; box-shadow: none; margin-bottom: 8px; }
 .cms-content-tools #cms-content-treeview .cms-tree-view-modes, .cms-content-tools #cms-content-treeview .cms-content-batchactions { display: none; }
