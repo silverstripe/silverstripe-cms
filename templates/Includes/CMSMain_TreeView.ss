@@ -11,7 +11,7 @@ $ExtraTreeTools
 
 <div class="center">
 	<% if TreeIsFiltered %>
-	<div class="cms-tree-filtered">
+	<div class="cms-tree-filtered cms-notice">
 		<strong><% _t('CMSMain.TreeFiltered', 'Filtered tree.') %></strong>
 		<a href="$LinkPages" class="cms-panel-link">
 			<% _t('CMSMain.TreeFilteredClear', 'Clear filter') %>
