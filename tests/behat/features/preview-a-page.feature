@@ -1,8 +1,10 @@
-@database-defaults
 Feature: Preview a page
   As an author
   I want to preview the page I'm editing in the CMS
   So that I can see how it would look like to my visitors
+
+  Background:
+    Given a "page" "About Us"
 
   @javascript
   Scenario: I can show a preview of the current page from the pages section
@@ -27,7 +29,7 @@ Feature: Preview a page
 
     When I follow "About Us"
     And I fill in the "Content" HTML field with "my new content"
-    And I press the "Save Draft" button
+    And I press the "Save draft" button
     And I set the CMS mode to "Preview mode"
 
     When I switch the preview to "Published"

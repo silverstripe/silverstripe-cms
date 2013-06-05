@@ -1,10 +1,10 @@
-@database-defaults
 Feature: Edit a page
   As an author
   I want to edit a page in the CMS
   So that I correct errors and provide new information
 
   Background:
+    Given a "page" "About Us"
     Given I am logged in with "ADMIN" permissions
     And I go to "/admin/pages"
     Then I should see "About Us" in CMS Tree
@@ -21,8 +21,8 @@ Feature: Edit a page
 
     When I fill in "Title" with "About Us!"
     And I fill in the "Content" HTML field with "my new content"
-    And I press the "Save Draft" button
-    Then I should see a "Saved" button
+    And I press the "Save draft" button
+    Then I should see a "Saved." notice
 
     When I follow "About Us"
     Then the "Title" field should contain "About Us!"
