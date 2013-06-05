@@ -5,8 +5,10 @@ namespace SilverStripe\Cms\Test\Behaviour;
 use SilverStripe\BehatExtension\Context\SilverStripeContext,
     SilverStripe\BehatExtension\Context\BasicContext,
     SilverStripe\BehatExtension\Context\LoginContext,
+    SilverStripe\BehatExtension\Context\FixtureContext,
     SilverStripe\Framework\Test\Behaviour\CmsFormsContext,
-    SilverStripe\Framework\Test\Behaviour\CmsUiContext;
+    SilverStripe\Framework\Test\Behaviour\CmsUiContext,
+    SilverStripe\Cms\Test\Behaviour;
 
 // PHPUnit
 require_once 'PHPUnit/Autoload.php';
@@ -18,7 +20,7 @@ require_once 'PHPUnit/Framework/Assert/Functions.php';
  * Context automatically loaded by Behat.
  * Uses subcontexts to extend functionality.
  */
-class FeatureContext extends SilverStripeContext
+class FeatureContext extends \SilverStripe\Framework\Test\Behaviour\FeatureContext
 {
     /**
      * Initializes context.
@@ -28,11 +30,23 @@ class FeatureContext extends SilverStripeContext
      */
     public function __construct(array $parameters)
     {
-        $this->useContext('BasicContext', new BasicContext($parameters));
-        $this->useContext('LoginContext', new LoginContext($parameters));
-        $this->useContext('CmsFormsContext', new CmsFormsContext($parameters));
-        $this->useContext('CmsUiContext', new CmsUiContext($parameters));
-
         parent::__construct($parameters);
+
+        // Override existing fixture context with more specific one
+        $fixtureContext = new \SilverStripe\Cms\Test\Behaviour\FixtureContext($parameters);
+        $fixtureContext->setFixtureFactory($this->getFixtureFactory());
+        $this->useContext('FixtureContext', $fixtureContext);
+
+        // Use blueprints which auto-publish all subclasses of SiteTree
+        $factory = $fixtureContext->getFixtureFactory();
+        foreach(\ClassInfo::subclassesFor('SiteTree') as $id => $class) {
+            $blueprint = \Injector::inst()->create('FixtureBlueprint', $class);
+            $blueprint->addCallback('afterCreate', function($obj, $identifier, &$data, &$fixtures) {
+                $obj->publish('Stage', 'Live');
+            });
+            $factory->define($class, $blueprint);
+        } 
+
     }
+
 }
