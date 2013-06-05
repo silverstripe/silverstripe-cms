@@ -1,10 +1,10 @@
-@database-defaults
 Feature: Edit a page
   As an author
   I want to edit a page in the CMS
   So that I correct errors and provide new information
 
   Background:
+    Given a page "About Us"
     Given I am logged in with "ADMIN" permissions
     And I go to "/admin/pages"
     Then I should see "About Us" in CMS Tree

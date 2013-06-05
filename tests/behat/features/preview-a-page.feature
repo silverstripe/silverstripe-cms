@@ -1,8 +1,10 @@
-@database-defaults
 Feature: Preview a page
   As an author
   I want to preview the page I'm editing in the CMS
   So that I can see how it would look like to my visitors
+
+  Background:
+    Given a page "About Us"
 
   @javascript
   Scenario: I can show a preview of the current page from the pages section
