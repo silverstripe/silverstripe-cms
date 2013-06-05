@@ -4,7 +4,7 @@ Feature: Edit a page
   So that I correct errors and provide new information
 
   Background:
-    Given a page "About Us"
+    Given a "page" "About Us"
     Given I am logged in with "ADMIN" permissions
     And I go to "/admin/pages"
     Then I should see "About Us" in CMS Tree

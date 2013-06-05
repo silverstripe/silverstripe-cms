@@ -4,8 +4,8 @@ Feature: Search for a page
   So that I can efficiently navigate nested content structures
 
   Background:
-    Given a page "About Us"
-    And a page "Contact Us"
+    Given a "page" "About Us"
+    And a "page" "Contact Us"
 
   @javascript
   Scenario: I can search for a page by its title

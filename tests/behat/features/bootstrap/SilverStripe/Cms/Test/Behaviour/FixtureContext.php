@@ -21,45 +21,12 @@ require_once 'PHPUnit/Framework/Assert/Functions.php';
  */
 class FixtureContext extends \SilverStripe\BehatExtension\Context\FixtureContext
 {
-    protected $context;
-
-    /**
-     * @var FixtureFactory
-     */
-    protected $fixtureFactory;
-
-    public function __construct(array $parameters)
-    {
-        $this->context = $parameters;
-    }
-
-    public function getSession($name = null)
-    {
-        return $this->getMainContext()->getSession($name);
-    }
-
-    /**
-     * @return \FixtureFactory
-     */
-    public function getFixtureFactory() {
-        if(!$this->fixtureFactory) {
-            $this->fixtureFactory = \Injector::inst()->get('FixtureFactory', 'FixtureContextFactory');
-        }
-        return $this->fixtureFactory;
-    }
-
-    /**
-     * @param \FixtureFactory $factory
-     */
-    public function setFixtureFactory(\FixtureFactory $factory) {
-        $this->fixtureFactory = $factory;
-    }
 
      /**
      * Find or create a redirector page and link to another existing page.
-     * Example: Given a page "My Redirect" which redirects to a page "Page 1" 
+     * Example: Given a "page" "My Redirect" which redirects to a "page" "Page 1" 
      * 
-     * @Given /^(?:(an|a|the) )(?<type>[^"]+)"(?<id>[^"]+)" (:?which )?redirects to (?:(an|a|the) )(?<targetType>[^"]+)"(?<targetId>[^"]+)"$/
+     * @Given /^(?:(an|a|the) )"(?<type>[^"]+)" "(?<id>[^"]+)" (:?which )?redirects to (?:(an|a|the) )"(?<targetType>[^"]+)" "(?<targetId>[^"]+)"$/
      */
     public function stepCreateRedirectorPage($type, $id, $targetType, $targetId)
     {
@@ -79,32 +46,5 @@ class FixtureContext extends \SilverStripe\BehatExtension\Context\FixtureContext
         $obj->write();
         $obj->publish('Stage', 'Live');
     }
-   
-    /**
-     * Converts a natural language class description to an actual class name.
-     * Respects {@link DataObject::$singular_name} variations.
-     * Example: "redirector page" -> "RedirectorPage"
-     * 
-     * @param String 
-     * @return String Class name
-     */
-    protected function convertTypeToClass($type) {
-        // Try direct mapping
-        $class = str_replace(' ', '', ucfirst($type));
-        if(class_exists($class) || !is_subclass_of($class, 'DataObject')) {
-            return $class;
-        }
-
-        // Fall back to singular names
-        foreach(array_values(\ClassInfo::subclassesFor('DataObject')) as $candidate) {
-            if(singleton($candidate)->singular_name() == $type) return $candidate;
-        }
-
-        throw new \InvalidArgumentException(sprintf(
-            'Class "%s" does not exist, or is not a subclass of DataObjet',
-            $class
-        ));
-    }
-
    
 }
