@@ -21,7 +21,7 @@ Feature: Edit a page
 
     When I fill in "Title" with "About Us!"
     And I fill in the "Content" HTML field with "my new content"
-    And I press the "Save Draft" button
+    And I press the "Save draft" button
     Then I should see a "Saved." notice
 
     When I follow "About Us"
