@@ -87,9 +87,9 @@ So that only high quality changes are seen by our visitors
 		When I press the "Delete draft" button
 		Then I should see a "Restore" button
 		And I should not see a "Published" button
-		And I should not see a "Save & Publish" button
+		And I should not see a "Save & publish" button
 		And I should not see a "Saved" button
 		And I should not see a "Save draft" button
 
 		When I press the "Restore" button
-		Then I should see a "Save & Publish" button  
+		Then I should see a "Save & publish" button
