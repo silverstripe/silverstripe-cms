@@ -203,6 +203,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 */
 	private static $enforce_strict_hierarchy = true;
 
+	/**
+	 * The value used for the meta generator tag.  Leave blank to omit the tag.
+	 *
+	 * @config
+	 * @var string
+	 */
+	private static $meta_generator = 'SilverStripe - http://silverstripe.org';
+
 	protected $_cache_statusFlags = null;
 	
 	/**
@@ -1298,7 +1306,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$tags .= "<title>" . $this->Title . "</title>\n";
 		}
 
-		$tags .= "<meta name=\"generator\" content=\"SilverStripe - http://silverstripe.org\" />\n";
+		$generator = trim(Config::inst()->get('SiteTree', 'meta_generator'));
+		if (!empty($generator)) {
+			$tags .= "<meta name=\"generator\" content=\"" . Convert::raw2att($generator) . "\" />\n";
+		}
 
 		$charset = Config::inst()->get('ContentNegotiator', 'encoding');
 		$tags .= "<meta http-equiv=\"Content-type\" content=\"text/html; charset=$charset\" />\n";
