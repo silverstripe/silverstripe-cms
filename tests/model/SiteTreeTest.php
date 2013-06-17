@@ -889,6 +889,37 @@ class SiteTreeTest extends SapphireTest {
 		$page = SiteTree::get()->byID($page->ID);
 		$this->assertEquals(null, $page->getField('MenuTitle'));
 	}
+
+	public function testMetaTagGeneratorDisabling() {
+		$generator = Config::inst()->get('SiteTree', 'meta_generator');
+
+		$page = new SiteTreeTest_PageNode();
+
+		$meta = $page->MetaTags();
+		$this->assertEquals(
+			1,
+			preg_match('/.*meta name="generator" content="SilverStripe - http:\/\/silverstripe.org".*/', $meta),
+			'test default functionality - uses value from Config');
+
+		// test proper escaping of quotes in attribute value
+		Config::inst()->update('SiteTree', 'meta_generator', 'Generator with "quotes" in it');
+		$meta = $page->MetaTags();
+		$this->assertEquals(
+			1,
+			preg_match('/.*meta name="generator" content="Generator with &quot;quotes&quot; in it".*/', $meta),
+			'test proper escaping of values from Config');
+
+		// test empty generator - no tag should appear at all
+		Config::inst()->update('SiteTree', 'meta_generator', '');
+		$meta = $page->MetaTags();
+		$this->assertEquals(
+			0,
+			preg_match('/.*meta name=.generator..*/', $meta),
+			'test blank value means no tag generated');
+
+		// reset original value
+		Config::inst()->update('SiteTree', 'meta_generator', $generator);
+	}
 	
 }
 
