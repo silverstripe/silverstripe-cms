@@ -280,7 +280,7 @@ ms:
   SilverStripeNavigator:
     ARCHIVED: Archived
   SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
+    ShareInstructions: 'To share this page, copy and paste the link below.'
     ShareLink: 'Share link'
   SilverStripeNavigatorLinkl:
     CloseLink: Close
