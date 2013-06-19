@@ -76,12 +76,15 @@ ca:
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
     AddNew: 'Add new page'
     AddNewButton: 'Add new'
+    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
     ChoosePageParentMode: 'Choose where to create this page'
     ChoosePageType: 'Choose page type'
     Create: Create
     DELETE: 'Suprimeix del lloc esborrany'
     DELETEFP: 'Suprimeix del lloc publicat'
     DESCREMOVED: 'and {count} descendants'
+    DUPLICATED: 'Duplicated ''{title}'' successfully'
+    DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: 'Correu electrònic'
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
@@ -96,16 +99,16 @@ ca:
     PUBALLFUN2: 'Prémer aquest botó farà l''equivalent a anar a cada pàgina i prémer "Publica". És pràctic d''usar quan hi ha hagut edicions massives del contingut, com ara quan el lloc web s''ha fet per primer cop.'
     PUBPAGES: 'Done: Published {count} pages'
     PageAdded: 'Successfully created page'
-    REMOVED: 'S''ha suprimit ''%s''%s del lloc publicat'
+    REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: 'S''ha suprimit  ''%s'' del lloc esborrany'
     RESTORE: Restaura
     RESTORED: 'Restored ''{title}'' successfully'
     ROLLBACK: 'Torna a aquesta versió'
-    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
-    ROLLEDBACKVERSION: 'S''ha tornat a la versió #%d. El nou número de versió és #%d'
+    ROLLEDBACKPUBv2: 'Rolled back to published version.'
+    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
     SAVE: Desa
-    SAVEDRAFT: 'Save Draft'
+    SAVEDRAFT: 'Save draft'
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
@@ -129,6 +132,7 @@ ca:
     SHOWUNPUBLISHED: 'Show unpublished versions'
     SHOWVERSION: 'Show Version'
     VIEW: view
+    VIEWINGLATEST: 'Currently viewing the latest version.'
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Author
@@ -167,6 +171,7 @@ ca:
     ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
+    DRAFT: Draft
     DRAFTSITE: 'Draft Site'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Heu d''entrar amb la vostra contrasenya per a veure l''esborrany o contingut arxivat. <a href="%s">Premeu aquí per a tornar al lloc publicat.</a>'
     Email: Email
@@ -178,10 +183,11 @@ ca:
     LOGIN: Login
     LOGOUT: 'Log out'
     NOTLOGGEDIN: 'Not logged in'
+    PUBLISHED: Published
     PUBLISHEDSITE: 'Published Site'
     Password: Password
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'View Page in:'
   ErrorPage:
@@ -251,6 +257,10 @@ ca:
     ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter by'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
+    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
+    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
   SearchForm:
     GO: Vés
     SEARCH: Cerca
@@ -267,8 +277,10 @@ ca:
     OtherGroupTitle: Other
     ParameterLiveCheckbox: 'Check live site'
     REPEMPTY: 'The {title} report is empty.'
+  SilverStripeNavigator:
+    ARCHIVED: Archived
   SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
+    ShareInstructions: 'To share this page, copy and paste the link below.'
     ShareLink: 'Share link'
   SilverStripeNavigatorLinkl:
     CloseLink: Close
@@ -299,7 +311,9 @@ ca:
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: 'Cancel·la els canvis de l''esborrany'
     BUTTONCANCELDRAFTDESC: 'Suprimeix el vostre esborrany i reverteix a la pàgina actualment publicada'
-    BUTTONSAVEPUBLISH: 'Desa i publica'
+    BUTTONPUBLISHED: Published
+    BUTTONSAVED: Saved
+    BUTTONSAVEPUBLISH: 'Save & publish'
     BUTTONUNPUBLISH: Despublica
     BUTTONUNPUBLISHDESC: 'Suprimeix aquesta pàgina del lloc publicat'
     CREATED: 'Date Created'
@@ -324,9 +338,12 @@ ca:
     EDIT_ALL_DESCRIPTION: 'Edit any page'
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     Editors: 'Grups d''editors'
+    GroupPlaceholder: 'Click to select group'
     HASBROKENLINKS: 'Aquesta pàgina té enllaços trencats'
     HTMLEDITORTITLE: Contingut
     INHERIT: 'Hereda de la pàgina pare'
+    LASTPUBLISHED: 'Last published'
+    LASTSAVED: 'Last saved'
     LASTUPDATED: 'Last Updated'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 'Etiqueta de navegació'
@@ -337,7 +354,9 @@ ca:
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
     MetadataToggle: Metadata
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
+    MoreOptions: 'More options'
+    NOTPUBLISHED: 'Not published'
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
     PAGELOCATION: 'Page location'
     PAGETITLE: 'Nom de la pàgina'
     PAGETYPE: 'Tipus de pàgina'
@@ -366,7 +385,7 @@ ca:
     URLSegment: 'Segment URL'
     VIEWERGROUPS: 'Viewer Groups'
     VIEW_ALL_DESCRIPTION: 'View any page'
-    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: 'View draft content'
     VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
     Viewers: 'Grups de visitadors'
@@ -376,6 +395,7 @@ ca:
     many_many_ImageTracking: 'Seguiment d''imatges'
     many_many_LinkTracking: 'Seguiment d''enllaços'
   SiteTreeURLSegmentField:
+    EMPTY: 'Please enter a URL Segment or click cancel'
     HelpChars: ' Special characters are automatically converted or removed.'
   StaticExporter:
     BASEURL: 'URL Base'
@@ -397,14 +417,20 @@ ca:
     VIEWPREVIOUS: 'Veure l''anterior'
   TreeTools:
     DisplayLabel: 'Display:'
+  URLSegmentField:
+    Cancel: Cancel
+    Edit: Edit
+    OK: OK
   ViewArchivedEmail.ss:
     CANACCESS: 'Podeu accedir al lloc arxivat en aquesta adreça:'
     HAVEASKED: 'Heu demanat de veure el contingut del nostre lloc el'
   VirtualPage:
-    CHOOSE: 'Trieu una pàgina on enllaçar'
+    CHOOSE: 'Linked Page'
     DESCRIPTION: 'Displays the content of another page'
-    EDITCONTENT: 'premeu aquí per editar el contingut'
+    EDITCONTENT: 'Edit content on linked page'
+    EditLink: edit
     HEADER: 'Aquesta és una pàgina virtual'
+    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
     PLURALNAME: 'Pàgines virtuals'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Pàgina virtual'

@@ -11,7 +11,7 @@
 .CMSPageHistoryController del { background-color: #FDD; padding: 2px; color: #ff4444; }
 
 /** -------------------------------------------- Tree View (collapsed for sidebar) -------------------------------------------- */
-#cms-content-treeview .cms-tree-expand-trigger { display: none; }
+#cms-content-treeview .cms-tree-expand-trigger, #cms-content-listview .cms-tree-expand-trigger { display: none; }
 
 .cms-content-tools #cms-content-treeview .cms-content-toolbar { border-bottom: none; box-shadow: none; margin-bottom: 8px; }
 .cms-content-tools #cms-content-treeview .cms-tree-view-modes, .cms-content-tools #cms-content-treeview .cms-content-batchactions { display: none; }
@@ -38,9 +38,9 @@
 .cms .AssetAdmin .cms-content-toolbar .cms-page-add-button span.btn-icon-add { height: 17px; }
 .cms .AssetAdmin .cms-content-toolbar .cms-page-add-button span.ui-button-text { color: #393939; text-shadow: white 0 1px 1px; }
 .cms .AssetAdmin #Root_TreeView .cms-tree ul .class-Folder a span.text span.jstree-foldericon { background: url(../images/blue-folder-horizontal.png) no-repeat; width: 16px; height: 16px; float: left; display: block; margin-right: 4px; }
-.cms .AssetAdmin #Form_EditForm_File td { padding-top: 0; padding-bottom: 0; }
-.cms .AssetAdmin #Form_EditForm_File td.bottom-all { padding: 0.7em; }
-.cms .AssetAdmin #Form_EditForm_File td.col-StripThumbnail { padding: 1px 5px; width: 32px; height: 32px; }
-.cms .AssetAdmin #Form_EditForm_File td.col-StripThumbnail img { width: 32px; height: 32px; }
-.cms .AssetAdmin #Form_EditForm_File tr[data-class=Folder] td.col-StripThumbnail { background: transparent url(../images/treeicons/blue-folder-horizontal.png) no-repeat center; }
-.cms .AssetAdmin #Form_EditForm_File tr[data-class=File] td.col-StripThumbnail { background: transparent url(../images/treeicons/blue-document.png) no-repeat center; }
+.cms table.ss-gridfield-table td { padding-top: 0; padding-bottom: 0; }
+.cms table.ss-gridfield-table td.bottom-all { padding: 0.7em; }
+.cms table.ss-gridfield-table td.col-StripThumbnail { padding: 1px 5px; width: 32px; height: 32px; }
+.cms table.ss-gridfield-table td.col-StripThumbnail img { width: 32px; height: 32px; }
+.cms table.ss-gridfield-table tr[data-class=Folder] td.col-StripThumbnail { background: transparent url(../images/treeicons/blue-folder-horizontal.png) no-repeat center; }
+.cms table.ss-gridfield-table tr[data-class=File] td.col-StripThumbnail { background: transparent url(../images/treeicons/blue-document.png) no-repeat center; }

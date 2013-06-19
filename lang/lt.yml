@@ -76,12 +76,15 @@ lt:
     ACCESS_HELP: 'Leisti peržiūrėti svetainės medžio ir turinio skiltį. Peržiūros, bei redagavimo leidimai gali būti pakeisti per iškrentančius pasirinkimus ir per atskirus "Turinio leidimai".'
     AddNew: 'Pridėti naują puslapį'
     AddNewButton: 'Pridėti naują'
+    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
     ChoosePageParentMode: 'Pasirinkite kur sukurti šį puslapį'
     ChoosePageType: 'Pasirinkite puslapio tipą'
     Create: Sukurti
     DELETE: 'Ištrinti juodraštį'
     DELETEFP: Ištrinti
     DESCREMOVED: 'ir {count} jam priklausantys'
+    DUPLICATED: 'Duplicated ''{title}'' successfully'
+    DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: 'E. paštas'
     EditTree: 'Redaguoti Medį'
     ListFiltered: 'Filtruotas sąrašas.'
@@ -96,16 +99,16 @@ lt:
     PUBALLFUN2: "Paspaudus šį mygtuką, bus publikuotas kiekvienas puslapis svetainėje. \\nŠitai numatyta naudoti kai padaromi dideli pakeitimai svetainės turinyje, \\npavyzdžiui ką tik sukūrus svetainę."
     PUBPAGES: 'Įvykdyta: Publikuoti {count} puslapiai'
     PageAdded: 'Puslapis sėkmingai sukurtas'
-    REMOVED: 'Deleted ''%s''%s from live site'
+    REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: 'Iš publikuojamos svetainės pašalintas ''{title}'''
     REMOVEDPAGEFROMDRAFT: '''%s'' pašalintas iš juodraštinės svetainės'
     RESTORE: Atstatyti
     RESTORED: '''{title}'' atstatytas sėkmingai'
     ROLLBACK: 'Gryžti prie šios versijos'
-    ROLLEDBACKPUB: 'Buvo sugrįžta prie publikuojamos versijos. Naujas versijos numeris yra #{version}'
-    ROLLEDBACKVERSION: 'Buvo sugrįžta prie versijos #%d. Naujas versijos numeris yra #%d'
+    ROLLEDBACKPUBv2: 'Rolled back to published version.'
+    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
     SAVE: Išsaugoti
-    SAVEDRAFT: 'Išsaugoti juodraštį'
+    SAVEDRAFT: 'Save draft'
     TabContent: Turinys
     TabHistory: Istorija
     TabSettings: Nustatymai
@@ -129,6 +132,7 @@ lt:
     SHOWUNPUBLISHED: 'Rodyti nepublikuojamas versijas'
     SHOWVERSION: 'Rodyti versiją'
     VIEW: peržiūrėti
+    VIEWINGLATEST: 'Currently viewing the latest version.'
     VIEWINGVERSION: 'Dabar peržiūrima versija {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Autorius
@@ -167,6 +171,7 @@ lt:
     ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Archyvuota svetainė iš'
     CMS: TVS
+    DRAFT: Draft
     DRAFTSITE: 'Juodraštinė svetainė'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Jūs turite prisijungti su savo TVS slaptažodžiu, kad galėtumėte peržiūrėti juodraščio arba archyvo turinį.<a href="%s">Spauskite čia, norėdami grįžti į svetainę</a>.'
     Email: 'E. paštas'
@@ -178,10 +183,11 @@ lt:
     LOGIN: Prisijungti
     LOGOUT: Atsijungti
     NOTLOGGEDIN: Neprisijungęs
+    PUBLISHED: Published
     PUBLISHEDSITE: 'Publikuojama svetainė'
     Password: Slaptažodis
     PostInstallTutorialIntro: 'Šis puslapis yra supaprastinta SilverStripe 3 tinklapio versija. Norėdami išplėsti jo funkcionalumą, apsilankykite {link}.'
-    StartEditing: 'Jūs galite pradėti redaguoti svetainės turinį, atidarydami <a href="{link}">TVS</a>.'
+    StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Nepajėgiame ištrinti įdiegimo bylų. Prašome pašalinti bylas rankiniu būdu.'
     VIEWPAGEIN: 'Peržiūrėti puslapį:'
   ErrorPage:
@@ -251,6 +257,10 @@ lt:
     ReportTitle: Antraštė
   ReportAdminForm:
     FILTERBY: 'Filtruoti pagal'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
+    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
+    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
   SearchForm:
     GO: Vykdyti
     SEARCH: Ieškoti
@@ -267,6 +277,8 @@ lt:
     OtherGroupTitle: Kita
     ParameterLiveCheckbox: 'Patikrinti publikuojamą svetainę'
     REPEMPTY: '{title} ataskaita yra tuščia.'
+  SilverStripeNavigator:
+    ARCHIVED: Archived
   SilverStripeNavigatorLink:
     ShareInstructions: 'Norėdami dalintis nuoroda į šį puslapį, kopijuokite, bei įklijuokite nuorodą apačioje.'
     ShareLink: 'Dalintis nuoroda'
@@ -299,7 +311,9 @@ lt:
     APPEARSVIRTUALPAGES: 'Šis turinys taip pat matomas virtualiuose puslapiuose, {title} skyriuose.'
     BUTTONCANCELDRAFT: 'Atšaukti juodraščio pakeitimus'
     BUTTONCANCELDRAFTDESC: 'Ištrinti juodraštį ir grįžti prie šiuo metu publikuojamo puslapio'
-    BUTTONSAVEPUBLISH: 'Išsaugoti ir publikuoti'
+    BUTTONPUBLISHED: Published
+    BUTTONSAVED: Saved
+    BUTTONSAVEPUBLISH: 'Save & publish'
     BUTTONUNPUBLISH: Nebepublikuoti
     BUTTONUNPUBLISHDESC: 'Pašalinti šį puslapį iš publikuojamos svetainės'
     CREATED: 'Sukūrimo data'
@@ -324,9 +338,12 @@ lt:
     EDIT_ALL_DESCRIPTION: 'Gali redaguoti puslapį, apeinant puslapio redagavimo teises'
     EDIT_ALL_HELP: 'Galimybė redaguoti bet kurį puslapį, nepriklausomai nuo "Priėjimo/Leidimų" skyriaus nustatymų. Būtinas leidimas "Prieiti prie ''Puslapių''"'
     Editors: 'Redaguotojų grupė'
+    GroupPlaceholder: 'Click to select group'
     HASBROKENLINKS: 'Šiame puslapyje yra nebegaliojančių nuorodų.'
     HTMLEDITORTITLE: Turinys
     INHERIT: 'Paveldėti iš pradinio puslapio'
+    LASTPUBLISHED: 'Last published'
+    LASTSAVED: 'Last saved'
     LASTUPDATED: 'Vėliausiai atnaujinta'
     LINKCHANGENOTE: 'Keičiant šio puslapio nuorodą, keisis ir jam priklausančių puslapių nuorodos.'
     MENUTITLE: 'Navigacijos pavadinimas'
@@ -337,7 +354,9 @@ lt:
     MODIFIEDONDRAFTHELP: 'Puslapyje yra nepublikuoto turinio'
     MODIFIEDONDRAFTSHORT: Pakeistas
     MetadataToggle: Metaduomenys
-    OBSOLETECLASS: 'Šis puslapis yra nebenaudojamo tipo {type}. Išsaugojimas iš naujo nustatys jo tipą, ko pasekoje galite prarasti duomenis'
+    MoreOptions: 'More options'
+    NOTPUBLISHED: 'Not published'
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
     PAGELOCATION: 'Puslapio vieta'
     PAGETITLE: 'Puslapio pavadinimas'
     PAGETYPE: 'Puslapio tipas'
@@ -366,7 +385,7 @@ lt:
     URLSegment: 'URL dalis'
     VIEWERGROUPS: 'Lankytojų grupės'
     VIEW_ALL_DESCRIPTION: 'Gali peržiūrėti bet kurį puslapį svetainėje, apeinant puslapio peržiūros teises'
-    VIEW_ALL_HELP: 'Galimybė peržiūrėti bet kurį puslapį svetainėje, nepriklausomai nuo "Priėjimo/Leidimų" skyriaus nustatymų. Būtinas leidimas "Prieiti prie svetainės turinio"'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: 'Peržiūrėti juodraščio turinį'
     VIEW_DRAFT_CONTENT_HELP: 'Pritaikoma puslapių peržiūrai be TVS pagalbos juodraščio režime. Naudinga bendradarbiaujant su redaktoriais be TVS prieigos.'
     Viewers: 'Matymo grupės'
@@ -376,6 +395,7 @@ lt:
     many_many_ImageTracking: 'Paveikslėlių sekimas'
     many_many_LinkTracking: 'Nuorodos sekimas'
   SiteTreeURLSegmentField:
+    EMPTY: 'Please enter a URL Segment or click cancel'
     HelpChars: 'Specialūs simboliai automatiškai pakeičiami arba pašalinami.'
   StaticExporter:
     BASEURL: 'Bazinis URL'
@@ -397,14 +417,20 @@ lt:
     VIEWPREVIOUS: 'Žiūrėti ankstesnį'
   TreeTools:
     DisplayLabel: 'Rodyti:'
+  URLSegmentField:
+    Cancel: Cancel
+    Edit: Edit
+    OK: OK
   ViewArchivedEmail.ss:
     CANACCESS: 'Jūs galite atverti suarchyvuotą svetainę paspaudę šią nuorodą:'
     HAVEASKED: 'Jūs norėjote peržiūrėti turinį mūsų svetainėje '
   VirtualPage:
-    CHOOSE: 'Pasirinkti puslapį nuorodai'
+    CHOOSE: 'Linked Page'
     DESCRIPTION: 'Rodo kito puslapio turinį'
-    EDITCONTENT: 'turiniui redaguoti spauskite čia'
+    EDITCONTENT: 'Edit content on linked page'
+    EditLink: edit
     HEADER: 'Tai virtualus puslapis'
+    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
     PLURALNAME: 'Virtualūs puslapiai'
     PageTypNotAllowedOnRoot: 'Norimas puslapio tipas "{type}" neleidžiamas šiame virtualiame puslapyje, šakniniame lygmenyje.'
     SINGULARNAME: 'Virtualus puslapis'

@@ -76,12 +76,15 @@ fo:
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
     AddNew: 'Add new page'
     AddNewButton: 'Add new'
+    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
     ChoosePageParentMode: 'Choose where to create this page'
     ChoosePageType: 'Choose page type'
     Create: Create
     DELETE: 'Strika frá kladdu heimasíðuni'
     DELETEFP: 'Strika frá tí almennu heimasíðuni'
     DESCREMOVED: 'and {count} descendants'
+    DUPLICATED: 'Duplicated ''{title}'' successfully'
+    DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: Teldupostur
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
@@ -96,16 +99,16 @@ fo:
     PUBALLFUN2: 'Við at trýsta á knøttin við tað sama henda, sum at fara inn á allar síðurnar og trýsta á "Ger alment". Endamálið við knøttunum er at hann skal brúkast, tá ið nógv innihald er blivið broytt, t.d. á einari nýggjari heimasíðu.'
     PUBPAGES: 'Done: Published {count} pages'
     PageAdded: 'Successfully created page'
-    REMOVED: 'Strikaði ''%s''%s frá tí almennu heimasíðuni'
+    REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: 'Strikaði ''%s'' frá kladdu heimasíðuni'
     RESTORE: Endurstovna
     RESTORED: 'Restored ''{title}'' successfully'
     ROLLBACK: 'Far aftur til hesa útgávuna'
-    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
-    ROLLEDBACKVERSION: 'Fór aftur til útgávu #%d. Nýtt útgávanummar er #%d'
+    ROLLEDBACKPUBv2: 'Rolled back to published version.'
+    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
     SAVE: Goym
-    SAVEDRAFT: 'Save Draft'
+    SAVEDRAFT: 'Save draft'
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
@@ -129,6 +132,7 @@ fo:
     SHOWUNPUBLISHED: 'Show unpublished versions'
     SHOWVERSION: 'Show Version'
     VIEW: view
+    VIEWINGLATEST: 'Currently viewing the latest version.'
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Author
@@ -167,6 +171,7 @@ fo:
     ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
+    DRAFT: Draft
     DRAFTSITE: 'Draft Site'
     DRAFT_SITE_ACCESS_RESTRICTION: 'You must log in with your CMS password in order to view the draft or archived content.  <a href="%s">Click here to go back to the published site.</a>'
     Email: Email
@@ -178,10 +183,11 @@ fo:
     LOGIN: Login
     LOGOUT: 'Log out'
     NOTLOGGEDIN: 'Not logged in'
+    PUBLISHED: Published
     PUBLISHEDSITE: 'Published Site'
     Password: Password
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'View Page in:'
   ErrorPage:
@@ -251,6 +257,10 @@ fo:
     ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter by'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
+    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
+    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
   SearchForm:
     GO: Víðari
     SEARCH: Leita
@@ -267,8 +277,10 @@ fo:
     OtherGroupTitle: Other
     ParameterLiveCheckbox: 'Check live site'
     REPEMPTY: 'The {title} report is empty.'
+  SilverStripeNavigator:
+    ARCHIVED: Archived
   SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
+    ShareInstructions: 'To share this page, copy and paste the link below.'
     ShareLink: 'Share link'
   SilverStripeNavigatorLinkl:
     CloseLink: Close
@@ -299,7 +311,9 @@ fo:
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: 'Avlýs kladdu broytingarnar'
     BUTTONCANCELDRAFTDESC: 'Strika tína kladdu, og far aftur til tí nuverandi almennu síðuna'
-    BUTTONSAVEPUBLISH: 'Goym og almenna kunngerð'
+    BUTTONPUBLISHED: Published
+    BUTTONSAVED: Saved
+    BUTTONSAVEPUBLISH: 'Save & publish'
     BUTTONUNPUBLISH: 'Óalmenna kunngerð'
     BUTTONUNPUBLISHDESC: 'Strika hesa síðuna frá tí almennu heimasíðuni'
     CREATED: 'Date Created'
@@ -324,9 +338,12 @@ fo:
     EDIT_ALL_DESCRIPTION: 'Edit any page'
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     Editors: 'Editors Groups'
+    GroupPlaceholder: 'Click to select group'
     HASBROKENLINKS: 'Hendan síðan inniheldur brotnar leinkur.'
     HTMLEDITORTITLE: Innihald
     INHERIT: 'Inherit from parent page'
+    LASTPUBLISHED: 'Last published'
+    LASTSAVED: 'Last saved'
     LASTUPDATED: 'Last Updated'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 'Navigation label'
@@ -337,7 +354,9 @@ fo:
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
     MetadataToggle: Metadata
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
+    MoreOptions: 'More options'
+    NOTPUBLISHED: 'Not published'
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
     PAGELOCATION: 'Page location'
     PAGETITLE: 'Navn á síðuni'
     PAGETYPE: 'Slag av síðu'
@@ -366,7 +385,7 @@ fo:
     URLSegment: 'URL Segment'
     VIEWERGROUPS: 'Viewer Groups'
     VIEW_ALL_DESCRIPTION: 'View any page'
-    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to Site Content" permission'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: 'View draft content'
     VIEW_DRAFT_CONTENT_HELP: 'Applies to viewing pages outside of the CMS in draft mode. Useful for external collaborators without CMS access.'
     Viewers: 'Viewers Groups'
@@ -376,6 +395,7 @@ fo:
     many_many_ImageTracking: 'Image Tracking'
     many_many_LinkTracking: 'Link Tracking'
   SiteTreeURLSegmentField:
+    EMPTY: 'Please enter a URL Segment or click cancel'
     HelpChars: ' Special characters are automatically converted or removed.'
   StaticExporter:
     BASEURL: 'Base URL'
@@ -397,14 +417,20 @@ fo:
     VIEWPREVIOUS: 'Vís fyrra'
   TreeTools:
     DisplayLabel: 'Display:'
+  URLSegmentField:
+    Cancel: Cancel
+    Edit: Edit
+    OK: OK
   ViewArchivedEmail.ss:
     CANACCESS: 'Tú kann fáa atgongd til arkiv heimasíðuna her:'
     HAVEASKED: 'Tú mást fáa loyvi, fyri at kunna síggja innihaldið á okkara heimasíðu á'
   VirtualPage:
-    CHOOSE: 'Vel eina síðu at vísa til'
+    CHOOSE: 'Linked Page'
     DESCRIPTION: 'Displays the content of another page'
-    EDITCONTENT: 'Trýst her fyri at broyta í innihaldinum'
+    EDITCONTENT: 'Edit content on linked page'
+    EditLink: edit
     HEADER: 'This is a virtual page'
+    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
     PLURALNAME: 'Virtual Pags'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtual Page'

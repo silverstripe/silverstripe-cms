@@ -2,7 +2,7 @@ ru:
   AssetAdmin:
     ADDFILES: 'Добавить файлы'
     ActionAdd: 'Добавить папку'
-    AppCategoryArchive: Архив
+    AppCategoryArchive: 'Архив'
     AppCategoryAudio: Аудио
     AppCategoryDocument: Документ
     AppCategoryFlash: Flash
@@ -13,7 +13,7 @@ ru:
     CurrentFolderOnly: 'Только в этой папке?'
     DetailsView: Детали
     FILES: Файлы
-    FILESYSTEMSYNC: Синхронизировать
+    FILESYSTEMSYNC: 'Синхронизировать'
     FILESYSTEMSYNCTITLE: 'Обновление базы данных файлов в файловой системе. Стоит использовать, если новые файлы были загружены без использования CMS, например, через FTP.'
     FROMTHEINTERNET: 'Из интернета'
     FROMYOURCOMPUTER: 'С диска'
@@ -21,7 +21,7 @@ ru:
     ListView: 'В виде списка'
     MENUTITLE: Файлы
     NEWFOLDER: 'Новая папка'
-    SIZE: Размер
+    SIZE: 'Размер'
     THUMBSDELETED: '{count} неиспользуемых миниатюр удалено'
     TreeView: 'В виде дерева'
     Upload: Загрузить
@@ -76,12 +76,15 @@ ru:
     ACCESS_HELP: 'Возможность просматривать раздел, содержащий дерево страниц и контент. Настройка прав просмотра и редактирования производится через выпадающие меню на отдельных страницах, а также через "Права доступа к содержимому".'
     AddNew: 'Добавить новую страницу'
     AddNewButton: Добавить
+    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
     ChoosePageParentMode: 'Выберите, где создать страницу'
     ChoosePageType: 'Выберите тип страницы'
     Create: Создать
     DELETE: 'Удалить черновик'
     DELETEFP: Удалить
     DESCREMOVED: 'и {count} страниц нижнего уровня'
+    DUPLICATED: 'Duplicated ''{title}'' successfully'
+    DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: Email
     EditTree: 'Редактировать дерево'
     ListFiltered: 'Отфильтрованный список.'
@@ -96,15 +99,15 @@ ru:
     PUBALLFUN2: 'Нажатие этой кнопки выполнит ту же функцию, что и нажатие кнопки "Опубликовать" для каждой отдельной страницы. Данная функция предназначена для использования после значительных изменений содержимого, например, в момент создания нового сайта.'
     PUBPAGES: 'Готово: опубликовано {count} страниц'
     PageAdded: 'Страница успешно создана'
-    REMOVED: '''%s''%s удалено с опубликованного сайта'
+    REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: 'Страница ''{title}'' удалена с опубликованного сайта'
     REMOVEDPAGEFROMDRAFT: 'Страница ''%s'' удалена с чернового сайта'
     RESTORE: Восстановить
     RESTORED: '''{title}'' успешно восстановлен'
     ROLLBACK: 'Откатить до этой версии'
-    ROLLEDBACKPUB: 'Произведен откат до опубликованной версии. Номер новой версии #{version}'
-    ROLLEDBACKVERSION: 'Произведен откат до версии #%d. Номер новой версии #%d'
-    SAVE: Сохранить
+    ROLLEDBACKPUBv2: 'Выполнен откат к опубликованной версии.'
+    ROLLEDBACKVERSIONv2: 'Выполнен откат к версии #%d.'
+    SAVE: 'Сохранить'
     SAVEDRAFT: 'Сохранить черновик'
     TabContent: Содержимое
     TabHistory: История
@@ -129,6 +132,7 @@ ru:
     SHOWUNPUBLISHED: 'Показать неопубликованные версии'
     SHOWVERSION: 'Показать версию'
     VIEW: обзор
+    VIEWINGLATEST: 'Вы просматриваете самую новую версию.'
     VIEWINGVERSION: 'Вы просматриваете версию {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Автор
@@ -167,6 +171,7 @@ ru:
     ARCHIVEDSITE: 'Версия для просмотра'
     ARCHIVEDSITEFROM: 'Архив сайта от'
     CMS: CMS
+    DRAFT: Черновик
     DRAFTSITE: 'Черновой сайт'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Вы должны войти с паролем для Системы Управления (CMS), чтобы увидеть черновое или архивное содержимое. <a href="%s">Нажмите сюда, чтобы вернуться на опубликованный сайт.</a>'
     Email: Email
@@ -175,13 +180,14 @@ ru:
     InstallSecurityWarning: 'Если вы не планируете в ближайшее время переустанавливать CMS, по соображениям безопасности рекомендуется удалить инсталляционные файлы (<em>для этого необходим администраторский доступ, см. выше</em>). Теперь веб-серверу требуется доступ для записи только к папке "assets"; вы можете защитить от записи все остальные папки. <a href="{link}" style="text-align: center;">Щелкните здесь, чтобы удалить инсталляционные файлы.</a>'
     InstallSuccessCongratulations: 'SilverStripe успешно установлен!'
     LOGGEDINAS: 'Залогинен как'
-    LOGIN: Вход
-    LOGOUT: Выход
+    LOGIN: 'Вход'
+    LOGOUT: 'Выход'
     NOTLOGGEDIN: 'Не вошли в систему'
+    PUBLISHED: Published
     PUBLISHEDSITE: 'Опубликованный сайт'
     Password: Пароль
     PostInstallTutorialIntro: 'Это упрощенная версия сайта, созданного с помощью SilverStripe 3. О возможностях расширения сайта можно узнать, щелкнув эту ссылку: {link}.'
-    StartEditing: ' Вы можете приступить к редактированию сайта, открыв <a href="{link}">CMS</a>.'
+    StartEditing: 'Вы можете приступить к редактированию содержимого сайта, открыв <a href="{link}">CMS</a>.'
     UnableDeleteInstall: 'Не удалось удалить инсталляционные файлы. Пожалуйста, удалите следующие файлы вручную'
     VIEWPAGEIN: 'Просмотреть страницу в:'
   ErrorPage:
@@ -226,7 +232,7 @@ ru:
   LeftAndMain:
     DELETED: Удалено.
     PreviewButton: Просмотр
-    SAVEDUP: Сохранено.
+    SAVEDUP: 'Сохранено.'
     STATUSPUBLISHEDSUCCESS: '''{title}'' успешно опубликован'
     SearchResults: 'Результаты поиска'
     VersionUnknown: Неизвестно
@@ -251,6 +257,10 @@ ru:
     ReportTitle: Название
   ReportAdminForm:
     FILTERBY: 'Фильтровать по'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Для опубликования виртуальной страницы опубликуйте связанную страницу'
+    VIRTUALPAGEWARNING: 'Для опубликования этой страницы выберите связанную страницу и сохраните изменения'
+    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
   SearchForm:
     GO: Выполн.
     SEARCH: Поиск
@@ -267,6 +277,8 @@ ru:
     OtherGroupTitle: Другие
     ParameterLiveCheckbox: 'Проверить опубликованный сайт'
     REPEMPTY: 'Отчет {title} пуст.'
+  SilverStripeNavigator:
+    ARCHIVED: Archived
   SilverStripeNavigatorLink:
     ShareInstructions: 'Чтобы поделиться ссылкой на эту страницу, скопируйте URL ниже.'
     ShareLink: 'Поделиться ссылкой'
@@ -299,7 +311,9 @@ ru:
     APPEARSVIRTUALPAGES: 'Это содержимое также отображается на виртуальных страницах в разделе {title}.'
     BUTTONCANCELDRAFT: 'Отменить изменения черновика'
     BUTTONCANCELDRAFTDESC: 'Удалить черновик и вернуться к уже опубликованной странице'
-    BUTTONSAVEPUBLISH: 'Сохр. и опублик.'
+    BUTTONPUBLISHED: Published
+    BUTTONSAVED: Saved
+    BUTTONSAVEPUBLISH: 'Сохранить и опубликовать'
     BUTTONUNPUBLISH: 'Отмена публикации'
     BUTTONUNPUBLISHDESC: 'Удалить эту страницу с опубликованного сайта'
     CREATED: 'Дата создания'
@@ -324,9 +338,12 @@ ru:
     EDIT_ALL_DESCRIPTION: 'Редактирование любой страницы'
     EDIT_ALL_HELP: 'Возможность редактировать любую страницу на сайте независимо от настроек во вкладке "Доступ". Необходимо право доступа к разделу "Страницы".'
     Editors: 'Группы редактирования'
+    GroupPlaceholder: 'Click to select group'
     HASBROKENLINKS: 'Эта страница содержит неверные ссылки.'
     HTMLEDITORTITLE: Содержимое
     INHERIT: 'Перенять от родительской страницы'
+    LASTPUBLISHED: 'Last published'
+    LASTSAVED: 'Last saved'
     LASTUPDATED: 'Последнее обновление'
     LINKCHANGENOTE: 'Изменение ссылки на эту страницу повлияет и на ссылки всех дочерних страниц.'
     MENUTITLE: 'Метка в навигации'
@@ -337,6 +354,8 @@ ru:
     MODIFIEDONDRAFTHELP: 'На этой странице есть неопубликованные изменения'
     MODIFIEDONDRAFTSHORT: Изменено
     MetadataToggle: Метаданные
+    MoreOptions: 'More options'
+    NOTPUBLISHED: 'Not published'
     OBSOLETECLASS: 'Тип страницы {type} больше не поддерживается. При сохранении тип страницы будет сброшен, что может привести к потере данных'
     PAGELOCATION: 'Расположение страницы'
     PAGETITLE: 'Название страницы'
@@ -366,7 +385,7 @@ ru:
     URLSegment: 'Адрес страницы'
     VIEWERGROUPS: 'Группы чтения'
     VIEW_ALL_DESCRIPTION: 'Просмотр любой страницы'
-    VIEW_ALL_HELP: 'Возможность просматривать любую страницу на сайте независимо от настроек во вкладке "Доступ". Требуется право доступа к содержимому сайта.'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: 'Просмотр содержимого черновика'
     VIEW_DRAFT_CONTENT_HELP: 'Просмотр страниц вне CMS в режиме черновика. Эта опция может понадобиться внештатным сотрудникам, не имеющим доступа к CMS.'
     Viewers: 'Группы чтения'
@@ -376,6 +395,7 @@ ru:
     many_many_ImageTracking: 'Отслеживание изображений'
     many_many_LinkTracking: 'Отслеживание ссылок'
   SiteTreeURLSegmentField:
+    EMPTY: 'Please enter a URL Segment or click cancel'
     HelpChars: 'Спецсимволы автоматически конвертируются или удаляются.'
   StaticExporter:
     BASEURL: 'Базовый URL'
@@ -397,14 +417,20 @@ ru:
     VIEWPREVIOUS: 'См. предыдущ.'
   TreeTools:
     DisplayLabel: 'Отображать:'
+  URLSegmentField:
+    Cancel: Отмена
+    Edit: 'Редактировать'
+    OK: OK
   ViewArchivedEmail.ss:
     CANACCESS: 'Вы можете посмотреть архивную версию сайта по этой ссылке:'
     HAVEASKED: 'Вы запросили просмотр содержимого нашего сайта за'
   VirtualPage:
-    CHOOSE: 'Выберите страницу, на которую ссылаетесь'
+    CHOOSE: 'Связанная страница'
     DESCRIPTION: 'Показать содержимое других страниц'
-    EDITCONTENT: 'Нажмите здесь для редактирования содержимого'
+    EDITCONTENT: 'Редактировать содержимое на связанной странице'
+    EditLink: редактировать
     HEADER: 'Это виртуальная страница'
+    HEADERWITHLINK: 'Это виртуальная страница, копирующая содержимое из "{title}" ({link})'
     PLURALNAME: 'Виртуальная страница'
     PageTypNotAllowedOnRoot: 'Страницы типа "{type}" недопустимы в качестве корневых для этой виртуальной страницы'
     SINGULARNAME: 'Виртуальная страница'

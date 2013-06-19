@@ -76,12 +76,15 @@ lv:
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
     AddNew: 'Add new page'
     AddNewButton: 'Add new'
+    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
     ChoosePageParentMode: 'Choose where to create this page'
     ChoosePageType: 'Choose page type'
     Create: Create
     DELETE: 'Dzēst no melnrakstu vietnes'
     DELETEFP: 'Dzēst no publicētās vietnes'
     DESCREMOVED: 'and {count} descendants'
+    DUPLICATED: 'Duplicated ''{title}'' successfully'
+    DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: Email
     EditTree: 'Edit Tree'
     ListFiltered: 'Filtered list.'
@@ -96,16 +99,16 @@ lv:
     PUBALLFUN2: 'Pressing this button will do the equivalent of going to every page and pressing "publish".  It''s				intended to be used after there have been massive edits of the content, such as when the site was				first built.'
     PUBPAGES: 'Done: Published {count} pages'
     PageAdded: 'Successfully created page'
-    REMOVED: 'Deleted ''%s''%s from live site'
+    REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: 'Removed ''{title}'' from the published site'
     REMOVEDPAGEFROMDRAFT: 'Removed ''%s'' from the draft site'
     RESTORE: Restaurēt
     RESTORED: 'Restored ''{title}'' successfully'
     ROLLBACK: 'Roll back to this version'
-    ROLLEDBACKPUB: 'Rolled back to published version. New version number is #{version}'
-    ROLLEDBACKVERSION: 'Rolled back to version #%d.  New version number is #%d'
+    ROLLEDBACKPUBv2: 'Rolled back to published version.'
+    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
     SAVE: Saglabāt
-    SAVEDRAFT: 'Save Draft'
+    SAVEDRAFT: 'Save draft'
     TabContent: Content
     TabHistory: History
     TabSettings: Settings
@@ -129,6 +132,7 @@ lv:
     SHOWUNPUBLISHED: 'Show unpublished versions'
     SHOWVERSION: 'Show Version'
     VIEW: view
+    VIEWINGLATEST: 'Currently viewing the latest version.'
     VIEWINGVERSION: 'Currently viewing version {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Author
@@ -167,6 +171,7 @@ lv:
     ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Arhivēta vietne no'
     CMS: CMS
+    DRAFT: Draft
     DRAFTSITE: 'Melnrakstu vietne'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Lai aplūkotu melnrakstu vai arhivētu saturu, Jums ir jāpieslēdzas ar Jūsu CMS paroli. <a href="%s">Lai dotos atpakaļu uz publisko lapu, klikšķiniet šeit.</a>'
     Email: Email
@@ -178,10 +183,11 @@ lv:
     LOGIN: Pieslēgties
     LOGOUT: Atslēgties
     NOTLOGGEDIN: 'Nav pieslēdzies'
+    PUBLISHED: Published
     PUBLISHEDSITE: 'Publicētā vietne'
     Password: Password
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your site\\''s content by opening <a href="{link}">the CMS</a>.'
+    StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'Skatīt lapu:'
   ErrorPage:
@@ -251,6 +257,10 @@ lv:
     ReportTitle: Title
   ReportAdminForm:
     FILTERBY: 'Filter by'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
+    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
+    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
   SearchForm:
     GO: Aiziet
     SEARCH: Meklēt
@@ -267,6 +277,8 @@ lv:
     OtherGroupTitle: Other
     ParameterLiveCheckbox: 'Check live site'
     REPEMPTY: 'The {title} report is empty.'
+  SilverStripeNavigator:
+    ARCHIVED: Archived
   SilverStripeNavigatorLink:
     ShareInstructions: 'Lai to koplietotu ar šo lapu, nokopējiet un ievietojoiet zemāk redzamo saiti.'
     ShareLink: 'Koplietot saiti'
@@ -299,7 +311,9 @@ lv:
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: 'Atcelt melnraksta izmaiņas'
     BUTTONCANCELDRAFTDESC: 'Dzēst melnrakstu un atstatīt uz šobrīd publicēto lapu'
-    BUTTONSAVEPUBLISH: 'Saglabāt un publicēt'
+    BUTTONPUBLISHED: Published
+    BUTTONSAVED: Saved
+    BUTTONSAVEPUBLISH: 'Save & publish'
     BUTTONUNPUBLISH: Nebpublicēt
     BUTTONUNPUBLISHDESC: 'Izņemt šo lapu no publicētās vietnes'
     CREATED: 'Date Created'
@@ -324,9 +338,12 @@ lv:
     EDIT_ALL_DESCRIPTION: 'Labot jebkuru lapu'
     EDIT_ALL_HELP: 'Iespēja labot jebkuru vietnes lapu, neskatoties uz uzstādijumiem Piekļuve cilnē'
     Editors: 'Redaktoru grupas'
+    GroupPlaceholder: 'Click to select group'
     HASBROKENLINKS: 'Šī lapa satur bojātas saites.'
     HTMLEDITORTITLE: Saturs
     INHERIT: 'Mantot no vecāka lapas'
+    LASTPUBLISHED: 'Last published'
+    LASTSAVED: 'Last saved'
     LASTUPDATED: 'Last Updated'
     LINKCHANGENOTE: 'Izmainot šīs lapas saiti, tiks izmainītas saites arī visām tās bērnu lapām.'
     MENUTITLE: 'Navigācijas virsraksts'
@@ -337,7 +354,9 @@ lv:
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
     MetadataToggle: Metadata
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset it''s type and you may lose data'
+    MoreOptions: 'More options'
+    NOTPUBLISHED: 'Not published'
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
     PAGELOCATION: 'Lapas adrese'
     PAGETITLE: 'Lapas nosaukums'
     PAGETYPE: 'Lapas tips'
@@ -366,7 +385,7 @@ lv:
     URLSegment: 'URL Segments'
     VIEWERGROUPS: 'Skatītāju grupas'
     VIEW_ALL_DESCRIPTION: 'Skatī jebkuru lapu'
-    VIEW_ALL_HELP: 'Iespēja skatīt jebkuru vietnes lapu, neskatoties uz uzstādījumiem Piekļuves cilnē. Nepieciešama "Piekļuve vietnes saturam" atļauja.'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: 'Aplūkot melnraksa saturu'
     VIEW_DRAFT_CONTENT_HELP: 'Attiecās uz lapu aplūkošanu ārpus CMS melnraksta režīmā. Var būt noderīgi ārējiem darbiniekiem, kuriem nav piekļuve CMS.'
     Viewers: 'Skatītāju grupas'
@@ -376,6 +395,7 @@ lv:
     many_many_ImageTracking: 'Attēlu izsekošana'
     many_many_LinkTracking: 'Saišu izsekošana'
   SiteTreeURLSegmentField:
+    EMPTY: 'Please enter a URL Segment or click cancel'
     HelpChars: ' Special characters are automatically converted or removed.'
   StaticExporter:
     BASEURL: 'Base URL'
@@ -397,14 +417,20 @@ lv:
     VIEWPREVIOUS: 'Skatīt iepriekšējo'
   TreeTools:
     DisplayLabel: 'Display:'
+  URLSegmentField:
+    Cancel: Cancel
+    Edit: Edit
+    OK: OK
   ViewArchivedEmail.ss:
     CANACCESS: 'You can access the archived site at this link:'
     HAVEASKED: 'You have asked to view the content of our site on'
   VirtualPage:
-    CHOOSE: 'Izvēlieties lapu uz kuru veidot saiti'
+    CHOOSE: 'Linked Page'
     DESCRIPTION: 'Displays the content of another page'
-    EDITCONTENT: 'Lai labotu saturu, klikšķiniet šeit '
+    EDITCONTENT: 'Edit content on linked page'
+    EditLink: edit
     HEADER: 'Šī ir virtuāla lapa'
+    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
     PLURALNAME: 'Virtuālās lapas'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtuālās lapa'

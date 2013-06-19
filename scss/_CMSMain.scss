@@ -47,7 +47,7 @@
 /** --------------------------------------------
  * Tree View (collapsed for sidebar)
  * -------------------------------------------- */
-#cms-content-treeview {
+#cms-content-treeview, #cms-content-listview {
 	.cms-tree-expand-trigger {
 		display: none; // Don't show trigger in expanded mode
 	}

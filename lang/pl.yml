@@ -76,12 +76,15 @@ pl:
     ACCESS_HELP: 'Zezwala na oglądanie sekcji zawierających drzewo stron oraz treść. Prawo Przeglądaj i edytuj może być obsługiwane przez pola wyboru dostępne na stronach oraz poprzez zakładkę uprawnień.'
     AddNew: 'Dodaj nową stronę'
     AddNewButton: 'Dodaj nowy'
+    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
     ChoosePageParentMode: 'Wybierz gdzie chcesz utworzyć tę stronę'
     ChoosePageType: 'Wybierz rodzaj strony'
     Create: Utwórz
     DELETE: 'Usuń szkic'
     DELETEFP: 'Usuń z opublikowanej witryny'
     DESCREMOVED: 'i {count} potomków'
+    DUPLICATED: 'Duplikowanie ''{title}'' zakończone powodzeniem'
+    DUPLICATEDWITHCHILDREN: 'Duplikowanie ''{title}'' oraz podstron zakończone powodzeniem'
     EMAIL: Email
     EditTree: 'Edytuj drzewko'
     ListFiltered: 'Filtrowana lista.'
@@ -96,14 +99,14 @@ pl:
     PUBALLFUN2: 'Naciśnięcie tego przycisku spowoduje przejście po wszystkich stronach i opublikowanie ich. Zazwyczaj używa się tego, gdy w witrynie było bardzo dużo zmian, na przykład gdy witryna została utworzona.'
     PUBPAGES: 'Zrobiono:  Opublikowano {count} stron'
     PageAdded: 'Pomyślnie utworzono stronę'
-    REMOVED: 'Usunięto ''%s''%s z opublikowanej witryny'
+    REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: 'Usunięto ''{title}'' z opublikowanych stron'
     REMOVEDPAGEFROMDRAFT: '''%s'' usunięto ze szkiców'
     RESTORE: Przywróć
     RESTORED: 'Pomyślnie przywrócono ''{title}'''
     ROLLBACK: 'Wróć do tej wersji'
-    ROLLEDBACKPUB: 'Przywrócono do opublikowanej wersji. Nowy numer wersji to #{version}'
-    ROLLEDBACKVERSION: 'Przywrócono wersję #%d. Nowy numer wersji to #%d'
+    ROLLEDBACKPUBv2: 'Rolled back to published version.'
+    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
     SAVE: Zapisz
     SAVEDRAFT: 'Zapisz szkic'
     TabContent: Zawartość
@@ -129,6 +132,7 @@ pl:
     SHOWUNPUBLISHED: 'Pokaż nieopublikowane wersje'
     SHOWVERSION: 'Pokaż wersję'
     VIEW: zobacz
+    VIEWINGLATEST: 'Obecnie oglądasz najnowszą wersję'
     VIEWINGVERSION: 'Obecnie oglądasz wersję {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Autor
@@ -167,6 +171,7 @@ pl:
     ARCHIVEDSITE: 'Podgląd wersji'
     ARCHIVEDSITEFROM: 'Zarchiwizowana witryna od'
     CMS: 'System Zarządzania Treścią'
+    DRAFT: Szkic
     DRAFTSITE: 'Szkic witryny'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Musisz zalogować się za pomocą swojego hasła do CMSa, aby obejrzeć nieopublikowaną i zarchiwizowaną treść. <a href="%s">Kliknij tutaj aby powrócić do opublikowanej strony.</a>'
     Email: 'Adres e-mail'
@@ -178,10 +183,11 @@ pl:
     LOGIN: Zaloguj
     LOGOUT: Wyloguj
     NOTLOGGEDIN: 'Nie zalogowany'
+    PUBLISHED: Opublikowano
     PUBLISHEDSITE: 'Opublikowana witryna'
     Password: Hasło
     PostInstallTutorialIntro: 'Ta strona jest uproszczoną wersją witryny SilverStripe 3. Aby ją rozszerzyć, zajrzyj proszę na stronę: {link}'
-    StartEditing: 'Możesz rozpocząć edycję zawartości witryn(y) otwierając <a href="{link}">CMS</a>.'
+    StartEditing: 'Możesz zacząć edytować Twoją stronę otwierając <a href=\\"{link}\\">CMS</a>.'
     UnableDeleteInstall: 'Nie można usunąć plików instalacyjnych. Proszę usunąć je ręcznie'
     VIEWPAGEIN: 'Zobacz stronę w:'
   ErrorPage:
@@ -225,7 +231,7 @@ pl:
     UploadFilesButton: Prześlij
   LeftAndMain:
     DELETED: Usunięty
-    PreviewButton: Podgląd
+    PreviewButton: 'Podgląd'
     SAVEDUP: Zapisane
     STATUSPUBLISHEDSUCCESS: 'Opublikowano ''{title}'' '
     SearchResults: 'Wyniki wyszukiwania'
@@ -251,8 +257,12 @@ pl:
     ReportTitle: Tytuł
   ReportAdminForm:
     FILTERBY: 'Filtruj po'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
+    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
+    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
   SearchForm:
-    GO: Ok
+    GO: Przejdź
     SEARCH: Szukaj
     SearchResults: 'Wyniki wyszukiwania'
   SideReport:
@@ -267,6 +277,8 @@ pl:
     OtherGroupTitle: Inne
     ParameterLiveCheckbox: 'Sprawdź witrynę'
     REPEMPTY: '{title} raport jest pusty.'
+  SilverStripeNavigator:
+    ARCHIVED: Archived
   SilverStripeNavigatorLink:
     ShareInstructions: 'Aby podzielić się tym na tej stronie, skopiuj i wklej poniższy link.'
     ShareLink: 'Podziel się linkiem'
@@ -299,6 +311,8 @@ pl:
     APPEARSVIRTUALPAGES: 'Ta treść pojawia się również na wirtualnej stronie w sekcji {title}.'
     BUTTONCANCELDRAFT: 'Anuluj wprowadzone zmiany'
     BUTTONCANCELDRAFTDESC: 'Usuń zmiany i wróć do istniejącej wersji opublikowanej strony'
+    BUTTONPUBLISHED: Opublikowano
+    BUTTONSAVED: Zapisano
     BUTTONSAVEPUBLISH: 'Zapisz i opublikuj'
     BUTTONUNPUBLISH: Nieopublikowane
     BUTTONUNPUBLISHDESC: 'Usuń tę stronę z opublikowanej witryny'
@@ -324,9 +338,12 @@ pl:
     EDIT_ALL_DESCRIPTION: 'Edytuj jakąkolwiek stronę'
     EDIT_ALL_HELP: 'Możliwość edycji jakiejkolwiek strony w witrynie, bez względu na ustawienia w zakładce Dostęp. Wymaga uprawnienia "Dostęp do edycji treści"'
     Editors: 'Grupy Edytorów'
+    GroupPlaceholder: 'Kliknij aby wybrać grupę'
     HASBROKENLINKS: 'Ta strona ma niedziałający link'
     HTMLEDITORTITLE: Zawartość
     INHERIT: 'Dziedzicz ze strony nadrzędnej'
+    LASTPUBLISHED: 'Ostatnio opublikowano'
+    LASTSAVED: 'Ostatnio zapisane'
     LASTUPDATED: 'Ostania zmiana'
     LINKCHANGENOTE: 'Zmiana linku na aktualnej stronie skutkuje zmianą w linkach stron potomnych.'
     MENUTITLE: 'Sekcja nawigacji'
@@ -337,7 +354,9 @@ pl:
     MODIFIEDONDRAFTHELP: 'Na stronie znajdują się nieopublikowane zmiany'
     MODIFIEDONDRAFTSHORT: Zmodyfikowana
     MetadataToggle: Metadane
-    OBSOLETECLASS: 'Ta strona należy do zdezaktualizowanego typu {type}. Zapisanie jej spowoduje zresetowanie jej typu i możliwą utratę danych'
+    MoreOptions: 'Więcej opcji'
+    NOTPUBLISHED: 'Not published'
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
     PAGELOCATION: 'Lokalizacja strony'
     PAGETITLE: 'Nazwa strony'
     PAGETYPE: 'Rodzaj strony'
@@ -366,7 +385,7 @@ pl:
     URLSegment: 'Segment adresu URL'
     VIEWERGROUPS: 'Grupy przeglądających'
     VIEW_ALL_DESCRIPTION: 'Przeglądanie stron'
-    VIEW_ALL_HELP: 'Zdolność oglądania jakiejkolwiek strony na witrynie, bez względu na ustawienia w zakładce Dostęp. Wymaga uprawnienia "Dostęp do edycji treści"'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: 'Obejrzyj szkic treści'
     VIEW_DRAFT_CONTENT_HELP: 'Stosowane do oglądania szkiców stron poza systemem CMS. Przydatne w przypadku zewnętrznych współpracowników nie mających dostępu do CMS.'
     Viewers: 'Grupy przeglądających'
@@ -376,6 +395,7 @@ pl:
     many_many_ImageTracking: 'Śledzenie obrazków'
     many_many_LinkTracking: 'Śledzenie linków'
   SiteTreeURLSegmentField:
+    EMPTY: 'Proszę podać część adresu lub kliknąć anuluj'
     HelpChars: 'Znaki specjalne są automatycznie zamienione lub usunięte.'
   StaticExporter:
     BASEURL: 'Bazowy URL'
@@ -397,14 +417,20 @@ pl:
     VIEWPREVIOUS: 'Zobacz poprzednie'
   TreeTools:
     DisplayLabel: 'Wyświetl:'
+  URLSegmentField:
+    Cancel: Anuluj
+    Edit: Edytuj
+    OK: OK
   ViewArchivedEmail.ss:
     CANACCESS: 'Dostęp do zarchiwizowanej witryny:'
     HAVEASKED: 'Poprosiłeś o obejrzenie treści naszej strony na'
   VirtualPage:
-    CHOOSE: 'Zmień link do strony'
+    CHOOSE: 'Linkowana strona'
     DESCRIPTION: 'Wyświetla zawartość innej strony'
-    EDITCONTENT: 'kliknij tutaj aby edytować zawartość'
+    EDITCONTENT: 'Edycja treści na linkowanej stronie'
+    EditLink: edytuj
     HEADER: 'To jest wirtualna strona'
+    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
     PLURALNAME: 'Wirtualne Strony'
     PageTypNotAllowedOnRoot: '"{type}" nie jest dozwolona dla głównego poziomu wirtualnej strony'
     SINGULARNAME: 'Wirtualna Strona'

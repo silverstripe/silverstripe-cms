@@ -76,12 +76,15 @@ de:
     ACCESS_HELP: 'Seiteninhalt im CMS anzeigen. Anzeige- und Bearbeitungsberechtigungen können sowohl seitenspezifische als auch über die globalen Inhaltsberechtigungen gesetzt werden.'
     AddNew: 'Neue Seite hinzufügen'
     AddNewButton: Hinzufügen
+    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
     ChoosePageParentMode: 'Wo soll diese Seite erstellt werden?'
     ChoosePageType: 'Seitentyp auswählen'
     Create: Erstellen
     DELETE: 'Von Entwurf-Seite löschen'
     DELETEFP: Löschen
     DESCREMOVED: 'und {count} untergeordnete Seiten'
+    DUPLICATED: 'Duplicated ''{title}'' successfully'
+    DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: E-Mail
     EditTree: 'Seitenbaum bearbeiten'
     ListFiltered: 'Gefilterte Liste'
@@ -96,16 +99,16 @@ de:
     PUBALLFUN2: 'Dieser Button bewirkt dasselbe wie auf jeder Seite "veröffentlichen" zu wählen. Sie sollten diese Funktion nutzen, wenn grössere Inhaltsänderungen stattgefunden haben, zum Beispiel wenn die Seite erstellt wurde.'
     PUBPAGES: 'Abgeschlossen: {count} Seiten wurden veröffentlicht'
     PageAdded: 'Seite erfolgreich erstellt'
-    REMOVED: '''%s''%s von der Live-Seite gelöscht'
+    REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: '''{title}'' wurde von der veröffentlichten Site entfernt'
     REMOVEDPAGEFROMDRAFT: 'Lösche ''%s'' von der Entwurfs-Site'
     RESTORE: Wiederherstellen
     RESTORED: '''{title}'' wurde wiederhergestellt'
     ROLLBACK: 'Diese Version wiederherstellen'
-    ROLLEDBACKPUB: 'Die Änderungen seit der letzten Veröffentlichung wurden verworfen. Neue Versionsnummer ist #{version}'
-    ROLLEDBACKVERSION: 'Version #%d wiederhergestellt. Neue Versionsnummer ist #%d'
+    ROLLEDBACKPUBv2: 'Rolled back to published version.'
+    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
     SAVE: Speichern
-    SAVEDRAFT: 'Entwurf speichern'
+    SAVEDRAFT: 'Save draft'
     TabContent: Inhalt
     TabHistory: Historie
     TabSettings: Einstellungen
@@ -129,6 +132,7 @@ de:
     SHOWUNPUBLISHED: 'Zeige unveröffentlichte Versionen'
     SHOWVERSION: 'Zeige Version'
     VIEW: anzeigen
+    VIEWINGLATEST: 'Currently viewing the latest version.'
     VIEWINGVERSION: 'Momentan angezeigte Version: {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Autor
@@ -167,6 +171,7 @@ de:
     ARCHIVEDSITE: Vorschauversion
     ARCHIVEDSITEFROM: 'Site archiviert von'
     CMS: CMS
+    DRAFT: Draft
     DRAFTSITE: Vorschau-Site
     DRAFT_SITE_ACCESS_RESTRICTION: 'Sie müssen sich mit Ihrem CMS Passwort einloggen, um den Entwurf oder den archivierten Inhalt zu sehen. <a href="%s">Zurück zur veröffentlichten Seite.</a>'
     Email: E-Mail
@@ -178,10 +183,11 @@ de:
     LOGIN: Anmelden
     LOGOUT: Abmelden
     NOTLOGGEDIN: 'Nicht angemeldet'
+    PUBLISHED: Published
     PUBLISHEDSITE: 'Veröffentlichte Site'
     Password: Passwort
     PostInstallTutorialIntro: 'Diese Internetseite ist eine einfache Version einer SilverStripe 3 Seite. Wie man diese erweitert, erfährst Du in der {link}.'
-    StartEditing: 'Sie können mit der Bearbeitung der Inhalte Ihrer Site beginnen, indem Sie <a href="{link}">das CMS</a> öffnen.'
+    StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Die Installationsdateien konnten nicht gelöscht werden. Bitte löschen Sie die Dateien manuell.'
     VIEWPAGEIN: 'Seite anzeigen in:'
   ErrorPage:
@@ -192,8 +198,8 @@ de:
     DEFAULTSERVERERRORPAGETITLE: Serverfehler
     DESCRIPTION: 'Spezieller Inhalt für andere Fehlerfälle (z.B. "Seite nicht gefunden")'
     ERRORFILEPROBLEM: 'Die Datei "{filename}" konnte nicht zum Schreiben geöffnet werden. Bitte überprüfen Sie die Dateiberechtigungen.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
+    PLURALNAME: Fehlerseiten
+    SINGULARNAME: Fehlerseite
     400: '400 - Fehlerhafter Zugriff'
     401: '401 - Unerlaubter Zugriff'
     403: '403 - Verbotener Zugriff'
@@ -240,17 +246,21 @@ de:
     HASBEENSETUP: 'Eine Weiterleitungsseite wurde erstellt ohne das eine Weiterleitung definiert wurde.'
     HEADER: 'Diese Seite wird Nutzer auf eine andere Seite weiterleiten'
     OTHERURL: 'Andere Webseiten URL'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: Umleitungsseite
     REDIRECTTO: 'Weiterleiten zu'
     REDIRECTTOEXTERNAL: 'Andere Website'
     REDIRECTTOPAGE: 'Eine Seite auf Ihrer Website'
-    SINGULARNAME: 'Redirector Page'
+    SINGULARNAME: Weiterleitungsseite
     YOURPAGE: 'Seite auf Ihrer Website'
   ReportAdmin:
     MENUTITLE: Berichte
     ReportTitle: Titel
   ReportAdminForm:
     FILTERBY: 'Filtern nach'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
+    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
+    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
   SearchForm:
     GO: Los
     SEARCH: Suche
@@ -267,6 +277,8 @@ de:
     OtherGroupTitle: Andere
     ParameterLiveCheckbox: 'Veröffentlichte Seite überprüfen'
     REPEMPTY: 'Der Bericht ''{title}'' ist leer.'
+  SilverStripeNavigator:
+    ARCHIVED: Archived
   SilverStripeNavigatorLink:
     ShareInstructions: 'Kopieren Sie den folgenden Link um diesen jemanden mitzuteilen.'
     ShareLink: 'Link teilen'
@@ -299,7 +311,9 @@ de:
     APPEARSVIRTUALPAGES: 'Dieser Inhalt erscheint außerdem auf virtuellen Seiten im {title} Bereich.'
     BUTTONCANCELDRAFT: 'Verwerfe Entwurfsänderungen'
     BUTTONCANCELDRAFTDESC: 'Löschen Sie Ihren Entwurf und kehren Sie zur derzeit veröffentlichten Seite zurück.'
-    BUTTONSAVEPUBLISH: 'Speichern und Veröffentlichen'
+    BUTTONPUBLISHED: Published
+    BUTTONSAVED: Saved
+    BUTTONSAVEPUBLISH: 'Save & publish'
     BUTTONUNPUBLISH: 'Veröffentlichung zurücknehmen'
     BUTTONUNPUBLISHDESC: 'Entferne diese Seite aus der veröffentlichten Website'
     CREATED: 'Datum der Erstellung'
@@ -324,20 +338,25 @@ de:
     EDIT_ALL_DESCRIPTION: 'Kann beliebige Seiten bearbeiten'
     EDIT_ALL_HELP: 'Kann beliebige Seiten auf der Site bearbeiten; seitenspezifische Sicherheitseinstellungen werden ignoriert.'
     Editors: 'Bearbeiter Gruppen'
+    GroupPlaceholder: 'Click to select group'
     HASBROKENLINKS: 'Diese Seite enthält ungültige Verweise.'
     HTMLEDITORTITLE: Inhalt
     INHERIT: 'Von der übergeordneten Seite erben'
+    LASTPUBLISHED: 'Last published'
+    LASTSAVED: 'Last saved'
     LASTUPDATED: 'Letzte Änderung'
     LINKCHANGENOTE: 'Das Ändern des Links zu dieser Seite führt ebenfalls zur Änderung aller Links der Unterseiten dieser Seite.'
     MENUTITLE: Navigationsbezeichnung
     METADESC: 'Meta Description'
-    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
+    METADESCHELP: Suchergebnisse
     METAEXTRA: 'Benutzerdefinierte Meta-Tags'
-    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
+    METAEXTRAHELP: 'Benutzerdefinierte Meta-Tags'
     MODIFIEDONDRAFTHELP: 'Die Seite hat unveröffentlichte Änderungen'
     MODIFIEDONDRAFTSHORT: 'Zuletzt geändert'
     MetadataToggle: Metadaten
-    OBSOLETECLASS: 'Der Seitentyp {type} dieser Seite existiert nicht mehr. Durch Speichern wird der Seitentyp zurückgesetzt, dies könnte Datenverluste zur Folge haben.'
+    MoreOptions: 'More options'
+    NOTPUBLISHED: 'Not published'
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
     PAGELOCATION: Seitenposition
     PAGETITLE: Seitenname
     PAGETYPE: Seitentyp
@@ -366,7 +385,7 @@ de:
     URLSegment: URL-Segment
     VIEWERGROUPS: Betrachtergruppen
     VIEW_ALL_DESCRIPTION: 'Kann beliebige Seiten betrachten'
-    VIEW_ALL_HELP: 'Kann beliebige Seiten auf der Site betrachten; seitenspezifische Sicherheitseinstellungen werden ignoriert.'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: 'Entwurfsinhalt anzeigen'
     VIEW_DRAFT_CONTENT_HELP: 'Zugriff auf die Vorschau-Site auch ohne Zugriff auf das CMS. Sinnvoll für externe Mitarbeiter ohne CMS-Zugang.'
     Viewers: 'Betrachter Gruppen'
@@ -376,6 +395,7 @@ de:
     many_many_ImageTracking: Bild-Verfolgung
     many_many_LinkTracking: Link-Verfolgung
   SiteTreeURLSegmentField:
+    EMPTY: 'Please enter a URL Segment or click cancel'
     HelpChars: 'Sonderzeichen werden automatisch umgewandelt oder entfernt.'
   StaticExporter:
     BASEURL: 'Ausgangs URL'
@@ -397,14 +417,20 @@ de:
     VIEWPREVIOUS: Vorheriger
   TreeTools:
     DisplayLabel: 'Anzeigen:'
+  URLSegmentField:
+    Cancel: Cancel
+    Edit: Edit
+    OK: OK
   ViewArchivedEmail.ss:
     CANACCESS: 'Sie können unter folgendem Verweis auf die archivierte Seite zugreifen:'
     HAVEASKED: 'Sie haben darum gebeten, den Inhalt unserer Site zu sehen, am'
   VirtualPage:
-    CHOOSE: 'Wählen Sie eine Seite, auf die Sie verweisen möchten'
+    CHOOSE: 'Linked Page'
     DESCRIPTION: 'Zeigt den Inhalt einer anderen Seite'
-    EDITCONTENT: 'Klicken Sie hier, um den Inhalt zu bearbeiten'
+    EDITCONTENT: 'Edit content on linked page'
+    EditLink: edit
     HEADER: 'Dies ist eine virtuelle Seite'
+    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
     PLURALNAME: 'Virtuelle Seiten'
     PageTypNotAllowedOnRoot: 'Der ursprüngliche Seitentyp "{type}" ist nicht zulässig für diese virtuelle Seite. '
     SINGULARNAME: 'Virtuelle Seite'

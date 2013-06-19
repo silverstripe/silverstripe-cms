@@ -76,12 +76,15 @@ sv:
     ACCESS_HELP: 'Tillåt visning av sektionen innehållande sidträdet och dess innehåll. Rättigheter att visa och redigera sidan kan hanteras i dess rullgardinsmenyer, liksom i "Innehållsbehörigheter".'
     AddNew: 'Skapa ny sida'
     AddNewButton: 'Skapa ny'
+    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
     ChoosePageParentMode: 'Välj var du vill skapa denna sida'
     ChoosePageType: 'Välj sidtyp'
     Create: Skapa
     DELETE: 'Radera utkast'
     DELETEFP: Radera
     DESCREMOVED: 'och {count} ättlingar'
+    DUPLICATED: 'Duplicated ''{title}'' successfully'
+    DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: E-post
     EditTree: 'Redigera trädet'
     ListFiltered: 'Filtrerad lista'
@@ -96,16 +99,16 @@ sv:
     PUBALLFUN2: 'Ett klick på den här knappen är samma sak som att gå till varje sida och klicka på "Publicera". Tanken är att den ska användas efter stora uppdateringar av innehållet på sidan, som när den skapas.'
     PUBPAGES: 'Klar: Publicerade {count} sidor'
     PageAdded: 'Lyckades skapa sida'
-    REMOVED: 'Raderade ''%s''%s från den publicerade sajten'
+    REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: 'Tog bort ''{title}'' från den publicerade sajten'
     REMOVEDPAGEFROMDRAFT: 'Raderade ''%s'' från utkast'
-    RESTORE: Återskapa
+    RESTORE: 'Återskapa'
     RESTORED: 'Återskapandet av  ''{title}'' lyckades'
     ROLLBACK: 'Återställ den här versionen'
-    ROLLEDBACKPUB: 'Återskapade publicerad version. Nytt versionsnummer är #{version}'
-    ROLLEDBACKVERSION: 'Återskapade version #%d. Nytt versionsnummer är #%d'
+    ROLLEDBACKPUBv2: 'Rolled back to published version.'
+    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
     SAVE: Spara
-    SAVEDRAFT: 'Spara utkast'
+    SAVEDRAFT: 'Save draft'
     TabContent: Innehåll
     TabHistory: Historia
     TabSettings: Inställningar
@@ -129,6 +132,7 @@ sv:
     SHOWUNPUBLISHED: 'Visa opublicerade versioner'
     SHOWVERSION: 'Visa version'
     VIEW: 'Titta på'
+    VIEWINGLATEST: 'Nu visas den senaste versionen.'
     VIEWINGVERSION: 'Nu visas version {version}.'
   CMSPageHistoryController_versions.ss:
     AUTHOR: Författare
@@ -167,6 +171,7 @@ sv:
     ARCHIVEDSITE: 'Utkast version'
     ARCHIVEDSITEFROM: 'Arkiverad sajt från'
     CMS: CMS
+    DRAFT: Draft
     DRAFTSITE: Utkast
     DRAFT_SITE_ACCESS_RESTRICTION: 'Du måste logga med ditt CMS-lösenord för att kunna se utkast och arkiverat material. <a href="%s">Klicka här för att gå tillbaks till den publicerade sajten.</a>'
     Email: E-post
@@ -178,10 +183,11 @@ sv:
     LOGIN: 'Logga in'
     LOGOUT: 'Logga ut'
     NOTLOGGEDIN: 'Inte inloggad'
+    PUBLISHED: Published
     PUBLISHEDSITE: 'Publicerad sajt'
     Password: Lösenord
     PostInstallTutorialIntro: 'Denna webbplats är en enklare version av en Silverstripe 3 hemsida. För att bygga ut, ta en titt på {link}.'
-    StartEditing: 'Du kan ändra din sajts innehåll genom <a href="{link}">publiceringsverktyget</a>.'
+    StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Lyckades inte radera installationsfilerna. Radera följande filer manuellt.'
     VIEWPAGEIN: 'titta på sidan i:'
   ErrorPage:
@@ -251,6 +257,10 @@ sv:
     ReportTitle: Titel
   ReportAdminForm:
     FILTERBY: 'Filtrera på'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
+    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
+    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
   SearchForm:
     GO: Kör
     SEARCH: Sök
@@ -267,6 +277,8 @@ sv:
     OtherGroupTitle: Annat
     ParameterLiveCheckbox: 'Kontrollera live sajt'
     REPEMPTY: 'Raporten {title} är tom.'
+  SilverStripeNavigator:
+    ARCHIVED: Archived
   SilverStripeNavigatorLink:
     ShareInstructions: 'Kopiera och klistra in länken nedan för att dela den här sidan.'
     ShareLink: 'Dela länk'
@@ -299,7 +311,9 @@ sv:
     APPEARSVIRTUALPAGES: 'Detta innehåll förekommer även på en virtuell sida i sektionen {title}.'
     BUTTONCANCELDRAFT: 'Ångra utkaständringar'
     BUTTONCANCELDRAFTDESC: 'Radera utkast och återgå till den publicerade sidan'
-    BUTTONSAVEPUBLISH: 'Spara och publicera'
+    BUTTONPUBLISHED: Published
+    BUTTONSAVED: Saved
+    BUTTONSAVEPUBLISH: 'Save & publish'
     BUTTONUNPUBLISH: Avpublicera
     BUTTONUNPUBLISHDESC: 'Ta bort den här sidan från den publicerade sajten'
     CREATED: Skapad
@@ -324,9 +338,12 @@ sv:
     EDIT_ALL_DESCRIPTION: 'Redigera alla sidor'
     EDIT_ALL_HELP: 'Möjlighet att redigera alla sidor på sajten, oavsett inställningarna under Åtkomstfliken. Kräver "Tillgång till ''Sidor''-delen"'
     Editors: Redaktörsgrupper
+    GroupPlaceholder: 'Click to select group'
     HASBROKENLINKS: 'Den här sidan har trasiga länkar.'
     HTMLEDITORTITLE: Innehåll
     INHERIT: 'Ärv från överordnad sida'
+    LASTPUBLISHED: 'Last published'
+    LASTSAVED: 'Last saved'
     LASTUPDATED: 'Senast uppdaterad'
     LINKCHANGENOTE: 'Om du ändrar sidans länkadress så kommer det också påverka länkarna på underliggande sidor'
     MENUTITLE: Navigationsetikett
@@ -337,7 +354,9 @@ sv:
     MODIFIEDONDRAFTHELP: 'Sidan har ej publicerade ändringar'
     MODIFIEDONDRAFTSHORT: Ändrad
     MetadataToggle: Metadata
-    OBSOLETECLASS: 'Denna sida är föråldrad typ {type}. Att spara kommer återställa dess typ och du kan förlora data'
+    MoreOptions: 'More options'
+    NOTPUBLISHED: 'Not published'
+    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
     PAGELOCATION: 'Sidans position'
     PAGETITLE: Sidnamn
     PAGETYPE: Sidtyp
@@ -364,18 +383,19 @@ sv:
     TOPLEVEL: 'Sajtinnehåll (toppnivå)'
     TOPLEVELCREATORGROUPS: 'Topp-nivå skapare'
     URLSegment: URL-segment
-    VIEWERGROUPS: Åtkomstgrupper
+    VIEWERGROUPS: 'Åtkomstgrupper'
     VIEW_ALL_DESCRIPTION: 'Visa alla sidor'
-    VIEW_ALL_HELP: 'Möjlighet att se alla sidor på sajten, oavsett inställningarna under Åtkomstfliken. Kräver "Tillgång till webbplatsinnehåll"'
+    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: 'Se utkast'
     VIEW_DRAFT_CONTENT_HELP: 'Gäller sidor visade i utkastläge utanför CMS:et. Användbart för medarbetare utan CMS-åtkomst.'
-    Viewers: Åskådargrupper
+    Viewers: 'Åskådargrupper'
     Visibility: Synlighet
     has_one_Parent: 'Överordnad sida'
     many_many_BackLinkTracking: 'Spåra inlänkar'
     many_many_ImageTracking: 'Spåra bild'
     many_many_LinkTracking: 'Spåra länk'
   SiteTreeURLSegmentField:
+    EMPTY: 'Please enter a URL Segment or click cancel'
     HelpChars: 'Specialtecken konverteras eller tas bort'
   StaticExporter:
     BASEURL: Bas-URL
@@ -397,14 +417,20 @@ sv:
     VIEWPREVIOUS: 'Visa föregående'
   TreeTools:
     DisplayLabel: 'Visa:'
+  URLSegmentField:
+    Cancel: Avbryt
+    Edit: Redigera
+    OK: OK
   ViewArchivedEmail.ss:
     CANACCESS: 'Du kan komma åt den arkiverade sajten med denna länk:'
     HAVEASKED: 'Du har efterfrågat att se innehållet på vår sajt på'
   VirtualPage:
-    CHOOSE: 'Välj en sida att länka till'
+    CHOOSE: 'Länkad sida'
     DESCRIPTION: 'Visar innehåll från en annan sida'
-    EDITCONTENT: 'klicka här för att redigera innehållet'
+    EDITCONTENT: 'Redigera innehåll på länkad sida'
+    EditLink: redigera
     HEADER: 'Det här är en virutell sida'
+    HEADERWITHLINK: 'Detta är en virtuell sida med kopierat innehåll från "{title}" ({link})'
     PLURALNAME: 'Virtuella sidor'
     PageTypNotAllowedOnRoot: 'Ursprungliga sidan av typ "{type}" tillåts inte på rotnivå för denna virtuella sida'
     SINGULARNAME: 'Virtuell sida'
