@@ -18,7 +18,8 @@ class ErrorPageTest extends FunctionalTest {
 		$this->tmpAssetsPath = sprintf('%s/_tmp_assets_%s', TEMP_FOLDER, rand());
 		Filesystem::makeFolder($this->tmpAssetsPath . '/ErrorPageTest');
 		ErrorPage::config()->static_filepath = $this->tmpAssetsPath . '/ErrorPageTest';
-		
+
+		$this->origEnvType = 		Config::inst()->get('Director', 'environment_type');
 		Config::inst()->update('Director', 'environment_type', 'live');
 	}
 	
@@ -29,6 +30,8 @@ class ErrorPageTest extends FunctionalTest {
 		
 		Filesystem::removeFolder($this->tmpAssetsPath . '/ErrorPageTest');
 		Filesystem::removeFolder($this->tmpAssetsPath);
+
+		Config::inst()->update('Director', 'environment_type', $this->origEnvType);
 	}
 	
 	public function test404ErrorPage() {
