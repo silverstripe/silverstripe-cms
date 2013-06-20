@@ -28,6 +28,7 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 		'delete',
 		'AddForm',
 		'DeleteItemsForm',
+		'SearchForm',
 		'getsubtree',
 		'movemarked',
 		'removefile',
