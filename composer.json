@@ -49,6 +49,10 @@
 		{
 			"type": "vcs",
 			"url": "https://gitlab.cwp.govt.nz/silverstripe/silverstripe-versionedfiles.git"
+		},
+		{
+			"type": "vcs",
+			"url": "https://gitlab.cwp.govt.nz/silverstripe/documentconverter.git"
 		}
 	],
 	"minimum-stability": "dev"
