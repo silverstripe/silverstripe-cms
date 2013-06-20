@@ -22,7 +22,7 @@ class SiteTreeTest extends SapphireTest {
 	);
 	
 	public function testCreateDefaultpages() {
-			$remove = DataObject::get('SiteTree');
+			$remove = SiteTree::get();
 			if($remove) foreach($remove as $page) $page->delete();
 			// Make sure the table is empty
 			$this->assertEquals(DB::query('SELECT COUNT("ID") FROM "SiteTree"')->value(), 0);
@@ -104,9 +104,9 @@ class SiteTreeTest extends SapphireTest {
 	
 	public function testParentNodeCachedInMemory() {
 		$parent = new SiteTree();
-	     	$parent->Title = 'Section Title';
-	     	$child = new SiteTree();
-	     	$child->Title = 'Page Title';
+		$parent->Title = 'Section Title';
+		$child = new SiteTree();
+		$child->Title = 'Page Title';
 		$child->setParent($parent);
 		
 		$this->assertInstanceOf("SiteTree", $child->Parent);
@@ -136,14 +136,16 @@ class SiteTreeTest extends SapphireTest {
 		$oldMode = Versioned::get_reading_mode();
 		Versioned::reading_stage('Live');
 		
-		$checkSiteTree = DataObject::get_one("SiteTree", "\"SiteTree\".\"URLSegment\" = 'get-one-test-page'");
+		$checkSiteTree = DataObject::get_one("SiteTree", array(
+			'"SiteTree"."URLSegment"' => 'get-one-test-page'
+		));
 		$this->assertEquals("V1", $checkSiteTree->Title);
 	
 		Versioned::set_reading_mode($oldMode);
 	}
 	
 	public function testChidrenOfRootAreTopLevelPages() {
-		$pages = DataObject::get("SiteTree");
+		$pages = SiteTree::get();
 		foreach($pages as $page) $page->publish('Stage', 'Live');
 		unset($pages);
 		
@@ -426,7 +428,9 @@ class SiteTreeTest extends SapphireTest {
 	public function testReadArchiveDate() {
 		$date = '2009-07-02 14:05:07';
 		Versioned::reading_archived_date($date);
-		DataObject::get('SiteTree', "\"SiteTree\".\"ParentID\" = 0");
+		SiteTree::get()->where(array(
+			'"SiteTree"."ParentID"' => 0
+		));
 		Versioned::reading_archived_date(null);
 		$this->assertEquals(
 			Versioned::get_reading_mode(),
@@ -619,7 +623,9 @@ class SiteTreeTest extends SapphireTest {
 		
 		Director::set_current_page($aboutPage);
 		$this->assertTrue (
-			DataObject::get_one('SiteTree', '"Title" = \'About Us\'')->isCurrent(),
+			DataObject::get_one('SiteTree', array(
+				'"SiteTree"."Title"' => 'About Us'
+			))->isCurrent(),
 			'Assert that isCurrent works on another instance with the same ID.'
 		);
 		

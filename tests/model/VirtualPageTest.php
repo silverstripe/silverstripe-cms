@@ -314,7 +314,7 @@ class VirtualPageTest extends SapphireTest {
 		// Unpublish the source page, confirm that the virtual page has also been unpublished
 		$p->doUnpublish();
 
-        // The draft VP still has the CopyContentFromID link
+		// The draft VP still has the CopyContentFromID link
 		$vp->flushCache();
 		$vp = DataObject::get_by_id('SiteTree', $vp->ID);
 		$this->assertEquals($p->ID, $vp->CopyContentFromID);

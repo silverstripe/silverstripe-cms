@@ -101,7 +101,7 @@ abstract class CMSSiteTreeFilter extends Object {
 			}
 
 			while(!empty($parents)) {
-				$q = new SQLQuery();
+				$q = new SQLSelect();
 				$q->setSelect(array('"ID"','"ParentID"'))
 					->setFrom('"SiteTree"')
 					->setWhere('"ID" in ('.implode(',',array_keys($parents)).')');

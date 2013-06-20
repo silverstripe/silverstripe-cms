@@ -19,8 +19,8 @@ class ZZZSearchFormTest extends FunctionalTest {
 	protected $mockController;
 	
 	public function waitUntilIndexingFinished() {
-		$db = DB::getConn();
-		if (method_exists($db, 'waitUntilIndexingFinished')) DB::getConn()->waitUntilIndexingFinished();
+		$schema = DB::get_schema();
+		if (method_exists($schema, 'waitUntilIndexingFinished')) $schema->waitUntilIndexingFinished();
 	}
 	
 	public function setUpOnce() {
@@ -46,7 +46,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 	 * @return Boolean
 	 */
 	protected function checkFulltextSupport() {
-		$conn = DB::getConn();
+		$conn = DB::get_conn();
 		if(class_exists('MSSQLDatabase') && $conn instanceof MSSQLDatabase) {
 			$supports = $conn->fullTextEnabled();
 		} else {
@@ -231,7 +231,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 	public function testSearchTitleAndContentWithSpecialCharacters() {
 		if(!$this->checkFulltextSupport()) return;
 
-		if(class_exists('PostgreSQLDatabase') && DB::getConn() instanceof PostgreSQLDatabase) {
+		if(class_exists('PostgreSQLDatabase') && DB::get_conn() instanceof PostgreSQLDatabase) {
 			$this->markTestSkipped("PostgreSQLDatabase doesn't support entity-encoded searches");
 		}
 

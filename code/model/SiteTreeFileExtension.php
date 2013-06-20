@@ -60,8 +60,8 @@ class SiteTreeFileExtension extends DataExtension {
 	 * Updates link tracking.
 	 */
 	public function onAfterDelete() {
-	    // We query the explicit ID list, because BackLinkTracking will get modified after the stage
-	    // site does its thing
+		// We query the explicit ID list, because BackLinkTracking will get modified after the stage
+		// site does its thing
 		$brokenPageIDs = $this->owner->BackLinkTracking()->column("ID");
 		if($brokenPageIDs) {
 			$origStage = Versioned::current_stage();
@@ -75,8 +75,8 @@ class SiteTreeFileExtension extends DataExtension {
 			Versioned::reading_stage('Live');
 			$liveBrokenPages = DataObject::get('SiteTree')->byIDs($brokenPageIDs);
 			foreach($liveBrokenPages as $brokenPage) {
-			    $brokenPage->write();
-		    }
+				$brokenPage->write();
+			}
 
 			Versioned::reading_stage($origStage);
 		}
