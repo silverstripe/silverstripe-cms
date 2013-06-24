@@ -431,6 +431,6 @@ eo:
     EditLink: edit
     HEADER: 'Ĉi tiu estas virtuala paĝo'
     HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
-    PLURALNAME: 'Virtual Pags'
+    PLURALNAME: 'Virtualaj Paĝoj'
     PageTypNotAllowedOnRoot: 'Origina paĝa tipo "{type}" ne estas permesita ĉe la root-nivelo por ĉi tiu virtuala paĝo.'
     SINGULARNAME: 'Virtuala paĝo'
