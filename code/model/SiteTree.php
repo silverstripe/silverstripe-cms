@@ -1599,20 +1599,20 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			}
 		}
 		
+		$votes = array_filter(
+			(array)$this->extend('augmentValidURLSegment'), 
+			function($v) {return !is_null($v);}
+		);
+		if($votes) {
+			return min($votes);
+		}
+
 		$existingPage = DataObject::get_one(
 			'SiteTree', 
 			"\"URLSegment\" = '$this->URLSegment' $IDFilter $parentFilter"
 		);
-		if ($existingPage) {
-			return false;
-		}
-
-		$votes = $this->extend('augmentValidURLSegment');
-		if($votes) {
-			return min($votes);
-		}
 		
-		return true;
+		return !($existingPage);
 	}
 	
 	/**
