@@ -4,8 +4,9 @@
  * @subpackage tests
  */
 class SiteTreeTest extends SapphireTest {
-	protected static $fixture_file = 'SiteTreeTest.yml';
 	
+	protected static $fixture_file = 'SiteTreeTest.yml';
+
 	protected $illegalExtensions = array(
 		'SiteTree' => array('SiteTreeSubsites')
 	);
@@ -700,6 +701,18 @@ class SiteTreeTest extends SapphireTest {
 		$this->assertTrue($sitetree->validURLSegment(), 'Valid URLSegment values are allowed');
 	}
 
+	public function testURLSegmentPrioritizesExtensionVotes() {
+		$sitetree = new SiteTree();
+		$sitetree->URLSegment = 'unique-segment';
+		$this->assertTrue($sitetree->validURLSegment());
+
+		SiteTree::add_extension('SiteTreeTest_Extension');
+		$sitetree = new SiteTree();
+		$sitetree->URLSegment = 'unique-segment';
+		$this->assertFalse($sitetree->validURLSegment());
+		SiteTree::remove_extension('SiteTreeTest_Extension');
+	}
+
 	public function testURLSegmentMultiByte() {
 		$origAllow = Config::inst()->get('URLSegmentFilter', 'default_allow_multibyte');
 		Config::inst()->update('URLSegmentFilter', 'default_allow_multibyte', true);
@@ -990,4 +1003,12 @@ class SiteTreeTest_StageStatusInherit extends SiteTree implements TestOnly {
 		$flags['inherited-class'] = "InheritedTitle";
 		return $flags;
 	}
+}
+
+class SiteTreeTest_Extension extends DataExtension implements TestOnly {
+
+	public function augmentValidURLSegment() {
+		return false;
+	}
+
 }
