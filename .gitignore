@@ -15,6 +15,7 @@ buildtools/
 cms/
 cwp/
 docsviewer/
+documentconverter/
 framework/
 fulltextsearch/
 html5/
@@ -36,4 +37,3 @@ userforms/
 vendor/
 versionedfiles/
 versionfeed/
-

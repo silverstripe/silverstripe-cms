@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "cabd97efc9c1a8e8e95ec3a98a458905",
+    "hash": "497c9060d4d514aebe7c96fc6c10a10b",
     "packages": [
         {
             "name": "composer/installers",
@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "04ae2b42384ed2f8d40263229530cabbaff3f930"
+                "reference": "v1.0.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/04ae2b42384ed2f8d40263229530cabbaff3f930",
-                "reference": "04ae2b42384ed2f8d40263229530cabbaff3f930",
+                "url": "https://api.github.com/repos/composer/installers/zipball/v1.0.4",
+                "reference": "v1.0.4",
                 "shasum": ""
             },
             "replace": {
@@ -67,6 +67,7 @@
                 "li3",
                 "lithium",
                 "mako",
+                "modulework",
                 "phpbb",
                 "ppi",
                 "silverstripe",
@@ -74,7 +75,7 @@
                 "wordpress",
                 "zend"
             ],
-            "time": "2013-05-30 16:23:29"
+            "time": "2013-06-20 02:36:19"
         },
         {
             "name": "cwp-themes/default",
@@ -106,7 +107,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp.git",
-                "reference": "c3e50236343483cd0dff660fd283318f72e2d72c"
+                "reference": "846cc0baa4a64851d014dfd6da825c3059d286f6"
             },
             "require": {
                 "composer/installers": "*",
@@ -121,7 +122,7 @@
                 }
             },
             "description": "CWP Main Extension Module",
-            "time": "2013-06-08 01:03:38"
+            "time": "2013-06-25 22:40:30"
         },
         {
             "name": "silverstripe-themes/module_bootstrap",
@@ -147,7 +148,7 @@
                     "dev-ssexpress": "0.1-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "description": "CSS toolkit by Twitter.",
             "time": "2013-05-23 03:54:45"
         },
@@ -190,12 +191,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-cms.git",
-                "reference": "e9fe4f7c68b76fac67b24e170e8afa344b0c892a"
+                "reference": "98750a9cf1491c8d32be28ae006cf7d611370612"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/e9fe4f7c68b76fac67b24e170e8afa344b0c892a",
-                "reference": "e9fe4f7c68b76fac67b24e170e8afa344b0c892a",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/98750a9cf1491c8d32be28ae006cf7d611370612",
+                "reference": "98750a9cf1491c8d32be28ae006cf7d611370612",
                 "shasum": ""
             },
             "require": {
@@ -229,7 +230,23 @@
                 "cms",
                 "silverstripe"
             ],
-            "time": "2013-06-07 09:42:02"
+            "time": "2013-06-25 09:18:08"
+        },
+        {
+            "name": "silverstripe/documentconverter",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.cwp.govt.nz/silverstripe/documentconverter.git",
+                "reference": "a479a2650b04fd02acd08e5aaa210f4349c796fc"
+            },
+            "require": {
+                "silverstripe/cms": ">=3.1",
+                "silverstripe/framework": ">=3.1"
+            },
+            "type": "silverstripe-module",
+            "description": "Imports OpenOffice-compatible files (doc, docx, etc) into SilverStripe pages and content.",
+            "time": "2013-06-01 01:16:27"
         },
         {
             "name": "silverstripe/framework",
@@ -237,12 +254,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-framework.git",
-                "reference": "31cfcdb08eda98609f4b4c9b215436e05ef0d158"
+                "reference": "83726b21a204bb18f4d5efe10e38858358766bd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/31cfcdb08eda98609f4b4c9b215436e05ef0d158",
-                "reference": "31cfcdb08eda98609f4b4c9b215436e05ef0d158",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/83726b21a204bb18f4d5efe10e38858358766bd7",
+                "reference": "83726b21a204bb18f4d5efe10e38858358766bd7",
                 "shasum": ""
             },
             "require": {
@@ -275,7 +292,7 @@
                 "framework",
                 "silverstripe"
             ],
-            "time": "2013-06-07 23:19:40"
+            "time": "2013-06-25 14:26:38"
         },
         {
             "name": "silverstripe/fulltextsearch",
@@ -300,7 +317,7 @@
                 "silverstripe/subsites": "*"
             },
             "type": "silverstripe-module",
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "authors": [
                 {
                     "name": "Hamish Friedlander",
@@ -334,7 +351,7 @@
                 "silverstripe/framework": "3.*"
             },
             "type": "silverstripe-module",
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -398,7 +415,7 @@
                 "silverstripe/framework": ">=3.0.0"
             },
             "type": "silverstripe-module",
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -464,7 +481,7 @@
                 "silverstripe/framework": "3.*"
             },
             "type": "silverstripe-module",
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -500,14 +517,14 @@
                 "silverstripe/framework": "3.*"
             },
             "type": "silverstripe-module",
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "authors": [
                 {
                     "name": "Hamish Friedlander",
                     "email": "hamish@silverstripe.com"
                 },
                 {
-                    "name": "Sam Minnee",
+                    "name": "Sam Minnée",
                     "email": "sam@silverstripe.com"
                 }
             ],
@@ -572,7 +589,7 @@
                 "silverstripe/framework": ">=3.1.x-dev,<4.0"
             },
             "type": "silverstripe-module",
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -785,12 +802,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "1.2.11"
+                "reference": "58e6aa238f270d67187d16a50e14503bd9d02bee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/1.2.11",
-                "reference": "1.2.11",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/58e6aa238f270d67187d16a50e14503bd9d02bee",
+                "reference": "58e6aa238f270d67187d16a50e14503bd9d02bee",
                 "shasum": ""
             },
             "require": {
@@ -800,13 +817,18 @@
                 "phpunit/php-token-stream": ">=1.1.3@stable"
             },
             "require-dev": {
-                "phpunit/phpunit": "3.7.*"
+                "phpunit/phpunit": "3.7.*@dev"
             },
             "suggest": {
                 "ext-dom": "*",
                 "ext-xdebug": ">=2.0.5"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
             "autoload": {
                 "classmap": [
                     "PHP/"
@@ -833,7 +855,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2013-05-23 18:23:24"
+            "time": "2013-06-24 11:56:39"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1093,22 +1115,31 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "8e9d897b39ca6310ccc2d81b8f29cabd5ce12786"
+                "reference": "977c5327c5f9e2a0f08728a59389ee604e5b2f47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/8e9d897b39ca6310ccc2d81b8f29cabd5ce12786",
-                "reference": "8e9d897b39ca6310ccc2d81b8f29cabd5ce12786",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/977c5327c5f9e2a0f08728a59389ee604e5b2f47",
+                "reference": "977c5327c5f9e2a0f08728a59389ee604e5b2f47",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
                 "phpunit/php-text-template": ">=1.1.1@stable"
             },
+            "require-dev": {
+                "pear-pear/pear": "1.9.4",
+                "phpunit/phpunit": "3.7.*@dev"
+            },
             "suggest": {
                 "ext-soap": "*"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
             "autoload": {
                 "classmap": [
                     "PHPUnit/"
@@ -1134,7 +1165,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2013-05-07 12:11:45"
+            "time": "2013-06-23 05:41:31"
         },
         {
             "name": "symfony/yaml",
