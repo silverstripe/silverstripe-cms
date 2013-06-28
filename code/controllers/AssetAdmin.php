@@ -396,7 +396,7 @@ JS
 	
 	public function AddForm() {
 		$folder = singleton('Folder');
-		$form = new Form(
+		$form = CMSForm::create( 
 			$this,
 			'AddForm',
 			new FieldList(
@@ -408,7 +408,8 @@ JS
 					->addExtraClass('ss-ui-action-constructive')->setAttribute('data-icon', 'accept')
 					->setTitle(_t('AssetAdmin.ActionAdd', 'Add folder'))
 			)
-		);
+		)->setHTMLID('Form_AddForm');
+		$form->setResponseNegotiator($this->getResponseNegotiator());
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 		// TODO Can't merge $FormAttributes in template at the moment
 		$form->addExtraClass('add-form cms-add-form cms-edit-form cms-panel-padded center ' . $this->BaseCSSClasses());

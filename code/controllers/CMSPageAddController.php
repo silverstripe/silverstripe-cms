@@ -106,7 +106,10 @@ class CMSPageAddController extends CMSPageEditController {
 		
 		$this->extend('updatePageOptions', $fields);
 		
-		$form = new Form($this, "AddForm", $fields, $actions);
+		$form = CMSForm::create( 
+			$this, "AddForm", $fields, $actions
+		)->setHTMLID('Form_AddForm');
+		$form->setResponseNegotiator($this->getResponseNegotiator());
 		$form->addExtraClass('cms-add-form stacked cms-content center cms-edit-form ' . $this->BaseCSSClasses());
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 
