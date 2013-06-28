@@ -663,7 +663,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				$validator = new RequiredFields();
 			}
 			
-			$form = new Form($this, "EditForm", $fields, $actions, $validator);
+			$form = CMSForm::create( 
+				$this, "EditForm", $fields, $actions, $validator
+			)->setHTMLID('Form_EditForm');
+			$form->setResponseNegotiator($this->getResponseNegotiator());
 			$form->loadDataFrom($record);
 			$form->disableDefaultAction();
 			$form->addExtraClass('cms-edit-form');
@@ -686,9 +689,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$this->extend('updateEditForm', $form);
 			return $form;
 		} else if($id) {
-			return new Form($this, "EditForm", new FieldList(
+			$form = CMSForm::create( $this, "EditForm", new FieldList(
 				new LabelField('PageDoesntExistLabel',_t('CMSMain.PAGENOTEXISTS',"This page doesn't exist"))), new FieldList()
-			);
+			)->setHTMLID('Form_EditForm');
+			$form->setResponseNegotiator($this->getResponseNegotiator());
+			return $form;
 		}
 	}
 
@@ -788,13 +793,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			}
 		));
 		
-		$listview = new Form(
+		$listview = CMSForm::create( 
 			$this,
 			'ListViewForm',
 			new FieldList($gridField),
 			new FieldList()
-		);
+		)->setHTMLID('Form_ListViewForm');
 		$listview->setAttribute('data-pjax-fragment', 'ListViewForm');
+		$listview->setResponseNegotiator($this->getResponseNegotiator());
 
 		$this->extend('updateListView', $listview);
 		

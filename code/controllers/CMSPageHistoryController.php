@@ -251,13 +251,13 @@ class CMSPageHistoryController extends CMSMain {
 		// Use <button> to allow full jQuery UI styling
 		foreach($actions->dataFields() as $action) $action->setUseButtonTag(true);
 
-		$form = new Form(
+		$form = CMSForm::create( 
 			$this,
 			'VersionsForm',
 			$fields,
 			$actions
-		);
-		
+		)->setHTMLID('Form_VersionsForm');
+		$form->setResponseNegotiator($this->getResponseNegotiator());
 		$form->loadDataFrom($this->request->requestVars());
 		$hiddenID->setValue($id);
 		$form->unsetValidator();

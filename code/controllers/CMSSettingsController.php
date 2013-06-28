@@ -37,7 +37,10 @@ class CMSSettingsController extends LeftAndMain {
 		$navField->setAllowHTML(true);
 
 		$actions = $siteConfig->getCMSActions();
-		$form = new Form($this, 'EditForm', $fields, $actions);
+		$form = CMSForm::create( 
+			$this, 'EditForm', $fields, $actions
+		)->setHTMLID('Form_EditForm');
+		$form->setResponseNegotiator($this->getResponseNegotiator());
 		$form->addExtraClass('root-form');
 		$form->addExtraClass('cms-edit-form cms-panel-padded center');
 		// don't add data-pjax-fragment=CurrentForm, its added in the content template instead
