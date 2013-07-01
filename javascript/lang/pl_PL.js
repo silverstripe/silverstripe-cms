@@ -19,7 +19,7 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'CMSMAIN.ERRORREVERTING': 'Błąd podczas powrotu do opublikowanej strony',
 		'CMSMAIN.SAVING' : 'Zapisywanie...',
 		'CMSMAIN.SELECTMOREPAGES' : "Zaznaczono %s stron.\n\nCzy na pewno chcesz wykonać tę akcje?",
-		'CMSMAIN.ALERTCLASSNAME': 'Ta strona zostanie zaktualizowana po jej zapisani'ur,
+		'CMSMAIN.ALERTCLASSNAME': 'Ta strona zostanie zaktualizowana po jej zapisaniu',
 		'CMSMAIN.URLSEGMENTVALIDATION': 'Adres URL może składać się tylko z liter, cyfr i łączników.',
 		'AssetAdmin.BATCHACTIONSDELETECONFIRM': "Czy na pewno usunąć %s folderów?",
 		'AssetTableField.REALLYDELETE': 'Czy na pewno usunąć zaznaczone pliki??',
