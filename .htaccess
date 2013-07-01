@@ -12,7 +12,7 @@
 
 # This denies access to all yml files, since developers might include sensitive
 # information in them. See the docs for work-arounds to serve some yaml files
-<Files *.yml>
+<Files ~ "\.ya?ml$">
 	Order allow,deny
 	Deny from all
 </Files>
