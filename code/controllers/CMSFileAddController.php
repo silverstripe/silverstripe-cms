@@ -78,13 +78,13 @@ class CMSFileAddController extends LeftAndMain {
 
 		$form = CMSForm::create( 
 			$this,
-			'getEditForm',
+			'EditForm',
 			new FieldList(
 				$uploadField,				
 				new HiddenField('ID')
 			),
 			new FieldList()
-		)->setHTMLID('Form_getEditForm');
+		)->setHTMLID('Form_EditForm');
 		$form->setResponseNegotiator($this->getResponseNegotiator());
 		$form->addExtraClass('center cms-edit-form ' . $this->BaseCSSClasses());
 		// Don't use AssetAdmin_EditForm, as it assumes a different panel structure
