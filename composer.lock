@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "v1.0.4"
+                "reference": "34bd8e879adc82fac26eb2c7551a03e04f9b7e3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/v1.0.4",
-                "reference": "v1.0.4",
+                "url": "https://api.github.com/repos/composer/installers/zipball/34bd8e879adc82fac26eb2c7551a03e04f9b7e3a",
+                "reference": "34bd8e879adc82fac26eb2c7551a03e04f9b7e3a",
                 "shasum": ""
             },
             "replace": {
@@ -75,7 +75,7 @@
                 "wordpress",
                 "zend"
             ],
-            "time": "2013-06-20 02:36:19"
+            "time": "2013-06-29 16:45:39"
         },
         {
             "name": "cwp-themes/default",
@@ -83,7 +83,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp-themes/default.git",
-                "reference": "8659bb82772f340784a4a4268df9feacb400b148"
+                "reference": "323bbf17efd8fa914fe7163cfd6f414c5fff15dc"
             },
             "require": {
                 "composer/installers": "*",
@@ -99,7 +99,7 @@
                 }
             },
             "description": "CWP Default Theme",
-            "time": "2013-06-04 21:28:10"
+            "time": "2013-07-03 06:12:35"
         },
         {
             "name": "cwp/cwp",
@@ -107,7 +107,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp.git",
-                "reference": "846cc0baa4a64851d014dfd6da825c3059d286f6"
+                "reference": "25844060b80ec4588b15516df49a4ee9341e8f51"
             },
             "require": {
                 "composer/installers": "*",
@@ -122,7 +122,7 @@
                 }
             },
             "description": "CWP Main Extension Module",
-            "time": "2013-06-25 22:40:30"
+            "time": "2013-07-05 01:54:13"
         },
         {
             "name": "silverstripe-themes/module_bootstrap",
@@ -191,12 +191,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-cms.git",
-                "reference": "98750a9cf1491c8d32be28ae006cf7d611370612"
+                "reference": "f7031b799b699681b9dd4ca578ac31e3624d8ff6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/98750a9cf1491c8d32be28ae006cf7d611370612",
-                "reference": "98750a9cf1491c8d32be28ae006cf7d611370612",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/f7031b799b699681b9dd4ca578ac31e3624d8ff6",
+                "reference": "f7031b799b699681b9dd4ca578ac31e3624d8ff6",
                 "shasum": ""
             },
             "require": {
@@ -230,7 +230,7 @@
                 "cms",
                 "silverstripe"
             ],
-            "time": "2013-06-25 09:18:08"
+            "time": "2013-07-05 01:30:05"
         },
         {
             "name": "silverstripe/documentconverter",
@@ -254,12 +254,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-framework.git",
-                "reference": "83726b21a204bb18f4d5efe10e38858358766bd7"
+                "reference": "ff45f7ce4d1b0176c303d8a6c8d3ef9e18570c90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/83726b21a204bb18f4d5efe10e38858358766bd7",
-                "reference": "83726b21a204bb18f4d5efe10e38858358766bd7",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/ff45f7ce4d1b0176c303d8a6c8d3ef9e18570c90",
+                "reference": "ff45f7ce4d1b0176c303d8a6c8d3ef9e18570c90",
                 "shasum": ""
             },
             "require": {
@@ -292,7 +292,7 @@
                 "framework",
                 "silverstripe"
             ],
-            "time": "2013-06-25 14:26:38"
+            "time": "2013-07-04 23:45:34"
         },
         {
             "name": "silverstripe/fulltextsearch",
@@ -505,26 +505,26 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-restfulserver.git",
-                "reference": "f8384e6209d1e835d7df6e218b818c36cb546988"
+                "reference": "d9fc61544102c88e69ceb95bec88f1332b57872d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-restfulserver/zipball/f8384e6209d1e835d7df6e218b818c36cb546988",
-                "reference": "f8384e6209d1e835d7df6e218b818c36cb546988",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-restfulserver/zipball/d9fc61544102c88e69ceb95bec88f1332b57872d",
+                "reference": "d9fc61544102c88e69ceb95bec88f1332b57872d",
                 "shasum": ""
             },
             "require": {
                 "silverstripe/framework": "3.*"
             },
             "type": "silverstripe-module",
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "authors": [
                 {
                     "name": "Hamish Friedlander",
                     "email": "hamish@silverstripe.com"
                 },
                 {
-                    "name": "Sam Minnée",
+                    "name": "Sam Minnee",
                     "email": "sam@silverstripe.com"
                 }
             ],
@@ -534,7 +534,7 @@
                 "rest",
                 "silverstripe"
             ],
-            "time": "2013-05-07 22:28:49"
+            "time": "2013-07-04 22:26:27"
         },
         {
             "name": "silverstripe/subsites",
@@ -611,12 +611,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-translatable.git",
-                "reference": "51cd0146df3934b0fb27563be4a05c0a1ad538b6"
+                "reference": "5109f80ed98daf0417ce913f0ff6467f1f054259"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-translatable/zipball/51cd0146df3934b0fb27563be4a05c0a1ad538b6",
-                "reference": "51cd0146df3934b0fb27563be4a05c0a1ad538b6",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-translatable/zipball/5109f80ed98daf0417ce913f0ff6467f1f054259",
+                "reference": "5109f80ed98daf0417ce913f0ff6467f1f054259",
                 "shasum": ""
             },
             "require": {
@@ -654,7 +654,7 @@
                 "localization",
                 "silverstripe"
             ],
-            "time": "2013-06-03 10:06:29"
+            "time": "2013-06-28 08:18:34"
         },
         {
             "name": "silverstripe/userforms",
@@ -802,12 +802,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "58e6aa238f270d67187d16a50e14503bd9d02bee"
+                "reference": "56ad5a88f7503b9ecee4e1799cd7c48e31ada517"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/58e6aa238f270d67187d16a50e14503bd9d02bee",
-                "reference": "58e6aa238f270d67187d16a50e14503bd9d02bee",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/56ad5a88f7503b9ecee4e1799cd7c48e31ada517",
+                "reference": "56ad5a88f7503b9ecee4e1799cd7c48e31ada517",
                 "shasum": ""
             },
             "require": {
@@ -855,7 +855,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2013-06-24 11:56:39"
+            "time": "2013-06-27 08:20:15"
         },
         {
             "name": "phpunit/php-file-iterator",
