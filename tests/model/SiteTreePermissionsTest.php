@@ -126,7 +126,16 @@ class SiteTreePermissionsTest extends FunctionalTest {
 	}
 
 	public function testCanViewStage() {
+		$this->useDraftSite(false); // useDraftSite deliberately disables checking the stage as part of canView
+
+		// Get page & make sure it exists on Live
 		$page = $this->objFromFixture('Page', 'standardpage');
+		$page->publish('Stage', 'Live');
+
+		// Then make sure there's a new version on Stage
+		$page->Title = 1;
+		$page->write();
+
 		$editor = $this->objFromFixture('Member', 'editor');
 		$websiteuser = $this->objFromFixture('Member', 'websiteuser');
 		
@@ -135,6 +144,8 @@ class SiteTreePermissionsTest extends FunctionalTest {
 		
 		$this->assertTrue($page->canViewStage('Live', $editor));
 		$this->assertTrue($page->canViewStage('Stage', $editor));
+
+		$this->useDraftSite();
 	}
 	
 	public function testAccessTabOnlyDisplaysWithGrantAccessPermissions() {
