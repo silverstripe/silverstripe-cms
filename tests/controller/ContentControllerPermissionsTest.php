@@ -10,11 +10,16 @@ class ContentControllerPermissionsTest extends FunctionalTest {
 	protected $autoFollowRedirection = false;
 	
 	public function testCanViewStage() {
+		// Create a new page
 		$page = new Page();
 		$page->URLSegment = 'testpage';
 		$page->write();
 		$page->publish('Stage', 'Live');
-		
+
+		// Add a stage-only version
+		$page->Content = "Version2";
+		$page->write();
+
 		$response = $this->get('/testpage');
 		$this->assertEquals($response->getStatusCode(), 200, 'Doesnt require login for implicit live stage');
 		

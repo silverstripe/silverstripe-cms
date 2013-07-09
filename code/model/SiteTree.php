@@ -830,6 +830,23 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		// admin override
 		if($member && Permission::checkMember($member, array("ADMIN", "SITETREE_VIEW_ALL"))) return true;
 
+		// make sure we were loaded off an allowed stage
+
+		// Were we definitely loaded directly off Live during our query?
+		$fromLive = true;
+
+		foreach (array('mode' => 'stage', 'stage' => 'live') as $param => $match) {
+			$fromLive = $fromLive && strtolower((string)$this->getSourceQueryParam("Versioned.$param")) == $match;
+		}
+
+		if(!$fromLive
+		   && !Session::get('unsecuredDraftSite')
+		   && !Permission::checkMember($member, array('CMS_ACCESS_CMSMain', 'VIEW_DRAFT_CONTENT'))) {
+			// If we weren't definitely loaded from live, and we can't view non-live content, we need to
+			// check to make sure this version is the live version and so can be viewed
+			if (Versioned::get_versionnumber_by_stage($this->class, 'Live', $this->ID) != $this->Version) return false;
+		}
+
 		// Standard mechanism for accepting permission changes from extensions
 		$extended = $this->extendedCan('canView', $member);
 		if($extended !== null) return $extended;
@@ -858,27 +875,25 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		
 		return false;
 	}
-	
+
 	/**
-	 * Determines permissions for a specific stage (see {@link Versioned}).
+	 * Determines canView permissions for the latest version of this Page on a specific stage (see {@link Versioned}).
 	 * Usually the stage is read from {@link Versioned::current_stage()}.
-	 * Falls back to {@link canView}.
-	 * 
+	 *
 	 * @todo Implement in CMS UI.
 	 * 
 	 * @param String $stage
 	 * @param Member $member
 	 * @return boolean
 	 */
-	public function canViewStage($stage, $member = null) {
-		if(!$member) $member = Member::currentUser();
+	public function canViewStage($stage = 'Live', $member = null) {
+		$oldMode = Versioned::get_reading_mode();
+		Versioned::reading_stage($stage);
 
-		if(
-			strtolower($stage) == 'stage' && 
-			!(Permission::checkMember($member, 'CMS_ACCESS_CMSMain') || Permission::checkMember($member, 'VIEW_DRAFT_CONTENT'))
-		) return false;
-		
-		return $this->canView($member);
+		$versionFromStage = DataObject::get($this->class)->byID($this->ID);
+
+		Versioned::set_reading_mode($oldMode);
+		return $versionFromStage ? $versionFromStage->canView($member) : false;
 	}
 
 	/**
@@ -1599,20 +1614,20 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			}
 		}
 		
+		$votes = array_filter(
+			(array)$this->extend('augmentValidURLSegment'), 
+			function($v) {return !is_null($v);}
+		);
+		if($votes) {
+			return min($votes);
+		}
+
 		$existingPage = DataObject::get_one(
 			'SiteTree', 
 			"\"URLSegment\" = '$this->URLSegment' $IDFilter $parentFilter"
 		);
-		if ($existingPage) {
-			return false;
-		}
-
-		$votes = $this->extend('augmentValidURLSegment');
-		if($votes) {
-			return min($votes);
-		}
 		
-		return true;
+		return !($existingPage);
 	}
 	
 	/**
