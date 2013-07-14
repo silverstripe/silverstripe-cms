@@ -16,9 +16,6 @@ matrix:
       env: DB=MYSQL CORE_RELEASE=3.1
     - php: 5.5
       env: DB=MYSQL CORE_RELEASE=3.1
-  allow_failures:
-    - php: 5.5
-      env: DB=MYSQL CORE_RELEASE=3.1
 
 before_script:
  - git clone git://github.com/silverstripe-labs/silverstripe-travis-support.git ~/travis-support

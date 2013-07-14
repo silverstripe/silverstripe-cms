@@ -24,7 +24,8 @@ class ContentController extends Controller {
 
 	private static $allowed_actions = array(
 		'successfullyinstalled',
-		'deleteinstallfiles' // secured through custom code
+		'deleteinstallfiles', // secured through custom code
+		'LoginForm'
 	);
 	
 	/**
