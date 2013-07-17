@@ -7,7 +7,7 @@
 </div>
 
 <div class="cms-panel-content center">
-	<% if TreeIsFiltered %>
+	<% if $TreeIsFiltered %>
 	<div class="cms-tree-filtered cms-notice">
 		<strong><% _t('CMSMain.ListFiltered', 'Filtered list.') %></strong>
 		<a href="$LinkPages" class="cms-panel-link">
