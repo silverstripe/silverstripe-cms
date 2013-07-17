@@ -11,7 +11,7 @@
 	<% with $Form.Controller %>
 		<h1 style="margin-bottom: 0">$CurrentReport.Title</h1>
 		<% with $CurrentReport.getCmsFields %>
-			<% if Name == Filters %>
+			<% if $Name == Filters %>
 				<h2 style="margin-bottom: 0; margin-top: 0;">Filters</h2>
 				<ul style="margin-top: 0">
 				<% loop $FieldSet %>
