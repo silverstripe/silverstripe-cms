@@ -10,7 +10,7 @@
 $ExtraTreeTools
 
 <div class="center">
-	<% if TreeIsFiltered %>
+	<% if $TreeIsFiltered %>
 	<div class="cms-tree-filtered cms-notice">
 		<strong><% _t('CMSMain.TreeFiltered', 'Filtered tree.') %></strong>
 		<a href="$LinkPages" class="cms-panel-link">
