@@ -7,12 +7,12 @@
 	</button>
 </div>
 <div class="edit-holder">
-	<input $AttributesHTML />	
+	<input $AttributesHTML />
 	<button class="update ss-ui-button-small">
 		<% _t('URLSegmentField.OK', 'OK') %>
 	</button>
 	<button class="cancel ss-ui-button-small ss-ui-action-minor">
 		<% _t('URLSegmentField.Cancel', 'Cancel') %>
 	</button>
-	<% if HelpText %><p class="help">$HelpText</p><% end_if %>
+	<% if $HelpText %><p class="help">$HelpText</p><% end_if %>
 </div>
