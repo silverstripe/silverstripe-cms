@@ -2,7 +2,7 @@
 	<%t ContentController.InstallSuccessCongratulations "SilverStripe has been successfully installed!" %>
 </p>
 
-<% if Project == 'tutorial' %>
+<% if $Project == 'tutorial' %>
 	<%t ContentController.PostInstallTutorialIntro 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.' link='<a href="http://doc.silverstripe.org/framework/en/tutorials">our tutorials</a>' %>
 <% end_if %>
 
@@ -10,7 +10,7 @@
 	<strong>&nbsp; &nbsp; <%t ContentController.Password "Password" %>: $Password</strong></p>
 
 <p>
-	<%t ContentController.StartEditing 'You can start editing your content by opening <a href="{link}">the CMS</a>.' link="admin/" %> 
+	<%t ContentController.StartEditing 'You can start editing your content by opening <a href="{link}">the CMS</a>.' link="admin/" %>
 </p>
 
 <div style="background:#fcf8f2; border-radius:4px; border: 1px solid #ffc28b; padding:5px; margin:5px;">

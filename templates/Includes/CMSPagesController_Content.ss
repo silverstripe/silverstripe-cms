@@ -1,10 +1,10 @@
 <div id="pages-controller-cms-content" class="cms-content center cms-tabset $BaseCSSClasses" data-layout-type="border" data-pjax-fragment="Content">
 
 	<div class="cms-content-header north">
-		<div class="cms-content-header-info">			
-			<% include CMSBreadcrumbs %>			
+		<div class="cms-content-header-info">
+			<% include CMSBreadcrumbs %>
 		</div>
-	
+
 		<div class="cms-content-header-tabs">
 			<ul class="cms-tabset-nav-primary">
 				<li class="content-treeview<% if ViewState == tree %> ui-tabs-active ss-tabs-force-active<% end_if %> cms-tabset-icon tree">
@@ -25,11 +25,11 @@
 	$Tools
 
 	<div class="cms-content-fields center ui-widget-content cms-panel-padded">
-		
+
 		<div class="cms-content-view cms-panel-deferred" id="cms-content-treeview" data-url="$LinkTreeView">
 			<%-- Lazy-loaded via ajax --%>
 		</div>
-	
+
 		<div class="cms-content-view cms-panel-deferred" id="cms-content-listview" data-url="$LinkListView" data-deferred-no-cache="true">
 			<%-- Lazy-loaded via ajax --%>
 		</div>
@@ -38,7 +38,7 @@
 			<i>Not implemented yet</i>
 		</div>
 		-->
-		
+
 	</div>
-	
+
 </div>
