@@ -7,6 +7,7 @@
  * @subpackage control
  */
 class ModelAsController extends Controller implements NestedController {
+	private static $extensions = array('OldPageRedirector');
 	
 	/**
 	 * Get the appropriate {@link ContentController} for handling a {@link SiteTree} object, link it to the object and
@@ -108,31 +109,6 @@ class ModelAsController extends Controller implements NestedController {
 		if(class_exists('Translatable')) Translatable::enable_locale_filter();
 		
 		if(!$sitetree) {
-			// If a root page has been renamed, redirect to the new location.
-			// See ContentController->handleRequest() for similiar logic.
-			$redirect = self::find_old_page($URLSegment);
-			if($redirect) {
-				$params = $request->getVars();
-				if(isset($params['url'])) unset($params['url']);
-				$this->response = new SS_HTTPResponse();
-				$this->response->redirect(
-					Controller::join_links(
-						$redirect->Link(
-							Controller::join_links(
-								$request->param('Action'), 
-								$request->param('ID'), 
-								$request->param('OtherID')
-							)
-						),
-						// Needs to be in separate join links to avoid urlencoding
-						($params) ? '?' . http_build_query($params) : null
-					),
-					301
-				);
-				
-				return $this->response;
-			}
-			
 			$response = ErrorPage::response_for(404);
 			$this->httpError(404, $response ? $response : 'The requested page could not be found.');
 		}
@@ -146,47 +122,20 @@ class ModelAsController extends Controller implements NestedController {
 		
 		return self::controller_for($sitetree, $this->request->param('Action'));
 	}
-	
+
 	/**
+	 * @deprecated 3.2 Use OldPageRedirector::find_old_page instead
+	 *
 	 * @param string $URLSegment A subset of the url. i.e in /home/contact/ home and contact are URLSegment.
-	 * @param int $parentID The ID of the parent of the page the URLSegment belongs to. 
+	 * @param int $parentID The ID of the parent of the page the URLSegment belongs to.
 	 * @return SiteTree
 	 */
-	static public function find_old_page($URLSegment,$parentID = 0, $ignoreNestedURLs = false) {
-		
-		$useParentIDFilter = SiteTree::config()->nested_urls && $parentID;
-				
-		// First look for a non-nested page that has a unique URLSegment and can be redirected to.
-		if(SiteTree::config()->nested_urls) {
-			$pages = SiteTree::get()->filter("URLSegment", rawurlencode($URLSegment));
-			if($useParentIDFilter) {
-				$pages = $pages->filter("ParentID", (int)$parentID);
-			}
-
-			if($pages && $pages->Count() == 1 && ($page = $pages->First())) {
-				$parent = $page->ParentID ? $page->Parent() : $page;
-				if($parent->isPublished()) return $page;
-			}
+	static public function find_old_page($URLSegment, $parent = null, $ignoreNestedURLs = false) {
+		Deprecation::notice('3.2', 'Use OldPageRedirector::find_old_page instead');
+		if ($parent) {
+			$parent = SiteTree::get()->byId($parent);	
 		}
-		
-		// Get an old version of a page that has been renamed.
-		$URLSegmentSQL = Convert::raw2sql(rawurlencode($URLSegment));
-		$query = new SQLQuery (
-			'"RecordID"',
-			'"SiteTree_versions"',
-			"\"URLSegment\" = '$URLSegmentSQL' AND \"WasPublished\" = 1" . ($useParentIDFilter ? ' AND "ParentID" = ' . (int)$parentID : ''),
-			'"LastEdited" DESC',
-			null,
-			null,
-			1
-		);
-		$record = $query->execute()->first();
-		
-		if($record && ($oldPage = DataObject::get_by_id('SiteTree', $record['RecordID']))) {
-			$oldParent = $oldPage->ParentID ? $oldPage->Parent() : $oldPage;
-			// Run the page through an extra filter to ensure that all extensions are applied.
-			if(SiteTree::get_by_link($oldPage->RelativeLink()) && $oldParent->isPublished()) return $oldPage;
-		}
+		$url = OldPageRedirector::find_old_page(array($URLSegment), $parent);
+		return SiteTree::get_by_link($url);
 	}
-	
 }
