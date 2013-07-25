@@ -254,12 +254,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-framework.git",
-                "reference": "58a2eb01555a778d1c8453697d91ce353b0e605b"
+                "reference": "541436feb0fa38bb42490e19f228392f08cb8398"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/58a2eb01555a778d1c8453697d91ce353b0e605b",
-                "reference": "58a2eb01555a778d1c8453697d91ce353b0e605b",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/541436feb0fa38bb42490e19f228392f08cb8398",
+                "reference": "541436feb0fa38bb42490e19f228392f08cb8398",
                 "shasum": ""
             },
             "require": {
@@ -292,7 +292,7 @@
                 "framework",
                 "silverstripe"
             ],
-            "time": "2013-07-19 06:14:53"
+            "time": "2013-07-24 00:09:44"
         },
         {
             "name": "silverstripe/fulltextsearch",
@@ -300,28 +300,27 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-fulltextsearch.git",
-                "reference": "bb2e5624f3a7cc5b1c874b6e6d19a2356995084a"
+                "reference": "dbd68dc300ff0cba78c845a01906aa55f08cef5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-fulltextsearch/zipball/bb2e5624f3a7cc5b1c874b6e6d19a2356995084a",
-                "reference": "bb2e5624f3a7cc5b1c874b6e6d19a2356995084a",
+                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-fulltextsearch/zipball/dbd68dc300ff0cba78c845a01906aa55f08cef5f",
+                "reference": "dbd68dc300ff0cba78c845a01906aa55f08cef5f",
                 "shasum": ""
             },
             "require": {
                 "silverstripe/framework": ">=3.1.0-beta1,<4.0"
             },
             "require-dev": {
-                "hafriedlander/phockito": "*",
-                "silverstripe/cms": ">=3.1.0-beta1,<4.0",
-                "silverstripe/subsites": "*"
+                "hafriedlander/silverstripe-phockito": "*"
             },
             "type": "silverstripe-module",
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "authors": [
                 {
                     "name": "Hamish Friedlander",
-                    "email": "hamish@silverstripe.com"
+                    "email": "hamish@silverstripe.com",
+                    "role": "Developer"
                 }
             ],
             "description": "Adds support for Fulltext Search engines like Sphinx and Solr to SilverStripe CMS",
@@ -331,7 +330,7 @@
                 "solr",
                 "sphinx"
             ],
-            "time": "2013-05-08 13:16:53"
+            "time": "2013-07-25 02:28:10"
         },
         {
             "name": "silverstripe/html5",
@@ -439,7 +438,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/silverstripe/queuedjobs.git",
-                "reference": "5b1f7d199bead533f10a42dbc796e466a6a3845c"
+                "reference": "064d4ea8e2cd637ccf31b92fb1c08b347b441157"
             },
             "require": {
                 "silverstripe/cms": ">=3.0.0",
@@ -460,7 +459,7 @@
                 "jobs",
                 "silverstripe"
             ],
-            "time": "2013-05-24 04:24:07"
+            "time": "2013-07-25 02:30:40"
         },
         {
             "name": "silverstripe/registry",
@@ -662,12 +661,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-userforms.git",
-                "reference": "1.1.0-beta"
+                "reference": "525dcdba7e892bfb1c317c2084336402a4c18b9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-userforms/zipball/1.1.0-beta",
-                "reference": "1.1.0-beta",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-userforms/zipball/525dcdba7e892bfb1c317c2084336402a4c18b9b",
+                "reference": "525dcdba7e892bfb1c317c2084336402a4c18b9b",
                 "shasum": ""
             },
             "require": {
@@ -691,7 +690,7 @@
                 "silverstripe",
                 "userforms"
             ],
-            "time": "2013-07-18 09:32:13"
+            "time": "2013-07-24 07:38:27"
         },
         {
             "name": "silverstripe/versionedfiles",
@@ -763,12 +762,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/UndefinedOffset/SortableGridField.git",
-                "reference": "44cae7f0f6d367f6ef132e19dbbdb7ccdd6d40ca"
+                "reference": "f21e08f73e9fbc60459546bf80cc06c27f1b16b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/UndefinedOffset/SortableGridField/zipball/44cae7f0f6d367f6ef132e19dbbdb7ccdd6d40ca",
-                "reference": "44cae7f0f6d367f6ef132e19dbbdb7ccdd6d40ca",
+                "url": "https://api.github.com/repos/UndefinedOffset/SortableGridField/zipball/f21e08f73e9fbc60459546bf80cc06c27f1b16b2",
+                "reference": "f21e08f73e9fbc60459546bf80cc06c27f1b16b2",
                 "shasum": ""
             },
             "require": {
@@ -792,7 +791,7 @@
                 "gridfield",
                 "silverstripe"
             ],
-            "time": "2013-07-19 00:01:41"
+            "time": "2013-07-24 23:45:49"
         }
     ],
     "packages-dev": [
@@ -1115,12 +1114,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "b07614827c82083615b981e6a9813092cec43073"
+                "reference": "3e40f3b3f18c044a24688fe406440d7fd537744a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/b07614827c82083615b981e6a9813092cec43073",
-                "reference": "b07614827c82083615b981e6a9813092cec43073",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/3e40f3b3f18c044a24688fe406440d7fd537744a",
+                "reference": "3e40f3b3f18c044a24688fe406440d7fd537744a",
                 "shasum": ""
             },
             "require": {
@@ -1165,7 +1164,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2013-07-10 05:37:22"
+            "time": "2013-07-23 04:42:59"
         },
         {
             "name": "symfony/yaml",
