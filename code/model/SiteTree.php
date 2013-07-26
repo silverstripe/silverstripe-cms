@@ -1489,7 +1489,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		foreach($htmlFields as $field) {
 			$formField = new HTMLEditorField($field);
 			$formField->setValue($this->$field);
-			$formField->saveInto($this);
+			$formField->linkTracking();
+			$formField->imageTracking();
 		}
 		$this->extend('augmentSyncLinkTracking');
 	}
