@@ -1124,15 +1124,19 @@ PHP
 				$this->statusMessage("Checking that friendly URLs work...");
 				$this->checkRewrite();
 			} else {
+				require_once 'core/startup/ParameterConfirmationToken.php';
+				$token = new ParameterConfirmationToken('flush');
+				$params = http_build_query($token->params());
+
 				echo <<<HTML
 				<li>SilverStripe successfully installed; I am now redirecting you to your SilverStripe site...</li>
 				<script>
 					setTimeout(function() {
-						window.location = "index.php/home/successfullyinstalled?flush=1";
+						window.location = "index.php/home/successfullyinstalled?$params";
 					}, 2000);
 				</script>
 				<noscript>
-				<li><a href="index.php/home/successfullyinstalled?flush=1">Click here to access your site.</li>
+				<li><a href="index.php/home/successfullyinstalled?$params">Click here to access your site.</li>
 				</noscript>
 HTML;
 			}
@@ -1243,13 +1247,17 @@ TEXT;
 	}
 	
 	function checkRewrite() {
+		require_once 'core/startup/ParameterConfirmationToken.php';
+		$token = new ParameterConfirmationToken('flush');
+		$params = http_build_query($token->params());
+
 		echo <<<HTML
 <li id="ModRewriteResult">Testing...</li>
 <script>
 	if(typeof $ == 'undefined') {
 		document.getElemenyById('ModeRewriteResult').innerHTML = "I can't run jQuery ajax to set rewriting; I will redirect you to the homepage to see if everything is working.";
 		setTimeout(function() {
-			window.location = "home/successfullyinstalled?flush=1";
+			window.location = "home/successfullyinstalled?$params";
 		}, 10000);
 	} else {
 		$.ajax({
@@ -1259,7 +1267,7 @@ TEXT;
 				if(response.responseText == 'OK') {
 					$('#ModRewriteResult').html("Friendly URLs set up successfully; I am now redirecting you to your SilverStripe site...")
 					setTimeout(function() {
-						window.location = "home/successfullyinstalled?flush=1";
+						window.location = "home/successfullyinstalled?$params";
 					}, 2000);
 				} else {
 					$('#ModRewriteResult').html("Friendly URLs are not working. This is most likely because a rewrite module isn't configured "
@@ -1274,7 +1282,7 @@ TEXT;
 	}
 </script>
 <noscript>
-	<li><a href="home/successfullyinstalled?flush=1">Click here</a> to check friendly URLs are working. If you get a 404 then something is wrong.</li>
+	<li><a href="home/successfullyinstalled?$params">Click here</a> to check friendly URLs are working. If you get a 404 then something is wrong.</li>
 </noscript>
 HTML;
 	}
