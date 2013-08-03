@@ -7,7 +7,7 @@
 			<th><% _t('CMSPageHistoryController_versions.ss.PUBLISHER','Publisher') %></th>
 		</tr>
 	</thead>
-	
+
 	<tbody>
 		<% loop Versions %>
 		<tr id="page-$RecordID-version-$Version" class="$EvenOdd $PublishedClass<% if not WasPublished %><% if not Active %> ui-helper-hidden<% end_if %><% end_if %><% if Active %> active<% end_if %>" data-published="<% if WasPublished %>true<% else %>false<% end_if %>">

@@ -375,7 +375,7 @@ JS
 
 		$fields = $context->getSearchFields();
 		$actions = new FieldList(
-			FormAction::create('doSearch',  _t('CMSMain_left.ss.APPLY FILTER', 'Apply Filter'))
+			FormAction::create('doSearch',  _t('CMSMain_left_ss.APPLY_FILTER', 'Apply Filter'))
 			->addExtraClass('ss-ui-action-constructive'),
 			Object::create('ResetFormAction', 'clear', _t('CMSMain_left.ss.RESET', 'Reset'))
 		);
@@ -401,7 +401,7 @@ JS
 				new HiddenField('ParentID', false, $this->request->getVar('ParentID'))
 			),
 			new FieldList(
-				FormAction::create('doAdd', _t('AssetAdmin_left.ss.GO','Go'))
+				FormAction::create('doAdd', _t('AssetAdmin_left_ss.GO','Go'))
 					->addExtraClass('ss-ui-action-constructive')->setAttribute('data-icon', 'accept')
 					->setTitle(_t('AssetAdmin.ActionAdd', 'Add folder'))
 			)
@@ -667,7 +667,7 @@ JS
  */
 class AssetAdmin_DeleteBatchAction extends CMSBatchAction {
 	public function getActionTitle() {
-		// _t('AssetAdmin_left.ss.SELECTTODEL','Select the folders that you want to delete and then click the button below')
+		// _t('AssetAdmin_left_ss.SELECTTODEL','Select the folders that you want to delete and then click the button below')
 		return _t('AssetAdmin_DeleteBatchAction.TITLE', 'Delete folders');
 	}
 
