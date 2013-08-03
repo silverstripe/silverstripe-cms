@@ -5,36 +5,27 @@ sl:
     AppCategoryArchive: Arhiv
     AppCategoryAudio: Avdio
     AppCategoryDocument: Dokument
-    AppCategoryFlash: Flash
     AppCategoryImage: Slika
-    AppCategoryVideo: Video
     BackToFolder: 'Nazaj v mapo'
     CREATED: Datum
-    CurrentFolderOnly: 'Limit to current folder?'
     DetailsView: Podrobno
     FILES: Datoteke
-    FILESYSTEMSYNC: 'Sync files'
     FILESYSTEMSYNCTITLE: 'Osveži vnose v bazo podatkov CMS ali fatoteke v datotečnem sistemu. Uporabno, kadar nalagate mimo CMS, npr. prek FTP. '
     FROMTHEINTERNET: 'S spleta'
     FROMYOURCOMPUTER: 'Z vašega računalnika'
     Filetype: 'Tip datoteke'
-    ListView: 'List View'
-    MENUTITLE: Datoteke
-    NEWFOLDER: 'Nova mapa'
+    NEWFOLDER: Nova mapa
     SIZE: Velikost
     THUMBSDELETED: '{count} neuporabljenih predoglednih sličic je bilo izbrisanih'
-    TreeView: 'Tree View'
     Upload: Naloži
+    MENUTITLE: Datoteke
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Izbriši mape'
-  AssetAdmin_Tools:
-    FILTER: Filter
-  AssetAdmin_left.ss:
+  AssetAdmin_left_ss:
     GO: Pojdi
   AssetTableField:
-    BACKLINKCOUNT: 'Used on:'
     PAGES: Stran/Strani
-  BackLink_Button.ss:
+  BackLink_Button_ss:
     Back: Nazaj
   BrokenLinksReport:
     Any: Poljuben
@@ -45,7 +36,6 @@ sl:
     ColumnDateLastModified: 'Datum zadnje spremembe'
     ColumnDateLastPublished: 'Datum zadnje objave'
     ColumnProblemType: 'Vrsta težave'
-    ColumnURL: URL
     HasBrokenFile: 'vsebuje datoteko z napako'
     HasBrokenLink: 'ima nedelujočo povezavo'
     HasBrokenLinkAndFile: 'ima nedelujočo povezavo in vsebuje datoteko z napako'
@@ -61,104 +51,57 @@ sl:
   CMSAddPageController:
     Title: 'Dodaj stran'
   CMSBatchActions:
-    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
-    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
     DELETE_DRAFT_PAGES: 'Izbriši z osnutka spletnega mesta'
     DELETE_PAGES: 'Izbriši z objavljenega spletnega mesta'
     PUBLISHED_PAGES: 'Objavljenih je bilo %d strani. (Število napak %d)'
     PUBLISH_PAGES: Objavi
     UNPUBLISHED_PAGES: 'Število iz objave umaknjenih strani: %d'
-    UNPUBLISH_PAGES: 'Umakni iz objave'
-  CMSFileAddController:
-    MENUTITLE: Datoteke
+    UNPUBLISH_PAGES: Umakni iz objave
   CMSMain:
     ACCESS: 'Dostop do razdelka ''{title}'' '
     ACCESS_HELP: 'Dovoli vpogled  sklop z drevesno strukturo in vsebino. Pravice za ogled in urejanje je možno urejati prek dropdown-seznamov za vsako posamezno stran, ali pa ločeno v sklopu Nastavitve pravic za upravljanje z vsebino (Content permissions). '
     AddNew: 'Dodaj novo stran'
     AddNewButton: 'Dodaj novo'
-    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
     ChoosePageParentMode: 'Izberite mesto, kjer želite ustvariti novo stran'
     ChoosePageType: 'Izberi tip strani'
     Create: Ustvari
     DELETE: 'Izbriši z osnutka spletnega mesta'
-    DELETEFP: 'Izbriši z objavljenega spletnega mesta'
-    DESCREMOVED: 'and {count} descendants'
-    DUPLICATED: 'Duplicated ''{title}'' successfully'
-    DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
+    DELETEFP: Izbriši z objavljenega spletnega mesta
     EMAIL: E-naslov
     EditTree: 'Uredi drevesno strukturo'
-    ListFiltered: 'Filtered list.'
-    MENUTITLE: 'Uredi stran'
     NEWPAGE: 'Nov {pagetype}'
     PAGENOTEXISTS: 'Stran na tem naslovu ne obstaja'
     PAGES: Strani
-    PAGETYPEANYOPT: Any
     PAGETYPEOPT: 'Tip strani'
     PUBALLCONFIRM: 'Objavite vse strani spletnega mesta (vsebine bodo prekopirane v "objavljeno" različico spletnega mesta).'
     PUBALLFUN: 'Funkcionalnost "Objavi vse"'
-    PUBALLFUN2: 'Rezultat klika tega gumba bo enak, kot če bi kliknili "Objavi" na vsaki posamezni strani. Namenjen je uporabi pri večjih spremembah vsebine, kot na primer ob začetku postavljanja spletnega mesta.'
+    PUBALLFUN2: "Rezultat klika tega gumba bo enak, kot če bi kliknili \"Objavi\" na vsaki posamezni strani. Namenjen je uporabi pri večjih spremembah vsebine, kot na primer ob začetku postavljanja spletnega mesta."
     PUBPAGES: 'Opravljeno: Objavljenih je {count} strani'
     PageAdded: 'Stran je bila uspešno ustvarjena'
-    REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: '''{title}'' je odstranjen z objavljenega spletnega mesta. '
     REMOVEDPAGEFROMDRAFT: 'Vsebina, odstranjena iz osnutka spletnega mesta: ''%s'''
     RESTORE: Obnovi
-    RESTORED: 'Restored ''{title}'' successfully'
     ROLLBACK: 'Ponastavi na to različico'
-    ROLLEDBACKPUBv2: 'Rolled back to published version.'
-    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
     SAVE: Shrani
-    SAVEDRAFT: 'Save draft'
     TabContent: Vsebina
     TabHistory: Zgodovina
     TabSettings: Nastavitve
-    TreeFiltered: 'Filtered tree.'
-    TreeFilteredClear: 'Clear filter'
-  CMSMain_left.ss:
-    'APPLY FILTER': 'Apply Filter'
+    MENUTITLE: 'Uredi stran'
+  CMSMain_left_ss:
     RESET: Ponastavi
   CMSPageAddController:
-    MENUTITLE: 'Dodaj stran'
-    ParentMode_child: 'Under another page'
     ParentMode_top: 'Stran na prvem nivoju'
-  CMSPageEditController:
-    MENUTITLE: 'Uredi stran'
+    MENUTITLE: 'Dodaj stran'
   CMSPageHistoryController:
-    COMPAREMODE: 'Compare mode (select two)'
     COMPAREVERSIONS: 'Primerjaj različice'
     COMPARINGVERSION: 'Primerjava različic {version1} in {version2}.'
-    MENUTITLE: Zgodovina
     REVERTTOTHISVERSION: 'Povrni v to različico'
     SHOWUNPUBLISHED: 'Pokaži neobjavljeno različico'
     SHOWVERSION: 'Pokaži različico'
-    VIEW: view
-    VIEWINGLATEST: 'Currently viewing the latest version.'
     VIEWINGVERSION: 'Trenutno prikazana različica {version}.'
-  CMSPageHistoryController_versions.ss:
-    AUTHOR: Avtor
-    NOTPUBLISHED: 'Ni objavljeno'
-    PUBLISHER: Publisher
-    UNKNOWN: Neznano
-    WHEN: Kdaj
-  CMSPageSettingsController:
-    MENUTITLE: 'Uredi stran'
-  CMSPagesController:
-    GalleryView: 'Gallery View'
-    ListView: Seznam
-    MENUTITLE: Strani
-    TreeView: 'Drevesna struktura'
-  CMSPagesController_ContentToolbar.ss:
+    MENUTITLE: Zgodovina
+  CMSPagesController_ContentToolbar_ss:
     ENABLEDRAGGING: 'Potegni in spusti'
-    MULTISELECT: Multi-selection
-  CMSPagesController_Tools.ss:
-    FILTER: Filter
-  CMSSearch:
-    FILTERDATEFROM: Od
-    FILTERDATEHEADING: Datum
-    FILTERDATETO: Do
-    FILTERLABELTEXT: Vsebina
-  CMSSettingsController:
-    MENUTITLE: Nastavitve
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Spremenjene strani'
   CMSSiteTreeFilter_DeletedPages:
@@ -170,36 +113,27 @@ sl:
   ContentController:
     ARCHIVEDSITE: 'Predogled različice'
     ARCHIVEDSITEFROM: 'Arhivirana različica iz'
-    CMS: CMS
-    DRAFT: Draft
     DRAFTSITE: 'Osnutek spletnega mesta'
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Za ogled osnutka vsebine ali arhiva tega spletnega mesta, se morate prijaviti s podatki za dostop do CMS-vmesnika.<a href="%s">Nazaj na objavljeno različico spletnega mesta.</a>'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Za ogled osnutka vsebine ali arhiva tega spletnega mesta, se morate prijaviti s podatki za dostop do CMS-vmesnika.
+
+
+      <a href="%s">Nazaj na objavljeno različico spletnega mesta.</a>
+
+      '
     Email: E-naslov
     INSTALL_SUCCESS: 'Namestitev je bila uspešna!'
     InstallFilesDeleted: 'Namestitvene datoteke so bile uspešno izbrisane.'
-    InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
     InstallSuccessCongratulations: 'SilverStripe je bil uspešno nameščen!'
     LOGGEDINAS: 'Prijavljen-a kot'
     LOGIN: Prijava
-    LOGOUT: Odjava
-    NOTLOGGEDIN: Neprijavljen-a
-    PUBLISHED: Published
+    LOGOUT: 'Odjava'
+    NOTLOGGEDIN: 'Neprijavljen-a'
     PUBLISHEDSITE: 'Objavljeno spletno mesto'
     Password: Geslo
     PostInstallTutorialIntro: 'To spletno mesto je poenostavljena različica spletnega mesta SilverStripe 3. Za razširjeno različico, prosim, obiščite {link}.'
-    StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Namestitvenih datotek ni bilo mogoče izbrisati. Prosim, spodnje datoteke izbrišite ročno.'
     VIEWPAGEIN: 'Ogled strani v:'
   ErrorPage:
-    CODE: 'Napačna koda'
-    DEFAULTERRORPAGECONTENT: '<p>Morda ste zahtevali dostop do strani, ki ne obstaja?</p><p>Za vsak slučaj preverite vpisani URL-naslov in poskusite ponovno.</p>'
-    DEFAULTERRORPAGETITLE: 'Strani ni mogoče najti'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Oprostite, pri vaši zahtevi je prišlo do težave.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Napaka na strežniku'
-    DESCRIPTION: 'Prilagojena vsebina za različne primere napak (npr. "Želene strani nismo uspeli najti.")'
-    ERRORFILEPROBLEM: 'Napaka pri odpiranju datoteke "{filename}" za pisanje. Prosim, preverite pravice za urejanje datoteke.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
     400: 'Napaka 400'
     401: 'Napaka 401: Nimate dovoljena za dostop'
     403: 'Napaka 403: Nimate dovoljena za dostop'
@@ -223,6 +157,17 @@ sl:
     503: 'Napaka 503: Dostop trenutno ni možen'
     504: 'Napaka 504: Čas za dostop je potekel'
     505: 'Napaka 505: Strežnik ne podpira HTTP-različice zahtevka'
+    CODE: 'Napačna koda'
+    DEFAULTERRORPAGECONTENT: '<p>Morda ste zahtevali dostop do strani, ki ne obstaja?</p>
+
+      <p>Za vsak slučaj preverite vpisani URL-naslov in poskusite ponovno.</p>
+
+      '
+    DEFAULTERRORPAGETITLE: 'Strani ni mogoče najti'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Oprostite, pri vaši zahtevi je prišlo do težave.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Napaka na strežniku'
+    DESCRIPTION: 'Prilagojena vsebina za različne primere napak (npr. "Želene strani nismo uspeli najti.")'
+    ERRORFILEPROBLEM: 'Napaka pri odpiranju datoteke "{filename}" za pisanje. Prosim, preverite pravice za urejanje datoteke.'
   Folder:
     AddFolderButton: 'Dodaj mapo'
     DELETEUNUSEDTHUMBNAILS: 'Izbriši neuporabljene ikone'
@@ -231,11 +176,8 @@ sl:
     UploadFilesButton: Naloži
   LeftAndMain:
     DELETED: Izbrisano
-    PreviewButton: Predogled
     SAVEDUP: Shranjeno.
     STATUSPUBLISHEDSUCCESS: '''{title}'' je uspešno objavljen.'
-    SearchResults: 'Rezultati iskanja'
-    VersionUnknown: Neznano
   Permission:
     CMS_ACCESS_CATEGORY: 'Dostop do CMS-vmesnika'
   Permissions:
@@ -246,21 +188,15 @@ sl:
     HASBEENSETUP: 'Nastavljena preusmeritev še nima določenega cilja.'
     HEADER: 'Ta stran bo preusmerila uporabnike na drugo stran'
     OTHERURL: 'URL druge spletne strani'
-    PLURALNAME: 'Redirector Pags'
     REDIRECTTO: 'Preusmeri na'
     REDIRECTTOEXTERNAL: 'Druga spletna stran'
     REDIRECTTOPAGE: 'Stran na tvojem spletnem mestu'
-    SINGULARNAME: 'Redirector Page'
     YOURPAGE: 'Stran na tvojem spletnem mestu'
   ReportAdmin:
-    MENUTITLE: Poročila
     ReportTitle: Naslov
+    MENUTITLE: Poročila
   ReportAdminForm:
     FILTERBY: 'Filtriraj po'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
-    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
-    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
   SearchForm:
     GO: Pojdi
     SEARCH: Išči
@@ -277,8 +213,6 @@ sl:
     OtherGroupTitle: Drugo
     ParameterLiveCheckbox: 'Preveri na objavljenem spletnem mestu'
     REPEMPTY: 'Poročilo {title} je prazno.'
-  SilverStripeNavigator:
-    ARCHIVED: Archived
   SilverStripeNavigatorLink:
     ShareInstructions: 'Za posredovanje vsebine med tema dvema stranema, kopirajte povezavo in jo spodaj prilepite.'
     ShareLink: 'Posreduj povezavo'
@@ -289,10 +223,8 @@ sl:
     EDITHEADER: 'Kdo lahko ureja strani na tem spletnem mestu?'
     EDIT_PERMISSION: 'Upravljanje nastavitev spletnega mesta'
     EDIT_PERMISSION_HELP: 'Možnost upravljanja z dostopom na najvišji ravni'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
     SITENAMEDEFAULT: 'Naziv vašega spletnega mesta'
-    SITETAGLINE: Slogan
+    SITETAGLINE: 'Slogan'
     SITETITLE: 'Naslov spletnega mesta (title)'
     TABACCESS: Dostop
     TABMAIN: Domov
@@ -308,13 +240,9 @@ sl:
     ADDEDTODRAFTHELP: 'Stran še ni bila objavljena'
     ADDEDTODRAFTSHORT: Osnutek
     ALLOWCOMMENTS: 'DOvoli komentarje na tej strani?'
-    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: 'Prekliči spremembe osnutka'
     BUTTONCANCELDRAFTDESC: 'Izbriši osnutek in ponastavi na trenutno objavljeno stran'
-    BUTTONPUBLISHED: Published
-    BUTTONSAVED: Saved
-    BUTTONSAVEPUBLISH: 'Save & publish'
-    BUTTONUNPUBLISH: 'Umakni iz objave'
+    BUTTONUNPUBLISH: Umakni iz objave
     BUTTONUNPUBLISHDESC: 'Umakni to stran iz objave'
     CREATED: 'Datum nastanka'
     Comments: Komentarji
@@ -322,15 +250,13 @@ sl:
     DEFAULTABOUTCONTENT: '<p>Na to stran lahko vnesete svojo vsebino ali pa jo izbrišete in sami ustvarjate strani po svoji meri.<br /></p>'
     DEFAULTABOUTTITLE: 'O nas'
     DEFAULTCONTACTCONTENT: '<p>Na to stran lahko vnesete svojo vsebino ali pa jo izbrišete in sami ustvarjate strani po svoji meri.<br /></p>'
-    DEFAULTCONTACTTITLE: Kontakt
+    DEFAULTCONTACTTITLE: 'Kontakt'
     DEFAULTHOMECONTENT: '<p>Pozdravljeni pri SilverStripe! To je privzeto spletno mesto, ki ga lahko urejate prek <a href="admin/">CMS-vmesnika</a>. Oglejte si <a href="http://doc.silverstripe.org">dokumentacijo za razvijalce</a> ali pa <a href="http://doc.silverstripe.org/doku.php?id=tutorials">napotke za uporabo.</a></p>'
     DEFAULTHOMETITLE: Domov
     DELETEDPAGEHELP: 'Stran ni več objavljena'
     DELETEDPAGESHORT: Izbrisano
     DEPENDENT_NOTE: 'Naslednje strani so odvisne od vsebine tukaj (vključuje navidezne strani, preusmerjevalne strani in strani s povezavami v vsebini)'
-    DESCRIPTION: 'Generic content page'
     DependtPageColumnLinkType: 'Tip povezave'
-    DependtPageColumnURL: URL
     EDITANYONE: 'Vsakdo, ki se prijavi v CMS-vmesnik'
     EDITHEADER: 'Kdo lahko ureja to stran?'
     EDITONLYTHESE: 'Samo ti uporabniki (izberite jih s seznama)'
@@ -338,25 +264,17 @@ sl:
     EDIT_ALL_DESCRIPTION: 'Urejanje vseh strani'
     EDIT_ALL_HELP: 'Možnost urejanja katerekoli strani na spletnem mestu, ne glede na nastavitve v sklopu "Dostop". Zahteva dovoljenje za dostop do vsebine spletnega mesta.'
     Editors: 'Skupine urednikov'
-    GroupPlaceholder: 'Click to select group'
     HASBROKENLINKS: 'Ta stran ima neveljavne povezave.'
     HTMLEDITORTITLE: Vsebina
     INHERIT: 'Privzemi od nadrejene strani'
-    LASTPUBLISHED: 'Last published'
-    LASTSAVED: 'Last saved'
     LASTUPDATED: 'Nazadnje urejeno'
     LINKCHANGENOTE: 'Sprememba URL-naslova te strani bo povzročila spremembo URL-naslovov do vseh podrejenih strani.'
     MENUTITLE: 'Naziv navigacije'
-    METADESC: Opis
+    METADESC: 'Opis'
     METADESCHELP: 'Iskalniki to vsebino uporabljajo pri prikazu rezultatov. (Vsebina nima vpliva na vrstni red prikaza med zadetki v iskalniku.)'
     METAEXTRA: 'Meta tagi po meri'
-    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Stran vsebuje še neobjavljene spremembe.'
-    MODIFIEDONDRAFTSHORT: Modified
     MetadataToggle: Metapodatki
-    MoreOptions: 'More options'
-    NOTPUBLISHED: 'Not published'
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
     PAGELOCATION: 'Lokacija strani'
     PAGETITLE: 'Ime strani'
     PAGETYPE: 'Tip strani'
@@ -378,15 +296,14 @@ sl:
     SHOWINSEARCH: 'Pokaži v iskalniku?'
     SINGULARNAME: Stran
     TABBEHAVIOUR: Vedenje
-    TABCONTENT: Vsebina
+    TABCONTENT: 'Vsebina'
     TABDEPENDENT: 'Odvisne strani'
     TOPLEVEL: 'Vsebina Strani (Zgornja Stopnja)'
     TOPLEVELCREATORGROUPS: 'Glavni uredniki.'
     URLSegment: 'URL naslov strani'
     VIEWERGROUPS: 'Skupine obiskovalcev'
     VIEW_ALL_DESCRIPTION: 'Prikaz vse strani'
-    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
-    VIEW_DRAFT_CONTENT: Predogled.
+    VIEW_DRAFT_CONTENT: 'Predogled.'
     VIEW_DRAFT_CONTENT_HELP: 'Ogled osnutka vsebine za uporabnike brez dostopa do vmesnika.'
     Viewers: 'Skupine obiskovalcev (viewers)'
     Visibility: Vidnost
@@ -395,7 +312,6 @@ sl:
     many_many_ImageTracking: 'Spremljanje slik'
     many_many_LinkTracking: 'Spremljanje povezav'
   SiteTreeURLSegmentField:
-    EMPTY: 'Please enter a URL Segment or click cancel'
     HelpChars: 'Posebni znaki so samodejno spremenjeni ali odstranjeni.'
   StaticExporter:
     BASEURL: 'Osnovni URL'
@@ -403,34 +319,27 @@ sl:
     NAME: 'Statični izvoz'
   TableListField:
     SELECT: 'Izberi:'
-  TableListField.ss:
+  TableListField_ss:
     NOITEMSFOUND: 'Ni najdenih predmetov'
     SORTASC: 'Razvrsti naraščajoče'
     SORTDESC: 'Razvrsti padajoče'
-  TableListField_PageControls.ss:
-    DISPLAYING: Displaying
+  TableListField_PageControls_ss:
     OF: od
     TO: za
     VIEWFIRST: 'Na začetek'
     VIEWLAST: 'Na konec'
-    VIEWNEXT: Naslednja
-    VIEWPREVIOUS: Prejšnja
-  TreeTools:
-    DisplayLabel: 'Display:'
-  URLSegmentField:
-    Cancel: Cancel
-    Edit: Edit
-    OK: OK
-  ViewArchivedEmail.ss:
+    VIEWNEXT: 'Naslednja'
+    VIEWPREVIOUS: 'Prejšnja'
+  ViewArchivedEmail_ss:
     CANACCESS: 'Do arhvirane različice spletnega mesta lahko dostopate na naslovu:'
     HAVEASKED: 'Za vpogled v vsebino našega spletnega mesta ste zaprosili'
   VirtualPage:
-    CHOOSE: 'Linked Page'
-    DESCRIPTION: 'Displays the content of another page'
-    EDITCONTENT: 'Edit content on linked page'
-    EditLink: edit
     HEADER: 'To je navidezna stran'
-    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
     PLURALNAME: 'Virtualne strani'
-    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtualna stran'
+  CMSFileAddController:
+    MENUTITLE: Datoteke
+  CMSPageEditController:
+    MENUTITLE: 'Uredi stran'
+  CMSPageSettingsController:
+    MENUTITLE: 'Uredi stran'
