@@ -5,7 +5,6 @@ pl:
     AppCategoryArchive: Archiwum
     AppCategoryAudio: Dźwięk
     AppCategoryDocument: Dokument
-    AppCategoryFlash: Flash
     AppCategoryImage: Obraz
     AppCategoryVideo: Wideo
     BackToFolder: 'Wróć do katalogu'
@@ -19,22 +18,22 @@ pl:
     FROMYOURCOMPUTER: 'Z komputera'
     Filetype: 'Typ pliku'
     ListView: 'Widok listy'
-    MENUTITLE: Pliki
     NEWFOLDER: NowyKatalog
     SIZE: Rozmiar
     THUMBSDELETED: '{count} nieuzywane miniatury zostały usunięte'
     TreeView: 'Widok drzewa'
     Upload: Prześlij
+    MENUTITLE: Pliki
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Usuń foldery'
   AssetAdmin_Tools:
     FILTER: Filtr
-  AssetAdmin_left.ss:
+  AssetAdmin_left_ss:
     GO: Przejdź
   AssetTableField:
     BACKLINKCOUNT: 'Używany na:'
     PAGES: stron(y)
-  BackLink_Button.ss:
+  BackLink_Button_ss:
     Back: Wstecz
   BrokenLinksReport:
     Any: Jakikolwiek
@@ -45,7 +44,6 @@ pl:
     ColumnDateLastModified: 'Data ostatniej modyfikacji'
     ColumnDateLastPublished: 'Data ostatniej publikacji'
     ColumnProblemType: 'Rodzaj problemu'
-    ColumnURL: URL
     HasBrokenFile: 'ma uszkodzony plik'
     HasBrokenLink: 'ma uszkodzony link'
     HasBrokenLinkAndFile: 'ma uszkodzony link oraz plik'
@@ -68,97 +66,75 @@ pl:
     PUBLISHED_PAGES: 'Opublikowano %d stron, %d się nie powiodło'
     PUBLISH_PAGES: Opublikuj
     UNPUBLISHED_PAGES: 'Usunięto z opublikowanych %d stron'
-    UNPUBLISH_PAGES: 'Cofnij publikację'
-  CMSFileAddController:
-    MENUTITLE: Pliki
+    UNPUBLISH_PAGES: Cofnij publikację
   CMSMain:
-    ACCESS: 'Dostęp do ''{title}'''
     ACCESS_HELP: 'Zezwala na oglądanie sekcji zawierających drzewo stron oraz treść. Prawo Przeglądaj i edytuj może być obsługiwane przez pola wyboru dostępne na stronach oraz poprzez zakładkę uprawnień.'
     AddNew: 'Dodaj nową stronę'
     AddNewButton: 'Dodaj nowy'
-    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
     ChoosePageParentMode: 'Wybierz gdzie chcesz utworzyć tę stronę'
     ChoosePageType: 'Wybierz rodzaj strony'
     Create: Utwórz
     DELETE: 'Usuń szkic'
-    DELETEFP: 'Usuń z opublikowanej witryny'
+    DELETEFP: Usuń z opublikowanej witryny
     DESCREMOVED: 'i {count} potomków'
     DUPLICATED: 'Duplikowanie ''{title}'' zakończone powodzeniem'
     DUPLICATEDWITHCHILDREN: 'Duplikowanie ''{title}'' oraz podstron zakończone powodzeniem'
-    EMAIL: Email
     EditTree: 'Edytuj drzewko'
     ListFiltered: 'Filtrowana lista.'
-    MENUTITLE: 'Edytuj stronę'
     NEWPAGE: 'Nowa {pagetype}'
     PAGENOTEXISTS: 'Ta strona nie istnieje'
-    PAGES: Strony
     PAGETYPEANYOPT: Jakikolwiek
-    PAGETYPEOPT: 'Rodzaj strony'
     PUBALLCONFIRM: 'Opublikuj każdą stronę w witrynie'
     PUBALLFUN: '"Opublikuj wszystko"'
-    PUBALLFUN2: 'Naciśnięcie tego przycisku spowoduje przejście po wszystkich stronach i opublikowanie ich. Zazwyczaj używa się tego, gdy w witrynie było bardzo dużo zmian, na przykład gdy witryna została utworzona.'
+    PUBALLFUN2: "Naciśnięcie tego przycisku spowoduje przejście po wszystkich stronach i opublikowanie ich. Zazwyczaj używa się tego, gdy w witrynie było bardzo dużo zmian, na przykład gdy witryna została utworzona."
     PUBPAGES: 'Zrobiono:  Opublikowano {count} stron'
-    PageAdded: 'Pomyślnie utworzono stronę'
-    REMOVED: 'Deleted ''{title}''{description} from live site'
-    REMOVEDPAGE: 'Usunięto ''{title}'' z opublikowanych stron'
     REMOVEDPAGEFROMDRAFT: '''%s'' usunięto ze szkiców'
     RESTORE: Przywróć
     RESTORED: 'Pomyślnie przywrócono ''{title}'''
     ROLLBACK: 'Wróć do tej wersji'
-    ROLLEDBACKPUBv2: 'Rolled back to published version.'
-    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
     SAVE: Zapisz
     SAVEDRAFT: 'Zapisz szkic'
-    TabContent: Zawartość
     TabHistory: Historia
-    TabSettings: Ustawienia
     TreeFiltered: 'Filtruj drzewko'
     TreeFilteredClear: 'Wyczyść filtr'
-  CMSMain_left.ss:
-    'APPLY FILTER': 'Zastosuj filtr'
+    MENUTITLE: 'Edytuj stronę'
+  CMSMain_left_ss:
+    APPLY_FILTER: 'Zastosuj filtr'
     RESET: Resetuj
   CMSPageAddController:
-    MENUTITLE: 'Dodaj stronę'
     ParentMode_child: 'Pod inną stroną'
     ParentMode_top: 'Główny poziom'
-  CMSPageEditController:
-    MENUTITLE: 'Edytuj stronę'
+    MENUTITLE: 'Dodaj stronę'
   CMSPageHistoryController:
     COMPAREMODE: 'Tryb porównywania (wybierz dwie)'
     COMPAREVERSIONS: 'Porównaj wersje'
     COMPARINGVERSION: 'Porównanie wersji {version1} i {version2}.'
-    MENUTITLE: Historia
     REVERTTOTHISVERSION: 'Wróć do tej wersji'
     SHOWUNPUBLISHED: 'Pokaż nieopublikowane wersje'
     SHOWVERSION: 'Pokaż wersję'
     VIEW: zobacz
-    VIEWINGLATEST: 'Obecnie oglądasz najnowszą wersję'
     VIEWINGVERSION: 'Obecnie oglądasz wersję {version}.'
-  CMSPageHistoryController_versions.ss:
+    MENUTITLE: Historia
+    VIEWINGLATEST: 'Obecnie oglądasz najnowszą wersję'
+  CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
-    NOTPUBLISHED: Nieopublikowana
+    NOTPUBLISHED: 'Nieopublikowana'
     PUBLISHER: Edytor
     UNKNOWN: Nieznany
     WHEN: Kiedy
-  CMSPageSettingsController:
-    MENUTITLE: 'Edytuj stronę'
   CMSPagesController:
-    GalleryView: 'Widok galerii'
     ListView: 'Widok listy'
-    MENUTITLE: Strony
     TreeView: 'Widok drzewa'
-  CMSPagesController_ContentToolbar.ss:
+  CMSPagesController_ContentToolbar_ss:
     ENABLEDRAGGING: 'Przeciągnij i upuść'
-    MULTISELECT: 'Multi wybór'
-  CMSPagesController_Tools.ss:
+    MULTISELECT: Multi wybór
+  CMSPagesController_Tools_ss:
     FILTER: Filtr
   CMSSearch:
     FILTERDATEFROM: Od
     FILTERDATEHEADING: Data
     FILTERDATETO: Do
     FILTERLABELTEXT: Zawartość
-  CMSSettingsController:
-    MENUTITLE: Ustawienia
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Zmienione strony'
   CMSSiteTreeFilter_DeletedPages:
@@ -170,36 +146,27 @@ pl:
   ContentController:
     ARCHIVEDSITE: 'Podgląd wersji'
     ARCHIVEDSITEFROM: 'Zarchiwizowana witryna od'
-    CMS: 'System Zarządzania Treścią'
-    DRAFT: Szkic
+    CMS: System Zarządzania Treścią
     DRAFTSITE: 'Szkic witryny'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Musisz zalogować się za pomocą swojego hasła do CMSa, aby obejrzeć nieopublikowaną i zarchiwizowaną treść. <a href="%s">Kliknij tutaj aby powrócić do opublikowanej strony.</a>'
-    Email: 'Adres e-mail'
+    Email: Adres e-mail
     INSTALL_SUCCESS: 'Instalacja przebiegła pomyślnie'
     InstallFilesDeleted: 'Pliki instalacyjne zostały pomyślnie usunięte'
     InstallSecurityWarning: 'Dla bezpieczeństwa powinieneś skasować pliki instalacyjne, chyba że planujesz reinstalację w późniejszym czasie (<em>wymaga zalogowania się jako admin, patrz wyżej</em>). Serwer potrzebuje teraz tylko dostępu do folderu "assets", możesz usunąć dostęp do innych folderów. <a href="{link}" style="text-align: center;">Kliknij tutaj aby usunąć pliki instalacyjne.</a>'
     InstallSuccessCongratulations: 'SilverStripe został zainstalowany!'
     LOGGEDINAS: 'Zalogowany jako'
     LOGIN: Zaloguj
-    LOGOUT: Wyloguj
+    LOGOUT: 'Wyloguj'
     NOTLOGGEDIN: 'Nie zalogowany'
-    PUBLISHED: Opublikowano
     PUBLISHEDSITE: 'Opublikowana witryna'
     Password: Hasło
     PostInstallTutorialIntro: 'Ta strona jest uproszczoną wersją witryny SilverStripe 3. Aby ją rozszerzyć, zajrzyj proszę na stronę: {link}'
     StartEditing: 'Możesz zacząć edytować Twoją stronę otwierając <a href=\\"{link}\\">CMS</a>.'
     UnableDeleteInstall: 'Nie można usunąć plików instalacyjnych. Proszę usunąć je ręcznie'
     VIEWPAGEIN: 'Zobacz stronę w:'
+    DRAFT: Szkic
+    PUBLISHED: Opublikowano
   ErrorPage:
-    CODE: 'Kod błędu'
-    DEFAULTERRORPAGECONTENT: '<p>Niestety, próbujesz wejść na stronę, która nie istnieje.</p><p>Sprawdź pisownię adresu URL i spróbuj ponownie.</p>'
-    DEFAULTERRORPAGETITLE: 'Nie znaleziono strony'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Wystąpił problem z obsługą Twojego żądania.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Błąd serwera'
-    DESCRIPTION: 'Własna zawartość dla różnych błędów (np. "Strona nie została znaleziona")'
-    ERRORFILEPROBLEM: 'Błąd podczas otwierania pliku "{filename}". Proszę sprawdzić uprawnienia do plików.'
-    PLURALNAME: 'Strony błędów'
-    SINGULARNAME: 'Strona błędów'
     400: '400 - Nieprawidłowe zapytanie'
     401: '401 - Nieautoryzowany dostęp'
     403: '403 - Zabroniony'
@@ -223,6 +190,15 @@ pl:
     503: '503 - Usługa niedostępna'
     504: '504 - Przekroczony czas bramy'
     505: '505 - Wersja HTTP nie obsługiwana'
+    CODE: 'Kod błędu'
+    DEFAULTERRORPAGECONTENT: '<p>Niestety, próbujesz wejść na stronę, która nie istnieje.</p><p>Sprawdź pisownię adresu URL i spróbuj ponownie.</p>'
+    DEFAULTERRORPAGETITLE: 'Nie znaleziono strony'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Wystąpił problem z obsługą Twojego żądania.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Błąd serwera'
+    DESCRIPTION: 'Własna zawartość dla różnych błędów (np. "Strona nie została znaleziona")'
+    ERRORFILEPROBLEM: 'Błąd podczas otwierania pliku "{filename}". Proszę sprawdzić uprawnienia do plików.'
+    PLURALNAME: 'Strony błędów'
+    SINGULARNAME: 'Strona błędów'
   Folder:
     AddFolderButton: 'Dodaj katalog'
     DELETEUNUSEDTHUMBNAILS: 'Usuń nieużywane miniatury'
@@ -231,7 +207,7 @@ pl:
     UploadFilesButton: Prześlij
   LeftAndMain:
     DELETED: Usunięty
-    PreviewButton: 'Podgląd'
+    PreviewButton: Podgląd
     SAVEDUP: Zapisane
     STATUSPUBLISHEDSUCCESS: 'Opublikowano ''{title}'' '
     SearchResults: 'Wyniki wyszukiwania'
@@ -253,14 +229,10 @@ pl:
     SINGULARNAME: 'Strona przekierowująca'
     YOURPAGE: 'Strona na Twojej witrynie'
   ReportAdmin:
-    MENUTITLE: Raporty
     ReportTitle: Tytuł
+    MENUTITLE: Raporty
   ReportAdminForm:
     FILTERBY: 'Filtruj po'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
-    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
-    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
   SearchForm:
     GO: Przejdź
     SEARCH: Szukaj
@@ -271,14 +243,9 @@ pl:
     BROKENREDIRECTORPAGES: 'Strony przekierowania wskazujące na usunięte strony'
     BROKENVIRTUALPAGES: 'Wirtualne strony wskazujące na usunięte strony'
     BrokenLinksGroupTitle: 'Raporty o uszkodzonych linkach'
-    ContentGroupTitle: 'Raporty o treści'
-    EMPTYPAGES: 'Strony bez treści'
     LAST2WEEKS: 'Strony edytowane w ciągu 2 ostatnich tygodni'
-    OtherGroupTitle: Inne
     ParameterLiveCheckbox: 'Sprawdź witrynę'
     REPEMPTY: '{title} raport jest pusty.'
-  SilverStripeNavigator:
-    ARCHIVED: Archived
   SilverStripeNavigatorLink:
     ShareInstructions: 'Aby podzielić się tym na tej stronie, skopiuj i wklej poniższy link.'
     ShareLink: 'Podziel się linkiem'
@@ -311,8 +278,6 @@ pl:
     APPEARSVIRTUALPAGES: 'Ta treść pojawia się również na wirtualnej stronie w sekcji {title}.'
     BUTTONCANCELDRAFT: 'Anuluj wprowadzone zmiany'
     BUTTONCANCELDRAFTDESC: 'Usuń zmiany i wróć do istniejącej wersji opublikowanej strony'
-    BUTTONPUBLISHED: Opublikowano
-    BUTTONSAVED: Zapisano
     BUTTONSAVEPUBLISH: 'Zapisz i opublikuj'
     BUTTONUNPUBLISH: Nieopublikowane
     BUTTONUNPUBLISHDESC: 'Usuń tę stronę z opublikowanej witryny'
@@ -322,15 +287,15 @@ pl:
     DEFAULTABOUTCONTENT: '<p>Możesz wypełnić tę stronę własną treścią, usunąć ją i tworzyć własne strony.<br /></p>'
     DEFAULTABOUTTITLE: 'O nas'
     DEFAULTCONTACTCONTENT: '<p>Możesz wypełnić tę stronę własną treścią, usunąć ją i tworzyć własne strony.<br /></p>'
-    DEFAULTCONTACTTITLE: Kontakt
+    DEFAULTCONTACTTITLE: 'Kontakt'
     DEFAULTHOMECONTENT: '<p>Witaj w SilverStripe! To jest domyślna strona główna. Możesz ją edytować, otwierając <a href="admin/">CMS</a>. Możesz również otworzyć <a href="http://doc.silverstripe.com">dokumentację dla developerów</a>, lub rozpocząć <a href="http://doc.silverstripe.com/doku.php?id=tutorials">jeden z samouczków.</a></p>'
-    DEFAULTHOMETITLE: 'Strona główna'
+    DEFAULTHOMETITLE: Strona główna
     DELETEDPAGEHELP: 'Strona nie jest już opublikowana'
     DELETEDPAGESHORT: Usunięty
     DEPENDENT_NOTE: 'Poniższe strony są zależne od tej (łącznie z wirtualnymi stronami, stronami przekierowującymi oraz stronami z treścią).'
     DESCRIPTION: 'Zwykła strona'
     DependtPageColumnLinkType: 'Typ linku'
-    DependtPageColumnURL: 'Adres internetowy'
+    DependtPageColumnURL: Adres internetowy
     EDITANYONE: 'Każdy to jest zalogowany w systemie CMS'
     EDITHEADER: 'Kto może edytować wewnątrz systemu CMS?'
     EDITONLYTHESE: 'Tylko Ci ludzi (wybierz z listy)'
@@ -338,25 +303,17 @@ pl:
     EDIT_ALL_DESCRIPTION: 'Edytuj jakąkolwiek stronę'
     EDIT_ALL_HELP: 'Możliwość edycji jakiejkolwiek strony w witrynie, bez względu na ustawienia w zakładce Dostęp. Wymaga uprawnienia "Dostęp do edycji treści"'
     Editors: 'Grupy Edytorów'
-    GroupPlaceholder: 'Kliknij aby wybrać grupę'
     HASBROKENLINKS: 'Ta strona ma niedziałający link'
     HTMLEDITORTITLE: Zawartość
     INHERIT: 'Dziedzicz ze strony nadrzędnej'
-    LASTPUBLISHED: 'Ostatnio opublikowano'
-    LASTSAVED: 'Ostatnio zapisane'
     LASTUPDATED: 'Ostania zmiana'
     LINKCHANGENOTE: 'Zmiana linku na aktualnej stronie skutkuje zmianą w linkach stron potomnych.'
     MENUTITLE: 'Sekcja nawigacji'
-    METADESC: Opis
-    METADESCHELP: 'Wyszukiwarki używają tej zawartości do wyświetlania wyników wyszukiwania (aczkolwiek nie zmieni to ich miejsca w rankingu)'
+    METADESC: 'Opis'
     METAEXTRA: 'Własne meta tagi'
-    METAEXTRAHELP: 'Tagi HTML dla dodatkowych informacji. Na przykład &lt;meta name="niestandardowaNazwa" content="twoja zawartość" /&gt;'
     MODIFIEDONDRAFTHELP: 'Na stronie znajdują się nieopublikowane zmiany'
     MODIFIEDONDRAFTSHORT: Zmodyfikowana
     MetadataToggle: Metadane
-    MoreOptions: 'Więcej opcji'
-    NOTPUBLISHED: 'Not published'
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
     PAGELOCATION: 'Lokalizacja strony'
     PAGETITLE: 'Nazwa strony'
     PAGETYPE: 'Rodzaj strony'
@@ -378,14 +335,13 @@ pl:
     SHOWINSEARCH: 'Pokazuj w wyszukiwarce?'
     SINGULARNAME: Strona
     TABBEHAVIOUR: Zachowanie
-    TABCONTENT: Zawartość
+    TABCONTENT: 'Zawartość'
     TABDEPENDENT: 'Strony zależne'
     TOPLEVEL: 'Zawartość witryny (główny poziom)'
     TOPLEVELCREATORGROUPS: 'Twórcy najwyższego szczebla'
     URLSegment: 'Segment adresu URL'
     VIEWERGROUPS: 'Grupy przeglądających'
     VIEW_ALL_DESCRIPTION: 'Przeglądanie stron'
-    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: 'Obejrzyj szkic treści'
     VIEW_DRAFT_CONTENT_HELP: 'Stosowane do oglądania szkiców stron poza systemem CMS. Przydatne w przypadku zewnętrznych współpracowników nie mających dostępu do CMS.'
     Viewers: 'Grupy przeglądających'
@@ -394,20 +350,25 @@ pl:
     many_many_BackLinkTracking: 'Śledzenie backlinków'
     many_many_ImageTracking: 'Śledzenie obrazków'
     many_many_LinkTracking: 'Śledzenie linków'
+    BUTTONPUBLISHED: Opublikowano
+    BUTTONSAVED: Zapisano
+    GroupPlaceholder: 'Kliknij aby wybrać grupę'
+    LASTPUBLISHED: 'Ostatnio opublikowano'
+    LASTSAVED: 'Ostatnio zapisane'
+    MoreOptions: 'Więcej opcji'
   SiteTreeURLSegmentField:
     EMPTY: 'Proszę podać część adresu lub kliknąć anuluj'
-    HelpChars: 'Znaki specjalne są automatycznie zamienione lub usunięte.'
   StaticExporter:
     BASEURL: 'Bazowy URL'
     EXPORTTO: 'Eksportuj do tego katalogu'
     NAME: 'Statyczny eksporter'
   TableListField:
     SELECT: 'Wybierz:'
-  TableListField.ss:
+  TableListField_ss:
     NOITEMSFOUND: 'Nic nie znaleziono'
     SORTASC: 'Sortuj w porządku rosnącym'
     SORTDESC: 'Sortuj w porządku malejącym'
-  TableListField_PageControls.ss:
+  TableListField_PageControls_ss:
     DISPLAYING: Wyświetlane
     OF: z
     TO: do
@@ -417,20 +378,24 @@ pl:
     VIEWPREVIOUS: 'Zobacz poprzednie'
   TreeTools:
     DisplayLabel: 'Wyświetl:'
-  URLSegmentField:
-    Cancel: Anuluj
-    Edit: Edytuj
-    OK: OK
-  ViewArchivedEmail.ss:
+  ViewArchivedEmail_ss:
     CANACCESS: 'Dostęp do zarchiwizowanej witryny:'
     HAVEASKED: 'Poprosiłeś o obejrzenie treści naszej strony na'
   VirtualPage:
     CHOOSE: 'Linkowana strona'
     DESCRIPTION: 'Wyświetla zawartość innej strony'
     EDITCONTENT: 'Edycja treści na linkowanej stronie'
-    EditLink: edytuj
     HEADER: 'To jest wirtualna strona'
-    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
     PLURALNAME: 'Wirtualne Strony'
     PageTypNotAllowedOnRoot: '"{type}" nie jest dozwolona dla głównego poziomu wirtualnej strony'
     SINGULARNAME: 'Wirtualna Strona'
+    EditLink: edytuj
+  CMSPageEditController:
+    MENUTITLE: 'Edytuj stronę'
+  CMSPageSettingsController:
+    MENUTITLE: 'Edytuj stronę'
+  CMSSettingsController:
+    MENUTITLE: Ustawienia
+  URLSegmentField:
+    Cancel: Anuluj
+    Edit: Edytuj

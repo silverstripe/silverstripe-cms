@@ -29,12 +29,12 @@ en:
     TITLE: 'Delete folders'
   AssetAdmin_Tools:
     FILTER: Filter
-  AssetAdmin_left.ss:
+  AssetAdmin_left_ss:
     GO: Go
   AssetTableField:
     BACKLINKCOUNT: 'Used on:'
     PAGES: page(s)
-  BackLink_Button.ss:
+  BackLink_Button_ss:
     Back: Back
   BrokenLinksReport:
     Any: Any
@@ -112,7 +112,7 @@ en:
     TreeFilteredClear: 'Clear filter'
     MENUTITLE: 'Edit Page'
     AddPageRestriction: 'Note: Some page types are not allowed for this selection'
-  CMSMain_left.ss:
+  CMSMain_left_ss:
     'APPLY FILTER': 'Apply Filter'
     RESET: Reset
   CMSPageAddController:
@@ -130,7 +130,7 @@ en:
     VIEWINGVERSION: 'Currently viewing version {version}.'
     MENUTITLE: History
     VIEWINGLATEST: 'Currently viewing the latest version.'
-  CMSPageHistoryController_versions.ss:
+  CMSPageHistoryController_versions_ss:
     AUTHOR: Author
     NOTPUBLISHED: 'Not published'
     PUBLISHER: Publisher
@@ -141,10 +141,10 @@ en:
     ListView: 'List View'
     MENUTITLE: Pages
     TreeView: 'Tree View'
-  CMSPagesController_ContentToolbar.ss:
+  CMSPagesController_ContentToolbar_ss:
     ENABLEDRAGGING: 'Drag''n''drop'
     MULTISELECT: Multi-selection
-  CMSPagesController_Tools.ss:
+  CMSPagesController_Tools_ss:
     FILTER: Filter
   CMSSearch:
     FILTERDATEFROM: From
@@ -389,11 +389,11 @@ en:
     NAME: 'Static exporter'
   TableListField:
     SELECT: 'Select:'
-  TableListField.ss:
+  TableListField_ss:
     NOITEMSFOUND: 'No items found'
     SORTASC: 'Sort in ascending order'
     SORTDESC: 'Sort in descending order'
-  TableListField_PageControls.ss:
+  TableListField_PageControls_ss:
     DISPLAYING: Displaying
     OF: of
     TO: to
@@ -403,7 +403,7 @@ en:
     VIEWPREVIOUS: 'View previous'
   TreeTools:
     DisplayLabel: 'Display:'
-  ViewArchivedEmail.ss:
+  ViewArchivedEmail_ss:
     CANACCESS: 'You can access the archived site at this link:'
     HAVEASKED: 'You have asked to view the content of our site on'
   VirtualPage:
