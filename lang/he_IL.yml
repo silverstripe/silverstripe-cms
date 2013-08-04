@@ -6,7 +6,7 @@ he_IL:
     AppCategoryAudio: שמע
     AppCategoryDocument: מסמך
     AppCategoryFlash: פלאש
-    AppCategoryImage: 'תמונה'
+    AppCategoryImage: תמונה
     AppCategoryVideo: וידאו
     BackToFolder: 'חזרה לתיקייה'
     CREATED: תאריך
@@ -19,22 +19,22 @@ he_IL:
     FROMYOURCOMPUTER: 'מהמחשב שלך'
     Filetype: 'סוג הקובץ'
     ListView: 'תצוגת רשימה'
-    MENUTITLE: קבצים
-    NEWFOLDER: 'תיקייה חדשה'
+    NEWFOLDER: תיקייה חדשה
     SIZE: גודל
     THUMBSDELETED: '{count} תמונות ממוזערות שלא היו בשימוש נמחקו'
     TreeView: 'תצוגת עץ'
     Upload: העלאה
+    MENUTITLE: קבצים
   AssetAdmin_DeleteBatchAction:
     TITLE: 'למחוק תיקיות'
   AssetAdmin_Tools:
-    FILTER: 'מסנן'
-  AssetAdmin_left.ss:
+    FILTER: מסנן
+  AssetAdmin_left_ss:
     GO: לעבור
   AssetTableField:
     BACKLINKCOUNT: 'נעשה שימוש בתאריך:'
     PAGES: עמוד/ים
-  BackLink_Button.ss:
+  BackLink_Button_ss:
     Back: חזרה
   BrokenLinksReport:
     Any: כלשהם
@@ -68,27 +68,21 @@ he_IL:
     PUBLISHED_PAGES: 'פורסמו %d עמודים, %d שגיאות'
     PUBLISH_PAGES: פרסום
     UNPUBLISHED_PAGES: 'בוטל פרסומם של %d עמודים'
-    UNPUBLISH_PAGES: 'ביטול הפרסום'
-  CMSFileAddController:
-    MENUTITLE: קבצים
+    UNPUBLISH_PAGES: ביטול הפרסום
   CMSMain:
     ACCESS: 'גישה לאגף ''{title}'''
     ACCESS_HELP: 'מתן האפשרות לצפות באגף המכיל את עץ העמודים והתוכן. ניתן לצפות ולערוך הרשאות באמצעות תיבות בחירה ייעודיות לכל עמוד, כמו גם „הרשאות התוכן“ הנפרדות.'
     AddNew: 'הוספת עמוד חדש'
     AddNewButton: 'הוספת חדש'
-    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
     ChoosePageParentMode: 'נא לבחור היכן ליצור עמוד זה'
     ChoosePageType: 'נא לבחור בסוג העמוד'
     Create: יצירה
     DELETE: 'מחיקה מאתר הטיוטה'
     DELETEFP: מחיקה
     DESCREMOVED: 'ו־{count} צאצאים'
-    DUPLICATED: 'Duplicated ''{title}'' successfully'
-    DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: דוא״ל
     EditTree: 'עריכת העץ'
     ListFiltered: 'רשימה מסוננת.'
-    MENUTITLE: 'עריכת העמוד'
     NEWPAGE: '{pagetype} חדש'
     PAGENOTEXISTS: 'עמוד זה אינו קיים במערכת'
     PAGES: עמודים
@@ -96,69 +90,59 @@ he_IL:
     PAGETYPEOPT: 'סוג העמוד'
     PUBALLCONFIRM: 'פרסום העמודים באתר, תוך העתקת כל הטיוטות לגרסה הסופית'
     PUBALLFUN: 'פרסום הכול'
-    PUBALLFUN2: 'לחיצה על כפתור זה מקבילה לאישור פרסום על כל העמודים באתר. הכפתור נועד לאישורים גורפים שבאו בעקבות עריכה נרחבת באתר דוגמת ההגדרות הראשוניות בעת יצירת אתר זה'
+    PUBALLFUN2: "לחיצה על כפתור זה מקבילה לאישור פרסום על כל העמודים באתר. הכפתור נועד לאישורים גורפים שבאו בעקבות עריכה נרחבת באתר דוגמת ההגדרות הראשוניות בעת יצירת אתר זה"
     PUBPAGES: 'בוצע: פורסמו {count} עמודים'
     PageAdded: 'העמוד נוצר בהצלחה'
-    REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: '''{title}'' הוסר מהאתר שפורסם'
     REMOVEDPAGEFROMDRAFT: '''$s'' הוסר מאתר הטיוטה'
     RESTORE: שחזור
     RESTORED: '''{title}'' שוחזר בהצלחה'
     ROLLBACK: 'שחזור לגרסה זו'
-    ROLLEDBACKPUBv2: 'Rolled back to published version.'
-    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
     SAVE: שמירה
-    SAVEDRAFT: 'Save draft'
     TabContent: תוכן
     TabHistory: היסטורייה
     TabSettings: הגדרות
     TreeFiltered: 'עץ מסונן.'
     TreeFilteredClear: 'ביטול הסינון'
-  CMSMain_left.ss:
-    'APPLY FILTER': 'החלת המסנן'
+    MENUTITLE: 'עריכת העמוד'
+  CMSMain_left_ss:
+    APPLY_FILTER: 'החלת המסנן'
     RESET: איפוס
   CMSPageAddController:
-    MENUTITLE: 'הוספת עמוד'
     ParentMode_child: 'תחת עמוד אחר'
     ParentMode_top: 'רמה עליונה'
-  CMSPageEditController:
-    MENUTITLE: 'עריכת עמוד'
+    MENUTITLE: 'הוספת עמוד'
   CMSPageHistoryController:
     COMPAREMODE: 'מצב השוואה (יש לבחור שניים)'
     COMPAREVERSIONS: 'השוואת גרסאות'
     COMPARINGVERSION: 'השוואה בין הגרסאות {version1} ו־{version2}.'
-    MENUTITLE: היסטוריה
     REVERTTOTHISVERSION: 'חזרה לגרסה זו'
     SHOWUNPUBLISHED: 'הצגת גרסאות שלא פוסרמו'
     SHOWVERSION: 'הצגת הגרסה'
     VIEW: צפייה
-    VIEWINGLATEST: 'Currently viewing the latest version.'
     VIEWINGVERSION: 'הגרסה הנוכחית המופיעה {version}.'
-  CMSPageHistoryController_versions.ss:
-    AUTHOR: 'נוצר על ידי'
+    MENUTITLE: היסטוריה
+  CMSPageHistoryController_versions_ss:
+    AUTHOR: נוצר על ידי
     NOTPUBLISHED: 'לא פורסם'
-    PUBLISHER: 'פורסם על ידי'
-    UNKNOWN: 'לא ידוע'
+    PUBLISHER: פורסם על ידי
+    UNKNOWN: לא ידוע
     WHEN: מתי
-  CMSPageSettingsController:
-    MENUTITLE: 'עריכת העמוד'
   CMSPagesController:
     GalleryView: 'תצוגת גלריה'
     ListView: 'תצוגת רשימה'
     MENUTITLE: עמודים
     TreeView: 'תצוגת עץ'
-  CMSPagesController_ContentToolbar.ss:
+  CMSPagesController_ContentToolbar_ss:
     ENABLEDRAGGING: 'גרירה והשלכה'
-    MULTISELECT: 'בחירה מרובה'
-  CMSPagesController_Tools.ss:
-    FILTER: 'מסנן'
+    MULTISELECT: בחירה מרובה
+  CMSPagesController_Tools_ss:
+    FILTER: מסנן
   CMSSearch:
     FILTERDATEFROM: מ־
     FILTERDATEHEADING: תאריך
     FILTERDATETO: עד
     FILTERLABELTEXT: תוכן
-  CMSSettingsController:
-    MENUTITLE: הגדרות
   CMSSiteTreeFilter_ChangedPages:
     Title: 'דפים ששונו'
   CMSSiteTreeFilter_DeletedPages:
@@ -170,8 +154,6 @@ he_IL:
   ContentController:
     ARCHIVEDSITE: 'הצגה מקדימה של הגרסה'
     ARCHIVEDSITEFROM: 'אתר ארכיון מהתאריך'
-    CMS: CMS
-    DRAFT: Draft
     DRAFTSITE: 'אתר טיוטה'
     DRAFT_SITE_ACCESS_RESTRICTION: 'עליך להיכנס עם ססמת המערכת כדי לצפות בדף טיוטה או בתוכן שמור. <a href="%s">לחזרה לאתר יש ללחוץ כאן</a>'
     Email: דוא״ל
@@ -180,26 +162,15 @@ he_IL:
     InstallSecurityWarning: 'מטעמי אבטחה עליך למחוק כעת את קובצי ההתקנה, אלמלא תכניותיך הן להתקין מחדש מאוחר יותר (<em>נדרשת כניסת מנהל, פרטים להלן</em>). שרת האינטרנט יזדקק רק לעת עתה לגישה לכתיבה לתיקייה „assets“, ניתן להסיר את גישת הכתיבה מכל שאר התיקיות. <a href="{link}" style="text-align: center;">יש ללחוץ כאן כדי למחוק את קובצי ההתקנה.</a>'
     InstallSuccessCongratulations: 'מערכת ה־SilverStripe הותקנה בהצלחה!'
     LOGGEDINAS: 'נכנסת בשם'
-    LOGIN: 'כניסה'
-    LOGOUT: יציאה
+    LOGIN: כניסה
+    LOGOUT: 'יציאה'
     NOTLOGGEDIN: 'לא נכנסת'
-    PUBLISHED: Published
     PUBLISHEDSITE: 'אתר שפורסם'
     Password: ססמה
     PostInstallTutorialIntro: 'אתר זה הנו גרסה מופשטת של אתר SilverStrip 3. כדי להרחיב את האתר, נא לגשת לכתובת {link}.'
-    StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'לא ניתן למחוק את קובצי ההתקנה. נא למחוק את הקבצים שלהלן ידנית'
     VIEWPAGEIN: 'צפייה בעמוד תחת:'
   ErrorPage:
-    CODE: 'הודעת שגיאה'
-    DEFAULTERRORPAGECONTENT: '<p>מצטערים, נראה שהדף שניסית להגיע אליו אינו קיים</p><p>נא לבדוק את הכתובת המבוקשת ולנסות שנית</p>'
-    DEFAULTERRORPAGETITLE: 'הדף המבוקש לא נמצא'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>אירעה תקלה בעת הטיפול בבקשתך, עמך הסליחה.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'שגיאת שרת'
-    DESCRIPTION: 'תוכן מותאם אישית למקרי שגיאות שונים (לדוגמה: „העמוד לא נמצא“)'
-    ERRORFILEPROBLEM: 'שגיאה בפתיחת הקובץ „{filename}“ לכתיבה. נא לבדוק את הרשאות הקובץ.'
-    PLURALNAME: 'עמודי שגיאה'
-    SINGULARNAME: 'עמוד שגיאה'
     400: '400 - בקשה שגויה'
     401: '401 - אין הרשאה'
     403: '403 - אין כניסה'
@@ -223,6 +194,15 @@ he_IL:
     503: '503 - השירות אינו זמין'
     504: '504 - תם הזמן שהוקצב לשער הגישה'
     505: '505 - גרסת ה־HTTP לא נתמכת'
+    CODE: 'הודעת שגיאה'
+    DEFAULTERRORPAGECONTENT: '<p>מצטערים, נראה שהדף שניסית להגיע אליו אינו קיים</p><p>נא לבדוק את הכתובת המבוקשת ולנסות שנית</p>'
+    DEFAULTERRORPAGETITLE: 'הדף המבוקש לא נמצא'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>אירעה תקלה בעת הטיפול בבקשתך, עמך הסליחה.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'שגיאת שרת'
+    DESCRIPTION: 'תוכן מותאם אישית למקרי שגיאות שונים (לדוגמה: „העמוד לא נמצא“)'
+    ERRORFILEPROBLEM: 'שגיאה בפתיחת הקובץ „{filename}“ לכתיבה. נא לבדוק את הרשאות הקובץ.'
+    PLURALNAME: 'עמודי שגיאה'
+    SINGULARNAME: 'עמוד שגיאה'
   Folder:
     AddFolderButton: 'הוספת תיקייות'
     DELETEUNUSEDTHUMBNAILS: 'מחיקת תמונות ממוזערות שאינן בשימוש'
@@ -230,12 +210,12 @@ he_IL:
     UNUSEDTHUMBNAILSTITLE: 'תמונות ממוזערות שאינן בשימוש'
     UploadFilesButton: העלאה
   LeftAndMain:
-    DELETED: 'נמחק.'
-    PreviewButton: 'תצוגה מקדימה'
-    SAVEDUP: 'נשמר.'
+    DELETED: נמחק.
+    PreviewButton: תצוגה מקדימה
+    SAVEDUP: נשמר.
     STATUSPUBLISHEDSUCCESS: '''{title}'' פורסם בהצלחה'
     SearchResults: 'תוצאות החיפוש'
-    VersionUnknown: 'לא ידועה'
+    VersionUnknown: לא ידועה
   Permission:
     CMS_ACCESS_CATEGORY: 'גישה ל־CMS'
   Permissions:
@@ -253,14 +233,10 @@ he_IL:
     SINGULARNAME: 'עמוד הפנייה'
     YOURPAGE: 'עמוד באתר שלך'
   ReportAdmin:
-    MENUTITLE: דוחות
     ReportTitle: כותרת
+    MENUTITLE: דוחות
   ReportAdminForm:
     FILTERBY: 'סינון לפי'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
-    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
-    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
   SearchForm:
     GO: לעבור
     SEARCH: חיפוש
@@ -277,8 +253,6 @@ he_IL:
     OtherGroupTitle: אחר
     ParameterLiveCheckbox: 'בדיקת האתר החי'
     REPEMPTY: 'הדוח {title} ריק.'
-  SilverStripeNavigator:
-    ARCHIVED: Archived
   SilverStripeNavigatorLink:
     ShareInstructions: 'כדי לשתף קישור עמוד זה יש להעתיק ולהדביק את הקישור שלהלן.'
     ShareLink: 'שיתוף הקישור'
@@ -297,11 +271,11 @@ he_IL:
     TABACCESS: גישה
     TABMAIN: ראשי
     TAGLINEDEFAULT: 'שורת התיוג שלך כאן'
-    THEME: 'ערכת עיצוב'
+    THEME: ערכת עיצוב
     TOPLEVELCREATE: 'מי יכול ליצור עמודים בראש האתר?'
     VIEWHEADER: 'מי יכול לצפות בעמודים באתר זה?'
   SiteTree:
-    ACCESSANYONE: 'כל אחד'
+    ACCESSANYONE: כל אחד
     ACCESSHEADER: 'מי יכול לצפות בעמוד זה?'
     ACCESSLOGGEDIN: 'משתמשים שנכנסו'
     ACCESSONLYTHESE: 'רק האנשים האלה (יש לבחור מהרשימה)'
@@ -311,10 +285,7 @@ he_IL:
     APPEARSVIRTUALPAGES: 'תוכן זה מופיע גם בעמודים הווירטואליים באגפים של {title}.'
     BUTTONCANCELDRAFT: 'ביטול שינויי הטיוטה'
     BUTTONCANCELDRAFTDESC: 'למחוק את הטיוטה שלך ולהחזיר לעמוד הנוכחי שפורסם'
-    BUTTONPUBLISHED: Published
-    BUTTONSAVED: Saved
-    BUTTONSAVEPUBLISH: 'Save & publish'
-    BUTTONUNPUBLISH: 'ביטול הפרסום'
+    BUTTONUNPUBLISH: ביטול הפרסום
     BUTTONUNPUBLISHDESC: 'הסרת עמוד זה מהאתר שפורסם'
     CREATED: 'תאריך היצירה'
     Comments: תגובות
@@ -324,9 +295,9 @@ he_IL:
     DEFAULTCONTACTCONTENT: '<p>ניתן למלא עמוד זה בתוכן משלך, או למחוק אותו וליצור עמודים משלך.<br /></p>'
     DEFAULTCONTACTTITLE: 'יצירת קשר'
     DEFAULTHOMECONTENT: '<p>ברוך בואך ל־SilverStripe! זהו עמוד הבית כבררת המחדל. ניתן לערוך עמוד זה על ידי פתיחת <a href="admin/">ה־CMS</a>. כעת ניתן לגשת <a href="http://doc.silverstripe.org">לתיעוד עבור המפתחים</a>, או לגשת ללמוד <a href="http://doc.silverstripe.org/doku.php?id=tutorials">מהמדריכים.</a></p>'
-    DEFAULTHOMETITLE: 'דף הבית'
+    DEFAULTHOMETITLE: דף הבית
     DELETEDPAGEHELP: 'העמוד אינו מפורסם עוד'
-    DELETEDPAGESHORT: 'נמחק'
+    DELETEDPAGESHORT: נמחק
     DEPENDENT_NOTE: 'העמודים הבאים תלויים בעמוד זה. בין אלו נכללים, עמודים וירטואליים, עמודי הפנייה ועמודים עם קישורי תוכן.'
     DESCRIPTION: 'דף תוכן גנרי'
     DependtPageColumnLinkType: 'סוג הקישור'
@@ -338,25 +309,19 @@ he_IL:
     EDIT_ALL_DESCRIPTION: 'עריכת עמוד כלשהו'
     EDIT_ALL_HELP: 'היכולת לערוך כל עמוד באתר זה, ללא תלות בהגדרות בלשונית הגישה.  דורש את ההרשאה „גישה לאגף „עמודים““.'
     Editors: 'קבוצות עורכים'
-    GroupPlaceholder: 'Click to select group'
     HASBROKENLINKS: 'דף זה מכיל קישורים שבורים'
     HTMLEDITORTITLE: תוכן
     INHERIT: 'הורשה מדף ההורה'
-    LASTPUBLISHED: 'Last published'
-    LASTSAVED: 'Last saved'
     LASTUPDATED: 'עודכן לאחרונה'
     LINKCHANGENOTE: 'החלפת הקישורים בעמוד זה ישפיע גם על הקישורים של כל העמודים הצאצאים.'
     MENUTITLE: 'תווית ניווט'
-    METADESC: תיאור
+    METADESC: 'תיאור'
     METADESCHELP: 'מנועי החיפוש משתמשים בתוכן זה כדי להציג תוצאות חיפוש (למרות שלא תהיה לכך השפעה על הדירוג שלהם).'
     METAEXTRA: 'תגי על נוספים'
     METAEXTRAHELP: 'תגיות HTML לנתוני על נוספים. לדוגמה &lt;meta name="שם_מותאם_אישית" content="התוכן שלך כאן" /&gt;'
     MODIFIEDONDRAFTHELP: 'בעמוד יש שינויים שלא פורסמו'
-    MODIFIEDONDRAFTSHORT: 'השתנה'
-    MetadataToggle: 'נתוני על'
-    MoreOptions: 'More options'
-    NOTPUBLISHED: 'Not published'
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
+    MODIFIEDONDRAFTSHORT: השתנה
+    MetadataToggle: נתוני על
     PAGELOCATION: 'מיקום העמוד'
     PAGETITLE: 'שם הדף'
     PAGETYPE: 'סוג דף'
@@ -377,7 +342,7 @@ he_IL:
     SHOWINMENUS: 'להציג בתפריטים?'
     SHOWINSEARCH: 'לכלול בחיפוש?'
     SINGULARNAME: עמוד
-    TABBEHAVIOUR: 'התנהגות'
+    TABBEHAVIOUR: התנהגות
     TABCONTENT: 'תוכן ראשי'
     TABDEPENDENT: 'עמודים תלויים'
     TOPLEVEL: 'תוכן האתר (רמה עליונה)'
@@ -385,17 +350,15 @@ he_IL:
     URLSegment: 'מקטע כתובת'
     VIEWERGROUPS: 'קבוצות צופים'
     VIEW_ALL_DESCRIPTION: 'צפייה בכל עמוד שהוא'
-    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: 'צפייה בתוכן טיוטה'
     VIEW_DRAFT_CONTENT_HELP: 'חל על צפייה בעמודים מחוץ ל־CMD במצב טיוטה. חיוני לצורך שיתוף פעולה עם גורמים חיצוניים שאין להם גישה ל־CMS.'
     Viewers: 'קבוצות צופים'
-    Visibility: 'אופן הצגה'
+    Visibility: אופן הצגה
     has_one_Parent: 'דף הורה'
     many_many_BackLinkTracking: 'מעקב אחרי קישור חוזר'
     many_many_ImageTracking: 'מעקב אחר תמונה'
     many_many_LinkTracking: 'מעקב אחר קישורים'
   SiteTreeURLSegmentField:
-    EMPTY: 'Please enter a URL Segment or click cancel'
     HelpChars: ' תווים מיוחדים מומרים אוטומטית או שהם מוסרים.'
   StaticExporter:
     BASEURL: 'כתובת בסיס'
@@ -403,11 +366,11 @@ he_IL:
     NAME: 'מתבצע יצוא'
   TableListField:
     SELECT: 'בחירה:'
-  TableListField.ss:
+  TableListField_ss:
     NOITEMSFOUND: 'לא נמצאו פריטים'
     SORTASC: 'סידור בסדר עולה'
     SORTDESC: 'סידור בסדר יורד'
-  TableListField_PageControls.ss:
+  TableListField_PageControls_ss:
     DISPLAYING: מוצגים
     OF: מתוך
     TO: עד
@@ -417,20 +380,20 @@ he_IL:
     VIEWPREVIOUS: 'הצגת הקודם'
   TreeTools:
     DisplayLabel: 'תצוגה:'
-  URLSegmentField:
-    Cancel: Cancel
-    Edit: Edit
-    OK: OK
-  ViewArchivedEmail.ss:
+  ViewArchivedEmail_ss:
     CANACCESS: 'ניתן להיכנס לארכיון האתר בקישור הזה:'
     HAVEASKED: 'ביקשת לצפות בתוכן האתר שלנו תחת'
   VirtualPage:
-    CHOOSE: 'Linked Page'
     DESCRIPTION: 'הצגת תוכן של עמוד אחר'
-    EDITCONTENT: 'Edit content on linked page'
-    EditLink: edit
     HEADER: 'זהו עמוד וירטואלי'
-    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
     PLURALNAME: 'דפים וירטואליים'
     PageTypNotAllowedOnRoot: 'סוג העמוד המקורי „{type}“ אינו מורשה ברמת העל של עמוד וירטואלי זה'
     SINGULARNAME: 'דף וירטואלי'
+  CMSFileAddController:
+    MENUTITLE: קבצים
+  CMSPageEditController:
+    MENUTITLE: 'עריכת עמוד'
+  CMSPageSettingsController:
+    MENUTITLE: 'עריכת העמוד'
+  CMSSettingsController:
+    MENUTITLE: הגדרות
