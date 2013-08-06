@@ -163,6 +163,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	private static $extensions = array(
 		"Hierarchy",
 		"Versioned('Stage', 'Live')",
+		"SiteTreeLinkTracking"
 	);
 	
 	private static $searchable_fields = array(
@@ -1469,28 +1470,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 	
 	public function syncLinkTracking() {
-		// Build a list of HTMLText fields
-		$allFields = $this->db();
-		$htmlFields = array();
-		foreach($allFields as $field => $fieldSpec) {
-			if(preg_match('/([^(]+)/', $fieldSpec, $matches)) {
-				$class = $matches[0];
-				if(class_exists($class)){
-					if($class == 'HTMLText' || is_subclass_of($class, 'HTMLText')) $htmlFields[] = $field;
-				}
-			}
-		}
-
-		$linkedPages = array();
-		$linkedFiles = array();
-		$this->HasBrokenLink = false;
-		$this->HasBrokenFile = false;
-		
-		foreach($htmlFields as $field) {
-			$formField = new HTMLEditorField($field);
-			$formField->setValue($this->$field);
-			$formField->saveInto($this);
-		}
 		$this->extend('augmentSyncLinkTracking');
 	}
 	
