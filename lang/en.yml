@@ -113,7 +113,7 @@ en:
     MENUTITLE: 'Edit Page'
     AddPageRestriction: 'Note: Some page types are not allowed for this selection'
   CMSMain_left_ss:
-    'APPLY FILTER': 'Apply Filter'
+    'APPLY_FILTER': 'Apply Filter'
     RESET: Reset
   CMSPageAddController:
     ParentMode_child: 'Under another page'
@@ -266,7 +266,7 @@ en:
     ParameterLiveCheckbox: 'Check live site'
     REPEMPTY: 'The {title} report is empty.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'To share this page, copy and paste the link below.'
+    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
     ShareLink: 'Share link'
   SilverStripeNavigatorLinkl:
     CloseLink: Close
