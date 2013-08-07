@@ -1,166 +1,44 @@
 zh_TW:
   AssetAdmin:
-    ADDFILES: 'Add Files'
-    ActionAdd: 'Add folder'
-    AppCategoryArchive: Archive
-    AppCategoryAudio: Audio
-    AppCategoryDocument: Document
-    AppCategoryFlash: Flash
-    AppCategoryImage: Image
-    AppCategoryVideo: Video
-    BackToFolder: 'Back to folder'
-    CREATED: Date
-    CurrentFolderOnly: 'Limit to current folder?'
-    DetailsView: Details
-    FILES: Files
-    FILESYSTEMSYNC: 'Sync files'
-    FILESYSTEMSYNCTITLE: 'Update the CMS database entries of files on the filesystem. Useful when new files have been uploaded outside of the CMS, e.g. through FTP.'
-    FROMTHEINTERNET: 'From the internet'
-    FROMYOURCOMPUTER: 'From your computer'
-    Filetype: 'File type'
-    ListView: 'List View'
-    MENUTITLE: Files
     NEWFOLDER: 新資料夾
-    SIZE: Size
-    THUMBSDELETED: '{count} unused thumbnails have been deleted'
-    TreeView: 'Tree View'
-    Upload: Upload
-  AssetAdmin_DeleteBatchAction:
-    TITLE: 'Delete folders'
-  AssetAdmin_Tools:
-    FILTER: Filter
-  AssetAdmin_left.ss:
+  AssetAdmin_left_ss:
     GO: 執行
-  AssetTableField:
-    BACKLINKCOUNT: 'Used on:'
-    PAGES: page(s)
-  BackLink_Button.ss:
+  BackLink_Button_ss:
     Back: 返回
-  BrokenLinksReport:
-    Any: Any
-    BROKENLINKS: 'Broken links report'
-    CheckSite: 'Check site'
-    CheckSiteDropdownDraft: 'Draft Site'
-    CheckSiteDropdownPublished: 'Published Site'
-    ColumnDateLastModified: 'Date last modified'
-    ColumnDateLastPublished: 'Date last published'
-    ColumnProblemType: 'Problem type'
-    ColumnURL: URL
-    HasBrokenFile: 'has broken file'
-    HasBrokenLink: 'has broken link'
-    HasBrokenLinkAndFile: 'has broken link and file'
-    HoverTitleEditPage: 'Edit page'
-    PageName: 'Page name'
-    ReasonDropdown: 'Problem to check'
-    ReasonDropdownBROKENFILE: 'Broken file'
-    ReasonDropdownBROKENLINK: 'Broken link'
-    ReasonDropdownRPBROKENLINK: 'Redirector page pointing to non-existent page'
-    ReasonDropdownVPBROKENLINK: 'Virtual page pointing to non-existent page'
-    RedirectorNonExistent: 'redirector page pointing to non-existent page'
-    VirtualPageNonExistent: 'virtual page pointing to non-existent page'
-  CMSAddPageController:
-    Title: 'Add page'
   CMSBatchActions:
-    DELETED_DRAFT_PAGES: 'Deleted %d pages from draft site, %d failures'
-    DELETED_PAGES: 'Deleted %d pages from published site, %d failures'
-    DELETE_DRAFT_PAGES: 從草稿網站刪除
-    DELETE_PAGES: 從已出版網站刪除
+    DELETE_DRAFT_PAGES: '從草稿網站刪除'
+    DELETE_PAGES: '從已出版網站刪除'
     PUBLISHED_PAGES: '已出版 %d 網頁, %d 失敗'
     PUBLISH_PAGES: 出版
     UNPUBLISHED_PAGES: '未出版 %d 網頁'
     UNPUBLISH_PAGES: 未出版的
-  CMSFileAddController:
-    MENUTITLE: Files
   CMSMain:
-    ACCESS: 'Access to ''{title}'' section'
-    ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
-    AddNew: 'Add new page'
-    AddNewButton: 'Add new'
-    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
-    ChoosePageParentMode: 'Choose where to create this page'
-    ChoosePageType: 'Choose page type'
-    Create: Create
-    DELETE: 'Delete draft'
-    DELETEFP: Delete
-    DESCREMOVED: 'and {count} descendants'
-    DUPLICATED: 'Duplicated ''{title}'' successfully'
-    DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: 電子郵件
-    EditTree: 'Edit Tree'
-    ListFiltered: 'Filtered list.'
-    MENUTITLE: 'Edit Page'
-    NEWPAGE: 'New {pagetype}'
     PAGENOTEXISTS: '這頁不存在'
-    PAGES: Pages
-    PAGETYPEANYOPT: Any
-    PAGETYPEOPT: 'Page Type'
     PUBALLCONFIRM: '請發布所有網頁'
     PUBALLFUN: '"全部發布" 功能'
-    PUBALLFUN2: '按下這個按鈕就是如同到每頁按「發布」。當有很多內容更變時，這個功能可以省時。'
-    PUBPAGES: 'Done: Published {count} pages'
-    PageAdded: 'Successfully created page'
-    REMOVED: 'Deleted ''{title}''{description} from live site'
-    REMOVEDPAGE: 'Removed ''{title}'' from the published site'
-    REMOVEDPAGEFROMDRAFT: 'Removed ''%s'' from the draft site'
-    RESTORE: Restore
-    RESTORED: 'Restored ''{title}'' successfully'
-    ROLLBACK: 回複到這個的版本
-    ROLLEDBACKPUBv2: 'Rolled back to published version.'
-    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
+    PUBALLFUN2: "按下這個按鈕就是如同到每頁按「發布」。當有很多內容更變時，這個功能可以省時。"
+    ROLLBACK: '回複到這個的版本'
     SAVE: 儲存
-    SAVEDRAFT: 'Save draft'
-    TabContent: Content
-    TabHistory: History
-    TabSettings: Settings
-    TreeFiltered: 'Filtered tree.'
-    TreeFilteredClear: 'Clear filter'
-  CMSMain_left.ss:
-    'APPLY FILTER': 'Apply Filter'
-    RESET: Reset
-  CMSPageAddController:
-    MENUTITLE: 'Add page'
-    ParentMode_child: 'Under another page'
-    ParentMode_top: 'Top level'
-  CMSPageEditController:
-    MENUTITLE: 'Edit Page'
   CMSPageHistoryController:
     COMPAREMODE: '比較模式(選擇兩個)'
-    COMPAREVERSIONS: 比較版本
-    COMPARINGVERSION: 'Comparing versions {version1} and {version2}.'
-    MENUTITLE: 歷史
-    REVERTTOTHISVERSION: 回復到此版本
-    SHOWUNPUBLISHED: 顯示未出版的版本
-    SHOWVERSION: 顯示版本
+    COMPAREVERSIONS: '比較版本'
+    REVERTTOTHISVERSION: '回復到此版本'
+    SHOWUNPUBLISHED: '顯示未出版的版本'
+    SHOWVERSION: '顯示版本'
     VIEW: 瀏覽
-    VIEWINGLATEST: 'Currently viewing the latest version.'
-    VIEWINGVERSION: 'Currently viewing version {version}.'
-  CMSPageHistoryController_versions.ss:
-    AUTHOR: '作者'
-    NOTPUBLISHED: 未發行的
-    PUBLISHER: '發行者'
+    MENUTITLE: 歷史
+  CMSPageHistoryController_versions_ss:
+    AUTHOR: 作者
+    NOTPUBLISHED: '未發行的'
+    PUBLISHER: 發行者
     UNKNOWN: 未知的
     WHEN: 何時
-  CMSPageSettingsController:
-    MENUTITLE: '編輯網頁'
   CMSPagesController:
-    GalleryView: 圖庫瀏覽
+    GalleryView: '圖庫瀏覽'
     ListView: '清單瀏覽'
-    MENUTITLE: '網頁'
-    TreeView: 樹狀瀏覽
-  CMSPagesController_ContentToolbar.ss:
-    ENABLEDRAGGING: 'Drag''n''drop'
-    MULTISELECT: Multi-selection
-  CMSPagesController_Tools.ss:
-    FILTER: Filter
-  CMSSearch:
-    FILTERDATEFROM: 從
-    FILTERDATEHEADING: 日期
-    FILTERDATETO: 到
-    FILTERLABELTEXT: 現在
-  CMSSettingsController:
-    MENUTITLE: 設定值
-  CMSSiteTreeFilter_ChangedPages:
-    Title: 'Changed pages'
+    MENUTITLE: 網頁
+    TreeView: '樹狀瀏覽'
   CMSSiteTreeFilter_DeletedPages:
     Title: '所有網頁, 包括已刪除的'
   CMSSiteTreeFilter_Search:
@@ -168,168 +46,58 @@ zh_TW:
   ContentControl:
     NOTEWONTBESHOWN: '備註: 此訊息將不會顯示給您的訪客看'
   ContentController:
-    ARCHIVEDSITE: 'Preview version'
-    ARCHIVEDSITEFROM: 'Archived site from'
-    CMS: CMS
-    DRAFT: Draft
-    DRAFTSITE: 'Draft Site'
     DRAFT_SITE_ACCESS_RESTRICTION: '你必須先登入才能瀏覽草稿或歸檔內容。<a href="%s">回到正式發布站</a>'
-    Email: Email
-    INSTALL_SUCCESS: 'Installation Successful!'
-    InstallFilesDeleted: 'Installation files have been successfully deleted.'
-    InstallSecurityWarning: 'For security reasons you should now delete the install files, unless you are planning to reinstall later (<em>requires admin login, see above</em>). The web server also now only needs write access to the "assets" folder, you can remove write access from all other folders. <a href="{link}" style="text-align: center;">Click here to delete the install files.</a>'
-    InstallSuccessCongratulations: 'SilverStripe has been successfully installed!'
-    LOGGEDINAS: 'Logged in as'
-    LOGIN: Login
-    LOGOUT: 'Log out'
-    NOTLOGGEDIN: 'Not logged in'
-    PUBLISHED: Published
-    PUBLISHEDSITE: 'Published Site'
-    Password: Password
-    PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
-    StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
-    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
-    VIEWPAGEIN: 'View Page in:'
   ErrorPage:
-    CODE: 錯誤代碼
+    CODE: '錯誤代碼'
     DEFAULTERRORPAGECONTENT: '<p>抱歉, 看來您正再嘗試存取一個不存在的網頁</p><p>請檢查您正在嘗試存取網址的拼寫並再試一次.</p>'
     DEFAULTERRORPAGETITLE: '未發現網頁'
     DEFAULTSERVERERRORPAGECONTENT: '<p>抱歉, 處裡您的要求發生一個問題</p>'
-    DEFAULTSERVERERRORPAGETITLE: 伺服器錯誤
-    DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
-    ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
-    PLURALNAME: 'Error Pags'
-    SINGULARNAME: 'Error Page'
-    400: '400 - Bad Request'
-    401: '401 - Unauthorized'
-    403: '403 - Forbidden'
-    404: '404 - Not Found'
-    405: '405 - Method Not Allowed'
-    406: '406 - Not Acceptable'
-    407: '407 - Proxy Authentication Required'
-    408: '408 - Request Timeout'
-    409: '409 - Conflict'
-    410: '410 - Gone'
-    411: '411 - Length Required'
-    412: '412 - Precondition Failed'
-    413: '413 - Request Entity Too Large'
-    414: '414 - Request-URI Too Long'
-    415: '415 - Unsupported Media Type'
-    416: '416 - Request Range Not Satisfiable'
-    417: '417 - Expectation Failed'
-    500: '500 - Internal Server Error'
-    501: '501 - Not Implemented'
-    502: '502 - Bad Gateway'
-    503: '503 - Service Unavailable'
-    504: '504 - Gateway Timeout'
-    505: '505 - HTTP Version Not Supported'
+    DEFAULTSERVERERRORPAGETITLE: '伺服器錯誤'
   Folder:
-    AddFolderButton: 新增資料夾
-    DELETEUNUSEDTHUMBNAILS: 刪除未使用的縮圖
-    UNUSEDFILESTITLE: 未使用的檔案
-    UNUSEDTHUMBNAILSTITLE: 未使用的縮圖
+    AddFolderButton: '新增資料夾'
+    DELETEUNUSEDTHUMBNAILS: '刪除未使用的縮圖'
+    UNUSEDFILESTITLE: '未使用的檔案'
+    UNUSEDTHUMBNAILSTITLE: '未使用的縮圖'
     UploadFilesButton: 上傳
-  LeftAndMain:
-    DELETED: Deleted.
-    PreviewButton: '預覽'
-    SAVEDUP: Saved.
-    STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
-    SearchResults: 搜尋結果
-    VersionUnknown: 未知
-  Permission:
-    CMS_ACCESS_CATEGORY: 'CMS Access'
-  Permissions:
-    CONTENT_CATEGORY: 'Content permissions'
-    PERMISSIONS_CATEGORY: 'Roles and access permissions'
   RedirectorPage:
     DESCRIPTION: '重新導向到一個內部不同的網頁'
     HASBEENSETUP: '沒有任何地方被重新導向的一個重新導向網頁已被設定.'
     HEADER: '本網頁將重新導向用戶至別的網頁'
     OTHERURL: '其他網站網址'
-    PLURALNAME: 'Redirector Pags'
-    REDIRECTTO: 重新導向到
-    REDIRECTTOEXTERNAL: 別的網站
+    REDIRECTTO: '重新導向到'
+    REDIRECTTOEXTERNAL: '別的網站'
     REDIRECTTOPAGE: '在您網站上的一個網頁'
-    SINGULARNAME: 'Redirector Page'
     YOURPAGE: '在您網站上的網頁'
-  ReportAdmin:
-    MENUTITLE: Reports
-    ReportTitle: Title
-  ReportAdminForm:
-    FILTERBY: 'Filter by'
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
-    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
-    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
-  SearchForm:
-    GO: 走
-    SEARCH: 搜尋
-    SearchResults: 搜尋結果
   SideReport:
-    BROKENFILES: 'Pages with broken files'
-    BROKENLINKS: 'Pages with broken links'
-    BROKENREDIRECTORPAGES: 'RedirectorPages pointing to deleted pages'
-    BROKENVIRTUALPAGES: 'VirtualPages pointing to deleted pages'
-    BrokenLinksGroupTitle: 'Broken links reports'
-    ContentGroupTitle: 'Content reports'
     EMPTYPAGES: '空頁'
     LAST2WEEKS: '網頁在過去兩個禮拜有被更改過'
-    OtherGroupTitle: Other
-    ParameterLiveCheckbox: 'Check live site'
-    REPEMPTY: 'The {title} report is empty.'
-  SilverStripeNavigator:
-    ARCHIVED: Archived
   SilverStripeNavigatorLink:
     ShareInstructions: '分享一個由此到此的網頁, 複製與貼上下面的鏈結.'
-    ShareLink: 分享鏈結
+    ShareLink: '分享鏈結'
   SilverStripeNavigatorLinkl:
     CloseLink: 關閉
-  SiteConfig:
-    DEFAULTTHEME: '(Use default theme)'
-    EDITHEADER: 'Who can edit pages on this site?'
-    EDIT_PERMISSION: 'Manage site configuration'
-    EDIT_PERMISSION_HELP: 'Ability to edit global access settings/top-level page permissions.'
-    PLURALNAME: 'Site Configs'
-    SINGULARNAME: 'Site Config'
-    SITENAMEDEFAULT: 'Your Site Name'
-    SITETAGLINE: 'Site Tagline/Slogan'
-    SITETITLE: 'Site title'
-    TABACCESS: Access
-    TABMAIN: Main
-    TAGLINEDEFAULT: 'your tagline here'
-    THEME: Theme
-    TOPLEVELCREATE: 'Who can create pages in the root of the site?'
-    VIEWHEADER: 'Who can view pages on this site?'
   SiteTree:
     ACCESSANYONE: 所有人
     ACCESSHEADER: '誰可以瀏覽這頁？'
     ACCESSLOGGEDIN: '已登入的使用者'
     ACCESSONLYTHESE: '只有這些人(從清單選擇)'
-    ADDEDTODRAFTHELP: 'Page has not been published yet'
-    ADDEDTODRAFTSHORT: Draft
     ALLOWCOMMENTS: '允許留言嗎？'
-    APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
-    BUTTONCANCELDRAFT: 取消草稿更變
-    BUTTONCANCELDRAFTDESC: 刪除草稿並回複到正式發布的版本
-    BUTTONPUBLISHED: Published
-    BUTTONSAVED: Saved
-    BUTTONSAVEPUBLISH: 'Save & publish'
+    BUTTONCANCELDRAFT: '取消草稿更變'
+    BUTTONCANCELDRAFTDESC: '刪除草稿並回複到正式發布的版本'
     BUTTONUNPUBLISH: 取消發布
-    BUTTONUNPUBLISHDESC: 從正式發布站移除
-    CREATED: 建立日期
+    BUTTONUNPUBLISHDESC: '從正式發布站移除'
+    CREATED: '建立日期'
     Comments: 意見
-    Content: '內容'
+    Content: 內容
     DEFAULTABOUTCONTENT: '<p>您可以用您自己的內容填入本網頁, 或是刪除它並建立您自己的網頁<br /></p>'
-    DEFAULTABOUTTITLE: 關於我們
+    DEFAULTABOUTTITLE: '關於我們'
     DEFAULTCONTACTCONTENT: '<p>您可以用您自己的內容填入本網頁, 或是刪除它並建立您自己的網頁<br /></p>'
-    DEFAULTCONTACTTITLE: 連絡我們
+    DEFAULTCONTACTTITLE: '連絡我們'
     DEFAULTHOMECONTENT: '<p>歡迎光臨 SilverStrip! 這是預設的主頁. 您可以開啟<a href="admin/">the CMS</a>來編輯這個網頁. 您現在可存取<a href="http://doc.silverstripe.org">developer documentation</a>, 或是開始<a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
-    DEFAULTHOMETITLE: '首頁'
-    DELETEDPAGEHELP: 'Page is no longer published'
+    DEFAULTHOMETITLE: 首頁
     DELETEDPAGESHORT: 已刪除
     DEPENDENT_NOTE: '以下的網頁是依附在本網頁的. 這包含了虛擬網頁, 重新導向網頁, 以及有內容鏈結的網頁.'
-    DESCRIPTION: 'Generic content page'
-    DependtPageColumnLinkType: 鏈結類型
+    DependtPageColumnLinkType: '鏈結類型'
     DependtPageColumnURL: 網址
     EDITANYONE: '所有可以登入CMS的人'
     EDITHEADER: '誰可以編輯這頁？'
@@ -338,25 +106,15 @@ zh_TW:
     EDIT_ALL_DESCRIPTION: '編輯任何網頁'
     EDIT_ALL_HELP: '不管在存取Tab上的設定值, 在網站上有能力去編輯任何網頁. 需要 "到''網頁''部分的存取"許可'
     Editors: '編輯者群體'
-    GroupPlaceholder: 'Click to select group'
     HASBROKENLINKS: '網頁含有失效的連結。'
-    HTMLEDITORTITLE: '內容'
+    HTMLEDITORTITLE: 內容
     INHERIT: '從母頁繼承'
-    LASTPUBLISHED: 'Last published'
-    LASTSAVED: 'Last saved'
-    LASTUPDATED: 最近更新
+    LASTUPDATED: '最近更新'
     LINKCHANGENOTE: '改變這個網頁鏈結將也會影響所有子網頁的鏈結'
-    MENUTITLE: 捷徑標籤
-    METADESC: 敘述
-    METADESCHELP: 'Search engines use this content for displaying search results (although it will not influence their ranking).'
+    MENUTITLE: '捷徑標籤'
+    METADESC: '敘述'
     METAEXTRA: '自訂元標籤(meta-tags)'
-    METAEXTRAHELP: 'HTML tags for additional meta information. For example &lt;meta name="customName" content="your custom content here" /&gt;'
-    MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: 已修改
-    MetadataToggle: Metadata
-    MoreOptions: 'More options'
-    NOTPUBLISHED: 'Not published'
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
     PAGELOCATION: '網頁位置'
     PAGETITLE: '網頁名稱'
     PAGETYPE: '網頁類型'
@@ -366,71 +124,41 @@ zh_TW:
     PARENTTYPE_SUBPAGE: '在母頁下面的次頁'
     PERMISSION_GRANTACCESS_DESCRIPTION: '管理內容的存取權限'
     PERMISSION_GRANTACCESS_HELP: '允許設定在"網頁"部分的網頁-特定存取限制.'
-    PLURALNAME: Pages
-    PageTypNotAllowedOnRoot: 'Page type "{type}" is not allowed on the root level'
-    PageTypeNotAllowed: 'Page type "{type}" not allowed as child of this parent page'
-    REMOVEDFROMDRAFTHELP: 'Page is published, but has been deleted from draft'
-    REMOVEDFROMDRAFTSHORT: 從草稿移除
+    REMOVEDFROMDRAFTSHORT: '從草稿移除'
     REMOVE_INSTALL_WARNING: '警告: 為了安全理由你應該從SilverStripe的安裝中移除install.php.'
-    REORGANISE_DESCRIPTION: 改變網站結構
+    REORGANISE_DESCRIPTION: '改變網站結構'
     REORGANISE_HELP: '經由 拉&放 於網站樹狀架構內重新安排網頁.'
-    SHOWINMENUS: 在選單裡顯示嗎？
-    SHOWINSEARCH: 在搜尋結果裡顯示嗎？
-    SINGULARNAME: Page
+    SHOWINMENUS: '在選單裡顯示嗎？'
+    SHOWINSEARCH: '在搜尋結果裡顯示嗎？'
     TABBEHAVIOUR: 作用
     TABCONTENT: '內容'
     TABDEPENDENT: '依賴網頁'
     TOPLEVEL: '網站內容 (高層)'
     TOPLEVELCREATORGROUPS: '頂級創作者'
-    URLSegment: 網址分類
+    URLSegment: '網址分類'
     VIEWERGROUPS: '瀏覽者群組'
     VIEW_ALL_DESCRIPTION: '瀏覽任何網頁'
-    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: '瀏覽內容草稿'
     VIEW_DRAFT_CONTENT_HELP: '應用於在草稿模式下觀看CMS以外的網頁. 沒有CMS存取權的外部合作者是有用的.'
     Viewers: '瀏覽者群組'
     Visibility: 能見度
     has_one_Parent: '母頁'
-    many_many_BackLinkTracking: 背面鏈結追蹤
-    many_many_ImageTracking: 影像追蹤
-    many_many_LinkTracking: 鏈結追蹤
-  SiteTreeURLSegmentField:
-    EMPTY: 'Please enter a URL Segment or click cancel'
-    HelpChars: ' Special characters are automatically converted or removed.'
+    many_many_BackLinkTracking: '背面鏈結追蹤'
+    many_many_ImageTracking: '影像追蹤'
+    many_many_LinkTracking: '鏈結追蹤'
   StaticExporter:
-    BASEURL: 基本網址
-    EXPORTTO: 匯出至那個資料夾
+    BASEURL: '基本網址'
+    EXPORTTO: '匯出至那個資料夾'
     NAME: '網站靜態匯出'
-  TableListField:
-    SELECT: 'Select:'
-  TableListField.ss:
-    NOITEMSFOUND: 'No items found'
-    SORTASC: 'Sort in ascending order'
-    SORTDESC: 'Sort in descending order'
-  TableListField_PageControls.ss:
-    DISPLAYING: Displaying
-    OF: of
-    TO: to
-    VIEWFIRST: 'View first'
-    VIEWLAST: 'View last'
-    VIEWNEXT: 'View next'
-    VIEWPREVIOUS: 'View previous'
-  TreeTools:
-    DisplayLabel: 'Display:'
-  URLSegmentField:
-    Cancel: Cancel
-    Edit: Edit
-    OK: OK
-  ViewArchivedEmail.ss:
+  ViewArchivedEmail_ss:
     CANACCESS: '您可以利用哲格連結到已歸檔站：'
     HAVEASKED: '您要瀏覽這一天的網站內容：'
   VirtualPage:
-    CHOOSE: 'Linked Page'
     DESCRIPTION: '顯示其他網頁的內容'
-    EDITCONTENT: 'Edit content on linked page'
-    EditLink: edit
     HEADER: '這是一個虛擬網頁'
-    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
     PLURALNAME: '虛擬網頁'
-    PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: '虛擬網頁'
+  CMSPageSettingsController:
+    MENUTITLE: '編輯網頁'
+  CMSSettingsController:
+    MENUTITLE: 設定值

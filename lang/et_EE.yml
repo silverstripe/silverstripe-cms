@@ -5,9 +5,7 @@ et_EE:
     AppCategoryArchive: Arhiiv
     AppCategoryAudio: Heli
     AppCategoryDocument: Dokument
-    AppCategoryFlash: Flash
     AppCategoryImage: Pilt
-    AppCategoryVideo: Video
     BackToFolder: 'Tagasi kausta'
     CREATED: Kuupäev
     CurrentFolderOnly: 'Kas lubada juurdepääs ainult praegusele kaustale?'
@@ -15,26 +13,26 @@ et_EE:
     FILES: Failid
     FILESYSTEMSYNC: 'Sünkrooni failid'
     FILESYSTEMSYNCTITLE: 'Uuenda failisüsteemis CMS-andmebaasi failisisendeid. Kasulik, kui uued failid on laaditud üles väljaspool CMS-i, näiteks FTP vahendusel.'
-    FROMTHEINTERNET: Internetist
+    FROMTHEINTERNET: 'Internetist'
     FROMYOURCOMPUTER: 'Teie arvutist'
     Filetype: 'Faili tüüp'
-    ListView: Loendivaade
-    MENUTITLE: Failid
-    NEWFOLDER: 'Uus kaust'
+    ListView: 'Loendivaade'
+    NEWFOLDER: Uus kaust
     SIZE: Suurus
     THUMBSDELETED: '{count} kasutamata pisipilti on kustutatud'
-    TreeView: Puuvaade
-    Upload: 'Laadi üles'
+    TreeView: 'Puuvaade'
+    Upload: Laadi üles
+    MENUTITLE: Failid
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Kustuta kaustad'
   AssetAdmin_Tools:
     FILTER: Filtreeri
-  AssetAdmin_left.ss:
+  AssetAdmin_left_ss:
     GO: Mine
   AssetTableField:
     BACKLINKCOUNT: 'Kasutatakse:'
-    PAGES: 'leht (lehed)'
-  BackLink_Button.ss:
+    PAGES: leht (lehed)
+  BackLink_Button_ss:
     Back: Tagasi
   BrokenLinksReport:
     Any: Kõik
@@ -45,7 +43,6 @@ et_EE:
     ColumnDateLastModified: 'Viimane muutmiskuupäev'
     ColumnDateLastPublished: 'Viimane avaldamiskuupäev'
     ColumnProblemType: 'Probleemi tüüp'
-    ColumnURL: URL
     HasBrokenFile: 'sisaldab katkist faili'
     HasBrokenLink: 'sisaldab katkist linki'
     HasBrokenLinkAndFile: 'sisaldab katkist linki ja faili'
@@ -68,27 +65,21 @@ et_EE:
     PUBLISHED_PAGES: 'Avaldatud %d lehte, %d tõrget'
     PUBLISH_PAGES: Avalda
     UNPUBLISHED_PAGES: 'Tühistati %d lehe avaldamine'
-    UNPUBLISH_PAGES: 'Tühista avaldamine'
-  CMSFileAddController:
-    MENUTITLE: Failid
+    UNPUBLISH_PAGES: Tühista avaldamine
   CMSMain:
     ACCESS: 'Juurdepääs jaotisele ''{title}'''
     ACCESS_HELP: 'Luba lehepuud ja sisu hõlmava jaotise vaatamine. Vaatamis- ja redigeerimisõigusi on võimalik hallata nii lehepõhiselt kui ka eraldi jaotise "Sisu õigused" abil.'
     AddNew: 'Lisa uus leht'
     AddNewButton: 'Lisa uus'
-    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
     ChoosePageParentMode: 'Valige, kuhu see leht luua'
     ChoosePageType: 'Valige lehe tüüp'
     Create: Loo
     DELETE: 'Kustuta mustand'
-    DELETEFP: 'Kustuta avaldatud leht'
+    DELETEFP: Kustuta avaldatud leht
     DESCREMOVED: 'ja {count} järglast'
-    DUPLICATED: 'Duplicated ''{title}'' successfully'
-    DUPLICATEDWITHCHILDREN: 'Duplicated ''{title}'' and children successfully'
     EMAIL: E-post
-    EditTree: Redigeeri
+    EditTree: 'Redigeeri'
     ListFiltered: 'Filtreeritud loend'
-    MENUTITLE: 'Redigeeri lehte'
     NEWPAGE: 'Uus {pagetype}'
     PAGENOTEXISTS: 'Antud lehekülge ei eksisteeri'
     PAGES: Lehed
@@ -96,69 +87,55 @@ et_EE:
     PAGETYPEOPT: 'Lehe tüüp'
     PUBALLCONFIRM: 'Palun avaldage iga leht selles saidis'
     PUBALLFUN: '"Avalda Kõik" funktsionaalsus'
-    PUBALLFUN2: 'Sellele nupule vajutamine on sama, kui käia igal lehel ja vajutada igal lehel "Avalda" nuppu. Nuppu on soovitatav kasutada, kui oled muutnud mitmeid lehti - see salvestab igal lehel toimunud muudatused.'
+    PUBALLFUN2: "Sellele nupule vajutamine on sama, kui käia igal lehel ja vajutada igal lehel \"Avalda\" nuppu. Nuppu on soovitatav kasutada, kui oled muutnud mitmeid lehti - see salvestab igal lehel toimunud muudatused."
     PUBPAGES: 'Valmis: {count} lehte avaldatud'
     PageAdded: 'Lehekülje loomine õnnestus'
-    REMOVED: 'Deleted ''{title}''{description} from live site'
     REMOVEDPAGE: 'Leht ''{title}'' eemaldati avaldatud saitide hulgast'
     REMOVEDPAGEFROMDRAFT: '''%s'' eemaldatud visandi lehelt'
     RESTORE: Taasta
     RESTORED: '''{title}'' taastati edukalt'
     ROLLBACK: 'Pööra tagasi sellesse versiooni'
-    ROLLEDBACKPUBv2: 'Rolled back to published version.'
-    ROLLEDBACKVERSIONv2: 'Rolled back to version #%d.'
     SAVE: Salvesta
-    SAVEDRAFT: 'Save draft'
     TabContent: Sisu
     TabHistory: Ajalugu
     TabSettings: Seaded
     TreeFiltered: 'Filtreeritud puu.'
     TreeFilteredClear: 'Eemalda filtreering'
-  CMSMain_left.ss:
-    'APPLY FILTER': 'Aktiveeri filter'
+    MENUTITLE: 'Redigeeri lehte'
+  CMSMain_left_ss:
+    APPLY_FILTER: 'Aktiveeri filter'
     RESET: Lähtesta
   CMSPageAddController:
-    MENUTITLE: 'Lisa leht'
     ParentMode_child: 'Teise lehe all'
     ParentMode_top: 'Kõrgem tase'
-  CMSPageEditController:
-    MENUTITLE: 'Muuda lehte'
+    MENUTITLE: 'Lisa leht'
   CMSPageHistoryController:
     COMPAREMODE: 'Võrdlusrežiim (valige kaks)'
     COMPAREVERSIONS: 'Võrdle versioone'
     COMPARINGVERSION: 'Versioonide {version1} ja {version2} võrdlus.'
-    MENUTITLE: Ajalugu
     REVERTTOTHISVERSION: 'Taasta valitud versioon'
     SHOWUNPUBLISHED: 'Näita ka avaldamata versioone'
     SHOWVERSION: 'Näita versiooni'
     VIEW: vaade
-    VIEWINGLATEST: 'Currently viewing the latest version.'
     VIEWINGVERSION: 'Hetkel kuvatud versioon {version}.'
-  CMSPageHistoryController_versions.ss:
-    AUTHOR: Autor
-    NOTPUBLISHED: Avaldamata
+    MENUTITLE: Ajalugu
+  CMSPageHistoryController_versions_ss:
+    NOTPUBLISHED: 'Avaldamata'
     PUBLISHER: Avaldaja
     UNKNOWN: Tundmatu
-    WHEN: Millal
-  CMSPageSettingsController:
-    MENUTITLE: 'Muuda lehte'
   CMSPagesController:
-    GalleryView: Galeriivaade
-    ListView: Loendivaade
+    GalleryView: 'Galeriivaade'
+    ListView: 'Loendivaade'
     MENUTITLE: Lehed
-    TreeView: Puuvaade
-  CMSPagesController_ContentToolbar.ss:
-    ENABLEDRAGGING: Pukseeri
+    TreeView: 'Puuvaade'
+  CMSPagesController_ContentToolbar_ss:
+    ENABLEDRAGGING: 'Pukseeri'
     MULTISELECT: Mitmikvalik
-  CMSPagesController_Tools.ss:
+  CMSPagesController_Tools_ss:
     FILTER: Filtreeri
   CMSSearch:
-    FILTERDATEFROM: Alates
-    FILTERDATEHEADING: Kuupäev
     FILTERDATETO: Kuni
     FILTERLABELTEXT: Sisu
-  CMSSettingsController:
-    MENUTITLE: Seaded
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Muudetud lehed'
   CMSSiteTreeFilter_DeletedPages:
@@ -170,8 +147,6 @@ et_EE:
   ContentController:
     ARCHIVEDSITE: 'Eelvaate versioon'
     ARCHIVEDSITEFROM: 'Arhiveeritud sait asukohast'
-    CMS: CMS
-    DRAFT: Draft
     DRAFTSITE: 'Mustandi sait'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Pead olema sisse logitud oma sisuhalduse parooliga, et vaadata mustandeid ja arhiveeritud sisu. <a href="%s">Vajuta siia, et minna tagasi avaldatud lehe juurde.</a>'
     Email: E-post
@@ -180,26 +155,15 @@ et_EE:
     InstallSecurityWarning: 'Turvalisuse põhjustel soovitame nüüd installifailid kustutada, juhul kui te ei plaani hiljem uuesti installida (<em>nõuab administraatorina sisselogimist, vt ülevalt</em>). Edaspidi vajab veebiserver juurdepääsu kirjutamiseks ainult kaustale "assets". Võite eemaldada kõigi teiste kaustade kirjutusõigused. <a href="{link}" style="text-align: center;">Klõpsake siin installifailide kustutamiseks.</a>'
     InstallSuccessCongratulations: 'SilverStripe edukalt paigaldatud!'
     LOGGEDINAS: 'Sisse logitud kui'
-    LOGIN: 'Logi sisse'
+    LOGIN: Logi sisse
     LOGOUT: 'Logi välja'
     NOTLOGGEDIN: 'Pole sisse logitud'
-    PUBLISHED: Published
     PUBLISHEDSITE: 'Avaldatud sait'
     Password: Salasõna
     PostInstallTutorialIntro: 'See veebisait on SilverStripe 3 lihtsustatud versioon. Lehe laiendamiseks külastage aadressi {link}.'
-    StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Installifaile ei olnud võimalik kustutada. Kustutage allolevad failid käsitsi.'
     VIEWPAGEIN: 'Kuva leht:'
   ErrorPage:
-    CODE: Veakood
-    DEFAULTERRORPAGECONTENT: '<p>Vabandust aga tundub, et proovid ligipääseda lehele mida pole olemas.</p><p>Palun kontrolli uuesti aadressi kuhu proovid ligi pääseda.</p>'
-    DEFAULTERRORPAGETITLE: 'Lehekülge ei leitud'
-    DEFAULTSERVERERRORPAGECONTENT: '<p>Vabandust, teie taotluse töötlemisel ilmnes probleem.</p>'
-    DEFAULTSERVERERRORPAGETITLE: 'Serveri viga'
-    DESCRIPTION: 'Kohandatud sisu erinevate tõrgete korral (nt "Lehte ei leitud")'
-    ERRORFILEPROBLEM: 'Tõrge faili "{filename}" avamisel kirjutamiseks. Kontrollige faili õigusi.'
-    PLURALNAME: Vealeheküljed
-    SINGULARNAME: Vealehekülg
     400: '400 - Halb päring'
     401: '401 - Volitamata ligipääs'
     403: '403 - Keelatud'
@@ -223,21 +187,29 @@ et_EE:
     503: '503 - Teenus puudub'
     504: '504 - Sissepääsutee aegmaas'
     505: '505 - HTTP versioon ei ole kasutusel'
+    CODE: 'Veakood'
+    DEFAULTERRORPAGECONTENT: '<p>Vabandust aga tundub, et proovid ligipääseda lehele mida pole olemas.</p><p>Palun kontrolli uuesti aadressi kuhu proovid ligi pääseda.</p>'
+    DEFAULTERRORPAGETITLE: 'Lehekülge ei leitud'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Vabandust, teie taotluse töötlemisel ilmnes probleem.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Serveri viga'
+    DESCRIPTION: 'Kohandatud sisu erinevate tõrgete korral (nt "Lehte ei leitud")'
+    ERRORFILEPROBLEM: 'Tõrge faili "{filename}" avamisel kirjutamiseks. Kontrollige faili õigusi.'
+    PLURALNAME: 'Vealeheküljed'
+    SINGULARNAME: 'Vealehekülg'
   Folder:
     AddFolderButton: 'Lisa kaust'
     DELETEUNUSEDTHUMBNAILS: 'Kustuta kasutamata väikepildid'
     UNUSEDFILESTITLE: 'Kasutamata failid'
     UNUSEDTHUMBNAILSTITLE: 'Kasutamata väikepildid'
-    UploadFilesButton: 'Laadi üles'
+    UploadFilesButton: Laadi üles
   LeftAndMain:
     DELETED: Kustutatud.
-    PreviewButton: Eelvaade
     SAVEDUP: Salvestatud.
     STATUSPUBLISHEDSUCCESS: '''{title}'' on edukalt avaldatud'
-    SearchResults: Otsingutulemused
+    SearchResults: 'Otsingutulemused'
     VersionUnknown: Tundmatu
   Permission:
-    CMS_ACCESS_CATEGORY: CMS-juurdepääs
+    CMS_ACCESS_CATEGORY: 'CMS-juurdepääs'
   Permissions:
     CONTENT_CATEGORY: 'Sisu õigused'
     PERMISSIONS_CATEGORY: 'Rollid ja juurdepääsuõigused'
@@ -246,39 +218,33 @@ et_EE:
     HASBEENSETUP: 'Suunav lehekülg seati üles ilma, et ta kuhugile suunaks.'
     HEADER: 'See lehekülg suunab kasutajad teisele leheküljele'
     OTHERURL: 'Teise veebisaidi URL'
-    PLURALNAME: Ümbersuunamisleheküljed
+    PLURALNAME: 'Ümbersuunamisleheküljed'
     REDIRECTTO: 'Suuna ümber'
     REDIRECTTOEXTERNAL: 'Teisele veebisaidile'
     REDIRECTTOPAGE: 'Leheküljele sinu veebisaidil'
-    SINGULARNAME: Ümbersuunamisleht
+    SINGULARNAME: 'Ümbersuunamisleht'
     YOURPAGE: 'Lehekülg sinu veebisaidil'
   ReportAdmin:
-    MENUTITLE: Aruanded
     ReportTitle: Pealkiri
+    MENUTITLE: Aruanded
   ReportAdminForm:
-    FILTERBY: Filtreeri
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
-    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
-    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
+    FILTERBY: 'Filtreeri'
   SearchForm:
     GO: Mine
     SEARCH: Otsi
-    SearchResults: Otsingutulemused
+    SearchResults: 'Otsingutulemused'
   SideReport:
     BROKENFILES: 'Katkiste failidega lehed'
     BROKENLINKS: 'Katkiste linkidega lehed'
     BROKENREDIRECTORPAGES: 'Ümbersuunamislehed, mis suunavad kustutatud lehtedele'
     BROKENVIRTUALPAGES: 'Virtuaallehed, mis suunavad kustutatud lehtedele'
     BrokenLinksGroupTitle: 'Katkiste linkide aruanded'
-    ContentGroupTitle: Sisuaruanded
+    ContentGroupTitle: 'Sisuaruanded'
     EMPTYPAGES: 'Tühjad leheküljed'
     LAST2WEEKS: 'Viimase kahe nädala jooksul muudetud leheküljed'
     OtherGroupTitle: Muu
     ParameterLiveCheckbox: 'Kontrolli avaldatud saiti'
     REPEMPTY: 'Lehe {title} aruanne on tühi.'
-  SilverStripeNavigator:
-    ARCHIVED: Archived
   SilverStripeNavigatorLink:
     ShareInstructions: 'Selle lehe jagamiseks kopeerige ja kleepige allolev link.'
     ShareLink: 'Jaga linki'
@@ -311,18 +277,15 @@ et_EE:
     APPEARSVIRTUALPAGES: 'Sisu on kuvatud ka virtuaalsetel lehtedel jaotistes {title}.'
     BUTTONCANCELDRAFT: 'Tühista visandi muudatused'
     BUTTONCANCELDRAFTDESC: 'Kustuta oma visand ja pöördu tagasi hetkel avaldatud lehekülje kujule'
-    BUTTONPUBLISHED: Published
-    BUTTONSAVED: Saved
-    BUTTONSAVEPUBLISH: 'Save & publish'
-    BUTTONUNPUBLISH: 'Võta maha'
+    BUTTONUNPUBLISH: Võta maha
     BUTTONUNPUBLISHDESC: 'Eemalda see lehekülg avalikult saidilt'
-    CREATED: Loomiskuupäev
+    CREATED: 'Loomiskuupäev'
     Comments: Komentaarid
     Content: Sisu
     DEFAULTABOUTCONTENT: '<p>Saad selle lehe sisu muuta või selle lehe kustutada.<br /></p>'
-    DEFAULTABOUTTITLE: Meist
+    DEFAULTABOUTTITLE: 'Meist'
     DEFAULTCONTACTCONTENT: '<p>võid selle lehe sisu muuta või selle ära kustutada.<br /></p>'
-    DEFAULTCONTACTTITLE: Kontakt
+    DEFAULTCONTACTTITLE: 'Kontakt'
     DEFAULTHOMECONTENT: '<p>Tere tulemast kasutama SilverStripe! sisuhaldust, see on algne avaleht.<br>Saad seda muuta <a href="admin/">Sisuhalduse lehel</a>. <br>Abiks on ka <a href="http://doc.silverstripe.com">Sisuhalduse dokumentatsioon</a> või <a href="http://doc.silverstripe.com/doku.php?id=tutorials">õppetus leht.</a></p>'
     DEFAULTHOMETITLE: Avaleht
     DELETEDPAGEHELP: 'Leht ei ole enam avaldatud'
@@ -330,37 +293,30 @@ et_EE:
     DEPENDENT_NOTE: 'Alljärgnevad lehed sõltuvad sellest lehest. See hõlmab virtuaalseid lehti, ümbersuunamislehti ja sisulinkidega lehti.'
     DESCRIPTION: 'Üldine sisuleht'
     DependtPageColumnLinkType: 'Lingi tüüp'
-    DependtPageColumnURL: URL
     EDITANYONE: 'Igaüks, kes sisuhaldussüsteemi sisse võib logida'
     EDITHEADER: 'Kes tohib seda sisuhaldussüsteemi kaudu muuta?'
     EDITONLYTHESE: 'Ainult järgnevad isikud (vali nimekirjast)'
-    EDITORGROUPS: Muutjagrupid
+    EDITORGROUPS: 'Muutjagrupid'
     EDIT_ALL_DESCRIPTION: 'Redigeeri mis tahes lehte'
-    EDIT_ALL_HELP: "Võimalus redigeerida mis tahes lehte sellel saidil, hoolimata vahekaardi Juurdepääs seadetest. Vajab jaotise \"Juurdepääs  lehtedele\" õigusi\\n"
+    EDIT_ALL_HELP: 'Võimalus redigeerida mis tahes lehte sellel saidil, hoolimata vahekaardi Juurdepääs seadetest. Vajab jaotise "Juurdepääs  lehtedele" õigusi\n'
     Editors: 'Toimetajate gruppid'
-    GroupPlaceholder: 'Click to select group'
     HASBROKENLINKS: 'Sellel lehel on katkiseid linke.'
     HTMLEDITORTITLE: Sisu
     INHERIT: 'Päring vanemalt lehelt'
-    LASTPUBLISHED: 'Last published'
-    LASTSAVED: 'Last saved'
     LASTUPDATED: 'Viimati uuendatud'
     LINKCHANGENOTE: 'Selle lehe lingi muutmine mõjutab ka kõigi alamlehtede linke.'
     MENUTITLE: 'Navigatsiooni silt'
-    METADESC: Kirjeldus
+    METADESC: 'Kirjeldus'
     METADESCHELP: 'Otsingumootor kasutab seda sisu otsingutulemuste kuvamiseks (kuigi see ei mõjuta nende järjestust).'
     METAEXTRA: 'Kohandatud metamärgendid'
     METAEXTRAHELP: 'HTML-sildid täiendavate metaandmete jaoks. Nt &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Lehel on avaldamata muudatusi'
     MODIFIEDONDRAFTSHORT: Muudetud
     MetadataToggle: Metaandmed
-    MoreOptions: 'More options'
-    NOTPUBLISHED: 'Not published'
-    OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
     PAGELOCATION: 'Lehe asukoht'
     PAGETITLE: 'Lehekülje nimi'
     PAGETYPE: 'Lehe tüüp'
-    PARENTID: Vanemleht
+    PARENTID: 'Vanemleht'
     PARENTTYPE: 'Lehe asukoht'
     PARENTTYPE_ROOT: 'Kõrgema taseme leht'
     PARENTTYPE_SUBPAGE: 'Vanemlehe all olev alamleht'
@@ -378,14 +334,13 @@ et_EE:
     SHOWINSEARCH: 'Näita otsingus?'
     SINGULARNAME: Leht
     TABBEHAVIOUR: Käitumine
-    TABCONTENT: Sisu
+    TABCONTENT: 'Sisu'
     TABDEPENDENT: 'Sõltuvad lehed'
     TOPLEVEL: 'Lehe sisu (kõrgeim tase)'
     TOPLEVELCREATORGROUPS: 'Kõrgema taseme loojad'
     URLSegment: 'URL-i jagu'
-    VIEWERGROUPS: Vaatajagrupid
+    VIEWERGROUPS: 'Vaatajagrupid'
     VIEW_ALL_DESCRIPTION: 'Kuva mis tahes leht'
-    VIEW_ALL_HELP: 'Ability to view any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     VIEW_DRAFT_CONTENT: 'Kuva mustandi sisu'
     VIEW_DRAFT_CONTENT_HELP: 'Rakendub lehe vaatamisel väljaspool CMS-i mustandirežiimis. Kasulik välistele kaastöötajatele, kellel puudub juurdepääs CMS-ile.'
     Viewers: 'Vaatajate gruppid'
@@ -395,19 +350,18 @@ et_EE:
     many_many_ImageTracking: 'Pildi jälgimine'
     many_many_LinkTracking: 'Lingi jälgimine'
   SiteTreeURLSegmentField:
-    EMPTY: 'Please enter a URL Segment or click cancel'
     HelpChars: 'Erimärgid teisendatakse või eemaldatakse automaatselt.'
   StaticExporter:
-    BASEURL: Baas-URL
+    BASEURL: 'Baas-URL'
     EXPORTTO: 'Ekspordi sellesse kausta'
     NAME: 'Staatiline eksportija'
   TableListField:
     SELECT: 'Vali:'
-  TableListField.ss:
+  TableListField_ss:
     NOITEMSFOUND: 'Ei leitud ühtegi kirjet'
     SORTASC: 'Sordi kasvavas järjekorras'
     SORTDESC: 'Sordi kahanevas järjekorras'
-  TableListField_PageControls.ss:
+  TableListField_PageControls_ss:
     DISPLAYING: Kuvatakse
     OF: /
     TO: kuni
@@ -417,20 +371,18 @@ et_EE:
     VIEWPREVIOUS: 'Vaata eelmist'
   TreeTools:
     DisplayLabel: 'Kuva:'
-  URLSegmentField:
-    Cancel: Cancel
-    Edit: Edit
-    OK: OK
-  ViewArchivedEmail.ss:
+  ViewArchivedEmail_ss:
     CANACCESS: 'Arhiveeritud lehele pääsed ligi selle lingi kaudu:'
     HAVEASKED: 'Soovid vaadata meie lehe sisu kuupäeval'
   VirtualPage:
-    CHOOSE: 'Linked Page'
     DESCRIPTION: 'Kuvab sisu teiselt lehelt'
-    EDITCONTENT: 'Edit content on linked page'
-    EditLink: edit
     HEADER: 'See on virtuaalne leht'
-    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
     PLURALNAME: 'Virtuaalsed lehed'
     PageTypNotAllowedOnRoot: 'Lehe originaaltüüp "{type}" ei ole selle virtuaalse lehe juurtasandil lubatud.'
     SINGULARNAME: 'Virtuaalne leht'
+  CMSFileAddController:
+    MENUTITLE: Failid
+  CMSPageEditController:
+    MENUTITLE: 'Muuda lehte'
+  CMSPageSettingsController:
+    MENUTITLE: 'Muuda lehte'
