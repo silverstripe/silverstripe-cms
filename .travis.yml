@@ -3,15 +3,16 @@ php:
  - 5.3
 
 env:
- - TESTDB=MYSQL
- - TESTDB=PGSQL
+ - DB=MYSQL CORE_RELEASE=2.4
+ - DB=PGSQL CORE_RELEASE=2.4
 
 before_script:
- - ./tests/travis/before_script ~/builds/ss 
+ - git clone git://github.com/silverstripe-labs/silverstripe-travis-support.git ~/travis-support
+ - php ~/travis-support/travis_setup.php --source `pwd` --target ~/builds/ss
  - cd ~/builds/ss
 
 script: 
- - php sapphire/cli-script.php dev/tests/module/cms
+ - phpunit cms/tests
 
 branches:
   except:
