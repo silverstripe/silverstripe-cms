@@ -88,6 +88,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 		
 		$page = $this->objFromFixture('SiteTree', 'restrictedViewLoggedInUsers');
+		$page->publish('Stage', 'Live');
 		$results = $sf->getResults(null, array('Search'=>'restrictedViewLoggedInUsers'));
 		$this->assertNotContains(
 			$page->ID,
@@ -110,6 +111,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 		
 		$page = $this->objFromFixture('SiteTree', 'restrictedViewOnlyWebsiteUsers');
+		$page->publish('Stage', 'Live');
 		$results = $sf->getResults(null, array('Search'=>'restrictedViewOnlyWebsiteUsers'));
 		$this->assertNotContains(
 			$page->ID,
@@ -138,11 +140,14 @@ class ZZZSearchFormTest extends FunctionalTest {
 		$member->logOut();
 	}
 	
-	public function testInheritedRestrictedPagesNotInlucded() {
+	public function testInheritedRestrictedPagesNotIncluded() {
 		$sf = new SearchForm($this->mockController, 'SearchForm');
+
+		$parent = $this->objFromFixture('SiteTree', 'restrictedViewLoggedInUsers');
+		$parent->publish('Stage', 'Live');
 		
 		$page = $this->objFromFixture('SiteTree', 'inheritRestrictedView');
-		
+		$page->publish('Stage', 'Live');
 		$results = $sf->getResults(null, array('Search'=>'inheritRestrictedView'));
 		$this->assertNotContains(
 			$page->ID,
