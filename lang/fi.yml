@@ -5,7 +5,9 @@ fi:
     AppCategoryArchive: Arkisto
     AppCategoryAudio: Ääni
     AppCategoryDocument: Asiakirja
+    AppCategoryFlash: Flash
     AppCategoryImage: Kuva
+    AppCategoryVideo: Video
     BackToFolder: 'Takaisin kansioon'
     CREATED: Pvm
     CurrentFolderOnly: 'Rajoita tähän kansioon?'
@@ -160,6 +162,7 @@ fi:
   ContentController:
     ARCHIVEDSITE: 'Esikatselu versio'
     ARCHIVEDSITEFROM: 'Arkistoitu sivusto lähteestä:'
+    CMS: CMS
     DRAFTSITE: 'Luonnossivusto'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Voidaksesi katsella luonnoksia tai arkistoitua sisältöä sinun täytyy kirjautua sisään CMS:n salasanallasi. <a href="%s">Palataksesi julkiselle sivulle paina tästä</a>.'
     Email: Sähköposti
@@ -311,6 +314,7 @@ fi:
     DEPENDENT_NOTE: 'Seuraavat sivut riippuvat tästä sivusta. Tämä pitää sisällään virtuaaliset sivut, uudelleenohjaussivut ja sivut sisältölinkkien kanssa.'
     DESCRIPTION: 'Yleinen sisältösivu'
     DependtPageColumnLinkType: 'Linkin tyyppi'
+    DependtPageColumnURL: URL
     EDITANYONE: 'Jokainen, joka voi kirjautua sisään CMS:ään.'
     EDITHEADER: 'Kuka voi muokata tätä CMS:ssä?'
     EDITONLYTHESE: 'Vain seuraavat henkilöt (valitse listasta)'
@@ -429,3 +433,4 @@ fi:
   URLSegmentField:
     Cancel: Peruuta
     Edit: Muokkaa
+    OK: OK
