@@ -787,6 +787,23 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		// admin override
 		if($member && Permission::checkMember($member, array("ADMIN", "SITETREE_VIEW_ALL"))) return true;
 
+		// make sure we were loaded off an allowed stage
+
+		// Were we definitely loaded directly off Live during our query?
+		$fromLive = true;
+
+		foreach (array('mode' => 'stage', 'stage' => 'live') as $param => $match) {
+			$fromLive = $fromLive && strtolower((string)$this->getSourceQueryParam("Versioned.$param")) == $match;
+		}
+
+		if(!$fromLive
+			&& !Session::get('unsecuredDraftSite')
+			&& !Permission::checkMember($member, array('CMS_ACCESS_CMSMain', 'VIEW_DRAFT_CONTENT'))) {
+			// If we weren't definitely loaded from live, and we can't view non-live content, we need to
+			// check to make sure this version is the live version and so can be viewed
+			if (Versioned::get_versionnumber_by_stage($this->class, 'Live', $this->ID) != $this->Version) return false;
+		}
+
 		// Standard mechanism for accepting permission changes from extensions
 		$extended = $this->extendedCan('canView', $member);
 		if($extended !== null) return $extended;
