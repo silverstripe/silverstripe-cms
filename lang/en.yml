@@ -113,7 +113,7 @@ en:
     MENUTITLE: 'Edit Page'
     AddPageRestriction: 'Note: Some page types are not allowed for this selection'
   CMSMain_left_ss:
-    'APPLY_FILTER': 'Apply Filter'
+    APPLY_FILTER: 'Apply Filter'
     RESET: Reset
   CMSPageAddController:
     ParentMode_child: 'Under another page'
@@ -164,7 +164,7 @@ en:
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
     DRAFTSITE: 'Draft Site'
-    DRAFT_SITE_ACCESS_RESTRICTION: 'You must log in with your CMS password in order to view the draft or archived content.  <a href="%s">Click here to go back to the published site.</a>'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'You must log in with your CMS password in order to view the draft or archived content. <a href="%s">Click here to go back to the published site.</a>'
     Email: Email
     INSTALL_SUCCESS: 'Installation Successful!'
     InstallFilesDeleted: 'Installation files have been successfully deleted.'
