@@ -13,8 +13,6 @@ bs:
     REMOVEDPAGEFROMDRAFT: 'Uklonjeno ''%s'' sa privremenog nacrta stranice'
     ROLLBACK: 'Vrati na ovo izdanje'
     SAVE: Snimi
-  ContentController:
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Morate se prijaviti sa Vašom CMS šifrom kako biste pregledali privremeni ili arhivirani sadržaj. <a href="%s">Kliknite ovdje da biste se vratili na objavljenu stranicu.</a>'
   ErrorPage:
     400: '400 - Pogrešan zahtjev'
     401: '401 - Neovlašteno'
@@ -60,8 +58,6 @@ bs:
   SideReport:
     EMPTYPAGES: 'Prazne stranice'
     LAST2WEEKS: 'Izmjenjene stranice u posljednje 2 sedmice'
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
   SiteTree:
     ACCESSANYONE: Svi korisnici
     ACCESSHEADER: 'Ko može pregledati ovu stavku na mojoj stranici?'

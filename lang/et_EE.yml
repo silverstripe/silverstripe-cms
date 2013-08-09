@@ -5,7 +5,9 @@ et_EE:
     AppCategoryArchive: Arhiiv
     AppCategoryAudio: Heli
     AppCategoryDocument: Dokument
+    AppCategoryFlash: Flash
     AppCategoryImage: Pilt
+    AppCategoryVideo: Video
     BackToFolder: 'Tagasi kausta'
     CREATED: Kuupäev
     CurrentFolderOnly: 'Kas lubada juurdepääs ainult praegusele kaustale?'
@@ -43,6 +45,7 @@ et_EE:
     ColumnDateLastModified: 'Viimane muutmiskuupäev'
     ColumnDateLastPublished: 'Viimane avaldamiskuupäev'
     ColumnProblemType: 'Probleemi tüüp'
+    ColumnURL: URL
     HasBrokenFile: 'sisaldab katkist faili'
     HasBrokenLink: 'sisaldab katkist linki'
     HasBrokenLinkAndFile: 'sisaldab katkist linki ja faili'
@@ -96,6 +99,7 @@ et_EE:
     RESTORED: '''{title}'' taastati edukalt'
     ROLLBACK: 'Pööra tagasi sellesse versiooni'
     SAVE: Salvesta
+    SAVEDRAFT: 'Salvesta mustand'
     TabContent: Sisu
     TabHistory: Ajalugu
     TabSettings: Seaded
@@ -120,6 +124,7 @@ et_EE:
     VIEWINGVERSION: 'Hetkel kuvatud versioon {version}.'
     MENUTITLE: Ajalugu
   CMSPageHistoryController_versions_ss:
+    AUTHOR: Autor
     NOTPUBLISHED: 'Avaldamata'
     PUBLISHER: Avaldaja
     UNKNOWN: Tundmatu
@@ -134,6 +139,8 @@ et_EE:
   CMSPagesController_Tools_ss:
     FILTER: Filtreeri
   CMSSearch:
+    FILTERDATEFROM: Alates
+    FILTERDATEHEADING: Kuupäev
     FILTERDATETO: Kuni
     FILTERLABELTEXT: Sisu
   CMSSiteTreeFilter_ChangedPages:
@@ -163,6 +170,8 @@ et_EE:
     PostInstallTutorialIntro: 'See veebisait on SilverStripe 3 lihtsustatud versioon. Lehe laiendamiseks külastage aadressi {link}.'
     UnableDeleteInstall: 'Installifaile ei olnud võimalik kustutada. Kustutage allolevad failid käsitsi.'
     VIEWPAGEIN: 'Kuva leht:'
+    DRAFT: Mustand
+    PUBLISHED: Avaldatud
   ErrorPage:
     400: '400 - Halb päring'
     401: '401 - Volitamata ligipääs'
@@ -204,6 +213,7 @@ et_EE:
     UploadFilesButton: Laadi üles
   LeftAndMain:
     DELETED: Kustutatud.
+    PreviewButton: Eelvaade
     SAVEDUP: Salvestatud.
     STATUSPUBLISHEDSUCCESS: '''{title}'' on edukalt avaldatud'
     SearchResults: 'Otsingutulemused'
@@ -277,6 +287,7 @@ et_EE:
     APPEARSVIRTUALPAGES: 'Sisu on kuvatud ka virtuaalsetel lehtedel jaotistes {title}.'
     BUTTONCANCELDRAFT: 'Tühista visandi muudatused'
     BUTTONCANCELDRAFTDESC: 'Kustuta oma visand ja pöördu tagasi hetkel avaldatud lehekülje kujule'
+    BUTTONSAVEPUBLISH: 'Salvesta ja avalda'
     BUTTONUNPUBLISH: Võta maha
     BUTTONUNPUBLISHDESC: 'Eemalda see lehekülg avalikult saidilt'
     CREATED: 'Loomiskuupäev'
@@ -293,6 +304,7 @@ et_EE:
     DEPENDENT_NOTE: 'Alljärgnevad lehed sõltuvad sellest lehest. See hõlmab virtuaalseid lehti, ümbersuunamislehti ja sisulinkidega lehti.'
     DESCRIPTION: 'Üldine sisuleht'
     DependtPageColumnLinkType: 'Lingi tüüp'
+    DependtPageColumnURL: URL
     EDITANYONE: 'Igaüks, kes sisuhaldussüsteemi sisse võib logida'
     EDITHEADER: 'Kes tohib seda sisuhaldussüsteemi kaudu muuta?'
     EDITONLYTHESE: 'Ainult järgnevad isikud (vali nimekirjast)'
@@ -349,6 +361,11 @@ et_EE:
     many_many_BackLinkTracking: 'Tagasilingi jälgimine'
     many_many_ImageTracking: 'Pildi jälgimine'
     many_many_LinkTracking: 'Lingi jälgimine'
+    BUTTONPUBLISHED: Avaldatud
+    BUTTONSAVED: Salvestatud
+    LASTPUBLISHED: 'Viimati avaldatud'
+    LASTSAVED: 'Viimati salvestatud'
+    NOTPUBLISHED: 'Avaldamata'
   SiteTreeURLSegmentField:
     HelpChars: 'Erimärgid teisendatakse või eemaldatakse automaatselt.'
   StaticExporter:
@@ -380,9 +397,16 @@ et_EE:
     PLURALNAME: 'Virtuaalsed lehed'
     PageTypNotAllowedOnRoot: 'Lehe originaaltüüp "{type}" ei ole selle virtuaalse lehe juurtasandil lubatud.'
     SINGULARNAME: 'Virtuaalne leht'
+    EditLink: redigeeri
   CMSFileAddController:
     MENUTITLE: Failid
   CMSPageEditController:
     MENUTITLE: 'Muuda lehte'
   CMSPageSettingsController:
     MENUTITLE: 'Muuda lehte'
+  CMSSettingsController:
+    MENUTITLE: Seaded
+  SilverStripeNavigator:
+    ARCHIVED: Arhiveeritud
+  URLSegmentField:
+    Edit: Redigeeri

@@ -3,10 +3,15 @@ nl:
     ADDFILES: 'Bestanden'
     ActionAdd: 'Map toevoegen'
     AppCategoryArchive: Archiveer
+    AppCategoryAudio: Audio
+    AppCategoryDocument: Document
+    AppCategoryFlash: Flash
     AppCategoryImage: Afbeelding
+    AppCategoryVideo: Video
     BackToFolder: 'Terug naar map'
     CREATED: Datum
     CurrentFolderOnly: 'Tot de huidige map beperken?'
+    DetailsView: Details
     FILES: Bestanden
     FILESYSTEMSYNC: 'Bestanden synchroniseren'
     FILESYSTEMSYNCTITLE: 'Zoek naar nieuwe of verwijderde bestanden op de schijf, om de database van het CMS bij te werken. Dit is nodig als er bestanden via FTP (of andere wijze) zijn toegevoegd.'
@@ -22,6 +27,8 @@ nl:
     MENUTITLE: Bestanden
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Verwijder mappen'
+  AssetAdmin_Tools:
+    FILTER: Filter
   AssetAdmin_left_ss:
     GO: Doen
   AssetTableField:
@@ -38,6 +45,7 @@ nl:
     ColumnDateLastModified: 'Laatste wijzigingsdatum'
     ColumnDateLastPublished: 'Laatste publicatiedatum'
     ColumnProblemType: 'Probleem type'
+    ColumnURL: URL
     HasBrokenFile: 'heeft verbroken bestand'
     HasBrokenLink: 'heeft verbroken link'
     HasBrokenLinkAndFile: 'heeft verbroken link en bestand'
@@ -74,7 +82,9 @@ nl:
     DESCREMOVED: 'en {count} onderliggende'
     DUPLICATED: '''{title}'' succesvol gedupliceerd'
     DUPLICATEDWITHCHILDREN: '''{title}'' en kinderen succesvol gedupliceerd'
+    EMAIL: Email
     EditTree: 'Menu indelen'
+    ListFiltered: 'Gefilterde lijst'
     NEWPAGE: 'Nieuwe {pagetype}'
     PAGENOTEXISTS: 'Deze pagina bestaat niet'
     PAGES: Pagina 's
@@ -99,10 +109,12 @@ nl:
     TabHistory: Geschiedenis
     TabSettings: Instellingen
     TreeFiltered: 'Gefilterde boomstructuur.'
+    TreeFilteredClear: 'Herstel filter'
     MENUTITLE: 'Wijzig pagina'
     AddPageRestriction: 'Opmerking: Sommige pagina types zijn niet toegestaan ​​voor deze selectie'
   CMSMain_left_ss:
     APPLY_FILTER: 'Filter toepassen'
+    RESET: Herstel
   CMSPageAddController:
     ParentMode_child: 'Onder een andere pagina'
     ParentMode_top: 'Hoogste niveau'
@@ -117,6 +129,7 @@ nl:
     VIEW: toon
     VIEWINGVERSION: 'U bekijkt nu versie {version}.'
     MENUTITLE: Geschiedenis
+    VIEWINGLATEST: 'U bekijkt nu de laatste versie.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Auteur
     NOTPUBLISHED: 'Niet gepubliceerd'
@@ -147,7 +160,9 @@ nl:
   ContentControl:
     NOTEWONTBESHOWN: 'Aantekening: dit bericht is niet zichtbaar voor bezoekers'
   ContentController:
+    ARCHIVEDSITE: 'Voorbeeld versie'
     ARCHIVEDSITEFROM: 'Gearchiveerde site van'
+    CMS: CMS
     DRAFTSITE: 'Concept-site'
     DRAFT_SITE_ACCESS_RESTRICTION: 'U moet inloggen met Uw CMS wachtwoord om die inhoud te kunnen zien. <a href="%s">Klik hier</a> om terug te keren naar de gepubliceerde site.'
     Email: E-mail
@@ -176,6 +191,7 @@ nl:
     406: '406 - Niet toegankelijk'
     407: '407 - Proxy Auhenticatie Vereist'
     408: '408 - Vraag verlopen'
+    409: '409 - Conflict'
     410: '410 - Verdwenen'
     411: '411 - Lengte vereist'
     412: '412 - Voorwaarde gefaald'
@@ -188,6 +204,7 @@ nl:
     501: '501 -  Niet geïmplementeerd'
     502: '502 - Slechte Gateway'
     503: '503 - Service niet beschikbaar'
+    504: '504 - Gateway Timeout'
     505: '505 - HTTP Versie Niet Ondersteund'
     CODE: 'Foutcode'
     DEFAULTERRORPAGECONTENT: '<p>Sorry, maar de pagina die je zocht lijkt niet te bestaan.</p><p>Gelieve de spelling van de url te controleren en het opnieuw te proberen.</p>'
@@ -197,6 +214,7 @@ nl:
     DESCRIPTION: 'Aangepaste tekst voor verschillende foutmeldingen (bijv: "Pagina niet gevonden")'
     ERRORFILEPROBLEM: 'Fout: "{filename}" kan niet geopend worden om te schrijven. Controleer alstublieft de bestandspermissies.'
     PLURALNAME: 'Fout Pagina''s'
+    SINGULARNAME: 'Fout Pagina'
   Folder:
     AddFolderButton: 'Map toevoegen'
     DELETEUNUSEDTHUMBNAILS: 'Verwijder ongebruikte thumbnails'
@@ -224,8 +242,10 @@ nl:
     REDIRECTTO: 'Doorverwijzen naar'
     REDIRECTTOEXTERNAL: 'Een andere website'
     REDIRECTTOPAGE: 'Een pagina op deze website'
+    SINGULARNAME: 'Verwijzingspagina'
     YOURPAGE: 'Pagina op deze website'
   ReportAdmin:
+    ReportTitle: Titel
     MENUTITLE: Rapporten
   ReportAdminForm:
     FILTERBY: 'Filter op'
@@ -288,10 +308,13 @@ nl:
     DEFAULTCONTACTCONTENT: '<p>Je kan deze pagina vullen met je eigen inhoud, of ze verwijderen en je eigen pagina''s aanmaken.</p>'
     DEFAULTCONTACTTITLE: 'Contact'
     DEFAULTHOMECONTENT: '<p>Welkom bij Silverstripe! Dit is de standaard homepagina. Je kan deze pagina wijzigen door <a href="admin/">het CMS</a> te openen. Je kan nu de <a href="http://doc.silverstripe.com">documentatie voor ontwikkelaars</a> bekijken, of aan <a href="http://doc.silverstripe.com/doku.php?id=tutorials">de tutorials</a> beginnen.'
+    DEFAULTHOMETITLE: Home
     DELETEDPAGEHELP: 'Deze pagina is niet langer gepubliceerd'
     DELETEDPAGESHORT: Verwijderd
     DEPENDENT_NOTE: 'De volgende pagina''s zijn afhankelijk van deze pagina. Hieronder vallen virtuelepagina''s, verwijsingspagina''s en pagina''s met links in de inhoud.'
     DESCRIPTION: 'Algemene tekst pagina'
+    DependtPageColumnLinkType: 'Linktype'
+    DependtPageColumnURL: URL
     EDITANYONE: 'Iedereen die kan inloggen in het CMS'
     EDITHEADER: 'Wie kan deze pagina wijzigen?'
     EDITONLYTHESE: 'Alleen deze gebruikers (kies uit de lijst)'
@@ -306,9 +329,12 @@ nl:
     LINKCHANGENOTE: 'Het veranderen van de link van deze pagina beïnvloed de links van alle onderliggende pagina''s. '
     MENUTITLE: 'Navigatie label'
     METADESC: 'Omschrijving'
+    METADESCHELP: 'Zoekmachines gebruiken deze inhoud voor het weergeven van zoekresultaten (hoewel het hun ranking niet zal beïnvloeden).'
     METAEXTRA: 'Aangepaste Meta Labels'
+    METAEXTRAHELP: 'HTML-tags voor extra meta-informatie. Bijvoorbeeld &lt;meta name = "customName" content="uw aangepaste inhoud"/&gt;'
     MODIFIEDONDRAFTHELP: 'Pagina heeft wijzigingen die nog niet gepubliceerd zijn'
     MODIFIEDONDRAFTSHORT: Aangepast
+    MetadataToggle: Metadata
     OBSOLETECLASS: 'Deze pagina is van het type {type}. Dit type is niet meer in gebruik. Het opslaan van deze pagina zal het type wijzigen. Hierbij kan data verloren gaan.'
     PAGELOCATION: 'Pagina locatie'
     PAGETITLE: 'Pagina titel'
@@ -335,6 +361,7 @@ nl:
     TABDEPENDENT: 'Afhankelijke pagina''s'
     TOPLEVEL: 'Site Inhoud (Top Niveau)'
     TOPLEVELCREATORGROUPS: 'Hoogste niveau auteurs'
+    URLSegment: 'URL Segment'
     VIEWERGROUPS: 'Toegangsgroepen'
     VIEW_ALL_DESCRIPTION: 'Kan iedere pagina op de website bekijken, ongeacht de specifieke pagina instelling'
     VIEW_ALL_HELP: 'Bevoegdheid om alle pagina''s op de site te wijzigen, onafhankelijk van de instellingen in het ''Toegang'' tabblad. Vereist "Toegang tot site inhoud" rechten'
@@ -367,6 +394,9 @@ nl:
     SORTASC: 'Sorteer op oplopende volgorde'
     SORTDESC: 'Sorteer op aflopende volgorde'
   TableListField_PageControls_ss:
+    DISPLAYING: Weergeven
+    OF: of
+    TO: aan
     VIEWFIRST: 'Bekijk eerste'
     VIEWLAST: 'Bekijk laatste'
     VIEWNEXT: 'Toon volgende'
@@ -377,11 +407,15 @@ nl:
     CANACCESS: 'U kunt de gearchiveerde site bekijken via deze link:'
     HAVEASKED: 'U heeft de inhoud van onze site opgevraagd op'
   VirtualPage:
+    CHOOSE: 'Gekoppelde pagina'
     DESCRIPTION: 'Geeft de inhoud van een andere pagina weer'
+    EDITCONTENT: 'Bewerk inhoud van gekoppelde pagina'
     HEADER: 'Dit is een virtuele pagina'
     PLURALNAME: 'Virtuele pagina''s'
     PageTypNotAllowedOnRoot: 'Voor deze virtuele pagina is het originele paginatype "{type}" niet toegestaan op het hoogste niveau.'
     SINGULARNAME: 'Virtuele Pagina'
+    EditLink: wijzigen
+    HEADERWITHLINK: 'Dit is een virtuele pagina met de inhoud van "{title}" ({link})'
   CMSFileAddController:
     MENUTITLE: Bestanden
   CMSPageEditController:
@@ -396,3 +430,7 @@ nl:
     VIRTUALPAGEWARNINGSETTINGS: 'U dient een gekoppelde pagina te selecteren in de inhoud velden voor dat u kunt publiceren.'
   SilverStripeNavigator:
     ARCHIVED: Gearchiveerd
+  URLSegmentField:
+    Cancel: Annuleer
+    Edit: Wijzigen
+    OK: OK

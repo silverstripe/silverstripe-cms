@@ -48,7 +48,6 @@ es_MX:
   ContentController:
     ARCHIVEDSITEFROM: 'Sito archivado de'
     DRAFTSITE: 'Proyecto del Sitio'
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Usted debe iniciar sesión con su contraseña CMS para poder ver el contenido del boceto archivado. <a href="%s">Haga clic aquí para regresar al sitio publicado.</a>'
     LOGGEDINAS: 'Conectado cómo'
     LOGIN: Iniciar sesión
     LOGOUT: 'Cerrar sesión'
@@ -117,7 +116,6 @@ es_MX:
     OtherGroupTitle: Otro
     ParameterLiveCheckbox: 'Comprobar el sitio vivo'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Para compartir ésto a esta página, copie y pegue el enlace de abajo.'
     ShareLink: 'Compartir enlace'
   SilverStripeNavigatorLinkl:
     CloseLink: Cerrar

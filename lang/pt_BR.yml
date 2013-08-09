@@ -15,8 +15,6 @@ pt_BR:
     RESTORE: Restaurar
     ROLLBACK: 'Reverter para esta versão'
     SAVE: Salvar
-  ContentController:
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Você precisa entrar com sua senha do CMS para ver os rascunhos ou o conteúdo arquivado. <a href="%s">Clique aqui para voltar para o site publicado.</a>'
   ErrorPage:
     400: '400 - Requisição Invalida'
     401: '401 - Não autorizado'
@@ -62,8 +60,6 @@ pt_BR:
   SideReport:
     EMPTYPAGES: 'Páginas em branco'
     LAST2WEEKS: 'Páginas editadas nas últimas 2 semanas'
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
   SiteTree:
     ACCESSANYONE: Qualquer pessoa
     ACCESSHEADER: 'Quem pode ver esta página?'

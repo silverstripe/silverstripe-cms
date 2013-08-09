@@ -29,7 +29,6 @@ af:
     OtherGroupTitle: Ander
     ParameterLiveCheckbox: 'Kies lewendige werf'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
     ShareLink: 'Deel skakel'
   SilverStripeNavigatorLinkl:
     CloseLink: Maak toe

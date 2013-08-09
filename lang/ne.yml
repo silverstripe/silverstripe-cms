@@ -1,6 +1,4 @@
 ne:
-  ContentController:
-    DRAFT_SITE_ACCESS_RESTRICTION: 'यदि तपाईं draft अथवा archived सामाग्री हेर्न चाहानुहुन्छ भन्ने आफ्नो CMSको पासओडले भित्र जानुपर्छ । <a href="%s">प्रकाशित साईटमा जान यहाँ थिचु्नुहोस् ।  </a>'
   ErrorPage:
     CODE: 'त्रुटी सङ्केत '
   RedirectorPage:
@@ -11,8 +9,6 @@ ne:
     REDIRECTTOEXTERNAL: 'अर्को वेबसाईट'
     REDIRECTTOPAGE: 'तपाईंको वेबसाईटमा एउटा पेज'
     YOURPAGE: 'तपाईंको वेबसाईटमा एउटा पेज'
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
   SiteTree:
     ACCESSANYONE: जोकोहिले
     ACCESSHEADER: 'मेरो सईटमा कसले यो पजे हेर्न सक्छ ? '

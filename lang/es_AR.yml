@@ -47,7 +47,6 @@ es_AR:
     NOTEWONTBESHOWN: 'Nota: este mensage no se mostrará a sus visitantes'
   ContentController:
     DRAFTSITE: 'Sitio borrador'
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Debes iniciar sesión con tu contraseña CMS para poder ver el contenido del borrador archivado . <a href="%s">Haz click aquí para regresar al sitio publicado.</a>'
     LOGGEDINAS: 'Conectado como'
     LOGIN: Iniciar sesión
     LOGOUT: 'Desconectarse'
@@ -116,7 +115,6 @@ es_AR:
     OtherGroupTitle: Otro
     ParameterLiveCheckbox: 'Verificar el sitio en vivo'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Para compartir esta página, copiar y pegar el enlace inferior.'
     ShareLink: 'Compartir enlace'
   SilverStripeNavigatorLinkl:
     CloseLink: Cerrar

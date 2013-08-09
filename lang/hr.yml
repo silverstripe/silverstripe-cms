@@ -10,8 +10,6 @@ hr:
     PUBALLFUN2: "Ovaj gumb radi isto što i klikanje na \"objavi\" gumbe za svaku stranicu posebno. Koristi se nakon velikih promjena u sadržaju, kao npr. kod prve objave stranice."
     ROLLBACK: 'Vrati na ovu verziju'
     SAVE: Snimi
-  ContentController:
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Morate biti prijavljeni sa vašom CMS zaporkom kako bi ste mogli vidjeti privremeni ili arhivirani sadržaj. <a href="%s">Kliknite kako bi ste se vratili na objavljen dio stranice</a>'
   RedirectorPage:
     HASBEENSETUP: 'Stranica za preusjeravanje nema postavljenog preusmjeravanja'
     HEADER: 'Ova stranica preusmjeriti će korisnike na drugu stranicu'
@@ -23,8 +21,6 @@ hr:
   SideReport:
     EMPTYPAGES: 'Prazne stranice'
     LAST2WEEKS: 'Stranice mijenjane u zadnja 2 tjedna'
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
   SiteTree:
     ACCESSANYONE: Svi
     ACCESSHEADER: 'Tko može pregledavati ovu stranicu?'

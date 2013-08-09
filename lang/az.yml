@@ -42,7 +42,6 @@ az:
     SEARCH: Axtar
     SearchResults: 'Axtarış nəticələri'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Bu səhifəni paylaşmaq üçün , keçidi copy paste edin.'
     ShareLink: 'Linki Paylaş'
   SilverStripeNavigatorLinkl:
     CloseLink: Bağla
