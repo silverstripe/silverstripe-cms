@@ -83,7 +83,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp-themes/default.git",
-                "reference": "f3901a65220356327132234418fca1cf5d6e755c"
+                "reference": "a3107381f43f8a4bda289c995119096cd037e211"
             },
             "require": {
                 "composer/installers": "*",
@@ -99,7 +99,7 @@
                 }
             },
             "description": "CWP Default Theme",
-            "time": "2013-08-12 06:41:07"
+            "time": "2013-08-12 22:43:15"
         },
         {
             "name": "cwp/cwp",
@@ -241,19 +241,19 @@
         },
         {
             "name": "silverstripe/documentconverter",
-            "version": "0.2.x-dev",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/silverstripe/documentconverter.git",
-                "reference": "389e8c8c4e35f7de9f1476aba98b1940739e701b"
+                "reference": "24a72d33c94dda06d66bda0be6cc95b1e7117191"
             },
             "require": {
-                "silverstripe/cms": ">=3.0",
-                "silverstripe/framework": ">=3.0"
+                "silverstripe/cms": "~3.1",
+                "silverstripe/framework": "~3.1"
             },
             "type": "silverstripe-module",
             "description": "Imports OpenOffice-compatible files (doc, docx, etc) into SilverStripe pages and content.",
-            "time": "2013-04-23 22:20:38"
+            "time": "2013-08-13 00:08:26"
         },
         {
             "name": "silverstripe/framework",
@@ -545,21 +545,21 @@
         },
         {
             "name": "silverstripe/subsites",
-            "version": "0.4.x-dev",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-subsites.git",
-                "reference": "5c0196ebb3f66f327c53f1f0de364e0afc900707"
+                "reference": "2d41dc62bfd7260a3ed08d60a698228908d3116e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-subsites/zipball/5c0196ebb3f66f327c53f1f0de364e0afc900707",
-                "reference": "5c0196ebb3f66f327c53f1f0de364e0afc900707",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-subsites/zipball/2d41dc62bfd7260a3ed08d60a698228908d3116e",
+                "reference": "2d41dc62bfd7260a3ed08d60a698228908d3116e",
                 "shasum": ""
             },
             "require": {
-                "silverstripe/cms": "3.*",
-                "silverstripe/framework": "3.*"
+                "silverstripe/cms": "~3.1",
+                "silverstripe/framework": "~3.1"
             },
             "type": "silverstripe-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -575,25 +575,25 @@
                 "silverstripe",
                 "subsites"
             ],
-            "time": "2013-05-08 05:09:06"
+            "time": "2013-08-13 00:05:30"
         },
         {
             "name": "silverstripe/taxonomy",
-            "version": "0.1.x-dev",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-taxonomy.git",
-                "reference": "cd4c23fd1bec2dbcdd0e49ec27fd5b4cda0496c7"
+                "reference": "8758791f73756be729533ab32997acc1ca072dae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-taxonomy/zipball/cd4c23fd1bec2dbcdd0e49ec27fd5b4cda0496c7",
-                "reference": "cd4c23fd1bec2dbcdd0e49ec27fd5b4cda0496c7",
+                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-taxonomy/zipball/8758791f73756be729533ab32997acc1ca072dae",
+                "reference": "8758791f73756be729533ab32997acc1ca072dae",
                 "shasum": ""
             },
             "require": {
-                "silverstripe/cms": "3.*",
-                "silverstripe/framework": "3.*"
+                "silverstripe/cms": "~3.1",
+                "silverstripe/framework": "~3.1"
             },
             "type": "silverstripe-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -610,35 +610,35 @@
             "keywords": [
                 "silverstripe"
             ],
-            "time": "2013-03-01 01:36:04"
+            "time": "2013-08-13 00:09:41"
         },
         {
             "name": "silverstripe/translatable",
-            "version": "dev-behat",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-translatable.git",
-                "reference": "2ab36ff777767604800efa932a75db3a88f00cf4"
+                "reference": "fe6696a8f32fb11db27aeb3ffbfa9517aaa18143"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-translatable/zipball/2ab36ff777767604800efa932a75db3a88f00cf4",
-                "reference": "2ab36ff777767604800efa932a75db3a88f00cf4",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-translatable/zipball/fe6696a8f32fb11db27aeb3ffbfa9517aaa18143",
+                "reference": "fe6696a8f32fb11db27aeb3ffbfa9517aaa18143",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
-                "silverstripe/cms": ">=3.0.1",
-                "silverstripe/framework": ">=3.0.1"
+                "silverstripe/cms": "~3.1",
+                "silverstripe/framework": "~3.1"
+            },
+            "require-dev": {
+                "silverstripe/mssql": "*",
+                "silverstripe/postgresql": "*",
+                "silverstripe/sqlite3": "*"
             },
             "type": "silverstripe-module",
             "extra": {
                 "snapshot": "http://www.silverstripe.org/assets/Uploads/translatable4-small.png"
-            },
-            "autoload": {
-                "classmap": [
-                    "."
-                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -661,7 +661,7 @@
                 "localization",
                 "silverstripe"
             ],
-            "time": "2013-05-06 06:46:03"
+            "time": "2013-08-13 00:10:21"
         },
         {
             "name": "silverstripe/userforms",
