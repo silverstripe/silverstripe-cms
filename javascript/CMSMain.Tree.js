@@ -2,6 +2,40 @@
 
 	$.entwine('ss.tree', function($){
 		$('.cms-tree').entwine({
+			onadd: function(){
+				var self = this;
+				$(document).on('context_show.vakata', function(){
+					self.adjustContextClass(this);
+				});
+
+				this._super();
+			},
+			/*
+			 * Add and remove classes from context menus to allow for
+			 * adjusting the display
+			 */
+			adjustContextClass: function(){
+				var menus = $('#vakata-contextmenu').find("ul ul");
+
+				menus.each(function(i){
+					var col = "1", 
+						count = $(menus[i]).find('li').length;
+
+					//Assign columns to menus over 10 items long
+					if(count > 20){
+						col = "3"; 
+					}else if(count > 10){
+						col = "2"; 
+					}
+
+					$(menus[i]).addClass('col-' + col).removeClass('right');
+
+					//Remove "right" class that jstree adds on mouseenter
+					$(menus[i]).find('li').on("mouseenter", function (e) { 
+						$(this).parent('ul').removeClass("right");
+					});
+				});
+			},
 			getTreeConfig: function() {
 				var self = this, config = this._super(), hints = this.getHints();
 				config.plugins.push('contextmenu');
@@ -101,7 +135,7 @@
 										);
 									}
 								}
-							]									
+							]
 						};
 
 						return menuitems;
