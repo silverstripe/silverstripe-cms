@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "a38f5a541837febda86ae59c6b727ea4",
+    "hash": "00c419fd37e503301322ce18d792c3dc",
     "packages": [
         {
             "name": "composer/installers",
@@ -83,7 +83,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp-themes/default.git",
-                "reference": "a3107381f43f8a4bda289c995119096cd037e211"
+                "reference": "1913913557944f71ab40d67f15f28b17afc20e4f"
             },
             "require": {
                 "composer/installers": "*",
@@ -99,7 +99,7 @@
                 }
             },
             "description": "CWP Default Theme",
-            "time": "2013-08-12 22:43:15"
+            "time": "2013-08-15 01:00:52"
         },
         {
             "name": "cwp/cwp",
@@ -107,7 +107,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp.git",
-                "reference": "4ed598ce44abbe6fc8fd37d5636f9db81aa7af8a"
+                "reference": "5bed64e520538d822fee59a2c22926d05747fa0f"
             },
             "require": {
                 "composer/installers": "*",
@@ -122,7 +122,7 @@
                 }
             },
             "description": "CWP Main Extension Module",
-            "time": "2013-08-13 23:45:08"
+            "time": "2013-08-14 05:09:43"
         },
         {
             "name": "silverstripe-themes/module_bootstrap",
@@ -130,12 +130,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-ux/sass-twitter-bootstrap.git",
-                "reference": "f388047d791b90f3729c5c0cfba4ede5749937d6"
+                "reference": "643e65bc6e8456aa2343755a71941b477e0933db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-ux/sass-twitter-bootstrap/zipball/f388047d791b90f3729c5c0cfba4ede5749937d6",
-                "reference": "f388047d791b90f3729c5c0cfba4ede5749937d6",
+                "url": "https://api.github.com/repos/silverstripe-ux/sass-twitter-bootstrap/zipball/643e65bc6e8456aa2343755a71941b477e0933db",
+                "reference": "643e65bc6e8456aa2343755a71941b477e0933db",
                 "shasum": ""
             },
             "require": {
@@ -150,7 +150,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "CSS toolkit by Twitter.",
-            "time": "2013-05-23 03:54:45"
+            "time": "2013-08-14 23:39:02"
         },
         {
             "name": "silverstripe/advancedworkflow",
@@ -307,16 +307,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-fulltextsearch.git",
-                "reference": "dbd68dc300ff0cba78c845a01906aa55f08cef5f"
+                "reference": "21a963d398e311115baf958571e29dd186b97ae6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-fulltextsearch/zipball/dbd68dc300ff0cba78c845a01906aa55f08cef5f",
-                "reference": "dbd68dc300ff0cba78c845a01906aa55f08cef5f",
+                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-fulltextsearch/zipball/21a963d398e311115baf958571e29dd186b97ae6",
+                "reference": "21a963d398e311115baf958571e29dd186b97ae6",
                 "shasum": ""
             },
             "require": {
-                "silverstripe/framework": ">=3.1.0-beta1,<4.0"
+                "silverstripe/framework": "~3.1"
             },
             "require-dev": {
                 "hafriedlander/silverstripe-phockito": "*"
@@ -337,7 +337,7 @@
                 "solr",
                 "sphinx"
             ],
-            "time": "2013-07-25 02:28:10"
+            "time": "2013-08-14 09:58:35"
         },
         {
             "name": "silverstripe/html5",
@@ -808,6 +808,7 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "undefinedoffset/sortablegridfield": 20,
         "phpunit/phpunit": 0
     },
     "platform": {
