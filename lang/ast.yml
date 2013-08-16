@@ -14,8 +14,6 @@ ast:
     DEFAULTSERVERERRORPAGETITLE: 'Error del servidor'
   LeftAndMain:
     SearchResults: 'Resultaos de la busca'
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
   SilverStripeNavigatorLinkl:
     CloseLink: Zarrar
   SiteTree:

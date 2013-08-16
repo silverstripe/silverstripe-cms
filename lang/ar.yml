@@ -60,7 +60,6 @@ ar:
     ARCHIVEDSITEFROM: 'موقع تمت أرشفته منذ'
     CMS: نظام إدارة المحتوى
     DRAFTSITE: 'موقع في المسودة'
-    DRAFT_SITE_ACCESS_RESTRICTION: 'بجب تسجيل الدخول ببيانات نظام إدارة المحتوى للتمكن من مشاهدة المسودات أو محتوى الأرشيف. <a href="%s">اضغط هنا للرجوع إلى الموقع المنشور.</a>'
     LOGGEDINAS: 'الدخول كـ'
     LOGIN: الدخول
     LOGOUT: 'الخروج'
@@ -129,7 +128,6 @@ ar:
     OtherGroupTitle: أخرى
     ParameterLiveCheckbox: 'التأكد من حيوية الموقع'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'لمشاركة هذا إلى هذه النسخة، انسخ وإلصق الرابط أدناه....'
     ShareLink: 'رابط مشترك'
   SilverStripeNavigatorLinkl:
     CloseLink: إغلاق

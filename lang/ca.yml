@@ -15,8 +15,6 @@ ca:
     RESTORE: Restaura
     ROLLBACK: 'Torna a aquesta versió'
     SAVE: Desa
-  ContentController:
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Heu d''entrar amb la vostra contrasenya per a veure l''esborrany o contingut arxivat. <a href="%s">Premeu aquí per a tornar al lloc publicat.</a>'
   ErrorPage:
     400: '400 - Mala petició'
     401: '401 - Sense autorització'
@@ -62,8 +60,6 @@ ca:
   SideReport:
     EMPTYPAGES: 'Pàgines buides'
     LAST2WEEKS: 'Pàgines editades les dues darreres setmanes'
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
   SiteTree:
     ACCESSANYONE: Qualsevol
     ACCESSHEADER: 'Qui pot veure aquesta pàgina al meu lloc web?'

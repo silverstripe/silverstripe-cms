@@ -4,8 +4,6 @@ id:
     DELETEFP: Hapus dari situs yang telah diterbitkan
     RESTORE: Pulihkan
     SAVE: Simpan
-  ContentController:
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Anda harus masuk dengan password CMS Anda untuk melihat konten draft atau terarsip. <a href="%s">Klik di sini untuk kembali ke situs yang dipublikasi</a>'
   ErrorPage:
     400: '400 - Permintaan buruk'
     401: '401 - Tidak ada otorisasi'
@@ -48,8 +46,6 @@ id:
     GO: Pergi
     SEARCH: Cari
     SearchResults: 'Hasil Pencarian'
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
   SilverStripeNavigatorLinkl:
     CloseLink: Tutup
   SiteConfig:

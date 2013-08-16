@@ -2,8 +2,6 @@ vi_VN:
   CMSMain:
     PAGENOTEXISTS: 'Không tìm thấy trang này.'
     SAVE: Lưu
-  ContentController:
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Bạn phải đăng nhập để xem trang nháp hoặc trang lưu trữ.  <a href="%s">Trở lại trang cũ.</a>'
   ErrorPage:
     CODE: 'Mã lỗi'
     DEFAULTERRORPAGECONTENT: '<p>Bạn truy cập vào một trang không tồn tại</p>
@@ -20,8 +18,6 @@ vi_VN:
     REDIRECTTOEXTERNAL: 'Website khác'
     REDIRECTTOPAGE: 'Một trang trên website'
     YOURPAGE: 'Trang'
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
   SiteTree:
     ACCESSANYONE: Bất cứ ai
     ACCESSHEADER: 'Ai có thể xem trang này ?'

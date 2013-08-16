@@ -1,8 +1,4 @@
 km:
-  ContentController:
-    DRAFT_SITE_ACCESS_RESTRICTION: 'ដើម្បីមើលទំព័រប្រៀងសូម ចូលកាន់ប្រព័ន្ធគ្រប់គ្រងដោយប្រើយឈ្មោះ និងពាក្យសំងាត់របស់អ្នក សូមចុចត្រនេះ <a href="%s"> ដើម្បីត្រលប់ទៅ កាន់ទំព័ររួចរាល់។</a>'
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
   SiteTree:
     Content: មាតិការ
     HTMLEDITORTITLE: អត្ថបទ

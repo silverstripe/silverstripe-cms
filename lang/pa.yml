@@ -1,17 +1,9 @@
 pa:
-  ContentController:
-    DRAFT_SITE_ACCESS_RESTRICTION: 'ਕੱਚੀ ਜਾਂ ਪੁਰਾਣੀ ਸਾਈਟ ਦੇਖਣ ਲਈ ਤੁਹਾਨੰੂ ਜ਼ਰੂਰ ਆਪਣੇ CMS ਪਾਸਵਰਡ ਨਾਲ ਲੋਿਗਨ ਕਰਨੀ ਪਵੇਗੀ।
-
-      <a href="%s">ਛਾਪੀ ਹੋਈ ਸਾਈਟ ਤੇ ਜਾਨ ਲਈ ਇੱਥੇ ਕਿਲੱਕ ਕਰੋ।</a>
-
-      '
   RedirectorPage:
     OTHERURL: 'ਹੋਰ ਵੈੱਬ-ਸਾਈਟ URL'
     REDIRECTTOEXTERNAL: 'ਦੂਸਰੀ ਵੈੱਬ-ਸਾਈਟ '
     REDIRECTTOPAGE: 'ਇੱਕ ਪੰਨਾ ਤੁਹਾਡੀ ਵੈੱਬ-ਸਾਈਟ ਤੇ '
     YOURPAGE: 'ਇੱਕ ਪੰਨਾ ਤੁਹਾਡੀ ਵੈੱਬ-ਸਾਈਟ ਤੇ '
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
   SiteTree:
     ACCESSANYONE: "ਕੋਈ ਵੀ\t"
     ACCESSHEADER: 'Who can view this page on my site?'

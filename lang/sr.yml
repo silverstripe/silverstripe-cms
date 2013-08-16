@@ -34,8 +34,6 @@ sr:
     Title: 'Sve stranice'
   ContentControl:
     NOTEWONTBESHOWN: 'Primedba: ova poruka neće biti prikazana vašim posetiocima'
-  ContentController:
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Морате да се пријавите својом лозинком на CMS да бисте приступили нацртима или архивираном садржају. <a href="%s">Кликните овде да бисте се вратили на завршен сајт.</a>'
   ErrorPage:
     400: '400 - Лош захтев'
     403: '403 - Забрањено'
@@ -69,7 +67,6 @@ sr:
     EMPTYPAGES: 'Празне стране'
     LAST2WEEKS: 'Стране мењане у задње две недеље'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Da bi ste  podelili link ka ovoj stranici, kopirajte i dodajte link ispod.'
     ShareLink: 'Podeliti link'
   SilverStripeNavigatorLinkl:
     CloseLink: Zatvoriti

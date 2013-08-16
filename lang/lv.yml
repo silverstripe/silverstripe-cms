@@ -9,7 +9,6 @@ lv:
   ContentController:
     ARCHIVEDSITEFROM: 'Arhivēta vietne no'
     DRAFTSITE: 'Melnrakstu vietne'
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Lai aplūkotu melnrakstu vai arhivētu saturu, Jums ir jāpieslēdzas ar Jūsu CMS paroli. <a href="%s">Lai dotos atpakaļu uz publisko lapu, klikšķiniet šeit.</a>'
     LOGGEDINAS: 'Pieslēdzies kā'
     LOGIN: Pieslēgties
     LOGOUT: 'Atslēgties'
@@ -63,7 +62,6 @@ lv:
     SEARCH: Meklēt
     SearchResults: 'Meklēšanas rezultāti'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Lai to koplietotu ar šo lapu, nokopējiet un ievietojoiet zemāk redzamo saiti.'
     ShareLink: 'Koplietot saiti'
   SilverStripeNavigatorLinkl:
     CloseLink: Aizvērt

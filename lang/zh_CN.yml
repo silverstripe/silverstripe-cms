@@ -15,8 +15,6 @@ zh_CN:
     SAVE: 保存
   CMSSiteTreeFilter_DeletedPages:
     Title: '所有页面(包含已删除)'
-  ContentController:
-    DRAFT_SITE_ACCESS_RESTRICTION: '您必需用您的CMS密码来登录，才可浏览预备发布或已归档内容。<a href="%s">点击这里可回到正式发布站<a>'
   ErrorPage:
     CODE: '错误代码'
   Folder:
@@ -38,7 +36,6 @@ zh_CN:
     EMPTYPAGES: '空白页'
     LAST2WEEKS: '在过去2周内编辑过的网页'
   SilverStripeNavigatorLink:
-    ShareInstructions: '分享此页，请复制粘贴下面的链接'
     ShareLink: '分享链接'
   SilverStripeNavigatorLinkl:
     CloseLink: 关闭

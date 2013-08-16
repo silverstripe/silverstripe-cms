@@ -13,12 +13,14 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 
 		$editor->setValue("<a href=\"[sitetree_link,id=$aboutID]\">Example Link</a>");
 		$editor->saveInto($sitetree);
+		$sitetree->write();
 		$this->assertEquals(array($aboutID => $aboutID), $sitetree->LinkTracking()->getIdList(), 'Basic link tracking works.');
 
 		$editor->setValue (
 			"<a href=\"[sitetree_link,id=$aboutID]\"></a><a href=\"[sitetree_link,id=$contactID]\"></a>"
 		);
 		$editor->saveInto($sitetree);
+		$sitetree->write();
 		$this->assertEquals (
 			array($aboutID => $aboutID, $contactID => $contactID),
 			$sitetree->LinkTracking()->getIdList(),
@@ -27,6 +29,7 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 
 		$editor->setValue(null);
 		$editor->saveInto($sitetree);
+		$sitetree->write();
 		$this->assertEquals(array(), $sitetree->LinkTracking()->getIdList(), 'Link tracking is removed when links are.');
 	}
 
@@ -37,12 +40,14 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 
 		$editor->setValue('<a href="assets/example.pdf">Example File</a>');
 		$editor->saveInto($sitetree);
+		$sitetree->write();
 		$this->assertEquals (
 			array($fileID => $fileID), $sitetree->ImageTracking()->getIDList(), 'Links to assets are tracked.'
 		);
 
 		$editor->setValue(null);
 		$editor->saveInto($sitetree);
+		$sitetree->write();
 		$this->assertEquals(array(), $sitetree->ImageTracking()->getIdList(), 'Asset tracking is removed with links.');
 	}
 
@@ -52,6 +57,7 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 
 		$editor->setValue('<img src="assets/example.jpg" />');
 		$editor->saveInto($sitetree);
+		$sitetree->write();
 
 		$parser = new CSSContentParser($sitetree->Content);
 		$xml = $parser->getByXpath('//img');
@@ -60,6 +66,7 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 
 		$editor->setValue('<img src="assets/example.jpg" alt="foo" title="bar" />');
 		$editor->saveInto($sitetree);
+		$sitetree->write();
 
 		$parser = new CSSContentParser($sitetree->Content);
 		$xml = $parser->getByXpath('//img');
@@ -74,12 +81,14 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 
 		$editor->setValue('<img src="assets/example.jpg" />');
 		$editor->saveInto($sitetree);
+		$sitetree->write();
 		$this->assertEquals (
 			array($fileID => $fileID), $sitetree->ImageTracking()->getIDList(), 'Inserted images are tracked.'
 		);
 
 		$editor->setValue(null);
 		$editor->saveInto($sitetree);
+		$sitetree->write();
 		$this->assertEquals (
 			array(), $sitetree->ImageTracking()->getIDList(), 'Tracked images are deleted when removed.'
 		);
@@ -93,6 +102,7 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 
 		$editor->setValue('<p><a href="[sitetree_link,id=0]">Broken Link</a></p>');
 		$editor->saveInto($sitetree);
+		$sitetree->write();
 
 		$this->assertTrue($sitetree->HasBrokenLink);
 
@@ -102,6 +112,7 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 		));
 		$sitetree->HasBrokenLink = false;
 		$editor->saveInto($sitetree);
+		$sitetree->write();
 
 		$this->assertFalse((bool) $sitetree->HasBrokenLink);
 	}

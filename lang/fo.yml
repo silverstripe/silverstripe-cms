@@ -33,8 +33,6 @@ fo:
   SideReport:
     EMPTYPAGES: 'Tómar síður'
     LAST2WEEKS: 'Síður broyttar seinastu 2 vikurnar'
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
   SiteTree:
     ACCESSANYONE: Øll
     ACCESSHEADER: 'Hvør skal kunna síggja hesa síðuna?'

@@ -5,7 +5,6 @@ is:
     RESTORE: Endurheimta
     SAVE: Vista
   ContentController:
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Þú verður að innskrá þig með lykilorðinu þínu til að geta séð drög eða innihald skjalasafns. <a href="%s">Smelltu hér til að fara til baka á útgefnu síðuna.</a>'
     LOGGEDINAS: 'Innskráður sem'
     LOGIN: Innskrá
     LOGOUT: 'Útskrá'
@@ -31,8 +30,6 @@ is:
     GO: Framkvæma
     SEARCH: Leita
     SearchResults: 'Leitar niðurstaða'
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
   SilverStripeNavigatorLinkl:
     CloseLink: Loka
   SiteConfig:

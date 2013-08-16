@@ -1,6 +1,4 @@
 ms:
-  ContentController:
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Anda pertu mendaftar masuk dengan kata aluan CMS anda untuk melihat draf atau kandungan diarkib. <a href="%s">Klik sini untuk kembali ke tapak tertebit.</a>'
   ErrorPage:
     417: '417 - kegagalan expectation'
     CODE: 'Kod kesilapan'
@@ -18,8 +16,6 @@ ms:
     REDIRECTTOEXTERNAL: 'Laman web lain'
     REDIRECTTOPAGE: 'Tambah halaman ke laman anda'
     YOURPAGE: 'Halaman di laman anda'
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
   SiteTree:
     ACCESSANYONE: Sesiapa sahaja
     ACCESSHEADER: 'Siapa yang boleh melihat mukasurat ini?'

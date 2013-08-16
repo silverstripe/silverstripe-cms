@@ -1,7 +1,5 @@
 el:
   CMSMain:
     SAVE: Αποθήκευση
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
   ViewArchivedEmail_ss:
     HAVEASKED: 'Επιθυμείται να εμφανιστεί το περιεχόμενο του ιστοχώρου σας την '

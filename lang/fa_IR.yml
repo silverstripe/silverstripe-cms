@@ -49,8 +49,6 @@ fa_IR:
     EMPTYPAGES: 'صفحات بدون مطلب'
     OtherGroupTitle: سایر
     ParameterLiveCheckbox: 'بررسی سایت به صورت زنده'
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
   SiteConfig:
     DEFAULTTHEME: '(استفاده از پوسته پیشفرض)'
     EDITHEADER: 'چه کسی میتواند صفحات را در این سایت ویرایش کند؟'

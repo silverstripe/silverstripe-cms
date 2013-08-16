@@ -45,8 +45,6 @@ zh_TW:
     Title: '所有網頁'
   ContentControl:
     NOTEWONTBESHOWN: '備註: 此訊息將不會顯示給您的訪客看'
-  ContentController:
-    DRAFT_SITE_ACCESS_RESTRICTION: '你必須先登入才能瀏覽草稿或歸檔內容。<a href="%s">回到正式發布站</a>'
   ErrorPage:
     CODE: '錯誤代碼'
     DEFAULTERRORPAGECONTENT: '<p>抱歉, 看來您正再嘗試存取一個不存在的網頁</p><p>請檢查您正在嘗試存取網址的拼寫並再試一次.</p>'
@@ -72,7 +70,6 @@ zh_TW:
     EMPTYPAGES: '空頁'
     LAST2WEEKS: '網頁在過去兩個禮拜有被更改過'
   SilverStripeNavigatorLink:
-    ShareInstructions: '分享一個由此到此的網頁, 複製與貼上下面的鏈結.'
     ShareLink: '分享鏈結'
   SilverStripeNavigatorLinkl:
     CloseLink: 關閉
