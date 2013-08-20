@@ -218,7 +218,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * Determines if the system should avoid orphaned pages
 	 * by deleting all children when the their parent is deleted (TRUE),
 	 * or rather preserve this data even if its not reachable through any navigation path (FALSE).
-	 *
+	 * 
 	 * @deprecated 3.2 Use the "SiteTree.enforce_strict_hierarchy" config setting instead
 	 * @param boolean
 	 */
@@ -409,7 +409,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		) {
 			 return; // There were no suitable matches at all.
 		}
-
+		
 		$link = Convert::raw2att($page->Link());
 		
 		if($content) {
@@ -445,7 +445,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			return Director::absoluteURL($this->Link($action));
 		}
 	}
-
+	
 	/**
 	 * Base link used for previewing. Defaults to absolute URL,
 	 * in order to account for domain changes, e.g. on multi site setups.
@@ -841,8 +841,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 
 		if(!$fromLive
-		   && !Session::get('unsecuredDraftSite')
-		   && !Permission::checkMember($member, array('CMS_ACCESS_CMSMain', 'VIEW_DRAFT_CONTENT'))) {
+			&& !Session::get('unsecuredDraftSite')
+			&& !Permission::checkMember($member, array('CMS_ACCESS_CMSMain', 'VIEW_DRAFT_CONTENT'))) {
 			// If we weren't definitely loaded from live, and we can't view non-live content, we need to
 			// check to make sure this version is the live version and so can be viewed
 			if (Versioned::get_versionnumber_by_stage($this->class, 'Live', $this->ID) != $this->Version) return false;
@@ -876,11 +876,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		
 		return false;
 	}
-
+	
 	/**
 	 * Determines canView permissions for the latest version of this Page on a specific stage (see {@link Versioned}).
 	 * Usually the stage is read from {@link Versioned::current_stage()}.
-	 *
+	 * 
 	 * @todo Implement in CMS UI.
 	 * 
 	 * @param String $stage
@@ -892,7 +892,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		Versioned::reading_stage($stage);
 
 		$versionFromStage = DataObject::get($this->class)->byID($this->ID);
-
+		
 		Versioned::set_reading_mode($oldMode);
 		return $versionFromStage ? $versionFromStage->canView($member) : false;
 	}
@@ -1335,7 +1335,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if($this->ExtraMeta) { 
 			$tags .= $this->ExtraMeta . "\n";
 		} 
-
+		
 		if(Permission::check('CMS_ACCESS_CMSMain') && in_array('CMSPreviewable', class_implements($this)) && !$this instanceof ErrorPage) {
 			$tags .= "<meta name=\"x-page-id\" content=\"{$this->ID}\" />\n";
 			$tags .= "<meta name=\"x-cms-edit-link\" content=\"" . $this->CMSEditLink() . "\" />\n";
@@ -1605,10 +1605,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			'SiteTree', 
 			"\"URLSegment\" = '$this->URLSegment' $IDFilter $parentFilter"
 		);
-		
+
 		return !($existingPage);
-	}
-	
+		}
+		
 	/**
 	 * Generate a URL segment based on the title provided.
 	 * 
@@ -1712,7 +1712,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
             foreach($contentLinks as $item) {
             	$item->DependentLinkType = 'Content link';
             	$linkList->push($item);
-            }
+        }
 			$items->merge($linkList);
         }
 		
@@ -1724,9 +1724,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				foreach($virtuals as $item) {
 					$item->DependentLinkType = 'Virtual page';
 					$virtualList->push($item);
-				}
-				$items->merge($virtualList);
 			}
+				$items->merge($virtualList);
+		}
 		}
 
 		// Redirector pages
@@ -1736,7 +1736,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			foreach($redirectors as $item) {
 				$item->DependentLinkType = 'Redirector page';
 				$redirectorList->push($item);
-			}
+		}
 			$items->merge($redirectorList);
 		}
 
@@ -1999,8 +1999,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 						->setAttribute(
 							'data-placeholder', 
 							_t('SiteTree.GroupPlaceholder', 'Click to select group')
-						)
 				)
+			)
 			)
 		);
 		
@@ -2226,14 +2226,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			// Set up the initial state of the button to reflect the state of the underlying SiteTree object.
 			if($this->stagesDiffer('Stage', 'Live')) {
 				$publish->addExtraClass('ss-ui-alternate');
-			}
 		}
-
+		}
+		
 		$actions = new FieldList(array($majorActions, $rootTabSet));
 		
 		// Hook for extensions to add/remove actions.
 		$this->extend('updateCMSActions', $actions);
-
+		
 		return $actions;
 	}
 	
@@ -2666,7 +2666,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		if(!$this->canEdit() && !$this->canAddChildren()) {
 			if (!$this->canView()) {
-				$classes .= " disabled";
+			$classes .= " disabled";
 			} else {
 				$classes .= " edit-disabled";
 			}
