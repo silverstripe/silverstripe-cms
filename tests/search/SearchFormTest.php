@@ -232,6 +232,10 @@ class ZZZSearchFormTest extends FunctionalTest {
 	public function testSearchTitleAndContentWithSpecialCharacters() {
 		if(!$this->checkFulltextSupport()) return;
 
+		if(class_exists('PostgreSQLDatabase') && DB::getConn() instanceof PostgreSQLDatabase) {
+			$this->markTestSkipped("PostgreSQLDatabase doesn't support entity-encoded searches");
+		}
+
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 		
 		$pageWithSpecialChars = $this->objFromFixture('SiteTree', 'pageWithSpecialChars');
