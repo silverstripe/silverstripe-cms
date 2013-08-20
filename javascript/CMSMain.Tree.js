@@ -2,13 +2,10 @@
 
 	$.entwine('ss.tree', function($){
 		$('.cms-tree').entwine({
-			onadd: function(){
-				var self = this;
-				$(document).on('context_show.vakata', function(){
-					self.adjustContextClass(this);
-				});
-
-				this._super();
+			fromDocument: {
+				'oncontext_show.vakata': function(e){
+					this.adjustContextClass();
+				}
 			},
 			/*
 			 * Add and remove classes from context menus to allow for
