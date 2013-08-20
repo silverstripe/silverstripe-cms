@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "649c3d5fe4c21e562b393ab07a2155b0",
+    "hash": "50a1368c43b6021013dddefc57b7e27f",
     "packages": [
         {
             "name": "composer/installers",
@@ -159,7 +159,7 @@
                     "dev-ssexpress": "0.1-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "description": "CSS toolkit by Twitter.",
             "time": "2013-05-23 03:54:45"
         },
@@ -205,16 +205,16 @@
         },
         {
             "name": "silverstripe/cms",
-            "version": "3.1.0-rc1",
+            "version": "3.1.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-cms.git",
-                "reference": "3.1.0-rc1"
+                "reference": "3dc86f98a3c5920466321e08c77841089179a9f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/3.1.0-rc1",
-                "reference": "3.1.0-rc1",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/3dc86f98a3c5920466321e08c77841089179a9f7",
+                "reference": "3dc86f98a3c5920466321e08c77841089179a9f7",
                 "shasum": ""
             },
             "require": {
@@ -248,7 +248,7 @@
                 "cms",
                 "silverstripe"
             ],
-            "time": "2013-08-09 02:14:35"
+            "time": "2013-08-20 20:25:24"
         },
         {
             "name": "silverstripe/documentconverter",
@@ -268,16 +268,16 @@
         },
         {
             "name": "silverstripe/framework",
-            "version": "3.1.0-rc1",
+            "version": "3.1.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-framework.git",
-                "reference": "3.1.0-rc1"
+                "reference": "afd3e3f0d0569825f35968166df0a9eb2c04eddf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/3.1.0-rc1",
-                "reference": "3.1.0-rc1",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/afd3e3f0d0569825f35968166df0a9eb2c04eddf",
+                "reference": "afd3e3f0d0569825f35968166df0a9eb2c04eddf",
                 "shasum": ""
             },
             "require": {
@@ -310,7 +310,7 @@
                 "framework",
                 "silverstripe"
             ],
-            "time": "2013-08-09 02:25:58"
+            "time": "2013-08-20 21:40:22"
         },
         {
             "name": "silverstripe/fulltextsearch",
@@ -368,7 +368,7 @@
                 "silverstripe/framework": "3.*"
             },
             "type": "silverstripe-module",
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -498,7 +498,7 @@
                 "silverstripe/framework": "3.*"
             },
             "type": "silverstripe-module",
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -538,8 +538,7 @@
             "authors": [
                 {
                     "name": "Hamish Friedlander",
-                    "email": "hamish@silverstripe.com",
-                    "role": "Developer"
+                    "email": "hamish@silverstripe.com"
                 },
                 {
                     "name": "Sam Minnee",
@@ -819,6 +818,8 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "silverstripe/cms": 20,
+        "silverstripe/framework": 20,
         "undefinedoffset/sortablegridfield": 20,
         "phpunit/phpunit": 0
     },
