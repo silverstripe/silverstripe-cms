@@ -141,6 +141,18 @@
 				return config;
 			}
 		});
+		
+		// Scroll tree down to context of the current page
+		$('.cms-tree a.jstree-clicked').entwine({
+            onmatch: function(){
+                var self = this,
+                	panel = self.parents('.cms-panel-content');
+
+                panel.animate({
+                    scrollTop: self.offset().top - (panel.height() / 2)
+                }, 'slow'); 
+            }
+        });
 	});
 
 }(jQuery));
