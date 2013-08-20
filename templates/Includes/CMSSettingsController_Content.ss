@@ -1,4 +1,4 @@
-<div id="settings-controller-cms-content" class="cms-content cms-edit-form center cms-tabset $BaseCSSClasses" data-layout-type="border" data-pjax-fragment="Content CurrentForm">
+<div id="settings-controller-cms-content" class="cms-content center cms-tabset $BaseCSSClasses" data-layout-type="border" data-pjax-fragment="Content CurrentForm">
 
 	<div class="cms-content-header north">
 		<% with $EditForm %>
@@ -7,10 +7,9 @@
 					<% include CMSBreadcrumbs %>
 				<% end_with %>
 			</div>
-
 			<% if $Fields.hasTabset %>
 				<% with $Fields.fieldByName('Root') %>
-				<div class="cms-content-header-tabs cms-tabset-nav-primary ss-ui-tabs-nav">
+				<div class="cms-content-header-tabs">
 					<ul class="cms-tabset-nav-primary">
 					<% loop $Tabs %>
 						<li<% if $extraClass %> class="$extraClass"<% end_if %>><a href="#$id">$Title</a></li>
