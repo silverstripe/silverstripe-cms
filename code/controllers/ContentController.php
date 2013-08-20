@@ -101,6 +101,11 @@ class ContentController extends Controller {
 
 		if($this->redirectedTo()) return;
 
+		// Check page permissions
+		if($this->dataRecord && $this->URLSegment != 'Security' && !$this->dataRecord->canView()) {
+			return Security::permissionFailure($this);
+		}
+
 		// Draft/Archive security check - only CMS users should be able to look at stage/archived content
 		if(
 			$this->URLSegment != 'Security' 
@@ -128,9 +133,10 @@ class ContentController extends Controller {
 					),
 					Controller::join_links($this->Link(), "?stage=Live")
 				);
+
+				return Security::permissionFailure($this, $permissionMessage);
 			}
 
-			return Security::permissionFailure($this, $permissionMessage);
 		}
 		
 		// Use theme from the site config
