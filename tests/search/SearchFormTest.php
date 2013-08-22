@@ -11,7 +11,7 @@
 class ZZZSearchFormTest extends FunctionalTest {
 	
 	protected static $fixture_file = 'SearchFormTest.yml';
-
+	
 	protected $mockController;
 	
 	public function waitUntilIndexingFinished() {
@@ -37,7 +37,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 		
 		$this->waitUntilIndexingFinished();
 	}
-
+	
 	/**
 	 * @return Boolean
 	 */
@@ -101,7 +101,7 @@ class ZZZSearchFormTest extends FunctionalTest {
 			'Unpublished pages are not found by searchform'
 		);
 	}
-
+	
 	public function testPagesRestrictedToLoggedinUsersNotIncluded() {
 		if(!$this->checkFulltextSupport()) return;
 
@@ -109,7 +109,6 @@ class ZZZSearchFormTest extends FunctionalTest {
 		
 		$page = $this->objFromFixture('SiteTree', 'restrictedViewLoggedInUsers');
 		$page->publish('Stage', 'Live');
-
 		$results = $sf->getResults(null, array('Search'=>'restrictedViewLoggedInUsers'));
 		$this->assertNotContains(
 			$page->ID,
@@ -135,7 +134,6 @@ class ZZZSearchFormTest extends FunctionalTest {
 		
 		$page = $this->objFromFixture('SiteTree', 'restrictedViewOnlyWebsiteUsers');
 		$page->publish('Stage', 'Live');
-
 		$results = $sf->getResults(null, array('Search'=>'restrictedViewOnlyWebsiteUsers'));
 		$this->assertNotContains(
 			$page->ID,
@@ -165,16 +163,13 @@ class ZZZSearchFormTest extends FunctionalTest {
 	}
 	
 	public function testInheritedRestrictedPagesNotIncluded() {
-		if(!$this->checkFulltextSupport()) return;
-
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 
 		$parent = $this->objFromFixture('SiteTree', 'restrictedViewLoggedInUsers');
 		$parent->publish('Stage', 'Live');
-
+		
 		$page = $this->objFromFixture('SiteTree', 'inheritRestrictedView');
 		$page->publish('Stage', 'Live');
-
 		$results = $sf->getResults(null, array('Search'=>'inheritRestrictedView'));
 		$this->assertNotContains(
 			$page->ID,
@@ -231,6 +226,10 @@ class ZZZSearchFormTest extends FunctionalTest {
 
 	public function testSearchTitleAndContentWithSpecialCharacters() {
 		if(!$this->checkFulltextSupport()) return;
+
+		if(class_exists('PostgreSQLDatabase') && DB::getConn() instanceof PostgreSQLDatabase) {
+			$this->markTestSkipped("PostgreSQLDatabase doesn't support entity-encoded searches");
+		}
 
 		$sf = new SearchForm($this->mockController, 'SearchForm');
 		

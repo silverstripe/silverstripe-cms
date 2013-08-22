@@ -2,6 +2,37 @@
 
 	$.entwine('ss.tree', function($){
 		$('.cms-tree').entwine({
+			fromDocument: {
+				'oncontext_show.vakata': function(e){
+					this.adjustContextClass();
+				}
+			},
+			/*
+			 * Add and remove classes from context menus to allow for
+			 * adjusting the display
+			 */
+			adjustContextClass: function(){
+				var menus = $('#vakata-contextmenu').find("ul ul");
+
+				menus.each(function(i){
+					var col = "1", 
+						count = $(menus[i]).find('li').length;
+
+					//Assign columns to menus over 10 items long
+					if(count > 20){
+						col = "3"; 
+					}else if(count > 10){
+						col = "2"; 
+					}
+
+					$(menus[i]).addClass('col-' + col).removeClass('right');
+
+					//Remove "right" class that jstree adds on mouseenter
+					$(menus[i]).find('li').on("mouseenter", function (e) { 
+						$(this).parent('ul').removeClass("right");
+					});
+				});
+			},
 			getTreeConfig: function() {
 				var self = this, config = this._super(), hints = this.getHints();
 				config.plugins.push('contextmenu');
@@ -101,7 +132,7 @@
 										);
 									}
 								}
-							]									
+							]
 						};
 
 						return menuitems;
@@ -110,6 +141,18 @@
 				return config;
 			}
 		});
+		
+		// Scroll tree down to context of the current page
+		$('.cms-tree a.jstree-clicked').entwine({
+            onmatch: function(){
+                var self = this,
+                	panel = self.parents('.cms-panel-content');
+
+                panel.animate({
+                    scrollTop: self.offset().top - (panel.height() / 2)
+                }, 'slow'); 
+            }
+        });
 	});
 
 }(jQuery));

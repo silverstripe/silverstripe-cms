@@ -103,13 +103,28 @@ class ContentController extends Controller {
 
 		// Check page permissions
 		if($this->dataRecord && $this->URLSegment != 'Security' && !$this->dataRecord->canView()) {
-			$permissionMessage = null;
+			return Security::permissionFailure($this);
+		}
 
-			// Check if we could view the live version, offer redirect if so
-			if($this->canViewStage('Live')) {
+		// Draft/Archive security check - only CMS users should be able to look at stage/archived content
+		if(
+			$this->URLSegment != 'Security' 
+			&& !Session::get('unsecuredDraftSite') 
+			&& (
+				Versioned::current_archived_date() 
+				|| (Versioned::current_stage() && Versioned::current_stage() != 'Live')
+			)
+		) {
+			if(!$this->dataRecord->canViewStage(Versioned::current_archived_date() ? 'Stage' : Versioned::current_stage())) {
+				$link = $this->Link();
+				$message = _t(
+					"ContentController.DRAFT_SITE_ACCESS_RESTRICTION", 
+					'You must log in with your CMS password in order to view the draft or archived content. ' .
+					'<a href="%s">Click here to go back to the published site.</a>'
+				);
 				Session::clear('currentStage');
 				Session::clear('archiveDate');
-
+				
 				$permissionMessage = sprintf(
 					_t(
 						"ContentController.DRAFT_SITE_ACCESS_RESTRICTION",
@@ -118,9 +133,10 @@ class ContentController extends Controller {
 					),
 					Controller::join_links($this->Link(), "?stage=Live")
 				);
+
+				return Security::permissionFailure($this, $permissionMessage);
 			}
 
-			return Security::permissionFailure($this, $permissionMessage);
 		}
 		
 		// Use theme from the site config
@@ -215,7 +231,7 @@ class ContentController extends Controller {
 		$response = $this->request->isMedia() ? null : ErrorPage::response_for($code);
 		// Failover to $message if the HTML response is unavailable / inappropriate
 		parent::httpError($code, $response ? $response : $message);
-	}
+		}
 
 	/**
 	 * Get the project name
