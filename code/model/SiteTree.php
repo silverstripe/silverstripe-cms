@@ -163,7 +163,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	private static $extensions = array(
 		"Hierarchy",
 		"Versioned('Stage', 'Live')",
-		"SiteTreeLinkTracking"
+		"SiteTreeLinkTracking",
+		"ExternalLinkTracking"
 	);
 	
 	private static $searchable_fields = array(
@@ -1471,6 +1472,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	
 	public function syncLinkTracking() {
 		$this->extend('augmentSyncLinkTracking');
+		$this->extend('augmentExternalLinkTracking');
 	}
 	
 	public function onAfterWrite() {
