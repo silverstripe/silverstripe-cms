@@ -41,8 +41,7 @@ class CMSSettingsController extends LeftAndMain {
 			$this, 'EditForm', $fields, $actions
 		)->setHTMLID('Form_EditForm');
 		$form->setResponseNegotiator($this->getResponseNegotiator());
-		$form->addExtraClass('root-form');
-		$form->addExtraClass('cms-edit-form cms-panel-padded center');
+		$form->addExtraClass('cms-content center cms-edit-form');
 		// don't add data-pjax-fragment=CurrentForm, its added in the content template instead
 
 		if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
