@@ -84,7 +84,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp-themes/default.git",
-                "reference": "24fe7255c5e021a3eda34fd3b5b8d0388dd7eda5"
+                "reference": "871e4118b3b02d1afc7905d9b8051df7f92117c9"
             },
             "require": {
                 "composer/installers": "*",
@@ -100,7 +100,7 @@
                 }
             },
             "description": "CWP Default Theme",
-            "time": "2013-08-20 21:20:33"
+            "time": "2013-08-26 01:45:57"
         },
         {
             "name": "cwp/cwp",
@@ -108,7 +108,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp.git",
-                "reference": "76113ee0cfa34b9550672d160e4bde7f4dceffff"
+                "reference": "6d7ccdc9a00fc6bd22dacd12701a851411c5d5c7"
             },
             "require": {
                 "cwp/cwp-core": "*",
@@ -116,7 +116,7 @@
             },
             "type": "silverstripe-module",
             "description": "CWP features module. We strongly recommend using it for all new sites. Future features will be delivered here.",
-            "time": "2013-08-20 03:03:24"
+            "time": "2013-08-22 04:34:30"
         },
         {
             "name": "cwp/cwp-core",
@@ -159,7 +159,7 @@
                     "dev-ssexpress": "0.1-dev"
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "description": "CSS toolkit by Twitter.",
             "time": "2013-05-23 03:54:45"
         },
@@ -272,12 +272,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-framework.git",
-                "reference": "afd3e3f0d0569825f35968166df0a9eb2c04eddf"
+                "reference": "c396645aede283c1100ce7f7741b8e284a871664"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/afd3e3f0d0569825f35968166df0a9eb2c04eddf",
-                "reference": "afd3e3f0d0569825f35968166df0a9eb2c04eddf",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/c396645aede283c1100ce7f7741b8e284a871664",
+                "reference": "c396645aede283c1100ce7f7741b8e284a871664",
                 "shasum": ""
             },
             "require": {
@@ -310,7 +310,7 @@
                 "framework",
                 "silverstripe"
             ],
-            "time": "2013-08-20 21:40:22"
+            "time": "2013-08-26 22:57:35"
         },
         {
             "name": "silverstripe/fulltextsearch",
@@ -368,7 +368,7 @@
                 "silverstripe/framework": "3.*"
             },
             "type": "silverstripe-module",
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -498,7 +498,7 @@
                 "silverstripe/framework": "3.*"
             },
             "type": "silverstripe-module",
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -538,7 +538,8 @@
             "authors": [
                 {
                     "name": "Hamish Friedlander",
-                    "email": "hamish@silverstripe.com"
+                    "email": "hamish@silverstripe.com",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sam Minnee",
@@ -559,12 +560,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-subsites.git",
-                "reference": "2d41dc62bfd7260a3ed08d60a698228908d3116e"
+                "reference": "110ce7751dc5cb56cda72e20fb8ece3cb5116f9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-subsites/zipball/2d41dc62bfd7260a3ed08d60a698228908d3116e",
-                "reference": "2d41dc62bfd7260a3ed08d60a698228908d3116e",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-subsites/zipball/110ce7751dc5cb56cda72e20fb8ece3cb5116f9a",
+                "reference": "110ce7751dc5cb56cda72e20fb8ece3cb5116f9a",
                 "shasum": ""
             },
             "require": {
@@ -585,7 +586,7 @@
                 "silverstripe",
                 "subsites"
             ],
-            "time": "2013-08-13 00:05:30"
+            "time": "2013-08-22 01:16:29"
         },
         {
             "name": "silverstripe/taxonomy",
@@ -628,12 +629,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-translatable.git",
-                "reference": "b24316167adf07dd6fbdc88a849b4c7822923867"
+                "reference": "b0e334d450c496ed33085e597f00fc0de633e0a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-translatable/zipball/b24316167adf07dd6fbdc88a849b4c7822923867",
-                "reference": "b24316167adf07dd6fbdc88a849b4c7822923867",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-translatable/zipball/b0e334d450c496ed33085e597f00fc0de633e0a0",
+                "reference": "b0e334d450c496ed33085e597f00fc0de633e0a0",
                 "shasum": ""
             },
             "require": {
@@ -671,7 +672,7 @@
                 "localization",
                 "silverstripe"
             ],
-            "time": "2013-08-20 19:44:20"
+            "time": "2013-08-22 15:05:34"
         },
         {
             "name": "silverstripe/userforms",
@@ -679,12 +680,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-userforms.git",
-                "reference": "e03271eed40f0c9369d87e9b60c700e249a39cb5"
+                "reference": "bd3164282a72b50ef2b8936ff98e78fb76d665bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-userforms/zipball/e03271eed40f0c9369d87e9b60c700e249a39cb5",
-                "reference": "e03271eed40f0c9369d87e9b60c700e249a39cb5",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-userforms/zipball/bd3164282a72b50ef2b8936ff98e78fb76d665bf",
+                "reference": "bd3164282a72b50ef2b8936ff98e78fb76d665bf",
                 "shasum": ""
             },
             "require": {
@@ -708,7 +709,7 @@
                 "silverstripe",
                 "userforms"
             ],
-            "time": "2013-08-12 07:50:10"
+            "time": "2013-08-22 15:05:44"
         },
         {
             "name": "silverstripe/versionedfiles",
@@ -780,12 +781,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/UndefinedOffset/SortableGridField.git",
-                "reference": "0.2.0"
+                "reference": "53eef90c978782092e40b6381aefc2bbbb1bf461"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/UndefinedOffset/SortableGridField/zipball/0.2.0",
-                "reference": "0.2.0",
+                "url": "https://api.github.com/repos/UndefinedOffset/SortableGridField/zipball/53eef90c978782092e40b6381aefc2bbbb1bf461",
+                "reference": "53eef90c978782092e40b6381aefc2bbbb1bf461",
                 "shasum": ""
             },
             "require": {
@@ -809,7 +810,7 @@
                 "gridfield",
                 "silverstripe"
             ],
-            "time": "2013-08-04 15:23:28"
+            "time": "2013-08-24 00:19:35"
         }
     ],
     "packages-dev": null,
