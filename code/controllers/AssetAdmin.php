@@ -240,14 +240,17 @@ JS
 			$fields->push($tabs);
 		}
 
+		// we only add buttons if they're available. User might not have permission and therefore
+		// the button shouldn't be available. Adding empty values into a ComposteField breaks template rendering.
+		$actionButtonsComposite = CompositeField::create()->addExtraClass('cms-actions-row');
+		if($uploadBtn) $actionButtonsComposite->push($uploadBtn);
+		if($addFolderBtn) $actionButtonsComposite->push($addFolderBtn);
+		if($syncButton) $actionButtonsComposite->push($syncButton);
+
 		// List view
 		$fields->addFieldsToTab('Root.ListView', array(
 			$actionsComposite = CompositeField::create(
-				CompositeField::create(
-					$uploadBtn,
-					$addFolderBtn,
-					$syncButton //TODO: add this into a batch actions menu as in https://github.com/silverstripe/silverstripe-design/raw/master/Design/ss3-ui_files-manager-list-view.jpg
-				)->addExtraClass('cms-actions-row')
+				$actionButtonsComposite
 			)->addExtraClass('cms-content-toolbar field'),
 			$gridField
 		));
