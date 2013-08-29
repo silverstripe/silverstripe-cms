@@ -50,7 +50,7 @@ class ErrorPage extends Page {
 	 */
 	public static function response_for($statusCode) {
 		// first attempt to dynamically generate the error page
-		if($errorPage = DataObject::get_one('ErrorPage', "\"ErrorCode\" = $statusCode")) {
+		if($errorPage = DataObject::get_one('ErrorPage', "\"ErrorPage\".\"ErrorCode\" = $statusCode")) {
 			Requirements::clear();
 			Requirements::clear_combined_files();
 
@@ -93,7 +93,7 @@ class ErrorPage extends Page {
 				$code = $defaultData['ErrorCode'];
 				$page = DataObject::get_one(
 					'ErrorPage', 
-					sprintf("\"ErrorCode\" = '%s'", $code)
+					sprintf("\"ErrorPage\".\"ErrorCode\" = '%s'", $code)
 				);
 				$pageExists = ($page && $page->exists());
 				$pagePath = self::get_filepath_for_errorcode($code);
