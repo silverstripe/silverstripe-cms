@@ -93,9 +93,9 @@ class ModelAsController extends Controller implements NestedController {
 		$sitetree = DataObject::get_one(
 			'SiteTree', 
 			sprintf(
-				'"URLSegment" = \'%s\' %s', 
+				'"SiteTree"."URLSegment" = \'%s\' %s', 
 				Convert::raw2sql(rawurlencode($URLSegment)), 
-				(SiteTree::config()->nested_urls ? 'AND "ParentID" = 0' : null)
+				(SiteTree::config()->nested_urls ? 'AND "SiteTree"."ParentID" = 0' : null)
 			)
 		);
 		if(class_exists('Translatable')) Translatable::enable_locale_filter();
@@ -146,16 +146,15 @@ class ModelAsController extends Controller implements NestedController {
 	 * @return SiteTree
 	 */
 	static public function find_old_page($URLSegment,$parentID = 0, $ignoreNestedURLs = false) {
-		$URLSegment = Convert::raw2sql(rawurlencode($URLSegment));
 		
 		$useParentIDFilter = SiteTree::config()->nested_urls && $parentID;
 				
 		// First look for a non-nested page that has a unique URLSegment and can be redirected to.
 		if(SiteTree::config()->nested_urls) {
-			$pages = DataObject::get(
-				'SiteTree', 
-				"\"URLSegment\" = '$URLSegment'" . ($useParentIDFilter ? ' AND "ParentID" = ' . (int)$parentID : '')
-			);
+			$pages = SiteTree::get()->filter("URLSegment", rawurlencode($URLSegment));
+			if($useParentIDFilter) {
+				$pages = $pages->filter("ParentID", (int)$parentID);
+			}
 
 			if($pages && $pages->Count() == 1 && ($page = $pages->First())) {
 				$parent = $page->ParentID ? $page->Parent() : $page;
@@ -164,10 +163,11 @@ class ModelAsController extends Controller implements NestedController {
 		}
 		
 		// Get an old version of a page that has been renamed.
+		$URLSegmentSQL = Convert::raw2sql(rawurlencode($URLSegment));
 		$query = new SQLQuery (
 			'"RecordID"',
 			'"SiteTree_versions"',
-			"\"URLSegment\" = '$URLSegment' AND \"WasPublished\" = 1" . ($useParentIDFilter ? ' AND "ParentID" = ' . (int)$parentID : ''),
+			"\"URLSegment\" = '$URLSegmentSQL' AND \"WasPublished\" = 1" . ($useParentIDFilter ? ' AND "ParentID" = ' . (int)$parentID : ''),
 			'"LastEdited" DESC',
 			null,
 			null,
