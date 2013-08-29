@@ -22,10 +22,6 @@
 		<% end_with %>
 	</div>
 
-	<div class="cms-content-fields center ui-widget-content" data-layout-type="border">
-
-		$EditForm
-
-	</div>
+	$EditForm
 
 </div>
