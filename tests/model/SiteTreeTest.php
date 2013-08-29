@@ -136,7 +136,7 @@ class SiteTreeTest extends SapphireTest {
 		$oldMode = Versioned::get_reading_mode();
 		Versioned::reading_stage('Live');
 		
-		$checkSiteTree = DataObject::get_one("SiteTree", "\"URLSegment\" = 'get-one-test-page'");
+		$checkSiteTree = DataObject::get_one("SiteTree", "\"SiteTree\".\"URLSegment\" = 'get-one-test-page'");
 		$this->assertEquals("V1", $checkSiteTree->Title);
 	
 		Versioned::set_reading_mode($oldMode);
@@ -426,7 +426,7 @@ class SiteTreeTest extends SapphireTest {
 	public function testReadArchiveDate() {
 		$date = '2009-07-02 14:05:07';
 		Versioned::reading_archived_date($date);
-		DataObject::get('SiteTree', "\"ParentID\" = 0");
+		DataObject::get('SiteTree', "\"SiteTree\".\"ParentID\" = 0");
 		Versioned::reading_archived_date(null);
 		$this->assertEquals(
 			Versioned::get_reading_mode(),
