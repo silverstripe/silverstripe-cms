@@ -264,8 +264,9 @@ class SS_Report extends ViewableData {
 			new GridFieldSortableHeader(),
 			new GridFieldDataColumns(),
 			new GridFieldPaginator(),
-			new GridFieldPrintButton(),
-			new GridFieldExportButton()
+			new GridFieldButtonRow('after'),
+			new GridFieldPrintButton('buttons-after-left'),
+			new GridFieldExportButton('buttons-after-left')
 		);
 		$gridField = new GridField('Report',false, $items, $gridFieldConfig);
 		$columns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
