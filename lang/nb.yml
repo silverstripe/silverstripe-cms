@@ -3,8 +3,11 @@ nb:
     ADDFILES: 'Legg til filer'
     ActionAdd: 'Legg til mappe'
     AppCategoryArchive: Arkiv
+    AppCategoryAudio: Audio
     AppCategoryDocument: Dokument
+    AppCategoryFlash: Flash
     AppCategoryImage: Bilde
+    AppCategoryVideo: Video
     BackToFolder: 'Tilbake til mappe'
     CREATED: Dato
     CurrentFolderOnly: 'Begrens til nåværende mappe'
@@ -24,6 +27,8 @@ nb:
     MENUTITLE: Filer
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Slett mapper'
+  AssetAdmin_Tools:
+    FILTER: Filter
   AssetAdmin_left_ss:
     GO: Utfør
   AssetTableField:
@@ -40,6 +45,7 @@ nb:
     ColumnDateLastModified: 'Dato sist endret'
     ColumnDateLastPublished: 'Dato sist publisert'
     ColumnProblemType: 'Problemtype'
+    ColumnURL: URL
     HasBrokenFile: 'har ødelagt fil'
     HasBrokenLink: 'har ødelagt lenke'
     HasBrokenLinkAndFile: 'har ødelagt lenke og fil'
@@ -61,6 +67,8 @@ nb:
     DELETE_PAGES: 'Slett fra publisert side'
     PUBLISHED_PAGES: 'Publiserte %d sider, %d feilet.'
     PUBLISH_PAGES: Publiser
+    UNPUBLISHED_PAGES: 'Avpubliserte %d sider'
+    UNPUBLISH_PAGES: Avpubliser
   CMSMain:
     ACCESS: 'Adgang til seksjon for ''{title}'''
     ACCESS_HELP: 'Lar deg se seksjonen som inneholder sidetreet og annet innhold. Tillatelser for å vise og redigere kan behandles gjennom sidespesifikke nedtrekkslister, så vel som  separate "Innholdstillatelser".'
@@ -123,17 +131,26 @@ nb:
     MENUTITLE: Historie
     VIEWINGLATEST: 'Viser den nyeste versjonen.'
   CMSPageHistoryController_versions_ss:
+    AUTHOR: Forfatter
     NOTPUBLISHED: 'Ikke publisert'
+    PUBLISHER: Utgiver
     UNKNOWN: Ukjent
     WHEN: Når
   CMSPagesController:
+    GalleryView: 'Gallerivisning'
+    ListView: 'Listevisning'
+    MENUTITLE: Sider
     TreeView: 'Trevisning'
   CMSPagesController_ContentToolbar_ss:
     ENABLEDRAGGING: 'Dra-og-slipp'
     MULTISELECT: Flervalg
+  CMSPagesController_Tools_ss:
+    FILTER: Filter
   CMSSearch:
     FILTERDATEFROM: Fra
     FILTERDATEHEADING: Dato
+    FILTERDATETO: Til
+    FILTERLABELTEXT: Innhold
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Endrede sider'
   CMSSiteTreeFilter_DeletedPages:
@@ -210,6 +227,7 @@ nb:
     SAVEDUP: Lagret.
     STATUSPUBLISHEDSUCCESS: 'Vellykket publisering av "{title}".'
     SearchResults: 'Søkeresultater'
+    VersionUnknown: Ukjent
   Permission:
     CMS_ACCESS_CATEGORY: 'Tilgang til publiseringssystemet'
   Permissions:
@@ -295,10 +313,13 @@ nb:
     DELETEDPAGESHORT: Slettet
     DEPENDENT_NOTE: 'De følgende sidene avhenger av denne siden. Dette inkluderer virtuelle sider, omdirigeringssider og sider med innholdslenker.'
     DESCRIPTION: 'Generisk innholdsside'
+    DependtPageColumnLinkType: 'Lenketype'
+    DependtPageColumnURL: URL
     EDITANYONE: 'Alle som kan logge inn til kontrollpanelet'
     EDITHEADER: 'Hvem kan redigere dette i kontrollpanelet?'
     EDITONLYTHESE: 'Bare disse personene'
     EDITORGROUPS: 'Redaktørgrupper'
+    EDIT_ALL_DESCRIPTION: 'Rediger hvilken som helst side'
     EDIT_ALL_HELP: 'Lar deg redigere hvilken som helst side på nettstedet, uavhengig av innstillingene på adgangsfanen. Krever at du har tilgang til sideseksjonen.'
     Editors: 'Redaktørgrupper'
     HASBROKENLINKS: 'Denne siden har ødelagte lenker.'
@@ -313,12 +334,14 @@ nb:
     METAEXTRAHELP: 'HTML-elementer for ekstra metainformasjon. For eksempel &lt;meta name="egetNavn" content="Ditt egendefinerte innhold her" /&gt;'
     MODIFIEDONDRAFTHELP: 'Siden har upubliserte forandringer'
     MODIFIEDONDRAFTSHORT: Endret
+    MetadataToggle: Metadata
     OBSOLETECLASS: 'Denne siden er av den utdaterte typen {type}. Lagring vil tilbakestille typen og kan medføre tap av informasjon.'
     PAGELOCATION: 'Sideplassering'
     PAGETITLE: 'Sidenavn'
     PAGETYPE: 'Sidetype'
     PARENTID: 'Overordnet side'
     PARENTTYPE: 'Sideplassering'
+    PARENTTYPE_ROOT: 'Toppnivåside'
     PARENTTYPE_SUBPAGE: 'Underside'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Kontroller hvilke grupper som har tilgang til eller kan endre sidene'
     PERMISSION_GRANTACCESS_HELP: 'Tillat tilordning av restriksjoner på sidenivå i sideseksjonen.'
@@ -340,6 +363,7 @@ nb:
     TOPLEVELCREATORGROUPS: 'Toppnivåopprettere'
     URLSegment: 'Adressesegment'
     VIEWERGROUPS: 'Publikumsgrupper'
+    VIEW_ALL_DESCRIPTION: 'Se på hvilken som helst side'
     VIEW_ALL_HELP: 'Viser alle sider på nettstedet, uavhengig av innstillingene på adgangsfanen. Krever at du har adgang til sideseksjonen.'
     VIEW_DRAFT_CONTENT: 'Se innhold i utkast'
     VIEW_DRAFT_CONTENT_HELP: 'Gjelder visning av sider utenfor publiseringssystemet i utkastmodus. Nyttig for eksterne bidragsytere uten tilgang til publiseringssystemet.'
@@ -409,3 +433,4 @@ nb:
   URLSegmentField:
     Cancel: Avbryt
     Edit: Rediger
+    OK: OK

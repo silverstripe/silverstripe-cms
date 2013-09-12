@@ -5,7 +5,9 @@ fi:
     AppCategoryArchive: Arkisto
     AppCategoryAudio: Ääni
     AppCategoryDocument: Asiakirja
+    AppCategoryFlash: Flash
     AppCategoryImage: Kuva
+    AppCategoryVideo: Video
     BackToFolder: 'Takaisin kansioon'
     CREATED: Pvm
     CurrentFolderOnly: 'Rajoita tähän kansioon?'
@@ -39,10 +41,10 @@ fi:
     BROKENLINKS: 'Rikkinäisten linkkien raportti'
     CheckSite: 'Tarkistussivusto'
     CheckSiteDropdownDraft: 'Luonnossivu'
-    CheckSiteDropdownPublished: 'Julkaistu sivu'
-    ColumnDateLastModified: 'Päivitetty viimeksi'
+    CheckSiteDropdownPublished: 'Julkaistu sivusto'
+    ColumnDateLastModified: 'Muokattu viimeksi'
     ColumnDateLastPublished: 'Julkaistu viimeksi'
-    ColumnProblemType: 'Ongelmatyyppi'
+    ColumnProblemType: 'Ongelman tyyppi'
     ColumnURL: URL-osoite
     HasBrokenFile: 'sisältää rikkinäisen tiedoston'
     HasBrokenLink: 'sisältää rikkinäisen linkin'
@@ -69,7 +71,7 @@ fi:
     UNPUBLISH_PAGES: Poista julkaisu
   CMSMain:
     ACCESS: 'Pääsy ''{title}'' -osioon'
-    ACCESS_HELP: 'Oikeuttaa katsella osiota, joka sisältää sivurakenteen ja sisällön. Katselu- ja muokkausoikeuksia voidaan käsitellä sivukohtaisten pudotusvalikoiden kautta kuten myös erillisiä "sisällön oikeuksia".'
+    ACCESS_HELP: 'Oikeuttaa näkemään osion, joka sisältää sivurakenteen ja sisällön. Katselu- ja muokkausoikeuksia voidaan käsitellä sivukohtaisten pudotusvalikoiden kautta, kuten myös erillisestä "Sisällön oikeudet"-kohdasta.'
     AddNew: 'Lisää uusi sivu'
     AddNewButton: 'Lisää uusi'
     ChoosePageParentMode: 'Valitse kohde, minne sivu luodaan'
@@ -109,7 +111,7 @@ fi:
     TreeFiltered: 'Suodatettu hakemistopuu.'
     TreeFilteredClear: 'Nollaa suodatin'
     MENUTITLE: 'Muokkaa sivua'
-    AddPageRestriction: 'Huomio: jotkut sivutyypit eivät ole sallittuja tässä valinnassa.'
+    AddPageRestriction: 'Huomio: Tietyt sivutyypit eivät ole sallittuja valitun sivutyypin alle.'
   CMSMain_left_ss:
     APPLY_FILTER: 'Suodata'
     RESET: Nollaa
@@ -160,12 +162,13 @@ fi:
   ContentController:
     ARCHIVEDSITE: 'Esikatselu versio'
     ARCHIVEDSITEFROM: 'Arkistoitu sivusto lähteestä:'
+    CMS: CMS
     DRAFTSITE: 'Luonnossivusto'
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Voidaksesi katsella luonnoksia tai arkistoitua sisältöä sinun täytyy kirjautua sisään CMS:n salasanallasi. <a href="%s">Palataksesi julkiselle sivulle paina tästä</a>.'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Voidaksesi katsella luonnoksia tai arkistoitua sisältöä, sinun täytyy kirjautua sisään CMS:n salasanallasi. <a href="%s">Palataksesi julkiselle sivulle, napsauta tästä</a>.'
     Email: Sähköposti
     INSTALL_SUCCESS: 'Asennus onnistui!'
     InstallFilesDeleted: 'Asennustiedostot poistettiin onnistuneesti.'
-    InstallSecurityWarning: 'Tietoturvan takia, kannattaa poistaa asennustiedostot palvelimelta, ellet aio asentaa järjestelmää uudelleen. (<em>Vaaditaan pääkäyttäjän kirjautuminen: katso ylempää</em>). Palvelimella kirjoitusoikeudet tarvitaan vain "assets"-kansioon. Voit poistaa kirjoitusoikeudet kaikista muista kansioista. <br /> <a href="{link}" style="text-align: center;">Napsauta tästä poistaaksesi kaikki asennustiedostot.</a>'
+    InstallSecurityWarning: 'Tietoturvan takia, kannattaa poistaa asennustiedostot palvelimelta, mikäli et aio asentaa järjestelmää uudelleen. (<em>Sitä varten vaaditaan kirjautuminen pääkäyttäjänä: katso ylempää</em>). Palvelimella kirjoitusoikeudet tarvitaan vain "assets"-kansioon. Muista kansioista voit poistaa kirjoitusoikeudet. <br /> <a href="{link}" style="text-align: center;">Napsauta tästä poistaaksesi kaikki asennustiedostot.</a>'
     InstallSuccessCongratulations: 'SilverStripe asennettu onnistuneesti!'
     LOGGEDINAS: 'Kirjautuneena sisään nimimerkillä'
     LOGIN: Kirjaudu sisään
@@ -174,8 +177,8 @@ fi:
     PUBLISHEDSITE: 'Julkaistu sivusto'
     Password: Salasana
     PostInstallTutorialIntro: 'Tämä sivusto on yksinkertaistettu versio SilverStripe 3 sivustosta. Laajentaaksesi tätä, ole hyvä ja tutustu: {link}.'
-    StartEditing: 'Voit aloittaa sisällön muokkauksen avaamalla <a href="{link}">sisällönhallintajärjestelmän</a>'
-    UnableDeleteInstall: 'Asennustiedostojen automaattinen poistaminen ei onnistunut. Ole hyvä ja poista seuraavat tiedostot manuaalisesti.'
+    StartEditing: 'Voit aloittaa sisällön muokkauksen avaamalla <a href="{link}">sisällönhallintajärjestelmän ylläpitopuolen</a>'
+    UnableDeleteInstall: 'Asennustiedostojen automaattinen poistaminen ei onnistunut. Ole hyvä ja poista seuraavat tiedostot manuaalisesti'
     VIEWPAGEIN: 'Tarkastele sivua:'
     DRAFT: Luonnos
     PUBLISHED: Julkaistu
@@ -204,12 +207,12 @@ fi:
     504: '504 - Välitysaikakatkaisu'
     505: '505 - HTTP Versio Ei Tuettu'
     CODE: 'Virhekoodi'
-    DEFAULTERRORPAGECONTENT: '<p>Valitettavasti sivua johon yritit päästä ei löytynyt.</p><p>Tarkista haluamasi kohteen URLin kirjoitusasu ja yritä uudelleen.</p>'
+    DEFAULTERRORPAGECONTENT: '<p>Valitettavasti hakemaasi sivua ei ole olemassa.</p><p>Tarkista hakemasi sivun URL-osoitteen kirjoitusasu ja yritä uudelleen.</p>'
     DEFAULTERRORPAGETITLE: 'Sivua ei löytynyt'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Pahoittelut, mutta pyyntösi aiheutti virheen.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Palvelinvirhe'
     DESCRIPTION: 'Omat virheilmoitukset (sivuille, kuten "Sivua ei löytynyt")'
-    ERRORFILEPROBLEM: 'Virhe tiedostoa "{filename}" avattaessa ja kirjoittettaessa palvelimelle. Tarkista tiedoston kirjoitusoikeudet.'
+    ERRORFILEPROBLEM: 'Virhe avattaessa tiedostoa "{filename}" palvelimelle tallentamista varten. Tarkista tiedoston kirjoitusoikeudet.'
     PLURALNAME: 'Virhesivut'
     SINGULARNAME: 'Virhesivu'
   Folder:
@@ -263,7 +266,7 @@ fi:
     ParameterLiveCheckbox: 'Tarkista live-sivusto'
     REPEMPTY: '{title}:n raportti on tyhjä.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Jakaaksesi tämän tällä sivulla, kopioi ja liitä alapuolella oleva linkki.'
+    ShareInstructions: 'Jakaaksesi tämä sivu, kopioi ja liitä alla oleva linkki.'
     ShareLink: 'Jaa linkki'
   SilverStripeNavigatorLinkl:
     CloseLink: Sulje
@@ -311,6 +314,7 @@ fi:
     DEPENDENT_NOTE: 'Seuraavat sivut riippuvat tästä sivusta. Tämä pitää sisällään virtuaaliset sivut, uudelleenohjaussivut ja sivut sisältölinkkien kanssa.'
     DESCRIPTION: 'Yleinen sisältösivu'
     DependtPageColumnLinkType: 'Linkin tyyppi'
+    DependtPageColumnURL: URL
     EDITANYONE: 'Jokainen, joka voi kirjautua sisään CMS:ään.'
     EDITHEADER: 'Kuka voi muokata tätä CMS:ssä?'
     EDITONLYTHESE: 'Vain seuraavat henkilöt (valitse listasta)'
@@ -324,10 +328,10 @@ fi:
     LASTUPDATED: 'Viimeksi päivitetty'
     LINKCHANGENOTE: 'Tämän sivun linkin muuttaminen vaikuttaa myös alasivujen linkkeihin.'
     MENUTITLE: 'Navigoinnin nimike'
-    METADESC: 'Meta kuvaus'
-    METADESCHELP: 'Hakukoneet näyttävät tämän sisällön hakutuloksissa (sisältö ei kuitenkaan vaikuttaa sijoitukseen hakutuloksessa).'
+    METADESC: 'Meta-kuvaus'
+    METADESCHELP: 'Hakukoneet näyttävät tämän sisällön hakutuloksissa (sisältö ei kuitenkaan vaikuta sijoitukseen hakutuloksessa).'
     METAEXTRA: 'Omat meta-tagit'
-    METAEXTRAHELP: 'Omat meta-tagit'
+    METAEXTRAHELP: 'HTML-tagit omia metatietoja varten. Esimerkiksi &lt;meta name="haluamasiNimi" content="Oma sisältö tässä" /&gt;'
     MODIFIEDONDRAFTHELP: 'Sivulla on tehty muutoksia, joita ei ole julkaistu'
     MODIFIEDONDRAFTSHORT: Muokattu
     MetadataToggle: Meta-tiedot
@@ -348,7 +352,7 @@ fi:
     REMOVEDFROMDRAFTSHORT: 'Poistettiin luonnoksista'
     REMOVE_INSTALL_WARNING: 'Varoitus: Turvallisuussyistä sinun tulisi poistaa install.php-tiedosto SilverStripe-asennuskansiosta.'
     REORGANISE_DESCRIPTION: 'Muuta sivuston rakennetta'
-    REORGANISE_HELP: 'Uudelleenjärjestä sivuston rakenteen sivut vetämällä ne paikoilleen.'
+    REORGANISE_HELP: 'Uudelleenjärjestä sivuston rakenne vetämällä ja pudottamalla sivu halutulle paikalle.'
     SHOWINMENUS: 'Näytetäänkö valikoissa?'
     SHOWINSEARCH: 'Näytetäänkö hauissa?'
     SINGULARNAME: Sivu
@@ -377,7 +381,7 @@ fi:
     MoreOptions: 'Lisää valintoja'
     NOTPUBLISHED: 'Julkaisematon'
   SiteTreeURLSegmentField:
-    HelpChars: 'Erikoismerkit muunnetaan automaattisesti tai poistetaan.'
+    HelpChars: 'Erikoismerkit muunnetaan tai poistetaan automaattisesti.'
     EMPTY: 'Anna URL-osoite tai napsauta peruuta'
   StaticExporter:
     BASEURL: 'Kannan URL-osoite'
@@ -429,3 +433,4 @@ fi:
   URLSegmentField:
     Cancel: Peruuta
     Edit: Muokkaa
+    OK: OK
