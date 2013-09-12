@@ -165,7 +165,6 @@ hu:
     LAST2WEEKS: 'Elmúlt 2 héten belül szerkesztett oldalak'
     OtherGroupTitle: Más
   SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
     ShareLink: 'Hivatkozás megosztása'
   SiteConfig:
     DEFAULTTHEME: '(Alap téma használata)'

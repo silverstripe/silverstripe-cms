@@ -252,7 +252,6 @@ it:
     ParameterLiveCheckbox: 'Verifica sito pubblicato'
     REPEMPTY: 'Il rapporto {title} è vuoto.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Per condividere questa pagina, copia e incolla il link qui sotto.'
     ShareLink: 'Link di condivisione'
   SilverStripeNavigatorLinkl:
     CloseLink: Chiudi

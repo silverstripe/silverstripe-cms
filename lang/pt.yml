@@ -253,7 +253,6 @@ pt:
     ParameterLiveCheckbox: 'Verificar site publicado'
     REPEMPTY: 'O relatório {title} encontra-se vazio.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Para partilhar esta página, copie e cole o link abaixo '
     ShareLink: 'Partilhar ligação'
   SilverStripeNavigatorLinkl:
     CloseLink: Fechar

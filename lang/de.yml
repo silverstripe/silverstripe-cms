@@ -266,7 +266,7 @@ de:
     ParameterLiveCheckbox: 'Veröffentlichte Seite überprüfen'
     REPEMPTY: 'Der Bericht ''{title}'' ist leer.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Kopieren Sie den folgenden Link um diesen jemanden mitzuteilen.'
+    ShareInstructions: 'Kopieren Sie den folgenden Link, um diesen jemanden mitzuteilen.'
     ShareLink: 'Link teilen'
   SilverStripeNavigatorLinkl:
     CloseLink: schließen

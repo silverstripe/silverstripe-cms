@@ -255,8 +255,6 @@ ru:
     OtherGroupTitle: Другие
     ParameterLiveCheckbox: 'Проверить опубликованный сайт'
     REPEMPTY: 'Отчет {title} пуст.'
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'Чтобы поделиться ссылкой на эту страницу, скопируйте URL ниже.'
   SilverStripeNavigatorLinkl:
     CloseLink: Закрыть
   SiteConfig:

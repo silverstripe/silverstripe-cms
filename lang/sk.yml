@@ -5,7 +5,9 @@ sk:
     AppCategoryArchive: Archív
     AppCategoryAudio: Zvuk
     AppCategoryDocument: Dokument
+    AppCategoryFlash: Flash
     AppCategoryImage: Obrázok
+    AppCategoryVideo: Video
     BackToFolder: 'Späť na priečinok'
     CREATED: Dátum
     CurrentFolderOnly: 'Obmedziť na aktuálny priečinok?'
@@ -43,6 +45,7 @@ sk:
     ColumnDateLastModified: 'Dátum poslednej úpravy'
     ColumnDateLastPublished: 'Dátum poslednej publikácie'
     ColumnProblemType: 'Problémový typ'
+    ColumnURL: URL
     HasBrokenFile: 'obsahuje porušený súbor'
     HasBrokenLink: 'obsahuje porušený odkaz'
     HasBrokenLinkAndFile: 'obsahuje porušený odkaz a súbor'
@@ -111,6 +114,7 @@ sk:
     AddPageRestriction: 'Poznámka: Niektoré typy stránok nie sú povolené pre tento výber'
   CMSMain_left_ss:
     APPLY_FILTER: 'Použiť filter'
+    RESET: Reset
   CMSPageAddController:
     ParentMode_child: 'Pod inú stránku'
     ParentMode_top: 'Najvyššia úroveň'
@@ -127,6 +131,7 @@ sk:
     MENUTITLE: História
     VIEWINGLATEST: 'Práve sa zobrazuje posledná verzia.'
   CMSPageHistoryController_versions_ss:
+    AUTHOR: Autor
     NOTPUBLISHED: 'Nepublikovaná'
     PUBLISHER: Vydavateľ
     UNKNOWN: Neznáma
@@ -134,6 +139,7 @@ sk:
   CMSPagesController:
     GalleryView: 'Zobraziť galériu'
     ListView: 'Zobraziť zoznam'
+    MENUTITLE: Stránky
     TreeView: 'Zobraziť strom'
   CMSPagesController_ContentToolbar_ss:
     ENABLEDRAGGING: 'Tiahni a pusť'
@@ -142,17 +148,24 @@ sk:
     FILTER: Filtrovať
   CMSSearch:
     FILTERDATEFROM: Od
+    FILTERDATEHEADING: Dátum
+    FILTERDATETO: Do
+    FILTERLABELTEXT: Obsah
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Zmenené stránky'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Všetky stránky, vrátane vymazaných'
+  CMSSiteTreeFilter_Search:
+    Title: 'Všechny stránky'
   ContentControl:
     NOTEWONTBESHOWN: 'Poznámka: Táto správa sa nebude zobrazovať vašim návštevníkom'
   ContentController:
     ARCHIVEDSITE: 'Zobrazenie verzie'
     ARCHIVEDSITEFROM: 'Archivovaný web z'
+    CMS: CMS
     DRAFTSITE: 'Koncept webu'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Pre zobrazenie návrhov alebo archivovaného obsahu sa musíte prihlásiť so svojím CMS heslom. <a href="%s">Pre návrat na publikovaný web kliknite Tu.</a>'
+    Email: E-mail
     INSTALL_SUCCESS: 'Inštalácia úspešná!'
     InstallFilesDeleted: 'Inštalačné súbory boli odstranené úspešne.'
     InstallSecurityWarning: 'Z bezpečnostných dôvodov by ste mali teraz odstrániť inštalačné súbory, ak  neplánujete preinštalovať neskôr (<em> vyžaduje admin prihlásenie, pozri vyššie </em>). Webový server teraz potrebuje už len prístup pre zápis do priečinka "assets", môžete odstrániť práva zápisu zo všetkých ostatných priečinkov. <a href="{link}" style="text-align: center;"> Kliknite tu pre odstránenie inštalačných súborov. </a>'
@@ -213,6 +226,7 @@ sk:
     PreviewButton: Zobrazenie
     SAVEDUP: Uložené.
     STATUSPUBLISHEDSUCCESS: 'Uverejnené "{title}" úspešne'
+    SearchResults: 'Výsledky vyhľadávania'
     VersionUnknown: Neznáma
   Permission:
     CMS_ACCESS_CATEGORY: 'Prístup do CMS'
@@ -252,7 +266,7 @@ sk:
     ParameterLiveCheckbox: 'Skontolovať živú stránku'
     REPEMPTY: '{title} výkaz je prázdny.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Pre zdielanie tejto stránky, skopírujte linku nižšie.'
+    ShareInstructions: 'Pre zdielanie tejto stránky, skopírujte a vložte odkaz nižšie.'
     ShareLink: 'Zdieľať odkaz'
   SilverStripeNavigatorLinkl:
     CloseLink: Zavrieť
@@ -300,6 +314,7 @@ sk:
     DEPENDENT_NOTE: 'Nasledujúce stránky sú závislé na tejto stránke. To zahŕňa virtuálne stránky, presmerovacie stránky a stránky s odkazmi obsahu.'
     DESCRIPTION: 'Obecný obsah stránky'
     DependtPageColumnLinkType: 'Typ odkazu'
+    DependtPageColumnURL: URL
     EDITANYONE: 'Ktokoľvek kto sa môže prihlásiť do CMS'
     EDITHEADER: 'Kto môže editovať túto stránnku?'
     EDITONLYTHESE: 'Iba títo ľudia (vyberte zo zoznamu)'
@@ -405,6 +420,10 @@ sk:
     MENUTITLE: Súbory
   CMSPageEditController:
     MENUTITLE: 'Upraviť stránku'
+  CMSPageSettingsController:
+    MENUTITLE: 'Editovať stránku'
+  CMSSettingsController:
+    MENUTITLE: Nastavenia
   SITETREE:
     VIRTUALPAGEDRAFTWARNING: 'Zverejnite prosím odkazovanú stránku pre zverejnenie virtuálnej stránky'
     VIRTUALPAGEWARNING: 'Zvolte prosím odkazovanú stránku a uložte pre zverejnenie tejto stránky'

@@ -169,7 +169,6 @@ gl_ES:
     OtherGroupTitle: Outro
     ParameterLiveCheckbox: 'Probar o sitio en vivo'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
     ShareLink: 'Ligazón compartir'
   SilverStripeNavigatorLinkl:
     CloseLink: Pechar

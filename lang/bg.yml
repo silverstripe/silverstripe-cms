@@ -209,8 +209,6 @@ bg:
     OtherGroupTitle: собственник
     ParameterLiveCheckbox: 'Провери реалния сайт'
     REPEMPTY: 'Отчетът {title}  е празен'
-  SilverStripeNavigatorLink:
-    ShareInstructions: 'За да споделиш тая страница, копирай и постави връзката по- долу'
   SilverStripeNavigatorLinkl:
     CloseLink: Затвори
   SiteConfig:

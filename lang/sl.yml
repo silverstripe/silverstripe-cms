@@ -214,7 +214,6 @@ sl:
     ParameterLiveCheckbox: 'Preveri na objavljenem spletnem mestu'
     REPEMPTY: 'Poročilo {title} je prazno.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Za posredovanje vsebine med tema dvema stranema, kopirajte povezavo in jo spodaj prilepite.'
     ShareLink: 'Posreduj povezavo'
   SilverStripeNavigatorLinkl:
     CloseLink: Zapri
