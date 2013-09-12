@@ -253,7 +253,6 @@ mi:
     ParameterLiveCheckbox: 'Tirohia te pae ora'
     REPEMPTY: 'Kua piako te pūrongo {title}.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Hei tiritiri i te hono ki tēnei whārangi, tāruatia me te whakapiri i te hono i raro.'
     ShareLink: 'Tiritiri hono'
   SilverStripeNavigatorLinkl:
     CloseLink: Kati

@@ -243,7 +243,6 @@ th:
     ParameterLiveCheckbox: 'ดูเว็บไซต์แบบสดๆ'
     REPEMPTY: 'รายงาน {title} ยังว่างอยู่'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'หากต้องการแชร์หน้าเว็บนี้, คัดลอกแล้วนำลิงก์ด้านล่างนี้ไปวาง'
     ShareLink: 'ลิงก์ที่ต้องการแชร์'
   SilverStripeNavigatorLinkl:
     CloseLink: ปิด

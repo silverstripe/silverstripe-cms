@@ -249,7 +249,6 @@ lt:
     ParameterLiveCheckbox: 'Patikrinti publikuojamą svetainę'
     REPEMPTY: '{title} ataskaita yra tuščia.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Norėdami dalintis nuoroda į šį puslapį, kopijuokite, bei įklijuokite nuorodą apačioje.'
     ShareLink: 'Dalintis nuoroda'
   SilverStripeNavigatorLinkl:
     CloseLink: Uždaryti

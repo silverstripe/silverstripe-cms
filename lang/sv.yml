@@ -259,7 +259,6 @@ sv:
     ParameterLiveCheckbox: 'Kontrollera live sajt'
     REPEMPTY: 'Raporten {title} är tom.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Kopiera och klistra in länken nedan för att dela den här sidan.'
     ShareLink: 'Dela länk'
   SilverStripeNavigatorLinkl:
     CloseLink: Stäng

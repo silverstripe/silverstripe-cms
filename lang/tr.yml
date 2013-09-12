@@ -145,7 +145,6 @@ tr:
     OtherGroupTitle: Diğeri
     ParameterLiveCheckbox: 'Yayındaki siteyi kontrol et'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'To share a this to this page, copy and paste the link below.'
     ShareLink: 'Linki paylaş'
   SilverStripeNavigatorLinkl:
     CloseLink: Kapat

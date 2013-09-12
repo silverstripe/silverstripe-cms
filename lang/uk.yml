@@ -196,7 +196,6 @@ uk:
     OtherGroupTitle: Інше
     ParameterLiveCheckbox: 'Перевірити робочий сайт'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Щоб поділитися цією сторінкою, скопіюйте та вставте посилання нижче.'
     ShareLink: 'Поділитися посиланням'
   SilverStripeNavigatorLinkl:
     CloseLink: Закрити

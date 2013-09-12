@@ -250,7 +250,6 @@ eo:
     ParameterLiveCheckbox: 'Kontroli publikan retejon'
     REPEMPTY: 'La raporto {title} estas malplena.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Por dividi al ĉi tiu paĝo, kopiu kaj algluu la suban ligilon.'
     ShareLink: 'Komunigi ligilon'
   SilverStripeNavigatorLinkl:
     CloseLink: Fermi

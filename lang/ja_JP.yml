@@ -214,7 +214,6 @@ ja_JP:
     OtherGroupTitle: その他
     REPEMPTY: '{title}のレポートは空です'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'このページを共有するには、以下のリンクをコピー＆ペーストとします。'
     ShareLink: '共有リンク'
   SilverStripeNavigatorLinkl:
     CloseLink: 閉じる
