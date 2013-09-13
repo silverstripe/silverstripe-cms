@@ -10,9 +10,9 @@ Feature: Preview a page
 	Scenario: I can show a preview of the current page from the pages section
 		Given I am logged in with "ADMIN" permissions
 		And I go to "/admin/pages"
-		Then I should see "About Us" in CMS Tree
+		Then I should see "About Us" in the tree
 
-		When I follow "About Us"
+		When I click on "About Us" in the tree
 		And I set the CMS mode to "Preview mode"
 		Then I can see the preview panel
 		And the preview contains "About Us"
@@ -25,9 +25,9 @@ Feature: Preview a page
 	Scenario: I can see an updated preview when editing content
 		Given I am logged in with "ADMIN" permissions
 		And I go to "/admin/pages"
-		Then I should see "About Us" in CMS Tree
+		Then I should see "About Us" in the tree
 
-		When I follow "About Us"
+		When I click on "About Us" in the tree
 		And I fill in the "Content" HTML field with "first content"
 		And I press the "Publish" button
 		And I fill in the "Content" HTML field with "my new content"

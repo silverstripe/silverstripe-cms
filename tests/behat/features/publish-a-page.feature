@@ -16,8 +16,8 @@ So that only high quality changes are seen by our visitors
 	Scenario: I can publish a previously never published page
 		Given I am logged in with "ADMIN" permissions
 		And I go to "/admin/pages"
-		And I should see "My Page" in CMS Tree
-		And I follow "My Page"
+		And I should see "My Page" in the tree
+		And I click on "My Page" in the tree
 		And I press the "Publish" button
 
 		Then I press the "Log out" button
@@ -29,8 +29,8 @@ So that only high quality changes are seen by our visitors
 	Scenario: I will get different options depending on the current publish state of the page
 		Given I am logged in with "ADMIN" permissions
 		And I go to "/admin/pages"
-		And I should see "My Page" in CMS Tree
-		And I follow "My Page"
+		And I should see "My Page" in the tree
+		And I click on "My Page" in the tree
 
 		When I click "More options" in the "#ActionMenus" element
 		Then I should not see "Unpublish" in the "#ActionMenus_MoreOptions" element
@@ -60,7 +60,7 @@ So that only high quality changes are seen by our visitors
 
 		Given I am logged in with "ADMIN" permissions
 		And I go to "/admin/pages"
-		And I should see "Hello" in CMS Tree
+		And I should see "Hello" in the tree
 		And I follow "Hello"
 
 		When I click "More options" in the "#ActionMenus" element
@@ -74,7 +74,7 @@ So that only high quality changes are seen by our visitors
 	Scenario: I can delete a page from live and draft stage to completely remove it
 		Given I am logged in with "ADMIN" permissions
 		And I go to "/admin/pages"
-		And I should see "My Page" in CMS Tree
+		And I should see "My Page" in the tree
 		When I follow "My Page"
 		And I press the "Publish" button
 		And I click "More options" in the "#ActionMenus" element
