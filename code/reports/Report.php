@@ -301,8 +301,13 @@ class SS_Report extends ViewableData {
 			if(isset($info['casting'])) $fieldCasting[$source] = $info['casting'];
 
 			if(isset($info['link']) && $info['link']) {
-				$link = singleton('CMSPageEditController')->Link('show');
-				$fieldFormatting[$source] = '<a href=\"' . $link . '/$ID\">$value</a>';
+				$fieldFormatting[$source] = function($value, &$item) {
+					return sprintf(
+						'<a href=\"%s\">%s</a>',
+						Controller::join_links(singleton('CMSPageEditController')->Link('show'), $item->ID),
+						Convert::raw2sql($value)
+					);
+				};
 			}
 
 			$displayFields[$source] = isset($info['title']) ? $info['title'] : $source;
