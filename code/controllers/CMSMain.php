@@ -783,13 +783,21 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				if($num) {
 					return sprintf(
 						'<a class="cms-panel-link list-children-link" data-pjax-target="ListViewForm,Breadcrumbs" href="%s">%s</a>',
-						Controller::join_links($controller->Link(), "?ParentID={$item->ID}&view=list"),
+						Controller::join_links(
+							$controller->Link(), 
+							sprintf("?ParentID=%d&view=list", (int)$item->ID)
+						),
 						$num
 					);
 				}
 			},
 			'getTreeTitle' => function($value, &$item) use($controller) {
-				return '<a class="action-detail" href="' . singleton('CMSPageEditController')->Link('show') . '/' . $item->ID . '">' . $item->TreeTitle . '</a>';
+				return sprintf(
+					'<a class="action-detail" href="%s/%d">%s</a>',
+					singleton('CMSPageEditController')->Link('show'),
+					(int)$item->ID,
+					$item->TreeTitle // returns HTML, does its own escaping
+				);
 			}
 		));
 		

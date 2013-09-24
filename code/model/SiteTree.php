@@ -121,6 +121,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		'Link' => 'Text',
 		'RelativeLink' => 'Text',
 		'AbsoluteLink' => 'Text',
+		'TreeTitle' => 'HTMLText',
 	);
 
 	private static $defaults = array(
@@ -1858,8 +1859,20 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$dependentTable->getConfig()->getComponentByType('GridFieldDataColumns')
 				->setDisplayFields($dependentColumns)
 				->setFieldFormatting(array(
-				'Title' => '<a href=\"admin/pages/edit/show/$ID\">$Title</a>',
-				'AbsoluteLink' => '<a href=\"$value\">$value</a>',
+					'Title' => function($value, &$item) {
+						return sprintf(
+							'<a href=\"admin/pages/edit/show/%d\">%s</a>',
+							(int)$item->ID,
+							Convert::raw2sql($item->Title)
+						);
+					},
+					'AbsoluteLink' => function($value, &$item) {
+						return sprintf(
+							'<a href=\"%s\">%s</a>',
+							Convert::raw2xml($value),
+							Convert::raw2xml($value)
+						);
+					}
 				));
 		}
 		
