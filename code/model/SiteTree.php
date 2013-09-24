@@ -121,6 +121,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		'Link' => 'Text',
 		'RelativeLink' => 'Text',
 		'AbsoluteLink' => 'Text',
+		'TreeTitle' => 'HTMLText',
 	);
 
 	private static $defaults = array(
