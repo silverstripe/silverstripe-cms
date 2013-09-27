@@ -302,7 +302,7 @@ class CMSMainTest extends FunctionalTest {
 		);
 		$this->assertFalse($response->isError());
 		$this->assertContains(
-			_t('SiteTree.PageTypeNotAllowed', array('type' => 'Page')),
+			htmlentities(_t('SiteTree.PageTypeNotAllowed', array('type' => 'Page'))),
 			$response->getBody()
 		);
 
