@@ -5,6 +5,7 @@ pl:
     AppCategoryArchive: Archiwum
     AppCategoryAudio: Dźwięk
     AppCategoryDocument: Dokument
+    AppCategoryFlash: Flash
     AppCategoryImage: Obraz
     AppCategoryVideo: Wideo
     BackToFolder: 'Wróć do katalogu'
@@ -44,6 +45,7 @@ pl:
     ColumnDateLastModified: 'Data ostatniej modyfikacji'
     ColumnDateLastPublished: 'Data ostatniej publikacji'
     ColumnProblemType: 'Rodzaj problemu'
+    ColumnURL: Adres URL
     HasBrokenFile: 'ma uszkodzony plik'
     HasBrokenLink: 'ma uszkodzony link'
     HasBrokenLinkAndFile: 'ma uszkodzony link oraz plik'
@@ -79,25 +81,32 @@ pl:
     DESCREMOVED: 'i {count} potomków'
     DUPLICATED: 'Duplikowanie ''{title}'' zakończone powodzeniem'
     DUPLICATEDWITHCHILDREN: 'Duplikowanie ''{title}'' oraz podstron zakończone powodzeniem'
+    EMAIL: Email
     EditTree: 'Edytuj drzewko'
     ListFiltered: 'Filtrowana lista.'
     NEWPAGE: 'Nowa {pagetype}'
     PAGENOTEXISTS: 'Ta strona nie istnieje'
+    PAGES: Strony
     PAGETYPEANYOPT: Jakikolwiek
+    PAGETYPEOPT: 'Rodzaj strony'
     PUBALLCONFIRM: 'Opublikuj każdą stronę w witrynie'
     PUBALLFUN: '"Opublikuj wszystko"'
     PUBALLFUN2: "Naciśnięcie tego przycisku spowoduje przejście po wszystkich stronach i opublikowanie ich. Zazwyczaj używa się tego, gdy w witrynie było bardzo dużo zmian, na przykład gdy witryna została utworzona."
     PUBPAGES: 'Zrobiono:  Opublikowano {count} stron'
+    PageAdded: 'Pomyślnie utworzono stronę'
     REMOVEDPAGEFROMDRAFT: '''%s'' usunięto ze szkiców'
     RESTORE: Przywróć
     RESTORED: 'Pomyślnie przywrócono ''{title}'''
     ROLLBACK: 'Wróć do tej wersji'
     SAVE: Zapisz
     SAVEDRAFT: 'Zapisz szkic'
+    TabContent: Zawartość
     TabHistory: Historia
+    TabSettings: Opcje
     TreeFiltered: 'Filtruj drzewko'
     TreeFilteredClear: 'Wyczyść filtr'
     MENUTITLE: 'Edytuj stronę'
+    AddPageRestriction: 'Uwaga: Niektóre typy stron nie są dozwolone dla tego wyboru'
   CMSMain_left_ss:
     APPLY_FILTER: 'Zastosuj filtr'
     RESET: Resetuj
@@ -124,6 +133,7 @@ pl:
     WHEN: Kiedy
   CMSPagesController:
     ListView: 'Widok listy'
+    MENUTITLE: Strony
     TreeView: 'Widok drzewa'
   CMSPagesController_ContentToolbar_ss:
     ENABLEDRAGGING: 'Przeciągnij i upuść'
@@ -243,11 +253,14 @@ pl:
     BROKENREDIRECTORPAGES: 'Strony przekierowania wskazujące na usunięte strony'
     BROKENVIRTUALPAGES: 'Wirtualne strony wskazujące na usunięte strony'
     BrokenLinksGroupTitle: 'Raporty o uszkodzonych linkach'
+    ContentGroupTitle: 'Treść raportów'
+    EMPTYPAGES: 'Strony bez zawartości'
     LAST2WEEKS: 'Strony edytowane w ciągu 2 ostatnich tygodni'
+    OtherGroupTitle: Inny
     ParameterLiveCheckbox: 'Sprawdź witrynę'
     REPEMPTY: '{title} raport jest pusty.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Aby podzielić się tym na tej stronie, skopiuj i wklej poniższy link.'
+    ShareInstructions: 'Aby podzielić się tą stroną, skopiuj i wklej poniższy link.'
     ShareLink: 'Podziel się linkiem'
   SilverStripeNavigatorLinkl:
     CloseLink: Zamknij
@@ -314,6 +327,7 @@ pl:
     MODIFIEDONDRAFTHELP: 'Na stronie znajdują się nieopublikowane zmiany'
     MODIFIEDONDRAFTSHORT: Zmodyfikowana
     MetadataToggle: Metadane
+    OBSOLETECLASS: 'Ta strona jest przestarzałego typu {type}. Zapisanie jej spowoduje zmianę typu przez co możesz stracić dane'
     PAGELOCATION: 'Lokalizacja strony'
     PAGETITLE: 'Nazwa strony'
     PAGETYPE: 'Rodzaj strony'
@@ -356,7 +370,9 @@ pl:
     LASTPUBLISHED: 'Ostatnio opublikowano'
     LASTSAVED: 'Ostatnio zapisane'
     MoreOptions: 'Więcej opcji'
+    NOTPUBLISHED: 'Nieopublikowana'
   SiteTreeURLSegmentField:
+    HelpChars: 'Znaki specjalne są automatycznie konwertowane lub usuwane.'
     EMPTY: 'Proszę podać część adresu lub kliknąć anuluj'
   StaticExporter:
     BASEURL: 'Bazowy URL'
@@ -390,6 +406,8 @@ pl:
     PageTypNotAllowedOnRoot: '"{type}" nie jest dozwolona dla głównego poziomu wirtualnej strony'
     SINGULARNAME: 'Wirtualna Strona'
     EditLink: edytuj
+  CMSFileAddController:
+    MENUTITLE: Pliki
   CMSPageEditController:
     MENUTITLE: 'Edytuj stronę'
   CMSPageSettingsController:
@@ -399,3 +417,4 @@ pl:
   URLSegmentField:
     Cancel: Anuluj
     Edit: Edytuj
+    OK: OK

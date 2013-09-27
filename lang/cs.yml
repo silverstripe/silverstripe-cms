@@ -5,9 +5,13 @@ cs:
     AppCategoryArchive: Archív
     AppCategoryAudio: Zvuk
     AppCategoryDocument: Dokument
+    AppCategoryFlash: Flash
     AppCategoryImage: Obrázek
+    AppCategoryVideo: Video
     BackToFolder: 'Zpět na složku'
+    CREATED: Datum
     CurrentFolderOnly: 'Omezit na aktuální složku?'
+    DetailsView: Podrobnosti
     FILES: Soubory
     FILESYSTEMSYNC: 'Synchronizovat soubory'
     FILESYSTEMSYNCTITLE: 'Aktualizace záznamů souborů databáze CMS na souborovém systému. Užitečné, když byly nové soubory nahrány mimo CMS, např. přes FTP.'
@@ -20,6 +24,7 @@ cs:
     THUMBSDELETED: '{count} nepoužitých miniatur bylo smazáno'
     TreeView: 'Zobrazit strom'
     Upload: Nahrát
+    MENUTITLE: Soubory
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Smazat složky'
   AssetAdmin_Tools:
@@ -40,6 +45,7 @@ cs:
     ColumnDateLastModified: 'Datum poslední změny'
     ColumnDateLastPublished: 'Datum posledního zveřejnění'
     ColumnProblemType: 'Problém typu'
+    ColumnURL: URL
     HasBrokenFile: 'porušen soubor'
     HasBrokenLink: 'porušen odkaz'
     HasBrokenLinkAndFile: 'porušen odkaz a soubor'
@@ -76,6 +82,7 @@ cs:
     DESCREMOVED: 'a {count} potomků'
     DUPLICATED: 'Duplikováno ''{title}'' úspěšně'
     DUPLICATEDWITHCHILDREN: 'Duplikováno ''{title}'' a potomci úspěšně'
+    EMAIL: E-mail
     EditTree: 'Upravit strom'
     ListFiltered: 'Filtrovaný seznam.'
     NEWPAGE: 'Nová {pagetype}'
@@ -113,12 +120,15 @@ cs:
     ParentMode_top: 'Nejvyšší úroveň'
     MENUTITLE: 'Přidat stránku'
   CMSPageHistoryController:
+    COMPAREMODE: 'Porovnávací mód (vyberte dva)'
+    COMPAREVERSIONS: 'Porovnat verze'
     COMPARINGVERSION: 'Porovnání verzí {version1} a {version2}.'
     REVERTTOTHISVERSION: 'Zpět na tuto verzi'
     SHOWUNPUBLISHED: 'Zobrazit nezveřejněné verze'
     SHOWVERSION: 'Zobrazit verzi'
     VIEW: zobrazit
     VIEWINGVERSION: 'Právě prohlížíte verzi číslo {version}.'
+    MENUTITLE: Historie
     VIEWINGLATEST: 'Právě se zobrazuje poslední verze.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
@@ -127,7 +137,10 @@ cs:
     UNKNOWN: Neznámý
     WHEN: Když
   CMSPagesController:
+    GalleryView: 'Pohled galerie'
+    ListView: 'Pohled seznam'
     MENUTITLE: Stránky
+    TreeView: 'Pohled strom'
   CMSPagesController_ContentToolbar_ss:
     ENABLEDRAGGING: 'Táhni a pusť'
     MULTISELECT: Multi výběr
@@ -142,13 +155,17 @@ cs:
     Title: 'Změněné stránky'
   CMSSiteTreeFilter_DeletedPages:
     Title: 'Všechny stránky, včetně odstraněných'
+  CMSSiteTreeFilter_Search:
+    Title: 'Všechny stránky'
   ContentControl:
     NOTEWONTBESHOWN: 'Poznámka: tato zpráva nebude zobrazena vašim návštěvníkům'
   ContentController:
     ARCHIVEDSITE: 'Náhled verze'
     ARCHIVEDSITEFROM: 'Archivován web z'
+    CMS: CMS
     DRAFTSITE: 'Koncept webu'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Abyste mohli prohlížet archiv nebo koncepty, musíte být přihlášeni se svým CMS heslem. <a href="%s">Klikněte sem pro návrat na zveřejněné stránky.</a>'
+    Email: E-mail
     INSTALL_SUCCESS: 'Instalace úspěšná!'
     InstallFilesDeleted: 'Instalační soubory byly odstraněny úspěšně.'
     InstallSecurityWarning: 'Z bezpečnostních důvodů byste měli nyní odstranit instalační soubory, pokud se nechystáte přeinstalovat později (<em>vyžaduje admin přihlášení, viz výše </em>). Webový server nyní potřebuje pouze přístup pro zápis do složky "assets", můžete odstranit práva zápisu ze všech ostatních složek. <a href="{link}" style="text-align: center;"> Klikněte sem pro smazání instalačních souborů.</a>'
@@ -192,17 +209,21 @@ cs:
     CODE: 'Chybový kód'
     DEFAULTERRORPAGECONTENT: '<p>Omlouváme se, zdá se, že jste se pokoušeli o přístup na stránku, která neexistuje.</p><p>Zkontrolujte prosím pravopis požadované URL adresy, ke které jste se pokoušeli přistoupit a zkuste to znovu.</p>'
     DEFAULTERRORPAGETITLE: 'Stránka nenelazena'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Promiňte, nastal problém s obsloužením vaší žádosti.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Chyba serveru'
     DESCRIPTION: 'Vlastní obsah pro různé případy chyb (např. "Stránka nenalezena")'
     ERRORFILEPROBLEM: 'Chyba otevření souboru "{filename}" pro zápis. Zkontrolujte oprávnění souboru, prosím.'
     PLURALNAME: 'Chybové stránky'
     SINGULARNAME: 'Chybová stránka'
   Folder:
+    AddFolderButton: 'Přidat složku'
     DELETEUNUSEDTHUMBNAILS: 'Smazat nepoužité miniatury'
     UNUSEDFILESTITLE: 'Nepoužité soubory'
     UNUSEDTHUMBNAILSTITLE: 'Nepoužité miniatury'
     UploadFilesButton: Nahrát
   LeftAndMain:
     DELETED: Smazáno.
+    PreviewButton: Náhled
     SAVEDUP: Uloženo.
     STATUSPUBLISHEDSUCCESS: 'Publikováno ''{title}'' úspěšně'
     SearchResults: 'Výsledky hledání'
@@ -213,6 +234,7 @@ cs:
     CONTENT_CATEGORY: 'Oprávnění obsahu'
     PERMISSIONS_CATEGORY: 'Role a přístupová práva'
   RedirectorPage:
+    DESCRIPTION: 'Přesměruje na jinou interní stránku'
     HASBEENSETUP: 'Přesměrovací stránka byla nastavena bez cíle.'
     HEADER: 'Tato stránka přesměruje uživatele na jinou stránku'
     OTHERURL: 'Jiná web adresa'
@@ -244,7 +266,7 @@ cs:
     ParameterLiveCheckbox: 'Zkontrolovat web'
     REPEMPTY: '{title} výkaz je prázdný.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'K sdílení této stránky, odkaz zkopírujte a vložte dolů.'
+    ShareInstructions: 'K sdílení této stránky, odkaz zkopírujte a vložte dolů..'
     ShareLink: 'Sdílet odkaz'
   SilverStripeNavigatorLinkl:
     CloseLink: Zavřít
@@ -278,6 +300,7 @@ cs:
     BUTTONSAVEPUBLISH: 'Uložit & zveřehnit'
     BUTTONUNPUBLISH: Nezveřejňovat
     BUTTONUNPUBLISHDESC: 'Odstranit tuto stránku z publikovaných na webu'
+    CREATED: 'Datum vytvoření'
     Comments: Komentáře
     Content: Obsah
     DEFAULTABOUTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky. <br /> </p>'
@@ -287,9 +310,11 @@ cs:
     DEFAULTHOMECONTENT: '<p>Vítejte v CMS SilverStripe! Toto je úvodní stránka. Tuto i jiné stránky můžete změnit <a href="admin/">přihlášením do systému</a>. Můžete také navštívit <a href="http://doc.silverstripe.com">vývojářskou dokumentaci (EN)</a>, nebo <a href="http://doc.silverstripe.com/doku.php?id=tutorials">návody (EN)</a></p>'
     DEFAULTHOMETITLE: Úvodní strana
     DELETEDPAGEHELP: 'Stránka už není více zveřejněna'
+    DELETEDPAGESHORT: Smazáno
     DEPENDENT_NOTE: 'Následující stránky závisí na této stránce. Tyto obsahují virtuální stránky, přesměrovací stránky a stránky s odkazy obsahu.'
     DESCRIPTION: 'Obecný obsah stránky'
     DependtPageColumnLinkType: 'Typ odkazu'
+    DependtPageColumnURL: URL
     EDITANYONE: 'Kdokoliv, kdo se do CMS může přihlásit'
     EDITHEADER: 'Kdo může tuto stránku editovat?'
     EDITONLYTHESE: 'Jenom tito lidé (vyberte ze seznamu)'
@@ -308,6 +333,8 @@ cs:
     METAEXTRA: 'Vlastní meta tagy'
     METAEXTRAHELP: 'HTML tagy pro další meta informace. Například &lt;meta name="vlastnínazev" content="vlastní obsah zde" /&gt;'
     MODIFIEDONDRAFTHELP: 'Stránka má nezveřejněné změny'
+    MODIFIEDONDRAFTSHORT: Upraveno
+    MetadataToggle: Metadata
     OBSOLETECLASS: 'Tato stránka je zastaralého typu {type}. Uložení zpúsobí zrušení svého typu a múžete tak ztratit data'
     PAGELOCATION: 'Umístění stránky'
     PAGETITLE: 'Název stránky'

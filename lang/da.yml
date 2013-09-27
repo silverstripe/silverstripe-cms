@@ -215,7 +215,6 @@ da:
     ParameterLiveCheckbox: 'Tjek det udgivne websted'
     REPEMPTY: '{title}rapporten er tom.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Kopier linket herunder for at dele denne side.'
     ShareLink: 'Del link'
   SilverStripeNavigatorLinkl:
     CloseLink: Luk

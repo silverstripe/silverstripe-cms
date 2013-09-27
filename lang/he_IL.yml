@@ -254,7 +254,6 @@ he_IL:
     ParameterLiveCheckbox: 'בדיקת האתר החי'
     REPEMPTY: 'הדוח {title} ריק.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'כדי לשתף קישור עמוד זה יש להעתיק ולהדביק את הקישור שלהלן.'
     ShareLink: 'שיתוף הקישור'
   SilverStripeNavigatorLinkl:
     CloseLink: סגירה

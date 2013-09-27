@@ -81,6 +81,16 @@ class CMSPageAddController extends CMSPageEditController {
 				)
 			)
 		);
+		$parentField->setSearchFunction(function ($sourceObject, $labelField, $search) {
+			return DataObject::get(
+				$sourceObject, 
+				sprintf(
+					"\"MenuTitle\" LIKE '%%%s%%' OR \"Title\" LIKE '%%%s%%'",
+					Convert::raw2sql($search),
+					Convert::raw2sql($search)
+				)
+			);
+		});
 
 		// TODO Re-enable search once it allows for HTML title display, 
 		// see http://open.silverstripe.org/ticket/7455
@@ -123,7 +133,7 @@ class CMSPageAddController extends CMSPageEditController {
 		$suffix = isset($data['Suffix']) ? "-" . $data['Suffix'] : null;
 
 		if(!$parentID && isset($data['Parent'])) {
-			$page = SiteTree:: get_by_link(Convert::raw2sql($data['Parent']));
+			$page = SiteTree::get_by_link($data['Parent']);
 			if($page) $parentID = $page->ID;
 		}
 

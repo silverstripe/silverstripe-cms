@@ -121,6 +121,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		'Link' => 'Text',
 		'RelativeLink' => 'Text',
 		'AbsoluteLink' => 'Text',
+		'TreeTitle' => 'HTMLText',
 	);
 
 	private static $defaults = array(
@@ -310,11 +311,18 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		// Grab the initial root level page to traverse down from.
 		$URLSegment = array_shift($parts);
 		$sitetree   = DataObject::get_one (
-			'SiteTree', "\"URLSegment\" = '$URLSegment'" . (self::config()->nested_urls ? ' AND "ParentID" = 0' : ''), $cache
+			'SiteTree',
+			"\"SiteTree\".\"URLSegment\" = '$URLSegment'" . (
+				self::config()->nested_urls ? ' AND "SiteTree"."ParentID" = 0' : ''
+			),
+			$cache
 		);
 		
 		/// Fall back on a unique URLSegment for b/c.
-		if(!$sitetree && self::config()->nested_urls && $page = DataObject::get('SiteTree', "\"URLSegment\" = '$URLSegment'")->First()) {
+		if(!$sitetree
+			&& self::config()->nested_urls
+			&& $page = DataObject::get_one('SiteTree', "\"SiteTree\".\"URLSegment\" = '$URLSegment'", $cache)
+		) {
 			return $page;
 		}
 		
@@ -335,7 +343,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		// Traverse down the remaining URL segments and grab the relevant SiteTree objects.
 		foreach($parts as $segment) {
 			$next = DataObject::get_one (
-				'SiteTree', "\"URLSegment\" = '$segment' AND \"ParentID\" = $sitetree->ID", $cache
+				'SiteTree',
+				"\"SiteTree\".\"URLSegment\" = '$segment' AND \"SiteTree\".\"ParentID\" = $sitetree->ID",
+				$cache
 			);
 			
 			if(!$next) {
@@ -405,7 +415,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if (
 			   !($page = DataObject::get_by_id('SiteTree', $arguments['id']))         // Get the current page by ID.
 			&& !($page = Versioned::get_latest_version('SiteTree', $arguments['id'])) // Attempt link to old version.
-			&& !($page = DataObject::get_one('ErrorPage', '"ErrorCode" = \'404\''))   // Link to 404 page directly.
+			&& !($page = DataObject::get_one('ErrorPage', '"ErrorPage"."ErrorCode" = \'404\'')) // Link to 404 page.
 		) {
 			 return; // There were no suitable matches at all.
 		}
@@ -1603,7 +1613,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		$existingPage = DataObject::get_one(
 			'SiteTree', 
-			"\"URLSegment\" = '$this->URLSegment' $IDFilter $parentFilter"
+			"\"SiteTree\".\"URLSegment\" = '$this->URLSegment' $IDFilter $parentFilter"
 		);
 
 		return !($existingPage);
@@ -1849,8 +1859,20 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$dependentTable->getConfig()->getComponentByType('GridFieldDataColumns')
 				->setDisplayFields($dependentColumns)
 				->setFieldFormatting(array(
-				'Title' => '<a href=\"admin/pages/edit/show/$ID\">$Title</a>',
-				'AbsoluteLink' => '<a href=\"$value\">$value</a>',
+					'Title' => function($value, &$item) {
+						return sprintf(
+							'<a href=\"admin/pages/edit/show/%d\">%s</a>',
+							(int)$item->ID,
+							Convert::raw2xml($item->Title)
+						);
+					},
+					'AbsoluteLink' => function($value, &$item) {
+						return sprintf(
+							'<a href=\"%s\">%s</a>',
+							Convert::raw2xml($value),
+							Convert::raw2xml($value)
+						);
+					}
 				));
 		}
 		
