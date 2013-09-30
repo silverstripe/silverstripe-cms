@@ -207,7 +207,7 @@ nl:
     504: '504 - Gateway Timeout'
     505: '505 - HTTP Versie Niet Ondersteund'
     CODE: 'Foutcode'
-    DEFAULTERRORPAGECONTENT: '<p>Sorry, maar de pagina die je zocht lijkt niet te bestaan.</p><p>Gelieve de spelling van de url te controleren en het opnieuw te proberen.</p>'
+    DEFAULTERRORPAGECONTENT: '<p>Helaas, de pagina die u zocht lijkt niet (meer) te bestaan.</p><p>Controleer of de juiste URL is gebruikt en probeer het opnieuw.</p>'
     DEFAULTERRORPAGETITLE: 'Pagina niet gevonden'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Helaas, er was een probleem bij het verwerken van je verzoek.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Probleem met de server'
@@ -266,7 +266,7 @@ nl:
     ParameterLiveCheckbox: 'Controleer gepubliceerde site'
     REPEMPTY: 'Het {title} rapport is leeg.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Kopieer en plak de link hieronder, om een link te delen op deze pagina.'
+    ShareInstructions: 'Kopieer en plak de link hieronder, om deze pagina te delen.'
     ShareLink: 'Deel een link'
   SilverStripeNavigatorLinkl:
     CloseLink: Sluiten
