@@ -168,7 +168,7 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 			$columns->setFieldFormatting(array(
 				'title' => function($value, &$item) {
 					return sprintf(
-						'<a href=\"%s\" class=\"cms-panel-link\">%s</a>',
+						'<a href="%s" class="cms-panel-link">%s</a>',
 						Convert::raw2xml($item->Link),
 						Convert::raw2xml($value)
 					);
