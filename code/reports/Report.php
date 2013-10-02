@@ -303,7 +303,7 @@ class SS_Report extends ViewableData {
 			if(isset($info['link']) && $info['link']) {
 				$fieldFormatting[$source] = function($value, &$item) {
 					return sprintf(
-						'<a href=\"%s\">%s</a>',
+						'<a href="%s">%s</a>',
 						Controller::join_links(singleton('CMSPageEditController')->Link('show'), $item->ID),
 						Convert::raw2xml($value)
 					);
