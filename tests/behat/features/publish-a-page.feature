@@ -10,7 +10,7 @@ So that only high quality changes are seen by our visitors
 	@javascript
 	Scenario: I can have a unpublished version of a page that is not publicly available
 		Given I go to "/my-page"
-		Then I should see "Page not found"
+		Then the page can't be found
 
 	@javascript
 	Scenario: I can publish a previously never published page
@@ -68,7 +68,7 @@ So that only high quality changes are seen by our visitors
 
 		Then I press the "Log out" button
 		And I go to "/hello"
-		Then I should see "Page not found"
+		Then the page can't be found
 
 	@javascript
 	Scenario: I can delete a page from live and draft stage to completely remove it
