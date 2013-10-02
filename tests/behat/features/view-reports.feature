@@ -13,3 +13,6 @@ Feature: View Reports
     When I follow "Pages with no content"
     Then I should see "Empty Page"
     But I should not see "Filled Page"
+    When I follow "Empty Page"
+    Then I should see an edit page form
+    And the "Page name" field should contain "Empty Page"
