@@ -68,7 +68,7 @@
 						// Build a list for allowed children as submenu entries
 						var pagetype = node.data('pagetype'),
 							id = node.data('id'),
-							disallowedChildren = hints[pagetype].disallowedChildren,
+							disallowedChildren = (typeof hints[pagetype] != 'undefined') ? hints[pagetype].disallowedChildren : null,
 							allowedChildren = $.extend(true, {}, hints['All']), // clone
 							disallowedClass,
 							menuAllowedChildren = {},
