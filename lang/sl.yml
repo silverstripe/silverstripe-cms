@@ -114,12 +114,7 @@ sl:
     ARCHIVEDSITE: 'Predogled različice'
     ARCHIVEDSITEFROM: 'Arhivirana različica iz'
     DRAFTSITE: 'Osnutek spletnega mesta'
-    DRAFT_SITE_ACCESS_RESTRICTION: 'Za ogled osnutka vsebine ali arhiva tega spletnega mesta, se morate prijaviti s podatki za dostop do CMS-vmesnika.
-
-
-      <a href="%s">Nazaj na objavljeno različico spletnega mesta.</a>
-
-      '
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Za ogled osnutka vsebine ali arhiva tega spletnega mesta, se morate prijaviti s podatki za dostop do CMS-vmesnika. <a href="%s">Nazaj na objavljeno različico spletnega mesta.</a>'
     Email: E-naslov
     INSTALL_SUCCESS: 'Namestitev je bila uspešna!'
     InstallFilesDeleted: 'Namestitvene datoteke so bile uspešno izbrisane.'
@@ -158,11 +153,7 @@ sl:
     504: 'Napaka 504: Čas za dostop je potekel'
     505: 'Napaka 505: Strežnik ne podpira HTTP-različice zahtevka'
     CODE: 'Napačna koda'
-    DEFAULTERRORPAGECONTENT: '<p>Morda ste zahtevali dostop do strani, ki ne obstaja?</p>
-
-      <p>Za vsak slučaj preverite vpisani URL-naslov in poskusite ponovno.</p>
-
-      '
+    DEFAULTERRORPAGECONTENT: '<p>Morda ste zahtevali dostop do strani, ki ne obstaja?</p><p>Za vsak slučaj preverite vpisani URL-naslov in poskusite ponovno.</p>'
     DEFAULTERRORPAGETITLE: 'Strani ni mogoče najti'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Oprostite, pri vaši zahtevi je prišlo do težave.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Napaka na strežniku'
