@@ -499,6 +499,8 @@ class VirtualPageTest extends SapphireTest {
 
 		$virtual = DataObject::get_by_id('VirtualPage', $virtual->ID, false);
 		$virtual->CopyContentFromID = $notRootPage->ID;
+		$virtual->flushCache();
+
 		$isDetected = false;
 		try {
 			$virtual->write();

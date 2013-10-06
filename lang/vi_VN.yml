@@ -4,11 +4,7 @@ vi_VN:
     SAVE: Lưu
   ErrorPage:
     CODE: 'Mã lỗi'
-    DEFAULTERRORPAGECONTENT: '<p>Bạn truy cập vào một trang không tồn tại</p>
-
-      <p>Xin vui lòng kiểm tra lại đường dẩn hoặc quay lại trang chủ</p>
-
-      '
+    DEFAULTERRORPAGECONTENT: '<p>Bạn truy cập vào một trang không tồn tại</p><p>Xin vui lòng kiểm tra lại đường dẩn hoặc quay lại trang chủ</p>'
     DEFAULTERRORPAGETITLE: 'Không tìm thấy'
   RedirectorPage:
     HASBEENSETUP: 'Một trang di chuyển chưa cấu hình đích di chuyển đến.'

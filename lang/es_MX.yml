@@ -147,11 +147,7 @@ es_MX:
     DEFAULTABOUTTITLE: 'Sobre nosotros'
     DEFAULTCONTACTCONTENT: '<p>Usted puede llenar esta págna con su propio contenido, o eliminarla y crear sus propias páginas.<br /></p>'
     DEFAULTCONTACTTITLE: 'Contacto'
-    DEFAULTHOMECONTENT: '<p>¡Bienvenido a SilverStripe! Ésta es la página de Inicio predeterminada. Usted puede modificar esta página abriendo el <a href="admin/">CMS</a>. Ahora puede navegar por la
-
-      <a href="http://doc.silverstripe.com">documentación del desarrollador</a>, o comenzar los <a href="href="http://doc.silverstripe.com/doku.php?id=tutorials">tutoriales</a></p>.
-
-      '
+    DEFAULTHOMECONTENT: '<p>¡Bienvenido a SilverStripe! Ésta es la página de Inicio predeterminada. Usted puede modificar esta página abriendo el <a href="admin/">CMS</a>. Ahora puede navegar por la <a href="http://doc.silverstripe.org">documentación del desarrollador</a>, o comenzar los <a href="href="http://doc.silverstripe.com/doku.php?id=tutorials">tutoriales</a></p>.'
     DEFAULTHOMETITLE: Inicio
     DEPENDENT_NOTE: 'Las siguientes páginas depender de esta página. Esto incluye páginas virtuales, redirección de páginas y páginas con enlaces de contenido.'
     DependtPageColumnLinkType: 'Tipo de enlace'
