@@ -169,6 +169,7 @@ mi:
     PostInstallTutorialIntro: 'He tauira rūnā tēnei paetukutuku o tētahi paetukutuku SilverStripe 3. Hei toro i tēnei, tirohia te {link}'
     UnableDeleteInstall: 'Kāore i taea te muku i ngā kōnae tāuta. Mukua ā-ringa ngā kōnae kei raro'
     VIEWPAGEIN: 'Tiro Whārangi i'
+    DRAFT: Hukihuki
   ErrorPage:
     400: '400 - Tono Kino'
     401: '401 - Tē Whakamanatia'
@@ -354,6 +355,7 @@ mi:
     many_many_BackLinkTracking: 'Taki Hono i Waho'
     many_many_ImageTracking: 'Taki Atahanga'
     many_many_LinkTracking: 'Taki Hono'
+    BUTTONSAVED: Kua Tiakina
   SiteTreeURLSegmentField:
     HelpChars: 'Ka tahuri aunoatia, ka tangohia rānei ngā pūāhua motuhake'
   StaticExporter:

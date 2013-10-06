@@ -256,7 +256,6 @@ et_EE:
     ParameterLiveCheckbox: 'Kontrolli avaldatud saiti'
     REPEMPTY: 'Lehe {title} aruanne on tühi.'
   SilverStripeNavigatorLink:
-    ShareInstructions: 'Selle lehe jagamiseks kopeerige ja kleepige allolev link.'
     ShareLink: 'Jaga linki'
   SilverStripeNavigatorLinkl:
     CloseLink: Sulge

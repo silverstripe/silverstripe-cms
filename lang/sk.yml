@@ -207,7 +207,7 @@ sk:
     504: '504 - Čas na požiadavky vypršal - Brána'
     505: '505 - HTTP verzia nie je podporovaná'
     CODE: 'Chybový kód'
-    DEFAULTERRORPAGECONTENT: '<p>Prepáčte, vyzerá to tak, že sa snažíte otvoriť stránku ktorá neexistuje.</p><p> Prosím skontrolujte napísané URL a skuste znova.</p>'
+    DEFAULTERRORPAGECONTENT: '<p>Prepáčte, vyzerá to tak, že sa snažíte otvoriť stránku, ktorá neexistuje.</p><p> Skontrolujte napísanú URL, prosím.</p>'
     DEFAULTERRORPAGETITLE: 'Stránka nenájdená'
     DEFAULTSERVERERRORPAGECONTENT: '<p>Prepáčte, ale bol problém s manipuláciou vášho požiadavku.</p>'
     DEFAULTSERVERERRORPAGETITLE: 'Chyba servera'
@@ -297,7 +297,7 @@ sk:
     APPEARSVIRTUALPAGES: 'Tento obsah sa zobrazí aj na virtuálnych stránkach v {title} sekciách.'
     BUTTONCANCELDRAFT: 'Zrušiť zmeny v konceptu'
     BUTTONCANCELDRAFTDESC: 'Vymazať návrh a vrátiť sa k aktuálne zverejnenej stránke'
-    BUTTONSAVEPUBLISH: 'Uložiť & zverjniť'
+    BUTTONSAVEPUBLISH: 'Uložiť a zverejniť'
     BUTTONUNPUBLISH: Nezverejniť
     BUTTONUNPUBLISHDESC: 'Odstrániť túto stránku z publikovaných na webe'
     CREATED: 'Dátum vytvorenia'
@@ -306,7 +306,7 @@ sk:
     DEFAULTABOUTCONTENT: '<p>Túto stránku môžete vyplniť vlastným obsahom, alebo ju zmazať a vytvoriť vaše vlastné stránky.<br /></p>'
     DEFAULTABOUTTITLE: 'O nás'
     DEFAULTCONTACTCONTENT: '<p>Túto stránku môžete vyplniť vlastným obsahom, alebo ju zmazať a vytvoriť vaše vlastné stránky.<br /></p>'
-    DEFAULTCONTACTTITLE: 'Kontaktuje nás'
+    DEFAULTCONTACTTITLE: 'Kontakt'
     DEFAULTHOMECONTENT: '<p>Vitajte v SilverStripe! Toto je predvolená úvodná stránka. Môžete you upraviť otvorením <a href="admin/">CMS-ka</a>. Môžete isť na <a href="http://doc.silverstripe.org">dokumentáciu vývoára</a>, alebo začať s <a href="http://doc.silverstripe.org/doku.php?id=tutorials">návodmi</a>.</p>'
     DEFAULTHOMETITLE: Domov
     DELETEDPAGEHELP: 'Stránka už nie je viacej zverejnená'
@@ -370,7 +370,7 @@ sk:
     Viewers: 'Skupiny prezeračov'
     Visibility: Viditeľnosť
     has_one_Parent: 'Nadradená stránka'
-    many_many_BackLinkTracking: 'Záznamy o Backlink-ov'
+    many_many_BackLinkTracking: 'Záznamy o Backlinkoch'
     many_many_ImageTracking: 'Záznamy o obrázkoch'
     many_many_LinkTracking: 'Záznamy o odkazoch'
     BUTTONPUBLISHED: Publikované
