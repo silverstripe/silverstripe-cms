@@ -74,6 +74,7 @@ en:
     ACCESS_HELP: 'Allow viewing of the section containing page tree and content. View and edit permissions can be handled through page specific dropdowns, as well as the separate "Content permissions".'
     AddNew: 'Add new page'
     AddNewButton: 'Add new'
+    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
     ChoosePageParentMode: 'Choose where to create this page'
     ChoosePageType: 'Choose page type'
     Create: Create
@@ -111,7 +112,6 @@ en:
     TreeFiltered: 'Filtered tree.'
     TreeFilteredClear: 'Clear filter'
     MENUTITLE: 'Edit Page'
-    AddPageRestriction: 'Note: Some page types are not allowed for this selection'
   CMSMain_left_ss:
     APPLY_FILTER: 'Apply Filter'
     RESET: Reset
@@ -127,9 +127,9 @@ en:
     SHOWUNPUBLISHED: 'Show unpublished versions'
     SHOWVERSION: 'Show Version'
     VIEW: view
+    VIEWINGLATEST: 'Currently viewing the latest version.'
     VIEWINGVERSION: 'Currently viewing version {version}.'
     MENUTITLE: History
-    VIEWINGLATEST: 'Currently viewing the latest version.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Author
     NOTPUBLISHED: 'Not published'
@@ -142,7 +142,6 @@ en:
     MENUTITLE: Pages
     TreeView: 'Tree View'
   CMSPagesController_ContentToolbar_ss:
-    ENABLEDRAGGING: 'Drag''n''drop'
     MULTISELECT: Multi-selection
   CMSPagesController_Tools_ss:
     FILTER: Filter
@@ -163,6 +162,7 @@ en:
     ARCHIVEDSITE: 'Preview version'
     ARCHIVEDSITEFROM: 'Archived site from'
     CMS: CMS
+    DRAFT: Draft
     DRAFTSITE: 'Draft Site'
     DRAFT_SITE_ACCESS_RESTRICTION: 'You must log in with your CMS password in order to view the draft or archived content. <a href="%s">Click here to go back to the published site.</a>'
     Email: Email
@@ -174,14 +174,13 @@ en:
     LOGIN: Login
     LOGOUT: 'Log out'
     NOTLOGGEDIN: 'Not logged in'
+    PUBLISHED: Published
     PUBLISHEDSITE: 'Published Site'
     Password: Password
     PostInstallTutorialIntro: 'This website is a simplistic version of a SilverStripe 3 site. To extend this, please take a look at {link}.'
     StartEditing: 'You can start editing your content by opening <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually'
     VIEWPAGEIN: 'View Page in:'
-    DRAFT: Draft
-    PUBLISHED: Published
   ErrorPage:
     400: '400 - Bad Request'
     401: '401 - Unauthorized'
@@ -225,9 +224,7 @@ en:
     DELETED: Deleted.
     PreviewButton: Preview
     SAVEDUP: Saved.
-    STATUSPUBLISHEDSUCCESS: 'Published ''{title}'' successfully'
     SearchResults: 'Search Results'
-    VersionUnknown: Unknown
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Access'
   Permissions:
@@ -249,6 +246,10 @@ en:
     MENUTITLE: Reports
   ReportAdminForm:
     FILTERBY: 'Filter by'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
+    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
+    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
   SearchForm:
     GO: Go
     SEARCH: Search
@@ -265,6 +266,8 @@ en:
     OtherGroupTitle: Other
     ParameterLiveCheckbox: 'Check live site'
     REPEMPTY: 'The {title} report is empty.'
+  SilverStripeNavigator:
+    ARCHIVED: Archived
   SilverStripeNavigatorLink:
     ShareInstructions: 'To share this page, copy and paste the link below.'
     ShareLink: 'Share link'
@@ -297,10 +300,11 @@ en:
     APPEARSVIRTUALPAGES: 'This content also appears on the virtual pages in the {title} sections.'
     BUTTONCANCELDRAFT: 'Cancel draft changes'
     BUTTONCANCELDRAFTDESC: 'Delete your draft and revert to the currently published page'
+    BUTTONPUBLISHED: Published
+    BUTTONSAVED: Saved
     BUTTONSAVEPUBLISH: 'Save & publish'
     BUTTONUNPUBLISH: Unpublish
     BUTTONUNPUBLISHDESC: 'Remove this page from the published site'
-    CREATED: 'Date Created'
     Comments: Comments
     Content: Content
     DEFAULTABOUTCONTENT: '<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>'
@@ -322,9 +326,12 @@ en:
     EDIT_ALL_DESCRIPTION: 'Edit any page'
     EDIT_ALL_HELP: 'Ability to edit any page on the site, regardless of the settings on the Access tab.  Requires the "Access to ''Pages'' section" permission'
     Editors: 'Editors Groups'
+    GroupPlaceholder: 'Click to select group'
     HASBROKENLINKS: 'This page has broken links.'
     HTMLEDITORTITLE: Content
     INHERIT: 'Inherit from parent page'
+    LASTPUBLISHED: 'Last published'
+    LASTSAVED: 'Last saved'
     LASTUPDATED: 'Last Updated'
     LINKCHANGENOTE: 'Changing this page''s link will also affect the links of all child pages.'
     MENUTITLE: 'Navigation label'
@@ -335,6 +342,8 @@ en:
     MODIFIEDONDRAFTHELP: 'Page has unpublished changes'
     MODIFIEDONDRAFTSHORT: Modified
     MetadataToggle: Metadata
+    MoreOptions: 'More options'
+    NOTPUBLISHED: 'Not published'
     OBSOLETECLASS: 'This page is of obsolete type {type}. Saving will reset its type and you may lose data'
     PAGELOCATION: 'Page location'
     PAGETITLE: 'Page name'
@@ -373,49 +382,25 @@ en:
     many_many_BackLinkTracking: 'Backlink Tracking'
     many_many_ImageTracking: 'Image Tracking'
     many_many_LinkTracking: 'Link Tracking'
-    BUTTONPUBLISHED: Published
-    BUTTONSAVED: Saved
-    GroupPlaceholder: 'Click to select group'
-    LASTPUBLISHED: 'Last published'
-    LASTSAVED: 'Last saved'
-    MoreOptions: 'More options'
-    NOTPUBLISHED: 'Not published'
   SiteTreeURLSegmentField:
-    HelpChars: ' Special characters are automatically converted or removed.'
     EMPTY: 'Please enter a URL Segment or click cancel'
-  StaticExporter:
-    BASEURL: 'Base URL'
-    EXPORTTO: 'Export to that folder'
-    NAME: 'Static exporter'
-  TableListField:
-    SELECT: 'Select:'
-  TableListField_ss:
-    NOITEMSFOUND: 'No items found'
-    SORTASC: 'Sort in ascending order'
-    SORTDESC: 'Sort in descending order'
-  TableListField_PageControls_ss:
-    DISPLAYING: Displaying
-    OF: of
-    TO: to
-    VIEWFIRST: 'View first'
-    VIEWLAST: 'View last'
-    VIEWNEXT: 'View next'
-    VIEWPREVIOUS: 'View previous'
-  TreeTools:
-    DisplayLabel: 'Display:'
+    HelpChars: ' Special characters are automatically converted or removed.'
+  URLSegmentField:
+    Cancel: Cancel
+    Edit: Edit
+    OK: OK
   ViewArchivedEmail_ss:
     CANACCESS: 'You can access the archived site at this link:'
     HAVEASKED: 'You have asked to view the content of our site on'
   VirtualPage:
     CHOOSE: 'Linked Page'
     DESCRIPTION: 'Displays the content of another page'
-    EDITCONTENT: 'Edit content on linked page'
+    EditLink: edit
     HEADER: 'This is a virtual page'
+    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
     PLURALNAME: 'Virtual Pags'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtual Page'
-    EditLink: edit
-    HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
   CMSFileAddController:
     MENUTITLE: Files
   CMSPageEditController:
@@ -424,13 +409,3 @@ en:
     MENUTITLE: 'Edit Page'
   CMSSettingsController:
     MENUTITLE: Settings
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Please publish the linked page in order to publish the virtual page'
-    VIRTUALPAGEWARNING: 'Please choose a linked page and save first in order to publish this page'
-    VIRTUALPAGEWARNINGSETTINGS: 'Please choose a linked page in the main content fields in order to publish'
-  SilverStripeNavigator:
-    ARCHIVED: Archived
-  URLSegmentField:
-    Cancel: Cancel
-    Edit: Edit
-    OK: OK

@@ -3,12 +3,16 @@ it:
     ADDFILES: 'Aggiungi File'
     ActionAdd: 'Aggiungi cartella'
     AppCategoryArchive: Archivia
+    AppCategoryAudio: Audio
     AppCategoryDocument: Documento
+    AppCategoryFlash: Flash
     AppCategoryImage: Immagine
+    AppCategoryVideo: Video
     BackToFolder: 'Torna alla cartella'
     CREATED: Data creazione
     CurrentFolderOnly: 'Limita alla cartella corrente?'
     DetailsView: Dettagli
+    FILES: Files
     FILESYSTEMSYNC: 'Sincronizza file'
     FILESYSTEMSYNCTITLE: 'Aggiorna il database dei file. Utile quando nuovi file sono stati caricati fuori dal CMS, es. via FTP.'
     FROMTHEINTERNET: 'Da Internet'
@@ -20,6 +24,7 @@ it:
     THUMBSDELETED: '{count} miniature inutilizzate sono state eliminate'
     TreeView: 'Visualizzazione a albero'
     Upload: Carica
+    MENUTITLE: Files
   AssetAdmin_DeleteBatchAction:
     TITLE: 'Elimina cartelle'
   AssetAdmin_Tools:
@@ -40,6 +45,7 @@ it:
     ColumnDateLastModified: 'Data ultima modifica'
     ColumnDateLastPublished: 'Data ultima pubblicazione'
     ColumnProblemType: 'Tipo problema'
+    ColumnURL: URL
     HasBrokenFile: 'ha un file non funzionante'
     HasBrokenLink: 'ha un link non funzionante'
     HasBrokenLinkAndFile: 'ha link e file non funzionanti'
@@ -75,6 +81,8 @@ it:
     DELETEFP: Elimina dal sito pubblicato
     DESCREMOVED: 'e {count} discendenti'
     DUPLICATED: '''{title}'' duplicato correttamente'
+    DUPLICATEDWITHCHILDREN: '''{title}'' e figlie duplicate con successo'
+    EMAIL: Email
     EditTree: 'Modifica albero'
     ListFiltered: 'Lista filtrata.'
     NEWPAGE: 'Nuova {pagetype}'
@@ -93,6 +101,7 @@ it:
     RESTORE: Ripristina
     RESTORED: 'Ripristinata ''{title}'' con successo'
     ROLLBACK: 'Ripristina a questa versione'
+    ROLLEDBACKPUBv2: 'Ripristinata la versione pubblicata.'
     ROLLEDBACKVERSIONv2: 'Ripristinata la versione #%d.'
     SAVE: Salva
     SAVEDRAFT: 'Bozza salvata'
@@ -120,6 +129,7 @@ it:
     VIEW: vista
     VIEWINGVERSION: 'Versione attualmente visualizzata {version}.'
     MENUTITLE: Archivio
+    VIEWINGLATEST: 'Attualmente visualizzata ultima versione.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autore
     NOTPUBLISHED: 'Non pubblicato'
@@ -132,6 +142,7 @@ it:
     MENUTITLE: Pagine
     TreeView: 'Visualizzazione a albero'
   CMSPagesController_ContentToolbar_ss:
+    ENABLEDRAGGING: 'Drag''n''drop'
     MULTISELECT: Selezione multipla
   CMSPagesController_Tools_ss:
     FILTER: Filtra
@@ -151,8 +162,10 @@ it:
   ContentController:
     ARCHIVEDSITE: 'Anteprima versione'
     ARCHIVEDSITEFROM: 'Sito archiviato da'
+    CMS: CMS
     DRAFTSITE: 'Sito Bozza'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Devi autenticarti utilizzando la tua password per poter visualizzare bozze o contenuti archiviati. <a href="%s">Clicca qui per tornare al sito pubblicato</a>'
+    Email: Email
     INSTALL_SUCCESS: 'Installazione conclusa con successo!'
     InstallFilesDeleted: 'I file di installazione sono stati eliminati con successo.'
     InstallSecurityWarning: 'Per motivi di sicurezza ora devi eliminare i file di installazione, a meno che non stai pianificando in installare nuovamente più tardi (<em>richiede accesso da amministratore, vedi sopra</em>). Inoltre il server web ora richiede permessi di scrittura solo alla cartella "assets", Quindi puoi rimuovere i permessi di scrittura da tutte le altre cartelle. <a href="{link}" style="text-align: center;">Clicca qui per cancellare i file di installazione.</a>'
@@ -162,6 +175,7 @@ it:
     LOGOUT: 'Disconnetti'
     NOTLOGGEDIN: 'Non connesso'
     PUBLISHEDSITE: 'Sito pubblicato'
+    Password: Password
     PostInstallTutorialIntro: 'Il sito web è una versione semplificata di un sito SilverStripe 3. Per estenderlo, dai un''occhiata a {link}.'
     StartEditing: 'Puoi iniziare a modificare i contenuti del sito aprendo <a href="{link}">il CMS</a>.'
     UnableDeleteInstall: 'Impossibile eliminare i file di installazione. Cancella manualmente i file sotto indicati'
@@ -252,6 +266,7 @@ it:
     ParameterLiveCheckbox: 'Verifica sito pubblicato'
     REPEMPTY: 'Il rapporto {title} è vuoto.'
   SilverStripeNavigatorLink:
+    ShareInstructions: 'Per condividere questa pagina, copia e incolla il link qui sotto.'
     ShareLink: 'Link di condivisione'
   SilverStripeNavigatorLinkl:
     CloseLink: Chiudi
@@ -293,11 +308,13 @@ it:
     DEFAULTCONTACTCONTENT: '<p>Puoi riempire questa pagina con i tuoi contenuti, oppure cancellarla e creare le tue pagine.<br /></p>'
     DEFAULTCONTACTTITLE: 'Contattaci'
     DEFAULTHOMECONTENT: '<p>Benvenuto in SilverStripe! Questa è l''homepage di default. Puoi modificare questa pagina aprendo <a href="admin/">il CMS</a>. Puoi visualizzare adesso la <a href="http://doc.silverstripe.com">documentazione di sviluppo</a>, o iniziaren <a href="http://doc.silverstripe.com/doku.php?id=tutorials">i tutorial.</a></p>'
+    DEFAULTHOMETITLE: Home
     DELETEDPAGEHELP: 'La pagina non è più pubblicata'
     DELETEDPAGESHORT: Eliminata
     DEPENDENT_NOTE: 'Le seguenti pagine dipendono da questa pagina. Queste includono pagine virtuali, pagine di redirezione e pagine con link nel contenuto.'
     DESCRIPTION: 'Pagina con contenuto generico'
     DependtPageColumnLinkType: 'Tipo di link'
+    DependtPageColumnURL: URL
     EDITANYONE: 'Chiunque può autenticarsi al CMS'
     EDITHEADER: 'Chi può modificare questa pagina?'
     EDITONLYTHESE: 'Solamente queste persone (scegli dalla lista)'
@@ -317,6 +334,7 @@ it:
     METAEXTRAHELP: 'Tag HTML per meta addizionali. Per esempio &lt;meta name="nomePersonalizzato" content="Il tuo contenuto personalizzato" /&gt;'
     MODIFIEDONDRAFTHELP: 'La pagina ha modifiche non pubblicate'
     MODIFIEDONDRAFTSHORT: Modificata
+    MetadataToggle: Metadati
     OBSOLETECLASS: 'Quasta pagina è del tipo obsoleto {type}. Salvarla ripristinerà il suo tipo e potrai perdere dati'
     PAGELOCATION: 'Collocazione pagina'
     PAGETITLE: 'Nome della pagina'
@@ -389,11 +407,17 @@ it:
     CANACCESS: 'Puoi accedere al sito archiviato da questo indirizzo:'
     HAVEASKED: 'Hai chiesto di visualizzare il contenuto del nostro sito il'
   VirtualPage:
+    CHOOSE: 'Pagina collegata'
     DESCRIPTION: 'Visualizza il contenuto di un''altra pagina'
+    EDITCONTENT: 'Modifica il contenuto nella pagina collegata'
     HEADER: 'Questa è una pagina virtuale'
     PLURALNAME: 'Pagine virtuali'
     PageTypNotAllowedOnRoot: 'Il tipo di pagina originale "{type}" non è consentito al primo livello per questa pagina virtuale'
     SINGULARNAME: 'Pagina virtuale'
+    EditLink: modifica
+    HEADERWITHLINK: 'Questa è una pagina virtuale copiata da "{title}" ({link})'
+  CMSFileAddController:
+    MENUTITLE: Files
   CMSPageEditController:
     MENUTITLE: 'Modifica pagina'
   CMSPageSettingsController:
@@ -406,3 +430,7 @@ it:
     VIRTUALPAGEWARNINGSETTINGS: 'Perfavore scegli una pagina da linkare nel campo "Contenuto" per poter pubblicare.'
   SilverStripeNavigator:
     ARCHIVED: Archiviato
+  URLSegmentField:
+    Cancel: Annulla
+    Edit: Modifica
+    OK: OK
