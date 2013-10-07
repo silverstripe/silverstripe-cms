@@ -170,6 +170,7 @@ mi:
     UnableDeleteInstall: 'Kāore i taea te muku i ngā kōnae tāuta. Mukua ā-ringa ngā kōnae kei raro'
     VIEWPAGEIN: 'Tiro Whārangi i'
     DRAFT: Hukihuki
+    PUBLISHED: I whakaputaina
   ErrorPage:
     400: '400 - Tono Kino'
     401: '401 - Tē Whakamanatia'
@@ -284,6 +285,7 @@ mi:
     APPEARSVIRTUALPAGES: 'Ka kitea hoki ēnei ihirangi i ngā whārangi mariko kei ngā wāhanga  {title}.'
     BUTTONCANCELDRAFT: 'Whakakorea ngā huringa hukihuki'
     BUTTONCANCELDRAFTDESC: 'Mukua tō hukihuki, ka hoki ki te whārangi kua whakaputaina ināianei'
+    BUTTONSAVEPUBLISH: 'Tiakina te whārangi'
     BUTTONUNPUBLISH: Wetewhakaputa
     BUTTONUNPUBLISHDESC: 'Tangohia tēnei whārangi i te pae kua whakaputaina'
     CREATED: 'Rā Hanga'
@@ -355,7 +357,9 @@ mi:
     many_many_BackLinkTracking: 'Taki Hono i Waho'
     many_many_ImageTracking: 'Taki Atahanga'
     many_many_LinkTracking: 'Taki Hono'
+    BUTTONPUBLISHED: I whakaputaina
     BUTTONSAVED: Kua Tiakina
+    MoreOptions: 'He kōwhiringa anō'
   SiteTreeURLSegmentField:
     HelpChars: 'Ka tahuri aunoatia, ka tangohia rānei ngā pūāhua motuhake'
   StaticExporter:
@@ -387,6 +391,7 @@ mi:
     PLURALNAME: 'Ngā Whārangi Mariko'
     PageTypNotAllowedOnRoot: 'Kāore e whakaaetia te momo whārangi taketake "{type}" i te taumata pūtake o tēnei whārangi mariko'
     SINGULARNAME: 'Whārangi Mariko'
+    EditLink: Whakatika
   CMSFileAddController:
     MENUTITLE: Ngā Kōnae
   CMSPageEditController:
@@ -395,3 +400,6 @@ mi:
     MENUTITLE: 'Whakatika Whārangi'
   CMSSettingsController:
     MENUTITLE: Ngā Tautuhinga
+  URLSegmentField:
+    Cancel: Whakakore
+    Edit: Whakatika

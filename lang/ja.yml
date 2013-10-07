@@ -29,6 +29,8 @@ ja:
     TITLE: 'フォルダを削除'
   AssetAdmin_Tools:
     FILTER: フィルタ
+  AssetAdmin_left_ss:
+    GO: Go
   AssetTableField:
     BACKLINKCOUNT: '以下で使用される：'
     PAGES: ページ
@@ -68,6 +70,8 @@ ja:
     UNPUBLISHED_PAGES: '%dページを非公開にしました'
     UNPUBLISH_PAGES: 非公開
   CMSMain:
+    ACCESS: '''{title}'' セクションにアクセス'
+    ACCESS_HELP: 'ページツリーとコンテンツを含むセクションの閲覧を許可します。　表示および編集の権限は、ページの特定のドロップダウンだけでなく、独立した"コンテンツの権限"を介して処理することができます。'
     AddNew: '新しいページを追加'
     AddNewButton: '新しく追加'
     ChoosePageParentMode: 'このページを作成する場所を選択'
@@ -75,13 +79,19 @@ ja:
     Create: 作成
     DELETE: 'ドラフトサイトから削除'
     DELETEFP: 公開サイトから削除
+    DESCREMOVED: 'そして {count} 派生'
+    DUPLICATED: '''{title}'' の複製が完了しました'
+    DUPLICATEDWITHCHILDREN: '''{title}'' と子の複製が完了しました'
     EMAIL: Eメール
     EditTree: 'ツリーを編集'
     ListFiltered: 'フィルタリングされたリスト'
+    NEWPAGE: '新しい {pagetype}'
     PAGENOTEXISTS: 'このページは存在しません'
     PAGES: ページ
     PAGETYPEANYOPT: 何でも
     PAGETYPEOPT: 'ページの種類'
+    PUBALLCONFIRM: 'コンテンツのステージをコピーして配信するために、サイト内のすべてのページを公開してください'
+    PUBALLFUN: '"すべてを公開" 機能'
     PUBALLFUN2: "このボタンを押すことはすべてのページへ移動して\"公開\"を押すことと同じです。この機能は、サイトをはじめて作成した時など多くのコンテンツの編集がある場合に利用されることを想定されています。"
     PUBPAGES: '完了: {count}ページを公開しました'
     PageAdded: 'ページの作成に成功'
@@ -158,6 +168,7 @@ ja:
     Email: Eメール
     INSTALL_SUCCESS: 'インストールに成功！'
     InstallFilesDeleted: 'インストール関連ファイルは正しく削除されました'
+    InstallSecurityWarning: '後で再インストールすることを予定していない限り、セキュリティ上の理由のために、あなたは今インストールファイルを削除する必要があります(<em> 管理者のログインを必要とする、上記参照 </em>)。 今はウェブサーバーも"アセット"フォルダへの書き込みアクセスが必要なだけで、その他すべてのフォルダからの書き込みアクセスを削除することができます。<a href="{link}" style="text-align: center;"> ここをクリックしてインストールファイルを削除。</a>'
     InstallSuccessCongratulations: 'SilverStripeは正常にインストールされています！'
     LOGGEDINAS: 'ログイン中：'
     LOGIN: ログイン
@@ -201,6 +212,8 @@ ja:
     DEFAULTSERVERERRORPAGECONTENT: '<p>申し訳ございません。あなたのリクエストを処理中に問題が起きました。</p>'
     DEFAULTSERVERERRORPAGETITLE: 'サーバーエラー'
     DESCRIPTION: 'それぞれのエラーケースに対してカスタムコンテンツを表示する(例:"ページがありません")'
+    ERRORFILEPROBLEM: '書き込み用のファイル"{filename}"を開く際にエラーが発生しました。　ファイルの権限を確認してください。'
+    PLURALNAME: 'エラーページ'
     SINGULARNAME: 'エラーページ'
   Folder:
     AddFolderButton: 'フォルダの追加'
@@ -318,6 +331,7 @@ ja:
     METADESC: '説明'
     METADESCHELP: '検索エンジンは、検索結果を表示するためにこのコンテンツを使用します（ランキングには影響しません）。'
     METAEXTRA: 'メタタグをカスタム'
+    METAEXTRAHELP: '追加のメタ情報用のHTMLタグ。　たとえば、&lt; メタネーム = "カスタムネーム" コンテンツ = "ここにあなたのカスタムコンテンツ" /&gt;'
     MODIFIEDONDRAFTHELP: '公開されていない変更がページにあります'
     MODIFIEDONDRAFTSHORT: 修正された
     MetadataToggle: メタデータ
@@ -335,11 +349,13 @@ ja:
     PageTypNotAllowedOnRoot: 'ページタイプ"{type}"は最上位層のページになることができません'
     PageTypeNotAllowed: 'ページタイプ"{type}"はこの親ページの子になることができません'
     REMOVEDFROMDRAFTHELP: 'ページが公開されていますが、下書きから削除されています'
+    REMOVEDFROMDRAFTSHORT: '下書きから削除されました'
     REMOVE_INSTALL_WARNING: '警告: セキュリティ上の理由から、SilverStripeのインストール先にあるinstall.phpを削除してください。'
     REORGANISE_DESCRIPTION: 'サイト構造を変更'
     REORGANISE_HELP: 'サイトツリー内のページをドラッグ・アンド・ドロップで再編集'
     SHOWINMENUS: 'メニューに表示しますか？'
     SHOWINSEARCH: '検索に表示しますか？'
+    SINGULARNAME: ページ
     TABBEHAVIOUR: 動作
     TABCONTENT: 'コンテンツ'
     TABDEPENDENT: '依存ページ'
@@ -359,9 +375,11 @@ ja:
     many_many_LinkTracking: 'リンクを追跡'
     BUTTONPUBLISHED: 公開された
     BUTTONSAVED: 保存された
+    GroupPlaceholder: 'クリックしてグループを選択'
     LASTPUBLISHED: '最後に公開された'
     LASTSAVED: '最後に保存した'
     MoreOptions: 'その他のオプション'
+    NOTPUBLISHED: '公開されていません'
   SiteTreeURLSegmentField:
     HelpChars: '特殊文字は自動的に変換されたか取り除かれました'
     EMPTY: 'URLのセグメントを入力または中止をクリックする'
