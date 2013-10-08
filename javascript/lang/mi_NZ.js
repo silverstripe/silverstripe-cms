@@ -28,12 +28,16 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 		'WidgetAreaEditor.TOOMANY': 'Aroha noa, kua taea te mōrahi o ngā taupānga iti i tēnei wāhi',
 		'AssetAdmin.ConfirmDelete': 'Kei te tino hiahia muku i tēnei kōpaki me ngā kōnae i roto?',
 		'Folder.Name': 'Ingoa kōpaki',
-		'URLSEGMENT.Edit': 'Whakatika',
-		'URLSEGMENT.OK': 'Tiaki',
-		'URLSEGMENT.Cancel': 'Whakakore',
-		'Tree.AddSubPage': 'Tāpiritia he whārangi hōu ki konei',
+		'Tree.AddSubPage': 'Tāpiri whārangi hou ki konei',
+		'Tree.Duplicate': 'Tārite',
 		'Tree.EditPage': 'Whakatika',
+		'Tree.ThisPageOnly': 'Tēnei whārangi anake',
+		'Tree.ThisPageAndSubpages': 'Tēnei whārangi me ngā whārangi iti',
+		'Tree.ShowAsList': 'Whakaatu tamariki hei rārangi',
 		'CMSMain.ConfirmRestoreFromLive': "Kei te tino hiahia tārua i te ihirangi kua whakaputaina ki te pae hukihuki?",
-		'CMSMain.RollbackToVersion': "Kei te tino hiahia hoki ki te tauira #%s o tēnei whārangi?"
+		'CMSMain.RollbackToVersion': "Kei te tino hiahia hoki ki te tauira #%s o tēnei whārangi?",
+		'URLSEGMENT.Edit': 'Whakatika',
+		'URLSEGMENT.OK': 'ĀE',
+		'URLSEGMENT.Cancel': 'Whakakore'
 	});
 }
