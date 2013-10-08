@@ -164,11 +164,11 @@ zh:
     ARCHIVEDSITEFROM: '存档站点从'
     CMS: 内容管理系统
     DRAFTSITE: '草稿站点'
-    DRAFT_SITE_ACCESS_RESTRICTION: '您必须使用您的内容管理系统密码登录，才可以查看草稿或存档内容。&lt;a href="%s"&gt;点击这里返回到已发布的站点。&lt;/a&gt;'
+    DRAFT_SITE_ACCESS_RESTRICTION: '您必须使用您的内容管理系统密码登录，才可以查看草稿或存档内容。<a href="%s">点击这里返回到已发布的站点。</a>'
     Email: 电子邮件
     INSTALL_SUCCESS: '安装成功'
     InstallFilesDeleted: '安装文件已经成功删除。'
-    InstallSecurityWarning: '出于安全原因，您应该现在删除安装文件，除非您计划以后（&lt;em&gt;需要以管理员身份登录，详见下方&lt;/em&gt;）重新安装。web服务器现在仅需要对“assets”文件夹的写权限，您可以删除所有其他文件夹的写权限。&lt;a href="{link}" style="text-align: center;"&gt;点击这里删除安装文件。&lt;/a&gt;'
+    InstallSecurityWarning: '出于安全原因，您应该现在删除安装文件，除非您计划以后（<em>需要以管理员身份登录，详见下方</em>）重新安装。web服务器现在仅需要对“assets”文件夹的写权限，您可以删除所有其他文件夹的写权限。<a href="{link}" style="text-align: center;">点击这里删除安装文件。</a>'
     InstallSuccessCongratulations: 'SilverStripe已经成功安装！'
     LOGGEDINAS: '当前登录'
     LOGIN: 登录
@@ -207,9 +207,9 @@ zh:
     504: '504 - 网关超时'
     505: '505 - HTTP版本不支持'
     CODE: '错误代码'
-    DEFAULTERRORPAGECONTENT: '&lt;p&gt;对不起，您正在尝试访问不存在的页面。&lt;/p&gt;&lt;p&gt;请检查您想要访问的URL的拼写并再试一次。&lt;/p&gt;'
+    DEFAULTERRORPAGECONTENT: '<p>对不起，您正在尝试访问不存在的页面。</p><p>请检查您想要访问的URL的拼写并再试一次。</p>'
     DEFAULTERRORPAGETITLE: '未发现页面'
-    DEFAULTSERVERERRORPAGECONTENT: '&lt;p&gt;对不起，处理您的请求时发生错误。&lt;/p&gt;'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>对不起，处理您的请求时发生错误。</p>'
     DEFAULTSERVERERRORPAGETITLE: '服务器错误'
     DESCRIPTION: '给不同的错误自定义内容（例如”未发现页面“）'
     ERRORFILEPROBLEM: '打开文件”{filename}“尝试写入. 请检查文件许可'
@@ -303,11 +303,11 @@ zh:
     CREATED: '创建日期'
     Comments: 评论
     Content: 内容
-    DEFAULTABOUTCONTENT: '&lt;p&gt;您可以使用您自己的内容填充该页面，或者删除它并创建您自己的页面。&lt;br /&gt;&lt;/p&gt;'
+    DEFAULTABOUTCONTENT: '<p>您可以使用您自己的内容填充该页面，或者删除它并创建您自己的页面。<br /></p>'
     DEFAULTABOUTTITLE: '关于我们'
-    DEFAULTCONTACTCONTENT: '&lt;p&gt;您可以使用您自己的内容填充该页面，或者删除它并创建您自己的页面。&lt;br /&gt;&lt;/p&gt;'
+    DEFAULTCONTACTCONTENT: '<p>您可以使用您自己的内容填充该页面，或者删除它并创建您自己的页面。<br /></p>'
     DEFAULTCONTACTTITLE: '联络我们'
-    DEFAULTHOMECONTENT: '&lt;p&gt;欢迎来到SilverStripe！这是默认首页。您可以通过打开&lt;a href="admin/"&gt;内容管理系统&lt;/a&gt;修改该页面。您现在可以访问&lt;a href="http://doc.silverstripe.org"&gt;开发者文档&lt;/a&gt;，或者从&lt;a href="http://doc.silverstripe.org/doku.php?id=tutorials"&gt;教程&lt;/a&gt;开始。&lt;/p&gt;'
+    DEFAULTHOMECONTENT: '<p>欢迎来到SilverStripe！这是默认首页。您可以通过打开<a href="admin/">内容管理系统</a>修改该页面。您现在可以访问<a href="http://doc.silverstripe.org">开发者文档</a>，或者从<a href="http://doc.silverstripe.org/doku.php?id=tutorials">教程</a>开始。</p>'
     DEFAULTHOMETITLE: 首页
     DELETEDPAGEHELP: '页面已停止发布'
     DELETEDPAGESHORT: 已删除
