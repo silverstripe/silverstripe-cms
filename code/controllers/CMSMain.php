@@ -634,6 +634,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$form->addExtraClass('center ' . $this->BaseCSSClasses());
 			// if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 			$form->setAttribute('data-pjax-fragment', 'CurrentForm');
+			// Set validation exemptions for specific actions
+			$form->setValidationExemptActions(array('restore', 'revert', 'deletefromlive', 'rollback'));
 
 			// Announce the capability so the frontend can decide whether to allow preview or not.
 			if(in_array('CMSPreviewable', class_implements($record))) {
