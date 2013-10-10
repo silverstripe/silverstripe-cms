@@ -1978,7 +1978,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return FieldList
 	 */
 	public function getSettingsFields() {
-		$groupsMap = Group::get()->map('ID', 'Breadcrumbs')->toArray();
+		$groupsMap = array();
+		foreach(Group::get() as $group) {
+			// Listboxfield values are escaped, use ASCII char instead of &raquo;
+			$groupsMap[$group->ID] = $group->getBreadcrumbs(' > ');
+		}
 		asort($groupsMap);
 		
 		$fields = new FieldList(

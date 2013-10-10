@@ -53,7 +53,11 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	 */
 	public function getCMSFields() {
 
-		$groupsMap = Group::get()->map('ID', 'Breadcrumbs')->toArray();
+		$groupsMap = array();
+		foreach(Group::get() as $group) {
+			// Listboxfield values are escaped, use ASCII char instead of &raquo;
+			$groupsMap[$group->ID] = $group->getBreadcrumbs(' > ');
+		}
 		asort($groupsMap);
 
 		$fields = new FieldList(
