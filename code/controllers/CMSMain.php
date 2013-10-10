@@ -446,6 +446,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				}
 			}
 
+			$this->extend('updateSiteTreeHints', $def);
+
 			$json = Convert::raw2json($def);
 			$cache->save($json, $cacheKey);
 		}
