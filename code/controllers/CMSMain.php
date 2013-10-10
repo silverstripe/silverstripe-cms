@@ -202,10 +202,18 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		return $link;
 	}
 
-	public function LinkPageAdd($extraArguments = null) {
+	public function LinkPageAdd($extra = null, $placeholders = null) {
 		$link = singleton("CMSPageAddController")->Link();
 		$this->extend('updateLinkPageAdd', $link);
-		if($extraArguments) $link = Controller::join_links ($link, $extraArguments);
+
+		if($extra) {
+			$link = Controller::join_links ($link, $extra);
+		}
+
+		if($placeholders) {
+			$link .= (strpos($link, '?') === false ? "?$placeholders" : "&amp;$placeholders");
+		}
+
 		return $link;
 	}
 	
@@ -634,6 +642,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$form->addExtraClass('center ' . $this->BaseCSSClasses());
 			// if($form->Fields()->hasTabset()) $form->Fields()->findOrMakeTab('Root')->setTemplate('CMSTabSet');
 			$form->setAttribute('data-pjax-fragment', 'CurrentForm');
+			// Set validation exemptions for specific actions
+			$form->setValidationExemptActions(array('restore', 'revert', 'deletefromlive', 'rollback'));
 
 			// Announce the capability so the frontend can decide whether to allow preview or not.
 			if(in_array('CMSPreviewable', class_implements($record))) {

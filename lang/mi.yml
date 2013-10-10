@@ -5,11 +5,12 @@ mi:
     AppCategoryArchive: Puranga
     AppCategoryAudio: Ororongo
     AppCategoryDocument: Tuhinga
+    AppCategoryFlash: Kohiko
     AppCategoryImage: Atahanga
     AppCategoryVideo: Ataata
     BackToFolder: 'Hoki ki te kōpaki'
     CREATED: Rā
-    CurrentFolderOnly: 'Ka whakatiki ki te kōpaki o nāianei?'
+    CurrentFolderOnly: 'Me whakatiki ki te kōpaki o nāianei?'
     DetailsView: Ngā Taipitopito
     FILES: Ngā Kōnae
     FILESYSTEMSYNC: 'Tukutahi kōnae'
@@ -56,7 +57,7 @@ mi:
     ReasonDropdownRPBROKENLINK: 'Whārangi tuku anō e tohu ana ki te whārangi kāore i reira'
     ReasonDropdownVPBROKENLINK: 'Whārangi mariko e tohu ana ki te whārangi kāore i reira'
     RedirectorNonExistent: 'Whārangi tuku anō e tohu ana ki te whārangi kāore i reira'
-    VirtualPageNonExistent: 'Whārangi mariko e tohu ana ki te whārangi kāore i reira'
+    VirtualPageNonExistent: 'whārangi mariko e tohu ana ki te whārangi kāore i reira'
   CMSAddPageController:
     Title: 'Tāpiri whārangi'
   CMSBatchActions:
@@ -79,6 +80,8 @@ mi:
     DELETE: 'Mukua te hukihuki'
     DELETEFP: Muku
     DESCREMOVED: 'me ngā uri {count}'
+    DUPLICATED: 'I momoho te tārite i ''{title}'''
+    DUPLICATEDWITHCHILDREN: 'I momoho te tārite i ''{title}'' me ngā tamariki'
     EMAIL: Īmēra
     EditTree: 'Whakatika Rākau'
     ListFiltered: 'Rārangi kua tātaritia'
@@ -92,18 +95,23 @@ mi:
     PUBALLFUN2: "Ko te pēhi i tēnei pātene he taurite ki te haere ki ia whārangi me te pēhi i te \"whakaputaina\". Ko te tikanga, ka whakamahia tēnei pātene i muri ake i te mahi whakatikatika kua maha ngā tinihanga, pērā i te wā i hangaia tuatahi mai te pae. "
     PUBPAGES: 'Kua oti: I whakaputaina ngā whārangi {count}'
     PageAdded: 'I momoho te hanga whārangi'
+    REMOVED: 'I mukua te ''{title}''{description} i te pae ora'
     REMOVEDPAGE: 'I tango te ''{title}'' i te pae kua whakaputaina'
     REMOVEDPAGEFROMDRAFT: 'I tangohia a ''%s'' i te pae hukihuki'
     RESTORE: Whakaora
     RESTORED: 'I momoho te whakaora i te ''{title}'''
     ROLLBACK: 'Hoki whakamuri ki tēnei putanga.'
+    ROLLEDBACKPUBv2: 'I hoki ki te tauira kua whakaputaina.'
+    ROLLEDBACKVERSIONv2: 'I hoki ki te tauira #%d.'
     SAVE: tiakina
+    SAVEDRAFT: 'Tiaki hukihuki'
     TabContent: Ngā Ihirangi
     TabHistory: Hītori
     TabSettings: Ngā Tautuhinga
     TreeFiltered: 'Rākau kua tātaritia'
     TreeFilteredClear: 'Ūkui tātari'
     MENUTITLE: 'Whakatika Whārangi'
+    AddPageRestriction: 'Tuhipoka: Kāore e whakaaetia ētahi momo whārangi mō tēnei tīpakonga'
   CMSMain_left_ss:
     APPLY_FILTER: 'Hoatu Tātari'
     RESET: Tautuhi Anō
@@ -121,6 +129,7 @@ mi:
     VIEW: Tiro
     VIEWINGVERSION: 'Tiro ana i te putanga {version} ināianei.'
     MENUTITLE: Hītori
+    VIEWINGLATEST: 'Tirohia ana te tauira hou rawa ināianei.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Kaituhi
     NOTPUBLISHED: 'Kāore i whakaputaina'
@@ -153,6 +162,7 @@ mi:
   ContentController:
     ARCHIVEDSITE: 'Putanga Arokite'
     ARCHIVEDSITEFROM: 'Pae putumōhio mai i'
+    CMS: CMS
     DRAFTSITE: 'Pae Hukihuki'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Me takiuru mā tō kupuhipa CMS hei tiro i te hukihuki, ngā ihirangi putumōhio rānei.  <a href="%s">Pāwhiri ki konei kia hoki ki te pae kua whakaputaina.</a>'
     Email: Īmēra
@@ -167,6 +177,7 @@ mi:
     PUBLISHEDSITE: 'Pae Kua Whakaputaina'
     Password: Kupuhipa
     PostInstallTutorialIntro: 'He tauira rūnā tēnei paetukutuku o tētahi paetukutuku SilverStripe 3. Hei toro i tēnei, tirohia te {link}'
+    StartEditing: 'Ka taea te tīmata ki te whakatika i ō ihirangi mā te whakatuwhera i <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'Kāore i taea te muku i ngā kōnae tāuta. Mukua ā-ringa ngā kōnae kei raro'
     VIEWPAGEIN: 'Tiro Whārangi i'
     DRAFT: Hukihuki
@@ -255,6 +266,7 @@ mi:
     ParameterLiveCheckbox: 'Tirohia te pae ora'
     REPEMPTY: 'Kua piako te pūrongo {title}.'
   SilverStripeNavigatorLink:
+    ShareInstructions: 'Hei tiritiri i tēnei whārangi, tāruatia ka whakapiri i te hono kei raro.'
     ShareLink: 'Tiritiri hono'
   SilverStripeNavigatorLinkl:
     CloseLink: Kati
@@ -317,10 +329,13 @@ mi:
     LINKCHANGENOTE: 'Mā te huri i te hono o tēnei whārangi ka pāngia ngā hono o ngā whārangi tamariki katoa.'
     MENUTITLE: 'Tapanga whakatere'
     METADESC: 'Whakaahuatanga Meta'
+    METADESCHELP: 'Ka whakamahi ngā pūrere rapu i ēnei ihirangi ki te whakaatu huanga rapu (ahakoa kāore ngā whakatauranga e whakaawetia).'
     METAEXTRA: 'Ngā Tūtohu Meta Ritenga'
+    METAEXTRAHELP: 'Ngā tūtohu HTML mō ngā mōhiohio meta tāpiri. Hei tauira &lt;ingoa meta="customName" ihirangi="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'He huringa kāore anō kia whakaputaina ō te whārangi'
     MODIFIEDONDRAFTSHORT: Kua Whakakētia
     MetadataToggle: Raraungameta
+    OBSOLETECLASS: 'Nō te momo tawhito rawa {type} tēnei whārangi. Mā te tiaki ka tautuhia anō tōna momo, ka ngaro pea i a koe he raraunga'
     PAGELOCATION: 'Tauwāhi'
     PAGETITLE: 'Ingoa whārangi'
     PAGETYPE: 'Tūmomo wharangi '
@@ -349,6 +364,7 @@ mi:
     URLSegment: 'Wāhanga PRO'
     VIEWERGROUPS: 'Ngā Ropū Kaitirotiro'
     VIEW_ALL_DESCRIPTION: 'Tirohia tētahi whārangi'
+    VIEW_ALL_HELP: 'Te āhei ki te tiro i tētahi whārangi i te pae, ahakoa ngā tautuhinga i te ripa Uru. Ka hiahia i te whakaaetanga "wāhanga Uru ki ''Ngā Whārangi''"'
     VIEW_DRAFT_CONTENT: 'Tirohia ngā ihirangi hukihuki'
     VIEW_DRAFT_CONTENT_HELP: 'Ka hāngai ki te tiro whārangi i waho i te CMS i te aratau hukihuki. He whaihua mā ngā kaimahitahi kāore i a rātou te āhei CMS.'
     Viewers: 'Ngā Rōpū Kaitirotiro'
@@ -359,9 +375,14 @@ mi:
     many_many_LinkTracking: 'Taki Hono'
     BUTTONPUBLISHED: I whakaputaina
     BUTTONSAVED: Kua Tiakina
+    GroupPlaceholder: 'Pāwhiri ki te tīpako rōpū'
+    LASTPUBLISHED: 'Whakaputanga hou rawa'
+    LASTSAVED: 'Tiakinga hou rawa'
     MoreOptions: 'He kōwhiringa anō'
+    NOTPUBLISHED: 'Kāore i whakaputaina'
   SiteTreeURLSegmentField:
     HelpChars: 'Ka tahuri aunoatia, ka tangohia rānei ngā pūāhua motuhake'
+    EMPTY: 'Tāurua he Wāhanga PRO, ka pāwhiri whakakore rānei'
   StaticExporter:
     BASEURL: 'PRO Matua'
     EXPORTTO: 'Kaweake ki tēnā kōpaki'
@@ -386,12 +407,15 @@ mi:
     CANACCESS: 'Ka taea te uru ki te pae putumōhio mā tēnei hononga'
     HAVEASKED: 'Kua tono mai kia tirohia e koe ngā ihirangi o tā mātou pae i'
   VirtualPage:
+    CHOOSE: 'Whārangi kua honoa'
     DESCRIPTION: 'Ka whakaatu i ngā ihirangi o tētahi atu whārangi'
+    EDITCONTENT: 'Whakatika ihirangi ki te whārangi kua honoa'
     HEADER: 'He whārangi mariko tēnei'
     PLURALNAME: 'Ngā Whārangi Mariko'
     PageTypNotAllowedOnRoot: 'Kāore e whakaaetia te momo whārangi taketake "{type}" i te taumata pūtake o tēnei whārangi mariko'
     SINGULARNAME: 'Whārangi Mariko'
     EditLink: Whakatika
+    HEADERWITHLINK: 'He whārangi mariko tēnei e tārua ihirangi ana i "{title}" ({link})'
   CMSFileAddController:
     MENUTITLE: Ngā Kōnae
   CMSPageEditController:
@@ -400,6 +424,13 @@ mi:
     MENUTITLE: 'Whakatika Whārangi'
   CMSSettingsController:
     MENUTITLE: Ngā Tautuhinga
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Whakaputaina te whārangi kua honoa kia whakaputa ai i te whārangi mariko'
+    VIRTUALPAGEWARNING: 'Kōwhiria he whārangi kua honoa kātahi anō ka tiaki kia whakaputa ai i tēnei whārangi'
+    VIRTUALPAGEWARNINGSETTINGS: 'Kōwhiria he whārangi kua honoa i ngā āpure ihirangi matua kia whakaputa ai'
+  SilverStripeNavigator:
+    ARCHIVED: I putumōhiotia
   URLSegmentField:
     Cancel: Whakakore
     Edit: Whakatika
+    OK: ĀE
