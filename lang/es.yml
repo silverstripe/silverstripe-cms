@@ -102,6 +102,7 @@ es:
     RESTORED: 'Restablecido ''{title}'' correctamente'
     ROLLBACK: 'Restaurar esta versión'
     ROLLEDBACKPUBv2: 'Restaurado'
+    ROLLEDBACKVERSIONv2: 'Versión #%d restaurada'
     SAVE: Guardar
     SAVEDRAFT: 'Guardar borrador'
     TabContent: Contenido
@@ -296,6 +297,7 @@ es:
     APPEARSVIRTUALPAGES: 'Este contenido también aparece en las páginas virtuales en las secciones {title}.'
     BUTTONCANCELDRAFT: 'Cancelar los cambios en el borrador'
     BUTTONCANCELDRAFTDESC: 'Elimine el borrador y regrese a la página que se encuentra publicada actualmente'
+    BUTTONSAVEPUBLISH: 'Guardar y publicar'
     BUTTONUNPUBLISH: Sin Publicar
     BUTTONUNPUBLISHDESC: 'Elimine esta página del sitio publicado'
     CREATED: 'Fecha de creación'
@@ -310,6 +312,7 @@ es:
     DELETEDPAGEHELP: 'La página ya no está publicada'
     DELETEDPAGESHORT: Borrado
     DEPENDENT_NOTE: 'Las siguientes páginas dependen de esta página. Esto incluye páginas virtuales, páginas de redireccionamiento, y las páginas con enlaces de contenido.'
+    DESCRIPTION: 'Página genérica de contenido'
     DependtPageColumnLinkType: 'Tipo de enlace'
     DependtPageColumnURL: Depende de
     EDITANYONE: 'Cualquiera que pueda iniciar sesión en el CMS'

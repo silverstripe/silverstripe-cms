@@ -307,7 +307,7 @@ ar:
     DEFAULTABOUTTITLE: 'حول'
     DEFAULTCONTACTCONTENT: '<p>يمكنك ملء هذه الصفحة بمحتوى خاص بك أو حذفها و إنشاء صفحات جديدة خاصة بك<br /></p>'
     DEFAULTCONTACTTITLE: 'اتصل بنا'
-    DEFAULTHOMECONTENT: '<p>أهلاً بك في  SilverStripe! هذه هي الصفحة الرئيسة.يمكنك تعديل الصفحة عن طريق  <a href="admin/">نظام إدارة المحتوى</a>.يمكنك الآن الدخول إلى  <a href="http://doc.silverstripe.com">مستندات المطورين</a>, أو الدخول إلى  <a href="http://doc.silverstripe.com/doku.php?id=tutorials">الدروس التعليمية.</a></p>'
+    DEFAULTHOMECONTENT: '<p>أهلاً بك في  SilverStripe!<br />هذه هي الصفحة الرئيسة.يمكنك تعديل الصفحة عن طريق  <a href="admin/">نظام إدارة المحتوى</a>.يمكنك الآن الدخول إلى  <a href="http://doc.silverstripe.com">مستندات المطورين</a>, أو الدخول إلى  <a href="http://doc.silverstripe.com/doku.php?id=tutorials">الدروس التعليمية.</a></p>'
     DEFAULTHOMETITLE: الرئيسة
     DELETEDPAGEHELP: 'لم تعد الصفحة المنشورة'
     DELETEDPAGESHORT: المحذوف

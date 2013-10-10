@@ -81,7 +81,7 @@ nl:
     DELETEFP: Verwijder van de gepubliceerde webpagina
     DESCREMOVED: 'en {count} onderliggende'
     DUPLICATED: '''{title}'' succesvol gedupliceerd'
-    DUPLICATEDWITHCHILDREN: '''{title}'' en kinderen succesvol gedupliceerd'
+    DUPLICATEDWITHCHILDREN: '''{title}'' en onderliggende items succesvol gedupliceerd'
     EMAIL: Email
     EditTree: 'Menu indelen'
     ListFiltered: 'Gefilterde lijst'
@@ -149,7 +149,7 @@ nl:
   CMSSearch:
     FILTERDATEFROM: Van
     FILTERDATEHEADING: Datum
-    FILTERDATETO: Aan
+    FILTERDATETO: Tot
     FILTERLABELTEXT: Inhoud
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Gewijzigde pagina''s'
