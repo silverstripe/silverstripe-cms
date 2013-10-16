@@ -4,7 +4,13 @@ php:
   - 5.3
 
 env:
-  - DB=MYSQL CORE_RELEASE=3.1
+  global:
+    - "ARTIFACTS_AWS_REGION=us-east-1"
+    - "ARTIFACTS_S3_BUCKET=silverstripe-travis-artifacts"
+    - secure: "7V20Qk3bIG2AlTJaA5D/uzB8vUVvRwQp+xjRYUxlahtj9FcuqEV3HIyjwwJe0T6Z1bnRYuu28ZnCT2CfP9BBZ3FE7AwSZbPase9c0/at2qDJNqkvIdC1xZ1H6Fcy2LSwNB9wLQPe613ItVdanitEuwE41iowxBPslxUUTnwx7eY="
+    - secure: "f/GWlbnNri2YpCOrJfZl7tkhpMmcRVUbCdmb+beAY90gFBJQPHtljzf8M4KaCP0OkLOtRFuGoMFdIcpadl4J6IG1XP18IJNz+nKzCL/sJj/FF9y77RdMHWE9jr21G9ar5tywkn7JM6vrnTCY89OnHeQx67SKvxqX5CpVx+rdcEU="
+  matrix:
+    - DB=MYSQL CORE_RELEASE=3.1
 
 matrix:
   include:
@@ -16,22 +22,31 @@ matrix:
       env: DB=MYSQL CORE_RELEASE=3.1
     - php: 5.5
       env: DB=MYSQL CORE_RELEASE=3.1
+    - php: 5.4
+      env: DB=MYSQL CORE_RELEASE=3.1 BEHAT_TEST=1
 
 before_script:
+ - composer self-update
+ - phpenv rehash
  - git clone git://github.com/silverstripe-labs/silverstripe-travis-support.git ~/travis-support
- - php ~/travis-support/travis_setup.php --source `pwd` --target ~/builds/ss
+ - "if [ \"$BEHAT_TEST\" = \"\" ]; then php ~/travis-support/travis_setup.php --source `pwd` --target ~/builds/ss; fi"
+ - "if [ \"$BEHAT_TEST\" = \"1\" ]; then php ~/travis-support/travis_setup.php --source `pwd` --target ~/builds/ss --require silverstripe/behat-extension; fi"
  - cd ~/builds/ss
+ - php ~/travis-support/travis_setup_selenium.php --if-env BEHAT_TEST
+ - php ~/travis-support/travis_setup_php54_webserver.php --if-env BEHAT_TEST
 
 script: 
- - phpunit cms/tests/
+ - "if [ \"$BEHAT_TEST\" = \"\" ]; then phpunit cms/tests; fi"
+ - "if [ \"$BEHAT_TEST\" = \"1\" ]; then vendor/bin/behat @cms; fi"
+
+after_failure:
+ - php ~/travis-support/travis_upload_artifacts.php --if-env BEHAT_TEST,ARTIFACTS_AWS_SECRET_ACCESS_KEY --target-path $TRAVIS_REPO_SLUG/$TRAVIS_BUILD_ID/$TRAVIS_JOB_ID --artifacts-base-url https://s3.amazonaws.com/$ARTIFACTS_S3_BUCKET/
 
 branches:
   except:
     - 2.1
     - 2.2
     - 2.3
-    - 2.4
-    - post-2.4
     - translation-staging
 
 notifications:
