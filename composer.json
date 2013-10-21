@@ -15,7 +15,7 @@
 		"silverstripe/iframe": "dev-master#70ba4c6c39412676338220415dbf31709bb4e8e7",
 		"silverstripe/queuedjobs": "dev-master#064d4ea8e2cd637ccf31b92fb1c08b347b441157",
 		"silverstripe/multivaluefield": "dev-master#f3accee1b7040954b170aeb704de27cd062033c9",
-		"silverstripe/registry": "dev-master#277faf646c90d629124a27c5a6f622a41086b48a",
+		"silverstripe/registry": "dev-master#60d2b9eb6e4e492044741f40ff047b27dfaaf63c",
 		"silverstripe/restfulserver": "dev-master#db4a70673b593c643323ed0411afb90eafa71bc6",
 		"silverstripe/subsites": "dev-master#fc07486f9bda9f075abd736eb59c3f1f409ffe29",
 		"silverstripe/translatable": "dev-master#522dff2487c009b63ebf49d40b90224a7ca23671",

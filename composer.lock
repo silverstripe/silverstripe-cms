@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "a842c23207c6950825c86acc849abe2b",
+    "hash": "38b4fb50e13bf7cb4010a51f23b87f0b",
     "packages": [
         {
             "name": "composer/installers",
@@ -486,12 +486,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-registry.git",
-                "reference": "277faf646c90d629124a27c5a6f622a41086b48a"
+                "reference": "60d2b9eb6e4e492044741f40ff047b27dfaaf63c"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-registry/zipball/60d2b9eb6e4e492044741f40ff047b27dfaaf63c",
-                "reference": "277faf646c90d629124a27c5a6f622a41086b48a",
+                "reference": "60d2b9eb6e4e492044741f40ff047b27dfaaf63c",
                 "shasum": ""
             },
             "require": {
@@ -519,7 +519,7 @@
             "keywords": [
                 "silverstripe"
             ],
-            "time": "2013-09-16 01:57:23"
+            "time": "2013-10-21 23:08:22"
         },
         {
             "name": "silverstripe/restfulserver",
