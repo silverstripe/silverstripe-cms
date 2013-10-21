@@ -490,7 +490,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-registry/zipball/277faf646c90d629124a27c5a6f622a41086b48a",
+                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-registry/zipball/60d2b9eb6e4e492044741f40ff047b27dfaaf63c",
                 "reference": "277faf646c90d629124a27c5a6f622a41086b48a",
                 "shasum": ""
             },
@@ -638,7 +638,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-translatable/zipball/522dff2487c009b63ebf49d40b90224a7ca23671",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-translatable/zipball/03311b4d00348e946be854e9b2b71690b5fabea5",
                 "reference": "522dff2487c009b63ebf49d40b90224a7ca23671",
                 "shasum": ""
             },
