@@ -4,7 +4,7 @@
 	"require": {
 		"php": ">=5.3.2",
 		"cwp/cwp": "dev-master#77c0d895f64020d432932de42a4c341ef20d2c57",
-		"cwp/cwp-core": "dev-master#32bd519378638c92e0e73672669315e5f5c7756f",
+		"cwp/cwp-core": "dev-master#e5216a43bb4e7177e73a8a3766e0de417f870f9c",
 		"cwp-themes/default": "dev-master#dea3863eaafb365ed74eeb14113d2bdbfb2ef6c5",
 		"silverstripe/cms": "3.1.1",
 		"silverstripe/framework": "3.1.1",

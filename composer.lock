@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "38b4fb50e13bf7cb4010a51f23b87f0b",
+    "hash": "2c24793a5b7ceef32a789cfe8c04d874",
     "packages": [
         {
             "name": "composer/installers",
@@ -124,7 +124,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp-core.git",
-                "reference": "32bd519378638c92e0e73672669315e5f5c7756f"
+                "reference": "e5216a43bb4e7177e73a8a3766e0de417f870f9c"
             },
             "require": {
                 "composer/installers": "*",
@@ -133,7 +133,7 @@
             },
             "type": "silverstripe-module",
             "description": "CWP basic compatibility module. Use for migrations.",
-            "time": "2013-10-01 02:51:47"
+            "time": "2013-10-22 02:55:47"
         },
         {
             "name": "silverstripe-themes/module_bootstrap",
