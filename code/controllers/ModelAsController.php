@@ -16,9 +16,16 @@ class ModelAsController extends Controller implements NestedController {
 	 * @param string $action
 	 * @return ContentController
 	 */
-	static public function controller_for(SiteTree $sitetree, $action = null) {
-		if($sitetree->class == 'SiteTree') $controller = "ContentController";
-		else $controller = "{$sitetree->class}_Controller";
+	public static function controller_for(SiteTree $sitetree, $action = null) {
+		if ($sitetree->class == 'SiteTree') {
+			$controller = "ContentController";
+		} else {
+			$ancestry = ClassInfo::ancestry($sitetree->class);
+			while ($class = array_pop($ancestry)) {
+				if (class_exists($class . "_Controller")) break;
+			}
+			$controller = ($class !== null) ? "{$class}_Controller" : "ContentController";
+		}
 
 		if($action && class_exists($controller . '_' . ucfirst($action))) {
 			$controller = $controller . '_' . ucfirst($action);
