@@ -22,7 +22,7 @@
 		"silverstripe/taxonomy": "dev-master#8758791f73756be729533ab32997acc1ca072dae",
 		"silverstripe/userforms": "dev-master#d3e4b8a5e8aea388745214ebaa5c61588edf65ed",
 		"silverstripe/versionedfiles": "dev-master#dccd557494c479a20d179941cbaecb22ab9abe0a",
-		"silverstripe/versionfeed": "1.0.0",
+		"silverstripe/versionfeed": "1.0.1",
 		"undefinedoffset/sortablegridfield": "dev-master#479325a5bc29501b4287fb13c1516a3c88c38879"
 	},
 	"require-dev": {

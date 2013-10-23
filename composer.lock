@@ -747,16 +747,16 @@
         },
         {
             "name": "silverstripe/versionfeed",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-versionfeed.git",
-                "reference": "d1dcd2bf3cb189fbb8eaa0924a50a42fe5a04e18"
+                "reference": "3a13a46a2d5d6cc4dda15dc1d645eeff762531e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-versionfeed/zipball/d1dcd2bf3cb189fbb8eaa0924a50a42fe5a04e18",
-                "reference": "d1dcd2bf3cb189fbb8eaa0924a50a42fe5a04e18",
+                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-versionfeed/zipball/3a13a46a2d5d6cc4dda15dc1d645eeff762531e5",
+                "reference": "3a13a46a2d5d6cc4dda15dc1d645eeff762531e5",
                 "shasum": ""
             },
             "require": {
