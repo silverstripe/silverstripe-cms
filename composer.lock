@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "2c24793a5b7ceef32a789cfe8c04d874",
+    "hash": "f8a6d6767d3cbd8f69c97eeed394bdcc",
     "packages": [
         {
             "name": "composer/installers",
@@ -173,7 +173,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-australia/advancedworkflow/zipball/e040a567ffa46bf9447408cd4d40dff0761b7e66",
+                "url": "https://api.github.com/repos/silverstripe-australia/advancedworkflow/zipball/09ddfb34cce017e7ab8607af20620c1df8bed6c6",
                 "reference": "e040a567ffa46bf9447408cd4d40dff0761b7e66",
                 "shasum": ""
             },
@@ -390,7 +390,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-iframe/zipball/70ba4c6c39412676338220415dbf31709bb4e8e7",
+                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-iframe/zipball/8df573c99a15f87058788f0eff135d727075bb30",
                 "reference": "70ba4c6c39412676338220415dbf31709bb4e8e7",
                 "shasum": ""
             },
@@ -425,7 +425,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nyeholt/silverstripe-multivaluefield/zipball/f3accee1b7040954b170aeb704de27cd062033c9",
+                "url": "https://api.github.com/repos/nyeholt/silverstripe-multivaluefield/zipball/367fa4c367916523c65b1b8e6933bdac545f66e4",
                 "reference": "f3accee1b7040954b170aeb704de27cd062033c9",
                 "shasum": ""
             },
@@ -456,14 +456,22 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://gitlab.cwp.govt.nz/silverstripe/queuedjobs.git",
-                "reference": "064d4ea8e2cd637ccf31b92fb1c08b347b441157"
+                "url": "https://github.com/nyeholt/silverstripe-queuedjobs.git",
+                "reference": "c12b200d6c6d42aa4316e1826a53ba5a2fdf5416"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nyeholt/silverstripe-queuedjobs/zipball/c12b200d6c6d42aa4316e1826a53ba5a2fdf5416",
+                "reference": "c12b200d6c6d42aa4316e1826a53ba5a2fdf5416",
+                "shasum": ""
             },
             "require": {
-                "silverstripe/cms": ">=3.0.0",
+                "silverstripe/cms": "~3.0",
+                "silverstripe/framework": "~3.0",
                 "silverstripe/multivaluefield": "dev-master"
             },
             "type": "silverstripe-module",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -478,7 +486,7 @@
                 "jobs",
                 "silverstripe"
             ],
-            "time": "2013-07-25 02:30:40"
+            "time": "2013-09-16 07:03:57"
         },
         {
             "name": "silverstripe/registry",
@@ -490,7 +498,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-registry/zipball/60d2b9eb6e4e492044741f40ff047b27dfaaf63c",
+                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-registry/zipball/9e4adc3fc169d86d46b2a8bbcd9b82ff62c53439",
                 "reference": "60d2b9eb6e4e492044741f40ff047b27dfaaf63c",
                 "shasum": ""
             },
@@ -509,10 +517,6 @@
                     "email": "sean@silverstripe.com",
                     "homepage": "http://www.silverstripe.com",
                     "role": "Developer"
-                },
-                {
-                    "name": "Robert Curry",
-                    "email": "robert@silverstripe.com"
                 }
             ],
             "description": "Provide search and export interfaces for datasets.",
@@ -565,12 +569,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-subsites.git",
-                "reference": "fc07486f9bda9f075abd736eb59c3f1f409ffe29"
+                "reference": "c0e6d1ad3835b56f5006e85ae02d16699fb9a0d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-subsites/zipball/fc07486f9bda9f075abd736eb59c3f1f409ffe29",
-                "reference": "fc07486f9bda9f075abd736eb59c3f1f409ffe29",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-subsites/zipball/c0e6d1ad3835b56f5006e85ae02d16699fb9a0d5",
+                "reference": "c0e6d1ad3835b56f5006e85ae02d16699fb9a0d5",
                 "shasum": ""
             },
             "require": {
@@ -591,7 +595,7 @@
                 "silverstripe",
                 "subsites"
             ],
-            "time": "2013-09-12 04:15:04"
+            "time": "2013-10-22 23:50:55"
         },
         {
             "name": "silverstripe/taxonomy",
@@ -792,7 +796,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/UndefinedOffset/SortableGridField/zipball/56b496509f5d029aba9700f8b66324b5135686f3",
+                "url": "https://api.github.com/repos/UndefinedOffset/SortableGridField/zipball/e3895cc5efeb1ab76bfefb48fb3e8803ba8b38e6",
                 "reference": "479325a5bc29501b4287fb13c1516a3c88c38879",
                 "shasum": ""
             },

@@ -3,27 +3,27 @@
 	"description": "CWP basic recipe",
 	"require": {
 		"php": ">=5.3.2",
-		"cwp/cwp": "dev-master#77c0d895f64020d432932de42a4c341ef20d2c57",
-		"cwp/cwp-core": "dev-master#e5216a43bb4e7177e73a8a3766e0de417f870f9c",
-		"cwp-themes/default": "dev-master#dea3863eaafb365ed74eeb14113d2bdbfb2ef6c5",
+		"cwp/cwp": "dev-master",
+		"cwp/cwp-core": "dev-master",
+		"cwp-themes/default": "dev-master",
 		"silverstripe/cms": "3.1.1",
 		"silverstripe/framework": "3.1.1",
-		"silverstripe/advancedworkflow": "dev-master#e040a567ffa46bf9447408cd4d40dff0761b7e66",
-		"silverstripe/documentconverter": "dev-master#ba21253ccb0f0e49a443f94e3aa9b1c0c03311db",
-		"silverstripe/fulltextsearch": "dev-master#7dd8d888cff298f2911a033b960fd137a19b0287",
-		"silverstripe/html5": "dev-master#54fc0b86efbfc571293c75862991923c78a7f1f8",
-		"silverstripe/iframe": "dev-master#70ba4c6c39412676338220415dbf31709bb4e8e7",
-		"silverstripe/queuedjobs": "dev-master#064d4ea8e2cd637ccf31b92fb1c08b347b441157",
-		"silverstripe/multivaluefield": "dev-master#f3accee1b7040954b170aeb704de27cd062033c9",
-		"silverstripe/registry": "dev-master#60d2b9eb6e4e492044741f40ff047b27dfaaf63c",
-		"silverstripe/restfulserver": "dev-master#db4a70673b593c643323ed0411afb90eafa71bc6",
-		"silverstripe/subsites": "dev-master#fc07486f9bda9f075abd736eb59c3f1f409ffe29",
-		"silverstripe/translatable": "dev-master#522dff2487c009b63ebf49d40b90224a7ca23671",
-		"silverstripe/taxonomy": "dev-master#8758791f73756be729533ab32997acc1ca072dae",
-		"silverstripe/userforms": "dev-master#d3e4b8a5e8aea388745214ebaa5c61588edf65ed",
-		"silverstripe/versionedfiles": "dev-master#dccd557494c479a20d179941cbaecb22ab9abe0a",
+		"silverstripe/advancedworkflow": "dev-master",
+		"silverstripe/documentconverter": "dev-master",
+		"silverstripe/fulltextsearch": "dev-master",
+		"silverstripe/html5": "dev-master",
+		"silverstripe/iframe": "dev-master",
+		"silverstripe/queuedjobs": "dev-master",
+		"silverstripe/multivaluefield": "dev-master",
+		"silverstripe/registry": "dev-master",
+		"silverstripe/restfulserver": "dev-master",
+		"silverstripe/subsites": "dev-master",
+		"silverstripe/translatable": "dev-master",
+		"silverstripe/taxonomy": "dev-master",
+		"silverstripe/userforms": "dev-master",
+		"silverstripe/versionedfiles": "dev-master",
 		"silverstripe/versionfeed": "1.0.0",
-		"undefinedoffset/sortablegridfield": "dev-master#479325a5bc29501b4287fb13c1516a3c88c38879"
+		"undefinedoffset/sortablegridfield": "dev-master"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "3.7.*@stable"
@@ -43,10 +43,6 @@
 		{
 			"type": "vcs",
 			"url": "https://gitlab.cwp.govt.nz/cwp-themes/default.git"
-		},
-		{
-			"type": "vcs",
-			"url": "https://gitlab.cwp.govt.nz/silverstripe/queuedjobs.git"
 		},
 		{
 			"type": "vcs",
