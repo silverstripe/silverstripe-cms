@@ -55,6 +55,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 		
 		parent::init();
+
+		Versioned::reading_stage("Stage");
 		
 		Requirements::css(CMS_DIR . '/css/screen.css');
 		Requirements::customCSS($this->generatePageIconsCss());
@@ -790,6 +792,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function currentPageID() {
 		$id = parent::currentPageID();
 		
+		$this->extend('updateCurrentPageID', $id);
+
 		// Fall back to homepage record
 		if(!$id) {
 			$homepageSegment = RootURLController::get_homepage_link();
