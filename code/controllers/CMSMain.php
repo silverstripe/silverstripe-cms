@@ -55,6 +55,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		}
 		
 		parent::init();
+
+		Versioned::reading_stage("Stage");
 		
 		Requirements::css(CMS_DIR . '/css/screen.css');
 		Requirements::customCSS($this->generatePageIconsCss());
