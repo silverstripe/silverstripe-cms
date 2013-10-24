@@ -22,7 +22,7 @@
 		"silverstripe/taxonomy": "dev-master",
 		"silverstripe/userforms": "dev-master",
 		"silverstripe/versionedfiles": "dev-master",
-		"silverstripe/versionfeed": "1.0.0",
+		"silverstripe/versionfeed": "1.0.1",
 		"undefinedoffset/sortablegridfield": "dev-master"
 	},
 	"require-dev": {

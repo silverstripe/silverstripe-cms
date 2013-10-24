@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "f8a6d6767d3cbd8f69c97eeed394bdcc",
+    "hash": "9d95e1b5ca1147582dc61c62cee3a927",
     "packages": [
         {
             "name": "composer/installers",
@@ -751,16 +751,16 @@
         },
         {
             "name": "silverstripe/versionfeed",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-versionfeed.git",
-                "reference": "d1dcd2bf3cb189fbb8eaa0924a50a42fe5a04e18"
+                "reference": "3a13a46a2d5d6cc4dda15dc1d645eeff762531e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-versionfeed/zipball/d1dcd2bf3cb189fbb8eaa0924a50a42fe5a04e18",
-                "reference": "d1dcd2bf3cb189fbb8eaa0924a50a42fe5a04e18",
+                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-versionfeed/zipball/3a13a46a2d5d6cc4dda15dc1d645eeff762531e5",
+                "reference": "3a13a46a2d5d6cc4dda15dc1d645eeff762531e5",
                 "shasum": ""
             },
             "require": {
@@ -784,7 +784,7 @@
                 "rss",
                 "silverstripe"
             ],
-            "time": "2013-09-02 09:43:18"
+            "time": "2013-10-23 21:15:22"
         },
         {
             "name": "undefinedoffset/sortablegridfield",
