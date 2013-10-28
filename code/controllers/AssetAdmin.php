@@ -1,7 +1,7 @@
 <?php
 /**
  * AssetAdmin is the 'file store' section of the CMS.
- * It provides an interface for maniupating the File and Folder objects in the system.
+ * It provides an interface for manipulating the File and Folder objects in the system.
  * 
  * @package cms
  * @subpackage assets
