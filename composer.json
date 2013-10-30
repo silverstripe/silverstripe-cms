@@ -33,24 +33,8 @@
 	},
 	"repositories": [
 		{
-			"type": "vcs",
-			"url": "https://gitlab.cwp.govt.nz/cwp/cwp.git"
-		},
-		{
-			"type": "vcs",
-			"url": "https://gitlab.cwp.govt.nz/cwp/cwp-core.git"
-		},
-		{
-			"type": "vcs",
-			"url": "https://gitlab.cwp.govt.nz/cwp-themes/default.git"
-		},
-		{
-			"type": "vcs",
-			"url": "https://gitlab.cwp.govt.nz/silverstripe/silverstripe-versionedfiles.git"
-		},
-		{
-			"type": "vcs",
-			"url": "https://gitlab.cwp.govt.nz/silverstripe/documentconverter.git"
+			"type": "composer",
+			"url": "https://packages.cwp.govt.nz/"
 		}
 	],
 	"minimum-stability": "dev"
