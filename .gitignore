@@ -15,6 +15,7 @@ buildtools/
 cms/
 cwp/
 cwp-core/
+cwp-recipe-basic/
 docsviewer/
 documentconverter/
 framework/
