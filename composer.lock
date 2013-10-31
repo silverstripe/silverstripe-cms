@@ -108,7 +108,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp.git",
-                "reference": "77c0d895f64020d432932de42a4c341ef20d2c57"
+                "reference": "80fd38ac5ba9941fca8c441c318393bfb5272be5"
             },
             "require": {
                 "cwp/cwp-core": "*",
@@ -116,7 +116,7 @@
             },
             "type": "silverstripe-module",
             "description": "CWP features module. We strongly recommend using it for all new sites. Future features will be delivered here.",
-            "time": "2013-09-04 01:01:05"
+            "time": "2013-10-30 00:46:09"
         },
         {
             "name": "cwp/cwp-core",
@@ -124,7 +124,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp-core.git",
-                "reference": "e5216a43bb4e7177e73a8a3766e0de417f870f9c"
+                "reference": "d87313c92077ff4e71915b45583921f8ec9a416b"
             },
             "require": {
                 "composer/installers": "*",
@@ -133,7 +133,7 @@
             },
             "type": "silverstripe-module",
             "description": "CWP basic compatibility module. Use for migrations.",
-            "time": "2013-10-22 02:55:47"
+            "time": "2013-10-24 21:37:17"
         },
         {
             "name": "silverstripe-themes/module_bootstrap",
@@ -169,12 +169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-australia/advancedworkflow.git",
-                "reference": "e040a567ffa46bf9447408cd4d40dff0761b7e66"
+                "reference": "9af18ee5d47b31be8a81f3ce9cf2b2428f026c67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-australia/advancedworkflow/zipball/09ddfb34cce017e7ab8607af20620c1df8bed6c6",
-                "reference": "e040a567ffa46bf9447408cd4d40dff0761b7e66",
+                "url": "https://api.github.com/repos/silverstripe-australia/advancedworkflow/zipball/9af18ee5d47b31be8a81f3ce9cf2b2428f026c67",
+                "reference": "9af18ee5d47b31be8a81f3ce9cf2b2428f026c67",
                 "shasum": ""
             },
             "require": {
@@ -201,7 +201,7 @@
                 "silverstripe",
                 "workflow"
             ],
-            "time": "2013-10-08 03:11:50"
+            "time": "2013-10-29 23:02:10"
         },
         {
             "name": "silverstripe/cms",
