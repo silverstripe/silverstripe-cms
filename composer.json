@@ -1,6 +1,6 @@
 {
-	"name": "cwp/recipe-basic",
-	"description": "CWP basic recipe",
+	"name": "cwp/cwp-installer",
+	"description": "CWP Project Template",
 	"require": {
 		"cwp/cwp-recipe-basic": "dev-master"
 	},
