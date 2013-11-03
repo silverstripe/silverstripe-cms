@@ -10,4 +10,5 @@ SSViewer:
   theme: 'default'
 MySQLDatabase:
   connection_charset: 'utf8'
-
+LeftAndMain:
+  help_link: "https://www.cwp.govt.nz/user-help/"
