@@ -4,6 +4,9 @@
 	"require": {
 		"cwp/cwp-recipe-basic": "dev-master"
 	},
+	"require-dev": {
+		"cwp/cwp-recipe-basic-dev": "dev-master"
+	},
 	"config": {
 		"process-timeout": 900
 	},

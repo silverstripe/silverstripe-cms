@@ -16,6 +16,7 @@ cms/
 cwp/
 cwp-core/
 cwp-recipe-basic/
+cwp-recipe-basic-dev/
 docsviewer/
 documentconverter/
 framework/
