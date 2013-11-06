@@ -22,6 +22,8 @@ class ContentController extends Controller {
 
 	protected $dataRecord;
 
+	private static $extensions = array('OldPageRedirector');
+
 	private static $allowed_actions = array(
 		'successfullyinstalled',
 		'deleteinstallfiles', // secured through custom code
@@ -168,31 +170,6 @@ class ContentController extends Controller {
 				'URLSegment' => rawurlencode($action)
 			))->first();
 			if(class_exists('Translatable')) Translatable::enable_locale_filter();
-			
-			// if we can't find a page with this URLSegment try to find one that used to have 
-			// that URLSegment but changed. See ModelAsController->getNestedController() for similiar logic.
-			if(!$child){
-				$child = ModelAsController::find_old_page($action,$this->ID);
-				if($child){
-					$response = new SS_HTTPResponse();
-					$params = $request->getVars();
-					if(isset($params['url'])) unset($params['url']);
-					$response->redirect(
-						Controller::join_links(
-							$child->Link(
-								Controller::join_links(
-									$request->param('ID'), // 'ID' is the new 'URLSegment', everything shifts up one position
-									$request->param('OtherID')
-								)
-							),
-							// Needs to be in separate join links to avoid urlencoding
-							($params) ? '?' . http_build_query($params) : null
-						),
-						301
-					);
-					return $response;
-				}
-			}
 		}
 		
 		// we found a page with this URLSegment.
