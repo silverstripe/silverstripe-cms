@@ -104,15 +104,6 @@ pt_BR:
     many_many_BackLinkTracking: 'Gerenciar Backlink '
     many_many_ImageTracking: 'Gerenciar Imagem'
     many_many_LinkTracking: 'Gerenciar Link'
-  StaticExporter:
-    BASEURL: 'URL Base'
-    EXPORTTO: 'Exportar para a pasta'
-    NAME: 'Relatório estático'
-  TableListField_PageControls_ss:
-    VIEWFIRST: 'Ver primeiro'
-    VIEWLAST: 'Ver ultimo'
-    VIEWNEXT: 'Ver próximo'
-    VIEWPREVIOUS: 'Ver anterior'
   ViewArchivedEmail_ss:
     CANACCESS: 'Pode aceder ao site arquivado através deste link:'
     HAVEASKED: 'Você pediu para ver o conteúdo do nosso site em'

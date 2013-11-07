@@ -137,7 +137,6 @@ hu:
   LeftAndMain:
     DELETED: Törölve.
     SAVEDUP: Elmentve.
-    STATUSPUBLISHEDSUCCESS: '''{title}'' sikeresen publikálva'
     SearchResults: 'Találatok'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS hozzáférés'
@@ -186,7 +185,6 @@ hu:
     BUTTONCANCELDRAFTDESC: 'Piszkozat törlése, és vissztérés a jelenleg publikált oldalra'
     BUTTONUNPUBLISH: Publikálás visszavonása
     BUTTONUNPUBLISHDESC: 'Oldal eltávolítása a publikált oldalról'
-    CREATED: 'Létrehozás dátuma'
     Comments: Kommentárok
     Content: Tartalom
     DEFAULTCONTACTTITLE: 'Kapcsolat'
@@ -225,18 +223,6 @@ hu:
     many_many_ImageTracking: 'Kép követése'
   SiteTreeURLSegmentField:
     HelpChars: 'A speciális karakterek automatikusan konvertálódnak vagy törlődnek.'
-  StaticExporter:
-    BASEURL: 'Alap URL'
-    EXPORTTO: 'Exportálás abba a mappába'
-    NAME: 'Statikus exportáló'
-  TableListField_ss:
-    SORTASC: 'Rendezés növekvő sorrendben'
-    SORTDESC: 'Rendezés csökkenő sorrendben'
-  TableListField_PageControls_ss:
-    VIEWFIRST: 'Első mutatása'
-    VIEWLAST: 'Utolsó mutatása'
-    VIEWNEXT: 'Következő mutatása'
-    VIEWPREVIOUS: 'Előző mutatása'
   ViewArchivedEmail_ss:
     CANACCESS: 'Az archivált oldalt elérheted ezen a linken:'
     HAVEASKED: 'Azt kérted, hogy megnézhesd a honlapunk tartalmát ekkor:'

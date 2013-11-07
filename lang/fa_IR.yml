@@ -88,18 +88,6 @@ fa_IR:
     URLSegment: 'بخش آدرس URL'
     VIEW_DRAFT_CONTENT: 'مشاهده محتوای پیشنویس'
     has_one_Parent: 'برگ مادر'
-  StaticExporter:
-    BASEURL: 'URI پایه'
-  TableListField:
-    SELECT: 'انتخاب'
-  TableListField_ss:
-    SORTASC: 'چینش صعودی'
-    SORTDESC: 'چینش نزولی'
-  TableListField_PageControls_ss:
-    VIEWFIRST: 'نشان دادن نخست'
-    VIEWLAST: 'نشان دادن پایان'
-    VIEWNEXT: 'نشان دادن پسین'
-    VIEWPREVIOUS: 'نشان دادن پیشین'
   ViewArchivedEmail_ss:
     HAVEASKED: 'شما خواسته اید که درون‌مایه تارگاه ما را ببینید در'
   VirtualPage:

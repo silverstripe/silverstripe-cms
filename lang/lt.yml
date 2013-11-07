@@ -122,9 +122,9 @@ lt:
     SHOWUNPUBLISHED: 'Rodyti nepublikuojamas versijas'
     SHOWVERSION: 'Rodyti versiją'
     VIEW: peržiūrėti
+    VIEWINGLATEST: 'Dabar peržiūrima naujausia versija.'
     VIEWINGVERSION: 'Dabar peržiūrima versija {version}.'
     MENUTITLE: Istorija
-    VIEWINGLATEST: 'Dabar peržiūrima naujausia versija.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autorius
     NOTPUBLISHED: 'Nepublikuotas'
@@ -137,7 +137,6 @@ lt:
     MENUTITLE: Puslapiai
     TreeView: 'Medžio rodinys'
   CMSPagesController_ContentToolbar_ss:
-    ENABLEDRAGGING: 'Tempti/Mesti'
     MULTISELECT: Daugybinis pasirinkimas
   CMSPagesController_Tools_ss:
     FILTER: Filtras
@@ -153,6 +152,7 @@ lt:
     ARCHIVEDSITE: 'Peržiūrėti versiją'
     ARCHIVEDSITEFROM: 'Archyvuota svetainė iš'
     CMS: TVS
+    DRAFT: Juodraštis
     DRAFTSITE: 'Juodraštinė svetainė'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Jūs turite prisijungti su savo TVS slaptažodžiu, kad galėtumėte peržiūrėti juodraščio arba archyvo turinį.<a href="%s">Spauskite čia, norėdami grįžti į svetainę</a>.'
     Email: E. paštas
@@ -162,12 +162,11 @@ lt:
     LOGIN: Prisijungti
     LOGOUT: 'Atsijungti'
     NOTLOGGEDIN: 'Neprisijungęs'
+    PUBLISHED: Publikuota
     PUBLISHEDSITE: 'Publikuojama svetainė'
     Password: Slaptažodis
     UnableDeleteInstall: 'Nepajėgiame ištrinti įdiegimo bylų. Prašome pašalinti bylas rankiniu būdu.'
     VIEWPAGEIN: 'Peržiūrėti puslapį:'
-    DRAFT: Juodraštis
-    PUBLISHED: Publikuota
   ErrorPage:
     400: '400 - Bloga užklausa'
     401: '401 - Leidimas neduotas'
@@ -211,7 +210,6 @@ lt:
     DELETED: Ištrinta.
     PreviewButton: Peržiūra
     SAVEDUP: Išsaugota.
-    STATUSPUBLISHEDSUCCESS: '''{title}'' publikuota sėkmingai'
   Permission:
     CMS_ACCESS_CATEGORY: 'TVS Prieiga'
   Permissions:
@@ -248,6 +246,8 @@ lt:
     OtherGroupTitle: Kita
     ParameterLiveCheckbox: 'Patikrinti publikuojamą svetainę'
     REPEMPTY: '{title} ataskaita yra tuščia.'
+  SilverStripeNavigator:
+    ARCHIVED: Archyvuota
   SilverStripeNavigatorLink:
     ShareLink: 'Dalintis nuoroda'
   SilverStripeNavigatorLinkl:
@@ -278,9 +278,10 @@ lt:
     ALLOWCOMMENTS: 'Ar leisti komentuoti šį puslapį?'
     BUTTONCANCELDRAFT: 'Atšaukti juodraščio pakeitimus'
     BUTTONCANCELDRAFTDESC: 'Ištrinti juodraštį ir grįžti prie šiuo metu publikuojamo puslapio'
+    BUTTONPUBLISHED: Publikuota
+    BUTTONSAVED: Išsaugota
     BUTTONUNPUBLISH: Nebepublikuoti
     BUTTONUNPUBLISHDESC: 'Pašalinti šį puslapį iš publikuojamos svetainės'
-    CREATED: 'Sukūrimo data'
     Comments: Komentarai
     Content: Turinys
     DEFAULTABOUTCONTENT: '<p>Jūs galite į šį puslapį patalpinti savo norimą turinį. Taip pat galite šį puslapį ištrinti ir sukurti visiškai naujus.<br /></p>'
@@ -313,6 +314,8 @@ lt:
     MODIFIEDONDRAFTHELP: 'Puslapyje yra nepublikuoto turinio'
     MODIFIEDONDRAFTSHORT: Pakeistas
     MetadataToggle: Metaduomenys
+    MoreOptions: 'Daugiau pasirinkimų'
+    NOTPUBLISHED: 'Nepublikuotas'
     PAGELOCATION: 'Puslapio vieta'
     PAGETITLE: 'Puslapio pavadinimas'
     PAGETYPE: 'Puslapio tipas'
@@ -349,41 +352,24 @@ lt:
     many_many_BackLinkTracking: 'Atgalinis stebėjimas'
     many_many_ImageTracking: 'Paveikslėlių sekimas'
     many_many_LinkTracking: 'Nuorodos sekimas'
-    BUTTONPUBLISHED: Publikuota
-    BUTTONSAVED: Išsaugota
-    MoreOptions: 'Daugiau pasirinkimų'
-    NOTPUBLISHED: 'Nepublikuotas'
   SiteTreeURLSegmentField:
     HelpChars: 'Specialūs simboliai automatiškai pakeičiami arba pašalinami.'
-  TableListField:
-    SELECT: 'Pasirinkite:'
-  TableListField_ss:
-    NOITEMSFOUND: '404 - Nerasta'
-    SORTASC: 'Rūšiuoti didėjimo tvarka'
-    SORTDESC: 'Rūšiuoti mažėjimo tvarka'
-  TableListField_PageControls_ss:
-    DISPLAYING: Rodoma
-    OF: iš
-    TO: į
-    VIEWFIRST: 'Žiūrėti pirmą'
-    VIEWLAST: 'Žiūrėti paskutinį'
-    VIEWNEXT: 'Žiūrėti sekantį'
-    VIEWPREVIOUS: 'Žiūrėti ankstesnį'
-  TreeTools:
-    DisplayLabel: 'Rodyti:'
+  URLSegmentField:
+    Cancel: Atšaukti
+    Edit: Redaguoti
+    OK: Gerai
   ViewArchivedEmail_ss:
     CANACCESS: 'Jūs galite atverti suarchyvuotą svetainę paspaudę šią nuorodą:'
     HAVEASKED: 'Jūs norėjote peržiūrėti turinį mūsų svetainėje '
   VirtualPage:
     CHOOSE: 'Prijungtas puslapis'
     DESCRIPTION: 'Rodo kito puslapio turinį'
-    EDITCONTENT: 'Redaguoti turinį prijungtame puslapyje'
+    EditLink: Redaguoti
     HEADER: 'Tai virtualus puslapis'
+    HEADERWITHLINK: 'Tai virtualus puslapis su turiniu iš puslapio "{title}" ({link})'
     PLURALNAME: 'Virtualūs puslapiai'
     PageTypNotAllowedOnRoot: 'Norimas puslapio tipas "{type}" neleidžiamas šiame virtualiame puslapyje, šakniniame lygmenyje.'
     SINGULARNAME: 'Virtualus puslapis'
-    EditLink: Redaguoti
-    HEADERWITHLINK: 'Tai virtualus puslapis su turiniu iš puslapio "{title}" ({link})'
   CMSFileAddController:
     MENUTITLE: Bylos
   CMSPageEditController:
@@ -392,9 +378,3 @@ lt:
     MENUTITLE: 'Redaguoti puslapį'
   CMSSettingsController:
     MENUTITLE: Nustatymai
-  SilverStripeNavigator:
-    ARCHIVED: Archyvuota
-  URLSegmentField:
-    Cancel: Atšaukti
-    Edit: Redaguoti
-    OK: Gerai

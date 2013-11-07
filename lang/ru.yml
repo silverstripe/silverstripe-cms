@@ -72,6 +72,7 @@ ru:
     ACCESS_HELP: 'Возможность просматривать раздел, содержащий дерево страниц и контент. Настройка прав просмотра и редактирования производится через выпадающие меню на отдельных страницах, а также через "Права доступа к содержимому".'
     AddNew: 'Добавить новую страницу'
     AddNewButton: 'Добавить'
+    AddPageRestriction: 'Внимание: некоторые типы страниц в этом случае недоступны для выбора'
     ChoosePageParentMode: 'Выберите, где создать страницу'
     ChoosePageType: 'Выберите тип страницы'
     Create: Создать
@@ -108,7 +109,6 @@ ru:
     TreeFiltered: 'Отфильтрованное дерево.'
     TreeFilteredClear: 'Сбросить фильтр'
     MENUTITLE: 'Править страницу'
-    AddPageRestriction: 'Внимание: некоторые типы страниц в этом случае недоступны для выбора'
   CMSMain_left_ss:
     APPLY_FILTER: 'Применить фильтр'
     RESET: Восстановить
@@ -123,9 +123,9 @@ ru:
     SHOWUNPUBLISHED: 'Показать неопубликованные версии'
     SHOWVERSION: 'Показать версию'
     VIEW: обзор
+    VIEWINGLATEST: 'Вы просматриваете самую новую версию.'
     VIEWINGVERSION: 'Вы просматриваете версию {version}.'
     MENUTITLE: История
-    VIEWINGLATEST: 'Вы просматриваете самую новую версию.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Автор
     NOTPUBLISHED: 'Не издавалось'
@@ -155,6 +155,7 @@ ru:
   ContentController:
     ARCHIVEDSITE: 'Версия для просмотра'
     ARCHIVEDSITEFROM: 'Архив сайта от'
+    DRAFT: Черновик
     DRAFTSITE: 'Черновой сайт'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Для просмотра чернового или архивного содержимого вам необходимо войти в систему со своим именем пользователя и паролем. <a href="%s">Щелкните здесь, чтобы вернуться на опубликованный сайт.</a>'
     INSTALL_SUCCESS: 'Инсталляция прошла успешно!'
@@ -165,14 +166,13 @@ ru:
     LOGIN: Вход
     LOGOUT: 'Выход'
     NOTLOGGEDIN: 'Не вошли в систему'
+    PUBLISHED: Опубликовано
     PUBLISHEDSITE: 'Опубликованный сайт'
     Password: Пароль
     PostInstallTutorialIntro: 'Это упрощенная версия сайта, созданного с помощью SilverStripe 3. О возможностях расширения сайта можно узнать, щелкнув эту ссылку: {link}.'
     StartEditing: 'Вы можете приступить к редактированию содержимого сайта, открыв <a href="{link}">CMS</a>.'
     UnableDeleteInstall: 'Не удалось удалить инсталляционные файлы. Пожалуйста, удалите следующие файлы вручную'
     VIEWPAGEIN: 'Просмотреть страницу в:'
-    DRAFT: Черновик
-    PUBLISHED: Опубликовано
   ErrorPage:
     400: '400 - Плохой запрос'
     401: '401 - Неавторизован'
@@ -216,9 +216,7 @@ ru:
     DELETED: Удалено.
     PreviewButton: Просмотр
     SAVEDUP: Сохранено.
-    STATUSPUBLISHEDSUCCESS: '''{title}'' успешно опубликован'
     SearchResults: 'Результаты поиска'
-    VersionUnknown: Неизвестно
   Permission:
     CMS_ACCESS_CATEGORY: 'Доступ к CMS'
   Permissions:
@@ -239,6 +237,10 @@ ru:
     MENUTITLE: Отчеты
   ReportAdminForm:
     FILTERBY: 'Фильтровать по'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Для опубликования виртуальной страницы опубликуйте связанную страницу'
+    VIRTUALPAGEWARNING: 'Для опубликования этой страницы выберите связанную страницу и сохраните изменения'
+    VIRTUALPAGEWARNINGSETTINGS: 'Для опубликования выберите связанную страницу из области основного содержимого'
   SearchForm:
     GO: Выполн.
     SEARCH: Поиск
@@ -255,6 +257,8 @@ ru:
     OtherGroupTitle: Другие
     ParameterLiveCheckbox: 'Проверить опубликованный сайт'
     REPEMPTY: 'Отчет {title} пуст.'
+  SilverStripeNavigator:
+    ARCHIVED: Архивные
   SilverStripeNavigatorLinkl:
     CloseLink: Закрыть
   SiteConfig:
@@ -284,10 +288,11 @@ ru:
     APPEARSVIRTUALPAGES: 'Это содержимое также отображается на виртуальных страницах в разделе {title}.'
     BUTTONCANCELDRAFT: 'Отменить изменения черновика'
     BUTTONCANCELDRAFTDESC: 'Удалить черновик и вернуться к уже опубликованной странице'
+    BUTTONPUBLISHED: Опубликовано
+    BUTTONSAVED: Сохранено
     BUTTONSAVEPUBLISH: 'Сохранить и опубликовать'
     BUTTONUNPUBLISH: Отмена публикации
     BUTTONUNPUBLISHDESC: 'Удалить эту страницу с опубликованного сайта'
-    CREATED: 'Дата создания'
     Comments: Комментарии
     Content: Наполнение сайта
     DEFAULTABOUTCONTENT: '<p>Вы можете добавить на эту страницу собственные материалы или удалить ее и создать новые страницы.<br /></p>'
@@ -308,9 +313,12 @@ ru:
     EDIT_ALL_DESCRIPTION: 'Редактирование любой страницы'
     EDIT_ALL_HELP: 'Возможность редактировать любую страницу на сайте независимо от настроек во вкладке "Доступ". Необходимо право доступа к разделу "Страницы".'
     Editors: 'Группы редактирования'
+    GroupPlaceholder: 'Щелкните, чтобы выбрать группу'
     HASBROKENLINKS: 'Эта страница содержит неверные ссылки.'
     HTMLEDITORTITLE: Содержимое
     INHERIT: 'Перенять от родительской страницы'
+    LASTPUBLISHED: 'Последняя публикация'
+    LASTSAVED: 'Дата сохранения'
     LASTUPDATED: 'Последнее обновление'
     LINKCHANGENOTE: 'Изменение ссылки на эту страницу повлияет и на ссылки всех дочерних страниц.'
     MENUTITLE: 'Метка в навигации'
@@ -321,6 +329,8 @@ ru:
     MODIFIEDONDRAFTHELP: 'На этой странице есть неопубликованные изменения'
     MODIFIEDONDRAFTSHORT: Изменено
     MetadataToggle: Метаданные
+    MoreOptions: 'Другие варианты'
+    NOTPUBLISHED: 'Не опубликовано'
     OBSOLETECLASS: 'Тип страницы {type} больше не поддерживается. При сохранении тип страницы будет сброшен, что может привести к потере данных'
     PAGELOCATION: 'Расположение страницы'
     PAGETITLE: 'Название страницы'
@@ -359,49 +369,24 @@ ru:
     many_many_BackLinkTracking: 'Отслеживание обратных ссылок'
     many_many_ImageTracking: 'Отслеживание изображений'
     many_many_LinkTracking: 'Отслеживание ссылок'
-    BUTTONPUBLISHED: Опубликовано
-    BUTTONSAVED: Сохранено
-    GroupPlaceholder: 'Щелкните, чтобы выбрать группу'
-    LASTPUBLISHED: 'Последняя публикация'
-    LASTSAVED: 'Дата сохранения'
-    MoreOptions: 'Другие варианты'
-    NOTPUBLISHED: 'Не опубликовано'
   SiteTreeURLSegmentField:
-    HelpChars: 'Спецсимволы автоматически конвертируются или удаляются.'
     EMPTY: 'Задайте адрес страницы или нажмите "Отмена"'
-  StaticExporter:
-    BASEURL: 'Базовый URL'
-    EXPORTTO: 'Экспорт в эту папку'
-    NAME: 'Статический экспорт'
-  TableListField:
-    SELECT: 'Выбрать:'
-  TableListField_ss:
-    NOITEMSFOUND: 'Элементов не найдено'
-    SORTASC: 'По возрастанию'
-    SORTDESC: 'По убыванию'
-  TableListField_PageControls_ss:
-    DISPLAYING: Отображение
-    OF: из
-    TO: по
-    VIEWFIRST: 'См. первое'
-    VIEWLAST: 'См. последн.'
-    VIEWNEXT: 'См. следующ.'
-    VIEWPREVIOUS: 'См. предыдущ.'
-  TreeTools:
-    DisplayLabel: 'Отображать:'
+    HelpChars: 'Спецсимволы автоматически конвертируются или удаляются.'
+  URLSegmentField:
+    Cancel: Отмена
+    Edit: Редактировать
   ViewArchivedEmail_ss:
     CANACCESS: 'Вы можете посмотреть архивную версию сайта по этой ссылке:'
     HAVEASKED: 'Вы запросили просмотр содержимого нашего сайта за'
   VirtualPage:
     CHOOSE: 'Связанная страница'
     DESCRIPTION: 'Отображение содержимого другой страницы'
-    EDITCONTENT: 'Редактировать содержимое на связанной странице'
+    EditLink: редактировать
     HEADER: 'Это виртуальная страница'
+    HEADERWITHLINK: 'Это виртуальная страница, копирующая содержимое из "{title}" ({link})'
     PLURALNAME: 'Виртуальная страница'
     PageTypNotAllowedOnRoot: 'Страницы типа "{type}" недопустимы в качестве корневых для этой виртуальной страницы'
     SINGULARNAME: 'Виртуальная страница'
-    EditLink: редактировать
-    HEADERWITHLINK: 'Это виртуальная страница, копирующая содержимое из "{title}" ({link})'
   CMSFileAddController:
     MENUTITLE: Файлы
   CMSPageEditController:
@@ -410,12 +395,3 @@ ru:
     MENUTITLE: 'Править страницу'
   CMSSettingsController:
     MENUTITLE: Настройки
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Для опубликования виртуальной страницы опубликуйте связанную страницу'
-    VIRTUALPAGEWARNING: 'Для опубликования этой страницы выберите связанную страницу и сохраните изменения'
-    VIRTUALPAGEWARNINGSETTINGS: 'Для опубликования выберите связанную страницу из области основного содержимого'
-  SilverStripeNavigator:
-    ARCHIVED: Архивные
-  URLSegmentField:
-    Cancel: Отмена
-    Edit: Редактировать

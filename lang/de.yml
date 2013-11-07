@@ -74,6 +74,7 @@ de:
     ACCESS_HELP: 'Seiteninhalt im CMS anzeigen. Anzeige- und Bearbeitungsberechtigungen können sowohl seitenspezifische als auch über die globalen Inhaltsberechtigungen gesetzt werden.'
     AddNew: 'Neue Seite hinzufügen'
     AddNewButton: 'Hinzufügen'
+    AddPageRestriction: 'Hinweis: einige Seitentypen sind in diesem Bereich nicht erlaubt.'
     ChoosePageParentMode: 'Wo soll diese Seite erstellt werden?'
     ChoosePageType: 'Seitentyp auswählen'
     Create: Erstellen
@@ -111,7 +112,6 @@ de:
     TreeFiltered: 'Seitenbaum gefiltert'
     TreeFilteredClear: 'Filter zurücksetzen'
     MENUTITLE: 'Seite bearbeiten'
-    AddPageRestriction: 'Hinweis: einige Seitentypen sind in diesem Bereich nicht erlaubt.'
   CMSMain_left_ss:
     APPLY_FILTER: 'Filter anwenden'
     RESET: Zurücksetzen
@@ -127,9 +127,9 @@ de:
     SHOWUNPUBLISHED: 'Zeige unveröffentlichte Versionen'
     SHOWVERSION: 'Zeige Version'
     VIEW: anzeigen
+    VIEWINGLATEST: 'Momentan wird die aktuellste Version angezeigt.'
     VIEWINGVERSION: 'Momentan angezeigte Version: {version}.'
     MENUTITLE: Historie
-    VIEWINGLATEST: 'Momentan wird die aktuellste Version angezeigt.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: 'Nicht veröffentlicht'
@@ -142,7 +142,6 @@ de:
     MENUTITLE: Seiten
     TreeView: 'Baumansicht'
   CMSPagesController_ContentToolbar_ss:
-    ENABLEDRAGGING: 'Drag & Drop'
     MULTISELECT: Mehrfachauswahl
   CMSPagesController_Tools_ss:
     FILTER: Filter
@@ -163,6 +162,7 @@ de:
     ARCHIVEDSITE: 'Vorschauversion'
     ARCHIVEDSITEFROM: 'Site archiviert von'
     CMS: CMS
+    DRAFT: Entwurf
     DRAFTSITE: 'Vorschau-Site'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Sie müssen sich mit Ihrem CMS Passwort einloggen, um den Entwurf oder den archivierten Inhalt zu sehen. <a href="%s">Zurück zur veröffentlichten Seite.</a>'
     Email: E-Mail
@@ -174,14 +174,13 @@ de:
     LOGIN: Anmelden
     LOGOUT: 'Abmelden'
     NOTLOGGEDIN: 'Nicht angemeldet'
+    PUBLISHED: Veröffentlicht
     PUBLISHEDSITE: 'Veröffentlichte Site'
     Password: Passwort
     PostInstallTutorialIntro: 'Diese Webseite ist eine einfache Version von SilverStripe 3. Weitere Funktionen können Sie unter {link} finden.'
     StartEditing: 'Sie können den Inhalt <a href="{link}">im CMS</a> bearbeiten.'
     UnableDeleteInstall: 'Die Installationsdateien konnten nicht gelöscht werden. Bitte löschen Sie die Dateien manuell.'
     VIEWPAGEIN: 'Seite anzeigen in:'
-    DRAFT: Entwurf
-    PUBLISHED: Veröffentlicht
   ErrorPage:
     400: '400 - Fehlerhafter Zugriff'
     401: '401 - Unerlaubter Zugriff'
@@ -225,9 +224,7 @@ de:
     DELETED: Gelöscht.
     PreviewButton: Vorschau
     SAVEDUP: Gespeichert.
-    STATUSPUBLISHEDSUCCESS: '''{title}'' wurde erfolgreich veröffentlicht'
     SearchResults: 'Suchergebnisse'
-    VersionUnknown: Unbekannt
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Zugriff'
   Permissions:
@@ -249,6 +246,10 @@ de:
     MENUTITLE: Berichte
   ReportAdminForm:
     FILTERBY: 'Filtern nach'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Bitte veröffentlichen Sie die vernküpfte Seite um die virtuelle Seite zu veröffentlichen'
+    VIRTUALPAGEWARNING: 'Um diese Seite veröffentlichen zu können müssen Sie zu erst eine verknüpfte Seite auswählen'
+    VIRTUALPAGEWARNINGSETTINGS: 'Um diese Seite veröffentlichen zu können müssen Sie zu erst eine verknüpfte Seite im Reiter "Haupt-Inhalt" auswählen'
   SearchForm:
     GO: Los
     SEARCH: Suche
@@ -265,6 +266,8 @@ de:
     OtherGroupTitle: Andere
     ParameterLiveCheckbox: 'Veröffentlichte Seite überprüfen'
     REPEMPTY: 'Der Bericht ''{title}'' ist leer.'
+  SilverStripeNavigator:
+    ARCHIVED: Archiviert
   SilverStripeNavigatorLink:
     ShareInstructions: 'Kopieren Sie den folgenden Link, um diesen jemanden mitzuteilen.'
     ShareLink: 'Link teilen'
@@ -297,10 +300,11 @@ de:
     APPEARSVIRTUALPAGES: 'Dieser Inhalt erscheint außerdem auf virtuellen Seiten im {title} Bereich.'
     BUTTONCANCELDRAFT: 'Verwerfe Entwurfsänderungen'
     BUTTONCANCELDRAFTDESC: 'Löschen Sie Ihren Entwurf und kehren Sie zur derzeit veröffentlichten Seite zurück.'
+    BUTTONPUBLISHED: Veröffentlicht
+    BUTTONSAVED: Gespeichert
     BUTTONSAVEPUBLISH: 'Speichern & Veröffentlichen'
     BUTTONUNPUBLISH: Veröffentlichung zurücknehmen
     BUTTONUNPUBLISHDESC: 'Entferne diese Seite aus der veröffentlichten Website'
-    CREATED: 'Datum der Erstellung'
     Comments: Kommentare
     Content: Inhalt
     DEFAULTABOUTCONTENT: '<p>Sie können diese Seite mit Ihren eigenen Inhalten füllen, oder sie löschen und Ihre eigenen Seiten erstellen.<br /></p>'
@@ -322,9 +326,12 @@ de:
     EDIT_ALL_DESCRIPTION: 'Kann beliebige Seiten bearbeiten'
     EDIT_ALL_HELP: 'Kann beliebige Seiten auf der Site bearbeiten; seitenspezifische Sicherheitseinstellungen werden ignoriert.'
     Editors: 'Bearbeiter Gruppen'
+    GroupPlaceholder: 'Klicken, um Gruppe auszuwählen'
     HASBROKENLINKS: 'Diese Seite enthält ungültige Verweise.'
     HTMLEDITORTITLE: Inhalt
     INHERIT: 'Von der übergeordneten Seite erben'
+    LASTPUBLISHED: 'Zuletzt veröffentlicht'
+    LASTSAVED: 'Zuletzt gespeichert'
     LASTUPDATED: 'Letzte Änderung'
     LINKCHANGENOTE: 'Das Ändern des Links zu dieser Seite führt ebenfalls zur Änderung aller Links der Unterseiten dieser Seite.'
     MENUTITLE: 'Navigationsbezeichnung'
@@ -335,6 +342,8 @@ de:
     MODIFIEDONDRAFTHELP: 'Die Seite hat unveröffentlichte Änderungen'
     MODIFIEDONDRAFTSHORT: Zuletzt geändert
     MetadataToggle: Metadaten
+    MoreOptions: 'Weitere Optionen'
+    NOTPUBLISHED: 'Nicht veröffentlicht'
     OBSOLETECLASS: 'Der Seitentyp {type} wird nicht mehr verwendet. Wenn Sie speichern wird der Seitentyp zurückgesetzt, was Datenverlust verursachen kann'
     PAGELOCATION: 'Seitenposition'
     PAGETITLE: 'Seitenname'
@@ -373,49 +382,25 @@ de:
     many_many_BackLinkTracking: 'Rückverweis-Verfolgung'
     many_many_ImageTracking: 'Bild-Verfolgung'
     many_many_LinkTracking: 'Link-Verfolgung'
-    BUTTONPUBLISHED: Veröffentlicht
-    BUTTONSAVED: Gespeichert
-    GroupPlaceholder: 'Klicken, um Gruppe auszuwählen'
-    LASTPUBLISHED: 'Zuletzt veröffentlicht'
-    LASTSAVED: 'Zuletzt gespeichert'
-    MoreOptions: 'Weitere Optionen'
-    NOTPUBLISHED: 'Nicht veröffentlicht'
   SiteTreeURLSegmentField:
-    HelpChars: 'Sonderzeichen werden automatisch umgewandelt oder entfernt.'
     EMPTY: 'Bitte geben Sie ein URL-Segment ein oder drücken Sie auf Abbrechen'
-  StaticExporter:
-    BASEURL: 'Ausgangs URL'
-    EXPORTTO: 'Exportieren in diesen Ordner'
-    NAME: 'statischer Exporter'
-  TableListField:
-    SELECT: 'Auswählen:'
-  TableListField_ss:
-    NOITEMSFOUND: 'Keine Einträge gefunden.'
-    SORTASC: 'Aufsteigend sortieren'
-    SORTDESC: 'Absteigend sortieren'
-  TableListField_PageControls_ss:
-    DISPLAYING: Zeige
-    OF: von
-    TO: bis
-    VIEWFIRST: 'Erster'
-    VIEWLAST: 'Letzter'
-    VIEWNEXT: 'Nächster'
-    VIEWPREVIOUS: 'Vorheriger'
-  TreeTools:
-    DisplayLabel: 'Anzeigen:'
+    HelpChars: 'Sonderzeichen werden automatisch umgewandelt oder entfernt.'
+  URLSegmentField:
+    Cancel: Abbrechen
+    Edit: Bearbeiten
+    OK: OK
   ViewArchivedEmail_ss:
     CANACCESS: 'Sie können unter folgendem Verweis auf die archivierte Seite zugreifen:'
     HAVEASKED: 'Sie haben darum gebeten, den Inhalt unserer Site zu sehen, am'
   VirtualPage:
     CHOOSE: 'Verknüpfte Seite'
     DESCRIPTION: 'Zeigt den Inhalt einer anderen Seite'
-    EDITCONTENT: 'Inhalt der verknüpften Seite bearbeiten'
+    EditLink: Bearbeiten
     HEADER: 'Dies ist eine virtuelle Seite'
+    HEADERWITHLINK: 'Dies ist eine virtuelle Seite, die den Inhalt von "{title}" ({link}) kopiert'
     PLURALNAME: 'Virtuelle Seiten'
     PageTypNotAllowedOnRoot: 'Der ursprüngliche Seitentyp "{type}" ist nicht zulässig für diese virtuelle Seite. '
     SINGULARNAME: 'Virtuelle Seite'
-    EditLink: Bearbeiten
-    HEADERWITHLINK: 'Dies ist eine virtuelle Seite, die den Inhalt von "{title}" ({link}) kopiert'
   CMSFileAddController:
     MENUTITLE: Dateien
   CMSPageEditController:
@@ -424,13 +409,3 @@ de:
     MENUTITLE: 'Seite bearbeiten'
   CMSSettingsController:
     MENUTITLE: Einstellungen
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Bitte veröffentlichen Sie die vernküpfte Seite um die virtuelle Seite zu veröffentlichen'
-    VIRTUALPAGEWARNING: 'Um diese Seite veröffentlichen zu können müssen Sie zu erst eine verknüpfte Seite auswählen'
-    VIRTUALPAGEWARNINGSETTINGS: 'Um diese Seite veröffentlichen zu können müssen Sie zu erst eine verknüpfte Seite im Reiter "Haupt-Inhalt" auswählen'
-  SilverStripeNavigator:
-    ARCHIVED: Archiviert
-  URLSegmentField:
-    Cancel: Abbrechen
-    Edit: Bearbeiten
-    OK: OK

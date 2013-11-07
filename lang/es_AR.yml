@@ -188,20 +188,6 @@ es_AR:
     many_many_BackLinkTracking: 'Seguimiento de Backlink'
     many_many_ImageTracking: 'Seguimiento de Imágen'
     many_many_LinkTracking: 'Seguimiento de Enlace'
-  StaticExporter:
-    BASEURL: 'URL base'
-    EXPORTTO: 'Exportar a esa carpeta'
-    NAME: 'Exportador estático'
-  TableListField:
-    SELECT: 'Seleccionar:'
-  TableListField_ss:
-    SORTASC: 'Ordenar en orden ascendente'
-    SORTDESC: 'Ordenar en orden descendente'
-  TableListField_PageControls_ss:
-    VIEWFIRST: 'Ver primero'
-    VIEWLAST: 'Ver último'
-    VIEWNEXT: 'Ver siguiente'
-    VIEWPREVIOUS: 'Ver anterior'
   ViewArchivedEmail_ss:
     CANACCESS: 'Puedes acceder al sitio archivado con este enlace:'
     HAVEASKED: 'Has solicitado ver el contenido de nuestro sitio en'

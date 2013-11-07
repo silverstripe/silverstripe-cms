@@ -134,7 +134,6 @@ et_EE:
     MENUTITLE: Lehed
     TreeView: 'Puuvaade'
   CMSPagesController_ContentToolbar_ss:
-    ENABLEDRAGGING: 'Pukseeri'
     MULTISELECT: Mitmikvalik
   CMSPagesController_Tools_ss:
     FILTER: Filtreeri
@@ -154,6 +153,7 @@ et_EE:
   ContentController:
     ARCHIVEDSITE: 'Eelvaate versioon'
     ARCHIVEDSITEFROM: 'Arhiveeritud sait asukohast'
+    DRAFT: Mustand
     DRAFTSITE: 'Mustandi sait'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Pead olema sisse logitud oma sisuhalduse parooliga, et vaadata mustandeid ja arhiveeritud sisu. <a href="%s">Vajuta siia, et minna tagasi avaldatud lehe juurde.</a>'
     Email: E-post
@@ -165,13 +165,12 @@ et_EE:
     LOGIN: Logi sisse
     LOGOUT: 'Logi välja'
     NOTLOGGEDIN: 'Pole sisse logitud'
+    PUBLISHED: Avaldatud
     PUBLISHEDSITE: 'Avaldatud sait'
     Password: Salasõna
     PostInstallTutorialIntro: 'See veebisait on SilverStripe 3 lihtsustatud versioon. Lehe laiendamiseks külastage aadressi {link}.'
     UnableDeleteInstall: 'Installifaile ei olnud võimalik kustutada. Kustutage allolevad failid käsitsi.'
     VIEWPAGEIN: 'Kuva leht:'
-    DRAFT: Mustand
-    PUBLISHED: Avaldatud
   ErrorPage:
     400: '400 - Halb päring'
     401: '401 - Volitamata ligipääs'
@@ -215,9 +214,7 @@ et_EE:
     DELETED: Kustutatud.
     PreviewButton: Eelvaade
     SAVEDUP: Salvestatud.
-    STATUSPUBLISHEDSUCCESS: '''{title}'' on edukalt avaldatud'
     SearchResults: 'Otsingutulemused'
-    VersionUnknown: Tundmatu
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS-juurdepääs'
   Permissions:
@@ -255,6 +252,8 @@ et_EE:
     OtherGroupTitle: Muu
     ParameterLiveCheckbox: 'Kontrolli avaldatud saiti'
     REPEMPTY: 'Lehe {title} aruanne on tühi.'
+  SilverStripeNavigator:
+    ARCHIVED: Arhiveeritud
   SilverStripeNavigatorLink:
     ShareLink: 'Jaga linki'
   SilverStripeNavigatorLinkl:
@@ -286,10 +285,11 @@ et_EE:
     APPEARSVIRTUALPAGES: 'Sisu on kuvatud ka virtuaalsetel lehtedel jaotistes {title}.'
     BUTTONCANCELDRAFT: 'Tühista visandi muudatused'
     BUTTONCANCELDRAFTDESC: 'Kustuta oma visand ja pöördu tagasi hetkel avaldatud lehekülje kujule'
+    BUTTONPUBLISHED: Avaldatud
+    BUTTONSAVED: Salvestatud
     BUTTONSAVEPUBLISH: 'Salvesta ja avalda'
     BUTTONUNPUBLISH: Võta maha
     BUTTONUNPUBLISHDESC: 'Eemalda see lehekülg avalikult saidilt'
-    CREATED: 'Loomiskuupäev'
     Comments: Komentaarid
     Content: Sisu
     DEFAULTABOUTCONTENT: '<p>Saad selle lehe sisu muuta või selle lehe kustutada.<br /></p>'
@@ -314,6 +314,8 @@ et_EE:
     HASBROKENLINKS: 'Sellel lehel on katkiseid linke.'
     HTMLEDITORTITLE: Sisu
     INHERIT: 'Päring vanemalt lehelt'
+    LASTPUBLISHED: 'Viimati avaldatud'
+    LASTSAVED: 'Viimati salvestatud'
     LASTUPDATED: 'Viimati uuendatud'
     LINKCHANGENOTE: 'Selle lehe lingi muutmine mõjutab ka kõigi alamlehtede linke.'
     MENUTITLE: 'Navigatsiooni silt'
@@ -324,6 +326,7 @@ et_EE:
     MODIFIEDONDRAFTHELP: 'Lehel on avaldamata muudatusi'
     MODIFIEDONDRAFTSHORT: Muudetud
     MetadataToggle: Metaandmed
+    NOTPUBLISHED: 'Avaldamata'
     PAGELOCATION: 'Lehe asukoht'
     PAGETITLE: 'Lehekülje nimi'
     PAGETYPE: 'Lehe tüüp'
@@ -360,43 +363,20 @@ et_EE:
     many_many_BackLinkTracking: 'Tagasilingi jälgimine'
     many_many_ImageTracking: 'Pildi jälgimine'
     many_many_LinkTracking: 'Lingi jälgimine'
-    BUTTONPUBLISHED: Avaldatud
-    BUTTONSAVED: Salvestatud
-    LASTPUBLISHED: 'Viimati avaldatud'
-    LASTSAVED: 'Viimati salvestatud'
-    NOTPUBLISHED: 'Avaldamata'
   SiteTreeURLSegmentField:
     HelpChars: 'Erimärgid teisendatakse või eemaldatakse automaatselt.'
-  StaticExporter:
-    BASEURL: 'Baas-URL'
-    EXPORTTO: 'Ekspordi sellesse kausta'
-    NAME: 'Staatiline eksportija'
-  TableListField:
-    SELECT: 'Vali:'
-  TableListField_ss:
-    NOITEMSFOUND: 'Ei leitud ühtegi kirjet'
-    SORTASC: 'Sordi kasvavas järjekorras'
-    SORTDESC: 'Sordi kahanevas järjekorras'
-  TableListField_PageControls_ss:
-    DISPLAYING: Kuvatakse
-    OF: /
-    TO: kuni
-    VIEWFIRST: 'Vaata esimest'
-    VIEWLAST: 'Vaata viimast'
-    VIEWNEXT: 'Vaata järgmist'
-    VIEWPREVIOUS: 'Vaata eelmist'
-  TreeTools:
-    DisplayLabel: 'Kuva:'
+  URLSegmentField:
+    Edit: Redigeeri
   ViewArchivedEmail_ss:
     CANACCESS: 'Arhiveeritud lehele pääsed ligi selle lingi kaudu:'
     HAVEASKED: 'Soovid vaadata meie lehe sisu kuupäeval'
   VirtualPage:
     DESCRIPTION: 'Kuvab sisu teiselt lehelt'
+    EditLink: redigeeri
     HEADER: 'See on virtuaalne leht'
     PLURALNAME: 'Virtuaalsed lehed'
     PageTypNotAllowedOnRoot: 'Lehe originaaltüüp "{type}" ei ole selle virtuaalse lehe juurtasandil lubatud.'
     SINGULARNAME: 'Virtuaalne leht'
-    EditLink: redigeeri
   CMSFileAddController:
     MENUTITLE: Failid
   CMSPageEditController:
@@ -405,7 +385,3 @@ et_EE:
     MENUTITLE: 'Muuda lehte'
   CMSSettingsController:
     MENUTITLE: Seaded
-  SilverStripeNavigator:
-    ARCHIVED: Arhiveeritud
-  URLSegmentField:
-    Edit: Redigeeri

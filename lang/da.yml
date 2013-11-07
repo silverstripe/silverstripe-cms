@@ -125,7 +125,6 @@ da:
     MENUTITLE: Sider
     TreeView: 'Trævisning'
   CMSPagesController_ContentToolbar_ss:
-    ENABLEDRAGGING: 'Træk&slip'
     MULTISELECT: Multivalg
   CMSPagesController_Tools_ss:
     FILTER: Filtre
@@ -174,9 +173,7 @@ da:
     DELETED: Slettet.
     PreviewButton: Forhåndsvisning
     SAVEDUP: Gemt.
-    STATUSPUBLISHEDSUCCESS: 'Udgav ''{title}'' med succes'
     SearchResults: 'Søgeresultater'
-    VersionUnknown: Ukendt
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS Adgang'
   Permissions:
@@ -245,7 +242,6 @@ da:
     BUTTONCANCELDRAFTDESC: 'Slet kladden og benyt istedet den nuværende side'
     BUTTONUNPUBLISH: Annuller udgivelse
     BUTTONUNPUBLISHDESC: 'Fjern denne side fra det udgivne websted'
-    CREATED: 'Dato for oprettelse'
     Comments: Kommentarer
     Content: Indhold
     DEFAULTABOUTCONTENT: '<p>Du kan udfylde denne side med dit eget indhold, eller slette den og oprette dine egne sider.<br /></p>'
@@ -308,23 +304,6 @@ da:
     many_many_LinkTracking: 'Sporing af links'
   SiteTreeURLSegmentField:
     HelpChars: 'Specialkarakterer bliver automatisk konverteret eller fjernet.'
-  StaticExporter:
-    EXPORTTO: 'Eksporter til den mappe'
-    NAME: 'Statisk eksportør'
-  TableListField:
-    SELECT: 'Vælg:'
-  TableListField_ss:
-    NOITEMSFOUND: '404 - Not Found'
-    SORTASC: 'Sorter efter stigende orden'
-    SORTDESC: 'Sorter efter faldende orden'
-  TableListField_PageControls_ss:
-    DISPLAYING: Viser
-    OF: af
-    TO: til
-    VIEWFIRST: 'Vis f&oslash;rste'
-    VIEWLAST: 'Vis Sidste'
-    VIEWNEXT: 'Vis n&aelig;ste'
-    VIEWPREVIOUS: 'Vis forrige'
   ViewArchivedEmail_ss:
     CANACCESS: 'Du kan tilgå¨den arkiverede side på dette link:'
     HAVEASKED: 'Du har spurgt om at se indholdet af vores side på'

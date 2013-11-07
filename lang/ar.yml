@@ -74,6 +74,7 @@ ar:
     ACCESS_HELP: 'سماح بعرض لقسم يحتوي على صفحة الشجرة والمحتوى. يمكن التعامل معها عرض وتحرير الأذونات من خلال القائمه المنسدله للروابط محددة صفحة، فضلا عن فصل "أذونات المحتوى".'
     AddNew: 'أضف صفحة جديدة'
     AddNewButton: 'أضف جديد'
+    AddPageRestriction: 'ملاحظة: لا يسمح ببعض أنواع الصفحات لهذا الاختيار'
     ChoosePageParentMode: 'اختر مكان إنشاء هذه الصفحة'
     ChoosePageType: 'اختر نوع الصفحة'
     Create: خلق
@@ -111,7 +112,6 @@ ar:
     TreeFiltered: 'الشجرة المصفاة.'
     TreeFilteredClear: 'أزل المصفي'
     MENUTITLE: 'حرر الصفحة'
-    AddPageRestriction: 'ملاحظة: لا يسمح ببعض أنواع الصفحات لهذا الاختيار'
   CMSMain_left_ss:
     APPLY_FILTER: 'طبق عامل تصفية'
     RESET: إعادة الوضع الأصلي
@@ -127,9 +127,9 @@ ar:
     SHOWUNPUBLISHED: 'عرض الإصدارات الغير منشورة'
     SHOWVERSION: 'اعرض الإصدار'
     VIEW: عرض
+    VIEWINGLATEST: 'يقع حاليا عرض أحدث إصدار.'
     VIEWINGVERSION: 'يقع حاليا عرض إصدار  {version}.'
     MENUTITLE: السجل
-    VIEWINGLATEST: 'يقع حاليا عرض أحدث إصدار.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: الكاتب
     NOTPUBLISHED: 'غير منشور'
@@ -142,7 +142,6 @@ ar:
     MENUTITLE: الصفحات
     TreeView: 'عرض الشجرة'
   CMSPagesController_ContentToolbar_ss:
-    ENABLEDRAGGING: 'سحب وإسقاط'
     MULTISELECT: متعدد الاختيار
   CMSPagesController_Tools_ss:
     FILTER: مصفاة
@@ -163,6 +162,7 @@ ar:
     ARCHIVEDSITE: 'إصدار المعاينة'
     ARCHIVEDSITEFROM: 'موقع تمت أرشفته منذ'
     CMS: نظام إدارة المحتوى
+    DRAFT: المسودّة
     DRAFTSITE: 'موقع في المسودة'
     DRAFT_SITE_ACCESS_RESTRICTION: 'يجب عليك تسجيل الدخول باستخدام كلمة مرور CMS الخاصة بك من أجل عرض مشاريع المحتوى أو المحتوى المؤرشف. <a href="%s">انقر هنا للرجوع إلى الموقع المنشور.</a>'
     Email: البريد الإلكتروني
@@ -174,14 +174,13 @@ ar:
     LOGIN: الدخول
     LOGOUT: 'الخروج'
     NOTLOGGEDIN: 'لم يتم تسجيل الدخول'
+    PUBLISHED: تمّ النشر
     PUBLISHEDSITE: 'موقع منشور'
     Password: كلمة السر
     PostInstallTutorialIntro: 'هذا الموقع هو نسخة مبسطة من موقع سيلفر سترايب 3. لإلقاء نظرة على النسخة المفصلة، يرجى إلقاء نظرة على {link}.'
     StartEditing: 'يمكنك البدء في تحرير المحتوى الخاص بك عن طريق فتح  <a href="{link}">the CMS</a>.'
     UnableDeleteInstall: 'غير ممكن حذف ملفات التثبيت. يرجى حذف الملفات التالية يدويا'
     VIEWPAGEIN: 'مشاهدة الصفحة في:'
-    DRAFT: المسودّة
-    PUBLISHED: تمّ النشر
   ErrorPage:
     400: '400 - طلب خاطئ'
     401: '401 - غير مصرح'
@@ -225,9 +224,7 @@ ar:
     DELETED: حذفت.
     PreviewButton: عرض مسبق
     SAVEDUP: تم الحفظ.
-    STATUSPUBLISHEDSUCCESS: 'نشر ''{title}'' بنجاح'
     SearchResults: 'نتائج البحث'
-    VersionUnknown: غير معروف
   Permission:
     CMS_ACCESS_CATEGORY: 'الوصل لنظام إدارة المحتوى'
   Permissions:
@@ -249,6 +246,10 @@ ar:
     MENUTITLE: التقارير
   ReportAdminForm:
     FILTERBY: 'فرز عبر'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'يرجى نشر الصفحة المرتبطة من أجل نشر الصفحة الافتراضية'
+    VIRTUALPAGEWARNING: 'يرجى اختيار صفحة مرتبطة وقم بالحفظ أولا من أجل نشر هذه الصفحة'
+    VIRTUALPAGEWARNINGSETTINGS: 'يرجى اختيار صفحة مرتبطة في مجالات المحتوى الرئيسي من أجل النشر'
   SearchForm:
     GO: اذهب
     SEARCH: بحث
@@ -265,6 +266,8 @@ ar:
     OtherGroupTitle: أخرى
     ParameterLiveCheckbox: 'التأكد من حيوية الموقع'
     REPEMPTY: 'التقرير {title} فارغ.'
+  SilverStripeNavigator:
+    ARCHIVED: المؤرشف
   SilverStripeNavigatorLink:
     ShareInstructions: 'لمشاركة هذه الصفحة، قم بنسخ ولصق الرابط أدناه.'
     ShareLink: 'رابط مشترك'
@@ -297,17 +300,18 @@ ar:
     APPEARSVIRTUALPAGES: 'يظهر هذا المحتوى أيضا على الصفحات الافتراضية في أقسام {title}.'
     BUTTONCANCELDRAFT: 'إلغاء التغييرات في المسودة'
     BUTTONCANCELDRAFTDESC: 'إلغاء المسودة و العودة إلى الموقع المنشور حالياً'
+    BUTTONPUBLISHED: نشرت
+    BUTTONSAVED: تم الحفظ
     BUTTONSAVEPUBLISH: 'احفظ وانشر'
     BUTTONUNPUBLISH: غير منشور
     BUTTONUNPUBLISHDESC: 'حذف هذه الصفحة من الموقع المنشور'
-    CREATED: 'تاريخ الإنشاء'
     Comments: التعليقات
     Content: المحتوى
     DEFAULTABOUTCONTENT: '<p>يمكنك ملء هذه الصفحة بمحتوى خاص بك أو حذفها و إنشاء صفحات جديدة خاصة بك<br /></p>'
     DEFAULTABOUTTITLE: 'حول'
     DEFAULTCONTACTCONTENT: '<p>يمكنك ملء هذه الصفحة بمحتوى خاص بك أو حذفها و إنشاء صفحات جديدة خاصة بك<br /></p>'
     DEFAULTCONTACTTITLE: 'اتصل بنا'
-    DEFAULTHOMECONTENT: '<p>أهلاً بك في  SilverStripe! هذه هي الصفحة الرئيسة.يمكنك تعديل الصفحة عن طريق  <a href="admin/">نظام إدارة المحتوى</a>.يمكنك الآن الدخول إلى  <a href="http://doc.silverstripe.com">مستندات المطورين</a>, أو الدخول إلى  <a href="http://doc.silverstripe.com/doku.php?id=tutorials">الدروس التعليمية.</a></p>'
+    DEFAULTHOMECONTENT: '<p>أهلاً بك في  SilverStripe!<br />هذه هي الصفحة الرئيسة.يمكنك تعديل الصفحة عن طريق  <a href="admin/">نظام إدارة المحتوى</a>.يمكنك الآن الدخول إلى  <a href="http://doc.silverstripe.com">مستندات المطورين</a>, أو الدخول إلى  <a href="http://doc.silverstripe.com/doku.php?id=tutorials">الدروس التعليمية.</a></p>'
     DEFAULTHOMETITLE: الرئيسة
     DELETEDPAGEHELP: 'لم تعد الصفحة المنشورة'
     DELETEDPAGESHORT: المحذوف
@@ -322,9 +326,12 @@ ar:
     EDIT_ALL_DESCRIPTION: 'Can edit any page on the site, bypassing page specific security'
     EDIT_ALL_HELP: 'القدرة على تحرير أي صفحة على الموقع ، بغض النظر عن الإعدادات على علامة تبويب الوصول. يتطلب تصريح "الوصول إلى محتوى الموقع" '
     Editors: 'مجموعات المحررين'
+    GroupPlaceholder: 'انقر لاختيار المجموعة'
     HASBROKENLINKS: 'هذه الصفحة تحتوي على روابط معطوبة'
     HTMLEDITORTITLE: محتوى
     INHERIT: 'استيراد من الصفحة المرجعية'
+    LASTPUBLISHED: 'آخر منشور'
+    LASTSAVED: 'آخر محفوظ'
     LASTUPDATED: 'أخر تحديث'
     LINKCHANGENOTE: 'تغيير هذا وصلة رابط الصفحة سوف تؤثر أيضًا على الوصلات لجميع صفحات الفرعية.'
     MENUTITLE: 'القائمة'
@@ -335,6 +342,8 @@ ar:
     MODIFIEDONDRAFTHELP: 'تحتوي الصفحة على تغييرات غير منشورة'
     MODIFIEDONDRAFTSHORT: تم التعديل
     MetadataToggle: البيانات الوصفية
+    MoreOptions: 'خيارات أخرى'
+    NOTPUBLISHED: 'غير منشورة'
     OBSOLETECLASS: 'إنّ نوع {type} لهذه الصفحة بال. سيعيد حفظها تجديد نوعها وقد تفقد البيانات'
     PAGELOCATION: 'موقع الضفحة'
     PAGETITLE: 'اسم الصفحة'
@@ -373,49 +382,25 @@ ar:
     many_many_BackLinkTracking: 'متابعة التعقيبات'
     many_many_ImageTracking: 'متابعة الصور'
     many_many_LinkTracking: 'متابعة الروابط'
-    BUTTONPUBLISHED: نشرت
-    BUTTONSAVED: تم الحفظ
-    GroupPlaceholder: 'انقر لاختيار المجموعة'
-    LASTPUBLISHED: 'آخر منشور'
-    LASTSAVED: 'آخر محفوظ'
-    MoreOptions: 'خيارات أخرى'
-    NOTPUBLISHED: 'غير منشورة'
   SiteTreeURLSegmentField:
-    HelpChars: 'يتم تلقائيا تحويل الأحرف الخاصة أو إزالتها.'
     EMPTY: 'الرجاء إدخال مقطع URL أو انقر فوق إلغاء الأمر'
-  StaticExporter:
-    BASEURL: 'الرابط الأساسي'
-    EXPORTTO: 'تصدير إلى مجلد'
-    NAME: 'المصدر الثابت Exporter'
-  TableListField:
-    SELECT: 'اختيار'
-  TableListField_ss:
-    NOITEMSFOUND: 'لا يوجد بنود'
-    SORTASC: 'ترتيب تصاعدي'
-    SORTDESC: 'ترتيب تنازلي'
-  TableListField_PageControls_ss:
-    DISPLAYING: يتم عرض
-    OF: من
-    TO: إلى
-    VIEWFIRST: 'عرض الأول'
-    VIEWLAST: 'عرض الأخير'
-    VIEWNEXT: 'عرض التالي'
-    VIEWPREVIOUS: 'عرض السابق'
-  TreeTools:
-    DisplayLabel: 'عرض:'
+    HelpChars: 'يتم تلقائيا تحويل الأحرف الخاصة أو إزالتها.'
+  URLSegmentField:
+    Cancel: إلغاء
+    Edit: حرر
+    OK: موافق
   ViewArchivedEmail_ss:
     CANACCESS: 'يمكنك الدخول إلى أرشيف الموقع عن طريق الرابط التالي :'
     HAVEASKED: 'تم طلب مشاهدة محتوى الموقع في'
   VirtualPage:
     CHOOSE: 'الصفحة المرتبطة'
     DESCRIPTION: 'يعرض محتوى صفحة أخرى'
-    EDITCONTENT: 'حرر المحتوى في الصفحة المرتبطة'
+    EditLink: حرر
     HEADER: 'هذه صفحة افتراضية'
+    HEADERWITHLINK: 'هذه صفحة افتراضية تنسخ المحتوى من "{title}" ({link})'
     PLURALNAME: 'الصفحات الافتراضية'
     PageTypNotAllowedOnRoot: 'نوع الصفحة الأصلية "{type}"غير مسموح به على مستوى الجذر لهذه الصفحة الافتراضية'
     SINGULARNAME: 'الصفحة الافتراضية'
-    EditLink: حرر
-    HEADERWITHLINK: 'هذه صفحة افتراضية تنسخ المحتوى من "{title}" ({link})'
   CMSFileAddController:
     MENUTITLE: ملفات
   CMSPageEditController:
@@ -424,13 +409,3 @@ ar:
     MENUTITLE: 'تحرير صفحة'
   CMSSettingsController:
     MENUTITLE: الإعدادات
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'يرجى نشر الصفحة المرتبطة من أجل نشر الصفحة الافتراضية'
-    VIRTUALPAGEWARNING: 'يرجى اختيار صفحة مرتبطة وقم بالحفظ أولا من أجل نشر هذه الصفحة'
-    VIRTUALPAGEWARNINGSETTINGS: 'يرجى اختيار صفحة مرتبطة في مجالات المحتوى الرئيسي من أجل النشر'
-  SilverStripeNavigator:
-    ARCHIVED: المؤرشف
-  URLSegmentField:
-    Cancel: إلغاء
-    Edit: حرر
-    OK: موافق

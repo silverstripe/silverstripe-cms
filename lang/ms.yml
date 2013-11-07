@@ -50,11 +50,6 @@ ms:
     TOPLEVEL: 'Kandungan Laman (Peringkat Atas)'
     URLSegment: 'Segmen URL'
     has_one_Parent: 'Halaman Induk'
-  TableListField_PageControls_ss:
-    VIEWFIRST: 'Lihat pertama'
-    VIEWLAST: 'Lihat terakhir'
-    VIEWNEXT: 'Lihat berikut'
-    VIEWPREVIOUS: 'Lihat dahulu'
   VirtualPage:
     HEADER: 'Ini adalah mukasurat maya'
     PLURALNAME: 'Halaman-halaman Maya'

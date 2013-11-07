@@ -100,8 +100,6 @@ sl:
     SHOWVERSION: 'Pokaži različico'
     VIEWINGVERSION: 'Trenutno prikazana različica {version}.'
     MENUTITLE: Zgodovina
-  CMSPagesController_ContentToolbar_ss:
-    ENABLEDRAGGING: 'Potegni in spusti'
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Spremenjene strani'
   CMSSiteTreeFilter_DeletedPages:
@@ -168,7 +166,6 @@ sl:
   LeftAndMain:
     DELETED: Izbrisano
     SAVEDUP: Shranjeno.
-    STATUSPUBLISHEDSUCCESS: '''{title}'' je uspešno objavljen.'
   Permission:
     CMS_ACCESS_CATEGORY: 'Dostop do CMS-vmesnika'
   Permissions:
@@ -234,7 +231,6 @@ sl:
     BUTTONCANCELDRAFTDESC: 'Izbriši osnutek in ponastavi na trenutno objavljeno stran'
     BUTTONUNPUBLISH: Umakni iz objave
     BUTTONUNPUBLISHDESC: 'Umakni to stran iz objave'
-    CREATED: 'Datum nastanka'
     Comments: Komentarji
     Content: Vsebina
     DEFAULTABOUTCONTENT: '<p>Na to stran lahko vnesete svojo vsebino ali pa jo izbrišete in sami ustvarjate strani po svoji meri.<br /></p>'
@@ -303,23 +299,6 @@ sl:
     many_many_LinkTracking: 'Spremljanje povezav'
   SiteTreeURLSegmentField:
     HelpChars: 'Posebni znaki so samodejno spremenjeni ali odstranjeni.'
-  StaticExporter:
-    BASEURL: 'Osnovni URL'
-    EXPORTTO: 'Izvozi v to mapo'
-    NAME: 'Statični izvoz'
-  TableListField:
-    SELECT: 'Izberi:'
-  TableListField_ss:
-    NOITEMSFOUND: 'Ni najdenih predmetov'
-    SORTASC: 'Razvrsti naraščajoče'
-    SORTDESC: 'Razvrsti padajoče'
-  TableListField_PageControls_ss:
-    OF: od
-    TO: za
-    VIEWFIRST: 'Na začetek'
-    VIEWLAST: 'Na konec'
-    VIEWNEXT: 'Naslednja'
-    VIEWPREVIOUS: 'Prejšnja'
   ViewArchivedEmail_ss:
     CANACCESS: 'Do arhvirane različice spletnega mesta lahko dostopate na naslovu:'
     HAVEASKED: 'Za vpogled v vsebino našega spletnega mesta ste zaprosili'

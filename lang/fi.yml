@@ -74,6 +74,7 @@ fi:
     ACCESS_HELP: 'Oikeuttaa näkemään osion, joka sisältää sivurakenteen ja sisällön. Katselu- ja muokkausoikeuksia voidaan käsitellä sivukohtaisten pudotusvalikoiden kautta, kuten myös erillisestä "Sisällön oikeudet"-kohdasta.'
     AddNew: 'Lisää uusi sivu'
     AddNewButton: 'Lisää uusi'
+    AddPageRestriction: 'Huomio: Tietyt sivutyypit eivät ole sallittuja valitun sivutyypin alle.'
     ChoosePageParentMode: 'Valitse kohde, minne sivu luodaan'
     ChoosePageType: 'Valitse sivutyyppi'
     Create: Luo
@@ -111,7 +112,6 @@ fi:
     TreeFiltered: 'Suodatettu hakemistopuu.'
     TreeFilteredClear: 'Nollaa suodatin'
     MENUTITLE: 'Muokkaa sivua'
-    AddPageRestriction: 'Huomio: Tietyt sivutyypit eivät ole sallittuja valitun sivutyypin alle.'
   CMSMain_left_ss:
     APPLY_FILTER: 'Suodata'
     RESET: Nollaa
@@ -127,9 +127,9 @@ fi:
     SHOWUNPUBLISHED: 'Näytä julkaisemattomat versiot'
     SHOWVERSION: 'Näytä versionumero'
     VIEW: näkymä
+    VIEWINGLATEST: 'Katsot viimeisintä versiota.'
     VIEWINGVERSION: 'Katsot versiota {version}.'
     MENUTITLE: Historia
-    VIEWINGLATEST: 'Katsot viimeisintä versiota.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Tekijä
     NOTPUBLISHED: 'Julkaisematon'
@@ -142,7 +142,6 @@ fi:
     MENUTITLE: Sivut
     TreeView: 'Puunäkymä'
   CMSPagesController_ContentToolbar_ss:
-    ENABLEDRAGGING: 'Vedä ja pudota'
     MULTISELECT: Monivalinta
   CMSPagesController_Tools_ss:
     FILTER: Suodata
@@ -163,6 +162,7 @@ fi:
     ARCHIVEDSITE: 'Esikatselu versio'
     ARCHIVEDSITEFROM: 'Arkistoitu sivusto lähteestä:'
     CMS: CMS
+    DRAFT: Luonnos
     DRAFTSITE: 'Luonnossivusto'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Voidaksesi katsella luonnoksia tai arkistoitua sisältöä, sinun täytyy kirjautua sisään CMS:n salasanallasi. <a href="%s">Palataksesi julkiselle sivulle, napsauta tästä</a>.'
     Email: Sähköposti
@@ -174,14 +174,13 @@ fi:
     LOGIN: Kirjaudu sisään
     LOGOUT: 'Kirjaudu ulos'
     NOTLOGGEDIN: 'Ei kirjautuneena sisään'
+    PUBLISHED: Julkaistu
     PUBLISHEDSITE: 'Julkaistu sivusto'
     Password: Salasana
     PostInstallTutorialIntro: 'Tämä sivusto on yksinkertaistettu versio SilverStripe 3 sivustosta. Laajentaaksesi tätä, ole hyvä ja tutustu: {link}.'
     StartEditing: 'Voit aloittaa sisällön muokkauksen avaamalla <a href="{link}">sisällönhallintajärjestelmän ylläpitopuolen</a>'
     UnableDeleteInstall: 'Asennustiedostojen automaattinen poistaminen ei onnistunut. Ole hyvä ja poista seuraavat tiedostot manuaalisesti'
     VIEWPAGEIN: 'Tarkastele sivua:'
-    DRAFT: Luonnos
-    PUBLISHED: Julkaistu
   ErrorPage:
     400: '400 - Virheellinen Pyyntö'
     401: '401 - Luvaton'
@@ -225,9 +224,7 @@ fi:
     DELETED: Poistettu.
     PreviewButton: Esikatselu
     SAVEDUP: Tallennettu.
-    STATUSPUBLISHEDSUCCESS: '''{title}'' julkaistiin onnistuneesti'
     SearchResults: 'Hakutulokset'
-    VersionUnknown: Tuntematon
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS-pääsy'
   Permissions:
@@ -249,6 +246,10 @@ fi:
     MENUTITLE: Raportit
   ReportAdminForm:
     FILTERBY: 'Suodata'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Ole hyvä ja julkaise linkitetty sivu, jotta virtuaalisivun julkaisu on mahdollista'
+    VIRTUALPAGEWARNING: 'Ole hyvä ja valitse linkitetty sivu ja tallenna se ensin, jotta tämän sivun julkaiseminen olisi mahdollista'
+    VIRTUALPAGEWARNINGSETTINGS: 'Ole hyvä ja valitse linkitetty sivu sisältö kentästä, jotta julkaisu on mahdollista'
   SearchForm:
     GO: Siirry
     SEARCH: Haku
@@ -265,6 +266,8 @@ fi:
     OtherGroupTitle: Muu
     ParameterLiveCheckbox: 'Tarkista live-sivusto'
     REPEMPTY: '{title}:n raportti on tyhjä.'
+  SilverStripeNavigator:
+    ARCHIVED: Arkistoitu
   SilverStripeNavigatorLink:
     ShareInstructions: 'Jakaaksesi tämä sivu, kopioi ja liitä alla oleva linkki.'
     ShareLink: 'Jaa linkki'
@@ -297,10 +300,11 @@ fi:
     APPEARSVIRTUALPAGES: 'Tämä sisältö on käytössä myös virtuaalisivuilla osioissa {title}'
     BUTTONCANCELDRAFT: 'Peruuta muutokset, jotka teit luonnokseen'
     BUTTONCANCELDRAFTDESC: 'Poista luonnoksesi ja palauta julkaistu sivu'
+    BUTTONPUBLISHED: Julkaistu
+    BUTTONSAVED: Tallennettu
     BUTTONSAVEPUBLISH: 'Tallenna ja julkaise'
     BUTTONUNPUBLISH: Poista julkaisu
     BUTTONUNPUBLISHDESC: 'Poista tämä sivu julkaistulta sivustolta'
-    CREATED: 'Luotu'
     Comments: Kommentit
     Content: Sisältö
     DEFAULTABOUTCONTENT: '<p>Voit täyttää tämän sivun omalla sisällölläsi tai poistaa sen ja luoda omia sivujasi.<br /></p>'
@@ -322,9 +326,12 @@ fi:
     EDIT_ALL_DESCRIPTION: 'Muokkaa mitä tahansa sivua'
     EDIT_ALL_HELP: 'Mahdollisuus muokata mitä tahansa sivua sivustosta, riippumatta Käyttöoikeus-välilehden asetuksista. Vaatii "Käyttöoikeus sivuston sisältöön" -lupaa'
     Editors: 'Toimittajaryhmät'
+    GroupPlaceholder: 'Valitse ryhmä napsauttamalla'
     HASBROKENLINKS: 'Tällä sivulla on rikkinäisiä linkkejä'
     HTMLEDITORTITLE: Sisältö
     INHERIT: 'Sama kuin ylätason sivulla'
+    LASTPUBLISHED: 'Viimeksi julkaistu'
+    LASTSAVED: 'Viimeksi tallennettu'
     LASTUPDATED: 'Viimeksi päivitetty'
     LINKCHANGENOTE: 'Tämän sivun linkin muuttaminen vaikuttaa myös alasivujen linkkeihin.'
     MENUTITLE: 'Navigoinnin nimike'
@@ -335,6 +342,8 @@ fi:
     MODIFIEDONDRAFTHELP: 'Sivulla on tehty muutoksia, joita ei ole julkaistu'
     MODIFIEDONDRAFTSHORT: Muokattu
     MetadataToggle: Meta-tiedot
+    MoreOptions: 'Lisää valintoja'
+    NOTPUBLISHED: 'Julkaisematon'
     OBSOLETECLASS: 'Tämä sivu on vanhentunutta tyyppiä ({type}). Tallentaminen nollaa tyypin ja saatat menettää tietoja.'
     PAGELOCATION: 'Sivun sijainti'
     PAGETITLE: 'Sivun nimi'
@@ -373,49 +382,25 @@ fi:
     many_many_BackLinkTracking: 'Käänteinen seuranta'
     many_many_ImageTracking: 'Kuvan seuranta'
     many_many_LinkTracking: 'Linkin seuranta'
-    BUTTONPUBLISHED: Julkaistu
-    BUTTONSAVED: Tallennettu
-    GroupPlaceholder: 'Valitse ryhmä napsauttamalla'
-    LASTPUBLISHED: 'Viimeksi julkaistu'
-    LASTSAVED: 'Viimeksi tallennettu'
-    MoreOptions: 'Lisää valintoja'
-    NOTPUBLISHED: 'Julkaisematon'
   SiteTreeURLSegmentField:
-    HelpChars: 'Erikoismerkit muunnetaan tai poistetaan automaattisesti.'
     EMPTY: 'Anna URL-osoite tai napsauta peruuta'
-  StaticExporter:
-    BASEURL: 'Kannan URL-osoite'
-    EXPORTTO: 'Vie tähän kansioon'
-    NAME: 'Staattinen viejä'
-  TableListField:
-    SELECT: 'Valitse:'
-  TableListField_ss:
-    NOITEMSFOUND: 'Tietoja ei löytynyt'
-    SORTASC: 'Järjestä nousevasti'
-    SORTDESC: 'Järjestä laskevasti'
-  TableListField_PageControls_ss:
-    DISPLAYING: Näytetään
-    OF: /
-    TO: -»
-    VIEWFIRST: 'Näytä ensimmäinen'
-    VIEWLAST: 'Näytä viimeinen'
-    VIEWNEXT: 'Näytä seuraava'
-    VIEWPREVIOUS: 'Näytä edellinen'
-  TreeTools:
-    DisplayLabel: 'Näytä:'
+    HelpChars: 'Erikoismerkit muunnetaan tai poistetaan automaattisesti.'
+  URLSegmentField:
+    Cancel: Peruuta
+    Edit: Muokkaa
+    OK: OK
   ViewArchivedEmail_ss:
     CANACCESS: 'Pääset arkistoidulle sivulle tällä linkillä:'
     HAVEASKED: 'Sinua on pyydetty katsomaan sivun sisältöä '
   VirtualPage:
     CHOOSE: 'Linkitetty sivu'
     DESCRIPTION: 'Näytä toisen sivun sisältö'
-    EDITCONTENT: 'Muokkaa linkitetyn sivun sisältöä'
+    EditLink: muokkaa
     HEADER: 'Tämä on virtuaalisivu'
+    HEADERWITHLINK: 'Tämä on virtuaalisivu, joka kopioi sisällön kohteesta "{title}" ({link})'
     PLURALNAME: 'Virtuaalisivut'
     PageTypNotAllowedOnRoot: 'Alkuperäinen sivutyyppi "{type}" ei ole sallittu tämän virtuaalisen sivun päätasolla'
     SINGULARNAME: 'Virtuaalisivu'
-    EditLink: muokkaa
-    HEADERWITHLINK: 'Tämä on virtuaalisivu, joka kopioi sisällön kohteesta "{title}" ({link})'
   CMSFileAddController:
     MENUTITLE: Tiedostot
   CMSPageEditController:
@@ -424,13 +409,3 @@ fi:
     MENUTITLE: 'Muokkaa sivua'
   CMSSettingsController:
     MENUTITLE: Asetukset
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Ole hyvä ja julkaise linkitetty sivu, jotta virtuaalisivun julkaisu on mahdollista'
-    VIRTUALPAGEWARNING: 'Ole hyvä ja valitse linkitetty sivu ja tallenna se ensin, jotta tämän sivun julkaiseminen olisi mahdollista'
-    VIRTUALPAGEWARNINGSETTINGS: 'Ole hyvä ja valitse linkitetty sivu sisältö kentästä, jotta julkaisu on mahdollista'
-  SilverStripeNavigator:
-    ARCHIVED: Arkistoitu
-  URLSegmentField:
-    Cancel: Peruuta
-    Edit: Muokkaa
-    OK: OK

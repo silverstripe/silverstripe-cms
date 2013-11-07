@@ -83,7 +83,6 @@ zh_TW:
     BUTTONCANCELDRAFTDESC: '刪除草稿並回複到正式發布的版本'
     BUTTONUNPUBLISH: 取消發布
     BUTTONUNPUBLISHDESC: '從正式發布站移除'
-    CREATED: '建立日期'
     Comments: 意見
     Content: 內容
     DEFAULTABOUTCONTENT: '<p>您可以用您自己的內容填入本網頁, 或是刪除它並建立您自己的網頁<br /></p>'
@@ -143,10 +142,6 @@ zh_TW:
     many_many_BackLinkTracking: '背面鏈結追蹤'
     many_many_ImageTracking: '影像追蹤'
     many_many_LinkTracking: '鏈結追蹤'
-  StaticExporter:
-    BASEURL: '基本網址'
-    EXPORTTO: '匯出至那個資料夾'
-    NAME: '網站靜態匯出'
   ViewArchivedEmail_ss:
     CANACCESS: '您可以利用哲格連結到已歸檔站：'
     HAVEASKED: '您要瀏覽這一天的網站內容：'

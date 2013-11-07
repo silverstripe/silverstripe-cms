@@ -102,15 +102,6 @@ ca:
     many_many_BackLinkTracking: 'Seguiment d''enllaços retroactius'
     many_many_ImageTracking: 'Seguiment d''imatges'
     many_many_LinkTracking: 'Seguiment d''enllaços'
-  StaticExporter:
-    BASEURL: 'URL Base'
-    EXPORTTO: 'Exporta a aquella carpeta'
-    NAME: 'Exportador estàtic'
-  TableListField_PageControls_ss:
-    VIEWFIRST: 'Veure el primer'
-    VIEWLAST: 'Veure el darrer'
-    VIEWNEXT: 'Veure el següent'
-    VIEWPREVIOUS: 'Veure l''anterior'
   ViewArchivedEmail_ss:
     CANACCESS: 'Podeu accedir al lloc arxivat en aquesta adreça:'
     HAVEASKED: 'Heu demanat de veure el contingut del nostre lloc el'

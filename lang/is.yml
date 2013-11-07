@@ -72,13 +72,6 @@ is:
     URLSegment: 'Slóðar hlutar'
     VIEW_DRAFT_CONTENT: 'Skoða uppkast'
     has_one_Parent: 'Yfir síða'
-  TableListField:
-    SELECT: 'Veldu:'
-  TableListField_PageControls_ss:
-    VIEWFIRST: 'Sýna first'
-    VIEWLAST: 'Sýna síðast'
-    VIEWNEXT: 'Sýna næsta'
-    VIEWPREVIOUS: 'Sýna fyrri'
   VirtualPage:
     HEADER: 'Þetta er sýndarsíða'
     PLURALNAME: 'Sýndar síða'

@@ -74,6 +74,7 @@ fr:
     ACCESS_HELP: 'Permettre l''affichage de la section contenant l''arborescence et le contenu. La gestion des permissions de visualisation et d''édition peut se faire à travers des liste spécifiques à chaque page. Et aussi la "Permission de contenu" séparé.'
     AddNew: 'Ajouter page'
     AddNewButton: 'Ajouter'
+    AddPageRestriction: 'Note : certains types de page ne sont pas autorisés pour cette sélection'
     ChoosePageParentMode: 'Choisissez où créer cette page'
     ChoosePageType: 'Choisir le type de page'
     Create: Créer
@@ -111,7 +112,6 @@ fr:
     TreeFiltered: 'Filtrelenmiş ağaç liste.'
     TreeFilteredClear: 'Filtreyi temizle'
     MENUTITLE: 'Éditer la page'
-    AddPageRestriction: 'Note : certains types de page ne sont pas autorisés pour cette sélection'
   CMSMain_left_ss:
     APPLY_FILTER: 'Appliquer le filtre'
     RESET: Réinitialiser
@@ -127,9 +127,9 @@ fr:
     SHOWUNPUBLISHED: 'Afficher les versions non publiées'
     SHOWVERSION: 'Afficher cette version'
     VIEW: Afficher
+    VIEWINGLATEST: 'Vous regardez la dernière version'
     VIEWINGVERSION: 'Version affichée : {version}.'
     MENUTITLE: Historique
-    VIEWINGLATEST: 'Vous regardez la dernière version'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Auteur
     NOTPUBLISHED: 'Non publiée'
@@ -142,7 +142,6 @@ fr:
     MENUTITLE: Pages
     TreeView: 'Arbre'
   CMSPagesController_ContentToolbar_ss:
-    ENABLEDRAGGING: 'Glisser-déposer'
     MULTISELECT: Choix multiple
   CMSPagesController_Tools_ss:
     FILTER: Filtrer
@@ -163,6 +162,7 @@ fr:
     ARCHIVEDSITE: 'Aperçu de cette version'
     ARCHIVEDSITEFROM: 'Site archivé depuis'
     CMS: CMS
+    DRAFT: Brouillon
     DRAFTSITE: 'Site Brouillon'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Vous devez vous authentifier avec votre mot de passe CMS afin de pouvoir consulter le contenu brouillon ou archivé. <a href="%s">Cliquer ici pour revenir au site publié.</a>'
     Email: Courrier électronique
@@ -174,14 +174,13 @@ fr:
     LOGIN: Connectez-vous
     LOGOUT: 'Se déconnecter'
     NOTLOGGEDIN: 'Non-connecté'
+    PUBLISHED: Publié
     PUBLISHEDSITE: 'Site Publié'
     Password: Mot de passe
     PostInstallTutorialIntro: 'Ce site est une version simplifiée d’un site SilverStripe 3. Pour le développer, consultez {link}.'
     StartEditing: 'Vous pouvez commencer à éditer votre site en ouvrant <a href="{link}">le CMS</a>'
     UnableDeleteInstall: 'La suppression des fichiers d’installation a échoué ; faites-le manuellement pour les fichiers ci-dessous : '
     VIEWPAGEIN: 'Voir la page en :'
-    DRAFT: Brouillon
-    PUBLISHED: Publié
   ErrorPage:
     400: '400 - Requête incorrecte'
     401: '401 - Non autorisé'
@@ -225,9 +224,7 @@ fr:
     DELETED: Supprimée.
     PreviewButton: Aperçu
     SAVEDUP: Sauvegardée.
-    STATUSPUBLISHEDSUCCESS: '« {title} » publiée avec succès'
     SearchResults: 'Résultats de la recherche'
-    VersionUnknown: Inconnu
   Permission:
     CMS_ACCESS_CATEGORY: 'Accès au CMS'
   Permissions:
@@ -249,6 +246,10 @@ fr:
     MENUTITLE: Rapports
   ReportAdminForm:
     FILTERBY: 'Filtrer par'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Veuillez publier la page liée avant de publier la page virtuelle'
+    VIRTUALPAGEWARNING: 'Veuillez choisir une page liée et sauvegarder avant de publier cette page'
+    VIRTUALPAGEWARNINGSETTINGS: 'Veuillez choisir une page liée dans le contenu principal avant de publier'
   SearchForm:
     GO: Démarrer
     SEARCH: Rechercher
@@ -265,6 +266,8 @@ fr:
     OtherGroupTitle: Autres
     ParameterLiveCheckbox: 'Visiter le site de production'
     REPEMPTY: 'Le rapport {title} est vide'
+  SilverStripeNavigator:
+    ARCHIVED: Archivé
   SilverStripeNavigatorLink:
     ShareInstructions: 'Pour partager cette page, copiez et collez le lien ci-dessous.'
     ShareLink: 'Partager le lien'
@@ -297,10 +300,11 @@ fr:
     APPEARSVIRTUALPAGES: 'Ce contenu apparaît aussi dans les sections {title} des pages virtuelles.'
     BUTTONCANCELDRAFT: 'Annuler les changements brouillons'
     BUTTONCANCELDRAFTDESC: 'Supprimer votre brouillon et revenir à la page actuellement publiée'
+    BUTTONPUBLISHED: Publié
+    BUTTONSAVED: Sauvegardé
     BUTTONSAVEPUBLISH: 'Sauvegarder et publier'
     BUTTONUNPUBLISH: Retirer du site publié
     BUTTONUNPUBLISHDESC: 'Retirer cette page du site publié'
-    CREATED: 'Date de création'
     Comments: Commentaires
     Content: Contenu
     DEFAULTABOUTCONTENT: '<p>Vous pouvez éditer cette page avec votre propre contenu ou supprimer celle-ci et créer vos propres pages.<br></p>'
@@ -322,9 +326,12 @@ fr:
     EDIT_ALL_DESCRIPTION: 'Editer toute la page'
     EDIT_ALL_HELP: 'Possibilité d''édition de toute les pages du site, peu importe les réglages de l''onglet Accès. Nécessite la permission "Access to Site Content". '
     Editors: 'Groupes d''éditeurs'
+    GroupPlaceholder: 'Cliquez pour sélectionner un groupe'
     HASBROKENLINKS: 'Cette page possède des liens rompus.'
     HTMLEDITORTITLE: Contenu
     INHERIT: 'hérite de la page parente'
+    LASTPUBLISHED: 'Dernier publié'
+    LASTSAVED: 'Dernier sauvegardé'
     LASTUPDATED: 'Dernière mise à jour'
     LINKCHANGENOTE: 'Changer le lien de cette page affectera aussi les liens des pages enfants.'
     MENUTITLE: 'Nom de navigation'
@@ -335,6 +342,8 @@ fr:
     MODIFIEDONDRAFTHELP: 'La page comporte des modifications non publiées'
     MODIFIEDONDRAFTSHORT: Modifiée
     MetadataToggle: Métadonnées
+    MoreOptions: 'Plus d''options'
+    NOTPUBLISHED: 'Non-publié'
     OBSOLETECLASS: 'Cette page est d''un type obsolète : {type}. Sauvegarder réinitialisera son type et vous pourriez perdre des données'
     PAGELOCATION: 'Emplacement de la page'
     PAGETITLE: 'Nom de la page'
@@ -373,49 +382,25 @@ fr:
     many_many_BackLinkTracking: 'Suivi des liens retour'
     many_many_ImageTracking: 'Suivi des images'
     many_many_LinkTracking: 'Suivi des Liens'
-    BUTTONPUBLISHED: Publié
-    BUTTONSAVED: Sauvegardé
-    GroupPlaceholder: 'Cliquez pour sélectionner un groupe'
-    LASTPUBLISHED: 'Dernier publié'
-    LASTSAVED: 'Dernier sauvegardé'
-    MoreOptions: 'Plus d''options'
-    NOTPUBLISHED: 'Non-publié'
   SiteTreeURLSegmentField:
-    HelpChars: 'Les caractères spéciaux sont automatiquement convertis ou supprimés.'
     EMPTY: 'Merci d''entrer une URL ou cliquez sur Annuler'
-  StaticExporter:
-    BASEURL: 'URL de base'
-    EXPORTTO: 'Exporter vers ce dossier'
-    NAME: 'Exportation Statique'
-  TableListField:
-    SELECT: 'Sélectionner:'
-  TableListField_ss:
-    NOITEMSFOUND: 'Aucun élément trouvé'
-    SORTASC: 'Classer en ordre ascendant'
-    SORTDESC: 'Classer en ordre descendant'
-  TableListField_PageControls_ss:
-    DISPLAYING: Gösterilen
-    OF: de
-    TO: kime
-    VIEWFIRST: 'Voir le(s) premier(s)'
-    VIEWLAST: 'Voir le(s) dernier(s)'
-    VIEWNEXT: 'Voir le(s) suivant(s)'
-    VIEWPREVIOUS: 'Voir le(s) précédent(s)'
-  TreeTools:
-    DisplayLabel: 'Afficher :'
+    HelpChars: 'Les caractères spéciaux sont automatiquement convertis ou supprimés.'
+  URLSegmentField:
+    Cancel: Annuler
+    Edit: Editer
+    OK: OK
   ViewArchivedEmail_ss:
     CANACCESS: 'Vous pouvez accéder le site archivé par ce lien :'
     HAVEASKED: 'Vous avez demandé à voir le contenu de notre site le'
   VirtualPage:
     CHOOSE: 'Page liée'
     DESCRIPTION: 'Affiche le contenu d’une autre page'
-    EDITCONTENT: 'Editer le contenu d''une page liée'
+    EditLink: éditer
     HEADER: 'Cette page est virtuelle'
+    HEADERWITHLINK: 'Ceci est une page virtuelle copiant le contenu de "{title}" ({link})'
     PLURALNAME: 'Pages Virtuelles'
     PageTypNotAllowedOnRoot: 'Le type de page d’origine « {type} » n’est pas autorisé au niveau racine pour cette page virtuelle'
     SINGULARNAME: 'Page virtuelle'
-    EditLink: éditer
-    HEADERWITHLINK: 'Ceci est une page virtuelle copiant le contenu de "{title}" ({link})'
   CMSFileAddController:
     MENUTITLE: Fichiers
   CMSPageEditController:
@@ -424,13 +409,3 @@ fr:
     MENUTITLE: 'Éditer la page'
   CMSSettingsController:
     MENUTITLE: Paramètres
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Veuillez publier la page liée avant de publier la page virtuelle'
-    VIRTUALPAGEWARNING: 'Veuillez choisir une page liée et sauvegarder avant de publier cette page'
-    VIRTUALPAGEWARNINGSETTINGS: 'Veuillez choisir une page liée dans le contenu principal avant de publier'
-  SilverStripeNavigator:
-    ARCHIVED: Archivé
-  URLSegmentField:
-    Cancel: Annuler
-    Edit: Editer
-    OK: OK

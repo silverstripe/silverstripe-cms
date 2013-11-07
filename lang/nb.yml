@@ -74,6 +74,7 @@ nb:
     ACCESS_HELP: 'Lar deg se seksjonen som inneholder sidetreet og annet innhold. Tillatelser for å vise og redigere kan behandles gjennom sidespesifikke nedtrekkslister, så vel som  separate "Innholdstillatelser".'
     AddNew: 'Opprett ny side'
     AddNewButton: 'Opprett ny'
+    AddPageRestriction: 'Merk: Noen sidetyper er ikke tillatt for dette valget.'
     ChoosePageParentMode: 'Velg hvor du vil opprette siden'
     ChoosePageType: 'Velg sidetype'
     Create: Opprett
@@ -111,7 +112,6 @@ nb:
     TreeFiltered: 'Filtrerte treet.'
     TreeFilteredClear: 'Fjern filtrering'
     MENUTITLE: 'Rediger side'
-    AddPageRestriction: 'Merk: Noen sidetyper er ikke tillatt for dette valget.'
   CMSMain_left_ss:
     APPLY_FILTER: 'Aktiver filter'
     RESET: Tilbakestill
@@ -127,9 +127,9 @@ nb:
     SHOWUNPUBLISHED: 'Vis upubliserte versjoner'
     SHOWVERSION: 'Vis versjon'
     VIEW: Visning
+    VIEWINGLATEST: 'Viser den nyeste versjonen.'
     VIEWINGVERSION: 'Viser versjon {version}.'
     MENUTITLE: Historie
-    VIEWINGLATEST: 'Viser den nyeste versjonen.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Forfatter
     NOTPUBLISHED: 'Ikke publisert'
@@ -142,7 +142,6 @@ nb:
     MENUTITLE: Sider
     TreeView: 'Trevisning'
   CMSPagesController_ContentToolbar_ss:
-    ENABLEDRAGGING: 'Dra-og-slipp'
     MULTISELECT: Flervalg
   CMSPagesController_Tools_ss:
     FILTER: Filter
@@ -163,6 +162,7 @@ nb:
     ARCHIVEDSITE: 'Forhåndsvis versjon'
     ARCHIVEDSITEFROM: 'Arkivert nettsted fra '
     CMS: Publiseringssystem
+    DRAFT: Utkast
     DRAFTSITE: 'Utkastnettsted'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Du må være logget inn i kontrollpanelet for å se utkast eller det arkiverte innholdet. <a href="%s">Klikk her for å gå tilbake til den publiserte versjonen.</a>'
     Email: Epost
@@ -174,14 +174,13 @@ nb:
     LOGIN: Innlogging
     LOGOUT: 'Logg ut'
     NOTLOGGEDIN: 'Ikke logget inn'
+    PUBLISHED: Publisert
     PUBLISHEDSITE: 'Publisert nettsted'
     Password: Passord
     PostInstallTutorialIntro: 'Dette nettstedet er en simplistisk versjon av et nettsted for SilverStripe 3. For å utvide nettstedet kan du ta en titt på {link}.'
     StartEditing: 'Du kan redigere innholdet ved å åpne <a href="{link}">publiseringssystemet</a>.'
     UnableDeleteInstall: 'Klarte ikke å slette installasjonsfilene. Vennligst slett filene under manuelt'
     VIEWPAGEIN: 'Vis side i:'
-    DRAFT: Utkast
-    PUBLISHED: Publisert
   ErrorPage:
     400: '400 - Ugyldig sidespørring'
     401: '401 - Uautorisert'
@@ -225,9 +224,7 @@ nb:
     DELETED: Slettet.
     PreviewButton: Forhåndsvisning
     SAVEDUP: Lagret.
-    STATUSPUBLISHEDSUCCESS: 'Vellykket publisering av "{title}".'
     SearchResults: 'Søkeresultater'
-    VersionUnknown: Ukjent
   Permission:
     CMS_ACCESS_CATEGORY: 'Tilgang til publiseringssystemet'
   Permissions:
@@ -249,6 +246,10 @@ nb:
     MENUTITLE: Rapporter
   ReportAdminForm:
     FILTERBY: 'Filtrer på '
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Vennligst publiser den lenkede siden for å publisere den virtuelle siden'
+    VIRTUALPAGEWARNING: 'Vennligst velg en lenket side og lagre først for å publisere denne siden'
+    VIRTUALPAGEWARNINGSETTINGS: 'Vennligst velg en lenket side i hovedinnholdsfeltene for å publisere siden'
   SearchForm:
     GO: Utfør
     SEARCH: Søk
@@ -265,6 +266,8 @@ nb:
     OtherGroupTitle: Andre
     ParameterLiveCheckbox: 'Sjekk aktivt nettsted'
     REPEMPTY: 'Rapporten for {title} er tom.'
+  SilverStripeNavigator:
+    ARCHIVED: Arkivert
   SilverStripeNavigatorLink:
     ShareInstructions: 'For å dele en lenke til denne siden, kopier og lim inn lenken nedenfor.'
     ShareLink: 'Del lenke'
@@ -297,10 +300,11 @@ nb:
     APPEARSVIRTUALPAGES: 'Dette innholdet opptrer også i {title}-seksjonene til de virtuelle sidene.'
     BUTTONCANCELDRAFT: 'Avbryt endringer i utkast'
     BUTTONCANCELDRAFTDESC: 'Slett utkast og gå tilbake til publisert versjon av denne siden'
+    BUTTONPUBLISHED: Publisert
+    BUTTONSAVED: Lagret
     BUTTONSAVEPUBLISH: 'Lagre og publiser'
     BUTTONUNPUBLISH: Avpubliser
     BUTTONUNPUBLISHDESC: 'Fjern denne siden fra det publiserte nettstedet'
-    CREATED: 'Opprettelsesdato'
     Comments: Kommentarer
     Content: Innhold
     DEFAULTABOUTCONTENT: '<p>Du kan fylle denne siden med ditt eget innhold, eller du kan slette siden og lage dine egne sider.<br /></p>'
@@ -322,9 +326,12 @@ nb:
     EDIT_ALL_DESCRIPTION: 'Rediger hvilken som helst side'
     EDIT_ALL_HELP: 'Lar deg redigere hvilken som helst side på nettstedet, uavhengig av innstillingene på adgangsfanen. Krever at du har tilgang til sideseksjonen.'
     Editors: 'Redaktørgrupper'
+    GroupPlaceholder: 'Trykk for å velge gruppe'
     HASBROKENLINKS: 'Denne siden har ødelagte lenker.'
     HTMLEDITORTITLE: Innhold
     INHERIT: 'Arvet fra overordnet side'
+    LASTPUBLISHED: 'Sist publisert'
+    LASTSAVED: 'Sist lagret'
     LASTUPDATED: 'Sist oppdatert'
     LINKCHANGENOTE: 'Endring av denne sidens lenke vil også påvirke lenkene til alle underliggende sider.'
     MENUTITLE: 'Navigasjonsetikett'
@@ -335,6 +342,8 @@ nb:
     MODIFIEDONDRAFTHELP: 'Siden har upubliserte forandringer'
     MODIFIEDONDRAFTSHORT: Endret
     MetadataToggle: Metadata
+    MoreOptions: 'Flere alternativer'
+    NOTPUBLISHED: 'Ikke publisert'
     OBSOLETECLASS: 'Denne siden er av den utdaterte typen {type}. Lagring vil tilbakestille typen og kan medføre tap av informasjon.'
     PAGELOCATION: 'Sideplassering'
     PAGETITLE: 'Sidenavn'
@@ -373,49 +382,25 @@ nb:
     many_many_BackLinkTracking: 'Referansesporing'
     many_many_ImageTracking: 'Bildesporing'
     many_many_LinkTracking: 'Lenkesporing'
-    BUTTONPUBLISHED: Publisert
-    BUTTONSAVED: Lagret
-    GroupPlaceholder: 'Trykk for å velge gruppe'
-    LASTPUBLISHED: 'Sist publisert'
-    LASTSAVED: 'Sist lagret'
-    MoreOptions: 'Flere alternativer'
-    NOTPUBLISHED: 'Ikke publisert'
   SiteTreeURLSegmentField:
-    HelpChars: 'Spesialtegn blir automatisk konvertert eller fjernet.'
     EMPTY: 'Vennligst skriv inn adressesegment eller trykk avbryt.'
-  StaticExporter:
-    BASEURL: 'Basisadresse'
-    EXPORTTO: 'Eksporter til mappen'
-    NAME: 'Eksport av statiske sider'
-  TableListField:
-    SELECT: 'Velg:'
-  TableListField_ss:
-    NOITEMSFOUND: 'Ingen elementer ble funnet'
-    SORTASC: 'Sorter i stigende rekkefølge'
-    SORTDESC: 'Sorter i synkende rekkefølge'
-  TableListField_PageControls_ss:
-    DISPLAYING: Viser
-    OF: av
-    TO: til
-    VIEWFIRST: 'Se første'
-    VIEWLAST: 'Se siste'
-    VIEWNEXT: 'Se neste'
-    VIEWPREVIOUS: 'Se forrige'
-  TreeTools:
-    DisplayLabel: 'Vis:'
+    HelpChars: 'Spesialtegn blir automatisk konvertert eller fjernet.'
+  URLSegmentField:
+    Cancel: Avbryt
+    Edit: Rediger
+    OK: OK
   ViewArchivedEmail_ss:
     CANACCESS: 'Du kan besøke det arkiverte nettstedet med denne lenken:'
     HAVEASKED: 'Du har bedt om å vise innholdet på nettstedet vårt på '
   VirtualPage:
     CHOOSE: 'Lenket side'
     DESCRIPTION: 'Viser innholdet av en annen side'
-    EDITCONTENT: 'Rediger innhold på lenket side'
+    EditLink: rediger
     HEADER: 'Dette er en virituell side'
+    HEADERWITHLINK: 'Dette er en virtuell side som kopierer innhold fra "{title}" ({link})'
     PLURALNAME: 'Virtuelle sider'
     PageTypNotAllowedOnRoot: 'Originaltypen "{type}" er ikke tillatt på toppnivået for denne virtuelle siden.'
     SINGULARNAME: 'Virtuell side'
-    EditLink: rediger
-    HEADERWITHLINK: 'Dette er en virtuell side som kopierer innhold fra "{title}" ({link})'
   CMSFileAddController:
     MENUTITLE: Filer
   CMSPageEditController:
@@ -424,13 +409,3 @@ nb:
     MENUTITLE: 'Rediger siden'
   CMSSettingsController:
     MENUTITLE: Innstillinger
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Vennligst publiser den lenkede siden for å publisere den virtuelle siden'
-    VIRTUALPAGEWARNING: 'Vennligst velg en lenket side og lagre først for å publisere denne siden'
-    VIRTUALPAGEWARNINGSETTINGS: 'Vennligst velg en lenket side i hovedinnholdsfeltene for å publisere siden'
-  SilverStripeNavigator:
-    ARCHIVED: Arkivert
-  URLSegmentField:
-    Cancel: Avbryt
-    Edit: Rediger
-    OK: OK

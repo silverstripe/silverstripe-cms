@@ -48,15 +48,6 @@ hr:
     TOPLEVEL: 'Sadržaj stranice (Top Level)'
     URLSegment: 'Dio URLa'
     has_one_Parent: 'Roditeljska stranica'
-  StaticExporter:
-    BASEURL: 'Osnovni URL'
-    EXPORTTO: 'Izvezi u taj direktorij'
-    NAME: 'Statični exporter'
-  TableListField_PageControls_ss:
-    VIEWFIRST: 'Pogledaj prvi'
-    VIEWLAST: 'Pogledaj zadnji'
-    VIEWNEXT: 'Pogledaj slijedeći'
-    VIEWPREVIOUS: 'Pogledaj prethodni'
   ViewArchivedEmail_ss:
     CANACCESS: 'Na slijedećem linku možete pristupiti arhiviranoj stranici:'
     HAVEASKED: 'Zatražili ste sadržaj naše stranice '

@@ -69,15 +69,6 @@ si:
     TOPLEVEL: 'අන්ර්ගතය'
     URLSegment: 'URL කොටස'
     has_one_Parent: 'මවු පිටුව'
-  StaticExporter:
-    BASEURL: 'පාදම් URL'
-    EXPORTTO: 'ඵම ගොනුවට අපනයනය කරන්නන'
-    NAME: 'ස්තිතික අපනයනය කරන්නා'
-  TableListField_PageControls_ss:
-    VIEWFIRST: 'පළමු එක පෙන්වන්න'
-    VIEWLAST: 'අවසානය පෙන්වන්න'
-    VIEWNEXT: 'ඊළඟ එක පෙන්වන්න'
-    VIEWPREVIOUS: 'පෙර පෙන්වන්න'
   ViewArchivedEmail_ss:
     CANACCESS: 'මෙම බැදීමෙන් පැරනි අඩවියට ප්රවිෂ්ට විය හැක'
     HAVEASKED: 'ඹබට අපගේ වෙබ් අඩවිය නිරීක්ශනය කරන ලෙස ඉල්ලා ඇත'

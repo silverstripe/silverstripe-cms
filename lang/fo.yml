@@ -63,13 +63,6 @@ fo:
     TABCONTENT: 'Innihald'
     TOPLEVEL: 'Heimasíðu innihald (Fyrsta støði)'
     has_one_Parent: 'Yvirsíða'
-  StaticExporter:
-    EXPORTTO: 'Útles til skjáttuna'
-  TableListField_PageControls_ss:
-    VIEWFIRST: 'Vís fyrstu'
-    VIEWLAST: 'Vís seinastu'
-    VIEWNEXT: 'Vís næsta'
-    VIEWPREVIOUS: 'Vís fyrra'
   ViewArchivedEmail_ss:
     CANACCESS: 'Tú kann fáa atgongd til arkiv heimasíðuna her:'
     HAVEASKED: 'Tú mást fáa loyvi, fyri at kunna síggja innihaldið á okkara heimasíðu á'

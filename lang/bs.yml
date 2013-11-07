@@ -89,10 +89,6 @@ bs:
     TABBEHAVIOUR: Ponašanje
     TABCONTENT: 'Sadržaj'
     TOPLEVEL: 'Sadržaj stranice (Glavni nivo)'
-  StaticExporter:
-    BASEURL: 'Osnovni URL'
-    EXPORTTO: 'Izvezi u ovaj direktorij'
-    NAME: 'Izvezi statični sadržaj'
   ViewArchivedEmail_ss:
     CANACCESS: 'Arhiviranoj stranici možete pristupiti korištenjem ovog linka:'
     HAVEASKED: 'Zahtjevali ste pregled sadržaja naše stranice na'

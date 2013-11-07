@@ -70,6 +70,7 @@ pt:
     ACCESS_HELP: 'Permitir a visualização da árvore de páginas e respectivos conteúdos. Ver e editar permissões que podem ser seleccionadas a partir de uma caixa de selecção, bem como os separadores de "permissões de conteúdo".'
     AddNew: 'Adicionar nova página'
     AddNewButton: 'Novo'
+    AddPageRestriction: 'Nota: Alguns tipos de página não estão disponíveis nesta seleção'
     ChoosePageParentMode: 'Escolha onde criar esta página'
     ChoosePageType: 'Escolher tipo de página'
     Create: Criar
@@ -105,7 +106,6 @@ pt:
     TreeFiltered: 'Filtrar árvore'
     TreeFilteredClear: 'Remover filtro'
     MENUTITLE: 'Editar página'
-    AddPageRestriction: 'Nota: Alguns tipos de página não estão disponíveis nesta seleção'
   CMSMain_left_ss:
     APPLY_FILTER: 'Aplicar filtro'
     RESET: Redefinir
@@ -121,9 +121,9 @@ pt:
     SHOWUNPUBLISHED: 'Mostrar versões não publicadas'
     SHOWVERSION: 'Mostrar versão'
     VIEW: ver
+    VIEWINGLATEST: 'Atualmente está a ver a última versão'
     VIEWINGVERSION: 'Actualmente está a ver a versão nº {version}.'
     MENUTITLE: Histórico
-    VIEWINGLATEST: 'Atualmente está a ver a última versão'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: 'Não publicada'
@@ -136,7 +136,6 @@ pt:
     MENUTITLE: Páginas
     TreeView: 'Vista em árvore'
   CMSPagesController_ContentToolbar_ss:
-    ENABLEDRAGGING: 'Arrastar e Largar'
     MULTISELECT: Multi-selecção
   CMSPagesController_Tools_ss:
     FILTER: Filtrar
@@ -212,9 +211,7 @@ pt:
     DELETED: Apagada
     PreviewButton: Pré-visualização
     SAVEDUP: Guardado
-    STATUSPUBLISHEDSUCCESS: '''{title}'' restaurado com sucesso'
     SearchResults: 'Resultados da pesquisa'
-    VersionUnknown: Desconhecido
   Permission:
     CMS_ACCESS_CATEGORY: 'Acesso ao CMS'
   Permissions:
@@ -285,7 +282,6 @@ pt:
     BUTTONCANCELDRAFTDESC: 'Apagar o seu rascunho e reverter para a versão publicada atualmente'
     BUTTONUNPUBLISH: Remover do site Publicado
     BUTTONUNPUBLISHDESC: 'Remover esta página do site publicado'
-    CREATED: 'Data de criação'
     Comments: Comentários
     Content: Conteúdo
     DEFAULTABOUTCONTENT: '<p>Pode preencher esta página com o seu próprio conteúdo, ou apagá-la e criar as suas próprias páginas.</p>'
@@ -352,39 +348,21 @@ pt:
     many_many_LinkTracking: 'Rastreamento de links'
   SiteTreeURLSegmentField:
     HelpChars: 'Os caracteres especiais são automaticamente convertido ou removidos.'
-  StaticExporter:
-    BASEURL: 'URL base'
-    EXPORTTO: 'Exportar para esta pasta'
-    NAME: 'Exportar estaticamente'
-  TableListField:
-    SELECT: 'Escolha:'
-  TableListField_ss:
-    NOITEMSFOUND: 'Não foram encontrados elementos'
-    SORTASC: 'Ordenar por ordem crescente'
-    SORTDESC: 'Ordenar por ordem decrescente'
-  TableListField_PageControls_ss:
-    DISPLAYING: Apresentando
-    OF: de
-    TO: para
-    VIEWFIRST: 'Ver o primeiro'
-    VIEWLAST: 'Ver o último'
-    VIEWNEXT: 'Ver o próximo'
-    VIEWPREVIOUS: 'Ver o anterior'
-  TreeTools:
-    DisplayLabel: 'Apresentar:'
+  URLSegmentField:
+    Cancel: 'Cancelar '
+    Edit: Editar
   ViewArchivedEmail_ss:
     CANACCESS: 'Pode aceder aos arquivos do site a partir deste link:'
     HAVEASKED: 'Pediu para ver o conteúdo do nosso site na'
   VirtualPage:
     CHOOSE: 'Página associada'
     DESCRIPTION: 'Apresentar o conteúdo de outra página'
-    EDITCONTENT: 'Editar o conteúdo na página associada'
+    EditLink: editar
     HEADER: 'Esta é uma página virtual'
+    HEADERWITHLINK: 'Esta é uma página virtual com o conteúdo copiado da página "{title}" ({link})'
     PLURALNAME: 'Páginas Virtuais'
     PageTypNotAllowedOnRoot: 'Páginas do tipo "{type}" não tem permissões para serem criadas a este nível.'
     SINGULARNAME: 'Página Virtual'
-    EditLink: editar
-    HEADERWITHLINK: 'Esta é uma página virtual com o conteúdo copiado da página "{title}" ({link})'
   CMSFileAddController:
     MENUTITLE: Ficheiros
   CMSPageEditController:
@@ -393,6 +371,3 @@ pt:
     MENUTITLE: 'Editar página'
   CMSSettingsController:
     MENUTITLE: Configurações
-  URLSegmentField:
-    Cancel: 'Cancelar '
-    Edit: Editar

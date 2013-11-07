@@ -71,6 +71,7 @@ sv:
     ACCESS_HELP: 'Tillåt visning av sektionen innehållande sidträdet och dess innehåll. Rättigheter att visa och redigera sidan kan hanteras i dess rullgardinsmenyer, liksom i "Innehållsbehörigheter".'
     AddNew: 'Skapa ny sida'
     AddNewButton: 'Skapa ny'
+    AddPageRestriction: 'OBS: Vissa sidtyper är inte tillåtna här'
     ChoosePageParentMode: 'Välj var du vill skapa denna sida'
     ChoosePageType: 'Välj sidtyp'
     Create: Skapa
@@ -108,7 +109,6 @@ sv:
     TreeFiltered: 'Filtrerat träd'
     TreeFilteredClear: 'Rensa lista'
     MENUTITLE: 'Redigera sida'
-    AddPageRestriction: 'OBS: Vissa sidtyper är inte tillåtna här'
   CMSMain_left_ss:
     APPLY_FILTER: 'Filtrera'
     RESET: Rensa
@@ -138,7 +138,6 @@ sv:
     MENUTITLE: Sidor
     TreeView: 'Trädvy'
   CMSPagesController_ContentToolbar_ss:
-    ENABLEDRAGGING: 'Dra och släpp'
     MULTISELECT: Flerval
   CMSSearch:
     FILTERDATEFROM: Från
@@ -156,6 +155,7 @@ sv:
   ContentController:
     ARCHIVEDSITE: 'Utkast version'
     ARCHIVEDSITEFROM: 'Arkiverad sajt från'
+    DRAFT: Utkast
     DRAFTSITE: 'Utkast'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Du måste logga med ditt CMS-lösenord för att kunna se utkast och arkiverat material. <a href="%s">Klicka här för att gå tillbaks till den publicerade sajten.</a>'
     Email: E-post
@@ -167,14 +167,13 @@ sv:
     LOGIN: Logga in
     LOGOUT: 'Logga ut'
     NOTLOGGEDIN: 'Inte inloggad'
+    PUBLISHED: Publicerad
     PUBLISHEDSITE: 'Publicerad sajt'
     Password: Lösenord
     PostInstallTutorialIntro: 'Denna webbplats är en enklare version av en Silverstripe 3 hemsida. För att bygga ut, ta en titt på {link}.'
     StartEditing: 'Du kan börja redigera innehållet genom att öppna <a href="{link}">CMS:et</a>.'
     UnableDeleteInstall: 'Lyckades inte radera installationsfilerna. Radera följande filer manuellt.'
     VIEWPAGEIN: 'titta på sidan i:'
-    DRAFT: Utkast
-    PUBLISHED: Publicerad
   ErrorPage:
     400: '400 - Felaktig förfrågan'
     401: '401 - Obehörig'
@@ -218,9 +217,7 @@ sv:
     DELETED: Raderad.
     PreviewButton: Förhandsgranska
     SAVEDUP: Sparad.
-    STATUSPUBLISHEDSUCCESS: 'Publiseringen av  ''{title}'' lyckades'
     SearchResults: 'Sökresultat'
-    VersionUnknown: Okänd
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS-tillgång'
   Permissions:
@@ -242,6 +239,10 @@ sv:
     MENUTITLE: Rapporter
   ReportAdminForm:
     FILTERBY: 'Filtrera på'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Publicera den länkade sidan för att kunna publicera den virtuella sidan'
+    VIRTUALPAGEWARNING: 'Välj en länkad sida och spara först för att kunna publicera den här sidan'
+    VIRTUALPAGEWARNINGSETTINGS: 'Välj en länkad sida i huvudinnehållsfälten för att kunna publicera'
   SearchForm:
     GO: Kör
     SEARCH: Sök
@@ -258,6 +259,8 @@ sv:
     OtherGroupTitle: Annat
     ParameterLiveCheckbox: 'Kontrollera live sajt'
     REPEMPTY: 'Raporten {title} är tom.'
+  SilverStripeNavigator:
+    ARCHIVED: Arkiverad
   SilverStripeNavigatorLink:
     ShareLink: 'Dela länk'
   SilverStripeNavigatorLinkl:
@@ -289,10 +292,11 @@ sv:
     APPEARSVIRTUALPAGES: 'Detta innehåll förekommer även på en virtuell sida i sektionen {title}.'
     BUTTONCANCELDRAFT: 'Ångra utkaständringar'
     BUTTONCANCELDRAFTDESC: 'Radera utkast och återgå till den publicerade sidan'
+    BUTTONPUBLISHED: Publicerad
+    BUTTONSAVED: Sparad
     BUTTONSAVEPUBLISH: 'Spara & publicera'
     BUTTONUNPUBLISH: Avpublicera
     BUTTONUNPUBLISHDESC: 'Ta bort den här sidan från den publicerade sajten'
-    CREATED: 'Skapad'
     Comments: Kommentarer
     Content: Innehåll
     DEFAULTABOUTCONTENT: '<p>Du kan fylla den här sidan med ditt eget innehåll, eller radera den och skapa dina egna sidor.<br/></p>'
@@ -313,9 +317,12 @@ sv:
     EDIT_ALL_DESCRIPTION: 'Redigera alla sidor'
     EDIT_ALL_HELP: 'Möjlighet att redigera alla sidor på sajten, oavsett inställningarna under Åtkomstfliken. Kräver "Tillgång till ''Sidor''-delen"'
     Editors: 'Redaktörsgrupper'
+    GroupPlaceholder: 'Klicka för att välja grupp'
     HASBROKENLINKS: 'Den här sidan har trasiga länkar.'
     HTMLEDITORTITLE: Innehåll
     INHERIT: 'Ärv från överordnad sida'
+    LASTPUBLISHED: 'Datum för senaste publicering'
+    LASTSAVED: 'Senast sparad'
     LASTUPDATED: 'Senast uppdaterad'
     LINKCHANGENOTE: 'Om du ändrar sidans länkadress så kommer det också påverka länkarna på underliggande sidor'
     MENUTITLE: 'Navigationsetikett'
@@ -325,6 +332,8 @@ sv:
     METAEXTRAHELP: 'HTML taggar för övrig meta information. Till exempel &lt;meta name="Namn" content="innehållet kommer här" /&gt;'
     MODIFIEDONDRAFTHELP: 'Sidan har ej publicerade ändringar'
     MODIFIEDONDRAFTSHORT: Ändrad
+    MoreOptions: 'Fler alternativ'
+    NOTPUBLISHED: 'Ej publicerad'
     OBSOLETECLASS: 'Denna sida är den föråldrade typen {type}. Att spara kommer att återställa dess typ och du kan förlora data'
     PAGELOCATION: 'Sidans position'
     PAGETITLE: 'Sidnamn'
@@ -363,36 +372,9 @@ sv:
     many_many_BackLinkTracking: 'Spåra inlänkar'
     many_many_ImageTracking: 'Spåra bild'
     many_many_LinkTracking: 'Spåra länk'
-    BUTTONPUBLISHED: Publicerad
-    BUTTONSAVED: Sparad
-    GroupPlaceholder: 'Klicka för att välja grupp'
-    LASTPUBLISHED: 'Datum för senaste publicering'
-    LASTSAVED: 'Senast sparad'
-    MoreOptions: 'Fler alternativ'
-    NOTPUBLISHED: 'Ej publicerad'
   SiteTreeURLSegmentField:
-    HelpChars: 'Specialtecken konverteras eller tas bort'
     EMPTY: 'Ange ett URL-segment eller klicka på avbryt'
-  StaticExporter:
-    BASEURL: 'Bas-URL'
-    EXPORTTO: 'Exportera till den mappen'
-    NAME: 'Statisk exportör'
-  TableListField:
-    SELECT: 'Välj:'
-  TableListField_ss:
-    NOITEMSFOUND: 'Inga objekt hittade'
-    SORTASC: 'Sortera i stigande ordning'
-    SORTDESC: 'Sortera i fallande ordning'
-  TableListField_PageControls_ss:
-    DISPLAYING: Visar
-    OF: av
-    TO: till
-    VIEWFIRST: 'Visa första'
-    VIEWLAST: 'Visa sista'
-    VIEWNEXT: 'Visa nästa'
-    VIEWPREVIOUS: 'Visa föregående'
-  TreeTools:
-    DisplayLabel: 'Visa:'
+    HelpChars: 'Specialtecken konverteras eller tas bort'
   ViewArchivedEmail_ss:
     CANACCESS: 'Du kan komma åt den arkiverade sajten med denna länk:'
     HAVEASKED: 'Du har efterfrågat att se innehållet på vår sajt på'
@@ -410,9 +392,3 @@ sv:
     MENUTITLE: 'Redigera sida'
   CMSSettingsController:
     MENUTITLE: Inställningar
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Publicera den länkade sidan för att kunna publicera den virtuella sidan'
-    VIRTUALPAGEWARNING: 'Välj en länkad sida och spara först för att kunna publicera den här sidan'
-    VIRTUALPAGEWARNINGSETTINGS: 'Välj en länkad sida i huvudinnehållsfälten för att kunna publicera'
-  SilverStripeNavigator:
-    ARCHIVED: Arkiverad

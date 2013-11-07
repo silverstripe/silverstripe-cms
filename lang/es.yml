@@ -74,6 +74,7 @@ es:
     ACCESS_HELP: 'Permitir la visualización de la sección que contiene el árbol de la página y el contenido. Ver y editar permisos puede ser gestionado a través de menús desplegables específicos de las páginas, así como los "permisos de contenido" separados.'
     AddNew: 'Añadir nueva página'
     AddNewButton: 'Añadir nuevo'
+    AddPageRestriction: 'Agregar restricción a la página'
     ChoosePageParentMode: 'Elegir donde crear esta página'
     ChoosePageType: 'Elegir tipo de página'
     Create: Crear
@@ -102,6 +103,7 @@ es:
     RESTORED: 'Restablecido ''{title}'' correctamente'
     ROLLBACK: 'Restaurar esta versión'
     ROLLEDBACKPUBv2: 'Restaurado'
+    ROLLEDBACKVERSIONv2: 'Versión #%d restaurada'
     SAVE: Guardar
     SAVEDRAFT: 'Guardar borrador'
     TabContent: Contenido
@@ -110,7 +112,6 @@ es:
     TreeFiltered: 'Árbol filtrado'
     TreeFilteredClear: 'Borrar filtro'
     MENUTITLE: 'Editar página'
-    AddPageRestriction: 'Agregar restricción a la página'
   CMSMain_left_ss:
     APPLY_FILTER: 'Aplicar filtro'
     RESET: Restablecer
@@ -126,9 +127,9 @@ es:
     SHOWUNPUBLISHED: 'Mostrar versiones no publicadas'
     SHOWVERSION: 'Mostrar Versión'
     VIEW: vista
+    VIEWINGLATEST: 'Viendo la última versión'
     VIEWINGVERSION: 'Actualmente viendo la versión {version}.'
     MENUTITLE: Historial
-    VIEWINGLATEST: 'Viendo la última versión'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: 'Sin publicar'
@@ -141,7 +142,6 @@ es:
     MENUTITLE: Páginas
     TreeView: 'Ver como árbol'
   CMSPagesController_ContentToolbar_ss:
-    ENABLEDRAGGING: 'Arrastrar y soltar'
     MULTISELECT: Multi-selección
   CMSPagesController_Tools_ss:
     FILTER: Filtro
@@ -162,6 +162,7 @@ es:
     ARCHIVEDSITE: 'Vista previa de la versión'
     ARCHIVEDSITEFROM: 'Sitio archivado desde'
     CMS: CMS
+    DRAFT: Borrador
     DRAFTSITE: 'Sitio en Borrador'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Debe iniciar sesión para poder acceder a los contenidos archivados o al borrador. <a href="%s">De un click aquí para regresar al sitio publicado.</a>'
     Email: Correo electrónico
@@ -173,14 +174,13 @@ es:
     LOGIN: Iniciar sesión
     LOGOUT: 'Desconectar'
     NOTLOGGEDIN: 'No conectado'
+    PUBLISHED: Publicado
     PUBLISHEDSITE: 'Sitio Publicado'
     Password: Contraseña
     PostInstallTutorialIntro: 'Este sitio web es una versión simple de un sitio SilverStripe 3. Para ampliarlo, por favor echa un vistazo en {link}.'
     StartEditing: 'Comenzar a editar'
     UnableDeleteInstall: 'No se pueden eliminar los archivos de instalación. Por favor, elimina los siguientes archivos manualmente'
     VIEWPAGEIN: 'Ver página en:'
-    DRAFT: Borrador
-    PUBLISHED: Publicado
   ErrorPage:
     400: '400 - Petición incorrecta (Bad Request)'
     401: '401 - No autorizado (Unauthorized)'
@@ -224,9 +224,7 @@ es:
     DELETED: Borrado.
     PreviewButton: Previsualizar
     SAVEDUP: Guardado
-    STATUSPUBLISHEDSUCCESS: 'Publicado ''{title}'' correctamente'
     SearchResults: 'Resultados de la búsqueda'
-    VersionUnknown: Desconocido
   Permission:
     CMS_ACCESS_CATEGORY: 'Acceso CMS'
   Permissions:
@@ -248,6 +246,10 @@ es:
     MENUTITLE: Informes
   ReportAdminForm:
     FILTERBY: 'Filtrar por'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Esta página es un borrador de página virtual'
+    VIRTUALPAGEWARNING: 'Esta es una página virtual'
+    VIRTUALPAGEWARNINGSETTINGS: 'Configuración de página virtual'
   SearchForm:
     GO: IR
     SEARCH: Buscar
@@ -264,6 +266,8 @@ es:
     OtherGroupTitle: Otro
     ParameterLiveCheckbox: 'Comprobar sitio activo'
     REPEMPTY: 'El informe {title} está vacío.'
+  SilverStripeNavigator:
+    ARCHIVED: Archivado
   SilverStripeNavigatorLink:
     ShareInstructions: 'Para compartir ésta a esta página, copiar y pegar el enlace de abajo.'
     ShareLink: 'Compartir enlace'
@@ -296,9 +300,11 @@ es:
     APPEARSVIRTUALPAGES: 'Este contenido también aparece en las páginas virtuales en las secciones {title}.'
     BUTTONCANCELDRAFT: 'Cancelar los cambios en el borrador'
     BUTTONCANCELDRAFTDESC: 'Elimine el borrador y regrese a la página que se encuentra publicada actualmente'
+    BUTTONPUBLISHED: Publicado
+    BUTTONSAVED: Guardado
+    BUTTONSAVEPUBLISH: 'Guardar y publicar'
     BUTTONUNPUBLISH: Sin Publicar
     BUTTONUNPUBLISHDESC: 'Elimine esta página del sitio publicado'
-    CREATED: 'Fecha de creación'
     Comments: Comentarios
     Content: Contenido
     DEFAULTABOUTCONTENT: '<p>Tú puedes rellenar esta página con tu propio contenido, o borrarla y crear tus propias páginas.<br />Aquí pondrías información sobre los dueños de tu página.<br /></p>'
@@ -310,6 +316,7 @@ es:
     DELETEDPAGEHELP: 'La página ya no está publicada'
     DELETEDPAGESHORT: Borrado
     DEPENDENT_NOTE: 'Las siguientes páginas dependen de esta página. Esto incluye páginas virtuales, páginas de redireccionamiento, y las páginas con enlaces de contenido.'
+    DESCRIPTION: 'Página genérica de contenido'
     DependtPageColumnLinkType: 'Tipo de enlace'
     DependtPageColumnURL: Depende de
     EDITANYONE: 'Cualquiera que pueda iniciar sesión en el CMS'
@@ -319,9 +326,12 @@ es:
     EDIT_ALL_DESCRIPTION: 'Editar cualquier página'
     EDIT_ALL_HELP: 'Posibilidad de editar cualquier página en el sitio, independientemente de la configuración de la pestaña de Acceso. Requiere permiso "Acceso a la sección ''Páginas''"'
     Editors: 'Grupo de Editores'
+    GroupPlaceholder: 'Grupo'
     HASBROKENLINKS: 'Esta página contiene enlaces rotos.'
     HTMLEDITORTITLE: Contenido
     INHERIT: 'Heredar de página padre'
+    LASTPUBLISHED: 'Última publicación'
+    LASTSAVED: 'Última vez que se guardó'
     LASTUPDATED: 'Última actualización'
     LINKCHANGENOTE: 'Cambio el enlace de esta página también afectará a los enlaces de todas las páginas hijas.'
     MENUTITLE: 'Etiqueta de Navegación'
@@ -332,6 +342,8 @@ es:
     MODIFIEDONDRAFTHELP: 'La página tiene cambios sin publicar'
     MODIFIEDONDRAFTSHORT: Modificado
     MetadataToggle: Metadata
+    MoreOptions: 'Más opciones'
+    NOTPUBLISHED: 'No publicado'
     OBSOLETECLASS: 'Clase obsoleta'
     PAGELOCATION: 'Localización de la página'
     PAGETITLE: 'Nombre de la página'
@@ -370,49 +382,25 @@ es:
     many_many_BackLinkTracking: 'Rastreo de Backlinks'
     many_many_ImageTracking: 'Rastreo de Imágenes'
     many_many_LinkTracking: 'Rastreo de Enlaces'
-    BUTTONPUBLISHED: Publicado
-    BUTTONSAVED: Guardado
-    GroupPlaceholder: 'Grupo'
-    LASTPUBLISHED: 'Última publicación'
-    LASTSAVED: 'Última vez que se guardó'
-    MoreOptions: 'Más opciones'
-    NOTPUBLISHED: 'No publicado'
   SiteTreeURLSegmentField:
-    HelpChars: 'Los caracteres especiales son automáticamente convertidos o eliminados.'
     EMPTY: 'Vacío'
-  StaticExporter:
-    BASEURL: 'URL base'
-    EXPORTTO: 'Exportar a esa carpeta'
-    NAME: 'Exportador estático'
-  TableListField:
-    SELECT: 'Seleccionar'
-  TableListField_ss:
-    NOITEMSFOUND: 'No se encontraron ítems'
-    SORTASC: 'Ordenar de forma ascendente'
-    SORTDESC: 'Ordenar de forma descendente'
-  TableListField_PageControls_ss:
-    DISPLAYING: Mostrando
-    OF: del
-    TO: al
-    VIEWFIRST: 'Ver primero'
-    VIEWLAST: 'Ver último'
-    VIEWNEXT: 'Ver siguiente'
-    VIEWPREVIOUS: 'Ver anterior'
-  TreeTools:
-    DisplayLabel: 'Mostrar:'
+    HelpChars: 'Los caracteres especiales son automáticamente convertidos o eliminados.'
+  URLSegmentField:
+    Cancel: Cancelar
+    Edit: Editar
+    OK: Ok
   ViewArchivedEmail_ss:
     CANACCESS: 'Puede acceder al sitio archivado con este enlace:'
     HAVEASKED: 'Ha pedido ver el contenido de nuestro sitio el'
   VirtualPage:
     CHOOSE: 'Seleccionar'
     DESCRIPTION: 'Muestra el contenido de otra página'
-    EDITCONTENT: 'Editar contenido'
+    EditLink: Editar
     HEADER: 'Esta es una página virtual'
+    HEADERWITHLINK: 'Título con link'
     PLURALNAME: 'Páginas Virtuales'
     PageTypNotAllowedOnRoot: 'Tipo de página original "{type}" no se permite en el nivel raíz para esta página virtual'
     SINGULARNAME: 'Página Virtual'
-    EditLink: Editar
-    HEADERWITHLINK: 'Título con link'
   CMSFileAddController:
     MENUTITLE: Archivos
   CMSPageEditController:
@@ -421,13 +409,3 @@ es:
     MENUTITLE: 'Editar página'
   CMSSettingsController:
     MENUTITLE: Título del menú
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Esta página es un borrador de página virtual'
-    VIRTUALPAGEWARNING: 'Esta es una página virtual'
-    VIRTUALPAGEWARNINGSETTINGS: 'Configuración de página virtual'
-  SilverStripeNavigator:
-    ARCHIVED: Archivado
-  URLSegmentField:
-    Cancel: Cancelar
-    Edit: Editar
-    OK: Ok

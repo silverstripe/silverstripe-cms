@@ -141,16 +141,6 @@ lv:
     many_many_BackLinkTracking: 'Atpakaļsaišu izsekošana'
     many_many_ImageTracking: 'Attēlu izsekošana'
     many_many_LinkTracking: 'Saišu izsekošana'
-  TableListField:
-    SELECT: 'Izvēlēties:'
-  TableListField_ss:
-    SORTASC: 'Kārtot augošā secībā'
-    SORTDESC: 'Kārtot dilstošā secībā'
-  TableListField_PageControls_ss:
-    VIEWFIRST: 'Skatīt pirmo'
-    VIEWLAST: 'Skatīt pēdējo'
-    VIEWNEXT: 'Skatīt nākamo'
-    VIEWPREVIOUS: 'Skatīt iepriekšējo'
   VirtualPage:
     HEADER: 'Šī ir virtuāla lapa'
     PLURALNAME: 'Virtuālās lapas'
