@@ -6,8 +6,6 @@ silverstripe-cache
 .project
 .settings
 .solr
-.idea
-.DS_Store
 .ea
 apache
 advancedworkflow/
@@ -37,6 +35,8 @@ testsession/
 themes/
 translatable/
 userforms/
-vendor/
 versionedfiles/
 versionfeed/
+.idea
+.DS_Store
+vendor/

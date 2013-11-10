@@ -25,7 +25,7 @@
 	<listeners>
 		<listener class="SS_TestListener" file="framework/dev/TestListener.php" />
 	</listeners>
-
+	
 	<groups>
 		<exclude>
 			<group>sanitychecks</group>

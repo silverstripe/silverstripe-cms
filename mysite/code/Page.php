@@ -8,6 +8,7 @@ class Page extends BasePage {
 	);
 
 }
+
 class Page_Controller extends BasePage_Controller {
 
 	/**

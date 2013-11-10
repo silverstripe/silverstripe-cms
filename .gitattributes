@@ -1,0 +1,13 @@
+.gitattributes export-ignore
+behat.yml export-ignore
+build.properties.default export-ignore
+build.xml export-ignore
+changelog-definitions.default export-ignore
+CONTRIBUTING.md export-ignore
+dependent-modules.default export-ignore
+Makefile export-ignore
+phpunit.teamcity.mssql.xml export-ignore
+phpunit.teamcity.postgresql.xml export-ignore
+phpunit.teamcity.sqlite3.xml export-ignore
+phpunit.teamcity.xml export-ignore
+phpunit.xml.dist export-ignore
