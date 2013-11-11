@@ -113,7 +113,7 @@ class CMSPageAddController extends CMSPageEditController {
 				->addExtraClass('ss-ui-action-constructive')->setAttribute('data-icon', 'accept')
 				->setUseButtonTag(true),
 			FormAction::create("doCancel", _t('CMSMain.Cancel',"Cancel"))
-				->addExtraClass('ss-ui-action-destructive')
+				->addExtraClass('ss-ui-action-destructive ss-ui-action-cancel')
 				->setUseButtonTag(true)
 		);
 		
