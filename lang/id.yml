@@ -90,13 +90,6 @@ id:
     TOPLEVEL: 'Konten Situs (Level Atas)'
     URLSegment: 'Segmen URL'
     has_one_Parent: 'Halaman Induk'
-  TableListField:
-    SELECT: 'Pilih:'
-  TableListField_PageControls_ss:
-    VIEWFIRST: 'Tampil pertama'
-    VIEWLAST: 'Tampil terakhir'
-    VIEWNEXT: 'Tampil berikutnya'
-    VIEWPREVIOUS: 'Tampil sebelumnya'
   VirtualPage:
     HEADER: 'Ini adalah halaman virtual'
     PLURALNAME: 'Halaman-halaman Virtual'

@@ -110,7 +110,6 @@ bg:
     UNKNOWN: Неизвестно
     WHEN: Когато
   CMSPagesController_ContentToolbar_ss:
-    ENABLEDRAGGING: 'Drag''n''drop (теглене и пускане)'
     MULTISELECT: Избиране на няколко
   CMSPagesController_Tools_ss:
     FILTER: Филтър
@@ -175,9 +174,7 @@ bg:
     UploadFilesButton: 'Качи '
   LeftAndMain:
     PreviewButton: Изглед
-    STATUSPUBLISHEDSUCCESS: 'Успешно публикуван/а ''{title}'''
     SearchResults: 'Резултати от търсенето'
-    VersionUnknown: Неизвестно
   Permissions:
     CONTENT_CATEGORY: 'Права по съдържанието'
     PERMISSIONS_CATEGORY: 'Роли и права за достъп'
@@ -235,7 +232,6 @@ bg:
     BUTTONCANCELDRAFTDESC: 'Изтрий черновата и отиди на текущата публикувана страница'
     BUTTONUNPUBLISH: Премахни от публикация
     BUTTONUNPUBLISHDESC: 'Премахни тази страница от публикувания сайт'
-    CREATED: 'Дата на създаване'
     Comments: Съдържание
     Content: Съдържание
     DEFAULTABOUTCONTENT: '<p>Може да запълните тази страница със собствено съдържание, или да я изтриете и да създадете ваши собствени страници.<br /></p>'
@@ -290,20 +286,6 @@ bg:
     many_many_LinkTracking: 'Следене на линовете'
   SiteTreeURLSegmentField:
     HelpChars: 'Специалните символи са автоматично конвертирани или изтрити.'
-  TableListField:
-    SELECT: 'Избери:'
-  TableListField_ss:
-    SORTASC: 'Сортирай възходящо'
-    SORTDESC: 'Сортирай низходящо'
-  TableListField_PageControls_ss:
-    DISPLAYING: Показани
-    OF: от
-    VIEWFIRST: 'Преглед на първото'
-    VIEWLAST: 'Преглед на последното'
-    VIEWNEXT: 'Преглед на следващото'
-    VIEWPREVIOUS: 'Преглед на предишното'
-  TreeTools:
-    DisplayLabel: 'Покажи:'
   ViewArchivedEmail_ss:
     CANACCESS: 'Можете да достигнете архивирания сайт, чрез тази връзка'
   VirtualPage:

@@ -105,16 +105,6 @@ az:
     has_one_Parent: 'Valideyn səhifəsi'
     many_many_ImageTracking: 'Şəkil izləmə'
     many_many_LinkTracking: 'Keçidin izlənməsi'
-  TableListField:
-    SELECT: 'Seç:'
-  TableListField_ss:
-    SORTASC: 'Artma sırası ilə sırala'
-    SORTDESC: 'Azalma sırası ilə sırala'
-  TableListField_PageControls_ss:
-    VIEWFIRST: 'Birinciyə bax'
-    VIEWLAST: 'Axırıncı baxılmış'
-    VIEWNEXT: 'Növbəti'
-    VIEWPREVIOUS: 'Əvvəlkinə bax'
   VirtualPage:
     HEADER: 'Bu virtual səhifədir'
     PLURALNAME: 'Virtual səhifələr'

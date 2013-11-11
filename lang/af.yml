@@ -63,14 +63,6 @@ af:
     SHOWINSEARCH: 'Wys in soektog?'
     TABCONTENT: 'Inhoud'
     has_one_Parent: 'Ouer Bladsy'
-  TableListField_ss:
-    SORTASC: 'Sorteer in stygende orde'
-    SORTDESC: 'Sorteer in dalende orde'
-  TableListField_PageControls_ss:
-    VIEWFIRST: 'Wys eerste'
-    VIEWLAST: 'Wys laaste'
-    VIEWNEXT: 'Wys volgende'
-    VIEWPREVIOUS: 'Wys vorige'
   ViewArchivedEmail_ss:
     HAVEASKED: 'U het gevra om die inhoud van ons werf te sien op'
   VirtualPage:

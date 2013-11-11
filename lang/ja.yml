@@ -74,6 +74,7 @@ ja:
     ACCESS_HELP: 'ページツリーとコンテンツを含むセクションの閲覧を許可します。　表示および編集の権限は、ページの特定のドロップダウンだけでなく、独立した"コンテンツの権限"を介して処理することができます。'
     AddNew: '新しいページを追加'
     AddNewButton: '新しく追加'
+    AddPageRestriction: '注：一部の種類のページは、この選択には含まれていません'
     ChoosePageParentMode: 'このページを作成する場所を選択'
     ChoosePageType: 'ページの種類を選択'
     Create: 作成
@@ -111,7 +112,6 @@ ja:
     TreeFiltered: 'フィルタリングされたツリー'
     TreeFilteredClear: 'フィルタを解除'
     MENUTITLE: 'ページを編集'
-    AddPageRestriction: '注：一部の種類のページは、この選択には含まれていません'
   CMSMain_left_ss:
     APPLY_FILTER: 'フィルタを適用'
     RESET: リセット
@@ -127,9 +127,9 @@ ja:
     SHOWUNPUBLISHED: '公開されていないバージョンを表示'
     SHOWVERSION: 'バージョンを表示'
     VIEW: 表示
+    VIEWINGLATEST: '現在最新のバージョンを表示。'
     VIEWINGVERSION: '現在表示しているバージョンは{version}です。'
     MENUTITLE: 履歴
-    VIEWINGLATEST: '現在最新のバージョンを表示。'
   CMSPageHistoryController_versions_ss:
     AUTHOR: 作成者
     NOTPUBLISHED: '未公開'
@@ -142,7 +142,6 @@ ja:
     MENUTITLE: ページ
     TreeView: 'ツリー表示'
   CMSPagesController_ContentToolbar_ss:
-    ENABLEDRAGGING: 'ドラッグ・アンド・ドロップ'
     MULTISELECT: 複数選択
   CMSPagesController_Tools_ss:
     FILTER: フィルタ
@@ -163,6 +162,7 @@ ja:
     ARCHIVEDSITE: 'プレビュー版'
     ARCHIVEDSITEFROM: 'からアーカイブされたサイト'
     CMS: CMS
+    DRAFT: 下書き
     DRAFTSITE: '下書きサイト'
     DRAFT_SITE_ACCESS_RESTRICTION: '草案かアーカイブされた内容を見るためにはログインしてください。<a href="%s">公開サイトにもどるにはコチラをクリックしてください。</a>'
     Email: Eメール
@@ -174,14 +174,13 @@ ja:
     LOGIN: ログイン
     LOGOUT: 'ログアウト'
     NOTLOGGEDIN: 'ログインされていません'
+    PUBLISHED: 公開された
     PUBLISHEDSITE: '公開サイト'
     Password: パスワード
     PostInstallTutorialIntro: 'このウェブサイトは、SilverStripe3サイトの単純なバージョンです。 これを拡張するには、{link} をご覧ください。'
     StartEditing: '<a href="{link}">the CMS</a> を開いて、あなたのコンテンツの編集を開始することができます。'
     UnableDeleteInstall: 'インストールファイルを削除することができませんでした。次のファイルを手動で削除してください。'
     VIEWPAGEIN: '以下からページを表示する：'
-    DRAFT: 下書き
-    PUBLISHED: 公開された
   ErrorPage:
     400: '400 - 不適格な要求です'
     401: '401 - 許可されていません'
@@ -225,9 +224,7 @@ ja:
     DELETED: 削除済
     PreviewButton: プレビュー
     SAVEDUP: 保存済
-    STATUSPUBLISHEDSUCCESS: '''{title}''を正しく公開することができました'
     SearchResults: '検索結果'
-    VersionUnknown: 不明
   Permission:
     CMS_ACCESS_CATEGORY: 'CMSへのアクセス'
   Permissions:
@@ -249,6 +246,10 @@ ja:
     MENUTITLE: レポート
   ReportAdminForm:
     FILTERBY: 'によってフィルター'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: '仮想ページを公開するためにリンクしたページを公開してください'
+    VIRTUALPAGEWARNING: 'このページを公開するために、リンク先のページを選択して最初に保存してください'
+    VIRTUALPAGEWARNINGSETTINGS: '公開するために、主なコンテンツの分野からリンク先のページを選択してください'
   SearchForm:
     GO: 開始
     SEARCH: 検索
@@ -265,6 +266,8 @@ ja:
     OtherGroupTitle: その他
     ParameterLiveCheckbox: 'ライブ配信のサイトをチェックする'
     REPEMPTY: '{title}のレポートは空です'
+  SilverStripeNavigator:
+    ARCHIVED: アーカイブされた
   SilverStripeNavigatorLink:
     ShareInstructions: 'このページをシェアするには、下のリンクをコピーして貼り付けてください。'
     ShareLink: '共有リンク'
@@ -297,10 +300,11 @@ ja:
     APPEARSVIRTUALPAGES: 'このコンテンツは{title}として仮想ページにおいても表示されます。'
     BUTTONCANCELDRAFT: '草稿の編集内容を取り消します'
     BUTTONCANCELDRAFTDESC: '草稿と前回公開されたページを削除します'
+    BUTTONPUBLISHED: 公開された
+    BUTTONSAVED: 保存された
     BUTTONSAVEPUBLISH: '保存と公開'
     BUTTONUNPUBLISH: 非公開
     BUTTONUNPUBLISHDESC: '公開サイトから取り除きました'
-    CREATED: '作成日'
     Comments: コメント
     Content: コンテンツ
     DEFAULTABOUTCONTENT: '<p>あなた自身、自由にページに書き込むことが出来、もちろん添削も自由に行えます。<br /></p>'
@@ -322,9 +326,12 @@ ja:
     EDIT_ALL_DESCRIPTION: 'すべてのページを編集'
     EDIT_ALL_HELP: 'アクセスタブの設定にかかわらず、このサイト上のページを編集するには、"''ページ''セクションへのアクセス"許可が必要です。'
     Editors: '編集グループ'
+    GroupPlaceholder: 'クリックしてグループを選択'
     HASBROKENLINKS: 'このページはリンク切れがあります'
     HTMLEDITORTITLE: 内容
     INHERIT: '親ページを受け継ぐ'
+    LASTPUBLISHED: '最後に公開された'
+    LASTSAVED: '最後に保存した'
     LASTUPDATED: '最後に更新された'
     LINKCHANGENOTE: 'このページのリンクを変更すると、すべての子ページのリンクに影響を与えます。'
     MENUTITLE: 'メニュー表示'
@@ -335,6 +342,8 @@ ja:
     MODIFIEDONDRAFTHELP: '公開されていない変更がページにあります'
     MODIFIEDONDRAFTSHORT: 修正された
     MetadataToggle: メタデータ
+    MoreOptions: 'その他のオプション'
+    NOTPUBLISHED: '公開されていません'
     OBSOLETECLASS: 'このページは、旧式のタイプ{type} です。　保存するとそのタイプがリセットされて、データを失う可能性があります'
     PAGELOCATION: 'ページの場所'
     PAGETITLE: 'ページ名'
@@ -373,49 +382,25 @@ ja:
     many_many_BackLinkTracking: 'リンク元を追跡'
     many_many_ImageTracking: '画像へのリンクを追跡'
     many_many_LinkTracking: 'リンクを追跡'
-    BUTTONPUBLISHED: 公開された
-    BUTTONSAVED: 保存された
-    GroupPlaceholder: 'クリックしてグループを選択'
-    LASTPUBLISHED: '最後に公開された'
-    LASTSAVED: '最後に保存した'
-    MoreOptions: 'その他のオプション'
-    NOTPUBLISHED: '公開されていません'
   SiteTreeURLSegmentField:
-    HelpChars: '特殊文字は自動的に変換されたか取り除かれました'
     EMPTY: 'URLのセグメントを入力または中止をクリックする'
-  StaticExporter:
-    BASEURL: '基準となるURLを設定する'
-    EXPORTTO: 'そのフォルダにエクスポートする'
-    NAME: 'スタティック・エクスポーター'
-  TableListField:
-    SELECT: '選択：'
-  TableListField_ss:
-    NOITEMSFOUND: '見つかった項目はありませんでした'
-    SORTASC: '昇順に並び替える'
-    SORTDESC: '降順に並び替える'
-  TableListField_PageControls_ss:
-    DISPLAYING: 表示中
-    OF: の
-    TO: へ
-    VIEWFIRST: '一番目を表示'
-    VIEWLAST: '最新を表示'
-    VIEWNEXT: '次を表示'
-    VIEWPREVIOUS: '前回を表示'
-  TreeTools:
-    DisplayLabel: '表示:'
+    HelpChars: '特殊文字は自動的に変換されたか取り除かれました'
+  URLSegmentField:
+    Cancel: 中止
+    Edit: 編集
+    OK: OK
   ViewArchivedEmail_ss:
     CANACCESS: 'アーカイブされたサイトには次のリンクでアクセス可能です：'
     HAVEASKED: 'あなたは私達のサイトのコンテンツを閲覧するように求められています'
   VirtualPage:
     CHOOSE: 'リンクされたページ'
     DESCRIPTION: '別のページのコンテンツを表示'
-    EDITCONTENT: 'リンクされたページのコンテンツを編集'
+    EditLink: 編集
     HEADER: 'これがバーチャルページです'
+    HEADERWITHLINK: 'これは "{title}" ({link}) からコンテンツをコピーしている仮想ページです'
     PLURALNAME: '仮想ページ'
     PageTypNotAllowedOnRoot: 'この仮想ページに対して元のページの種類{type}はルートレベルに配置されることが許可されていません。'
     SINGULARNAME: '仮想ページ'
-    EditLink: 編集
-    HEADERWITHLINK: 'これは "{title}" ({link}) からコンテンツをコピーしている仮想ページです'
   CMSFileAddController:
     MENUTITLE: ファイル
   CMSPageEditController:
@@ -424,13 +409,3 @@ ja:
     MENUTITLE: 'ページの編集'
   CMSSettingsController:
     MENUTITLE: 設定
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: '仮想ページを公開するためにリンクしたページを公開してください'
-    VIRTUALPAGEWARNING: 'このページを公開するために、リンク先のページを選択して最初に保存してください'
-    VIRTUALPAGEWARNINGSETTINGS: '公開するために、主なコンテンツの分野からリンク先のページを選択してください'
-  SilverStripeNavigator:
-    ARCHIVED: アーカイブされた
-  URLSegmentField:
-    Cancel: 中止
-    Edit: 編集
-    OK: OK

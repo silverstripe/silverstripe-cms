@@ -130,7 +130,6 @@ th:
   CMSPagesController:
     GalleryView: 'มุมมองแบบแกลอรี่'
   CMSPagesController_ContentToolbar_ss:
-    ENABLEDRAGGING: 'ลากแล้วปล่อย'
     MULTISELECT: การเลือกพร้อมกันหลายรายการ
   CMSPagesController_Tools_ss:
     FILTER: ตัวกรองข้อมูล
@@ -205,8 +204,6 @@ th:
   LeftAndMain:
     DELETED: ถูกลบแล้ว
     SAVEDUP: บันทึกแล้ว
-    STATUSPUBLISHEDSUCCESS: 'เผยแพร่ ''{title}'' เสร็จเรียบร้อยแล้ว'
-    VersionUnknown: ไม่ทราบ
   Permission:
     CMS_ACCESS_CATEGORY: 'การเข้าถึง CMS'
   Permissions:
@@ -275,7 +272,6 @@ th:
     BUTTONCANCELDRAFTDESC: 'ลบฉบับร่างของคุณแล้วย้อนกลับไปใช้หน้าเว็บที่เผยแพร่อยู่ในขณะนี้'
     BUTTONUNPUBLISH: ยังไม่ได้เผยแพร่
     BUTTONUNPUBLISHDESC: 'ลบหน้าเว็บนี้ออกจากเว็บไซต์ที่เผยแพร่แล้ว'
-    CREATED: 'วันที่สร้าง'
     Comments: ความคิดเห็น
     Content: เนื้อหา
     DEFAULTABOUTCONTENT: '<p>คุณสามารถใส่เนื้อหาของคุณเองลงไปในหน้านี้ได้ หรือลบหน้าดังกล่าวทิ้ง แล้วสร้างหน้าเว็บของคุณเองขึ้นมาใหม่ได้.<br /></p>'
@@ -346,26 +342,6 @@ th:
     many_many_LinkTracking: 'แกะรอยลิงก์'
   SiteTreeURLSegmentField:
     HelpChars: 'ตัวอักษรพิเศษได้ถูกแปลงค่าหรือลบออกโดยอัตโนมัติแล้ว'
-  StaticExporter:
-    BASEURL: 'URL หลักสำหรับอ้างอิง'
-    EXPORTTO: 'ส่งออกข้อมูลไปยังโฟลเดอร์'
-    NAME: 'ตัวส่งออกข้อมูลแบบนิ่งอยู่กับที่'
-  TableListField:
-    SELECT: 'เลือก'
-  TableListField_ss:
-    NOITEMSFOUND: 'ไม่พบรายการที่ต้องการ'
-    SORTASC: 'จัดเรียงลำดับจากน้อยมามาก'
-    SORTDESC: 'จัดเรียงลำดับจากมากมาน้อย'
-  TableListField_PageControls_ss:
-    DISPLAYING: กำลังแสดง
-    OF: จาก
-    TO: ถึง
-    VIEWFIRST: 'เปิดดูหน้าแรก'
-    VIEWLAST: 'เปิดดูหน้าสุดท้าย'
-    VIEWNEXT: 'เปิดดูถัดไป'
-    VIEWPREVIOUS: 'เปิดดูก่อนหน้า'
-  TreeTools:
-    DisplayLabel: 'แสดง:'
   ViewArchivedEmail_ss:
     CANACCESS: 'คุณสามารถเข้าถึงเว็บไซต์รุ่นย้อนหลังได้จากลิงก์นี้:'
     HAVEASKED: 'คุณได้ร้องขอเพื่อเปิดดูเนื้อหาในเว็บไซต์ของเราเมื่อ'

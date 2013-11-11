@@ -49,7 +49,6 @@ zh_CN:
     BUTTONCANCELDRAFTDESC: '将您的草稿恢复到目前正式发布的版本'
     BUTTONUNPUBLISH: 撤消发布
     BUTTONUNPUBLISHDESC: '将此页从正式发布站删除'
-    CREATED: '创建日期'
     DEFAULTABOUTTITLE: '关于我们'
     EDITANYONE: '任何可以登录CMS的人'
     EDITHEADER: '谁能在CMS中编辑此页？'
@@ -67,10 +66,6 @@ zh_CN:
     TABBEHAVIOUR: 行为特点
     TABCONTENT: '内容'
     TOPLEVEL: '网站内容（顶层）'
-  StaticExporter:
-    BASEURL: '基本URL'
-    EXPORTTO: '导出到该文件夹'
-    NAME: '网站静态拷贝导出器'
   ViewArchivedEmail_ss:
     CANACCESS: '您可通过这个链接进入已归挡的网页：'
     HAVEASKED: '在%s,您要求浏览我们网站'

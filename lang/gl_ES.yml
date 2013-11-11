@@ -104,7 +104,6 @@ gl_ES:
     MENUTITLE: Páxinas
     TreeView: 'Vista en Árbore'
   CMSPagesController_ContentToolbar_ss:
-    ENABLEDRAGGING: 'Arrastrar e soltar'
     MULTISELECT: Selección múltiple
   CMSPagesController_Tools_ss:
     FILTER: Filtro
@@ -195,7 +194,6 @@ gl_ES:
     BUTTONCANCELDRAFTDESC: 'Eliminar o borrador e revertir a páxina publicada actualmente'
     BUTTONUNPUBLISH: Sen publicar
     BUTTONUNPUBLISHDESC: 'Eliminar esta páxina do sitio publicado'
-    CREATED: 'Data de Creación'
     Comments: Comentarios
     Content: Contido
     DEFAULTABOUTTITLE: 'Sobre nós'
@@ -245,21 +243,6 @@ gl_ES:
     has_one_Parent: 'Páxina pai'
     many_many_ImageTracking: 'Imaxe de Seguemento'
     many_many_LinkTracking: 'Ligazón de Seguemento'
-  StaticExporter:
-    EXPORTTO: 'Exportar ao cartafol'
-    NAME: 'Exportar estáticos'
-  TableListField:
-    SELECT: 'Seleccionar:'
-  TableListField_ss:
-    SORTASC: 'Ordear ascendentemente'
-    SORTDESC: 'Ordear descendentemente'
-  TableListField_PageControls_ss:
-    VIEWFIRST: 'Ver primeiro'
-    VIEWLAST: 'Ver último'
-    VIEWNEXT: 'Ver seguinte'
-    VIEWPREVIOUS: 'Ver anterior'
-  TreeTools:
-    DisplayLabel: 'Visualizar:'
   ViewArchivedEmail_ss:
     CANACCESS: 'Podes acceder ao sitio arquivado nesta ligazón:'
     HAVEASKED: 'Solicitaches ver o contido do sitio sobre'

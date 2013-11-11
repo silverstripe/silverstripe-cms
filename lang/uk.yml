@@ -160,7 +160,6 @@ uk:
   LeftAndMain:
     DELETED: Видалено
     SAVEDUP: Збережено.
-    STATUSPUBLISHEDSUCCESS: 'Публікація ''{title}'' пройшла успішно'
     SearchResults: 'Результати пошуку'
   Permission:
     CMS_ACCESS_CATEGORY: 'Доступ до CMS'
@@ -226,7 +225,6 @@ uk:
     BUTTONCANCELDRAFTDESC: 'Видалити черентку та повернутися до теперішнього опублікованого варіанту'
     BUTTONUNPUBLISH: Відміна публікування
     BUTTONUNPUBLISHDESC: 'Видалити цю сторінку з опублікованого'
-    CREATED: 'Дата створення'
     Comments: Коментарі
     Content: Контент
     DEFAULTABOUTCONTENT: '<p>Ви можете заповнити цю сторінку власним вмістом або видалити її та створити інші сторінки.<br /></p>'
@@ -292,22 +290,6 @@ uk:
     many_many_LinkTracking: 'Відстеження посилань'
   SiteTreeURLSegmentField:
     HelpChars: 'Спеціальні символи автоматично перетворені або видалені.'
-  StaticExporter:
-    BASEURL: 'Основний URL'
-    EXPORTTO: 'Експортувати до наведеної теки'
-    NAME: 'Статичний експортер'
-  TableListField:
-    SELECT: 'Вибрати:'
-  TableListField_ss:
-    SORTASC: 'Сортувати у порядку зростання'
-    SORTDESC: 'Сортувати у порядку зменшення'
-  TableListField_PageControls_ss:
-    VIEWFIRST: 'Переглянути першу'
-    VIEWLAST: 'Переглянути останню'
-    VIEWNEXT: 'Переглянути наступну'
-    VIEWPREVIOUS: 'Переглянути попередню'
-  TreeTools:
-    DisplayLabel: 'Відобразити:'
   ViewArchivedEmail_ss:
     CANACCESS: 'Ви можете перейти до архівного сайту за посиланням:'
     HAVEASKED: 'Ви надіслали запит на перегляд вмісту нашої сторінки'

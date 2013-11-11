@@ -134,7 +134,6 @@ he_IL:
     MENUTITLE: עמודים
     TreeView: 'תצוגת עץ'
   CMSPagesController_ContentToolbar_ss:
-    ENABLEDRAGGING: 'גרירה והשלכה'
     MULTISELECT: בחירה מרובה
   CMSPagesController_Tools_ss:
     FILTER: מסנן
@@ -213,9 +212,7 @@ he_IL:
     DELETED: נמחק.
     PreviewButton: תצוגה מקדימה
     SAVEDUP: נשמר.
-    STATUSPUBLISHEDSUCCESS: '''{title}'' פורסם בהצלחה'
     SearchResults: 'תוצאות החיפוש'
-    VersionUnknown: לא ידועה
   Permission:
     CMS_ACCESS_CATEGORY: 'גישה ל־CMS'
   Permissions:
@@ -286,7 +283,6 @@ he_IL:
     BUTTONCANCELDRAFTDESC: 'למחוק את הטיוטה שלך ולהחזיר לעמוד הנוכחי שפורסם'
     BUTTONUNPUBLISH: ביטול הפרסום
     BUTTONUNPUBLISHDESC: 'הסרת עמוד זה מהאתר שפורסם'
-    CREATED: 'תאריך היצירה'
     Comments: תגובות
     Content: תוכן
     DEFAULTABOUTCONTENT: '<p>ניתן למלא עמוד זה בתוכן שלך, או למחוק אותו וליצור עמודים משלך.<br /></p>'
@@ -359,26 +355,6 @@ he_IL:
     many_many_LinkTracking: 'מעקב אחר קישורים'
   SiteTreeURLSegmentField:
     HelpChars: ' תווים מיוחדים מומרים אוטומטית או שהם מוסרים.'
-  StaticExporter:
-    BASEURL: 'כתובת בסיס'
-    EXPORTTO: 'יצוא לתיקייה זו'
-    NAME: 'מתבצע יצוא'
-  TableListField:
-    SELECT: 'בחירה:'
-  TableListField_ss:
-    NOITEMSFOUND: 'לא נמצאו פריטים'
-    SORTASC: 'סידור בסדר עולה'
-    SORTDESC: 'סידור בסדר יורד'
-  TableListField_PageControls_ss:
-    DISPLAYING: מוצגים
-    OF: מתוך
-    TO: עד
-    VIEWFIRST: 'הצגת הראשון'
-    VIEWLAST: 'הצגת האחרון'
-    VIEWNEXT: 'הצגת הבא'
-    VIEWPREVIOUS: 'הצגת הקודם'
-  TreeTools:
-    DisplayLabel: 'תצוגה:'
   ViewArchivedEmail_ss:
     CANACCESS: 'ניתן להיכנס לארכיון האתר בקישור הזה:'
     HAVEASKED: 'ביקשת לצפות בתוכן האתר שלנו תחת'

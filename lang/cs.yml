@@ -74,6 +74,7 @@ cs:
     ACCESS_HELP: 'Povolit prohlížení sekce obsahující strukturu a obsah webu. Oprávnění na prohlížení a úpravu mohou být nastavena skrze menu pro samostatnou stránku, také jako jednotlivé oprávnění pro obsah.'
     AddNew: 'Přidat novou stránku'
     AddNewButton: 'Přidat nový'
+    AddPageRestriction: 'Poznámka: Některé typy stránek nejsou povoleny při tomto výběru'
     ChoosePageParentMode: 'Vyberte, kde vytvořit tuto stránku'
     ChoosePageType: 'Vyberte typ stránky'
     Create: Vytvořit
@@ -111,7 +112,6 @@ cs:
     TreeFiltered: 'Filtrovaný strom.'
     TreeFilteredClear: 'Vyčistit filtr'
     MENUTITLE: 'Upravit stránku'
-    AddPageRestriction: 'Poznámka: Některé typy stránek nejsou povoleny při tomto výběru'
   CMSMain_left_ss:
     APPLY_FILTER: 'Použít filtr'
     RESET: Resetovat
@@ -127,9 +127,9 @@ cs:
     SHOWUNPUBLISHED: 'Zobrazit nezveřejněné verze'
     SHOWVERSION: 'Zobrazit verzi'
     VIEW: zobrazit
+    VIEWINGLATEST: 'Právě se zobrazuje poslední verze.'
     VIEWINGVERSION: 'Právě prohlížíte verzi číslo {version}.'
     MENUTITLE: Historie
-    VIEWINGLATEST: 'Právě se zobrazuje poslední verze.'
   CMSPageHistoryController_versions_ss:
     AUTHOR: Autor
     NOTPUBLISHED: 'Nezveřejněno'
@@ -142,7 +142,6 @@ cs:
     MENUTITLE: Stránky
     TreeView: 'Pohled strom'
   CMSPagesController_ContentToolbar_ss:
-    ENABLEDRAGGING: 'Táhni a pusť'
     MULTISELECT: Multi výběr
   CMSPagesController_Tools_ss:
     FILTER: Filtr
@@ -163,6 +162,7 @@ cs:
     ARCHIVEDSITE: 'Náhled verze'
     ARCHIVEDSITEFROM: 'Archivován web z'
     CMS: CMS
+    DRAFT: Koncept
     DRAFTSITE: 'Koncept webu'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Abyste mohli prohlížet archiv nebo koncepty, musíte být přihlášeni se svým CMS heslem. <a href="%s">Klikněte sem pro návrat na zveřejněné stránky.</a>'
     Email: E-mail
@@ -174,14 +174,13 @@ cs:
     LOGIN: Přihlášení
     LOGOUT: 'Odhlášení'
     NOTLOGGEDIN: 'Není přihlášen'
+    PUBLISHED: Zveřejněno
     PUBLISHEDSITE: 'Zveřejnen web'
     Password: Heslo
     PostInstallTutorialIntro: 'Tento web je zjednodušená verze SilverStripe 3. webu. Pro rozšíření, podívejte se na {link} prosím.'
     StartEditing: 'Můžete začít editovat váš obsah otevřením <a href="{link}">CMS</a>.'
     UnableDeleteInstall: 'Nelze smazat instalační soubory. Prosím, odstraňte soubory níže ručně'
     VIEWPAGEIN: 'Zobrazit stránku v:'
-    DRAFT: Koncept
-    PUBLISHED: Zveřejněno
   ErrorPage:
     400: '400 - Špatný požadavek'
     401: '401 - Neautorizováno'
@@ -225,9 +224,7 @@ cs:
     DELETED: Smazáno.
     PreviewButton: Náhled
     SAVEDUP: Uloženo.
-    STATUSPUBLISHEDSUCCESS: 'Publikováno ''{title}'' úspěšně'
     SearchResults: 'Výsledky hledání'
-    VersionUnknown: Neznámý
   Permission:
     CMS_ACCESS_CATEGORY: 'Přístup CMS'
   Permissions:
@@ -249,6 +246,10 @@ cs:
     MENUTITLE: Výkazy
   ReportAdminForm:
     FILTERBY: 'Filtrovat dle'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Zveřejněte prosím odkazovanou stránku pro zveřejnění virtuální stránky'
+    VIRTUALPAGEWARNING: 'Zvolte prosím odkazovanou stránku a předem uložte před zveřejněním této stránky'
+    VIRTUALPAGEWARNINGSETTINGS: 'Zvolte prosím odkazovanou stránku v polích hlavního obsahu pro zveřejnění'
   SearchForm:
     GO: Hledat
     SEARCH: Hledat
@@ -265,6 +266,8 @@ cs:
     OtherGroupTitle: Jiné
     ParameterLiveCheckbox: 'Zkontrolovat web'
     REPEMPTY: '{title} výkaz je prázdný.'
+  SilverStripeNavigator:
+    ARCHIVED: Archivováno
   SilverStripeNavigatorLink:
     ShareInstructions: 'K sdílení této stránky, odkaz zkopírujte a vložte dolů..'
     ShareLink: 'Sdílet odkaz'
@@ -297,10 +300,11 @@ cs:
     APPEARSVIRTUALPAGES: 'Tento obsah se také zobrazí na virtuálních stránkáchy v sekcích {title}.'
     BUTTONCANCELDRAFT: 'Zrušit změny v konceptu'
     BUTTONCANCELDRAFTDESC: 'Odstranit koncept a vrátit se k aktuálně zveřejněné stránce'
+    BUTTONPUBLISHED: Zveřejněno
+    BUTTONSAVED: Uloženo
     BUTTONSAVEPUBLISH: 'Uložit & zveřehnit'
     BUTTONUNPUBLISH: Nezveřejňovat
     BUTTONUNPUBLISHDESC: 'Odstranit tuto stránku z publikovaných na webu'
-    CREATED: 'Datum vytvoření'
     Comments: Komentáře
     Content: Obsah
     DEFAULTABOUTCONTENT: '<p>Můžete tuto stránku vyplnit vlastním obsahem, nebo ji smazat a vytvořit si vlastní stránky. <br /> </p>'
@@ -322,9 +326,12 @@ cs:
     EDIT_ALL_DESCRIPTION: 'Může editovat jakoukoli stránku webu, obcházeje bezpečnostní specifikaci stránky'
     EDIT_ALL_HELP: 'Možnost upravit libovolnou stránku na webu, bez ohledu na nastavení na kartě Přístup. Vyžaduje povolení "Přístup k sekci ''Stránky''"'
     Editors: 'Skupiny editorů'
+    GroupPlaceholder: 'Klikni pro vybrání skupiny'
     HASBROKENLINKS: 'Tato stránka obsahuje neplatné odkazy.'
     HTMLEDITORTITLE: Obsah
     INHERIT: 'Zděděno po rodičovské stránce'
+    LASTPUBLISHED: 'Posledně zveřejněno'
+    LASTSAVED: 'Posledně uloženo'
     LASTUPDATED: 'Poslední změna'
     LINKCHANGENOTE: 'Změnění tohoto odkazu stránky, bude mít také vliv na odkazy podřízených stránek.'
     MENUTITLE: 'Navigační popisek'
@@ -335,6 +342,8 @@ cs:
     MODIFIEDONDRAFTHELP: 'Stránka má nezveřejněné změny'
     MODIFIEDONDRAFTSHORT: Upraveno
     MetadataToggle: Metadata
+    MoreOptions: 'Více voleb'
+    NOTPUBLISHED: 'Nezveřejněno'
     OBSOLETECLASS: 'Tato stránka je zastaralého typu {type}. Uložení zpúsobí zrušení svého typu a múžete tak ztratit data'
     PAGELOCATION: 'Umístění stránky'
     PAGETITLE: 'Název stránky'
@@ -373,49 +382,25 @@ cs:
     many_many_BackLinkTracking: 'Stopování zpětných odkazů'
     many_many_ImageTracking: 'Stopování obrázku'
     many_many_LinkTracking: 'Stopování odkazu'
-    BUTTONPUBLISHED: Zveřejněno
-    BUTTONSAVED: Uloženo
-    GroupPlaceholder: 'Klikni pro vybrání skupiny'
-    LASTPUBLISHED: 'Posledně zveřejněno'
-    LASTSAVED: 'Posledně uloženo'
-    MoreOptions: 'Více voleb'
-    NOTPUBLISHED: 'Nezveřejněno'
   SiteTreeURLSegmentField:
-    HelpChars: 'Zvláštní znaky jsou automaticky zkonvertovány nebo odstraněny'
     EMPTY: 'Zadejte prosím URL segment nebo klikněte zrušit'
-  StaticExporter:
-    BASEURL: 'Základní URL'
-    EXPORTTO: 'Exportovat do této složky'
-    NAME: 'Statický exportér'
-  TableListField:
-    SELECT: 'Vybrat:'
-  TableListField_ss:
-    NOITEMSFOUND: 'Nenalezeny žádné záznamy'
-    SORTASC: 'Třídit v vzestupném pořadí'
-    SORTDESC: 'Třídit v sestupném pořadí'
-  TableListField_PageControls_ss:
-    DISPLAYING: Zobrazuji
-    OF: z
-    TO: do
-    VIEWFIRST: 'Zobrazit první'
-    VIEWLAST: 'Zobrazit poslední'
-    VIEWNEXT: 'Zobrazit další'
-    VIEWPREVIOUS: 'Zobrazit předchozí'
-  TreeTools:
-    DisplayLabel: 'Zobrazení:'
+    HelpChars: 'Zvláštní znaky jsou automaticky zkonvertovány nebo odstraněny'
+  URLSegmentField:
+    Cancel: Storno
+    Edit: Editovat
+    OK: Ok
   ViewArchivedEmail_ss:
     CANACCESS: 'Můžete přistupovat k archivu pomocí tohoto odkazu:'
     HAVEASKED: 'Požadovali jste prohlížet obsah našich stránek během'
   VirtualPage:
     CHOOSE: 'Odkazovaná stránka'
     DESCRIPTION: 'Zobrazit obsah jiné stránky'
-    EDITCONTENT: 'Editovat obsah na odkazované stránce'
+    EditLink: editovat
     HEADER: 'Toto je virtuální stránka'
+    HEADERWITHLINK: 'Toto je virtuální stránka, kopíruje se obsah z "{title}" ({link})'
     PLURALNAME: 'Virtuální stránky'
     PageTypNotAllowedOnRoot: 'Původní stránka typu "{type}" není povolena na nejvyšší úrovni pro tuto virtuální stránku'
     SINGULARNAME: 'Virtuální stránka'
-    EditLink: editovat
-    HEADERWITHLINK: 'Toto je virtuální stránka, kopíruje se obsah z "{title}" ({link})'
   CMSFileAddController:
     MENUTITLE: Soubory
   CMSPageEditController:
@@ -424,13 +409,3 @@ cs:
     MENUTITLE: 'Editovat stránku'
   CMSSettingsController:
     MENUTITLE: Možnosti
-  SITETREE:
-    VIRTUALPAGEDRAFTWARNING: 'Zveřejněte prosím odkazovanou stránku pro zveřejnění virtuální stránky'
-    VIRTUALPAGEWARNING: 'Zvolte prosím odkazovanou stránku a předem uložte před zveřejněním této stránky'
-    VIRTUALPAGEWARNINGSETTINGS: 'Zvolte prosím odkazovanou stránku v polích hlavního obsahu pro zveřejnění'
-  SilverStripeNavigator:
-    ARCHIVED: Archivováno
-  URLSegmentField:
-    Cancel: Storno
-    Edit: Editovat
-    OK: Ok

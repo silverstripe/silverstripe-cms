@@ -80,7 +80,6 @@ sr:
     BUTTONCANCELDRAFTDESC: 'Избришите свој нацрт и вратите се на тренутно објављену страну'
     BUTTONUNPUBLISH: Повуци објављивање
     BUTTONUNPUBLISHDESC: 'Izbriši ovu stranicu sa sajta na kome je objavljena'
-    CREATED: 'Datum kreiranja'
     Comments: Komentari
     DEFAULTABOUTTITLE: 'O nama'
     DEFAULTCONTACTTITLE: 'Контактирајте нас'
@@ -114,13 +113,6 @@ sr:
     URLSegment: 'Segment URL adrese'
     VIEWERGROUPS: 'Grupe pregledača'
     VIEW_DRAFT_CONTENT_HELP: 'Primenjuje se na gledanje stranica van CMS-a u nacrtnom modu. Korisno za spoljne sradnike bez pristupa CMS-u.'
-  StaticExporter:
-    BASEURL: 'Osnovni URL'
-    EXPORTTO: 'Izvesti u ovaj direktorijum'
-    NAME: 'Statički izvoznik'
-  TableListField_PageControls_ss:
-    VIEWNEXT: 'Погледај следеће'
-    VIEWPREVIOUS: 'Погледај претходно'
   ViewArchivedEmail_ss:
     CANACCESS: 'Можете да приступите архивираном садржају на овом линку:'
     HAVEASKED: 'Замољени сте да погледате садржај овог сајта'
