@@ -84,6 +84,19 @@
 				else $(this).find('input').removeAttr('disabled');
 			}
 		});
+
+		$(".cms-add-form #Form_AddForm_action_doCancel").entwine({
+			onclick: function(e) {
+				// If we've a history state to go back to, go back, otherwise fall back to
+				// submitting the form with the 'doCancel' action
+				if (History.getStateByIndex(1)) {
+					History.back();
+				} else {
+					this.parents('form').trigger('submit', [this]);
+				}
+				e.preventDefault();
+			}
+		});
 	
 		$(".cms-page-add-button").entwine({
 			onclick: function(e) {
