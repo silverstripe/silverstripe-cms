@@ -2,11 +2,11 @@
 	"name": "cwp/cwp-installer",
 	"description": "CWP Project Template",
 	"require": {
-		"cwp/cwp-recipe-basic": "~1.0.1@rc",
-		"cwp-themes/default": "~1.0.1@rc"
+		"cwp/cwp-recipe-basic": "~1.0.1@stable",
+		"cwp-themes/default": "~1.0.1@stable"
 	},
 	"require-dev": {
-		"cwp/cwp-recipe-basic-dev": "~1.0.1@rc"
+		"cwp/cwp-recipe-basic-dev": "~1.0.1@stable"
 	},
 	"config": {
 		"process-timeout": 900
