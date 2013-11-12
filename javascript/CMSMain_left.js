@@ -32,6 +32,7 @@ addpageclass.prototype = {
 			var selectedNode = $('sitetree').firstSelected();
 			if(selectedNode) this.showApplicableChildrenPageTypes(selectedNode.hints);
 		}
+		$('sitetree').observeMethod('SelectionChanged', this.treeSelectionChanged.bind(this));
 	},
 	
 	onclick : function() {
@@ -46,9 +47,6 @@ addpageclass.prototype = {
 				if( selectedNode.hints && selectedNode.hints.defaultChild )
 					$(_HANDLER_FORMS.addpage).elements.PageType.value = selectedNode.hints.defaultChild;
 			}
-						
-			this.o1 = $('sitetree').observeMethod('SelectionChanged', this.treeSelectionChanged.bind(this));
-			this.o2 = $(_HANDLER_FORMS[this.id]).observeMethod('Close', this.popupClosed.bind(this));
 
 			$(_HANDLER_FORMS[this.id]).elements.PageType.onchange = this.typeDropdown_change;
 		}
@@ -73,7 +71,7 @@ addpageclass.prototype = {
 		this.resetPageTypeOptions();
 		if (typeof hints.allowedChildren != 'undefined') {
 			var select = $(_HANDLER_FORMS.addpage).elements.PageType;
-			
+
 			var toRemove = new Array();
 			for(var i = 0; i < select.options.length; i++) {
 				var itemFound = false;
@@ -89,11 +87,6 @@ addpageclass.prototype = {
 	treeSelectionChanged : function(selectedNode) {
 		this.showApplicableChildrenPageTypes(selectedNode.hints);
 		$(_HANDLER_FORMS.addpage).elements.PageType.value = selectedNode.hints.defaultChild;
-	},
-	
-	popupClosed : function() {
-		$('sitetree').stopObserving(this.o1);
-		$(_HANDLER_FORMS.addpage).stopObserving(this.o2);
 	},
 	
 	typeDropdown_change : function() {
