@@ -46,5 +46,29 @@ class FixtureContext extends \SilverStripe\BehatExtension\Context\FixtureContext
         $obj->write();
         $obj->publish('Stage', 'Live');
     }
+
+     /**
+     * @Given /^a "([^"]*)" "([^"]*)" was last edited "([^"]*)" days ago$/
+     */
+    public function aWasLastEditedDaysAgo($type, $id, $days)
+    {
+        $class = $this->convertTypeToClass($type);
+        $fields = array();
+        $page = $this->fixtureFactory->createObject($class, $id, $fields);
+        $date = date("Y-m-d H:i:s",strtotime('-' .$days. 'days'));
+        \DB::query('UPDATE "SiteTree" SET LastEdited = \'' .$date.  '\' WHERE Title = \''.$id.'\'');           
+    }
+
+
+       /**
+     * @When /^I fill in "([^"]*)" with "([^"]*)" days ago$/
+     */
+    public function iFillInWithDaysAgo($field, $days)
+    {
+        $value = date("m-d-Y",strtotime('-' .$days. 'days'));
+        $this->getSession()->getPage()->fillField($field, $value);
+    }
+
+
    
 }
