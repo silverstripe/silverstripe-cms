@@ -42,7 +42,9 @@ class ErrorPage extends Page {
 	
 	/**
 	 * Get a {@link SS_HTTPResponse} to response to a HTTP error code if an
-	 * {@link ErrorPage} for that code is present.
+	 * {@link ErrorPage} for that code is present. First tries to serve it 
+	 * through the standard SilverStripe request method. Falls back to a static
+	 * file generated when the user hit's save and publish in the CMS
 	 *
 	 * @param int $statusCode
 	 *
@@ -50,11 +52,17 @@ class ErrorPage extends Page {
 	 */
 	public static function response_for($statusCode) {
 		// first attempt to dynamically generate the error page
-		if($errorPage = DataObject::get_one('ErrorPage', "\"ErrorPage\".\"ErrorCode\" = $statusCode")) {
+		$errorPage = ErrorPage::get()->filter(array(
+			"ErrorCode" => $statusCode
+		))->first(); 
+
+		if($errorPage) {
 			Requirements::clear();
 			Requirements::clear_combined_files();
 
-			return ModelAsController::controller_for($errorPage)->handleRequest(new SS_HTTPRequest('GET', ''), DataModel::inst());
+			return ModelAsController::controller_for($errorPage)->handleRequest(
+				new SS_HTTPRequest('GET', ''), DataModel::inst()
+			);
 		}
 		
 		// then fall back on a cached version
@@ -62,13 +70,13 @@ class ErrorPage extends Page {
 			$statusCode, 
 			class_exists('Translatable') ? Translatable::get_current_locale() : null
 		);
-		
+
 		if(file_exists($cachedPath)) {
 			$response = new SS_HTTPResponse();	
 			
 			$response->setStatusCode($statusCode);
 			$response->setBody(file_get_contents($cachedPath));	
-			
+
 			return $response;
 		}
 	}
@@ -129,13 +137,12 @@ class ErrorPage extends Page {
 					}
 				}
 			}
-
 		}
 	}
 
 	/**
-	 * Returns an array of arrays, each of which defines
-	 * properties for a new ErrorPage record.
+	 * Returns an array of arrays, each of which defines properties for a new 
+	 * ErrorPage record.
 	 * 
 	 * @return array
 	 */
@@ -159,6 +166,7 @@ class ErrorPage extends Page {
 				)
 			)
 		);
+
 		$this->extend('getDefaultRecords', $data);
 
 		return $data;
@@ -316,14 +324,20 @@ class ErrorPage extends Page {
  */
 class ErrorPage_Controller extends Page_Controller {
 
-	public function init() {
-		parent::init();
+	/**
+	 * Overload the provided {@link Controller::handleRequest()} to append the
+	 * correct status code post request since otherwise permission related error 
+	 * pages such as 401 and 403 pages won't be rendered due to
+	  * {@link SS_HTTPResponse::isFinished() ignoring the response body.
+	 *
+	 * @param SS_HTTPRequest
+	 * @param DataModel
+	 */
+	public function handleRequest(SS_HTTPRequest $request, DataModel $model = NULL) {
+		$body = parent::handleRequest($request, $model);
+		$this->response->setStatusCode($this->ErrorCode);
 
-		$action = $this->request->param('Action');
-		if(!$action || $action == 'index') {
-			$this->getResponse()->setStatusCode($this->failover->ErrorCode ? $this->failover->ErrorCode : 404);
-		}
-		
+		return $this->response;
 	}
 }
 

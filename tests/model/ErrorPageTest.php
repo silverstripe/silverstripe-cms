@@ -60,5 +60,14 @@ class ErrorPageTest extends FunctionalTest {
 		/* Don't show the error page in the search */
 		$this->assertEquals($page->ShowInSearch, 0, 'Don\'t show the error page in search');
 	}
-	
+
+	public function testBehaviourOf403() {
+		$page = $this->objFromFixture('ErrorPage', '403');
+		$page->publish('Stage', 'Live');
+		
+		$response = $this->get($page->Link());
+		
+		$this->assertEquals($response->getStatusCode(), '403');
+		$this->assertNotNull($response->getBody(), 'We have body text from the error page');
+	}
 }
