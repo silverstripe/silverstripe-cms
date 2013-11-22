@@ -94,7 +94,7 @@ class CMSSettingsController extends LeftAndMain {
 		return new ArrayList(array(
 			new ArrayData(array(
 				'Title' => _t("{$this->class}.MENUTITLE", $defaultTitle),
-				'Link' => false
+				'Link' => ($unlinked) ? false : $this->Link()
 			))
 		));
 	}
