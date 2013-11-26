@@ -39,12 +39,14 @@ class ContentControllerSearchExtension extends Extension {
 	 * @param SearchForm $form The form instance that was submitted
 	 * @param SS_HTTPRequest $request Request generated for this action
 	 */
-	public function results($data, $form, $request) {
-		$data = array(
-			'Results' => $form->getResults(),
-			'Query' => $form->getSearchQuery(),
-			'Title' => _t('SearchForm.SearchResults', 'Search Results')
-		);
-		return $this->owner->customise($data)->renderWith(array('Page_results', 'Page'));
+	public function results($data = false, $form = false, $request = null) {
+		if ($data && $form) {
+			$data = array(
+				'Results' => $form->getResults(),
+				'Query' => $form->getSearchQuery(),
+				'Title' => _t('SearchForm.SearchResults', 'Search Results')
+			);
+			return $this->owner->customise($data)->renderWith(array('Page_results', 'Page'));
+		}
+		return false;
 	}
-}
