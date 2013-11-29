@@ -43,18 +43,16 @@ Scenario: I can limit global view permissions to certain groups
 	And I go to the homepage
 	Then I should see "Welcome"
 
-@todo
 Scenario: I can limit global edit permissions to logged-in users
-	Given I select "Logged-in users" in "Who can edit pages on this site?" input group
+	Given I select "Anyone who can log-in to the CMS" from "Who can edit pages on this site?" input group
 	And I press the "Save" button
-	Then pages should be editable by "Content Authors"
-	And pages should be editable by "Administrators"
+	Then pages should be editable by "AUTHOR"
+	And pages should be editable by "ADMIN"
 
-@todo
 Scenario: I can limit global edit permissions to certain groups
 	Given I select "Only these people (choose from list)" from "Who can edit pages on this site?" input group
-	And I select "Administrators" from "Viewer Groups"
+	And I select "ADMIN group" from "Viewer Groups"
 	And I press the "Save" button
-	Then pages should not be editable by "Content Authors"
-	But pages should be editable by "Administrators"
+	Then pages should not be editable by "AUTHOR"
+	But pages should be editable by "ADMIN"
 

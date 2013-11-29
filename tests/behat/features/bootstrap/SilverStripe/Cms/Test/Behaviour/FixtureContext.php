@@ -21,7 +21,7 @@ require_once 'PHPUnit/Framework/Assert/Functions.php';
  */
 class FixtureContext extends \SilverStripe\BehatExtension\Context\FixtureContext {
 
-	 /**
+	/**
 	 * Find or create a redirector page and link to another existing page.
 	 * Example: Given a "page" "My Redirect" which redirects to a "page" "Page 1" 
 	 * 
@@ -30,13 +30,13 @@ class FixtureContext extends \SilverStripe\BehatExtension\Context\FixtureContext
 	public function stepCreateRedirectorPage($type, $id, $targetType, $targetId) {
 		$class = 'RedirectorPage';
 		$targetClass = $this->convertTypeToClass($targetType);
-		
+
 		$targetObj = $this->fixtureFactory->get($targetClass, $targetId);
-		if(!$targetObj) $targetObj = $this->fixtureFactory->get($targetClass, $targetId);
-		
+		if (!$targetObj) $targetObj = $this->fixtureFactory->get($targetClass, $targetId);
+
 		$fields = array('LinkToID' => $targetObj->ID);
 		$obj = $this->fixtureFactory->get($class, $id);
-		if($obj) {
+		if ($obj) {
 			$obj->update($fields);
 		} else {
 			$obj = $this->fixtureFactory->createObject($class, $id, $fields);
@@ -44,5 +44,26 @@ class FixtureContext extends \SilverStripe\BehatExtension\Context\FixtureContext
 		$obj->write();
 		$obj->publish('Stage', 'Live');
 	}
-   
+	
+	/**
+	* 
+	* Check if the user can edit a page
+	*  
+	* Example: Then pages should be editable by "Admin" 
+	* Then pages should not be editable by "Admin"
+	* 
+	* @Then /^pages should( not? |\s*)be editable by "([^"]*)"$/
+	*/
+	public function pagesShouldBeEditableBy($negative, $member){               
+		$edit = '"/admin/pages/edit"';
+		$editable = 'I should'.$negative.'see an edit page form';
+           
+		return array(
+			new Step\Given('I am not logged in'),
+			new Step\Given('I am logged in with "'.$member.'" permissions'),
+			new Step\Given('I go to '.$edit),
+			new Step\Given($editable),
+			new Step\Then('I am on the homepage')
+		);
+	}
 }
