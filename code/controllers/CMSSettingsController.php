@@ -77,7 +77,13 @@ class CMSSettingsController extends LeftAndMain {
 	public function save_siteconfig($data, $form) {
 		$siteConfig = SiteConfig::current_site_config();
 		$form->saveInto($siteConfig);
-		$siteConfig->write();
+		
+		try {
+			$siteConfig->write();
+		} catch(ValidationException $ex) {
+			$form->sessionMessage($ex->getResult()->message(), 'bad');
+			return $this->getResponseNegotiator()->respond($this->request);
+		}
 		
 		$this->response->addHeader('X-Status', rawurlencode(_t('LeftAndMain.SAVEDUP', 'Saved.')));
 		return $this->getResponseNegotiator()->respond($this->request);
