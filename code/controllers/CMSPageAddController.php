@@ -10,6 +10,7 @@ class CMSPageAddController extends CMSPageEditController {
 	private static $allowed_actions = array(
 		'AddForm',
 		'doAdd',
+		'doCancel'
 	);
 
 	/**
@@ -108,9 +109,11 @@ class CMSPageAddController extends CMSPageEditController {
 		}
 		
 		$actions = new FieldList(
-			// $resetAction = new ResetFormAction('doCancel', _t('CMSMain.Cancel', 'Cancel')),
 			FormAction::create("doAdd", _t('CMSMain.Create',"Create"))
 				->addExtraClass('ss-ui-action-constructive')->setAttribute('data-icon', 'accept')
+				->setUseButtonTag(true),
+			FormAction::create("doCancel", _t('CMSMain.Cancel',"Cancel"))
+				->addExtraClass('ss-ui-action-destructive ss-ui-action-cancel')
 				->setUseButtonTag(true)
 		);
 		
@@ -172,6 +175,10 @@ class CMSPageAddController extends CMSPageEditController {
 		Session::set("FormInfo.Form_EditForm.formError.type", 'good');
 		
 		return $this->redirect(Controller::join_links(singleton('CMSPageEditController')->Link('show'), $record->ID));
+	}
+
+	public function doCancel($data, $form) {
+		return $this->redirect(singleton('CMSMain')->Link());
 	}
 
 }

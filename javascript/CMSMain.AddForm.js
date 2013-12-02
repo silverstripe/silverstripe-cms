@@ -84,7 +84,7 @@
 				else $(this).find('input').removeAttr('disabled');
 			}
 		});
-	
+
 		$(".cms-page-add-button").entwine({
 			onclick: function(e) {
 				var tree = $('.cms-tree'), list = $('.cms-list'), parentId = 0;
