@@ -55,14 +55,13 @@ class FixtureContext extends \SilverStripe\BehatExtension\Context\FixtureContext
 	* @Then /^pages should( not? |\s*)be editable by "([^"]*)"$/
 	*/
 	public function pagesShouldBeEditableBy($negative, $member){               
-		$edit = '"/admin/pages/edit"';
-		$editable = 'I should'.$negative.'see an edit page form';
+		$page = \Page::get()->First();
            
 		return array(
 			new Step\Given('I am not logged in'),
-			new Step\Given('I am logged in with "'.$member.'" permissions'),
-			new Step\Given('I go to '.$edit),
-			new Step\Given($editable),
+			new Step\Given('I am logged in with "' . $member . '" permissions'),
+			new Step\Given('I go to "/admin/pages/edit/show/' . $page->ID . '"'),
+			new Step\Given('I should' . $negative . 'see a "Page name" field'),
 			new Step\Then('I am on the homepage')
 		);
 	}
