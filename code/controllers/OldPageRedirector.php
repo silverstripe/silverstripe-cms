@@ -38,6 +38,8 @@ class OldPageRedirector extends Extension {
 	 * @return string|boolean False, or the new URL
 	 */
 	static public function find_old_page($params, $parent = null, $redirect = false) {
+		$parent = is_numeric($parent) ? SiteTree::get()->byId($parent) : $parent;	
+		$params = (array)$params;
 		$URL = Convert::raw2sql(array_shift($params));
 		if (empty($URL)) { return false; }
 		if ($parent) {
