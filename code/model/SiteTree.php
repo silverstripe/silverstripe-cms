@@ -852,7 +852,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		if(!$fromLive
 			&& !Session::get('unsecuredDraftSite')
-			&& !Permission::checkMember($member, array('CMS_ACCESS_CMSMain', 'VIEW_DRAFT_CONTENT'))) {
+			&& !Permission::checkMember($member, array('CMS_ACCESS_LeftAndMain', 'CMS_ACCESS_CMSMain', 'VIEW_DRAFT_CONTENT'))) {
 			// If we weren't definitely loaded from live, and we can't view non-live content, we need to
 			// check to make sure this version is the live version and so can be viewed
 			if (Versioned::get_versionnumber_by_stage($this->class, 'Live', $this->ID) != $this->Version) return false;
@@ -1107,7 +1107,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @param Boolean $useCached
 	 * @return Array An map of {@link SiteTree} ID keys, to boolean values
 	 */
-	static public function batch_permission_check($ids, $memberID, $typeField, $groupJoinTable, $siteConfigMethod, $globalPermission = 'CMS_ACCESS_CMSMain', $useCached = true) {
+	static public function batch_permission_check($ids, $memberID, $typeField, $groupJoinTable, $siteConfigMethod, $globalPermission = null, $useCached = true) {
+		if($globalPermission === NULL) $globalPermission = array('CMS_ACCESS_LeftAndMain', 'CMS_ACCESS_CMSMain');
+
 		// Sanitise the IDs
 		$ids = array_filter($ids, 'is_numeric');
 		
@@ -1226,7 +1228,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * page can be edited.
 	 */
 	static public function can_edit_multiple($ids, $memberID, $useCached = true) {
-		return self::batch_permission_check($ids, $memberID, 'CanEditType', 'SiteTree_EditorGroups', 'canEdit', 'CMS_ACCESS_CMSMain', $useCached);
+		return self::batch_permission_check($ids, $memberID, 'CanEditType', 'SiteTree_EditorGroups', 'canEdit', null, $useCached);
 	}
 
 	/**
