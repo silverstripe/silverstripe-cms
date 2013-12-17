@@ -48,7 +48,7 @@
 			}
 		});
 
-		$('.AssetAdmin.cms-edit-form .action.gridfield-button-delete').entwine({
+		$('.AssetAdmin.cms-edit-form .ss-gridfield .col-buttons .action.gridfield-button-delete, .AssetAdmin.cms-edit-form .Actions button.action.action-delete').entwine({
 			onclick: function(e) {
 				var msg;
 				if(this.closest('.ss-gridfield-item').data('class') == 'Folder') {
