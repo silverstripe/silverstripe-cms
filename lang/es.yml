@@ -408,4 +408,4 @@ es:
   CMSPageSettingsController:
     MENUTITLE: 'Editar página'
   CMSSettingsController:
-    MENUTITLE: Título del menú
+    MENUTITLE: Ajustes

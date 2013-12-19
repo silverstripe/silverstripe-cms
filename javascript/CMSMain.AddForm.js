@@ -109,6 +109,9 @@
 				$('.cms-container').loadPanel(url, null, data);
 				e.preventDefault();
 
+				// Remove focussed state from button
+				this.blur();
+
 				// $('.cms-page-add-form-dialog').dialog('open');
 				// e.preventDefault();
 			}
