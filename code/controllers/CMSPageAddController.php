@@ -172,7 +172,7 @@ class CMSPageAddController extends CMSPageEditController {
 			"FormInfo.Form_EditForm.formError.message", 
 			_t('CMSMain.PageAdded', 'Successfully created page')
 		);
-		Session::set("FormInfo.Form_EditForm.formError.type", 'good');
+		Session::set("FormInfo.Form_EditForm.formError.type", 'good new');
 		
 		return $this->redirect(Controller::join_links(singleton('CMSPageEditController')->Link('show'), $record->ID));
 	}
