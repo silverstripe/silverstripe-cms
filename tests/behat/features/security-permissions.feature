@@ -24,6 +24,9 @@ Feature: Manage Security Permissions for Groups
     And I uncheck "Access to 'Pages' section"
     And I check "Full administrative rights"
     Then the "Access to 'Reports' section" checkbox should be checked
+    And I press the "Create" button
+    And I click the "Permissions" CMS tab
+    Then the "Full administrative rights" checkbox should be checked
+    And the "Access to 'Pages' section" checkbox should be checked
     And I uncheck "Full administrative rights"
     Then the "Access to 'Pages' section" checkbox should not be checked
-    And the "Access to 'Files' section" checkbox should be checked
