@@ -132,7 +132,7 @@
 				else if(compare) {
 					// check if we have already selected more than two.
 					if(selected.length > 1) {
-						return alert(ss.i18n._t('ONLYSELECTTWO', 'Can only compare two versions at at time.'));
+						return alert(ss.i18n._t('ONLYSELECTTWO', 'You can only compare two versions at this time.'));
 					}
 				
 					this._select();
