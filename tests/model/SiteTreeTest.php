@@ -8,7 +8,7 @@ class SiteTreeTest extends SapphireTest {
 	protected static $fixture_file = 'SiteTreeTest.yml';
 
 	protected $illegalExtensions = array(
-		'SiteTree' => array('SiteTreeSubsites')
+		'SiteTree' => array('SiteTreeSubsites', 'Translatable')
 	);
 	
 	protected $extraDataObjects = array(
