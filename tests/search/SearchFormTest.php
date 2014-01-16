@@ -11,7 +11,11 @@
 class ZZZSearchFormTest extends FunctionalTest {
 	
 	protected static $fixture_file = 'SearchFormTest.yml';
-	
+
+	protected $illegalExtensions = array(
+		'SiteTree' => array('SiteTreeSubsites', 'Translatable')
+	);
+
 	protected $mockController;
 	
 	public function waitUntilIndexingFinished() {
