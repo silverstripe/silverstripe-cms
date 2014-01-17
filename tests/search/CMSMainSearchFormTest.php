@@ -3,8 +3,6 @@ class CMSMainSearchFormTest extends FunctionalTest {
 	
 	protected static $fixture_file = '../controller/CMSMainTest.yml';
 	
-	protected $autoFollowRedirection = false;
-	
 	public function testTitleFilter() {
 		$this->session()->inst_set('loggedInAs', $this->idFromFixture('Member', 'admin'));
 
