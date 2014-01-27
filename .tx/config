@@ -1,0 +1,14 @@
+[main]
+host = https://www.transifex.com
+
+[silverstripe-cwp-installer.master]
+file_filter = mysite/lang/<lang>.yml
+source_file = mysite/lang/en.yml
+source_lang = en
+type = YML
+
+[silverstripe-cwp-installer.master-js]
+file_filter = mysite/javascript/lang/src/<lang>.js
+source_file = mysite/javascript/lang/src/en.js
+source_lang = en
+type = KEYVALUEJSON
