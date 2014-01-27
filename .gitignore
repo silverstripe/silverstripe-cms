@@ -40,3 +40,4 @@ versionfeed/
 .idea
 .DS_Store
 vendor/
+silverstripe-phockito/
