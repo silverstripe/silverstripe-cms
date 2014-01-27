@@ -15,3 +15,17 @@ MySQLDatabase:
   connection_charset: 'utf8'
 LeftAndMain:
   help_link: "https://www.cwp.govt.nz/user-help/"
+---
+Only:
+  constantdefined: CWP_ENVIRONMENT
+---
+CwpSolr:
+  options:
+    version: 'cwp-4'
+---
+Except:
+  constantdefined: CWP_ENVIRONMENT
+---
+CwpSolr:
+  options:
+    version: 'local-4'
