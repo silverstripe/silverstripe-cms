@@ -9,6 +9,10 @@ class VirtualPageTest extends SapphireTest {
 		'VirtualPageTest_VirtualPageSub',
 	);
 
+	protected $illegalExtensions = array(
+		'SiteTree' => array('SiteTreeSubsites', 'Translatable')
+	);
+
 	protected $requiredExtensions = array(
 		'SiteTree' => array('VirtualPageTest_PageExtension')
 	);
