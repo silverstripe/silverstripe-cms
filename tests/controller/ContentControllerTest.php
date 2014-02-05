@@ -121,6 +121,44 @@ class ContentControllerTest extends FunctionalTest {
 			$this->get($page->RelativeLink())->getBody(),
 			'"sitetree_link" shortcodes get parsed properly'
 		);
+	}	
+
+
+	/**
+	 * Tests that {@link ContentController::getViewer()} chooses the correct templates.
+	 *
+	 * @covers ContentController::getViewer()
+	**/
+	public function testGetViewer() {
+
+		// // Test a page without a controller (ContentControllerTest_PageWithoutController.ss)
+		$page = new ContentControllerTestPageWithoutController();
+		$page->URLSegment = "test";
+		$page->write();
+		$page->publish("Stage", "Live");
+
+		$response = $this->get($page->RelativeLink());
+		$this->assertEquals("ContentControllerTestPageWithoutController", $response->getBody());
+
+
+		// // This should fall over to user Page.ss
+		$page = new ContentControllerTestPage();
+		$page->URLSegment = "test";
+		$page->write();
+		$page->publish("Stage", "Live");
+
+		$response = $this->get($page->RelativeLink());
+		$this->assertEquals("Foo", $response->getBody());
+
+
+		// Test that the action template is rendered.
+		$page = new ContentControllerTestPage();
+		$page->URLSegment = "page-without-controller";
+		$page->write();
+		$page->publish("Stage", "Live");
+
+		$response = $this->get($page->RelativeLink("test"));
+		$this->assertEquals("ContentControllerTestPage_test", $response->getBody());
 	}
 
 }
@@ -141,4 +179,14 @@ class ContentControllerTest_Page_Controller extends Page_Controller {
 		return $this->index();
 	}
 
+}
+
+// For testing templates
+class ContentControllerTestPageWithoutController extends Page { }
+
+class ContentControllerTestPage extends Page { }
+class ContentControllerTestPage_Controller extends Page_Controller {
+	private static $allowed_actions = array(
+		"test",
+	);
 }
