@@ -8,6 +8,8 @@ class ContentControllerTest extends FunctionalTest {
 	protected static $fixture_file = 'ContentControllerTest.yml';
 	
 	protected static $use_draft_site = true;
+
+	protected static $disable_themes = true;
 	
 	/**
 	 * Test that nested pages, basic actions, and nested/non-nested URL switching works properly
@@ -131,7 +133,7 @@ class ContentControllerTest extends FunctionalTest {
 	**/
 	public function testGetViewer() {
 
-		// // Test a page without a controller (ContentControllerTest_PageWithoutController.ss)
+		// Test a page without a controller (ContentControllerTest_PageWithoutController.ss)
 		$page = new ContentControllerTestPageWithoutController();
 		$page->URLSegment = "test";
 		$page->write();
