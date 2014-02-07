@@ -369,7 +369,38 @@ HTML;
 		}
 		
 		return i18n::convert_rfc1766($locale);
+	}	
+
+
+	/**
+	 * Return an SSViewer object to render the template for the current page.
+	 *
+	 * @param $action string
+	 *
+	 * @return SSViewer
+	 */
+	public function getViewer($action) {
+		// Manually set templates should be dealt with by Controller::getViewer()
+		if(isset($this->templates[$action]) && $this->templates[$action]
+			|| (isset($this->templates['index']) && $this->templates['index'])
+			|| $this->template
+		) {
+			return parent::getViewer($action);
+		}
+
+		// Prepare action for template search
+		if($action == "index") $action = "";
+		else $action = '_' . $action;
+
+		// Find templates by dataRecord
+		$templates = SSViewer::get_templates_by_class(get_class($this->dataRecord), $action, "SiteTree");
+
+		// Next, we need to add templates for all controllers
+		$templates += SSViewer::get_templates_by_class(get_class($this), $action, "Controller");
+
+		return new SSViewer($templates);
 	}
+
 
 	/**
 	 * This action is called by the installation system
