@@ -2,7 +2,18 @@
 
 /**
  * Sitewide configuration.
- * 
+ *
+ * @property string Title Title of the website.
+ * @property string Tagline Tagline of the website.
+ * @property string Theme Current theme.
+ * @property string CanViewType Type of restriction used for view permissions.
+ * @property string CanEditType Type of restriction used for edit permissions.
+ * @property string CanCreateTopLevelType Type of restriction used for creation of root-level pages.
+ *
+ * @method ManyManyList ViewerGroups() List of groups that can view SiteConfig.
+ * @method ManyManyList EditorGroups() List of groups that can edit SiteConfig.
+ * @method ManyManyList CreateTopLevelGroups() List of groups that can create root-level pages.
+ *
  * @author Tom Rix
  * @package cms
  */
