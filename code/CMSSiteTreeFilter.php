@@ -152,7 +152,7 @@ class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter {
 		}
 		
 		// Match against exact ClassName
-		if (isset($data['ClassName']) && $data['ClassName'] != 'All') {
+		if (isset($data['ClassName']) && $data['ClassName'] != 'Any') {
 			$klass = Convert::raw2sql($data['ClassName']);
 			$where[] = "\"ClassName\" = '$klass'";
 		}
