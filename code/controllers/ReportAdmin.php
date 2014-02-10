@@ -105,6 +105,7 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 
 	/**
 	 * Returns the Breadcrumbs for the ReportAdmin
+	 * @param bool $unlinked
 	 * @return ArrayList
 	 */
 	public function Breadcrumbs($unlinked = false) {
@@ -127,6 +128,7 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 
 	/**
 	 * Returns the link to the report admin section, or the specific report that is currently displayed
+	 * @param string $action Action to link to.
 	 * @return String
 	 */
 	public function Link($action = null) {

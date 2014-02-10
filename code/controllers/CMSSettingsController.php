@@ -22,8 +22,10 @@ class CMSSettingsController extends LeftAndMain {
 		});
 		return $neg;
 	}
-	
-		/**
+
+	/**
+	 * @param null $id Not used.
+	 * @param null $fields Not used.
 	 * @return Form
 	 */
 	public function getEditForm($id = null, $fields = null) {

@@ -48,6 +48,8 @@ class CMSFileAddController extends LeftAndMain {
 	}
 
 	/**
+	 * @param null $id Not used.
+	 * @param null $fields Not used.
 	 * @return Form
 	 * @todo what template is used here? AssetAdmin_UploadContent.ss doesn't seem to be used anymore
 	 */
@@ -106,6 +108,7 @@ class CMSFileAddController extends LeftAndMain {
 	}
 
 	/**
+	 * @param bool $unlinked
 	 * @return ArrayList
 	 */
 	public function Breadcrumbs($unlinked = false) {

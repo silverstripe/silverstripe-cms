@@ -217,7 +217,6 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	/**
 	 * Create SiteConfig with defaults from language file.
 	 * 
-	 * @param string $locale
 	 * @return SiteConfig
 	 */
 	static public function make_site_config() {
