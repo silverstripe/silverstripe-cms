@@ -39,6 +39,7 @@ class CMSPageHistoryController extends CMSMain {
 	}
 	
 	/**
+	 * @param SS_HTTPRequest $request
 	 * @return array
 	 */
 	public function show($request) {
@@ -57,6 +58,7 @@ class CMSPageHistoryController extends CMSMain {
 	}
 	
 	/**
+	 * @param SS_HTTPRequest $request
 	 * @return array
 	 */
 	public function compare($request) {
@@ -96,7 +98,7 @@ class CMSPageHistoryController extends CMSMain {
 	 * @param int $id ID of the record to show
 	 * @param array $fields optional
 	 * @param int $versionID
-	 * @param int $compare Compare mode
+	 * @param int $compareID Compare mode
 	 *
 	 * @return Form
 	 */
@@ -341,6 +343,7 @@ class CMSPageHistoryController extends CMSMain {
 	}
 
 	/**
+	 * @param int|null $versionID
 	 * @return Form
 	 */
 	public function ShowVersionForm($versionID = null) {
@@ -353,6 +356,8 @@ class CMSPageHistoryController extends CMSMain {
 	}
 	
 	/**
+	 * @param int $versionID
+	 * @param int $otherVersionID
 	 * @return Form
 	 */
 	public function CompareVersionsForm($versionID, $otherVersionID) {

@@ -412,7 +412,8 @@ class VirtualPage extends Page {
 	 * Pass unrecognized method calls on to the original data object
 	 *
 	 * @param string $method 
-	 * @param string $args 
+	 * @param string $args
+	 * @return mixed
 	 */
 	public function __call($method, $args) {
 		if(parent::hasMethod($method)) {
@@ -422,6 +423,10 @@ class VirtualPage extends Page {
 		}
 	}
 
+	/**
+	 * @param string $field
+	 * @return bool
+	 */
 	public function hasField($field) {
 		return (
 			array_key_exists($field, $this->record) 
@@ -518,7 +523,10 @@ class VirtualPage_Controller extends Page_Controller {
 	 * Pass unrecognized method calls on to the original controller
 	 *
 	 * @param string $method 
-	 * @param string $args 
+	 * @param string $args
+	 * @return mixed
+	 *
+	 * @throws Exception Any error other than a 'no method' error.
 	 */
 	public function __call($method, $args) {
 		try {

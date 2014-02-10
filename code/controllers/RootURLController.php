@@ -107,6 +107,7 @@ class RootURLController extends Controller {
 	
 	/**
 	 * @param SS_HTTPRequest $request
+	 * @param DataModel|null $model
 	 * @return SS_HTTPResponse
 	 */
 	public function handleRequest(SS_HTTPRequest $request, DataModel $model = null) {

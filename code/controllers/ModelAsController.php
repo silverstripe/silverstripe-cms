@@ -42,6 +42,8 @@ class ModelAsController extends Controller implements NestedController {
 	
 	/**
 	 * @uses ModelAsController::getNestedController()
+	 * @param SS_HTTPRequest $request
+	 * @param DataModel $model
 	 * @return SS_HTTPResponse
 	 */
 	public function handleRequest(SS_HTTPRequest $request, DataModel $model) {
@@ -88,6 +90,7 @@ class ModelAsController extends Controller implements NestedController {
 	
 	/**
 	 * @return ContentController
+	 * @throws Exception If URLSegment not passed in as a request parameter.
 	 */
 	public function getNestedController() {
 		$request = $this->request;
@@ -127,7 +130,8 @@ class ModelAsController extends Controller implements NestedController {
 	 * @deprecated 3.2 Use OldPageRedirector::find_old_page instead
 	 *
 	 * @param string $URLSegment A subset of the url. i.e in /home/contact/ home and contact are URLSegment.
-	 * @param int $parentID The ID of the parent of the page the URLSegment belongs to.
+	 * @param int $parent The ID of the parent of the page the URLSegment belongs to.
+	 * @param bool $ignoreNestedURLs
 	 * @return SiteTree
 	 */
 	static public function find_old_page($URLSegment, $parent = null, $ignoreNestedURLs = false) {

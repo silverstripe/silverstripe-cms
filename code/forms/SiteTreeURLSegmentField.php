@@ -71,7 +71,7 @@ class SiteTreeURLSegmentField extends TextField {
 	}
 	
 	/**
-	 * @param string the secondary text to show
+	 * @param string $string The secondary text to show
 	 */
 	public function setHelpText($string){
 		$this->helpText = $string; 

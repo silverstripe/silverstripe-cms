@@ -429,7 +429,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * Replace a "[sitetree_link id=n]" shortcode with a link to the page with the corresponding ID.
 	 *
-	 * @return string
+	 * @param array $arguments
+	 * @param mixed $content
+	 * @param object|null $parser
+	 * @return string|void
 	 */
 	static public function link_shortcode_handler($arguments, $content = null, $parser = null) {
 		if(!isset($arguments['id']) || !is_numeric($arguments['id'])) return;
@@ -637,6 +640,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * Create a duplicate of this node. Doesn't affect joined data - create a
 	 * custom overloading of this if you need such behaviour.
 	 *
+	 * @param bool $doWrite
 	 * @return SiteTree The duplicated object.
 	 */
 	 public function duplicate($doWrite = true) {
@@ -699,9 +703,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 *
 	 * @param int $maxDepth The maximum depth to traverse.
 	 * @param boolean $unlinked Do not make page names links
-	 * @param string $stopAtPageType ClassName of a page to stop the upwards traversal.
-	 * @param boolean $showHidden Include pages marked with the attribute ShowInMenus = 0 
-	 * @return string The breadcrumb trail.
+	 * @param boolean|string $stopAtPageType ClassName of a page to stop the upwards traversal.
+	 * @param boolean $showHidden Include pages marked with the attribute ShowInMenus = 0
+	 * @return HTMLText The breadcrumb trail.
 	 */
 	public function Breadcrumbs($maxDepth = 20, $unlinked = false, $stopAtPageType = false, $showHidden = false) {
 		$page = $this;
@@ -759,7 +763,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * "grandparent - parent - page".
 	 *
 	 * @param int $level The maximum amount of levels to traverse.
-	 * @param string $seperator Seperating string
+	 * @param string $separator Seperating string
 	 * @return string The resulting string
 	 */
 	public function NestedTitle($level = 2, $separator = " - ") {
@@ -822,6 +826,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @uses canEdit()
 	 * @uses $allowed_children
 	 *
+	 * @param Member|int|null $member
 	 * @return boolean True if the current user can add children.
 	 */
 	public function canAddChildren($member = null) {
@@ -853,6 +858,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @uses DataExtension->canView()
 	 * @uses ViewerGroups()
 	 *
+	 * @param Member|int|null $member
 	 * @return boolean True if the current user can view this page.
 	 */
 	public function canView($member = null) {
@@ -1095,9 +1101,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * Pre-populate the cache of canEdit, canView, canDelete, canPublish permissions.
 	 * This method will use the static can_(perm)_multiple method for efficiency.
 	 * 
-	 * @param $permission String The permission: edit, view, publish, approve, etc.
-	 * @param $ids array An array of page IDs
-	 * @param $batchCallBack The function/static method to call to calculate permissions.  Defaults
+	 * @param string $permission The permission: edit, view, publish, approve, etc.
+	 * @param array $ids An array of page IDs
+	 * @param callback|null $batchCallback The function/static method to call to calculate permissions.  Defaults
 	 * to 'SiteTree::can_(permission)_multiple'
 	 */
 	static public function prepopulate_permission_cache($permission = 'CanEditType', $ids, $batchCallback = null) {
@@ -1242,9 +1248,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 * Get the 'can edit' information for a number of SiteTree pages.
 	 * 
-	 * @param An array of IDs of the SiteTree pages to look up.
-	 * @param useCached Return values from the permission cache if they exist.
-	 * @return A map where the IDs are keys and the values are booleans stating whether the given
+	 * @param array $ids An array of IDs of the SiteTree pages to look up.
+	 * @param int $memberID ID of member.
+	 * @param bool $useCached Return values from the permission cache if they exist.
+	 * @return array A map where the IDs are keys and the values are booleans stating whether the given
 	 * page can be edited.
 	 */
 	static public function can_edit_multiple($ids, $memberID, $useCached = true) {
@@ -1253,8 +1260,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 	/**
 	 * Get the 'can edit' information for a number of SiteTree pages.
-	 * @param An array of IDs of the SiteTree pages to look up.
-	 * @param useCached Return values from the permission cache if they exist.
+	 * @param array $ids An array of IDs of the SiteTree pages to look up.
+	 * @param int $memberID ID of member.
+	 * @param bool $useCached Return values from the permission cache if they exist.
+	 * @return array
 	 */
 	static public function can_delete_multiple($ids, $memberID, $useCached = true) {
 		$deletable = array();
@@ -1326,6 +1335,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 *                          will be called $item
 	 * @param array $collator An array, passed by reference, to collect all
 	 *                        of the matching descendants.
+	 * @return true|void
 	 */
 	public function collateDescendants($condition, &$collator) {
 		if($children = $this->Children()) {
@@ -1344,8 +1354,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @todo Move <title> tag in separate getter for easier customization and more obvious usage
 	 * 
 	 * @param boolean|string $includeTitle Show default <title>-tag, set to false for custom templating
-	 * @param boolean $includeTitle Show default <title>-tag, set to false for
-	 *                              custom templating
 	 * @return string The XHTML metatags
 	 */
 	public function MetaTags($includeTitle = true) {
@@ -1727,7 +1735,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * Returns the pages that depend on this page.
 	 * This includes virtual pages, pages that link to it, etc.
 	 * 
-	 * @param $includeVirtuals Set to false to exlcude virtual pages.
+	 * @param bool $includeVirtuals Set to false to exlcude virtual pages.
+	 * @return ArrayList
 	 */
 	public function DependentPages($includeVirtuals = true) {
 		if(class_exists('Subsite')) {
@@ -1782,7 +1791,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * 
 	 * @deprecated 3.1 Use DependentPages()->Count() instead.
 	 *
-	 * @param $includeVirtuals Set to false to exlcude virtual pages.
+	 * @param bool $includeVirtuals Set to false to exlcude virtual pages.
+	 * @return ArrayList
 	 */
 	public function DependentPagesCount($includeVirtuals = true) {
 		Deprecation::notice('3.1', 'Use SiteTree->DependentPages()->Count() instead.');
@@ -2112,7 +2122,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	/**
 	 *
 	 * @param boolean $includerelations a boolean value to indicate if the labels returned include relation fields
-	 * 
+	 * @return array|string
 	 */
 	public function fieldLabels($includerelations = true) {
 		$cacheKey = $this->class . '_' . $includerelations;
