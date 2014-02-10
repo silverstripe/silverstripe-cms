@@ -10,7 +10,29 @@
  * Each segment is stored in its filtered representation (through {@link URLSegmentFilter}).
  * The full path is constructed via {@link Link()}, {@link RelativeLink()} and {@link AbsoluteLink()}.
  * You can allow these segments to contain multibyte characters through {@link URLSegmentFilter::$default_allow_multibyte}.
- * 
+ *
+ * @property integer ID ID of the SiteTree object.
+ * @property string URLSegment
+ * @property string Title
+ * @property string MenuTitle
+ * @property string Content HTML content of the page.
+ * @property string MetaDescription
+ * @property string ExtraMeta
+ * @property string ShowInMenus
+ * @property string ShowInSearch
+ * @property string Sort Integer value denoting the sort order.
+ * @property string HasBrokenFile
+ * @property string HasBrokenLink
+ * @property string ReportClass
+ * @property string CanViewType Type of restriction for viewing this object.
+ * @property string CanEditType Type of restriction for editing this object.
+ *
+ * @method ManyManyList LinkTracking() List of site pages linked on this page.
+ * @method ManyManyList ImageTracking() List of Images linked on this page.
+ * @method ManyManyList ViewerGroups() List of groups that can view this object.
+ * @method ManyManyList EditorGroups() List of groups that can edit this object.
+ * @method ManyManyList BackLinkTracking() List of site pages that link to this page.
+ *
  * @package cms
  */
 class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvider,CMSPreviewable {
