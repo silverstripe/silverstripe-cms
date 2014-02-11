@@ -133,7 +133,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	/**
 	 * Override {@link LeftAndMain} Link to allow blank URL segment for CMSMain.
-	 * 
+	 *
+	 * @param string|null $action Action to link to.
 	 * @return string
 	 */
 	public function Link($action = null) {
@@ -352,6 +353,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 
 	/**
+	 * @param bool $unlinked
 	 * @return ArrayList
 	 */
 	public function Breadcrumbs($unlinked = false) {
@@ -510,6 +512,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 *
 	 * @param int $id Record ID
 	 * @param int $versionID optional Version id of the given record
+	 * @return DataObject
 	 */
  	public function getRecord($id, $versionID = null) {
 		$treeClass = $this->stat('tree_class');
@@ -671,12 +674,17 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 
 	/**
+	 * @param SS_HTTPRequest $request
 	 * @return String HTML
 	 */
 	public function treeview($request) {
 		return $this->renderWith($this->getTemplatesWithSuffix('_TreeView'));
 	}
 
+	/**
+	 * @param SS_HTTPRequest $request
+	 * @return String HTML
+	 */
 	public function listview($request) {
 		return $this->renderWith($this->getTemplatesWithSuffix('_ListView'));
 	}
@@ -686,9 +694,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * defaulting to no filter and show all pages in first level.
 	 * Doubles as search results, if any search parameters are set through {@link SearchForm()}.
 	 * 
-	 * @param Array Search filter criteria
-	 * @param Int Optional parent node to filter on (can't be combined with other search criteria)
+	 * @param Array $params Search filter criteria
+	 * @param Int $parentID Optional parent node to filter on (can't be combined with other search criteria)
 	 * @return SS_List
+	 * @throws Exception if invalid filter class is passed.
 	 */
 	public function getList($params, $parentID = 0) {
 		$list = new DataList($this->stat('tree_class'));

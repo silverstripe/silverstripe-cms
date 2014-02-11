@@ -19,8 +19,12 @@ class SiteTreeFileExtension extends DataExtension {
 
 	/**
 	 * Extend through {@link updateBackLinkTracking()} in your own {@link Extension}.
-	 * 
-	 * @return ComponentSet
+	 *
+	 * @param string|array $filter
+	 * @param string $sort
+	 * @param string $join
+	 * @param string $limit
+	 * @return ManyManyList
 	 */
 	public function BackLinkTracking($filter = "", $sort = "", $join = "", $limit = "") {
 		if(class_exists("Subsite")){

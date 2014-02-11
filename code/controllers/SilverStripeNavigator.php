@@ -20,7 +20,8 @@ class SilverStripeNavigator extends ViewableData {
 	protected $record;
 	
 	/**
-	 * @param DataObject
+	 * @param DataObject $record
+	 * @throws InvalidArgumentException if record doesn't implement CMSPreviewable
 	 */
 	public function __construct($record) {
 		if(!in_array('CMSPreviewable', class_implements($record))) {

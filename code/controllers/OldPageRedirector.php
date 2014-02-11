@@ -7,6 +7,7 @@ class OldPageRedirector extends Extension {
 	 * find an old URL that it should be redirecting to.
 	 *
 	 * @param SS_HTTPResponse $request The request object
+	 * @throws SS_HTTPResponse_Exception
 	 */
 	public function onBeforeHTTPError404($request) {
 		// Build up the request parameters

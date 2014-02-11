@@ -220,9 +220,7 @@ class ErrorPage extends Page {
 	 * content, so the page can be shown even when SilverStripe is not
 	 * functioning correctly before publishing this page normally.
 	 *
-	 * @param string|int $fromStage Place to copy from. Can be either a stage name or a version number.
-	 * @param string $toStage Place to copy to. Must be a stage name.
-	 * @param boolean $createNewVersion Set this to true to create a new version number.  By default, the existing version number will be copied over.
+	 * @return void
 	 */
 	public function doPublish() {
 		parent::doPublish();
@@ -330,8 +328,9 @@ class ErrorPage_Controller extends Page_Controller {
 	 * pages such as 401 and 403 pages won't be rendered due to
 	  * {@link SS_HTTPResponse::isFinished() ignoring the response body.
 	 *
-	 * @param SS_HTTPRequest
-	 * @param DataModel
+	 * @param SS_HTTPRequest $request
+	 * @param DataModel $model
+	 * @return SS_HTTPResponse
 	 */
 	public function handleRequest(SS_HTTPRequest $request, DataModel $model = NULL) {
 		$body = parent::handleRequest($request, $model);
