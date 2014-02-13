@@ -4,7 +4,7 @@
 		<% base_tag %>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 		<title><% _t('TITLE', 'Image Uploading Iframe') %></title>
-		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 		<style type="text/css">
 			body {
 				padding: 0;
