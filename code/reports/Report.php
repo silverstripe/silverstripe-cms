@@ -219,7 +219,7 @@ class SS_Report extends ViewableData {
 		}
 			
 		// Add search fields is available
-		if($this->hasMethod('parameterFields') && $fields = $this->parameterFields()) {
+		if($this->hasMethod('parameterFields') && $this->parameterFields()) {
 			foreach($fields as $field) {
 				// Namespace fields for easier handling in form submissions
 				$field->setName(sprintf('filters[%s]', $field->getName()));
