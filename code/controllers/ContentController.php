@@ -404,6 +404,10 @@ HTML;
 		// Next, we need to add templates for all controllers
 		$templates += SSViewer::get_templates_by_class(get_class($this), $action, "Controller");
 
+		// Fail-over to the same for the "index" action
+		$templates += SSViewer::get_templates_by_class(get_class($this->dataRecord), "", "SiteTree");
+		$templates += SSViewer::get_templates_by_class(get_class($this), "", "Controller");
+
 		return new SSViewer($templates);
 	}
 
