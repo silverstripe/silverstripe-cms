@@ -33,7 +33,5 @@ Feature: Edit site wide settings
 
 		When I select "behattest" from "Theme"
 		And I press the "Save" button
-		And I reload the page
-
-		When I go to "/home?flush=1"
+		And I go to "/home?flush=1"
 		Then I should see "This is the behat test theme"
