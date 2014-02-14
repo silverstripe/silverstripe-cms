@@ -25,12 +25,13 @@ Feature: Edit site wide settings
 		And I should see "Site is under construction"
 
 	Scenario: I can change the theme of the website
-		Given I should see an edit page form
+		Given a theme "behattest"
+		And a template "Page.ss" in theme "behattest" with content "<h1>This is the behat test theme</h1>"
+		When I go to "/admin/settings"
+		Then I should see an edit page form
 		And I should see "Theme"
 
-		When I select "tutorial" from "Theme"
+		When I select "behattest" from "Theme"
 		And I press the "Save" button
-		And I reload the page
-
-		When I go to "/home"
-		Then I should see "Visit www.silverstripe.com to download the CMS"
+		And I go to "/home?flush=1"
+		Then I should see "This is the behat test theme"
