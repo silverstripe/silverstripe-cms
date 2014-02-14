@@ -161,6 +161,11 @@ class ContentControllerTest extends FunctionalTest {
 
 		$response = $this->get($page->RelativeLink("test"));
 		$this->assertEquals("ContentControllerTestPage_test", $response->getBody());
+
+		// Test that an action without a template will default to the index template, which is
+		// to say the default Page.ss template
+		$response = $this->get($page->RelativeLink("testwithouttemplate"));
+		$this->assertEquals("Foo", $response->getBody());
 	}
 
 }
@@ -190,5 +195,10 @@ class ContentControllerTestPage extends Page { }
 class ContentControllerTestPage_Controller extends Page_Controller {
 	private static $allowed_actions = array(
 		"test",
+		"testwithouttemplate"
 	);
+
+	function testwithouttemplate() {
+		return array();
+	}
 }
