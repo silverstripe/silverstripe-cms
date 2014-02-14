@@ -36,6 +36,9 @@ class FeatureContext extends \SilverStripe\Framework\Test\Behaviour\FeatureConte
 		$fixtureContext->setFixtureFactory($this->getFixtureFactory());
 		$this->useContext('FixtureContext', $fixtureContext);
 
+		// Add extra contexts with more steps
+		$this->useContext('ThemeContext', new \SilverStripe\Cms\Test\Behaviour\ThemeContext($parameters));
+
 		// Use blueprints which auto-publish all subclasses of SiteTree
 		$factory = $fixtureContext->getFixtureFactory();
 		foreach(\ClassInfo::subclassesFor('SiteTree') as $id => $class) {
