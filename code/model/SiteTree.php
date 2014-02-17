@@ -105,7 +105,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		"MenuTitle" => "Varchar(100)",
 		"Content" => "HTMLText",
 		"MetaDescription" => "Text",
-		"ExtraMeta" => "HTMLText",
+		"ExtraMeta" => "HTMLText('meta, link')",
 		"ShowInMenus" => "Boolean",
 		"ShowInSearch" => "Boolean",
 		"Sort" => "Int",
