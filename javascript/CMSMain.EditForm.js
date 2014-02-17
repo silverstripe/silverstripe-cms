@@ -288,9 +288,9 @@
 			},
 			onunmatch: function(e) {
 				var saveButton = this.find('button[name=action_save]');
-				if(saveButton.data('button')) saveButton('option', 'showingAlternate', false);
+				if(saveButton.data('button')) saveButton.button('option', 'showingAlternate', false);
 				var publishButton = this.find('button[name=action_publish]');
-				if(publishButton.data('button')) publishButton('option', 'showingAlternate', false);
+				if(publishButton.data('button')) publishButton.button('option', 'showingAlternate', false);
 				this._super(e);
 			}
 		});
