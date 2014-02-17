@@ -70,6 +70,7 @@ pl:
     UNPUBLISHED_PAGES: 'Usunięto z opublikowanych %d stron'
     UNPUBLISH_PAGES: Cofnij publikację
   CMSMain:
+    ACCESS: 'Dostęp do sekcji ''{title}'''
     ACCESS_HELP: 'Zezwala na oglądanie sekcji zawierających drzewo stron oraz treść. Prawo Przeglądaj i edytuj może być obsługiwane przez pola wyboru dostępne na stronach oraz poprzez zakładkę uprawnień.'
     AddNew: 'Dodaj nową stronę'
     AddNewButton: 'Dodaj nowy'
@@ -95,10 +96,14 @@ pl:
     PUBALLFUN2: "Naciśnięcie tego przycisku spowoduje przejście po wszystkich stronach i opublikowanie ich. Zazwyczaj używa się tego, gdy w witrynie było bardzo dużo zmian, na przykład gdy witryna została utworzona."
     PUBPAGES: 'Zrobiono:  Opublikowano {count} stron'
     PageAdded: 'Pomyślnie utworzono stronę'
+    REMOVED: 'Usunięto ''{title}''{description} z witryny'
+    REMOVEDPAGE: 'Usunięto ''{title}'' z opublikowanej witryny'
     REMOVEDPAGEFROMDRAFT: '''%s'' usunięto ze szkiców'
     RESTORE: Przywróć
     RESTORED: 'Pomyślnie przywrócono ''{title}'''
     ROLLBACK: 'Wróć do tej wersji'
+    ROLLEDBACKPUBv2: 'Przywrócono opublikowaną wersję'
+    ROLLEDBACKVERSIONv2: 'Przywrócono wersję #%d.'
     SAVE: Zapisz
     SAVEDRAFT: 'Zapisz szkic'
     TabContent: Zawartość
@@ -132,6 +137,7 @@ pl:
     UNKNOWN: Nieznany
     WHEN: Kiedy
   CMSPagesController:
+    GalleryView: 'Tryb galerii'
     ListView: 'Widok listy'
     MENUTITLE: Strony
     TreeView: 'Widok drzewa'
@@ -240,6 +246,10 @@ pl:
     MENUTITLE: Raporty
   ReportAdminForm:
     FILTERBY: 'Filtruj po'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Aby opublikować stronę wirtualną opublikuj stronę powiązaną'
+    VIRTUALPAGEWARNING: 'Aby opublikować tą stronę najpierw wybierz stronę powiązaną i zapisz zmiany'
+    VIRTUALPAGEWARNINGSETTINGS: 'Aby opublikować wybierz stronę powiązaną w sekcji głównej'
   SearchForm:
     GO: Przejdź
     SEARCH: Szukaj
@@ -256,6 +266,8 @@ pl:
     OtherGroupTitle: Inny
     ParameterLiveCheckbox: 'Sprawdź witrynę'
     REPEMPTY: '{title} raport jest pusty.'
+  SilverStripeNavigator:
+    ARCHIVED: Zarchiwizowane
   SilverStripeNavigatorLink:
     ShareInstructions: 'Aby podzielić się tą stroną, skopiuj i wklej poniższy link.'
     ShareLink: 'Podziel się linkiem'
@@ -324,7 +336,9 @@ pl:
     LINKCHANGENOTE: 'Zmiana linku na aktualnej stronie skutkuje zmianą w linkach stron potomnych.'
     MENUTITLE: 'Sekcja nawigacji'
     METADESC: 'Opis'
+    METADESCHELP: 'Wyszukiwarki internetowe używają tej treści w wynikach wyszukiwania (ta treść nie wpłynie na ich pozycjonowanie)'
     METAEXTRA: 'Własne meta tagi'
+    METAEXTRAHELP: 'HTML zawierający dodatkowe metainformacje, n.p. &lt;meta name="customName" content="your custom content here" /&gt;'
     MODIFIEDONDRAFTHELP: 'Na stronie znajdują się nieopublikowane zmiany'
     MODIFIEDONDRAFTSHORT: Zmodyfikowana
     MetadataToggle: Metadane
@@ -359,6 +373,7 @@ pl:
     URLSegment: 'Segment adresu URL'
     VIEWERGROUPS: 'Grupy przeglądających'
     VIEW_ALL_DESCRIPTION: 'Przeglądanie stron'
+    VIEW_ALL_HELP: 'Uprawenienie do przeglądania wszystkich stron w witrynie, bez wzlędu na szczegółowe ustawienia w ich zakładkach Dostęp. Wymaga uprawenienia "Dostęp do sekcji ''Strony''" '
     VIEW_DRAFT_CONTENT: 'Obejrzyj szkic treści'
     VIEW_DRAFT_CONTENT_HELP: 'Stosowane do oglądania szkiców stron poza systemem CMS. Przydatne w przypadku zewnętrznych współpracowników nie mających dostępu do CMS.'
     Viewers: 'Grupy przeglądających'
@@ -382,6 +397,7 @@ pl:
     DESCRIPTION: 'Wyświetla zawartość innej strony'
     EditLink: edytuj
     HEADER: 'To jest wirtualna strona'
+    HEADERWITHLINK: 'Strona wirtualna odzwierciedlająca treść "{title}" ({link})'
     PLURALNAME: 'Wirtualne Strony'
     PageTypNotAllowedOnRoot: '"{type}" nie jest dozwolona dla głównego poziomu wirtualnej strony'
     SINGULARNAME: 'Wirtualna Strona'
