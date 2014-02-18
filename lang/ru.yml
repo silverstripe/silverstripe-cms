@@ -114,6 +114,7 @@ ru:
     RESET: Восстановить
   CMSPageAddController:
     ParentMode_child: 'Под другой страницей'
+    ParentMode_top: 'Корневая страница'
     MENUTITLE: 'Добавить страницу'
   CMSPageHistoryController:
     COMPAREMODE: 'Режим сравнения (выбрать две)'
@@ -152,6 +153,8 @@ ru:
     Title: 'Все страницы, включая удаленные'
   CMSSiteTreeFilter_Search:
     Title: 'Все страницы'
+  ContentControl:
+    NOTEWONTBESHOWN: 'Внимание: это сообщение не будет показано посетителям'
   ContentController:
     ARCHIVEDSITE: 'Версия для просмотра'
     ARCHIVEDSITEFROM: 'Архив сайта от'
@@ -223,6 +226,7 @@ ru:
     CONTENT_CATEGORY: 'Права доступа к содержимому'
     PERMISSIONS_CATEGORY: 'Роли и права доступа'
   RedirectorPage:
+    DESCRIPTION: 'Перенаправление на другую внутреннюю страницу'
     HASBEENSETUP: 'Страница перенаправления установлена без указания места перенаправления.'
     HEADER: 'Эта страница будет перенаправлять пользователей на другую страницу'
     OTHERURL: 'URL другого сайта'
@@ -259,6 +263,9 @@ ru:
     REPEMPTY: 'Отчет {title} пуст.'
   SilverStripeNavigator:
     ARCHIVED: Архивные
+  SilverStripeNavigatorLink:
+    ShareInstructions: 'Чтобы поделиться ссылкой на эту страницу, скопируйте URL ниже.'
+    ShareLink: 'Поделиться ссылкой'
   SilverStripeNavigatorLinkl:
     CloseLink: Закрыть
   SiteConfig:
@@ -375,6 +382,7 @@ ru:
   URLSegmentField:
     Cancel: Отмена
     Edit: Редактировать
+    OK: ОК
   ViewArchivedEmail_ss:
     CANACCESS: 'Вы можете посмотреть архивную версию сайта по этой ссылке:'
     HAVEASKED: 'Вы запросили просмотр содержимого нашего сайта за'
