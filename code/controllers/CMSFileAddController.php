@@ -57,6 +57,10 @@ class CMSFileAddController extends LeftAndMain {
 		Requirements::javascript(FRAMEWORK_DIR . '/javascript/AssetUploadField.js');
 		Requirements::css(FRAMEWORK_DIR . '/css/AssetUploadField.css');
 
+		if($currentPageID = $this->currentPageID()){
+			Session::set("{$this->class}.currentPage", $currentPageID);	
+		}
+		
 		$folder = $this->currentPage();
 
 		$uploadField = UploadField::create('AssetUploadField', '');
