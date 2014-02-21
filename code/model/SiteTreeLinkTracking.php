@@ -49,7 +49,10 @@ class SiteTreeLinkTracking extends DataExtension {
 
 					$linkedPages[] = $ID;
 					if(!DataObject::get_by_id('SiteTree', $ID))  $record->HasBrokenLink = true;
-
+				} else if (preg_match('/\[file_link,id=([0-9]+)\]/i', $href, $matches)) {
+					$ID = $matches[1];
+					$linkedFiles[] = $ID;
+					if(!File::get()->ById($ID)) $record->HasBrokenFile = true;
 				} else if(substr($href, 0, strlen(ASSETS_DIR) + 1) == ASSETS_DIR.'/') {
 					$candidateFile = File::find(Convert::raw2sql(urldecode($href)));
 					if($candidateFile) {
