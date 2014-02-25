@@ -108,11 +108,11 @@ JS
 		Requirements::javascript(SAPPHIRE_DIR . "/thirdparty/behaviour/behaviour.js");
 		Requirements::javascript(SAPPHIRE_DIR . "/javascript/prototype_improvements.js");
 		Requirements::javascript(SAPPHIRE_DIR . "/javascript/layout_helpers.js");
-		Requirements::javascript(CMS_DIR . "/javascript/LeftAndMain.js");
-		Requirements::javascript(CMS_DIR . "/thirdparty/multifile/multifile.js");
-		Requirements::css(CMS_DIR . "/thirdparty/multifile/multifile.css");
 		Requirements::javascript(SAPPHIRE_DIR . "/thirdparty/jquery/jquery.js");
 		Requirements::javascript(SAPPHIRE_DIR . "/javascript/jquery_improvements.js");
+		Requirements::javascript(CMS_DIR . "/javascript/LeftAndMain.js");
+		Requirements::javascript(CMS_DIR . "/thirdparty/multifile/multifile.js");
+		Requirements::css(CMS_DIR . "/thirdparty/multifile/multifile.css");	
 		Requirements::css(CMS_DIR . "/css/typography.css");
 		Requirements::css(CMS_DIR . "/css/layout.css");
 		Requirements::css(CMS_DIR . "/css/cms_left.css");
