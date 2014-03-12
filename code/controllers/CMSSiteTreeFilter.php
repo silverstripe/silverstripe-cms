@@ -4,10 +4,10 @@
  * 
  * The simplest way of building a CMSSiteTreeFilter is to create a pagesToBeShown() method that
  * returns an Iterator of maps, each entry containing the 'ID' and 'ParentID' of the pages to be
- * included in the tree.  The reuslt of a DB::query() can be returned directly.
+ * included in the tree. The result of a DB::query() can then be returned directly.
  *
  * If you wish to make a more complex tree, you can overload includeInTree($page) to return true/
- * false depending on whether the given page should be included.  Note that you will need to include
+ * false depending on whether the given page should be included. Note that you will need to include
  * parent helper pages yourself.
  * 
  * @package cms
@@ -44,20 +44,24 @@ abstract class CMSSiteTreeFilter extends Object {
 	public static function get_all_filters() {
 		// get all filter instances
 		$filters = ClassInfo::subclassesFor('CMSSiteTreeFilter');
+
 		// remove abstract CMSSiteTreeFilter class
 		array_shift($filters);
 		// add filters to map
 		$filterMap = array();
 		
+		// Ensure that 'all pages' filter is on top position and everything else is sorted alphabetically
+		$first = array();
 		foreach($filters as $filter) {
-			$filterMap[$filter] = call_user_func(array($filter, 'title'));
+			$called = call_user_func(array($filter, 'title'));
+			if($filter == 'CMSSiteTreeFilter_Search') {
+				$first[$filter] = $called;
+				continue;
+			}
+			$filterMap[$filter] = $called;
 		}
-		// ensure that 'all pages' filter is on top position
-		uasort($filterMap, 
-			create_function('$a,$b', 'return ($a == "CMSSiteTreeFilter_Search") ? 1 : -1;')
-		);
-		
-		return $filterMap;
+		asort($filterMap);
+		return $first + $filterMap;
 	}
 		
 	public function __construct($params = null) {
@@ -179,6 +183,106 @@ class CMSSiteTreeFilter_ChangedPages extends CMSSiteTreeFilter {
 			$ids[] = array('ID'=>$row['ID'],'ParentID'=>$row['ParentID']);
 		}
 
+		return $ids;
+	}	
+}
+
+/**
+ * Filters pages which have a status "Removed from Draft".
+ * 
+ * @package cms
+ * @subpackage content
+ */
+class CMSSiteTreeFilter_StatusRemovedFromDraftPages extends CMSSiteTreeFilter {
+	
+	static public function title() {
+		return _t('CMSSiteTreeFilter_StatusRemovedFromDraftPages.Title', 'Status: Removed from draft');
+	}
+	
+	/**
+	 * Filters out all pages who's status is set to "Removed from draft".
+	 * 
+	 * @see {@link SiteTree::getStatusFlags()}
+	 * @return array
+	 */
+	public function pagesIncluded() {
+		$ids = array();
+		$pages = Versioned::get_including_deleted('SiteTree');
+		
+		foreach($pages as $page) {
+			$isRemoved = ($page->IsDeletedFromStage && $page->ExistsOnLive);
+			if($isRemoved) {
+				$ids[] = array('ID' => $page->ID, 'ParentID' => $page->ParentID);
+			}
+		}
+		return $ids;
+	}	
+}
+
+/**
+ * Filters pages which have a status "Draft".
+ * 
+ * @package cms
+ * @subpackage content
+ */
+class CMSSiteTreeFilter_StatusDraftPages extends CMSSiteTreeFilter {
+	
+	static public function title() {
+		return _t('CMSSiteTreeFilter_StatusDraftPages.Title', 'Status: Draft');
+	}
+	
+	/**
+	 * Filters out all pages who's status is set to "Draft".
+	 * 
+	 * @see {@link SiteTree::getStatusFlags()}
+	 * @return array
+	 */
+	public function pagesIncluded() {
+		$ids = array();
+		$pages = Versioned::get_by_stage('SiteTree', 'Stage');
+
+		foreach($pages as $page) {
+			$isDraft = (!$page->IsDeletedFromStage && $page->IsAddedToStage);
+			if($isDraft) {
+				$ids[] = array('ID' => $page->ID, 'ParentID' => $page->ParentID);
+			}			
+		}
+		
+		return $ids;
+	}	
+}
+
+/**
+ * Filters pages which have a status "Deleted".
+ * 
+ * @package cms
+ * @subpackage content
+ */
+class CMSSiteTreeFilter_StatusDeletedPages extends CMSSiteTreeFilter {
+	
+	protected $childrenMethod = "AllHistoricalChildren";	
+	
+	static public function title() {
+		return _t('CMSSiteTreeFilter_StatusDeletedPages.Title', 'Status: Deleted');
+	}
+	
+	/**
+	 * Filters out all pages who's status is set to "Deleted".
+	 * 
+	 * @see {@link SiteTree::getStatusFlags()}
+	 * @return array
+	 */
+	public function pagesIncluded() {
+		$ids = array();
+		$pages = Versioned::get_including_deleted('SiteTree');
+
+		foreach($pages as $page) {
+			$isDeleted = ($page->IsDeletedFromStage && !$page->ExistsOnLive);
+			if($isDeleted) {
+				$ids[] = array('ID' => $page->ID, 'ParentID' => $page->ParentID);
+			}			
+		}
+		
 		return $ids;
 	}	
 }
