@@ -22,5 +22,6 @@
 	},
 	"autoload": {
 		"classmap": ["tests/behat/"]
-	}
+	},
+	"minimum-stability": "dev"
 }
