@@ -6,8 +6,8 @@ Feature: Insert an image into a page
 
   Background:
     Given a "page" "About Us"
-    And a "file" "assets/folder1/file1.jpg"
-    And a "file" "assets/folder1/file2.jpg"
+    And a "image" "assets/folder1/file1.jpg"
+    And a "image" "assets/folder1/file2.jpg"
     And I am logged in with "ADMIN" permissions
     And I go to "/admin/pages"
     And I click on "About Us" in the tree
