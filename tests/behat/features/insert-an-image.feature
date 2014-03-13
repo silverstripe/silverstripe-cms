@@ -41,7 +41,7 @@ Feature: Insert an image into a page
 
   @assets
   Scenario: I can overwrite an existing image with one uploaded from my own computer
-    Given a "file" "assets/Uploads/file1.jpg"
+    Given a "image" "assets/Uploads/file1.jpg"
     When I press the "Insert Media" button
     And I press the "From your computer" button
     And I attach the file "file1.jpg" to "AssetUploadField" with HTML5
