@@ -122,7 +122,7 @@ JS
 		if($id) $folder = DataObject::get_by_id("Folder", $id);
 		else $folder = singleton('Folder');
 
-		return array( 'CanUpload' => $folder->canEdit());
+		return array( 'CanUpload' => $folder->canCreate());
 	}
 	
 	/**
@@ -215,6 +215,8 @@ JS
 		} else {
 			$folder = singleton('Folder');
 		}
+		
+		if(!$folder->canCreate()) return Security::permissionFailure($this);
 
 		foreach($processedFiles as $filePostId => $tmpFile) {
 			if($tmpFile['error'] == UPLOAD_ERR_NO_TMP_DIR) {
@@ -367,7 +369,7 @@ HTML;
 			}
 			
 			if(!$record->canEdit()) {
-				$form->makeReadonly();
+				$fields->replaceField('Title', $fields->dataFieldByName('Title')->performReadonlyTransformation());
 			}
 
 			$this->extend('updateEditForm', $form);
@@ -385,11 +387,18 @@ HTML;
 			$destFolderID = ($_REQUEST['DestFolderID'] == 'root') ? 0 : $_REQUEST['DestFolderID'];
 			$fileList = "'" . ereg_replace(' *, *',"','",trim(Convert::raw2sql($_REQUEST['FileIDs']))) . "'";
 			$numFiles = 0;
+			
+			$destFolder = DataObject::get("Folder", "\"File\".\"ID\" = ($destFolderID)");
+			if(!$destFolder || $destFolder->ID == 0){
+				user_error("Destination folder could be found!", E_USER_ERROR);
+			}
+			if(!$destFolder->canEdit()) return Security::permissionFailure($this);
 	
 			if($fileList != "''") {
 				$files = DataObject::get("File", "\"File\".\"ID\" IN ($fileList)");
 				if($files) {
 					foreach($files as $file) {
+						if(!$file->canEdit()) return Security::permissionFailure($this)
 						if($file instanceof Image) {
 							$file->deleteFormattedImages();
 						}
@@ -427,6 +436,8 @@ HTML;
 			if($files) {
 				$brokenPages = array();
 				foreach($files as $file) {
+					if(!$file->canDelete()) return Security::permissionFailure($this);
+					
 					$brokenPages = array_merge($brokenPages, $file->BackLinkTracking()->toArray());
 					if($file instanceof Image) {
 						$file->deleteFormattedImages();
@@ -488,6 +499,7 @@ HTML;
 	public function savefile($data, $form) {
 		$record = DataObject::get_by_id("File", $data['ID']);
 		if(!$record) return $this->httpError(400);
+		if(!$record->canEdit()) return Security::permissionFailure($this);
 		
 		$form->saveInto($record);
 		$record->write();
@@ -578,6 +590,15 @@ JS;
 			if(!$parentObj || !$parentObj->ID) $parent = 0;
 		}
 		
+		// Security check
+		if(isset($parentObj->ID)) {
+			if(!$parentObj->canCreate()) { return Security::permissionFailure($this); }
+		}
+		else
+		{
+			if(!singleton('Folder')->canCreate()) { return Security::permissionFailure($this); }
+		}
+		
 		// Get the folder to be created		
 		if(isset($parentObj->ID)) $filename = $parentObj->FullPath . $name;
 		else $filename = ASSETS_PATH . '/' . $name;
@@ -647,6 +668,7 @@ JS;
 			if(is_numeric($id)) {
 				$record = DataObject::get_by_id($this->stat('tree_class'), $id);
 				if($record) {
+					if(!$record->canDelete()) { return Security::permissionFailure($this); }
 					$script .= $this->deleteTreeNodeJS($record);
 					$record->delete();
 					$record->destroy();
@@ -674,6 +696,8 @@ JS;
 		if($fileID = $this->urlParams['ID']) {
 			$file = DataObject::get_by_id('File', $fileID);
 			if(!$file) return $this->httpError(400);
+			
+			if(!$file->canDelete()) { return Security::permissionFailure($this); }
 			
 			// Delete the temp verions of this file in assets/_resampled
 			if($file instanceof Image) {
