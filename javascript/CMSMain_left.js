@@ -11,7 +11,7 @@ _NEW_PAGES = new Array();
  */
 var addpageclass;
 addpageclass = Class.create();
-addpageclass.applyTo('#addpage');
+addpageclass.applyTo('.CMSMain #addpage');
 addpageclass.prototype = {
 	originalValues: new Array(),
 	initialize: function () {
