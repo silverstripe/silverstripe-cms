@@ -60,3 +60,18 @@ Feature: Manage files
     When I go to "/admin/assets/add"
     And I follow "Show allowed extensions"
     Then I should see "png,"
+
+  Scenario: I can filter the files list view using name
+    Given I expand the "Filter" CMS Panel
+    And I fill in "Name" with "file1"
+    And I press the "Apply Filter" button
+    Then I should see "assets/folder1/file1.jpg"
+    And I should not see "assets/folder1/file2.jpg"
+
+  Scenario: I can filter the files list view using filetype
+    Given a "file" "assets/document.pdf"
+    And I expand the "Filter" CMS Panel
+    And I select "Image" from "File type"
+    And I press the "Apply Filter" button
+    Then I should see "assets/folder1/file1.jpg"
+    And I should not see "assets/document.pdf"
