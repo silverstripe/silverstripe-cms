@@ -31,8 +31,8 @@ addpageclass.prototype = {
 		
 			var selectedNode = $('sitetree').firstSelected();
 			if(selectedNode) this.showApplicableChildrenPageTypes(selectedNode.hints);
+			$('sitetree').observeMethod('SelectionChanged', this.treeSelectionChanged.bind(this));
 		}
-		$('sitetree').observeMethod('SelectionChanged', this.treeSelectionChanged.bind(this));
 	},
 	
 	onclick : function() {
