@@ -3,7 +3,11 @@ Group:
       Title: Editors
    admins:
       Title: Administrators
-      
+   allsections:
+      Title: All Section Editors
+   securityadmins:
+      Title: Security Admins
+
 Permission:
    admins:
       Code: ADMIN
@@ -11,7 +15,13 @@ Permission:
    editors:
       Code: CMS_ACCESS_CMSMain
       Group: =>Group.editors
-      
+   allsections:
+      Code: CMS_ACCESS_LeftAndMain
+      Group: =>Group.allsections
+   securityadmins:
+      Code: CMS_ACCESS_SecurityAdmin
+      Group: =>Group.securityadmins
+
 Member:
    editor:
       FirstName: Test
@@ -21,6 +31,10 @@ Member:
       FirstName: Test
       Surname: Administrator
       Groups: =>Group.admins
+   allsections:
+      Groups: =>Group.allsections
+   securityadmin:
+      Groups: =>Group.securityadmins
 
 Page:
     home:

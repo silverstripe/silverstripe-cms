@@ -454,6 +454,16 @@ class SiteTreeTest extends SapphireTest {
 		// Can't edit a child of that page that has its permissions overridden
 		$this->assertFalse($product4->canEdit($editor));
 	}
+
+	public function testCanEditWithAccessToAllSections() {
+		$page = new Page();
+		$page->write();
+		$allSectionMember = $this->objFromFixture('Member', 'allsections');
+		$securityAdminMember = $this->objFromFixture('Member', 'securityadmin');
+
+		$this->assertTrue($page->canEdit($allSectionMember));
+		$this->assertFalse($page->canEdit($securityAdminMember));
+	}
 	
 	public function testEditPermissionsOnDraftVsLive() {
 		// Create an inherit-permission page
