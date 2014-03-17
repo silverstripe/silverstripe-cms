@@ -55,37 +55,22 @@ Feature: Insert an image into a page
     # Required to avoid "unsaved changed" browser dialog
     Then I press the "Save draft" button
 
-  @todo 
   Scenario: I can insert an image from the CMS file store
     Given I press the "Insert Media" button
     And I press the "From the CMS" button
-    And I select "folder1" in the "Find in Folder" dropdown
-    And I select "file1.jpg"
+    And I fill in the "ParentID" dropdown with "folder1"
+    And I click on "file1.jpg" in the "Files" table
     When I press the "Insert" button
     Then the "Content" HTML field should contain "file1.jpg"
     # Required to avoid "unsaved changed" browser dialog
     Then I press the "Save draft" button
 
-  @todo
-  Scenario: I can insert multiple images at once
-    Given I press the "Insert Media" button
-    And I press the "From the CMS" button
-    And I select "folder1" in the "Find in Folder" dropdown
-    And I select "file1.jpg"
-    And I select "file2.jpg"
-    When I press the "Insert" button
-    Then the "Content" HTML field should contain "file1.jpg"
-    And the "Content" HTML field should contain "file2.jpg"
-    # Required to avoid "unsaved changed" browser dialog
-    Then I press the "Save draft" button
-
-  @todo
   Scenario: I can edit properties of an image before inserting it
     Given I press the "Insert Media" button
     And I press the "From the CMS" button
-    And I select "folder1" in the "Find in Folder" dropdown
-    And I select "file1.jpg"
-    And I follow "Edit"
+    And I fill in the "ParentID" dropdown with "folder1"
+    And I click on "file1.jpg" in the "Files" table
+    And I press the "Edit" button
     When I fill in "Alternative text (alt)" with "My alt"
     And I press the "Insert" button
     Then the "Content" HTML field should contain "file1.jpg"
@@ -93,20 +78,7 @@ Feature: Insert an image into a page
     # Required to avoid "unsaved changed" browser dialog
     Then I press the "Save draft" button
 
-  @todo
-  Scenario: I can edit dimensions of an image before inserting it
-    Given I press the "Insert Media" button
-    And I press the "From the CMS" button
-    And I select "folder1" in the "Find in Folder" dropdown
-    And I select "file1.jpg"
-    And I follow "Edit"
-    When I fill in "Width" with "10"
-    When I fill in "Height" with "20"
-    And I press the "Insert" button
-    Then the "Content" HTML field should contain "<img src=assets/folder1/file1.jpg width=10 height=20>"
-    # Required to avoid "unsaved changed" browser dialog
-    Then I press the "Save draft" button
-
+  # TODO This needs to support using drag handles, as we no longer have 'Width' or 'Height' input fields
   @todo
   Scenario: I can edit dimensions of an existing image
     Given the "page" "About us" contains "<img src=assets/folder1/file1.jpg>"
