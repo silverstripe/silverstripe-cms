@@ -132,40 +132,43 @@ class ContentControllerTest extends FunctionalTest {
 	 * @covers ContentController::getViewer()
 	**/
 	public function testGetViewer() {
+		
+		$self = $this;
+		$this->useTestTheme(dirname(__FILE__), 'controllertest', function() use ($self) {
 
-		// Test a page without a controller (ContentControllerTest_PageWithoutController.ss)
-		$page = new ContentControllerTestPageWithoutController();
-		$page->URLSegment = "test";
-		$page->write();
-		$page->publish("Stage", "Live");
+			// Test a page without a controller (ContentControllerTest_PageWithoutController.ss)
+			$page = new ContentControllerTestPageWithoutController();
+			$page->URLSegment = "test";
+			$page->write();
+			$page->publish("Stage", "Live");
 
-		$response = $this->get($page->RelativeLink());
-		$this->assertEquals("ContentControllerTestPageWithoutController", $response->getBody());
+			$response = $self->get($page->RelativeLink());
+			$self->assertEquals("ContentControllerTestPageWithoutController", $response->getBody());
+			
+			// // This should fall over to user Page.ss
+			$page = new ContentControllerTestPage();
+			$page->URLSegment = "test";
+			$page->write();
+			$page->publish("Stage", "Live");
+
+			$response = $self->get($page->RelativeLink());
+			$self->assertEquals("Page", $response->getBody());
 
 
-		// // This should fall over to user Page.ss
-		$page = new ContentControllerTestPage();
-		$page->URLSegment = "test";
-		$page->write();
-		$page->publish("Stage", "Live");
+			// Test that the action template is rendered.
+			$page = new ContentControllerTestPage();
+			$page->URLSegment = "page-without-controller";
+			$page->write();
+			$page->publish("Stage", "Live");
 
-		$response = $this->get($page->RelativeLink());
-		$this->assertEquals("Foo", $response->getBody());
+			$response = $self->get($page->RelativeLink("test"));
+			$self->assertEquals("ContentControllerTestPage_test", $response->getBody());
 
-
-		// Test that the action template is rendered.
-		$page = new ContentControllerTestPage();
-		$page->URLSegment = "page-without-controller";
-		$page->write();
-		$page->publish("Stage", "Live");
-
-		$response = $this->get($page->RelativeLink("test"));
-		$this->assertEquals("ContentControllerTestPage_test", $response->getBody());
-
-		// Test that an action without a template will default to the index template, which is
-		// to say the default Page.ss template
-		$response = $this->get($page->RelativeLink("testwithouttemplate"));
-		$this->assertEquals("Foo", $response->getBody());
+			// Test that an action without a template will default to the index template, which is
+			// to say the default Page.ss template
+			$response = $self->get($page->RelativeLink("testwithouttemplate"));
+			$self->assertEquals("Page", $response->getBody());
+		});
 	}
 
 }
