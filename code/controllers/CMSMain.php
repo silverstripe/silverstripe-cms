@@ -865,8 +865,17 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * @uses LeftAndMainExtension->augmentNewSiteTreeItem()
 	 */
 	public function getNewItem($id, $setID = true) {
+		$parentClass = $this->stat('tree_class');
 		list($dummy, $className, $parentID, $suffix) = array_pad(explode('-',$id),4,null);
 		
+		if(!is_subclass_of($className, $parentClass) && strcasecmp($className, $parentClass) != 0) {
+			$response = Security::permissionFailure($this);
+			if (!$response) {
+				$response = $this->response;
+			}
+			throw new SS_HTTPResponse_Exception($response);
+		}
+
 		$newItem = new $className();
 
 	    if( !$suffix ) {
