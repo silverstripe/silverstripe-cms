@@ -328,6 +328,27 @@ class CMSMainTest extends FunctionalTest {
 
 		$this->session()->inst_set('loggedInAs', null);
 	}
+
+	public function testGetNewItem() {
+		$controller = new CMSMain();
+		$id = 'new-Page-0';
+
+		// Test success
+		$page = $controller->getNewItem($id, false);
+
+		$this->assertEquals($page->Title, 'New Page');
+		$this->assertNotEquals($page->Sort, 0);
+		$this->assertInstanceOf('Page', $page);
+
+		// Test failure
+		try {
+			$id = 'new-Member-0';
+			$member = $controller->getNewItem($id, false);
+			$this->fail('Should not be able to create a Member object');
+		} catch(SS_HTTPResponse_Exception $e) {
+			$this->assertEquals($controller->getResponse()->getStatusCode(), 302);
+		}
+	}
 }
 
 class CMSMainTest_ClassA extends Page implements TestOnly {
