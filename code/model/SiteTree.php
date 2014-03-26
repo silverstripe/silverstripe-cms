@@ -1643,9 +1643,10 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			return min($votes);
 		}
 
+		$segment = Convert::raw2sql($this->URLSegment);
 		$existingPage = DataObject::get_one(
 			'SiteTree', 
-			"\"SiteTree\".\"URLSegment\" = '$this->URLSegment' $IDFilter $parentFilter"
+			"\"SiteTree\".\"URLSegment\" = '$segment' $IDFilter $parentFilter"
 		);
 
 		return !($existingPage);
