@@ -29,29 +29,12 @@ class RootURLController extends Controller {
 	 */
 	static public function get_homepage_link() {
 		if(!self::$cached_homepage_link) {
-			// TODO Move to 'homepagefordomain' module
-			if(class_exists('HomepageForDomainExtension')) {
-				$host       = str_replace('www.', null, $_SERVER['HTTP_HOST']);
-				$SQL_host   = Convert::raw2sql($host);
-				$candidates = DataObject::get('SiteTree', "\"HomepageForDomain\" LIKE '%$SQL_host%'");
-				if($candidates) foreach($candidates as $candidate) {
-					if(preg_match('/(,|^) *' . preg_quote($host) . ' *(,|$)/', $candidate->HomepageForDomain)) {
-						self::$cached_homepage_link = trim($candidate->RelativeLink(true), '/');
-					}
-				}
-			}
-			
-			if(!self::$cached_homepage_link) {
-				// TODO Move to 'translatable' module
-				if (
-					class_exists('Translatable')
-					&& SiteTree::has_extension('Translatable')
-					&& $link = Translatable::get_homepage_link_by_locale(Translatable::get_current_locale())
-				) {
-					self::$cached_homepage_link = $link;
-				} else {
-					self::$cached_homepage_link = Config::inst()->get('RootURLController', 'default_homepage_link');
-				}
+			$default_homepage_link = Config::inst()->get('RootURLController', 'default_homepage_link');
+			$urls = singleton('RootURLController')->extend('additionalHomePageLink', $default_homepage_link);
+			if (empty($urls)) {
+				self::$cached_homepage_link = $default_homepage_link;
+			} else {
+				self::$cached_homepage_link = $urls[0];
 			}
 		}
 		
