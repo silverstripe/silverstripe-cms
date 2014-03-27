@@ -123,3 +123,42 @@
 #Form_EditForm #Title .update {
 	margin-left: 7px;
 }
+
+.cms table.ss-gridfield-table {
+	td {
+		// Taken care of by minimum image sizes
+		padding-top: 0;
+		padding-bottom: 0;
+		&.bottom-all {
+			padding:0.7em;
+		}
+	}
+	td.col-StripThumbnail {
+		padding: 1px 5px;
+		width: 32px;
+		height: 32px;
+		img {
+			width: 32px;
+			height: 32px;
+		}
+	}
+	tr[data-class=Folder] {
+		td.col-StripThumbnail {
+			background: transparent url(../images/treeicons/blue-folder-horizontal.png) no-repeat center;
+		}
+	}
+	tr[data-class=File] {
+		td.col-StripThumbnail {
+			background: transparent url(../images/treeicons/blue-document.png) no-repeat center;
+		}
+	}
+}
+
+.TreeDropdownField span.jstree-foldericon {
+	background: url(../images/blue-folder-horizontal.png) no-repeat;
+	width:16px;
+	height:16px;
+	float:left;
+	display:block;
+	margin-right:4px;
+}

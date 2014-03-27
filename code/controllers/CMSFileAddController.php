@@ -54,6 +54,7 @@ class CMSFileAddController extends LeftAndMain {
 	 * @todo what template is used here? AssetAdmin_UploadContent.ss doesn't seem to be used anymore
 	 */
 	public function getEditForm($id = null, $fields = null) {
+		Requirements::css(CMS_DIR . '/css/screen.css');
 		Requirements::javascript(FRAMEWORK_DIR . '/javascript/AssetUploadField.js');
 		Requirements::css(FRAMEWORK_DIR . '/css/AssetUploadField.css');
 
