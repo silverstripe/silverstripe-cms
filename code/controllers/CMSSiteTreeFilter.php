@@ -4,10 +4,10 @@
  * 
  * The simplest way of building a CMSSiteTreeFilter is to create a pagesToBeShown() method that
  * returns an Iterator of maps, each entry containing the 'ID' and 'ParentID' of the pages to be
- * included in the tree.  The reuslt of a DB::query() can be returned directly.
+ * included in the tree. The result of a DB::query() can then be returned directly.
  *
  * If you wish to make a more complex tree, you can overload includeInTree($page) to return true/
- * false depending on whether the given page should be included.  Note that you will need to include
+ * false depending on whether the given page should be included. Note that you will need to include
  * parent helper pages yourself.
  * 
  * @package cms
@@ -44,18 +44,22 @@ abstract class CMSSiteTreeFilter extends Object {
 	public static function get_all_filters() {
 		// get all filter instances
 		$filters = ClassInfo::subclassesFor('CMSSiteTreeFilter');
+		
 		// remove abstract CMSSiteTreeFilter class
 		array_shift($filters);
+		
 		// add filters to map
 		$filterMap = array();
-		
 		foreach($filters as $filter) {
-			$filterMap[$filter] = call_user_func(array($filter, 'title'));
+			$filterMap[$filter] = $filter::title();
 		}
-		// ensure that 'all pages' filter is on top position
-		uasort($filterMap, 
-			create_function('$a,$b', 'return ($a == "CMSSiteTreeFilter_Search") ? 1 : -1;')
-		);
+		
+		// Ensure that 'all pages' filter is on top position and everything else is sorted alphabetically
+		uasort($filterMap, function($a, $b) {
+			return ($a === CMSSiteTreeFilter_Search::title())
+				? -1
+				: strcasecmp($a, $b);
+		});
 		
 		return $filterMap;
 	}
@@ -125,7 +129,68 @@ abstract class CMSSiteTreeFilter extends Object {
 
 		return (isset($this->_cache_ids[$page->ID]) && $this->_cache_ids[$page->ID]);
 	}
+	
+	/**
+	 * Applies the default filters to a specified DataList of pages
+	 * 
+	 * @param DataList $query Unfiltered query
+	 * @return DataList Filtered query
+	 */
+	protected function applyDefaultFilters($query) {
+		$sng = singleton('SiteTree');
+		foreach($this->params as $name => $val) {
+			if(empty($val)) continue;
 
+			switch($name) {
+				case 'Term':
+					$query = $query->filterAny(array(
+						'URLSegment:PartialMatch' => $val,
+						'Title:PartialMatch' => $val,
+						'MenuTitle:PartialMatch' => $val,
+						'Content:PartialMatch' => $val
+					));
+					break;
+
+				case 'LastEditedFrom':
+					$fromDate = new DateField(null, null, $val);
+					$query = $query->filter("LastEdited:GreaterThanOrEqual", $fromDate->dataValue());
+					break;
+
+				case 'LastEditedTo':
+					$toDate = new DateField(null, null, $val);
+					$query = $query->filter("LastEdited:LessThanOrEqual", $toDate->dataValue());
+					break;
+
+				case 'ClassName':
+					if($val != 'All') {
+						$query = $query->filter('ClassName', $val);
+					}
+					break;
+
+				default:
+					if($sng->hasDatabaseField($name)) {
+						$filter = $sng->dbObject($name)->defaultSearchFilter();
+						$filter->setValue($val);
+						$query = $query->alterDataQuery(array($filter, 'apply'));
+					}
+			}
+		}
+		return $query;
+	}
+	
+	/**
+	 * Maps a list of pages to an array of associative arrays with ID and ParentID keys
+	 * 
+	 * @param DataList $pages
+	 * @return array
+	 */
+	protected function mapIDs($pages) {
+		$ids = array();
+		if($pages) foreach($pages as $page) {
+			$ids[] = array('ID' => $page->ID, 'ParentID' => $page->ParentID);
+		}
+		return $ids;
+	}
 }
 
 /**
@@ -145,13 +210,9 @@ class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter {
 	}
 	
 	public function pagesIncluded() {
-		$ids = array();
-		// TODO Not very memory efficient, but usually not very many deleted pages exist
 		$pages = Versioned::get_including_deleted('SiteTree');
-		if($pages) foreach($pages as $page) {
-			$ids[] = array('ID' => $page->ID, 'ParentID' => $page->ParentID);
-		}
-		return $ids;
+		$pages = $this->applyDefaultFilters($pages);
+		return $this->mapIDs($pages);
 	}
 }
 
@@ -168,18 +229,100 @@ class CMSSiteTreeFilter_ChangedPages extends CMSSiteTreeFilter {
 	}
 	
 	public function pagesIncluded() {
-		$ids = array();
-		$q = new SQLQuery();
-		$q->setSelect(array('"SiteTree"."ID"','"SiteTree"."ParentID"'))
-			->setFrom('"SiteTree"')
-			->addLeftJoin('SiteTree_Live', '"SiteTree_Live"."ID" = "SiteTree"."ID"')
-			->setWhere('"SiteTree"."Version" > "SiteTree_Live"."Version"');
+		$pages = Versioned::get_by_stage('SiteTree', 'Stage');
+		$pages = $this->applyDefaultFilters($pages)
+			->leftJoin('SiteTree_Live', '"SiteTree_Live"."ID" = "SiteTree"."ID"')
+			->where('"SiteTree"."Version" > "SiteTree_Live"."Version"');
+		return $this->mapIDs($pages);
+	}	
+}
 
-		foreach($q->execute() as $row) {
-			$ids[] = array('ID'=>$row['ID'],'ParentID'=>$row['ParentID']);
-		}
+/**
+ * Filters pages which have a status "Removed from Draft".
+ * 
+ * @package cms
+ * @subpackage content
+ */
+class CMSSiteTreeFilter_StatusRemovedFromDraftPages extends CMSSiteTreeFilter {
+	
+	static public function title() {
+		return _t('CMSSiteTreeFilter_StatusRemovedFromDraftPages.Title', 'Live but removed from draft');
+	}
+	
+	/**
+	 * Filters out all pages who's status is set to "Removed from draft".
+	 * 
+	 * @see {@link SiteTree::getStatusFlags()}
+	 * @return array
+	 */
+	public function pagesIncluded() {
+		$pages = Versioned::get_including_deleted('SiteTree');
+		$pages = $this->applyDefaultFilters($pages);
+		$pages = $pages->filterByCallback(function($page) {
+			// If page is removed from stage but not live
+			return $page->IsDeletedFromStage && $page->ExistsOnLive;
+		});
+		return $this->mapIDs($pages);
+	}	
+}
 
-		return $ids;
+/**
+ * Filters pages which have a status "Draft".
+ * 
+ * @package cms
+ * @subpackage content
+ */
+class CMSSiteTreeFilter_StatusDraftPages extends CMSSiteTreeFilter {
+	
+	static public function title() {
+		return _t('CMSSiteTreeFilter_StatusDraftPages.Title', 'Draft unpublished pages');
+	}
+	
+	/**
+	 * Filters out all pages who's status is set to "Draft".
+	 * 
+	 * @see {@link SiteTree::getStatusFlags()}
+	 * @return array
+	 */
+	public function pagesIncluded() {
+		$pages = Versioned::get_by_stage('SiteTree', 'Stage');
+		$pages = $this->applyDefaultFilters($pages);
+		$pages = $pages->filterByCallback(function($page) {
+			// If page exists on stage but not on live
+			return (!$page->IsDeletedFromStage && $page->IsAddedToStage);
+		});
+		return $this->mapIDs($pages);
+	}	
+}
+
+/**
+ * Filters pages which have a status "Deleted".
+ * 
+ * @package cms
+ * @subpackage content
+ */
+class CMSSiteTreeFilter_StatusDeletedPages extends CMSSiteTreeFilter {
+	
+	protected $childrenMethod = "AllHistoricalChildren";	
+	
+	static public function title() {
+		return _t('CMSSiteTreeFilter_StatusDeletedPages.Title', 'Deleted pages');
+	}
+	
+	/**
+	 * Filters out all pages who's status is set to "Deleted".
+	 * 
+	 * @see {@link SiteTree::getStatusFlags()}
+	 * @return array
+	 */
+	public function pagesIncluded() {
+		$pages = Versioned::get_including_deleted('SiteTree');
+		$pages = $this->applyDefaultFilters($pages);
+		$pages = $pages->filterByCallback(function($page) {
+			// Doesn't exist on either stage or live
+			return $page->IsDeletedFromStage && !$page->ExistsOnLive;
+		});
+		return $this->mapIDs($pages);
 	}	
 }
 
@@ -200,54 +343,10 @@ class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter {
 	 * @return Array
 	 */
 	public function pagesIncluded() {
-		$sng = singleton('SiteTree');
-		$ids = array();
 
-		$query = new DataQuery('SiteTree');
-		$query->setQueriedColumns(array('ID', 'ParentID'));
-
-		foreach($this->params as $name => $val) {
-			$SQL_val = Convert::raw2sql($val);
-
-			switch($name) {
-				case 'Term':
-					$query->whereAny(array(
-						"\"URLSegment\" LIKE '%$SQL_val%'",
-						"\"Title\" LIKE '%$SQL_val%'",
-						"\"MenuTitle\" LIKE '%$SQL_val%'",
-						"\"Content\" LIKE '%$SQL_val%'"
-					));
-					break;
-
-				case 'LastEditedFrom':
-					$fromDate = new DateField(null, null, $SQL_val);
-					$query->where("\"LastEdited\" >= '{$fromDate->dataValue()}'");
-					break;
-
-				case 'LastEditedTo':
-					$toDate = new DateField(null, null, $SQL_val);
-					$query->where("\"LastEdited\" <= '{$toDate->dataValue()}'");
-					break;
-
-				case 'ClassName':
-					if($val && $val != 'All') {
-						$query->where("\"ClassName\" = '$SQL_val'");
-					}
-					break;
-
-				default:
-					if(!empty($val) && $sng->hasDatabaseField($name)) {
-						$filter = $sng->dbObject($name)->defaultSearchFilter();
-						$filter->setValue($val);
-						$filter->apply($query);
-					}
-			}
-		}
-
-		foreach($query->execute() as $row) {
-			$ids[] = array('ID' => $row['ID'], 'ParentID' => $row['ParentID']);
-		}
-
-		return $ids;
+		// Filter default records
+		$pages = Versioned::get_by_stage('SiteTree', 'Stage');
+		$pages = $this->applyDefaultFilters($pages);
+		return $this->mapIDs($pages);
 	}
 }
