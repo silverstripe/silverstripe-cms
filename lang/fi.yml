@@ -251,7 +251,7 @@ fi:
     VIRTUALPAGEWARNING: 'Ole hyvä ja valitse linkitetty sivu ja tallenna se ensin, jotta tämän sivun julkaiseminen olisi mahdollista'
     VIRTUALPAGEWARNINGSETTINGS: 'Ole hyvä ja valitse linkitetty sivu sisältö kentästä, jotta julkaisu on mahdollista'
   SearchForm:
-    GO: Siirry
+    GO: Suorita
     SEARCH: Haku
     SearchResults: 'Hakutulokset'
   SideReport:
