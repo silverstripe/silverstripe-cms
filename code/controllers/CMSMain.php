@@ -882,6 +882,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			throw new SS_HTTPResponse_Exception($response);
 		}
 		
+		if(!is_subclass_of($className, $parentClass) && strcasecmp($className, $parentClass) != 0) {
+			$response = Security::permissionFailure($this);
+			if (!$response) {
+				$response = $this->response;
+			}
+			throw new SS_HTTPResponse_Exception($response);
+		}
+
 		$newItem = new $className();
 
 	    if( !$suffix ) {
