@@ -587,6 +587,22 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 	
 	/**
+	 * Check if the parent of this page has been removed (or made otherwise unavailable), and 
+	 * is still referenced by this child. Any such orphaned page may still require access via
+	 * the cms, but should not be shown as accessible to external users.
+	 * 
+	 * @return bool
+	 */
+	public function isOrphaned() {
+		// Always false for root pages
+		if(empty($this->ParentID)) return false;
+		
+		// Parent must exist and not be an orphan itself
+		$parent = $this->Parent();
+		return !$parent || !$parent->exists() || $parent->isOrphaned();
+	}
+	
+	/**
 	 * Return "link" or "current" depending on if this is the {@link SiteTree::isCurrent()} current page.
 	 *
 	 * @return string
@@ -885,6 +901,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			// check to make sure this version is the live version and so can be viewed
 			if (Versioned::get_versionnumber_by_stage($this->class, 'Live', $this->ID) != $this->Version) return false;
 		}
+		
+		// Orphaned pages (in the current stage) are unavailable, except for admins via the CMS
+		if($this->isOrphaned()) return false;
 
 		// Standard mechanism for accepting permission changes from extensions
 		$extended = $this->extendedCan('canView', $member);
