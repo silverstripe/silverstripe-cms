@@ -5,6 +5,18 @@ Page:
       Title: Page 2
    page3:
       Title: Page 3
+   page4:
+      Title: Page 4
+   page5:
+      Title: Page 5
+      Content: 'Default text'
+   page6:
+      Title: Page 6
+   page7:
+      Title: Page 7  
+   page7a:
+      Parent: =>Page.page7       
+      Title: Page 7a
    page2a:
       Parent: =>Page.page2
       Title: Page 2a
