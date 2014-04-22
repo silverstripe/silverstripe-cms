@@ -944,6 +944,64 @@ class SiteTreeTest extends SapphireTest {
 		Config::inst()->update('SiteTree', 'meta_generator', $generator);
 	}
 	
+	/**
+	 * Test that orphaned pages are handled correctly
+	 */
+	public function testOrphanedPages() {
+		$origStage = Versioned::get_reading_mode();
+		
+		// Setup user who can view draft content, but lacks cms permission.
+		// To users such as this, orphaned pages should be inaccessible. canView for these pages is only
+		// necessary for admin / cms users, who require this permission to edit / rearrange these pages.
+		$permission = new Permission();
+		$permission->Code = 'VIEW_DRAFT_CONTENT';
+		$group = new Group(array('Title' => 'Staging Users'));
+		$group->write();
+		$group->Permissions()->add($permission);
+		$member = new Member();
+		$member->Email = 'someguy@example.com';
+		$member->write();
+		$member->Groups()->add($group);
+		
+		// both pages are viewable in stage
+		Versioned::reading_stage('Stage');
+		$about = $this->objFromFixture('Page', 'about');
+		$staff = $this->objFromFixture('Page', 'staff');
+		$this->assertFalse($about->isOrphaned());
+		$this->assertFalse($staff->isOrphaned());
+		$this->assertTrue($about->canView($member));
+		$this->assertTrue($staff->canView($member));
+		
+		// Publishing only the child page to live should orphan the live record, but not the staging one
+		$staff->publish('Stage', 'Live');
+		$this->assertFalse($staff->isOrphaned());
+		$this->assertTrue($staff->canView($member));
+		Versioned::reading_stage('Live');
+		$staff = $this->objFromFixture('Page', 'staff'); // Live copy of page
+		$this->assertTrue($staff->isOrphaned()); // because parent isn't published
+		$this->assertFalse($staff->canView($member));
+		
+		// Publishing the parent page should restore visibility
+		Versioned::reading_stage('Stage');
+		$about = $this->objFromFixture('Page', 'about');
+		$about->publish('Stage', 'Live');
+		Versioned::reading_stage('Live');
+		$staff = $this->objFromFixture('Page', 'staff');
+		$this->assertFalse($staff->isOrphaned());
+		$this->assertTrue($staff->canView($member));
+		
+		// Removing staging page should not prevent live page being visible
+		$about->deleteFromStage('Stage');
+		$staff->deleteFromStage('Stage');
+		$staff = $this->objFromFixture('Page', 'staff');
+		$this->assertFalse($staff->isOrphaned());
+		$this->assertTrue($staff->canView($member));
+		
+		// Cleanup
+		Versioned::set_reading_mode($origStage);
+		
+	}
+	
 }
 
 /**#@+
