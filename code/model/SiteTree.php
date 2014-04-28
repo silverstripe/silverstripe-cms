@@ -1380,7 +1380,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	public function MetaTags($includeTitle = true) {
 		$tags = "";
 		if($includeTitle === true || $includeTitle == 'true') {
-			$tags .= "<title>" . $this->Title . "</title>\n";
+			$tags .= "<title>" . Convert::raw2xml($this->Title) . "</title>\n";
 		}
 
 		$generator = trim(Config::inst()->get('SiteTree', 'meta_generator'));
