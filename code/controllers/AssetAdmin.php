@@ -17,6 +17,14 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 	private static $tree_class = 'Folder';
 	
 	/**
+	 * Amount of results showing on a single page.
+	 *
+	 * @config
+	 * @var int
+	 */
+	private static $page_length = 15;
+	
+	/**
 	 * @config
 	 * @see Upload->allowedMaxFileSize
 	 * @var int
@@ -150,9 +158,9 @@ JS
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
 			new GridFieldToolbarHeader(),
 			new GridFieldSortableHeader(),
-			new GridFieldFilterHeader(),			
+			new GridFieldFilterHeader(),
 			new GridFieldDataColumns(),
-			new GridFieldPaginator(15),
+			new GridFieldPaginator(self::config()->page_length),
 			new GridFieldEditButton(),
 			new GridFieldDeleteAction(),
 			new GridFieldDetailForm(),
