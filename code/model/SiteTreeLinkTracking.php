@@ -38,7 +38,7 @@ class SiteTreeLinkTracking extends DataExtension {
 			$href = Director::makeRelative($link->getAttribute('href'));
 
 			if($href) {
-				if(preg_match('/\[sitetree_link,id=([0-9]+)\]/i', $href, $matches)) {
+				if(preg_match('/\[sitetree_link[,\s]id=([0-9]+)\]/i', $href, $matches)) {
 					$ID = $matches[1];
 
 					// clear out any broken link classes
@@ -48,6 +48,18 @@ class SiteTreeLinkTracking extends DataExtension {
 					}
 
 					$linkedPages[] = $ID;
+					if(!DataObject::get_by_id('SiteTree', $ID))  $record->HasBrokenLink = true;
+
+				} else if(preg_match('/\[file_link[,\s]id=([0-9]+)\]/i', $href, $matches)) {
+					$ID = $matches[1];
+
+					// clear out any broken link classes
+					if($class = $link->getAttribute('class')) {
+						$link->setAttribute('class',
+							preg_replace('/(^ss-broken|ss-broken$| ss-broken )/', null, $class));
+					}
+
+					$linkedFiles[] = $ID;
 					if(!DataObject::get_by_id('SiteTree', $ID))  $record->HasBrokenLink = true;
 
 				} else if(substr($href, 0, strlen(ASSETS_DIR) + 1) == ASSETS_DIR.'/') {
