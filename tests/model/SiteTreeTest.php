@@ -945,6 +945,29 @@ class SiteTreeTest extends SapphireTest {
 	}
 	
 	/**
+	 * Tests SiteTree::MetaTags
+	 * Note that this test makes no assumption on the closing of tags (other than <title></title>)
+	 */
+	public function testMetaTags() {
+		$this->logInWithPermission('ADMIN');
+		$page = $this->objFromFixture('Page', 'metapage');
+		
+		// Test with title
+		$meta = $page->MetaTags();
+		$charset = Config::inst()->get('ContentNegotiator', 'encoding');
+		$this->assertContains('<meta http-equiv="Content-type" content="text/html; charset='.$charset.'"', $meta);
+		$this->assertContains('<meta name="description" content="The &lt;br /&gt; and &lt;br&gt; tags"', $meta);
+		$this->assertContains('<link rel="canonical" href="http://www.mysite.com/html-and-xml"', $meta);
+		$this->assertContains('<meta name="x-page-id" content="'.$page->ID.'"', $meta);
+		$this->assertContains('<meta name="x-cms-edit-link" content="'.$page->CMSEditLink().'" />', $meta);
+		$this->assertContains('<title>HTML &amp; XML</title>', $meta);
+		
+		// Test without title
+		$meta = $page->MetaTags(false);
+		$this->assertNotContains('<title>', $meta);
+	}
+	
+	/**
 	 * Test that orphaned pages are handled correctly
 	 */
 	public function testOrphanedPages() {
