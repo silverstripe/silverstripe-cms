@@ -70,4 +70,16 @@ class ErrorPageTest extends FunctionalTest {
 		$this->assertEquals($response->getStatusCode(), '403');
 		$this->assertNotNull($response->getBody(), 'We have body text from the error page');
 	}
+	
+	public function testSecurityError() {
+		// Generate 404 page
+		$page = $this->objFromFixture('ErrorPage', '404');
+		$page->publish('Stage', 'Live');
+		
+		// Test invalid action
+		$response = $this->get('Security/nosuchaction');
+		$this->assertEquals($response->getStatusCode(), '404');
+		$this->assertNotNull($response->getBody());
+		$this->assertContains('text/html', $response->getHeader('Content-Type'));
+	}
 }
