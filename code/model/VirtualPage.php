@@ -166,8 +166,6 @@ class VirtualPage extends Page {
 	 * Generate the CMS fields from the fields from the original page.
 	 */
 	public function getCMSFields() {
-		//$fields = parent::getCMSFields();
-		
                 
                 $self = $this;
 		$this->beforeUpdateCMSFields(function($fields) use ($self) {
@@ -232,7 +230,6 @@ class VirtualPage extends Page {
                             'CopyContentFromID'
                     );
                 });
-		//return $fields;
                 return parent::getCMSFields();
 	}
 
