@@ -18,12 +18,7 @@
 	"require": {
 		"php": ">=5.2.4",
 		"composer/installers": "*",
-		"silverstripe/framework": "2.5.x-dev"
-	},
-	"extra": {
-		"branch-alias": {
-			"dev-post-2.4": "2.5.x-dev"
-		}
+		"silverstripe/framework": "2.4.*"
 	},
 	"require-dev": {
 		"phpunit/PHPUnit": "~3.7"
