@@ -19,5 +19,8 @@
 		"php": ">=5.2.4",
 		"composer/installers": "*",
 		"silverstripe/framework": "2.4.*"
+	},
+	"require-dev": {
+		"phpunit/PHPUnit": "~3.7"
 	}
 }
