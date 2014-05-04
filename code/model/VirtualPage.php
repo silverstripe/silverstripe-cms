@@ -10,6 +10,7 @@ class VirtualPage extends Page {
 	private static $description = 'Displays the content of another page';
 	
 	public static $virtualFields;
+
 	
 	/**
 	 * @var Array Define fields that are not virtual - the virtual page must define these fields themselves.
@@ -165,69 +166,74 @@ class VirtualPage extends Page {
 	 * Generate the CMS fields from the fields from the original page.
 	 */
 	public function getCMSFields() {
-		$fields = parent::getCMSFields();
+		//$fields = parent::getCMSFields();
 		
-		// Setup the linking to the original page.
-		$copyContentFromField = new TreeDropdownField(
-			"CopyContentFromID", 
-			_t('VirtualPage.CHOOSE', "Linked Page"), 
-			"SiteTree"
-		);
-		// filter doesn't let you select children of virtual pages as as source page
-		//$copyContentFromField->setFilterFunction(create_function('$item', 'return !($item instanceof VirtualPage);'));
-		
-		// Setup virtual fields
-		if($virtualFields = $this->getVirtualFields()) {
-			$roTransformation = new ReadonlyTransformation();
-			foreach($virtualFields as $virtualField) {
-				if($fields->dataFieldByName($virtualField))
-					$fields->replaceField($virtualField, $fields->dataFieldByName($virtualField)->transform($roTransformation));
-			}
-		}
+                
+                $self = $this;
+		$this->beforeUpdateCMSFields(function($fields) use ($self) {
+                    //$mainFields = $fields->fieldByName("Root")->fieldByName("Main")->Children;
+                    // Setup the linking to the original page.
+                    $copyContentFromField = new TreeDropdownField(
+                            "CopyContentFromID", 
+                            _t('VirtualPage.CHOOSE', "Linked Page"), 
+                            "SiteTree"
+                    );
+                    // filter doesn't let you select children of virtual pages as as source page
+                    //$copyContentFromField->setFilterFunction(create_function('$item', 'return !($item instanceof VirtualPage);'));
 
-		$msgs = array();
-		
-		$fields->addFieldToTab("Root.Main", $copyContentFromField, "Title");
-		
-		// Create links back to the original object in the CMS
-		if($this->CopyContentFrom()->exists()) {
-			$link = "<a class=\"cmsEditlink\" href=\"admin/pages/edit/show/$this->CopyContentFromID\">" 
-				. _t('VirtualPage.EditLink', 'edit')
-				. "</a>";
-			$msgs[] = _t(
-				'VirtualPage.HEADERWITHLINK', 
-				"This is a virtual page copying content from \"{title}\" ({link})",
-				array(
-					'title' => $this->CopyContentFrom()->Title,
-					'link' => $link
-				)
-			);
-		} else {
-			$msgs[] = _t('VirtualPage.HEADER', "This is a virtual page");
-			$msgs[] = _t(
-				'SITETREE.VIRTUALPAGEWARNING',
-				'Please choose a linked page and save first in order to publish this page'
-			);
-		}
-		if(
-			$this->CopyContentFromID 
-			&& !Versioned::get_versionnumber_by_stage('SiteTree', 'Live', $this->CopyContentFromID)
-		) {
-			$msgs[] = _t(
-				'SITETREE.VIRTUALPAGEDRAFTWARNING',
-				'Please publish the linked page in order to publish the virtual page'
-			);
-		}
+                    // Setup virtual fields
+                    if($virtualFields = $self->getVirtualFields()) {
+                            $roTransformation = new ReadonlyTransformation();
+                            foreach($virtualFields as $virtualField) {
+                                    if($fields->dataFieldByName($virtualField))
+                                            $fields->replaceField($virtualField, $fields->dataFieldByName($virtualField)->transform($roTransformation));
+                            }
+                    }
 
-		$fields->addFieldToTab("Root.Main", 
-			new LiteralField(
-				'VirtualPageMessage',
-				'<div class="message notice">' . implode('. ', $msgs) . '.</div>'
-			),
-			'CopyContentFromID'
-		);
-	
-		return $fields;
+                    $msgs = array();
+
+                    $fields->addFieldToTab("Root.Main", $copyContentFromField, "Title");
+
+                    // Create links back to the original object in the CMS
+                    if($self->CopyContentFrom()->exists()) {
+                            $link = "<a class=\"cmsEditlink\" href=\"admin/pages/edit/show/$self->CopyContentFromID\">" 
+                                    . _t('VirtualPage.EditLink', 'edit')
+                                    . "</a>";
+                            $msgs[] = _t(
+                                    'VirtualPage.HEADERWITHLINK', 
+                                    "This is a virtual page copying content from \"{title}\" ({link})",
+                                    array(
+                                            'title' => $self->CopyContentFrom()->Title,
+                                            'link' => $link
+                                    )
+                            );
+                    } else {
+                            $msgs[] = _t('VirtualPage.HEADER', "This is a virtual page");
+                            $msgs[] = _t(
+                                    'SITETREE.VIRTUALPAGEWARNING',
+                                    'Please choose a linked page and save first in order to publish this page'
+                            );
+                    }
+                    if(
+                            $self->CopyContentFromID 
+                            && !Versioned::get_versionnumber_by_stage('SiteTree', 'Live', $self->CopyContentFromID)
+                    ) {
+                            $msgs[] = _t(
+                                    'SITETREE.VIRTUALPAGEDRAFTWARNING',
+                                    'Please publish the linked page in order to publish the virtual page'
+                            );
+                    }
+
+                    $fields->addFieldToTab("Root.Main", 
+                            new LiteralField(
+                                    'VirtualPageMessage',
+                                    '<div class="message notice">' . implode('. ', $msgs) . '.</div>'
+                            ),
+                            'CopyContentFromID'
+                    );
+                });
+		//return $fields;
+                return parent::getCMSFields();
 	}
 
 	public function getSettingsFields() {
@@ -412,8 +418,7 @@ class VirtualPage extends Page {
 	 * Pass unrecognized method calls on to the original data object
 	 *
 	 * @param string $method 
-	 * @param string $args
-	 * @return mixed
+	 * @param string $args 
 	 */
 	public function __call($method, $args) {
 		if(parent::hasMethod($method)) {
@@ -423,10 +428,6 @@ class VirtualPage extends Page {
 		}
 	}
 
-	/**
-	 * @param string $field
-	 * @return bool
-	 */
 	public function hasField($field) {
 		return (
 			array_key_exists($field, $this->record) 
@@ -523,10 +524,7 @@ class VirtualPage_Controller extends Page_Controller {
 	 * Pass unrecognized method calls on to the original controller
 	 *
 	 * @param string $method 
-	 * @param string $args
-	 * @return mixed
-	 *
-	 * @throws Exception Any error other than a 'no method' error.
+	 * @param string $args 
 	 */
 	public function __call($method, $args) {
 		try {
@@ -544,5 +542,6 @@ class VirtualPage_Controller extends Page_Controller {
 		}
 	}
 }
+
 
 
