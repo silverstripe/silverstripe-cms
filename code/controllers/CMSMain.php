@@ -27,6 +27,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	
 	private static $subitem_class = "Member";
 	
+	/**
+	 * Amount of results showing on a single page.
+	 *
+	 * @config
+	 * @var int
+	 */
+	private static $page_length = 15;
+	
 	private static $allowed_actions = array(
 		'buildbrokenlinks',
 		'deleteitems',
@@ -726,7 +734,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(			
 			new GridFieldSortableHeader(),
 			new GridFieldDataColumns(),
-			new GridFieldPaginator(15)
+			new GridFieldPaginator(self::config()->page_length)
 		);
 		if($parentID){
 			$gridFieldConfig->addComponent(

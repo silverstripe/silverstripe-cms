@@ -17,6 +17,14 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 	private static $tree_class = 'Folder';
 	
 	/**
+	 * Amount of results showing on a single page.
+	 *
+	 * @config
+	 * @var int
+	 */
+	private static $page_length = 15;
+	
+	/**
 	 * @config
 	 * @see Upload->allowedMaxFileSize
 	 * @var int
@@ -98,17 +106,19 @@ JS
 		// Don't filter list when a detail view is requested,
 		// to avoid edge cases where the filtered list wouldn't contain the requested
 		// record due to faulty session state (current folder not always encoded in URL, see #7408).
-		if(!$folder->ID && $this->request->requestVar('ID') === null && ($this->request->param('ID') == 'field')) {
+		if(!$folder->ID
+			&& $this->request->requestVar('ID') === null
+			&& ($this->request->param('ID') == 'field')
+		) {
 			return $list;
 		}
 
 		// Re-add previously removed "Name" filter as combined filter
 		// TODO Replace with composite SearchFilter once that API exists
-		if(isset($params['Name'])) {
-			$list = $list->where(sprintf(
-				'"Name" LIKE \'%%%s%%\' OR "Title" LIKE \'%%%s%%\'',
-				Convert::raw2sql($params['Name']),
-				Convert::raw2sql($params['Name'])
+		if(!empty($params['Name'])) {
+			$list = $list->filterAny(array(
+				'Name:PartialMatch' => $params['Name'],
+				'Title:PartialMatch' => $params['Name']
 			));
 		}
 
@@ -117,23 +127,26 @@ JS
 
 		// If a search is conducted, check for the "current folder" limitation.
 		// Otherwise limit by the current folder as denoted by the URL.
-		if(!$params || @$params['CurrentFolderOnly']) {
+		if(empty($params) || !empty($params['CurrentFolderOnly'])) {
 			$list = $list->filter('ParentID', $folder->ID);
 		}
 
 		// Category filter
-		if(isset($params['AppCategory'])) {
-			if(isset(File::config()->app_categories[$params['AppCategory']])) {
-				$exts = File::config()->app_categories[$params['AppCategory']];
-			} else {
-				$exts = array();
-			}
-			$categorySQLs = array();
-			foreach($exts as $ext) $categorySQLs[] = '"File"."Name" LIKE \'%.' . $ext . '\'';
-			// TODO Use DataList->filterAny() once OR connectives are implemented properly
-			if (count($categorySQLs) > 0) {
-				$list = $list->where('(' . implode(' OR ', $categorySQLs) . ')');
-			}
+		if(!empty($params['AppCategory'])
+			&& !empty(File::config()->app_categories[$params['AppCategory']])
+		) {
+			$exts = File::config()->app_categories[$params['AppCategory']];
+			$list = $list->filter('Name:PartialMatch', $exts);
+		}
+		
+		// Date filter
+		if(!empty($params['CreatedFrom'])) {
+			$fromDate = new DateField(null, null, $params['CreatedFrom']);
+			$list = $list->filter("Created:GreaterThanOrEqual", $fromDate->dataValue());
+		}
+		if(!empty($params['CreatedTo'])) {
+			$toDate = new DateField(null, null, $params['CreatedTo']);
+			$list = $list->filter("Created:LessThanOrEqual", $toDate->dataValue());
 		}
 
 		return $list;
@@ -150,9 +163,9 @@ JS
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
 			new GridFieldToolbarHeader(),
 			new GridFieldSortableHeader(),
-			new GridFieldFilterHeader(),			
+			new GridFieldFilterHeader(),
 			new GridFieldDataColumns(),
-			new GridFieldPaginator(15),
+			new GridFieldPaginator(self::config()->page_length),
 			new GridFieldEditButton(),
 			new GridFieldDeleteAction(),
 			new GridFieldDetailForm(),
@@ -342,6 +355,21 @@ JS
 		foreach($context->getFilters() as $filter) $filter->setFullName(sprintf('q[%s]', $filter->getFullName()));
 
 		// Customize fields
+		$context->addField(
+			new HeaderField('q[Date]', _t('CMSSearch.FILTERDATEHEADING', 'Date'), 4)
+		);
+		$context->addField(
+			DateField::create(
+				'q[CreatedFrom]', 
+				_t('CMSSearch.FILTERDATEFROM', 'From')
+			)->setConfig('showcalendar', true)
+		);
+		$context->addField(
+			DateField::create(
+				'q[CreatedTo]',
+				_t('CMSSearch.FILTERDATETO', 'To')
+			)->setConfig('showcalendar', true)
+		);
 		$appCategories = array(
 			'image' => _t('AssetAdmin.AppCategoryImage', 'Image'),
 			'audio' => _t('AssetAdmin.AppCategoryAudio', 'Audio'),
@@ -382,7 +410,7 @@ JS
 		$fields = $context->getSearchFields();
 		$actions = new FieldList(
 			FormAction::create('doSearch',  _t('CMSMain_left_ss.APPLY_FILTER', 'Apply Filter'))
-			->addExtraClass('ss-ui-action-constructive'),
+				->addExtraClass('ss-ui-action-constructive'),
 			Object::create('ResetFormAction', 'clear', _t('CMSMain_left_ss.RESET', 'Reset'))
 		);
 		

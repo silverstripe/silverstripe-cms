@@ -9,6 +9,6 @@ Feature: Create a page
 		And I go to "/admin/pages"
 		And I should see a "Add new" button in CMS Content Toolbar
 		When I press the "Add new" button
-		And I check "Page"
+		And I select the "Page" radio button
 		And I press the "Create" button
 		Then I should see an edit page form

@@ -15,7 +15,7 @@ So that I can link to a external website or a page on my site
   Scenario: I can link to an internal page
     Given I select "awesome" in the "Content" HTML field
     And I press the "Insert Link" button
-    When I check "Page on the site"
+    When I select the "Page on the site" radio button
     And I fill in the "Page" dropdown with "Home"
     And I fill in "my desc" for "Link description"
     And I press the "Insert" button
@@ -27,7 +27,7 @@ So that I can link to a external website or a page on my site
   Scenario: I can link to an external URL
     Given I select "awesome" in the "Content" HTML field
     And I press the "Insert Link" button
-    When I check "Another website"
+    When I select the "Another website" radio button
     And I fill in "http://silverstripe.org" for "URL"
     And I check "Open link in a new window"
     And I press the "Insert" button
@@ -38,7 +38,7 @@ So that I can link to a external website or a page on my site
   Scenario: I can link to a file
     Given I select "awesome" in the "Content" HTML field
     When I press the "Insert Link" button
-    When I check "Download a file"
+    When I select the "Download a file" radio button
     And I fill in the "File" dropdown with "file1.jpg"
     And I press the "Insert link" button
     Then the "Content" HTML field should contain "<a href="[file_link,id=1]" target="_blank">awesome</a>"
@@ -49,7 +49,7 @@ So that I can link to a external website or a page on my site
     Given I fill in the "Content" HTML field with "<p>My awesome content<a name=myanchor></a></p>"
     And I select "awesome" in the "Content" HTML field
     When I press the "Insert Link" button
-    When I check "Anchor on this page"
+    When I select the "Anchor on this page" radio button
     # Need to hard-code the id attribute of the <select> here, as there are two form fields to pick from
     And I select "myanchor" from "Form_EditorToolbarLinkForm_AnchorSelector"
     And I press the "Insert link" button

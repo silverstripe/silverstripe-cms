@@ -38,24 +38,22 @@ class SiteTreeLinkTracking extends DataExtension {
 			$href = Director::makeRelative($link->getAttribute('href'));
 
 			if($href) {
-				if(preg_match('/\[sitetree_link,id=([0-9]+)\]/i', $href, $matches)) {
-					$ID = $matches[1];
+				if(preg_match('/\[(sitetree|file)_link[,\s]id=([0-9]+)\]/i', $href, $matches)) {
+					$type = $matches[1];
+					$id = $matches[2];
 
-					// clear out any broken link classes
-					if($class = $link->getAttribute('class')) {
-						$link->setAttribute('class',
-							preg_replace('/(^ss-broken|ss-broken$| ss-broken )/', null, $class));
-					}
-
-					$linkedPages[] = $ID;
-					if(!DataObject::get_by_id('SiteTree', $ID))  $record->HasBrokenLink = true;
-
-				} else if(substr($href, 0, strlen(ASSETS_DIR) + 1) == ASSETS_DIR.'/') {
-					$candidateFile = File::find(Convert::raw2sql(urldecode($href)));
-					if($candidateFile) {
-						$linkedFiles[] = $candidateFile->ID;
-					} else {
-						$record->HasBrokenFile = true;
+					if($type === 'sitetree') {
+						if(SiteTree::get()->byID($id)) {
+							$linkedPages[] = $id;
+						} else {
+							$record->HasBrokenLink = true;
+						}
+					} else if($type === 'file') {
+						if(File::get()->byID($id)) {
+							$linkedFiles[] = $id;
+						} else {
+							$record->HasBrokenFile = true;
+						}
 					}
 				} else if($href == '' || $href[0] == '/') {
 					$record->HasBrokenLink = true;

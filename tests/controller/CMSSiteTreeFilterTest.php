@@ -56,7 +56,8 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 		$changedPage->Title = 'Changed';
 		$changedPage->write();
 	
-		$f = new CMSSiteTreeFilter_ChangedPages();
+		// Check that only changed pages are returned
+		$f = new CMSSiteTreeFilter_ChangedPages(array('Term' => 'Changed'));
 		$results = $f->pagesIncluded();
 	
 		$this->assertTrue($f->isPageIncluded($changedPage));
@@ -66,6 +67,11 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 			array('ID' => $changedPage->ID, 'ParentID' => 0),
 			$results[0]
 		);
+	
+		// Check that only changed pages are returned
+		$f = new CMSSiteTreeFilter_ChangedPages(array('Term' => 'No Matches'));
+		$results = $f->pagesIncluded();
+		$this->assertEquals(0, count($results));
 	}
 	
 	public function testDeletedPagesFilter() {
@@ -79,9 +85,77 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 			sprintf('"SiteTree_Live"."ID" = %d', $deletedPageID)
 		);
 
-		$f = new CMSSiteTreeFilter_DeletedPages();
-		$results = $f->pagesIncluded();
-
+		$f = new CMSSiteTreeFilter_DeletedPages(array('Term' => 'Page'));
 		$this->assertTrue($f->isPageIncluded($deletedPage));
+	
+		// Check that only changed pages are returned
+		$f = new CMSSiteTreeFilter_DeletedPages(array('Term' => 'No Matches'));
+		$this->assertFalse($f->isPageIncluded($deletedPage));
+	}
+	
+	public function testStatusDraftPagesFilter() {
+		$draftPage = $this->objFromFixture('Page', 'page4');
+		$draftPage->publish('Stage', 'Stage');
+		$draftPage = Versioned::get_one_by_stage(
+			'SiteTree', 
+			'Stage', 
+			sprintf('"SiteTree"."ID" = %d', $draftPage->ID)
+		);
+
+		// Check draft page is shown
+		$f = new CMSSiteTreeFilter_StatusDraftPages(array('Term' => 'Page'));
+		$this->assertTrue($f->isPageIncluded($draftPage));
+		
+		// Check filter respects parameters
+		$f = new CMSSiteTreeFilter_StatusDraftPages(array('Term' => 'No Match'));
+		$this->assertEmpty($f->isPageIncluded($draftPage));
+		
+		// Ensures empty array returned if no data to show
+		$f = new CMSSiteTreeFilter_StatusDraftPages();
+		$draftPage->delete();
+		$this->assertEmpty($f->isPageIncluded($draftPage));		
+	}			
+	
+	public function testStatusRemovedFromDraftFilter() {
+		$removedDraftPage = $this->objFromFixture('Page', 'page6');
+		$removedDraftPage->doPublish();
+		$removedDraftPage->deleteFromStage('Stage');
+		$removedDraftPage = Versioned::get_one_by_stage(
+			'SiteTree', 
+			'Live', 
+			sprintf('"SiteTree"."ID" = %d', $removedDraftPage->ID)
+		);
+
+		// Check live-only page is included
+		$f = new CMSSiteTreeFilter_StatusRemovedFromDraftPages(array('LastEditedFrom' => '2000-01-01 00:00'));
+		$this->assertTrue($f->isPageIncluded($removedDraftPage));
+
+		// Check filter is respected
+		$f = new CMSSiteTreeFilter_StatusRemovedFromDraftPages(array('LastEditedTo' => '1999-01-01 00:00'));
+		$this->assertEmpty($f->isPageIncluded($removedDraftPage));
+		
+		// Ensures empty array returned if no data to show
+		$f = new CMSSiteTreeFilter_StatusRemovedFromDraftPages();
+		$removedDraftPage->delete();
+		$this->assertEmpty($f->isPageIncluded($removedDraftPage));
+	}
+	
+	public function testStatusDeletedFilter() {
+		$deletedPage = $this->objFromFixture('Page', 'page7');
+		$deletedPage->publish('Stage', 'Live');
+		$deletedPageID = $deletedPage->ID;
+		
+		// Can't use straight $blah->delete() as that blows it away completely and test fails
+		$deletedPage->deleteFromStage('Live');
+		$deletedPage->deleteFromStage('Draft');
+		$checkParentExists = Versioned::get_latest_version('SiteTree', $deletedPageID);
+
+		// Check deleted page is included
+		$f = new CMSSiteTreeFilter_StatusDeletedPages(array('Title' => 'Page'));
+		$this->assertTrue($f->isPageIncluded($checkParentExists));
+		
+		// Check filter is respected
+		$f = new CMSSiteTreeFilter_StatusDeletedPages(array('Title' => 'Bobby'));
+		$this->assertFalse($f->isPageIncluded($checkParentExists));
 	}
 }

@@ -31,6 +31,16 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 		$editor->saveInto($sitetree);
 		$sitetree->write();
 		$this->assertEquals(array(), $sitetree->LinkTracking()->getIdList(), 'Link tracking is removed when links are.');
+
+		// Legacy support - old CMS versions added link shortcodes with spaces instead of commas
+		$editor->setValue("<a href=\"[sitetree_link id=$aboutID]\">Example Link</a>");
+		$editor->saveInto($sitetree);
+		$sitetree->write();
+		$this->assertEquals(
+			array($aboutID => $aboutID),
+			$sitetree->LinkTracking()->getIdList(),
+			'Link tracking with space instead of comma in shortcode works.'
+		);
 	}
 
 	public function testFileLinkTracking() {
@@ -38,7 +48,10 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 		$editor   = new HtmlEditorField('Content');
 		$fileID   = $this->idFromFixture('File', 'example_file');
 
-		$editor->setValue('<a href="assets/example.pdf">Example File</a>');
+		$editor->setValue(sprintf(
+			'<p><a href="[file_link,id=%d]">Example File</a></p>',
+			$fileID
+		));
 		$editor->saveInto($sitetree);
 		$sitetree->write();
 		$this->assertEquals (
@@ -49,6 +62,19 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 		$editor->saveInto($sitetree);
 		$sitetree->write();
 		$this->assertEquals(array(), $sitetree->ImageTracking()->getIdList(), 'Asset tracking is removed with links.');
+
+		// Legacy support - old CMS versions added link shortcodes with spaces instead of commas
+		$editor->setValue(sprintf(
+			'<p><a href="[file_link id=%d]">Example File</a></p>',
+			$fileID
+		));
+		$editor->saveInto($sitetree);
+		$sitetree->write();
+		$this->assertEquals(
+			array($fileID => $fileID),
+			$sitetree->ImageTracking()->getIDList(),
+			'Link tracking with space instead of comma in shortcode works.'
+		);
 	}
 
 	public function testImageInsertion() {
@@ -94,7 +120,7 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 		);
 	}
 
-	public function testBrokenLinkTracking() {
+	public function testBrokenSiteTreeLinkTracking() {
 		$sitetree = new SiteTree();
 		$editor   = new HtmlEditorField('Content');
 
@@ -117,18 +143,56 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 		$this->assertFalse((bool) $sitetree->HasBrokenLink);
 	}
 
+	public function testBrokenFileLinkTracking() {
+		$sitetree = new SiteTree();
+		$editor   = new HtmlEditorField('Content');
+
+		$this->assertFalse((bool) $sitetree->HasBrokenFile);
+
+		$editor->setValue('<p><a href="[file_link,id=0]">Broken Link</a></p>');
+		$editor->saveInto($sitetree);
+		$sitetree->write();
+
+		$this->assertTrue($sitetree->HasBrokenFile);
+
+		$editor->setValue(sprintf (
+			'<p><a href="[file_link,id=%d]">Working Link</a></p>',
+			$this->idFromFixture('File', 'example_file')
+		));
+		$sitetree->HasBrokenFile = false;
+		$editor->saveInto($sitetree);
+		$sitetree->write();
+
+		$this->assertFalse((bool) $sitetree->HasBrokenFile);
+	}
+
 	public function testBrokenLinkHighlighting() {
 		$sitetree = new SiteTree();
 		$editor   = new HtmlEditorField('Content');
 
+		// SiteTree link highlighting
 		$editor->setValue('<a href="[sitetree_link,id=0]">Broken Link</a>');
 
 		$element = new SimpleXMLElement(html_entity_decode((string) new SimpleXMLElement($editor->Field())));
-		$this->assertContains('ss-broken', (string) $element['class'], 'A broken link class is added to broken links');
+		$this->assertContains('ss-broken', (string) $element['class'], 'A broken SiteTree link is highlighted');
 
 		$editor->setValue(sprintf (
 			'<a href="[sitetree_link,id=%d]">Working Link</a>',
 			$this->idFromFixture('SiteTree', 'home')
+		));
+
+		$element = new SimpleXMLElement(html_entity_decode((string) new SimpleXMLElement($editor->Field())));
+		$this->assertNotContains('ss-broken', (string) $element['class']);
+
+		// File link highlighting
+		$editor->setValue('<a href="[file_link,id=0]">Broken Link</a>');
+
+		$element = new SimpleXMLElement(html_entity_decode((string) new SimpleXMLElement($editor->Field())));
+		$this->assertContains('ss-broken', (string) $element['class'], 'A broken File link is highlighted');
+
+		$editor->setValue(sprintf (
+			'<a href="[file_link,id=%d]">Working Link</a>',
+			$this->idFromFixture('File', 'example_file')
 		));
 
 		$element = new SimpleXMLElement(html_entity_decode((string) new SimpleXMLElement($editor->Field())));

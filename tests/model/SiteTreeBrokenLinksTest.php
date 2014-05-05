@@ -46,18 +46,6 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$this->assertTrue($rp->HasBrokenLink, 'Broken redirector page IS marked as such');
 	}
 
-	public function testBrokenAssetLinks() {
-		$obj = $this->objFromFixture('Page','content');
-		
-		$obj->Content = '<a href="assets/nofilehere.pdf">this is a broken link to a pdf file</a>';
-		$obj->syncLinkTracking();
-		$this->assertTrue($obj->HasBrokenFile, 'Page has a broken file');
-		
-		$obj->Content = '<a href="assets/privacypolicy.pdf">this is not a broken file link</a>';
-		$obj->syncLinkTracking();
-		$this->assertFalse($obj->HasBrokenFile, 'Page does NOT have a broken file');
-	}
-
 	public function testDeletingFileMarksBackedPagesAsBroken() {
 		// Test entry
 		$file = new File();
@@ -65,7 +53,10 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$file->write();
 
 		$obj = $this->objFromFixture('Page','content');
-		$obj->Content = '<a href="assets/test-file.pdf">link to a pdf file</a>';
+		$obj->Content = sprintf(
+			'<p><a href="[file_link,id=%d]">Working Link</a></p>',
+			$file->ID
+		);
 		$obj->write();
 		$this->assertTrue($obj->doPublish());
 		// Confirm that it isn't marked as broken to begin with
