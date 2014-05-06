@@ -201,6 +201,8 @@ class ErrorPage extends Page {
 					415 => _t('ErrorPage.415', '415 - Unsupported Media Type'),
 					416 => _t('ErrorPage.416', '416 - Request Range Not Satisfiable'),
 					417 => _t('ErrorPage.417', '417 - Expectation Failed'),
+					422 => _t('ErrorPage.422', '422 - Unprocessable Entity'),
+					429 => _t('ErrorPage.429', '429 - Too Many Requests'),
 					500 => _t('ErrorPage.500', '500 - Internal Server Error'),
 					501 => _t('ErrorPage.501', '501 - Not Implemented'),
 					502 => _t('ErrorPage.502', '502 - Bad Gateway'),
