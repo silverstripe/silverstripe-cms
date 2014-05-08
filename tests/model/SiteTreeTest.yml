@@ -89,6 +89,20 @@ Page:
     Title: 'HTML & XML'
     MetaDescription: 'The <br /> and <br> tags'
     ExtraMeta: '<link rel="canonical" href="http://www.mysite.com/html-and-xml" />'
+  breadcrumbs:
+    Title: 'Breadcrumbs'
+  breadcrumbs2:
+    Title: 'Breadcrumbs 2'
+    Parent: =>Page.breadcrumbs
+  breadcrumbs3:
+    Title: 'Breadcrumbs 3'
+    Parent: =>Page.breadcrumbs2
+  breadcrumbs4:
+    Title: 'Breadcrumbs 4'
+    Parent: =>Page.breadcrumbs3
+  breadcrumbs5:
+    Title: 'Breadcrumbs 5'
+    Parent: =>Page.breadcrumbs4
 
 SiteTreeTest_Conflicted:
   parent:
