@@ -75,6 +75,7 @@ es:
     AddNew: 'Añadir nueva página'
     AddNewButton: 'Añadir nuevo'
     AddPageRestriction: 'Agregar restricción a la página'
+    Cancel: Cancelar
     ChoosePageParentMode: 'Elegir donde crear esta página'
     ChoosePageType: 'Elegir tipo de página'
     Create: Crear
@@ -409,3 +410,9 @@ es:
     MENUTITLE: 'Editar página'
   CMSSettingsController:
     MENUTITLE: Ajustes
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Páginas borradas'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Enviar al borrador las páginas sin prublicar'
+  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Publicada pero eliminada del borrador'

@@ -75,6 +75,7 @@ cs:
     AddNew: 'Přidat novou stránku'
     AddNewButton: 'Přidat nový'
     AddPageRestriction: 'Poznámka: Některé typy stránek nejsou povoleny při tomto výběru'
+    Cancel: Storno
     ChoosePageParentMode: 'Vyberte, kde vytvořit tuto stránku'
     ChoosePageType: 'Vyberte typ stránky'
     Create: Vytvořit
@@ -409,3 +410,9 @@ cs:
     MENUTITLE: 'Editovat stránku'
   CMSSettingsController:
     MENUTITLE: Možnosti
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Smazané stránky'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Koncept nezveřejněných stránek'
+  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Živé, ale odstraněno z konceptu'
