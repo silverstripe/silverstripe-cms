@@ -30,6 +30,10 @@ ErrorDocument 500 /assets/error-500.html
 	SetEnv HTTP_MOD_REWRITE On
 	RewriteEngine On
 
+	# Redirect legacy index.php requests
+	RewriteCond %{REQUEST_URI} ^(?:(.*)/)?index\.php [NC]
+	RewriteRule ^index\.php(?:/(.*))?$ %1/$1 [R=301,L]
+
 	RewriteCond %{REQUEST_URI} ^(.*)$
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_URI} !\.php$
