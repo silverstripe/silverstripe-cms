@@ -37,7 +37,9 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 		parent::init();
 
 		//set the report we are currently viewing from the URL
-		$this->reportClass = (isset($this->urlParams['ReportClass'])) ? $this->urlParams['ReportClass'] : null;
+		$this->reportClass = (isset($this->urlParams['ReportClass']) && $this->urlParams['ReportClass'] !== 'index')
+			? $this->urlParams['ReportClass']
+			: null;
 		$allReports = SS_Report::get_reports();
 		$this->reportObject = (isset($allReports[$this->reportClass])) ? $allReports[$this->reportClass] : null;
 
@@ -132,8 +134,11 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider {
 	 * @return String
 	 */
 	public function Link($action = null) {
-		$link = parent::Link($action);
-		if ($this->reportObject) $link = $this->reportObject->getLink($action);
+		if ($this->reportObject) {
+			$link = $this->reportObject->getLink($action);
+		} else {
+			$link = self::join_links(parent::Link('index'), $action);
+		}
 		return $link;
 	}
 
