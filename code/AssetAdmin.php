@@ -398,7 +398,7 @@ HTML;
 				$files = DataObject::get("File", "\"File\".\"ID\" IN ($fileList)");
 				if($files) {
 					foreach($files as $file) {
-						if(!$file->canEdit()) return Security::permissionFailure($this)
+						if(!$file->canEdit()) return Security::permissionFailure($this);
 						if($file instanceof Image) {
 							$file->deleteFormattedImages();
 						}
