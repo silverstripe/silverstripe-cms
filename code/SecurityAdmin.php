@@ -70,16 +70,20 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 			$fields = $record->getCMSFields();
 
 			if($fields->hasTabSet()) {
-				$fields->findOrMakeTab('Root.Import',_t('Group.IMPORTTABTITLE', 'Import'));
-				$fields->addFieldToTab('Root.Import', 
-					new LiteralField(
-						'MemberImportFormIframe', 
-						sprintf(
-							'<iframe src="%s" id="MemberImportFormIframe" width="100%%" height="400px" border="0"></iframe>',
-							$this->Link('memberimport')
+				// Add import capabilities. Limit to admin since the import logic can affect assigned permissions
+				if(Permission::check('ADMIN')) {
+					$fields->findOrMakeTab('Root.Import',_t('Group.IMPORTTABTITLE', 'Import'));
+					$fields->addFieldToTab('Root.Import', 
+						new LiteralField(
+							'MemberImportFormIframe', 
+							sprintf(
+								'<iframe src="%s" id="MemberImportFormIframe" width="100%%" height="400px" border="0"></iframe>',
+								$this->Link('memberimport')
+							)
 						)
-					)
-				);
+					);	
+				}
+
 				if(Permission::check('APPLY_ROLES')) { 
 					$fields->addFieldToTab(
 						'Root.Roles',
@@ -147,8 +151,19 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 							)
 						)
 					)
-				),
-				new Tab('Import', _t('SecurityAdmin.TABIMPORT', 'Import'),
+				)
+			),
+			// necessary for tree node selection in LeftAndMain.EditForm.js
+			new HiddenField('ID', false, 0)
+		);
+
+		// Add import capabilities. Limit to admin since the import logic can affect assigned permissions
+		if(Permission::check('ADMIN')) {
+			$fields->addFieldsToTab(
+				'Root', 
+				new Tab(
+					'Import', 
+					_t('SecurityAdmin.TABIMPORT', 'Import'),
 					new LiteralField(
 						'GroupImportFormIframe', 
 						sprintf(
@@ -157,10 +172,8 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 						)
 					)
 				)
-			),
-			// necessary for tree node selection in LeftAndMain.EditForm.js
-			new HiddenField('ID', false, 0)
-		);
+			);
+		}
 
 		// Add roles editing interface
 		if(Permission::check('APPLY_ROLES')) {
@@ -217,6 +230,8 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	 * @return Form
 	 */
 	public function MemberImportForm() {
+		if(!Permission::check('ADMIN')) return false;
+
 		$group = $this->currentPage();
 		$form = new MemberImportForm(
 			$this,
@@ -249,6 +264,8 @@ class SecurityAdmin extends LeftAndMain implements PermissionProvider {
 	 * @return Form
 	 */
 	public function GroupImportForm() {
+		if(!Permission::check('ADMIN')) return false;
+
 		$form = new GroupImportForm(
 			$this,
 			'GroupImportForm'

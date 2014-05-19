@@ -12,7 +12,7 @@ before_script:
  - cd ~/builds/ss
 
 script: 
- - phpunit cms/tests
+ - vendor/bin/phpunit cms/tests
 
 branches:
   except:
