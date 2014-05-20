@@ -1,4 +1,4 @@
-assets/*
+assets
 _ss_environment.php
 tools/phing-metadata
 silverstripe-cache
@@ -26,6 +26,8 @@ nginx
 queuedjobs/
 registry/
 restfulserver/
+securityreport/
+secureassets/
 sortablegridfield/
 subsites/
 tags
