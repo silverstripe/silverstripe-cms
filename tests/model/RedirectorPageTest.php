@@ -50,4 +50,18 @@ class RedirectorPageTest extends FunctionalTest {
 		$page->write();
 		$this->assertEquals($page->ExternalURL, 'http://google.com', 'onBeforeWrite will not double prefix if written again!');
 	}
+
+	public function testAllowsProtocolRelative() {
+		$noProtocol = new RedirectorPage(array('ExternalURL' => 'mydomain.com'));
+		$noProtocol->write();
+		$this->assertEquals('http://mydomain.com', $noProtocol->ExternalURL);
+
+		$protocolAbsolute = new RedirectorPage(array('ExternalURL' => 'http://mydomain.com'));
+		$protocolAbsolute->write();
+		$this->assertEquals('http://mydomain.com', $protocolAbsolute->ExternalURL);
+
+		$protocolRelative = new RedirectorPage(array('ExternalURL' => '//mydomain.com'));
+		$protocolRelative->write();
+		$this->assertEquals('//mydomain.com', $protocolRelative->ExternalURL);
+	}
 }
