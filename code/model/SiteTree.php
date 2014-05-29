@@ -2058,10 +2058,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		}
 
 		if(file_exists(BASE_PATH . '/install.php')) {
-			$fields->addFieldToTab("Root.Main", new LiteralField("InstallWarningHeader", 
-				"<p class=\"message warning\">" . _t("SiteTree.REMOVE_INSTALL_WARNING", 
-				"Warning: You should remove install.php from this SilverStripe install for security reasons.")
-				. "</p>"), "Title");
+			Form::messageForForm(
+				'Form_EditForm',
+				_t("SiteTree.REMOVE_INSTALL_WARNING", "Warning: You should remove install.php from this SilverStripe install for security reasons."),
+				'message warning static'
+			);
 		}
 
 		// Backwards compat: Rewrite nested "Content" tabs to toplevel
