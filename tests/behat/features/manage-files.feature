@@ -71,7 +71,7 @@ Feature: Manage files
   Scenario: I can filter the files list view using filetype
     Given a "file" "assets/document.pdf"
     And I expand the "Filter" CMS Panel
-    And I select "Image" from "File type"
+    And I select "Image" from "File type" with javascript
     And I press the "Apply Filter" button
     Then the "Files" table should contain "file1"
     And the "Files" table should not contain "document"

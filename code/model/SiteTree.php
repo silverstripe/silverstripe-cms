@@ -1397,7 +1397,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$tags .= $this->ExtraMeta . "\n";
 		} 
 		
-		if(Permission::check('CMS_ACCESS_CMSMain') && in_array('CMSPreviewable', class_implements($this)) && !$this instanceof ErrorPage) {
+		if(Permission::check('CMS_ACCESS_CMSMain')
+			&& in_array('CMSPreviewable', class_implements($this))
+			&& !$this instanceof ErrorPage
+			&& $this->ID > 0
+		) {
 			$tags .= "<meta name=\"x-page-id\" content=\"{$this->ID}\" />\n";
 			$tags .= "<meta name=\"x-cms-edit-link\" content=\"" . $this->CMSEditLink() . "\" />\n";
 		}

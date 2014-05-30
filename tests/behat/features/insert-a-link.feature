@@ -50,8 +50,7 @@ So that I can link to a external website or a page on my site
     And I select "awesome" in the "Content" HTML field
     When I press the "Insert Link" button
     When I select the "Anchor on this page" radio button
-    # Need to hard-code the id attribute of the <select> here, as there are two form fields to pick from
-    And I select "myanchor" from "Form_EditorToolbarLinkForm_AnchorSelector"
+    And I fill in "myanchor" for "Anchor"
     And I press the "Insert link" button
     Then the "Content" HTML field should contain "<a href="#myanchor">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
