@@ -943,6 +943,25 @@ class SiteTreeTest extends SapphireTest {
 		// reset original value
 		Config::inst()->update('SiteTree', 'meta_generator', $generator);
 	}
+
+
+	public function testGetBreadcrumbItems() {
+		$page = $this->objFromFixture("Page", "breadcrumbs");
+		$this->assertEquals($page->getBreadcrumbItems()->count(), 1, "Only display current page.");
+
+		// Test breadcrumb order
+		$page = $this->objFromFixture("Page", "breadcrumbs5");
+		$breadcrumbs = $page->getBreadcrumbItems();
+		$this->assertEquals($breadcrumbs->count(), 5, "Display all breadcrumbs");
+		$this->assertEquals($breadcrumbs->first()->Title, "Breadcrumbs", "Breadcrumbs should be the first item.");
+		$this->assertEquals($breadcrumbs->last()->Title, "Breadcrumbs 5", "Breadcrumbs 5 should be last item.");
+
+		// Test breadcrumb max depth
+		$breadcrumbs = $page->getBreadcrumbItems(2);
+		$this->assertEquals($breadcrumbs->count(), 2, "Max depth should limit the breadcrumbs to 2 items.");
+		$this->assertEquals($breadcrumbs->first()->Title, "Breadcrumbs 4", "First item should be Breadrcumbs 4.");
+		$this->assertEquals($breadcrumbs->last()->Title, "Breadcrumbs 5", "Breadcrumbs 5 should be last.");
+	}
 	
 	/**
 	 * Tests SiteTree::MetaTags
