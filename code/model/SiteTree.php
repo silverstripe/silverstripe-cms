@@ -1562,7 +1562,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		parent::onBeforeDelete();
 		
 		// If deleting this page, delete all its children.
-		if(SiteTree::config()->enforce_strict_hierarchy && $children = $this->Children()) {
+		if(SiteTree::config()->enforce_strict_hierarchy && $children = $this->AllChildren()) {
 			foreach($children as $child) {
 				$child->delete();
 			}
