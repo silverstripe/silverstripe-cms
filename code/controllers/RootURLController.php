@@ -33,10 +33,14 @@ class RootURLController extends Controller {
 			if(class_exists('HomepageForDomainExtension')) {
 				$host       = str_replace('www.', null, $_SERVER['HTTP_HOST']);
 				$SQL_host   = Convert::raw2sql($host);
-				$candidates = DataObject::get('SiteTree', "\"HomepageForDomain\" LIKE '%$SQL_host%'");
+				$candidates = DataObject::get('SiteTree', "\"HomepageForDomain\" LIKE '%$SQL_host%'")->sort('LastEdited','DESC');
 				if($candidates) foreach($candidates as $candidate) {
-					if(preg_match('/(,|^) *' . preg_quote($host) . ' *(,|$)/', $candidate->HomepageForDomain)) {
-						self::$cached_homepage_link = trim($candidate->RelativeLink(true), '/');
+					foreach(preg_split('/\s*,\s*/',$candidate->HomepageForDomain) as $domain_host){
+						$domain_host = str_replace('www.', null,$domain_host);
+						if ($domain_host == $host){
+							self::$cached_homepage_link = trim($candidate->RelativeLink(true), '/');
+							break;
+						}
 					}
 				}
 			}
