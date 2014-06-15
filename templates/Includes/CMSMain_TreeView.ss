@@ -19,7 +19,7 @@ $ExtraTreeTools
 	</div>
 	<% end_if %>
 
-	<div class="cms-tree" data-url-tree="$Link(getsubtree)" data-url-savetreenode="$Link(savetreenode)" data-url-updatetreenodes="$Link(updatetreenodes)" data-url-addpage="{$LinkPageAdd('AddForm/?action_doAdd=1', 'ParentID=%s&amp;PageType=%s')}" data-url-editpage="$LinkPageEdit('%s')" data-url-duplicate="{$Link('duplicate/%s')}" data-url-duplicatewithchildren="{$Link('duplicatewithchildren/%s')}" data-url-listview="{$Link('?view=list')}" data-hints="$SiteTreeHints.XML" data-extra-params="SecurityID=$SecurityID">
+	<div class="cms-tree" data-url-tree="$LinkWithSearch($Link(getsubtree))" data-url-savetreenode="$Link(savetreenode)" data-url-updatetreenodes="$Link(updatetreenodes)" data-url-addpage="{$LinkPageAdd('AddForm/?action_doAdd=1', 'ParentID=%s&amp;PageType=%s')}" data-url-editpage="$LinkPageEdit('%s')" data-url-duplicate="{$Link('duplicate/%s')}" data-url-duplicatewithchildren="{$Link('duplicatewithchildren/%s')}" data-url-listview="{$Link('?view=list')}" data-hints="$SiteTreeHints.XML" data-extra-params="SecurityID=$SecurityID">
 		$SiteTreeAsUL
 	</div>
 </div>

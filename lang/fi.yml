@@ -75,6 +75,7 @@ fi:
     AddNew: 'Lisää uusi sivu'
     AddNewButton: 'Lisää uusi'
     AddPageRestriction: 'Huomio: Tietyt sivutyypit eivät ole sallittuja valitun sivutyypin alle.'
+    Cancel: Peruuta
     ChoosePageParentMode: 'Valitse kohde, minne sivu luodaan'
     ChoosePageType: 'Valitse sivutyyppi'
     Create: Luo
@@ -409,3 +410,9 @@ fi:
     MENUTITLE: 'Muokkaa sivua'
   CMSSettingsController:
     MENUTITLE: Asetukset
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Poistetut sivut'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Vedokset julkaisemattomista sivuista'
+  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Näkyvillä, mutta poistettu vedoksista'
