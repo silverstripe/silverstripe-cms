@@ -61,7 +61,7 @@ So that only high quality changes are seen by our visitors
 		Given I am logged in with "ADMIN" permissions
 		And I go to "/admin/pages"
 		And I should see "Hello" in the tree
-		And I follow "Hello"
+		And I click on "Hello" in the tree
 
 		When I click "More options" in the "#ActionMenus" element
 		And I press the "Unpublish" button
@@ -75,7 +75,7 @@ So that only high quality changes are seen by our visitors
 		Given I am logged in with "ADMIN" permissions
 		And I go to "/admin/pages"
 		And I should see "My Page" in the tree
-		When I follow "My Page"
+		And I click on "My Page" in the tree
 		And I press the "Publish" button
 		And I click "More options" in the "#ActionMenus" element
 		Then I should see "Unpublish" in the "#ActionMenus_MoreOptions" element
