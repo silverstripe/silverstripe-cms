@@ -120,12 +120,6 @@ class ContentController extends Controller {
 			)
 		) {
 			if(!$this->dataRecord->canViewStage(Versioned::current_archived_date() ? 'Stage' : Versioned::current_stage())) {
-				$link = $this->Link();
-				$message = _t(
-					"ContentController.DRAFT_SITE_ACCESS_RESTRICTION", 
-					'You must log in with your CMS password in order to view the draft or archived content. ' .
-					'<a href="%s">Click here to go back to the published site.</a>'
-				);
 				Session::clear('currentStage');
 				Session::clear('archiveDate');
 				

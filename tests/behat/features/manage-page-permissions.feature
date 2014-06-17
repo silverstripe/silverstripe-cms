@@ -30,7 +30,7 @@ Scenario: I can limit global view permissions to logged-in users
 
 Scenario: I can limit global view permissions to certain groups
 	Given I select "Only these people (choose from list)" from "Who can view pages on this site?" input group
-	And I select "AUTHOR group" from "Viewer Groups"
+	And I select "AUTHOR group" from "Viewer Groups" with javascript
 	And I press the "Save" button
 	When I am not logged in
 	And I go to the homepage
@@ -51,7 +51,7 @@ Scenario: I can limit global edit permissions to logged-in users
 
 Scenario: I can limit global edit permissions to certain groups
 	Given I select "Only these people (choose from list)" from "Who can edit pages on this site?" input group
-	And I select "ADMIN group" from "Viewer Groups"
+	And I select "ADMIN group" from "Editor Groups" with javascript
 	And I press the "Save" button
 	Then pages should not be editable by "AUTHOR"
 	But pages should be editable by "ADMIN"
