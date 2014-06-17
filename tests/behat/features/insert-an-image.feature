@@ -40,18 +40,18 @@ Feature: Insert an image into a page
     Then I press the "Save draft" button
 
   @assets
-  Scenario: I can overwrite an existing image with one uploaded from my own computer
+  Scenario: I can upload an image from my own computer that matches the name of an existing file
     Given a "image" "assets/Uploads/file1.jpg"
     When I press the "Insert Media" button
     And I press the "From your computer" button
     And I attach the file "file1.jpg" to "AssetUploadField" with HTML5
     # TODO Delay previous step until upload succeeded
     And I wait for 2 seconds
-    Then I should see "Overwrite"
-    When I press the "Overwrite" button
+    # Note change in default behaviour from 3.1, respect default Upload.replaceFile=false
     Then there should be a file "assets/Uploads/file1.jpg"
+    And there should be a file "assets/Uploads/file2.jpg"
     When I press the "Insert" button
-    Then the "Content" HTML field should contain "file1.jpg"
+    Then the "Content" HTML field should contain "file2.jpg"
     # Required to avoid "unsaved changed" browser dialog
     Then I press the "Save draft" button
 
