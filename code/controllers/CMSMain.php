@@ -386,12 +386,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$json = '';
 		$classes = SiteTree::page_type_classes();
 
-	 	$cacheCanCreate = array();
-	 	foreach($classes as $class) $cacheCanCreate[$class] = singleton($class)->canCreate();
+	 	$cacheCanEdit = array();
+	 	foreach($classes as $class) $cacheCanEdit[$class] = singleton($class)->canEdit();
 
 	 	// Generate basic cache key. Too complex to encompass all variations
 	 	$cache = SS_Cache::factory('CMSMain_SiteTreeHints');
-	 	$cacheKey = md5(implode('_', array(Member::currentUserID(), implode(',', $cacheCanCreate), implode(',', $classes))));
+	 	$cacheKey = md5(implode('_', array(Member::currentUserID(), implode(',', $cacheCanEdit), implode(',', $classes))));
 	 	if($this->request->getVar('flush')) $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
 	 	$json = $cache->load($cacheKey);
 	 	if(!$json) {
@@ -420,7 +420,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				
 				if(
 					($obj instanceof HiddenClass)
-					|| (!array_key_exists($class, $cacheCanCreate) || !$cacheCanCreate[$class])
+					|| (!array_key_exists($class, $cacheCanEdit) || !$cacheCanEdit[$class])
 					|| ($needsPerm && !$this->can($needsPerm))
 				) {
 					$globalDisallowed[] = $class;
