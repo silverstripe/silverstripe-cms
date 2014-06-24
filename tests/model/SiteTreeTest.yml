@@ -56,6 +56,7 @@ Page:
     Title: Staff
     URLSegment: my-staff
     Parent: =>Page.about
+    ShowInMenus: 0
   products:
     Title: Products
     CanEditType: OnlyTheseUsers
