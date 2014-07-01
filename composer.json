@@ -20,6 +20,9 @@
 		"composer/installers": "*",
 		"silverstripe/framework": "3.0.*"
 	},
+	"require-dev": {
+		"phpunit/PHPUnit": "~3.7"
+	},
 	"autoload": {
 		"classmap": ["tests/behat/"]
 	}
