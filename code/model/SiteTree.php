@@ -1492,7 +1492,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			if(!SiteTree::get_by_link(Config::inst()->get('RootURLController', 'default_homepage_link'))) {
 				$homepage = new Page();
 				$homepage->Title = _t('SiteTree.DEFAULTHOMETITLE', 'Home');
-				$homepage->Content = _t('SiteTree.DEFAULTHOMECONTENT', '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>');
+				$homepage->Content = _t('SiteTree.DEFAULTHOMECONTENT', '<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href="'.AdminRootController::admin_url().'">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>');
 				$homepage->URLSegment = Config::inst()->get('RootURLController', 'default_homepage_link');
 				$homepage->Sort = 1;
 				$homepage->write();
@@ -1914,9 +1914,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 					$parentPage = $linkedPage->Parent;
 					if($parentPage) {
 						if($parentPage->ID) {
-							$parentPageLinks[] = "<a class=\"cmsEditlink\" href=\"admin/pages/edit/show/$linkedPage->ID\">{$parentPage->Title}</a>";
+							$parentPageLinks[] = "<a class=\"cmsEditlink\" href=\"".AdminRootController::admin_url()."pages/edit/show/$linkedPage->ID\">{$parentPage->Title}</a>";
 						} else {
-							$parentPageLinks[] = "<a class=\"cmsEditlink\" href=\"admin/pages/edit/show/$linkedPage->ID\">" .
+							$parentPageLinks[] = "<a class=\"cmsEditlink\" href=\"".AdminRootController::admin_url()."pages/edit/show/$linkedPage->ID\">" .
 								_t('SiteTree.TOPLEVEL', 'Site Content (Top Level)') .
 								"</a>";
 						}
@@ -1968,7 +1968,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				->setFieldFormatting(array(
 					'Title' => function($value, &$item) {
 						return sprintf(
-							'<a href="admin/pages/edit/show/%d">%s</a>',
+							'<a href=\"'.AdminRootController::admin_url().'pages/edit/show/%d\">%s</a>',
 							(int)$item->ID,
 							Convert::raw2xml($item->Title)
 						);

@@ -12,10 +12,3 @@ Director:
     'RemoveOrphanedPagesTask//$Action/$ID/$OtherID': 'RemoveOrphanedPagesTask'
     'SiteTreeMaintenanceTask//$Action/$ID/$OtherID': 'SiteTreeMaintenanceTask'
     'SiteTreeMaintenanceTask//$Action/$ID/$OtherID': 'SiteTreeMaintenanceTask'
----
-Name: legacycmsroutes
-After: '#adminroutes'
----
-Director:
-  rules:
-    'admin/cms': '->admin/pages'

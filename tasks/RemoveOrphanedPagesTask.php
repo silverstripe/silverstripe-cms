@@ -97,7 +97,7 @@ in the other stage:<br />
 				array("\"$orphanBaseClass\".\"ID\"" => $orphan->ID)
 			);
 			$label = sprintf(
-				'<a href="admin/pages/edit/show/%d">%s</a> <small>(#%d, Last Modified Date: %s, Last Modifier: %s, %s)</small>',
+				'<a href="'.AdminRootController::admin_url().'pages/edit/show/%d">%s</a> <small>(#%d, Last Modified Date: %s, Last Modifier: %s, %s)</small>',
 				$orphan->ID,
 				$orphan->Title,
 				$orphan->ID,

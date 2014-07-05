@@ -191,7 +191,7 @@ class VirtualPage extends Page {
 		
 		// Create links back to the original object in the CMS
 		if($this->CopyContentFrom()->exists()) {
-			$link = "<a class=\"cmsEditlink\" href=\"admin/pages/edit/show/$this->CopyContentFromID\">" 
+			$link = "<a class=\"cmsEditlink\" href=\"".AdminRootController::admin_url()."pages/edit/show/$this->CopyContentFromID\">" 
 				. _t('VirtualPage.EditLink', 'edit')
 				. "</a>";
 			$msgs[] = _t(
