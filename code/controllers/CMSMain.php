@@ -387,7 +387,11 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$classes = SiteTree::page_type_classes();
 
 	 	$cacheCanEdit = array();
-	 	foreach($classes as $class) $cacheCanEdit[$class] = singleton($class)->canEdit();
+	 	foreach($classes as $class) {
+			if ($classInstance = $class::get()->First()) {
+				$cacheCanEdit[$class] = $classInstance->canEdit();
+			}
+		}
 
 	 	// Generate basic cache key. Too complex to encompass all variations
 	 	$cache = SS_Cache::factory('CMSMain_SiteTreeHints');
