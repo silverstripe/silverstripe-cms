@@ -48,20 +48,17 @@ class OldPageRedirector extends Extension {
 		}
 
 		if (!$page) {
-			// If we haven't found a candidate, lets resort to finding an old page with this URL segment
-			// TODO: Rewrite using ORM syntax
-			$query = new SQLQuery (
-				'"RecordID"',
-				'"SiteTree_versions"',
-				"\"URLSegment\" = '$URL' AND \"WasPublished\" = 1" . ($parent ? ' AND "ParentID" = ' . $parent->ID : ''),
-				'"LastEdited" DESC',
-				null,
-				null,
-				1
-			);
-			$record = $query->execute()->first();
+			// If we haven't found a candidate, resort to finding a previously published page version with this URL segment
+			 $record = DataList::create('SiteTree')
+             ->where("\"URLSegment\" = '$URL'")
+             ->where("\"WasPublished\" = 1")
+             ->where($parent ? ' AND "ParentID" = ' . $parent->ID : '')
+             ->sort('"LastEdited" DESC')
+             ->limit(1)
+             ->setDataQueryParam("Versioned.mode", 'all_versions')->first();
+
 			if ($record) {
-				$page = SiteTree::get()->byID($record['RecordID']);
+				$page = SiteTree::get()->byID($record->RecordID);
 				$redirect = true;
 			}
 		}
