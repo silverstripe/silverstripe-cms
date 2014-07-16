@@ -7,7 +7,6 @@ class OldPageRedirector extends Extension {
 	 * find an old URL that it should be redirecting to.
 	 *
 	 * @param SS_HTTPResponse $request The request object
-	 * @throws SS_HTTPResponse_Exception
 	 */
 	public function onBeforeHTTPError404($request) {
 		// Build up the request parameters
@@ -50,12 +49,13 @@ class OldPageRedirector extends Extension {
 		if (!$page) {
 			// If we haven't found a candidate, resort to finding a previously published page version with this URL segment
 			$oldRecords = DataList::create('SiteTree')
-	             ->where("\"URLSegment\" = '$URL'")
-	             ->where("\"WasPublished\" = 1")
-	             ->sort('"LastEdited" DESC')
-	             ->limit(1)
-	             ->setDataQueryParam("Versioned.mode", 'all_versions');
-            if($parent) $oldRecords->where('"ParentID" = ' . $parent->ID);
+	            	->filter(array(
+	            		'URLSegment' => $URL,
+	            		'WasPublished' => 1))
+	            	->sort('"LastEdited" DESC')
+	            	->setDataQueryParam("Versioned.mode", 'all_versions');
+
+            if($parent) $oldRecords->filter(array('ParentID' => $parent->ID));
 
             $record = $oldRecords->first();
             
