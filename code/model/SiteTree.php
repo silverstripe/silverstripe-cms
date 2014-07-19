@@ -2732,13 +2732,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 		return isset($stack[$level-1]) ? $stack[$level-1] : null;
 	}
-	
+
 	/**
 	 * Return the CSS classes to apply to this node in the CMS tree
 	 *
+	 * @param string $numChildrenMethod
 	 * @return string
 	 */
-	public function CMSTreeClasses() {
+	public function CMSTreeClasses($numChildrenMethod="numChildren") {
 		$classes = sprintf('class-%s', $this->class);
 		if($this->HasBrokenFile || $this->HasBrokenLink) {
 			$classes .= " BrokenLink";
@@ -2765,7 +2766,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if($this->hasExtension('Translatable') && $controller->Locale != Translatable::default_locale() && !$this->isTranslation())
 			$classes .= " untranslated ";
 		*/
-		$classes .= $this->markingClasses();
+		$classes .= $this->markingClasses($numChildrenMethod);
 
 		return $classes;
 	}

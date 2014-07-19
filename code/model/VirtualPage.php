@@ -387,8 +387,12 @@ class VirtualPage extends Page {
 		$this->ImageTracking()->setByIdList($this->CopyContentFrom()->ImageTracking()->column('ID'));
 	}
 
-	public function CMSTreeClasses() {
-		return parent::CMSTreeClasses() . ' VirtualPage-' . $this->CopyContentFrom()->ClassName;
+	/**
+	 * @param string $numChildrenMethod
+	 * @return string
+	 */
+	public function CMSTreeClasses($numChildrenMethod="numChildren") {
+		return parent::CMSTreeClasses($numChildrenMethod) . ' VirtualPage-' . $this->CopyContentFrom()->ClassName;
 	}
 	
 	/**
