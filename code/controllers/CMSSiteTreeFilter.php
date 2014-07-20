@@ -35,7 +35,12 @@ abstract class CMSSiteTreeFilter extends Object {
 	 * @var String 
 	 */
 	protected $childrenMethod = null;
-	
+
+	/**
+	 * @var string
+	 */
+	protected $numChildrenMethod = null;
+
 	/**
 	 * Returns a sorted array of all implementators of CMSSiteTreeFilter, suitable for use in a dropdown.
 	 * 
@@ -71,13 +76,21 @@ abstract class CMSSiteTreeFilter extends Object {
 	}
 	
 	/**
-	 * @return String Method on {@link Hierarchy} objects
-	 * which is used to traverse into children relationships.
+	 * Method on {@link Hierarchy} objects which is used to traverse into children relationships.
+	 *
+	 * @return String
 	 */
 	public function getChildrenMethod() {
 		return $this->childrenMethod;
 	}
-	
+
+	/**
+	 * Method on {@link Hierarchy} objects which is used find the number of children for a parent page
+	 */
+	public function getNumChildrenMethod() {
+		return $this->numChildrenMethod;
+	}
+
 	/**
 	 * @return Array Map of Page IDs to their respective ParentID values.
 	 */
@@ -101,17 +114,13 @@ abstract class CMSSiteTreeFilter extends Object {
 			}
 
 			while(!empty($parents)) {
-				$q = new SQLQuery();
-				$q->setSelect(array('"ID"','"ParentID"'))
-					->setFrom('"SiteTree"')
-					->setWhere('"ID" in ('.implode(',',array_keys($parents)).')');
-
+				$q = Versioned::get_including_deleted('SiteTree', '"RecordID" in ('.implode(',',array_keys($parents)).')');
+				$list = $q->map('ID', 'ParentID');
 				$parents = array();
-
-				foreach($q->execute() as $row) {
-					if ($row['ParentID']) $parents[$row['ParentID']] = true;
-					$this->_cache_ids[$row['ID']] = true;
-					$this->_cache_expanded[$row['ID']] = true;
+				foreach($list as $id => $parentID) {
+					if ($parentID) $parents[$parentID] = true;
+					$this->_cache_ids[$id] = true;
+					$this->_cache_expanded[$id] = true;
 				}
 			}
 		}
@@ -202,8 +211,16 @@ abstract class CMSSiteTreeFilter extends Object {
  * @subpackage content
  */
 class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter {
-	
+
+	/**
+	 * @var string
+	 */
 	protected $childrenMethod = "AllHistoricalChildren";
+
+	/**
+	 * @var string
+	 */
+	protected $numChildrenMethod = 'numHistoricalChildren';
 	
 	static public function title() {
 		return _t('CMSSiteTreeFilter_DeletedPages.Title', "All pages, including deleted");
@@ -302,8 +319,16 @@ class CMSSiteTreeFilter_StatusDraftPages extends CMSSiteTreeFilter {
  * @subpackage content
  */
 class CMSSiteTreeFilter_StatusDeletedPages extends CMSSiteTreeFilter {
-	
-	protected $childrenMethod = "AllHistoricalChildren";	
+
+	/**
+	 * @var string
+	 */
+	protected $childrenMethod = "AllHistoricalChildren";
+
+	/**
+	 * @var string
+	 */
+	protected $numChildrenMethod = 'numHistoricalChildren';
 	
 	static public function title() {
 		return _t('CMSSiteTreeFilter_StatusDeletedPages.Title', 'Deleted pages');
@@ -318,6 +343,8 @@ class CMSSiteTreeFilter_StatusDeletedPages extends CMSSiteTreeFilter {
 	public function pagesIncluded() {
 		$pages = Versioned::get_including_deleted('SiteTree');
 		$pages = $this->applyDefaultFilters($pages);
+
+		// @todo this doesn't work for parent page with deleted from draft
 		$pages = $pages->filterByCallback(function($page) {
 			// Doesn't exist on either stage or live
 			return $page->IsDeletedFromStage && !$page->ExistsOnLive;
