@@ -114,17 +114,13 @@ abstract class CMSSiteTreeFilter extends Object {
 			}
 
 			while(!empty($parents)) {
-				$q = new SQLQuery();
-				$q->setSelect(array('"ID"','"ParentID"'))
-					->setFrom('"SiteTree"')
-					->setWhere('"ID" in ('.implode(',',array_keys($parents)).')');
-
+				$q = Versioned::get_including_deleted('SiteTree', '"RecordID" in ('.implode(',',array_keys($parents)).')');
+				$list = $q->map('ID', 'ParentID');
 				$parents = array();
-
-				foreach($q->execute() as $row) {
-					if ($row['ParentID']) $parents[$row['ParentID']] = true;
-					$this->_cache_ids[$row['ID']] = true;
-					$this->_cache_expanded[$row['ID']] = true;
+				foreach($list as $id => $parentID) {
+					if ($parentID) $parents[$parentID] = true;
+					$this->_cache_ids[$id] = true;
+					$this->_cache_expanded[$id] = true;
 				}
 			}
 		}
