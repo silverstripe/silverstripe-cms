@@ -193,8 +193,18 @@ class ContentController extends Controller {
 			}
 			
 			Director::set_current_page($this->data());
-			$response = parent::handleRequest($request, $model);
-			Director::set_current_page(null);
+
+			try {
+				$response = parent::handleRequest($request, $model);
+
+				Director::set_current_page(null);
+			} catch(SS_HTTPResponse_Exception $e) {
+				$this->popCurrent();
+				
+				Director::set_current_page(null);
+
+				throw $e;
+			}
 		}
 		
 		return $response;
