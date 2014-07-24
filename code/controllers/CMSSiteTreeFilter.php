@@ -153,12 +153,12 @@ abstract class CMSSiteTreeFilter extends Object {
 
 				case 'LastEditedFrom':
 					$fromDate = new DateField(null, null, $val);
-					$query = $query->filter("LastEdited:GreaterThanOrEqual", $fromDate->dataValue());
+					$query = $query->filter("LastEdited:GreaterThanOrEqual", $fromDate->dataValue().' 00:00:00');
 					break;
 
 				case 'LastEditedTo':
 					$toDate = new DateField(null, null, $val);
-					$query = $query->filter("LastEdited:LessThanOrEqual", $toDate->dataValue());
+					$query = $query->filter("LastEdited:LessThanOrEqual", $toDate->dataValue().' 23:59:59');
 					break;
 
 				case 'ClassName':

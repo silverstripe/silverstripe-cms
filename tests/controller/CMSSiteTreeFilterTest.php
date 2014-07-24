@@ -114,7 +114,19 @@ class CMSSiteTreeFilterTest extends SapphireTest {
 		$f = new CMSSiteTreeFilter_StatusDraftPages();
 		$draftPage->delete();
 		$this->assertEmpty($f->isPageIncluded($draftPage));		
-	}			
+	}
+
+	public function testDateFromToLastSameDate() {
+		$draftPage = $this->objFromFixture('Page', 'page4');
+		// Grab the date
+		$date = substr($draftPage->LastEdited, 0, 10);
+		// Filter with that date
+		$filter = New CMSSiteTreeFilter_Search(array(
+			'LastEditedFrom' => $date,
+			'LastEditedTo' => $date
+		));
+		$this->assertTrue($filter->isPageIncluded($draftPage), 'Using the same date for from and to should show find that page');
+	}
 	
 	public function testStatusRemovedFromDraftFilter() {
 		$removedDraftPage = $this->objFromFixture('Page', 'page6');
