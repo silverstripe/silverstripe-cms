@@ -179,7 +179,7 @@ class ReportAdmin extends LeftAndMain {
 			unset($filteredCriteria[$notAParam]);
 		}
 
-		$formLink = $this->Link() . '/EditForm';
+		$formLink = $this->Link( 'EditForm' );
 		if($filteredCriteria) $formLink .= '?' . http_build_query($filteredCriteria);
 		$form->setFormAction($formLink);
 		$form->setTemplate('ReportAdminForm');
