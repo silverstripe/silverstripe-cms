@@ -1,11 +1,15 @@
 <?php
+
+/**
+ * @todo Cleanup, refactor, test this class
+ */
 class SiteTreeFolderExtension extends DataExtension {
 
 	/**
-     * Looks for files used in system and create where clause which contains all ID's of files.
-     * 
-     * @returns String where clause which will work as filter.
-     */
+	 * Looks for files used in system and create where clause which contains all ID's of files.
+	 * 
+	 * @returns String where clause which will work as filter.
+	 */
 	public function getUnusedFilesListFilter() {
 		$result = DB::query("SELECT DISTINCT \"FileID\" FROM \"SiteTree_ImageTracking\"");
 		$usedFiles = array();
@@ -43,6 +47,6 @@ class SiteTreeFolderExtension extends DataExtension {
 		} else {
 			return "(\"ClassName\" = 'File' OR \"ClassName\" = 'Image')";
 		}
-		return $where;
+		return $where; // @todo - How?
 	}
 }

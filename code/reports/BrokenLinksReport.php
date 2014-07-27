@@ -29,8 +29,15 @@ class BrokenLinksReport extends SS_Report {
 				$sort = '';
 			}
 		}
-		if (!isset($_REQUEST['CheckSite']) || $params['CheckSite'] == 'Published') $ret = Versioned::get_by_stage('SiteTree', 'Live', '("SiteTree"."HasBrokenLink" = 1 OR "SiteTree"."HasBrokenFile" = 1)', $sort, $join, $limit);
-		else $ret = DataObject::get('SiteTree', '("SiteTree"."HasBrokenFile" = 1 OR "HasBrokenLink" = 1)', $sort, $join, $limit);
+		if (!isset($_REQUEST['CheckSite']) || $params['CheckSite'] == 'Published') {
+			$ret = Versioned::get_by_stage('SiteTree', 'Live', array(
+				'"SiteTree"."HasBrokenLink" = ? OR "SiteTree"."HasBrokenFile" = ?' => array(true, true)
+			), $sort, $join, $limit);
+		} else {
+			$ret = DataObject::get('SiteTree', array(
+				'"SiteTree"."HasBrokenFile" = ? OR "SiteTree"."HasBrokenLink" = ?' => array(true, true)
+			), $sort, $join, $limit);
+		}
 		
 		$returnSet = new ArrayList();
 		if ($ret) foreach($ret as $record) {

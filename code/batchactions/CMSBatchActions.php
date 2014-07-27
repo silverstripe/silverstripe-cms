@@ -66,7 +66,9 @@ class CMSBatchAction_Delete extends CMSBatchAction {
 
 			// check to see if the record exists on the live site, 
 			// if it doesn't remove the tree node
-			$liveRecord = Versioned::get_one_by_stage( 'SiteTree', 'Live', "\"SiteTree\".\"ID\"=$id");
+			$liveRecord = Versioned::get_one_by_stage( 'SiteTree', 'Live', array(
+				'"SiteTree"."ID"' => $id
+			));
 			if($liveRecord) {
 				$liveRecord->IsDeletedFromStage = true;
 				$status['modified'][$liveRecord->ID] = array(
@@ -111,7 +113,9 @@ class CMSBatchAction_DeleteFromLive extends CMSBatchAction {
 			if($page->canDelete()) $page->doDeleteFromLive();
 
 			// check to see if the record exists on the stage site, if it doesn't remove the tree node
-			$stageRecord = Versioned::get_one_by_stage( 'SiteTree', 'Stage', "\"SiteTree\".\"ID\"=$id");
+			$stageRecord = Versioned::get_one_by_stage( 'SiteTree', 'Stage', array(
+				'"SiteTree"."ID"' => $id
+			));
 			if($stageRecord) {
 				$stageRecord->IsAddedToStage = true;
 				$status['modified'][$stageRecord->ID] = array(

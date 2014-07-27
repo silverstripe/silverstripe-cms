@@ -32,16 +32,16 @@ class FileLinkTrackingTest extends SapphireTest {
 		$page = $this->objFromFixture('Page', 'page1');
 		$this->assertTrue($page->doPublish());
 		$this->assertContains('<img src="assets/testscript-test-file.pdf"',
-			DB::query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = $page->ID")->value());
+			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = ?", array($page->ID))->value());
 		
 		$file = $this->objFromFixture('File', 'file1');
 		$file->Name = 'renamed-test-file.pdf';
 		$file->write();
 		
 		$this->assertContains('<img src="assets/renamed-test-file.pdf"',
-			DB::query("SELECT \"Content\" FROM \"SiteTree\" WHERE \"ID\" = $page->ID")->value());
+			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree\" WHERE \"ID\" = ?", array($page->ID))->value());
 		$this->assertContains('<img src="assets/renamed-test-file.pdf"',
-			DB::query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = $page->ID")->value());
+			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = ?", array($page->ID))->value());
 	}
 
 	public function testFileLinkRewritingOnVirtualPages() {
@@ -62,9 +62,9 @@ class FileLinkTrackingTest extends SapphireTest {
 		
 		// Verify that the draft and publish virtual pages both have the corrected link
 		$this->assertContains('<img src="assets/renamed-test-file.pdf"',
-			DB::query("SELECT \"Content\" FROM \"SiteTree\" WHERE \"ID\" = $svp->ID")->value());
+			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree\" WHERE \"ID\" = ?", array($svp->ID))->value());
 		$this->assertContains('<img src="assets/renamed-test-file.pdf"',
-			DB::query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = $svp->ID")->value());
+			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = ?", array($svp->ID))->value());
 	}
 	
 	public function testLinkRewritingOnAPublishedPageDoesntMakeItEditedOnDraft() {
@@ -90,7 +90,7 @@ class FileLinkTrackingTest extends SapphireTest {
 		$page = $this->objFromFixture('Page', 'page1');
 		$this->assertTrue($page->doPublish());
 		$this->assertContains('<img src="assets/testscript-test-file.pdf"',
-			DB::query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = $page->ID")->value());
+			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = ?", array($page->ID))->value());
 
 		// Rename the file twice
 		$file = $this->objFromFixture('File', 'file1');
@@ -105,9 +105,9 @@ class FileLinkTrackingTest extends SapphireTest {
 		
 		// Confirm that the correct image is shown in both the draft and live site
 		$this->assertContains('<img src="assets/renamed-test-file-second-time.pdf"',
-			DB::query("SELECT \"Content\" FROM \"SiteTree\" WHERE \"ID\" = $page->ID")->value());
+			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree\" WHERE \"ID\" = ?", array($page->ID))->value());
 		$this->assertContains('<img src="assets/renamed-test-file-second-time.pdf"',
-			DB::query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = $page->ID")->value());
+			DB::prepared_query("SELECT \"Content\" FROM \"SiteTree_Live\" WHERE \"ID\" = ?", array($page->ID))->value());
 	}
 }
 

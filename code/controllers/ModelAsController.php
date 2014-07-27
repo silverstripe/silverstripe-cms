@@ -64,7 +64,7 @@ class ModelAsController extends Controller implements NestedController {
 		}
 
 		// If the database has not yet been created, redirect to the build page.
-		if(!DB::isActive() || !ClassInfo::hasTable('SiteTree')) {
+		if(!DB::is_active() || !ClassInfo::hasTable('SiteTree')) {
 			$this->response->redirect(Director::absoluteBaseURL() . 'dev/build?returnURL=' . (isset($_GET['url']) ? urlencode($_GET['url']) : null));
 			$this->popCurrent();
 			
@@ -101,14 +101,16 @@ class ModelAsController extends Controller implements NestedController {
 		
 		// Find page by link, regardless of current locale settings
 		if(class_exists('Translatable')) Translatable::disable_locale_filter();
-		$sitetree = DataObject::get_one(
-			'SiteTree', 
-			sprintf(
-				'"SiteTree"."URLSegment" = \'%s\' %s', 
-				Convert::raw2sql(rawurlencode($URLSegment)), 
-				(SiteTree::config()->nested_urls ? 'AND "SiteTree"."ParentID" = 0' : null)
-			)
-		);
+		
+		// Select child page
+		$conditions = array('"SiteTree"."URLSegment"' => rawurlencode($URLSegment));
+		if(SiteTree::config()->nested_urls) {
+			$conditions[] = array('"SiteTree"."ParentID"' => 0);
+		}
+		$sitetree = DataObject::get_one('SiteTree', $conditions);
+		
+		// Check translation module
+		// @todo Refactor out module specific code
 		if(class_exists('Translatable')) Translatable::enable_locale_filter();
 		
 		if(!$sitetree) {

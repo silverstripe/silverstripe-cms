@@ -92,9 +92,9 @@ class CMSMainTest extends FunctionalTest {
 
 		// Get the latest version of the redirector page 
 		$pageID = $this->idFromFixture('RedirectorPage', 'page5');
-		$latestID = DB::query('select max("Version") from "RedirectorPage_versions" where "RecordID"=' . $pageID)->value(); 
-		$dsCount = DB::query('select count("Version") from "RedirectorPage_versions" where "RecordID"=' . $pageID . ' and "Version"=' . $latestID)->value(); 
-		$this->assertEquals(1, $dsCount, "Published page has no duplicate version records: it has " . $dsCount . " for version " . $latestID); 
+		$latestID = DB::prepared_query('select max("Version") from "RedirectorPage_versions" where "RecordID" = ?', array($pageID))->value();
+		$dsCount = DB::prepared_query('select count("Version") from "RedirectorPage_versions" where "RecordID" = ? and "Version"= ?', array($pageID, $latestID))->value();
+		$this->assertEquals(1, $dsCount, "Published page has no duplicate version records: it has " . $dsCount . " for version " . $latestID);
 		
 		$this->session()->clear('loggedInAs');
 		
@@ -191,7 +191,9 @@ class CMSMainTest extends FunctionalTest {
 		
 		$response = $this->get('admin/pages/edit/show/' . $pageID);
 	
-		$livePage = Versioned::get_one_by_stage("SiteTree", "Live", "\"SiteTree\".\"ID\" = $pageID");
+		$livePage = Versioned::get_one_by_stage("SiteTree", "Live", array(
+			'"SiteTree"."ID"' => $pageID
+		));
 		$this->assertInstanceOf('SiteTree', $livePage);
 		$this->assertTrue($livePage->canDelete());
 	

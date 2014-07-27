@@ -71,7 +71,7 @@ class ContentController extends Controller {
 		$parent = SiteTree::get_by_link($parentRef);
 		
 		if(!$parent && is_numeric($parentRef)) {
-			$parent = DataObject::get_by_id('SiteTree', Convert::raw2sql($parentRef));
+			$parent = DataObject::get_by_id('SiteTree', $parentRef);
 		}
 		
 		if($parent) return $parent->Children();
@@ -208,7 +208,7 @@ class ContentController extends Controller {
 		$response = $this->request->isMedia() ? null : ErrorPage::response_for($code);
 		// Failover to $message if the HTML response is unavailable / inappropriate
 		parent::httpError($code, $response ? $response : $message);
-		}
+	}
 
 	/**
 	 * Get the project name
