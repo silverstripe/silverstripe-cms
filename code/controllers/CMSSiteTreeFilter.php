@@ -203,6 +203,47 @@ abstract class CMSSiteTreeFilter extends Object {
 }
 
 /**
+ * This filter will display the SiteTree as a site visitor might see the site, i.e only the
+ * pages that is currently published.
+ *
+ * Note that this does not check canView permissions that might hide pages from certain visitors
+ */
+class CMSSIteTreeFilter_PublishedPages extends CMSSiteTreeFilter {
+
+	/**
+	 * @return string
+	 */
+	static public function title() {
+		return _t('CMSSIteTreeFilter_PublishedPages.Title', "Published pages");
+	}
+
+	/**
+	 * @var string
+	 */
+	protected $childrenMethod = "AllHistoricalChildren";
+
+	/**
+	 * @var string
+	 */
+	protected $numChildrenMethod = 'numHistoricalChildren';
+
+	/**
+	 * Filters out all pages who's status who's status that doesn't exist on live
+	 *
+	 * @see {@link SiteTree::getStatusFlags()}
+	 * @return array
+	 */
+	public function pagesIncluded() {
+		$pages = Versioned::get_including_deleted('SiteTree');
+		$pages = $this->applyDefaultFilters($pages);
+		$pages = $pages->filterByCallback(function($page) {
+			return $page->ExistsOnLive;
+		});
+		return $this->mapIDs($pages);
+	}
+}
+
+/**
  * Works a bit different than the other filters:
  * Shows all pages *including* those deleted from stage and live.
  * It does not filter out pages still existing in the different stages.
