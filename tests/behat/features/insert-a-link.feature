@@ -7,6 +7,7 @@ So that I can link to a external website or a page on my site
   Background:
     Given a "page" "Home"
     And a "page" "About Us" has the "Content" "My awesome content"
+    And a "page" "Details" has the "Content" "My sub-par content<a name="youranchor"></a>"
     And a "file" "assets/file1.jpg"
     And I am logged in with "ADMIN" permissions
     And I go to "/admin/pages"
@@ -21,6 +22,18 @@ So that I can link to a external website or a page on my site
     And I press the "Insert" button
     # TODO Dynamic DB identifiers
     Then the "Content" HTML field should contain "<a title="my desc" href="[sitetree_link,id=1]">awesome</a>"
+    # Required to avoid "unsaved changes" browser dialog
+    Then I press the "Save draft" button
+
+  Scenario: I can link to an anchor in an internal page
+    Given I select "awesome" in the "Content" HTML field
+    And I press the "Insert Link" button
+    And I select the "Page on the site" radio button
+    And I fill in the "Page" dropdown with "Details"
+    And I wait for 1 second
+    And I select "youranchor" from "Form_EditorToolbarLinkForm_AnchorSelector"
+    And I press the "Insert link" button
+    Then the "Content" HTML field should contain "<a href="[sitetree_link,id=3]#youranchor">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save draft" button
 
@@ -46,18 +59,18 @@ So that I can link to a external website or a page on my site
     Then I press the "Save draft" button
 
   Scenario: I can link to an anchor
-    Given I fill in the "Content" HTML field with "<p>My awesome content<a name=myanchor></a></p>"
+    Given I fill in the "Content" HTML field with "<p>My awesome content<a name='myanchor'></a></p>"
     And I select "awesome" in the "Content" HTML field
     When I press the "Insert Link" button
     When I select the "Anchor on this page" radio button
-    And I fill in "myanchor" for "Anchor"
+    And I select "myanchor" from "Form_EditorToolbarLinkForm_AnchorSelector"
     And I press the "Insert link" button
     Then the "Content" HTML field should contain "<a href="#myanchor">awesome</a>"
     # Required to avoid "unsaved changes" browser dialog
     Then I press the "Save draft" button
 
   Scenario: I can edit a link
-    Given I fill in the "Content" HTML field with "<p>My <a href=http://silverstripe.org>awesome</a> content"
+    Given I fill in the "Content" HTML field with "<p>My <a href='http://silverstripe.org'>awesome</a> content"
     And I select "awesome" in the "Content" HTML field
     When I press the "Insert Link" button
     # We need to hard-code the <input> id attribute, if you say 'Then the URL field', it picks up URLSegment instead.
@@ -70,7 +83,7 @@ So that I can link to a external website or a page on my site
     Then I press the "Save draft" button
 
   Scenario: I can remove a link
-    Given I fill in the "Content" HTML field with "My <a href=http://silverstripe.org>awesome</a> content"
+    Given I fill in the "Content" HTML field with "My <a href='http://silverstripe.org'>awesome</a> content"
     And I select "awesome" in the "Content" HTML field
     When I press the "Unlink" button
     Then the "Content" HTML field should contain "My awesome content"
