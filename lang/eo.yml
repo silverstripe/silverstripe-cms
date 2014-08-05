@@ -5,7 +5,9 @@ eo:
     AppCategoryArchive: Arkivo
     AppCategoryAudio: Sono
     AppCategoryDocument: Dokumento
+    AppCategoryFlash: Flash
     AppCategoryImage: Bildo
+    AppCategoryVideo: Video
     BackToFolder: 'Retroe al dosierujo'
     CREATED: Dato
     CurrentFolderOnly: 'Limigo de aktuala dosierujo'
@@ -17,6 +19,7 @@ eo:
     FROMYOURCOMPUTER: 'El via komputilo'
     Filetype: 'Tipo de dosiero'
     ListView: 'Lista vido'
+    NEWFOLDER: Nova dosierujo
     SIZE: Grando
     THUMBSDELETED: '{count} neuzitaj miniaturoj estas forigitaj'
     TreeView: 'Arba vido'
@@ -42,6 +45,7 @@ eo:
     ColumnDateLastModified: 'Dato de lasta modifo'
     ColumnDateLastPublished: 'Dato de lasta publikigo'
     ColumnProblemType: 'Problemtipo'
+    ColumnURL: URL
     HasBrokenFile: 'havas rompitan dosieron'
     HasBrokenLink: 'havas rompitan ligilon'
     HasBrokenLinkAndFile: 'havas rompitan ligilon kaj dosieron'
@@ -71,6 +75,7 @@ eo:
     AddNew: 'Aldoni novan paĝon'
     AddNewButton: 'Aldoni novan'
     AddPageRestriction: 'Noto: iuj tipoj de paĝoj ne estas permesataj por ĉi tiu elektaĵo.'
+    Cancel: Rezigni
     ChoosePageParentMode: 'Elekti kie krei ĉi tiun paĝon'
     ChoosePageType: 'Elekti tipon de paĝo'
     Create: Krei
@@ -134,11 +139,18 @@ eo:
     WHEN: Kiam
   CMSPagesController:
     GalleryView: 'Galeria vido'
+    ListView: 'Lista vido'
     MENUTITLE: Paĝoj
+    TreeView: 'Arba vido'
   CMSPagesController_ContentToolbar_ss:
     MULTISELECT: Plurelekto
   CMSPagesController_Tools_ss:
     FILTER: Filtri
+  CMSSearch:
+    FILTERDATEFROM: De
+    FILTERDATEHEADING: Dato
+    FILTERDATETO: Al
+    FILTERLABELTEXT: Enhavo
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Ŝanĝitaj paĝoj'
   CMSSiteTreeFilter_DeletedPages:
@@ -150,6 +162,7 @@ eo:
   ContentController:
     ARCHIVEDSITE: 'Antaŭvida versio'
     ARCHIVEDSITEFROM: 'Enarkivigita retejo el'
+    CMS: CMS
     DRAFT: Malneta
     DRAFTSITE: 'Malneta retejo'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Vi devas ensaluti per via CMS-pasvorto por vidi la projektan aŭ enarkivigitan enhavon.  <a href="%s">Alklaku ĉi tie por reiri al la publika retejo.</a>'
@@ -187,6 +200,8 @@ eo:
     415: '415 - Nesubtenata spekta tipo'
     416: '416 - Peta amplekso ne plenumebla'
     417: '417 - Atendo malsukcesis'
+    422: '422 - Netrakebla ento'
+    429: '429 - tro da petoj'
     500: '500 - Eraro de interna servilo'
     501: '501 - Ne realigita'
     502: '502 - Malbona kluzo'
@@ -210,7 +225,9 @@ eo:
     UploadFilesButton: Alŝuti
   LeftAndMain:
     DELETED: Forigita.
+    PreviewButton: Aspekto
     SAVEDUP: Konservita.
+    SearchResults: 'Serĉaj rezultoj'
   Permission:
     CMS_ACCESS_CATEGORY: 'CMS-aliro'
   Permissions:
@@ -239,6 +256,7 @@ eo:
   SearchForm:
     GO: Ek
     SEARCH: Serĉi
+    SearchResults: 'Serĉaj rezultoj'
   SideReport:
     BROKENFILES: 'Paĝoj kun rompitaj dosieroj'
     BROKENLINKS: 'Paĝoj kun rompitaj ligiloj'
@@ -254,6 +272,7 @@ eo:
   SilverStripeNavigator:
     ARCHIVED: Enarkivigita
   SilverStripeNavigatorLink:
+    ShareInstructions: 'Por komunigi ĉi tiun paĝon, kopiu kaj algluu la suban ligilon.'
     ShareLink: 'Komunigi ligilon'
   SilverStripeNavigatorLinkl:
     CloseLink: Fermi
@@ -302,6 +321,7 @@ eo:
     DEPENDENT_NOTE: 'La sekvaj paĝoj dependas de ĉi tiu paĝo. Tio inkluzivas virtualajn paĝojn, alidirektajn paĝojn, kaj paĝojn kun enhavaj ligiloj.'
     DESCRIPTION: 'Ĝenerala paĝo por enhavo'
     DependtPageColumnLinkType: 'Ligila tipo'
+    DependtPageColumnURL: URL
     EDITANYONE: 'Tiu, kiu povas ensaluti en la CMS'
     EDITHEADER: 'Kiuj povas redakti ĉi tiun paĝon?'
     EDITONLYTHESE: 'Nur ĉi tiuj homoj (elektu de listo)'
@@ -392,3 +412,9 @@ eo:
     MENUTITLE: 'Redakti paĝon'
   CMSSettingsController:
     MENUTITLE: Agordoj
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Forigitaj paĝoj'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Malnetaj nepublikigitaj paĝoj'
+  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Publikaj sed forigitaj el malnetaj'

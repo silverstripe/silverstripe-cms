@@ -200,6 +200,8 @@ sk:
     415: '415 - Nepodporovaný typ média'
     416: '416 - Rozsah požiadavky nie je dostačujúci'
     417: '417 - Zlyhanie očakávania'
+    422: '422 - Nespracovateľná entita'
+    429: '429 - Príliš veľa požiadavkov'
     500: '500 - Interná chyba serveru'
     501: '501 - Nie je implementované'
     502: '502 - Nesprávna brána'

@@ -1,4 +1,44 @@
 af:
+  AssetAdmin:
+    ADDFILES: 'Voeg lêers by'
+    ActionAdd: 'Voeg dossier by'
+    AppCategoryArchive: Stoor in argiewe
+    AppCategoryAudio: Klank
+    AppCategoryDocument: Dokument
+    AppCategoryFlash: Flash
+    AppCategoryImage: Prentjie
+    AppCategoryVideo: Video
+    BackToFolder: 'Terug na dossier'
+    CREATED: Datum
+    CurrentFolderOnly: 'Beperrk tot die huidige dossier'
+    DetailsView: Besonderhede
+    FILES: Lêers
+    FILESYSTEMSYNC: 'Sinchroniseer lêers'
+    FILESYSTEMSYNCTITLE: 'Bring die CMS op datum met die nuutse lêers wat in die lêersisteem lê. Dit is voordelig om te doen wanneer lêers buite die CMS opgelaai was bv deur midel van FTP'
+    FROMTHEINTERNET: 'Van die indernet af'
+    FROMYOURCOMPUTER: 'Van jou rekenaar af'
+    Filetype: 'Lêer tipe'
+    ListView: 'Lys aansig'
+    NEWFOLDER: Nuwe Dossier
+    SIZE: Groote
+    THUMBSDELETED: '{count} ongebruikte duimnaelsketse was verwyder'
+    TreeView: 'Boom aansig'
+    Upload: Laai op
+    MENUTITLE: Lêers
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Verwyder dossiere'
+  AssetAdmin_Tools:
+    FILTER: Filtreer
+  AssetAdmin_left_ss:
+    GO: Gaan voort
+  AssetTableField:
+    BACKLINKCOUNT: 'Gebruik op:'
+    PAGES: bladsy(e)
+  BackLink_Button_ss:
+    Back: Terug
+  BrokenLinksReport:
+    Any: Enige
+    BROKENLINKS: 'Gebreekte skakels verslag'
   CMSMain:
     EMAIL: Epos
     PAGENOTEXISTS: 'Hierdie bladsy bestaan nie'
