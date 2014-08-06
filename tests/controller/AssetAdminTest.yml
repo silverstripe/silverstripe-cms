@@ -1,0 +1,12 @@
+Folder:
+  folder1:
+    Name: AssetAdminTest
+File:
+  file1:
+    Title: File1
+    Filename: assets/AssetAdminTest/file1.txt
+    ParentID: =>Folder.folder1
+  file2:
+    Title: File2
+    Filename: assets/AssetAdminTest/file2.txt
+    ParentID: =>Folder.folder1
