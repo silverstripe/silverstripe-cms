@@ -349,6 +349,92 @@ class CMSMainTest extends FunctionalTest {
 			$this->assertEquals($controller->getResponse()->getStatusCode(), 302);
 		}
 	}
+	
+	/**
+	 * Tests filtering in {@see CMSMain::getList()}
+	 */
+	public function testGetList() {
+		$controller = new CMSMain();
+
+		// Test all pages (stage)
+		$pages = $controller->getList()->sort('Title');
+		$this->assertEquals(28, $pages->count());
+		$this->assertEquals(
+			array('Home', 'Page 1', 'Page 10', 'Page 11', 'Page 12'),
+			$pages->Limit(5)->column('Title')
+		);
+
+		// Change state of tree
+		$page1 = $this->objFromFixture('Page', 'page1');
+		$page3 = $this->objFromFixture('Page', 'page3');
+		$page11 = $this->objFromFixture('Page', 'page11');
+		$page12 = $this->objFromFixture('Page', 'page12');
+		// Deleted
+		$page1->doUnpublish();
+		$page1->delete();
+		// Live and draft
+		$page11->publish('Stage', 'Live');
+		// Live only
+		$page12->publish('Stage', 'Live');
+		$page12->delete();
+
+		// Re-test all pages (stage)
+		$pages = $controller->getList()->sort('Title');
+		$this->assertEquals(26, $pages->count());
+		$this->assertEquals(
+			array('Home', 'Page 10', 'Page 11', 'Page 13', 'Page 14'),
+			$pages->Limit(5)->column('Title')
+		);
+
+		// Test deleted page filter
+		$params = array(
+			'FilterClass' => 'CMSSiteTreeFilter_StatusDeletedPages'
+		);
+		$pages = $controller->getList($params);
+		$this->assertEquals(1, $pages->count());
+		$this->assertEquals(
+			array('Page 1'),
+			$pages->column('Title')
+		);
+
+		// Test live, but not on draft filter
+		$params = array(
+			'FilterClass' => 'CMSSiteTreeFilter_StatusRemovedFromDraftPages'
+		);
+		$pages = $controller->getList($params);
+		$this->assertEquals(1, $pages->count());
+		$this->assertEquals(
+			array('Page 12'),
+			$pages->column('Title')
+		);
+
+		// Test live pages filter
+		$params = array(
+			'FilterClass' => 'CMSSIteTreeFilter_PublishedPages'
+		);
+		$pages = $controller->getList($params);
+		$this->assertEquals(2, $pages->count());
+		$this->assertEquals(
+			array('Page 11', 'Page 12'),
+			$pages->column('Title')
+		);
+
+		// Test that parentID is ignored when filtering
+		$pages = $controller->getList($params, $page3->ID);
+		$this->assertEquals(2, $pages->count());
+		$this->assertEquals(
+			array('Page 11', 'Page 12'),
+			$pages->column('Title')
+		);
+
+		// Test that parentID is respected when not filtering
+		$pages = $controller->getList(array(), $page3->ID);
+		$this->assertEquals(2, $pages->count());
+		$this->assertEquals(
+			array('Page 3.1', 'Page 3.2'),
+			$pages->column('Title')
+		);
+	}
 }
 
 class CMSMainTest_ClassA extends Page implements TestOnly {
