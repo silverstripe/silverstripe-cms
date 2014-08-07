@@ -215,7 +215,7 @@ en:
     DEFAULTSERVERERRORPAGETITLE: 'Server error'
     DESCRIPTION: 'Custom content for different error cases (e.g. "Page not found")'
     ERRORFILEPROBLEM: 'Error opening file "{filename}" for writing. Please check file permissions.'
-    PLURALNAME: 'Error Pags'
+    PLURALNAME: 'Error Pages'
     SINGULARNAME: 'Error Page'
   Folder:
     AddFolderButton: 'Add folder'
@@ -238,7 +238,7 @@ en:
     HASBEENSETUP: 'A redirector page has been set up without anywhere to redirect to.'
     HEADER: 'This page will redirect users to another page'
     OTHERURL: 'Other website URL'
-    PLURALNAME: 'Redirector Pags'
+    PLURALNAME: 'Redirector Pages'
     REDIRECTTO: 'Redirect to'
     REDIRECTTOEXTERNAL: 'Another website'
     REDIRECTTOPAGE: 'A page on your website'
@@ -401,7 +401,7 @@ en:
     EditLink: edit
     HEADER: 'This is a virtual page'
     HEADERWITHLINK: 'This is a virtual page copying content from "{title}" ({link})'
-    PLURALNAME: 'Virtual Pags'
+    PLURALNAME: 'Virtual Pages'
     PageTypNotAllowedOnRoot: 'Original page type "{type}" is not allowed on the root level for this virtual page'
     SINGULARNAME: 'Virtual Page'
   CMSFileAddController:
