@@ -300,7 +300,7 @@ class CMSSiteTreeFilter_ChangedPages extends CMSSiteTreeFilter {
 		$pages = Versioned::get_by_stage('SiteTree', 'Stage');
 		$pages = $this->applyDefaultFilters($pages)
 			->leftJoin('SiteTree_Live', '"SiteTree_Live"."ID" = "SiteTree"."ID"')
-			->where('"SiteTree"."Version" > "SiteTree_Live"."Version"');
+			->where('"SiteTree"."Version" <> "SiteTree_Live"."Version"');
 		return $pages;
 	}	
 }
