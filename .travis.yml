@@ -15,6 +15,7 @@ env:
   matrix:
     - DB=MYSQL CORE_RELEASE=3.1 BEHAT_TEST=1
 
+
 before_script:
  - composer self-update
  - phpenv rehash
