@@ -19,7 +19,7 @@ before_script:
  - composer self-update
  - phpenv rehash
  - git clone git://github.com/tractorcow/silverstripe-travis-support.git ~/travis-support
- - php ~/travis-support/travis_setup.php --source `pwd` --target ~/builds/ss --require silverstripe/behat-extension:develop
+ - php ~/travis-support/travis_setup.php --source `pwd` --target ~/builds/ss --require silverstripe/behat-extension:dev-develop
  - cd ~/builds/ss
  - php ~/travis-support/travis_setup_selenium.php --if-env BEHAT_TEST
  - php ~/travis-support/travis_setup_php54_webserver.php --if-env BEHAT_TEST
