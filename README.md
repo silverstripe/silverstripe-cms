@@ -1,6 +1,6 @@
 ## SilverStripe CMS
 
-changed.
+changed..
 
 [![Build Status](https://secure.travis-ci.org/silverstripe/silverstripe-cms.png?branch=3.1)](http://travis-ci.org/silverstripe/silverstripe-cms)
 
