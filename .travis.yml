@@ -3,6 +3,9 @@ language: php
 php:
   - 5.3
 
+addons:
+  firefox: "31.0"
+
 env:
   global:
     - "ARTIFACTS_AWS_REGION=us-east-1"
