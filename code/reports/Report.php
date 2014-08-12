@@ -83,6 +83,15 @@ class SS_Report extends ViewableData {
 	}
 	
 	/**
+	 * Allows access to title as a property
+	 * 
+	 * @return string
+	 */
+	public function getTitle() {
+		return $this->title();
+	}
+	
+	/**
 	 * Return the description of this report.
 	 * 
 	 * You have two ways of specifying the description:
