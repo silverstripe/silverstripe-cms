@@ -1,44 +1,29 @@
 language: php 
 
 php:
-  - 5.3
+  - 5.4
+
+addons:
+  firefox: "31.0"
 
 addons:
   firefox: "31.0"
 
 env:
   global:
-    - "ARTIFACTS_AWS_REGION=us-east-1"
+    - "ARTIFACTS_AWS_REGION=ap-southeast-2"
     - "ARTIFACTS_S3_BUCKET=silverstripe-travis-artifacts"
-    - secure: "7V20Qk3bIG2AlTJaA5D/uzB8vUVvRwQp+xjRYUxlahtj9FcuqEV3HIyjwwJe0T6Z1bnRYuu28ZnCT2CfP9BBZ3FE7AwSZbPase9c0/at2qDJNqkvIdC1xZ1H6Fcy2LSwNB9wLQPe613ItVdanitEuwE41iowxBPslxUUTnwx7eY="
-    - secure: "f/GWlbnNri2YpCOrJfZl7tkhpMmcRVUbCdmb+beAY90gFBJQPHtljzf8M4KaCP0OkLOtRFuGoMFdIcpadl4J6IG1XP18IJNz+nKzCL/sJj/FF9y77RdMHWE9jr21G9ar5tywkn7JM6vrnTCY89OnHeQx67SKvxqX5CpVx+rdcEU="
+    - secure: "TaDXopM96dMDv1Xga0pBD5QUkg5y68T+T/RQfP/Xc/kZxqItvXsRNBvLqVgbXYea0oxFh060Rbf7UpjbYnZpfJvoLcUwkk7R3VLuwhChWBAqB03TGwaSD7wyc23NJfdwIUQMADfaE9aOZhXB4N0OnfU3rwT5ZFrveqiGUKX6tiw="
+    - secure: "D867nWrLverX+oDxvC+uE3GlMUkeJa+DWHmegqFIjyaF3PPVdKCgUqDvsubisNjLJBuHJOdBjh/Ov2t/YuhIIcEyVxpk/dqmuUdAaqtnpNKmclq8XwKlPnUOZFQqTJ+imiUNbYqcksDJA41Rb7nKXtn1mXMPub+h+ta1z6g/FLc="
   matrix:
-    - DB=MYSQL CORE_RELEASE=3.1
+    - DB=MYSQL CORE_RELEASE=3.1 BEHAT_TEST=1
 
-matrix:
-  include:
-    - php: 5.3
-      env: DB=PGSQL CORE_RELEASE=3.1
-    - php: 5.3
-      env: DB=SQLITE CORE_RELEASE=3.1
-    - php: 5.4
-      env: DB=MYSQL CORE_RELEASE=3.1
-    - php: 5.5
-      env: DB=MYSQL CORE_RELEASE=3.1
-    - php: 5.6
-      env: DB=MYSQL CORE_RELEASE=3.1
-    - php: 5.4
-      env: DB=MYSQL CORE_RELEASE=3.1 BEHAT_TEST=1
-  allow_failures:
-    - php: 5.6
-      env: DB=MYSQL CORE_RELEASE=3.1
 
 before_script:
  - composer self-update
  - phpenv rehash
- - git clone git://github.com/silverstripe-labs/silverstripe-travis-support.git ~/travis-support
- - "if [ \"$BEHAT_TEST\" = \"\" ]; then php ~/travis-support/travis_setup.php --source `pwd` --target ~/builds/ss; fi"
- - "if [ \"$BEHAT_TEST\" = \"1\" ]; then php ~/travis-support/travis_setup.php --source `pwd` --target ~/builds/ss --require silverstripe/behat-extension; fi"
+ - git clone git://github.com/mateusz/silverstripe-travis-support.git ~/travis-support
+ - php ~/travis-support/travis_setup.php --source `pwd` --target ~/builds/ss --require silverstripe/behat-extension:dev-develop
  - cd ~/builds/ss
  - php ~/travis-support/travis_setup_selenium.php --if-env BEHAT_TEST
  - php ~/travis-support/travis_setup_php54_webserver.php --if-env BEHAT_TEST
@@ -48,7 +33,7 @@ script:
  - "if [ \"$BEHAT_TEST\" = \"1\" ]; then vendor/bin/behat @cms; fi"
 
 after_failure:
- - php ~/travis-support/travis_upload_artifacts.php --if-env BEHAT_TEST,ARTIFACTS_AWS_SECRET_ACCESS_KEY --target-path $TRAVIS_REPO_SLUG/$TRAVIS_BUILD_ID/$TRAVIS_JOB_ID --artifacts-base-url https://s3.amazonaws.com/$ARTIFACTS_S3_BUCKET/
+ - php ~/travis-support/travis_upload_artifacts.php --if-env BEHAT_TEST,ARTIFACTS_AWS_SECRET_ACCESS_KEY --target-path silverstripe/silverstripe-cms/$TRAVIS_BUILD_ID/$TRAVIS_JOB_ID --artifacts-base-url https://s3.amazonaws.com/$ARTIFACTS_S3_BUCKET/
 
 branches:
   except:
@@ -56,8 +41,3 @@ branches:
     - 2.2
     - 2.3
     - translation-staging
-
-notifications:
-  irc:
-    channels:
-     - "irc.freenode.org#silverstripe"
