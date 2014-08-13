@@ -200,6 +200,8 @@ es:
     415: '415- No hay cobertura para este tipo de soporte.'
     416: '416- El rango requerido no puede cumplirse'
     417: '417- Expectación fallida'
+    422: '422 - No es posible procesar la Entidad '
+    429: '429 - Muchas Peticiones al servidor'
     500: '500 - Error interno en el servidor'
     501: '501- No implementado'
     502: '502- Pasarela de comunicación equivocada'

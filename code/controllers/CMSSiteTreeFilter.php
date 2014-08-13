@@ -35,7 +35,12 @@ abstract class CMSSiteTreeFilter extends Object {
 	 * @var String 
 	 */
 	protected $childrenMethod = null;
-	
+
+	/**
+	 * @var string
+	 */
+	protected $numChildrenMethod = 'numChildren';
+
 	/**
 	 * Returns a sorted array of all implementators of CMSSiteTreeFilter, suitable for use in a dropdown.
 	 * 
@@ -71,17 +76,35 @@ abstract class CMSSiteTreeFilter extends Object {
 	}
 	
 	/**
-	 * @return String Method on {@link Hierarchy} objects
-	 * which is used to traverse into children relationships.
+	 * Method on {@link Hierarchy} objects which is used to traverse into children relationships.
+	 *
+	 * @return String
 	 */
 	public function getChildrenMethod() {
 		return $this->childrenMethod;
 	}
-	
+
 	/**
-	 * @return Array Map of Page IDs to their respective ParentID values.
+	 * Method on {@link Hierarchy} objects which is used find the number of children for a parent page
 	 */
-	public function pagesIncluded() {}
+	public function getNumChildrenMethod() {
+		return $this->numChildrenMethod;
+	}
+
+	/**
+	 * Gets the list of filtered pages
+	 *
+	 * @see {@link SiteTree::getStatusFlags()}
+	 * @return SS_List
+	 */
+	abstract public function getFilteredPages();
+
+	/**
+	 * @return array Map of Page IDs to their respective ParentID values.
+	 */
+	public function pagesIncluded() {
+		return $this->mapIDs($this->getFilteredPages());
+	}
 	
 	/**
 	 * Populate the IDs of the pages returned by pagesIncluded(), also including
@@ -101,17 +124,13 @@ abstract class CMSSiteTreeFilter extends Object {
 			}
 
 			while(!empty($parents)) {
-				$q = new SQLSelect();
-				$q->setSelect(array('"ID"','"ParentID"'))
-					->setFrom('"SiteTree"')
-					->setWhere('"ID" in ('.implode(',',array_keys($parents)).')');
-
+				$q = Versioned::get_including_deleted('SiteTree', '"RecordID" in ('.implode(',',array_keys($parents)).')');
+				$list = $q->map('ID', 'ParentID');
 				$parents = array();
-
-				foreach($q->execute() as $row) {
-					if ($row['ParentID']) $parents[$row['ParentID']] = true;
-					$this->_cache_ids[$row['ID']] = true;
-					$this->_cache_expanded[$row['ID']] = true;
+				foreach($list as $id => $parentID) {
+					if ($parentID) $parents[$parentID] = true;
+					$this->_cache_ids[$id] = true;
+					$this->_cache_expanded[$id] = true;
 				}
 			}
 		}
@@ -153,12 +172,12 @@ abstract class CMSSiteTreeFilter extends Object {
 
 				case 'LastEditedFrom':
 					$fromDate = new DateField(null, null, $val);
-					$query = $query->filter("LastEdited:GreaterThanOrEqual", $fromDate->dataValue());
+					$query = $query->filter("LastEdited:GreaterThanOrEqual", $fromDate->dataValue().' 00:00:00');
 					break;
 
 				case 'LastEditedTo':
 					$toDate = new DateField(null, null, $val);
-					$query = $query->filter("LastEdited:LessThanOrEqual", $toDate->dataValue());
+					$query = $query->filter("LastEdited:LessThanOrEqual", $toDate->dataValue().' 23:59:59');
 					break;
 
 				case 'ClassName':
@@ -194,6 +213,47 @@ abstract class CMSSiteTreeFilter extends Object {
 }
 
 /**
+ * This filter will display the SiteTree as a site visitor might see the site, i.e only the
+ * pages that is currently published.
+ *
+ * Note that this does not check canView permissions that might hide pages from certain visitors
+ */
+class CMSSIteTreeFilter_PublishedPages extends CMSSiteTreeFilter {
+
+	/**
+	 * @return string
+	 */
+	static public function title() {
+		return _t('CMSSIteTreeFilter_PublishedPages.Title', "Published pages");
+	}
+
+	/**
+	 * @var string
+	 */
+	protected $childrenMethod = "AllHistoricalChildren";
+
+	/**
+	 * @var string
+	 */
+	protected $numChildrenMethod = 'numHistoricalChildren';
+
+	/**
+	 * Filters out all pages who's status who's status that doesn't exist on live
+	 *
+	 * @see {@link SiteTree::getStatusFlags()}
+	 * @return SS_List
+	 */
+	public function getFilteredPages() {
+		$pages = Versioned::get_including_deleted('SiteTree');
+		$pages = $this->applyDefaultFilters($pages);
+		$pages = $pages->filterByCallback(function($page) {
+			return $page->ExistsOnLive;
+		});
+		return $pages;
+	}
+}
+
+/**
  * Works a bit different than the other filters:
  * Shows all pages *including* those deleted from stage and live.
  * It does not filter out pages still existing in the different stages.
@@ -202,17 +262,25 @@ abstract class CMSSiteTreeFilter extends Object {
  * @subpackage content
  */
 class CMSSiteTreeFilter_DeletedPages extends CMSSiteTreeFilter {
-	
+
+	/**
+	 * @var string
+	 */
 	protected $childrenMethod = "AllHistoricalChildren";
+
+	/**
+	 * @var string
+	 */
+	protected $numChildrenMethod = 'numHistoricalChildren';
 	
 	static public function title() {
 		return _t('CMSSiteTreeFilter_DeletedPages.Title', "All pages, including deleted");
 	}
 	
-	public function pagesIncluded() {
+	public function getFilteredPages() {
 		$pages = Versioned::get_including_deleted('SiteTree');
 		$pages = $this->applyDefaultFilters($pages);
-		return $this->mapIDs($pages);
+		return $pages;
 	}
 }
 
@@ -228,12 +296,12 @@ class CMSSiteTreeFilter_ChangedPages extends CMSSiteTreeFilter {
 		return _t('CMSSiteTreeFilter_ChangedPages.Title', "Changed pages");
 	}
 	
-	public function pagesIncluded() {
+	public function getFilteredPages() {
 		$pages = Versioned::get_by_stage('SiteTree', 'Stage');
 		$pages = $this->applyDefaultFilters($pages)
 			->leftJoin('SiteTree_Live', '"SiteTree_Live"."ID" = "SiteTree"."ID"')
-			->where('"SiteTree"."Version" > "SiteTree_Live"."Version"');
-		return $this->mapIDs($pages);
+			->where('"SiteTree"."Version" <> "SiteTree_Live"."Version"');
+		return $pages;
 	}	
 }
 
@@ -252,17 +320,16 @@ class CMSSiteTreeFilter_StatusRemovedFromDraftPages extends CMSSiteTreeFilter {
 	/**
 	 * Filters out all pages who's status is set to "Removed from draft".
 	 * 
-	 * @see {@link SiteTree::getStatusFlags()}
-	 * @return array
+	 * @return SS_List
 	 */
-	public function pagesIncluded() {
+	public function getFilteredPages() {
 		$pages = Versioned::get_including_deleted('SiteTree');
 		$pages = $this->applyDefaultFilters($pages);
 		$pages = $pages->filterByCallback(function($page) {
 			// If page is removed from stage but not live
 			return $page->IsDeletedFromStage && $page->ExistsOnLive;
 		});
-		return $this->mapIDs($pages);
+		return $pages;
 	}	
 }
 
@@ -282,16 +349,16 @@ class CMSSiteTreeFilter_StatusDraftPages extends CMSSiteTreeFilter {
 	 * Filters out all pages who's status is set to "Draft".
 	 * 
 	 * @see {@link SiteTree::getStatusFlags()}
-	 * @return array
+	 * @return SS_List
 	 */
-	public function pagesIncluded() {
+	public function getFilteredPages() {
 		$pages = Versioned::get_by_stage('SiteTree', 'Stage');
 		$pages = $this->applyDefaultFilters($pages);
 		$pages = $pages->filterByCallback(function($page) {
 			// If page exists on stage but not on live
 			return (!$page->IsDeletedFromStage && $page->IsAddedToStage);
 		});
-		return $this->mapIDs($pages);
+		return $pages;
 	}	
 }
 
@@ -302,8 +369,16 @@ class CMSSiteTreeFilter_StatusDraftPages extends CMSSiteTreeFilter {
  * @subpackage content
  */
 class CMSSiteTreeFilter_StatusDeletedPages extends CMSSiteTreeFilter {
-	
-	protected $childrenMethod = "AllHistoricalChildren";	
+
+	/**
+	 * @var string
+	 */
+	protected $childrenMethod = "AllHistoricalChildren";
+
+	/**
+	 * @var string
+	 */
+	protected $numChildrenMethod = 'numHistoricalChildren';
 	
 	static public function title() {
 		return _t('CMSSiteTreeFilter_StatusDeletedPages.Title', 'Deleted pages');
@@ -313,16 +388,17 @@ class CMSSiteTreeFilter_StatusDeletedPages extends CMSSiteTreeFilter {
 	 * Filters out all pages who's status is set to "Deleted".
 	 * 
 	 * @see {@link SiteTree::getStatusFlags()}
-	 * @return array
+	 * @return SS_List
 	 */
-	public function pagesIncluded() {
+	public function getFilteredPages() {
 		$pages = Versioned::get_including_deleted('SiteTree');
 		$pages = $this->applyDefaultFilters($pages);
+
 		$pages = $pages->filterByCallback(function($page) {
 			// Doesn't exist on either stage or live
 			return $page->IsDeletedFromStage && !$page->ExistsOnLive;
 		});
-		return $this->mapIDs($pages);
+		return $pages;
 	}	
 }
 
@@ -340,13 +416,12 @@ class CMSSiteTreeFilter_Search extends CMSSiteTreeFilter {
 	 * Retun an array of maps containing the keys, 'ID' and 'ParentID' for each page to be displayed
 	 * in the search.
 	 * 
-	 * @return Array
+	 * @return SS_List
 	 */
-	public function pagesIncluded() {
-
+	public function getFilteredPages() {
 		// Filter default records
 		$pages = Versioned::get_by_stage('SiteTree', 'Stage');
 		$pages = $this->applyDefaultFilters($pages);
-		return $this->mapIDs($pages);
+		return $pages;
 	}
 }

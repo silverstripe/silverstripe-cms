@@ -96,3 +96,18 @@ Feature: Search for a page
 		And I press the "Apply Filter" button
 		Then I should see "Live Page" in the tree
 		And I should not see "About Us" in the tree
+
+	Scenario: I can include only live pages in my search
+		Given a "page" "Live Page"
+		And the "page" "Live Page" is published
+		And a "page" "Draft Page"
+		And a "page" "Draft Page" is unpublished
+		And a "page" "Deleted Page"
+		And the "page" "Deleted Page" is unpublished
+		And the "page" "Deleted Page" is deleted
+
+		When I select "Published pages" from "Pages"
+		And I press the "Apply Filter" button
+		Then I should not see "Draft Page" in the tree
+		And I should not see "Deleted Page" in the tree
+		But I should see "Live Page" in the tree

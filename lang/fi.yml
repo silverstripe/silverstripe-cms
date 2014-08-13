@@ -200,6 +200,8 @@ fi:
     415: '415 - Tukematon mediatyyppi'
     416: '416 - Pyydetty alue ei kelpaa'
     417: '417 - Oletus epäonnistui'
+    422: '422 - Käsittely ei onnistu: semanttinen virhe?'
+    429: '429 - Liian monta pyyntöä'
     500: '500 - Sisäinen Palvelin Virhe'
     501: '501 - Ei toteutettu'
     502: '502 - Virheellinen Yhdyskäytävä'

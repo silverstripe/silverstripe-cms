@@ -142,11 +142,11 @@ JS
 		// Date filter
 		if(!empty($params['CreatedFrom'])) {
 			$fromDate = new DateField(null, null, $params['CreatedFrom']);
-			$list = $list->filter("Created:GreaterThanOrEqual", $fromDate->dataValue());
+			$list = $list->filter("Created:GreaterThanOrEqual", $fromDate->dataValue().' 00:00:00');
 		}
 		if(!empty($params['CreatedTo'])) {
 			$toDate = new DateField(null, null, $params['CreatedTo']);
-			$list = $list->filter("Created:LessThanOrEqual", $toDate->dataValue());
+			$list = $list->filter("Created:LessThanOrEqual", $toDate->dataValue().' 23:59:59');
 		}
 
 		return $list;
@@ -347,6 +347,11 @@ JS
 		return $this->redirect(Controller::join_links($this->Link('show'), $parentID ? $parentID : 0));
 	}
 
+	/**
+	 * Get the search context
+	 *
+	 * @return SearchContext
+	 */
 	public function getSearchContext() {
 		$context = singleton('File')->getDefaultSearchContext();
 		
