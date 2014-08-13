@@ -108,6 +108,8 @@ class CMSFileAddController extends LeftAndMain {
 		);
 		$form->loadDataFrom($folder);
 
+		$this->extend('updateEditForm', $form);
+
 		return $form;
 	}
 

@@ -75,6 +75,7 @@ ru:
     AddNew: 'Добавить новую страницу'
     AddNewButton: 'Добавить'
     AddPageRestriction: 'Внимание: некоторые типы страниц в этом случае недоступны для выбора'
+    Cancel: Отмена
     ChoosePageParentMode: 'Выберите, где создать страницу'
     ChoosePageType: 'Выберите тип страницы'
     Create: Создать
@@ -199,6 +200,8 @@ ru:
     415: '415 - Неподдерживаемый тип данных'
     416: '416 - Запрашиваемый диапазон не достижим'
     417: '417 - Ожидаемое ошибочно'
+    422: '422 - Необрабатываемый экземпляр'
+    429: '429 - Слишком много запросов'
     500: '500 - Внутренняя ошибка сервера'
     501: '501 - Невыполнимо'
     502: '502 - Плохой шлюз'
@@ -409,3 +412,9 @@ ru:
     MENUTITLE: 'Править страницу'
   CMSSettingsController:
     MENUTITLE: Настройки
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Удаленные страницы'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Неопубликованные черновые страницы'
+  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Опубликовано, но удалено из черновика'

@@ -200,6 +200,8 @@ cs:
     415: '415 - Nepodporovaný typ média'
     416: '416 - Vyžádaný rozsah není dostatečný'
     417: '417 - Očekávání se nezdařilo'
+    422: '422 - Nezpracovatelná entita'
+    429: '429 - Příliš mnoho požadavků'
     500: '500 - Interní chyba serveru'
     501: '501 - Není implementováno'
     502: '502 - Špatná Gateway'

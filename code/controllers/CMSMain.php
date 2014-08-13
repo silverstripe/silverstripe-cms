@@ -698,34 +698,39 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 	
 	/**
+	 * Safely reconstruct a selected filter from a given set of query parameters
+	 *
+	 * @param array $params Query parameters to use
+	 * @return CMSSiteTreeFilter The filter class, or null if none present
+	 * @throws InvalidArgumentException if invalid filter class is passed.
+	 */
+	protected function getQueryFilter($params) {
+		if(empty($params['FilterClass'])) return null;
+		$filterClass = $params['FilterClass'];
+		if(!is_subclass_of($filterClass, 'CMSSiteTreeFilter')) {
+			throw new InvalidArgumentException("Invalid filter class passed: {$filterClass}");
+		}
+		return $filterClass::create($params);
+	}
+
+	/**
 	 * Returns the pages meet a certain criteria as {@see CMSSiteTreeFilter} or the subpages of a parent page
 	 * defaulting to no filter and show all pages in first level.
 	 * Doubles as search results, if any search parameters are set through {@link SearchForm()}.
 	 * 
-	 * @param Array $params Search filter criteria
-	 * @param Int $parentID Optional parent node to filter on (can't be combined with other search criteria)
+	 * @param array $params Search filter criteria
+	 * @param int $parentID Optional parent node to filter on (can't be combined with other search criteria)
 	 * @return SS_List
-	 * @throws Exception if invalid filter class is passed.
+	 * @throws InvalidArgumentException if invalid filter class is passed.
 	 */
-	public function getList($params, $parentID = 0) {
-		$list = new DataList($this->stat('tree_class'));
-		$filter = null;
-		$ids = array();
-		if(isset($params['FilterClass']) && $filterClass = $params['FilterClass']){
-			if(!is_subclass_of($filterClass, 'CMSSiteTreeFilter')) {
-				throw new Exception(sprintf('Invalid filter class passed: %s', $filterClass));
-			}
-			$filter = new $filterClass($params);
-			$filterOn = true;
-			foreach($pages=$filter->pagesIncluded() as $pageMap){
-				$ids[] = $pageMap['ID'];
-			}
-			if(count($ids)) $list = $list->where('"'.$this->stat('tree_class').'"."ID" IN ('.implode(",", $ids).')');
+	public function getList($params = array(), $parentID = 0) {
+		if($filter = $this->getQueryFilter($params)) {
+			return $filter->getFilteredPages();
 		} else {
-			$list = $list->filter("ParentID", is_numeric($parentID) ? $parentID : 0);
+			$list = DataList::create($this->stat('tree_class'));
+			$parentID = is_numeric($parentID) ? $parentID : 0;
+			return $list->filter("ParentID", $parentID);
 		}
-
-		return $list;
 	}
 	
 	public function ListViewForm() {

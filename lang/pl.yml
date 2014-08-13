@@ -19,7 +19,7 @@ pl:
     FROMYOURCOMPUTER: 'Z komputera'
     Filetype: 'Typ pliku'
     ListView: 'Widok listy'
-    NEWFOLDER: NowyKatalog
+    NEWFOLDER: Nowy katalog
     SIZE: Rozmiar
     THUMBSDELETED: '{count} nieuzywane miniatury zostały usunięte'
     TreeView: 'Widok drzewa'
@@ -73,8 +73,9 @@ pl:
     ACCESS: 'Dostęp do sekcji ''{title}'''
     ACCESS_HELP: 'Zezwala na oglądanie sekcji zawierających drzewo stron oraz treść. Prawo Przeglądaj i edytuj może być obsługiwane przez pola wyboru dostępne na stronach oraz poprzez zakładkę uprawnień.'
     AddNew: 'Dodaj nową stronę'
-    AddNewButton: 'Dodaj nowy'
+    AddNewButton: 'Dodaj nową'
     AddPageRestriction: 'Uwaga: Niektóre typy stron nie są dozwolone dla tego wyboru'
+    Cancel: Anuluj
     ChoosePageParentMode: 'Wybierz gdzie chcesz utworzyć tę stronę'
     ChoosePageType: 'Wybierz rodzaj strony'
     Create: Utwórz
@@ -285,7 +286,7 @@ pl:
     SITETITLE: 'Tytuł serwisu'
     TABACCESS: Dostęp
     TABMAIN: Główny
-    TAGLINEDEFAULT: 'napisz swój slogan tutaj'
+    TAGLINEDEFAULT: 'wpisz swój slogan'
     THEME: Szablon
     TOPLEVELCREATE: 'Kto może tworzyć strony w korzeniu serwisu?'
     VIEWHEADER: 'Kto może oglądać strony serwisu?'
@@ -409,3 +410,9 @@ pl:
     MENUTITLE: 'Edytuj stronę'
   CMSSettingsController:
     MENUTITLE: Ustawienia
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Usunięte strony'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Szkic nieopublikowanych stron'
+  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Opublikowana ale usunięta ze szkicu strony'
