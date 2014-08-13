@@ -52,6 +52,20 @@ class ReportTest extends SapphireTest {
 			$reportNames,
 			'ReportTest_FakeTest_Abstract is NOT in reports list as it is abstract');
 	}
+
+	public function testReportField() {
+		$report = new ReportTest_FakeTest(); //uses sourceRecords
+		$records = $report->records(array());
+		$this->assertInstanceOf('SS_List', $records);
+		$field = $report->getReportField();
+		$this->assertInstanceOf('GridField', $field);
+		
+		$report = new ReportTest_FakeTest2(); //uses sourceQuery
+		$records = $report->records(array());
+		$this->assertInstanceOf('SS_List', $records);
+		$field = $report->getReportField();
+		$this->assertInstanceOf('GridField', $field);
+	}
 }
 
 class ReportTest_FakeTest extends SS_Report implements TestOnly {
@@ -86,8 +100,8 @@ class ReportTest_FakeTest2 extends SS_Report implements TestOnly {
 			)
 		);
 	}
-	public function sourceRecords($params, $sort, $limit) {
-		return new ArrayList();
+	public function sourceQuery($params) {
+		return new SQLQuery("*","SiteTree");
 	}
 
 	public function sort() {
