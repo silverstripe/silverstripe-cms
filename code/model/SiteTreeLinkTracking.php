@@ -151,12 +151,8 @@ class SiteTreeLinkTracking_Highlighter extends Extension {
 	 * to make sure all pages listed in the BrokenLinkChecker highlight these in their content.
 	 */
 	public function onBeforeRender($field) {
-		// Handle situation when the field has been customised, i.e. via $properties on the HtmlEditorField::Field call.
-		$obj = $this->owner->getCustomisedObj() ?: $this->owner;
-		$value = $obj->value;
-
 		// Parse the text as DOM.
-		$htmlValue = Injector::inst()->create('HTMLValue', $value);
+		$htmlValue = Injector::inst()->create('HTMLValue', $this->owner->value);
 		$links = $this->parser->process($htmlValue);
 
 		foreach ($links as $link) {
@@ -172,9 +168,15 @@ class SiteTreeLinkTracking_Highlighter extends Extension {
 			$link['DOMReference']->setAttribute('class', implode(' ', $classes));
 		}
 
-		$obj->customise(array(
+		$this->owner->customise(array(
 			'Value' => htmlentities($htmlValue->getContent(), ENT_COMPAT, 'UTF-8')
 		));
+
+		// Handle situation when the field has been customised, i.e. via $properties on the HtmlEditorField::Field call.
+		$customisedObj = $this->owner->getCustomisedObj();
+		if($customisedObj) {
+			$customisedObj->Value = htmlentities($htmlValue->getContent(), ENT_COMPAT, 'UTF-8');
+		}
 	}
 
 }
