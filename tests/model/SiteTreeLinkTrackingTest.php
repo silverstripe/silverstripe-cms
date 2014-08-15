@@ -35,10 +35,10 @@ class SiteTreeLinkTrackingTest extends SapphireTest {
 	}
 
 	function highlight($content) {
-		$field = new SiteTreeLinkTrackingTest_Field('Test');
-		$field->setValue($content);
-		$newContent = html_entity_decode($field->Field(), ENT_COMPAT, 'UTF-8');
-		return $newContent;
+		$page = new Page();
+		$page->Content = $content;
+		$page->write();
+		return $page->Content;
 	}
 
 	function testHighlighter() {
@@ -49,20 +49,15 @@ class SiteTreeLinkTrackingTest extends SapphireTest {
 		$content = $this->highlight('<a href="[sitetree_link,id=123]">link</a>');
 		$this->assertEquals(substr_count($content, 'ss-broken'), 1, 'ss-broken class is added to the broken link.');
 
-		$page = new Page();
-		$page->Content = '';
-		$page->write();
+		$otherPage = new Page();
+		$otherPage->Content = '';
+		$otherPage->write();
 
 		$content = $this->highlight(
-			"<a href=\"[sitetree_link,id=$page->ID]\" class=\"existing-class ss-broken ss-broken\">link</a>"
+			"<a href=\"[sitetree_link,id=$otherPage->ID]\" class=\"existing-class ss-broken ss-broken\">link</a>"
 		);
 		$this->assertEquals(substr_count($content, 'ss-broken'), 0, 'All ss-broken classes are removed from good link');
 		$this->assertEquals(substr_count($content, 'existing-class'), 1, 'Existing class is not removed.');
 	}
-}
 
-class SiteTreeLinkTrackingTest_Field extends HtmlEditorField implements TestOnly {
-	private static $extensions = array(
-		'SiteTreeLinkTracking_Highlighter'
-	);
 }
