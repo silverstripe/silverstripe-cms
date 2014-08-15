@@ -4,6 +4,3 @@ LeftAndMain:
 Security:
   extensions:
     - ErrorPageControllerExtension
-HtmlEditorField:
-  extensions:
-    - SiteTreeLinkTracking_Highlighter

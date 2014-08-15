@@ -37,14 +37,38 @@ class SiteTreeLinkTracking extends DataExtension {
 		"ImageTracking" => array("FieldName" => "Varchar")
 	);
 
-	function trackLinksInField($field) {
+	public function trackLinksInField($fieldName) {
 		$record = $this->owner;
 
 		$linkedPages = array();
 		$linkedFiles = array();
 
-		$htmlValue = Injector::inst()->create('HTMLValue', $record->$field);
+		$htmlValue = Injector::inst()->create('HTMLValue', $record->$fieldName);
 		$links = $this->parser->process($htmlValue);
+
+		// Highlight broken links in the content.
+		foreach ($links as $link) {
+			$classStr = trim($link['DOMReference']->getAttribute('class'));
+			if (!$classStr) {
+				$classes = array();
+			} else {
+				$classes = explode(' ', $classStr);
+			}
+
+			// Add or remove the broken class from the link, depending on the link status.
+			if ($link['Broken']) {
+				$classes = array_unique(array_merge($classes, array('ss-broken')));
+			} else {
+				$classes = array_diff($classes, array('ss-broken'));
+			}
+
+			if (!empty($classes)) {
+				$link['DOMReference']->setAttribute('class', implode(' ', $classes));
+			} else {
+				$link['DOMReference']->removeAttribute('class');
+			}
+		}
+		$record->$fieldName = $htmlValue->getContent();
 
 		// Populate link tracking for internal links & links to asset files.
 		foreach ($links as $link) {
@@ -88,13 +112,13 @@ class SiteTreeLinkTracking extends DataExtension {
 		if($record->ID && $record->many_many('LinkTracking') && $tracker = $record->LinkTracking()) {
 			$tracker->removeByFilter(sprintf(
 				'"FieldName" = \'%s\' AND "%s" = %d',
-				$field,
+				$fieldName,
 				$tracker->getForeignKey(),
 				$record->ID
 			));
 
 			if($linkedPages) foreach($linkedPages as $item) {
-				$tracker->add($item, array('FieldName' => $field));
+				$tracker->add($item, array('FieldName' => $fieldName));
 			}
 		}
 
@@ -102,18 +126,18 @@ class SiteTreeLinkTracking extends DataExtension {
 		if($record->ID && $record->many_many('ImageTracking') && $tracker = $record->ImageTracking()) {
 			$tracker->removeByFilter(sprintf(
 				'"FieldName" = \'%s\' AND "%s" = %d',
-				$field,
+				$fieldName,
 				$tracker->getForeignKey(),
 				$record->ID
 			));
 
 			if($linkedFiles) foreach($linkedFiles as $item) {
-				$tracker->add($item, array('FieldName' => $field));
+				$tracker->add($item, array('FieldName' => $fieldName));
 			}
 		}
 	}
 
-	function augmentSyncLinkTracking() {
+	public function augmentSyncLinkTracking() {
 		// Reset boolean broken flags
 		$this->owner->HasBrokenLink = false;
 		$this->owner->HasBrokenFile = false;
@@ -132,51 +156,6 @@ class SiteTreeLinkTracking extends DataExtension {
 
 		foreach($htmlFields as $field) $this->trackLinksInField($field);
 	}
-}
-
-/**
- * Extension for enabling highlighting of broken links in the HtmlEditorFields.
- */
-class SiteTreeLinkTracking_Highlighter extends Extension {
-
-	public $parser;
-
-	private static $dependencies = array(
-		'parser' => '%$SiteTreeLinkTracking_Parser'
-	);
-
-	/**
-	 * Adds an ability to highlight broken links in the content.
-	 * It reuses the parser the SiteTreeLinkTracking uses for maintaining the references and the "broken" flags
-	 * to make sure all pages listed in the BrokenLinkChecker highlight these in their content.
-	 */
-	public function onBeforeRender($field) {
-		// Handle situation when the field has been customised, i.e. via $properties on the HtmlEditorField::Field call.
-		$obj = $this->owner->getCustomisedObj() ?: $this->owner;
-		$value = $obj->value;
-
-		// Parse the text as DOM.
-		$htmlValue = Injector::inst()->create('HTMLValue', $value);
-		$links = $this->parser->process($htmlValue);
-
-		foreach ($links as $link) {
-			$classStr = $link['DOMReference']->getAttribute('class');
-			$classes = explode(' ', $classStr);
-
-			// Add or remove the broken class from the link, depending on the link status.
-			if ($link['Broken']) {
-				$classes = array_unique(array_merge($classes, array('ss-broken')));
-			} else {
-				$classes = array_diff($classes, array('ss-broken'));
-			}
-			$link['DOMReference']->setAttribute('class', implode(' ', $classes));
-		}
-
-		$obj->customise(array(
-			'Value' => htmlentities($htmlValue->getContent(), ENT_COMPAT, 'UTF-8')
-		));
-	}
-
 }
 
 /**
