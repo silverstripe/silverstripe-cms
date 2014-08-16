@@ -30,7 +30,6 @@ ErrorDocument 500 /assets/error-500.html
 
 	RewriteCond %{REQUEST_URI} ^(.*)$
 	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_URI} !\.php$
 	RewriteRule .* framework/main.php?url=%1 [QSA]
 
 	RewriteCond %{REQUEST_URI} ^(.*)/framework/main.php$
