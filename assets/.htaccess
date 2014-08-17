@@ -10,17 +10,16 @@
 #
 # For example, to add *.exe files to list of downloadable assets, change this line: 
 #
-#   <FilesMatch "\.(html|htm|xhtml...
+#   <FilesMatch "\.(?i:html|htm|xhtml...
 #
 # To this:
 #
-#   <FilesMatch "\.(exe|html|htm|xhtml...
+#   <FilesMatch "\.(?i:exe|html|htm|xhtml...
 #
 # Once you do this, visitors will be able to download *.exe files that are uploaded to the assets
 # directory.
 #
-# For compatibility reasons, we include uppercase versions of allowed extensions, as Apache 1.3
-# does not support regular expression case insensitive matches using PCRE style.
+# Please note Apache 1.3 does not support regular expression case insensitive matches using PCRE style.
 #
 Deny from all
 <FilesMatch "\.(?i:html|htm|xhtml|js|css|bmp|png|gif|jpg|jpeg|ico|pcx|tif|tiff|au|mid|midi|mpa|mp3|ogg|m4a|ra|wma|wav|cda|avi|mpg|mpeg|asf|wmv|m4v|mov|mkv|mp4|ogv|webm|swf|flv|ram|rm|doc|docx|txt|rtf|xls|xlsx|pages|ppt|pptx|pps|csv|cab|arj|tar|zip|zipx|sit|sitx|gz|tgz|bz2|ace|arc|pkg|dmg|hqx|jar|xml|pdf|gpx|kml)$">
