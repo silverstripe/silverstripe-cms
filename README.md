@@ -13,7 +13,8 @@ and [installation from source](http://doc.silverstripe.org/framework/en/installa
 
 ## Bugtracker ##
 
-Bugs are tracked on [github.com](https://github.com/silverstripe/framework/issues). 
+Bugs are tracked on github.com ([framework issues](https://github.com/silverstripe/silverstripe-framework/issues),
+[cms issues](https://github.com/silverstripe/silverstripe-cms/issues)). 
 Please read our [issue reporting guidelines](http://doc.silverstripe.org/framework/en/misc/contributing/issues).
 
 ## Development and Contribution ##

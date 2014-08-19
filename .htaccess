@@ -22,7 +22,7 @@ ErrorDocument 500 /assets/error-500.html
 
 <IfModule mod_rewrite.c>
 	SetEnv HTTP_MOD_REWRITE On
-	RewriteEngine On
+	RewriteEngine On	
 
 	RewriteRule ^vendor(/|$) - [F,L,NC]
 	RewriteRule silverstripe-cache(/|$) - [F,L,NC]
@@ -34,7 +34,6 @@ ErrorDocument 500 /assets/error-500.html
 
 	RewriteCond %{REQUEST_URI} ^(.*)$
 	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_URI} !\.php$
 	RewriteRule .* framework/main.php?url=%1 [QSA]
 </IfModule>
 
