@@ -142,17 +142,17 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp-core.git",
-                "reference": "e6efc61f796226ab333473b51664d524bb73e7be"
+                "reference": "b565b707b4dc5ebb657ec845bdf4529b2f372c00"
             },
             "require": {
                 "composer/installers": "*",
                 "silverstripe/cms": "~3.1",
                 "silverstripe/framework": "~3.1",
-                "silverstripe/hybridsessions": "1.0.2"
+                "silverstripe/hybridsessions": "dev-master"
             },
             "type": "silverstripe-module",
             "description": "CWP basic compatibility module. Use for migrations.",
-            "time": "2014-08-20 02:00:26"
+            "time": "2014-08-20 06:00:46"
         },
         {
             "name": "cwp/cwp-recipe-basic",
@@ -492,7 +492,7 @@
         },
         {
             "name": "silverstripe/hybridsessions",
-            "version": "1.0.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-hybridsessions.git",
@@ -640,12 +640,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-australia/silverstripe-queuedjobs.git",
-                "reference": "04db46bc171a399dd8328c2c68682e468f0204a0"
+                "reference": "a1c10d1ebe7caf397dee5acbf9e6dd15b8cd1495"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-australia/silverstripe-queuedjobs/zipball/04db46bc171a399dd8328c2c68682e468f0204a0",
-                "reference": "04db46bc171a399dd8328c2c68682e468f0204a0",
+                "url": "https://api.github.com/repos/silverstripe-australia/silverstripe-queuedjobs/zipball/a1c10d1ebe7caf397dee5acbf9e6dd15b8cd1495",
+                "reference": "a1c10d1ebe7caf397dee5acbf9e6dd15b8cd1495",
                 "shasum": ""
             },
             "require": {
@@ -669,7 +669,7 @@
                 "jobs",
                 "silverstripe"
             ],
-            "time": "2014-06-11 00:28:54"
+            "time": "2014-08-20 04:53:31"
         },
         {
             "name": "silverstripe/registry",
