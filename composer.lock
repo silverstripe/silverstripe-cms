@@ -496,12 +496,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-hybridsessions.git",
-                "reference": "6d89c07437b05110133b25bf6639281254986f3e"
+                "reference": "3a060659c54c536bd36b4ea336e86483e0b5882b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-hybridsessions/zipball/6d89c07437b05110133b25bf6639281254986f3e",
-                "reference": "6d89c07437b05110133b25bf6639281254986f3e",
+                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-hybridsessions/zipball/3a060659c54c536bd36b4ea336e86483e0b5882b",
+                "reference": "3a060659c54c536bd36b4ea336e86483e0b5882b",
                 "shasum": ""
             },
             "require": {
@@ -523,7 +523,7 @@
                 }
             ],
             "description": "Cookie/DB session support for SilverStripe",
-            "time": "2014-08-19 05:05:35"
+            "time": "2014-08-20 05:58:33"
         },
         {
             "name": "silverstripe/iframe",
