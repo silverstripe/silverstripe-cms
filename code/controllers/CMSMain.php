@@ -384,81 +384,78 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 */
 	public function SiteTreeHints() {
 		$json = '';
-		$classes = SiteTree::page_type_classes();
+        
+		$pages = Page::get();
+        	$pageIDs = array();
+	 	foreach($pages as $page) $pageIDs[] = $page->ID;
 
 	 	$cacheCanEdit = array();
-	 	foreach($classes as $class) {
-			if ($classInstance = $class::get()->First()) {
-				$cacheCanEdit[$class] = $classInstance->canEdit();
-			}
-		}
+	 	foreach($pages as $page) $cacheCanEdit[$page->ID] = $page->canEdit();
 
 	 	// Generate basic cache key. Too complex to encompass all variations
 	 	$cache = SS_Cache::factory('CMSMain_SiteTreeHints');
-	 	$cacheKey = md5(implode('_', array(Member::currentUserID(), implode(',', $cacheCanEdit), implode(',', $classes))));
+	 	$cacheKey = md5(implode('_', array(Member::currentUserID(), implode(',', $cacheCanEdit), implode(',', $pageIDs))));
 	 	if($this->request->getVar('flush')) $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
 	 	$json = $cache->load($cacheKey);
 	 	if(!$json) {
 			$def['Root'] = array();
 			$def['Root']['disallowedChildren'] = array();
 
-			// Contains all possible classes to support UI controls listing them all,
+			// Contains all possible ids to support UI controls listing them all,
 			// such as the "add page here" context menu.
 			$def['All'] = array(); 
 
 			// Identify disallows and set globals
 			$globalDisallowed = array();
-			foreach($classes as $class) {
-				$obj = singleton($class);
+			foreach($pages as $obj) {
 				$needsPerm = $obj->stat('need_permission');
 
 				if(!($obj instanceof HiddenClass)) {
-					$def['All'][$class] = array(
-						'title' => $obj->i18n_singular_name()
+					$def['All'][$obj->ID] = array(
+						'title' => $obj->i18n_singular_name() //NOT SURE IF THIS LINE NEED EDITING.
 					);	
 				}
 
 				if(!$obj->stat('can_be_root')) {
-					$def['Root']['disallowedChildren'][] = $class;
+					$def['Root']['disallowedChildren'][] = $obj->ID;
 				}
 				
 				if(
 					($obj instanceof HiddenClass)
-					|| (!array_key_exists($class, $cacheCanEdit) || !$cacheCanEdit[$class])
+					|| (!array_key_exists($obj->ID, $cacheCanEdit) || !$cacheCanEdit[$obj->ID])
 					|| ($needsPerm && !$this->can($needsPerm))
 				) {
-					$globalDisallowed[] = $class;
-					$def['Root']['disallowedChildren'][] = $class;
+					$globalDisallowed[] = $obj->ID;
+					$def['Root']['disallowedChildren'][] = $obj->ID;
 				}
 			}
 
-			// Set disallows by class
-			foreach($classes as $class) {
-				$obj = singleton($class);
+			// Set disallows by id
+			foreach($pages as $obj) {
 				if($obj instanceof HiddenClass) continue;
 
-				$def[$class] = array();
+				$def[$obj->ID] = array();
 
 				$allowed = $obj->allowedChildren();
 				if($pos = array_search('SiteTree', $allowed)) unset($allowed[$pos]);
 
-				// Start by disallowing all classes which aren't specifically allowed,
+				// Start by disallowing all ids which aren't specifically allowed,
 				// then add the ones which are globally disallowed.
-				$disallowed = array_diff($classes, (array)$allowed);
+				$disallowed = array_diff($pageIDs, (array)$allowed);
 				$disallowed = array_unique(array_merge($disallowed, $globalDisallowed));
 				// Re-index the array for JSON non sequential key issue
-				if($disallowed) $def[$class]['disallowedChildren'] = array_values($disallowed);
+				if($disallowed) $def[$obj->ID]['disallowedChildren'] = array_values($disallowed);
 
 				$defaultChild = $obj->defaultChild();
 				if($defaultChild != 'Page' && $defaultChild != null) {
-					$def[$class]['defaultChild'] = $defaultChild;
+					$def[$obj->ID]['defaultChild'] = $defaultChild;
 				}
 
 				$defaultParent = $obj->defaultParent();
 				$parent = SiteTree::get_by_link($defaultParent);
 				$id = $parent ? $parent->id : null;
 				if ($defaultParent != 1 && $defaultParent != null) {
-					$def[$class]['defaultParent'] = $defaultParent;
+					$def[$obj->ID]['defaultParent'] = $defaultParent;
 				}
 			}
 
