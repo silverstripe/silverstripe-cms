@@ -17,11 +17,13 @@ cwp-recipe-basic/
 cwp-recipe-basic-dev/
 docsviewer/
 documentconverter/
+externallinks/
 framework/
 fulltextsearch/
 html5/
 hybridsessions/
 iframe/
+mimevalidator/
 multivaluefield/
 nginx
 queuedjobs/
@@ -29,7 +31,9 @@ registry/
 restfulserver/
 securityreport/
 secureassets/
+selectupload/
 sortablegridfield/
+spellcheck/
 subsites/
 tags
 taxonomy/
