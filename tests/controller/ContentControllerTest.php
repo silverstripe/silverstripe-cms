@@ -46,6 +46,16 @@ class ContentControllerTest extends FunctionalTest {
 	}
 
 	/**
+	 * Tests that a non-existant media url does not leak controller info
+	 */
+	public function testNonExistantMediaUrl() {
+		RootURLController::reset();
+		Config::inst()->update('SiteTree', 'nested_urls', true);
+
+		$this->assertContains('Page not found',$this->get('/home/second-level/foo.css')->getBody());
+	}
+
+	/**
 	 * Tests {@link ContentController::ChildrenOf()}
 	 */
 	public function testChildrenOf() {
@@ -142,3 +152,4 @@ class ContentControllerTest_Page_Controller extends Page_Controller {
 	}
 
 }
+
