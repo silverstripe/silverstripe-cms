@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "677e462448a05760d15906e7ab37e9d7",
+    "hash": "a8b90b986f22b44a13ee5d2cb4555167",
     "packages": [
         {
             "name": "composer/installers",
@@ -122,11 +122,11 @@
         },
         {
             "name": "cwp/cwp",
-            "version": "1.0.4.x-dev",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp.git",
-                "reference": "2cf9854586f85d71269a5efd02277dd229370274"
+                "reference": "3a76ce8c02e138973e6b8d308eac808ae1cd38ce"
             },
             "require": {
                 "cwp/cwp-core": "*",
@@ -134,11 +134,11 @@
             },
             "type": "silverstripe-module",
             "description": "CWP features module. We strongly recommend using it for all new sites. Future features will be delivered here.",
-            "time": "2014-08-21 00:34:57"
+            "time": "2014-08-21 21:04:19"
         },
         {
             "name": "cwp/cwp-core",
-            "version": "1.0.4.x-dev",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp-core.git",
@@ -156,21 +156,21 @@
         },
         {
             "name": "cwp/cwp-recipe-basic",
-            "version": "1.0.4.x-dev",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp-recipe-basic.git",
-                "reference": "4ecb1a0b5e34441b286e86eee42bb82ed5149d16"
+                "reference": "2218f2ba31ed8051e24ee3e3d73ea4bb5721f5ee"
             },
             "require": {
-                "cwp/cwp": "1.0.4.*-dev",
-                "cwp/cwp-core": "1.0.4.*-dev",
+                "cwp/cwp": "1.0.4",
+                "cwp/cwp-core": "1.0.4",
                 "php": ">=5.3.2",
                 "silverstripe/advancedworkflow": "3.0.4",
-                "silverstripe/cms": "3.1.6-rc3",
+                "silverstripe/cms": "3.1.6",
                 "silverstripe/documentconverter": "1.0.4",
                 "silverstripe/externallinks": "1.0.0",
-                "silverstripe/framework": "3.1.6-rc3",
+                "silverstripe/framework": "3.1.6",
                 "silverstripe/fulltextsearch": "1.0.4",
                 "silverstripe/html5": "1.0.2",
                 "silverstripe/iframe": "1.0.4",
@@ -193,7 +193,7 @@
             },
             "type": "silverstripe-module",
             "description": "CWP Basic Recipe metapackage",
-            "time": "2014-08-21 04:51:52"
+            "time": "2014-08-25 22:39:10"
         },
         {
             "name": "silverstripe-themes/module_bootstrap",
@@ -265,7 +265,7 @@
         },
         {
             "name": "silverstripe/cms",
-            "version": "3.1.6-rc3",
+            "version": "3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-cms.git",
@@ -373,16 +373,16 @@
         },
         {
             "name": "silverstripe/framework",
-            "version": "3.1.6-rc3",
+            "version": "3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-framework.git",
-                "reference": "f49416858cee60ccbb188c9e9e3a33eac7ce64e4"
+                "reference": "9da3357e3a7348914a4778366efa053277097cc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/f49416858cee60ccbb188c9e9e3a33eac7ce64e4",
-                "reference": "f49416858cee60ccbb188c9e9e3a33eac7ce64e4",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/9da3357e3a7348914a4778366efa053277097cc4",
+                "reference": "9da3357e3a7348914a4778366efa053277097cc4",
                 "shasum": ""
             },
             "require": {
@@ -418,7 +418,7 @@
                 "framework",
                 "silverstripe"
             ],
-            "time": "2014-08-18 05:42:31"
+            "time": "2014-08-24 23:25:01"
         },
         {
             "name": "silverstripe/fulltextsearch",
@@ -1694,7 +1694,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "cwp/cwp-recipe-basic": 20,
+        "cwp/cwp-recipe-basic": 0,
         "cwp-themes/default": 0,
         "cwp/cwp-recipe-basic-dev": 0
     },
