@@ -1919,14 +1919,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				->setFieldFormatting(array(
 					'Title' => function($value, &$item) {
 						return sprintf(
-							'<a href=\"admin/pages/edit/show/%d\">%s</a>',
+							'<a href="admin/pages/edit/show/%d">%s</a>',
 							(int)$item->ID,
 							Convert::raw2xml($item->Title)
 						);
 					},
 					'AbsoluteLink' => function($value, &$item) {
 						return sprintf(
-							'<a href=\"%s\">%s</a>',
+							'<a href="%s">%s</a>',
 							Convert::raw2xml($value),
 							Convert::raw2xml($value)
 						);
