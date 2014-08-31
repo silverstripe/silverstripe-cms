@@ -1843,19 +1843,6 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		
 		return $items;
 	}
-	
-	/**
-	 * Return the number of {@link DependentPages()}
-	 * 
-	 * @deprecated 3.1 Use DependentPages()->Count() instead.
-	 *
-	 * @param bool $includeVirtuals Set to false to exlcude virtual pages.
-	 * @return ArrayList
-	 */
-	public function DependentPagesCount($includeVirtuals = true) {
-		Deprecation::notice('3.1', 'Use SiteTree->DependentPages()->Count() instead.');
-		return $this->DependentPages($includeVirtuals)->Count();
-	}
 
 	/**
 	 * Return all virtual pages that link to this page
