@@ -495,6 +495,60 @@ class VirtualPage_Controller extends Page_Controller {
 		parent::init();
 	}
 
+	/**
+	 * Override for default allowedActions() to include actions directly from 
+	 * the target controller ONLY (not parent actions)
+	 * @return array $actions
+	 */
+	public function allowedActions($limitToClass = null) {
+		$linkedActions = $this->linkedActions();
+		$actions = parent::allowedActions($limitToClass);
+
+		if($linkedActions) {
+			if(!$actions) {
+				$actions = array();
+			}
+			$actions = array_merge($actions, $linkedActions);
+		}
+
+		return $actions;
+	}
+
+	/**
+	 * Override for default handleAction() to forward actions to the target 
+	 * controller
+	 * @return void
+	 */
+	public function handleAction($request, $action) {
+		$originalClass = $this->CopyContentFrom();
+		$name = $originalClass->ClassName . '_Controller';
+		$controller = $name::create();
+
+		if(!$linkedActions = $this->linkedActions()) {
+			$linkedActions = array();
+		}
+
+		$forwardAction = in_array($action, $linkedActions) ? true : false;
+
+		if($forwardAction) {
+			return $controller->handleAction($request, $action);
+		}
+
+		return parent::handleAction($request, $action);
+	}
+
+	/**
+	 * Returns a list of actions available directly on the target controller
+	 * @return array|null
+	 */
+	public function linkedActions() {
+		$originalClass = $this->CopyContentFrom();
+		$name = $originalClass->ClassName . '_Controller';
+		$controller = $name::create();
+
+		return $controller->allowedActions(get_class($controller));
+	}
+
 	public function loadcontentall() {
 		$pages = DataObject::get("VirtualPage");
 		foreach($pages as $page) {
