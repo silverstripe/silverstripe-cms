@@ -517,6 +517,7 @@ class VirtualPage_Controller extends Page_Controller {
 			}
 		}
 		parent::init();
+		$this->__call('init', array());
 	}
 
 	public function loadcontentall() {
