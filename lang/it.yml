@@ -311,7 +311,7 @@ it:
     DEFAULTABOUTTITLE: 'Chi siamo'
     DEFAULTCONTACTCONTENT: '<p>Puoi riempire questa pagina con i tuoi contenuti, oppure cancellarla e creare le tue pagine.<br /></p>'
     DEFAULTCONTACTTITLE: 'Contattaci'
-    DEFAULTHOMECONTENT: '<p>Benvenuto in SilverStripe! Questa è l''homepage di default. Puoi modificare questa pagina aprendo <a href="admin/">il CMS</a>. Puoi visualizzare adesso la <a href="http://doc.silverstripe.com">documentazione di sviluppo</a>, o iniziaren <a href="http://doc.silverstripe.com/doku.php?id=tutorials">i tutorial.</a></p>'
+    DEFAULTHOMECONTENT: '<p>Benvenuto in SilverStripe! Questa è l''homepage di default. Puoi modificare questa pagina aprendo <a href="admin/">il CMS</a>. Puoi visualizzare adesso la <a href="http://doc.silverstripe.com">documentazione di sviluppo</a>, o iniziare <a href="http://doc.silverstripe.com/doku.php?id=tutorials">i tutorial.</a></p>'
     DEFAULTHOMETITLE: Home
     DELETEDPAGEHELP: 'La pagina non è più pubblicata'
     DELETEDPAGESHORT: Eliminata
