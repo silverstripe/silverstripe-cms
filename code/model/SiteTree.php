@@ -1509,7 +1509,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		if($this->class == 'SiteTree') {
 			$conn = DB::get_schema();
 			// only execute command if fields haven't been renamed to _obsolete_<fieldname> already by the task
-			if(array_key_exists('Viewers', $conn->fieldList('SiteTree'))) {
+			if($conn->hasField('SiteTree' ,'Viewers')) {
 				$task = new UpgradeSiteTreePermissionSchemaTask();
 				$task->run(new SS_HTTPRequest('GET','/'));
 			}
