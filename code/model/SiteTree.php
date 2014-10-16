@@ -1728,6 +1728,28 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * Triggers the onRenameLinkedAsset action on extensions.
 	 */
 	public function rewriteFileURL($old, $new) {
+		$resampled = array();
+		if(is_dir(Director::getAbsFile($new))) {
+			$resampled['old'] = Controller::join_links($old, '_resampled');
+			$resampled['new'] = Controller::join_links($new, '_resampled');
+		} else if (is_file(Director::getAbsFile($new))) {
+			$resampled['old'] = explode(DIRECTORY_SEPARATOR, $old);
+			$oldFilename = array_pop($resampled['old']);
+			$resampled['old'] = Controller::join_links(
+				implode(DIRECTORY_SEPARATOR, $resampled['old']),
+				'_resampled',
+				$oldFilename
+			);
+
+			$resampled['new'] = explode(DIRECTORY_SEPARATOR, $new);
+			$newFilename = array_pop($resampled['new']);
+			$resampled['new'] = Controller::join_links(
+				implode(DIRECTORY_SEPARATOR, $resampled['new']),
+				'_resampled',
+				$newFilename
+			);
+		}
+
 		$fields = $this->inheritedDatabaseFields();
 		// Update the content without actually creating a new version
 		foreach(array("SiteTree_Live", "SiteTree") as $table) {
@@ -1741,7 +1763,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				// TODO: This doesn't work for HTMLText fields on other tables.
 				if(isset($published[$fieldName])) {
 					$published[$fieldName] = str_replace($old, $new, $published[$fieldName], $numReplaced);
-					if($numReplaced) {
+
+					// Replace resampled files
+					$numResampledReplaced = 0;
+					if(isset($resampled['new'], $resamples['old'])) {
+						$published[$fieldName] = str_replace($resampled['old'], $resampled['new'], $published[$fieldName], $numResampledReplaced);
+					}
+
+					if($numReplaced || $numResampledReplaced) {
 						DB::query("UPDATE \"$table\" SET \"$fieldName\" = '" 
 							. Convert::raw2sql($published[$fieldName]) . "' WHERE \"ID\" = $this->ID");
 							

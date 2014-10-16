@@ -91,15 +91,17 @@ class SiteTreeFileExtension extends DataExtension {
 	 * @param String $new File path relative to the webroot
 	 */
 	public function updateLinks($old, $new) {
+		// todo: Remove subsite references
 		if(class_exists('Subsite')) Subsite::disable_subsite_filter(true);
-	
+
 		$pages = $this->owner->BackLinkTracking();
 
-		$summary = "";
 		if($pages) {
-			foreach($pages as $page) $page->rewriteFileURL($old,$new);
+			foreach($pages as $page) {
+				$page->rewriteFileURL($old, $new);
+			}
 		}
-		
+
 		if(class_exists('Subsite')) Subsite::disable_subsite_filter(false);
 	}
 	

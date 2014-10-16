@@ -20,6 +20,44 @@ class SiteTreeTest extends SapphireTest {
 		'SiteTreeTest_NotRoot',
 		'SiteTreeTest_StageStatusInherit',
 	);
+
+
+	public function testRewriteFileURL() {
+		// Create the initial folder
+		$folder = Folder::find_or_make('SiteTreeTest');
+		$folder->write();
+
+		$filePath = Controller::join_links($folder->getFullPath(), 'image.gif');
+		if(!file_exists($filePath)) {
+			$image = file_get_contents(__DIR__ . '/../assets/image.gif');
+			file_put_contents($filePath, $image);
+		}
+
+		$image = new Image();
+		$image->ParentID = $folder->ID;
+		$image->Filename = Controller::join_links($folder->Filename, 'image.gif');
+		$image->write();
+
+		$page = $this->objFromFixture('Page', 'home');
+		$page->Content = '<img src="' . $image->getRelativePath() . '" />';
+		$page->write();
+
+		// Ensure our content field contains the image
+		$this->assertContains($image->getRelativePath(), $page->Content);
+
+		// Rename the folder - re-fretch the folder.
+		$folder = Folder::get()->byId($folder->ID);
+		$folder->Name = 'SiteTreeTestRenamed';
+		$folder->write();
+
+		// Re-fetch image from the db
+		$image = Image::get()->byId($image->ID);
+		$this->assertFileExists($image->getFullPath());
+
+		// Ensure our image has changed in content
+		$page = SiteTree::get()->byId($page->ID);
+		$this->assertContains($image->getRelativePath(), $page->Content);
+	}
 	
 	public function testCreateDefaultpages() {
 			$remove = DataObject::get('SiteTree');
