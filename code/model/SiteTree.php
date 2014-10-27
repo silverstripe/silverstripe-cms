@@ -2810,7 +2810,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		$liveVersion =	Versioned::get_versionnumber_by_stage('SiteTree', 'Live', $this->ID);
 		
 		$isModified = ($stageVersion && $stageVersion != $liveVersion);
-		$this->extend('afterGetIsModifiedOnStage', $isModified);
+		$this->extend('getIsModifiedOnStage', $isModified);
 		
 		return $isModified;
 	}
