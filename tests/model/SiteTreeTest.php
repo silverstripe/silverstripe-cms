@@ -865,6 +865,19 @@ class SiteTreeTest extends SapphireTest {
 		
 		$this->loginWithPermission('CMS_ACCESS_CMSMain');
 		$this->assertArrayHasKey('SiteTreeTest_ClassA', $method->invoke($sitetree));
+
+		// Test that allowed_children configuration is respected
+		$this->loginWithPermission('ADMIN');
+		$page = new SiteTreeTest_ClassB();
+		$page->write();
+		$child = new SiteTreeTest_ClassC();
+		$child->setParent($page);
+		$child->write();
+
+		$method = new ReflectionMethod($child, 'getClassDropdown');
+		$method->setAccessible(true);
+		$this->assertArrayHasKey('SiteTreeTest_ClassC', $method->invoke($child));
+		$this->assertArrayNotHasKey('SiteTreeTest_ClassB', $method->invoke($child));
 		
 		Session::set("loggedInAs", null);
 	}
