@@ -58,7 +58,7 @@ class OldPageRedirector extends Extension {
 			if($parent) {
 				$oldFilter[] = array('"SiteTree_versions"."ParentID"' => $parent->ID);
 			}
-			$query = new SQLSelect(
+			$query = new SQLQuery(
 				'"RecordID"',
 				'"SiteTree_versions"',
 				$oldFilter,
