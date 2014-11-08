@@ -200,6 +200,8 @@ pl:
     415: '415 - Nieznany sposób żądania'
     416: '416 - Zakres bajtowy podany w zapytaniu nie do obsłużenia'
     417: '417 - Oczekiwana wartość nie do zwrócenia'
+    422: '422 - Niewłaściwe dane'
+    429: '429 - Zbyt wiele żądań'
     500: '500 - Wewnętrzny błąd serwera'
     501: '501 - Nie zaimplementowano'
     502: '502 - Błąd bramy'
