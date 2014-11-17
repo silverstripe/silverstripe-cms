@@ -179,7 +179,7 @@ pl:
     PUBLISHEDSITE: 'Opublikowana witryna'
     Password: Hasło
     PostInstallTutorialIntro: 'Ta strona jest uproszczoną wersją witryny SilverStripe 3. Aby ją rozszerzyć, zajrzyj proszę na stronę: {link}'
-    StartEditing: 'Możesz zacząć edytować Twoją stronę otwierając <a href=\\"{link}\\">CMS</a>.'
+    StartEditing: 'Możesz zacząć edytować Twoją stronę otwierając <a href="{link}">CMS</a>.'
     UnableDeleteInstall: 'Nie można usunąć plików instalacyjnych. Proszę usunąć je ręcznie'
     VIEWPAGEIN: 'Zobacz stronę w:'
   ErrorPage:
@@ -200,6 +200,8 @@ pl:
     415: '415 - Nieznany sposób żądania'
     416: '416 - Zakres bajtowy podany w zapytaniu nie do obsłużenia'
     417: '417 - Oczekiwana wartość nie do zwrócenia'
+    422: '422 - Niewłaściwe dane'
+    429: '429 - Zbyt wiele żądań'
     500: '500 - Wewnętrzny błąd serwera'
     501: '501 - Nie zaimplementowano'
     502: '502 - Błąd bramy'

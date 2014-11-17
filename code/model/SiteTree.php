@@ -1950,14 +1950,14 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				->setFieldFormatting(array(
 					'Title' => function($value, &$item) {
 						return sprintf(
-							'<a href=\"admin/pages/edit/show/%d\">%s</a>',
+							'<a href="admin/pages/edit/show/%d">%s</a>',
 							(int)$item->ID,
 							Convert::raw2xml($item->Title)
 						);
 					},
 					'AbsoluteLink' => function($value, &$item) {
 						return sprintf(
-							'<a href=\"%s\">%s</a>',
+							'<a href="%s" target="_blank">%s</a>',
 							Convert::raw2xml($value),
 							Convert::raw2xml($value)
 						);
@@ -2847,8 +2847,11 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		
 		$stageVersion = Versioned::get_versionnumber_by_stage('SiteTree', 'Stage', $this->ID);
 		$liveVersion =	Versioned::get_versionnumber_by_stage('SiteTree', 'Live', $this->ID);
-
-		return ($stageVersion && $stageVersion != $liveVersion);
+		
+		$isModified = ($stageVersion && $stageVersion != $liveVersion);
+		$this->extend('getIsModifiedOnStage', $isModified);
+		
+		return $isModified;
 	}
 	
 	/**
