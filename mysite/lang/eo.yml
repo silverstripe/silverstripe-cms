@@ -1,0 +1,12 @@
+eo:
+  HomePage:
+    DESCRIPTION: 'Enirejo al la retejo. Ĝi havas karuselon, reliefigitajn panelojn, rapidajn ligilojn kaj novaĵajn resumojn.'
+    PLURALNAME: 'Bazaj paĝoj'
+    SINGULARNAME: 'Hejmpaĝo'
+  Page:
+    DESCRIPTION: 'Komuna enhava paĝo'
+    PLURALNAME: 'Bazaj paĝoj'
+    SINGULARNAME: Paĝo
+  SiteTree:
+    PLURALNAME: Paĝoj
+    SINGULARNAME: Paĝo
