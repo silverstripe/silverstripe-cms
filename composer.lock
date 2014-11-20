@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9f109865f8411b5a4f00d05a5d64c676",
+    "hash": "09f0a8aea31b066a00596494a7acf58e",
     "packages": [
         {
             "name": "composer/installers",
@@ -100,7 +100,7 @@
         },
         {
             "name": "cwp-themes/default",
-            "version": "dev-master",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp-themes/default.git",
@@ -128,7 +128,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp.git",
-                "reference": "b89e0a64ddc9afd9c79d4d36d13263b8a88c0406"
+                "reference": "34e4ef1d430371a9ceb2e4a5cf15853f2ab34de8"
             },
             "require": {
                 "cwp/cwp-core": "*",
@@ -136,25 +136,25 @@
             },
             "type": "silverstripe-module",
             "description": "CWP features module. We strongly recommend using it for all new sites. Future features will be delivered here.",
-            "time": "2014-11-19 01:30:09"
+            "time": "2014-11-20 02:44:17"
         },
         {
             "name": "cwp/cwp-core",
-            "version": "dev-master",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp-core.git",
-                "reference": "55b076b70231e41cebc5522bee34409b7b7039ba"
+                "reference": "81c88665c8eda24c2256409c3b11a9c403756a5f"
             },
             "require": {
                 "composer/installers": "*",
                 "silverstripe/cms": "~3.1",
                 "silverstripe/framework": "~3.1",
-                "silverstripe/hybridsessions": "1.0.3"
+                "silverstripe/hybridsessions": "1.0.4"
             },
             "type": "silverstripe-module",
             "description": "CWP basic compatibility module. Use for migrations.",
-            "time": "2014-11-19 01:29:08"
+            "time": "2014-11-20 02:52:10"
         },
         {
             "name": "cwp/cwp-recipe-basic",
@@ -162,40 +162,40 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/cwp-recipe-basic.git",
-                "reference": "e1e64bcac813d7df49e50b4cf8f5eddee3bb4a3f"
+                "reference": "3ac64482b30ffb2e45651ecf776f1dba46292283"
             },
             "require": {
                 "cwp/cwp": "dev-master",
-                "cwp/cwp-core": "dev-master",
+                "cwp/cwp-core": "1.0.5",
                 "php": ">=5.3.2",
-                "silverstripe/advancedworkflow": "dev-master",
+                "silverstripe/advancedworkflow": "3.0.5",
                 "silverstripe/cms": "3.1.8",
-                "silverstripe/documentconverter": "dev-master",
-                "silverstripe/externallinks": "dev-master",
+                "silverstripe/documentconverter": "1.0.5",
+                "silverstripe/externallinks": "1.0.0",
                 "silverstripe/framework": "3.1.8",
-                "silverstripe/fulltextsearch": "dev-master",
-                "silverstripe/html5": "dev-master",
-                "silverstripe/iframe": "dev-master",
-                "silverstripe/mimevalidator": "dev-master",
-                "silverstripe/multivaluefield": "dev-master",
-                "silverstripe/queuedjobs": "dev-master",
-                "silverstripe/registry": "dev-master",
-                "silverstripe/restfulserver": "dev-master",
-                "silverstripe/secureassets": "dev-master",
-                "silverstripe/securityreport": "dev-master",
-                "silverstripe/selectupload": "dev-master",
-                "silverstripe/spellcheck": "dev-master",
-                "silverstripe/subsites": "1.0.*-dev",
-                "silverstripe/taxonomy": "dev-master",
-                "silverstripe/translatable": "2.0.*-dev",
-                "silverstripe/userforms": "dev-master",
-                "silverstripe/versionedfiles": "dev-master",
-                "silverstripe/versionfeed": "dev-master",
-                "undefinedoffset/sortablegridfield": "dev-master"
+                "silverstripe/fulltextsearch": "1.0.5",
+                "silverstripe/html5": "1.0.2",
+                "silverstripe/iframe": "1.0.5",
+                "silverstripe/mimevalidator": "1.0.1",
+                "silverstripe/multivaluefield": "2.0.3",
+                "silverstripe/queuedjobs": "2.2.3",
+                "silverstripe/registry": "1.0.4",
+                "silverstripe/restfulserver": "1.0.2",
+                "silverstripe/secureassets": "1.0.3",
+                "silverstripe/securityreport": "1.0.2",
+                "silverstripe/selectupload": "1.0.1",
+                "silverstripe/spellcheck": "1.0.0",
+                "silverstripe/subsites": "1.0.5",
+                "silverstripe/taxonomy": "1.0.4",
+                "silverstripe/translatable": "2.0.5",
+                "silverstripe/userforms": "2.0.6",
+                "silverstripe/versionedfiles": "1.0.4",
+                "silverstripe/versionfeed": "1.0.4",
+                "undefinedoffset/sortablegridfield": "1.0.5"
             },
             "type": "silverstripe-module",
             "description": "CWP Basic Recipe metapackage",
-            "time": "2014-11-19 04:27:13"
+            "time": "2014-11-20 02:52:36"
         },
         {
             "name": "silverstripe-themes/module_bootstrap",
@@ -227,7 +227,7 @@
         },
         {
             "name": "silverstripe/advancedworkflow",
-            "version": "dev-master",
+            "version": "3.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-australia/advancedworkflow.git",
@@ -314,7 +314,7 @@
         },
         {
             "name": "silverstripe/documentconverter",
-            "version": "dev-master",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/silverstripe/documentconverter.git",
@@ -330,7 +330,7 @@
         },
         {
             "name": "silverstripe/externallinks",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-externallinks.git",
@@ -424,7 +424,7 @@
         },
         {
             "name": "silverstripe/fulltextsearch",
-            "version": "dev-master",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-fulltextsearch.git",
@@ -465,7 +465,7 @@
         },
         {
             "name": "silverstripe/html5",
-            "version": "dev-master",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-html5.git",
@@ -494,16 +494,16 @@
         },
         {
             "name": "silverstripe/hybridsessions",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-hybridsessions.git",
-                "reference": "3a060659c54c536bd36b4ea336e86483e0b5882b"
+                "reference": "91cef56767e22eace3eb5070b8acaedd041f993d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-hybridsessions/zipball/3a060659c54c536bd36b4ea336e86483e0b5882b",
-                "reference": "3a060659c54c536bd36b4ea336e86483e0b5882b",
+                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-hybridsessions/zipball/91cef56767e22eace3eb5070b8acaedd041f993d",
+                "reference": "91cef56767e22eace3eb5070b8acaedd041f993d",
                 "shasum": ""
             },
             "require": {
@@ -525,11 +525,11 @@
                 }
             ],
             "description": "Cookie/DB session support for SilverStripe",
-            "time": "2014-08-20 05:58:33"
+            "time": "2014-11-18 20:56:14"
         },
         {
             "name": "silverstripe/iframe",
-            "version": "dev-master",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-iframe.git",
@@ -564,7 +564,7 @@
         },
         {
             "name": "silverstripe/mimevalidator",
-            "version": "dev-master",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-mimevalidator.git",
@@ -602,27 +602,22 @@
         },
         {
             "name": "silverstripe/multivaluefield",
-            "version": "dev-master",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-australia/silverstripe-multivaluefield.git",
-                "reference": "6ad6ae93c8e6367d6b17fd51662835015977d7b6"
+                "reference": "20a057a87ab0f2d1b87998b6c2e6c8d6875468e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-australia/silverstripe-multivaluefield/zipball/6ad6ae93c8e6367d6b17fd51662835015977d7b6",
-                "reference": "6ad6ae93c8e6367d6b17fd51662835015977d7b6",
+                "url": "https://api.github.com/repos/silverstripe-australia/silverstripe-multivaluefield/zipball/20a057a87ab0f2d1b87998b6c2e6c8d6875468e2",
+                "reference": "20a057a87ab0f2d1b87998b6c2e6c8d6875468e2",
                 "shasum": ""
             },
             "require": {
                 "silverstripe/framework": ">=3.0.0"
             },
             "type": "silverstripe-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
@@ -639,11 +634,11 @@
                 "formfield",
                 "silverstripe"
             ],
-            "time": "2014-08-21 01:12:25"
+            "time": "2014-08-21 00:51:47"
         },
         {
             "name": "silverstripe/queuedjobs",
-            "version": "dev-master",
+            "version": "2.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-australia/silverstripe-queuedjobs.git",
@@ -680,7 +675,7 @@
         },
         {
             "name": "silverstripe/registry",
-            "version": "dev-master",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-registry.git",
@@ -719,7 +714,7 @@
         },
         {
             "name": "silverstripe/restfulserver",
-            "version": "dev-master",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-restfulserver.git",
@@ -757,7 +752,7 @@
         },
         {
             "name": "silverstripe/secureassets",
-            "version": "dev-master",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-secureassets.git",
@@ -798,7 +793,7 @@
         },
         {
             "name": "silverstripe/securityreport",
-            "version": "dev-master",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-securityreport.git",
@@ -835,23 +830,20 @@
         },
         {
             "name": "silverstripe/selectupload",
-            "version": "dev-master",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-selectupload.git",
-                "reference": "7e5f395f5dd52a54c4180cdf0d8e6408951c7f35"
+                "reference": "dc254eb7b1d532e963b23ae383af1ea36f162935"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-selectupload/zipball/7e5f395f5dd52a54c4180cdf0d8e6408951c7f35",
-                "reference": "7e5f395f5dd52a54c4180cdf0d8e6408951c7f35",
+                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-selectupload/zipball/dc254eb7b1d532e963b23ae383af1ea36f162935",
+                "reference": "dc254eb7b1d532e963b23ae383af1ea36f162935",
                 "shasum": ""
             },
             "require": {
                 "silverstripe/framework": "~3.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~3.7@stable"
             },
             "type": "silverstripe-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -870,11 +862,11 @@
                 "silverstripe",
                 "upload"
             ],
-            "time": "2014-07-29 01:15:57"
+            "time": "2014-07-21 22:29:57"
         },
         {
             "name": "silverstripe/spellcheck",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-spellcheck.git",
@@ -914,7 +906,7 @@
         },
         {
             "name": "silverstripe/subsites",
-            "version": "1.0.x-dev",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-subsites.git",
@@ -948,7 +940,7 @@
         },
         {
             "name": "silverstripe/taxonomy",
-            "version": "dev-master",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-taxonomy.git",
@@ -983,7 +975,7 @@
         },
         {
             "name": "silverstripe/translatable",
-            "version": "2.0.x-dev",
+            "version": "2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-translatable.git",
@@ -1035,7 +1027,7 @@
         },
         {
             "name": "silverstripe/userforms",
-            "version": "dev-master",
+            "version": "2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-userforms.git",
@@ -1079,7 +1071,7 @@
         },
         {
             "name": "silverstripe/versionedfiles",
-            "version": "dev-master",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-australia/silverstripe-versionedfiles.git",
@@ -1119,7 +1111,7 @@
         },
         {
             "name": "silverstripe/versionfeed",
-            "version": "dev-master",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe-labs/silverstripe-versionfeed.git",
@@ -1156,7 +1148,7 @@
         },
         {
             "name": "undefinedoffset/sortablegridfield",
-            "version": "dev-master",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cwp.govt.nz/cwp/silverstripe-sortablegridfield.git",
@@ -1188,7 +1180,7 @@
             "support": {
                 "issues": "https://github.com/undefinedoffset/SortableGridField/issues"
             },
-            "time": "2014-10-27 13:14:05"
+            "time": "2014-10-27 13:13:35"
         }
     ],
     "packages-dev": [
@@ -1711,7 +1703,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "cwp/cwp-recipe-basic": 20,
-        "cwp-themes/default": 20,
+        "cwp-themes/default": 0,
         "cwp/cwp-recipe-basic-dev": 0
     },
     "prefer-stable": false,
