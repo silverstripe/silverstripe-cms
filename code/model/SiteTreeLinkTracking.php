@@ -1,12 +1,19 @@
 <?php
 
 /**
- * Adds tracking of links in any HTMLText fields which reference SiteTree or File items
+ * Adds tracking of links in any HTMLText fields which reference SiteTree or File items.
  *
  * Attaching this to any DataObject will add four fields which contain all links to SiteTree and File items
- * referenced in any HTMLText fields, and two booleans to indicate if there are any broken links
+ * referenced in any HTMLText fields, and two booleans to indicate if there are any broken links. Call
+ * augmentSyncLinkTracking to update those fields with any changes to those fields.
  *
- * Call augmentSyncLinkTracking to update those fields with any changes to those fields
+ * @property SiteTree owner
+ *
+ * @property bool HasBrokenFile
+ * @property bool HasBrokenLink
+ *
+ * @method ManyManyList LinkTracking List of site pages linked on this page.
+ * @method ManyManyList ImageTracking List of Images linked on this page.
  */
 class SiteTreeLinkTracking extends DataExtension {
 
@@ -25,6 +32,11 @@ class SiteTreeLinkTracking extends DataExtension {
 		"ImageTracking" => array("FieldName" => "Varchar")
 	);
 
+	/**
+	 * Scrape the content of a field to detect anly links to local SiteTree pages or files
+	 *
+	 * @param string $field The name of the field on {@link @owner} to scrape
+	 */
 	function trackLinksInField($field) {
 		$record = $this->owner;
 
@@ -102,7 +114,9 @@ class SiteTreeLinkTracking extends DataExtension {
 		}
 	}
 
-
+	/**
+	 * Find HTMLText fields on {@link owner} to scrape for links that need tracking
+	 */
 	function augmentSyncLinkTracking() {
 		// Reset boolean broken flags
 		$this->owner->HasBrokenLink = false;
