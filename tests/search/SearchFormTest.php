@@ -56,6 +56,19 @@ class ZZZSearchFormTest extends FunctionalTest {
 		return $supports;
 	}
 	
+	public function testSearchFormTemplateCanBeChanged() {
+		if(!$this->checkFulltextSupport()) return;
+
+		$sf = new SearchForm($this->mockController, 'SearchForm');
+		
+		$sf->setTemplate('BlankPage');
+		
+		$this->assertContains(
+			'<body class="SearchForm Form RequestHandler BlankPage">',
+			$sf->forTemplate()
+		);
+	}
+	
 	public function testPublishedPagesMatchedByTitle() {
 		if(!$this->checkFulltextSupport()) return;
 

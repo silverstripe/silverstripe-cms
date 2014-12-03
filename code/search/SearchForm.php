@@ -59,11 +59,23 @@ class SearchForm extends Form {
 		$this->disableSecurityToken();
 	}
 	
+	
+	/**
+	 * Return a rendered version of this form.
+	 * 
+	 * This is returned when you access a form as $FormObject rather
+	 * than <% with FormObject %>
+	 */
 	public function forTemplate() {
-		return $this->renderWith(array(
-			'SearchForm',
-			'Form'
+		$return = $this->renderWith(array_merge(
+			(array)$this->getTemplate(),
+			array('SearchForm', 'Form')
 		));
+
+		// Now that we're rendered, clear message
+		$this->clearMessage();
+
+		return $return;
 	}
 
 	/**
