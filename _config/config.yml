@@ -4,3 +4,6 @@ LeftAndMain:
 Security:
   extensions:
     - ErrorPageControllerExtension
+File:
+  extensions:
+    - 'CMSFileExtension'
