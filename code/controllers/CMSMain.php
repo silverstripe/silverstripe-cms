@@ -736,7 +736,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function ListViewForm() {
 		$params = $this->request->requestVar('q');
 		$list = $this->getList($params, $parentID = $this->request->requestVar('ParentID'));
-		$gridFieldConfig = GridFieldConfig::create()->addComponents(			
+		$gridFieldConfig = GridFieldConfig::create()->addComponents(
+			new GridFieldToolbarHeader(),
 			new GridFieldSortableHeader(),
 			new GridFieldDataColumns(),
 			new GridFieldPaginator(self::config()->page_length)
@@ -748,7 +749,12 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 					->setAttributes(array('data-pjax' => 'ListViewForm,Breadcrumbs'))
 			);
 		}
-		$gridField = new GridField('Page','Pages', $list, $gridFieldConfig);
+		$gridField = new GridField(
+			'Page',
+			_t("CMSPagesController.MENUTITLE", LeftAndMain::menu_title_for_class('CMSPagesController')),
+			$list,
+			$gridFieldConfig
+		);
 		$columns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
 
 		// Don't allow navigating into children nodes on filtered lists
