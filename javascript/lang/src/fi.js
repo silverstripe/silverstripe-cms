@@ -31,7 +31,7 @@
     "Tree.ThisPageOnly": "Vain tämä sivu",
     "Tree.ThisPageAndSubpages": "Tämä sivu ja alasivut",
     "Tree.ShowAsList": "Näytä alasivut listana",
-    "CMSMain.ConfirmRestoreFromLive": "Haluatko varmasti kopioida julkaistua sisältöä vedossivustolle?",
+    "CMSMain.ConfirmRestoreFromLive": "Haluatko varmasti kopioida julkaistua sisältöä luonnossivustolle?",
     "CMSMain.RollbackToVersion": "Haluatko varmasti palauttaa #%s version tästä sivusta?",
     "URLSEGMENT.Edit": "Muokkaa",
     "URLSEGMENT.OK": "OK",

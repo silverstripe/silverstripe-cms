@@ -75,6 +75,7 @@ de:
     AddNew: 'Neue Seite hinzufügen'
     AddNewButton: 'Hinzufügen'
     AddPageRestriction: 'Hinweis: einige Seitentypen sind in diesem Bereich nicht erlaubt.'
+    Cancel: Abbrechen
     ChoosePageParentMode: 'Wo soll diese Seite erstellt werden?'
     ChoosePageType: 'Seitentyp auswählen'
     Create: Erstellen
@@ -409,3 +410,9 @@ de:
     MENUTITLE: 'Seite bearbeiten'
   CMSSettingsController:
     MENUTITLE: Einstellungen
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Gelöschte Seiten'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Nicht veröffentlichte Entwurfs-Seiten'
+  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Veröffentlicht aber aus Entwurf entfernt'
