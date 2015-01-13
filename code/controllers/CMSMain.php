@@ -350,7 +350,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	protected function getPageTypes() {
 		$pageTypes = array();
 		foreach(SiteTree::page_type_classes() as $pageTypeClass) {
-			$pageTypes[$pageTypeClass] = _t($pageTypeClass.'.SINGULARNAME', $pageTypeClass);
+			$pageTypes[$pageTypeClass] = _t((($pageTypeClass == 'Page') ? 'SiteTree' : $pageTypeClass).'.SINGULARNAME', $pageTypeClass);
 		}
 		asort($pageTypes);
 		return $pageTypes;
