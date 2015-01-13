@@ -118,7 +118,7 @@
 				// update button
 				updateURLFromTitle = $('<button />', {
 					'class': 'update ss-ui-button-small',
-					'text': 'Update URL',
+					'text': ss.i18n._t('URLSEGMENT.UpdateURL'),
 					'click': function(e) {
 						e.preventDefault();
 						self.updateURLSegment(self.val());
