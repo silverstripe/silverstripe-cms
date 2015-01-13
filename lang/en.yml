@@ -412,3 +412,5 @@ en:
     MENUTITLE: 'Edit Page'
   CMSSettingsController:
     MENUTITLE: Settings
+  CMSSIteTreeFilter_PublishedPages:
+    Title: 'Published pages'
