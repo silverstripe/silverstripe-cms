@@ -61,9 +61,10 @@ abstract class CMSSiteTreeFilter extends Object {
 		
 		// Ensure that 'all pages' filter is on top position and everything else is sorted alphabetically
 		uasort($filterMap, function($a, $b) {
-			return ($a === CMSSiteTreeFilter_Search::title())
-				? -1
-				: strcasecmp($a, $b);
+			$all_pages = CMSSiteTreeFilter_Search::title();
+			if ($a === $all_pages) return -1;
+			if ($b === $all_pages) return 1;
+			return strcasecmp($a, $b);
 		});
 		
 		return $filterMap;
