@@ -40,7 +40,7 @@ fi:
     Any: Yhtään
     BROKENLINKS: 'Rikkinäisten linkkien raportti'
     CheckSite: 'Tarkistussivusto'
-    CheckSiteDropdownDraft: 'Luonnossivu'
+    CheckSiteDropdownDraft: 'Luonnossivusto'
     CheckSiteDropdownPublished: 'Julkaistu sivusto'
     ColumnDateLastModified: 'Muokattu viimeksi'
     ColumnDateLastPublished: 'Julkaistu viimeksi'
@@ -306,7 +306,7 @@ fi:
     BUTTONPUBLISHED: Julkaistu
     BUTTONSAVED: Tallennettu
     BUTTONSAVEPUBLISH: 'Tallenna ja julkaise'
-    BUTTONUNPUBLISH: Poista julkaisu
+    BUTTONUNPUBLISH: Poista näkyvistä
     BUTTONUNPUBLISHDESC: 'Poista tämä sivu julkaistulta sivustolta'
     Comments: Kommentit
     Content: Sisältö
@@ -378,7 +378,7 @@ fi:
     VIEW_ALL_DESCRIPTION: 'Näytä mikä tahansa sivu'
     VIEW_ALL_HELP: 'Mahdollisuus nähdä mikä tahansa sivu, huolimatta Käyttöoikeudet-välilehden asetuksista. Vaatii "Käyttöoikeus ''Sivuihin''" -oikeudet.'
     VIEW_DRAFT_CONTENT: 'Näytä luonnoksen sisältö'
-    VIEW_DRAFT_CONTENT_HELP: 'Koskee sivujen näyttämistä CMS:n ulkopuolella vedoslaadulla. Hyödyllinen ulkopuolisille yhteistyökumppaneille ilman CMS-yhteyttä.'
+    VIEW_DRAFT_CONTENT_HELP: 'Koskee sivujen näyttämistä CMS:n ulkopuolella luonnoksena. Hyödyllinen ulkopuolisille kumppaneille ilman CMS-järjestelmään pääsyä.'
     Viewers: 'Katselijaryhmät'
     Visibility: Näkyvyys
     has_one_Parent: 'Sivupohja'
@@ -415,6 +415,6 @@ fi:
   CMSSiteTreeFilter_StatusDeletedPages:
     Title: 'Poistetut sivut'
   CMSSiteTreeFilter_StatusDraftPages:
-    Title: 'Vedokset julkaisemattomista sivuista'
+    Title: 'Luonnokset julkaisemattomista sivuista'
   CMSSiteTreeFilter_StatusRemovedFromDraftPages:
-    Title: 'Näkyvillä, mutta poistettu vedoksista'
+    Title: 'Näkyvillä, mutta poistettu luonnoksista'
