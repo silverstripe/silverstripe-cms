@@ -296,7 +296,7 @@ class SS_Report extends ViewableData {
 					return sprintf(
 						'<a href="%s">%s</a>',
 						Controller::join_links(singleton('CMSPageEditController')->Link('show'), $item->ID),
-						Convert::raw2xml($value)
+						$value
 					);
 				};
 			}
