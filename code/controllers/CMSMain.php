@@ -74,6 +74,18 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'childfilter',
 	);
 
+	private static $casting = array(
+		'TreeIsFiltered' => 'Boolean',
+		'AddForm' => 'HTMLFragment',
+		'LinkPages' => 'Text',
+		'Link' => 'Text',
+		'ListViewForm' => 'HTMLFragment',
+		'ExtraTreeTools' => 'HTMLFragment',
+		'SiteTreeHints' => 'HTMLFragment',
+		'SecurityID' => 'Text',
+		'SiteTreeAsUL' => 'HTMLFragment',
+	);
+
 	public function init() {
 		// set reading lang
 		if(SiteTree::has_extension('Translatable') && !$this->getRequest()->isAjax()) {
@@ -799,7 +811,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$columns->setFieldCasting(array(
 			'Created' => 'DBDatetime->Ago',
 			'LastEdited' => 'DBDatetime->FormatFromSettings',
-			'getTreeTitle' => 'HTMLText'
+			'getTreeTitle' => 'HTMLFragment'
 		));
 
 		$controller = $this;

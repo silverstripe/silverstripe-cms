@@ -15,35 +15,35 @@ $ExtraTreeTools
 		</a>
 
 		<div class="cms-tree <% if $TreeIsFiltered %>filtered-list<% end_if %>"
-			data-url-tree="$LinkWithSearch($Link(getsubtree))"
-			data-url-savetreenode="$Link(savetreenode)"
-			data-url-updatetreenodes="$Link(updatetreenodes)"
-			data-url-addpage="{$LinkPageAdd('AddForm/?action_doAdd=1', 'ParentID=%s&amp;PageType=%s')}"
-			data-url-editpage="$LinkPageEdit('%s')"
-			data-url-duplicate="{$Link('duplicate/%s')}"
-			data-url-duplicatewithchildren="{$Link('duplicatewithchildren/%s')}"
-			data-url-listview="{$Link('?view=list')}"
-			data-hints="$SiteTreeHints.XML"
-			data-childfilter="$Link('childfilter')"
-			data-extra-params="SecurityID=$SecurityID">
+			data-url-tree="$LinkWithSearch($Link(getsubtree)).ATT"
+			data-url-savetreenode="$Link(savetreenode).ATT"
+			data-url-updatetreenodes="$Link(updatetreenodes).ATT"
+			data-url-addpage="{$LinkPageAdd('AddForm/?action_doAdd=1', 'ParentID=%s&amp;PageType=%s').ATT}"
+			data-url-editpage="$LinkPageEdit('%s').ATT"
+			data-url-duplicate="{$Link('duplicate/%s').ATT}"
+			data-url-duplicatewithchildren="{$Link('duplicatewithchildren/%s').ATT}"
+			data-url-listview="{$Link('?view=list').ATT}"
+			data-hints="$SiteTreeHints.ATT"
+			data-childfilter="$Link('childfilter').ATT"
+			data-extra-params="SecurityID=$SecurityID.ATT">
 			$SiteTreeAsUL
-		</div>
+	</div>
 	</div>
 
 	<% else %>
 
 	<div class="cms-tree <% if $TreeIsFiltered %>filtered-list<% end_if %>"
-		data-url-tree="$LinkWithSearch($Link(getsubtree))"
-		data-url-savetreenode="$Link(savetreenode)"
-		data-url-updatetreenodes="$Link(updatetreenodes)"
-		data-url-addpage="{$LinkPageAdd('AddForm/?action_doAdd=1', 'ParentID=%s&amp;PageType=%s')}"
-		data-url-editpage="$LinkPageEdit('%s')"
-		data-url-duplicate="{$Link('duplicate/%s')}"
-		data-url-duplicatewithchildren="{$Link('duplicatewithchildren/%s')}"
-		data-url-listview="{$Link('?view=list')}"
-		data-hints="$SiteTreeHints.XML"
-		data-childfilter="$Link('childfilter')"
-		data-extra-params="SecurityID=$SecurityID">
+		data-url-tree="$LinkWithSearch($Link(getsubtree)).ATT"
+		data-url-savetreenode="$Link(savetreenode).ATT"
+		data-url-updatetreenodes="$Link(updatetreenodes).ATT"
+		data-url-addpage="{$LinkPageAdd('AddForm/?action_doAdd=1', 'ParentID=%s&amp;PageType=%s').ATT}"
+		data-url-editpage="$LinkPageEdit('%s').ATT"
+		data-url-duplicate="{$Link('duplicate/%s').ATT}"
+		data-url-duplicatewithchildren="{$Link('duplicatewithchildren/%s').ATT}"
+		data-url-listview="{$Link('?view=list').ATT}"
+		data-hints="$SiteTreeHints.ATT"
+		data-childfilter="$Link('childfilter').ATT"
+		data-extra-params="SecurityID=$SecurityID.ATT">
 		$SiteTreeAsUL
 	</div>
 

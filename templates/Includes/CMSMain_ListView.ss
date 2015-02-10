@@ -8,17 +8,17 @@
 	<% if $TreeIsFiltered %>
 	<div class="cms-notice cms-tree-filtered">
 		<strong><% _t('CMSMain.ListFiltered', 'Showing search results.') %></strong>
-		<a href="$LinkPages" class="cms-panel-link">
+		<a href="$LinkPages.ATT" class="cms-panel-link">
 			<% _t('CMSMain.TreeFilteredClear', 'Clear') %>
 		</a>
 
 		<div class="cms-list" data-url-list="$Link(getListViewHTML)">
 			$ListViewForm
-		</div>
+	</div>
 	</div>
 	<% else %>
 
-	<div class="cms-list" data-url-list="$Link(getListViewHTML)">
+	<div class="cms-list" data-url-list="$Link('getListViewHTML').ATT">
 		$ListViewForm
 	</div>
 	<% end_if %>
