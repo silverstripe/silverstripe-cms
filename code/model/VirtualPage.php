@@ -198,7 +198,7 @@ class VirtualPage extends Page {
 				'VirtualPage.HEADERWITHLINK', 
 				"This is a virtual page copying content from \"{title}\" ({link})",
 				array(
-					'title' => $this->CopyContentFrom()->Title,
+					'title' => $this->CopyContentFrom()->obj('Title'),
 					'link' => $link
 				)
 			);
