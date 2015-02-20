@@ -39,7 +39,10 @@
 						self.data('OrigVal', title);
 
 						// Criteria for defining a "new" page
-						if ((urlSegmentInput.val().indexOf('new') == 0) && liveLinkInput.val() == '') {
+						if (
+							urlSegmentInput.val().indexOf(urlSegmentInput.data('defaultUrl')) === 0
+							&& liveLinkInput.val() == ''
+						) {
 							self.updateURLSegment(title);
 						} else {
 							$('.update', self.parent()).show();

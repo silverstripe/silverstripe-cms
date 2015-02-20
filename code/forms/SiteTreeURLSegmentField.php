@@ -15,7 +15,7 @@ class SiteTreeURLSegmentField extends TextField {
 	/** 
 	 * @var string 
 	 */
-	protected $helpText, $urlPrefix, $urlSuffix;
+	protected $helpText, $urlPrefix, $urlSuffix, $defaultUrl;
 	
 	private static $allowed_actions = array(
 		'suggest'
@@ -30,7 +30,8 @@ class SiteTreeURLSegmentField extends TextField {
 			parent::getAttributes(),
 			array(
 				'data-prefix' => $this->getURLPrefix(),
-				'data-suffix' => '?stage=Stage'
+				'data-suffix' => '?stage=Stage',
+				'data-default-url' => $this->getDefaultURL()
 			)
 		);
 	}
@@ -74,7 +75,8 @@ class SiteTreeURLSegmentField extends TextField {
 	 * @param string $string The secondary text to show
 	 */
 	public function setHelpText($string){
-		$this->helpText = $string; 
+		$this->helpText = $string;
+		return $this;
 	}
 	
 	/**
@@ -90,6 +92,7 @@ class SiteTreeURLSegmentField extends TextField {
 	 */
 	public function setURLPrefix($url){
 		$this->urlPrefix = $url;
+		return $this;
 	}
 	
 	/**
@@ -103,8 +106,23 @@ class SiteTreeURLSegmentField extends TextField {
 		return $this->urlSuffix;
 	}
 
+	/**
+	 * @return Indicator for UI to respond to changes accurately,
+	 * and auto-update the field value if changes to the default occur.
+	 * Does not set the field default value.
+	 */
+	public function getDefaultURL(){
+		return $this->defaultUrl;
+	}
+	
+	public function setDefaultURL($url) {
+		$this->defaultUrl = $url;
+		return $this;
+	}
+
 	public function setURLSuffix($suffix) {
 		$this->urlSuffix = $suffix;
+		return $this;
 	}
 
 	public function Type() {
