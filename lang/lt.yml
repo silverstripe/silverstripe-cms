@@ -73,7 +73,7 @@ lt:
     ACCESS: 'Priėjimas prie ''{title}'' dalies'
     ACCESS_HELP: 'Leisti peržiūrėti svetainės medžio ir turinio skiltį. Peržiūros, bei redagavimo leidimai gali būti pakeisti per iškrentančius pasirinkimus ir per atskirus "Turinio leidimai".'
     AddNew: 'Pridėti naują puslapį'
-    AddNewButton: 'Pridėti naują'
+    AddNewButton: 'Sukurti naują'
     AddPageRestriction: 'Pastaba: kai kurie puslapių tipai šioje vietoje neleidžiami'
     Cancel: Atšaukti
     ChoosePageParentMode: 'Pasirinkite kur sukurti šį puslapį'
@@ -114,7 +114,7 @@ lt:
     TreeFilteredClear: 'Išvalyti filtrą'
     MENUTITLE: 'Redaguoti puslapį'
   CMSMain_left_ss:
-    APPLY_FILTER: 'Pritaikyti filtrą'
+    APPLY_FILTER: 'Vykdyti'
     RESET: Atstatyti
   CMSPageAddController:
     ParentMode_child: 'Po kitu puslapiu'
@@ -154,7 +154,7 @@ lt:
   CMSSiteTreeFilter_ChangedPages:
     Title: 'Pakeisti puslapiai'
   CMSSiteTreeFilter_DeletedPages:
-    Title: 'Visus puslapius, kartu su ištrintais'
+    Title: 'Visi puslapiai (ir ištrinti)'
   CMSSiteTreeFilter_Search:
     Title: 'Visi puslapiai'
   ContentControl:
@@ -351,15 +351,15 @@ lt:
     PAGELOCATION: 'Puslapio vieta'
     PAGETITLE: 'Puslapio pavadinimas'
     PAGETYPE: 'Puslapio tipas'
-    PARENTID: 'Tėvinis puslapis'
+    PARENTID: 'Po puslapiu'
     PARENTTYPE: 'Puslapio vieta'
     PARENTTYPE_ROOT: 'Aukščiausio lygio puslapis'
-    PARENTTYPE_SUBPAGE: 'Puslapis po tėviniu puslapiu'
+    PARENTTYPE_SUBPAGE: 'Po kitu puslapiu'
     PERMISSION_GRANTACCESS_DESCRIPTION: 'Valdyti turinio redagavimo teises'
     PERMISSION_GRANTACCESS_HELP: 'Leisti nustatyti puslapiui galiojančias specifines teises, "Puslapiai" skiltyje.'
     PLURALNAME: Puslapiai
     PageTypNotAllowedOnRoot: 'Puslapio tipas "{type}" neleidžiamas šakniniame lygmenyje'
-    PageTypeNotAllowed: 'Puslapio tipas "{type}" neleidžiamas tėviniame puslapyje'
+    PageTypeNotAllowed: 'Puslapio tipas "{type}" neleidžiamas po pasirinktu puslapiu'
     REMOVEDFROMDRAFTHELP: 'Puslapis buvo publikuotas, tačiau buvo ištrintas iš juodraščių.'
     REMOVEDFROMDRAFTSHORT: 'Pašalinta iš juodraščių'
     REMOVE_INSTALL_WARNING: 'Perspėjimas: Saugumo sumetimais Jūs turėtumėte pašalinti install.php bylą iš SilverStripe.'
@@ -381,7 +381,7 @@ lt:
     VIEW_DRAFT_CONTENT_HELP: 'Pritaikoma puslapių peržiūrai be TVS pagalbos juodraščio režime. Naudinga bendradarbiaujant su redaktoriais be TVS prieigos.'
     Viewers: 'Lankytojų grupės'
     Visibility: Matomumas
-    has_one_Parent: 'Tėvinis puslapis'
+    has_one_Parent: 'Po puslapiu'
     many_many_BackLinkTracking: 'Atgalinis stebėjimas'
     many_many_ImageTracking: 'Paveikslėlių sekimas'
     many_many_LinkTracking: 'Nuorodos sekimas'

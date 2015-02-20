@@ -227,13 +227,22 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 		return $link;
 	}
-	
+
 	/**
 	 * @return string
 	 */
 	public function LinkPreview() {
 		$record = $this->getRecord($this->currentPageID());
-		$baseLink = ($record && $record instanceof Page) ? $record->Link('?stage=Stage') : Director::absoluteBaseURL();
+		$baseLink = Director::absoluteBaseURL();
+		if ($record && $record instanceof Page) {
+			// if we are an external redirector don't show a link
+			if ($record instanceof RedirectorPage && $record->RedirectionType == 'External') {
+				$baseLink = false;
+			}
+			else {
+				$baseLink = $record->Link('?stage=Stage');
+			}
+		}
 		return $baseLink;
 	}
 
