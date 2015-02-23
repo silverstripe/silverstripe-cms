@@ -131,7 +131,7 @@ class ContentController extends Controller {
 	 * @return SS_HTTPResponse
 	 * @throws SS_HTTPResponse_Exception
 	 */
-	public function handleRequest(SS_HTTPRequest $request, DataModel $model = null) {
+	public function handleRequest(SS_HTTPRequest $request, DataModel $model) {
 		$child  = null;
 		$action = $request->param('Action');
 		$this->setDataModel($model);
