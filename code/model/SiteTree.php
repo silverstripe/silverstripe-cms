@@ -2696,7 +2696,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	}
 
 	/**
-	 * Returns an array of the class names of classes that are allowed to be children of this class.
+	 * Returns an array of the class names of classes that are allowed to be children of this class by proxy of each
+	 * class' defined ::$allowed_children and ::$allowed_parents properties.
 	 *
 	 * @return string[]
 	 */
@@ -2717,7 +2718,45 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 				}
 			}
 		}
-		
+
+		// Define allowed parents on a per page basis.
+		$allowedParents = array();
+		$pageTypes = SiteTree::page_type_classes();
+		foreach($pageTypes as $pageType) {
+			// Only worry about it if this page type has the private static ::$allowed_parents configured.
+			$curParents = singleton($pageType)->stat("allowed_parents");
+			if ($curParents === null) continue;
+			$allowedParents[$pageType] = $curParents;
+		}
+
+		// See if any one of the current allowed children exist in the array of pages above that restrict their parents.
+		$restrictedChildren = array_intersect($allowedChildren, array_keys($allowedParents));
+		if (!empty($restrictedChildren)) {
+			// Fetch all parent classes up to (and including) the final "Page" classes to see if this class will qualify
+			// as one of possible parents in the ::$allowed_parents array, which will include the specified classes and
+			// children thereof (notwithstanding any prefixed with the special "*").
+			$thisPage = get_class($this);
+			$candidateParents = array_values(ClassInfo::ancestry($thisPage));
+			$candidateParents = array_slice($candidateParents, array_search("Page", $candidateParents));
+
+			// Now add the "*" prefixed version of this class (only) so that it too will classify as a hit. This works
+			// because if a parent of this page is included but with the asterisk, it will not appear in this array; only
+			// if the current class is explicitly defined (since only the current class is defined both with/without the prefix)
+			$candidateParents[] = "*$thisPage";
+
+			// Go through each of the children with restricted parents and remove it from the list of children if this
+			// class and none of its parents appear in its list of allowed parents. Performed via quick intersection.
+			foreach($restrictedChildren as $childPage) {
+				if (count(array_intersect($candidateParents, $allowedParents[$childPage])) === 0) {
+					$childIndex = array_search($childPage, $allowedChildren);
+					unset($allowedChildren[$childIndex]);
+				}
+			}
+
+			// Re-key the array since some items may now have been removed.
+			$allowedChildren = array_values($allowedChildren);
+		}
+
 		return $allowedChildren;
 	}
 

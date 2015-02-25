@@ -917,6 +917,40 @@ class SiteTreeTest extends SapphireTest {
 		);
 	}
 
+	public function testAllowedParents() {
+		$page = new Page();
+		$parent1 = new SiteTreeTest_SpecificParent1();
+		$parent2 = new SiteTreeTest_SpecificParent2();
+
+		// Ensure that none of the "Specific" parents and children show up as allowed children on a generic Page object.
+		$pageChildren = $page->allowedChildren();
+		$this->assertNotContains("SiteTreeTest_SpecificParent1", $pageChildren);
+		$this->assertNotContains("SiteTreeTest_SpecificParent2", $pageChildren);
+		$this->assertNotContains("SiteTreeTest_SpecificChild1", $pageChildren);
+		$this->assertNotContains("SiteTreeTest_SpecificChild2", $pageChildren);
+
+		// Ensure that only SpecificChild1 and SpecificChild2 show up as children for SpecificParent1 (SiteTreeTest_SpecificChild2 inherits from SiteTreeTest_SpecificChild1).
+		$this->assertEquals(array("SiteTreeTest_SpecificChild1", "SiteTreeTest_SpecificChild2"), $parent1->allowedChildren());
+
+		// Ensure that only SpecificChild2 shows up for SpecificParent2 (via inheritance in the child's allowed parents).
+		$this->assertEquals(array("SiteTreeTest_SpecificChild2"), $parent2->allowedChildren());
+
+		// Ensure that parent 1 can still be in the root, while parent 2 cannot.
+		$parent1->ParentID = 0;
+		$parent1->write();
+		$parent2->ParentID = 0;
+		$isDetected = false;
+		try {
+			$parent2->write();
+		} catch(ValidationException $e) {
+			$this->assertContains('is not allowed on the root level', $e->getMessage());
+			$isDetected = true;
+		}
+
+		if(!$isDetected) $this->fail('Fails validation with $can_be_root=false');
+
+	}
+
 	public function testAllowedChildrenValidation() {
 		$page = new SiteTree();
 		$page->write();
@@ -1225,4 +1259,29 @@ class SiteTreeTest_Extension extends DataExtension implements TestOnly {
 		return false;
 	}
 
+}
+
+class SiteTreeTest_SpecificParent1 extends Page implements TestOnly {
+	// Cannot have any parents at all.
+	private static $allowed_parents = array();
+	private static $allowed_children = array('SiteTreeTest_SpecificChild1');
+}
+
+class SiteTreeTest_SpecificParent2 extends SiteTreeTest_SpecificParent1 implements TestOnly {
+	// Defines no specific allowed_parents/allowed_children, only inherits that functionality. However, it cannot be in
+	// the root either. Essentially, this cannot exist anywhere and would be expected functionality, if set.
+	private static $can_be_root = false;
+}
+
+class SiteTreeTest_SpecificChild1 extends Page implements TestOnly {
+	// Only explicitly allow SiteTreeTest_SpecificParent1 (not its children).
+	private static $allowed_parents = array('*SiteTreeTest_SpecificParent1');
+	private static $allowed_children = array();
+}
+
+class SiteTreeTest_SpecificChild2 extends SiteTreeTest_SpecificChild1 implements TestOnly {
+	// Should also allow SpecificParent2 as a parent by proxy of inheritance.
+	// Should continue to show up as an allowed child of SpecificParent1 by proxy of inheritance.
+	private static $allowed_parents = array('SiteTreeTest_SpecificParent1');
+	private static $allowed_children = array();
 }
