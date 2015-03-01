@@ -2674,11 +2674,8 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @param string $value
 	 */
 	public function setMenuTitle($value) {
-		if($value == $this->getField("Title")) {
-			$this->setField("MenuTitle", null);
-		} else {
-			$this->setField("MenuTitle", $value);
-		}
+		Deprecation::notice(4.0, 'SiteTree::setMenuTitle is deprecated from 4.0');
+		$this->setField("MenuTitle", $value);
 	}
 	
 	/**
