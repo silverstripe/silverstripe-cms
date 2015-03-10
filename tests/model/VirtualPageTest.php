@@ -591,6 +591,19 @@ class VirtualPageTest extends SapphireTest {
 			'No field copying from previous original after page type changed'
 		);
 	}
+
+	public function testVirtualPageFindsCorrectCasting() {
+		$page = new VirtualPageTest_ClassA();
+		$page->CastingTest = "Some content";
+		$page->write();
+		$virtual = new VirtualPage();
+		$virtual->CopyContentFromID = $page->ID;
+		$virtual->write();
+
+		$this->assertEquals('VirtualPageTest_TestDBField', $virtual->castingHelper('CastingTest'));
+		$this->assertEquals('SOME CONTENT', $virtual->obj('CastingTest')->forTemplate());
+	}
+
 }
 
 class VirtualPageTest_ClassA extends Page implements TestOnly {
@@ -599,6 +612,7 @@ class VirtualPageTest_ClassA extends Page implements TestOnly {
 		'MyInitiallyCopiedField' => 'Text',
 		'MyVirtualField' => 'Text',
 		'MyNonVirtualField' => 'Text',
+		'CastingTest' => 'VirtualPageTest_TestDBField'
 	);
 	
 	private static $allowed_children = array('VirtualPageTest_ClassB');
@@ -614,6 +628,12 @@ class VirtualPageTest_ClassC extends Page implements TestOnly {
 
 class VirtualPageTest_NotRoot extends Page implements TestOnly {
 	private static $can_be_root = false;
+}
+
+class VirtualPageTest_TestDBField extends Varchar implements TestOnly {
+	public function forTemplate() {
+		return strtoupper($this->XML());
+	}
 }
 
 class VirtualPageTest_VirtualPageSub extends VirtualPage implements TestOnly {

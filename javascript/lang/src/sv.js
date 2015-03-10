@@ -26,14 +26,14 @@
     "AssetAdmin.ConfirmDelete": "Vill du verkligen radera denna mapp och alla filer i den?",
     "Folder.Name": "Mappnamn",
     "Tree.AddSubPage": "Lägg till ny sida här",
-    "Tree.Duplicate": "Duplicate",
-    "Tree.EditPage": "Editera",
-    "Tree.ThisPageOnly": "This page only",
-    "Tree.ThisPageAndSubpages": "This page and subpages",
-    "Tree.ShowAsList": "Show children as list",
+    "Tree.Duplicate": "Duplicera",
+    "Tree.EditPage": "Redigera",
+    "Tree.ThisPageOnly": "Endast denna sida",
+    "Tree.ThisPageAndSubpages": "Denna sida och undersidor",
+    "Tree.ShowAsList": "Visa undersidor som lista",
     "CMSMain.ConfirmRestoreFromLive": "Vill du verkligen kopiera det publicerade innehållet till utkastsajten?",
     "CMSMain.RollbackToVersion": "Vill du verkligen gå tillbaka till version %s av denna sida?",
-    "URLSEGMENT.Edit": "Edit",
+    "URLSEGMENT.Edit": "Redigera",
     "URLSEGMENT.OK": "OK",
-    "URLSEGMENT.Cancel": "Cancel"
+    "URLSEGMENT.Cancel": "Avbryt"
 }
