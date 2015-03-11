@@ -11,6 +11,9 @@ class CMSMainTest extends FunctionalTest {
 	
 	function testSiteTreeHints() {
 		$cache = SS_Cache::factory('CMSMain_SiteTreeHints');
+		// Login as user with root creation privileges
+		$user = $this->objFromFixture('Member', 'rootedituser');
+		$user->logIn();
 		$cache->clean(Zend_Cache::CLEANING_MODE_ALL);
 
 		$rawHints = singleton('CMSMain')->SiteTreeHints();
@@ -46,23 +49,36 @@ class CMSMainTest extends FunctionalTest {
 			$hints['Root']['disallowedChildren'],
 			'Limits root classes'
 		);
-		$this->assertNotContains(
-			'CMSMainTest_ClassA',
-			// Lenient checks because other modules might influence state
-			(array)@$hints['Page']['disallowedChildren'],
-			'Does not limit types on unlimited parent'
-		);
+		
+	}
+
+	public function testChildFilter() {
+		$this->logInWithPermission('ADMIN');
+		
+		// Check page A
+		$pageA = new CMSMainTest_ClassA();
+		$pageA->write();
+		$pageB = new CMSMainTest_ClassB();
+		$pageB->write();
+		
+		// Check query
+		$response = $this->get('CMSMain/childfilter?ParentID='.$pageA->ID);
+		$children = json_decode($response->getBody());
+		$this->assertFalse($response->isError());
+
+		// Page A can't have unrelated children
 		$this->assertContains(
 			'Page',
-			$hints['CMSMainTest_ClassA']['disallowedChildren'], 
+			$children,
 			'Limited parent lists disallowed classes'
 		);
+
+		// But it can create a ClassB
 		$this->assertNotContains(
 			'CMSMainTest_ClassB',
-			$hints['CMSMainTest_ClassA']['disallowedChildren'], 
+			$children,
 			'Limited parent omits explicitly allowed classes in disallowedChildren'
 		);
-		
 	}
 	
 	/**
@@ -300,11 +316,7 @@ class CMSMainTest extends FunctionalTest {
 			'admin/pages/add/AddForm', 
 			array('ParentID' => $newPageId, 'PageType' => 'Page', 'Locale' => 'en_US', 'action_doAdd' => 1)
 		);
-		$this->assertFalse($response->isError());
-		$this->assertContains(
-			htmlentities(_t('SiteTree.PageTypeNotAllowed', array('type' => 'Page'))),
-			$response->getBody()
-		);
+		$this->assertEquals(403, $response->getStatusCode(), 'Add disallowed child should fail');
 
 		$this->session()->inst_set('loggedInAs', NULL);
 

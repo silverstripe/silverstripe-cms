@@ -915,7 +915,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 		// check for inherit
 		if($this->CanViewType == 'Inherit') {
 			if($this->ParentID) return $this->Parent()->canView($member);
-			else return $this->getSiteConfig()->canView($member);
+			else return $this->getSiteConfig()->canViewPages($member);
 		}
 		
 		// check for any logged-in users
@@ -994,12 +994,12 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 
 	/**
 	 * This function should return true if the current user can create new
-	 * pages of this class. It can be overloaded to customise the security model for an
-	 * application.
+	 * pages of this class, regardless of context. It can be overloaded
+	 * to customise the security model for an application.
 	 * 
-	 * Denies permission if any of the following conditions is TRUE:
-	 * - canCreate() returns FALSE on any extension
-	 * - $can_create is set to FALSE and the site is not in "dev mode"
+	 * By default, permission to create at the root level is based on the SiteConfig
+	 * configuration, and permission to create beneath a parent is based on the
+	 * ability to edit that parent page.
 	 * 
 	 * Use {@link canAddChildren()} to control behaviour of creating children under this page.
 	 * 
@@ -1007,6 +1007,9 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @uses DataExtension->canCreate()
 	 *
 	 * @param Member $member
+	 * @param array $context Optional array which may contain array('Parent' => $parentObj)
+	 * If a parent page is known, it will be checked for validity.
+	 * If omitted, it will be assumed this is to be created as a top level page.
 	 * @return boolean True if the current user can create pages on this class.
 	 */
 	public function canCreate($member = null) {
@@ -1014,15 +1017,30 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			$member = Member::currentUserID();
 		}
 
-		if($member && Permission::checkMember($member, "ADMIN")) return true;
-		
-		// Standard mechanism for accepting permission changes from extensions
-		$extended = $this->extendedCan('canCreate', $member);
-		if($extended !== null) return $extended;
-		
-		return $this->stat('can_create') != false || Director::isDev();
-	}
+		// Check parent (custom canCreate option for SiteTree)
+		// Block children not allowed for this parent type
+		$context = func_num_args() > 1 ? func_get_arg(1) : array();
+		$parent = isset($context['Parent']) ? $context['Parent'] : null;
+		if($parent && !in_array(get_class($this), $parent->allowedChildren())) return false;
 
+		// Check permission
+		if($member && Permission::checkMember($member, "ADMIN")) return true;
+
+		// Standard mechanism for accepting permission changes from extensions
+		$results = $this->extend('canCreate', $member, $parent);
+		if(is_array($results) && ($results = array_filter($results, function($v) {return $v !== null;}))) {
+			return min($results);
+		}
+
+		// Fall over to inherited permissions
+		if($parent) {
+			return $parent->canAddChildren($member);
+		} else {
+			// This doesn't necessarily mean we are creating a root page, but that
+			// we don't know if there is a parent, so default to this permission
+			return SiteConfig::current_site_config()->canCreateTopLevel($member);
+		}
+	}
 
 	/**
 	 * This function should return true if the current user can edit this
@@ -1064,7 +1082,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 			
 		// Default for unsaved pages
 		} else {
-			return $this->getSiteConfig()->canEdit($member);
+			return $this->getSiteConfig()->canEditPages($member);
 		}
 	}
 
@@ -1260,7 +1278,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
  			if(empty(self::$cache_permissions[$cacheKey])) self::$cache_permissions[$cacheKey] = array();
  			self::$cache_permissions[$cacheKey] = $combinedStageResult + self::$cache_permissions[$cacheKey];
  
-  		return $combinedStageResult;
+			return $combinedStageResult;
 		} else {
 			return array();
 		}
@@ -1276,7 +1294,7 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * page can be edited.
 	 */
 	static public function can_edit_multiple($ids, $memberID, $useCached = true) {
-		return self::batch_permission_check($ids, $memberID, 'CanEditType', 'SiteTree_EditorGroups', 'canEdit', null, $useCached);
+		return self::batch_permission_check($ids, $memberID, 'CanEditType', 'SiteTree_EditorGroups', 'canEditPages', null, $useCached);
 	}
 
 	/**
@@ -2701,9 +2719,20 @@ class SiteTree extends DataObject implements PermissionProvider,i18nEntityProvid
 	 * @return string a html string ready to be directly used in a template
 	 */
 	public function getTreeTitle() {
+		// Build the list of candidate children
+		$children = array();
+		$candidates = static::page_type_classes();
+		foreach($this->allowedChildren() as $childClass) {
+			if(!in_array($childClass, $candidates)) continue;
+			$child = singleton($childClass);
+			if($child->canCreate(null, array('Parent' => $this))) {
+				$children[$childClass] = $child->i18n_singular_name();
+			}
+		}
 		$flags = $this->getStatusFlags();
 		$treeTitle = sprintf(
-			"<span class=\"jstree-pageicon\"></span><span class=\"item\">%s</span>",
+			"<span class=\"jstree-pageicon\"></span><span class=\"item\" data-allowedchildren=\"%s\">%s</span>",
+			Convert::raw2att(Convert::raw2json($children)),
 			Convert::raw2xml(str_replace(array("\n","\r"),"",$this->MenuTitle))
 		);
 		foreach($flags as $class => $data) {

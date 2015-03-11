@@ -1,0 +1,7 @@
+SiteConfig:
+  default:
+    Title: My test site
+    Tagline: Default site config
+    CanViewType: Anyone
+    CanEditType: LoggedInUsers
+    CanCreateTopLevelType: LoggedInUsers
