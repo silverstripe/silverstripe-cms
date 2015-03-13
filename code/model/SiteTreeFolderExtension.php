@@ -27,7 +27,7 @@ class SiteTreeFolderExtension extends DataExtension {
 			$ids = $query->execute()->column();
 			if(!count($ids)) continue;
 			
-			foreach(singleton($className)->has_one() as $relName => $joinClass) {
+			foreach(singleton($className)->hasOne() as $relName => $joinClass) {
 				if($joinClass == 'Image' || $joinClass == 'File') {
 					$fieldName = $relName .'ID';
 					$query = DataList::create($className)->where("$fieldName > 0");

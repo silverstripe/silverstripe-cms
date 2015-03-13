@@ -109,7 +109,7 @@ class SiteTreeLinkTracking extends DataExtension {
 		}
 
 		// Update the "LinkTracking" many_many
-		if($record->ID && $record->many_many('LinkTracking') && $tracker = $record->LinkTracking()) {
+		if($record->ID && $record->manyManyComponent('LinkTracking') && $tracker = $record->LinkTracking()) {
 			$tracker->removeByFilter(sprintf(
 				'"FieldName" = \'%s\' AND "%s" = %d',
 				$fieldName,
@@ -123,7 +123,7 @@ class SiteTreeLinkTracking extends DataExtension {
 		}
 
 		// Update the "ImageTracking" many_many
-		if($record->ID && $record->many_many('ImageTracking') && $tracker = $record->ImageTracking()) {
+		if($record->ID && $record->manyManyComponent('ImageTracking') && $tracker = $record->ImageTracking()) {
 			$tracker->removeByFilter(sprintf(
 				'"FieldName" = \'%s\' AND "%s" = %d',
 				$fieldName,
