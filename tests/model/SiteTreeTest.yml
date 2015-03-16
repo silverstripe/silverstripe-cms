@@ -1,82 +1,104 @@
+SiteConfig:
+  default:
+    Title: My test site
+    Tagline: Default site config
+    CanViewType: Anyone
+    CanEditType: LoggedInUsers
+    CanCreateTopLevelType: LoggedInUsers
+
 Group:
-   editors:
-      Title: Editors
-   admins:
-      Title: Administrators
-      
+  editors:
+    Title: Editors
+  admins:
+    Title: Administrators
+  allsections:
+    Title: All Section Editors
+  securityadmins:
+    Title: Security Admins
+    
 Permission:
-   admins:
-      Code: ADMIN
-      Group: =>Group.admins
-   editors:
-      Code: CMS_ACCESS_CMSMain
-      Group: =>Group.editors
-      
+  admins:
+    Code: ADMIN
+    Group: =>Group.admins
+  editors:
+    Code: CMS_ACCESS_CMSMain
+    Group: =>Group.editors
+  allsections:
+    Code: CMS_ACCESS_CMSMain
+    Group: =>Group.allsections
+  securityadmins:
+    Code: CMS_ACCESS_SecurityAdmin
+    Group: =>Group.securityadmins
+ 
 Member:
-   editor:
-      FirstName: Test
-      Surname: Editor
-      Groups: =>Group.editors
-   admin:
-      FirstName: Test
-      Surname: Administrator
-      Groups: =>Group.admins
+  editor:
+    FirstName: Test
+    Surname: Editor
+    Groups: =>Group.editors
+  admin:
+    FirstName: Test
+    Surname: Administrator
+    Groups: =>Group.admins
+  allsections:
+    Groups: =>Group.allsections
+  securityadmin:
+    Groups: =>Group.securityadmins
 
 Page:
-    home:
-        Title: Home
-        CanEditType: OnlyTheseUsers
-        EditorGroups: =>Group.admins
-    about:
-        Title: About Us
-        CanEditType: OnlyTheseUsers
-        EditorGroups: =>Group.admins
-    staff:
-        Title: Staff
-        URLSegment: my-staff
-        Parent: =>Page.about
-    ceo:
-        Title: CEO
-        Parent: =>Page.staff
-    staffduplicate:
-        Title: Staff
-        URLSegment: my-staff
-        Parent: =>Page.about
-    products:
-        Title: Products
-        CanEditType: OnlyTheseUsers
-        EditorGroups: =>Group.editors
-    product1:
-        Title: 1.1 Test Product
-        Parent: =>Page.products
-        CanEditType: Inherit
-    product2:
-        Title: Another Product
-        Parent: =>Page.products
-        CanEditType: Inherit
-    product3:
-        Title: Another Product
-        Parent: =>Page.products
-        CanEditType: Inherit
-    product4:
-        Title: Another Product
-        Parent: =>Page.products
-        CanEditType: OnlyTheseUsers
-        EditorGroups: =>Group.admins
-    contact:
-        Title: Contact Us
-    object:
-        Title: Object
-    controller:
-        Title: Controller
-    numericonly:
-        Title: 1930
+  home:
+    Title: Home
+    CanEditType: OnlyTheseUsers
+    EditorGroups: =>Group.admins
+  about:
+    Title: About Us
+    CanEditType: OnlyTheseUsers
+    EditorGroups: =>Group.admins
+  staff:
+    Title: Staff
+    URLSegment: my-staff
+    Parent: =>Page.about
+  ceo:
+    Title: CEO
+    Parent: =>Page.staff
+  staffduplicate:
+    Title: Staff
+    URLSegment: my-staff
+    Parent: =>Page.about
+  products:
+    Title: Products
+    CanEditType: OnlyTheseUsers
+    EditorGroups: =>Group.editors
+  product1:
+    Title: 1.1 Test Product
+    Parent: =>Page.products
+    CanEditType: Inherit
+  product2:
+    Title: Another Product
+    Parent: =>Page.products
+    CanEditType: Inherit
+  product3:
+    Title: Another Product
+    Parent: =>Page.products
+    CanEditType: Inherit
+  product4:
+    Title: Another Product
+    Parent: =>Page.products
+    CanEditType: OnlyTheseUsers
+    EditorGroups: =>Group.admins
+  contact:
+    Title: Contact Us
+  object:
+    Title: Object
+  controller:
+    Title: Controller
+  numericonly:
+    Title: 1930
 
 SiteTreeTest_Conflicted:
-    parent:
-        Title: Parent
+  parent:
+    Title: Parent
 
 ErrorPage:
-    404:
-        Title: Page not Found
-        ErrorCode: 404
+  404:
+    Title: Page not Found
+    ErrorCode: 404

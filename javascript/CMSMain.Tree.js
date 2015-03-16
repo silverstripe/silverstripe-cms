@@ -9,23 +9,23 @@
 					'items': function(node) {
 						
 						// Build a list for allowed children as submenu entries
-						var pagetype = node.data('pagetype');
 						var id = node.data('id');
 
+						var allowedChildrenClasses = node.find('>a .item').data('allowedchildren');
 						var allowedChildren = new Object;
-						$(hints[pagetype].allowedChildren).each(
-							function(key, val){
-								allowedChildren["allowedchildren-" + key ] = {
-									'label': '<span class="jstree-pageicon"></span>' + val.ssname,
-									'_class': 'class-' + val.ssclass,
-									'action': function(obj) {
-										$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
-											self.data('urlAddpage'), id, val.ssclass
-										));
-									}
-								};
-							}
-						);
+						var hasAllowedChildren = false;
+						$.each(allowedChildrenClasses, function(klass, title) {
+							hasAllowedChildren = true;
+							allowedChildren["allowedchildren-" + klass ] = {
+								'label': '<span class="jstree-pageicon"></span>' + title,
+								'_class': 'class-' + klass,
+								'action': function(obj) {
+									$('.cms-container').entwine('.ss').loadPanel(ss.i18n.sprintf(
+										self.data('urlAddpage'), id, klass
+									));
+								}
+							};
+						});
 						var menuitems = 
 							{
 								'edit': {
@@ -38,7 +38,7 @@
 								}
 							};
 						// Test if there are any allowed Children and thus the possibility of adding some 
-						if(allowedChildren.hasOwnProperty('allowedchildren-0')) {
+						if(hasAllowedChildren) {
 							menuitems['addsubpage'] = {
 									'label': ss.i18n._t('Tree.AddSubPage', 'Add page under this page', 100, 'Used in the context menu when right-clicking on a page node in the CMS tree'),
 									'submenu': allowedChildren

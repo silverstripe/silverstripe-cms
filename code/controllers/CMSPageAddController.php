@@ -21,7 +21,7 @@ class CMSPageAddController extends CMSPageEditController {
 		$pageTypes = array();
 		foreach($this->PageTypes() as $type) {
 			$html = sprintf('<span class="page-icon class-%s"></span><strong class="title">%s</strong><span class="description">%s</span>',
-				$type->getField('Title'),
+				$type->getField('ClassName'),
 				$type->getField('AddAction'),
 				$type->getField('Description')
 			);
@@ -39,9 +39,6 @@ class CMSPageAddController extends CMSPageEditController {
 		$childTitle = _t('CMSPageAddController.ParentMode_child', 'Under another page');
 
 		$fields = new FieldList(
-			// new HiddenField("ParentID", false, ($this->parentRecord) ? $this->parentRecord->ID : null),
-			// TODO Should be part of the form attribute, but not possible in current form API
-			$hintsField = new LiteralField('Hints', sprintf('<span class="hints" data-hints="%s"></span>', $this->SiteTreeHints())),
 			new LiteralField('PageModeHeader', sprintf($numericLabelTmpl, 1, _t('CMSMain.ChoosePageParentMode', 'Choose where to create this page'))),
 			
 			$parentModeField = new SelectionGroup(
@@ -87,6 +84,8 @@ class CMSPageAddController extends CMSPageEditController {
 		$this->extend('updatePageOptions', $fields);
 		
 		$form = new Form($this, "AddForm", $fields, $actions);
+		$form->setAttribute('data-hints', $this->SiteTreeHints());
+		$form->setAttribute('data-childfilter', $this->Link('childfilter'));
 		$form->addExtraClass('cms-add-form stacked cms-content center cms-edit-form ' . $this->BaseCSSClasses());
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
 
@@ -113,12 +112,8 @@ class CMSPageAddController extends CMSPageEditController {
 		
 		if(!$parentObj || !$parentObj->ID) $parentID = 0;
 
-		if($parentObj) {
-			if(!$parentObj->canAddChildren()) return Security::permissionFailure($this);
-			if(!singleton($className)->canCreate()) return Security::permissionFailure($this);
-		} else {
-			if(!SiteConfig::current_site_config()->canCreateTopLevel())
-				return Security::permissionFailure($this);
+		if(!singleton($className)->canCreate(Member::currentUser(), array('Parent' => $parentObj))) {
+			return Security::permissionFailure($this);
 		}
 
 		$record = $this->getNewItem("new-$className-$parentID".$suffix, false);
