@@ -10,21 +10,24 @@ class OldPageRedirector extends Extension {
 	 * @throws SS_HTTPResponse_Exception
 	 */
 	public function onBeforeHTTPError404($request) {
+
 		// Build up the request parameters
 		$params = array_filter(array_values($request->allParams()), function($v) { return ($v !== NULL); });
-
+		
 		$getvars = $request->getVars();
-		unset($getvars['url']);
-
+		
 		$page = self::find_old_page($params);
-
-		if ($page) {
+		
+		if ($page && $page !== $getvars['url']) {
+			unset($getvars['url']);
+			
 			$res = new SS_HTTPResponse();
 			$res->redirect(
 				Controller::join_links(
 					$page,
 					($getvars) ? '?' . http_build_query($getvars) : null
 				), 301);
+			
 			throw new SS_HTTPResponse_Exception($res);
 		}
 	}
