@@ -201,6 +201,23 @@ class SiteConfig extends DataObject implements PermissionProvider {
 	}
 
 	/**
+	 * Can a user view this SiteConfig instance?
+	 *
+	 * @param Member $member
+	 * @return boolean
+	 */
+	public function canView($member = null) {
+		if(!$member) $member = Member::currentUserID();
+ 		if($member && is_numeric($member)) $member = DataObject::get_by_id('Member', $member);
+
+		$extended = $this->extendedCan('canView', $member);
+		if($extended !== null) return $extended;
+
+		// Assuming all that can edit this object can also view it
+		return $this->canEdit($member);
+	}
+
+	/**
 	 * Can a user view pages on this site? This method is only
 	 * called if a page is set to Inherit, but there is nothing
 	 * to inherit from.
