@@ -46,6 +46,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'treeview',
 		'listview',
 		'ListViewForm',
+		'childfilter',
 	);
 	
 	public function init() {
@@ -379,55 +380,49 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 	$json = $cache->load($cacheKey);
 	 	if(!$json) {
 			$def['Root'] = array();
-			$def['Root']['disallowedParents'] = array();
+			$def['Root']['disallowedChildren'] = array();
 
+			// Contains all possible classes to support UI controls listing them all,
+			// such as the "add page here" context menu.
+			$def['All'] = array();
+
+			// Identify disallows and set globals
 			foreach($classes as $class) {
 				$obj = singleton($class);
 				if($obj instanceof HiddenClass) continue;
-				
-				$allowedChildren = $obj->allowedChildren();
-				
-				// SiteTree::allowedChildren() returns null rather than an empty array if SiteTree::allowed_chldren == 'none'
-				if($allowedChildren == null) $allowedChildren = array();
-				
-				// Exclude SiteTree from possible Children
-				$possibleChildren = array_diff($allowedChildren, array("SiteTree"));
 
-				// Find i18n - names and build allowed children array
-				foreach($possibleChildren as $child) {
-					$instance = singleton($child);
-					
-					if($instance instanceof HiddenClass) continue;
+				// Name item
+				$def['All'][$class] = array(
+					'title' => $obj->i18n_singular_name()
+				);
 
-					if(!array_key_exists($child, $cacheCanCreate) || !$cacheCanCreate[$child]) continue;
-
-					// skip this type if it is restricted
-					if($instance->stat('need_permission') && !$this->can(singleton($class)->stat('need_permission'))) continue;
-
-					$title = $instance->i18n_singular_name();
-
-					$def[$class]['allowedChildren'][] = array("ssclass" => $child, "ssname" => $title);
+				// Check if can be created at the root
+				$needsPerm = $obj->stat('need_permission');
+				if(
+					!$obj->stat('can_be_root')
+					|| (!array_key_exists($class, $cacheCanCreate) || !$cacheCanCreate[$class])
+					|| ($needsPerm && !$this->can($needsPerm))
+				) {
+					$def['Root']['disallowedChildren'][] = $class;
 				}
 
-				$allowedChildren = array_keys(array_diff($classes, $allowedChildren));
-				if($allowedChildren) $def[$class]['disallowedChildren'] = $allowedChildren;
+				// Hint data specific to the class
+				$def[$class] = array();
+
 				$defaultChild = $obj->defaultChild();
-				if($defaultChild != 'Page' && $defaultChild != null) $def[$class]['defaultChild'] = $defaultChild;
-				$defaultParent = $obj->defaultParent();
-				$parent = SiteTree::get_by_link($defaultParent);
-				$id = $parent ? $parent->id : null;
-				if ($defaultParent != 1 && $defaultParent != null)  $def[$class]['defaultParent'] = $defaultParent;
-				if(isset($def[$class]['disallowedChildren'])) {
-					foreach($def[$class]['disallowedChildren'] as $disallowedChild) {
-						$def[$disallowedChild]['disallowedParents'][] = $class;
-					}
+				if($defaultChild !== 'Page' && $defaultChild !== null) {
+					$def[$class]['defaultChild'] = $defaultChild;
 				}
-				
-				// Are any classes allowed to be parents of root?
-				$def['Root']['disallowedParents'][] = $class;
+
+				$defaultParent = $obj->defaultParent();
+				if ($defaultParent !== 1 && $defaultParent !== null) {
+					$def[$class]['defaultParent'] = $defaultParent;
+				}
 			}
 
-			$json = Convert::raw2xml(Convert::raw2json($def));
+			$this->extend('updateSiteTreeHints', $def);
+
+			$json = Convert::raw2json($def);
 			$cache->save($json, $cacheKey);
 		}
 		return $json;
@@ -489,8 +484,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$instance = singleton($class);
 
 			if($instance instanceof HiddenClass) continue;
-
-			if(!$instance->canCreate()) continue;
 
 			// skip this type if it is restricted
 			if($instance->stat('need_permission') && !$this->can(singleton($class)->stat('need_permission'))) continue;
@@ -673,6 +666,38 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 	public function listview($request) {
 		return $this->renderWith($this->getTemplatesWithSuffix('_ListView'));
+	}
+
+	/**
+	 * Callback to request the list of page types allowed under a given page instance.
+	 * Provides a slower but more precise response over SiteTreeHints
+	 *
+	 * @param SS_HTTPRequest $request
+	 * @return SS_HTTPResponse
+	 */
+	public function childfilter($request) {
+		// Check valid parent specified
+		$parentID = $request->requestVar('ParentID');
+		$parent = SiteTree::get()->byID($parentID);
+		if(!$parent || !$parent->exists()) return $this->httpError(404);
+
+		// Build hints specific to this class
+		// Identify disallows and set globals
+		$classes = SiteTree::page_type_classes();
+		$disallowedChildren = array();
+		foreach($classes as $class) {
+			$obj = singleton($class);
+			if($obj instanceof HiddenClass) continue;
+
+			if(!$obj->canCreate(null, array('Parent' => $parent))) {
+				$disallowedChildren[] = $class;
+			}
+		}
+
+		$this->extend('updateChildFilter', $disallowedChildren, $parentID);
+		$this->response->addHeader('Content-Type', 'application/json; charset=utf-8');
+		$this->response->setBody(Convert::raw2json($disallowedChildren));
+		return $this->response;
 	}
 	
 	/**

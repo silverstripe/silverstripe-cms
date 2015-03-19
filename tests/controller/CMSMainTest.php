@@ -8,7 +8,7 @@ class CMSMainTest extends FunctionalTest {
 	static $fixture_file = 'CMSMainTest.yml';
 	
 	static protected $orig = array();
-	
+
 	public function setUpOnce() {
 		self::$orig['CMSBatchActionHandler_batch_actions'] = CMSBatchActionHandler::$batch_actions;
 		CMSBatchActionHandler::$batch_actions = array(
@@ -19,11 +19,83 @@ class CMSMainTest extends FunctionalTest {
 		
 		parent::setUpOnce();
 	}
-	
+
 	public function tearDownOnce() {
 		CMSBatchActionHandler::$batch_actions = self::$orig['CMSBatchActionHandler_batch_actions'];
-		
+
 		parent::tearDownOnce();
+	}
+
+	function testSiteTreeHints() {
+		$cache = SS_Cache::factory('CMSMain_SiteTreeHints');
+		// Login as user with root creation privileges
+		$user = $this->objFromFixture('Member', 'rootedituser');
+		$user->logIn();
+		$cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+
+		$rawHints = singleton('CMSMain')->SiteTreeHints();
+		$this->assertNotNull($rawHints);
+
+		$rawHints = preg_replace('/^"(.*)"$/', '$1', Convert::xml2raw($rawHints));
+		$hints = Convert::json2array($rawHints);
+
+		$this->assertArrayHasKey('Root', $hints);
+		$this->assertArrayHasKey('Page', $hints);
+		$this->assertArrayHasKey('All', $hints);
+
+		$this->assertArrayHasKey(
+			'CMSMainTest_ClassA',
+			$hints['All'],
+			'Global list shows allowed classes'
+		);
+
+		$this->assertArrayNotHasKey(
+			'CMSMainTest_HiddenClass',
+			$hints['All'],
+			'Global list does not list hidden classes'
+		);
+
+		$this->assertNotContains(
+			'CMSMainTest_ClassA',
+			$hints['Root']['disallowedChildren'],
+			'Limits root classes'
+		);
+
+		$this->assertContains(
+			'CMSMainTest_NotRoot',
+			$hints['Root']['disallowedChildren'],
+			'Limits root classes'
+		);
+		
+	}
+
+	public function testChildFilter() {
+		$this->logInWithPermission('ADMIN');
+		
+		// Check page A
+		$pageA = new CMSMainTest_ClassA();
+		$pageA->write();
+		$pageB = new CMSMainTest_ClassB();
+		$pageB->write();
+		
+		// Check query
+		$response = $this->get('CMSMain/childfilter?ParentID='.$pageA->ID);
+		$children = json_decode($response->getBody());
+		$this->assertFalse($response->isError());
+
+		// Page A can't have unrelated children
+		$this->assertContains(
+ 			'Page',
+			$children,
+			'Limited parent lists disallowed classes'
+		);
+
+		// But it can create a ClassB
+		$this->assertNotContains(
+			'CMSMainTest_ClassB',
+			$children,
+			'Limited parent omits explicitly allowed classes in disallowedChildren'
+		);
 	}
 	
 	/**
@@ -256,11 +328,7 @@ class CMSMainTest extends FunctionalTest {
 			'admin/pages/add/AddForm', 
 			array('ParentID' => $newPageId, 'PageType' => 'Page', 'Locale' => 'en_US', 'action_doAdd' => 1)
 		);
-		$this->assertFalse($response->isError());
-		$this->assertContains(
-			htmlentities(_t('SiteTree.PageTypeNotAllowed', array('type' => 'Page'))),
-			$response->getBody()
-		);
+		$this->assertEquals(403, $response->getStatusCode(), 'Add disallowed child should fail');
 
 		$this->session()->inst_set('loggedInAs', NULL);
 
@@ -313,4 +381,12 @@ class CMSMainTest_ClassA extends Page implements TestOnly {
 
 class CMSMainTest_ClassB extends Page implements TestOnly {
 	
+}
+
+class CMSMainTest_NotRoot extends Page implements TestOnly {
+	static $can_be_root = false;
+}
+
+class CMSMainTest_HiddenClass extends Page implements TestOnly, HiddenClass {
+
 }
