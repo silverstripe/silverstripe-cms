@@ -68,27 +68,15 @@
 						// Build a list for allowed children as submenu entries
 						var pagetype = node.data('pagetype'),
 							id = node.data('id'),
-							disallowedChildren = (typeof hints[pagetype] != 'undefined') ? hints[pagetype].disallowedChildren : null,
-							allowedChildren = $.extend(true, {}, hints['All']), // clone
-							disallowedClass,
+							allowedChildren = node.find('>a .item').data('allowedchildren'),
 							menuAllowedChildren = {},
 							hasAllowedChildren = false;
 
-						// Filter allowed
-						if(disallowedChildren) {
-							for(var i=0; i<disallowedChildren.length; i++) {
-								disallowedClass = disallowedChildren[i];
-								if(allowedChildren[disallowedClass]) {
-									delete allowedChildren[disallowedClass];
-							}
-							}
-						}
-
 						// Convert to menu entries
-						$.each(allowedChildren, function(klass, klassData){
+						$.each(allowedChildren, function(klass, title){
 							hasAllowedChildren = true;
 							menuAllowedChildren["allowedchildren-" + klass ] = {
-								'label': '<span class="jstree-pageicon"></span>' + klassData.title,
+								'label': '<span class="jstree-pageicon"></span>' + title,
 								'_class': 'class-' + klass,
 								'action': function(obj) {
 									$('.cms-container').entwine('.ss').loadPanel(
