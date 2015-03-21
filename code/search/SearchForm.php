@@ -27,6 +27,10 @@ class SearchForm extends Form {
 		"SiteTree", "File"
 	);
 	
+	private static $casting = array(
+		'SearchQuery' => 'Text'
+	);
+	
 	/**
 	 * 
 	 * @param Controller $controller
@@ -145,9 +149,9 @@ class SearchForm extends Form {
 		$start = isset($_GET['start']) ? (int)$_GET['start'] : 0;
 		
 		if(strpos($keywords, '"') !== false || strpos($keywords, '+') !== false || strpos($keywords, '-') !== false || strpos($keywords, '*') !== false) {
-			$results = DB::getConn()->searchEngine($this->classesToSearch, $keywords, $start, $pageLength, "\"Relevance\" DESC", "", true);
+			$results = DB::get_conn()->searchEngine($this->classesToSearch, $keywords, $start, $pageLength, "\"Relevance\" DESC", "", true);
 		} else {
-			$results = DB::getConn()->searchEngine($this->classesToSearch, $keywords, $start, $pageLength);
+			$results = DB::get_conn()->searchEngine($this->classesToSearch, $keywords, $start, $pageLength);
 		}
 		
 		// filter by permission
@@ -198,7 +202,7 @@ class SearchForm extends Form {
 		if(!isset($data)) $data = $_REQUEST;
 		
 		// The form could be rendered without the search being done, so check for that.
-		if (isset($data['Search'])) return Convert::raw2xml($data['Search']);
+		if (isset($data['Search'])) return $data['Search'];
 	}
 	
 	/**

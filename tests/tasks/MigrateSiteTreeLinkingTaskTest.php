@@ -29,12 +29,12 @@ class MigrateSiteTreeLinkingTaskTest extends SapphireTest {
 		$hashID   = $this->idFromFixture('SiteTree', 'hash_link');
 		
 		$homeContent = sprintf (
-			'<a href="[sitetree_link,id=%d]">About</a><a href="[sitetree_link,id=%d]">Staff</a><a href="http://silverstripe.org/">External Link</a>',
+			'<a href="[sitetree_link,id=%d]">About</a><a href="[sitetree_link,id=%d]">Staff</a><a href="http://silverstripe.org/">External Link</a><a name="anchor"></a>',
 			$aboutID,
 			$staffID
 		);
 		$aboutContent = sprintf (
-			'<a href="[sitetree_link,id=%d]">Home</a><a href="[sitetree_link,id=%d]">Staff</a>',
+			'<a href="[sitetree_link,id=%d]">Home</a><a href="[sitetree_link,id=%d]">Staff</a><a name="second-anchor"></a>',
 			$homeID,
 			$staffID
 		);

@@ -18,7 +18,14 @@
 	"require": {
 		"php": ">=5.3.2",
 		"composer/installers": "*",
-		"silverstripe/framework": "3.1.*"
+		"silverstripe/framework": "4.0.x-dev",
+		"silverstripe/reports": "*",
+		"silverstripe/siteconfig": "*"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "4.0.x-dev"
+		}
 	},
 	"autoload": {
 		"classmap": ["tests/behat/"]

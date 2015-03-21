@@ -4,9 +4,9 @@
  * @subpackage tests
  */
 
-class SideReportTest extends SapphireTest {
+class CmsReportsTest extends SapphireTest {
 
-	protected static $fixture_file = 'SideReportTest.yml';
+	protected static $fixture_file = 'CmsReportsTest.yml';
 
 	private static $daysAgo = 14;
 	
@@ -14,8 +14,8 @@ class SideReportTest extends SapphireTest {
 		parent::setUp();
 
 		// set the dates by hand: impossible to set via yml
-		$afterThreshold = strtotime('-'.(SideReportTest::$daysAgo-1).' days', strtotime('31-06-2009 00:00:00'));
-		$beforeThreshold = strtotime('-'.(SideReportTest::$daysAgo+1).' days', strtotime('31-06-2009 00:00:00'));
+		$afterThreshold = strtotime('-'.(self::$daysAgo-1).' days', strtotime('31-06-2009 00:00:00'));
+		$beforeThreshold = strtotime('-'.(self::$daysAgo+1).' days', strtotime('31-06-2009 00:00:00'));
 
 		$after = $this->objFromFixture('SiteTree', 'after');
 		$before = $this->objFromFixture('SiteTree', 'before');
@@ -30,7 +30,7 @@ class SideReportTest extends SapphireTest {
 		$after = $this->objFromFixture('SiteTree', 'after');
 		$before = $this->objFromFixture('SiteTree', 'before');
 
-		$r = new SideReport_RecentlyEdited();
+		$r = new RecentlyEditedReport();
 		
 		// check if contains only elements not older than $daysAgo days
 		$this->assertNotNull($r->records(array()));

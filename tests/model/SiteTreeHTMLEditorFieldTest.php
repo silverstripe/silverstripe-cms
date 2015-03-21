@@ -166,37 +166,4 @@ class SiteTreeHtmlEditorFieldTest extends FunctionalTest {
 		$this->assertFalse((bool) $sitetree->HasBrokenFile);
 	}
 
-	public function testBrokenLinkHighlighting() {
-		$sitetree = new SiteTree();
-		$editor   = new HtmlEditorField('Content');
-
-		// SiteTree link highlighting
-		$editor->setValue('<a href="[sitetree_link,id=0]">Broken Link</a>');
-
-		$element = new SimpleXMLElement(html_entity_decode((string) new SimpleXMLElement($editor->Field())));
-		$this->assertContains('ss-broken', (string) $element['class'], 'A broken SiteTree link is highlighted');
-
-		$editor->setValue(sprintf (
-			'<a href="[sitetree_link,id=%d]">Working Link</a>',
-			$this->idFromFixture('SiteTree', 'home')
-		));
-
-		$element = new SimpleXMLElement(html_entity_decode((string) new SimpleXMLElement($editor->Field())));
-		$this->assertNotContains('ss-broken', (string) $element['class']);
-
-		// File link highlighting
-		$editor->setValue('<a href="[file_link,id=0]">Broken Link</a>');
-
-		$element = new SimpleXMLElement(html_entity_decode((string) new SimpleXMLElement($editor->Field())));
-		$this->assertContains('ss-broken', (string) $element['class'], 'A broken File link is highlighted');
-
-		$editor->setValue(sprintf (
-			'<a href="[file_link,id=%d]">Working Link</a>',
-			$this->idFromFixture('File', 'example_file')
-		));
-
-		$element = new SimpleXMLElement(html_entity_decode((string) new SimpleXMLElement($editor->Field())));
-		$this->assertNotContains('ss-broken', (string) $element['class']);
-	}
-
 }

@@ -5,7 +5,7 @@
  */
 class SiteTreeBrokenLinksTest extends SapphireTest {
 	protected static $fixture_file = 'SiteTreeBrokenLinksTest.yml';
-	
+
 	public function testBrokenLinksBetweenPages() {
 		$obj = $this->objFromFixture('Page','content');
 		
@@ -17,31 +17,44 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$obj->syncLinkTracking();
 		$this->assertFalse($obj->HasBrokenLink, 'Page does NOT have a broken link');
 	}
-	
+
+	public function testBrokenAnchorBetweenPages() {
+		$obj = $this->objFromFixture('Page','content');
+		$target = $this->objFromFixture('Page', 'about');
+
+		$obj->Content = "<a href=\"[sitetree_link,id={$target->ID}]#no-anchor-here\">this is a broken link</a>";
+		$obj->syncLinkTracking();
+		$this->assertTrue($obj->HasBrokenLink, 'Page has a broken link');
+
+		$obj->Content = "<a href=\"[sitetree_link,id={$target->ID}]#yes-anchor-here\">this is not a broken link</a>";
+		$obj->syncLinkTracking();
+		$this->assertFalse($obj->HasBrokenLink, 'Page does NOT have a broken link');
+	}
+
 	public function testBrokenVirtualPages() {
 		$obj = $this->objFromFixture('Page','content');
 		$vp = new VirtualPage();
 		
-		$vp->CopyContentFromID = $obj->ID;		
+		$vp->CopyContentFromID = $obj->ID;
 		$vp->syncLinkTracking();
 		$this->assertFalse($vp->HasBrokenLink, 'Working virtual page is NOT marked as broken');
 		
-		$vp->CopyContentFromID = 12345678;		
+		$vp->CopyContentFromID = 12345678;
 		$vp->syncLinkTracking();
 		$this->assertTrue($vp->HasBrokenLink, 'Broken virtual page IS marked as such');
 	}
-	
+
 	public function testBrokenInternalRedirectorPages() {
 		$obj = $this->objFromFixture('Page','content');
 		$rp = new RedirectorPage();
 		
 		$rp->RedirectionType = 'Internal';
 		
-		$rp->LinkToID = $obj->ID;		
+		$rp->LinkToID = $obj->ID;
 		$rp->syncLinkTracking();
 		$this->assertFalse($rp->HasBrokenLink, 'Working redirector page is NOT marked as broken');
 		
-		$rp->LinkToID = 12345678;		
+		$rp->LinkToID = 12345678;
 		$rp->syncLinkTracking();
 		$this->assertTrue($rp->HasBrokenLink, 'Broken redirector page IS marked as such');
 	}
@@ -77,7 +90,8 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 
 		$liveObj = Versioned::get_one_by_stage("SiteTree", "Live", "\"SiteTree\".\"ID\" = $obj->ID");
 		$this->assertEquals(1, $liveObj->HasBrokenFile);
-	}	
+	}
+
 	public function testDeletingMarksBackLinkedPagesAsBroken() {
 		$this->logInWithPermission('ADMIN');
 		
@@ -142,9 +156,8 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 			WHERE \"ID\" = $linkSrc->ID")->value());
 	}
 
-	
 	public function testRestoreFixesBrokenLinks() {
-		// Create page and virutal page
+		// Create page and virtual page
 		$p = new Page();
 		$p->Title = "source";
 		$p->write();
@@ -279,13 +292,20 @@ class SiteTreeBrokenLinksTest extends SapphireTest {
 		$this->assertFalse((bool)$vp->HasBrokenLink);
 		$this->assertFalse((bool)$rp->HasBrokenLink);
 
-		// However, the page isn't marked as modified on stage
-		$this->assertFalse($p2->IsModifiedOnStage);
-		$this->assertFalse($rp->IsModifiedOnStage);
-
-		// This is something that we know to be broken
-		//$this->assertFalse($vp->IsModifiedOnStage);
-
 	}
+
+	public function testBrokenAnchorLinksInAPage() {
+		$obj = $this->objFromFixture('Page','content');
+		$origContent = $obj->Content;
+
+		$obj->Content = $origContent . '<a href="#no-anchor-here">this links to a non-existent in-page anchor or skiplink</a>';
+		$obj->syncLinkTracking();
+		$this->assertTrue($obj->HasBrokenLink, 'Page has a broken anchor/skiplink');
+
+		$obj->Content = $origContent . '<a href="#yes-anchor-here">this links to an existent in-page anchor/skiplink</a>';
+		$obj->syncLinkTracking();
+		$this->assertFalse($obj->HasBrokenLink, 'Page doesn\'t have a broken anchor or skiplink');
+	}
+
 }
 

@@ -8,7 +8,7 @@ addons:
 
 env:
   global:
-    - CORE_RELEASE=3.1
+    - CORE_RELEASE=master
     - "ARTIFACTS_AWS_REGION=us-east-1"
     - "ARTIFACTS_S3_BUCKET=silverstripe-travis-artifacts"
     - secure: "7V20Qk3bIG2AlTJaA5D/uzB8vUVvRwQp+xjRYUxlahtj9FcuqEV3HIyjwwJe0T6Z1bnRYuu28ZnCT2CfP9BBZ3FE7AwSZbPase9c0/at2qDJNqkvIdC1xZ1H6Fcy2LSwNB9wLQPe613ItVdanitEuwE41iowxBPslxUUTnwx7eY="

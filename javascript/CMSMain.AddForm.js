@@ -7,7 +7,7 @@
 		$(".cms-add-form .parent-mode :input").entwine({
 			onclick: function(e) {
 				if(this.val() == 'top') {
-					var parentField = this.closest('form').find('#ParentID .TreeDropdownField')
+					var parentField = this.closest('form').find('#Form_AddForm_ParentID_Holder .TreeDropdownField')
 					parentField.setValue('');
 					parentField.setTitle('');
 				}
@@ -17,7 +17,7 @@
 		$(".cms-add-form").entwine({
 			onadd: function() {
 				var self = this;
-				this.find('#ParentID .TreeDropdownField').bind('change', function() {
+				this.find('#Form_AddForm_ParentID_Holder .TreeDropdownField').bind('change', function() {
 					self.updateTypeList();
 				});
 				this.updateTypeList();
@@ -29,8 +29,8 @@
 			 */
 			updateTypeList: function() {
 				var hints = this.find('.hints').data('hints'), 
-					metadata = this.find('#ParentID .TreeDropdownField').data('metadata'),
-					id = this.find('#ParentID .TreeDropdownField').getValue(),
+					metadata = this.find('#Form_AddForm_ParentID_Holder .TreeDropdownField').data('metadata'),
+					id = this.find('#Form_AddForm_ParentID_Holder .TreeDropdownField').getValue(),
 					newClassName = (id && metadata) ? metadata.ClassName : null,
 					hintKey = (newClassName) ? newClassName : 'Root',
 					hint = (typeof hints[hintKey] != 'undefined') ? hints[hintKey] : null,
@@ -40,7 +40,7 @@
 					defaultChildClass = (hint && typeof hint.defaultChild != 'undefined') ? hint.defaultChild : null;
 				
 				// Limit selection
-				this.find('#PageType li').each(function() {
+				this.find('#Form_AddForm_PageType_Holder li').each(function() {
 					var className = $(this).find('input').val(), 
 						isAllowed = ($.inArray(className, disallowedChildren) == -1);
 					
@@ -51,22 +51,22 @@
 				
 				// Set default child selection, or fall back to first available option
 				if(defaultChildClass) {
-					var selectedEl = this.find('#PageType li input[value=' + defaultChildClass + ']').parents('li:first');
+					var selectedEl = this.find('#Form_AddForm_PageType_Holder li input[value=' + defaultChildClass + ']').parents('li:first');
 				} else {
-					var selectedEl = this.find('#PageType li:not(.disabled):first');
+					var selectedEl = this.find('#Form_AddForm_PageType_Holder li:not(.disabled):first');
 				}
 				selectedEl.setSelected(true);
 				selectedEl.siblings().setSelected(false);
 
 				// Disable the "Create" button if none of the pagetypes are available
-				var buttonState = (this.find('#PageType li:not(.disabled)').length) ? 'enable' : 'disable';
+				var buttonState = (this.find('#Form_AddForm_PageType_Holder li:not(.disabled)').length) ? 'enable' : 'disable';
 				this.find('button[name=action_doAdd]').button(buttonState);
 
 				this.find('.message-restricted')[allAllowed ? 'hide' : 'show']();
 			}
 		});
 		
-		$(".cms-add-form #PageType li").entwine({
+		$(".cms-add-form #Form_AddForm_PageType_Holder li").entwine({
 			onclick: function(e) {
 				this.setSelected(true);
 			},

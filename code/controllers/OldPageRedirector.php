@@ -6,7 +6,7 @@ class OldPageRedirector extends Extension {
 	 * On every URL that generates a 404, we'll capture it here and see if we can
 	 * find an old URL that it should be redirecting to.
 	 *
-	 * @param SS_HTTPResponse $request The request object
+	 * @param SS_HTTPRequest $request The request object
 	 * @throws SS_HTTPResponse_Exception
 	 */
 	public function onBeforeHTTPError404($request) {
@@ -39,7 +39,9 @@ class OldPageRedirector extends Extension {
 	 * @return string|boolean False, or the new URL
 	 */
 	static public function find_old_page($params, $parent = null, $redirect = false) {
-		$URL = Convert::raw2sql(array_shift($params));
+		$parent = is_numeric($parent) ? SiteTree::get()->byId($parent) : $parent;	
+		$params = (array)$params;
+		$URL = rawurlencode(array_shift($params));
 		if (empty($URL)) { return false; }
 		if ($parent) {
 			$page = SiteTree::get()->filter(array('ParentID' => $parent->ID, 'URLSegment' => $URL))->First();
@@ -49,11 +51,17 @@ class OldPageRedirector extends Extension {
 
 		if (!$page) {
 			// If we haven't found a candidate, lets resort to finding an old page with this URL segment
-			// TODO: Rewrite using ORM syntax
-			$query = new SQLQuery (
+			$oldFilter = array(
+				'"SiteTree_versions"."URLSegment"' => $URL,
+				'"SiteTree_versions"."WasPublished"' => true
+			);
+			if($parent) {
+				$oldFilter[] = array('"SiteTree_versions"."ParentID"' => $parent->ID);
+			}
+			$query = new SQLSelect(
 				'"RecordID"',
 				'"SiteTree_versions"',
-				"\"URLSegment\" = '$URL' AND \"WasPublished\" = 1" . ($parent ? ' AND "ParentID" = ' . $parent->ID : ''),
+				$oldFilter,
 				'"LastEdited" DESC',
 				null,
 				null,

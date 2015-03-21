@@ -545,7 +545,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			if($versionID) {
 				$record = Versioned::get_version($treeClass, $id, $versionID);
 			} else {
-				$record = DataObject::get_one($treeClass, "\"$treeClass\".\"ID\" = $id");
+				$record = DataObject::get_by_id($treeClass, $id);
 			}
 
 			// Then, try getting a record from the live site
@@ -554,7 +554,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 				Versioned::reading_stage('Live');
 				singleton($treeClass)->flushCache();
 
-				$record = DataObject::get_one( $treeClass, "\"$treeClass\".\"ID\" = $id");
+				$record = DataObject::get_by_id($treeClass, $id);
 				if($record) Versioned::set_reading_mode('');
 			}
 			
@@ -830,9 +830,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// Fall back to homepage record
 		if(!$id) {
 			$homepageSegment = RootURLController::get_homepage_link();
-			$homepageRecord = DataObject::get_one('SiteTree', sprintf(
-				'"SiteTree"."URLSegment" = \'%s\'',
-				Convert::raw2sql($homepageSegment)
+			$homepageRecord = DataObject::get_one('SiteTree', array(
+				'"SiteTree"."URLSegment"' => $homepageSegment
 			));
 			if($homepageRecord) $id = $homepageRecord->ID;
 		}
@@ -850,14 +849,14 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$className = $this->stat('tree_class');
 
 		// Existing or new record?
-		$SQL_id = Convert::raw2sql($data['ID']);
-		if(substr($SQL_id,0,3) != 'new') {
-			$record = DataObject::get_by_id($className, $SQL_id);
+		$id = $data['ID'];
+		if(substr($id,0,3) != 'new') {
+			$record = DataObject::get_by_id($className, $id);
 			if($record && !$record->canEdit()) return Security::permissionFailure($this);
-			if(!$record || !$record->ID) throw new SS_HTTPResponse_Exception("Bad record ID #$SQL_id", 404);
+			if(!$record || !$record->ID) throw new SS_HTTPResponse_Exception("Bad record ID #$id", 404);
 		} else {
 			if(!singleton($this->stat('tree_class'))->canCreate()) return Security::permissionFailure($this);
-			$record = $this->getNewItem($SQL_id, false);
+			$record = $this->getNewItem($id, false);
 		}
 		
 		// TODO Coupling to SiteTree
@@ -906,17 +905,17 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		
 		$newItem = new $className();
 
-	    if( !$suffix ) {
+		if( !$suffix ) {
 			$sessionTag = "NewItems." . $parentID . "." . $className;
-    		if(Session::get($sessionTag)) {
-		    	$suffix = '-' . Session::get($sessionTag);
-		    	Session::set($sessionTag, Session::get($sessionTag) + 1);
-		    }
-		    else
-		    	Session::set($sessionTag, 1);
+			if(Session::get($sessionTag)) {
+				$suffix = '-' . Session::get($sessionTag);
+				Session::set($sessionTag, Session::get($sessionTag) + 1);
+			}
+			else
+				Session::set($sessionTag, 1);
 
-		    	$id = $id . $suffix;
-	    }
+				$id = $id . $suffix;
+		}
 
 		$newItem->Title = _t(
 			'CMSMain.NEWPAGE',
@@ -929,7 +928,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// DataObject::fieldExists only checks the current class, not the hierarchy
 		// This allows the CMS to set the correct sort value
 		if($newItem->castingHelper('Sort')) {
-			$newItem->Sort = DB::query("SELECT MAX(\"Sort\") FROM \"SiteTree\" WHERE \"ParentID\" = '" . Convert::raw2sql($parentID) . "'")->value() + 1;
+			$newItem->Sort = DB::prepared_query('SELECT MAX("Sort") FROM "SiteTree" WHERE "ParentID" = ?', array($parentID))->value() + 1;
 		}
 
 		if($setID) $newItem->ID = $id;
@@ -1021,11 +1020,9 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		$restoredPage = Versioned::get_latest_version("SiteTree", $id);
 		if(!$restoredPage) 	return new SS_HTTPResponse("SiteTree #$id not found", 400);
 		
-		$record = Versioned::get_one_by_stage(
-			'SiteTree', 
-			'Live', 
-			sprintf("\"SiteTree_Live\".\"ID\" = '%d'", (int)$data['ID'])
-		);
+		$record = Versioned::get_one_by_stage('SiteTree', 'Live', array(
+			'"SiteTree_Live"."ID"' => $id
+		));
 
 		// a user can restore a page without publication rights, as it just adds a new draft state
 		// (this action should just be available when page has been "deleted from draft")
@@ -1052,11 +1049,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * @see deletefromlive()
 	 */
 	public function delete($data, $form) {
-		$id = Convert::raw2sql($data['ID']);
-		$record = DataObject::get_one(
-			"SiteTree", 
-			sprintf("\"SiteTree\".\"ID\" = %d", $id)
-		);
+		$id = $data['ID'];
+		$record = DataObject::get_by_id("SiteTree", $id);
 		if($record && !$record->canDelete()) return Security::permissionFailure();
 		if(!$record || !$record->ID) throw new SS_HTTPResponse_Exception("Bad record ID #$id", 404);
 		

@@ -85,21 +85,16 @@ in the other stage:<br />
 		if($orphans) foreach($orphans as $orphan) {
 			$latestVersion = Versioned::get_latest_version($this->orphanedSearchClass, $orphan->ID);
 			$latestAuthor = DataObject::get_by_id('Member', $latestVersion->AuthorID);
+			$orphanBaseClass = ClassInfo::baseDataClass($this->orphanedSearchClass);
 			$stageRecord = Versioned::get_one_by_stage(
 				$this->orphanedSearchClass, 
-				'Stage', 
-				sprintf("\"%s\".\"ID\" = %d", 
-					ClassInfo::baseDataClass($this->orphanedSearchClass), 
-					$orphan->ID
-				)
+				'Stage',
+				array("\"$orphanBaseClass\".\"ID\"" => $orphan->ID)
 			);
 			$liveRecord = Versioned::get_one_by_stage(
 				$this->orphanedSearchClass, 
 				'Live', 
-				sprintf("\"%s\".\"ID\" = %d", 
-					ClassInfo::baseDataClass($this->orphanedSearchClass), 
-					$orphan->ID
-				)
+				array("\"$orphanBaseClass\".\"ID\"" => $orphan->ID)
 			);
 			$label = sprintf(
 				'<a href="admin/pages/edit/show/%d">%s</a> <small>(#%d, Last Modified Date: %s, Last Modifier: %s, %s)</small>',
@@ -218,14 +213,12 @@ in the other stage:<br />
 	
 	protected function removeOrphans($orphanIDs) {
 		$removedOrphans = array();
+		$orphanBaseClass = ClassInfo::baseDataClass($this->orphanedSearchClass);
 		foreach($orphanIDs as $id) {
 			$stageRecord = Versioned::get_one_by_stage(
 				$this->orphanedSearchClass, 
 				'Stage', 
-				sprintf("\"%s\".\"ID\" = %d", 
-					ClassInfo::baseDataClass($this->orphanedSearchClass), 
-					$id
-				)
+				array("\"$orphanBaseClass\".\"ID\"" => $id)
 			);
 			if($stageRecord) {
 				$removedOrphans[$stageRecord->ID] = sprintf('Removed %s (#%d) from Stage', $stageRecord->Title, $stageRecord->ID);
@@ -236,10 +229,7 @@ in the other stage:<br />
 			$liveRecord = Versioned::get_one_by_stage(
 				$this->orphanedSearchClass, 
 				'Live', 
-				sprintf("\"%s\".\"ID\" = %d", 
-					ClassInfo::baseDataClass($this->orphanedSearchClass), 
-					$id
-				)
+				array("\"$orphanBaseClass\".\"ID\"" => $id)
 			);
 			if($liveRecord) {
 				$removedOrphans[$liveRecord->ID] = sprintf('Removed %s (#%d) from Live', $liveRecord->Title, $liveRecord->ID);
@@ -265,14 +255,12 @@ in the other stage:<br />
 		$holder->write();
 		
 		$removedOrphans = array();
+		$orphanBaseClass = ClassInfo::baseDataClass($this->orphanedSearchClass);
 		foreach($orphanIDs as $id) {
 			$stageRecord = Versioned::get_one_by_stage(
 				$this->orphanedSearchClass, 
-				'Stage', 
-				sprintf("\"%s\".\"ID\" = %d", 
-					ClassInfo::baseDataClass($this->orphanedSearchClass), 
-					$id
-				)
+				'Stage',
+				array("\"$orphanBaseClass\".\"ID\"" => $id)
 			);
 			if($stageRecord) {
 				$removedOrphans[$stageRecord->ID] = sprintf('Rebased %s (#%d)', $stageRecord->Title, $stageRecord->ID);
@@ -286,11 +274,8 @@ in the other stage:<br />
 			}
 			$liveRecord = Versioned::get_one_by_stage(
 				$this->orphanedSearchClass, 
-				'Live', 
-				sprintf("\"%s\".\"ID\" = %d", 
-					ClassInfo::baseDataClass($this->orphanedSearchClass), 
-					$id
-				)
+				'Live',
+				array("\"$orphanBaseClass\".\"ID\"" => $id)
 			);
 			if($liveRecord) {
 				$removedOrphans[$liveRecord->ID] = sprintf('Rebased %s (#%d)', $liveRecord->Title, $liveRecord->ID);
@@ -315,15 +300,19 @@ in the other stage:<br />
 	 * Gets all orphans from "Stage" and "Live" stages.
 	 * 
 	 * @param string $class
-	 * @param string $filter
+	 * @param array $filter
 	 * @param string $sort
 	 * @param string $join
 	 * @param int|array $limit
 	 * @return SS_List
 	 */
-	public function getOrphanedPages($class = 'SiteTree', $filter = '', $sort = null, $join = null, $limit = null) {
-		$filter .= ($filter) ? ' AND ' : '';
-		$filter .= sprintf("\"%s\".\"ParentID\" != 0 AND \"Parents\".\"ID\" IS NULL", $class);
+	public function getOrphanedPages($class = 'SiteTree', $filter = array(), $sort = null, $join = null, $limit = null) {
+		// Alter condition
+		if(empty($filter)) $where = array();
+		elseif(is_array($filter)) $where = $filter;
+		else $where = array($filter);
+		$where[] = array("\"$class\".\"ParentID\" != ?" => 0);
+		$where[] = '"Parents"."ID" IS NULL';
 		
 		$orphans = new ArrayList();
 		foreach(array('Stage', 'Live') as $stage) {
@@ -333,7 +322,7 @@ in the other stage:<br />
 			$stageOrphans = Versioned::get_by_stage(
 				$class,
 				$stage,
-				$filter,
+				$where,
 				$sort,
 				null,
 				$limit

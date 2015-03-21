@@ -197,16 +197,12 @@ class SilverStripeNavigatorItem extends ViewableData {
 		
 		if(!isset($this->record->_cached_isArchived)) {
 			$baseTable = ClassInfo::baseDataClass($this->record->class);
-			$currentDraft = Versioned::get_one_by_stage(
-				$baseTable, 
-				'Stage', 
-				sprintf('"%s"."ID" = %d', $baseTable, $this->record->ID)
-			);
-			$currentLive = Versioned::get_one_by_stage(
-				$baseTable, 
-				'Live', 
-				sprintf('"%s"."ID" = %d', $baseTable, $this->record->ID)
-			);
+			$currentDraft = Versioned::get_one_by_stage($baseTable, 'Stage', array(
+				"\"$baseTable\".\"ID\"" => $this->record->ID
+			));
+			$currentLive = Versioned::get_one_by_stage($baseTable, 'Live', array(
+				"\"$baseTable\".\"ID\"" => $this->record->ID
+			));
 			
 			$this->record->_cached_isArchived = (
 				(!$currentDraft || ($currentDraft && $this->record->Version != $currentDraft->Version)) 
@@ -309,11 +305,9 @@ class SilverStripeNavigatorItem_StageLink extends SilverStripeNavigatorItem {
 	
 	protected function getDraftPage() {
 		$baseTable = ClassInfo::baseDataClass($this->record->class);
-		return Versioned::get_one_by_stage(
-			$baseTable, 
-			'Stage', 
-			sprintf('"%s"."ID" = %d', $baseTable, $this->record->ID)
-		);
+		return Versioned::get_one_by_stage($baseTable, 'Stage', array(
+			"\"$baseTable\".\"ID\"" => $this->record->ID
+		));
 	}
 }
 
@@ -363,11 +357,9 @@ class SilverStripeNavigatorItem_LiveLink extends SilverStripeNavigatorItem {
 	
 	protected function getLivePage() {
 		$baseTable = ClassInfo::baseDataClass($this->record->class);
-		return Versioned::get_one_by_stage(
-			$baseTable, 
-			'Live', 
-			sprintf('"%s"."ID" = %d', $baseTable, $this->record->ID)
-		);
+		return Versioned::get_one_by_stage($baseTable, 'Live', array(
+			"\"$baseTable\".\"ID\"" => $this->record->ID
+		));
 	}
 }
 
