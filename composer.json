@@ -2,7 +2,7 @@
 	"name": "cwp/cwp-installer",
 	"description": "CWP Project Template",
 	"require": {
-		"cwp/cwp-recipe-basic": "~1.0.6@stable",
+		"cwp/cwp-recipe-basic": "~1.0.7@stable",
 		"cwp-themes/default": "~1.0.6@stable"
 	},
 	"require-dev": {
