@@ -347,6 +347,37 @@
 			}
 		});
 
+		/**
+		 * Don't allow users to submit empty values in grid field auto complete inputs.
+		 */
+		$('.cms-edit-form .ss-gridfield-buttonrow .add-existing-autocompleter').entwine({
+			onmatch: function () {
+				var self = this;
+
+				this.toggleDisabled();
+
+				this.find('input[type="text"]').bind('keyup', function () {
+					self.toggleDisabled();
+				});
+			},
+			onunmatch: function () {
+				this.find('input[type="text"]').unbind('keyup');
+			},
+			toggleDisabled: function (value) {
+				var $button = this.find('button[type="submit"]'),
+					$input = this.find('input[type="text"]'),
+					inputValue = $input.val(),
+					buttonDisabled = $button.prop('disabled');
+
+				if ((inputValue === '' && buttonDisabled === false) ||
+					(inputValue !== '' && buttonDisabled === true)) {
+					// If there is no value in the input, and the button is enabled, OR
+					// if there is a value in the input, and the button is disabled, toggle the disabled state.
+					$button.button("option", "disabled", !buttonDisabled);
+				}
+			}
+		});
+
 		//trigger an initial change event to do the initial hiding of the element, if necessary
 		if ($('.cms-edit-form.CMSPageSettingsController input[name="ParentType"]:checked').attr('id') == 'Form_EditForm_ParentType_root') {
 			$('.cms-edit-form.CMSPageSettingsController #ParentID').hide(); //quick hide on first run
