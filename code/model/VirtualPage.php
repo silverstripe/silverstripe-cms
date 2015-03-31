@@ -54,7 +54,7 @@ class VirtualPage extends Page {
 		$record = $this->CopyContentFrom();
 
 		$allFields = $record->db();
-		if($hasOne = $record->has_one()) foreach($hasOne as $link) $allFields[$link . 'ID'] = "Int";
+		if($hasOne = $record->hasOne()) foreach($hasOne as $link) $allFields[$link . 'ID'] = "Int";
 		$virtualFields = array();
 		foreach($allFields as $field => $type) {
 			if(!in_array($field, $nonVirtualFields)) $virtualFields[] = $field;

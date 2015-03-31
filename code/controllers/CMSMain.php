@@ -54,6 +54,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		'treeview',
 		'listview',
 		'ListViewForm',
+		'childfilter',
 	);
 	
 	public function init() {
@@ -409,60 +410,38 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 
 			// Contains all possible classes to support UI controls listing them all,
 			// such as the "add page here" context menu.
-			$def['All'] = array(); 
+			$def['All'] = array();
 
 			// Identify disallows and set globals
-			$globalDisallowed = array();
-			foreach($classes as $class) {
-				$obj = singleton($class);
-				$needsPerm = $obj->stat('need_permission');
-
-				if(!($obj instanceof HiddenClass)) {
-					$def['All'][$class] = array(
-						'title' => $obj->i18n_singular_name()
-					);	
-				}
-
-				if(!$obj->stat('can_be_root')) {
-					$def['Root']['disallowedChildren'][] = $class;
-				}
-				
-				if(
-					($obj instanceof HiddenClass)
-					|| (!array_key_exists($class, $cacheCanCreate) || !$cacheCanCreate[$class])
-					|| ($needsPerm && !$this->can($needsPerm))
-				) {
-					$globalDisallowed[] = $class;
-					$def['Root']['disallowedChildren'][] = $class;
-				}
-			}
-
-			// Set disallows by class
 			foreach($classes as $class) {
 				$obj = singleton($class);
 				if($obj instanceof HiddenClass) continue;
 
+				// Name item
+				$def['All'][$class] = array(
+					'title' => $obj->i18n_singular_name()
+				);
+
+				// Check if can be created at the root
+				$needsPerm = $obj->stat('need_permission');
+				if(
+					!$obj->stat('can_be_root')
+					|| (!array_key_exists($class, $cacheCanCreate) || !$cacheCanCreate[$class])
+					|| ($needsPerm && !$this->can($needsPerm))
+				) {
+					$def['Root']['disallowedChildren'][] = $class;
+				}
+
+				// Hint data specific to the class
 				$def[$class] = array();
 
-				$allowed = $obj->allowedChildren();
-				if($pos = array_search('SiteTree', $allowed)) unset($allowed[$pos]);
-
-				// Start by disallowing all classes which aren't specifically allowed,
-				// then add the ones which are globally disallowed.
-				$disallowed = array_diff($classes, (array)$allowed);
-				$disallowed = array_unique(array_merge($disallowed, $globalDisallowed));
-				// Re-index the array for JSON non sequential key issue
-				if($disallowed) $def[$class]['disallowedChildren'] = array_values($disallowed);
-
 				$defaultChild = $obj->defaultChild();
-				if($defaultChild != 'Page' && $defaultChild != null) {
+				if($defaultChild !== 'Page' && $defaultChild !== null) {
 					$def[$class]['defaultChild'] = $defaultChild;
 				}
 
 				$defaultParent = $obj->defaultParent();
-				$parent = SiteTree::get_by_link($defaultParent);
-				$id = $parent ? $parent->id : null;
-				if ($defaultParent != 1 && $defaultParent != null) {
+				if ($defaultParent !== 1 && $defaultParent !== null) {
 					$def[$class]['defaultParent'] = $defaultParent;
 				}
 			}
@@ -490,8 +469,6 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$instance = singleton($class);
 
 			if($instance instanceof HiddenClass) continue;
-
-			if(!$instance->canCreate()) continue;
 
 			// skip this type if it is restricted
 			if($instance->stat('need_permission') && !$this->can(singleton($class)->stat('need_permission'))) continue;
@@ -704,6 +681,39 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 */
 	public function listview($request) {
 		return $this->renderWith($this->getTemplatesWithSuffix('_ListView'));
+	}
+
+	/**
+	 * Callback to request the list of page types allowed under a given page instance.
+	 * Provides a slower but more precise response over SiteTreeHints
+	 *
+	 * @param SS_HTTPRequest $request
+	 * @return SS_HTTPResponse
+	 */
+	public function childfilter($request) {
+		// Check valid parent specified
+		$parentID = $request->requestVar('ParentID');
+		$parent = SiteTree::get()->byID($parentID);
+		if(!$parent || !$parent->exists()) return $this->httpError(404);
+
+		// Build hints specific to this class
+		// Identify disallows and set globals
+		$classes = SiteTree::page_type_classes();
+		$disallowedChildren = array();
+		foreach($classes as $class) {
+			$obj = singleton($class);
+			if($obj instanceof HiddenClass) continue;
+
+			if(!$obj->canCreate(null, array('Parent' => $parent))) {
+				$disallowedChildren[] = $class;
+			}
+		}
+
+		$this->extend('updateChildFilter', $disallowedChildren, $parentID);
+		return $this
+			->response
+			->addHeader('Content-Type', 'application/json; charset=utf-8')
+			->setBody(Convert::raw2json($disallowedChildren));
 	}
 	
 	/**

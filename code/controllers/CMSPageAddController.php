@@ -16,7 +16,7 @@ class CMSPageAddController extends CMSPageEditController {
 	/**
 	 * @return Form
 	 */
-	function AddForm() {
+	public function AddForm() {
 		$pageTypes = array();
 		foreach($this->PageTypes() as $type) {
 			$html = sprintf('<span class="page-icon class-%s"></span><strong class="title">%s</strong><span class="description">%s</span>',
@@ -38,11 +38,6 @@ class CMSPageAddController extends CMSPageEditController {
 		$childTitle = _t('CMSPageAddController.ParentMode_child', 'Under another page');
 
 		$fields = new FieldList(
-			// TODO Should be part of the form attribute, but not possible in current form API
-			$hintsField = new LiteralField(
-				'Hints', 
-				sprintf('<span class="hints" data-hints="%s"></span>', Convert::raw2xml($this->SiteTreeHints()))
-			),
 			new LiteralField('PageModeHeader', sprintf($numericLabelTmpl, 1, _t('CMSMain.ChoosePageParentMode', 'Choose where to create this page'))),
 			$parentModeField = new SelectionGroup(
 				"ParentModeField",
@@ -68,7 +63,7 @@ class CMSPageAddController extends CMSPageEditController {
 			$typeField = new OptionsetField(
 				"PageType", 
 				sprintf($numericLabelTmpl, 2, _t('CMSMain.ChoosePageType', 'Choose page type')), 
-				$pageTypes, 
+				$pageTypes,
 				'Page'
 			),
 			new LiteralField(
@@ -78,7 +73,7 @@ class CMSPageAddController extends CMSPageEditController {
 					_t(
 						'CMSMain.AddPageRestriction', 
 						'Note: Some page types are not allowed for this selection'
-			)
+					)
 				)
 			)
 		);
@@ -122,6 +117,9 @@ class CMSPageAddController extends CMSPageEditController {
 		$form = CMSForm::create( 
 			$this, "AddForm", $fields, $actions
 		)->setHTMLID('Form_AddForm');
+		$form->setAttribute('data-hints', $this->SiteTreeHints());
+		$form->setAttribute('data-childfilter', $this->Link('childfilter'));
+
 		$form->setResponseNegotiator($this->getResponseNegotiator());
 		$form->addExtraClass('cms-add-form stacked cms-content center cms-edit-form ' . $this->BaseCSSClasses());
 		$form->setTemplate($this->getTemplatesWithSuffix('_EditForm'));
@@ -145,12 +143,8 @@ class CMSPageAddController extends CMSPageEditController {
 		
 		if(!$parentObj || !$parentObj->ID) $parentID = 0;
 
-		if($parentObj) {
-			if(!$parentObj->canAddChildren()) return Security::permissionFailure($this);
-			if(!singleton($className)->canCreate()) return Security::permissionFailure($this);
-		} else {
-			if(!SiteConfig::current_site_config()->canCreateTopLevel())
-				return Security::permissionFailure($this);
+		if(!singleton($className)->canCreate(Member::currentUser(), array('Parent' => $parentObj))) {
+			return Security::permissionFailure($this);
 		}
 
 		$record = $this->getNewItem("new-$className-$parentID".$suffix, false);
