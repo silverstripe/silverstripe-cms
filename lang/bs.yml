@@ -1,0 +1,96 @@
+bs:
+  AssetAdmin:
+    NEWFOLDER: NoviDirektorij
+  AssetAdmin_left_ss:
+    GO: Idi
+  CMSMain:
+    DELETE: 'Izbriši sa privremenog nacrta stranice'
+    EMAIL: E-mail
+    PAGENOTEXISTS: 'Ova stranica ne postoji'
+    PUBALLCONFIRM: 'Molimo, objavite svaku stavku na ovoj stranici, kopiranjem sadržaja na aktivnu stranicu'
+    PUBALLFUN: 'Funkcija "Objavi sve"'
+    PUBALLFUN2: "Pritiskom na ovu tipku ostvarit ćete isti rezultat kao i odlaskom na svaku stranicu i pritiskom na tipku \"Objavi\". Namjenjena je za korištenje nakon velikih izmjena sadržaja (npr, prilikom početka izrade web stranice)."
+    REMOVEDPAGEFROMDRAFT: 'Uklonjeno ''%s'' sa privremenog nacrta stranice'
+    ROLLBACK: 'Vrati na ovo izdanje'
+    SAVE: Snimi
+  ErrorPage:
+    400: '400 - Pogrešan zahtjev'
+    401: '401 - Neovlašteno'
+    403: '403 - Zabranjeno'
+    404: '404 - Nije pronađeno'
+    405: '405 - Metoda nije dozvoljena'
+    406: '406 - NIje prihvatljivo'
+    407: '407 - Potrebna proxy ovjera'
+    408: '408 - Zahtjev zaustavljen'
+    409: '409 - Konflikt'
+    410: '410 - Nestalo'
+    411: '411 - Potrebna dužina'
+    412: '412 - Neuspjela pretpostavka'
+    413: '413 - Preveliki entitet zahtjeva'
+    414: '414 - Predug URI zahtjeva'
+    415: '415 - Tip medija nije podržan'
+    416: '416 - Opseg zahtjeva nije zadovoljavajući'
+    417: '417 - Neuspješno očekivanje'
+    500: '500 - INterna greška na serveru'
+    501: '501 - Nije realizirano'
+    502: '502 - Pogrešan gateway'
+    503: '503 - Nedostupan servis '
+    504: '504 - Gateway zaustavljen'
+    505: '505 - HTTP izdanje nije podržano'
+    CODE: 'Kod greške'
+    DEFAULTERRORPAGECONTENT: '<p>Žao nam je, pokušali ste pristupiti stranici koja ne postoji.</p><p>Molimo provjerite da li ste ispravno ukucali URL kojem ste pokušali pristupiti i pokušajte ponovo.</p>'
+    DEFAULTERRORPAGETITLE: 'Stranica nije pronađena'
+  Folder:
+    DELETEUNUSEDTHUMBNAILS: 'Izbriši neiskorištene sličice'
+    UNUSEDFILESTITLE: 'Neiskorištene datoteke'
+    UNUSEDTHUMBNAILSTITLE: 'Neiskorištene sličice'
+  RedirectorPage:
+    HASBEENSETUP: 'Stranica za preusmjeravanje je podešena bez odredišta.'
+    HEADER: 'Ova stranica će preusmjeriti korisnike na drugu stranicu'
+    OTHERURL: 'URL druge web stranice'
+    REDIRECTTO: 'Preusmjeri na'
+    REDIRECTTOEXTERNAL: 'Drugu web stranicu'
+    REDIRECTTOPAGE: 'Na stavku na Vašoj web stranici'
+    YOURPAGE: 'Stavku na Vašoj web stranici'
+  SearchForm:
+    GO: Idi
+    SEARCH: Pretraga
+  SideReport:
+    EMPTYPAGES: 'Prazne stranice'
+    LAST2WEEKS: 'Izmjenjene stranice u posljednje 2 sedmice'
+  SiteTree:
+    ACCESSANYONE: Svi korisnici
+    ACCESSHEADER: 'Ko može pregledati ovu stavku na mojoj stranici?'
+    ACCESSLOGGEDIN: 'Prijavljeni korisnici'
+    ACCESSONLYTHESE: 'Samo ovi korisnici (izaberite sa popisa)'
+    ALLOWCOMMENTS: 'Dozvoli komentare na ovoj stranici?'
+    BUTTONCANCELDRAFT: 'Poništi promjene privremenog nacrta stranice'
+    BUTTONCANCELDRAFTDESC: 'Izbrišite Vaš privremeni nacrt stranice i vratite se na trenutno objavljenu stranicu'
+    BUTTONUNPUBLISH: Opozovi objavljivanje
+    BUTTONUNPUBLISHDESC: 'Ukloni ovu stavku sa objavljene stranice'
+    DEFAULTABOUTCONTENT: '<p>Ovu stranicu možete popuniti sa vlastitim sadržajem, ili je izbrisati i kreirati svoje vlastite stranice.<br /></p>'
+    DEFAULTABOUTTITLE: 'O nama'
+    DEFAULTCONTACTCONTENT: '<p>Ovu stranicu možete popuniti sa vlastitim sadržajem, ili je izbrisati i kreirati svoje vlastite stranice.<br /></p>'
+    DEFAULTCONTACTTITLE: 'Kontaktirajte nas'
+    DEFAULTHOMECONTENT: '<p>Dobrodošli u SilverStripe! Ovo je standardna početna stranica. Možete je izmijeniti otvaranjem <a href="admin/">administracijskog odjela CMS-a</a>. Sada možete pristupiti <a href="http://doc.silverstripe.com">razvojnoj dokumentaciji</a> ili <a href="http://doc.silverstripe.com/doku.php?id=tutorials">vodičima</a>.</p>'
+    DEFAULTHOMETITLE: Početna
+    EDITANYONE: 'Svi korisnici koji se mogu prijaviti u CMS'
+    EDITHEADER: 'Ko može izmijeniti ovu stavku unutar CMS-a?'
+    EDITONLYTHESE: 'Samo ovi korisnici (izaberite sa popisa)'
+    HASBROKENLINKS: 'Ova stranica ima neispravnih linkova.'
+    HTMLEDITORTITLE: Sadržaj
+    MENUTITLE: 'Oznaka navigacije'
+    METADESC: 'Opis'
+    METAEXTRA: 'Prilagođene Meta oznake'
+    PAGETITLE: 'Ime stranice'
+    PAGETYPE: 'Tip stranice'
+    SHOWINMENUS: 'Prikaži u izbornicima?'
+    SHOWINSEARCH: 'Prikaži u pretrazi?'
+    TABBEHAVIOUR: Ponašanje
+    TABCONTENT: 'Sadržaj'
+    TOPLEVEL: 'Sadržaj stranice (Glavni nivo)'
+  ViewArchivedEmail_ss:
+    CANACCESS: 'Arhiviranoj stranici možete pristupiti korištenjem ovog linka:'
+    HAVEASKED: 'Zahtjevali ste pregled sadržaja naše stranice na'
+  VirtualPage:
+    HEADER: 'Ovo je virtualna stranica'

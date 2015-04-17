@@ -1,0 +1,113 @@
+pt_BR:
+  AssetAdmin:
+    NEWFOLDER: Nova Pasta
+  AssetAdmin_left_ss:
+    GO: Ir
+  CMSMain:
+    DELETE: 'Excluir do site de rascunho'
+    DELETEFP: Excluir do site ativo
+    EMAIL: E-mail
+    PAGENOTEXISTS: 'Esta página não existe'
+    PUBALLCONFIRM: 'Por favor publique todas as páginas no site, copiando content stage to live'
+    PUBALLFUN: 'Funcionalidade "Publicar Tudo"'
+    PUBALLFUN2: "Apertar este botão equivale a ir em cada página individualmente e clicar em \"Publicar\". Serve para ser usado em situações em que foram editadas grandes quantidades de conteúdo, como por exemplo quando o site foi inicialmente construído."
+    REMOVEDPAGEFROMDRAFT: 'Removido ''%s''  do site de rascunho'
+    RESTORE: Restaurar
+    ROLLBACK: 'Reverter para esta versão'
+    SAVE: Salvar
+  ErrorPage:
+    400: '400 - Requisição Invalida'
+    401: '401 - Não autorizado'
+    403: '403 - Proibido'
+    404: '404 - Arquivo não encontrado'
+    405: '405 - Método não permitido'
+    406: '406 - Não aceitavel'
+    407: '407 - Requer autentificação do proxy'
+    408: '408 - tempo de requisição esgotado'
+    409: '409 - Conflito'
+    410: '410 - Finalizado'
+    411: '411 - Tamanho requisitado'
+    412: '412 - Condição prévia não atendida'
+    413: '413 - dados requisição muito grande'
+    414: '414 -URI requisitado muito grande'
+    415: '415 - tipo de arquivo não suportado'
+    416: '416 - Escala do pedido não satisfaz'
+    417: '417 - A expectativa falhou'
+    500: '500 - Erro interno do servidor'
+    501: '501 - Não implementado'
+    502: '502 - Conecção ruim'
+    503: '503 - Serviço não esta habilitado'
+    504: '504 - Tempo de conecção esgorado'
+    505: '505 - Versão do HTTP não suporado'
+    CODE: 'Código do erro'
+    DEFAULTERRORPAGECONTENT: '<p>desculpe, mas parece que você esta tentando acessar uma página que não existe.</p><p>Por favor, verifique se você digitou a URL corretamente e tente novamente</p>'
+    DEFAULTERRORPAGETITLE: 'Página não encontrada'
+  Folder:
+    DELETEUNUSEDTHUMBNAILS: 'Excluir miniaturas não utilizadas'
+    UNUSEDFILESTITLE: 'Arquivos não utilizados'
+    UNUSEDTHUMBNAILSTITLE: 'Miniaturas não utilizadas'
+  RedirectorPage:
+    HASBEENSETUP: 'Uma página de redireccionamento foi criada sem nenhum destino específicado'
+    HEADER: 'Esta página redireccionará os utilizadores para outra página'
+    OTHERURL: 'Outro website URL'
+    REDIRECTTO: 'Redirecionar para'
+    REDIRECTTOEXTERNAL: 'Outro website'
+    REDIRECTTOPAGE: 'Uma página no seu website'
+    YOURPAGE: 'Página no seu website'
+  SearchForm:
+    GO: Ir
+    SEARCH: Buscar
+  SideReport:
+    EMPTYPAGES: 'Páginas em branco'
+    LAST2WEEKS: 'Páginas editadas nas últimas 2 semanas'
+  SiteTree:
+    ACCESSANYONE: Qualquer pessoa
+    ACCESSHEADER: 'Quem pode ver esta página?'
+    ACCESSLOGGEDIN: 'Utilizadores que tenham feito log-in'
+    ACCESSONLYTHESE: 'Somente estas pessoas (escolha da lista)'
+    ALLOWCOMMENTS: 'Permitir comentários sobre esta página?'
+    BUTTONCANCELDRAFT: 'Cancelar alterações no rascunho'
+    BUTTONCANCELDRAFTDESC: 'Apague o seu rascunho e reverta para o site currrentement publicado'
+    BUTTONUNPUBLISH: Anular publicação
+    BUTTONUNPUBLISHDESC: 'Remova esta página do site publicado'
+    Comments: Comentários
+    Content: Conteúdo
+    DEFAULTABOUTCONTENT: '<p>Você pode alimentar esta página com seu próprio conteúdo, ou excluir esta página e criar as suas proprias.<br /></p>'
+    DEFAULTABOUTTITLE: 'Sobre nós'
+    DEFAULTCONTACTCONTENT: '<p>Você pode alimentar esta página com seu próprio conteúdo, ou excluir esta página e criar as suas proprias.<br /></p>'
+    DEFAULTCONTACTTITLE: 'Contato'
+    DEFAULTHOMECONTENT: '<p>Bem vindo ao SilverStripe! Esta é a página padrão de entrada. Você pode editar esta página abrindo o <a href="admin/">a area de administração CMS</a>. Você pode acessar a <a href="http://doc.silverstripe.com"> documentação do desenvolvedor</a>, ou começar <a href="http://doc.silverstripe.com/doku.php?id=tutorials">com os tutoriais.</a></p>'
+    DEFAULTHOMETITLE: Página Inicial
+    EDITANYONE: 'Qualquer pessoa que possa fazer log-in'
+    EDITHEADER: 'Quem pode editar esta página?'
+    EDITONLYTHESE: 'Somente estas pessoas (escolha da lista)'
+    Editors: 'Grupo de editores'
+    HASBROKENLINKS: 'Esta página tem links quebrados.'
+    HTMLEDITORTITLE: Conteúdo
+    INHERIT: 'Herdar da página mãe'
+    MENUTITLE: 'Rótulo da navegação'
+    METADESC: 'Descrição'
+    METAEXTRA: 'Meta tags personalizadas'
+    PAGETITLE: 'Nome da Página'
+    PAGETYPE: 'Tipo de página'
+    PARENTID: 'Página pai'
+    PARENTTYPE: 'Lugar da página'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Controla os grupos que podem acessar ou editar determinadas páginas'
+    SHOWINMENUS: 'Mostrar nos menus?'
+    SHOWINSEARCH: 'Uncluir na procura?'
+    TABBEHAVIOUR: Comportamento
+    TABCONTENT: 'Conteúdo'
+    TOPLEVEL: 'Conteúdo do Site (Top Level)'
+    URLSegment: 'URL da página'
+    Viewers: 'Grupo de visualizadores'
+    has_one_Parent: 'Página mãe'
+    many_many_BackLinkTracking: 'Gerenciar Backlink '
+    many_many_ImageTracking: 'Gerenciar Imagem'
+    many_many_LinkTracking: 'Gerenciar Link'
+  ViewArchivedEmail_ss:
+    CANACCESS: 'Pode aceder ao site arquivado através deste link:'
+    HAVEASKED: 'Você pediu para ver o conteúdo do nosso site em'
+  VirtualPage:
+    HEADER: 'Esta é uma página virtual'
+    PLURALNAME: 'Páginas virtuais'
+    SINGULARNAME: 'Página virtual'

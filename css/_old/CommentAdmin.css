@@ -1,0 +1,44 @@
+#Form_EditForm{
+	overflow: scroll;
+}
+
+	#Form_EditForm table{
+		width: 100%;
+	}
+
+		#Form_EditForm table td{
+			word-wrap:break-word !important;
+		}
+		
+		#Form_EditForm table td.Comment{
+			width: 32%;
+		}
+		
+		#Form_EditForm table td.URL{
+			width: 18%;
+		}
+		
+		#Form_EditForm table td.Page{
+			width: 20%;
+		}
+
+/* The following is not used anywhere, we should delete it. Because this file has not been
+included in the template due to a bug since 29/09/08 (r63175), and we can't find a HTML element with the id 'CommentList'
+
+#CommentList {
+	padding: 0;
+	margin: 0;
+}
+#CommentList li {
+	list-style-type: none;
+	background-color: #EEE;
+	border: 1px #CCC solid;
+	padding: 3px;
+	margin: 7px;
+}
+#CommentList li .extra {
+	margin-top: 3px;
+	font-size: 80%;
+	font-style: italic;
+}
+*/

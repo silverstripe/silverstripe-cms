@@ -1,15 +1,34 @@
 {
-	"name": "cwp/cwp-installer",
-	"description": "CWP Project Template",
+	"name": "silverstripe/cms",
+	"type": "silverstripe-module",
+	"description": "The SilverStripe Content Management System",
+	"homepage": "http://silverstripe.org",
+	"license": "BSD-3-Clause",
+	"keywords": ["silverstripe", "cms"],
+	"authors": [
+		{
+			"name": "SilverStripe",
+			"homepage": "http://silverstripe.com"
+		},
+		{
+			"name": "The SilverStripe Community",
+			"homepage": "http://silverstripe.org"
+		}
+	],
 	"require": {
-		"cwp/cwp-recipe-basic": "~1.0.7@stable",
-		"cwp-themes/default": "~1.0.6@stable"
+		"php": ">=5.3.2",
+		"composer/installers": "*",
+		"silverstripe/framework": "4.0.x-dev",
+		"silverstripe/reports": "*",
+		"silverstripe/siteconfig": "*"
 	},
-	"require-dev": {
-		"cwp/cwp-recipe-basic-dev": "~1.0.6@stable"
+	"extra": {
+		"branch-alias": {
+			"dev-master": "4.0.x-dev"
+		}
 	},
-	"config": {
-		"process-timeout": 900
+	"autoload": {
+		"classmap": ["tests/behat/"]
 	},
 	"repositories": [
 		{

@@ -1,0 +1,411 @@
+ar:
+  AssetAdmin:
+    ADDFILES: 'أضف الملفات'
+    ActionAdd: 'أضف مجلد'
+    AppCategoryArchive: الأرشيف
+    AppCategoryAudio: سمعي
+    AppCategoryDocument: وثيقة
+    AppCategoryFlash: أخبار خاطفة
+    AppCategoryImage: صورة
+    AppCategoryVideo: فيديو
+    BackToFolder: 'العودة الى المجلد'
+    CREATED: التاريخ
+    CurrentFolderOnly: 'الحصر للمجلد الحالي؟'
+    DetailsView: التفاصيل
+    FILES: الملفات
+    FILESYSTEMSYNC: 'مزامنة الملفات'
+    FILESYSTEMSYNCTITLE: 'تحديث إدخالات الملفات لقاعدة بيانات CMS على نظام الملفات. مفيد عندما يكون قد تم تحميل ملفات جديدة من خارج  نظام إدارة المحتوى CMS، على سبيل المثال من خلال FTP.'
+    FROMTHEINTERNET: 'من الإنترنت'
+    FROMYOURCOMPUTER: 'من حاسوبك'
+    Filetype: 'نوع الملف'
+    ListView: 'عرض القائمة'
+    NEWFOLDER: مجلد جديد
+    SIZE: الحجم
+    THUMBSDELETED: 'تم حذف {count} صور مصغرة غير المستخدمة'
+    TreeView: 'عرض الشجرة'
+    Upload: تحميل
+    MENUTITLE: الملفات
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'احذف المجلدات'
+  AssetAdmin_Tools:
+    FILTER: مصفاة
+  AssetAdmin_left_ss:
+    GO: اذهب
+  AssetTableField:
+    BACKLINKCOUNT: 'مستعمل في:'
+    PAGES: صفحة (صفحات)
+  BackLink_Button_ss:
+    Back: الرجوع
+  BrokenLinksReport:
+    Any: أي
+    BROKENLINKS: 'تقرير الروابط المكسورة'
+    CheckSite: 'اختيار الموقع'
+    CheckSiteDropdownDraft: 'مسودة الموقع'
+    CheckSiteDropdownPublished: 'الموقع المنشور'
+    ColumnDateLastModified: 'تاريخ آخر تعديل'
+    ColumnDateLastPublished: 'تاريخ آخر نشر'
+    ColumnProblemType: 'نوع المشكلة'
+    ColumnURL: رابط
+    HasBrokenFile: 'يحتوى ملف مكسور'
+    HasBrokenLink: 'يحتوى مرابط مكسور'
+    HasBrokenLinkAndFile: 'يحتوى ملف ورابط مكسور'
+    HoverTitleEditPage: 'تعديل صفحة'
+    PageName: 'اسم الصفحة'
+    ReasonDropdown: 'مشكلة للتأكد'
+    ReasonDropdownBROKENFILE: 'ملف مكسور'
+    ReasonDropdownBROKENLINK: 'الررواب المكسورة'
+    ReasonDropdownRPBROKENLINK: 'معيد توجيه الصفحة يشير الى صفحة غير موجودة..'
+    ReasonDropdownVPBROKENLINK: 'الصفحة الظاهرية تشير الى صفحة غير موجودة..'
+    RedirectorNonExistent: 'معيد توجيه الصفحة يشير الى صفحة غير موجودة..'
+    VirtualPageNonExistent: 'الصفحة الظاهرية تشير الى صفحة غير موجودة..'
+  CMSAddPageController:
+    Title: 'أضف صفحة'
+  CMSBatchActions:
+    DELETED_DRAFT_PAGES: 'حذفت %d صفحات من مسودة الموقع، %d من الإخفاقات'
+    DELETED_PAGES: 'قد تم مسح d% من الصفحات من الموقع المنشور, d% من الإخفاقات'
+    DELETE_DRAFT_PAGES: 'حذف من مسودة الموقع'
+    DELETE_PAGES: 'حذف من الصفحة المنشورة'
+    PUBLISHED_PAGES: '%d من الصفحات المنشورة'
+    PUBLISH_PAGES: النشر
+    UNPUBLISHED_PAGES: '%d من الصفحات غير المنشورة'
+    UNPUBLISH_PAGES: غير منشور
+  CMSMain:
+    ACCESS: 'النفاذ إلى القسم ''{title}'''
+    ACCESS_HELP: 'سماح بعرض لقسم يحتوي على صفحة الشجرة والمحتوى. يمكن التعامل معها عرض وتحرير الأذونات من خلال القائمه المنسدله للروابط محددة صفحة، فضلا عن فصل "أذونات المحتوى".'
+    AddNew: 'أضف صفحة جديدة'
+    AddNewButton: 'أضف جديد'
+    AddPageRestriction: 'ملاحظة: لا يسمح ببعض أنواع الصفحات لهذا الاختيار'
+    ChoosePageParentMode: 'اختر مكان إنشاء هذه الصفحة'
+    ChoosePageType: 'اختر نوع الصفحة'
+    Create: خلق
+    DELETE: 'حذف من مسودة الموقع'
+    DELETEFP: حذف من الموقع المنشور
+    DESCREMOVED: 'و {count} منحدر منه'
+    DUPLICATED: 'تكرار ''{title}'' بنجاح'
+    DUPLICATEDWITHCHILDREN: 'تكرار ''{title}'' والتوابع بنجاح'
+    EMAIL: البريد الإلكتروني
+    EditTree: 'تعديل الهيكل'
+    ListFiltered: 'قائمة تمت تصفيتها.'
+    NEWPAGE: '{pagetype} جديد'
+    PAGENOTEXISTS: 'هذه الصفحة غير موجودة'
+    PAGES: الصفحات
+    PAGETYPEANYOPT: أي
+    PAGETYPEOPT: 'نوع الصفحة'
+    PUBALLCONFIRM: 'فضلاً قم بنشر كل صفحة من صفحات الموقع'
+    PUBALLFUN: '"نشر الجميع"خاصية '
+    PUBALLFUN2: "الضغط على هذا الزر يعني الذهاب لكل صفحة و نشرها.  It's\nintended to be used after there have been massive edits of the content, such as when the site was\nfirst built.\n"
+    PUBPAGES: 'تمّ: نشر {count} صفحات'
+    PageAdded: 'تم إنشاء الصفحة بنجاح'
+    REMOVED: 'حذف ''{title}''{description} من الموقع الحي'
+    REMOVEDPAGE: 'أزيل ''{title}'' من الموقع المنشور'
+    REMOVEDPAGEFROMDRAFT: '''%s'' محذوف من مسودة الموقع'
+    RESTORE: تخزين
+    RESTORED: 'استعادة ''{title}'' بنجاح'
+    ROLLBACK: 'عودة إلى هذا الإصدار'
+    ROLLEDBACKPUBv2: 'التراجع إلى النسخة المنشورة.'
+    ROLLEDBACKVERSIONv2: 'التراجع إلى النسخة #%d.'
+    SAVE: حفظ
+    SAVEDRAFT: 'احفظ المسودة'
+    TabContent: المحتوى
+    TabHistory: السوابق
+    TabSettings: الإعدادات
+    TreeFiltered: 'الشجرة المصفاة.'
+    TreeFilteredClear: 'أزل المصفي'
+    MENUTITLE: 'حرر الصفحة'
+  CMSMain_left_ss:
+    APPLY_FILTER: 'طبق عامل تصفية'
+    RESET: إعادة الوضع الأصلي
+  CMSPageAddController:
+    ParentMode_child: 'تحت صفحة أخرى'
+    ParentMode_top: 'أعلى مستوى'
+    MENUTITLE: 'أضف صفحة'
+  CMSPageHistoryController:
+    COMPAREMODE: 'وضع المقارنة (حدد اثنين)'
+    COMPAREVERSIONS: 'قارن الإصدارات'
+    COMPARINGVERSION: 'مقارنة الإصدارين {version1} و {version2}.'
+    REVERTTOTHISVERSION: 'العودة إلى هذا الإصدار'
+    SHOWUNPUBLISHED: 'عرض الإصدارات الغير منشورة'
+    SHOWVERSION: 'اعرض الإصدار'
+    VIEW: عرض
+    VIEWINGLATEST: 'يقع حاليا عرض أحدث إصدار.'
+    VIEWINGVERSION: 'يقع حاليا عرض إصدار  {version}.'
+    MENUTITLE: السجل
+  CMSPageHistoryController_versions_ss:
+    AUTHOR: الكاتب
+    NOTPUBLISHED: 'غير منشور'
+    PUBLISHER: الناشر
+    UNKNOWN: غير معروف
+    WHEN: متى
+  CMSPagesController:
+    GalleryView: 'مشاهدة المعرض'
+    ListView: 'عرض القائمة'
+    MENUTITLE: الصفحات
+    TreeView: 'عرض الشجرة'
+  CMSPagesController_ContentToolbar_ss:
+    MULTISELECT: متعدد الاختيار
+  CMSPagesController_Tools_ss:
+    FILTER: مصفاة
+  CMSSearch:
+    FILTERDATEFROM: من
+    FILTERDATEHEADING: موعد
+    FILTERDATETO: إلى
+    FILTERLABELTEXT: المحتوى
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'الصفحات التي تم تغييرها'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'كل الصفحات، بما في ذلك المحذوفة'
+  CMSSiteTreeFilter_Search:
+    Title: 'كل الصفحات'
+  ContentControl:
+    NOTEWONTBESHOWN: 'تنبيه: هذه الرسالة لن يتم عرضها لزوار موقعك'
+  ContentController:
+    ARCHIVEDSITE: 'إصدار المعاينة'
+    ARCHIVEDSITEFROM: 'موقع تمت أرشفته منذ'
+    CMS: نظام إدارة المحتوى
+    DRAFT: المسودّة
+    DRAFTSITE: 'موقع في المسودة'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'يجب عليك تسجيل الدخول باستخدام كلمة مرور CMS الخاصة بك من أجل عرض مشاريع المحتوى أو المحتوى المؤرشف. <a href="%s">انقر هنا للرجوع إلى الموقع المنشور.</a>'
+    Email: البريد الإلكتروني
+    INSTALL_SUCCESS: 'تم التثبيت بنجاح!'
+    InstallFilesDeleted: 'تم حذف ملفات التثبيت بنجاح.'
+    InstallSecurityWarning: 'لأسباب أمنية يجب عليك الآن حذف ملفات التثبيت، إلا إذا كنت تخطط لإعادة التثبيت في وقت لاحق (<em>يتطلب تسجيل الدخول كمسؤول، انظر أعلاه </em>). ملقم الويب أيضا يحتاج الآن إلى حق الكتابة في مجلد "الأصول"، يمكنك إزالة حق الكتابة من جميع المجلدات الأخرى. <a href="{link}" style="text-align: center;">اضغط هنا لحذف ملفات التثبيت.</a>'
+    InstallSuccessCongratulations: 'قد تمّ تثبيت SilverStripe بنجاح!'
+    LOGGEDINAS: 'الدخول كـ'
+    LOGIN: الدخول
+    LOGOUT: 'الخروج'
+    NOTLOGGEDIN: 'لم يتم تسجيل الدخول'
+    PUBLISHED: تمّ النشر
+    PUBLISHEDSITE: 'موقع منشور'
+    Password: كلمة السر
+    PostInstallTutorialIntro: 'هذا الموقع هو نسخة مبسطة من موقع سيلفر سترايب 3. لإلقاء نظرة على النسخة المفصلة، يرجى إلقاء نظرة على {link}.'
+    StartEditing: 'يمكنك البدء في تحرير المحتوى الخاص بك عن طريق فتح  <a href="{link}">the CMS</a>.'
+    UnableDeleteInstall: 'غير ممكن حذف ملفات التثبيت. يرجى حذف الملفات التالية يدويا'
+    VIEWPAGEIN: 'مشاهدة الصفحة في:'
+  ErrorPage:
+    400: '400 - طلب خاطئ'
+    401: '401 - غير مصرح'
+    403: '403 - ممنوع'
+    404: '404 - غير موجود'
+    405: '405 - الطريقة غير مسموح بها'
+    406: '406 - غير مقبول'
+    407: '407 - مطلوب الوثوقية من Proxy'
+    408: '408 - إنتهاء الوقت المحدد للطلب'
+    409: '409 - تعارض'
+    410: '410 - إنتهى'
+    411: '411 - طول الطلب'
+    412: '412 - فشل في الشرط المبدئي'
+    413: '413 - الطلب المدخل طويل جداً'
+    414: '414 - رابط الطلب طويل جداً'
+    415: '415 - ملف الوسائط غير مدعوم'
+    416: '416 - مدى الطلب غير متحقق'
+    417: '417 - توقع حدوث خطأ'
+    500: '500 - خطأ في الخادم الداخلي'
+    501: '501 - لم يتم التنفيذ'
+    502: '502 - بوابة خاطئة'
+    503: '503 - خدمة غير متوفرة'
+    504: '504 - انتهاء وقت البوابة'
+    505: '505 - إصدار HTTP  غير مدعوم'
+    CODE: 'كود الخطأ'
+    DEFAULTERRORPAGECONTENT: '<p>عذراً ، يبدو أنك تحاول الدخول إلى صفحة غير موجودة.</p><p>فضلاً تأكد من الرابط و أعد محاولة الدخول مرة أخرى.</p>'
+    DEFAULTERRORPAGETITLE: 'الصفحة غير موجودة'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>عذرا، كانت هناك مشكلة في التعامل مع طلبك.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'خطأ في الملقم'
+    DESCRIPTION: 'محتوى مخصص للحالات المختلفة من الأخطاء (على سبيل المثال "الصفحة غير موجودة")'
+    ERRORFILEPROBLEM: 'خطأ في فتح الملف "{filename}" للكتابة. يرجى التحقق من تراخيص ملف.'
+    PLURALNAME: 'صفحات الأخطاء'
+    SINGULARNAME: 'صفحة الأخطاء'
+  Folder:
+    AddFolderButton: 'أضف مجلد'
+    DELETEUNUSEDTHUMBNAILS: 'حذف المصغرات غير المستخدمة'
+    UNUSEDFILESTITLE: 'الملفات غير المستخدمة'
+    UNUSEDTHUMBNAILSTITLE: 'المصغرات غير المستخدمة'
+    UploadFilesButton: تحميل
+  LeftAndMain:
+    DELETED: حذفت.
+    PreviewButton: عرض مسبق
+    SAVEDUP: تم الحفظ.
+    SearchResults: 'نتائج البحث'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'الوصل لنظام إدارة المحتوى'
+  Permissions:
+    CONTENT_CATEGORY: 'تصاريح المحتوى'
+    PERMISSIONS_CATEGORY: 'تصريح الدخول والقواعد'
+  RedirectorPage:
+    DESCRIPTION: 'إعادة التوجيه إلى صفحة داخلية مختلفة'
+    HASBEENSETUP: 'صفحة التحويل تم تهيئتها بدون تحديد وجهة التحويل'
+    HEADER: 'هذه الصفحة سوف تقوم بتحويل الأعضاء إلى صفحة أخرى'
+    OTHERURL: 'رابط موقع آخر'
+    PLURALNAME: 'معيد توجيه الصفحات'
+    REDIRECTTO: 'تحويل إلى'
+    REDIRECTTOEXTERNAL: 'موقع آخر'
+    REDIRECTTOPAGE: 'صفحة في موقعك الشخصي'
+    SINGULARNAME: 'معيد توجيه الصفحة'
+    YOURPAGE: 'صفحة في موقعك الشخصي'
+  ReportAdmin:
+    ReportTitle: العنوان
+    MENUTITLE: التقارير
+  ReportAdminForm:
+    FILTERBY: 'فرز عبر'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'يرجى نشر الصفحة المرتبطة من أجل نشر الصفحة الافتراضية'
+    VIRTUALPAGEWARNING: 'يرجى اختيار صفحة مرتبطة وقم بالحفظ أولا من أجل نشر هذه الصفحة'
+    VIRTUALPAGEWARNINGSETTINGS: 'يرجى اختيار صفحة مرتبطة في مجالات المحتوى الرئيسي من أجل النشر'
+  SearchForm:
+    GO: اذهب
+    SEARCH: بحث
+    SearchResults: 'نتائج البحث'
+  SideReport:
+    BROKENFILES: 'صفحات مع ملفات مكسورة'
+    BROKENLINKS: 'صفحات مع روباط مكسورة'
+    BROKENREDIRECTORPAGES: 'معيد التوجيه الصفحات يشير إلى صفحات محذوفة'
+    BROKENVIRTUALPAGES: 'الصفحات الظاهرية تشير إالى صفحات محذوفة'
+    BrokenLinksGroupTitle: 'تقارير الروابط المكسورة'
+    ContentGroupTitle: 'تقارير المحتوى'
+    EMPTYPAGES: 'صفحات فارغة'
+    LAST2WEEKS: 'صفحات تم تعديلها في آخر أسبوعين'
+    OtherGroupTitle: أخرى
+    ParameterLiveCheckbox: 'التأكد من حيوية الموقع'
+    REPEMPTY: 'التقرير {title} فارغ.'
+  SilverStripeNavigator:
+    ARCHIVED: المؤرشف
+  SilverStripeNavigatorLink:
+    ShareInstructions: 'لمشاركة هذه الصفحة، قم بنسخ ولصق الرابط أدناه.'
+    ShareLink: 'رابط مشترك'
+  SilverStripeNavigatorLinkl:
+    CloseLink: إغلاق
+  SiteConfig:
+    DEFAULTTHEME: '( استخدام الثيم الافتراضي )'
+    EDITHEADER: 'من يستطيع تحرير الصفحات الموجودة على هذا الموقع؟'
+    EDIT_PERMISSION: 'إدارة إعدادات الموقع'
+    EDIT_PERMISSION_HELP: 'القدرة على تحرير إعدادات الوصول العالمي / أذونات صفحة المستوى الأعلى.'
+    PLURALNAME: 'تكوينات الموقع'
+    SINGULARNAME: 'تهيئة الموقع'
+    SITENAMEDEFAULT: 'اسم عنوان موقعك'
+    SITETAGLINE: 'علامة / شعار الموقع'
+    SITETITLE: 'عنوان الموقع'
+    TABACCESS: الوصول
+    TABMAIN: الرئيسي
+    TAGLINEDEFAULT: 'علامتك هنا'
+    THEME: الثيم
+    TOPLEVELCREATE: 'من يستطيع إنشاء صفحات في جذر الموقع؟'
+    VIEWHEADER: 'من يستطيع عرض الصفحات على هذا الموقع؟...'
+  SiteTree:
+    ACCESSANYONE: الجميع
+    ACCESSHEADER: 'من يستطيع مشاهدة هذه الصفحة ؟'
+    ACCESSLOGGEDIN: 'الأعضاء المسجلين'
+    ACCESSONLYTHESE: 'فقط هؤلاء الأشخاص ( اختر من القائمة)'
+    ADDEDTODRAFTHELP: 'لم تنشر الصفحة بعد'
+    ADDEDTODRAFTSHORT: المسودة
+    ALLOWCOMMENTS: 'السماح بالتعليقات في هذه الصفحة ؟'
+    APPEARSVIRTUALPAGES: 'يظهر هذا المحتوى أيضا على الصفحات الافتراضية في أقسام {title}.'
+    BUTTONCANCELDRAFT: 'إلغاء التغييرات في المسودة'
+    BUTTONCANCELDRAFTDESC: 'إلغاء المسودة و العودة إلى الموقع المنشور حالياً'
+    BUTTONPUBLISHED: نشرت
+    BUTTONSAVED: تم الحفظ
+    BUTTONSAVEPUBLISH: 'احفظ وانشر'
+    BUTTONUNPUBLISH: غير منشور
+    BUTTONUNPUBLISHDESC: 'حذف هذه الصفحة من الموقع المنشور'
+    Comments: التعليقات
+    Content: المحتوى
+    DEFAULTABOUTCONTENT: '<p>يمكنك ملء هذه الصفحة بمحتوى خاص بك أو حذفها و إنشاء صفحات جديدة خاصة بك<br /></p>'
+    DEFAULTABOUTTITLE: 'حول'
+    DEFAULTCONTACTCONTENT: '<p>يمكنك ملء هذه الصفحة بمحتوى خاص بك أو حذفها و إنشاء صفحات جديدة خاصة بك<br /></p>'
+    DEFAULTCONTACTTITLE: 'اتصل بنا'
+    DEFAULTHOMECONTENT: '<p>أهلاً بك في  SilverStripe!<br />هذه هي الصفحة الرئيسة.يمكنك تعديل الصفحة عن طريق  <a href="admin/">نظام إدارة المحتوى</a>.يمكنك الآن الدخول إلى  <a href="http://doc.silverstripe.com">مستندات المطورين</a>, أو الدخول إلى  <a href="http://doc.silverstripe.com/doku.php?id=tutorials">الدروس التعليمية.</a></p>'
+    DEFAULTHOMETITLE: الرئيسة
+    DELETEDPAGEHELP: 'لم تعد الصفحة المنشورة'
+    DELETEDPAGESHORT: المحذوف
+    DEPENDENT_NOTE: 'الصفحات التالية تعتمد على هذه الصفحة. وهذا يشمل صفحات الظاهري، وصفحات معيد التوجيه، والصفحات التي تحتوي على روابط المحتوى.'
+    DESCRIPTION: 'صفحة المحتوى العام'
+    DependtPageColumnLinkType: 'نوع الرابط'
+    DependtPageColumnURL: رابط
+    EDITANYONE: 'أي شخص '
+    EDITHEADER: 'من يستطيع تعديل هذه الصفحة؟'
+    EDITONLYTHESE: 'فقط هؤلاء الأشخاص (اختر من القائمة)'
+    EDITORGROUPS: 'مجموعات المحرر'
+    EDIT_ALL_DESCRIPTION: 'Can edit any page on the site, bypassing page specific security'
+    EDIT_ALL_HELP: 'القدرة على تحرير أي صفحة على الموقع ، بغض النظر عن الإعدادات على علامة تبويب الوصول. يتطلب تصريح "الوصول إلى محتوى الموقع" '
+    Editors: 'مجموعات المحررين'
+    GroupPlaceholder: 'انقر لاختيار المجموعة'
+    HASBROKENLINKS: 'هذه الصفحة تحتوي على روابط معطوبة'
+    HTMLEDITORTITLE: محتوى
+    INHERIT: 'استيراد من الصفحة المرجعية'
+    LASTPUBLISHED: 'آخر منشور'
+    LASTSAVED: 'آخر محفوظ'
+    LASTUPDATED: 'أخر تحديث'
+    LINKCHANGENOTE: 'تغيير هذا وصلة رابط الصفحة سوف تؤثر أيضًا على الوصلات لجميع صفحات الفرعية.'
+    MENUTITLE: 'القائمة'
+    METADESC: 'الوصف'
+    METADESCHELP: 'تستخدم محركات البحث هذا المحتوى لعرض نتائج البحث (على الرغم من أنها لن تؤثر على ترتيبها).'
+    METAEXTRA: 'تخصيص Meta Tags'
+    METAEXTRAHELP: 'علامات HTML لبيانات وصفية إضافية. على سبيل المثال <meta name="customName" content="your custom content here" />'
+    MODIFIEDONDRAFTHELP: 'تحتوي الصفحة على تغييرات غير منشورة'
+    MODIFIEDONDRAFTSHORT: تم التعديل
+    MetadataToggle: البيانات الوصفية
+    MoreOptions: 'خيارات أخرى'
+    NOTPUBLISHED: 'غير منشورة'
+    OBSOLETECLASS: 'إنّ نوع {type} لهذه الصفحة بال. سيعيد حفظها تجديد نوعها وقد تفقد البيانات'
+    PAGELOCATION: 'موقع الضفحة'
+    PAGETITLE: 'اسم الصفحة'
+    PAGETYPE: 'نوع الصفحة'
+    PARENTID: 'الصفحة الأعلى'
+    PARENTTYPE: 'مكان الصفحة'
+    PARENTTYPE_ROOT: 'صفحة في المستوى الأعلى'
+    PARENTTYPE_SUBPAGE: 'صفحة فرعية أسفل صفحة رئيسية (اختر أدناه)'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'التحكم في المجموعات التي لها صلاحية الدخول أو التعديل على صفحات محددة'
+    PERMISSION_GRANTACCESS_HELP: 'السماح بضع القيود على الوصول صفحة محددة في قسم "الصفحات".'
+    PLURALNAME: الصفحات
+    PageTypNotAllowedOnRoot: 'نوع الصفحة "{type}" غير مسموح به على مستوى الجذر'
+    PageTypeNotAllowed: 'نوع الصفحة  "{type}" لا يسمح به كتابع لهذه الصفحة الرئيسية'
+    REMOVEDFROMDRAFTHELP: 'تم نشر الصفحة، ولكن تم حذفها من المسودة'
+    REMOVEDFROMDRAFTSHORT: 'حذف من المسودّة'
+    REMOVE_INSTALL_WARNING: 'تحذير: يجب إزالة install.php من هذا التثبيت SilverStripe وذلك لأسباب أمنية.'
+    REORGANISE_DESCRIPTION: 'Can reorganise the site tree'
+    REORGANISE_HELP: 'إعادة ترتيب الصفحات في  شجرة الموقع من خلال السحب والإسقاط.'
+    SHOWINMENUS: 'عرض في قوائم ؟'
+    SHOWINSEARCH: 'عرض في البحث ؟'
+    SINGULARNAME: الصفحة
+    TABBEHAVIOUR: الشسلوك
+    TABCONTENT: 'المحتوى'
+    TABDEPENDENT: 'الصفحات المعتدة'
+    TOPLEVEL: 'محتوى الموقع ( مستوى أعلى )'
+    TOPLEVELCREATORGROUPS: 'منشيء المستوى الأعلى'
+    URLSegment: 'جزء رابط الموقع'
+    VIEWERGROUPS: 'مجموعات الزوار'
+    VIEW_ALL_DESCRIPTION: 'Can view any page on the site, bypassing page specific security'
+    VIEW_ALL_HELP: 'القدرة على عرض أي صفحة على الموقع، بغض النظر عن الإعدادات على علامة التبويب Access. يتطلب الرخيص "قسم الوصول إلى "الصفحات" "  "Access to ''Pages'' section"'
+    VIEW_DRAFT_CONTENT: 'عرض مسودة المحتوى'
+    VIEW_DRAFT_CONTENT_HELP: 'ينطبق على عرض صفحات خارج اتفاقية إدارة  محتوى الموقع في وضع المسودة. مفيدة للمتعاونين من الخارجين بدون الحصول على اتفاقية إدارة محتوى الموقع'
+    Viewers: 'مجموعات المشاهدين'
+    Visibility: مدي الرؤية
+    has_one_Parent: 'الصفحة الرئيسة'
+    many_many_BackLinkTracking: 'متابعة التعقيبات'
+    many_many_ImageTracking: 'متابعة الصور'
+    many_many_LinkTracking: 'متابعة الروابط'
+  SiteTreeURLSegmentField:
+    EMPTY: 'الرجاء إدخال مقطع URL أو انقر فوق إلغاء الأمر'
+    HelpChars: 'يتم تلقائيا تحويل الأحرف الخاصة أو إزالتها.'
+  URLSegmentField:
+    Cancel: إلغاء
+    Edit: حرر
+    OK: موافق
+  ViewArchivedEmail_ss:
+    CANACCESS: 'يمكنك الدخول إلى أرشيف الموقع عن طريق الرابط التالي :'
+    HAVEASKED: 'تم طلب مشاهدة محتوى الموقع في'
+  VirtualPage:
+    CHOOSE: 'الصفحة المرتبطة'
+    DESCRIPTION: 'يعرض محتوى صفحة أخرى'
+    EditLink: حرر
+    HEADER: 'هذه صفحة افتراضية'
+    HEADERWITHLINK: 'هذه صفحة افتراضية تنسخ المحتوى من "{title}" ({link})'
+    PLURALNAME: 'الصفحات الافتراضية'
+    PageTypNotAllowedOnRoot: 'نوع الصفحة الأصلية "{type}"غير مسموح به على مستوى الجذر لهذه الصفحة الافتراضية'
+    SINGULARNAME: 'الصفحة الافتراضية'
+  CMSFileAddController:
+    MENUTITLE: ملفات
+  CMSPageEditController:
+    MENUTITLE: 'تحرير الصفحة'
+  CMSPageSettingsController:
+    MENUTITLE: 'تحرير صفحة'
+  CMSSettingsController:
+    MENUTITLE: الإعدادات

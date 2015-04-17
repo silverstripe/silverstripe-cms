@@ -1,0 +1,68 @@
+fo:
+  AssetAdmin:
+    NEWFOLDER: Nýggj skjátta
+  AssetAdmin_left_ss:
+    GO: Víðari
+  CMSMain:
+    DELETE: 'Strika frá kladdu heimasíðuni'
+    DELETEFP: Strika frá tí almennu heimasíðuni
+    EMAIL: Teldupostur
+    PAGENOTEXISTS: 'Hendan síðan finst ikki.'
+    PUBALLCONFIRM: 'Vinarliga almenna kunngerð allar síðurnar á heimasíðuni,  avrita innihaldsstøðið til beinleiðis'
+    PUBALLFUN: '"Ger alt alment" funka'
+    PUBALLFUN2: "Við at trýsta á knøttin við tað sama henda, sum at fara inn á allar síðurnar og trýsta á \"Ger alment\". Endamálið við knøttunum er at hann skal brúkast, tá ið nógv innihald er blivið broytt, t.d. á einari nýggjari heimasíðu."
+    REMOVEDPAGEFROMDRAFT: 'Strikaði ''%s'' frá kladdu heimasíðuni'
+    RESTORE: Endurstovna
+    ROLLBACK: 'Far aftur til hesa útgávuna'
+    SAVE: Goym
+  ErrorPage:
+    404: '404 - Ikki funnin'
+    411: '411 - Longd er kravd'
+    CODE: 'Feilkota'
+    DEFAULTERRORPAGETITLE: 'Síðan var ikki funnin'
+  Folder:
+    UNUSEDFILESTITLE: 'Óbrúktar fílur'
+  RedirectorPage:
+    REDIRECTTO: 'Víðarisend til'
+    REDIRECTTOEXTERNAL: 'Onnur heimasíðu'
+    REDIRECTTOPAGE: 'Ein síða á tínari heimasíðu'
+    YOURPAGE: 'Síða á tínari heimasíðu'
+  SearchForm:
+    GO: Víðari
+    SEARCH: Leita
+  SideReport:
+    EMPTYPAGES: 'Tómar síður'
+    LAST2WEEKS: 'Síður broyttar seinastu 2 vikurnar'
+  SiteTree:
+    ACCESSANYONE: Øll
+    ACCESSHEADER: 'Hvør skal kunna síggja hesa síðuna?'
+    ACCESSLOGGEDIN: 'Innritaðir brúkarar'
+    ACCESSONLYTHESE: 'Bert hesi fólkini (vel fra yvirliti)'
+    ALLOWCOMMENTS: 'Loyv viðmerkingum á hesari síðuni?'
+    BUTTONCANCELDRAFT: 'Avlýs kladdu broytingarnar'
+    BUTTONCANCELDRAFTDESC: 'Strika tína kladdu, og far aftur til tí nuverandi almennu síðuna'
+    BUTTONUNPUBLISH: Óalmenna kunngerð
+    BUTTONUNPUBLISHDESC: 'Strika hesa síðuna frá tí almennu heimasíðuni'
+    Comments: Viðmerkingar
+    Content: Innihald
+    DEFAULTABOUTTITLE: 'Um okkum'
+    DEFAULTCONTACTTITLE: 'Samband við okkum'
+    DEFAULTHOMETITLE: Heim
+    EDITANYONE: 'Øll kunna innrita á CMS skipanina'
+    EDITHEADER: 'Hvør kann broyta hesa síðuna?'
+    EDITONLYTHESE: 'Bert hesa fólkini (vel frá yvirliti)'
+    HASBROKENLINKS: 'Hendan síðan inniheldur brotnar leinkur.'
+    HTMLEDITORTITLE: Innihald
+    METADESC: 'Frágreiðing'
+    METAEXTRA: 'Serlig meta frámerki'
+    PAGETITLE: 'Navn á síðuni'
+    PAGETYPE: 'Slag av síðu'
+    SHOWINMENUS: 'Vís á vælmyndum?'
+    SHOWINSEARCH: 'Vís í leiting?'
+    TABBEHAVIOUR: Virkisháttur
+    TABCONTENT: 'Innihald'
+    TOPLEVEL: 'Heimasíðu innihald (Fyrsta støði)'
+    has_one_Parent: 'Yvirsíða'
+  ViewArchivedEmail_ss:
+    CANACCESS: 'Tú kann fáa atgongd til arkiv heimasíðuna her:'
+    HAVEASKED: 'Tú mást fáa loyvi, fyri at kunna síggja innihaldið á okkara heimasíðu á'

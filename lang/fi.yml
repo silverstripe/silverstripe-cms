@@ -1,0 +1,420 @@
+fi:
+  AssetAdmin:
+    ADDFILES: 'Lisää tiedostoja'
+    ActionAdd: 'Lisää kansio'
+    AppCategoryArchive: Arkisto
+    AppCategoryAudio: Ääni
+    AppCategoryDocument: Asiakirja
+    AppCategoryFlash: Flash
+    AppCategoryImage: Kuva
+    AppCategoryVideo: Video
+    BackToFolder: 'Takaisin kansioon'
+    CREATED: Pvm
+    CurrentFolderOnly: 'Rajoita tähän kansioon?'
+    DetailsView: Tiedot
+    FILES: Tiedostot
+    FILESYSTEMSYNC: 'Synkronoi tiedostot'
+    FILESYSTEMSYNCTITLE: 'Päivitä palvelimella olevat tiedostot CMS-järjestelmän tietokantaan. Kätevä toiminto, kun olet siirtänyt tiedostoja suoraa palvelimelle ohi CMS-järjestelmän esim. FTP-ohjelmalla.'
+    FROMTHEINTERNET: 'Internetistä'
+    FROMYOURCOMPUTER: 'Omalta tietokoneelta'
+    Filetype: 'Tiedostotyyppi'
+    ListView: 'Listanäkymä'
+    NEWFOLDER: Uusi kansio
+    SIZE: Koko
+    THUMBSDELETED: '{count} käyttämätöntä esikatselukuvaa poistettiin'
+    TreeView: 'Puunäkymä'
+    Upload: Siirrä
+    MENUTITLE: Tiedostot
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Poista kansiot'
+  AssetAdmin_Tools:
+    FILTER: Suodatin
+  AssetAdmin_left_ss:
+    GO: Siirry
+  AssetTableField:
+    BACKLINKCOUNT: 'Linkitetty:'
+    PAGES: sivu(t)
+  BackLink_Button_ss:
+    Back: Takaisin
+  BrokenLinksReport:
+    Any: Yhtään
+    BROKENLINKS: 'Rikkinäisten linkkien raportti'
+    CheckSite: 'Tarkistussivusto'
+    CheckSiteDropdownDraft: 'Luonnossivusto'
+    CheckSiteDropdownPublished: 'Julkaistu sivusto'
+    ColumnDateLastModified: 'Muokattu viimeksi'
+    ColumnDateLastPublished: 'Julkaistu viimeksi'
+    ColumnProblemType: 'Ongelman tyyppi'
+    ColumnURL: URL-osoite
+    HasBrokenFile: 'sisältää rikkinäisen tiedoston'
+    HasBrokenLink: 'sisältää rikkinäisen linkin'
+    HasBrokenLinkAndFile: 'sisältää rikkinäisen linkin ja tiedoston'
+    HoverTitleEditPage: 'Muokkaussivu'
+    PageName: 'Sivun nimi'
+    ReasonDropdown: 'Ongelma tarkistettavaksi'
+    ReasonDropdownBROKENFILE: 'Rikkinäinen tiedosto'
+    ReasonDropdownBROKENLINK: 'Rikkinäinen linkki'
+    ReasonDropdownRPBROKENLINK: 'Uudelleenohjaava sivu osoittaa olemattomalle sivulle'
+    ReasonDropdownVPBROKENLINK: 'Virtuaalinen sivu osoittaa olemattomalle sivulle'
+    RedirectorNonExistent: 'uudelleenohjaava sivu osoittaa olemattomalle sivulle'
+    VirtualPageNonExistent: 'virtuaalinen sivu osoittaa olemattomalle sivulle'
+  CMSAddPageController:
+    Title: 'Lisää sivu'
+  CMSBatchActions:
+    DELETED_DRAFT_PAGES: 'Poistettiin %d sivua luonnostelusivustolta, %d virhettä'
+    DELETED_PAGES: 'Poistettiin %d sivua julkaistulta sivustolta, %d virhettä'
+    DELETE_DRAFT_PAGES: 'Poista luonnossivustosta'
+    DELETE_PAGES: 'Poista julkaistulta sivustolta'
+    PUBLISHED_PAGES: 'Julkaistu %d sivua, %d epäonnistumista'
+    PUBLISH_PAGES: Julkaise
+    UNPUBLISHED_PAGES: 'Julkaisemattomat %d sivut'
+    UNPUBLISH_PAGES: Poista julkaisu
+  CMSMain:
+    ACCESS: 'Pääsy ''{title}'' -osioon'
+    ACCESS_HELP: 'Oikeuttaa näkemään osion, joka sisältää sivurakenteen ja sisällön. Katselu- ja muokkausoikeuksia voidaan käsitellä sivukohtaisten pudotusvalikoiden kautta, kuten myös erillisestä "Sisällön oikeudet"-kohdasta.'
+    AddNew: 'Lisää uusi sivu'
+    AddNewButton: 'Lisää uusi'
+    AddPageRestriction: 'Huomio: Tietyt sivutyypit eivät ole sallittuja valitun sivutyypin alle.'
+    Cancel: Peruuta
+    ChoosePageParentMode: 'Valitse kohde, minne sivu luodaan'
+    ChoosePageType: 'Valitse sivutyyppi'
+    Create: Luo
+    DELETE: 'Poista luonnossivulta'
+    DELETEFP: Poista julkaistulta sivulta
+    DESCREMOVED: 'ja {count} alasivua'
+    DUPLICATED: '''{title}''  monistettu onnistuneesti'
+    DUPLICATEDWITHCHILDREN: '''{title}'' ja alasivu monistettiin onnistuneesti'
+    EMAIL: Sähköposti
+    EditTree: 'Muokkaa rakennepuuta'
+    ListFiltered: 'Suodatettu lista.'
+    NEWPAGE: 'Uusi {pagetype}'
+    PAGENOTEXISTS: 'Tätä sivua ei ole olemassa'
+    PAGES: Sivut
+    PAGETYPEANYOPT: Mikä tahansa
+    PAGETYPEOPT: 'Sivutyyppi'
+    PUBALLCONFIRM: 'Julkaise jokainen sivu tällä sivustolla kopioiden luonnosten sisältö julkiselle sivustolle'
+    PUBALLFUN: 'Julkaise kaikki -toiminto'
+    PUBALLFUN2: "Painamalla tätä nappia, tekee se saman kuin kävisit painamassa joka sivulla \"julkaise\". Se on käytännöllinen, jos on tehnyt isoja muutoksia sisältöön, esim. kun sivusto luotiin."
+    PUBPAGES: 'Valmis: julkaistiin {count} sivu(a)'
+    PageAdded: 'Sivun luonti onnistui'
+    REMOVED: 'Poista ''{title}''{description} näkyvältä sivustolta'
+    REMOVEDPAGE: '''{title}'' poistettiin julkaistulta sivustolta'
+    REMOVEDPAGEFROMDRAFT: 'Poistettu ''%s'' luonnossivustolta'
+    RESTORE: Palauta
+    RESTORED: '''{title}'' palautettiin onnistuneesti'
+    ROLLBACK: 'Siirry takaisin tähän versioon.'
+    ROLLEDBACKPUBv2: 'Palattiin takaisin julkaistuun versioon'
+    ROLLEDBACKVERSIONv2: 'Palautettu versioon #%d.'
+    SAVE: Tallenna
+    SAVEDRAFT: 'Tallenna luonnos'
+    TabContent: Sisältö
+    TabHistory: Historia
+    TabSettings: Asetukset
+    TreeFiltered: 'Suodatettu hakemistopuu.'
+    TreeFilteredClear: 'Nollaa suodatin'
+    MENUTITLE: 'Muokkaa sivua'
+  CMSMain_left_ss:
+    APPLY_FILTER: 'Suodata'
+    RESET: Nollaa
+  CMSPageAddController:
+    ParentMode_child: 'Toisen sivun alla'
+    ParentMode_top: 'Ylätaso'
+    MENUTITLE: 'Lisää sivu'
+  CMSPageHistoryController:
+    COMPAREMODE: 'Vertailutila (valitse kaksi)'
+    COMPAREVERSIONS: 'Vertaa versioita'
+    COMPARINGVERSION: 'Vertaillaan versioita {version1} ja {version2}'
+    REVERTTOTHISVERSION: 'Palaa tähän versioon'
+    SHOWUNPUBLISHED: 'Näytä julkaisemattomat versiot'
+    SHOWVERSION: 'Näytä versionumero'
+    VIEW: näkymä
+    VIEWINGLATEST: 'Katsot viimeisintä versiota.'
+    VIEWINGVERSION: 'Katsot versiota {version}.'
+    MENUTITLE: Historia
+  CMSPageHistoryController_versions_ss:
+    AUTHOR: Tekijä
+    NOTPUBLISHED: 'Julkaisematon'
+    PUBLISHER: Julkaisija
+    UNKNOWN: Tuntematon
+    WHEN: Milloin
+  CMSPagesController:
+    GalleryView: 'Suuret ikonit'
+    ListView: 'Listanäkymä'
+    MENUTITLE: Sivut
+    TreeView: 'Puunäkymä'
+  CMSPagesController_ContentToolbar_ss:
+    MULTISELECT: Monivalinta
+  CMSPagesController_Tools_ss:
+    FILTER: Suodata
+  CMSSearch:
+    FILTERDATEFROM: Alkaen
+    FILTERDATEHEADING: Pvm
+    FILTERDATETO: Päättyen
+    FILTERLABELTEXT: Sisältö
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Muuttuneet sivut'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Kaikki sivut, myös poistetut'
+  CMSSiteTreeFilter_Search:
+    Title: 'Kaikki sivut'
+  ContentControl:
+    NOTEWONTBESHOWN: 'Huomaa: tätä viestiä ei näytetä vierailijoille'
+  ContentController:
+    ARCHIVEDSITE: 'Esikatselu versio'
+    ARCHIVEDSITEFROM: 'Arkistoitu sivusto lähteestä:'
+    CMS: CMS
+    DRAFT: Luonnos
+    DRAFTSITE: 'Luonnossivusto'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Voidaksesi katsella luonnoksia tai arkistoitua sisältöä, sinun täytyy kirjautua sisään CMS:n salasanallasi. <a href="%s">Palataksesi julkiselle sivulle, napsauta tästä</a>.'
+    Email: Sähköposti
+    INSTALL_SUCCESS: 'Asennus onnistui!'
+    InstallFilesDeleted: 'Asennustiedostot poistettiin onnistuneesti.'
+    InstallSecurityWarning: 'Tietoturvan takia, kannattaa poistaa asennustiedostot palvelimelta, mikäli et aio asentaa järjestelmää uudelleen. (<em>Sitä varten vaaditaan kirjautuminen pääkäyttäjänä: katso ylempää</em>). Palvelimella kirjoitusoikeudet tarvitaan vain "assets"-kansioon. Muista kansioista voit poistaa kirjoitusoikeudet. <br /> <a href="{link}" style="text-align: center;">Napsauta tästä poistaaksesi kaikki asennustiedostot.</a>'
+    InstallSuccessCongratulations: 'SilverStripe asennettu onnistuneesti!'
+    LOGGEDINAS: 'Kirjautuneena sisään nimimerkillä'
+    LOGIN: Kirjaudu sisään
+    LOGOUT: 'Kirjaudu ulos'
+    NOTLOGGEDIN: 'Ei kirjautuneena sisään'
+    PUBLISHED: Julkaistu
+    PUBLISHEDSITE: 'Julkaistu sivusto'
+    Password: Salasana
+    PostInstallTutorialIntro: 'Tämä sivusto on yksinkertaistettu versio SilverStripe 3 sivustosta. Laajentaaksesi tätä, ole hyvä ja tutustu: {link}.'
+    StartEditing: 'Voit aloittaa sisällön muokkauksen avaamalla <a href="{link}">sisällönhallintajärjestelmän ylläpitopuolen</a>'
+    UnableDeleteInstall: 'Asennustiedostojen automaattinen poistaminen ei onnistunut. Ole hyvä ja poista seuraavat tiedostot manuaalisesti'
+    VIEWPAGEIN: 'Tarkastele sivua:'
+  ErrorPage:
+    400: '400 - Virheellinen Pyyntö'
+    401: '401 - Luvaton'
+    403: '403 - Kielletty'
+    404: '404 - Ei löytynyt'
+    405: '405 - Menetelmä ei sallittu'
+    406: '406 - Ei hyväksyttävä'
+    407: '407 - Välityspalvelinvahvistus vaaditaan'
+    408: '408 - Pyyntö Aikakatkaistiin'
+    409: '409 - Ristiriita'
+    410: '410 - Hävinnyt'
+    411: '411 - Pituus vaaditaan'
+    412: '412 - Edellytys epäonnistui'
+    413: '413 - Pyyntökokonaisuus liian suuri'
+    414: '414 - Pyyntö-URI Liian Pitkä'
+    415: '415 - Tukematon mediatyyppi'
+    416: '416 - Pyydetty alue ei kelpaa'
+    417: '417 - Oletus epäonnistui'
+    422: '422 - Käsittely ei onnistu: semanttinen virhe?'
+    429: '429 - Liian monta pyyntöä'
+    500: '500 - Sisäinen Palvelin Virhe'
+    501: '501 - Ei toteutettu'
+    502: '502 - Virheellinen Yhdyskäytävä'
+    503: '503 - Palvelu ei ole käytettävissä'
+    504: '504 - Välitysaikakatkaisu'
+    505: '505 - HTTP Versio Ei Tuettu'
+    CODE: 'Virhekoodi'
+    DEFAULTERRORPAGECONTENT: '<p>Valitettavasti hakemaasi sivua ei ole olemassa.</p><p>Tarkista hakemasi sivun URL-osoitteen kirjoitusasu ja yritä uudelleen.</p>'
+    DEFAULTERRORPAGETITLE: 'Sivua ei löytynyt'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Pahoittelut, mutta pyyntösi aiheutti virheen.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Palvelinvirhe'
+    DESCRIPTION: 'Omat virheilmoitukset (sivuille, kuten "Sivua ei löytynyt")'
+    ERRORFILEPROBLEM: 'Virhe avattaessa tiedostoa "{filename}" palvelimelle tallentamista varten. Tarkista tiedoston kirjoitusoikeudet.'
+    PLURALNAME: 'Virhesivut'
+    SINGULARNAME: 'Virhesivu'
+  Folder:
+    AddFolderButton: 'Lisää kansio'
+    DELETEUNUSEDTHUMBNAILS: 'Poista käyttämättömät pikkukuvat'
+    UNUSEDFILESTITLE: 'Käyttämättömät tiedostot'
+    UNUSEDTHUMBNAILSTITLE: 'Käyttämättömät pikkukuvat'
+    UploadFilesButton: Siirrä
+  LeftAndMain:
+    DELETED: Poistettu.
+    PreviewButton: Esikatselu
+    SAVEDUP: Tallennettu.
+    SearchResults: 'Hakutulokset'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'CMS-pääsy'
+  Permissions:
+    CONTENT_CATEGORY: 'Sisällön käyttöoikeudet'
+    PERMISSIONS_CATEGORY: 'Roolit ja käyttöoikeudet'
+  RedirectorPage:
+    DESCRIPTION: 'Edelleenohjaa toiselle sisäiselle sivulle'
+    HASBEENSETUP: 'Sivu, joka ohjaa käyttäjän toiselle sivulle on valmis, mutta sivua, jolle käyttäjä ohjataan, ei ole.'
+    HEADER: 'Tämä sivu ohjaa käyttäjän toiselle sivulle'
+    OTHERURL: 'Toisen verkkosivuston URL-osoite'
+    PLURALNAME: 'Uudelleenohjaavat sivut'
+    REDIRECTTO: 'Minne ohjataan?'
+    REDIRECTTOEXTERNAL: 'Muu verkkosivusto'
+    REDIRECTTOPAGE: 'Sivu verkkosivustollasi'
+    SINGULARNAME: 'Uudelleenohjaava sivu'
+    YOURPAGE: 'Sivu verkkosivustollasi'
+  ReportAdmin:
+    ReportTitle: Otsikko
+    MENUTITLE: Raportit
+  ReportAdminForm:
+    FILTERBY: 'Suodata'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Ole hyvä ja julkaise linkitetty sivu, jotta virtuaalisivun julkaisu on mahdollista'
+    VIRTUALPAGEWARNING: 'Ole hyvä ja valitse linkitetty sivu ja tallenna se ensin, jotta tämän sivun julkaiseminen olisi mahdollista'
+    VIRTUALPAGEWARNINGSETTINGS: 'Ole hyvä ja valitse linkitetty sivu sisältö kentästä, jotta julkaisu on mahdollista'
+  SearchForm:
+    GO: Suorita
+    SEARCH: Haku
+    SearchResults: 'Hakutulokset'
+  SideReport:
+    BROKENFILES: 'Sivut joissa rikkinäisiä tiedostoja'
+    BROKENLINKS: 'Sivut joissa rikkinäisiä linkkejä'
+    BROKENREDIRECTORPAGES: 'Uudelleenohjatut sivut, jotka osoittavat poistettuihin sivuhin'
+    BROKENVIRTUALPAGES: 'Virtuaaliset sivut, jotka osoittavat poistettuihin sivuihin'
+    BrokenLinksGroupTitle: 'Rikkinäisten linkkien raportit'
+    ContentGroupTitle: 'Sisältöraportit'
+    EMPTYPAGES: 'Sivut, joilla ei ole sisältöä'
+    LAST2WEEKS: 'Sivut, joita on muokattu viimeisen kahden viikon aikana'
+    OtherGroupTitle: Muu
+    ParameterLiveCheckbox: 'Tarkista live-sivusto'
+    REPEMPTY: '{title}:n raportti on tyhjä.'
+  SilverStripeNavigator:
+    ARCHIVED: Arkistoitu
+  SilverStripeNavigatorLink:
+    ShareInstructions: 'Jakaaksesi tämä sivu, kopioi ja liitä alla oleva linkki.'
+    ShareLink: 'Jaa linkki'
+  SilverStripeNavigatorLinkl:
+    CloseLink: Sulje
+  SiteConfig:
+    DEFAULTTHEME: '(Käytä oletusteemaa)'
+    EDITHEADER: 'Kuka voi muokata sivuja tällä sivustolla?'
+    EDIT_PERMISSION: 'Hallinnoi sivun kokoonpanoa'
+    EDIT_PERMISSION_HELP: 'Kyky muokata maailmanlaajuisia käyttöoikeusasetuksia/ ylätason sivujen käyttöoikeuksia.'
+    PLURALNAME: 'Sivuston asetuksia'
+    SINGULARNAME: 'Sivuston asetukset'
+    SITENAMEDEFAULT: 'Sivustosi nimi'
+    SITETAGLINE: 'Sivuston mainoslause/slogan'
+    SITETITLE: 'Sivuston otsikko'
+    TABACCESS: Oikeudet
+    TABMAIN: Yleiset asetukset
+    TAGLINEDEFAULT: 'sinun mainoslauseesi tähän'
+    THEME: Teema
+    TOPLEVELCREATE: 'Kuka voi luoda sivuja sivuston juureen?'
+    VIEWHEADER: 'Kuka voi nähdä sivuja tällä sivustolla?'
+  SiteTree:
+    ACCESSANYONE: Jokainen
+    ACCESSHEADER: 'Ketkä saavat katsoa tätä sivua?'
+    ACCESSLOGGEDIN: 'Kirjautuneet käyttäjät'
+    ACCESSONLYTHESE: 'Vain seuraavat henkilöt (valitse listalta)'
+    ADDEDTODRAFTHELP: 'Sivua ei ole vielä julkaistu'
+    ADDEDTODRAFTSHORT: Luonnos
+    ALLOWCOMMENTS: 'Sallitaanko kommenttien jättö tälle sivulle?'
+    APPEARSVIRTUALPAGES: 'Tämä sisältö on käytössä myös virtuaalisivuilla osioissa {title}'
+    BUTTONCANCELDRAFT: 'Peruuta muutokset, jotka teit luonnokseen'
+    BUTTONCANCELDRAFTDESC: 'Poista luonnoksesi ja palauta julkaistu sivu'
+    BUTTONPUBLISHED: Julkaistu
+    BUTTONSAVED: Tallennettu
+    BUTTONSAVEPUBLISH: 'Tallenna ja julkaise'
+    BUTTONUNPUBLISH: Poista näkyvistä
+    BUTTONUNPUBLISHDESC: 'Poista tämä sivu julkaistulta sivustolta'
+    Comments: Kommentit
+    Content: Sisältö
+    DEFAULTABOUTCONTENT: '<p>Voit täyttää tämän sivun omalla sisällölläsi tai poistaa sen ja luoda omia sivujasi.<br /></p>'
+    DEFAULTABOUTTITLE: 'Tietoa meistä'
+    DEFAULTCONTACTCONTENT: '<p>Voit täyttää tämän sivun omalla sisällölläsi tai poistaa sen ja luoda omia sivujasi.<br /></p>'
+    DEFAULTCONTACTTITLE: 'Ota yhteyttä meihin'
+    DEFAULTHOMECONTENT: '<p>Tervetuloa SilverStripeen! Tämä on oletus-kotisivu. Voit muokata tätä sivua kirjautumalla <a href="admin/">ylläpitonäkymään</a>. Voit myös lukea <a href="http://doc.silverstripe.com">kehittäjä-dokumentaatiota</a> tai aloittaa tutustumisen järjestelmään <a href="http://doc.silverstripe.com/doku.php?id=tutorials">johdatuskursseista</a>.</p>'
+    DEFAULTHOMETITLE: Koti
+    DELETEDPAGEHELP: 'Sivu ei ole enää julkaistuna'
+    DELETEDPAGESHORT: Poistettu
+    DEPENDENT_NOTE: 'Seuraavat sivut riippuvat tästä sivusta. Tämä pitää sisällään virtuaaliset sivut, uudelleenohjaussivut ja sivut sisältölinkkien kanssa.'
+    DESCRIPTION: 'Yleinen sisältösivu'
+    DependtPageColumnLinkType: 'Linkin tyyppi'
+    DependtPageColumnURL: URL
+    EDITANYONE: 'Jokainen, joka voi kirjautua sisään CMS:ään.'
+    EDITHEADER: 'Kuka voi muokata tätä CMS:ssä?'
+    EDITONLYTHESE: 'Vain seuraavat henkilöt (valitse listasta)'
+    EDITORGROUPS: 'Muokkaa ryhmiä'
+    EDIT_ALL_DESCRIPTION: 'Muokkaa mitä tahansa sivua'
+    EDIT_ALL_HELP: 'Mahdollisuus muokata mitä tahansa sivua sivustosta, riippumatta Käyttöoikeus-välilehden asetuksista. Vaatii "Käyttöoikeus sivuston sisältöön" -lupaa'
+    Editors: 'Toimittajaryhmät'
+    GroupPlaceholder: 'Valitse ryhmä napsauttamalla'
+    HASBROKENLINKS: 'Tällä sivulla on rikkinäisiä linkkejä'
+    HTMLEDITORTITLE: Sisältö
+    INHERIT: 'Sama kuin ylätason sivulla'
+    LASTPUBLISHED: 'Viimeksi julkaistu'
+    LASTSAVED: 'Viimeksi tallennettu'
+    LASTUPDATED: 'Viimeksi päivitetty'
+    LINKCHANGENOTE: 'Tämän sivun linkin muuttaminen vaikuttaa myös alasivujen linkkeihin.'
+    MENUTITLE: 'Navigoinnin nimike'
+    METADESC: 'Meta-kuvaus'
+    METADESCHELP: 'Hakukoneet näyttävät tämän sisällön hakutuloksissa (sisältö ei kuitenkaan vaikuta sijoitukseen hakutuloksessa).'
+    METAEXTRA: 'Omat meta-tagit'
+    METAEXTRAHELP: 'HTML-tagit omia metatietoja varten. Esimerkiksi &lt;meta name="haluamasiNimi" content="Oma sisältö tässä" /&gt;'
+    MODIFIEDONDRAFTHELP: 'Sivulla on tehty muutoksia, joita ei ole julkaistu'
+    MODIFIEDONDRAFTSHORT: Muokattu
+    MetadataToggle: Meta-tiedot
+    MoreOptions: 'Lisää valintoja'
+    NOTPUBLISHED: 'Julkaisematon'
+    OBSOLETECLASS: 'Tämä sivu on vanhentunutta tyyppiä ({type}). Tallentaminen nollaa tyypin ja saatat menettää tietoja.'
+    PAGELOCATION: 'Sivun sijainti'
+    PAGETITLE: 'Sivun nimi'
+    PAGETYPE: 'Sivun tyyppi'
+    PARENTID: 'Yläsivu'
+    PARENTTYPE: 'Sivun sijainti'
+    PARENTTYPE_ROOT: 'Ylätason sivu'
+    PARENTTYPE_SUBPAGE: 'Alasivu ylätason sivulle (valitse ylätaso)'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Hallitse sisällön käyttöoikeuksia'
+    PERMISSION_GRANTACCESS_HELP: 'Salli sivukohtaisten pääsyrajoitusten asettaminen "Sivut" -osiossa.'
+    PLURALNAME: Sivut
+    PageTypNotAllowedOnRoot: '"{type}" -sivutyyppi ei ole sallittu päätasolla'
+    PageTypeNotAllowed: '"{type}" -sivutyyppi ei ole sallittu tämän sivun alasivuna.'
+    REMOVEDFROMDRAFTHELP: 'Sivu on julkaistu, mutta on poistettu luonnoksista'
+    REMOVEDFROMDRAFTSHORT: 'Poistettiin luonnoksista'
+    REMOVE_INSTALL_WARNING: 'Varoitus: Turvallisuussyistä sinun tulisi poistaa install.php-tiedosto SilverStripe-asennuskansiosta.'
+    REORGANISE_DESCRIPTION: 'Muuta sivuston rakennetta'
+    REORGANISE_HELP: 'Uudelleenjärjestä sivuston rakenne vetämällä ja pudottamalla sivu halutulle paikalle.'
+    SHOWINMENUS: 'Näytetäänkö valikoissa?'
+    SHOWINSEARCH: 'Näytetäänkö hauissa?'
+    SINGULARNAME: Sivu
+    TABBEHAVIOUR: Käyttäytyminen
+    TABCONTENT: 'Sisältö'
+    TABDEPENDENT: 'Riippuvaiset sivut'
+    TOPLEVEL: 'Sivuston sisältö (ylin taso)'
+    TOPLEVELCREATORGROUPS: 'Huipputason tekijät'
+    URLSegment: 'URL-osoite'
+    VIEWERGROUPS: 'Katsojaryhmät'
+    VIEW_ALL_DESCRIPTION: 'Näytä mikä tahansa sivu'
+    VIEW_ALL_HELP: 'Mahdollisuus nähdä mikä tahansa sivu, huolimatta Käyttöoikeudet-välilehden asetuksista. Vaatii "Käyttöoikeus ''Sivuihin''" -oikeudet.'
+    VIEW_DRAFT_CONTENT: 'Näytä luonnoksen sisältö'
+    VIEW_DRAFT_CONTENT_HELP: 'Koskee sivujen näyttämistä CMS:n ulkopuolella luonnoksena. Hyödyllinen ulkopuolisille kumppaneille ilman CMS-järjestelmään pääsyä.'
+    Viewers: 'Katselijaryhmät'
+    Visibility: Näkyvyys
+    has_one_Parent: 'Sivupohja'
+    many_many_BackLinkTracking: 'Käänteinen seuranta'
+    many_many_ImageTracking: 'Kuvan seuranta'
+    many_many_LinkTracking: 'Linkin seuranta'
+  SiteTreeURLSegmentField:
+    EMPTY: 'Anna URL-osoite tai napsauta peruuta'
+    HelpChars: 'Erikoismerkit muunnetaan tai poistetaan automaattisesti.'
+  URLSegmentField:
+    Cancel: Peruuta
+    Edit: Muokkaa
+    OK: OK
+  ViewArchivedEmail_ss:
+    CANACCESS: 'Pääset arkistoidulle sivulle tällä linkillä:'
+    HAVEASKED: 'Sinua on pyydetty katsomaan sivun sisältöä '
+  VirtualPage:
+    CHOOSE: 'Linkitetty sivu'
+    DESCRIPTION: 'Näytä toisen sivun sisältö'
+    EditLink: muokkaa
+    HEADER: 'Tämä on virtuaalisivu'
+    HEADERWITHLINK: 'Tämä on virtuaalisivu, joka kopioi sisällön kohteesta "{title}" ({link})'
+    PLURALNAME: 'Virtuaalisivut'
+    PageTypNotAllowedOnRoot: 'Alkuperäinen sivutyyppi "{type}" ei ole sallittu tämän virtuaalisen sivun päätasolla'
+    SINGULARNAME: 'Virtuaalisivu'
+  CMSFileAddController:
+    MENUTITLE: Tiedostot
+  CMSPageEditController:
+    MENUTITLE: 'Muokkaa sivua'
+  CMSPageSettingsController:
+    MENUTITLE: 'Muokkaa sivua'
+  CMSSettingsController:
+    MENUTITLE: Asetukset
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Poistetut sivut'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Luonnokset julkaisemattomista sivuista'
+  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Näkyvillä, mutta poistettu luonnoksista'

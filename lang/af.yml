@@ -1,0 +1,111 @@
+af:
+  AssetAdmin:
+    ADDFILES: 'Voeg lêers by'
+    ActionAdd: 'Voeg dossier by'
+    AppCategoryArchive: Stoor in argiewe
+    AppCategoryAudio: Klank
+    AppCategoryDocument: Dokument
+    AppCategoryFlash: Flash
+    AppCategoryImage: Prentjie
+    AppCategoryVideo: Video
+    BackToFolder: 'Terug na dossier'
+    CREATED: Datum
+    CurrentFolderOnly: 'Beperrk tot die huidige dossier'
+    DetailsView: Besonderhede
+    FILES: Lêers
+    FILESYSTEMSYNC: 'Sinchroniseer lêers'
+    FILESYSTEMSYNCTITLE: 'Bring die CMS op datum met die nuutse lêers wat in die lêersisteem lê. Dit is voordelig om te doen wanneer lêers buite die CMS opgelaai was bv deur midel van FTP'
+    FROMTHEINTERNET: 'Van die indernet af'
+    FROMYOURCOMPUTER: 'Van jou rekenaar af'
+    Filetype: 'Lêer tipe'
+    ListView: 'Lys aansig'
+    NEWFOLDER: Nuwe Dossier
+    SIZE: Groote
+    THUMBSDELETED: '{count} ongebruikte duimnaelsketse was verwyder'
+    TreeView: 'Boom aansig'
+    Upload: Laai op
+    MENUTITLE: Lêers
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Verwyder dossiere'
+  AssetAdmin_Tools:
+    FILTER: Filtreer
+  AssetAdmin_left_ss:
+    GO: Gaan voort
+  AssetTableField:
+    BACKLINKCOUNT: 'Gebruik op:'
+    PAGES: bladsy(e)
+  BackLink_Button_ss:
+    Back: Terug
+  BrokenLinksReport:
+    Any: Enige
+    BROKENLINKS: 'Gebreekte skakels verslag'
+  CMSMain:
+    EMAIL: Epos
+    PAGENOTEXISTS: 'Hierdie bladsy bestaan nie'
+    PUBALLCONFIRM: 'Publiseer asseblief elke bladsy in die werf en kopieër inhoud fase na lewendig'
+    PUBALLFUN2: "Pressing this button will do the equivalent of going to every page and pressing \"publish\".  It's\n\t\t\t\tintended to be used after there have been massive edits of the content, such as when the site was\n\t\t\t\tfirst built.\n"
+    ROLLBACK: 'Rol terug na hierdie weergawe'
+  CMSPagesController:
+    MENUTITLE: CMSPagesController
+  ErrorPage:
+    501: '501 - Nie Geimplementeer'
+    502: '502 - Slegte Deurgang'
+    503: '503 - Diens Nie Beskikbaar'
+    505: '505 - HTTP Weergawe Nie Ondersteun'
+  Folder:
+    DELETEUNUSEDTHUMBNAILS: 'Verwyder ongebruikte miniatuur prente'
+    UNUSEDFILESTITLE: 'Ongebruikte lêers'
+    UNUSEDTHUMBNAILSTITLE: 'Ongebruikte miniatuur prente'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'IBS Toegang'
+  Permissions:
+    CONTENT_CATEGORY: 'Inhoud permissies'
+    PERMISSIONS_CATEGORY: 'Rolle en toegang permissies'
+  SideReport:
+    BROKENFILES: 'Bladsye met gebreekte lêers'
+    BROKENLINKS: 'Bladsye met gebreekte skakels'
+    BrokenLinksGroupTitle: 'Gebreekte skakels verslae'
+    ContentGroupTitle: 'Inhoud verslae'
+    OtherGroupTitle: Ander
+    ParameterLiveCheckbox: 'Kies lewendige werf'
+  SilverStripeNavigatorLink:
+    ShareLink: 'Deel skakel'
+  SilverStripeNavigatorLinkl:
+    CloseLink: Maak toe
+  SiteConfig:
+    DEFAULTTHEME: '(Gebruik verstek tema)'
+  SiteTree:
+    ACCESSANYONE: Enige iemand
+    ACCESSHEADER: 'Wie mag hierdie bladsy sien?'
+    ACCESSLOGGEDIN: 'Ingetekende gebruikers'
+    ACCESSONLYTHESE: 'Slegs hierdie mense (kies uit lys)'
+    ALLOWCOMMENTS: 'Laat aanmerkings toe op hierdie bladsy?'
+    BUTTONUNPUBLISH: Onpubliseer
+    BUTTONUNPUBLISHDESC: 'Verwyder hierdie bladsy van die gepubliseerde werf'
+    Content: Inhoud
+    DEFAULTABOUTCONTENT: '<p>U kan hierdie bladsy invul met u eie inhoud, of dit verwyder en u eie bladsye skep.<br /></p>'
+    DEFAULTABOUTTITLE: 'Oor Ons'
+    DEFAULTCONTACTCONTENT: '<p>U kan hierdie bladsy invul met u eie inhoud, of dit verwyder en u eie bladsye skep.<br /></p>'
+    DEFAULTCONTACTTITLE: 'Kontak Ons'
+    DEFAULTHOMECONTENT: '<p>Welkom by SilverStripe! Hierdie is die standaard huis-blad. U kan hierdie blad verander deur <a href="admin">the IBS</a> oop te maak. U het nou toegang tot die <a href="http://doc.silverstripe.org">ontwikkelaars dokumentasie</a>, of kan die <a href="http://doc.silverstripe.org/doku.php?id=tutorials">die tutoriale</a> begin.</p>'
+    DEFAULTHOMETITLE: Huis
+    EDITANYONE: 'Enige iemand wat in die IBS kan inteken'
+    EDITHEADER: 'Wie mag hierdie bladsy verander?'
+    EDITONLYTHESE: 'Slegs hierdie mense (kies uit lys)'
+    EDIT_ALL_DESCRIPTION: 'Verander enige bladsy'
+    HTMLEDITORTITLE: Inhoud
+    PAGETYPE: 'Blaai soort'
+    PARENTID: 'Ouer Bladsy'
+    PARENTTYPE: 'Bladsy plek'
+    PARENTTYPE_ROOT: 'Bo-vlak bladsy'
+    PARENTTYPE_SUBPAGE: 'Sub-bladsy onder ''n ouer bladsy (kies onder)'
+    REORGANISE_DESCRIPTION: 'Verander werf struktuur'
+    SHOWINSEARCH: 'Wys in soektog?'
+    TABCONTENT: 'Inhoud'
+    has_one_Parent: 'Ouer Bladsy'
+  ViewArchivedEmail_ss:
+    HAVEASKED: 'U het gevra om die inhoud van ons werf te sien op'
+  VirtualPage:
+    HEADER: 'Hierdie is ''n virtuele bladsy'
+    PLURALNAME: 'Wesenlik Bladsye'
+    SINGULARNAME: 'Virtuele Bladsy'

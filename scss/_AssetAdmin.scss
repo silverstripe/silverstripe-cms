@@ -1,0 +1,71 @@
+.cms .AssetAdmin {
+	.cms-content-fields {
+		overflow:hidden; //removes scrolling from filter panel
+		.cms-edit-form.AssetAdmin {
+			overflow-y:auto; //adds scrolling only to the datagrid 
+		}
+		.cms-content-tools .cms-panel-content {
+			overflow:hidden; //removes scollbar from search field in filter
+			.cms-search-form {
+				height:100%; //increases height of search form to accomodate dropdown
+			}
+		}	
+	}
+
+	.cms-content-toolbar {
+		.cms-page-add-button {
+			@include background-image (linear-gradient(lighten(#e6e6e6, 5%), darken(#e6e6e6, 5%)));
+			border-color:#c0c0c2;
+			span.btn-icon-add {
+				height:17px;
+			}
+			span.ui-button-text {
+				color:#393939;
+				text-shadow: white 0 1px 1px;
+			}
+		}
+	}	
+
+	#Root_TreeView {
+		.cms-tree ul .class-Folder a span.text span.jstree-foldericon {
+			background: url(../images/blue-folder-horizontal.png) no-repeat;
+			width:16px;
+			height:16px;
+			float:left;
+			display:block;
+			margin-right:4px;
+		}
+	}
+
+	table.ss-gridfield-table {
+		td {
+			// Taken care of by minimum image sizes
+			padding-top: 0;
+			padding-bottom: 0;
+			&.bottom-all {
+				padding:0.7em;
+			}
+		}
+		td.col-StripThumbnail {
+			padding: 1px 5px;
+			width: 32px;
+			height: 32px;
+
+			img {
+				width: 32px;
+				height: 32px;
+			}
+		}
+		tr[data-class=Folder] {
+			td.col-StripThumbnail {
+				background: transparent url(../images/treeicons/blue-folder-horizontal.png) no-repeat center;
+			}
+		}
+		tr[data-class=File] {
+			td.col-StripThumbnail {
+				background: transparent url(../images/treeicons/blue-document.png) no-repeat center;
+			}
+		}
+	}
+} 
+	

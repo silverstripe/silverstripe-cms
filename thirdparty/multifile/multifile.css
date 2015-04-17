@@ -1,0 +1,82 @@
+#Form_UploadForm {
+	padding: 5px; 
+	line-height: 1.4em;
+}
+	
+#Form_UploadForm a {  
+	font-weight: bold;
+}
+	
+#Form_UploadForm ol li {
+	list-style: decimal outside;
+}
+	
+#Form_UploadForm ul li {	
+	list-style-type: square;
+}
+	
+#Form_UploadForm form { 
+	text-align: left;
+}
+
+#Form_UploadForm label {
+	font-size: 1.2em;
+}
+	
+#Form_UploadForm input.delete { 
+	margin: 2px auto;
+	padding: 0px;
+	background-color: #FFFFFF;
+	border:1px solid #D6D3CE;
+}
+
+#Form_UploadForm input[value="Submit"] {
+	cursor: pointer;
+}
+
+#Form_UploadForm input[value="Submit"]:hover{
+	background-color: #F6F6E8;
+}
+
+#Form_UploadForm #Form_UploadForm_FilesList div {
+	font-size: 1.2em;
+	vertical-align: middle;
+}
+
+#Form_UploadForm #Form_UploadForm_FilesList input {
+	margin-left: 10px;
+}
+
+#Form_UploadForm #Form_UploadForm_FilesList .clear {
+	height: 0;
+	line-height: 0;
+}
+
+#Form_UploadForm div.file {
+	display: inline;
+}
+
+#Form_UploadForm #Form_UploadForm_action_upload {
+	display: inline;
+	margin: 5px 0;
+}
+
+#Form_UploadForm p {
+	margin-top: 5px;
+}
+
+#Form_UploadForm_FilesList {
+	margin-top: 5px;
+}
+
+#Form_UploadForm_FilesList .fileBox {
+	width: auto;
+	border: 1px solid #F1EFE2;
+	padding: 5px;
+	margin-bottom: 5px;
+}
+
+#Form_UploadForm_FilesList .fileBox .delete:hover {
+	background: red;
+	font-weight: bold;
+}

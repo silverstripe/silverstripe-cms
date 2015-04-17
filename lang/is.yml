@@ -1,0 +1,78 @@
+is:
+  CMSMain:
+    DELETE: 'Eyða úr drögum'
+    DELETEFP: Eyða úr birtum síðum
+    RESTORE: Endurheimta
+    SAVE: Vista
+  ContentController:
+    LOGGEDINAS: 'Innskráður sem'
+    LOGIN: Innskrá
+    LOGOUT: 'Útskrá'
+    NOTLOGGEDIN: 'Ekki innskráður'
+    PUBLISHEDSITE: 'Birt síða'
+    VIEWPAGEIN: 'Skoða síðu í:'
+  ErrorPage:
+    CODE: 'Villu númer'
+    DEFAULTERRORPAGECONTENT: '<p>Afsakið, það virðist vera að þú ert að reyna opna síðu sem er ekki til.</p><p>Vinsamlegast athugaðu hvort að slóðin sé rétt skrifuð og prófaðu aftur</p>'
+    DEFAULTERRORPAGETITLE: 'Síða fannst ekki'
+  Folder:
+    DELETEUNUSEDTHUMBNAILS: 'Eyða ónotuðum smámyndum'
+    UNUSEDFILESTITLE: 'Ónotaðar skrár'
+    UNUSEDTHUMBNAILSTITLE: 'Ónotaðar smámyndir'
+  RedirectorPage:
+    HEADER: 'Þessi síða mun áframsenda notendur á aðra síðu'
+    OTHERURL: 'Slóð á aðra heimasíðu'
+    REDIRECTTO: 'Áframsenda á'
+    REDIRECTTOEXTERNAL: 'Önnur heimasíða'
+    REDIRECTTOPAGE: 'Síða á heimasíðunni þinni'
+    YOURPAGE: 'Síða á heimasíðunni þinni'
+  SearchForm:
+    GO: Framkvæma
+    SEARCH: Leita
+    SearchResults: 'Leitar niðurstaða'
+  SilverStripeNavigatorLinkl:
+    CloseLink: Loka
+  SiteConfig:
+    SITENAMEDEFAULT: 'Nafn síðunnar'
+    SITETITLE: 'Titill síðunnar'
+    THEME: Þema
+  SiteTree:
+    ACCESSANYONE: Allir
+    ACCESSHEADER: 'Hver má skoða þessa síðu á heimasíðunni minni?'
+    ACCESSLOGGEDIN: 'Innskráðir notendur'
+    ACCESSONLYTHESE: 'Aðeins þetta fólk (veldu úr listanum)'
+    ALLOWCOMMENTS: 'Leyfa lesendum að skrifa athugasemdir á þessa síðu?'
+    BUTTONCANCELDRAFT: 'Hætta við breytingar á drögum'
+    BUTTONCANCELDRAFTDESC: 'Eyða drögunum þínum og fara aftur ál núverandi bitar síðu'
+    BUTTONUNPUBLISH: Taka úr birtingu
+    BUTTONUNPUBLISHDESC: 'Fjarlægja þessa síðu úr birtum síðum'
+    Comments: Athugasemdir
+    Content: Efni
+    DEFAULTABOUTCONTENT: '<p>Þú getur fyllt út þessa síðu með þínu efni eða eytt henni og búið til þína eigin síðu.<br/></p>'
+    DEFAULTABOUTTITLE: 'Um okkur'
+    DEFAULTCONTACTCONTENT: '<p>Þú getur fyllt út þessa síðu með þínu efni  eða eytt því og búið til þína eigin síður<br/></p>'
+    DEFAULTCONTACTTITLE: 'Hafa samband'
+    DEFAULTHOMECONTENT: '<p>Velkomin(n) á SilverStripe! Þetta er sjálfvalda heimasíðan. Þú getur breytt þessari síðu með því að opna <a href="admin/">kerfið</a>. Þú getur skoðað <a href="http://doc.silverstripe.com">hönnunar leiðbeiningarnar</a>, eða skoðað<a href="http://doc.silverstripe.com/doku.php?id=tutorials">kennsluna</a></p>'
+    DEFAULTHOMETITLE: Heim
+    EDITANYONE: 'Allir þeir sem geta innskráð sig í kerfið'
+    EDITHEADER: 'Hver getur breytt þessu í kerfinu?'
+    EDITONLYTHESE: 'Aðeins þetta fólk (veldu úr listanum)'
+    HASBROKENLINKS: 'Þessi síða inniheldur óvirkann hlekk.'
+    HTMLEDITORTITLE: Efni
+    INHERIT: 'Erfa frá foreldra síðu'
+    METADESC: 'Lýsing'
+    METAEXTRA: 'Sérnsniðin Meta tags'
+    PAGELOCATION: 'Staðsetning síðu'
+    PAGETITLE: 'Nafn síðu'
+    PAGETYPE: 'Tegund síðu'
+    SHOWINMENUS: 'Sýna í valmynd?'
+    SHOWINSEARCH: 'Sýna í leit?'
+    TABBEHAVIOUR: Hegðun
+    TABCONTENT: 'Efni'
+    URLSegment: 'Slóðar hlutar'
+    VIEW_DRAFT_CONTENT: 'Skoða uppkast'
+    has_one_Parent: 'Yfir síða'
+  VirtualPage:
+    HEADER: 'Þetta er sýndarsíða'
+    PLURALNAME: 'Sýndar síða'
+    SINGULARNAME: 'Sýndar síða'

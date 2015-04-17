@@ -1,0 +1,373 @@
+pt:
+  AssetAdmin:
+    ADDFILES: 'Adicionar ficheiros'
+    ActionAdd: 'Adicionar pasta'
+    AppCategoryArchive: Arquivar
+    AppCategoryDocument: Documento
+    AppCategoryFlash: Inserir flash
+    AppCategoryImage: Imagem
+    AppCategoryVideo: Vídeo
+    BackToFolder: 'Voltar para a pasta'
+    CREATED: Data
+    CurrentFolderOnly: 'Limitar à pasta actual?'
+    DetailsView: Detalhes
+    FILES: Ficheiros
+    FILESYSTEMSYNC: 'Sincronizar ficheiros'
+    FILESYSTEMSYNCTITLE: 'Actualize a base de dados de ficheiros do CMS. É recomendado quando são adicionados novos arquivos externamente, por exemplo, através de FTP.'
+    FROMTHEINTERNET: 'Da internet'
+    FROMYOURCOMPUTER: 'Do computador'
+    Filetype: 'Tipo de ficheiro'
+    ListView: 'Vista em lista'
+    NEWFOLDER: Nova Pasta
+    SIZE: Tamanho
+    THUMBSDELETED: '{count} miniaturas não utilizadas foram removidas'
+    TreeView: 'Vista em árvore'
+    Upload: Enviar
+    MENUTITLE: Ficheiros
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Apagar pastas'
+  AssetAdmin_Tools:
+    FILTER: Filtro
+  AssetAdmin_left_ss:
+    GO: Ir
+  AssetTableField:
+    BACKLINKCOUNT: 'Usado em:'
+    PAGES: página(s)
+  BackLink_Button_ss:
+    Back: Voltar
+  BrokenLinksReport:
+    Any: Qualquer
+    BROKENLINKS: 'Relatório de links inválidos'
+    CheckSite: 'Verificar site'
+    CheckSiteDropdownDraft: 'Site Rascunho'
+    CheckSiteDropdownPublished: 'Site Publicado'
+    ColumnDateLastModified: 'Data da última modificação'
+    ColumnDateLastPublished: 'Data da última publicação'
+    ColumnProblemType: 'Tipo de problema'
+    HasBrokenFile: 'Ficheiro corrompido'
+    HasBrokenLink: 'tem link inválido'
+    HasBrokenLinkAndFile: 'link e ficheiro inválido'
+    HoverTitleEditPage: 'Editar página'
+    PageName: 'Nome da página'
+    ReasonDropdown: 'Problema a verificar'
+    ReasonDropdownBROKENFILE: 'Ficheiro quebrado'
+    ReasonDropdownBROKENLINK: 'Ligação quebrada'
+    ReasonDropdownRPBROKENLINK: 'A página redirecciona para uma que não existe'
+    ReasonDropdownVPBROKENLINK: 'Página Virtual apontando para página inexistente'
+    RedirectorNonExistent: 'A página redirecciona para uma que não existe'
+    VirtualPageNonExistent: 'Página Virtual apontando para página inexistente'
+  CMSAddPageController:
+    Title: 'Adicionar página'
+  CMSBatchActions:
+    DELETED_DRAFT_PAGES: 'Apagadas %d páginas publicadas, %d falharam'
+    DELETED_PAGES: 'Apagadas %d páginas publicadas, %d falharam'
+    DELETE_DRAFT_PAGES: 'Apagar do site de rascunho'
+    PUBLISHED_PAGES: 'Publicadas %d páginas, %d falhas'
+    PUBLISH_PAGES: Publicar
+    UNPUBLISHED_PAGES: '%d páginas não publicadas'
+  CMSMain:
+    ACCESS: 'Acesso à secção ''{title}'''
+    ACCESS_HELP: 'Permitir a visualização da árvore de páginas e respectivos conteúdos. Ver e editar permissões que podem ser seleccionadas a partir de uma caixa de selecção, bem como os separadores de "permissões de conteúdo".'
+    AddNew: 'Adicionar nova página'
+    AddNewButton: 'Novo'
+    AddPageRestriction: 'Nota: Alguns tipos de página não estão disponíveis nesta seleção'
+    ChoosePageParentMode: 'Escolha onde criar esta página'
+    ChoosePageType: 'Escolher tipo de página'
+    Create: Criar
+    DELETE: 'Apagar do site de rascunho'
+    DELETEFP: Apagar do site publicado
+    DESCREMOVED: 'e {count} descendentes'
+    DUPLICATED: 'Página ''{title}'' duplicada com sucesso'
+    DUPLICATEDWITHCHILDREN: 'Página ''{title}'' e filhos duplicados com sucesso'
+    EditTree: 'Editar árvore'
+    ListFiltered: 'Lista filtrada.'
+    NEWPAGE: 'Nova {pagetype}'
+    PAGENOTEXISTS: 'Esta página não existe'
+    PAGES: Páginas
+    PAGETYPEANYOPT: Qualquer
+    PAGETYPEOPT: 'Tipo de Página'
+    PUBALLCONFIRM: 'Por favor, publique cada uma das páginas do site, copiando o conteúdo para a versão publicada'
+    PUBALLFUN: 'funcionalidade "Publicar tudo"'
+    PUBALLFUN2: "Ao pressionar este botão fará o equivalente a ir a cada página e pressionar o botão \"publicar\". É aconselhado a sua utilização quando existem muitas edições de diferentes páginas ou então quando o site se encontra disponível para ser publicado para o público em geral."
+    PUBPAGES: 'Concluído: Publicadas {count} páginas'
+    PageAdded: 'Página criada com sucesso'
+    REMOVEDPAGE: 'Remover ''{title}'' do site publicado'
+    REMOVEDPAGEFROMDRAFT: 'Removido ''%s'' do site de rascunho'
+    RESTORE: Restaurar
+    RESTORED: '''{title}'' restaurado com sucesso'
+    ROLLBACK: 'Voltar para esta versão'
+    ROLLEDBACKPUBv2: 'Voltar para a versão publicada.'
+    ROLLEDBACKVERSIONv2: 'Voltar para a versão #%d.'
+    SAVE: Guardar
+    SAVEDRAFT: 'Guardar rascunho'
+    TabContent: Conteúdo
+    TabHistory: Histórico
+    TabSettings: Configurações
+    TreeFiltered: 'Filtrar árvore'
+    TreeFilteredClear: 'Remover filtro'
+    MENUTITLE: 'Editar página'
+  CMSMain_left_ss:
+    APPLY_FILTER: 'Aplicar filtro'
+    RESET: Redefinir
+  CMSPageAddController:
+    ParentMode_child: 'Por cima de outra página'
+    ParentMode_top: 'Nível de topo'
+    MENUTITLE: 'Adicionar página'
+  CMSPageHistoryController:
+    COMPAREMODE: 'Modo de comparação (selecione duas)'
+    COMPAREVERSIONS: 'Comparar versões'
+    COMPARINGVERSION: 'Comparando as versões {version1} e {version2}.'
+    REVERTTOTHISVERSION: 'Reverter para esta versão'
+    SHOWUNPUBLISHED: 'Mostrar versões não publicadas'
+    SHOWVERSION: 'Mostrar versão'
+    VIEW: ver
+    VIEWINGLATEST: 'Atualmente está a ver a última versão'
+    VIEWINGVERSION: 'Actualmente está a ver a versão nº {version}.'
+    MENUTITLE: Histórico
+  CMSPageHistoryController_versions_ss:
+    AUTHOR: Autor
+    NOTPUBLISHED: 'Não publicada'
+    PUBLISHER: Publicador
+    UNKNOWN: Desconhecido
+    WHEN: Quando
+  CMSPagesController:
+    GalleryView: 'Vista de galeria'
+    ListView: 'Vista em lista'
+    MENUTITLE: Páginas
+    TreeView: 'Vista em árvore'
+  CMSPagesController_ContentToolbar_ss:
+    MULTISELECT: Multi-selecção
+  CMSPagesController_Tools_ss:
+    FILTER: Filtrar
+  CMSSearch:
+    FILTERDATEFROM: De
+    FILTERDATEHEADING: Data
+    FILTERDATETO: Para
+    FILTERLABELTEXT: Conteúdo
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Páginas alteradas'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Todas as páginas, incluindo apagadas'
+  CMSSiteTreeFilter_Search:
+    Title: 'Todas as páginas'
+  ContentControl:
+    NOTEWONTBESHOWN: 'Nota: Esta mensagem não vai ser apresentada aos visitantes'
+  ContentController:
+    ARCHIVEDSITE: 'Pré-visualização'
+    ARCHIVEDSITEFROM: 'Arquivar o site de'
+    CMS: Gestor de Conteúdos
+    DRAFTSITE: 'Site Rascunho'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Tem de se autenticar para ver o conteúdo de rascunho ou arquivado. <a href="%s">Clique aqui para voltar ao site publicado</a>'
+    INSTALL_SUCCESS: 'Instalação concluída com sucesso'
+    InstallFilesDeleted: 'Ficheiros de instalação foram removidos com sucesso.'
+    InstallSecurityWarning: 'Por razões de segurança deverá apagar os ficheiros de instalação, a menos que esteja a planear uma instalação futura (<em> requer acesso de administrador, ver acima </em>). O servidor apenas necessita de permissões de escrita na pasta "assets", poderá remover todos os acessos de escrita nas restantes pastas.<a href="{link}" style="text-align: Clique aqui para apagar os ficheiros de instalação.</a>'
+    InstallSuccessCongratulations: 'SilverStripe foi instalado com sucesso'
+    LOGGEDINAS: 'Autenticado como'
+    LOGIN: Autenticar
+    LOGOUT: 'Sair'
+    NOTLOGGEDIN: 'Não autenticado'
+    PUBLISHEDSITE: 'Site Publicado'
+    Password: Palavra-passe
+    PostInstallTutorialIntro: 'Este site é uma versão simplificada do SilverStripe 3. Para adicionar novas funcionalidades visita {link}.'
+    UnableDeleteInstall: 'Impossível remover os ficheiros de instalação. Por favor, remova-os manualmente.'
+    VIEWPAGEIN: 'Ver página em:'
+  ErrorPage:
+    401: '401 - Não Autorizado'
+    403: '403 - Proibido'
+    404: '404 - Não Encontrado'
+    405: '405 - Método não permitido'
+    406: '406 - Não aceite'
+    407: '407 - Autenticação Proxy Necessária'
+    408: '408 - Excedeu o tempo de resposta'
+    409: '409 - Conflicto'
+    410: '410 - Desaparecido'
+    411: '411 - Tamanho necessário'
+    412: '412 - Falha nas pré-condições'
+    413: '413 - Pedido demasiado grande'
+    414: '414 - Pedido de URL muito longa'
+    415: '415 - Tipo media não suportado'
+    416: '416 - Pedido solicitado não satisfatório'
+    417: '417 - Falha de expectativa'
+    500: '500 - Erro de Servidor'
+    501: '501 - Não implementado'
+    503: '503 - Serviço Indisponível'
+    505: '505 - Versão HTTP não suportada'
+    CODE: 'Código de erro'
+    DEFAULTERRORPAGECONTENT: '<p>A página a que tentou aceder não existe.</p><p>Verifique se não existem erros no endereço a que tentou aceder e tente novamente.</p>'
+    DEFAULTERRORPAGETITLE: 'Página não encontrada'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Desculpe, ocorreu um problema no processamento do seu pedido</p>'
+    DEFAULTSERVERERRORPAGETITLE: '500 - Erro do servidor'
+    DESCRIPTION: 'Conteúdo personalizado para as diferentes possibilidades de erro (ex. página não encontrada)'
+    ERRORFILEPROBLEM: 'Erro ao escrever no ficheiro "{filename}". Por favor, verifique as permissões do ficheiro.'
+    PLURALNAME: 'Página de erro'
+    SINGULARNAME: 'Página de erro'
+  Folder:
+    AddFolderButton: 'Adicionar pasta'
+    DELETEUNUSEDTHUMBNAILS: 'Apagar miniaturas não utilizadas'
+    UNUSEDFILESTITLE: 'Ficheiros não utilizados'
+    UNUSEDTHUMBNAILSTITLE: 'Miniaturas não utilizadas'
+    UploadFilesButton: Submeter
+  LeftAndMain:
+    DELETED: Apagada
+    PreviewButton: Pré-visualização
+    SAVEDUP: Guardado
+    SearchResults: 'Resultados da pesquisa'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'Acesso ao CMS'
+  Permissions:
+    CONTENT_CATEGORY: 'Permissões de conteúdo'
+    PERMISSIONS_CATEGORY: 'Regras e permissões de acesso'
+  RedirectorPage:
+    DESCRIPTION: 'Redirecionar para outra página interna'
+    HASBEENSETUP: 'Uma página de redireccionamento foi criada sem nenhum destino.'
+    HEADER: 'Esta página irá redireccionar os utilizadores para outra página'
+    OTHERURL: 'Outro Site'
+    PLURALNAME: 'Página de redirecção'
+    REDIRECTTO: 'Redireccionar para'
+    REDIRECTTOEXTERNAL: 'Outro site'
+    REDIRECTTOPAGE: 'Uma página no seu site'
+    SINGULARNAME: 'A página redirecciona para uma que não existe'
+    YOURPAGE: 'Página no seu site'
+  ReportAdmin:
+    ReportTitle: Título
+    MENUTITLE: Relatórios
+  ReportAdminForm:
+    FILTERBY: 'Filtrar por'
+  SearchForm:
+    GO: Ir
+    SEARCH: Procurar
+    SearchResults: 'Resultados da pesquisa'
+  SideReport:
+    BROKENFILES: 'Páginas com ficheiros corrompidos'
+    BROKENLINKS: 'Esta página contém links inválidos.'
+    BROKENREDIRECTORPAGES: 'As páginas redireccionadas apontam para páginas apagadas'
+    BROKENVIRTUALPAGES: 'Página virtuais apontam para páginas apagadas'
+    BrokenLinksGroupTitle: 'Relatório de links inválidos'
+    ContentGroupTitle: 'Conteúdo dos relatórios'
+    EMPTYPAGES: 'Páginas sem conteúdo'
+    LAST2WEEKS: 'Páginas editadas nas 2 últimas semanas'
+    OtherGroupTitle: Outro
+    ParameterLiveCheckbox: 'Verificar site publicado'
+    REPEMPTY: 'O relatório {title} encontra-se vazio.'
+  SilverStripeNavigatorLink:
+    ShareLink: 'Partilhar ligação'
+  SilverStripeNavigatorLinkl:
+    CloseLink: Fechar
+  SiteConfig:
+    DEFAULTTHEME: '(Usar o tema por omissão)'
+    EDITHEADER: 'Quem pode editar páginas neste site?'
+    EDIT_PERMISSION: 'Gerir configuração do site'
+    EDIT_PERMISSION_HELP: 'Capacidade de editar as configurações de acesso global / permissões da página.'
+    PLURALNAME: 'Configurações do site'
+    SINGULARNAME: 'Configurações do site'
+    SITENAMEDEFAULT: 'Nome do site'
+    SITETAGLINE: 'Slogan do site'
+    SITETITLE: 'Título do site'
+    TABACCESS: Acesso
+    TABMAIN: Principal
+    TAGLINEDEFAULT: 'seu slogan aqui'
+    THEME: Tema
+    TOPLEVELCREATE: 'Quem pode criar páginas na raiz do site?'
+    VIEWHEADER: 'Quem pode ver páginas neste site?'
+  SiteTree:
+    ACCESSANYONE: Todos
+    ACCESSHEADER: 'Quem pode ver esta página no site?'
+    ACCESSLOGGEDIN: 'Utilizadores Autenticados'
+    ACCESSONLYTHESE: 'Apenas estes (Seleccione da lista abaixo)'
+    ADDEDTODRAFTHELP: 'A página ainda não foi publicada'
+    ADDEDTODRAFTSHORT: Rascunho
+    ALLOWCOMMENTS: 'Permitir comentários nesta página?'
+    APPEARSVIRTUALPAGES: 'Este conteúdo também aparece nas páginas virtuais das secções {title}'
+    BUTTONCANCELDRAFT: 'Cancelar alterações do rascunho'
+    BUTTONCANCELDRAFTDESC: 'Apagar o seu rascunho e reverter para a versão publicada atualmente'
+    BUTTONUNPUBLISH: Remover do site Publicado
+    BUTTONUNPUBLISHDESC: 'Remover esta página do site publicado'
+    Comments: Comentários
+    Content: Conteúdo
+    DEFAULTABOUTCONTENT: '<p>Pode preencher esta página com o seu próprio conteúdo, ou apagá-la e criar as suas próprias páginas.</p>'
+    DEFAULTABOUTTITLE: 'Quem Somos'
+    DEFAULTCONTACTCONTENT: '<p>Pode preencher esta página com o seu próprio conteúdo, ou apagá-la e criar as suas próprias páginas.</p>'
+    DEFAULTCONTACTTITLE: 'Contacte-nos'
+    DEFAULTHOMECONTENT: '<p>Bem-vido ao SilverStripe! Esta é a página principal. Pode editar esta página acedendo ao <a href="admin/">CMS</a>. Poderá também visitar a <a href="http//doc.silverstripe.com">documentação para desenvolvimento</a>, ou começar <a href="http://doc.silverstripe.com/doku.php?id=tutorials">pelos tutoriais.</a></p>'
+    DEFAULTHOMETITLE: Página Principal
+    DELETEDPAGEHELP: 'A página nunca mais será publicada'
+    DELETEDPAGESHORT: Apagada
+    DEPENDENT_NOTE: 'As páginas seguintes dependem desta página. Isto inclui páginas virtuais, páginas redireccionadas e páginas com links de conteúdo.'
+    DESCRIPTION: 'Página de conteúdo genérico'
+    DependtPageColumnLinkType: 'Tipo de ligação'
+    EDITANYONE: 'Todos que possam efectuar a autenticação no CMS'
+    EDITHEADER: 'Quem pode editar esta página no CMS?'
+    EDITONLYTHESE: 'Apenas estes (selecione da lista abaixo)'
+    EDIT_ALL_DESCRIPTION: 'Editar qualquer página'
+    EDIT_ALL_HELP: 'Capacidade de visualizar qualquer página do site, independentemente das configurações. Requer as permissões "Acesso ao conteúdo do site"'
+    Editors: 'Grupos de Editores'
+    HASBROKENLINKS: 'Esta página contém links quebrados.'
+    HTMLEDITORTITLE: Conteúdo
+    INHERIT: 'Herdado da página superior'
+    LASTUPDATED: 'Última atualização'
+    LINKCHANGENOTE: 'Alterar as ligação das páginas vai-se reflectir na ligação das páginas dependentes.'
+    MENUTITLE: 'Nome na Navegação'
+    METADESC: 'Descrição'
+    METADESCHELP: 'Os motores de pesquisa utilizam este conteúdo para apresentar os seus resultados (no entanto não influencia o ranking do site). '
+    METAEXTRA: 'Meta-Tags personalizáveis'
+    METAEXTRAHELP: 'HTML tags para informações adicionais. Por exemplo &lt;meta name="nomeDaTag" content="o teu conteúdo personalizado" /&gt;'
+    MODIFIEDONDRAFTHELP: 'A página contem alterações não publicadas'
+    MODIFIEDONDRAFTSHORT: Modificado
+    MetadataToggle: Meta-data
+    PAGELOCATION: 'Localização da página'
+    PAGETITLE: 'Nome da página'
+    PAGETYPE: 'Tipo de Página'
+    PARENTID: 'Página Superior'
+    PARENTTYPE: 'Localização da página'
+    PARENTTYPE_ROOT: 'Página de topo'
+    PARENTTYPE_SUBPAGE: 'Página Parente'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Gestão de permissões de acesso para o conteúdo'
+    PLURALNAME: Páginas
+    PageTypNotAllowedOnRoot: 'Páginas do tipo "{type}" não tem permissões para serem criadas a este nível.'
+    PageTypeNotAllowed: 'A página do tipo "{type}" não é permitida como filho deste tipo de página'
+    REMOVEDFROMDRAFTHELP: 'A página está publicada mas foi removida dos rascunhos'
+    REMOVEDFROMDRAFTSHORT: 'Removido do rascunho'
+    REMOVE_INSTALL_WARNING: 'Aviso: Por razões de segurança, deverá apagar o ficheiro "install.php" da raiz do seu servidor.'
+    REORGANISE_DESCRIPTION: 'Alterar estrutura do site'
+    REORGANISE_HELP: 'Rearranjar páginas na árvore do site com drag&drop'
+    SHOWINMENUS: 'Mostrar no Menu?'
+    SHOWINSEARCH: 'Mostrar nas pesquisas?'
+    SINGULARNAME: Página
+    TABBEHAVIOUR: Comportamento
+    TABCONTENT: 'Conteúdo'
+    TABDEPENDENT: 'Páginas Dependentes'
+    TOPLEVEL: 'Conteúdo do Site (Nível Superior)'
+    TOPLEVELCREATORGROUPS: 'Nível de topo'
+    URLSegment: 'Segmento de URL'
+    VIEWERGROUPS: 'Ver grupos '
+    VIEW_DRAFT_CONTENT: 'Ver o conteúdo de rascunho'
+    Viewers: 'Grupo de Visualizadores'
+    Visibility: Visibilidade
+    has_one_Parent: 'Página Parente'
+    many_many_ImageTracking: 'Rastreamento de imagens'
+    many_many_LinkTracking: 'Rastreamento de links'
+  SiteTreeURLSegmentField:
+    HelpChars: 'Os caracteres especiais são automaticamente convertido ou removidos.'
+  URLSegmentField:
+    Cancel: 'Cancelar '
+    Edit: Editar
+  ViewArchivedEmail_ss:
+    CANACCESS: 'Pode aceder aos arquivos do site a partir deste link:'
+    HAVEASKED: 'Pediu para ver o conteúdo do nosso site na'
+  VirtualPage:
+    CHOOSE: 'Página associada'
+    DESCRIPTION: 'Apresentar o conteúdo de outra página'
+    EditLink: editar
+    HEADER: 'Esta é uma página virtual'
+    HEADERWITHLINK: 'Esta é uma página virtual com o conteúdo copiado da página "{title}" ({link})'
+    PLURALNAME: 'Páginas Virtuais'
+    PageTypNotAllowedOnRoot: 'Páginas do tipo "{type}" não tem permissões para serem criadas a este nível.'
+    SINGULARNAME: 'Página Virtual'
+  CMSFileAddController:
+    MENUTITLE: Ficheiros
+  CMSPageEditController:
+    MENUTITLE: 'Editar página'
+  CMSPageSettingsController:
+    MENUTITLE: 'Editar página'
+  CMSSettingsController:
+    MENUTITLE: Configurações

@@ -1,0 +1,57 @@
+hr:
+  AssetAdmin:
+    NEWFOLDER: Novi direktorij
+  AssetAdmin_left_ss:
+    GO: Idi
+  CMSMain:
+    PAGENOTEXISTS: 'Stranica ne postoji'
+    PUBALLCONFIRM: 'Molim objavi svaku stranicu, kopirajući sadržaj'
+    PUBALLFUN: '"Objavi sve"'
+    PUBALLFUN2: "Ovaj gumb radi isto što i klikanje na \"objavi\" gumbe za svaku stranicu posebno. Koristi se nakon velikih promjena u sadržaju, kao npr. kod prve objave stranice."
+    ROLLBACK: 'Vrati na ovu verziju'
+    SAVE: Snimi
+  RedirectorPage:
+    HASBEENSETUP: 'Stranica za preusjeravanje nema postavljenog preusmjeravanja'
+    HEADER: 'Ova stranica preusmjeriti će korisnike na drugu stranicu'
+    OTHERURL: 'URL drugog weba'
+    REDIRECTTO: 'Preusmjeri na'
+    REDIRECTTOEXTERNAL: 'Drugi web'
+    REDIRECTTOPAGE: 'Stranicu na Vašom webu'
+    YOURPAGE: 'Stranica na Vašem webu'
+  SideReport:
+    EMPTYPAGES: 'Prazne stranice'
+    LAST2WEEKS: 'Stranice mijenjane u zadnja 2 tjedna'
+  SiteTree:
+    ACCESSANYONE: Svi
+    ACCESSHEADER: 'Tko može pregledavati ovu stranicu?'
+    ACCESSLOGGEDIN: 'Samo prijavljeni korisnici'
+    ACCESSONLYTHESE: 'Samo slijedeći korisnici (odaberite s popisa)'
+    ALLOWCOMMENTS: 'Dozvoli komentare na stranici'
+    BUTTONCANCELDRAFT: 'Otkaži promjene na privremenoj stranici (draft)'
+    BUTTONCANCELDRAFTDESC: 'Obiriši privremenu stranicu i vrati na trenutno objavljenu'
+    BUTTONUNPUBLISHDESC: 'Izbrišite ovu stranicu sa objavljene'
+    Content: Sadržaj
+    EDITANYONE: 'Svi koji se mogu prijaviti  u CMS'
+    EDITHEADER: 'Tko može uređivati unutar CMSa?'
+    EDITONLYTHESE: 'Samo slijedeći korisnici (odaberite s popisa)'
+    HASBROKENLINKS: 'Ova stranica ima pogrešne linkove'
+    HTMLEDITORTITLE: Sadržaj
+    MENUTITLE: 'Oznaka navigacije'
+    METADESC: 'Opis'
+    METAEXTRA: 'Podešeni Meta Tagovi'
+    PAGETITLE: 'Ime stranice'
+    PAGETYPE: 'Vrsta stranice'
+    SHOWINMENUS: 'Pokaži u izbornicima?'
+    SHOWINSEARCH: 'Pokaži u tražilici?'
+    TABBEHAVIOUR: Karakteristike
+    TABCONTENT: 'Sadržaj'
+    TOPLEVEL: 'Sadržaj stranice (Top Level)'
+    URLSegment: 'Dio URLa'
+    has_one_Parent: 'Roditeljska stranica'
+  ViewArchivedEmail_ss:
+    CANACCESS: 'Na slijedećem linku možete pristupiti arhiviranoj stranici:'
+    HAVEASKED: 'Zatražili ste sadržaj naše stranice '
+  VirtualPage:
+    HEADER: 'Ovo je virtualna stranica'
+    PLURALNAME: 'Virtualne stranice'
+    SINGULARNAME: 'Virtualna stranica'

@@ -1,0 +1,411 @@
+sr:
+  AssetAdmin:
+    ADDFILES: 'Додај датотеке'
+    ActionAdd: 'Додај фасциклу'
+    AppCategoryArchive: Архива
+    AppCategoryAudio: Аудио
+    AppCategoryDocument: Документ
+    AppCategoryFlash: Flash
+    AppCategoryImage: Слика
+    AppCategoryVideo: Видео
+    BackToFolder: 'Повратак у фасциклу'
+    CREATED: Датум
+    CurrentFolderOnly: 'Само у овој фасцикли?'
+    DetailsView: Детаљи
+    FILES: Датотеке
+    FILESYSTEMSYNC: 'Синхронизуј датотеке'
+    FILESYSTEMSYNCTITLE: 'Ажурирање уноса у базу података CMS-a везаних за датотеке из датотечког система. Опција је корисна када је вршено постављање датотека изван CMS-а, нпр. путем FTP-а.'
+    FROMTHEINTERNET: 'Са интернета'
+    FROMYOURCOMPUTER: 'Са Вашег рачунара'
+    Filetype: 'Тип датотеке'
+    ListView: 'Приказ у виду листе'
+    NEWFOLDER: Нова фасцикла
+    SIZE: Величина
+    THUMBSDELETED: '{count} некоришћених сличицâ је обрисано'
+    TreeView: 'Преглед у виду стабла'
+    Upload: Постави
+    MENUTITLE: Датотеке
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Обриши фасцикле'
+  AssetAdmin_Tools:
+    FILTER: Филтер
+  AssetAdmin_left_ss:
+    GO: Иди
+  AssetTableField:
+    BACKLINKCOUNT: 'Користи се на:'
+    PAGES: страници(а)
+  BackLink_Button_ss:
+    Back: Назад
+  BrokenLinksReport:
+    Any: Било који
+    BROKENLINKS: 'Извештај о оштећеним линковима'
+    CheckSite: 'Провери сајт'
+    CheckSiteDropdownDraft: 'Нарцт сајта'
+    CheckSiteDropdownPublished: 'Објављени сајт'
+    ColumnDateLastModified: 'Датум последње измене'
+    ColumnDateLastPublished: 'Датум последњег публиковања'
+    ColumnProblemType: 'Тип проблема'
+    ColumnURL: URL
+    HasBrokenFile: 'садржи оштећену датотеку'
+    HasBrokenLink: 'садржи оштећен линк'
+    HasBrokenLinkAndFile: 'садржи оштећене линк и датотеку'
+    HoverTitleEditPage: 'Измени страницу'
+    PageName: 'Назив странице'
+    ReasonDropdown: 'Проблем за проверу'
+    ReasonDropdownBROKENFILE: 'Оштећена датотека'
+    ReasonDropdownBROKENLINK: 'Оштећен линк'
+    ReasonDropdownRPBROKENLINK: 'Страница за преусмеривање која показује на непостојећу страницу'
+    ReasonDropdownVPBROKENLINK: 'Виртуелна страница која показује на непостојећу страницу'
+    RedirectorNonExistent: 'страница за преусмеривање која показује на непостојећу страницу'
+    VirtualPageNonExistent: 'виртуелна страница која показује на непостојећу страницу'
+  CMSAddPageController:
+    Title: 'Додај страницу'
+  CMSBatchActions:
+    DELETED_DRAFT_PAGES: 'Из нацрта сајта избрисано %d страница. Није успело брисање %d страница.'
+    DELETED_PAGES: 'Из објављеног сајта избрисано %d страница. Није успело брисање %d страница.'
+    DELETE_DRAFT_PAGES: 'Избриши из нацрта сајта'
+    DELETE_PAGES: 'Избриши из објављеног сајта'
+    PUBLISHED_PAGES: 'Објављено %d страница. Није успело објављивање %d страница.'
+    PUBLISH_PAGES: Објави
+    UNPUBLISHED_PAGES: 'Поништена је објава %d страница.'
+    UNPUBLISH_PAGES: Поништи објаву
+  CMSMain:
+    ACCESS: 'Приступ ''{title}'' секцији'
+    ACCESS_HELP: 'Дозвољава преглед секције која садржи стабло страница и садржај. Дозволе за преглед и уређивање могу се подесити путем специфичних падајућих листи појединачних страница, као и путем "Дозволе за садржај".'
+    AddNew: 'Додај нову страницу'
+    AddNewButton: 'Додај нову'
+    AddPageRestriction: 'Напомена: Неки типови страница нису дозвољени за овај избор'
+    ChoosePageParentMode: 'Изаберите где желите да креирате ову страницу'
+    ChoosePageType: 'Изабери тип странице'
+    Create: Креирај
+    DELETE: 'Избриши нацрт'
+    DELETEFP: Избриши
+    DESCREMOVED: 'и {count} потомака'
+    DUPLICATED: '''{title}'' успешно дуплиран'
+    DUPLICATEDWITHCHILDREN: '''{title}'' и деца успешно дуплирани'
+    EMAIL: Е-пошта
+    EditTree: 'Измени стабло'
+    ListFiltered: 'Филтрирана листа.'
+    NEWPAGE: 'Нова {pagetype}'
+    PAGENOTEXISTS: 'Ова страница не постоји'
+    PAGES: Странице
+    PAGETYPEANYOPT: Било која
+    PAGETYPEOPT: 'Тип странице'
+    PUBALLCONFIRM: 'Објавите сваку страну на овом сајту копирањем садржај на жив сајт.'
+    PUBALLFUN: 'Функција „Објави све“ '
+    PUBALLFUN2: "Притиском на ово дугме постићи ћете исто што и одласком на сваку страну и притискањем дугмета „Објави“ . Намењена је за коришћење након великих измена садржаја као када се сајт први пут објављује."
+    PUBPAGES: 'Урађено: Објављено {count} страница'
+    PageAdded: 'Успешно креирана страница'
+    REMOVED: 'Са објављеног сајта обрисана је страница ''{title}''{description}'
+    REMOVEDPAGE: 'Са објављеног сајта уклоњена је страница ''{title}'''
+    REMOVEDPAGEFROMDRAFT: 'Страница ''%s'' је уклоњена из нацрта сајта'
+    RESTORE: Обнови
+    RESTORED: '''{title}'' успешно обновљен'
+    ROLLBACK: 'Врати се на ову верзију'
+    ROLLEDBACKPUBv2: 'Враћено на објављену верзију.'
+    ROLLEDBACKVERSIONv2: 'Враћено на верзију #%d.'
+    SAVE: Сачувај
+    SAVEDRAFT: 'Сачувај нацрт'
+    TabContent: Садржај
+    TabHistory: Историја
+    TabSettings: Подешавања
+    TreeFiltered: 'Филтрирано стабло'
+    TreeFilteredClear: 'Избриши филтер'
+    MENUTITLE: 'Измени страницу'
+  CMSMain_left_ss:
+    APPLY_FILTER: 'Примени филтер'
+    RESET: Врати у пређашње стање
+  CMSPageAddController:
+    ParentMode_child: 'Као подстраницу друге странице'
+    ParentMode_top: 'Вршни ниво'
+    MENUTITLE: 'Додај страницу'
+  CMSPageHistoryController:
+    COMPAREMODE: 'Режим поређења (изабери два)'
+    COMPAREVERSIONS: 'Упореди верзије'
+    COMPARINGVERSION: 'Поређење верзија {version1} и {version2}.'
+    REVERTTOTHISVERSION: 'Врати на ову верзију'
+    SHOWUNPUBLISHED: 'Прикажи необјављене верзије'
+    SHOWVERSION: 'Прикажи верзију'
+    VIEW: преглед
+    VIEWINGLATEST: 'Тренутно се приказује последња верзија.'
+    VIEWINGVERSION: 'Тренутно је приказана верзија {version}.'
+    MENUTITLE: Историја
+  CMSPageHistoryController_versions_ss:
+    AUTHOR: Аутор
+    NOTPUBLISHED: 'Необјављено'
+    PUBLISHER: Објављивач
+    UNKNOWN: Непознато
+    WHEN: Датум
+  CMSPagesController:
+    GalleryView: 'Приказ у виду галерије'
+    ListView: 'Приказ у виду листе'
+    MENUTITLE: Странице
+    TreeView: 'Приказ у виду стабла'
+  CMSPagesController_ContentToolbar_ss:
+    MULTISELECT: Вишеструки избор
+  CMSPagesController_Tools_ss:
+    FILTER: Филтер
+  CMSSearch:
+    FILTERDATEFROM: Од
+    FILTERDATEHEADING: Датум
+    FILTERDATETO: За
+    FILTERLABELTEXT: Садржај
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Измењене странице'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Све странице, укључујући и избрисане'
+  CMSSiteTreeFilter_Search:
+    Title: 'Све странице'
+  ContentControl:
+    NOTEWONTBESHOWN: 'Напомена: ова порука неће бити приказана посетиоцима'
+  ContentController:
+    ARCHIVEDSITE: 'Верзија за претходни преглед'
+    ARCHIVEDSITEFROM: 'Архивирани сајт из'
+    CMS: CMS
+    DRAFT: Нацрт
+    DRAFTSITE: 'Нарцт сајта'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Да би сте прегледали нацрт сајта или архивирани садржај морате бити пријављени Вашом CMS лозинком. <a href="%s">Кликните овде да би сте се вратили на објављени сајт.</a>'
+    Email: Е-пошта
+    INSTALL_SUCCESS: 'Инсталација је успешно обављена!'
+    InstallFilesDeleted: 'Инсталационе датотеке су успешно обрисане.'
+    InstallSecurityWarning: 'Из безбедносних разлога требали би да обришете инсталационе датотеке, осим ако не планирате да касније поново покрећете инсталацију (<em>захтева администраторски приступ, види изнад</em>). Такође, web server захтева право писања само за "assets" фасциклу, па можете уклонити право писања за све друге фасцикле. <a href="{link}" style="text-align: center;">Кликни овде да обришеш инсталационе датотеке.</a>'
+    InstallSuccessCongratulations: 'SilverStripe је успешно инсталиран!'
+    LOGGEDINAS: 'Пријављен као'
+    LOGIN: Пријава
+    LOGOUT: 'Одјава'
+    NOTLOGGEDIN: 'Нисте пријављени'
+    PUBLISHED: Објаљено
+    PUBLISHEDSITE: 'Објављени сајт'
+    Password: Лозинка
+    PostInstallTutorialIntro: 'Овај сајт је поједностављена верзија SilverStripe 3 сајта. Сазнајте више о могућностима проширења сајта на {link}.'
+    StartEditing: 'Можете започети са изменама садржаја отварањем <a href="{link}">CMS-а</a>.'
+    UnableDeleteInstall: 'Инсталационе датотеке не могу бити избрисане. Ручно избришите следеће датотеке:'
+    VIEWPAGEIN: 'Прикажи страницу у:'
+  ErrorPage:
+    400: '400 - Лош захтев'
+    401: '401 - Неауторизовано'
+    403: '403 - Забрањено'
+    404: '404 - Није пронађено'
+    405: '405 - Метода није дозвољена'
+    406: '406 - није прихватљиво'
+    407: '407 - Потребна идентификација проксија'
+    408: '408 - Захтев истекао'
+    409: '409 - Конфликт'
+    410: '410 - Удаљено'
+    411: '411 - Потребна дужина'
+    412: '412 - Неуспешан предуслов'
+    413: '413 - Захтевани ентитет превелик'
+    414: '414 - Захтевани URI је предугачак'
+    415: '415 - Неподржан тип медија'
+    416: '416  - Тражени опсег није задовољив'
+    417: '417 - Неуспело очекивање'
+    500: '500 - Интерна грешка сервера'
+    501: '501 - Није имплементирано'
+    502: '502 - Погрешан мрежни пролаз'
+    503: '503 - Сервис није доступан'
+    504: '504 - Временски истек мрежног пролаза'
+    505: '505 - HTTP верзија није подржана'
+    CODE: 'Кôд грешке'
+    DEFAULTERRORPAGECONTENT: '<p>Извињавамо се, изгледа да покушавате да приступите страници која не постоји.</p><p>Молимо Вас проверите URL којем покушавате да приступите и покушајте поново.</p>'
+    DEFAULTERRORPAGETITLE: 'Страница није пронађена'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Извињавамо се, постоји проблем при обради Вашег захтева.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Грешка сервера'
+    DESCRIPTION: 'Прилагођени садржај за различите случајеве грешака (нпр. "Страница није пронађена" )'
+    ERRORFILEPROBLEM: 'Грешка при отварању датотеке "{filename}" за упис. Молимо Вас да проверите права приступа датотеци. '
+    PLURALNAME: 'Странице грешака'
+    SINGULARNAME: 'Страница грешке'
+  Folder:
+    AddFolderButton: 'Додај фасциклу'
+    DELETEUNUSEDTHUMBNAILS: 'Избриши некоришћене сличице'
+    UNUSEDFILESTITLE: 'Некоришћене датотеке'
+    UNUSEDTHUMBNAILSTITLE: 'Некоришћени умањени прикази'
+    UploadFilesButton: Постави
+  LeftAndMain:
+    DELETED: Избрисано.
+    PreviewButton: Претходни преглед
+    SAVEDUP: Сачувано.
+    SearchResults: 'Резултати претраживања'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'Приступ CMS-у'
+  Permissions:
+    CONTENT_CATEGORY: 'Дозволе за садржај'
+    PERMISSIONS_CATEGORY: 'Улоге и дозволе за приступ'
+  RedirectorPage:
+    DESCRIPTION: 'Преусмерава на другу интерну страницу'
+    HASBEENSETUP: 'Страници за преусмеравање није подешено одредиште на које преусмерава.'
+    HEADER: 'Ова страница ће преусмерити кориснике на другу страницу'
+    OTHERURL: 'URL другог веб сајта'
+    PLURALNAME: 'Странице за преусмеравања'
+    REDIRECTTO: 'Преусмери на'
+    REDIRECTTOEXTERNAL: 'Други веб сајт'
+    REDIRECTTOPAGE: 'Страницу на Вашем веб сајту'
+    SINGULARNAME: 'Страница за преусмеравање'
+    YOURPAGE: 'Страница на Вашем веб сајту'
+  ReportAdmin:
+    ReportTitle: Наслов
+    MENUTITLE: Извештаји
+  ReportAdminForm:
+    FILTERBY: 'Филтрирај по'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Молимо вас да објавите повезану страницу, како би виртуелна страница била објављена'
+    VIRTUALPAGEWARNING: 'Молимо Вас да изаберете повезану страницу и сачувате измену пре него што објавите ову страницу'
+    VIRTUALPAGEWARNINGSETTINGS: 'Молимо Вас да изаберете повезану страницу у пољима главног садржаја да би сте објавили'
+  SearchForm:
+    GO: Иди
+    SEARCH: Претражи
+    SearchResults: 'Резултати претраживања'
+  SideReport:
+    BROKENFILES: 'Странице са оштећеним датотекама'
+    BROKENLINKS: 'Странице са оштећеним линковима'
+    BROKENREDIRECTORPAGES: 'Странице за преусмеривање које показују на избрисане странице'
+    BROKENVIRTUALPAGES: 'Виртуелне странице која показују на избрисане странице'
+    BrokenLinksGroupTitle: 'Извештај о оштећеним линковима'
+    ContentGroupTitle: 'Извештаји о садржају'
+    EMPTYPAGES: 'Празне странice'
+    LAST2WEEKS: 'Странице мењане у задње 2 недеље'
+    OtherGroupTitle: Остало
+    ParameterLiveCheckbox: 'Провери објављени сајт'
+    REPEMPTY: 'Извештај {title} је празан.'
+  SilverStripeNavigator:
+    ARCHIVED: Архивирано
+  SilverStripeNavigatorLink:
+    ShareInstructions: 'Да би сте поделили ову страницу копирајте и налепите линк испод.'
+    ShareLink: 'Подели линк'
+  SilverStripeNavigatorLinkl:
+    CloseLink: Затвори
+  SiteConfig:
+    DEFAULTTHEME: '(Користи подразумевану тему)'
+    EDITHEADER: 'Ко може да мења странице на овом сајту?'
+    EDIT_PERMISSION: 'Управљање конфигурацијом сајта'
+    EDIT_PERMISSION_HELP: 'Могућност измене подешавања глобалног приступа/дозволâ за приступ страницама вршног нивоа'
+    PLURALNAME: 'Конфигурације сајта'
+    SINGULARNAME: 'Конфигурација сајта'
+    SITENAMEDEFAULT: 'Назив сајта'
+    SITETAGLINE: 'Слоган'
+    SITETITLE: 'Наслов сајта'
+    TABACCESS: Приступ
+    TABMAIN: Главно
+    TAGLINEDEFAULT: 'Ваш слоган'
+    THEME: Тема
+    TOPLEVELCREATE: 'Ко може креирати странице вршног нивоа на сајту?'
+    VIEWHEADER: 'Ко може да види странице овог сајта?'
+  SiteTree:
+    ACCESSANYONE: Свако
+    ACCESSHEADER: 'Ко може да види ову страницу?'
+    ACCESSLOGGEDIN: 'Пријављени корисници'
+    ACCESSONLYTHESE: 'Само ове особе (изабери са листе)'
+    ADDEDTODRAFTHELP: 'Страница још није објављена'
+    ADDEDTODRAFTSHORT: Нацрт
+    ALLOWCOMMENTS: 'Дозволити коментаре на овој страни?'
+    APPEARSVIRTUALPAGES: 'Овај садржај се приказује и у секцијама {title} виртуелних страницâ.'
+    BUTTONCANCELDRAFT: 'Откажи промене нацрта'
+    BUTTONCANCELDRAFTDESC: 'Избришите свој нацрт и вратите се на тренутно објављену страну'
+    BUTTONPUBLISHED: Објаљено
+    BUTTONSAVED: Сачувано.
+    BUTTONSAVEPUBLISH: 'Сачувај и објави'
+    BUTTONUNPUBLISH: Поништи објаву
+    BUTTONUNPUBLISHDESC: 'Уклони ову страницу из објављеног сајта'
+    Comments: Коментари
+    Content: Садржај
+    DEFAULTABOUTCONTENT: '<p>Ову страницу можете попунити Вашим садржајем. Осим тога, можете је избрисати и креирати сопствене странице.<br /></p>'
+    DEFAULTABOUTTITLE: 'О нама'
+    DEFAULTCONTACTCONTENT: '<p>Ову страницу можете попунити Вашим садржајем. Осим тога, можете је избрисати и креирати сопствене странице.<br /></p>'
+    DEFAULTCONTACTTITLE: 'Контактирајте нас'
+    DEFAULTHOMECONTENT: '<p>Добро дошли у SilverStripe! Ово је подразумевана почетна страница коју можете је изменити отварањем <a href="admin/">ЦМС-а</a>. Такође, можете приступити <a href="http://doc.silverstripe.org">документуацији за развијаоце</a> или <a href="http://doc.silverstripe.org/doku.php?id=tutorials">упутствима за кориснике.</a></p>'
+    DEFAULTHOMETITLE: Почетна страница
+    DELETEDPAGEHELP: 'Страница није више објављена'
+    DELETEDPAGESHORT: Избрисано
+    DEPENDENT_NOTE: 'Следеће странице зависе од ове странице. Ово подразумева витруелне странице, странице за преусмеравање и странице са линковима на садржај.'
+    DESCRIPTION: 'Обична страница'
+    DependtPageColumnLinkType: 'Тип линка'
+    DependtPageColumnURL: URL
+    EDITANYONE: 'Свако ко може да се пријави на CMS'
+    EDITHEADER: 'Ко може да измени ову страницу?'
+    EDITONLYTHESE: 'Само ове особе (изаберите са листе)'
+    EDITORGROUPS: 'Групе за измене'
+    EDIT_ALL_DESCRIPTION: 'Измена било које странице'
+    EDIT_ALL_HELP: 'Могућност мењања било које странице на сајту, без обзира на подешавања на картици "Приступ". Захтева дозволу за приступ одељку "Странице".'
+    Editors: 'Групе за измене'
+    GroupPlaceholder: 'Кликни ради избора групе'
+    HASBROKENLINKS: 'Ова страница садржи оштећене линкове.'
+    HTMLEDITORTITLE: Садржај
+    INHERIT: 'Наследити од родитељске странице'
+    LASTPUBLISHED: 'Последњи пут објављено'
+    LASTSAVED: 'Последњи пут сачувано'
+    LASTUPDATED: 'Последњи пут ажурирано'
+    LINKCHANGENOTE: 'Промена линка ове странице утицаће, такође, на линкове свих подстраница.'
+    MENUTITLE: 'Натпис за навигацију'
+    METADESC: 'Опис'
+    METADESCHELP: 'Претраживачке машине користе овај садржај за приказ резултата претраживања (ипак, он не утиче на рејтинг странице).'
+    METAEXTRA: 'Прилагођене мета ознаке'
+    METAEXTRAHELP: 'HTML ознаке за додатне мета информације. На пример, &lt;meta name="audience" content="all" /&gt;'
+    MODIFIEDONDRAFTHELP: 'Страница садржи необјављене измене'
+    MODIFIEDONDRAFTSHORT: Измењено
+    MetadataToggle: Мета подаци
+    MoreOptions: 'Више опција'
+    NOTPUBLISHED: 'Необјављено'
+    OBSOLETECLASS: 'Тип ове странице: {type} није више шодржан. Ако сачувате страницу њен тип ће бити промењен, па можете изгубити своје податке'
+    PAGELOCATION: 'Локација странице'
+    PAGETITLE: 'Назив странице'
+    PAGETYPE: 'Тип странице'
+    PARENTID: 'Родитељска страница'
+    PARENTTYPE: 'Локација странице'
+    PARENTTYPE_ROOT: 'Страница вршног нивоа'
+    PARENTTYPE_SUBPAGE: 'Подстраница родитељске странице'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Управљај дозволама за садржај'
+    PERMISSION_GRANTACCESS_HELP: 'Омогућава подешавање ограничења приступа у секцији "Странице" за сваку страницу појединачно.'
+    PLURALNAME: Странице
+    PageTypNotAllowedOnRoot: 'Тип странице "{type}" није дозвољен на вршном нивоу'
+    PageTypeNotAllowed: 'Тип странице "{type}" није дозвољен за децу ове родитељске странице'
+    REMOVEDFROMDRAFTHELP: 'Странице је објављена, али је избрисана из нацрта'
+    REMOVEDFROMDRAFTSHORT: 'Избрисано из нацрта'
+    REMOVE_INSTALL_WARNING: 'Упозорење: из безбедносних разлога било би пожељно да обришете датотеку  install.php ове SilverStripe инсталације'
+    REORGANISE_DESCRIPTION: 'Измени структуру сајта'
+    REORGANISE_HELP: 'Преуреди странице у стаблу сајта користећи поступак повуци и испусти.'
+    SHOWINMENUS: 'Приказати у менијима?'
+    SHOWINSEARCH: 'Приказати у претраживањима?'
+    SINGULARNAME: Страница
+    TABBEHAVIOUR: Понашање
+    TABCONTENT: 'Главни садржај'
+    TABDEPENDENT: 'Зависне странице'
+    TOPLEVEL: 'Садржај сајта (вршни ниво)'
+    TOPLEVELCREATORGROUPS: 'Креатори вршног нивоа'
+    URLSegment: 'Сегмент URL-a'
+    VIEWERGROUPS: 'Групе за преглед'
+    VIEW_ALL_DESCRIPTION: 'Погледај било коју страницу'
+    VIEW_ALL_HELP: 'Могућност прегледа било које странице на сајту, без обзира на подешавања на картици "Приступ". Захтева дозволу за приступ одељку "Странице".'
+    VIEW_DRAFT_CONTENT: 'Погледај садржај нацрта'
+    VIEW_DRAFT_CONTENT_HELP: 'Примњеује се на преглед страница ван CMS-a u моду нацрта. Корисно за спољне сараднике без приступа CMS-у.'
+    Viewers: 'Групе за преглед'
+    Visibility: Видљивост
+    has_one_Parent: 'Родитељска страница'
+    many_many_BackLinkTracking: 'Праћење повратних линкова'
+    many_many_ImageTracking: 'Праћење слика'
+    many_many_LinkTracking: 'Праћење линкова'
+  SiteTreeURLSegmentField:
+    EMPTY: 'Молимо Вас да унесете сегмент URL-а или кликните на Одустани'
+    HelpChars: 'Специјални карактери су аутоматски конвертовани или уклоњени.'
+  URLSegmentField:
+    Cancel: Одустани
+    Edit: Измени
+    OK: У реду
+  ViewArchivedEmail_ss:
+    CANACCESS: 'Можете да приступите архивираном садржају на овом линку:'
+    HAVEASKED: 'Замољени сте да погледате садржај овог сајта'
+  VirtualPage:
+    CHOOSE: 'Повезана страница'
+    DESCRIPTION: 'Приказује садржај друге странице'
+    EditLink: измени
+    HEADER: 'Ово је виртуелна страница'
+    HEADERWITHLINK: 'Ово је виртуелна страница која копира садржај из "{title}" ({link})'
+    PLURALNAME: 'Виртуелне странице'
+    PageTypNotAllowedOnRoot: 'Оригинални тип странице "{type}" није дозвољен на вршном нивоу за ову виртуелну страницу'
+    SINGULARNAME: 'Виртуелна страница'
+  CMSFileAddController:
+    MENUTITLE: Датотеке
+  CMSPageEditController:
+    MENUTITLE: 'Измени страницу'
+  CMSPageSettingsController:
+    MENUTITLE: 'Измени страницу'
+  CMSSettingsController:
+    MENUTITLE: Подешавања

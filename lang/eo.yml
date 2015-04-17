@@ -1,0 +1,420 @@
+eo:
+  AssetAdmin:
+    ADDFILES: 'Enmeti dosierojn'
+    ActionAdd: 'Aldoni dosierujon'
+    AppCategoryArchive: Arkivo
+    AppCategoryAudio: Sono
+    AppCategoryDocument: Dokumento
+    AppCategoryFlash: Flash
+    AppCategoryImage: Bildo
+    AppCategoryVideo: Video
+    BackToFolder: 'Retroe al dosierujo'
+    CREATED: Dato
+    CurrentFolderOnly: 'Limigo de aktuala dosierujo'
+    DetailsView: Detaloj
+    FILES: Dosieroj
+    FILESYSTEMSYNC: 'Sinkronigaj dosieroj'
+    FILESYSTEMSYNCTITLE: 'Aktualigi la CMS-datumbazerojn de dosieroj en la dosiera sistemo. Utile kiam novaj dosieroj estas alŝutitaj ekster la CMS, ekzemple per FTP.'
+    FROMTHEINTERNET: 'De la interreto'
+    FROMYOURCOMPUTER: 'El via komputilo'
+    Filetype: 'Tipo de dosiero'
+    ListView: 'Lista vido'
+    NEWFOLDER: Nova dosierujo
+    SIZE: Grando
+    THUMBSDELETED: '{count} neuzitaj miniaturoj estas forigitaj'
+    TreeView: 'Arba vido'
+    Upload: Alŝuti
+    MENUTITLE: Dosieroj
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Forigi dosierujojn'
+  AssetAdmin_Tools:
+    FILTER: Filtrilo
+  AssetAdmin_left_ss:
+    GO: Ek
+  AssetTableField:
+    BACKLINKCOUNT: 'Uzite ĉe:'
+    PAGES: paĝo(j)
+  BackLink_Button_ss:
+    Back: Retro
+  BrokenLinksReport:
+    Any: Ajna
+    BROKENLINKS: 'Raporto pri rompitaj ligiloj'
+    CheckSite: 'Kontroli retejon'
+    CheckSiteDropdownDraft: 'Malneta retejo'
+    CheckSiteDropdownPublished: 'Publika retejo'
+    ColumnDateLastModified: 'Dato de lasta modifo'
+    ColumnDateLastPublished: 'Dato de lasta publikigo'
+    ColumnProblemType: 'Problemtipo'
+    ColumnURL: URL
+    HasBrokenFile: 'havas rompitan dosieron'
+    HasBrokenLink: 'havas rompitan ligilon'
+    HasBrokenLinkAndFile: 'havas rompitan ligilon kaj dosieron'
+    HoverTitleEditPage: 'Redakti paĝon'
+    PageName: 'Nomo de paĝo'
+    ReasonDropdown: 'Problemo kontrolota'
+    ReasonDropdownBROKENFILE: 'Rompita dosiero'
+    ReasonDropdownBROKENLINK: 'Rompita ligilo'
+    ReasonDropdownRPBROKENLINK: 'Alidirekta paĝo direktanta al neekzistanta paĝo'
+    ReasonDropdownVPBROKENLINK: 'Virtuala paĝo direktanta al neekzistanta paĝo'
+    RedirectorNonExistent: 'alidirekta paĝo direktanta al neekzistanta paĝo'
+    VirtualPageNonExistent: 'virtuala paĝo direktanta al neekzistanta paĝo'
+  CMSAddPageController:
+    Title: 'Enmeti paĝon'
+  CMSBatchActions:
+    DELETED_DRAFT_PAGES: 'Forigis %d paĝojn el malneta retejo, %d malsukcesoj'
+    DELETED_PAGES: 'Forigis %d paĝojn el publikigita retejo, %d malsukcesoj'
+    DELETE_DRAFT_PAGES: 'Forigi el malneta retejo'
+    DELETE_PAGES: 'Forigi el publikigita retejo'
+    PUBLISHED_PAGES: 'Publikigis %d paĝojn, %d malsukcesojn'
+    PUBLISH_PAGES: Publikigi
+    UNPUBLISHED_PAGES: 'Malpublikigis %d paĝojn'
+    UNPUBLISH_PAGES: Malpublikigi
+  CMSMain:
+    ACCESS: 'Aliro al sekcio ''{title}'''
+    ACCESS_HELP: 'Permesi vidigi la sekcion kiu enhavas paĝarbon kaj enhavon. Vidigaj kaj redaktaj permesoj estas trakteblaj per paĝspecifaj fallistoj, kaj ankaŭ la apartaj "Enhavaj permesoj".'
+    AddNew: 'Aldoni novan paĝon'
+    AddNewButton: 'Aldoni novan'
+    AddPageRestriction: 'Noto: iuj tipoj de paĝoj ne estas permesataj por ĉi tiu elektaĵo.'
+    Cancel: Rezigni
+    ChoosePageParentMode: 'Elekti kie krei ĉi tiun paĝon'
+    ChoosePageType: 'Elekti tipon de paĝo'
+    Create: Krei
+    DELETE: 'Forigi la malnetan'
+    DELETEFP: Forigi
+    DESCREMOVED: 'kaj {count} posteuloj'
+    DUPLICATED: 'Sukcese duobligis je ''{title}'''
+    DUPLICATEDWITHCHILDREN: 'Sukcese duobligis je ''{title}'' kaj idoj'
+    EMAIL: Retpoŝto
+    EditTree: 'Redakta arbo'
+    ListFiltered: 'Filtrita listo.'
+    NEWPAGE: 'Nova {pagetype}'
+    PAGENOTEXISTS: 'Ĉi tiu paĝo ne ekzistas'
+    PAGES: Paĝoj
+    PAGETYPEANYOPT: Ajna
+    PAGETYPEOPT: 'Tipo de paĝo'
+    PUBALLCONFIRM: 'Bonvolu eldoni ĉiun paĝon en la retejo, kopiante enhavan stadion al la publika'
+    PUBALLFUN: 'Funkcio "Eldoni Ĉiujn"'
+    PUBALLFUN2: "Premi ĉi tiun butonon estas same kiel viziti al ĉiu paĝo kaj premi je \"eldoni\". La intenco estas ke oni uzu ĝin post multnombraj redaktoj de la enhavo, ekzemple kiam oni unue konstruis la retejon."
+    PUBPAGES: 'Farite: publikigis {count} paĝojn'
+    PageAdded: 'Sukcese kreis paĝon'
+    REMOVED: 'Forigis je ''{title}''{description} el la publikigita retejo'
+    REMOVEDPAGE: 'Forigis je ''{title}'' el la publikigita retejo'
+    REMOVEDPAGEFROMDRAFT: 'Forigis je ''%s'' el la malneta retejo'
+    RESTORE: Restaŭri
+    RESTORED: 'Sukcese restaŭris je ''{title}'''
+    ROLLBACK: 'Malfari al ĉi tiu versio'
+    ROLLEDBACKPUBv2: 'Malfaris ŝanĝojn ĝis la publikigita versio.'
+    ROLLEDBACKVERSIONv2: 'Malfaris ŝanĝojn ĝis versio #%d.'
+    SAVE: Konservi
+    SAVEDRAFT: 'Konservi malneton'
+    TabContent: Enhavo
+    TabHistory: Historio
+    TabSettings: Agordoj
+    TreeFiltered: 'Filtrita arbo.'
+    TreeFilteredClear: 'Vakigi filtrilon'
+    MENUTITLE: 'Redakti paĝon'
+  CMSMain_left_ss:
+    APPLY_FILTER: 'Apliki filtrilon'
+    RESET: Restartigi
+  CMSPageAddController:
+    ParentMode_child: 'Sub alia paĝo'
+    ParentMode_top: 'Supra nivelo'
+    MENUTITLE: 'Enmeti paĝon'
+  CMSPageHistoryController:
+    COMPAREMODE: 'Kompara reĝimo (elektu du)'
+    COMPAREVERSIONS: 'Kompari versiojn'
+    COMPARINGVERSION: 'Komparas versiojn {version1} kaj {version2}.'
+    REVERTTOTHISVERSION: 'Malfari al ĉi tiu versio'
+    SHOWUNPUBLISHED: 'Vidigi nepublikigitajn versiojn'
+    SHOWVERSION: 'Vidigi version'
+    VIEW: vido
+    VIEWINGLATEST: 'Aktuale vidiĝas la lasta versio.'
+    VIEWINGVERSION: 'Aktuale vidiĝas versio {version}.'
+    MENUTITLE: Historio
+  CMSPageHistoryController_versions_ss:
+    AUTHOR: Aŭtoro
+    NOTPUBLISHED: 'Nepublikigita'
+    PUBLISHER: Publikiginto
+    UNKNOWN: Nekonata
+    WHEN: Kiam
+  CMSPagesController:
+    GalleryView: 'Galeria vido'
+    ListView: 'Lista vido'
+    MENUTITLE: Paĝoj
+    TreeView: 'Arba vido'
+  CMSPagesController_ContentToolbar_ss:
+    MULTISELECT: Plurelekto
+  CMSPagesController_Tools_ss:
+    FILTER: Filtri
+  CMSSearch:
+    FILTERDATEFROM: De
+    FILTERDATEHEADING: Dato
+    FILTERDATETO: Al
+    FILTERLABELTEXT: Enhavo
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Ŝanĝitaj paĝoj'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Ĉiuj paĝoj, inklude forigitajn'
+  CMSSiteTreeFilter_Search:
+    Title: 'Ĉiuj paĝoj'
+  ContentControl:
+    NOTEWONTBESHOWN: 'Notu: ne vidigos ĉi tiun mesaĝon al viaj vizitantoj'
+  ContentController:
+    ARCHIVEDSITE: 'Antaŭvida versio'
+    ARCHIVEDSITEFROM: 'Enarkivigita retejo el'
+    CMS: CMS
+    DRAFT: Malneta
+    DRAFTSITE: 'Malneta retejo'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Vi devas ensaluti per via CMS-pasvorto por vidi la projektan aŭ enarkivigitan enhavon.  <a href="%s">Alklaku ĉi tie por reiri al la publika retejo.</a>'
+    Email: Retpoŝto
+    INSTALL_SUCCESS: 'Instalis sukcese!'
+    InstallFilesDeleted: 'Sukcesis forigi instalajn dosierojn.'
+    InstallSecurityWarning: 'Por sekureco vi devus nun forigi la instalajn dosierojn, krom se vi planas reinstali poste  (<em>necesas ensaluti kiel administranto, vidu supre</em>). La reta servilo nun bezonas skriban aliron nur al la dosierujo "assets", do vi povas forigi skriban aliron de ĉiuj aliaj dosierujoj. <a href="{link}" style="text-align: center;">Alklaku ĉi tie por forigi la instalajn dosierojn.</a>'
+    InstallSuccessCongratulations: 'SilverStripe estas sukcese instalita!'
+    LOGGEDINAS: 'Ensalutis kiel'
+    LOGIN: Ensaluti
+    LOGOUT: 'Elsaluti'
+    NOTLOGGEDIN: 'Ne ensalutinte'
+    PUBLISHED: Publikigita
+    PUBLISHEDSITE: 'Publikigita retejo'
+    Password: Pasvorto
+    PostInstallTutorialIntro: 'Ĉi tiu retejo estas tro simpla versio de retejo de SilverStripe 3. Por etendi ĝin, bonvolu rigardi al {link}.'
+    StartEditing: 'Vi povas ekredakti vian enhavon malfermante je <a href="{link}">la CMS</a>.'
+    UnableDeleteInstall: 'Ne eblas forigi instalajn dosierojn. Bonvolu mane forigi la jenajn dosierojn'
+    VIEWPAGEIN: 'Vidigi Paĝon en:'
+  ErrorPage:
+    400: '400 - Nevalida Peto'
+    401: '401- Nepermesita'
+    403: '403 - Nepermesebla'
+    404: '404 - Netrovita'
+    405: '405 - Metodo nepermesita'
+    406: '406 - Ne akceptebla'
+    407: '407 - Bezonas prokuran aŭtentokontrolon'
+    408: '408 - Pasis tempolimo de peto'
+    409: '409 - Konflikto'
+    410: '410 - For'
+    411: '411 - Longo bezonata'
+    412: '412 - Antaŭkondiĉo malsukcesis'
+    413: '413 - Petaĵo tro granda'
+    414: '414 - Petita URI tro longa'
+    415: '415 - Nesubtenata spekta tipo'
+    416: '416 - Peta amplekso ne plenumebla'
+    417: '417 - Atendo malsukcesis'
+    422: '422 - Netrakebla ento'
+    429: '429 - tro da petoj'
+    500: '500 - Eraro de interna servilo'
+    501: '501 - Ne realigita'
+    502: '502 - Malbona kluzo'
+    503: '503 - Servo nehavebla'
+    504: '504 - Kluza tempolimo'
+    505: '505 - HTTP-Versio ne subtenata'
+    CODE: 'Erarokodo'
+    DEFAULTERRORPAGECONTENT: '<p>Bedaŭrinde, ŝajne vi provis aliri paĝon kiu ne ekzistas.</p><p>Bonvole kontrolu la literumadon de la URL alirota kaj provu denove.</p>'
+    DEFAULTERRORPAGETITLE: 'Ne trovis paĝon'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Bedaŭrinde, estis problemo pri via peto.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Servila eraro'
+    DESCRIPTION: 'Propra enhavo por diversaj kazoj de eraro (ekzemple, "Ne trovis paĝon")'
+    ERRORFILEPROBLEM: 'Eraro okazis malfermante dosieron "{filename}" por skribi. Bonvolu kontroli permesojn.'
+    PLURALNAME: 'Prieraraj paĝoj'
+    SINGULARNAME: 'Prierara paĝo'
+  Folder:
+    AddFolderButton: 'Aldoni dosierujon'
+    DELETEUNUSEDTHUMBNAILS: 'Forigi neuzitajn miniaturojn'
+    UNUSEDFILESTITLE: 'Neuzitaj dosieroj'
+    UNUSEDTHUMBNAILSTITLE: 'Neuzitaj miniaturoj'
+    UploadFilesButton: Alŝuti
+  LeftAndMain:
+    DELETED: Forigita.
+    PreviewButton: Aspekto
+    SAVEDUP: Konservita.
+    SearchResults: 'Serĉaj rezultoj'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'CMS-aliro'
+  Permissions:
+    CONTENT_CATEGORY: 'Enhavopermesoj'
+    PERMISSIONS_CATEGORY: 'Roloj kaj aliraj permesoj'
+  RedirectorPage:
+    DESCRIPTION: 'Alidirektas al malsama interna paĝo'
+    HASBEENSETUP: 'Alidirekta paĝo estis agordita sen ie al kie alidirekti.'
+    HEADER: 'Ĉi tiu paĝo redirektos uzantojn al alia paĝo'
+    OTHERURL: 'URL de alia retejo'
+    PLURALNAME: 'Alidirektaj paĝoj'
+    REDIRECTTO: 'Alidirekti al'
+    REDIRECTTOEXTERNAL: 'Alia retejo'
+    REDIRECTTOPAGE: 'Paĝo en via retejo'
+    SINGULARNAME: 'Alidirekta paĝo'
+    YOURPAGE: 'Paĝo en via retejo'
+  ReportAdmin:
+    ReportTitle: Titolo
+    MENUTITLE: Raportoj
+  ReportAdminForm:
+    FILTERBY: 'Filtri laŭ'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Bonvolu publikigi la ligitan paĝon por publikigi la virtualan paĝon'
+    VIRTUALPAGEWARNING: 'Bonvolu elekti ligitan paĝon kaj unue konservi ĝin por publikigi ĉi tiun paĝon'
+    VIRTUALPAGEWARNINGSETTINGS: 'Bonvolu elekti ligitan paĝon en la ĉefaj enhavaj kampoj por publikigi'
+  SearchForm:
+    GO: Ek
+    SEARCH: Serĉi
+    SearchResults: 'Serĉaj rezultoj'
+  SideReport:
+    BROKENFILES: 'Paĝoj kun rompitaj dosieroj'
+    BROKENLINKS: 'Paĝoj kun rompitaj ligiloj'
+    BROKENREDIRECTORPAGES: 'Redirektaj paĝoj indikantaj forigitajn paĝojn'
+    BROKENVIRTUALPAGES: 'VirtualajPaĝoj indikantaj forigitajn paĝojn'
+    BrokenLinksGroupTitle: 'Raporto pri rompitaj ligiloj'
+    ContentGroupTitle: 'Raportoj pri enhavo'
+    EMPTYPAGES: 'Malplenaj paĝoj'
+    LAST2WEEKS: 'Paĝoj redaktitaj dum la lastaj 2 semajnoj'
+    OtherGroupTitle: Alia
+    ParameterLiveCheckbox: 'Kontroli publikan retejon'
+    REPEMPTY: 'La raporto {title} estas malplena.'
+  SilverStripeNavigator:
+    ARCHIVED: Enarkivigita
+  SilverStripeNavigatorLink:
+    ShareInstructions: 'Por komunigi ĉi tiun paĝon, kopiu kaj algluu la suban ligilon.'
+    ShareLink: 'Komunigi ligilon'
+  SilverStripeNavigatorLinkl:
+    CloseLink: Fermi
+  SiteConfig:
+    DEFAULTTHEME: '(Uzi aprioran etoson)'
+    EDITHEADER: 'Kiu povas redakti paĝojn en ĉi tiu retejo?'
+    EDIT_PERMISSION: 'Agordi konfiguron de retejo'
+    EDIT_PERMISSION_HELP: 'Eblo agordi ĉieajn alirajn agordojn/supronivelajn paĝajn permesojn.'
+    PLURALNAME: 'Retejaj agordaroj'
+    SINGULARNAME: 'Agordi retejon'
+    SITENAMEDEFAULT: 'Nomo de via retejo'
+    SITETAGLINE: 'Slogano de retejo'
+    SITETITLE: 'Titolo de retejo'
+    TABACCESS: Aliro
+    TABMAIN: Ĉefa
+    TAGLINEDEFAULT: 'jen via slogano'
+    THEME: Etoso
+    TOPLEVELCREATE: 'Kiu povas krei paĝojn en la radiko de la retejo?'
+    VIEWHEADER: 'Kiu povas vidigi paĝojn en ĉi tiu retejo?'
+  SiteTree:
+    ACCESSANYONE: Iu
+    ACCESSHEADER: 'Kiuj povas vidi ĉi tiun paĝon?'
+    ACCESSLOGGEDIN: 'Ensalutintaj uzantoj'
+    ACCESSONLYTHESE: 'Nur ĉi tiuj homoj (elektu el listo)'
+    ADDEDTODRAFTHELP: 'Paĝo ankoraŭ estas ne publikigita'
+    ADDEDTODRAFTSHORT: Malneto
+    ALLOWCOMMENTS: 'Permesi rimarkojn en ĉi tiu paĝo?'
+    APPEARSVIRTUALPAGES: 'Ĉi tiu enhavo ankaŭ aperas en la virtualaj paĝoj en la sekcioj {title}.'
+    BUTTONCANCELDRAFT: 'Nuligi malnetajn ŝanĝojn'
+    BUTTONCANCELDRAFTDESC: 'Forigi vian malneton kaj reveni al la aktuale eldonita paĝo'
+    BUTTONPUBLISHED: Publikigita
+    BUTTONSAVED: Konservita
+    BUTTONSAVEPUBLISH: 'Konservi kaj publikigi'
+    BUTTONUNPUBLISH: Malpublikigi
+    BUTTONUNPUBLISHDESC: 'Forigi ĉi tiun paĝon de la publikigita retejo'
+    Comments: Komentoj
+    Content: Enhavo
+    DEFAULTABOUTCONTENT: '<p>Vi povas plenigi ĉi tiun paĝon per via materialo, aŭ forigi ĝin kaj krei viajn proprajn paĝojn.<br /></p>'
+    DEFAULTABOUTTITLE: 'Pri ni'
+    DEFAULTCONTACTCONTENT: '<p>Vi povas plenigi ĉi tiun paĝon per via materialo, aŭ forigi ĝin kaj krei viajn proprajn paĝojn.<br /></p>'
+    DEFAULTCONTACTTITLE: 'Kontakti nin'
+    DEFAULTHOMECONTENT: '<p>Bonvenon al SilverStripe! Jen la apriora hejmpaĝo. Vi povas redakti ĉi tiun paĝon malfermante je <a href="admin/">la CMS</a>. Tiam vi povas aliri al la <a href="http://doc.silverstripe.com">dokumentaro por evoluigistoj</a>, aŭ ekuzi <a href="http://doc.silverstripe.com/doku.php?id=tutorials">la instruilojn.</a></p>'
+    DEFAULTHOMETITLE: Hejmo
+    DELETEDPAGEHELP: 'Paĝo ne plu estas publikigita'
+    DELETEDPAGESHORT: Forigita
+    DEPENDENT_NOTE: 'La sekvaj paĝoj dependas de ĉi tiu paĝo. Tio inkluzivas virtualajn paĝojn, alidirektajn paĝojn, kaj paĝojn kun enhavaj ligiloj.'
+    DESCRIPTION: 'Ĝenerala paĝo por enhavo'
+    DependtPageColumnLinkType: 'Ligila tipo'
+    DependtPageColumnURL: URL
+    EDITANYONE: 'Tiu, kiu povas ensaluti en la CMS'
+    EDITHEADER: 'Kiuj povas redakti ĉi tiun paĝon?'
+    EDITONLYTHESE: 'Nur ĉi tiuj homoj (elektu de listo)'
+    EDITORGROUPS: 'Grupoj de redaktantoj'
+    EDIT_ALL_DESCRIPTION: 'Redakti ajnan paĝon'
+    EDIT_ALL_HELP: 'Eblo redakti ajnan paĝon en la retejo, senkonsidere de la agordoj en la langeto Aliro. Necesas la permeso "Aliro al sekcio ''Paĝoj'' "'
+    Editors: 'Redaktaj Grupoj'
+    GroupPlaceholder: 'Alklaku por elekti grupon'
+    HASBROKENLINKS: 'Ĉi tiu paĝo havas rompitajn ligilojn.'
+    HTMLEDITORTITLE: Enhavo
+    INHERIT: 'Heredi de patra paĝo'
+    LASTPUBLISHED: 'Lasta publikigo'
+    LASTSAVED: 'Laste konservita'
+    LASTUPDATED: 'Lastfoje ĝisdatigita'
+    LINKCHANGENOTE: 'Ŝanĝi la ligilon de ĉi tiu paĝo ankaŭ influas la ligilojn de ĉiuj idaj paĝoj.'
+    MENUTITLE: 'Navigada etikedo'
+    METADESC: 'Metapriskribo'
+    METADESCHELP: 'Serĉiloj uzas ĉi tiun enhavon por vidigi serĉajn rezultojn (kvankam ĝi ne influos ilian rangon).'
+    METAEXTRA: 'Propraj Meta-etikedoj '
+    METAEXTRAHELP: 'HTML-etikedoj por plua metainformo. Ekzemple &lt;meta name="customName" content="via propra enhavo ĉi tie" /&gt;'
+    MODIFIEDONDRAFTHELP: 'Paĝo enhavas nepublikigitajn ŝanĝojn'
+    MODIFIEDONDRAFTSHORT: Ŝanĝita
+    MetadataToggle: Metadatumoj
+    MoreOptions: 'Pliaj agordoj'
+    NOTPUBLISHED: 'Ne publikigita'
+    OBSOLETECLASS: 'Ĉi tiu paĝo estas de malaktuala tipo {type}. Konservi ĝin reagordos ĝian tipon kaj vi eble perdos datumojn.'
+    PAGELOCATION: 'Situo de paĝo'
+    PAGETITLE: 'Nomo de paĝo'
+    PAGETYPE: 'Tipo de paĝo'
+    PARENTID: 'Praa paĝo'
+    PARENTTYPE: 'Situo de paĝo'
+    PARENTTYPE_ROOT: 'Supronivela paĝo'
+    PARENTTYPE_SUBPAGE: 'Subpaĝo sub patra paĝo'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Regi alirajn rajtojn por enhavo'
+    PERMISSION_GRANTACCESS_HELP: 'Permesi agordi paĝspecifajn alirajn limigojn en la sekcio "Paĝoj".'
+    PLURALNAME: Paĝoj
+    PageTypNotAllowedOnRoot: 'Paĝa tipo "{type}" ne estas permesita ĉe la radika nivelo'
+    PageTypeNotAllowed: 'Paĝa tipo "{type}" ne estas permesita kiel ido de ĉi tiu patra paĝo'
+    REMOVEDFROMDRAFTHELP: 'Paĝo estas publikigita, sed ĝi estas forigita el malneto'
+    REMOVEDFROMDRAFTSHORT: 'Forigita el malneta'
+    REMOVE_INSTALL_WARNING: 'Averto: vi devus forigi je install.php el ĉi tiu Silverstripe-instalaĵo por sekureco.'
+    REORGANISE_DESCRIPTION: 'Reorganizi la retejan arbon'
+    REORGANISE_HELP: 'Rearanĝi paĝojn en la reteja arbo per ŝovado.'
+    SHOWINMENUS: 'Vidigi en menuoj?'
+    SHOWINSEARCH: 'Vidigi en serĉo?'
+    SINGULARNAME: Paĝo
+    TABBEHAVIOUR: Konduto
+    TABCONTENT: 'Ĉefa enhavo'
+    TABDEPENDENT: 'Dependaj paĝoj'
+    TOPLEVEL: 'Enhavo de Retejo (Supra Nivelo)'
+    TOPLEVELCREATORGROUPS: 'Supranivelaj kreiloj'
+    URLSegment: 'URL-segmento'
+    VIEWERGROUPS: 'Grupoj de vidantoj'
+    VIEW_ALL_DESCRIPTION: 'Vidigi ajnan paĝon'
+    VIEW_ALL_HELP: 'Povo vidigi ajnan paĝon en la retejo, senkonsidere la agordaĵojn en la langeto Aliro. Bezonatas la permeso "Aliro al sekcio ''Paĝoj''"'
+    VIEW_DRAFT_CONTENT: 'Vidigi malnetan enhavon'
+    VIEW_DRAFT_CONTENT_HELP: 'Aplikas por vidigi paĝojn ekster la CMS en malneta reĝimo. Utila por eksteraj kunlaborantoj sen aliro al la CMS.'
+    Viewers: 'Grupoj de vidantoj'
+    Visibility: Videblo
+    has_one_Parent: 'Patra paĝo'
+    many_many_BackLinkTracking: 'Spuri retroligilojn'
+    many_many_ImageTracking: 'Spuri Bildojn'
+    many_many_LinkTracking: 'Spuri Ligilojn'
+  SiteTreeURLSegmentField:
+    EMPTY: 'Bonvolu enigi URL-segmenton aŭ alklaki al Rezigni'
+    HelpChars: 'Aŭtomate konvertas aŭ forigas specialajn signojn.'
+  URLSegmentField:
+    Cancel: Rezigni
+    Edit: Redakti
+    OK: Akcepti
+  ViewArchivedEmail_ss:
+    CANACCESS: 'Vi povas aliri la enarkivigitan retejon je ĉi tiu ligilo:'
+    HAVEASKED: 'Vi petis vidi la enhavon de nia retejo en'
+  VirtualPage:
+    CHOOSE: 'Ligita paĝo'
+    DESCRIPTION: 'Vidigas la enhavon de alia paĝo'
+    EditLink: redakti
+    HEADER: 'Ĉi tiu estas virtuala paĝo'
+    HEADERWITHLINK: 'Ĉi tiu estas virtuala paĝo kopianta enhavon el "{title}" ({link})'
+    PLURALNAME: 'Virtualaj paĝoj'
+    PageTypNotAllowedOnRoot: 'Origina paĝa tipo "{type}" ne estas permesita ĉe la root-nivelo por ĉi tiu virtuala paĝo.'
+    SINGULARNAME: 'Virtuala paĝo'
+  CMSFileAddController:
+    MENUTITLE: Dosieroj
+  CMSPageEditController:
+    MENUTITLE: 'Redakti paĝon'
+  CMSPageSettingsController:
+    MENUTITLE: 'Redakti paĝon'
+  CMSSettingsController:
+    MENUTITLE: Agordoj
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Forigitaj paĝoj'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Malnetaj nepublikigitaj paĝoj'
+  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Publikaj sed forigitaj el malnetaj'

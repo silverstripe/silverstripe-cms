@@ -1,0 +1,111 @@
+az:
+  CMSMain:
+    DELETE: 'Qaralama saytdan sil'
+    DELETEFP: Dərc olunmuş saytdan sil
+    RESTORE: Bərpa et
+    SAVE: Yadda saxla
+  ContentControl:
+    NOTEWONTBESHOWN: 'Qeyd: Bu mesaj ziyarətçilər üçün görünməyəcək'
+  ContentController:
+    ARCHIVEDSITEFROM: 'Arxivləşmiş sayt'
+    DRAFTSITE: 'Qaralama sayt'
+    LOGGEDINAS: 'Kimi daxil olmusan'
+    LOGIN: Daxil ol
+    LOGOUT: 'Çıxış'
+    NOTLOGGEDIN: 'Daxil olmayıb'
+    PUBLISHEDSITE: 'Dərc olunmuş sayt'
+    VIEWPAGEIN: 'Səhifəni göstər:'
+  ErrorPage:
+    501: '501 - Implementasiya olunmayıb'
+    CODE: 'Səhv kodu'
+    DEFAULTERRORPAGECONTENT: '<P> Üzr istəyirik, görünür siz mövcud olan səhifəyə giriş əldə etməyə cəhd edirdiniz. </p><p>Xahiş sizin giriş əldə etməyə və bir daha sınaqdan keçirməyə cəhd etdiyiniz URL-i yoxlayasınız </p>'
+    DEFAULTERRORPAGETITLE: 'Səhifə tapılmadı'
+  Folder:
+    DELETEUNUSEDTHUMBNAILS: 'İşlənməyən şəkilləri sil'
+    UNUSEDFILESTITLE: 'İstifadəsiz fayllar'
+    UNUSEDTHUMBNAILSTITLE: 'İşlənməyən şəkillər'
+  Permissions:
+    CONTENT_CATEGORY: 'Məzmun səlahiyyətləri'
+    PERMISSIONS_CATEGORY: 'İcazələr'
+  RedirectorPage:
+    HASBEENSETUP: 'Yönləndirmə səhifəsinə yönlənmə istiqaməti verilməyib.'
+    HEADER: 'Bu səhifə istifadəçiləri başqa səhifəyə yönləndirəcək'
+    OTHERURL: 'Başqa Web saytın URL-i'
+    REDIRECTTO: 'Yönləndir'
+    REDIRECTTOEXTERNAL: 'Başqa Web sayt'
+    REDIRECTTOPAGE: 'web səhifənizdə olan səhifə'
+    YOURPAGE: 'Web saytınızda olan səhifə'
+  SearchForm:
+    GO: Göndər
+    SEARCH: Axtar
+    SearchResults: 'Axtarış nəticələri'
+  SilverStripeNavigatorLink:
+    ShareLink: 'Linki Paylaş'
+  SilverStripeNavigatorLinkl:
+    CloseLink: Bağla
+  SiteConfig:
+    DEFAULTTHEME: '(Susmaya görə olan şablon)'
+    EDITHEADER: 'Bu saytda səhifələri kim redaktə edə bilər?'
+    EDIT_PERMISSION: 'Sayt konfigurasiyasını sazla'
+    SITENAMEDEFAULT: 'Saytın adı'
+    SITETAGLINE: 'Saytın sloqanı'
+    SITETITLE: 'Saytın başlığı'
+    TABACCESS: İcazə
+    TABMAIN: Əsas
+    TAGLINEDEFAULT: 'Sizin sloganınız burda'
+    THEME: Şablon
+    TOPLEVELCREATE: 'Saytın kəlləsində kim səhifə yarada bilər?'
+    VIEWHEADER: 'Bu saytda səhifələri kim görə bilir?'
+  SiteTree:
+    ACCESSANYONE: Hər kəs
+    ACCESSHEADER: 'Bu səhifəyə kimlər baxa bilər?'
+    ACCESSLOGGEDIN: 'Daxil olmuş istifadəçilər'
+    ACCESSONLYTHESE: 'Yalnız aşağıdakılar(siyahıdan seçin)'
+    ALLOWCOMMENTS: 'Bu səhifədə şərhlərə icazə verilsin?'
+    BUTTONCANCELDRAFT: 'Qaralama dəyişiklikləri imtina et'
+    BUTTONCANCELDRAFTDESC: 'Qaralamanı sil və cari dərc olunmuş versiyaya qaytar'
+    BUTTONUNPUBLISH: Dərci ləğv et
+    BUTTONUNPUBLISHDESC: 'Bu səhifəni dərc olunmuş saytdan sil'
+    Comments: Şərhlər
+    Content: Məzmun
+    DEFAULTABOUTCONTENT: '<p>Siz bu səhifəni öz məzmununzla doldura bilər, ya da səhifəni silib və pz səhifələrinizi yarada bilərsiniz.<br /></p>'
+    DEFAULTABOUTTITLE: 'Haqqımızda'
+    DEFAULTCONTACTCONTENT: '<p>Siz bu səhifəni öz məzmununzla doldura bilər, ya da səhifəni silib və pz səhifələrinizi yarada bilərsiniz.<br /></p>'
+    DEFAULTCONTACTTITLE: 'Bizimlə əlaqə'
+    DEFAULTHOMETITLE: Baş səhifə
+    DependtPageColumnLinkType: 'Keçid növü'
+    EDITANYONE: 'CMS-ə login olan hər kəs'
+    EDITHEADER: 'Bu səhifəni kimlər deyişə bilər?'
+    EDITONLYTHESE: 'Yalnız aşağıdakılar(siyahıdan seçin)'
+    EDIT_ALL_DESCRIPTION: 'İstənilən səhifəni redaktə et'
+    Editors: 'Redaktor qrupları'
+    HASBROKENLINKS: 'Səhifədə xarab linklər var.'
+    HTMLEDITORTITLE: Məzmun
+    INHERIT: 'Valideyn səhifədən törəmə'
+    MENUTITLE: 'Naviqasiya nişanı'
+    METADESC: 'Qısa təsvir'
+    METAEXTRA: 'Meta teqlər'
+    PAGELOCATION: 'Səhifənin yeri'
+    PAGETITLE: 'Səhifənin adı'
+    PAGETYPE: 'Səhifə tipi'
+    PARENTID: 'Valideyn səhifə'
+    PARENTTYPE: 'Səhifənin yeri'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Bu məzmun üçün icazələrə nəzarət et'
+    REORGANISE_HELP: 'Səhifələri dart burax əməliyyatı ilə sırala.'
+    SHOWINMENUS: 'Menyularda görünsün?'
+    SHOWINSEARCH: 'Axtarışda görünsün?'
+    TABBEHAVIOUR: Davranış
+    TABCONTENT: 'Məzmun'
+    TABDEPENDENT: 'Asılı səhifələr'
+    TOPLEVEL: 'Saytın məzmunu (yuxarı səviyyə)'
+    TOPLEVELCREATORGROUPS: 'Yuxarı səviyyə yaradıcıları'
+    URLSegment: 'URL seqmenti'
+    VIEW_ALL_DESCRIPTION: 'İstənilən səhifəyə bax'
+    VIEW_DRAFT_CONTENT: 'Qaralama məzmuna bax'
+    has_one_Parent: 'Valideyn səhifəsi'
+    many_many_ImageTracking: 'Şəkil izləmə'
+    many_many_LinkTracking: 'Keçidin izlənməsi'
+  VirtualPage:
+    HEADER: 'Bu virtual səhifədir'
+    PLURALNAME: 'Virtual səhifələr'
+    SINGULARNAME: 'Virtual səhifə'

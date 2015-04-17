@@ -1,0 +1,24 @@
+pa:
+  RedirectorPage:
+    OTHERURL: 'ਹੋਰ ਵੈੱਬ-ਸਾਈਟ URL'
+    REDIRECTTOEXTERNAL: 'ਦੂਸਰੀ ਵੈੱਬ-ਸਾਈਟ '
+    REDIRECTTOPAGE: 'ਇੱਕ ਪੰਨਾ ਤੁਹਾਡੀ ਵੈੱਬ-ਸਾਈਟ ਤੇ '
+    YOURPAGE: 'ਇੱਕ ਪੰਨਾ ਤੁਹਾਡੀ ਵੈੱਬ-ਸਾਈਟ ਤੇ '
+  SiteTree:
+    ACCESSANYONE: "ਕੋਈ ਵੀ\t"
+    ACCESSHEADER: 'Who can view this page on my site?'
+    ALLOWCOMMENTS: 'ਇਸ ਪੰਨੇ ਤੇ ਿਟੱਪਣੀਆਂ ਦੀ ਇਜਾਜ਼ਤ ਹੈ।'
+    BUTTONCANCELDRAFT: 'ਕੱਚੀਆ ਤਬਦੀਲੀਆਂ ਨੰੂ ਰੱਦ ਕਰੋ'
+    BUTTONUNPUBLISH: 'ਅਣਛਾਪੋ       '
+    EDITHEADER: 'Who can edit this inside the CMS?'
+    HTMLEDITORTITLE: ਸਮਾਨ
+    METADESC: 'ਵਰਣਨ'
+    PAGETITLE: "ਪੰਨੇ ਦਾ ਨਾਂ\t"
+    PAGETYPE: 'ਸਫ਼ੇ ਦੀ ਿਕਸਮ  '
+    SHOWINMENUS: 'menus ਿਵੱਚ ਿਦਖਾਉ?'
+    SHOWINSEARCH: 'search ਿਵੱਚ ਿਦਖਾਉ?'
+    TABBEHAVIOUR: ਵਰਤਾਉ
+    TABCONTENT: 'ਸਮਾਨ '
+    TOPLEVEL: 'ਸਾਈਟ ਦਾ ਸਮਾਨ (Top Level)'
+  VirtualPage:
+    HEADER: 'ਇਹ ਇੱਕ virtual ਪੰਨਾ ਹੈ।'

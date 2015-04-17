@@ -1,0 +1,78 @@
+si:
+  AssetAdmin:
+    NEWFOLDER: අලත් ගොනුවක්
+  AssetAdmin_left_ss:
+    GO: යන්න
+  CMSMain:
+    DELETE: 'කටු අඩවියෙන් මකන්න'
+    EMAIL: ඊමේල්
+    PAGENOTEXISTS: 'මෙම  පිටුව තවදුරටත් නොපවතී'
+    PUBALLCONFIRM: 'අඩවියේ ඇති සියලු පිටු, වේදිකාවට පිටපත් කර ප්රසිද්ධ කරන්න'
+    PUBALLFUN: 'සියලු ක්රම වේද ප්රසිද්ධ කරන ලදී'
+    REMOVEDPAGEFROMDRAFT: 'කටු අඩවියෙන් ''%s'' මකන ලදී'
+    ROLLBACK: 'මෙම සංස්රනය ඉවත් කරනන්න'
+    SAVE: සේවි කරන්න
+  ErrorPage:
+    400: '400 - දුර්වල ඉල්ළීමක්'
+    401: '401 - බල රහිත'
+    403: '403 - තහනම්'
+    404: '404 - නොලැබුණි'
+    405: '405 - ඉඩ නොදෙන ක්රමයකි'
+    406: '406 - භාරගත නොහැක'
+    407: '407 - Proxy යෙහි බලය අවශ්ය වේ'
+    408: '408 - ඉල්ලීමේ කාලය අවසන්'
+    409: '409 - ගැටුමකි'
+    410: '410 - නැති විය'
+    CODE: 'වැරදි කේතය'
+    DEFAULTERRORPAGECONTENT: '<p>කණගාටුයි,ඔබ නොමැති පිටුවකට යාමට උත්සාහ කරයි. </p><p>ඔබට යාමට අවශ්ය URL එකෙහි අක්ෂර පරීක්ෂා කර නැවත උත්සාහ කරන්න.</p>'
+    DEFAULTERRORPAGETITLE: 'පිටුව නොලැබුනි'
+  Folder:
+    UNUSEDFILESTITLE: 'භාවිතා නොකළ ගොනු'
+  RedirectorPage:
+    HASBEENSETUP: 'යොමු කිරීමේ පිටුව කිසිවකට යොමු නොකරයි'
+    HEADER: 'මෙම පිටුව පරිබෝඡකයන් වෙනත් යොමු කරයි'
+    OTHERURL: 'වෙනත් වෙබ් අඩවි URL'
+    REDIRECTTO: 'යොමු කරන්න'
+    REDIRECTTOEXTERNAL: 'වෙනත් වෙබ් අඩවි'
+    REDIRECTTOPAGE: 'ඔබේ අඩවියේ පිටුවක්'
+    YOURPAGE: 'ඔබේ අඩවියේ පිටුවක්'
+  SideReport:
+    EMPTYPAGES: 'හිස් පිටු'
+    LAST2WEEKS: 'අවසාන සති 2 තුල වෙනස්  කරන ලද පිටු'
+  SiteTree:
+    ACCESSANYONE: සියලු දෙනා
+    ACCESSHEADER: 'මෙම පිටුව බැලිය හැකි අය'
+    ACCESSLOGGEDIN: 'ප්රවිෂ්ටව සිටින පරිශීලකයින්'
+    ACCESSONLYTHESE: 'මේ අය පමනක් (ලයිස්තුවෙන් තෝරන්න)'
+    ALLOWCOMMENTS: 'විචාර කිරීමට හැක'
+    BUTTONCANCELDRAFT: 'කටු වෙනස් කිරීම් අවලංගු කරන්න'
+    BUTTONCANCELDRAFTDESC: 'කටු සටහන මකා, දැනට ප්රසිද්ධ පිටුවට ඵකතු කරන්න'
+    BUTTONUNPUBLISH: අප්රසිද්ධ කරන්න
+    BUTTONUNPUBLISHDESC: 'මෙම පිටුව ප්රසිද්ධ කල අඩවියෙන් ගලවන්න'
+    Content: අන්තර්ගතය
+    DEFAULTABOUTTITLE: 'අපි ගැන'
+    DEFAULTCONTACTTITLE: 'අප අමතන්න'
+    EDITANYONE: 'CMS ඵකට ඇතුල් විය හැකි සියල්ලන්ටම'
+    EDITHEADER: 'CMS ඵක සංස්කරනය කල හැක්කේ කාහටද?'
+    EDITONLYTHESE: 'මෙම අයට පමනක් (ලැයිස්තුවෙන් තෝරන්න)'
+    HASBROKENLINKS: 'මෙම පිටුවට කැඩුනු බැදීම් ඇත'
+    HTMLEDITORTITLE: අන්තර්ගතය
+    MENUTITLE: 'සංක්රමන ලේබලය'
+    METADESC: 'අර්තකතනය'
+    METAEXTRA: 'සැකසූ මෙටා ටැග්'
+    PAGETITLE: 'පිටු නම'
+    PAGETYPE: 'පිටු වර්ගය'
+    SHOWINMENUS: 'මෙනුවේ පෙන්වන්නද?'
+    SHOWINSEARCH: 'සර්ච් ඵකේ පෙන්වන්නද?'
+    TABBEHAVIOUR: හැසිරීම
+    TABCONTENT: 'අන්තර්ගතය'
+    TOPLEVEL: 'අන්ර්ගතය'
+    URLSegment: 'URL කොටස'
+    has_one_Parent: 'මවු පිටුව'
+  ViewArchivedEmail_ss:
+    CANACCESS: 'මෙම බැදීමෙන් පැරනි අඩවියට ප්රවිෂ්ට විය හැක'
+    HAVEASKED: 'ඹබට අපගේ වෙබ් අඩවිය නිරීක්ශනය කරන ලෙස ඉල්ලා ඇත'
+  VirtualPage:
+    HEADER: 'මෙය මනඃකල්පිත පිටුවකි'
+    PLURALNAME: 'මනඃකල්පිත පිටු'
+    SINGULARNAME: 'මනඃකල්පිත පිටුව'

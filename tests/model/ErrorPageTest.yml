@@ -1,0 +1,11 @@
+ErrorPage:
+   404:
+      Title: Page Not Found
+      URLSegment: page-not-found
+      Content: My error page body
+      ErrorCode: 404
+   403:
+      Title: Permission Failure
+      URLSegment: permission-denied
+      Content: You do not have permission to view this page
+      ErrorCode: 403

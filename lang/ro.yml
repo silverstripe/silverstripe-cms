@@ -1,0 +1,411 @@
+ro:
+  AssetAdmin:
+    ADDFILES: 'Adăugați fișiere'
+    ActionAdd: 'Adăugați dosarul'
+    AppCategoryArchive: Arhivă
+    AppCategoryAudio: Audio
+    AppCategoryDocument: Document
+    AppCategoryFlash: Flash
+    AppCategoryImage: Imagine
+    AppCategoryVideo: Video
+    BackToFolder: 'Înapoi la dosar'
+    CREATED: Dată
+    CurrentFolderOnly: 'Limitare la directorul curent?'
+    DetailsView: Detalii
+    FILES: Fişiere
+    FILESYSTEMSYNC: 'Sincronizare fişiere'
+    FILESYSTEMSYNCTITLE: 'Actualizează intrările din baza de date a fișierelor CMS-ului. Util când nu s-au upload-uit fișiere prin intermediul CMS-ului, de ex. prin FTP.'
+    FROMTHEINTERNET: 'Din internet'
+    FROMYOURCOMPUTER: 'De pe calculator'
+    Filetype: 'Tip fişier'
+    ListView: 'Vizualizare listă'
+    NEWFOLDER: Dosar nou
+    SIZE: Mărime
+    THUMBSDELETED: '{count} pictograme nefolosite au fost șterse'
+    TreeView: 'Vizualizare arborescentă'
+    Upload: Upload
+    MENUTITLE: Fişiere
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Ştergere dosare'
+  AssetAdmin_Tools:
+    FILTER: Filtru
+  AssetAdmin_left_ss:
+    GO: Start
+  AssetTableField:
+    BACKLINKCOUNT: 'Folosit la'
+    PAGES: pagină(pagini)
+  BackLink_Button_ss:
+    Back: Înapoi
+  BrokenLinksReport:
+    Any: Oricare
+    BROKENLINKS: 'Raport cu link-uri nefuncţionale'
+    CheckSite: 'Verificare site'
+    CheckSiteDropdownDraft: 'Site ciornă (draft)'
+    CheckSiteDropdownPublished: 'Site publicat'
+    ColumnDateLastModified: 'Data ultimei modificări'
+    ColumnDateLastPublished: 'Data ultimei publicări'
+    ColumnProblemType: 'Tip problemă'
+    ColumnURL: URL
+    HasBrokenFile: 'are fişiere corupte'
+    HasBrokenLink: 'are link-uri nefuncţionale'
+    HasBrokenLinkAndFile: 'are link-uri nefuncţionale şi fişiere corupte'
+    HoverTitleEditPage: 'Editare pagină'
+    PageName: 'Nume pagină'
+    ReasonDropdown: 'Problemă de verificat'
+    ReasonDropdownBROKENFILE: 'Fişier corupt'
+    ReasonDropdownBROKENLINK: 'Link nefuncţional'
+    ReasonDropdownRPBROKENLINK: 'Pagina de redirectare indică către o pagină inexistentă'
+    ReasonDropdownVPBROKENLINK: 'Pagina virtuală indică spre o pagină inexistentă'
+    RedirectorNonExistent: 'pagina de redirectare indică spre o pagină inexistentă'
+    VirtualPageNonExistent: 'pagina virtuală indică spre o pagină inexistentă'
+  CMSAddPageController:
+    Title: 'Adăugare pagină'
+  CMSBatchActions:
+    DELETED_DRAFT_PAGES: 'Au fost şterse %d pagini de pe site-ul ciornă, %d erori'
+    DELETED_PAGES: 'Au fost şterse %d pagini de pe site-ul live, %d erori'
+    DELETE_DRAFT_PAGES: 'Ştergere de pe site-ul ciornă'
+    DELETE_PAGES: 'Ştergere de pe site-ul live'
+    PUBLISHED_PAGES: '%d pagini publicate, %d erori'
+    PUBLISH_PAGES: Publicare
+    UNPUBLISHED_PAGES: '%d pagini au fost deactivate de la publicare'
+    UNPUBLISH_PAGES: Deactivare publicare
+  CMSMain:
+    ACCESS: 'Acces la secţiunea ''{title}'' '
+    ACCESS_HELP: 'Permite vizualizarea secțiunii cu arborele de pagini și conținut. Permisiunile de vizualizare și editare pot fi setate specific prin meniul vertical din pagini sau separat în "Permisiuni de conținut". '
+    AddNew: 'Adăugaţi o pagină nouă'
+    AddNewButton: 'Adăugaţi o nouă'
+    AddPageRestriction: 'Notă: Unele tipuri de pagini nu sunt permise pentru aceasta selecție'
+    ChoosePageParentMode: 'Alegeți unde veţi crea această pagină'
+    ChoosePageType: 'Alegeţi tipul de pagină'
+    Create: Creaţi
+    DELETE: 'Ştergere ciornă'
+    DELETEFP: Ştergere
+    DESCREMOVED: 'și {count} descendenți'
+    DUPLICATED: '''{title}'' duplicat cu succes'
+    DUPLICATEDWITHCHILDREN: '''{title}'' și descendenții săi duplicați cu succes'
+    EMAIL: E-mail
+    EditTree: 'Editare structură arbore'
+    ListFiltered: 'Listă filtrată'
+    NEWPAGE: '{pagetype} nouă'
+    PAGENOTEXISTS: 'Această pagină nu există'
+    PAGES: Pagini
+    PAGETYPEANYOPT: Oricare
+    PAGETYPEOPT: 'Tip pagină'
+    PUBALLCONFIRM: 'Vă rugăm publicați toate paginile din site, copiind conținutul curent în live'
+    PUBALLFUN: 'Funcționalitatea "Publică Tot" '
+    PUBALLFUN2: "Apăsând acest buton se v-a face echivalentul apăsării pe fiecare pagină a butonului \"publicare\". Este\n\t\t\t\tintenționat să fie folosit după ce s-au făcut editări masive de conținut, precum când site-ul a fost\n\t\t\t\tprima oară construit."
+    PUBPAGES: 'Finalizat: Publicate {count} pagini'
+    PageAdded: 'Pagină creată cu succes'
+    REMOVED: 'Șterge ''{title}''{description} din site-ul live'
+    REMOVEDPAGE: 'Înlătură ''{title}'' din site-ul publicat'
+    REMOVEDPAGEFROMDRAFT: 'Înlătură ''%s'' din site-ul ciornă'
+    RESTORE: Restaurează
+    RESTORED: 'Restaurare ''{title}'' cu succes'
+    ROLLBACK: 'Revenire la versiunea aceasta'
+    ROLLEDBACKPUBv2: 'Revenire la versiunea publicată'
+    ROLLEDBACKVERSIONv2: 'Revenire la versiunea #%d'
+    SAVE: Salvează
+    SAVEDRAFT: 'Salvează ciornă'
+    TabContent: Conținut
+    TabHistory: Istorie
+    TabSettings: Setări
+    TreeFiltered: 'Arbore filtrat'
+    TreeFilteredClear: 'Șterge filtru'
+    MENUTITLE: 'Editează pagina'
+  CMSMain_left_ss:
+    APPLY_FILTER: 'Aplică Filtrul'
+    RESET: Resetează
+  CMSPageAddController:
+    ParentMode_child: 'Sub altă pagină'
+    ParentMode_top: 'Nivel top'
+    MENUTITLE: 'Adaugă pagină'
+  CMSPageHistoryController:
+    COMPAREMODE: 'Mod comparare (selectează 2)'
+    COMPAREVERSIONS: 'Compară Versiunile'
+    COMPARINGVERSION: 'Comparație versiuni {version1} și {version2}.'
+    REVERTTOTHISVERSION: 'Revernire la versiune'
+    SHOWUNPUBLISHED: 'Afișează versiunile nepublicate'
+    SHOWVERSION: 'Afișează Versiune'
+    VIEW: Vizualizare
+    VIEWINGLATEST: 'Vizualizare curentă a ultimii versiuni.'
+    VIEWINGVERSION: 'Vizualizarea versiunii {version}.'
+    MENUTITLE: Istorie
+  CMSPageHistoryController_versions_ss:
+    AUTHOR: Autor
+    NOTPUBLISHED: 'Nepublicat'
+    PUBLISHER: Redactor
+    UNKNOWN: Necunoscut
+    WHEN: Când
+  CMSPagesController:
+    GalleryView: 'View Galerie'
+    ListView: 'View listă'
+    MENUTITLE: Pagini
+    TreeView: 'View Arbore'
+  CMSPagesController_ContentToolbar_ss:
+    MULTISELECT: Selecție multiplă
+  CMSPagesController_Tools_ss:
+    FILTER: Filtru
+  CMSSearch:
+    FILTERDATEFROM: De la
+    FILTERDATEHEADING: Data
+    FILTERDATETO: La
+    FILTERLABELTEXT: Conținut
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Pagini schimbate'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Toate paginile, incluzând cele șterse'
+  CMSSiteTreeFilter_Search:
+    Title: 'Toate paginile'
+  ContentControl:
+    NOTEWONTBESHOWN: 'Notă: acest mesaj nu v-a fi afișat vizitatorilor'
+  ContentController:
+    ARCHIVEDSITE: 'Previzualizare versiune'
+    ARCHIVEDSITEFROM: 'Site arhivat din'
+    CMS: CMS
+    DRAFT: Cironă
+    DRAFTSITE: 'Site ciornă'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Trebuie să vă logați cu parola dumneavoastră CMS pentru a vizualiza ciorna sau conținutul arhivat. <a href="%s">Click aici pentru a te întoarce la site-ul publicat.</a>'
+    Email: Email
+    INSTALL_SUCCESS: 'Instalare cu succes!'
+    InstallFilesDeleted: 'Fișierele de instalarea au fost șterse cu succes.'
+    InstallSecurityWarning: 'Din motive de secutitate ar trebuii să ștergeți acum fișierele de instalare, în cazul în care nu planificați o reinstalare ulterioară (<em>necesită drepturi de admin, referințe mai sue</em>). De acum serverul necesită doar drepturi de scriere in directorul "assets", puteți șterge dreturile de scriere pentru celelalte directoare.. <a href="{link}" style="text-align: center;">Click aici pentru ștergerea fișierelor de instalare.</a>'
+    InstallSuccessCongratulations: 'Silverstripe a fost instalat cu succes!'
+    LOGGEDINAS: 'Logat ca'
+    LOGIN: Login
+    LOGOUT: 'Logout'
+    NOTLOGGEDIN: 'Ne-loginat'
+    PUBLISHED: Publicat
+    PUBLISHEDSITE: 'Site publicat'
+    Password: Parolă
+    PostInstallTutorialIntro: 'Website-ul este o versiune simplificată a site-ului Silverstripe 3. Pentru a-l extinde, urmăriți link-ul {link}'
+    StartEditing: 'Puteți începe editarea conținutului deschizând <a href="{link}">CMS-ul</a>.'
+    UnableDeleteInstall: 'Fișierele de instalare nu pot fi șterse. Vă rugăm ștergeți fișierele următore manual'
+    VIEWPAGEIN: 'Vizualizează pagina în:'
+  ErrorPage:
+    400: '400 - Solicitare greșită'
+    401: '401 - Neautorizat'
+    403: '403 - Interzis'
+    404: '404 - Negăsită'
+    405: '405 - Funcție nepermisă'
+    406: '406 - Neacceptată'
+    407: '407 - Autentificare Proxy Necesară'
+    408: '408 - Solicitare expirată'
+    409: '409 - Conflict'
+    410: '410 - Dispărut'
+    411: '411 - Lungime necesară'
+    412: '412 - Precondiție eșuată '
+    413: '413 - Entitatea solicitării prea mare'
+    414: '414 - URI-ul solicitării prea lung'
+    415: '415 - Tip media nesuportat'
+    416: '416 - Banda solicitării neindelinită'
+    417: '417 - Așteptare nereușită'
+    500: '500 - Eroare internă de server'
+    501: '501 - Neimplementat'
+    502: '502 - Gateway incorect'
+    503: '503 - Serviciu nedisponibil'
+    504: '504 - Timpul de Gateway expirat'
+    505: '500 - Versiune HTTP Nesuportată'
+    CODE: 'Cod de eroare'
+    DEFAULTERRORPAGECONTENT: '<p>Ne pare rău, se pare că ați încercat să accesati o pagină inexistentă.</p><p>Vă rugăm verificați scrierea corectă a URL-ului dorit și încercați din nou.</p>'
+    DEFAULTERRORPAGETITLE: 'Pagină negasită'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Ne pare rău, s-a petrecut o problemă la procesarea solicitării dumeavoastre.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Eroare de server'
+    DESCRIPTION: 'Conșinut preferențial pentru diferitele cazuri (ex. "Pagină negăsită")'
+    ERRORFILEPROBLEM: 'Eroare la deschiderea fișierului "{filename}" pentru scriere. Vă rugăm verificași permisiunile.'
+    PLURALNAME: 'Eroare pagini'
+    SINGULARNAME: 'Pagină de eroare'
+  Folder:
+    AddFolderButton: 'Adaugă director'
+    DELETEUNUSEDTHUMBNAILS: 'Șterger pictograme nefolosite'
+    UNUSEDFILESTITLE: 'Fișiere nefolosite'
+    UNUSEDTHUMBNAILSTITLE: 'Pictograme nefolosite'
+    UploadFilesButton: Upload
+  LeftAndMain:
+    DELETED: Șters.
+    PreviewButton: Previzualizare
+    SAVEDUP: Salvat.
+    SearchResults: 'Rezultate căutare'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'Acces CMS'
+  Permissions:
+    CONTENT_CATEGORY: 'Permisiuni de conținut'
+    PERMISSIONS_CATEGORY: 'Permisiuni de rol și acces'
+  RedirectorPage:
+    DESCRIPTION: 'Redirecționează către o pagină internă diferită'
+    HASBEENSETUP: 'O pagină referitoare a fost creată fără a direcționa către ceva'
+    HEADER: 'Pagina v-a redirecționa utilizatorii către altă pagină'
+    OTHERURL: 'URL-ul altui website'
+    PLURALNAME: 'Pagini referitoare'
+    REDIRECTTO: 'Redirecționare către'
+    REDIRECTTOEXTERNAL: 'Alt website'
+    REDIRECTTOPAGE: 'O pagină de pe website-ul dumneavoastră'
+    SINGULARNAME: 'Pagină referitoare'
+    YOURPAGE: 'Pagină de pe website-ul dumneavoastră'
+  ReportAdmin:
+    ReportTitle: Titlu
+    MENUTITLE: Rapoarte
+  ReportAdminForm:
+    FILTERBY: 'Filtrează după'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Vă rugăm selectați o pagină referențiată pentru a publica pagina virtuală'
+    VIRTUALPAGEWARNING: 'Vă rugăm selectați o pagină referențiată și salvați înainte pentru a publica pagina'
+    VIRTUALPAGEWARNINGSETTINGS: 'Vă rugăm selectați o pagină referențiată în câmpurile de conținut principal pentru a publica'
+  SearchForm:
+    GO: Start
+    SEARCH: Căutare
+    SearchResults: 'Rezultate căutare'
+  SideReport:
+    BROKENFILES: 'Pagini cu fișiere incorecte'
+    BROKENLINKS: 'Pagini cu '
+    BROKENREDIRECTORPAGES: 'Pagini referitoare indică spre pagini șterse'
+    BROKENVIRTUALPAGES: 'Pagini virtuale indică spre pagini șterse'
+    BrokenLinksGroupTitle: 'Raport referințe nefuncționale'
+    ContentGroupTitle: 'Rapoarte conținut'
+    EMPTYPAGES: 'Pagini fără conținut'
+    LAST2WEEKS: 'Pagini editate în ultimele 2 săptămâni'
+    OtherGroupTitle: Altele
+    ParameterLiveCheckbox: 'Verifică site live'
+    REPEMPTY: 'Raportul {title} este gol '
+  SilverStripeNavigator:
+    ARCHIVED: Arhivă
+  SilverStripeNavigatorLink:
+    ShareInstructions: 'Pentru a distribuii pagina, copiază si lipește link-ul de mai jos'
+    ShareLink: 'Distribuie link'
+  SilverStripeNavigatorLinkl:
+    CloseLink: Închide
+  SiteConfig:
+    DEFAULTTHEME: '(Folosește tema default)'
+    EDITHEADER: 'Cine poate edita pagini pe acest site?'
+    EDIT_PERMISSION: 'Administrează configurații site'
+    EDIT_PERMISSION_HELP: 'Abilitatea de a edita setări de acces general/permisiuni de pagini nivel-top'
+    PLURALNAME: 'Configurații Site'
+    SINGULARNAME: 'Configurare Site'
+    SITENAMEDEFAULT: 'Numele Site-ului Tău'
+    SITETAGLINE: 'Slogan Site'
+    SITETITLE: 'Titlul Site-ului'
+    TABACCESS: Acces
+    TABMAIN: Principal
+    TAGLINEDEFAULT: 'sloganul tău aici'
+    THEME: Tema
+    TOPLEVELCREATE: 'Cine poate crea pagini în rădăcina site-ului?'
+    VIEWHEADER: 'Cine poate vizualiza paginile acestui site?'
+  SiteTree:
+    ACCESSANYONE: Oricine
+    ACCESSHEADER: 'Cine poate vizualiza această pagină pe site-ul meu?'
+    ACCESSLOGGEDIN: 'Utilizatorii autentificaţi'
+    ACCESSONLYTHESE: 'Doar aceste persoane (selectează din listă)'
+    ADDEDTODRAFTHELP: 'Pagina nu a fost încă publicată'
+    ADDEDTODRAFTSHORT: Ciornă
+    ALLOWCOMMENTS: 'Acceptă comentarii în aceasta pagină? '
+    APPEARSVIRTUALPAGES: 'Conținutul apare și în pagini virtuale în secțiuni {title}'
+    BUTTONCANCELDRAFT: 'Anulează modificări ciornă'
+    BUTTONCANCELDRAFTDESC: 'Șterge ciorna și revenire la pagina publicată curent '
+    BUTTONPUBLISHED: Publicat
+    BUTTONSAVED: Salvat
+    BUTTONSAVEPUBLISH: 'Salvează & publică'
+    BUTTONUNPUBLISH: Ascunde
+    BUTTONUNPUBLISHDESC: 'Șterge pagina din site-ul publicat'
+    Comments: Comentarii
+    Content: Continut
+    DEFAULTABOUTCONTENT: '<p>Puteți completa pagina cu conținut propriu, sau o puteți șterge și să vă creați alte pagini.<br /></p>'
+    DEFAULTABOUTTITLE: 'Despre Noi'
+    DEFAULTCONTACTCONTENT: '<p>Puteți completa pagina cu conținut propriu, sau o puteți șterge și să vă creați alte pagini.<br /></p>'
+    DEFAULTCONTACTTITLE: 'Contactați-ne'
+    DEFAULTHOMECONTENT: '<p>Bine ați venit în SilverStripe! Aceasta este pagina principala. Puteți edita pagina deschizînd <a href="admin/">CMS-ul</a>. Acum puteți accesa <a href="http://doc.silverstripe.org">developer documentatia</a>, sau să începeți <a href="http://doc.silverstripe.org/doku.php?id=tutorials">tutorialele.</a></p>'
+    DEFAULTHOMETITLE: Acasă
+    DELETEDPAGEHELP: 'Pagina nu mai este publicată'
+    DELETEDPAGESHORT: Șters
+    DEPENDENT_NOTE: 'Următoarele pagini depind de această pagină. Include și pagini virtuale, pagini redirecționate, și pagini cu link-uri către conținut.'
+    DESCRIPTION: 'Pagina cu conținut generic '
+    DependtPageColumnLinkType: 'Tip referintă'
+    DependtPageColumnURL: URL
+    EDITANYONE: 'Oricine se poate logina pe CMS'
+    EDITHEADER: 'Cine poate edita pagina?'
+    EDITONLYTHESE: 'Doar aceste persoane (selectează din listă)'
+    EDITORGROUPS: 'Grupuri Editor'
+    EDIT_ALL_DESCRIPTION: 'Editează orice pagină'
+    EDIT_ALL_HELP: 'Abilitatea de a edita orice pagină din site, indiferent de setările din tabul Acces. Necesită permisiunea de "Acces la secțiunea ''Pagini''"'
+    Editors: 'Grupul editorilor'
+    GroupPlaceholder: 'Click pentru selecție grup'
+    HASBROKENLINKS: 'Această pagină are referințe nefuncţionale'
+    HTMLEDITORTITLE: Continut
+    INHERIT: 'Mostenește din pagina părinte'
+    LASTPUBLISHED: 'Ultima publicare'
+    LASTSAVED: 'Ultima salvare'
+    LASTUPDATED: 'Ultimul actualizat'
+    LINKCHANGENOTE: 'Schimbarea link-urilor din pagină v-a afecta și link-urile din toți descendenții.'
+    MENUTITLE: 'Etichetă navigare'
+    METADESC: 'Descriere'
+    METADESCHELP: 'Motoarele de căutare folosesc acest conținut pentru a afișa rezultatele căutării (deși nu v-a influența nota acestuia)'
+    METAEXTRA: 'Etichetă Meta preferențială'
+    METAEXTRAHELP: 'Etichetele HTML pentru informațiile meta adiționale. De exemplu &lt;meta name="numePreferat" content="conținut preferențial aici" /&gt;'
+    MODIFIEDONDRAFTHELP: 'Pagina are modificări nepublicate'
+    MODIFIEDONDRAFTSHORT: Modificat
+    MetadataToggle: Metadata
+    MoreOptions: 'Mai multe opțiuni'
+    NOTPUBLISHED: 'Nepublicat'
+    OBSOLETECLASS: 'Această pagină este de un tip {type} scos din uz. Salvând se va reseta tipul și se pot pierde datele'
+    PAGELOCATION: 'Locația pagini'
+    PAGETITLE: 'Nume pagină'
+    PAGETYPE: 'Tipul paginii'
+    PARENTID: 'Pagina părinte'
+    PARENTTYPE: 'Locație pagină'
+    PARENTTYPE_ROOT: 'Pagini Nivel-Top'
+    PARENTTYPE_SUBPAGE: 'Subpagini de sub pagina părinte'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Administrează drepturi de acces la conținut'
+    PERMISSION_GRANTACCESS_HELP: 'Permite setări de restricționare specifice per pagină în secțiunea "Pagini".'
+    PLURALNAME: Pagini
+    PageTypNotAllowedOnRoot: 'Tipul paginii "{type}" nu este permis pe nivelul rădăcină'
+    PageTypeNotAllowed: 'Tipul pagini "{type}" nu este permis ca și copil pentru pagina părinte'
+    REMOVEDFROMDRAFTHELP: 'Pagina este publicată, dar a fost ștearsă din ciornă'
+    REMOVEDFROMDRAFTSHORT: 'Șterge din ciornă'
+    REMOVE_INSTALL_WARNING: 'Avertisment: Ar trebuii șters fișierul install.php din Instanța Silverstripe din motive de securitate. '
+    REORGANISE_DESCRIPTION: 'Schimbă structură site'
+    REORGANISE_HELP: 'Rearanjează paginile în arborele site-ului prin drag&drop'
+    SHOWINMENUS: 'Afişează in meniu?'
+    SHOWINSEARCH: 'Afisează în căutare'
+    SINGULARNAME: Pagină
+    TABBEHAVIOUR: Comportament
+    TABCONTENT: 'Conţinut principal'
+    TABDEPENDENT: 'Pagini dependente'
+    TOPLEVEL: 'Conținut Site (Nivel Top)'
+    TOPLEVELCREATORGROUPS: 'Creatorii de nivel Top'
+    URLSegment: 'Segment URL'
+    VIEWERGROUPS: 'Grupuri Observatori'
+    VIEW_ALL_DESCRIPTION: 'Vizualizează orice pagină'
+    VIEW_ALL_HELP: 'Abilitatea de a vizualiza orice pagină din site, indiferent de setările din tabul de Acces. Necesită permisiunea "Acces la secțiunea ''Pagini''"'
+    VIEW_DRAFT_CONTENT: 'Vizualizează conținut ciornă'
+    VIEW_DRAFT_CONTENT_HELP: 'Se aplică vizualizării de pagini din afara CMS-ului în modul ciornă. Util pentru colaboratorii externi fără acces CMS.'
+    Viewers: 'Grupurile vizitatorilor'
+    Visibility: Vizibilitate
+    has_one_Parent: 'Pagina Parinte'
+    many_many_BackLinkTracking: 'Urmărire link invers'
+    many_many_ImageTracking: 'Urmărire Imagine'
+    many_many_LinkTracking: 'Urmărire Link'
+  SiteTreeURLSegmentField:
+    EMPTY: 'Vă rugăm introduceți un Segment URL sau apăsați anulează'
+    HelpChars: 'Caracterele speciale sunt convertite automat sau șterse'
+  URLSegmentField:
+    Cancel: Anulare
+    Edit: Editează
+    OK: OK
+  ViewArchivedEmail_ss:
+    CANACCESS: 'Puteți accesa site-ul arhivat la link-ul:'
+    HAVEASKED: 'Ați cerut să vizualizați conținutul site-ului la'
+  VirtualPage:
+    CHOOSE: 'Pagina referință'
+    DESCRIPTION: 'Afișează conținutul altei pagini'
+    EditLink: editare
+    HEADER: 'Aceasta este o pagină virtuală '
+    HEADERWITHLINK: 'Aceasta este o pagina virtuală care copiază conținut din "{title}" ({link})'
+    PLURALNAME: 'Pagini virtuale'
+    PageTypNotAllowedOnRoot: 'Tipul original al pagini "{type}" nu este permis pe nivelul rădăcină pentru pagina virtuală'
+    SINGULARNAME: 'Pagina Virtuala'
+  CMSFileAddController:
+    MENUTITLE: Fișiere
+  CMSPageEditController:
+    MENUTITLE: 'Editează Pagina'
+  CMSPageSettingsController:
+    MENUTITLE: 'Editare pagină'
+  CMSSettingsController:
+    MENUTITLE: Setări

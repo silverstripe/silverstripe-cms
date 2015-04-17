@@ -1,0 +1,156 @@
+zh_TW:
+  AssetAdmin:
+    NEWFOLDER: 新資料夾
+  AssetAdmin_left_ss:
+    GO: 執行
+  BackLink_Button_ss:
+    Back: 返回
+  CMSBatchActions:
+    DELETE_DRAFT_PAGES: '從草稿網站刪除'
+    DELETE_PAGES: '從已出版網站刪除'
+    PUBLISHED_PAGES: '已出版 %d 網頁, %d 失敗'
+    PUBLISH_PAGES: 出版
+    UNPUBLISHED_PAGES: '未出版 %d 網頁'
+    UNPUBLISH_PAGES: 未出版的
+  CMSMain:
+    EMAIL: 電子郵件
+    PAGENOTEXISTS: '這頁不存在'
+    PUBALLCONFIRM: '請發布所有網頁'
+    PUBALLFUN: '"全部發布" 功能'
+    PUBALLFUN2: "按下這個按鈕就是如同到每頁按「發布」。當有很多內容更變時，這個功能可以省時。"
+    ROLLBACK: '回複到這個的版本'
+    SAVE: 儲存
+  CMSPageHistoryController:
+    COMPAREMODE: '比較模式(選擇兩個)'
+    COMPAREVERSIONS: '比較版本'
+    REVERTTOTHISVERSION: '回復到此版本'
+    SHOWUNPUBLISHED: '顯示未出版的版本'
+    SHOWVERSION: '顯示版本'
+    VIEW: 瀏覽
+    MENUTITLE: 歷史
+  CMSPageHistoryController_versions_ss:
+    AUTHOR: 作者
+    NOTPUBLISHED: '未發行的'
+    PUBLISHER: 發行者
+    UNKNOWN: 未知的
+    WHEN: 何時
+  CMSPagesController:
+    GalleryView: '圖庫瀏覽'
+    ListView: '清單瀏覽'
+    MENUTITLE: 網頁
+    TreeView: '樹狀瀏覽'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: '所有網頁, 包括已刪除的'
+  CMSSiteTreeFilter_Search:
+    Title: '所有網頁'
+  ContentControl:
+    NOTEWONTBESHOWN: '備註: 此訊息將不會顯示給您的訪客看'
+  ErrorPage:
+    CODE: '錯誤代碼'
+    DEFAULTERRORPAGECONTENT: '<p>抱歉, 看來您正再嘗試存取一個不存在的網頁</p><p>請檢查您正在嘗試存取網址的拼寫並再試一次.</p>'
+    DEFAULTERRORPAGETITLE: '未發現網頁'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>抱歉, 處裡您的要求發生一個問題</p>'
+    DEFAULTSERVERERRORPAGETITLE: '伺服器錯誤'
+  Folder:
+    AddFolderButton: '新增資料夾'
+    DELETEUNUSEDTHUMBNAILS: '刪除未使用的縮圖'
+    UNUSEDFILESTITLE: '未使用的檔案'
+    UNUSEDTHUMBNAILSTITLE: '未使用的縮圖'
+    UploadFilesButton: 上傳
+  RedirectorPage:
+    DESCRIPTION: '重新導向到一個內部不同的網頁'
+    HASBEENSETUP: '沒有任何地方被重新導向的一個重新導向網頁已被設定.'
+    HEADER: '本網頁將重新導向用戶至別的網頁'
+    OTHERURL: '其他網站網址'
+    REDIRECTTO: '重新導向到'
+    REDIRECTTOEXTERNAL: '別的網站'
+    REDIRECTTOPAGE: '在您網站上的一個網頁'
+    YOURPAGE: '在您網站上的網頁'
+  SideReport:
+    EMPTYPAGES: '空頁'
+    LAST2WEEKS: '網頁在過去兩個禮拜有被更改過'
+  SilverStripeNavigatorLink:
+    ShareLink: '分享鏈結'
+  SilverStripeNavigatorLinkl:
+    CloseLink: 關閉
+  SiteTree:
+    ACCESSANYONE: 所有人
+    ACCESSHEADER: '誰可以瀏覽這頁？'
+    ACCESSLOGGEDIN: '已登入的使用者'
+    ACCESSONLYTHESE: '只有這些人(從清單選擇)'
+    ALLOWCOMMENTS: '允許留言嗎？'
+    BUTTONCANCELDRAFT: '取消草稿更變'
+    BUTTONCANCELDRAFTDESC: '刪除草稿並回複到正式發布的版本'
+    BUTTONUNPUBLISH: 取消發布
+    BUTTONUNPUBLISHDESC: '從正式發布站移除'
+    Comments: 意見
+    Content: 內容
+    DEFAULTABOUTCONTENT: '<p>您可以用您自己的內容填入本網頁, 或是刪除它並建立您自己的網頁<br /></p>'
+    DEFAULTABOUTTITLE: '關於我們'
+    DEFAULTCONTACTCONTENT: '<p>您可以用您自己的內容填入本網頁, 或是刪除它並建立您自己的網頁<br /></p>'
+    DEFAULTCONTACTTITLE: '連絡我們'
+    DEFAULTHOMECONTENT: '<p>歡迎光臨 SilverStrip! 這是預設的主頁. 您可以開啟<a href="admin/">the CMS</a>來編輯這個網頁. 您現在可存取<a href="http://doc.silverstripe.org">developer documentation</a>, 或是開始<a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
+    DEFAULTHOMETITLE: 首頁
+    DELETEDPAGESHORT: 已刪除
+    DEPENDENT_NOTE: '以下的網頁是依附在本網頁的. 這包含了虛擬網頁, 重新導向網頁, 以及有內容鏈結的網頁.'
+    DependtPageColumnLinkType: '鏈結類型'
+    DependtPageColumnURL: 網址
+    EDITANYONE: '所有可以登入CMS的人'
+    EDITHEADER: '誰可以編輯這頁？'
+    EDITONLYTHESE: '只有這些人(從清單選擇)'
+    EDITORGROUPS: '編輯者群組'
+    EDIT_ALL_DESCRIPTION: '編輯任何網頁'
+    EDIT_ALL_HELP: '不管在存取Tab上的設定值, 在網站上有能力去編輯任何網頁. 需要 "到''網頁''部分的存取"許可'
+    Editors: '編輯者群體'
+    HASBROKENLINKS: '網頁含有失效的連結。'
+    HTMLEDITORTITLE: 內容
+    INHERIT: '從母頁繼承'
+    LASTUPDATED: '最近更新'
+    LINKCHANGENOTE: '改變這個網頁鏈結將也會影響所有子網頁的鏈結'
+    MENUTITLE: '捷徑標籤'
+    METADESC: '敘述'
+    METAEXTRA: '自訂元標籤(meta-tags)'
+    MODIFIEDONDRAFTSHORT: 已修改
+    PAGELOCATION: '網頁位置'
+    PAGETITLE: '網頁名稱'
+    PAGETYPE: '網頁類型'
+    PARENTID: '母頁'
+    PARENTTYPE: '網頁位置'
+    PARENTTYPE_ROOT: '頂級網頁'
+    PARENTTYPE_SUBPAGE: '在母頁下面的次頁'
+    PERMISSION_GRANTACCESS_DESCRIPTION: '管理內容的存取權限'
+    PERMISSION_GRANTACCESS_HELP: '允許設定在"網頁"部分的網頁-特定存取限制.'
+    REMOVEDFROMDRAFTSHORT: '從草稿移除'
+    REMOVE_INSTALL_WARNING: '警告: 為了安全理由你應該從SilverStripe的安裝中移除install.php.'
+    REORGANISE_DESCRIPTION: '改變網站結構'
+    REORGANISE_HELP: '經由 拉&放 於網站樹狀架構內重新安排網頁.'
+    SHOWINMENUS: '在選單裡顯示嗎？'
+    SHOWINSEARCH: '在搜尋結果裡顯示嗎？'
+    TABBEHAVIOUR: 作用
+    TABCONTENT: '內容'
+    TABDEPENDENT: '依賴網頁'
+    TOPLEVEL: '網站內容 (高層)'
+    TOPLEVELCREATORGROUPS: '頂級創作者'
+    URLSegment: '網址分類'
+    VIEWERGROUPS: '瀏覽者群組'
+    VIEW_ALL_DESCRIPTION: '瀏覽任何網頁'
+    VIEW_DRAFT_CONTENT: '瀏覽內容草稿'
+    VIEW_DRAFT_CONTENT_HELP: '應用於在草稿模式下觀看CMS以外的網頁. 沒有CMS存取權的外部合作者是有用的.'
+    Viewers: '瀏覽者群組'
+    Visibility: 能見度
+    has_one_Parent: '母頁'
+    many_many_BackLinkTracking: '背面鏈結追蹤'
+    many_many_ImageTracking: '影像追蹤'
+    many_many_LinkTracking: '鏈結追蹤'
+  ViewArchivedEmail_ss:
+    CANACCESS: '您可以利用哲格連結到已歸檔站：'
+    HAVEASKED: '您要瀏覽這一天的網站內容：'
+  VirtualPage:
+    DESCRIPTION: '顯示其他網頁的內容'
+    HEADER: '這是一個虛擬網頁'
+    PLURALNAME: '虛擬網頁'
+    SINGULARNAME: '虛擬網頁'
+  CMSPageSettingsController:
+    MENUTITLE: '編輯網頁'
+  CMSSettingsController:
+    MENUTITLE: 設定值

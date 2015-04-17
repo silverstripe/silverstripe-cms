@@ -1,24 +1,24 @@
 # Contributing
 
-Any open source product is only as good as the community behind it. You can participate by sharing code, ideas, or simply helping others. No matter what your skill level is, every contribution counts. See our [high level contribution overview](http://silverstripe.org/contributing-to-silverstripe) on silverstripe.org on how you can help out. 
+Any open source product is only as good as the community behind it. You can participate by sharing code, ideas, or simply helping others. No matter what your skill level is, every contribution counts.
 
-## Bugtracker ##
+See our [high level overview](http://silverstripe.org/contributing-to-silverstripe) on silverstripe.org on how you can help out.
 
-Bugs are tracked on [github.com](https://github.com/silverstripe/framework/issues). 
+Or, for more detailed guidance, read one of the following pages:
 Please read our [issue reporting guidelines](http://doc.silverstripe.org/framework/en/misc/contributing/issues).
 
 ## Development and Contribution ##
 
-For submitting patches, please read our [guide to contributing code](http://doc.silverstripe.org/framework/en/misc/contributing/code). We only accept pull requests on github.com.
+ * [Sharing your opinion and raising issues](http://doc.silverstripe.org/framework/en/trunk/misc/contributing/issues)
 
 ## Links ##
 
- * [Server Requirements](http://doc.silverstripe.org/framework/en/installation/server-requirements)
- * [Changelogs](http://doc.silverstripe.org/framework/en/changelogs/)
+ * [Providing code, whether it's creating a feature or fixing a bug](http://doc.silverstripe.org/framework/en/trunk/misc/contributing/code)
+ * [Writing and translating documentation](http://doc.silverstripe.org/framework/en/trunk/misc/contributing/documentation)
  * [Bugtracker: Framework](https://github.com/silverstripe/silverstripe-framework/issues)
  * [Bugtracker: CMS](https://github.com/silverstripe/silverstripe-cms/issues)
  * [Bugtracker: Installer](https://github.com/silverstripe/silverstripe-installer/issues)
- * [Forums](http://silverstripe.org/forums)
+ * [Translating user-interface elements](http://doc.silverstripe.org/framework/en/trunk/misc/contributing/translation)
  * [Developer Mailinglist](https://groups.google.com/forum/#!forum/silverstripe-dev)
 
 ## Licensing

@@ -1,0 +1,21 @@
+---
+Name: modelascontrollerroutes
+Before: '*'
+After: '#rootroutes'
+---
+Director:
+  rules:
+    '': 'RootURLController'
+    '$URLSegment//$Action/$ID/$OtherID': 'ModelAsController'
+    'StaticExporter//$Action/$ID/$OtherID': 'StaticExporter'
+    'RebuildStaticCacheTask//$Action/$ID/$OtherID': 'RebuildStaticCacheTask'
+    'RemoveOrphanedPagesTask//$Action/$ID/$OtherID': 'RemoveOrphanedPagesTask'
+    'SiteTreeMaintenanceTask//$Action/$ID/$OtherID': 'SiteTreeMaintenanceTask'
+    'SiteTreeMaintenanceTask//$Action/$ID/$OtherID': 'SiteTreeMaintenanceTask'
+---
+Name: legacycmsroutes
+After: '#adminroutes'
+---
+Director:
+  rules:
+    'admin/cms': '->admin/pages'

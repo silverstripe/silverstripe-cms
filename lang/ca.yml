@@ -1,0 +1,111 @@
+ca:
+  AssetAdmin:
+    NEWFOLDER: NovaCarpeta
+  AssetAdmin_left_ss:
+    GO: Vés
+  CMSMain:
+    DELETE: 'Suprimeix del lloc esborrany'
+    DELETEFP: Suprimeix del lloc publicat
+    EMAIL: Correu electrònic
+    PAGENOTEXISTS: 'Aquesta pàgina no existeix'
+    PUBALLCONFIRM: 'Publica cada pàgina del lloc web, copiant el contingut cap a la versió publicada'
+    PUBALLFUN: 'Funcionalitat de "Publica-ho tot"'
+    PUBALLFUN2: "Prémer aquest botó farà l'equivalent a anar a cada pàgina i prémer \"Publica\". És pràctic d'usar quan hi ha hagut edicions massives del contingut, com ara quan el lloc web s'ha fet per primer cop."
+    REMOVEDPAGEFROMDRAFT: 'S''ha suprimit  ''%s'' del lloc esborrany'
+    RESTORE: Restaura
+    ROLLBACK: 'Torna a aquesta versió'
+    SAVE: Desa
+  ErrorPage:
+    400: '400 - Mala petició'
+    401: '401 - Sense autorització'
+    403: '403 - Prohibit'
+    404: '404 - No s''ha trobat'
+    405: '405 - Mètode no permès'
+    406: '406 - No acceptable'
+    407: '407 - Autenticació de servidor intermediari requerida'
+    408: '408 - Temps excedit de la petició'
+    409: '409 - Conflicte'
+    410: '410 - Ja no hi és'
+    411: '411 - Longitud requerida'
+    412: '412 - Una precondició ha fallat'
+    413: '413 - Entitat de la petició massa gran'
+    414: '414 - Adreça de la petició massa llarga'
+    415: '415 - Tipus mèdia no suportat'
+    416: '416 - Rang de la petició no satisfactible'
+    417: '417 - Expectació ha fallat'
+    500: '500 - Error intern del servidor'
+    501: '501 - No implementat'
+    502: '502 - Pasarel·la errònia'
+    503: '503 - Servei no disponible'
+    504: '504 - Temps excedit de la pasarel·la'
+    505: '505 - Versió HTTP no suportada'
+    CODE: 'Codi d''error'
+    DEFAULTERRORPAGECONTENT: '<p>Sembla que intenteu accedir a una pàgina que no existeix.</p><p>Si us plau, reviseu com heu escrit la URL que intenteu accedir i proveu-ho de nou.</p>'
+    DEFAULTERRORPAGETITLE: 'Pàgina no trobada'
+  Folder:
+    DELETEUNUSEDTHUMBNAILS: 'Suprimeix les miniatures no usades'
+    UNUSEDFILESTITLE: 'Fitxers no usats'
+    UNUSEDTHUMBNAILSTITLE: 'Miniatures no usades'
+  RedirectorPage:
+    HASBEENSETUP: 'S''ha definit una pàgina redirectora sense cap lloc on redirigir.'
+    HEADER: 'Aquesta pàgina redirigirà usuaris a una altra pàgina'
+    OTHERURL: 'URL del lloc web'
+    REDIRECTTO: 'Redirigeix a'
+    REDIRECTTOEXTERNAL: 'Un altre lloc web'
+    REDIRECTTOPAGE: 'Una pàgina del vostre lloc web'
+    YOURPAGE: 'Pàgina del vostre lloc web'
+  SearchForm:
+    GO: Vés
+    SEARCH: Cerca
+  SideReport:
+    EMPTYPAGES: 'Pàgines buides'
+    LAST2WEEKS: 'Pàgines editades les dues darreres setmanes'
+  SiteTree:
+    ACCESSANYONE: Qualsevol
+    ACCESSHEADER: 'Qui pot veure aquesta pàgina al meu lloc web?'
+    ACCESSLOGGEDIN: 'Usuaris connectats'
+    ACCESSONLYTHESE: 'Només aquesta gent (trieu de la llista)'
+    ALLOWCOMMENTS: 'Permet comentaris en aquesta pàgina?'
+    BUTTONCANCELDRAFT: 'Cancel·la els canvis de l''esborrany'
+    BUTTONCANCELDRAFTDESC: 'Suprimeix el vostre esborrany i reverteix a la pàgina actualment publicada'
+    BUTTONUNPUBLISH: Despublica
+    BUTTONUNPUBLISHDESC: 'Suprimeix aquesta pàgina del lloc publicat'
+    Comments: Comentaris
+    Content: Contingut
+    DEFAULTABOUTCONTENT: '<p>Podeu omplir aquesta pàgina amb el vostre propi contingut, o eliminar-la i crear les vostres pròpies pàgines.<br/></p>'
+    DEFAULTABOUTTITLE: 'Sobre nosaltres'
+    DEFAULTCONTACTCONTENT: '<p>Podeu omplir aquesta pàgina amb el vostre propi contingut, o eliminar-la i crear les vostres pròpies pàgines.<br/></p>'
+    DEFAULTCONTACTTITLE: 'Contacteu amb nosaltres'
+    DEFAULTHOMECONTENT: '<p>Benvingut a SilverStripe! Aquesta és la portada per defecte. Podeu editar aquesta pàgina obrint <a href="admin/">el SGC</a>. Podeu accedir a la <a href="http://doc.silverstripe.com">documentació del desenvolupador</a>, o començar <a href="http://doc.silverstripe.com/doku.php?id=tutorials">els tutorials.</a></p>'
+    DEFAULTHOMETITLE: Portada
+    EDITANYONE: 'Qualsevol que pot entrar al SGC'
+    EDITHEADER: 'Qui pot editar-la des del SGC?'
+    EDITONLYTHESE: 'Només aquesta gent (trieu d''una llista)'
+    Editors: 'Grups d''editors'
+    HASBROKENLINKS: 'Aquesta pàgina té enllaços trencats'
+    HTMLEDITORTITLE: Contingut
+    INHERIT: 'Hereda de la pàgina pare'
+    MENUTITLE: 'Etiqueta de navegació'
+    METADESC: 'Descripció'
+    METAEXTRA: 'Etiquetes Meta personalitzades'
+    PAGETITLE: 'Nom de la pàgina'
+    PAGETYPE: 'Tipus de pàgina'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Controla quins grups poden accedir o editar certes pàgines'
+    SHOWINMENUS: 'Mostra als menús?'
+    SHOWINSEARCH: 'Mostra en cerques?'
+    TABBEHAVIOUR: Comportament
+    TABCONTENT: 'Contingut'
+    TOPLEVEL: 'Contingut del lloc (Nivell principal)'
+    URLSegment: 'Segment URL'
+    Viewers: 'Grups de visitadors'
+    has_one_Parent: 'Pàgina pare'
+    many_many_BackLinkTracking: 'Seguiment d''enllaços retroactius'
+    many_many_ImageTracking: 'Seguiment d''imatges'
+    many_many_LinkTracking: 'Seguiment d''enllaços'
+  ViewArchivedEmail_ss:
+    CANACCESS: 'Podeu accedir al lloc arxivat en aquesta adreça:'
+    HAVEASKED: 'Heu demanat de veure el contingut del nostre lloc el'
+  VirtualPage:
+    HEADER: 'Aquesta és una pàgina virtual'
+    PLURALNAME: 'Pàgines virtuals'
+    SINGULARNAME: 'Pàgina virtual'

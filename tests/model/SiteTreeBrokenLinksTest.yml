@@ -1,0 +1,27 @@
+Page:
+    content:
+        Title: ContentPage
+        Content: 'This is some partially happy content. It has one missing a skiplink, but does have another <a name="yes-anchor-here">skiplink here</a>.'
+    about:
+        Title: About
+        URLSegment: about
+        Content: 'about us here <a name="yes-anchor-here">about skiplinks here</a>.'
+    brokenInternalRedirector:
+        RedirectionType: Internal
+        Title: RedirectorPageToBrokenInteralPage
+        LinkToID: 0
+    workingInternalRedirector:
+        RedirectionType: Internal
+        Title: RedirectorPageToBrokenInteralPage
+        LinkTo: =>Page.content
+
+File:
+    privacypolicy:
+        Name: privacypolicy.pdf
+        Title: privacypolicy.pdf
+        Filename: assets/privacypolicy.pdf
+    	
+ErrorPage:
+    404:
+        Title: Page not Found
+        ErrorCode: 404

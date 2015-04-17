@@ -1,0 +1,26 @@
+<html>
+
+<head>
+	<!-- Include the javascript -->
+	<script src="multifile_compressed.js"></script>
+</head>
+
+<body>
+
+<!-- This is the form -->
+<form enctype="multipart/form-data" action="your_script_here.script" method = "post">
+	<!-- The file element -- NOTE: it has an ID -->
+	<input id="my_file_element" type="file" name="file_1" >
+	<input type="submit">
+</form>
+Files:
+<!-- This is where the output will appear -->
+<div id="files_list"></div>
+<script>
+	<!-- Create an instance of the multiSelector class, pass it the output target and the max number of files -->
+	var multi_selector = new MultiSelector( document.getElementById( 'files_list' ), 3 );
+	<!-- Pass in the file element -->
+	multi_selector.addElement( document.getElementById( 'my_file_element' ) );
+</script>
+</body>
+</html>

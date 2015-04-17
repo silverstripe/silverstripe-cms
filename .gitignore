@@ -1,7 +1,7 @@
 assets
 _ss_environment.php
 tools/phing-metadata
-silverstripe-cache
+.sass-cache
 .buildpath
 .project
 .settings

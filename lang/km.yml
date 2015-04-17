@@ -1,0 +1,10 @@
+km:
+  SiteTree:
+    Content: មាតិការ
+    HTMLEDITORTITLE: អត្ថបទ
+    PAGETYPE: 'ប្រភេទទំព័រ'
+    URLSegment: 'កំណាត់ URL'
+    has_one_Parent: 'ទំព័រមេ'
+  VirtualPage:
+    PLURALNAME: 'ទំព័រដូច'
+    SINGULARNAME: 'ទំព័រដូច'

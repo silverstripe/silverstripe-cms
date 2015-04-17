@@ -1,0 +1,253 @@
+el:
+  AssetAdmin:
+    ADDFILES: 'Προσθήκη Αρχείων'
+    ActionAdd: 'Προσθήκη φακέλου'
+    AppCategoryArchive: Αρχείο
+    AppCategoryAudio: Ήχος
+    AppCategoryDocument: Έγγραφο
+    AppCategoryImage: Εικόνα
+    AppCategoryVideo: Βίντεο
+    BackToFolder: 'Πίσω στο φάκελο'
+    CREATED: Ημερομηνία
+    CurrentFolderOnly: 'Μόνο στον τρέχοντα φάκελο;'
+    DetailsView: Λεπτομέρειες
+    FILES: Αρχεία
+    FILESYSTEMSYNC: 'Συγχρονισμός αρχείων'
+    FILESYSTEMSYNCTITLE: 'Ενημέρωση των καταχωρήσεων της βάσης δεδομένων του CMS για αρχεία τα οποία υπάρχουν στο σύστημα. Χρήσιμο όταν οι νέα αρχεία έχουν φορτωθεί εκτός CMS, π.χ. μέσω FTP.'
+    FROMTHEINTERNET: 'Από το Internet'
+    FROMYOURCOMPUTER: 'Από τον υπολογιστή σας'
+    Filetype: 'Τύπος αρχείου'
+    ListView: 'Προβολή Λίστας'
+    NEWFOLDER: ΝέοςΦάκελος
+    SIZE: Μέγεθος
+    THUMBSDELETED: '{count} αχρησιμοποίητα εικονίδια έχουν διαγραφεί'
+    TreeView: 'Προβολή Δέντρου'
+    Upload: Μεταφόρτωση
+    MENUTITLE: Αρχεία
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Διαγραφή φακέλων'
+  AssetAdmin_Tools:
+    FILTER: Φίλτρο
+  AssetAdmin_left_ss:
+    GO: Μετάβαση
+  AssetTableField:
+    BACKLINKCOUNT: 'Χρησιμοποιείται σε:'
+    PAGES: σελίδες
+  BackLink_Button_ss:
+    Back: Πίσω
+  BrokenLinksReport:
+    Any: Οποιοδήποτε
+    BROKENLINKS: 'Αναφορά ανενεργών συνδέσμων'
+    CheckSite: 'Έλεγχος ιστοτόπου'
+    CheckSiteDropdownPublished: 'Δημοσιευμένος Ιστότοπος'
+    ColumnDateLastModified: 'Ημερομηνία τελευταίας τροποποίησης'
+    ColumnDateLastPublished: 'Ημερομηνία τελευταίας δημοσιεύσης'
+    ColumnProblemType: 'Τύπος προβλήματος'
+    ColumnURL: URL
+    HasBrokenFile: 'έχει ανενεργό αρχείο'
+    HasBrokenLink: 'έχει ανενεργό σύνδεσμο '
+    HasBrokenLinkAndFile: 'έχει ανενεργό σύνδεσμο και αρχείο'
+    HoverTitleEditPage: 'Επεξεργασία σελίδας'
+    PageName: 'Σελίδα'
+    ReasonDropdown: 'Πρόβλημα για έλεγχο'
+    ReasonDropdownBROKENFILE: 'Ανενεργό αρχείο '
+    ReasonDropdownBROKENLINK: 'Ανενεργός σύνδεσμος '
+    ReasonDropdownRPBROKENLINK: 'Η σελίδα ανακατεύθυνσης αντιστοιχεί σε ανύπαρκτη σελίδα'
+    ReasonDropdownVPBROKENLINK: 'Η εικονική σελίδα αντιστοιχεί σε ανύπαρκτη σελίδα'
+    RedirectorNonExistent: 'η σελίδα ανακατεύθυνσης αντιστοιχεί σε ανύπαρκτη σελίδα'
+    VirtualPageNonExistent: 'η εικονική σελίδα αντιστοιχεί σε ανύπαρκτη σελίδα'
+  CMSAddPageController:
+    Title: 'Προσθήκη σελίδας'
+  CMSBatchActions:
+    DELETED_PAGES: 'Διαγράφηκαν %d σελίδες απο τις δημοσιευμένες, με %d αποτυχίες'
+    PUBLISH_PAGES: Δημοσίευση
+  CMSMain:
+    AddNew: 'Προσθήκη σελίδας'
+    AddNewButton: 'Προσθήκη'
+    Cancel: Άκυρο
+    ChoosePageType: 'Επιλέξτε τύπο σελίδας'
+    Create: Δημιουργία
+    DELETEFP: Διαγραφή
+    EMAIL: Email
+    EditTree: 'Επεξεργασία Δένδρου'
+    NEWPAGE: 'Νέο {pagetype}'
+    PAGENOTEXISTS: 'Αυτή η σελίδα δεν υπάρχει'
+    PAGES: Σελίδες
+    PAGETYPEANYOPT: Οποιοδήποτε
+    PAGETYPEOPT: 'Τύπος Σελίδας'
+    PUBALLFUN: 'Λειτουργία "Δημοσίευση Όλων"'
+    PUBPAGES: 'Ολοκληρώθηκε: Δημοσίευση {count} σελίδων'
+    PageAdded: 'Η σελίδα δημιουργήθηκε με επιτυχία'
+    RESTORE: Επαναφορά
+    SAVE: Αποθήκευση
+    TabContent: Περιεχόμενο
+    TabHistory: Ιστορικό
+    TabSettings: Ρυθμίσεις
+    TreeFilteredClear: 'Καθαρισμός φίλτρου'
+    MENUTITLE: 'Επεξεργασία Σελίδας'
+  CMSMain_left_ss:
+    APPLY_FILTER: 'Εφαρμογή Φίλτρου'
+    RESET: Επαναφορά
+  CMSPageAddController:
+    ParentMode_child: 'Κάτω από άλλη σελίδα'
+    ParentMode_top: 'Επίπεδο κορυφής'
+    MENUTITLE: 'Προσθήκη σελίδας'
+  CMSPageHistoryController:
+    COMPAREVERSIONS: 'Σύγκριση Εκδόσεων'
+    COMPARINGVERSION: 'Σύγκριση Εκδόσεων {version1} και {version2}.'
+    REVERTTOTHISVERSION: 'Επαναφορά σε αυτήν την έκδοση'
+    SHOWVERSION: 'Προβολή Έκδοσης'
+    VIEW: προβολή
+    MENUTITLE: Ιστορικό
+  CMSPageHistoryController_versions_ss:
+    AUTHOR: Συγγραφέας
+    NOTPUBLISHED: 'δεν έχει δημοσιευθεί'
+    PUBLISHER: Εκδότης
+    UNKNOWN: Άγνωστο
+    WHEN: Όταν
+  CMSPagesController:
+    ListView: 'Προβολή Λίστας'
+    MENUTITLE: Σελίδες
+    TreeView: 'Προβολή Δέντρου'
+  CMSPagesController_Tools_ss:
+    FILTER: Φίλτρο
+  CMSSearch:
+    FILTERDATEFROM: Από
+    FILTERDATEHEADING: Ημερομηνία
+    FILTERDATETO: Έως
+    FILTERLABELTEXT: Περιεχόμενο
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Τροποποιημένες σελίδες'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Όλες οι σελίδες, συμπεριλαμβανομένων των διαγραμμένων'
+  CMSSiteTreeFilter_Search:
+    Title: 'Όλες οι σελίδες'
+  ContentController:
+    ARCHIVEDSITE: 'Προεπισκόπιση'
+    Email: Email
+    INSTALL_SUCCESS: 'Η Εγκατάσταση ήταν επιτυχής!'
+    LOGGEDINAS: 'Συνδεδεμένος ως'
+    LOGIN: Σύνδεση
+    LOGOUT: 'Αποσύνδεση'
+    NOTLOGGEDIN: 'Δεν έχετε συνδεθεί'
+    PUBLISHED: Δημοσιευμένο
+    Password: Κωδικός
+    VIEWPAGEIN: 'Προβολή Σελίδας σε:'
+  Folder:
+    UNUSEDTHUMBNAILSTITLE: 'Αχρησιμοποίητα εικονίδια'
+    UploadFilesButton: Μεταφόρτωση
+  LeftAndMain:
+    DELETED: Έγινε Διαγραφή.
+    PreviewButton: Προεπισκόπιση
+    SAVEDUP: Έγινε Αποθήκευση.
+    SearchResults: 'Αναζήτηση Αποτελεσμάτων'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'Πρόσβαση στο CMS'
+  Permissions:
+    CONTENT_CATEGORY: 'Δικαιώματα περιεχόμενου'
+    PERMISSIONS_CATEGORY: 'Ρόλοι και δικαιώματα'
+  RedirectorPage:
+    DESCRIPTION: 'Κάνει ανακατεύθυνση σε μια διαφορετική εσωτερική σελίδα'
+    HEADER: 'Αυτή η σελίδα θα ανακατευθύνει τους χρήστες σε μια άλλη σελίδα'
+  ReportAdmin:
+    ReportTitle: Τίτλος
+  SearchForm:
+    GO: Μετάβαση
+    SEARCH: Αναζήτηση
+    SearchResults: 'Αποτελέσματα Αναζήτησης'
+  SideReport:
+    BrokenLinksGroupTitle: 'Αναφορές ανενεργών συνδέσμων'
+    ContentGroupTitle: 'Αναφορές περιεχομένου'
+    EMPTYPAGES: 'Σελίδες χωρίς περιεχόμενο'
+    OtherGroupTitle: Άλλο
+  SilverStripeNavigator:
+    ARCHIVED: Αρχειοθετημένο
+  SilverStripeNavigatorLinkl:
+    CloseLink: Κλείσιμο
+  SiteConfig:
+    PLURALNAME: 'Ρύθμισεις Ιστότοπου'
+    SINGULARNAME: 'Ρύθμιση Ιστότοπου'
+    SITENAMEDEFAULT: 'Όνομα Ιστότοπου'
+    SITETITLE: 'Τίτλος ιστοτόπου'
+    TABACCESS: Πρόσβαση
+    TABMAIN: Βασικό
+    THEME: Θεματική παραλλαγή
+    TOPLEVELCREATE: 'Ποιος μπορεί να δημιουργεί σελίδες στην ρίζα του ιστοτόπου;'
+    VIEWHEADER: 'Ποιος μπορεί να βλέπει σελίδες σε αυτόν τον ιστότοπο;'
+  SiteTree:
+    ACCESSANYONE: Οποιοσδήποτε
+    ACCESSHEADER: 'Ποιος μπορεί να δεί αυτή τη σελίδα;'
+    ACCESSLOGGEDIN: 'Συνδεδεμένοι χρήστες'
+    ADDEDTODRAFTHELP: 'Η σελίδα δεν έχει δημοσιευθεί ακόμη'
+    ALLOWCOMMENTS: 'Να επιτρέπονται σχόλια σε αυτή τη σελίδα;'
+    BUTTONPUBLISHED: Δημοσιευμένο
+    BUTTONSAVED: Αποθηκεύτηκε
+    BUTTONSAVEPUBLISH: 'Αποθήκευση & δημοσίευση'
+    BUTTONUNPUBLISHDESC: 'Αφαίρεση αυτής της σελίδας απο τις δημοσιευμένες'
+    Comments: Σχόλια
+    Content: Περιεχόμενο
+    DEFAULTABOUTTITLE: 'Ποιοί είμαστε'
+    DEFAULTCONTACTTITLE: 'Επικοινωνία'
+    DEFAULTHOMETITLE: Αρχική
+    DELETEDPAGEHELP: 'Η σελίδα δεν είναι πλέον δημοσιευμένη'
+    DELETEDPAGESHORT: Έγινε Διαγραφή
+    DESCRIPTION: 'Σελίδα γενικού περιεχομένου'
+    DependtPageColumnLinkType: 'Τύπος συνδέσμου'
+    DependtPageColumnURL: Διεύθυνση URL
+    EDITHEADER: 'Ποιος μπορεί να επεξεργαστεί αυτή τη σελίδα;'
+    EDITONLYTHESE: 'Μόνο αυτοί οι χρήστες (επιλέξτε από τη λίστα)'
+    EDITORGROUPS: 'Ομάδες Συντακτών'
+    Editors: 'Ομάδες Συντακτών'
+    GroupPlaceholder: 'Κάντε κλικ για επιλογή ομάδας'
+    HASBROKENLINKS: 'Αυτή η σελίδα έχει ανενεργούς συνδέσμους '
+    HTMLEDITORTITLE: Περιεχόμενο
+    LASTPUBLISHED: 'Τελευταία δημοσίευση'
+    LASTSAVED: 'Τελευταία αποθήκευση'
+    LASTUPDATED: 'Τελευταία Ενημέρωση'
+    MENUTITLE: 'Επίπεδο πλοίγησης'
+    METADESC: 'Μετα-Περιγραφή'
+    MODIFIEDONDRAFTHELP: 'Η σελίδα έχει μη δημοσιευμένες αλλαγές'
+    MetadataToggle: Μετα-δεδομένα
+    MoreOptions: 'Περισσότερες επιλογές'
+    NOTPUBLISHED: 'Δεν έχει δημοσιευθεί'
+    PAGELOCATION: 'Θέση σελίδας'
+    PAGETITLE: 'Όνομα σελίδας'
+    PAGETYPE: 'Τύπος σελίδας'
+    PARENTTYPE: 'Θέση σελίδας'
+    PLURALNAME: Σελίδες
+    REORGANISE_DESCRIPTION: 'Αλλαγή δομής του ιστοτόπου '
+    SHOWINMENUS: 'Να φαίνεται στα μενού;'
+    SHOWINSEARCH: 'Να φαίνεται στην αναζήτηση'
+    SINGULARNAME: Σελίδα
+    TABBEHAVIOUR: Συμπεριφορά
+    TABCONTENT: 'Κυρίως Περιεχόμενο'
+    TABDEPENDENT: 'Εξαρτώμενες σελίδες '
+    URLSegment: 'Τμήμα διεύθυνσης URL'
+    VIEW_ALL_DESCRIPTION: 'Δείτε κάθε σελίδα'
+    Visibility: Ορατότητα
+    has_one_Parent: 'Γονική Σελίδα'
+  SiteTreeURLSegmentField:
+    EMPTY: 'Παρακαλώ εισάγεται ένα τμήμα διεύθυνσης URL ή πατήστε άκυρο'
+  URLSegmentField:
+    Cancel: Άκυρο
+    Edit: Επεξεργασία
+    OK: ΟΚ
+  ViewArchivedEmail_ss:
+    CANACCESS: 'Μπορείτε να δείτε τον αρχειοθετημένο ιστότοπο εδώ:'
+    HAVEASKED: 'Επιθυμείται να εμφανιστεί το περιεχόμενο του ιστοχώρου σας την '
+  VirtualPage:
+    CHOOSE: 'Συνδεδεμένη σελίδα'
+    DESCRIPTION: 'Εμφανίζει το περιεχόμενο μιας άλλης σελίδας'
+    EditLink: επεξεργασία
+    HEADER: 'Αυτή είναι μια εικονική σελίδα'
+    SINGULARNAME: 'Εικονική Σελίδα'
+  CMSFileAddController:
+    MENUTITLE: Αρχεία
+  CMSPageEditController:
+    MENUTITLE: 'Επεξεργασία Σελίδας'
+  CMSPageSettingsController:
+    MENUTITLE: 'Επεξεργασία Σελίδας'
+  CMSSettingsController:
+    MENUTITLE: Ρυθμίσεις
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Διεγραμμένες σελίδες'

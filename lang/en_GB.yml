@@ -1,0 +1,25 @@
+en_GB:
+  CMSMain:
+    DELETE: 'Delete from the draft site'
+    DELETEFP: Delete from the published site
+    PUBALLFUN2: "Pressing this button will do the equivalent of going to every page and pressing \"publish\". It's intended to be used after there have been massive edits of the content, such as when the site was\nfirst built.\n"
+  ContentController:
+    UnableDeleteInstall: 'Unable to delete installation files. Please delete the files below manually.'
+  ErrorPage:
+    401: '401 - Unauthorised'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Sorry, there was a problem handling your request.</p>'
+    PLURALNAME: 'Error Pages'
+  RedirectorPage:
+    DESCRIPTION: 'Redirects to another page'
+    PLURALNAME: 'Redirector Pages'
+  SiteTree:
+    DEFAULTHOMECONTENT: '<p>Welcome to SilverStripe! This is the default home page. You can edit this page by opening <a href="admin/">the CMS</a>. You can now access the <a href="http://doc.silverstripe.org">developer documentation</a>, or begin <a href="http://doc.silverstripe.org/doku.php?id=tutorials">the tutorials.</a></p>'
+    DEPENDENT_NOTE: 'The following pages depend on this page. This includes virtual pages, redirector pages and pages with content links.'
+    METADESC: 'Description'
+    METADESCHELP: 'Search engines use this content when displaying search results (although it will not influence their ranking).'
+    TABBEHAVIOUR: Behaviour
+    TABCONTENT: 'Content'
+  SiteTreeURLSegmentField:
+    HelpChars: 'Special characters are automatically converted or removed.'
+  VirtualPage:
+    PLURALNAME: 'Virtual Pages'

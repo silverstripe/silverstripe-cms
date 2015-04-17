@@ -1,0 +1,37 @@
+ne:
+  ErrorPage:
+    CODE: 'त्रुटी सङ्केत '
+  RedirectorPage:
+    HASBEENSETUP: 'कुनै पनि पुनर्निर्देशनबिना नै एउटा पुनर्निदेशन पृष्ठ सेटअप गरियो । '
+    HEADER: 'यो पेजले प्रयोगकतालाई अर्को पेजमा लैजान्छ'
+    OTHERURL: 'अर्को वेबसाईटको यू.र्.ल्'
+    REDIRECTTO: 'अर्को पेजमा लैजाउ'
+    REDIRECTTOEXTERNAL: 'अर्को वेबसाईट'
+    REDIRECTTOPAGE: 'तपाईंको वेबसाईटमा एउटा पेज'
+    YOURPAGE: 'तपाईंको वेबसाईटमा एउटा पेज'
+  SiteTree:
+    ACCESSANYONE: जोकोहिले
+    ACCESSHEADER: 'मेरो सईटमा कसले यो पजे हेर्न सक्छ ? '
+    ACCESSLOGGEDIN: 'भित्र छिरेक प्रयोगकर्तहरु'
+    ACCESSONLYTHESE: 'यि मान्छे मात्र (लिस्टबाट छान्)'
+    ALLOWCOMMENTS: 'यो पजेमा प्रतिक्रिया लेखन् दिनुहोस् ?'
+    BUTTONCANCELDRAFT: 'द्राफ्ट्रमा भएका परिवर्तनहरु क्यान्सिल गर्नुहोस् '
+    BUTTONCANCELDRAFTDESC: 'द्राफ्ट्र हटाउनुहोस् र प्रकाशित पेजमा जानुहोस्'
+    BUTTONUNPUBLISH: प्रकाशित नगरनुहोस्
+    BUTTONUNPUBLISHDESC: 'प्रकाशित साईटबाट यो पेजलाई हटाउनुहोस्'
+    EDITANYONE: 'जोकोहिले जो सि.म्.एस् भित्र छिरेका छन्'
+    EDITHEADER: 'कसले यो CMS भित्र मिलाउन सक्छ ?'
+    EDITONLYTHESE: 'यि मान्छे मात्र (लिस्टबाट छान्)'
+    HASBROKENLINKS: 'यो पजेमा टुटेका लिन्कहरु छन् ।'
+    HTMLEDITORTITLE: सामाग्री
+    MENUTITLE: 'अबलोकन नाम '
+    METADESC: 'विवरण'
+    PAGETITLE: 'पेजको नाम'
+    PAGETYPE: 'पेज किसिम'
+    SHOWINMENUS: 'मेनुमा देखाउनुहोस् ? '
+    SHOWINSEARCH: 'खोजिमा देखाउनुहोस् ?'
+    TABBEHAVIOUR: बनी
+    TABCONTENT: 'सामाग्री'
+    TOPLEVEL: 'साईट सामाग्री (उच्च स्तान)'
+  VirtualPage:
+    HEADER: 'यो भरचुअल पेज हो'

@@ -1,0 +1,47 @@
+vi_VN:
+  CMSMain:
+    PAGENOTEXISTS: 'Không tìm thấy trang này.'
+    SAVE: Lưu
+  ErrorPage:
+    CODE: 'Mã lỗi'
+    DEFAULTERRORPAGECONTENT: '<p>Bạn truy cập vào một trang không tồn tại</p><p>Xin vui lòng kiểm tra lại đường dẩn hoặc quay lại trang chủ</p>'
+    DEFAULTERRORPAGETITLE: 'Không tìm thấy'
+  RedirectorPage:
+    HASBEENSETUP: 'Một trang di chuyển chưa cấu hình đích di chuyển đến.'
+    HEADER: 'Trang này sẽ di chuyển người dùng đến một trang khác'
+    OTHERURL: 'Đường dẩn website khác'
+    REDIRECTTO: 'Di chuyển đến'
+    REDIRECTTOEXTERNAL: 'Website khác'
+    REDIRECTTOPAGE: 'Một trang trên website'
+    YOURPAGE: 'Trang'
+  SiteTree:
+    ACCESSANYONE: Bất cứ ai
+    ACCESSHEADER: 'Ai có thể xem trang này ?'
+    ACCESSLOGGEDIN: 'Người dùng đã đăng nhập'
+    ACCESSONLYTHESE: 'Chỉ những người sau đây (chọn từ danh sách)'
+    ALLOWCOMMENTS: 'Cho phép bình luận trên trang này?'
+    BUTTONCANCELDRAFT: 'Hủy thay đổi nháp'
+    BUTTONCANCELDRAFTDESC: 'Xóa khỏi mục nháp và khôi phục lại trang gốc'
+    BUTTONUNPUBLISH: Ẩn
+    BUTTONUNPUBLISHDESC: 'Xóa trang này khỏi trang hoạt động'
+    DEFAULTABOUTCONTENT: '<p>Bạn có thể điền vào thông tin trang này với nội dung của bạn, hoặc xóa trang này và tạo một trang riêng phù hợp hơn.<br /></p>'
+    DEFAULTABOUTTITLE: 'Giới thiệu'
+    DEFAULTCONTACTCONTENT: '<p>Bạn có thể điền vào thông tin trang này với nội dung của bạn, hoặc xóa trang này và tạo một trang riêng phù hợp hơn.<br /></p>'
+    DEFAULTCONTACTTITLE: 'Liên hệ'
+    DEFAULTHOMETITLE: Trang chủ
+    EDITANYONE: 'Bất cứ ai có thể đăng nhập vào phần quản lý'
+    EDITHEADER: 'Ai có thể thay đổi trang này ?'
+    EDITONLYTHESE: 'Chỉ những người sau đây (chọn từ danh sách)'
+    HASBROKENLINKS: 'Trang này có liên kết hỏng.'
+    HTMLEDITORTITLE: Nội dung
+    MENUTITLE: 'Nhãn'
+    METADESC: 'Mô tả'
+    METAEXTRA: 'Thẻ thông tin bổ sung'
+    PAGETITLE: 'Tên trang'
+    PAGETYPE: 'Loại'
+    SHOWINMENUS: 'Hiển thị trên menu?'
+    SHOWINSEARCH: 'Hiển thị khi tìm kiếm?'
+    TABBEHAVIOUR: Hoạt động
+    TABCONTENT: 'Thông tin'
+  ViewArchivedEmail_ss:
+    HAVEASKED: 'Bạn được mời để xem nội dung của web chúng tôi trên'

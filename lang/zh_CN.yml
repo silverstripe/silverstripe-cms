@@ -1,0 +1,74 @@
+zh_CN:
+  AssetAdmin:
+    NEWFOLDER: 新建文件夹
+  AssetAdmin_left_ss:
+    GO: 执行
+  CMSMain:
+    DELETE: '从测试网站中删除'
+    EMAIL: 电子邮件
+    PAGENOTEXISTS: '该网页不存在'
+    PUBALLCONFIRM: '请发布该站的每一网页，这样，预备发布站上的内容就会复制到正式发布站上'
+    PUBALLFUN: '“全部发布“功能'
+    PUBALLFUN2: "按下这一按键将等同于逐一发布每一网页。此功能适用于被大量编辑过的网页，如在网站被第一次使用时。"
+    REMOVEDPAGEFROMDRAFT: '已从测试站点删除 ''%s'''
+    ROLLBACK: '恢复到这一版本'
+    SAVE: 保存
+  CMSSiteTreeFilter_DeletedPages:
+    Title: '所有页面(包含已删除)'
+  ErrorPage:
+    CODE: '错误代码'
+  Folder:
+    AddFolderButton: '添加文件夹'
+    DELETEUNUSEDTHUMBNAILS: '删除未使用缩略图'
+    UNUSEDFILESTITLE: '未使用文件'
+    UNUSEDTHUMBNAILSTITLE: '未使用缩略图'
+    UploadFilesButton: 上传
+  RedirectorPage:
+    DESCRIPTION: '跳转至其他的内部页面'
+    HASBEENSETUP: '重导网页被生成，却没有什么地方由它来重导。'
+    HEADER: '该页会将用户重新导向另一网页'
+    OTHERURL: '另一网站的URL'
+    REDIRECTTO: '重新导向'
+    REDIRECTTOEXTERNAL: '另一网站'
+    REDIRECTTOPAGE: '您网站中的一个网页'
+    YOURPAGE: '您网站中的网页'
+  SideReport:
+    EMPTYPAGES: '空白页'
+    LAST2WEEKS: '在过去2周内编辑过的网页'
+  SilverStripeNavigatorLink:
+    ShareLink: '分享链接'
+  SilverStripeNavigatorLinkl:
+    CloseLink: 关闭
+  SiteTree:
+    ACCESSANYONE: 任何人
+    ACCESSHEADER: '在我的网站上，谁可以浏览此页？'
+    ACCESSLOGGEDIN: '已登录的用户'
+    ACCESSONLYTHESE: '只有这些人（请从下列清单中选择）'
+    ALLOWCOMMENTS: '是否允许对次页进行评论？'
+    BUTTONCANCELDRAFT: '取消草稿的改动'
+    BUTTONCANCELDRAFTDESC: '将您的草稿恢复到目前正式发布的版本'
+    BUTTONUNPUBLISH: 撤消发布
+    BUTTONUNPUBLISHDESC: '将此页从正式发布站删除'
+    DEFAULTABOUTTITLE: '关于我们'
+    EDITANYONE: '任何可以登录CMS的人'
+    EDITHEADER: '谁能在CMS中编辑此页？'
+    EDITONLYTHESE: '只有这些人（请从下列清单中选择）'
+    HASBROKENLINKS: '该页有失效链接。'
+    HTMLEDITORTITLE: 内容
+    INHERIT: '从父页面继承'
+    MENUTITLE: '导航标签'
+    METADESC: '网页描述标签'
+    METAEXTRA: '自定义Meta标签'
+    PAGETITLE: '网页名称'
+    PAGETYPE: '网页类型'
+    SHOWINMENUS: '是否出现在菜单中？'
+    SHOWINSEARCH: '是否包括在搜索结果中？'
+    TABBEHAVIOUR: 行为特点
+    TABCONTENT: '内容'
+    TOPLEVEL: '网站内容（顶层）'
+  ViewArchivedEmail_ss:
+    CANACCESS: '您可通过这个链接进入已归挡的网页：'
+    HAVEASKED: '在%s,您要求浏览我们网站'
+  VirtualPage:
+    DESCRIPTION: '显示其他页的内容'
+    HEADER: '这是一个虚拟页'

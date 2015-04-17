@@ -1,0 +1,361 @@
+th:
+  AssetAdmin:
+    ADDFILES: 'เพิ่มไฟล์'
+    ActionAdd: 'เพิ่มโฟลเดอร์'
+    AppCategoryArchive: รายการ
+    AppCategoryAudio: ไฟล์เสียง
+    AppCategoryDocument: เอกสาร
+    AppCategoryFlash: แฟลช
+    AppCategoryImage: รูปภาพ
+    AppCategoryVideo: วีดีโอ
+    BackToFolder: 'ย้อนกลับไปที่โฟลเดอร์'
+    CREATED: วันที่
+    CurrentFolderOnly: 'จำกัดเฉพาะโฟลเดอร์นี้?'
+    DetailsView: รายละเอียด
+    FILES: ไฟล์
+    FILESYSTEMSYNC: 'ผสานไฟล์'
+    FILESYSTEMSYNCTITLE: 'อัพเดทรายการไฟลในฐานข้อมูล CMS ในระบบไฟล์ มีประโยชน์สำหรับการอัพโหลดไฟล์ใหม่นอกระบบ CMS เช่น ผ่านทาง FTP'
+    FROMTHEINTERNET: 'จากอินเทอร์เน็ต'
+    FROMYOURCOMPUTER: 'จากเครื่องคอมพิวเตอร์ของคุณ'
+    Filetype: 'ชนิดของไฟล์'
+    ListView: 'มุมมองแบบแสดงรายการ'
+    NEWFOLDER: สร้างโฟลเดอร์ใหม่
+    SIZE: ขนาด
+    THUMBSDELETED: '{count} รูปย่อที่ไม่ได้ถูกใช้งานได้ถูกลบทิ้งแล้ว'
+    TreeView: 'มุมมองแบบ Tree'
+    Upload: อัพโหลด
+    MENUTITLE: ไฟล์
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'ลบโฟลเดอร์'
+  AssetAdmin_Tools:
+    FILTER: ตัวกรองข้อมูล
+  AssetAdmin_left_ss:
+    GO: ไป
+  AssetTableField:
+    BACKLINKCOUNT: 'ถูกใช้งานเมื่อ:'
+    PAGES: หน้า
+  BackLink_Button_ss:
+    Back: ย้อนกลับ
+  BrokenLinksReport:
+    Any: ใดๆก็ได้
+    BROKENLINKS: 'รายงานลิงค์เสีย'
+    CheckSite: 'ตรวจเว็บไซต์'
+    CheckSiteDropdownDraft: 'เว็บไซต์ฉบับร่าง'
+    CheckSiteDropdownPublished: 'เว็บไซต์ที่เผยแพร่แล้ว'
+    ColumnDateLastModified: 'วันที่แก้ไขล่าสุด'
+    ColumnDateLastPublished: 'วันที่เผยแพร่ล่าสุด'
+    ColumnProblemType: 'ประเภทปัญหา'
+    HasBrokenFile: 'มีไฟล์เสีย'
+    HasBrokenLink: 'มีลิงค์เสีย'
+    HasBrokenLinkAndFile: 'มีลิงค์เสียและไฟล์เสีย'
+    HoverTitleEditPage: 'แก้ไขหน้าเว็บ'
+    PageName: 'ชื่อของหน้าเว็บ'
+    ReasonDropdown: 'ปัญหาที่ต้องตรวจสอบ'
+    ReasonDropdownBROKENFILE: 'ไฟล์เสีย'
+    ReasonDropdownBROKENLINK: 'ลิงค์เสีย'
+    ReasonDropdownRPBROKENLINK: 'หน้าเว็บเปลี่ยนเส้นทางชี้ไปที่หน้าเว็บที่ไม่มีอยู่ในระบบ'
+    ReasonDropdownVPBROKENLINK: 'หน้าเว็บจำลองชี้ไปยังหน้าเว็บที่ไม่มีอยู่ในระบบ'
+    RedirectorNonExistent: 'หน้าเว็บเปลี่ยนเส้นทางชี้ไปที่หน้าเว็บที่ไม่มีอยู่ในระบบ'
+    VirtualPageNonExistent: 'หน้าเว็บจำลองชี้ไปที่หน้าเว็บที่ไม่มีอยู่ในระบบ'
+  CMSAddPageController:
+    Title: 'เพิ่มหน้า'
+  CMSBatchActions:
+    DELETED_DRAFT_PAGES: 'ลบ %d หน้าจากเว็บไซต์ฉบับร่างแล้ว, ล้มเหลว %d'
+    DELETED_PAGES: 'ลบ %d หน้าจากเว็บไซต์ที่เผยแพร่อยู่แล้ว ล้มเหลว %d'
+    DELETE_DRAFT_PAGES: 'ลบออกจากเว็บไซต์ฉบับร่าง'
+    DELETE_PAGES: 'ลบออกจากเว็บไซต์ที่เผยแพร่อยู่'
+    PUBLISHED_PAGES: 'เผยแพร่แล้ว %d หน้า, ล้วเหลว %d'
+    PUBLISH_PAGES: เผยแพร่
+    UNPUBLISHED_PAGES: 'ยกเลิกการเผยแพร่หน้าเว็บแล้ว %d หน้า'
+    UNPUBLISH_PAGES: ยกเลิกการเผยแพร่
+  CMSMain:
+    ACCESS: 'เข้าถึงเซ็กชั่น ''{title}'''
+    ACCESS_HELP: 'อนุญาตให้เปิดดูส่วนของเซ็กชั่นที่บรรจุรายการหน้าเว็บแบบทรีและเนื้อหาได้ สิทธิ์ในการเปิดดูและแก้ไขสามารถจัดการได้ผ่านทางหน้าเว็บทีระบุอยู่ในเมนูแบบดรอปดาวน์ เช่นเดียวกับ "สิทธิ์อนุญาตของเนื้อหา" ที่แยกออกมาต่างหากด้วยเช่นกัน'
+    AddNew: 'เพิ่มหน้าใหม่'
+    AddNewButton: 'เพิ่มใหม่'
+    ChoosePageParentMode: 'เลือกว่าต้องการสร้างหน้าเว็บนี้ไว้ที่ไหน'
+    ChoosePageType: 'เลือกประเภทของหน้าเว็บ'
+    Create: สร้าง
+    DELETE: 'ลบออกจากเว็บไซต์ฉบับร่าง'
+    DELETEFP: ลบ
+    DESCREMOVED: 'และ {count} รายการลูก'
+    EMAIL: อีเมล
+    EditTree: 'แก้ไขรายการแบบ Tree'
+    ListFiltered: 'แสดงรายการตามตัวกรองข้อมูล'
+    NEWPAGE: 'ใหม่ {pagetype}'
+    PAGENOTEXISTS: 'ไม่มีหน้านี้อยู่'
+    PAGES: หน้า
+    PAGETYPEANYOPT: ประเภทใดก็ได้
+    PAGETYPEOPT: 'ประเภทหน้าเว็บ'
+    PUBALLCONFIRM: 'กรุณาเผยแพร่หน้าเว็บทุกหน้าในเว็บไซต์, คัดลอกเนื้อหาลงไปที่'
+    PUBALLFUN: 'ฟังก์ชั่นการทำงาน "เผยแพร่ทั้งหมด"'
+    PUBALLFUN2: "การกดปุ่มนี้จะเทียบเท่ากับการไปที่หน้าต่างๆทุกๆหน้าแล้วกด \"เผยแพร่\".  It's\nปุ่มดังกล่าวมีไว้ด้วยความตั้งใจที่ต้องการให้นำไปใช้กับการแก้ไขเนื้อหาเป็นจำนวนมาก เช่น เมื่อเว็บไซต์\nถูกสร้างขึ้นเป็นครั้งแรก."
+    PUBPAGES: 'เผยแแพร่หน้าเว็บแล้ว {count} หน้า'
+    PageAdded: 'หน้าเว็บที่สร้างเสร็จเรียบร้อยแล้ว'
+    REMOVEDPAGE: 'ลบ ''{title}'' ออกจากเว็บไซต์ที่เผยแพร่อยู่แล้ว'
+    REMOVEDPAGEFROMDRAFT: 'ลบ ''%s'' ออกจากเว็บไซต์ฉบับร่างแล้ว'
+    RESTORE: คืนค่า
+    RESTORED: 'เรียกคืนค่า ''{title}'' เสร็จเรียบร้อยแล้ว'
+    ROLLBACK: 'ย้อนกลับไปที่รุ่นนี้'
+    SAVE: บันทึก
+    TabContent: เนื้อหา
+    TabHistory: ประวัติย้อนหลัง
+    TabSettings: ตั้งค่า
+    TreeFiltered: 'แสดงรายการแบบ Tree ตามตัวกรองข้อมูล'
+    TreeFilteredClear: 'ล้างค่าตัวกรองข้อมูล'
+    MENUTITLE: 'แก้ไขหน้าเว็บ'
+  CMSMain_left_ss:
+    APPLY_FILTER: 'นำตัวกรองข้อมูลไปใช้งาน'
+    RESET: รีเซ็ต
+  CMSPageAddController:
+    ParentMode_child: 'อยู่ใต้หน้าอื่นๆ'
+    ParentMode_top: 'ระดับสูงสุด'
+    MENUTITLE: 'เพิ่มหน้า'
+  CMSPageHistoryController:
+    COMPAREMODE: 'โหมดเปรียบเทียบ (เลือกสองรายการ)'
+    COMPAREVERSIONS: 'เปรียบเทียบรุ่น'
+    COMPARINGVERSION: 'กำลังเปรียบเทียบรุ่น {version1} และ {version2}.'
+    REVERTTOTHISVERSION: 'ย้อนกลับไปที่รุ่นนี้'
+    SHOWUNPUBLISHED: 'แสดงรุ่นที่ระงับการเผยแพร่ไว้'
+    SHOWVERSION: 'แสดงข้อมูลรุ่น'
+    VIEW: มุมมอง
+    VIEWINGVERSION: 'ขณะนี้กำลังเปิดดูในรุ่น {version}.'
+    MENUTITLE: ประวัติย้อนหลัง
+  CMSPageHistoryController_versions_ss:
+    AUTHOR: ผู้แต่ง
+    NOTPUBLISHED: 'ยังไม่ได้เผยแพร่'
+    PUBLISHER: ผู้เผยแพร่
+    UNKNOWN: ไม่ทราบ
+    WHEN: เมื่อ
+  CMSPagesController:
+    GalleryView: 'มุมมองแบบแกลอรี่'
+  CMSPagesController_ContentToolbar_ss:
+    MULTISELECT: การเลือกพร้อมกันหลายรายการ
+  CMSPagesController_Tools_ss:
+    FILTER: ตัวกรองข้อมูล
+  CMSSearch:
+    FILTERDATEHEADING: วันที่
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'หน้าที่ถูกเปลี่ยนแปลง'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'ทุกหน้า รวมทั้งหน้าที่ถูกลบไปแล้วด้วย'
+  CMSSiteTreeFilter_Search:
+    Title: 'หน้าทั้งหมด'
+  ContentControl:
+    NOTEWONTBESHOWN: 'หมายเหตุ: ข้อความนี้จะไม่ถูกนำไปแสดงให้ผู้เยี่ยมชมเว็บไซต์ของคุณเห็น'
+  ContentController:
+    ARCHIVEDSITE: 'รุ่นสำหรับดูตัวอย่าง'
+    ARCHIVEDSITEFROM: 'เว็บไซต์ที่จัดเก็บไว้ถาวรจาก'
+    DRAFTSITE: 'เว็บไซต์ฉบับร่าง'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'คุณต้องเข้าสู่ระบบด้วยรหัสผ่าน CMS ของคุณ หากต้องการเปิดดูฉบับร่าง หรือเนื้อหาย้อนหลัง.  <a href="%s">คลิกที่นี่เพื่อย้อนกลับไปที่เว็บไซต์ที่เผยแพร่อยู่.</a>'
+    Email: อีเมล
+    INSTALL_SUCCESS: 'การติดตั้งเสร็จสมบูรณ์'
+    InstallFilesDeleted: 'ไฟล์ติดตั้งได้ถูกลบทิ้งเรียบร้อยแล้ว'
+    InstallSecurityWarning: 'ด้วยเหตุผลด้านการรักษาความปลอดภัย คุณควรลบไฟล์ติดตั้งทันที เว้นเสียแต่ว่าคุณกำลังวางแผนที่จะติดตั้งซ้ำใหม่ในภายหลัง (<em>จำเป็นต้องเข้าสู่ระบบในส่วนของผู้ดูแล, กรุณาดูได้จากด้านบน</em>). เว็บเซิร์ฟเวอร์ขณะนี้จำเป็นต้องได้รับการกำหนดสิทธิ์ให้สามารถเข้าถึงเพื่อเขียนข้อมูลที่โฟลเดอร์ "assets" ได้ด้วยเช่นกัน คุณสามารถลบสิทธิ์การเข้าถึงเพื่อเขียนข้อมูลจากโฟลเดอร์อื่นๆทั้งหมดได้ด้วยเช่นกัน. <a href="{link}" style="text-align: center;">คลิกที่นี่เพื่อลบไฟล์ติดตั้งออก.</a>'
+    InstallSuccessCongratulations: 'SilverStripe ได้รับการติดตั้งเรียบร้อยแล้ว!'
+    LOGGEDINAS: 'เข้าสู่ระบบในชื่อ'
+    LOGIN: เข้าสู่ระบบ
+    LOGOUT: 'ออกจากระบบ'
+    NOTLOGGEDIN: 'ยังไม่ได้เข้าสู่ระบบ'
+    PUBLISHEDSITE: 'เว็บไซต์ที่เผยแพร่อยู่'
+    Password: รหัสผ่าน
+    PostInstallTutorialIntro: 'เว็บไซต์นี้เป็นรุ่นอย่างง่ายของเว็บไซต์ที่สร้างจากรุ่น SiverStripe 3 หากต้องการขยายขีดความสามารถ กรุณาเข้าไปที่ {link}'
+    UnableDeleteInstall: 'ไม่สามารถลบไฟล์ติดตั้งได้ กรุณาลบไฟล์ดังกล่าวด้านล่างด้วยตนเอง'
+    VIEWPAGEIN: 'เปิดดูหน้าเว็บใน:'
+  ErrorPage:
+    400: '400 - ข้อความร้องขอที่ส่งมามีความผิดพลาดทางไวยากรณ์ หรือไม่สามารถทำตามการร้องขอนั้นได้'
+    401: '401 - ไม่สามารถยืนยันตัวบุคคลได้'
+    403: '403 - ไม่สามารถดำเนินการตามที่ร้องขอได้'
+    404: '404 - ไม่พบทรัพยากรที่ร้องขอบนเครื่องแม่ข่าย'
+    405: '405 - ไม่อนุญาตให้ใช้รูปแบบวิธีการดังกล่าวได้'
+    406: '406 - ไม่สามารถยอมรับให้ดำเนินการตามที่ร้องขอได้'
+    407: '407 - จำเป็นต้องมีการพิสูจน์ตัวจริงบนพร็อกซีก่อน'
+    408: '408 - เครื่องให้บริการรอรับข้อความร้องขอจนหมดเวลา'
+    409: '409 - การร้องขอนั้นไม่สามารถประมวลผลได้ เนื่องจากเกิดข้อขัดแย้งในข้อความร้องขอ'
+    410: '410 - ทรัพยากรที่ร้องขอไม่มีอยู่ และจะไม่กลับมามีอีกต่อไป'
+    411: '411 - ข้อความร้องขอไม่ได้ระบุขนาดของเนื้อหามาในส่วนหัว '
+    412: '412 - เครื่องแม่ข่ายไม่สามารถทำตามเงื่อนไขอย่างใดอย่างหนึ่งที่ให้ไว้โดยผู้ทำการร้องขอได้'
+    413: '413 - ทรัพยากรที่ร้องขอใหญ่เกินกว่าที่จะส่งด้วยโพรโทคอลปัจจุบันได้'
+    414: '414 - ตัวระบุแหล่งทรัพยากรสากลยาวเกินกว่าที่เครื่องให้บริการจะประมวลผล'
+    415: '415 - ข้อความร้องขอไม่ได้ระบุแบบชนิดสื่ออินเทอร์เน็ตที่เครื่องแม่ข่ายหรือทรัพยากรนั้นรองรับ'
+    416: '416 - เครื่องลูกข่ายร้องขอเนื้อหาบางส่วนของไฟล์ แต่เครื่องแม่ข่ายไม่สามารถจัดหาช่วงข้อมูลนั้นได้ '
+    417: '417 - ส่วนหัว Expect ที่ส่งมาจากเครื่องลูกข่าย ยังไม่เพียงพอต่อความต้องการของเครื่องให้บริการ'
+    500: '500 - พบข้อผิดพลาดภายในเซิร์ฟเวอร์'
+    501: '501 - ยังไม่ได้ดำเนินการ'
+    502: '502 - เครื่องแม่ข่ายกำลังทำหน้าที่เป็นเกตเวย์หรือพร็อกซี และได้รับข้อความตอบรับที่ผิดพลาดจากเครื่องให้บริการเบื้องหลัง'
+    503: '503 - เครื่องแม่ข่ายยังไม่ให้บริการในปัจจุบัน '
+    504: '504 - หมดเวลารอรับข้อมูลจากเครื่องแม่ข่ายที่กำลังทำหน้าที่เป็นเกตเวย์หรือพร็อกซี่'
+    505: '505 - เครื่องแม่ข่ายไม่รองรับรุ่นของเอชทีทีพีที่ใช้ในข้อความร้องขอ'
+    CODE: 'รหัสข้อผิดพลาด'
+    DEFAULTERRORPAGECONTENT: '<p>ขออภัย, แต่คุณดูเหมือนกำลังพยายามที่จะเข้าถึงหน้าเว็บที่ไม่มีอยู่ในระบบ.</p><p>กรุณาตรวจสอบการสะกดคำของ URL ของหน้าเว็บที่คุณพยายามจะเข้าถึงแล้วลองใหม่อีกครั้ง.</p>'
+    DEFAULTERRORPAGETITLE: 'ไม่พบหน้าที่ต้องการ'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>ขออภัย, เกิดข้อผิดพลาดบางประการในการจัดการตามคำร้องขอของคุณ</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'เซิร์ฟเวอร์เกิดข้อผิดพลาด'
+    DESCRIPTION: 'กำหนดเนื้อหาเองสำหรับข้อผิดพลาดต่างๆ (e.g. "ไม่พบหน้าเว็บที่ต้องการ")'
+    ERRORFILEPROBLEM: 'เกิดข้อผิดพลาดในการเปิดไฟล์ "{filename}" เพื่อเขียนข้อมูล. กรุณาตรวจสอบสิทธิ์.'
+    PLURALNAME: 'หน้าเว็บแสดงข้อผิดพลาด'
+    SINGULARNAME: 'หน้าเว็บแสดงข้อผิดพลาด'
+  Folder:
+    AddFolderButton: 'เพิ่มโฟลเดอร์'
+    DELETEUNUSEDTHUMBNAILS: 'ลบรูปย่อที่ไม่ได้ใช้งาน'
+    UNUSEDFILESTITLE: 'ไฟล์ที่ไม่ได้ใช้งาน'
+    UNUSEDTHUMBNAILSTITLE: 'รูปย่อที่ไม่ได้ใช้งาน'
+    UploadFilesButton: อัพโหลด
+  LeftAndMain:
+    DELETED: ถูกลบแล้ว
+    SAVEDUP: บันทึกแล้ว
+  Permission:
+    CMS_ACCESS_CATEGORY: 'การเข้าถึง CMS'
+  Permissions:
+    CONTENT_CATEGORY: 'สิทธิ์อนุญาตของเนื้อหา'
+    PERMISSIONS_CATEGORY: 'บทบาทและสิทธิ์อนุญาตการเข้าถึง'
+  RedirectorPage:
+    DESCRIPTION: 'เปลี่ยนเส้นทางไปยังหน้าเว็บภายในอื่นๆ'
+    HASBEENSETUP: 'หน้าเว็บที่มีการเปลี่ยนเส้นทางซึ่งได้รับการตั้งค่าโดยปราศจากตำแหน่งปลายทางที่ต้องการเปลี่ยนเส้นทางไป'
+    HEADER: 'หน้าเว็บนี้จะเปลี่ยนเส้นทางผู้ใช้งานไปยังหน้าเว็บอื่นๆ'
+    OTHERURL: 'ที่อยู่ URL ของเว็บไซต์อื่นๆ'
+    PLURALNAME: 'หน้าเว็บเปลี่ยนเส้นทาง'
+    REDIRECTTO: 'เปลี่ยนเส้นทางไปที่'
+    REDIRECTTOEXTERNAL: 'เว็บไซต์อื่นๆ'
+    REDIRECTTOPAGE: 'หน้าเว็บในเว็บไซต์ของคุณ'
+    SINGULARNAME: 'หน้าเว็บเปลี่ยนเส้นทาง'
+    YOURPAGE: 'หน้าเว็บที่อยู่บนเว็บไซต์ของคุณ'
+  ReportAdmin:
+    ReportTitle: หัวเรื่อง
+    MENUTITLE: รายงาน
+  ReportAdminForm:
+    FILTERBY: 'แสดงข้อมูลตาม'
+  SearchForm:
+    SearchResults: 'ผลการค้นหา'
+  SideReport:
+    BROKENFILES: 'หน้าเว็บที่มีไฟล์เสีย'
+    BROKENLINKS: 'หน้าเว็บที่มีลิงค์เสีย'
+    BROKENREDIRECTORPAGES: 'เปลี่ยนเส้นทางหน้าเว็บที่ชี้ไปที่หน้าเว็บที่ถูกลบแล้ว'
+    BROKENVIRTUALPAGES: 'หน้าเว็บจำลองชี้ไปที่หน้าเว็บที่ถูกลบทิ้งไปแล้ว'
+    BrokenLinksGroupTitle: 'รายงานลิงค์เสีย'
+    ContentGroupTitle: 'รายงานเกี่ยวกับเนื้อหา'
+    EMPTYPAGES: 'หน้าเว็บที่ยังไม่มีเนื้อหา'
+    LAST2WEEKS: 'หน้าเว็บที่ถูกแก้ไขใน 2 สัปดาห์ล่าสุด'
+    OtherGroupTitle: อื่นๆ
+    ParameterLiveCheckbox: 'ดูเว็บไซต์แบบสดๆ'
+    REPEMPTY: 'รายงาน {title} ยังว่างอยู่'
+  SilverStripeNavigatorLink:
+    ShareLink: 'ลิงก์ที่ต้องการแชร์'
+  SilverStripeNavigatorLinkl:
+    CloseLink: ปิด
+  SiteConfig:
+    DEFAULTTHEME: '(ใช้ชุดธีมเริ่มต้น)'
+    EDITHEADER: 'ใครสามารถแก้ไขหน้าเว็บบนเว็บไซต์นี้ได้บ้าง?'
+    EDIT_PERMISSION: 'การจัดการการกำหนดค่าของเว็บไซต์'
+    EDIT_PERMISSION_HELP: 'สามารถแก้ไขการตั้งค่าการเข้าถึงระบบโดยรวมได้/แก้ไขสิทธิ์หน้าเว็บในระดับสูงสุดได้'
+    PLURALNAME: 'กำหนดค่าเว็บไซต์'
+    SINGULARNAME: 'กำหนดค่าเว็บไซต์'
+    SITENAMEDEFAULT: 'ชื่อเว็บไซต์ของคุณ'
+    SITETAGLINE: 'สโลแกนของเว็บไซต์'
+    SITETITLE: 'ชื่อเว็บไซต์'
+    TABACCESS: เข้าถึง
+    TABMAIN: หน้าหลัก
+    TAGLINEDEFAULT: 'กรอกสโลแกนของคุณลงที่นี่'
+    THEME: ชุดธีม
+    TOPLEVELCREATE: 'ใครบ้างที่สามารถสร้างหน้าเว็บที่ตำแหน่ง root ของเว็บไซต์ได้?'
+    VIEWHEADER: 'ใครบ้่างที่สามารถเปิดดูหน้าเว็บบนเว็บไซต์นี้ได้?'
+  SiteTree:
+    ACCESSANYONE: ทุกคน
+    ACCESSHEADER: 'ใครบ้างที่สามารถเปิดดูหน้านี้ได้?'
+    ACCESSLOGGEDIN: 'ผู้ใช้งานที่อยู่ในระบบ'
+    ACCESSONLYTHESE: 'เฉพาะบุคคลเหล่านี้เท่านั้น (เลือกจากรายการ)'
+    ADDEDTODRAFTHELP: 'หน้าเว็บยังไม่ได้ถูกเผยแพร่'
+    ADDEDTODRAFTSHORT: ฉบับร่าง
+    ALLOWCOMMENTS: 'อนุญาตให้แสดงความเห็นในหน้านีหรือไม่?'
+    APPEARSVIRTUALPAGES: 'เนื้อหานี้ปรากฏอยู่ในหน้าเว็บจำลองในส่วนของ {title} ด้วยเช่นกัน'
+    BUTTONCANCELDRAFT: 'ยกเลิกการเปลี่ยนแปลงในฉบับร่าง'
+    BUTTONCANCELDRAFTDESC: 'ลบฉบับร่างของคุณแล้วย้อนกลับไปใช้หน้าเว็บที่เผยแพร่อยู่ในขณะนี้'
+    BUTTONUNPUBLISH: ยังไม่ได้เผยแพร่
+    BUTTONUNPUBLISHDESC: 'ลบหน้าเว็บนี้ออกจากเว็บไซต์ที่เผยแพร่แล้ว'
+    Comments: ความคิดเห็น
+    Content: เนื้อหา
+    DEFAULTABOUTCONTENT: '<p>คุณสามารถใส่เนื้อหาของคุณเองลงไปในหน้านี้ได้ หรือลบหน้าดังกล่าวทิ้ง แล้วสร้างหน้าเว็บของคุณเองขึ้นมาใหม่ได้.<br /></p>'
+    DEFAULTABOUTTITLE: 'เกี่ยวกับเรา'
+    DEFAULTCONTACTCONTENT: '<p>คุณสามารถใส่เนื้อหาของคุณลงไปในหน้าเว็บนี้ได้, หรือลบเนื้อหาออกแล้วสร้างหน้าเว็บที่เป็นของคุณเองใหม่ได้.<br /></p>'
+    DEFAULTCONTACTTITLE: 'ติดต่อเรา'
+    DEFAULTHOMECONTENT: '<p>ยินดีต้อนรับเข้าสู่ SilverStripe! นี่คือคือหน้าแรกที่กำหนดไว้เริ่มต้น. คุณสามารถแก้ไขหน้าเว็บนี้ได้ด้วยการเปิด <a href="admin/">CMS</a>. คุณสามารถเข้าไปที่ <a href="http://doc.silverstripe.org">เอกสารคู่มือประกอบการใช้งานสำหรับนักพัฒนา</a>, หรือเข้าไปที่<a href="http://doc.silverstripe.org/doku.php?id=tutorials">เพื่อศึกษาบทเรียนต่างๆได้.</a></p>'
+    DEFAULTHOMETITLE: หน้าแรก
+    DELETEDPAGEHELP: 'หน้าเว็บไม่ได้ถูกเผยแพร่อีกต่อไปแล้ว'
+    DELETEDPAGESHORT: ถูกลบ
+    DEPENDENT_NOTE: 'หน้าเว็บต่อไปนี้อาศัยหน้าเว็บนี้เป็นตัวอ้างอิง ซึ่งได้แก่หน้าเว็บจำลอง, หน้าเว็บที่เปลี่ยนเส้นทาง, และหน้าเว็บที่มีลิงก์เนื้อหาอยู่ด้วย'
+    DESCRIPTION: 'หน้าเนื้อหาทั่วไป'
+    DependtPageColumnLinkType: 'ชนิดของลิงค์'
+    EDITANYONE: 'ทุกคนสามารถเข้าสู่ระบบของ CMS ได้ทั้งหมด'
+    EDITHEADER: 'ใครสามารถแก้ไขหน้านี้ได้บ้าง?'
+    EDITONLYTHESE: 'เฉพาะบุคคลเหล่านี้เท่านั้น (เลือกจากรายการ)'
+    EDITORGROUPS: 'กลุ่มของบรรณาธิการ'
+    EDIT_ALL_DESCRIPTION: 'แก้ไขหน้าเว็บใดก็ได้'
+    EDIT_ALL_HELP: 'ความสามารถในการแก้ไขหน้าเว็บใดๆในเว็บไซต์, โดยไม่ต้องคำนึงถึงการตั้งค่าที่อยู่ในส่วนของแท็บการเข้าถึง, จำเป็นต้องได้รับสิทธิ์อนุญาติ "เข้าถึงส่วนของ''หน้าเว็บ''"'
+    Editors: 'กลุ่มของบรรณาธิการ'
+    HASBROKENLINKS: 'หน้าเว็บนี้มีลิงค์เสีย'
+    HTMLEDITORTITLE: เนื้อหา
+    INHERIT: 'สืบทอดค่าจากหน้าเว็บต้นทาง'
+    LASTUPDATED: 'อัพเดทล่าสุด'
+    LINKCHANGENOTE: 'การเปลี่ยนลิงก์ของหน้าเว็บนี้จะส่งผลถึงลิงก์ต่างๆที่อยู่ในหน้าเว็บลูกด้วย'
+    MENUTITLE: 'ป้ายบอกทาง'
+    METADESC: 'รายละเอียด'
+    METADESCHELP: 'เว็บไซต์ค้นหาข้อมูลใช้เนื้อหาในส่วนนี้เพื่อแสดงผลการค้นหา (แม้ว่าจะไม่มีผลกระทบกับการจัดอันดับก็ตาม).'
+    METAEXTRA: 'Meta Tags แบบกำหนดเอง'
+    METAEXTRAHELP: 'แท็กคำสั่ง HTML สำหรับใช้เป็นข้อมูล meta เพิ่มเติม. ตัวอย่างเพิ่มเติม &lt;meta name="ชื่อที่ต้องการ" content="กำหนดเนื้อหาของคุณเองที่นี่" /&gt;'
+    MODIFIEDONDRAFTHELP: 'หน้าเว็บถูกเปลี่ยนค่าเป็นระงับการเผยแพร่แล้ว'
+    MODIFIEDONDRAFTSHORT: แก้ไขเมื่อ
+    PAGELOCATION: 'ตำแหน่งหน้าเว็บ'
+    PAGETITLE: 'ชื่อหน้าเว็บ'
+    PAGETYPE: 'ประเภท เอกสาร'
+    PARENTID: 'หน้าเว็บแม่'
+    PARENTTYPE: 'ตำแหน่งที่อยู่หน้าเวป'
+    PARENTTYPE_ROOT: 'หน้าเว็บระดับสูงสุด'
+    PARENTTYPE_SUBPAGE: 'หน้าเว็บย่อยที่อยู่ใต้หน้าเว็บแม่'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'การจัดการสิทธิ์การเข้าถึงเนื้อหา'
+    PERMISSION_GRANTACCESS_HELP: 'อนุญาตให้มีการตั้งค่าข้อจำกัดในการเข้าถึงหน้าเว็บเฉพาะหน้าได้จากส่วนของ "หน้าเว็บ"'
+    PLURALNAME: หน้า
+    PageTypNotAllowedOnRoot: 'ประเภทของหน้าเว็บ "{type}" ไม่ได้รับอนุญาตให้สามารถใช้งานได้ที่ตำแหน่ง root'
+    PageTypeNotAllowed: 'ชนิดของหน้าเว็บ "{type}" ไม่ได้รับอนุญาตให้ใช้เป็นหน้าเว็บลูกของหน้าเว็บแม่นี้'
+    REMOVEDFROMDRAFTHELP: 'หน้าเว็บถูกเผยแพร่แล้ว แต่ถูกลบออกจากฉบับร่างด้วยเช่นกัน'
+    REMOVEDFROMDRAFTSHORT: 'ลบออกจากฉบับร่าง'
+    REMOVE_INSTALL_WARNING: 'คำเตือน: คุณควรลบไฟล์ install.php ออกหลังการติดตั้ง SilverStripe เพื่อความปลอดภัย'
+    REORGANISE_DESCRIPTION: 'เปลี่ยนโครงสร้างเว็บไซต์'
+    REORGANISE_HELP: 'จัดเรียงหน้าเว็บที่อยู่ในแผนผังเว็บไซต์แบบต้นไม้โดยการลากและวาง'
+    SHOWINMENUS: 'แสดงในเมนู?'
+    SHOWINSEARCH: 'แสดงในผลลัพธ์ของการค้นหาหรือไม่?'
+    SINGULARNAME: หน้า
+    TABBEHAVIOUR: พฤติกรรม
+    TABCONTENT: 'เนื้อหา'
+    TABDEPENDENT: 'หน้าย่อย'
+    TOPLEVEL: 'เนื้อหาเว็บไซต์ (ระดับสูงสุด)'
+    TOPLEVELCREATORGROUPS: 'ผู้สร้างระดับสูงสุด'
+    URLSegment: 'ส่วนการจัดการ URL'
+    VIEWERGROUPS: 'กลุ่มผู้ชม'
+    VIEW_ALL_DESCRIPTION: 'เปิดดูหน้าเว็บใดก็ได้'
+    VIEW_DRAFT_CONTENT: 'เปิดดูเนื้อหาฉบับร่าง'
+    VIEW_DRAFT_CONTENT_HELP: 'นำไปใช้ในการดูหน้าเว็บที่อยู่ด้านนอก CMS ในโหมดฉบับร่าง มีประโยชน์สำหรับการทำงานร่วมกันจากภายนอก โดยไม่จำเป็นต้องเข้าถึง CMS'
+    Viewers: 'กลุ่มผู้เข้าชม'
+    Visibility: สามารถมองเห็นได้
+    has_one_Parent: 'หน้าเว็บต้นทาง'
+    many_many_BackLinkTracking: 'แกะรอยลิงก์ย้อนกลับ'
+    many_many_ImageTracking: 'แกะรอยรูปภาพ'
+    many_many_LinkTracking: 'แกะรอยลิงก์'
+  SiteTreeURLSegmentField:
+    HelpChars: 'ตัวอักษรพิเศษได้ถูกแปลงค่าหรือลบออกโดยอัตโนมัติแล้ว'
+  ViewArchivedEmail_ss:
+    CANACCESS: 'คุณสามารถเข้าถึงเว็บไซต์รุ่นย้อนหลังได้จากลิงก์นี้:'
+    HAVEASKED: 'คุณได้ร้องขอเพื่อเปิดดูเนื้อหาในเว็บไซต์ของเราเมื่อ'
+  VirtualPage:
+    DESCRIPTION: 'แสดงเนื้อหาของหน้าเว็บอื่นๆ'
+    HEADER: 'นี่เป็นหน้าเว็บจำลอง'
+    PLURALNAME: 'หน้าเว็บจำลอง'
+    PageTypNotAllowedOnRoot: 'ชนิดของหน้าเว็บดั้งเดิม "{type}" ไม่ได้รับอนุญาตให้ใช้งานกับหน้าเว็บจำลองที่ตำแหน่ง root'
+    SINGULARNAME: 'หน้าจำลอง'
+  CMSFileAddController:
+    MENUTITLE: ไฟล์
+  CMSPageEditController:
+    MENUTITLE: 'แก้ไขหน้าเว็บ'
+  CMSPageSettingsController:
+    MENUTITLE: 'แก้ไขหน้าเว็บ'
+  CMSSettingsController:
+    MENUTITLE: ตั้งค่า

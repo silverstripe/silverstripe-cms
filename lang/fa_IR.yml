@@ -1,0 +1,96 @@
+fa_IR:
+  AssetAdmin:
+    NEWFOLDER: پوشه جديد
+  BrokenLinksReport:
+    ColumnURL: آدرس
+    HoverTitleEditPage: 'ویرایش صفحه'
+    PageName: 'نام صفحه'
+    ReasonDropdown: 'مشکل در بررسی'
+  CMSBatchActions:
+    PUBLISH_PAGES: انتشار
+  CMSMain:
+    DELETE: 'حذف کردن از پیشنویس سایت'
+    DELETEFP: حذف کردن از منتشر شده های سایت
+    EMAIL: پست الکترونیک
+    PAGENOTEXISTS: 'این صفحه وجود ندارد'
+    RESTORE: بازنشاندن
+    SAVE: ذخیره
+  CMSPageHistoryController:
+    SHOWVERSION: 'نمایش ویرایش'
+  ContentController:
+    DRAFTSITE: 'تارگاه چرکنویس'
+  ErrorPage:
+    400: '400 - درخواست نادرست'
+    401: '401 - بدون مجوز'
+    404: '404 - یافت نشد'
+    406: '406 - پذیرفتنی نیست'
+    408: '408 - زمان درخواست گذشت'
+    410: '410 - از دست رفت'
+    412: '412 - پیش شرط درست نبود'
+    502: '502 - درگاه نادرست'
+    CODE: 'شماره ایراد'
+    DEFAULTERRORPAGETITLE: 'برگ پیدا نشد'
+  Permissions:
+    CONTENT_CATEGORY: 'دسترسی محتوا'
+    PERMISSIONS_CATEGORY: 'مجوز دسترسی ها و وظایف'
+  RedirectorPage:
+    OTHERURL: 'نشانی تارگاه دیگر'
+    REDIRECTTO: 'بازگردانی به'
+    REDIRECTTOEXTERNAL: 'یک تارگاه دیگر'
+    REDIRECTTOPAGE: 'یک برگ روی تارگاه شما'
+    YOURPAGE: 'برگ روی تارگاه شما'
+  ReportAdminForm:
+    FILTERBY: 'فیلتر به وسیله'
+  SearchForm:
+    GO: برو
+    SEARCH: جستجو
+    SearchResults: 'نتایج جستجو'
+  SideReport:
+    EMPTYPAGES: 'صفحات بدون مطلب'
+    OtherGroupTitle: سایر
+    ParameterLiveCheckbox: 'بررسی سایت به صورت زنده'
+  SiteConfig:
+    DEFAULTTHEME: '(استفاده از پوسته پیشفرض)'
+    EDITHEADER: 'چه کسی میتواند صفحات را در این سایت ویرایش کند؟'
+    EDIT_PERMISSION: 'مدیریت پیکربندی سایت'
+    SITENAMEDEFAULT: 'نام سایت شما'
+    SITETITLE: 'عنوان سایت'
+    TABACCESS: دسترسی
+    TABMAIN: اصلی
+    THEME: پوسته
+    TOPLEVELCREATE: 'چه کسی میتواند صفحه جدیدی در ریشه(root) سایت ایجاد کند؟'
+    VIEWHEADER: 'چه کسی میتواند صفحات سایت را مشاهده کند؟'
+  SiteTree:
+    ACCESSANYONE: همه
+    ACCESSHEADER: 'چه کسی بتواند این صفحه را مشاهده کنید ؟'
+    ACCESSLOGGEDIN: 'کاربران وارد شده'
+    ACCESSONLYTHESE: 'فقط این افراد (انتخاب از لیست)'
+    ALLOWCOMMENTS: 'پذیرفتن نظرات در این صفحه ؟'
+    Content: درون مایه
+    DEFAULTCONTACTTITLE: 'تماس با ما'
+    DEFAULTHOMETITLE: خانه
+    DEPENDENT_NOTE: 'صفحات زیر وابسته به این صفحه هستند. شامل صفحات مجازی، انتقال دهنده و صفحاتی با محتوای لینک'
+    DependtPageColumnURL: نشانی اینترنتی
+    EDITANYONE: 'هر کسی بتواند به سیستم مدیریت محتوا وارد شود'
+    EDITHEADER: 'چه کسی بتواند این صفحه را ویرایش کند ؟'
+    EDITONLYTHESE: 'فقط این افراد (انتخاب از لیست)'
+    HASBROKENLINKS: 'لینک این صفحه شکسته است.'
+    HTMLEDITORTITLE: درون‌مایه
+    MENUTITLE: 'برچسب ناوبری'
+    METADESC: 'توضیحات'
+    PAGELOCATION: 'موقعیت صفحه'
+    PAGETITLE: 'نام برگ'
+    PAGETYPE: 'نوع برگ'
+    PARENTID: 'برگ مادر'
+    PARENTTYPE: 'جایگاه برگ'
+    SHOWINSEARCH: 'نمایش در جستجو ؟'
+    TABCONTENT: 'مطلب'
+    URLSegment: 'بخش آدرس URL'
+    VIEW_DRAFT_CONTENT: 'مشاهده محتوای پیشنویس'
+    has_one_Parent: 'برگ مادر'
+  ViewArchivedEmail_ss:
+    HAVEASKED: 'شما خواسته اید که درون‌مایه تارگاه ما را ببینید در'
+  VirtualPage:
+    HEADER: 'این یک صفحه مجازی است'
+    PLURALNAME: 'صفحه های مجازی'
+    SINGULARNAME: 'صفحه مجازی'

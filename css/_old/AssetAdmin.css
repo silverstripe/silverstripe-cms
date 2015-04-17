@@ -1,0 +1,41 @@
+#right form .inlineformaction {
+	margin-left: 0;
+}
+#right form #deletemarked .middleColumn {
+	background: none;
+}
+.dragfile, 
+.dragfile img {
+	float: left;
+	cursor: move;
+}
+.NumFilesIndicator {
+	text-align: left;
+ 	padding: 1px 1px 1px 10px;
+ 	font-size: 16px;
+	font-weight: bold;
+ 	border: 1px solid #cc9;
+	color: #660;
+	background-color: #F9F9E3;
+	margin: 2px;
+}
+.DraggedHandle {
+	width: 30em !important;
+}
+form#Form_AddForm fieldset {
+	float: left;
+	margin-right: 1em;
+}
+form#Form_AddForm .field span.readonly {
+	background: none;
+	border: none;
+	margin: 0;
+	padding: 0;
+	width: auto;
+}
+
+#TreeActions-sync {
+	/* Same as .checkboxAboveTree */
+	border-top: 1px solid #CCCCCC;
+	padding: .5em;
+}

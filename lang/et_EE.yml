@@ -1,0 +1,387 @@
+et_EE:
+  AssetAdmin:
+    ADDFILES: 'Lisa fail'
+    ActionAdd: 'Lisa kaust'
+    AppCategoryArchive: Arhiiv
+    AppCategoryAudio: Heli
+    AppCategoryDocument: Dokument
+    AppCategoryFlash: Flash
+    AppCategoryImage: Pilt
+    AppCategoryVideo: Video
+    BackToFolder: 'Tagasi kausta'
+    CREATED: Kuupäev
+    CurrentFolderOnly: 'Kas lubada juurdepääs ainult praegusele kaustale?'
+    DetailsView: Üksikasjad
+    FILES: Failid
+    FILESYSTEMSYNC: 'Sünkrooni failid'
+    FILESYSTEMSYNCTITLE: 'Uuenda failisüsteemis CMS-andmebaasi failisisendeid. Kasulik, kui uued failid on laaditud üles väljaspool CMS-i, näiteks FTP vahendusel.'
+    FROMTHEINTERNET: 'Internetist'
+    FROMYOURCOMPUTER: 'Teie arvutist'
+    Filetype: 'Faili tüüp'
+    ListView: 'Loendivaade'
+    NEWFOLDER: Uus kaust
+    SIZE: Suurus
+    THUMBSDELETED: '{count} kasutamata pisipilti on kustutatud'
+    TreeView: 'Puuvaade'
+    Upload: Laadi üles
+    MENUTITLE: Failid
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Kustuta kaustad'
+  AssetAdmin_Tools:
+    FILTER: Filtreeri
+  AssetAdmin_left_ss:
+    GO: Mine
+  AssetTableField:
+    BACKLINKCOUNT: 'Kasutatakse:'
+    PAGES: leht (lehed)
+  BackLink_Button_ss:
+    Back: Tagasi
+  BrokenLinksReport:
+    Any: Kõik
+    BROKENLINKS: 'Katkiste linkide aruanne'
+    CheckSite: 'Kontrolli saiti'
+    CheckSiteDropdownDraft: 'Mustandi sait'
+    CheckSiteDropdownPublished: 'Avaldatud sait'
+    ColumnDateLastModified: 'Viimane muutmiskuupäev'
+    ColumnDateLastPublished: 'Viimane avaldamiskuupäev'
+    ColumnProblemType: 'Probleemi tüüp'
+    ColumnURL: URL
+    HasBrokenFile: 'sisaldab katkist faili'
+    HasBrokenLink: 'sisaldab katkist linki'
+    HasBrokenLinkAndFile: 'sisaldab katkist linki ja faili'
+    HoverTitleEditPage: 'Muuda lehte'
+    PageName: 'Lehe nimi'
+    ReasonDropdown: 'Kontrollitav probleem'
+    ReasonDropdownBROKENFILE: 'Katkine fail'
+    ReasonDropdownBROKENLINK: 'Vigane link'
+    ReasonDropdownRPBROKENLINK: 'Ümbersuunamisleht suunab olematule lehele'
+    ReasonDropdownVPBROKENLINK: 'Virtuaalne leht suunab olematule lehele'
+    RedirectorNonExistent: 'ümbersuunamisleht suunab olematule lehele'
+    VirtualPageNonExistent: 'virtuaalne leht suunab olematule lehele'
+  CMSAddPageController:
+    Title: 'Lisa leht'
+  CMSBatchActions:
+    DELETED_DRAFT_PAGES: 'Mustandi saidilt kustutati %d lehte, %d tõrget'
+    DELETED_PAGES: 'Avaldatud saidilt kustutati %d lehte, %d tõrget'
+    DELETE_DRAFT_PAGES: 'Kustuta mustandite saidilt'
+    DELETE_PAGES: 'Kustuta avaldatud lehekülgede hulgast'
+    PUBLISHED_PAGES: 'Avaldatud %d lehte, %d tõrget'
+    PUBLISH_PAGES: Avalda
+    UNPUBLISHED_PAGES: 'Tühistati %d lehe avaldamine'
+    UNPUBLISH_PAGES: Tühista avaldamine
+  CMSMain:
+    ACCESS: 'Juurdepääs jaotisele ''{title}'''
+    ACCESS_HELP: 'Luba lehepuud ja sisu hõlmava jaotise vaatamine. Vaatamis- ja redigeerimisõigusi on võimalik hallata nii lehepõhiselt kui ka eraldi jaotise "Sisu õigused" abil.'
+    AddNew: 'Lisa uus leht'
+    AddNewButton: 'Lisa uus'
+    ChoosePageParentMode: 'Valige, kuhu see leht luua'
+    ChoosePageType: 'Valige lehe tüüp'
+    Create: Loo
+    DELETE: 'Kustuta mustand'
+    DELETEFP: Kustuta avaldatud leht
+    DESCREMOVED: 'ja {count} järglast'
+    EMAIL: E-post
+    EditTree: 'Redigeeri'
+    ListFiltered: 'Filtreeritud loend'
+    NEWPAGE: 'Uus {pagetype}'
+    PAGENOTEXISTS: 'Antud lehekülge ei eksisteeri'
+    PAGES: Lehed
+    PAGETYPEANYOPT: Kõik
+    PAGETYPEOPT: 'Lehe tüüp'
+    PUBALLCONFIRM: 'Palun avaldage iga leht selles saidis'
+    PUBALLFUN: '"Avalda Kõik" funktsionaalsus'
+    PUBALLFUN2: "Sellele nupule vajutamine on sama, kui käia igal lehel ja vajutada igal lehel \"Avalda\" nuppu. Nuppu on soovitatav kasutada, kui oled muutnud mitmeid lehti - see salvestab igal lehel toimunud muudatused."
+    PUBPAGES: 'Valmis: {count} lehte avaldatud'
+    PageAdded: 'Lehekülje loomine õnnestus'
+    REMOVEDPAGE: 'Leht ''{title}'' eemaldati avaldatud saitide hulgast'
+    REMOVEDPAGEFROMDRAFT: '''%s'' eemaldatud visandi lehelt'
+    RESTORE: Taasta
+    RESTORED: '''{title}'' taastati edukalt'
+    ROLLBACK: 'Pööra tagasi sellesse versiooni'
+    SAVE: Salvesta
+    SAVEDRAFT: 'Salvesta mustand'
+    TabContent: Sisu
+    TabHistory: Ajalugu
+    TabSettings: Seaded
+    TreeFiltered: 'Filtreeritud puu.'
+    TreeFilteredClear: 'Eemalda filtreering'
+    MENUTITLE: 'Redigeeri lehte'
+  CMSMain_left_ss:
+    APPLY_FILTER: 'Aktiveeri filter'
+    RESET: Lähtesta
+  CMSPageAddController:
+    ParentMode_child: 'Teise lehe all'
+    ParentMode_top: 'Kõrgem tase'
+    MENUTITLE: 'Lisa leht'
+  CMSPageHistoryController:
+    COMPAREMODE: 'Võrdlusrežiim (valige kaks)'
+    COMPAREVERSIONS: 'Võrdle versioone'
+    COMPARINGVERSION: 'Versioonide {version1} ja {version2} võrdlus.'
+    REVERTTOTHISVERSION: 'Taasta valitud versioon'
+    SHOWUNPUBLISHED: 'Näita ka avaldamata versioone'
+    SHOWVERSION: 'Näita versiooni'
+    VIEW: vaade
+    VIEWINGVERSION: 'Hetkel kuvatud versioon {version}.'
+    MENUTITLE: Ajalugu
+  CMSPageHistoryController_versions_ss:
+    AUTHOR: Autor
+    NOTPUBLISHED: 'Avaldamata'
+    PUBLISHER: Avaldaja
+    UNKNOWN: Tundmatu
+  CMSPagesController:
+    GalleryView: 'Galeriivaade'
+    ListView: 'Loendivaade'
+    MENUTITLE: Lehed
+    TreeView: 'Puuvaade'
+  CMSPagesController_ContentToolbar_ss:
+    MULTISELECT: Mitmikvalik
+  CMSPagesController_Tools_ss:
+    FILTER: Filtreeri
+  CMSSearch:
+    FILTERDATEFROM: Alates
+    FILTERDATEHEADING: Kuupäev
+    FILTERDATETO: Kuni
+    FILTERLABELTEXT: Sisu
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Muudetud lehed'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Kõik lehed, k.a kustutatud'
+  CMSSiteTreeFilter_Search:
+    Title: 'Kõik lehed'
+  ContentControl:
+    NOTEWONTBESHOWN: 'Märkus. Seda teadet ei kuvata lehe külastajatele'
+  ContentController:
+    ARCHIVEDSITE: 'Eelvaate versioon'
+    ARCHIVEDSITEFROM: 'Arhiveeritud sait asukohast'
+    DRAFT: Mustand
+    DRAFTSITE: 'Mustandi sait'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Pead olema sisse logitud oma sisuhalduse parooliga, et vaadata mustandeid ja arhiveeritud sisu. <a href="%s">Vajuta siia, et minna tagasi avaldatud lehe juurde.</a>'
+    Email: E-post
+    INSTALL_SUCCESS: 'Paigaldus oli edukas!'
+    InstallFilesDeleted: 'Installifailid on edukalt kustutatud.'
+    InstallSecurityWarning: 'Turvalisuse põhjustel soovitame nüüd installifailid kustutada, juhul kui te ei plaani hiljem uuesti installida (<em>nõuab administraatorina sisselogimist, vt ülevalt</em>). Edaspidi vajab veebiserver juurdepääsu kirjutamiseks ainult kaustale "assets". Võite eemaldada kõigi teiste kaustade kirjutusõigused. <a href="{link}" style="text-align: center;">Klõpsake siin installifailide kustutamiseks.</a>'
+    InstallSuccessCongratulations: 'SilverStripe edukalt paigaldatud!'
+    LOGGEDINAS: 'Sisse logitud kui'
+    LOGIN: Logi sisse
+    LOGOUT: 'Logi välja'
+    NOTLOGGEDIN: 'Pole sisse logitud'
+    PUBLISHED: Avaldatud
+    PUBLISHEDSITE: 'Avaldatud sait'
+    Password: Salasõna
+    PostInstallTutorialIntro: 'See veebisait on SilverStripe 3 lihtsustatud versioon. Lehe laiendamiseks külastage aadressi {link}.'
+    UnableDeleteInstall: 'Installifaile ei olnud võimalik kustutada. Kustutage allolevad failid käsitsi.'
+    VIEWPAGEIN: 'Kuva leht:'
+  ErrorPage:
+    400: '400 - Halb päring'
+    401: '401 - Volitamata ligipääs'
+    403: '403 - Keelatud'
+    404: '404 - Ei leitud'
+    405: '405 -  Meetod pole lubatud'
+    406: '406 - Ligipääs puudub'
+    407: '407 - Proxy tuvastus vajalik'
+    408: '408 - Palve aegunud'
+    409: '409 - Konflikt'
+    410: '410 - Kustutatud'
+    411: '411 - Distants vajalik'
+    412: '412 - Eeltingimused täitmata'
+    413: '413 -  Palve käsklus liiga suur'
+    414: '414 - soovitud URL liiga pikk'
+    415: '415 - Ebasoovitav meedia tüüp'
+    416: '416 - Päring rahuldamata'
+    417: '417 - Eeldus puudub'
+    500: '500 - Serveri viga'
+    501: '501 - Rakendus puudub'
+    502: '502 - Halb sissepääsutee'
+    503: '503 - Teenus puudub'
+    504: '504 - Sissepääsutee aegmaas'
+    505: '505 - HTTP versioon ei ole kasutusel'
+    CODE: 'Veakood'
+    DEFAULTERRORPAGECONTENT: '<p>Vabandust aga tundub, et proovid ligipääseda lehele mida pole olemas.</p><p>Palun kontrolli uuesti aadressi kuhu proovid ligi pääseda.</p>'
+    DEFAULTERRORPAGETITLE: 'Lehekülge ei leitud'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Vabandust, teie taotluse töötlemisel ilmnes probleem.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Serveri viga'
+    DESCRIPTION: 'Kohandatud sisu erinevate tõrgete korral (nt "Lehte ei leitud")'
+    ERRORFILEPROBLEM: 'Tõrge faili "{filename}" avamisel kirjutamiseks. Kontrollige faili õigusi.'
+    PLURALNAME: 'Vealeheküljed'
+    SINGULARNAME: 'Vealehekülg'
+  Folder:
+    AddFolderButton: 'Lisa kaust'
+    DELETEUNUSEDTHUMBNAILS: 'Kustuta kasutamata väikepildid'
+    UNUSEDFILESTITLE: 'Kasutamata failid'
+    UNUSEDTHUMBNAILSTITLE: 'Kasutamata väikepildid'
+    UploadFilesButton: Laadi üles
+  LeftAndMain:
+    DELETED: Kustutatud.
+    PreviewButton: Eelvaade
+    SAVEDUP: Salvestatud.
+    SearchResults: 'Otsingutulemused'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'CMS-juurdepääs'
+  Permissions:
+    CONTENT_CATEGORY: 'Sisu õigused'
+    PERMISSIONS_CATEGORY: 'Rollid ja juurdepääsuõigused'
+  RedirectorPage:
+    DESCRIPTION: 'Suunab teisele siselehele'
+    HASBEENSETUP: 'Suunav lehekülg seati üles ilma, et ta kuhugile suunaks.'
+    HEADER: 'See lehekülg suunab kasutajad teisele leheküljele'
+    OTHERURL: 'Teise veebisaidi URL'
+    PLURALNAME: 'Ümbersuunamisleheküljed'
+    REDIRECTTO: 'Suuna ümber'
+    REDIRECTTOEXTERNAL: 'Teisele veebisaidile'
+    REDIRECTTOPAGE: 'Leheküljele sinu veebisaidil'
+    SINGULARNAME: 'Ümbersuunamisleht'
+    YOURPAGE: 'Lehekülg sinu veebisaidil'
+  ReportAdmin:
+    ReportTitle: Pealkiri
+    MENUTITLE: Aruanded
+  ReportAdminForm:
+    FILTERBY: 'Filtreeri'
+  SearchForm:
+    GO: Mine
+    SEARCH: Otsi
+    SearchResults: 'Otsingutulemused'
+  SideReport:
+    BROKENFILES: 'Katkiste failidega lehed'
+    BROKENLINKS: 'Katkiste linkidega lehed'
+    BROKENREDIRECTORPAGES: 'Ümbersuunamislehed, mis suunavad kustutatud lehtedele'
+    BROKENVIRTUALPAGES: 'Virtuaallehed, mis suunavad kustutatud lehtedele'
+    BrokenLinksGroupTitle: 'Katkiste linkide aruanded'
+    ContentGroupTitle: 'Sisuaruanded'
+    EMPTYPAGES: 'Tühjad leheküljed'
+    LAST2WEEKS: 'Viimase kahe nädala jooksul muudetud leheküljed'
+    OtherGroupTitle: Muu
+    ParameterLiveCheckbox: 'Kontrolli avaldatud saiti'
+    REPEMPTY: 'Lehe {title} aruanne on tühi.'
+  SilverStripeNavigator:
+    ARCHIVED: Arhiveeritud
+  SilverStripeNavigatorLink:
+    ShareLink: 'Jaga linki'
+  SilverStripeNavigatorLinkl:
+    CloseLink: Sulge
+  SiteConfig:
+    DEFAULTTHEME: '(Kasuta vaikekujundust)'
+    EDITHEADER: 'Kes saavad sellel saidil lehti redigeerida?'
+    EDIT_PERMISSION: 'Saidi konfiguratsiooni haldamine'
+    EDIT_PERMISSION_HELP: 'Võimalus redigeerida üldiseid juurdepääsuseadeid / kõrgema taseme lehe õigusi.'
+    PLURALNAME: 'Saidi konfiguratsioonid'
+    SINGULARNAME: 'Saidi konfiguratsioon'
+    SITENAMEDEFAULT: 'Teie saidi nimi'
+    SITETAGLINE: 'Saidi reklaamlause'
+    SITETITLE: 'Saidi pealkiri'
+    TABACCESS: Juurdepääs
+    TABMAIN: Sisu
+    TAGLINEDEFAULT: 'teie reklaamlause siin'
+    THEME: Kujundus
+    TOPLEVELCREATE: 'Kes saavad luua lehti saidi juurtasandil?'
+    VIEWHEADER: 'Kes saavad sellel saidil olevaid lehti vaadata?'
+  SiteTree:
+    ACCESSANYONE: Igaüks
+    ACCESSHEADER: 'Kes tohib seda lehekülge minu veebisaidil vaadata?'
+    ACCESSLOGGEDIN: 'Sisse logitud kasutajad'
+    ACCESSONLYTHESE: 'Ainult järgnevad isikud (vali nimekirjast)'
+    ADDEDTODRAFTHELP: 'Leht ei ole veel avaldatud'
+    ADDEDTODRAFTSHORT: Mustand
+    ALLOWCOMMENTS: 'Luba kommentaare sellel lehel?'
+    APPEARSVIRTUALPAGES: 'Sisu on kuvatud ka virtuaalsetel lehtedel jaotistes {title}.'
+    BUTTONCANCELDRAFT: 'Tühista visandi muudatused'
+    BUTTONCANCELDRAFTDESC: 'Kustuta oma visand ja pöördu tagasi hetkel avaldatud lehekülje kujule'
+    BUTTONPUBLISHED: Avaldatud
+    BUTTONSAVED: Salvestatud
+    BUTTONSAVEPUBLISH: 'Salvesta ja avalda'
+    BUTTONUNPUBLISH: Võta maha
+    BUTTONUNPUBLISHDESC: 'Eemalda see lehekülg avalikult saidilt'
+    Comments: Komentaarid
+    Content: Sisu
+    DEFAULTABOUTCONTENT: '<p>Saad selle lehe sisu muuta või selle lehe kustutada.<br /></p>'
+    DEFAULTABOUTTITLE: 'Meist'
+    DEFAULTCONTACTCONTENT: '<p>võid selle lehe sisu muuta või selle ära kustutada.<br /></p>'
+    DEFAULTCONTACTTITLE: 'Kontakt'
+    DEFAULTHOMECONTENT: '<p>Tere tulemast kasutama SilverStripe! sisuhaldust, see on algne avaleht.<br>Saad seda muuta <a href="admin/">Sisuhalduse lehel</a>. <br>Abiks on ka <a href="http://doc.silverstripe.com">Sisuhalduse dokumentatsioon</a> või <a href="http://doc.silverstripe.com/doku.php?id=tutorials">õppetus leht.</a></p>'
+    DEFAULTHOMETITLE: Avaleht
+    DELETEDPAGEHELP: 'Leht ei ole enam avaldatud'
+    DELETEDPAGESHORT: Kustutatud
+    DEPENDENT_NOTE: 'Alljärgnevad lehed sõltuvad sellest lehest. See hõlmab virtuaalseid lehti, ümbersuunamislehti ja sisulinkidega lehti.'
+    DESCRIPTION: 'Üldine sisuleht'
+    DependtPageColumnLinkType: 'Lingi tüüp'
+    DependtPageColumnURL: URL
+    EDITANYONE: 'Igaüks, kes sisuhaldussüsteemi sisse võib logida'
+    EDITHEADER: 'Kes tohib seda sisuhaldussüsteemi kaudu muuta?'
+    EDITONLYTHESE: 'Ainult järgnevad isikud (vali nimekirjast)'
+    EDITORGROUPS: 'Muutjagrupid'
+    EDIT_ALL_DESCRIPTION: 'Redigeeri mis tahes lehte'
+    EDIT_ALL_HELP: 'Võimalus redigeerida mis tahes lehte sellel saidil, hoolimata vahekaardi Juurdepääs seadetest. Vajab jaotise "Juurdepääs  lehtedele" õigusi\n'
+    Editors: 'Toimetajate gruppid'
+    HASBROKENLINKS: 'Sellel lehel on katkiseid linke.'
+    HTMLEDITORTITLE: Sisu
+    INHERIT: 'Päring vanemalt lehelt'
+    LASTPUBLISHED: 'Viimati avaldatud'
+    LASTSAVED: 'Viimati salvestatud'
+    LASTUPDATED: 'Viimati uuendatud'
+    LINKCHANGENOTE: 'Selle lehe lingi muutmine mõjutab ka kõigi alamlehtede linke.'
+    MENUTITLE: 'Navigatsiooni silt'
+    METADESC: 'Kirjeldus'
+    METADESCHELP: 'Otsingumootor kasutab seda sisu otsingutulemuste kuvamiseks (kuigi see ei mõjuta nende järjestust).'
+    METAEXTRA: 'Kohandatud metamärgendid'
+    METAEXTRAHELP: 'HTML-sildid täiendavate metaandmete jaoks. Nt &lt;meta name="customName" content="your custom content here" /&gt;'
+    MODIFIEDONDRAFTHELP: 'Lehel on avaldamata muudatusi'
+    MODIFIEDONDRAFTSHORT: Muudetud
+    MetadataToggle: Metaandmed
+    NOTPUBLISHED: 'Avaldamata'
+    PAGELOCATION: 'Lehe asukoht'
+    PAGETITLE: 'Lehekülje nimi'
+    PAGETYPE: 'Lehe tüüp'
+    PARENTID: 'Vanemleht'
+    PARENTTYPE: 'Lehe asukoht'
+    PARENTTYPE_ROOT: 'Kõrgema taseme leht'
+    PARENTTYPE_SUBPAGE: 'Vanemlehe all olev alamleht'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Kontroli millised gruppid saavad ligipääsu ja võimaluse muuta mingeid lehti'
+    PERMISSION_GRANTACCESS_HELP: 'Luba jaotises Lehed lehepõhiste juurdepääsupiirangute seadistamine.'
+    PLURALNAME: Lehed
+    PageTypNotAllowedOnRoot: '"{type} tüüpi lehekülg ei ole juurkataloogi tasemel lubatud'
+    PageTypeNotAllowed: 'Lehe tüüp "{type}" ei ole selle vanemlehe alamlehena lubatud'
+    REMOVEDFROMDRAFTHELP: 'Lehekülg on avalikustatud, kuid mustand on kustutatud'
+    REMOVEDFROMDRAFTSHORT: 'Eemaldati mustandite hulgast'
+    REMOVE_INSTALL_WARNING: 'Hoiatus! Peaksite eemaldama faili install.php sellest SilverStripe''i installist turvalisuse kaalutlustel.'
+    REORGANISE_DESCRIPTION: 'Muuda saidi struktuuri'
+    REORGANISE_HELP: 'Korraldage lehti saidipuus ümber pukseerimisega.'
+    SHOWINMENUS: 'Näita menüüdes?'
+    SHOWINSEARCH: 'Näita otsingus?'
+    SINGULARNAME: Leht
+    TABBEHAVIOUR: Käitumine
+    TABCONTENT: 'Sisu'
+    TABDEPENDENT: 'Sõltuvad lehed'
+    TOPLEVEL: 'Lehe sisu (kõrgeim tase)'
+    TOPLEVELCREATORGROUPS: 'Kõrgema taseme loojad'
+    URLSegment: 'URL-i jagu'
+    VIEWERGROUPS: 'Vaatajagrupid'
+    VIEW_ALL_DESCRIPTION: 'Kuva mis tahes leht'
+    VIEW_DRAFT_CONTENT: 'Kuva mustandi sisu'
+    VIEW_DRAFT_CONTENT_HELP: 'Rakendub lehe vaatamisel väljaspool CMS-i mustandirežiimis. Kasulik välistele kaastöötajatele, kellel puudub juurdepääs CMS-ile.'
+    Viewers: 'Vaatajate gruppid'
+    Visibility: Nähtavus
+    has_one_Parent: 'Vanem leht'
+    many_many_BackLinkTracking: 'Tagasilingi jälgimine'
+    many_many_ImageTracking: 'Pildi jälgimine'
+    many_many_LinkTracking: 'Lingi jälgimine'
+  SiteTreeURLSegmentField:
+    HelpChars: 'Erimärgid teisendatakse või eemaldatakse automaatselt.'
+  URLSegmentField:
+    Edit: Redigeeri
+  ViewArchivedEmail_ss:
+    CANACCESS: 'Arhiveeritud lehele pääsed ligi selle lingi kaudu:'
+    HAVEASKED: 'Soovid vaadata meie lehe sisu kuupäeval'
+  VirtualPage:
+    DESCRIPTION: 'Kuvab sisu teiselt lehelt'
+    EditLink: redigeeri
+    HEADER: 'See on virtuaalne leht'
+    PLURALNAME: 'Virtuaalsed lehed'
+    PageTypNotAllowedOnRoot: 'Lehe originaaltüüp "{type}" ei ole selle virtuaalse lehe juurtasandil lubatud.'
+    SINGULARNAME: 'Virtuaalne leht'
+  CMSFileAddController:
+    MENUTITLE: Failid
+  CMSPageEditController:
+    MENUTITLE: 'Muuda lehte'
+  CMSPageSettingsController:
+    MENUTITLE: 'Muuda lehte'
+  CMSSettingsController:
+    MENUTITLE: Seaded

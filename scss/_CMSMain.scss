@@ -1,0 +1,125 @@
+/**
+ * Style  custom to the CMSMain admin interface. CMSMain extends the built in 
+ * SilverStripe admin section styles. As much as possible we want to use those 
+ * built in styles. If anything in this file can be implemented in a generic 
+ * way then it should be include in the admin scss files.
+ *
+ * @package cms
+ */
+
+/** ------------------------------------------------------------------
+ * Page History Section.
+ * ----------------------------------------------------------------- */
+#cms-page-history-versions {
+	tr {
+		&.loading {
+			color: #999;
+			
+			td {
+				
+				&:hover {
+					cursor: none;
+				}
+			}
+		}
+	}
+	td {
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}
+
+.CMSPageHistoryController {
+	ins {
+		background-color: #DFD;
+		padding: 2px;
+		text-decoration: none;
+	}
+
+	del {
+		background-color: #FDD;
+		padding: 2px;
+		color: darken(#FDD, 30%);
+	}
+}
+
+/** --------------------------------------------
+ * Tree View (collapsed for sidebar)
+ * -------------------------------------------- */
+#cms-content-treeview, #cms-content-listview {
+	.cms-tree-expand-trigger {
+		display: none; // Don't show trigger in expanded mode
+	}
+}
+
+// Hide certain elements when shown in "sidebar mode"
+.cms-content-tools { 
+	#cms-content-treeview {
+		.cms-content-toolbar {
+			border-bottom:none;
+			box-shadow:none;
+			margin-bottom:8px;
+		}
+		.cms-tree-view-modes,
+		.cms-content-batchactions {
+			display: none;
+		}
+		.cms-tree-expand-trigger {
+			display: block;
+			float: left;
+			margin:0 0 2px 0;
+			span.ui-button-text{
+					padding-right:8px;
+			}
+		}
+
+		.cms-tree {
+			// Hide badges and drag icons to save space
+			.badge,
+			a > .jstree-icon {
+				display: none;
+			}
+
+			// Show badge on hovered node
+			a:hover > .text > .badge, .jstree-clicked > .text > .badge {
+				display: inline-block;
+			}
+		}
+	}
+}
+
+/** ------------------------------------------------------------------
+ * URLSegment field
+ * ----------------------------------------------------------------- */
+.field.urlsegment {
+
+	&.loading {
+		background: url(../images/loading.gif) no-repeat 162px 8px;
+	}
+
+	.preview {
+		padding-top: 8px;
+		display: inline-block;
+	}
+
+	input.text {
+		width: 250px; // ensure there's enough room for buttons
+	}
+
+	input.text, .cancel, .update, .edit {
+		margin-right: 8px;
+	}
+
+	.help {
+		margin-left: 0;
+	}
+
+	.edit-holder {
+		display: none;
+	}
+}
+
+#Form_EditForm #Title .update {
+	margin-left: 7px;
+}

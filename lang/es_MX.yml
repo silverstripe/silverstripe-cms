@@ -1,0 +1,198 @@
+es_MX:
+  AssetAdmin:
+    NEWFOLDER: Nueva Carpeta
+  AssetAdmin_left_ss:
+    GO: Ir
+  BrokenLinksReport:
+    Any: Cualquiera
+    BROKENLINKS: 'Informe de enlaces rotos'
+    CheckSite: 'Comprobar el sitio'
+    CheckSiteDropdownDraft: 'Proyecto del Sitio'
+    CheckSiteDropdownPublished: 'Sitio Publicado'
+    ColumnDateLastModified: 'Fecha de última modificación'
+    ColumnDateLastPublished: 'Fecha de última publicación'
+    ColumnProblemType: 'Tipo de problema'
+    HasBrokenFile: 'tiene un archivo en mal estado'
+    HasBrokenLink: 'tiene un enlace roto'
+    HasBrokenLinkAndFile: 'tiene un enlace roto y un archivo en mal estado'
+    HoverTitleEditPage: 'Modificar página'
+    PageName: 'Nombre de página'
+    ReasonDropdown: 'Problema al hacer la comprobación'
+    ReasonDropdownBROKENFILE: 'Archivo en mal estado'
+    ReasonDropdownBROKENLINK: 'Enlace roto'
+    ReasonDropdownRPBROKENLINK: 'La redirección de página apunta una página inexistente'
+    ReasonDropdownVPBROKENLINK: 'La página virtual apunta a una página inexistente'
+    RedirectorNonExistent: 'la redirección de página apunta a una página inexistente'
+    VirtualPageNonExistent: 'la página virtual apunta a una página inexistente'
+  CMSBatchActions:
+    DELETE_DRAFT_PAGES: 'Eliminar del boceto del sitio'
+    DELETE_PAGES: 'Eliminada del sito público'
+    PUBLISHED_PAGES: 'Se publicaron %d páginas, %d fallos'
+    PUBLISH_PAGES: Publicar
+    UNPUBLISHED_PAGES: '%d páginas no publicadas'
+    UNPUBLISH_PAGES: No publicadas
+  CMSMain:
+    DELETE: 'Eliminar del boceto del sitio'
+    DELETEFP: Eliminar del sitio público
+    EMAIL: Correo Electrónico
+    PAGENOTEXISTS: 'Esta página no existe'
+    PUBALLCONFIRM: 'Por favor publique todas las páginas del sitio, copiando el contenido del boceto al sitio público'
+    PUBALLFUN: 'Funcionalidad "Publicar todo"'
+    PUBALLFUN2: "Al precionar este botón hará el equivalente de ir a cada página y precionar \"Publicar\". Está pensado para ser usado en edición masiva de contenido, por ejemplo cuando se construye el sitio por primera vez."
+    REMOVEDPAGEFROMDRAFT: 'Se ha eliminado ''%s'' del boceto del sitio'
+    RESTORE: Restaurar
+    ROLLBACK: 'Restaurar a ésta versión'
+    SAVE: Guardar
+  ContentControl:
+    NOTEWONTBESHOWN: 'Nota: este mensaje no será mostrado a sus visitantes'
+  ContentController:
+    ARCHIVEDSITEFROM: 'Sito archivado de'
+    DRAFTSITE: 'Proyecto del Sitio'
+    LOGGEDINAS: 'Conectado cómo'
+    LOGIN: Iniciar sesión
+    LOGOUT: 'Cerrar sesión'
+    NOTLOGGEDIN: 'No ha iniciado sesión'
+    PUBLISHEDSITE: 'Sitio Publicado'
+    VIEWPAGEIN: 'Ver página en:'
+  ErrorPage:
+    400: '400 - Petición Incorrecta'
+    401: '401 - No estás autorizado'
+    403: '403 - Acceso Restringido'
+    404: '404 - No se encuentra'
+    405: '405 - Método No Permitido'
+    406: '406 - No es Aceptable'
+    407: '407 - Se Requiere Autentificación del Proxy'
+    408: '408 - La Petición Excede Del Tiempo Autorizado'
+    409: '409 - Existe Un Conflicto'
+    410: '410 - Reubicado'
+    411: '411 - Requiere Longitud'
+    412: '412 - Falló la precondición'
+    413: '413 - Elemento solicitado muy largo'
+    414: '414 - La URI solicitada es muy larga'
+    415: '415 - Tipo de medio sin soporte'
+    416: '416 - No Satisface el Rango de Petición'
+    417: '417 - Esperaba otra cosa'
+    500: '500 - Error Interno del Servidor'
+    501: '501 - No Implementado'
+    502: '502 - Puerta de acceso equivocada'
+    503: '503 - Fuera de Servicio'
+    504: '504 - Excesivo Tiempo en la Puerta de Acceso'
+    505: '505 - Versión HTTP Sin Soporte'
+    CODE: 'Código de Error'
+    DEFAULTERRORPAGECONTENT: '<p>Disculpe, parece que está tratando de ingresar a una página que no existe.</p><p>Por favor verifique la URL que desea visitar e inténtelo de nuevo.</p>'
+    DEFAULTERRORPAGETITLE: 'Página inexistente'
+  Folder:
+    DELETEUNUSEDTHUMBNAILS: 'Eliminar  miniaturas de imágenes sin utilizar'
+    UNUSEDFILESTITLE: 'Archivo sin utilizar'
+    UNUSEDTHUMBNAILSTITLE: 'Miniaturas de imágenes sin utilizar'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'Acceder al CMS'
+  Permissions:
+    CONTENT_CATEGORY: 'Permisos de contenido'
+    PERMISSIONS_CATEGORY: 'Roles y permisos de acceso'
+  RedirectorPage:
+    HASBEENSETUP: 'Se ha instalado una página de redirección  sin algún lugar a donde redireccionar.'
+    HEADER: 'Esta página dirigirá al usuarios a otra página'
+    OTHERURL: 'Otro URL del sitio web'
+    REDIRECTTO: 'Redirigir a'
+    REDIRECTTOEXTERNAL: 'Otro sitio web'
+    REDIRECTTOPAGE: 'Una página en tu sitio web'
+    YOURPAGE: 'Página en tu sitio web'
+  ReportAdminForm:
+    FILTERBY: 'Filtrar por'
+  SearchForm:
+    GO: Ir
+    SEARCH: Buscar
+    SearchResults: 'Resultados de la búsqueda'
+  SideReport:
+    BROKENFILES: 'Páginas con archivos en mal estado'
+    BROKENLINKS: 'Páginas con enlaces rotos'
+    BROKENREDIRECTORPAGES: 'La redirección de página está apuntando a páginas eliminadas'
+    BROKENVIRTUALPAGES: 'Las páginas virtuales están apuntando a páginas eliminadas'
+    BrokenLinksGroupTitle: 'Informe de enlaces rotos'
+    ContentGroupTitle: 'Informe de contenido'
+    EMPTYPAGES: 'Páginas vacías'
+    LAST2WEEKS: 'Páginas editadas en las últimas 2 semanas'
+    OtherGroupTitle: Otro
+    ParameterLiveCheckbox: 'Comprobar el sitio vivo'
+  SilverStripeNavigatorLink:
+    ShareLink: 'Compartir enlace'
+  SilverStripeNavigatorLinkl:
+    CloseLink: Cerrar
+  SiteConfig:
+    DEFAULTTHEME: '(Usar tema predeterminado)'
+    EDITHEADER: '¿Quién puede editar páginas en este sitio?'
+    EDIT_PERMISSION: 'Administrar la configuración del sitio'
+    SITENAMEDEFAULT: 'Nombre de su sitio'
+    SITETAGLINE: 'Lema/Slogan del Sitio'
+    SITETITLE: 'Título del sitio'
+    TABACCESS: Acceso
+    TABMAIN: Principal
+    TAGLINEDEFAULT: 'su lema aquí'
+    THEME: Tema
+    VIEWHEADER: '¿Quién puede ver las páginas en este sitio?'
+  SiteTree:
+    ACCESSANYONE: Cualquiera
+    ACCESSHEADER: '¿Quién puede ver ésta página?'
+    ACCESSLOGGEDIN: 'Usuarios registrados'
+    ACCESSONLYTHESE: 'Únicamente estas personas (seleccione de la lista)'
+    ALLOWCOMMENTS: '¿Permitir comentarios en ésta página?'
+    BUTTONCANCELDRAFT: 'Cancelar cambios al boceto'
+    BUTTONCANCELDRAFTDESC: 'Eliminar el boceto y regresar a la página publicada actualmente'
+    BUTTONUNPUBLISH: Ocultar al público
+    BUTTONUNPUBLISHDESC: 'Quitar ésta página del sitio público'
+    Comments: Comentarios
+    Content: Contenido
+    DEFAULTABOUTCONTENT: '<p>Usted puede llenar esta págna con su propio contenido, o eliminarla y crear sus propias páginas.<br /></p>'
+    DEFAULTABOUTTITLE: 'Sobre nosotros'
+    DEFAULTCONTACTCONTENT: '<p>Usted puede llenar esta págna con su propio contenido, o eliminarla y crear sus propias páginas.<br /></p>'
+    DEFAULTCONTACTTITLE: 'Contacto'
+    DEFAULTHOMECONTENT: '<p>¡Bienvenido a SilverStripe! Ésta es la página de Inicio predeterminada. Usted puede modificar esta página abriendo el <a href="admin/">CMS</a>. Ahora puede navegar por la <a href="http://doc.silverstripe.org">documentación del desarrollador</a>, o comenzar los <a href="href="http://doc.silverstripe.com/doku.php?id=tutorials">tutoriales</a></p>.'
+    DEFAULTHOMETITLE: Inicio
+    DEPENDENT_NOTE: 'Las siguientes páginas depender de esta página. Esto incluye páginas virtuales, redirección de páginas y páginas con enlaces de contenido.'
+    DependtPageColumnLinkType: 'Tipo de enlace'
+    EDITANYONE: 'Cualquiera que pueda ingresar al CMS'
+    EDITHEADER: '¿Quién puede modificar esta página?'
+    EDITONLYTHESE: 'Únicamente éstas personas (selecciona de la lista)'
+    EDITORGROUPS: 'Editor de grupos'
+    EDIT_ALL_DESCRIPTION: 'Editar cualquier página'
+    EDIT_ALL_HELP: 'La capacidad para editar cualquier página en el sitio, independientemente de la configuración en la ficha Acceso. Requiere el permiso de "Acceso al contenido del sitio".'
+    Editors: 'Grupos de Editores'
+    HASBROKENLINKS: 'Esta página tiene enlaces rotos.'
+    HTMLEDITORTITLE: Contenido
+    INHERIT: 'Hereda de la página ascendiente'
+    MENUTITLE: 'Etiqueta de navegación'
+    METADESC: 'Descripción'
+    METAEXTRA: 'Etiquetas meta personalizadas'
+    PAGELOCATION: 'Ubicación de la página'
+    PAGETITLE: 'Nombre de página'
+    PAGETYPE: 'Tipo de página'
+    PARENTID: 'Página padre'
+    PARENTTYPE: 'Ubicación de página'
+    PARENTTYPE_ROOT: 'Página de nivel superior'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Controlar los derechos de acceso al contenido'
+    REORGANISE_DESCRIPTION: 'Cambiar la estructura del sitio'
+    REORGANISE_HELP: 'Reorganizar páginas en el árbol del sitio arrastrando y soltando.'
+    SHOWINMENUS: '¿Mostrar en menús?'
+    SHOWINSEARCH: '¿Mostrar en búsqueda?'
+    TABBEHAVIOUR: Compotamiento
+    TABCONTENT: 'Contenido'
+    TABDEPENDENT: 'Páginas dependientes'
+    TOPLEVEL: 'Contenido del sitio (Nivel Superior)'
+    TOPLEVELCREATORGROUPS: 'Creadores de nivel superior'
+    URLSegment: 'Segmento de la URL'
+    VIEWERGROUPS: 'Ver grupos'
+    VIEW_ALL_DESCRIPTION: 'Ver cualquier página'
+    VIEW_DRAFT_CONTENT: 'Ver el contenido del boceto'
+    Viewers: 'Grupos de Espectadores'
+    has_one_Parent: 'Página ascendiente'
+    many_many_BackLinkTracking: 'Seguimiento en retrospectiva'
+    many_many_ImageTracking: 'Seguir la Imagen'
+    many_many_LinkTracking: 'Seguir el Enlace'
+  ViewArchivedEmail_ss:
+    CANACCESS: 'Puedes acceder al sitio archivado con este enlace:'
+    HAVEASKED: 'Has solicitado ver el contenido de nuestro sitio en'
+  VirtualPage:
+    HEADER: 'Esta es una página virtual'
+    PLURALNAME: 'Páginas virtuales'
+    SINGULARNAME: 'Página virtual'

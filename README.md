@@ -1,8 +1,8 @@
-## Overview
+## SilverStripe CMS
 
-Base project folder for a SilverStripe ([http://silverstripe.org](http://silverstripe.org)) installation. Requires additional modules to function:
+[![Build Status](https://secure.travis-ci.org/silverstripe/silverstripe-cms.png?branch=3.1)](http://travis-ci.org/silverstripe/silverstripe-cms)
 
- * [`framework`](http://github.com/silverstripe/silverstripe-framework): Module including the base framework
+PHP5 Content Management System (CMS), see [http://silverstripe.org](http://silverstripe.org). Requires the [`framework`](http://github.com/silverstripe/silverstripe-framework) module and a [`silverstripe-installer`](http://github.com/silverstripe/silverstripe-installer) base project.
  * [`cms`](http://github.com/silverstripe/silverstripe-cms): Module including a Content Management System
  * `themes/simple` (optional)
 
@@ -14,7 +14,7 @@ and [installation from source](http://doc.silverstripe.org/framework/en/installa
 ## Bugtracker ##
 
 Bugs are tracked on github.com ([framework issues](https://github.com/silverstripe/silverstripe-framework/issues),
-[cms issues](https://github.com/silverstripe/silverstripe-cms/issues)). 
+Bugs are tracked on [github.com](https://github.com/silverstripe/silverstripe-cms/issues). 
 Please read our [issue reporting guidelines](http://doc.silverstripe.org/framework/en/misc/contributing/issues).
 
 ## Development and Contribution ##
@@ -23,6 +23,7 @@ If you would like to make changes to the SilverStripe core codebase, we have an 
 
 ## Links ##
 
+ * [Requirements](http://doc.silverstripe.org/framework/en/installation/server-requirements)
  * [Changelogs](http://doc.silverstripe.org/framework/en/changelogs/)
  * [Bugtracker: Framework](https://github.com/silverstripe/silverstripe-framework/issues)
  * [Bugtracker: CMS](https://github.com/silverstripe/silverstripe-cms/issues)
@@ -32,7 +33,7 @@ If you would like to make changes to the SilverStripe core codebase, we have an 
 
 ## License ##
 
-	Copyright (c) 2007-2013, SilverStripe Limited - www.silverstripe.com
+	Copyright (c) 2006-2014, SilverStripe Limited - www.silverstripe.com
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

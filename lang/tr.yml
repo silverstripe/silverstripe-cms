@@ -1,0 +1,222 @@
+tr:
+  AssetAdmin:
+    ActionAdd: 'Klasör ekle'
+    AppCategoryArchive: Arşiv
+    AppCategoryAudio: Ses
+    AppCategoryImage: Görüntü
+    FILES: Dosyalar
+    Filetype: 'Dosya türü'
+    NEWFOLDER: YeniKlasör
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Klasörleri sil'
+  AssetAdmin_left_ss:
+    GO: Git
+  AssetTableField:
+    PAGES: sayfa(lar)
+  BrokenLinksReport:
+    CheckSite: 'Siteyi kontrol et'
+    HasBrokenLink: 'kırık link var'
+    HoverTitleEditPage: 'Sayfayı düzenle'
+    PageName: 'Sayfa ismi'
+    ReasonDropdownBROKENLINK: 'Kırık link'
+  CMSAddPageController:
+    Title: 'Sayfa ekle'
+  CMSBatchActions:
+    DELETE_PAGES: 'Yayındaki siteden sil'
+    PUBLISH_PAGES: Yayınla
+    UNPUBLISH_PAGES: Yayından kaldır
+  CMSMain:
+    AddNew: 'Yeni sayfa ekle'
+    AddNewButton: 'Yeni ekle'
+    ChoosePageParentMode: 'Sayfanın nereye oluşturulacağını seç'
+    ChoosePageType: 'Sayfa tipini seç'
+    Create: Oluştur
+    DELETE: 'Taslak siteden kaldır'
+    DELETEFP: Yayındaki siteden kaldır
+    EMAIL: Eposta
+    PAGENOTEXISTS: 'Sayfa bulunamadı'
+    PAGES: Sayfalar
+    PAGETYPEOPT: 'Sayfa Tipi'
+    PUBALLCONFIRM: 'Lütfen taslak sitedeki tüm sayfaları yayınlanmakta olan siteye kopyalayıp yayınla.'
+    PUBALLFUN: '"Hepsini Yayınla" özelliği'
+    PUBALLFUN2: "Bu butona bastığınız zaman, tüm sayfaları tek tek açıp \"yayınla\" butonuna basmışsınız gibi işlem yapılacaktır.  Bunun amacı sitede toplu miktarda içerik düzenleyip eklediyseniz (örneğin sitenin ilk yayınlanması gibi) size kolaylık sağlamaktır."
+    PageAdded: 'Sayfa başarıyla oluşturuldu'
+    REMOVEDPAGEFROMDRAFT: '''%s'' taslak siteden silindi'
+    RESTORE: Geri yükle
+    ROLLBACK: 'Bu sürüme geri dön'
+    SAVE: Kaydet
+    TabContent: İçerik
+    TabHistory: Geçmiş
+    TabSettings: Ayarlar
+    MENUTITLE: 'Sayfayı düzenle'
+  CMSMain_left_ss:
+    APPLY_FILTER: 'Filteri Uygula'
+    RESET: Sıfırla
+  CMSPageAddController:
+    MENUTITLE: 'Sayfa ekle'
+  CMSPageHistoryController:
+    COMPAREVERSIONS: 'Versiyonları karşılaştır'
+    MENUTITLE: Geçmiş
+  CMSPageHistoryController_versions_ss:
+    AUTHOR: Yazar
+    NOTPUBLISHED: 'Yayınlanmamış'
+    PUBLISHER: Yayınlayan
+    UNKNOWN: Bilinmeyen
+    WHEN: Ne zaman
+  CMSPagesController:
+    GalleryView: 'Galeri Görünümü'
+    MENUTITLE: Sayfalar
+  CMSPagesController_Tools_ss:
+    FILTER: Filtre
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Değiştirilen sayfalar'
+  CMSSiteTreeFilter_Search:
+    Title: 'Tüm sayfalar'
+  ContentControl:
+    NOTEWONTBESHOWN: 'Not: Bu mesaj ziyaretçilerinize gösterilmeyecektir.'
+  ContentController:
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Taslak veya arşivlenmiş içeriği görebilmek için CMS şifrenizle giriş yapmış olmanız gerekmektedir. <a href="%s">Yayınlanmış siteye geri dönmek için buraya tıklayın.</a>'
+    Email: Eposta
+    INSTALL_SUCCESS: 'Kurulum Başarılı!'
+    InstallFilesDeleted: 'Kurulum dosyaları başarıyla silindi.'
+    InstallSuccessCongratulations: 'SilverStripe başarıyla kuruldu!'
+    LOGOUT: 'Çıkış Yap'
+    Password: Parola
+  ErrorPage:
+    400: '400 - Hatalı İstek'
+    401: '401 - Erişim Engellenmiş'
+    403: '403 - Yasak'
+    404: '404 - Bulunamadı'
+    405: '405 - Bilinmeyen Metod'
+    406: '406 - İstemciye Uygun Cevap Bulunamadı'
+    407: '407 - Yetkili Sunucu Erişim Hatası'
+    408: '408 - İstek Zaman Aşımı Hatası'
+    409: '409 - Çakışma'
+    410: '410 - En Saçma HTTP Hatası'
+    411: '411 - Uzunluk Belirtilmemiş'
+    412: '412 - Önşart Hatası'
+    413: '413 - İstek Çok Büyük'
+    414: '414 - İstek-URI Çok Uzun'
+    415: '415 - Desteklenmeyen Medya Tipi'
+    416: '416 - İstek Aralığı Tatmin Edici Değil'
+    417: '417 - Beklenti Hatası'
+    500: '500 - Dahili Sunucu Hatası'
+    501: '501 - Uygulanmamış'
+    502: '502 - Hatalı Arayapı'
+    503: '503 - Servis Mevcut Değil'
+    504: '504 - Arayapı Zaman Aşımı'
+    505: '505 - HTTP Versiyonu Desteklenmiyor'
+    CODE: 'Hata kodu'
+    DEFAULTERRORPAGECONTENT: '<p>Varolmayan bir sayfaya ulaşmaya çalışıyorsunuz.</p><p>Lütfen ulaşmak istediğiniz URL''i kontrol edip tekrar deneyiniz.</p>'
+    DEFAULTERRORPAGETITLE: 'Sayfa bulunamadı'
+  Folder:
+    DELETEUNUSEDTHUMBNAILS: 'Kullanılmamış thumbnail leri sil'
+    UNUSEDFILESTITLE: 'Kullanılmamış dosyalar'
+    UNUSEDTHUMBNAILSTITLE: 'Kullanılmamış thumbnail ler'
+  LeftAndMain:
+    DELETED: Silindi.
+    SAVEDUP: Kaydedildi.
+  Permission:
+    CMS_ACCESS_CATEGORY: 'CMS Erişimi'
+  RedirectorPage:
+    DESCRIPTION: 'Başka iç sayfaya yönlendir'
+    HASBEENSETUP: 'Yönlendirilecek yeri olmayan bir yönlendirme sayfası ayarlandı.'
+    HEADER: 'Bu sayfa, kullanıcıları başka bir sayfaya yönlendirir'
+    OTHERURL: 'Başka bir siteye ait URL'
+    REDIRECTTO: 'Şuraya yönlendir'
+    REDIRECTTOEXTERNAL: 'Başka bir site'
+    REDIRECTTOPAGE: 'Web sitenizdeki bir sayfa'
+    YOURPAGE: 'Web sitenizdeki bir sayfa'
+  ReportAdmin:
+    MENUTITLE: Raporlar
+  SearchForm:
+    GO: Git
+    SEARCH: Ara
+  SideReport:
+    BROKENFILES: 'Kırık link bulunan sayfalar'
+    BROKENLINKS: 'Kırık link bulunan sayfalar'
+    BrokenLinksGroupTitle: 'Kırık linki rapor et'
+    ContentGroupTitle: 'İçerik raporları'
+    EMPTYPAGES: 'Boş sayfalar'
+    LAST2WEEKS: 'Son 2 haftada düzenlenmiş sayfalar'
+    OtherGroupTitle: Diğeri
+    ParameterLiveCheckbox: 'Yayındaki siteyi kontrol et'
+  SilverStripeNavigatorLink:
+    ShareLink: 'Linki paylaş'
+  SilverStripeNavigatorLinkl:
+    CloseLink: Kapat
+  SiteConfig:
+    DEFAULTTHEME: '(Varsayılan temayı kullan)'
+    SITENAMEDEFAULT: 'Site Adınız'
+    SITETITLE: 'Site başlığı'
+    TABACCESS: Erişim
+    TABMAIN: Ana
+    THEME: Tema
+  SiteTree:
+    ACCESSANYONE: Herkes
+    ACCESSHEADER: 'Bu sayfayı kimler görüntüleyebilir?'
+    ACCESSLOGGEDIN: 'Giriş yapmış kullanıcılar'
+    ACCESSONLYTHESE: 'Sadece bu kişiler (listeden seçiniz)'
+    ADDEDTODRAFTSHORT: Taslak
+    ALLOWCOMMENTS: 'Bu sayfada yorumlara izin verilsin mi?'
+    BUTTONCANCELDRAFT: 'Taslak değikliklerini iptal et'
+    BUTTONCANCELDRAFTDESC: 'Taslağı sil ve şu an yayında olan sayfaya geri döndür'
+    BUTTONUNPUBLISH: Yayından kaldır
+    BUTTONUNPUBLISHDESC: 'Bu sayfayı yayından kaldır'
+    Comments: Yorumlar
+    Content: İçerik
+    DEFAULTABOUTCONTENT: '<p>Bu sayfayı kendi içeriğinizle doldurabilir, ya da bu sayfayı silip kendi sayfalarınızı oluşturabilirsiniz.<br /></p>'
+    DEFAULTABOUTTITLE: 'Hakkımızda'
+    DEFAULTCONTACTCONTENT: '<p>Bu sayfayı kendi içeriğinizle doldurabilir, ya da bu sayfayı silip kendi sayfalarınızı oluşturabilirsiniz.<br /></p>'
+    DEFAULTCONTACTTITLE: 'İletişim'
+    DEFAULTHOMECONTENT: '<p>SilverStripe''a hoşgeldiniz! Burası anasayfanız. <a href="admin/">Yönetim panelinden</a> bu sayfayı düzenleyebilirsiniz. Geliştirici dökümanlarına <a href="http://doc.silverstripe.com">buradan</a> ulaşabilir, veya <a href="http://doc.silverstripe.com/doku.php?id=tutorials">eğitim videolarını</a> izleyebilirsiniz.</p>'
+    DEFAULTHOMETITLE: Anasayfa
+    DependtPageColumnLinkType: 'Link tipi'
+    EDITANYONE: 'CMS''e giriş yapabilen herkes'
+    EDITHEADER: 'Bu sayfayı kimler düzenleyebilir?'
+    EDITONLYTHESE: 'Sadece bu kişiler (listeden seçiniz)'
+    Editors: 'Editör Grupları'
+    HASBROKENLINKS: 'Bu sayfada hatalı linkler var.'
+    HTMLEDITORTITLE: İçerik
+    INHERIT: 'Üst sayfadan kalan'
+    LASTUPDATED: 'Son Güncellenen'
+    MENUTITLE: 'Navigasyon etiketi'
+    METADESC: 'Tanım'
+    METAEXTRA: 'Kişisel Meta Etiketleri'
+    MODIFIEDONDRAFTSHORT: Değiştirilmiş
+    PAGETITLE: 'Sayfa ismi'
+    PAGETYPE: 'Sayfa tipi'
+    PARENTID: 'Ana sayfa'
+    PARENTTYPE: 'Sayfa konumu'
+    PARENTTYPE_ROOT: 'Üst seviye sayfa'
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Grupların işlem ve düzenlemelerinin kontrolü'
+    REMOVEDFROMDRAFTHELP: 'Sayfa yayınlandı ve taslaklardan silindi'
+    REORGANISE_DESCRIPTION: 'Site yapısını değiştir'
+    REORGANISE_HELP: 'Site ağacının sürükle&bırak şeklinde tekrardan düzenle'
+    SHOWINMENUS: 'Menülerde gösterilsin mi?'
+    SHOWINSEARCH: 'Aramalarda gösterilsin mi?'
+    TABBEHAVIOUR: Davranış
+    TABCONTENT: 'İçerik'
+    TOPLEVEL: 'Site İçeriği (Üst Seviye)'
+    URLSegment: 'URL Kısmı'
+    Viewers: 'Görüntüleyici Grupları'
+    Visibility: Görünürlük
+    has_one_Parent: 'Üst Sayfa'
+    many_many_BackLinkTracking: 'Geri bağlantı izi'
+    many_many_ImageTracking: 'İmaj izi'
+    many_many_LinkTracking: 'Bağlantı izi'
+  ViewArchivedEmail_ss:
+    CANACCESS: 'Arşivdeki siteye şu bağlantıdan erişebilirsiniz:'
+    HAVEASKED: 'Şu tarihe kadar olan site içeriğini görüntülemek istediniz:'
+  VirtualPage:
+    HEADER: 'Bu sanal bir sayfadır'
+    PLURALNAME: 'Sanal Sayfalar'
+    SINGULARNAME: 'Sanal Sayfa'
+  CMSFileAddController:
+    MENUTITLE: Dosyalar
+  CMSPageEditController:
+    MENUTITLE: 'Sayfayı Düzenle'
+  CMSPageSettingsController:
+    MENUTITLE: 'Sayfayı düzenle'
+  CMSSettingsController:
+    MENUTITLE: Ayarlar

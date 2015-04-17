@@ -1,0 +1,56 @@
+ms:
+  ErrorPage:
+    417: '417 - kegagalan expectation'
+    CODE: 'Kod kesilapan'
+    DEFAULTERRORPAGECONTENT: '<p>Minta maaf, rupa-rupanya anda ingin mencapai halaman yang tidak wujud</p><p>Sila semak ejaan URL yang anda ingin mencapai dan cuba semula</p>'
+    DEFAULTERRORPAGETITLE: 'Halaman tidak wujud'
+  Folder:
+    DELETEUNUSEDTHUMBNAILS: 'Hapuskan thumbnail yang tidak digunakan'
+    UNUSEDFILESTITLE: 'Fail-fail yang tidak digunakan'
+    UNUSEDTHUMBNAILSTITLE: 'Thumbnail yang tidak digunakan'
+  RedirectorPage:
+    HASBEENSETUP: 'Mukasurat pengalih destinasi dihasilkan tanpa menyatakan destinasi alihan.'
+    HEADER: 'Mukasurat ini akan mengalih pengguna ke mukasurat lain'
+    OTHERURL: 'URL laman web lain'
+    REDIRECTTO: 'Alihkan ke'
+    REDIRECTTOEXTERNAL: 'Laman web lain'
+    REDIRECTTOPAGE: 'Tambah halaman ke laman anda'
+    YOURPAGE: 'Halaman di laman anda'
+  SiteTree:
+    ACCESSANYONE: Sesiapa sahaja
+    ACCESSHEADER: 'Siapa yang boleh melihat mukasurat ini?'
+    ACCESSLOGGEDIN: 'Pengguna berdaftar masuk'
+    ACCESSONLYTHESE: 'Hanya pengguna berikut (pilih dari senarai)'
+    ALLOWCOMMENTS: 'Terima komen untuk mukasurat ini?'
+    BUTTONCANCELDRAFT: 'Batalkan perubahan ke atas draf'
+    BUTTONCANCELDRAFTDESC: 'Hapus draf dan kembalikan ke mukasurat asal yang telah diterbitkan'
+    BUTTONUNPUBLISH: Tidak diterbitkan
+    BUTTONUNPUBLISHDESC: 'Hapus mukasurat ini dari laman sebenar'
+    Content: Kandungan
+    DEFAULTABOUTCONTENT: '<p>Anda bole isikan kandungan anda sendiri ke dalam mukasurat ini. atau padamkannya dan hasilkan mukasurat yang baru untuk menggantikannya.<br /></p>'
+    DEFAULTABOUTTITLE: 'Tentang Kami'
+    DEFAULTCONTACTCONTENT: '<p>Anda bole isikan kandungan anda sendiri ke dalam mukasurat ini. atau padamkannya dan hasilkan mukasurat yang baru untuk menggantikannya.<br /></p>'
+    DEFAULTCONTACTTITLE: 'Hubungi Kami'
+    DEFAULTHOMECONTENT: '<p>Selamat datang ke laman SilverStripe! Ini adalah laman utama yang asal. Anda boleh menyunting mukasurat ini dengan menggunakan <a href="admin/">CMS yang disediakan</a>. Untuk bantuan, sila lawati <a href="http://doc.silverstripe.com">dukumentasi pembangun perisian</a>, atau mula menggunakan <a href="http://doc.silverstripe.com/doku.php?id=tutorials">dokumen tutorial.</a></p>'
+    DEFAULTHOMETITLE: Utama
+    EDITANYONE: 'Sesiapa sahaja yang boleh mendaftar masuk ke CMS'
+    EDITHEADER: 'Siapa yang boleh melakukan penyuntingan menggunakan CMS?'
+    EDITONLYTHESE: 'Hanya pengguna berikut (pilih dari senarai)'
+    HASBROKENLINKS: 'Mukasurat ini mengandungi pautan bermasalah.'
+    HTMLEDITORTITLE: Kandungan
+    MENUTITLE: 'Label navigasi'
+    METADESC: 'Keterangan'
+    METAEXTRA: 'Label-meta khas'
+    PAGETITLE: 'Nama halaman'
+    PAGETYPE: 'Jenis halaman'
+    SHOWINMENUS: 'Paparkan di menu?'
+    SHOWINSEARCH: 'Paparkan di carian?'
+    TABBEHAVIOUR: Perilaku
+    TABCONTENT: 'Kandungan'
+    TOPLEVEL: 'Kandungan Laman (Peringkat Atas)'
+    URLSegment: 'Segmen URL'
+    has_one_Parent: 'Halaman Induk'
+  VirtualPage:
+    HEADER: 'Ini adalah mukasurat maya'
+    PLURALNAME: 'Halaman-halaman Maya'
+    SINGULARNAME: 'Halaman Maya'

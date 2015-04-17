@@ -1,0 +1,7 @@
+uz:
+  CMSMain:
+    PAGENOTEXISTS: 'Bu sahifa mavjud emas.'
+    PUBALLCONFIRM: 'Iltimos, saytdagi bor hamma sahifalarni chop eting. '
+    PUBALLFUN: '"Hammasi chop etish" funktsiyasi'
+    PUBALLFUN2: "Bu tugmani bosish bilan siz saytda bor bo'lgan hamma sahifalar chop etgan bo'lasiz."
+    SAVE: Saqlash

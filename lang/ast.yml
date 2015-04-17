@@ -1,0 +1,32 @@
+ast:
+  AssetAdmin:
+    SIZE: Tamañu
+  CMSPageHistoryController:
+    COMPAREVERSIONS: 'Comparar les versiones'
+    SHOWVERSION: 'Mostrar la versión'
+    MENUTITLE: Historial
+  CMSPagesController:
+    MENUTITLE: Páxines
+  ContentController:
+    Password: Contraseña
+  ErrorPage:
+    DEFAULTERRORPAGETITLE: 'Páxina non alcontrada'
+    DEFAULTSERVERERRORPAGETITLE: 'Error del servidor'
+  LeftAndMain:
+    SearchResults: 'Resultaos de la busca'
+  SilverStripeNavigatorLinkl:
+    CloseLink: Zarrar
+  SiteTree:
+    Content: Conteníu
+    HTMLEDITORTITLE: Conteníu
+    PAGETYPE: 'Triba de páxina'
+    PARENTID: 'Páxina padre'
+    PARENTTYPE: 'Llocalización de la páxina'
+    URLSegment: 'Segmentu URL'
+    has_one_Parent: 'Páxina padre'
+  VirtualPage:
+    HEADER: 'Esto ye una páxina virtual'
+    PLURALNAME: 'Páxines virtuales'
+    SINGULARNAME: 'Páxina virtual'
+  CMSPageSettingsController:
+    MENUTITLE: 'Editar la páxina'

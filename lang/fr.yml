@@ -1,0 +1,411 @@
+fr:
+  AssetAdmin:
+    ADDFILES: 'Ajouter des fichiers'
+    ActionAdd: 'Ajouter un dossier'
+    AppCategoryArchive: Archive
+    AppCategoryAudio: Audio
+    AppCategoryDocument: Document
+    AppCategoryFlash: Flash
+    AppCategoryImage: Image
+    AppCategoryVideo: Vidéo
+    BackToFolder: 'Revenir au dossier'
+    CREATED: Date
+    CurrentFolderOnly: 'Limiter au dossier actuel ?'
+    DetailsView: Détails
+    FILES: Fichiers
+    FILESYSTEMSYNC: 'Synchroniser les fichiers'
+    FILESYSTEMSYNCTITLE: 'Met à jour la base de données du système de fichiers, de façon à prendre en compte des fichiers téléchargés en dehors du CMS (p. ex. par FTP).'
+    FROMTHEINTERNET: 'En ligne'
+    FROMYOURCOMPUTER: 'Depuis votre ordinateur'
+    Filetype: 'Type de fichier'
+    ListView: 'Liste'
+    NEWFOLDER: Nouveau dossier
+    SIZE: Taille
+    THUMBSDELETED: '{count} miniatures inutilisées ont été supprimées'
+    TreeView: 'Arbre'
+    Upload: Télécharger
+    MENUTITLE: Fichiers
+  AssetAdmin_DeleteBatchAction:
+    TITLE: 'Supprimer dossiers'
+  AssetAdmin_Tools:
+    FILTER: Filtrer
+  AssetAdmin_left_ss:
+    GO: Accéder
+  AssetTableField:
+    BACKLINKCOUNT: 'Utilisé dans :'
+    PAGES: page(s)
+  BackLink_Button_ss:
+    Back: Retour
+  BrokenLinksReport:
+    Any: N'importe quel
+    BROKENLINKS: 'Rapport des liens brisés'
+    CheckSite: 'Consulter le site'
+    CheckSiteDropdownDraft: 'Site Brouillon'
+    CheckSiteDropdownPublished: 'Site Public'
+    ColumnDateLastModified: 'Date de la dernière modification'
+    ColumnDateLastPublished: 'Date de la dernière publication'
+    ColumnProblemType: 'Type de problème'
+    ColumnURL: URL
+    HasBrokenFile: 'a cassé le fichier'
+    HasBrokenLink: 'a cassé le lien'
+    HasBrokenLinkAndFile: 'a cassé le lien et le fichier'
+    HoverTitleEditPage: 'Editer la page'
+    PageName: 'Nom de la page'
+    ReasonDropdown: 'Problème à regarder'
+    ReasonDropdownBROKENFILE: 'Fichier cassé'
+    ReasonDropdownBROKENLINK: 'Lien brisé'
+    ReasonDropdownRPBROKENLINK: 'La page de redirection pointe vers une page qui n’existe pas/plus'
+    ReasonDropdownVPBROKENLINK: 'La page virtuelle pointe vers une page qui n’existe pas/plus'
+    RedirectorNonExistent: 'la page de redirection pointe vers une page qui n’existe pas/plus'
+    VirtualPageNonExistent: 'page virtuelle pointe vers une page qui n’existe pas/plus'
+  CMSAddPageController:
+    Title: 'Ajouter page'
+  CMSBatchActions:
+    DELETED_DRAFT_PAGES: '%d pages supprimées du site brouillon, %d échecs'
+    DELETED_PAGES: '%d pages supprimées du site, %d échecs'
+    DELETE_DRAFT_PAGES: 'Supprimer du site brouillion'
+    DELETE_PAGES: 'Supprimer du site publié'
+    PUBLISHED_PAGES: '%d pages publiées, %d échecs'
+    PUBLISH_PAGES: Publier
+    UNPUBLISHED_PAGES: '%d pages non publiées'
+    UNPUBLISH_PAGES: Non publiées
+  CMSMain:
+    ACCESS: 'Droits d’accès à la section « {title} »'
+    ACCESS_HELP: 'Permettre l''affichage de la section contenant l''arborescence et le contenu. La gestion des permissions de visualisation et d''édition peut se faire à travers des liste spécifiques à chaque page. Et aussi la "Permission de contenu" séparé.'
+    AddNew: 'Ajouter page'
+    AddNewButton: 'Ajouter'
+    AddPageRestriction: 'Note : certains types de page ne sont pas autorisés pour cette sélection'
+    ChoosePageParentMode: 'Choisissez où créer cette page'
+    ChoosePageType: 'Choisir le type de page'
+    Create: Créer
+    DELETE: 'Supprimer du site brouillon'
+    DELETEFP: Retirer du site publié
+    DESCREMOVED: 'et {count} descendants'
+    DUPLICATED: '''{title}'' dupliqué avec succès'
+    DUPLICATEDWITHCHILDREN: '''{title}'' et ses enfants dupliqués avec succès'
+    EMAIL: Email
+    EditTree: 'Editer l''arbre'
+    ListFiltered: 'Filtrelenmiş liste.'
+    NEWPAGE: 'Nouveau {pagetype}'
+    PAGENOTEXISTS: 'Cette page n''existe pas'
+    PAGES: Pages
+    PAGETYPEANYOPT: Tous
+    PAGETYPEOPT: 'Type de page'
+    PUBALLCONFIRM: 'Publier chaque page du site en copiant le contenu à partir du site brouillon s''il vous plaît'
+    PUBALLFUN: 'Fonctionnalité "Tout Publier"'
+    PUBALLFUN2: "Presser ce boutton fera la même chose que d'aller sur chaque page et d'appuer sur \"publier\"."
+    PUBPAGES: '{count} pages ont été correctement publiées'
+    PageAdded: 'La page a été créée avec succès '
+    REMOVED: '''{title}''{description} supprimé du site live'
+    REMOVEDPAGE: '« {title} » a été éliminée du site public '
+    REMOVEDPAGEFROMDRAFT: 'Supprimé ''%s'' du site de test'
+    RESTORE: Restaurer
+    RESTORED: '« {title} » restaurée avec succès'
+    ROLLBACK: 'Retourner à cette version'
+    ROLLEDBACKPUBv2: 'Revenir à la version publiée'
+    ROLLEDBACKVERSIONv2: 'Revenir à la version #%d'
+    SAVE: Sauvegarder
+    SAVEDRAFT: 'Sauvegarder le brouillon'
+    TabContent: Contenu
+    TabHistory: Historique
+    TabSettings: Paramètres
+    TreeFiltered: 'Filtrelenmiş ağaç liste.'
+    TreeFilteredClear: 'Filtreyi temizle'
+    MENUTITLE: 'Éditer la page'
+  CMSMain_left_ss:
+    APPLY_FILTER: 'Appliquer le filtre'
+    RESET: Réinitialiser
+  CMSPageAddController:
+    ParentMode_child: 'Sous une autre page'
+    ParentMode_top: 'Premier niveau'
+    MENUTITLE: 'Ajouter page'
+  CMSPageHistoryController:
+    COMPAREMODE: 'Comparer (choisissez deux)'
+    COMPAREVERSIONS: 'Comparer les versions'
+    COMPARINGVERSION: 'Comparaison entre les versions {version1} et {version2}.'
+    REVERTTOTHISVERSION: 'Revenir à cette version'
+    SHOWUNPUBLISHED: 'Afficher les versions non publiées'
+    SHOWVERSION: 'Afficher cette version'
+    VIEW: Afficher
+    VIEWINGLATEST: 'Vous regardez la dernière version'
+    VIEWINGVERSION: 'Version affichée : {version}.'
+    MENUTITLE: Historique
+  CMSPageHistoryController_versions_ss:
+    AUTHOR: Auteur
+    NOTPUBLISHED: 'Non publiée'
+    PUBLISHER: Éditeur
+    UNKNOWN: Inconnu
+    WHEN: Date
+  CMSPagesController:
+    GalleryView: 'Galerie'
+    ListView: 'Liste'
+    MENUTITLE: Pages
+    TreeView: 'Arbre'
+  CMSPagesController_ContentToolbar_ss:
+    MULTISELECT: Choix multiple
+  CMSPagesController_Tools_ss:
+    FILTER: Filtrer
+  CMSSearch:
+    FILTERDATEFROM: De
+    FILTERDATEHEADING: Date
+    FILTERDATETO: A
+    FILTERLABELTEXT: Terme
+  CMSSiteTreeFilter_ChangedPages:
+    Title: 'Pages modifiées'
+  CMSSiteTreeFilter_DeletedPages:
+    Title: 'Toutes les pages, y compris les supprimées'
+  CMSSiteTreeFilter_Search:
+    Title: 'Toutes les pages'
+  ContentControl:
+    NOTEWONTBESHOWN: 'Note : ce message ne sera pas visible de vos visiteurs.'
+  ContentController:
+    ARCHIVEDSITE: 'Aperçu de cette version'
+    ARCHIVEDSITEFROM: 'Site archivé depuis'
+    CMS: CMS
+    DRAFT: Brouillon
+    DRAFTSITE: 'Site Brouillon'
+    DRAFT_SITE_ACCESS_RESTRICTION: 'Vous devez vous authentifier avec votre mot de passe CMS afin de pouvoir consulter le contenu brouillon ou archivé. <a href="%s">Cliquer ici pour revenir au site publié.</a>'
+    Email: Courrier électronique
+    INSTALL_SUCCESS: 'Installation terminée!'
+    InstallFilesDeleted: 'Les fichiers d’installation ont été supprimés. '
+    InstallSecurityWarning: 'Pour des raisons de sécurité vous devriez supprimer maintenant les fichiers d’installation, à moins que vous n’ayez prévu de réinstaller le système ultérieurement (<em>ce qui nécessite de se connecter comme administrateur, voir plus haut</em>). Désormais, votre serveur n’aura besoin de droits de accès en écriture que pour le dossier « assets », vous pouvez donc les révoquer pour tous les autres dossiers. <a href="{link}" style="text-align: center;">Faites clic ici pour supprimer les fichiers d’installation.</a>'
+    InstallSuccessCongratulations: 'SilverStripe a été installé avec succès.'
+    LOGGEDINAS: 'Connecté en tant que'
+    LOGIN: Connectez-vous
+    LOGOUT: 'Se déconnecter'
+    NOTLOGGEDIN: 'Non-connecté'
+    PUBLISHED: Publié
+    PUBLISHEDSITE: 'Site Publié'
+    Password: Mot de passe
+    PostInstallTutorialIntro: 'Ce site est une version simplifiée d’un site SilverStripe 3. Pour le développer, consultez {link}.'
+    StartEditing: 'Vous pouvez commencer à éditer votre site en ouvrant <a href="{link}">le CMS</a>'
+    UnableDeleteInstall: 'La suppression des fichiers d’installation a échoué ; faites-le manuellement pour les fichiers ci-dessous : '
+    VIEWPAGEIN: 'Voir la page en :'
+  ErrorPage:
+    400: '400 - Requête incorrecte'
+    401: '401 - Non autorisé'
+    403: '403 - Interdit'
+    404: '404 - Non trouvé'
+    405: '405 - Méthode non authorisée'
+    406: '406 - Inacceptable'
+    407: '407 - Authentification de mandataire (Proxy) requise'
+    408: '408 - Temps d''attente d''une réponse du serveur écoulé'
+    409: '409 - La requête ne peut être traitée à l''état actuel'
+    410: '410 - La ressource est indisponible et aucune adresse de redirection n''est connue'
+    411: '411 - La longueur de la requête n''a pas été précisée'
+    412: '412 - Préconditions envoyées par la requête non-vérifiées'
+    413: '413 - Entité de la requête trop grande'
+    414: '414 - URI de la requête trop longue'
+    415: '415 - Type de média non géré'
+    416: '416 - Champs d''en-tête de requête ''range'' incorrect.'
+    417: '417 - Comportement attendu et défini dans l''en-tête de la requête insatisfaisable'
+    500: '500 - Erreur interne du serveur'
+    501: '501 - Fonctionnalité réclamée non supportée par le serveur'
+    502: '502 - Mauvaise passerelle d''accès'
+    503: '503 - Service indisponible'
+    504: '504 - Temps d''attente d''une réponse d''un serveur à un serveur intermédiaire écoulé'
+    505: '505 - Version HTTP non supportée'
+    CODE: 'Code d''erreur'
+    DEFAULTERRORPAGECONTENT: '<p>Désolé, il semble que vous tentez d''accéder à une page qui n''existe pas.</p><p>Merci de vérifier l''URL que vous avez saisie puis d''essayer à nouveau.</p>'
+    DEFAULTERRORPAGETITLE: 'Page non trouvée'
+    DEFAULTSERVERERRORPAGECONTENT: '<p>Nous sommes désolés, un problème nous a empêché de traiter votre requête.</p>'
+    DEFAULTSERVERERRORPAGETITLE: 'Erreur du serveur'
+    DESCRIPTION: 'Contenu personnalisé pour diverses erreurs (p. ex. « Page introuvable »)'
+    ERRORFILEPROBLEM: ' L’ouverture du fichier « {filename} » afin de le modifier a provoqué une erreur ; vérifiez les droits d’accès au fichier. '
+    PLURALNAME: 'Pages d’erreur'
+    SINGULARNAME: 'Page d’erreur'
+  Folder:
+    AddFolderButton: 'Ajouter un dossier'
+    DELETEUNUSEDTHUMBNAILS: 'Supprimer les miniatures inutilisées'
+    UNUSEDFILESTITLE: 'Fichiers inutilisés'
+    UNUSEDTHUMBNAILSTITLE: 'Miniatures inutilisées'
+    UploadFilesButton: Télécharger
+  LeftAndMain:
+    DELETED: Supprimée.
+    PreviewButton: Aperçu
+    SAVEDUP: Sauvegardée.
+    SearchResults: 'Résultats de la recherche'
+  Permission:
+    CMS_ACCESS_CATEGORY: 'Accès au CMS'
+  Permissions:
+    CONTENT_CATEGORY: 'Permissions du contenu'
+    PERMISSIONS_CATEGORY: 'Rôles et autorisations d’accès'
+  RedirectorPage:
+    DESCRIPTION: 'Redirige vers une autre page du site'
+    HASBEENSETUP: 'Une page de redirection sans adresse de redirection a été créée.'
+    HEADER: 'Cette page va rediriger les utilisateurs vers une autre page'
+    OTHERURL: 'Autre URL de site web'
+    PLURALNAME: 'Pages de redirection'
+    REDIRECTTO: 'Rediriger vers'
+    REDIRECTTOEXTERNAL: 'Autre site web'
+    REDIRECTTOPAGE: 'Une page de votre site web'
+    SINGULARNAME: 'Page de redirection'
+    YOURPAGE: 'Page de votre site web'
+  ReportAdmin:
+    ReportTitle: Titre
+    MENUTITLE: Rapports
+  ReportAdminForm:
+    FILTERBY: 'Filtrer par'
+  SITETREE:
+    VIRTUALPAGEDRAFTWARNING: 'Veuillez publier la page liée avant de publier la page virtuelle'
+    VIRTUALPAGEWARNING: 'Veuillez choisir une page liée et sauvegarder avant de publier cette page'
+    VIRTUALPAGEWARNINGSETTINGS: 'Veuillez choisir une page liée dans le contenu principal avant de publier'
+  SearchForm:
+    GO: Démarrer
+    SEARCH: Rechercher
+    SearchResults: 'Résultats de la recherche '
+  SideReport:
+    BROKENFILES: 'Pages avec des fichiers brisés'
+    BROKENLINKS: 'Pages avec des liens brisés'
+    BROKENREDIRECTORPAGES: 'Pages de redirection pointant vers une page effacée.'
+    BROKENVIRTUALPAGES: 'Pages virtuelles pointant vers une page effacée.'
+    BrokenLinksGroupTitle: 'Rapports des liens brisés'
+    ContentGroupTitle: 'Rapports de contenu'
+    EMPTYPAGES: 'Pages vides'
+    LAST2WEEKS: 'Pages modifiées durant les 2 dernières semaines'
+    OtherGroupTitle: Autres
+    ParameterLiveCheckbox: 'Visiter le site de production'
+    REPEMPTY: 'Le rapport {title} est vide'
+  SilverStripeNavigator:
+    ARCHIVED: Archivé
+  SilverStripeNavigatorLink:
+    ShareInstructions: 'Pour partager cette page, copiez et collez le lien ci-dessous.'
+    ShareLink: 'Partager le lien'
+  SilverStripeNavigatorLinkl:
+    CloseLink: Fermer
+  SiteConfig:
+    DEFAULTTHEME: '(Utiliser le thème par défaut)'
+    EDITHEADER: 'Qui peut modifier les pages sur ce site?'
+    EDIT_PERMISSION: 'Configuration du site'
+    EDIT_PERMISSION_HELP: 'Capacité d''édition des accès globales et permission des pages de premier niveau.'
+    PLURALNAME: 'Configurations du site'
+    SINGULARNAME: 'Configuration du site'
+    SITENAMEDEFAULT: 'Nom du site'
+    SITETAGLINE: 'Slogan ou devise du site'
+    SITETITLE: 'Titre du site'
+    TABACCESS: Accès
+    TABMAIN: Principal
+    TAGLINEDEFAULT: 'Votre slogan ici'
+    THEME: Thème
+    TOPLEVELCREATE: 'Qui peut créer des pages à la racine de ce site ?'
+    VIEWHEADER: 'Qui peut consulter les pages sur ce site?'
+  SiteTree:
+    ACCESSANYONE: Tout le monde
+    ACCESSHEADER: 'Qui peut voir cette page?'
+    ACCESSLOGGEDIN: 'Utilisateurs connectés'
+    ACCESSONLYTHESE: 'Seulement ces personnes (choisir à partir de la liste)'
+    ADDEDTODRAFTHELP: 'La page n’est pas encore publiée'
+    ADDEDTODRAFTSHORT: Brouillon
+    ALLOWCOMMENTS: 'Autoriser les commentaires sur cette page ?'
+    APPEARSVIRTUALPAGES: 'Ce contenu apparaît aussi dans les sections {title} des pages virtuelles.'
+    BUTTONCANCELDRAFT: 'Annuler les changements brouillons'
+    BUTTONCANCELDRAFTDESC: 'Supprimer votre brouillon et revenir à la page actuellement publiée'
+    BUTTONPUBLISHED: Publié
+    BUTTONSAVED: Sauvegardé
+    BUTTONSAVEPUBLISH: 'Sauvegarder et publier'
+    BUTTONUNPUBLISH: Retirer du site publié
+    BUTTONUNPUBLISHDESC: 'Retirer cette page du site publié'
+    Comments: Commentaires
+    Content: Contenu
+    DEFAULTABOUTCONTENT: '<p>Vous pouvez éditer cette page avec votre propre contenu ou supprimer celle-ci et créer vos propres pages.<br></p>'
+    DEFAULTABOUTTITLE: 'Qui sommes nous ?'
+    DEFAULTCONTACTCONTENT: '<p>Vous pouvez éditer cette page avec votre propre contenu ou supprimer celle-ci et créer vos propres pages.<br></p>'
+    DEFAULTCONTACTTITLE: 'Contactez-nous'
+    DEFAULTHOMECONTENT: '<p>Bienvenue sur SilverStripe&nbsp;! Ceci est la page d’accueil par défaut. Vous pouvez la modifier dans le <a href="admin/">panneau d’administration</a> du CMS.  Vous pouvez consulter la <a href="http://doc.silverstripe.com">documentation développeur</a> ou commencer <a href="http://doc.silverstripe.com/doku.php?id=tutorials">les tutoriaux.</a></p>'
+    DEFAULTHOMETITLE: Accueil
+    DELETEDPAGEHELP: 'La page n’est plus publique '
+    DELETEDPAGESHORT: Supprimée
+    DEPENDENT_NOTE: 'Les pages suivantes dépendent de cette page. Ceci inclut les pages virtuelles, les redirections et les pages avec des liens.'
+    DESCRIPTION: 'Contenu de page générique'
+    DependtPageColumnLinkType: 'Type de lien'
+    DependtPageColumnURL: URL
+    EDITANYONE: 'Toute personne pouvant se connecter au CMS'
+    EDITHEADER: 'Qui peut modifier cette page?'
+    EDITONLYTHESE: 'Seulement ces personnes (choisir à partir de la liste)'
+    EDITORGROUPS: 'Groupes d''édition'
+    EDIT_ALL_DESCRIPTION: 'Editer toute la page'
+    EDIT_ALL_HELP: 'Possibilité d''édition de toute les pages du site, peu importe les réglages de l''onglet Accès. Nécessite la permission "Access to Site Content". '
+    Editors: 'Groupes d''éditeurs'
+    GroupPlaceholder: 'Cliquez pour sélectionner un groupe'
+    HASBROKENLINKS: 'Cette page possède des liens rompus.'
+    HTMLEDITORTITLE: Contenu
+    INHERIT: 'hérite de la page parente'
+    LASTPUBLISHED: 'Dernier publié'
+    LASTSAVED: 'Dernier sauvegardé'
+    LASTUPDATED: 'Dernière mise à jour'
+    LINKCHANGENOTE: 'Changer le lien de cette page affectera aussi les liens des pages enfants.'
+    MENUTITLE: 'Nom de navigation'
+    METADESC: 'Description'
+    METADESCHELP: 'Les moteurs de recherche reprennent cette description dans leurs résultats (bien qu’elle n’ait pas d’influence sur le classement).'
+    METAEXTRA: 'Balises Méta personnalisées'
+    METAEXTRAHELP: 'Balises HTML pour des métadonnées supplémentaires. Par exemple &lt;meta name="monNom" content="Mon contenu" /&gt;'
+    MODIFIEDONDRAFTHELP: 'La page comporte des modifications non publiées'
+    MODIFIEDONDRAFTSHORT: Modifiée
+    MetadataToggle: Métadonnées
+    MoreOptions: 'Plus d''options'
+    NOTPUBLISHED: 'Non-publié'
+    OBSOLETECLASS: 'Cette page est d''un type obsolète : {type}. Sauvegarder réinitialisera son type et vous pourriez perdre des données'
+    PAGELOCATION: 'Emplacement de la page'
+    PAGETITLE: 'Nom de la page'
+    PAGETYPE: 'Type de page'
+    PARENTID: 'Page parent'
+    PARENTTYPE: 'Emplacement de la page'
+    PARENTTYPE_ROOT: 'Page de premier niveau'
+    PARENTTYPE_SUBPAGE: 'Sous-page d''une page parente (choisir en-dessous) '
+    PERMISSION_GRANTACCESS_DESCRIPTION: 'Contrôler les groupes qui peuvent accéder ou éditer certaines pages'
+    PERMISSION_GRANTACCESS_HELP: 'Autoriser la gestion des restrictions d''accès d''une page dans la section "Pages"'
+    PLURALNAME: Pages
+    PageTypNotAllowedOnRoot: 'Le type de page « {type} » n’est pas autorisé au niveau racine'
+    PageTypeNotAllowed: 'Le type de page « {type} » n''est pas autorisé comme enfant de cette page parent'
+    REMOVEDFROMDRAFTHELP: 'La page est publiée, mais a été effacée des brouillons'
+    REMOVEDFROMDRAFTSHORT: '''%s'' supprimé du site brouillon'
+    REMOVE_INSTALL_WARNING: 'Attention : Vous devriez supprimer install.php pour des raisons de sécurité.'
+    REORGANISE_DESCRIPTION: 'Modifier la structure du site'
+    REORGANISE_HELP: 'Réorganiser les pages dans l''arborescence du site par glisser & déposer.'
+    SHOWINMENUS: 'Afficher dans les menus ?'
+    SHOWINSEARCH: 'Afficher dans les recherches ?'
+    SINGULARNAME: Page
+    TABBEHAVIOUR: Comportement
+    TABCONTENT: 'Contenu principal'
+    TABDEPENDENT: 'Pages dépendantes'
+    TOPLEVEL: 'Contenu du Site ( Premier Niveau )'
+    TOPLEVELCREATORGROUPS: 'Créateurs de premier niveau.'
+    URLSegment: 'Segment d''URL'
+    VIEWERGROUPS: 'Groupes de Visualisation'
+    VIEW_ALL_DESCRIPTION: 'Voir toute la page'
+    VIEW_ALL_HELP: 'Capacité de voir n''importe quelle page du site, sans tenir compte des paramètres de l''onglet Accès. Requiert la permission d''accès à la section "Pages"'
+    VIEW_DRAFT_CONTENT: 'Voir les brouillons'
+    VIEW_DRAFT_CONTENT_HELP: 'Concerne l’affichage des pages de manière externe au CMS en mode brouillon. Pratique pour les collaborateurs externes sans accès au CMS.'
+    Viewers: 'Groupes de visualisation'
+    Visibility: Visibilité
+    has_one_Parent: 'Page parente'
+    many_many_BackLinkTracking: 'Suivi des liens retour'
+    many_many_ImageTracking: 'Suivi des images'
+    many_many_LinkTracking: 'Suivi des Liens'
+  SiteTreeURLSegmentField:
+    EMPTY: 'Merci d''entrer une URL ou cliquez sur Annuler'
+    HelpChars: 'Les caractères spéciaux sont automatiquement convertis ou supprimés.'
+  URLSegmentField:
+    Cancel: Annuler
+    Edit: Editer
+    OK: OK
+  ViewArchivedEmail_ss:
+    CANACCESS: 'Vous pouvez accéder le site archivé par ce lien :'
+    HAVEASKED: 'Vous avez demandé à voir le contenu de notre site le'
+  VirtualPage:
+    CHOOSE: 'Page liée'
+    DESCRIPTION: 'Affiche le contenu d’une autre page'
+    EditLink: éditer
+    HEADER: 'Cette page est virtuelle'
+    HEADERWITHLINK: 'Ceci est une page virtuelle copiant le contenu de "{title}" ({link})'
+    PLURALNAME: 'Pages Virtuelles'
+    PageTypNotAllowedOnRoot: 'Le type de page d’origine « {type} » n’est pas autorisé au niveau racine pour cette page virtuelle'
+    SINGULARNAME: 'Page virtuelle'
+  CMSFileAddController:
+    MENUTITLE: Fichiers
+  CMSPageEditController:
+    MENUTITLE: 'Éditer la page'
+  CMSPageSettingsController:
+    MENUTITLE: 'Éditer la page'
+  CMSSettingsController:
+    MENUTITLE: Paramètres

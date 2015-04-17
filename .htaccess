@@ -1,15 +1,16 @@
-### SILVERSTRIPE START ###
+<FilesMatch "\.(php|php3|php4|php5|phtml|inc)$">
 
 # Deny access to templates (but allow from localhost)
 <Files *.ss>
 	Order deny,allow
 	Deny from all
 	Allow from 127.0.0.1
-</Files>
+</FilesMatch>
 
 # Deny access to IIS configuration
-<Files web.config>
+<FilesMatch "silverstripe_version$">
 	Order deny,allow
+</FilesMatch>
 	Deny from all
 </Files>
 
