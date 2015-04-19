@@ -79,12 +79,12 @@ class BrokenLinksReport extends SS_Report {
 			$dateTitle = _t('BrokenLinksReport.ColumnDateLastPublished', 'Date last published');
 		}
 		
-		$linkBase = singleton('CMSPageEditController')->Link('show') . '/';
+		$linkBase = singleton('CMSPageEditController')->Link('show');
 		$fields = array(
 			"Title" => array(
 				"title" => _t('BrokenLinksReport.PageName', 'Page name'),
 				'formatting' => sprintf(
-					'<a href=\"' . $linkBase . '$ID\" title=\"%s\">$value</a>',
+					'<a href=\"' . Controller::join_links($linkBase, $ID) . '\" title=\"%s\">$value</a>',
 					_t('BrokenLinksReport.HoverTitleEditPage', 'Edit page')
 				)
 			),
