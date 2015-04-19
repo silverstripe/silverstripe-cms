@@ -1,0 +1,12 @@
+id:
+  HomePage:
+    DESCRIPTION: 'Masuk ke situs. Memiliki ampilan panel, Link cepat dan ringkasan berita'
+    PLURALNAME: 'Halaman Dasar'
+    SINGULARNAME: 'Halaman Awal'
+  Page:
+    DESCRIPTION: 'Halaman isi'
+    PLURALNAME: 'Halaman Dasar'
+    SINGULARNAME: Halaman
+  SiteTree:
+    PLURALNAME: Halaman
+    SINGULARNAME: Halaman

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+# phing installation
+sudo pear channel-discover pear.phing.info
+sudo pear install phing/phing
+sudo pear install pear/VersionControl_Git-0.4.4
+-->
+
+<project name="silverstripe-installer" default="help" phingVersion="2.4.5">
+
+	<!-- Install with "composer require silverstripe/buildtools" -->
+	<import file="buildtools/build.xml" optional="true" />
+
+	<property name="basedir" value="." override="true" />
+
+	<target name="help">
+		<phingcall target="buildtools.help" />
+	</target>
+
+	<target name="phpunit"
+		description="Runs unit tests as defined through phpunix.xml. Requires the 'phpunit' binary.">
+		<if>
+			<available file="${basedir}/vendor/bin/phpunit" />
+			<then>
+				<property name="phpunit_bin" value="vendor/bin/phpunit" />
+			</then>
+			<else>
+				<property name="phpunit_bin" value="phpunit" />
+			</else>
+		</if>
+		<exec command="${phpunit_bin}" checkreturn="true" passthru="true" />
+	</target>
+
+	<target name="behat" if="basedir" 
+		description="Runs behaviour tests through Behat, on the 'framework' and 'cms' modules (if available). Requires phpunit, composer and behat.">
+
+		<if>
+			<available file="${basedir}/framework/" type="dir" />
+			<then>
+				<echo msg="Testing 'framework' module" />
+				<exec command="vendor/bin/behat --ansi @framework" checkreturn="true" passthru="true" />	
+			</then>
+		</if>
+		
+		<if>
+			<available file="${basedir}/cms/" type="dir" />
+			<then>
+				<echo msg="Testing 'cms' module" />
+				<exec command="vendor/bin/behat --ansi @cms" checkreturn="true" passthru="true" />	
+			</then>
+		</if>
+
+	</target>
+
+</project>

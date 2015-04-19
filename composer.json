@@ -30,5 +30,11 @@
 	"autoload": {
 		"classmap": ["tests/behat/"]
 	},
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://packages.cwp.govt.nz/"
+		}
+	],
 	"minimum-stability": "dev"
 }

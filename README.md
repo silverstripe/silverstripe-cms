@@ -3,6 +3,8 @@
 [![Build Status](https://secure.travis-ci.org/silverstripe/silverstripe-cms.png?branch=3.1)](http://travis-ci.org/silverstripe/silverstripe-cms)
 
 PHP5 Content Management System (CMS), see [http://silverstripe.org](http://silverstripe.org). Requires the [`framework`](http://github.com/silverstripe/silverstripe-framework) module and a [`silverstripe-installer`](http://github.com/silverstripe/silverstripe-installer) base project.
+ * [`cms`](http://github.com/silverstripe/silverstripe-cms): Module including a Content Management System
+ * `themes/simple` (optional)
 
 ## Installation ##
 
@@ -11,6 +13,7 @@ and [installation from source](http://doc.silverstripe.org/framework/en/installa
 
 ## Bugtracker ##
 
+Bugs are tracked on github.com ([framework issues](https://github.com/silverstripe/silverstripe-framework/issues),
 Bugs are tracked on [github.com](https://github.com/silverstripe/silverstripe-cms/issues). 
 Please read our [issue reporting guidelines](http://doc.silverstripe.org/framework/en/misc/contributing/issues).
 

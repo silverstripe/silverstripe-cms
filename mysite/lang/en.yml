@@ -1,0 +1,12 @@
+en:
+  HomePage:
+    DESCRIPTION: 'Entry to the site. Has carousel, featured panels, quicklinks and news summaries'
+    PLURALNAME: 'Base Pages'
+    SINGULARNAME: 'Home Page'
+  Page:
+    DESCRIPTION: 'Generic content page'
+    PLURALNAME: 'Base Pages'
+    SINGULARNAME: Page
+  SiteTree:
+    PLURALNAME: Pages
+    SINGULARNAME: Page

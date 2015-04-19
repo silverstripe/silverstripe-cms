@@ -1,0 +1,38 @@
+<!-- 
+	PHPUnit configuration for SilverStripe
+
+	Requires PHPUnit 3.5+
+
+	Usage: 
+	 - "phpunit": Runs all tests in all folders
+	 - "phpunit framework/tests/": Run all tests of the framework module
+	 - "phpunit framework/tests/filesystem": Run all filesystem tests within the framework module
+	 - "phpunit framework/tests/filesystem/FolderTest.php": Run a single test
+	 - "phpunit <dash><dash>coverage-html assets/": Generate coverage report (replace <dash> with "-", requires xdebug)
+	
+	Further information:
+	- http://www.phpunit.de/manual/current/en/textui.html for more commandline options.
+	- http://github.com/chillu/silverstripe-doc-restructuring/blob/master/master/cms/docs/en/howto/phpunit-configuration.md
+	  for more information on configuration and execution options.
+	- framework/dev/TestRunner.php for an alternative way to run unit tests through the "sake" CLI tool.
+-->
+<phpunit bootstrap="framework/tests/bootstrap.php" colors="false" backupGlobals="false" backupStaticAttributes="false" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false" stopOnError="false" stopOnFailure="false" stopOnIncomplete="false" stopOnSkipped="false" syntaxCheck="false" verbose="true" strict="true">
+
+	<testsuite name="Default">
+		<directory>mysite/tests</directory>
+		<directory>cms/tests</directory>
+		<directory>framework/tests</directory>
+	</testsuite>
+
+	<listeners>
+		<listener class="SS_TestListener" file="framework/dev/TestListener.php" />
+    	<listener class="TeamCityListener" file="framework/dev/TeamCityListener.php"/>
+	</listeners>
+
+	<groups>
+		<exclude>
+			<group>sanitychecks</group>
+		</exclude>
+	</groups>
+	
+</phpunit>
