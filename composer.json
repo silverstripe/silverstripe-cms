@@ -20,6 +20,11 @@
 		"composer/installers": "*",
 		"silverstripe/framework": "2.4.*"
 	},
+	"extra": {
+		"branch-alias": {
+			"dev-post-2.4": "2.5.x-dev"
+		}
+	},
 	"require-dev": {
 		"phpunit/PHPUnit": "~3.7"
 	}
