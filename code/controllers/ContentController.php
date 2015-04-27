@@ -89,6 +89,8 @@ class ContentController extends Controller {
 	public function init() {
 		parent::init();
 
+		$recordExists = ($this->dataRecord && $this->dataRecord->exists());
+
 		// If we've accessed the homepage as /home/, then we should redirect to /.
 		if(
 			$this->dataRecord
@@ -128,7 +130,8 @@ class ContentController extends Controller {
 
 		// Draft/Archive security check - only CMS users should be able to look at stage/archived content
 		if(
-			$this->URLSegment != 'Security' 
+			$recordExists
+			&& $this->URLSegment != 'Security' 
 			&& !Session::get('unsecuredDraftSite') 
 			&& (
 				Versioned::current_archived_date() 
