@@ -93,8 +93,7 @@ class ContentController extends Controller {
 
 		// If we've accessed the homepage as /home/, then we should redirect to /.
 		if(
-			$this->dataRecord
-			&& $this->dataRecord instanceof SiteTree
+			$recordExists
 			&& RootURLController::should_be_on_root($this->dataRecord)
 			&& (!isset($this->urlParams['Action']) || !$this->urlParams['Action'])
 			&& !$_POST
@@ -113,7 +112,7 @@ class ContentController extends Controller {
 		}
 
 		// Run extension hooks
-		if($this->dataRecord) {
+		if($recordExists) {
 			$this->dataRecord->extend('contentcontrollerInit', $this);
 		} else {
 			singleton('SiteTree')->extend('contentcontrollerInit', $this);
@@ -123,7 +122,7 @@ class ContentController extends Controller {
 			return;
 		}
 
-		// Check page permissions
+		// Check page permissions (even if record isn't in database)
 		if($this->dataRecord && $this->URLSegment != 'Security' && !$this->dataRecord->canView()) {
 			return Security::permissionFailure($this);
 		}
