@@ -65,8 +65,20 @@ class SiteTreeFileExtension extends DataExtension {
 			$rememberSubsiteFilter = Subsite::$disable_subsite_filter;
 			Subsite::disable_subsite_filter(true);
 		}
+
+		if($filter || $sort || $join || $limit) {
+			Deprecation::notice('3.2', 'The $filter, $sort, $join and $limit parameters for 
+				SiteTreeFileExtension::BackLinkTracking() have been deprecated. 
+				Please manipluate the returned list directly.', Deprecation::SCOPE_GLOBAL);
+		}
 		
-		$links = $this->owner->getManyManyComponents('BackLinkTracking', $filter, $sort, $join, $limit);
+		$links = $this->owner->getManyManyComponents('BackLinkTracking');
+		if($this->owner->ID) {
+			$links = $links
+				->where($filter)
+				->sort($sort)
+				->limit($limit);
+		}
 		$this->owner->extend('updateBackLinkTracking', $links);
 		
 		if(class_exists("Subsite")){
