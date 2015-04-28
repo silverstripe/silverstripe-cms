@@ -72,10 +72,13 @@ class SiteTreeFileExtension extends DataExtension {
 				Please manipluate the returned list directly.', Deprecation::SCOPE_GLOBAL);
 		}
 		
-		$links = $this->owner->getManyManyComponents('BackLinkTracking')
-			->where($filter)
-			->sort($sort)
-			->limit($limit);
+		$links = $this->owner->getManyManyComponents('BackLinkTracking');
+		if($this->owner->ID) {
+			$links = $links
+				->where($filter)
+				->sort($sort)
+				->limit($limit);
+		}
 		$this->owner->extend('updateBackLinkTracking', $links);
 		
 		if(class_exists("Subsite")){
