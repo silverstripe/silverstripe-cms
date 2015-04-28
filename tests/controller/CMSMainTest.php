@@ -261,7 +261,15 @@ class CMSMainTest extends FunctionalTest {
 		$this->get('admin/pages/add');
 		$response = $this->post(
 			'admin/pages/add/AddForm', 
-			array('ParentID' => '0', 'ClassName' => 'Page', 'Locale' => 'en_US', 'action_doAdd' => 1)
+			array(
+				'ParentID' => '0',
+				'ClassName' => 'Page',
+				'Locale' => 'en_US',
+				'action_doAdd' => 1,
+				'ajax' => 1,
+			), array(
+				'X-Pjax' => 'CurrentForm,Breadcrumbs',
+			)
 		);
 		// should redirect, which is a permission error
 		$this->assertEquals(403, $response->getStatusCode(), 'Add TopLevel page must fail for normal user');
@@ -272,11 +280,19 @@ class CMSMainTest extends FunctionalTest {
 
 		$response = $this->post(
 			'admin/pages/add/AddForm', 
-			array('ParentID' => '0', 'ClassName' => 'Page', 'Locale' => 'en_US', 'action_doAdd' => 1)
+			array(
+				'ParentID' => '0',
+				'ClassName' => 'Page',
+				'Locale' => 'en_US',
+				'action_doAdd' => 1,
+				'ajax' => 1,
+			), array(
+				'X-Pjax' => 'CurrentForm,Breadcrumbs',
+			)
 		);
 
-		$this->assertEquals(302, $response->getStatusCode(), 'Must be a redirect on success');
-		$location=$response->getHeader('Location');
+		$location = $response->getHeader('X-ControllerURL');
+		$this->assertNotEmpty($location, 'Must be a redirect on success');
 		$this->assertContains('/show/',$location, 'Must redirect to /show/ the new page');
 		// TODO Logout
 		$this->session()->inst_set('loggedInAs', NULL);
