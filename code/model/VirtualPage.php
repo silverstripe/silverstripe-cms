@@ -54,7 +54,7 @@ class VirtualPage extends Page {
 		$record = $this->CopyContentFrom();
 
 		$allFields = $record->db();
-		if($hasOne = $record->has_one()) foreach($hasOne as $link) $allFields[$link . 'ID'] = "Int";
+		if($hasOne = $record->hasOne()) foreach($hasOne as $link) $allFields[$link . 'ID'] = "Int";
 		$virtualFields = array();
 		foreach($allFields as $field => $type) {
 			if(!in_array($field, $nonVirtualFields)) $virtualFields[] = $field;
@@ -458,6 +458,22 @@ class VirtualPage extends Page {
 		if(parent::hasMethod($method)) return true;
 		return $this->copyContentFrom()->hasMethod($method);
 	}
+
+	/**
+	 * Return the "casting helper" (a piece of PHP code that when evaluated creates a casted value object) for a field
+	 * on this object.
+	 *
+	 * @param string $field
+	 * @return string
+	 */
+	public function castingHelper($field) {
+		if($this->copyContentFrom()) {
+			return $this->copyContentFrom()->castingHelper($field);
+		} else {
+			return parent::castingHelper($field);
+		}
+	}
+
 }
 
 /**

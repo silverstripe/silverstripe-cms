@@ -227,34 +227,34 @@ class ErrorPage extends Page {
 	public function doPublish() {
 		parent::doPublish();
 
+		return $this->writeStaticPage();
+	}
+
+	/**
+	 * Write out the published version of the page to the filesystem
+	 *
+	 * @return mixed Either true, or an error
+	 */
+	public function writeStaticPage() {
 		// Run the page (reset the theme, it might've been disabled by LeftAndMain::init())
 		$oldEnabled = Config::inst()->get('SSViewer', 'theme_enabled');
 		Config::inst()->update('SSViewer', 'theme_enabled', true);
-
 		$response = Director::test(Director::makeRelative($this->Link()));
 		Config::inst()->update('SSViewer', 'theme_enabled', $oldEnabled);
-
 		$errorContent = $response->getBody();
-		
-		// Make the base tag dynamic.
-		// $errorContent = preg_replace('/<base[^>]+href="' . str_replace('/','\\/', Director::absoluteBaseURL()) . '"[^>]*>/i', '<base href="$BaseURL" />', $errorContent);
-		
+
 		// Check we have an assets base directory, creating if it we don't
 		if(!file_exists(ASSETS_PATH)) {
 			mkdir(ASSETS_PATH, 02775);
 		}
 
-
 		// if the page is published in a language other than default language,
 		// write a specific language version of the HTML page
 		$filePath = self::get_filepath_for_errorcode($this->ErrorCode, $this->Locale);
-		if($fh = fopen($filePath, "w")) {
-			fwrite($fh, $errorContent);
-			fclose($fh);
-		} else {
+		if (!file_put_contents($filePath, $errorContent)) {
 			$fileErrorText = _t(
-				"ErrorPage.ERRORFILEPROBLEM",
-				"Error opening file \"{filename}\" for writing. Please check file permissions.",
+				'ErrorPage.ERRORFILEPROBLEM',
+				'Error opening file "{filename}" for writing. Please check file permissions.',
 				array('filename' => $errorFile)
 			);
 			$this->response->addHeader('X-Status', rawurlencode($fileErrorText));

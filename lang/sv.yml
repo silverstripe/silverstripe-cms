@@ -5,7 +5,9 @@ sv:
     AppCategoryArchive: Arkivera
     AppCategoryAudio: Ljud
     AppCategoryDocument: Dokument
+    AppCategoryFlash: Flash
     AppCategoryImage: Bild
+    AppCategoryVideo: Video
     BackToFolder: 'Tillbaka till mappen'
     CREATED: Datum
     CurrentFolderOnly: 'Begränsa till aktuell mapp?'
@@ -43,6 +45,7 @@ sv:
     ColumnDateLastModified: 'Datum vid senaste modifiering'
     ColumnDateLastPublished: 'Datum vid senaste publicering'
     ColumnProblemType: 'Problemtyp'
+    ColumnURL: URL
     HasBrokenFile: 'har trasig fil'
     HasBrokenLink: 'har trasig länk'
     HasBrokenLinkAndFile: 'har trasig länk och fil'
@@ -72,6 +75,7 @@ sv:
     AddNew: 'Skapa ny sida'
     AddNewButton: 'Skapa ny'
     AddPageRestriction: 'OBS: Vissa sidtyper är inte tillåtna här'
+    Cancel: Avbryt
     ChoosePageParentMode: 'Välj var du vill skapa denna sida'
     ChoosePageType: 'Välj sidtyp'
     Create: Skapa
@@ -124,6 +128,7 @@ sv:
     SHOWUNPUBLISHED: 'Visa opublicerade versioner'
     SHOWVERSION: 'Visa version'
     VIEW: Titta på
+    VIEWINGLATEST: 'Nu visas den senaste versionen.'
     VIEWINGVERSION: 'Nu visas version {version}.'
     MENUTITLE: Historia
   CMSPageHistoryController_versions_ss:
@@ -139,6 +144,8 @@ sv:
     TreeView: 'Trädvy'
   CMSPagesController_ContentToolbar_ss:
     MULTISELECT: Flerval
+  CMSPagesController_Tools_ss:
+    FILTER: Filter
   CMSSearch:
     FILTERDATEFROM: Från
     FILTERDATEHEADING: Datum
@@ -155,6 +162,7 @@ sv:
   ContentController:
     ARCHIVEDSITE: 'Utkast version'
     ARCHIVEDSITEFROM: 'Arkiverad sajt från'
+    CMS: CMS
     DRAFT: Utkast
     DRAFTSITE: 'Utkast'
     DRAFT_SITE_ACCESS_RESTRICTION: 'Du måste logga med ditt CMS-lösenord för att kunna se utkast och arkiverat material. <a href="%s">Klicka här för att gå tillbaks till den publicerade sajten.</a>'
@@ -192,6 +200,8 @@ sv:
     415: '415 - Mediatypen stöds inte'
     416: '416 - Det efterfrågade intervallet går inte att leverera'
     417: '417 - Förväntningen gick inte att infria'
+    422: '422 - Obehandlingsbar entitet'
+    429: '429 - För många anrop'
     500: '500 - Internt serverfel'
     501: '501 - Inte implementerad'
     502: '502 - Felaktig gateway'
@@ -262,6 +272,7 @@ sv:
   SilverStripeNavigator:
     ARCHIVED: Arkiverad
   SilverStripeNavigatorLink:
+    ShareInstructions: 'Kopiera och klistra in länken nedan för att dela den här sidan.'
     ShareLink: 'Dela länk'
   SilverStripeNavigatorLinkl:
     CloseLink: Stäng
@@ -310,6 +321,7 @@ sv:
     DEPENDENT_NOTE: 'Följande sidor berörs av den här sidan. Inklusive virtuella sidor, omdirigeringssidor, och sidor med innehållslänkar.'
     DESCRIPTION: 'Generisk innehållssida'
     DependtPageColumnLinkType: 'Länktyp'
+    DependtPageColumnURL: URL
     EDITANYONE: 'Alla som kan logga in'
     EDITHEADER: 'Vem kan redigera den här sidan?'
     EDITONLYTHESE: 'Bara de här (välj från listan)'
@@ -332,6 +344,7 @@ sv:
     METAEXTRAHELP: 'HTML taggar för övrig meta information. Till exempel &lt;meta name="Namn" content="innehållet kommer här" /&gt;'
     MODIFIEDONDRAFTHELP: 'Sidan har ej publicerade ändringar'
     MODIFIEDONDRAFTSHORT: Ändrad
+    MetadataToggle: Metadata
     MoreOptions: 'Fler alternativ'
     NOTPUBLISHED: 'Ej publicerad'
     OBSOLETECLASS: 'Denna sida är den föråldrade typen {type}. Att spara kommer att återställa dess typ och du kan förlora data'
@@ -375,12 +388,19 @@ sv:
   SiteTreeURLSegmentField:
     EMPTY: 'Ange ett URL-segment eller klicka på avbryt'
     HelpChars: 'Specialtecken konverteras eller tas bort'
+  URLSegmentField:
+    Cancel: Avbryt
+    Edit: Redigera
+    OK: OK
   ViewArchivedEmail_ss:
     CANACCESS: 'Du kan komma åt den arkiverade sajten med denna länk:'
     HAVEASKED: 'Du har efterfrågat att se innehållet på vår sajt på'
   VirtualPage:
+    CHOOSE: 'Länkad sida'
     DESCRIPTION: 'Visar innehåll från en annan sida'
+    EditLink: redigera
     HEADER: 'Det här är en virutell sida'
+    HEADERWITHLINK: 'Det här är en virtuell sida som kopierar innehållet från "{title}" ({link})'
     PLURALNAME: 'Virtuella sidor'
     PageTypNotAllowedOnRoot: 'Ursprungliga sidan av typ "{type}" tillåts inte på rotnivå för denna virtuella sida'
     SINGULARNAME: 'Virtuell sida'
@@ -392,3 +412,9 @@ sv:
     MENUTITLE: 'Redigera sida'
   CMSSettingsController:
     MENUTITLE: Inställningar
+  CMSSiteTreeFilter_StatusDeletedPages:
+    Title: 'Raderade sidor'
+  CMSSiteTreeFilter_StatusDraftPages:
+    Title: 'Ej publicerade utkast'
+  CMSSiteTreeFilter_StatusRemovedFromDraftPages:
+    Title: 'Live men borttagen från utkast'

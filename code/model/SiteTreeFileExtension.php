@@ -10,11 +10,39 @@ class SiteTreeFileExtension extends DataExtension {
 	);
 
 	public function updateCMSFields(FieldList $fields) {
-		$fields->insertAfter(new ReadonlyField('BackLinkCount', 
-			_t('AssetTableField.BACKLINKCOUNT', 'Used on:'), 
-			$this->BackLinkTracking()->Count() . ' ' . _t('AssetTableField.PAGES', 'page(s)')), 
+		$fields->insertAfter(
+			ReadonlyField::create(
+				'BackLinkCount', 
+				_t('AssetTableField.BACKLINKCOUNT', 'Used on:'), 
+				$this->BackLinkTracking()->Count() . ' ' . _t('AssetTableField.PAGES', 'page(s)'))
+			->addExtraClass('cms-description-toggle')
+			->setDescription($this->BackLinkHTMLList()),
 			'LastEdited'
 		);
+	}
+
+	/**
+	 * Generate an HTML list which provides links to where a file is used.
+	 *
+	 * @return String
+	 */
+	public function BackLinkHTMLList() {
+		$html = '<em>' . _t('SiteTreeFileExtension.BACKLINK_LIST_DESCRIPTION', 'This list shows all pages where the file has been added through a WYSIWYG editor.') . '</em>';
+		$html .= '<ul>';
+
+		foreach ($this->BackLinkTracking() as $backLink) {
+			$listItem = '<li>';
+
+			// Add the page link
+			$listItem .= '<a href="' . $backLink->Link() . '" target="_blank">' . Convert::raw2xml($backLink->MenuTitle) . '</a> &ndash; ';
+
+			// Add the CMS link
+			$listItem .= '<a href="' . $backLink->CMSEditLink() . '">' . _t('SiteTreeFileExtension.EDIT', 'Edit') . '</a>';
+
+			$html .= $listItem . '</li>';
+		}
+
+		return $html .= '</ul>';
 	}
 
 	/**
@@ -26,13 +54,31 @@ class SiteTreeFileExtension extends DataExtension {
 	 * @param string $limit
 	 * @return ManyManyList
 	 */
-	public function BackLinkTracking($filter = "", $sort = "", $join = "", $limit = "") {
+	public function BackLinkTracking($filter = null, $sort = null, $join = null, $limit = null) {
+		if($filter !== null || $sort !== null || $join !== null || $limit !== null) {
+			Deprecation::notice('3.2', 'The $filter, $sort, $join and $limit parameters for
+				SiteTreeFileExtension::BackLinkTracking() have been deprecated.
+				Please manipluate the returned list directly.', Deprecation::SCOPE_GLOBAL);
+		}
+		
 		if(class_exists("Subsite")){
 			$rememberSubsiteFilter = Subsite::$disable_subsite_filter;
 			Subsite::disable_subsite_filter(true);
 		}
+
+		if($filter || $sort || $join || $limit) {
+			Deprecation::notice('3.2', 'The $filter, $sort, $join and $limit parameters for 
+				SiteTreeFileExtension::BackLinkTracking() have been deprecated. 
+				Please manipluate the returned list directly.', Deprecation::SCOPE_GLOBAL);
+		}
 		
-		$links = $this->owner->getManyManyComponents('BackLinkTracking', $filter, $sort, $join, $limit);
+		$links = $this->owner->getManyManyComponents('BackLinkTracking');
+		if($this->owner->ID) {
+			$links = $links
+				->where($filter)
+				->sort($sort)
+				->limit($limit);
+		}
 		$this->owner->extend('updateBackLinkTracking', $links);
 		
 		if(class_exists("Subsite")){

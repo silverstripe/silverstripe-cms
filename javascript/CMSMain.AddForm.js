@@ -15,43 +15,114 @@
 		});
 		
 		$(".cms-add-form").entwine({
+			ParentID: 0, // Last selected parentID
+			ParentCache: {}, // Cache allowed children for each selected page
 			onadd: function() {
 				var self = this;
 				this.find('#Form_AddForm_ParentID_Holder .TreeDropdownField').bind('change', function() {
 					self.updateTypeList();
 				});
+				this.find(".SelectionGroup.parent-mode").bind('change',  function() {
+					self.updateTypeList();
+				});
 				this.updateTypeList();
 			},
-			
+			loadCachedChildren: function(parentID) {
+				var cache = this.getParentCache();
+				if(typeof cache[parentID] !== 'undefined') return cache[parentID];
+				else return null;
+			},
+			saveCachedChildren: function(parentID, children) {
+				var cache = this.getParentCache();
+				cache[parentID] = children;
+				this.setParentCache(cache);
+			},
 			/**
-			 * Limit page type selection based on parent class.
+			 * Limit page type selection based on parent selection.
+			 * Select of root classes is pre-computed, but selections with a given parent
+			 * are updated on-demand.
 			 * Similar implementation to LeftAndMain.Tree.js.
 			 */
 			updateTypeList: function() {
-				var hints = this.find('.hints').data('hints'), 
-					metadata = this.find('#Form_AddForm_ParentID_Holder .TreeDropdownField').data('metadata'),
-					id = this.find('#Form_AddForm_ParentID_Holder .TreeDropdownField').getValue(),
-					newClassName = (id && metadata) ? metadata.ClassName : null,
-					hintKey = (newClassName) ? newClassName : 'Root',
-					hint = (typeof hints[hintKey] != 'undefined') ? hints[hintKey] : null,
-					allAllowed = true;
-				
-				var disallowedChildren = (hint && typeof hint.disallowedChildren != 'undefined') ? hint.disallowedChildren : [],
-					defaultChildClass = (hint && typeof hint.defaultChild != 'undefined') ? hint.defaultChild : null;
-				
+				var hints = this.data('hints'), 
+					parentTree = this.find('#Form_AddForm_ParentID_Holder .TreeDropdownField'),
+					parentMode = this.find("input[name=ParentModeField]:checked").val(),
+					metadata = parentTree.data('metadata'),
+					id = (metadata && parentMode === 'child')
+						? (parentTree.getValue() || this.getParentID())
+						: null,
+					newClassName = metadata ? metadata.ClassName : null,
+					hintKey = (newClassName && parentMode === 'child')
+						? newClassName
+						: 'Root',
+					hint = (typeof hints[hintKey] !== 'undefined') ? hints[hintKey] : null,
+					self = this,
+					defaultChildClass = (hint && typeof hint.defaultChild !== 'undefined')
+						? hint.defaultChild
+						: null,
+					disallowedChildren = [];
+
+				if(id) {
+					// Prevent interface operations
+					if(this.hasClass('loading')) return;
+					this.addClass('loading');
+					
+					// Enable last parent ID to be re-selected from memory
+					this.setParentID(id);
+					if(!parentTree.getValue()) parentTree.setValue(id);
+					
+					// Use cached data if available
+					disallowedChildren = this.loadCachedChildren(id);
+					if(disallowedChildren !== null) {
+						this.updateSelectionFilter(disallowedChildren, defaultChildClass);
+						this.removeClass('loading');
+						return;
+					}
+					$.ajax({
+						url: self.data('childfilter'),
+						data: {'ParentID': id},
+						success: function(data) {
+							// reload current form and tree
+							self.saveCachedChildren(id, data);
+							self.updateSelectionFilter(data, defaultChildClass);
+						},
+						complete: function() {
+							self.removeClass('loading');
+						}
+					});
+
+					return false;
+				} else {
+					disallowedChildren = (hint && typeof hint.disallowedChildren !== 'undefined')
+						? hint.disallowedChildren
+						: [],
+					this.updateSelectionFilter(disallowedChildren, defaultChildClass);
+				}
+			},
+			/**
+			 * Update the selection filter with the given blacklist and default selection
+			 * 
+			 * @param array disallowedChildren
+			 * @param string defaultChildClass
+			 */
+			updateSelectionFilter: function(disallowedChildren, defaultChildClass) {
 				// Limit selection
+				var allAllowed = null; // troolian
 				this.find('#Form_AddForm_PageType_Holder li').each(function() {
 					var className = $(this).find('input').val(), 
-						isAllowed = ($.inArray(className, disallowedChildren) == -1);
+						isAllowed = ($.inArray(className, disallowedChildren) === -1);
 					
 					$(this).setEnabled(isAllowed);
 					if(!isAllowed) $(this).setSelected(false);
-					allAllowed = allAllowed && isAllowed;
+					if(allAllowed === null) allAllowed = isAllowed;
+					else allAllowed = allAllowed && isAllowed;
 				});
 				
 				// Set default child selection, or fall back to first available option
 				if(defaultChildClass) {
-					var selectedEl = this.find('#Form_AddForm_PageType_Holder li input[value=' + defaultChildClass + ']').parents('li:first');
+					var selectedEl = this
+						.find('#Form_AddForm_PageType_Holder li input[value=' + defaultChildClass + ']')
+						.parents('li:first');
 				} else {
 					var selectedEl = this.find('#Form_AddForm_PageType_Holder li:not(.disabled):first');
 				}
@@ -59,7 +130,9 @@
 				selectedEl.siblings().setSelected(false);
 
 				// Disable the "Create" button if none of the pagetypes are available
-				var buttonState = (this.find('#Form_AddForm_PageType_Holder li:not(.disabled)').length) ? 'enable' : 'disable';
+				var buttonState = this.find('#Form_AddForm_PageType_Holder li:not(.disabled)').length
+					? 'enable'
+					: 'disable';
 				this.find('button[name=action_doAdd]').button(buttonState);
 
 				this.find('.message-restricted')[allAllowed ? 'hide' : 'show']();
@@ -72,10 +145,13 @@
 			},
 			setSelected: function(bool) {
 				var input = this.find('input');
-				this.toggleClass('selected', bool);
 				if(bool && !input.is(':disabled')) {
 					this.siblings().setSelected(false);
-					input.attr('checked', 'checked');
+					this.toggleClass('selected', true);
+					input.prop('checked', true);
+				} else {
+					this.toggleClass('selected', false);
+					input.prop('checked', false);
 				}
 			},
 			setEnabled: function(bool) {

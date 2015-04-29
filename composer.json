@@ -20,7 +20,7 @@
 		"composer/installers": "*",
 		"silverstripe/framework": "4.0.x-dev",
 		"silverstripe/reports": "*",
-		"silverstripe/siteconfig": "*"
+		"silverstripe/siteconfig": "3.2.x-dev"
 	},
 	"extra": {
 		"branch-alias": {

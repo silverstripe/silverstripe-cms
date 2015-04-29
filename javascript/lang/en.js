@@ -40,7 +40,8 @@ if(typeof(ss) == 'undefined' || typeof(ss.i18n) == 'undefined') {
 	"CMSMain.RollbackToVersion": "Do you really want to roll back to version #%s of this page?",
 	"URLSEGMENT.Edit": "Edit",
 	"URLSEGMENT.OK": "OK",
-	"URLSEGMENT.Cancel": "Cancel"
+	"URLSEGMENT.Cancel": "Cancel",
+	"URLSEGMENT.UpdateURL": "Update URL"
 }
 );
 }
