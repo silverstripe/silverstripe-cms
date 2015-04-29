@@ -36,8 +36,8 @@ class CMSFileAddController extends LeftAndMain {
 	 * Return fake-ID "root" if no ID is found (needed to upload files into the root-folder)
 	 */
 	public function currentPageID() {
-		if(is_numeric($this->request->requestVar('ID')))	{
-			return $this->request->requestVar('ID');
+		if(is_numeric($this->getRequest()->requestVar('ID')))	{
+			return $this->getRequest()->requestVar('ID');
 		} elseif (is_numeric($this->urlParams['ID'])) {
 			return $this->urlParams['ID'];
 		} elseif(Session::get("{$this->class}.currentPage")) {

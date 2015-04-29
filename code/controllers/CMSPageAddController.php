@@ -96,7 +96,7 @@ class CMSPageAddController extends CMSPageEditController {
 
 		// CMSMain->currentPageID() automatically sets the homepage,
 		// which we need to counteract in the default selection (which should default to root, ID=0)
-		if($parentID = $this->request->getVar('ParentID')) {
+		if($parentID = $this->getRequest()->getVar('ParentID')) {
 			$parentModeField->setValue('child');
 			$parentField->setValue((int)$parentID);
 		} else {
@@ -156,7 +156,7 @@ class CMSPageAddController extends CMSPageEditController {
 			$record->write();
 		} catch(ValidationException $ex) {
 			$form->sessionMessage($ex->getResult()->message(), 'bad');
-			return $this->getResponseNegotiator()->respond($this->request);
+			return $this->getResponseNegotiator()->respond($this->getRequest());
 		}
 
 		$editController = singleton('CMSPageEditController');

@@ -59,7 +59,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	
 	public function init() {
 		// set reading lang
-		if(SiteTree::has_extension('Translatable') && !$this->request->isAjax()) {
+		if(SiteTree::has_extension('Translatable') && !$this->getRequest()->isAjax()) {
 			Translatable::choose_site_locale(array_keys(Translatable::get_existing_content_languages('SiteTree')));
 		}
 		
@@ -203,8 +203,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function LinkWithSearch($link) {
 		// Whitelist to avoid side effects
 		$params = array(
-			'q' => (array)$this->request->getVar('q'),
-			'ParentID' => $this->request->getVar('ParentID')
+			'q' => (array)$this->getRequest()->getVar('q'),
+			'ParentID' => $this->getRequest()->getVar('ParentID')
 		);
 		$link = Controller::join_links(
 			$link,
@@ -265,7 +265,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 * @return boolean
 	 */
 	public function TreeIsFiltered() {
-		return $this->request->getVar('q');
+		return $this->getRequest()->getVar('q');
 	}
 
 	public function ExtraTreeTools() {
@@ -344,7 +344,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			->unsetValidator();
 		
 		// Load the form with previously sent search data
-		$form->loadDataFrom($this->request->getVars());
+		$form->loadDataFrom($this->getRequest()->getVars());
 
 		// Allow decorators to modify the form
 		$this->extend('updateSearchForm', $form);
@@ -367,7 +367,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 	
 	public function doSearch($data, $form) {
-		return $this->getsubtree($this->request);
+		return $this->getsubtree($this->getRequest());
 	}
 
 	/**
@@ -402,7 +402,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	 	// Generate basic cache key. Too complex to encompass all variations
 	 	$cache = SS_Cache::factory('CMSMain_SiteTreeHints');
 	 	$cacheKey = md5(implode('_', array(Member::currentUserID(), implode(',', $cacheCanCreate), implode(',', $classes))));
-	 	if($this->request->getVar('flush')) $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+	 	if($this->getRequest()->getVar('flush')) $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
 	 	$json = $cache->load($cacheKey);
 	 	if(!$json) {
 			$def['Root'] = array();
@@ -515,8 +515,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			return $id;
 		} 
 		else if($id && is_numeric($id)) {
-			if($this->request->getVar('Version')) {
-				$versionID = (int) $this->request->getVar('Version');
+			if($this->getRequest()->getVar('Version')) {
+				$versionID = (int) $this->getRequest()->getVar('Version');
 			}
 			
 			if($versionID) {
@@ -753,8 +753,8 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	}
 	
 	public function ListViewForm() {
-		$params = $this->request->requestVar('q');
-		$list = $this->getList($params, $parentID = $this->request->requestVar('ParentID'));
+		$params = $this->getRequest()->requestVar('q');
+		$list = $this->getList($params, $parentID = $this->getRequest()->requestVar('ParentID'));
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(			
 			new GridFieldSortableHeader(),
 			new GridFieldDataColumns(),
@@ -895,7 +895,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			$record->doPublish();
 		} 
 
-		return $this->getResponseNegotiator()->respond($this->request);
+		return $this->getResponseNegotiator()->respond($this->getRequest());
 	}
 
 	/**
@@ -1004,7 +1004,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		);
 		
 		// Even if the record has been deleted from stage and live, it can be viewed in "archive mode"
-		return $this->getResponseNegotiator()->respond($this->request);
+		return $this->getResponseNegotiator()->respond($this->getRequest());
 	}
 
 	/**
@@ -1051,7 +1051,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			))
 		);
 		
-		return $this->getResponseNegotiator()->respond($this->request);
+		return $this->getResponseNegotiator()->respond($this->getRequest());
 	}
 	
 	/**
@@ -1074,7 +1074,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		);
 		
 		// Even if the record has been deleted from stage and live, it can be viewed in "archive mode"
-		return $this->getResponseNegotiator()->respond($this->request);
+		return $this->getResponseNegotiator()->respond($this->getRequest());
 	}
 
 	public function publish($data, $form) {
@@ -1097,7 +1097,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			rawurlencode(_t('CMSMain.REMOVEDPAGE',"Removed '{title}' from the published site", array('title' => $record->Title)))
 		);
 		
-		return $this->getResponseNegotiator()->respond($this->request);
+		return $this->getResponseNegotiator()->respond($this->getRequest());
 	}
 
 	/**
@@ -1106,7 +1106,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 	public function rollback() {
 		return $this->doRollback(array(
 			'ID' => $this->currentPageID(),
-			'Version' => $this->request->param('VersionID')
+			'Version' => $this->getRequest()->param('VersionID')
 		), null);
 	}
 
@@ -1148,10 +1148,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 		// The X-Pjax header forces a "full" content refresh on redirect.
 		$url = Controller::join_links(singleton('CMSPageEditController')->Link('show'), $record->ID);
 		$this->response->addHeader('X-ControllerURL', $url);
-		$this->request->addHeader('X-Pjax', 'Content');  
+		$this->getRequest()->addHeader('X-Pjax', 'Content');
 		$this->response->addHeader('X-Pjax', 'Content');  
 
-		return $this->getResponseNegotiator()->respond($this->request);
+		return $this->getResponseNegotiator()->respond($this->getRequest());
 	}
 
 	/**
@@ -1301,7 +1301,7 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			))
 		);
 		
-		return $this->getResponseNegotiator()->respond($this->request);
+		return $this->getResponseNegotiator()->respond($this->getRequest());
 	}
 
 	public function duplicate($request) {
@@ -1331,10 +1331,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			);
 			$url = Controller::join_links(singleton('CMSPageEditController')->Link('show'), $newPage->ID);
 			$this->response->addHeader('X-ControllerURL', $url);
-			$this->request->addHeader('X-Pjax', 'Content');  
+			$this->getRequest()->addHeader('X-Pjax', 'Content');
 			$this->response->addHeader('X-Pjax', 'Content');  
 			
-			return $this->getResponseNegotiator()->respond($this->request);
+			return $this->getResponseNegotiator()->respond($this->getRequest());
 		} else {
 			return new SS_HTTPResponse("CMSMain::duplicate() Bad ID: '$id'", 400);
 		}
@@ -1361,10 +1361,10 @@ class CMSMain extends LeftAndMain implements CurrentPageIdentifier, PermissionPr
 			);
 			$url = Controller::join_links(singleton('CMSPageEditController')->Link('show'), $newPage->ID);
 			$this->response->addHeader('X-ControllerURL', $url);
-			$this->request->addHeader('X-Pjax', 'Content');  
+			$this->getRequest()->addHeader('X-Pjax', 'Content');
 			$this->response->addHeader('X-Pjax', 'Content');  
 			
-			return $this->getResponseNegotiator()->respond($this->request);
+			return $this->getResponseNegotiator()->respond($this->getRequest());
 		} else {
 			return new SS_HTTPResponse("CMSMain::duplicatewithchildren() Bad ID: '$id'", 400);
 		}

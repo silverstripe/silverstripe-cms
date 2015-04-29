@@ -50,8 +50,8 @@ class AssetAdmin extends LeftAndMain implements PermissionProvider{
 	 * Return fake-ID "root" if no ID is found (needed to upload files into the root-folder)
 	 */
 	public function currentPageID() {
-		if(is_numeric($this->request->requestVar('ID')))	{
-			return $this->request->requestVar('ID');
+		if(is_numeric($this->getRequest()->requestVar('ID')))	{
+			return $this->getRequest()->requestVar('ID');
 		} elseif (is_numeric($this->urlParams['ID'])) {
 			return $this->urlParams['ID'];
 		} elseif(Session::get("{$this->class}.currentPage")) {
@@ -100,15 +100,15 @@ JS
 		$context = $this->getSearchContext();
 		// Overwrite name filter to search both Name and Title attributes
 		$context->removeFilterByName('Name');
-		$params = $this->request->requestVar('q');
+		$params = $this->getRequest()->requestVar('q');
 		$list = $context->getResults($params);
 
 		// Don't filter list when a detail view is requested,
 		// to avoid edge cases where the filtered list wouldn't contain the requested
 		// record due to faulty session state (current folder not always encoded in URL, see #7408).
 		if(!$folder->ID
-			&& $this->request->requestVar('ID') === null
-			&& ($this->request->param('ID') == 'field')
+			&& $this->getRequest()->requestVar('ID') === null
+			&& ($this->getRequest()->param('ID') == 'field')
 		) {
 			return $list;
 		}
@@ -423,7 +423,7 @@ JS
 		$form->setFormMethod('GET');
 		$form->setFormAction(Controller::join_links($this->Link('show'), $folder->ID));
 		$form->addExtraClass('cms-search-form');
-		$form->loadDataFrom($this->request->getVars());
+		$form->loadDataFrom($this->getRequest()->getVars());
 		$form->disableSecurityToken();
 		// This have to match data-name attribute on the gridfield so that the javascript selectors work
 		$form->setAttribute('data-gridfield', 'File');
@@ -437,7 +437,7 @@ JS
 			'AddForm',
 			new FieldList(
 				new TextField("Name", _t('File.Name')),
-				new HiddenField('ParentID', false, $this->request->getVar('ParentID'))
+				new HiddenField('ParentID', false, $this->getRequest()->getVar('ParentID'))
 			),
 			new FieldList(
 				FormAction::create('doAdd', _t('AssetAdmin_left_ss.GO','Go'))
@@ -669,16 +669,16 @@ JS
 		$items[0]->Link = Controller::join_links(singleton('AssetAdmin')->Link('show'), 0);
 
 		// If a search is in progress, don't show the path
-		if($this->request->requestVar('q')) {
+		if($this->getRequest()->requestVar('q')) {
 			$items = $items->limit(1);
 			$items->push(new ArrayData(array(
 				'Title' => _t('LeftAndMain.SearchResults', 'Search Results'),
-				'Link' => Controller::join_links($this->Link(), '?' . http_build_query(array('q' => $this->request->requestVar('q'))))
+				'Link' => Controller::join_links($this->Link(), '?' . http_build_query(array('q' => $this->getRequest()->requestVar('q'))))
 			)));
 		}
 
 		// If we're adding a folder, note that in breadcrumbs as well
-		if($this->request->param('Action') == 'addfolder') {
+		if($this->getRequest()->param('Action') == 'addfolder') {
 			$items->push(new ArrayData(array(
 				'Title' => _t('Folder.AddFolderButton', 'Add folder'),
 				'Link' => false

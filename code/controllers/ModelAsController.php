@@ -47,7 +47,7 @@ class ModelAsController extends Controller implements NestedController {
 	 * @return SS_HTTPResponse
 	 */
 	public function handleRequest(SS_HTTPRequest $request, DataModel $model) {
-		$this->request = $request;
+		$this->setRequest($request);
 		$this->setDataModel($model);
 		
 		$this->pushCurrent();
@@ -75,7 +75,7 @@ class ModelAsController extends Controller implements NestedController {
 			$result = $this->getNestedController();
 			
 			if($result instanceof RequestHandler) {
-				$result = $result->handleRequest($this->request, $model);
+				$result = $result->handleRequest($this->getRequest(), $model);
 			} else if(!($result instanceof SS_HTTPResponse)) {
 				user_error("ModelAsController::getNestedController() returned bad object type '" . 
 					get_class($result)."'", E_USER_WARNING);
@@ -93,7 +93,7 @@ class ModelAsController extends Controller implements NestedController {
 	 * @throws Exception If URLSegment not passed in as a request parameter.
 	 */
 	public function getNestedController() {
-		$request = $this->request;
+		$request = $this->getRequest();
 		
 		if(!$URLSegment = $request->param('URLSegment')) {
 			throw new Exception('ModelAsController->getNestedController(): was not passed a URLSegment value.');
@@ -125,7 +125,7 @@ class ModelAsController extends Controller implements NestedController {
 			Debug::message("Using record #$sitetree->ID of type $sitetree->class with link {$sitetree->Link()}");
 		}
 		
-		return self::controller_for($sitetree, $this->request->param('Action'));
+		return self::controller_for($sitetree, $this->getRequest()->param('Action'));
 	}
 
 	/**
