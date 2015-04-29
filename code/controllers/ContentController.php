@@ -95,12 +95,11 @@ class ContentController extends Controller {
 		if(
 			$recordExists
 			&& RootURLController::should_be_on_root($this->dataRecord)
-			&& (!isset($this->urlParams['Action']) || !$this->urlParams['Action'])
-			&& !$_POST
-			&& !$_FILES
+			&& !$this->request->param('Action')
+			&& !$this->request->postVars()
 			&& !$this->redirectedTo()
 		) {
-			$getVars = $_GET;
+			$getVars = $this->getRequest()->getVars();
 			unset($getVars['url']);
 			if($getVars) {
 				$url = "?" . http_build_query($getVars);
