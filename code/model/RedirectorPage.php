@@ -161,7 +161,9 @@ class RedirectorPage_Controller extends Page_Controller {
 	public function init() {
 		parent::init();
 
-		if($link = $this->redirectionLink()) {
+		// Redirect this request, but only if no additional action (slug) has been provided.
+		$action = $this->request->param('Action');
+		if($action === null && $link = $this->redirectionLink()) {
 			$this->redirect($link, 301);
 			return;
 		}
