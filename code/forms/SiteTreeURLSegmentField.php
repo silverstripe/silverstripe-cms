@@ -16,10 +16,6 @@ class SiteTreeURLSegmentField extends TextField {
 	 * @var string 
 	 */
 	protected $helpText, $urlPrefix, $urlSuffix;
-	
-	private static $allowed_actions = array(
-		'suggest'
-	);
 
 	public function Value() {
 		return rawurldecode($this->value);
