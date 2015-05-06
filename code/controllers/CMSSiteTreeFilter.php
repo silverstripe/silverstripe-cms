@@ -13,7 +13,7 @@
  * @package cms
  * @subpackage content
  */
-abstract class CMSSiteTreeFilter extends Object {
+abstract class CMSSiteTreeFilter extends Object implements LeftAndMain_SearchFilter {
 
 	/**
 	 * @var Array Search parameters, mostly properties on {@link SiteTree}.
@@ -22,9 +22,21 @@ abstract class CMSSiteTreeFilter extends Object {
 	protected $params = array();
 	
 	/**
-	 * @var Array
+	 * List of filtered items and all their parents
+	 * 
+	 * @var array
 	 */
 	protected $_cache_ids = null;
+
+
+	/**
+	 * Subset of $_cache_ids which include only items that appear directly in search results.
+	 * When highlighting these, item IDs in this subset should be visually distinguished from
+	 * others in the complete set.
+	 *
+	 * @var array
+	 */
+	protected $_cache_highlight_ids = null;
 	
 	/**
 	 * @var Array
@@ -75,20 +87,23 @@ abstract class CMSSiteTreeFilter extends Object {
 		parent::__construct();
 	}
 	
-	/**
-	 * Method on {@link Hierarchy} objects which is used to traverse into children relationships.
-	 *
-	 * @return String
-	 */
 	public function getChildrenMethod() {
 		return $this->childrenMethod;
 	}
 
-	/**
-	 * Method on {@link Hierarchy} objects which is used find the number of children for a parent page
-	 */
 	public function getNumChildrenMethod() {
 		return $this->numChildrenMethod;
+	}
+
+	public function getPageClasses($page) {
+		if($this->_cache_ids === NULL) {
+			$this->populateIDs();
+		}
+
+		// If directly selected via filter, apply highlighting
+		if(!empty($this->_cache_highlight_ids[$page->ID])) {
+			return 'filtered-item';
+		}
 	}
 
 	/**
@@ -113,6 +128,7 @@ abstract class CMSSiteTreeFilter extends Object {
 	protected function populateIDs() {
 		$parents = array();
 		$this->_cache_ids = array();
+		$this->_cache_highlight_ids = array();
 		
 		if($pages = $this->pagesIncluded()) {
 			
@@ -121,6 +137,7 @@ abstract class CMSSiteTreeFilter extends Object {
 			foreach($pages as $pageArr) {
 				$parents[$pageArr['ParentID']] = true;
 				$this->_cache_ids[$pageArr['ID']] = true;
+				$this->_cache_highlight_ids[$pageArr['ID']] = true;
 			}
 
 			while(!empty($parents)) {
@@ -136,17 +153,12 @@ abstract class CMSSiteTreeFilter extends Object {
 		}
 	}
 	
-	/**
-	 * Returns TRUE if the given page should be included in the tree.
-	 * Caution: Does NOT check view permissions on the page.
-	 * 
-	 * @param SiteTree $page
-	 * @return Boolean
-	 */
 	public function isPageIncluded($page) {
-		if($this->_cache_ids === NULL) $this->populateIDs();
+		if($this->_cache_ids === NULL) {
+			$this->populateIDs();
+		}
 
-		return (isset($this->_cache_ids[$page->ID]) && $this->_cache_ids[$page->ID]);
+		return !empty($this->_cache_ids[$page->ID]);
 	}
 	
 	/**
