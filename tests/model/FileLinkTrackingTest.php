@@ -71,7 +71,7 @@ class FileLinkTrackingTest extends SapphireTest {
 		// Publish the source page
 		$page = $this->objFromFixture('Page', 'page1');
 		$this->assertTrue($page->doPublish());
-		$this->assertFalse($page->IsModifiedOnStage);
+		$this->assertFalse($page->getIsModifiedOnStage());
 
 		// Rename the file
 		$file = $this->objFromFixture('File', 'file1');
@@ -83,7 +83,7 @@ class FileLinkTrackingTest extends SapphireTest {
 		Versioned::prepopulate_versionnumber_cache('SiteTree', 'Live', array($page->ID));
 
 		// Confirm that the page hasn't gone green.
-		$this->assertFalse($page->IsModifiedOnStage);
+		$this->assertFalse($page->getIsModifiedOnStage());
 	}
 
 	public function testTwoFileRenamesInARowWork() {
